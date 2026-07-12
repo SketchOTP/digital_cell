@@ -1,0 +1,20 @@
+{
+  "catalyst_mass": 636.0969072894001,
+  "classification": "Transient",
+  "experiment": "structure_knockout",
+  "min_dt": 0.000078125,
+  "rejection_count": 5,
+  "seed": 1,
+  "structural_mass": 1829.0451950536417,
+  "substeps": 8000,
+  "turnover": {
+    "catalyst_decay": 3.4312931706355783,
+    "catalyst_reproduction": 2.9163860994913273,
+    "fuel_consumption": 2.9163860994913273,
+    "nutrient_consumption": 2.9163860994913273,
+    "structural_decay": 28.860712214827902,
+    "structural_synthesis": 0.0,
+    "waste_production": 35.09838779441195
+  },
+  "version": "0.1.0"
+}

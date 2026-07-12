@@ -1,0 +1,7 @@
+# Parameter sweep configuration
+# Staged sweeps over: k_rep, k_structure, k_structure_decay,
+# k_catalyst_decay_inside, d_c_inside, mobility_m, kappa
+# Factors: 0.5, 0.75, 1.0, 1.25, 1.5
+
+sweep_substeps = 10000
+seed = 1

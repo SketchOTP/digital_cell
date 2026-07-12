@@ -1,0 +1,17 @@
+[package]
+name = "experiment-runner"
+version.workspace = true
+edition.workspace = true
+
+[features]
+default = []
+long-experiments = ["chemistry-core/long-experiments"]
+
+[dependencies]
+chemistry-core = { path = "../chemistry-core" }
+clap = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+toml = { workspace = true }
+chrono = { workspace = true }
+image = { workspace = true }

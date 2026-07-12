@@ -1,0 +1,209 @@
+---
+
+description: Rules for executing Animus Directive project directives.
+globs:
+
+* "**/*"
+  alwaysApply: true
+
+---
+
+# Animus Project Directive Rules
+
+Animus project directives are external architect instructions.
+
+They start with:
+
+```text
+DIRECTIVE ID: D-###
+```
+
+This ID is the **Animus project directive ID**. It is not the same as the local `.agent/` memory directive ID.
+
+The local agent-memory directive ID uses this format:
+
+```text
+D-YYYYMMDD-HHMM-short-slug
+```
+
+Both IDs must be preserved.
+
+---
+
+## When This Rule Applies
+
+Apply this rule whenever the active user request or task contains:
+
+```text
+DIRECTIVE ID: D-###
+```
+
+If no Animus directive ID is present, follow normal repo governance and do not invent a project directive ID.
+
+---
+
+## ID Handling
+
+When a directive contains `DIRECTIVE ID: D-###`:
+
+* Preserve that exact project directive ID.
+* Create the normal local agent-memory ID for `.agent/DIRECTIVES.md`.
+* Record both IDs in `.agent/DIRECTIVES.md`.
+* Record both IDs in `.agent/OUTCOMES.md`.
+* Include both IDs in the final response.
+
+Do not merge the two ID systems.
+
+Example `.agent/DIRECTIVES.md` entry:
+
+```md
+- D-20260707-1130-roadmap-fix | project:D-014 | status:started | scope:directive-pipeline | ask:Implement roadmap-aware auto-next behavior | accept:Auto-next prioritizes failed/partial remediation and roadmap unmet criteria | plan:trace auto-next, patch priority, run targeted tests
+```
+
+Example `.agent/OUTCOMES.md` entry:
+
+```md
+- D-20260707-1130-roadmap-fix | project:D-014 | status:done | files:packages/core/orchestrator/auto-next.ts,tests/auto-next.test.ts | tests:npm test -- auto-next.test.ts PASS | accept:met | summary:Auto-next now prioritizes repair and roadmap acceptance criteria | next:
+```
+
+---
+
+## Scope
+
+Follow the active Animus directive exactly.
+
+Do not:
+
+* implement future sprint work
+* add unrelated features
+* perform broad refactors
+* change UI when directive is backend-only
+* add dependencies unless required
+* remove working behavior unless required
+* skip repair work after partial/failed prior work
+* treat suggestions as requirements unless the directive says they are required
+
+If the directive is broad, choose the smallest safe interpretation that satisfies the acceptance criteria.
+
+If the directive conflicts with existing repo behavior, tests, or governance rules, report the conflict instead of silently ignoring either instruction.
+
+---
+
+## Partial / Failed Prior Work
+
+If the current directive follows a partial or failed previous directive:
+
+* prioritize repair, diagnosis, or completion before new feature work
+* do not skip ahead to unrelated implementation
+* preserve what already works
+* clearly report what remains broken
+
+---
+
+## Evidence for Animus Review
+
+Animus reviews pasted coder responses. Give it concrete evidence.
+
+Every final response for an Animus directive must include:
+
+* project directive ID
+* agent-memory directive ID
+* changed summary
+* files changed
+* tests run
+* test results
+* manual verification
+* deviations from directive
+* known issues
+* backup/savepoint if requested
+* memory/MCP outcome status
+* next suggested step, if needed
+
+Do not claim tests passed unless they were actually run.
+
+If tests were not run, say why.
+
+If manual verification was not done, say `None`.
+
+If work is partial, say `partial`.
+
+If work failed, say `failed`.
+
+Do not hide failed tests, missing proof, skipped validation, or unresolved risks.
+
+---
+
+## Backup / Savepoint Rule
+
+If the Animus directive asks for a backup, savepoint, tag, or rollback point:
+
+1. Create it before changing files.
+2. Do not overwrite uncommitted user work.
+3. Report the exact branch or tag created.
+
+If a backup was not requested, report:
+
+```text
+Not requested
+```
+
+---
+
+## Required Final Response for Animus Directives
+
+Use this exact structure:
+
+```md
+PROJECT DIRECTIVE
+- D-###
+
+AGENT MEMORY DIRECTIVE
+- D-YYYYMMDD-HHMM-slug
+
+Changed:
+- <short bullet>
+- <short bullet>
+
+Files changed:
+- path/to/file — reason changed
+- path/to/file — reason changed
+
+Tests:
+- command/result
+- or: not run — reason
+
+Manual verification:
+- check performed
+- or: None
+
+Deviations:
+- None
+- or: <anything done outside directive scope>
+
+Known issues:
+- None
+- or: <remaining issue/risk>
+
+Backup/savepoint:
+- tag/branch created
+- or: Not requested
+
+Memory/MCP:
+- session outcome recorded: yes
+- or: BLOCKED (<reason>)
+
+Next:
+- <smallest logical next step, only if needed>
+```
+
+---
+
+## Final Response Rules
+
+* Keep it short.
+* Do not omit the project directive ID.
+* Do not omit the agent-memory directive ID.
+* Do not claim completion if acceptance was partial or not met.
+* Do not claim tests passed unless the command was run.
+* Do not suggest broad future work when a repair step is needed.
+* Do not include long explanations unless needed to explain a blocker.

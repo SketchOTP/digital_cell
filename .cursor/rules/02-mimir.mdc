@@ -1,0 +1,22 @@
+---
+description: Mimir MCP — durable memory recall, storage, and session outcomes
+alwaysApply: false
+---
+
+# Mimir MCP
+
+**Project slug:** use the Mimir slug from `.agent/PROJECT_PROFILE.md`; if missing, use the repo name and record that choice in `.agent/CURRENT.md`.
+
+Use **Mimir** for durable project memory and **required end-of-run session logging**.
+
+**When:** every meaningful task start (`memory_recall`, `memory_search`); end of every meaningful run (`memory_record_outcome`).
+
+**Not for code search** — use cocoindex-code `search` and Serena symbol tools instead.
+
+**Task start:** `memory_recall` → `project_status_summary` if resuming → `memory_search` before overlapping work.
+
+**During:** `memory_remember` for durable facts; `reflection_log` after repeated failures; `approval_request` before risky changes.
+
+**End (required):** `memory_record_outcome` before final response when MCP is reachable — never claim recorded unless the tool succeeded.
+
+**Details:** `docs/mimir-tools.md`, `.cursor/skills/mimir/SKILL.md`

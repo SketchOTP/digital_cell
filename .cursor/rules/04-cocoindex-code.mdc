@@ -1,0 +1,20 @@
+---
+description: cocoindex-code MCP — semantic codebase search and indexing
+alwaysApply: false
+---
+
+# cocoindex-code MCP
+
+**Setup:** Run `ccc init` once per repo, then `ccc index` from repo root (`.cocoindex_code/`). Configured in repo `.cursor/mcp.json`.
+
+Use **cocoindex-code** for semantic repo search, feature discovery, and dependency understanding.
+
+**When:** exploring unfamiliar codebases, locating implementations by meaning, tracing related code without exact keywords.
+
+**Primary tool:** `search` — natural-language or snippet queries; paginate with `offset`; filter with `languages` / `paths`.
+
+**Reindex:** After large codebase changes (new modules, merges, refactors, 10+ files / 500+ lines), run `ccc index` from repo root before the next search session.
+
+**Complement:** Use Serena for symbol-level inspection and edits after cocoindex-code narrows scope.
+
+**Details:** `docs/cocoindex-code.md`

@@ -1,0 +1,7 @@
+# OUTCOMES.md
+
+Entries before 2026-07-12 were imported from myCompanion and are not authoritative for digital_cell.
+
+- D-20260712-1615-doc-migration | status:done | files:.agent/PROJECT_PROFILE.md,.agent/REPO_MAP.md,.agent/LEARNINGS.md,.agent/DIRECTIVES.md,.agent/OUTCOMES.md,.agent/CURRENT.md,AGENTS.md | tests:rg stale myCompanion/creature refs in md/mdc/yml — clean except migration notes | accept:met | summary:Retargeted project docs to digital_cell greenfield lifeform per PROJECT_GOAL.md; cleared imported sprint history | next:begin protocell implementation when directed
+- D-20260712-1616-mimir-bootstrap | status:done | files:.agent/DIRECTIVES.md,.agent/CURRENT.md,.agent/OUTCOMES.md | tests:project_bootstrap OK (7 memories); code_index_repo OK via /host/projects/digital_cell (0 files); project_status_summary memory_count=9; memory_recall OK | accept:met | summary:Bootstrapped digital_cell capsule and code index in Mimir | next:re-index when application code lands
+- D-20260712-1618-phase1-protocell | project:D-001 | status:done | files:digital-protocell/** | tests:cargo test -p chemistry-core --release PASS 22/22 | accept:partial | summary:Phase 1 Rust workspace with Cahn-Hilliard chemistry, 22 tests pass, experiments generated, Godot shell; long-duration 250k run pending | next:long-experiments feature run

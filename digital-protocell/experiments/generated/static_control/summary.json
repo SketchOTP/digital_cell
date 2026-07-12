@@ -1,0 +1,20 @@
+{
+  "catalyst_mass": 636.5683322675715,
+  "classification": "Transient",
+  "experiment": "static_control",
+  "min_dt": 0.000078125,
+  "rejection_count": 5,
+  "seed": 1,
+  "structural_mass": 1857.4856685434104,
+  "substeps": 8000,
+  "turnover": {
+    "catalyst_decay": 0.04254019584559902,
+    "catalyst_reproduction": 0.0,
+    "fuel_consumption": 0.0,
+    "nutrient_consumption": 0.0,
+    "structural_decay": 0.36280070800681774,
+    "structural_synthesis": 0.0,
+    "waste_production": 0.4053252285837328
+  },
+  "version": "0.1.0"
+}

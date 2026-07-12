@@ -1,0 +1,6 @@
+name = "starvation"
+seed = 1
+substeps = 250000
+
+[params]
+n_reservoir = 0.0

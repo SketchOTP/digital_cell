@@ -1,0 +1,11 @@
+[package]
+name = "godot-bridge"
+version.workspace = true
+edition.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+chemistry-core = { path = "../chemistry-core" }
+godot = { version = "0.2", default-features = false, features = ["api-4-3"] }

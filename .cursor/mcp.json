@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "cocoindex-code": {
+      "command": "/home/sketch/.local/bin/ccc",
+      "args": ["mcp"],
+      "env": {
+        "COCOINDEX_CODE_HOST_CWD": "${workspaceFolder}",
+        "PATH": "/home/sketch/.local/bin:${env:PATH}"
+      }
+    }
+  }
+}

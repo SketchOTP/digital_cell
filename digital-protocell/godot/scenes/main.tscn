@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/diagnostics_panel.gd" id="2"]
+[ext_resource type="Shader" path="res://shaders/chemistry_display.gdshader" id="3"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="ChemistrySimulator" type="ChemistrySimulator" parent="."]
+
+[node name="Display" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -280.0
+offset_right = 280.0
+offset_bottom = 280.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DiagnosticsPanel" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -320.0
+offset_bottom = 200.0
+script = ExtResource("2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DiagnosticsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Controls" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 200.0
+offset_bottom = 400.0
+
+[node name="Pause" type="Button" parent="Controls"]
+layout_mode = 2
+text = "Pause"
+
+[node name="Step" type="Button" parent="Controls"]
+layout_mode = 2
+text = "Single substep"
+
+[node name="Reset" type="Button" parent="Controls"]
+layout_mode = 2
+text = "Reset"
+
+[node name="Puncture" type="Button" parent="Controls"]
+layout_mode = 2
+text = "Puncture"
+
+[node name="NoNutrient" type="Button" parent="Controls"]
+layout_mode = 2
+text = "Remove nutrient"
+
+[node name="NoFuel" type="Button" parent="Controls"]
+layout_mode = 2
+text = "Remove fuel"
+
+[node name="NoRep" type="Button" parent="Controls"]
+layout_mode = 2
+text = "Disable catalyst rep"
+
+[node name="Restore" type="Button" parent="Controls"]
+layout_mode = 2
+text = "Restore reservoir"
+
+[node name="Save" type="Button" parent="Controls"]
+layout_mode = 2
+text = "Save snapshot"
+
+[connection signal="pressed" from="Controls/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="Controls/Step" to="." method="_on_step_pressed"]
+[connection signal="pressed" from="Controls/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Controls/Puncture" to="." method="_on_puncture_pressed"]
+[connection signal="pressed" from="Controls/NoNutrient" to="." method="_on_remove_nutrient_pressed"]
+[connection signal="pressed" from="Controls/NoFuel" to="." method="_on_remove_fuel_pressed"]
+[connection signal="pressed" from="Controls/NoRep" to="." method="_on_disable_rep_pressed"]
+[connection signal="pressed" from="Controls/Restore" to="." method="_on_restore_pressed"]
+[connection signal="pressed" from="Controls/Save" to="." method="_on_save_pressed"]
