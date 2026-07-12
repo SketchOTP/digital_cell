@@ -1,3 +1,4 @@
+pub mod accounting;
 pub mod config;
 pub mod diagnostics;
 pub mod fields;
@@ -10,6 +11,7 @@ pub mod reservoir;
 pub mod simulation;
 pub mod snapshot;
 
+pub use accounting::*;
 pub use config::*;
 pub use diagnostics::*;
 pub use fields::*;

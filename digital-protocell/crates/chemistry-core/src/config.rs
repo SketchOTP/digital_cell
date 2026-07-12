@@ -107,6 +107,12 @@ pub struct ExperimentConfig {
     pub params: SimParams,
     #[serde(default)]
     pub interventions: Vec<InterventionSpec>,
+    #[serde(default = "default_record_every")]
+    pub record_every: u64,
+}
+
+fn default_record_every() -> u64 {
+    1000
 }
 
 fn default_seed() -> u64 {
@@ -136,6 +142,9 @@ pub enum InterventionAction {
     PunctureRepair,
     CatastrophicDamage,
     DisableAllReactions,
+    DisableStructuralSynthesis,
+    ShutdownReservoir,
+    DamageFraction { fraction: f64 },
 }
 
 impl SimParams {

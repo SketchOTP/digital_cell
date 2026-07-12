@@ -250,6 +250,7 @@ fn test_baseline_viability() {
         substeps: test_substeps(),
         params: baseline_params(),
         interventions: vec![],
+        record_every: 1000,
     };
     let sim = run_experiment(&config, 1000);
     let diag = sim.history.last().or_else(|| sim.history.first());
@@ -426,6 +427,7 @@ fn test_seeded_run_is_reproducible() {
         substeps: 500,
         params: baseline_params(),
         interventions: vec![],
+        record_every: 1000,
     };
     let sim1 = run_experiment(&config, 100);
     let sim2 = run_experiment(&config, 100);
