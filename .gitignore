@@ -5,3 +5,4 @@ digital-protocell/target/
 .serena/cache/
 experiments/generated/
 .DS_Store
+digital-protocell/experiments/generated/

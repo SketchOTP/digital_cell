@@ -515,6 +515,15 @@ impl Simulation {
         self.detector.last_classification = snap.classification;
     }
 
+    /// Restore fields and timing only; candidate params remain from `Simulation::new`.
+    pub fn restore_snapshot_fields_only(&mut self, snap: &FieldSnapshot) {
+        snap.restore_fields(&mut self.fields);
+        self.substep = snap.substep;
+        self.sim_time = snap.sim_time;
+        self.detector.turnover = snap.turnover.clone();
+        self.detector.last_classification = snap.classification;
+    }
+
     pub fn field_hash(&self) -> u64 {
         use std::collections::hash_map::DefaultHasher;
         use std::hash::{Hash, Hasher};

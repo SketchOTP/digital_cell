@@ -3,7 +3,15 @@
 use crate::config::SimParams;
 use crate::fields::interior_weight;
 
-pub const EQUATION_VERSION: &str = "d003-crowding-v1";
+/// Historical D-001 bulk production (retained as identifier).
+pub const EQUATION_VERSION_D001_BULK: &str = "d001-bulk-v1";
+/// D-003 crowding production.
+pub const EQUATION_VERSION_CROWDING: &str = "d003-crowding-v1";
+/// D-006 surface-production / bulk-turnover.
+pub const EQUATION_VERSION_SURFACE: &str = "surface_turnover_v1";
+
+/// Default active equation version for greenfield sims (D-003 crowding).
+pub const EQUATION_VERSION: &str = EQUATION_VERSION_CROWDING;
 
 #[derive(Debug, Clone, Default)]
 pub struct ReactionRates {
@@ -16,6 +24,8 @@ pub struct ReactionRates {
     pub r_n: f64,
     pub r_f: f64,
     pub r_w: f64,
+    /// Interface weight I(φ̂) used in surface assembly (0 for bulk kinetics).
+    pub interface_weight: f64,
 }
 
 #[derive(Debug, Clone)]
@@ -52,6 +62,30 @@ pub fn structure_production_factor(phi: f64, params: &SimParams) -> f64 {
     }
 }
 
+/// Diagnostic clamp for interface function only — does not mutate φ.
+#[inline]
+pub fn phase_hat(phi: f64) -> f64 {
+    phi.clamp(0.0, 1.0)
+}
+
+/// Local interface weight I(φ̂) = 16 φ̂² (1−φ̂)². Peaks at φ̂=0.5; zero at 0 and 1.
+#[inline]
+pub fn interface_weight(phi: f64) -> f64 {
+    let x = phase_hat(phi);
+    16.0 * x * x * (1.0 - x) * (1.0 - x)
+}
+
+/// Saturating catalyst activation for structural assembly.
+#[inline]
+pub fn catalyst_activation(c: f64, k_c_structure: f64) -> f64 {
+    let k = k_c_structure.max(0.0);
+    c / (k + c.max(0.0))
+}
+
+pub fn is_surface_turnover(params: &SimParams) -> bool {
+    params.equation_version == EQUATION_VERSION_SURFACE
+}
+
 pub fn compute_reactions_at(
     phi: f64,
     c: f64,
@@ -74,8 +108,17 @@ pub fn compute_reactions_at(
         * h
         * (1.0 - c / params.c_max).max(0.0);
 
-    let g = structure_production_factor(phi, params);
-    let r_structure = params.k_structure * c * n * f * g;
+    let (r_structure, i_weight) = if is_surface_turnover(params) {
+        let i = interface_weight(phi);
+        let act = catalyst_activation(c, params.k_c_structure);
+        (
+            params.k_structure_interface * n * f * act * i,
+            i,
+        )
+    } else {
+        let g = structure_production_factor(phi, params);
+        (params.k_structure * c * n * f * g, 0.0)
+    };
 
     let r_structure_decay = params.k_structure_decay * phi.max(0.0);
 
@@ -103,6 +146,7 @@ pub fn compute_reactions_at(
         r_n,
         r_f,
         r_w,
+        interface_weight: i_weight,
     }
 }
 
@@ -163,8 +207,13 @@ pub fn integrated_structure_prefactor(
         if !dish_mask[idx] {
             continue;
         }
-        let g = structure_production_factor(phi[idx], params);
-        b += c[idx] * n[idx] * f[idx] * g;
+        if is_surface_turnover(params) {
+            let act = catalyst_activation(c[idx], params.k_c_structure);
+            b += n[idx] * f[idx] * act * interface_weight(phi[idx]);
+        } else {
+            let g = structure_production_factor(phi[idx], params);
+            b += c[idx] * n[idx] * f[idx] * g;
+        }
     }
     b
 }
@@ -187,4 +236,24 @@ pub fn integrated_rep_prefactor(
         b += c[idx] * n[idx] * f[idx] * h * (1.0 - c[idx] / c_max).max(0.0);
     }
     b
+}
+
+/// Fraction of structural assembly occurring where I(φ) ≥ threshold.
+pub fn interface_assembly_localization_fraction(
+    rates: &[ReactionRates],
+    threshold: f64,
+) -> f64 {
+    let mut total = 0.0;
+    let mut iface = 0.0;
+    for r in rates {
+        total += r.r_structure.max(0.0);
+        if r.interface_weight >= threshold {
+            iface += r.r_structure.max(0.0);
+        }
+    }
+    if total <= 1e-30 {
+        1.0
+    } else {
+        iface / total
+    }
 }

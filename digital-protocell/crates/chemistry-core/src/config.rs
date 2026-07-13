@@ -59,10 +59,31 @@ pub struct SimParams {
     /// When true, use max(0,1-φ) instead of crowding (D-002 control)
     #[serde(default)]
     pub use_legacy_structure_kinetics: bool,
+    /// Immutable equation identifier (`d003-crowding-v1`, `surface_turnover_v1`, …)
+    #[serde(default = "default_equation_version")]
+    pub equation_version: String,
+    /// D-006 interface structural assembly rate
+    #[serde(default = "default_k_structure_interface")]
+    pub k_structure_interface: f64,
+    /// D-006 catalyst half-saturation for structural assembly
+    #[serde(default = "default_k_c_structure")]
+    pub k_c_structure: f64,
 }
 
 fn default_k_phi() -> f64 {
     1.0
+}
+
+fn default_equation_version() -> String {
+    crate::reactions::EQUATION_VERSION_CROWDING.to_string()
+}
+
+fn default_k_structure_interface() -> f64 {
+    0.0
+}
+
+fn default_k_c_structure() -> f64 {
+    0.10
 }
 
 impl Default for SimParams {
@@ -107,6 +128,9 @@ impl Default for SimParams {
             diffusion_enabled: true,
             k_phi: 1.0,
             use_legacy_structure_kinetics: false,
+            equation_version: crate::reactions::EQUATION_VERSION_CROWDING.to_string(),
+            k_structure_interface: 0.0,
+            k_c_structure: 0.10,
         }
     }
 }
@@ -172,6 +196,7 @@ impl SimParams {
         match key {
             "k_rep" => p.k_rep *= factor,
             "k_structure" => p.k_structure *= factor,
+            "k_structure_interface" => p.k_structure_interface *= factor,
             "k_structure_decay" => p.k_structure_decay *= factor,
             "k_catalyst_decay_inside" => p.k_catalyst_decay_inside *= factor,
             "d_c_inside" => p.d_c_inside *= factor,
@@ -181,6 +206,34 @@ impl SimParams {
         }
         p
     }
+}
+
+pub fn surface_turnover_params_from_calibrated_kphi1() -> SimParams {
+    // Machine-extracted final K_phi=1.0 candidate non-structural parameters.
+    let mut p = SimParams::default();
+    p.equation_version = crate::reactions::EQUATION_VERSION_SURFACE.to_string();
+    p.k_rep = 0.014489097664708522;
+    p.k_structure = 0.0; // unused by surface_turnover_v1
+    p.k_structure_decay = 0.025;
+    p.k_structure_interface = 0.0; // set after planar derivation
+    p.k_c_structure = 0.10;
+    p.k_phi = 1.0; // retained unused for provenance; not used by surface kinetics
+    p.k_catalyst_decay_inside = 0.005;
+    p.k_catalyst_decay_outside = 0.05;
+    p.c_max = 1.0;
+    p.d_c_inside = 0.004;
+    p.d_c_outside = 0.04;
+    p.d_n = 0.18;
+    p.d_f = 0.18;
+    p.d_w = 0.25;
+    p.a = 1.0;
+    p.kappa = 1.5;
+    p.mobility_m = 0.1;
+    p.n_reservoir = 1.0;
+    p.f_reservoir = 1.0;
+    p.w_reservoir = 0.0;
+    p.reservoir_rate = 0.5;
+    p
 }
 
 pub fn legacy_d002_params() -> SimParams {

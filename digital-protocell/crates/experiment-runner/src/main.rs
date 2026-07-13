@@ -2,6 +2,7 @@
 
 mod d003;
 mod d004;
+mod d005;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -61,6 +62,10 @@ enum Commands {
         #[command(subcommand)]
         action: D004Commands,
     },
+    D005 {
+        #[command(subcommand)]
+        action: D005Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -87,6 +92,33 @@ enum D004Commands {
     Manifest,
 }
 
+#[derive(Subcommand)]
+enum D005Commands {
+    /// Full D-005 accessible-attractor pipeline
+    Pipeline {
+        #[arg(long, default_value = "250000")]
+        continuation_target: u64,
+        #[arg(long, default_value = "20000")]
+        coarse_steps: u64,
+    },
+    /// Aggregate D-004 cross-state results only
+    Aggregate,
+    /// Continue fresh-state runs from D-004 snapshots
+    Continuations {
+        #[arg(long, default_value = "250000")]
+        target_substeps: u64,
+    },
+    /// Coarse basin map for one k_phi
+    CoarseBasin {
+        #[arg(long, default_value = "1.0")]
+        k_phi: f64,
+        #[arg(long, default_value = "20000")]
+        steps: u64,
+    },
+    /// Finalize flow/nullcline/manifest from completed artifacts (no long sims)
+    Finalize,
+}
+
 const CHECKPOINT_STEPS: [u64; 7] = [0, 25_000, 50_000, 100_000, 150_000, 200_000, 250_000];
 const RATIO_CHECKPOINTS: [u64; 6] = [25_000, 50_000, 100_000, 150_000, 200_000, 250_000];
 
@@ -105,6 +137,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::All { output } => run_all_experiments(&output)?,
         Commands::D003 { action } => run_d003(action)?,
         Commands::D004 { action } => run_d004(action)?,
+        Commands::D005 { action } => run_d005(action)?,
     }
     Ok(())
 }
@@ -192,6 +225,40 @@ fn run_d004(action: D004Commands) -> Result<(), Box<dyn std::error::Error>> {
                 serde_json::to_string_pretty(&m)?,
             )?;
             println!("D-003 manifest written");
+        }
+    }
+    Ok(())
+}
+
+fn run_d005(action: D005Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D005Commands::Pipeline {
+            continuation_target,
+            coarse_steps,
+        } => {
+            let summary = d005::run_full_d005(continuation_target, coarse_steps)?;
+            println!("D-005 pipeline complete: {summary}");
+        }
+        D005Commands::Aggregate => {
+            let agg = d005::aggregate_d004_cross_state()?;
+            println!("D-004 aggregate: {} runs", agg["run_count"]);
+        }
+        D005Commands::Continuations { target_substeps } => {
+            let results = d005::run_all_continuations(target_substeps)?;
+            println!("Continuations complete: {} runs", results.len());
+        }
+        D005Commands::CoarseBasin { k_phi, steps } => {
+            let ids = d005::load_d004_identities()?;
+            let id = ids
+                .into_iter()
+                .find(|i| (i.k_phi - k_phi).abs() < 1e-9)
+                .ok_or("k_phi candidate not found")?;
+            let n = d005::run_coarse_basin(&id, steps)?.len();
+            println!("Coarse basin: {n} points for k_phi={k_phi}");
+        }
+        D005Commands::Finalize => {
+            let summary = d005::finalize_from_artifacts()?;
+            println!("D-005 finalize: {summary}");
         }
     }
     Ok(())

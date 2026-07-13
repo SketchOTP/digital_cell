@@ -58,6 +58,32 @@ pub fn window_qualifies(b: &BalanceDiagnostics) -> bool {
         && b.slope_catalyst.abs() <= 1e-4
 }
 
+/// D-005 stable-window gate (stricter balance band).
+pub fn d005_window_qualifies(b: &BalanceDiagnostics, retention: f64, connected_frac: f64) -> bool {
+    (0.98..=1.02).contains(&b.q_phi)
+        && (0.98..=1.02).contains(&b.q_c)
+        && b.slope_phi.abs() <= 1e-4
+        && b.slope_catalyst.abs() <= 1e-4
+        && retention >= 0.80
+        && connected_frac >= 0.95
+}
+
+pub fn count_consecutive_d005_windows(
+    windows: &[(f64, f64, BalanceDiagnostics, f64, f64)],
+) -> u32 {
+    let mut consecutive = 0u32;
+    let mut max_consecutive = 0u32;
+    for (_, _, b, ret, conn) in windows {
+        if d005_window_qualifies(b, *ret, *conn) {
+            consecutive += 1;
+            max_consecutive = max_consecutive.max(consecutive);
+        } else {
+            consecutive = 0;
+        }
+    }
+    max_consecutive
+}
+
 pub fn analyze_transient(
     windows: &[(f64, f64, BalanceDiagnostics)],
 ) -> TransientAnalysis {

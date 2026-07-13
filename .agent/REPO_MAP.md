@@ -34,5 +34,17 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/chemistry-core/src/time_audit.rs` — simulated-time and dt telemetry
 - `digital-protocell/crates/chemistry-core/src/seed_audit.rs` — initial seed SHA-256 audit
 - `digital-protocell/crates/experiment-runner/src/d003.rs` — D-003 diagnose/calibrate/screen CLI
-- `digital-protocell/experiments/generated/d003/` — D-003 run artifacts
-- `docs/d003_kinetic_diagnosis.md` — D-003 measured failure diagnosis
+- `digital-protocell/crates/chemistry-core/src/candidate_identity.rs` — immutable CandidateIdentity + SHA-256 hashes
+- `digital-protocell/crates/chemistry-core/src/attractor.rs` — attractor/transient classification
+- `digital-protocell/crates/experiment-runner/src/d004.rs` — D-004 provenance/attractor audit CLI
+- `digital-protocell/configs/d004/` — final calibrated candidate TOML configs
+- `digital-protocell/experiments/generated/d004/` — D-004 audit artifacts
+## experiment-runner / D-005
+- `digital-protocell/crates/chemistry-core/src/seed_generator.rs` — analytical fresh-seed recipes
+- `digital-protocell/crates/chemistry-core/src/continuation.rs` — snapshot continuation verification
+- `digital-protocell/crates/chemistry-core/src/basin.rs` — basin outcome and macrostate velocity
+- `digital-protocell/crates/chemistry-core/src/nullcline.rs` — nullcline intersection and Jacobian class
+- `digital-protocell/crates/experiment-runner/src/d005.rs` — D-005 pipeline CLI
+- `digital-protocell/crates/chemistry-core/tests/d005_tests.rs` — D-005 unit tests (22)
+- `digital-protocell/experiments/generated/d005/` — D-005 artifacts
+- `docs/d005_*.md` — D-005 reports

@@ -456,8 +456,11 @@ fn save_run_snapshot(
         "configuration_hash": identity.configuration_hash,
         "state_class": format!("{:?}", state),
         "seed": seed,
+        "substep": substep,
         "equation_version": identity.equation_version,
         "source_commit": identity.source_commit,
+        "structural_mass": total_mass(&sim.grid, &sim.fields.structure),
+        "catalyst_mass": total_mass(&sim.grid, &sim.fields.catalyst),
         "field_hashes": {
             "structure": field_sha256(&sim.fields.structure),
             "catalyst": field_sha256(&sim.fields.catalyst),

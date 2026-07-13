@@ -1,7 +1,6 @@
 //! Immutable candidate identity and canonical hashing (D-004).
 
 use crate::config::{SimParams, GRID_HEIGHT, GRID_WIDTH, DISH_RADIUS, DX, RESERVOIR_WIDTH};
-use crate::reactions::EQUATION_VERSION;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
@@ -72,8 +71,9 @@ pub struct CandidateIdentity {
 }
 
 pub fn canonical_params_bytes(params: &SimParams) -> Vec<u8> {
-    // ponytail: fixed field order for stable hashing; upgrade path: serde_json with sorted keys crate
-    format!(
+    // ponytail: fixed field order for stable hashing; surface fields appended only when active
+    // so historical crowding candidate hashes remain unchanged.
+    let mut s = format!(
         "a={};kappa={};mobility_m={};d_c_inside={};d_c_outside={};d_n={};d_f={};d_w={};\
 k_rep={};k_structure={};k_structure_decay={};k_catalyst_decay_inside={};k_catalyst_decay_outside={};\
 k_waste_decay={};c_max={};n_reservoir={};f_reservoir={};w_reservoir={};reservoir_rate={};\
@@ -120,8 +120,17 @@ reactions_enabled={};phase_separation_enabled={};diffusion_enabled={};k_phi={};u
         params.diffusion_enabled,
         params.k_phi,
         params.use_legacy_structure_kinetics,
-    )
-    .into_bytes()
+    );
+    if params.equation_version != crate::reactions::EQUATION_VERSION_CROWDING
+        || params.k_structure_interface != 0.0
+        || (params.k_c_structure - 0.10).abs() > 1e-15
+    {
+        s.push_str(&format!(
+            ";equation_version={};k_structure_interface={};k_c_structure={}",
+            params.equation_version, params.k_structure_interface, params.k_c_structure
+        ));
+    }
+    s.into_bytes()
 }
 
 pub fn configuration_hash(params: &SimParams, grid: &GridConfiguration) -> String {
@@ -137,7 +146,7 @@ pub fn configuration_hash(params: &SimParams, grid: &GridConfiguration) -> Strin
 }
 
 pub fn candidate_hash(params: &SimParams, grid: &GridConfiguration) -> String {
-    let mut data = EQUATION_VERSION.as_bytes().to_vec();
+    let mut data = params.equation_version.as_bytes().to_vec();
     data.push(0);
     data.extend_from_slice(&canonical_params_bytes(params));
     data.push(0);
@@ -172,9 +181,15 @@ pub fn build_candidate_identity(
     );
     CandidateIdentity {
         candidate_id,
-        equation_version: EQUATION_VERSION.to_string(),
+        equation_version: params.equation_version.clone(),
         k_phi: params.k_phi,
-        k_structure: params.k_structure,
+        k_structure: if params.equation_version
+            == crate::reactions::EQUATION_VERSION_SURFACE
+        {
+            params.k_structure_interface
+        } else {
+            params.k_structure
+        },
         k_rep: params.k_rep,
         initial_condition: InitialConditionConfiguration {
             seed_r0: params.seed_r0,
