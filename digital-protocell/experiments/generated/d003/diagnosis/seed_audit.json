@@ -1,0 +1,112 @@
+[
+  {
+    "seed": 1,
+    "structure_hash": "9e8347673c70adb3",
+    "catalyst_hash": "7b14e87ec4c2499b",
+    "nutrient_hash": "1d4fdfcf107a2ffd",
+    "fuel_hash": "1d4fdfcf107a2ffd",
+    "waste_hash": "e3e3dff820d47a52",
+    "structural_mass": 1857.7087792524983,
+    "catalyst_mass": 636.6038955119709,
+    "nutrient_mass": 24344.0,
+    "fuel_mass": 24344.0,
+    "waste_mass": 0.0,
+    "center_of_mass": [
+      95.49555553578703,
+      95.512438559848
+    ],
+    "radial_symmetry_error": 0.00188839198408823,
+    "max_perturbation": 0.004999651706540094,
+    "min_perturbation": -0.00499863042063875,
+    "mean_perturbation": 0.001022703946367666,
+    "perturbation_variance": 3.5833537356686167e-6
+  },
+  {
+    "seed": 2,
+    "structure_hash": "1b0f7c2a197c897b",
+    "catalyst_hash": "83239fb67daf232d",
+    "nutrient_hash": "1d4fdfcf107a2ffd",
+    "fuel_hash": "1d4fdfcf107a2ffd",
+    "waste_hash": "e3e3dff820d47a52",
+    "structural_mass": 1857.9293695971699,
+    "catalyst_mass": 636.664997568358,
+    "nutrient_mass": 24344.0,
+    "fuel_mass": 24344.0,
+    "waste_mass": 0.0,
+    "center_of_mass": [
+      95.49768521746836,
+      95.51048287147206
+    ],
+    "radial_symmetry_error": 0.00189189265880972,
+    "max_perturbation": 0.004999301991162781,
+    "min_perturbation": -0.004998590518714319,
+    "mean_perturbation": 0.001031765330884162,
+    "perturbation_variance": 3.6028431005641325e-6
+  },
+  {
+    "seed": 3,
+    "structure_hash": "efef5f56efe3f38d",
+    "catalyst_hash": "162107b5eab602dd",
+    "nutrient_hash": "1d4fdfcf107a2ffd",
+    "fuel_hash": "1d4fdfcf107a2ffd",
+    "waste_hash": "e3e3dff820d47a52",
+    "structural_mass": 1858.2191205368165,
+    "catalyst_mass": 636.6489033991672,
+    "nutrient_mass": 24344.0,
+    "fuel_mass": 24344.0,
+    "waste_mass": 0.0,
+    "center_of_mass": [
+      95.50616005524608,
+      95.49972823721201
+    ],
+    "radial_symmetry_error": 0.0018788191634859803,
+    "max_perturbation": 0.00499997899513576,
+    "min_perturbation": -0.004999191444742812,
+    "mean_perturbation": 0.0010436676862757063,
+    "perturbation_variance": 3.611046763066335e-6
+  },
+  {
+    "seed": 4,
+    "structure_hash": "a9f18d7488ea16fa",
+    "catalyst_hash": "318d5413523137b7",
+    "nutrient_hash": "1d4fdfcf107a2ffd",
+    "fuel_hash": "1d4fdfcf107a2ffd",
+    "waste_hash": "e3e3dff820d47a52",
+    "structural_mass": 1857.9538885490822,
+    "catalyst_mass": 636.6534246858687,
+    "nutrient_mass": 24344.0,
+    "fuel_mass": 24344.0,
+    "waste_mass": 0.0,
+    "center_of_mass": [
+      95.49453427065238,
+      95.50343054930526
+    ],
+    "radial_symmetry_error": 0.00187403508942803,
+    "max_perturbation": 0.004999943246933315,
+    "min_perturbation": -0.004999505772583179,
+    "mean_perturbation": 0.0010327725175378322,
+    "perturbation_variance": 3.5712192287252526e-6
+  },
+  {
+    "seed": 5,
+    "structure_hash": "c480e6ccdc76a765",
+    "catalyst_hash": "4f7cfbaa09a36aa8",
+    "nutrient_hash": "1d4fdfcf107a2ffd",
+    "fuel_hash": "1d4fdfcf107a2ffd",
+    "waste_hash": "e3e3dff820d47a52",
+    "structural_mass": 1858.1920762784403,
+    "catalyst_mass": 636.662864675751,
+    "nutrient_mass": 24344.0,
+    "fuel_mass": 24344.0,
+    "waste_mass": 0.0,
+    "center_of_mass": [
+      95.49767065432928,
+      95.48572608120344
+    ],
+    "radial_symmetry_error": 0.001841371900737752,
+    "max_perturbation": 0.004999470493343715,
+    "min_perturbation": -0.004996712870044662,
+    "mean_perturbation": 0.0010425567653760271,
+    "perturbation_variance": 3.5654306951591967e-6
+  }
+]

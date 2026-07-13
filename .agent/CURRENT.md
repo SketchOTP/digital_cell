@@ -1,23 +1,23 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260712-phase1-scientific-closure
-- Project directive: D-002
-- Goal: Phase 1 long-horizon scientific closure
-- Status: partial — 250k×5 baselines complete; interventions pending
-- Acceptance: partial (0/5 seed pass; accounting OK; no AUTOPOIETIC pass)
-- Touched files: digital-protocell/**, docs/phase1_acceptance_report.md
-- Next action: 250k intervention suite OR parameter search for turnover≥1.0
+- ID: D-20260713-d004-candidate-provenance-attractor-audit
+- Project directive: D-004
+- Goal: Audit D-003 candidate provenance and active-attractor pipeline validity
+- Status: in progress — handoff defect confirmed; cross-state runs pending
+- Acceptance: D-004 conclusion + D003_RESULT_UNRESOLVED_PENDING_PIPELINE_AUDIT
+- Touched files: chemistry-core/{candidate_identity,attractor,ledger_reconcile,radius_balance}, experiment-runner/{d003,d004}.rs, configs/d004/, docs/d004_*.md
+- Next action: complete cross-state 100k runs; finalize docs
 
 ## Repo facts needed now
-- Conclusion: PHASE1_SELF_MAINTENANCE_PARTIAL
-- Best seed turnover @250k: struct_repl 0.659, synth 0.101 (seeds 2–5)
-- Seed 1 retained more mass (1209) but lower repl ratio (0.395)
+- Stage B screened analytical K_phi=1.0 estimate (k_s≈0.092), not calibrated final (k_s≈0.141)
+- Calibration iter_05 Qφ≈0.983 reproducible; short screen Qφ≈0.65 on wrong candidate
+- Overall Phase 1: PHASE1_SELF_MAINTENANCE_PARTIAL (unchanged)
 
 ## Last validation
-- Command: cargo test -p chemistry-core --release --test validation_tests
-- Result: 17/17 PASS
+- Command: cargo test -p chemistry-core --release --test d004_tests
+- Result: 19/19 PASS
 
 ## Open blockers
-- Long-horizon interventions not run
-- Mimir: 504 timeout
+- Full cross-state 100k×27 runs in progress
+- D-003_FAIL invalidated pending corrected Stage B

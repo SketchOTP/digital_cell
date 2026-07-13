@@ -1,0 +1,12 @@
+{
+  "iteration": 2,
+  "k_rep": 0.016725808122096505,
+  "k_structure": 0.09727620355696237,
+  "passes": false,
+  "q_c": 1.163189224990195,
+  "q_phi": 0.8922172888986183,
+  "retention_limited": false,
+  "slope_catalyst": 0.0014182771485914333,
+  "slope_phi": -0.0026464012302346543,
+  "transport_limited": false
+}

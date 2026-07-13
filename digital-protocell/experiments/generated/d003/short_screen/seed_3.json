@@ -1,0 +1,16 @@
+{
+  "classification": "Transient",
+  "pass": false,
+  "q_c": 1.7508051045074384,
+  "q_phi": 0.6512730727274236,
+  "retention": 0.9223543011777052,
+  "seed": 3,
+  "sim_time": 3.124999999999423,
+  "substeps": 20000,
+  "turnover_ratios": {
+    "catalyst_replacement": 0.0,
+    "catalyst_reproduction": 0.0,
+    "structural_replacement": 0.0,
+    "structural_synthesis": 0.0
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "accounting": {
+    "cumulative": {
+      "catalyst_decay": 161.69573581572848,
+      "catalyst_reproduction": 71.61031227249822,
+      "clamp_corrections": -96.14498596603627,
+      "cumulative_processed_mass": 12787341713.958366,
+      "cumulative_unexplained_residual": 0.00006345534978059904,
+      "fuel_consumed_r1": 71.61031227249822,
+      "fuel_consumed_r2": 84.4982932369857,
+      "fuel_supplied_reservoir": 0.005434280523331836,
+      "nutrient_consumed_r1": 71.61031227249822,
+      "nutrient_consumed_r2": 84.4982932369857,
+      "nutrient_supplied_reservoir": 0.005434280523331836,
+      "rejected_steps": 5,
+      "structural_decay": 733.101790685419,
+      "structural_synthesis": 84.4982932369857,
+      "waste_from_decay": 894.7975265011405,
+      "waste_from_r1": 71.61031227249822,
+      "waste_from_r2": 84.4982932369857,
+      "waste_removed_reservoir": 1.3575012575042877
+    },
+    "last_step": {
+      "catalyst": {
+        "accounting_residual": 1.3642420526593924e-12,
+        "diffusion_delta": 0.000021300602068733037,
+        "mass_after": 550.0816912038704,
+        "mass_before": 550.0823583600537,
+        "numerical_correction_delta": 1.280684500670759e-7,
+        "reaction_delta": -0.0006885848552078632,
+        "reservoir_delta": 0.0
+      },
+      "fuel": {
+        "accounting_residual": 1.4551915228366852e-10,
+        "diffusion_delta": 5.515302221496401e-19,
+        "mass_after": 24187.896828778434,
+        "mass_before": 24187.897465012324,
+        "numerical_correction_delta": 0.0,
+        "reaction_delta": -0.000636255084058655,
+        "reservoir_delta": 2.104934537783265e-8
+      },
+      "nutrient": {
+        "accounting_residual": 1.4551915228366852e-10,
+        "diffusion_delta": 5.515302221496401e-19,
+        "mass_after": 24187.896828778434,
+        "mass_before": 24187.897465012324,
+        "numerical_correction_delta": 0.0,
+        "reaction_delta": -0.000636255084058655,
+        "reservoir_delta": 2.104934537783265e-8
+      },
+      "structure": {
+        "accounting_residual": 2.2737367544323206e-13,
+        "diffusion_delta": -1.3106366613173016e-20,
+        "mass_after": 1209.2449388144573,
+        "mass_before": 1209.246861856789,
+        "numerical_correction_delta": 0.0,
+        "reaction_delta": -0.0019230423319396338,
+        "reservoir_delta": 0.0
+      },
+      "waste": {
+        "accounting_residual": 1.8417267710901797e-11,
+        "diffusion_delta": 2.4464971677855376e-20,
+        "mass_after": 951.0474012232237,
+        "mass_before": 951.0442656816414,
+        "numerical_correction_delta": 0.0,
+        "reaction_delta": 0.0031411340270701285,
+        "reservoir_delta": -5.592463139691972e-6
+      }
+    },
+    "max_step_residual": 1.4091483535594307e-9,
+    "steps_outside_tolerance": 0,
+    "steps_within_tolerance": 250000
+  },
+  "accounting_within_tolerance": true,
+  "arch": "x86_64",
+  "catalyst_mass": 550.0816912038704,
+  "classification": "Transient",
+  "commit_hash": "95dbfed592b63102510b097cbb22b59326fbbda2",
+  "consecutive_viable_windows": 0,
+  "dirty_working_tree": true,
+  "ended_at": 1783902954,
+  "experiment": "baseline_seed_1",
+  "initial_catalyst_mass": 636.6038955119709,
+  "initial_structural_mass": 1857.7087792524983,
+  "interventions": [],
+  "min_dt": 0.000078125,
+  "os": "linux",
+  "ratio_checkpoints": [
+    {
+      "ratios": {
+        "catalyst_replacement": 0.0170882917786185,
+        "catalyst_reproduction": 0.014160813130090552,
+        "structural_replacement": 0.04776066983381516,
+        "structural_synthesis": 0.0023788354056907515
+      },
+      "substep": 25000
+    },
+    {
+      "ratios": {
+        "catalyst_replacement": 0.035380278074576,
+        "catalyst_reproduction": 0.02783447045834578,
+        "structural_replacement": 0.09337528606690434,
+        "structural_synthesis": 0.005434735886803659
+      },
+      "substep": 50000
+    },
+    {
+      "ratios": {
+        "catalyst_replacement": 0.07745910708060395,
+        "catalyst_reproduction": 0.053322581207827624,
+        "structural_replacement": 0.17868761602225192,
+        "structural_synthesis": 0.01328934408868558
+      },
+      "substep": 100000
+    },
+    {
+      "ratios": {
+        "catalyst_replacement": 0.1282276798919427,
+        "catalyst_reproduction": 0.07598743474452638,
+        "structural_replacement": 0.2568844066466239,
+        "structural_synthesis": 0.022972903194563816
+      },
+      "substep": 150000
+    },
+    {
+      "ratios": {
+        "catalyst_replacement": 0.18760075370261173,
+        "catalyst_reproduction": 0.09571518047447918,
+        "structural_replacement": 0.3287699573524088,
+        "structural_synthesis": 0.03389984073378141
+      },
+      "substep": 200000
+    },
+    {
+      "ratios": {
+        "catalyst_replacement": 0.25425176211326955,
+        "catalyst_reproduction": 0.11260037695225313,
+        "structural_replacement": 0.3950211502424486,
+        "structural_synthesis": 0.04553078338671089
+      },
+      "substep": 250000
+    }
+  ],
+  "rejection_count": 5,
+  "rustc_version": "rustc 1.95.0 (59807616e 2026-04-14)",
+  "seed": 1,
+  "started_at": 1783897462,
+  "structural_mass": 1209.2449388144573,
+  "substeps": 250000,
+  "timing": {
+    "diagnostics_seconds": 947.5683507540015,
+    "diffusion_seconds": 908.4391856439975,
+    "phase_field_seconds": 1038.0874910959933,
+    "reactions_seconds": 281.7104644770095,
+    "serialization_seconds": 0.0,
+    "substeps_per_second": 0.0,
+    "wall_seconds": 0.0
+  },
+  "turnover": {
+    "catalyst_decay": 161.85766220209032,
+    "catalyst_reproduction": 71.68183860392068,
+    "fuel_consumption": 156.2647746276571,
+    "nutrient_consumption": 156.2647746276571,
+    "structural_decay": 733.8342587958169,
+    "structural_synthesis": 84.58293602373662,
+    "waste_production": 953.3565931229473
+  },
+  "turnover_ratios": {
+    "catalyst_replacement": 0.25425176211326955,
+    "catalyst_reproduction": 0.11260037695225313,
+    "structural_replacement": 0.3950211502424486,
+    "structural_synthesis": 0.04553078338671089
+  },
+  "version": "0.1.0",
+  "wall_seconds": 5492.711572523
+}

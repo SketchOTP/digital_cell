@@ -1,0 +1,61 @@
+{
+  "analytical_candidate_hash": "3b6f59beedf1b90a318589be2aed73b572b531b3d7fd2d4882374c0e7897e018",
+  "defect_code": "D004_PIPELINE_CANDIDATE_HANDOFF_DEFECT",
+  "final_calibrated_hashes": [
+    [
+      "kphi_0.5",
+      "9f3fa9cc32b25288375ac40e15411c1e0b8f0d0e6ac61d280296f3e60584300a"
+    ],
+    [
+      "kphi_1",
+      "c37d597b0f8351ea5e4b8f385e63bca9fed5d72cb0e2f22a395bb21d32c4e184"
+    ],
+    [
+      "kphi_2",
+      "7cc98b12fca08c82294ef1ac7dc3e7b2402d7f18ea57cf4f6cae352f4f60e450"
+    ]
+  ],
+  "pipeline_candidate_handoff_defect": true,
+  "seed_reports": [
+    {
+      "K_phi": 1.0,
+      "candidate_hash": "3b6f59beedf1b90a318589be2aed73b572b531b3d7fd2d4882374c0e7897e018",
+      "configuration_hash": null,
+      "diagnostic_window": "0..20000 substeps",
+      "initial_state": "fresh_seed",
+      "k_rep": 0.026147379777114742,
+      "k_structure": 0.09241125380438656,
+      "match_class": "MatchAnalyticalInitialEstimate",
+      "q_c": 1.811918101868626,
+      "q_phi": 0.6627396426087896,
+      "seed": 1
+    },
+    {
+      "K_phi": 1.0,
+      "candidate_hash": "3b6f59beedf1b90a318589be2aed73b572b531b3d7fd2d4882374c0e7897e018",
+      "configuration_hash": null,
+      "diagnostic_window": "0..20000 substeps",
+      "initial_state": "fresh_seed",
+      "k_rep": 0.026147379777114742,
+      "k_structure": 0.09241125380438656,
+      "match_class": "MatchAnalyticalInitialEstimate",
+      "q_c": 1.7513078480614106,
+      "q_phi": 0.6513694158071565,
+      "seed": 2
+    },
+    {
+      "K_phi": 1.0,
+      "candidate_hash": "3b6f59beedf1b90a318589be2aed73b572b531b3d7fd2d4882374c0e7897e018",
+      "configuration_hash": null,
+      "diagnostic_window": "0..20000 substeps",
+      "initial_state": "fresh_seed",
+      "k_rep": 0.026147379777114742,
+      "k_structure": 0.09241125380438656,
+      "match_class": "MatchAnalyticalInitialEstimate",
+      "q_c": 1.7508051045074384,
+      "q_phi": 0.6512730727274236,
+      "seed": 3
+    }
+  ],
+  "stage_b_used_analytical_estimate": true
+}

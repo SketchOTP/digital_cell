@@ -1,5 +1,8 @@
 //! Headless experiment runner for Phase 1 scientific acceptance.
 
+mod d003;
+mod d004;
+
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
 use std::collections::HashMap;
@@ -50,6 +53,38 @@ enum Commands {
         #[arg(long, default_value = "experiments/generated")]
         output: PathBuf,
     },
+    D003 {
+        #[command(subcommand)]
+        action: D003Commands,
+    },
+    D004 {
+        #[command(subcommand)]
+        action: D004Commands,
+    },
+}
+
+#[derive(Subcommand)]
+enum D003Commands {
+    Diagnose,
+    Calibrate {
+        #[arg(long, default_value = "1.0")]
+        k_phi: f64,
+    },
+    Screen {
+        #[arg(long, default_value = "20000")]
+        steps: u64,
+    },
+    Pipeline,
+}
+
+#[derive(Subcommand)]
+enum D004Commands {
+    /// Full D-004 provenance and attractor audit
+    Audit,
+    /// Extract final calibrated configs to configs/d004/
+    ExtractConfigs,
+    /// SHA-256 manifest for D-003 artifacts
+    Manifest,
 }
 
 const CHECKPOINT_STEPS: [u64; 7] = [0, 25_000, 50_000, 100_000, 150_000, 200_000, 250_000];
@@ -68,6 +103,96 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::Acceptance { config, output } => run_full_acceptance(&config, &output)?,
         Commands::Sweep { config, output } => run_sweep(&config, &output)?,
         Commands::All { output } => run_all_experiments(&output)?,
+        Commands::D003 { action } => run_d003(action)?,
+        Commands::D004 { action } => run_d004(action)?,
+    }
+    Ok(())
+}
+
+fn run_d003(action: D003Commands) -> Result<(), Box<dyn std::error::Error>> {
+    let root = d003::d003_output_root();
+    match action {
+        D003Commands::Diagnose => {
+            d003::run_diagnosis(&root.join("diagnosis"))?;
+            for k in [0.5, 1.0, 2.0] {
+                let est = d003::analytical_estimates_from_d002(k);
+                fs::create_dir_all(root.join("analytical_estimates"))?;
+                fs::write(
+                    root.join(format!("analytical_estimates/kphi_{k}.json")),
+                    serde_json::to_string_pretty(&est)?,
+                )?;
+            }
+            println!("D-003 diagnosis -> {}", root.join("diagnosis").display());
+        }
+        D003Commands::Calibrate { k_phi } => {
+            let out = root.join(format!("calibration/kphi_{}", k_phi.to_string().replace('.', "_")));
+            let result = d003::calibrate_kphi(k_phi, &out, 20_000)?;
+            println!("Calibration k_phi={k_phi}: {result}");
+        }
+        D003Commands::Screen { steps } => {
+            let params = d003::load_final_calibrated_params(1.0)
+                .unwrap_or_else(|_| d003::params_from_analytical_estimate(1.0));
+            let identity = build_candidate_identity(
+                params,
+                &git_commit_hash(),
+                Some("kphi_1.0"),
+                Some(5),
+                "final calibrated K_phi=1.0 candidate",
+                None,
+                None,
+            );
+            let results = d003::short_screen(&identity, &[1, 2, 3], steps, &root.join("short_screen"))?;
+            println!("Short screen: {results:?}");
+        }
+        D003Commands::Pipeline => {
+            d003::run_diagnosis(&root.join("diagnosis"))?;
+            let commit = git_commit_hash();
+            for k in [0.5, 1.0, 2.0] {
+                let est = d003::analytical_estimates_from_d002(k);
+                fs::create_dir_all(root.join("analytical_estimates"))?;
+                fs::write(
+                    root.join(format!("analytical_estimates/kphi_{k}.json")),
+                    serde_json::to_string_pretty(&est)?,
+                )?;
+                d003::calibrate_kphi(k, &root.join(format!("calibration/kphi_{k}")), 20_000)?;
+            }
+            let params = d003::load_final_calibrated_params(1.0)?;
+            let identity = build_candidate_identity(
+                params,
+                &commit,
+                Some("kphi_1.0"),
+                Some(5),
+                "final calibrated K_phi=1.0 candidate for Stage B",
+                None,
+                None,
+            );
+            d003::short_screen(&identity, &[1, 2, 3], 20_000, &root.join("short_screen"))?;
+            println!("D-003 pipeline complete -> {}", root.display());
+        }
+    }
+    Ok(())
+}
+
+fn run_d004(action: D004Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D004Commands::Audit => {
+            let summary = d004::run_full_audit()?;
+            println!("D-004 audit complete: {summary}");
+        }
+        D004Commands::ExtractConfigs => {
+            let ids = d004::extract_final_configs()?;
+            for id in &ids {
+                println!("{} hash={}", id.candidate_id, id.candidate_hash);
+            }
+        }
+        D004Commands::Manifest => {
+            let m = d004::sha256_manifest(&d004::d003_root())?;
+            fs::write(
+                d004::d003_root().join("manifest.json"),
+                serde_json::to_string_pretty(&m)?,
+            )?;
+            println!("D-003 manifest written");
+        }
     }
     Ok(())
 }

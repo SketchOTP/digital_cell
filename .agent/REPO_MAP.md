@@ -30,4 +30,9 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/godot-bridge/` — Godot GDExtension microscope shell
 - `digital-protocell/godot/` — Godot 4 project (display only, no chemistry in GDScript)
 - `digital-protocell/configs/` — baseline, starvation, sweep TOML
-- `digital-protocell/docs/` — scientific basis, model, phase1 report
+- `digital-protocell/crates/chemistry-core/src/bottleneck.rs` — D-003 balance and bottleneck diagnostics
+- `digital-protocell/crates/chemistry-core/src/time_audit.rs` — simulated-time and dt telemetry
+- `digital-protocell/crates/chemistry-core/src/seed_audit.rs` — initial seed SHA-256 audit
+- `digital-protocell/crates/experiment-runner/src/d003.rs` — D-003 diagnose/calibrate/screen CLI
+- `digital-protocell/experiments/generated/d003/` — D-003 run artifacts
+- `docs/d003_kinetic_diagnosis.md` — D-003 measured failure diagnosis

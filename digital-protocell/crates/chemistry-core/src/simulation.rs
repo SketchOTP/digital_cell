@@ -4,9 +4,13 @@ use crate::accounting::{
     build_field_ledger, field_mass, sum_clamp_correction, AccountingState, ReactionStepTotals,
     StepAccounting,
 };
-use crate::config::{ExperimentConfig, InterventionSpec, MAX_DT, SimParams};
+use crate::config::{ExperimentConfig, InterventionSpec, MAX_DT, NEG_CLAMP, SimParams};
 use crate::diagnostics::{CellDetector, DiagnosticsSnapshot};
-use crate::fields::{clamp_small_negative, initialize_seed, validate_field, FieldBuffers};
+use crate::fields::{
+    clamp_small_negative, initialize_seed, validate_structure_field, validate_soluble_field,
+    FieldBuffers,
+};
+use crate::time_audit::DtTelemetry;
 use crate::grid::Grid;
 use crate::interventions::apply_intervention;
 use crate::operators::{diffuse_constant, diffuse_variable, laplacian};
@@ -46,7 +50,9 @@ pub struct Simulation {
     pub observer_enabled: bool,
     pub morphology_sample_interval: u64,
     pub timing: TimingTelemetry,
+    pub dt_telemetry: DtTelemetry,
     run_start: Option<Instant>,
+    prev_attempt_dt: f64,
 }
 
 impl Simulation {
@@ -75,7 +81,9 @@ impl Simulation {
             observer_enabled: true,
             morphology_sample_interval: 100,
             timing: TimingTelemetry::default(),
+            dt_telemetry: DtTelemetry::default(),
             run_start: None,
+            prev_attempt_dt: MAX_DT,
         }
     }
 
@@ -123,10 +131,15 @@ impl Simulation {
     pub fn step(&mut self) -> bool {
         let mut attempt_dt = self.dt;
         let max_attempts = 20;
+        let dt_before_attempt = attempt_dt;
 
         for _ in 0..max_attempts {
             match self.try_substep(attempt_dt) {
                 SubstepResult::Ok => {
+                    self.dt_telemetry.record_accept(attempt_dt);
+                    self.dt_telemetry
+                        .record_recovery(self.prev_attempt_dt, attempt_dt);
+                    self.prev_attempt_dt = attempt_dt;
                     self.sim_time += attempt_dt;
                     self.substep += 1;
                     self.dt = attempt_dt.min(MAX_DT);
@@ -135,6 +148,7 @@ impl Simulation {
                 SubstepResult::Reject => {
                     self.rejection_count += 1;
                     self.accounting.cumulative.rejected_steps += 1;
+                    self.dt_telemetry.record_reduction();
                     attempt_dt *= 0.5;
                     self.min_dt_seen = self.min_dt_seen.min(attempt_dt);
                     if attempt_dt < 1e-8 {
@@ -143,6 +157,7 @@ impl Simulation {
                 }
             }
         }
+        let _ = dt_before_attempt;
         false
     }
 
@@ -314,8 +329,23 @@ impl Simulation {
         let pre_clamp_f = field_mass(grid, &self.fields.fuel_next);
         let pre_clamp_w = field_mass(grid, &self.fields.waste_next);
 
+        for (idx, v) in self.fields.structure_next.iter_mut().enumerate() {
+            if !grid.in_dish(idx) {
+                continue;
+            }
+            if !v.is_finite() {
+                return SubstepResult::Reject;
+            }
+            // ponytail: defer PHI_HARD_MAX to validate_structure_field so dt can adapt
+            if *v < -1e-6 {
+                return SubstepResult::Reject;
+            }
+            if *v < 0.0 && *v >= NEG_CLAMP {
+                *v = 0.0;
+            }
+        }
+
         for field in [
-            &mut self.fields.structure_next,
             &mut self.fields.catalyst_next,
             &mut self.fields.nutrient_next,
             &mut self.fields.fuel_next,
@@ -338,11 +368,11 @@ impl Simulation {
             }
         }
 
-        if validate_field(&self.fields.structure_next, &grid.dish_mask).is_err()
-            || validate_field(&self.fields.catalyst_next, &grid.dish_mask).is_err()
-            || validate_field(&self.fields.nutrient_next, &grid.dish_mask).is_err()
-            || validate_field(&self.fields.fuel_next, &grid.dish_mask).is_err()
-            || validate_field(&self.fields.waste_next, &grid.dish_mask).is_err()
+        if validate_structure_field(&self.fields.structure_next, &grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.catalyst_next, &grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.nutrient_next, &grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.fuel_next, &grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.waste_next, &grid.dish_mask).is_err()
         {
             return SubstepResult::Reject;
         }

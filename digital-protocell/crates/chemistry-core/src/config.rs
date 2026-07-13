@@ -9,6 +9,9 @@ pub const DISH_RADIUS: f64 = 88.0;
 pub const RESERVOIR_WIDTH: f64 = 5.0;
 pub const MAX_DT: f64 = 0.0025;
 pub const NEG_CLAMP: f64 = -1e-6;
+pub const PHI_HARD_MIN: f64 = -1e-4;
+pub const PHI_HARD_MAX: f64 = 1.50;
+pub const PHI_SOFT_MAX: f64 = 1.25;
 pub const CONC_SAFETY_LIMIT: f64 = 10.0;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -50,6 +53,16 @@ pub struct SimParams {
     pub reactions_enabled: bool,
     pub phase_separation_enabled: bool,
     pub diffusion_enabled: bool,
+    /// D-003 crowding parameter K_phi
+    #[serde(default = "default_k_phi")]
+    pub k_phi: f64,
+    /// When true, use max(0,1-φ) instead of crowding (D-002 control)
+    #[serde(default)]
+    pub use_legacy_structure_kinetics: bool,
+}
+
+fn default_k_phi() -> f64 {
+    1.0
 }
 
 impl Default for SimParams {
@@ -92,6 +105,8 @@ impl Default for SimParams {
             reactions_enabled: true,
             phase_separation_enabled: true,
             diffusion_enabled: true,
+            k_phi: 1.0,
+            use_legacy_structure_kinetics: false,
         }
     }
 }
@@ -168,8 +183,18 @@ impl SimParams {
     }
 }
 
-pub fn baseline_params() -> SimParams {
+pub fn legacy_d002_params() -> SimParams {
+    let mut p = SimParams::default();
+    p.use_legacy_structure_kinetics = true;
+    p
+}
+
+pub fn d003_params() -> SimParams {
     SimParams::default()
+}
+
+pub fn baseline_params() -> SimParams {
+    d003_params()
 }
 
 pub fn passive_phase_params() -> SimParams {

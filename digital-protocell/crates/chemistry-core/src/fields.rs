@@ -1,6 +1,6 @@
 //! Flat scalar field buffers with double buffering.
 
-use crate::config::{CONC_SAFETY_LIMIT, GRID_HEIGHT, GRID_WIDTH, NEG_CLAMP};
+use crate::config::{CONC_SAFETY_LIMIT, NEG_CLAMP, PHI_HARD_MAX, PHI_HARD_MIN};
 use crate::grid::Grid;
 
 #[derive(Debug, Clone)]
@@ -80,7 +80,25 @@ pub fn clamp_small_negative(v: f64) -> f64 {
     }
 }
 
-pub fn validate_field(values: &[f64], dish_mask: &[bool]) -> Result<(), String> {
+pub fn validate_structure_field(values: &[f64], dish_mask: &[bool]) -> Result<(), String> {
+    for (idx, &v) in values.iter().enumerate() {
+        if !dish_mask[idx] {
+            continue;
+        }
+        if !v.is_finite() {
+            return Err(format!("non-finite structure at {idx}: {v}"));
+        }
+        if v < PHI_HARD_MIN {
+            return Err(format!("structure below hard min at {idx}: {v}"));
+        }
+        if v > PHI_HARD_MAX {
+            return Err(format!("structure above hard max at {idx}: {v}"));
+        }
+    }
+    Ok(())
+}
+
+pub fn validate_soluble_field(values: &[f64], dish_mask: &[bool]) -> Result<(), String> {
     for (idx, &v) in values.iter().enumerate() {
         if !dish_mask[idx] {
             continue;
@@ -96,6 +114,51 @@ pub fn validate_field(values: &[f64], dish_mask: &[bool]) -> Result<(), String> 
         }
     }
     Ok(())
+}
+
+pub fn validate_field(values: &[f64], dish_mask: &[bool]) -> Result<(), String> {
+    validate_soluble_field(values, dish_mask)
+}
+
+pub fn field_sha256(field: &[f64]) -> String {
+    use std::collections::hash_map::DefaultHasher;
+    use std::hash::{Hash, Hasher};
+    let mut hasher = DefaultHasher::new();
+    for v in field {
+        v.to_bits().hash(&mut hasher);
+    }
+    format!("{:016x}", hasher.finish())
+}
+
+pub fn structure_field_stats(values: &[f64], dish_mask: &[bool]) -> (f64, f64, f64, f64) {
+    let mut min_v = f64::INFINITY;
+    let mut max_v = f64::NEG_INFINITY;
+    let mut above_one = 0u64;
+    let mut below_zero = 0u64;
+    let mut n = 0u64;
+    for (idx, &v) in values.iter().enumerate() {
+        if !dish_mask[idx] {
+            continue;
+        }
+        n += 1;
+        min_v = min_v.min(v);
+        max_v = max_v.max(v);
+        if v > 1.0 {
+            above_one += 1;
+        }
+        if v < 0.0 {
+            below_zero += 1;
+        }
+    }
+    if n == 0 {
+        return (0.0, 0.0, 0.0, 0.0);
+    }
+    (
+        min_v,
+        max_v,
+        above_one as f64 / n as f64,
+        below_zero as f64 / n as f64,
+    )
 }
 
 /// Deterministic xorshift64 PRNG for seed noise.
