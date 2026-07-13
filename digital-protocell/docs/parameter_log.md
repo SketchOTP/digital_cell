@@ -1,19 +1,21 @@
 # Parameter Log
 
-## Baseline (initial)
+## Baseline (D-002 frozen candidate)
 
-See `crates/chemistry-core/src/config.rs` `SimParams::default()`.
+Frozen in `configs/phase1_candidate.toml` for acceptance runs (immutable during first acceptance).
 
-### Tuned from directive defaults (2026-07-12)
+Commit savepoint: `2123435` (tag `D-001-baseline`).
 
-| Parameter | Directive | Final | Reason |
-|-----------|-----------|-------|--------|
-| k_structure | 0.035 | 0.030 | balance synthesis/decay |
-| k_structure_decay | 0.006 | 0.025 | measurable turnover |
-| k_catalyst_decay_inside | 0.0008 | 0.005 | knockout/starvation response |
-| k_catalyst_decay_outside | 0.025 | 0.050 | catalyst escape penalty |
+Key tuned values (unchanged from D-001):
 
-Documented in `docs/phase1_report.md` deviations section.
+| Parameter | Value |
+|-----------|-------|
+| k_structure | 0.030 |
+| k_structure_decay | 0.025 |
+| k_catalyst_decay_inside | 0.005 |
+| k_catalyst_decay_outside | 0.050 |
+
+Grid: 192×192, dish radius 88, seed r0 24, max dt 0.0025, seed 1.
 
 
 ## Sweep

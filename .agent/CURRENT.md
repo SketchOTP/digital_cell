@@ -4,20 +4,20 @@
 - ID: D-20260712-phase1-scientific-closure
 - Project directive: D-002
 - Goal: Phase 1 long-horizon scientific closure
-- Status: in_progress — 250k baseline seed 1 running
-- Acceptance: accounting+validation tests, 250k acceptance runs, manifest, approved conclusion
-- Touched files: digital-protocell/crates/chemistry-core/**, experiment-runner/**, configs/phase1_candidate.toml, docs/**
-- Next action: await baseline_seed_1; run replicates + interventions; finalize report
+- Status: partial — 250k×5 baselines complete; interventions pending
+- Acceptance: partial (0/5 seed pass; accounting OK; no AUTOPOIETIC pass)
+- Touched files: digital-protocell/**, docs/phase1_acceptance_report.md
+- Next action: 250k intervention suite OR parameter search for turnover≥1.0
 
 ## Repo facts needed now
-- D-001 savepoint: tag D-001-baseline commit 2123435
-- phase1_candidate.toml frozen tuned params (k_structure=0.030 etc.)
-- ~20 ms/substep release; 250k ≈ 83 min per seed
+- Conclusion: PHASE1_SELF_MAINTENANCE_PARTIAL
+- Best seed turnover @250k: struct_repl 0.659, synth 0.101 (seeds 2–5)
+- Seed 1 retained more mass (1209) but lower repl ratio (0.395)
 
 ## Last validation
-- Command: cargo test -p chemistry-core --release --test validation_tests stoichiometric
-- Result: 4/4 PASS
+- Command: cargo test -p chemistry-core --release --test validation_tests
+- Result: 17/17 PASS
 
 ## Open blockers
-- Full 250k×5 seed + intervention suite not complete
-- Mimir memory_record_outcome: 504 gateway timeout
+- Long-horizon interventions not run
+- Mimir: 504 timeout

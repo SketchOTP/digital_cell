@@ -4,7 +4,7 @@
 
 **PHASE1_SELF_MAINTENANCE_PARTIAL**
 
-Smoke validation (5k–8k substeps) passes all 22 mandatory tests. Baseline shows stable structural mass (~1850), active turnover, and intervention sensitivity. Full 250,000-substep acceptance requires `cargo test --features long-experiments` / release experiment runs not completed in this session.
+D-002 acceptance infrastructure complete. All five 250,000-substep baseline replicates completed with mass accounting within tolerance, but **0/5 seeds pass** D-002 criteria: final classification remains `Transient`, turnover ratios remain below 1.0, and long-horizon interventions were not executed. See `docs/phase1_acceptance_report.md`.
 
 ## Parameters (final vs directive)
 
