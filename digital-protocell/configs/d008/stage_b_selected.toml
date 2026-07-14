@@ -1,0 +1,14 @@
+# Selected by the governed Stage B run from source commit 31fd993123e16ca64474f3d1176f3a8d74933eb2.
+equation_version = "membrane_metabolism_v1"
+d_a = 0.040
+beta_c = 4.6
+beta_a = 4.6
+beta_n = 1.2
+beta_f = 1.2
+beta_w = 0.2
+m_max = 1.0
+d_m = 0.001
+k_membrane_decay = 0.002
+k_membrane_detach = 0.020
+k_c_membrane = 0.10
+k_membrane = 0.19748231883326484

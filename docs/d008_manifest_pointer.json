@@ -1,6 +1,6 @@
 {
   "manifest_path": "digital-protocell/experiments/generated/d008/manifest.json",
-  "manifest_sha256": "17a8bbd6ea0c1e1f79d8cbe1c28707460d39fb7af026ea41aeec4bb2cceea5f0",
-  "latest_stage": "stage_a_transport",
-  "source_commit": "9236be1bf1208bcc7b709c93b8855dd48e18c55e"
+  "manifest_sha256": "3ec24bc002e96b37843c4006c7f44f017f8a45bf73305ae9013442c945c22eda",
+  "latest_stage": "stage_b_localization",
+  "source_commit": "31fd993123e16ca64474f3d1176f3a8d74933eb2"
 }
