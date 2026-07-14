@@ -1,22 +1,22 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260713-d006c-surface-turnover-completion
-- Project directive: D-006C
-- Goal: Finish Stage D without chemistry changes; decide restoring gate; progressive E→F if pass
-- Status: done — Stage D 180/180; gate FAIL; scientific `D006_NO_RESTORING_RADIUS`; E–F not run
-- Acceptance: met (Stage D complete + conclusion; E/F correctly skipped)
-- Touched files: stage_d_gate.rs, d006.rs, d006_tests, scripts/d006_*, docs/d006_*
-- Next action: Phase 1 remaining closure experiments under later directive (not chemistry redesign)
+- ID: D-20260714-d007-joint-kinetic-nullclines
+- Project directive: D-007
+- Goal: Joint structural–catalyst fixed-point search within bounded rates
+- Status: done — structural gate FAIL; scientific `D007_NO_STRUCTURAL_NULLCLINE`; catalyst/joint not run
+- Acceptance: met (one conclusion; strict schema; D-006 preserved; §10 stop honored)
+- Touched files: d007_analysis.rs, d007.rs, d007_tests, scripts/d007_*, configs/d007/, docs/d007_*, experiments/generated/d007/
+- Next action: Next directive — transport boundary or metabolic intermediate (not another rate sweep)
 
 ## Repo facts needed now
-- Stage D: all survivors grow (median v_R>0); v_C_inside<0; 0 nullcline intersections
-- Artifacts external: digital-protocell/experiments/generated/d006/ (gitignored)
-- Prescribed restoring did not survive coupling
+- D007_NO_STRUCTURAL_NULLCLINE (0.50–0.80× all fail restoring gate; 0.80× ALL_GROW)
+- Reference: config hash matches D-006 1.0×; 10k transient vs 50k Stage-D direction
+- Phase1: PHASE1_SELF_MAINTENANCE_PARTIAL
 
 ## Last validation
-- Command: cargo test -p chemistry-core --release --test integration_tests --test validation_tests --test d003_tests --test d004_tests --test d005_tests --test d006_tests
-- Result: all PASS (d006 44; validation 17; etc.)
+- Command: cargo test -p chemistry-core --release --test d007_tests
+- Result: 26 PASS; structural 63/63 complete
 
 ## Open blockers
-- None for D-006C
+- None for D-007; architecture ceiling reached for surface_turnover_v1 rate tuning

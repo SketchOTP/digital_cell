@@ -42,3 +42,8 @@ D-005 accessibility search completed without an accessible active attractor unde
 ## Revision (D-006C)
 
 No change to D-003 candidate identity. Downstream D-006C concluded `D006_NO_RESTORING_RADIUS` under `surface_turnover_v1`.
+
+
+## Revision (D-007 start)
+
+No change to D-003 candidate identity. D-007 searches within `surface_turnover_v1` after D-006 failure; Phase 1 remains `PHASE1_SELF_MAINTENANCE_PARTIAL`.

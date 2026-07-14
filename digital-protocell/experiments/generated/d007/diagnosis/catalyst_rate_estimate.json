@@ -1,0 +1,35 @@
+{
+  "source": "/home/sketch/Projects/digital_cell/digital-protocell/experiments/generated/d006/stage_d/aggregate_flow.json",
+  "current_k_rep": 0.014489097664708522,
+  "n_input": 180,
+  "n_valid": 180,
+  "n_rejected": 0,
+  "median_required_k_rep": 0.014908378567878227,
+  "iqr_required_k_rep": 0.0030664490274624444,
+  "min_required_k_rep": 0.011122882592744012,
+  "max_required_k_rep": 0.020537326310977523,
+  "median_by_R0": {
+    "16.0": 0.01749451268466519,
+    "20.0": 0.015781599127726906,
+    "24.0": 0.014713719790606636,
+    "28.0": 0.013311774985188577,
+    "32.0": 0.013426444208515242
+  },
+  "median_by_C0": {
+    "0.275": 0.013349996861611282,
+    "0.35": 0.01471880245975389,
+    "0.425": 0.016428422491232858
+  },
+  "median_by_structural_candidate": {
+    "cand-202edf92d1b7-kphi1-ks0.000000-kr0.014489": 0.01458745866523746,
+    "cand-9de49a8757a4-kphi1-ks0.000000-kr0.014489": 0.015470891161512306,
+    "cand-a65c9c86e5ad-kphi1-ks0.000000-kr0.014489": 0.015127597426102531,
+    "cand-fef721bffb7d-kphi1-ks0.000000-kr0.014489": 0.014836859184096576
+  },
+  "k_rep_center": 0.014908378567878227,
+  "k_rep_center_clamped": 0.014908378567878227,
+  "bounded_max": 0.043467292994125564,
+  "outside_bounded_range": false,
+  "classification": "D007_CATALYST_RATE_WITHIN_BOUNDED_RANGE",
+  "epsilon": 1e-12
+}

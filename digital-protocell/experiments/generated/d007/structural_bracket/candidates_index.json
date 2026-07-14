@@ -1,0 +1,72 @@
+{
+  "0.5": {
+    "candidate_hash": "5428cdf1d21a65f21e202a6c64482d243a3132f4606f55e74ce03dd0dfc21113",
+    "candidate_id": "cand-5428cdf1d21a-kphi1-ks0.000000-kr0.014489",
+    "configuration_hash": "1e54d0678a015612e5d07f07fc19c4642aaebaa352de875912823609722551a4",
+    "k_rep": 0.014489097664708522,
+    "k_structure_interface": 0.04821428571428579,
+    "structural_factor": 0.5,
+    "identity_path": "/home/sketch/Projects/digital_cell/digital-protocell/experiments/generated/d007/structural_bracket/candidates/cand-5428cdf1d21a-kphi1-ks0.000000-kr0.014489/identity.json",
+    "dir": "/home/sketch/Projects/digital_cell/digital-protocell/experiments/generated/d007/structural_bracket/candidates/cand-5428cdf1d21a-kphi1-ks0.000000-kr0.014489"
+  },
+  "0.55": {
+    "candidate_hash": "28f91887f3446df55015cccfd813e0d44baa22c126bafc3f8a2fb239002e0c02",
+    "candidate_id": "cand-28f91887f344-kphi1-ks0.000000-kr0.014489",
+    "configuration_hash": "418b319b24044c201908783f6a0a34ba77a60b704301c637c3bc6f4481bd5c65",
+    "k_rep": 0.014489097664708522,
+    "k_structure_interface": 0.05303571428571437,
+    "structural_factor": 0.55,
+    "identity_path": "/home/sketch/Projects/digital_cell/digital-protocell/experiments/generated/d007/structural_bracket/candidates/cand-28f91887f344-kphi1-ks0.000000-kr0.014489/identity.json",
+    "dir": "/home/sketch/Projects/digital_cell/digital-protocell/experiments/generated/d007/structural_bracket/candidates/cand-28f91887f344-kphi1-ks0.000000-kr0.014489"
+  },
+  "0.6": {
+    "candidate_hash": "b38e96d0ea0a2e74d8a1fd170b715ef00924b8a91eb50b0c8a439bf29c04ce32",
+    "candidate_id": "cand-b38e96d0ea0a-kphi1-ks0.000000-kr0.014489",
+    "configuration_hash": "c6b130dab5958e86304299d1d82b0c3079d06799c88aeecd443cfe13d193d1db",
+    "k_rep": 0.014489097664708522,
+    "k_structure_interface": 0.05785714285714295,
+    "structural_factor": 0.6,
+    "identity_path": "/home/sketch/Projects/digital_cell/digital-protocell/experiments/generated/d007/structural_bracket/candidates/cand-b38e96d0ea0a-kphi1-ks0.000000-kr0.014489/identity.json",
+    "dir": "/home/sketch/Projects/digital_cell/digital-protocell/experiments/generated/d007/structural_bracket/candidates/cand-b38e96d0ea0a-kphi1-ks0.000000-kr0.014489"
+  },
+  "0.65": {
+    "candidate_hash": "b990b78d1f07f579c0fc68c7ef22ca5faeb79130ede7eb26c48640c1f75c7704",
+    "candidate_id": "cand-b990b78d1f07-kphi1-ks0.000000-kr0.014489",
+    "configuration_hash": "14d96bd78373e84ed297c594562c7408e2ee04164753337a1eb1c659e73286a5",
+    "k_rep": 0.014489097664708522,
+    "k_structure_interface": 0.06267857142857153,
+    "structural_factor": 0.65,
+    "identity_path": "/home/sketch/Projects/digital_cell/digital-protocell/experiments/generated/d007/structural_bracket/candidates/cand-b990b78d1f07-kphi1-ks0.000000-kr0.014489/identity.json",
+    "dir": "/home/sketch/Projects/digital_cell/digital-protocell/experiments/generated/d007/structural_bracket/candidates/cand-b990b78d1f07-kphi1-ks0.000000-kr0.014489"
+  },
+  "0.7": {
+    "candidate_hash": "d009cc69bc8292a1445845525fd41cfffc67fa6859f866736b3b686382acb0b3",
+    "candidate_id": "cand-d009cc69bc82-kphi1-ks0.000000-kr0.014489",
+    "configuration_hash": "1c240a6057e8310b7cd18f4a3e96a0410a0be9c3237a1c5ab06ee972abc4182a",
+    "k_rep": 0.014489097664708522,
+    "k_structure_interface": 0.0675000000000001,
+    "structural_factor": 0.7,
+    "identity_path": "/home/sketch/Projects/digital_cell/digital-protocell/experiments/generated/d007/structural_bracket/candidates/cand-d009cc69bc82-kphi1-ks0.000000-kr0.014489/identity.json",
+    "dir": "/home/sketch/Projects/digital_cell/digital-protocell/experiments/generated/d007/structural_bracket/candidates/cand-d009cc69bc82-kphi1-ks0.000000-kr0.014489"
+  },
+  "0.75": {
+    "candidate_hash": "ab7769fd164b1243463bce4c817f82ddc8d288f422134226d5247c0d82db6886",
+    "candidate_id": "cand-ab7769fd164b-kphi1-ks0.000000-kr0.014489",
+    "configuration_hash": "9025e31b3ec2db6204c7166bb0da02863d65102f3a3f5eec1143ec8f3fb09af2",
+    "k_rep": 0.014489097664708522,
+    "k_structure_interface": 0.07232142857142869,
+    "structural_factor": 0.75,
+    "identity_path": "/home/sketch/Projects/digital_cell/digital-protocell/experiments/generated/d007/structural_bracket/candidates/cand-ab7769fd164b-kphi1-ks0.000000-kr0.014489/identity.json",
+    "dir": "/home/sketch/Projects/digital_cell/digital-protocell/experiments/generated/d007/structural_bracket/candidates/cand-ab7769fd164b-kphi1-ks0.000000-kr0.014489"
+  },
+  "0.8": {
+    "candidate_hash": "9de49a8757a413385cce1f1be193f86332be40aefdb3d50666a072537c2869c4",
+    "candidate_id": "cand-9de49a8757a4-kphi1-ks0.000000-kr0.014489",
+    "configuration_hash": "86c320e3226af0e52324179a0076e7b97e02b0962ab153928932cdbb44742816",
+    "k_rep": 0.014489097664708522,
+    "k_structure_interface": 0.07714285714285728,
+    "structural_factor": 0.8,
+    "identity_path": "/home/sketch/Projects/digital_cell/digital-protocell/experiments/generated/d007/structural_bracket/candidates/cand-9de49a8757a4-kphi1-ks0.000000-kr0.014489/identity.json",
+    "dir": "/home/sketch/Projects/digital_cell/digital-protocell/experiments/generated/d007/structural_bracket/candidates/cand-9de49a8757a4-kphi1-ks0.000000-kr0.014489"
+  }
+}

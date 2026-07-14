@@ -60,3 +60,11 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d006.rs` — D-006 bootstrap/screen/run-one CLI
 - `digital-protocell/scripts/d006_stage_d_ledger.py` — job ledger + radius/catalyst aggregate
 - `docs/d006_stage_d_completion.md` — Stage D completion + scientific conclusion
+
+## D-007 joint kinetic search
+- `digital-protocell/crates/chemistry-core/src/d007_analysis.rs` — schema, brackets, joint gates
+- `digital-protocell/crates/experiment-runner/src/d007.rs` — strict-schema runner + reference config
+- `digital-protocell/crates/chemistry-core/tests/d007_tests.rs` — D-007 unit tests (26)
+- `digital-protocell/scripts/d007_structural_bracket.py` — 63-job structural orchestrator
+- `digital-protocell/scripts/d007_diagnose_krep.py` — Stage D required-k_rep estimator
+- `docs/d007_candidate_report.md` — D-007 scientific closure

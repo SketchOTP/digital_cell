@@ -1,0 +1,109 @@
+{
+  "C0": 0.35,
+  "Q_C": 0.9752166645728386,
+  "Q_phi": 0.389166769679167,
+  "R0": 24.0,
+  "accepted_substeps": 30000,
+  "accounting_residual": 3.025217188219048e-6,
+  "binary_hash": "eb91db836917baefdb90cbb8648879f0259e0841216683ceb85bc192eec98d29",
+  "candidate_hash": "5428cdf1d21a65f21e202a6c64482d243a3132f4606f55e74ce03dd0dfc21113",
+  "candidate_id": "cand-5428cdf1d21a-kphi1-ks0.000000-kr0.014489",
+  "classification": "Viable",
+  "clean_termination": true,
+  "configuration_hash": "1e54d0678a015612e5d07f07fc19c4642aaebaa352de875912823609722551a4",
+  "connected_component_fraction": 1.0,
+  "diffusion_accounting": {
+    "last_step_catalyst_diffusion": 0.00001808313800657637,
+    "last_step_fuel_diffusion": -4.544810005014584e-19,
+    "last_step_nutrient_diffusion": -4.544810005014584e-19,
+    "last_step_structure_diffusion": 3.289878241882387e-21,
+    "last_step_waste_diffusion": -3.995980292272965e-21
+  },
+  "equation_version": "surface_turnover_v1",
+  "equivalent_radius": 24.22732816723524,
+  "final_field_hashes": {
+    "catalyst": "76817631335e8054",
+    "fuel": "1e4c5b1e068cd800",
+    "nutrient": "1e4c5b1e068cd800",
+    "structure": "16c634e4abf5807c",
+    "waste": "3c26b5ba3828cae3"
+  },
+  "final_field_masses": {
+    "catalyst": 636.3160252933907,
+    "fuel": 24236.991366905906,
+    "nutrient": 24236.991366905906,
+    "structure": 1729.8723963564296,
+    "waste": 334.746662820405
+  },
+  "initial_equivalent_radius": 24.318661274297092,
+  "initial_field_hashes": {
+    "catalyst": "83239fb67daf232d",
+    "fuel": "1d4fdfcf107a2ffd",
+    "nutrient": "1d4fdfcf107a2ffd",
+    "structure": "1b0f7c2a197c897b",
+    "waste": "e3e3dff820d47a52"
+  },
+  "initial_field_masses": {
+    "catalyst": 636.664997568358,
+    "fuel": 24344.0,
+    "nutrient": 24344.0,
+    "structure": 1857.9293695971699,
+    "waste": 0.0
+  },
+  "initial_mean_C_inside": 0.3317448571940533,
+  "k_rep": 0.014489097664708522,
+  "k_structure_interface": 0.04821428571428579,
+  "mean_C_inside": 0.330619183218164,
+  "noise_amplitude": 0.005,
+  "noise_seed": 2,
+  "numerical_corrections": {
+    "clamp_corrections": -7.676548883452574,
+    "last_step_catalyst": 3.393139422769309e-7,
+    "last_step_structure": 0.0,
+    "rejected_steps": 4
+  },
+  "reaction_accounting": {
+    "catalyst_decay": 25.96978929678733,
+    "catalyst_reproduction": 25.326315124306372,
+    "fuel_consumed_r1": 25.326315124306372,
+    "fuel_consumed_r2": 81.68231881206664,
+    "nutrient_consumed_r1": 25.326315124306372,
+    "nutrient_consumed_r2": 81.68231881206664,
+    "structural_decay": 209.89228851943747,
+    "structural_synthesis": 81.68231881206664,
+    "waste_from_r1": 25.326315124306372,
+    "waste_from_r2": 81.68231881206664
+  },
+  "reservoir_accounting": {
+    "fuel_supplied": 8.381357474718243e-7,
+    "nutrient_supplied": 8.381357474718243e-7,
+    "waste_removed": 0.23167322393690282
+  },
+  "resource_statistics": {
+    "fuel_exhausted": false,
+    "interior_cells": 1844.0,
+    "mean_fuel_inside": 0.9551262335837012,
+    "mean_nutrient_inside": 0.9551262335837012,
+    "mean_waste_inside": 0.15388056988559407,
+    "nutrient_exhausted": false
+  },
+  "retention": 0.9077257416623794,
+  "simulated_time": 4.6874999999980025,
+  "slope_C": -0.00011691893924779168,
+  "slope_phi": -0.015252739889606539,
+  "source_commit": "6b25d9b64d44d682518d97271e5ed92cd4475b7c",
+  "termination_status": "COMPLETED",
+  "turnover_ratios": {
+    "catalyst_replacement": 0.040873409057680034,
+    "catalyst_reproduction": 0.03986039917165571,
+    "structural_replacement": 0.11320052491897473,
+    "structural_synthesis": 0.044053937884747124
+  },
+  "v_C_inside": -0.00024014378152314276,
+  "v_R": -0.019484396173203668,
+  "wall_seconds": 1515.556725638,
+  "waste_statistics": {
+    "mean_waste_inside": 0.15388056988559407,
+    "waste_production_cumulative": 342.87071175259666
+  }
+}

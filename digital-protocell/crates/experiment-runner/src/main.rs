@@ -4,6 +4,7 @@ mod d003;
 mod d004;
 mod d005;
 mod d006;
+mod d007;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -70,6 +71,10 @@ enum Commands {
     D006 {
         #[command(subcommand)]
         action: D006Commands,
+    },
+    D007 {
+        #[command(subcommand)]
+        action: D007Commands,
     },
 }
 
@@ -153,6 +158,48 @@ enum D006Commands {
     },
 }
 
+#[derive(Subcommand)]
+enum D007Commands {
+    /// Write reference config + ensure artifact dirs
+    Init,
+    /// Replay D-006 1.0× reference (expects v_R>0, v_C_inside<0)
+    ReferenceReplay {
+        #[arg(long, default_value = "10000")]
+        steps: u64,
+    },
+    /// Write structural-bracket candidate for a factor
+    WriteStructuralCandidate {
+        #[arg(long)]
+        factor: f64,
+    },
+    /// Strict-schema single run for an identity.json path
+    RunOne {
+        #[arg(long)]
+        identity: PathBuf,
+        #[arg(long)]
+        r0: f64,
+        #[arg(long)]
+        c0: f64,
+        #[arg(long)]
+        seed: u64,
+        #[arg(long, default_value = "30000")]
+        steps: u64,
+        #[arg(long)]
+        output: PathBuf,
+    },
+    /// Write a joint candidate (structural_factor × k_rep)
+    WriteJointCandidate {
+        #[arg(long)]
+        structural_factor: f64,
+        #[arg(long)]
+        k_rep: f64,
+        #[arg(long, default_value = "1.0")]
+        catalyst_factor: f64,
+        #[arg(long, default_value = "d006-1.0x-reference")]
+        parent: String,
+    },
+}
+
 const CHECKPOINT_STEPS: [u64; 7] = [0, 25_000, 50_000, 100_000, 150_000, 200_000, 250_000];
 const RATIO_CHECKPOINTS: [u64; 6] = [25_000, 50_000, 100_000, 150_000, 200_000, 250_000];
 
@@ -173,6 +220,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D004 { action } => run_d004(action)?,
         Commands::D005 { action } => run_d005(action)?,
         Commands::D006 { action } => run_d006(action)?,
+        Commands::D007 { action } => run_d007(action)?,
     }
     Ok(())
 }
@@ -340,6 +388,68 @@ fn run_d006(action: D006Commands) -> Result<(), Box<dyn std::error::Error>> {
             );
             let rec = d006::run_one_public(&id, r0, c0, seed, steps, &out)?;
             println!("D-006 run-one: {}", rec["seed_recipe"]);
+        }
+    }
+    Ok(())
+}
+
+fn run_d007(action: D007Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D007Commands::Init => {
+            d007::ensure_artifact_dirs()?;
+            let id = d007::write_reference_config()?;
+            println!(
+                "D-007 init: reference {} config_hash={}",
+                id.candidate_id, id.configuration_hash
+            );
+        }
+        D007Commands::ReferenceReplay { steps } => {
+            let summary = d007::run_reference_replay(steps)?;
+            println!("D-007 reference replay: {summary}");
+        }
+        D007Commands::WriteStructuralCandidate { factor } => {
+            d007::ensure_artifact_dirs()?;
+            let id = d007::write_structural_candidate(factor)?;
+            println!(
+                "D-007 structural candidate factor={factor} id={} k_iface={}",
+                id.candidate_id, id.params.k_structure_interface
+            );
+        }
+        D007Commands::RunOne {
+            identity,
+            r0,
+            c0,
+            seed,
+            steps,
+            output,
+        } => {
+            let id: chemistry_core::CandidateIdentity =
+                serde_json::from_str(&fs::read_to_string(identity)?)?;
+            let rec = d007::run_strict(&id, r0, c0, seed, steps, &output)?;
+            println!(
+                "D-007 run-one clean={} v_R={} v_C_inside={}",
+                rec["clean_termination"], rec["v_R"], rec["v_C_inside"]
+            );
+        }
+        D007Commands::WriteJointCandidate {
+            structural_factor,
+            k_rep,
+            catalyst_factor,
+            parent,
+        } => {
+            d007::ensure_artifact_dirs()?;
+            let id = d007::make_joint_candidate(
+                structural_factor,
+                k_rep,
+                &parent,
+                "D-007 joint candidate",
+            );
+            let dir = d007::write_joint_candidate(&id, structural_factor, catalyst_factor, &parent)?;
+            println!(
+                "D-007 joint candidate {} -> {}",
+                id.candidate_id,
+                dir.display()
+            );
         }
     }
     Ok(())

@@ -39,3 +39,8 @@ Execution status that applied while Stage D ran:
 ```text
 D006_RESULT_UNRESOLVED_STAGE_D_IN_PROGRESS
 ```
+
+
+## Revision (D-007 start)
+
+D-006 scientific conclusion unchanged: `D006_NO_RESTORING_RADIUS`. D-007 begins bounded joint kinetic search on frozen `surface_turnover_v1` rates only (`k_structure_interface`, `k_rep`).

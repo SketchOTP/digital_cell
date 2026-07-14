@@ -77,3 +77,8 @@ Proceed to D-006 `surface_turnover_v1` redesign (no accessible D-005 attractor f
 ## Revision (D-006C)
 
 D-005 conclusion `D005_NO_ACCESSIBLE_ACTIVE_ATTRACTOR` preserved. D-006C Stage D closed with `D006_NO_RESTORING_RADIUS` — coupled surface-turnover candidates showed no restoring radius in the 180-job screen.
+
+
+## Revision (D-007 start)
+
+D-005 conclusion unchanged: `D005_NO_ACCESSIBLE_ACTIVE_ATTRACTOR`. Phase 1 remains `PHASE1_SELF_MAINTENANCE_PARTIAL`. D-007 does not reopen D-005 crowding architecture.
