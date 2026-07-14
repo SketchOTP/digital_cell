@@ -1,6 +1,7 @@
 //! Simulation configuration and parameter loading.
 
 use serde::{Deserialize, Serialize};
+use std::fmt;
 
 pub const GRID_WIDTH: usize = 192;
 pub const GRID_HEIGHT: usize = 192;
@@ -13,6 +14,35 @@ pub const PHI_HARD_MIN: f64 = -1e-4;
 pub const PHI_HARD_MAX: f64 = 1.50;
 pub const PHI_SOFT_MAX: f64 = 1.25;
 pub const CONC_SAFETY_LIMIT: f64 = 10.0;
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum EquationVersion {
+    #[serde(rename = "d001-bulk-v1")]
+    D001BulkV1,
+    #[serde(rename = "d003-crowding-v1")]
+    D003CrowdingV1,
+    #[serde(rename = "surface_turnover_v1")]
+    SurfaceTurnoverV1,
+    #[serde(rename = "membrane_metabolism_v1")]
+    MembraneMetabolismV1,
+}
+
+impl EquationVersion {
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::D001BulkV1 => "d001-bulk-v1",
+            Self::D003CrowdingV1 => "d003-crowding-v1",
+            Self::SurfaceTurnoverV1 => "surface_turnover_v1",
+            Self::MembraneMetabolismV1 => "membrane_metabolism_v1",
+        }
+    }
+}
+
+impl fmt::Display for EquationVersion {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str(self.as_str())
+    }
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SimParams {
@@ -59,9 +89,9 @@ pub struct SimParams {
     /// When true, use max(0,1-φ) instead of crowding (D-002 control)
     #[serde(default)]
     pub use_legacy_structure_kinetics: bool,
-    /// Immutable equation identifier (`d003-crowding-v1`, `surface_turnover_v1`, …)
+    /// Immutable equation identifier.
     #[serde(default = "default_equation_version")]
-    pub equation_version: String,
+    pub equation_version: EquationVersion,
     /// D-006 interface structural assembly rate
     #[serde(default = "default_k_structure_interface")]
     pub k_structure_interface: f64,
@@ -74,8 +104,8 @@ fn default_k_phi() -> f64 {
     1.0
 }
 
-fn default_equation_version() -> String {
-    crate::reactions::EQUATION_VERSION_CROWDING.to_string()
+fn default_equation_version() -> EquationVersion {
+    EquationVersion::D003CrowdingV1
 }
 
 fn default_k_structure_interface() -> f64 {
@@ -128,7 +158,7 @@ impl Default for SimParams {
             diffusion_enabled: true,
             k_phi: 1.0,
             use_legacy_structure_kinetics: false,
-            equation_version: crate::reactions::EQUATION_VERSION_CROWDING.to_string(),
+            equation_version: EquationVersion::D003CrowdingV1,
             k_structure_interface: 0.0,
             k_c_structure: 0.10,
         }
@@ -211,7 +241,7 @@ impl SimParams {
 pub fn surface_turnover_params_from_calibrated_kphi1() -> SimParams {
     // Machine-extracted final K_phi=1.0 candidate non-structural parameters.
     let mut p = SimParams::default();
-    p.equation_version = crate::reactions::EQUATION_VERSION_SURFACE.to_string();
+    p.equation_version = EquationVersion::SurfaceTurnoverV1;
     p.k_rep = 0.014489097664708522;
     p.k_structure = 0.0; // unused by surface_turnover_v1
     p.k_structure_decay = 0.025;

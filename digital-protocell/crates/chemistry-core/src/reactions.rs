@@ -1,17 +1,20 @@
 //! Artificial reaction network R1–R5.
 
-use crate::config::SimParams;
+use crate::config::{EquationVersion, SimParams};
 use crate::fields::interior_weight;
 
 /// Historical D-001 bulk production (retained as identifier).
-pub const EQUATION_VERSION_D001_BULK: &str = "d001-bulk-v1";
+pub const EQUATION_VERSION_D001_BULK: EquationVersion = EquationVersion::D001BulkV1;
 /// D-003 crowding production.
-pub const EQUATION_VERSION_CROWDING: &str = "d003-crowding-v1";
+pub const EQUATION_VERSION_CROWDING: EquationVersion = EquationVersion::D003CrowdingV1;
 /// D-006 surface-production / bulk-turnover.
-pub const EQUATION_VERSION_SURFACE: &str = "surface_turnover_v1";
+pub const EQUATION_VERSION_SURFACE: EquationVersion = EquationVersion::SurfaceTurnoverV1;
+/// D-008 membrane-metabolism scaffold.
+pub const EQUATION_VERSION_MEMBRANE_METABOLISM: EquationVersion =
+    EquationVersion::MembraneMetabolismV1;
 
 /// Default active equation version for greenfield sims (D-003 crowding).
-pub const EQUATION_VERSION: &str = EQUATION_VERSION_CROWDING;
+pub const EQUATION_VERSION: EquationVersion = EQUATION_VERSION_CROWDING;
 
 #[derive(Debug, Clone, Default)]
 pub struct ReactionRates {
@@ -99,6 +102,12 @@ pub fn compute_reactions_at(
     if !enabled {
         return ReactionRates::default();
     }
+    match params.equation_version {
+        EquationVersion::MembraneMetabolismV1 => return ReactionRates::default(),
+        EquationVersion::D001BulkV1
+        | EquationVersion::D003CrowdingV1
+        | EquationVersion::SurfaceTurnoverV1 => {}
+    }
 
     let h = interior_weight(phi);
     let r_rep = params.k_rep
@@ -108,16 +117,17 @@ pub fn compute_reactions_at(
         * h
         * (1.0 - c / params.c_max).max(0.0);
 
-    let (r_structure, i_weight) = if is_surface_turnover(params) {
-        let i = interface_weight(phi);
-        let act = catalyst_activation(c, params.k_c_structure);
-        (
-            params.k_structure_interface * n * f * act * i,
-            i,
-        )
-    } else {
-        let g = structure_production_factor(phi, params);
-        (params.k_structure * c * n * f * g, 0.0)
+    let (r_structure, i_weight) = match params.equation_version {
+        EquationVersion::SurfaceTurnoverV1 => {
+            let i = interface_weight(phi);
+            let act = catalyst_activation(c, params.k_c_structure);
+            (params.k_structure_interface * n * f * act * i, i)
+        }
+        EquationVersion::D001BulkV1 | EquationVersion::D003CrowdingV1 => {
+            let g = structure_production_factor(phi, params);
+            (params.k_structure * c * n * f * g, 0.0)
+        }
+        EquationVersion::MembraneMetabolismV1 => unreachable!("handled before legacy chemistry"),
     };
 
     let r_structure_decay = params.k_structure_decay * phi.max(0.0);
@@ -207,12 +217,16 @@ pub fn integrated_structure_prefactor(
         if !dish_mask[idx] {
             continue;
         }
-        if is_surface_turnover(params) {
-            let act = catalyst_activation(c[idx], params.k_c_structure);
-            b += n[idx] * f[idx] * act * interface_weight(phi[idx]);
-        } else {
-            let g = structure_production_factor(phi[idx], params);
-            b += c[idx] * n[idx] * f[idx] * g;
+        match params.equation_version {
+            EquationVersion::SurfaceTurnoverV1 => {
+                let act = catalyst_activation(c[idx], params.k_c_structure);
+                b += n[idx] * f[idx] * act * interface_weight(phi[idx]);
+            }
+            EquationVersion::D001BulkV1 | EquationVersion::D003CrowdingV1 => {
+                let g = structure_production_factor(phi[idx], params);
+                b += c[idx] * n[idx] * f[idx] * g;
+            }
+            EquationVersion::MembraneMetabolismV1 => {}
         }
     }
     b

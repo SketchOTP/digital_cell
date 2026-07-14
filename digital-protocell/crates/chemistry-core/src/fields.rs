@@ -10,11 +10,15 @@ pub struct FieldBuffers {
     pub nutrient: Vec<f64>,
     pub fuel: Vec<f64>,
     pub waste: Vec<f64>,
+    pub activated: Vec<f64>,
+    pub membrane: Vec<f64>,
     pub structure_next: Vec<f64>,
     pub catalyst_next: Vec<f64>,
     pub nutrient_next: Vec<f64>,
     pub fuel_next: Vec<f64>,
     pub waste_next: Vec<f64>,
+    pub activated_next: Vec<f64>,
+    pub membrane_next: Vec<f64>,
     /// scratch: h(phi), laplacian, mu, laplacian_mu, reaction scratch
     pub scratch_h: Vec<f64>,
     pub scratch_lap: Vec<f64>,
@@ -35,11 +39,15 @@ impl FieldBuffers {
             nutrient: zero(),
             fuel: zero(),
             waste: zero(),
+            activated: zero(),
+            membrane: zero(),
             structure_next: zero(),
             catalyst_next: zero(),
             nutrient_next: zero(),
             fuel_next: zero(),
             waste_next: zero(),
+            activated_next: zero(),
+            membrane_next: zero(),
             scratch_h: zero(),
             scratch_lap: zero(),
             scratch_mu: zero(),
@@ -61,6 +69,8 @@ impl FieldBuffers {
         std::mem::swap(&mut self.nutrient, &mut self.nutrient_next);
         std::mem::swap(&mut self.fuel, &mut self.fuel_next);
         std::mem::swap(&mut self.waste, &mut self.waste_next);
+        std::mem::swap(&mut self.activated, &mut self.activated_next);
+        std::mem::swap(&mut self.membrane, &mut self.membrane_next);
     }
 
     pub fn copy_current_to_working(&self, working: &mut FieldBuffers) {
@@ -69,6 +79,18 @@ impl FieldBuffers {
         working.nutrient.copy_from_slice(&self.nutrient);
         working.fuel.copy_from_slice(&self.fuel);
         working.waste.copy_from_slice(&self.waste);
+        working.activated.copy_from_slice(&self.activated);
+        working.membrane.copy_from_slice(&self.membrane);
+    }
+
+    pub fn copy_current_to_next(&mut self) {
+        self.structure_next.copy_from_slice(&self.structure);
+        self.catalyst_next.copy_from_slice(&self.catalyst);
+        self.nutrient_next.copy_from_slice(&self.nutrient);
+        self.fuel_next.copy_from_slice(&self.fuel);
+        self.waste_next.copy_from_slice(&self.waste);
+        self.activated_next.copy_from_slice(&self.activated);
+        self.membrane_next.copy_from_slice(&self.membrane);
     }
 }
 
@@ -212,6 +234,8 @@ pub fn initialize_seed(
             fields.nutrient[idx] = 1.0;
             fields.fuel[idx] = 1.0;
             fields.waste[idx] = 0.0;
+            fields.activated[idx] = 0.0;
+            fields.membrane[idx] = 0.0;
         }
     }
 }
@@ -222,7 +246,15 @@ pub fn interior_weight(phi: f64) -> f64 {
     p * p * (3.0 - 2.0 * p)
 }
 
-pub const FIELD_NAMES: [&str; 5] = ["structure", "catalyst", "nutrient", "fuel", "waste"];
+pub const FIELD_NAMES: [&str; 7] = [
+    "structure",
+    "catalyst",
+    "nutrient",
+    "fuel",
+    "waste",
+    "activated",
+    "membrane",
+];
 
 pub fn field_slice<'a>(fields: &'a FieldBuffers, name: &str) -> Option<&'a [f64]> {
     match name {
@@ -231,6 +263,8 @@ pub fn field_slice<'a>(fields: &'a FieldBuffers, name: &str) -> Option<&'a [f64]
         "nutrient" => Some(&fields.nutrient),
         "fuel" => Some(&fields.fuel),
         "waste" => Some(&fields.waste),
+        "activated" => Some(&fields.activated),
+        "membrane" => Some(&fields.membrane),
         _ => None,
     }
 }

@@ -28,12 +28,13 @@ pub fn verify_snapshot_provenance(
     let stored_eq = provenance["equation_version"].as_str().unwrap_or("");
     let field_hashes = provenance.get("field_hashes").and_then(|v| v.as_object());
 
-    let struct_hash = field_sha256(&snap.structure);
-    let cat_hash = field_sha256(&snap.catalyst);
+    let struct_hash = field_sha256(snap.fields.structure());
+    let cat_hash = field_sha256(snap.fields.catalyst());
 
     let candidate_hash_matches = stored_hash == identity.candidate_hash;
     let configuration_hash_matches = stored_cfg == identity.configuration_hash;
-    let equation_version_matches = stored_eq.is_empty() || stored_eq == identity.equation_version;
+    let equation_version_matches =
+        stored_eq.is_empty() || stored_eq == identity.equation_version.as_str();
     let substep_matches = provenance["substep"].as_u64().unwrap_or(snap.substep) == snap.substep;
 
     let hash_match = field_hashes.map_or(true, |fh| {
@@ -62,8 +63,8 @@ pub fn verify_snapshot_provenance(
 }
 
 fn snapshot_mass_parity(snap: &FieldSnapshot, provenance: &serde_json::Value) -> bool {
-    let m_phi: f64 = snap.structure.iter().sum();
-    let m_c: f64 = snap.catalyst.iter().sum();
+    let m_phi: f64 = snap.fields.structure().iter().sum();
+    let m_c: f64 = snap.fields.catalyst().iter().sum();
     let stored_phi = provenance["structural_mass"].as_f64();
     let stored_c = provenance["catalyst_mass"].as_f64();
     match (stored_phi, stored_c) {
@@ -96,10 +97,16 @@ pub fn continue_from_snapshot(
     // D-006: refuse resuming older structural equations under surface_turnover_v1.
     if identity.equation_version == crate::reactions::EQUATION_VERSION_SURFACE
         && !stored_eq.is_empty()
-        && stored_eq != crate::reactions::EQUATION_VERSION_SURFACE
+        && stored_eq != crate::reactions::EQUATION_VERSION_SURFACE.as_str()
     {
         return Err(format!(
             "snapshot equation_version {stored_eq} cannot be resumed under surface_turnover_v1"
+        ));
+    }
+    if identity.equation_version != snap.equation_version {
+        return Err(format!(
+            "snapshot equation_version {} cannot be resumed under {}",
+            snap.equation_version, identity.equation_version
         ));
     }
     if !verification.all_ok {

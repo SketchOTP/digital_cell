@@ -1,6 +1,8 @@
 //! Immutable candidate identity and canonical hashing (D-004).
 
-use crate::config::{SimParams, GRID_HEIGHT, GRID_WIDTH, DISH_RADIUS, DX, RESERVOIR_WIDTH};
+use crate::config::{
+    EquationVersion, SimParams, DISH_RADIUS, DX, GRID_HEIGHT, GRID_WIDTH, RESERVOIR_WIDTH,
+};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
@@ -52,7 +54,7 @@ pub struct InitialConditionConfiguration {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CandidateIdentity {
     pub candidate_id: String,
-    pub equation_version: String,
+    pub equation_version: EquationVersion,
     pub k_phi: f64,
     pub k_structure: f64,
     pub k_rep: f64,
@@ -121,7 +123,7 @@ reactions_enabled={};phase_separation_enabled={};diffusion_enabled={};k_phi={};u
         params.k_phi,
         params.use_legacy_structure_kinetics,
     );
-    if params.equation_version != crate::reactions::EQUATION_VERSION_CROWDING
+    if params.equation_version != EquationVersion::D003CrowdingV1
         || params.k_structure_interface != 0.0
         || (params.k_c_structure - 0.10).abs() > 1e-15
     {
@@ -129,6 +131,14 @@ reactions_enabled={};phase_separation_enabled={};diffusion_enabled={};k_phi={};u
             ";equation_version={};k_structure_interface={};k_c_structure={}",
             params.equation_version, params.k_structure_interface, params.k_c_structure
         ));
+    }
+    match params.equation_version {
+        EquationVersion::MembraneMetabolismV1 => {
+            s.push_str(";field_schema_version=seven_field_v1;snapshot_schema_version=2");
+        }
+        EquationVersion::D001BulkV1
+        | EquationVersion::D003CrowdingV1
+        | EquationVersion::SurfaceTurnoverV1 => {}
     }
     s.into_bytes()
 }
@@ -146,7 +156,7 @@ pub fn configuration_hash(params: &SimParams, grid: &GridConfiguration) -> Strin
 }
 
 pub fn candidate_hash(params: &SimParams, grid: &GridConfiguration) -> String {
-    let mut data = params.equation_version.as_bytes().to_vec();
+    let mut data = params.equation_version.as_str().as_bytes().to_vec();
     data.push(0);
     data.extend_from_slice(&canonical_params_bytes(params));
     data.push(0);
@@ -181,14 +191,13 @@ pub fn build_candidate_identity(
     );
     CandidateIdentity {
         candidate_id,
-        equation_version: params.equation_version.clone(),
+        equation_version: params.equation_version,
         k_phi: params.k_phi,
-        k_structure: if params.equation_version
-            == crate::reactions::EQUATION_VERSION_SURFACE
-        {
-            params.k_structure_interface
-        } else {
-            params.k_structure
+        k_structure: match params.equation_version {
+            EquationVersion::SurfaceTurnoverV1 => params.k_structure_interface,
+            EquationVersion::D001BulkV1
+            | EquationVersion::D003CrowdingV1
+            | EquationVersion::MembraneMetabolismV1 => params.k_structure,
         },
         k_rep: params.k_rep,
         initial_condition: InitialConditionConfiguration {

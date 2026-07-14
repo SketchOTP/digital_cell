@@ -4,7 +4,9 @@ use crate::accounting::{
     build_field_ledger, field_mass, sum_clamp_correction, AccountingState, ReactionStepTotals,
     StepAccounting,
 };
-use crate::config::{ExperimentConfig, InterventionSpec, MAX_DT, NEG_CLAMP, SimParams};
+use crate::config::{
+    EquationVersion, ExperimentConfig, InterventionSpec, SimParams, MAX_DT, NEG_CLAMP,
+};
 use crate::diagnostics::{CellDetector, DiagnosticsSnapshot};
 use crate::fields::{
     clamp_small_negative, initialize_seed, validate_structure_field, validate_soluble_field,
@@ -134,7 +136,15 @@ impl Simulation {
         let dt_before_attempt = attempt_dt;
 
         for _ in 0..max_attempts {
-            match self.try_substep(attempt_dt) {
+            let result = match self.params.equation_version {
+                EquationVersion::D001BulkV1
+                | EquationVersion::D003CrowdingV1
+                | EquationVersion::SurfaceTurnoverV1 => self.try_legacy_substep(attempt_dt),
+                EquationVersion::MembraneMetabolismV1 => {
+                    self.try_membrane_metabolism_v1_scaffold()
+                }
+            };
+            match result {
                 SubstepResult::Ok => {
                     self.dt_telemetry.record_accept(attempt_dt);
                     self.dt_telemetry
@@ -161,7 +171,7 @@ impl Simulation {
         false
     }
 
-    fn try_substep(&mut self, dt: f64) -> SubstepResult {
+    fn try_legacy_substep(&mut self, dt: f64) -> SubstepResult {
         let grid = &self.grid;
         let params = &self.params;
         let t0 = Instant::now();
@@ -173,6 +183,12 @@ impl Simulation {
         let mass_w_before = field_mass(grid, &self.fields.waste);
 
         self.fields.copy_current_to_working(&mut self.working);
+        self.fields
+            .activated_next
+            .copy_from_slice(&self.fields.activated);
+        self.fields
+            .membrane_next
+            .copy_from_slice(&self.fields.membrane);
 
         let n_before_res = field_mass(grid, &self.working.nutrient);
         let f_before_res = field_mass(grid, &self.working.fuel);
@@ -433,6 +449,8 @@ impl Simulation {
                 pre_clamp_w,
                 mass_w_after,
             ),
+            activated: Default::default(),
+            membrane: Default::default(),
         };
         self.accounting
             .record_step(step_accounting, &rx_totals, clamp_total);
@@ -457,6 +475,46 @@ impl Simulation {
         }
 
         let _ = t0;
+        SubstepResult::Ok
+    }
+
+    fn try_membrane_metabolism_v1_scaffold(&mut self) -> SubstepResult {
+        self.fields.copy_current_to_next();
+        if validate_structure_field(&self.fields.structure_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.catalyst_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.nutrient_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.fuel_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.waste_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.activated_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.membrane_next, &self.grid.dish_mask).is_err()
+        {
+            return SubstepResult::Reject;
+        }
+
+        let ledger = |before: &[f64], after: &[f64]| {
+            let mass_before = field_mass(&self.grid, before);
+            let mass_after = field_mass(&self.grid, after);
+            build_field_ledger(
+                mass_before,
+                0.0,
+                0.0,
+                0.0,
+                mass_after,
+                mass_after,
+            )
+        };
+        let step_accounting = StepAccounting {
+            structure: ledger(&self.fields.structure, &self.fields.structure_next),
+            catalyst: ledger(&self.fields.catalyst, &self.fields.catalyst_next),
+            nutrient: ledger(&self.fields.nutrient, &self.fields.nutrient_next),
+            fuel: ledger(&self.fields.fuel, &self.fields.fuel_next),
+            waste: ledger(&self.fields.waste, &self.fields.waste_next),
+            activated: ledger(&self.fields.activated, &self.fields.activated_next),
+            membrane: ledger(&self.fields.membrane, &self.fields.membrane_next),
+        };
+        self.accounting
+            .record_step(step_accounting, &ReactionStepTotals::default(), 0.0);
+        self.fields.swap();
         SubstepResult::Ok
     }
 
@@ -517,11 +575,26 @@ impl Simulation {
 
     /// Restore fields and timing only; candidate params remain from `Simulation::new`.
     pub fn restore_snapshot_fields_only(&mut self, snap: &FieldSnapshot) {
+        self.try_restore_snapshot_fields_only(snap)
+            .expect("snapshot equation and field schema must match target simulation");
+    }
+
+    pub fn try_restore_snapshot_fields_only(
+        &mut self,
+        snap: &FieldSnapshot,
+    ) -> Result<(), String> {
+        if self.params.equation_version != snap.equation_version {
+            return Err(format!(
+                "snapshot equation {} cannot be restored under {}",
+                snap.equation_version, self.params.equation_version
+            ));
+        }
         snap.restore_fields(&mut self.fields);
         self.substep = snap.substep;
         self.sim_time = snap.sim_time;
         self.detector.turnover = snap.turnover.clone();
         self.detector.last_classification = snap.classification;
+        Ok(())
     }
 
     pub fn field_hash(&self) -> u64 {
@@ -542,6 +615,19 @@ impl Simulation {
         }
         for v in &self.fields.waste {
             v.to_bits().hash(&mut hasher);
+        }
+        match self.params.equation_version {
+            EquationVersion::MembraneMetabolismV1 => {
+                for v in &self.fields.activated {
+                    v.to_bits().hash(&mut hasher);
+                }
+                for v in &self.fields.membrane {
+                    v.to_bits().hash(&mut hasher);
+                }
+            }
+            EquationVersion::D001BulkV1
+            | EquationVersion::D003CrowdingV1
+            | EquationVersion::SurfaceTurnoverV1 => {}
         }
         hasher.finish()
     }

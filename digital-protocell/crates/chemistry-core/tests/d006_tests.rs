@@ -139,8 +139,8 @@ fn test_old_snapshots_rejected_by_new_equation_version() {
         "configuration_hash": crowding_id.configuration_hash,
         "equation_version": crowding_id.equation_version,
         "substep": snap.substep,
-        "structural_mass": snap.structure.iter().sum::<f64>(),
-        "catalyst_mass": snap.catalyst.iter().sum::<f64>(),
+        "structural_mass": snap.fields.structure().iter().sum::<f64>(),
+        "catalyst_mass": snap.fields.catalyst().iter().sum::<f64>(),
     });
     std::fs::write(&prov_path, serde_json::to_string_pretty(&prov).unwrap()).unwrap();
 
