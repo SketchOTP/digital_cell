@@ -5,6 +5,7 @@ mod d004;
 mod d005;
 mod d006;
 mod d007;
+mod d008;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
