@@ -1,24 +1,24 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260714-d009-phase1-causal-closure
-- Project directive: D-009
-- Goal: Establish Phase 1 causal closure from the accepted D-008 seven-field protocell
-- Status: blocked at entry gate — D-008 implementation and pass evidence do not exist
-- Acceptance: Stop with D009_BLOCKED_D008_NOT_PASSED unless committed D008_MEMBRANE_METABOLIC_CLOSURE_PASS evidence exists
+- ID: D-20260714-d010-execute-d008-stage-gates
+- Project directive: D-010
+- Goal: Implement and scientifically close the approved D-008 seven-field membrane-metabolism protocell
+- Status: D-009 preserved; preparing Stage 0 implementation
+- Acceptance: Execute D-008 gates in order and stop at first scientific failure or produce governed D008_MEMBRANE_METABOLIC_CLOSURE_PASS evidence
 - Touched files: .agent/DIRECTIVES.md, .agent/CURRENT.md, .agent/OUTCOMES.md
-- Next action: complete D-008 implementation, governed experiments, final report, result commit, and pass tag before retrying D-009
+- Next action: inspect existing engine and write failing Stage 0 tests
 
 ## Repo facts needed now
 - Current branch: d008-membrane-metabolic-closure
-- HEAD: f72be6b, approved D-008 design only
-- No D-008 tags, final report, governed candidate config, or generated artifacts were found
-- D-008 status in prior CURRENT.md: implementation not started
+- Approved D-008 design commit: f72be6bec425cd0613a25ed2c67cc1b1f9f647da
+- D-009 blocked outcome commit/tag: 6c45c568a311e7d4388861321bf0ced6700523c9 / D-009-blocked-d008-not-passed
+- Serena configured but reports Active languages: []; Rust symbol validation unavailable
 - Phase 1 remains PHASE1_SELF_MAINTENANCE_PARTIAL
 
 ## Last validation
-- Command: git status/tag/log audit plus D-008 artifact glob checks
-- Result: entry gate failed; no D008_MEMBRANE_METABOLIC_CLOSURE_PASS evidence
+- Command: git commit/tag preservation audit
+- Result: D-009 commit and tag both resolve to 6c45c568a311e7d4388861321bf0ced6700523c9
 
 ## Open blockers
-- D-008 must pass and produce the required committed evidence before D-009 may execute
+- None
