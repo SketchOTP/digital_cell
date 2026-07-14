@@ -68,3 +68,11 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/scripts/d007_structural_bracket.py` — 63-job structural orchestrator
 - `digital-protocell/scripts/d007_diagnose_krep.py` — Stage D required-k_rep estimator
 - `docs/d007_candidate_report.md` — D-007 scientific closure
+
+## D-008 membrane metabolism
+- `digital-protocell/crates/chemistry-core/src/fields.rs` — fixed seven-field current and next buffers
+- `digital-protocell/crates/chemistry-core/src/snapshot.rs` — versioned five-field and seven-field snapshots
+- `digital-protocell/crates/chemistry-core/tests/d008_tests.rs` — D-008 gated regression tests
+- `digital-protocell/crates/experiment-runner/src/d008.rs` — staged D-008 runner
+- `docs/d008_stage_0_schema.md` — Stage 0 schema and compatibility result
+- `docs/d008_manifest_pointer.json` — governed D-008 runtime manifest pointer

@@ -12,3 +12,4 @@ Append-only repo-specific lessons. Format:
 
 - 2026-07-14 | area:d007 | lesson:surface_turnover_v1 factors 0.50–0.80 show reverse radius response (small decline, large grow); structural nullcline absent | evidence:docs/d007_structural_bracket.md
 - 2026-07-14 | area:tooling | lesson:Serena is configured but reports Active languages [] for Rust; use Cargo, rg, targeted reads, and compiler diagnostics | evidence:.serena/project.yml
+- 2026-07-14 | area:d008-stage0 | lesson:Versioned restores validate equation, schema, and field lengths before copying; legacy five-field hashes remain frozen | evidence:digital-protocell/crates/chemistry-core/src/snapshot.rs
