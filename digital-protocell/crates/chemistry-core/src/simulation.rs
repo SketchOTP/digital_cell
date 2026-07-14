@@ -564,13 +564,20 @@ impl Simulation {
         )
     }
 
+    /// Compatibility wrapper. Prefer [`Self::try_restore_snapshot`] at trust boundaries.
     pub fn restore_snapshot(&mut self, snap: &FieldSnapshot) {
-        snap.restore_fields(&mut self.fields);
+        self.try_restore_snapshot(snap)
+            .expect("snapshot restore failed schema or length validation");
+    }
+
+    pub fn try_restore_snapshot(&mut self, snap: &FieldSnapshot) -> Result<(), String> {
+        snap.try_restore_fields(&mut self.fields)?;
         self.params = snap.params.clone();
         self.substep = snap.substep;
         self.sim_time = snap.sim_time;
         self.detector.turnover = snap.turnover.clone();
         self.detector.last_classification = snap.classification;
+        Ok(())
     }
 
     /// Restore fields and timing only; candidate params remain from `Simulation::new`.
@@ -589,7 +596,7 @@ impl Simulation {
                 snap.equation_version, self.params.equation_version
             ));
         }
-        snap.restore_fields(&mut self.fields);
+        snap.try_restore_fields(&mut self.fields)?;
         self.substep = snap.substep;
         self.sim_time = snap.sim_time;
         self.detector.turnover = snap.turnover.clone();
@@ -630,6 +637,33 @@ impl Simulation {
             | EquationVersion::SurfaceTurnoverV1 => {}
         }
         hasher.finish()
+    }
+
+    /// Stable cross-toolchain field digest for reproducibility checks.
+    pub fn stable_field_digest(&self) -> String {
+        use crate::candidate_identity::sha256_hex;
+        let mut bytes = Vec::new();
+        append_field_bits(&mut bytes, &self.fields.structure);
+        append_field_bits(&mut bytes, &self.fields.catalyst);
+        append_field_bits(&mut bytes, &self.fields.nutrient);
+        append_field_bits(&mut bytes, &self.fields.fuel);
+        append_field_bits(&mut bytes, &self.fields.waste);
+        match self.params.equation_version {
+            EquationVersion::MembraneMetabolismV1 => {
+                append_field_bits(&mut bytes, &self.fields.activated);
+                append_field_bits(&mut bytes, &self.fields.membrane);
+            }
+            EquationVersion::D001BulkV1
+            | EquationVersion::D003CrowdingV1
+            | EquationVersion::SurfaceTurnoverV1 => {}
+        }
+        sha256_hex(&bytes)
+    }
+}
+
+fn append_field_bits(out: &mut Vec<u8>, field: &[f64]) {
+    for v in field {
+        out.extend_from_slice(&v.to_bits().to_le_bytes());
     }
 }
 

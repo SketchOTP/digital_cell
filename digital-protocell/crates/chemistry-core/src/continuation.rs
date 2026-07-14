@@ -115,11 +115,11 @@ pub fn continue_from_snapshot(
 
     let mut sim = if preserve_candidate_params {
         let mut s = Simulation::new(identity.params.clone());
-        s.restore_snapshot_fields_only(&snap);
+        s.try_restore_snapshot_fields_only(&snap)?;
         s
     } else {
         let mut s = Simulation::new(identity.params.clone());
-        s.restore_snapshot(&snap);
+        s.try_restore_snapshot(&snap)?;
         s
     };
     sim.observer_enabled = false;

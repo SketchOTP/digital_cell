@@ -2,7 +2,6 @@
 
 use chemistry_core::*;
 
-const LEGACY_10_STEP_FIELD_HASH: u64 = 9_108_120_965_361_457_156;
 const LEGACY_DEFAULT_CANDIDATE_HASH: &str =
     "3a71c61b818c2193407b609c2e1726344677f08e5f4c86f0aaeee1790f2bb2db";
 const LEGACY_DEFAULT_CONFIGURATION_HASH: &str =
@@ -11,6 +10,9 @@ const D006_SURFACE_CANDIDATE_HASH: &str =
     "a65c9c86e5ad93bd9088e7767917656a30641fbc82b3582db4a1bebc9633e808";
 const D006_SURFACE_CONFIGURATION_HASH: &str =
     "53c5fd482d171d8a5d20dfbc16e7fdc1f1fc782d06d98c659c1a82fd23a172bb";
+/// Fixed SHA-256 of 10 accepted legacy baseline steps (f64 bit concatenation).
+const LEGACY_10_STEP_FIELD_DIGEST: &str =
+    "4299ad9f8b9e6efb1befee5c21f800e48c1a077768933138f26c4fde168c77f9";
 
 fn d008_params() -> SimParams {
     let mut params = SimParams::default();
@@ -41,6 +43,28 @@ fn buffer_addresses(fields: &FieldBuffers) -> ([usize; 7], [usize; 7]) {
     )
 }
 
+fn seven_markers(fields: &FieldBuffers, idx: usize) -> [f64; 7] {
+    [
+        fields.structure[idx],
+        fields.catalyst[idx],
+        fields.nutrient[idx],
+        fields.fuel[idx],
+        fields.waste[idx],
+        fields.activated[idx],
+        fields.membrane[idx],
+    ]
+}
+
+fn set_seven_markers(fields: &mut FieldBuffers, idx: usize, markers: [f64; 7]) {
+    fields.structure[idx] = markers[0];
+    fields.catalyst[idx] = markers[1];
+    fields.nutrient[idx] = markers[2];
+    fields.fuel[idx] = markers[3];
+    fields.waste[idx] = markers[4];
+    fields.activated[idx] = markers[5];
+    fields.membrane[idx] = markers[6];
+}
+
 #[test]
 fn all_seven_fields_allocate_distinct_current_and_next_buffers() {
     let fields = FieldBuffers::new(4);
@@ -68,29 +92,12 @@ fn all_seven_fields_allocate_distinct_current_and_next_buffers() {
 #[test]
 fn all_seven_fields_copy_to_working_buffers() {
     let mut fields = FieldBuffers::new(1);
-    fields.structure[0] = 1.0;
-    fields.catalyst[0] = 2.0;
-    fields.nutrient[0] = 3.0;
-    fields.fuel[0] = 4.0;
-    fields.waste[0] = 5.0;
-    fields.activated[0] = 6.0;
-    fields.membrane[0] = 7.0;
+    set_seven_markers(&mut fields, 0, [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]);
     let mut working = FieldBuffers::new(1);
 
     fields.copy_current_to_working(&mut working);
 
-    assert_eq!(
-        [
-            working.structure[0],
-            working.catalyst[0],
-            working.nutrient[0],
-            working.fuel[0],
-            working.waste[0],
-            working.activated[0],
-            working.membrane[0],
-        ],
-        [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
-    );
+    assert_eq!(seven_markers(&working, 0), [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]);
 }
 
 #[test]
@@ -98,8 +105,8 @@ fn accepted_d008_step_swaps_all_seven_buffers() {
     let mut sim = Simulation::new(d008_params());
     sim.observer_enabled = false;
     let center = Grid::index(sim.grid.width, sim.grid.cx as usize, sim.grid.cy as usize);
-    sim.fields.activated[center] = 0.25;
-    sim.fields.membrane[center] = 0.5;
+    let markers = [0.11, 0.22, 0.33, 0.44, 0.55, 0.66, 0.77];
+    set_seven_markers(&mut sim.fields, center, markers);
     let before = buffer_addresses(&sim.fields);
 
     assert!(sim.step());
@@ -107,8 +114,7 @@ fn accepted_d008_step_swaps_all_seven_buffers() {
     let after = buffer_addresses(&sim.fields);
     assert_eq!(after.0, before.1);
     assert_eq!(after.1, before.0);
-    assert_eq!(sim.fields.activated[center], 0.25);
-    assert_eq!(sim.fields.membrane[center], 0.5);
+    assert_eq!(seven_markers(&sim.fields, center), markers);
 }
 
 #[test]
@@ -126,28 +132,44 @@ fn rejected_d008_step_swaps_no_buffers() {
 }
 
 #[test]
-fn seven_field_snapshot_json_round_trips_activated_and_membrane() {
+fn seven_field_snapshot_json_round_trips_all_seven_fields() {
     let mut sim = Simulation::new(d008_params());
     let center = Grid::index(sim.grid.width, sim.grid.cx as usize, sim.grid.cy as usize);
-    sim.fields.activated[center] = 0.125;
-    sim.fields.membrane[center] = 0.75;
+    let markers = [0.11, 0.22, 0.33, 0.44, 0.55, 0.66, 0.77];
+    set_seven_markers(&mut sim.fields, center, markers);
 
     let loaded = FieldSnapshot::from_json(&sim.snapshot().to_json().unwrap()).unwrap();
 
     assert_eq!(loaded.snapshot_schema_version, SNAPSHOT_SCHEMA_VERSION);
     assert_eq!(loaded.field_schema_version, FieldSchemaVersion::SevenFieldV1);
     assert_eq!(loaded.equation_version, EquationVersion::MembraneMetabolismV1);
-    assert_eq!(loaded.fields.activated().unwrap()[center], 0.125);
-    assert_eq!(loaded.fields.membrane().unwrap()[center], 0.75);
+    assert_eq!(
+        [
+            loaded.fields.structure()[center],
+            loaded.fields.catalyst()[center],
+            loaded.fields.nutrient()[center],
+            loaded.fields.fuel()[center],
+            loaded.fields.waste()[center],
+            loaded.fields.activated().unwrap()[center],
+            loaded.fields.membrane().unwrap()[center],
+        ],
+        markers
+    );
     let mut restored = Simulation::new(d008_params());
-    restored.restore_snapshot(&loaded);
-    assert_eq!(restored.fields.activated[center], 0.125);
-    assert_eq!(restored.fields.membrane[center], 0.75);
+    restored.try_restore_snapshot(&loaded).unwrap();
+    assert_eq!(seven_markers(&restored.fields, center), markers);
 }
 
 #[test]
-fn historical_five_field_snapshot_remains_readable_for_legacy_equation() {
-    let sim = Simulation::new(baseline_params());
+fn historical_five_field_snapshot_restores_all_five_values() {
+    let mut sim = Simulation::new(baseline_params());
+    let center = Grid::index(sim.grid.width, sim.grid.cx as usize, sim.grid.cy as usize);
+    let markers = [0.12, 0.23, 0.34, 0.45, 0.56];
+    sim.fields.structure[center] = markers[0];
+    sim.fields.catalyst[center] = markers[1];
+    sim.fields.nutrient[center] = markers[2];
+    sim.fields.fuel[center] = markers[3];
+    sim.fields.waste[center] = markers[4];
     let old_json = serde_json::json!({
         "version": "0.1.0",
         "random_seed": sim.params.random_seed,
@@ -168,6 +190,18 @@ fn historical_five_field_snapshot_remains_readable_for_legacy_equation() {
     assert_eq!(loaded.field_schema_version, FieldSchemaVersion::FiveFieldV1);
     assert_eq!(loaded.equation_version, EquationVersion::D003CrowdingV1);
     assert!(matches!(loaded.fields, SnapshotFields::FiveField(_)));
+    let mut restored = Simulation::new(baseline_params());
+    restored.try_restore_snapshot(&loaded).unwrap();
+    assert_eq!(
+        [
+            restored.fields.structure[center],
+            restored.fields.catalyst[center],
+            restored.fields.nutrient[center],
+            restored.fields.fuel[center],
+            restored.fields.waste[center],
+        ],
+        markers
+    );
 }
 
 #[test]
@@ -180,6 +214,53 @@ fn five_field_snapshot_is_rejected_for_membrane_metabolism() {
     let error = FieldSnapshot::from_json(&json.to_string()).unwrap_err();
 
     assert!(error.to_string().contains("five_field_v1"));
+}
+
+#[test]
+fn in_memory_five_field_payload_rejected_for_membrane_metabolism() {
+    let mut snap = Simulation::new(d008_params()).snapshot();
+    let five = Simulation::new(baseline_params()).snapshot();
+    snap.fields = match five.fields {
+        SnapshotFields::FiveField(payload) => SnapshotFields::FiveField(payload),
+        SnapshotFields::SevenField(_) => panic!("expected five-field baseline"),
+    };
+    snap.field_schema_version = FieldSchemaVersion::FiveFieldV1;
+
+    let mut dest = FieldBuffers::for_grid(&Grid::new());
+    let err = snap.try_restore_fields(&mut dest).unwrap_err();
+    assert!(
+        err.contains("five_field_v1") || err.contains("incompatible"),
+        "{err}"
+    );
+    assert!(dest.activated.iter().all(|&v| v == 0.0));
+    assert!(dest.membrane.iter().all(|&v| v == 0.0));
+}
+
+#[test]
+fn malformed_payload_lengths_return_err_without_panic() {
+    let mut snap = Simulation::new(d008_params()).snapshot();
+    match &mut snap.fields {
+        SnapshotFields::SevenField(payload) => {
+            payload.activated.pop();
+        }
+        SnapshotFields::FiveField(_) => panic!("expected seven-field snapshot"),
+    }
+
+    let mut dest = FieldBuffers::for_grid(&Grid::new());
+    let err = snap.try_restore_fields(&mut dest).unwrap_err();
+    assert!(
+        err.contains("length") || err.contains("size") || err.contains("mismatch"),
+        "{err}"
+    );
+}
+
+#[test]
+fn unknown_snapshot_schema_version_is_rejected() {
+    let mut snap = Simulation::new(d008_params()).snapshot();
+    snap.snapshot_schema_version = 99;
+    let mut dest = FieldBuffers::for_grid(&Grid::new());
+    let err = snap.try_restore_fields(&mut dest).unwrap_err();
+    assert!(err.contains("snapshot_schema_version") || err.contains("schema"), "{err}");
 }
 
 #[test]
@@ -233,7 +314,9 @@ fn legacy_numerical_behavior_is_bit_reproducible() {
     for _ in 0..10 {
         assert!(sim.step());
     }
-    assert_eq!(sim.field_hash(), LEGACY_10_STEP_FIELD_HASH);
+    let digest = sim.stable_field_digest();
+    eprintln!("D008_LEGACY_10_STEP_FIELD_DIGEST={digest}");
+    assert_eq!(digest, LEGACY_10_STEP_FIELD_DIGEST);
 }
 
 #[test]

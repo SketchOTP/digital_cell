@@ -199,22 +199,60 @@ impl FieldSnapshot {
         }
     }
 
+    /// Compatibility wrapper. Prefer [`Self::try_restore_fields`] at trust boundaries.
     pub fn restore_fields(&self, fields: &mut FieldBuffers) {
-        fields.structure.copy_from_slice(self.fields.structure());
-        fields.catalyst.copy_from_slice(self.fields.catalyst());
-        fields.nutrient.copy_from_slice(self.fields.nutrient());
-        fields.fuel.copy_from_slice(self.fields.fuel());
-        fields.waste.copy_from_slice(self.fields.waste());
+        self.try_restore_fields(fields)
+            .expect("snapshot restore failed schema or length validation");
+    }
+
+    pub fn try_restore_fields(&self, fields: &mut FieldBuffers) -> Result<(), String> {
+        self.validate()?;
+        let expected = fields.structure.len();
+        validate_destination_lengths(fields, expected)?;
         match &self.fields {
-            SnapshotFields::FiveField(_) => {
+            SnapshotFields::FiveField(payload) => {
+                validate_equal_lengths(
+                    expected,
+                    &[
+                        ("structure", payload.structure.len()),
+                        ("catalyst", payload.catalyst.len()),
+                        ("nutrient", payload.nutrient.len()),
+                        ("fuel", payload.fuel.len()),
+                        ("waste", payload.waste.len()),
+                    ],
+                )?;
+                fields.structure.copy_from_slice(&payload.structure);
+                fields.catalyst.copy_from_slice(&payload.catalyst);
+                fields.nutrient.copy_from_slice(&payload.nutrient);
+                fields.fuel.copy_from_slice(&payload.fuel);
+                fields.waste.copy_from_slice(&payload.waste);
+                // Legacy five-field payloads do not carry A/M; clear only after acceptance.
                 fields.activated.fill(0.0);
                 fields.membrane.fill(0.0);
             }
             SnapshotFields::SevenField(payload) => {
+                validate_equal_lengths(
+                    expected,
+                    &[
+                        ("structure", payload.structure.len()),
+                        ("catalyst", payload.catalyst.len()),
+                        ("nutrient", payload.nutrient.len()),
+                        ("fuel", payload.fuel.len()),
+                        ("waste", payload.waste.len()),
+                        ("activated", payload.activated.len()),
+                        ("membrane", payload.membrane.len()),
+                    ],
+                )?;
+                fields.structure.copy_from_slice(&payload.structure);
+                fields.catalyst.copy_from_slice(&payload.catalyst);
+                fields.nutrient.copy_from_slice(&payload.nutrient);
+                fields.fuel.copy_from_slice(&payload.fuel);
+                fields.waste.copy_from_slice(&payload.waste);
                 fields.activated.copy_from_slice(&payload.activated);
                 fields.membrane.copy_from_slice(&payload.membrane);
             }
         }
+        Ok(())
     }
 
     pub fn to_json(&self) -> Result<String, serde_json::Error> {
@@ -270,7 +308,15 @@ impl FieldSnapshot {
         self.validate().map(|()| self).map_err(json_error)
     }
 
-    fn validate(&self) -> Result<(), String> {
+    pub fn validate(&self) -> Result<(), String> {
+        match self.snapshot_schema_version {
+            1 | SNAPSHOT_SCHEMA_VERSION => {}
+            other => {
+                return Err(format!(
+                    "unsupported snapshot_schema_version {other}; known versions are 1 and {SNAPSHOT_SCHEMA_VERSION}"
+                ));
+            }
+        }
         if self.equation_version != self.params.equation_version {
             return Err("snapshot and parameter equation versions differ".to_string());
         }
@@ -302,6 +348,32 @@ impl FieldSnapshot {
             }
         }
     }
+}
+
+fn validate_destination_lengths(fields: &FieldBuffers, expected: usize) -> Result<(), String> {
+    validate_equal_lengths(
+        expected,
+        &[
+            ("structure", fields.structure.len()),
+            ("catalyst", fields.catalyst.len()),
+            ("nutrient", fields.nutrient.len()),
+            ("fuel", fields.fuel.len()),
+            ("waste", fields.waste.len()),
+            ("activated", fields.activated.len()),
+            ("membrane", fields.membrane.len()),
+        ],
+    )
+}
+
+fn validate_equal_lengths(expected: usize, lengths: &[(&str, usize)]) -> Result<(), String> {
+    for (name, len) in lengths {
+        if *len != expected {
+            return Err(format!(
+                "snapshot field length mismatch for {name}: got {len}, expected {expected}"
+            ));
+        }
+    }
+    Ok(())
 }
 
 #[derive(Debug, Deserialize)]
