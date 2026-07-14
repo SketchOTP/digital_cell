@@ -390,6 +390,10 @@ fn stage_b_case_pass(sim: &Simulation, minimum_after_transient: f64) -> bool {
         && sim.membrane_accounting.cumulative.residual.abs() < 1e-8
 }
 
+fn stage_b_run_count(candidate_runs: usize, initial_state_runs: usize) -> usize {
+    candidate_runs + initial_state_runs
+}
+
 pub fn run_stage_b(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
     if output.exists() {
         return Err(format!(
@@ -562,7 +566,7 @@ pub fn run_stage_b(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
         "simulated_time": selected_sim.sim_time,
         "aggregate_accepted_substeps": aggregate_accepted_substeps,
         "aggregate_simulated_time": aggregate_simulated_time,
-        "run_count": 3 + if stage_pass { 2 } else { 0 },
+        "run_count": stage_b_run_count(candidate_runs.len(), initial_state_results.len()),
         "membrane_accounting": selected_sim.membrane_accounting,
         "localization": {
             "interface_threshold": 0.25,
@@ -944,5 +948,10 @@ mod tests {
         let err = run_stage_b(&output).expect_err("immutable rerun refusal");
         assert!(err.to_string().contains("refusing to overwrite"));
         fs::remove_dir_all(&output).expect("cleanup temp stage-b artifact");
+    }
+
+    #[test]
+    fn stage_b_run_count_includes_executed_robustness_failures() {
+        assert_eq!(stage_b_run_count(3, 2), 5);
     }
 }
