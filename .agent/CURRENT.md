@@ -1,25 +1,24 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260714-d008-membrane-metabolic-closure
-- Project directive: D-008
-- Goal: Seven-field protocell with self-produced selective membrane and activated internal metabolism
-- Status: design exploration — implementation not started
-- Acceptance: D-007 preserved; sequential A-G gates; one evidence-backed D008_* conclusion
-- Touched files: .agent/DIRECTIVES.md, .agent/CURRENT.md, .agent/LEARNINGS.md, D-008 design spec
-- Next action: user review of approved design spec, then detailed implementation plan
+- ID: D-20260714-d009-phase1-causal-closure
+- Project directive: D-009
+- Goal: Establish Phase 1 causal closure from the accepted D-008 seven-field protocell
+- Status: blocked at entry gate — D-008 implementation and pass evidence do not exist
+- Acceptance: Stop with D009_BLOCKED_D008_NOT_PASSED unless committed D008_MEMBRANE_METABOLIC_CLOSURE_PASS evidence exists
+- Touched files: .agent/DIRECTIVES.md, .agent/CURRENT.md, .agent/OUTCOMES.md
+- Next action: complete D-008 implementation, governed experiments, final report, result commit, and pass tag before retrying D-009
 
 ## Repo facts needed now
-- D-007 commit/tag: bd7d5cfd5ea6a1689feae34f4285e950d61bc21d / D-007-five-field-model-rejected
-- D-007 manifest SHA-256: abb9071bd26ef01604bb2a88182f8574eb687c50598b17a890ebe072858fa343
-- D-007 binary SHA-256: eb91db836917baefdb90cbb8648879f0259e0841216683ceb85bc192eec98d29
-- D-007 tracked tree was clean immediately after tagging
-- Serena configured but unavailable for Rust symbol navigation; reported Active languages: []
-- Phase1: PHASE1_SELF_MAINTENANCE_PARTIAL
+- Current branch: d008-membrane-metabolic-closure
+- HEAD: f72be6b, approved D-008 design only
+- No D-008 tags, final report, governed candidate config, or generated artifacts were found
+- D-008 status in prior CURRENT.md: implementation not started
+- Phase 1 remains PHASE1_SELF_MAINTENANCE_PARTIAL
 
 ## Last validation
-- Command: cargo test -p chemistry-core --release --test d007_tests
-- Result: 26 PASS on D-007 baseline commit
+- Command: git status/tag/log audit plus D-008 artifact glob checks
+- Result: entry gate failed; no D008_MEMBRANE_METABOLIC_CLOSURE_PASS evidence
 
 ## Open blockers
-- None; design spec awaits user review before implementation planning
+- D-008 must pass and produce the required committed evidence before D-009 may execute
