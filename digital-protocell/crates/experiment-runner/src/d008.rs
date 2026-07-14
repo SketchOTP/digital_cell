@@ -1,9 +1,10 @@
 //! D-008 deterministic staged runners.
 
 use chemistry_core::{
-    build_candidate_identity, field_sha256_stable, CandidateIdentity, EquationVersion, FieldBuffers,
+    build_candidate_identity, field_sha256_stable, interface_weight, membrane_calibration,
+    membrane_candidates, membrane_partition, CandidateIdentity, EquationVersion, FieldBuffers,
     FieldSchemaVersion, SimParams, Simulation, SpeciesTransportAccounting, TransportSpecies,
-    SNAPSHOT_SCHEMA_VERSION,
+    MEMBRANE_CANDIDATE_FACTORS, SNAPSHOT_SCHEMA_VERSION,
 };
 use serde::Deserialize;
 use serde_json::{json, Map, Value};
@@ -12,6 +13,10 @@ use std::path::{Path, PathBuf};
 use std::process::Command;
 
 const MEMBRANE_LEVELS: [f64; 5] = [0.0, 0.25, 0.5, 0.75, 1.0];
+const STAGE_B_TRANSIENT_STEPS: u64 = 15_000;
+const STAGE_B_EVALUATION_STEPS: u64 = 1_000;
+const STAGE_B_STEPS: u64 = STAGE_B_TRANSIENT_STEPS + STAGE_B_EVALUATION_STEPS;
+const STAGE_B_INITIAL_LEVELS: [f64; 3] = [0.25, 0.50, 0.75];
 
 #[derive(Debug, Deserialize)]
 struct StageAReference {
@@ -22,6 +27,12 @@ struct StageAReference {
     beta_n: f64,
     beta_f: f64,
     beta_w: f64,
+    m_max: f64,
+    d_m: f64,
+    k_membrane_decay: f64,
+    k_membrane_detach: f64,
+    k_c_membrane: f64,
+    k_membrane: f64,
 }
 
 fn git_commit_hash() -> Result<String, Box<dyn std::error::Error>> {
@@ -30,11 +41,7 @@ fn git_commit_hash() -> Result<String, Box<dyn std::error::Error>> {
         .output()
         .map_err(|err| format!("git_commit_hash failed: {err}"))?;
     if !output.status.success() {
-        return Err(format!(
-            "git_commit_hash failed: git exited {}",
-            output.status
-        )
-        .into());
+        return Err(format!("git_commit_hash failed: git exited {}", output.status).into());
     }
     let value = String::from_utf8(output.stdout)
         .map_err(|err| format!("git_commit_hash failed: {err}"))?
@@ -77,6 +84,12 @@ fn reference_params() -> Result<SimParams, Box<dyn std::error::Error>> {
     params.beta_n = reference.beta_n;
     params.beta_f = reference.beta_f;
     params.beta_w = reference.beta_w;
+    params.m_max = reference.m_max;
+    params.d_m = reference.d_m;
+    params.k_membrane_decay = reference.k_membrane_decay;
+    params.k_membrane_detach = reference.k_membrane_detach;
+    params.k_c_membrane = reference.k_c_membrane;
+    params.k_membrane = reference.k_membrane;
     params.reactions_enabled = false;
     params.phase_separation_enabled = false;
     Ok(params)
@@ -329,6 +342,250 @@ pub fn run_stage_a(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
     Ok(result)
 }
 
+fn prepare_stage_b(sim: &mut Simulation, initial_level: f64) {
+    sim.observer_enabled = false;
+    sim.params.d008_stage_b_enabled = true;
+    for idx in 0..sim.fields.membrane.len() {
+        sim.fields.membrane[idx] = if sim.grid.in_dish(idx) {
+            initial_level * interface_weight(sim.fields.structure[idx])
+        } else {
+            0.0
+        };
+    }
+}
+
+fn run_stage_b_case(mut params: SimParams, initial_level: f64) -> (Simulation, f64) {
+    params.d008_stage_b_enabled = true;
+    let mut sim = Simulation::new(params);
+    prepare_stage_b(&mut sim, initial_level);
+    let mut minimum_after_transient = f64::INFINITY;
+    for _ in 0..STAGE_B_STEPS {
+        if !sim.step() {
+            break;
+        }
+        if sim.substep > STAGE_B_TRANSIENT_STEPS {
+            minimum_after_transient = minimum_after_transient.min(
+                membrane_partition(&sim.grid, &sim.fields.structure, &sim.fields.membrane)
+                    .localization_fraction,
+            );
+        }
+    }
+    (sim, minimum_after_transient)
+}
+
+fn stage_b_case_pass(sim: &Simulation, minimum_after_transient: f64) -> bool {
+    let partition = membrane_partition(&sim.grid, &sim.fields.structure, &sim.fields.membrane);
+    sim.substep == STAGE_B_STEPS
+        && sim.rejection_count == 0
+        && sim
+            .fields
+            .membrane
+            .iter()
+            .all(|&value| value.is_finite() && value >= 0.0 && value <= sim.params.m_max)
+        && partition.total_mass > f64::EPSILON
+        && minimum_after_transient >= 0.90
+        && sim.membrane_accounting.cumulative.synthesis > 0.0
+        && sim.membrane_accounting.cumulative.decay > 0.0
+        && sim.membrane_accounting.cumulative.detachment > 0.0
+        && sim.membrane_accounting.cumulative.residual.abs() < 1e-8
+}
+
+pub fn run_stage_b(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
+    if output.exists() {
+        return Err(format!(
+            "refusing to overwrite Stage B attempt: {}",
+            output.display()
+        )
+        .into());
+    }
+    fs::create_dir_all(output)?;
+
+    let mut reference = reference_params()?;
+    reference.d008_stage_b_enabled = true;
+    let calibration_seed = {
+        let mut sim = Simulation::new(reference.clone());
+        prepare_stage_b(&mut sim, 0.50);
+        sim
+    };
+    let calibration = membrane_calibration(
+        &calibration_seed.fields.structure,
+        &calibration_seed.fields.catalyst,
+        &calibration_seed.fields.activated,
+        &calibration_seed.fields.membrane,
+        &calibration_seed.grid.dish_mask,
+        &reference,
+    );
+    let candidate_rates = membrane_candidates(calibration.k_required);
+    let source_commit = git_commit_hash()?;
+    let binary_sha256 = binary_hash()?;
+    validate_stage_a_provenance(&source_commit, &binary_sha256)?;
+
+    let mut candidate_runs = Vec::new();
+    for (factor, rate) in MEMBRANE_CANDIDATE_FACTORS.into_iter().zip(candidate_rates) {
+        let mut params = reference.clone();
+        params.k_membrane = rate;
+        let identity = build_candidate_identity(
+            params.clone(),
+            &source_commit,
+            Some("d008-membrane-metabolic-closure"),
+            None,
+            "D-008 Stage B prescribed-balance candidate",
+            None,
+            None,
+        );
+        let initial = {
+            let mut sim = Simulation::new(params.clone());
+            prepare_stage_b(&mut sim, 0.50);
+            seven_field_hashes(&sim.fields)
+        };
+        let (sim, minimum_after_transient) = run_stage_b_case(params, 0.50);
+        let partition = membrane_partition(&sim.grid, &sim.fields.structure, &sim.fields.membrane);
+        let pass = stage_b_case_pass(&sim, minimum_after_transient);
+        candidate_runs.push((
+            factor,
+            identity,
+            initial,
+            sim,
+            partition,
+            minimum_after_transient,
+            pass,
+        ));
+    }
+
+    let selected_index = candidate_runs
+        .iter()
+        .enumerate()
+        .filter(|(_, run)| run.6)
+        .min_by(|(_, left), (_, right)| {
+            (left.0 - 1.0)
+                .abs()
+                .total_cmp(&(right.0 - 1.0).abs())
+                .then_with(|| {
+                    right
+                        .4
+                        .localization_fraction
+                        .total_cmp(&left.4.localization_fraction)
+                })
+        })
+        .map(|(index, _)| index);
+
+    let mut candidate_results = Vec::new();
+    for (factor, identity, initial, sim, partition, minimum_after_transient, pass) in
+        &candidate_runs
+    {
+        candidate_results.push(json!({
+            "factor": factor,
+            "k_membrane": identity.params.k_membrane,
+            "candidate_id": identity.candidate_id,
+            "candidate_hash": identity.candidate_hash,
+            "configuration_hash": identity.configuration_hash,
+            "initial_membrane_level": 0.50,
+            "initial_field_hashes": initial,
+            "final_field_hashes": seven_field_hashes(&sim.fields),
+            "accepted_substeps": sim.substep,
+            "simulated_time": sim.sim_time,
+            "rejection_count": sim.rejection_count,
+            "membrane_accounting": sim.membrane_accounting,
+            "mass_partition": partition,
+            "bounded": sim.fields.membrane.iter().all(|&m| m.is_finite() && m >= 0.0 && m <= sim.params.m_max),
+            "positive_turnover": sim.membrane_accounting.cumulative.synthesis > 0.0
+                && sim.membrane_accounting.cumulative.decay > 0.0
+                && sim.membrane_accounting.cumulative.detachment > 0.0,
+            "minimum_localization_after_transient": minimum_after_transient,
+            "localized": *minimum_after_transient >= 0.90,
+            "nonvanishing": partition.total_mass > f64::EPSILON,
+            "result": if *pass { "pass" } else { "fail" },
+        }));
+    }
+
+    let mut aggregate_accepted_substeps: u64 = candidate_runs.iter().map(|run| run.3.substep).sum();
+    let mut aggregate_simulated_time: f64 = candidate_runs.iter().map(|run| run.3.sim_time).sum();
+    let mut initial_state_results = Vec::new();
+    let mut initial_states_pass = true;
+    let mut initial_states_clean = true;
+    let (
+        selected_identity,
+        selected_initial,
+        selected_sim,
+        selected_partition,
+        selected_minimum_localization,
+    ) = if let Some(index) = selected_index {
+        let selected_params = candidate_runs[index].1.params.clone();
+        for initial_level in [STAGE_B_INITIAL_LEVELS[0], STAGE_B_INITIAL_LEVELS[2]] {
+            let (sim, minimum_after_transient) =
+                run_stage_b_case(selected_params.clone(), initial_level);
+            aggregate_accepted_substeps += sim.substep;
+            aggregate_simulated_time += sim.sim_time;
+            initial_states_pass &= stage_b_case_pass(&sim, minimum_after_transient);
+            initial_states_clean &= sim.substep == STAGE_B_STEPS && sim.rejection_count == 0;
+            initial_state_results.push(json!({
+                    "initial_membrane_level": initial_level,
+                    "accepted_substeps": sim.substep,
+                    "simulated_time": sim.sim_time,
+                    "clean_termination": sim.substep == STAGE_B_STEPS && sim.rejection_count == 0,
+                    "membrane_accounting": sim.membrane_accounting,
+                    "mass_partition": membrane_partition(&sim.grid, &sim.fields.structure, &sim.fields.membrane),
+                    "minimum_localization_after_transient": minimum_after_transient,
+                    "field_hashes": seven_field_hashes(&sim.fields),
+                }));
+        }
+        let run = &candidate_runs[index];
+        (&run.1, &run.2, &run.3, run.4, run.5)
+    } else {
+        let run = &candidate_runs[1];
+        (&run.1, &run.2, &run.3, run.4, run.5)
+    };
+
+    let stage_pass = selected_index.is_some() && initial_states_pass;
+    let result = json!({
+        "snapshot_schema_version": SNAPSHOT_SCHEMA_VERSION,
+        "field_schema_version": FieldSchemaVersion::SevenFieldV1,
+        "equation_version": EquationVersion::MembraneMetabolismV1,
+        "candidate_id": selected_identity.candidate_id,
+        "candidate_hash": selected_identity.candidate_hash,
+        "configuration_hash": selected_identity.configuration_hash,
+        "selected_candidate_hash": selected_identity.candidate_hash,
+        "selected_configuration_hash": selected_identity.configuration_hash,
+        "source_commit": source_commit,
+        "binary_sha256": binary_sha256,
+        "seed_recipe": "fixed_circular_phi_seed_with_fixed_C_A_and_M_level_times_interface_weight",
+        "calibration": calibration,
+        "candidate_factors": MEMBRANE_CANDIDATE_FACTORS,
+        "candidate_results": candidate_results,
+        "initial_state_results": initial_state_results,
+        "fixed_field_hashes": {
+            "initial": selected_initial,
+            "final": seven_field_hashes(&selected_sim.fields),
+        },
+        "field_hashes": seven_field_hashes(&selected_sim.fields),
+        "accepted_substeps": selected_sim.substep,
+        "simulated_time": selected_sim.sim_time,
+        "aggregate_accepted_substeps": aggregate_accepted_substeps,
+        "aggregate_simulated_time": aggregate_simulated_time,
+        "run_count": 3 + if stage_pass { 2 } else { 0 },
+        "membrane_accounting": selected_sim.membrane_accounting,
+        "localization": {
+            "interface_threshold": 0.25,
+            "transient_steps": STAGE_B_TRANSIENT_STEPS,
+            "evaluation_steps": STAGE_B_EVALUATION_STEPS,
+            "minimum_after_transient": selected_minimum_localization,
+        },
+        "mass_partitions": selected_partition,
+        "clean_termination": candidate_runs.iter().all(|run| run.3.substep == STAGE_B_STEPS && run.3.rejection_count == 0)
+            && initial_states_clean,
+        "stage_classification": if stage_pass {
+            "D008_STAGE_B_LOCALIZATION_PASS"
+        } else {
+            "D008_STAGE_B_LOCALIZATION_FAIL"
+        },
+    });
+    fs::write(
+        output.join("result.json"),
+        serde_json::to_vec_pretty(&result)?,
+    )?;
+    Ok(result)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -362,6 +619,34 @@ mod tests {
         "seed_recipe",
         "field_hashes",
         "transport_accounting",
+        "clean_termination",
+        "stage_classification",
+    ];
+
+    const STAGE_B_REQUIRED_TOP_LEVEL_KEYS: &[&str] = &[
+        "snapshot_schema_version",
+        "field_schema_version",
+        "equation_version",
+        "candidate_id",
+        "candidate_hash",
+        "configuration_hash",
+        "source_commit",
+        "binary_sha256",
+        "accepted_substeps",
+        "simulated_time",
+        "aggregate_accepted_substeps",
+        "aggregate_simulated_time",
+        "run_count",
+        "seed_recipe",
+        "fixed_field_hashes",
+        "selected_configuration_hash",
+        "selected_candidate_hash",
+        "calibration",
+        "candidate_factors",
+        "candidate_results",
+        "membrane_accounting",
+        "localization",
+        "mass_partitions",
         "clean_termination",
         "stage_classification",
     ];
@@ -574,10 +859,7 @@ mod tests {
                 if membrane == 0.0 {
                     baseline = Some(flux);
                 } else {
-                    assert!(
-                        flux < baseline.unwrap(),
-                        "{id} not attenuated vs M=0"
-                    );
+                    assert!(flux < baseline.unwrap(), "{id} not attenuated vs M=0");
                 }
                 if membrane == 1.0 {
                     let normalized = point["normalized_to_zero_membrane"].as_f64().unwrap();
@@ -596,5 +878,71 @@ mod tests {
         );
 
         fs::remove_dir_all(&output).expect("cleanup temp stage-a artifact");
+    }
+
+    #[test]
+    fn run_stage_b_has_exact_candidates_complete_schema_and_immutable_output() {
+        let stamp = SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .expect("clock")
+            .as_nanos();
+        let output = std::env::temp_dir().join(format!("d008_stage_b_path_{stamp}"));
+        let _ = fs::remove_dir_all(&output);
+
+        let result = run_stage_b(&output).expect("stage b run");
+        let on_disk: Value = serde_json::from_slice(
+            &fs::read(output.join("result.json")).expect("result.json readable"),
+        )
+        .expect("result.json parses");
+        for key in STAGE_B_REQUIRED_TOP_LEVEL_KEYS {
+            assert!(on_disk.get(key).is_some(), "missing Stage B key {key}");
+        }
+        assert_eq!(on_disk["candidate_factors"], json!([0.75, 1.0, 1.25]));
+        assert_eq!(
+            on_disk["candidate_results"]
+                .as_array()
+                .expect("candidate results")
+                .len(),
+            3
+        );
+        assert_eq!(
+            on_disk["stage_classification"],
+            json!("D008_STAGE_B_LOCALIZATION_PASS")
+        );
+        assert_eq!(
+            on_disk["selected_candidate_hash"],
+            result["selected_candidate_hash"]
+        );
+        assert!(on_disk["clean_termination"].as_bool().unwrap());
+        assert!(on_disk["accepted_substeps"].as_u64().unwrap() > 1);
+        assert!(
+            on_disk["localization"]["minimum_after_transient"]
+                .as_f64()
+                .unwrap()
+                >= 0.90
+        );
+        for key in [
+            "structure",
+            "catalyst",
+            "nutrient",
+            "fuel",
+            "waste",
+            "activated",
+        ] {
+            assert_eq!(
+                on_disk["fixed_field_hashes"]["initial"][key],
+                on_disk["fixed_field_hashes"]["final"][key],
+                "fixed field changed: {key}"
+            );
+        }
+        let accounting = &on_disk["membrane_accounting"]["cumulative"];
+        assert!(accounting["synthesis"].as_f64().unwrap() > 0.0);
+        assert!(accounting["decay"].as_f64().unwrap() > 0.0);
+        assert!(accounting["detachment"].as_f64().unwrap() > 0.0);
+        assert!(accounting["residual"].as_f64().unwrap().abs() < 1e-8);
+
+        let err = run_stage_b(&output).expect_err("immutable rerun refusal");
+        assert!(err.to_string().contains("refusing to overwrite"));
+        fs::remove_dir_all(&output).expect("cleanup temp stage-b artifact");
     }
 }

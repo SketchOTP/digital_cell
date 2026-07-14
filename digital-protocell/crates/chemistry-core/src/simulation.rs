@@ -14,7 +14,11 @@ use crate::fields::{
 };
 use crate::grid::Grid;
 use crate::interventions::apply_intervention;
-use crate::membrane_accounting::{TransportAccountingState, TransportStepAccounting};
+use crate::membrane::{evolve_fixed_membrane, MembraneEvolutionTotals};
+use crate::membrane_accounting::{
+    MembraneAccountingState, MembraneStepAccounting, TransportAccountingState,
+    TransportStepAccounting,
+};
 use crate::membrane_transport::{transport_field, TransportSpecies};
 use crate::operators::{diffuse_constant, diffuse_variable, laplacian};
 use crate::phase_field::{chemical_potential_local, compute_interior_weights, structure_rate};
@@ -45,6 +49,7 @@ pub struct Simulation {
     pub detector: CellDetector,
     pub accounting: AccountingState,
     pub transport_accounting: TransportAccountingState,
+    pub membrane_accounting: MembraneAccountingState,
     pub substep: u64,
     pub sim_time: f64,
     pub dt: f64,
@@ -77,6 +82,7 @@ impl Simulation {
             detector,
             accounting: AccountingState::default(),
             transport_accounting: TransportAccountingState::default(),
+            membrane_accounting: MembraneAccountingState::default(),
             substep: 0,
             sim_time: 0.0,
             dt: MAX_DT,
@@ -144,6 +150,9 @@ impl Simulation {
                 EquationVersion::D001BulkV1
                 | EquationVersion::D003CrowdingV1
                 | EquationVersion::SurfaceTurnoverV1 => self.try_legacy_substep(attempt_dt),
+                EquationVersion::MembraneMetabolismV1 if self.params.d008_stage_b_enabled => {
+                    self.try_d008_stage_b(attempt_dt)
+                }
                 EquationVersion::MembraneMetabolismV1 => {
                     self.try_membrane_metabolism_v1_transport(attempt_dt)
                 }
@@ -686,21 +695,97 @@ impl Simulation {
                 pre_clamp_a,
                 mass_a_after,
             ),
+            membrane: build_field_ledger(mass_m_before, 0.0, 0.0, 0.0, mass_m_after, mass_m_after),
+        };
+        self.accounting
+            .record_step(step_accounting, &ReactionStepTotals::default(), clamp_total);
+        self.transport_accounting.record_accepted(transport, dt);
+        self.fields.swap();
+        SubstepResult::Ok
+    }
+
+    fn try_d008_stage_b(&mut self, dt: f64) -> SubstepResult {
+        if self
+            .fields
+            .membrane
+            .iter()
+            .enumerate()
+            .any(|(idx, &value)| {
+                self.grid.in_dish(idx)
+                    && (!value.is_finite() || value < 0.0 || value > self.params.m_max)
+            })
+        {
+            return SubstepResult::Reject;
+        }
+
+        let mass_phi = field_mass(&self.grid, &self.fields.structure);
+        let mass_c = field_mass(&self.grid, &self.fields.catalyst);
+        let mass_n = field_mass(&self.grid, &self.fields.nutrient);
+        let mass_f = field_mass(&self.grid, &self.fields.fuel);
+        let mass_w = field_mass(&self.grid, &self.fields.waste);
+        let mass_a = field_mass(&self.grid, &self.fields.activated);
+        let mass_m_before = field_mass(&self.grid, &self.fields.membrane);
+
+        self.fields.copy_current_to_next();
+        let evolution = evolve_fixed_membrane(
+            &self.grid,
+            &self.fields.structure,
+            &self.fields.catalyst,
+            &self.fields.activated,
+            &self.fields.membrane,
+            &self.params,
+            dt,
+            &mut self.fields.scratch_lap,
+            &mut self.fields.scratch_transport_c,
+            &mut self.fields.membrane_next,
+        );
+        let pre_clamp_m = field_mass(&self.grid, &self.fields.membrane_next);
+        for (idx, value) in self.fields.membrane_next.iter_mut().enumerate() {
+            if !self.grid.in_dish(idx) {
+                continue;
+            }
+            if !value.is_finite() || *value < NEG_CLAMP {
+                return SubstepResult::Reject;
+            }
+            *value = value.max(0.0).min(self.params.m_max);
+        }
+
+        if validate_structure_field(&self.fields.structure_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.catalyst_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.nutrient_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.fuel_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.waste_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.activated_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.membrane_next, &self.grid.dish_mask).is_err()
+        {
+            return SubstepResult::Reject;
+        }
+
+        let mass_m_after = field_mass(&self.grid, &self.fields.membrane_next);
+        let membrane_step =
+            build_membrane_step(mass_m_before, pre_clamp_m, mass_m_after, evolution);
+        let step_accounting = StepAccounting {
+            structure: build_field_ledger(mass_phi, 0.0, 0.0, 0.0, mass_phi, mass_phi),
+            catalyst: build_field_ledger(mass_c, 0.0, 0.0, 0.0, mass_c, mass_c),
+            nutrient: build_field_ledger(mass_n, 0.0, 0.0, 0.0, mass_n, mass_n),
+            fuel: build_field_ledger(mass_f, 0.0, 0.0, 0.0, mass_f, mass_f),
+            waste: build_field_ledger(mass_w, 0.0, 0.0, 0.0, mass_w, mass_w),
+            activated: build_field_ledger(mass_a, 0.0, 0.0, 0.0, mass_a, mass_a),
             membrane: build_field_ledger(
                 mass_m_before,
+                evolution.synthesis_delta - evolution.decay_delta - evolution.detachment_delta,
+                evolution.diffusion_delta,
                 0.0,
-                0.0,
-                0.0,
-                mass_m_after,
+                pre_clamp_m,
                 mass_m_after,
             ),
         };
         self.accounting.record_step(
             step_accounting,
             &ReactionStepTotals::default(),
-            clamp_total,
+            membrane_step.clamp_correction,
         );
-        self.transport_accounting.record_accepted(transport, dt);
+        self.membrane_accounting.record_accepted(membrane_step);
         self.fields.swap();
         SubstepResult::Ok
     }
@@ -854,6 +939,32 @@ fn append_field_bits(out: &mut Vec<u8>, field: &[f64]) {
 enum SubstepResult {
     Ok,
     Reject,
+}
+
+fn build_membrane_step(
+    mass_before: f64,
+    pre_clamp_mass: f64,
+    mass_after: f64,
+    evolution: MembraneEvolutionTotals,
+) -> MembraneStepAccounting {
+    let clamp_correction = mass_after - pre_clamp_mass;
+    let residual = mass_after
+        - (mass_before + evolution.synthesis_delta
+            - evolution.decay_delta
+            - evolution.detachment_delta
+            + evolution.diffusion_delta
+            + clamp_correction);
+    MembraneStepAccounting {
+        mass_before,
+        synthesis: evolution.synthesis_delta,
+        decay: evolution.decay_delta,
+        detachment: evolution.detachment_delta,
+        diffusion_net: evolution.diffusion_delta,
+        pre_clamp_mass,
+        clamp_correction,
+        mass_after,
+        residual,
+    }
 }
 
 /// Run experiment with interventions, return final simulation state.

@@ -1,4 +1,4 @@
-//! D-008 Stage 0 schema and Stage A static membrane-transport tests.
+//! D-008 Stage 0, Stage A transport, and Stage B membrane-localization tests.
 
 use chemistry_core::*;
 
@@ -317,7 +317,9 @@ fn d008_hash_identifies_equation_and_field_schema_in_fixed_order() {
     assert!(bytes.ends_with(
         "equation_version=membrane_metabolism_v1;k_structure_interface=0;\
 k_c_structure=0.1;d_a=0.04;beta_c=4.6;beta_a=4.6;beta_n=1.2;beta_f=1.2;\
-beta_w=0.2;field_schema_version=seven_field_v1;snapshot_schema_version=2"
+beta_w=0.2;m_max=1;d_m=0.001;k_membrane_decay=0.002;k_membrane_detach=0.02;\
+k_c_membrane=0.1;k_membrane=0;d008_stage_b_enabled=false;\
+field_schema_version=seven_field_v1;snapshot_schema_version=2"
     ));
     assert_eq!(
         candidate_hash(&d008_params(), &GridConfiguration::default()),
@@ -587,8 +589,14 @@ fn rejected_d008_transport_step_swaps_none_and_records_no_transport() {
 
     assert_eq!(buffer_addresses(&sim.fields), before);
     assert_eq!(sim.transport_accounting.accepted_steps, 0);
-    assert_eq!(sim.accounting.last_step.activated.mass_before, ledger_before.mass_before);
-    assert_eq!(sim.accounting.last_step.activated.mass_after, ledger_before.mass_after);
+    assert_eq!(
+        sim.accounting.last_step.activated.mass_before,
+        ledger_before.mass_before
+    );
+    assert_eq!(
+        sim.accounting.last_step.activated.mass_after,
+        ledger_before.mass_after
+    );
     assert_eq!(sim.accounting.cumulative.clamp_corrections, clamp_before);
 }
 
@@ -665,7 +673,11 @@ fn d008_transport_step_clamp_correction_closes_ledger() {
     );
     assert!(accounting.net_change_rate.abs() < 1e-12);
     let target = 0.5 * NEG_CLAMP; // -5e-7
-    assert!(rate[center] < 0.0, "center must outflow, rate={}", rate[center]);
+    assert!(
+        rate[center] < 0.0,
+        "center must outflow, rate={}",
+        rate[center]
+    );
     let dt = (target - c0) / rate[center];
     assert!(dt > 0.0, "dt={dt}");
     let predicted = c0 + dt * rate[center];
@@ -839,4 +851,172 @@ fn field_sha256_stable_is_fixed_digest_not_default_hasher() {
     assert_eq!(stable.len(), 64);
     assert_ne!(stable, legacy);
     assert_eq!(stable, field_sha256_stable(&field));
+}
+
+#[test]
+fn membrane_synthesis_requires_activated_catalyst_and_interface_and_saturates() {
+    let mut params = d008_params();
+    params.k_membrane = 0.4;
+    let productive = membrane_rates(0.5, 0.4, 0.3, 0.2, &params);
+    assert!(productive.synthesis > 0.0);
+    assert_eq!(membrane_rates(0.5, 0.4, 0.0, 0.2, &params).synthesis, 0.0);
+    assert_eq!(membrane_rates(0.5, 0.0, 0.3, 0.2, &params).synthesis, 0.0);
+    assert_eq!(membrane_rates(0.0, 0.4, 0.3, 0.2, &params).synthesis, 0.0);
+    assert_eq!(membrane_rates(0.5, 0.4, 0.3, 1.0, &params).synthesis, 0.0);
+    assert!(membrane_rates(0.5, 0.4, 0.3, 0.75, &params).synthesis < productive.synthesis);
+}
+
+#[test]
+fn membrane_losses_include_decay_and_positive_off_interface_detachment() {
+    let params = d008_params();
+    let interface = membrane_rates(0.5, 0.0, 0.0, 0.5, &params);
+    let off_interface = membrane_rates(0.0, 0.0, 0.0, 0.5, &params);
+    assert!(interface.decay > 0.0);
+    assert!(off_interface.detachment > 0.0);
+    assert!(off_interface.detachment > interface.detachment);
+}
+
+#[test]
+fn membrane_diffusion_is_conservative_and_localization_is_observer_only() {
+    let grid = Grid::new();
+    let mut membrane = vec![0.0; grid.width * grid.height];
+    membrane[Grid::index(grid.width, grid.cx as usize, grid.cy as usize)] = 1.0;
+    let mut lap = vec![0.0; membrane.len()];
+    let mut rate = vec![0.0; membrane.len()];
+    membrane_diffusion_rate(&grid, &membrane, 0.001, &mut lap, &mut rate);
+    let net: f64 = grid
+        .dish_mask
+        .iter()
+        .zip(&rate)
+        .filter(|(inside, _)| **inside)
+        .map(|(_, value)| *value)
+        .sum();
+    assert!(net.abs() < 1e-12, "diffusion net={net}");
+
+    let phi = vec![0.5; membrane.len()];
+    let before = membrane.clone();
+    let partition = membrane_partition(&grid, &phi, &membrane);
+    assert_eq!(partition.localization_fraction, 1.0);
+    assert_eq!(membrane, before, "diagnostics must not mutate membrane");
+}
+
+#[test]
+fn membrane_calibration_uses_exact_balance_and_three_candidates() {
+    let params = d008_params();
+    let phi = [0.5, 0.0];
+    let catalyst = [0.4, 0.4];
+    let activated = [0.3, 0.3];
+    let membrane = [0.5, 0.5];
+    let mask = [true, true];
+    let calibration = membrane_calibration(&phi, &catalyst, &activated, &membrane, &mask, &params);
+    let expected_basis =
+        membrane_basis(0.5, 0.4, 0.3, 0.5, &params) + membrane_basis(0.0, 0.4, 0.3, 0.5, &params);
+    let expected_loss = membrane_losses(0.5, 0.5, &params) + membrane_losses(0.0, 0.5, &params);
+    assert!((calibration.production_basis - expected_basis).abs() < 1e-15);
+    assert!((calibration.loss - expected_loss).abs() < 1e-15);
+    assert!((calibration.k_required - expected_loss / expected_basis).abs() < 1e-15);
+    assert_eq!(
+        membrane_candidates(calibration.k_required),
+        [
+            0.75 * calibration.k_required,
+            calibration.k_required,
+            1.25 * calibration.k_required,
+        ]
+    );
+}
+
+#[test]
+fn stage_b_advances_only_membrane_and_swaps_all_seven_buffers() {
+    let mut params = d008_params();
+    params.d008_stage_b_enabled = true;
+    params.k_membrane = 0.05;
+    let mut sim = Simulation::new(params);
+    sim.observer_enabled = false;
+    let fixed_before = [
+        sim.fields.structure.clone(),
+        sim.fields.catalyst.clone(),
+        sim.fields.nutrient.clone(),
+        sim.fields.fuel.clone(),
+        sim.fields.waste.clone(),
+        sim.fields.activated.clone(),
+    ];
+    let membrane_before = sim.fields.membrane.clone();
+    let addresses_before = buffer_addresses(&sim.fields);
+
+    assert!(sim.step());
+
+    assert_eq!(sim.fields.structure, fixed_before[0]);
+    assert_eq!(sim.fields.catalyst, fixed_before[1]);
+    assert_eq!(sim.fields.nutrient, fixed_before[2]);
+    assert_eq!(sim.fields.fuel, fixed_before[3]);
+    assert_eq!(sim.fields.waste, fixed_before[4]);
+    assert_eq!(sim.fields.activated, fixed_before[5]);
+    assert_ne!(sim.fields.membrane, membrane_before);
+    assert_eq!(buffer_addresses(&sim.fields).0, addresses_before.1);
+    assert_eq!(sim.rejection_count, 0);
+    assert!(sim.membrane_accounting.last_step.synthesis > 0.0);
+    assert!(sim.membrane_accounting.last_step.decay > 0.0);
+    assert!(sim.membrane_accounting.last_step.detachment > 0.0);
+    assert!(sim.membrane_accounting.last_step.residual.abs() < 1e-10);
+}
+
+#[test]
+fn stage_b_membrane_clamp_accounting_closes_and_rejection_is_atomic() {
+    let mut params = d008_params();
+    params.d008_stage_b_enabled = true;
+    params.k_membrane = 10_000.0;
+    let mut sim = Simulation::new(params);
+    sim.observer_enabled = false;
+    assert!(sim.step());
+    assert!(sim.membrane_accounting.last_step.clamp_correction < 0.0);
+    assert!(sim.membrane_accounting.last_step.residual.abs() < 1e-10);
+    assert!(sim
+        .fields
+        .membrane
+        .iter()
+        .all(|&m| (0.0..=M_MAX).contains(&m)));
+
+    let accepted = sim.membrane_accounting.clone();
+    let addresses = buffer_addresses(&sim.fields);
+    let center = Grid::index(sim.grid.width, sim.grid.cx as usize, sim.grid.cy as usize);
+    sim.fields.membrane[center] = CONC_SAFETY_LIMIT + 1.0;
+    assert!(!sim.step());
+    assert_eq!(buffer_addresses(&sim.fields), addresses);
+    assert_eq!(
+        sim.membrane_accounting.accepted_steps,
+        accepted.accepted_steps
+    );
+    assert_eq!(
+        sim.membrane_accounting.cumulative.synthesis,
+        accepted.cumulative.synthesis
+    );
+}
+
+#[test]
+fn deterministic_stage_b_candidate_remains_localized_after_transient() {
+    let mut params = d008_params();
+    params.d008_stage_b_enabled = true;
+    let mut sim = Simulation::new(params.clone());
+    let calibration = membrane_calibration(
+        &sim.fields.structure,
+        &sim.fields.catalyst,
+        &sim.fields.activated,
+        &sim.fields.membrane,
+        &sim.grid.dish_mask,
+        &params,
+    );
+    sim.params.k_membrane = membrane_candidates(calibration.k_required)[1];
+    sim.observer_enabled = false;
+    for _ in 0..15_000 {
+        assert!(sim.step());
+    }
+    let partition = membrane_partition(&sim.grid, &sim.fields.structure, &sim.fields.membrane);
+    assert!(
+        partition.localization_fraction >= 0.90,
+        "localization={}",
+        partition.localization_fraction
+    );
+    assert!(sim.membrane_accounting.cumulative.synthesis > 0.0);
+    assert!(sim.membrane_accounting.cumulative.decay > 0.0);
+    assert!(sim.membrane_accounting.cumulative.detachment > 0.0);
 }

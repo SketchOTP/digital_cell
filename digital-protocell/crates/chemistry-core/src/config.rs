@@ -14,6 +14,7 @@ pub const PHI_HARD_MIN: f64 = -1e-4;
 pub const PHI_HARD_MAX: f64 = 1.50;
 pub const PHI_SOFT_MAX: f64 = 1.25;
 pub const CONC_SAFETY_LIMIT: f64 = 10.0;
+pub const M_MAX: f64 = 1.0;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum EquationVersion {
@@ -112,6 +113,22 @@ pub struct SimParams {
     pub beta_f: f64,
     #[serde(default = "default_beta_w")]
     pub beta_w: f64,
+    /// D-008 Stage B fixed-field membrane dynamics.
+    #[serde(default = "default_m_max")]
+    pub m_max: f64,
+    #[serde(default = "default_d_m")]
+    pub d_m: f64,
+    #[serde(default = "default_k_membrane_decay")]
+    pub k_membrane_decay: f64,
+    #[serde(default = "default_k_membrane_detach")]
+    pub k_membrane_detach: f64,
+    #[serde(default = "default_k_c_membrane")]
+    pub k_c_membrane: f64,
+    #[serde(default)]
+    pub k_membrane: f64,
+    /// Isolated Stage B mode: fixed φ,C,A and solubles; only M advances.
+    #[serde(default)]
+    pub d008_stage_b_enabled: bool,
 }
 
 fn default_k_phi() -> f64 {
@@ -152,6 +169,26 @@ fn default_beta_f() -> f64 {
 
 fn default_beta_w() -> f64 {
     0.2
+}
+
+fn default_m_max() -> f64 {
+    M_MAX
+}
+
+fn default_d_m() -> f64 {
+    0.001
+}
+
+fn default_k_membrane_decay() -> f64 {
+    0.002
+}
+
+fn default_k_membrane_detach() -> f64 {
+    0.020
+}
+
+fn default_k_c_membrane() -> f64 {
+    0.10
 }
 
 impl Default for SimParams {
@@ -205,6 +242,13 @@ impl Default for SimParams {
             beta_n: default_beta_n(),
             beta_f: default_beta_f(),
             beta_w: default_beta_w(),
+            m_max: default_m_max(),
+            d_m: default_d_m(),
+            k_membrane_decay: default_k_membrane_decay(),
+            k_membrane_detach: default_k_membrane_detach(),
+            k_c_membrane: default_k_c_membrane(),
+            k_membrane: 0.0,
+            d008_stage_b_enabled: false,
         }
     }
 }

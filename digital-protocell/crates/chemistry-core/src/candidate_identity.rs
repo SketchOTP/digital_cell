@@ -136,13 +136,22 @@ reactions_enabled={};phase_separation_enabled={};diffusion_enabled={};k_phi={};u
         EquationVersion::MembraneMetabolismV1 => {
             s.push_str(&format!(
                 ";d_a={};beta_c={};beta_a={};beta_n={};beta_f={};beta_w={};\
+m_max={};d_m={};k_membrane_decay={};k_membrane_detach={};k_c_membrane={};\
+k_membrane={};d008_stage_b_enabled={};\
 field_schema_version=seven_field_v1;snapshot_schema_version=2",
                 params.d_a,
                 params.beta_c,
                 params.beta_a,
                 params.beta_n,
                 params.beta_f,
-                params.beta_w
+                params.beta_w,
+                params.m_max,
+                params.d_m,
+                params.k_membrane_decay,
+                params.k_membrane_detach,
+                params.k_c_membrane,
+                params.k_membrane,
+                params.d008_stage_b_enabled
             ));
         }
         EquationVersion::D001BulkV1
