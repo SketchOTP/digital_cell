@@ -3,6 +3,7 @@
 mod d003;
 mod d004;
 mod d005;
+mod d006;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -66,6 +67,10 @@ enum Commands {
         #[command(subcommand)]
         action: D005Commands,
     },
+    D006 {
+        #[command(subcommand)]
+        action: D006Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -119,6 +124,35 @@ enum D005Commands {
     Finalize,
 }
 
+#[derive(Subcommand)]
+enum D006Commands {
+    /// Planar interface calibration + five candidates + prescribed radius
+    Bootstrap,
+    /// Coupled radius screen for surviving candidates
+    Screen {
+        #[arg(long, default_value = "50000")]
+        steps: u64,
+    },
+    /// Bootstrap then screen
+    Pipeline {
+        #[arg(long, default_value = "50000")]
+        steps: u64,
+    },
+    /// Single coupled screen point (for parallel orchestration)
+    RunOne {
+        #[arg(long)]
+        candidate_id: String,
+        #[arg(long)]
+        r0: f64,
+        #[arg(long)]
+        c0: f64,
+        #[arg(long)]
+        seed: u64,
+        #[arg(long, default_value = "50000")]
+        steps: u64,
+    },
+}
+
 const CHECKPOINT_STEPS: [u64; 7] = [0, 25_000, 50_000, 100_000, 150_000, 200_000, 250_000];
 const RATIO_CHECKPOINTS: [u64; 6] = [25_000, 50_000, 100_000, 150_000, 200_000, 250_000];
 
@@ -138,6 +172,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D003 { action } => run_d003(action)?,
         Commands::D004 { action } => run_d004(action)?,
         Commands::D005 { action } => run_d005(action)?,
+        Commands::D006 { action } => run_d006(action)?,
     }
     Ok(())
 }
@@ -259,6 +294,52 @@ fn run_d005(action: D005Commands) -> Result<(), Box<dyn std::error::Error>> {
         D005Commands::Finalize => {
             let summary = d005::finalize_from_artifacts()?;
             println!("D-005 finalize: {summary}");
+        }
+    }
+    Ok(())
+}
+
+fn run_d006(action: D006Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D006Commands::Bootstrap => {
+            let planar = d006::run_planar_calibration()?;
+            let k0 = planar["k_structure_interface_initial"].as_f64().unwrap();
+            let ids = d006::write_candidates(k0)?;
+            for id in &ids {
+                let pr = d006::run_prescribed_radius(id)?;
+                println!(
+                    "{} crossing={}",
+                    id.candidate_id, pr["has_stable_crossing"]
+                );
+            }
+            println!("D-006 bootstrap: {} candidates, k0={k0}", ids.len());
+        }
+        D006Commands::Screen { steps } => {
+            let summary = d006::run_coupled_screen(steps)?;
+            println!("D-006 screen: {summary}");
+        }
+        D006Commands::Pipeline { steps } => {
+            let summary = d006::bootstrap_and_screen(steps)?;
+            println!("D-006 pipeline: {summary}");
+        }
+        D006Commands::RunOne {
+            candidate_id,
+            r0,
+            c0,
+            seed,
+            steps,
+        } => {
+            let id_path = d006::d006_root()
+                .join("candidates")
+                .join(&candidate_id)
+                .join("identity.json");
+            let id: chemistry_core::CandidateIdentity =
+                serde_json::from_str(&fs::read_to_string(id_path)?)?;
+            let out = d006::d006_root().join("candidate_screen").join(&candidate_id).join(
+                format!("R{}_C{}_s{}", r0 as u32, (c0 * 1000.0) as u32, seed),
+            );
+            let rec = d006::run_one_public(&id, r0, c0, seed, steps, &out)?;
+            println!("D-006 run-one: {}", rec["seed_recipe"]);
         }
     }
     Ok(())

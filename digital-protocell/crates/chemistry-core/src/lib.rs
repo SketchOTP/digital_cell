@@ -20,6 +20,7 @@ pub mod seed_audit;
 pub mod seed_generator;
 pub mod simulation;
 pub mod snapshot;
+pub mod stage_d_gate;
 pub mod surface_calibration;
 pub mod time_audit;
 
@@ -37,6 +38,7 @@ pub use seed_audit::*;
 pub use seed_generator::*;
 pub use simulation::*;
 pub use snapshot::*;
+pub use stage_d_gate::*;
 pub use surface_calibration::*;
 pub use time_audit::*;
 pub use diagnostics::*;

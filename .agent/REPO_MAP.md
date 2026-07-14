@@ -48,3 +48,15 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/chemistry-core/tests/d005_tests.rs` — D-005 unit tests (22)
 - `digital-protocell/experiments/generated/d005/` — D-005 artifacts
 - `docs/d005_*.md` — D-005 reports
+
+## D-006 surface turnover
+- `digital-protocell/crates/chemistry-core/src/reactions.rs` — surface_turnover_v1 assembly/decay
+- `digital-protocell/crates/chemistry-core/src/surface_calibration.rs` — planar B and prescribed radius law
+- `digital-protocell/crates/experiment-runner/src/d006.rs` — planar candidates + coupled screen
+- `docs/d005_final_closure.md` — D-005 accessibility closure
+
+## D-006 surface turnover
+- `digital-protocell/crates/chemistry-core/src/stage_d_gate.rs` — Stage D/E gate helpers (pure analysis)
+- `digital-protocell/crates/experiment-runner/src/d006.rs` — D-006 bootstrap/screen/run-one CLI
+- `digital-protocell/scripts/d006_stage_d_ledger.py` — job ledger + radius/catalyst aggregate
+- `docs/d006_stage_d_completion.md` — Stage D completion + scientific conclusion

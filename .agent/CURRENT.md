@@ -1,23 +1,22 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260713-d006-surface-turnover-protocell
-- Project directive: D-006
-- Goal: Close D-005 evidence; if no restoring region, implement surface_turnover_v1 restoring-radius chemistry
-- Status: started — awaiting D-005 pipeline (PID 65669) before chemistry changes
-- Acceptance: Mandatory D-005 evidence complete; one D-006 conclusion; surface_turnover artifacts+tests if executed
-- Touched files: (pending D-005 closure) docs/d005_final_closure.md, experiments/generated/d006/, chemistry-core reactions
-- Next action: Monitor/finish D-005 9×250k continuations + nullclines; then integrity commit/tags
+- ID: D-20260713-d006c-surface-turnover-completion
+- Project directive: D-006C
+- Goal: Finish Stage D without chemistry changes; decide restoring gate; progressive E→F if pass
+- Status: done — Stage D 180/180; gate FAIL; scientific `D006_NO_RESTORING_RADIUS`; E–F not run
+- Acceptance: met (Stage D complete + conclusion; E/F correctly skipped)
+- Touched files: stage_d_gate.rs, d006.rs, d006_tests, scripts/d006_*, docs/d006_*
+- Next action: Phase 1 remaining closure experiments under later directive (not chemistry redesign)
 
 ## Repo facts needed now
-- D-005 pipeline running since ~11:42 local; coarse basin 25/25 done; continuations 4/9 done
-- Manifest prelim conclusion D005_NO_ACCESSIBLE_ACTIVE_ATTRACTOR is premature until full evidence
-- D-004 commit/tag still blocked until local git identity set
+- Stage D: all survivors grow (median v_R>0); v_C_inside<0; 0 nullcline intersections
+- Artifacts external: digital-protocell/experiments/generated/d006/ (gitignored)
+- Prescribed restoring did not survive coupling
 
 ## Last validation
-- Command: prior session cargo test d005+d004
-- Result: 41/41 PASS (historical)
+- Command: cargo test -p chemistry-core --release --test integration_tests --test validation_tests --test d003_tests --test d004_tests --test d005_tests --test d006_tests
+- Result: all PASS (d006 44; validation 17; etc.)
 
 ## Open blockers
-- D-005 pipeline still running (continuations kphi_1 seed2+)
-- Dirty working tree; no D-004/D-005 commit yet
+- None for D-006C

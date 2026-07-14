@@ -34,3 +34,8 @@ Final classification: see `experiments/generated/d004/manifest.json` and `docs/d
 
 D-004 conclusion remains `D004_PIPELINE_CANDIDATE_HANDOFF_DEFECT`.
 D-005 closed as `D005_NO_ACCESSIBLE_ACTIVE_ATTRACTOR` for the audited D-003 crowding domain.
+
+
+## Revision (D-006C)
+
+D-004 pipeline-defect finding preserved. D-006C did not reopen crowding attractors; Stage D surface-turnover screen → `D006_NO_RESTORING_RADIUS`.

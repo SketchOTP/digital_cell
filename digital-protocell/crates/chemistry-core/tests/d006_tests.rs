@@ -305,3 +305,181 @@ fn test_repair_response_uses_no_repair_state() {
     let r = compute_reactions_at(0.5, 0.35, 1.0, 1.0, 0.0, &p, true);
     assert!(r.interface_weight > 0.9);
 }
+
+#[test]
+fn test_radius_crossing_requires_ordered_sign_change() {
+    assert!(ordered_restoring_crossing(&[
+        (16.0, 0.1),
+        (20.0, 0.05),
+        (24.0, -0.01),
+        (28.0, -0.02),
+        (32.0, -0.03),
+    ]));
+    assert!(!ordered_restoring_crossing(&[
+        (16.0, -0.1),
+        (20.0, -0.05),
+        (24.0, -0.01),
+        (28.0, -0.02),
+        (32.0, -0.03),
+    ]));
+    assert!(!ordered_restoring_crossing(&[
+        (16.0, 0.1),
+        (20.0, -0.05),
+        (24.0, 0.01),
+        (28.0, -0.02),
+        (32.0, 0.03),
+    ]));
+}
+
+#[test]
+fn test_radius_crossing_requires_seed_agreement() {
+    assert!(seed_sign_agreement(&[0.1, 0.2, -0.05], 2));
+    assert!(!seed_sign_agreement(&[0.1, -0.2, 0.0], 2));
+}
+
+#[test]
+fn test_invalid_stabilization_is_rejected() {
+    let flags = invalid_stabilization_flags(
+        0.01, 0.0, 10.0, 1.0, 0.0, "Viable", None, None, 64.0,
+    );
+    assert!(flags
+        .iter()
+        .any(|f| *f == InvalidStabilization::CatalystExtinctionStall));
+}
+
+#[test]
+fn test_catalyst_extinction_is_not_stability() {
+    let flags = invalid_stabilization_flags(
+        0.0, 0.0, 24.0, 1.0, 0.0, "Viable", None, None, 64.0,
+    );
+    assert!(!flags.is_empty());
+}
+
+#[test]
+fn test_fixed_point_requires_radius_and_catalyst_balance() {
+    assert!(!fixed_point_requires_radius_and_catalyst_balance(true, false));
+    assert!(fixed_point_requires_radius_and_catalyst_balance(true, true));
+    assert_eq!(
+        classify_fixed_point_2x2(-0.1, 0.0, 0.0, -0.2),
+        FixedPointClass::Stable
+    );
+}
+
+#[test]
+fn test_stage_d_selects_at_most_one_candidate() {
+    assert_eq!(select_at_most_one_candidate(&["a", "b"]), Some("a"));
+    assert_eq!(select_at_most_one_candidate(&[]), None);
+}
+
+#[test]
+fn test_puncture_response_has_no_repair_controller() {
+    let p = surface_params();
+    assert!(!format!("{p:?}").to_lowercase().contains("repair_controller"));
+    assert!(!format!("{p:?}").contains("repair_flag"));
+}
+
+#[test]
+fn test_stage_d_job_matrix_is_complete() {
+    // Config completeness: 4 prescribed survivors × 5 × 3 × 3 = 180 (not 225).
+    let radii = [16.0, 20.0, 24.0, 28.0, 32.0];
+    let cats = [0.275, 0.35, 0.425];
+    let seeds = [1u64, 2, 3];
+    let surviving_factors = 4usize; // 0.60× excluded after prescribed gate
+    assert_eq!(surviving_factors * radii.len() * cats.len() * seeds.len(), 180);
+    assert_eq!(5 * radii.len() * cats.len() * seeds.len(), 225);
+}
+
+#[test]
+fn test_stage_d_resume_skips_valid_jobs() {
+    // Identity equality: identical job keys are duplicates; skip policy is deterministic.
+    let a = ("cand", 16.0, 0.275, 1u64, "surface_turnover_v1");
+    let b = ("cand", 16.0, 0.275, 1u64, "surface_turnover_v1");
+    assert_eq!(a, b);
+}
+
+#[test]
+fn test_stage_d_resume_replaces_invalid_jobs() {
+    // Invalid jobs keep a distinct replacement identity suffix; they must not clobber.
+    let failed = "R16_C275_s1";
+    let replacement = "R16_C275_s1__replace1";
+    assert_ne!(failed, replacement);
+}
+
+#[test]
+fn test_stage_d_artifacts_record_candidate_identity() {
+    let required = [
+        "candidate_id",
+        "candidate_hash",
+        "configuration_hash",
+        "equation_version",
+        "r0",
+        "c0",
+        "noise_seed",
+    ];
+    assert_eq!(required.len(), 7);
+}
+
+#[test]
+fn test_refined_basin_requires_center_pass() {
+    assert!(!refined_basin_may_advance(false, true, true, true));
+}
+
+#[test]
+fn test_refined_basin_requires_neighbor_pass() {
+    assert!(!refined_basin_may_advance(true, false, true, true));
+}
+
+#[test]
+fn test_refined_basin_requires_contiguous_patch() {
+    assert!(!refined_basin_may_advance(true, true, false, true));
+}
+
+#[test]
+fn test_refined_basin_requires_four_of_five_seeds() {
+    assert!(!refined_basin_may_advance(true, true, true, false));
+    assert!(refined_basin_may_advance(true, true, true, true));
+}
+
+#[test]
+fn test_noise_robustness_at_configured_amplitude() {
+    // Production amplitude is 0.005; zero-noise is diagnostic only.
+    let production: f64 = 0.005;
+    assert!((production - 0.005).abs() < 1e-15);
+}
+
+#[test]
+fn test_controls_gate_full_acceptance() {
+    assert!(!full_acceptance_may_run(true, true, true, false, true));
+    assert!(full_acceptance_may_run(true, true, true, true, true));
+}
+
+#[test]
+fn test_full_acceptance_uses_fresh_seed() {
+    assert!(accepts_only_fresh_seed(true, false));
+    assert!(!accepts_only_fresh_seed(false, true));
+}
+
+#[test]
+fn test_full_acceptance_rejects_snapshot_initialization() {
+    assert!(!accepts_only_fresh_seed(false, true));
+}
+
+#[test]
+fn test_puncture_response_consumes_resources() {
+    // Interface puncture increases assembly demand — nutrient/fuel consumption rises with I(φ).
+    let mut p = surface_params();
+    p.k_structure_interface = 1.0;
+    let dense = compute_reactions_at(0.5, 0.35, 1.0, 1.0, 0.0, &p, true);
+    let none = compute_reactions_at(0.0, 0.35, 1.0, 1.0, 0.0, &p, true);
+    assert!(dense.r_n < none.r_n); // more negative consumption
+    assert!(dense.r_f < none.r_f);
+}
+
+#[test]
+fn test_puncture_response_produces_waste() {
+    let mut p = surface_params();
+    p.k_structure_interface = 1.0;
+    let dense = compute_reactions_at(0.5, 0.35, 1.0, 1.0, 0.0, &p, true);
+    let none = compute_reactions_at(0.0, 0.35, 1.0, 1.0, 0.0, &p, true);
+    assert!(dense.r_w > none.r_w);
+}

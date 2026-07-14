@@ -37,3 +37,8 @@ Passing D-003 active steady-state would not upgrade Phase 1 until starvation, kn
 
 D-003 remains `D003_RESULT_UNRESOLVED_PENDING_ACCESSIBLE_ATTRACTOR_SEARCH`.
 D-005 accessibility search completed without an accessible active attractor under crowding kinetics.
+
+
+## Revision (D-006C)
+
+No change to D-003 candidate identity. Downstream D-006C concluded `D006_NO_RESTORING_RADIUS` under `surface_turnover_v1`.
