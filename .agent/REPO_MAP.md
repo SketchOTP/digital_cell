@@ -72,7 +72,10 @@ Concise navigation map for agents. Add entries as application code lands.
 ## D-008 membrane metabolism
 - `digital-protocell/crates/chemistry-core/src/fields.rs` — fixed seven-field current and next buffers
 - `digital-protocell/crates/chemistry-core/src/snapshot.rs` — versioned five-field and seven-field snapshots
+- `digital-protocell/crates/chemistry-core/src/membrane_transport.rs` — conservative selective soluble face transport
+- `digital-protocell/crates/chemistry-core/src/membrane_accounting.rs` — species transport and membrane ledgers
 - `digital-protocell/crates/chemistry-core/tests/d008_tests.rs` — D-008 gated regression tests
 - `digital-protocell/crates/experiment-runner/src/d008.rs` — staged D-008 runner
 - `docs/d008_stage_0_schema.md` — Stage 0 schema and compatibility result
+- `docs/d008_membrane_transport.md` — Stage A planar selectivity result
 - `docs/d008_manifest_pointer.json` — governed D-008 runtime manifest pointer
