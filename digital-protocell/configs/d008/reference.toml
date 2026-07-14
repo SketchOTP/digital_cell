@@ -1,0 +1,7 @@
+equation_version = "membrane_metabolism_v1"
+d_a = 0.040
+beta_c = 4.6
+beta_a = 4.6
+beta_n = 1.2
+beta_f = 1.2
+beta_w = 0.2

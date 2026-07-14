@@ -1,1 +1,181 @@
-//! D-008 membrane-transport scaffold; transport begins after Stage 0.
+//! D-008 fixed-membrane, conservative soluble transport.
+
+use crate::config::{SimParams, DX};
+use crate::grid::Grid;
+use crate::membrane_accounting::SpeciesTransportAccounting;
+use crate::reactions::{catalyst_diffusivity, interface_weight};
+use serde::{Deserialize, Serialize};
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum TransportSpecies {
+    Catalyst,
+    Activated,
+    Nutrient,
+    Fuel,
+    Waste,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct FaceGeometry {
+    pub interface: f64,
+    pub membrane: f64,
+}
+
+pub fn face_geometry(phi_i: f64, phi_j: f64, membrane_i: f64, membrane_j: f64) -> FaceGeometry {
+    FaceGeometry {
+        interface: (0.5 * (interface_weight(phi_i) + interface_weight(phi_j))).clamp(0.0, 1.0),
+        membrane: (0.5 * (membrane_i + membrane_j)).max(0.0),
+    }
+}
+
+pub fn permeability(species: TransportSpecies, geometry: FaceGeometry, params: &SimParams) -> f64 {
+    let beta = match species {
+        TransportSpecies::Catalyst => params.beta_c,
+        TransportSpecies::Activated => params.beta_a,
+        TransportSpecies::Nutrient => params.beta_n,
+        TransportSpecies::Fuel => params.beta_f,
+        TransportSpecies::Waste => params.beta_w,
+    };
+    (-beta * geometry.membrane * geometry.interface).exp()
+}
+
+fn base_diffusivity(species: TransportSpecies, phi: f64, params: &SimParams) -> f64 {
+    match species {
+        TransportSpecies::Catalyst => catalyst_diffusivity(phi, params),
+        TransportSpecies::Activated => params.d_a,
+        TransportSpecies::Nutrient => params.d_n,
+        TransportSpecies::Fuel => params.d_f,
+        TransportSpecies::Waste => params.d_w,
+    }
+}
+
+pub fn face_diffusivity(
+    species: TransportSpecies,
+    phi_i: f64,
+    phi_j: f64,
+    membrane_i: f64,
+    membrane_j: f64,
+    params: &SimParams,
+) -> f64 {
+    let geometry = face_geometry(phi_i, phi_j, membrane_i, membrane_j);
+    let base =
+        0.5 * (base_diffusivity(species, phi_i, params) + base_diffusivity(species, phi_j, params));
+    base * permeability(species, geometry, params)
+}
+
+/// Signed flux from cell i to cell j across one face.
+pub fn face_flux(
+    species: TransportSpecies,
+    concentration_i: f64,
+    concentration_j: f64,
+    phi_i: f64,
+    phi_j: f64,
+    membrane_i: f64,
+    membrane_j: f64,
+    params: &SimParams,
+) -> f64 {
+    face_diffusivity(species, phi_i, phi_j, membrane_i, membrane_j, params)
+        * (concentration_i - concentration_j)
+        / (DX * DX)
+}
+
+/// No-flux dish transport. Each +x/+y face is processed once and contributes
+/// equal and opposite rates to its two cells.
+pub fn transport_field(
+    grid: &Grid,
+    species: TransportSpecies,
+    field: &[f64],
+    phi: &[f64],
+    membrane: &[f64],
+    params: &SimParams,
+    out_rate: &mut [f64],
+) -> SpeciesTransportAccounting {
+    let size = grid.width * grid.height;
+    assert_eq!(field.len(), size);
+    assert_eq!(phi.len(), size);
+    assert_eq!(membrane.len(), size);
+    assert_eq!(out_rate.len(), size);
+    out_rate.fill(0.0);
+
+    let mut absolute_crossed_face_flux = 0.0;
+    for j in 0..grid.height {
+        for i in 0..grid.width {
+            let idx = Grid::index(grid.width, i, j);
+            if !grid.in_dish(idx) {
+                continue;
+            }
+            if i + 1 < grid.width {
+                let neighbor = Grid::index(grid.width, i + 1, j);
+                if grid.in_dish(neighbor) {
+                    apply_face(
+                        species,
+                        idx,
+                        neighbor,
+                        field,
+                        phi,
+                        membrane,
+                        params,
+                        out_rate,
+                        &mut absolute_crossed_face_flux,
+                    );
+                }
+            }
+            if j + 1 < grid.height {
+                let neighbor = Grid::index(grid.width, i, j + 1);
+                if grid.in_dish(neighbor) {
+                    apply_face(
+                        species,
+                        idx,
+                        neighbor,
+                        field,
+                        phi,
+                        membrane,
+                        params,
+                        out_rate,
+                        &mut absolute_crossed_face_flux,
+                    );
+                }
+            }
+        }
+    }
+
+    let net_change_rate = grid
+        .dish_mask
+        .iter()
+        .zip(out_rate.iter())
+        .filter(|(inside, _)| **inside)
+        .map(|(_, rate)| *rate)
+        .sum();
+    SpeciesTransportAccounting {
+        net_change_rate,
+        absolute_crossed_face_flux,
+    }
+}
+
+#[allow(clippy::too_many_arguments)]
+fn apply_face(
+    species: TransportSpecies,
+    i: usize,
+    j: usize,
+    field: &[f64],
+    phi: &[f64],
+    membrane: &[f64],
+    params: &SimParams,
+    out_rate: &mut [f64],
+    absolute_crossed_face_flux: &mut f64,
+) {
+    let flux = face_flux(
+        species,
+        field[i],
+        field[j],
+        phi[i],
+        phi[j],
+        membrane[i],
+        membrane[j],
+        params,
+    );
+    out_rate[i] -= flux;
+    out_rate[j] += flux;
+    *absolute_crossed_face_flux += flux.abs();
+}

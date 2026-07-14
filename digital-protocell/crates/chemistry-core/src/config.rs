@@ -98,6 +98,20 @@ pub struct SimParams {
     /// D-006 catalyst half-saturation for structural assembly
     #[serde(default = "default_k_c_structure")]
     pub k_c_structure: f64,
+    /// D-008 activated-resource base diffusivity.
+    #[serde(default = "default_d_a")]
+    pub d_a: f64,
+    /// D-008 membrane attenuation coefficients.
+    #[serde(default = "default_beta_c")]
+    pub beta_c: f64,
+    #[serde(default = "default_beta_a")]
+    pub beta_a: f64,
+    #[serde(default = "default_beta_n")]
+    pub beta_n: f64,
+    #[serde(default = "default_beta_f")]
+    pub beta_f: f64,
+    #[serde(default = "default_beta_w")]
+    pub beta_w: f64,
 }
 
 fn default_k_phi() -> f64 {
@@ -114,6 +128,30 @@ fn default_k_structure_interface() -> f64 {
 
 fn default_k_c_structure() -> f64 {
     0.10
+}
+
+fn default_d_a() -> f64 {
+    0.040
+}
+
+fn default_beta_c() -> f64 {
+    4.6
+}
+
+fn default_beta_a() -> f64 {
+    4.6
+}
+
+fn default_beta_n() -> f64 {
+    1.2
+}
+
+fn default_beta_f() -> f64 {
+    1.2
+}
+
+fn default_beta_w() -> f64 {
+    0.2
 }
 
 impl Default for SimParams {
@@ -161,6 +199,12 @@ impl Default for SimParams {
             equation_version: EquationVersion::D003CrowdingV1,
             k_structure_interface: 0.0,
             k_c_structure: 0.10,
+            d_a: default_d_a(),
+            beta_c: default_beta_c(),
+            beta_a: default_beta_a(),
+            beta_n: default_beta_n(),
+            beta_f: default_beta_f(),
+            beta_w: default_beta_w(),
         }
     }
 }

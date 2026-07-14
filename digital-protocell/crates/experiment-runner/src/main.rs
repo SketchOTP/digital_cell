@@ -77,6 +77,10 @@ enum Commands {
         #[command(subcommand)]
         action: D007Commands,
     },
+    D008 {
+        #[command(subcommand)]
+        action: D008Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -201,6 +205,15 @@ enum D007Commands {
     },
 }
 
+#[derive(Subcommand)]
+enum D008Commands {
+    /// Run the immutable Stage A planar selective-transport gate.
+    StageA {
+        #[arg(long)]
+        output: PathBuf,
+    },
+}
+
 const CHECKPOINT_STEPS: [u64; 7] = [0, 25_000, 50_000, 100_000, 150_000, 200_000, 250_000];
 const RATIO_CHECKPOINTS: [u64; 6] = [25_000, 50_000, 100_000, 150_000, 200_000, 250_000];
 
@@ -222,6 +235,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D005 { action } => run_d005(action)?,
         Commands::D006 { action } => run_d006(action)?,
         Commands::D007 { action } => run_d007(action)?,
+        Commands::D008 { action } => run_d008(action)?,
     }
     Ok(())
 }
@@ -450,6 +464,20 @@ fn run_d007(action: D007Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-007 joint candidate {} -> {}",
                 id.candidate_id,
                 dir.display()
+            );
+        }
+    }
+    Ok(())
+}
+
+fn run_d008(action: D008Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D008Commands::StageA { output } => {
+            let result = d008::run_stage_a(&output)?;
+            println!(
+                "D-008 Stage A: {} -> {}",
+                result["stage_classification"],
+                output.display()
             );
         }
     }

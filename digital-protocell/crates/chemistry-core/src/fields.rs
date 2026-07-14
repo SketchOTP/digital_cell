@@ -1,7 +1,8 @@
 //! Flat scalar field buffers with double buffering.
 
-use crate::config::{CONC_SAFETY_LIMIT, NEG_CLAMP, PHI_HARD_MAX, PHI_HARD_MIN};
+use crate::config::{EquationVersion, CONC_SAFETY_LIMIT, NEG_CLAMP, PHI_HARD_MAX, PHI_HARD_MIN};
 use crate::grid::Grid;
+use crate::reactions::interface_weight;
 
 #[derive(Debug, Clone)]
 pub struct FieldBuffers {
@@ -28,6 +29,11 @@ pub struct FieldBuffers {
     pub scratch_flux_y: Vec<f64>,
     pub scratch_fuel_diff: Vec<f64>,
     pub scratch_waste_diff: Vec<f64>,
+    pub scratch_transport_c: Vec<f64>,
+    pub scratch_transport_a: Vec<f64>,
+    pub scratch_transport_n: Vec<f64>,
+    pub scratch_transport_f: Vec<f64>,
+    pub scratch_transport_w: Vec<f64>,
 }
 
 impl FieldBuffers {
@@ -56,6 +62,11 @@ impl FieldBuffers {
             scratch_flux_y: zero(),
             scratch_fuel_diff: zero(),
             scratch_waste_diff: zero(),
+            scratch_transport_c: zero(),
+            scratch_transport_a: zero(),
+            scratch_transport_n: zero(),
+            scratch_transport_f: zero(),
+            scratch_transport_w: zero(),
         }
     }
 
@@ -209,11 +220,7 @@ impl DeterministicRng {
     }
 }
 
-pub fn initialize_seed(
-    grid: &Grid,
-    params: &crate::config::SimParams,
-    fields: &mut FieldBuffers,
-) {
+pub fn initialize_seed(grid: &Grid, params: &crate::config::SimParams, fields: &mut FieldBuffers) {
     let n = grid.width * grid.height;
     assert_eq!(fields.structure.len(), n);
     let mut rng = DeterministicRng::new(params.random_seed);
@@ -234,8 +241,18 @@ pub fn initialize_seed(
             fields.nutrient[idx] = 1.0;
             fields.fuel[idx] = 1.0;
             fields.waste[idx] = 0.0;
-            fields.activated[idx] = 0.0;
-            fields.membrane[idx] = 0.0;
+            match params.equation_version {
+                EquationVersion::MembraneMetabolismV1 => {
+                    fields.activated[idx] = 0.10 * h;
+                    fields.membrane[idx] = 0.50 * interface_weight(phi);
+                }
+                EquationVersion::D001BulkV1
+                | EquationVersion::D003CrowdingV1
+                | EquationVersion::SurfaceTurnoverV1 => {
+                    fields.activated[idx] = 0.0;
+                    fields.membrane[idx] = 0.0;
+                }
+            }
         }
     }
 }

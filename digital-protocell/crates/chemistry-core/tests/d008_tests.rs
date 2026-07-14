@@ -1,4 +1,4 @@
-//! D-008 Stage 0 schema and engine scaffold tests.
+//! D-008 Stage 0 schema and Stage A static membrane-transport tests.
 
 use chemistry_core::*;
 
@@ -97,12 +97,17 @@ fn all_seven_fields_copy_to_working_buffers() {
 
     fields.copy_current_to_working(&mut working);
 
-    assert_eq!(seven_markers(&working, 0), [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]);
+    assert_eq!(
+        seven_markers(&working, 0),
+        [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+    );
 }
 
 #[test]
 fn accepted_d008_step_swaps_all_seven_buffers() {
-    let mut sim = Simulation::new(d008_params());
+    let mut params = d008_params();
+    params.diffusion_enabled = false;
+    let mut sim = Simulation::new(params);
     sim.observer_enabled = false;
     let center = Grid::index(sim.grid.width, sim.grid.cx as usize, sim.grid.cy as usize);
     let markers = [0.11, 0.22, 0.33, 0.44, 0.55, 0.66, 0.77];
@@ -141,8 +146,14 @@ fn seven_field_snapshot_json_round_trips_all_seven_fields() {
     let loaded = FieldSnapshot::from_json(&sim.snapshot().to_json().unwrap()).unwrap();
 
     assert_eq!(loaded.snapshot_schema_version, SNAPSHOT_SCHEMA_VERSION);
-    assert_eq!(loaded.field_schema_version, FieldSchemaVersion::SevenFieldV1);
-    assert_eq!(loaded.equation_version, EquationVersion::MembraneMetabolismV1);
+    assert_eq!(
+        loaded.field_schema_version,
+        FieldSchemaVersion::SevenFieldV1
+    );
+    assert_eq!(
+        loaded.equation_version,
+        EquationVersion::MembraneMetabolismV1
+    );
     assert_eq!(
         [
             loaded.fields.structure()[center],
@@ -260,7 +271,10 @@ fn unknown_snapshot_schema_version_is_rejected() {
     snap.snapshot_schema_version = 99;
     let mut dest = FieldBuffers::for_grid(&Grid::new());
     let err = snap.try_restore_fields(&mut dest).unwrap_err();
-    assert!(err.contains("snapshot_schema_version") || err.contains("schema"), "{err}");
+    assert!(
+        err.contains("snapshot_schema_version") || err.contains("schema"),
+        "{err}"
+    );
 }
 
 #[test]
@@ -279,7 +293,10 @@ fn seven_field_snapshot_is_rejected_for_legacy_equation() {
 fn historical_candidate_and_configuration_hashes_are_unchanged() {
     let grid = GridConfiguration::default();
     let baseline = baseline_params();
-    assert_eq!(candidate_hash(&baseline, &grid), LEGACY_DEFAULT_CANDIDATE_HASH);
+    assert_eq!(
+        candidate_hash(&baseline, &grid),
+        LEGACY_DEFAULT_CANDIDATE_HASH
+    );
     assert_eq!(
         configuration_hash(&baseline, &grid),
         LEGACY_DEFAULT_CONFIGURATION_HASH
@@ -299,7 +316,8 @@ fn d008_hash_identifies_equation_and_field_schema_in_fixed_order() {
     let bytes = String::from_utf8(canonical_params_bytes(&d008_params())).unwrap();
     assert!(bytes.ends_with(
         "equation_version=membrane_metabolism_v1;k_structure_interface=0;\
-k_c_structure=0.1;field_schema_version=seven_field_v1;snapshot_schema_version=2"
+k_c_structure=0.1;d_a=0.04;beta_c=4.6;beta_a=4.6;beta_n=1.2;beta_f=1.2;\
+beta_w=0.2;field_schema_version=seven_field_v1;snapshot_schema_version=2"
     ));
     assert_eq!(
         candidate_hash(&d008_params(), &GridConfiguration::default()),
@@ -330,7 +348,10 @@ fn equation_versions_are_typed_and_serde_compatible() {
             "membrane_metabolism_v1",
         ),
     ] {
-        assert_eq!(serde_json::to_string(&version).unwrap(), format!("\"{name}\""));
+        assert_eq!(
+            serde_json::to_string(&version).unwrap(),
+            format!("\"{name}\"")
+        );
         assert_eq!(version.as_str(), name);
     }
 }
@@ -352,4 +373,216 @@ fn accounting_scaffold_contains_all_seven_fields() {
     let accounting = StepAccounting::default();
     assert_eq!(accounting.activated.mass_before, 0.0);
     assert_eq!(accounting.membrane.mass_before, 0.0);
+}
+
+fn transport_species() -> [TransportSpecies; 5] {
+    [
+        TransportSpecies::Catalyst,
+        TransportSpecies::Activated,
+        TransportSpecies::Nutrient,
+        TransportSpecies::Fuel,
+        TransportSpecies::Waste,
+    ]
+}
+
+fn normalized_face_flux(species: TransportSpecies, membrane: f64) -> f64 {
+    let params = d008_params();
+    let flux = face_flux(species, 1.0, 0.0, 0.5, 0.5, membrane, membrane, &params);
+    let base = face_flux(species, 1.0, 0.0, 0.5, 0.5, 0.0, 0.0, &params);
+    flux / base
+}
+
+#[test]
+fn zero_membrane_reproduces_each_species_base_diffusion() {
+    let params = d008_params();
+    for species in transport_species() {
+        let actual = face_diffusivity(species, 0.25, 0.75, 0.0, 0.0, &params);
+        let expected = match species {
+            TransportSpecies::Catalyst => {
+                0.5 * (catalyst_diffusivity(0.25, &params) + catalyst_diffusivity(0.75, &params))
+            }
+            TransportSpecies::Activated => params.d_a,
+            TransportSpecies::Nutrient => params.d_n,
+            TransportSpecies::Fuel => params.d_f,
+            TransportSpecies::Waste => params.d_w,
+        };
+        assert!((actual - expected).abs() < 1e-15, "{species:?}: {actual}");
+    }
+}
+
+#[test]
+fn membrane_attenuation_is_monotonic_and_meets_selectivity_targets() {
+    for species in transport_species() {
+        let fluxes: Vec<f64> = [0.0, 0.25, 0.5, 0.75, 1.0]
+            .into_iter()
+            .map(|m| normalized_face_flux(species, m))
+            .collect();
+        assert!(
+            fluxes.windows(2).all(|pair| pair[1] < pair[0]),
+            "{species:?}: {fluxes:?}"
+        );
+        let normalized = fluxes[4];
+        match species {
+            TransportSpecies::Catalyst | TransportSpecies::Activated => {
+                assert!(normalized <= 0.05, "{species:?}: {normalized}");
+            }
+            TransportSpecies::Nutrient | TransportSpecies::Fuel => {
+                assert!(
+                    (0.20..=0.50).contains(&normalized),
+                    "{species:?}: {normalized}"
+                );
+            }
+            TransportSpecies::Waste => {
+                assert!(normalized >= 0.70, "{species:?}: {normalized}");
+            }
+        }
+    }
+}
+
+#[test]
+fn face_flux_is_symmetric_and_antisigned() {
+    let params = d008_params();
+    for species in transport_species() {
+        let forward = face_flux(species, 0.8, 0.2, 0.4, 0.6, 0.7, 0.3, &params);
+        let reverse = face_flux(species, 0.2, 0.8, 0.6, 0.4, 0.3, 0.7, &params);
+        assert!((forward + reverse).abs() < 1e-15, "{species:?}");
+    }
+}
+
+#[test]
+fn no_flux_dish_transport_conserves_each_species_mass() {
+    let grid = Grid::new();
+    let params = d008_params();
+    let size = grid.width * grid.height;
+    let phi = vec![0.5; size];
+    let membrane = vec![0.7; size];
+    for species in transport_species() {
+        let mut field = vec![0.0; size];
+        let center = Grid::index(grid.width, grid.cx as usize, grid.cy as usize);
+        field[center] = 1.0;
+        let mut rate = vec![0.0; size];
+        let accounting =
+            transport_field(&grid, species, &field, &phi, &membrane, &params, &mut rate);
+        let net: f64 = grid
+            .dish_mask
+            .iter()
+            .zip(&rate)
+            .filter(|(inside, _)| **inside)
+            .map(|(_, value)| *value)
+            .sum();
+        assert!(net.abs() < 1e-12, "{species:?}: {net}");
+        assert!(accounting.net_change_rate.abs() < 1e-12);
+        assert!(accounting.absolute_crossed_face_flux > 0.0);
+    }
+}
+
+#[test]
+fn d008_initialization_uses_approved_activated_and_membrane_seed() {
+    let d008 = Simulation::new(d008_params());
+    for idx in 0..d008.fields.structure.len() {
+        if !d008.grid.in_dish(idx) {
+            continue;
+        }
+        let phi = d008.fields.structure[idx];
+        assert_eq!(d008.fields.activated[idx], 0.10 * interior_weight(phi));
+        assert_eq!(d008.fields.membrane[idx], 0.50 * interface_weight(phi));
+    }
+
+    let legacy = Simulation::new(baseline_params());
+    assert!(legacy.fields.activated.iter().all(|&value| value == 0.0));
+    assert!(legacy.fields.membrane.iter().all(|&value| value == 0.0));
+}
+
+#[test]
+fn accepted_d008_step_transports_all_solubles_and_keeps_phi_membrane_fixed() {
+    let mut params = d008_params();
+    params.reactions_enabled = false;
+    params.phase_separation_enabled = false;
+    let mut sim = Simulation::new(params);
+    sim.observer_enabled = false;
+    for idx in 0..sim.fields.structure.len() {
+        if sim.grid.in_dish(idx) {
+            sim.fields.structure[idx] = 0.5;
+            sim.fields.membrane[idx] = 0.5;
+            sim.fields.catalyst[idx] = 0.0;
+            sim.fields.activated[idx] = 0.0;
+            sim.fields.nutrient[idx] = 0.0;
+            sim.fields.fuel[idx] = 0.0;
+            sim.fields.waste[idx] = 0.0;
+        }
+    }
+    let center = Grid::index(sim.grid.width, sim.grid.cx as usize, sim.grid.cy as usize);
+    sim.fields.catalyst[center] = 1.0;
+    sim.fields.activated[center] = 1.0;
+    sim.fields.nutrient[center] = 1.0;
+    sim.fields.fuel[center] = 1.0;
+    sim.fields.waste[center] = 1.0;
+    let phi_before = sim.fields.structure.clone();
+    let membrane_before = sim.fields.membrane.clone();
+    let before = buffer_addresses(&sim.fields);
+
+    assert!(sim.step());
+
+    assert_eq!(sim.fields.structure, phi_before);
+    assert_eq!(sim.fields.membrane, membrane_before);
+    assert_eq!(buffer_addresses(&sim.fields).0, before.1);
+    for (species, center_value, crossed) in [
+        (
+            TransportSpecies::Catalyst,
+            sim.fields.catalyst[center],
+            sim.transport_accounting
+                .last_step
+                .catalyst
+                .absolute_crossed_face_flux,
+        ),
+        (
+            TransportSpecies::Activated,
+            sim.fields.activated[center],
+            sim.transport_accounting
+                .last_step
+                .activated
+                .absolute_crossed_face_flux,
+        ),
+        (
+            TransportSpecies::Nutrient,
+            sim.fields.nutrient[center],
+            sim.transport_accounting
+                .last_step
+                .nutrient
+                .absolute_crossed_face_flux,
+        ),
+        (
+            TransportSpecies::Fuel,
+            sim.fields.fuel[center],
+            sim.transport_accounting
+                .last_step
+                .fuel
+                .absolute_crossed_face_flux,
+        ),
+        (
+            TransportSpecies::Waste,
+            sim.fields.waste[center],
+            sim.transport_accounting
+                .last_step
+                .waste
+                .absolute_crossed_face_flux,
+        ),
+    ] {
+        assert!(center_value < 1.0, "{species:?} did not move");
+        assert!(crossed > 0.0, "{species:?} was not accounted");
+    }
+}
+
+#[test]
+fn rejected_d008_transport_step_swaps_none_and_records_no_transport() {
+    let mut sim = Simulation::new(d008_params());
+    sim.observer_enabled = false;
+    let center = Grid::index(sim.grid.width, sim.grid.cx as usize, sim.grid.cy as usize);
+    sim.fields.activated[center] = CONC_SAFETY_LIMIT + 1.0;
+    let before = buffer_addresses(&sim.fields);
+
+    assert!(!sim.step());
+
+    assert_eq!(buffer_addresses(&sim.fields), before);
+    assert_eq!(sim.transport_accounting.accepted_steps, 0);
 }

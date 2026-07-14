@@ -9,17 +9,19 @@ use crate::config::{
 };
 use crate::diagnostics::{CellDetector, DiagnosticsSnapshot};
 use crate::fields::{
-    clamp_small_negative, initialize_seed, validate_structure_field, validate_soluble_field,
+    clamp_small_negative, initialize_seed, validate_soluble_field, validate_structure_field,
     FieldBuffers,
 };
-use crate::time_audit::DtTelemetry;
 use crate::grid::Grid;
 use crate::interventions::apply_intervention;
+use crate::membrane_accounting::{TransportAccountingState, TransportStepAccounting};
+use crate::membrane_transport::{transport_field, TransportSpecies};
 use crate::operators::{diffuse_constant, diffuse_variable, laplacian};
 use crate::phase_field::{chemical_potential_local, compute_interior_weights, structure_rate};
 use crate::reactions::{catalyst_diffusivity, compute_all_reactions, ReactionScratch};
 use crate::reservoir::apply_reservoir;
 use crate::snapshot::FieldSnapshot;
+use crate::time_audit::DtTelemetry;
 use std::time::Instant;
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -42,6 +44,7 @@ pub struct Simulation {
     pub reaction_scratch: ReactionScratch,
     pub detector: CellDetector,
     pub accounting: AccountingState,
+    pub transport_accounting: TransportAccountingState,
     pub substep: u64,
     pub sim_time: f64,
     pub dt: f64,
@@ -73,6 +76,7 @@ impl Simulation {
             reaction_scratch: ReactionScratch::new(size),
             detector,
             accounting: AccountingState::default(),
+            transport_accounting: TransportAccountingState::default(),
             substep: 0,
             sim_time: 0.0,
             dt: MAX_DT,
@@ -141,7 +145,7 @@ impl Simulation {
                 | EquationVersion::D003CrowdingV1
                 | EquationVersion::SurfaceTurnoverV1 => self.try_legacy_substep(attempt_dt),
                 EquationVersion::MembraneMetabolismV1 => {
-                    self.try_membrane_metabolism_v1_scaffold()
+                    self.try_membrane_metabolism_v1_transport(attempt_dt)
                 }
             };
             match result {
@@ -225,7 +229,11 @@ impl Simulation {
             }
         }
 
-        laplacian(grid, &self.fields.scratch_mu, &mut self.fields.scratch_lap_mu);
+        laplacian(
+            grid,
+            &self.fields.scratch_mu,
+            &mut self.fields.scratch_lap_mu,
+        );
 
         let t_react = Instant::now();
         compute_all_reactions(
@@ -245,7 +253,12 @@ impl Simulation {
         }
 
         let t_diff = Instant::now();
-        diffuse_variable(grid, c, &self.fields.scratch_h, &mut self.fields.scratch_flux_x);
+        diffuse_variable(
+            grid,
+            c,
+            &self.fields.scratch_h,
+            &mut self.fields.scratch_flux_x,
+        );
 
         if params.diffusion_enabled {
             diffuse_constant(
@@ -264,7 +277,13 @@ impl Simulation {
         let mut waste_diff = &mut self.fields.scratch_waste_diff;
         if params.diffusion_enabled {
             diffuse_constant(grid, f, params.d_f, &mut self.fields.scratch_lap, fuel_diff);
-            diffuse_constant(grid, w, params.d_w, &mut self.fields.scratch_lap, waste_diff);
+            diffuse_constant(
+                grid,
+                w,
+                params.d_w,
+                &mut self.fields.scratch_lap,
+                waste_diff,
+            );
         } else {
             fuel_diff.fill(0.0);
             waste_diff.fill(0.0);
@@ -399,14 +418,12 @@ impl Simulation {
         let mass_f_after = field_mass(grid, &self.fields.fuel_next);
         let mass_w_after = field_mass(grid, &self.fields.waste_next);
 
-        let clamp_total = sum_clamp_correction(
-            &self.fields.structure,
-            &self.fields.structure_next,
-            grid,
-        ) + sum_clamp_correction(&self.fields.catalyst, &self.fields.catalyst_next, grid)
-            + sum_clamp_correction(&self.fields.nutrient, &self.fields.nutrient_next, grid)
-            + sum_clamp_correction(&self.fields.fuel, &self.fields.fuel_next, grid)
-            + sum_clamp_correction(&self.fields.waste, &self.fields.waste_next, grid);
+        let clamp_total =
+            sum_clamp_correction(&self.fields.structure, &self.fields.structure_next, grid)
+                + sum_clamp_correction(&self.fields.catalyst, &self.fields.catalyst_next, grid)
+                + sum_clamp_correction(&self.fields.nutrient, &self.fields.nutrient_next, grid)
+                + sum_clamp_correction(&self.fields.fuel, &self.fields.fuel_next, grid)
+                + sum_clamp_correction(&self.fields.waste, &self.fields.waste_next, grid);
 
         let step_accounting = StepAccounting {
             structure: build_field_ledger(
@@ -478,8 +495,109 @@ impl Simulation {
         SubstepResult::Ok
     }
 
-    fn try_membrane_metabolism_v1_scaffold(&mut self) -> SubstepResult {
+    fn try_membrane_metabolism_v1_transport(&mut self, dt: f64) -> SubstepResult {
         self.fields.copy_current_to_next();
+
+        let mut transport = TransportStepAccounting::default();
+        if self.params.diffusion_enabled {
+            transport.set(
+                TransportSpecies::Catalyst,
+                transport_field(
+                    &self.grid,
+                    TransportSpecies::Catalyst,
+                    &self.fields.catalyst,
+                    &self.fields.structure,
+                    &self.fields.membrane,
+                    &self.params,
+                    &mut self.fields.scratch_transport_c,
+                ),
+            );
+            transport.set(
+                TransportSpecies::Activated,
+                transport_field(
+                    &self.grid,
+                    TransportSpecies::Activated,
+                    &self.fields.activated,
+                    &self.fields.structure,
+                    &self.fields.membrane,
+                    &self.params,
+                    &mut self.fields.scratch_transport_a,
+                ),
+            );
+            transport.set(
+                TransportSpecies::Nutrient,
+                transport_field(
+                    &self.grid,
+                    TransportSpecies::Nutrient,
+                    &self.fields.nutrient,
+                    &self.fields.structure,
+                    &self.fields.membrane,
+                    &self.params,
+                    &mut self.fields.scratch_transport_n,
+                ),
+            );
+            transport.set(
+                TransportSpecies::Fuel,
+                transport_field(
+                    &self.grid,
+                    TransportSpecies::Fuel,
+                    &self.fields.fuel,
+                    &self.fields.structure,
+                    &self.fields.membrane,
+                    &self.params,
+                    &mut self.fields.scratch_transport_f,
+                ),
+            );
+            transport.set(
+                TransportSpecies::Waste,
+                transport_field(
+                    &self.grid,
+                    TransportSpecies::Waste,
+                    &self.fields.waste,
+                    &self.fields.structure,
+                    &self.fields.membrane,
+                    &self.params,
+                    &mut self.fields.scratch_transport_w,
+                ),
+            );
+        } else {
+            self.fields.scratch_transport_c.fill(0.0);
+            self.fields.scratch_transport_a.fill(0.0);
+            self.fields.scratch_transport_n.fill(0.0);
+            self.fields.scratch_transport_f.fill(0.0);
+            self.fields.scratch_transport_w.fill(0.0);
+        }
+
+        for idx in 0..self.grid.width * self.grid.height {
+            if !self.grid.in_dish(idx) {
+                continue;
+            }
+            self.fields.catalyst_next[idx] =
+                self.fields.catalyst[idx] + dt * self.fields.scratch_transport_c[idx];
+            self.fields.activated_next[idx] =
+                self.fields.activated[idx] + dt * self.fields.scratch_transport_a[idx];
+            self.fields.nutrient_next[idx] =
+                self.fields.nutrient[idx] + dt * self.fields.scratch_transport_n[idx];
+            self.fields.fuel_next[idx] =
+                self.fields.fuel[idx] + dt * self.fields.scratch_transport_f[idx];
+            self.fields.waste_next[idx] =
+                self.fields.waste[idx] + dt * self.fields.scratch_transport_w[idx];
+        }
+
+        for field in [
+            &mut self.fields.catalyst_next,
+            &mut self.fields.activated_next,
+            &mut self.fields.nutrient_next,
+            &mut self.fields.fuel_next,
+            &mut self.fields.waste_next,
+        ] {
+            for (idx, value) in field.iter_mut().enumerate() {
+                if self.grid.in_dish(idx) {
+                    *value = clamp_small_negative(*value);
+                }
+            }
+        }
+
         if validate_structure_field(&self.fields.structure_next, &self.grid.dish_mask).is_err()
             || validate_soluble_field(&self.fields.catalyst_next, &self.grid.dish_mask).is_err()
             || validate_soluble_field(&self.fields.nutrient_next, &self.grid.dish_mask).is_err()
@@ -491,29 +609,50 @@ impl Simulation {
             return SubstepResult::Reject;
         }
 
-        let ledger = |before: &[f64], after: &[f64]| {
+        let ledger = |before: &[f64], after: &[f64], diffusion_delta: f64| {
             let mass_before = field_mass(&self.grid, before);
             let mass_after = field_mass(&self.grid, after);
             build_field_ledger(
                 mass_before,
                 0.0,
-                0.0,
+                diffusion_delta,
                 0.0,
                 mass_after,
                 mass_after,
             )
         };
         let step_accounting = StepAccounting {
-            structure: ledger(&self.fields.structure, &self.fields.structure_next),
-            catalyst: ledger(&self.fields.catalyst, &self.fields.catalyst_next),
-            nutrient: ledger(&self.fields.nutrient, &self.fields.nutrient_next),
-            fuel: ledger(&self.fields.fuel, &self.fields.fuel_next),
-            waste: ledger(&self.fields.waste, &self.fields.waste_next),
-            activated: ledger(&self.fields.activated, &self.fields.activated_next),
-            membrane: ledger(&self.fields.membrane, &self.fields.membrane_next),
+            structure: ledger(&self.fields.structure, &self.fields.structure_next, 0.0),
+            catalyst: ledger(
+                &self.fields.catalyst,
+                &self.fields.catalyst_next,
+                transport.catalyst.net_change_rate * dt,
+            ),
+            nutrient: ledger(
+                &self.fields.nutrient,
+                &self.fields.nutrient_next,
+                transport.nutrient.net_change_rate * dt,
+            ),
+            fuel: ledger(
+                &self.fields.fuel,
+                &self.fields.fuel_next,
+                transport.fuel.net_change_rate * dt,
+            ),
+            waste: ledger(
+                &self.fields.waste,
+                &self.fields.waste_next,
+                transport.waste.net_change_rate * dt,
+            ),
+            activated: ledger(
+                &self.fields.activated,
+                &self.fields.activated_next,
+                transport.activated.net_change_rate * dt,
+            ),
+            membrane: ledger(&self.fields.membrane, &self.fields.membrane_next, 0.0),
         };
         self.accounting
             .record_step(step_accounting, &ReactionStepTotals::default(), 0.0);
+        self.transport_accounting.record_accepted(transport, dt);
         self.fields.swap();
         SubstepResult::Ok
     }
@@ -586,10 +725,7 @@ impl Simulation {
             .expect("snapshot equation and field schema must match target simulation");
     }
 
-    pub fn try_restore_snapshot_fields_only(
-        &mut self,
-        snap: &FieldSnapshot,
-    ) -> Result<(), String> {
+    pub fn try_restore_snapshot_fields_only(&mut self, snap: &FieldSnapshot) -> Result<(), String> {
         if self.params.equation_version != snap.equation_version {
             return Err(format!(
                 "snapshot equation {} cannot be restored under {}",

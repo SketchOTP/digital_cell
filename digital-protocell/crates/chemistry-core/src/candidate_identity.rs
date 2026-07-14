@@ -134,7 +134,16 @@ reactions_enabled={};phase_separation_enabled={};diffusion_enabled={};k_phi={};u
     }
     match params.equation_version {
         EquationVersion::MembraneMetabolismV1 => {
-            s.push_str(";field_schema_version=seven_field_v1;snapshot_schema_version=2");
+            s.push_str(&format!(
+                ";d_a={};beta_c={};beta_a={};beta_n={};beta_f={};beta_w={};\
+field_schema_version=seven_field_v1;snapshot_schema_version=2",
+                params.d_a,
+                params.beta_c,
+                params.beta_a,
+                params.beta_n,
+                params.beta_f,
+                params.beta_w
+            ));
         }
         EquationVersion::D001BulkV1
         | EquationVersion::D003CrowdingV1

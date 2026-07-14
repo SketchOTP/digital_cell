@@ -53,6 +53,8 @@ pub use diagnostics::*;
 pub use fields::*;
 pub use grid::*;
 pub use interventions::*;
+pub use membrane_accounting::*;
+pub use membrane_transport::*;
 pub use operators::*;
 pub use phase_field::*;
 pub use reactions::*;
