@@ -580,9 +580,263 @@ fn rejected_d008_transport_step_swaps_none_and_records_no_transport() {
     let center = Grid::index(sim.grid.width, sim.grid.cx as usize, sim.grid.cy as usize);
     sim.fields.activated[center] = CONC_SAFETY_LIMIT + 1.0;
     let before = buffer_addresses(&sim.fields);
+    let ledger_before = sim.accounting.last_step.activated.clone();
+    let clamp_before = sim.accounting.cumulative.clamp_corrections;
 
     assert!(!sim.step());
 
     assert_eq!(buffer_addresses(&sim.fields), before);
     assert_eq!(sim.transport_accounting.accepted_steps, 0);
+    assert_eq!(sim.accounting.last_step.activated.mass_before, ledger_before.mass_before);
+    assert_eq!(sim.accounting.last_step.activated.mass_after, ledger_before.mass_after);
+    assert_eq!(sim.accounting.cumulative.clamp_corrections, clamp_before);
+}
+
+#[test]
+fn rejected_d008_attempt_after_accept_does_not_mutate_accepted_accounting() {
+    let mut params = d008_params();
+    params.reactions_enabled = false;
+    params.phase_separation_enabled = false;
+    let mut sim = Simulation::new(params);
+    sim.observer_enabled = false;
+    for idx in 0..sim.fields.structure.len() {
+        if sim.grid.in_dish(idx) {
+            sim.fields.structure[idx] = 0.5;
+            sim.fields.membrane[idx] = 0.0;
+            sim.fields.catalyst[idx] = 0.0;
+            sim.fields.activated[idx] = 0.0;
+            sim.fields.nutrient[idx] = 0.0;
+            sim.fields.fuel[idx] = 0.0;
+            sim.fields.waste[idx] = 0.0;
+        }
+    }
+    let center = Grid::index(sim.grid.width, sim.grid.cx as usize, sim.grid.cy as usize);
+    sim.fields.waste[center] = 1.0;
+    assert!(sim.step());
+    let accepted_steps = sim.transport_accounting.accepted_steps;
+    let last_waste = sim.accounting.last_step.waste.clone();
+    let clamp_after_accept = sim.accounting.cumulative.clamp_corrections;
+
+    sim.fields.activated[center] = CONC_SAFETY_LIMIT + 1.0;
+    assert!(!sim.step());
+
+    assert_eq!(sim.transport_accounting.accepted_steps, accepted_steps);
+    assert_eq!(
+        sim.accounting.last_step.waste.mass_after,
+        last_waste.mass_after
+    );
+    assert_eq!(
+        sim.accounting.cumulative.clamp_corrections,
+        clamp_after_accept
+    );
+}
+
+#[test]
+fn d008_transport_step_clamp_correction_closes_ledger() {
+    let mut params = d008_params();
+    params.reactions_enabled = false;
+    params.phase_separation_enabled = false;
+    let mut sim = Simulation::new(params.clone());
+    sim.observer_enabled = false;
+    for idx in 0..sim.fields.structure.len() {
+        if sim.grid.in_dish(idx) {
+            sim.fields.structure[idx] = 0.5;
+            sim.fields.membrane[idx] = 0.0;
+            sim.fields.catalyst[idx] = 0.0;
+            sim.fields.activated[idx] = 0.0;
+            sim.fields.nutrient[idx] = 0.0;
+            sim.fields.fuel[idx] = 0.0;
+            sim.fields.waste[idx] = 0.0;
+        }
+    }
+    let center = Grid::index(sim.grid.width, sim.grid.cx as usize, sim.grid.cy as usize);
+    // Choose c0 and dt so Euler lands in soft-negative band [NEG_CLAMP, 0).
+    let c0 = 1e-6;
+    sim.fields.catalyst[center] = c0;
+    let mut rate = vec![0.0; sim.fields.catalyst.len()];
+    let accounting = transport_field(
+        &sim.grid,
+        TransportSpecies::Catalyst,
+        &sim.fields.catalyst,
+        &sim.fields.structure,
+        &sim.fields.membrane,
+        &params,
+        &mut rate,
+    );
+    assert!(accounting.net_change_rate.abs() < 1e-12);
+    let target = 0.5 * NEG_CLAMP; // -5e-7
+    assert!(rate[center] < 0.0, "center must outflow, rate={}", rate[center]);
+    let dt = (target - c0) / rate[center];
+    assert!(dt > 0.0, "dt={dt}");
+    let predicted = c0 + dt * rate[center];
+    assert!(
+        predicted >= NEG_CLAMP && predicted < 0.0,
+        "predicted next={predicted}"
+    );
+    sim.dt = dt;
+
+    assert!(sim.step());
+
+    let ledger = &sim.accounting.last_step.catalyst;
+    assert!(
+        ledger.numerical_correction_delta.abs() > 0.0,
+        "expected non-zero clamp correction, got {}",
+        ledger.numerical_correction_delta
+    );
+    assert!(
+        ledger.accounting_residual.abs() < 1e-12,
+        "ledger residual did not close: {}",
+        ledger.accounting_residual
+    );
+    assert!(
+        sim.accounting.cumulative.clamp_corrections.abs() > 0.0,
+        "combined clamp correction was not recorded"
+    );
+}
+
+#[test]
+fn transport_field_path_is_monotonic_and_selective_across_membrane() {
+    let grid = Grid::new();
+    let params = d008_params();
+    let size = grid.width * grid.height;
+    let phi = vec![0.5; size];
+    let levels = [0.0, 0.25, 0.5, 0.75, 1.0];
+    for species in transport_species() {
+        let mut field = vec![0.0; size];
+        for idx in 0..size {
+            if grid.in_dish(idx) && (idx % grid.width) as f64 <= grid.cx {
+                field[idx] = 1.0;
+            }
+        }
+        let mut fluxes = Vec::new();
+        for membrane_level in levels {
+            let membrane = vec![membrane_level; size];
+            let mut rate = vec![0.0; size];
+            let accounting =
+                transport_field(&grid, species, &field, &phi, &membrane, &params, &mut rate);
+            fluxes.push(accounting.absolute_crossed_face_flux);
+        }
+        assert!(
+            fluxes.windows(2).all(|pair| pair[1] < pair[0]),
+            "{species:?} transport_field not monotonic: {fluxes:?}"
+        );
+        let normalized = fluxes[4] / fluxes[0].max(f64::MIN_POSITIVE);
+        match species {
+            TransportSpecies::Catalyst | TransportSpecies::Activated => {
+                assert!(normalized <= 0.05, "{species:?}: {normalized}");
+            }
+            TransportSpecies::Nutrient | TransportSpecies::Fuel => {
+                assert!(
+                    (0.20..=0.50).contains(&normalized),
+                    "{species:?}: {normalized}"
+                );
+            }
+            TransportSpecies::Waste => {
+                assert!(normalized >= 0.70, "{species:?}: {normalized}");
+            }
+        }
+    }
+}
+
+#[test]
+fn simulation_step_path_is_monotonic_and_selective_across_membrane() {
+    let levels = [0.0, 0.25, 0.5, 0.75, 1.0];
+    for species in transport_species() {
+        let mut fluxes = Vec::new();
+        for membrane_level in levels {
+            let mut params = d008_params();
+            params.reactions_enabled = false;
+            params.phase_separation_enabled = false;
+            let mut sim = Simulation::new(params);
+            sim.observer_enabled = false;
+            for idx in 0..sim.fields.structure.len() {
+                if sim.grid.in_dish(idx) {
+                    sim.fields.structure[idx] = 0.5;
+                    sim.fields.membrane[idx] = membrane_level;
+                    sim.fields.catalyst[idx] = 0.0;
+                    sim.fields.activated[idx] = 0.0;
+                    sim.fields.nutrient[idx] = 0.0;
+                    sim.fields.fuel[idx] = 0.0;
+                    sim.fields.waste[idx] = 0.0;
+                }
+            }
+            let width = sim.grid.width;
+            let center_x = sim.grid.cx;
+            let field = match species {
+                TransportSpecies::Catalyst => &mut sim.fields.catalyst,
+                TransportSpecies::Activated => &mut sim.fields.activated,
+                TransportSpecies::Nutrient => &mut sim.fields.nutrient,
+                TransportSpecies::Fuel => &mut sim.fields.fuel,
+                TransportSpecies::Waste => &mut sim.fields.waste,
+            };
+            for (idx, value) in field.iter_mut().enumerate() {
+                if sim.grid.dish_mask[idx] && (idx % width) as f64 <= center_x {
+                    *value = 1.0;
+                }
+            }
+            assert!(sim.step());
+            let flux = match species {
+                TransportSpecies::Catalyst => {
+                    sim.transport_accounting
+                        .last_step
+                        .catalyst
+                        .absolute_crossed_face_flux
+                }
+                TransportSpecies::Activated => {
+                    sim.transport_accounting
+                        .last_step
+                        .activated
+                        .absolute_crossed_face_flux
+                }
+                TransportSpecies::Nutrient => {
+                    sim.transport_accounting
+                        .last_step
+                        .nutrient
+                        .absolute_crossed_face_flux
+                }
+                TransportSpecies::Fuel => {
+                    sim.transport_accounting
+                        .last_step
+                        .fuel
+                        .absolute_crossed_face_flux
+                }
+                TransportSpecies::Waste => {
+                    sim.transport_accounting
+                        .last_step
+                        .waste
+                        .absolute_crossed_face_flux
+                }
+            };
+            fluxes.push(flux);
+        }
+        assert!(
+            fluxes.windows(2).all(|pair| pair[1] < pair[0]),
+            "{species:?} Simulation::step not monotonic: {fluxes:?}"
+        );
+        let normalized = fluxes[4] / fluxes[0].max(f64::MIN_POSITIVE);
+        match species {
+            TransportSpecies::Catalyst | TransportSpecies::Activated => {
+                assert!(normalized <= 0.05, "{species:?}: {normalized}");
+            }
+            TransportSpecies::Nutrient | TransportSpecies::Fuel => {
+                assert!(
+                    (0.20..=0.50).contains(&normalized),
+                    "{species:?}: {normalized}"
+                );
+            }
+            TransportSpecies::Waste => {
+                assert!(normalized >= 0.70, "{species:?}: {normalized}");
+            }
+        }
+    }
+}
+
+#[test]
+fn field_sha256_stable_is_fixed_digest_not_default_hasher() {
+    let field = [1.0_f64, -2.5, 0.0];
+    let stable = field_sha256_stable(&field);
+    let legacy = field_sha256(&field);
+    assert_eq!(stable.len(), 64);
+    assert_ne!(stable, legacy);
+    assert_eq!(stable, field_sha256_stable(&field));
 }

@@ -584,6 +584,20 @@ impl Simulation {
                 self.fields.waste[idx] + dt * self.fields.scratch_transport_w[idx];
         }
 
+        let mass_phi_before = field_mass(&self.grid, &self.fields.structure);
+        let mass_c_before = field_mass(&self.grid, &self.fields.catalyst);
+        let mass_a_before = field_mass(&self.grid, &self.fields.activated);
+        let mass_n_before = field_mass(&self.grid, &self.fields.nutrient);
+        let mass_f_before = field_mass(&self.grid, &self.fields.fuel);
+        let mass_w_before = field_mass(&self.grid, &self.fields.waste);
+        let mass_m_before = field_mass(&self.grid, &self.fields.membrane);
+
+        let pre_clamp_c = field_mass(&self.grid, &self.fields.catalyst_next);
+        let pre_clamp_a = field_mass(&self.grid, &self.fields.activated_next);
+        let pre_clamp_n = field_mass(&self.grid, &self.fields.nutrient_next);
+        let pre_clamp_f = field_mass(&self.grid, &self.fields.fuel_next);
+        let pre_clamp_w = field_mass(&self.grid, &self.fields.waste_next);
+
         for field in [
             &mut self.fields.catalyst_next,
             &mut self.fields.activated_next,
@@ -609,49 +623,83 @@ impl Simulation {
             return SubstepResult::Reject;
         }
 
-        let ledger = |before: &[f64], after: &[f64], diffusion_delta: f64| {
-            let mass_before = field_mass(&self.grid, before);
-            let mass_after = field_mass(&self.grid, after);
-            build_field_ledger(
-                mass_before,
-                0.0,
-                diffusion_delta,
-                0.0,
-                mass_after,
-                mass_after,
-            )
-        };
+        let mass_phi_after = field_mass(&self.grid, &self.fields.structure_next);
+        let mass_c_after = field_mass(&self.grid, &self.fields.catalyst_next);
+        let mass_a_after = field_mass(&self.grid, &self.fields.activated_next);
+        let mass_n_after = field_mass(&self.grid, &self.fields.nutrient_next);
+        let mass_f_after = field_mass(&self.grid, &self.fields.fuel_next);
+        let mass_w_after = field_mass(&self.grid, &self.fields.waste_next);
+        let mass_m_after = field_mass(&self.grid, &self.fields.membrane_next);
+
+        let clamp_total = (mass_c_after - pre_clamp_c)
+            + (mass_a_after - pre_clamp_a)
+            + (mass_n_after - pre_clamp_n)
+            + (mass_f_after - pre_clamp_f)
+            + (mass_w_after - pre_clamp_w);
+
         let step_accounting = StepAccounting {
-            structure: ledger(&self.fields.structure, &self.fields.structure_next, 0.0),
-            catalyst: ledger(
-                &self.fields.catalyst,
-                &self.fields.catalyst_next,
+            structure: build_field_ledger(
+                mass_phi_before,
+                0.0,
+                0.0,
+                0.0,
+                mass_phi_after,
+                mass_phi_after,
+            ),
+            catalyst: build_field_ledger(
+                mass_c_before,
+                0.0,
                 transport.catalyst.net_change_rate * dt,
+                0.0,
+                pre_clamp_c,
+                mass_c_after,
             ),
-            nutrient: ledger(
-                &self.fields.nutrient,
-                &self.fields.nutrient_next,
+            nutrient: build_field_ledger(
+                mass_n_before,
+                0.0,
                 transport.nutrient.net_change_rate * dt,
+                0.0,
+                pre_clamp_n,
+                mass_n_after,
             ),
-            fuel: ledger(
-                &self.fields.fuel,
-                &self.fields.fuel_next,
+            fuel: build_field_ledger(
+                mass_f_before,
+                0.0,
                 transport.fuel.net_change_rate * dt,
+                0.0,
+                pre_clamp_f,
+                mass_f_after,
             ),
-            waste: ledger(
-                &self.fields.waste,
-                &self.fields.waste_next,
+            waste: build_field_ledger(
+                mass_w_before,
+                0.0,
                 transport.waste.net_change_rate * dt,
+                0.0,
+                pre_clamp_w,
+                mass_w_after,
             ),
-            activated: ledger(
-                &self.fields.activated,
-                &self.fields.activated_next,
+            activated: build_field_ledger(
+                mass_a_before,
+                0.0,
                 transport.activated.net_change_rate * dt,
+                0.0,
+                pre_clamp_a,
+                mass_a_after,
             ),
-            membrane: ledger(&self.fields.membrane, &self.fields.membrane_next, 0.0),
+            membrane: build_field_ledger(
+                mass_m_before,
+                0.0,
+                0.0,
+                0.0,
+                mass_m_after,
+                mass_m_after,
+            ),
         };
-        self.accounting
-            .record_step(step_accounting, &ReactionStepTotals::default(), 0.0);
+        self.accounting.record_step(
+            step_accounting,
+            &ReactionStepTotals::default(),
+            clamp_total,
+        );
         self.transport_accounting.record_accepted(transport, dt);
         self.fields.swap();
         SubstepResult::Ok

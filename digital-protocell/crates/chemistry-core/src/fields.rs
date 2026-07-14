@@ -163,6 +163,16 @@ pub fn field_sha256(field: &[f64]) -> String {
     format!("{:016x}", hasher.finish())
 }
 
+/// Fixed SHA-256 of little-endian f64 bit patterns for D-008 artifacts.
+pub fn field_sha256_stable(field: &[f64]) -> String {
+    use crate::candidate_identity::sha256_hex;
+    let mut bytes = Vec::with_capacity(field.len() * 8);
+    for value in field {
+        bytes.extend_from_slice(&value.to_bits().to_le_bytes());
+    }
+    sha256_hex(&bytes)
+}
+
 pub fn structure_field_stats(values: &[f64], dish_mask: &[bool]) -> (f64, f64, f64, f64) {
     let mut min_v = f64::INFINITY;
     let mut max_v = f64::NEG_INFINITY;
