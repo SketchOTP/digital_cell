@@ -1,22 +1,25 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260714-d007-joint-kinetic-nullclines
-- Project directive: D-007
-- Goal: Joint structural–catalyst fixed-point search within bounded rates
-- Status: done — structural gate FAIL; scientific `D007_NO_STRUCTURAL_NULLCLINE`; catalyst/joint not run
-- Acceptance: met (one conclusion; strict schema; D-006 preserved; §10 stop honored)
-- Touched files: d007_analysis.rs, d007.rs, d007_tests, scripts/d007_*, configs/d007/, docs/d007_*, experiments/generated/d007/
-- Next action: Next directive — transport boundary or metabolic intermediate (not another rate sweep)
+- ID: D-20260714-d008-membrane-metabolic-closure
+- Project directive: D-008
+- Goal: Seven-field protocell with self-produced selective membrane and activated internal metabolism
+- Status: design exploration — implementation not started
+- Acceptance: D-007 preserved; sequential A-G gates; one evidence-backed D008_* conclusion
+- Touched files: .agent/DIRECTIVES.md, .agent/CURRENT.md, .agent/LEARNINGS.md, D-008 design spec
+- Next action: user review of approved design spec, then detailed implementation plan
 
 ## Repo facts needed now
-- D007_NO_STRUCTURAL_NULLCLINE (0.50–0.80× all fail restoring gate; 0.80× ALL_GROW)
-- Reference: config hash matches D-006 1.0×; 10k transient vs 50k Stage-D direction
+- D-007 commit/tag: bd7d5cfd5ea6a1689feae34f4285e950d61bc21d / D-007-five-field-model-rejected
+- D-007 manifest SHA-256: abb9071bd26ef01604bb2a88182f8574eb687c50598b17a890ebe072858fa343
+- D-007 binary SHA-256: eb91db836917baefdb90cbb8648879f0259e0841216683ceb85bc192eec98d29
+- D-007 tracked tree was clean immediately after tagging
+- Serena configured but unavailable for Rust symbol navigation; reported Active languages: []
 - Phase1: PHASE1_SELF_MAINTENANCE_PARTIAL
 
 ## Last validation
 - Command: cargo test -p chemistry-core --release --test d007_tests
-- Result: 26 PASS; structural 63/63 complete
+- Result: 26 PASS on D-007 baseline commit
 
 ## Open blockers
-- None for D-007; architecture ceiling reached for surface_turnover_v1 rate tuning
+- None; design spec awaits user review before implementation planning
