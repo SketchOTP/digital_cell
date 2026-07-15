@@ -19,36 +19,42 @@ k_structure_decay       = 0.025
 `d008_stage_mode = constrained_radius`  
 `equation_version = membrane_metabolism_v1`
 
-## Replay grid
+## Governed attempt
 
-R ∈ {14, 18, 22, 26, 30, 34}, seed = 1.
+Primary artifact: `experiments/generated/d011/attempt_005/result.json`  
+`scientific_conclusion`: **D011_TRANSPORT_COUPLED_NO_SOLUTION**  
+`result_tag`: **D-011-transport-coupled-balance-fail**
 
-## Metrics per radius
+Supplementary 50k-step replay (partial): `attempt_006/failed_candidate_replay/R{14,18}/`
 
-Each `result.json` includes:
+## Replay grid (seed=1, max_steps=5000, window=1000)
 
-- `Q_structure`, `Q_catalyst`, `Q_membrane`, `Q_activated`
-- `g_structure`, `g_catalyst`, `g_membrane`, `g_activated`
-- Retention, membrane localization, N/F influx, W efflux
-- `field_accounting`, `constraint_ledger`, `convergence_classification`
-- `source_commit`, `binary_sha256`, candidate hashes
+| R | Classification | joint_overlap | g_structure | g_catalyst | g_membrane | g_activated |
+| --- | --- | --- | --- | --- | --- | --- |
+| 14 | NOT_CONVERGED | false | −12.35 | 0.61 | −1.43 | −4.47 |
+| 18 | NOT_CONVERGED | false | −21.33 | 1.12 | −1.82 | −6.52 |
+| 22 | NOT_CONVERGED | false | −32.77 | 1.79 | −2.21 | −8.92 |
+| 26 | NOT_CONVERGED | false | −46.86 | 2.62 | −2.60 | −11.47 |
+| 30 | NOT_CONVERGED | false | −63.47 | 3.61 | −2.99 | −14.31 |
+| 34 | NOT_CONVERGED | false | −82.40 | 4.74 | −3.39 | −17.62 |
 
-## Report status (governed run `attempt_005`)
+All radii: quasi-steady not met; |g| ≫ 1e−4; Q outside [0.98, 1.02] for structure/membrane/activated.
 
-- `max_steps`: 5000, `window_size`: 1000 (first completed full protocol; 50k runs interrupted by wall-clock)
-- `scientific_conclusion`: `D011_TRANSPORT_COUPLED_NO_SOLUTION`
-- `any_joint_overlap_pass`: false
-- `stage_e_revised_to_pass_after_d011`: false — Stage E remains `D008_NO_JOINT_FIXED_POINT`
+## 50k-step spot check (attempt_006, window=10000)
 
-### Key replay metrics (failed Stage E rates)
+| R | g_structure | Q_structure | Classification |
+| --- | --- | --- | --- |
+| 14 | −14.85 | 0.051 | NOT_CONVERGED |
+| 18 | −24.66 | 0.041 | NOT_CONVERGED |
 
-| R | Q_structure | g_structure | Q_catalyst | g_catalyst | joint_overlap |
-| --- | --- | --- | --- | --- | --- |
-| 14 | 0.21 | −12.35 | 2.21 | 0.61 | false |
-| 22 | 0.14 | −32.77 | 2.43 | 1.79 | false |
-| 26 | 0.09 | −63.47 | 2.12 | 1.42 | false |
-| 34 | 0.05 | −82.40 | 2.08 | 1.38 | false |
+Imbalance persists at longer horizon; structure virtual-flow deficit dominates.
 
-All radii: `NOT_CONVERGED`, retention ≥ 0.99, localization ≥ 0.89, N/F influx > 0, W efflux > 0.
+## Sensitivity (R=22, R=26)
 
-Artifact: `experiments/generated/d011/attempt_005/result.json` (gitignored generated output).
+Full rank (rank=4) Jacobian; condition number ill-conditioned at R=22 (σ_max/σ_min ≈ 5×10⁹).
+Bounded joint solver produced no correcting candidates within global/per-round bounds.
+
+## Stage E revision
+
+`stage_e_revised_to_pass_after_d011`: **false**  
+Prior conclusion `D008_NO_JOINT_FIXED_POINT` stands.
