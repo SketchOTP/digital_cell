@@ -636,3 +636,88 @@ pub fn nonconservative_reactions_under_vector(
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct V1StoichiometricAudit {
+    pub schema_version: u32,
+    pub primary_finding: String,
+    pub conservation_class: ConservationClass,
+    pub rank: usize,
+    pub species_order: Vec<String>,
+    pub reaction_order: Vec<String>,
+    pub matrix: Vec<Vec<String>>,
+    pub left_nullspace_dimension: usize,
+    pub strictly_positive_conservation_vectors: Vec<Vec<String>>,
+    pub nonconservative_under_all_ones: Vec<String>,
+    pub documented_vs_runtime_mismatches: Vec<String>,
+    pub d011_branch_recommendation: String,
+}
+
+pub fn run_v1_stoichiometric_audit() -> V1StoichiometricAudit {
+    let reactions = v1_internal_reactions();
+    let matrix = stoichiometric_matrix(reactions);
+    let analysis = classify_conservation_detailed(&matrix);
+
+    let primary_finding = match analysis.class {
+        ConservationClass::StrictlyConservative => "D012_CONSERVATIVE_V1_CONFIRMED".to_string(),
+        ConservationClass::PartiallyConservative | ConservationClass::NoPositiveConservationVector => {
+            "D012_NONCONSERVATIVE_V1_CONFIRMED".to_string()
+        }
+        ConservationClass::InconsistentStoichiometry => {
+            "D012_STOICHIOMETRIC_AUDIT_INCONCLUSIVE".to_string()
+        }
+    };
+
+    let d011_branch = if analysis.class == ConservationClass::StrictlyConservative {
+        "PROCEED_D011_EXPENSIVE_COMPLETION".to_string()
+    } else {
+        "SKIP_D011_EXPENSIVE_COMPLETION_SUPERSEDED_BY_INVALID_STOICHIOMETRY".to_string()
+    };
+
+    let mismatches = vec![
+        "activated_metabolism.rs comment claims C+N+F→C+A+W; runtime activation consumes N+F only (C rate modifier)".to_string(),
+        "activated_metabolism.rs comment claims C+A→2C+W; runtime reproduction is A→C+W (C not consumed)".to_string(),
+        "membrane synthesis rate depends on A,C,φ but stoichiometric delta is ∅→M (no A/W consumption)".to_string(),
+        "membrane decay/detachment remove M without W product in v1 runtime".to_string(),
+        "structure production consumes A without W on productive step (constrained-radius path)".to_string(),
+    ];
+
+    V1StoichiometricAudit {
+        schema_version: 1,
+        primary_finding,
+        conservation_class: analysis.class,
+        rank: analysis.rank,
+        species_order: SpeciesId::ALL.iter().map(|s| s.label().to_string()).collect(),
+        reaction_order: ReactionId::ALL.iter().map(|r| r.label().to_string()).collect(),
+        matrix: matrix
+            .iter()
+            .map(|row| row.iter().map(|r| r.to_string()).collect())
+            .collect(),
+        left_nullspace_dimension: analysis.left_nullspace_dimension,
+        strictly_positive_conservation_vectors: analysis
+            .strictly_positive_vectors
+            .iter()
+            .map(|v| v.iter().map(|r| r.to_string()).collect())
+            .collect(),
+        nonconservative_under_all_ones: analysis
+            .nonconservative_reactions
+            .iter()
+            .map(|r| r.label().to_string())
+            .collect(),
+        documented_vs_runtime_mismatches: mismatches,
+        d011_branch_recommendation: d011_branch,
+    }
+}
+
+pub fn v1_audit_json_pretty() -> String {
+    serde_json::to_string_pretty(&run_v1_stoichiometric_audit()).expect("audit serializes")
+}
+
+#[cfg(test)]
+mod unit_tests {
+    use super::*;
+
+    #[test]
+    fn rational_gcd_reduction() {
+        assert_eq!(Rational::new(2, 4), Rational::new(1, 2));
+        assert_eq!(Rational::new(-3, 6), Rational::new(-1, 2));
+    }
+}
