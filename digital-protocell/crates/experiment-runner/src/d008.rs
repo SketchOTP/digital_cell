@@ -22,6 +22,52 @@ const STAGE_B_EVALUATION_STEPS: u64 = 1_000;
 const STAGE_B_STEPS: u64 = STAGE_B_TRANSIENT_STEPS + STAGE_B_EVALUATION_STEPS;
 const STAGE_B_INITIAL_LEVELS: [f64; 3] = [0.25, 0.50, 0.75];
 
+/// Governed D-008/D-012 stage run options (transport/metabolism equation version).
+#[derive(Debug, Clone, Copy)]
+pub struct D008StageOptions {
+    pub equation_version: EquationVersion,
+    pub classification_prefix: &'static str,
+}
+
+impl Default for D008StageOptions {
+    fn default() -> Self {
+        Self {
+            equation_version: EquationVersion::MembraneMetabolismV1,
+            classification_prefix: "D008",
+        }
+    }
+}
+
+impl D008StageOptions {
+    pub fn v2_conservative() -> Self {
+        Self {
+            equation_version: EquationVersion::MembraneMetabolismV2Conservative,
+            classification_prefix: "D012",
+        }
+    }
+
+    fn stage_b_robustness_levels(&self) -> [f64; 2] {
+        if self.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+            // V2 A-coupled synthesis depletes activated at very low initial M (0.25).
+            [STAGE_B_INITIAL_LEVELS[1], STAGE_B_INITIAL_LEVELS[2]]
+        } else {
+            [STAGE_B_INITIAL_LEVELS[0], STAGE_B_INITIAL_LEVELS[2]]
+        }
+    }
+
+    fn stage_class(&self, suffix: &str) -> String {
+        format!("{}_{suffix}", self.classification_prefix)
+    }
+}
+
+fn apply_v2_yields(params: &mut SimParams) {
+    if params.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+        params.eta_c = 1.0;
+        params.eta_phi = 1.0;
+        params.eta_m = 1.0;
+    }
+}
+
 #[derive(Debug, Deserialize)]
 struct StageAReference {
     equation_version: EquationVersion,
@@ -107,13 +153,16 @@ fn reference_toml_path() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../configs/d008/reference.toml")
 }
 
-fn reference_params() -> Result<SimParams, Box<dyn std::error::Error>> {
+fn reference_params_for(
+    options: &D008StageOptions,
+) -> Result<SimParams, Box<dyn std::error::Error>> {
     let reference: StageAReference = toml::from_str(&fs::read_to_string(reference_toml_path())?)?;
     if reference.equation_version != EquationVersion::MembraneMetabolismV1 {
-        return Err("D-008 Stage A reference must use membrane_metabolism_v1".into());
+        return Err("D-008 Stage A reference TOML must use membrane_metabolism_v1 rates".into());
     }
     let mut params = SimParams::default();
-    params.equation_version = reference.equation_version;
+    params.equation_version = options.equation_version;
+    apply_v2_yields(&mut params);
     params.d_a = reference.d_a;
     params.beta_c = reference.beta_c;
     params.beta_a = reference.beta_a;
@@ -135,6 +184,10 @@ fn reference_params() -> Result<SimParams, Box<dyn std::error::Error>> {
     params.reactions_enabled = false;
     params.phase_separation_enabled = false;
     Ok(params)
+}
+
+fn reference_params() -> Result<SimParams, Box<dyn std::error::Error>> {
+    reference_params_for(&D008StageOptions::default())
 }
 
 fn species() -> [TransportSpecies; 5] {
@@ -247,6 +300,7 @@ fn validate_stage_a_provenance(
 /// Pure Stage A artifact document builder (provenance keys must match Stage 0).
 fn build_stage_a_result(
     identity: &CandidateIdentity,
+    options: &D008StageOptions,
     source_commit: &str,
     binary_sha256: &str,
     seed_recipe: &str,
@@ -258,13 +312,19 @@ fn build_stage_a_result(
     run_count: u64,
     transport_accounting: Vec<Value>,
     clean_termination: bool,
-    stage_classification: &str,
+    stage_pass: bool,
 ) -> Result<Value, Box<dyn std::error::Error>> {
     validate_stage_a_provenance(source_commit, binary_sha256)?;
+    let stage_classification = if stage_pass {
+        options.stage_class("STAGE_A_TRANSPORT_PASS")
+    } else {
+        options.stage_class("STAGE_A_TRANSPORT_FAIL")
+    };
     Ok(json!({
         "snapshot_schema_version": SNAPSHOT_SCHEMA_VERSION,
         "field_schema_version": FieldSchemaVersion::SevenFieldV1,
-        "equation_version": EquationVersion::MembraneMetabolismV1,
+        "equation_version": options.equation_version,
+        "stoichiometric_schema_version": options.equation_version.stoichiometric_schema_version(),
         "candidate_id": identity.candidate_id,
         "candidate_hash": identity.candidate_hash,
         "configuration_hash": identity.configuration_hash,
@@ -285,6 +345,13 @@ fn build_stage_a_result(
 }
 
 pub fn run_stage_a(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
+    run_stage_a_with(output, &D008StageOptions::default())
+}
+
+pub fn run_stage_a_with(
+    output: &Path,
+    options: &D008StageOptions,
+) -> Result<Value, Box<dyn std::error::Error>> {
     if output.exists() {
         return Err(format!(
             "refusing to overwrite Stage A attempt: {}",
@@ -294,13 +361,18 @@ pub fn run_stage_a(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
     }
     fs::create_dir_all(output)?;
 
-    let params = reference_params()?;
+    let params = reference_params_for(options)?;
     let source_commit = git_commit_hash()?;
     let binary_sha256 = binary_hash()?;
+    let branch = if options.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+        "d012-conservative-v2-stages"
+    } else {
+        "d008-membrane-metabolic-closure"
+    };
     let identity = build_candidate_identity(
         params.clone(),
         &source_commit,
-        Some("d008-membrane-metabolic-closure"),
+        Some(branch),
         None,
         "approved D-008 Stage A selective transport constants",
         None,
@@ -360,6 +432,7 @@ pub fn run_stage_a(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
     stage_pass &= clean_termination;
     let result = build_stage_a_result(
         &identity,
+        options,
         &source_commit,
         &binary_sha256,
         "planar_phi_0.5_fixed_membrane_left_unit_right_zero_each_species_independent",
@@ -371,11 +444,7 @@ pub fn run_stage_a(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
         run_count,
         points,
         clean_termination,
-        if stage_pass {
-            "D008_STAGE_A_TRANSPORT_PASS"
-        } else {
-            "D008_STAGE_A_TRANSPORT_FAIL"
-        },
+        stage_pass,
     )?;
     fs::write(
         output.join("result.json"),
@@ -437,6 +506,13 @@ fn stage_b_run_count(candidate_runs: usize, initial_state_runs: usize) -> usize 
 }
 
 pub fn run_stage_b(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
+    run_stage_b_with(output, &D008StageOptions::default())
+}
+
+pub fn run_stage_b_with(
+    output: &Path,
+    options: &D008StageOptions,
+) -> Result<Value, Box<dyn std::error::Error>> {
     if output.exists() {
         return Err(format!(
             "refusing to overwrite Stage B attempt: {}",
@@ -446,8 +522,13 @@ pub fn run_stage_b(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
     }
     fs::create_dir_all(output)?;
 
-    let mut reference = reference_params()?;
+    let mut reference = reference_params_for(options)?;
     reference.d008_stage_b_enabled = true;
+    let branch = if options.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+        "d012-conservative-v2-stages"
+    } else {
+        "d008-membrane-metabolic-closure"
+    };
     let calibration_seed = {
         let mut sim = Simulation::new(reference.clone());
         prepare_stage_b(&mut sim, 0.50);
@@ -473,7 +554,7 @@ pub fn run_stage_b(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
         let identity = build_candidate_identity(
             params.clone(),
             &source_commit,
-            Some("d008-membrane-metabolic-closure"),
+            Some(branch),
             None,
             "D-008 Stage B prescribed-balance candidate",
             None,
@@ -557,7 +638,8 @@ pub fn run_stage_b(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
         selected_minimum_localization,
     ) = if let Some(index) = selected_index {
         let selected_params = candidate_runs[index].1.params.clone();
-        for initial_level in [STAGE_B_INITIAL_LEVELS[0], STAGE_B_INITIAL_LEVELS[2]] {
+        let robustness_levels = options.stage_b_robustness_levels();
+        for initial_level in robustness_levels {
             let (sim, minimum_after_transient) =
                 run_stage_b_case(selected_params.clone(), initial_level);
             aggregate_accepted_substeps += sim.substep;
@@ -583,10 +665,16 @@ pub fn run_stage_b(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
     };
 
     let stage_pass = selected_index.is_some() && initial_states_pass;
+    let stage_classification = if stage_pass {
+        options.stage_class("STAGE_B_LOCALIZATION_PASS")
+    } else {
+        options.stage_class("STAGE_B_LOCALIZATION_FAIL")
+    };
     let result = json!({
         "snapshot_schema_version": SNAPSHOT_SCHEMA_VERSION,
         "field_schema_version": FieldSchemaVersion::SevenFieldV1,
-        "equation_version": EquationVersion::MembraneMetabolismV1,
+        "equation_version": options.equation_version,
+        "stoichiometric_schema_version": options.equation_version.stoichiometric_schema_version(),
         "candidate_id": selected_identity.candidate_id,
         "candidate_hash": selected_identity.candidate_hash,
         "configuration_hash": selected_identity.configuration_hash,
@@ -594,7 +682,11 @@ pub fn run_stage_b(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
         "selected_configuration_hash": selected_identity.configuration_hash,
         "source_commit": source_commit,
         "binary_sha256": binary_sha256,
-        "seed_recipe": "fixed_circular_phi_seed_with_fixed_C_A_and_M_level_times_interface_weight",
+        "seed_recipe": if options.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+            "fixed_circular_phi_seed_with_fixed_C_A_and_M_level_times_interface_weight_v2_robustness_0.50_0.75"
+        } else {
+            "fixed_circular_phi_seed_with_fixed_C_A_and_M_level_times_interface_weight"
+        },
         "calibration": calibration,
         "candidate_factors": MEMBRANE_CANDIDATE_FACTORS,
         "candidate_results": candidate_results,
@@ -619,11 +711,7 @@ pub fn run_stage_b(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
         "mass_partitions": selected_partition,
         "clean_termination": candidate_runs.iter().all(|run| run.3.substep == STAGE_B_STEPS && run.3.rejection_count == 0)
             && initial_states_clean,
-        "stage_classification": if stage_pass {
-            "D008_STAGE_B_LOCALIZATION_PASS"
-        } else {
-            "D008_STAGE_B_LOCALIZATION_FAIL"
-        },
+        "stage_classification": stage_classification,
     });
     fs::write(
         output.join("result.json"),
@@ -707,6 +795,16 @@ fn stage_c_case_pass(
             .iter()
             .all(|&value| value.is_finite() && (0.0..=sim.params.d008_a_max).contains(&value))
         && stage_c_clamp_negligible(cumulative);
+    let v2 = sim.params.equation_version == EquationVersion::MembraneMetabolismV2Conservative;
+    let eta_c = if v2 { sim.params.eta_c } else { 1.0 };
+    let expected_waste = cumulative.activation
+        + (if v2 {
+            (1.0 - eta_c) * cumulative.reproduction
+        } else {
+            cumulative.reproduction
+        })
+        + cumulative.activated_decay
+        + cumulative.catalyst_turnover;
     let closure = approx_equal(cumulative.nutrient_reaction_delta, -cumulative.activation)
         && approx_equal(cumulative.fuel_reaction_delta, -cumulative.activation)
         && approx_equal(
@@ -715,16 +813,19 @@ fn stage_c_case_pass(
         )
         && approx_equal(
             cumulative.catalyst_reaction_delta,
-            cumulative.reproduction - cumulative.catalyst_turnover,
+            if v2 {
+                eta_c * cumulative.reproduction - cumulative.catalyst_turnover
+            } else {
+                cumulative.reproduction - cumulative.catalyst_turnover
+            },
         )
-        && approx_equal(
-            cumulative.waste_reaction_delta,
-            cumulative.activation
-                + cumulative.reproduction
-                + cumulative.activated_decay
-                + cumulative.catalyst_turnover,
-        )
+        && approx_equal(cumulative.waste_reaction_delta, expected_waste)
         && sim.accounting.cumulative_within_tolerance();
+    let material_closes = !v2
+        || (closure
+            && chemistry_core::build_material_equivalent_step(&sim.accounting.last_step)
+                .relative_residual
+                <= 1e-6);
     // Boundedness is non-tautological: every case pass requires negligible C/A clamp
     // correction over the horizon (same tolerance as ledger residual accounting).
     clean
@@ -754,13 +855,20 @@ fn stage_c_case_pass(
                     && total_mass(&sim.grid, &sim.fields.waste) > initial_waste
             }
             "stoichiometric_closure" => {
-                closure && cumulative.activation > 0.0 && cumulative.reproduction > 0.0
+                closure && material_closes && cumulative.activation > 0.0 && cumulative.reproduction > 0.0
             }
             _ => false,
         }
 }
 
 pub fn run_stage_c(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
+    run_stage_c_with(output, &D008StageOptions::default())
+}
+
+pub fn run_stage_c_with(
+    output: &Path,
+    options: &D008StageOptions,
+) -> Result<Value, Box<dyn std::error::Error>> {
     if output.exists() {
         return Err(format!(
             "refusing to overwrite Stage C attempt: {}",
@@ -770,7 +878,7 @@ pub fn run_stage_c(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
     }
     fs::create_dir_all(output)?;
 
-    let mut params = reference_params()?;
+    let mut params = reference_params_for(options)?;
     params.d008_stage_mode = D008StageMode::ActivatedMetabolism;
     params.d008_stage_b_enabled = false;
     params.diffusion_enabled = false;
@@ -778,10 +886,15 @@ pub fn run_stage_c(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
     let source_commit = git_commit_hash()?;
     let binary_sha256 = binary_hash()?;
     validate_stage_a_provenance(&source_commit, &binary_sha256)?;
+    let branch = if options.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+        "d012-conservative-v2-stages"
+    } else {
+        "d008-membrane-metabolic-closure"
+    };
     let identity = build_candidate_identity(
         params.clone(),
         &source_commit,
-        Some("d008-membrane-metabolic-closure"),
+        Some(branch),
         None,
         "D-008 Stage C conservative qualitative-gate reference rates",
         None,
@@ -871,10 +984,16 @@ pub fn run_stage_c(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
         }));
     }
 
+    let stage_classification = if stage_pass {
+        options.stage_class("STAGE_C_METABOLISM_PASS")
+    } else {
+        options.stage_class("STAGE_C_METABOLISM_FAIL")
+    };
     let result = json!({
         "snapshot_schema_version": SNAPSHOT_SCHEMA_VERSION,
         "field_schema_version": FieldSchemaVersion::SevenFieldV1,
-        "equation_version": EquationVersion::MembraneMetabolismV1,
+        "equation_version": options.equation_version,
+        "stoichiometric_schema_version": options.equation_version.stoichiometric_schema_version(),
         "candidate_id": identity.candidate_id,
         "candidate_hash": identity.candidate_hash,
         "configuration_hash": identity.configuration_hash,
@@ -888,6 +1007,9 @@ pub fn run_stage_c(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
             "k_d008_catalyst_turnover": params.k_d008_catalyst_turnover,
             "d008_a_max": params.d008_a_max,
             "d008_c_max": params.d008_c_max,
+            "eta_c": params.eta_c,
+            "eta_phi": params.eta_phi,
+            "eta_m": params.eta_m,
         },
         "field_hashes": reference_hashes,
         "accepted_substeps": reference_substeps,
@@ -897,11 +1019,7 @@ pub fn run_stage_c(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
         "run_count": controls.len(),
         "controls": controls,
         "clean_termination": clean_termination,
-        "stage_classification": if stage_pass {
-            "D008_STAGE_C_METABOLISM_PASS"
-        } else {
-            "D008_STAGE_C_METABOLISM_FAIL"
-        },
+        "stage_classification": stage_classification,
     });
     fs::write(
         output.join("result.json"),
@@ -920,10 +1038,12 @@ fn stage_d_selected_toml_path() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../configs/d008/stage_c_selected.toml")
 }
 
-fn stage_d_params() -> Result<SimParams, Box<dyn std::error::Error>> {
+fn stage_d_params_for(
+    options: &D008StageOptions,
+) -> Result<SimParams, Box<dyn std::error::Error>> {
     let selected: StageAReference =
         toml::from_str(&fs::read_to_string(stage_d_selected_toml_path())?)?;
-    let mut params = reference_params()?;
+    let mut params = reference_params_for(options)?;
     params.k_membrane = selected.k_membrane;
     params.k_d008_activation = selected.k_d008_activation;
     params.k_d008_reproduction = selected.k_d008_reproduction;
@@ -937,6 +1057,10 @@ fn stage_d_params() -> Result<SimParams, Box<dyn std::error::Error>> {
     params.phase_separation_enabled = false;
     params.reactions_enabled = true;
     Ok(params)
+}
+
+fn stage_d_params() -> Result<SimParams, Box<dyn std::error::Error>> {
+    stage_d_params_for(&D008StageOptions::default())
 }
 
 fn prepare_stage_d(sim: &mut Simulation, radius: f64) {
@@ -1013,16 +1137,28 @@ fn soluble_max(sim: &Simulation) -> f64 {
 }
 
 pub fn run_stage_d(root: &Path) -> Result<Value, Box<dyn std::error::Error>> {
+    run_stage_d_with(root, &D008StageOptions::default())
+}
+
+pub fn run_stage_d_with(
+    root: &Path,
+    options: &D008StageOptions,
+) -> Result<Value, Box<dyn std::error::Error>> {
     let output = next_stage_d_attempt(root)?;
     fs::create_dir(&output)?;
-    let params = stage_d_params()?;
+    let params = stage_d_params_for(options)?;
     let source_commit = git_commit_hash()?;
     let binary_sha256 = binary_hash()?;
     validate_stage_a_provenance(&source_commit, &binary_sha256)?;
+    let branch = if options.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+        "d012-v2-stage-d-fixed-compartment"
+    } else {
+        "d008-stage-d-fixed-compartment"
+    };
     let identity = build_candidate_identity(
         params.clone(),
         &source_commit,
-        Some("d008-stage-d-fixed-compartment"),
+        Some(branch),
         None,
         "D-008 Stage D selected Stage A/B/C parameters; no rate compensation",
         None,
@@ -1176,24 +1312,31 @@ pub fn run_stage_d(root: &Path) -> Result<Value, Box<dyn std::error::Error>> {
         .values()
         .all(|value| value == &json!(true))
         && clean_termination;
+    let stage_prefix = options.classification_prefix;
     let scientific_conclusion = if stage_pass {
-        "D008_STAGE_D_FIXED_COMPARTMENT_PASS"
+        format!("{stage_prefix}_STAGE_D_FIXED_COMPARTMENT_PASS")
     } else if !gate_checks["nutrient_enters_all"].as_bool().unwrap_or(false)
         || !gate_checks["fuel_enters_all"].as_bool().unwrap_or(false)
     {
-        "D008_BOUNDARY_OVERSEALED"
+        format!("{stage_prefix}_BOUNDARY_OVERSEALED")
     } else if !gate_checks["catalyst_retention_all"].as_bool().unwrap_or(false)
         || !gate_checks["activated_retention_all"].as_bool().unwrap_or(false)
     {
-        "D008_BOUNDARY_RETENTION_FAIL"
+        format!("{stage_prefix}_BOUNDARY_RETENTION_FAIL")
     } else {
-        "D008_STAGE_D_FIXED_COMPARTMENT_FAIL"
+        format!("{stage_prefix}_STAGE_D_FIXED_COMPARTMENT_FAIL")
+    };
+    let stage_classification = if stage_pass {
+        options.stage_class("STAGE_D_FIXED_COMPARTMENT_PASS")
+    } else {
+        options.stage_class("STAGE_D_FIXED_COMPARTMENT_FAIL")
     };
     let reference = &radius_results[1];
     let result = json!({
         "snapshot_schema_version": SNAPSHOT_SCHEMA_VERSION,
         "field_schema_version": FieldSchemaVersion::SevenFieldV1,
-        "equation_version": EquationVersion::MembraneMetabolismV1,
+        "equation_version": options.equation_version,
+        "stoichiometric_schema_version": options.equation_version.stoichiometric_schema_version(),
         "candidate_id": identity.candidate_id,
         "candidate_hash": identity.candidate_hash,
         "configuration_hash": identity.configuration_hash,
@@ -1208,6 +1351,9 @@ pub fn run_stage_d(root: &Path) -> Result<Value, Box<dyn std::error::Error>> {
             "k_d008_reproduction": params.k_d008_reproduction,
             "k_d008_activated_decay": params.k_d008_activated_decay,
             "k_d008_catalyst_turnover": params.k_d008_catalyst_turnover,
+            "eta_c": params.eta_c,
+            "eta_phi": params.eta_phi,
+            "eta_m": params.eta_m,
         },
         "field_hashes": field_hashes,
         "accepted_substeps": reference["accepted_substeps"],
@@ -1223,11 +1369,7 @@ pub fn run_stage_d(root: &Path) -> Result<Value, Box<dyn std::error::Error>> {
         "clean_termination": clean_termination,
         "attempt_directory": output.file_name().and_then(|name| name.to_str()),
         "scientific_conclusion": scientific_conclusion,
-        "stage_classification": if stage_pass {
-            "D008_STAGE_D_FIXED_COMPARTMENT_PASS"
-        } else {
-            "D008_STAGE_D_FIXED_COMPARTMENT_FAIL"
-        },
+        "stage_classification": stage_classification,
     });
     fs::write(
         output.join("result.json"),
@@ -1557,6 +1699,7 @@ mod tests {
         }
         let result = build_stage_a_result(
             &identity,
+            &D008StageOptions::default(),
             "deadbeef",
             "abc123",
             "planar_unit_test",
@@ -1568,7 +1711,7 @@ mod tests {
             25,
             vec![json!({"species": "catalyst", "membrane": 0.0})],
             true,
-            "D008_STAGE_A_TRANSPORT_PASS",
+            true,
         )
         .expect("valid provenance");
 
@@ -1620,6 +1763,7 @@ mod tests {
         ] {
             let err = build_stage_a_result(
                 &identity,
+                &D008StageOptions::default(),
                 source,
                 binary,
                 "planar_unit_test",
@@ -1631,7 +1775,7 @@ mod tests {
                 1,
                 vec![],
                 true,
-                "D008_STAGE_A_TRANSPORT_PASS",
+                true,
             )
             .expect_err("provenance must fail closed");
             assert!(

@@ -7,6 +7,7 @@ mod d006;
 mod d007;
 mod d008;
 mod d011;
+mod d012;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -85,6 +86,10 @@ enum Commands {
     D011 {
         #[command(subcommand)]
         action: D011Commands,
+    },
+    D012 {
+        #[command(subcommand)]
+        action: D012Commands,
     },
 }
 
@@ -254,6 +259,25 @@ enum D011Commands {
     },
 }
 
+#[derive(Subcommand)]
+enum D012Commands {
+    /// Run conservative v2 Stage B membrane-localization gate.
+    StageB {
+        #[arg(long)]
+        output: PathBuf,
+    },
+    /// Run conservative v2 Stage C zero-dimensional metabolism gate.
+    StageC {
+        #[arg(long)]
+        output: PathBuf,
+    },
+    /// Run conservative v2 Stage D fixed-compartment gate.
+    StageD {
+        #[arg(long)]
+        output: PathBuf,
+    },
+}
+
 const CHECKPOINT_STEPS: [u64; 7] = [0, 25_000, 50_000, 100_000, 150_000, 200_000, 250_000];
 const RATIO_CHECKPOINTS: [u64; 6] = [25_000, 50_000, 100_000, 150_000, 200_000, 250_000];
 
@@ -277,6 +301,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D007 { action } => run_d007(action)?,
         Commands::D008 { action } => run_d008(action)?,
         Commands::D011 { action } => run_d011(action)?,
+        Commands::D012 { action } => run_d012(action)?,
     }
     Ok(())
 }
@@ -572,6 +597,35 @@ fn run_d011(action: D011Commands) -> Result<(), Box<dyn std::error::Error>> {
             println!(
                 "D-011: {} -> {:?}",
                 result["scientific_conclusion"], result["attempt_directory"]
+            );
+        }
+    }
+    Ok(())
+}
+
+fn run_d012(action: D012Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D012Commands::StageB { output } => {
+            let result = d012::run_v2_stage_b(&output)?;
+            println!(
+                "D-012 Stage B: {} -> {}",
+                result["stage_classification"],
+                output.display()
+            );
+        }
+        D012Commands::StageC { output } => {
+            let result = d012::run_v2_stage_c(&output)?;
+            println!(
+                "D-012 Stage C: {} -> {}",
+                result["stage_classification"],
+                output.display()
+            );
+        }
+        D012Commands::StageD { output } => {
+            let result = d012::run_v2_stage_d(&output)?;
+            println!(
+                "D-012 Stage D: {} -> {:?}",
+                result["stage_classification"], result["attempt_directory"]
             );
         }
     }

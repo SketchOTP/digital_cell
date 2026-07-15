@@ -18,6 +18,11 @@ use chemistry_core::membrane::{
     membrane_loss_isolated_delta, membrane_synthesis_isolated_delta,
     structure_production_isolated_delta,
 };
+use chemistry_core::d008_analysis::{membrane_calibration, membrane_candidates};
+use chemistry_core::d008_diagnostics::membrane_partition;
+use chemistry_core::membrane_transport::TransportSpecies;
+use chemistry_core::config::D008StageMode;
+use chemistry_core::reactions::interface_weight;
 use chemistry_core::stoichiometry::*;
 use chemistry_core::{candidate_hash, Simulation};
 
@@ -553,5 +558,331 @@ fn write_v2_audit_and_accounting_artifacts() {
         serde_json::to_string_pretty(&accounting).unwrap(),
     )
     .expect("write ledger spec");
+}
+
+fn d008_reference_transport_params() -> SimParams {
+    let mut p = SimParams::default();
+    p.equation_version = EquationVersion::MembraneMetabolismV1;
+    p.d_a = 0.040;
+    p.beta_c = 4.6;
+    p.beta_a = 4.6;
+    p.beta_n = 1.2;
+    p.beta_f = 1.2;
+    p.beta_w = 0.2;
+    p.m_max = 1.0;
+    p.d_m = 0.001;
+    p.k_membrane_decay = 0.002;
+    p.k_membrane_detach = 0.020;
+    p.k_c_membrane = 0.10;
+    p.reactions_enabled = false;
+    p.phase_separation_enabled = false;
+    p.d008_stage_mode = D008StageMode::Transport;
+    p
+}
+
+fn prepare_planar_transport(sim: &mut Simulation, species: TransportSpecies, membrane: f64) {
+    sim.observer_enabled = false;
+    sim.fields.catalyst.fill(0.0);
+    sim.fields.activated.fill(0.0);
+    sim.fields.nutrient.fill(0.0);
+    sim.fields.fuel.fill(0.0);
+    sim.fields.waste.fill(0.0);
+    for idx in 0..sim.fields.structure.len() {
+        if sim.grid.in_dish(idx) {
+            sim.fields.structure[idx] = 0.5;
+            sim.fields.membrane[idx] = membrane;
+        }
+    }
+    let width = sim.grid.width;
+    let center_x = sim.grid.cx;
+    let dish_mask = sim.grid.dish_mask.clone();
+    let field = match species {
+        TransportSpecies::Catalyst => &mut sim.fields.catalyst,
+        TransportSpecies::Activated => &mut sim.fields.activated,
+        TransportSpecies::Nutrient => &mut sim.fields.nutrient,
+        TransportSpecies::Fuel => &mut sim.fields.fuel,
+        TransportSpecies::Waste => &mut sim.fields.waste,
+    };
+    for (idx, value) in field.iter_mut().enumerate() {
+        if dish_mask[idx] && (idx % width) as f64 <= center_x {
+            *value = 1.0;
+        }
+    }
+}
+
+fn species_transport_accounting(sim: &Simulation, species: TransportSpecies) -> f64 {
+    match species {
+        TransportSpecies::Catalyst => sim.transport_accounting.last_step.catalyst.absolute_crossed_face_flux,
+        TransportSpecies::Activated => sim.transport_accounting.last_step.activated.absolute_crossed_face_flux,
+        TransportSpecies::Nutrient => sim.transport_accounting.last_step.nutrient.absolute_crossed_face_flux,
+        TransportSpecies::Fuel => sim.transport_accounting.last_step.fuel.absolute_crossed_face_flux,
+        TransportSpecies::Waste => sim.transport_accounting.last_step.waste.absolute_crossed_face_flux,
+    }
+}
+
+#[test]
+fn test_v2_transport_matches_v1() {
+    let membranes = [0.0, 0.5, 1.0];
+    let species = [
+        TransportSpecies::Catalyst,
+        TransportSpecies::Activated,
+        TransportSpecies::Nutrient,
+        TransportSpecies::Fuel,
+        TransportSpecies::Waste,
+    ];
+    for &membrane in &membranes {
+        for &sp in &species {
+            let mut v1 = Simulation::new(d008_reference_transport_params());
+            let mut v2 = Simulation::new(v2_params());
+            v2.params.d008_stage_mode = D008StageMode::Transport;
+            v2.params.reactions_enabled = false;
+            v2.params.phase_separation_enabled = false;
+            prepare_planar_transport(&mut v1, sp, membrane);
+            prepare_planar_transport(&mut v2, sp, membrane);
+            assert!(v1.step());
+            assert!(v2.step());
+            assert_eq!(
+                species_transport_accounting(&v1, sp),
+                species_transport_accounting(&v2, sp),
+                "flux mismatch species={sp:?} membrane={membrane}"
+            );
+            for (a, b) in v1.fields.catalyst.iter().zip(v2.fields.catalyst.iter()) {
+                assert!((a - b).abs() <= 1e-14, "catalyst field drift");
+            }
+            for (a, b) in v1.fields.activated.iter().zip(v2.fields.activated.iter()) {
+                assert!((a - b).abs() <= 1e-14, "activated field drift");
+            }
+            for (a, b) in v1.fields.nutrient.iter().zip(v2.fields.nutrient.iter()) {
+                assert!((a - b).abs() <= 1e-14, "nutrient field drift");
+            }
+            for (a, b) in v1.fields.fuel.iter().zip(v2.fields.fuel.iter()) {
+                assert!((a - b).abs() <= 1e-14, "fuel field drift");
+            }
+            for (a, b) in v1.fields.waste.iter().zip(v2.fields.waste.iter()) {
+                assert!((a - b).abs() <= 1e-14, "waste field drift");
+            }
+        }
+    }
+}
+
+#[test]
+fn test_v2_membrane_localization() {
+    let mut params = v2_params();
+    params.d008_stage_b_enabled = true;
+    let mut sim = Simulation::new(params.clone());
+    sim.observer_enabled = false;
+    let calibration = membrane_calibration(
+        &sim.fields.structure,
+        &sim.fields.catalyst,
+        &sim.fields.activated,
+        &sim.fields.membrane,
+        &sim.grid.dish_mask,
+        &params,
+    );
+    sim.params.k_membrane = membrane_candidates(calibration.k_required)[1];
+    for idx in 0..sim.fields.membrane.len() {
+        sim.fields.membrane[idx] = if sim.grid.in_dish(idx) {
+            0.5 * interface_weight(sim.fields.structure[idx])
+        } else {
+            0.0
+        };
+    }
+    let mut minimum_after_transient = f64::INFINITY;
+    for _ in 0..16_000 {
+        assert!(sim.step());
+        if sim.substep > 15_000 {
+            minimum_after_transient = minimum_after_transient.min(
+                membrane_partition(&sim.grid, &sim.fields.structure, &sim.fields.membrane)
+                    .localization_fraction,
+            );
+        }
+    }
+    let partition = membrane_partition(&sim.grid, &sim.fields.structure, &sim.fields.membrane);
+    assert!(
+        minimum_after_transient >= 0.90,
+        "localization={minimum_after_transient}"
+    );
+    assert!(sim.membrane_accounting.cumulative.synthesis > 0.0);
+    assert!(sim.membrane_accounting.cumulative.decay > 0.0);
+    assert!(sim.membrane_accounting.cumulative.detachment > 0.0);
+    assert!(sim
+        .fields
+        .membrane
+        .iter()
+        .all(|&m| m.is_finite() && (0.0..=params.m_max).contains(&m)));
+    assert!(partition.total_mass > f64::EPSILON);
+    assert!(sim.membrane_accounting.cumulative.residual.abs() < 1e-8);
+}
+
+fn v2_stage_c_params() -> SimParams {
+    let mut params = v2_params();
+    params.d008_stage_mode = D008StageMode::ActivatedMetabolism;
+    params.diffusion_enabled = false;
+    params.phase_separation_enabled = false;
+    params
+}
+
+#[test]
+fn test_v2_metabolic_reactor_bounded() {
+    let params = v2_stage_c_params();
+    let mut sim = Simulation::new(params);
+    sim.observer_enabled = false;
+    for idx in 0..sim.fields.structure.len() {
+        if sim.grid.in_dish(idx) {
+            sim.fields.structure[idx] = 0.5;
+            sim.fields.membrane[idx] = 0.5;
+            sim.fields.catalyst[idx] = 0.4;
+            sim.fields.nutrient[idx] = 0.8;
+            sim.fields.fuel[idx] = 0.7;
+            sim.fields.activated[idx] = 0.2;
+        }
+    }
+    let rates = activated_metabolism_rates(0.4, 0.8, 0.7, 0.2, &sim.params);
+    assert!(rates.activation > 0.0);
+    assert_eq!(
+        activated_metabolism_rates(0.0, 0.8, 0.7, 0.2, &sim.params).activation,
+        0.0
+    );
+    assert_eq!(
+        activated_metabolism_rates(0.4, 0.0, 0.7, 0.2, &sim.params).activation,
+        0.0
+    );
+    assert_eq!(
+        activated_metabolism_rates(0.4, 0.8, 0.0, 0.2, &sim.params).activation,
+        0.0
+    );
+    assert!(activated_metabolism_rates(0.4, 0.0, 0.0, 0.2, &sim.params).reproduction > 0.0);
+    assert_eq!(
+        activated_metabolism_rates(0.4, 1.0, 1.0, 0.0, &sim.params).reproduction,
+        0.0
+    );
+    for _ in 0..100 {
+        assert!(sim.step());
+    }
+    assert!(sim.metabolism_accounting.cumulative.activation > 0.0);
+    assert!(sim.metabolism_accounting.cumulative.reproduction > 0.0);
+    assert!(sim
+        .fields
+        .catalyst
+        .iter()
+        .all(|&v| v.is_finite() && (0.0..=sim.params.d008_c_max).contains(&v)));
+    assert!(sim
+        .fields
+        .activated
+        .iter()
+        .all(|&v| v.is_finite() && (0.0..=sim.params.d008_a_max).contains(&v)));
+    assert!(chemistry_core::stage_c_clamp_negligible(
+        &sim.metabolism_accounting.cumulative
+    ));
+    let material = build_material_equivalent_step(&sim.accounting.last_step);
+    assert!(material_step_closes(&material), "{material:?}");
+    assert!(sim.accounting.cumulative_within_tolerance());
+}
+
+fn v2_stage_d_params() -> SimParams {
+    let mut params = d008_reference_transport_params();
+    params.equation_version = EquationVersion::MembraneMetabolismV2Conservative;
+    params.eta_c = 1.0;
+    params.eta_phi = 1.0;
+    params.eta_m = 1.0;
+    params.k_membrane = 0.19748231883326484;
+    params.k_d008_activation = 0.020;
+    params.k_d008_reproduction = 0.040;
+    params.k_d008_activated_decay = 0.005;
+    params.k_d008_catalyst_turnover = 0.002;
+    params.d008_a_max = 1.0;
+    params.d008_c_max = 1.0;
+    params.d008_stage_mode = D008StageMode::FixedCompartment;
+    params.d008_stage_b_enabled = false;
+    params.diffusion_enabled = true;
+    params.phase_separation_enabled = false;
+    params.reactions_enabled = true;
+    params
+}
+
+fn v2_stage_d_simulation(radius: f64) -> Simulation {
+    let mut sim = Simulation::new(v2_stage_d_params());
+    sim.observer_enabled = false;
+    for idx in 0..sim.fields.structure.len() {
+        if !sim.grid.in_dish(idx) {
+            continue;
+        }
+        let x = (idx % sim.grid.width) as f64 - sim.grid.cx;
+        let y = (idx / sim.grid.width) as f64 - sim.grid.cy;
+        let distance = (x * x + y * y).sqrt();
+        let phi = 0.5 * (1.0 - ((distance - radius) / 2.0).tanh());
+        sim.fields.structure[idx] = phi;
+        sim.fields.membrane[idx] = interface_weight(phi);
+        if phi >= 0.5 {
+            sim.fields.catalyst[idx] = 0.4;
+            sim.fields.activated[idx] = 0.2;
+            sim.fields.nutrient[idx] = 0.2;
+            sim.fields.fuel[idx] = 0.2;
+            sim.fields.waste[idx] = 0.5;
+        } else {
+            sim.fields.nutrient[idx] = sim.params.n_reservoir;
+            sim.fields.fuel[idx] = sim.params.f_reservoir;
+            sim.fields.waste[idx] = sim.params.w_reservoir;
+        }
+    }
+    sim
+}
+
+#[test]
+fn test_v2_fixed_compartment_retention() {
+    let mut sim = v2_stage_d_simulation(16.0);
+    let structure_hash = chemistry_core::field_sha256_stable(&sim.fields.structure);
+    let membrane_hash = chemistry_core::field_sha256_stable(&sim.fields.membrane);
+    assert!(sim.step());
+    assert_eq!(
+        chemistry_core::field_sha256_stable(&sim.fields.structure),
+        structure_hash
+    );
+    assert_eq!(
+        chemistry_core::field_sha256_stable(&sim.fields.membrane),
+        membrane_hash
+    );
+    assert!(
+        sim.transport_accounting
+            .last_step
+            .nutrient
+            .interior_net_flux_rate
+            > 0.0
+    );
+    assert!(
+        sim.transport_accounting
+            .last_step
+            .fuel
+            .interior_net_flux_rate
+            > 0.0
+    );
+    assert!(
+        sim.transport_accounting
+            .last_step
+            .waste
+            .interior_net_flux_rate
+            < 0.0
+    );
+    assert!(sim.metabolism_accounting.last_step.activation > 0.0);
+    assert!(sim.metabolism_accounting.last_step.reproduction > 0.0);
+    assert!(sim.accounting.cumulative_within_tolerance());
+    let material = build_material_equivalent_step(&sim.accounting.last_step);
+    assert!(material_step_closes(&material), "{material:?}");
+}
+
+#[test]
+fn write_v2_stage_bcd_artifact_paths_exist_after_runner() {
+    // Document expected governed artifact locations (populated by experiment-runner D012).
+    for subdir in [
+        "v2_stage_b_localization",
+        "v2_stage_c_metabolism",
+        "v2_stage_d_fixed_compartment",
+    ] {
+        let path = format!(
+            "{}/../../experiments/generated/d012/{subdir}",
+            env!("CARGO_MANIFEST_DIR")
+        );
+        std::fs::create_dir_all(&path).expect("artifact dir");
+    }
 }
 
