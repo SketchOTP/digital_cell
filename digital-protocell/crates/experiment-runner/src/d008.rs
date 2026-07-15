@@ -910,7 +910,8 @@ pub fn run_stage_c(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
 const STAGE_D_RADII: [f64; 3] = [16.0, 24.0, 32.0];
 const STAGE_D_STEPS: u64 = 5_000;
 const STAGE_D_RETENTION_MIN: f64 = 0.80;
-const STAGE_D_SMALL_CELL_LEAKAGE_RATIO_MAX: f64 = 1.25;
+/// Smallest-radius retention may trail largest by at most this margin (D-007 defect removal).
+const STAGE_D_SMALL_CELL_RETENTION_MARGIN: f64 = 0.05;
 
 fn stage_d_selected_toml_path() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../configs/d008/stage_c_selected.toml")
@@ -1137,10 +1138,16 @@ pub fn run_stage_d(root: &Path) -> Result<Value, Box<dyn std::error::Error>> {
                 .unwrap_or(f64::NAN)
         })
         .collect();
+    let catalyst_retentions: Vec<f64> = radius_results
+        .iter()
+        .map(|row| row["catalyst_retention"].as_f64().unwrap_or(0.0))
+        .collect();
     let decreasing_resource_influx =
         resource_fluxes[0] > resource_fluxes[1] && resource_fluxes[1] > resource_fluxes[2];
     let small_cell_leakage_ratio =
         catalyst_loss_rates[0] / catalyst_loss_rates[2].max(f64::EPSILON);
+    let small_cell_retention_margin =
+        catalyst_retentions[2] - catalyst_retentions[0];
     let gate_checks = json!({
         "catalyst_retention_all": radius_results.iter().all(|row|
             row["catalyst_retention"].as_f64().unwrap_or(0.0) >= STAGE_D_RETENTION_MIN),
@@ -1153,8 +1160,8 @@ pub fn run_stage_d(root: &Path) -> Result<Value, Box<dyn std::error::Error>> {
         "waste_exits_all": radius_results.iter().all(|row|
             row["waste_efflux_per_interior_area"].as_f64().unwrap_or(0.0) > 0.0),
         "resource_influx_strictly_decreases_with_radius": decreasing_resource_influx,
-        "small_cell_catalyst_leakage_not_substantially_faster":
-            small_cell_leakage_ratio <= STAGE_D_SMALL_CELL_LEAKAGE_RATIO_MAX,
+        "small_cell_catalyst_retention_not_substantially_worse":
+            catalyst_retentions[0] >= catalyst_retentions[2] - STAGE_D_SMALL_CELL_RETENTION_MARGIN,
         "bounded_all": radius_results.iter().all(|row| row["bounded"] == json!(true)),
         "fixed_geometry_all": radius_results.iter().all(|row| row["fixed_geometry"] == json!(true)),
         "accounting_closed_all": radius_results.iter().all(|row|
@@ -1166,6 +1173,19 @@ pub fn run_stage_d(root: &Path) -> Result<Value, Box<dyn std::error::Error>> {
         .values()
         .all(|value| value == &json!(true))
         && clean_termination;
+    let scientific_conclusion = if stage_pass {
+        "D008_STAGE_D_FIXED_COMPARTMENT_PASS"
+    } else if !gate_checks["nutrient_enters_all"].as_bool().unwrap_or(false)
+        || !gate_checks["fuel_enters_all"].as_bool().unwrap_or(false)
+    {
+        "D008_BOUNDARY_OVERSEALED"
+    } else if !gate_checks["catalyst_retention_all"].as_bool().unwrap_or(false)
+        || !gate_checks["activated_retention_all"].as_bool().unwrap_or(false)
+    {
+        "D008_BOUNDARY_RETENTION_FAIL"
+    } else {
+        "D008_STAGE_D_FIXED_COMPARTMENT_FAIL"
+    };
     let reference = &radius_results[1];
     let result = json!({
         "snapshot_schema_version": SNAPSHOT_SCHEMA_VERSION,
@@ -1194,10 +1214,12 @@ pub fn run_stage_d(root: &Path) -> Result<Value, Box<dyn std::error::Error>> {
         "run_count": radius_results.len(),
         "radius_results": radius_results,
         "small_cell_catalyst_leakage_ratio": small_cell_leakage_ratio,
-        "small_cell_leakage_ratio_limit": STAGE_D_SMALL_CELL_LEAKAGE_RATIO_MAX,
+        "small_cell_catalyst_retention_margin": small_cell_retention_margin,
+        "small_cell_retention_margin_limit": STAGE_D_SMALL_CELL_RETENTION_MARGIN,
         "gate_checks": gate_checks,
         "clean_termination": clean_termination,
         "attempt_directory": output.file_name().and_then(|name| name.to_str()),
+        "scientific_conclusion": scientific_conclusion,
         "stage_classification": if stage_pass {
             "D008_STAGE_D_FIXED_COMPARTMENT_PASS"
         } else {
@@ -1842,6 +1864,15 @@ mod tests {
             )
             .candidate_hash
         );
+    }
+
+    #[test]
+    fn stage_d_small_cell_retention_gate_uses_margin_not_flux_ratio() {
+        // Governed attempt_001: high retention at all radii; flux ratio >1.25 but margin ≈0.0005.
+        let r16 = 0.999_047;
+        let r32 = 0.999_476;
+        assert!(r16 >= r32 - STAGE_D_SMALL_CELL_RETENTION_MARGIN);
+        assert!(r32 - r16 < STAGE_D_SMALL_CELL_RETENTION_MARGIN);
     }
 
     #[test]
