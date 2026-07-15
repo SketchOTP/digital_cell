@@ -7,6 +7,8 @@ use serde::{Deserialize, Serialize};
 pub struct SpeciesTransportAccounting {
     pub net_change_rate: f64,
     pub absolute_crossed_face_flux: f64,
+    /// Signed transport rate into the φ≥0.5 compartment across its boundary.
+    pub interior_net_flux_rate: f64,
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
@@ -99,4 +101,5 @@ fn accumulate(
 ) {
     cumulative.net_change_rate += step.net_change_rate * dt;
     cumulative.absolute_crossed_face_flux += step.absolute_crossed_face_flux * dt;
+    cumulative.interior_net_flux_rate += step.interior_net_flux_rate * dt;
 }

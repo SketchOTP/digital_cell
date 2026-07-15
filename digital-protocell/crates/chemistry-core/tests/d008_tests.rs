@@ -372,11 +372,17 @@ fn frozen_stage_a_and_stage_b_hashes_remain_unchanged() {
     let grid = GridConfiguration::default();
     let stage_a = stage_a_reference_params();
     assert_eq!(candidate_hash(&stage_a, &grid), STAGE_A_CANDIDATE_HASH);
-    assert_eq!(configuration_hash(&stage_a, &grid), STAGE_A_CONFIGURATION_HASH);
+    assert_eq!(
+        configuration_hash(&stage_a, &grid),
+        STAGE_A_CONFIGURATION_HASH
+    );
 
     let stage_b = stage_b_selected_params();
     assert_eq!(candidate_hash(&stage_b, &grid), STAGE_B_CANDIDATE_HASH);
-    assert_eq!(configuration_hash(&stage_b, &grid), STAGE_B_CONFIGURATION_HASH);
+    assert_eq!(
+        configuration_hash(&stage_b, &grid),
+        STAGE_B_CONFIGURATION_HASH
+    );
 }
 
 #[test]
@@ -387,7 +393,10 @@ fn stage_c_hashes_include_stage_c_params_and_change_with_rates() {
     assert!(bytes.contains("d008_stage_mode=activated_metabolism"));
     assert!(bytes.contains("k_d008_activation=0.02"));
     let base_hash = candidate_hash(&base, &grid);
-    assert_ne!(base_hash, candidate_hash(&stage_a_reference_params(), &grid));
+    assert_ne!(
+        base_hash,
+        candidate_hash(&stage_a_reference_params(), &grid)
+    );
 
     let mut changed = base.clone();
     changed.k_d008_activation = 0.021;
@@ -1287,4 +1296,92 @@ fn stage_c_clamp_heavy_horizon_exceeds_cumulative_tolerance() {
             .all(|&value| (0.0..=sim.params.d008_c_max).contains(&value)),
         "values remain in bounds after clamp — boundedness must not be tautological"
     );
+}
+
+fn stage_d_simulation(radius: f64) -> Simulation {
+    let mut params = d008_params();
+    params.d008_stage_mode = D008StageMode::FixedCompartment;
+    params.d008_stage_b_enabled = false;
+    params.diffusion_enabled = true;
+    params.phase_separation_enabled = false;
+    params.reactions_enabled = true;
+    params.reservoir_rate = 1.0;
+    let mut sim = Simulation::new(params);
+    sim.observer_enabled = false;
+    for idx in 0..sim.fields.structure.len() {
+        if !sim.grid.in_dish(idx) {
+            continue;
+        }
+        let x = (idx % sim.grid.width) as f64 - sim.grid.cx;
+        let y = (idx / sim.grid.width) as f64 - sim.grid.cy;
+        let distance = (x * x + y * y).sqrt();
+        let phi = 0.5 * (1.0 - ((distance - radius) / 2.0).tanh());
+        sim.fields.structure[idx] = phi;
+        sim.fields.membrane[idx] = interface_weight(phi);
+        if phi >= 0.5 {
+            sim.fields.catalyst[idx] = 0.4;
+            sim.fields.activated[idx] = 0.2;
+            sim.fields.nutrient[idx] = 0.2;
+            sim.fields.fuel[idx] = 0.2;
+            sim.fields.waste[idx] = 0.5;
+        } else {
+            sim.fields.nutrient[idx] = 0.8;
+            sim.fields.fuel[idx] = 0.7;
+        }
+    }
+    sim
+}
+
+#[test]
+fn stage_d_couples_selective_transport_metabolism_and_reservoir_with_fixed_geometry() {
+    let mut sim = stage_d_simulation(16.0);
+    let structure_hash = field_sha256_stable(&sim.fields.structure);
+    let membrane_hash = field_sha256_stable(&sim.fields.membrane);
+
+    assert!(sim.step());
+
+    assert_eq!(field_sha256_stable(&sim.fields.structure), structure_hash);
+    assert_eq!(field_sha256_stable(&sim.fields.membrane), membrane_hash);
+    assert!(
+        sim.transport_accounting
+            .last_step
+            .nutrient
+            .interior_net_flux_rate
+            > 0.0
+    );
+    assert!(
+        sim.transport_accounting
+            .last_step
+            .fuel
+            .interior_net_flux_rate
+            > 0.0
+    );
+    assert!(
+        sim.transport_accounting
+            .last_step
+            .waste
+            .interior_net_flux_rate
+            < 0.0
+    );
+    assert!(sim.metabolism_accounting.last_step.activation > 0.0);
+    assert!(sim.metabolism_accounting.last_step.reproduction > 0.0);
+    assert!(sim.accounting.last_step.nutrient.reservoir_delta > 0.0);
+    assert!(sim.accounting.last_step.fuel.reservoir_delta > 0.0);
+    assert!(sim.accounting.cumulative_within_tolerance());
+}
+
+#[test]
+fn stage_d_rejection_is_atomic() {
+    let mut sim = stage_d_simulation(16.0);
+    let center = Grid::index(sim.grid.width, sim.grid.cx as usize, sim.grid.cy as usize);
+    sim.fields.nutrient[center] = CONC_SAFETY_LIMIT + 1.0;
+    let addresses = buffer_addresses(&sim.fields);
+
+    assert!(!sim.step());
+
+    assert_eq!(buffer_addresses(&sim.fields), addresses);
+    assert_eq!(sim.substep, 0);
+    assert_eq!(sim.transport_accounting.accepted_steps, 0);
+    assert_eq!(sim.metabolism_accounting.accepted_steps, 0);
+    assert_eq!(sim.accounting.steps_within_tolerance, 0);
 }

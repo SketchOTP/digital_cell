@@ -51,6 +51,7 @@ pub enum D008StageMode {
     #[default]
     Transport,
     ActivatedMetabolism,
+    FixedCompartment,
 }
 
 impl D008StageMode {
@@ -58,6 +59,7 @@ impl D008StageMode {
         match self {
             Self::Transport => "transport",
             Self::ActivatedMetabolism => "activated_metabolism",
+            Self::FixedCompartment => "fixed_compartment",
         }
     }
 }
@@ -152,8 +154,8 @@ pub struct SimParams {
     /// Isolated Stage B mode: fixed φ,C,A and solubles; only M advances.
     #[serde(default)]
     pub d008_stage_b_enabled: bool,
-    /// Isolated typed D-008 stage dispatch. Stage C is a homogeneous local reactor:
-    /// no diffusion, reservoir, phase, structure, or membrane evolution.
+    /// Isolated typed D-008 stage dispatch. Stage C is a homogeneous local reactor;
+    /// Stage D couples transport, metabolism, and reservoir exchange with fixed φ/M.
     #[serde(default)]
     pub d008_stage_mode: D008StageMode,
     /// D-008 Stage C reference rates. These conservative qualitative-gate values

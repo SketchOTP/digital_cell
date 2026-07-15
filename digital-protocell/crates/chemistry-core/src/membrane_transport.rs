@@ -99,6 +99,7 @@ pub fn transport_field(
     out_rate.fill(0.0);
 
     let mut absolute_crossed_face_flux = 0.0;
+    let mut interior_net_flux_rate = 0.0;
     for j in 0..grid.height {
         for i in 0..grid.width {
             let idx = Grid::index(grid.width, i, j);
@@ -118,6 +119,7 @@ pub fn transport_field(
                         params,
                         out_rate,
                         &mut absolute_crossed_face_flux,
+                        &mut interior_net_flux_rate,
                     );
                 }
             }
@@ -134,6 +136,7 @@ pub fn transport_field(
                         params,
                         out_rate,
                         &mut absolute_crossed_face_flux,
+                        &mut interior_net_flux_rate,
                     );
                 }
             }
@@ -150,6 +153,7 @@ pub fn transport_field(
     SpeciesTransportAccounting {
         net_change_rate,
         absolute_crossed_face_flux,
+        interior_net_flux_rate,
     }
 }
 
@@ -164,6 +168,7 @@ fn apply_face(
     params: &SimParams,
     out_rate: &mut [f64],
     absolute_crossed_face_flux: &mut f64,
+    interior_net_flux_rate: &mut f64,
 ) {
     let flux = face_flux(
         species,
@@ -178,4 +183,9 @@ fn apply_face(
     out_rate[i] -= flux;
     out_rate[j] += flux;
     *absolute_crossed_face_flux += flux.abs();
+    let i_inside = phi[i] >= 0.5;
+    let j_inside = phi[j] >= 0.5;
+    if i_inside != j_inside {
+        *interior_net_flux_rate += if i_inside { -flux } else { flux };
+    }
 }

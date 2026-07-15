@@ -145,10 +145,10 @@ reactions_enabled={};phase_separation_enabled={};diffusion_enabled={};k_phi={};u
                 params.beta_w,
             ));
             // Stage A Transport hashed only betas. Stage B MembraneDynamics appended
-            // membrane rates when Stage B is enabled; Stage C keeps that payload and
-            // appends activation rates only under ActivatedMetabolism.
+            // membrane rates when Stage B is enabled; later typed stages keep that
+            // payload and append activation rates.
             let include_membrane_dynamics = params.d008_stage_b_enabled
-                || params.d008_stage_mode == D008StageMode::ActivatedMetabolism;
+                || params.d008_stage_mode != D008StageMode::Transport;
             if include_membrane_dynamics {
                 s.push_str(&format!(
                     ";m_max={};d_m={};k_membrane_decay={};k_membrane_detach={};k_c_membrane={};\
@@ -162,7 +162,7 @@ k_membrane={};d008_stage_b_enabled={}",
                     params.d008_stage_b_enabled,
                 ));
             }
-            if params.d008_stage_mode == D008StageMode::ActivatedMetabolism {
+            if params.d008_stage_mode != D008StageMode::Transport {
                 s.push_str(&format!(
                     ";d008_stage_mode={};k_d008_activation={};k_d008_reproduction={};\
 k_d008_activated_decay={};k_d008_catalyst_turnover={};d008_a_max={};d008_c_max={}",

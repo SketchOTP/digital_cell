@@ -222,6 +222,11 @@ enum D008Commands {
         #[arg(long)]
         output: PathBuf,
     },
+    /// Run the immutable Stage D fixed-compartment coupling gate.
+    StageD {
+        #[arg(long)]
+        output: PathBuf,
+    },
 }
 
 const CHECKPOINT_STEPS: [u64; 7] = [0, 25_000, 50_000, 100_000, 150_000, 200_000, 250_000];
@@ -504,6 +509,13 @@ fn run_d008(action: D008Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-008 Stage C: {} -> {}",
                 result["stage_classification"],
                 output.display()
+            );
+        }
+        D008Commands::StageD { output } => {
+            let result = d008::run_stage_d(&output)?;
+            println!(
+                "D-008 Stage D: {} -> {}",
+                result["stage_classification"], result["attempt_directory"]
             );
         }
     }

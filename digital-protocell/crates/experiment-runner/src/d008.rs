@@ -907,6 +907,310 @@ pub fn run_stage_c(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
     Ok(result)
 }
 
+const STAGE_D_RADII: [f64; 3] = [16.0, 24.0, 32.0];
+const STAGE_D_STEPS: u64 = 5_000;
+const STAGE_D_RETENTION_MIN: f64 = 0.80;
+const STAGE_D_SMALL_CELL_LEAKAGE_RATIO_MAX: f64 = 1.25;
+
+fn stage_d_selected_toml_path() -> PathBuf {
+    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../configs/d008/stage_c_selected.toml")
+}
+
+fn stage_d_params() -> Result<SimParams, Box<dyn std::error::Error>> {
+    let selected: StageAReference =
+        toml::from_str(&fs::read_to_string(stage_d_selected_toml_path())?)?;
+    let mut params = reference_params()?;
+    params.k_membrane = selected.k_membrane;
+    params.k_d008_activation = selected.k_d008_activation;
+    params.k_d008_reproduction = selected.k_d008_reproduction;
+    params.k_d008_activated_decay = selected.k_d008_activated_decay;
+    params.k_d008_catalyst_turnover = selected.k_d008_catalyst_turnover;
+    params.d008_a_max = selected.d008_a_max;
+    params.d008_c_max = selected.d008_c_max;
+    params.d008_stage_mode = D008StageMode::FixedCompartment;
+    params.d008_stage_b_enabled = false;
+    params.diffusion_enabled = true;
+    params.phase_separation_enabled = false;
+    params.reactions_enabled = true;
+    Ok(params)
+}
+
+fn prepare_stage_d(sim: &mut Simulation, radius: f64) {
+    sim.observer_enabled = false;
+    for idx in 0..sim.fields.structure.len() {
+        if !sim.grid.in_dish(idx) {
+            continue;
+        }
+        let x = (idx % sim.grid.width) as f64 - sim.grid.cx;
+        let y = (idx / sim.grid.width) as f64 - sim.grid.cy;
+        let distance = (x * x + y * y).sqrt();
+        let phi = 0.5 * (1.0 - ((distance - radius) / 2.0).tanh());
+        sim.fields.structure[idx] = phi;
+        sim.fields.membrane[idx] = interface_weight(phi);
+        if phi >= 0.5 {
+            sim.fields.catalyst[idx] = 0.4;
+            sim.fields.activated[idx] = 0.2;
+            sim.fields.nutrient[idx] = 0.2;
+            sim.fields.fuel[idx] = 0.2;
+            sim.fields.waste[idx] = 0.5;
+        } else {
+            sim.fields.catalyst[idx] = 0.0;
+            sim.fields.activated[idx] = 0.0;
+            sim.fields.nutrient[idx] = sim.params.n_reservoir;
+            sim.fields.fuel[idx] = sim.params.f_reservoir;
+            sim.fields.waste[idx] = sim.params.w_reservoir;
+        }
+    }
+}
+
+fn next_stage_d_attempt(root: &Path) -> Result<PathBuf, Box<dyn std::error::Error>> {
+    fs::create_dir_all(root)?;
+    for attempt in 1..=999 {
+        let path = root.join(format!("attempt_{attempt:03}"));
+        if !path.exists() {
+            return Ok(path);
+        }
+    }
+    Err(format!(
+        "Stage D attempt namespace exhausted under {}",
+        root.display()
+    )
+    .into())
+}
+
+fn interior_stats(sim: &Simulation, field: &[f64]) -> (f64, f64) {
+    let mut total = 0.0;
+    let mut area = 0.0;
+    for (idx, value) in field.iter().enumerate() {
+        if sim.grid.in_dish(idx) && sim.fields.structure[idx] >= 0.5 {
+            total += value;
+            area += 1.0;
+        }
+    }
+    (total, area)
+}
+
+fn retention(sim: &Simulation, field: &[f64]) -> f64 {
+    let (inside, _) = interior_stats(sim, field);
+    inside / total_mass(&sim.grid, field).max(f64::EPSILON)
+}
+
+fn soluble_max(sim: &Simulation) -> f64 {
+    [
+        &sim.fields.catalyst,
+        &sim.fields.nutrient,
+        &sim.fields.fuel,
+        &sim.fields.waste,
+        &sim.fields.activated,
+    ]
+    .into_iter()
+    .flat_map(|field| field.iter().copied())
+    .fold(0.0, f64::max)
+}
+
+pub fn run_stage_d(root: &Path) -> Result<Value, Box<dyn std::error::Error>> {
+    let output = next_stage_d_attempt(root)?;
+    fs::create_dir(&output)?;
+    let params = stage_d_params()?;
+    let source_commit = git_commit_hash()?;
+    let binary_sha256 = binary_hash()?;
+    validate_stage_a_provenance(&source_commit, &binary_sha256)?;
+    let identity = build_candidate_identity(
+        params.clone(),
+        &source_commit,
+        Some("d008-stage-d-fixed-compartment"),
+        None,
+        "D-008 Stage D selected Stage A/B/C parameters; no rate compensation",
+        None,
+        None,
+    );
+
+    let mut radius_results = Vec::new();
+    let mut field_hashes = Map::new();
+    let mut aggregate_accepted_substeps = 0;
+    let mut aggregate_simulated_time = 0.0;
+    let mut clean_termination = true;
+    for radius in STAGE_D_RADII {
+        let mut sim = Simulation::new(params.clone());
+        prepare_stage_d(&mut sim, radius);
+        let initial_hashes = seven_field_hashes(&sim.fields);
+        let initial_catalyst_inside = interior_stats(&sim, &sim.fields.catalyst).0;
+        for _ in 0..STAGE_D_STEPS {
+            if !sim.step() {
+                break;
+            }
+        }
+        let final_hashes = seven_field_hashes(&sim.fields);
+        let fixed_geometry = initial_hashes["structure"] == final_hashes["structure"]
+            && initial_hashes["membrane"] == final_hashes["membrane"];
+        let (catalyst_inside, interior_area) = interior_stats(&sim, &sim.fields.catalyst);
+        let (activated_inside, _) = interior_stats(&sim, &sim.fields.activated);
+        let catalyst_retention = retention(&sim, &sim.fields.catalyst);
+        let activated_retention = retention(&sim, &sim.fields.activated);
+        let n_influx = sim
+            .transport_accounting
+            .cumulative
+            .nutrient
+            .interior_net_flux_rate;
+        let f_influx = sim
+            .transport_accounting
+            .cumulative
+            .fuel
+            .interior_net_flux_rate;
+        let w_net = sim
+            .transport_accounting
+            .cumulative
+            .waste
+            .interior_net_flux_rate;
+        let c_net = sim
+            .transport_accounting
+            .cumulative
+            .catalyst
+            .interior_net_flux_rate;
+        let a_net = sim
+            .transport_accounting
+            .cumulative
+            .activated
+            .interior_net_flux_rate;
+        let bounded = soluble_max(&sim) <= chemistry_core::CONC_SAFETY_LIMIT
+            && stage_c_clamp_negligible(&sim.metabolism_accounting.cumulative)
+            && sim.accounting.cumulative_within_tolerance();
+        let clean = sim.substep == STAGE_D_STEPS && sim.rejection_count == 0;
+        clean_termination &= clean;
+        aggregate_accepted_substeps += sim.substep;
+        aggregate_simulated_time += sim.sim_time;
+        field_hashes.insert(format!("R{}", radius as u32), final_hashes.clone());
+        radius_results.push(json!({
+            "radius": radius,
+            "interior_area": interior_area,
+            "accepted_substeps": sim.substep,
+            "simulated_time": sim.sim_time,
+            "rejection_count": sim.rejection_count,
+            "fixed_geometry": fixed_geometry,
+            "fixed_field_hashes": {
+                "initial": {
+                    "structure": initial_hashes["structure"].clone(),
+                    "membrane": initial_hashes["membrane"].clone(),
+                },
+                "final": {
+                    "structure": final_hashes["structure"].clone(),
+                    "membrane": final_hashes["membrane"].clone(),
+                },
+            },
+            "field_hashes": final_hashes,
+            "catalyst_retention": catalyst_retention,
+            "activated_retention": activated_retention,
+            "mean_catalyst_inside": catalyst_inside / interior_area.max(1.0),
+            "mean_activated_inside": activated_inside / interior_area.max(1.0),
+            "nutrient_influx": n_influx,
+            "fuel_influx": f_influx,
+            "nutrient_influx_per_interior_area": n_influx / interior_area.max(1.0),
+            "fuel_influx_per_interior_area": f_influx / interior_area.max(1.0),
+            "resource_influx_per_interior_area": (n_influx + f_influx) / interior_area.max(1.0),
+            "waste_efflux_per_interior_area": -w_net / interior_area.max(1.0),
+            "catalyst_leakage": (-c_net).max(0.0),
+            "activated_leakage": (-a_net).max(0.0),
+            "catalyst_leakage_fraction_per_time":
+                (-c_net).max(0.0) / initial_catalyst_inside.max(f64::EPSILON)
+                    / sim.sim_time.max(f64::EPSILON),
+            "transport_accounting": sim.transport_accounting,
+            "metabolism_accounting": sim.metabolism_accounting,
+            "field_accounting": sim.accounting,
+            "bounded": bounded,
+            "clean_termination": clean,
+        }));
+    }
+
+    let resource_fluxes: Vec<f64> = radius_results
+        .iter()
+        .map(|row| {
+            row["resource_influx_per_interior_area"]
+                .as_f64()
+                .unwrap_or(f64::NAN)
+        })
+        .collect();
+    let catalyst_loss_rates: Vec<f64> = radius_results
+        .iter()
+        .map(|row| {
+            row["catalyst_leakage_fraction_per_time"]
+                .as_f64()
+                .unwrap_or(f64::NAN)
+        })
+        .collect();
+    let decreasing_resource_influx =
+        resource_fluxes[0] > resource_fluxes[1] && resource_fluxes[1] > resource_fluxes[2];
+    let small_cell_leakage_ratio =
+        catalyst_loss_rates[0] / catalyst_loss_rates[2].max(f64::EPSILON);
+    let gate_checks = json!({
+        "catalyst_retention_all": radius_results.iter().all(|row|
+            row["catalyst_retention"].as_f64().unwrap_or(0.0) >= STAGE_D_RETENTION_MIN),
+        "activated_retention_all": radius_results.iter().all(|row|
+            row["activated_retention"].as_f64().unwrap_or(0.0) >= STAGE_D_RETENTION_MIN),
+        "nutrient_enters_all": radius_results.iter().all(|row|
+            row["nutrient_influx"].as_f64().unwrap_or(0.0) > 0.0),
+        "fuel_enters_all": radius_results.iter().all(|row|
+            row["fuel_influx"].as_f64().unwrap_or(0.0) > 0.0),
+        "waste_exits_all": radius_results.iter().all(|row|
+            row["waste_efflux_per_interior_area"].as_f64().unwrap_or(0.0) > 0.0),
+        "resource_influx_strictly_decreases_with_radius": decreasing_resource_influx,
+        "small_cell_catalyst_leakage_not_substantially_faster":
+            small_cell_leakage_ratio <= STAGE_D_SMALL_CELL_LEAKAGE_RATIO_MAX,
+        "bounded_all": radius_results.iter().all(|row| row["bounded"] == json!(true)),
+        "fixed_geometry_all": radius_results.iter().all(|row| row["fixed_geometry"] == json!(true)),
+        "accounting_closed_all": radius_results.iter().all(|row|
+            row["field_accounting"]["steps_outside_tolerance"] == json!(0)),
+    });
+    let stage_pass = gate_checks
+        .as_object()
+        .expect("fixed gate object")
+        .values()
+        .all(|value| value == &json!(true))
+        && clean_termination;
+    let reference = &radius_results[1];
+    let result = json!({
+        "snapshot_schema_version": SNAPSHOT_SCHEMA_VERSION,
+        "field_schema_version": FieldSchemaVersion::SevenFieldV1,
+        "equation_version": EquationVersion::MembraneMetabolismV1,
+        "candidate_id": identity.candidate_id,
+        "candidate_hash": identity.candidate_hash,
+        "configuration_hash": identity.configuration_hash,
+        "source_commit": source_commit,
+        "binary_sha256": binary_sha256,
+        "seed_recipe": "fixed_circular_phi_tanh_width2_fixed_M_interface_weight_C0.4_A0.2_NF0.2_W0.5",
+        "radii": STAGE_D_RADII,
+        "stage_d_steps": STAGE_D_STEPS,
+        "selected_rates": {
+            "k_membrane": params.k_membrane,
+            "k_d008_activation": params.k_d008_activation,
+            "k_d008_reproduction": params.k_d008_reproduction,
+            "k_d008_activated_decay": params.k_d008_activated_decay,
+            "k_d008_catalyst_turnover": params.k_d008_catalyst_turnover,
+        },
+        "field_hashes": field_hashes,
+        "accepted_substeps": reference["accepted_substeps"],
+        "simulated_time": reference["simulated_time"],
+        "aggregate_accepted_substeps": aggregate_accepted_substeps,
+        "aggregate_simulated_time": aggregate_simulated_time,
+        "run_count": radius_results.len(),
+        "radius_results": radius_results,
+        "small_cell_catalyst_leakage_ratio": small_cell_leakage_ratio,
+        "small_cell_leakage_ratio_limit": STAGE_D_SMALL_CELL_LEAKAGE_RATIO_MAX,
+        "gate_checks": gate_checks,
+        "clean_termination": clean_termination,
+        "attempt_directory": output.file_name().and_then(|name| name.to_str()),
+        "stage_classification": if stage_pass {
+            "D008_STAGE_D_FIXED_COMPARTMENT_PASS"
+        } else {
+            "D008_STAGE_D_FIXED_COMPARTMENT_FAIL"
+        },
+    });
+    fs::write(
+        output.join("result.json"),
+        serde_json::to_vec_pretty(&result)?,
+    )?;
+    Ok(result)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -1321,10 +1625,8 @@ mod tests {
                 .map(|c| (
                     c["case_id"].as_str().unwrap_or("?"),
                     c["result"].as_str().unwrap_or("?"),
-                    c["metabolism_accounting"]["cumulative"]["catalyst_clamp_correction"]
-                        .as_f64(),
-                    c["metabolism_accounting"]["cumulative"]["activated_clamp_correction"]
-                        .as_f64(),
+                    c["metabolism_accounting"]["cumulative"]["catalyst_clamp_correction"].as_f64(),
+                    c["metabolism_accounting"]["cumulative"]["activated_clamp_correction"].as_f64(),
                     c["structure_membrane_invariant"].as_bool(),
                 ))
                 .collect::<Vec<_>>()
@@ -1478,6 +1780,87 @@ mod tests {
             invariant,
         ));
     }
+
+    #[test]
+    fn stage_d_preparation_uses_selected_rates_and_fixed_geometry() {
+        let mut params = stage_d_params().expect("Stage D selected params");
+        let selected_k_membrane = params.k_membrane;
+        assert!(selected_k_membrane > 0.0);
+        assert_eq!(params.d008_stage_mode, D008StageMode::FixedCompartment);
+        let mut sim = Simulation::new(params.clone());
+        prepare_stage_d(&mut sim, 16.0);
+        let structure_hash = field_sha256_stable(&sim.fields.structure);
+        let membrane_hash = field_sha256_stable(&sim.fields.membrane);
+        for _ in 0..10 {
+            assert!(sim.step());
+        }
+        assert_eq!(field_sha256_stable(&sim.fields.structure), structure_hash);
+        assert_eq!(field_sha256_stable(&sim.fields.membrane), membrane_hash);
+        assert!(
+            sim.transport_accounting
+                .cumulative
+                .nutrient
+                .interior_net_flux_rate
+                > 0.0
+        );
+        assert!(
+            sim.transport_accounting
+                .cumulative
+                .fuel
+                .interior_net_flux_rate
+                > 0.0
+        );
+        assert!(
+            sim.transport_accounting
+                .cumulative
+                .waste
+                .interior_net_flux_rate
+                < 0.0
+        );
+        assert!(sim.metabolism_accounting.cumulative.activation > 0.0);
+        assert!(sim.metabolism_accounting.cumulative.reproduction > 0.0);
+        params.k_membrane = 0.0;
+        assert_ne!(
+            build_candidate_identity(
+                params,
+                "deadbeef",
+                Some("stage-d"),
+                None,
+                "stage d hash sensitivity",
+                None,
+                None,
+            )
+            .candidate_hash,
+            build_candidate_identity(
+                sim.params,
+                "deadbeef",
+                Some("stage-d"),
+                None,
+                "stage d hash sensitivity",
+                None,
+                None,
+            )
+            .candidate_hash
+        );
+    }
+
+    #[test]
+    fn stage_d_attempt_directories_are_monotonic_and_immutable() {
+        let stamp = SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .expect("clock")
+            .as_nanos();
+        let root = std::env::temp_dir().join(format!("d008_stage_d_attempts_{stamp}"));
+        let _ = fs::remove_dir_all(&root);
+        assert_eq!(
+            next_stage_d_attempt(&root).unwrap(),
+            root.join("attempt_001")
+        );
+        fs::create_dir_all(root.join("attempt_001")).unwrap();
+        assert_eq!(
+            next_stage_d_attempt(&root).unwrap(),
+            root.join("attempt_002")
+        );
+        let _ = fs::remove_dir_all(&root);
+    }
 }
-
-
