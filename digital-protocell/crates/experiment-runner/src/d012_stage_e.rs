@@ -346,7 +346,7 @@ fn run_radii_batch(
 ) -> Result<Vec<(f64, D011RunOutcome, Value)>, Box<dyn std::error::Error>> {
     let mut results = Vec::new();
     for &radius in radii {
-        let job_id = format!("{prefix}_R{radius}");
+        let job_id = format!("{prefix}_R{radius}_{}_{}", config.max_steps, config.window_size);
         let artifact = root.join(format!("{prefix}/R{radius}/result.json"));
         if ledger_complete(&load_ledger(root), &job_id) && artifact.exists() {
             let cached: Value = serde_json::from_slice(&fs::read(&artifact)?)?;

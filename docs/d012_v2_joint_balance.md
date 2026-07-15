@@ -47,6 +47,22 @@ cd digital-protocell
 ./target/release/experiment-runner d012 stage-e-robust --output ../experiments/generated/d012/v2_robust_overlap
 ```
 
-## Result
+## Result (diagnostic, 5k steps / 1k windows)
 
-*(Updated after governed runs complete.)*
+**Commit:** `7281c56` (reference artifact after path fix)  
+**Classification:** `LongTransientUnresolved` (diagnostic horizon; not a definitive no-solution)  
+**Joint balance:** not found at 5k  
+**Center R=22 Q/g:** Q_φ≈0.17, Q_C≈0.92, Q_M≈0.40, Q_A≈0.33; all |g|≫1e-4 (g_φ≈−32)  
+**Restoring radius:** fail — g_structure negative at R18/22/26 (−21/−32/−46), no sign crossing  
+**Throughput:** active (N/F influx > 0, W efflux > 0)  
+**Sensitivity:** rank 4, cond≈3.34 (valid for solver entry at short horizon)
+
+Calibrated v2 rates (ledger-estimated + progressive screens):  
+`k_activation≈0.079`, `k_rep≈0.012`, `k_membrane≈0.583`, `k_structure≈1.081`
+
+## Full horizon (200k) — in progress
+
+Started after diagnostic; logs: `/tmp/d012_stage_e_full.log`, status: `/tmp/d012_stage_e_full.status`  
+Artifacts resume under `experiments/generated/d012/v2_stage_e_reference/` with horizon-scoped job IDs.
+
+*(Full grid + solver/robust evidence updated when long runs complete.)*
