@@ -1,6 +1,6 @@
 # D-012 v2 Joint Balance (Stage E)
 
-**Status:** In progress — transport-coupled constrained-radius assay for `membrane_metabolism_v2_conservative`.
+**Status:** Reference terminated as `INVALID_ARTIFACT`; solver entry gate closed.
 
 ## Protocol
 
@@ -60,9 +60,53 @@ cd digital-protocell
 Calibrated v2 rates (ledger-estimated + progressive screens):  
 `k_activation≈0.079`, `k_rep≈0.012`, `k_membrane≈0.583`, `k_structure≈1.081`
 
-## Full horizon (200k) — in progress
+## Governed reference terminal result
 
-Started after diagnostic; logs: `/tmp/d012_stage_e_full.log`, status: `/tmp/d012_stage_e_full.status`  
-Artifacts resume under `experiments/generated/d012/v2_stage_e_reference/` with horizon-scoped job IDs.
+The authoritative reference launched from source commit `15f9f21` and binary
+SHA-256 `b044ac4083838e9ea6e21c32e093f2025f25b10876b26f9b67c917995e28e77d`.
+It ran from 2026-07-15 18:12:06 UTC to 19:57:21 UTC.
 
-*(Full grid + solver/robust evidence updated when long runs complete.)*
+Terminal classification:
+
+```text
+INVALID_ARTIFACT
+```
+
+This is an execution-artifact failure, not a Stage E scientific conclusion.
+The reference runner continued attempted chunks after `Simulation::step()`
+returned false. It advanced its attempted-step counter and appended no-motion
+windows even though accepted substeps stopped. Those zero-motion windows
+incorrectly satisfied the quasi-steady window helper at R=22 and R=26.
+Every radius records `clean_termination=false`.
+
+| Radius | Accepted substeps | Simulated time | Reported windows | Clean |
+| --- | ---: | ---: | ---: | --- |
+| 18 | 188,324 | 470.7861 | 1 | no |
+| 22 | 161,166 | 402.8940 | 3 | no |
+| 26 | 150,715 | 376.7708 | 4 | no |
+
+The required 10k/25k/50k/100k/150k/200k atomic checkpoints were not written.
+Activation-potential accounting and an explicit biological/numerical
+termination reason were also absent. The material-equivalent summary reports a
+relative residual of `1.103539015623602e-11`, but that alone cannot validate
+the reference.
+
+The center's recorded values are preserved only as invalid-artifact
+diagnostics:
+
+| Component | Q | g |
+| --- | ---: | ---: |
+| Structure | 0.0342457 | -36.9610 |
+| Catalyst | 0.4561964 | -0.554489 |
+| Membrane | 0.2940055 | -0.769932 |
+| Activated | 1.1260094 | -0.548245 |
+
+Center C retention was `0.939302`, A retention `0.744125`, and membrane
+localization `0.899265`; N/F influx and W efflux remained positive. These
+values are ineligible for balance or nullcline classification.
+
+No sensitivity, bounded-solver, yield, or robustness phase was started from
+this reference. The solver entry gate remains closed.
+
+Classification artifact:
+`digital-protocell/experiments/generated/d012/v2_stage_e_reference/reference_terminal_classification.json`.

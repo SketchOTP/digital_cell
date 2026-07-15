@@ -1,0 +1,40 @@
+{
+  "artifacts": [
+    {
+      "bytes": 1104,
+      "path": "digital-protocell/experiments/generated/d012/v2_stage_e_reference/job_ledger.json",
+      "sha256": "4382e87ca9e0d4f69879a05c710cb1a164c926354c0f1fcc0a2a4da8dce32dea"
+    },
+    {
+      "bytes": 7695,
+      "path": "digital-protocell/experiments/generated/d012/v2_stage_e_reference/reference/R18/result.json",
+      "sha256": "3351ae2f8a6a9063efad4ef1a987964e985ee48ba9f365f3e0e800d35f9ffb48"
+    },
+    {
+      "bytes": 7480,
+      "path": "digital-protocell/experiments/generated/d012/v2_stage_e_reference/reference/R22/result.json",
+      "sha256": "f06e58cb9ce5013100792e34df31da8cbcca9985d5a76d680e1d5c0b509c8f42"
+    },
+    {
+      "bytes": 7365,
+      "path": "digital-protocell/experiments/generated/d012/v2_stage_e_reference/reference/R26/result.json",
+      "sha256": "90367bb3482682bdf1362e988bf33959e0b02534c973fb31edccaa5bea65e742"
+    },
+    {
+      "bytes": 5666,
+      "path": "digital-protocell/experiments/generated/d012/v2_stage_e_reference/reference_terminal_classification.json",
+      "sha256": "e038ddbc09401df79b3f142d7103289a0ad4b350a4253d495521dd7edbbdf05e"
+    },
+    {
+      "bytes": 45910,
+      "path": "digital-protocell/experiments/generated/d012/v2_stage_e_reference/result.json",
+      "sha256": "c633c86a45bc057388ac4b470a692e510606ef14ccc8f0a71b32ffac77b36863"
+    }
+  ],
+  "directive": "D-012",
+  "manifest_content_hash": "d4a7bf88b244761e054af4c12cb17afc39e6d9cad2e83f3451f412df1a744a7a",
+  "result_artifact_sha256": "c633c86a45bc057388ac4b470a692e510606ef14ccc8f0a71b32ffac77b36863",
+  "source_commit": "15f9f21b68057864b42c140b633aefa7b0952440",
+  "status": "partial_reference_terminal",
+  "terminal_classification": "INVALID_ARTIFACT"
+}
