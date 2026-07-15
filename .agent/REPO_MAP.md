@@ -84,7 +84,9 @@ Concise navigation map for agents. Add entries as application code lands.
 - `docs/d008_manifest_pointer.json` — governed D-008 runtime manifest pointer
 - `digital-protocell/crates/chemistry-core/src/activated_metabolism.rs` — Stage C activation, reproduction, decay rates and clamp gate
 - `digital-protocell/crates/chemistry-core/src/stoichiometry.rs` — D-012 exact rationals, v1/v2 descriptors, conservation audit
-- `digital-protocell/crates/chemistry-core/tests/d012_tests.rs` — D-012 stoichiometry and v1 audit gate tests
-- `docs/d012_v1_stoichiometric_audit.md` — formal v1 nonconservative audit report
+- `digital-protocell/crates/chemistry-core/src/d012_accounting.rs` — D-012 material and activation-potential observer ledgers
+- `digital-protocell/crates/chemistry-core/tests/d012_tests.rs` — D-012 v1 audit and v2 conservation gate tests (36)
+- `docs/d012_conservative_network.md` — v2 network summary and non-equivalence notes
+- `docs/d012_conservation_proof.md` — exact conservation proof and gate checklist
 - `docs/d008_activated_metabolism.md` — Stage C metabolism pass report
 - `digital-protocell/configs/d008/stage_c_selected.toml` — selected Stage C qualitative reference rates
