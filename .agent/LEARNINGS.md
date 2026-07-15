@@ -17,3 +17,4 @@ Append-only repo-specific lessons. Format:
 - 2026-07-14 | area:d008-membrane | lesson:Calibrated k_membrane 0.1974823 keeps post-transient localization above 0.900 across initial M levels 0.25–0.75 | evidence:docs/d008_membrane_localization.md
 - 2026-07-14 | area:d008-hash | lesson:Stage A Transport omits membrane hash fields; Stage B appends them when d008_stage_b_enabled; Stage C appends rates only under ActivatedMetabolism | evidence:candidate_identity.rs
 - 2026-07-14 | area:d008-stage-c | lesson:Boundedness pass requires |C/A clamp correction| ≤ CUMULATIVE_RESIDUAL_TOL, not merely post-clamp range membership | evidence:activated_metabolism.rs,experiment-runner/d008.rs
+- 2026-07-14 | area:d008-stage-c | lesson:Stage C qualitative rates k_act=0.02 k_rep=0.04 k_adecay=0.005 k_cturn=0.002 pass nine zero-D controls | evidence:docs/d008_activated_metabolism.md

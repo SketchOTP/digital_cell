@@ -82,3 +82,6 @@ Concise navigation map for agents. Add entries as application code lands.
 - `docs/d008_membrane_localization.md` — Stage B localization and turnover result
 - `digital-protocell/configs/d008/stage_b_selected.toml` — selected Stage B membrane candidate
 - `docs/d008_manifest_pointer.json` — governed D-008 runtime manifest pointer
+- `digital-protocell/crates/chemistry-core/src/activated_metabolism.rs` — Stage C activation, reproduction, decay rates and clamp gate
+- `docs/d008_activated_metabolism.md` — Stage C metabolism pass report
+- `digital-protocell/configs/d008/stage_c_selected.toml` — selected Stage C qualitative reference rates

@@ -1,0 +1,21 @@
+# Selected by the governed Stage C run from source commit bdc2411e5fd0b8ff947835ce88bf5f02c5f1fb5e.
+# Stage C rates are qualitative-gate defaults; Stage E performs staged calibration.
+equation_version = "membrane_metabolism_v1"
+d_a = 0.040
+beta_c = 4.6
+beta_a = 4.6
+beta_n = 1.2
+beta_f = 1.2
+beta_w = 0.2
+m_max = 1.0
+d_m = 0.001
+k_membrane_decay = 0.002
+k_membrane_detach = 0.020
+k_c_membrane = 0.10
+k_membrane = 0.19748231883326484
+k_d008_activation = 0.020
+k_d008_reproduction = 0.040
+k_d008_activated_decay = 0.005
+k_d008_catalyst_turnover = 0.002
+d008_a_max = 1.0
+d008_c_max = 1.0
