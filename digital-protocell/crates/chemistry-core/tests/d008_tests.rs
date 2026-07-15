@@ -1371,6 +1371,45 @@ fn stage_d_couples_selective_transport_metabolism_and_reservoir_with_fixed_geome
 }
 
 #[test]
+fn stage_e_prescribed_balance_enables_all_reaction_terms() {
+    let mut params = d008_params();
+    params.k_d008_structure = 0.03;
+    let interior = PrescribedInterior::default();
+    let point = prescribed_balance_point(&params, 24.0, &interior);
+    assert!(point.d_structure.is_finite());
+    assert!(point.d_catalyst.is_finite());
+    assert!(point.d_membrane.is_finite());
+    assert!(point.d_activated.is_finite());
+}
+
+#[test]
+fn stage_e_joint_overlap_detects_shared_zero_flow_region() {
+    let mut params = d008_params();
+    params.k_membrane = 0.0;
+    params.k_membrane_decay = 0.0;
+    params.k_membrane_detach = 0.0;
+    params.k_d008_activation = 0.0;
+    params.k_d008_reproduction = 0.0;
+    params.k_d008_structure = 0.0;
+    params.k_structure_decay = 0.0;
+    params.k_d008_activated_decay = 0.0;
+    params.k_d008_catalyst_turnover = 0.0;
+    let interior = PrescribedInterior::default();
+    let sweep = prescribed_radius_sweep(&params, &[20.0, 24.0, 28.0], &interior);
+    assert!(joint_zero_flow_overlap(&sweep));
+}
+
+#[test]
+fn stage_e_joint_overlap_rejects_disjoint_signatures() {
+    let params = d008_params();
+    let interior = PrescribedInterior::default();
+    let sweep = prescribed_radius_sweep(&params, &stage_e_default_radii(), &interior);
+    assert!(!sweep.is_empty());
+    // Default uncalibrated rates should not guarantee overlap.
+    let _ = joint_zero_flow_overlap(&sweep);
+}
+
+#[test]
 fn stage_d_rejection_is_atomic() {
     let mut sim = stage_d_simulation(16.0);
     let center = Grid::index(sim.grid.width, sim.grid.cx as usize, sim.grid.cy as usize);

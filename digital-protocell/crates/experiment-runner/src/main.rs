@@ -227,6 +227,11 @@ enum D008Commands {
         #[arg(long)]
         output: PathBuf,
     },
+    /// Run the immutable Stage E prescribed-radius balance gate.
+    StageE {
+        #[arg(long)]
+        output: PathBuf,
+    },
 }
 
 const CHECKPOINT_STEPS: [u64; 7] = [0, 25_000, 50_000, 100_000, 150_000, 200_000, 250_000];
@@ -515,6 +520,13 @@ fn run_d008(action: D008Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d008::run_stage_d(&output)?;
             println!(
                 "D-008 Stage D: {} -> {}",
+                result["stage_classification"], result["attempt_directory"]
+            );
+        }
+        D008Commands::StageE { output } => {
+            let result = d008::run_stage_e(&output)?;
+            println!(
+                "D-008 Stage E: {} -> {}",
                 result["stage_classification"], result["attempt_directory"]
             );
         }

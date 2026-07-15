@@ -1,11 +1,14 @@
 //! D-008 deterministic staged runners.
 
 use chemistry_core::{
-    build_candidate_identity, field_sha256_stable, interface_weight, membrane_calibration,
-    membrane_candidates, membrane_partition, stage_c_clamp_negligible, total_mass,
-    CandidateIdentity, D008StageMode, EquationVersion, FieldBuffers, FieldSchemaVersion, SimParams,
-    Simulation, SpeciesTransportAccounting, TransportSpecies, MEMBRANE_CANDIDATE_FACTORS,
-    SNAPSHOT_SCHEMA_VERSION,
+    balance_score, build_candidate_identity, field_sha256_stable, interface_weight,
+    joint_zero_flow_overlap, joint_zero_flow_overlap_2d, membrane_calibration, membrane_candidates, membrane_partition,
+    prescribed_radius_sweep, select_stage_e_factor, stage_c_clamp_negligible,
+    structure_calibration, structure_candidates, total_mass, CandidateIdentity, D008StageMode,
+    EquationVersion, FieldBuffers, FieldSchemaVersion, PrescribedInterior, SimParams, Simulation,
+    SpeciesTransportAccounting, StageECalibrationParameter, TransportSpecies,
+    MEMBRANE_CANDIDATE_FACTORS, SNAPSHOT_SCHEMA_VERSION, STAGE_E_CALIBRATION_FACTORS,
+    stage_e_default_activated_levels, stage_e_default_radii,
 };
 use serde::Deserialize;
 use serde_json::{json, Map, Value};
@@ -1224,6 +1227,214 @@ pub fn run_stage_d(root: &Path) -> Result<Value, Box<dyn std::error::Error>> {
             "D008_STAGE_D_FIXED_COMPARTMENT_PASS"
         } else {
             "D008_STAGE_D_FIXED_COMPARTMENT_FAIL"
+        },
+    });
+    fs::write(
+        output.join("result.json"),
+        serde_json::to_vec_pretty(&result)?,
+    )?;
+    Ok(result)
+}
+
+const STAGE_E_REFERENCE_RADIUS: f64 = 24.0;
+
+fn stage_e_interior() -> PrescribedInterior {
+    PrescribedInterior::default()
+}
+
+fn stage_e_base_params() -> Result<SimParams, Box<dyn std::error::Error>> {
+    let selected: StageAReference =
+        toml::from_str(&fs::read_to_string(stage_d_selected_toml_path())?)?;
+    let mut params = reference_params()?;
+    params.k_membrane = selected.k_membrane;
+    params.k_d008_activation = selected.k_d008_activation;
+    params.k_d008_reproduction = selected.k_d008_reproduction;
+    params.k_d008_activated_decay = selected.k_d008_activated_decay;
+    params.k_d008_catalyst_turnover = selected.k_d008_catalyst_turnover;
+    params.d008_a_max = selected.d008_a_max;
+    params.d008_c_max = selected.d008_c_max;
+    let interior = stage_e_interior();
+    let structure = structure_calibration(&params, STAGE_E_REFERENCE_RADIUS, &interior);
+    params.k_d008_structure = structure_candidates(structure.k_required)[1];
+    Ok(params)
+}
+
+fn next_stage_e_attempt(root: &Path) -> Result<PathBuf, Box<dyn std::error::Error>> {
+    fs::create_dir_all(root)?;
+    for attempt in 1..=999 {
+        let path = root.join(format!("attempt_{attempt:03}"));
+        if !path.exists() {
+            return Ok(path);
+        }
+    }
+    Err(format!(
+        "Stage E attempt namespace exhausted under {}",
+        root.display()
+    )
+    .into())
+}
+
+fn screen_stage_e_parameter(
+    params: &SimParams,
+    radii: &[f64],
+    interior: &PrescribedInterior,
+    parameter: StageECalibrationParameter,
+) -> (SimParams, f64, Value) {
+    let baseline_value = match parameter {
+        StageECalibrationParameter::MembraneProduction => params.k_membrane,
+        StageECalibrationParameter::Activation => params.k_d008_activation,
+        StageECalibrationParameter::Reproduction => params.k_d008_reproduction,
+        StageECalibrationParameter::StructureProduction => params.k_d008_structure,
+    };
+    let mut scores = [0.0; 3];
+    let mut overlaps = [false; 3];
+    let activated_levels = stage_e_default_activated_levels();
+    let mut trials = Vec::new();
+    for (idx, factor) in STAGE_E_CALIBRATION_FACTORS.into_iter().enumerate() {
+        let mut trial = params.clone();
+        let value = baseline_value * factor;
+        match parameter {
+            StageECalibrationParameter::MembraneProduction => trial.k_membrane = value,
+            StageECalibrationParameter::Activation => trial.k_d008_activation = value,
+            StageECalibrationParameter::Reproduction => trial.k_d008_reproduction = value,
+            StageECalibrationParameter::StructureProduction => trial.k_d008_structure = value,
+        }
+        let sweep = prescribed_radius_sweep(&trial, radii, interior);
+        scores[idx] = balance_score(&sweep);
+        overlaps[idx] = joint_zero_flow_overlap_2d(&trial, radii, &activated_levels, interior);
+        trials.push(json!({
+            "factor": factor,
+            "value": value,
+            "balance_score": scores[idx],
+            "joint_overlap": overlaps[idx],
+            "sweep": sweep,
+        }));
+    }
+    let (selected_value, selected_factor) =
+        select_stage_e_factor(baseline_value, STAGE_E_CALIBRATION_FACTORS, scores, overlaps);
+    let mut selected = params.clone();
+    match parameter {
+        StageECalibrationParameter::MembraneProduction => selected.k_membrane = selected_value,
+        StageECalibrationParameter::Activation => selected.k_d008_activation = selected_value,
+        StageECalibrationParameter::Reproduction => selected.k_d008_reproduction = selected_value,
+        StageECalibrationParameter::StructureProduction => selected.k_d008_structure = selected_value,
+    }
+    (
+        selected,
+        selected_factor,
+        json!({
+            "parameter": format!("{parameter:?}"),
+            "baseline_value": baseline_value,
+            "selected_factor": selected_factor,
+            "selected_value": selected_value,
+            "scores": scores,
+            "trials": trials,
+        }),
+    )
+}
+
+pub fn run_stage_e(root: &Path) -> Result<Value, Box<dyn std::error::Error>> {
+    let output = next_stage_e_attempt(root)?;
+    fs::create_dir(&output)?;
+    let source_commit = git_commit_hash()?;
+    let binary_sha256 = binary_hash()?;
+    validate_stage_a_provenance(&source_commit, &binary_sha256)?;
+    let radii = stage_e_default_radii();
+    let interior = stage_e_interior();
+    let params = stage_e_base_params()?;
+    let structure_cal =
+        structure_calibration(&params, STAGE_E_REFERENCE_RADIUS, &interior);
+
+    let (params, membrane_factor, membrane_screen) = screen_stage_e_parameter(
+        &params,
+        &radii,
+        &interior,
+        StageECalibrationParameter::MembraneProduction,
+    );
+    let (params, activation_factor, activation_screen) = screen_stage_e_parameter(
+        &params,
+        &radii,
+        &interior,
+        StageECalibrationParameter::Activation,
+    );
+    let (params, reproduction_factor, reproduction_screen) = screen_stage_e_parameter(
+        &params,
+        &radii,
+        &interior,
+        StageECalibrationParameter::Reproduction,
+    );
+    let (params, structure_factor, structure_screen) = screen_stage_e_parameter(
+        &params,
+        &radii,
+        &interior,
+        StageECalibrationParameter::StructureProduction,
+    );
+
+    let activated_levels = stage_e_default_activated_levels();
+    let final_sweep = prescribed_radius_sweep(&params, &radii, &interior);
+    let overlap = joint_zero_flow_overlap_2d(&params, &radii, &activated_levels, &interior);
+    let stage_pass = overlap;
+    let scientific_conclusion = if stage_pass {
+        "D008_STAGE_E_BALANCE_PASS"
+    } else {
+        "D008_NO_JOINT_FIXED_POINT"
+    };
+
+    let identity = build_candidate_identity(
+        params.clone(),
+        &source_commit,
+        Some("d008-stage-e-balance"),
+        None,
+        "D-008 Stage E prescribed-radius balance after sequential calibration",
+        None,
+        None,
+    );
+
+    let result = json!({
+        "snapshot_schema_version": SNAPSHOT_SCHEMA_VERSION,
+        "field_schema_version": FieldSchemaVersion::SevenFieldV1,
+        "equation_version": EquationVersion::MembraneMetabolismV1,
+        "candidate_id": identity.candidate_id,
+        "candidate_hash": identity.candidate_hash,
+        "configuration_hash": identity.configuration_hash,
+        "source_commit": source_commit,
+        "binary_sha256": binary_sha256,
+        "seed_recipe": "fixed_circular_phi_tanh_width2_prescribed_interior_C0.4_A0.2_NF0.2_W0.5",
+        "reference_radius": STAGE_E_REFERENCE_RADIUS,
+        "calibration_factors": STAGE_E_CALIBRATION_FACTORS,
+        "structure_calibration": structure_cal,
+        "selected_rates": {
+            "k_membrane": params.k_membrane,
+            "k_d008_activation": params.k_d008_activation,
+            "k_d008_reproduction": params.k_d008_reproduction,
+            "k_d008_activated_decay": params.k_d008_activated_decay,
+            "k_d008_catalyst_turnover": params.k_d008_catalyst_turnover,
+            "k_d008_structure": params.k_d008_structure,
+            "k_structure_decay": params.k_structure_decay,
+        },
+        "selected_factors": {
+            "k_membrane": membrane_factor,
+            "k_d008_activation": activation_factor,
+            "k_d008_reproduction": reproduction_factor,
+            "k_d008_structure": structure_factor,
+        },
+        "screens": {
+            "membrane_production": membrane_screen,
+            "activation": activation_screen,
+            "reproduction": reproduction_screen,
+            "structure_production": structure_screen,
+        },
+        "final_sweep": final_sweep,
+        "activated_levels": activated_levels,
+        "gate_checks": {
+            "joint_zero_flow_overlap": overlap,
+        },
+        "attempt_directory": output.file_name().and_then(|name| name.to_str()),
+        "scientific_conclusion": scientific_conclusion,
+        "stage_classification": if stage_pass {
+            "D008_STAGE_E_BALANCE_PASS"
+        } else {
+            "D008_STAGE_E_BALANCE_FAIL"
         },
     });
     fs::write(

@@ -168,6 +168,9 @@ pub struct SimParams {
     pub k_d008_activated_decay: f64,
     #[serde(default = "default_k_d008_catalyst_turnover")]
     pub k_d008_catalyst_turnover: f64,
+    /// D-008 Stage E interface structure production from activated resource.
+    #[serde(default = "default_k_d008_structure")]
+    pub k_d008_structure: f64,
     #[serde(default = "default_d008_a_max")]
     pub d008_a_max: f64,
     #[serde(default = "default_d008_c_max")]
@@ -250,6 +253,10 @@ fn default_k_d008_catalyst_turnover() -> f64 {
     0.002
 }
 
+fn default_k_d008_structure() -> f64 {
+    0.030
+}
+
 fn default_d008_a_max() -> f64 {
     1.0
 }
@@ -321,6 +328,7 @@ impl Default for SimParams {
             k_d008_reproduction: default_k_d008_reproduction(),
             k_d008_activated_decay: default_k_d008_activated_decay(),
             k_d008_catalyst_turnover: default_k_d008_catalyst_turnover(),
+            k_d008_structure: default_k_d008_structure(),
             d008_a_max: default_d008_a_max(),
             d008_c_max: default_d008_c_max(),
         }

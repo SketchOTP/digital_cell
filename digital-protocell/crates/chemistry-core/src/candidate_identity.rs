@@ -165,12 +165,13 @@ k_membrane={};d008_stage_b_enabled={}",
             if params.d008_stage_mode != D008StageMode::Transport {
                 s.push_str(&format!(
                     ";d008_stage_mode={};k_d008_activation={};k_d008_reproduction={};\
-k_d008_activated_decay={};k_d008_catalyst_turnover={};d008_a_max={};d008_c_max={}",
+k_d008_activated_decay={};k_d008_catalyst_turnover={};k_d008_structure={};d008_a_max={};d008_c_max={}",
                     params.d008_stage_mode,
                     params.k_d008_activation,
                     params.k_d008_reproduction,
                     params.k_d008_activated_decay,
                     params.k_d008_catalyst_turnover,
+                    params.k_d008_structure,
                     params.d008_a_max,
                     params.d008_c_max
                 ));
