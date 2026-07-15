@@ -339,3 +339,300 @@ pub fn v1_runtime_membrane_production_delta(extent: f64) -> [f64; SEVEN_FIELD_CO
     d[SpeciesId::M.index()] = extent;
     d
 }
+
+pub fn stoichiometric_matrix(reactions: &[ReactionStoichiometry]) -> Vec<Vec<Rational>> {
+    let mut matrix = vec![vec![Rational::ZERO; reactions.len()]; SEVEN_FIELD_COUNT];
+    for (col, rx) in reactions.iter().enumerate() {
+        for (row, &coeff) in rx.delta.iter().enumerate() {
+            matrix[row][col] = coeff;
+        }
+    }
+    matrix
+}
+
+pub fn exact_rank(matrix: &[Vec<Rational>]) -> usize {
+    if matrix.is_empty() {
+        return 0;
+    }
+    let rows = matrix.len();
+    let cols = matrix[0].len();
+    let mut a = matrix.to_vec();
+    let mut rank = 0usize;
+    let mut pivot_col = 0usize;
+    for row in 0..rows {
+        if pivot_col >= cols {
+            break;
+        }
+        let mut pivot_row = None;
+        for r in row..rows {
+            if !a[r][pivot_col].is_zero() {
+                pivot_row = Some(r);
+                break;
+            }
+        }
+        let Some(pr) = pivot_row else {
+            pivot_col += 1;
+            continue;
+        };
+        a.swap(row, pr);
+        let pivot = a[row][pivot_col];
+        for c in pivot_col..cols {
+            a[row][c] = a[row][c].div(pivot);
+        }
+        for r in 0..rows {
+            if r == row || a[r][pivot_col].is_zero() {
+                continue;
+            }
+            let factor = a[r][pivot_col];
+            for c in pivot_col..cols {
+                a[r][c] = a[r][c].sub(factor.mul(a[row][c]));
+            }
+        }
+        rank += 1;
+        pivot_col += 1;
+    }
+    rank
+}
+
+fn rref_pivot_columns(a: &mut [Vec<Rational>]) -> Vec<usize> {
+    if a.is_empty() {
+        return Vec::new();
+    }
+    let rows = a.len();
+    let cols = a[0].len();
+    let mut pivot_cols = Vec::new();
+    let mut pivot_row = 0usize;
+    let mut col = 0usize;
+    while pivot_row < rows && col < cols {
+        let mut swap_row = None;
+        for r in pivot_row..rows {
+            if !a[r][col].is_zero() {
+                swap_row = Some(r);
+                break;
+            }
+        }
+        let Some(sr) = swap_row else {
+            col += 1;
+            continue;
+        };
+        a.swap(pivot_row, sr);
+        let pivot = a[pivot_row][col];
+        for c in col..cols {
+            a[pivot_row][c] = a[pivot_row][c].div(pivot);
+        }
+        for r in 0..rows {
+            if r == pivot_row || a[r][col].is_zero() {
+                continue;
+            }
+            let factor = a[r][col];
+            for c in col..cols {
+                a[r][c] = a[r][c].sub(factor.mul(a[pivot_row][c]));
+            }
+        }
+        pivot_cols.push(col);
+        pivot_row += 1;
+        col += 1;
+    }
+    pivot_cols
+}
+
+/// Basis for `{x | a * x = 0}` with `x` length = column count of `a`.
+fn nullspace_columns(a: &[Vec<Rational>]) -> Vec<Vec<Rational>> {
+    if a.is_empty() || a[0].is_empty() {
+        return Vec::new();
+    }
+    let cols = a[0].len();
+    let mut rref = a.to_vec();
+    let pivot_cols = rref_pivot_columns(&mut rref);
+    let pivot_set: std::collections::BTreeSet<usize> = pivot_cols.iter().copied().collect();
+    let free_cols: Vec<usize> = (0..cols).filter(|c| !pivot_set.contains(c)).collect();
+    let mut basis = Vec::new();
+    for &free in &free_cols {
+        let mut vec = vec![Rational::ZERO; cols];
+        vec[free] = Rational::ONE;
+        for (row, &pivot_col) in pivot_cols.iter().enumerate() {
+            if row < rref.len() && free < rref[row].len() && !rref[row][free].is_zero() {
+                vec[pivot_col] = rref[row][free].neg();
+            }
+        }
+        basis.push(vec);
+    }
+    basis
+}
+
+pub fn left_nullspace(matrix: &[Vec<Rational>]) -> Vec<Vec<Rational>> {
+    // m^T S = 0  <=>  S^T m = 0
+    nullspace_columns(&transpose(matrix))
+}
+
+pub fn right_nullspace(matrix: &[Vec<Rational>]) -> Vec<Vec<Rational>> {
+    nullspace_columns(matrix)
+}
+
+fn transpose(matrix: &[Vec<Rational>]) -> Vec<Vec<Rational>> {
+    if matrix.is_empty() {
+        return Vec::new();
+    }
+    let rows = matrix.len();
+    let cols = matrix[0].len();
+    let mut t = vec![vec![Rational::ZERO; rows]; cols];
+    for r in 0..rows {
+        for c in 0..cols {
+            t[c][r] = matrix[r][c];
+        }
+    }
+    t
+}
+
+pub fn verify_m_transpose_s_zero(m: &[Rational], s: &[Vec<Rational>]) -> bool {
+    if s.is_empty() || s[0].is_empty() || m.len() != s.len() {
+        return false;
+    }
+    let cols = s[0].len();
+    for col in 0..cols {
+        let mut sum = Rational::ZERO;
+        for (row, &mr) in m.iter().enumerate() {
+            sum = sum.add(mr.mul(s[row][col]));
+        }
+        if !sum.is_zero() {
+            return false;
+        }
+    }
+    true
+}
+
+fn reaction_material_residual(m: &[Rational], reaction: &ReactionStoichiometry) -> Rational {
+    let mut sum = Rational::ZERO;
+    for (i, &mi) in m.iter().enumerate() {
+        sum = sum.add(mi.mul(reaction.delta[i]));
+    }
+    sum
+}
+
+fn normalize_vector(v: &[Rational]) -> Vec<Rational> {
+    // ponytail: lcm scaling for display; homogeneous tests use primitive integer scaling
+    let lcm_den = v
+        .iter()
+        .filter(|c| !c.is_zero())
+        .map(|c| c.den)
+        .fold(1i64, |acc, d| acc / gcd_i64(acc, d) * d);
+    v.iter()
+        .map(|c| Rational::new(c.num * (lcm_den / c.den), lcm_den))
+        .collect()
+}
+
+fn is_strictly_positive(v: &[Rational]) -> bool {
+    !v.is_empty() && v.iter().all(|c| c.is_positive())
+}
+
+fn is_nonnegative(v: &[Rational]) -> bool {
+    v.iter().all(|c| c.is_zero() || c.is_positive())
+}
+
+fn is_nontrivial(v: &[Rational]) -> bool {
+    v.iter().any(|c| !c.is_zero())
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum ConservationClass {
+    StrictlyConservative,
+    PartiallyConservative,
+    NoPositiveConservationVector,
+    InconsistentStoichiometry,
+}
+
+impl fmt::Display for ConservationClass {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::StrictlyConservative => write!(f, "STRICTLY_CONSERVATIVE"),
+            Self::PartiallyConservative => write!(f, "PARTIALLY_CONSERVATIVE"),
+            Self::NoPositiveConservationVector => write!(f, "NO_POSITIVE_CONSERVATION_VECTOR"),
+            Self::InconsistentStoichiometry => write!(f, "INCONSISTENT_STOICHIOMETRY"),
+        }
+    }
+}
+
+pub struct ConservationAnalysis {
+    pub class: ConservationClass,
+    pub rank: usize,
+    pub left_nullspace_dimension: usize,
+    pub right_nullspace_dimension: usize,
+    pub strictly_positive_vectors: Vec<Vec<Rational>>,
+    pub nonnegative_vectors: Vec<Vec<Rational>>,
+    pub nonconservative_reactions: Vec<ReactionId>,
+}
+
+pub fn classify_conservation(matrix: &[Vec<Rational>]) -> ConservationClass {
+    classify_conservation_detailed(matrix).class
+}
+
+pub fn classify_conservation_detailed(matrix: &[Vec<Rational>]) -> ConservationAnalysis {
+    let rank = exact_rank(matrix);
+    let left = left_nullspace(matrix);
+    let right = right_nullspace(matrix);
+
+    let mut strictly_positive_vectors = Vec::new();
+    let all_ones = vec![Rational::ONE; matrix.len()];
+    if verify_m_transpose_s_zero(&all_ones, matrix) && is_strictly_positive(&all_ones) {
+        strictly_positive_vectors.push(all_ones.clone());
+    }
+    for v in &left {
+        let normalized = normalize_vector(v);
+        if is_strictly_positive(&normalized)
+            && verify_m_transpose_s_zero(&normalized, matrix)
+            && !strictly_positive_vectors.iter().any(|existing| existing == &normalized)
+        {
+            strictly_positive_vectors.push(normalized);
+        }
+    }
+
+    let mut nonnegative_vectors = Vec::new();
+    for v in &left {
+        let normalized = normalize_vector(v);
+        if is_nonnegative(&normalized) && is_nontrivial(&normalized) && verify_m_transpose_s_zero(&normalized, matrix) {
+            nonnegative_vectors.push(normalized);
+        }
+    }
+
+    let reactions = v1_internal_reactions();
+    let nonconservative_reactions: Vec<ReactionId> = reactions
+        .iter()
+        .filter(|rx| !reaction_material_residual(&all_ones, rx).is_zero())
+        .map(|rx| rx.reaction)
+        .collect();
+
+    let class = if !strictly_positive_vectors.is_empty() {
+        ConservationClass::StrictlyConservative
+    } else if nonnegative_vectors.is_empty() {
+        ConservationClass::NoPositiveConservationVector
+    } else {
+        ConservationClass::PartiallyConservative
+    };
+
+    ConservationAnalysis {
+        class,
+        rank,
+        left_nullspace_dimension: left.len(),
+        right_nullspace_dimension: right.len(),
+        strictly_positive_vectors,
+        nonnegative_vectors,
+        nonconservative_reactions,
+    }
+}
+
+pub fn positive_conservation_vectors(matrix: &[Vec<Rational>]) -> Vec<Vec<Rational>> {
+    classify_conservation_detailed(matrix).strictly_positive_vectors
+}
+
+pub fn nonconservative_reactions_under_vector(
+    m: &[Rational],
+    reactions: &[ReactionStoichiometry],
+) -> Vec<ReactionId> {
+    reactions
+        .iter()
+        .filter(|rx| !reaction_material_residual(m, rx).is_zero())
+        .map(|rx| rx.reaction)
+        .collect()
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
