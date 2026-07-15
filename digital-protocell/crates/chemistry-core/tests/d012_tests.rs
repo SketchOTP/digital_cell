@@ -886,3 +886,260 @@ fn write_v2_stage_bcd_artifact_paths_exist_after_runner() {
     }
 }
 
+use chemistry_core::d011_analysis::{
+    joint_overlap_pass, quasi_steady_report, ComponentBalance, ConvergenceClassification,
+    JointBalanceMetrics, QuasiSteadyReport, SteadyWindowSnapshot, D011_TEST_WINDOW,
+};
+use chemistry_core::d012_analysis::{
+    all_four_balances_pass, classify_v2_stage_e, count_yield_changes,
+    restoring_radius_from_g_structure, resource_throughput_pass, v2_stage_e_pass,
+    yield_adjustment_allowed, D012RadiusBalancePoint, D012StageEClassification,
+    D012_V2_REQUIRED_WINDOWS, YieldComponent,
+};
+use chemistry_core::d012_accounting::MaterialEquivalentStep;
+
+fn balanced_metrics() -> JointBalanceMetrics {
+    JointBalanceMetrics {
+        structure: ComponentBalance {
+            q: 1.0,
+            g: 0.0,
+            production: 1.0,
+            loss: 1.0,
+        },
+        catalyst: ComponentBalance {
+            q: 1.0,
+            g: 0.0,
+            production: 1.0,
+            loss: 1.0,
+        },
+        membrane: ComponentBalance {
+            q: 1.0,
+            g: 0.0,
+            production: 1.0,
+            loss: 1.0,
+        },
+        activated: ComponentBalance {
+            q: 1.0,
+            g: 0.0,
+            production: 1.0,
+            loss: 1.0,
+        },
+        catalyst_retention: 0.9,
+        activated_retention: 0.9,
+        membrane_localization: 0.95,
+        nutrient_influx: 1.0,
+        fuel_influx: 1.0,
+        waste_efflux: 1.0,
+    }
+}
+
+fn steady_windows() -> Vec<SteadyWindowSnapshot> {
+    (0..4)
+        .map(|i| SteadyWindowSnapshot {
+            start_step: i * 1000,
+            end_step: (i + 1) * 1000,
+            simulated_time_start: i as f64,
+            simulated_time_end: (i + 1) as f64,
+            mass_c: 100.0,
+            mass_a: 100.0,
+            mass_m: 100.0,
+            mean_n_interior: 0.2,
+            mean_f_interior: 0.2,
+            mean_w_interior: 0.5,
+            structure_production: 100.0 + i as f64,
+            structure_decay: 100.0 + i as f64,
+            catalyst_reproduction: 100.0 + i as f64,
+            catalyst_turnover: 100.0 + i as f64,
+            membrane_synthesis: 100.0 + i as f64,
+            membrane_loss: 100.0 + i as f64,
+            activation: 100.0 + i as f64,
+            activated_loss: 100.0 + i as f64,
+            nutrient_transport_interior: 100.0 + i as f64,
+            fuel_transport_interior: 100.0 + i as f64,
+            waste_transport_interior: -100.0 - i as f64,
+        })
+        .collect()
+}
+
+fn closed_material() -> MaterialEquivalentStep {
+    MaterialEquivalentStep {
+        total_before: 10.0,
+        total_after: 10.0,
+        observed_change: 0.0,
+        reservoir_input: 0.0,
+        waste_clearance: 0.0,
+        numerical_correction: 0.0,
+        boundary_exchange: 0.0,
+        residual: 0.0,
+        relative_residual: 0.0,
+    }
+}
+
+fn restoring_points() -> Vec<D012RadiusBalancePoint> {
+    vec![
+        D012RadiusBalancePoint {
+            radius: 18.0,
+            g_structure: 0.001,
+            joint_overlap: false,
+            quasi_steady: true,
+        },
+        D012RadiusBalancePoint {
+            radius: 22.0,
+            g_structure: 0.0,
+            joint_overlap: true,
+            quasi_steady: true,
+        },
+        D012RadiusBalancePoint {
+            radius: 26.0,
+            g_structure: -0.001,
+            joint_overlap: false,
+            quasi_steady: true,
+        },
+    ]
+}
+
+#[test]
+fn test_v2_stage_e_requires_quasi_steady_state() {
+    let metrics = balanced_metrics();
+    let quasi = QuasiSteadyReport {
+        window_size: D011_TEST_WINDOW,
+        converged_windows: 0,
+        required_windows: D012_V2_REQUIRED_WINDOWS,
+        converged: false,
+        window_slopes: vec![],
+    };
+    assert!(!v2_stage_e_pass(
+        &quasi,
+        &metrics,
+        &closed_material(),
+        &restoring_points()
+    ));
+    let converged = quasi_steady_report(&steady_windows(), D011_TEST_WINDOW, 3);
+    assert!(converged.converged);
+}
+
+#[test]
+fn test_v2_stage_e_requires_all_four_balances() {
+    let mut metrics = balanced_metrics();
+    assert!(all_four_balances_pass(&metrics));
+    metrics.membrane.q = 1.5;
+    assert!(!all_four_balances_pass(&metrics));
+    assert!(!joint_overlap_pass(&metrics));
+}
+
+#[test]
+fn test_v2_stage_e_requires_restoring_radius() {
+    assert!(restoring_radius_from_g_structure(&restoring_points()));
+    let flat = vec![
+        D012RadiusBalancePoint {
+            radius: 18.0,
+            g_structure: 0.01,
+            joint_overlap: false,
+            quasi_steady: true,
+        },
+        D012RadiusBalancePoint {
+            radius: 26.0,
+            g_structure: 0.01,
+            joint_overlap: false,
+            quasi_steady: true,
+        },
+    ];
+    assert!(!restoring_radius_from_g_structure(&flat));
+}
+
+#[test]
+fn test_v2_stage_e_requires_resource_throughput() {
+    let mut metrics = balanced_metrics();
+    assert!(resource_throughput_pass(&metrics));
+    metrics.waste_efflux = 0.0;
+    assert!(!resource_throughput_pass(&metrics));
+}
+
+#[test]
+fn test_v2_stage_e_requires_total_conservation() {
+    let mut sim = v2_stage_d_simulation(22.0);
+    sim.observer_enabled = false;
+    for _ in 0..200 {
+        assert!(sim.step());
+    }
+    assert!(sim.accounting.cumulative_within_tolerance());
+    let material = build_material_equivalent_step(&sim.accounting.last_step);
+    assert!(material_step_closes(&material), "{material:?}");
+}
+
+#[test]
+fn test_yield_branch_changes_one_component() {
+    let mut params = v2_params();
+    let before = (params.eta_c, params.eta_phi, params.eta_m);
+    chemistry_core::apply_yield_change(&mut params, YieldComponent::Structure, 0.85).unwrap();
+    assert_eq!(count_yield_changes(before, (params.eta_c, params.eta_phi, params.eta_m)), 1);
+}
+
+#[test]
+fn test_underproduced_component_yield_is_not_reduced() {
+    let under = ComponentBalance {
+        q: 0.95,
+        g: 0.0,
+        production: 1.0,
+        loss: 1.0,
+    };
+    assert!(!yield_adjustment_allowed(under, 1.0, 0.85));
+    let over = ComponentBalance {
+        q: 1.05,
+        g: 0.0,
+        production: 1.0,
+        loss: 1.0,
+    };
+    assert!(yield_adjustment_allowed(over, 1.0, 0.85));
+}
+
+#[test]
+fn test_v2_stage_e_not_converged_cannot_claim_no_solution() {
+    let metrics = balanced_metrics();
+    let quasi = QuasiSteadyReport {
+        window_size: 1000,
+        converged_windows: 0,
+        required_windows: 3,
+        converged: false,
+        window_slopes: vec![],
+    };
+    let class = classify_v2_stage_e(
+        &quasi,
+        &metrics,
+        true,
+        &restoring_points(),
+        ConvergenceClassification::NotConverged,
+        false,
+    );
+    assert_eq!(class, D012StageEClassification::NotConverged);
+    let unresolved = classify_v2_stage_e(
+        &quasi,
+        &metrics,
+        true,
+        &restoring_points(),
+        ConvergenceClassification::NotConverged,
+        true,
+    );
+    assert_eq!(
+        unresolved,
+        D012StageEClassification::LongTransientUnresolved
+    );
+}
+
+#[test]
+fn write_v2_stage_e_artifact_paths_exist_after_runner() {
+    for subdir in [
+        "v2_stage_e_reference",
+        "v2_sensitivity",
+        "v2_joint_candidates",
+        "v2_yield_candidates",
+        "v2_robust_overlap",
+    ] {
+        let path = format!(
+            "{}/../../experiments/generated/d012/{subdir}",
+            env!("CARGO_MANIFEST_DIR")
+        );
+        std::fs::create_dir_all(&path).expect("artifact dir");
+    }
+}
+

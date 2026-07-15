@@ -1,30 +1,22 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260715-d012-conservative-stoichiometric-closure
+- ID: D-20260715-1717-d012-tasks15-18
 - Project directive: D-012
-- Goal: Conservative stoichiometric repair through Stage E / D-012 conclusion
-- Status: Stage E Tasks 15–18 running (background); Tasks 1–14 complete
-- Acceptance: conservation gate PASS; Stages A–D PASS; Stage E restoring overlap with material/activation accounting before Stage F
-- Touched files: stoichiometry.rs, d012_accounting.rs, activated_metabolism.rs, membrane.rs, simulation.rs, d012.rs, d008.rs, docs/d012_*, experiments/generated/d012/
-- Next action: await/finish transport-coupled Stage E calibration/solver/robustness; then Task 19 final reports/tags
+- Goal: Tasks 15-18 — v2 Stage E through robustness
+- Status: in_progress
+- Acceptance: d012_tests PASS; Stage E infrastructure committed; governed assays run with honest classification
+- Touched files: d012_analysis.rs, d012_stage_e.rs, d012.rs, main.rs, d012_tests.rs, docs/d012_v2_joint_balance.md
+- Next action: commit infrastructure; run diagnostic then full Stage E horizons
 
 ## Repo facts needed now
 - Branch: d008-membrane-metabolic-closure
-- V1: D012_NONCONSERVATIVE_V1_CONFIRMED (rank 6, left-null dim 1, not nonnegative)
-- D-011: D011_LONG_HORIZON_INCOMPLETE_SUPERSEDED_BY_INVALID_STOICHIOMETRY
-- Tags: D-011-long-horizon-incomplete, D-012-stoichiometric-audit
-- V2 conservation gate: PASSED
-- V2 Stage B/C/D: PASS (Stage B robustness used M∈{0.50,0.75}, not 0.25)
-- Stage E fail tag preserved: D-008-stage-e-balance-fail
-- Stages F–G still blocked until conservative Stage E passes
-- Production verdict: REQUIRES_REMEDIATION
-- Phase 1: PHASE1_SELF_MAINTENANCE_PARTIAL
+- v2 base rates from stage_c_selected.toml + ledger estimate at R=22
+- D011 v1 search superseded (nonconservative v1)
 
 ## Last validation
-- Command: d012_tests 41 PASS; d008_tests 50 PASS; governed v2 stages B/C/D PASS
-- Result: Task 15 authorized and launched
+- Command: cargo test -p chemistry-core --release --test d012_tests; cargo test -p experiment-runner --release d012
+- Result: d012_tests 50/50 PASS; experiment-runner d012 3/3 PASS
 
 ## Open blockers
-- Stage E long-horizon runs in progress
-- Mimir MCP unavailable (fetch failed / server not in session)
+- Full 200k×6 radii runs may take hours; use background + job ledger

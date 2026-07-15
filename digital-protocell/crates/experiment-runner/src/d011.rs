@@ -88,7 +88,7 @@ fn d011_params(rates: &StageEReferenceRates) -> Result<SimParams, Box<dyn std::e
     Ok(params)
 }
 
-fn prepare_constrained_seed(sim: &mut Simulation, radius: f64) {
+pub fn prepare_constrained_seed(sim: &mut Simulation, radius: f64) {
     sim.observer_enabled = false;
     for idx in 0..sim.fields.structure.len() {
         if !sim.grid.in_dish(idx) {
@@ -116,7 +116,7 @@ fn prepare_constrained_seed(sim: &mut Simulation, radius: f64) {
     }
 }
 
-fn interior_mean(sim: &Simulation, field: &[f64]) -> f64 {
+pub fn interior_mean(sim: &Simulation, field: &[f64]) -> f64 {
     let mut total = 0.0;
     let mut area = 0.0_f64;
     for (idx, value) in field.iter().enumerate() {
@@ -128,7 +128,7 @@ fn interior_mean(sim: &Simulation, field: &[f64]) -> f64 {
     total / area.max(1.0)
 }
 
-fn retention(sim: &Simulation, field: &[f64]) -> f64 {
+pub fn retention(sim: &Simulation, field: &[f64]) -> f64 {
     let mut inside = 0.0;
     for (idx, value) in field.iter().enumerate() {
         if sim.grid.in_dish(idx) && sim.fields.structure[idx] >= 0.5 {
@@ -138,7 +138,7 @@ fn retention(sim: &Simulation, field: &[f64]) -> f64 {
     inside / chemistry_core::field_mass(&sim.grid, field).max(f64::EPSILON)
 }
 
-fn soluble_max(sim: &Simulation) -> f64 {
+pub fn soluble_max(sim: &Simulation) -> f64 {
     [
         &sim.fields.catalyst,
         &sim.fields.nutrient,
@@ -152,7 +152,7 @@ fn soluble_max(sim: &Simulation) -> f64 {
     .fold(0.0, f64::max)
 }
 
-fn window_snapshot(sim: &Simulation, start_step: u64, start_time: f64) -> SteadyWindowSnapshot {
+pub fn window_snapshot(sim: &Simulation, start_step: u64, start_time: f64) -> SteadyWindowSnapshot {
     SteadyWindowSnapshot {
         start_step,
         end_step: sim.substep,
@@ -201,6 +201,7 @@ pub struct D011RunConfig {
     pub quick: bool,
 }
 
+#[derive(Debug, Clone)]
 pub struct D011RunOutcome {
     pub metrics: JointBalanceMetrics,
     pub quasi_steady: QuasiSteadyReport,
@@ -353,7 +354,7 @@ fn next_attempt(root: &Path, prefix: &str) -> Result<PathBuf, Box<dyn std::error
     Err(format!("attempt namespace exhausted under {}", root.display()).into())
 }
 
-fn estimate_g_vector(outcome: &D011RunOutcome) -> [f64; 4] {
+pub fn estimate_g_vector(outcome: &D011RunOutcome) -> [f64; 4] {
     [
         outcome.metrics.structure.g,
         outcome.metrics.catalyst.g,
@@ -362,7 +363,7 @@ fn estimate_g_vector(outcome: &D011RunOutcome) -> [f64; 4] {
     ]
 }
 
-fn perturb_rates(base: &StageEReferenceRates, idx: usize, factor: f64) -> StageEReferenceRates {
+pub fn perturb_rates(base: &StageEReferenceRates, idx: usize, factor: f64) -> StageEReferenceRates {
     let mut rates = *base;
     let mut values = chemistry_core::rate_vector(&rates);
     values[idx] *= factor;

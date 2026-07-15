@@ -1,6 +1,11 @@
 //! D-012 conservative v2 stage validation (reuses D-008 stage machinery).
 
 use crate::d008::{self, D008StageOptions};
+use crate::d012_stage_e::{
+    run_v2_joint_solver, run_v2_robust_overlap, run_v2_stage_e_reference as stage_e_reference,
+    run_v2_yield_candidates,
+};
+pub use crate::d012_stage_e::D012StageEConfig;
 use serde_json::Value;
 use std::path::Path;
 
@@ -23,6 +28,41 @@ pub fn run_v2_stage_d(root: &Path) -> Result<Value, Box<dyn std::error::Error>> 
 
 pub fn v2_stage_options() -> D008StageOptions {
     V2_OPTIONS
+}
+
+pub fn run_v2_stage_e_reference(
+    output: &Path,
+    config: &D012StageEConfig,
+) -> Result<serde_json::Value, Box<dyn std::error::Error>> {
+    stage_e_reference(output, config)
+}
+
+pub fn run_v2_stage_e_solver(
+    output: &Path,
+    reference: &Path,
+    config: &D012StageEConfig,
+) -> Result<serde_json::Value, Box<dyn std::error::Error>> {
+    run_v2_joint_solver(output, reference, config)
+}
+
+pub fn run_v2_stage_e_yield(
+    output: &Path,
+    diagnosis: &Path,
+    config: &D012StageEConfig,
+) -> Result<serde_json::Value, Box<dyn std::error::Error>> {
+    run_v2_yield_candidates(output, diagnosis, config)
+}
+
+pub fn run_v2_stage_e_robust(
+    output: &Path,
+    candidate: &Path,
+    config: &D012StageEConfig,
+) -> Result<serde_json::Value, Box<dyn std::error::Error>> {
+    run_v2_robust_overlap(output, candidate, config)
+}
+
+pub fn d012_generated_root() -> std::path::PathBuf {
+    std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../experiments/generated/d012")
 }
 
 #[cfg(test)]

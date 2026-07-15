@@ -8,6 +8,7 @@ mod d007;
 mod d008;
 mod d011;
 mod d012;
+mod d012_stage_e;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -274,6 +275,59 @@ enum D012Commands {
     /// Run conservative v2 Stage D fixed-compartment gate.
     StageD {
         #[arg(long)]
+        output: PathBuf,
+    },
+    /// Run conservative v2 Stage E transport-coupled reference assay.
+    StageE {
+        #[arg(long, default_value = "experiments/generated/d012/v2_stage_e_reference")]
+        output: PathBuf,
+        #[arg(long, default_value = "200000")]
+        max_steps: u64,
+        #[arg(long, default_value = "10000")]
+        window_size: u64,
+        #[arg(long, default_value = "false")]
+        diagnostic: bool,
+    },
+    /// Run v2 bounded four-rate joint solver after reference sensitivity.
+    StageESolver {
+        #[arg(long, default_value = "experiments/generated/d012/v2_joint_candidates")]
+        output: PathBuf,
+        #[arg(long, default_value = "experiments/generated/d012/v2_stage_e_reference")]
+        reference: PathBuf,
+        #[arg(long, default_value = "200000")]
+        max_steps: u64,
+        #[arg(long, default_value = "10000")]
+        window_size: u64,
+        #[arg(long, default_value = "false")]
+        diagnostic: bool,
+    },
+    /// Conditional v2 yield branch (one component at a time).
+    StageEYield {
+        #[arg(long, default_value = "experiments/generated/d012/v2_yield_candidates")]
+        output: PathBuf,
+        #[arg(long, default_value = "experiments/generated/d012/v2_stage_e_reference")]
+        diagnosis: PathBuf,
+        #[arg(long, default_value = "5000")]
+        max_steps: u64,
+        #[arg(long, default_value = "1000")]
+        window_size: u64,
+    },
+    /// Robust overlap: ±2% rates and ±5% initial C/A/M.
+    StageERobust {
+        #[arg(long, default_value = "experiments/generated/d012/v2_robust_overlap")]
+        output: PathBuf,
+        #[arg(long, default_value = "experiments/generated/d012/v2_stage_e_reference")]
+        candidate: PathBuf,
+        #[arg(long, default_value = "200000")]
+        max_steps: u64,
+        #[arg(long, default_value = "10000")]
+        window_size: u64,
+        #[arg(long, default_value = "false")]
+        diagnostic: bool,
+    },
+    /// Diagnostic short-horizon Stage E reference (rate estimation screens).
+    StageEDiagnostic {
+        #[arg(long, default_value = "experiments/generated/d012/v2_stage_e_reference")]
         output: PathBuf,
     },
 }
@@ -626,6 +680,91 @@ fn run_d012(action: D012Commands) -> Result<(), Box<dyn std::error::Error>> {
             println!(
                 "D-012 Stage D: {} -> {:?}",
                 result["stage_classification"], result["attempt_directory"]
+            );
+        }
+        D012Commands::StageE {
+            output,
+            max_steps,
+            window_size,
+            diagnostic,
+        } => {
+            let config = d012::D012StageEConfig {
+                max_steps,
+                window_size,
+                diagnostic,
+            };
+            let result = d012::run_v2_stage_e_reference(&output, &config)?;
+            println!(
+                "D-012 Stage E: {} pass={} -> {}",
+                result["stage_classification"],
+                result["stage_e_pass"],
+                output.display()
+            );
+        }
+        D012Commands::StageEDiagnostic { output } => {
+            let config = d012::D012StageEConfig::diagnostic();
+            let result = d012::run_v2_stage_e_reference(&output, &config)?;
+            println!(
+                "D-012 Stage E diagnostic: {} -> {}",
+                result["stage_classification"],
+                output.display()
+            );
+        }
+        D012Commands::StageESolver {
+            output,
+            reference,
+            max_steps,
+            window_size,
+            diagnostic,
+        } => {
+            let config = d012::D012StageEConfig {
+                max_steps,
+                window_size,
+                diagnostic,
+            };
+            let result = d012::run_v2_stage_e_solver(&output, &reference, &config)?;
+            println!(
+                "D-012 Stage E solver: any_pass={} -> {}",
+                result["any_joint_overlap_pass"],
+                output.display()
+            );
+        }
+        D012Commands::StageEYield {
+            output,
+            diagnosis,
+            max_steps,
+            window_size,
+        } => {
+            let config = d012::D012StageEConfig {
+                max_steps,
+                window_size,
+                diagnostic: true,
+            };
+            let result = d012::run_v2_stage_e_yield(&output, &diagnosis, &config)?;
+            println!(
+                "D-012 Stage E yield: skipped={} -> {}",
+                result["skipped"],
+                output.display()
+            );
+        }
+        D012Commands::StageERobust {
+            output,
+            candidate,
+            max_steps,
+            window_size,
+            diagnostic,
+        } => {
+            let config = d012::D012StageEConfig {
+                max_steps,
+                window_size,
+                diagnostic,
+            };
+            let result = d012::run_v2_stage_e_robust(&output, &candidate, &config)?;
+            println!(
+                "D-012 Stage E robust: restoring={} rate_robust={} -> {}",
+                result["restoring_radius_pass"],
+                result["rate_robust_overlap"],
+                output.display()
             );
         }
     }

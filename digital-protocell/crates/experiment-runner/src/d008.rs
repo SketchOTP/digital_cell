@@ -1038,7 +1038,7 @@ fn stage_d_selected_toml_path() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../configs/d008/stage_c_selected.toml")
 }
 
-fn stage_d_params_for(
+pub fn stage_d_params_for(
     options: &D008StageOptions,
 ) -> Result<SimParams, Box<dyn std::error::Error>> {
     let selected: StageAReference =
