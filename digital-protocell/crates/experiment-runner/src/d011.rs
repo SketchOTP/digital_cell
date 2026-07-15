@@ -510,7 +510,13 @@ pub fn run_d011_protocol(
     }
 
     let mut validation_results = Vec::new();
-    for candidate in solver_report.candidates.iter().take(D011_MAX_CANDIDATES) {
+    // ponytail: round 0 already covered by failed_candidate_replay
+    for candidate in solver_report
+        .candidates
+        .iter()
+        .filter(|c| c.round > 0)
+        .take(D011_MAX_CANDIDATES.saturating_sub(1))
+    {
         let candidate_params = d011_params(&candidate.rates)?;
         let candidate_identity = build_candidate_identity(
             candidate_params.clone(),
@@ -578,6 +584,8 @@ pub fn run_d011_protocol(
         "max_steps": config.max_steps,
         "window_size": config.window_size,
         "quick_mode": config.quick,
+        "sensitivity_max_steps": config.max_steps.min(5_000),
+        "sensitivity_window_size": config.window_size.min(1_000),
     });
     fs::write(attempt.join("result.json"), serde_json::to_vec_pretty(&result)?)?;
     Ok(result)
