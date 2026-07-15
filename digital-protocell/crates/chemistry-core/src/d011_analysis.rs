@@ -141,14 +141,11 @@ pub struct WindowSlopes {
     pub totals_within_tolerance: bool,
 }
 
-pub const RATE_PARAM_NAMES: [&str; 7] = [
+pub const RATE_PARAM_NAMES: [&str; 4] = [
+    "k_d008_structure",
+    "k_d008_reproduction",
     "k_membrane",
     "k_d008_activation",
-    "k_d008_reproduction",
-    "k_d008_structure",
-    "k_d008_activated_decay",
-    "k_d008_catalyst_turnover",
-    "k_structure_decay",
 ];
 
 pub const G_COMPONENT_NAMES: [&str; 4] = [
@@ -170,7 +167,7 @@ pub struct SensitivityReport {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct JointSolverCandidate {
     pub round: usize,
-    pub rate_deltas_log: [f64; 7],
+    pub rate_deltas_log: [f64; 4],
     pub rates: StageEReferenceRates,
     pub log_change_norm: f64,
 }
@@ -182,15 +179,12 @@ pub struct JointSolverReport {
     pub bounded: bool,
 }
 
-pub fn rate_vector(rates: &StageEReferenceRates) -> [f64; 7] {
+pub fn rate_vector(rates: &StageEReferenceRates) -> [f64; 4] {
     [
+        rates.k_d008_structure,
+        rates.k_d008_reproduction,
         rates.k_membrane,
         rates.k_d008_activation,
-        rates.k_d008_reproduction,
-        rates.k_d008_structure,
-        rates.k_d008_activated_decay,
-        rates.k_d008_catalyst_turnover,
-        rates.k_structure_decay,
     ]
 }
 
@@ -422,7 +416,7 @@ pub fn log_central_difference(g_up: f64, g_down: f64) -> f64 {
     (g_up - g_down) / (ln_up - ln_down)
 }
 
-pub fn sensitivity_matrix(rows: &[[f64; 7]; 4]) -> SensitivityReport {
+pub fn sensitivity_matrix<const N: usize>(rows: &[[f64; N]; 4]) -> SensitivityReport {
     let matrix: Vec<Vec<f64>> = rows.iter().map(|row| row.to_vec()).collect();
     let (singular_values, rank, condition_number) = analyze_matrix(&matrix);
     SensitivityReport {
@@ -599,9 +593,9 @@ pub fn solve_bounded_joint_step(
     }
     let ref_rates = rate_vector(reference);
     let cur_rates = rate_vector(current);
-    let mut next_rates = [0.0; 7];
+    let mut next_rates = [0.0; 4];
     let mut log_change_norm = 0.0;
-    for idx in 0..7 {
+    for idx in 0..4 {
         let proposed = cur_rates[idx] * dp[idx].exp();
         let global_min = ref_rates[idx] * D011_GLOBAL_RATE_MIN_FACTOR;
         let global_max = ref_rates[idx] * D011_GLOBAL_RATE_MAX_FACTOR;
@@ -610,21 +604,21 @@ pub fn solve_bounded_joint_step(
         log_change_norm += delta * delta;
     }
     log_change_norm = log_change_norm.sqrt();
-    let mut dp_arr = [0.0; 7];
-    for (idx, value) in dp.iter().take(7).enumerate() {
+    let mut dp_arr = [0.0; 4];
+    for (idx, value) in dp.iter().take(4).enumerate() {
         dp_arr[idx] = *value;
     }
     Some(JointSolverCandidate {
         round,
         rate_deltas_log: dp_arr,
         rates: StageEReferenceRates {
-            k_membrane: next_rates[0],
-            k_d008_activation: next_rates[1],
-            k_d008_reproduction: next_rates[2],
-            k_d008_structure: next_rates[3],
-            k_d008_activated_decay: next_rates[4],
-            k_d008_catalyst_turnover: next_rates[5],
-            k_structure_decay: next_rates[6],
+            k_d008_structure: next_rates[0],
+            k_d008_reproduction: next_rates[1],
+            k_membrane: next_rates[2],
+            k_d008_activation: next_rates[3],
+            k_d008_activated_decay: current.k_d008_activated_decay,
+            k_d008_catalyst_turnover: current.k_d008_catalyst_turnover,
+            k_structure_decay: current.k_structure_decay,
         },
         log_change_norm,
     })
@@ -683,7 +677,7 @@ pub fn bounded_joint_solver(
     let mut candidates = Vec::new();
     candidates.push(JointSolverCandidate {
         round: 0,
-        rate_deltas_log: [0.0; 7],
+        rate_deltas_log: [0.0; 4],
         rates: *start,
         log_change_norm: 0.0,
     });
@@ -694,7 +688,7 @@ pub fn bounded_joint_solver(
         }
         let g = g_history.get(round).copied().unwrap_or([0.0; 4]);
         let sensitivity = sensitivity_history.get(round).cloned().unwrap_or_else(|| {
-            sensitivity_matrix(&[[0.0; 7]; 4])
+            sensitivity_matrix(&[[0.0; 4]; 4])
         });
         if let Some(candidate) =
             solve_bounded_joint_step(reference, &current, g, &sensitivity, round)
@@ -732,12 +726,12 @@ pub fn scientific_conclusion(
 ) -> &'static str {
     if any_joint_pass {
         if stage_e_revised {
-            "PASS_AFTER_D011"
+            "D011_TRANSPORT_COUPLED_JOINT_BALANCE_PASS"
         } else {
-            "D011_JOINT_BALANCE_PASS"
+            "D011_TRANSPORT_COUPLED_JOINT_BALANCE_PASS"
         }
     } else {
-        "D011_TRANSPORT_COUPLED_NO_SOLUTION"
+        "D011_TRANSPORT_COUPLED_BALANCE_NO_SOLUTION"
     }
 }
 

@@ -27,7 +27,12 @@ and membrane evolution are restored while φ remains prescribed?
 
 | Conclusion | Meaning |
 | --- | --- |
-| `PASS_AFTER_D011` | Joint overlap under coupled assay; Stage E failure was model-undercoupling |
-| `D011_JOINT_BALANCE_PASS` | Pass without revising Stage E classification label |
-| `D011_TRANSPORT_COUPLED_NO_SOLUTION` | No overlap after replay, horizons, and bounded solver |
-| `D008_NO_JOINT_FIXED_POINT` | Prior Stage E conclusion; revised only if `PASS_AFTER_D011` |
+| `D011_TRANSPORT_COUPLED_JOINT_BALANCE_PASS` | Joint overlap under coupled assay; Stage E failure was model-undercoupling |
+| `D011_TRANSPORT_COUPLED_JOINT_BALANCE_PASS` | Pass without revising Stage E classification label |
+| `D011_TRANSPORT_COUPLED_BALANCE_NO_SOLUTION` | No overlap after replay, horizons, and bounded solver |
+| `D008_NO_JOINT_FIXED_POINT` | Prior Stage E conclusion; revised only if `D011_TRANSPORT_COUPLED_JOINT_BALANCE_PASS` |
+
+
+## Corrected four-rate sensitivity
+
+`attempt_017` reports a 4×4 sensitivity matrix at R=22 with rank 4 and condition number ≈9.04. The authorized productive rates are locally controllable in the quick assay, but the replay state remains far from joint overlap and non-converged. Longer replay from `attempt_015` also remained non-converged with persistent structure and membrane deficits.

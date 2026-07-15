@@ -1,25 +1,27 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260714-d010r-stage-e-balance
-- Project directive: D-010R
-- Goal: Advance D-008 through scientific closure
-- Status: Stage E FAIL — D008_NO_JOINT_FIXED_POINT
-- Acceptance: Stage E pass or truthful failure recorded
-- Touched files: d008_analysis, experiment-runner/d008, config, docs/d008_prescribed_radius_balance.md
-- Next action: failure recovery — parameter-domain / reaction-network repair before re-entering Stage E
+- ID: D-20260714-d011-transport-coupled-joint-balance
+- Project directive: D-011
+- Goal: Determine if Stage E failure is under-coupled model vs genuine network incompatibility
+- Status: complete — transport-coupled quick assay found no joint balance; full 200k horizon not completed
+- Acceptance: partial — corrected quick D011_TRANSPORT_COUPLED_BALANCE_NO_SOLUTION with 50k supplementary replay; full governed horizons remain incomplete
+- Touched files: d011_analysis, constraint_accounting, simulation constrained radius, experiment-runner/d011, docs/d011_*
+- Next action: if continuing, run full 200k corrected four-rate protocol or write next network-repair directive from D-011 evidence
 
 ## Repo facts needed now
 - Branch: d008-membrane-metabolic-closure
-- Stages 0–D: PASS (tagged)
-- Stage E: FAIL attempt_003, conclusion D008_NO_JOINT_FIXED_POINT
-- D-008 closure: blocked
-- D-009: blocked
+- Stage E fail tag preserved: D-008-stage-e-balance-fail
+- D-011 failure tag exists: D-011-transport-coupled-balance-fail
+- Corrected latest attempt: experiments/generated/d011/attempt_017/result.json
+- Conclusion: D011_TRANSPORT_COUPLED_BALANCE_NO_SOLUTION (quick corrected protocol)
+- Stage E remains: D008_NO_JOINT_FIXED_POINT
+- Stages F-G blocked; D-009 blocked
 - Production verdict: REQUIRES REMEDIATION
 
 ## Last validation
-- Command: cargo run -p experiment-runner --release -- d008 stage-e
-- Result: D008_STAGE_E_BALANCE_FAIL attempt_003
+- Command: cargo test -p chemistry-core --release --test d011_tests; cargo test -p chemistry-core --release --test d008_tests; cargo run -p experiment-runner --release -- d011 run --quick
+- Result: 21 PASS; 50 PASS; attempt_017 D011_TRANSPORT_COUPLED_BALANCE_NO_SOLUTION
 
 ## Open blockers
-- No joint fixed point in prescribed-radius balance under current rates/reaction forms
+- Full 200k D-011 horizon protocol did not complete in this session; attempt_017 is quick-mode evidence

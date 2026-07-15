@@ -371,10 +371,10 @@ fn test_joint_sensitivity_uses_central_difference() {
 #[test]
 fn test_rank_deficient_sensitivity_is_reported() {
     let matrix = [
-        [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0],
-        [2.0, 4.0, 6.0, 8.0, 10.0, 12.0, 14.0],
-        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 2.0, 3.0, 4.0],
+        [2.0, 4.0, 6.0, 8.0],
+        [0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0],
     ];
     let report = sensitivity_matrix(&matrix);
     assert!(report.rank_deficient);
@@ -386,7 +386,7 @@ fn test_joint_solver_respects_global_bounds() {
     let reference = STAGE_E_FAILED_RATES;
     let current = reference;
     let g = [1.0, 1.0, 1.0, 1.0];
-    let sensitivity = sensitivity_matrix(&[[1.0; 7]; 4]);
+    let sensitivity = sensitivity_matrix(&[[1.0; 4]; 4]);
     let candidate = solve_bounded_joint_step(&reference, &current, g, &sensitivity, 0).unwrap();
     for (idx, value) in rate_vector(&candidate.rates).iter().enumerate() {
         let ref_v = rate_vector(&reference)[idx];
@@ -400,7 +400,7 @@ fn test_joint_solver_respects_per_round_bounds() {
     let reference = STAGE_E_FAILED_RATES;
     let current = reference;
     let g = [10.0, 10.0, 10.0, 10.0];
-    let sensitivity = sensitivity_matrix(&[[10.0; 7]; 4]);
+    let sensitivity = sensitivity_matrix(&[[10.0; 4]; 4]);
     let candidate = solve_bounded_joint_step(&reference, &current, g, &sensitivity, 0).unwrap();
     for delta in candidate.rate_deltas_log {
         assert!(delta >= D011_ROUND_RATE_MIN_FACTOR.ln());

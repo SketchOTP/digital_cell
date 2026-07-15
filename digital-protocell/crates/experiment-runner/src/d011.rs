@@ -366,13 +366,10 @@ fn perturb_rates(base: &StageEReferenceRates, idx: usize, factor: f64) -> StageE
     let mut rates = *base;
     let mut values = chemistry_core::rate_vector(&rates);
     values[idx] *= factor;
-    rates.k_membrane = values[0];
-    rates.k_d008_activation = values[1];
-    rates.k_d008_reproduction = values[2];
-    rates.k_d008_structure = values[3];
-    rates.k_d008_activated_decay = values[4];
-    rates.k_d008_catalyst_turnover = values[5];
-    rates.k_structure_decay = values[6];
+    rates.k_d008_structure = values[0];
+    rates.k_d008_reproduction = values[1];
+    rates.k_membrane = values[2];
+    rates.k_d008_activation = values[3];
     rates
 }
 
@@ -390,8 +387,8 @@ pub fn compute_sensitivity(
     let base_params = d011_params(base_rates).expect("params");
     let base_outcome = run_constrained_assay(&base_params, radius, &sens_config);
     let g0 = estimate_g_vector(&base_outcome);
-    let mut rows = [[0.0; 7]; 4];
-    for idx in 0..7 {
+    let mut rows = [[0.0; 4]; 4];
+    for idx in 0..4 {
         let up = perturb_rates(base_rates, idx, 1.0 + chemistry_core::D011_SENSITIVITY_PERTURB);
         let down = perturb_rates(base_rates, idx, 1.0 - chemistry_core::D011_SENSITIVITY_PERTURB);
         let up_outcome = run_constrained_assay(&d011_params(&up).expect("params"), radius, &sens_config);

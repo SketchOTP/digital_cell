@@ -6,7 +6,7 @@ Runs when failed Stage E rate replay shows no joint overlap under constrained-ra
 
 ## Sensitivity
 
-- `S_ij = ∂g_i / ∂ln(k_j)` via ±5% central differences on seven rates
+- `S_ij = ∂g_i / ∂ln(k_j)` via ±5% central differences on the four authorized productive rates: `k_structure`, `k_rep`, `k_membrane`, `k_activation`
 - Report rank, condition number, singular values
 - Flag `rank_deficient` when rank < 4
 
@@ -16,7 +16,7 @@ Solve `S Δp ≈ −g` in log-rate space:
 
 | Constraint | Value |
 | --- | --- |
-| Global rate bounds | 0.5×–2.0× Stage E reference |
+| Global productive-rate bounds | 0.5×–2.0× Stage E reference |
 | Per-round bounds | 0.75×–1.33× multiplicative |
 | Max rounds | 4 |
 | Max candidates | 5 (including original) |

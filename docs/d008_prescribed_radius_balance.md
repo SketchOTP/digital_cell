@@ -47,4 +47,4 @@ dynamics (`D008StageMode::ConstrainedRadius`). See:
 - `experiments/generated/d011/`
 
 Stage E conclusion `D008_NO_JOINT_FIXED_POINT` stands until D-011 reports
-`PASS_AFTER_D011`; otherwise D-011 may confirm `D011_TRANSPORT_COUPLED_NO_SOLUTION`.
+`D011_TRANSPORT_COUPLED_JOINT_BALANCE_PASS`; otherwise D-011 may confirm `D011_TRANSPORT_COUPLED_BALANCE_NO_SOLUTION`.

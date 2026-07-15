@@ -21,13 +21,15 @@ k_structure_decay       = 0.025
 
 ## Governed attempt
 
-Primary artifact: `experiments/generated/d011/attempt_005/result.json`  
-`scientific_conclusion`: **D011_TRANSPORT_COUPLED_NO_SOLUTION**  
+Primary corrected artifact: `experiments/generated/d011/attempt_017/result.json`  
+`scientific_conclusion`: **D011_TRANSPORT_COUPLED_BALANCE_NO_SOLUTION**  
 `result_tag`: **D-011-transport-coupled-balance-fail**
 
-Supplementary 50k-step replay (partial): `attempt_006/failed_candidate_replay/R{14,18}/`
+`attempt_017` is a corrected four-rate quick protocol (`max_steps=5000`, `window=1000`) after narrowing D-011 sensitivity/solver to the authorized productive rates only: `k_structure`, `k_rep`, `k_membrane`, and `k_activation`.
 
-## Replay grid (seed=1, max_steps=5000, window=1000)
+Supplementary longer replay: `attempt_015` ran 50k-step constrained-radius reference replay before the four-rate solver correction. Its replay dynamics remain useful as horizon evidence; its seven-rate sensitivity/solver metadata is superseded by `attempt_017`.
+
+## Replay grid (seed=1, max_steps=50000, window=1000)
 
 | R | Classification | joint_overlap | g_structure | g_catalyst | g_membrane | g_activated |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -51,8 +53,7 @@ Imbalance persists at longer horizon; structure virtual-flow deficit dominates.
 
 ## Sensitivity (R=22, R=26)
 
-Full rank (rank=4) Jacobian; condition number ill-conditioned at R=22 (σ_max/σ_min ≈ 5×10⁹).
-Bounded joint solver produced no correcting candidates within global/per-round bounds.
+Four-rate sensitivity at R=22 is full rank (rank=4, condition number ≈9.04). The bounded solver proposed one in-domain correction, but no validation radius reached joint overlap in the corrected quick protocol.
 
 ## Stage E revision
 
