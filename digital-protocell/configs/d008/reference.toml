@@ -11,3 +11,10 @@ k_membrane_decay = 0.002
 k_membrane_detach = 0.020
 k_c_membrane = 0.10
 k_membrane = 0.0
+# Conservative Stage C qualitative-gate reference rates; Stage E calibrates them.
+k_d008_activation = 0.020
+k_d008_reproduction = 0.040
+k_d008_activated_decay = 0.005
+k_d008_catalyst_turnover = 0.002
+d008_a_max = 1.0
+d008_c_max = 1.0

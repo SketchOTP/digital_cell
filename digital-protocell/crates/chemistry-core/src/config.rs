@@ -45,6 +45,29 @@ impl fmt::Display for EquationVersion {
     }
 }
 
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum D008StageMode {
+    #[default]
+    Transport,
+    ActivatedMetabolism,
+}
+
+impl D008StageMode {
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Transport => "transport",
+            Self::ActivatedMetabolism => "activated_metabolism",
+        }
+    }
+}
+
+impl fmt::Display for D008StageMode {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str(self.as_str())
+    }
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SimParams {
     pub a: f64,
@@ -129,6 +152,24 @@ pub struct SimParams {
     /// Isolated Stage B mode: fixed φ,C,A and solubles; only M advances.
     #[serde(default)]
     pub d008_stage_b_enabled: bool,
+    /// Isolated typed D-008 stage dispatch. Stage C is a homogeneous local reactor:
+    /// no diffusion, reservoir, phase, structure, or membrane evolution.
+    #[serde(default)]
+    pub d008_stage_mode: D008StageMode,
+    /// D-008 Stage C reference rates. These conservative qualitative-gate values
+    /// remain subject to the directive's later Stage E calibration.
+    #[serde(default = "default_k_d008_activation")]
+    pub k_d008_activation: f64,
+    #[serde(default = "default_k_d008_reproduction")]
+    pub k_d008_reproduction: f64,
+    #[serde(default = "default_k_d008_activated_decay")]
+    pub k_d008_activated_decay: f64,
+    #[serde(default = "default_k_d008_catalyst_turnover")]
+    pub k_d008_catalyst_turnover: f64,
+    #[serde(default = "default_d008_a_max")]
+    pub d008_a_max: f64,
+    #[serde(default = "default_d008_c_max")]
+    pub d008_c_max: f64,
 }
 
 fn default_k_phi() -> f64 {
@@ -191,6 +232,30 @@ fn default_k_c_membrane() -> f64 {
     0.10
 }
 
+fn default_k_d008_activation() -> f64 {
+    0.020
+}
+
+fn default_k_d008_reproduction() -> f64 {
+    0.040
+}
+
+fn default_k_d008_activated_decay() -> f64 {
+    0.005
+}
+
+fn default_k_d008_catalyst_turnover() -> f64 {
+    0.002
+}
+
+fn default_d008_a_max() -> f64 {
+    1.0
+}
+
+fn default_d008_c_max() -> f64 {
+    1.0
+}
+
 impl Default for SimParams {
     fn default() -> Self {
         Self {
@@ -249,6 +314,13 @@ impl Default for SimParams {
             k_c_membrane: default_k_c_membrane(),
             k_membrane: 0.0,
             d008_stage_b_enabled: false,
+            d008_stage_mode: D008StageMode::Transport,
+            k_d008_activation: default_k_d008_activation(),
+            k_d008_reproduction: default_k_d008_reproduction(),
+            k_d008_activated_decay: default_k_d008_activated_decay(),
+            k_d008_catalyst_turnover: default_k_d008_catalyst_turnover(),
+            d008_a_max: default_d008_a_max(),
+            d008_c_max: default_d008_c_max(),
         }
     }
 }

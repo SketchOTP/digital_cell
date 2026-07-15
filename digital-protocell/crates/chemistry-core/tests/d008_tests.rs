@@ -318,7 +318,9 @@ fn d008_hash_identifies_equation_and_field_schema_in_fixed_order() {
         "equation_version=membrane_metabolism_v1;k_structure_interface=0;\
 k_c_structure=0.1;d_a=0.04;beta_c=4.6;beta_a=4.6;beta_n=1.2;beta_f=1.2;\
 beta_w=0.2;m_max=1;d_m=0.001;k_membrane_decay=0.002;k_membrane_detach=0.02;\
-k_c_membrane=0.1;k_membrane=0;d008_stage_b_enabled=false;\
+k_c_membrane=0.1;k_membrane=0;d008_stage_b_enabled=false;d008_stage_mode=transport;\
+k_d008_activation=0.02;k_d008_reproduction=0.04;k_d008_activated_decay=0.005;\
+k_d008_catalyst_turnover=0.002;d008_a_max=1;d008_c_max=1;\
 field_schema_version=seven_field_v1;snapshot_schema_version=2"
     ));
     assert_eq!(
@@ -1019,4 +1021,166 @@ fn deterministic_stage_b_candidate_remains_localized_after_transient() {
     assert!(sim.membrane_accounting.cumulative.synthesis > 0.0);
     assert!(sim.membrane_accounting.cumulative.decay > 0.0);
     assert!(sim.membrane_accounting.cumulative.detachment > 0.0);
+}
+
+fn stage_c_params() -> SimParams {
+    let mut params = d008_params();
+    params.d008_stage_mode = D008StageMode::ActivatedMetabolism;
+    params.diffusion_enabled = false;
+    params.phase_separation_enabled = false;
+    params
+}
+
+#[test]
+fn stage_c_activation_requires_positive_catalyst_nutrient_and_fuel() {
+    let params = stage_c_params();
+    let active = activated_metabolism_rates(0.4, 0.8, 0.7, 0.2, &params);
+    assert!(active.activation > 0.0);
+    assert_eq!(
+        activated_metabolism_rates(0.0, 0.8, 0.7, 0.2, &params).activation,
+        0.0
+    );
+    assert_eq!(
+        activated_metabolism_rates(0.4, 0.0, 0.7, 0.2, &params).activation,
+        0.0
+    );
+    assert_eq!(
+        activated_metabolism_rates(0.4, 0.8, 0.0, 0.2, &params).activation,
+        0.0
+    );
+}
+
+#[test]
+fn stage_c_reproduction_uses_activated_resource_not_raw_inputs() {
+    let params = stage_c_params();
+    assert!(activated_metabolism_rates(0.4, 0.0, 0.0, 0.2, &params).reproduction > 0.0);
+    assert_eq!(
+        activated_metabolism_rates(0.4, 1.0, 1.0, 0.0, &params).reproduction,
+        0.0
+    );
+}
+
+#[test]
+fn stage_c_rates_have_exact_unit_stoichiometry_and_positive_waste() {
+    let params = stage_c_params();
+    let rates = activated_metabolism_rates(0.4, 0.8, 0.7, 0.2, &params);
+    assert_eq!(rates.d_nutrient, -rates.activation);
+    assert_eq!(rates.d_fuel, -rates.activation);
+    assert_eq!(
+        rates.d_activated,
+        rates.activation - rates.reproduction - rates.activated_decay
+    );
+    assert_eq!(
+        rates.d_catalyst,
+        rates.reproduction - rates.catalyst_turnover
+    );
+    assert_eq!(
+        rates.d_waste,
+        rates.activation + rates.reproduction + rates.activated_decay + rates.catalyst_turnover
+    );
+    assert!(rates.d_waste > 0.0);
+}
+
+#[test]
+fn stage_c_dispatch_is_zero_dimensional_and_accounting_closes() {
+    let mut sim = Simulation::new(stage_c_params());
+    sim.observer_enabled = false;
+    let structure_before = sim.fields.structure.clone();
+    let membrane_before = sim.fields.membrane.clone();
+    let transport_before = sim.transport_accounting.accepted_steps;
+
+    assert!(sim.step());
+
+    assert_eq!(sim.fields.structure, structure_before);
+    assert_eq!(sim.fields.membrane, membrane_before);
+    assert_eq!(sim.transport_accounting.accepted_steps, transport_before);
+    assert_eq!(sim.metabolism_accounting.accepted_steps, 1);
+    let step = &sim.metabolism_accounting.last_step;
+    assert!(step.activation > 0.0);
+    assert!(step.reproduction > 0.0);
+    assert!(step.activated_decay > 0.0);
+    assert!(step.catalyst_turnover > 0.0);
+    for ledger in [
+        &step.catalyst,
+        &step.nutrient,
+        &step.fuel,
+        &step.activated,
+        &step.waste,
+    ] {
+        assert!(ledger.accounting_residual.abs() < 1e-10);
+    }
+    assert!(
+        sim.metabolism_accounting.cumulative.residual.abs() < 1e-8,
+        "residual={}",
+        sim.metabolism_accounting.cumulative.residual
+    );
+}
+
+#[test]
+fn stage_c_decay_controls_decline_without_activation_or_reproduction() {
+    let mut no_activation = Simulation::new(stage_c_params());
+    no_activation.observer_enabled = false;
+    no_activation.fields.nutrient.fill(0.0);
+    let activated_before = total_mass(&no_activation.grid, &no_activation.fields.activated);
+    assert!(no_activation.step());
+    assert!(total_mass(&no_activation.grid, &no_activation.fields.activated) < activated_before);
+
+    let mut no_reproduction = Simulation::new(stage_c_params());
+    no_reproduction.observer_enabled = false;
+    no_reproduction.fields.activated.fill(0.0);
+    let catalyst_before = total_mass(&no_reproduction.grid, &no_reproduction.fields.catalyst);
+    assert!(no_reproduction.step());
+    assert!(total_mass(&no_reproduction.grid, &no_reproduction.fields.catalyst) < catalyst_before);
+}
+
+#[test]
+fn stage_c_bounds_clamp_with_closed_ledgers_and_rejection_is_atomic() {
+    let mut params = stage_c_params();
+    params.k_d008_reproduction = 10_000.0;
+    let mut sim = Simulation::new(params);
+    sim.observer_enabled = false;
+    for idx in 0..sim.fields.catalyst.len() {
+        if sim.grid.in_dish(idx) {
+            sim.fields.catalyst[idx] = 0.95;
+            sim.fields.activated[idx] = 0.10;
+        }
+    }
+    assert!(sim.step());
+    assert!(sim
+        .fields
+        .catalyst
+        .iter()
+        .all(|&value| (0.0..=sim.params.d008_c_max).contains(&value)));
+    assert!(sim
+        .fields
+        .activated
+        .iter()
+        .all(|&value| (0.0..=sim.params.d008_a_max).contains(&value)));
+    assert!(
+        sim.metabolism_accounting
+            .last_step
+            .catalyst
+            .numerical_correction_delta
+            < 0.0
+    );
+    assert!(
+        sim.metabolism_accounting.cumulative.residual.abs() < 1e-7,
+        "residual={}",
+        sim.metabolism_accounting.cumulative.residual
+    );
+
+    let accounting = sim.metabolism_accounting.clone();
+    let addresses = buffer_addresses(&sim.fields);
+    let center = Grid::index(sim.grid.width, sim.grid.cx as usize, sim.grid.cy as usize);
+    sim.fields.nutrient[center] = CONC_SAFETY_LIMIT + 1.0;
+    assert!(!sim.step());
+    assert_eq!(buffer_addresses(&sim.fields), addresses);
+    assert_eq!(
+        sim.metabolism_accounting.accepted_steps,
+        accounting.accepted_steps
+    );
+    assert_eq!(
+        sim.metabolism_accounting.cumulative.activation,
+        accounting.cumulative.activation
+    );
 }

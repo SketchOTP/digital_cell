@@ -137,7 +137,9 @@ reactions_enabled={};phase_separation_enabled={};diffusion_enabled={};k_phi={};u
             s.push_str(&format!(
                 ";d_a={};beta_c={};beta_a={};beta_n={};beta_f={};beta_w={};\
 m_max={};d_m={};k_membrane_decay={};k_membrane_detach={};k_c_membrane={};\
-k_membrane={};d008_stage_b_enabled={};\
+k_membrane={};d008_stage_b_enabled={};d008_stage_mode={};\
+k_d008_activation={};k_d008_reproduction={};k_d008_activated_decay={};\
+k_d008_catalyst_turnover={};d008_a_max={};d008_c_max={};\
 field_schema_version=seven_field_v1;snapshot_schema_version=2",
                 params.d_a,
                 params.beta_c,
@@ -151,7 +153,14 @@ field_schema_version=seven_field_v1;snapshot_schema_version=2",
                 params.k_membrane_detach,
                 params.k_c_membrane,
                 params.k_membrane,
-                params.d008_stage_b_enabled
+                params.d008_stage_b_enabled,
+                params.d008_stage_mode,
+                params.k_d008_activation,
+                params.k_d008_reproduction,
+                params.k_d008_activated_decay,
+                params.k_d008_catalyst_turnover,
+                params.d008_a_max,
+                params.d008_c_max
             ));
         }
         EquationVersion::D001BulkV1

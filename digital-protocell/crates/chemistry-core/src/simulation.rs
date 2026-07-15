@@ -4,8 +4,13 @@ use crate::accounting::{
     build_field_ledger, field_mass, sum_clamp_correction, AccountingState, ReactionStepTotals,
     StepAccounting,
 };
+use crate::activated_metabolism::{
+    activated_metabolism_rates, ActivatedMetabolismAccountingState,
+    ActivatedMetabolismStepAccounting,
+};
 use crate::config::{
-    EquationVersion, ExperimentConfig, InterventionSpec, SimParams, MAX_DT, NEG_CLAMP,
+    D008StageMode, EquationVersion, ExperimentConfig, InterventionSpec, SimParams, MAX_DT,
+    NEG_CLAMP,
 };
 use crate::diagnostics::{CellDetector, DiagnosticsSnapshot};
 use crate::fields::{
@@ -50,6 +55,7 @@ pub struct Simulation {
     pub accounting: AccountingState,
     pub transport_accounting: TransportAccountingState,
     pub membrane_accounting: MembraneAccountingState,
+    pub metabolism_accounting: ActivatedMetabolismAccountingState,
     pub substep: u64,
     pub sim_time: f64,
     pub dt: f64,
@@ -83,6 +89,7 @@ impl Simulation {
             accounting: AccountingState::default(),
             transport_accounting: TransportAccountingState::default(),
             membrane_accounting: MembraneAccountingState::default(),
+            metabolism_accounting: ActivatedMetabolismAccountingState::default(),
             substep: 0,
             sim_time: 0.0,
             dt: MAX_DT,
@@ -153,9 +160,12 @@ impl Simulation {
                 EquationVersion::MembraneMetabolismV1 if self.params.d008_stage_b_enabled => {
                     self.try_d008_stage_b(attempt_dt)
                 }
-                EquationVersion::MembraneMetabolismV1 => {
-                    self.try_membrane_metabolism_v1_transport(attempt_dt)
-                }
+                EquationVersion::MembraneMetabolismV1 => match self.params.d008_stage_mode {
+                    D008StageMode::Transport => {
+                        self.try_membrane_metabolism_v1_transport(attempt_dt)
+                    }
+                    D008StageMode::ActivatedMetabolism => self.try_d008_stage_c(attempt_dt),
+                },
             };
             match result {
                 SubstepResult::Ok => {
@@ -786,6 +796,172 @@ impl Simulation {
             membrane_step.clamp_correction,
         );
         self.membrane_accounting.record_accepted(membrane_step);
+        self.fields.swap();
+        SubstepResult::Ok
+    }
+
+    fn try_d008_stage_c(&mut self, dt: f64) -> SubstepResult {
+        if validate_structure_field(&self.fields.structure, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.catalyst, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.nutrient, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.fuel, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.waste, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.activated, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.membrane, &self.grid.dish_mask).is_err()
+            || self
+                .fields
+                .catalyst
+                .iter()
+                .enumerate()
+                .any(|(idx, &value)| self.grid.in_dish(idx) && value > self.params.d008_c_max)
+            || self
+                .fields
+                .activated
+                .iter()
+                .enumerate()
+                .any(|(idx, &value)| self.grid.in_dish(idx) && value > self.params.d008_a_max)
+        {
+            return SubstepResult::Reject;
+        }
+
+        let mass_phi = field_mass(&self.grid, &self.fields.structure);
+        let mass_c_before = field_mass(&self.grid, &self.fields.catalyst);
+        let mass_n_before = field_mass(&self.grid, &self.fields.nutrient);
+        let mass_f_before = field_mass(&self.grid, &self.fields.fuel);
+        let mass_w_before = field_mass(&self.grid, &self.fields.waste);
+        let mass_a_before = field_mass(&self.grid, &self.fields.activated);
+        let mass_m = field_mass(&self.grid, &self.fields.membrane);
+        self.fields.copy_current_to_next();
+
+        let mut activation = 0.0;
+        let mut reproduction = 0.0;
+        let mut activated_decay = 0.0;
+        let mut catalyst_turnover = 0.0;
+        let mut react_c = 0.0;
+        let mut react_n = 0.0;
+        let mut react_f = 0.0;
+        let mut react_a = 0.0;
+        let mut react_w = 0.0;
+
+        for idx in 0..self.grid.width * self.grid.height {
+            if !self.grid.in_dish(idx) {
+                continue;
+            }
+            let rates = activated_metabolism_rates(
+                self.fields.catalyst[idx],
+                self.fields.nutrient[idx],
+                self.fields.fuel[idx],
+                self.fields.activated[idx],
+                &self.params,
+            );
+            activation += rates.activation * dt;
+            reproduction += rates.reproduction * dt;
+            activated_decay += rates.activated_decay * dt;
+            catalyst_turnover += rates.catalyst_turnover * dt;
+            react_c += rates.d_catalyst * dt;
+            react_n += rates.d_nutrient * dt;
+            react_f += rates.d_fuel * dt;
+            react_a += rates.d_activated * dt;
+            react_w += rates.d_waste * dt;
+            self.fields.catalyst_next[idx] += rates.d_catalyst * dt;
+            self.fields.nutrient_next[idx] += rates.d_nutrient * dt;
+            self.fields.fuel_next[idx] += rates.d_fuel * dt;
+            self.fields.activated_next[idx] += rates.d_activated * dt;
+            self.fields.waste_next[idx] += rates.d_waste * dt;
+        }
+
+        let pre_clamp_c = field_mass(&self.grid, &self.fields.catalyst_next);
+        let pre_clamp_n = field_mass(&self.grid, &self.fields.nutrient_next);
+        let pre_clamp_f = field_mass(&self.grid, &self.fields.fuel_next);
+        let pre_clamp_w = field_mass(&self.grid, &self.fields.waste_next);
+        let pre_clamp_a = field_mass(&self.grid, &self.fields.activated_next);
+
+        for idx in 0..self.grid.width * self.grid.height {
+            if !self.grid.in_dish(idx) {
+                continue;
+            }
+            for value in [
+                self.fields.catalyst_next[idx],
+                self.fields.nutrient_next[idx],
+                self.fields.fuel_next[idx],
+                self.fields.waste_next[idx],
+                self.fields.activated_next[idx],
+            ] {
+                if !value.is_finite() || value < NEG_CLAMP {
+                    return SubstepResult::Reject;
+                }
+            }
+            self.fields.catalyst_next[idx] = self.fields.catalyst_next[idx]
+                .max(0.0)
+                .min(self.params.d008_c_max);
+            self.fields.activated_next[idx] = self.fields.activated_next[idx]
+                .max(0.0)
+                .min(self.params.d008_a_max);
+            self.fields.nutrient_next[idx] = clamp_small_negative(self.fields.nutrient_next[idx]);
+            self.fields.fuel_next[idx] = clamp_small_negative(self.fields.fuel_next[idx]);
+            self.fields.waste_next[idx] = clamp_small_negative(self.fields.waste_next[idx]);
+        }
+
+        if validate_soluble_field(&self.fields.catalyst_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.nutrient_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.fuel_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.waste_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.activated_next, &self.grid.dish_mask).is_err()
+        {
+            return SubstepResult::Reject;
+        }
+
+        let mass_c_after = field_mass(&self.grid, &self.fields.catalyst_next);
+        let mass_n_after = field_mass(&self.grid, &self.fields.nutrient_next);
+        let mass_f_after = field_mass(&self.grid, &self.fields.fuel_next);
+        let mass_w_after = field_mass(&self.grid, &self.fields.waste_next);
+        let mass_a_after = field_mass(&self.grid, &self.fields.activated_next);
+        let catalyst =
+            build_field_ledger(mass_c_before, react_c, 0.0, 0.0, pre_clamp_c, mass_c_after);
+        let nutrient =
+            build_field_ledger(mass_n_before, react_n, 0.0, 0.0, pre_clamp_n, mass_n_after);
+        let fuel = build_field_ledger(mass_f_before, react_f, 0.0, 0.0, pre_clamp_f, mass_f_after);
+        let waste = build_field_ledger(mass_w_before, react_w, 0.0, 0.0, pre_clamp_w, mass_w_after);
+        let activated =
+            build_field_ledger(mass_a_before, react_a, 0.0, 0.0, pre_clamp_a, mass_a_after);
+        let metabolism_step = ActivatedMetabolismStepAccounting {
+            activation,
+            reproduction,
+            activated_decay,
+            catalyst_turnover,
+            catalyst: catalyst.clone(),
+            nutrient: nutrient.clone(),
+            fuel: fuel.clone(),
+            activated: activated.clone(),
+            waste: waste.clone(),
+        };
+        let step_accounting = StepAccounting {
+            structure: build_field_ledger(mass_phi, 0.0, 0.0, 0.0, mass_phi, mass_phi),
+            catalyst,
+            nutrient,
+            fuel,
+            waste,
+            activated,
+            membrane: build_field_ledger(mass_m, 0.0, 0.0, 0.0, mass_m, mass_m),
+        };
+        let reaction_totals = ReactionStepTotals {
+            catalyst_reproduction: reproduction,
+            catalyst_decay: catalyst_turnover,
+            nutrient_consumed_r1: activation,
+            fuel_consumed_r1: activation,
+            waste_from_r1: activation,
+            waste_from_r2: reproduction,
+            waste_from_decay: activated_decay + catalyst_turnover,
+            ..ReactionStepTotals::default()
+        };
+        let clamp_total = step_accounting.catalyst.numerical_correction_delta
+            + step_accounting.nutrient.numerical_correction_delta
+            + step_accounting.fuel.numerical_correction_delta
+            + step_accounting.waste.numerical_correction_delta
+            + step_accounting.activated.numerical_correction_delta;
+        self.accounting
+            .record_step(step_accounting, &reaction_totals, clamp_total);
+        self.metabolism_accounting.record_accepted(metabolism_step);
         self.fields.swap();
         SubstepResult::Ok
     }

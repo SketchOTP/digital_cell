@@ -32,6 +32,7 @@ pub mod surface_calibration;
 pub mod time_audit;
 
 pub use accounting::*;
+pub use activated_metabolism::*;
 pub use attractor::*;
 pub use basin::*;
 pub use bottleneck::*;
