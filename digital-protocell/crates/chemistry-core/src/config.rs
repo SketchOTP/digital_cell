@@ -52,6 +52,7 @@ pub enum D008StageMode {
     Transport,
     ActivatedMetabolism,
     FixedCompartment,
+    ConstrainedRadius,
 }
 
 impl D008StageMode {
@@ -60,6 +61,7 @@ impl D008StageMode {
             Self::Transport => "transport",
             Self::ActivatedMetabolism => "activated_metabolism",
             Self::FixedCompartment => "fixed_compartment",
+            Self::ConstrainedRadius => "constrained_radius",
         }
     }
 }

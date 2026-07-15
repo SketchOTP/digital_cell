@@ -6,6 +6,7 @@ mod d005;
 mod d006;
 mod d007;
 mod d008;
+mod d011;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -80,6 +81,10 @@ enum Commands {
     D008 {
         #[command(subcommand)]
         action: D008Commands,
+    },
+    D011 {
+        #[command(subcommand)]
+        action: D011Commands,
     },
 }
 
@@ -234,6 +239,21 @@ enum D008Commands {
     },
 }
 
+#[derive(Subcommand)]
+enum D011Commands {
+    /// Run the D-011 transport-coupled constrained-radius balance assay.
+    Run {
+        #[arg(long, default_value = "experiments/generated/d011")]
+        output: PathBuf,
+        #[arg(long, default_value = "50000")]
+        max_steps: u64,
+        #[arg(long, default_value = "10000")]
+        window_size: u64,
+        #[arg(long, default_value = "false")]
+        quick: bool,
+    },
+}
+
 const CHECKPOINT_STEPS: [u64; 7] = [0, 25_000, 50_000, 100_000, 150_000, 200_000, 250_000];
 const RATIO_CHECKPOINTS: [u64; 6] = [25_000, 50_000, 100_000, 150_000, 200_000, 250_000];
 
@@ -256,6 +276,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D006 { action } => run_d006(action)?,
         Commands::D007 { action } => run_d007(action)?,
         Commands::D008 { action } => run_d008(action)?,
+        Commands::D011 { action } => run_d011(action)?,
     }
     Ok(())
 }
@@ -528,6 +549,29 @@ fn run_d008(action: D008Commands) -> Result<(), Box<dyn std::error::Error>> {
             println!(
                 "D-008 Stage E: {} -> {}",
                 result["stage_classification"], result["attempt_directory"]
+            );
+        }
+    }
+    Ok(())
+}
+
+fn run_d011(action: D011Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D011Commands::Run {
+            output,
+            max_steps,
+            window_size,
+            quick,
+        } => {
+            let config = d011::D011RunConfig {
+                max_steps: if quick { 5_000 } else { max_steps },
+                window_size: if quick { 1_000 } else { window_size },
+                quick,
+            };
+            let result = d011::run_d011_protocol(&output, &config)?;
+            println!(
+                "D-011: {} -> {:?}",
+                result["scientific_conclusion"], result["attempt_directory"]
             );
         }
     }
