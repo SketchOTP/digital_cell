@@ -41,3 +41,16 @@ and membrane evolution are restored while φ remains prescribed?
 `attempt_017` reports a 4×4 sensitivity matrix at R=22 with rank 4 and condition number ≈9.04. The authorized productive rates are locally controllable in the quick assay, but the replay state remains far from joint overlap and non-converged. Longer replay from `attempt_015` also remained non-converged with persistent structure and membrane deficits.
 
 Until D-012 completes the stoichiometric gate and any required corrected long-horizon protocol, the operative scientific status is `D011_LONG_HORIZON_CONFIRMATION_INCOMPLETE`.
+
+## D-012 supersession (executed)
+
+Exact v1 audit recorded `D012_NONCONSERVATIVE_V1_CONFIRMED`
+(`NO_POSITIVE_CONSERVATION_VECTOR`). Operative D-011 status is therefore:
+
+```text
+D011_LONG_HORIZON_INCOMPLETE_SUPERSEDED_BY_INVALID_STOICHIOMETRY
+```
+
+The expensive corrected 200k / five-candidate completion branch was not executed.
+Historical quick and 50k evidence remain preserved under tag
+`D-011-long-horizon-incomplete`.
