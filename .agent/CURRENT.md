@@ -1,25 +1,25 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260714-d010r-continuous-production-advancement
+- ID: D-20260714-d010r-stage-e-balance
 - Project directive: D-010R
-- Goal: Advance D-008 through scientific closure toward production readiness
-- Status: Stage D PASS; beginning Stage E prescribed-radius balance
-- Acceptance: Stage E overlapping zero-flow regions or truthful D008_NO_JOINT_FIXED_POINT
-- Touched files: Stage E runner/simulation (pending), docs/d008_fixed_compartment.md
-- Next action: implement Stage E source (all reactions, fixed geometry, staged calibration screens)
+- Goal: Advance D-008 through scientific closure
+- Status: Stage E FAIL — D008_NO_JOINT_FIXED_POINT
+- Acceptance: Stage E pass or truthful failure recorded
+- Touched files: d008_analysis, experiment-runner/d008, config, docs/d008_prescribed_radius_balance.md
+- Next action: failure recovery — parameter-domain / reaction-network repair before re-entering Stage E
 
 ## Repo facts needed now
 - Branch: d008-membrane-metabolic-closure
-- Stage D source: 3647840
-- Stage D result: pending commit (attempt_002 PASS)
-- Stages 0–D: PASS
-- D-009: blocked until D-008 closure
+- Stages 0–D: PASS (tagged)
+- Stage E: FAIL attempt_003, conclusion D008_NO_JOINT_FIXED_POINT
+- D-008 closure: blocked
+- D-009: blocked
 - Production verdict: REQUIRES REMEDIATION
 
 ## Last validation
-- Command: cargo run -p experiment-runner --release -- d008 stage-d
-- Result: D008_STAGE_D_FIXED_COMPARTMENT_PASS attempt_002 (~99s wall)
+- Command: cargo run -p experiment-runner --release -- d008 stage-e
+- Result: D008_STAGE_E_BALANCE_FAIL attempt_003
 
 ## Open blockers
-- Stage E–G not yet implemented
+- No joint fixed point in prescribed-radius balance under current rates/reaction forms
