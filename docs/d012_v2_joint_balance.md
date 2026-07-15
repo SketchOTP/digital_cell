@@ -110,3 +110,12 @@ this reference. The solver entry gate remains closed.
 
 Classification artifact:
 `digital-protocell/experiments/generated/d012/v2_stage_e_reference/reference_terminal_classification.json`.
+
+
+## D-013 follow-on (append-only)
+
+The Stage E reference at `v2_stage_e_reference/` remains `INVALID_ARTIFACT` /
+`scientific_usable=false` under tag `D-012-stage-e-reference-invalid`. D-013
+repairs harness integrity and recovers a new governed reference under
+`experiments/generated/d013/` without altering chemistry or rates. No D-012
+scientific Stage E conclusion is authorized until a valid D-013 reference exists.

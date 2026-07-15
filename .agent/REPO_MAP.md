@@ -90,3 +90,9 @@ Concise navigation map for agents. Add entries as application code lands.
 - `docs/d012_conservation_proof.md` — exact conservation proof and gate checklist
 - `docs/d008_activated_metabolism.md` — Stage C metabolism pass report
 - `digital-protocell/configs/d008/stage_c_selected.toml` — selected Stage C qualitative reference rates
+
+## D-013 Stage E harness
+- `digital-protocell/crates/chemistry-core/src/d013_harness.rs` — accepted-step windows, checkpoints, activation, validator
+- `digital-protocell/crates/experiment-runner/src/d013.rs` — governed reference runner/preflight
+- `digital-protocell/crates/chemistry-core/tests/d013_tests.rs` — D-013 harness integrity tests
+- `digital-protocell/experiments/generated/d013/` — preservation, preflight, R22 reference, manifest

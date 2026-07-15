@@ -1,27 +1,25 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260715-d012-conservative-stoichiometric-closure
-- Project directive: D-012
-- Goal: Finish Tasks 15–18 governed Stage E without altering network or reporting a premature conclusion
-- Status: reference terminated `INVALID_ARTIFACT`; solver/yield/robustness not started; no Stage E scientific conclusion
-- Acceptance: three-window quasi-steady + four balances + restoring neighbors + throughput + accounting + robustness before any pass
-- Touched files: d012_stage_e.rs, main.rs, experiments/.../v2_stage_e_reference/
-- Next action: repair rejected-step termination/checkpoint/accounting artifact capture before any new governed reference
+- ID: D-20260715-d013-stage-e-harness-integrity
+- Project directive: D-013
+- Goal: Repair Stage E harness; recover governed conservative-v2 reference
+- Status: done — D013_REFERENCE_NUMERICAL_FAILURE
+- Acceptance: preflight PASS; valid R22 governed artifact with accepted-step windows/checkpoints/activation; one D013_* conclusion
+- Touched files: d013_harness.rs, d013.rs, d011.rs assay loop, simulation attempt counters, d013_tests, docs/d013_*, experiments/generated/d013/
+- Next action: repair timestep-floor numerical failure before scientific Stage E / solver
 
 ## Repo facts needed now
-- Branch: d008-membrane-metabolic-closure
-- Canonical output: `digital-protocell/experiments/generated/d012/v2_stage_e_reference`
-- Diagnostic snapshot preserved under `.../diagnostic_snapshot/` (5k NOT_CONVERGED; all g_structure negative)
-- Reference source: 15f9f21; binary b044ac4083838e9ea6e21c32e093f2025f25b10876b26f9b67c917995e28e77d
-- INVALID_ARTIFACT cause: rejected substep ended accepted progress, but attempted chunks appended zero-motion windows; clean=false, checkpoints and activation ledger absent
-- Stage B limitation: M=0.25 failed; validated M∈{0.50,0.75}
-- Do not claim pass/no-solution until full protocol completes
+- Mimir slug: digital_cell; Mimir MCP unavailable this session
+- Frozen candidate/config hashes unchanged
+- Invalid D-012 ref preserved + tag D-012-stage-e-reference-invalid
+- R22 valid artifact terminates TIMESTEP_FLOOR_FAILURE at 161166 accepted steps
+- Solver entry closed; R18/R26 not run
 
 ## Last validation
-- Command: inspect reference result/ledger, verify hashes and required evidence
-- Result: INVALID_ARTIFACT; manifest hash d4a7bf88b244761e054af4c12cb17afc39e6d9cad2e83f3451f412df1a744a7a
+- Command: cargo test d013_tests+d012_tests; preflight PASS; R22 governed run
+- Result: d013 32 PASS; preflight_pass=true; R22 VALID_GOVERNED_ARTIFACT + NUMERICAL_FAILURE
 
 ## Open blockers
-- Reference runner must record true termination, atomic checkpoints, and activation-potential accounting before rerun
-- Mimir MCP unavailable
+- Numerical: timestep floor at ~161k accepted; need root-cause repair before scientific pass
+- BLOCKED: Mimir MCP unavailable
