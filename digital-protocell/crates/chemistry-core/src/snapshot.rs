@@ -139,6 +139,28 @@ pub struct DetectorSnapshot {
 }
 
 impl FieldSnapshot {
+    pub fn stoichiometric_schema_version(&self) -> u32 {
+        self.equation_version.stoichiometric_schema_version()
+    }
+
+    /// V1 snapshots may be inspected but must not initialize governed v2 runs.
+    pub fn can_resume_into(&self, target: &SimParams) -> Result<(), String> {
+        let snap_schema = self.stoichiometric_schema_version();
+        let target_schema = target.equation_version.stoichiometric_schema_version();
+        if snap_schema != target_schema {
+            return Err(format!(
+                "snapshot stoichiometric_schema_version {snap_schema} incompatible with target {target_schema}; v1 snapshots cannot resume v2 runs"
+            ));
+        }
+        if self.equation_version != target.equation_version {
+            return Err(format!(
+                "snapshot equation_version {} incompatible with target {}",
+                self.equation_version, target.equation_version
+            ));
+        }
+        Ok(())
+    }
+
     pub fn from_sim(
         fields: &FieldBuffers,
         params: &SimParams,
@@ -157,7 +179,8 @@ impl FieldSnapshot {
             None,
         );
         let field_schema_version = match params.equation_version {
-            EquationVersion::MembraneMetabolismV1 => FieldSchemaVersion::SevenFieldV1,
+            EquationVersion::MembraneMetabolismV1
+            | EquationVersion::MembraneMetabolismV2Conservative => FieldSchemaVersion::SevenFieldV1,
             EquationVersion::D001BulkV1
             | EquationVersion::D003CrowdingV1
             | EquationVersion::SurfaceTurnoverV1 => FieldSchemaVersion::FiveFieldV1,
@@ -332,19 +355,27 @@ impl FieldSnapshot {
                 | EquationVersion::D003CrowdingV1
                 | EquationVersion::SurfaceTurnoverV1,
             )
-            | (
+            |             (
                 FieldSchemaVersion::SevenFieldV1,
                 SnapshotFields::SevenField(_),
-                EquationVersion::MembraneMetabolismV1,
+                EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative,
             ) => Ok(()),
             (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV1) => {
                 Err("five_field_v1 snapshot is incompatible with membrane_metabolism_v1".to_string())
             }
-            (FieldSchemaVersion::SevenFieldV1, _, _) => {
-                Err("seven_field_v1 snapshot requires membrane_metabolism_v1".to_string())
+            (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV2Conservative) => {
+                Err("five_field_v1 snapshot is incompatible with membrane_metabolism_v2_conservative".to_string())
+            }
+            (FieldSchemaVersion::SevenFieldV1, _, EquationVersion::D001BulkV1
+            | EquationVersion::D003CrowdingV1
+            | EquationVersion::SurfaceTurnoverV1) => {
+                Err("seven_field_v1 snapshot requires membrane metabolism equation".to_string())
             }
             (FieldSchemaVersion::FiveFieldV1, SnapshotFields::SevenField(_), _) => {
                 Err("five_field_v1 envelope contains seven_field_v1 payload".to_string())
+            }
+            (FieldSchemaVersion::SevenFieldV1, SnapshotFields::FiveField(_), _) => {
+                Err("seven_field_v1 envelope contains five_field_v1 payload".to_string())
             }
         }
     }

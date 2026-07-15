@@ -16,6 +16,11 @@ pub const PHI_SOFT_MAX: f64 = 1.25;
 pub const CONC_SAFETY_LIMIT: f64 = 10.0;
 pub const M_MAX: f64 = 1.0;
 
+/// Governed stoichiometric schema for membrane metabolism v1 (nonconservative productive chemistry).
+pub const STOICHIOMETRIC_SCHEMA_VERSION_V1: u32 = 1;
+/// Governed stoichiometric schema for membrane_metabolism_v2_conservative.
+pub const STOICHIOMETRIC_SCHEMA_VERSION_V2: u32 = 2;
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum EquationVersion {
     #[serde(rename = "d001-bulk-v1")]
@@ -26,6 +31,9 @@ pub enum EquationVersion {
     SurfaceTurnoverV1,
     #[serde(rename = "membrane_metabolism_v1")]
     MembraneMetabolismV1,
+    /// D-012 conservative seven-field network; not comparable to v1 candidate hashes.
+    #[serde(rename = "membrane_metabolism_v2_conservative")]
+    MembraneMetabolismV2Conservative,
 }
 
 impl EquationVersion {
@@ -35,6 +43,22 @@ impl EquationVersion {
             Self::D003CrowdingV1 => "d003-crowding-v1",
             Self::SurfaceTurnoverV1 => "surface_turnover_v1",
             Self::MembraneMetabolismV1 => "membrane_metabolism_v1",
+            Self::MembraneMetabolismV2Conservative => "membrane_metabolism_v2_conservative",
+        }
+    }
+
+    pub const fn is_membrane_metabolism(self) -> bool {
+        matches!(
+            self,
+            Self::MembraneMetabolismV1 | Self::MembraneMetabolismV2Conservative
+        )
+    }
+
+    pub const fn stoichiometric_schema_version(self) -> u32 {
+        match self {
+            Self::MembraneMetabolismV2Conservative => STOICHIOMETRIC_SCHEMA_VERSION_V2,
+            Self::MembraneMetabolismV1 => STOICHIOMETRIC_SCHEMA_VERSION_V1,
+            Self::D001BulkV1 | Self::D003CrowdingV1 | Self::SurfaceTurnoverV1 => 0,
         }
     }
 }
@@ -177,6 +201,37 @@ pub struct SimParams {
     pub d008_a_max: f64,
     #[serde(default = "default_d008_c_max")]
     pub d008_c_max: f64,
+    /// D-012 v2 catalyst yield η_C ∈ (0, 1].
+    #[serde(default = "default_eta_c")]
+    pub eta_c: f64,
+    /// D-012 v2 structure yield η_φ ∈ (0, 1].
+    #[serde(default = "default_eta_phi")]
+    pub eta_phi: f64,
+    /// D-012 v2 membrane yield η_M ∈ (0, 1].
+    #[serde(default = "default_eta_m")]
+    pub eta_m: f64,
+}
+
+/// Validate governed v2 yields: 0 < η ≤ 1.
+pub fn validate_v2_yields(eta_c: f64, eta_phi: f64, eta_m: f64) -> Result<(), String> {
+    for (name, eta) in [("eta_c", eta_c), ("eta_phi", eta_phi), ("eta_m", eta_m)] {
+        if !eta.is_finite() || eta <= 0.0 || eta > 1.0 {
+            return Err(format!("{name} must satisfy 0 < η ≤ 1; got {eta}"));
+        }
+    }
+    Ok(())
+}
+
+fn default_eta_c() -> f64 {
+    1.0
+}
+
+fn default_eta_phi() -> f64 {
+    1.0
+}
+
+fn default_eta_m() -> f64 {
+    1.0
 }
 
 fn default_k_phi() -> f64 {
@@ -333,9 +388,13 @@ impl Default for SimParams {
             k_d008_structure: default_k_d008_structure(),
             d008_a_max: default_d008_a_max(),
             d008_c_max: default_d008_c_max(),
+            eta_c: default_eta_c(),
+            eta_phi: default_eta_phi(),
+            eta_m: default_eta_m(),
         }
     }
 }
+
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ExperimentConfig {
@@ -391,6 +450,13 @@ pub enum InterventionAction {
 impl SimParams {
     pub fn from_toml_str(s: &str) -> Result<Self, toml::de::Error> {
         toml::from_str(s)
+    }
+
+    pub fn validate_equation_config(&self) -> Result<(), String> {
+        if self.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+            validate_v2_yields(self.eta_c, self.eta_phi, self.eta_m)?;
+        }
+        Ok(())
     }
 
     pub fn scaled(&self, key: &str, factor: f64) -> Self {
