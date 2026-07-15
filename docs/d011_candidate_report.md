@@ -19,15 +19,34 @@ k_structure_decay       = 0.025
 `d008_stage_mode = constrained_radius`  
 `equation_version = membrane_metabolism_v1`
 
+## Operative status (D-012 correction)
+
+Until the corrected long-horizon protocol and stoichiometric branch complete:
+
+```text
+D011_LONG_HORIZON_CONFIRMATION_INCOMPLETE
+```
+
+This does not erase the quick and supplementary evidence below. It records that the
+mandatory 200,000-step protocol, three-window quasi-steady determination, up to
+four correction rounds, five-candidate maximum, full corrected neighboring-radius
+validation, and robust-overlap testing were not completed.
+
 ## Governed attempt
 
 Primary corrected artifact: `experiments/generated/d011/attempt_017/result.json`  
-`scientific_conclusion`: **D011_TRANSPORT_COUPLED_BALANCE_NO_SOLUTION**  
-`result_tag`: **D-011-transport-coupled-balance-fail**
+Provisional quick conclusion (not definitive): **D011_TRANSPORT_COUPLED_BALANCE_NO_SOLUTION**  
+`result_tag`: **D-011-transport-coupled-balance-fail-corrected**
 
 `attempt_017` is a corrected four-rate quick protocol (`max_steps=5000`, `window=1000`) after narrowing D-011 sensitivity/solver to the authorized productive rates only: `k_structure`, `k_rep`, `k_membrane`, and `k_activation`.
 
+The quick result remains evidence of failure to find balance under short horizons.
+It is not definitive evidence that no balanced state exists.
+
 Supplementary longer replay: `attempt_015` ran 50k-step constrained-radius reference replay before the four-rate solver correction. Its replay dynamics remain useful as horizon evidence; its seven-rate sensitivity/solver metadata is superseded by `attempt_017`.
+
+Preservation Manifest: `experiments/generated/d012/preservation/manifest.json`  
+Tag: `D-011-long-horizon-incomplete`
 
 ## Replay grid (seed=1, max_steps=50000, window=1000)
 

@@ -1,0 +1,159 @@
+{
+  "artifact_count": 23,
+  "artifacts": [
+    {
+      "bytes": 47238,
+      "path": "digital-protocell/experiments/generated/d008/stage_e_balance/attempt_003/result.json",
+      "required": true,
+      "sha256": "3ff7f8ac0a623cce0563d9853d56d35a59c285f83c173037e11db484b71c7aee"
+    },
+    {
+      "bytes": 1193,
+      "path": "digital-protocell/experiments/generated/d011/attempt_015/bounded_joint_solver/radius_22.json",
+      "required": false,
+      "sha256": "6a8d5eb7b4b959f1c9e4e58096422131c7bcadb98f61130146281c92183ce8a8"
+    },
+    {
+      "bytes": 3099,
+      "path": "digital-protocell/experiments/generated/d011/attempt_015/failed_candidate_replay/R14/result.json",
+      "required": false,
+      "sha256": "218e151106e38d95f5d24d0f3c7c1c620c4c288cb90fae56b5c115d08173fb39"
+    },
+    {
+      "bytes": 3095,
+      "path": "digital-protocell/experiments/generated/d011/attempt_015/failed_candidate_replay/R18/result.json",
+      "required": false,
+      "sha256": "442e4f234248b430c092cdfe4be7c9c9de381e901f90efbb5eb06df79043fd58"
+    },
+    {
+      "bytes": 3090,
+      "path": "digital-protocell/experiments/generated/d011/attempt_015/failed_candidate_replay/R22/result.json",
+      "required": false,
+      "sha256": "41d9b61c19ac3143c62945dda8b39828ad47b53a034fef7bb92f3c46d601358d"
+    },
+    {
+      "bytes": 3095,
+      "path": "digital-protocell/experiments/generated/d011/attempt_015/failed_candidate_replay/R26/result.json",
+      "required": false,
+      "sha256": "10e14925f9e3d34acbcf8723f7b05b0b418fbed483791df5ff1f494ce82a7e1e"
+    },
+    {
+      "bytes": 3095,
+      "path": "digital-protocell/experiments/generated/d011/attempt_015/failed_candidate_replay/R30/result.json",
+      "required": false,
+      "sha256": "02e781eace33113627ffcd35f3bb36e5c44b47c5135f23d7851e80d4dad7dc0b"
+    },
+    {
+      "bytes": 3093,
+      "path": "digital-protocell/experiments/generated/d011/attempt_015/failed_candidate_replay/R34/result.json",
+      "required": false,
+      "sha256": "ec754270a7c2bb2532412a59ef3e6420ceabaded600400d0c4d14e0b27fc0d17"
+    },
+    {
+      "bytes": 65625,
+      "path": "digital-protocell/experiments/generated/d011/attempt_015/result.json",
+      "required": true,
+      "sha256": "ead7d81208ba5b367f67b6b6a2cd7d3e983837f9e9a81aa32d28649ecc483e1a"
+    },
+    {
+      "bytes": 1091,
+      "path": "digital-protocell/experiments/generated/d011/attempt_017/bounded_joint_solver/radius_22.json",
+      "required": false,
+      "sha256": "64ce89b625133395905e060408bf11649549875e3bb8ad9e8fdefa5cb0f7d8fc"
+    },
+    {
+      "bytes": 3079,
+      "path": "digital-protocell/experiments/generated/d011/attempt_017/failed_candidate_replay/R14/result.json",
+      "required": false,
+      "sha256": "4aa2698de7883578d125a1a98db7b0f11d1039b98ccf1e5bf7efba0beeef6bd3"
+    },
+    {
+      "bytes": 3069,
+      "path": "digital-protocell/experiments/generated/d011/attempt_017/failed_candidate_replay/R18/result.json",
+      "required": false,
+      "sha256": "3728024ce6a288a1bd1097ef23912ebf754990bc907474076ea6a7b2b75bb7e9"
+    },
+    {
+      "bytes": 3067,
+      "path": "digital-protocell/experiments/generated/d011/attempt_017/failed_candidate_replay/R22/result.json",
+      "required": false,
+      "sha256": "0a8fa44e2d7ce55109cc452f760771c0f11090a827de80b3a88d1f31e887e6f5"
+    },
+    {
+      "bytes": 3075,
+      "path": "digital-protocell/experiments/generated/d011/attempt_017/failed_candidate_replay/R26/result.json",
+      "required": false,
+      "sha256": "7c009cf760b059778500f914d23031ed33f0924c52c2b15c5b4cd6de2d4fd2ad"
+    },
+    {
+      "bytes": 3075,
+      "path": "digital-protocell/experiments/generated/d011/attempt_017/failed_candidate_replay/R30/result.json",
+      "required": false,
+      "sha256": "1beaccd687297e01028fd27497121443b40debc9a6999ae7bb86757b90320f1b"
+    },
+    {
+      "bytes": 3074,
+      "path": "digital-protocell/experiments/generated/d011/attempt_017/failed_candidate_replay/R34/result.json",
+      "required": false,
+      "sha256": "71ae2dbcadaa43661df6194234351316a8752757d081ef8a6013fe32d15fa943"
+    },
+    {
+      "bytes": 24473,
+      "path": "digital-protocell/experiments/generated/d011/attempt_017/result.json",
+      "required": true,
+      "sha256": "3d10005cfcf38519df9758ff1fa1fc84feb6b74073b7eaf7e00ed044d7ad6fec"
+    },
+    {
+      "bytes": 2544,
+      "path": "docs/d011_balance_controllability.md",
+      "required": true,
+      "sha256": "19b648b3c37f87191ff59dc9489e24379db8e5030ca812fc496fb99fc4ef7741"
+    },
+    {
+      "bytes": 3375,
+      "path": "docs/d011_candidate_report.md",
+      "required": true,
+      "sha256": "860d7763ee951607a2ce0572986dca6e5d33eadbc8130ce1bc1ab240a246df2d"
+    },
+    {
+      "bytes": 1926,
+      "path": "docs/d011_constrained_radius_assay.md",
+      "required": true,
+      "sha256": "f797f0b0524a4679cba32f408d06310f53eb6547436f8dac2b83a4cc1becfa7b"
+    },
+    {
+      "bytes": 663,
+      "path": "docs/d011_horizon_sensitivity.md",
+      "required": true,
+      "sha256": "7a0f6bf3254f8990814a9d691571ff2505961042246fbc46ab564b4a7cac904b"
+    },
+    {
+      "bytes": 939,
+      "path": "docs/d011_joint_rate_solver.md",
+      "required": true,
+      "sha256": "9f38864a3b0400b3e12bdb679c86c7cdcd53a1869302215db49472c8ae047ea0"
+    },
+    {
+      "bytes": 2528,
+      "path": "docs/d011_stage_e_model_audit.md",
+      "required": true,
+      "sha256": "402d7d97ce9893b77de69719537a53ff3d72d0b54caaee1349ddf4c24d4b065e"
+    }
+  ],
+  "content_hash": "4d5c04c381994f81ab4c7c9e8bcdf84841b3df553738098446fd4cf16ebb5481",
+  "directive": "D-012",
+  "governed_commits": {
+    "d008_stage_e_failure": "2db93f6a06ea1ae6c577585d9f49fc98899f027e",
+    "d008_stage_e_source": "dfadb10e9ad113cdac903355ead18094d680df50",
+    "d011_correction": "b8e7ef85fb0de5dd8b798023b309142f1aa10bbe",
+    "d011_learning": "5d0051f7c7562f20bc59a2b1d43a7df505ee49a0"
+  },
+  "operative_d011_status": "D011_LONG_HORIZON_CONFIRMATION_INCOMPLETE",
+  "preserved_tags": {
+    "D-008-stage-e-balance-fail": "2db93f6a06ea1ae6c577585d9f49fc98899f027e",
+    "D-011-transport-coupled-balance-fail": "2c9bdfa5cecb229a56bc06df416f1de869b92039",
+    "D-011-transport-coupled-balance-fail-corrected": "b8e7ef85fb0de5dd8b798023b309142f1aa10bbe"
+  },
+  "purpose": "preservation_gate",
+  "source_commit": "cd0b39d68c6418eec45c028ce61516023995c3f1"
+}
