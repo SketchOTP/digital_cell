@@ -29,6 +29,13 @@ use std::process::Command;
 
 const D012_SEED: u64 = 1;
 
+fn d012_sensitivity_dir(reference_root: &Path) -> PathBuf {
+    reference_root
+        .parent()
+        .map(|p| p.join("v2_sensitivity"))
+        .unwrap_or_else(|| reference_root.join("../v2_sensitivity"))
+}
+
 #[derive(Debug, Clone)]
 pub struct D012StageEConfig {
     pub max_steps: u64,
@@ -501,8 +508,10 @@ pub fn run_v2_stage_e_reference(
     );
 
     let sensitivity = compute_v2_sensitivity(&params, &rates, config);
+    let sens_dir = d012_sensitivity_dir(root);
+    fs::create_dir_all(&sens_dir)?;
     atomic_write_json(
-        &root.join("v2_sensitivity/center_R22.json"),
+        &sens_dir.join("center_R22.json"),
         &json!(sensitivity),
     )?;
 
