@@ -657,9 +657,26 @@ fn run_d011(action: D011Commands) -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
+fn resolve_d012_artifact_path(path: PathBuf) -> PathBuf {
+    if path.is_absolute() {
+        return path;
+    }
+    let canonical_root = d012::d012_generated_root();
+    let rendered = path.to_string_lossy();
+    if let Some(rest) = rendered.strip_prefix("experiments/generated/d012/") {
+        return canonical_root.join(rest);
+    }
+    if rendered == "experiments/generated/d012" {
+        return canonical_root;
+    }
+    // Default: resolve relative to chemistry workspace so cwd cannot leak artifacts.
+    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..").join(path)
+}
+
 fn run_d012(action: D012Commands) -> Result<(), Box<dyn std::error::Error>> {
     match action {
         D012Commands::StageB { output } => {
+            let output = resolve_d012_artifact_path(output);
             let result = d012::run_v2_stage_b(&output)?;
             println!(
                 "D-012 Stage B: {} -> {}",
@@ -668,6 +685,7 @@ fn run_d012(action: D012Commands) -> Result<(), Box<dyn std::error::Error>> {
             );
         }
         D012Commands::StageC { output } => {
+            let output = resolve_d012_artifact_path(output);
             let result = d012::run_v2_stage_c(&output)?;
             println!(
                 "D-012 Stage C: {} -> {}",
@@ -676,6 +694,7 @@ fn run_d012(action: D012Commands) -> Result<(), Box<dyn std::error::Error>> {
             );
         }
         D012Commands::StageD { output } => {
+            let output = resolve_d012_artifact_path(output);
             let result = d012::run_v2_stage_d(&output)?;
             println!(
                 "D-012 Stage D: {} -> {:?}",
@@ -688,6 +707,7 @@ fn run_d012(action: D012Commands) -> Result<(), Box<dyn std::error::Error>> {
             window_size,
             diagnostic,
         } => {
+            let output = resolve_d012_artifact_path(output);
             let config = d012::D012StageEConfig {
                 max_steps,
                 window_size,
@@ -702,6 +722,7 @@ fn run_d012(action: D012Commands) -> Result<(), Box<dyn std::error::Error>> {
             );
         }
         D012Commands::StageEDiagnostic { output } => {
+            let output = resolve_d012_artifact_path(output);
             let config = d012::D012StageEConfig::diagnostic();
             let result = d012::run_v2_stage_e_reference(&output, &config)?;
             println!(
@@ -717,6 +738,8 @@ fn run_d012(action: D012Commands) -> Result<(), Box<dyn std::error::Error>> {
             window_size,
             diagnostic,
         } => {
+            let output = resolve_d012_artifact_path(output);
+            let reference = resolve_d012_artifact_path(reference);
             let config = d012::D012StageEConfig {
                 max_steps,
                 window_size,
@@ -735,6 +758,8 @@ fn run_d012(action: D012Commands) -> Result<(), Box<dyn std::error::Error>> {
             max_steps,
             window_size,
         } => {
+            let output = resolve_d012_artifact_path(output);
+            let diagnosis = resolve_d012_artifact_path(diagnosis);
             let config = d012::D012StageEConfig {
                 max_steps,
                 window_size,
@@ -754,6 +779,8 @@ fn run_d012(action: D012Commands) -> Result<(), Box<dyn std::error::Error>> {
             window_size,
             diagnostic,
         } => {
+            let output = resolve_d012_artifact_path(output);
+            let candidate = resolve_d012_artifact_path(candidate);
             let config = d012::D012StageEConfig {
                 max_steps,
                 window_size,

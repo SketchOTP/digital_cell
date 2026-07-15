@@ -1,0 +1,91 @@
+{
+  "accepted_substeps": 5000,
+  "balance_metrics": {
+    "Q_activated": 0.3595002318657805,
+    "Q_catalyst": 0.9582731993244565,
+    "Q_membrane": 0.408518106139739,
+    "Q_structure": 0.13308713371737757,
+    "activated_retention": 0.9999068601122311,
+    "catalyst_retention": 0.9993052951955811,
+    "fuel_influx": 72.9404928488076,
+    "g_activated": -8.729668214085223,
+    "g_catalyst": -0.07103032800306368,
+    "g_membrane": -2.097401870265751,
+    "g_structure": -46.25092969988181,
+    "membrane_localization": 0.8844509530266459,
+    "nutrient_influx": 72.9404928488076,
+    "waste_efflux": 95.29059961527237
+  },
+  "binary_sha256": "e433a8642138002487a3cb687413844b20f9f7e6280779f91ae39dfd9c90b275",
+  "candidate_hash": "9a452d3470be34ccf3bdd7d1397341b64617834e77131cf2899efb327728d626",
+  "candidate_id": "cand-9a452d3470be-kphi1-ks0.030000-kr0.012000",
+  "clean_termination": true,
+  "configuration_hash": "87ff7e6e4bd479972c3a02b0de4e6bc94a949041860b32b230e5b28863bb5ad6",
+  "convergence_classification": "NOT_CONVERGED",
+  "d008_stage_mode": "constrained_radius",
+  "diagnostic_mode": true,
+  "equation_version": "membrane_metabolism_v2_conservative",
+  "field_schema_version": "seven_field_v1",
+  "joint_overlap": false,
+  "max_steps": 5000,
+  "quasi_steady": {
+    "converged": false,
+    "converged_windows": 0,
+    "required_windows": 3,
+    "window_size": 1000,
+    "window_slopes": [
+      {
+        "slope_a": -7.568644681568242,
+        "slope_c": -0.0403539563987104,
+        "slope_f": 0.0015770732015450313,
+        "slope_m": -2.1331164206565596,
+        "slope_n": 0.0015770732015450313,
+        "slope_w": 0.024229342743794468,
+        "totals_within_tolerance": false
+      },
+      {
+        "slope_a": -4.359298473936793,
+        "slope_c": -0.10538705078254851,
+        "slope_f": 0.0009177071682714763,
+        "slope_m": -2.6253240835220355,
+        "slope_n": 0.0009177071682714763,
+        "slope_w": 0.024751239903236792,
+        "totals_within_tolerance": false
+      },
+      {
+        "slope_a": -3.313032383830674,
+        "slope_c": -0.14849176228496697,
+        "slope_f": 0.0005542595302281782,
+        "slope_m": -2.7726702439076143,
+        "slope_n": 0.0005542595302281782,
+        "slope_w": 0.024885664246718283,
+        "totals_within_tolerance": false
+      },
+      {
+        "slope_a": -2.7960700166894745,
+        "slope_c": -0.18287846536944927,
+        "slope_f": 0.0003343260550772497,
+        "slope_m": -2.806698579561761,
+        "slope_n": 0.0003343260550772497,
+        "slope_w": 0.024893013581354474,
+        "totals_within_tolerance": false
+      }
+    ]
+  },
+  "radius": 26.0,
+  "seed": 1,
+  "selected_rates": {
+    "k_d008_activated_decay": 0.005,
+    "k_d008_activation": 0.07866591100881273,
+    "k_d008_catalyst_turnover": 0.002,
+    "k_d008_reproduction": 0.011832646550468768,
+    "k_d008_structure": 1.0812170527078209,
+    "k_membrane": 0.5832201149734729,
+    "k_structure_decay": 0.025
+  },
+  "simulated_time": 12.499999999999655,
+  "snapshot_schema_version": 2,
+  "source_commit": "e9a0fc32a02427bcaaa184fadc661af0f673f3bc",
+  "stoichiometric_schema_version": 2,
+  "window_size": 1000
+}

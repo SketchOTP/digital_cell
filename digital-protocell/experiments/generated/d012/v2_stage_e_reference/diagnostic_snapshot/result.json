@@ -1,0 +1,806 @@
+{
+  "binary_sha256": "e1c2dcc004ec69e1c7f609ae8babaf87cb5258c7e6f428145a4ddec3809fb1a2",
+  "calibration_screens": {
+    "Activation": {
+      "baseline_value": 0.06293272880705018,
+      "parameter": "Activation",
+      "scores": [
+        44.59619040318039,
+        44.076616635643205,
+        43.57580788754513
+      ],
+      "selected_factor": 1.25,
+      "selected_value": 0.07866591100881273,
+      "trials": [
+        {
+          "balance_score": 44.59619040318039,
+          "factor": 0.75,
+          "metrics": {
+            "Q_activated": 0.19702857813597868,
+            "Q_catalyst": 0.8963382295100121,
+            "Q_membrane": 0.2775191824382993,
+            "Q_structure": 0.16478971731471762,
+            "activated_retention": 0.9999391443064695,
+            "catalyst_retention": 0.9991370836897544,
+            "fuel_influx": 61.44715513268045,
+            "g_activated": -7.906223660974299,
+            "g_catalyst": -0.12662019745788675,
+            "g_membrane": -2.134140992640589,
+            "g_structure": -31.964881259506623,
+            "membrane_localization": 0.8967969030216312,
+            "nutrient_influx": 61.44715513268045,
+            "waste_efflux": 79.41037547899496
+          },
+          "rates": {
+            "k_d008_activated_decay": 0.005,
+            "k_d008_activation": 0.047199546605287634,
+            "k_d008_catalyst_turnover": 0.002,
+            "k_d008_reproduction": 0.011832646550468768,
+            "k_d008_structure": 1.441622736943761,
+            "k_membrane": 0.46657609197877836,
+            "k_structure_decay": 0.025
+          }
+        },
+        {
+          "balance_score": 44.076616635643205,
+          "factor": 1.0,
+          "metrics": {
+            "Q_activated": 0.2527819274328579,
+            "Q_catalyst": 0.9034603223010856,
+            "Q_membrane": 0.2816700802615623,
+            "Q_structure": 0.16893652384493632,
+            "activated_retention": 0.9999206046388305,
+            "catalyst_retention": 0.9991373504667554,
+            "fuel_influx": 61.83289549117569,
+            "g_activated": -7.636913017597688,
+            "g_catalyst": -0.11792808127815761,
+            "g_membrane": -2.122448287266703,
+            "g_structure": -31.806176103341095,
+            "membrane_localization": 0.8966797155602305,
+            "nutrient_influx": 61.83289549117569,
+            "waste_efflux": 80.05094839904226
+          },
+          "rates": {
+            "k_d008_activated_decay": 0.005,
+            "k_d008_activation": 0.06293272880705018,
+            "k_d008_catalyst_turnover": 0.002,
+            "k_d008_reproduction": 0.011832646550468768,
+            "k_d008_structure": 1.441622736943761,
+            "k_membrane": 0.46657609197877836,
+            "k_structure_decay": 0.025
+          }
+        },
+        {
+          "balance_score": 43.57580788754513,
+          "factor": 1.25,
+          "metrics": {
+            "Q_activated": 0.30447747417562254,
+            "Q_catalyst": 0.9104317371307452,
+            "Q_membrane": 0.285689080395081,
+            "Q_structure": 0.1729522377364594,
+            "activated_retention": 0.9999027940659955,
+            "catalyst_retention": 0.9991376107441634,
+            "fuel_influx": 62.207549703668164,
+            "g_activated": -7.376324321873044,
+            "g_catalyst": -0.10941884734386033,
+            "g_membrane": -2.1111271681188897,
+            "g_structure": -31.65248807964725,
+            "membrane_localization": 0.8965654222321344,
+            "nutrient_influx": 62.207549703668164,
+            "waste_efflux": 80.67224011756085
+          },
+          "rates": {
+            "k_d008_activated_decay": 0.005,
+            "k_d008_activation": 0.07866591100881273,
+            "k_d008_catalyst_turnover": 0.002,
+            "k_d008_reproduction": 0.011832646550468768,
+            "k_d008_structure": 1.441622736943761,
+            "k_membrane": 0.46657609197877836,
+            "k_structure_decay": 0.025
+          }
+        }
+      ]
+    },
+    "MembraneProduction": {
+      "baseline_value": 0.46657609197877836,
+      "parameter": "MembraneProduction",
+      "scores": [
+        43.61546253671436,
+        43.57580788754513,
+        43.539490083548934
+      ],
+      "selected_factor": 1.25,
+      "selected_value": 0.5832201149734729,
+      "trials": [
+        {
+          "balance_score": 43.61546253671436,
+          "factor": 0.75,
+          "metrics": {
+            "Q_activated": 0.29930062803513835,
+            "Q_catalyst": 0.9129425525810595,
+            "Q_membrane": 0.22280810375609847,
+            "Q_structure": 0.1764069648216393,
+            "activated_retention": 0.9999029035335176,
+            "catalyst_retention": 0.9991360268449978,
+            "fuel_influx": 62.234242306658004,
+            "g_activated": -7.323169614289748,
+            "g_catalyst": -0.10635478697446271,
+            "g_membrane": -2.277126434192784,
+            "g_structure": -31.520269950451308,
+            "membrane_localization": 0.8994811674337677,
+            "nutrient_influx": 62.234242306658004,
+            "waste_efflux": 80.65189643889168
+          },
+          "rates": {
+            "k_d008_activated_decay": 0.005,
+            "k_d008_activation": 0.07866591100881273,
+            "k_d008_catalyst_turnover": 0.002,
+            "k_d008_reproduction": 0.011832646550468768,
+            "k_d008_structure": 1.441622736943761,
+            "k_membrane": 0.3499320689840838,
+            "k_structure_decay": 0.025
+          }
+        },
+        {
+          "balance_score": 43.57580788754513,
+          "factor": 1.0,
+          "metrics": {
+            "Q_activated": 0.30447747417562254,
+            "Q_catalyst": 0.9104317371307452,
+            "Q_membrane": 0.285689080395081,
+            "Q_structure": 0.1729522377364594,
+            "activated_retention": 0.9999027940659955,
+            "catalyst_retention": 0.9991376107441634,
+            "fuel_influx": 62.207549703668164,
+            "g_activated": -7.376324321873044,
+            "g_catalyst": -0.10941884734386033,
+            "g_membrane": -2.1111271681188897,
+            "g_structure": -31.65248807964725,
+            "membrane_localization": 0.8965654222321344,
+            "nutrient_influx": 62.207549703668164,
+            "waste_efflux": 80.67224011756085
+          },
+          "rates": {
+            "k_d008_activated_decay": 0.005,
+            "k_d008_activation": 0.07866591100881273,
+            "k_d008_catalyst_turnover": 0.002,
+            "k_d008_reproduction": 0.011832646550468768,
+            "k_d008_structure": 1.441622736943761,
+            "k_membrane": 0.46657609197877836,
+            "k_structure_decay": 0.025
+          }
+        },
+        {
+          "balance_score": 43.539490083548934,
+          "factor": 1.25,
+          "metrics": {
+            "Q_activated": 0.3095175778698469,
+            "Q_catalyst": 0.9080316805337758,
+            "Q_membrane": 0.3439938965363784,
+            "Q_structure": 0.1697010018560876,
+            "activated_retention": 0.9999026950626844,
+            "catalyst_retention": 0.9991391413259088,
+            "fuel_influx": 62.1819216013286,
+            "g_activated": -7.426698597603624,
+            "g_catalyst": -0.11234755409487843,
+            "g_membrane": -1.9547698253471508,
+            "g_structure": -31.776918263299365,
+            "membrane_localization": 0.8938324284735524,
+            "nutrient_influx": 62.1819216013286,
+            "waste_efflux": 80.69158843874712
+          },
+          "rates": {
+            "k_d008_activated_decay": 0.005,
+            "k_d008_activation": 0.07866591100881273,
+            "k_d008_catalyst_turnover": 0.002,
+            "k_d008_reproduction": 0.011832646550468768,
+            "k_d008_structure": 1.441622736943761,
+            "k_membrane": 0.5832201149734729,
+            "k_structure_decay": 0.025
+          }
+        }
+      ]
+    },
+    "Reproduction": {
+      "baseline_value": 0.011832646550468768,
+      "parameter": "Reproduction",
+      "scores": [
+        43.80923924112927,
+        43.57580788754513,
+        43.926967590921414
+      ],
+      "selected_factor": 1.0,
+      "selected_value": 0.011832646550468768,
+      "trials": [
+        {
+          "balance_score": 43.80923924112927,
+          "factor": 0.75,
+          "metrics": {
+            "Q_activated": 0.3028359816863936,
+            "Q_catalyst": 0.6872395613679578,
+            "Q_membrane": 0.2866708287096968,
+            "Q_structure": 0.1733940716732003,
+            "activated_retention": 0.9999041906535966,
+            "catalyst_retention": 0.9991331945388152,
+            "fuel_influx": 62.20646273413761,
+            "g_activated": -7.134403175172958,
+            "g_catalyst": -0.38095990745963154,
+            "g_membrane": -2.1084382390576177,
+            "g_structure": -31.635578362876313,
+            "membrane_localization": 0.8964983165978319,
+            "nutrient_influx": 62.20646273413761,
+            "waste_efflux": 80.67056607308129
+          },
+          "rates": {
+            "k_d008_activated_decay": 0.005,
+            "k_d008_activation": 0.07866591100881273,
+            "k_d008_catalyst_turnover": 0.002,
+            "k_d008_reproduction": 0.008874484912851576,
+            "k_d008_structure": 1.441622736943761,
+            "k_membrane": 0.46657609197877836,
+            "k_structure_decay": 0.025
+          }
+        },
+        {
+          "balance_score": 43.57580788754513,
+          "factor": 1.0,
+          "metrics": {
+            "Q_activated": 0.30447747417562254,
+            "Q_catalyst": 0.9104317371307452,
+            "Q_membrane": 0.285689080395081,
+            "Q_structure": 0.1729522377364594,
+            "activated_retention": 0.9999027940659955,
+            "catalyst_retention": 0.9991376107441634,
+            "fuel_influx": 62.207549703668164,
+            "g_activated": -7.376324321873044,
+            "g_catalyst": -0.10941884734386033,
+            "g_membrane": -2.1111271681188897,
+            "g_structure": -31.65248807964725,
+            "membrane_localization": 0.8965654222321344,
+            "nutrient_influx": 62.207549703668164,
+            "waste_efflux": 80.67224011756085
+          },
+          "rates": {
+            "k_d008_activated_decay": 0.005,
+            "k_d008_activation": 0.07866591100881273,
+            "k_d008_catalyst_turnover": 0.002,
+            "k_d008_reproduction": 0.011832646550468768,
+            "k_d008_structure": 1.441622736943761,
+            "k_membrane": 0.46657609197877836,
+            "k_structure_decay": 0.025
+          }
+        },
+        {
+          "balance_score": 43.926967590921414,
+          "factor": 1.25,
+          "metrics": {
+            "Q_activated": 0.30612159148891116,
+            "Q_catalyst": 1.1306892601378458,
+            "Q_membrane": 0.2847106311983449,
+            "Q_structure": 0.1725123089624527,
+            "activated_retention": 0.9999013683408745,
+            "catalyst_retention": 0.9991419434291492,
+            "fuel_influx": 62.208635060406884,
+            "g_activated": -7.616374265646294,
+            "g_catalyst": 0.16011742098534548,
+            "g_membrane": -2.1138062931177353,
+            "g_structure": -31.669324882683906,
+            "membrane_localization": 0.8966322871200666,
+            "nutrient_influx": 62.208635060406884,
+            "waste_efflux": 80.67391158866056
+          },
+          "rates": {
+            "k_d008_activated_decay": 0.005,
+            "k_d008_activation": 0.07866591100881273,
+            "k_d008_catalyst_turnover": 0.002,
+            "k_d008_reproduction": 0.01479080818808596,
+            "k_d008_structure": 1.441622736943761,
+            "k_membrane": 0.46657609197877836,
+            "k_structure_decay": 0.025
+          }
+        }
+      ]
+    },
+    "StructureProduction": {
+      "baseline_value": 1.441622736943761,
+      "parameter": "StructureProduction",
+      "scores": [
+        43.49657602918688,
+        43.539490083548934,
+        43.56827801970725
+      ],
+      "selected_factor": 0.75,
+      "selected_value": 1.0812170527078209,
+      "trials": [
+        {
+          "balance_score": 43.49657602918688,
+          "factor": 0.75,
+          "metrics": {
+            "Q_activated": 0.32905138979394116,
+            "Q_catalyst": 0.9226319489645014,
+            "Q_membrane": 0.40203091915736305,
+            "Q_structure": 0.15735280425676404,
+            "activated_retention": 0.9998752577422501,
+            "catalyst_retention": 0.999141333509848,
+            "fuel_influx": 62.14658591715131,
+            "g_activated": -7.17096851607708,
+            "g_catalyst": -0.094530692494123,
+            "g_membrane": -1.792639639390161,
+            "g_structure": -32.249504243398086,
+            "membrane_localization": 0.8922275268365136,
+            "nutrient_influx": 62.14658591715131,
+            "waste_efflux": 80.74647802752524
+          },
+          "rates": {
+            "k_d008_activated_decay": 0.005,
+            "k_d008_activation": 0.07866591100881273,
+            "k_d008_catalyst_turnover": 0.002,
+            "k_d008_reproduction": 0.011832646550468768,
+            "k_d008_structure": 1.0812170527078209,
+            "k_membrane": 0.5832201149734729,
+            "k_structure_decay": 0.025
+          }
+        },
+        {
+          "balance_score": 43.539490083548934,
+          "factor": 1.0,
+          "metrics": {
+            "Q_activated": 0.3095175778698469,
+            "Q_catalyst": 0.9080316805337758,
+            "Q_membrane": 0.3439938965363784,
+            "Q_structure": 0.1697010018560876,
+            "activated_retention": 0.9999026950626844,
+            "catalyst_retention": 0.9991391413259088,
+            "fuel_influx": 62.1819216013286,
+            "g_activated": -7.426698597603624,
+            "g_catalyst": -0.11234755409487843,
+            "g_membrane": -1.9547698253471508,
+            "g_structure": -31.776918263299365,
+            "membrane_localization": 0.8938324284735524,
+            "nutrient_influx": 62.1819216013286,
+            "waste_efflux": 80.69158843874712
+          },
+          "rates": {
+            "k_d008_activated_decay": 0.005,
+            "k_d008_activation": 0.07866591100881273,
+            "k_d008_catalyst_turnover": 0.002,
+            "k_d008_reproduction": 0.011832646550468768,
+            "k_d008_structure": 1.441622736943761,
+            "k_membrane": 0.5832201149734729,
+            "k_structure_decay": 0.025
+          }
+        },
+        {
+          "balance_score": 43.56827801970725,
+          "factor": 1.25,
+          "metrics": {
+            "Q_activated": 0.29624887879238715,
+            "Q_catalyst": 0.8967716827257085,
+            "Q_membrane": 0.3021849863538403,
+            "Q_structure": 0.17902306179352492,
+            "activated_retention": 0.9999199066487886,
+            "catalyst_retention": 0.9991376826407606,
+            "fuel_influx": 62.20523736336857,
+            "g_activated": -7.6264818190075365,
+            "g_catalyst": -0.12608343647922005,
+            "g_membrane": -2.069793788787744,
+            "g_structure": -31.42014758509821,
+            "membrane_localization": 0.8951673272570463,
+            "nutrient_influx": 62.20523736336857,
+            "waste_efflux": 80.6521751171752
+          },
+          "rates": {
+            "k_d008_activated_decay": 0.005,
+            "k_d008_activation": 0.07866591100881273,
+            "k_d008_catalyst_turnover": 0.002,
+            "k_d008_reproduction": 0.011832646550468768,
+            "k_d008_structure": 1.8020284211797013,
+            "k_membrane": 0.5832201149734729,
+            "k_structure_decay": 0.025
+          }
+        }
+      ]
+    }
+  },
+  "candidate_hash": "9a452d3470be34ccf3bdd7d1397341b64617834e77131cf2899efb327728d626",
+  "candidate_id": "cand-9a452d3470be-kphi1-ks0.030000-kr0.012000",
+  "center_balance_metrics": {
+    "Q_activated": 0.32905138979394116,
+    "Q_catalyst": 0.9226319489645014,
+    "Q_membrane": 0.40203091915736305,
+    "Q_structure": 0.15735280425676404,
+    "activated_retention": 0.99987525774225,
+    "catalyst_retention": 0.999141333509848,
+    "fuel_influx": 62.14658591715131,
+    "g_activated": -7.17096851607708,
+    "g_catalyst": -0.094530692494123,
+    "g_membrane": -1.792639639390161,
+    "g_structure": -32.249504243398086,
+    "membrane_localization": 0.8922275268365136,
+    "nutrient_influx": 62.14658591715131,
+    "waste_efflux": 80.74647802752524
+  },
+  "configuration_hash": "87ff7e6e4bd479972c3a02b0de4e6bc94a949041860b32b230e5b28863bb5ad6",
+  "diagnostic_mode": true,
+  "equation_version": "membrane_metabolism_v2_conservative",
+  "material_accounting": {
+    "boundary_exchange": 0.0,
+    "numerical_correction": 0.0,
+    "observed_change": 0.09066626096318942,
+    "relative_residual": 1.8051443667090927e-6,
+    "reservoir_input": 0.0,
+    "residual": 0.09066626096318942,
+    "total_after": 50226.598290573565,
+    "total_before": 50226.5076243126,
+    "waste_clearance": 0.0
+  },
+  "max_steps": 5000,
+  "radii": [
+    18.0,
+    22.0,
+    26.0
+  ],
+  "radius_results": [
+    {
+      "joint_overlap": false,
+      "quasi_steady": false,
+      "radius": 18.0,
+      "result": {
+        "accepted_substeps": 5000,
+        "balance_metrics": {
+          "Q_activated": 0.3011739680054276,
+          "Q_catalyst": 0.8782248356079242,
+          "Q_membrane": 0.39350733455584275,
+          "Q_structure": 0.1860131599934758,
+          "activated_retention": 0.9998549044022648,
+          "catalyst_retention": 0.999011844854064,
+          "fuel_influx": 50.4978842502204,
+          "g_activated": -5.549304418786797,
+          "g_catalyst": -0.09927457695284088,
+          "g_membrane": -1.485814895029195,
+          "g_structure": -20.92376463650005,
+          "membrane_localization": 0.8841938576204391,
+          "nutrient_influx": 50.4978842502204,
+          "waste_efflux": 65.92886886990772
+        },
+        "binary_sha256": "e433a8642138002487a3cb687413844b20f9f7e6280779f91ae39dfd9c90b275",
+        "candidate_hash": "9a452d3470be34ccf3bdd7d1397341b64617834e77131cf2899efb327728d626",
+        "candidate_id": "cand-9a452d3470be-kphi1-ks0.030000-kr0.012000",
+        "clean_termination": true,
+        "configuration_hash": "87ff7e6e4bd479972c3a02b0de4e6bc94a949041860b32b230e5b28863bb5ad6",
+        "convergence_classification": "NOT_CONVERGED",
+        "d008_stage_mode": "constrained_radius",
+        "diagnostic_mode": true,
+        "equation_version": "membrane_metabolism_v2_conservative",
+        "field_schema_version": "seven_field_v1",
+        "joint_overlap": false,
+        "max_steps": 5000,
+        "quasi_steady": {
+          "converged": false,
+          "converged_windows": 0,
+          "required_windows": 3,
+          "window_size": 1000,
+          "window_slopes": [
+            {
+              "slope_a": -4.753383353062592,
+              "slope_c": -0.08280614441732313,
+              "slope_f": 0.0028149382166968656,
+              "slope_m": -1.5148820982817528,
+              "slope_n": 0.0028149382166968656,
+              "slope_w": 0.02259025017697648,
+              "totals_within_tolerance": false
+            },
+            {
+              "slope_a": -2.585585377421324,
+              "slope_c": -0.12251273653894618,
+              "slope_f": 0.0018416856201709415,
+              "slope_m": -1.841613779748157,
+              "slope_n": 0.0018416856201709415,
+              "slope_w": 0.023364462356052666,
+              "totals_within_tolerance": false
+            },
+            {
+              "slope_a": -1.8806015997543812,
+              "slope_c": -0.14742051781065196,
+              "slope_f": 0.0012984105064016256,
+              "slope_m": -1.9364609802907329,
+              "slope_n": 0.0012984105064016256,
+              "slope_w": 0.02357630381096922,
+              "totals_within_tolerance": false
+            },
+            {
+              "slope_a": -1.5315939875749995,
+              "slope_c": -0.1664438584794301,
+              "slope_f": 0.0009649682285518356,
+              "slope_m": -1.955615249178552,
+              "slope_n": 0.0009649682285518356,
+              "slope_w": 0.023605127472178057,
+              "totals_within_tolerance": false
+            }
+          ]
+        },
+        "radius": 18.0,
+        "seed": 1,
+        "selected_rates": {
+          "k_d008_activated_decay": 0.005,
+          "k_d008_activation": 0.07866591100881273,
+          "k_d008_catalyst_turnover": 0.002,
+          "k_d008_reproduction": 0.011832646550468768,
+          "k_d008_structure": 1.0812170527078209,
+          "k_membrane": 0.5832201149734729,
+          "k_structure_decay": 0.025
+        },
+        "simulated_time": 12.499999999999655,
+        "snapshot_schema_version": 2,
+        "source_commit": "e9a0fc32a02427bcaaa184fadc661af0f673f3bc",
+        "stoichiometric_schema_version": 2,
+        "window_size": 1000
+      }
+    },
+    {
+      "joint_overlap": false,
+      "quasi_steady": false,
+      "radius": 22.0,
+      "result": {
+        "accepted_substeps": 5000,
+        "balance_metrics": {
+          "Q_activated": 0.32905138979394116,
+          "Q_catalyst": 0.9226319489645014,
+          "Q_membrane": 0.40203091915736305,
+          "Q_structure": 0.15735280425676404,
+          "activated_retention": 0.99987525774225,
+          "catalyst_retention": 0.999141333509848,
+          "fuel_influx": 62.14658591715131,
+          "g_activated": -7.17096851607708,
+          "g_catalyst": -0.094530692494123,
+          "g_membrane": -1.792639639390161,
+          "g_structure": -32.249504243398086,
+          "membrane_localization": 0.8922275268365136,
+          "nutrient_influx": 62.14658591715131,
+          "waste_efflux": 80.74647802752524
+        },
+        "binary_sha256": "e433a8642138002487a3cb687413844b20f9f7e6280779f91ae39dfd9c90b275",
+        "candidate_hash": "9a452d3470be34ccf3bdd7d1397341b64617834e77131cf2899efb327728d626",
+        "candidate_id": "cand-9a452d3470be-kphi1-ks0.030000-kr0.012000",
+        "clean_termination": true,
+        "configuration_hash": "87ff7e6e4bd479972c3a02b0de4e6bc94a949041860b32b230e5b28863bb5ad6",
+        "convergence_classification": "NOT_CONVERGED",
+        "d008_stage_mode": "constrained_radius",
+        "diagnostic_mode": true,
+        "equation_version": "membrane_metabolism_v2_conservative",
+        "field_schema_version": "seven_field_v1",
+        "joint_overlap": false,
+        "max_steps": 5000,
+        "quasi_steady": {
+          "converged": false,
+          "converged_windows": 0,
+          "required_windows": 3,
+          "window_size": 1000,
+          "window_slopes": [
+            {
+              "slope_a": -6.145230815985886,
+              "slope_c": -0.07160662585956389,
+              "slope_f": 0.0020990801183937216,
+              "slope_m": -1.8246301876413784,
+              "slope_n": 0.0020990801183937216,
+              "slope_w": 0.023533328846080115,
+              "totals_within_tolerance": false
+            },
+            {
+              "slope_a": -3.4372548497851056,
+              "slope_c": -0.1236181535689218,
+              "slope_f": 0.0013015594685795123,
+              "slope_m": -2.2347139505358573,
+              "slope_n": 0.0013015594685795123,
+              "slope_w": 0.024162085276046595,
+              "totals_within_tolerance": false
+            },
+            {
+              "slope_a": -2.5603626406003603,
+              "slope_c": -0.15718745978226445,
+              "slope_f": 0.0008592437378713613,
+              "slope_m": -2.356151838529655,
+              "slope_n": 0.0008592437378713613,
+              "slope_w": 0.024327424153269345,
+              "totals_within_tolerance": false
+            },
+            {
+              "slope_a": -2.1271915840728552,
+              "slope_c": -0.18344914937182705,
+              "slope_f": 0.0005903256522590114,
+              "slope_m": -2.382923575205629,
+              "slope_n": 0.0005903256522590114,
+              "slope_w": 0.024342381820700077,
+              "totals_within_tolerance": false
+            }
+          ]
+        },
+        "radius": 22.0,
+        "seed": 1,
+        "selected_rates": {
+          "k_d008_activated_decay": 0.005,
+          "k_d008_activation": 0.07866591100881273,
+          "k_d008_catalyst_turnover": 0.002,
+          "k_d008_reproduction": 0.011832646550468768,
+          "k_d008_structure": 1.0812170527078209,
+          "k_membrane": 0.5832201149734729,
+          "k_structure_decay": 0.025
+        },
+        "simulated_time": 12.499999999999655,
+        "snapshot_schema_version": 2,
+        "source_commit": "e9a0fc32a02427bcaaa184fadc661af0f673f3bc",
+        "stoichiometric_schema_version": 2,
+        "window_size": 1000
+      }
+    },
+    {
+      "joint_overlap": false,
+      "quasi_steady": false,
+      "radius": 26.0,
+      "result": {
+        "accepted_substeps": 5000,
+        "balance_metrics": {
+          "Q_activated": 0.3595002318657805,
+          "Q_catalyst": 0.9582731993244564,
+          "Q_membrane": 0.408518106139739,
+          "Q_structure": 0.13308713371737757,
+          "activated_retention": 0.9999068601122312,
+          "catalyst_retention": 0.9993052951955812,
+          "fuel_influx": 72.9404928488076,
+          "g_activated": -8.729668214085223,
+          "g_catalyst": -0.07103032800306368,
+          "g_membrane": -2.097401870265751,
+          "g_structure": -46.25092969988181,
+          "membrane_localization": 0.8844509530266459,
+          "nutrient_influx": 72.9404928488076,
+          "waste_efflux": 95.29059961527236
+        },
+        "binary_sha256": "e433a8642138002487a3cb687413844b20f9f7e6280779f91ae39dfd9c90b275",
+        "candidate_hash": "9a452d3470be34ccf3bdd7d1397341b64617834e77131cf2899efb327728d626",
+        "candidate_id": "cand-9a452d3470be-kphi1-ks0.030000-kr0.012000",
+        "clean_termination": true,
+        "configuration_hash": "87ff7e6e4bd479972c3a02b0de4e6bc94a949041860b32b230e5b28863bb5ad6",
+        "convergence_classification": "NOT_CONVERGED",
+        "d008_stage_mode": "constrained_radius",
+        "diagnostic_mode": true,
+        "equation_version": "membrane_metabolism_v2_conservative",
+        "field_schema_version": "seven_field_v1",
+        "joint_overlap": false,
+        "max_steps": 5000,
+        "quasi_steady": {
+          "converged": false,
+          "converged_windows": 0,
+          "required_windows": 3,
+          "window_size": 1000,
+          "window_slopes": [
+            {
+              "slope_a": -7.568644681568242,
+              "slope_c": -0.0403539563987104,
+              "slope_f": 0.0015770732015450311,
+              "slope_m": -2.1331164206565596,
+              "slope_n": 0.0015770732015450311,
+              "slope_w": 0.024229342743794468,
+              "totals_within_tolerance": false
+            },
+            {
+              "slope_a": -4.359298473936793,
+              "slope_c": -0.10538705078254852,
+              "slope_f": 0.0009177071682714764,
+              "slope_m": -2.6253240835220355,
+              "slope_n": 0.0009177071682714764,
+              "slope_w": 0.024751239903236792,
+              "totals_within_tolerance": false
+            },
+            {
+              "slope_a": -3.313032383830674,
+              "slope_c": -0.14849176228496697,
+              "slope_f": 0.0005542595302281782,
+              "slope_m": -2.7726702439076143,
+              "slope_n": 0.0005542595302281782,
+              "slope_w": 0.024885664246718283,
+              "totals_within_tolerance": false
+            },
+            {
+              "slope_a": -2.7960700166894745,
+              "slope_c": -0.18287846536944927,
+              "slope_f": 0.0003343260550772497,
+              "slope_m": -2.806698579561761,
+              "slope_n": 0.0003343260550772497,
+              "slope_w": 0.024893013581354474,
+              "totals_within_tolerance": false
+            }
+          ]
+        },
+        "radius": 26.0,
+        "seed": 1,
+        "selected_rates": {
+          "k_d008_activated_decay": 0.005,
+          "k_d008_activation": 0.07866591100881273,
+          "k_d008_catalyst_turnover": 0.002,
+          "k_d008_reproduction": 0.011832646550468768,
+          "k_d008_structure": 1.0812170527078209,
+          "k_membrane": 0.5832201149734729,
+          "k_structure_decay": 0.025
+        },
+        "simulated_time": 12.499999999999655,
+        "snapshot_schema_version": 2,
+        "source_commit": "e9a0fc32a02427bcaaa184fadc661af0f673f3bc",
+        "stoichiometric_schema_version": 2,
+        "window_size": 1000
+      }
+    }
+  ],
+  "restoring_points": [
+    {
+      "g_structure": -20.92376463650005,
+      "joint_overlap": false,
+      "quasi_steady": false,
+      "radius": 18.0
+    },
+    {
+      "g_structure": -32.249504243398086,
+      "joint_overlap": false,
+      "quasi_steady": false,
+      "radius": 22.0
+    },
+    {
+      "g_structure": -46.25092969988181,
+      "joint_overlap": false,
+      "quasi_steady": false,
+      "radius": 26.0
+    }
+  ],
+  "restoring_radius_pass": false,
+  "selected_rates": {
+    "k_d008_activated_decay": 0.005,
+    "k_d008_activation": 0.07866591100881273,
+    "k_d008_catalyst_turnover": 0.002,
+    "k_d008_reproduction": 0.011832646550468768,
+    "k_d008_structure": 1.0812170527078209,
+    "k_membrane": 0.5832201149734729,
+    "k_structure_decay": 0.025
+  },
+  "sensitivity": {
+    "condition_number": 3.3381237923465226,
+    "matrix": [
+      [
+        1.6634180474282394,
+        -0.0646986886543101,
+        -0.6543385943983814,
+        0.6986448095433766
+      ],
+      [
+        -0.0621057271081436,
+        1.09594668171297,
+        -0.017838871406666623,
+        0.043060660739974284
+      ],
+      [
+        -0.5884802373842881,
+        -0.015925270708403196,
+        0.8687278197277518,
+        0.07922180487439195
+      ],
+      [
+        -0.884106031048104,
+        -0.9740478984269012,
+        -0.3103798930683337,
+        1.3110221051868456
+      ]
+    ],
+    "rank": 4,
+    "rank_deficient": false,
+    "singular_values": [
+      2.1376145798006103,
+      1.9276009682435276,
+      0.9233007009800157,
+      0.6403640825728579
+    ]
+  },
+  "source_commit": "7281c568e4e9184e45116d106e481ffca7e3b15f",
+  "stage_c_selected_toml": "/home/sketch/Projects/digital_cell/digital-protocell/crates/experiment-runner/../../configs/d008/stage_c_selected.toml",
+  "stage_classification": "LongTransientUnresolved",
+  "stage_e_pass": false,
+  "stoichiometric_schema_version": 2,
+  "window_size": 1000
+}

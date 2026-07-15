@@ -251,6 +251,13 @@ fn screen_v2_parameter(
     parameter: D012V2CalibrationParameter,
     config: &D012StageEConfig,
 ) -> (StageEReferenceRates, Value) {
+    // Progressive screens only need relative ranking. Governed three-window /
+    // 200k quasi-steady gates remain on classification radii, not every factor trial.
+    let screen_config = if config.diagnostic {
+        config.clone()
+    } else {
+        D012StageEConfig::diagnostic()
+    };
     let baseline = *rates;
     let mut scores = [0.0; 3];
     let mut trials = Vec::new();
@@ -259,7 +266,7 @@ fn screen_v2_parameter(
         parameter.set_value(&mut trial_rates, parameter.baseline_value(&baseline) * factor);
         let mut trial_params = params.clone();
         apply_rates(&mut trial_params, &trial_rates);
-        let outcome = run_v2_assay(&trial_params, D012_V2_CENTER_RADIUS, config);
+        let outcome = run_v2_assay(&trial_params, D012_V2_CENTER_RADIUS, &screen_config);
         scores[idx] = balance_calibration_score(&outcome.metrics);
         trials.push(json!({
             "factor": factor,
@@ -428,7 +435,13 @@ pub fn run_v2_stage_e_reference(
     let mut rates = rates_from_params(&params);
 
     // Initial ledger-based estimate at center R=22.
-    let estimate_outcome = run_v2_assay(&params, D012_V2_CENTER_RADIUS, config);
+    // Rate estimation uses the diagnostic horizon; final classification stays governed.
+    let estimate_config = if config.diagnostic {
+        config.clone()
+    } else {
+        D012StageEConfig::diagnostic()
+    };
+    let estimate_outcome = run_v2_assay(&params, D012_V2_CENTER_RADIUS, &estimate_config);
     rates = estimate_rates_from_metrics(&rates, &estimate_outcome.metrics);
 
     let mut calibration_screens = Map::new();
