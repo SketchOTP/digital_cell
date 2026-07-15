@@ -311,16 +311,16 @@ fn historical_candidate_and_configuration_hashes_are_unchanged() {
     );
 }
 
-/// Frozen Stage A governed hashes from docs/d008_membrane_transport.md.
+/// Frozen Stage A governed hashes (updated D-012: stoichiometric_schema_version=1).
 const STAGE_A_CANDIDATE_HASH: &str =
-    "9b24255c7f30cf3b2f9bd71a8acb0e056bec64a9674e3a60e828f47b08bed2c0";
+    "3fda6d8177dfa0cb61d11016547fa4e66d73d7ee6e2ff21000f414def523faab";
 const STAGE_A_CONFIGURATION_HASH: &str =
-    "b34e88f08ce5d038567acb66935a458f41d68c31fc517841f7b9d0a12fe1dac1";
-/// Frozen Stage B selected governed hashes from docs/d008_membrane_localization.md.
+    "f7718235a5b1bf3d6b8018d9a839df03ca3fd812d210bf0b0fb6d75bf74e8f84";
+/// Frozen Stage B selected governed hashes (updated D-012: stoichiometric_schema_version=1).
 const STAGE_B_CANDIDATE_HASH: &str =
-    "82667856c1230a1a3ace6c11cfb23c8ded1a8ad65101d72cdc6f5346a021cce2";
+    "3c47ab95a957c696d81baa34567362c68fd1d7bf02d0da254a0e199468ceb762";
 const STAGE_B_CONFIGURATION_HASH: &str =
-    "4df48980ff97173e9c0d2068677ffd56a630782c5c5f26e371e5cf26b0ee7d1a";
+    "0a6d018728b0903d6ac34402f37a3137bdea066c30b86fe738e7ccd65f011aad";
 
 fn stage_a_reference_params() -> SimParams {
     let mut params = SimParams::default();
@@ -355,7 +355,7 @@ fn d008_hash_identifies_equation_and_field_schema_in_fixed_order() {
     assert!(bytes.ends_with(
         "equation_version=membrane_metabolism_v1;k_structure_interface=0;\
 k_c_structure=0.1;d_a=0.04;beta_c=4.6;beta_a=4.6;beta_n=1.2;beta_f=1.2;\
-beta_w=0.2;field_schema_version=seven_field_v1;snapshot_schema_version=2"
+beta_w=0.2;field_schema_version=seven_field_v1;snapshot_schema_version=2;stoichiometric_schema_version=1"
     ));
     assert!(!bytes.contains("d008_stage_mode="));
     assert!(!bytes.contains("k_d008_activation="));
