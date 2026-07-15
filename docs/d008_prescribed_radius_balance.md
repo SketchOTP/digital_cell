@@ -33,3 +33,18 @@ Stages F–G remain blocked. D-008 closure not achieved.
 ## Artifact
 
 - `digital-protocell/experiments/generated/d008/stage_e_balance/attempt_003/result.json`
+
+## D-011 follow-up (2026-07-14)
+
+Stage E failure preserved: tag `D-008-stage-e-balance-fail` at commit `2db93f6`.
+Model audit: `docs/d011_stage_e_model_audit.md` classifies Stage E as `STATIC_FIELD_BALANCE`.
+
+D-011 replays the exact `attempt_003` rates under transport-coupled constrained-radius
+dynamics (`D008StageMode::ConstrainedRadius`). See:
+
+- `docs/d011_constrained_radius_assay.md`
+- `docs/d011_candidate_report.md`
+- `experiments/generated/d011/`
+
+Stage E conclusion `D008_NO_JOINT_FIXED_POINT` stands until D-011 reports
+`PASS_AFTER_D011`; otherwise D-011 may confirm `D011_TRANSPORT_COUPLED_NO_SOLUTION`.

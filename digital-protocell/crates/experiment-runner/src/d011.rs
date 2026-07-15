@@ -14,7 +14,6 @@ use chemistry_core::{
 use serde_json::{json, Map, Value};
 use std::fs;
 use std::path::{Path, PathBuf};
-use std::process::Command;
 
 const D011_SEED: u64 = 1;
 
@@ -37,6 +36,7 @@ struct StageAReference {
 }
 
 fn git_commit_hash() -> Result<String, Box<dyn std::error::Error>> {
+    use std::process::Command;
     let output = Command::new("git")
         .args(["rev-parse", "HEAD"])
         .output()?;
@@ -47,18 +47,13 @@ fn git_commit_hash() -> Result<String, Box<dyn std::error::Error>> {
 }
 
 fn binary_hash() -> Result<String, Box<dyn std::error::Error>> {
-    let output = Command::new("sha256sum")
-        .arg(std::env::current_exe()?)
-        .output()?;
-    if !output.status.success() {
-        return Err("sha256sum failed".into());
-    }
-    let line = String::from_utf8(output.stdout)?;
-    Ok(line.split_whitespace().next().unwrap_or("").to_string())
+    let path = std::env::current_exe().map_err(|err| format!("binary_sha256 failed: {err}"))?;
+    let bytes = fs::read(&path).map_err(|err| format!("binary_sha256 failed: {err}"))?;
+    Ok(chemistry_core::sha256_hex(&bytes))
 }
 
 fn reference_toml_path() -> PathBuf {
-    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../configs/d008/stage_a_reference.toml")
+    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../configs/d008/reference.toml")
 }
 
 fn reference_params() -> Result<SimParams, Box<dyn std::error::Error>> {
@@ -386,16 +381,22 @@ pub fn compute_sensitivity(
     radius: f64,
     config: &D011RunConfig,
 ) -> SensitivityReport {
+    // ponytail: local Jacobian only needs short horizons; full replay uses config.max_steps
+    let sens_config = D011RunConfig {
+        max_steps: config.max_steps.min(5_000),
+        window_size: config.window_size.min(1_000),
+        quick: config.quick,
+    };
     let base_params = d011_params(base_rates).expect("params");
-    let base_outcome = run_constrained_assay(&base_params, radius, config);
+    let base_outcome = run_constrained_assay(&base_params, radius, &sens_config);
     let g0 = estimate_g_vector(&base_outcome);
     let mut rows = [[0.0; 7]; 4];
     for idx in 0..7 {
         let up = perturb_rates(base_rates, idx, 1.0 + chemistry_core::D011_SENSITIVITY_PERTURB);
         let down = perturb_rates(base_rates, idx, 1.0 - chemistry_core::D011_SENSITIVITY_PERTURB);
-        let up_outcome = run_constrained_assay(&d011_params(&up).expect("params"), radius, config);
+        let up_outcome = run_constrained_assay(&d011_params(&up).expect("params"), radius, &sens_config);
         let down_outcome =
-            run_constrained_assay(&d011_params(&down).expect("params"), radius, config);
+            run_constrained_assay(&d011_params(&down).expect("params"), radius, &sens_config);
         let g_up = estimate_g_vector(&up_outcome);
         let g_down = estimate_g_vector(&down_outcome);
         for row in 0..4 {
@@ -410,11 +411,11 @@ pub fn run_d011_protocol(
     root: &Path,
     config: &D011RunConfig,
 ) -> Result<Value, Box<dyn std::error::Error>> {
-    let source_commit = git_commit_hash()?;
-    let binary_sha256 = binary_hash()?;
-    let attempt = next_attempt(root, "attempt")?;
+    let source_commit = git_commit_hash().map_err(|err| format!("git_commit_hash: {err}"))?;
+    let binary_sha256 = binary_hash().map_err(|err| format!("binary_hash: {err}"))?;
+    let attempt = next_attempt(root, "attempt").map_err(|err| format!("next_attempt: {err}"))?;
     let rates = STAGE_E_FAILED_RATES;
-    let params = d011_params(&rates)?;
+    let params = d011_params(&rates).map_err(|err| format!("d011_params: {err}"))?;
     let identity = build_candidate_identity(
         params.clone(),
         &source_commit,
