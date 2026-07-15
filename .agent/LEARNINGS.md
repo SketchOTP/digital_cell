@@ -18,3 +18,4 @@ Append-only repo-specific lessons. Format:
 - 2026-07-14 | area:d008-hash | lesson:Stage A Transport omits membrane hash fields; Stage B appends them when d008_stage_b_enabled; Stage C appends rates only under ActivatedMetabolism | evidence:candidate_identity.rs
 - 2026-07-14 | area:d008-stage-c | lesson:Boundedness pass requires |C/A clamp correction| ≤ CUMULATIVE_RESIDUAL_TOL, not merely post-clamp range membership | evidence:activated_metabolism.rs,experiment-runner/d008.rs
 - 2026-07-14 | area:d008-stage-c | lesson:Stage C qualitative rates k_act=0.02 k_rep=0.04 k_adecay=0.005 k_cturn=0.002 pass nine zero-D controls | evidence:docs/d008_activated_metabolism.md
+- 2026-07-15 | area:d011 | lesson:D-011 may vary only k_structure,k_rep,k_membrane,k_activation; turnover constants stay frozen | evidence:digital-protocell/crates/chemistry-core/src/d011_analysis.rs
