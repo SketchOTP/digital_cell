@@ -1,6 +1,6 @@
 //! D-008 Stage C zero-dimensional activated metabolism.
 
-use crate::accounting::FieldStepLedger;
+use crate::accounting::{FieldStepLedger, CUMULATIVE_RESIDUAL_TOL};
 use crate::config::SimParams;
 use serde::{Deserialize, Serialize};
 
@@ -106,6 +106,12 @@ fn accumulate_field(
     *reaction += ledger.reaction_delta;
     *correction += ledger.numerical_correction_delta;
     *residual += ledger.accounting_residual.abs();
+}
+
+/// Stage C boundedness: cumulative C/A numerical correction must stay within ledger tolerance.
+pub fn stage_c_clamp_negligible(cumulative: &ActivatedMetabolismCumulativeAccounting) -> bool {
+    cumulative.catalyst_clamp_correction.abs() <= CUMULATIVE_RESIDUAL_TOL
+        && cumulative.activated_clamp_correction.abs() <= CUMULATIVE_RESIDUAL_TOL
 }
 
 /// Rates for C+N+F→C+A+W and C+A→2C+W, with unit stoichiometry.

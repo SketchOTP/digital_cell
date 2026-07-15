@@ -2,9 +2,9 @@
 
 use chemistry_core::{
     build_candidate_identity, field_sha256_stable, interface_weight, membrane_calibration,
-    membrane_candidates, membrane_partition, total_mass, CandidateIdentity, D008StageMode,
-    EquationVersion, FieldBuffers, FieldSchemaVersion, SimParams, Simulation,
-    SpeciesTransportAccounting, TransportSpecies, MEMBRANE_CANDIDATE_FACTORS,
+    membrane_candidates, membrane_partition, stage_c_clamp_negligible, total_mass,
+    CandidateIdentity, D008StageMode, EquationVersion, FieldBuffers, FieldSchemaVersion, SimParams,
+    Simulation, SpeciesTransportAccounting, TransportSpecies, MEMBRANE_CANDIDATE_FACTORS,
     SNAPSHOT_SCHEMA_VERSION,
 };
 use serde::Deserialize;
@@ -660,9 +660,14 @@ fn prepare_stage_c(sim: &mut Simulation, case_id: &str) {
         "missing_c" => sim.fields.catalyst.fill(0.0),
         "missing_n" | "no_activation_decline" => sim.fields.nutrient.fill(0.0),
         "missing_f" => sim.fields.fuel.fill(0.0),
-        "missing_a_reproduction" | "no_reproduction_decline" => {
+        "missing_a_reproduction" => {
+            // A=0 with N,F still positive; disable activation so no A can form.
             sim.fields.activated.fill(0.0);
-            sim.fields.nutrient.fill(0.0);
+            sim.params.k_d008_activation = 0.0;
+        }
+        "no_reproduction_decline" => {
+            // Keep activation inputs; disable reproduction so catalyst declines by turnover only.
+            sim.params.k_d008_reproduction = 0.0;
         }
         "bounded_reference" | "waste_positive" | "stoichiometric_closure" => {}
         _ => unreachable!("fixed Stage C case list"),
@@ -673,12 +678,18 @@ fn approx_equal(left: f64, right: f64) -> bool {
     (left - right).abs() <= 1e-8 * left.abs().max(right.abs()).max(1.0)
 }
 
+fn stage_c_structure_membrane_invariant(initial: &Value, final_hashes: &Value) -> bool {
+    initial.get("structure") == final_hashes.get("structure")
+        && initial.get("membrane") == final_hashes.get("membrane")
+}
+
 fn stage_c_case_pass(
     case_id: &str,
     sim: &Simulation,
     initial_catalyst: f64,
     initial_activated: f64,
     initial_waste: f64,
+    structure_membrane_invariant: bool,
 ) -> bool {
     let cumulative = &sim.metabolism_accounting.cumulative;
     let clean = sim.substep == STAGE_C_STEPS && sim.rejection_count == 0;
@@ -691,7 +702,8 @@ fn stage_c_case_pass(
             .fields
             .activated
             .iter()
-            .all(|&value| value.is_finite() && (0.0..=sim.params.d008_a_max).contains(&value));
+            .all(|&value| value.is_finite() && (0.0..=sim.params.d008_a_max).contains(&value))
+        && stage_c_clamp_negligible(cumulative);
     let closure = approx_equal(cumulative.nutrient_reaction_delta, -cumulative.activation)
         && approx_equal(cumulative.fuel_reaction_delta, -cumulative.activation)
         && approx_equal(
@@ -710,13 +722,22 @@ fn stage_c_case_pass(
                 + cumulative.catalyst_turnover,
         )
         && sim.accounting.cumulative_within_tolerance();
+    // Boundedness is non-tautological: every case pass requires negligible C/A clamp
+    // correction over the horizon (same tolerance as ledger residual accounting).
     clean
+        && structure_membrane_invariant
+        && stage_c_clamp_negligible(cumulative)
         && match case_id {
             "bounded_reference" => {
                 bounded && cumulative.activation > 0.0 && cumulative.reproduction > 0.0
             }
             "missing_c" | "missing_n" | "missing_f" => cumulative.activation == 0.0,
-            "missing_a_reproduction" => cumulative.reproduction == 0.0,
+            "missing_a_reproduction" => {
+                cumulative.reproduction == 0.0
+                    && cumulative.activation == 0.0
+                    && total_mass(&sim.grid, &sim.fields.nutrient) > 0.0
+                    && total_mass(&sim.grid, &sim.fields.fuel) > 0.0
+            }
             "no_activation_decline" => {
                 cumulative.activation == 0.0
                     && total_mass(&sim.grid, &sim.fields.activated) < initial_activated
@@ -729,7 +750,9 @@ fn stage_c_case_pass(
                 cumulative.waste_reaction_delta > 0.0
                     && total_mass(&sim.grid, &sim.fields.waste) > initial_waste
             }
-            "stoichiometric_closure" => closure,
+            "stoichiometric_closure" => {
+                closure && cumulative.activation > 0.0 && cumulative.reproduction > 0.0
+            }
             _ => false,
         }
 }
@@ -777,24 +800,39 @@ pub fn run_stage_c(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
         let initial_catalyst = total_mass(&sim.grid, &sim.fields.catalyst);
         let initial_activated = total_mass(&sim.grid, &sim.fields.activated);
         let initial_waste = total_mass(&sim.grid, &sim.fields.waste);
+        let initial_nutrient = total_mass(&sim.grid, &sim.fields.nutrient);
+        let initial_fuel = total_mass(&sim.grid, &sim.fields.fuel);
         for _ in 0..STAGE_C_STEPS {
             if !sim.step() {
                 break;
             }
         }
+        let final_hashes = seven_field_hashes(&sim.fields);
+        let structure_membrane_invariant =
+            stage_c_structure_membrane_invariant(&initial_hashes, &final_hashes);
+        let fixed_field_hashes = json!({
+            "initial": {
+                "structure": initial_hashes["structure"].clone(),
+                "membrane": initial_hashes["membrane"].clone(),
+            },
+            "final": {
+                "structure": final_hashes["structure"].clone(),
+                "membrane": final_hashes["membrane"].clone(),
+            },
+        });
         let pass = stage_c_case_pass(
             case_id,
             &sim,
             initial_catalyst,
             initial_activated,
             initial_waste,
+            structure_membrane_invariant,
         );
         let clean = sim.substep == STAGE_C_STEPS && sim.rejection_count == 0;
         stage_pass &= pass;
         clean_termination &= clean;
         aggregate_accepted_substeps += sim.substep;
         aggregate_simulated_time += sim.sim_time;
-        let final_hashes = seven_field_hashes(&sim.fields);
         if case_id == "bounded_reference" {
             reference_hashes = final_hashes.clone();
             reference_substeps = sim.substep;
@@ -804,6 +842,7 @@ pub fn run_stage_c(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
             "case_id": case_id,
             "initial_field_hashes": initial_hashes,
             "field_hashes": final_hashes,
+            "fixed_field_hashes": fixed_field_hashes,
             "accepted_substeps": sim.substep,
             "simulated_time": sim.sim_time,
             "rejection_count": sim.rejection_count,
@@ -811,15 +850,20 @@ pub fn run_stage_c(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
                 "catalyst": initial_catalyst,
                 "activated": initial_activated,
                 "waste": initial_waste,
+                "nutrient": initial_nutrient,
+                "fuel": initial_fuel,
             },
             "final_masses": {
                 "catalyst": total_mass(&sim.grid, &sim.fields.catalyst),
                 "activated": total_mass(&sim.grid, &sim.fields.activated),
                 "waste": total_mass(&sim.grid, &sim.fields.waste),
+                "nutrient": total_mass(&sim.grid, &sim.fields.nutrient),
+                "fuel": total_mass(&sim.grid, &sim.fields.fuel),
             },
             "metabolism_accounting": sim.metabolism_accounting,
             "field_accounting": sim.accounting,
             "clean_termination": clean,
+            "structure_membrane_invariant": structure_membrane_invariant,
             "result": if pass { "pass" } else { "fail" },
         }));
     }
@@ -1268,7 +1312,22 @@ mod tests {
         assert_eq!(on_disk["controls"].as_array().map(Vec::len), Some(9));
         assert_eq!(
             on_disk["stage_classification"],
-            json!("D008_STAGE_C_METABOLISM_PASS")
+            json!("D008_STAGE_C_METABOLISM_PASS"),
+            "controls: {:?}",
+            on_disk["controls"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .map(|c| (
+                    c["case_id"].as_str().unwrap_or("?"),
+                    c["result"].as_str().unwrap_or("?"),
+                    c["metabolism_accounting"]["cumulative"]["catalyst_clamp_correction"]
+                        .as_f64(),
+                    c["metabolism_accounting"]["cumulative"]["activated_clamp_correction"]
+                        .as_f64(),
+                    c["structure_membrane_invariant"].as_bool(),
+                ))
+                .collect::<Vec<_>>()
         );
         assert!(on_disk["clean_termination"].as_bool().unwrap());
         assert_eq!(on_disk["candidate_hash"], result["candidate_hash"]);
@@ -1277,10 +1336,148 @@ mod tests {
             assert!(control["accepted_substeps"].as_u64().unwrap() > 0);
             assert!(control["simulated_time"].as_f64().unwrap() > 0.0);
             assert_eq!(control["field_hashes"].as_object().map(Map::len), Some(7));
+            assert!(
+                control["structure_membrane_invariant"].as_bool().unwrap(),
+                "structure/membrane must be invariant: {}",
+                control["case_id"]
+            );
+            assert_eq!(
+                control["fixed_field_hashes"]["initial"]["structure"],
+                control["fixed_field_hashes"]["final"]["structure"],
+                "structure hash drift: {}",
+                control["case_id"]
+            );
+            assert_eq!(
+                control["fixed_field_hashes"]["initial"]["membrane"],
+                control["fixed_field_hashes"]["final"]["membrane"],
+                "membrane hash drift: {}",
+                control["case_id"]
+            );
+            let cum = &control["metabolism_accounting"]["cumulative"];
+            assert!(
+                cum["catalyst_clamp_correction"].as_f64().unwrap().abs()
+                    <= chemistry_core::CUMULATIVE_RESIDUAL_TOL,
+                "persistent catalyst clamp: {}",
+                control["case_id"]
+            );
+            assert!(
+                cum["activated_clamp_correction"].as_f64().unwrap().abs()
+                    <= chemistry_core::CUMULATIVE_RESIDUAL_TOL,
+                "persistent activated clamp: {}",
+                control["case_id"]
+            );
         }
+        let missing_a = on_disk["controls"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|c| c["case_id"] == "missing_a_reproduction")
+            .expect("missing_a_reproduction control");
+        assert!(missing_a["initial_masses"]["nutrient"].as_f64().unwrap() > 0.0);
+        assert!(missing_a["initial_masses"]["fuel"].as_f64().unwrap() > 0.0);
+        assert_eq!(
+            missing_a["initial_masses"]["activated"].as_f64().unwrap(),
+            0.0
+        );
+        assert_eq!(
+            missing_a["metabolism_accounting"]["cumulative"]["reproduction"]
+                .as_f64()
+                .unwrap(),
+            0.0
+        );
+        assert_eq!(
+            missing_a["metabolism_accounting"]["cumulative"]["activation"]
+                .as_f64()
+                .unwrap(),
+            0.0
+        );
 
         let err = run_stage_c(&output).expect_err("immutable rerun refusal");
         assert!(err.to_string().contains("refusing to overwrite"));
         fs::remove_dir_all(&output).expect("cleanup temp stage-c artifact");
     }
+
+    #[test]
+    fn stage_c_boundedness_rejects_persistent_clamp() {
+        let mut params = reference_params().expect("reference");
+        params.d008_stage_mode = D008StageMode::ActivatedMetabolism;
+        params.d008_stage_b_enabled = false;
+        params.diffusion_enabled = false;
+        params.phase_separation_enabled = false;
+        params.k_d008_reproduction = 10_000.0;
+        let mut sim = Simulation::new(params);
+        prepare_stage_c(&mut sim, "bounded_reference");
+        for idx in 0..sim.fields.catalyst.len() {
+            if sim.grid.in_dish(idx) {
+                sim.fields.catalyst[idx] = 0.95;
+                sim.fields.activated[idx] = 0.10;
+            }
+        }
+        let initial_hashes = seven_field_hashes(&sim.fields);
+        let initial_catalyst = total_mass(&sim.grid, &sim.fields.catalyst);
+        let initial_activated = total_mass(&sim.grid, &sim.fields.activated);
+        let initial_waste = total_mass(&sim.grid, &sim.fields.waste);
+        for _ in 0..STAGE_C_STEPS {
+            assert!(sim.step());
+        }
+        let final_hashes = seven_field_hashes(&sim.fields);
+        let invariant = stage_c_structure_membrane_invariant(&initial_hashes, &final_hashes);
+        assert!(
+            !stage_c_clamp_negligible(&sim.metabolism_accounting.cumulative),
+            "fixture must be clamp-heavy; catalyst_corr={} activated_corr={}",
+            sim.metabolism_accounting
+                .cumulative
+                .catalyst_clamp_correction,
+            sim.metabolism_accounting
+                .cumulative
+                .activated_clamp_correction
+        );
+        assert!(
+            !stage_c_case_pass(
+                "bounded_reference",
+                &sim,
+                initial_catalyst,
+                initial_activated,
+                initial_waste,
+                invariant,
+            ),
+            "clamp-heavy horizon must fail boundedness/pass"
+        );
+    }
+
+    #[test]
+    fn stage_c_missing_a_keeps_nutrient_and_fuel_positive() {
+        let mut params = reference_params().expect("reference");
+        params.d008_stage_mode = D008StageMode::ActivatedMetabolism;
+        params.d008_stage_b_enabled = false;
+        params.diffusion_enabled = false;
+        params.phase_separation_enabled = false;
+        let mut sim = Simulation::new(params);
+        prepare_stage_c(&mut sim, "missing_a_reproduction");
+        assert_eq!(sim.params.k_d008_activation, 0.0);
+        assert!(total_mass(&sim.grid, &sim.fields.nutrient) > 0.0);
+        assert!(total_mass(&sim.grid, &sim.fields.fuel) > 0.0);
+        assert_eq!(total_mass(&sim.grid, &sim.fields.activated), 0.0);
+        let initial_hashes = seven_field_hashes(&sim.fields);
+        let initial_catalyst = total_mass(&sim.grid, &sim.fields.catalyst);
+        let initial_activated = total_mass(&sim.grid, &sim.fields.activated);
+        let initial_waste = total_mass(&sim.grid, &sim.fields.waste);
+        for _ in 0..STAGE_C_STEPS {
+            assert!(sim.step());
+        }
+        assert_eq!(sim.metabolism_accounting.cumulative.reproduction, 0.0);
+        assert_eq!(sim.metabolism_accounting.cumulative.activation, 0.0);
+        let final_hashes = seven_field_hashes(&sim.fields);
+        let invariant = stage_c_structure_membrane_invariant(&initial_hashes, &final_hashes);
+        assert!(stage_c_case_pass(
+            "missing_a_reproduction",
+            &sim,
+            initial_catalyst,
+            initial_activated,
+            initial_waste,
+            invariant,
+        ));
+    }
 }
+
+

@@ -311,22 +311,93 @@ fn historical_candidate_and_configuration_hashes_are_unchanged() {
     );
 }
 
+/// Frozen Stage A governed hashes from docs/d008_membrane_transport.md.
+const STAGE_A_CANDIDATE_HASH: &str =
+    "9b24255c7f30cf3b2f9bd71a8acb0e056bec64a9674e3a60e828f47b08bed2c0";
+const STAGE_A_CONFIGURATION_HASH: &str =
+    "b34e88f08ce5d038567acb66935a458f41d68c31fc517841f7b9d0a12fe1dac1";
+/// Frozen Stage B selected governed hashes from docs/d008_membrane_localization.md.
+const STAGE_B_CANDIDATE_HASH: &str =
+    "82667856c1230a1a3ace6c11cfb23c8ded1a8ad65101d72cdc6f5346a021cce2";
+const STAGE_B_CONFIGURATION_HASH: &str =
+    "4df48980ff97173e9c0d2068677ffd56a630782c5c5f26e371e5cf26b0ee7d1a";
+
+fn stage_a_reference_params() -> SimParams {
+    let mut params = SimParams::default();
+    params.equation_version = EquationVersion::MembraneMetabolismV1;
+    params.d_a = 0.040;
+    params.beta_c = 4.6;
+    params.beta_a = 4.6;
+    params.beta_n = 1.2;
+    params.beta_f = 1.2;
+    params.beta_w = 0.2;
+    params.m_max = 1.0;
+    params.d_m = 0.001;
+    params.k_membrane_decay = 0.002;
+    params.k_membrane_detach = 0.020;
+    params.k_c_membrane = 0.10;
+    params.k_membrane = 0.0;
+    params.reactions_enabled = false;
+    params.phase_separation_enabled = false;
+    params
+}
+
+fn stage_b_selected_params() -> SimParams {
+    let mut params = stage_a_reference_params();
+    params.d008_stage_b_enabled = true;
+    params.k_membrane = 0.19748231883326484;
+    params
+}
+
 #[test]
 fn d008_hash_identifies_equation_and_field_schema_in_fixed_order() {
     let bytes = String::from_utf8(canonical_params_bytes(&d008_params())).unwrap();
     assert!(bytes.ends_with(
         "equation_version=membrane_metabolism_v1;k_structure_interface=0;\
 k_c_structure=0.1;d_a=0.04;beta_c=4.6;beta_a=4.6;beta_n=1.2;beta_f=1.2;\
-beta_w=0.2;m_max=1;d_m=0.001;k_membrane_decay=0.002;k_membrane_detach=0.02;\
-k_c_membrane=0.1;k_membrane=0;d008_stage_b_enabled=false;d008_stage_mode=transport;\
-k_d008_activation=0.02;k_d008_reproduction=0.04;k_d008_activated_decay=0.005;\
-k_d008_catalyst_turnover=0.002;d008_a_max=1;d008_c_max=1;\
-field_schema_version=seven_field_v1;snapshot_schema_version=2"
+beta_w=0.2;field_schema_version=seven_field_v1;snapshot_schema_version=2"
     ));
+    assert!(!bytes.contains("d008_stage_mode="));
+    assert!(!bytes.contains("k_d008_activation="));
+    assert!(!bytes.contains("d008_stage_b_enabled="));
+    assert!(!bytes.contains("m_max="));
     assert_eq!(
         candidate_hash(&d008_params(), &GridConfiguration::default()),
         candidate_hash(&d008_params(), &GridConfiguration::default())
     );
+}
+
+#[test]
+fn frozen_stage_a_and_stage_b_hashes_remain_unchanged() {
+    let grid = GridConfiguration::default();
+    let stage_a = stage_a_reference_params();
+    assert_eq!(candidate_hash(&stage_a, &grid), STAGE_A_CANDIDATE_HASH);
+    assert_eq!(configuration_hash(&stage_a, &grid), STAGE_A_CONFIGURATION_HASH);
+
+    let stage_b = stage_b_selected_params();
+    assert_eq!(candidate_hash(&stage_b, &grid), STAGE_B_CANDIDATE_HASH);
+    assert_eq!(configuration_hash(&stage_b, &grid), STAGE_B_CONFIGURATION_HASH);
+}
+
+#[test]
+fn stage_c_hashes_include_stage_c_params_and_change_with_rates() {
+    let grid = GridConfiguration::default();
+    let base = stage_c_params();
+    let bytes = String::from_utf8(canonical_params_bytes(&base)).unwrap();
+    assert!(bytes.contains("d008_stage_mode=activated_metabolism"));
+    assert!(bytes.contains("k_d008_activation=0.02"));
+    let base_hash = candidate_hash(&base, &grid);
+    assert_ne!(base_hash, candidate_hash(&stage_a_reference_params(), &grid));
+
+    let mut changed = base.clone();
+    changed.k_d008_activation = 0.021;
+    assert_ne!(candidate_hash(&changed, &grid), base_hash);
+    changed = base.clone();
+    changed.k_d008_reproduction = 0.041;
+    assert_ne!(candidate_hash(&changed, &grid), base_hash);
+    changed = base.clone();
+    changed.d008_a_max = 0.99;
+    assert_ne!(candidate_hash(&changed, &grid), base_hash);
 }
 
 #[test]
@@ -1182,5 +1253,38 @@ fn stage_c_bounds_clamp_with_closed_ledgers_and_rejection_is_atomic() {
     assert_eq!(
         sim.metabolism_accounting.cumulative.activation,
         accounting.cumulative.activation
+    );
+}
+
+#[test]
+fn stage_c_clamp_heavy_horizon_exceeds_cumulative_tolerance() {
+    let mut params = stage_c_params();
+    params.k_d008_reproduction = 10_000.0;
+    let mut sim = Simulation::new(params);
+    sim.observer_enabled = false;
+    for idx in 0..sim.fields.catalyst.len() {
+        if sim.grid.in_dish(idx) {
+            sim.fields.catalyst[idx] = 0.95;
+            sim.fields.activated[idx] = 0.10;
+            sim.fields.nutrient[idx] = 0.8;
+            sim.fields.fuel[idx] = 0.7;
+        }
+    }
+    for _ in 0..100 {
+        assert!(sim.step());
+    }
+    let cumulative = &sim.metabolism_accounting.cumulative;
+    assert!(
+        !stage_c_clamp_negligible(cumulative),
+        "clamp-heavy horizon must exceed CUMULATIVE_RESIDUAL_TOL; catalyst_corr={} activated_corr={}",
+        cumulative.catalyst_clamp_correction,
+        cumulative.activated_clamp_correction
+    );
+    assert!(
+        sim.fields
+            .catalyst
+            .iter()
+            .all(|&value| (0.0..=sim.params.d008_c_max).contains(&value)),
+        "values remain in bounds after clamp — boundedness must not be tautological"
     );
 }

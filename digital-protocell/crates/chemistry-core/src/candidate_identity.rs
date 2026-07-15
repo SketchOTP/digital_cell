@@ -1,7 +1,8 @@
 //! Immutable candidate identity and canonical hashing (D-004).
 
 use crate::config::{
-    EquationVersion, SimParams, DISH_RADIUS, DX, GRID_HEIGHT, GRID_WIDTH, RESERVOIR_WIDTH,
+    D008StageMode, EquationVersion, SimParams, DISH_RADIUS, DX, GRID_HEIGHT, GRID_WIDTH,
+    RESERVOIR_WIDTH,
 };
 use serde::{Deserialize, Serialize};
 
@@ -135,33 +136,46 @@ reactions_enabled={};phase_separation_enabled={};diffusion_enabled={};k_phi={};u
     match params.equation_version {
         EquationVersion::MembraneMetabolismV1 => {
             s.push_str(&format!(
-                ";d_a={};beta_c={};beta_a={};beta_n={};beta_f={};beta_w={};\
-m_max={};d_m={};k_membrane_decay={};k_membrane_detach={};k_c_membrane={};\
-k_membrane={};d008_stage_b_enabled={};d008_stage_mode={};\
-k_d008_activation={};k_d008_reproduction={};k_d008_activated_decay={};\
-k_d008_catalyst_turnover={};d008_a_max={};d008_c_max={};\
-field_schema_version=seven_field_v1;snapshot_schema_version=2",
+                ";d_a={};beta_c={};beta_a={};beta_n={};beta_f={};beta_w={}",
                 params.d_a,
                 params.beta_c,
                 params.beta_a,
                 params.beta_n,
                 params.beta_f,
                 params.beta_w,
-                params.m_max,
-                params.d_m,
-                params.k_membrane_decay,
-                params.k_membrane_detach,
-                params.k_c_membrane,
-                params.k_membrane,
-                params.d008_stage_b_enabled,
-                params.d008_stage_mode,
-                params.k_d008_activation,
-                params.k_d008_reproduction,
-                params.k_d008_activated_decay,
-                params.k_d008_catalyst_turnover,
-                params.d008_a_max,
-                params.d008_c_max
             ));
+            // Stage A Transport hashed only betas. Stage B MembraneDynamics appended
+            // membrane rates when Stage B is enabled; Stage C keeps that payload and
+            // appends activation rates only under ActivatedMetabolism.
+            let include_membrane_dynamics = params.d008_stage_b_enabled
+                || params.d008_stage_mode == D008StageMode::ActivatedMetabolism;
+            if include_membrane_dynamics {
+                s.push_str(&format!(
+                    ";m_max={};d_m={};k_membrane_decay={};k_membrane_detach={};k_c_membrane={};\
+k_membrane={};d008_stage_b_enabled={}",
+                    params.m_max,
+                    params.d_m,
+                    params.k_membrane_decay,
+                    params.k_membrane_detach,
+                    params.k_c_membrane,
+                    params.k_membrane,
+                    params.d008_stage_b_enabled,
+                ));
+            }
+            if params.d008_stage_mode == D008StageMode::ActivatedMetabolism {
+                s.push_str(&format!(
+                    ";d008_stage_mode={};k_d008_activation={};k_d008_reproduction={};\
+k_d008_activated_decay={};k_d008_catalyst_turnover={};d008_a_max={};d008_c_max={}",
+                    params.d008_stage_mode,
+                    params.k_d008_activation,
+                    params.k_d008_reproduction,
+                    params.k_d008_activated_decay,
+                    params.k_d008_catalyst_turnover,
+                    params.d008_a_max,
+                    params.d008_c_max
+                ));
+            }
+            s.push_str(";field_schema_version=seven_field_v1;snapshot_schema_version=2");
         }
         EquationVersion::D001BulkV1
         | EquationVersion::D003CrowdingV1

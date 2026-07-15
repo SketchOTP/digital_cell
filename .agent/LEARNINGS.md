@@ -15,3 +15,5 @@ Append-only repo-specific lessons. Format:
 - 2026-07-14 | area:d008-stage0 | lesson:Versioned restores validate equation, schema, and field lengths before copying; legacy five-field hashes remain frozen | evidence:digital-protocell/crates/chemistry-core/src/snapshot.rs
 - 2026-07-14 | area:d008-transport | lesson:Approved beta 4.6/1.2/0.2 yields C/A 0.0101, N/F 0.3012, W 0.8187 planar permeability | evidence:docs/d008_membrane_transport.md
 - 2026-07-14 | area:d008-membrane | lesson:Calibrated k_membrane 0.1974823 keeps post-transient localization above 0.900 across initial M levels 0.25–0.75 | evidence:docs/d008_membrane_localization.md
+- 2026-07-14 | area:d008-hash | lesson:Stage A Transport omits membrane hash fields; Stage B appends them when d008_stage_b_enabled; Stage C appends rates only under ActivatedMetabolism | evidence:candidate_identity.rs
+- 2026-07-14 | area:d008-stage-c | lesson:Boundedness pass requires |C/A clamp correction| ≤ CUMULATIVE_RESIDUAL_TOL, not merely post-clamp range membership | evidence:activated_metabolism.rs,experiment-runner/d008.rs
