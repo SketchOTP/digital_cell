@@ -15,11 +15,12 @@ Nine governed reaction columns (reservoir, clearance, diffusion, membrane transp
 
 | Property | Value |
 | --- | --- |
-| Matrix rank | 7 |
-| Left nullspace dimension | 0 |
+| Matrix rank | 6 |
+| Left nullspace dimension | 1 |
 | Strictly positive conservation vectors | none |
+| Nonnegative conservation vectors | none |
 
-No strictly positive material-equivalent vector `m` satisfies `mᵀS = 0` for the actual v1 runtime stoichiometry.
+Exact analysis yields a one-dimensional left nullspace, but the basis vector is not nonnegative. No strictly positive material-equivalent vector `m` satisfies `mᵀS = 0` for the actual v1 runtime stoichiometry. Classification remains `NO_POSITIVE_CONSERVATION_VECTOR`; Stage F advancement with v1 is blocked under `D012_NONCONSERVATIVE_V1_CONFIRMED`.
 
 ## Governed reaction columns (v1 runtime encoding)
 

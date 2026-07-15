@@ -48,6 +48,21 @@ Supplementary longer replay: `attempt_015` ran 50k-step constrained-radius refer
 Preservation Manifest: `experiments/generated/d012/preservation/manifest.json`  
 Tag: `D-011-long-horizon-incomplete`
 
+## D-012 stoichiometric supersession
+
+Exact v1 audit (`docs/d012_v1_stoichiometric_audit.md`, tag `D-012-stoichiometric-audit`)
+classified `membrane_metabolism_v1` as `NO_POSITIVE_CONSERVATION_VECTOR` with primary
+finding `D012_NONCONSERVATIVE_V1_CONFIRMED`.
+
+Operative D-011 status is therefore revised from incomplete confirmation to:
+
+```text
+D011_LONG_HORIZON_INCOMPLETE_SUPERSEDED_BY_INVALID_STOICHIOMETRY
+```
+
+Quick and 50k evidence remain historical. Exhaustive corrected 200k D-011 rate-domain
+search is not executed for this invalid network.
+
 ## Replay grid (seed=1, max_steps=50000, window=1000)
 
 | R | Classification | joint_overlap | g_structure | g_catalyst | g_membrane | g_activated |
