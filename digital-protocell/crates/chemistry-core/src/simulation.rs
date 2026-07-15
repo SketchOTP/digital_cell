@@ -63,6 +63,10 @@ pub struct Simulation {
     pub dt: f64,
     pub min_dt_seen: f64,
     pub rejection_count: u64,
+    /// Accept-or-reject adaptive attempts (not biological time).
+    pub attempted_substeps: u64,
+    pub max_consecutive_rejections: u64,
+    pub min_attempted_dt: f64,
     pub history: Vec<DiagnosticsSnapshot>,
     pub interventions_applied: Vec<(u64, String)>,
     pub observer_enabled: bool,
@@ -98,6 +102,9 @@ impl Simulation {
             dt: MAX_DT,
             min_dt_seen: MAX_DT,
             rejection_count: 0,
+            attempted_substeps: 0,
+            max_consecutive_rejections: 0,
+            min_attempted_dt: MAX_DT,
             history: Vec::new(),
             interventions_applied: Vec::new(),
             observer_enabled: true,
@@ -154,6 +161,7 @@ impl Simulation {
         let mut attempt_dt = self.dt;
         let max_attempts = 20;
         let dt_before_attempt = attempt_dt;
+        let mut consecutive_rejections = 0u64;
 
         for _ in 0..max_attempts {
             let result = match self.params.equation_version {
@@ -179,6 +187,8 @@ impl Simulation {
                     }
                 }
             };
+            self.attempted_substeps += 1;
+            self.min_attempted_dt = self.min_attempted_dt.min(attempt_dt);
             match result {
                 SubstepResult::Ok => {
                     self.dt_telemetry.record_accept(attempt_dt);
@@ -191,6 +201,10 @@ impl Simulation {
                     return true;
                 }
                 SubstepResult::Reject => {
+                    consecutive_rejections += 1;
+                    self.max_consecutive_rejections = self
+                        .max_consecutive_rejections
+                        .max(consecutive_rejections);
                     self.rejection_count += 1;
                     self.accounting.cumulative.rejected_steps += 1;
                     self.dt_telemetry.record_reduction();

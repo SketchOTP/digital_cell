@@ -12,7 +12,7 @@ pub const ACTIVATION_POTENTIAL_REL_TOL: f64 = 1e-6;
 pub const E_FUEL: f64 = 1.0;
 pub const E_ACTIVATED: f64 = 1.0;
 
-#[derive(Debug, Clone, Copy, Default, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Default, Serialize, Deserialize, PartialEq)]
 pub struct MaterialEquivalentStep {
     pub total_before: f64,
     pub total_after: f64,
@@ -25,7 +25,7 @@ pub struct MaterialEquivalentStep {
     pub relative_residual: f64,
 }
 
-#[derive(Debug, Clone, Copy, Default, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Default, Serialize, Deserialize, PartialEq)]
 pub struct ActivationPotentialStep {
     pub potential_before: f64,
     pub potential_after: f64,

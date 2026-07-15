@@ -130,7 +130,7 @@ pub struct QuasiSteadyReport {
     pub window_slopes: Vec<WindowSlopes>,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct WindowSlopes {
     pub slope_c: f64,
     pub slope_a: f64,

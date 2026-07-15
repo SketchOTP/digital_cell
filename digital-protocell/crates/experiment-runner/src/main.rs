@@ -9,6 +9,7 @@ mod d008;
 mod d011;
 mod d012;
 mod d012_stage_e;
+mod d013;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -91,6 +92,10 @@ enum Commands {
     D012 {
         #[command(subcommand)]
         action: D012Commands,
+    },
+    D013 {
+        #[command(subcommand)]
+        action: D013Commands,
     },
 }
 
@@ -356,6 +361,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D008 { action } => run_d008(action)?,
         Commands::D011 { action } => run_d011(action)?,
         Commands::D012 { action } => run_d012(action)?,
+        Commands::D013 { action } => run_d013(action)?,
     }
     Ok(())
 }
@@ -791,6 +797,102 @@ fn run_d012(action: D012Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-012 Stage E robust: restoring={} rate_robust={} -> {}",
                 result["restoring_radius_pass"],
                 result["rate_robust_overlap"],
+                output.display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D013Commands {
+    /// Deterministic Stage E harness preflight (R=22, 25k accepted).
+    Preflight {
+        #[arg(long, default_value = "experiments/generated/d013/preflight")]
+        output: PathBuf,
+    },
+    /// Governed center reference (R=22, up to 200k accepted).
+    ReferenceR22 {
+        #[arg(long, default_value = "experiments/generated/d013/reference_r22")]
+        output: PathBuf,
+        #[arg(long, default_value = "200000")]
+        max_steps: u64,
+    },
+    /// Neighbor reference R=18 (only after valid converged R22).
+    ReferenceR18 {
+        #[arg(long, default_value = "experiments/generated/d013/reference_r18")]
+        output: PathBuf,
+        #[arg(long, default_value = "200000")]
+        max_steps: u64,
+    },
+    /// Neighbor reference R=26 (only after valid converged R22).
+    ReferenceR26 {
+        #[arg(long, default_value = "experiments/generated/d013/reference_r26")]
+        output: PathBuf,
+        #[arg(long, default_value = "200000")]
+        max_steps: u64,
+    },
+    /// Full D-013 pipeline: preflight then progressive reference.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d013")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d013_artifact_path(path: PathBuf) -> PathBuf {
+    if path.is_absolute() {
+        return path;
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..").join(path)
+}
+
+fn run_d013(action: D013Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D013Commands::Preflight { output } => {
+            let output = resolve_d013_artifact_path(output);
+            let result = d013::run_preflight(&output)?;
+            println!(
+                "D-013 preflight: pass={} -> {}",
+                result["preflight_pass"],
+                output.display()
+            );
+        }
+        D013Commands::ReferenceR22 { output, max_steps } => {
+            let output = resolve_d013_artifact_path(output);
+            let result = d013::run_reference_radius(&output, 22.0, max_steps)?;
+            println!(
+                "D-013 R22: {:?} {:?} -> {}",
+                result["termination_reason"],
+                result["scientific_classification"],
+                output.display()
+            );
+        }
+        D013Commands::ReferenceR18 { output, max_steps } => {
+            let output = resolve_d013_artifact_path(output);
+            let result = d013::run_reference_radius(&output, 18.0, max_steps)?;
+            println!(
+                "D-013 R18: {:?} {:?} -> {}",
+                result["termination_reason"],
+                result["scientific_classification"],
+                output.display()
+            );
+        }
+        D013Commands::ReferenceR26 { output, max_steps } => {
+            let output = resolve_d013_artifact_path(output);
+            let result = d013::run_reference_radius(&output, 26.0, max_steps)?;
+            println!(
+                "D-013 R26: {:?} {:?} -> {}",
+                result["termination_reason"],
+                result["scientific_classification"],
+                output.display()
+            );
+        }
+        D013Commands::Pipeline { output } => {
+            let output = resolve_d013_artifact_path(output);
+            let result = d013::run_d013_pipeline(&output)?;
+            println!(
+                "D-013 pipeline: {} -> {}",
+                result["d013_conclusion"],
                 output.display()
             );
         }

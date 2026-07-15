@@ -221,21 +221,38 @@ pub fn run_constrained_assay(
     prepare_constrained_seed(&mut sim, radius);
     let window_size = config.window_size.max(1);
     let mut windows = Vec::new();
-    let mut start_step = 0;
+    let mut start_step = 0u64;
     let mut start_time = 0.0;
-    let mut steps_done = 0u64;
-    while steps_done < config.max_steps {
-        let chunk = window_size.min(config.max_steps - steps_done);
-        for _ in 0..chunk {
-            if !sim.step() {
+    let mut accepted_in_window = 0u64;
+    let mut terminated_early = false;
+    while sim.substep < config.max_steps {
+        let before_substep = sim.substep;
+        let before_time = sim.sim_time;
+        if !sim.step() {
+            // Timestep floor / numerical stall — do not fabricate zero-motion windows.
+            terminated_early = true;
+            break;
+        }
+        // Rejected adaptive attempts never reach here; only accepted substeps advance.
+        debug_assert!(sim.substep == before_substep + 1);
+        debug_assert!(sim.sim_time > before_time || before_substep == 0);
+        let _ = (before_substep, before_time);
+        accepted_in_window += 1;
+        if accepted_in_window >= window_size {
+            windows.push(window_snapshot(&sim, start_step, start_time));
+            start_step = sim.substep;
+            start_time = sim.sim_time;
+            accepted_in_window = 0;
+        }
+        // Early stop on three consecutive qualifying windows (governed early convergence).
+        if windows.len() >= 3 {
+            let quasi_probe = quasi_steady_report(&windows, window_size, 3);
+            if quasi_probe.converged {
                 break;
             }
         }
-        steps_done += chunk;
-        windows.push(window_snapshot(&sim, start_step, start_time));
-        start_step = sim.substep;
-        start_time = sim.sim_time;
     }
+    // Partial trailing window is not admitted as evidence.
     let quasi = quasi_steady_report(&windows, window_size, 3);
     let partition =
         membrane_partition(&sim.grid, &sim.fields.structure, &sim.fields.membrane);
@@ -249,20 +266,24 @@ pub fn run_constrained_assay(
         retention(&sim, &sim.fields.activated),
         partition.localization_fraction,
     );
-    let classification = classify_convergence(
-        &quasi,
-        &metrics,
-        total_mass(&sim.grid, &sim.fields.catalyst),
-        total_mass(&sim.grid, &sim.fields.activated),
-        total_mass(&sim.grid, &sim.fields.membrane),
-        interior_mean(&sim, &sim.fields.nutrient),
-        interior_mean(&sim, &sim.fields.fuel),
-        soluble_max(&sim),
-        sim.accounting.cumulative_within_tolerance(),
-        sim.rejection_count as f64 / sim.substep.max(1) as f64,
-    );
-    let clean_termination =
-        sim.substep == config.max_steps && sim.rejection_count == 0;
+    let classification = if terminated_early {
+        ConvergenceClassification::NumericalFailure
+    } else {
+        classify_convergence(
+            &quasi,
+            &metrics,
+            total_mass(&sim.grid, &sim.fields.catalyst),
+            total_mass(&sim.grid, &sim.fields.activated),
+            total_mass(&sim.grid, &sim.fields.membrane),
+            interior_mean(&sim, &sim.fields.nutrient),
+            interior_mean(&sim, &sim.fields.fuel),
+            soluble_max(&sim),
+            sim.accounting.cumulative_within_tolerance(),
+            sim.rejection_count as f64 / sim.attempted_substeps.max(1) as f64,
+        )
+    };
+    let clean_termination = !terminated_early
+        && (quasi.converged || sim.substep >= config.max_steps);
     D011RunOutcome {
         metrics,
         quasi_steady: quasi,
