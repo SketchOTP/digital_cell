@@ -33,8 +33,22 @@ Each `result.json` includes:
 - `field_accounting`, `constraint_ledger`, `convergence_classification`
 - `source_commit`, `binary_sha256`, candidate hashes
 
-## Report status
+## Report status (governed run `attempt_005`)
 
-See latest `experiments/generated/d011/attempt_*/result.json` for governed metrics
-and `scientific_conclusion`. This document template is filled from that artifact after
-each governed run.
+- `max_steps`: 5000, `window_size`: 1000 (first completed full protocol; 50k runs interrupted by wall-clock)
+- `scientific_conclusion`: `D011_TRANSPORT_COUPLED_NO_SOLUTION`
+- `any_joint_overlap_pass`: false
+- `stage_e_revised_to_pass_after_d011`: false — Stage E remains `D008_NO_JOINT_FIXED_POINT`
+
+### Key replay metrics (failed Stage E rates)
+
+| R | Q_structure | g_structure | Q_catalyst | g_catalyst | joint_overlap |
+| --- | --- | --- | --- | --- | --- |
+| 14 | 0.21 | −12.35 | 2.21 | 0.61 | false |
+| 22 | 0.14 | −32.77 | 2.43 | 1.79 | false |
+| 26 | 0.09 | −63.47 | 2.12 | 1.42 | false |
+| 34 | 0.05 | −82.40 | 2.08 | 1.38 | false |
+
+All radii: `NOT_CONVERGED`, retention ≥ 0.99, localization ≥ 0.89, N/F influx > 0, W efflux > 0.
+
+Artifact: `experiments/generated/d011/attempt_005/result.json` (gitignored generated output).

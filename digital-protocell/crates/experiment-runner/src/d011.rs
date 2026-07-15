@@ -484,7 +484,7 @@ pub fn run_d011_protocol(
     };
     let mut sensitivity_reports = Map::new();
     if !any_pass {
-        for radius in [22.0_f64, 26.0_f64] {
+        for radius in [22.0_f64] {
             let sensitivity = compute_sensitivity(&rates, radius, config);
             sensitivity_reports.insert(radius.to_string(), json!(sensitivity));
             let g = replay_results
@@ -528,7 +528,7 @@ pub fn run_d011_protocol(
             None,
         );
         let mut radius_rows = Vec::new();
-        for &radius in &D011_REPLAY_RADII {
+        for &radius in &[22.0_f64, 26.0_f64] {
             let outcome = run_constrained_assay(&candidate_params, radius, config);
             any_pass |= joint_overlap_pass(&outcome.metrics) && outcome.quasi_steady.converged;
             radius_rows.push(run_outcome_json(
