@@ -252,7 +252,8 @@ pub fn initialize_seed(grid: &Grid, params: &crate::config::SimParams, fields: &
             fields.fuel[idx] = 1.0;
             fields.waste[idx] = 0.0;
             match params.equation_version {
-                EquationVersion::MembraneMetabolismV1 => {
+                EquationVersion::MembraneMetabolismV1
+                | EquationVersion::MembraneMetabolismV2Conservative => {
                     fields.activated[idx] = 0.10 * h;
                     fields.membrane[idx] = 0.50 * interface_weight(phi);
                 }

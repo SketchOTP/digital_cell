@@ -1,7 +1,7 @@
 //! D-008 Stage C zero-dimensional activated metabolism.
 
 use crate::accounting::{FieldStepLedger, CUMULATIVE_RESIDUAL_TOL};
-use crate::config::SimParams;
+use crate::config::{EquationVersion, SimParams};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, Default, Serialize, Deserialize)]
@@ -114,7 +114,7 @@ pub fn stage_c_clamp_negligible(cumulative: &ActivatedMetabolismCumulativeAccoun
         && cumulative.activated_clamp_correction.abs() <= CUMULATIVE_RESIDUAL_TOL
 }
 
-/// Rates for C+N+F→C+A+W and C+A→2C+W, with unit stoichiometry.
+/// Rates for activation and reproduction. V1: A→C+W; V2: A→η_C C + (1−η_C) W.
 pub fn activated_metabolism_rates(
     catalyst: f64,
     nutrient: f64,
@@ -130,6 +130,25 @@ pub fn activated_metabolism_rates(
     let reproduction = params.k_d008_reproduction * c * a;
     let activated_decay = params.k_d008_activated_decay * a;
     let catalyst_turnover = params.k_d008_catalyst_turnover * c;
+
+    if params.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+        let eta_c = params.eta_c;
+        return ActivatedMetabolismRates {
+            activation,
+            reproduction,
+            activated_decay,
+            catalyst_turnover,
+            d_catalyst: eta_c * reproduction - catalyst_turnover,
+            d_nutrient: -activation,
+            d_fuel: -activation,
+            d_activated: activation - reproduction - activated_decay,
+            d_waste: activation
+                + (1.0 - eta_c) * reproduction
+                + activated_decay
+                + catalyst_turnover,
+        };
+    }
+
     ActivatedMetabolismRates {
         activation,
         reproduction,
@@ -141,4 +160,39 @@ pub fn activated_metabolism_rates(
         d_activated: activation - reproduction - activated_decay,
         d_waste: activation + reproduction + activated_decay + catalyst_turnover,
     }
+}
+
+/// Isolated per-unit-extent activation delta (N+F→A+W); shared by v1 and v2.
+pub fn activation_isolated_delta(extent: f64) -> [f64; 7] {
+    let mut d = [0.0; 7];
+    d[2] = -extent; // N
+    d[3] = -extent; // F
+    d[5] = extent; // A
+    d[4] = extent; // W
+    d
+}
+
+/// Isolated catalyst-production delta for governed equation version.
+pub fn catalyst_production_isolated_delta(extent: f64, params: &SimParams) -> [f64; 7] {
+    if params.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+        let eta = params.eta_c;
+        let mut d = [0.0; 7];
+        d[1] = eta * extent;
+        d[5] = -extent;
+        d[4] = (1.0 - eta) * extent;
+        return d;
+    }
+    let mut d = [0.0; 7];
+    d[1] = extent;
+    d[5] = -extent;
+    d[4] = extent;
+    d
+}
+
+/// Isolated turnover/decay delta: source species → W.
+pub fn turnover_isolated_delta(source: usize, extent: f64) -> [f64; 7] {
+    let mut d = [0.0; 7];
+    d[source] = -extent;
+    d[4] = extent;
+    d
 }

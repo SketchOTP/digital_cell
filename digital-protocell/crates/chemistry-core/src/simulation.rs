@@ -160,17 +160,24 @@ impl Simulation {
                 EquationVersion::D001BulkV1
                 | EquationVersion::D003CrowdingV1
                 | EquationVersion::SurfaceTurnoverV1 => self.try_legacy_substep(attempt_dt),
-                EquationVersion::MembraneMetabolismV1 if self.params.d008_stage_b_enabled => {
+                EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative
+                    if self.params.d008_stage_b_enabled =>
+                {
                     self.try_d008_stage_b(attempt_dt)
                 }
-                EquationVersion::MembraneMetabolismV1 => match self.params.d008_stage_mode {
-                    D008StageMode::Transport => {
-                        self.try_membrane_metabolism_v1_transport(attempt_dt)
+                EquationVersion::MembraneMetabolismV1
+                | EquationVersion::MembraneMetabolismV2Conservative => {
+                    match self.params.d008_stage_mode {
+                        D008StageMode::Transport => {
+                            self.try_membrane_metabolism_v1_transport(attempt_dt)
+                        }
+                        D008StageMode::ActivatedMetabolism => self.try_d008_stage_c(attempt_dt),
+                        D008StageMode::FixedCompartment => self.try_d008_stage_d(attempt_dt),
+                        D008StageMode::ConstrainedRadius => {
+                            self.try_d008_constrained_radius(attempt_dt)
+                        }
                     }
-                    D008StageMode::ActivatedMetabolism => self.try_d008_stage_c(attempt_dt),
-                    D008StageMode::FixedCompartment => self.try_d008_stage_d(attempt_dt),
-                    D008StageMode::ConstrainedRadius => self.try_d008_constrained_radius(attempt_dt),
-                },
+                }
             };
             match result {
                 SubstepResult::Ok => {
@@ -753,6 +760,8 @@ impl Simulation {
             &mut self.fields.scratch_lap,
             &mut self.fields.scratch_transport_c,
             &mut self.fields.membrane_next,
+            Some(&mut self.fields.activated_next),
+            Some(&mut self.fields.waste_next),
         );
         let pre_clamp_m = field_mass(&self.grid, &self.fields.membrane_next);
         for (idx, value) in self.fields.membrane_next.iter_mut().enumerate() {
@@ -777,18 +786,35 @@ impl Simulation {
         }
 
         let mass_m_after = field_mass(&self.grid, &self.fields.membrane_next);
+        let mass_w_after = field_mass(&self.grid, &self.fields.waste_next);
+        let mass_a_after = field_mass(&self.grid, &self.fields.activated_next);
         let membrane_step =
-            build_membrane_step(mass_m_before, pre_clamp_m, mass_m_after, evolution);
+            build_membrane_step(mass_m_before, pre_clamp_m, mass_m_after, evolution, &self.params);
+        let membrane_reaction = evolution.membrane_mass_reaction_delta(&self.params);
         let step_accounting = StepAccounting {
             structure: build_field_ledger(mass_phi, 0.0, 0.0, 0.0, mass_phi, mass_phi),
             catalyst: build_field_ledger(mass_c, 0.0, 0.0, 0.0, mass_c, mass_c),
             nutrient: build_field_ledger(mass_n, 0.0, 0.0, 0.0, mass_n, mass_n),
             fuel: build_field_ledger(mass_f, 0.0, 0.0, 0.0, mass_f, mass_f),
-            waste: build_field_ledger(mass_w, 0.0, 0.0, 0.0, mass_w, mass_w),
-            activated: build_field_ledger(mass_a, 0.0, 0.0, 0.0, mass_a, mass_a),
+            waste: build_field_ledger(
+                mass_w,
+                evolution.waste_reaction_delta,
+                0.0,
+                0.0,
+                mass_w_after,
+                mass_w_after,
+            ),
+            activated: build_field_ledger(
+                mass_a,
+                evolution.activated_reaction_delta,
+                0.0,
+                0.0,
+                mass_a_after,
+                mass_a_after,
+            ),
             membrane: build_field_ledger(
                 mass_m_before,
-                evolution.synthesis_delta - evolution.decay_delta - evolution.detachment_delta,
+                membrane_reaction,
                 evolution.diffusion_delta,
                 0.0,
                 pre_clamp_m,
@@ -1382,6 +1408,8 @@ impl Simulation {
         let mut react_w = 0.0;
         let mut virtual_production = 0.0;
         let mut virtual_decay = 0.0;
+        let v2 = self.params.equation_version == EquationVersion::MembraneMetabolismV2Conservative;
+        let eta_phi = if v2 { self.params.eta_phi } else { 1.0 };
         for idx in 0..self.grid.width * self.grid.height {
             if !self.grid.in_dish(idx) {
                 continue;
@@ -1390,10 +1418,18 @@ impl Simulation {
             let i_face = interface_weight(phi);
             let r_structure = self.params.k_d008_structure * self.working.activated[idx] * i_face;
             let r_structure_decay = self.params.k_structure_decay * phi;
-            virtual_production += r_structure * dt;
+            virtual_production += if v2 {
+                eta_phi * r_structure * dt
+            } else {
+                r_structure * dt
+            };
             virtual_decay += r_structure_decay * dt;
             let d_a_structure = -r_structure * dt;
-            let d_w_structure = r_structure_decay * dt;
+            let d_w_structure = if v2 {
+                (1.0 - eta_phi) * r_structure * dt + r_structure_decay * dt
+            } else {
+                r_structure_decay * dt
+            };
             react_a += d_a_structure;
             react_w += d_w_structure;
 
@@ -1438,7 +1474,11 @@ impl Simulation {
             &mut self.fields.scratch_lap,
             &mut self.fields.scratch_transport_c,
             &mut self.fields.membrane_next,
+            Some(&mut self.fields.activated_next),
+            Some(&mut self.fields.waste_next),
         );
+        react_a += evolution.activated_reaction_delta;
+        react_w += evolution.waste_reaction_delta;
 
         let pre_clamp_c = field_mass(&self.grid, &self.fields.catalyst_next);
         let pre_clamp_n = field_mass(&self.grid, &self.fields.nutrient_next);
@@ -1550,7 +1590,7 @@ impl Simulation {
             waste: waste.clone(),
         };
         let membrane_step =
-            build_membrane_step(mass_m_before, pre_clamp_m, mass_m_after, evolution);
+            build_membrane_step(mass_m_before, pre_clamp_m, mass_m_after, evolution, &self.params);
         let constraint_step = build_constraint_step(virtual_production, virtual_decay);
         let step_accounting = StepAccounting {
             structure: build_field_ledger(mass_phi, 0.0, 0.0, 0.0, mass_phi, mass_phi),
@@ -1561,7 +1601,7 @@ impl Simulation {
             activated,
             membrane: build_field_ledger(
                 mass_m_before,
-                evolution.synthesis_delta - evolution.decay_delta - evolution.detachment_delta,
+                evolution.membrane_mass_reaction_delta(&self.params),
                 evolution.diffusion_delta,
                 0.0,
                 pre_clamp_m,
@@ -1700,7 +1740,7 @@ impl Simulation {
             v.to_bits().hash(&mut hasher);
         }
         match self.params.equation_version {
-            EquationVersion::MembraneMetabolismV1 => {
+            EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative => {
                 for v in &self.fields.activated {
                     v.to_bits().hash(&mut hasher);
                 }
@@ -1725,7 +1765,7 @@ impl Simulation {
         append_field_bits(&mut bytes, &self.fields.fuel);
         append_field_bits(&mut bytes, &self.fields.waste);
         match self.params.equation_version {
-            EquationVersion::MembraneMetabolismV1 => {
+            EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative => {
                 append_field_bits(&mut bytes, &self.fields.activated);
                 append_field_bits(&mut bytes, &self.fields.membrane);
             }
@@ -1753,14 +1793,12 @@ fn build_membrane_step(
     pre_clamp_mass: f64,
     mass_after: f64,
     evolution: MembraneEvolutionTotals,
+    params: &SimParams,
 ) -> MembraneStepAccounting {
     let clamp_correction = mass_after - pre_clamp_mass;
+    let reaction_delta = evolution.membrane_mass_reaction_delta(params);
     let residual = mass_after
-        - (mass_before + evolution.synthesis_delta
-            - evolution.decay_delta
-            - evolution.detachment_delta
-            + evolution.diffusion_delta
-            + clamp_correction);
+        - (mass_before + reaction_delta + evolution.diffusion_delta + clamp_correction);
     MembraneStepAccounting {
         mass_before,
         synthesis: evolution.synthesis_delta,

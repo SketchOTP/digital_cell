@@ -1,6 +1,6 @@
 //! D-008 Stage B fixed-field membrane dynamics.
 
-use crate::config::SimParams;
+use crate::config::{EquationVersion, SimParams};
 use crate::grid::Grid;
 use crate::operators::diffuse_constant;
 use crate::reactions::interface_weight;
@@ -24,6 +24,46 @@ pub struct MembraneEvolutionTotals {
     pub decay_delta: f64,
     pub detachment_delta: f64,
     pub diffusion_delta: f64,
+    /// V2: activated consumed by membrane synthesis (extent basis).
+    pub activated_reaction_delta: f64,
+    /// V2: waste from membrane synthesis/decay/detachment.
+    pub waste_reaction_delta: f64,
+}
+
+impl MembraneEvolutionTotals {
+    pub fn membrane_mass_reaction_delta(&self, params: &SimParams) -> f64 {
+        if params.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+            params.eta_m * self.synthesis_delta - self.decay_delta - self.detachment_delta
+        } else {
+            self.synthesis_delta - self.decay_delta - self.detachment_delta
+        }
+    }
+}
+
+/// Per-unit synthesis extent: A → η_M M + (1−η_M) W.
+pub fn membrane_synthesis_isolated_delta(extent: f64, eta_m: f64) -> [f64; 7] {
+    let mut d = [0.0; 7];
+    d[6] = eta_m * extent;
+    d[5] = -extent;
+    d[4] = (1.0 - eta_m) * extent;
+    d
+}
+
+/// Per-unit membrane loss extent: M → W (decay or detachment).
+pub fn membrane_loss_isolated_delta(extent: f64) -> [f64; 7] {
+    let mut d = [0.0; 7];
+    d[6] = -extent;
+    d[4] = extent;
+    d
+}
+
+/// Structure production extent: A → η_φ φ + (1−η_φ) W (virtual φ in constrained-radius assay).
+pub fn structure_production_isolated_delta(extent: f64, eta_phi: f64) -> [f64; 7] {
+    let mut d = [0.0; 7];
+    d[0] = eta_phi * extent;
+    d[5] = -extent;
+    d[4] = (1.0 - eta_phi) * extent;
+    d
 }
 
 #[inline]
@@ -79,7 +119,7 @@ pub fn membrane_diffusion_rate(
     diffuse_constant(grid, membrane, diffusivity, scratch_lap, out_rate);
 }
 
-/// Evolves only M from old-state fixed drivers into a caller-owned next buffer.
+/// Evolves M from old-state fixed drivers; v2 also couples A and W stoichiometrically.
 pub fn evolve_fixed_membrane(
     grid: &Grid,
     phi: &[f64],
@@ -91,8 +131,12 @@ pub fn evolve_fixed_membrane(
     scratch_lap: &mut [f64],
     diffusion_rate: &mut [f64],
     next: &mut [f64],
+    mut activated_next: Option<&mut [f64]>,
+    mut waste_next: Option<&mut [f64]>,
 ) -> MembraneEvolutionTotals {
     membrane_diffusion_rate(grid, membrane, params.d_m, scratch_lap, diffusion_rate);
+    let v2 = params.equation_version == EquationVersion::MembraneMetabolismV2Conservative;
+    let eta_m = if v2 { params.eta_m } else { 1.0 };
     let mut totals = MembraneEvolutionTotals::default();
     for idx in 0..membrane.len() {
         if !grid.in_dish(idx) {
@@ -106,11 +150,29 @@ pub fn evolve_fixed_membrane(
             membrane[idx],
             params,
         );
-        totals.synthesis_delta += rates.synthesis * dt;
-        totals.decay_delta += rates.decay * dt;
-        totals.detachment_delta += rates.detachment * dt;
+        let syn = rates.synthesis * dt;
+        let dec = rates.decay * dt;
+        let det = rates.detachment * dt;
+        totals.synthesis_delta += syn;
+        totals.decay_delta += dec;
+        totals.detachment_delta += det;
         totals.diffusion_delta += diffusion_rate[idx] * dt;
-        next[idx] = membrane[idx] + dt * (rates.net() + diffusion_rate[idx]);
+
+        if v2 {
+            totals.activated_reaction_delta -= syn;
+            totals.waste_reaction_delta += (1.0 - eta_m) * syn + dec + det;
+            if let Some(a_next) = activated_next.as_deref_mut() {
+                a_next[idx] -= syn;
+            }
+            if let Some(w_next) = waste_next.as_deref_mut() {
+                w_next[idx] += (1.0 - eta_m) * syn + dec + det;
+            }
+            next[idx] = membrane[idx]
+                + dt * (eta_m * rates.synthesis - rates.decay - rates.detachment)
+                + diffusion_rate[idx] * dt;
+        } else {
+            next[idx] = membrane[idx] + dt * (rates.net() + diffusion_rate[idx]);
+        }
     }
     totals
 }

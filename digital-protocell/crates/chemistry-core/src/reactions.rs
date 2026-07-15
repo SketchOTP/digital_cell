@@ -9,9 +9,12 @@ pub const EQUATION_VERSION_D001_BULK: EquationVersion = EquationVersion::D001Bul
 pub const EQUATION_VERSION_CROWDING: EquationVersion = EquationVersion::D003CrowdingV1;
 /// D-006 surface-production / bulk-turnover.
 pub const EQUATION_VERSION_SURFACE: EquationVersion = EquationVersion::SurfaceTurnoverV1;
-/// D-008 membrane-metabolism scaffold.
+/// D-008 membrane-metabolism scaffold (v1 historical).
 pub const EQUATION_VERSION_MEMBRANE_METABOLISM: EquationVersion =
     EquationVersion::MembraneMetabolismV1;
+/// D-012 conservative membrane metabolism (scientifically non-equivalent to v1).
+pub const EQUATION_VERSION_MEMBRANE_METABOLISM_V2: EquationVersion =
+    EquationVersion::MembraneMetabolismV2Conservative;
 
 /// Default active equation version for greenfield sims (D-003 crowding).
 pub const EQUATION_VERSION: EquationVersion = EQUATION_VERSION_CROWDING;
@@ -103,7 +106,9 @@ pub fn compute_reactions_at(
         return ReactionRates::default();
     }
     match params.equation_version {
-        EquationVersion::MembraneMetabolismV1 => return ReactionRates::default(),
+        EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative => {
+            return ReactionRates::default();
+        }
         EquationVersion::D001BulkV1
         | EquationVersion::D003CrowdingV1
         | EquationVersion::SurfaceTurnoverV1 => {}
@@ -127,7 +132,9 @@ pub fn compute_reactions_at(
             let g = structure_production_factor(phi, params);
             (params.k_structure * c * n * f * g, 0.0)
         }
-        EquationVersion::MembraneMetabolismV1 => unreachable!("handled before legacy chemistry"),
+        EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative => {
+            unreachable!("handled before legacy chemistry")
+        }
     };
 
     let r_structure_decay = params.k_structure_decay * phi.max(0.0);
@@ -226,7 +233,7 @@ pub fn integrated_structure_prefactor(
                 let g = structure_production_factor(phi[idx], params);
                 b += c[idx] * n[idx] * f[idx] * g;
             }
-            EquationVersion::MembraneMetabolismV1 => {}
+            EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative => {}
         }
     }
     b

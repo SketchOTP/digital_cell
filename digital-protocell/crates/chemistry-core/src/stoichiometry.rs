@@ -340,6 +340,118 @@ pub fn v1_runtime_membrane_production_delta(extent: f64) -> [f64; SEVEN_FIELD_CO
     d
 }
 
+fn rational_to_f64(r: Rational) -> f64 {
+    r.num as f64 / r.den as f64
+}
+
+/// V2 isolated delta from governed descriptors (extent scales column).
+pub fn v2_descriptor_isolated_delta(
+    reaction: ReactionId,
+    extent: f64,
+    eta_c: Rational,
+    eta_phi: Rational,
+    eta_m: Rational,
+) -> [f64; SEVEN_FIELD_COUNT] {
+    let reactions = v2_internal_reactions(eta_c, eta_phi, eta_m);
+    reactions[reaction as usize]
+        .delta
+        .map(|r| rational_to_f64(r) * extent)
+}
+
+pub fn v2_runtime_activation_delta(extent: f64) -> [f64; SEVEN_FIELD_COUNT] {
+    v2_descriptor_isolated_delta(
+        ReactionId::Activation,
+        extent,
+        Rational::ONE,
+        Rational::ONE,
+        Rational::ONE,
+    )
+}
+
+pub fn v2_runtime_catalyst_production_delta(extent: f64, eta_c: f64) -> [f64; SEVEN_FIELD_COUNT] {
+    v2_descriptor_isolated_delta(
+        ReactionId::CatalystProduction,
+        extent,
+        Rational::new((eta_c * 1_000_000.0).round() as i64, 1_000_000),
+        Rational::ONE,
+        Rational::ONE,
+    )
+}
+
+pub fn v2_runtime_structure_production_delta(extent: f64, eta_phi: f64) -> [f64; SEVEN_FIELD_COUNT] {
+    v2_descriptor_isolated_delta(
+        ReactionId::StructureProduction,
+        extent,
+        Rational::ONE,
+        Rational::new((eta_phi * 1_000_000.0).round() as i64, 1_000_000),
+        Rational::ONE,
+    )
+}
+
+pub fn v2_runtime_membrane_production_delta(extent: f64, eta_m: f64) -> [f64; SEVEN_FIELD_COUNT] {
+    v2_descriptor_isolated_delta(
+        ReactionId::MembraneProduction,
+        extent,
+        Rational::ONE,
+        Rational::ONE,
+        Rational::new((eta_m * 1_000_000.0).round() as i64, 1_000_000),
+    )
+}
+
+pub fn v2_runtime_turnover_delta(reaction: ReactionId, extent: f64) -> [f64; SEVEN_FIELD_COUNT] {
+    v2_descriptor_isolated_delta(reaction, extent, Rational::ONE, Rational::ONE, Rational::ONE)
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct V2StoichiometricAudit {
+    pub schema_version: u32,
+    pub primary_finding: String,
+    pub conservation_class: ConservationClass,
+    pub rank: usize,
+    pub strictly_positive_conservation_vectors: Vec<Vec<String>>,
+    pub eta_c: String,
+    pub eta_phi: String,
+    pub eta_m: String,
+}
+
+pub fn run_v2_stoichiometric_audit(
+    eta_c: Rational,
+    eta_phi: Rational,
+    eta_m: Rational,
+) -> V2StoichiometricAudit {
+    let reactions = v2_internal_reactions(eta_c, eta_phi, eta_m);
+    let matrix = stoichiometric_matrix(&reactions);
+    let analysis = classify_conservation_detailed(&matrix);
+    let primary_finding = if analysis.class == ConservationClass::StrictlyConservative {
+        "D012_CONSERVATIVE_V2_CONFIRMED".to_string()
+    } else {
+        "D012_V2_STOICHIOMETRIC_AUDIT_FAILED".to_string()
+    };
+    V2StoichiometricAudit {
+        schema_version: 2,
+        primary_finding,
+        conservation_class: analysis.class,
+        rank: analysis.rank,
+        strictly_positive_conservation_vectors: analysis
+            .strictly_positive_vectors
+            .iter()
+            .map(|v| v.iter().map(|r| r.to_string()).collect())
+            .collect(),
+        eta_c: eta_c.to_string(),
+        eta_phi: eta_phi.to_string(),
+        eta_m: eta_m.to_string(),
+    }
+}
+
+pub fn v2_audit_json_pretty() -> String {
+    serde_json::to_string_pretty(&run_v2_stoichiometric_audit(
+        Rational::ONE,
+        Rational::ONE,
+        Rational::ONE,
+    ))
+    .expect("v2 audit serializes")
+}
+
 pub fn stoichiometric_matrix(reactions: &[ReactionStoichiometry]) -> Vec<Vec<Rational>> {
     let mut matrix = vec![vec![Rational::ZERO; reactions.len()]; SEVEN_FIELD_COUNT];
     for (col, rx) in reactions.iter().enumerate() {
