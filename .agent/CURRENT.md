@@ -3,23 +3,23 @@
 ## Active directive
 - ID: D-20260714-d010r-continuous-production-advancement
 - Project directive: D-010R
-- Goal: Advance D-008 through scientific closure and toward production readiness without routine approval stops
-- Status: Stage D source ready; committing and running governed fixed-compartment gate
-- Acceptance: Stage D passes all retention/flux/scaling gates or records truthful failure classification
-- Touched files: simulation FixedCompartment path, transport interior flux accounting, Stage D runner/tests
-- Next action: source commit, governed Stage D experiment, result commit/tag or failure recovery
+- Goal: Advance D-008 through scientific closure toward production readiness
+- Status: Stage D PASS; beginning Stage E prescribed-radius balance
+- Acceptance: Stage E overlapping zero-flow regions or truthful D008_NO_JOINT_FIXED_POINT
+- Touched files: Stage E runner/simulation (pending), docs/d008_fixed_compartment.md
+- Next action: implement Stage E source (all reactions, fixed geometry, staged calibration screens)
 
 ## Repo facts needed now
 - Branch: d008-membrane-metabolic-closure
-- Starting commit: 767ddb9 (Stage C result/tag)
-- Stage C source tip: bdc2411
-- Stages 0–C: PASS
-- Production verdict: REQUIRES REMEDIATION (per D-010R)
-- Serena: configured; Active languages []; Rust symbol nav unavailable
+- Stage D source: 3647840
+- Stage D result: pending commit (attempt_002 PASS)
+- Stages 0–D: PASS
+- D-009: blocked until D-008 closure
+- Production verdict: REQUIRES REMEDIATION
 
 ## Last validation
-- Command: cargo test -p chemistry-core --release --test d008_tests; cargo test -p experiment-runner --release d008::tests
-- Result: 47 + 10 PASS (Stage D unit/path tests included)
+- Command: cargo run -p experiment-runner --release -- d008 stage-d
+- Result: D008_STAGE_D_FIXED_COMPARTMENT_PASS attempt_002 (~99s wall)
 
 ## Open blockers
-- None before governed Stage D run
+- Stage E–G not yet implemented

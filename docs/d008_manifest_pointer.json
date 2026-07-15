@@ -1,6 +1,6 @@
 {
   "manifest_path": "digital-protocell/experiments/generated/d008/manifest.json",
-  "manifest_sha256": "42068496da3a3248c5b99d5c6042647ee9bb74d8b11f671a6ddaa4f532c98a51",
-  "latest_stage": "stage_c_metabolism",
-  "source_commit": "bdc2411e5fd0b8ff947835ce88bf5f02c5f1fb5e"
+  "manifest_sha256": "5585da5da229000f11bcc4a6661b6a0acb7b437589959e8a2bd8d5f57d7a9612",
+  "latest_stage": "stage_d_fixed_compartment",
+  "source_commit": "36478407cd7f7992474cefa45acee60e6eeca9e3"
 }
