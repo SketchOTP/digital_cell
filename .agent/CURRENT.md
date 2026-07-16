@@ -1,27 +1,27 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260715-d014-stage-e-numerical-stability
-- Project directive: D-014
-- Goal: Repair constrained-radius TIMESTEP_FLOOR_FAILURE and activation residual; fresh R22 under frozen model
-- Status: done
-- Acceptance: cause classified + evidence-matched repair; preflight+fresh R22 valid; one D014_* conclusion
-- Touched files: chemistry-core (simulation, fields, d012_accounting, d014_numerics), experiment-runner (d013, d014), docs/d014_*, d014 artifacts
-- Next action: none — D-012 solver remains closed (UNBOUNDED_ACCUMULATION, not quasi-steady)
+- ID: D-20260715-d015-waste-throughput-closure
+- Project directive: D-015
+- Goal: Diagnose waste UNBOUNDED_ACCUMULATION; repair throughput or classify scientific failure
+- Status: done (scientific failure after env repair)
+- Acceptance: Primary D015_* conclusion with waste causal chain — met as INTERNAL_WASTE_PRODUCTION_IMBALANCE
+- Touched files: d015_waste, reservoir, config, simulation, d015 runner/tests, docs/d015_*, d015 artifacts
+- Next action: Next directive — reaction-network / waste-processing repair from source decomposition (do not open D-012 solver)
 
 ## Repo facts needed now
-- Frozen candidate/config hashes unchanged
-- D-013 R22 preserved; not overwritten
-- Failure cause: FIELD_BOUND_VALIDATION waste ceiling (machine-scale then hard bound)
-- Repair: Branch E projection + unbound mapping; activation step identity; dt recovery hygiene
-- Fresh R22: UNBOUNDED_ACCUMULATION at 161157; activation rel residual ~5e-13
-- Mimir slug: digital_cell (MCP unavailable this session)
+- Frozen organism hashes unchanged (9a452d… / 87ff7e…)
+- Env repair: waste_sink_inner_radius=30 (schema v2); N/F mask unchanged
+- Clearance CORRECT; bulk sink idle was real; after repair exterior clears but interior still ceilings
+- Fresh R22 repaired: UNBOUNDED_ACCUMULATION @ 162073; waste budget residual ~3e-14
+- D-012 solver: CLOSED
+- Mimir slug: digital_cell (MCP unavailable)
 
 ## Last validation
-- Command: d014_tests PASS; preflight PASS; diagnostic PASS; fresh-r22 UNBOUNDED_ACCUMULATION; nonstiff equal-time max_rel≈2.4e-5
-- Result: D014_NUMERICAL_VALIDITY_RESTORED
+- Command: regression gate PASS; d015_tests 32/32; preflight PASS; fresh-r22 UNBOUNDED_ACCUMULATION
+- Result: D015_INTERNAL_WASTE_PRODUCTION_IMBALANCE
 
 ## Open blockers
 - BLOCKED: Mimir MCP unavailable
-- D-012 solver CLOSED until quasi-steady R22
-- Waste accumulation hits CONC_SAFETY_LIMIT (scientific, not numerical floor)
+- D-012 solver CLOSED
+- Stage E quasi-steady blocked by intrinsic interior W production vs export throughput

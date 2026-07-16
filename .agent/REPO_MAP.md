@@ -102,3 +102,12 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d014.rs` — failure replay, diagnostic, preflight, fresh R22
 - `digital-protocell/crates/chemistry-core/tests/d014_tests.rs` — controller/activation/projection tests
 - `digital-protocell/experiments/generated/d014/` — preservation, telemetry, fresh R22, manifest
+
+## D-015 waste throughput
+- `digital-protocell/crates/chemistry-core/src/reservoir.rs` — N/F reservoir mask; W clearance on waste_sink_cell
+- `digital-protocell/crates/chemistry-core/src/config.rs` — SimParams.waste_sink_inner_radius (default 83.0)
+- `digital-protocell/crates/chemistry-core/src/d015_waste.rs` — waste budget, W-sink repair helpers, env hash v2
+- `digital-protocell/crates/chemistry-core/tests/d015_tests.rs` — D-015 waste budget and repair tests (32)
+- `digital-protocell/crates/experiment-runner/src/d015.rs` — preserve, controls, preflight, fresh-r22 runners
+- `digital-protocell/experiments/generated/d015/` — preservation, controls, preflight, fresh R22 artifacts
+- `docs/d015_*.md` — postmortem, clearance audit, sink capacity, env repair, candidate report

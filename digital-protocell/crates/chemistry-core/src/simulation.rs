@@ -34,6 +34,10 @@ use crate::reservoir::apply_reservoir;
 use crate::snapshot::FieldSnapshot;
 use crate::time_audit::DtTelemetry;
 use crate::d014_numerics::{DtLimiter, D014_CONC_CEILING_PROJECT_EPS, D014_DT_FLOOR, D014_DT_RECOVERY_GROWTH};
+use crate::d015_waste::{
+    attach_waste_max_location, build_waste_budget_step, decompose_v2_waste_sources,
+    v2_waste_source_extents, WasteBudgetState,
+};
 use std::time::Instant;
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -60,6 +64,7 @@ pub struct Simulation {
     pub membrane_accounting: MembraneAccountingState,
     pub metabolism_accounting: ActivatedMetabolismAccountingState,
     pub constraint_accounting: StructureConstraintAccounting,
+    pub waste_budget: WasteBudgetState,
     pub substep: u64,
     pub sim_time: f64,
     pub dt: f64,
@@ -104,6 +109,7 @@ impl Simulation {
             membrane_accounting: MembraneAccountingState::default(),
             metabolism_accounting: ActivatedMetabolismAccountingState::default(),
             constraint_accounting: StructureConstraintAccounting::default(),
+            waste_budget: WasteBudgetState::default(),
             substep: 0,
             sim_time: 0.0,
             dt: MAX_DT,
@@ -1756,8 +1762,25 @@ impl Simulation {
         self.metabolism_accounting.record_accepted(metabolism_step);
         self.membrane_accounting.record_accepted(membrane_step);
         self.constraint_accounting.record_accepted(constraint_step);
+        self.record_waste_budget();
         self.fields.swap();
         SubstepResult::Ok
+    }
+
+    fn record_waste_budget(&mut self) {
+        if self.params.equation_version != EquationVersion::MembraneMetabolismV2Conservative {
+            return;
+        }
+        let extents = v2_waste_source_extents(
+            &self.metabolism_accounting.last_step,
+            &self.membrane_accounting.last_step,
+            &self.constraint_accounting.last_step,
+            &self.params,
+        );
+        let sources = decompose_v2_waste_sources(&extents, &self.params);
+        let mut step = build_waste_budget_step(&self.accounting.last_step.waste, &sources);
+        attach_waste_max_location(&mut step, &self.grid, &self.fields.waste);
+        self.waste_budget.record_accepted(step, sources);
     }
 
     pub fn current_diagnostics(&mut self) -> DiagnosticsSnapshot {

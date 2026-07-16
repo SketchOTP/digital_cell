@@ -22,3 +22,4 @@ Append-only repo-specific lessons. Format:
 - 2026-07-15 | area:stoichiometry | lesson:v1 runtime catalyst production is A→C+W; membrane synthesis is ∅→M; decay/detach delete M | evidence:digital-protocell/crates/chemistry-core/src/stoichiometry.rs
 - 2026-07-15 | area:d013 | lesson:Stage E windows must advance only on accepted substeps; JSON f64 snapshots need lossless bits for resume | evidence:digital-protocell/crates/experiment-runner/src/d013.rs
 - 2026-07-15 | area:d014-numerics | lesson:R22 TIMESTEP_FLOOR was waste CONC_SAFETY_LIMIT validation; machine-eps project + unbound map, not chemistry | evidence:docs/d014_timestep_floor_postmortem.md
+- 2026-07-15 | area:d015-waste | lesson:Peripheral reservoir idle was real; W-only sink at r=30 clears exterior but interior still hits CONC_SAFETY_LIMIT | evidence:docs/d015_waste_accumulation_postmortem.md

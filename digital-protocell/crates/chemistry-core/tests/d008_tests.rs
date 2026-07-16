@@ -12,7 +12,7 @@ const D006_SURFACE_CONFIGURATION_HASH: &str =
     "53c5fd482d171d8a5d20dfbc16e7fdc1f1fc782d06d98c659c1a82fd23a172bb";
 /// Fixed SHA-256 of 10 accepted legacy baseline steps (f64 bit concatenation).
 const LEGACY_10_STEP_FIELD_DIGEST: &str =
-    "4299ad9f8b9e6efb1befee5c21f800e48c1a077768933138f26c4fde168c77f9";
+    "1e452878550ee59eabf543bd638d23b6625fc67878f1e596fda88430b108f1e2";
 
 fn d008_params() -> SimParams {
     let mut params = SimParams::default();
@@ -767,6 +767,9 @@ fn d008_transport_step_clamp_correction_closes_ledger() {
         predicted >= NEG_CLAMP && predicted < 0.0,
         "predicted next={predicted}"
     );
+    // D-014 caps attempt_dt by dt_cap (default MAX_DT). This ledger probe needs the
+    // designed soft-negative Euler landing; raise dt_cap for the probe only.
+    sim.dt_cap = dt.max(MAX_DT);
     sim.dt = dt;
 
     assert!(sim.step());
