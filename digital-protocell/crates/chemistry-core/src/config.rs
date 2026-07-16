@@ -20,6 +20,10 @@ pub const M_MAX: f64 = 1.0;
 pub const STOICHIOMETRIC_SCHEMA_VERSION_V1: u32 = 1;
 /// Governed stoichiometric schema for membrane_metabolism_v2_conservative.
 pub const STOICHIOMETRIC_SCHEMA_VERSION_V2: u32 = 2;
+/// Baseline selective-boundary transport schema (D-008/D-015).
+pub const TRANSPORT_SCHEMA_VERSION_V1: u32 = 1;
+/// D-016 calibrated passive waste transport schema (D_W / β_W repair).
+pub const TRANSPORT_SCHEMA_VERSION_V2: u32 = 2;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum EquationVersion {
@@ -213,6 +217,9 @@ pub struct SimParams {
     /// D-012 v2 membrane yield η_M ∈ (0, 1].
     #[serde(default = "default_eta_m")]
     pub eta_m: f64,
+    /// D-016 transport schema version (1 = baseline; 2 = calibrated W transport).
+    #[serde(default = "default_transport_schema_version")]
+    pub transport_schema_version: u32,
 }
 
 /// Validate governed v2 yields: 0 < η ≤ 1.
@@ -239,6 +246,10 @@ fn default_eta_phi() -> f64 {
 
 fn default_eta_m() -> f64 {
     1.0
+}
+
+fn default_transport_schema_version() -> u32 {
+    TRANSPORT_SCHEMA_VERSION_V1
 }
 
 fn default_k_phi() -> f64 {
@@ -399,6 +410,7 @@ impl Default for SimParams {
             eta_c: default_eta_c(),
             eta_phi: default_eta_phi(),
             eta_m: default_eta_m(),
+            transport_schema_version: default_transport_schema_version(),
         }
     }
 }

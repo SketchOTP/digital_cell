@@ -111,3 +111,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d015.rs` — preserve, controls, preflight, fresh-r22 runners
 - `digital-protocell/experiments/generated/d015/` — preservation, controls, preflight, fresh R22 artifacts
 - `docs/d015_*.md` — postmortem, clearance audit, sink capacity, env repair, candidate report
+
+## D-016 waste transport timescale
+- `digital-protocell/crates/chemistry-core/src/d016_transport.rs` — W transport audit, source field, timescales, fixed-source assay
+- `digital-protocell/crates/chemistry-core/tests/d016_tests.rs` — D-016 transport/source/calibration tests (24)
+- `digital-protocell/crates/experiment-runner/src/d016.rs` — preserve, audit, source/timescales, fixed-source campaign
+- `digital-protocell/experiments/generated/d016/` — preservation, assays, manifest (local; gitignored)
+- `docs/d016_*.md` — audit, source, timescales, conductance, resistance, calibration, candidate report

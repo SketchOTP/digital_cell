@@ -23,3 +23,5 @@ Append-only repo-specific lessons. Format:
 - 2026-07-15 | area:d013 | lesson:Stage E windows must advance only on accepted substeps; JSON f64 snapshots need lossless bits for resume | evidence:digital-protocell/crates/experiment-runner/src/d013.rs
 - 2026-07-15 | area:d014-numerics | lesson:R22 TIMESTEP_FLOOR was waste CONC_SAFETY_LIMIT validation; machine-eps project + unbound map, not chemistry | evidence:docs/d014_timestep_floor_postmortem.md
 - 2026-07-15 | area:d015-waste | lesson:Peripheral reservoir idle was real; W-only sink at r=30 clears exterior but interior still hits CONC_SAFETY_LIMIT | evidence:docs/d015_waste_accumulation_postmortem.md
+- 2026-07-15 | area:d016-transport | lesson:After W-sink r=30 repair, dominant resistance is internal; D_W_required≈1.06≫max(D_N,D_F)=0.18 | evidence:docs/d016_timescale_analysis.md
+- 2026-07-15 | area:d016-transport | lesson:Baseline D_W=0.25 already faster than N/F=0.18; fixed-source still ceilings at t≈438 | evidence:experiments/generated/d016/fixed_source_baseline/result.json

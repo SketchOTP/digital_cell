@@ -1,27 +1,27 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260715-d015-waste-throughput-closure
-- Project directive: D-015
-- Goal: Diagnose waste UNBOUNDED_ACCUMULATION; repair throughput or classify scientific failure
-- Status: done (scientific failure after env repair)
-- Acceptance: Primary D015_* conclusion with waste causal chain — met as INTERNAL_WASTE_PRODUCTION_IMBALANCE
-- Touched files: d015_waste, reservoir, config, simulation, d015 runner/tests, docs/d015_*, d015 artifacts
-- Next action: Next directive — reaction-network / waste-processing repair from source decomposition (do not open D-012 solver)
+- ID: D-20260715-d016-waste-transport-timescale
+- Project directive: D-016
+- Goal: Quantify/repair intracellular W transport timescale before chemistry changes
+- Status: done (passive transport insufficient)
+- Acceptance: One D016_* conclusion with governed evidence — met as PASSIVE_WASTE_TRANSPORT_INSUFFICIENT
+- Touched files: d016_transport, d016_tests, d016 runner, config transport_schema, docs/d016_*, d015/d012 appends
+- Next action: Next directive — compare activation-yield repair vs energy-coupled active W export
 
 ## Repo facts needed now
-- Frozen organism hashes unchanged (9a452d… / 87ff7e…)
-- Env repair: waste_sink_inner_radius=30 (schema v2); N/F mask unchanged
-- Clearance CORRECT; bulk sink idle was real; after repair exterior clears but interior still ceilings
-- Fresh R22 repaired: UNBOUNDED_ACCUMULATION @ 162073; waste budget residual ~3e-14
+- D016_PASSIVE_WASTE_TRANSPORT_INSUFFICIENT + D016_INTERNAL_DIFFUSION_LIMIT_CONFIRMED
+- D_W_required(50%)≈1.057 ≫ authorized bound 0.18; baseline D_W=0.25 already faster than N/F
+- Fixed-source baseline: CONCENTRATION_BOUND_REACHED @ 175303 steps / t≈438
+- Gate point D_W=0.18 β_W=0: still CONCENTRATION_BOUND_REACHED
+- Chemistry/environment frozen; transport_schema remains 1
 - D-012 solver: CLOSED
-- Mimir slug: digital_cell (MCP unavailable)
+- Mimir slug: digital_cell
 
 ## Last validation
-- Command: regression gate PASS; d015_tests 32/32; preflight PASS; fresh-r22 UNBOUNDED_ACCUMULATION
-- Result: D015_INTERNAL_WASTE_PRODUCTION_IMBALANCE
+- Command: cargo test -p chemistry-core --release --test d008/d011/d012/d013/d014/d015/d016
+- Result: all PASS (247 tests across suites)
 
 ## Open blockers
-- BLOCKED: Mimir MCP unavailable
-- D-012 solver CLOSED
-- Stage E quasi-steady blocked by intrinsic interior W production vs export throughput
+- BLOCKED: Mimir MCP unavailable (try HTTP at end)
+- Passive W transport falsified inside small-solute bound; chemistry/active-export next

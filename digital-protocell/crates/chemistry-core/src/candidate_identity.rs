@@ -223,6 +223,13 @@ k_d008_activated_decay={};k_d008_catalyst_turnover={};k_d008_structure={};d008_a
                 ";eta_c={};eta_phi={};eta_m={};field_schema_version=seven_field_v1;snapshot_schema_version=2;stoichiometric_schema_version={STOICHIOMETRIC_SCHEMA_VERSION_V2}",
                 params.eta_c, params.eta_phi, params.eta_m
             ));
+            // ponytail: omit default transport schema v1 so D-015 frozen hashes remain stable.
+            if params.transport_schema_version != crate::config::TRANSPORT_SCHEMA_VERSION_V1 {
+                s.push_str(&format!(
+                    ";transport_schema_version={}",
+                    params.transport_schema_version
+                ));
+            }
         }
         EquationVersion::D001BulkV1
         | EquationVersion::D003CrowdingV1
