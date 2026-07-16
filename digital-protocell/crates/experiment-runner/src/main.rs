@@ -13,6 +13,7 @@ mod d013;
 mod d014;
 mod d015;
 mod d016;
+mod d017;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -111,6 +112,10 @@ enum Commands {
     D016 {
         #[command(subcommand)]
         action: D016Commands,
+    },
+    D017 {
+        #[command(subcommand)]
+        action: D017Commands,
     },
 }
 
@@ -380,6 +385,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D014 { action } => run_d014(action)?,
         Commands::D015 { action } => run_d015(action)?,
         Commands::D016 { action } => run_d016(action)?,
+        Commands::D017 { action } => run_d017(action)?,
     }
     Ok(())
 }
@@ -1118,6 +1124,37 @@ fn run_d016(action: D016Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["manifest"]["primary_conclusion"],
                 output.display()
             );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D017Commands {
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d017")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d017_artifact_path(path: PathBuf) -> PathBuf {
+    if path.is_absolute() {
+        return path;
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..").join(path)
+}
+
+fn run_d017(action: D017Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D017Commands::Pipeline { output } => {
+            let output = resolve_d017_artifact_path(output);
+            let result = d017::run_pipeline(&output)?;
+            println!(
+                "D-017 pipeline conclusion={:?} -> {}",
+                result["primary_conclusion"],
+                output.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
         }
     }
     Ok(())
