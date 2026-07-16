@@ -52,3 +52,7 @@ within the authorized small-solute bound `D_W ≤ max(D_N,D_F)`. D-012 solver re
 ## D-017 append (2026-07-16)
 
 D-017 compared activation-yield vs active export using D-015/D-016 frozen evidence; both rejected. Historical D-015 conclusion preserved.
+
+## D-018 follow-on (append-only)
+
+D-018 primary: D018_SURFACE_VOLUME_SCALING_INCOMPATIBLE; subsidiary: D018_CONSTRAINT_WASTE_ARTIFACT_CONFIRMED. Historical waste conclusions above are unchanged. Structural underproduction under the prescribed-radius assay generates the dominant turnover-W loop; next work is spatial structure organization, not another waste pathway. Tag: `D-018-surface-volume-scaling-incompatible`.

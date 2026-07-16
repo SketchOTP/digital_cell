@@ -1,24 +1,26 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260716-d017-waste-architecture-comparison
-- Project directive: D-017
-- Goal: Compare activation-yield vs energy-coupled active W export
-- Status: done (reject both)
-- Acceptance: One D017_* selection/rejection with evidence — met as D017_REJECT_BOTH_ARCHITECTURES
-- Touched files: d017_comparison, d017_tests, experiment-runner/d017, docs/d017_*, d012/d015/d016 appends
-- Next action: Next directive — identify upstream mechanism beyond A/B using D-017 evidence (structure-turnover dominance)
+- ID: D-20260716-d018-structural-constraint-nullcline
+- Project directive: D-018
+- Goal: Structural constraint provenance and nullcline recovery diagnosis
+- Status: done
+- Acceptance: One primary D018_* conclusion with tracer/unconstrained/scaling evidence — met
+- Touched files: d018_provenance, d018_analysis, simulation, d018_tests, experiment-runner/d018, docs/d018_*, append-only reports
+- Next action: Next directive — compare phase-volume synthesis vs interface-limited turnover vs curvature/thickness coupling
 
 ## Repo facts needed now
-- D017_REJECT_BOTH_ARCHITECTURES; tag D-017-reject-both-waste-architectures
-- Direct activation W ≈5%; structure turnover ≈89% of frozen source
-- Perfect-interface center W≈12.69 ≥10; internal delivery insufficient
-- D-012 solver: CLOSED
+- Primary: D018_SURFACE_VOLUME_SCALING_INCOMPATIBLE
+- Subsidiary: D018_CONSTRAINT_WASTE_ARTIFACT_CONFIRMED
+- Tag: D-018-surface-volume-scaling-incompatible
+- Production~R^1 interface; decay~R^2 bulk; k_req rises with R
+- Unconstrained: STRUCTURE_COLLAPSE_LIMITS_W_SOURCE
+- D-012 solver: CLOSED; Stage E BLOCKED
 - Mimir slug: digital_cell
 
 ## Last validation
-- Command: cargo test -p chemistry-core --release --test d012/d013/d014/d015/d016/d017
-- Result: PASS 50+32+20+32+24+17
+- Command: cargo test -p chemistry-core --release --test d008/d011/d012/d013/d014/d015/d016/d017/d018
+- Result: PASS (exit 0; d016 24, d017 17, d018 27 confirmed in log)
 
 ## Open blockers
-- Stage E waste unresolved; A/B architectures falsified
+- None for D-018; Stage E remains blocked pending spatial structure redesign

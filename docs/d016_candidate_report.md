@@ -59,3 +59,7 @@ Architecture comparison rejected both activation-yield and energy-coupled active
 ## D-017 interpretation note (append-only)
 
 D-017 used this report as frozen evidence for architecture selection. No D-016 numbers were rewritten. Manifest sha256: 880ef7e3a9ec2a2d9a50f538e6adc911e003e7a4556541480d88363aef878bfb.
+
+## D-018 follow-on (append-only)
+
+D-018 primary: D018_SURFACE_VOLUME_SCALING_INCOMPATIBLE; subsidiary: D018_CONSTRAINT_WASTE_ARTIFACT_CONFIRMED. Historical waste conclusions above are unchanged. Structural underproduction under the prescribed-radius assay generates the dominant turnover-W loop; next work is spatial structure organization, not another waste pathway. Tag: `D-018-surface-volume-scaling-incompatible`.

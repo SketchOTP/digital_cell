@@ -125,3 +125,11 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d017.rs` — observer-only artifact pipeline
 - `digital-protocell/experiments/generated/d017/` — comparison artifacts and manifest
 - `docs/d017_*.md` — source, yield, feedback, interface, export, matrix, report
+
+## D-018 structural provenance
+- `digital-protocell/crates/chemistry-core/src/d018_provenance.rs` — observer E/K structure provenance tracer
+- `digital-protocell/crates/chemistry-core/src/d018_analysis.rs` — basis, scaling, nullcline, conclusions
+- `digital-protocell/crates/chemistry-core/tests/d018_tests.rs` — D-018 provenance/scaling tests
+- `digital-protocell/crates/experiment-runner/src/d018.rs` — diagnostic pipeline and artifacts
+- `digital-protocell/experiments/generated/d018/` — D-018 governed artifacts and manifest
+- `docs/d018_*.md` — constraint semantics, provenance, scaling, nullcline, report

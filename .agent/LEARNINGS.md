@@ -27,3 +27,5 @@ Append-only repo-specific lessons. Format:
 - 2026-07-15 | area:d016-transport | lesson:Baseline D_W=0.25 already faster than N/F=0.18; fixed-source still ceilings at t≈438 | evidence:experiments/generated/d016/fixed_source_baseline/result.json
 - 2026-07-16 | area:d017 | lesson:η=1 checkpoint: structure turnover ~89% of W; activation only ~5%; perfect-interface center W≈12.7 fails export | evidence:docs/d017_source_decomposition.md
 - 2026-07-16 | area:d017 | lesson:Activation yield α>0 needs E_A=E_F/(1+α); frozen E_A=1 creates potential | evidence:docs/d017_activation_yield_analysis.md
+- 2026-07-16 | area:d018 | lesson:Constrained φ rebuilds decaying structure into W; production~R^1 vs decay~R^2 blocks restoring nullcline | evidence:docs/d018_radius_scaling.md
+- 2026-07-16 | area:d018 | lesson:Observer StructureProvenanceTracer E/K is opt-in on Simulation; default None preserves causality | evidence:digital-protocell/crates/chemistry-core/src/d018_provenance.rs
