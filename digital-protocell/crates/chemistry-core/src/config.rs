@@ -117,6 +117,9 @@ pub struct SimParams {
     pub f_reservoir: f64,
     pub w_reservoir: f64,
     pub reservoir_rate: f64,
+    /// D-015 W clearance inner boundary; N/F supply still uses `reservoir_mask` only.
+    #[serde(default = "default_waste_sink_inner_radius")]
+    pub waste_sink_inner_radius: f64,
     pub alpha_n_rep: f64,
     pub alpha_n_structure: f64,
     pub alpha_f_rep: f64,
@@ -220,6 +223,10 @@ pub fn validate_v2_yields(eta_c: f64, eta_phi: f64, eta_m: f64) -> Result<(), St
         }
     }
     Ok(())
+}
+
+fn default_waste_sink_inner_radius() -> f64 {
+    DISH_RADIUS - RESERVOIR_WIDTH
 }
 
 fn default_eta_c() -> f64 {
@@ -344,6 +351,7 @@ impl Default for SimParams {
             f_reservoir: 1.0,
             w_reservoir: 0.0,
             reservoir_rate: 0.5,
+            waste_sink_inner_radius: default_waste_sink_inner_radius(),
             alpha_n_rep: 1.0,
             alpha_n_structure: 1.0,
             alpha_f_rep: 1.0,
