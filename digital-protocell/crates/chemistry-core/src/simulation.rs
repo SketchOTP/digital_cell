@@ -13,6 +13,7 @@ use crate::config::{
     NEG_CLAMP,
 };
 use crate::constraint_accounting::{build_constraint_step, StructureConstraintAccounting};
+use crate::d018_provenance::StructureProvenanceTracer;
 use crate::diagnostics::{CellDetector, DiagnosticsSnapshot};
 use crate::fields::{
     clamp_small_negative, initialize_seed, project_soluble_ceiling_machine_eps, validate_soluble_field,
@@ -65,6 +66,10 @@ pub struct Simulation {
     pub metabolism_accounting: ActivatedMetabolismAccountingState,
     pub constraint_accounting: StructureConstraintAccounting,
     pub waste_budget: WasteBudgetState,
+    /// Observer-only structural provenance (E/K). None ⇒ disabled (no causality).
+    pub structure_provenance: Option<StructureProvenanceTracer>,
+    /// When false with ConstrainedRadius, φ evolves under the same rates (D-018 control).
+    pub enforce_structure_constraint: bool,
     pub substep: u64,
     pub sim_time: f64,
     pub dt: f64,
@@ -110,6 +115,8 @@ impl Simulation {
             metabolism_accounting: ActivatedMetabolismAccountingState::default(),
             constraint_accounting: StructureConstraintAccounting::default(),
             waste_budget: WasteBudgetState::default(),
+            structure_provenance: None,
+            enforce_structure_constraint: true,
             substep: 0,
             sim_time: 0.0,
             dt: MAX_DT,
@@ -1484,6 +1491,7 @@ impl Simulation {
         let mut virtual_decay = 0.0;
         let v2 = self.params.equation_version == EquationVersion::MembraneMetabolismV2Conservative;
         let eta_phi = if v2 { self.params.eta_phi } else { 1.0 };
+        let apply_phi = !self.enforce_structure_constraint;
         for idx in 0..self.grid.width * self.grid.height {
             if !self.grid.in_dish(idx) {
                 continue;
@@ -1492,12 +1500,17 @@ impl Simulation {
             let i_face = interface_weight(phi);
             let r_structure = self.params.k_d008_structure * self.working.activated[idx] * i_face;
             let r_structure_decay = self.params.k_structure_decay * phi;
-            virtual_production += if v2 {
+            let produced = if v2 {
                 eta_phi * r_structure * dt
             } else {
                 r_structure * dt
             };
-            virtual_decay += r_structure_decay * dt;
+            let decayed = r_structure_decay * dt;
+            virtual_production += produced;
+            virtual_decay += decayed;
+            if apply_phi {
+                self.fields.structure_next[idx] = (phi + produced - decayed).clamp(0.0, 1.0);
+            }
             let d_a_structure = -r_structure * dt;
             let d_w_structure = if v2 {
                 (1.0 - eta_phi) * r_structure * dt + r_structure_decay * dt
@@ -1720,9 +1733,40 @@ impl Simulation {
         };
         let membrane_step =
             build_membrane_step(mass_m_before, pre_clamp_m, mass_m_after, evolution, &self.params);
-        let constraint_step = build_constraint_step(virtual_production, virtual_decay);
+        let constraint_step = if self.enforce_structure_constraint {
+            build_constraint_step(virtual_production, virtual_decay)
+        } else {
+            let virtual_net = virtual_production - virtual_decay;
+            crate::constraint_accounting::StructureConstraintStep {
+                virtual_production,
+                virtual_decay,
+                virtual_net,
+                constraint_flux: 0.0,
+                residual: 0.0,
+            }
+        };
+        let mass_phi_after = if self.enforce_structure_constraint {
+            mass_phi
+        } else {
+            field_mass(&self.grid, &self.fields.structure_next)
+        };
         let step_accounting = StepAccounting {
-            structure: build_field_ledger(mass_phi, 0.0, 0.0, 0.0, mass_phi, mass_phi),
+            structure: build_field_ledger(
+                mass_phi,
+                if self.enforce_structure_constraint {
+                    0.0
+                } else {
+                    virtual_production - virtual_decay
+                },
+                0.0,
+                0.0,
+                if self.enforce_structure_constraint {
+                    mass_phi
+                } else {
+                    mass_phi_after
+                },
+                mass_phi_after,
+            ),
             catalyst,
             nutrient,
             fuel,
@@ -1762,6 +1806,40 @@ impl Simulation {
         self.metabolism_accounting.record_accepted(metabolism_step);
         self.membrane_accounting.record_accepted(membrane_step);
         self.constraint_accounting.record_accepted(constraint_step);
+        // Observer-only: update provenance after acceptance so rejects cannot pollute inventories.
+        if self.structure_provenance.is_some() {
+            let v2 = self.params.equation_version
+                == EquationVersion::MembraneMetabolismV2Conservative;
+            let eta_phi = if v2 { self.params.eta_phi } else { 1.0 };
+            let apply_phi = !self.enforce_structure_constraint;
+            let k_s = self.params.k_d008_structure;
+            let k_d = self.params.k_structure_decay;
+            // Recompute per-cell extents from the same working state used this step.
+            for idx in 0..self.grid.width * self.grid.height {
+                if !self.grid.in_dish(idx) {
+                    continue;
+                }
+                let phi = self.working.structure[idx];
+                let i_face = interface_weight(phi);
+                let r_structure = k_s * self.working.activated[idx] * i_face;
+                let produced = if v2 {
+                    eta_phi * r_structure * dt
+                } else {
+                    r_structure * dt
+                };
+                let decayed = k_d * phi * dt;
+                if let Some(tracer) = self.structure_provenance.as_mut() {
+                    if apply_phi {
+                        tracer.record_unconstrained_cell(idx, produced, decayed);
+                    } else {
+                        tracer.record_constrained_cell(idx, produced, decayed, phi);
+                    }
+                }
+            }
+            if let Some(tracer) = self.structure_provenance.as_mut() {
+                tracer.mark_accepted_step();
+            }
+        }
         self.record_waste_budget();
         self.fields.swap();
         SubstepResult::Ok
