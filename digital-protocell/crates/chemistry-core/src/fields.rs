@@ -113,6 +113,31 @@ pub fn clamp_small_negative(v: f64) -> f64 {
     }
 }
 
+/// Project concentrations that exceed `CONC_SAFETY_LIMIT` by at most `eps` back to the limit.
+/// Larger overshoots are left unchanged (caller must reject / classify unbound).
+/// Returns total mass removed (≤ 0).
+pub fn project_soluble_ceiling_machine_eps(
+    values: &mut [f64],
+    dish_mask: &[bool],
+    eps: f64,
+) -> f64 {
+    let mut correction = 0.0;
+    for (idx, v) in values.iter_mut().enumerate() {
+        if !dish_mask[idx] {
+            continue;
+        }
+        if !v.is_finite() {
+            continue;
+        }
+        let excess = *v - CONC_SAFETY_LIMIT;
+        if excess > 0.0 && excess <= eps {
+            correction += CONC_SAFETY_LIMIT - *v;
+            *v = CONC_SAFETY_LIMIT;
+        }
+    }
+    correction
+}
+
 pub fn validate_structure_field(values: &[f64], dish_mask: &[bool]) -> Result<(), String> {
     for (idx, &v) in values.iter().enumerate() {
         if !dish_mask[idx] {

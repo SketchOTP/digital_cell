@@ -387,7 +387,7 @@ fn biological_termination(sim: &Simulation) -> Option<TerminationReason> {
     let m = total_mass_field(sim, &sim.fields.membrane);
     let n = interior_mean(sim, &sim.fields.nutrient);
     let f = interior_mean(sim, &sim.fields.fuel);
-    if soluble_max(sim) > chemistry_core::config::CONC_SAFETY_LIMIT {
+    if soluble_max(sim) >= chemistry_core::config::CONC_SAFETY_LIMIT {
         return Some(TerminationReason::UnboundedAccumulation);
     }
     if c <= 1e-6 {
@@ -480,7 +480,14 @@ pub fn run_governed_reference(
         let rejected_before = sim.rejection_count;
 
         if !sim.step() {
-            termination_reason = TerminationReason::TimestepFloorFailure;
+            termination_reason = if sim.last_reject_limiter
+                == chemistry_core::DtLimiter::FieldBoundValidation
+                && sim.last_reject_detail.contains("excessive concentration")
+            {
+                TerminationReason::UnboundedAccumulation
+            } else {
+                TerminationReason::TimestepFloorFailure
+            };
             break;
         }
 

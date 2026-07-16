@@ -1,25 +1,27 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260715-d013-stage-e-harness-integrity
-- Project directive: D-013
-- Goal: Repair Stage E harness; recover governed conservative-v2 reference
-- Status: done — D013_REFERENCE_NUMERICAL_FAILURE
-- Acceptance: preflight PASS; valid R22 governed artifact with accepted-step windows/checkpoints/activation; one D013_* conclusion
-- Touched files: d013_harness.rs, d013.rs, d011.rs assay loop, simulation attempt counters, d013_tests, docs/d013_*, experiments/generated/d013/
-- Next action: repair timestep-floor numerical failure before scientific Stage E / solver
+- ID: D-20260715-d014-stage-e-numerical-stability
+- Project directive: D-014
+- Goal: Repair constrained-radius TIMESTEP_FLOOR_FAILURE and activation residual; fresh R22 under frozen model
+- Status: done
+- Acceptance: cause classified + evidence-matched repair; preflight+fresh R22 valid; one D014_* conclusion
+- Touched files: chemistry-core (simulation, fields, d012_accounting, d014_numerics), experiment-runner (d013, d014), docs/d014_*, d014 artifacts
+- Next action: none — D-012 solver remains closed (UNBOUNDED_ACCUMULATION, not quasi-steady)
 
 ## Repo facts needed now
-- Mimir slug: digital_cell; Mimir MCP unavailable this session
 - Frozen candidate/config hashes unchanged
-- Invalid D-012 ref preserved + tag D-012-stage-e-reference-invalid
-- R22 valid artifact terminates TIMESTEP_FLOOR_FAILURE at 161166 accepted steps
-- Solver entry closed; R18/R26 not run
+- D-013 R22 preserved; not overwritten
+- Failure cause: FIELD_BOUND_VALIDATION waste ceiling (machine-scale then hard bound)
+- Repair: Branch E projection + unbound mapping; activation step identity; dt recovery hygiene
+- Fresh R22: UNBOUNDED_ACCUMULATION at 161157; activation rel residual ~5e-13
+- Mimir slug: digital_cell (MCP unavailable this session)
 
 ## Last validation
-- Command: cargo test d013_tests+d012_tests; preflight PASS; R22 governed run
-- Result: d013 32 PASS; preflight_pass=true; R22 VALID_GOVERNED_ARTIFACT + NUMERICAL_FAILURE
+- Command: d014_tests PASS; preflight PASS; diagnostic PASS; fresh-r22 UNBOUNDED_ACCUMULATION; nonstiff equal-time max_rel≈2.4e-5
+- Result: D014_NUMERICAL_VALIDITY_RESTORED
 
 ## Open blockers
-- Numerical: timestep floor at ~161k accepted; need root-cause repair before scientific pass
 - BLOCKED: Mimir MCP unavailable
+- D-012 solver CLOSED until quasi-steady R22
+- Waste accumulation hits CONC_SAFETY_LIMIT (scientific, not numerical floor)

@@ -15,7 +15,8 @@ use crate::config::{
 use crate::constraint_accounting::{build_constraint_step, StructureConstraintAccounting};
 use crate::diagnostics::{CellDetector, DiagnosticsSnapshot};
 use crate::fields::{
-    clamp_small_negative, initialize_seed, validate_soluble_field, validate_structure_field,
+    clamp_small_negative, initialize_seed, project_soluble_ceiling_machine_eps, validate_soluble_field,
+    validate_structure_field,
     FieldBuffers,
 };
 use crate::grid::Grid;
@@ -32,6 +33,7 @@ use crate::reactions::{catalyst_diffusivity, compute_all_reactions, interface_we
 use crate::reservoir::apply_reservoir;
 use crate::snapshot::FieldSnapshot;
 use crate::time_audit::DtTelemetry;
+use crate::d014_numerics::{DtLimiter, D014_CONC_CEILING_PROJECT_EPS, D014_DT_FLOOR, D014_DT_RECOVERY_GROWTH};
 use std::time::Instant;
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -73,6 +75,11 @@ pub struct Simulation {
     pub morphology_sample_interval: u64,
     pub timing: TimingTelemetry,
     pub dt_telemetry: DtTelemetry,
+    /// Last rejection limiter attributed by the active substep path.
+    pub last_reject_limiter: DtLimiter,
+    pub last_reject_detail: String,
+    /// Numerical dt ceiling (defaults to MAX_DT; used for refinement studies).
+    pub dt_cap: f64,
     run_start: Option<Instant>,
     prev_attempt_dt: f64,
 }
@@ -111,6 +118,9 @@ impl Simulation {
             morphology_sample_interval: 100,
             timing: TimingTelemetry::default(),
             dt_telemetry: DtTelemetry::default(),
+            last_reject_limiter: DtLimiter::Unknown,
+            last_reject_detail: String::new(),
+            dt_cap: MAX_DT,
             run_start: None,
             prev_attempt_dt: MAX_DT,
         }
@@ -157,13 +167,22 @@ impl Simulation {
         self.finish_timing(self.substep);
     }
 
+    fn reject(&mut self, limiter: DtLimiter, detail: impl Into<String>) -> SubstepResult {
+        self.last_reject_limiter = limiter;
+        self.last_reject_detail = detail.into();
+        SubstepResult::Reject
+    }
+
     pub fn step(&mut self) -> bool {
-        let mut attempt_dt = self.dt;
+        // Bounded recovery toward dt_cap from the latest accepted dt (not a stale historical min).
+        let mut attempt_dt = (self.dt * D014_DT_RECOVERY_GROWTH).min(self.dt_cap);
         let max_attempts = 20;
         let dt_before_attempt = attempt_dt;
         let mut consecutive_rejections = 0u64;
 
         for _ in 0..max_attempts {
+            self.last_reject_limiter = DtLimiter::Unknown;
+            self.last_reject_detail.clear();
             let result = match self.params.equation_version {
                 EquationVersion::D001BulkV1
                 | EquationVersion::D003CrowdingV1
@@ -197,7 +216,8 @@ impl Simulation {
                     self.prev_attempt_dt = attempt_dt;
                     self.sim_time += attempt_dt;
                     self.substep += 1;
-                    self.dt = attempt_dt.min(MAX_DT);
+                    // Store accepted dt; next call may grow by recovery factor toward dt_cap.
+                    self.dt = attempt_dt.min(self.dt_cap);
                     return true;
                 }
                 SubstepResult::Reject => {
@@ -208,15 +228,31 @@ impl Simulation {
                     self.rejection_count += 1;
                     self.accounting.cumulative.rejected_steps += 1;
                     self.dt_telemetry.record_reduction();
+                    // Hard concentration ceiling: further dt shrink cannot repair a state already
+                    // at CONC_SAFETY_LIMIT; abort cascade (runner maps to UnboundedAccumulation).
+                    if self.last_reject_limiter == DtLimiter::FieldBoundValidation
+                        && self.last_reject_detail.contains("excessive concentration")
+                    {
+                        return false;
+                    }
                     attempt_dt *= 0.5;
                     self.min_dt_seen = self.min_dt_seen.min(attempt_dt);
-                    if attempt_dt < 1e-8 {
+                    if attempt_dt < D014_DT_FLOOR {
+                        if self.last_reject_limiter == DtLimiter::Unknown {
+                            self.last_reject_limiter = DtLimiter::AdaptiveController;
+                            self.last_reject_detail =
+                                "attempt_dt below governed floor after reject cascade".into();
+                        }
                         return false;
                     }
                 }
             }
         }
         let _ = dt_before_attempt;
+        if self.last_reject_limiter == DtLimiter::Unknown {
+            self.last_reject_limiter = DtLimiter::AdaptiveController;
+            self.last_reject_detail = "max adaptive attempts exhausted".into();
+        }
         false
     }
 
@@ -1296,27 +1332,45 @@ impl Simulation {
     }
 
     fn try_d008_constrained_radius(&mut self, dt: f64) -> SubstepResult {
-        if validate_structure_field(&self.fields.structure, &self.grid.dish_mask).is_err()
-            || validate_soluble_field(&self.fields.catalyst, &self.grid.dish_mask).is_err()
-            || validate_soluble_field(&self.fields.nutrient, &self.grid.dish_mask).is_err()
-            || validate_soluble_field(&self.fields.fuel, &self.grid.dish_mask).is_err()
-            || validate_soluble_field(&self.fields.waste, &self.grid.dish_mask).is_err()
-            || validate_soluble_field(&self.fields.activated, &self.grid.dish_mask).is_err()
-            || validate_soluble_field(&self.fields.membrane, &self.grid.dish_mask).is_err()
-            || self
-                .fields
-                .catalyst
-                .iter()
-                .enumerate()
-                .any(|(idx, &value)| self.grid.in_dish(idx) && value > self.params.d008_c_max)
-            || self
-                .fields
-                .activated
-                .iter()
-                .enumerate()
-                .any(|(idx, &value)| self.grid.in_dish(idx) && value > self.params.d008_a_max)
+        if let Err(err) = validate_structure_field(&self.fields.structure, &self.grid.dish_mask) {
+            return self.reject(DtLimiter::IncomingStateInvalid, format!("structure:{err}"));
+        }
+        let incoming_err = [
+            ("catalyst", validate_soluble_field(&self.fields.catalyst, &self.grid.dish_mask)),
+            ("nutrient", validate_soluble_field(&self.fields.nutrient, &self.grid.dish_mask)),
+            ("fuel", validate_soluble_field(&self.fields.fuel, &self.grid.dish_mask)),
+            ("waste", validate_soluble_field(&self.fields.waste, &self.grid.dish_mask)),
+            ("activated", validate_soluble_field(&self.fields.activated, &self.grid.dish_mask)),
+            ("membrane", validate_soluble_field(&self.fields.membrane, &self.grid.dish_mask)),
+        ]
+        .into_iter()
+        .find_map(|(name, res)| res.err().map(|e| (name, e)));
+        if let Some((name, err)) = incoming_err {
+            return self.reject(DtLimiter::IncomingStateInvalid, format!("{name}:{err}"));
+        }
+        if let Some((idx, value)) = self
+            .fields
+            .catalyst
+            .iter()
+            .enumerate()
+            .find(|(idx, &value)| self.grid.in_dish(*idx) && value > self.params.d008_c_max)
         {
-            return SubstepResult::Reject;
+            return self.reject(
+                DtLimiter::FieldBoundValidation,
+                format!("incoming C[{idx}]={value} > c_max"),
+            );
+        }
+        if let Some((idx, value)) = self
+            .fields
+            .activated
+            .iter()
+            .enumerate()
+            .find(|(idx, &value)| self.grid.in_dish(*idx) && value > self.params.d008_a_max)
+        {
+            return self.reject(
+                DtLimiter::FieldBoundValidation,
+                format!("incoming A[{idx}]={value} > a_max"),
+            );
         }
 
         let mass_phi = field_mass(&self.grid, &self.fields.structure);
@@ -1504,15 +1558,24 @@ impl Simulation {
             if !self.grid.in_dish(idx) {
                 continue;
             }
-            for value in [
-                self.fields.catalyst_next[idx],
-                self.fields.nutrient_next[idx],
-                self.fields.fuel_next[idx],
-                self.fields.waste_next[idx],
-                self.fields.activated_next[idx],
+            for (name, value) in [
+                ("catalyst", self.fields.catalyst_next[idx]),
+                ("nutrient", self.fields.nutrient_next[idx]),
+                ("fuel", self.fields.fuel_next[idx]),
+                ("waste", self.fields.waste_next[idx]),
+                ("activated", self.fields.activated_next[idx]),
             ] {
-                if !value.is_finite() || value < NEG_CLAMP {
-                    return SubstepResult::Reject;
+                if !value.is_finite() {
+                    return self.reject(
+                        DtLimiter::NonfiniteValue,
+                        format!("next {name}[{idx}]={value}"),
+                    );
+                }
+                if value < NEG_CLAMP {
+                    return self.reject(
+                        DtLimiter::PositivityLimit,
+                        format!("next {name}[{idx}]={value} < NEG_CLAMP"),
+                    );
                 }
             }
             self.fields.catalyst_next[idx] = self.fields.catalyst_next[idx]
@@ -1525,25 +1588,71 @@ impl Simulation {
             self.fields.fuel_next[idx] = clamp_small_negative(self.fields.fuel_next[idx]);
             self.fields.waste_next[idx] = clamp_small_negative(self.fields.waste_next[idx]);
         }
+        for (idx, value) in self.fields.membrane_next.iter().enumerate() {
+            if !self.grid.in_dish(idx) {
+                continue;
+            }
+            if !value.is_finite() {
+                return self.reject(
+                    DtLimiter::NonfiniteValue,
+                    format!("next membrane[{idx}]={value}"),
+                );
+            }
+            if *value < NEG_CLAMP {
+                return self.reject(
+                    DtLimiter::PositivityLimit,
+                    format!("next membrane[{idx}]={value} < NEG_CLAMP"),
+                );
+            }
+        }
         for (idx, value) in self.fields.membrane_next.iter_mut().enumerate() {
             if !self.grid.in_dish(idx) {
                 continue;
             }
-            if !value.is_finite() || *value < NEG_CLAMP {
-                return SubstepResult::Reject;
-            }
             *value = value.max(0.0).min(self.params.m_max);
         }
 
-        if validate_structure_field(&self.fields.structure_next, &self.grid.dish_mask).is_err()
-            || validate_soluble_field(&self.fields.catalyst_next, &self.grid.dish_mask).is_err()
-            || validate_soluble_field(&self.fields.nutrient_next, &self.grid.dish_mask).is_err()
-            || validate_soluble_field(&self.fields.fuel_next, &self.grid.dish_mask).is_err()
-            || validate_soluble_field(&self.fields.waste_next, &self.grid.dish_mask).is_err()
-            || validate_soluble_field(&self.fields.activated_next, &self.grid.dish_mask).is_err()
-            || validate_soluble_field(&self.fields.membrane_next, &self.grid.dish_mask).is_err()
+        // Branch E: project machine-scale ceiling overshoots before hard validation.
+        let _ = project_soluble_ceiling_machine_eps(
+            &mut self.fields.nutrient_next,
+            &self.grid.dish_mask,
+            D014_CONC_CEILING_PROJECT_EPS,
+        );
+        let _ = project_soluble_ceiling_machine_eps(
+            &mut self.fields.fuel_next,
+            &self.grid.dish_mask,
+            D014_CONC_CEILING_PROJECT_EPS,
+        );
+        let _ = project_soluble_ceiling_machine_eps(
+            &mut self.fields.waste_next,
+            &self.grid.dish_mask,
+            D014_CONC_CEILING_PROJECT_EPS,
+        );
+        let _ = project_soluble_ceiling_machine_eps(
+            &mut self.fields.membrane_next,
+            &self.grid.dish_mask,
+            D014_CONC_CEILING_PROJECT_EPS,
+        );
+
+        if let Err(err) = validate_structure_field(&self.fields.structure_next, &self.grid.dish_mask)
         {
-            return SubstepResult::Reject;
+            return self.reject(DtLimiter::FieldBoundValidation, format!("structure_next:{err}"));
+        }
+        let next_validate_err = [
+            ("catalyst_next", validate_soluble_field(&self.fields.catalyst_next, &self.grid.dish_mask)),
+            ("nutrient_next", validate_soluble_field(&self.fields.nutrient_next, &self.grid.dish_mask)),
+            ("fuel_next", validate_soluble_field(&self.fields.fuel_next, &self.grid.dish_mask)),
+            ("waste_next", validate_soluble_field(&self.fields.waste_next, &self.grid.dish_mask)),
+            ("activated_next", validate_soluble_field(&self.fields.activated_next, &self.grid.dish_mask)),
+            ("membrane_next", validate_soluble_field(&self.fields.membrane_next, &self.grid.dish_mask)),
+        ]
+        .into_iter()
+        .find_map(|(name, res)| res.err().map(|e| (name, e)));
+        if let Some((name, err)) = next_validate_err {
+            return self.reject(
+                DtLimiter::FieldBoundValidation,
+                format!("{name}:{err}"),
+            );
         }
 
         let mass_c_after = field_mass(&self.grid, &self.fields.catalyst_next);

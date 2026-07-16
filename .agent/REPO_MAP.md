@@ -96,3 +96,9 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d013.rs` — governed reference runner/preflight
 - `digital-protocell/crates/chemistry-core/tests/d013_tests.rs` — D-013 harness integrity tests
 - `digital-protocell/experiments/generated/d013/` — preservation, preflight, R22 reference, manifest
+
+## D-014 numerical stability
+- `digital-protocell/crates/chemistry-core/src/d014_numerics.rs` — dt limiters, recovery, cause classification
+- `digital-protocell/crates/experiment-runner/src/d014.rs` — failure replay, diagnostic, preflight, fresh R22
+- `digital-protocell/crates/chemistry-core/tests/d014_tests.rs` — controller/activation/projection tests
+- `digital-protocell/experiments/generated/d014/` — preservation, telemetry, fresh R22, manifest

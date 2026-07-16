@@ -163,18 +163,15 @@ impl ActivationPotentialLedger {
         turnover_a_to_w: f64,
     ) {
         self.fuel_reservoir_contribution += step.fuel_import;
-        // Activation transfer moves potential F→A; net potential unchanged under e_F=e_A=1.
+        // Transfer F→A is potential-neutral under e_F=e_A=1; record extent only.
         self.activation_transfer += activation_extent.max(0.0);
+        // Diagnostic dissipation extents (not added again into residual budget).
         self.productive_consumption += productive_a_consumed.max(0.0);
         self.turnover_dissipation += turnover_a_to_w.max(0.0);
         self.numerical_correction += step.numerical_correction;
         self.final_activation_potential = step.potential_after;
-        let expected = self.initial_activation_potential
-            + self.fuel_reservoir_contribution
-            + self.numerical_correction
-            - self.productive_consumption
-            - self.turnover_dissipation;
-        self.residual = self.final_activation_potential - expected;
+        // Step residual already subtracts chemistry+transport+import+numerical.
+        self.residual += step.residual;
         let scale = self
             .final_activation_potential
             .abs()

@@ -30,7 +30,12 @@ pub struct ActivationPotentialStep {
     pub potential_before: f64,
     pub potential_after: f64,
     pub observed_change: f64,
+    /// External fuel reservoir contribution (positive import only).
     pub fuel_import: f64,
+    /// Full signed reservoir potential for F and A (includes fuel export / A reservoir).
+    pub reservoir_potential: f64,
+    pub chemistry_potential: f64,
+    pub transport_potential: f64,
     pub numerical_correction: f64,
     pub residual: f64,
     pub relative_residual: f64,
@@ -90,15 +95,30 @@ pub fn build_activation_potential_step(step: &StepAccounting) -> ActivationPoten
     let potential_after = activation_potential(step.fuel.mass_after, step.activated.mass_after);
     let observed_change = potential_after - potential_before;
     let fuel_import = step.fuel.reservoir_delta.max(0.0);
-    let numerical_correction = step.fuel.numerical_correction_delta
-        + step.activated.numerical_correction_delta;
-    let residual = observed_change - fuel_import - numerical_correction;
+    let reservoir_potential =
+        E_FUEL * step.fuel.reservoir_delta + E_ACTIVATED * step.activated.reservoir_delta;
+    let numerical_correction = E_FUEL * step.fuel.numerical_correction_delta
+        + E_ACTIVATED * step.activated.numerical_correction_delta;
+    // Chemistry + internal transport (transport cancels globally for closed dishes).
+    let chemistry_potential =
+        E_FUEL * step.fuel.reaction_delta + E_ACTIVATED * step.activated.reaction_delta;
+    let transport_potential =
+        E_FUEL * step.fuel.diffusion_delta + E_ACTIVATED * step.activated.diffusion_delta;
+    // Residual vs full partition; field accounting_residual is the only expected leftover.
+    let residual = observed_change
+        - reservoir_potential
+        - numerical_correction
+        - chemistry_potential
+        - transport_potential;
     let scale = potential_before.abs().max(potential_after.abs()).max(1.0);
     ActivationPotentialStep {
         potential_before,
         potential_after,
         observed_change,
         fuel_import,
+        reservoir_potential,
+        chemistry_potential,
+        transport_potential,
         numerical_correction,
         residual,
         relative_residual: residual.abs() / scale,

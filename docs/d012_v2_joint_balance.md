@@ -119,3 +119,10 @@ The Stage E reference at `v2_stage_e_reference/` remains `INVALID_ARTIFACT` /
 repairs harness integrity and recovers a new governed reference under
 `experiments/generated/d013/` without altering chemistry or rates. No D-012
 scientific Stage E conclusion is authorized until a valid D-013 reference exists.
+
+## D-014 append (2026-07-15)
+
+Stage E remains blocked on a numerically trustworthy fresh R22 under the frozen
+conservative-v2 candidate. D-014 repairs `TIMESTEP_FLOOR_FAILURE` / activation residual
+without chemistry changes. Solver entry stays closed unless the fresh R22 is
+`QUASI_STEADY_CONVERGED`.

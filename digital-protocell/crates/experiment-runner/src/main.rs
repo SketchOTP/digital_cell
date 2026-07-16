@@ -10,6 +10,7 @@ mod d011;
 mod d012;
 mod d012_stage_e;
 mod d013;
+mod d014;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -96,6 +97,10 @@ enum Commands {
     D013 {
         #[command(subcommand)]
         action: D013Commands,
+    },
+    D014 {
+        #[command(subcommand)]
+        action: D014Commands,
     },
 }
 
@@ -362,6 +367,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D011 { action } => run_d011(action)?,
         Commands::D012 { action } => run_d012(action)?,
         Commands::D013 { action } => run_d013(action)?,
+        Commands::D014 { action } => run_d014(action)?,
     }
     Ok(())
 }
@@ -893,6 +899,97 @@ fn run_d013(action: D013Commands) -> Result<(), Box<dyn std::error::Error>> {
             println!(
                 "D-013 pipeline: {} -> {}",
                 result["d013_conclusion"],
+                output.display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D014Commands {
+    /// Reproduce D-013 TIMESTEP_FLOOR_FAILURE from the 150k checkpoint.
+    FailureReplay {
+        #[arg(long, default_value = "experiments/generated/d014/failure_replay")]
+        output: PathBuf,
+    },
+    /// Diagnostic 150k→170k replay after numerical repair.
+    DiagnosticReplay {
+        #[arg(long, default_value = "experiments/generated/d014/diagnostic_checkpoint_replay")]
+        output: PathBuf,
+    },
+    /// Fresh R22 preflight on repaired binary.
+    Preflight {
+        #[arg(long, default_value = "experiments/generated/d014/preflight")]
+        output: PathBuf,
+    },
+    /// Fresh governed R22 reference after preflight.
+    FreshR22 {
+        #[arg(long, default_value = "experiments/generated/d014/fresh_reference_r22")]
+        output: PathBuf,
+    },
+    /// Non-stiff 0–25k equivalence at 1×/0.5×/0.25× dt_cap.
+    NonstiffEquivalence {
+        #[arg(long, default_value = "experiments/generated/d014/nonstiff_equivalence")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d014_artifact_path(path: PathBuf) -> PathBuf {
+    if path.is_absolute() {
+        return path;
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..").join(path)
+}
+
+fn run_d014(action: D014Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D014Commands::FailureReplay { output } => {
+            let output = resolve_d014_artifact_path(output);
+            let result = d014::run_failure_reproduction(&output)?;
+            println!(
+                "D-014 failure-replay: floor={} reproduced={} limiter={:?} -> {}",
+                result["floor_failure"],
+                result["reproduced_near_original"],
+                result["terminal_limiter"],
+                output.display()
+            );
+        }
+        D014Commands::DiagnosticReplay { output } => {
+            let output = resolve_d014_artifact_path(output);
+            let result = d014::run_diagnostic_replay_170k(&output)?;
+            println!(
+                "D-014 diagnostic-replay: floor={} end_steps={} -> {}",
+                result["floor_failure"],
+                result["end_accepted_substeps"],
+                output.display()
+            );
+        }
+        D014Commands::Preflight { output } => {
+            let output = resolve_d014_artifact_path(output);
+            let result = d014::run_d014_preflight(&output)?;
+            println!(
+                "D-014 preflight: pass={} -> {}",
+                result["preflight_pass"],
+                output.display()
+            );
+        }
+        D014Commands::FreshR22 { output } => {
+            let output = resolve_d014_artifact_path(output);
+            let result = d014::run_fresh_reference_r22(&output)?;
+            println!(
+                "D-014 fresh-r22: {:?} {:?} -> {}",
+                result["termination_reason"],
+                result["scientific_classification"],
+                output.display()
+            );
+        }
+        D014Commands::NonstiffEquivalence { output } => {
+            let output = resolve_d014_artifact_path(output);
+            let result = d014::run_nonstiff_equivalence(&output)?;
+            println!(
+                "D-014 nonstiff-equivalence: horizon={} -> {}",
+                result["horizon_accepted"],
                 output.display()
             );
         }

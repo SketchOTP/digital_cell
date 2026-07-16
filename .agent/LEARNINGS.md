@@ -21,3 +21,4 @@ Append-only repo-specific lessons. Format:
 - 2026-07-15 | area:d011 | lesson:D-011 may vary only k_structure,k_rep,k_membrane,k_activation; turnover constants stay frozen | evidence:digital-protocell/crates/chemistry-core/src/d011_analysis.rs
 - 2026-07-15 | area:stoichiometry | lesson:v1 runtime catalyst production is A→C+W; membrane synthesis is ∅→M; decay/detach delete M | evidence:digital-protocell/crates/chemistry-core/src/stoichiometry.rs
 - 2026-07-15 | area:d013 | lesson:Stage E windows must advance only on accepted substeps; JSON f64 snapshots need lossless bits for resume | evidence:digital-protocell/crates/experiment-runner/src/d013.rs
+- 2026-07-15 | area:d014-numerics | lesson:R22 TIMESTEP_FLOOR was waste CONC_SAFETY_LIMIT validation; machine-eps project + unbound map, not chemistry | evidence:docs/d014_timestep_floor_postmortem.md

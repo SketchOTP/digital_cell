@@ -17,3 +17,16 @@ Order:
 3. Neighbors R=18 and R=26 only if R22 is valid and quasi-steady
 
 Solver entry remains closed until a valid quasi-steady R22 governed artifact exists with complete material and activation accounting.
+
+## D-014 numerical repair note (2026-07-15)
+
+D-013 R22 remains the historical numerical-failure artifact (`TIMESTEP_FLOOR_FAILURE` at
+accepted substep 161166). D-014 preserved it under
+`experiments/generated/d014/preservation/` and did **not** overwrite
+`experiments/generated/d013/reference_r22/`.
+
+Cause of the floor: `FIELD_BOUND_VALIDATION` on `waste_next` at `CONC_SAFETY_LIMIT`
+(overshoot ≈ 1×10⁻¹⁰ at terminal cascade). See `docs/d014_timestep_floor_postmortem.md`.
+
+Fresh scientific trajectory after numerical repair lives under
+`experiments/generated/d014/fresh_reference_r22/`.
