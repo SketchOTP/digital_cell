@@ -34,3 +34,17 @@ Fresh R22 result: see `experiments/generated/d015/fresh_reference_r22/` (populat
 Subsidiary: peripheral sink geometry was also limiting and was repaired (W-only `waste_sink_inner_radius=30`); clearance law CORRECT; export implementation OK but insufficient vs continuous production.
 
 Fresh repaired R22: `UNBOUNDED_ACCUMULATION` at 162073 steps. D-012 solver remains **CLOSED**.
+
+## D-016 operative reinterpretation (append-only)
+
+Historical conclusion **`D015_INTERNAL_WASTE_PRODUCTION_IMBALANCE`** is preserved.
+
+Operative reinterpretation for follow-on work:
+
+```text
+D015_WASTE_SOURCE_TRANSPORT_BALANCE_UNRESOLVED
+```
+
+D-016 quantified passive W transport under the repaired sink and concluded
+`D016_PASSIVE_WASTE_TRANSPORT_INSUFFICIENT` / `D016_INTERNAL_DIFFUSION_LIMIT_CONFIRMED`
+within the authorized small-solute bound `D_W ≤ max(D_N,D_F)`. D-012 solver remains CLOSED.

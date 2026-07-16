@@ -130,3 +130,9 @@ without chemistry changes. Solver entry stays closed unless the fresh R22 is
 ## D-015 status
 
 Waste-throughput diagnosis in progress/repair: D-012 solver remains CLOSED until repaired fresh R22 reaches `QUASI_STEADY_CONVERGED`. Organism frozen; environment schema v2 W-sink repair only.
+
+## D-016 append (2026-07-15)
+
+Passive waste-transport timescale closure failed inside the authorized small-solute
+diffusivity bound. Solver entry remains **CLOSED**. No four-rate sensitivity or
+yield branch is authorized until a quasi-steady biological R22 exists.

@@ -20,3 +20,9 @@ Numerical validity repair for constrained-radius Stage E is tracked under D-014
 ## D-015
 
 Solver entry gate still CLOSED pending quasi-steady repaired R22. D-014 numerical validity preserved; waste ceiling failure reclassified as environmental transport-to-sink limitation.
+
+## D-016
+
+`D016_PASSIVE_WASTE_TRANSPORT_INSUFFICIENT` with subsidiary
+`D016_INTERNAL_DIFFUSION_LIMIT_CONFIRMED`. Organism chemistry unchanged; no transport
+schema v2 candidate accepted. Solver CLOSED.

@@ -48,3 +48,12 @@ Interior fills to ceiling at center
 
 Branch B item 1, **W-only** sink expansion: `waste_sink_inner_radius = 30` for R=22.
 N/F continue to use the original `reservoir_mask` annulus (supply unchanged).
+
+## D-016 follow-on (append-only)
+
+D-015 repaired the environmental sink (`waste_sink_inner_radius=30`). Fresh R22 still
+failed at the interior center. D-016 shows that under repaired geometry the dominant
+remaining resistance is **internal diffusion**, and the analytically required `D_W`
+(≈1.06 for a 50% ceiling target) exceeds `max(D_N,D_F)=0.18`. Historical
+`τ_cell→reservoir≈16129` remains valid as the pre-repair diagnostic clue
+(`τ/t_fail≈39.8`) but is not the repaired-path resistance model.
