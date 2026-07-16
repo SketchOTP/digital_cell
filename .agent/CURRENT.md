@@ -1,27 +1,24 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260715-d016-waste-transport-timescale
-- Project directive: D-016
-- Goal: Quantify/repair intracellular W transport timescale before chemistry changes
-- Status: done (passive transport insufficient)
-- Acceptance: One D016_* conclusion with governed evidence — met as PASSIVE_WASTE_TRANSPORT_INSUFFICIENT
-- Touched files: d016_transport, d016_tests, d016 runner, config transport_schema, docs/d016_*, d015/d012 appends
-- Next action: Next directive — compare activation-yield repair vs energy-coupled active W export
+- ID: D-20260716-d017-waste-architecture-comparison
+- Project directive: D-017
+- Goal: Compare activation-yield vs energy-coupled active W export
+- Status: done (reject both)
+- Acceptance: One D017_* selection/rejection with evidence — met as D017_REJECT_BOTH_ARCHITECTURES
+- Touched files: d017_comparison, d017_tests, experiment-runner/d017, docs/d017_*, d012/d015/d016 appends
+- Next action: Next directive — identify upstream mechanism beyond A/B using D-017 evidence (structure-turnover dominance)
 
 ## Repo facts needed now
-- D016_PASSIVE_WASTE_TRANSPORT_INSUFFICIENT + D016_INTERNAL_DIFFUSION_LIMIT_CONFIRMED
-- D_W_required(50%)≈1.057 ≫ authorized bound 0.18; baseline D_W=0.25 already faster than N/F
-- Fixed-source baseline: CONCENTRATION_BOUND_REACHED @ 175303 steps / t≈438
-- Gate point D_W=0.18 β_W=0: still CONCENTRATION_BOUND_REACHED
-- Chemistry/environment frozen; transport_schema remains 1
+- D017_REJECT_BOTH_ARCHITECTURES; tag D-017-reject-both-waste-architectures
+- Direct activation W ≈5%; structure turnover ≈89% of frozen source
+- Perfect-interface center W≈12.69 ≥10; internal delivery insufficient
 - D-012 solver: CLOSED
 - Mimir slug: digital_cell
 
 ## Last validation
-- Command: cargo test -p chemistry-core --release --test d008/d011/d012/d013/d014/d015/d016
-- Result: all PASS (247 tests across suites)
+- Command: cargo test -p chemistry-core --release --test d012/d013/d014/d015/d016/d017
+- Result: PASS 50+32+20+32+24+17
 
 ## Open blockers
-- BLOCKED: Mimir MCP unavailable (try HTTP at end)
-- Passive W transport falsified inside small-solute bound; chemistry/active-export next
+- Stage E waste unresolved; A/B architectures falsified

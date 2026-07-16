@@ -118,3 +118,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d016.rs` — preserve, audit, source/timescales, fixed-source campaign
 - `digital-protocell/experiments/generated/d016/` — preservation, assays, manifest (local; gitignored)
 - `docs/d016_*.md` — audit, source, timescales, conductance, resistance, calibration, candidate report
+
+## D-017 waste architecture comparison
+- `digital-protocell/crates/chemistry-core/src/d017_comparison.rs` — activation-yield vs active-export bounds
+- `digital-protocell/crates/chemistry-core/tests/d017_tests.rs` — D-017 comparison falsification tests (17)
+- `digital-protocell/crates/experiment-runner/src/d017.rs` — observer-only artifact pipeline
+- `digital-protocell/experiments/generated/d017/` — comparison artifacts and manifest
+- `docs/d017_*.md` — source, yield, feedback, interface, export, matrix, report

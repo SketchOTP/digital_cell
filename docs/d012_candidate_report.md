@@ -26,3 +26,7 @@ Solver entry gate still CLOSED pending quasi-steady repaired R22. D-014 numerica
 `D016_PASSIVE_WASTE_TRANSPORT_INSUFFICIENT` with subsidiary
 `D016_INTERNAL_DIFFUSION_LIMIT_CONFIRMED`. Organism chemistry unchanged; no transport
 schema v2 candidate accepted. Solver CLOSED.
+
+## D-017 append (2026-07-16)
+
+Waste architecture comparison (D-017) rejected both candidate repairs. Solver entry gate remains CLOSED. No new equation version.

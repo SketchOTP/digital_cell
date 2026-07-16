@@ -51,3 +51,11 @@ Compare exactly:
 - B. energy-coupled active waste export
 
 Do not implement either inside D-016. Do not add an eighth field.
+
+## D-017 append (2026-07-16)
+
+Architecture comparison rejected both activation-yield and energy-coupled active export. See `docs/d017_candidate_report.md`. D-016 conclusion preserved; D-012 solver remains CLOSED.
+
+## D-017 interpretation note (append-only)
+
+D-017 used this report as frozen evidence for architecture selection. No D-016 numbers were rewritten. Manifest sha256: 880ef7e3a9ec2a2d9a50f538e6adc911e003e7a4556541480d88363aef878bfb.

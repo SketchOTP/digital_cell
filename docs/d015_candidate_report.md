@@ -48,3 +48,7 @@ D015_WASTE_SOURCE_TRANSPORT_BALANCE_UNRESOLVED
 D-016 quantified passive W transport under the repaired sink and concluded
 `D016_PASSIVE_WASTE_TRANSPORT_INSUFFICIENT` / `D016_INTERNAL_DIFFUSION_LIMIT_CONFIRMED`
 within the authorized small-solute bound `D_W ≤ max(D_N,D_F)`. D-012 solver remains CLOSED.
+
+## D-017 append (2026-07-16)
+
+D-017 compared activation-yield vs active export using D-015/D-016 frozen evidence; both rejected. Historical D-015 conclusion preserved.

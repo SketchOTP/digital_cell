@@ -25,3 +25,5 @@ Append-only repo-specific lessons. Format:
 - 2026-07-15 | area:d015-waste | lesson:Peripheral reservoir idle was real; W-only sink at r=30 clears exterior but interior still hits CONC_SAFETY_LIMIT | evidence:docs/d015_waste_accumulation_postmortem.md
 - 2026-07-15 | area:d016-transport | lesson:After W-sink r=30 repair, dominant resistance is internal; D_W_required≈1.06≫max(D_N,D_F)=0.18 | evidence:docs/d016_timescale_analysis.md
 - 2026-07-15 | area:d016-transport | lesson:Baseline D_W=0.25 already faster than N/F=0.18; fixed-source still ceilings at t≈438 | evidence:experiments/generated/d016/fixed_source_baseline/result.json
+- 2026-07-16 | area:d017 | lesson:η=1 checkpoint: structure turnover ~89% of W; activation only ~5%; perfect-interface center W≈12.7 fails export | evidence:docs/d017_source_decomposition.md
+- 2026-07-16 | area:d017 | lesson:Activation yield α>0 needs E_A=E_F/(1+α); frozen E_A=1 creates potential | evidence:docs/d017_activation_yield_analysis.md
