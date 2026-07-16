@@ -16,3 +16,7 @@ classifies prior Q/g/retention measurements as
 
 Numerical validity repair for constrained-radius Stage E is tracked under D-014
 (`docs/d014_candidate_report.md`). Frozen candidate/configuration hashes are unchanged.
+
+## D-015
+
+Solver entry gate still CLOSED pending quasi-steady repaired R22. D-014 numerical validity preserved; waste ceiling failure reclassified as environmental transport-to-sink limitation.

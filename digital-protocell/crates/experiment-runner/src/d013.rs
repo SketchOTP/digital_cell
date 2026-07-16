@@ -165,6 +165,8 @@ pub struct GovernedRunOutcome {
     pub field_hashes: BTreeMap<String, String>,
     pub windows: Vec<SteadyWindowSnapshot>,
     pub wall_seconds: f64,
+    pub waste_budget_max_relative_residual: f64,
+    pub waste_budget_accepted_steps: u64,
 }
 
 fn git_commit_hash() -> Result<String, Box<dyn std::error::Error>> {
@@ -637,10 +639,12 @@ pub fn run_governed_reference(
         field_hashes: field_hashes(&sim),
         windows: steady_windows,
         wall_seconds: wall.elapsed().as_secs_f64(),
+        waste_budget_max_relative_residual: sim.waste_budget.max_step_relative_residual,
+        waste_budget_accepted_steps: sim.waste_budget.accepted_steps,
     })
 }
 
-fn outcome_artifact(
+pub(crate) fn outcome_artifact(
     outcome: &GovernedRunOutcome,
     identity: &CandidateIdentity,
     source_commit: &str,

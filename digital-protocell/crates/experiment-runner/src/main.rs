@@ -11,6 +11,7 @@ mod d012;
 mod d012_stage_e;
 mod d013;
 mod d014;
+mod d015;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -101,6 +102,10 @@ enum Commands {
     D014 {
         #[command(subcommand)]
         action: D014Commands,
+    },
+    D015 {
+        #[command(subcommand)]
+        action: D015Commands,
     },
 }
 
@@ -368,6 +373,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D012 { action } => run_d012(action)?,
         Commands::D013 { action } => run_d013(action)?,
         Commands::D014 { action } => run_d014(action)?,
+        Commands::D015 { action } => run_d015(action)?,
     }
     Ok(())
 }
@@ -990,6 +996,98 @@ fn run_d014(action: D014Commands) -> Result<(), Box<dyn std::error::Error>> {
             println!(
                 "D-014 nonstiff-equivalence: horizon={} -> {}",
                 result["horizon_accepted"],
+                output.display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D015Commands {
+    Preserve {
+        #[arg(long, default_value = "experiments/generated/d015/preservation")]
+        output: PathBuf,
+    },
+    RegressionSummary {
+        #[arg(long, default_value = "experiments/generated/d015/regressions")]
+        output: PathBuf,
+    },
+    AnalyzeD014Checkpoint {
+        #[arg(long, default_value = "experiments/generated/d015/d014_replay")]
+        output: PathBuf,
+    },
+    Controls {
+        #[arg(long, default_value = "experiments/generated/d015/controls")]
+        output: PathBuf,
+        #[arg(long, default_value_t = true)]
+        repaired: bool,
+    },
+    Preflight {
+        #[arg(long, default_value = "experiments/generated/d015/preflight")]
+        output: PathBuf,
+        #[arg(long, default_value_t = true)]
+        repaired: bool,
+    },
+    FreshR22 {
+        #[arg(long, default_value = "experiments/generated/d015/fresh_reference_r22")]
+        output: PathBuf,
+        #[arg(long, default_value_t = true)]
+        repaired: bool,
+    },
+}
+
+fn resolve_d015_artifact_path(path: PathBuf) -> PathBuf {
+    if path.is_absolute() {
+        return path;
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..").join(path)
+}
+
+fn run_d015(action: D015Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D015Commands::Preserve { output } => {
+            let output = resolve_d015_artifact_path(output);
+            let result = d015::run_preserve(&output)?;
+            println!("D-015 preserve -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D015Commands::RegressionSummary { output } => {
+            let output = resolve_d015_artifact_path(output);
+            let result = d015::run_regression_summary(&output)?;
+            println!("D-015 regression-summary -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D015Commands::AnalyzeD014Checkpoint { output } => {
+            let output = resolve_d015_artifact_path(output);
+            let result = d015::run_analyze_d014_checkpoint(&output)?;
+            println!("D-015 analyze-d014-checkpoint -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D015Commands::Controls { output, repaired } => {
+            let output = resolve_d015_artifact_path(output);
+            let result = d015::run_controls(&output, repaired)?;
+            println!(
+                "D-015 controls (repaired={repaired}) -> {}",
+                output.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D015Commands::Preflight { output, repaired } => {
+            let output = resolve_d015_artifact_path(output);
+            let result = d015::run_preflight(&output, repaired)?;
+            println!(
+                "D-015 preflight (repaired={repaired}) pass={} -> {}",
+                result["preflight_pass"],
+                output.display()
+            );
+        }
+        D015Commands::FreshR22 { output, repaired } => {
+            let output = resolve_d015_artifact_path(output);
+            let result = d015::run_fresh_r22(&output, repaired)?;
+            println!(
+                "D-015 fresh-r22 (repaired={repaired}) {:?} -> {}",
+                result["termination_reason"],
                 output.display()
             );
         }

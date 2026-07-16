@@ -126,3 +126,7 @@ Stage E remains blocked on a numerically trustworthy fresh R22 under the frozen
 conservative-v2 candidate. D-014 repairs `TIMESTEP_FLOOR_FAILURE` / activation residual
 without chemistry changes. Solver entry stays closed unless the fresh R22 is
 `QUASI_STEADY_CONVERGED`.
+
+## D-015 status
+
+Waste-throughput diagnosis in progress/repair: D-012 solver remains CLOSED until repaired fresh R22 reaches `QUASI_STEADY_CONVERGED`. Organism frozen; environment schema v2 W-sink repair only.
