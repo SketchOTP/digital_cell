@@ -1,26 +1,24 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260716-d018-structural-constraint-nullcline
-- Project directive: D-018
-- Goal: Structural constraint provenance and nullcline recovery diagnosis
-- Status: done
-- Acceptance: One primary D018_* conclusion with tracer/unconstrained/scaling evidence — met
-- Touched files: d018_provenance, d018_analysis, simulation, d018_tests, experiment-runner/d018, docs/d018_*, append-only reports
-- Next action: Next directive — compare phase-volume synthesis vs interface-limited turnover vs curvature/thickness coupling
+- ID: D-20260716-d019-structural-scaling-repair
+- Project directive: D-019
+- Goal: Structural scaling repair and Stage E recovery
+- Status: partial
+- Acceptance: partial — mechanism selected + B–D pass + restoring nullcline; Stage E NOT_CONVERGED so D019_STRUCTURAL_SCALING_REPAIR_PASS not met
+- Touched files: structural_kinetics.rs, config EquationVersion V3, simulation rates, d019 runner/tests/docs/artifacts
+- Next action: Joint four-rate recalibration under v3 (or progressive Stage E rate screen) then re-run R22/R18/R26
 
 ## Repo facts needed now
-- Primary: D018_SURFACE_VOLUME_SCALING_INCOMPATIBLE
-- Subsidiary: D018_CONSTRAINT_WASTE_ARTIFACT_CONFIRMED
-- Tag: D-018-surface-volume-scaling-incompatible
-- Production~R^1 interface; decay~R^2 bulk; k_req rises with R
-- Unconstrained: STRUCTURE_COLLAPSE_LIMITS_W_SOURCE
-- D-012 solver: CLOSED; Stage E BLOCKED
+- Selected: interface_limited_turnover (membrane_metabolism_v3_structural_scaling)
+- Preserve D018_SURFACE_VOLUME_SCALING_INCOMPATIBLE + CONSTRAINT_WASTE_ARTIFACT
+- Prebalance k_center≈0.2576 restoring; Stage E Q_structure≪1 at frozen companion rates
+- D-012 solver: CLOSED; D-008 Stage E: BLOCKED_NOT_RECOVERED
 - Mimir slug: digital_cell
 
 ## Last validation
-- Command: cargo test -p chemistry-core --release --test d008/d011/d012/d013/d014/d015/d016/d017/d018
-- Result: PASS (exit 0; d016 24, d017 17, d018 27 confirmed in log)
+- Command: cargo test d008–d019 release; Stage B/C/D PASS; Stage E 200k NOT_CONVERGED (2 k attempts)
+- Result: suites PASS; Stage E scientific fail (no quasi-steady)
 
 ## Open blockers
-- None for D-018; Stage E remains blocked pending spatial structure redesign
+- Stage E joint quasi-steady not reached with prebalance k alone or single Q-corrected k

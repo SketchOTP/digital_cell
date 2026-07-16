@@ -15,6 +15,7 @@ mod d015;
 mod d016;
 mod d017;
 mod d018;
+mod d019;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -121,6 +122,10 @@ enum Commands {
     D018 {
         #[command(subcommand)]
         action: D018Commands,
+    },
+    D019 {
+        #[command(subcommand)]
+        action: D019Commands,
     },
 }
 
@@ -392,6 +397,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D016 { action } => run_d016(action)?,
         Commands::D017 { action } => run_d017(action)?,
         Commands::D018 { action } => run_d018(action)?,
+        Commands::D019 { action } => run_d019(action)?,
     }
     Ok(())
 }
@@ -1192,6 +1198,82 @@ fn run_d018(action: D018Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["terminal_tag"],
                 output.display()
             );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D019Commands {
+    /// D-019 structural scaling repair pipeline (mechanism selection + pre-balance).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d019")]
+        output: PathBuf,
+    },
+    /// Governed Stage E reference at R=22 with v3 structural scaling equation.
+    StageE {
+        #[arg(long, default_value = "experiments/generated/d019/stage_e_reference")]
+        output: PathBuf,
+        #[arg(long, default_value = "200000")]
+        max_steps: u64,
+    },
+    /// Neighbor radius validation at R=18 and R=26 after Stage E center.
+    Neighbors {
+        #[arg(long, default_value = "experiments/generated/d019/stage_e_reference/neighbors")]
+        output: PathBuf,
+        #[arg(long, default_value = "200000")]
+        max_steps: u64,
+    },
+    /// Re-run foundational Stage B/C/D gates under v3 equation version.
+    StagesBcd {
+        #[arg(long, default_value = "experiments/generated/d019/stage_b_c_d")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d019_artifact_path(path: PathBuf) -> PathBuf {
+    if path.is_absolute() {
+        return path;
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..").join(path)
+}
+
+fn run_d019(action: D019Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D019Commands::Pipeline { output } => {
+            let output = resolve_d019_artifact_path(output);
+            let result = d019::run_pipeline(&output)?;
+            println!(
+                "D-019 pipeline conclusion={} -> {}",
+                result["primary_conclusion"],
+                output.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D019Commands::StageE { output, max_steps } => {
+            let output = resolve_d019_artifact_path(output);
+            let result = d019::run_stage_e_reference(&output, max_steps)?;
+            println!(
+                "D-019 Stage E classification={} -> {}",
+                result["scientific_classification"],
+                output.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D019Commands::Neighbors { output, max_steps } => {
+            let output = resolve_d019_artifact_path(output);
+            let result = d019::run_neighbor_radius_validation(&output, max_steps)?;
+            println!(
+                "D-019 neighbors -> {}",
+                output.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D019Commands::StagesBcd { output } => {
+            let output = resolve_d019_artifact_path(output);
+            let result = d019::run_stages_b_c_d(&output)?;
+            println!("D-019 stages B/C/D -> {}", output.display());
             println!("{}", serde_json::to_string_pretty(&result)?);
         }
     }

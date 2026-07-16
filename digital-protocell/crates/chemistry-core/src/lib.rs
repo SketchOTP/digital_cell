@@ -40,6 +40,7 @@ pub mod simulation;
 pub mod snapshot;
 pub mod stoichiometry;
 pub mod stage_d_gate;
+pub mod structural_kinetics;
 pub mod surface_calibration;
 pub mod time_audit;
 
@@ -74,6 +75,7 @@ pub use simulation::*;
 pub use snapshot::*;
 pub use stoichiometry::*;
 pub use stage_d_gate::*;
+pub use structural_kinetics::*;
 pub use surface_calibration::*;
 pub use time_audit::*;
 pub use diagnostics::*;

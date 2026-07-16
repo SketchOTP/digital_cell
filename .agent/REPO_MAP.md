@@ -133,3 +133,9 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d018.rs` — diagnostic pipeline and artifacts
 - `digital-protocell/experiments/generated/d018/` — D-018 governed artifacts and manifest
 - `docs/d018_*.md` — constraint semantics, provenance, scaling, nullcline, report
+
+## experiment-runner / D-019
+- `digital-protocell/crates/chemistry-core/src/structural_kinetics.rs` — v3 mechanism comparison and kinetics
+- `digital-protocell/crates/chemistry-core/tests/d019_tests.rs` — D-019 mechanism/conservation tests
+- `digital-protocell/crates/experiment-runner/src/d019.rs` — pipeline + Stage E reference runner
+- `docs/d019_*.md` — mechanism comparison, selected mechanism, candidate report drafts

@@ -231,6 +231,60 @@ k_d008_activated_decay={};k_d008_catalyst_turnover={};k_d008_structure={};d008_a
                 ));
             }
         }
+        EquationVersion::MembraneMetabolismV3StructuralScaling => {
+            s.push_str(&format!(
+                ";d_a={};beta_c={};beta_a={};beta_n={};beta_f={};beta_w={}",
+                params.d_a,
+                params.beta_c,
+                params.beta_a,
+                params.beta_n,
+                params.beta_f,
+                params.beta_w,
+            ));
+            let include_membrane_dynamics = params.d008_stage_b_enabled
+                || params.d008_stage_mode != D008StageMode::Transport;
+            if include_membrane_dynamics {
+                s.push_str(&format!(
+                    ";m_max={};d_m={};k_membrane_decay={};k_membrane_detach={};k_c_membrane={};\
+k_membrane={};d008_stage_b_enabled={}",
+                    params.m_max,
+                    params.d_m,
+                    params.k_membrane_decay,
+                    params.k_membrane_detach,
+                    params.k_c_membrane,
+                    params.k_membrane,
+                    params.d008_stage_b_enabled,
+                ));
+            }
+            if params.d008_stage_mode != D008StageMode::Transport {
+                s.push_str(&format!(
+                    ";d008_stage_mode={};k_d008_activation={};k_d008_reproduction={};\
+k_d008_activated_decay={};k_d008_catalyst_turnover={};k_d008_structure={};d008_a_max={};d008_c_max={}",
+                    params.d008_stage_mode,
+                    params.k_d008_activation,
+                    params.k_d008_reproduction,
+                    params.k_d008_activated_decay,
+                    params.k_d008_catalyst_turnover,
+                    params.k_d008_structure,
+                    params.d008_a_max,
+                    params.d008_c_max
+                ));
+            }
+            s.push_str(&format!(
+                ";eta_c={};eta_phi={};eta_m={};field_schema_version=seven_field_v1;snapshot_schema_version=2;stoichiometric_schema_version={STOICHIOMETRIC_SCHEMA_VERSION_V2};structural_schema_version={};structural_mechanism={}",
+                params.eta_c,
+                params.eta_phi,
+                params.eta_m,
+                crate::structural_kinetics::STRUCTURAL_SCHEMA_VERSION_V3,
+                crate::structural_kinetics::V3_SELECTED_MECHANISM.as_str(),
+            ));
+            if params.transport_schema_version != crate::config::TRANSPORT_SCHEMA_VERSION_V1 {
+                s.push_str(&format!(
+                    ";transport_schema_version={}",
+                    params.transport_schema_version
+                ));
+            }
+        }
         EquationVersion::D001BulkV1
         | EquationVersion::D003CrowdingV1
         | EquationVersion::SurfaceTurnoverV1 => {}
@@ -293,7 +347,7 @@ pub fn build_candidate_identity(
             EquationVersion::D001BulkV1
             | EquationVersion::D003CrowdingV1
             | EquationVersion::MembraneMetabolismV1
-            | EquationVersion::MembraneMetabolismV2Conservative => params.k_structure,
+            | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling => params.k_structure,
         },
         k_rep: params.k_rep,
         initial_condition: InitialConditionConfiguration {

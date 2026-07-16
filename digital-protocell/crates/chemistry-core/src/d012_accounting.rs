@@ -154,5 +154,5 @@ pub fn waste_is_consumed_as_reactant(delta: &[f64; SEVEN_FIELD_COUNT]) -> bool {
 }
 
 pub fn requires_v2_accounting(equation: EquationVersion) -> bool {
-    equation == EquationVersion::MembraneMetabolismV2Conservative
+    equation.is_conservative_membrane_metabolism()
 }

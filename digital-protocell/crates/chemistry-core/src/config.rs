@@ -38,6 +38,9 @@ pub enum EquationVersion {
     /// D-012 conservative seven-field network; not comparable to v1 candidate hashes.
     #[serde(rename = "membrane_metabolism_v2_conservative")]
     MembraneMetabolismV2Conservative,
+    /// D-019 structural scaling repair; inherits v2 stoichiometry / yields / transport.
+    #[serde(rename = "membrane_metabolism_v3_structural_scaling")]
+    MembraneMetabolismV3StructuralScaling,
 }
 
 impl EquationVersion {
@@ -48,19 +51,30 @@ impl EquationVersion {
             Self::SurfaceTurnoverV1 => "surface_turnover_v1",
             Self::MembraneMetabolismV1 => "membrane_metabolism_v1",
             Self::MembraneMetabolismV2Conservative => "membrane_metabolism_v2_conservative",
+            Self::MembraneMetabolismV3StructuralScaling => "membrane_metabolism_v3_structural_scaling",
         }
     }
 
     pub const fn is_membrane_metabolism(self) -> bool {
         matches!(
             self,
-            Self::MembraneMetabolismV1 | Self::MembraneMetabolismV2Conservative
+            Self::MembraneMetabolismV1
+                | Self::MembraneMetabolismV2Conservative
+                | Self::MembraneMetabolismV3StructuralScaling
+        )
+    }
+
+    pub const fn is_conservative_membrane_metabolism(self) -> bool {
+        matches!(
+            self,
+            Self::MembraneMetabolismV2Conservative | Self::MembraneMetabolismV3StructuralScaling
         )
     }
 
     pub const fn stoichiometric_schema_version(self) -> u32 {
         match self {
-            Self::MembraneMetabolismV2Conservative => STOICHIOMETRIC_SCHEMA_VERSION_V2,
+            Self::MembraneMetabolismV2Conservative
+            | Self::MembraneMetabolismV3StructuralScaling => STOICHIOMETRIC_SCHEMA_VERSION_V2,
             Self::MembraneMetabolismV1 => STOICHIOMETRIC_SCHEMA_VERSION_V1,
             Self::D001BulkV1 | Self::D003CrowdingV1 | Self::SurfaceTurnoverV1 => 0,
         }
@@ -68,6 +82,39 @@ impl EquationVersion {
 }
 
 impl fmt::Display for EquationVersion {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str(self.as_str())
+    }
+}
+
+/// D-019 structural scaling mechanism probe / selection identity.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum StructuralScalingMechanism {
+    PhaseVolumeSynthesis,
+    InterfaceLimitedTurnover,
+    LocalCurvatureMaintenance,
+}
+
+impl StructuralScalingMechanism {
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::PhaseVolumeSynthesis => "phase_volume_synthesis",
+            Self::InterfaceLimitedTurnover => "interface_limited_turnover",
+            Self::LocalCurvatureMaintenance => "local_curvature_maintenance",
+        }
+    }
+
+    pub const fn selection_tag(self) -> &'static str {
+        match self {
+            Self::PhaseVolumeSynthesis => "D019_SELECT_PHASE_VOLUME_SYNTHESIS",
+            Self::InterfaceLimitedTurnover => "D019_SELECT_INTERFACE_LIMITED_TURNOVER",
+            Self::LocalCurvatureMaintenance => "D019_SELECT_LOCAL_CURVATURE_MAINTENANCE",
+        }
+    }
+}
+
+impl fmt::Display for StructuralScalingMechanism {
     fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
         formatter.write_str(self.as_str())
     }
@@ -220,6 +267,10 @@ pub struct SimParams {
     /// D-016 transport schema version (1 = baseline; 2 = calibrated W transport).
     #[serde(default = "default_transport_schema_version")]
     pub transport_schema_version: u32,
+    /// D-019 analysis-only mechanism override. `None` uses equation-version defaults.
+    /// Must remain `None` for governed v2 identity hashes.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub d019_mechanism_probe: Option<StructuralScalingMechanism>,
 }
 
 /// Validate governed v2 yields: 0 < η ≤ 1.
@@ -411,6 +462,7 @@ impl Default for SimParams {
             eta_phi: default_eta_phi(),
             eta_m: default_eta_m(),
             transport_schema_version: default_transport_schema_version(),
+            d019_mechanism_probe: None,
         }
     }
 }
@@ -473,7 +525,7 @@ impl SimParams {
     }
 
     pub fn validate_equation_config(&self) -> Result<(), String> {
-        if self.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+        if self.equation_version.is_conservative_membrane_metabolism() {
             validate_v2_yields(self.eta_c, self.eta_phi, self.eta_m)?;
         }
         Ok(())

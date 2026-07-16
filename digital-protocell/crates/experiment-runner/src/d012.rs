@@ -14,6 +14,11 @@ const V2_OPTIONS: D008StageOptions = D008StageOptions {
     classification_prefix: "D012",
 };
 
+const V3_OPTIONS: D008StageOptions = D008StageOptions {
+    equation_version: chemistry_core::EquationVersion::MembraneMetabolismV3StructuralScaling,
+    classification_prefix: "D019",
+};
+
 pub fn run_v2_stage_b(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
     d008::run_stage_b_with(output, &V2_OPTIONS)
 }
@@ -24,6 +29,18 @@ pub fn run_v2_stage_c(output: &Path) -> Result<Value, Box<dyn std::error::Error>
 
 pub fn run_v2_stage_d(root: &Path) -> Result<Value, Box<dyn std::error::Error>> {
     d008::run_stage_d_with(root, &V2_OPTIONS)
+}
+
+pub fn run_v3_stage_b(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
+    d008::run_stage_b_with(output, &V3_OPTIONS)
+}
+
+pub fn run_v3_stage_c(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
+    d008::run_stage_c_with(output, &V3_OPTIONS)
+}
+
+pub fn run_v3_stage_d(root: &Path) -> Result<Value, Box<dyn std::error::Error>> {
+    d008::run_stage_d_with(root, &V3_OPTIONS)
 }
 
 pub fn v2_stage_options() -> D008StageOptions {

@@ -47,7 +47,7 @@ impl D008StageOptions {
     }
 
     fn stage_b_robustness_levels(&self) -> [f64; 2] {
-        if self.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+        if self.equation_version.is_conservative_membrane_metabolism() {
             // V2 A-coupled synthesis depletes activated at very low initial M (0.25).
             [STAGE_B_INITIAL_LEVELS[1], STAGE_B_INITIAL_LEVELS[2]]
         } else {
@@ -61,7 +61,7 @@ impl D008StageOptions {
 }
 
 fn apply_v2_yields(params: &mut SimParams) {
-    if params.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+    if params.equation_version.is_conservative_membrane_metabolism() {
         params.eta_c = 1.0;
         params.eta_phi = 1.0;
         params.eta_m = 1.0;
@@ -157,7 +157,7 @@ fn reference_params_for(
     options: &D008StageOptions,
 ) -> Result<SimParams, Box<dyn std::error::Error>> {
     let reference: StageAReference = toml::from_str(&fs::read_to_string(reference_toml_path())?)?;
-    if reference.equation_version != EquationVersion::MembraneMetabolismV1 {
+    if !(reference.equation_version == EquationVersion::MembraneMetabolismV1) {
         return Err("D-008 Stage A reference TOML must use membrane_metabolism_v1 rates".into());
     }
     let mut params = SimParams::default();
@@ -364,7 +364,7 @@ pub fn run_stage_a_with(
     let params = reference_params_for(options)?;
     let source_commit = git_commit_hash()?;
     let binary_sha256 = binary_hash()?;
-    let branch = if options.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+    let branch = if options.equation_version.is_conservative_membrane_metabolism() {
         "d012-conservative-v2-stages"
     } else {
         "d008-membrane-metabolic-closure"
@@ -524,7 +524,7 @@ pub fn run_stage_b_with(
 
     let mut reference = reference_params_for(options)?;
     reference.d008_stage_b_enabled = true;
-    let branch = if options.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+    let branch = if options.equation_version.is_conservative_membrane_metabolism() {
         "d012-conservative-v2-stages"
     } else {
         "d008-membrane-metabolic-closure"
@@ -682,7 +682,7 @@ pub fn run_stage_b_with(
         "selected_configuration_hash": selected_identity.configuration_hash,
         "source_commit": source_commit,
         "binary_sha256": binary_sha256,
-        "seed_recipe": if options.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+        "seed_recipe": if options.equation_version.is_conservative_membrane_metabolism() {
             "fixed_circular_phi_seed_with_fixed_C_A_and_M_level_times_interface_weight_v2_robustness_0.50_0.75"
         } else {
             "fixed_circular_phi_seed_with_fixed_C_A_and_M_level_times_interface_weight"
@@ -795,7 +795,7 @@ fn stage_c_case_pass(
             .iter()
             .all(|&value| value.is_finite() && (0.0..=sim.params.d008_a_max).contains(&value))
         && stage_c_clamp_negligible(cumulative);
-    let v2 = sim.params.equation_version == EquationVersion::MembraneMetabolismV2Conservative;
+    let v2 = sim.params.equation_version.is_conservative_membrane_metabolism();
     let eta_c = if v2 { sim.params.eta_c } else { 1.0 };
     let expected_waste = cumulative.activation
         + (if v2 {
@@ -886,7 +886,7 @@ pub fn run_stage_c_with(
     let source_commit = git_commit_hash()?;
     let binary_sha256 = binary_hash()?;
     validate_stage_a_provenance(&source_commit, &binary_sha256)?;
-    let branch = if options.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+    let branch = if options.equation_version.is_conservative_membrane_metabolism() {
         "d012-conservative-v2-stages"
     } else {
         "d008-membrane-metabolic-closure"
@@ -1150,7 +1150,7 @@ pub fn run_stage_d_with(
     let source_commit = git_commit_hash()?;
     let binary_sha256 = binary_hash()?;
     validate_stage_a_provenance(&source_commit, &binary_sha256)?;
-    let branch = if options.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+    let branch = if options.equation_version.is_conservative_membrane_metabolism() {
         "d012-v2-stage-d-fixed-compartment"
     } else {
         "d008-stage-d-fixed-compartment"

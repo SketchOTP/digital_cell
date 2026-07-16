@@ -180,7 +180,7 @@ impl FieldSnapshot {
         );
         let field_schema_version = match params.equation_version {
             EquationVersion::MembraneMetabolismV1
-            | EquationVersion::MembraneMetabolismV2Conservative => FieldSchemaVersion::SevenFieldV1,
+            | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling => FieldSchemaVersion::SevenFieldV1,
             EquationVersion::D001BulkV1
             | EquationVersion::D003CrowdingV1
             | EquationVersion::SurfaceTurnoverV1 => FieldSchemaVersion::FiveFieldV1,
@@ -358,13 +358,16 @@ impl FieldSnapshot {
             |             (
                 FieldSchemaVersion::SevenFieldV1,
                 SnapshotFields::SevenField(_),
-                EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative,
+                EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling,
             ) => Ok(()),
             (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV1) => {
                 Err("five_field_v1 snapshot is incompatible with membrane_metabolism_v1".to_string())
             }
             (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV2Conservative) => {
                 Err("five_field_v1 snapshot is incompatible with membrane_metabolism_v2_conservative".to_string())
+            }
+            (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV3StructuralScaling) => {
+                Err("five_field_v1 snapshot is incompatible with membrane_metabolism_v3_structural_scaling".to_string())
             }
             (FieldSchemaVersion::SevenFieldV1, _, EquationVersion::D001BulkV1
             | EquationVersion::D003CrowdingV1

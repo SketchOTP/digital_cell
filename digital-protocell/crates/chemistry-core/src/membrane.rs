@@ -32,7 +32,7 @@ pub struct MembraneEvolutionTotals {
 
 impl MembraneEvolutionTotals {
     pub fn membrane_mass_reaction_delta(&self, params: &SimParams) -> f64 {
-        if params.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+        if params.equation_version.is_conservative_membrane_metabolism() {
             params.eta_m * self.synthesis_delta - self.decay_delta - self.detachment_delta
         } else {
             self.synthesis_delta - self.decay_delta - self.detachment_delta
@@ -135,7 +135,7 @@ pub fn evolve_fixed_membrane(
     mut waste_next: Option<&mut [f64]>,
 ) -> MembraneEvolutionTotals {
     membrane_diffusion_rate(grid, membrane, params.d_m, scratch_lap, diffusion_rate);
-    let v2 = params.equation_version == EquationVersion::MembraneMetabolismV2Conservative;
+    let v2 = params.equation_version.is_conservative_membrane_metabolism();
     let eta_m = if v2 { params.eta_m } else { 1.0 };
     let mut totals = MembraneEvolutionTotals::default();
     for idx in 0..membrane.len() {

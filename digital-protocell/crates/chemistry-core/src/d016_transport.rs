@@ -10,7 +10,7 @@ use crate::membrane::membrane_rates;
 use crate::membrane_transport::{
     face_diffusivity, face_geometry, permeability, transport_field, TransportSpecies,
 };
-use crate::reactions::interface_weight;
+use crate::structural_kinetics::{structure_decay_rate, structure_production_rate};
 use crate::reservoir::{apply_reservoir, waste_sink_cell};
 use serde::{Deserialize, Serialize};
 
@@ -212,9 +212,8 @@ pub fn local_waste_source_rate(
     params: &SimParams,
 ) -> f64 {
     let rates = activated_metabolism_rates(catalyst, nutrient, fuel, activated, params);
-    let i_face = interface_weight(phi);
-    let r_structure = params.k_d008_structure * activated.max(0.0) * i_face;
-    let r_structure_decay = params.k_structure_decay * phi.max(0.0);
+    let r_structure = structure_production_rate(phi, activated, catalyst, params);
+    let r_structure_decay = structure_decay_rate(phi, 0.0, params);
     let d_w_structure = (1.0 - params.eta_phi) * r_structure + r_structure_decay;
     let m_rates = membrane_rates(phi, catalyst, activated, membrane, params);
     let d_w_membrane =

@@ -9,8 +9,8 @@ use crate::activated_metabolism::{
     ActivatedMetabolismStepAccounting,
 };
 use crate::config::{
-    D008StageMode, EquationVersion, ExperimentConfig, InterventionSpec, SimParams, MAX_DT,
-    NEG_CLAMP,
+    D008StageMode, EquationVersion, ExperimentConfig, InterventionSpec, SimParams,
+    StructuralScalingMechanism, MAX_DT, NEG_CLAMP,
 };
 use crate::constraint_accounting::{build_constraint_step, StructureConstraintAccounting};
 use crate::d018_provenance::StructureProvenanceTracer;
@@ -31,6 +31,9 @@ use crate::membrane_transport::{transport_field, TransportSpecies};
 use crate::operators::{diffuse_constant, diffuse_variable, laplacian};
 use crate::phase_field::{chemical_potential_local, compute_interior_weights, structure_rate};
 use crate::reactions::{catalyst_diffusivity, compute_all_reactions, interface_weight, ReactionScratch};
+use crate::structural_kinetics::{
+    active_structural_mechanism, local_abs_laplacian, structure_decay_rate, structure_production_rate,
+};
 use crate::reservoir::apply_reservoir;
 use crate::snapshot::FieldSnapshot;
 use crate::time_audit::DtTelemetry;
@@ -200,13 +203,13 @@ impl Simulation {
                 EquationVersion::D001BulkV1
                 | EquationVersion::D003CrowdingV1
                 | EquationVersion::SurfaceTurnoverV1 => self.try_legacy_substep(attempt_dt),
-                EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative
+                EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling
                     if self.params.d008_stage_b_enabled =>
                 {
                     self.try_d008_stage_b(attempt_dt)
                 }
                 EquationVersion::MembraneMetabolismV1
-                | EquationVersion::MembraneMetabolismV2Conservative => {
+                | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling => {
                     match self.params.d008_stage_mode {
                         D008StageMode::Transport => {
                             self.try_membrane_metabolism_v1_transport(attempt_dt)
@@ -1489,17 +1492,35 @@ impl Simulation {
         let mut react_w = 0.0;
         let mut virtual_production = 0.0;
         let mut virtual_decay = 0.0;
-        let v2 = self.params.equation_version == EquationVersion::MembraneMetabolismV2Conservative;
+        let v2 = self.params.equation_version.is_conservative_membrane_metabolism();
         let eta_phi = if v2 { self.params.eta_phi } else { 1.0 };
         let apply_phi = !self.enforce_structure_constraint;
+        let need_lap = matches!(
+            active_structural_mechanism(&self.params),
+            Some(StructuralScalingMechanism::LocalCurvatureMaintenance)
+        );
         for idx in 0..self.grid.width * self.grid.height {
             if !self.grid.in_dish(idx) {
                 continue;
             }
             let phi = self.working.structure[idx];
-            let i_face = interface_weight(phi);
-            let r_structure = self.params.k_d008_structure * self.working.activated[idx] * i_face;
-            let r_structure_decay = self.params.k_structure_decay * phi;
+            let lap_abs = if need_lap {
+                local_abs_laplacian(
+                    &self.working.structure,
+                    self.grid.width,
+                    self.grid.height,
+                    idx,
+                )
+            } else {
+                0.0
+            };
+            let r_structure = structure_production_rate(
+                phi,
+                self.working.activated[idx],
+                self.working.catalyst[idx],
+                &self.params,
+            );
+            let r_structure_decay = structure_decay_rate(phi, lap_abs, &self.params);
             let produced = if v2 {
                 eta_phi * r_structure * dt
             } else {
@@ -1808,26 +1829,41 @@ impl Simulation {
         self.constraint_accounting.record_accepted(constraint_step);
         // Observer-only: update provenance after acceptance so rejects cannot pollute inventories.
         if self.structure_provenance.is_some() {
-            let v2 = self.params.equation_version
-                == EquationVersion::MembraneMetabolismV2Conservative;
+            let v2 = self.params.equation_version.is_conservative_membrane_metabolism();
             let eta_phi = if v2 { self.params.eta_phi } else { 1.0 };
             let apply_phi = !self.enforce_structure_constraint;
-            let k_s = self.params.k_d008_structure;
-            let k_d = self.params.k_structure_decay;
+            let need_lap = matches!(
+                active_structural_mechanism(&self.params),
+                Some(StructuralScalingMechanism::LocalCurvatureMaintenance)
+            );
             // Recompute per-cell extents from the same working state used this step.
             for idx in 0..self.grid.width * self.grid.height {
                 if !self.grid.in_dish(idx) {
                     continue;
                 }
                 let phi = self.working.structure[idx];
-                let i_face = interface_weight(phi);
-                let r_structure = k_s * self.working.activated[idx] * i_face;
+                let lap_abs = if need_lap {
+                    local_abs_laplacian(
+                        &self.working.structure,
+                        self.grid.width,
+                        self.grid.height,
+                        idx,
+                    )
+                } else {
+                    0.0
+                };
+                let r_structure = structure_production_rate(
+                    phi,
+                    self.working.activated[idx],
+                    self.working.catalyst[idx],
+                    &self.params,
+                );
                 let produced = if v2 {
                     eta_phi * r_structure * dt
                 } else {
                     r_structure * dt
                 };
-                let decayed = k_d * phi * dt;
+                let decayed = structure_decay_rate(phi, lap_abs, &self.params) * dt;
                 if let Some(tracer) = self.structure_provenance.as_mut() {
                     if apply_phi {
                         tracer.record_unconstrained_cell(idx, produced, decayed);
@@ -1846,7 +1882,7 @@ impl Simulation {
     }
 
     fn record_waste_budget(&mut self) {
-        if self.params.equation_version != EquationVersion::MembraneMetabolismV2Conservative {
+        if !self.params.equation_version.is_conservative_membrane_metabolism() {
             return;
         }
         let extents = v2_waste_source_extents(
@@ -1964,7 +2000,7 @@ impl Simulation {
             v.to_bits().hash(&mut hasher);
         }
         match self.params.equation_version {
-            EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative => {
+            EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling => {
                 for v in &self.fields.activated {
                     v.to_bits().hash(&mut hasher);
                 }
@@ -1989,7 +2025,7 @@ impl Simulation {
         append_field_bits(&mut bytes, &self.fields.fuel);
         append_field_bits(&mut bytes, &self.fields.waste);
         match self.params.equation_version {
-            EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative => {
+            EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling => {
                 append_field_bits(&mut bytes, &self.fields.activated);
                 append_field_bits(&mut bytes, &self.fields.membrane);
             }

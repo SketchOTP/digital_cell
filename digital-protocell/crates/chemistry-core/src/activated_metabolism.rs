@@ -131,7 +131,7 @@ pub fn activated_metabolism_rates(
     let activated_decay = params.k_d008_activated_decay * a;
     let catalyst_turnover = params.k_d008_catalyst_turnover * c;
 
-    if params.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+    if params.equation_version.is_conservative_membrane_metabolism() {
         let eta_c = params.eta_c;
         return ActivatedMetabolismRates {
             activation,
@@ -174,7 +174,7 @@ pub fn activation_isolated_delta(extent: f64) -> [f64; 7] {
 
 /// Isolated catalyst-production delta for governed equation version.
 pub fn catalyst_production_isolated_delta(extent: f64, params: &SimParams) -> [f64; 7] {
-    if params.equation_version == EquationVersion::MembraneMetabolismV2Conservative {
+    if params.equation_version.is_conservative_membrane_metabolism() {
         let eta = params.eta_c;
         let mut d = [0.0; 7];
         d[1] = eta * extent;
