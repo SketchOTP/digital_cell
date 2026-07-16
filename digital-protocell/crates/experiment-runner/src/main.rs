@@ -12,6 +12,7 @@ mod d012_stage_e;
 mod d013;
 mod d014;
 mod d015;
+mod d016;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -106,6 +107,10 @@ enum Commands {
     D015 {
         #[command(subcommand)]
         action: D015Commands,
+    },
+    D016 {
+        #[command(subcommand)]
+        action: D016Commands,
     },
 }
 
@@ -374,6 +379,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D013 { action } => run_d013(action)?,
         Commands::D014 { action } => run_d014(action)?,
         Commands::D015 { action } => run_d015(action)?,
+        Commands::D016 { action } => run_d016(action)?,
     }
     Ok(())
 }
@@ -1042,6 +1048,79 @@ fn resolve_d015_artifact_path(path: PathBuf) -> PathBuf {
         return path;
     }
     PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..").join(path)
+}
+
+#[derive(Subcommand)]
+enum D016Commands {
+    Preserve {
+        #[arg(long, default_value = "experiments/generated/d016/preservation")]
+        output: PathBuf,
+    },
+    TransportAudit {
+        #[arg(long, default_value = "experiments/generated/d016/transport_audit")]
+        output: PathBuf,
+    },
+    SourceTimescales {
+        #[arg(long, default_value = "experiments/generated/d016")]
+        output: PathBuf,
+    },
+    FixedSourceCampaign {
+        #[arg(long, default_value = "experiments/generated/d016")]
+        output: PathBuf,
+    },
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d016")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d016_artifact_path(path: PathBuf) -> PathBuf {
+    if path.is_absolute() {
+        return path;
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..").join(path)
+}
+
+fn run_d016(action: D016Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D016Commands::Preserve { output } => {
+            let output = resolve_d016_artifact_path(output);
+            let result = d016::run_preserve(&output)?;
+            println!("D-016 preserve -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D016Commands::TransportAudit { output } => {
+            let output = resolve_d016_artifact_path(output);
+            let result = d016::run_transport_audit(&output)?;
+            println!("D-016 transport-audit -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D016Commands::SourceTimescales { output } => {
+            let output = resolve_d016_artifact_path(output);
+            let result = d016::run_source_and_timescales(&output)?;
+            println!("D-016 source-timescales -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D016Commands::FixedSourceCampaign { output } => {
+            let output = resolve_d016_artifact_path(output);
+            let result = d016::run_fixed_source_campaign(&output)?;
+            println!(
+                "D-016 fixed-source-campaign conclusion={} -> {}",
+                result["primary_conclusion"],
+                output.display()
+            );
+        }
+        D016Commands::Pipeline { output } => {
+            let output = resolve_d016_artifact_path(output);
+            let result = d016::run_pipeline(&output)?;
+            println!(
+                "D-016 pipeline conclusion={} -> {}",
+                result["manifest"]["primary_conclusion"],
+                output.display()
+            );
+        }
+    }
+    Ok(())
 }
 
 fn run_d015(action: D015Commands) -> Result<(), Box<dyn std::error::Error>> {
