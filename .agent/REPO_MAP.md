@@ -139,3 +139,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/chemistry-core/tests/d019_tests.rs` — D-019 mechanism/conservation tests
 - `digital-protocell/crates/experiment-runner/src/d019.rs` — pipeline + Stage E reference runner
 - `docs/d019_*.md` — mechanism comparison, selected mechanism, candidate report drafts
+
+## D-020 joint-rate recovery
+- `digital-protocell/crates/chemistry-core/src/d020_analysis.rs` — D-020 bounds, scoring, promotion gates
+- `digital-protocell/crates/chemistry-core/tests/d020_tests.rs` — D-020 focused unit tests
+- `digital-protocell/crates/experiment-runner/src/d020.rs` — D-020 flow audit and recovery runner
+- `digital-protocell/experiments/generated/d020/` — D-020 recovery artifacts and manifest
+- `docs/d020_joint_rate_recovery_report.md` — D-020 conclusion and evidence report

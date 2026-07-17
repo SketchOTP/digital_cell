@@ -1,24 +1,24 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260716-d019-structural-scaling-repair
-- Project directive: D-019
-- Goal: Structural scaling repair and Stage E recovery
-- Status: partial
-- Acceptance: partial — mechanism selected + B–D pass + restoring nullcline; Stage E NOT_CONVERGED so D019_STRUCTURAL_SCALING_REPAIR_PASS not met
-- Touched files: structural_kinetics.rs, config EquationVersion V3, simulation rates, d019 runner/tests/docs/artifacts
-- Next action: Joint four-rate recalibration under v3 (or progressive Stage E rate screen) then re-run R22/R18/R26
+- ID: D-20260716-d021-retention-localization-repair
+- Project directive: D-021
+- Goal: Interface-protected membrane retention/localization repair then Stage E recovery
+- Status: started — preserving D-020 before v4 implementation
+- Acceptance: One D021_* conclusion with ε screen evidence; Stage E only after retention/localization gates
+- Touched files: (pending after D-020 commit)
+- Next action: Commit+tag D-020, then implement membrane_metabolism_v4_interface_protected
 
 ## Repo facts needed now
-- Selected: interface_limited_turnover (membrane_metabolism_v3_structural_scaling)
-- Preserve D018_SURFACE_VOLUME_SCALING_INCOMPATIBLE + CONSTRAINT_WASTE_ARTIFACT
-- Prebalance k_center≈0.2576 restoring; Stage E Q_structure≪1 at frozen companion rates
-- D-012 solver: CLOSED; D-008 Stage E: BLOCKED_NOT_RECOVERED
+- D-020 best R22: A retention 0.377, M localization 0.859, Q=[0.213,0.423,0.591,1.425]
+- Membrane decay is currently uniform: k_M_decay * M; detachment already off-interface
+- Target: r_M_decay = k_M_decay * M * [ε_M + (1 - I(φ))]; screen ε∈{0.02,0.05,0.10}
+- Frozen: seven fields, stoich schema 2, transport schema 1, interface-limited structure, rates/yields/env
 - Mimir slug: digital_cell
 
 ## Last validation
-- Command: cargo test d008–d019 release; Stage B/C/D PASS; Stage E 200k NOT_CONVERGED (2 k attempts)
-- Result: suites PASS; Stage E scientific fail (no quasi-steady)
+- Command: (pending)
+- Result:
 
 ## Open blockers
-- Stage E joint quasi-steady not reached with prebalance k alone or single Q-corrected k
+- None yet

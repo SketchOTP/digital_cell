@@ -16,6 +16,7 @@ mod d016;
 mod d017;
 mod d018;
 mod d019;
+mod d020;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -126,6 +127,10 @@ enum Commands {
     D019 {
         #[command(subcommand)]
         action: D019Commands,
+    },
+    D020 {
+        #[command(subcommand)]
+        action: D020Commands,
     },
 }
 
@@ -398,6 +403,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D017 { action } => run_d017(action)?,
         Commands::D018 { action } => run_d018(action)?,
         Commands::D019 { action } => run_d019(action)?,
+        Commands::D020 { action } => run_d020(action)?,
     }
     Ok(())
 }
@@ -1237,6 +1243,110 @@ fn resolve_d019_artifact_path(path: PathBuf) -> PathBuf {
         return path;
     }
     PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..").join(path)
+}
+
+#[derive(Subcommand)]
+enum D020Commands {
+    /// Full D-020 joint-rate Stage E recovery pipeline.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d020")]
+        output: PathBuf,
+        #[arg(long, default_value = "200000")]
+        max_steps: u64,
+    },
+    /// Stage A flow audit from D-019 R22 artifacts.
+    StageA {
+        #[arg(long, default_value = "experiments/generated/d020/stage_a_flow_audit")]
+        output: PathBuf,
+    },
+    /// Stage B ±10% sensitivity and bounded candidates.
+    StageB {
+        #[arg(long, default_value = "experiments/generated/d020/stage_b_sensitivity")]
+        output: PathBuf,
+    },
+    /// Stage C promote ≤2 candidates.
+    StageC {
+        #[arg(long, default_value = "experiments/generated/d020/stage_c_promotion")]
+        output: PathBuf,
+    },
+    /// Stage D full R22 governed reference for promoted candidates.
+    StageD {
+        #[arg(long, default_value = "experiments/generated/d020/stage_d_full_r22")]
+        output: PathBuf,
+        #[arg(long, default_value = "200000")]
+        max_steps: u64,
+    },
+    /// Stage E R18/R26 restoring confirmation.
+    StageE {
+        #[arg(long, default_value = "experiments/generated/d020/stage_e_neighbors")]
+        output: PathBuf,
+        #[arg(long, default_value = "200000")]
+        max_steps: u64,
+    },
+    /// Stage A+B only (short local-response preconditioner).
+    Precondition {
+        #[arg(long, default_value = "experiments/generated/d020")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d020_artifact_path(path: PathBuf) -> PathBuf {
+    if path.is_absolute() {
+        return path;
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..").join(path)
+}
+
+fn run_d020(action: D020Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D020Commands::Pipeline { output, max_steps } => {
+            let output = resolve_d020_artifact_path(output);
+            let result = d020::run_pipeline(&output, max_steps)?;
+            println!(
+                "D-020 conclusion={} -> {}",
+                result["primary_conclusion"],
+                output.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D020Commands::StageA { output } => {
+            let output = resolve_d020_artifact_path(output);
+            let result = d020::run_stage_a_flow_audit(&output)?;
+            println!("D-020 Stage A -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D020Commands::StageB { output } => {
+            let output = resolve_d020_artifact_path(output);
+            let result = d020::run_stage_b_sensitivity(&output)?;
+            println!("D-020 Stage B -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D020Commands::StageC { output } => {
+            let output = resolve_d020_artifact_path(output);
+            let result = d020::run_stage_c_promote(&output)?;
+            println!("D-020 Stage C -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D020Commands::StageD { output, max_steps } => {
+            let output = resolve_d020_artifact_path(output);
+            let result = d020::run_stage_d_full_r22(&output, max_steps)?;
+            println!("D-020 Stage D -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D020Commands::StageE { output, max_steps } => {
+            let output = resolve_d020_artifact_path(output);
+            let result = d020::run_stage_e_neighbors(&output, max_steps)?;
+            println!("D-020 Stage E -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D020Commands::Precondition { output } => {
+            let output = resolve_d020_artifact_path(output);
+            let result = d020::run_precondition_only(&output)?;
+            println!("D-020 precondition -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+    }
+    Ok(())
 }
 
 fn run_d019(action: D019Commands) -> Result<(), Box<dyn std::error::Error>> {
