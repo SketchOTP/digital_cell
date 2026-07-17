@@ -1,23 +1,23 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260717-d023-membrane-precursor-assembly
-- Project directive: D-023
-- Goal: Eight-field precursor assembly (v6); evaluate isolated localization then coupled gates
-- Status: done — D023_PRECURSOR_LOCALIZATION_NOT_RECOVERED
-- Acceptance: met (honest failure; Gate0/1 PASS; Gate2 fail; Gates3–5 blocked)
-- Touched files: fields/config/membrane/snapshot/candidate_identity/accounting/simulation, d023.rs, d023_tests, docs/d023_*, experiments/generated/d023
-- Next action: Design interfacial surface-density membrane model; do not resume bulk-field M localization tuning
+- ID: D-20260717-d025-autonomous-surface-stage-e
+- Project directive: D-025
+- Goal: Seal D-024 provenance; couple surface density to autonomous φ motion; revalidate B–D; re-enter Stage E
+- Status: Gate 0 PASS — D024_PROVENANCE_SEALED; implementing Gate 1 velocity
+- Acceptance: Gates 0–8 in order or stop at first fail with exact conclusion
+- Touched files: experiments/generated/d025/d024_provenance_seal/, docs/d024_provenance_seal_addendum.md
+- Next action: Implement autonomous v_n estimator + Gate 1 manufactured velocity tests
 
 ## Repo facts needed now
-- D-021 preserved: 16213c7 / tag D-021-retention-localization-not-recovered
-- D-022 preserved: e54b379 / tag D-022-localization-not-recovered
-- D-023: v6 eight-field; Gate2 min loc 0.861–0.889 < 0.90; analytical k_assembly≈0.901
-- Mimir slug: digital_cell
+- D024_PROVENANCE_SEALED at source 06477f6; binary 5894fcec…; k_ads=0.001111…
+- Gate6 sealed: Γ≈1.0, C≈0.991, A≈0.924, residual≈2.5e-7
+- Tag to create: D-024-surface-density-pass-provenance-sealed (preserve D-024-surface-density-pass)
+- Mimir: BLOCKED (Windows path mapping on register/resolve)
 
 ## Last validation
-- Command: cargo test -p chemistry-core --release --test d008–d023; `d023 pipeline`
-- Result: tests PASS; conclusion D023_PRECURSOR_LOCALIZATION_NOT_RECOVERED
+- Command: worktree@06477f6 release experiment-runner d024 pipeline
+- Result: PASS primary_conclusion=D024_INTERFACIAL_SURFACE_DENSITY_PASS; gate0_pass=true
 
 ## Open blockers
-- Bulk-field M (v1–v6) cannot meet coupled localization; need surface-density architecture
+- Mimir V2 register/resolve path mapping unavailable
