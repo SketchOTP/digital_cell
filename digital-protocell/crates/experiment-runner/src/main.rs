@@ -19,6 +19,7 @@ mod d019;
 mod d020;
 mod d021;
 mod d022;
+mod d023;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -141,6 +142,10 @@ enum Commands {
     D022 {
         #[command(subcommand)]
         action: D022Commands,
+    },
+    D023 {
+        #[command(subcommand)]
+        action: D023Commands,
     },
 }
 
@@ -416,6 +421,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D020 { action } => run_d020(action)?,
         Commands::D021 { action } => run_d021(action)?,
         Commands::D022 { action } => run_d022(action)?,
+        Commands::D023 { action } => run_d023(action)?,
     }
     Ok(())
 }
@@ -1383,6 +1389,62 @@ enum D022Commands {
         #[arg(long, default_value = "200000")]
         max_steps: u64,
     },
+}
+
+#[derive(Subcommand)]
+enum D023Commands {
+    /// Full D-023 precursor-assembly pipeline (Gates 0–2 decisive isolated).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d023")]
+        output: PathBuf,
+    },
+    /// Gate 0 schema + preservation summary.
+    Gate0 {
+        #[arg(long, default_value = "experiments/generated/d023/gate0")]
+        output: PathBuf,
+    },
+    /// Gate 1 conservation + causal chemistry summary.
+    Gate1 {
+        #[arg(long, default_value = "experiments/generated/d023/gate1")]
+        output: PathBuf,
+    },
+    /// Gate 2 isolated assembly + localization (analytical k_assembly + 0.5/1/2× screen).
+    Gate2 {
+        #[arg(long, default_value = "experiments/generated/d023/gate2")]
+        output: PathBuf,
+    },
+}
+
+fn run_d023(action: D023Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D023Commands::Pipeline { output } => {
+            let result = d023::run_pipeline(&output)?;
+            println!(
+                "D-023 conclusion={} -> {}",
+                result["primary_conclusion"], output.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D023Commands::Gate0 { output } => {
+            let result = d023::run_gate0_schema(&output)?;
+            println!("D-023 Gate0 -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D023Commands::Gate1 { output } => {
+            let result = d023::run_gate1_conservation(&output)?;
+            println!("D-023 Gate1 -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D023Commands::Gate2 { output } => {
+            let result = d023::run_gate2_isolated_assembly(&output)?;
+            println!(
+                "D-023 Gate2 any_pass={} promoted_k_assembly={} -> {}",
+                result["any_pass"], result["promoted_k_assembly"], output.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+    }
+    Ok(())
 }
 
 fn resolve_d020_artifact_path(path: PathBuf) -> PathBuf {

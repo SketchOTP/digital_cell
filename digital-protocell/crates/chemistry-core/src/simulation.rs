@@ -1,8 +1,8 @@
 //! Main simulation engine with adaptive timestep and mass accounting.
 
 use crate::accounting::{
-    build_field_ledger, field_mass, sum_clamp_correction, AccountingState, ReactionStepTotals,
-    StepAccounting,
+    build_field_ledger, field_mass, sum_clamp_correction, AccountingState, FieldStepLedger,
+    ReactionStepTotals, StepAccounting,
 };
 use crate::activated_metabolism::{
     activated_metabolism_rates, ActivatedMetabolismAccountingState,
@@ -22,7 +22,7 @@ use crate::fields::{
 };
 use crate::grid::Grid;
 use crate::interventions::apply_intervention;
-use crate::membrane::{evolve_fixed_membrane, MembraneEvolutionTotals};
+use crate::membrane::{evolve_fixed_membrane, evolve_precursor_assembly, MembraneEvolutionTotals};
 use crate::membrane_accounting::{
     MembraneAccountingState, MembraneStepAccounting, TransportAccountingState,
     TransportStepAccounting,
@@ -203,13 +203,13 @@ impl Simulation {
                 EquationVersion::D001BulkV1
                 | EquationVersion::D003CrowdingV1
                 | EquationVersion::SurfaceTurnoverV1 => self.try_legacy_substep(attempt_dt),
-                EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity
+                EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly
                     if self.params.d008_stage_b_enabled =>
                 {
                     self.try_d008_stage_b(attempt_dt)
                 }
                 EquationVersion::MembraneMetabolismV1
-                | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity => {
+                | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly => {
                     match self.params.d008_stage_mode {
                         D008StageMode::Transport => {
                             self.try_membrane_metabolism_v1_transport(attempt_dt)
@@ -565,6 +565,7 @@ impl Simulation {
             ),
             activated: Default::default(),
             membrane: Default::default(),
+            precursor: Default::default(),
         };
         self.accounting
             .record_step(step_accounting, &rx_totals, clamp_total);
@@ -784,6 +785,7 @@ impl Simulation {
                 mass_a_after,
             ),
             membrane: build_field_ledger(mass_m_before, 0.0, 0.0, 0.0, mass_m_after, mass_m_after),
+            precursor: FieldStepLedger::default(),
         };
         self.accounting
             .record_step(step_accounting, &ReactionStepTotals::default(), clamp_total);
@@ -793,6 +795,9 @@ impl Simulation {
     }
 
     fn try_d008_stage_b(&mut self, dt: f64) -> SubstepResult {
+        if self.params.equation_version.is_precursor_assembly() {
+            return self.try_d008_stage_b_v6(dt);
+        }
         if self
             .fields
             .membrane
@@ -886,6 +891,7 @@ impl Simulation {
                 pre_clamp_m,
                 mass_m_after,
             ),
+            precursor: FieldStepLedger::default(),
         };
         self.accounting.record_step(
             step_accounting,
@@ -893,6 +899,154 @@ impl Simulation {
             membrane_step.clamp_correction,
         );
         self.membrane_accounting.record_accepted(membrane_step);
+        self.fields.swap();
+        SubstepResult::Ok
+    }
+
+    /// D-023 isolated Stage B (v6): fixed φ/C, supplied A consumed by synthesis.
+    /// Advances precursor P (transport `D_P` + reactions) and membrane M
+    /// (assembly − loss + diffusion). Membrane material only forms via P → M.
+    fn try_d008_stage_b_v6(&mut self, dt: f64) -> SubstepResult {
+        let m_max = self.params.m_max;
+        if self.fields.membrane.iter().enumerate().any(|(idx, &value)| {
+            self.grid.in_dish(idx) && (!value.is_finite() || value < 0.0 || value > m_max)
+        }) || self.fields.precursor.iter().enumerate().any(|(idx, &value)| {
+            self.grid.in_dish(idx) && (!value.is_finite() || value < 0.0)
+        }) {
+            return SubstepResult::Reject;
+        }
+
+        let mass_phi = field_mass(&self.grid, &self.fields.structure);
+        let mass_c = field_mass(&self.grid, &self.fields.catalyst);
+        let mass_n = field_mass(&self.grid, &self.fields.nutrient);
+        let mass_f = field_mass(&self.grid, &self.fields.fuel);
+        let mass_w = field_mass(&self.grid, &self.fields.waste);
+        let mass_a = field_mass(&self.grid, &self.fields.activated);
+        let mass_m_before = field_mass(&self.grid, &self.fields.membrane);
+        let mass_p_before = field_mass(&self.grid, &self.fields.precursor);
+
+        self.fields.copy_current_to_next();
+
+        // Precursor transport: plain diffusion at D_P (= D_A) into scratch buffer.
+        diffuse_constant(
+            &self.grid,
+            &self.fields.precursor,
+            self.params.d_p,
+            &mut self.fields.scratch_lap,
+            &mut self.fields.scratch_transport_p,
+        );
+
+        let evolution = evolve_precursor_assembly(
+            &self.grid,
+            &self.fields.structure,
+            &self.fields.catalyst,
+            &self.fields.activated,
+            &self.fields.precursor,
+            &self.fields.membrane,
+            &self.params,
+            dt,
+            &mut self.fields.scratch_lap,
+            &mut self.fields.scratch_transport_c,
+            &mut self.fields.membrane_next,
+            &mut self.fields.activated_next,
+            &mut self.fields.precursor_next,
+            &mut self.fields.waste_next,
+        );
+
+        // Add precursor transport increment (conserves P mass over the dish).
+        let mut precursor_transport_delta = 0.0;
+        for idx in 0..self.fields.precursor_next.len() {
+            if !self.grid.in_dish(idx) {
+                continue;
+            }
+            let d = self.fields.scratch_transport_p[idx] * dt;
+            precursor_transport_delta += d;
+            self.fields.precursor_next[idx] += d;
+        }
+
+        let pre_clamp_m = field_mass(&self.grid, &self.fields.membrane_next);
+        for (idx, value) in self.fields.membrane_next.iter_mut().enumerate() {
+            if !self.grid.in_dish(idx) {
+                continue;
+            }
+            if !value.is_finite() || *value < NEG_CLAMP {
+                return SubstepResult::Reject;
+            }
+            *value = value.max(0.0).min(m_max);
+        }
+        let pre_clamp_p = field_mass(&self.grid, &self.fields.precursor_next);
+        for (idx, value) in self.fields.precursor_next.iter_mut().enumerate() {
+            if !self.grid.in_dish(idx) {
+                continue;
+            }
+            if !value.is_finite() || *value < NEG_CLAMP {
+                return SubstepResult::Reject;
+            }
+            *value = value.max(0.0);
+        }
+
+        if validate_structure_field(&self.fields.structure_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.catalyst_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.nutrient_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.fuel_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.waste_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.activated_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.precursor_next, &self.grid.dish_mask).is_err()
+            || validate_soluble_field(&self.fields.membrane_next, &self.grid.dish_mask).is_err()
+        {
+            return SubstepResult::Reject;
+        }
+
+        let mass_m_after = field_mass(&self.grid, &self.fields.membrane_next);
+        let mass_p_after = field_mass(&self.grid, &self.fields.precursor_next);
+        let mass_w_after = field_mass(&self.grid, &self.fields.waste_next);
+        let mass_a_after = field_mass(&self.grid, &self.fields.activated_next);
+        let m_clamp = mass_m_after - pre_clamp_m;
+        let p_clamp = mass_p_after - pre_clamp_p;
+
+        let step_accounting = StepAccounting {
+            structure: build_field_ledger(mass_phi, 0.0, 0.0, 0.0, mass_phi, mass_phi),
+            catalyst: build_field_ledger(mass_c, 0.0, 0.0, 0.0, mass_c, mass_c),
+            nutrient: build_field_ledger(mass_n, 0.0, 0.0, 0.0, mass_n, mass_n),
+            fuel: build_field_ledger(mass_f, 0.0, 0.0, 0.0, mass_f, mass_f),
+            waste: build_field_ledger(
+                mass_w,
+                evolution.waste_reaction_delta,
+                0.0,
+                0.0,
+                mass_w_after,
+                mass_w_after,
+            ),
+            activated: build_field_ledger(
+                mass_a,
+                evolution.activated_reaction_delta,
+                0.0,
+                0.0,
+                mass_a_after,
+                mass_a_after,
+            ),
+            membrane: build_field_ledger(
+                mass_m_before,
+                evolution.membrane_reaction_delta,
+                evolution.membrane_diffusion_delta,
+                0.0,
+                pre_clamp_m,
+                mass_m_after,
+            ),
+            precursor: build_field_ledger(
+                mass_p_before,
+                evolution.precursor_reaction_delta,
+                precursor_transport_delta,
+                0.0,
+                pre_clamp_p,
+                mass_p_after,
+            ),
+        };
+        self.accounting.record_step(
+            step_accounting,
+            &ReactionStepTotals::default(),
+            m_clamp + p_clamp,
+        );
         self.fields.swap();
         SubstepResult::Ok
     }
@@ -1040,6 +1194,7 @@ impl Simulation {
             waste,
             activated,
             membrane: build_field_ledger(mass_m, 0.0, 0.0, 0.0, mass_m, mass_m),
+            precursor: FieldStepLedger::default(),
         };
         let reaction_totals = ReactionStepTotals {
             catalyst_reproduction: reproduction,
@@ -1323,6 +1478,7 @@ impl Simulation {
             waste,
             activated,
             membrane: build_field_ledger(mass_m, 0.0, 0.0, 0.0, mass_m, mass_m),
+            precursor: FieldStepLedger::default(),
         };
         let reaction_totals = ReactionStepTotals {
             catalyst_reproduction: reproduction,
@@ -1801,6 +1957,7 @@ impl Simulation {
                 pre_clamp_m,
                 mass_m_after,
             ),
+            precursor: FieldStepLedger::default(),
         };
         let reaction_totals = ReactionStepTotals {
             catalyst_reproduction: reproduction,
@@ -2008,6 +2165,17 @@ impl Simulation {
                     v.to_bits().hash(&mut hasher);
                 }
             }
+            EquationVersion::MembraneMetabolismV6PrecursorAssembly => {
+                for v in &self.fields.activated {
+                    v.to_bits().hash(&mut hasher);
+                }
+                for v in &self.fields.membrane {
+                    v.to_bits().hash(&mut hasher);
+                }
+                for v in &self.fields.precursor {
+                    v.to_bits().hash(&mut hasher);
+                }
+            }
             EquationVersion::D001BulkV1
             | EquationVersion::D003CrowdingV1
             | EquationVersion::SurfaceTurnoverV1 => {}
@@ -2028,6 +2196,11 @@ impl Simulation {
             EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity => {
                 append_field_bits(&mut bytes, &self.fields.activated);
                 append_field_bits(&mut bytes, &self.fields.membrane);
+            }
+            EquationVersion::MembraneMetabolismV6PrecursorAssembly => {
+                append_field_bits(&mut bytes, &self.fields.activated);
+                append_field_bits(&mut bytes, &self.fields.membrane);
+                append_field_bits(&mut bytes, &self.fields.precursor);
             }
             EquationVersion::D001BulkV1
             | EquationVersion::D003CrowdingV1

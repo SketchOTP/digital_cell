@@ -421,6 +421,7 @@ fn test_v2_total_change_equals_boundary_exchange() {
         waste: build_field_ledger(1.0, 0.3, 0.0, -0.1, 1.2, 1.2),
         activated: build_field_ledger(0.5, 0.2, 0.0, 0.0, 0.7, 0.7),
         membrane: build_field_ledger(0.2, 0.0, 0.0, 0.0, 0.2, 0.2),
+        precursor: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
     };
     let material = build_material_equivalent_step(&step);
     assert!(material_step_closes(&material), "{material:?}");
@@ -436,6 +437,7 @@ fn test_v2_waste_clearance_is_explicit_output() {
         waste: build_field_ledger(2.0, 0.0, 0.0, -0.4, 1.6, 1.6),
         activated: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
         membrane: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
+        precursor: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
     };
     let material = build_material_equivalent_step(&step);
     assert!((material.waste_clearance - 0.4).abs() < 1e-12);
@@ -466,6 +468,7 @@ fn test_closed_v2_network_does_not_create_material() {
         waste: build_field_ledger(1.0, 2.0, 0.0, 0.0, 3.0, 3.0),
         activated: build_field_ledger(1.0, 0.0, 0.0, 0.0, 1.0, 1.0),
         membrane: build_field_ledger(0.5, 0.0, 0.0, 0.0, 0.5, 0.5),
+        precursor: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
     };
     let material = build_material_equivalent_step(&step);
     assert!((material.reservoir_input).abs() < 1e-12);
@@ -498,6 +501,7 @@ fn test_fuel_is_only_external_activation_potential_source() {
         waste: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
         activated: build_field_ledger(0.5, 0.0, 0.0, 0.0, 0.5, 0.5),
         membrane: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
+        precursor: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
     };
     let pot = build_activation_potential_step(&step);
     assert!((pot.fuel_import - 0.5).abs() < 1e-12);

@@ -402,6 +402,69 @@ k_d008_activated_decay={};k_d008_catalyst_turnover={};k_d008_structure={};d008_a
                 ));
             }
         }
+        EquationVersion::MembraneMetabolismV6PrecursorAssembly => {
+            s.push_str(&format!(
+                ";d_a={};beta_c={};beta_a={};beta_n={};beta_f={};beta_w={}",
+                params.d_a,
+                params.beta_c,
+                params.beta_a,
+                params.beta_n,
+                params.beta_f,
+                params.beta_w,
+            ));
+            let include_membrane_dynamics = params.d008_stage_b_enabled
+                || params.d008_stage_mode != D008StageMode::Transport;
+            if include_membrane_dynamics {
+                // v6: direct A→M synthesis disabled; membrane sourced from precursor assembly.
+                s.push_str(&format!(
+                    ";m_max={};d_m={};k_membrane_decay={};k_membrane_detach={};k_c_membrane={};\
+d008_stage_b_enabled={};eps_m={};membrane_schema_version={}",
+                    params.m_max,
+                    params.d_m,
+                    params.k_membrane_decay,
+                    params.k_membrane_detach,
+                    params.k_c_membrane,
+                    params.d008_stage_b_enabled,
+                    params.eps_m,
+                    crate::config::MEMBRANE_SCHEMA_VERSION_V2,
+                ));
+            }
+            // All precursor parameters always participate in the v6 candidate hash.
+            s.push_str(&format!(
+                ";k_precursor={};k_assembly={};k_precursor_decay={};d_p={}",
+                params.k_precursor, params.k_assembly, params.k_precursor_decay, params.d_p,
+            ));
+            if params.d008_stage_mode != D008StageMode::Transport {
+                s.push_str(&format!(
+                    ";d008_stage_mode={};k_d008_activation={};k_d008_reproduction={};\
+k_d008_activated_decay={};k_d008_catalyst_turnover={};k_d008_structure={};d008_a_max={};d008_c_max={}",
+                    params.d008_stage_mode,
+                    params.k_d008_activation,
+                    params.k_d008_reproduction,
+                    params.k_d008_activated_decay,
+                    params.k_d008_catalyst_turnover,
+                    params.k_d008_structure,
+                    params.d008_a_max,
+                    params.d008_c_max
+                ));
+            }
+            s.push_str(&format!(
+                ";eta_c={};eta_phi={};eta_m={};field_schema_version=eight_field_v1;snapshot_schema_version=2;stoichiometric_schema_version={STOICHIOMETRIC_SCHEMA_VERSION_V2};structural_schema_version={};structural_mechanism={};membrane_schema_version={};precursor_schema_version={}",
+                params.eta_c,
+                params.eta_phi,
+                params.eta_m,
+                crate::structural_kinetics::STRUCTURAL_SCHEMA_VERSION_V3,
+                crate::structural_kinetics::V3_SELECTED_MECHANISM.as_str(),
+                crate::config::MEMBRANE_SCHEMA_VERSION_V2,
+                crate::config::PRECURSOR_SCHEMA_VERSION_V1,
+            ));
+            if params.transport_schema_version != crate::config::TRANSPORT_SCHEMA_VERSION_V1 {
+                s.push_str(&format!(
+                    ";transport_schema_version={}",
+                    params.transport_schema_version
+                ));
+            }
+        }
         EquationVersion::D001BulkV1
         | EquationVersion::D003CrowdingV1
         | EquationVersion::SurfaceTurnoverV1 => {}
@@ -464,7 +527,7 @@ pub fn build_candidate_identity(
             EquationVersion::D001BulkV1
             | EquationVersion::D003CrowdingV1
             | EquationVersion::MembraneMetabolismV1
-            | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity => params.k_structure,
+            | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly => params.k_structure,
         },
         k_rep: params.k_rep,
         initial_condition: InitialConditionConfiguration {

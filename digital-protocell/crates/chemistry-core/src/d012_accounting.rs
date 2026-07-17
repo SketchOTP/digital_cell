@@ -62,6 +62,7 @@ pub fn build_material_equivalent_step(step: &StepAccounting) -> MaterialEquivale
         &step.waste,
         &step.activated,
         &step.membrane,
+        &step.precursor,
     ];
     let total_before: f64 = ledgers.iter().map(|l| l.mass_before).sum();
     let total_after: f64 = ledgers.iter().map(|l| l.mass_after).sum();

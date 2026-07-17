@@ -1,0 +1,6 @@
+{
+  "gate": 3,
+  "name": "coupled_r22_bootstrap",
+  "reason": "No Gate 2 promote; directive forbids coupled advance",
+  "status": "BLOCKED"
+}

@@ -14,6 +14,8 @@ pub enum FieldSchemaVersion {
     FiveFieldV1,
     #[serde(rename = "seven_field_v1")]
     SevenFieldV1,
+    #[serde(rename = "eight_field_v1")]
+    EightFieldV1,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -37,12 +39,26 @@ pub struct SevenFieldPayload {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct EightFieldPayload {
+    pub structure: Vec<f64>,
+    pub catalyst: Vec<f64>,
+    pub nutrient: Vec<f64>,
+    pub fuel: Vec<f64>,
+    pub waste: Vec<f64>,
+    pub activated: Vec<f64>,
+    pub membrane: Vec<f64>,
+    pub precursor: Vec<f64>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(tag = "payload_schema", content = "values")]
 pub enum SnapshotFields {
     #[serde(rename = "five_field_v1")]
     FiveField(FiveFieldPayload),
     #[serde(rename = "seven_field_v1")]
     SevenField(SevenFieldPayload),
+    #[serde(rename = "eight_field_v1")]
+    EightField(EightFieldPayload),
 }
 
 impl SnapshotFields {
@@ -50,6 +66,7 @@ impl SnapshotFields {
         match self {
             Self::FiveField(fields) => &fields.structure,
             Self::SevenField(fields) => &fields.structure,
+            Self::EightField(fields) => &fields.structure,
         }
     }
 
@@ -57,6 +74,7 @@ impl SnapshotFields {
         match self {
             Self::FiveField(fields) => &fields.catalyst,
             Self::SevenField(fields) => &fields.catalyst,
+            Self::EightField(fields) => &fields.catalyst,
         }
     }
 
@@ -64,6 +82,7 @@ impl SnapshotFields {
         match self {
             Self::FiveField(fields) => &fields.nutrient,
             Self::SevenField(fields) => &fields.nutrient,
+            Self::EightField(fields) => &fields.nutrient,
         }
     }
 
@@ -71,6 +90,7 @@ impl SnapshotFields {
         match self {
             Self::FiveField(fields) => &fields.fuel,
             Self::SevenField(fields) => &fields.fuel,
+            Self::EightField(fields) => &fields.fuel,
         }
     }
 
@@ -78,6 +98,7 @@ impl SnapshotFields {
         match self {
             Self::FiveField(fields) => &fields.waste,
             Self::SevenField(fields) => &fields.waste,
+            Self::EightField(fields) => &fields.waste,
         }
     }
 
@@ -85,6 +106,7 @@ impl SnapshotFields {
         match self {
             Self::FiveField(_) => None,
             Self::SevenField(fields) => Some(&fields.activated),
+            Self::EightField(fields) => Some(&fields.activated),
         }
     }
 
@@ -92,6 +114,14 @@ impl SnapshotFields {
         match self {
             Self::FiveField(_) => None,
             Self::SevenField(fields) => Some(&fields.membrane),
+            Self::EightField(fields) => Some(&fields.membrane),
+        }
+    }
+
+    pub fn precursor(&self) -> Option<&[f64]> {
+        match self {
+            Self::FiveField(_) | Self::SevenField(_) => None,
+            Self::EightField(fields) => Some(&fields.precursor),
         }
     }
 }
@@ -179,6 +209,9 @@ impl FieldSnapshot {
             None,
         );
         let field_schema_version = match params.equation_version {
+            EquationVersion::MembraneMetabolismV6PrecursorAssembly => {
+                FieldSchemaVersion::EightFieldV1
+            }
             EquationVersion::MembraneMetabolismV1
             | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity => FieldSchemaVersion::SevenFieldV1,
             EquationVersion::D001BulkV1
@@ -201,6 +234,16 @@ impl FieldSnapshot {
                 waste: fields.waste.clone(),
                 activated: fields.activated.clone(),
                 membrane: fields.membrane.clone(),
+            }),
+            FieldSchemaVersion::EightFieldV1 => SnapshotFields::EightField(EightFieldPayload {
+                structure: fields.structure.clone(),
+                catalyst: fields.catalyst.clone(),
+                nutrient: fields.nutrient.clone(),
+                fuel: fields.fuel.clone(),
+                waste: fields.waste.clone(),
+                activated: fields.activated.clone(),
+                membrane: fields.membrane.clone(),
+                precursor: fields.precursor.clone(),
             }),
         };
         Self {
@@ -249,9 +292,10 @@ impl FieldSnapshot {
                 fields.nutrient.copy_from_slice(&payload.nutrient);
                 fields.fuel.copy_from_slice(&payload.fuel);
                 fields.waste.copy_from_slice(&payload.waste);
-                // Legacy five-field payloads do not carry A/M; clear only after acceptance.
+                // Legacy five-field payloads do not carry A/M/P; clear only after acceptance.
                 fields.activated.fill(0.0);
                 fields.membrane.fill(0.0);
+                fields.precursor.fill(0.0);
             }
             SnapshotFields::SevenField(payload) => {
                 validate_equal_lengths(
@@ -273,6 +317,31 @@ impl FieldSnapshot {
                 fields.waste.copy_from_slice(&payload.waste);
                 fields.activated.copy_from_slice(&payload.activated);
                 fields.membrane.copy_from_slice(&payload.membrane);
+                // Seven-field payloads do not carry P; clear it.
+                fields.precursor.fill(0.0);
+            }
+            SnapshotFields::EightField(payload) => {
+                validate_equal_lengths(
+                    expected,
+                    &[
+                        ("structure", payload.structure.len()),
+                        ("catalyst", payload.catalyst.len()),
+                        ("nutrient", payload.nutrient.len()),
+                        ("fuel", payload.fuel.len()),
+                        ("waste", payload.waste.len()),
+                        ("activated", payload.activated.len()),
+                        ("membrane", payload.membrane.len()),
+                        ("precursor", payload.precursor.len()),
+                    ],
+                )?;
+                fields.structure.copy_from_slice(&payload.structure);
+                fields.catalyst.copy_from_slice(&payload.catalyst);
+                fields.nutrient.copy_from_slice(&payload.nutrient);
+                fields.fuel.copy_from_slice(&payload.fuel);
+                fields.waste.copy_from_slice(&payload.waste);
+                fields.activated.copy_from_slice(&payload.activated);
+                fields.membrane.copy_from_slice(&payload.membrane);
+                fields.precursor.copy_from_slice(&payload.precursor);
             }
         }
         Ok(())
@@ -359,7 +428,25 @@ impl FieldSnapshot {
                 FieldSchemaVersion::SevenFieldV1,
                 SnapshotFields::SevenField(_),
                 EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity,
+            )
+            | (
+                FieldSchemaVersion::EightFieldV1,
+                SnapshotFields::EightField(_),
+                EquationVersion::MembraneMetabolismV6PrecursorAssembly,
             ) => Ok(()),
+            // Eight-field payload requires v6; seven-field snapshots cannot resume as v6.
+            (FieldSchemaVersion::EightFieldV1, _, v) if !v.is_precursor_assembly() => Err(format!(
+                "eight_field_v1 snapshot requires membrane_metabolism_v6_precursor_assembly, got {v}"
+            )),
+            (_, SnapshotFields::EightField(_), v) if !v.is_precursor_assembly() => Err(format!(
+                "eight_field_v1 payload is incompatible with {v}"
+            )),
+            (FieldSchemaVersion::SevenFieldV1, _, EquationVersion::MembraneMetabolismV6PrecursorAssembly) => {
+                Err("seven_field_v1 snapshot cannot resume as membrane_metabolism_v6_precursor_assembly".to_string())
+            }
+            (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV6PrecursorAssembly) => {
+                Err("five_field_v1 snapshot is incompatible with membrane_metabolism_v6_precursor_assembly".to_string())
+            }
             (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV1) => {
                 Err("five_field_v1 snapshot is incompatible with membrane_metabolism_v1".to_string())
             }
@@ -386,6 +473,9 @@ impl FieldSnapshot {
             (FieldSchemaVersion::SevenFieldV1, SnapshotFields::FiveField(_), _) => {
                 Err("seven_field_v1 envelope contains five_field_v1 payload".to_string())
             }
+            (field_schema, _, equation) => Err(format!(
+                "snapshot field schema {field_schema:?} incompatible with equation {equation}"
+            )),
         }
     }
 }
@@ -401,6 +491,7 @@ fn validate_destination_lengths(fields: &FieldBuffers, expected: usize) -> Resul
             ("waste", fields.waste.len()),
             ("activated", fields.activated.len()),
             ("membrane", fields.membrane.len()),
+            ("precursor", fields.precursor.len()),
         ],
     )
 }

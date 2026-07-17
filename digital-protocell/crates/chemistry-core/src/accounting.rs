@@ -27,6 +27,9 @@ pub struct StepAccounting {
     pub waste: FieldStepLedger,
     pub activated: FieldStepLedger,
     pub membrane: FieldStepLedger,
+    /// D-023 soluble precursor P (zero ledger for non-v6 equation versions).
+    #[serde(default)]
+    pub precursor: FieldStepLedger,
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
@@ -73,7 +76,8 @@ impl AccountingState {
             + step.fuel.mass_before
             + step.waste.mass_before
             + step.activated.mass_before
-            + step.membrane.mass_before;
+            + step.membrane.mass_before
+            + step.precursor.mass_before;
 
         let step_residual = step.structure.accounting_residual.abs()
             + step.catalyst.accounting_residual.abs()
@@ -81,7 +85,8 @@ impl AccountingState {
             + step.fuel.accounting_residual.abs()
             + step.waste.accounting_residual.abs()
             + step.activated.accounting_residual.abs()
-            + step.membrane.accounting_residual.abs();
+            + step.membrane.accounting_residual.abs()
+            + step.precursor.accounting_residual.abs();
 
         self.max_step_residual = self.max_step_residual.max(step_residual);
         self.cumulative.cumulative_processed_mass += total_mass;

@@ -16,6 +16,7 @@ fn fuel_only_import_step() -> StepAccounting {
         waste: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
         activated: build_field_ledger(0.5, 0.0, 0.0, 0.0, 0.5, 0.5),
         membrane: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
+        precursor: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
     }
 }
 
@@ -107,6 +108,7 @@ fn test_activation_transfer_not_double_counted() {
         waste: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
         activated: build_field_ledger(1.0, 0.3, 0.0, 0.0, 1.3, 1.3),
         membrane: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
+        precursor: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
     };
     let pot = build_activation_potential_step(&step);
     assert!((pot.chemistry_potential).abs() < 1e-12);
@@ -124,6 +126,7 @@ fn test_internal_transport_potential_cancels() {
         waste: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
         activated: build_field_ledger(1.0, 0.0, 0.2, 0.0, 1.2, 1.2),
         membrane: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
+        precursor: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
     };
     let pot = build_activation_potential_step(&step);
     // Global transport of equal+opposite F/A masses is potential-neutral under e_F=e_A.
@@ -163,6 +166,7 @@ fn test_productive_a_consumption_accounted_once() {
         waste: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
         activated: build_field_ledger(2.0, -0.4, 0.0, 0.0, 1.6, 1.6),
         membrane: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
+        precursor: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
     };
     let pot = build_activation_potential_step(&step);
     assert!((pot.chemistry_potential + 0.4).abs() < 1e-12);
@@ -185,6 +189,7 @@ fn test_repaired_method_preserves_activation_directionality() {
         waste: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
         activated: build_field_ledger(1.0, -0.1, 0.0, 0.0, 0.9, 0.9),
         membrane: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
+        precursor: build_field_ledger(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
     };
     let pot = build_activation_potential_step(&consume);
     assert!(pot.observed_change < 0.0);

@@ -1,6 +1,7 @@
 //! D-008 Stage B fixed-field membrane dynamics.
 
 use crate::config::{SimParams, DX};
+use crate::fields::interior_weight;
 use crate::grid::Grid;
 use crate::operators::diffuse_constant;
 use crate::reactions::interface_weight;
@@ -203,6 +204,155 @@ pub fn membrane_diffusion_rate(
     out_rate: &mut [f64],
 ) {
     diffuse_constant(grid, membrane, diffusivity, scratch_lap, out_rate);
+}
+
+// === D-023 soluble precursor (P) + interface assembly (v6) ===
+
+/// D-023 field index order for eight-field isolated deltas (v6):
+/// [structure, catalyst, nutrient, fuel, waste, activated, membrane, precursor].
+pub const V6_A_INDEX: usize = 5;
+pub const V6_W_INDEX: usize = 4;
+pub const V6_M_INDEX: usize = 6;
+pub const V6_P_INDEX: usize = 7;
+
+/// Precursor synthesis A → P: `k_precursor · A · q(C) · H(φ)`.
+/// Produced where the catalyst-bearing interior exists (interior weight H(φ)).
+#[inline]
+pub fn precursor_synthesis_rate(
+    phi: f64,
+    catalyst: f64,
+    activated: f64,
+    params: &SimParams,
+) -> f64 {
+    params.k_precursor
+        * activated.max(0.0)
+        * membrane_catalyst_saturation(catalyst, params)
+        * interior_weight(phi)
+}
+
+/// Interface assembly P → M: `k_assembly · P · I(φ) · max(0, 1 − M/M_max)`.
+/// Assembles only where the structural interface exists (interface weight I(φ)).
+#[inline]
+pub fn precursor_assembly_rate(phi: f64, precursor: f64, membrane: f64, params: &SimParams) -> f64 {
+    params.k_assembly
+        * precursor.max(0.0)
+        * interface_weight(phi)
+        * (1.0 - membrane / params.m_max).max(0.0)
+}
+
+/// Precursor turnover P → W: `k_precursor_decay · P`.
+#[inline]
+pub fn precursor_decay_rate(precursor: f64, params: &SimParams) -> f64 {
+    params.k_precursor_decay * precursor.max(0.0)
+}
+
+/// Conservative isolated extent A → P (unit yield).
+pub fn precursor_synthesis_isolated_delta(extent: f64) -> [f64; 8] {
+    let mut d = [0.0; 8];
+    d[V6_A_INDEX] = -extent;
+    d[V6_P_INDEX] = extent;
+    d
+}
+
+/// Conservative isolated extent P → M (unit yield).
+pub fn precursor_assembly_isolated_delta(extent: f64) -> [f64; 8] {
+    let mut d = [0.0; 8];
+    d[V6_P_INDEX] = -extent;
+    d[V6_M_INDEX] = extent;
+    d
+}
+
+/// Conservative isolated extent P → W (unit yield).
+pub fn precursor_decay_isolated_delta(extent: f64) -> [f64; 8] {
+    let mut d = [0.0; 8];
+    d[V6_P_INDEX] = -extent;
+    d[V6_W_INDEX] = extent;
+    d
+}
+
+/// Conservative isolated extent M → W (membrane loss).
+pub fn membrane_loss_isolated_delta_v6(extent: f64) -> [f64; 8] {
+    let mut d = [0.0; 8];
+    d[V6_M_INDEX] = -extent;
+    d[V6_W_INDEX] = extent;
+    d
+}
+
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
+pub struct PrecursorEvolutionTotals {
+    pub synthesis_delta: f64,
+    pub assembly_delta: f64,
+    pub precursor_decay_delta: f64,
+    pub membrane_loss_delta: f64,
+    pub membrane_diffusion_delta: f64,
+    /// Net A consumed by precursor synthesis (≤ 0).
+    pub activated_reaction_delta: f64,
+    /// Net P change from reactions only (synthesis − assembly − decay).
+    pub precursor_reaction_delta: f64,
+    /// Net M change from reactions (assembly − loss).
+    pub membrane_reaction_delta: f64,
+    /// Waste produced by precursor turnover + membrane loss.
+    pub waste_reaction_delta: f64,
+}
+
+/// D-023 v6 evolution. Advances M (assembly − loss + diffusion) and writes the
+/// per-cell reaction contributions for A (−synthesis), P (synthesis − assembly −
+/// decay), and W (decay + loss). Precursor transport is applied by the caller.
+///
+/// `phi`, `catalyst`, `activated`, `precursor`, `membrane` are current-state drivers.
+/// `membrane_next` must already hold current M; diffusion + reaction are added in.
+#[allow(clippy::too_many_arguments)]
+pub fn evolve_precursor_assembly(
+    grid: &Grid,
+    phi: &[f64],
+    catalyst: &[f64],
+    activated: &[f64],
+    precursor: &[f64],
+    membrane: &[f64],
+    params: &SimParams,
+    dt: f64,
+    scratch_lap: &mut [f64],
+    diffusion_rate: &mut [f64],
+    membrane_next: &mut [f64],
+    activated_next: &mut [f64],
+    precursor_next: &mut [f64],
+    waste_next: &mut [f64],
+) -> PrecursorEvolutionTotals {
+    // χ_M = 0 for v6: plain M diffusion.
+    membrane_transport_rate(grid, membrane, phi, params, scratch_lap, diffusion_rate);
+    let mut totals = PrecursorEvolutionTotals::default();
+    for idx in 0..membrane.len() {
+        if !grid.in_dish(idx) {
+            membrane_next[idx] = 0.0;
+            continue;
+        }
+        let r_syn = precursor_synthesis_rate(phi[idx], catalyst[idx], activated[idx], params);
+        let r_asm = precursor_assembly_rate(phi[idx], precursor[idx], membrane[idx], params);
+        let r_dec = precursor_decay_rate(precursor[idx], params);
+        let loss = membrane_losses(phi[idx], membrane[idx], params);
+
+        let syn = r_syn * dt;
+        let asm = r_asm * dt;
+        let dec = r_dec * dt;
+        let los = loss * dt;
+        let diff = diffusion_rate[idx] * dt;
+
+        totals.synthesis_delta += syn;
+        totals.assembly_delta += asm;
+        totals.precursor_decay_delta += dec;
+        totals.membrane_loss_delta += los;
+        totals.membrane_diffusion_delta += diff;
+        totals.activated_reaction_delta -= syn;
+        totals.precursor_reaction_delta += syn - asm - dec;
+        totals.membrane_reaction_delta += asm - los;
+        totals.waste_reaction_delta += dec + los;
+
+        activated_next[idx] -= syn;
+        precursor_next[idx] += syn - asm - dec;
+        membrane_next[idx] += (asm - los) + diff;
+        waste_next[idx] += dec + los;
+    }
+    totals
 }
 
 /// Evolves M from old-state fixed drivers; v2 also couples A and W stoichiometrically.

@@ -13,6 +13,8 @@ pub struct FieldBuffers {
     pub waste: Vec<f64>,
     pub activated: Vec<f64>,
     pub membrane: Vec<f64>,
+    /// D-023 soluble membrane precursor P (eight-field v6 only; zeros otherwise).
+    pub precursor: Vec<f64>,
     pub structure_next: Vec<f64>,
     pub catalyst_next: Vec<f64>,
     pub nutrient_next: Vec<f64>,
@@ -20,6 +22,7 @@ pub struct FieldBuffers {
     pub waste_next: Vec<f64>,
     pub activated_next: Vec<f64>,
     pub membrane_next: Vec<f64>,
+    pub precursor_next: Vec<f64>,
     /// scratch: h(phi), laplacian, mu, laplacian_mu, reaction scratch
     pub scratch_h: Vec<f64>,
     pub scratch_lap: Vec<f64>,
@@ -34,6 +37,7 @@ pub struct FieldBuffers {
     pub scratch_transport_n: Vec<f64>,
     pub scratch_transport_f: Vec<f64>,
     pub scratch_transport_w: Vec<f64>,
+    pub scratch_transport_p: Vec<f64>,
 }
 
 impl FieldBuffers {
@@ -47,6 +51,7 @@ impl FieldBuffers {
             waste: zero(),
             activated: zero(),
             membrane: zero(),
+            precursor: zero(),
             structure_next: zero(),
             catalyst_next: zero(),
             nutrient_next: zero(),
@@ -54,6 +59,7 @@ impl FieldBuffers {
             waste_next: zero(),
             activated_next: zero(),
             membrane_next: zero(),
+            precursor_next: zero(),
             scratch_h: zero(),
             scratch_lap: zero(),
             scratch_mu: zero(),
@@ -67,6 +73,7 @@ impl FieldBuffers {
             scratch_transport_n: zero(),
             scratch_transport_f: zero(),
             scratch_transport_w: zero(),
+            scratch_transport_p: zero(),
         }
     }
 
@@ -82,6 +89,7 @@ impl FieldBuffers {
         std::mem::swap(&mut self.waste, &mut self.waste_next);
         std::mem::swap(&mut self.activated, &mut self.activated_next);
         std::mem::swap(&mut self.membrane, &mut self.membrane_next);
+        std::mem::swap(&mut self.precursor, &mut self.precursor_next);
     }
 
     pub fn copy_current_to_working(&self, working: &mut FieldBuffers) {
@@ -92,6 +100,7 @@ impl FieldBuffers {
         working.waste.copy_from_slice(&self.waste);
         working.activated.copy_from_slice(&self.activated);
         working.membrane.copy_from_slice(&self.membrane);
+        working.precursor.copy_from_slice(&self.precursor);
     }
 
     pub fn copy_current_to_next(&mut self) {
@@ -102,6 +111,7 @@ impl FieldBuffers {
         self.waste_next.copy_from_slice(&self.waste);
         self.activated_next.copy_from_slice(&self.activated);
         self.membrane_next.copy_from_slice(&self.membrane);
+        self.precursor_next.copy_from_slice(&self.precursor);
     }
 }
 
@@ -282,6 +292,12 @@ pub fn initialize_seed(grid: &Grid, params: &crate::config::SimParams, fields: &
                     fields.activated[idx] = 0.10 * h;
                     fields.membrane[idx] = 0.50 * interface_weight(phi);
                 }
+                EquationVersion::MembraneMetabolismV6PrecursorAssembly => {
+                    fields.activated[idx] = 0.10 * h;
+                    fields.membrane[idx] = 0.50 * interface_weight(phi);
+                    // Soluble precursor starts empty; it must be produced from A.
+                    fields.precursor[idx] = 0.0;
+                }
                 EquationVersion::D001BulkV1
                 | EquationVersion::D003CrowdingV1
                 | EquationVersion::SurfaceTurnoverV1 => {
@@ -318,8 +334,21 @@ pub fn field_slice<'a>(fields: &'a FieldBuffers, name: &str) -> Option<&'a [f64]
         "waste" => Some(&fields.waste),
         "activated" => Some(&fields.activated),
         "membrane" => Some(&fields.membrane),
+        "precursor" => Some(&fields.precursor),
         _ => None,
     }
 }
+
+/// D-023 eight-field ordered name list (v6).
+pub const FIELD_NAMES_V6: [&str; 8] = [
+    "structure",
+    "catalyst",
+    "nutrient",
+    "fuel",
+    "waste",
+    "activated",
+    "membrane",
+    "precursor",
+];
 
 // ponytail: grid size fixed at compile-time constants; upgrade path is dynamic Grid allocation

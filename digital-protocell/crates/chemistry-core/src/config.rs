@@ -32,6 +32,10 @@ pub const MEMBRANE_TRANSPORT_SCHEMA_VERSION_V2: u32 = 2;
 pub const TRANSPORT_SCHEMA_VERSION_V1: u32 = 1;
 /// D-016 calibrated passive waste transport schema (D_W / β_W repair).
 pub const TRANSPORT_SCHEMA_VERSION_V2: u32 = 2;
+/// D-023 eight-field soluble-precursor + interface-assembly schema.
+pub const PRECURSOR_SCHEMA_VERSION_V1: u32 = 1;
+/// D-023 field schema tag: seven current + seven next + P/P_next.
+pub const EIGHT_FIELD_COUNT: usize = 8;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum EquationVersion {
@@ -55,6 +59,10 @@ pub enum EquationVersion {
     /// D-022 interface-affinity M transport; inherits v4 decay + v3 structure.
     #[serde(rename = "membrane_metabolism_v5_interface_affinity")]
     MembraneMetabolismV5InterfaceAffinity,
+    /// D-023 eight-field soluble precursor + interface assembly.
+    /// Adds P (soluble membrane precursor); disables direct A→M synthesis.
+    #[serde(rename = "membrane_metabolism_v6_precursor_assembly")]
+    MembraneMetabolismV6PrecursorAssembly,
 }
 
 impl EquationVersion {
@@ -72,6 +80,9 @@ impl EquationVersion {
             Self::MembraneMetabolismV5InterfaceAffinity => {
                 "membrane_metabolism_v5_interface_affinity"
             }
+            Self::MembraneMetabolismV6PrecursorAssembly => {
+                "membrane_metabolism_v6_precursor_assembly"
+            }
         }
     }
 
@@ -83,6 +94,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV3StructuralScaling
                 | Self::MembraneMetabolismV4InterfaceProtected
                 | Self::MembraneMetabolismV5InterfaceAffinity
+                | Self::MembraneMetabolismV6PrecursorAssembly
         )
     }
 
@@ -93,6 +105,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV3StructuralScaling
                 | Self::MembraneMetabolismV4InterfaceProtected
                 | Self::MembraneMetabolismV5InterfaceAffinity
+                | Self::MembraneMetabolismV6PrecursorAssembly
         )
     }
 
@@ -101,6 +114,7 @@ impl EquationVersion {
             self,
             Self::MembraneMetabolismV4InterfaceProtected
                 | Self::MembraneMetabolismV5InterfaceAffinity
+                | Self::MembraneMetabolismV6PrecursorAssembly
         )
     }
 
@@ -108,12 +122,23 @@ impl EquationVersion {
         matches!(self, Self::MembraneMetabolismV5InterfaceAffinity)
     }
 
+    /// D-023 eight-field soluble-precursor architecture.
+    pub const fn is_precursor_assembly(self) -> bool {
+        matches!(self, Self::MembraneMetabolismV6PrecursorAssembly)
+    }
+
+    /// True when the field schema carries the eight-field (P) payload.
+    pub const fn is_eight_field(self) -> bool {
+        self.is_precursor_assembly()
+    }
+
     pub const fn stoichiometric_schema_version(self) -> u32 {
         match self {
             Self::MembraneMetabolismV2Conservative
             | Self::MembraneMetabolismV3StructuralScaling
             | Self::MembraneMetabolismV4InterfaceProtected
-            | Self::MembraneMetabolismV5InterfaceAffinity => STOICHIOMETRIC_SCHEMA_VERSION_V2,
+            | Self::MembraneMetabolismV5InterfaceAffinity
+            | Self::MembraneMetabolismV6PrecursorAssembly => STOICHIOMETRIC_SCHEMA_VERSION_V2,
             Self::MembraneMetabolismV1 => STOICHIOMETRIC_SCHEMA_VERSION_V1,
             Self::D001BulkV1 | Self::D003CrowdingV1 | Self::SurfaceTurnoverV1 => 0,
         }
@@ -122,7 +147,8 @@ impl EquationVersion {
     pub const fn membrane_schema_version(self) -> u32 {
         match self {
             Self::MembraneMetabolismV4InterfaceProtected
-            | Self::MembraneMetabolismV5InterfaceAffinity => MEMBRANE_SCHEMA_VERSION_V2,
+            | Self::MembraneMetabolismV5InterfaceAffinity
+            | Self::MembraneMetabolismV6PrecursorAssembly => MEMBRANE_SCHEMA_VERSION_V2,
             Self::MembraneMetabolismV1
             | Self::MembraneMetabolismV2Conservative
             | Self::MembraneMetabolismV3StructuralScaling => MEMBRANE_SCHEMA_VERSION_V1,
@@ -133,11 +159,21 @@ impl EquationVersion {
     pub const fn membrane_transport_schema_version(self) -> u32 {
         match self {
             Self::MembraneMetabolismV5InterfaceAffinity => MEMBRANE_TRANSPORT_SCHEMA_VERSION_V2,
+            // v6 keeps interface-protected M turnover with χ_M = 0 (diffusion-only M transport).
             Self::MembraneMetabolismV1
             | Self::MembraneMetabolismV2Conservative
             | Self::MembraneMetabolismV3StructuralScaling
-            | Self::MembraneMetabolismV4InterfaceProtected => MEMBRANE_TRANSPORT_SCHEMA_VERSION_V1,
+            | Self::MembraneMetabolismV4InterfaceProtected
+            | Self::MembraneMetabolismV6PrecursorAssembly => MEMBRANE_TRANSPORT_SCHEMA_VERSION_V1,
             Self::D001BulkV1 | Self::D003CrowdingV1 | Self::SurfaceTurnoverV1 => 0,
+        }
+    }
+
+    /// D-023 precursor-assembly schema version (0 for non-v6 versions).
+    pub const fn precursor_schema_version(self) -> u32 {
+        match self {
+            Self::MembraneMetabolismV6PrecursorAssembly => PRECURSOR_SCHEMA_VERSION_V1,
+            _ => 0,
         }
     }
 }
@@ -338,6 +374,18 @@ pub struct SimParams {
     /// D-022 membrane interface-affinity coefficient χ_M. Used under v5; 0 ⇒ v4 transport.
     #[serde(default = "default_chi_m")]
     pub chi_m: f64,
+    /// D-023 precursor synthesis rate coefficient (A → P). Used under v6.
+    #[serde(default = "default_k_precursor")]
+    pub k_precursor: f64,
+    /// D-023 interface assembly rate coefficient (P → M). Only new screened parameter.
+    #[serde(default = "default_k_assembly")]
+    pub k_assembly: f64,
+    /// D-023 precursor turnover rate coefficient (P → W). Frozen to k_A_decay.
+    #[serde(default = "default_k_precursor_decay")]
+    pub k_precursor_decay: f64,
+    /// D-023 precursor diffusivity. Frozen to D_A for the initial bounded experiment.
+    #[serde(default = "default_d_p")]
+    pub d_p: f64,
 }
 
 /// Validate governed v2 yields: 0 < η ≤ 1.
@@ -376,6 +424,25 @@ fn default_eps_m() -> f64 {
 
 fn default_chi_m() -> f64 {
     0.0
+}
+
+fn default_k_precursor() -> f64 {
+    // Mirrors the historical membrane synthesis coefficient scale.
+    0.2
+}
+
+fn default_k_assembly() -> f64 {
+    0.0
+}
+
+fn default_k_precursor_decay() -> f64 {
+    // Frozen: k_precursor_decay = k_A_decay (D-008 activated decay).
+    default_k_d008_activated_decay()
+}
+
+fn default_d_p() -> f64 {
+    // Frozen: D_P = D_A.
+    default_d_a()
 }
 
 fn default_k_phi() -> f64 {
@@ -540,6 +607,10 @@ impl Default for SimParams {
             d019_mechanism_probe: None,
             eps_m: default_eps_m(),
             chi_m: default_chi_m(),
+            k_precursor: default_k_precursor(),
+            k_assembly: default_k_assembly(),
+            k_precursor_decay: default_k_precursor_decay(),
+            d_p: default_d_p(),
         }
     }
 }
