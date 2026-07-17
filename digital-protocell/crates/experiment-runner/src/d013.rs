@@ -569,8 +569,27 @@ pub fn run_governed_reference(
         }
     }
 
-    let partition =
-        membrane_partition(&sim.grid, &sim.fields.structure, &sim.fields.membrane);
+    let membrane_localization = if sim.params.equation_version.is_surface_density() {
+        let mut geometry = vec![
+            chemistry_core::surface_density::InterfaceGeometryCell::default();
+            sim.grid.width * sim.grid.height
+        ];
+        chemistry_core::surface_density::compute_interface_geometry(
+            &sim.grid,
+            &sim.fields.structure,
+            sim.params.eta_n,
+            &mut geometry,
+        );
+        chemistry_core::surface_density::surface_localization(
+            &sim.grid,
+            &geometry,
+            &sim.fields.membrane,
+            sim.params.delta_floor,
+        )
+    } else {
+        membrane_partition(&sim.grid, &sim.fields.structure, &sim.fields.membrane)
+            .localization_fraction
+    };
     let metrics = build_balance_metrics(
         sim.sim_time,
         &sim.constraint_accounting.cumulative,
@@ -579,7 +598,7 @@ pub fn run_governed_reference(
         &sim.transport_accounting.cumulative,
         retention(&sim, &sim.fields.catalyst),
         retention(&sim, &sim.fields.activated),
-        partition.localization_fraction,
+        membrane_localization,
     );
 
     // Map legacy classification for oscillatory detection when not already terminated.

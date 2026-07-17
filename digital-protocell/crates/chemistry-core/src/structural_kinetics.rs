@@ -77,7 +77,9 @@ pub fn active_structural_mechanism(params: &SimParams) -> Option<StructuralScali
     match params.equation_version {
         EquationVersion::MembraneMetabolismV3StructuralScaling
         | EquationVersion::MembraneMetabolismV4InterfaceProtected
-        | EquationVersion::MembraneMetabolismV5InterfaceAffinity => Some(V3_SELECTED_MECHANISM),
+        | EquationVersion::MembraneMetabolismV5InterfaceAffinity
+        | EquationVersion::MembraneMetabolismV6PrecursorAssembly
+        | EquationVersion::MembraneMetabolismV7SurfaceDensity => Some(V3_SELECTED_MECHANISM),
         _ => None,
     }
 }

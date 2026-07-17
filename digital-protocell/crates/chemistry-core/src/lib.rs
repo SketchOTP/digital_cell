@@ -45,6 +45,7 @@ pub mod stoichiometry;
 pub mod stage_d_gate;
 pub mod structural_kinetics;
 pub mod surface_calibration;
+pub mod surface_density;
 pub mod time_audit;
 
 pub use accounting::*;
@@ -83,6 +84,7 @@ pub use stoichiometry::*;
 pub use stage_d_gate::*;
 pub use structural_kinetics::*;
 pub use surface_calibration::*;
+pub use surface_density::*;
 pub use time_audit::*;
 pub use diagnostics::*;
 pub use fields::*;

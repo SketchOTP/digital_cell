@@ -20,6 +20,7 @@ mod d020;
 mod d021;
 mod d022;
 mod d023;
+mod d024;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -146,6 +147,10 @@ enum Commands {
     D023 {
         #[command(subcommand)]
         action: D023Commands,
+    },
+    D024 {
+        #[command(subcommand)]
+        action: D024Commands,
     },
 }
 
@@ -422,6 +427,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D021 { action } => run_d021(action)?,
         Commands::D022 { action } => run_d022(action)?,
         Commands::D023 { action } => run_d023(action)?,
+        Commands::D024 { action } => run_d024(action)?,
     }
     Ok(())
 }
@@ -1413,6 +1419,124 @@ enum D023Commands {
         #[arg(long, default_value = "experiments/generated/d023/gate2")]
         output: PathBuf,
     },
+}
+
+#[derive(Subcommand)]
+enum D024Commands {
+    /// Full D-024 interfacial surface-density pipeline (Gates 0–6).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d024")]
+        output: PathBuf,
+    },
+    Gate0 {
+        #[arg(long, default_value = "experiments/generated/d024/preservation")]
+        output: PathBuf,
+    },
+    Gate1 {
+        #[arg(long, default_value = "experiments/generated/d024/interface_measure")]
+        output: PathBuf,
+    },
+    Gate2 {
+        #[arg(long, default_value = "experiments/generated/d024/passive_surface")]
+        output: PathBuf,
+    },
+    Gate3 {
+        #[arg(long, default_value = "experiments/generated/d024/adsorption")]
+        output: PathBuf,
+    },
+    Gate4 {
+        #[arg(long, default_value = "experiments/generated/d024/selective_transport")]
+        output: PathBuf,
+    },
+    Gate5 {
+        #[arg(long, default_value = "experiments/generated/d024/moving_interface")]
+        output: PathBuf,
+    },
+    Gate6 {
+        #[arg(long, default_value = "experiments/generated/d024/R22_bootstrap")]
+        output: PathBuf,
+        #[arg(long, default_value_t = true)]
+        assume_prior_gates_pass: bool,
+    },
+}
+
+fn resolve_d024_artifact_path(path: &Path) -> PathBuf {
+    if path.is_absolute() {
+        return path.to_path_buf();
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..").join(path)
+}
+
+fn run_d024(action: D024Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D024Commands::Pipeline { output } => {
+            let output = resolve_d024_artifact_path(&output);
+            let result = d024::run_pipeline(&output)?;
+            println!(
+                "D-024 conclusion={} -> {}",
+                result["primary_conclusion"],
+                output.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D024Commands::Gate0 { output } => {
+            let out = resolve_d024_artifact_path(&output);
+            let result = d024::run_gate0_preservation(&out)?;
+            println!("D-024 Gate0 -> {}", out.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D024Commands::Gate1 { output } => {
+            let out = resolve_d024_artifact_path(&output);
+            let result = d024::run_gate1_interface_measure(&out)?;
+            println!("D-024 Gate1 -> {}", out.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D024Commands::Gate2 { output } => {
+            let out = resolve_d024_artifact_path(&output);
+            let result = d024::run_gate2_passive_surface(&out)?;
+            println!(
+                "D-024 Gate2 pass={} -> {}",
+                result["gate2_pass"],
+                out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D024Commands::Gate3 { output } => {
+            let out = resolve_d024_artifact_path(&output);
+            let result = d024::run_gate3_adsorption(&out)?;
+            println!(
+                "D-024 Gate3 any_pass={} promoted_k_ads={} -> {}",
+                result["any_pass"], result["promoted_k_ads"], out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D024Commands::Gate4 { output } => {
+            let out = resolve_d024_artifact_path(&output);
+            let result = d024::run_gate4_selective_transport(&out)?;
+            println!("D-024 Gate4 pass={} -> {}", result["gate4_pass"], out.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D024Commands::Gate5 { output } => {
+            let out = resolve_d024_artifact_path(&output);
+            let result = d024::run_gate5_moving_interface(&out)?;
+            println!("D-024 Gate5 pass={} -> {}", result["gate5_pass"], out.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D024Commands::Gate6 {
+            output,
+            assume_prior_gates_pass,
+        } => {
+            let out = resolve_d024_artifact_path(&output);
+            let result = d024::run_gate6_r22_bootstrap(
+                &out,
+                assume_prior_gates_pass,
+                None,
+            )?;
+            println!("D-024 Gate6 pass={} -> {}", result["gate6_pass"], out.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+    }
+    Ok(())
 }
 
 fn run_d023(action: D023Commands) -> Result<(), Box<dyn std::error::Error>> {

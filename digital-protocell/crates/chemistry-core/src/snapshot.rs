@@ -16,6 +16,9 @@ pub enum FieldSchemaVersion {
     SevenFieldV1,
     #[serde(rename = "eight_field_v1")]
     EightFieldV1,
+    /// D-024 eight-field payload with membrane slot storing S = δΓ.
+    #[serde(rename = "surface_density_v1")]
+    SurfaceDensityV1,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -59,6 +62,8 @@ pub enum SnapshotFields {
     SevenField(SevenFieldPayload),
     #[serde(rename = "eight_field_v1")]
     EightField(EightFieldPayload),
+    #[serde(rename = "surface_density_v1")]
+    SurfaceDensity(EightFieldPayload),
 }
 
 impl SnapshotFields {
@@ -66,7 +71,7 @@ impl SnapshotFields {
         match self {
             Self::FiveField(fields) => &fields.structure,
             Self::SevenField(fields) => &fields.structure,
-            Self::EightField(fields) => &fields.structure,
+            Self::EightField(fields) | Self::SurfaceDensity(fields) => &fields.structure,
         }
     }
 
@@ -74,7 +79,7 @@ impl SnapshotFields {
         match self {
             Self::FiveField(fields) => &fields.catalyst,
             Self::SevenField(fields) => &fields.catalyst,
-            Self::EightField(fields) => &fields.catalyst,
+            Self::EightField(fields) | Self::SurfaceDensity(fields) => &fields.catalyst,
         }
     }
 
@@ -82,7 +87,7 @@ impl SnapshotFields {
         match self {
             Self::FiveField(fields) => &fields.nutrient,
             Self::SevenField(fields) => &fields.nutrient,
-            Self::EightField(fields) => &fields.nutrient,
+            Self::EightField(fields) | Self::SurfaceDensity(fields) => &fields.nutrient,
         }
     }
 
@@ -90,7 +95,7 @@ impl SnapshotFields {
         match self {
             Self::FiveField(fields) => &fields.fuel,
             Self::SevenField(fields) => &fields.fuel,
-            Self::EightField(fields) => &fields.fuel,
+            Self::EightField(fields) | Self::SurfaceDensity(fields) => &fields.fuel,
         }
     }
 
@@ -98,7 +103,7 @@ impl SnapshotFields {
         match self {
             Self::FiveField(fields) => &fields.waste,
             Self::SevenField(fields) => &fields.waste,
-            Self::EightField(fields) => &fields.waste,
+            Self::EightField(fields) | Self::SurfaceDensity(fields) => &fields.waste,
         }
     }
 
@@ -106,7 +111,7 @@ impl SnapshotFields {
         match self {
             Self::FiveField(_) => None,
             Self::SevenField(fields) => Some(&fields.activated),
-            Self::EightField(fields) => Some(&fields.activated),
+            Self::EightField(fields) | Self::SurfaceDensity(fields) => Some(&fields.activated),
         }
     }
 
@@ -114,14 +119,14 @@ impl SnapshotFields {
         match self {
             Self::FiveField(_) => None,
             Self::SevenField(fields) => Some(&fields.membrane),
-            Self::EightField(fields) => Some(&fields.membrane),
+            Self::EightField(fields) | Self::SurfaceDensity(fields) => Some(&fields.membrane),
         }
     }
 
     pub fn precursor(&self) -> Option<&[f64]> {
         match self {
             Self::FiveField(_) | Self::SevenField(_) => None,
-            Self::EightField(fields) => Some(&fields.precursor),
+            Self::EightField(fields) | Self::SurfaceDensity(fields) => Some(&fields.precursor),
         }
     }
 }
@@ -212,11 +217,24 @@ impl FieldSnapshot {
             EquationVersion::MembraneMetabolismV6PrecursorAssembly => {
                 FieldSchemaVersion::EightFieldV1
             }
+            EquationVersion::MembraneMetabolismV7SurfaceDensity => {
+                FieldSchemaVersion::SurfaceDensityV1
+            }
             EquationVersion::MembraneMetabolismV1
             | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity => FieldSchemaVersion::SevenFieldV1,
             EquationVersion::D001BulkV1
             | EquationVersion::D003CrowdingV1
             | EquationVersion::SurfaceTurnoverV1 => FieldSchemaVersion::FiveFieldV1,
+        };
+        let eight_field_payload = || EightFieldPayload {
+            structure: fields.structure.clone(),
+            catalyst: fields.catalyst.clone(),
+            nutrient: fields.nutrient.clone(),
+            fuel: fields.fuel.clone(),
+            waste: fields.waste.clone(),
+            activated: fields.activated.clone(),
+            membrane: fields.membrane.clone(),
+            precursor: fields.precursor.clone(),
         };
         let snapshot_fields = match field_schema_version {
             FieldSchemaVersion::FiveFieldV1 => SnapshotFields::FiveField(FiveFieldPayload {
@@ -235,16 +253,10 @@ impl FieldSnapshot {
                 activated: fields.activated.clone(),
                 membrane: fields.membrane.clone(),
             }),
-            FieldSchemaVersion::EightFieldV1 => SnapshotFields::EightField(EightFieldPayload {
-                structure: fields.structure.clone(),
-                catalyst: fields.catalyst.clone(),
-                nutrient: fields.nutrient.clone(),
-                fuel: fields.fuel.clone(),
-                waste: fields.waste.clone(),
-                activated: fields.activated.clone(),
-                membrane: fields.membrane.clone(),
-                precursor: fields.precursor.clone(),
-            }),
+            FieldSchemaVersion::EightFieldV1 => SnapshotFields::EightField(eight_field_payload()),
+            FieldSchemaVersion::SurfaceDensityV1 => {
+                SnapshotFields::SurfaceDensity(eight_field_payload())
+            }
         };
         Self {
             snapshot_schema_version: SNAPSHOT_SCHEMA_VERSION,
@@ -320,7 +332,7 @@ impl FieldSnapshot {
                 // Seven-field payloads do not carry P; clear it.
                 fields.precursor.fill(0.0);
             }
-            SnapshotFields::EightField(payload) => {
+            SnapshotFields::EightField(payload) | SnapshotFields::SurfaceDensity(payload) => {
                 validate_equal_lengths(
                     expected,
                     &[
@@ -433,19 +445,42 @@ impl FieldSnapshot {
                 FieldSchemaVersion::EightFieldV1,
                 SnapshotFields::EightField(_),
                 EquationVersion::MembraneMetabolismV6PrecursorAssembly,
+            )
+            | (
+                FieldSchemaVersion::SurfaceDensityV1,
+                SnapshotFields::SurfaceDensity(_),
+                EquationVersion::MembraneMetabolismV7SurfaceDensity,
             ) => Ok(()),
-            // Eight-field payload requires v6; seven-field snapshots cannot resume as v6.
+            // Eight-field payload requires v6; surface-density payload requires v7.
             (FieldSchemaVersion::EightFieldV1, _, v) if !v.is_precursor_assembly() => Err(format!(
                 "eight_field_v1 snapshot requires membrane_metabolism_v6_precursor_assembly, got {v}"
             )),
             (_, SnapshotFields::EightField(_), v) if !v.is_precursor_assembly() => Err(format!(
                 "eight_field_v1 payload is incompatible with {v}"
             )),
+            (FieldSchemaVersion::SurfaceDensityV1, _, v) if !v.is_surface_density() => Err(format!(
+                "surface_density_v1 snapshot requires membrane_metabolism_v7_surface_density, got {v}"
+            )),
+            (_, SnapshotFields::SurfaceDensity(_), v) if !v.is_surface_density() => Err(format!(
+                "surface_density_v1 payload is incompatible with {v}"
+            )),
             (FieldSchemaVersion::SevenFieldV1, _, EquationVersion::MembraneMetabolismV6PrecursorAssembly) => {
                 Err("seven_field_v1 snapshot cannot resume as membrane_metabolism_v6_precursor_assembly".to_string())
             }
+            (FieldSchemaVersion::SevenFieldV1, _, EquationVersion::MembraneMetabolismV7SurfaceDensity) => {
+                Err("seven_field_v1 snapshot cannot resume as membrane_metabolism_v7_surface_density".to_string())
+            }
             (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV6PrecursorAssembly) => {
                 Err("five_field_v1 snapshot is incompatible with membrane_metabolism_v6_precursor_assembly".to_string())
+            }
+            (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV7SurfaceDensity) => {
+                Err("five_field_v1 snapshot is incompatible with membrane_metabolism_v7_surface_density".to_string())
+            }
+            (FieldSchemaVersion::EightFieldV1, _, EquationVersion::MembraneMetabolismV7SurfaceDensity) => {
+                Err("eight_field_v1 snapshot cannot resume as membrane_metabolism_v7_surface_density".to_string())
+            }
+            (FieldSchemaVersion::SurfaceDensityV1, _, EquationVersion::MembraneMetabolismV6PrecursorAssembly) => {
+                Err("surface_density_v1 snapshot cannot resume as membrane_metabolism_v6_precursor_assembly".to_string())
             }
             (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV1) => {
                 Err("five_field_v1 snapshot is incompatible with membrane_metabolism_v1".to_string())
@@ -472,6 +507,12 @@ impl FieldSnapshot {
             }
             (FieldSchemaVersion::SevenFieldV1, SnapshotFields::FiveField(_), _) => {
                 Err("seven_field_v1 envelope contains five_field_v1 payload".to_string())
+            }
+            (FieldSchemaVersion::EightFieldV1, SnapshotFields::SurfaceDensity(_), _) => {
+                Err("eight_field_v1 envelope contains surface_density_v1 payload".to_string())
+            }
+            (FieldSchemaVersion::SurfaceDensityV1, SnapshotFields::EightField(_), _) => {
+                Err("surface_density_v1 envelope contains eight_field_v1 payload".to_string())
             }
             (field_schema, _, equation) => Err(format!(
                 "snapshot field schema {field_schema:?} incompatible with equation {equation}"

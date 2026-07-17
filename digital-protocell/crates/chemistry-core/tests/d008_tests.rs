@@ -235,6 +235,7 @@ fn in_memory_five_field_payload_rejected_for_membrane_metabolism() {
         SnapshotFields::FiveField(payload) => SnapshotFields::FiveField(payload),
         SnapshotFields::SevenField(_) => panic!("expected five-field baseline"),
         SnapshotFields::EightField(_) => panic!("expected five-field baseline"),
+        SnapshotFields::SurfaceDensity(_) => panic!("expected five-field baseline"),
     };
     snap.field_schema_version = FieldSchemaVersion::FiveFieldV1;
 
@@ -257,6 +258,7 @@ fn malformed_payload_lengths_return_err_without_panic() {
         }
         SnapshotFields::FiveField(_) => panic!("expected seven-field snapshot"),
         SnapshotFields::EightField(_) => panic!("expected seven-field snapshot"),
+        SnapshotFields::SurfaceDensity(_) => panic!("expected seven-field snapshot"),
     }
 
     let mut dest = FieldBuffers::for_grid(&Grid::new());

@@ -4,6 +4,7 @@ use crate::config::{SimParams, DX};
 use crate::grid::Grid;
 use crate::membrane_accounting::SpeciesTransportAccounting;
 use crate::reactions::{catalyst_diffusivity, interface_weight};
+use crate::surface_density::{reconstruct_gamma, theta_gamma};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
@@ -40,6 +41,45 @@ pub fn permeability(species: TransportSpecies, geometry: FaceGeometry, params: &
     (-beta * geometry.membrane * geometry.interface).exp()
 }
 
+/// D-024 v7: interface-crossing faces attenuate by exp(−β·θΓ); co-phase faces pass through.
+pub fn permeability_surface_occupancy(
+    species: TransportSpecies,
+    phi_i: f64,
+    phi_j: f64,
+    s_i: f64,
+    s_j: f64,
+    params: &SimParams,
+) -> f64 {
+    let i_inside = phi_i >= 0.5;
+    let j_inside = phi_j >= 0.5;
+    if i_inside == j_inside {
+        return 1.0;
+    }
+    let beta = match species {
+        TransportSpecies::Catalyst => params.beta_c,
+        TransportSpecies::Activated => params.beta_a,
+        TransportSpecies::Nutrient => params.beta_n,
+        TransportSpecies::Fuel => params.beta_f,
+        TransportSpecies::Waste => params.beta_w,
+    };
+    // ponytail: single-cell |∇H| proxy when full geometry is unavailable at transport faces.
+    let delta_i = cell_delta_estimate(phi_i, params.delta_floor);
+    let delta_j = cell_delta_estimate(phi_j, params.delta_floor);
+    let gamma_i = reconstruct_gamma(s_i, delta_i, params.delta_floor);
+    let gamma_j = reconstruct_gamma(s_j, delta_j, params.delta_floor);
+    let theta = 0.5
+        * (theta_gamma(gamma_i, params.gamma_reference)
+            + theta_gamma(gamma_j, params.gamma_reference));
+    (-beta * theta).exp()
+}
+
+#[inline]
+fn cell_delta_estimate(phi: f64, delta_floor: f64) -> f64 {
+    let p = phi.clamp(0.0, 1.0);
+    let dh_dphi = 6.0 * p * (1.0 - p);
+    (dh_dphi / DX).max(delta_floor)
+}
+
 fn base_diffusivity(species: TransportSpecies, phi: f64, params: &SimParams) -> f64 {
     match species {
         TransportSpecies::Catalyst => catalyst_diffusivity(phi, params),
@@ -61,7 +101,12 @@ pub fn face_diffusivity(
     let geometry = face_geometry(phi_i, phi_j, membrane_i, membrane_j);
     let base =
         0.5 * (base_diffusivity(species, phi_i, params) + base_diffusivity(species, phi_j, params));
-    base * permeability(species, geometry, params)
+    let perm = if params.equation_version.is_surface_density() {
+        permeability_surface_occupancy(species, phi_i, phi_j, membrane_i, membrane_j, params)
+    } else {
+        permeability(species, geometry, params)
+    };
+    base * perm
 }
 
 /// Signed flux from cell i to cell j across one face.
