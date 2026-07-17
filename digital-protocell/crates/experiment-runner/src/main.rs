@@ -24,6 +24,7 @@ mod d024;
 mod d025;
 mod d025_stage_e;
 mod d026;
+mod d027;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -162,6 +163,10 @@ enum Commands {
     D026 {
         #[command(subcommand)]
         action: D026Commands,
+    },
+    D027 {
+        #[command(subcommand)]
+        action: D027Commands,
     },
 }
 
@@ -441,6 +446,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D024 { action } => run_d024(action)?,
         Commands::D025 { action } => run_d025(action)?,
         Commands::D026 { action } => run_d026(action)?,
+        Commands::D027 { action } => run_d027(action)?,
     }
     Ok(())
 }
@@ -1674,6 +1680,67 @@ fn run_d026(action: D026Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-026 classify -> {} (mechanism={})",
                 out.join("late_time_classification/classification.json").display(),
                 result["gate6_mechanism"]
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D027Commands {
+    /// Gates 0–4 early pipeline (ledger, basis, candidates, isolated surface).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d027")]
+        output: PathBuf,
+    },
+    Gate0 {
+        #[arg(long, default_value = "experiments/generated/d027/ledger_restore")]
+        output: PathBuf,
+    },
+    Gate1 {
+        #[arg(long, default_value = "experiments/generated/d027/adsorption_basis")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d027_artifact_path(path: &Path) -> PathBuf {
+    if path.is_absolute() {
+        return path.to_path_buf();
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../..")
+        .join(path)
+}
+
+fn run_d027(action: D027Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D027Commands::Pipeline { output } => {
+            let out = resolve_d027_artifact_path(&output);
+            let result = d027::run_pipeline(&out)?;
+            println!(
+                "D-027 pipeline conclusion={} -> {}",
+                result["conclusion"],
+                out.join("manifest.json").display()
+            );
+        }
+        D027Commands::Gate0 { output } => {
+            let out = resolve_d027_artifact_path(&output);
+            let result = d027::run_gate0_ledger_restore(&out)?;
+            println!(
+                "D-027 gate0 pass={} max_abs={} -> {}",
+                result["pass"],
+                result["max_abs_diff"],
+                out.join("ledger_restore.json").display()
+            );
+        }
+        D027Commands::Gate1 { output } => {
+            let out = resolve_d027_artifact_path(&output);
+            let result = d027::run_gate1_adsorption_basis(&out)?;
+            println!(
+                "D-027 gate1 portable={} span={} -> {}",
+                result["portability"]["portable"],
+                result["portability"]["span"],
+                out.join("adsorption_basis.json").display()
             );
         }
     }
