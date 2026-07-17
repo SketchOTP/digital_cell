@@ -318,9 +318,130 @@ fn tangential_face_flux(
     delta_f * d_gamma * tgrad_dot_e * inv_dx2 * DX
 }
 
+/// Diagnostics for autonomous interface-normal velocity estimation (D-025).
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
+pub struct InterfaceVelocityDiagnostics {
+    pub min_interface_grad: f64,
+    pub max_abs_vn: f64,
+    pub interface_band_area: f64,
+    pub mean_vn: f64,
+    pub band_cell_count: usize,
+}
+
+/// True when the cell is inside the valid diffuse-interface band for surface velocity.
+#[inline]
+pub fn in_interface_velocity_band(delta: f64, grad_phi: f64, delta_floor: f64, grad_min: f64) -> bool {
+    delta > delta_floor && grad_phi >= grad_min
+}
+
+/// Central-difference |∇φ| matching `compute_interface_geometry` sampling.
+pub fn grad_phi_magnitude(grid: &Grid, phi: &[f64], i: usize, j: usize) -> f64 {
+    let w = grid.width;
+    let inv_2dx = 0.5 / DX;
+    let left = sample_phi(grid, phi, i.wrapping_sub(1), j, i, j);
+    let right = sample_phi(grid, phi, i + 1, j, i, j);
+    let down = sample_phi(grid, phi, i, j.wrapping_sub(1), i, j);
+    let up = sample_phi(grid, phi, i, j + 1, i, j);
+    let dphix = (right - left) * inv_2dx;
+    let dphiy = (up - down) * inv_2dx;
+    (dphix * dphix + dphiy * dphiy).sqrt()
+}
+
+/// Derive interface-normal speed from old and tentative φ:
+/// `v_n = −(φ_next − φ_old)/dt / sqrt(|∇φ_old|² + η_v²)` inside the valid band.
+///
+/// Outside the band, `vn_out = 0` (no weak-gradient division). Depends only on
+/// old structure, tentative update, dt, and local derivatives.
+pub fn estimate_interface_normal_velocity(
+    grid: &Grid,
+    phi_old: &[f64],
+    phi_next: &[f64],
+    geometry_old: &[InterfaceGeometryCell],
+    dt: f64,
+    eta_v: f64,
+    delta_floor: f64,
+    grad_min: f64,
+    vn_out: &mut [f64],
+) -> InterfaceVelocityDiagnostics {
+    let w = grid.width;
+    let h = grid.height;
+    let inv_dt = if dt.abs() > 0.0 { 1.0 / dt } else { 0.0 };
+    let eta2 = eta_v * eta_v;
+    vn_out.fill(0.0);
+
+    let mut min_grad = f64::INFINITY;
+    let mut max_abs_vn = 0.0_f64;
+    let mut band_area = 0.0_f64;
+    let mut vn_sum = 0.0_f64;
+    let mut band_count = 0usize;
+    let cell = DX * DX;
+
+    for j in 0..h {
+        for i in 0..w {
+            let idx = Grid::index(w, i, j);
+            if !grid.in_dish(idx) {
+                continue;
+            }
+            let grad = grad_phi_magnitude(grid, phi_old, i, j);
+            let delta = geometry_old[idx].delta;
+            if !in_interface_velocity_band(delta, grad, delta_floor, grad_min) {
+                continue;
+            }
+            let dphi_dt = (phi_next[idx] - phi_old[idx]) * inv_dt;
+            let denom = (grad * grad + eta2).sqrt();
+            let vn = -dphi_dt / denom;
+            vn_out[idx] = vn;
+            min_grad = min_grad.min(grad);
+            max_abs_vn = max_abs_vn.max(vn.abs());
+            band_area += cell;
+            vn_sum += vn;
+            band_count += 1;
+        }
+    }
+    if !min_grad.is_finite() {
+        min_grad = 0.0;
+    }
+    InterfaceVelocityDiagnostics {
+        min_interface_grad: min_grad,
+        max_abs_vn,
+        interface_band_area: band_area,
+        mean_vn: if band_count > 0 {
+            vn_sum / band_count as f64
+        } else {
+            0.0
+        },
+        band_cell_count: band_count,
+    }
+}
+
+/// Analytic circular tanh profile centered at `(cx, cy)`.
+pub fn circular_phi_profile_at(
+    grid: &Grid,
+    cx: f64,
+    cy: f64,
+    radius: f64,
+    eps: f64,
+    phi: &mut [f64],
+) {
+    let w = grid.width;
+    for j in 0..grid.height {
+        for i in 0..w {
+            let idx = Grid::index(w, i, j);
+            if !grid.in_dish(idx) {
+                phi[idx] = 0.0;
+                continue;
+            }
+            let x = i as f64;
+            let y = j as f64;
+            let r = ((x - cx).powi(2) + (y - cy).powi(2)).sqrt();
+            phi[idx] = (0.5 * (1.0 - ((r - radius) / eps).tanh())).clamp(0.0, 1.0);
+        }
+    }
+}
+
 /// Conservative surface advection ∂S/∂t += −∇·(S u_Γ) with u_Γ = v_n n.
 ///
-/// `vn` is a per-cell prescribed normal speed (diagnostic Gate 5 only).
+/// `vn` is a per-cell normal speed (prescribed diagnostic or autonomous estimate).
 pub fn surface_advection_rate(
     grid: &Grid,
     geometry: &[InterfaceGeometryCell],
@@ -382,6 +503,9 @@ pub fn surface_advection_rate(
 /// Chemical coupling (when enabled):
 /// `A → P` (synthesis), `P → W` (precursor decay),
 /// `P -= δ J_ads`, `S += δ J_ads`, `S -= δ J_loss`, `W += δ J_loss`.
+///
+/// When `vn` is `Some`, also applies conservative autonomous advection
+/// `∂S/∂t += −∇·(S u_Γ)` using old-state geometry and the provided normal speed.
 #[allow(clippy::too_many_arguments)]
 pub fn evolve_surface_density(
     grid: &Grid,
@@ -400,6 +524,59 @@ pub fn evolve_surface_density(
     geometry: &mut [InterfaceGeometryCell],
     gamma: &mut [f64],
     diffusion_rate: &mut [f64],
+    s_next: &mut [f64],
+    activated_next: &mut [f64],
+    precursor_next: &mut [f64],
+    waste_next: &mut [f64],
+) -> SurfaceAccountingTotals {
+    let mut advection_rate = Vec::new();
+    evolve_surface_density_with_vn(
+        grid,
+        phi,
+        catalyst,
+        activated,
+        precursor,
+        s,
+        params,
+        dt,
+        enable_synthesis,
+        enable_adsorption,
+        enable_precursor_decay,
+        enable_gamma_decay,
+        enable_diffusion,
+        None,
+        geometry,
+        gamma,
+        diffusion_rate,
+        &mut advection_rate,
+        s_next,
+        activated_next,
+        precursor_next,
+        waste_next,
+    )
+}
+
+/// Like [`evolve_surface_density`], with optional autonomous/prescribed `vn`.
+#[allow(clippy::too_many_arguments)]
+pub fn evolve_surface_density_with_vn(
+    grid: &Grid,
+    phi: &[f64],
+    catalyst: &[f64],
+    activated: &[f64],
+    precursor: &[f64],
+    s: &[f64],
+    params: &SimParams,
+    dt: f64,
+    enable_synthesis: bool,
+    enable_adsorption: bool,
+    enable_precursor_decay: bool,
+    enable_gamma_decay: bool,
+    enable_diffusion: bool,
+    vn: Option<&[f64]>,
+    geometry: &mut [InterfaceGeometryCell],
+    gamma: &mut [f64],
+    diffusion_rate: &mut [f64],
+    advection_rate: &mut Vec<f64>,
     s_next: &mut [f64],
     activated_next: &mut [f64],
     precursor_next: &mut [f64],
@@ -424,6 +601,16 @@ pub fn evolve_surface_density(
         diffusion_rate.fill(0.0);
     }
 
+    if let Some(vn_field) = vn {
+        if advection_rate.len() != s.len() {
+            advection_rate.resize(s.len(), 0.0);
+        }
+        let abs_flux = surface_advection_rate(grid, geometry, s, vn_field, advection_rate);
+        totals.absolute_face_flux += abs_flux;
+    } else if !advection_rate.is_empty() {
+        advection_rate.fill(0.0);
+    }
+
     for idx in 0..s.len() {
         if !grid.in_dish(idx) {
             s_next[idx] = 0.0;
@@ -441,6 +628,12 @@ pub fn evolve_surface_density(
         } else {
             0.0
         };
+
+        if vn.is_some() && !advection_rate.is_empty() {
+            let adv = advection_rate[idx] * dt;
+            ds += adv;
+            totals.advection_delta += adv;
+        }
 
         if enable_synthesis {
             let syn = precursor_synthesis_rate(phi[idx], catalyst[idx], activated[idx], params) * dt;

@@ -441,6 +441,12 @@ pub struct SimParams {
     /// D-024 face interface support threshold for surface fluxes.
     #[serde(default = "default_delta_face_eps")]
     pub delta_face_eps: f64,
+    /// D-025 velocity estimator regularization η_v in v_n = −∂tφ / sqrt(|∇φ|² + η_v²).
+    #[serde(default = "default_eta_v")]
+    pub eta_v: f64,
+    /// D-025 minimum |∇φ| for valid interface-band velocity (weak-gradient exclusion).
+    #[serde(default = "default_interface_grad_min")]
+    pub interface_grad_min: f64,
 }
 
 /// Validate governed v2 yields: 0 < η ≤ 1.
@@ -531,6 +537,14 @@ fn default_delta_floor() -> f64 {
 
 fn default_delta_face_eps() -> f64 {
     1e-14
+}
+
+fn default_eta_v() -> f64 {
+    1e-6
+}
+
+fn default_interface_grad_min() -> f64 {
+    1e-3
 }
 
 fn default_k_phi() -> f64 {
@@ -707,6 +721,8 @@ impl Default for SimParams {
             eta_n: default_eta_n(),
             delta_floor: default_delta_floor(),
             delta_face_eps: default_delta_face_eps(),
+            eta_v: default_eta_v(),
+            interface_grad_min: default_interface_grad_min(),
         }
     }
 }

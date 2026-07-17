@@ -1,0 +1,14 @@
+{
+  "project_directive": "D-025",
+  "gate": 2,
+  "conclusion": "D025_GATE2_PASS",
+  "source_commit": "877787336d3e48220526be4b5ab11b92e5a0971d",
+  "equation_version": "membrane_metabolism_v7_surface_density",
+  "tests": [
+    "test_autonomous_s_mass_conservation_shape_relaxation",
+    "test_no_trailing_or_leading_s_on_expansion",
+    "test_contraction_concentration_and_static_d024_equivalence"
+  ],
+  "any_pass": true,
+  "notes": "Allen-Cahn relaxation + autonomous v_n advection; static control uses evolve_surface_density (D-024 path)"
+}

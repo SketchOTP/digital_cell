@@ -1,0 +1,20 @@
+    |         |
+    |         help: remove this `mut`
+
+warning: `chemistry-core` (test "d025_tests") generated 11 warnings (run `cargo fix --test "d025_tests" -p chemistry-core` to apply 11 suggestions)
+    Finished `release` profile [optimized] target(s) in 0.28s
+     Running tests/d025_tests.rs (target/release/deps/d025_tests-969d4c996bec3449)
+
+running 9 tests
+test test_weak_gradient_exclusion ... ok
+test test_surface_velocity_from_contraction ... ok
+test test_static_velocity_zero ... ok
+test test_surface_velocity_from_translation ... ok
+test test_old_state_velocity_discipline ... ok
+test test_surface_velocity_from_expansion ... ok
+test test_contraction_concentration_and_static_d024_equivalence ... ok
+test test_no_trailing_or_leading_s_on_expansion ... ok
+test test_autonomous_s_mass_conservation_shape_relaxation ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.27s
+

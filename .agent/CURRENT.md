@@ -4,20 +4,21 @@
 - ID: D-20260717-d025-autonomous-surface-stage-e
 - Project directive: D-025
 - Goal: Seal D-024 provenance; couple surface density to autonomous φ motion; revalidate B–D; re-enter Stage E
-- Status: Gate 0 PASS — D024_PROVENANCE_SEALED; implementing Gate 1 velocity
+- Status: Gate 0–2 PASS (unit); Gate 3+ pending
 - Acceptance: Gates 0–8 in order or stop at first fail with exact conclusion
-- Touched files: experiments/generated/d025/d024_provenance_seal/, docs/d024_provenance_seal_addendum.md
-- Next action: Implement autonomous v_n estimator + Gate 1 manufactured velocity tests
+- Touched files: surface_density.rs, config.rs, simulation.rs, d025_tests.rs, d025 artifacts
+- Next action: Gate 3 chemistry-driven growth/shrinkage; Stage B–D regression; dynamic R22; Stage E
 
 ## Repo facts needed now
-- D024_PROVENANCE_SEALED at source 06477f6; binary 5894fcec…; k_ads=0.001111…
-- Gate6 sealed: Γ≈1.0, C≈0.991, A≈0.924, residual≈2.5e-7
-- Tag to create: D-024-surface-density-pass-provenance-sealed (preserve D-024-surface-density-pass)
-- Mimir: BLOCKED (Windows path mapping on register/resolve)
+- D024_PROVENANCE_SEALED @ 06477f6; seal tag D-024-surface-density-pass-provenance-sealed
+- Autonomous vn: v_n=−∂tφ/sqrt(|∇φ|²+η_v²); n inward ⇒ expansion mean vn < 0
+- Advection on when enforce_structure_constraint=false (apply_phi); constrained Stage E unchanged
+- Mimir: BLOCKED (Windows path mapping)
 
 ## Last validation
-- Command: worktree@06477f6 release experiment-runner d024 pipeline
-- Result: PASS primary_conclusion=D024_INTERFACIAL_SURFACE_DENSITY_PASS; gate0_pass=true
+- Command: cargo test -p chemistry-core --release --test d024_tests --test d025_tests
+- Result: d024 24/24 PASS; d025 9/9 PASS
 
 ## Open blockers
 - Mimir V2 register/resolve path mapping unavailable
+- Gates 3–8 not yet executed

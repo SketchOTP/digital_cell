@@ -34,7 +34,10 @@ use crate::reactions::{catalyst_diffusivity, compute_all_reactions, interface_we
 use crate::structural_kinetics::{
     active_structural_mechanism, local_abs_laplacian, structure_decay_rate, structure_production_rate,
 };
-use crate::surface_density::{evolve_surface_density, InterfaceGeometryCell};
+use crate::surface_density::{
+    estimate_interface_normal_velocity, evolve_surface_density, evolve_surface_density_with_vn,
+    InterfaceGeometryCell,
+};
 use crate::reservoir::apply_reservoir;
 use crate::snapshot::FieldSnapshot;
 use crate::time_audit::DtTelemetry;
@@ -1893,6 +1896,7 @@ impl Simulation {
 
         let evolution = if self.params.equation_version.is_surface_density() {
             // V7: no bulk A→M. Soluble P transports, then adsorbs to S=δΓ.
+            // When φ is free to evolve, derive v_n from φ_old→φ_next and advect S.
             diffuse_constant(
                 &self.grid,
                 &self.fields.precursor,
@@ -1904,32 +1908,93 @@ impl Simulation {
             let mut geometry = vec![InterfaceGeometryCell::default(); size];
             let mut gamma = vec![0.0; size];
             let mut diffusion_rate = vec![0.0; size];
+            let mut advection_rate = vec![0.0; size];
+            let mut vn = vec![0.0; size];
             // Start next precursor from current before surface reactions.
             self.fields
                 .precursor_next
                 .copy_from_slice(&self.fields.precursor);
-            let totals = evolve_surface_density(
+
+            let phi_for_surface = &self.fields.structure;
+            crate::surface_density::compute_interface_geometry(
                 &self.grid,
-                &self.fields.structure,
-                &self.fields.catalyst,
-                &self.fields.activated,
-                &self.fields.precursor,
-                &self.fields.membrane,
-                &self.params,
-                dt,
-                true,
-                true,
-                true,
-                true,
-                true,
+                phi_for_surface,
+                self.params.eta_n,
                 &mut geometry,
-                &mut gamma,
-                &mut diffusion_rate,
-                &mut self.fields.membrane_next,
-                &mut self.fields.activated_next,
-                &mut self.fields.precursor_next,
-                &mut self.fields.waste_next,
             );
+            let use_autonomous = apply_phi;
+            if use_autonomous {
+                let _ = estimate_interface_normal_velocity(
+                    &self.grid,
+                    &self.fields.structure,
+                    &self.fields.structure_next,
+                    &geometry,
+                    dt,
+                    self.params.eta_v,
+                    self.params.delta_floor,
+                    self.params.interface_grad_min,
+                    &mut vn,
+                );
+                // Reject extreme surface Courant rather than producing wild transport.
+                let max_vn = vn.iter().map(|v| v.abs()).fold(0.0_f64, f64::max);
+                let courant = max_vn * dt / crate::config::DX;
+                if courant > 0.5 {
+                    return self.reject(
+                        DtLimiter::FieldBoundValidation,
+                        format!("surface_courant={courant}"),
+                    );
+                }
+            }
+
+            let totals = if use_autonomous {
+                evolve_surface_density_with_vn(
+                    &self.grid,
+                    phi_for_surface,
+                    &self.fields.catalyst,
+                    &self.fields.activated,
+                    &self.fields.precursor,
+                    &self.fields.membrane,
+                    &self.params,
+                    dt,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    Some(&vn),
+                    &mut geometry,
+                    &mut gamma,
+                    &mut diffusion_rate,
+                    &mut advection_rate,
+                    &mut self.fields.membrane_next,
+                    &mut self.fields.activated_next,
+                    &mut self.fields.precursor_next,
+                    &mut self.fields.waste_next,
+                )
+            } else {
+                evolve_surface_density(
+                    &self.grid,
+                    phi_for_surface,
+                    &self.fields.catalyst,
+                    &self.fields.activated,
+                    &self.fields.precursor,
+                    &self.fields.membrane,
+                    &self.params,
+                    dt,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    &mut geometry,
+                    &mut gamma,
+                    &mut diffusion_rate,
+                    &mut self.fields.membrane_next,
+                    &mut self.fields.activated_next,
+                    &mut self.fields.precursor_next,
+                    &mut self.fields.waste_next,
+                )
+            };
             for idx in 0..size {
                 if self.grid.in_dish(idx) {
                     self.fields.precursor_next[idx] += self.fields.scratch_transport_p[idx] * dt;
@@ -1941,7 +2006,7 @@ impl Simulation {
                 synthesis_delta: totals.adsorption_delta,
                 decay_delta: totals.gamma_decay_delta,
                 detachment_delta: 0.0,
-                diffusion_delta: totals.surface_diffusion_delta,
+                diffusion_delta: totals.surface_diffusion_delta + totals.advection_delta,
                 activated_reaction_delta: -totals.precursor_synthesis_delta,
                 waste_reaction_delta: totals.surface_to_waste + totals.precursor_decay_delta,
             }

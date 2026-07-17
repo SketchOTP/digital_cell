@@ -1,0 +1,18 @@
+{
+  "project_directive": "D-025",
+  "gate": 1,
+  "conclusion": "D025_GATE1_PASS",
+  "source_commit": "877787336d3e48220526be4b5ab11b92e5a0971d",
+  "equation_version": "membrane_metabolism_v7_surface_density",
+  "tests": [
+    "test_surface_velocity_from_translation",
+    "test_surface_velocity_from_expansion",
+    "test_surface_velocity_from_contraction",
+    "test_static_velocity_zero",
+    "test_weak_gradient_exclusion",
+    "test_old_state_velocity_discipline"
+  ],
+  "any_pass": true,
+  "sign_convention": "n=grad(phi)/|grad(phi)| points inward; expansion => mean v_n < 0",
+  "tolerance": "mean recovered v_n within 5% on interface band"
+}

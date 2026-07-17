@@ -1,0 +1,13 @@
+{
+  "project_directive": "D-025",
+  "agent_memory_directive": "D-20260717-d025-autonomous-surface-stage-e",
+  "source_commit": "877787336d3e48220526be4b5ab11b92e5a0971d",
+  "d024_provenance": "D024_PROVENANCE_SEALED",
+  "gates_completed": [
+    "gate0",
+    "gate1",
+    "gate2"
+  ],
+  "status": "IN_PROGRESS",
+  "next_gate": 3
+}
