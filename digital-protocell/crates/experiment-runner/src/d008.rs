@@ -29,6 +29,8 @@ pub struct D008StageOptions {
     pub classification_prefix: &'static str,
     /// D-021 v4 membrane protection floor; `None` leaves `SimParams::eps_m` default.
     pub eps_m: Option<f64>,
+    /// D-022 v5 membrane affinity; `None` leaves `SimParams::chi_m` default.
+    pub chi_m: Option<f64>,
 }
 
 impl Default for D008StageOptions {
@@ -37,6 +39,7 @@ impl Default for D008StageOptions {
             equation_version: EquationVersion::MembraneMetabolismV1,
             classification_prefix: "D008",
             eps_m: None,
+            chi_m: None,
         }
     }
 }
@@ -47,6 +50,7 @@ impl D008StageOptions {
             equation_version: EquationVersion::MembraneMetabolismV2Conservative,
             classification_prefix: "D012",
             eps_m: None,
+            chi_m: None,
         }
     }
 
@@ -168,6 +172,9 @@ fn reference_params_for(
     params.equation_version = options.equation_version;
     if let Some(eps) = options.eps_m {
         params.eps_m = eps;
+    }
+    if let Some(chi) = options.chi_m {
+        params.chi_m = chi;
     }
     apply_v2_yields(&mut params);
     params.d_a = reference.d_a;

@@ -153,3 +153,11 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d021.rs` — Gates 1–5 retention/localization pipeline
 - `docs/d021_retention_localization_report.md` — D-021 conclusion and gate evidence
 - `digital-protocell/experiments/generated/d021/` — Gate artifacts and manifest
+
+## D-022 interface-affinity localization
+- `digital-protocell/crates/chemistry-core/src/d022_analysis.rs` — χ screen gates and v5 solver bounds
+- `digital-protocell/crates/chemistry-core/tests/d022_tests.rs` — antisymmetric flux/conservation/χ=0≡v4 tests
+- `digital-protocell/crates/experiment-runner/src/d022.rs` — Gates 1–4 interface-affinity pipeline
+- `docs/d022_interface_affinity_localization_report.md` — D-022 conclusion and gate evidence
+- `digital-protocell/experiments/generated/d022/` — Gate artifacts and manifest
+

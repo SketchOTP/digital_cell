@@ -24,6 +24,10 @@ pub const STOICHIOMETRIC_SCHEMA_VERSION_V2: u32 = 2;
 pub const MEMBRANE_SCHEMA_VERSION_V1: u32 = 1;
 /// Interface-protected membrane decay (v4): ε_M + (1 − I(φ)).
 pub const MEMBRANE_SCHEMA_VERSION_V2: u32 = 2;
+/// Plain membrane diffusion (v1–v4).
+pub const MEMBRANE_TRANSPORT_SCHEMA_VERSION_V1: u32 = 1;
+/// Interface-affinity membrane transport (v5): J += χ_M · mean(M) · ΔI.
+pub const MEMBRANE_TRANSPORT_SCHEMA_VERSION_V2: u32 = 2;
 /// Baseline selective-boundary transport schema (D-008/D-015).
 pub const TRANSPORT_SCHEMA_VERSION_V1: u32 = 1;
 /// D-016 calibrated passive waste transport schema (D_W / β_W repair).
@@ -48,6 +52,9 @@ pub enum EquationVersion {
     /// D-021 interface-protected membrane turnover; inherits v3 structure + v2 stoichiometry.
     #[serde(rename = "membrane_metabolism_v4_interface_protected")]
     MembraneMetabolismV4InterfaceProtected,
+    /// D-022 interface-affinity M transport; inherits v4 decay + v3 structure.
+    #[serde(rename = "membrane_metabolism_v5_interface_affinity")]
+    MembraneMetabolismV5InterfaceAffinity,
 }
 
 impl EquationVersion {
@@ -62,6 +69,9 @@ impl EquationVersion {
             Self::MembraneMetabolismV4InterfaceProtected => {
                 "membrane_metabolism_v4_interface_protected"
             }
+            Self::MembraneMetabolismV5InterfaceAffinity => {
+                "membrane_metabolism_v5_interface_affinity"
+            }
         }
     }
 
@@ -72,6 +82,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV2Conservative
                 | Self::MembraneMetabolismV3StructuralScaling
                 | Self::MembraneMetabolismV4InterfaceProtected
+                | Self::MembraneMetabolismV5InterfaceAffinity
         )
     }
 
@@ -81,18 +92,28 @@ impl EquationVersion {
             Self::MembraneMetabolismV2Conservative
                 | Self::MembraneMetabolismV3StructuralScaling
                 | Self::MembraneMetabolismV4InterfaceProtected
+                | Self::MembraneMetabolismV5InterfaceAffinity
         )
     }
 
     pub const fn is_interface_protected_membrane(self) -> bool {
-        matches!(self, Self::MembraneMetabolismV4InterfaceProtected)
+        matches!(
+            self,
+            Self::MembraneMetabolismV4InterfaceProtected
+                | Self::MembraneMetabolismV5InterfaceAffinity
+        )
+    }
+
+    pub const fn is_interface_affinity_membrane(self) -> bool {
+        matches!(self, Self::MembraneMetabolismV5InterfaceAffinity)
     }
 
     pub const fn stoichiometric_schema_version(self) -> u32 {
         match self {
             Self::MembraneMetabolismV2Conservative
             | Self::MembraneMetabolismV3StructuralScaling
-            | Self::MembraneMetabolismV4InterfaceProtected => STOICHIOMETRIC_SCHEMA_VERSION_V2,
+            | Self::MembraneMetabolismV4InterfaceProtected
+            | Self::MembraneMetabolismV5InterfaceAffinity => STOICHIOMETRIC_SCHEMA_VERSION_V2,
             Self::MembraneMetabolismV1 => STOICHIOMETRIC_SCHEMA_VERSION_V1,
             Self::D001BulkV1 | Self::D003CrowdingV1 | Self::SurfaceTurnoverV1 => 0,
         }
@@ -100,10 +121,22 @@ impl EquationVersion {
 
     pub const fn membrane_schema_version(self) -> u32 {
         match self {
-            Self::MembraneMetabolismV4InterfaceProtected => MEMBRANE_SCHEMA_VERSION_V2,
+            Self::MembraneMetabolismV4InterfaceProtected
+            | Self::MembraneMetabolismV5InterfaceAffinity => MEMBRANE_SCHEMA_VERSION_V2,
             Self::MembraneMetabolismV1
             | Self::MembraneMetabolismV2Conservative
             | Self::MembraneMetabolismV3StructuralScaling => MEMBRANE_SCHEMA_VERSION_V1,
+            Self::D001BulkV1 | Self::D003CrowdingV1 | Self::SurfaceTurnoverV1 => 0,
+        }
+    }
+
+    pub const fn membrane_transport_schema_version(self) -> u32 {
+        match self {
+            Self::MembraneMetabolismV5InterfaceAffinity => MEMBRANE_TRANSPORT_SCHEMA_VERSION_V2,
+            Self::MembraneMetabolismV1
+            | Self::MembraneMetabolismV2Conservative
+            | Self::MembraneMetabolismV3StructuralScaling
+            | Self::MembraneMetabolismV4InterfaceProtected => MEMBRANE_TRANSPORT_SCHEMA_VERSION_V1,
             Self::D001BulkV1 | Self::D003CrowdingV1 | Self::SurfaceTurnoverV1 => 0,
         }
     }
@@ -299,9 +332,12 @@ pub struct SimParams {
     /// Must remain `None` for governed v2 identity hashes.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub d019_mechanism_probe: Option<StructuralScalingMechanism>,
-    /// D-021 membrane interface-protection floor ε_M ∈ (0, 1]. Used only under v4.
+    /// D-021 membrane interface-protection floor ε_M ∈ (0, 1]. Used under v4/v5.
     #[serde(default = "default_eps_m")]
     pub eps_m: f64,
+    /// D-022 membrane interface-affinity coefficient χ_M. Used under v5; 0 ⇒ v4 transport.
+    #[serde(default = "default_chi_m")]
+    pub chi_m: f64,
 }
 
 /// Validate governed v2 yields: 0 < η ≤ 1.
@@ -336,6 +372,10 @@ fn default_transport_schema_version() -> u32 {
 
 fn default_eps_m() -> f64 {
     0.05
+}
+
+fn default_chi_m() -> f64 {
+    0.0
 }
 
 fn default_k_phi() -> f64 {
@@ -499,6 +539,7 @@ impl Default for SimParams {
             transport_schema_version: default_transport_schema_version(),
             d019_mechanism_probe: None,
             eps_m: default_eps_m(),
+            chi_m: default_chi_m(),
         }
     }
 }

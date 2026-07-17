@@ -1,6 +1,6 @@
 //! D-008 Stage B fixed-field membrane dynamics.
 
-use crate::config::{EquationVersion, SimParams};
+use crate::config::{SimParams, DX};
 use crate::grid::Grid;
 use crate::operators::diffuse_constant;
 use crate::reactions::interface_weight;
@@ -119,6 +119,82 @@ pub fn membrane_rates(
     }
 }
 
+/// Face flux from cell i → j (antisymmetric: J(j→i) = −J(i→j)).
+///
+/// `J = −D_M · (M_j − M_i) + χ_M · mean(M_i,M_j) · (I_j − I_i)`
+#[inline]
+pub fn membrane_face_flux(
+    m_i: f64,
+    m_j: f64,
+    i_i: f64,
+    i_j: f64,
+    d_m: f64,
+    chi_m: f64,
+) -> f64 {
+    let mean_m = 0.5 * (m_i + m_j);
+    -d_m * (m_j - m_i) + chi_m * mean_m * (i_j - i_i)
+}
+
+/// Conservative membrane transport rate (diffusion ± optional interface affinity).
+///
+/// When `χ_M = 0`, identical to `D_M · ∇²M` (historical v4 path).
+pub fn membrane_transport_rate(
+    grid: &Grid,
+    membrane: &[f64],
+    phi: &[f64],
+    params: &SimParams,
+    scratch_lap: &mut [f64],
+    out_rate: &mut [f64],
+) {
+    let d_m = params.d_m;
+    let chi_m = if params.equation_version.is_interface_affinity_membrane() {
+        params.chi_m
+    } else {
+        0.0
+    };
+    if chi_m.abs() <= 0.0 {
+        diffuse_constant(grid, membrane, d_m, scratch_lap, out_rate);
+        return;
+    }
+    // Face-based assembly: visit each interior edge once (right/down).
+    let w = grid.width;
+    let h = grid.height;
+    let inv_dx2 = 1.0 / (DX * DX);
+    out_rate.fill(0.0);
+    for j in 0..h {
+        for i in 0..w {
+            let idx = Grid::index(w, i, j);
+            if !grid.in_dish(idx) {
+                continue;
+            }
+            let m_i = membrane[idx].max(0.0);
+            let i_i = interface_weight(phi[idx]);
+            // +x face
+            if i + 1 < w {
+                let jdx = Grid::index(w, i + 1, j);
+                if grid.in_dish(jdx) {
+                    let m_j = membrane[jdx].max(0.0);
+                    let i_j = interface_weight(phi[jdx]);
+                    let flux = membrane_face_flux(m_i, m_j, i_i, i_j, d_m, chi_m) * inv_dx2;
+                    out_rate[idx] -= flux;
+                    out_rate[jdx] += flux;
+                }
+            }
+            // +y face
+            if j + 1 < h {
+                let jdx = Grid::index(w, i, j + 1);
+                if grid.in_dish(jdx) {
+                    let m_j = membrane[jdx].max(0.0);
+                    let i_j = interface_weight(phi[jdx]);
+                    let flux = membrane_face_flux(m_i, m_j, i_i, i_j, d_m, chi_m) * inv_dx2;
+                    out_rate[idx] -= flux;
+                    out_rate[jdx] += flux;
+                }
+            }
+        }
+    }
+}
+
 pub fn membrane_diffusion_rate(
     grid: &Grid,
     membrane: &[f64],
@@ -144,7 +220,7 @@ pub fn evolve_fixed_membrane(
     mut activated_next: Option<&mut [f64]>,
     mut waste_next: Option<&mut [f64]>,
 ) -> MembraneEvolutionTotals {
-    membrane_diffusion_rate(grid, membrane, params.d_m, scratch_lap, diffusion_rate);
+    membrane_transport_rate(grid, membrane, phi, params, scratch_lap, diffusion_rate);
     let v2 = params.equation_version.is_conservative_membrane_metabolism();
     let eta_m = if v2 { params.eta_m } else { 1.0 };
     let mut totals = MembraneEvolutionTotals::default();

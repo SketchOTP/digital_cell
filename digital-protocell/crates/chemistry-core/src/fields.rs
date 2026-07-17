@@ -278,7 +278,7 @@ pub fn initialize_seed(grid: &Grid, params: &crate::config::SimParams, fields: &
             fields.waste[idx] = 0.0;
             match params.equation_version {
                 EquationVersion::MembraneMetabolismV1
-                | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected => {
+                | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity => {
                     fields.activated[idx] = 0.10 * h;
                     fields.membrane[idx] = 0.50 * interface_weight(phi);
                 }
