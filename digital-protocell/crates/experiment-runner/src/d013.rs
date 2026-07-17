@@ -70,6 +70,9 @@ pub struct LosslessSevenFields {
     pub waste: Vec<u64>,
     pub activated: Vec<u64>,
     pub membrane: Vec<u64>,
+    /// D-027: bit-exact precursor for v6/v7 continuation (default empty for legacy ckpts).
+    #[serde(default)]
+    pub precursor: Vec<u64>,
 }
 
 impl LosslessSevenFields {
@@ -85,6 +88,7 @@ impl LosslessSevenFields {
             waste: bits(&sim.fields.waste),
             activated: bits(&sim.fields.activated),
             membrane: bits(&sim.fields.membrane),
+            precursor: bits(&sim.fields.precursor),
         }
     }
 
@@ -105,6 +109,9 @@ impl LosslessSevenFields {
         copy(&mut sim.fields.waste, &self.waste)?;
         copy(&mut sim.fields.activated, &self.activated)?;
         copy(&mut sim.fields.membrane, &self.membrane)?;
+        if !self.precursor.is_empty() {
+            copy(&mut sim.fields.precursor, &self.precursor)?;
+        }
         Ok(())
     }
 }
@@ -140,6 +147,9 @@ pub struct GovernedCheckpoint {
     pub metabolism_cumulative: Value,
     pub membrane_cumulative: Value,
     pub constraint_cumulative: Value,
+    /// D-027 Gate 0: v7 surface cumulative + window baseline (optional for legacy ckpts).
+    #[serde(default)]
+    pub surface_accounting: Value,
     pub window_anchor: Option<SteadyWindowSnapshot>,
     pub pending_window_samples: Vec<AcceptedStateSample>,
     pub prev_attempt_dt: f64,
@@ -305,7 +315,7 @@ pub fn load_governed_checkpoint(
     Ok(ckpt)
 }
 
-fn build_checkpoint(
+pub(crate) fn build_checkpoint(
     sim: &Simulation,
     threshold: u64,
     identity: &CandidateIdentity,
@@ -349,6 +359,7 @@ fn build_checkpoint(
         metabolism_cumulative: json!(sim.metabolism_accounting.cumulative),
         membrane_cumulative: json!(sim.membrane_accounting.cumulative),
         constraint_cumulative: json!(sim.constraint_accounting.cumulative),
+        surface_accounting: json!(sim.surface_accounting),
         window_anchor: window_anchor.cloned(),
         pending_window_samples: pending_samples.to_vec(),
         prev_attempt_dt: sim.dt,
@@ -381,6 +392,26 @@ fn restore_from_checkpoint(
         serde_json::from_value(ckpt.constraint_cumulative.clone())?;
     sim.transport_accounting.cumulative =
         serde_json::from_value(ckpt.transport_ledgers.clone())?;
+    // D-027 Gate 0: restore surface cumulative; always re-anchor window-local at restore
+    // so post-restore rates do not depend on pre-checkpoint history and cannot double-count.
+    if !ckpt.surface_accounting.is_null() {
+        sim.surface_accounting = serde_json::from_value(ckpt.surface_accounting.clone())?;
+    } else {
+        // Legacy checkpoints: seed surface cumulative from membrane mapping.
+        sim.surface_accounting = chemistry_core::SurfaceAccountingState {
+            last_step: chemistry_core::SurfaceAccountingTotals::default(),
+            cumulative: chemistry_core::SurfaceAccountingTotals {
+                adsorption_delta: sim.membrane_accounting.cumulative.synthesis,
+                gamma_decay_delta: sim.membrane_accounting.cumulative.decay,
+                surface_diffusion_delta: sim.membrane_accounting.cumulative.diffusion_net,
+                ..Default::default()
+            },
+            ..Default::default()
+        };
+    }
+    sim.surface_accounting
+        .begin_window_local(sim.substep, sim.sim_time);
+    sim.last_surface_totals = None;
     Ok(())
 }
 

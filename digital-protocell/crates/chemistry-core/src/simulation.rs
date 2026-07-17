@@ -36,7 +36,7 @@ use crate::structural_kinetics::{
 };
 use crate::surface_density::{
     estimate_interface_normal_velocity, evolve_surface_density, evolve_surface_density_with_vn,
-    InterfaceGeometryCell, SurfaceAccountingTotals,
+    InterfaceGeometryCell, SurfaceAccountingState, SurfaceAccountingTotals,
 };
 use crate::reservoir::apply_reservoir;
 use crate::snapshot::FieldSnapshot;
@@ -87,7 +87,9 @@ pub struct Simulation {
     pub d026_disable_catalyst_reproduction: bool,
     /// D-026 diagnostic: disable A→P surface synthesis (Control E; pair with freeze_surface for S).
     pub d026_disable_precursor_synthesis: bool,
-    /// Last v7 surface evolution totals (observer/diagnostic).
+    /// v7 surface ledgers: last step, cumulative, and window-local baseline (D-027 Gate 0).
+    pub surface_accounting: SurfaceAccountingState,
+    /// Last v7 surface evolution totals (observer/diagnostic; mirrors surface_accounting.last_step).
     pub last_surface_totals: Option<SurfaceAccountingTotals>,
     pub substep: u64,
     pub sim_time: f64,
@@ -141,6 +143,7 @@ impl Simulation {
             d026_disable_virtual_structure: false,
             d026_disable_catalyst_reproduction: false,
             d026_disable_precursor_synthesis: false,
+            surface_accounting: SurfaceAccountingState::default(),
             last_surface_totals: None,
             substep: 0,
             sim_time: 0.0,
@@ -1232,6 +1235,8 @@ impl Simulation {
             &ReactionStepTotals::default(),
             (mass_s_after - pre_clamp_s) + (mass_p_after - pre_clamp_p),
         );
+        self.surface_accounting.record_accepted(totals);
+        self.last_surface_totals = Some(totals);
         self.fields.swap();
         SubstepResult::Ok
     }
@@ -1934,7 +1939,7 @@ impl Simulation {
                 + d_a_structure;
         }
 
-        let evolution = if self.params.equation_version.is_surface_density() {
+        let evolution_and_surface = if self.params.equation_version.is_surface_density() {
             // V7: no bulk A→M. Soluble P transports, then adsorbs to S=δΓ.
             // When φ is free to evolve, derive v_n from φ_old→φ_next and advect S.
             diffuse_constant(
@@ -2041,7 +2046,7 @@ impl Simulation {
                     &mut self.fields.waste_next,
                 )
             };
-            self.last_surface_totals = Some(totals);
+            let pending_surface_totals = totals;
             for idx in 0..size {
                 if self.grid.in_dish(idx) {
                     self.fields.precursor_next[idx] += self.fields.scratch_transport_p[idx] * dt;
@@ -2051,30 +2056,37 @@ impl Simulation {
                 react_a += -totals.precursor_synthesis_delta;
                 react_w += totals.surface_to_waste + totals.precursor_decay_delta;
             }
-            MembraneEvolutionTotals {
-                synthesis_delta: totals.adsorption_delta,
-                decay_delta: totals.gamma_decay_delta,
-                detachment_delta: 0.0,
-                diffusion_delta: totals.surface_diffusion_delta + totals.advection_delta,
-                activated_reaction_delta: -totals.precursor_synthesis_delta,
-                waste_reaction_delta: totals.surface_to_waste + totals.precursor_decay_delta,
-            }
+            (
+                MembraneEvolutionTotals {
+                    synthesis_delta: totals.adsorption_delta,
+                    decay_delta: totals.gamma_decay_delta,
+                    detachment_delta: 0.0,
+                    diffusion_delta: totals.surface_diffusion_delta + totals.advection_delta,
+                    activated_reaction_delta: -totals.precursor_synthesis_delta,
+                    waste_reaction_delta: totals.surface_to_waste + totals.precursor_decay_delta,
+                },
+                Some(pending_surface_totals),
+            )
         } else {
-            evolve_fixed_membrane(
-                &self.grid,
-                &self.fields.structure,
-                &self.fields.catalyst,
-                &self.fields.activated,
-                &self.fields.membrane,
-                &self.params,
-                dt,
-                &mut self.fields.scratch_lap,
-                &mut self.fields.scratch_transport_c,
-                &mut self.fields.membrane_next,
-                Some(&mut self.fields.activated_next),
-                Some(&mut self.fields.waste_next),
+            (
+                evolve_fixed_membrane(
+                    &self.grid,
+                    &self.fields.structure,
+                    &self.fields.catalyst,
+                    &self.fields.activated,
+                    &self.fields.membrane,
+                    &self.params,
+                    dt,
+                    &mut self.fields.scratch_lap,
+                    &mut self.fields.scratch_transport_c,
+                    &mut self.fields.membrane_next,
+                    Some(&mut self.fields.activated_next),
+                    Some(&mut self.fields.waste_next),
+                ),
+                None,
             )
         };
+        let (evolution, pending_surface_totals) = evolution_and_surface;
         if !self.params.equation_version.is_surface_density() {
             react_a += evolution.activated_reaction_delta;
             react_w += evolution.waste_reaction_delta;
@@ -2320,6 +2332,10 @@ impl Simulation {
         self.metabolism_accounting.record_accepted(metabolism_step);
         self.membrane_accounting.record_accepted(membrane_step);
         self.constraint_accounting.record_accepted(constraint_step);
+        if let Some(surface_step) = pending_surface_totals {
+            self.surface_accounting.record_accepted(surface_step);
+            self.last_surface_totals = Some(surface_step);
+        }
         // Observer-only: update provenance after acceptance so rejects cannot pollute inventories.
         if self.structure_provenance.is_some() {
             let v2 = self.params.equation_version.is_conservative_membrane_metabolism();

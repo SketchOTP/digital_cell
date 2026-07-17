@@ -16,7 +16,7 @@ pub const DEFAULT_DELTA_FLOOR: f64 = 1e-12;
 /// Faces with mean δ below this are treated as off-interface (no surface flux).
 pub const DEFAULT_DELTA_FACE_EPS: f64 = 1e-14;
 
-#[derive(Debug, Clone, Copy, Default, PartialEq)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, serde::Serialize, serde::Deserialize)]
 pub struct SurfaceAccountingTotals {
     pub surface_diffusion_delta: f64,
     pub adsorption_delta: f64,
@@ -29,6 +29,86 @@ pub struct SurfaceAccountingTotals {
     /// Exact S→W transfer (same magnitude as gamma_decay_delta).
     pub surface_to_waste: f64,
     pub absolute_face_flux: f64,
+}
+
+impl SurfaceAccountingTotals {
+    pub fn saturating_sub(self, baseline: Self) -> Self {
+        Self {
+            surface_diffusion_delta: self.surface_diffusion_delta - baseline.surface_diffusion_delta,
+            adsorption_delta: self.adsorption_delta - baseline.adsorption_delta,
+            gamma_decay_delta: self.gamma_decay_delta - baseline.gamma_decay_delta,
+            advection_delta: self.advection_delta - baseline.advection_delta,
+            precursor_synthesis_delta: self.precursor_synthesis_delta
+                - baseline.precursor_synthesis_delta,
+            precursor_decay_delta: self.precursor_decay_delta - baseline.precursor_decay_delta,
+            precursor_to_surface: self.precursor_to_surface - baseline.precursor_to_surface,
+            surface_to_waste: self.surface_to_waste - baseline.surface_to_waste,
+            absolute_face_flux: self.absolute_face_flux - baseline.absolute_face_flux,
+        }
+    }
+
+    pub fn accumulate(&mut self, step: Self) {
+        self.surface_diffusion_delta += step.surface_diffusion_delta;
+        self.adsorption_delta += step.adsorption_delta;
+        self.gamma_decay_delta += step.gamma_decay_delta;
+        self.advection_delta += step.advection_delta;
+        self.precursor_synthesis_delta += step.precursor_synthesis_delta;
+        self.precursor_decay_delta += step.precursor_decay_delta;
+        self.precursor_to_surface += step.precursor_to_surface;
+        self.surface_to_waste += step.surface_to_waste;
+        self.absolute_face_flux += step.absolute_face_flux;
+    }
+}
+
+/// Cumulative + window-local surface ledgers for v7 (D-027 Gate 0).
+///
+/// Window-local extents are `cumulative − window_baseline`. On checkpoint restore,
+/// call [`SurfaceAccountingState::begin_window_local`] so rates do not depend on
+/// pre-checkpoint cumulative history and the restore boundary cannot double-count.
+#[derive(Debug, Clone, Default, PartialEq, serde::Serialize, serde::Deserialize)]
+pub struct SurfaceAccountingState {
+    pub last_step: SurfaceAccountingTotals,
+    pub cumulative: SurfaceAccountingTotals,
+    pub window_baseline: SurfaceAccountingTotals,
+    pub window_baseline_substep: u64,
+    pub window_baseline_time: f64,
+    pub accepted_steps: u64,
+}
+
+impl SurfaceAccountingState {
+    pub fn record_accepted(&mut self, step: SurfaceAccountingTotals) {
+        self.cumulative.accumulate(step);
+        self.last_step = step;
+        self.accepted_steps += 1;
+    }
+
+    /// Anchor window-local ledgers at the current cumulative (restore / window start).
+    pub fn begin_window_local(&mut self, substep: u64, sim_time: f64) {
+        self.window_baseline = self.cumulative;
+        self.window_baseline_substep = substep;
+        self.window_baseline_time = sim_time;
+    }
+
+    pub fn window_local(&self) -> SurfaceAccountingTotals {
+        self.cumulative.saturating_sub(self.window_baseline)
+    }
+
+    /// Mean rates over the open window (`Δextent / Δt`).
+    pub fn window_local_rates(&self, sim_time: f64) -> SurfaceAccountingTotals {
+        let dt = (sim_time - self.window_baseline_time).max(f64::EPSILON);
+        let w = self.window_local();
+        SurfaceAccountingTotals {
+            surface_diffusion_delta: w.surface_diffusion_delta / dt,
+            adsorption_delta: w.adsorption_delta / dt,
+            gamma_decay_delta: w.gamma_decay_delta / dt,
+            advection_delta: w.advection_delta / dt,
+            precursor_synthesis_delta: w.precursor_synthesis_delta / dt,
+            precursor_decay_delta: w.precursor_decay_delta / dt,
+            precursor_to_surface: w.precursor_to_surface / dt,
+            surface_to_waste: w.surface_to_waste / dt,
+            absolute_face_flux: w.absolute_face_flux / dt,
+        }
+    }
 }
 
 #[derive(Debug, Clone, Copy, Default, PartialEq)]

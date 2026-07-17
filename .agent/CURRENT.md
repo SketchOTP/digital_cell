@@ -1,25 +1,24 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260717-d026-stage-e-activated-resource-recovery
-- Project directive: D-026
-- Goal: Diagnose Stage E A-budget / quasi-steady failure under sealed v7; smallest causal correction
-- Status: done — `D026_SURFACE_COVERAGE_MAINTENANCE_DEFICIT` (Stage E not recovered)
-- Acceptance: Gates 0–4 identify mechanism before rate changes; one D026_* conclusion — met
-- Touched files: d026_analysis.rs, d026_tests.rs, d026.rs, simulation.rs, d013/d025/main, docs/d026_*, .agent/*
-- Next action: Follow-on may revisit frozen ads/turnover balance; do not start Stage F; no productive-rate sweep
+- ID: D-20260717-d027-coupled-surface-renewal
+- Project directive: D-027
+- Goal: Recalibrate k_ads for coupled surface renewal under sealed v7
+- Status: done — `D027_ISOLATED_SURFACE_RENEWAL_FAILURE`
+- Acceptance: One D027_* conclusion with Gates 0–2 evidence; stop at first failed gate — met
+- Touched files: surface_density, simulation, d013, d027_analysis, d027_tests, d027.rs, main.rs, docs/d027_*, experiments/generated/d027, .agent/*
+- Next action: Architect bulk–surface exchange improvement; do not Stage F; do not productive-rate-only repair
 
 ## Repo facts needed now
-- HEAD starts at c87b540 (D-025 result); Gate 0 parity PASS
-- Gate 6: SURFACE_COVERAGE_MAINTENANCE_DEFICIT; θΓ decline precedes A_ret collapse
-- Gate 8 infeasible: ads≪Γ turnover while delta_P≫ads; need ~31× ads boost vs ≤4× bound
-- Frozen: k_ads, d_gamma, k_gamma_decay, betas
-- Mimir: BLOCKED (Windows path mapping / project register)
+- HEAD was 77f7ab2 at start; Gate0 ledger repair + Gate1 portable ~30.4× k_ads
+- Gate4: 1× Q≈0.91, 2× Q≈1.06 — bracket straddles balance; intermediates forbidden
+- Mimir: BLOCKED (Windows path mapping on project_register)
+- Disk: ~8GB free; avoid large checkpoint dumps in d027 artifacts
 
 ## Last validation
-- Command: cargo test -p chemistry-core --release --test d026_tests; --test d025_tests
-- Result: 21/21 PASS; 15/15 PASS
+- Command: cargo test -p chemistry-core --release --test d027_tests; d026_tests; d027 pipeline Gates0-4
+- Result: d027 7/7 PASS; d026 21/21 PASS; Gate0/1/2 PASS; Gate4 FAIL
 
 ## Open blockers
-- Stage E not recovered under sealed surface params
+- Isolated surface renewal not achieved on mandated 0.5/1/2 grid
 - D-008 remains BLOCKED_NOT_RECOVERED

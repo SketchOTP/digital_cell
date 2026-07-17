@@ -198,3 +198,12 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d026.rs` — `d026 gate0|gate1|gate2|gate5|classify`
 - `docs/d026_stage_e_activated_resource_recovery.md` — conclusion `D026_SURFACE_COVERAGE_MAINTENANCE_DEFICIT`
 - `digital-protocell/experiments/generated/d026/` — gated artifacts (gitignored generated/)
+
+## D-027 coupled surface renewal
+- `digital-protocell/crates/chemistry-core/src/surface_density.rs` — `SurfaceAccountingState` cumulative + window baseline
+- `digital-protocell/crates/chemistry-core/src/d027_analysis.rs` — adsorption basis, portability, candidates
+- `digital-protocell/crates/chemistry-core/tests/d027_tests.rs` — Gate0–2 unit tests
+- `digital-protocell/crates/experiment-runner/src/d027.rs` — pipeline Gates 0/1/2/4
+- `digital-protocell/crates/experiment-runner/src/d013.rs` — checkpoint `surface_accounting` + lossless precursor
+- `docs/d027_coupled_surface_renewal.md` — governed report
+- `digital-protocell/experiments/generated/d027/` — artifacts + manifest
