@@ -22,6 +22,7 @@ mod d022;
 mod d023;
 mod d024;
 mod d025;
+mod d025_stage_e;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -1572,6 +1573,20 @@ enum D025Commands {
         #[arg(long, default_value = "experiments/generated/d025/dynamic_r22")]
         output: PathBuf,
     },
+    StageEReference {
+        #[arg(long, default_value = "experiments/generated/d025/stage_e_reference")]
+        output: PathBuf,
+    },
+    StageEDiagnostic {
+        #[arg(long, default_value = "experiments/generated/d025/stage_e_reference")]
+        output: PathBuf,
+    },
+    StageESolve {
+        #[arg(long, default_value = "experiments/generated/d025/stage_e_candidates")]
+        output: PathBuf,
+        #[arg(long, default_value = "experiments/generated/d025/stage_e_reference")]
+        reference: PathBuf,
+    },
 }
 
 fn resolve_d025_artifact_path(path: &Path) -> PathBuf {
@@ -1624,6 +1639,34 @@ fn run_d025(action: D025Commands) -> Result<(), Box<dyn std::error::Error>> {
             let out = resolve_d025_artifact_path(&output);
             let result = d025::run_dynamic_r22(&out)?;
             println!("D-025 Gate7 pass={} -> {}", result["gate7_pass"], out.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D025Commands::StageEReference { output } => {
+            let out = resolve_d025_artifact_path(&output);
+            let result = d025_stage_e::run_stage_e_reference(&out, false)?;
+            println!(
+                "D-025 StageE recovered={} conclusion={} -> {}",
+                result["stage_e_recovered"], result["conclusion"], out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D025Commands::StageEDiagnostic { output } => {
+            let out = resolve_d025_artifact_path(&output);
+            let result = d025_stage_e::run_stage_e_reference(&out, true)?;
+            println!(
+                "D-025 StageE diagnostic conclusion={} -> {}",
+                result["conclusion"], out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D025Commands::StageESolve { output, reference } => {
+            let out = resolve_d025_artifact_path(&output);
+            let reference = resolve_d025_artifact_path(&reference);
+            let result = d025_stage_e::run_stage_e_solve(&out, &reference)?;
+            println!(
+                "D-025 StageE solve conclusion={} -> {}",
+                result["conclusion"], out.display()
+            );
             println!("{}", serde_json::to_string_pretty(&result)?);
         }
     }

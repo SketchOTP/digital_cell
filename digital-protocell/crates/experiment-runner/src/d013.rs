@@ -2,7 +2,8 @@
 //! checkpoints, activation-potential capture, and governed reference recovery.
 
 use crate::d011::{
-    interior_mean, prepare_constrained_seed, retention, soluble_max, window_snapshot,
+    interior_mean, prepare_constrained_seed, prepare_v7_constrained_seed, retention, soluble_max,
+    window_snapshot,
 };
 use crate::d012::v2_stage_options;
 use crate::d008;
@@ -420,7 +421,12 @@ pub fn run_governed_reference(
 ) -> Result<GovernedRunOutcome, Box<dyn std::error::Error>> {
     let wall = Instant::now();
     let mut sim = Simulation::new(params.clone());
-    prepare_constrained_seed(&mut sim, config.radius);
+    if params.equation_version.is_surface_density() {
+        prepare_v7_constrained_seed(&mut sim, config.radius, 0.6);
+    } else {
+        prepare_constrained_seed(&mut sim, config.radius);
+    }
+    sim.enforce_structure_constraint = true;
 
     let mut activation = ActivationPotentialLedger::new(potential_from_masses(
         field_mass(&sim.grid, &sim.fields.fuel),

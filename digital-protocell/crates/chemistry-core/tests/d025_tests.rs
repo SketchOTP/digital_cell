@@ -1025,6 +1025,37 @@ fn test_chemistry_driven_net_shrinkage() {
 }
 
 #[test]
+fn test_d025_bounded_solver_respects_candidate_cap() {
+    use chemistry_core::{
+        bounded_joint_solver_d025, sensitivity_matrix, D025ProductiveRates,
+        D025_MAX_CANDIDATES,
+    };
+    let analytical = D025ProductiveRates {
+        k_activation: 0.024,
+        k_rep: 0.032,
+        k_precursor: 0.2,
+        k_structure: 0.679,
+    };
+    let g = [[0.01, -0.02, 0.003, -0.004]; 4];
+    let sens = sensitivity_matrix(&[[0.1; 4]; 4]);
+    let report = bounded_joint_solver_d025(&analytical, &analytical, &g, &[sens]);
+    assert!(report.bounded);
+    assert!(report.candidates.len() <= D025_MAX_CANDIDATES);
+}
+
+#[test]
+fn test_d025_joint_balance_gate_localization() {
+    use chemistry_core::{d025_joint_balance_pass, placeholder_joint_metrics};
+    let pass = placeholder_joint_metrics([1e-5; 4], [1.0; 4]);
+    assert!(d025_joint_balance_pass(&pass));
+    let fail = placeholder_joint_metrics([1e-5; 4], [1.0; 4]);
+    // drop localization below v7 Stage E threshold
+    let mut m = fail;
+    m.membrane_localization = 0.94;
+    assert!(!d025_joint_balance_pass(&m));
+}
+
+#[test]
 fn test_balanced_turnover_with_accounting() {
     let params = v7_chem_params();
     let sim = run_autonomous_case(params, 3_000);

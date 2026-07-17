@@ -11,6 +11,9 @@ use chemistry_core::{
     SimParams, Simulation, SNAPSHOT_SCHEMA_VERSION, STAGE_E_FAILED_RATES, SteadyWindowSnapshot,
     StageEReferenceRates,
 };
+use chemistry_core::surface_density::{
+    compute_interface_geometry, seed_surface_from_gamma, InterfaceGeometryCell,
+};
 use serde_json::{json, Map, Value};
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -90,6 +93,54 @@ fn d011_params(rates: &StageEReferenceRates) -> Result<SimParams, Box<dyn std::e
 
 pub fn prepare_constrained_seed(sim: &mut Simulation, radius: f64) {
     sim.observer_enabled = false;
+    if sim.params.equation_version.is_surface_density() {
+        // V7: S = δΓ on the interface; soluble precursor instead of bulk M seed.
+        let n = sim.fields.structure.len();
+        let mut geometry = vec![
+            chemistry_core::surface_density::InterfaceGeometryCell::default();
+            n
+        ];
+        for idx in 0..n {
+            if !sim.grid.in_dish(idx) {
+                continue;
+            }
+            let x = (idx % sim.grid.width) as f64 - sim.grid.cx;
+            let y = (idx / sim.grid.width) as f64 - sim.grid.cy;
+            let distance = (x * x + y * y).sqrt();
+            let phi = 0.5 * (1.0 - ((distance - radius) / 2.0).tanh());
+            sim.fields.structure[idx] = phi;
+            if phi >= 0.5 {
+                sim.fields.catalyst[idx] = 0.4;
+                sim.fields.activated[idx] = 0.2;
+                sim.fields.nutrient[idx] = 0.2;
+                sim.fields.fuel[idx] = 0.2;
+                sim.fields.waste[idx] = 0.5;
+                sim.fields.precursor[idx] = 0.05;
+            } else {
+                sim.fields.catalyst[idx] = 0.0;
+                sim.fields.activated[idx] = 0.0;
+                sim.fields.nutrient[idx] = sim.params.n_reservoir;
+                sim.fields.fuel[idx] = sim.params.f_reservoir;
+                sim.fields.waste[idx] = sim.params.w_reservoir;
+                sim.fields.precursor[idx] = 0.0;
+            }
+        }
+        chemistry_core::surface_density::compute_interface_geometry(
+            &sim.grid,
+            &sim.fields.structure,
+            sim.params.eta_n,
+            &mut geometry,
+        );
+        chemistry_core::surface_density::seed_surface_from_gamma(
+            &sim.grid,
+            &geometry,
+            sim.params.delta_floor,
+            &mut sim.fields.membrane,
+            |_, _, _| 0.6,
+        );
+        sim.fields.copy_current_to_next();
+        return;
+    }
     for idx in 0..sim.fields.structure.len() {
         if !sim.grid.in_dish(idx) {
             continue;
@@ -114,6 +165,56 @@ pub fn prepare_constrained_seed(sim: &mut Simulation, radius: f64) {
             sim.fields.waste[idx] = sim.params.w_reservoir;
         }
     }
+}
+
+/// v7 surface-density constrained seed: fixed φ, S=δΓ on interface band, interior fields.
+pub fn prepare_v7_constrained_seed(sim: &mut Simulation, radius: f64, theta_gamma: f64) {
+    sim.observer_enabled = false;
+    sim.enforce_structure_constraint = true;
+    let w = sim.grid.width;
+    let n = sim.fields.structure.len();
+    let mut geometry = vec![InterfaceGeometryCell::default(); n];
+    for idx in 0..n {
+        if !sim.grid.in_dish(idx) {
+            continue;
+        }
+        let i = idx % w;
+        let j = idx / w;
+        let x = i as f64 - sim.grid.cx;
+        let y = j as f64 - sim.grid.cy;
+        let distance = (x * x + y * y).sqrt();
+        let phi = 0.5 * (1.0 - ((distance - radius) / 2.0).tanh());
+        sim.fields.structure[idx] = phi;
+        if phi >= 0.5 {
+            sim.fields.catalyst[idx] = 0.4;
+            sim.fields.activated[idx] = 0.5;
+            sim.fields.nutrient[idx] = 0.4;
+            sim.fields.fuel[idx] = 0.4;
+            sim.fields.waste[idx] = 0.5;
+            sim.fields.precursor[idx] = 0.05;
+        } else {
+            sim.fields.catalyst[idx] = 0.0;
+            sim.fields.activated[idx] = 0.0;
+            sim.fields.nutrient[idx] = sim.params.n_reservoir;
+            sim.fields.fuel[idx] = sim.params.f_reservoir;
+            sim.fields.waste[idx] = sim.params.w_reservoir;
+            sim.fields.precursor[idx] = 0.0;
+        }
+    }
+    compute_interface_geometry(
+        &sim.grid,
+        &sim.fields.structure,
+        sim.params.eta_n,
+        &mut geometry,
+    );
+    seed_surface_from_gamma(
+        &sim.grid,
+        &geometry,
+        sim.params.delta_floor,
+        &mut sim.fields.membrane,
+        |_, _, _| theta_gamma,
+    );
+    sim.fields.copy_current_to_next();
 }
 
 pub fn interior_mean(sim: &Simulation, field: &[f64]) -> f64 {
