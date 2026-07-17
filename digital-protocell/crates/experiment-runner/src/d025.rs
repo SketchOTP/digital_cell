@@ -6,6 +6,7 @@ use chemistry_core::config::{D008StageMode, EquationVersion, SimParams, CONC_SAF
 use chemistry_core::d011_analysis::STAGE_E_FAILED_RATES;
 use chemistry_core::d018_analysis::D018_FROZEN_K_STRUCTURE;
 use chemistry_core::field_mass;
+use chemistry_core::grid::Grid;
 use chemistry_core::operators::total_mass;
 use chemistry_core::reactions::interface_weight;
 use chemistry_core::surface_density::{
@@ -906,6 +907,226 @@ pub fn run_stage_d_regression(output: &Path) -> Result<Value, Box<dyn std::error
         "any_pass": pass,
     });
     atomic_write_json(&output.join("stage_d_fixed_compartment.json"), &body)?;
+    Ok(body)
+}
+
+const D025_R22_DIAGNOSTIC_STEPS: u64 = 2_000;
+const D025_R22_INTERMEDIATE_STEPS: u64 = 10_000;
+const D025_R22_FULL_STEPS: u64 = 25_000;
+
+fn dish_contact(sim: &Simulation) -> bool {
+    let w = sim.grid.width;
+    for j in 0..sim.grid.height {
+        for i in 0..w {
+            let idx = Grid::index(w, i, j);
+            if !sim.grid.in_dish(idx) {
+                continue;
+            }
+            if sim.fields.structure[idx] < 0.5 {
+                continue;
+            }
+            // Contact if a neighbor is outside the dish.
+            for (di, dj) in [(-1isize, 0), (1, 0), (0, -1), (0, 1)] {
+                let ni = i as isize + di;
+                let nj = j as isize + dj;
+                if ni < 0 || nj < 0 || ni as usize >= w || nj as usize >= sim.grid.height {
+                    return true;
+                }
+                let nidx = Grid::index(w, ni as usize, nj as usize);
+                if !sim.grid.in_dish(nidx) {
+                    return true;
+                }
+            }
+        }
+    }
+    false
+}
+
+fn largest_component_fraction(sim: &Simulation) -> f64 {
+    let w = sim.grid.width;
+    let h = sim.grid.height;
+    let n = w * h;
+    let mut seen = vec![false; n];
+    let mut total_area = 0u64;
+    let mut largest = 0u64;
+    for start in 0..n {
+        if seen[start] || !sim.grid.in_dish(start) || sim.fields.structure[start] < 0.5 {
+            continue;
+        }
+        let mut stack = vec![start];
+        seen[start] = true;
+        let mut size = 0u64;
+        while let Some(idx) = stack.pop() {
+            size += 1;
+            let i = idx % w;
+            let j = idx / w;
+            for (di, dj) in [(-1isize, 0), (1, 0), (0, -1), (0, 1)] {
+                let ni = i as isize + di;
+                let nj = j as isize + dj;
+                if ni < 0 || nj < 0 || ni as usize >= w || nj as usize >= h {
+                    continue;
+                }
+                let nidx = Grid::index(w, ni as usize, nj as usize);
+                if seen[nidx] || !sim.grid.in_dish(nidx) || sim.fields.structure[nidx] < 0.5 {
+                    continue;
+                }
+                seen[nidx] = true;
+                stack.push(nidx);
+            }
+        }
+        total_area += size;
+        largest = largest.max(size);
+    }
+    if total_area == 0 {
+        0.0
+    } else {
+        largest as f64 / total_area as f64
+    }
+}
+
+fn run_dynamic_r22_horizon(
+    max_steps: u64,
+) -> Result<Value, Box<dyn std::error::Error>> {
+    let mut params = v7_base_params()?;
+    params.d008_stage_mode = D008StageMode::ConstrainedRadius;
+    params.d008_stage_b_enabled = false;
+    params.phase_separation_enabled = false;
+    let mut sim = Simulation::new(params);
+    sim.enforce_structure_constraint = false; // autonomous φ
+    sim.observer_enabled = false;
+    seed_v7_compartment(&mut sim, 22.0, 0.6);
+    let mut floor_fail = false;
+    let mut ceiling_fail = false;
+    for _ in 0..max_steps {
+        if !sim.step() {
+            if sim
+                .last_reject_detail
+                .contains("excessive concentration")
+            {
+                ceiling_fail = true;
+            } else {
+                floor_fail = true;
+            }
+            break;
+        }
+    }
+    let loc = gamma_localization(&sim);
+    let c_ret = retention(&sim, &sim.fields.catalyst);
+    let a_ret = retention(&sim, &sim.fields.activated);
+    let ads = sim.membrane_accounting.cumulative.synthesis;
+    let gamma_turn = sim.membrane_accounting.cumulative.decay;
+    let n_in = sim
+        .transport_accounting
+        .cumulative
+        .nutrient
+        .interior_net_flux_rate;
+    let f_in = sim
+        .transport_accounting
+        .cumulative
+        .fuel
+        .interior_net_flux_rate;
+    let w_net = sim
+        .transport_accounting
+        .cumulative
+        .waste
+        .interior_net_flux_rate;
+    let largest = largest_component_fraction(&sim);
+    let contact = dish_contact(&sim);
+    let bounded = soluble_max(&sim) <= CONC_SAFETY_LIMIT;
+    let pass = !floor_fail
+        && !ceiling_fail
+        && sim.substep >= max_steps.min(500)
+        && largest >= 0.95
+        && !contact
+        && loc >= 0.95
+        && c_ret >= 0.80
+        && a_ret >= 0.80
+        && bounded
+        && n_in > 0.0
+        && f_in > 0.0
+        && (-w_net) > 0.0
+        && ads > 0.0
+        && gamma_turn > 0.0
+        && sim.accounting.cumulative_within_tolerance()
+        && !sim.observer_enabled;
+    Ok(json!({
+        "max_steps": max_steps,
+        "accepted_substeps": sim.substep,
+        "simulated_time": sim.sim_time,
+        "pass": pass,
+        "largest_component_fraction": largest,
+        "dish_contact": contact,
+        "gamma_localization": loc,
+        "catalyst_retention": c_ret,
+        "activated_retention": a_ret,
+        "adsorption": ads,
+        "gamma_turnover": gamma_turn,
+        "nutrient_influx": n_in,
+        "fuel_influx": f_in,
+        "waste_efflux": -w_net,
+        "bounded": bounded,
+        "timestep_floor_failure": floor_fail,
+        "concentration_ceiling": ceiling_fail,
+        "accounting_closed": sim.accounting.cumulative_within_tolerance(),
+        "observer_enabled": sim.observer_enabled,
+        "surface_mass": total_surface_mass(&sim.grid, &sim.fields.membrane),
+        "precursor_mass": field_mass(&sim.grid, &sim.fields.precursor),
+    }))
+}
+
+/// Gate 7: fully dynamic R22 bootstrap (autonomous φ + surface transport).
+pub fn run_dynamic_r22(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
+    let output = resolve_path(output);
+    fs::create_dir_all(&output)?;
+    let diagnostic = run_dynamic_r22_horizon(D025_R22_DIAGNOSTIC_STEPS)?;
+    if diagnostic["pass"].as_bool() != Some(true) {
+        let body = json!({
+            "project_directive": "D-025",
+            "gate": 7,
+            "source_commit": git_commit_hash(),
+            "equation_version": EquationVersion::MembraneMetabolismV7SurfaceDensity.as_str(),
+            "k_ads": D025_FROZEN_K_ADS,
+            "diagnostic": diagnostic,
+            "gate7_pass": false,
+            "conclusion": "D025_DYNAMIC_R22_BOOTSTRAP_FAILURE",
+            "any_pass": false,
+        });
+        atomic_write_json(&output.join("dynamic_r22.json"), &body)?;
+        return Ok(body);
+    }
+    let intermediate = run_dynamic_r22_horizon(D025_R22_INTERMEDIATE_STEPS)?;
+    if intermediate["pass"].as_bool() != Some(true) {
+        let body = json!({
+            "project_directive": "D-025",
+            "gate": 7,
+            "source_commit": git_commit_hash(),
+            "equation_version": EquationVersion::MembraneMetabolismV7SurfaceDensity.as_str(),
+            "k_ads": D025_FROZEN_K_ADS,
+            "diagnostic": diagnostic,
+            "intermediate": intermediate,
+            "gate7_pass": false,
+            "conclusion": "D025_DYNAMIC_R22_BOOTSTRAP_FAILURE",
+            "any_pass": false,
+        });
+        atomic_write_json(&output.join("dynamic_r22.json"), &body)?;
+        return Ok(body);
+    }
+    let full = run_dynamic_r22_horizon(D025_R22_FULL_STEPS)?;
+    let pass = full["pass"].as_bool() == Some(true);
+    let body = json!({
+        "project_directive": "D-025",
+        "gate": 7,
+        "source_commit": git_commit_hash(),
+        "equation_version": EquationVersion::MembraneMetabolismV7SurfaceDensity.as_str(),
+        "k_ads": D025_FROZEN_K_ADS,
+        "diagnostic": diagnostic,
+        "intermediate": intermediate,
+        "full": full,
+        "gate7_pass": pass,
+        "conclusion": if pass { "D025_GATE7_PASS" } else { "D025_DYNAMIC_R22_BOOTSTRAP_FAILURE" },
+        "any_pass": pass,
+    });
+    atomic_write_json(&output.join("dynamic_r22.json"), &body)?;
     Ok(body)
 }
 

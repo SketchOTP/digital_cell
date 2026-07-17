@@ -3,22 +3,21 @@
 ## Active directive
 - ID: D-20260717-d025-autonomous-surface-stage-e
 - Project directive: D-025
-- Goal: Seal D-024 provenance; couple surface density to autonomous φ motion; revalidate B–D; re-enter Stage E
-- Status: Gates 0–6 PASS; starting Gate 7 dynamic R22
-- Acceptance: Gates 0–8 in order or stop at first fail
-- Touched files: surface_density, simulation, config, d025_tests, d025 runner, d025 artifacts
-- Next action: Gate 7 fully dynamic R22 bootstrap; then Stage E
+- Goal: Seal D-024 provenance; couple Γ to autonomous φ; revalidate B–D; Stage E
+- Status: Gates 0–7 PASS; Gate 8 Stage E in progress
+- Acceptance: Stage E recovered under v7 or honest D025_* failure
+- Touched files: d025 runner, dynamic_r22 artifacts, surface density stack
+- Next action: Gate 8 constrained-radius Stage E re-entry
 
 ## Repo facts needed now
-- D024_PROVENANCE_SEALED; Gate1–2 unit PASS; Gate3–6 runner PASS
-- Stage C harness needed v2 eta_c closure; Stage D fixed_geometry is φ-only
-- Autonomous advection when enforce_structure_constraint=false
-- Mimir: BLOCKED (path mapping)
+- Gate7 full: Γ≈1.0, C≈0.977, A≈0.931, loc pass, no floor/ceiling
+- Stage E: fixed φ, evolve C/N/F/W/A/P/S; freeze k_ads; bounded rate solve
+- Mimir: BLOCKED
 
 ## Last validation
-- Command: d025 stage-c PASS; d025 stage-d PASS; d025_tests + d024_tests prior PASS
-- Result: D025_GATE6_PASS
+- Command: d025 dynamic-r22
+- Result: D025_GATE7_PASS
 
 ## Open blockers
-- Mimir V2 unavailable
-- Gates 7–8 not yet run
+- Mimir unavailable
+- Stage E not yet run

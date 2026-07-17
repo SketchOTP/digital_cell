@@ -1568,6 +1568,10 @@ enum D025Commands {
         #[arg(long, default_value = "experiments/generated/d025/stage_d_fixed_compartment")]
         output: PathBuf,
     },
+    DynamicR22 {
+        #[arg(long, default_value = "experiments/generated/d025/dynamic_r22")]
+        output: PathBuf,
+    },
 }
 
 fn resolve_d025_artifact_path(path: &Path) -> PathBuf {
@@ -1614,6 +1618,12 @@ fn run_d025(action: D025Commands) -> Result<(), Box<dyn std::error::Error>> {
             let out = resolve_d025_artifact_path(&output);
             let result = d025::run_stage_d_regression(&out)?;
             println!("D-025 StageD pass={} -> {}", result["gate6_pass"], out.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D025Commands::DynamicR22 { output } => {
+            let out = resolve_d025_artifact_path(&output);
+            let result = d025::run_dynamic_r22(&out)?;
+            println!("D-025 Gate7 pass={} -> {}", result["gate7_pass"], out.display());
             println!("{}", serde_json::to_string_pretty(&result)?);
         }
     }

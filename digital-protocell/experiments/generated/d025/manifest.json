@@ -9,10 +9,11 @@
     "gate3": "D025_GATE3_PASS",
     "gate4": "D025_GATE4_PASS",
     "gate5": "D025_GATE5_PASS",
-    "gate6": "D025_GATE6_PASS"
+    "gate6": "D025_GATE6_PASS",
+    "gate7": "D025_GATE7_PASS"
   },
   "gate6_pass": true,
-  "status": "GATES_0_6_PASS",
-  "next_gate": 7,
+  "status": "GATES_0_7_PASS",
+  "next_gate": 8,
   "primary_conclusion": null
 }
