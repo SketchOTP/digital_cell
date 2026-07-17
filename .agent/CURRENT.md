@@ -1,24 +1,25 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260717-d025-autonomous-surface-stage-e
-- Project directive: D-025
-- Goal: Seal D-024 provenance; autonomous Γ transport; revalidate B–D; Stage E re-entry
-- Status: done — Gate 8 failed; `D025_STAGE_E_LONG_TRANSIENT_UNRESOLVED`
-- Acceptance: D025_STAGE_E_RECOVERED or honest D025_* failure with artifacts — met (honest failure)
-- Touched files: surface_density/autonomous vn, d025.rs, d025_stage_e.rs, d025_analysis.rs, d025 artifacts/docs
-- Next action: Do not start Stage F; remediate Stage E A-retention / quasi-steady under v7
+- ID: D-20260717-d026-stage-e-activated-resource-recovery
+- Project directive: D-026
+- Goal: Diagnose Stage E A-budget / quasi-steady failure under sealed v7; smallest causal correction
+- Status: done — `D026_SURFACE_COVERAGE_MAINTENANCE_DEFICIT` (Stage E not recovered)
+- Acceptance: Gates 0–4 identify mechanism before rate changes; one D026_* conclusion — met
+- Touched files: d026_analysis.rs, d026_tests.rs, d026.rs, simulation.rs, d013/d025/main, docs/d026_*, .agent/*
+- Next action: Follow-on may revisit frozen ads/turnover balance; do not start Stage F; no productive-rate sweep
 
 ## Repo facts needed now
-- D-024 provenance sealed at `06477f6`; tag `D-024-surface-density-pass-provenance-sealed`
-- Gates 0–7 PASS; Gate 8 formal 200k NOT_CONVERGED; A_ret≈0.512
-- Architecture: INTERFACIAL_SURFACE_DENSITY_SELECTED
-- Mimir: BLOCKED (Windows path mapping)
+- HEAD starts at c87b540 (D-025 result); Gate 0 parity PASS
+- Gate 6: SURFACE_COVERAGE_MAINTENANCE_DEFICIT; θΓ decline precedes A_ret collapse
+- Gate 8 infeasible: ads≪Γ turnover while delta_P≫ads; need ~31× ads boost vs ≤4× bound
+- Frozen: k_ads, d_gamma, k_gamma_decay, betas
+- Mimir: BLOCKED (Windows path mapping / project register)
 
 ## Last validation
-- Command: cargo test -p chemistry-core --release --test d025_tests; --test d024_tests
-- Result: 15/15 PASS; 24/24 PASS; Stage E 200k NOT_CONVERGED
+- Command: cargo test -p chemistry-core --release --test d026_tests; --test d025_tests
+- Result: 21/21 PASS; 15/15 PASS
 
 ## Open blockers
-- Mimir project register/resolve fails: `\\home\\sketch\\Projects\\digital_cell`
-- Stage E not recovered; D-008 remains BLOCKED_NOT_RECOVERED
+- Stage E not recovered under sealed surface params
+- D-008 remains BLOCKED_NOT_RECOVERED

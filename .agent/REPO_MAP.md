@@ -190,3 +190,11 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/chemistry-core/src/d025_analysis.rs` — D025 conclusions, joint balance, Stage E gates
 - `docs/d025_stage_e_long_transient.md` — Gate 8 failure record
 - `digital-protocell/experiments/generated/d025/` — gates 0–8 artifacts + manifest
+
+## D-026 (Stage E A-budget diagnosis)
+- `digital-protocell/crates/chemistry-core/src/d026_analysis.rs` — Gate0 parity, Gate1 observability, Gate2/5/6 classification
+- `digital-protocell/crates/chemistry-core/src/simulation.rs` — `last_surface_totals` + D-026 diagnostic control flags
+- `digital-protocell/crates/chemistry-core/tests/d026_tests.rs` — Gate0/1/5 unit tests (21)
+- `digital-protocell/crates/experiment-runner/src/d026.rs` — `d026 gate0|gate1|gate2|gate5|classify`
+- `docs/d026_stage_e_activated_resource_recovery.md` — conclusion `D026_SURFACE_COVERAGE_MAINTENANCE_DEFICIT`
+- `digital-protocell/experiments/generated/d026/` — gated artifacts (gitignored generated/)

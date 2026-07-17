@@ -37,3 +37,5 @@ Append-only repo-specific lessons. Format:
 - 2026-07-17 | area:d025 | lesson:n=∇φ/|∇φ| points inward so expansion mean v_n<0; Stage D fixed_geometry must check φ only not S | evidence:crates/chemistry-core/tests/d025_tests.rs
 - 2026-07-17 | area:d025-stage-c | lesson:v7 Stage C stoichiometric closure must use η_c like v2; ActivatedMetabolism path has no P/S—check those under ConstrainedRadius | evidence:crates/experiment-runner/src/d025.rs
 - 2026-07-17 | area:d025-stage-e | lesson:Constrained Stage E under frozen D-024 k_ads reaches 200k with Γ≈1 and C_ret≥0.80 but A_ret≈0.51 and zero qualifying windows; LONG_TRANSIENT forbids solver entry | evidence:experiments/generated/d025/stage_e_reference/reference_terminal_classification.json
+- 2026-07-17 | area:d026-stage-e | lesson:Γ localization≈1 with θΓ decline and ads≪turnover while delta_P≫ads means coverage not localization fails Stage E | evidence:docs/d026_stage_e_activated_resource_recovery.md
+- 2026-07-17 | area:d026-stage-e | lesson:Freeze-surface control rescues A_ret≈+0.14; zeroing A transport or structure/rep demand does not | evidence:experiments/generated/d026/causal_controls/summary.json
