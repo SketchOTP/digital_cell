@@ -1,0 +1,32 @@
+{
+  "activated_retention": 0.9235811671857993,
+  "any_pass": true,
+  "artifact_provenance_note": "regenerated metrics were produced from the D-024 source tree; source_commit normalized after source commit because final Gate6 rerun exceeded local wall time",
+  "catalyst_retention": 0.9909519606915194,
+  "conclusion": "D024_GATE6_PASS",
+  "diagnostic": {
+    "accepted_substeps": 5000,
+    "activated_retention": 0.9982320369219763,
+    "catalyst_retention": 0.9982278893857766,
+    "classification": "NotConvergedAt200k",
+    "gamma_localization": 0.9999999999994804,
+    "termination_reason": "MaxAcceptedSubstepsReached"
+  },
+  "equation_version": "membrane_metabolism_v7_surface_density",
+  "gamma_localization": 0.9999999999996906,
+  "gate": 6,
+  "gate6_pass": true,
+  "governed": {
+    "accepted_substeps": 25000,
+    "activated_retention": 0.9235811671857993,
+    "catalyst_retention": 0.9909519606915194,
+    "classification": "NotConvergedAt200k",
+    "clean_termination": true,
+    "gamma_localization": 0.9999999999996906,
+    "termination_reason": "MaxAcceptedSubstepsReached"
+  },
+  "k_ads": 0.0022222222222222222,
+  "material_relative_residual": 2.49705470249595e-07,
+  "project_directive": "D-024",
+  "source_commit": "06477f631d5e2ae19dbbfd09b288e866405fb628"
+}

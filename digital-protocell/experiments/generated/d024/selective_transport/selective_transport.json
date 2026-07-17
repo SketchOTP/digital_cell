@@ -1,0 +1,141 @@
+{
+  "any_pass": true,
+  "artifact_provenance_note": "regenerated metrics were produced from the D-024 source tree; source_commit normalized after source commit because final Gate6 rerun exceeded local wall time",
+  "conclusion": "D024_GATE4_PASS",
+  "equation_version": "membrane_metabolism_v7_surface_density",
+  "gate": 4,
+  "gate4_pass": true,
+  "planar_phi_in": 0.75,
+  "planar_phi_out": 0.25,
+  "project_directive": "D-024",
+  "rows": [
+    {
+      "activated": {
+        "normalized_flux": 1.0,
+        "permeability": 1.0
+      },
+      "catalyst": {
+        "normalized_flux": 1.0,
+        "permeability": 1.0
+      },
+      "fuel": {
+        "normalized_flux": 1.0,
+        "permeability": 1.0
+      },
+      "nutrient": {
+        "normalized_flux": 1.0,
+        "permeability": 1.0
+      },
+      "s_face": 0.0,
+      "theta_gamma": 0.0,
+      "waste": {
+        "normalized_flux": 1.0,
+        "permeability": 1.0
+      }
+    },
+    {
+      "activated": {
+        "normalized_flux": 0.2158150833986898,
+        "permeability": 0.2158150833986898
+      },
+      "catalyst": {
+        "normalized_flux": 0.2158150833986898,
+        "permeability": 0.2158150833986898
+      },
+      "fuel": {
+        "normalized_flux": 0.6703200460356393,
+        "permeability": 0.6703200460356393
+      },
+      "nutrient": {
+        "normalized_flux": 0.6703200460356393,
+        "permeability": 0.6703200460356393
+      },
+      "s_face": 0.375,
+      "theta_gamma": 0.25,
+      "waste": {
+        "normalized_flux": 0.9355069850316178,
+        "permeability": 0.9355069850316178
+      }
+    },
+    {
+      "activated": {
+        "normalized_flux": 0.046576150222383435,
+        "permeability": 0.046576150222383435
+      },
+      "catalyst": {
+        "normalized_flux": 0.04657615022238344,
+        "permeability": 0.046576150222383435
+      },
+      "fuel": {
+        "normalized_flux": 0.4493289641172216,
+        "permeability": 0.4493289641172216
+      },
+      "nutrient": {
+        "normalized_flux": 0.4493289641172216,
+        "permeability": 0.4493289641172216
+      },
+      "s_face": 0.75,
+      "theta_gamma": 0.5,
+      "waste": {
+        "normalized_flux": 0.8751733190429475,
+        "permeability": 0.8751733190429475
+      }
+    },
+    {
+      "activated": {
+        "normalized_flux": 0.010051835744633586,
+        "permeability": 0.010051835744633586
+      },
+      "catalyst": {
+        "normalized_flux": 0.010051835744633586,
+        "permeability": 0.010051835744633586
+      },
+      "fuel": {
+        "normalized_flux": 0.30119421191220214,
+        "permeability": 0.30119421191220214
+      },
+      "nutrient": {
+        "normalized_flux": 0.30119421191220214,
+        "permeability": 0.30119421191220214
+      },
+      "s_face": 1.125,
+      "theta_gamma": 0.75,
+      "waste": {
+        "normalized_flux": 0.8187307530779818,
+        "permeability": 0.8187307530779818
+      }
+    },
+    {
+      "activated": {
+        "normalized_flux": 0.010051835744633586,
+        "permeability": 0.010051835744633586
+      },
+      "catalyst": {
+        "normalized_flux": 0.010051835744633586,
+        "permeability": 0.010051835744633586
+      },
+      "fuel": {
+        "normalized_flux": 0.30119421191220214,
+        "permeability": 0.30119421191220214
+      },
+      "nutrient": {
+        "normalized_flux": 0.30119421191220214,
+        "permeability": 0.30119421191220214
+      },
+      "s_face": 1.5,
+      "theta_gamma": 1.0,
+      "waste": {
+        "normalized_flux": 0.8187307530779818,
+        "permeability": 0.8187307530779818
+      }
+    }
+  ],
+  "source_commit": "06477f631d5e2ae19dbbfd09b288e866405fb628",
+  "theta_gamma_samples": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ]
+}

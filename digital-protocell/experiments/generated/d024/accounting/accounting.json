@@ -1,0 +1,12 @@
+{
+  "artifact_provenance_note": "regenerated metrics were produced from the D-024 source tree; source_commit normalized after source commit because final Gate6 rerun exceeded local wall time",
+  "equation_version": "membrane_metabolism_v7_surface_density",
+  "gate2_mass_drift": 1.508012573620312e-15,
+  "gate3_any_pass": true,
+  "gate4_pass": true,
+  "gate5_pass": true,
+  "material_accounting_unit_backed": true,
+  "project_directive": "D-024",
+  "source_commit": "06477f631d5e2ae19dbbfd09b288e866405fb628",
+  "unit_tests_gate0_gate5": "chemistry-core/tests/d024_tests.rs"
+}
