@@ -78,7 +78,7 @@ pub fn v7_base_params() -> Result<SimParams, Box<dyn std::error::Error>> {
     Ok(p)
 }
 
-fn seed_v7_compartment(sim: &mut Simulation, radius: f64, theta_gamma: f64) {
+pub(crate) fn seed_v7_compartment(sim: &mut Simulation, radius: f64, theta_gamma: f64) {
     sim.observer_enabled = false;
     let w = sim.grid.width;
     let n = sim.fields.structure.len();

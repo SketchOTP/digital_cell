@@ -24,8 +24,8 @@ use crate::grid::Grid;
 use crate::interventions::apply_intervention;
 use crate::membrane::{evolve_fixed_membrane, evolve_precursor_assembly, MembraneEvolutionTotals};
 use crate::membrane_accounting::{
-    MembraneAccountingState, MembraneStepAccounting, TransportAccountingState,
-    TransportStepAccounting,
+    MembraneAccountingState, MembraneStepAccounting, SpeciesTransportAccounting,
+    TransportAccountingState, TransportStepAccounting,
 };
 use crate::membrane_transport::{transport_field, TransportSpecies};
 use crate::operators::{diffuse_constant, diffuse_variable, laplacian};
@@ -36,7 +36,7 @@ use crate::structural_kinetics::{
 };
 use crate::surface_density::{
     estimate_interface_normal_velocity, evolve_surface_density, evolve_surface_density_with_vn,
-    InterfaceGeometryCell,
+    InterfaceGeometryCell, SurfaceAccountingTotals,
 };
 use crate::reservoir::apply_reservoir;
 use crate::snapshot::FieldSnapshot;
@@ -77,6 +77,18 @@ pub struct Simulation {
     pub structure_provenance: Option<StructureProvenanceTracer>,
     /// When false with ConstrainedRadius, φ evolves under the same rates (D-018 control).
     pub enforce_structure_constraint: bool,
+    /// D-026 diagnostic: skip activated normal transport (Control A).
+    pub d026_disable_a_normal_transport: bool,
+    /// D-026 diagnostic: hold S fixed; retain Γ-controlled permeability (Control B).
+    pub d026_freeze_surface: bool,
+    /// D-026 diagnostic: zero virtual structure production / A demand (Control C).
+    pub d026_disable_virtual_structure: bool,
+    /// D-026 diagnostic: zero catalyst reproduction (Control D).
+    pub d026_disable_catalyst_reproduction: bool,
+    /// D-026 diagnostic: disable A→P surface synthesis (Control E; pair with freeze_surface for S).
+    pub d026_disable_precursor_synthesis: bool,
+    /// Last v7 surface evolution totals (observer/diagnostic).
+    pub last_surface_totals: Option<SurfaceAccountingTotals>,
     pub substep: u64,
     pub sim_time: f64,
     pub dt: f64,
@@ -124,6 +136,12 @@ impl Simulation {
             waste_budget: WasteBudgetState::default(),
             structure_provenance: None,
             enforce_structure_constraint: true,
+            d026_disable_a_normal_transport: false,
+            d026_freeze_surface: false,
+            d026_disable_virtual_structure: false,
+            d026_disable_catalyst_reproduction: false,
+            d026_disable_precursor_synthesis: false,
+            last_surface_totals: None,
             substep: 0,
             sim_time: 0.0,
             dt: MAX_DT,
@@ -1749,15 +1767,20 @@ impl Simulation {
             );
             transport.set(
                 TransportSpecies::Activated,
-                transport_field(
-                    &self.grid,
-                    TransportSpecies::Activated,
-                    &self.working.activated,
-                    &self.working.structure,
-                    &self.working.membrane,
-                    &self.params,
-                    &mut self.fields.scratch_transport_a,
-                ),
+                if self.d026_disable_a_normal_transport {
+                    self.fields.scratch_transport_a.fill(0.0);
+                    SpeciesTransportAccounting::default()
+                } else {
+                    transport_field(
+                        &self.grid,
+                        TransportSpecies::Activated,
+                        &self.working.activated,
+                        &self.working.structure,
+                        &self.working.membrane,
+                        &self.params,
+                        &mut self.fields.scratch_transport_a,
+                    )
+                },
             );
             transport.set(
                 TransportSpecies::Nutrient,
@@ -1837,12 +1860,16 @@ impl Simulation {
             } else {
                 0.0
             };
-            let r_structure = structure_production_rate(
-                phi,
-                self.working.activated[idx],
-                self.working.catalyst[idx],
-                &self.params,
-            );
+            let r_structure = if self.d026_disable_virtual_structure {
+                0.0
+            } else {
+                structure_production_rate(
+                    phi,
+                    self.working.activated[idx],
+                    self.working.catalyst[idx],
+                    &self.params,
+                )
+            };
             let r_structure_decay = structure_decay_rate(phi, lap_abs, &self.params);
             let produced = if v2 {
                 eta_phi * r_structure * dt
@@ -1871,6 +1898,19 @@ impl Simulation {
                 self.working.activated[idx],
                 &self.params,
             );
+            let mut rates = rates;
+            if self.d026_disable_catalyst_reproduction {
+                let repro = rates.reproduction;
+                rates.reproduction = 0.0;
+                rates.d_activated += repro;
+                if v2 {
+                    rates.d_catalyst -= self.params.eta_c * repro;
+                    rates.d_waste -= (1.0 - self.params.eta_c) * repro;
+                } else {
+                    rates.d_catalyst -= repro;
+                    rates.d_waste -= repro;
+                }
+            }
             activation += rates.activation * dt;
             reproduction += rates.reproduction * dt;
             activated_decay += rates.activated_decay * dt;
@@ -1946,7 +1986,13 @@ impl Simulation {
                 }
             }
 
-            let totals = if use_autonomous {
+            let enable_synthesis = !self.d026_disable_precursor_synthesis;
+            let totals = if self.d026_freeze_surface {
+                self.fields
+                    .membrane_next
+                    .copy_from_slice(&self.fields.membrane);
+                SurfaceAccountingTotals::default()
+            } else if use_autonomous {
                 evolve_surface_density_with_vn(
                     &self.grid,
                     phi_for_surface,
@@ -1956,7 +2002,7 @@ impl Simulation {
                     &self.fields.membrane,
                     &self.params,
                     dt,
-                    true,
+                    enable_synthesis,
                     true,
                     true,
                     true,
@@ -1981,7 +2027,7 @@ impl Simulation {
                     &self.fields.membrane,
                     &self.params,
                     dt,
-                    true,
+                    enable_synthesis,
                     true,
                     true,
                     true,
@@ -1995,13 +2041,16 @@ impl Simulation {
                     &mut self.fields.waste_next,
                 )
             };
+            self.last_surface_totals = Some(totals);
             for idx in 0..size {
                 if self.grid.in_dish(idx) {
                     self.fields.precursor_next[idx] += self.fields.scratch_transport_p[idx] * dt;
                 }
             }
-            react_a += -totals.precursor_synthesis_delta;
-            react_w += totals.surface_to_waste + totals.precursor_decay_delta;
+            if !self.d026_freeze_surface {
+                react_a += -totals.precursor_synthesis_delta;
+                react_w += totals.surface_to_waste + totals.precursor_decay_delta;
+            }
             MembraneEvolutionTotals {
                 synthesis_delta: totals.adsorption_delta,
                 decay_delta: totals.gamma_decay_delta,

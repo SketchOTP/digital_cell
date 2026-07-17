@@ -384,6 +384,13 @@ fn restore_from_checkpoint(
     Ok(())
 }
 
+pub fn restore_governed_simulation(
+    sim: &mut Simulation,
+    ckpt: &GovernedCheckpoint,
+) -> Result<(), Box<dyn std::error::Error>> {
+    restore_from_checkpoint(sim, ckpt)
+}
+
 fn biological_termination(sim: &Simulation) -> Option<TerminationReason> {
     let c = total_mass_field(sim, &sim.fields.catalyst);
     let a = total_mass_field(sim, &sim.fields.activated);

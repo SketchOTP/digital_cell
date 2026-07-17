@@ -23,6 +23,7 @@ mod d023;
 mod d024;
 mod d025;
 mod d025_stage_e;
+mod d026;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -157,6 +158,10 @@ enum Commands {
     D025 {
         #[command(subcommand)]
         action: D025Commands,
+    },
+    D026 {
+        #[command(subcommand)]
+        action: D026Commands,
     },
 }
 
@@ -435,6 +440,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D023 { action } => run_d023(action)?,
         Commands::D024 { action } => run_d024(action)?,
         Commands::D025 { action } => run_d025(action)?,
+        Commands::D026 { action } => run_d026(action)?,
     }
     Ok(())
 }
@@ -1587,6 +1593,91 @@ enum D025Commands {
         #[arg(long, default_value = "experiments/generated/d025/stage_e_reference")]
         reference: PathBuf,
     },
+}
+
+#[derive(Subcommand)]
+enum D026Commands {
+    Gate0 {
+        #[arg(long, default_value = "experiments/generated/d026/runner_parity")]
+        output: PathBuf,
+    },
+    Gate1 {
+        #[arg(long, default_value = "experiments/generated/d026")]
+        output: PathBuf,
+    },
+    Gate2 {
+        #[arg(long, default_value = "experiments/generated/d026")]
+        output: PathBuf,
+    },
+    Gate5 {
+        #[arg(long, default_value = "experiments/generated/d026")]
+        output: PathBuf,
+    },
+    Classify {
+        #[arg(long, default_value = "experiments/generated/d026")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d026_artifact_path(path: &Path) -> PathBuf {
+    if path.is_absolute() {
+        return path.to_path_buf();
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../..")
+        .join(path)
+}
+
+fn run_d026(action: D026Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D026Commands::Gate0 { output } => {
+            let out = resolve_d026_artifact_path(&output);
+            let result = d026::run_gate0_parity(&out)?;
+            println!(
+                "D-026 gate0 -> {} (pass={})",
+                out.join("gate0_parity.json").display(),
+                result["gate0_pass"]
+            );
+        }
+        D026Commands::Gate1 { output } => {
+            let out = resolve_d026_artifact_path(&output);
+            let result = d026::run_gate1_observability_demo(&out)?;
+            println!(
+                "D-026 gate1 -> {} (samples={}/{})",
+                out.join("gate1_observability.json").display(),
+                result["surface_sample_count"],
+                result["budget_sample_count"]
+            );
+        }
+        D026Commands::Gate2 { output } => {
+            let out = resolve_d026_artifact_path(&output);
+            let result = d026::run_gate2_reference_history(&out)?;
+            println!(
+                "D-026 gate2 -> {} (divergence={})",
+                out.join("reference_history/chronology.json").display(),
+                result["earliest_divergence"]
+            );
+        }
+        D026Commands::Gate5 { output } => {
+            let out = resolve_d026_artifact_path(&output);
+            let result = d026::run_gate5_causal_controls(&out)?;
+            println!(
+                "D-026 gate5 -> {} (controls={})",
+                out.join("causal_controls/summary.json").display(),
+                result["controls"].as_array().map(|a| a.len()).unwrap_or(0)
+            );
+        }
+        D026Commands::Classify { output } => {
+            let out = resolve_d026_artifact_path(&output);
+            let result = d026::run_gate6_classification(&out)?;
+            println!(
+                "D-026 classify -> {} (mechanism={})",
+                out.join("late_time_classification/classification.json").display(),
+                result["gate6_mechanism"]
+            );
+        }
+    }
+    Ok(())
 }
 
 fn resolve_d025_artifact_path(path: &Path) -> PathBuf {
