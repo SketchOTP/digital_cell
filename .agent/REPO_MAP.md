@@ -167,3 +167,26 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d023.rs` — Gates 0–2 precursor pipeline (3–5 blocked on Gate2 fail)
 - `docs/d023_membrane_precursor_assembly_report.md` — D-023 conclusion and gate evidence
 - `digital-protocell/experiments/generated/d023/` — Gate artifacts and manifest
+- `digital-protocell/crates/chemistry-core/tests/d024_tests.rs` — Gate0–5 v7 surface-density unit tests
+- `digital-protocell/crates/experiment-runner/src/d024.rs` — Gates 0–6 interfacial surface-density pipeline
+- `digital-protocell/experiments/generated/d024/` — Gate artifacts and manifest
+
+## D-024 surface density
+- `digital-protocell/crates/chemistry-core/src/surface_density.rs` — v7 S=δΓ geometry, reconstruction, surface diffusion/advection, adsorption/turnover helpers
+- `digital-protocell/crates/chemistry-core/tests/d024_tests.rs` — D-024 Gate 0–5 unit coverage
+- `digital-protocell/crates/experiment-runner/src/d024.rs` — D-024 Gates 0–6 artifact runner
+- `digital-protocell/experiments/generated/d024/` — D-024 pass artifacts and manifest
+- `docs/d024_interfacial_surface_density_report.md` — D-024 conclusion/report
+
+## D-025 autonomous surface + Stage E re-entry
+- `digital-protocell/crates/chemistry-core/src/surface_density.rs` — v_n estimator, autonomous S advection (`evolve_surface_density_with_vn`)
+- `digital-protocell/crates/chemistry-core/tests/d025_tests.rs` — Gate 1–3 unit coverage
+- `digital-protocell/crates/experiment-runner/src/d025.rs` — Gates 3–7 runner (Stage B–D, dynamic R22)
+- `digital-protocell/experiments/generated/d025/` — Gate artifacts + `d024_provenance_seal/`
+- `docs/d024_provenance_seal_addendum.md` — D-024 provenance seal
+
+## D-025 Stage E
+- `digital-protocell/crates/experiment-runner/src/d025_stage_e.rs` — Gate 8 constrained-radius Stage E reference/solve
+- `digital-protocell/crates/chemistry-core/src/d025_analysis.rs` — D025 conclusions, joint balance, Stage E gates
+- `docs/d025_stage_e_long_transient.md` — Gate 8 failure record
+- `digital-protocell/experiments/generated/d025/` — gates 0–8 artifacts + manifest

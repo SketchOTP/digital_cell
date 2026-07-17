@@ -34,3 +34,6 @@ Append-only repo-specific lessons. Format:
 - 2026-07-16 | area:d021 | lesson:v4 ε-protected membrane decay recovers A retention (~1.0) but R22 localization stays ~0.889 under frozen rates | evidence:experiments/generated/d021/gate3/gate3_prebalance.json
 - 2026-07-17 | area:d022-interface-affinity | lesson:χ_M/D_M≤2 lifts R22 M loc only ~0.889→0.891; A retention stays ~1.0; seven-field loc tuning rejected | evidence:experiments/generated/d022/manifest.json
 - 2026-07-17 | area:d023 | lesson:v6 A→P→M with χ_M=0 fails Stage B loc (≤0.8895); higher k_assembly worsens loc via bulk M diffusion | evidence:docs/d023_membrane_precursor_assembly_report.md
+- 2026-07-17 | area:d025 | lesson:n=∇φ/|∇φ| points inward so expansion mean v_n<0; Stage D fixed_geometry must check φ only not S | evidence:crates/chemistry-core/tests/d025_tests.rs
+- 2026-07-17 | area:d025-stage-c | lesson:v7 Stage C stoichiometric closure must use η_c like v2; ActivatedMetabolism path has no P/S—check those under ConstrainedRadius | evidence:crates/experiment-runner/src/d025.rs
+- 2026-07-17 | area:d025-stage-e | lesson:Constrained Stage E under frozen D-024 k_ads reaches 200k with Γ≈1 and C_ret≥0.80 but A_ret≈0.51 and zero qualifying windows; LONG_TRANSIENT forbids solver entry | evidence:experiments/generated/d025/stage_e_reference/reference_terminal_classification.json
