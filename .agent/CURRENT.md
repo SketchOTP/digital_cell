@@ -1,22 +1,23 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260716-d022-interface-affinity-localization
-- Project directive: D-022
-- Goal: Conservative interface-affinity M transport to recover localization under coupled R22
-- Status: done — D022_LOCALIZATION_NOT_RECOVERED
-- Acceptance: met (honest failure conclusion with Gate1–2 evidence)
-- Touched files: membrane.rs, config.rs, d022_*, main.rs, docs/d022_*, experiments/generated/d022
-- Next action: Next directive must add membrane-precursor / membrane-bound component (no more seven-field loc tuning)
+- ID: D-20260717-d023-membrane-precursor-assembly
+- Project directive: D-023
+- Goal: Eight-field precursor assembly (v6); evaluate isolated localization then coupled gates
+- Status: done — D023_PRECURSOR_LOCALIZATION_NOT_RECOVERED
+- Acceptance: met (honest failure; Gate0/1 PASS; Gate2 fail; Gates3–5 blocked)
+- Touched files: fields/config/membrane/snapshot/candidate_identity/accounting/simulation, d023.rs, d023_tests, docs/d023_*, experiments/generated/d023
+- Next action: Design interfacial surface-density membrane model; do not resume bulk-field M localization tuning
 
 ## Repo facts needed now
 - D-021 preserved: 16213c7 / tag D-021-retention-localization-not-recovered
-- D-022: v5 χ screen {0.5,1,2}×D_M; R22 M loc 0.8895–0.8907; A ret ≈0.9996
+- D-022 preserved: e54b379 / tag D-022-localization-not-recovered
+- D-023: v6 eight-field; Gate2 min loc 0.861–0.889 < 0.90; analytical k_assembly≈0.901
 - Mimir slug: digital_cell
 
 ## Last validation
-- Command: cargo test … d008–d022 release + `d022 pipeline`
-- Result: tests PASS; pipeline conclusion D022_LOCALIZATION_NOT_RECOVERED
+- Command: cargo test -p chemistry-core --release --test d008–d023; `d023 pipeline`
+- Result: tests PASS; conclusion D023_PRECURSOR_LOCALIZATION_NOT_RECOVERED
 
 ## Open blockers
-- Coupled R22 M localization < 0.90 under all screened χ; Stage E blocked
+- Bulk-field M (v1–v6) cannot meet coupled localization; need surface-density architecture

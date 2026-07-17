@@ -161,3 +161,9 @@ Concise navigation map for agents. Add entries as application code lands.
 - `docs/d022_interface_affinity_localization_report.md` — D-022 conclusion and gate evidence
 - `digital-protocell/experiments/generated/d022/` — Gate artifacts and manifest
 
+
+## D-023 membrane-precursor assembly
+- `digital-protocell/crates/chemistry-core/tests/d023_tests.rs` — Gate0/1 eight-field schema and conservation tests
+- `digital-protocell/crates/experiment-runner/src/d023.rs` — Gates 0–2 precursor pipeline (3–5 blocked on Gate2 fail)
+- `docs/d023_membrane_precursor_assembly_report.md` — D-023 conclusion and gate evidence
+- `digital-protocell/experiments/generated/d023/` — Gate artifacts and manifest

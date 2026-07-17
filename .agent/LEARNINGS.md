@@ -33,3 +33,4 @@ Append-only repo-specific lessons. Format:
 - 2026-07-16 | area:d020 | lesson:D-020 sensitivity is full-rank; bounded rate recovery still fails long-run retention/localization | evidence:docs/d020_joint_rate_recovery_report.md
 - 2026-07-16 | area:d021 | lesson:v4 ε-protected membrane decay recovers A retention (~1.0) but R22 localization stays ~0.889 under frozen rates | evidence:experiments/generated/d021/gate3/gate3_prebalance.json
 - 2026-07-17 | area:d022-interface-affinity | lesson:χ_M/D_M≤2 lifts R22 M loc only ~0.889→0.891; A retention stays ~1.0; seven-field loc tuning rejected | evidence:experiments/generated/d022/manifest.json
+- 2026-07-17 | area:d023 | lesson:v6 A→P→M with χ_M=0 fails Stage B loc (≤0.8895); higher k_assembly worsens loc via bulk M diffusion | evidence:docs/d023_membrane_precursor_assembly_report.md
