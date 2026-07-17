@@ -87,9 +87,19 @@ pub fn membrane_basis(
 }
 
 #[inline]
+pub fn membrane_decay_factor(phi: f64, params: &SimParams) -> f64 {
+    if params.equation_version.is_interface_protected_membrane() {
+        // r_M_decay = k_M_decay × M × [ε_M + (1 − I(φ))]
+        params.eps_m + (1.0 - interface_weight(phi))
+    } else {
+        1.0
+    }
+}
+
+#[inline]
 pub fn membrane_losses(phi: f64, membrane: f64, params: &SimParams) -> f64 {
     let membrane = membrane.max(0.0);
-    params.k_membrane_decay * membrane
+    params.k_membrane_decay * membrane * membrane_decay_factor(phi, params)
         + params.k_membrane_detach * membrane * (1.0 - interface_weight(phi))
 }
 
@@ -104,7 +114,7 @@ pub fn membrane_rates(
     let membrane = membrane.max(0.0);
     MembraneRates {
         synthesis: params.k_membrane * membrane_basis(phi, catalyst, activated, membrane, params),
-        decay: params.k_membrane_decay * membrane,
+        decay: params.k_membrane_decay * membrane * membrane_decay_factor(phi, params),
         detachment: params.k_membrane_detach * membrane * (1.0 - interface_weight(phi)),
     }
 }

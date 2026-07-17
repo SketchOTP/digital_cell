@@ -31,3 +31,4 @@ Append-only repo-specific lessons. Format:
 - 2026-07-16 | area:d018 | lesson:Observer StructureProvenanceTracer E/K is opt-in on Simulation; default None preserves causality | evidence:digital-protocell/crates/chemistry-core/src/d018_provenance.rs
 - 2026-07-16 | area:d019 | lesson:Interface-limited decay (ε=0.05+I(φ)) restores prescribed/live g-crossing; Stage E still needs joint-rate recalibration under v3 | evidence:docs/d019_mechanism_comparison.md
 - 2026-07-16 | area:d020 | lesson:D-020 sensitivity is full-rank; bounded rate recovery still fails long-run retention/localization | evidence:docs/d020_joint_rate_recovery_report.md
+- 2026-07-16 | area:d021 | lesson:v4 ε-protected membrane decay recovers A retention (~1.0) but R22 localization stays ~0.889 under frozen rates | evidence:experiments/generated/d021/gate3/gate3_prebalance.json

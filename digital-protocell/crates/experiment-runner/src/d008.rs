@@ -27,6 +27,8 @@ const STAGE_B_INITIAL_LEVELS: [f64; 3] = [0.25, 0.50, 0.75];
 pub struct D008StageOptions {
     pub equation_version: EquationVersion,
     pub classification_prefix: &'static str,
+    /// D-021 v4 membrane protection floor; `None` leaves `SimParams::eps_m` default.
+    pub eps_m: Option<f64>,
 }
 
 impl Default for D008StageOptions {
@@ -34,6 +36,7 @@ impl Default for D008StageOptions {
         Self {
             equation_version: EquationVersion::MembraneMetabolismV1,
             classification_prefix: "D008",
+            eps_m: None,
         }
     }
 }
@@ -43,6 +46,7 @@ impl D008StageOptions {
         Self {
             equation_version: EquationVersion::MembraneMetabolismV2Conservative,
             classification_prefix: "D012",
+            eps_m: None,
         }
     }
 
@@ -162,6 +166,9 @@ fn reference_params_for(
     }
     let mut params = SimParams::default();
     params.equation_version = options.equation_version;
+    if let Some(eps) = options.eps_m {
+        params.eps_m = eps;
+    }
     apply_v2_yields(&mut params);
     params.d_a = reference.d_a;
     params.beta_c = reference.beta_c;

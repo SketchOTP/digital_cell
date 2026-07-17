@@ -180,7 +180,7 @@ impl FieldSnapshot {
         );
         let field_schema_version = match params.equation_version {
             EquationVersion::MembraneMetabolismV1
-            | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling => FieldSchemaVersion::SevenFieldV1,
+            | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected => FieldSchemaVersion::SevenFieldV1,
             EquationVersion::D001BulkV1
             | EquationVersion::D003CrowdingV1
             | EquationVersion::SurfaceTurnoverV1 => FieldSchemaVersion::FiveFieldV1,
@@ -358,7 +358,7 @@ impl FieldSnapshot {
             |             (
                 FieldSchemaVersion::SevenFieldV1,
                 SnapshotFields::SevenField(_),
-                EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling,
+                EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected,
             ) => Ok(()),
             (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV1) => {
                 Err("five_field_v1 snapshot is incompatible with membrane_metabolism_v1".to_string())
@@ -368,6 +368,9 @@ impl FieldSnapshot {
             }
             (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV3StructuralScaling) => {
                 Err("five_field_v1 snapshot is incompatible with membrane_metabolism_v3_structural_scaling".to_string())
+            }
+            (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV4InterfaceProtected) => {
+                Err("five_field_v1 snapshot is incompatible with membrane_metabolism_v4_interface_protected".to_string())
             }
             (FieldSchemaVersion::SevenFieldV1, _, EquationVersion::D001BulkV1
             | EquationVersion::D003CrowdingV1

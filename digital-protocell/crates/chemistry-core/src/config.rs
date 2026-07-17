@@ -20,6 +20,10 @@ pub const M_MAX: f64 = 1.0;
 pub const STOICHIOMETRIC_SCHEMA_VERSION_V1: u32 = 1;
 /// Governed stoichiometric schema for membrane_metabolism_v2_conservative.
 pub const STOICHIOMETRIC_SCHEMA_VERSION_V2: u32 = 2;
+/// Uniform membrane decay (v1–v3).
+pub const MEMBRANE_SCHEMA_VERSION_V1: u32 = 1;
+/// Interface-protected membrane decay (v4): ε_M + (1 − I(φ)).
+pub const MEMBRANE_SCHEMA_VERSION_V2: u32 = 2;
 /// Baseline selective-boundary transport schema (D-008/D-015).
 pub const TRANSPORT_SCHEMA_VERSION_V1: u32 = 1;
 /// D-016 calibrated passive waste transport schema (D_W / β_W repair).
@@ -41,6 +45,9 @@ pub enum EquationVersion {
     /// D-019 structural scaling repair; inherits v2 stoichiometry / yields / transport.
     #[serde(rename = "membrane_metabolism_v3_structural_scaling")]
     MembraneMetabolismV3StructuralScaling,
+    /// D-021 interface-protected membrane turnover; inherits v3 structure + v2 stoichiometry.
+    #[serde(rename = "membrane_metabolism_v4_interface_protected")]
+    MembraneMetabolismV4InterfaceProtected,
 }
 
 impl EquationVersion {
@@ -52,6 +59,9 @@ impl EquationVersion {
             Self::MembraneMetabolismV1 => "membrane_metabolism_v1",
             Self::MembraneMetabolismV2Conservative => "membrane_metabolism_v2_conservative",
             Self::MembraneMetabolismV3StructuralScaling => "membrane_metabolism_v3_structural_scaling",
+            Self::MembraneMetabolismV4InterfaceProtected => {
+                "membrane_metabolism_v4_interface_protected"
+            }
         }
     }
 
@@ -61,21 +71,39 @@ impl EquationVersion {
             Self::MembraneMetabolismV1
                 | Self::MembraneMetabolismV2Conservative
                 | Self::MembraneMetabolismV3StructuralScaling
+                | Self::MembraneMetabolismV4InterfaceProtected
         )
     }
 
     pub const fn is_conservative_membrane_metabolism(self) -> bool {
         matches!(
             self,
-            Self::MembraneMetabolismV2Conservative | Self::MembraneMetabolismV3StructuralScaling
+            Self::MembraneMetabolismV2Conservative
+                | Self::MembraneMetabolismV3StructuralScaling
+                | Self::MembraneMetabolismV4InterfaceProtected
         )
+    }
+
+    pub const fn is_interface_protected_membrane(self) -> bool {
+        matches!(self, Self::MembraneMetabolismV4InterfaceProtected)
     }
 
     pub const fn stoichiometric_schema_version(self) -> u32 {
         match self {
             Self::MembraneMetabolismV2Conservative
-            | Self::MembraneMetabolismV3StructuralScaling => STOICHIOMETRIC_SCHEMA_VERSION_V2,
+            | Self::MembraneMetabolismV3StructuralScaling
+            | Self::MembraneMetabolismV4InterfaceProtected => STOICHIOMETRIC_SCHEMA_VERSION_V2,
             Self::MembraneMetabolismV1 => STOICHIOMETRIC_SCHEMA_VERSION_V1,
+            Self::D001BulkV1 | Self::D003CrowdingV1 | Self::SurfaceTurnoverV1 => 0,
+        }
+    }
+
+    pub const fn membrane_schema_version(self) -> u32 {
+        match self {
+            Self::MembraneMetabolismV4InterfaceProtected => MEMBRANE_SCHEMA_VERSION_V2,
+            Self::MembraneMetabolismV1
+            | Self::MembraneMetabolismV2Conservative
+            | Self::MembraneMetabolismV3StructuralScaling => MEMBRANE_SCHEMA_VERSION_V1,
             Self::D001BulkV1 | Self::D003CrowdingV1 | Self::SurfaceTurnoverV1 => 0,
         }
     }
@@ -271,6 +299,9 @@ pub struct SimParams {
     /// Must remain `None` for governed v2 identity hashes.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub d019_mechanism_probe: Option<StructuralScalingMechanism>,
+    /// D-021 membrane interface-protection floor ε_M ∈ (0, 1]. Used only under v4.
+    #[serde(default = "default_eps_m")]
+    pub eps_m: f64,
 }
 
 /// Validate governed v2 yields: 0 < η ≤ 1.
@@ -301,6 +332,10 @@ fn default_eta_m() -> f64 {
 
 fn default_transport_schema_version() -> u32 {
     TRANSPORT_SCHEMA_VERSION_V1
+}
+
+fn default_eps_m() -> f64 {
+    0.05
 }
 
 fn default_k_phi() -> f64 {
@@ -463,6 +498,7 @@ impl Default for SimParams {
             eta_m: default_eta_m(),
             transport_schema_version: default_transport_schema_version(),
             d019_mechanism_probe: None,
+            eps_m: default_eps_m(),
         }
     }
 }

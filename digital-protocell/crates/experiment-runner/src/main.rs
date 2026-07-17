@@ -17,6 +17,7 @@ mod d017;
 mod d018;
 mod d019;
 mod d020;
+mod d021;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -131,6 +132,10 @@ enum Commands {
     D020 {
         #[command(subcommand)]
         action: D020Commands,
+    },
+    D021 {
+        #[command(subcommand)]
+        action: D021Commands,
     },
 }
 
@@ -404,6 +409,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D018 { action } => run_d018(action)?,
         Commands::D019 { action } => run_d019(action)?,
         Commands::D020 { action } => run_d020(action)?,
+        Commands::D021 { action } => run_d021(action)?,
     }
     Ok(())
 }
@@ -1290,7 +1296,60 @@ enum D020Commands {
     },
 }
 
+#[derive(Subcommand)]
+enum D021Commands {
+    /// Full D-021 retention/localization repair pipeline (Gates 1–5).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d021")]
+        output: PathBuf,
+        #[arg(long, default_value = "200000")]
+        max_steps: u64,
+    },
+    /// Gate 1 ε screen + Stage B localization.
+    Gate1 {
+        #[arg(long, default_value = "experiments/generated/d021/gate1")]
+        output: PathBuf,
+    },
+    /// Gate 2 fixed-compartment Stage D for Gate-1 passers.
+    Gate2 {
+        #[arg(long, default_value = "experiments/generated/d021/gate2")]
+        output: PathBuf,
+        #[arg(long, default_value = "experiments/generated/d021/gate1/gate1_eps_screen.json")]
+        gate1: PathBuf,
+    },
+    /// Gate 3 R22 pre-balance promotion.
+    Gate3 {
+        #[arg(long, default_value = "experiments/generated/d021/gate3")]
+        output: PathBuf,
+        #[arg(long, default_value = "experiments/generated/d021/gate2/gate2_fixed_compartment.json")]
+        gate2: PathBuf,
+    },
+    /// Gate 4 bounded joint-rate recovery.
+    Gate4 {
+        #[arg(long, default_value = "experiments/generated/d021/gate4")]
+        output: PathBuf,
+        #[arg(long)]
+        eps_m: f64,
+    },
+    /// Gate 5 full Stage E R22 + R18/R26.
+    Gate5 {
+        #[arg(long, default_value = "experiments/generated/d021/gate5")]
+        output: PathBuf,
+        #[arg(long)]
+        eps_m: f64,
+        #[arg(long, default_value = "200000")]
+        max_steps: u64,
+    },
+}
+
 fn resolve_d020_artifact_path(path: PathBuf) -> PathBuf {
+    if path.is_absolute() {
+        return path;
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..").join(path)
+}
+
+fn resolve_d021_artifact_path(path: PathBuf) -> PathBuf {
     if path.is_absolute() {
         return path;
     }
@@ -1343,6 +1402,63 @@ fn run_d020(action: D020Commands) -> Result<(), Box<dyn std::error::Error>> {
             let output = resolve_d020_artifact_path(output);
             let result = d020::run_precondition_only(&output)?;
             println!("D-020 precondition -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+    }
+    Ok(())
+}
+
+fn run_d021(action: D021Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D021Commands::Pipeline { output, max_steps } => {
+            let output = resolve_d021_artifact_path(output);
+            let result = d021::run_pipeline(&output, max_steps)?;
+            println!(
+                "D-021 conclusion={} -> {}",
+                result["primary_conclusion"],
+                output.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D021Commands::Gate1 { output } => {
+            let output = resolve_d021_artifact_path(output);
+            let result = d021::run_gate1_eps_screen(&output)?;
+            println!("D-021 Gate1 -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D021Commands::Gate2 { output, gate1 } => {
+            let output = resolve_d021_artifact_path(output);
+            let gate1_path = resolve_d021_artifact_path(gate1);
+            let gate1: serde_json::Value =
+                serde_json::from_slice(&std::fs::read(gate1_path)?)?;
+            let result = d021::run_gate2_fixed_compartment(&output, &gate1)?;
+            println!("D-021 Gate2 -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D021Commands::Gate3 { output, gate2 } => {
+            let output = resolve_d021_artifact_path(output);
+            let gate2_path = resolve_d021_artifact_path(gate2);
+            let gate2: serde_json::Value =
+                serde_json::from_slice(&std::fs::read(gate2_path)?)?;
+            let result = d021::run_gate3_prebalance(&output, &gate2)?;
+            println!("D-021 Gate3 -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D021Commands::Gate4 { output, eps_m } => {
+            let output = resolve_d021_artifact_path(output);
+            let result = d021::run_gate4_joint_recovery(&output, eps_m)?;
+            println!("D-021 Gate4 -> {}", output.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D021Commands::Gate5 {
+            output,
+            eps_m,
+            max_steps,
+        } => {
+            let output = resolve_d021_artifact_path(output);
+            let rates = chemistry_core::D021_ANALYTICAL_V4_RATES;
+            let result = d021::run_gate5_stage_e(&output, eps_m, &rates, max_steps)?;
+            println!("D-021 Gate5 -> {}", output.display());
             println!("{}", serde_json::to_string_pretty(&result)?);
         }
     }

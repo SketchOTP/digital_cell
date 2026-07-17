@@ -146,3 +146,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d020.rs` — D-020 flow audit and recovery runner
 - `digital-protocell/experiments/generated/d020/` — D-020 recovery artifacts and manifest
 - `docs/d020_joint_rate_recovery_report.md` — D-020 conclusion and evidence report
+
+## D-021 interface-protected membrane
+- `digital-protocell/crates/chemistry-core/src/d021_analysis.rs` — ε screen gates and bounded solver limits
+- `digital-protocell/crates/chemistry-core/tests/d021_tests.rs` — D-021 focused unit tests
+- `digital-protocell/crates/experiment-runner/src/d021.rs` — Gates 1–5 retention/localization pipeline
+- `docs/d021_retention_localization_report.md` — D-021 conclusion and gate evidence
+- `digital-protocell/experiments/generated/d021/` — Gate artifacts and manifest
