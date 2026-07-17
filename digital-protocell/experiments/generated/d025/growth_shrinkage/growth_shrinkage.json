@@ -1,0 +1,56 @@
+{
+  "any_pass": true,
+  "balanced": {
+    "accepted_substeps": 800,
+    "accounting_closed": true,
+    "clean_termination": true,
+    "length_delta": 5.155987783368801,
+    "localization": 0.999999999999943,
+    "mass_delta": 55.24338133392757,
+    "mean_gamma_delta": 0.18344323421105346,
+    "s_drift": 0.00784754741738163
+  },
+  "checks": {
+    "balanced_turnover": true,
+    "net_growth": true,
+    "net_shrinkage": true
+  },
+  "conclusion": "D025_GATE3_PASS",
+  "equation_version": "membrane_metabolism_v7_surface_density",
+  "expansion_control": {
+    "accepted_substeps": 800,
+    "accounting_closed": true,
+    "clean_termination": true,
+    "length_delta": 3.422733728320935,
+    "localization": 1.0,
+    "mass_delta": 41.26844210093827,
+    "mean_gamma_delta": -0.014160011256163285,
+    "s_drift": 0.007962002076960153
+  },
+  "gate": 3,
+  "gate3_pass": true,
+  "growth": {
+    "accepted_substeps": 800,
+    "accounting_closed": true,
+    "clean_termination": true,
+    "length_delta": 2.9788993581837246,
+    "localization": 1.0,
+    "mass_delta": 35.35105599209737,
+    "mean_gamma_delta": -0.02421728711342408,
+    "s_drift": 0.007835556312950976
+  },
+  "k_ads_frozen": 0.0011111111111111111,
+  "project_directive": "D-025",
+  "shrinkage": {
+    "accepted_substeps": 800,
+    "accounting_closed": true,
+    "clean_termination": true,
+    "length_delta": -1.1404819992241926,
+    "localization": 1.0,
+    "mass_delta": -28.982059821035364,
+    "mean_gamma_delta": 0.18689346950305596,
+    "s_drift": 0.007960893829451803
+  },
+  "source_commit": "5ff8af651ce013ee8ffdcdfde37822111aa151e5",
+  "steps": 800
+}

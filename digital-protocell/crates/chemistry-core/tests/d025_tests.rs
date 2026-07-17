@@ -1,6 +1,9 @@
 //! D-025 autonomous surface transport tests (Gate 1 manufactured velocity first).
 
-use chemistry_core::config::{SimParams, DX, GRID_HEIGHT, GRID_WIDTH};
+use chemistry_core::config::{D008StageMode, EquationVersion, SimParams, DX, GRID_HEIGHT, GRID_WIDTH};
+use chemistry_core::d011_analysis::STAGE_E_FAILED_RATES;
+use chemistry_core::d018_analysis::D018_FROZEN_K_STRUCTURE;
+use chemistry_core::field_mass;
 use chemistry_core::grid::Grid;
 use chemistry_core::operators::laplacian;
 use chemistry_core::phase_field::chemical_potential_local;
@@ -8,9 +11,10 @@ use chemistry_core::surface_density::{
     circular_phi_profile, circular_phi_profile_at, circumferential_gamma_variance,
     compute_interface_geometry, estimate_interface_normal_velocity,
     evolve_surface_density, evolve_surface_density_with_vn, grad_phi_magnitude,
-    in_interface_velocity_band, reconstruct_gamma_field, seed_surface_from_gamma,
-    surface_localization, total_surface_mass, InterfaceGeometryCell,
+    in_interface_velocity_band, integrated_delta, reconstruct_gamma_field,
+    seed_surface_from_gamma, surface_localization, total_surface_mass, InterfaceGeometryCell,
 };
+use chemistry_core::{field_sha256_stable, Simulation};
 
 fn v7_geom_params() -> SimParams {
     let mut p = SimParams::default();
@@ -767,4 +771,276 @@ fn test_contraction_concentration_and_static_d024_equivalence() {
         "expected contraction concentration {mean_g1} > {mean_g0}"
     );
     let _ = DX; // silence if unused in some builds
+}
+
+// === Gate 3: chemistry-driven growth and shrinkage ===
+
+const D025_FROZEN_K_ADS: f64 = 0.0011111111111111111;
+
+fn v7_chem_params() -> SimParams {
+    let mut p = v7_geom_params();
+    p.equation_version = EquationVersion::MembraneMetabolismV7SurfaceDensity;
+    p.d008_stage_mode = D008StageMode::ConstrainedRadius;
+    p.d008_stage_b_enabled = false;
+    p.reactions_enabled = true;
+    p.diffusion_enabled = true;
+    p.phase_separation_enabled = false;
+    p.k_ads = D025_FROZEN_K_ADS;
+    p.d_p = p.d_a;
+    p.k_precursor_decay = p.k_d008_activated_decay;
+    p.d_gamma = 0.02;
+    p.gamma_max = 1.0;
+    p.gamma_reference = 1.0;
+    STAGE_E_FAILED_RATES.apply_to(&mut p);
+    p.k_d008_structure = D018_FROZEN_K_STRUCTURE;
+    p
+}
+
+fn seed_v7_autonomous(sim: &mut Simulation, radius: f64) {
+    sim.observer_enabled = false;
+    let w = sim.grid.width;
+    let mut geometry = vec![InterfaceGeometryCell::default(); sim.fields.structure.len()];
+    for idx in 0..sim.fields.structure.len() {
+        if !sim.grid.in_dish(idx) {
+            continue;
+        }
+        let i = idx % w;
+        let j = idx / w;
+        let x = i as f64 - sim.grid.cx;
+        let y = j as f64 - sim.grid.cy;
+        let distance = (x * x + y * y).sqrt();
+        let phi = 0.5 * (1.0 - ((distance - radius) / 2.0).tanh());
+        sim.fields.structure[idx] = phi;
+        if phi >= 0.5 {
+            sim.fields.catalyst[idx] = 0.4;
+            sim.fields.activated[idx] = 0.5;
+            sim.fields.nutrient[idx] = 0.4;
+            sim.fields.fuel[idx] = 0.4;
+            sim.fields.waste[idx] = 0.2;
+            sim.fields.precursor[idx] = 0.05;
+        } else {
+            sim.fields.catalyst[idx] = 0.0;
+            sim.fields.activated[idx] = 0.0;
+            sim.fields.nutrient[idx] = sim.params.n_reservoir;
+            sim.fields.fuel[idx] = sim.params.f_reservoir;
+            sim.fields.waste[idx] = sim.params.w_reservoir;
+            sim.fields.precursor[idx] = 0.0;
+        }
+    }
+    compute_interface_geometry(
+        &sim.grid,
+        &sim.fields.structure,
+        sim.params.eta_n,
+        &mut geometry,
+    );
+    seed_surface_from_gamma(
+        &sim.grid,
+        &geometry,
+        sim.params.delta_floor,
+        &mut sim.fields.membrane,
+        |_, _, _| 0.6,
+    );
+    sim.fields.copy_current_to_next();
+}
+
+fn structural_area(sim: &Simulation) -> f64 {
+    sim.fields
+        .structure
+        .iter()
+        .enumerate()
+        .filter(|(idx, _)| sim.grid.in_dish(*idx))
+        .map(|(_, &phi)| if phi >= 0.5 { 1.0 } else { 0.0 })
+        .sum()
+}
+
+fn interface_measure(sim: &Simulation) -> (f64, f64) {
+    let n = sim.grid.width * sim.grid.height;
+    let mut geometry = vec![InterfaceGeometryCell::default(); n];
+    compute_interface_geometry(
+        &sim.grid,
+        &sim.fields.structure,
+        sim.params.eta_n,
+        &mut geometry,
+    );
+    (
+        integrated_delta(&sim.grid, &geometry),
+        surface_localization(
+            &sim.grid,
+            &geometry,
+            &sim.fields.membrane,
+            sim.params.delta_floor,
+        ),
+    )
+}
+
+fn mean_gamma_on_band(sim: &Simulation) -> f64 {
+    let n = sim.grid.width * sim.grid.height;
+    let mut geometry = vec![InterfaceGeometryCell::default(); n];
+    let mut gamma = vec![0.0; n];
+    compute_interface_geometry(
+        &sim.grid,
+        &sim.fields.structure,
+        sim.params.eta_n,
+        &mut geometry,
+    );
+    reconstruct_gamma_field(
+        &sim.grid,
+        &sim.fields.membrane,
+        &geometry,
+        sim.params.delta_floor,
+        &mut gamma,
+    );
+    let mut sum = 0.0;
+    let mut count = 0usize;
+    for idx in 0..n {
+        if geometry[idx].delta > sim.params.delta_floor {
+            sum += gamma[idx];
+            count += 1;
+        }
+    }
+    sum / count.max(1) as f64
+}
+
+fn structure_mass(sim: &Simulation) -> f64 {
+    field_mass(&sim.grid, &sim.fields.structure)
+}
+
+fn run_autonomous_case(params: SimParams, steps: u64) -> Simulation {
+    let mut sim = Simulation::new(params);
+    sim.enforce_structure_constraint = false;
+    sim.dt_cap = 0.005;
+    seed_v7_autonomous(&mut sim, 20.0);
+    for _ in 0..steps {
+        if !sim.step() {
+            break;
+        }
+    }
+    sim
+}
+
+#[test]
+fn test_v7_unconstrained_phi_evolution_occurs() {
+    let mut params = v7_chem_params();
+    params.k_d008_structure = 0.0;
+    params.k_structure_decay = 0.05;
+    let mut sim = Simulation::new(params);
+    sim.enforce_structure_constraint = false;
+    seed_v7_autonomous(&mut sim, 22.0);
+    let mass0 = structure_mass(&sim);
+    let hash0 = field_sha256_stable(&sim.fields.structure);
+    for _ in 0..500 {
+        assert!(sim.step(), "step failed at {}", sim.substep);
+    }
+    let mass1 = structure_mass(&sim);
+    let hash1 = field_sha256_stable(&sim.fields.structure);
+    assert_ne!(hash0, hash1, "phi field must evolve when unconstrained");
+    assert!(mass1 < mass0, "decay-only must reduce mass {mass0} -> {mass1}");
+}
+
+#[test]
+fn test_chemistry_driven_net_growth() {
+    let mut params = v7_chem_params();
+    params.k_d008_structure = 0.25;
+    params.k_structure_decay = 0.002;
+    let sim = run_autonomous_case(params.clone(), 800);
+    let mass0 = structure_mass(&sim);
+    let (length0, _) = interface_measure(&sim);
+    // Re-seed for a clean baseline comparison.
+    let mut control = Simulation::new({
+        let mut p = params.clone();
+        p.k_ads = 0.0;
+        p.k_precursor = 0.0;
+        p
+    });
+    control.enforce_structure_constraint = false;
+    control.dt_cap = 0.005;
+    seed_v7_autonomous(&mut control, 20.0);
+    let s_ctrl0 = total_surface_mass(&control.grid, &control.fields.membrane);
+    for _ in 0..800 {
+        if !control.step() {
+            break;
+        }
+    }
+    let s_ctrl1 = total_surface_mass(&control.grid, &control.fields.membrane);
+    let ctrl_drift = ((s_ctrl1 - s_ctrl0) / s_ctrl0.max(1.0)).abs();
+
+    let mass1 = structure_mass(&sim);
+    let (length1, loc) = interface_measure(&sim);
+    let syn = sim.accounting.cumulative.structural_synthesis;
+    let dec = sim.accounting.cumulative.structural_decay;
+    assert!(
+        syn > dec * 1.05,
+        "expected net synthesis {syn} > decay {dec}, length {length0} -> {length1}, mass {mass0} -> {mass1}"
+    );
+    assert!(
+        length1 >= length0,
+        "interface length must not shrink during net growth: {length0} -> {length1}"
+    );
+    assert!(loc >= 0.95, "localization {loc} below 0.95 during growth");
+    assert!(
+        ctrl_drift < 0.02,
+        "expansion-only control must not create S: drift={ctrl_drift}"
+    );
+    assert!(
+        sim.accounting.cumulative_within_tolerance(),
+        "material accounting not closed during growth"
+    );
+}
+
+#[test]
+fn test_chemistry_driven_net_shrinkage() {
+    let mut params = v7_chem_params();
+    params.k_d008_structure = 0.0;
+    params.k_structure_decay = 0.025;
+    params.k_ads = 0.0;
+    params.k_precursor = 0.0;
+    let mut sim = Simulation::new(params);
+    sim.enforce_structure_constraint = false;
+    sim.dt_cap = 0.005;
+    seed_v7_autonomous(&mut sim, 24.0);
+    let s0 = total_surface_mass(&sim.grid, &sim.fields.membrane);
+    let mean_g0 = mean_gamma_on_band(&sim);
+    let mass0 = structure_mass(&sim);
+    let (length0, _) = interface_measure(&sim);
+    for _ in 0..800 {
+        if !sim.step() {
+            break;
+        }
+    }
+    let s1 = total_surface_mass(&sim.grid, &sim.fields.membrane);
+    let mean_g1 = mean_gamma_on_band(&sim);
+    let mass1 = structure_mass(&sim);
+    let (length1, loc) = interface_measure(&sim);
+    let s_drift = ((s1 - s0) / s0.max(1.0)).abs();
+    assert!(
+        mass1 < mass0 * 0.995 || length1 < length0 * 0.998,
+        "expected shrinkage: mass {mass0} -> {mass1}, length {length0} -> {length1}"
+    );
+    assert!(s_drift < 0.04, "S deleted on contraction: drift={s_drift}");
+    assert!(
+        mean_g1 > mean_g0,
+        "Γ should concentrate on shrinkage: {mean_g0} -> {mean_g1}"
+    );
+    assert!(loc >= 0.95, "localization {loc} during shrinkage");
+}
+
+#[test]
+fn test_balanced_turnover_with_accounting() {
+    let params = v7_chem_params();
+    let sim = run_autonomous_case(params, 3_000);
+    assert!(
+        sim.accounting.cumulative.structural_synthesis > 0.0
+            || sim.metabolism_accounting.cumulative.activation > 0.0,
+        "expected active structural turnover"
+    );
+    let (_, loc) = interface_measure(&sim);
+    assert!(loc >= 0.95, "balanced turnover localization {loc}");
+    assert!(
+        sim.accounting.cumulative_within_tolerance(),
+        "accounting not closed under balanced turnover"
+    );
+    let s_mass = field_mass(&sim.grid, &sim.fields.membrane);
+    assert!(s_mass.is_finite() && s_mass > 0.0);
+    let p_mass = field_mass(&sim.grid, &sim.fields.precursor);
+    assert!(p_mass.is_finite());
 }

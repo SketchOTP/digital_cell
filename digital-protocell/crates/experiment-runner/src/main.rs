@@ -21,6 +21,7 @@ mod d021;
 mod d022;
 mod d023;
 mod d024;
+mod d025;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -151,6 +152,10 @@ enum Commands {
     D024 {
         #[command(subcommand)]
         action: D024Commands,
+    },
+    D025 {
+        #[command(subcommand)]
+        action: D025Commands,
     },
 }
 
@@ -428,6 +433,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D022 { action } => run_d022(action)?,
         Commands::D023 { action } => run_d023(action)?,
         Commands::D024 { action } => run_d024(action)?,
+        Commands::D025 { action } => run_d025(action)?,
     }
     Ok(())
 }
@@ -1533,6 +1539,81 @@ fn run_d024(action: D024Commands) -> Result<(), Box<dyn std::error::Error>> {
                 None,
             )?;
             println!("D-024 Gate6 pass={} -> {}", result["gate6_pass"], out.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D025Commands {
+    /// Gates 3–6 pipeline; stops at first failed gate.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d025")]
+        output: PathBuf,
+    },
+    Gate3 {
+        #[arg(long, default_value = "experiments/generated/d025/growth_shrinkage")]
+        output: PathBuf,
+    },
+    StageB {
+        #[arg(long, default_value = "experiments/generated/d025/stage_b_regression")]
+        output: PathBuf,
+    },
+    StageC {
+        #[arg(long, default_value = "experiments/generated/d025/stage_c_regression")]
+        output: PathBuf,
+    },
+    StageD {
+        #[arg(long, default_value = "experiments/generated/d025/stage_d_fixed_compartment")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d025_artifact_path(path: &Path) -> PathBuf {
+    if path.is_absolute() {
+        return path.to_path_buf();
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../..")
+        .join(path)
+}
+
+fn run_d025(action: D025Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D025Commands::Pipeline { output } => {
+            let out = resolve_d025_artifact_path(&output);
+            let result = d025::run_gates_3_6(&out)?;
+            println!(
+                "D-025 stopped_at_gate={} conclusion={} -> {}",
+                result["stopped_at_gate"],
+                result["conclusion"],
+                out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D025Commands::Gate3 { output } => {
+            let out = resolve_d025_artifact_path(&output);
+            let result = d025::run_gate3_growth_shrinkage(&out)?;
+            println!("D-025 Gate3 pass={} -> {}", result["gate3_pass"], out.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D025Commands::StageB { output } => {
+            let out = resolve_d025_artifact_path(&output);
+            let result = d025::run_stage_b_regression(&out)?;
+            println!("D-025 StageB pass={} -> {}", result["gate4_pass"], out.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D025Commands::StageC { output } => {
+            let out = resolve_d025_artifact_path(&output);
+            let result = d025::run_stage_c_regression(&out)?;
+            println!("D-025 StageC pass={} -> {}", result["gate5_pass"], out.display());
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D025Commands::StageD { output } => {
+            let out = resolve_d025_artifact_path(&output);
+            let result = d025::run_stage_d_regression(&out)?;
+            println!("D-025 StageD pass={} -> {}", result["gate6_pass"], out.display());
             println!("{}", serde_json::to_string_pretty(&result)?);
         }
     }

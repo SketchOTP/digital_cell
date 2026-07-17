@@ -1,13 +1,18 @@
 {
   "project_directive": "D-025",
   "agent_memory_directive": "D-20260717-d025-autonomous-surface-stage-e",
-  "source_commit": "877787336d3e48220526be4b5ab11b92e5a0971d",
   "d024_provenance": "D024_PROVENANCE_SEALED",
-  "gates_completed": [
-    "gate0",
-    "gate1",
-    "gate2"
-  ],
-  "status": "IN_PROGRESS",
-  "next_gate": 3
+  "gates": {
+    "gate0": "D024_PROVENANCE_SEALED",
+    "gate1": "D025_GATE1_PASS",
+    "gate2": "D025_GATE2_PASS",
+    "gate3": "D025_GATE3_PASS",
+    "gate4": "D025_GATE4_PASS",
+    "gate5": "D025_GATE5_PASS",
+    "gate6": "D025_GATE6_PASS"
+  },
+  "gate6_pass": true,
+  "status": "GATES_0_6_PASS",
+  "next_gate": 7,
+  "primary_conclusion": null
 }
