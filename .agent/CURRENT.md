@@ -1,24 +1,25 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260718-d031r-complete-isolated-renewal
-- Project directive: D-031R / D-031
-- Goal: Seal Gate 4 isolated renewal; classify D-031 terminal without Gate 5 unless PASS
-- Status: done — `D031_TURNOVER_EXCHANGE_INCOMPATIBILITY_CONFIRMED`
-- Acceptance: Gate 4 terminal sealed; Gate 5 not started — met
-- Touched files: experiments/generated/d031/isolated_turnover/*, docs/d031_*, .agent/*, tag
-- Next action: Architect follow-on; do not Stage F; do not Gate 5 under failed Gate 4
+- ID: D-20260718-d032-activated-surface-assembly
+- Project directive: D-032
+- Goal: Activated nonequilibrium surface assembly (P+A→S+W) on v8 interfacial architecture
+- Status: in progress — Gate0 PASS; Gate2–5 pipeline running
+- Acceptance: One D032_* conclusion; Stage E recovered only if all applicable gates pass
+- Touched files: chemistry-core config/surface_density/d032_analysis/candidate_identity/simulation; tests/d032_tests; experiment-runner/d032; main.rs
+- Next action: Await Gate2 portability + candidate screen + Gate5 isolated renewal
 
 ## Repo facts needed now
-- Gate4: 206000 accepted, 0 capacity rejects, exited cleanly
-- Brief near-balance at 10k (one window Q≈1.0026) then desorption-dominated divergence
-- Late 3 windows: Q≈−10.29…−10.37, g≈−0.0226…−0.0227 (same direction)
-- Commits: `3b3d033`, `f7a3dca`; Mimir BLOCKED at close
+- V9: membrane_metabolism_v9_activated_surface_assembly; schema exchange=3, active_assembly=1
+- Frozen α≈0.167 β≈0.00334; integrator v2 unchanged
+- Gate1 unit tests: 9/9 PASS
+- Disk ~5.1–5.4G available (98%)
+- Mimir V2 MCP: BLOCKED (legacy HTTP only)
 
 ## Last validation
-- Command: sealed isolated_turnover.json (process exited; conclusion printed)
-- Result: D031_TURNOVER_EXCHANGE_INCOMPATIBILITY_CONFIRMED; Gate5 not started
+- Command: cargo test -p chemistry-core --release --test d032_tests
+- Result: 9/9 PASS; Gate0 D032_PRESERVATION_PASS
 
 ## Open blockers
-- Identified v8 reversible kinetics incompatible with sustained isolated biological renewal under invariant integration
-- D-008 remains BLOCKED_NOT_RECOVERED
+- Mimir V2 status: BLOCKED (MCP server unavailable)
+- Long Gate2–15 horizons pending

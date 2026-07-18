@@ -37,6 +37,10 @@ pub struct SurfaceAccountingTotals {
     pub exchange_net: f64,
     /// D-029 integrated exchange dissipation proxy ∑ δ m (a_f − a_r) ln(a_f/a_r) Δt ≥ 0.
     pub exchange_dissipation: f64,
+    /// D-032 active assembly extent R for P+A→S+W (≥ 0).
+    pub active_assembly: f64,
+    /// D-032 activation potential consumed by active assembly (= active_assembly for 1:1 stoichiometry).
+    pub active_assembly_activation: f64,
 }
 
 impl SurfaceAccountingTotals {
@@ -56,6 +60,9 @@ impl SurfaceAccountingTotals {
             exchange_reverse: self.exchange_reverse - baseline.exchange_reverse,
             exchange_net: self.exchange_net - baseline.exchange_net,
             exchange_dissipation: self.exchange_dissipation - baseline.exchange_dissipation,
+            active_assembly: self.active_assembly - baseline.active_assembly,
+            active_assembly_activation: self.active_assembly_activation
+                - baseline.active_assembly_activation,
         }
     }
 
@@ -73,6 +80,8 @@ impl SurfaceAccountingTotals {
         self.exchange_reverse += step.exchange_reverse;
         self.exchange_net += step.exchange_net;
         self.exchange_dissipation += step.exchange_dissipation;
+        self.active_assembly += step.active_assembly;
+        self.active_assembly_activation += step.active_assembly_activation;
     }
 }
 
@@ -127,6 +136,8 @@ impl SurfaceAccountingState {
             exchange_reverse: w.exchange_reverse / dt,
             exchange_net: w.exchange_net / dt,
             exchange_dissipation: w.exchange_dissipation / dt,
+            active_assembly: w.active_assembly / dt,
+            active_assembly_activation: w.active_assembly_activation / dt,
         }
     }
 }
@@ -340,6 +351,84 @@ pub fn exchange_mobility(catalyst: f64, params: &SimParams) -> f64 {
     params.k_exchange
         * membrane_catalyst_saturation(catalyst, params)
         * params.gamma_max.max(0.0)
+}
+
+/// Dimensionless activated activity a = A / A_reference.
+#[inline]
+pub fn activated_activity(activated: f64, a_reference: f64) -> f64 {
+    let aref = if a_reference > 0.0 { a_reference } else { 1.0 };
+    activated.max(0.0) / aref
+}
+
+/// Continuous active-assembly flux density (before ×δ):
+/// `J_active = k_active × q(C) × a × p × max(0,1−θ)`.
+#[inline]
+pub fn active_assembly_rate_j(
+    precursor: f64,
+    activated: f64,
+    catalyst: f64,
+    gamma: f64,
+    params: &SimParams,
+) -> f64 {
+    if params.k_active <= 0.0 || !params.equation_version.is_activated_surface_assembly() {
+        return 0.0;
+    }
+    let q_c = membrane_catalyst_saturation(catalyst, params);
+    let a = activated_activity(activated, params.a_reference);
+    let p = precursor_activity(precursor, params.p_reference);
+    let theta = surface_occupancy_theta(gamma, params.gamma_max);
+    params.k_active * q_c * a * p * (1.0 - theta).max(0.0)
+}
+
+/// Active-assembly basis density for rate reconstruction: `q(C) a p (1−θ)`.
+#[inline]
+pub fn active_assembly_basis_density(
+    precursor: f64,
+    activated: f64,
+    catalyst: f64,
+    gamma: f64,
+    params: &SimParams,
+) -> f64 {
+    let q_c = membrane_catalyst_saturation(catalyst, params);
+    let a = activated_activity(activated, params.a_reference);
+    let p = precursor_activity(precursor, params.p_reference);
+    let theta = surface_occupancy_theta(gamma, params.gamma_max);
+    q_c * a * p * (1.0 - theta).max(0.0)
+}
+
+/// Analytically bounded active transfer for P+A→S+W.
+///
+/// Returns `(p_next, a_next, s_next, w_delta, r)` with
+/// `r = min(δ J_active Δt, P, A, capacity)` and no post-clip.
+#[inline]
+pub fn apply_active_assembly_bounded(
+    precursor: f64,
+    activated: f64,
+    surface: f64,
+    delta: f64,
+    catalyst: f64,
+    dt: f64,
+    params: &SimParams,
+) -> (f64, f64, f64, f64, f64) {
+    if delta <= params.delta_floor || dt <= 0.0 {
+        return (precursor, activated, surface, 0.0, 0.0);
+    }
+    let gamma = surface / delta;
+    let j = active_assembly_rate_j(precursor, activated, catalyst, gamma, params);
+    let r_want = delta * j * dt;
+    let capacity = (delta * params.gamma_max.max(0.0) - surface).max(0.0);
+    let r = r_want
+        .min(precursor.max(0.0))
+        .min(activated.max(0.0))
+        .min(capacity)
+        .max(0.0);
+    (
+        precursor - r,
+        activated - r,
+        surface + r,
+        r,
+        r,
+    )
 }
 
 /// Net volumetric exchange flux density J_exchange = J_forward − J_reverse (before ×δ).
@@ -1260,12 +1349,14 @@ pub fn evolve_surface_density_with_vn(
             totals.precursor_decay_delta += dec;
         }
         // Local reaction composition (exchange + turnover) after transport / A↔P coupling.
-        // Substep order (v8 + invariant v2):
+        // Substep order (v9 + invariant v2):
         //   1) surface diffusion + optional advection
         //   2) precursor synthesis / precursor decay
         //   3) half biological S→W turnover (exact)
         //   4) full reversible P↔S exchange (backward Euler on invariant domain)
-        //   5) half biological S→W turnover (exact)
+        //   5) active P+A→S+W assembly (analytically bounded)
+        //   6) half biological S→W turnover (exact)
+        // v8 omits step 5 when k_active=0 / non-v9.
         let use_invariant = reversible
             && params.surface_exchange_integrator
                 == SurfaceExchangeIntegrator::InvariantDomainV2;
@@ -1363,6 +1454,26 @@ pub fn evolve_surface_density_with_vn(
                 }
             }
 
+            // D-032: powered P+A→S+W after passive exchange, before final Strang turnover half.
+            if params.equation_version.is_activated_surface_assembly() && params.k_active > 0.0 {
+                let a_work = activated_next[idx];
+                let (p_a, a_a, s_a, w_a, r) = apply_active_assembly_bounded(
+                    p_work,
+                    a_work,
+                    s_work,
+                    d,
+                    catalyst[idx],
+                    dt,
+                    params,
+                );
+                p_work = p_a;
+                activated_next[idx] = a_a;
+                s_work = s_a;
+                waste_next[idx] += w_a;
+                totals.active_assembly += r;
+                totals.active_assembly_activation += r;
+            }
+
             if enable_gamma_decay {
                 let (s2, dw2) = apply_turnover_exact(s_work, params.k_gamma_decay, 0.5 * dt);
                 waste_next[idx] += dw2;
@@ -1424,8 +1535,31 @@ pub fn evolve_surface_density_with_vn(
                     totals.precursor_to_surface += ads;
                 }
             }
+            if params.equation_version.is_activated_surface_assembly() && params.k_active > 0.0 {
+                let s_pre = s[idx] + ds;
+                let (p_a, a_a, s_a, w_a, r) = apply_active_assembly_bounded(
+                    precursor_next[idx],
+                    activated_next[idx],
+                    s_pre,
+                    d,
+                    catalyst[idx],
+                    dt,
+                    params,
+                );
+                precursor_next[idx] = p_a;
+                activated_next[idx] = a_a;
+                ds += s_a - s_pre;
+                waste_next[idx] += w_a;
+                totals.active_assembly += r;
+                totals.active_assembly_activation += r;
+            }
             if enable_gamma_decay {
-                let j_loss = gamma_decay_rate_j(g, params);
+                let g_now = if d > delta_floor {
+                    (s[idx] + ds) / d
+                } else {
+                    0.0
+                };
+                let j_loss = gamma_decay_rate_j(g_now, params);
                 let loss = d * j_loss * dt;
                 ds -= loss;
                 waste_next[idx] += loss;

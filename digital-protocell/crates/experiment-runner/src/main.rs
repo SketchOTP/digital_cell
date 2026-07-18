@@ -29,6 +29,7 @@ mod d028;
 mod d029;
 mod d030;
 mod d031;
+mod d032;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -187,6 +188,10 @@ enum Commands {
     D031 {
         #[command(subcommand)]
         action: D031Commands,
+    },
+    D032 {
+        #[command(subcommand)]
+        action: D032Commands,
     },
 }
 
@@ -471,6 +476,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D029 { action } => run_d029(action)?,
         Commands::D030 { action } => run_d030(action)?,
         Commands::D031 { action } => run_d031(action)?,
+        Commands::D032 { action } => run_d032(action)?,
     }
     Ok(())
 }
@@ -1800,6 +1806,28 @@ enum D031Commands {
     },
 }
 
+#[derive(Subcommand)]
+enum D032Commands {
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d032")]
+        output: PathBuf,
+    },
+    Gate0 {
+        #[arg(long, default_value = "experiments/generated/d032")]
+        output: PathBuf,
+    },
+    Gate2 {
+        #[arg(long, default_value = "experiments/generated/d032/active_basis")]
+        output: PathBuf,
+    },
+    Gate5 {
+        #[arg(long, default_value = "experiments/generated/d032/isolated_renewal")]
+        output: PathBuf,
+        #[arg(long)]
+        k_active: f64,
+    },
+}
+
 fn resolve_d027_artifact_path(path: &Path) -> PathBuf {
     if path.is_absolute() {
         return path.to_path_buf();
@@ -2076,6 +2104,63 @@ fn run_d031(action: D031Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["total_accepted"],
                 result["q_renewal"],
                 result["g_surface"],
+                out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+    }
+    Ok(())
+}
+
+fn resolve_d032_artifact_path(path: &Path) -> PathBuf {
+    if path.is_absolute() {
+        return path.to_path_buf();
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../..")
+        .join(path)
+}
+
+fn run_d032(action: D032Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D032Commands::Pipeline { output } => {
+            let out = resolve_d032_artifact_path(&output);
+            let result = d032::run_pipeline(&out)?;
+            println!(
+                "D-032 conclusion={} -> {}",
+                result["conclusion"],
+                out.join("manifest.json").display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D032Commands::Gate0 { output } => {
+            let out = resolve_d032_artifact_path(&output);
+            let result = d032::run_gate0_preservation(&out.join("preservation"))?;
+            println!(
+                "D-032 Gate0 pass={} -> {}",
+                result["pass"],
+                out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D032Commands::Gate2 { output } => {
+            let out = resolve_d032_artifact_path(&output);
+            let result = d032::run_gate2_active_basis(&out)?;
+            println!(
+                "D-032 Gate2 pass={} conclusion={} -> {}",
+                result["pass"],
+                result["conclusion"],
+                out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D032Commands::Gate5 { output, k_active } => {
+            let out = resolve_d032_artifact_path(&output);
+            let result = d032::run_gate5_isolated_renewal(&out, k_active)?;
+            println!(
+                "D-032 Gate5 pass={} conclusion={} -> {}",
+                result["pass"],
+                result["conclusion"],
                 out.display()
             );
             println!("{}", serde_json::to_string_pretty(&result)?);

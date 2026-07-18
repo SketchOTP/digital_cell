@@ -229,13 +229,15 @@ impl Simulation {
                 | EquationVersion::D003CrowdingV1
                 | EquationVersion::SurfaceTurnoverV1 => self.try_legacy_substep(attempt_dt),
                 EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly | EquationVersion::MembraneMetabolismV7SurfaceDensity | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
+                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
                     if self.params.d008_stage_b_enabled =>
                 {
                     self.try_d008_stage_b(attempt_dt)
                 }
                 EquationVersion::MembraneMetabolismV1
                 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly | EquationVersion::MembraneMetabolismV7SurfaceDensity
-            | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange => {
+            | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
+                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {
                     match self.params.d008_stage_mode {
                         D008StageMode::Transport => {
                             self.try_membrane_metabolism_v1_transport(attempt_dt)
@@ -2073,17 +2075,22 @@ impl Simulation {
                 }
             }
             if !self.d026_freeze_surface {
-                react_a += -totals.precursor_synthesis_delta;
-                react_w += totals.surface_to_waste + totals.precursor_decay_delta;
+                react_a += -totals.precursor_synthesis_delta - totals.active_assembly_activation;
+                react_w += totals.surface_to_waste
+                    + totals.precursor_decay_delta
+                    + totals.active_assembly;
             }
             (
                 MembraneEvolutionTotals {
-                    synthesis_delta: totals.adsorption_delta,
+                    synthesis_delta: totals.adsorption_delta + totals.active_assembly,
                     decay_delta: totals.gamma_decay_delta,
                     detachment_delta: 0.0,
                     diffusion_delta: totals.surface_diffusion_delta + totals.advection_delta,
-                    activated_reaction_delta: -totals.precursor_synthesis_delta,
-                    waste_reaction_delta: totals.surface_to_waste + totals.precursor_decay_delta,
+                    activated_reaction_delta: -totals.precursor_synthesis_delta
+                        - totals.active_assembly_activation,
+                    waste_reaction_delta: totals.surface_to_waste
+                        + totals.precursor_decay_delta
+                        + totals.active_assembly,
                 },
                 Some(pending_surface_totals),
             )
@@ -2551,7 +2558,8 @@ impl Simulation {
             }
             EquationVersion::MembraneMetabolismV6PrecursorAssembly
             | EquationVersion::MembraneMetabolismV7SurfaceDensity
-            | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange => {
+            | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
+                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {
                 for v in &self.fields.activated {
                     v.to_bits().hash(&mut hasher);
                 }
@@ -2585,7 +2593,8 @@ impl Simulation {
             }
             EquationVersion::MembraneMetabolismV6PrecursorAssembly
             | EquationVersion::MembraneMetabolismV7SurfaceDensity
-            | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange => {
+            | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
+                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {
                 append_field_bits(&mut bytes, &self.fields.activated);
                 append_field_bits(&mut bytes, &self.fields.membrane);
                 append_field_bits(&mut bytes, &self.fields.precursor);

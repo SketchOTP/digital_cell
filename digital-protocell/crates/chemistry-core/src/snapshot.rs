@@ -218,7 +218,8 @@ impl FieldSnapshot {
                 FieldSchemaVersion::EightFieldV1
             }
             EquationVersion::MembraneMetabolismV7SurfaceDensity
-            | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange => {
+            | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
+                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {
                 FieldSchemaVersion::SurfaceDensityV1
             }
             EquationVersion::MembraneMetabolismV1
@@ -451,7 +452,8 @@ impl FieldSnapshot {
                 FieldSchemaVersion::SurfaceDensityV1,
                 SnapshotFields::SurfaceDensity(_),
                 EquationVersion::MembraneMetabolismV7SurfaceDensity
-                    | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange,
+                    | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
+                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly,
             ) => Ok(()),
             // Eight-field payload requires v6; surface-density payload requires v7/v8.
             (FieldSchemaVersion::EightFieldV1, _, v) if !v.is_precursor_assembly() => Err(format!(
@@ -472,7 +474,8 @@ impl FieldSnapshot {
             (FieldSchemaVersion::SevenFieldV1, _, EquationVersion::MembraneMetabolismV7SurfaceDensity) => {
                 Err("seven_field_v1 snapshot cannot resume as membrane_metabolism_v7_surface_density".to_string())
             }
-            (FieldSchemaVersion::SevenFieldV1, _, EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange) => {
+            (FieldSchemaVersion::SevenFieldV1, _, EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
+                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly) => {
                 Err("seven_field_v1 snapshot cannot resume as membrane_metabolism_v8_reversible_surface_exchange".to_string())
             }
             (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV6PrecursorAssembly) => {
@@ -481,13 +484,15 @@ impl FieldSnapshot {
             (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV7SurfaceDensity) => {
                 Err("five_field_v1 snapshot is incompatible with membrane_metabolism_v7_surface_density".to_string())
             }
-            (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange) => {
+            (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
+                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly) => {
                 Err("five_field_v1 snapshot is incompatible with membrane_metabolism_v8_reversible_surface_exchange".to_string())
             }
             (FieldSchemaVersion::EightFieldV1, _, EquationVersion::MembraneMetabolismV7SurfaceDensity) => {
                 Err("eight_field_v1 snapshot cannot resume as membrane_metabolism_v7_surface_density".to_string())
             }
-            (FieldSchemaVersion::EightFieldV1, _, EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange) => {
+            (FieldSchemaVersion::EightFieldV1, _, EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
+                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly) => {
                 Err("eight_field_v1 snapshot cannot resume as membrane_metabolism_v8_reversible_surface_exchange".to_string())
             }
             (FieldSchemaVersion::SurfaceDensityV1, _, EquationVersion::MembraneMetabolismV6PrecursorAssembly) => {
