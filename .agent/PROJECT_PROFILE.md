@@ -31,3 +31,11 @@ A self-maintaining digital protocell that develops into a persistent, embodied i
 ## Common commands
 - Index (when code exists): `ccc init` once, then `ccc index` from repo root
 - Tests / build / CLI: not configured yet
+
+<!-- MIMIR_PROJECT_BINDING_START -->
+## Mimir binding
+- Mimir project ID: 7bff443192353517
+- Project name: digital_cell
+- On every machine, call mimir_project_resolve with this ID and that machine's workspace path.
+- Register only when this binding is absent; never create a host path or map a drive.
+<!-- MIMIR_PROJECT_BINDING_END -->

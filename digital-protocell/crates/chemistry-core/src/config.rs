@@ -247,6 +247,26 @@ impl EquationVersion {
     }
 }
 
+/// Numerical integrator for local reversible P↔S exchange (equation law unchanged).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum SurfaceExchangeIntegrator {
+    /// D-029/D-030 explicit Euler (can overshoot capacity).
+    ExplicitEulerV1,
+    /// D-031 invariant-domain backward Euler + Strang turnover.
+    #[default]
+    InvariantDomainV2,
+}
+
+impl SurfaceExchangeIntegrator {
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::ExplicitEulerV1 => "surface_exchange_integrator_v1_explicit_euler",
+            Self::InvariantDomainV2 => "surface_exchange_integrator_v2_invariant_domain",
+        }
+    }
+}
+
 impl fmt::Display for EquationVersion {
     fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
         formatter.write_str(self.as_str())
@@ -495,6 +515,9 @@ pub struct SimParams {
     /// D-025 minimum |∇φ| for valid interface-band velocity (weak-gradient exclusion).
     #[serde(default = "default_interface_grad_min")]
     pub interface_grad_min: f64,
+    /// D-031 local reversible-exchange numerical integrator (law unchanged).
+    #[serde(default)]
+    pub surface_exchange_integrator: SurfaceExchangeIntegrator,
 }
 
 /// Validate governed v2 yields: 0 < η ≤ 1.
@@ -786,6 +809,7 @@ impl Default for SimParams {
             delta_face_eps: default_delta_face_eps(),
             eta_v: default_eta_v(),
             interface_grad_min: default_interface_grad_min(),
+            surface_exchange_integrator: SurfaceExchangeIntegrator::InvariantDomainV2,
         }
     }
 }

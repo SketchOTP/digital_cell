@@ -28,6 +28,7 @@ mod d027;
 mod d028;
 mod d029;
 mod d030;
+mod d031;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -182,6 +183,10 @@ enum Commands {
     D030 {
         #[command(subcommand)]
         action: D030Commands,
+    },
+    D031 {
+        #[command(subcommand)]
+        action: D031Commands,
     },
 }
 
@@ -465,6 +470,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D028 { action } => run_d028(action)?,
         Commands::D029 { action } => run_d029(action)?,
         Commands::D030 { action } => run_d030(action)?,
+        Commands::D031 { action } => run_d031(action)?,
     }
     Ok(())
 }
@@ -1773,6 +1779,27 @@ enum D030Commands {
     },
 }
 
+#[derive(Subcommand)]
+enum D031Commands {
+    /// Gate 0/3/4 invariant-domain exchange pipeline (stop on first fail).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d031")]
+        output: PathBuf,
+    },
+    Gate0 {
+        #[arg(long, default_value = "experiments/generated/d031")]
+        output: PathBuf,
+    },
+    Gate4 {
+        #[arg(long, default_value = "experiments/generated/d031/isolated_turnover")]
+        output: PathBuf,
+    },
+    Gate4Diag {
+        #[arg(long, default_value = "experiments/generated/d031/isolated_turnover")]
+        output: PathBuf,
+    },
+}
+
 fn resolve_d027_artifact_path(path: &Path) -> PathBuf {
     if path.is_absolute() {
         return path.to_path_buf();
@@ -1987,6 +2014,68 @@ fn run_d030(action: D030Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-030 Gate0 pass={} conclusion={} -> {}",
                 result["pass"],
                 result["conclusion"],
+                out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+    }
+    Ok(())
+}
+
+fn resolve_d031_artifact_path(path: &Path) -> PathBuf {
+    if path.is_absolute() {
+        return path.to_path_buf();
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../..")
+        .join(path)
+}
+
+fn run_d031(action: D031Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D031Commands::Pipeline { output } => {
+            let out = resolve_d031_artifact_path(&output);
+            let result = d031::run_pipeline(&out)?;
+            println!(
+                "D-031 conclusion={} -> {}",
+                result["conclusion"],
+                out.join("manifest.json").display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D031Commands::Gate0 { output } => {
+            let out = resolve_d031_artifact_path(&output);
+            let p = d031::run_gate0_preservation(&out.join("preservation"))?;
+            let c = d031::run_gate0_capacity_failure(&out.join("capacity_failure"))?;
+            println!(
+                "D-031 Gate0 class={} -> {}",
+                c["capacity_failure"]["classification"],
+                out.display()
+            );
+            println!(
+                "{}",
+                serde_json::to_string_pretty(&serde_json::json!({"preservation": p, "capacity": c}))?
+            );
+        }
+        D031Commands::Gate4 { output } => {
+            let out = resolve_d031_artifact_path(&output);
+            let result = d031::run_gate4_isolated_turnover(&out)?;
+            println!(
+                "D-031 Gate4 pass={} conclusion={} -> {}",
+                result["pass"],
+                result["conclusion"],
+                out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D031Commands::Gate4Diag { output } => {
+            let out = resolve_d031_artifact_path(&output);
+            let result = d031::run_gate4_short_diagnostic(&out)?;
+            println!(
+                "D-031 Gate4Diag accepted={} q={} g={} -> {}",
+                result["total_accepted"],
+                result["q_renewal"],
+                result["g_surface"],
                 out.display()
             );
             println!("{}", serde_json::to_string_pretty(&result)?);

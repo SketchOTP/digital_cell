@@ -1,24 +1,26 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260718-d030-orthogonal-reversible-exchange-identification
-- Project directive: D-030
-- Goal: Orthogonal transient ID of v8 reversible P↔S exchange (α,β); recover Stage E without replacing architecture
-- Status: done — `D030_TURNOVER_EXCHANGE_INCOMPATIBILITY`
-- Acceptance: One D030_* conclusion; stop at first failed gate — met (Gate 7)
-- Touched files: chemistry-core d030_analysis/tests, experiment-runner/d030, experiments/generated/d030, docs/d030_*, docs/d029_*, .agent/*
-- Next action: Architect follow-on; do not Stage F; do not reject v8 solely from Gate 7; do not productive-rate-only repair
+- ID: D-20260718-d031-invariant-domain-surface-exchange
+- Project directive: D-031
+- Goal: Replace explicit v8 exchange integration with invariant-domain BE + Strang turnover; resume D-030 Gate 7; classify numerical vs biological failure
+- Status: in_progress
+- Acceptance: One D031_* conclusion; Gates 0–13 per directive; α/β/K/k frozen; no Stage F until Stage E recovered
+- Touched files: surface_density.rs, config.rs, d031_analysis/tests, experiment-runner/d031, experiments/generated/d031, docs, .agent/*
+- Next action: Gate 0 reproduce CapacityExceeded; implement v2 integrator; unit gates then renewal
 
 ## Repo facts needed now
-- Gates 0–6 PASS (orthogonal α/β identifiable; mixed+equilibrium OK)
-- Gate 7 FAIL: CapacityExceeded after long isolated burn; accepted_in_window=0
-- D-029 operative reinterpretation recorded; historical conclusion/tag unchanged
-- Mimir V2: BLOCKED (Windows path mapping on project_register)
+- D-030 result commit `921bd42`, tag `D-030-exchange-identification-fail`
+- Identified: α≈0.167, β≈0.00334, k≈0.00334, K≈50
+- Gate7: CapacityExceeded, accepted_in_window=0 → operative `D030_NUMERICAL_CAPACITY_INTEGRATION_FAILURE`
+- Equation unchanged: `membrane_metabolism_v8_reversible_surface_exchange`
+- Integrator schema only: `surface_exchange_integrator_v2_invariant_domain`
+- Disk ~6.3 GiB free — keep artifacts compact
+- Mimir task: ed5bca889bd54b1aab4e9131344adb4f version 1
 
 ## Last validation
-- Command: cargo test -p chemistry-core --release --test d030_tests; experiment-runner d030 pipeline
-- Result: 11/11 PASS; Gate7 D030_TURNOVER_EXCHANGE_INCOMPATIBILITY
+- Command: (pending)
+- Result: (pending)
 
 ## Open blockers
-- Identified reversible kinetics not compatible with sustained isolated biological renewal
-- D-008 remains BLOCKED_NOT_RECOVERED
+- None yet; Gate 0 classification required before biology judgment

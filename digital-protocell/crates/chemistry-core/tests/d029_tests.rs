@@ -336,7 +336,10 @@ fn positivity_and_capacity_rejection() {
 
 #[test]
 fn atomic_reject_on_oversized_transfer() {
-    let params = v8_params(1000.0, 10.0);
+    // Historical V1 explicit Euler rejects oversized proposals; V2 keeps them bounded.
+    let mut params = v8_params(1000.0, 10.0);
+    params.surface_exchange_integrator =
+        chemistry_core::config::SurfaceExchangeIntegrator::ExplicitEulerV1;
     let (
         grid,
         phi,

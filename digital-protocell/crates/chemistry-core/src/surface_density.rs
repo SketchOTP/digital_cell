@@ -4,7 +4,7 @@
 //! Reconstructed: `Γ = S / max(δ, δ_floor)` inside the diffuse interface band.
 //! Geometry: `H(φ) = φ²(3−2φ)`, `δ = |∇H(φ)|`, `n = ∇φ / |∇φ|_η`, `T = I − n⊗n`.
 
-use crate::config::{SimParams, DX};
+use crate::config::{SimParams, SurfaceExchangeIntegrator, DX};
 use crate::fields::interior_weight;
 use crate::grid::Grid;
 use crate::membrane::{membrane_catalyst_saturation, precursor_decay_rate, precursor_synthesis_rate};
@@ -446,6 +446,370 @@ pub fn validate_exchange_cell(
         }
     }
     Ok(())
+}
+
+/// D-031 integrator schema identity (v2 invariant domain).
+pub const SURFACE_EXCHANGE_INTEGRATOR_V2: &str = "surface_exchange_integrator_v2_invariant_domain";
+
+/// Floor below which local surface capacity disables exchange for the substep.
+pub const SURFACE_CAPACITY_FLOOR: f64 = 1e-18;
+
+/// Root tolerance for invariant-domain exchange solve (tighter than material accounting).
+pub const INVARIANT_EXCHANGE_SOLVER_TOL: f64 = 1e-14;
+
+/// Max bisection iterations before declaring a local solve failure.
+pub const INVARIANT_EXCHANGE_MAX_ITERS: u32 = 48;
+
+/// Diagnostics from one local invariant-domain exchange solve.
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
+pub struct InvariantExchangeSolveInfo {
+    pub iterations: u32,
+    pub bracket_lo: f64,
+    pub bracket_hi: f64,
+    pub s_next: f64,
+    pub p_next: f64,
+    pub residual: f64,
+    pub used_newton: bool,
+}
+
+/// Scalar exchange RHS F(S) with frozen δ, q(C), T, C_surface, kinetics.
+///
+/// Matches: `dS/dt = δ · k · q · Γ_max · (K p (1−θ) − θ)` with
+/// `p = (T−S)/P_ref`, `θ = S/C_surface`, `C_surface = δ Γ_max`.
+#[inline]
+pub fn exchange_scalar_f(
+    s: f64,
+    t_inventory: f64,
+    c_surface: f64,
+    delta: f64,
+    q_c: f64,
+    k_exchange: f64,
+    k_eq: f64,
+    p_reference: f64,
+    gamma_max: f64,
+) -> f64 {
+    if c_surface <= SURFACE_CAPACITY_FLOOR || delta <= 0.0 {
+        return 0.0;
+    }
+    let pref = if p_reference > 0.0 { p_reference } else { 1.0 };
+    let p = ((t_inventory - s) / pref).max(0.0);
+    let theta = (s / c_surface).clamp(0.0, 1.0);
+    let j = k_exchange * q_c * gamma_max.max(0.0) * (k_eq * p * (1.0 - theta) - theta);
+    delta * j
+}
+
+/// Continuous exchange time-derivative of S at (P, S) with frozen δ and q(C).
+#[inline]
+pub fn exchange_ds_dt(
+    precursor: f64,
+    surface: f64,
+    delta: f64,
+    q_c: f64,
+    params: &SimParams,
+) -> f64 {
+    let c_surface = delta * params.gamma_max.max(0.0);
+    let t_inv = precursor.max(0.0) + surface.max(0.0);
+    exchange_scalar_f(
+        surface,
+        t_inv,
+        c_surface,
+        delta,
+        q_c,
+        params.k_exchange,
+        params.k_exchange_eq,
+        params.p_reference,
+        params.gamma_max,
+    )
+}
+
+/// Exact positive biological turnover: S_after = S_before × exp(−λ_Γ dt).
+#[inline]
+pub fn apply_turnover_exact(s_before: f64, lambda_gamma: f64, dt: f64) -> (f64, f64) {
+    if !(s_before > 0.0) || !(dt > 0.0) || !(lambda_gamma > 0.0) {
+        return (s_before.max(0.0), 0.0);
+    }
+    let s_after = s_before * (-lambda_gamma * dt).exp();
+    let dw = s_before - s_after;
+    (s_after.max(0.0), dw.max(0.0))
+}
+
+/// Backward-Euler exchange on `[0, min(T, C_surface)]` via safeguarded bisection.
+pub fn solve_exchange_backward_euler(
+    s_old: f64,
+    t_inventory: f64,
+    c_surface: f64,
+    delta: f64,
+    q_c: f64,
+    k_exchange: f64,
+    k_eq: f64,
+    p_reference: f64,
+    gamma_max: f64,
+    dt: f64,
+) -> Result<InvariantExchangeSolveInfo, ExchangeReject> {
+    if !t_inventory.is_finite()
+        || !s_old.is_finite()
+        || !dt.is_finite()
+        || dt < 0.0
+        || !c_surface.is_finite()
+    {
+        return Err(ExchangeReject::NonfiniteFlux);
+    }
+    if c_surface <= SURFACE_CAPACITY_FLOOR {
+        let s_next = s_old.clamp(0.0, t_inventory.max(0.0));
+        return Ok(InvariantExchangeSolveInfo {
+            iterations: 0,
+            bracket_lo: 0.0,
+            bracket_hi: 0.0,
+            s_next,
+            p_next: (t_inventory - s_next).max(0.0),
+            residual: 0.0,
+            used_newton: false,
+        });
+    }
+    let hi = t_inventory.min(c_surface).max(0.0);
+    let lo = 0.0;
+    if hi <= lo {
+        return Ok(InvariantExchangeSolveInfo {
+            iterations: 0,
+            bracket_lo: lo,
+            bracket_hi: hi,
+            s_next: 0.0,
+            p_next: t_inventory.max(0.0),
+            residual: 0.0,
+            used_newton: false,
+        });
+    }
+    let g = |s: f64| {
+        s - s_old
+            - dt
+                * exchange_scalar_f(
+                    s,
+                    t_inventory,
+                    c_surface,
+                    delta,
+                    q_c,
+                    k_exchange,
+                    k_eq,
+                    p_reference,
+                    gamma_max,
+                )
+    };
+    let mut a = lo;
+    let mut b = hi;
+    let mut ga = g(a);
+    let gb0 = g(b);
+    if ga > 0.0 && gb0 > 0.0 {
+        return Ok(InvariantExchangeSolveInfo {
+            iterations: 0,
+            bracket_lo: a,
+            bracket_hi: b,
+            s_next: lo,
+            p_next: (t_inventory - lo).max(0.0),
+            residual: ga.abs(),
+            used_newton: false,
+        });
+    }
+    if ga < 0.0 && gb0 < 0.0 {
+        return Ok(InvariantExchangeSolveInfo {
+            iterations: 0,
+            bracket_lo: a,
+            bracket_hi: b,
+            s_next: hi,
+            p_next: (t_inventory - hi).max(0.0),
+            residual: gb0.abs(),
+            used_newton: false,
+        });
+    }
+    let mut gb = gb0;
+    let mut used_newton = false;
+    let mut x = 0.5 * (a + b);
+    let mut iters = 0u32;
+    for _ in 0..INVARIANT_EXCHANGE_MAX_ITERS {
+        iters += 1;
+        let gx = g(x);
+        if gx.abs() <= INVARIANT_EXCHANGE_SOLVER_TOL
+            || (b - a) <= INVARIANT_EXCHANGE_SOLVER_TOL * (1.0 + hi)
+        {
+            let s_next = x.clamp(lo, hi);
+            let p_next = t_inventory - s_next;
+            if p_next < -EXCHANGE_BOUND_TOLERANCE {
+                return Err(ExchangeReject::NegPrecursor);
+            }
+            if s_next < -EXCHANGE_BOUND_TOLERANCE {
+                return Err(ExchangeReject::NegSurface);
+            }
+            return Ok(InvariantExchangeSolveInfo {
+                iterations: iters,
+                bracket_lo: a,
+                bracket_hi: b,
+                s_next: s_next.max(0.0),
+                p_next: p_next.max(0.0),
+                residual: gx.abs(),
+                used_newton,
+            });
+        }
+        let eps = (1e-10_f64).max(1e-8 * hi);
+        let s_hi = (x + eps).min(hi);
+        let s_lo = (x - eps).max(lo);
+        let denom = (s_hi - s_lo).max(eps);
+        let df = (exchange_scalar_f(
+            s_hi,
+            t_inventory,
+            c_surface,
+            delta,
+            q_c,
+            k_exchange,
+            k_eq,
+            p_reference,
+            gamma_max,
+        ) - exchange_scalar_f(
+            s_lo,
+            t_inventory,
+            c_surface,
+            delta,
+            q_c,
+            k_exchange,
+            k_eq,
+            p_reference,
+            gamma_max,
+        )) / denom;
+        let dg = 1.0 - dt * df;
+        if dg.abs() > 1e-30 {
+            let x_n = x - gx / dg;
+            if x_n >= a && x_n <= b && x_n.is_finite() {
+                x = x_n;
+                used_newton = true;
+                let gx_n = g(x);
+                if ga.signum() != gx_n.signum() && !(ga == 0.0 && gx_n == 0.0) {
+                    b = x;
+                    gb = gx_n;
+                } else {
+                    a = x;
+                    ga = gx_n;
+                }
+                continue;
+            }
+        }
+        if ga.signum() != gx.signum() && !(ga == 0.0 && gx == 0.0) {
+            b = x;
+            gb = gx;
+        } else {
+            a = x;
+            ga = gx;
+        }
+        let _ = gb;
+        x = 0.5 * (a + b);
+    }
+    Err(ExchangeReject::NonfiniteFlux)
+}
+
+/// Propose an explicit Euler exchange update (Gate 0 / V1). No clipping.
+#[inline]
+pub fn propose_explicit_exchange(
+    precursor: f64,
+    surface: f64,
+    delta: f64,
+    catalyst: f64,
+    dt: f64,
+    params: &SimParams,
+) -> (f64, f64, f64, f64, f64, f64) {
+    let g = if delta > params.delta_floor {
+        surface / delta
+    } else {
+        0.0
+    };
+    let (j_net, j_fwd, j_rev, a_fwd, a_rev) = exchange_rate_j(precursor, catalyst, g, params);
+    let xfer = delta * j_net * dt;
+    (
+        precursor - xfer,
+        surface + xfer,
+        xfer,
+        j_fwd,
+        j_rev,
+        exchange_affinity(a_fwd, a_rev),
+    )
+}
+
+/// Gate 0 continuous invariant signs at physical boundaries.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct InvariantBoundarySigns {
+    pub dp_at_p0: f64,
+    pub ds_at_s0: f64,
+    pub ds_at_theta1: f64,
+    pub dp_prefailure: f64,
+    pub ds_prefailure: f64,
+    pub continuous_inward: bool,
+}
+
+/// Evaluate continuous exchange vector-field signs for invariant classification.
+pub fn classify_exchange_invariant_field(
+    p: f64,
+    s: f64,
+    delta: f64,
+    q_c: f64,
+    params: &SimParams,
+) -> InvariantBoundarySigns {
+    let c_surface = delta * params.gamma_max.max(0.0);
+    let t = p.max(0.0) + s.max(0.0);
+    let ds_p0 = exchange_scalar_f(
+        s.min(c_surface),
+        s.min(c_surface),
+        c_surface,
+        delta,
+        q_c,
+        params.k_exchange,
+        params.k_exchange_eq,
+        params.p_reference,
+        params.gamma_max,
+    );
+    let dp_at_p0 = -ds_p0;
+    let ds_at_s0 = exchange_scalar_f(
+        0.0,
+        t,
+        c_surface,
+        delta,
+        q_c,
+        params.k_exchange,
+        params.k_exchange_eq,
+        params.p_reference,
+        params.gamma_max,
+    );
+    let s_cap = c_surface.min(t.max(c_surface));
+    let ds_at_theta1 = exchange_scalar_f(
+        c_surface.min(t.max(0.0)).max(0.0),
+        t.max(c_surface),
+        c_surface,
+        delta,
+        q_c,
+        params.k_exchange,
+        params.k_exchange_eq,
+        params.p_reference,
+        params.gamma_max,
+    );
+    let _ = s_cap;
+    let ds_pre = exchange_ds_dt(p, s, delta, q_c, params);
+    let dp_pre = -ds_pre;
+    let theta = if c_surface > 0.0 { s / c_surface } else { 0.0 };
+    let continuous_inward = dp_at_p0 >= -1e-14
+        && ds_at_s0 >= -1e-14
+        && ds_at_theta1 <= 1e-14
+        && if theta >= 1.0 - 1e-9 {
+            ds_pre <= 1e-14
+        } else if p <= 1e-14 {
+            dp_pre >= -1e-14
+        } else if s <= 1e-14 {
+            ds_pre >= -1e-14
+        } else {
+            true
+        };
+    InvariantBoundarySigns {
+        dp_at_p0,
+        ds_at_s0,
+        ds_at_theta1,
+        dp_prefailure: dp_pre,
+        ds_prefailure: ds_pre,
+        continuous_inward,
+    }
 }
 
 /// Surface loss volumetric rate density J_loss (before multiplying by δ).
@@ -895,65 +1259,192 @@ pub fn evolve_surface_density_with_vn(
             waste_next[idx] += dec;
             totals.precursor_decay_delta += dec;
         }
-        if enable_adsorption {
-            if reversible {
-                let (j_net, j_fwd, j_rev, a_fwd, a_rev) =
-                    exchange_rate_j(precursor[idx], catalyst[idx], g, params);
-                let xfer = d * j_net * dt;
-                let fwd_ext = d * j_fwd * dt;
-                let rev_ext = d * j_rev * dt;
-                let m = exchange_mobility(catalyst[idx], params);
-                let diss = d * exchange_dissipation_density(a_fwd, a_rev, m) * dt;
-                let p_trial = precursor_next[idx] - xfer;
-                let s_trial = s[idx] + ds + xfer;
-                validate_exchange_cell(
-                    p_trial,
-                    s_trial,
+        // Local reaction composition (exchange + turnover) after transport / A↔P coupling.
+        // Substep order (v8 + invariant v2):
+        //   1) surface diffusion + optional advection
+        //   2) precursor synthesis / precursor decay
+        //   3) half biological S→W turnover (exact)
+        //   4) full reversible P↔S exchange (backward Euler on invariant domain)
+        //   5) half biological S→W turnover (exact)
+        let use_invariant = reversible
+            && params.surface_exchange_integrator
+                == SurfaceExchangeIntegrator::InvariantDomainV2;
+
+        if use_invariant {
+            let mut s_work = s[idx] + ds;
+            let mut p_work = precursor_next[idx];
+            // Off-interface: transport already applied; skip local reaction.
+            if d <= delta_floor {
+                precursor_next[idx] = p_work;
+                s_next[idx] = s_work;
+                continue;
+            }
+            let q_c = membrane_catalyst_saturation(catalyst[idx], params);
+            let c_surface = d * params.gamma_max.max(0.0);
+
+            if enable_gamma_decay {
+                let (s1, dw1) = apply_turnover_exact(s_work, params.k_gamma_decay, 0.5 * dt);
+                waste_next[idx] += dw1;
+                totals.gamma_decay_delta += dw1;
+                totals.surface_to_waste += dw1;
+                s_work = s1;
+            }
+
+            if enable_adsorption && params.k_exchange > 0.0 && params.gamma_max > 0.0 {
+                // Fast path: if explicit Euler proposal already lies in the invariant
+                // domain, accept it (matches V1 for mild steps; avoids BE).
+                let g_pre = s_work / d;
+                let (j_net0, j_fwd0, j_rev0, a_fwd, a_rev) =
+                    exchange_rate_j(p_work, catalyst[idx], g_pre, params);
+                let xfer_e = d * j_net0 * dt;
+                let p_e = p_work - xfer_e;
+                let s_e = s_work + xfer_e;
+                let mild_ok = validate_exchange_cell(
+                    p_e,
+                    s_e,
                     d,
                     params.gamma_max,
                     delta_floor,
-                    a_fwd,
-                    a_rev,
-                    j_net,
-                )?;
-                ds += xfer;
-                precursor_next[idx] = p_trial;
-                totals.adsorption_delta += xfer;
-                totals.precursor_to_surface += xfer;
-                totals.exchange_forward += fwd_ext;
-                totals.exchange_reverse += rev_ext;
-                totals.exchange_net += xfer;
-                totals.exchange_dissipation += diss;
-            } else {
-                let j_ads = adsorption_rate_j(precursor[idx], catalyst[idx], g, params);
-                let ads = d * j_ads * dt;
-                ds += ads;
-                precursor_next[idx] -= ads;
-                totals.adsorption_delta += ads;
-                totals.precursor_to_surface += ads;
+                    1.0,
+                    1.0,
+                    0.0,
+                )
+                .is_ok();
+                let m = exchange_mobility(catalyst[idx], params);
+                let diss = d * exchange_dissipation_density(a_fwd, a_rev, m) * dt;
+                if mild_ok {
+                    p_work = p_e.max(0.0);
+                    s_work = s_e.max(0.0);
+                    totals.adsorption_delta += xfer_e;
+                    totals.precursor_to_surface += xfer_e;
+                    totals.exchange_forward += (d * j_fwd0 * dt).max(0.0);
+                    totals.exchange_reverse += (d * j_rev0 * dt).max(0.0);
+                    totals.exchange_net += xfer_e;
+                    totals.exchange_dissipation += diss.max(0.0);
+                } else {
+                    let t_inv = p_work.max(0.0) + s_work.max(0.0);
+                    let solved = solve_exchange_backward_euler(
+                        s_work,
+                        t_inv,
+                        c_surface,
+                        d,
+                        q_c,
+                        params.k_exchange,
+                        params.k_exchange_eq,
+                        params.p_reference,
+                        params.gamma_max,
+                        dt,
+                    )?;
+                    let s_ex = solved.s_next;
+                    let p_ex = solved.p_next;
+                    let xfer = s_ex - s_work;
+                    if (p_ex + s_ex - t_inv).abs() > 1e-12 {
+                        return Err(ExchangeReject::NonfiniteFlux);
+                    }
+                    validate_exchange_cell(
+                        p_ex,
+                        s_ex,
+                        d,
+                        params.gamma_max,
+                        delta_floor,
+                        1.0,
+                        1.0,
+                        0.0,
+                    )?;
+                    p_work = p_ex;
+                    s_work = s_ex;
+                    totals.adsorption_delta += xfer;
+                    totals.precursor_to_surface += xfer;
+                    totals.exchange_forward += (d * j_fwd0 * dt).max(0.0);
+                    totals.exchange_reverse += (d * j_rev0 * dt).max(0.0);
+                    totals.exchange_net += xfer;
+                    totals.exchange_dissipation += diss.max(0.0);
+                    let _ = j_net0;
+                }
             }
-        }
-        if enable_gamma_decay {
-            let j_loss = gamma_decay_rate_j(g, params);
-            let loss = d * j_loss * dt;
-            ds -= loss;
-            waste_next[idx] += loss;
-            totals.gamma_decay_delta += loss;
-            totals.surface_to_waste += loss;
-        }
-        s_next[idx] = s[idx] + ds;
-        if reversible && enable_adsorption {
-            // Final capacity/positivity after turnover (still no clip — reject).
-            validate_exchange_cell(
-                precursor_next[idx],
-                s_next[idx],
-                d,
-                params.gamma_max,
-                delta_floor,
-                1.0,
-                1.0,
-                0.0,
-            )?;
+
+            if enable_gamma_decay {
+                let (s2, dw2) = apply_turnover_exact(s_work, params.k_gamma_decay, 0.5 * dt);
+                waste_next[idx] += dw2;
+                totals.gamma_decay_delta += dw2;
+                totals.surface_to_waste += dw2;
+                s_work = s2;
+            }
+
+            precursor_next[idx] = p_work;
+            s_next[idx] = s_work;
+            if enable_adsorption {
+                validate_exchange_cell(
+                    precursor_next[idx],
+                    s_next[idx],
+                    d,
+                    params.gamma_max,
+                    delta_floor,
+                    1.0,
+                    1.0,
+                    0.0,
+                )?;
+            }
+        } else {
+            if enable_adsorption {
+                if reversible {
+                    let (j_net, j_fwd, j_rev, a_fwd, a_rev) =
+                        exchange_rate_j(precursor[idx], catalyst[idx], g, params);
+                    let xfer = d * j_net * dt;
+                    let fwd_ext = d * j_fwd * dt;
+                    let rev_ext = d * j_rev * dt;
+                    let m = exchange_mobility(catalyst[idx], params);
+                    let diss = d * exchange_dissipation_density(a_fwd, a_rev, m) * dt;
+                    let p_trial = precursor_next[idx] - xfer;
+                    let s_trial = s[idx] + ds + xfer;
+                    validate_exchange_cell(
+                        p_trial,
+                        s_trial,
+                        d,
+                        params.gamma_max,
+                        delta_floor,
+                        a_fwd,
+                        a_rev,
+                        j_net,
+                    )?;
+                    ds += xfer;
+                    precursor_next[idx] = p_trial;
+                    totals.adsorption_delta += xfer;
+                    totals.precursor_to_surface += xfer;
+                    totals.exchange_forward += fwd_ext;
+                    totals.exchange_reverse += rev_ext;
+                    totals.exchange_net += xfer;
+                    totals.exchange_dissipation += diss;
+                } else {
+                    let j_ads = adsorption_rate_j(precursor[idx], catalyst[idx], g, params);
+                    let ads = d * j_ads * dt;
+                    ds += ads;
+                    precursor_next[idx] -= ads;
+                    totals.adsorption_delta += ads;
+                    totals.precursor_to_surface += ads;
+                }
+            }
+            if enable_gamma_decay {
+                let j_loss = gamma_decay_rate_j(g, params);
+                let loss = d * j_loss * dt;
+                ds -= loss;
+                waste_next[idx] += loss;
+                totals.gamma_decay_delta += loss;
+                totals.surface_to_waste += loss;
+            }
+            s_next[idx] = s[idx] + ds;
+            if reversible && enable_adsorption {
+                validate_exchange_cell(
+                    precursor_next[idx],
+                    s_next[idx],
+                    d,
+                    params.gamma_max,
+                    delta_floor,
+                    1.0,
+                    1.0,
+                    0.0,
+                )?;
+            }
         }
     }
     Ok(totals)
