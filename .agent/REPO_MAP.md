@@ -227,3 +227,11 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/experiments/generated/d030/` — governed artifacts
 - `docs/d030_orthogonal_reversible_exchange.md` — report
 
+
+## D-031 invariant exchange
+- `digital-protocell/crates/chemistry-core/src/surface_density.rs` — V2 BE+Strang integrator
+- `digital-protocell/crates/chemistry-core/src/d031_analysis.rs` — Gate0 capacity/overshoot classification
+- `digital-protocell/crates/chemistry-core/tests/d031_tests.rs` — unit invariant tests
+- `digital-protocell/crates/experiment-runner/src/d031.rs` — Gate0/3/4 runner
+- `docs/d031_invariant_domain_surface_exchange.md` — report
+- `digital-protocell/experiments/generated/d031/` — artifacts (gitignored)

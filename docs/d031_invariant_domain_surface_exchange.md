@@ -35,3 +35,31 @@ Historical D-030 conclusion/tag unchanged.
 3. Half biological S→W turnover (exact)
 4. Full reversible P↔S exchange (invariant-domain BE)
 5. Half biological S→W turnover (exact)
+
+
+## Gate 3 — identification regression
+
+PASS. Recovered α≈0.16698 (rel err 6e-5), β≈0.003340 (rel err 1e-5) under V2 integrator.
+
+## Gate 4 — isolated renewal (partial)
+
+Short diagnostic (`short_diagnostic.json`):
+
+| Metric | Value |
+|--------|-------|
+| accepted steps | 6020 |
+| capacity reject | false |
+| Q_renewal | ≈1.45 (outside 0.98–1.02) |
+| g_surface | ≈9e-4 (outside 1e-4) |
+| forward / reverse / turnover | all active |
+| localization | 1.0 |
+
+Earlier full-horizon probe reached ≥10_000 accepted steps with no CapacityExceeded (contrasts D-030 accepted_in_window=0).
+
+Full progressive horizons are running; biology judgment deferred until three qualifying windows or 200k accepted steps.
+
+## Interim conclusion
+
+`D031_EXPLICIT_INTEGRATION_OVERSHOOT_CONFIRMED` (Gate 0).
+
+D-030 operative: numerical capacity integration failure; turnover–exchange incompatibility **not established**.
