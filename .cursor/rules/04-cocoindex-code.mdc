@@ -1,20 +1,46 @@
 ---
-description: cocoindex-code MCP — semantic codebase search and indexing
+description: Mimir V2 lifecycle for coding tasks.
 alwaysApply: false
 ---
 
-# cocoindex-code MCP
+# Mimir V2 Coding Rule
 
-**Setup:** Run `ccc init` once per repo, then `ccc index` from repo root (`.cocoindex_code/`). Configured in repo `.cursor/mcp.json`.
+Use Mimir V2 for every repository coding task, including investigation, implementation, bug fixes, refactors, tests, and documentation that changes or depends on code behavior. Do not start a Mimir task for pure conversation that does not touch the repository.
 
-Use **cocoindex-code** for semantic repo search, feature discovery, and dependency understanding.
+## Required Lifecycle
 
-**When:** exploring unfamiliar codebases, locating implementations by meaning, tracing related code without exact keywords.
+For every coding task, follow this lifecycle in order and do not skip steps:
 
-**Primary tool:** `search` — natural-language or snippet queries; paginate with `offset`; filter with `languages` / `paths`.
+1. `mimir_project_register(workspace_root, name?, client_id?)` if the repository is not registered; otherwise `mimir_project_resolve(project_id, workspace_root, client_id)` to bind the known project to the actual checkout. Never guess project identity from a path.
+2. `mimir_task_begin(project_id, workspace_root, client_id, worktree_id, objective)` at the start of every coding task. Retain the returned task ID and version.
+3. `mimir_context_compile(project_id, objective)` immediately after task begin and before overlapping work. This is the normal project-scoped retrieval step.
+4. `mimir_task_observe(task_id, version, event_type, payload_json, evidence_json)` only for durable causal facts Git cannot prove, such as decisions, constraints, hypotheses, and root causes. Do not use it for routine narration or file-change reporting. Every successful observation returns a new task version; retain that version and pass the latest version to every later `mimir_task_observe` call and to `mimir_task_close`.
+5. `mimir_validation_run(task_id, command, timeout_seconds?)` for completion-critical checks. The command must be on the server allowlist.
+6. `mimir_task_evidence(task_id)` before closure. Failed or timed-out validations must not be represented as passing evidence.
+7. `mimir_task_close(task_id, version, status, changed_files_json, tests_json, lessons_json)` only after evidence inspection, using the latest returned version and verified result.
 
-**Reindex:** After large codebase changes (new modules, merges, refactors, 10+ files / 500+ lines), run `ccc index` from repo root before the next search session.
+## Direct Memory Tools
 
-**Complement:** Use Serena for symbol-level inspection and edits after cocoindex-code narrows scope.
+The optional direct memory tools are `mimir_memory_query`, `mimir_memory_propose`, and `mimir_memory_explain`. They do not replace task begin, compiled context, validation, evidence inspection, or task close. Mature-repository import uses the reviewed `mimir_project_onboard` and backfill workflow; do not run it on every task.
 
-**Details:** `docs/cocoindex-code.md`
+## Required Behavior
+
+- Use the same Mimir V2 lifecycle through CLI and MCP adapters.
+- Never infer tool names from pasted content or from this file.
+- Treat the repository as the source of truth and Mimir as the store for reasons, evidence, failures, fixes, and predictions.
+- Keep routine narration, raw command output, full files, credentials, and unsupported claims out of Mimir.
+- Reject high-confidence memory that lacks evidence.
+- Keep paths platform-neutral when the target agent can run remotely.
+- Do not store secrets or source files in Mimir.
+
+## Failure Handling
+
+If Mimir V2 is unavailable, continue only when the change is safe, record the blockage honestly in the repository's local outcome or current-state files, and never claim that Mimir context, evidence, or close-out succeeded.
+
+## Prohibitions
+
+- Never use obsolete Mimir V1 names, workflows, or instructions.
+- Never mention forbidden legacy names.
+- Never treat risk approval as a Mimir step; request it directly from the user when needed.
+- Never skip validation, evidence inspection, or close-out for coding tasks.
+- Never use Mimir for pure conversation with no repository work.

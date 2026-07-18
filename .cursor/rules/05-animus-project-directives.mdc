@@ -1,123 +1,132 @@
----
-
-description: Rules for executing Animus Directive project directives.
+description: Canonical rules for Animus directives with Mimir V2.
 globs:
-
-* "**/*"
-  alwaysApply: true
+  - "**/*"
+alwaysApply: true
 
 ---
 
 # Animus Project Directive Rules
 
-Animus project directives are external architect instructions.
+Animus project directives are external instructions that must be executed precisely when the active request includes a directive ID in the form `DIRECTIVE ID: D-###`.
 
-They start with:
+These rules define the required Mimir V2 lifecycle for all coding tasks and the repository-local reporting expectations for directive-driven work.
 
-```text
-DIRECTIVE ID: D-###
-```
+## Applicability
 
-This ID is the **Animus project directive ID**. It is not the same as the local `.agent/` memory directive ID.
+Apply these rules whenever the active task is repository work of any kind, including investigation, implementation, bug fixes, refactors, tests, documentation that affects code behavior, or verification.
 
-The local agent-memory directive ID uses this format:
+Do not start a Mimir task for pure conversation with no repository work.
 
-```text
-D-YYYYMMDD-HHMM-short-slug
-```
+## Canonical Mimir V2 Lifecycle
 
-Both IDs must be preserved.
+For every coding task, the following Mimir V2 flow MUST be used in order unless a step is unavailable:
 
----
+1. `mimir_project_register(workspace_root, name?, client_id?)` when the repository is not yet registered; otherwise `mimir_project_resolve(project_id, workspace_root, client_id)` to bind the known project to the actual checkout. Never guess project identity from a path.
+2. `mimir_task_begin(project_id, workspace_root, client_id, worktree_id, objective)` at the start of every coding task. Retain the returned task ID and version.
+3. `mimir_context_compile(project_id, objective)` after task begin and before overlapping work. This is the normal project-scoped retrieval step.
+4. `mimir_task_observe(task_id, version, event_type, payload_json, evidence_json)` only for durable causal facts Git cannot prove, such as decisions, constraints, hypotheses, and root causes. Do not use it for routine narration or file-change reporting. Every successful observation returns a new task version. Retain that new version and pass the latest version to every later `mimir_task_observe` call and to `mimir_task_close`.
+5. `mimir_validation_run(task_id, command, timeout_seconds?)` for completion-critical checks. The command MUST be on the server allowlist.
+6. `mimir_task_evidence(task_id)` before closure. Failed or timed-out validations MUST NOT be represented as passing evidence.
+7. `mimir_task_close(task_id, version, status, changed_files_json, tests_json, lessons_json)` only after evidence inspection, using the latest returned version and the verified result.
 
-## When This Rule Applies
+## Direct Memory Tools
 
-Apply this rule whenever the active user request or task contains:
+The optional direct memory tools are `mimir_memory_query`, `mimir_memory_propose`, and `mimir_memory_explain`.
 
-```text
-DIRECTIVE ID: D-###
-```
+They do not replace task begin, compiled context, validation, evidence inspection, or task close.
 
-If no Animus directive ID is present, follow normal repo governance and do not invent a project directive ID.
+Mature-repository import uses the separate reviewed `mimir_project_onboard` and backfill workflow. Do not run it on every task.
 
----
+## Mandatory Behavior
 
-## ID Handling
+Mimir V2 is mandatory for every coding task, including investigation, implementation, bug fixes, refactors, tests, and documentation tied to code behavior.
+
+Use the same application lifecycle through both CLI and MCP adapters.
+
+Never infer tool names from this file. The canonical Mimir V2 contract above overrides any pasted or older Mimir content.
+
+Treat the repository as the source of truth and Mimir as the store for reasons, evidence, failures, fixes, and predictions.
+
+Keep routine narration, raw command output, full files, credentials, and unsupported claims out of Mimir.
+
+Reject high-confidence memory that lacks evidence.
+
+Keep paths platform-neutral when the target agent can run remotely.
+
+## Prohibited Legacy Names
+
+Do not output or mention obsolete or unsupported Mimir V1 tool names or workflows.
+
+Risk approval is requested directly from the user. The current Mimir V2 MCP surface has no approval tool.
+
+## Failure Handling
+
+If Mimir V2 is unavailable, continue only when the change is safe.
+
+Record the blockage honestly in the repository's local outcome or current-state files.
+
+Never claim that Mimir context, evidence, or close-out succeeded when it did not.
+
+If the task is unsafe without Mimir, stop and report the blockage instead of guessing.
+
+## Directive Scope
 
 When a directive contains `DIRECTIVE ID: D-###`:
 
-* Preserve that exact project directive ID.
-* Create the normal local agent-memory ID for `.agent/DIRECTIVES.md`.
-* Record both IDs in `.agent/DIRECTIVES.md`.
-* Record both IDs in `.agent/OUTCOMES.md`.
-* Include both IDs in the final response.
+- Preserve that exact project directive ID.
+- Create and preserve the normal local agent-memory ID for `.agent/DIRECTIVES.md`.
+- Record both IDs in `.agent/DIRECTIVES.md`.
+- Record both IDs in `.agent/OUTCOMES.md`.
+- Include both IDs in the final response.
 
 Do not merge the two ID systems.
 
-Example `.agent/DIRECTIVES.md` entry:
+If no Animus directive ID is present, follow normal repository governance and do not invent a project directive ID.
 
-```md
-- D-20260707-1130-roadmap-fix | project:D-014 | status:started | scope:directive-pipeline | ask:Implement roadmap-aware auto-next behavior | accept:Auto-next prioritizes failed/partial remediation and roadmap unmet criteria | plan:trace auto-next, patch priority, run targeted tests
-```
-
-Example `.agent/OUTCOMES.md` entry:
-
-```md
-- D-20260707-1130-roadmap-fix | project:D-014 | status:done | files:packages/core/orchestrator/auto-next.ts,tests/auto-next.test.ts | tests:npm test -- auto-next.test.ts PASS | accept:met | summary:Auto-next now prioritizes repair and roadmap acceptance criteria | next:
-```
-
----
-
-## Scope
+## Scope Control
 
 Follow the active Animus directive exactly.
 
 Do not:
-
-* implement future sprint work
-* add unrelated features
-* perform broad refactors
-* change UI when directive is backend-only
-* add dependencies unless required
-* remove working behavior unless required
-* skip repair work after partial/failed prior work
-* treat suggestions as requirements unless the directive says they are required
+- implement future sprint work
+- add unrelated features
+- perform broad refactors
+- change UI when the directive is backend-only
+- add dependencies unless required
+- remove working behavior unless required
+- skip repair work after partial or failed prior work
+- treat suggestions as requirements unless the directive says they are required
 
 If the directive is broad, choose the smallest safe interpretation that satisfies the acceptance criteria.
 
 If the directive conflicts with existing repo behavior, tests, or governance rules, report the conflict instead of silently ignoring either instruction.
 
----
+## Partial or Failed Prior Work
 
-## Partial / Failed Prior Work
+If the current directive follows partial or failed prior work:
 
-If the current directive follows a partial or failed previous directive:
+- prioritize repair, diagnosis, or completion before new feature work
+- do not skip ahead to unrelated implementation
+- preserve what already works
+- clearly report what remains broken
 
-* prioritize repair, diagnosis, or completion before new feature work
-* do not skip ahead to unrelated implementation
-* preserve what already works
-* clearly report what remains broken
+## Evidence and Reporting
 
----
+Animus reviews pasted coder responses. Final responses for directive work MUST include concrete evidence.
 
-## Evidence for Animus Review
-
-Animus reviews pasted coder responses. Give it concrete evidence.
-
-Every final response for an Animus directive must include:
-
-* project directive ID
-* agent-memory directive ID
-* changed summary
-* files changed
-* tests run
-* test results
-* manual verification
-* deviations from directive
-* known issues
-* backup/savepoint if requested
-* memory/MCP outcome status
-* next suggested step, if needed
+For directive-driven work, the final response MUST include:
+- project directive ID
+- agent-memory directive ID
+- changed summary
+- files changed
+- tests run
+- test results
+- manual verification
+- deviations from directive
+- known issues
+- backup/savepoint if requested
+- memory/MCP outcome status
+- next suggested step, if needed
 
 Do not claim tests passed unless they were actually run.
 
@@ -131,9 +140,7 @@ If work failed, say `failed`.
 
 Do not hide failed tests, missing proof, skipped validation, or unresolved risks.
 
----
-
-## Backup / Savepoint Rule
+## Backup or Savepoint
 
 If the Animus directive asks for a backup, savepoint, tag, or rollback point:
 
@@ -141,17 +148,11 @@ If the Animus directive asks for a backup, savepoint, tag, or rollback point:
 2. Do not overwrite uncommitted user work.
 3. Report the exact branch or tag created.
 
-If a backup was not requested, report:
+If a backup was not requested, report `Not requested`.
 
-```text
-Not requested
-```
+## Required Final Response Format
 
----
-
-## Required Final Response for Animus Directives
-
-Use this exact structure:
+Use this exact structure for directive-driven work:
 
 ```md
 PROJECT DIRECTIVE
@@ -196,14 +197,12 @@ Next:
 - <smallest logical next step, only if needed>
 ```
 
----
-
 ## Final Response Rules
 
-* Keep it short.
-* Do not omit the project directive ID.
-* Do not omit the agent-memory directive ID.
-* Do not claim completion if acceptance was partial or not met.
-* Do not claim tests passed unless the command was run.
-* Do not suggest broad future work when a repair step is needed.
-* Do not include long explanations unless needed to explain a blocker.
+- Keep it short.
+- Do not omit the project directive ID.
+- Do not omit the agent-memory directive ID.
+- Do not claim completion if acceptance was partial or not met.
+- Do not claim tests passed unless the command was run.
+- Do not suggest broad future work when a repair step is needed.
+- Do not include long explanations unless needed to explain a blocker.
