@@ -220,3 +220,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d029.rs` — Gate 2/5/6 runner
 - `digital-protocell/experiments/generated/d029/` — governed artifacts
 - `docs/d029_reversible_surface_exchange.md` — report
+## D-030 orthogonal reversible exchange ID
+- `digital-protocell/crates/chemistry-core/src/d030_analysis.rs` — orthogonal assays, α/β estimators, fixed-inventory equilibrium
+- `digital-protocell/crates/chemistry-core/tests/d030_tests.rs` — Gate 1–6 unit suite
+- `digital-protocell/crates/experiment-runner/src/d030.rs` — Gates 0–8 pipeline + seed screen
+- `digital-protocell/experiments/generated/d030/` — governed artifacts
+- `docs/d030_orthogonal_reversible_exchange.md` — report
+

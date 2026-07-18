@@ -45,18 +45,22 @@
 At stationary surface balance the reversible law requires `L ≈ α A − β B` with α,β > 0.
 Across the six governed states, B ≫ A and turnover L does not decrease with B in the manner a positive desorption term requires.
 Weighted nonnegative least squares therefore collapses to a one-parameter (irreversible) projection with β = 0.
-The two-parameter reversible exchange law is not identifiable from these states; further dynamic / Stage E work under this law is not authorized.
+The two-parameter reversible exchange law is not identifiable from these natural balance states; further dynamic / Stage E work under this law was not authorized inside D-029.
 
-## Architecture note (out of scope for D-029)
+### Operative reinterpretation (D-030)
 
-Later work may consider energy-coupled membrane assembly, immature/mature membrane states, or a chemically powered nonequilibrium surface reaction. Do not add those inside D-029.
+`REVERSIBLE_EXCHANGE_NOT_IDENTIFIABLE_FROM_NATURAL_BALANCE_STATES`
+
+Historical conclusion and tag `D-029-reversible-exchange-fail` are unchanged.
+Record `IRREVERSIBLE_ADSORPTION_LAW_REJECTED` is preserved.
+D-030 orthogonally excites reverse exchange and measures β directly.
 
 ## Status
 
 - D-008: `BLOCKED_NOT_RECOVERED`
 - Phase 1: `PHASE1_SELF_MAINTENANCE_PARTIAL`
 - Production: `REQUIRES_REMEDIATION`
-- Next: architect directive for a different exchange / assembly architecture (not Stage F; not productive-rate-only repair)
+- Next: D-030 orthogonal transient identification (not Stage F; not productive-rate-only repair)
 
 ## Artifacts
 

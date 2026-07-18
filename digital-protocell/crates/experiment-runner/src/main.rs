@@ -27,6 +27,7 @@ mod d026;
 mod d027;
 mod d028;
 mod d029;
+mod d030;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -177,6 +178,10 @@ enum Commands {
     D029 {
         #[command(subcommand)]
         action: D029Commands,
+    },
+    D030 {
+        #[command(subcommand)]
+        action: D030Commands,
     },
 }
 
@@ -459,6 +464,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D027 { action } => run_d027(action)?,
         Commands::D028 { action } => run_d028(action)?,
         Commands::D029 { action } => run_d029(action)?,
+        Commands::D030 { action } => run_d030(action)?,
     }
     Ok(())
 }
@@ -1754,6 +1760,19 @@ enum D029Commands {
     },
 }
 
+#[derive(Subcommand)]
+enum D030Commands {
+    /// Gate 0–8 orthogonal identification pipeline (stop on first fail).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d030")]
+        output: PathBuf,
+    },
+    Gate0 {
+        #[arg(long, default_value = "experiments/generated/d030/preservation")]
+        output: PathBuf,
+    },
+}
+
 fn resolve_d027_artifact_path(path: &Path) -> PathBuf {
     if path.is_absolute() {
         return path.to_path_buf();
@@ -1929,6 +1948,43 @@ fn run_d029(action: D029Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d029::run_gate2_identification(&out)?;
             println!(
                 "D-029 Gate2 pass={} conclusion={} -> {}",
+                result["pass"],
+                result["conclusion"],
+                out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+    }
+    Ok(())
+}
+
+fn resolve_d030_artifact_path(path: &Path) -> PathBuf {
+    if path.is_absolute() {
+        return path.to_path_buf();
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../..")
+        .join(path)
+}
+
+fn run_d030(action: D030Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D030Commands::Pipeline { output } => {
+            let out = resolve_d030_artifact_path(&output);
+            let result = d030::run_pipeline(&out)?;
+            println!(
+                "D-030 conclusion={} pass={} -> {}",
+                result["conclusion"],
+                result["pass"],
+                out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D030Commands::Gate0 { output } => {
+            let out = resolve_d030_artifact_path(&output);
+            let result = d030::run_gate0_preservation(&out)?;
+            println!(
+                "D-030 Gate0 pass={} conclusion={} -> {}",
                 result["pass"],
                 result["conclusion"],
                 out.display()

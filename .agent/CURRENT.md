@@ -1,24 +1,24 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260717-d029-reversible-surface-exchange
-- Project directive: D-029
-- Goal: Conservative reversible P↔S exchange (v8); recover Stage E without controller
-- Status: done — `D029_REVERSIBLE_EXCHANGE_NOT_IDENTIFIABLE`
-- Acceptance: One D029_* conclusion; stop at first failed gate — met (Gate 2)
-- Touched files: chemistry-core v8 exchange, d029_analysis/tests/runner, experiments/generated/d029, docs/d029_*, .agent/*
-- Next action: Architect next exchange/assembly architecture; do not Stage F; do not productive-rate-only repair
+- ID: D-20260718-d030-orthogonal-reversible-exchange-identification
+- Project directive: D-030
+- Goal: Orthogonal transient ID of v8 reversible P↔S exchange (α,β); recover Stage E without replacing architecture
+- Status: done — `D030_TURNOVER_EXCHANGE_INCOMPATIBILITY`
+- Acceptance: One D030_* conclusion; stop at first failed gate — met (Gate 7)
+- Touched files: chemistry-core d030_analysis/tests, experiment-runner/d030, experiments/generated/d030, docs/d030_*, docs/d029_*, .agent/*
+- Next action: Architect follow-on; do not Stage F; do not reject v8 solely from Gate 7; do not productive-rate-only repair
 
 ## Repo facts needed now
-- Gate0 PASS; Gate1 PASS (d029_tests 11/11); Gate2 FAIL β→0 NNLS
-- α≈0.0329 β=0; rank 2; cond≈1.38e3; median rel err≈16%; max≈35.4%
-- Record: IRREVERSIBLE_ADSORPTION_LAW_REJECTED
-- Mimir: BLOCKED (Windows path mapping on project_register/resolve)
+- Gates 0–6 PASS (orthogonal α/β identifiable; mixed+equilibrium OK)
+- Gate 7 FAIL: CapacityExceeded after long isolated burn; accepted_in_window=0
+- D-029 operative reinterpretation recorded; historical conclusion/tag unchanged
+- Mimir V2: BLOCKED (Windows path mapping on project_register)
 
 ## Last validation
-- Command: cargo test -p chemistry-core --release --test d029_tests; experiment-runner d029 gate2
-- Result: 11/11 PASS; Gate2 D029_REVERSIBLE_EXCHANGE_NOT_IDENTIFIABLE
+- Command: cargo test -p chemistry-core --release --test d030_tests; experiment-runner d030 pipeline
+- Result: 11/11 PASS; Gate7 D030_TURNOVER_EXCHANGE_INCOMPATIBILITY
 
 ## Open blockers
-- Two-parameter reversible exchange not identifiable on six governed states
+- Identified reversible kinetics not compatible with sustained isolated biological renewal
 - D-008 remains BLOCKED_NOT_RECOVERED
