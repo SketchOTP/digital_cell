@@ -42,3 +42,4 @@ Append-only repo-specific lessons. Format:
 - 2026-07-17 | area:d027-checkpoint | lesson:Restored Stage E/v7 runs must copy dt_cap; default MAX_DT=0.0025 clamps checkpoint dt=0.005 and breaks rate parity | evidence:experiment-runner/src/d027.rs Gate0
 - 2026-07-17 | area:d027-adsorption | lesson:Median k_ads_required across fixed/dynamic/StageE ≈30.4× D024 k_ads; span≈1.81× portable; 1×/2× isolate Q straddles 1.0 | evidence:experiments/generated/d027/adsorption_basis/
 - 2026-07-17 | area:d028 | lesson:Isolated k_ads root ~0.04867 balances fixed-interface Q/g but fails portability on dynamic/Stage-E states (Q≫1.1) | evidence:experiments/generated/d028/portability/portability.json
+- 2026-07-18 | area:surface-exchange | lesson:Six-state L≈αA−βB NNLS for reversible exchange projects β→0 (B≫A; L not anti-correlated with B); stop as NOT_IDENTIFIABLE | evidence:experiments/generated/d029/parameter_identification/parameter_identification.json

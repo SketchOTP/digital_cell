@@ -36,6 +36,9 @@ pub const TRANSPORT_SCHEMA_VERSION_V2: u32 = 2;
 pub const PRECURSOR_SCHEMA_VERSION_V1: u32 = 1;
 /// D-024 conserved interfacial surface-density schema (S = δΓ).
 pub const SURFACE_DENSITY_SCHEMA_VERSION_V1: u32 = 1;
+/// D-029 irreversible adsorption (v7) vs reversible exchange (v8).
+pub const SURFACE_EXCHANGE_SCHEMA_VERSION_V1: u32 = 1;
+pub const SURFACE_EXCHANGE_SCHEMA_VERSION_V2: u32 = 2;
 /// D-023 field schema tag: seven current + seven next + P/P_next.
 pub const EIGHT_FIELD_COUNT: usize = 8;
 /// D-024 membrane transport: surface-occupancy permeability (θΓ).
@@ -71,6 +74,10 @@ pub enum EquationVersion {
     /// Replaces bulk M with S = δΓ; retains soluble precursor P.
     #[serde(rename = "membrane_metabolism_v7_surface_density")]
     MembraneMetabolismV7SurfaceDensity,
+    /// D-029 reversible thermodynamic bulk–surface exchange.
+    /// Same stored fields as v7; replaces irreversible P→S adsorption with P↔S exchange.
+    #[serde(rename = "membrane_metabolism_v8_reversible_surface_exchange")]
+    MembraneMetabolismV8ReversibleSurfaceExchange,
 }
 
 impl EquationVersion {
@@ -92,6 +99,9 @@ impl EquationVersion {
                 "membrane_metabolism_v6_precursor_assembly"
             }
             Self::MembraneMetabolismV7SurfaceDensity => "membrane_metabolism_v7_surface_density",
+            Self::MembraneMetabolismV8ReversibleSurfaceExchange => {
+                "membrane_metabolism_v8_reversible_surface_exchange"
+            }
         }
     }
 
@@ -105,6 +115,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV5InterfaceAffinity
                 | Self::MembraneMetabolismV6PrecursorAssembly
                 | Self::MembraneMetabolismV7SurfaceDensity
+                | Self::MembraneMetabolismV8ReversibleSurfaceExchange
         )
     }
 
@@ -117,6 +128,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV5InterfaceAffinity
                 | Self::MembraneMetabolismV6PrecursorAssembly
                 | Self::MembraneMetabolismV7SurfaceDensity
+                | Self::MembraneMetabolismV8ReversibleSurfaceExchange
         )
     }
 
@@ -126,8 +138,9 @@ impl EquationVersion {
             Self::MembraneMetabolismV4InterfaceProtected
                 | Self::MembraneMetabolismV5InterfaceAffinity
                 | Self::MembraneMetabolismV6PrecursorAssembly
-                // v7 surface turnover uses k_gamma_decay on Γ; retention path retained chemically.
+                // v7/v8 surface turnover uses k_gamma_decay on Γ; retention path retained chemically.
                 | Self::MembraneMetabolismV7SurfaceDensity
+                | Self::MembraneMetabolismV8ReversibleSurfaceExchange
         )
     }
 
@@ -140,9 +153,18 @@ impl EquationVersion {
         matches!(self, Self::MembraneMetabolismV6PrecursorAssembly)
     }
 
-    /// D-024 interfacial surface-density architecture (S = δΓ).
+    /// D-024/D-029 interfacial surface-density architecture (S = δΓ).
     pub const fn is_surface_density(self) -> bool {
-        matches!(self, Self::MembraneMetabolismV7SurfaceDensity)
+        matches!(
+            self,
+            Self::MembraneMetabolismV7SurfaceDensity
+                | Self::MembraneMetabolismV8ReversibleSurfaceExchange
+        )
+    }
+
+    /// D-029 reversible bulk–surface exchange (v8 only).
+    pub const fn is_reversible_surface_exchange(self) -> bool {
+        matches!(self, Self::MembraneMetabolismV8ReversibleSurfaceExchange)
     }
 
     /// True when the field schema carries the eight-field (P + membrane/S) payload.
@@ -157,7 +179,8 @@ impl EquationVersion {
             | Self::MembraneMetabolismV4InterfaceProtected
             | Self::MembraneMetabolismV5InterfaceAffinity
             | Self::MembraneMetabolismV6PrecursorAssembly
-            | Self::MembraneMetabolismV7SurfaceDensity => STOICHIOMETRIC_SCHEMA_VERSION_V2,
+            | Self::MembraneMetabolismV7SurfaceDensity
+            | Self::MembraneMetabolismV8ReversibleSurfaceExchange => STOICHIOMETRIC_SCHEMA_VERSION_V2,
             Self::MembraneMetabolismV1 => STOICHIOMETRIC_SCHEMA_VERSION_V1,
             Self::D001BulkV1 | Self::D003CrowdingV1 | Self::SurfaceTurnoverV1 => 0,
         }
@@ -168,8 +191,9 @@ impl EquationVersion {
             Self::MembraneMetabolismV4InterfaceProtected
             | Self::MembraneMetabolismV5InterfaceAffinity
             | Self::MembraneMetabolismV6PrecursorAssembly => MEMBRANE_SCHEMA_VERSION_V2,
-            // v7: surface-density schema supersedes bulk membrane schema numbering.
-            Self::MembraneMetabolismV7SurfaceDensity => SURFACE_DENSITY_SCHEMA_VERSION_V1,
+            // v7/v8: surface-density schema supersedes bulk membrane schema numbering.
+            Self::MembraneMetabolismV7SurfaceDensity
+            | Self::MembraneMetabolismV8ReversibleSurfaceExchange => SURFACE_DENSITY_SCHEMA_VERSION_V1,
             Self::MembraneMetabolismV1
             | Self::MembraneMetabolismV2Conservative
             | Self::MembraneMetabolismV3StructuralScaling => MEMBRANE_SCHEMA_VERSION_V1,
@@ -180,7 +204,10 @@ impl EquationVersion {
     pub const fn membrane_transport_schema_version(self) -> u32 {
         match self {
             Self::MembraneMetabolismV5InterfaceAffinity => MEMBRANE_TRANSPORT_SCHEMA_VERSION_V2,
-            Self::MembraneMetabolismV7SurfaceDensity => MEMBRANE_TRANSPORT_SCHEMA_VERSION_V3,
+            Self::MembraneMetabolismV7SurfaceDensity
+            | Self::MembraneMetabolismV8ReversibleSurfaceExchange => {
+                MEMBRANE_TRANSPORT_SCHEMA_VERSION_V3
+            }
             // v6 keeps interface-protected M turnover with χ_M = 0 (diffusion-only M transport).
             Self::MembraneMetabolismV1
             | Self::MembraneMetabolismV2Conservative
@@ -191,19 +218,30 @@ impl EquationVersion {
         }
     }
 
-    /// D-023 precursor-assembly schema version (0 for non-v6 versions).
+    /// D-023 precursor-assembly schema version (0 for non-v6/v7/v8 versions).
     pub const fn precursor_schema_version(self) -> u32 {
         match self {
             Self::MembraneMetabolismV6PrecursorAssembly
-            | Self::MembraneMetabolismV7SurfaceDensity => PRECURSOR_SCHEMA_VERSION_V1,
+            | Self::MembraneMetabolismV7SurfaceDensity
+            | Self::MembraneMetabolismV8ReversibleSurfaceExchange => PRECURSOR_SCHEMA_VERSION_V1,
             _ => 0,
         }
     }
 
-    /// D-024 surface-density schema version (0 for non-v7 versions).
+    /// D-024 surface-density schema version (0 for non-surface-density versions).
     pub const fn surface_density_schema_version(self) -> u32 {
         match self {
-            Self::MembraneMetabolismV7SurfaceDensity => SURFACE_DENSITY_SCHEMA_VERSION_V1,
+            Self::MembraneMetabolismV7SurfaceDensity
+            | Self::MembraneMetabolismV8ReversibleSurfaceExchange => SURFACE_DENSITY_SCHEMA_VERSION_V1,
+            _ => 0,
+        }
+    }
+
+    /// D-029 surface-exchange schema: 1 = irreversible adsorption (v7), 2 = reversible (v8).
+    pub const fn surface_exchange_schema_version(self) -> u32 {
+        match self {
+            Self::MembraneMetabolismV7SurfaceDensity => 1,
+            Self::MembraneMetabolismV8ReversibleSurfaceExchange => 2,
             _ => 0,
         }
     }
@@ -418,8 +456,18 @@ pub struct SimParams {
     #[serde(default = "default_d_p")]
     pub d_p: f64,
     /// D-024 adsorption rate coefficient (P → Γ): J_ads = k_ads P q(C) (1−Γ/Γ_max).
+    /// Retained for v7; unused by v8 reversible exchange.
     #[serde(default = "default_k_ads")]
     pub k_ads: f64,
+    /// D-029 exchange mobility coefficient: m_exchange = k_exchange × q(C) × Γ_max.
+    #[serde(default = "default_k_exchange")]
+    pub k_exchange: f64,
+    /// D-029 exchange equilibrium constant K_exchange in a_forward = K p (1−θ).
+    #[serde(default = "default_k_exchange_eq", rename = "K_exchange")]
+    pub k_exchange_eq: f64,
+    /// D-029 precursor activity reference (p = P / P_reference). Fixed at 1 unless governed otherwise.
+    #[serde(default = "default_p_reference")]
+    pub p_reference: f64,
     /// D-024 surface membrane turnover (Γ → W): J_loss = k_Γ_decay Γ.
     #[serde(default = "default_k_gamma_decay")]
     pub k_gamma_decay: f64,
@@ -508,6 +556,18 @@ fn default_d_p() -> f64 {
 
 fn default_k_ads() -> f64 {
     0.0
+}
+
+fn default_k_exchange() -> f64 {
+    0.0
+}
+
+fn default_k_exchange_eq() -> f64 {
+    1.0
+}
+
+fn default_p_reference() -> f64 {
+    1.0
 }
 
 fn default_k_gamma_decay() -> f64 {
@@ -714,6 +774,9 @@ impl Default for SimParams {
             k_precursor_decay: default_k_precursor_decay(),
             d_p: default_d_p(),
             k_ads: default_k_ads(),
+            k_exchange: default_k_exchange(),
+            k_exchange_eq: default_k_exchange_eq(),
+            p_reference: default_p_reference(),
             k_gamma_decay: default_k_gamma_decay(),
             d_gamma: default_d_gamma(),
             gamma_max: default_gamma_max(),

@@ -212,3 +212,11 @@ Concise navigation map for agents. Add entries as application code lands.
 - digital-protocell/crates/experiment-runner/src/d028.rs — Gates 0–3 pipeline + six-state portability
 - docs/d028_bracketed_surface_renewal.md — governed report
 - digital-protocell/experiments/generated/d028/ — artifacts + manifest
+
+## D-029 reversible surface exchange (v8)
+- `digital-protocell/crates/chemistry-core/src/surface_density.rs` — reversible P↔S exchange law + ledgers
+- `digital-protocell/crates/chemistry-core/src/d029_analysis.rs` — A/B/L basis, weighted NNLS, candidates
+- `digital-protocell/crates/chemistry-core/tests/d029_tests.rs` — Gate 1 unit suite
+- `digital-protocell/crates/experiment-runner/src/d029.rs` — Gate 2/5/6 runner
+- `digital-protocell/experiments/generated/d029/` — governed artifacts
+- `docs/d029_reversible_surface_exchange.md` — report

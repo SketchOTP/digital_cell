@@ -24,11 +24,19 @@ pub struct SurfaceAccountingTotals {
     pub advection_delta: f64,
     pub precursor_synthesis_delta: f64,
     pub precursor_decay_delta: f64,
-    /// Exact P→S transfer (same magnitude as adsorption_delta).
+    /// Exact P→S transfer (same magnitude as adsorption_delta for irreversible; net for reversible).
     pub precursor_to_surface: f64,
     /// Exact S→W transfer (same magnitude as gamma_decay_delta).
     pub surface_to_waste: f64,
     pub absolute_face_flux: f64,
+    /// D-029 gross forward exchange extent (P→S), ≥ 0.
+    pub exchange_forward: f64,
+    /// D-029 gross reverse exchange extent (S→P), ≥ 0.
+    pub exchange_reverse: f64,
+    /// D-029 net exchange into S (= forward − reverse = −ΔP from exchange).
+    pub exchange_net: f64,
+    /// D-029 integrated exchange dissipation proxy ∑ δ m (a_f − a_r) ln(a_f/a_r) Δt ≥ 0.
+    pub exchange_dissipation: f64,
 }
 
 impl SurfaceAccountingTotals {
@@ -44,6 +52,10 @@ impl SurfaceAccountingTotals {
             precursor_to_surface: self.precursor_to_surface - baseline.precursor_to_surface,
             surface_to_waste: self.surface_to_waste - baseline.surface_to_waste,
             absolute_face_flux: self.absolute_face_flux - baseline.absolute_face_flux,
+            exchange_forward: self.exchange_forward - baseline.exchange_forward,
+            exchange_reverse: self.exchange_reverse - baseline.exchange_reverse,
+            exchange_net: self.exchange_net - baseline.exchange_net,
+            exchange_dissipation: self.exchange_dissipation - baseline.exchange_dissipation,
         }
     }
 
@@ -57,6 +69,10 @@ impl SurfaceAccountingTotals {
         self.precursor_to_surface += step.precursor_to_surface;
         self.surface_to_waste += step.surface_to_waste;
         self.absolute_face_flux += step.absolute_face_flux;
+        self.exchange_forward += step.exchange_forward;
+        self.exchange_reverse += step.exchange_reverse;
+        self.exchange_net += step.exchange_net;
+        self.exchange_dissipation += step.exchange_dissipation;
     }
 }
 
@@ -107,6 +123,10 @@ impl SurfaceAccountingState {
             precursor_to_surface: w.precursor_to_surface / dt,
             surface_to_waste: w.surface_to_waste / dt,
             absolute_face_flux: w.absolute_face_flux / dt,
+            exchange_forward: w.exchange_forward / dt,
+            exchange_reverse: w.exchange_reverse / dt,
+            exchange_net: w.exchange_net / dt,
+            exchange_dissipation: w.exchange_dissipation / dt,
         }
     }
 }
@@ -281,6 +301,151 @@ pub fn adsorption_rate_j(
         * precursor.max(0.0)
         * membrane_catalyst_saturation(catalyst, params)
         * (1.0 - gamma / params.gamma_max).max(0.0)
+}
+
+/// Surface occupancy θ = Γ / Γ_max (biological [0,1]).
+#[inline]
+pub fn surface_occupancy_theta(gamma: f64, gamma_max: f64) -> f64 {
+    if gamma_max <= 0.0 {
+        0.0
+    } else {
+        (gamma / gamma_max).max(0.0)
+    }
+}
+
+/// Dimensionless precursor activity p = P / P_reference.
+#[inline]
+pub fn precursor_activity(precursor: f64, p_reference: f64) -> f64 {
+    let pref = if p_reference > 0.0 { p_reference } else { 1.0 };
+    precursor.max(0.0) / pref
+}
+
+/// Forward / reverse activities for reversible exchange.
+#[inline]
+pub fn exchange_activities(
+    precursor: f64,
+    gamma: f64,
+    params: &SimParams,
+) -> (f64, f64) {
+    let p = precursor_activity(precursor, params.p_reference);
+    let theta = surface_occupancy_theta(gamma, params.gamma_max);
+    let a_forward = params.k_exchange_eq * p * (1.0 - theta).max(0.0);
+    let a_reverse = theta;
+    (a_forward, a_reverse)
+}
+
+/// Nonnegative C-dependent exchange mobility m_exchange = k_exchange × q(C) × Γ_max.
+#[inline]
+pub fn exchange_mobility(catalyst: f64, params: &SimParams) -> f64 {
+    params.k_exchange
+        * membrane_catalyst_saturation(catalyst, params)
+        * params.gamma_max.max(0.0)
+}
+
+/// Net volumetric exchange flux density J_exchange = J_forward − J_reverse (before ×δ).
+/// Positive ⇒ P→S (adsorption); negative ⇒ S→P (desorption).
+#[inline]
+pub fn exchange_rate_j(
+    precursor: f64,
+    catalyst: f64,
+    gamma: f64,
+    params: &SimParams,
+) -> (f64, f64, f64, f64, f64) {
+    let (a_forward, a_reverse) = exchange_activities(precursor, gamma, params);
+    let m = exchange_mobility(catalyst, params);
+    let j_forward = m * a_forward;
+    let j_reverse = m * a_reverse;
+    let j_net = j_forward - j_reverse;
+    (j_net, j_forward, j_reverse, a_forward, a_reverse)
+}
+
+/// Exchange affinity A_exchange = ln(a_forward / a_reverse) with safe limits.
+#[inline]
+pub fn exchange_affinity(a_forward: f64, a_reverse: f64) -> f64 {
+    const EPS: f64 = 1e-30;
+    if a_forward <= 0.0 && a_reverse <= 0.0 {
+        return 0.0;
+    }
+    if a_forward <= 0.0 {
+        return f64::NEG_INFINITY;
+    }
+    if a_reverse <= 0.0 {
+        return f64::INFINITY;
+    }
+    (a_forward.max(EPS)).ln() - (a_reverse.max(EPS)).ln()
+}
+
+/// Discrete dissipation inequality: (a_f − a_r)(ln a_f − ln a_r) ≥ 0 when both > 0.
+#[inline]
+pub fn exchange_dissipation_density(a_forward: f64, a_reverse: f64, mobility: f64) -> f64 {
+    if mobility <= 0.0 {
+        return 0.0;
+    }
+    if a_forward <= 0.0 || a_reverse <= 0.0 {
+        // One-sided: flux goes toward the nonzero activity; treat as nonnegative limit.
+        return mobility * (a_forward - a_reverse).abs() * 0.0;
+    }
+    let da = a_forward - a_reverse;
+    let dln = a_forward.ln() - a_reverse.ln();
+    mobility * da * dln
+}
+
+/// Rejection reason for a proposed exchange substep (no buffer swap on reject).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum ExchangeReject {
+    NegPrecursor,
+    NegSurface,
+    CapacityExceeded,
+    NonfiniteFlux,
+    NonfiniteAffinity,
+    DissipationViolation,
+}
+
+/// Tolerance used for positivity / capacity gates (not a physics clip).
+pub const EXCHANGE_BOUND_TOLERANCE: f64 = 1e-12;
+/// Soft tolerance for J·A ≥ −tol dissipation gate.
+pub const EXCHANGE_DISSIPATION_TOLERANCE: f64 = 1e-9;
+
+/// Validate a proposed cell update under reversible exchange (no clipping).
+#[inline]
+pub fn validate_exchange_cell(
+    p_next: f64,
+    s_next: f64,
+    delta: f64,
+    gamma_max: f64,
+    delta_floor: f64,
+    a_forward: f64,
+    a_reverse: f64,
+    j_net: f64,
+) -> Result<(), ExchangeReject> {
+    if !p_next.is_finite() || !s_next.is_finite() || !j_net.is_finite() {
+        return Err(ExchangeReject::NonfiniteFlux);
+    }
+    if p_next < -EXCHANGE_BOUND_TOLERANCE {
+        return Err(ExchangeReject::NegPrecursor);
+    }
+    if s_next < -EXCHANGE_BOUND_TOLERANCE {
+        return Err(ExchangeReject::NegSurface);
+    }
+    if delta > delta_floor {
+        let g_next = reconstruct_gamma(s_next, delta, delta_floor);
+        let theta_next = surface_occupancy_theta(g_next, gamma_max);
+        if theta_next > 1.0 + EXCHANGE_BOUND_TOLERANCE {
+            return Err(ExchangeReject::CapacityExceeded);
+        }
+    }
+    let aff = exchange_affinity(a_forward, a_reverse);
+    if !aff.is_finite() && a_forward > 0.0 && a_reverse > 0.0 {
+        return Err(ExchangeReject::NonfiniteAffinity);
+    }
+    // J × A ≥ −tol when both activities are strictly positive.
+    if a_forward > 0.0 && a_reverse > 0.0 {
+        let product = j_net * aff;
+        if product < -EXCHANGE_DISSIPATION_TOLERANCE {
+            return Err(ExchangeReject::DissipationViolation);
+        }
+    }
+    Ok(())
 }
 
 /// Surface loss volumetric rate density J_loss (before multiplying by δ).
@@ -582,7 +747,9 @@ pub fn surface_advection_rate(
 ///
 /// Chemical coupling (when enabled):
 /// `A → P` (synthesis), `P → W` (precursor decay),
-/// `P -= δ J_ads`, `S += δ J_ads`, `S -= δ J_loss`, `W += δ J_loss`.
+/// irreversible: `P -= δ J_ads`, `S += δ J_ads` (v7),
+/// reversible: `P -= δ J_exchange`, `S += δ J_exchange` (v8),
+/// `S -= δ J_loss`, `W += δ J_loss`.
 ///
 /// When `vn` is `Some`, also applies conservative autonomous advection
 /// `∂S/∂t += −∇·(S u_Γ)` using old-state geometry and the provided normal speed.
@@ -608,7 +775,7 @@ pub fn evolve_surface_density(
     activated_next: &mut [f64],
     precursor_next: &mut [f64],
     waste_next: &mut [f64],
-) -> SurfaceAccountingTotals {
+) -> Result<SurfaceAccountingTotals, ExchangeReject> {
     let mut advection_rate = Vec::new();
     evolve_surface_density_with_vn(
         grid,
@@ -661,9 +828,10 @@ pub fn evolve_surface_density_with_vn(
     activated_next: &mut [f64],
     precursor_next: &mut [f64],
     waste_next: &mut [f64],
-) -> SurfaceAccountingTotals {
+) -> Result<SurfaceAccountingTotals, ExchangeReject> {
     let eta_n = params.eta_n;
     let delta_floor = params.delta_floor;
+    let reversible = params.equation_version.is_reversible_surface_exchange();
     compute_interface_geometry(grid, phi, eta_n, geometry);
     reconstruct_gamma_field(grid, s, geometry, delta_floor, gamma);
 
@@ -728,12 +896,42 @@ pub fn evolve_surface_density_with_vn(
             totals.precursor_decay_delta += dec;
         }
         if enable_adsorption {
-            let j_ads = adsorption_rate_j(precursor[idx], catalyst[idx], g, params);
-            let ads = d * j_ads * dt;
-            ds += ads;
-            precursor_next[idx] -= ads;
-            totals.adsorption_delta += ads;
-            totals.precursor_to_surface += ads;
+            if reversible {
+                let (j_net, j_fwd, j_rev, a_fwd, a_rev) =
+                    exchange_rate_j(precursor[idx], catalyst[idx], g, params);
+                let xfer = d * j_net * dt;
+                let fwd_ext = d * j_fwd * dt;
+                let rev_ext = d * j_rev * dt;
+                let m = exchange_mobility(catalyst[idx], params);
+                let diss = d * exchange_dissipation_density(a_fwd, a_rev, m) * dt;
+                let p_trial = precursor_next[idx] - xfer;
+                let s_trial = s[idx] + ds + xfer;
+                validate_exchange_cell(
+                    p_trial,
+                    s_trial,
+                    d,
+                    params.gamma_max,
+                    delta_floor,
+                    a_fwd,
+                    a_rev,
+                    j_net,
+                )?;
+                ds += xfer;
+                precursor_next[idx] = p_trial;
+                totals.adsorption_delta += xfer;
+                totals.precursor_to_surface += xfer;
+                totals.exchange_forward += fwd_ext;
+                totals.exchange_reverse += rev_ext;
+                totals.exchange_net += xfer;
+                totals.exchange_dissipation += diss;
+            } else {
+                let j_ads = adsorption_rate_j(precursor[idx], catalyst[idx], g, params);
+                let ads = d * j_ads * dt;
+                ds += ads;
+                precursor_next[idx] -= ads;
+                totals.adsorption_delta += ads;
+                totals.precursor_to_surface += ads;
+            }
         }
         if enable_gamma_decay {
             let j_loss = gamma_decay_rate_j(g, params);
@@ -744,8 +942,21 @@ pub fn evolve_surface_density_with_vn(
             totals.surface_to_waste += loss;
         }
         s_next[idx] = s[idx] + ds;
+        if reversible && enable_adsorption {
+            // Final capacity/positivity after turnover (still no clip — reject).
+            validate_exchange_cell(
+                precursor_next[idx],
+                s_next[idx],
+                d,
+                params.gamma_max,
+                delta_floor,
+                1.0,
+                1.0,
+                0.0,
+            )?;
+        }
     }
-    totals
+    Ok(totals)
 }
 
 /// Analytic planar tanh profile φ(x) transitioning over width `eps` at `x0`.

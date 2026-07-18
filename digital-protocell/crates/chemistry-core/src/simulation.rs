@@ -36,7 +36,7 @@ use crate::structural_kinetics::{
 };
 use crate::surface_density::{
     estimate_interface_normal_velocity, evolve_surface_density, evolve_surface_density_with_vn,
-    InterfaceGeometryCell, SurfaceAccountingState, SurfaceAccountingTotals,
+    ExchangeReject, InterfaceGeometryCell, SurfaceAccountingState, SurfaceAccountingTotals,
 };
 use crate::reservoir::apply_reservoir;
 use crate::snapshot::FieldSnapshot;
@@ -228,13 +228,14 @@ impl Simulation {
                 EquationVersion::D001BulkV1
                 | EquationVersion::D003CrowdingV1
                 | EquationVersion::SurfaceTurnoverV1 => self.try_legacy_substep(attempt_dt),
-                EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly | EquationVersion::MembraneMetabolismV7SurfaceDensity
+                EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly | EquationVersion::MembraneMetabolismV7SurfaceDensity | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
                     if self.params.d008_stage_b_enabled =>
                 {
                     self.try_d008_stage_b(attempt_dt)
                 }
                 EquationVersion::MembraneMetabolismV1
-                | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly | EquationVersion::MembraneMetabolismV7SurfaceDensity => {
+                | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly | EquationVersion::MembraneMetabolismV7SurfaceDensity
+            | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange => {
                     match self.params.d008_stage_mode {
                         D008StageMode::Transport => {
                             self.try_membrane_metabolism_v1_transport(attempt_dt)
@@ -1113,7 +1114,7 @@ impl Simulation {
         let mut gamma = vec![0.0; size];
         let mut diffusion_rate = vec![0.0; size];
 
-        let totals = evolve_surface_density(
+        let totals = match evolve_surface_density(
             &self.grid,
             &self.fields.structure,
             &self.fields.catalyst,
@@ -1134,7 +1135,15 @@ impl Simulation {
             &mut self.fields.activated_next,
             &mut self.fields.precursor_next,
             &mut self.fields.waste_next,
-        );
+        ) {
+            Ok(t) => t,
+            Err(reason) => {
+                return self.reject(
+                    DtLimiter::PositivityLimit,
+                    format!("surface_exchange_reject:{reason:?}"),
+                );
+            }
+        };
 
         let mut precursor_transport_delta = 0.0;
         for idx in 0..size {
@@ -1997,54 +2006,65 @@ impl Simulation {
                     .membrane_next
                     .copy_from_slice(&self.fields.membrane);
                 SurfaceAccountingTotals::default()
-            } else if use_autonomous {
-                evolve_surface_density_with_vn(
-                    &self.grid,
-                    phi_for_surface,
-                    &self.fields.catalyst,
-                    &self.fields.activated,
-                    &self.fields.precursor,
-                    &self.fields.membrane,
-                    &self.params,
-                    dt,
-                    enable_synthesis,
-                    true,
-                    true,
-                    true,
-                    true,
-                    Some(&vn),
-                    &mut geometry,
-                    &mut gamma,
-                    &mut diffusion_rate,
-                    &mut advection_rate,
-                    &mut self.fields.membrane_next,
-                    &mut self.fields.activated_next,
-                    &mut self.fields.precursor_next,
-                    &mut self.fields.waste_next,
-                )
             } else {
-                evolve_surface_density(
-                    &self.grid,
-                    phi_for_surface,
-                    &self.fields.catalyst,
-                    &self.fields.activated,
-                    &self.fields.precursor,
-                    &self.fields.membrane,
-                    &self.params,
-                    dt,
-                    enable_synthesis,
-                    true,
-                    true,
-                    true,
-                    true,
-                    &mut geometry,
-                    &mut gamma,
-                    &mut diffusion_rate,
-                    &mut self.fields.membrane_next,
-                    &mut self.fields.activated_next,
-                    &mut self.fields.precursor_next,
-                    &mut self.fields.waste_next,
-                )
+                let evolve_result = if use_autonomous {
+                    evolve_surface_density_with_vn(
+                        &self.grid,
+                        phi_for_surface,
+                        &self.fields.catalyst,
+                        &self.fields.activated,
+                        &self.fields.precursor,
+                        &self.fields.membrane,
+                        &self.params,
+                        dt,
+                        enable_synthesis,
+                        true,
+                        true,
+                        true,
+                        true,
+                        Some(&vn),
+                        &mut geometry,
+                        &mut gamma,
+                        &mut diffusion_rate,
+                        &mut advection_rate,
+                        &mut self.fields.membrane_next,
+                        &mut self.fields.activated_next,
+                        &mut self.fields.precursor_next,
+                        &mut self.fields.waste_next,
+                    )
+                } else {
+                    evolve_surface_density(
+                        &self.grid,
+                        phi_for_surface,
+                        &self.fields.catalyst,
+                        &self.fields.activated,
+                        &self.fields.precursor,
+                        &self.fields.membrane,
+                        &self.params,
+                        dt,
+                        enable_synthesis,
+                        true,
+                        true,
+                        true,
+                        true,
+                        &mut geometry,
+                        &mut gamma,
+                        &mut diffusion_rate,
+                        &mut self.fields.membrane_next,
+                        &mut self.fields.activated_next,
+                        &mut self.fields.precursor_next,
+                        &mut self.fields.waste_next,
+                    )
+                };
+                match evolve_result {
+                    Ok(t) => t,
+                    Err(reason) => {
+                        return self.reject(
+                            DtLimiter::PositivityLimit,
+                            format!("surface_exchange_reject:{reason:?}"),
+                        );
+                    }
+                }
             };
             let pending_surface_totals = totals;
             for idx in 0..size {
@@ -2149,11 +2169,23 @@ impl Simulation {
                 );
             }
         }
-        for (idx, value) in self.fields.membrane_next.iter_mut().enumerate() {
-            if !self.grid.in_dish(idx) {
-                continue;
+        if self.params.equation_version.is_reversible_surface_exchange() {
+            // D-029: no post-step capacity clip; exchange reject already enforced θ≤1.
+            for (idx, value) in self.fields.membrane_next.iter_mut().enumerate() {
+                if !self.grid.in_dish(idx) {
+                    continue;
+                }
+                if *value < 0.0 && *value >= NEG_CLAMP {
+                    *value = 0.0;
+                }
             }
-            *value = value.max(0.0).min(self.params.m_max);
+        } else {
+            for (idx, value) in self.fields.membrane_next.iter_mut().enumerate() {
+                if !self.grid.in_dish(idx) {
+                    continue;
+                }
+                *value = value.max(0.0).min(self.params.m_max);
+            }
         }
 
         // Branch E: project machine-scale ceiling overshoots before hard validation.
@@ -2518,7 +2550,8 @@ impl Simulation {
                 }
             }
             EquationVersion::MembraneMetabolismV6PrecursorAssembly
-            | EquationVersion::MembraneMetabolismV7SurfaceDensity => {
+            | EquationVersion::MembraneMetabolismV7SurfaceDensity
+            | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange => {
                 for v in &self.fields.activated {
                     v.to_bits().hash(&mut hasher);
                 }
@@ -2551,7 +2584,8 @@ impl Simulation {
                 append_field_bits(&mut bytes, &self.fields.membrane);
             }
             EquationVersion::MembraneMetabolismV6PrecursorAssembly
-            | EquationVersion::MembraneMetabolismV7SurfaceDensity => {
+            | EquationVersion::MembraneMetabolismV7SurfaceDensity
+            | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange => {
                 append_field_bits(&mut bytes, &self.fields.activated);
                 append_field_bits(&mut bytes, &self.fields.membrane);
                 append_field_bits(&mut bytes, &self.fields.precursor);

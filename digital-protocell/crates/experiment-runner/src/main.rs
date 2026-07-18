@@ -26,6 +26,7 @@ mod d025_stage_e;
 mod d026;
 mod d027;
 mod d028;
+mod d029;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -172,6 +173,10 @@ enum Commands {
     D028 {
         #[command(subcommand)]
         action: D028Commands,
+    },
+    D029 {
+        #[command(subcommand)]
+        action: D029Commands,
     },
 }
 
@@ -453,6 +458,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D026 { action } => run_d026(action)?,
         Commands::D027 { action } => run_d027(action)?,
         Commands::D028 { action } => run_d028(action)?,
+        Commands::D029 { action } => run_d029(action)?,
     }
     Ok(())
 }
@@ -1735,6 +1741,19 @@ enum D028Commands {
     },
 }
 
+#[derive(Subcommand)]
+enum D029Commands {
+    /// Gate 0–6 pipeline (stop on first fail).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d029")]
+        output: PathBuf,
+    },
+    Gate2 {
+        #[arg(long, default_value = "experiments/generated/d029/parameter_identification")]
+        output: PathBuf,
+    },
+}
+
 fn resolve_d027_artifact_path(path: &Path) -> PathBuf {
     if path.is_absolute() {
         return path.to_path_buf();
@@ -1878,6 +1897,43 @@ fn run_d028(action: D028Commands) -> Result<(), Box<dyn std::error::Error>> {
                 gate3["conclusion"],
                 out.join("portability.json").display()
             );
+        }
+    }
+    Ok(())
+}
+
+fn resolve_d029_artifact_path(path: &Path) -> PathBuf {
+    if path.is_absolute() {
+        return path.to_path_buf();
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../..")
+        .join(path)
+}
+
+fn run_d029(action: D029Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D029Commands::Pipeline { output } => {
+            let out = resolve_d029_artifact_path(&output);
+            let result = d029::run_pipeline(&out)?;
+            println!(
+                "D-029 conclusion={} pass={} -> {}",
+                result["conclusion"],
+                result["pass"],
+                out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D029Commands::Gate2 { output } => {
+            let out = resolve_d029_artifact_path(&output);
+            let result = d029::run_gate2_identification(&out)?;
+            println!(
+                "D-029 Gate2 pass={} conclusion={} -> {}",
+                result["pass"],
+                result["conclusion"],
+                out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
         }
     }
     Ok(())
