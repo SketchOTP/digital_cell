@@ -1,10 +1,6 @@
-description: Canonical rules for Animus directives with Mimir V2.
-globs:
-  - "**/*"
-alwaysApply: true
-
 ---
-
+alwaysApply: true
+---
 # Animus Project Directive Rules
 
 Animus project directives are external instructions that must be executed precisely when the active request includes a directive ID in the form `DIRECTIVE ID: D-###`.

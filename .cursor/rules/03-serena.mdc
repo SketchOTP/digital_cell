@@ -1,8 +1,6 @@
 ---
-description: Mimir V2 mandatory lifecycle for coding tasks.
 alwaysApply: true
 ---
-
 # Mimir V2
 
 Mimir V2 MUST be used for every coding task in this repository, including investigation, implementation, bug fixes, refactors, tests, and documentation that changes or explains code behavior. Pure conversation with no repository work does not start a Mimir task.

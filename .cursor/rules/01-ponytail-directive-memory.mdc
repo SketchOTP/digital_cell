@@ -1,9 +1,6 @@
 ---
-description: Ponytail lazy senior dev mode with mandatory low-token directive memory, drift prevention, repo navigation, learnings, outcomes, and current-state tracking.
-globs: ["**/*"]
 alwaysApply: true
 ---
-
 # Ponytail Directive Memory
 
 Follow root `AGENTS.md`. Architecture and product scope: `.agent/PROJECT_GOAL.md`.

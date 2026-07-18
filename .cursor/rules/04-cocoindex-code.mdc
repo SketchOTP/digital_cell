@@ -2,7 +2,6 @@
 description: Mimir V2 lifecycle for coding tasks.
 alwaysApply: false
 ---
-
 # Mimir V2 Coding Rule
 
 Use Mimir V2 for every repository coding task, including investigation, implementation, bug fixes, refactors, tests, and documentation that changes or depends on code behavior. Do not start a Mimir task for pure conversation that does not touch the repository.

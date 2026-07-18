@@ -1,8 +1,5 @@
-description: Mimir V2 governance for all repo work.
-globs:
-  - "**/*"
+---
 alwaysApply: true
-
 ---
 # Overall Governance
 
