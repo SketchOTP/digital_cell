@@ -95,3 +95,9 @@ Unchanged (`membrane_metabolism_v7_surface_density` adsorption equation retained
 ## Next directive
 
 Architect-authorized bulk–surface exchange improvement (reversible adsorption/desorption or chemical-potential-based exchange). Do not begin Stage F. Do not reopen productive-rate-only repair under frozen surface kinetics.
+
+## Terminal seal
+
+- Commit: `0dcc6e0` (solver/runner) + this preserve commit
+- Tag: `D-028-bracketed-renewal-fail`
+- Conclusion: `D028_ROOT_NOT_PORTABLE`
