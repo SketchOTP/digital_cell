@@ -207,3 +207,8 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d013.rs` — checkpoint `surface_accounting` + lossless precursor
 - `docs/d027_coupled_surface_renewal.md` — governed report
 - `digital-protocell/experiments/generated/d027/` — artifacts + manifest
+- digital-protocell/crates/chemistry-core/src/d028_analysis.rs — bracketed regula-falsi/bisection, Q/g metrics, D-027 machine constants
+- digital-protocell/crates/chemistry-core/tests/d028_tests.rs — Gate0–1 unit tests (bracket, monotonicity, solver)
+- digital-protocell/crates/experiment-runner/src/d028.rs — Gates 0–3 pipeline + six-state portability
+- docs/d028_bracketed_surface_renewal.md — governed report
+- digital-protocell/experiments/generated/d028/ — artifacts + manifest

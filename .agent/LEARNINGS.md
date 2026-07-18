@@ -41,3 +41,4 @@ Append-only repo-specific lessons. Format:
 - 2026-07-17 | area:d026-stage-e | lesson:Freeze-surface control rescues A_ret≈+0.14; zeroing A transport or structure/rep demand does not | evidence:experiments/generated/d026/causal_controls/summary.json
 - 2026-07-17 | area:d027-checkpoint | lesson:Restored Stage E/v7 runs must copy dt_cap; default MAX_DT=0.0025 clamps checkpoint dt=0.005 and breaks rate parity | evidence:experiment-runner/src/d027.rs Gate0
 - 2026-07-17 | area:d027-adsorption | lesson:Median k_ads_required across fixed/dynamic/StageE ≈30.4× D024 k_ads; span≈1.81× portable; 1×/2× isolate Q straddles 1.0 | evidence:experiments/generated/d027/adsorption_basis/
+- 2026-07-17 | area:d028 | lesson:Isolated k_ads root ~0.04867 balances fixed-interface Q/g but fails portability on dynamic/Stage-E states (Q≫1.1) | evidence:experiments/generated/d028/portability/portability.json

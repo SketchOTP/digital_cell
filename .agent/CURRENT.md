@@ -1,24 +1,24 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260717-d027-coupled-surface-renewal
-- Project directive: D-027
-- Goal: Recalibrate k_ads for coupled surface renewal under sealed v7
-- Status: done — `D027_ISOLATED_SURFACE_RENEWAL_FAILURE`
-- Acceptance: One D027_* conclusion with Gates 0–2 evidence; stop at first failed gate — met
-- Touched files: surface_density, simulation, d013, d027_analysis, d027_tests, d027.rs, main.rs, docs/d027_*, experiments/generated/d027, .agent/*
-- Next action: Architect bulk–surface exchange improvement; do not Stage F; do not productive-rate-only repair
+- ID: D-20260717-d028-bracketed-surface-renewal-root
+- Project directive: D-028
+- Goal: Deterministic bracketed k_ads root solve in [0.0338, 0.0676] then revalidate through Stage E
+- Status: done — `D028_ROOT_NOT_PORTABLE`
+- Acceptance: One D028_* conclusion; Gate0 reproduces 1×/2× bracket; stop at first failed gate — met
+- Touched files: d028_analysis, d028 runner/tests, main.rs, docs/d028_*, experiments/generated/d028, .agent/*
+- Next action: Architect exchange-law revision; do not Stage F; do not productive-rate-only repair
 
 ## Repo facts needed now
-- HEAD was 77f7ab2 at start; Gate0 ledger repair + Gate1 portable ~30.4× k_ads
-- Gate4: 1× Q≈0.91, 2× Q≈1.06 — bracket straddles balance; intermediates forbidden
+- Selected isolated root k_ads=0.04867196940427757 Q≈1.0168 g≈3.36e-5; Gate2 ±2% ordered PASS
+- Gate3 portability 2/6 (fixed R22 + Stage E 10k only); dynamic/late Stage E overshoot
+- Additional record D027_SURFACE_BALANCE_ROOT_BRACKETED; D-027 historical conclusion unchanged
 - Mimir: BLOCKED (Windows path mapping on project_register)
-- Disk: ~8GB free; avoid large checkpoint dumps in d027 artifacts
 
 ## Last validation
-- Command: cargo test -p chemistry-core --release --test d027_tests; d026_tests; d027 pipeline Gates0-4
-- Result: d027 7/7 PASS; d026 21/21 PASS; Gate0/1/2 PASS; Gate4 FAIL
+- Command: cargo test -p chemistry-core --release --test d028_tests --test d027_tests; d028 pipeline Gates0-3
+- Result: d028 8/8 PASS; d027 7/7 PASS; Gate0/1/2 PASS; Gate3 FAIL (D028_ROOT_NOT_PORTABLE)
 
 ## Open blockers
-- Isolated surface renewal not achieved on mandated 0.5/1/2 grid
+- Isolated root not portable → exchange law escalation for next directive
 - D-008 remains BLOCKED_NOT_RECOVERED

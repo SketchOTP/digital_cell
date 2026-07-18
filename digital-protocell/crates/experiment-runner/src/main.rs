@@ -25,6 +25,7 @@ mod d025;
 mod d025_stage_e;
 mod d026;
 mod d027;
+mod d028;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -167,6 +168,10 @@ enum Commands {
     D027 {
         #[command(subcommand)]
         action: D027Commands,
+    },
+    D028 {
+        #[command(subcommand)]
+        action: D028Commands,
     },
 }
 
@@ -447,6 +452,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D025 { action } => run_d025(action)?,
         Commands::D026 { action } => run_d026(action)?,
         Commands::D027 { action } => run_d027(action)?,
+        Commands::D028 { action } => run_d028(action)?,
     }
     Ok(())
 }
@@ -1703,6 +1709,32 @@ enum D027Commands {
     },
 }
 
+#[derive(Subcommand)]
+enum D028Commands {
+    /// Preservation + Gates 0–3 (bracket reproduce, root solve, robustness, portability).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d028")]
+        output: PathBuf,
+    },
+    Gate0 {
+        #[arg(long, default_value = "experiments/generated/d028/bracket_reproduction")]
+        output: PathBuf,
+    },
+    Gate1 {
+        #[arg(long, default_value = "experiments/generated/d028/root_iterations")]
+        output: PathBuf,
+    },
+    /// Re-run Gate 3 portability using selected_k from prior root_solve / flag.
+    Gate3 {
+        #[arg(long, default_value = "experiments/generated/d028/portability")]
+        output: PathBuf,
+        #[arg(long)]
+        k_ads: Option<f64>,
+        #[arg(long, default_value = "experiments/generated/d028")]
+        root: PathBuf,
+    },
+}
+
 fn resolve_d027_artifact_path(path: &Path) -> PathBuf {
     if path.is_absolute() {
         return path.to_path_buf();
@@ -1741,6 +1773,110 @@ fn run_d027(action: D027Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["portability"]["portable"],
                 result["portability"]["span"],
                 out.join("adsorption_basis.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+fn resolve_d028_artifact_path(path: &Path) -> PathBuf {
+    if path.is_absolute() {
+        return path.to_path_buf();
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../..")
+        .join(path)
+}
+
+fn run_d028(action: D028Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D028Commands::Pipeline { output } => {
+            let out = resolve_d028_artifact_path(&output);
+            let result = d028::run_pipeline(&out)?;
+            println!(
+                "D-028 pipeline conclusion={} selected_k={:?} -> {}",
+                result["conclusion"],
+                result["selected_k_ads"],
+                out.join("manifest.json").display()
+            );
+        }
+        D028Commands::Gate0 { output } => {
+            let out = resolve_d028_artifact_path(&output);
+            let result = d028::run_gate0_bracket_reproduction(&out)?;
+            println!(
+                "D-028 gate0 pass={} conclusion={} -> {}",
+                result["pass"],
+                result["conclusion"],
+                out.join("bracket_reproduction.json").display()
+            );
+        }
+        D028Commands::Gate1 { output } => {
+            let out = resolve_d028_artifact_path(&output);
+            let gate0_path = out
+                .parent()
+                .unwrap_or(Path::new("."))
+                .join("bracket_reproduction/bracket_reproduction.json");
+            let gate0: serde_json::Value = if gate0_path.is_file() {
+                serde_json::from_str(&std::fs::read_to_string(&gate0_path)?)?
+            } else {
+                serde_json::json!({
+                    "bracket": {
+                        "k_low": chemistry_core::d028_analysis::D028_K_ADS_1X,
+                        "q_low": chemistry_core::d028_analysis::D028_Q_1X,
+                        "k_high": chemistry_core::d028_analysis::D028_K_ADS_2X,
+                        "q_high": chemistry_core::d028_analysis::D028_Q_2X,
+                    }
+                })
+            };
+            let result = d028::run_gate1_root_solve(&out, &gate0)?;
+            println!(
+                "D-028 gate1 pass={} conclusion={} k={:?} -> {}",
+                result["pass"],
+                result["conclusion"],
+                result["selected_k_ads"],
+                out.join("root_solve.json").display()
+            );
+        }
+        D028Commands::Gate3 {
+            output,
+            k_ads,
+            root,
+        } => {
+            let out = resolve_d028_artifact_path(&output);
+            let root = resolve_d028_artifact_path(&root);
+            let selected = if let Some(k) = k_ads {
+                k
+            } else {
+                let solve_path = root.join("root_iterations/root_solve.json");
+                let v: serde_json::Value =
+                    serde_json::from_str(&std::fs::read_to_string(&solve_path)?)?;
+                v["selected_k_ads"]
+                    .as_f64()
+                    .ok_or("missing selected_k_ads; pass --k-ads")?
+            };
+            let gate3 = d028::run_gate3_portability(&out, selected)?;
+            // Update manifest in place if present.
+            let man_path = root.join("manifest.json");
+            if man_path.is_file() {
+                let mut man: serde_json::Value =
+                    serde_json::from_str(&std::fs::read_to_string(&man_path)?)?;
+                man["gate3"] = gate3.clone();
+                man["selected_k_ads"] = serde_json::json!(selected);
+                if gate3["pass"].as_bool().unwrap_or(false) {
+                    man["conclusion"] = serde_json::json!("D028_PARTIAL_GATES_0_3_PASS");
+                    man["stopped_at_gate"] = serde_json::Value::Null;
+                } else {
+                    man["conclusion"] = serde_json::json!("D028_ROOT_NOT_PORTABLE");
+                    man["stopped_at_gate"] = serde_json::json!(3);
+                }
+                std::fs::write(&man_path, serde_json::to_string_pretty(&man)?)?;
+            }
+            println!(
+                "D-028 gate3 pass={} pass_count={} conclusion={} -> {}",
+                gate3["pass"],
+                gate3["pass_count"],
+                gate3["conclusion"],
+                out.join("portability.json").display()
             );
         }
     }
