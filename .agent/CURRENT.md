@@ -1,26 +1,24 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260718-d031-invariant-domain-surface-exchange
-- Project directive: D-031
-- Goal: Invariant-domain v8 exchange integration; resume D-030 Gate7; recover Stage E if portable
-- Status: partial — Gate0 OVERSHOOT_CONFIRMED; Gate3 PASS; Gate4 short diag accepted>0 Q=1.45; full Gate4 running (pid in /tmp/d031_gate4_full.log)
-- Acceptance: One D031_* after Gates 0–13 — not met (Gates 5–13 not run; Gate4 horizons incomplete)
-- Touched files: surface_density.rs, config.rs, d031_*, experiment-runner/d031, docs/d031_*, .agent/*
-- Next action: Await Gate4 full horizons; if Q enters band → Gate5 portability; else conclude TURNOVER_EXCHANGE_INCOMPATIBILITY_CONFIRMED
+- ID: D-20260718-d031r-complete-isolated-renewal
+- Project directive: D-031R / D-031
+- Goal: Seal Gate 4 isolated renewal; classify D-031 terminal without Gate 5 unless PASS
+- Status: done — `D031_TURNOVER_EXCHANGE_INCOMPATIBILITY_CONFIRMED`
+- Acceptance: Gate 4 terminal sealed; Gate 5 not started — met
+- Touched files: experiments/generated/d031/isolated_turnover/*, docs/d031_*, .agent/*, tag
+- Next action: Architect follow-on; do not Stage F; do not Gate 5 under failed Gate 4
 
 ## Repo facts needed now
-- Commit: `3b3d033` — D-031 invariant integrator
-- Integrator: `surface_exchange_integrator_v2_invariant_domain`
-- Frozen: α≈0.167, β≈0.00334, K=50, k≈0.00334
-- D-030 tag preserved: `D-030-exchange-identification-fail`
-- Mimir task: ed5bca889bd54b1aab4e9131344adb4f version 2
+- Gate4: 206000 accepted, 0 capacity rejects, exited cleanly
+- Brief near-balance at 10k (one window Q≈1.0026) then desorption-dominated divergence
+- Late 3 windows: Q≈−10.29…−10.37, g≈−0.0226…−0.0227 (same direction)
+- Commits: `3b3d033`, `f7a3dca`; Mimir BLOCKED at close
 
 ## Last validation
-- Command: cargo test d031/d029/d030; d031 gate0; gate3; gate4-diag
-- Result: unit PASS; Gate0 OVERSHOOT_CONFIRMED; Gate3 PASS; Gate4 diag accepted=6020 capacity_reject=false Q=1.45
+- Command: sealed isolated_turnover.json (process exited; conclusion printed)
+- Result: D031_TURNOVER_EXCHANGE_INCOMPATIBILITY_CONFIRMED; Gate5 not started
 
 ## Open blockers
-- Gate4 full renewal windows not yet three consecutive Q∈[0.98,1.02]
-- Gates 5–13 not started
-- Disk ~6.3 GiB free
+- Identified v8 reversible kinetics incompatible with sustained isolated biological renewal under invariant integration
+- D-008 remains BLOCKED_NOT_RECOVERED

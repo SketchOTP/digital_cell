@@ -41,25 +41,36 @@ Historical D-030 conclusion/tag unchanged.
 
 PASS. Recovered α≈0.16698 (rel err 6e-5), β≈0.003340 (rel err 1e-5) under V2 integrator.
 
-## Gate 4 — isolated renewal (partial)
+## Gate 4 — isolated renewal (sealed)
 
-Short diagnostic (`short_diagnostic.json`):
+**Conclusion:** `D031_TURNOVER_EXCHANGE_INCOMPATIBILITY_CONFIRMED`
 
-| Metric | Value |
-|--------|-------|
-| accepted steps | 6020 |
-| capacity reject | false |
-| Q_renewal | ≈1.45 (outside 0.98–1.02) |
-| g_surface | ≈9e-4 (outside 1e-4) |
-| forward / reverse / turnover | all active |
-| localization | 1.0 |
+| Item | Value |
+|------|-------|
+| Source commit | `f7a3dca` |
+| Binary hash | `6398bc2cd7aa0be386e6ac330864dee3df76ff07a07061a960268b488d272d39` |
+| Total accepted | 206000 |
+| Capacity rejects | 0 |
+| Consecutive qualifying windows | 0 |
+| Process exit | clean (conclusion printed) |
 
-Earlier full-horizon probe reached ≥10_000 accepted steps with no CapacityExceeded (contrasts D-030 accepted_in_window=0).
+### Window Q / g summary
 
-Full progressive horizons are running; biology judgment deferred until three qualifying windows or 200k accepted steps.
+| Horizon | Q (3 windows) | g (3 windows) | notes |
+|---------|---------------|---------------|-------|
+| 2k | 1.65 → 1.31 | +1.3e-3 → +6.1e-4 | early adsorption excess |
+| 10k | 1.13 → **1.0026** | +2.5e-4 → **+5.2e-6** | one window briefly qualified |
+| 25k | −3.87 → −5.38 | −9.7e-3 → −1.3e-2 | net desorption |
+| 50k | −6.59 → −6.78 | −1.5e-2 | same direction |
+| 100k | −7.97 → −8.08 | −1.8e-2 | same direction |
+| 200k | −10.29 → −10.37 | −2.26e-2 → −2.27e-2 | three late windows, same failure |
 
-## Interim conclusion
+Late failure: `Q_renewal` converges well below 0.98; `g_surface` retains a statistically nonzero negative asymptote. Not a long-transient unresolved case (not trending toward balance). Not a numerical failure (0 capacity rejects; steps_ok throughout).
 
-`D031_EXPLICIT_INTEGRATION_OVERSHOOT_CONFIRMED` (Gate 0).
+Gate 5 not started.
 
-D-030 operative: numerical capacity integration failure; turnover–exchange incompatibility **not established**.
+## Terminal D-031 conclusion
+
+`D031_TURNOVER_EXCHANGE_INCOMPATIBILITY_CONFIRMED`
+
+D-030 historical conclusion confirmed under invariant-domain integration after numerical overshoot was repaired.
