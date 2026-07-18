@@ -306,6 +306,7 @@ pub fn run_gate2_active_basis(output: &Path) -> Result<Value, Box<dyn std::error
     let mut state_summaries = Vec::new();
     let mut accepted = 0u64;
     let mut steps_ok = true;
+    let measure_window = 2_000u64;
 
     for &horizon in REGEN_HORIZONS {
         while accepted < horizon && steps_ok {
@@ -321,17 +322,68 @@ pub fn run_gate2_active_basis(output: &Path) -> Result<Value, Box<dyn std::error
                 );
             }
         }
-        // Compact summary only — no full-field dump.
-        let est = estimate_k_active_required(&format!("v8_isolated_{horizon}"), accepted, &sim);
+        // Window-averaged passive net + turnover (matches D-031 Q authority).
+        let mut win_ok = steps_ok;
+        if win_ok {
+            sim.surface_accounting
+                .begin_window_local(sim.substep, sim.sim_time);
+            for _ in 0..measure_window {
+                if !sim.step() {
+                    win_ok = false;
+                    break;
+                }
+                accepted += 1;
+            }
+        }
+        let rates = WindowLocalSurfaceRates::from_sim(&sim);
+        let wl = sim.surface_accounting.window_local();
+        let passive_net = rates.adsorption; // net exchange rate into S
+        let turnover = rates.gamma_turnover;
+        let r_required = turnover - passive_net;
+        let b_active = chemistry_core::d032_analysis::integrate_active_basis(&sim);
+        let mut est = estimate_k_active_required(&format!("v8_isolated_{horizon}"), accepted, &sim);
+        // Override instantaneous rates with window-averaged authority.
+        est.biological_turnover = turnover;
+        est.passive_net_exchange = passive_net;
+        est.r_required = r_required;
+        est.b_active = b_active;
+        let mut valid = true;
+        let mut reject = String::new();
+        if !(r_required > 0.0 && r_required.is_finite()) {
+            valid = false;
+            reject = "r_required_nonpositive".into();
+        } else if !(b_active > chemistry_core::d032_analysis::D032_UNDERFLOW_EPS
+            && b_active.is_finite())
+        {
+            valid = false;
+            reject = "b_active_underflow".into();
+        }
+        let k = if valid {
+            r_required / b_active
+        } else {
+            f64::NAN
+        };
+        if valid && !(k.is_finite() && k > 0.0) {
+            valid = false;
+            reject = "k_nonfinite".into();
+        }
+        est.k_active_required = k;
+        est.valid = valid;
+        est.reject_reason = reject;
+
         let summary = json!({
             "horizon": horizon,
             "accepted": accepted,
-            "steps_ok": steps_ok,
+            "steps_ok": steps_ok && win_ok,
             "p_mass": field_mass(&sim, &sim.fields.precursor),
             "a_mass": field_mass(&sim, &sim.fields.activated),
             "s_mass": total_surface_mass(&sim.grid, &sim.fields.membrane),
             "theta": theta_stats(&sim),
             "localization": gamma_localization(&sim),
+            "passive_net_window": passive_net,
+            "turnover_window": turnover,
+            "forward_window": wl.exchange_forward,
+            "reverse_window": wl.exchange_reverse,
             "r_required": est.r_required,
             "b_active": est.b_active,
             "k_active_required": est.k_active_required,

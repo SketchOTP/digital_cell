@@ -4,22 +4,21 @@
 - ID: D-20260718-d032-activated-surface-assembly
 - Project directive: D-032
 - Goal: Activated nonequilibrium surface assembly (P+A→S+W) on v8 interfacial architecture
-- Status: in progress — Gate0 PASS; Gate2–5 pipeline running
-- Acceptance: One D032_* conclusion; Stage E recovered only if all applicable gates pass
-- Touched files: chemistry-core config/surface_density/d032_analysis/candidate_identity/simulation; tests/d032_tests; experiment-runner/d032; main.rs
-- Next action: Await Gate2 portability + candidate screen + Gate5 isolated renewal
+- Status: done — `D032_ACTIVE_ASSEMBLY_LAW_NOT_PORTABLE`
+- Acceptance: One D032_* conclusion with Gate evidence — met (Gate2 stop)
+- Touched files: chemistry-core v9 + d032_*; experiment-runner/d032; experiments/generated/d032; docs/d032_*
+- Next action: Architect follow-on for activated/immature membrane species; do not Stage F
 
 ## Repo facts needed now
-- V9: membrane_metabolism_v9_activated_surface_assembly; schema exchange=3, active_assembly=1
-- Frozen α≈0.167 β≈0.00334; integrator v2 unchanged
-- Gate1 unit tests: 9/9 PASS
-- Disk ~5.1–5.4G available (98%)
-- Mimir V2 MCP: BLOCKED (legacy HTTP only)
+- Gate0 PASS; Gate1 9/9 PASS; Gate2 FAIL portability (span≈12×, k: 155→1854)
+- Record: PASSIVE_REVERSIBLE_EXCHANGE_INSUFFICIENT_FOR_MEMBRANE_MAINTENANCE
+- Escalation: explicit activated/immature membrane species authorized next (not in D-032)
+- Mimir V2 MCP: BLOCKED
 
 ## Last validation
-- Command: cargo test -p chemistry-core --release --test d032_tests
-- Result: 9/9 PASS; Gate0 D032_PRESERVATION_PASS
+- Command: cargo test d032_tests 9/9; d032 pipeline Gate0–2
+- Result: D032_ACTIVE_ASSEMBLY_LAW_NOT_PORTABLE
 
 ## Open blockers
-- Mimir V2 status: BLOCKED (MCP server unavailable)
-- Long Gate2–15 horizons pending
+- One-rate active assembly not portable across D-031 desorption trajectory
+- D-008 remains BLOCKED_NOT_RECOVERED

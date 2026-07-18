@@ -235,3 +235,11 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d031.rs` — Gate0/3/4 runner
 - `docs/d031_invariant_domain_surface_exchange.md` — report
 - `digital-protocell/experiments/generated/d031/` — artifacts (gitignored)
+
+## D-032 activated surface assembly
+- chemistry-core/src/d032_analysis.rs — k_active reconstruction, candidates, domain corners
+- chemistry-core/src/surface_density.rs — apply_active_assembly_bounded; SurfaceAccountingTotals.active_assembly
+- chemistry-core/src/config.rs — MembraneMetabolismV9ActivatedSurfaceAssembly; k_active; a_reference
+- experiment-runner/src/d032.rs — Gates 0/2/3/5 pipeline
+- experiments/generated/d032/ — preservation, active_basis, manifest
+- docs/d032_activated_surface_assembly.md — terminal report
