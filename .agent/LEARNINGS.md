@@ -49,3 +49,4 @@ Append-only repo-specific lessons. Format:
 - 2026-07-18 | area:surface-exchange | lesson:Under V2, Q can briefly enter band near 10k then diverge to desorption-dominated Q≪0; judge biology on late windows not early transient | evidence:experiments/generated/d031/isolated_turnover/isolated_turnover.json
 - 2026-07-18 | area:d032-active-assembly | lesson:Window-averaged R_required grows while B_active collapses along D-031 desorption; one k_active spans >10× | evidence:experiments/generated/d032/active_basis/active_basis.json
 - 2026-07-18 | area:d032-v9 | lesson:apply_exchange_candidate forces v8; v9_params must reset equation_version after apply | evidence:chemistry-core/src/d032_analysis.rs
+- 2026-07-19 | area:surface_density/v10 | lesson:Soluble X charges in bulk H(φ); with D_X=D_P and no attraction, high k_relax or bulk accumulation starves interface insertion while desorption grows | evidence:experiments/generated/d033/isolated_renewal/isolated_renewal.json

@@ -25,9 +25,15 @@ use std::path::{Path, PathBuf};
 use std::process::Command;
 
 const AGENT_MEMORY_ID: &str = "D-20260718-d033-activated-membrane-intermediate";
-const PLANTED_K_CHARGE: f64 = 0.8;
-const PLANTED_K_INSERT: f64 = 1.2;
-const PLANTED_K_RELAX: f64 = 0.25;
+/// Gate 2 assay truths (orthogonal identification only).
+const ASSAY_K_CHARGE: f64 = 0.8;
+const ASSAY_K_INSERT: f64 = 1.2;
+const ASSAY_K_RELAX: f64 = 0.25;
+/// Operating kinetics for Gates 3–5+: low bulk relax so X can reach the interface.
+/// ponytail: selected by spatial buffering requirement (k_relax ≪ k_insert·δ·(1−θ)); upgrade via Gate5 screen.
+const OPERATING_K_CHARGE: f64 = 2.0;
+const OPERATING_K_INSERT: f64 = 8.0;
+const OPERATING_K_RELAX: f64 = 0.02;
 const ISOLATED_HORIZONS: &[u64] = &[2_000, 10_000, 25_000, 50_000, 100_000, 200_000];
 
 fn resolve_path(path: &Path) -> PathBuf {
@@ -249,21 +255,21 @@ fn sum_field(grid: &Grid, field: &[f64]) -> f64 {
 fn renewal_window_observability_v10(sim: &Simulation, accepted_in_window: u64) -> Value {
     let rates = WindowLocalSurfaceRates::from_sim(sim);
     let wl = sim.surface_accounting.window_local();
-    let wl_rates = sim.surface_accounting.window_local_rates(sim.sim_time);
     let mean_s = total_surface_mass(&sim.grid, &sim.fields.membrane);
+    // Window extents (not rates) — same authority as D-032 Q_total.
     let passive_net = wl.exchange_net;
-    let insert = wl_rates.insert_delta;
-    let charge = wl_rates.charge_delta;
-    let relax = wl_rates.relax_delta;
+    let insert = wl.insert_delta;
+    let charge = wl.charge_delta;
+    let relax = wl.relax_delta;
     let turn = wl.gamma_decay_delta;
     let inflow = passive_net + insert;
     let q_total = surface_balance_q(inflow, turn);
     let g_surface = (inflow - turn) / mean_s.max(f64::EPSILON);
     let x_mass = field_mass(sim, &sim.fields.activated_intermediate);
-    let activation_residual = (wl_rates.activation_production
-        - wl_rates.activation_work
-        - wl_rates.activation_dissipation
-        - wl_rates.activation_storage_delta)
+    let activation_residual = (wl.activation_production
+        - wl.activation_work
+        - wl.activation_dissipation
+        - wl.activation_storage_delta)
         .abs();
     json!({
         "p_mass": field_mass(sim, &sim.fields.precursor),
@@ -329,7 +335,7 @@ pub fn run_gate0_preservation(output: &Path) -> Result<Value, Box<dyn std::error
         "d032_result_present": commit_exists("023378b"),
     });
     let frozen = frozen_exchange_kinetics_ok();
-    let v10 = v10_params(PLANTED_K_CHARGE, PLANTED_K_INSERT, PLANTED_K_RELAX);
+    let v10 = v10_params(ASSAY_K_CHARGE, ASSAY_K_INSERT, ASSAY_K_RELAX);
     let pass = all_tags
         && commits["d032_source_present"] == true
         && commits["d032_result_present"] == true
@@ -371,16 +377,16 @@ pub fn run_gate0_preservation(output: &Path) -> Result<Value, Box<dyn std::error
 pub fn run_gate2_orthogonal_id(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
     let output = resolve_path(output);
     fs::create_dir_all(&output)?;
-    let id = identify_orthogonal_rates(PLANTED_K_CHARGE, PLANTED_K_INSERT, PLANTED_K_RELAX);
+    let id = identify_orthogonal_rates(ASSAY_K_CHARGE, ASSAY_K_INSERT, ASSAY_K_RELAX);
     let pass = id.identifiable;
     let body = json!({
         "project_directive": "D-033",
         "gate": 2,
         "kinetics_id": id,
         "planted": {
-            "k_charge": PLANTED_K_CHARGE,
-            "k_insert": PLANTED_K_INSERT,
-            "k_relax": PLANTED_K_RELAX,
+            "k_charge": ASSAY_K_CHARGE,
+            "k_insert": ASSAY_K_INSERT,
+            "k_relax": ASSAY_K_RELAX,
         },
         "pass": pass,
         "conclusion": if pass {
@@ -400,7 +406,7 @@ pub fn run_gate3_buffering(output: &Path) -> Result<Value, Box<dyn std::error::E
     let output = resolve_path(output);
     fs::create_dir_all(&output)?;
 
-    let mut params = v10_params(PLANTED_K_CHARGE, PLANTED_K_INSERT, PLANTED_K_RELAX);
+    let mut params = v10_params(OPERATING_K_CHARGE, OPERATING_K_INSERT, OPERATING_K_RELAX);
     params.k_exchange = 0.0;
     params.k_gamma_decay = 0.0;
     params.k_precursor = 0.0;
@@ -559,7 +565,7 @@ pub fn run_gate3_buffering(output: &Path) -> Result<Value, Box<dyn std::error::E
         }))
     };
 
-    let pulse = run_pulse(PLANTED_K_CHARGE, 0.0)?;
+    let pulse = run_pulse(OPERATING_K_CHARGE, 0.0)?;
     let control = run_pulse(0.0, 0.0)?;
 
     let charging_stops = pulse["post_phase"]["charge_delta"].as_f64().unwrap_or(1.0).abs() < 1e-12;
@@ -604,7 +610,7 @@ pub fn run_gate3_buffering(output: &Path) -> Result<Value, Box<dyn std::error::E
 pub fn run_gate4_numerical(output: &Path) -> Result<Value, Box<dyn std::error::Error>> {
     let output = resolve_path(output);
     fs::create_dir_all(&output)?;
-    let params = v10_params(PLANTED_K_CHARGE, PLANTED_K_INSERT, PLANTED_K_RELAX);
+    let params = v10_params(OPERATING_K_CHARGE, OPERATING_K_INSERT, OPERATING_K_RELAX);
     let cases = [
         (1.0, 0.4, 0.5, 0.4, 0.2, 0.15, 0.5),
         (1.0, 0.4, 0.1, 0.0, 0.0, 0.05, 0.5),
@@ -926,9 +932,9 @@ pub fn run_pipeline(output_root: &Path) -> Result<Value, Box<dyn std::error::Err
 
     let gate5 = run_gate5_isolated_renewal(
         &output_root.join("isolated_renewal"),
-        PLANTED_K_CHARGE,
-        PLANTED_K_INSERT,
-        PLANTED_K_RELAX,
+        OPERATING_K_CHARGE,
+        OPERATING_K_INSERT,
+        OPERATING_K_RELAX,
     )?;
     let conclusion = if gate5["pass"] == true {
         "D033_ISOLATED_RENEWAL_PASS"
@@ -941,9 +947,9 @@ pub fn run_pipeline(output_root: &Path) -> Result<Value, Box<dyn std::error::Err
         "conclusion": conclusion,
         "stopped_at_gate": if gate5["pass"] == true { Value::Null } else { json!(5) },
         "selected_kinetics": {
-            "k_charge": PLANTED_K_CHARGE,
-            "k_insert": PLANTED_K_INSERT,
-            "k_relax": PLANTED_K_RELAX,
+            "k_charge": OPERATING_K_CHARGE,
+            "k_insert": OPERATING_K_INSERT,
+            "k_relax": OPERATING_K_RELAX,
         },
         "gate0": {"pass": true},
         "gate1": gate1_note,
