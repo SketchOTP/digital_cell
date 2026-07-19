@@ -1,22 +1,23 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260719-0326-d034-surface-bound-membrane-maturation
-- Project directive: D-034
-- Goal: Immature U / mature S surface maturation; recover Stage E if portable
-- Status: done — `D034_MATURATION_LAW_NOT_PORTABLE`
-- Acceptance: One D034_* conclusion with Gate evidence — met (Gate6 stop)
-- Touched files: chemistry-core v11 + d034_*; experiment-runner/d034; experiments/generated/d034; docs/d034_*
-- Next action: Architecture review of membrane-bound catalytic assembly; do not Stage F; do not add species or retune rates
+- ID: D-20260719-1312-d036-membrane-bound-catalytic-complex
+- Project directive: D-036
+- Goal: Audit D-035 parity; membrane-bound catalytic complex if warranted
+- Status: done — honest failure at Gate 1
+- Acceptance: met (exact conclusion with stop-on-failure evidence)
+- Touched files: chemistry-core d036_analysis/tests, experiment-runner/d036, experiments/generated/d036, docs/d036_*
+- Next action: none for D-036; fundamental Phase 1 membrane-turnover review
 
 ## Repo facts needed now
-- Gates 0–5 PASS (unit/smoke); Gate6 FAIL (k_req span ≈33× > 3×)
-- Local maturation ID works; portable renewal rate across U/S states does not
-- D-008 remains BLOCKED_NOT_RECOVERED
+- Conclusion: `D036_CATALYTIC_COMPLEX_ARCHITECTURE_REJECTED`
+- Gate 0: `D035_RUNTIME_DEFICIT_CONFIRMED` (parity OK; ~8.5× instantaneous deficit)
+- Gate 1: η span ≈60×; no v13
+- D-008 Stage E remains BLOCKED_NOT_RECOVERED
 
 ## Last validation
-- Command: cargo test d034_tests 9/9; d034 gates 0/2/4 PASS; Gate6 FAIL; pipeline stop
-- Result: D034_MATURATION_LAW_NOT_PORTABLE
+- Command: `cargo test -p chemistry-core --release --test d036_tests`; `d036 pipeline`
+- Result: unit PASS; pipeline Gate0 PASS Gate1 FAIL
 
 ## Open blockers
-- Single k_mature cannot balance forced U/S occupancy family under L_S∝Γ_S / B∝Γ_U a
+- Phase 1 membrane-turnover load/basis assumptions need fundamental review before new species

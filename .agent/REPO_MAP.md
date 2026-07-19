@@ -263,3 +263,18 @@ Concise navigation map for agents. Add entries as application code lands.
 - experiment-runner/src/d034.rs — Gates 0–8 pipeline (stops at Gate6)
 - experiments/generated/d034/ — preservation, exchange regression, ID, rate_reconstruction, manifest
 - docs/d034_surface_bound_membrane_maturation.md — terminal report
+
+## D-035 membrane catalytic assembly
+- `digital-protocell/crates/chemistry-core/src/d035_analysis.rs` — Gate 0–4 architecture/saturation/conservation/signature/rate screen + v12 helpers
+- `digital-protocell/crates/chemistry-core/src/config.rs` — `MembraneMetabolismV12MembraneCatalyticAssembly` + k_mature_basal/cat, K_A, K_U
+- `digital-protocell/crates/chemistry-core/src/surface_density.rs` — v12 saturating catalytic `maturation_rate_j`
+- `digital-protocell/crates/experiment-runner/src/d035.rs` — D-035 pipeline Gates 0–5
+- `digital-protocell/experiments/generated/d035/` — governed artifacts; terminal `D035_ISOLATED_CATALYTIC_RENEWAL_FAILURE`
+- `digital-protocell/docs/d035_membrane_catalytic_assembly.md` — completion report
+
+## D-036 membrane-bound catalytic complex
+- `digital-protocell/crates/chemistry-core/src/d036_analysis.rs` — Gate 0 observer/runtime/ledger parity; Gate 1 η architecture screen
+- `digital-protocell/crates/chemistry-core/tests/d036_tests.rs` — Gate 0–1 unit suite
+- `digital-protocell/crates/experiment-runner/src/d036.rs` — pipeline Gates 0–1 (stop before v13)
+- `digital-protocell/experiments/generated/d036/` — preservation, d035_parity, architecture_review, manifest
+- `digital-protocell/docs/d036_membrane_bound_catalytic_complex.md` — terminal report (`D036_CATALYTIC_COMPLEX_ARCHITECTURE_REJECTED`)

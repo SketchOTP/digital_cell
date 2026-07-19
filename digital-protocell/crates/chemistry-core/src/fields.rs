@@ -342,7 +342,7 @@ pub fn initialize_seed(grid: &Grid, params: &crate::config::SimParams, fields: &
                     fields.precursor[idx] = 0.0;
                     fields.activated_intermediate[idx] = 0.0;
                 }
-                EquationVersion::MembraneMetabolismV11SurfaceMaturation => {
+                EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly => {
                     fields.activated[idx] = 0.10 * h;
                     fields.membrane[idx] = 0.0;
                     fields.precursor[idx] = 0.0;

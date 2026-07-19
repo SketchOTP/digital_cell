@@ -106,6 +106,11 @@ pub enum EquationVersion {
     /// Stored fields φ,C,N,F,W,A,P,U,S (U = δΓ_U immature surface density); maturation U→S stub path.
     #[serde(rename = "membrane_metabolism_v11_surface_maturation")]
     MembraneMetabolismV11SurfaceMaturation,
+    /// D-035 mature-membrane-catalyzed assembly on the v11 dual-surface architecture.
+    /// Same stored fields φ,C,N,F,W,A,P,U,S; replaces linear U→S maturation with saturating
+    /// mature-catalyzed U+A→S+W: J = q f_A f_U (k0 Γ_max + k_cat Γ_S).
+    #[serde(rename = "membrane_metabolism_v12_membrane_catalytic_assembly")]
+    MembraneMetabolismV12MembraneCatalyticAssembly,
 }
 
 impl EquationVersion {
@@ -139,6 +144,9 @@ impl EquationVersion {
             Self::MembraneMetabolismV11SurfaceMaturation => {
                 "membrane_metabolism_v11_surface_maturation"
             }
+            Self::MembraneMetabolismV12MembraneCatalyticAssembly => {
+                "membrane_metabolism_v12_membrane_catalytic_assembly"
+            }
         }
     }
 
@@ -155,7 +163,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV8ReversibleSurfaceExchange
                 | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | Self::MembraneMetabolismV10ActivatedIntermediate
-                | Self::MembraneMetabolismV11SurfaceMaturation
+                | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly
         )
     }
 
@@ -171,7 +179,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV8ReversibleSurfaceExchange
                 | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | Self::MembraneMetabolismV10ActivatedIntermediate
-                | Self::MembraneMetabolismV11SurfaceMaturation
+                | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly
         )
     }
 
@@ -186,7 +194,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV8ReversibleSurfaceExchange
                 | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | Self::MembraneMetabolismV10ActivatedIntermediate
-                | Self::MembraneMetabolismV11SurfaceMaturation
+                | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly
         )
     }
 
@@ -207,7 +215,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV8ReversibleSurfaceExchange
                 | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | Self::MembraneMetabolismV10ActivatedIntermediate
-                | Self::MembraneMetabolismV11SurfaceMaturation
+                | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly
         )
     }
 
@@ -218,7 +226,7 @@ impl EquationVersion {
             Self::MembraneMetabolismV8ReversibleSurfaceExchange
                 | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | Self::MembraneMetabolismV10ActivatedIntermediate
-                | Self::MembraneMetabolismV11SurfaceMaturation
+                | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly
         )
     }
 
@@ -243,9 +251,18 @@ impl EquationVersion {
         matches!(self, Self::MembraneMetabolismV10ActivatedIntermediate)
     }
 
-    /// D-034 immature/mature dual-surface maturation (v11 only).
+    /// D-034/D-035 immature/mature dual-surface maturation (v11 linear or v12 catalytic).
     pub const fn is_surface_maturation(self) -> bool {
-        matches!(self, Self::MembraneMetabolismV11SurfaceMaturation)
+        matches!(
+            self,
+            Self::MembraneMetabolismV11SurfaceMaturation
+                | Self::MembraneMetabolismV12MembraneCatalyticAssembly
+        )
+    }
+
+    /// D-035 mature-membrane-catalyzed assembly (v12 only).
+    pub const fn is_membrane_catalytic_assembly(self) -> bool {
+        matches!(self, Self::MembraneMetabolismV12MembraneCatalyticAssembly)
     }
 
     /// True when the field schema carries the nine-field (P + X/U + S) payload (v10/v11).
@@ -264,7 +281,7 @@ impl EquationVersion {
             | Self::MembraneMetabolismV8ReversibleSurfaceExchange
             | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
             | Self::MembraneMetabolismV10ActivatedIntermediate
-            | Self::MembraneMetabolismV11SurfaceMaturation => STOICHIOMETRIC_SCHEMA_VERSION_V2,
+            | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly => STOICHIOMETRIC_SCHEMA_VERSION_V2,
             Self::MembraneMetabolismV1 => STOICHIOMETRIC_SCHEMA_VERSION_V1,
             Self::D001BulkV1 | Self::D003CrowdingV1 | Self::SurfaceTurnoverV1 => 0,
         }
@@ -280,7 +297,7 @@ impl EquationVersion {
             | Self::MembraneMetabolismV8ReversibleSurfaceExchange
             | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
             | Self::MembraneMetabolismV10ActivatedIntermediate
-            | Self::MembraneMetabolismV11SurfaceMaturation => SURFACE_DENSITY_SCHEMA_VERSION_V1,
+            | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly => SURFACE_DENSITY_SCHEMA_VERSION_V1,
             Self::MembraneMetabolismV1
             | Self::MembraneMetabolismV2Conservative
             | Self::MembraneMetabolismV3StructuralScaling => MEMBRANE_SCHEMA_VERSION_V1,
@@ -295,7 +312,7 @@ impl EquationVersion {
             | Self::MembraneMetabolismV8ReversibleSurfaceExchange
             | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
             | Self::MembraneMetabolismV10ActivatedIntermediate
-            | Self::MembraneMetabolismV11SurfaceMaturation => {
+            | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly => {
                 MEMBRANE_TRANSPORT_SCHEMA_VERSION_V3
             }
             // v6 keeps interface-protected M turnover with χ_M = 0 (diffusion-only M transport).
@@ -316,7 +333,7 @@ impl EquationVersion {
             | Self::MembraneMetabolismV8ReversibleSurfaceExchange
             | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
             | Self::MembraneMetabolismV10ActivatedIntermediate
-            | Self::MembraneMetabolismV11SurfaceMaturation => PRECURSOR_SCHEMA_VERSION_V1,
+            | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly => PRECURSOR_SCHEMA_VERSION_V1,
             _ => 0,
         }
     }
@@ -328,7 +345,7 @@ impl EquationVersion {
             | Self::MembraneMetabolismV8ReversibleSurfaceExchange
             | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
             | Self::MembraneMetabolismV10ActivatedIntermediate
-            | Self::MembraneMetabolismV11SurfaceMaturation => SURFACE_DENSITY_SCHEMA_VERSION_V1,
+            | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly => SURFACE_DENSITY_SCHEMA_VERSION_V1,
             _ => 0,
         }
     }
@@ -340,7 +357,7 @@ impl EquationVersion {
             Self::MembraneMetabolismV8ReversibleSurfaceExchange => 2,
             Self::MembraneMetabolismV9ActivatedSurfaceAssembly => 3,
             Self::MembraneMetabolismV10ActivatedIntermediate => 4,
-            Self::MembraneMetabolismV11SurfaceMaturation => SURFACE_EXCHANGE_SCHEMA_VERSION_V5,
+            Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly => SURFACE_EXCHANGE_SCHEMA_VERSION_V5,
             _ => 0,
         }
     }
@@ -348,7 +365,7 @@ impl EquationVersion {
     /// D-034 surface-maturation schema version (0 unless v11).
     pub const fn surface_maturation_schema_version(self) -> u32 {
         match self {
-            Self::MembraneMetabolismV11SurfaceMaturation => SURFACE_MATURATION_SCHEMA_VERSION_V1,
+            Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly => SURFACE_MATURATION_SCHEMA_VERSION_V1,
             _ => 0,
         }
     }
@@ -356,7 +373,7 @@ impl EquationVersion {
     /// D-034 dual-surface schema version (0 unless v11).
     pub const fn dual_surface_schema_version(self) -> u32 {
         match self {
-            Self::MembraneMetabolismV11SurfaceMaturation => DUAL_SURFACE_SCHEMA_VERSION_V1,
+            Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly => DUAL_SURFACE_SCHEMA_VERSION_V1,
             _ => 0,
         }
     }
@@ -642,6 +659,18 @@ pub struct SimParams {
     /// D-034 immature-surface maturation rate coefficient (U→S).
     #[serde(default = "default_k_mature")]
     pub k_mature: f64,
+    /// D-035 basal nucleation coefficient k_0 in catalytic maturation (v12).
+    #[serde(default = "default_k_mature_basal")]
+    pub k_mature_basal: f64,
+    /// D-035 mature-membrane catalytic coefficient k_cat (v12).
+    #[serde(default = "default_k_mature_cat")]
+    pub k_mature_cat: f64,
+    /// D-035 half-saturation for activated resource f_A = a/(K_A+a).
+    #[serde(default = "default_k_a_half", rename = "K_A")]
+    pub k_a_half: f64,
+    /// D-035 half-saturation for immature surface f_U = Γ_U/(K_U+Γ_U).
+    #[serde(default = "default_k_u_half", rename = "K_U")]
+    pub k_u_half: f64,
     /// D-034 immature-surface tangential diffusivity D_U (defaults to D_Γ).
     #[serde(default = "default_d_u")]
     pub d_u: f64,
@@ -776,6 +805,22 @@ fn default_d_x() -> f64 {
 
 fn default_k_mature() -> f64 {
     0.0
+}
+
+fn default_k_mature_basal() -> f64 {
+    0.0
+}
+
+fn default_k_mature_cat() -> f64 {
+    0.0
+}
+
+fn default_k_a_half() -> f64 {
+    0.45
+}
+
+fn default_k_u_half() -> f64 {
+    0.22
 }
 
 fn default_d_u() -> f64 {
@@ -996,6 +1041,10 @@ impl Default for SimParams {
             k_relax: default_k_relax(),
             d_x: default_d_x(),
             k_mature: default_k_mature(),
+            k_mature_basal: default_k_mature_basal(),
+            k_mature_cat: default_k_mature_cat(),
+            k_a_half: default_k_a_half(),
+            k_u_half: default_k_u_half(),
             d_u: default_d_u(),
             k_gamma_decay: default_k_gamma_decay(),
             d_gamma: default_d_gamma(),

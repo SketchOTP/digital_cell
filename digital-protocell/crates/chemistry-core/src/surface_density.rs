@@ -531,19 +531,41 @@ pub fn relax_rate(intermediate: f64, params: &SimParams) -> f64 {
     params.k_relax * intermediate.max(0.0)
 }
 
-/// D-034 maturation volumetric rate density `J_mature` (before ×δ) for U+A→S+W.
+/// D-034/D-035 maturation volumetric rate density `J_mature` (before ×δ) for U+A→S+W.
 ///
-/// `J_mature = k_mature · q(C) · a · Γ_U` with `a = A/A_ref`, `Γ_U = U/δ`.
-/// Converts in place (no free-capacity factor): θ_total is unchanged by U→S.
+/// v11 linear: `J = k_mature · q(C) · a · Γ_U`
+/// v12 catalytic: `J = q · f_A · f_U · (k0 Γ_max + k_cat Γ_S)` with
+/// `f_A = a/(K_A+a)`, `f_U = Γ_U/(K_U+Γ_U)`.
 #[inline]
 pub fn maturation_rate_j(
     activated: f64,
     catalyst: f64,
     gamma_u: f64,
+    gamma_s: f64,
     params: &SimParams,
 ) -> f64 {
     let q_c = membrane_catalyst_saturation(catalyst, params);
     let a = activated_activity(activated, params.a_reference);
+    if params.equation_version.is_membrane_catalytic_assembly() {
+        let k_a = params.k_a_half.max(0.0);
+        let k_u = params.k_u_half.max(0.0);
+        let f_a = if a <= 0.0 {
+            0.0
+        } else {
+            a / (k_a + a)
+        };
+        let gu = gamma_u.max(0.0);
+        let f_u = if gu <= 0.0 {
+            0.0
+        } else {
+            gu / (k_u + gu)
+        };
+        return q_c
+            * f_a
+            * f_u
+            * (params.k_mature_basal.max(0.0) * params.gamma_max.max(0.0)
+                + params.k_mature_cat.max(0.0) * gamma_s.max(0.0));
+    }
     params.k_mature * q_c * a * gamma_u.max(0.0)
 }
 
@@ -561,7 +583,13 @@ pub fn apply_maturation_bounded(
     dt: f64,
     params: &SimParams,
 ) -> (f64, f64, f64, f64, f64) {
-    if params.k_mature <= 0.0
+    let v12 = params.equation_version.is_membrane_catalytic_assembly();
+    let has_rate = if v12 {
+        params.k_mature_basal > 0.0 || params.k_mature_cat > 0.0
+    } else {
+        params.k_mature > 0.0
+    };
+    if !has_rate
         || !params.equation_version.is_surface_maturation()
         || delta <= params.delta_floor
         || dt <= 0.0
@@ -569,7 +597,8 @@ pub fn apply_maturation_bounded(
         return (immature, activated, surface, 0.0, 0.0);
     }
     let gamma_u = immature.max(0.0) / delta;
-    let j = maturation_rate_j(activated, catalyst, gamma_u, params);
+    let gamma_s = surface.max(0.0) / delta;
+    let j = maturation_rate_j(activated, catalyst, gamma_u, gamma_s, params);
     let r_want = delta * j * dt;
     let r = r_want
         .min(immature.max(0.0))

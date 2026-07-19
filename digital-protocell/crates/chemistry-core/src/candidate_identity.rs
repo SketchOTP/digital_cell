@@ -784,7 +784,7 @@ precursor_schema_version={};membrane_transport_schema={}",
                 ));
             }
         }
-        EquationVersion::MembraneMetabolismV11SurfaceMaturation => {
+        EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly => {
             s.push_str(&format!(
                 ";d_a={};beta_c={};beta_a={};beta_n={};beta_f={};beta_w={}",
                 params.d_a,
@@ -812,7 +812,7 @@ d008_stage_b_enabled={};eps_m={};membrane_schema_version={}",
             }
             s.push_str(&format!(
                 ";k_precursor={};k_precursor_decay={};d_p={};d_u={};k_exchange={};K_exchange={};p_reference={};\
-a_reference={};k_mature={};k_gamma_decay={};d_gamma={};gamma_max={};gamma_reference={};\
+a_reference={};k_mature={};k_mature_basal={};k_mature_cat={};K_A={};K_U={};k_gamma_decay={};d_gamma={};gamma_max={};gamma_reference={};\
 eta_n={};delta_floor={};delta_face_eps={}",
                 params.k_precursor,
                 params.k_precursor_decay,
@@ -823,6 +823,10 @@ eta_n={};delta_floor={};delta_face_eps={}",
                 params.p_reference,
                 params.a_reference,
                 params.k_mature,
+                params.k_mature_basal,
+                params.k_mature_cat,
+                params.k_a_half,
+                params.k_u_half,
                 params.k_gamma_decay,
                 params.d_gamma,
                 params.gamma_max,
@@ -930,7 +934,7 @@ pub fn build_candidate_identity(
             EquationVersion::D001BulkV1
             | EquationVersion::D003CrowdingV1
             | EquationVersion::MembraneMetabolismV1
-            | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly | EquationVersion::MembraneMetabolismV7SurfaceDensity | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly | EquationVersion::MembraneMetabolismV10ActivatedIntermediate | EquationVersion::MembraneMetabolismV11SurfaceMaturation => params.k_structure,
+            | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly | EquationVersion::MembraneMetabolismV7SurfaceDensity | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly | EquationVersion::MembraneMetabolismV10ActivatedIntermediate | EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly => params.k_structure,
         },
         k_rep: params.k_rep,
         initial_condition: InitialConditionConfiguration {

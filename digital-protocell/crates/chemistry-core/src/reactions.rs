@@ -110,7 +110,7 @@ pub fn compute_reactions_at(
             | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
                 | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | EquationVersion::MembraneMetabolismV10ActivatedIntermediate
-                | EquationVersion::MembraneMetabolismV11SurfaceMaturation => {
+                | EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly => {
             return ReactionRates::default();
         }
         EquationVersion::D001BulkV1
@@ -140,7 +140,7 @@ pub fn compute_reactions_at(
             | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
                 | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | EquationVersion::MembraneMetabolismV10ActivatedIntermediate
-                | EquationVersion::MembraneMetabolismV11SurfaceMaturation => {
+                | EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly => {
             unreachable!("handled before legacy chemistry")
         }
     };
@@ -245,7 +245,7 @@ pub fn integrated_structure_prefactor(
             | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
                 | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | EquationVersion::MembraneMetabolismV10ActivatedIntermediate
-                | EquationVersion::MembraneMetabolismV11SurfaceMaturation => {}
+                | EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly => {}
         }
     }
     b

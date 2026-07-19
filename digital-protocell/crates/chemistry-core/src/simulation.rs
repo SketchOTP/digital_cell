@@ -231,7 +231,7 @@ impl Simulation {
                 EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly | EquationVersion::MembraneMetabolismV7SurfaceDensity | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
                 | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | EquationVersion::MembraneMetabolismV10ActivatedIntermediate
-                | EquationVersion::MembraneMetabolismV11SurfaceMaturation
+                | EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly
                     if self.params.d008_stage_b_enabled =>
                 {
                     self.try_d008_stage_b(attempt_dt)
@@ -241,7 +241,7 @@ impl Simulation {
             | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
                 | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | EquationVersion::MembraneMetabolismV10ActivatedIntermediate
-                | EquationVersion::MembraneMetabolismV11SurfaceMaturation => {
+                | EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly => {
                     match self.params.d008_stage_mode {
                         D008StageMode::Transport => {
                             self.try_membrane_metabolism_v1_transport(attempt_dt)
@@ -2771,7 +2771,7 @@ impl Simulation {
                     v.to_bits().hash(&mut hasher);
                 }
             }
-            EquationVersion::MembraneMetabolismV11SurfaceMaturation => {
+            EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly => {
                 for v in &self.fields.activated {
                     v.to_bits().hash(&mut hasher);
                 }
@@ -2820,7 +2820,7 @@ impl Simulation {
                 append_field_bits(&mut bytes, &self.fields.precursor);
                 append_field_bits(&mut bytes, &self.fields.activated_intermediate);
             }
-            EquationVersion::MembraneMetabolismV11SurfaceMaturation => {
+            EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly => {
                 append_field_bits(&mut bytes, &self.fields.activated);
                 append_field_bits(&mut bytes, &self.fields.membrane);
                 append_field_bits(&mut bytes, &self.fields.precursor);

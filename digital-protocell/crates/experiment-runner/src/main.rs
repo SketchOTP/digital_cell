@@ -32,6 +32,8 @@ mod d031;
 mod d032;
 mod d033;
 mod d034;
+mod d035;
+mod d036;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -202,6 +204,14 @@ enum Commands {
     D034 {
         #[command(subcommand)]
         action: D034Commands,
+    },
+    D035 {
+        #[command(subcommand)]
+        action: D035Commands,
+    },
+    D036 {
+        #[command(subcommand)]
+        action: D036Commands,
     },
 }
 
@@ -489,6 +499,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D032 { action } => run_d032(action)?,
         Commands::D033 { action } => run_d033(action)?,
         Commands::D034 { action } => run_d034(action)?,
+        Commands::D035 { action } => run_d035(action)?,
+        Commands::D036 { action } => run_d036(action)?,
     }
     Ok(())
 }
@@ -2442,6 +2454,149 @@ fn run_d034(action: D034Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["pass"],
                 result["conclusion"],
                 out.join("result.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D035Commands {
+    /// Preservation + Gate 0–1 architecture/saturation screen (stop on fail; no chemistry change).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d035")]
+        output: PathBuf,
+    },
+    Gate0 {
+        #[arg(long, default_value = "experiments/generated/d035")]
+        output: PathBuf,
+    },
+    ArchitectureReview {
+        #[arg(long, default_value = "experiments/generated/d035/architecture_review")]
+        output: PathBuf,
+    },
+    Gate1 {
+        #[arg(long, default_value = "experiments/generated/d035/saturation_identification")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d035_artifact_path(path: &Path) -> PathBuf {
+    if path.is_absolute() {
+        return path.to_path_buf();
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../..")
+        .join(path)
+}
+
+fn run_d035(action: D035Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D035Commands::Pipeline { output } => {
+            let out = resolve_d035_artifact_path(&output);
+            let result = d035::run_pipeline(&out)?;
+            println!(
+                "D-035 pipeline conclusion={} pass={} -> {}",
+                result["conclusion"],
+                result["pass"],
+                out.join("manifest.json").display()
+            );
+        }
+        D035Commands::Gate0 { output } => {
+            let out = resolve_d035_artifact_path(&output);
+            let result = d035::run_pipeline(&out)?;
+            println!(
+                "D-035 gate0 conclusion={} pass={} -> {}",
+                result["conclusion"],
+                result["pass"],
+                out.join("manifest.json").display()
+            );
+        }
+        D035Commands::ArchitectureReview { output } => {
+            let out = resolve_d035_artifact_path(&output);
+            let result = d035::run_gate0_architecture_review(&out)?;
+            println!(
+                "D-035 architecture_review conclusion={} pass={} -> {}",
+                result["conclusion"],
+                result["pass"],
+                out.join("architecture_review.json").display()
+            );
+        }
+        D035Commands::Gate1 { output } => {
+            let out = resolve_d035_artifact_path(&output);
+            let result = d035::run_gate1_saturation_identification(&out)?;
+            println!(
+                "D-035 gate1 conclusion={} pass={} -> {}",
+                result["conclusion"],
+                result["pass"],
+                out.join("saturation_identification.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D036Commands {
+    /// Preservation + Gate 0 D-035 observer/runtime parity audit (stop before v13 on defect).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d036")]
+        output: PathBuf,
+    },
+    Gate0 {
+        #[arg(long, default_value = "experiments/generated/d036/d035_parity")]
+        output: PathBuf,
+        #[arg(long, default_value_t = 2500)]
+        gate5_advance: u64,
+    },
+    Gate1 {
+        #[arg(long, default_value = "experiments/generated/d036/architecture_review")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d036_artifact_path(path: &Path) -> PathBuf {
+    if path.is_absolute() {
+        return path.to_path_buf();
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../..")
+        .join(path)
+}
+
+fn run_d036(action: D036Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D036Commands::Pipeline { output } => {
+            let out = resolve_d036_artifact_path(&output);
+            let result = d036::run_pipeline(&out)?;
+            println!(
+                "D-036 pipeline conclusion={} pass={} -> {}",
+                result["conclusion"],
+                result["pass"],
+                out.join("manifest.json").display()
+            );
+        }
+        D036Commands::Gate0 {
+            output,
+            gate5_advance,
+        } => {
+            let out = resolve_d036_artifact_path(&output);
+            let result = d036::run_gate0_parity(&out, gate5_advance)?;
+            println!(
+                "D-036 gate0 conclusion={} pass={} -> {}",
+                result["conclusion"],
+                result["pass"],
+                out.join("parity_summary.json").display()
+            );
+        }
+        D036Commands::Gate1 { output } => {
+            let out = resolve_d036_artifact_path(&output);
+            let result = d036::run_gate1_architecture(&out)?;
+            println!(
+                "D-036 gate1 conclusion={} pass={} -> {}",
+                result["conclusion"],
+                result["pass"],
+                out.join("architecture_review.json").display()
             );
         }
     }
