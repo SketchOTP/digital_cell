@@ -38,6 +38,7 @@ mod d037;
 mod d038;
 mod d039;
 mod d040;
+mod d041;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -232,6 +233,10 @@ enum Commands {
     D040 {
         #[command(subcommand)]
         action: D040Commands,
+    },
+    D041 {
+        #[command(subcommand)]
+        action: D041Commands,
     },
 }
 
@@ -525,6 +530,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D038 { action } => run_d038(action)?,
         Commands::D039 { action } => run_d039(action)?,
         Commands::D040 { action } => run_d040(action)?,
+        Commands::D041 { action } => run_d041(action)?,
     }
     Ok(())
 }
@@ -2624,6 +2630,22 @@ enum D040Commands {
     },
 }
 
+#[derive(Subcommand)]
+enum D041Commands {
+    /// Structural A-retention basin-accessibility qualification (Gates 0–10).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d041")]
+        output: PathBuf,
+    },
+    /// Focused ρ_A zero-S / low-S bootstrap diagnostic (does not certify gates).
+    DiagnoseRho {
+        #[arg(long, default_value = "experiments/generated/d041")]
+        output: PathBuf,
+        #[arg(long, default_value_t = 15_000)]
+        steps: u64,
+    },
+}
+
 fn resolve_d037_artifact_path(path: &Path) -> PathBuf {
     if path.is_absolute() {
         return path.to_path_buf();
@@ -2642,6 +2664,10 @@ fn resolve_d039_artifact_path(path: &Path) -> PathBuf {
 }
 
 fn resolve_d040_artifact_path(path: &Path) -> PathBuf {
+    resolve_d037_artifact_path(path)
+}
+
+fn resolve_d041_artifact_path(path: &Path) -> PathBuf {
     resolve_d037_artifact_path(path)
 }
 
@@ -2703,6 +2729,34 @@ fn run_d040(action: D040Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["primary_conclusion"],
                 result["selected_route"],
                 out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+fn run_d041(action: D041Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D041Commands::Pipeline { output } => {
+            let out = resolve_d041_artifact_path(&output);
+            let result = d041::run_pipeline(&out)?;
+            println!(
+                "D-041 pipeline primary={} route={} rho_a={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                result.get("selected_rho_a").unwrap_or(&serde_json::Value::Null),
+                out.join("manifest.json").display()
+            );
+        }
+        D041Commands::DiagnoseRho { output, steps } => {
+            let out = resolve_d041_artifact_path(&output);
+            let result = d041::diagnose_rho_bootstrap(&out, steps)?;
+            println!(
+                "D-041 diagnose-rho steps={} rows={} -> {}",
+                result["steps"],
+                result["rows"].as_array().map(|a| a.len()).unwrap_or(0),
+                out.join("retention_candidates/bootstrap_diagnostic.json")
+                    .display()
             );
         }
     }
