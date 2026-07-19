@@ -2,9 +2,29 @@
 
 use crate::config::{
     D008StageMode, EquationVersion, SimParams, DISH_RADIUS, DX, GRID_HEIGHT, GRID_WIDTH,
-    RESERVOIR_WIDTH, STOICHIOMETRIC_SCHEMA_VERSION_V1, STOICHIOMETRIC_SCHEMA_VERSION_V2,
+    MEMBRANE_TRANSPORT_SCHEMA_3_STRUCTURAL_A_RETENTION, RESERVOIR_WIDTH,
+    STOICHIOMETRIC_SCHEMA_VERSION_V1, STOICHIOMETRIC_SCHEMA_VERSION_V2,
+    TRANSPORT_SCHEMA_VERSION_V1, TRANSPORT_SCHEMA_VERSION_V3,
 };
 use serde::{Deserialize, Serialize};
+
+/// Append transport-schema identity fragments (D-016 / D-041). Historical V1 + ρ_A=1 is silent.
+fn append_transport_schema_identity(s: &mut String, params: &SimParams) {
+    if params.transport_schema_version != TRANSPORT_SCHEMA_VERSION_V1 {
+        s.push_str(&format!(
+            ";transport_schema_version={}",
+            params.transport_schema_version
+        ));
+    }
+    if params.transport_schema_version == TRANSPORT_SCHEMA_VERSION_V3 {
+        s.push_str(&format!(
+            ";{};rho_a={}",
+            MEMBRANE_TRANSPORT_SCHEMA_3_STRUCTURAL_A_RETENTION, params.rho_a
+        ));
+    } else if (params.rho_a - 1.0).abs() > 0.0 {
+        s.push_str(&format!(";rho_a={}", params.rho_a));
+    }
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
@@ -224,12 +244,7 @@ k_d008_activated_decay={};k_d008_catalyst_turnover={};k_d008_structure={};d008_a
                 params.eta_c, params.eta_phi, params.eta_m
             ));
             // ponytail: omit default transport schema v1 so D-015 frozen hashes remain stable.
-            if params.transport_schema_version != crate::config::TRANSPORT_SCHEMA_VERSION_V1 {
-                s.push_str(&format!(
-                    ";transport_schema_version={}",
-                    params.transport_schema_version
-                ));
-            }
+            append_transport_schema_identity(&mut s, params);
         }
         EquationVersion::MembraneMetabolismV3StructuralScaling => {
             s.push_str(&format!(
@@ -278,12 +293,7 @@ k_d008_activated_decay={};k_d008_catalyst_turnover={};k_d008_structure={};d008_a
                 crate::structural_kinetics::STRUCTURAL_SCHEMA_VERSION_V3,
                 crate::structural_kinetics::V3_SELECTED_MECHANISM.as_str(),
             ));
-            if params.transport_schema_version != crate::config::TRANSPORT_SCHEMA_VERSION_V1 {
-                s.push_str(&format!(
-                    ";transport_schema_version={}",
-                    params.transport_schema_version
-                ));
-            }
+            append_transport_schema_identity(&mut s, params);
         }
         EquationVersion::MembraneMetabolismV4InterfaceProtected => {
             s.push_str(&format!(
@@ -335,12 +345,7 @@ k_d008_activated_decay={};k_d008_catalyst_turnover={};k_d008_structure={};d008_a
                 crate::structural_kinetics::V3_SELECTED_MECHANISM.as_str(),
                 crate::config::MEMBRANE_SCHEMA_VERSION_V2,
             ));
-            if params.transport_schema_version != crate::config::TRANSPORT_SCHEMA_VERSION_V1 {
-                s.push_str(&format!(
-                    ";transport_schema_version={}",
-                    params.transport_schema_version
-                ));
-            }
+            append_transport_schema_identity(&mut s, params);
         }
         EquationVersion::MembraneMetabolismV5InterfaceAffinity => {
             s.push_str(&format!(
@@ -395,12 +400,7 @@ k_d008_activated_decay={};k_d008_catalyst_turnover={};k_d008_structure={};d008_a
                 crate::config::MEMBRANE_SCHEMA_VERSION_V2,
                 crate::config::MEMBRANE_TRANSPORT_SCHEMA_VERSION_V2,
             ));
-            if params.transport_schema_version != crate::config::TRANSPORT_SCHEMA_VERSION_V1 {
-                s.push_str(&format!(
-                    ";transport_schema_version={}",
-                    params.transport_schema_version
-                ));
-            }
+            append_transport_schema_identity(&mut s, params);
         }
         EquationVersion::MembraneMetabolismV6PrecursorAssembly => {
             s.push_str(&format!(
@@ -458,12 +458,7 @@ k_d008_activated_decay={};k_d008_catalyst_turnover={};k_d008_structure={};d008_a
                 crate::config::MEMBRANE_SCHEMA_VERSION_V2,
                 crate::config::PRECURSOR_SCHEMA_VERSION_V1,
             ));
-            if params.transport_schema_version != crate::config::TRANSPORT_SCHEMA_VERSION_V1 {
-                s.push_str(&format!(
-                    ";transport_schema_version={}",
-                    params.transport_schema_version
-                ));
-            }
+            append_transport_schema_identity(&mut s, params);
         }
         EquationVersion::MembraneMetabolismV7SurfaceDensity => {
             s.push_str(&format!(
@@ -533,12 +528,7 @@ surface_density_schema_version={};surface_exchange_schema_version=1;precursor_sc
                 crate::config::PRECURSOR_SCHEMA_VERSION_V1,
                 crate::config::MEMBRANE_TRANSPORT_SCHEMA_VERSION_V3,
             ));
-            if params.transport_schema_version != crate::config::TRANSPORT_SCHEMA_VERSION_V1 {
-                s.push_str(&format!(
-                    ";transport_schema_version={}",
-                    params.transport_schema_version
-                ));
-            }
+            append_transport_schema_identity(&mut s, params);
         }
         EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange => {
             s.push_str(&format!(
@@ -610,12 +600,7 @@ surface_density_schema_version={};surface_exchange_schema_version=2;precursor_sc
                 crate::config::PRECURSOR_SCHEMA_VERSION_V1,
                 crate::config::MEMBRANE_TRANSPORT_SCHEMA_VERSION_V3,
             ));
-            if params.transport_schema_version != crate::config::TRANSPORT_SCHEMA_VERSION_V1 {
-                s.push_str(&format!(
-                    ";transport_schema_version={}",
-                    params.transport_schema_version
-                ));
-            }
+            append_transport_schema_identity(&mut s, params);
         }
         EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {
             s.push_str(&format!(
@@ -692,12 +677,7 @@ precursor_schema_version={};membrane_transport_schema={}",
                 crate::config::PRECURSOR_SCHEMA_VERSION_V1,
                 crate::config::MEMBRANE_TRANSPORT_SCHEMA_VERSION_V3,
             ));
-            if params.transport_schema_version != crate::config::TRANSPORT_SCHEMA_VERSION_V1 {
-                s.push_str(&format!(
-                    ";transport_schema_version={}",
-                    params.transport_schema_version
-                ));
-            }
+            append_transport_schema_identity(&mut s, params);
         }
         EquationVersion::MembraneMetabolismV10ActivatedIntermediate => {
             s.push_str(&format!(
@@ -777,12 +757,7 @@ precursor_schema_version={};membrane_transport_schema={}",
                 crate::config::PRECURSOR_SCHEMA_VERSION_V1,
                 crate::config::MEMBRANE_TRANSPORT_SCHEMA_VERSION_V3,
             ));
-            if params.transport_schema_version != crate::config::TRANSPORT_SCHEMA_VERSION_V1 {
-                s.push_str(&format!(
-                    ";transport_schema_version={}",
-                    params.transport_schema_version
-                ));
-            }
+            append_transport_schema_identity(&mut s, params);
         }
         EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly => {
             s.push_str(&format!(
@@ -865,12 +840,7 @@ dual_surface_schema_version={};precursor_schema_version={};membrane_transport_sc
                 crate::config::PRECURSOR_SCHEMA_VERSION_V1,
                 crate::config::MEMBRANE_TRANSPORT_SCHEMA_VERSION_V3,
             ));
-            if params.transport_schema_version != crate::config::TRANSPORT_SCHEMA_VERSION_V1 {
-                s.push_str(&format!(
-                    ";transport_schema_version={}",
-                    params.transport_schema_version
-                ));
-            }
+            append_transport_schema_identity(&mut s, params);
         }
         EquationVersion::D001BulkV1
         | EquationVersion::D003CrowdingV1

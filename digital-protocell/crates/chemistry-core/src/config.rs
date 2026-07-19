@@ -32,6 +32,11 @@ pub const MEMBRANE_TRANSPORT_SCHEMA_VERSION_V2: u32 = 2;
 pub const TRANSPORT_SCHEMA_VERSION_V1: u32 = 1;
 /// D-016 calibrated passive waste transport schema (D_W / β_W repair).
 pub const TRANSPORT_SCHEMA_VERSION_V2: u32 = 2;
+/// D-041 structural-interface A retention: Π_A = ρ_A exp(−β_A θ_S) on φ-crossing faces.
+pub const TRANSPORT_SCHEMA_VERSION_V3: u32 = 3;
+/// Governed name for transport schema 3 (D-041).
+pub const MEMBRANE_TRANSPORT_SCHEMA_3_STRUCTURAL_A_RETENTION: &str =
+    "membrane_transport_schema_3_structural_a_retention";
 /// D-023 eight-field soluble-precursor + interface-assembly schema.
 pub const PRECURSOR_SCHEMA_VERSION_V1: u32 = 1;
 /// D-024 conserved interfacial surface-density schema (S = δΓ).
@@ -649,9 +654,13 @@ pub struct SimParams {
     /// D-012 v2 membrane yield η_M ∈ (0, 1].
     #[serde(default = "default_eta_m")]
     pub eta_m: f64,
-    /// D-016 transport schema version (1 = baseline; 2 = calibrated W transport).
+    /// D-016/D-041 transport schema version (1 = baseline; 2 = calibrated W; 3 = structural A retention).
     #[serde(default = "default_transport_schema_version")]
     pub transport_schema_version: u32,
+    /// D-041 primitive structural-interface A permeability ρ_A.
+    /// Historical behavior is ρ_A = 1. Applied only under transport schema 3 on φ-crossing faces.
+    #[serde(default = "default_rho_a")]
+    pub rho_a: f64,
     /// D-019 analysis-only mechanism override. `None` uses equation-version defaults.
     /// Must remain `None` for governed v2 identity hashes.
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -787,6 +796,10 @@ fn default_eta_m() -> f64 {
 
 fn default_transport_schema_version() -> u32 {
     TRANSPORT_SCHEMA_VERSION_V1
+}
+
+fn default_rho_a() -> f64 {
+    1.0
 }
 
 fn default_eps_m() -> f64 {
@@ -1076,6 +1089,7 @@ impl Default for SimParams {
             eta_phi: default_eta_phi(),
             eta_m: default_eta_m(),
             transport_schema_version: default_transport_schema_version(),
+            rho_a: default_rho_a(),
             d019_mechanism_probe: None,
             eps_m: default_eps_m(),
             chi_m: default_chi_m(),

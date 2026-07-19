@@ -1,24 +1,23 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260719-1536-d040-exchange-precursor-coupling-decomposition
-- Project directive: D-040
-- Goal: Diagnose exchange–precursor coupling failure under schema-3 v8 without changing chemistry
+- ID: D-20260719-d041-structural-a-retention-basin-accessibility
+- Project directive: D-041
+- Goal: Weak structural φ-interface A retention for autonomous healthy-basin accessibility
 - Status: done
-- Acceptance: met — `D040_MEMBRANE_METABOLISM_BISTABILITY` (Route F)
-- Touched files: chemistry-core/d040_analysis+tests, experiment-runner/d040, docs/d040_*, experiments/generated/d040, .agent/*
-- Next action: basin-accessibility / local-bootstrap directive; do not alter validated exchange law
+- Acceptance: met (honest stop) — `D041_STRUCTURAL_A_RETENTION_NOT_SUFFICIENT` at Gate 2
+- Touched files: membrane_transport, config, candidate_identity, d041_analysis/tests, experiment-runner/d041, docs/d041_*, experiments/generated/d041, .agent/*
+- Next action: architect review of local conserved A-binding / activation-buffer (not in D-041); do not weaken exchange or restore constitutive S→W
 
 ## Repo facts needed now
-- Record: SCHEMA3_V8_MAINTENANCE_COUPLING_FAILED
-- Gate1: EXCHANGE_LAW_PARITY_PASS_PRECURSOR_BELOW_EQUILIBRIUM
-- Gate3: PASSIVE_EXCHANGE_CAN_REPAIR_WITH_SUFFICIENT_PRECURSOR (p≈0.02)
-- Gate4: synthesis_capacity_sufficient (offline exchange)
+- Record: VALIDATED_EXCHANGE_LAW_FROZEN
+- Transport schema 3 implemented; historical defaults unchanged
+- Gate0 Route F confirmed; Gate2: no permitted ρ_A recovers basin
 - Stage E: BLOCKED_NOT_RECOVERED
 
 ## Last validation
-- Command: cargo test -p chemistry-core --test d040_tests --release; D040_MAX_ACCEPTED=2000 d040 pipeline
-- Result: 15/15 PASS; pipeline Route_F / D040_MEMBRANE_METABOLISM_BISTABILITY
+- Command: cargo test -p chemistry-core --test d041_tests --release; d041 Gate0; diagnose-rho --steps 12000
+- Result: 9/9 PASS; Gate0 pass; diagnostic shows ρ_A≤1 does not lift late θ into healthy basin
 
 ## Open blockers
-- None for D-040 closeout
+- Basin accessibility still unresolved; structural A retention rejected as permanent fix

@@ -42,6 +42,9 @@ pub fn permeability(species: TransportSpecies, geometry: FaceGeometry, params: &
 }
 
 /// D-024 v7: interface-crossing faces attenuate by exp(−β·θΓ); co-phase faces pass through.
+///
+/// D-041 schema 3: for Activated only, multiply by frozen species constant `ρ_A`
+/// on φ-crossing faces: Π_A = ρ_A exp(−β_A θ_S). Historical default is ρ_A = 1.
 pub fn permeability_surface_occupancy(
     species: TransportSpecies,
     phi_i: f64,
@@ -70,7 +73,29 @@ pub fn permeability_surface_occupancy(
     let theta = 0.5
         * (theta_gamma(gamma_i, params.gamma_reference)
             + theta_gamma(gamma_j, params.gamma_reference));
-    (-beta * theta).exp()
+    let mature = (-beta * theta).exp();
+    if species == TransportSpecies::Activated
+        && params.transport_schema_version == crate::config::TRANSPORT_SCHEMA_VERSION_V3
+    {
+        params.rho_a.max(0.0) * mature
+    } else {
+        mature
+    }
+}
+
+/// Mature-membrane A permeability at occupancy θ (schema-independent factor exp(−β_A θ)).
+#[inline]
+pub fn mature_a_permeability(theta: f64, beta_a: f64) -> f64 {
+    (-beta_a * theta.max(0.0)).exp()
+}
+
+/// Structural A retention factor on a φ-crossing face under schema 3.
+#[inline]
+pub fn structural_a_retention_factor(params: &SimParams, theta: f64) -> f64 {
+    if params.transport_schema_version != crate::config::TRANSPORT_SCHEMA_VERSION_V3 {
+        return 1.0;
+    }
+    params.rho_a.max(0.0) * mature_a_permeability(theta, params.beta_a)
 }
 
 #[inline]
