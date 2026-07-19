@@ -35,6 +35,7 @@ mod d034;
 mod d035;
 mod d036;
 mod d037;
+mod d038;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -217,6 +218,10 @@ enum Commands {
     D037 {
         #[command(subcommand)]
         action: D037Commands,
+    },
+    D038 {
+        #[command(subcommand)]
+        action: D038Commands,
     },
 }
 
@@ -507,6 +512,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D035 { action } => run_d035(action)?,
         Commands::D036 { action } => run_d036(action)?,
         Commands::D037 { action } => run_d037(action)?,
+        Commands::D038 { action } => run_d038(action)?,
     }
     Ok(())
 }
@@ -2579,6 +2585,15 @@ enum D037Commands {
     },
 }
 
+#[derive(Subcommand)]
+enum D038Commands {
+    /// Correct D-021 surface-turnover transfer and replay renewal architectures.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d038")]
+        output: PathBuf,
+    },
+}
+
 fn resolve_d037_artifact_path(path: &Path) -> PathBuf {
     if path.is_absolute() {
         return path.to_path_buf();
@@ -2586,6 +2601,10 @@ fn resolve_d037_artifact_path(path: &Path) -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .join("../..")
         .join(path)
+}
+
+fn resolve_d038_artifact_path(path: &Path) -> PathBuf {
+    resolve_d037_artifact_path(path)
 }
 
 fn run_d037(action: D037Commands) -> Result<(), Box<dyn std::error::Error>> {
@@ -2597,6 +2616,22 @@ fn run_d037(action: D037Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-037 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["selected_route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+fn run_d038(action: D038Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D038Commands::Pipeline { output } => {
+            let out = resolve_d038_artifact_path(&output);
+            let result = d038::run_pipeline(&out)?;
+            println!(
+                "D-038 pipeline primary={} arch={} -> {}",
+                result["primary_conclusion"],
+                result["selected_architecture"],
                 out.join("manifest.json").display()
             );
         }
