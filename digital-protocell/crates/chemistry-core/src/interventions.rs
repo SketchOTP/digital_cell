@@ -3,6 +3,7 @@
 use crate::config::{InterventionAction, SimParams};
 use crate::fields::FieldBuffers;
 use crate::grid::Grid;
+use crate::reactions::interface_weight;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
@@ -28,6 +29,111 @@ impl WoundRegion {
         let c = self.local_catalyst_mass(grid, &fields.catalyst)
             / self.local_catalyst_before.max(1e-12);
         (s, c)
+    }
+}
+
+/// Result of a declared membrane S→W damage intervention (D-039).
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct MembraneArcDamageReport {
+    pub fraction_requested: f64,
+    pub total_s_before: f64,
+    pub s_removed: f64,
+    pub w_gained: f64,
+    pub cells_touched: usize,
+    pub arc_half_angle_rad: f64,
+    pub local_occupancy_before: f64,
+    pub local_occupancy_after: f64,
+}
+
+/// Convert a contiguous interface-arc fraction of total S into W.
+///
+/// Geometry is selected only at the intervention moment. Does not reseed S,
+/// normalize coverage, change rates, or invoke a repair controller.
+pub fn apply_declared_membrane_arc_damage(
+    grid: &Grid,
+    fields: &mut FieldBuffers,
+    fraction_of_total_s: f64,
+) -> MembraneArcDamageReport {
+    let fraction = fraction_of_total_s.clamp(0.0, 1.0);
+    let n = grid.width * grid.height;
+    let mut total_s = 0.0;
+    let mut interface_cells: Vec<(usize, f64, f64)> = Vec::new(); // idx, s, theta
+    for j in 0..grid.height {
+        for i in 0..grid.width {
+            let idx = Grid::index(grid.width, i, j);
+            if !grid.in_dish(idx) {
+                continue;
+            }
+            let s = fields.membrane[idx].max(0.0);
+            total_s += s;
+            let phi = fields.structure[idx];
+            let iw = interface_weight(phi);
+            if iw >= 0.25 && s > 0.0 {
+                let dx = i as f64 - grid.cx;
+                let dy = j as f64 - grid.cy;
+                let theta = dy.atan2(dx);
+                interface_cells.push((idx, s, theta));
+            }
+        }
+    }
+    let target = fraction * total_s;
+    // Contiguous arc about +x (θ≈0): grow by |θ| until enough S covered.
+    interface_cells.sort_by(|a, b| {
+        a.2.abs()
+            .partial_cmp(&b.2.abs())
+            .unwrap_or(std::cmp::Ordering::Equal)
+    });
+    let mut covered = 0.0_f64;
+    let mut half_angle = 0.0_f64;
+    let mut mask = vec![false; n];
+    for &(idx, s, theta) in &interface_cells {
+        if covered >= target && target > 0.0 {
+            break;
+        }
+        mask[idx] = true;
+        covered += s;
+        half_angle = half_angle.max(theta.abs());
+    }
+    let arc_s: f64 = mask
+        .iter()
+        .enumerate()
+        .filter(|(idx, &m)| m && grid.in_dish(*idx))
+        .map(|(idx, _)| fields.membrane[idx].max(0.0))
+        .sum();
+    let remove_scale = if arc_s > 0.0 {
+        (target / arc_s).clamp(0.0, 1.0)
+    } else {
+        0.0
+    };
+
+    let mut local_before = 0.0;
+    let mut cells_touched = 0usize;
+    let mut s_removed = 0.0;
+    for idx in 0..n {
+        if !mask[idx] || !grid.in_dish(idx) {
+            continue;
+        }
+        let s0 = fields.membrane[idx].max(0.0);
+        local_before += s0;
+        let rem = s0 * remove_scale;
+        if rem > 0.0 {
+            fields.membrane[idx] = (s0 - rem).max(0.0);
+            fields.waste[idx] += rem;
+            s_removed += rem;
+            cells_touched += 1;
+        }
+    }
+    let local_after = local_before - s_removed;
+
+    MembraneArcDamageReport {
+        fraction_requested: fraction,
+        total_s_before: total_s,
+        s_removed,
+        w_gained: s_removed,
+        cells_touched,
+        arc_half_angle_rad: half_angle,
+        local_occupancy_before: local_before,
+        local_occupancy_after: local_after.max(0.0),
     }
 }
 

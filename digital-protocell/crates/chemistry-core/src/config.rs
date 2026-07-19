@@ -421,6 +421,7 @@ impl SurfaceExchangeIntegrator {
 ///
 /// Schema 1 (historical default): `J = k_Γ S` with `k_Γ = k_membrane_decay`.
 /// Schema 2 (D-038): `J = k_M S [ε_M + (1 − I(φ))]` — exact D-021 protection on embedded S.
+/// Schema 3 (D-039 experimental): no constitutive mature-membrane `S→W`; loss only via declared damage.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default)]
 #[serde(rename_all = "snake_case")]
 pub enum SurfaceTurnoverSchema {
@@ -431,6 +432,9 @@ pub enum SurfaceTurnoverSchema {
     /// D-038 corrected transfer: D-021 protection law on embedded surface density.
     #[serde(rename = "surface_turnover_schema_2_d021_equivalent")]
     D021Equivalent,
+    /// D-039 exchange+damage-only: normal biological `S→W` turnover is zero.
+    #[serde(rename = "surface_turnover_schema_3_exchange_damage_only")]
+    ExchangeDamageOnly,
 }
 
 impl SurfaceTurnoverSchema {
@@ -438,11 +442,21 @@ impl SurfaceTurnoverSchema {
         match self {
             Self::HistoricalUniform => "surface_turnover_schema_1_historical_uniform",
             Self::D021Equivalent => "surface_turnover_schema_2_d021_equivalent",
+            Self::ExchangeDamageOnly => "surface_turnover_schema_3_exchange_damage_only",
         }
     }
 
     pub const fn is_d021_equivalent(self) -> bool {
         matches!(self, Self::D021Equivalent)
+    }
+
+    /// True when constitutive mature-membrane first-order `S→W` is enabled.
+    pub const fn allows_constitutive_turnover(self) -> bool {
+        matches!(self, Self::HistoricalUniform | Self::D021Equivalent)
+    }
+
+    pub const fn is_exchange_damage_only(self) -> bool {
+        matches!(self, Self::ExchangeDamageOnly)
     }
 }
 

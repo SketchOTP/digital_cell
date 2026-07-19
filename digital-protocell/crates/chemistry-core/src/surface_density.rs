@@ -896,11 +896,13 @@ pub fn apply_turnover_exact(s_before: f64, lambda_gamma: f64, dt: f64) -> (f64, 
 ///
 /// Schema 1: 1 (historical uniform).
 /// Schema 2: ε_M + (1 − I(φ)) applied to embedded S (do not multiply by δ again).
+/// Schema 3: unused (constitutive λ = 0).
 #[inline]
 pub fn surface_turnover_protection_factor(phi: f64, params: &SimParams) -> f64 {
     match params.surface_turnover_schema {
         SurfaceTurnoverSchema::HistoricalUniform => 1.0,
         SurfaceTurnoverSchema::D021Equivalent => params.eps_m + (1.0 - interface_weight(phi)),
+        SurfaceTurnoverSchema::ExchangeDamageOnly => 0.0,
     }
 }
 
@@ -908,8 +910,12 @@ pub fn surface_turnover_protection_factor(phi: f64, params: &SimParams) -> f64 {
 ///
 /// Schema 1: λ = k_Γ.
 /// Schema 2: λ = k_Γ · [ε_M + (1 − I(φ))] with k_Γ = k_membrane_decay historically.
+/// Schema 3: λ = 0 (no constitutive mature-membrane destruction).
 #[inline]
 pub fn surface_turnover_lambda(phi: f64, params: &SimParams) -> f64 {
+    if !params.surface_turnover_schema.allows_constitutive_turnover() {
+        return 0.0;
+    }
     params.k_gamma_decay * surface_turnover_protection_factor(phi, params)
 }
 
