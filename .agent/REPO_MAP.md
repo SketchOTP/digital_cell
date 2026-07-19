@@ -278,3 +278,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d036.rs` — pipeline Gates 0–1 (stop before v13)
 - `digital-protocell/experiments/generated/d036/` — preservation, d035_parity, architecture_review, manifest
 - `digital-protocell/docs/d036_membrane_bound_catalytic_complex.md` — terminal report (`D036_CATALYTIC_COMPLEX_ARCHITECTURE_REJECTED`)
+
+## D-037 membrane assumption audit
+- `digital-protocell/crates/chemistry-core/src/d037_analysis.rs` — Gates 0–7 turnover lineage, bulk/surface loss, provenance, state/gate semantics, reduced dynamics, route
+- `digital-protocell/crates/chemistry-core/tests/d037_tests.rs` — focused audit tests (11)
+- `digital-protocell/crates/experiment-runner/src/d037.rs` — artifact pipeline
+- `digital-protocell/experiments/generated/d037/` — preservation + gate artifacts + manifest
+- `docs/d037_membrane_assumption_audit.md` — `D037_TURNOVER_AND_GATE_DEFECTS` / Route A
