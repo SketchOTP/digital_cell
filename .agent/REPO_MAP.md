@@ -294,3 +294,9 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d038.rs` — Gates 0–10 pipeline
 - `digital-protocell/experiments/generated/d038/` — governed artifacts
 - `docs/d038_corrected_turnover_renewal.md` — report
+
+## D-039 exchange+damage membrane maintenance
+- `digital-protocell/crates/chemistry-core/src/d039_analysis.rs` — Gates 0–1/10 helpers, schema3 params, conclusion selection
+- `digital-protocell/crates/chemistry-core/src/membrane_label_tracer.rs` — observer-only pulse-chase tracer
+- `digital-protocell/crates/chemistry-core/tests/d039_tests.rs` — focused suite (10)
+- `digital-protocell/crates/experiment-runner/src/d039.rs` — Gates 0–10 pipeline (schema3 exchange+damage-only)
