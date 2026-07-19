@@ -285,3 +285,12 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d037.rs` — artifact pipeline
 - `digital-protocell/experiments/generated/d037/` — preservation + gate artifacts + manifest
 - `docs/d037_membrane_assumption_audit.md` — `D037_TURNOVER_AND_GATE_DEFECTS` / Route A
+
+## D-038 corrected turnover transfer + renewal replay
+- `digital-protocell/crates/chemistry-core/src/config.rs` — `SurfaceTurnoverSchema` (schema 1 historical default; schema 2 D-021-equivalent)
+- `digital-protocell/crates/chemistry-core/src/surface_density.rs` — `surface_turnover_lambda` / `apply_surface_turnover_exact` with `ε_M+(1−I(φ))`
+- `digital-protocell/crates/chemistry-core/src/d038_analysis.rs` — Gates 0–2 helpers, multistart/route selection
+- `digital-protocell/crates/chemistry-core/tests/d038_tests.rs` — focused suite (14)
+- `digital-protocell/crates/experiment-runner/src/d038.rs` — Gates 0–10 pipeline
+- `digital-protocell/experiments/generated/d038/` — governed artifacts
+- `docs/d038_corrected_turnover_renewal.md` — report
