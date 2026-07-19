@@ -36,6 +36,7 @@ mod d035;
 mod d036;
 mod d037;
 mod d038;
+mod d039;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -222,6 +223,10 @@ enum Commands {
     D038 {
         #[command(subcommand)]
         action: D038Commands,
+    },
+    D039 {
+        #[command(subcommand)]
+        action: D039Commands,
     },
 }
 
@@ -513,6 +518,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D036 { action } => run_d036(action)?,
         Commands::D037 { action } => run_d037(action)?,
         Commands::D038 { action } => run_d038(action)?,
+        Commands::D039 { action } => run_d039(action)?,
     }
     Ok(())
 }
@@ -2594,6 +2600,15 @@ enum D038Commands {
     },
 }
 
+#[derive(Subcommand)]
+enum D039Commands {
+    /// Qualify exchange+damage membrane maintenance without constitutive S→W.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d039")]
+        output: PathBuf,
+    },
+}
+
 fn resolve_d037_artifact_path(path: &Path) -> PathBuf {
     if path.is_absolute() {
         return path.to_path_buf();
@@ -2604,6 +2619,10 @@ fn resolve_d037_artifact_path(path: &Path) -> PathBuf {
 }
 
 fn resolve_d038_artifact_path(path: &Path) -> PathBuf {
+    resolve_d037_artifact_path(path)
+}
+
+fn resolve_d039_artifact_path(path: &Path) -> PathBuf {
     resolve_d037_artifact_path(path)
 }
 
@@ -2632,6 +2651,22 @@ fn run_d038(action: D038Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-038 pipeline primary={} arch={} -> {}",
                 result["primary_conclusion"],
                 result["selected_architecture"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+fn run_d039(action: D039Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D039Commands::Pipeline { output } => {
+            let out = resolve_d039_artifact_path(&output);
+            let result = d039::run_pipeline(&out)?;
+            println!(
+                "D-039 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
                 out.join("manifest.json").display()
             );
         }
