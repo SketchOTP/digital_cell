@@ -34,6 +34,7 @@ mod d033;
 mod d034;
 mod d035;
 mod d036;
+mod d037;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -212,6 +213,10 @@ enum Commands {
     D036 {
         #[command(subcommand)]
         action: D036Commands,
+    },
+    D037 {
+        #[command(subcommand)]
+        action: D037Commands,
     },
 }
 
@@ -501,6 +506,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D034 { action } => run_d034(action)?,
         Commands::D035 { action } => run_d035(action)?,
         Commands::D036 { action } => run_d036(action)?,
+        Commands::D037 { action } => run_d037(action)?,
     }
     Ok(())
 }
@@ -2562,6 +2568,40 @@ fn resolve_d036_artifact_path(path: &Path) -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .join("../..")
         .join(path)
+}
+
+#[derive(Subcommand)]
+enum D037Commands {
+    /// Full Gates 0–7 membrane-turnover / renewal-gate audit (no chemistry changes).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d037")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d037_artifact_path(path: &Path) -> PathBuf {
+    if path.is_absolute() {
+        return path.to_path_buf();
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../..")
+        .join(path)
+}
+
+fn run_d037(action: D037Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D037Commands::Pipeline { output } => {
+            let out = resolve_d037_artifact_path(&output);
+            let result = d037::run_pipeline(&out)?;
+            println!(
+                "D-037 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["selected_route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
 }
 
 fn run_d036(action: D036Commands) -> Result<(), Box<dyn std::error::Error>> {
