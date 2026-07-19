@@ -242,7 +242,24 @@ Concise navigation map for agents. Add entries as application code lands.
 - chemistry-core/src/config.rs — MembraneMetabolismV9ActivatedSurfaceAssembly; k_active; a_reference
 - experiment-runner/src/d032.rs — Gates 0/2/3/5 pipeline
 - chemistry-core/src/d033_analysis.rs — v10 orthogonal rate ID, bounded intermediate helpers
+- chemistry-core/src/config.rs — MembraneMetabolismV11SurfaceMaturation; k_mature; d_u; is_surface_maturation()
+- chemistry-core/src/fields.rs — immature_membrane field; FIELD_NAMES_V11
+- chemistry-core/src/snapshot.rs — NineFieldSurfaceMaturationV1 schema; v10↔v11 resume rejection
+- chemistry-core/src/surface_density.rs — evolve_surface_maturation_v11; dual P↔U exchange; maturation U+A→S+W (v11)
 - experiment-runner/src/d033.rs — Gates 0–5 pipeline (buffering, numerical, isolated renewal)
 - experiments/generated/d033/ — preservation, kinetics, buffering, numerical, manifest
 - experiments/generated/d032/ — preservation, active_basis, manifest
 - docs/d032_activated_surface_assembly.md — terminal report
+- chemistry-core/src/d034_analysis.rs — v11_params(k_mature), passive U exchange regression, maturation ID/reconstruction, candidate screen
+- chemistry-core/src/surface_density.rs — evolve_surface_maturation_v11; dual exchange helpers; maturation_delta accounting
+- chemistry-core/tests/d034_tests.rs — schema, causality, conservation, capacity, snapshot v10↛v11
+- experiment-runner/src/d034.rs — Gates 0–8 pipeline (preservation, passive exchange, maturation ID, rate reconstruction, isolated renewal)
+- experiments/generated/d034/ — preservation, passive_exchange_regression, maturation_identification, rate_reconstruction, manifest
+
+## D-034 surface maturation (v11)
+- chemistry-core/src/d034_analysis.rs — P↔U assays, maturation ID, rate reconstruction
+- chemistry-core/src/surface_density.rs — evolve_surface_maturation_v11, dual exchange, maturation
+- chemistry-core/tests/d034_tests.rs — Gate0/1 unit suite (9)
+- experiment-runner/src/d034.rs — Gates 0–8 pipeline (stops at Gate6)
+- experiments/generated/d034/ — preservation, exchange regression, ID, rate_reconstruction, manifest
+- docs/d034_surface_bound_membrane_maturation.md — terminal report

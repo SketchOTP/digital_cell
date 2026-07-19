@@ -31,6 +31,7 @@ mod d030;
 mod d031;
 mod d032;
 mod d033;
+mod d034;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -197,6 +198,10 @@ enum Commands {
     D033 {
         #[command(subcommand)]
         action: D033Commands,
+    },
+    D034 {
+        #[command(subcommand)]
+        action: D034Commands,
     },
 }
 
@@ -483,6 +488,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D031 { action } => run_d031(action)?,
         Commands::D032 { action } => run_d032(action)?,
         Commands::D033 { action } => run_d033(action)?,
+        Commands::D034 { action } => run_d034(action)?,
     }
     Ok(())
 }
@@ -2289,6 +2295,154 @@ fn run_d033(action: D033Commands) -> Result<(), Box<dyn std::error::Error>> {
                 out.display()
             );
             println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D034Commands {
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d034")]
+        output: PathBuf,
+    },
+    Gate0 {
+        #[arg(long, default_value = "experiments/generated/d034")]
+        output: PathBuf,
+    },
+    Gate1 {
+        #[arg(long, default_value = "experiments/generated/d034/unit_tests")]
+        output: PathBuf,
+    },
+    Gate2 {
+        #[arg(long, default_value = "experiments/generated/d034/passive_exchange_regression")]
+        output: PathBuf,
+    },
+    Gate3 {
+        #[arg(long, default_value = "experiments/generated/d034/transport_smoke")]
+        output: PathBuf,
+    },
+    Gate4 {
+        #[arg(long, default_value = "experiments/generated/d034/maturation_identification")]
+        output: PathBuf,
+    },
+    Gate5 {
+        #[arg(long, default_value = "experiments/generated/d034/maturation_smoke")]
+        output: PathBuf,
+    },
+    Gate6 {
+        #[arg(long, default_value = "experiments/generated/d034/rate_reconstruction")]
+        output: PathBuf,
+    },
+    Gate7 {
+        #[arg(long, default_value = "experiments/generated/d034/candidates")]
+        output: PathBuf,
+        #[arg(long)]
+        median_k: Option<f64>,
+    },
+    Gate8 {
+        #[arg(long, default_value = "experiments/generated/d034/isolated_renewal")]
+        output: PathBuf,
+        #[arg(long)]
+        k_mature: Option<f64>,
+    },
+}
+
+fn resolve_d034_artifact_path(path: &Path) -> PathBuf {
+    if path.is_absolute() {
+        return path.to_path_buf();
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../..")
+        .join(path)
+}
+
+fn run_d034(action: D034Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D034Commands::Pipeline { output } => {
+            let out = resolve_d034_artifact_path(&output);
+            let result = d034::run_pipeline(&out)?;
+            println!(
+                "D-034 pipeline conclusion={} -> {}",
+                result["conclusion"],
+                out.join("manifest.json").display()
+            );
+        }
+        D034Commands::Gate0 { output } => {
+            let out = resolve_d034_artifact_path(&output);
+            let result = d034::run_gate0_preservation(&out.join("preservation"))?;
+            println!(
+                "D-034 gate0 pass={} -> {}",
+                result["pass"],
+                out.join("preservation/preservation.json").display()
+            );
+        }
+        D034Commands::Gate1 { output } => {
+            let out = resolve_d034_artifact_path(&output);
+            let result = d034::run_gate1_unit_tests(&out)?;
+            println!("D-034 gate1 pass={} authority={}", result["pass"], result["authority"]);
+        }
+        D034Commands::Gate2 { output } => {
+            let out = resolve_d034_artifact_path(&output);
+            let result = d034::run_gate2_passive_exchange(&out)?;
+            println!(
+                "D-034 gate2 pass={} conclusion={} -> {}",
+                result["pass"],
+                result["conclusion"],
+                out.join("result.json").display()
+            );
+        }
+        D034Commands::Gate3 { output } => {
+            let out = resolve_d034_artifact_path(&output);
+            let result = d034::run_gate3_transport_smoke(&out)?;
+            println!("D-034 gate3 pass={} -> {}", result["pass"], out.join("result.json").display());
+        }
+        D034Commands::Gate4 { output } => {
+            let out = resolve_d034_artifact_path(&output);
+            let result = d034::run_gate4_maturation_id(&out)?;
+            println!(
+                "D-034 gate4 pass={} conclusion={} -> {}",
+                result["pass"],
+                result["conclusion"],
+                out.join("result.json").display()
+            );
+        }
+        D034Commands::Gate5 { output } => {
+            let out = resolve_d034_artifact_path(&output);
+            let result = d034::run_gate5_maturation_smoke(&out)?;
+            println!("D-034 gate5 pass={} -> {}", result["pass"], out.join("result.json").display());
+        }
+        D034Commands::Gate6 { output } => {
+            let out = resolve_d034_artifact_path(&output);
+            let result = d034::run_gate6_rate_reconstruction(&out)?;
+            println!(
+                "D-034 gate6 pass={} conclusion={} -> {}",
+                result["pass"],
+                result["conclusion"],
+                out.join("result.json").display()
+            );
+        }
+        D034Commands::Gate7 { output, median_k } => {
+            let out = resolve_d034_artifact_path(&output);
+            let mk = median_k.unwrap_or(chemistry_core::d034_analysis::D034_ASSAY_K_MATURE);
+            let result = d034::run_gate7_candidates(&out, mk)?;
+            println!(
+                "D-034 gate7 pass={} selected={:?} -> {}",
+                result["pass"],
+                result["selected"],
+                out.join("result.json").display()
+            );
+        }
+        D034Commands::Gate8 { output, k_mature } => {
+            let out = resolve_d034_artifact_path(&output);
+            let km = k_mature.unwrap_or(chemistry_core::d034_analysis::D034_ASSAY_K_MATURE);
+            let result = d034::run_gate8_isolated_renewal(&out, km)?;
+            println!(
+                "D-034 gate8 pass={} conclusion={} -> {}",
+                result["pass"],
+                result["conclusion"],
+                out.join("result.json").display()
+            );
         }
     }
     Ok(())

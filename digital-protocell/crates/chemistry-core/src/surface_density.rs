@@ -55,6 +55,12 @@ pub struct SurfaceAccountingTotals {
     pub activation_work: f64,
     /// D-033 activation potential dissipated by relaxation (= relax_delta).
     pub activation_dissipation: f64,
+    /// D-034 maturation extent R for U+A→S+W (≥ 0); exact S gain and A/W transfer.
+    pub maturation_delta: f64,
+    /// D-034 net immature-surface (U) tangential diffusion transfer over the step.
+    pub immature_diffusion_delta: f64,
+    /// D-034 net immature-surface (U) advection transfer over the step.
+    pub immature_advection_delta: f64,
 }
 
 impl SurfaceAccountingTotals {
@@ -85,6 +91,11 @@ impl SurfaceAccountingTotals {
                 - baseline.activation_storage_delta,
             activation_work: self.activation_work - baseline.activation_work,
             activation_dissipation: self.activation_dissipation - baseline.activation_dissipation,
+            maturation_delta: self.maturation_delta - baseline.maturation_delta,
+            immature_diffusion_delta: self.immature_diffusion_delta
+                - baseline.immature_diffusion_delta,
+            immature_advection_delta: self.immature_advection_delta
+                - baseline.immature_advection_delta,
         }
     }
 
@@ -111,6 +122,9 @@ impl SurfaceAccountingTotals {
         self.activation_storage_delta += step.activation_storage_delta;
         self.activation_work += step.activation_work;
         self.activation_dissipation += step.activation_dissipation;
+        self.maturation_delta += step.maturation_delta;
+        self.immature_diffusion_delta += step.immature_diffusion_delta;
+        self.immature_advection_delta += step.immature_advection_delta;
     }
 }
 
@@ -174,6 +188,9 @@ impl SurfaceAccountingState {
             activation_storage_delta: w.activation_storage_delta / dt,
             activation_work: w.activation_work / dt,
             activation_dissipation: w.activation_dissipation / dt,
+            maturation_delta: w.maturation_delta / dt,
+            immature_diffusion_delta: w.immature_diffusion_delta / dt,
+            immature_advection_delta: w.immature_advection_delta / dt,
         }
     }
 }
@@ -512,6 +529,53 @@ pub fn relax_rate(intermediate: f64, params: &SimParams) -> f64 {
         return 0.0;
     }
     params.k_relax * intermediate.max(0.0)
+}
+
+/// D-034 maturation volumetric rate density `J_mature` (before ×δ) for U+A→S+W.
+///
+/// `J_mature = k_mature · q(C) · a · Γ_U` with `a = A/A_ref`, `Γ_U = U/δ`.
+/// Converts in place (no free-capacity factor): θ_total is unchanged by U→S.
+#[inline]
+pub fn maturation_rate_j(
+    activated: f64,
+    catalyst: f64,
+    gamma_u: f64,
+    params: &SimParams,
+) -> f64 {
+    let q_c = membrane_catalyst_saturation(catalyst, params);
+    let a = activated_activity(activated, params.a_reference);
+    params.k_mature * q_c * a * gamma_u.max(0.0)
+}
+
+/// Bounded U+A→S+W maturation transfer, converting immature U into mature S in place.
+///
+/// Returns `(u_next, a_next, s_next, w_delta, r)` with
+/// `r = min(δ J_mature Δt, U, A)` (no capacity bound). Zero without U, A, or q(C).
+#[inline]
+pub fn apply_maturation_bounded(
+    immature: f64,
+    activated: f64,
+    surface: f64,
+    delta: f64,
+    catalyst: f64,
+    dt: f64,
+    params: &SimParams,
+) -> (f64, f64, f64, f64, f64) {
+    if params.k_mature <= 0.0
+        || !params.equation_version.is_surface_maturation()
+        || delta <= params.delta_floor
+        || dt <= 0.0
+    {
+        return (immature, activated, surface, 0.0, 0.0);
+    }
+    let gamma_u = immature.max(0.0) / delta;
+    let j = maturation_rate_j(activated, catalyst, gamma_u, params);
+    let r_want = delta * j * dt;
+    let r = r_want
+        .min(immature.max(0.0))
+        .min(activated.max(0.0))
+        .max(0.0);
+    (immature - r, activated - r, surface + r, r, r)
 }
 
 /// Bounded charge transfer P+A→X+W.
@@ -968,6 +1032,235 @@ pub fn solve_exchange_backward_euler(
     Err(ExchangeReject::NonfiniteFlux)
 }
 
+/// D-034 dual-surface forward/reverse activities for passive P↔U exchange.
+///
+/// `a_forward = K_eq · p · max(0, 1 − θ_total)`, `a_reverse = θ_U`,
+/// with `θ_total = θ_U + θ_S` (mature S occupies shared capacity but does not desorb).
+/// When `Γ_S = 0` this reduces exactly to the single-surface P↔S law (Gate2 regression).
+#[inline]
+pub fn exchange_activities_dual(
+    precursor: f64,
+    gamma_u: f64,
+    gamma_s: f64,
+    params: &SimParams,
+) -> (f64, f64) {
+    let p = precursor_activity(precursor, params.p_reference);
+    let theta_u = surface_occupancy_theta(gamma_u, params.gamma_max);
+    let theta_s = surface_occupancy_theta(gamma_s, params.gamma_max);
+    let a_forward = params.k_exchange_eq * p * (1.0 - (theta_u + theta_s)).max(0.0);
+    let a_reverse = theta_u;
+    (a_forward, a_reverse)
+}
+
+/// D-034 net volumetric P↔U exchange flux density (before ×δ), `S` fixed.
+/// Positive ⇒ P→U (adsorption); negative ⇒ U→P (desorption).
+#[inline]
+pub fn exchange_rate_j_dual(
+    precursor: f64,
+    catalyst: f64,
+    gamma_u: f64,
+    gamma_s: f64,
+    params: &SimParams,
+) -> (f64, f64, f64, f64, f64) {
+    let (a_forward, a_reverse) = exchange_activities_dual(precursor, gamma_u, gamma_s, params);
+    let m = exchange_mobility(catalyst, params);
+    let j_forward = m * a_forward;
+    let j_reverse = m * a_reverse;
+    (j_forward - j_reverse, j_forward, j_reverse, a_forward, a_reverse)
+}
+
+/// D-034 scalar exchange RHS `F(U)` with frozen δ, q(C), inventory T=P+U, and fixed S.
+///
+/// `dU/dt = δ k q Γ_max (K p (1−θ_total) − θ_U)` with `p=(T−U)/P_ref`,
+/// `θ_U = U/C_surface`, `θ_total = (U + S_fixed)/C_surface`, `C_surface = δ Γ_max`.
+#[inline]
+#[allow(clippy::too_many_arguments)]
+pub fn exchange_scalar_f_dual(
+    u: f64,
+    t_inventory: f64,
+    s_fixed: f64,
+    c_surface: f64,
+    delta: f64,
+    q_c: f64,
+    k_exchange: f64,
+    k_eq: f64,
+    p_reference: f64,
+    gamma_max: f64,
+) -> f64 {
+    if c_surface <= SURFACE_CAPACITY_FLOOR || delta <= 0.0 {
+        return 0.0;
+    }
+    let pref = if p_reference > 0.0 { p_reference } else { 1.0 };
+    let p = ((t_inventory - u) / pref).max(0.0);
+    let theta_u = (u / c_surface).clamp(0.0, 1.0);
+    let theta_total = ((u + s_fixed.max(0.0)) / c_surface).max(0.0);
+    let free = (1.0 - theta_total).max(0.0);
+    let j = k_exchange * q_c * gamma_max.max(0.0) * (k_eq * p * free - theta_u);
+    delta * j
+}
+
+/// D-034 invariant-domain backward-Euler solve for U on `[0, min(T, C_surface − S_fixed)]`.
+///
+/// `S` is held fixed during the exchange substep so `θ_total` cannot exceed 1.
+/// Returns `s_next = U_next` and `p_next = T − U_next` (inventory conserved).
+#[allow(clippy::too_many_arguments)]
+pub fn solve_exchange_backward_euler_dual(
+    u_old: f64,
+    t_inventory: f64,
+    s_fixed: f64,
+    c_surface: f64,
+    delta: f64,
+    q_c: f64,
+    k_exchange: f64,
+    k_eq: f64,
+    p_reference: f64,
+    gamma_max: f64,
+    dt: f64,
+) -> Result<InvariantExchangeSolveInfo, ExchangeReject> {
+    if !t_inventory.is_finite()
+        || !u_old.is_finite()
+        || !dt.is_finite()
+        || dt < 0.0
+        || !c_surface.is_finite()
+        || !s_fixed.is_finite()
+    {
+        return Err(ExchangeReject::NonfiniteFlux);
+    }
+    let cap = (c_surface - s_fixed.max(0.0)).max(0.0);
+    if cap <= SURFACE_CAPACITY_FLOOR {
+        let u_next = u_old.clamp(0.0, t_inventory.max(0.0));
+        return Ok(InvariantExchangeSolveInfo {
+            iterations: 0,
+            bracket_lo: 0.0,
+            bracket_hi: 0.0,
+            s_next: u_next,
+            p_next: (t_inventory - u_next).max(0.0),
+            residual: 0.0,
+            used_newton: false,
+        });
+    }
+    let hi = t_inventory.min(cap).max(0.0);
+    let lo = 0.0;
+    if hi <= lo {
+        return Ok(InvariantExchangeSolveInfo {
+            iterations: 0,
+            bracket_lo: lo,
+            bracket_hi: hi,
+            s_next: 0.0,
+            p_next: t_inventory.max(0.0),
+            residual: 0.0,
+            used_newton: false,
+        });
+    }
+    let f = |u: f64| {
+        exchange_scalar_f_dual(
+            u,
+            t_inventory,
+            s_fixed,
+            c_surface,
+            delta,
+            q_c,
+            k_exchange,
+            k_eq,
+            p_reference,
+            gamma_max,
+        )
+    };
+    let g = |u: f64| u - u_old - dt * f(u);
+    let mut a = lo;
+    let mut b = hi;
+    let mut ga = g(a);
+    let gb0 = g(b);
+    if ga > 0.0 && gb0 > 0.0 {
+        return Ok(InvariantExchangeSolveInfo {
+            iterations: 0,
+            bracket_lo: a,
+            bracket_hi: b,
+            s_next: lo,
+            p_next: (t_inventory - lo).max(0.0),
+            residual: ga.abs(),
+            used_newton: false,
+        });
+    }
+    if ga < 0.0 && gb0 < 0.0 {
+        return Ok(InvariantExchangeSolveInfo {
+            iterations: 0,
+            bracket_lo: a,
+            bracket_hi: b,
+            s_next: hi,
+            p_next: (t_inventory - hi).max(0.0),
+            residual: gb0.abs(),
+            used_newton: false,
+        });
+    }
+    let mut x = 0.5 * (a + b);
+    let mut iters = 0u32;
+    for _ in 0..INVARIANT_EXCHANGE_MAX_ITERS {
+        iters += 1;
+        let gx = g(x);
+        if gx.abs() <= INVARIANT_EXCHANGE_SOLVER_TOL
+            || (b - a) <= INVARIANT_EXCHANGE_SOLVER_TOL * (1.0 + hi)
+        {
+            let u_next = x.clamp(lo, hi);
+            let p_next = t_inventory - u_next;
+            if p_next < -EXCHANGE_BOUND_TOLERANCE {
+                return Err(ExchangeReject::NegPrecursor);
+            }
+            if u_next < -EXCHANGE_BOUND_TOLERANCE {
+                return Err(ExchangeReject::NegSurface);
+            }
+            return Ok(InvariantExchangeSolveInfo {
+                iterations: iters,
+                bracket_lo: a,
+                bracket_hi: b,
+                s_next: u_next.max(0.0),
+                p_next: p_next.max(0.0),
+                residual: gx.abs(),
+                used_newton: false,
+            });
+        }
+        if ga.signum() != gx.signum() && !(ga == 0.0 && gx == 0.0) {
+            b = x;
+        } else {
+            a = x;
+            ga = gx;
+        }
+        x = 0.5 * (a + b);
+    }
+    Err(ExchangeReject::NonfiniteFlux)
+}
+
+/// D-034 dual-surface positivity + shared-capacity validation (θ_U + θ_S ≤ 1).
+#[inline]
+pub fn validate_dual_capacity(
+    precursor: f64,
+    immature: f64,
+    mature: f64,
+    delta: f64,
+    gamma_max: f64,
+    delta_floor: f64,
+) -> Result<(), ExchangeReject> {
+    if !precursor.is_finite() || !immature.is_finite() || !mature.is_finite() {
+        return Err(ExchangeReject::NonfiniteFlux);
+    }
+    if precursor < -EXCHANGE_BOUND_TOLERANCE {
+        return Err(ExchangeReject::NegPrecursor);
+    }
+    if immature < -EXCHANGE_BOUND_TOLERANCE || mature < -EXCHANGE_BOUND_TOLERANCE {
+        return Err(ExchangeReject::NegSurface);
+    }
+    if delta > delta_floor {
+        let c_surface = delta * gamma_max.max(0.0);
+        if c_surface > SURFACE_CAPACITY_FLOOR {
+            let theta_total = (immature.max(0.0) + mature.max(0.0)) / c_surface;
+            if theta_total > 1.0 + EXCHANGE_BOUND_TOLERANCE {
+                return Err(ExchangeReject::CapacityExceeded);
+            }
+        }
+    }
+    Ok(())
+}
+
 /// Propose an explicit Euler exchange update (Gate 0 / V1). No clipping.
 #[inline]
 pub fn propose_explicit_exchange(
@@ -1382,6 +1675,224 @@ pub fn surface_advection_rate(
 ///
 /// When `vn` is `Some`, also applies conservative autonomous advection
 /// `∂S/∂t += −∇·(S u_Γ)` using old-state geometry and the provided normal speed.
+/// D-034 dedicated dual-surface maturation evolution (v11).
+///
+/// Fields: soluble precursor `P`, immature surface `U = δΓ_U`, mature surface `S = δΓ_S`.
+/// `U` and `S` are transported independently (surface diffusion `D_U`/`D_S`, shared advection).
+/// Per-cell Strang order: half S→W turnover → passive P↔U exchange (S fixed) →
+/// maturation U+A→S+W → half S→W turnover. Skips all v10 charge/insert/relax and P↔S exchange.
+///
+/// `intermediate`/`intermediate_next` carry `U` (caller pre-copies current U into
+/// `intermediate_next`). `geometry` is precomputed by the caller.
+#[allow(clippy::too_many_arguments)]
+fn evolve_surface_maturation_v11(
+    grid: &Grid,
+    phi: &[f64],
+    catalyst: &[f64],
+    activated: &[f64],
+    precursor: &[f64],
+    s: &[f64],
+    params: &SimParams,
+    dt: f64,
+    enable_synthesis: bool,
+    enable_adsorption: bool,
+    enable_precursor_decay: bool,
+    enable_gamma_decay: bool,
+    enable_diffusion: bool,
+    vn: Option<&[f64]>,
+    geometry: &[InterfaceGeometryCell],
+    gamma_s: &mut [f64],
+    diffusion_rate_s: &mut [f64],
+    advection_rate: &mut Vec<f64>,
+    s_next: &mut [f64],
+    activated_next: &mut [f64],
+    precursor_next: &mut [f64],
+    waste_next: &mut [f64],
+    immature: Option<&[f64]>,
+    immature_next: Option<&mut [f64]>,
+) -> Result<SurfaceAccountingTotals, ExchangeReject> {
+    let delta_floor = params.delta_floor;
+    let n = s.len();
+    // v11 requires the U buffers; a missing buffer is a wiring bug, not a physical state.
+    let (u_old, u_next) = match (immature, immature_next) {
+        (Some(a), Some(b)) => (a, b),
+        _ => return Err(ExchangeReject::NonfiniteFlux),
+    };
+
+    reconstruct_gamma_field(grid, s, geometry, delta_floor, gamma_s);
+    let mut gamma_u = vec![0.0; n];
+    reconstruct_gamma_field(grid, u_old, geometry, delta_floor, &mut gamma_u);
+
+    let mut totals = SurfaceAccountingTotals::default();
+    let mut diffusion_rate_u = vec![0.0; n];
+    if enable_diffusion {
+        totals.absolute_face_flux += surface_diffusion_rate(
+            grid,
+            geometry,
+            gamma_s,
+            params.d_gamma,
+            params.delta_face_eps,
+            diffusion_rate_s,
+        );
+        totals.absolute_face_flux += surface_diffusion_rate(
+            grid,
+            geometry,
+            &gamma_u,
+            params.d_u,
+            params.delta_face_eps,
+            &mut diffusion_rate_u,
+        );
+    } else {
+        diffusion_rate_s.fill(0.0);
+    }
+
+    let mut advection_rate_u = vec![0.0; n];
+    if let Some(vn_field) = vn {
+        if advection_rate.len() != n {
+            advection_rate.resize(n, 0.0);
+        }
+        totals.absolute_face_flux += surface_advection_rate(grid, geometry, s, vn_field, advection_rate);
+        totals.absolute_face_flux +=
+            surface_advection_rate(grid, geometry, u_old, vn_field, &mut advection_rate_u);
+    } else if !advection_rate.is_empty() {
+        advection_rate.fill(0.0);
+    }
+
+    for idx in 0..n {
+        if !grid.in_dish(idx) {
+            s_next[idx] = 0.0;
+            u_next[idx] = 0.0;
+            continue;
+        }
+        let d = geometry[idx].delta;
+        let mut ds_s = 0.0;
+        let mut ds_u = 0.0;
+        if enable_diffusion {
+            ds_s += diffusion_rate_s[idx] * dt;
+            ds_u += diffusion_rate_u[idx] * dt;
+            totals.surface_diffusion_delta += diffusion_rate_s[idx] * dt;
+            totals.immature_diffusion_delta += diffusion_rate_u[idx] * dt;
+        }
+        if vn.is_some() && !advection_rate.is_empty() {
+            ds_s += advection_rate[idx] * dt;
+            ds_u += advection_rate_u[idx] * dt;
+            totals.advection_delta += advection_rate[idx] * dt;
+            totals.immature_advection_delta += advection_rate_u[idx] * dt;
+        }
+
+        if enable_synthesis {
+            let syn = precursor_synthesis_rate(phi[idx], catalyst[idx], activated[idx], params) * dt;
+            activated_next[idx] -= syn;
+            precursor_next[idx] += syn;
+            totals.precursor_synthesis_delta += syn;
+        }
+        if enable_precursor_decay {
+            let dec = precursor_decay_rate(precursor[idx], params) * dt;
+            precursor_next[idx] -= dec;
+            waste_next[idx] += dec;
+            totals.precursor_decay_delta += dec;
+        }
+
+        let mut s_work = s[idx] + ds_s;
+        let mut u_work = u_old[idx] + ds_u;
+        let mut p_work = precursor_next[idx];
+        let mut a_work = activated_next[idx];
+
+        // Off-interface: transport already applied; no surface reactions.
+        if d <= delta_floor {
+            precursor_next[idx] = p_work;
+            activated_next[idx] = a_work;
+            s_next[idx] = s_work;
+            u_next[idx] = u_work.max(0.0);
+            continue;
+        }
+
+        let q_c = membrane_catalyst_saturation(catalyst[idx], params);
+        let c_surface = d * params.gamma_max.max(0.0);
+
+        // 1) half biological S→W turnover (U has no biological decay).
+        if enable_gamma_decay {
+            let (s1, dw1) = apply_turnover_exact(s_work, params.k_gamma_decay, 0.5 * dt);
+            waste_next[idx] += dw1;
+            totals.gamma_decay_delta += dw1;
+            totals.surface_to_waste += dw1;
+            s_work = s1;
+        }
+
+        // 2) passive P↔U exchange with S held fixed (invariant-domain backward Euler).
+        if enable_adsorption && params.k_exchange > 0.0 && params.gamma_max > 0.0 {
+            let gamma_u_pre = u_work / d;
+            let gamma_s_fixed = s_work / d;
+            let (j_net0, j_fwd0, j_rev0, a_fwd, a_rev) =
+                exchange_rate_j_dual(p_work, catalyst[idx], gamma_u_pre, gamma_s_fixed, params);
+            let m = exchange_mobility(catalyst[idx], params);
+            let diss = d * exchange_dissipation_density(a_fwd, a_rev, m) * dt;
+            let t_inv = p_work.max(0.0) + u_work.max(0.0);
+            let solved = solve_exchange_backward_euler_dual(
+                u_work,
+                t_inv,
+                s_work,
+                c_surface,
+                d,
+                q_c,
+                params.k_exchange,
+                params.k_exchange_eq,
+                params.p_reference,
+                params.gamma_max,
+                dt,
+            )?;
+            let u_ex = solved.s_next;
+            let p_ex = solved.p_next;
+            if (p_ex + u_ex - t_inv).abs() > 1e-12 {
+                return Err(ExchangeReject::NonfiniteFlux);
+            }
+            validate_dual_capacity(p_ex, u_ex, s_work, d, params.gamma_max, delta_floor)?;
+            let xfer = u_ex - u_work;
+            p_work = p_ex;
+            u_work = u_ex;
+            totals.adsorption_delta += xfer;
+            totals.precursor_to_surface += xfer;
+            totals.exchange_forward += (d * j_fwd0 * dt).max(0.0);
+            totals.exchange_reverse += (d * j_rev0 * dt).max(0.0);
+            totals.exchange_net += xfer;
+            totals.exchange_dissipation += diss.max(0.0);
+            let _ = j_net0;
+        }
+
+        // 3) maturation U+A→S+W (bounded by U and A; converts in place).
+        let (u_m, a_m, s_m, w_m, r) =
+            apply_maturation_bounded(u_work, a_work, s_work, d, catalyst[idx], dt, params);
+        u_work = u_m;
+        a_work = a_m;
+        s_work = s_m;
+        waste_next[idx] += w_m;
+        totals.maturation_delta += r;
+
+        // 4) half biological S→W turnover.
+        if enable_gamma_decay {
+            let (s2, dw2) = apply_turnover_exact(s_work, params.k_gamma_decay, 0.5 * dt);
+            waste_next[idx] += dw2;
+            totals.gamma_decay_delta += dw2;
+            totals.surface_to_waste += dw2;
+            s_work = s2;
+        }
+
+        precursor_next[idx] = p_work;
+        activated_next[idx] = a_work;
+        s_next[idx] = s_work;
+        u_next[idx] = u_work.max(0.0);
+        validate_dual_capacity(
+            precursor_next[idx],
+            u_next[idx],
+            s_next[idx],
+            d,
+            params.gamma_max,
+            delta_floor,
+        )?;
+    }
+    Ok(totals)
+}
+
 #[allow(clippy::too_many_arguments)]
 pub fn evolve_surface_density(
     grid: &Grid,
@@ -1464,13 +1975,44 @@ pub fn evolve_surface_density_with_vn(
     intermediate: Option<&[f64]>,
     mut intermediate_next: Option<&mut [f64]>,
 ) -> Result<SurfaceAccountingTotals, ExchangeReject> {
-    // ponytail: callers pre-copy current X into `intermediate_next`; `intermediate` is reserved.
-    let _ = intermediate;
+    // ponytail: callers pre-copy current buffer into `intermediate_next`.
+    // For v10, `intermediate_next` holds X (activation intermediate). For v11 the dual-surface
+    // path below owns U = δΓ_U in `intermediate`/`intermediate_next`.
     let eta_n = params.eta_n;
     let delta_floor = params.delta_floor;
     let reversible = params.equation_version.is_reversible_surface_exchange();
     let v10 = params.equation_version.is_activated_intermediate();
+    let v11 = params.equation_version.is_surface_maturation();
     compute_interface_geometry(grid, phi, eta_n, geometry);
+    if v11 {
+        return evolve_surface_maturation_v11(
+            grid,
+            phi,
+            catalyst,
+            activated,
+            precursor,
+            s,
+            params,
+            dt,
+            enable_synthesis,
+            enable_adsorption,
+            enable_precursor_decay,
+            enable_gamma_decay,
+            enable_diffusion,
+            vn,
+            geometry,
+            gamma,
+            diffusion_rate,
+            advection_rate,
+            s_next,
+            activated_next,
+            precursor_next,
+            waste_next,
+            intermediate,
+            intermediate_next.take(),
+        );
+    }
+    let _ = intermediate;
     reconstruct_gamma_field(grid, s, geometry, delta_floor, gamma);
 
     let mut totals = SurfaceAccountingTotals::default();

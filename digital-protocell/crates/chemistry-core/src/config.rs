@@ -47,6 +47,12 @@ pub const ACTIVE_ASSEMBLY_SCHEMA_VERSION_V1: u32 = 1;
 pub const ACTIVATED_INTERMEDIATE_SCHEMA_VERSION_V1: u32 = 1;
 /// D-033 surface-exchange schema tag for v10.
 pub const SURFACE_EXCHANGE_SCHEMA_VERSION_V4: u32 = 4;
+/// D-034 surface-exchange schema tag for v11 dual-surface maturation.
+pub const SURFACE_EXCHANGE_SCHEMA_VERSION_V5: u32 = 5;
+/// D-034 immature/mature surface maturation schema (v11).
+pub const SURFACE_MATURATION_SCHEMA_VERSION_V1: u32 = 1;
+/// D-034 dual-surface (U + S) schema (v11).
+pub const DUAL_SURFACE_SCHEMA_VERSION_V1: u32 = 1;
 /// D-023 field schema tag: seven current + seven next + P/P_next.
 pub const EIGHT_FIELD_COUNT: usize = 8;
 /// D-033 nine-field count: eight + activated intermediate X.
@@ -96,6 +102,10 @@ pub enum EquationVersion {
     /// Stored fields φ,C,N,F,W,A,P,X,S; replaces direct P+A→S+W with P+A→X+W, X→S, X→P.
     #[serde(rename = "membrane_metabolism_v10_activated_intermediate")]
     MembraneMetabolismV10ActivatedIntermediate,
+    /// D-034 immature/mature dual-surface maturation on the validated v8 interfacial architecture.
+    /// Stored fields φ,C,N,F,W,A,P,U,S (U = δΓ_U immature surface density); maturation U→S stub path.
+    #[serde(rename = "membrane_metabolism_v11_surface_maturation")]
+    MembraneMetabolismV11SurfaceMaturation,
 }
 
 impl EquationVersion {
@@ -126,6 +136,9 @@ impl EquationVersion {
             Self::MembraneMetabolismV10ActivatedIntermediate => {
                 "membrane_metabolism_v10_activated_intermediate"
             }
+            Self::MembraneMetabolismV11SurfaceMaturation => {
+                "membrane_metabolism_v11_surface_maturation"
+            }
         }
     }
 
@@ -142,6 +155,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV8ReversibleSurfaceExchange
                 | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | Self::MembraneMetabolismV10ActivatedIntermediate
+                | Self::MembraneMetabolismV11SurfaceMaturation
         )
     }
 
@@ -157,6 +171,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV8ReversibleSurfaceExchange
                 | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | Self::MembraneMetabolismV10ActivatedIntermediate
+                | Self::MembraneMetabolismV11SurfaceMaturation
         )
     }
 
@@ -171,6 +186,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV8ReversibleSurfaceExchange
                 | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | Self::MembraneMetabolismV10ActivatedIntermediate
+                | Self::MembraneMetabolismV11SurfaceMaturation
         )
     }
 
@@ -191,6 +207,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV8ReversibleSurfaceExchange
                 | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | Self::MembraneMetabolismV10ActivatedIntermediate
+                | Self::MembraneMetabolismV11SurfaceMaturation
         )
     }
 
@@ -201,17 +218,13 @@ impl EquationVersion {
             Self::MembraneMetabolismV8ReversibleSurfaceExchange
                 | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | Self::MembraneMetabolismV10ActivatedIntermediate
+                | Self::MembraneMetabolismV11SurfaceMaturation
         )
     }
 
     /// D-032 metabolically activated surface assembly (v9 only; not v10).
     pub const fn is_activated_surface_assembly(self) -> bool {
         matches!(self, Self::MembraneMetabolismV9ActivatedSurfaceAssembly)
-    }
-
-    /// D-033 two-stage activated membrane intermediate (v10 only).
-    pub const fn is_activated_intermediate(self) -> bool {
-        matches!(self, Self::MembraneMetabolismV10ActivatedIntermediate)
     }
 
     /// True when the field schema carries the eight-field (P + membrane/S) payload (v6–v9).
@@ -225,9 +238,19 @@ impl EquationVersion {
             )
     }
 
-    /// True when the field schema carries the nine-field (P + X + S) payload (v10).
+    /// D-033 two-stage activated membrane intermediate (v10 only).
+    pub const fn is_activated_intermediate(self) -> bool {
+        matches!(self, Self::MembraneMetabolismV10ActivatedIntermediate)
+    }
+
+    /// D-034 immature/mature dual-surface maturation (v11 only).
+    pub const fn is_surface_maturation(self) -> bool {
+        matches!(self, Self::MembraneMetabolismV11SurfaceMaturation)
+    }
+
+    /// True when the field schema carries the nine-field (P + X/U + S) payload (v10/v11).
     pub const fn is_nine_field(self) -> bool {
-        self.is_activated_intermediate()
+        self.is_activated_intermediate() || self.is_surface_maturation()
     }
 
     pub const fn stoichiometric_schema_version(self) -> u32 {
@@ -240,7 +263,8 @@ impl EquationVersion {
             | Self::MembraneMetabolismV7SurfaceDensity
             | Self::MembraneMetabolismV8ReversibleSurfaceExchange
             | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
-            | Self::MembraneMetabolismV10ActivatedIntermediate => STOICHIOMETRIC_SCHEMA_VERSION_V2,
+            | Self::MembraneMetabolismV10ActivatedIntermediate
+            | Self::MembraneMetabolismV11SurfaceMaturation => STOICHIOMETRIC_SCHEMA_VERSION_V2,
             Self::MembraneMetabolismV1 => STOICHIOMETRIC_SCHEMA_VERSION_V1,
             Self::D001BulkV1 | Self::D003CrowdingV1 | Self::SurfaceTurnoverV1 => 0,
         }
@@ -255,7 +279,8 @@ impl EquationVersion {
             Self::MembraneMetabolismV7SurfaceDensity
             | Self::MembraneMetabolismV8ReversibleSurfaceExchange
             | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
-            | Self::MembraneMetabolismV10ActivatedIntermediate => SURFACE_DENSITY_SCHEMA_VERSION_V1,
+            | Self::MembraneMetabolismV10ActivatedIntermediate
+            | Self::MembraneMetabolismV11SurfaceMaturation => SURFACE_DENSITY_SCHEMA_VERSION_V1,
             Self::MembraneMetabolismV1
             | Self::MembraneMetabolismV2Conservative
             | Self::MembraneMetabolismV3StructuralScaling => MEMBRANE_SCHEMA_VERSION_V1,
@@ -269,7 +294,8 @@ impl EquationVersion {
             Self::MembraneMetabolismV7SurfaceDensity
             | Self::MembraneMetabolismV8ReversibleSurfaceExchange
             | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
-            | Self::MembraneMetabolismV10ActivatedIntermediate => {
+            | Self::MembraneMetabolismV10ActivatedIntermediate
+            | Self::MembraneMetabolismV11SurfaceMaturation => {
                 MEMBRANE_TRANSPORT_SCHEMA_VERSION_V3
             }
             // v6 keeps interface-protected M turnover with χ_M = 0 (diffusion-only M transport).
@@ -289,7 +315,8 @@ impl EquationVersion {
             | Self::MembraneMetabolismV7SurfaceDensity
             | Self::MembraneMetabolismV8ReversibleSurfaceExchange
             | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
-            | Self::MembraneMetabolismV10ActivatedIntermediate => PRECURSOR_SCHEMA_VERSION_V1,
+            | Self::MembraneMetabolismV10ActivatedIntermediate
+            | Self::MembraneMetabolismV11SurfaceMaturation => PRECURSOR_SCHEMA_VERSION_V1,
             _ => 0,
         }
     }
@@ -300,7 +327,8 @@ impl EquationVersion {
             Self::MembraneMetabolismV7SurfaceDensity
             | Self::MembraneMetabolismV8ReversibleSurfaceExchange
             | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
-            | Self::MembraneMetabolismV10ActivatedIntermediate => SURFACE_DENSITY_SCHEMA_VERSION_V1,
+            | Self::MembraneMetabolismV10ActivatedIntermediate
+            | Self::MembraneMetabolismV11SurfaceMaturation => SURFACE_DENSITY_SCHEMA_VERSION_V1,
             _ => 0,
         }
     }
@@ -312,6 +340,23 @@ impl EquationVersion {
             Self::MembraneMetabolismV8ReversibleSurfaceExchange => 2,
             Self::MembraneMetabolismV9ActivatedSurfaceAssembly => 3,
             Self::MembraneMetabolismV10ActivatedIntermediate => 4,
+            Self::MembraneMetabolismV11SurfaceMaturation => SURFACE_EXCHANGE_SCHEMA_VERSION_V5,
+            _ => 0,
+        }
+    }
+
+    /// D-034 surface-maturation schema version (0 unless v11).
+    pub const fn surface_maturation_schema_version(self) -> u32 {
+        match self {
+            Self::MembraneMetabolismV11SurfaceMaturation => SURFACE_MATURATION_SCHEMA_VERSION_V1,
+            _ => 0,
+        }
+    }
+
+    /// D-034 dual-surface schema version (0 unless v11).
+    pub const fn dual_surface_schema_version(self) -> u32 {
+        match self {
+            Self::MembraneMetabolismV11SurfaceMaturation => DUAL_SURFACE_SCHEMA_VERSION_V1,
             _ => 0,
         }
     }
@@ -594,6 +639,12 @@ pub struct SimParams {
     /// D-033 activated-intermediate diffusivity (frozen initially to D_P).
     #[serde(default = "default_d_x")]
     pub d_x: f64,
+    /// D-034 immature-surface maturation rate coefficient (U→S).
+    #[serde(default = "default_k_mature")]
+    pub k_mature: f64,
+    /// D-034 immature-surface tangential diffusivity D_U (defaults to D_Γ).
+    #[serde(default = "default_d_u")]
+    pub d_u: f64,
     /// D-024 surface membrane turnover (Γ → W): J_loss = k_Γ_decay Γ.
     #[serde(default = "default_k_gamma_decay")]
     pub k_gamma_decay: f64,
@@ -721,6 +772,14 @@ fn default_k_relax() -> f64 {
 
 fn default_d_x() -> f64 {
     default_d_p()
+}
+
+fn default_k_mature() -> f64 {
+    0.0
+}
+
+fn default_d_u() -> f64 {
+    default_d_gamma()
 }
 
 fn default_k_gamma_decay() -> f64 {
@@ -936,6 +995,8 @@ impl Default for SimParams {
             k_insert: default_k_insert(),
             k_relax: default_k_relax(),
             d_x: default_d_x(),
+            k_mature: default_k_mature(),
+            d_u: default_d_u(),
             k_gamma_decay: default_k_gamma_decay(),
             d_gamma: default_d_gamma(),
             gamma_max: default_gamma_max(),

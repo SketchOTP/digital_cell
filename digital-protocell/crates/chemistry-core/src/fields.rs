@@ -17,6 +17,8 @@ pub struct FieldBuffers {
     pub precursor: Vec<f64>,
     /// D-033 soluble activated membrane intermediate X (nine-field v10; zeros otherwise).
     pub activated_intermediate: Vec<f64>,
+    /// D-034 immature surface density U = δΓ_U (nine-field v11; zeros otherwise).
+    pub immature_membrane: Vec<f64>,
     pub structure_next: Vec<f64>,
     pub catalyst_next: Vec<f64>,
     pub nutrient_next: Vec<f64>,
@@ -26,6 +28,7 @@ pub struct FieldBuffers {
     pub membrane_next: Vec<f64>,
     pub precursor_next: Vec<f64>,
     pub activated_intermediate_next: Vec<f64>,
+    pub immature_membrane_next: Vec<f64>,
     /// scratch: h(phi), laplacian, mu, laplacian_mu, reaction scratch
     pub scratch_h: Vec<f64>,
     pub scratch_lap: Vec<f64>,
@@ -57,6 +60,7 @@ impl FieldBuffers {
             membrane: zero(),
             precursor: zero(),
             activated_intermediate: zero(),
+            immature_membrane: zero(),
             structure_next: zero(),
             catalyst_next: zero(),
             nutrient_next: zero(),
@@ -66,6 +70,7 @@ impl FieldBuffers {
             membrane_next: zero(),
             precursor_next: zero(),
             activated_intermediate_next: zero(),
+            immature_membrane_next: zero(),
             scratch_h: zero(),
             scratch_lap: zero(),
             scratch_mu: zero(),
@@ -101,6 +106,10 @@ impl FieldBuffers {
             &mut self.activated_intermediate,
             &mut self.activated_intermediate_next,
         );
+        std::mem::swap(
+            &mut self.immature_membrane,
+            &mut self.immature_membrane_next,
+        );
     }
 
     pub fn copy_current_to_working(&self, working: &mut FieldBuffers) {
@@ -115,6 +124,9 @@ impl FieldBuffers {
         working
             .activated_intermediate
             .copy_from_slice(&self.activated_intermediate);
+        working
+            .immature_membrane
+            .copy_from_slice(&self.immature_membrane);
     }
 
     pub fn copy_current_to_next(&mut self) {
@@ -128,6 +140,8 @@ impl FieldBuffers {
         self.precursor_next.copy_from_slice(&self.precursor);
         self.activated_intermediate_next
             .copy_from_slice(&self.activated_intermediate);
+        self.immature_membrane_next
+            .copy_from_slice(&self.immature_membrane);
     }
 }
 
@@ -328,6 +342,12 @@ pub fn initialize_seed(grid: &Grid, params: &crate::config::SimParams, fields: &
                     fields.precursor[idx] = 0.0;
                     fields.activated_intermediate[idx] = 0.0;
                 }
+                EquationVersion::MembraneMetabolismV11SurfaceMaturation => {
+                    fields.activated[idx] = 0.10 * h;
+                    fields.membrane[idx] = 0.0;
+                    fields.precursor[idx] = 0.0;
+                    fields.immature_membrane[idx] = 0.0;
+                }
                 EquationVersion::D001BulkV1
                 | EquationVersion::D003CrowdingV1
                 | EquationVersion::SurfaceTurnoverV1 => {
@@ -366,6 +386,7 @@ pub fn field_slice<'a>(fields: &'a FieldBuffers, name: &str) -> Option<&'a [f64]
         "membrane" => Some(&fields.membrane),
         "precursor" => Some(&fields.precursor),
         "activated_intermediate" => Some(&fields.activated_intermediate),
+        "immature_membrane" => Some(&fields.immature_membrane),
         _ => None,
     }
 }
@@ -393,6 +414,19 @@ pub const FIELD_NAMES_V10: [&str; 9] = [
     "membrane",
     "precursor",
     "activated_intermediate",
+];
+
+/// D-034 nine-field ordered name list (v11 immature surface U).
+pub const FIELD_NAMES_V11: [&str; 9] = [
+    "structure",
+    "catalyst",
+    "nutrient",
+    "fuel",
+    "waste",
+    "activated",
+    "membrane",
+    "precursor",
+    "immature_membrane",
 ];
 
 // ponytail: grid size fixed at compile-time constants; upgrade path is dynamic Grid allocation

@@ -81,7 +81,8 @@ pub fn active_structural_mechanism(params: &SimParams) -> Option<StructuralScali
         | EquationVersion::MembraneMetabolismV6PrecursorAssembly
         | EquationVersion::MembraneMetabolismV7SurfaceDensity | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
                 | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
-                | EquationVersion::MembraneMetabolismV10ActivatedIntermediate => Some(V3_SELECTED_MECHANISM),
+                | EquationVersion::MembraneMetabolismV10ActivatedIntermediate
+                | EquationVersion::MembraneMetabolismV11SurfaceMaturation => Some(V3_SELECTED_MECHANISM),
         _ => None,
     }
 }
