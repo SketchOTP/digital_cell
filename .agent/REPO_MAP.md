@@ -300,3 +300,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/chemistry-core/src/membrane_label_tracer.rs` — observer-only pulse-chase tracer
 - `digital-protocell/crates/chemistry-core/tests/d039_tests.rs` — focused suite (10)
 - `digital-protocell/crates/experiment-runner/src/d039.rs` — Gates 0–10 pipeline (schema3 exchange+damage-only)
+
+## D-040 exchange–precursor coupling decomposition
+- `digital-protocell/crates/chemistry-core/src/d040_analysis.rs` — equilibrium, chronology, endogenous/route classifiers, reduced APS model
+- `digital-protocell/crates/chemistry-core/tests/d040_tests.rs` — focused suite (15)
+- `digital-protocell/crates/experiment-runner/src/d040.rs` — Gates 0–9 diagnostic pipeline
+- `digital-protocell/experiments/generated/d040/` — preservation through route_decision artifacts (gitignored)
+- `docs/d040_exchange_precursor_decomposition.md` — `D040_MEMBRANE_METABOLISM_BISTABILITY` / Route F

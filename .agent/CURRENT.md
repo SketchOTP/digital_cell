@@ -1,23 +1,24 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260719-1328-d039-membrane-turnover-requirement-damage-repair
-- Project directive: D-039
-- Goal: Qualify exchange+damage membrane maintenance without constitutive S→W
+- ID: D-20260719-1536-d040-exchange-precursor-coupling-decomposition
+- Project directive: D-040
+- Goal: Diagnose exchange–precursor coupling failure under schema-3 v8 without changing chemistry
 - Status: done
-- Acceptance: met — `D039_CONTINUOUS_REPLACEMENT_NOT_ESTABLISHED`
-- Touched files: chemistry-core config/surface_density/simulation/interventions/membrane_label_tracer/d039_*, experiment-runner/d039, docs/d039_*, experiments/generated/d039
-- Next action: review passive exchange / precursor coupling under schema 3; do not restore constitutive destruction
+- Acceptance: met — `D040_MEMBRANE_METABOLISM_BISTABILITY` (Route F)
+- Touched files: chemistry-core/d040_analysis+tests, experiment-runner/d040, docs/d040_*, experiments/generated/d040, .agent/*
+- Next action: basin-accessibility / local-bootstrap directive; do not alter validated exchange law
 
 ## Repo facts needed now
-- Schema 3: zero constitutive S→W; historical schemas unchanged
-- Gate0: MEMBRANE_MAINTENANCE_MAY_USE_EXCHANGE_PLUS_CAUSAL_DAMAGE
-- Frozen v8 under schema3: A retention fail; pulse-chase replacement≈0; damage unrepaired
-- Stage E: still BLOCKED_NOT_RECOVERED (not certified by D-039)
+- Record: SCHEMA3_V8_MAINTENANCE_COUPLING_FAILED
+- Gate1: EXCHANGE_LAW_PARITY_PASS_PRECURSOR_BELOW_EQUILIBRIUM
+- Gate3: PASSIVE_EXCHANGE_CAN_REPAIR_WITH_SUFFICIENT_PRECURSOR (p≈0.02)
+- Gate4: synthesis_capacity_sufficient (offline exchange)
+- Stage E: BLOCKED_NOT_RECOVERED
 
 ## Last validation
-- Command: cargo test d039_tests; focused d024/d029/d031/d038; d039 pipeline Gates0–6
-- Result: unit PASS; Gate0–2 PASS; Gate3/4/6 FAIL → D039_CONTINUOUS_REPLACEMENT_NOT_ESTABLISHED
+- Command: cargo test -p chemistry-core --test d040_tests --release; D040_MAX_ACCEPTED=2000 d040 pipeline
+- Result: 15/15 PASS; pipeline Route_F / D040_MEMBRANE_METABOLISM_BISTABILITY
 
 ## Open blockers
-- None for D-039 closeout
+- None for D-040 closeout
