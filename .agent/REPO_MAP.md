@@ -307,3 +307,11 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d040.rs` — Gates 0–9 diagnostic pipeline
 - `digital-protocell/experiments/generated/d040/` — preservation through route_decision artifacts (gitignored)
 - `docs/d040_exchange_precursor_decomposition.md` — `D040_MEMBRANE_METABOLISM_BISTABILITY` / Route F
+
+## D-041 structural A retention
+- `digital-protocell/crates/chemistry-core/src/membrane_transport.rs` — schema-3 Π_A=ρ_A exp(−β_A θ) on φ-crossing A faces
+- `digital-protocell/crates/chemistry-core/src/d041_analysis.rs` — ρ_A screen helpers, nonredundancy, conclusions
+- `digital-protocell/crates/chemistry-core/tests/d041_tests.rs` — transport isolation suite (9)
+- `digital-protocell/crates/experiment-runner/src/d041.rs` — Gates 0–10 + diagnose-rho
+- `digital-protocell/experiments/generated/d041/` — preservation, route_confirmation, retention_candidates, manifest
+- `docs/d041_structural_a_retention.md` — `D041_STRUCTURAL_A_RETENTION_NOT_SUFFICIENT`
