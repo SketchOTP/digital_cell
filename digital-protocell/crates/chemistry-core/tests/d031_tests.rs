@@ -238,6 +238,8 @@ fn large_dt_invariant_remains_bounded_no_clip() {
         &mut a_next,
         &mut p_next,
         &mut waste,
+        None,
+        None,
     )
     .expect("V2 must accept large dt");
     for idx in 0..s_next.len() {
@@ -315,6 +317,8 @@ fn small_dt_v2_matches_explicit_v1() {
         &mut a1,
         &mut pr1,
         &mut waste1,
+    None,
+    None,
     )
     .unwrap();
     evolve_surface_density(
@@ -338,6 +342,8 @@ fn small_dt_v2_matches_explicit_v1() {
         &mut a2,
         &mut pr2,
         &mut waste2,
+    None,
+    None,
     )
     .unwrap();
     let mut max_ds: f64 = 0.0;
@@ -391,6 +397,8 @@ fn strang_turnover_plus_exchange_conserves_psw() {
         &mut a_next,
         &mut p_next,
         &mut waste,
+        None,
+        None,
     )
     .unwrap();
     let p1: f64 = p_next.iter().sum();
@@ -465,6 +473,8 @@ fn atomic_reject_still_available_on_v1() {
         &mut a_next,
         &mut p_next,
         &mut waste,
+        None,
+        None,
     );
     assert_eq!(result, Err(ExchangeReject::CapacityExceeded));
     // Atomic: buffers unchanged on reject path is enforced by caller; here we only require Err.

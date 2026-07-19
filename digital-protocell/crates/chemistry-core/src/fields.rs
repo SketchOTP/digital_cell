@@ -13,8 +13,10 @@ pub struct FieldBuffers {
     pub waste: Vec<f64>,
     pub activated: Vec<f64>,
     pub membrane: Vec<f64>,
-    /// D-023 soluble membrane precursor P (eight-field v6 only; zeros otherwise).
+    /// D-023 soluble membrane precursor P (eight-field v6+; zeros otherwise).
     pub precursor: Vec<f64>,
+    /// D-033 soluble activated membrane intermediate X (nine-field v10; zeros otherwise).
+    pub activated_intermediate: Vec<f64>,
     pub structure_next: Vec<f64>,
     pub catalyst_next: Vec<f64>,
     pub nutrient_next: Vec<f64>,
@@ -23,6 +25,7 @@ pub struct FieldBuffers {
     pub activated_next: Vec<f64>,
     pub membrane_next: Vec<f64>,
     pub precursor_next: Vec<f64>,
+    pub activated_intermediate_next: Vec<f64>,
     /// scratch: h(phi), laplacian, mu, laplacian_mu, reaction scratch
     pub scratch_h: Vec<f64>,
     pub scratch_lap: Vec<f64>,
@@ -38,6 +41,7 @@ pub struct FieldBuffers {
     pub scratch_transport_f: Vec<f64>,
     pub scratch_transport_w: Vec<f64>,
     pub scratch_transport_p: Vec<f64>,
+    pub scratch_transport_x: Vec<f64>,
 }
 
 impl FieldBuffers {
@@ -52,6 +56,7 @@ impl FieldBuffers {
             activated: zero(),
             membrane: zero(),
             precursor: zero(),
+            activated_intermediate: zero(),
             structure_next: zero(),
             catalyst_next: zero(),
             nutrient_next: zero(),
@@ -60,6 +65,7 @@ impl FieldBuffers {
             activated_next: zero(),
             membrane_next: zero(),
             precursor_next: zero(),
+            activated_intermediate_next: zero(),
             scratch_h: zero(),
             scratch_lap: zero(),
             scratch_mu: zero(),
@@ -74,6 +80,7 @@ impl FieldBuffers {
             scratch_transport_f: zero(),
             scratch_transport_w: zero(),
             scratch_transport_p: zero(),
+            scratch_transport_x: zero(),
         }
     }
 
@@ -90,6 +97,10 @@ impl FieldBuffers {
         std::mem::swap(&mut self.activated, &mut self.activated_next);
         std::mem::swap(&mut self.membrane, &mut self.membrane_next);
         std::mem::swap(&mut self.precursor, &mut self.precursor_next);
+        std::mem::swap(
+            &mut self.activated_intermediate,
+            &mut self.activated_intermediate_next,
+        );
     }
 
     pub fn copy_current_to_working(&self, working: &mut FieldBuffers) {
@@ -101,6 +112,9 @@ impl FieldBuffers {
         working.activated.copy_from_slice(&self.activated);
         working.membrane.copy_from_slice(&self.membrane);
         working.precursor.copy_from_slice(&self.precursor);
+        working
+            .activated_intermediate
+            .copy_from_slice(&self.activated_intermediate);
     }
 
     pub fn copy_current_to_next(&mut self) {
@@ -112,6 +126,8 @@ impl FieldBuffers {
         self.activated_next.copy_from_slice(&self.activated);
         self.membrane_next.copy_from_slice(&self.membrane);
         self.precursor_next.copy_from_slice(&self.precursor);
+        self.activated_intermediate_next
+            .copy_from_slice(&self.activated_intermediate);
     }
 }
 
@@ -306,6 +322,12 @@ pub fn initialize_seed(grid: &Grid, params: &crate::config::SimParams, fields: &
                     fields.membrane[idx] = 0.0;
                     fields.precursor[idx] = 0.0;
                 }
+                EquationVersion::MembraneMetabolismV10ActivatedIntermediate => {
+                    fields.activated[idx] = 0.10 * h;
+                    fields.membrane[idx] = 0.0;
+                    fields.precursor[idx] = 0.0;
+                    fields.activated_intermediate[idx] = 0.0;
+                }
                 EquationVersion::D001BulkV1
                 | EquationVersion::D003CrowdingV1
                 | EquationVersion::SurfaceTurnoverV1 => {
@@ -343,6 +365,7 @@ pub fn field_slice<'a>(fields: &'a FieldBuffers, name: &str) -> Option<&'a [f64]
         "activated" => Some(&fields.activated),
         "membrane" => Some(&fields.membrane),
         "precursor" => Some(&fields.precursor),
+        "activated_intermediate" => Some(&fields.activated_intermediate),
         _ => None,
     }
 }
@@ -357,6 +380,19 @@ pub const FIELD_NAMES_V6: [&str; 8] = [
     "activated",
     "membrane",
     "precursor",
+];
+
+/// D-033 nine-field ordered name list (v10).
+pub const FIELD_NAMES_V10: [&str; 9] = [
+    "structure",
+    "catalyst",
+    "nutrient",
+    "fuel",
+    "waste",
+    "activated",
+    "membrane",
+    "precursor",
+    "activated_intermediate",
 ];
 
 // ponytail: grid size fixed at compile-time constants; upgrade path is dynamic Grid allocation

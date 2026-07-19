@@ -241,5 +241,8 @@ Concise navigation map for agents. Add entries as application code lands.
 - chemistry-core/src/surface_density.rs — apply_active_assembly_bounded; SurfaceAccountingTotals.active_assembly
 - chemistry-core/src/config.rs — MembraneMetabolismV9ActivatedSurfaceAssembly; k_active; a_reference
 - experiment-runner/src/d032.rs — Gates 0/2/3/5 pipeline
+- chemistry-core/src/d033_analysis.rs — v10 orthogonal rate ID, bounded intermediate helpers
+- experiment-runner/src/d033.rs — Gates 0–5 pipeline (buffering, numerical, isolated renewal)
+- experiments/generated/d033/ — preservation, kinetics, buffering, numerical, manifest
 - experiments/generated/d032/ — preservation, active_basis, manifest
 - docs/d032_activated_surface_assembly.md — terminal report

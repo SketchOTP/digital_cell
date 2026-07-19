@@ -201,6 +201,8 @@ fn run_passive_diffusion_diagnostic(params: &SimParams) -> PassiveOutcome {
             &mut a_next,
             &mut p_next,
             &mut w_next,
+            None,
+            None,
         ).expect("surface evolve");
         s.copy_from_slice(&s_next);
     }

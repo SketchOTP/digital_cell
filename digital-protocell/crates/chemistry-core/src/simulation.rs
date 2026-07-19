@@ -230,6 +230,7 @@ impl Simulation {
                 | EquationVersion::SurfaceTurnoverV1 => self.try_legacy_substep(attempt_dt),
                 EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly | EquationVersion::MembraneMetabolismV7SurfaceDensity | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
                 | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
+                | EquationVersion::MembraneMetabolismV10ActivatedIntermediate
                     if self.params.d008_stage_b_enabled =>
                 {
                     self.try_d008_stage_b(attempt_dt)
@@ -237,7 +238,8 @@ impl Simulation {
                 EquationVersion::MembraneMetabolismV1
                 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly | EquationVersion::MembraneMetabolismV7SurfaceDensity
             | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
-                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {
+                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
+                | EquationVersion::MembraneMetabolismV10ActivatedIntermediate => {
                     match self.params.d008_stage_mode {
                         D008StageMode::Transport => {
                             self.try_membrane_metabolism_v1_transport(attempt_dt)
@@ -1084,11 +1086,19 @@ impl Simulation {
 
     /// D-024 isolated Stage B (v7): fixed φ/C; S = δΓ adsorbed from soluble precursor P.
     fn try_d008_stage_b_v7(&mut self, dt: f64) -> SubstepResult {
+        let v10 = self.params.equation_version.is_activated_intermediate();
         if self.fields.membrane.iter().enumerate().any(|(idx, &value)| {
             self.grid.in_dish(idx) && (!value.is_finite() || value < 0.0)
         }) || self.fields.precursor.iter().enumerate().any(|(idx, &value)| {
             self.grid.in_dish(idx) && (!value.is_finite() || value < 0.0)
-        }) {
+        }) || (v10
+            && self
+                .fields
+                .activated_intermediate
+                .iter()
+                .enumerate()
+                .any(|(idx, &value)| self.grid.in_dish(idx) && (!value.is_finite() || value < 0.0)))
+        {
             return SubstepResult::Reject;
         }
 
@@ -1110,6 +1120,15 @@ impl Simulation {
             &mut self.fields.scratch_lap,
             &mut self.fields.scratch_transport_p,
         );
+        if v10 {
+            diffuse_constant(
+                &self.grid,
+                &self.fields.activated_intermediate,
+                self.params.d_x,
+                &mut self.fields.scratch_lap,
+                &mut self.fields.scratch_transport_x,
+            );
+        }
 
         let size = self.grid.width * self.grid.height;
         let mut geometry = vec![InterfaceGeometryCell::default(); size];
@@ -1137,6 +1156,8 @@ impl Simulation {
             &mut self.fields.activated_next,
             &mut self.fields.precursor_next,
             &mut self.fields.waste_next,
+            Some(&self.fields.activated_intermediate),
+            Some(&mut self.fields.activated_intermediate_next),
         ) {
             Ok(t) => t,
             Err(reason) => {
@@ -1155,6 +1176,10 @@ impl Simulation {
             let d = self.fields.scratch_transport_p[idx] * dt;
             precursor_transport_delta += d;
             self.fields.precursor_next[idx] += d;
+            if v10 {
+                self.fields.activated_intermediate_next[idx] +=
+                    self.fields.scratch_transport_x[idx] * dt;
+            }
         }
 
         let pre_clamp_s = field_mass(&self.grid, &self.fields.membrane_next);
@@ -1190,6 +1215,12 @@ impl Simulation {
             || validate_soluble_field(&self.fields.activated_next, &self.grid.dish_mask).is_err()
             || validate_soluble_field(&self.fields.precursor_next, &self.grid.dish_mask).is_err()
             || validate_soluble_field(&self.fields.membrane_next, &self.grid.dish_mask).is_err()
+            || (v10
+                && validate_soluble_field(
+                    &self.fields.activated_intermediate_next,
+                    &self.grid.dish_mask,
+                )
+                .is_err())
         {
             return SubstepResult::Reject;
         }
@@ -1198,11 +1229,25 @@ impl Simulation {
         let mass_p_after = field_mass(&self.grid, &self.fields.precursor_next);
         let mass_w_after = field_mass(&self.grid, &self.fields.waste_next);
         let mass_a_after = field_mass(&self.grid, &self.fields.activated_next);
-        let surface_reaction_delta = totals.adsorption_delta - totals.gamma_decay_delta;
+        let activated_reaction_delta = if v10 {
+            -totals.precursor_synthesis_delta - totals.charge_delta
+        } else {
+            -totals.precursor_synthesis_delta
+        };
+        let waste_reaction_delta = if v10 {
+            totals.surface_to_waste + totals.precursor_decay_delta + totals.charge_delta
+        } else {
+            totals.surface_to_waste + totals.precursor_decay_delta
+        };
+        let surface_reaction_delta = if v10 {
+            totals.adsorption_delta + totals.insert_delta - totals.gamma_decay_delta
+        } else {
+            totals.adsorption_delta - totals.gamma_decay_delta
+        };
         let precursor_reaction_delta = totals.precursor_synthesis_delta
             - totals.precursor_to_surface
-            - totals.precursor_decay_delta;
-        let waste_reaction_delta = totals.surface_to_waste + totals.precursor_decay_delta;
+            - totals.precursor_decay_delta
+            + if v10 { totals.relax_delta } else { 0.0 };
         let step_accounting = StepAccounting {
             structure: build_field_ledger(mass_phi, 0.0, 0.0, 0.0, mass_phi, mass_phi),
             catalyst: build_field_ledger(mass_c, 0.0, 0.0, 0.0, mass_c, mass_c),
@@ -1218,7 +1263,7 @@ impl Simulation {
             ),
             activated: build_field_ledger(
                 mass_a,
-                -totals.precursor_synthesis_delta,
+                activated_reaction_delta,
                 0.0,
                 0.0,
                 mass_a_after,
@@ -1951,6 +1996,7 @@ impl Simulation {
         }
 
         let evolution_and_surface = if self.params.equation_version.is_surface_density() {
+            let v10 = self.params.equation_version.is_activated_intermediate();
             // V7: no bulk A→M. Soluble P transports, then adsorbs to S=δΓ.
             // When φ is free to evolve, derive v_n from φ_old→φ_next and advect S.
             diffuse_constant(
@@ -1960,6 +2006,15 @@ impl Simulation {
                 &mut self.fields.scratch_lap,
                 &mut self.fields.scratch_transport_p,
             );
+            if v10 {
+                diffuse_constant(
+                    &self.grid,
+                    &self.fields.activated_intermediate,
+                    self.params.d_x,
+                    &mut self.fields.scratch_lap,
+                    &mut self.fields.scratch_transport_x,
+                );
+            }
             let size = self.grid.width * self.grid.height;
             let mut geometry = vec![InterfaceGeometryCell::default(); size];
             let mut gamma = vec![0.0; size];
@@ -1970,6 +2025,11 @@ impl Simulation {
             self.fields
                 .precursor_next
                 .copy_from_slice(&self.fields.precursor);
+            if v10 {
+                self.fields
+                    .activated_intermediate_next
+                    .copy_from_slice(&self.fields.activated_intermediate);
+            }
 
             let phi_for_surface = &self.fields.structure;
             crate::surface_density::compute_interface_geometry(
@@ -2033,6 +2093,8 @@ impl Simulation {
                         &mut self.fields.activated_next,
                         &mut self.fields.precursor_next,
                         &mut self.fields.waste_next,
+                        Some(&self.fields.activated_intermediate),
+                        Some(&mut self.fields.activated_intermediate_next),
                     )
                 } else {
                     evolve_surface_density(
@@ -2056,6 +2118,8 @@ impl Simulation {
                         &mut self.fields.activated_next,
                         &mut self.fields.precursor_next,
                         &mut self.fields.waste_next,
+                        Some(&self.fields.activated_intermediate),
+                        Some(&mut self.fields.activated_intermediate_next),
                     )
                 };
                 match evolve_result {
@@ -2072,25 +2136,49 @@ impl Simulation {
             for idx in 0..size {
                 if self.grid.in_dish(idx) {
                     self.fields.precursor_next[idx] += self.fields.scratch_transport_p[idx] * dt;
+                    if v10 {
+                        self.fields.activated_intermediate_next[idx] +=
+                            self.fields.scratch_transport_x[idx] * dt;
+                    }
                 }
             }
             if !self.d026_freeze_surface {
-                react_a += -totals.precursor_synthesis_delta - totals.active_assembly_activation;
-                react_w += totals.surface_to_waste
-                    + totals.precursor_decay_delta
-                    + totals.active_assembly;
+                if v10 {
+                    react_a += -totals.precursor_synthesis_delta - totals.charge_delta;
+                    react_w += totals.surface_to_waste
+                        + totals.precursor_decay_delta
+                        + totals.charge_delta;
+                } else {
+                    react_a += -totals.precursor_synthesis_delta - totals.active_assembly_activation;
+                    react_w += totals.surface_to_waste
+                        + totals.precursor_decay_delta
+                        + totals.active_assembly;
+                }
             }
             (
                 MembraneEvolutionTotals {
-                    synthesis_delta: totals.adsorption_delta + totals.active_assembly,
+                    synthesis_delta: totals.adsorption_delta
+                        + if v10 {
+                            totals.insert_delta
+                        } else {
+                            totals.active_assembly
+                        },
                     decay_delta: totals.gamma_decay_delta,
                     detachment_delta: 0.0,
                     diffusion_delta: totals.surface_diffusion_delta + totals.advection_delta,
                     activated_reaction_delta: -totals.precursor_synthesis_delta
-                        - totals.active_assembly_activation,
+                        - if v10 {
+                            totals.charge_delta
+                        } else {
+                            totals.active_assembly_activation
+                        },
                     waste_reaction_delta: totals.surface_to_waste
                         + totals.precursor_decay_delta
-                        + totals.active_assembly,
+                        + if v10 {
+                            totals.charge_delta
+                        } else {
+                            totals.active_assembly
+                        },
                 },
                 Some(pending_surface_totals),
             )
@@ -2236,6 +2324,17 @@ impl Simulation {
                 DtLimiter::FieldBoundValidation,
                 format!("{name}:{err}"),
             );
+        }
+        if self.params.equation_version.is_activated_intermediate() {
+            if let Err(err) = validate_soluble_field(
+                &self.fields.activated_intermediate_next,
+                &self.grid.dish_mask,
+            ) {
+                return self.reject(
+                    DtLimiter::FieldBoundValidation,
+                    format!("activated_intermediate_next:{err}"),
+                );
+            }
         }
 
         let mass_c_after = field_mass(&self.grid, &self.fields.catalyst_next);
@@ -2559,7 +2658,7 @@ impl Simulation {
             EquationVersion::MembraneMetabolismV6PrecursorAssembly
             | EquationVersion::MembraneMetabolismV7SurfaceDensity
             | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
-                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {
+            | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {
                 for v in &self.fields.activated {
                     v.to_bits().hash(&mut hasher);
                 }
@@ -2567,6 +2666,20 @@ impl Simulation {
                     v.to_bits().hash(&mut hasher);
                 }
                 for v in &self.fields.precursor {
+                    v.to_bits().hash(&mut hasher);
+                }
+            }
+            EquationVersion::MembraneMetabolismV10ActivatedIntermediate => {
+                for v in &self.fields.activated {
+                    v.to_bits().hash(&mut hasher);
+                }
+                for v in &self.fields.membrane {
+                    v.to_bits().hash(&mut hasher);
+                }
+                for v in &self.fields.precursor {
+                    v.to_bits().hash(&mut hasher);
+                }
+                for v in &self.fields.activated_intermediate {
                     v.to_bits().hash(&mut hasher);
                 }
             }
@@ -2594,10 +2707,16 @@ impl Simulation {
             EquationVersion::MembraneMetabolismV6PrecursorAssembly
             | EquationVersion::MembraneMetabolismV7SurfaceDensity
             | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
-                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {
+            | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {
                 append_field_bits(&mut bytes, &self.fields.activated);
                 append_field_bits(&mut bytes, &self.fields.membrane);
                 append_field_bits(&mut bytes, &self.fields.precursor);
+            }
+            EquationVersion::MembraneMetabolismV10ActivatedIntermediate => {
+                append_field_bits(&mut bytes, &self.fields.activated);
+                append_field_bits(&mut bytes, &self.fields.membrane);
+                append_field_bits(&mut bytes, &self.fields.precursor);
+                append_field_bits(&mut bytes, &self.fields.activated_intermediate);
             }
             EquationVersion::D001BulkV1
             | EquationVersion::D003CrowdingV1

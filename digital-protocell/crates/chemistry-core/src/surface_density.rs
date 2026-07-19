@@ -41,6 +41,20 @@ pub struct SurfaceAccountingTotals {
     pub active_assembly: f64,
     /// D-032 activation potential consumed by active assembly (= active_assembly for 1:1 stoichiometry).
     pub active_assembly_activation: f64,
+    /// D-033 charge extent P+A→X+W (≥ 0).
+    pub charge_delta: f64,
+    /// D-033 insertion extent X→S (≥ 0).
+    pub insert_delta: f64,
+    /// D-033 relaxation extent X→P (≥ 0).
+    pub relax_delta: f64,
+    /// D-033 activation potential produced into X (= charge_delta).
+    pub activation_production: f64,
+    /// D-033 activation potential stored in X (net ΔE_X over the step).
+    pub activation_storage_delta: f64,
+    /// D-033 activation potential consumed by insertion (= insert_delta).
+    pub activation_work: f64,
+    /// D-033 activation potential dissipated by relaxation (= relax_delta).
+    pub activation_dissipation: f64,
 }
 
 impl SurfaceAccountingTotals {
@@ -63,6 +77,14 @@ impl SurfaceAccountingTotals {
             active_assembly: self.active_assembly - baseline.active_assembly,
             active_assembly_activation: self.active_assembly_activation
                 - baseline.active_assembly_activation,
+            charge_delta: self.charge_delta - baseline.charge_delta,
+            insert_delta: self.insert_delta - baseline.insert_delta,
+            relax_delta: self.relax_delta - baseline.relax_delta,
+            activation_production: self.activation_production - baseline.activation_production,
+            activation_storage_delta: self.activation_storage_delta
+                - baseline.activation_storage_delta,
+            activation_work: self.activation_work - baseline.activation_work,
+            activation_dissipation: self.activation_dissipation - baseline.activation_dissipation,
         }
     }
 
@@ -82,6 +104,13 @@ impl SurfaceAccountingTotals {
         self.exchange_dissipation += step.exchange_dissipation;
         self.active_assembly += step.active_assembly;
         self.active_assembly_activation += step.active_assembly_activation;
+        self.charge_delta += step.charge_delta;
+        self.insert_delta += step.insert_delta;
+        self.relax_delta += step.relax_delta;
+        self.activation_production += step.activation_production;
+        self.activation_storage_delta += step.activation_storage_delta;
+        self.activation_work += step.activation_work;
+        self.activation_dissipation += step.activation_dissipation;
     }
 }
 
@@ -138,6 +167,13 @@ impl SurfaceAccountingState {
             exchange_dissipation: w.exchange_dissipation / dt,
             active_assembly: w.active_assembly / dt,
             active_assembly_activation: w.active_assembly_activation / dt,
+            charge_delta: w.charge_delta / dt,
+            insert_delta: w.insert_delta / dt,
+            relax_delta: w.relax_delta / dt,
+            activation_production: w.activation_production / dt,
+            activation_storage_delta: w.activation_storage_delta / dt,
+            activation_work: w.activation_work / dt,
+            activation_dissipation: w.activation_dissipation / dt,
         }
     }
 }
@@ -429,6 +465,146 @@ pub fn apply_active_assembly_bounded(
         r,
         r,
     )
+}
+
+/// D-033 charge rate: `r_charge = k_charge × H(φ) × q(C) × P × A`.
+#[inline]
+pub fn charge_rate(
+    phi: f64,
+    catalyst: f64,
+    precursor: f64,
+    activated: f64,
+    params: &SimParams,
+) -> f64 {
+    if params.k_charge <= 0.0 || !params.equation_version.is_activated_intermediate() {
+        return 0.0;
+    }
+    params.k_charge
+        * interior_weight(phi)
+        * membrane_catalyst_saturation(catalyst, params)
+        * precursor.max(0.0)
+        * activated.max(0.0)
+}
+
+/// D-033 insertion rate: `r_insert = k_insert × δ × X × max(0,1−θ)`.
+#[inline]
+pub fn insert_rate(
+    intermediate: f64,
+    surface: f64,
+    delta: f64,
+    params: &SimParams,
+) -> f64 {
+    if params.k_insert <= 0.0
+        || !params.equation_version.is_activated_intermediate()
+        || delta <= params.delta_floor
+    {
+        return 0.0;
+    }
+    let gamma = surface / delta;
+    let theta = surface_occupancy_theta(gamma, params.gamma_max);
+    params.k_insert * delta * intermediate.max(0.0) * (1.0 - theta).max(0.0)
+}
+
+/// D-033 relaxation rate: `r_relax = k_relax × X`.
+#[inline]
+pub fn relax_rate(intermediate: f64, params: &SimParams) -> f64 {
+    if params.k_relax <= 0.0 || !params.equation_version.is_activated_intermediate() {
+        return 0.0;
+    }
+    params.k_relax * intermediate.max(0.0)
+}
+
+/// Bounded charge transfer P+A→X+W.
+///
+/// Returns `(p, a, x, w_delta, r)` with `r = min(r_charge·dt, P, A)`.
+#[inline]
+pub fn apply_charge_bounded(
+    phi: f64,
+    catalyst: f64,
+    precursor: f64,
+    activated: f64,
+    intermediate: f64,
+    dt: f64,
+    params: &SimParams,
+) -> (f64, f64, f64, f64, f64) {
+    if dt <= 0.0 {
+        return (precursor, activated, intermediate, 0.0, 0.0);
+    }
+    let r_want = charge_rate(phi, catalyst, precursor, activated, params) * dt;
+    let r = r_want
+        .min(precursor.max(0.0))
+        .min(activated.max(0.0))
+        .max(0.0);
+    (
+        precursor - r,
+        activated - r,
+        intermediate + r,
+        r,
+        r,
+    )
+}
+
+/// Bounded insertion X→S (consumes stored activation; does not consume A).
+///
+/// Returns `(x, s, r)` with `r = min(r_insert·dt, X, capacity)`.
+#[inline]
+pub fn apply_insert_bounded(
+    intermediate: f64,
+    surface: f64,
+    delta: f64,
+    dt: f64,
+    params: &SimParams,
+) -> (f64, f64, f64) {
+    if dt <= 0.0 || delta <= params.delta_floor {
+        return (intermediate, surface, 0.0);
+    }
+    let r_want = insert_rate(intermediate, surface, delta, params) * dt;
+    let capacity = (delta * params.gamma_max.max(0.0) - surface).max(0.0);
+    let r = r_want
+        .min(intermediate.max(0.0))
+        .min(capacity)
+        .max(0.0);
+    (intermediate - r, surface + r, r)
+}
+
+/// Bounded relaxation X→P (dissipates stored activation; no membrane, no waste).
+///
+/// Returns `(x, p, r)` with `r = min(r_relax·dt, X)`.
+#[inline]
+pub fn apply_relax_bounded(
+    intermediate: f64,
+    precursor: f64,
+    dt: f64,
+    params: &SimParams,
+) -> (f64, f64, f64) {
+    if dt <= 0.0 {
+        return (intermediate, precursor, 0.0);
+    }
+    let r_want = relax_rate(intermediate, params) * dt;
+    let r = r_want.min(intermediate.max(0.0)).max(0.0);
+    (intermediate - r, precursor + r, r)
+}
+
+/// Sequential charge → insert → relax with local bounds.
+///
+/// Returns `(p, a, x, s, w_delta, charge, insert, relax)`.
+#[inline]
+pub fn apply_activated_intermediate_bounded(
+    phi: f64,
+    catalyst: f64,
+    precursor: f64,
+    activated: f64,
+    intermediate: f64,
+    surface: f64,
+    delta: f64,
+    dt: f64,
+    params: &SimParams,
+) -> (f64, f64, f64, f64, f64, f64, f64, f64) {
+    let (p1, a1, x1, w_delta, r_charge) =
+        apply_charge_bounded(phi, catalyst, precursor, activated, intermediate, dt, params);
+    let (x2, s2, r_insert) = apply_insert_bounded(x1, surface, delta, dt, params);
+    let (x3, p3, r_relax) = apply_relax_bounded(x2, p1, dt, params);
+    (p3, a1, x3, s2, w_delta, r_charge, r_insert, r_relax)
 }
 
 /// Net volumetric exchange flux density J_exchange = J_forward − J_reverse (before ×δ).
@@ -1228,6 +1404,8 @@ pub fn evolve_surface_density(
     activated_next: &mut [f64],
     precursor_next: &mut [f64],
     waste_next: &mut [f64],
+    intermediate: Option<&[f64]>,
+    intermediate_next: Option<&mut [f64]>,
 ) -> Result<SurfaceAccountingTotals, ExchangeReject> {
     let mut advection_rate = Vec::new();
     evolve_surface_density_with_vn(
@@ -1253,6 +1431,8 @@ pub fn evolve_surface_density(
         activated_next,
         precursor_next,
         waste_next,
+        intermediate,
+        intermediate_next,
     )
 }
 
@@ -1281,10 +1461,15 @@ pub fn evolve_surface_density_with_vn(
     activated_next: &mut [f64],
     precursor_next: &mut [f64],
     waste_next: &mut [f64],
+    intermediate: Option<&[f64]>,
+    mut intermediate_next: Option<&mut [f64]>,
 ) -> Result<SurfaceAccountingTotals, ExchangeReject> {
+    // ponytail: callers pre-copy current X into `intermediate_next`; `intermediate` is reserved.
+    let _ = intermediate;
     let eta_n = params.eta_n;
     let delta_floor = params.delta_floor;
     let reversible = params.equation_version.is_reversible_surface_exchange();
+    let v10 = params.equation_version.is_activated_intermediate();
     compute_interface_geometry(grid, phi, eta_n, geometry);
     reconstruct_gamma_field(grid, s, geometry, delta_floor, gamma);
 
@@ -1354,9 +1539,10 @@ pub fn evolve_surface_density_with_vn(
         //   2) precursor synthesis / precursor decay
         //   3) half biological S→W turnover (exact)
         //   4) full reversible P↔S exchange (backward Euler on invariant domain)
-        //   5) active P+A→S+W assembly (analytically bounded)
+        //   5) active P+A→S+W assembly (v9) OR charge/insert/relax (v10)
         //   6) half biological S→W turnover (exact)
         // v8 omits step 5 when k_active=0 / non-v9.
+        // v10 replaces step 5 with activated-intermediate pathway.
         let use_invariant = reversible
             && params.surface_exchange_integrator
                 == SurfaceExchangeIntegrator::InvariantDomainV2;
@@ -1364,8 +1550,32 @@ pub fn evolve_surface_density_with_vn(
         if use_invariant {
             let mut s_work = s[idx] + ds;
             let mut p_work = precursor_next[idx];
-            // Off-interface: transport already applied; skip local reaction.
+            // Off-interface: transport already applied; still allow bulk charge/relax.
             if d <= delta_floor {
+                if v10 {
+                    if let Some(x_buf) = intermediate_next.as_deref_mut() {
+                        let x0 = x_buf[idx];
+                        let (p_c, a_c, x_c, w_c, r_c) = apply_charge_bounded(
+                            phi[idx],
+                            catalyst[idx],
+                            p_work,
+                            activated_next[idx],
+                            x0,
+                            dt,
+                            params,
+                        );
+                        let (x_r, p_r, r_r) = apply_relax_bounded(x_c, p_c, dt, params);
+                        p_work = p_r;
+                        activated_next[idx] = a_c;
+                        x_buf[idx] = x_r;
+                        waste_next[idx] += w_c;
+                        totals.charge_delta += r_c;
+                        totals.relax_delta += r_r;
+                        totals.activation_production += r_c;
+                        totals.activation_dissipation += r_r;
+                        totals.activation_storage_delta += r_c - r_r;
+                    }
+                }
                 precursor_next[idx] = p_work;
                 s_next[idx] = s_work;
                 continue;
@@ -1474,6 +1684,37 @@ pub fn evolve_surface_density_with_vn(
                 totals.active_assembly_activation += r;
             }
 
+            // D-033: charge → insert → relax (X stores activation potential).
+            if v10 {
+                if let Some(x_buf) = intermediate_next.as_deref_mut() {
+                    let x0 = x_buf[idx];
+                    let (p_i, a_i, x_i, s_i, w_i, r_c, r_i, r_r) =
+                        apply_activated_intermediate_bounded(
+                            phi[idx],
+                            catalyst[idx],
+                            p_work,
+                            activated_next[idx],
+                            x0,
+                            s_work,
+                            d,
+                            dt,
+                            params,
+                        );
+                    p_work = p_i;
+                    activated_next[idx] = a_i;
+                    x_buf[idx] = x_i;
+                    s_work = s_i;
+                    waste_next[idx] += w_i;
+                    totals.charge_delta += r_c;
+                    totals.insert_delta += r_i;
+                    totals.relax_delta += r_r;
+                    totals.activation_production += r_c;
+                    totals.activation_work += r_i;
+                    totals.activation_dissipation += r_r;
+                    totals.activation_storage_delta += r_c - r_i - r_r;
+                }
+            }
+
             if enable_gamma_decay {
                 let (s2, dw2) = apply_turnover_exact(s_work, params.k_gamma_decay, 0.5 * dt);
                 waste_next[idx] += dw2;
@@ -1552,6 +1793,36 @@ pub fn evolve_surface_density_with_vn(
                 waste_next[idx] += w_a;
                 totals.active_assembly += r;
                 totals.active_assembly_activation += r;
+            }
+            if v10 {
+                if let Some(x_buf) = intermediate_next.as_deref_mut() {
+                    let s_pre = s[idx] + ds;
+                    let x0 = x_buf[idx];
+                    let (p_i, a_i, x_i, s_i, w_i, r_c, r_i, r_r) =
+                        apply_activated_intermediate_bounded(
+                            phi[idx],
+                            catalyst[idx],
+                            precursor_next[idx],
+                            activated_next[idx],
+                            x0,
+                            s_pre,
+                            d,
+                            dt,
+                            params,
+                        );
+                    precursor_next[idx] = p_i;
+                    activated_next[idx] = a_i;
+                    x_buf[idx] = x_i;
+                    ds += s_i - s_pre;
+                    waste_next[idx] += w_i;
+                    totals.charge_delta += r_c;
+                    totals.insert_delta += r_i;
+                    totals.relax_delta += r_r;
+                    totals.activation_production += r_c;
+                    totals.activation_work += r_i;
+                    totals.activation_dissipation += r_r;
+                    totals.activation_storage_delta += r_c - r_i - r_r;
+                }
             }
             if enable_gamma_decay {
                 let g_now = if d > delta_floor {

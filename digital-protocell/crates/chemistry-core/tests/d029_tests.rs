@@ -160,6 +160,8 @@ fn forward_adsorption_conserves_p_to_s() {
         &mut a_next,
         &mut p_next,
         &mut waste,
+        None,
+        None,
     )
     .expect("evolve");
     let p_after: f64 = p_next.iter().sum();
@@ -214,6 +216,8 @@ fn reverse_desorption_conserves_s_to_p() {
         &mut a_next,
         &mut p_next,
         &mut waste,
+        None,
+        None,
     )
     .expect("evolve");
     let p_after: f64 = p_next.iter().sum();
@@ -270,6 +274,8 @@ fn turnover_s_to_w_separate_from_exchange() {
         &mut a_next,
         &mut p_next,
         &mut waste,
+        None,
+        None,
     )
     .expect("evolve");
     let w_after: f64 = waste.iter().sum();
@@ -376,6 +382,8 @@ fn atomic_reject_on_oversized_transfer() {
         &mut a_next,
         &mut p_next,
         &mut waste,
+        None,
+        None,
     );
     assert!(result.is_err(), "expected reject on oversized transfer");
 }

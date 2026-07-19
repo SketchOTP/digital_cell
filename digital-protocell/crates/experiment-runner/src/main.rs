@@ -30,6 +30,7 @@ mod d029;
 mod d030;
 mod d031;
 mod d032;
+mod d033;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -192,6 +193,10 @@ enum Commands {
     D032 {
         #[command(subcommand)]
         action: D032Commands,
+    },
+    D033 {
+        #[command(subcommand)]
+        action: D033Commands,
     },
 }
 
@@ -477,6 +482,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D030 { action } => run_d030(action)?,
         Commands::D031 { action } => run_d031(action)?,
         Commands::D032 { action } => run_d032(action)?,
+        Commands::D033 { action } => run_d033(action)?,
     }
     Ok(())
 }
@@ -1828,6 +1834,40 @@ enum D032Commands {
     },
 }
 
+#[derive(Subcommand)]
+enum D033Commands {
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d033")]
+        output: PathBuf,
+    },
+    Gate0 {
+        #[arg(long, default_value = "experiments/generated/d033")]
+        output: PathBuf,
+    },
+    Gate2 {
+        #[arg(long, default_value = "experiments/generated/d033/kinetics")]
+        output: PathBuf,
+    },
+    Gate3 {
+        #[arg(long, default_value = "experiments/generated/d033/buffering")]
+        output: PathBuf,
+    },
+    Gate4 {
+        #[arg(long, default_value = "experiments/generated/d033/numerical")]
+        output: PathBuf,
+    },
+    Gate5 {
+        #[arg(long, default_value = "experiments/generated/d033/isolated_renewal")]
+        output: PathBuf,
+        #[arg(long, default_value_t = 0.8)]
+        k_charge: f64,
+        #[arg(long, default_value_t = 1.2)]
+        k_insert: f64,
+        #[arg(long, default_value_t = 0.25)]
+        k_relax: f64,
+    },
+}
+
 fn resolve_d027_artifact_path(path: &Path) -> PathBuf {
     if path.is_absolute() {
         return path.to_path_buf();
@@ -2159,6 +2199,91 @@ fn run_d032(action: D032Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d032::run_gate5_isolated_renewal(&out, k_active)?;
             println!(
                 "D-032 Gate5 pass={} conclusion={} -> {}",
+                result["pass"],
+                result["conclusion"],
+                out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+    }
+    Ok(())
+}
+
+fn resolve_d033_artifact_path(path: &Path) -> PathBuf {
+    if path.is_absolute() {
+        return path.to_path_buf();
+    }
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../..")
+        .join(path)
+}
+
+fn run_d033(action: D033Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D033Commands::Pipeline { output } => {
+            let out = resolve_d033_artifact_path(&output);
+            let result = d033::run_pipeline(&out)?;
+            println!(
+                "D-033 conclusion={} -> {}",
+                result["conclusion"],
+                out.join("manifest.json").display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D033Commands::Gate0 { output } => {
+            let out = resolve_d033_artifact_path(&output);
+            let result = d033::run_gate0_preservation(&out.join("preservation"))?;
+            println!(
+                "D-033 Gate0 pass={} conclusion={} -> {}",
+                result["pass"],
+                result["conclusion"],
+                out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D033Commands::Gate2 { output } => {
+            let out = resolve_d033_artifact_path(&output);
+            let result = d033::run_gate2_orthogonal_id(&out)?;
+            println!(
+                "D-033 Gate2 pass={} conclusion={} -> {}",
+                result["pass"],
+                result["conclusion"],
+                out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D033Commands::Gate3 { output } => {
+            let out = resolve_d033_artifact_path(&output);
+            let result = d033::run_gate3_buffering(&out)?;
+            println!(
+                "D-033 Gate3 pass={} conclusion={} -> {}",
+                result["pass"],
+                result["conclusion"],
+                out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D033Commands::Gate4 { output } => {
+            let out = resolve_d033_artifact_path(&output);
+            let result = d033::run_gate4_numerical(&out)?;
+            println!(
+                "D-033 Gate4 pass={} conclusion={} -> {}",
+                result["pass"],
+                result["conclusion"],
+                out.display()
+            );
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        D033Commands::Gate5 {
+            output,
+            k_charge,
+            k_insert,
+            k_relax,
+        } => {
+            let out = resolve_d033_artifact_path(&output);
+            let result = d033::run_gate5_isolated_renewal(&out, k_charge, k_insert, k_relax)?;
+            println!(
+                "D-033 Gate5 pass={} conclusion={} -> {}",
                 result["pass"],
                 result["conclusion"],
                 out.display()

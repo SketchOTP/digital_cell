@@ -108,7 +108,8 @@ pub fn compute_reactions_at(
     match params.equation_version {
         EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly | EquationVersion::MembraneMetabolismV7SurfaceDensity
             | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
-                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {
+                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
+                | EquationVersion::MembraneMetabolismV10ActivatedIntermediate => {
             return ReactionRates::default();
         }
         EquationVersion::D001BulkV1
@@ -136,7 +137,8 @@ pub fn compute_reactions_at(
         }
         EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly | EquationVersion::MembraneMetabolismV7SurfaceDensity
             | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
-                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {
+                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
+                | EquationVersion::MembraneMetabolismV10ActivatedIntermediate => {
             unreachable!("handled before legacy chemistry")
         }
     };
@@ -239,7 +241,8 @@ pub fn integrated_structure_prefactor(
             }
             EquationVersion::MembraneMetabolismV1 | EquationVersion::MembraneMetabolismV2Conservative | EquationVersion::MembraneMetabolismV3StructuralScaling | EquationVersion::MembraneMetabolismV4InterfaceProtected | EquationVersion::MembraneMetabolismV5InterfaceAffinity | EquationVersion::MembraneMetabolismV6PrecursorAssembly | EquationVersion::MembraneMetabolismV7SurfaceDensity
             | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
-                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {}
+                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
+                | EquationVersion::MembraneMetabolismV10ActivatedIntermediate => {}
         }
     }
     b

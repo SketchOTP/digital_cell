@@ -300,6 +300,8 @@ fn test_uniform_gamma_diffusion_only_preserves_gamma_and_mass() {
             &mut a_next,
             &mut p_next,
             &mut w_next,
+            None,
+            None,
         ).expect("surface evolve");
         s.copy_from_slice(&s_next);
     }
@@ -369,6 +371,8 @@ fn test_nonuniform_gamma_diffusion_reduces_variance_without_leakage() {
             &mut a_next,
             &mut p_next,
             &mut w_next,
+            None,
+            None,
         ).expect("surface evolve");
         s.copy_from_slice(&s_next);
     }
@@ -438,6 +442,8 @@ fn test_p_to_s_exact_transfer_adsorption_only() {
         &mut a_next,
         &mut p_next,
         &mut w_next,
+        None,
+        None,
     ).expect("surface evolve");
     let dp = p0 - total_mass(&grid, &p_next);
     let ds = total_surface_mass(&grid, &s_next) - s0;
@@ -487,6 +493,8 @@ fn test_s_to_w_exact_transfer_gamma_decay_only() {
         &mut a_next,
         &mut p_next,
         &mut w_next,
+        None,
+        None,
     ).expect("surface evolve");
     let ds = total_surface_mass(&grid, &s_next) - s0;
     let dw = total_mass(&grid, &w_next);
@@ -531,6 +539,8 @@ fn test_no_direct_a_to_s_with_zero_precursor() {
         &mut a_next,
         &mut p_next,
         &mut w_next,
+        None,
+        None,
     ).expect("surface evolve");
     assert!(total_surface_mass(&grid, &s_next) < 1e-12);
 }

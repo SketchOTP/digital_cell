@@ -197,6 +197,8 @@ fn passive_desorption_returns_s_to_p_only_and_turnover_to_w() {
         &mut a_next,
         &mut p_next,
         &mut waste,
+        None,
+        None,
     )
     .expect("passive step");
     let w1: f64 = waste.iter().sum();
@@ -236,6 +238,8 @@ fn passive_desorption_returns_s_to_p_only_and_turnover_to_w() {
         &mut a_next,
         &mut p_next,
         &mut waste,
+        None,
+        None,
     )
     .expect("turnover");
     let p1: f64 = p_next.iter().sum();
@@ -295,6 +299,8 @@ fn v9_evolve_consumes_a_and_conserves_paw() {
         &mut a_next,
         &mut p_next,
         &mut waste,
+        None,
+        None,
     )
     .expect("v9 step");
     assert!(totals.active_assembly > 0.0, "active assembly active");

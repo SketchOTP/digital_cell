@@ -479,6 +479,8 @@ fn test_autonomous_s_mass_conservation_shape_relaxation() {
             &mut activated_n,
             &mut precursor_n,
             &mut waste_n,
+        None,
+        None,
         ).expect("surface evolve");
         for v in s_next.iter_mut() {
             *v = v.max(0.0);
@@ -569,6 +571,8 @@ fn test_no_trailing_or_leading_s_on_expansion() {
             &mut activated_n,
             &mut precursor_n,
             &mut waste_n,
+        None,
+        None,
         ).expect("surface evolve");
         for v in s_next.iter_mut() {
             *v = v.max(0.0);
@@ -677,6 +681,8 @@ fn test_contraction_concentration_and_static_d024_equivalence() {
         &mut activated_n,
         &mut precursor_n,
         &mut waste_n,
+    None,
+    None,
     ).expect("surface evolve");
     let s1 = total_surface_mass(&grid, &s_next);
     assert!(((s1 - s0) / s0).abs() < 1e-12);
@@ -745,6 +751,8 @@ fn test_contraction_concentration_and_static_d024_equivalence() {
             &mut activated_n,
             &mut precursor_n,
             &mut waste_n,
+        None,
+        None,
         ).expect("surface evolve");
         for v in s_next.iter_mut() {
             *v = (*v).max(0.0);

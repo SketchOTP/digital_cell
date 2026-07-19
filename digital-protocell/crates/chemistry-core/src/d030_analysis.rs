@@ -380,6 +380,8 @@ pub fn run_orthogonal_assay(
             &mut a_next,
             &mut p_next,
             &mut waste,
+            None,
+            None,
         )
         .map_err(|e| format!("evolve reject: {e:?}"))?;
         s.copy_from_slice(&s_next);
@@ -878,6 +880,8 @@ pub fn run_equilibrium_partition_assay(
             &mut a_next,
             &mut p_next,
             &mut waste,
+            None,
+            None,
         )
         .map_err(|e| format!("evolve reject: {e:?}"))?;
         s.copy_from_slice(&s_next);
