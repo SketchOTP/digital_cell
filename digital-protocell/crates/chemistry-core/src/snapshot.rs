@@ -259,6 +259,12 @@ impl FieldSnapshot {
                 self.equation_version, target.equation_version
             ));
         }
+        if self.params.surface_turnover_schema != target.surface_turnover_schema {
+            return Err(format!(
+                "snapshot surface_turnover_schema {} incompatible with target {}",
+                self.params.surface_turnover_schema, target.surface_turnover_schema
+            ));
+        }
         Ok(())
     }
 

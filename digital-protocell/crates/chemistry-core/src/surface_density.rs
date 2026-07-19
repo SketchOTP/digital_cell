@@ -4,10 +4,11 @@
 //! Reconstructed: `Γ = S / max(δ, δ_floor)` inside the diffuse interface band.
 //! Geometry: `H(φ) = φ²(3−2φ)`, `δ = |∇H(φ)|`, `n = ∇φ / |∇φ|_η`, `T = I − n⊗n`.
 
-use crate::config::{SimParams, SurfaceExchangeIntegrator, DX};
+use crate::config::{SimParams, SurfaceExchangeIntegrator, SurfaceTurnoverSchema, DX};
 use crate::fields::interior_weight;
 use crate::grid::Grid;
 use crate::membrane::{membrane_catalyst_saturation, precursor_decay_rate, precursor_synthesis_rate};
+use crate::reactions::interface_weight;
 
 /// Default regularization for interface normal.
 pub const DEFAULT_ETA_N: f64 = 1e-6;
@@ -880,7 +881,7 @@ pub fn exchange_ds_dt(
     )
 }
 
-/// Exact positive biological turnover: S_after = S_before × exp(−λ_Γ dt).
+/// Exact positive biological turnover: S_after = S_before × exp(−λ dt).
 #[inline]
 pub fn apply_turnover_exact(s_before: f64, lambda_gamma: f64, dt: f64) -> (f64, f64) {
     if !(s_before > 0.0) || !(dt > 0.0) || !(lambda_gamma > 0.0) {
@@ -889,6 +890,38 @@ pub fn apply_turnover_exact(s_before: f64, lambda_gamma: f64, dt: f64) -> (f64, 
     let s_after = s_before * (-lambda_gamma * dt).exp();
     let dw = s_before - s_after;
     (s_after.max(0.0), dw.max(0.0))
+}
+
+/// D-021 interface-protection multiplier for surface turnover.
+///
+/// Schema 1: 1 (historical uniform).
+/// Schema 2: ε_M + (1 − I(φ)) applied to embedded S (do not multiply by δ again).
+#[inline]
+pub fn surface_turnover_protection_factor(phi: f64, params: &SimParams) -> f64 {
+    match params.surface_turnover_schema {
+        SurfaceTurnoverSchema::HistoricalUniform => 1.0,
+        SurfaceTurnoverSchema::D021Equivalent => params.eps_m + (1.0 - interface_weight(phi)),
+    }
+}
+
+/// Effective first-order loss rate on embedded surface mass S.
+///
+/// Schema 1: λ = k_Γ.
+/// Schema 2: λ = k_Γ · [ε_M + (1 − I(φ))] with k_Γ = k_membrane_decay historically.
+#[inline]
+pub fn surface_turnover_lambda(phi: f64, params: &SimParams) -> f64 {
+    params.k_gamma_decay * surface_turnover_protection_factor(phi, params)
+}
+
+/// Apply exact turnover using the configured surface-turnover schema.
+#[inline]
+pub fn apply_surface_turnover_exact(
+    s_before: f64,
+    phi: f64,
+    params: &SimParams,
+    dt: f64,
+) -> (f64, f64) {
+    apply_turnover_exact(s_before, surface_turnover_lambda(phi, params), dt)
 }
 
 /// Backward-Euler exchange on `[0, min(T, C_surface)]` via safeguarded bisection.
@@ -1399,10 +1432,11 @@ pub fn classify_exchange_invariant_field(
     }
 }
 
-/// Surface loss volumetric rate density J_loss (before multiplying by δ).
+/// Surface loss volumetric rate density J_loss on Γ (before multiplying by δ).
+/// Under schema 2 includes the D-021 protection factor; loss = δ · J · dt ≡ λ(φ) · S · dt.
 #[inline]
-pub fn gamma_decay_rate_j(gamma: f64, params: &SimParams) -> f64 {
-    params.k_gamma_decay * gamma.max(0.0)
+pub fn gamma_decay_rate_j(gamma: f64, phi: f64, params: &SimParams) -> f64 {
+    surface_turnover_lambda(phi, params) * gamma.max(0.0)
 }
 
 /// Conservative tangential surface diffusion: ∂S/∂t += ∇·(δ D_Γ T ∇Γ).
@@ -1841,7 +1875,8 @@ fn evolve_surface_maturation_v11(
 
         // 1) half biological S→W turnover (U has no biological decay).
         if enable_gamma_decay {
-            let (s1, dw1) = apply_turnover_exact(s_work, params.k_gamma_decay, 0.5 * dt);
+            let (s1, dw1) =
+                apply_surface_turnover_exact(s_work, phi[idx], params, 0.5 * dt);
             waste_next[idx] += dw1;
             totals.gamma_decay_delta += dw1;
             totals.surface_to_waste += dw1;
@@ -1899,7 +1934,8 @@ fn evolve_surface_maturation_v11(
 
         // 4) half biological S→W turnover.
         if enable_gamma_decay {
-            let (s2, dw2) = apply_turnover_exact(s_work, params.k_gamma_decay, 0.5 * dt);
+            let (s2, dw2) =
+                apply_surface_turnover_exact(s_work, phi[idx], params, 0.5 * dt);
             waste_next[idx] += dw2;
             totals.gamma_decay_delta += dw2;
             totals.surface_to_waste += dw2;
@@ -2155,7 +2191,8 @@ pub fn evolve_surface_density_with_vn(
             let c_surface = d * params.gamma_max.max(0.0);
 
             if enable_gamma_decay {
-                let (s1, dw1) = apply_turnover_exact(s_work, params.k_gamma_decay, 0.5 * dt);
+                let (s1, dw1) =
+                    apply_surface_turnover_exact(s_work, phi[idx], params, 0.5 * dt);
                 waste_next[idx] += dw1;
                 totals.gamma_decay_delta += dw1;
                 totals.surface_to_waste += dw1;
@@ -2287,7 +2324,8 @@ pub fn evolve_surface_density_with_vn(
             }
 
             if enable_gamma_decay {
-                let (s2, dw2) = apply_turnover_exact(s_work, params.k_gamma_decay, 0.5 * dt);
+                let (s2, dw2) =
+                    apply_surface_turnover_exact(s_work, phi[idx], params, 0.5 * dt);
                 waste_next[idx] += dw2;
                 totals.gamma_decay_delta += dw2;
                 totals.surface_to_waste += dw2;
@@ -2401,7 +2439,7 @@ pub fn evolve_surface_density_with_vn(
                 } else {
                     0.0
                 };
-                let j_loss = gamma_decay_rate_j(g_now, params);
+                let j_loss = gamma_decay_rate_j(g_now, phi[idx], params);
                 let loss = d * j_loss * dt;
                 ds -= loss;
                 waste_next[idx] += loss;

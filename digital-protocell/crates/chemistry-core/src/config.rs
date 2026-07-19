@@ -417,6 +417,41 @@ impl SurfaceExchangeIntegrator {
     }
 }
 
+/// Surface membrane turnover representation (D-024 onward).
+///
+/// Schema 1 (historical default): `J = k_Γ S` with `k_Γ = k_membrane_decay`.
+/// Schema 2 (D-038): `J = k_M S [ε_M + (1 − I(φ))]` — exact D-021 protection on embedded S.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum SurfaceTurnoverSchema {
+    /// Historical D-024..D-037 uniform surface loss (omits interface protection).
+    #[default]
+    #[serde(rename = "surface_turnover_schema_1_historical_uniform")]
+    HistoricalUniform,
+    /// D-038 corrected transfer: D-021 protection law on embedded surface density.
+    #[serde(rename = "surface_turnover_schema_2_d021_equivalent")]
+    D021Equivalent,
+}
+
+impl SurfaceTurnoverSchema {
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::HistoricalUniform => "surface_turnover_schema_1_historical_uniform",
+            Self::D021Equivalent => "surface_turnover_schema_2_d021_equivalent",
+        }
+    }
+
+    pub const fn is_d021_equivalent(self) -> bool {
+        matches!(self, Self::D021Equivalent)
+    }
+}
+
+impl fmt::Display for SurfaceTurnoverSchema {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str(self.as_str())
+    }
+}
+
 impl fmt::Display for EquationVersion {
     fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
         formatter.write_str(self.as_str())
@@ -674,9 +709,13 @@ pub struct SimParams {
     /// D-034 immature-surface tangential diffusivity D_U (defaults to D_Γ).
     #[serde(default = "default_d_u")]
     pub d_u: f64,
-    /// D-024 surface membrane turnover (Γ → W): J_loss = k_Γ_decay Γ.
+    /// D-024 surface membrane turnover (Γ → W): J_loss = k_Γ_decay Γ under schema 1.
+    /// Under schema 2: J_loss = k_Γ_decay · S · [ε_M + (1 − I(φ))] with S = δΓ.
     #[serde(default = "default_k_gamma_decay")]
     pub k_gamma_decay: f64,
+    /// D-038 surface-turnover representation. Default schema 1 preserves historical equations.
+    #[serde(default)]
+    pub surface_turnover_schema: SurfaceTurnoverSchema,
     /// D-024 tangential surface diffusivity D_Γ.
     #[serde(default = "default_d_gamma")]
     pub d_gamma: f64,
@@ -1047,6 +1086,7 @@ impl Default for SimParams {
             k_u_half: default_k_u_half(),
             d_u: default_d_u(),
             k_gamma_decay: default_k_gamma_decay(),
+            surface_turnover_schema: SurfaceTurnoverSchema::HistoricalUniform,
             d_gamma: default_d_gamma(),
             gamma_max: default_gamma_max(),
             gamma_reference: default_gamma_reference(),

@@ -876,6 +876,15 @@ dual_surface_schema_version={};precursor_schema_version={};membrane_transport_sc
         | EquationVersion::D003CrowdingV1
         | EquationVersion::SurfaceTurnoverV1 => {}
     }
+    if params.equation_version.is_surface_density()
+        && params.surface_turnover_schema
+            != crate::config::SurfaceTurnoverSchema::HistoricalUniform
+    {
+        s.push_str(&format!(
+            ";surface_turnover_schema={}",
+            params.surface_turnover_schema.as_str()
+        ));
+    }
     s.into_bytes()
 }
 

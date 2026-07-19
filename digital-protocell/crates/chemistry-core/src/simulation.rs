@@ -2707,6 +2707,12 @@ impl Simulation {
                 snap.equation_version, self.params.equation_version
             ));
         }
+        if self.params.surface_turnover_schema != snap.params.surface_turnover_schema {
+            return Err(format!(
+                "snapshot surface_turnover_schema {} cannot be restored under {}",
+                snap.params.surface_turnover_schema, self.params.surface_turnover_schema
+            ));
+        }
         snap.try_restore_fields(&mut self.fields)?;
         self.substep = snap.substep;
         self.sim_time = snap.sim_time;
