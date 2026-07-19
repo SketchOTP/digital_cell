@@ -14,6 +14,7 @@ use crate::config::{
 };
 use crate::constraint_accounting::{build_constraint_step, StructureConstraintAccounting};
 use crate::d018_provenance::StructureProvenanceTracer;
+use crate::membrane_label_tracer::MembraneLabelTracer;
 use crate::diagnostics::{CellDetector, DiagnosticsSnapshot};
 use crate::fields::{
     clamp_small_negative, initialize_seed, project_soluble_ceiling_machine_eps, validate_soluble_field,
@@ -75,6 +76,8 @@ pub struct Simulation {
     pub waste_budget: WasteBudgetState,
     /// Observer-only structural provenance (E/K). None ⇒ disabled (no causality).
     pub structure_provenance: Option<StructureProvenanceTracer>,
+    /// Observer-only membrane-material pulse-chase tracer (D-039). None ⇒ disabled.
+    pub membrane_label_tracer: Option<MembraneLabelTracer>,
     /// When false with ConstrainedRadius, φ evolves under the same rates (D-018 control).
     pub enforce_structure_constraint: bool,
     /// D-026 diagnostic: skip activated normal transport (Control A).
@@ -137,6 +140,7 @@ impl Simulation {
             constraint_accounting: StructureConstraintAccounting::default(),
             waste_budget: WasteBudgetState::default(),
             structure_provenance: None,
+            membrane_label_tracer: None,
             enforce_structure_constraint: true,
             d026_disable_a_normal_transport: false,
             d026_freeze_surface: false,
@@ -1173,7 +1177,9 @@ impl Simulation {
             true,
             true,
             true,
-            true,
+            self.params
+                .surface_turnover_schema
+                .allows_constitutive_turnover(),
             true,
             &mut geometry,
             &mut gamma,
@@ -1332,6 +1338,11 @@ impl Simulation {
         );
         self.surface_accounting.record_accepted(totals);
         self.last_surface_totals = Some(totals);
+        if let Some(tracer) = self.membrane_label_tracer.as_mut() {
+            let total_p = field_mass(&self.grid, &self.fields.precursor);
+            let total_s = field_mass(&self.grid, &self.fields.membrane);
+            tracer.record_accepted_exchange(&totals, total_p, total_s);
+        }
         self.fields.swap();
         SubstepResult::Ok
     }
@@ -2122,6 +2133,10 @@ impl Simulation {
             }
 
             let enable_synthesis = !self.d026_disable_precursor_synthesis;
+            let enable_gamma_decay = self
+                .params
+                .surface_turnover_schema
+                .allows_constitutive_turnover();
             let totals = if self.d026_freeze_surface {
                 self.fields
                     .membrane_next
@@ -2141,7 +2156,7 @@ impl Simulation {
                         enable_synthesis,
                         true,
                         true,
-                        true,
+                        enable_gamma_decay,
                         true,
                         Some(&vn),
                         &mut geometry,
@@ -2168,7 +2183,7 @@ impl Simulation {
                         enable_synthesis,
                         true,
                         true,
-                        true,
+                        enable_gamma_decay,
                         true,
                         &mut geometry,
                         &mut gamma,
@@ -2561,6 +2576,11 @@ impl Simulation {
         if let Some(surface_step) = pending_surface_totals {
             self.surface_accounting.record_accepted(surface_step);
             self.last_surface_totals = Some(surface_step);
+            if let Some(tracer) = self.membrane_label_tracer.as_mut() {
+                let total_p = field_mass(&self.grid, &self.fields.precursor);
+                let total_s = field_mass(&self.grid, &self.fields.membrane);
+                tracer.record_accepted_exchange(&surface_step, total_p, total_s);
+            }
         }
         // Observer-only: update provenance after acceptance so rejects cannot pollute inventories.
         if self.structure_provenance.is_some() {
