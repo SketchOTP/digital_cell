@@ -46,6 +46,7 @@ mod d045;
 mod d046;
 mod d047;
 mod d048;
+mod d049;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -272,6 +273,10 @@ enum Commands {
     D048 {
         #[command(subcommand)]
         action: D048Commands,
+    },
+    D049 {
+        #[command(subcommand)]
+        action: D049Commands,
     },
 }
 
@@ -573,6 +578,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D046 { action } => run_d046(action)?,
         Commands::D047 { action } => run_d047(action)?,
         Commands::D048 { action } => run_d048(action)?,
+        Commands::D049 { action } => run_d049(action)?,
     }
     Ok(())
 }
@@ -2889,6 +2895,35 @@ fn run_d048(action: D048Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d048::run_pipeline(&out)?;
             println!(
                 "D-048 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D049Commands {
+    /// Coupled A/P/S collapse feedback decomposition (Gates 0–11).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d049")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d049_artifact_path(path: &Path) -> PathBuf {
+    resolve_d048_artifact_path(path)
+}
+
+fn run_d049(action: D049Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D049Commands::Pipeline { output } => {
+            let out = resolve_d049_artifact_path(&output);
+            let result = d049::run_pipeline(&out)?;
+            println!(
+                "D-049 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()
