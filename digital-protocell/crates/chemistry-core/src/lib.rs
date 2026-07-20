@@ -43,6 +43,7 @@ pub mod d045_analysis;
 pub mod d046_analysis;
 pub mod d047_analysis;
 pub mod d048_analysis;
+pub mod d049_analysis;
 pub mod d011_analysis;
 pub mod d008_analysis;
 pub mod d008_diagnostics;
