@@ -1,23 +1,23 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260720-d048-frozen-biology-membrane-basin-repair
-- Project directive: D-048
-- Goal: Frozen-biology membrane basin and repair validation under historical activation
+- ID: D-20260720-1534-d049-coupled-aps-collapse-feedback-decomposition
+- Project directive: D-049
+- Goal: Coupled A/P/S collapse feedback decomposition under frozen biology
 - Status: done
-- Acceptance: met — `D048_NO_HEALTHY_MEMBRANE_ATTRACTOR`; Gates 0–1 pass; Gate 2 decisive fail; Gates 3–10 not run
-- Touched files: d048_analysis.rs, d048_tests.rs, d048.rs, main.rs, lib.rs, docs/d048_*, experiments/generated/d048, .agent/*
-- Next action: membrane–metabolism coupling review via full A/P/S histories; do not redesign activation; next_execution_started=false
+- Acceptance: met — `D049_COUPLED_ACTIVATION_CAPACITY_FAILURE`; Gates 0–11 evidence; no chemistry change
+- Touched files: d049_analysis.rs, d049_tests.rs, d049.rs, main.rs, docs/d049_*, experiments/generated/d049, .agent/*
+- Next action: coupled activation capacity reopen (Route A); next_execution_started=false
 
 ## Repo facts needed now
-- Gate2: A retention ~0.01 by first 10k window; net S flow strongly negative; localization OK
-- Freeze: r_A=0.020*C*N*F; schema-3; HISTORICAL_ACTIVATION_FROZEN_FOR_MEMBRANE_VALIDATION
-- D-047 authorization stands; membrane basin not established
+- Both analytic + restored branches collapse; A ledger closes; constitutive S→W=0
+- Earliest: PRECURSOR_SYNTHESIS_DECLINE; frozen-S UPSTREAM; transport NEITHER
+- Fixed P does not rescue A; Route A supersedes D-047 for coupled organism only
+- Tag pending: D-049-coupled-aps-collapse-audit
 
 ## Last validation
-- Command: cargo test d048_tests 12/12; pipeline D048_MAX_ACCEPTED=50000 Gate2 fail
-- Result: primary=D048_NO_HEALTHY_MEMBRANE_ATTRACTOR
-- Tag: D-048-frozen-biology-membrane-fail (pending)
+- Command: cargo test d049_tests 22/22; D049_MAX_ACCEPTED=5000 pipeline
+- Result: primary=D049_COUPLED_ACTIVATION_CAPACITY_FAILURE
 
 ## Open blockers
 - Stage E BLOCKED_NOT_RECOVERED; Phase1 PARTIAL; production REQUIRES_REMEDIATION

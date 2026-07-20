@@ -362,5 +362,16 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/chemistry-core/src/d048_analysis.rs` — candidate identity, seed contract, basin/healthy helpers, conclusions
 - `digital-protocell/crates/chemistry-core/tests/d048_tests.rs` — focused Gate0–10 unit coverage
 - `digital-protocell/crates/experiment-runner/src/d048.rs` — membrane basin/repair pipeline Gates0–10
+- `digital-protocell/crates/chemistry-core/src/d049_analysis.rs` — D-049 completeness, ledgers, chronology, route, empirical reduced helpers
+- `digital-protocell/crates/chemistry-core/tests/d049_tests.rs` — focused D-049 unit coverage (22 tests)
+- `digital-protocell/crates/experiment-runner/src/d049.rs` — coupled A/P/S collapse decomposition pipeline Gates0–11
+- `digital-protocell/experiments/generated/d049/` — D-049 artifacts + manifest
 - `docs/d048_frozen_biology_membrane_basin.md` — completion report (Gate2 fail)
 - `digital-protocell/experiments/generated/d048/` — artifacts + manifest
+
+## D-049 coupled A/P/S collapse feedback
+- `digital-protocell/crates/chemistry-core/src/d049_analysis.rs` — completeness, ledgers, chronology, routes, empirical APS
+- `digital-protocell/crates/chemistry-core/tests/d049_tests.rs` — focused suite (22)
+- `digital-protocell/crates/experiment-runner/src/d049.rs` — Gates 0–11 diagnostic pipeline
+- `docs/d049_coupled_aps_collapse_feedback.md` — completion report (`D049_COUPLED_ACTIVATION_CAPACITY_FAILURE`)
+- `digital-protocell/experiments/generated/d049/` — governed artifacts + manifest
