@@ -1,22 +1,22 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260720-d045-fuel-charged-catalyst-activation-cycle
-- Project directive: D-045
-- Goal: Fuel-charged catalyst activation cycle
+- ID: D-20260720-d046-activated-resource-demand-topology-audit
+- Project directive: D-046
+- Goal: Activated-resource demand topology audit
 - Status: done
-- Acceptance: met — honest `D045_CATALYST_LINEARITY_REJECTED`; C_star not implemented
-- Touched files: d045_analysis.rs, d045.rs, d045_tests.rs, lib.rs, main.rs, docs/d045_*, experiments/generated/d045, .agent/*
-- Next action: A-demand topology review; next_execution_started=false
+- Acceptance: met — `D046_MIXED_A_DEMAND_TOPOLOGY`; no chemistry/C_star change
+- Touched files: d046_analysis.rs, d046_tests.rs, d046.rs, lib.rs, main.rs, docs/d046_*, experiments/generated/d046, .agent/*
+- Next action: shared A-pool sufficiency review; next_execution_started=false
 
 ## Repo facts needed now
-- D-044 sealed 1473f07 / D-044-activation-law-fail
-- Gate0: d_C span 2.59× OK; radius bias OK; catalyst-linear err 52.7% FAIL
-- Demand scales with volume/radius, not C loading
+- D-045 linearity rejection is PROVISIONAL (25% not in issued directive)
+- Dominant sink: precursor (~76%); eps_V~0.95; eps_C~0.21
+- Route M: valid sinks, no single local activation basis across load families
 
 ## Last validation
-- Command: cargo test d045_tests 5/5; d045 pipeline Gate-1/0
-- Result: primary=D045_CATALYST_LINEARITY_REJECTED
+- Command: cargo test d046_tests; d046 pipeline Gates0-9
+- Result: primary=D046_MIXED_A_DEMAND_TOPOLOGY
 
 ## Open blockers
-- Authorized A demand topology incompatible with catalyst-linear production
+- Stage E BLOCKED_NOT_RECOVERED; one shared A pool may be structurally insufficient

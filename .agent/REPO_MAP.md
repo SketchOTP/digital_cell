@@ -343,3 +343,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d045.rs` — Gate −1/0 stop-on-fail pipeline
 - `docs/d045_fuel_charged_catalyst_activation.md` — Gate0 rejection report
 - `digital-protocell/experiments/generated/d045/` — d044_seal, demand_scaling, manifest
+
+## D-046 activated-resource demand topology
+- `digital-protocell/crates/chemistry-core/src/d046_analysis.rs` — provenance, lineage, elasticities, models, route
+- `digital-protocell/crates/chemistry-core/tests/d046_tests.rs` — focused Gate0–9 unit coverage
+- `digital-protocell/crates/experiment-runner/src/d046.rs` — diagnostic pipeline Gates0–9
+- `docs/d046_activated_resource_demand_topology.md` — completion report
+- `digital-protocell/experiments/generated/d046/` — artifacts + manifest
