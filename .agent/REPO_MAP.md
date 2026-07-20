@@ -315,3 +315,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d041.rs` — Gates 0–10 + diagnose-rho
 - `digital-protocell/experiments/generated/d041/` — preservation, route_confirmation, retention_candidates, manifest
 - `docs/d041_structural_a_retention.md` — `D041_STRUCTURAL_A_RETENTION_NOT_SUFFICIENT`
+
+## D-042 activation capacity / buffer feasibility
+- `digital-protocell/crates/chemistry-core/src/d042_analysis.rs` — A ledger, cumulative deficit, capacity class, ideal buffer, route rules
+- `digital-protocell/crates/chemistry-core/tests/d042_tests.rs` — focused suite (13)
+- `digital-protocell/crates/experiment-runner/src/d042.rs` — Gates 0–5 architecture audit (no chemistry change)
+- `digital-protocell/experiments/generated/d042/` — preservation through route_decision artifacts (gitignored)
+- `docs/d042_activation_capacity_buffer_feasibility.md` — `D042_ACTIVATION_CAPACITY_DEFICIT` / Route A
