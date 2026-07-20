@@ -44,6 +44,7 @@ mod d043;
 mod d044;
 mod d045;
 mod d046;
+mod d047;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -262,6 +263,10 @@ enum Commands {
     D046 {
         #[command(subcommand)]
         action: D046Commands,
+    },
+    D047 {
+        #[command(subcommand)]
+        action: D047Commands,
     },
 }
 
@@ -561,6 +566,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D044 { action } => run_d044(action)?,
         Commands::D045 { action } => run_d045(action)?,
         Commands::D046 { action } => run_d046(action)?,
+        Commands::D047 { action } => run_d047(action)?,
     }
     Ok(())
 }
@@ -2819,6 +2825,35 @@ fn run_d046(action: D046Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d046::run_pipeline(&out)?;
             println!(
                 "D-046 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["selected_route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D047Commands {
+    /// Shared activated-resource pool sufficiency audit (diagnostic only).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d047")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d047_artifact_path(path: &Path) -> PathBuf {
+    resolve_d043_artifact_path(path)
+}
+
+fn run_d047(action: D047Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D047Commands::Pipeline { output } => {
+            let out = resolve_d047_artifact_path(&output);
+            let result = d047::run_pipeline(&out)?;
+            println!(
+                "D-047 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["selected_route"],
                 out.join("manifest.json").display()
