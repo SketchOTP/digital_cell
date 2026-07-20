@@ -45,6 +45,7 @@ mod d044;
 mod d045;
 mod d046;
 mod d047;
+mod d048;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -267,6 +268,10 @@ enum Commands {
     D047 {
         #[command(subcommand)]
         action: D047Commands,
+    },
+    D048 {
+        #[command(subcommand)]
+        action: D048Commands,
     },
 }
 
@@ -567,6 +572,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D045 { action } => run_d045(action)?,
         Commands::D046 { action } => run_d046(action)?,
         Commands::D047 { action } => run_d047(action)?,
+        Commands::D048 { action } => run_d048(action)?,
     }
     Ok(())
 }
@@ -2856,6 +2862,35 @@ fn run_d047(action: D047Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-047 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["selected_route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D048Commands {
+    /// Frozen-biology membrane basin and repair qualification (Gates 0–10).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d048")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d048_artifact_path(path: &Path) -> PathBuf {
+    resolve_d047_artifact_path(path)
+}
+
+fn run_d048(action: D048Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D048Commands::Pipeline { output } => {
+            let out = resolve_d048_artifact_path(&output);
+            let result = d048::run_pipeline(&out)?;
+            println!(
+                "D-048 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
                 out.join("manifest.json").display()
             );
         }
