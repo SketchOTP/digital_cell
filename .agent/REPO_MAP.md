@@ -357,3 +357,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d047.rs` — diagnostic pipeline Gates0–10
 - `docs/d047_shared_activated_resource_pool.md` — completion report
 - `digital-protocell/experiments/generated/d047/` — artifacts + manifest
+
+## D-048 frozen-biology membrane basin and repair
+- `digital-protocell/crates/chemistry-core/src/d048_analysis.rs` — candidate identity, seed contract, basin/healthy helpers, conclusions
+- `digital-protocell/crates/chemistry-core/tests/d048_tests.rs` — focused Gate0–10 unit coverage
+- `digital-protocell/crates/experiment-runner/src/d048.rs` — membrane basin/repair pipeline Gates0–10
+- `docs/d048_frozen_biology_membrane_basin.md` — completion report (Gate2 fail)
+- `digital-protocell/experiments/generated/d048/` — artifacts + manifest
