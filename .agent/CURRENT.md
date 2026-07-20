@@ -1,22 +1,22 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260719-d044-activation-law-architecture-review
-- Project directive: D-044
-- Goal: Activation-law architecture review
+- ID: D-20260720-d045-fuel-charged-catalyst-activation-cycle
+- Project directive: D-045
+- Goal: Fuel-charged catalyst activation cycle
 - Status: done
-- Acceptance: partial — honest `D044_ACTIVATION_LAW_ARCHITECTURE_REJECTED`; Gates 6–13 not run
-- Touched files: d044_analysis.rs, d044.rs, d044_tests.rs, main.rs, lib.rs, docs/d044, experiments/generated/d044, .agent/*
-- Next action: fundamental activation-topology review; next_execution_started=false
+- Acceptance: met — honest `D045_CATALYST_LINEARITY_REJECTED`; C_star not implemented
+- Touched files: d045_analysis.rs, d045.rs, d045_tests.rs, lib.rs, main.rs, docs/d045_*, experiments/generated/d045, .agent/*
+- Next action: A-demand topology review; next_execution_started=false
 
 ## Repo facts needed now
-- D-043 span 3.38× reproduced; portability failure upheld after eligibility audit
-- Scaling OK; low_nf irreversible starvation; Candidate B span 2.63× but bootstrap fail
-- Tag recommended: D-044-activation-law-fail
+- D-044 sealed 1473f07 / D-044-activation-law-fail
+- Gate0: d_C span 2.59× OK; radius bias OK; catalyst-linear err 52.7% FAIL
+- Demand scales with volume/radius, not C loading
 
 ## Last validation
-- Command: cargo test -p chemistry-core --test d044_tests --release; D044 pipeline
-- Result: 16/16 PASS; pipeline primary=D044_ACTIVATION_LAW_ARCHITECTURE_REJECTED
+- Command: cargo test d045_tests 5/5; d045 pipeline Gate-1/0
+- Result: primary=D045_CATALYST_LINEARITY_REJECTED
 
 ## Open blockers
-- No qualified activation law; Stage E BLOCKED_NOT_RECOVERED
+- Authorized A demand topology incompatible with catalyst-linear production

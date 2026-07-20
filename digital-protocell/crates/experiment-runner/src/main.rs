@@ -42,6 +42,7 @@ mod d041;
 mod d042;
 mod d043;
 mod d044;
+mod d045;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -252,6 +253,10 @@ enum Commands {
     D044 {
         #[command(subcommand)]
         action: D044Commands,
+    },
+    D045 {
+        #[command(subcommand)]
+        action: D045Commands,
     },
 }
 
@@ -549,6 +554,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D042 { action } => run_d042(action)?,
         Commands::D043 { action } => run_d043(action)?,
         Commands::D044 { action } => run_d044(action)?,
+        Commands::D045 { action } => run_d045(action)?,
     }
     Ok(())
 }
@@ -2751,6 +2757,34 @@ fn run_d044(action: D044Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d044::run_pipeline(&out)?;
             println!(
                 "D-044 pipeline primary={} -> {}",
+                result["primary_conclusion"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D045Commands {
+    /// Fuel-charged catalyst activation review (Phase A stop-on-fail).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d045")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d045_artifact_path(path: &Path) -> PathBuf {
+    resolve_d043_artifact_path(path)
+}
+
+fn run_d045(action: D045Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D045Commands::Pipeline { output } => {
+            let out = resolve_d045_artifact_path(&output);
+            let result = d045::run_pipeline(&out)?;
+            println!(
+                "D-045 pipeline primary={} -> {}",
                 result["primary_conclusion"],
                 out.join("manifest.json").display()
             );

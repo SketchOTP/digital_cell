@@ -336,3 +336,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d044.rs` — Gates 0–13 pipeline
 - `digital-protocell/experiments/generated/d044/` — governed artifacts (gitignored)
 - `docs/d044_activation_law_architecture_review.md` — D-044 conclusion report
+
+## D-045 fuel-charged catalyst (Phase A stop)
+- `digital-protocell/crates/chemistry-core/src/d045_analysis.rs` — demand scaling + QSS helpers
+- `digital-protocell/crates/chemistry-core/tests/d045_tests.rs` — seal/scaling/QSS tests
+- `digital-protocell/crates/experiment-runner/src/d045.rs` — Gate −1/0 stop-on-fail pipeline
+- `docs/d045_fuel_charged_catalyst_activation.md` — Gate0 rejection report
+- `digital-protocell/experiments/generated/d045/` — d044_seal, demand_scaling, manifest
