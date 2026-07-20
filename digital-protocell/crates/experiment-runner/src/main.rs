@@ -39,6 +39,7 @@ mod d038;
 mod d039;
 mod d040;
 mod d041;
+mod d042;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -237,6 +238,10 @@ enum Commands {
     D041 {
         #[command(subcommand)]
         action: D041Commands,
+    },
+    D042 {
+        #[command(subcommand)]
+        action: D042Commands,
     },
 }
 
@@ -531,6 +536,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D039 { action } => run_d039(action)?,
         Commands::D040 { action } => run_d040(action)?,
         Commands::D041 { action } => run_d041(action)?,
+        Commands::D042 { action } => run_d042(action)?,
     }
     Ok(())
 }
@@ -2646,6 +2652,15 @@ enum D041Commands {
     },
 }
 
+#[derive(Subcommand)]
+enum D042Commands {
+    /// Activated-resource capacity and conserved-buffer feasibility audit (Gates 0–5).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d042")]
+        output: PathBuf,
+    },
+}
+
 fn resolve_d037_artifact_path(path: &Path) -> PathBuf {
     if path.is_absolute() {
         return path.to_path_buf();
@@ -2668,6 +2683,10 @@ fn resolve_d040_artifact_path(path: &Path) -> PathBuf {
 }
 
 fn resolve_d041_artifact_path(path: &Path) -> PathBuf {
+    resolve_d037_artifact_path(path)
+}
+
+fn resolve_d042_artifact_path(path: &Path) -> PathBuf {
     resolve_d037_artifact_path(path)
 }
 
@@ -2757,6 +2776,22 @@ fn run_d041(action: D041Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["rows"].as_array().map(|a| a.len()).unwrap_or(0),
                 out.join("retention_candidates/bootstrap_diagnostic.json")
                     .display()
+            );
+        }
+    }
+    Ok(())
+}
+
+fn run_d042(action: D042Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D042Commands::Pipeline { output } => {
+            let out = resolve_d042_artifact_path(&output);
+            let result = d042::run_pipeline(&out)?;
+            println!(
+                "D-042 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["selected_route"],
+                out.join("manifest.json").display()
             );
         }
     }
