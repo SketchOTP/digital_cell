@@ -322,3 +322,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d042.rs` — Gates 0–5 architecture audit (no chemistry change)
 - `digital-protocell/experiments/generated/d042/` — preservation through route_decision artifacts (gitignored)
 - `docs/d042_activation_capacity_buffer_feasibility.md` — `D042_ACTIVATION_CAPACITY_DEFICIT` / Route A
+
+## D-043 activation capacity repair
+- `digital-protocell/crates/chemistry-core/src/d043_analysis.rs` — rate law B=C·N·F, parity, capacity class, portable k reconstruction, candidate screen
+- `digital-protocell/crates/chemistry-core/tests/d043_tests.rs` — focused suite (18)
+- `digital-protocell/crates/experiment-runner/src/d043.rs` — Gates 0–9 stop-on-fail pipeline
+- `digital-protocell/experiments/generated/d043/` — preservation through rate_reconstruction (gitignored)
+- `docs/d043_activation_capacity_repair.md` — `D043_ACTIVATION_RATE_NOT_PORTABLE`

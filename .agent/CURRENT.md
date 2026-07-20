@@ -1,23 +1,23 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260719-d042-activation-capacity-buffer-feasibility
-- Project directive: D-042
-- Goal: Architecture audit — A capacity vs demand vs finite buffer feasibility
+- ID: D-20260719-2116-d043-activation-reaction-capacity-repair
+- Project directive: D-043
+- Goal: Bounded k_activation recalibration if portable
 - Status: done
-- Acceptance: met — `D042_ACTIVATION_CAPACITY_DEFICIT` / Route A; buffer forbidden; Stage E remains BLOCKED_NOT_RECOVERED
-- Touched files: d042_analysis, d042_tests, experiment-runner/d042, main.rs, lib.rs, docs/d042_*, experiments/generated/d042, .agent/*
-- Next action: next directive must audit/repair activation production; do not add B_A buffer; next_execution_started=false
+- Acceptance: met (honest stop) — `D043_ACTIVATION_RATE_NOT_PORTABLE`; Gates 4–9 not started; Stage E remains BLOCKED_NOT_RECOVERED
+- Touched files: d043_analysis.rs, d043_tests.rs, d043.rs, lib.rs, main.rs, docs/d043_*, experiments/generated/d043, .agent/*
+- Next action: next directive must review activation saturation / catalyst normalization / topology; do not raise historical k; next_execution_started=false
 
 ## Repo facts needed now
-- Record: STRUCTURAL_A_TRANSPORT_RETENTION_REJECTED
-- Integrated ∫R_A ≪ 0 under healthy-perm / sufficient-P and all demand disables
-- Tag: D-042-activation-buffer-feasibility
-- Stage E: BLOCKED_NOT_RECOVERED
+- Exact law: r = k·C·N·F; historical k=0.020 unchanged
+- Record: ACTIVATION_BUFFER_BRANCH_CLOSED
+- Gate0@25k ∫R_A≈−760; Gate3 span≈3.38×
+- Tag: D-043-activation-capacity-fail
 
 ## Last validation
-- Command: cargo test -p chemistry-core --test d042_tests --release; d042 pipeline @25k
-- Result: 13/13 PASS; Gate0/1 PASS; Gate2 → D042_ACTIVATION_CAPACITY_DEFICIT; Gates3–5 skipped
+- Command: cargo test d043_tests --release; D043_GATE0_HORIZON=25000 D043_DIAGNOSTIC_HORIZON=3000 d043 pipeline
+- Result: 18/18 PASS; Gate0–2 PASS; Gate3 FAIL NOT_PORTABLE
 
 ## Open blockers
-- Activation production insufficient for membrane–metabolism bootstrap; buffer not authorized
+- Activation rate law non-portable; scalar k repair forbidden

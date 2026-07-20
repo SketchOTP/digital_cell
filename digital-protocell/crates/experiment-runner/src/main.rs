@@ -40,6 +40,7 @@ mod d039;
 mod d040;
 mod d041;
 mod d042;
+mod d043;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -242,6 +243,10 @@ enum Commands {
     D042 {
         #[command(subcommand)]
         action: D042Commands,
+    },
+    D043 {
+        #[command(subcommand)]
+        action: D043Commands,
     },
 }
 
@@ -537,6 +542,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D040 { action } => run_d040(action)?,
         Commands::D041 { action } => run_d041(action)?,
         Commands::D042 { action } => run_d042(action)?,
+        Commands::D043 { action } => run_d043(action)?,
     }
     Ok(())
 }
@@ -2688,6 +2694,35 @@ fn resolve_d041_artifact_path(path: &Path) -> PathBuf {
 
 fn resolve_d042_artifact_path(path: &Path) -> PathBuf {
     resolve_d037_artifact_path(path)
+}
+
+#[derive(Subcommand)]
+enum D043Commands {
+    /// Activation-reaction capacity repair audit (Gates 0–9).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d043")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d043_artifact_path(path: &Path) -> PathBuf {
+    resolve_d042_artifact_path(path)
+}
+
+fn run_d043(action: D043Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D043Commands::Pipeline { output } => {
+            let out = resolve_d043_artifact_path(&output);
+            let result = d043::run_pipeline(&out)?;
+            println!(
+                "D-043 pipeline primary={} k={} -> {}",
+                result["primary_conclusion"],
+                result.get("selected_k_activation").unwrap_or(&serde_json::Value::Null),
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
 }
 
 fn run_d037(action: D037Commands) -> Result<(), Box<dyn std::error::Error>> {

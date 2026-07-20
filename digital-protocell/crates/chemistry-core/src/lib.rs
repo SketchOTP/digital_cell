@@ -37,6 +37,7 @@ pub mod d039_analysis;
 pub mod d040_analysis;
 pub mod d041_analysis;
 pub mod d042_analysis;
+pub mod d043_analysis;
 pub mod d011_analysis;
 pub mod d008_analysis;
 pub mod d008_diagnostics;
@@ -102,6 +103,18 @@ pub use d035_analysis::*;
 pub use d037_analysis::*;
 pub use d038_analysis::*;
 pub use d040_analysis::*;
+// d043_analysis exported explicitly to avoid glob conflicts with d028 select_smallest_passing
+pub use d043_analysis::{
+    activation_basis, activation_rate, build_activation_candidates, build_rate_estimate,
+    check_activation_parity, check_activation_potential_transfer, check_activation_stoichiometry,
+    classify_capacity_deficit, d042_capacity_deficit_reproduced, evaluate_candidate_row,
+    evaluate_portable_rate, parity_suite_passes, required_k_activation, screen_candidates,
+    select_smallest_passing as d043_select_smallest_passing, total_basis_from_activation_flux,
+    zero_control_passes,
+    CapacityClassification, D043Conclusion, D043_AGENT_MEMORY_ID, D043_D042_TAG,
+    D043_GATE0_HORIZON, D043_HISTORICAL_K_ACTIVATION, D043_LEDGER_REL_TOL, D043_MAX_ACCEPTED,
+    D043_MEASURE_WINDOW, D043_RECORD, D043_REPAIR_P_MIN, D043_STARTING_COMMIT,
+};
 pub use d011_analysis::*;
 pub use d008_analysis::*;
 pub use d008_diagnostics::*;
