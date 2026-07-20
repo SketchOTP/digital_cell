@@ -41,6 +41,7 @@ mod d040;
 mod d041;
 mod d042;
 mod d043;
+mod d044;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -247,6 +248,10 @@ enum Commands {
     D043 {
         #[command(subcommand)]
         action: D043Commands,
+    },
+    D044 {
+        #[command(subcommand)]
+        action: D044Commands,
     },
 }
 
@@ -543,6 +548,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D041 { action } => run_d041(action)?,
         Commands::D042 { action } => run_d042(action)?,
         Commands::D043 { action } => run_d043(action)?,
+        Commands::D044 { action } => run_d044(action)?,
     }
     Ok(())
 }
@@ -2718,6 +2724,34 @@ fn run_d043(action: D043Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-043 pipeline primary={} k={} -> {}",
                 result["primary_conclusion"],
                 result.get("selected_k_activation").unwrap_or(&serde_json::Value::Null),
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D044Commands {
+    /// Activation-law architecture review (Gates 0–13).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d044")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d044_artifact_path(path: &Path) -> PathBuf {
+    resolve_d043_artifact_path(path)
+}
+
+fn run_d044(action: D044Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D044Commands::Pipeline { output } => {
+            let out = resolve_d044_artifact_path(&output);
+            let result = d044::run_pipeline(&out)?;
+            println!(
+                "D-044 pipeline primary={} -> {}",
+                result["primary_conclusion"],
                 out.join("manifest.json").display()
             );
         }

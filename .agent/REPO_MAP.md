@@ -329,3 +329,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d043.rs` — Gates 0–9 stop-on-fail pipeline
 - `digital-protocell/experiments/generated/d043/` — preservation through rate_reconstruction (gitignored)
 - `docs/d043_activation_capacity_repair.md` — `D043_ACTIVATION_RATE_NOT_PORTABLE`
+
+## D-044 activation-law architecture review
+- `digital-protocell/crates/chemistry-core/src/d044_analysis.rs` — eligibility, scaling, candidate laws A/B/C, fit/holdout, conclusions
+- `digital-protocell/crates/chemistry-core/tests/d044_tests.rs` — focused suite (16)
+- `digital-protocell/crates/experiment-runner/src/d044.rs` — Gates 0–13 pipeline
+- `digital-protocell/experiments/generated/d044/` — governed artifacts (gitignored)
+- `docs/d044_activation_law_architecture_review.md` — D-044 conclusion report

@@ -1,23 +1,22 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260719-2116-d043-activation-reaction-capacity-repair
-- Project directive: D-043
-- Goal: Bounded k_activation recalibration if portable
+- ID: D-20260719-d044-activation-law-architecture-review
+- Project directive: D-044
+- Goal: Activation-law architecture review
 - Status: done
-- Acceptance: met (honest stop) — `D043_ACTIVATION_RATE_NOT_PORTABLE`; Gates 4–9 not started; Stage E remains BLOCKED_NOT_RECOVERED
-- Touched files: d043_analysis.rs, d043_tests.rs, d043.rs, lib.rs, main.rs, docs/d043_*, experiments/generated/d043, .agent/*
-- Next action: next directive must review activation saturation / catalyst normalization / topology; do not raise historical k; next_execution_started=false
+- Acceptance: partial — honest `D044_ACTIVATION_LAW_ARCHITECTURE_REJECTED`; Gates 6–13 not run
+- Touched files: d044_analysis.rs, d044.rs, d044_tests.rs, main.rs, lib.rs, docs/d044, experiments/generated/d044, .agent/*
+- Next action: fundamental activation-topology review; next_execution_started=false
 
 ## Repo facts needed now
-- Exact law: r = k·C·N·F; historical k=0.020 unchanged
-- Record: ACTIVATION_BUFFER_BRANCH_CLOSED
-- Gate0@25k ∫R_A≈−760; Gate3 span≈3.38×
-- Tag: D-043-activation-capacity-fail
+- D-043 span 3.38× reproduced; portability failure upheld after eligibility audit
+- Scaling OK; low_nf irreversible starvation; Candidate B span 2.63× but bootstrap fail
+- Tag recommended: D-044-activation-law-fail
 
 ## Last validation
-- Command: cargo test d043_tests --release; D043_GATE0_HORIZON=25000 D043_DIAGNOSTIC_HORIZON=3000 d043 pipeline
-- Result: 18/18 PASS; Gate0–2 PASS; Gate3 FAIL NOT_PORTABLE
+- Command: cargo test -p chemistry-core --test d044_tests --release; D044 pipeline
+- Result: 16/16 PASS; pipeline primary=D044_ACTIVATION_LAW_ARCHITECTURE_REJECTED
 
 ## Open blockers
-- Activation rate law non-portable; scalar k repair forbidden
+- No qualified activation law; Stage E BLOCKED_NOT_RECOVERED
