@@ -385,3 +385,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d050.rs` — Gates 0–13 stop-on-fail pipeline
 - `docs/d050_catalyst_saturating_activation.md` — completion (`D050_COUPLED_ACTIVATION_CAPACITY_NOT_RECOVERED`)
 - `digital-protocell/experiments/generated/d050/` — governed artifacts + manifest
+
+## D-051 coupled activation throughput audit
+- `digital-protocell/crates/chemistry-core/src/d051_analysis.rs` — extent/resource/cohort/route classifiers
+- `digital-protocell/crates/chemistry-core/tests/d051_tests.rs` — focused suite (13)
+- `digital-protocell/crates/experiment-runner/src/d051.rs` — Gates −1–10 diagnostic pipeline
+- `docs/d051_coupled_activation_throughput_audit.md` — completion (`D051_RESOURCE_THROUGHPUT_LIMIT`)
+- `digital-protocell/experiments/generated/d051/` — governed artifacts + manifest

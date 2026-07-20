@@ -76,3 +76,5 @@ Append-only repo-specific lessons. Format:
 - 2026-07-20 | area:activation | lesson:Do not copy STAGE_E_FAILED_RATES.k_d008_activation=0.024 when D-047/D-048 freeze historical 0.020 | evidence:d048_analysis.rs d048_frozen_organism_params
 - 2026-07-20 | area:membrane-metabolism | lesson:Coupled organism A collapses even with fixed P; D-047 supply adequacy ≠ coupled attractor; Route A for frozen eight-field | evidence:docs/d049_coupled_aps_collapse_feedback.md
 - 2026-07-20 | area:activation/d050 | lesson:Schema2 V_A scales activation extent but coupled free-A retention stays ~3% across 0.75–4× fitted V_A | evidence:experiments/generated/d050/v_a_screen/result.json
+
+- 2026-07-20 | area:activation/d051 | lesson:Coupled schema2 V_A raises gross activation but free A stays ~3% until healthy N+F held; Route R resource throughput | evidence:experiments/generated/d051/resource_controls/result.json
