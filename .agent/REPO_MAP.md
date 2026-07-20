@@ -365,7 +365,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/chemistry-core/src/d049_analysis.rs` — D-049 completeness, ledgers, chronology, route, empirical reduced helpers
 - `digital-protocell/crates/chemistry-core/tests/d049_tests.rs` — focused D-049 unit coverage (22 tests)
 - `digital-protocell/crates/experiment-runner/src/d049.rs` — coupled A/P/S collapse decomposition pipeline Gates0–11
-- `digital-protocell/experiments/generated/d049/` — D-049 artifacts + manifest
+- `digital-protocell/crates/chemistry-core/src/d050_analysis.rs` — schema1/schema2 activation helpers, identification, conclusions
+- `digital-protocell/crates/chemistry-core/tests/d050_tests.rs` — focused D-050 unit coverage (21 tests)
+- `digital-protocell/crates/experiment-runner/src/d050.rs` — catalyst-saturating activation repair pipeline Gates0–13
+- `digital-protocell/experiments/generated/d050/` — D-050 artifacts + manifest
 - `docs/d048_frozen_biology_membrane_basin.md` — completion report (Gate2 fail)
 - `digital-protocell/experiments/generated/d048/` — artifacts + manifest
 
@@ -375,3 +378,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d049.rs` — Gates 0–11 diagnostic pipeline
 - `docs/d049_coupled_aps_collapse_feedback.md` — completion report (`D049_COUPLED_ACTIVATION_CAPACITY_FAILURE`)
 - `digital-protocell/experiments/generated/d049/` — governed artifacts + manifest
+
+## D-050 catalyst-saturating activation
+- `digital-protocell/crates/chemistry-core/src/d050_analysis.rs` — schema2 rate, Model C ID, conclusions
+- `digital-protocell/crates/chemistry-core/tests/d050_tests.rs` — focused suite (21)
+- `digital-protocell/crates/experiment-runner/src/d050.rs` — Gates 0–13 stop-on-fail pipeline
+- `docs/d050_catalyst_saturating_activation.md` — completion (`D050_COUPLED_ACTIVATION_CAPACITY_NOT_RECOVERED`)
+- `digital-protocell/experiments/generated/d050/` — governed artifacts + manifest

@@ -291,7 +291,8 @@ impl FieldSnapshot {
             }
             EquationVersion::MembraneMetabolismV7SurfaceDensity
             | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
-            | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {
+            | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
+            | EquationVersion::MembraneMetabolismV13CatalystSaturatingActivation => {
                 FieldSchemaVersion::SurfaceDensityV1
             }
             EquationVersion::MembraneMetabolismV10ActivatedIntermediate => {
@@ -617,7 +618,8 @@ impl FieldSnapshot {
                 SnapshotFields::SurfaceDensity(_),
                 EquationVersion::MembraneMetabolismV7SurfaceDensity
                     | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
-                    | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly,
+                    | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
+                    | EquationVersion::MembraneMetabolismV13CatalystSaturatingActivation,
             )
             | (
                 FieldSchemaVersion::NineFieldSurfaceDensityV1,
@@ -673,7 +675,8 @@ impl FieldSnapshot {
             (FieldSchemaVersion::SevenFieldV1, _, EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
                 | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | EquationVersion::MembraneMetabolismV10ActivatedIntermediate
-                | EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly) => {
+                | EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly
+                | EquationVersion::MembraneMetabolismV13CatalystSaturatingActivation) => {
                 Err("seven_field_v1 snapshot cannot resume as membrane_metabolism_v8_reversible_surface_exchange".to_string())
             }
             (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV6PrecursorAssembly) => {
@@ -685,7 +688,8 @@ impl FieldSnapshot {
             (FieldSchemaVersion::FiveFieldV1, _, EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
                 | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | EquationVersion::MembraneMetabolismV10ActivatedIntermediate
-                | EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly) => {
+                | EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly
+                | EquationVersion::MembraneMetabolismV13CatalystSaturatingActivation) => {
                 Err("five_field_v1 snapshot is incompatible with membrane_metabolism_v8_reversible_surface_exchange".to_string())
             }
             (FieldSchemaVersion::EightFieldV1, _, EquationVersion::MembraneMetabolismV7SurfaceDensity) => {
@@ -694,7 +698,8 @@ impl FieldSnapshot {
             (FieldSchemaVersion::EightFieldV1, _, EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
                 | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | EquationVersion::MembraneMetabolismV10ActivatedIntermediate
-                | EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly) => {
+                | EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly
+                | EquationVersion::MembraneMetabolismV13CatalystSaturatingActivation) => {
                 Err("eight_field_v1 snapshot cannot resume as membrane_metabolism_v8_reversible_surface_exchange".to_string())
             }
             (FieldSchemaVersion::SurfaceDensityV1, _, EquationVersion::MembraneMetabolismV10ActivatedIntermediate) => {

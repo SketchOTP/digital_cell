@@ -116,6 +116,10 @@ pub enum EquationVersion {
     /// mature-catalyzed U+A→S+W: J = q f_A f_U (k0 Γ_max + k_cat Γ_S).
     #[serde(rename = "membrane_metabolism_v12_membrane_catalytic_assembly")]
     MembraneMetabolismV12MembraneCatalyticAssembly,
+    /// D-050 catalyst-saturating volume activation on the validated v8 interfacial architecture.
+    /// Same stored fields φ,C,N,F,W,A,P,S as v8; activation schema 2 handled in activated_metabolism.
+    #[serde(rename = "membrane_metabolism_v13_catalyst_saturating_activation")]
+    MembraneMetabolismV13CatalystSaturatingActivation,
 }
 
 impl EquationVersion {
@@ -152,6 +156,9 @@ impl EquationVersion {
             Self::MembraneMetabolismV12MembraneCatalyticAssembly => {
                 "membrane_metabolism_v12_membrane_catalytic_assembly"
             }
+            Self::MembraneMetabolismV13CatalystSaturatingActivation => {
+                "membrane_metabolism_v13_catalyst_saturating_activation"
+            }
         }
     }
 
@@ -169,6 +176,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | Self::MembraneMetabolismV10ActivatedIntermediate
                 | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly
+                | Self::MembraneMetabolismV13CatalystSaturatingActivation
         )
     }
 
@@ -185,6 +193,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | Self::MembraneMetabolismV10ActivatedIntermediate
                 | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly
+                | Self::MembraneMetabolismV13CatalystSaturatingActivation
         )
     }
 
@@ -200,6 +209,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | Self::MembraneMetabolismV10ActivatedIntermediate
                 | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly
+                | Self::MembraneMetabolismV13CatalystSaturatingActivation
         )
     }
 
@@ -221,6 +231,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | Self::MembraneMetabolismV10ActivatedIntermediate
                 | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly
+                | Self::MembraneMetabolismV13CatalystSaturatingActivation
         )
     }
 
@@ -232,6 +243,7 @@ impl EquationVersion {
                 | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | Self::MembraneMetabolismV10ActivatedIntermediate
                 | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly
+                | Self::MembraneMetabolismV13CatalystSaturatingActivation
         )
     }
 
@@ -248,7 +260,13 @@ impl EquationVersion {
                 Self::MembraneMetabolismV7SurfaceDensity
                     | Self::MembraneMetabolismV8ReversibleSurfaceExchange
                     | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
+                    | Self::MembraneMetabolismV13CatalystSaturatingActivation
             )
+    }
+
+    /// D-050 catalyst-saturating volume activation (v13 only).
+    pub const fn is_catalyst_saturating_activation(self) -> bool {
+        matches!(self, Self::MembraneMetabolismV13CatalystSaturatingActivation)
     }
 
     /// D-033 two-stage activated membrane intermediate (v10 only).
@@ -286,7 +304,8 @@ impl EquationVersion {
             | Self::MembraneMetabolismV8ReversibleSurfaceExchange
             | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
             | Self::MembraneMetabolismV10ActivatedIntermediate
-            | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly => STOICHIOMETRIC_SCHEMA_VERSION_V2,
+            | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly
+            | Self::MembraneMetabolismV13CatalystSaturatingActivation => STOICHIOMETRIC_SCHEMA_VERSION_V2,
             Self::MembraneMetabolismV1 => STOICHIOMETRIC_SCHEMA_VERSION_V1,
             Self::D001BulkV1 | Self::D003CrowdingV1 | Self::SurfaceTurnoverV1 => 0,
         }
@@ -302,7 +321,8 @@ impl EquationVersion {
             | Self::MembraneMetabolismV8ReversibleSurfaceExchange
             | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
             | Self::MembraneMetabolismV10ActivatedIntermediate
-            | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly => SURFACE_DENSITY_SCHEMA_VERSION_V1,
+            | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly
+            | Self::MembraneMetabolismV13CatalystSaturatingActivation => SURFACE_DENSITY_SCHEMA_VERSION_V1,
             Self::MembraneMetabolismV1
             | Self::MembraneMetabolismV2Conservative
             | Self::MembraneMetabolismV3StructuralScaling => MEMBRANE_SCHEMA_VERSION_V1,
@@ -317,7 +337,8 @@ impl EquationVersion {
             | Self::MembraneMetabolismV8ReversibleSurfaceExchange
             | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
             | Self::MembraneMetabolismV10ActivatedIntermediate
-            | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly => {
+            | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly
+            | Self::MembraneMetabolismV13CatalystSaturatingActivation => {
                 MEMBRANE_TRANSPORT_SCHEMA_VERSION_V3
             }
             // v6 keeps interface-protected M turnover with χ_M = 0 (diffusion-only M transport).
@@ -338,7 +359,8 @@ impl EquationVersion {
             | Self::MembraneMetabolismV8ReversibleSurfaceExchange
             | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
             | Self::MembraneMetabolismV10ActivatedIntermediate
-            | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly => PRECURSOR_SCHEMA_VERSION_V1,
+            | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly
+            | Self::MembraneMetabolismV13CatalystSaturatingActivation => PRECURSOR_SCHEMA_VERSION_V1,
             _ => 0,
         }
     }
@@ -350,7 +372,8 @@ impl EquationVersion {
             | Self::MembraneMetabolismV8ReversibleSurfaceExchange
             | Self::MembraneMetabolismV9ActivatedSurfaceAssembly
             | Self::MembraneMetabolismV10ActivatedIntermediate
-            | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly => SURFACE_DENSITY_SCHEMA_VERSION_V1,
+            | Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly
+            | Self::MembraneMetabolismV13CatalystSaturatingActivation => SURFACE_DENSITY_SCHEMA_VERSION_V1,
             _ => 0,
         }
     }
@@ -359,7 +382,8 @@ impl EquationVersion {
     pub const fn surface_exchange_schema_version(self) -> u32 {
         match self {
             Self::MembraneMetabolismV7SurfaceDensity => 1,
-            Self::MembraneMetabolismV8ReversibleSurfaceExchange => 2,
+            Self::MembraneMetabolismV8ReversibleSurfaceExchange
+            | Self::MembraneMetabolismV13CatalystSaturatingActivation => 2,
             Self::MembraneMetabolismV9ActivatedSurfaceAssembly => 3,
             Self::MembraneMetabolismV10ActivatedIntermediate => 4,
             Self::MembraneMetabolismV11SurfaceMaturation | Self::MembraneMetabolismV12MembraneCatalyticAssembly => SURFACE_EXCHANGE_SCHEMA_VERSION_V5,
@@ -766,6 +790,18 @@ pub struct SimParams {
     /// D-031 local reversible-exchange numerical integrator (law unchanged).
     #[serde(default)]
     pub surface_exchange_integrator: SurfaceExchangeIntegrator,
+    /// D-050 activation rate schema (1 = historical mass-action; 2 = catalyst_saturating_volume).
+    #[serde(default = "default_activation_schema")]
+    pub activation_schema: u32,
+    /// D-050 catalyst half-saturation K_C for activation schema 2.
+    #[serde(default = "default_k_c_activation")]
+    pub k_c_activation: f64,
+    /// D-050 nutrient reference for activation schema 2.
+    #[serde(default = "default_n_ref_activation")]
+    pub n_ref_activation: f64,
+    /// D-050 fuel reference for activation schema 2.
+    #[serde(default = "default_f_ref_activation")]
+    pub f_ref_activation: f64,
 }
 
 /// Validate governed v2 yields: 0 < η ≤ 1.
@@ -928,6 +964,22 @@ fn default_eta_v() -> f64 {
 
 fn default_interface_grad_min() -> f64 {
     1e-3
+}
+
+fn default_activation_schema() -> u32 {
+    1
+}
+
+fn default_k_c_activation() -> f64 {
+    0.10
+}
+
+fn default_n_ref_activation() -> f64 {
+    1.0
+}
+
+fn default_f_ref_activation() -> f64 {
+    1.0
 }
 
 fn default_k_phi() -> f64 {
@@ -1124,6 +1176,10 @@ impl Default for SimParams {
             eta_v: default_eta_v(),
             interface_grad_min: default_interface_grad_min(),
             surface_exchange_integrator: SurfaceExchangeIntegrator::InvariantDomainV2,
+            activation_schema: default_activation_schema(),
+            k_c_activation: default_k_c_activation(),
+            n_ref_activation: default_n_ref_activation(),
+            f_ref_activation: default_f_ref_activation(),
         }
     }
 }

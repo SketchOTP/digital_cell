@@ -124,7 +124,7 @@ pub fn check_activation_parity(
     p.k_d008_activation = k;
     let basis_obs = activation_basis(c, n, f);
     let rate_obs = activation_rate(k, c, n, f);
-    let rates = activated_metabolism_rates(c, n, f, a, &p);
+    let rates = activated_metabolism_rates(1.0, c, n, f, a, &p);
     // Runtime basis inferred from r/k when k>0; zero-k uses observer basis.
     let basis_runtime = if k.abs() > 1e-18 {
         rates.activation / k

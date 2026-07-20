@@ -211,7 +211,7 @@ pub fn local_waste_source_rate(
     membrane: f64,
     params: &SimParams,
 ) -> f64 {
-    let rates = activated_metabolism_rates(catalyst, nutrient, fuel, activated, params);
+    let rates = activated_metabolism_rates(1.0, catalyst, nutrient, fuel, activated, params);
     let r_structure = structure_production_rate(phi, activated, catalyst, params);
     let r_structure_decay = structure_decay_rate(phi, 0.0, params);
     let d_w_structure = (1.0 - params.eta_phi) * r_structure + r_structure_decay;

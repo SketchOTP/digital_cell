@@ -167,7 +167,7 @@ pub fn prescribed_balance_point(
             };
             d_structure += (params.k_d008_structure * a * i_face - params.k_structure_decay * phi)
                 * cell_area;
-            let rates = activated_metabolism_rates(c, n, f, a, params);
+            let rates = activated_metabolism_rates(1.0, c, n, f, a, params);
             if phi >= 0.5 {
                 d_catalyst += rates.d_catalyst * cell_area;
                 d_activated += rates.d_activated * cell_area;

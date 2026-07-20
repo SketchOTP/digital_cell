@@ -1,23 +1,24 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260720-1534-d049-coupled-aps-collapse-feedback-decomposition
-- Project directive: D-049
-- Goal: Coupled A/P/S collapse feedback decomposition under frozen biology
+- ID: D-20260720-d050-coupled-catalyst-saturating-activation-repair
+- Project directive: D-050
+- Goal: Catalyst-saturating volume activation repair for coupled organism Stage E
 - Status: done
-- Acceptance: met — `D049_COUPLED_ACTIVATION_CAPACITY_FAILURE`; Gates 0–11 evidence; no chemistry change
-- Touched files: d049_analysis.rs, d049_tests.rs, d049.rs, main.rs, docs/d049_*, experiments/generated/d049, .agent/*
-- Next action: coupled activation capacity reopen (Route A); next_execution_started=false
+- Acceptance: met — primary `D050_COUPLED_ACTIVATION_CAPACITY_NOT_RECOVERED` at Gate 5
+- Touched files: activated_metabolism, config V13, d050_analysis/tests, d050.rs, main.rs, docs/d050_*, experiments/generated/d050, .agent/*
+- Next action: coupled activation-topology review; next_execution_started=false
 
 ## Repo facts needed now
-- Both analytic + restored branches collapse; A ledger closes; constitutive S→W=0
-- Earliest: PRECURSOR_SYNTHESIS_DECLINE; frozen-S UPSTREAM; transport NEITHER
-- Fixed P does not rescue A; Route A supersedes D-047 for coupled organism only
-- Tag pending: D-049-coupled-aps-collapse-audit
+- Schema2 V13 implemented; schema1 historical k=0.020 preserved
+- Gate0–4 PASS; Gate5 FAIL — A retention ~0.03 flat across V_A 0.75×–4× fitted
+- Fitted V_A≈0.1254, K_C=0.10 (Model C recon hold max~2.8%)
+- Record: COUPLED_HISTORICAL_ACTIVATION_CAPACITY_REJECTED
 
 ## Last validation
-- Command: cargo test d049_tests 22/22; D049_MAX_ACCEPTED=5000 pipeline
-- Result: primary=D049_COUPLED_ACTIVATION_CAPACITY_FAILURE
+- Command: cargo test -p chemistry-core --test d050_tests --release (21/21); Gate5 screen D050_MAX_ACCEPTED=5000
+- Result: primary=D050_COUPLED_ACTIVATION_CAPACITY_NOT_RECOVERED
 
 ## Open blockers
 - Stage E BLOCKED_NOT_RECOVERED; Phase1 PARTIAL; production REQUIRES_REMEDIATION
+- Do not add C_star/buffer/product inhibition without topology review

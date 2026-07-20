@@ -631,7 +631,7 @@ pub struct DemandStateRow {
     pub k_precursor_scale: f64,
 }
 
-fn through_origin_alpha(xs: &[f64], ys: &[f64]) -> f64 {
+pub fn through_origin_alpha(xs: &[f64], ys: &[f64]) -> f64 {
     let mut xx = 0.0;
     let mut xy = 0.0;
     for (&x, &y) in xs.iter().zip(ys.iter()) {

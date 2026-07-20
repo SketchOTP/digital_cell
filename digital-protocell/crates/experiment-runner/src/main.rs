@@ -47,6 +47,7 @@ mod d046;
 mod d047;
 mod d048;
 mod d049;
+mod d050;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -277,6 +278,10 @@ enum Commands {
     D049 {
         #[command(subcommand)]
         action: D049Commands,
+    },
+    D050 {
+        #[command(subcommand)]
+        action: D050Commands,
     },
 }
 
@@ -579,6 +584,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D047 { action } => run_d047(action)?,
         Commands::D048 { action } => run_d048(action)?,
         Commands::D049 { action } => run_d049(action)?,
+        Commands::D050 { action } => run_d050(action)?,
     }
     Ok(())
 }
@@ -2926,6 +2932,35 @@ fn run_d049(action: D049Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-049 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D050Commands {
+    /// Catalyst-saturating volume activation repair (Gates 0–13).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d050")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d050_artifact_path(path: &Path) -> PathBuf {
+    resolve_d049_artifact_path(path)
+}
+
+fn run_d050(action: D050Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D050Commands::Pipeline { output } => {
+            let out = resolve_d050_artifact_path(&output);
+            let result = d050::run_pipeline(&out)?;
+            println!(
+                "D-050 pipeline primary={} stage_e={} -> {}",
+                result["primary_conclusion"],
+                result["stage_e_status"],
                 out.join("manifest.json").display()
             );
         }

@@ -330,7 +330,8 @@ pub fn initialize_seed(grid: &Grid, params: &crate::config::SimParams, fields: &
                 }
                 EquationVersion::MembraneMetabolismV7SurfaceDensity
             | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
-                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {
+                | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
+                | EquationVersion::MembraneMetabolismV13CatalystSaturatingActivation => {
                     fields.activated[idx] = 0.10 * h;
                     // S = δΓ must be adsorbed; do not seed bulk membrane mass.
                     fields.membrane[idx] = 0.0;

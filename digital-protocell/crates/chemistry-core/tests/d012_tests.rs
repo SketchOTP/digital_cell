@@ -316,7 +316,7 @@ fn test_v2_turnover_converts_to_waste() {
 
 #[test]
 fn test_runtime_activation_delta_matches_matrix() {
-    let rates = activated_metabolism_rates(1.0, 1.0, 1.0, 0.0, &v2_params());
+    let rates = activated_metabolism_rates(1.0, 1.0, 1.0, 1.0, 0.0, &v2_params());
     let extent = rates.activation;
     let mut runtime = [0.0; SEVEN_FIELD_COUNT];
     runtime[SpeciesId::N.index()] = -extent;
@@ -329,7 +329,7 @@ fn test_runtime_activation_delta_matches_matrix() {
 #[test]
 fn test_runtime_catalyst_delta_matches_matrix() {
     let p = v2_params();
-    let rates = activated_metabolism_rates(1.0, 0.0, 0.0, 1.0, &p);
+    let rates = activated_metabolism_rates(1.0, 1.0, 0.0, 0.0, 1.0, &p);
     let extent = rates.reproduction;
     let mut runtime = [0.0; SEVEN_FIELD_COUNT];
     runtime[SpeciesId::C.index()] = p.eta_c * extent;
@@ -741,23 +741,23 @@ fn test_v2_metabolic_reactor_bounded() {
             sim.fields.activated[idx] = 0.2;
         }
     }
-    let rates = activated_metabolism_rates(0.4, 0.8, 0.7, 0.2, &sim.params);
+    let rates = activated_metabolism_rates(1.0, 0.4, 0.8, 0.7, 0.2, &sim.params);
     assert!(rates.activation > 0.0);
     assert_eq!(
-        activated_metabolism_rates(0.0, 0.8, 0.7, 0.2, &sim.params).activation,
+        activated_metabolism_rates(1.0, 0.0, 0.8, 0.7, 0.2, &sim.params).activation,
         0.0
     );
     assert_eq!(
-        activated_metabolism_rates(0.4, 0.0, 0.7, 0.2, &sim.params).activation,
+        activated_metabolism_rates(1.0, 0.4, 0.0, 0.7, 0.2, &sim.params).activation,
         0.0
     );
     assert_eq!(
-        activated_metabolism_rates(0.4, 0.8, 0.0, 0.2, &sim.params).activation,
+        activated_metabolism_rates(1.0, 0.4, 0.8, 0.0, 0.2, &sim.params).activation,
         0.0
     );
-    assert!(activated_metabolism_rates(0.4, 0.0, 0.0, 0.2, &sim.params).reproduction > 0.0);
+    assert!(activated_metabolism_rates(1.0, 0.4, 0.0, 0.0, 0.2, &sim.params).reproduction > 0.0);
     assert_eq!(
-        activated_metabolism_rates(0.4, 1.0, 1.0, 0.0, &sim.params).reproduction,
+        activated_metabolism_rates(1.0, 0.4, 1.0, 1.0, 0.0, &sim.params).reproduction,
         0.0
     );
     for _ in 0..100 {

@@ -75,3 +75,4 @@ Append-only repo-specific lessons. Format:
 - 2026-07-20 | area:membrane-metabolism | lesson:Frozen k_act=0.020+schema3 governed seed loses A (~1% retention) in first 10k window; D-047 supply adequacy ≠ reachable membrane basin | evidence:experiments/generated/d048/healthy_attractor/result.json
 - 2026-07-20 | area:activation | lesson:Do not copy STAGE_E_FAILED_RATES.k_d008_activation=0.024 when D-047/D-048 freeze historical 0.020 | evidence:d048_analysis.rs d048_frozen_organism_params
 - 2026-07-20 | area:membrane-metabolism | lesson:Coupled organism A collapses even with fixed P; D-047 supply adequacy ≠ coupled attractor; Route A for frozen eight-field | evidence:docs/d049_coupled_aps_collapse_feedback.md
+- 2026-07-20 | area:activation/d050 | lesson:Schema2 V_A scales activation extent but coupled free-A retention stays ~3% across 0.75–4× fitted V_A | evidence:experiments/generated/d050/v_a_screen/result.json

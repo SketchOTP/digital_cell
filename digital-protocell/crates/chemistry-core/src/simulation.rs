@@ -236,6 +236,7 @@ impl Simulation {
                 | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | EquationVersion::MembraneMetabolismV10ActivatedIntermediate
                 | EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly
+                | EquationVersion::MembraneMetabolismV13CatalystSaturatingActivation
                     if self.params.d008_stage_b_enabled =>
                 {
                     self.try_d008_stage_b(attempt_dt)
@@ -245,7 +246,8 @@ impl Simulation {
             | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
                 | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
                 | EquationVersion::MembraneMetabolismV10ActivatedIntermediate
-                | EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly => {
+                | EquationVersion::MembraneMetabolismV11SurfaceMaturation | EquationVersion::MembraneMetabolismV12MembraneCatalyticAssembly
+                | EquationVersion::MembraneMetabolismV13CatalystSaturatingActivation => {
                     match self.params.d008_stage_mode {
                         D008StageMode::Transport => {
                             self.try_membrane_metabolism_v1_transport(attempt_dt)
@@ -1395,6 +1397,7 @@ impl Simulation {
                 continue;
             }
             let rates = activated_metabolism_rates(
+                self.fields.structure[idx],
                 self.fields.catalyst[idx],
                 self.fields.nutrient[idx],
                 self.fields.fuel[idx],
@@ -1644,6 +1647,7 @@ impl Simulation {
                 continue;
             }
             let rates = activated_metabolism_rates(
+                self.working.structure[idx],
                 self.working.catalyst[idx],
                 self.working.nutrient[idx],
                 self.working.fuel[idx],
@@ -2003,6 +2007,7 @@ impl Simulation {
             react_w += d_w_structure;
 
             let rates = activated_metabolism_rates(
+                self.working.structure[idx],
                 self.working.catalyst[idx],
                 self.working.nutrient[idx],
                 self.working.fuel[idx],
@@ -2772,7 +2777,8 @@ impl Simulation {
             EquationVersion::MembraneMetabolismV6PrecursorAssembly
             | EquationVersion::MembraneMetabolismV7SurfaceDensity
             | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
-            | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {
+            | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
+            | EquationVersion::MembraneMetabolismV13CatalystSaturatingActivation => {
                 for v in &self.fields.activated {
                     v.to_bits().hash(&mut hasher);
                 }
@@ -2835,7 +2841,8 @@ impl Simulation {
             EquationVersion::MembraneMetabolismV6PrecursorAssembly
             | EquationVersion::MembraneMetabolismV7SurfaceDensity
             | EquationVersion::MembraneMetabolismV8ReversibleSurfaceExchange
-            | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly => {
+            | EquationVersion::MembraneMetabolismV9ActivatedSurfaceAssembly
+            | EquationVersion::MembraneMetabolismV13CatalystSaturatingActivation => {
                 append_field_bits(&mut bytes, &self.fields.activated);
                 append_field_bits(&mut bytes, &self.fields.membrane);
                 append_field_bits(&mut bytes, &self.fields.precursor);

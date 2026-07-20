@@ -115,7 +115,11 @@ pub fn stage_c_clamp_negligible(cumulative: &ActivatedMetabolismCumulativeAccoun
 }
 
 /// Rates for activation and reproduction. V1: A→C+W; V2: A→η_C C + (1−η_C) W.
+///
+/// `structure_phi` supplies H(φ) for activation schema 2 (catalyst-saturating volume).
+/// Schema 1 (historical) ignores φ: `r = k · C · N · F`.
 pub fn activated_metabolism_rates(
+    structure_phi: f64,
     catalyst: f64,
     nutrient: f64,
     fuel: f64,
@@ -126,7 +130,17 @@ pub fn activated_metabolism_rates(
     let n = nutrient.max(0.0);
     let f = fuel.max(0.0);
     let a = activated.max(0.0);
-    let activation = params.k_d008_activation * c * n * f;
+    let activation = crate::d050_analysis::production_activation_rate(
+        params.activation_schema,
+        params.k_d008_activation,
+        structure_phi,
+        c,
+        n,
+        f,
+        params.k_c_activation,
+        params.n_ref_activation,
+        params.f_ref_activation,
+    );
     let reproduction = params.k_d008_reproduction * c * a;
     let activated_decay = params.k_d008_activated_decay * a;
     let catalyst_turnover = params.k_d008_catalyst_turnover * c;

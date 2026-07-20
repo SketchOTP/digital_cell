@@ -1121,18 +1121,18 @@ fn stage_c_params() -> SimParams {
 #[test]
 fn stage_c_activation_requires_positive_catalyst_nutrient_and_fuel() {
     let params = stage_c_params();
-    let active = activated_metabolism_rates(0.4, 0.8, 0.7, 0.2, &params);
+    let active = activated_metabolism_rates(1.0, 0.4, 0.8, 0.7, 0.2, &params);
     assert!(active.activation > 0.0);
     assert_eq!(
-        activated_metabolism_rates(0.0, 0.8, 0.7, 0.2, &params).activation,
+        activated_metabolism_rates(1.0, 0.0, 0.8, 0.7, 0.2, &params).activation,
         0.0
     );
     assert_eq!(
-        activated_metabolism_rates(0.4, 0.0, 0.7, 0.2, &params).activation,
+        activated_metabolism_rates(1.0, 0.4, 0.0, 0.7, 0.2, &params).activation,
         0.0
     );
     assert_eq!(
-        activated_metabolism_rates(0.4, 0.8, 0.0, 0.2, &params).activation,
+        activated_metabolism_rates(1.0, 0.4, 0.8, 0.0, 0.2, &params).activation,
         0.0
     );
 }
@@ -1140,9 +1140,9 @@ fn stage_c_activation_requires_positive_catalyst_nutrient_and_fuel() {
 #[test]
 fn stage_c_reproduction_uses_activated_resource_not_raw_inputs() {
     let params = stage_c_params();
-    assert!(activated_metabolism_rates(0.4, 0.0, 0.0, 0.2, &params).reproduction > 0.0);
+    assert!(activated_metabolism_rates(1.0, 0.4, 0.0, 0.0, 0.2, &params).reproduction > 0.0);
     assert_eq!(
-        activated_metabolism_rates(0.4, 1.0, 1.0, 0.0, &params).reproduction,
+        activated_metabolism_rates(1.0, 0.4, 1.0, 1.0, 0.0, &params).reproduction,
         0.0
     );
 }
@@ -1150,7 +1150,7 @@ fn stage_c_reproduction_uses_activated_resource_not_raw_inputs() {
 #[test]
 fn stage_c_rates_have_exact_unit_stoichiometry_and_positive_waste() {
     let params = stage_c_params();
-    let rates = activated_metabolism_rates(0.4, 0.8, 0.7, 0.2, &params);
+    let rates = activated_metabolism_rates(1.0, 0.4, 0.8, 0.7, 0.2, &params);
     assert_eq!(rates.d_nutrient, -rates.activation);
     assert_eq!(rates.d_fuel, -rates.activation);
     assert_eq!(
