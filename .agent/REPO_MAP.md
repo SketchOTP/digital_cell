@@ -350,3 +350,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d046.rs` — diagnostic pipeline Gates0–9
 - `docs/d046_activated_resource_demand_topology.md` — completion report
 - `digital-protocell/experiments/generated/d046/` — artifacts + manifest
+
+## D-047 shared activated-resource pool sufficiency
+- `digital-protocell/crates/chemistry-core/src/d047_analysis.rs` — fixed/altered classification, A role, tracer, competition, reduced dyn, route
+- `digital-protocell/crates/chemistry-core/tests/d047_tests.rs` — focused Gate0–10 unit coverage
+- `digital-protocell/crates/experiment-runner/src/d047.rs` — diagnostic pipeline Gates0–10
+- `docs/d047_shared_activated_resource_pool.md` — completion report
+- `digital-protocell/experiments/generated/d047/` — artifacts + manifest
