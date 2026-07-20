@@ -43,6 +43,7 @@ mod d042;
 mod d043;
 mod d044;
 mod d045;
+mod d046;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -257,6 +258,10 @@ enum Commands {
     D045 {
         #[command(subcommand)]
         action: D045Commands,
+    },
+    D046 {
+        #[command(subcommand)]
+        action: D046Commands,
     },
 }
 
@@ -555,6 +560,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D043 { action } => run_d043(action)?,
         Commands::D044 { action } => run_d044(action)?,
         Commands::D045 { action } => run_d045(action)?,
+        Commands::D046 { action } => run_d046(action)?,
     }
     Ok(())
 }
@@ -2786,6 +2792,35 @@ fn run_d045(action: D045Commands) -> Result<(), Box<dyn std::error::Error>> {
             println!(
                 "D-045 pipeline primary={} -> {}",
                 result["primary_conclusion"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D046Commands {
+    /// Activated-resource demand topology audit (diagnostic only).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d046")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d046_artifact_path(path: &Path) -> PathBuf {
+    resolve_d043_artifact_path(path)
+}
+
+fn run_d046(action: D046Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D046Commands::Pipeline { output } => {
+            let out = resolve_d046_artifact_path(&output);
+            let result = d046::run_pipeline(&out)?;
+            println!(
+                "D-046 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["selected_route"],
                 out.join("manifest.json").display()
             );
         }
