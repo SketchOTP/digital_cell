@@ -59,6 +59,7 @@ mod d059;
 mod d060;
 mod d061;
 mod d062;
+mod d063;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -337,6 +338,10 @@ enum Commands {
     D062 {
         #[command(subcommand)]
         action: D062Commands,
+    },
+    D063 {
+        #[command(subcommand)]
+        action: D063Commands,
     },
 }
 
@@ -651,6 +656,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D060 { action } => run_d060(action)?,
         Commands::D061 { action } => run_d061(action)?,
         Commands::D062 { action } => run_d062(action)?,
+        Commands::D063 { action } => run_d063(action)?,
     }
     Ok(())
 }
@@ -3336,6 +3342,31 @@ fn run_d062(action: D062Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d062::run_pipeline(&out)?;
             println!(
                 "D-062 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D063Commands {
+    /// Environmentally connected membrane invagination architecture review.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d063")]
+        output: PathBuf,
+    },
+}
+
+fn run_d063(action: D063Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D063Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d063::run_pipeline(&out)?;
+            println!(
+                "D-063 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()
