@@ -58,6 +58,7 @@ mod d058;
 mod d059;
 mod d060;
 mod d061;
+mod d062;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -332,6 +333,10 @@ enum Commands {
     D061 {
         #[command(subcommand)]
         action: D061Commands,
+    },
+    D062 {
+        #[command(subcommand)]
+        action: D062Commands,
     },
 }
 
@@ -645,6 +650,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D059 { action } => run_d059(action)?,
         Commands::D060 { action } => run_d060(action)?,
         Commands::D061 { action } => run_d061(action)?,
+        Commands::D062 { action } => run_d062(action)?,
     }
     Ok(())
 }
@@ -3305,6 +3311,31 @@ fn run_d061(action: D061Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d061::run_pipeline(&out)?;
             println!(
                 "D-061 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D062Commands {
+    /// Long-horizon structural maintenance and decay review.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d062")]
+        output: PathBuf,
+    },
+}
+
+fn run_d062(action: D062Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D062Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d062::run_pipeline(&out)?;
+            println!(
+                "D-062 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()
