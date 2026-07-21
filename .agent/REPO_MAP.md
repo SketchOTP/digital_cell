@@ -433,3 +433,9 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d056.rs` — Phase A Gates 0–5 stop-on-fail pipeline
 - `docs/d056_waste_coupled_resource_carrier.md` — `D056_CARRIER_KINETICS_NOT_IDENTIFIABLE`
 - `digital-protocell/experiments/generated/d056/` — preservation through parameter_identification artifacts
+## D-057 carrier geometry / driving-force audit
+- `digital-protocell/crates/chemistry-core/src/d057_analysis.rs` — dimensional ledger, measures, drives, route rules
+- `digital-protocell/crates/chemistry-core/tests/d057_tests.rs` — focused suite (10)
+- `digital-protocell/crates/experiment-runner/src/d057.rs` — Gates −1…10 observer pipeline
+- `docs/d057_carrier_geometry_driving_force_audit.md` — `D057_CARRIER_GRID_OR_SURFACE_NORMALIZATION_DEFECT` Route G
+- `digital-protocell/experiments/generated/d057/` — seal through route_decision artifacts

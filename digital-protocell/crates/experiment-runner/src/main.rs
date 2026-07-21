@@ -53,6 +53,7 @@ mod d052;
 mod d053;
 mod d055;
 mod d056;
+mod d057;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -307,6 +308,10 @@ enum Commands {
     D056 {
         #[command(subcommand)]
         action: D056Commands,
+    },
+    D057 {
+        #[command(subcommand)]
+        action: D057Commands,
     },
 }
 
@@ -615,6 +620,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D053 { action } => run_d053(action)?,
         Commands::D055 { action } => run_d055(action)?,
         Commands::D056 { action } => run_d056(action)?,
+        Commands::D057 { action } => run_d057(action)?,
     }
     Ok(())
 }
@@ -3136,6 +3142,35 @@ fn run_d056(action: D056Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-056 pipeline primary={} phase_b={} -> {}",
                 result["primary_conclusion"],
                 result["phase_b_authorized"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D057Commands {
+    /// Carrier geometry, normalization, and driving-force audit (observer-only).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d057")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d057_artifact_path(path: &Path) -> PathBuf {
+    resolve_d053_artifact_path(path)
+}
+
+fn run_d057(action: D057Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D057Commands::Pipeline { output } => {
+            let out = resolve_d057_artifact_path(&output);
+            let result = d057::run_pipeline(&out)?;
+            println!(
+                "D-057 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
                 out.join("manifest.json").display()
             );
         }
