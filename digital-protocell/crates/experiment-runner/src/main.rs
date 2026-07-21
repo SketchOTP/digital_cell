@@ -57,6 +57,7 @@ mod d057;
 mod d058;
 mod d059;
 mod d060;
+mod d061;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -327,6 +328,10 @@ enum Commands {
     D060 {
         #[command(subcommand)]
         action: D060Commands,
+    },
+    D061 {
+        #[command(subcommand)]
+        action: D061Commands,
     },
 }
 
@@ -639,6 +644,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D058 { action } => run_d058(action)?,
         Commands::D059 { action } => run_d059(action)?,
         Commands::D060 { action } => run_d060(action)?,
+        Commands::D061 { action } => run_d061(action)?,
     }
     Ok(())
 }
@@ -3274,6 +3280,31 @@ fn run_d060(action: D060Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d060::run_pipeline(&out)?;
             println!(
                 "D-060 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D061Commands {
+    /// Structural-constraint execution repair and dynamic-size revalidation.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d061")]
+        output: PathBuf,
+    },
+}
+
+fn run_d061(action: D061Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D061Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d061::run_pipeline(&out)?;
+            println!(
+                "D-061 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()

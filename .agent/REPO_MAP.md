@@ -472,3 +472,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d060.rs` — Gates −1…12 shadow pipeline (stops at geometry defect)
 - `docs/d060_structural_growth_resource_size_feedback.md` — Route G: structure-constraint freezes φ
 - `digital-protocell/experiments/generated/d060/` → `/mnt/storage1tb/.../d060`
+
+## D-061 structure execution repair
+- `digital-protocell/crates/chemistry-core/src/d061_analysis.rs` — typed-mode, parity, drive, runaway, and route classifiers
+- `digital-protocell/crates/chemistry-core/tests/d061_tests.rs` — mode identity/resume/parity/route regression suite
+- `digital-protocell/crates/experiment-runner/src/d061.rs` — Gates 0–11 fixed/dynamic shadow campaign and artifacts
+- `docs/d061_structural_constraint_execution_repair.md` — Route G runaway growth after DynamicStructure repair
+- `digital-protocell/experiments/generated/d061/` → `/mnt/storage1tb/.../d061`
