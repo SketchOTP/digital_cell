@@ -454,7 +454,21 @@ Concise navigation map for agents. Add entries as application code lands.
 - `docs/d059_viable_size_basin_membrane_area_review.md` — size vs membrane-area architecture review
 - `digital-protocell/experiments/generated/d059/` → `/mnt/storage1tb/.../d059`
 
+## experiment-runner / D-060
+- `digital-protocell/crates/chemistry-core/src/d060_analysis.rs` — structural ledger, drive surface, neutrality cause, candidate laws, route rules
+- `digital-protocell/crates/chemistry-core/tests/d060_tests.rs` — Route L repro, ledger, drive, causality, route selection tests
+- `digital-protocell/crates/experiment-runner/src/d060.rs` — Gates −1…12 shadow/observer pipeline
+- `docs/d060_structural_growth_resource_size_feedback.md` — equations, gates, production unauthorized
+- `digital-protocell/experiments/generated/d060/` → `/mnt/storage1tb/.../d060`
+
 ## Storage archive (1TB)
 - `docs/storage_archive_policy.md` — NVMe vs `/mnt/storage1tb` policy
 - `.cursor/rules/06-storage-archive.mdc` — always-on agent reminder
 - `/mnt/storage1tb/cache/project-artifacts/digital_cell/` — target, cocoindex, experiments/generated archive + manifest
+
+## D-060 structural growth / size feedback
+- `digital-protocell/crates/chemistry-core/src/d060_analysis.rs` — ledger, drive surface, neutrality, candidates, route rules
+- `digital-protocell/crates/chemistry-core/tests/d060_tests.rs` — Gate classifiers and route selection
+- `digital-protocell/crates/experiment-runner/src/d060.rs` — Gates −1…12 shadow pipeline (stops at geometry defect)
+- `docs/d060_structural_growth_resource_size_feedback.md` — Route G: structure-constraint freezes φ
+- `digital-protocell/experiments/generated/d060/` → `/mnt/storage1tb/.../d060`

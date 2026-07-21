@@ -1,27 +1,25 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260721-d059-viable-size-basin-membrane-area-review
-- Project directive: D-059
-- Goal: One global k_T viable-size basin vs metabolically generated membrane area
+- ID: D-20260721-d060-structural-growth-resource-size-feedback
+- Project directive: D-060
+- Goal: Diagnose neutral size manifold; qualify local resource-coupled structural restoring-size feedback (shadow-only)
 - Status: done
-- Acceptance: met — Route L; contiguous R6–R14 @10k; NEUTRAL_SIZE_MANIFOLD; no V15
-- Touched files: d059_analysis.rs, d059_tests.rs, d059.rs, main.rs, lib.rs, docs/d059_*, experiments/generated/d059, .agent/*
-- Next action: next directive reviews structural growth law / size feedback; next_execution_started=false
+- Acceptance: met — Route G `D060_STRUCTURAL_GEOMETRY_EXECUTION_DEFECT`
+- Touched files: d060_analysis.rs, d060_tests.rs, d060.rs, main.rs, lib.rs, docs/d060_*, experiments/generated/d060, .agent/*
+- Next action: next directive repairs φ application / structure-constraint execution only; next_execution_started=false
 
 ## Repo facts needed now
-- Primary: `D059_EXTERNAL_CARRIER_SIZE_LIMIT_NO_RESTORING_BASIN` (Route L)
-- Matched exponents: p_M≈2.00, p_T≈1.00 (`D058_RADIUS_EXPONENT_CONFOUNDED`)
-- Best global k_T≈1.435; viable band R6–R14 @10000 steps
-- Restoring: `NEUTRAL_SIZE_MANIFOLD` (Gates 5–6 skipped)
-- Ending commit: `6b84071`
-- Result tag: `D-059-size-membrane-area-architecture-review`
-- Artifacts: `digital-protocell/experiments/generated/d059` → `/mnt/storage1tb/.../d059`
-- Unrelated untracked/modified Cursor rules + AGENTS.md — leave uncommitted
+- Primary: `D060_STRUCTURAL_GEOMETRY_EXECUTION_DEFECT` (Route G)
+- Root cause: `enforce_structure_constraint` → `apply_phi=false`; analytic G−L > 0, coupled dR/dt = 0
+- Neutrality cause: `STRUCTURAL_GEOMETRY_COUPLING_DEFECT`
+- Frozen k_T: 1.4346157818803311; D-059 Route L reproduced
+- No kinetic candidate authorized; V15 unauthorized; Stage E remains BLOCKED_NOT_RECOVERED
+- Artifacts: `digital-protocell/experiments/generated/d060` → `/mnt/storage1tb/.../d060`
 
 ## Last validation
-- Command: `cargo test -p chemistry-core --test d059_tests`; `D059_MAX_ACCEPTED=10000 cargo run -p experiment-runner --release -- d059 pipeline`
-- Result: 14/14 PASS; primary Route L
+- Command: `cargo test -p chemistry-core --test d060_tests`; `D060_MAX_ACCEPTED=400 cargo run -p experiment-runner --release -- d060 pipeline`
+- Result: 10/10 PASS; primary Route G
 
 ## Open blockers
-- None for D-059 diagnostic; Stage E remains BLOCKED_NOT_RECOVERED
+- Structure-constraint execution freezes φ; must repair before any structural-law candidate can create a restoring basin
