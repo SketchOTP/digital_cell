@@ -493,3 +493,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d063.rs` — Gates −1–12 shadow pipeline
 - `docs/d063_connected_membrane_architecture_review.md` — `D063_CONNECTED_MEMBRANE_SHADOW_REPAIR_FAILURE`
 - `digital-protocell/experiments/generated/d063/` → `/mnt/storage1tb/.../d063`
+
+## D-064 connected-geometry coupled failure audit
+- `digital-protocell/crates/chemistry-core/src/d064_analysis.rs` — canonical χ, budgets, joint allocator, seeds, route
+- `digital-protocell/crates/chemistry-core/tests/d064_tests.rs` — accounting/rejection/budget/seed/route suite
+- `digital-protocell/crates/experiment-runner/src/d064.rs` — Gates −1–12 diagnostic shadow pipeline
+- `docs/d064_connected_geometry_coupled_failure_audit.md` — `D064_STATIC_COUPLED_RESOURCE_METRIC_DEFECT`
+- `digital-protocell/experiments/generated/d064/` → `/mnt/storage1tb/.../d064`
