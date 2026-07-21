@@ -399,3 +399,22 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d052.rs` — Gates 0–12 diagnostic pipeline
 - `docs/d052_resource_delivery_resistance_audit.md` — completion (`D052_MIXED_RESOURCE_DELIVERY_LIMIT`)
 - `digital-protocell/experiments/generated/d052/` — governed artifacts + manifest
+
+## D-053 combined resource-delivery repair
+- `digital-protocell/crates/chemistry-core/src/d053_analysis.rs` — frozen schema-2 constants, isolated delivery repair helpers, candidates, conclusions
+- `digital-protocell/crates/experiment-runner/src/d053.rs` — CLI pipeline Gates 0–9 plus explicit Gate9+ partial stop
+- `digital-protocell/experiments/generated/d053/` — runtime artifacts and manifest
+
+## D-053 combined resource delivery repair
+- `digital-protocell/crates/chemistry-core/src/membrane_transport.rs` — m_ext exterior N/F faces; m_beta N/F beta co-scale
+- `digital-protocell/crates/chemistry-core/src/d053_analysis.rs` — candidates, isolation, sensitivity, conclusions
+- `digital-protocell/crates/chemistry-core/tests/d053_tests.rs` — focused suite (12)
+- `digital-protocell/crates/experiment-runner/src/d053.rs` — Gates 0–14 pipeline
+- `docs/d053_combined_resource_delivery_repair.md` — completion (`D053_NO_HEALTHY_RESOURCE_REPAIRED_ATTRACTOR`)
+- `digital-protocell/experiments/generated/d053/` — governed artifacts + manifest
+
+## D-054 resource geometry architecture audit
+- `digital-protocell/crates/chemistry-core/src/d054_analysis.rs` — provenance/route helpers; geometry ratios; no biology change
+- `digital-protocell/crates/chemistry-core/tests/d054_tests.rs` — focused suite (10)
+- `docs/d054_resource_geometry_architecture_audit.md` — completion (`D054_D053_PROVENANCE_RERUN_DIVERGED`)
+- `digital-protocell/experiments/generated/d054/` — seal + route_decision artifacts
