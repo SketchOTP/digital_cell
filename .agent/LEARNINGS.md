@@ -84,3 +84,5 @@ Append-only repo-specific lessons. Format:
 
 - 2026-07-21 | area:d053-seal | lesson:Sealed 76c0898 Gate5 rejects χ-rise-only candidates; informal run had labeled same metrics pass | evidence:experiments/generated/d054/d053_seal/result.json
 - 2026-07-21 | area:d053-gate8 | lesson:Informal Gate8 PASS used short_horizon_relaxed χ≥0.20; measured χ≈0.29–0.53 never met stated 1.05 | evidence:experiments/generated/d053_prerun_backup/*/fixed_compartment/result.json
+- 2026-07-21 | area:d053-gates | lesson:Gate5 OR-admission (chi-rise/a-rise) and Gate8 short_horizon_relaxed were the informal pass sources; strict evaluate_gate5/8 reject χ≪1.05 | evidence:digital-protocell/crates/chemistry-core/src/d053_analysis.rs
+- 2026-07-21 | area:d055-passive | lesson:Complete passive upper bound (perfect exterior+membrane+mix) reaches χ≈0.90 still below 1; Route P passive architecture insufficient | evidence:experiments/generated/d055/passive_upper_bound/result.json

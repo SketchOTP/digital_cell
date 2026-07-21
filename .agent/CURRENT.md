@@ -1,25 +1,24 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260721-d054-dynamic-resource-geometry-passive-upper-bound
-- Project directive: D-054
-- Goal: Seal D-053; audit fixed-vs-dynamic resource geometry; select architecture route (no repair)
+- ID: D-20260721-d055-strict-resource-gate-passive-architecture-review
+- Project directive: D-055
+- Goal: Unify D-053 resource gates; strict replay; resume passive architecture review
 - Status: done
-- Acceptance: met — primary `D054_D053_PROVENANCE_RERUN_DIVERGED`
-- Touched files: d053 seal docs/label; d054_analysis/tests; docs/d054_*; experiments/generated/d054; .agent/*
-- Next action: repair D-053 Gate5/Gate8 harness and rerun; next_execution_started=false
+- Acceptance: met — primary `D055_PASSIVE_RESOURCE_TRANSPORT_ARCHITECTURE_INSUFFICIENT` Route_P
+- Touched files: d053_analysis/evaluator; d053.rs; d055_*; experiments/generated/d055; docs/d055_*; .agent/*
+- Next action: next directive = carrier-mediated import observer review; next_execution_started=false
 
 ## Repo facts needed now
-- D-053 source: 76c0898; corrected primary BOUNDED_DELIVERY_REPAIR_NOT_FOUND at Gate5
-- Informal Gate9 metrics reproducible when pair forced (A≈0.047, χ≈0.47)
-- Informal Gate8 never met χ≥1.05 (short_horizon_relaxed)
-- V14 recorded EXPERIMENTAL_FAILED; not qualified
+- Strict Gate5/8 in d053_analysis::evaluate_gate5/8; short_horizon_relaxed removed
+- Strict replay: D055_D053_STRICT_REPLAY_CONFIRMED_NOT_FOUND; retains D053_BOUNDED_DELIVERY_REPAIR_NOT_FOUND
+- Control E χ≈0.90 → PASSIVE_RESOURCE_DELIVERY_HARD_BOUND_FAIL; frontier incompatible
+- V14 remains EXPERIMENTAL_FAILED; not production
 
 ## Last validation
-- Command: cargo test d053_tests 12/12; d054_tests 10/10; sealed D053 early→Gate5 fail; forced Gate9@10k
-- Result: primary=D054_D053_PROVENANCE_RERUN_DIVERGED
+- Command: cargo test d055/d053/d054 32/32; D055_MAX_ACCEPTED=10000 D055_DIAG_HORIZON=2500 d055 pipeline release
+- Result: primary=D055_PASSIVE_RESOURCE_TRANSPORT_ARCHITECTURE_INSUFFICIENT route=Route_P
 
 ## Open blockers
 - Stage E BLOCKED_NOT_RECOVERED; Phase1 PARTIAL; production REQUIRES_REMEDIATION
 - Stage F not authorized
-- D-053 validation harness must be repaired before architecture selection

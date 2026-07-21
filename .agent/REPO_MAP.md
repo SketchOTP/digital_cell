@@ -418,3 +418,12 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/chemistry-core/tests/d054_tests.rs` — focused suite (10)
 - `docs/d054_resource_geometry_architecture_audit.md` — completion (`D054_D053_PROVENANCE_RERUN_DIVERGED`)
 - `digital-protocell/experiments/generated/d054/` — seal + route_decision artifacts
+
+## D-055 strict resource-gate replay + passive architecture
+- `digital-protocell/crates/chemistry-core/src/d053_analysis.rs` — shared `evaluate_gate5` / `evaluate_gate8` (strict χ≥1.05; no short-horizon relax)
+- `digital-protocell/crates/chemistry-core/src/d055_analysis.rs` — admission audit, route selection, architecture classifiers
+- `digital-protocell/crates/chemistry-core/tests/d055_tests.rs` — focused suite (10)
+- `digital-protocell/crates/experiment-runner/src/d055.rs` — Gates 0–12 pipeline
+- `digital-protocell/crates/experiment-runner/src/d053.rs` — Gate5/8 wired to shared evaluator
+- `docs/d055_strict_resource_architecture_review.md` — `D055_PASSIVE_RESOURCE_TRANSPORT_ARCHITECTURE_INSUFFICIENT` Route_P
+- `digital-protocell/experiments/generated/d055/` — preservation through route_decision artifacts
