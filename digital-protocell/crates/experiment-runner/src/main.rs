@@ -54,6 +54,7 @@ mod d053;
 mod d055;
 mod d056;
 mod d057;
+mod d058;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -312,6 +313,10 @@ enum Commands {
     D057 {
         #[command(subcommand)]
         action: D057Commands,
+    },
+    D058 {
+        #[command(subcommand)]
+        action: D058Commands,
     },
 }
 
@@ -621,6 +626,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D055 { action } => run_d055(action)?,
         Commands::D056 { action } => run_d056(action)?,
         Commands::D057 { action } => run_d057(action)?,
+        Commands::D058 { action } => run_d058(action)?,
     }
     Ok(())
 }
@@ -3169,6 +3175,35 @@ fn run_d057(action: D057Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d057::run_pipeline(&out)?;
             println!(
                 "D-057 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D058Commands {
+    /// Corrected carrier face/timestep normalization and re-identification (observer/shadow-only).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d058")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d058_artifact_path(path: &Path) -> PathBuf {
+    resolve_d053_artifact_path(path)
+}
+
+fn run_d058(action: D058Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D058Commands::Pipeline { output } => {
+            let out = resolve_d058_artifact_path(&output);
+            let result = d058::run_pipeline(&out)?;
+            println!(
+                "D-058 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()
