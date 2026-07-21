@@ -500,3 +500,9 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d064.rs` — Gates −1–12 diagnostic shadow pipeline
 - `docs/d064_connected_geometry_coupled_failure_audit.md` — `D064_STATIC_COUPLED_RESOURCE_METRIC_DEFECT`
 - `digital-protocell/experiments/generated/d064/` → `/mnt/storage1tb/.../d064`
+
+## D-065 canonical resource topology requalification
+- `digital-protocell/crates/chemistry-core/src/d065_analysis.rs` — signed net flux evaluator, topology necessity, fate/W/A ledgers, route
+- `digital-protocell/crates/chemistry-core/tests/d065_tests.rs` — parity, fate, topology, route tests
+- `digital-protocell/crates/experiment-runner/src/d065.rs` — Gates −1–10 shadow pipeline
+- `docs/d065_canonical_resource_topology_requalification.md` — completion (`D065_RESOURCE_DELIVERY_SUFFICIENT_ACTIVATION_LIMITED`)

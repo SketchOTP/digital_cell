@@ -19,3 +19,5 @@ This file is specifically for the operators use. It keeps record of what the AI 
 
 - 2026-07-21 | D-063 | event:route_decision | conclusion:D063_CONNECTED_MEMBRANE_SHADOW_REPAIR_FAILURE | note:static connected-area capacity qualified; coupled shadow repair not qualified; morphogenesis/V15 unauthorized
 - 2026-07-21 | event:directive_complete | id:D-064 | conclusion:D064_STATIC_COUPLED_RESOURCE_METRIC_DEFECT | tag:D-064-connected-geometry-coupled-failure-audit | note:Route A — repair canonical χ before topology rejection
+
+- 2026-07-21 | D-065 | event:route | D065_RESOURCE_DELIVERY_SUFFICIENT_ACTIVATION_LIMITED | CONNECTED_MEMBRANE_NOT_REQUIRED_FOR_RESOURCE_CAPACITY | artifacts:experiments/generated/d065
