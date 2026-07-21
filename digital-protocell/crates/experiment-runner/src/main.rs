@@ -55,6 +55,7 @@ mod d055;
 mod d056;
 mod d057;
 mod d058;
+mod d059;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -317,6 +318,10 @@ enum Commands {
     D058 {
         #[command(subcommand)]
         action: D058Commands,
+    },
+    D059 {
+        #[command(subcommand)]
+        action: D059Commands,
     },
 }
 
@@ -627,6 +632,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D056 { action } => run_d056(action)?,
         Commands::D057 { action } => run_d057(action)?,
         Commands::D058 { action } => run_d058(action)?,
+        Commands::D059 { action } => run_d059(action)?,
     }
     Ok(())
 }
@@ -3204,6 +3210,35 @@ fn run_d058(action: D058Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d058::run_pipeline(&out)?;
             println!(
                 "D-058 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D059Commands {
+    /// Viable-size basin and membrane-area architecture review (observer/shadow-only).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d059")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d059_artifact_path(path: &Path) -> PathBuf {
+    resolve_d053_artifact_path(path)
+}
+
+fn run_d059(action: D059Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D059Commands::Pipeline { output } => {
+            let out = resolve_d059_artifact_path(&output);
+            let result = d059::run_pipeline(&out)?;
+            println!(
+                "D-059 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()

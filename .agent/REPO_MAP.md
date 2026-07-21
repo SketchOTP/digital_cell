@@ -447,6 +447,13 @@ Concise navigation map for agents. Add entries as application code lands.
 - `docs/d058_corrected_carrier_normalization_audit.md` — `D058_CARRIER_SURFACE_VOLUME_CAPACITY_LIMIT` Route V
 - `digital-protocell/experiments/generated/d058/` — artifacts + manifest
 
+## D-059 viable size basin / membrane-area review
+- `digital-protocell/crates/chemistry-core/src/d059_analysis.rs` — matched scaling, global k_T ladder, size/area/topology route rules
+- `digital-protocell/crates/chemistry-core/tests/d059_tests.rs` — Route V repro, frontier, restoring, area, topology tests
+- `digital-protocell/crates/experiment-runner/src/d059.rs` — Gates −1…11 shadow/observer pipeline
+- `docs/d059_viable_size_basin_membrane_area_review.md` — size vs membrane-area architecture review
+- `digital-protocell/experiments/generated/d059/` → `/mnt/storage1tb/.../d059`
+
 ## Storage archive (1TB)
 - `docs/storage_archive_policy.md` — NVMe vs `/mnt/storage1tb` policy
 - `.cursor/rules/06-storage-archive.mdc` — always-on agent reminder
