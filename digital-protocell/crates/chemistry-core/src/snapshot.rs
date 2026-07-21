@@ -214,6 +214,9 @@ pub struct FieldSnapshot {
     pub fields: SnapshotFields,
     pub classification: ViabilityClass,
     pub turnover: TurnoverTotals,
+    /// D-061 structure-evolution mode. Missing on historical snapshots ⇒ FixedGeometry.
+    #[serde(default)]
+    pub structure_evolution_mode: crate::config::StructureEvolutionMode,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -266,6 +269,19 @@ impl FieldSnapshot {
             ));
         }
         Ok(())
+    }
+
+    /// Fail closed on structure-evolution mode mismatch (D-061).
+    pub fn can_resume_with_structure_mode(
+        &self,
+        target: &SimParams,
+        target_mode: crate::config::StructureEvolutionMode,
+    ) -> Result<(), String> {
+        self.can_resume_into(target)?;
+        crate::candidate_identity::structure_mode_resume_compatible(
+            self.structure_evolution_mode,
+            target_mode,
+        )
     }
 
     pub fn from_sim(
@@ -381,7 +397,35 @@ impl FieldSnapshot {
             fields: snapshot_fields,
             classification: detector.last_classification,
             turnover: detector.turnover.clone(),
+            structure_evolution_mode: crate::config::StructureEvolutionMode::FixedGeometry,
         }
+    }
+
+    /// Snapshot including explicit structure-evolution mode (D-061).
+    pub fn from_sim_with_structure_mode(
+        fields: &FieldBuffers,
+        params: &SimParams,
+        substep: u64,
+        sim_time: f64,
+        detector: &CellDetector,
+        mode: crate::config::StructureEvolutionMode,
+    ) -> Self {
+        let mut snap = Self::from_sim(fields, params, substep, sim_time, detector);
+        let identity = crate::candidate_identity::build_candidate_identity_with_structure_mode(
+            params.clone(),
+            option_env!("GIT_COMMIT").unwrap_or("unknown"),
+            None,
+            None,
+            "snapshot",
+            None,
+            None,
+            mode,
+        );
+        snap.structure_evolution_mode = mode;
+        snap.candidate_id = identity.candidate_id;
+        snap.candidate_hash = identity.candidate_hash;
+        snap.configuration_hash = identity.configuration_hash;
+        snap
     }
 
     /// Compatibility wrapper. Prefer [`Self::try_restore_fields`] at trust boundaries.
@@ -572,6 +616,7 @@ impl FieldSnapshot {
             }),
             classification: snapshot.classification,
             turnover: snapshot.turnover,
+            structure_evolution_mode: crate::config::StructureEvolutionMode::FixedGeometry,
         }
     }
 

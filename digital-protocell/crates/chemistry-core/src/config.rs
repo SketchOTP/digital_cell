@@ -65,6 +65,57 @@ pub const NINE_FIELD_COUNT: usize = 9;
 /// D-024 membrane transport: surface-occupancy permeability (θΓ).
 pub const MEMBRANE_TRANSPORT_SCHEMA_VERSION_V3: u32 = 3;
 
+/// Explicit structure-evolution execution mode (D-061).
+///
+/// FixedGeometry: assays may freeze φ; structural ledgers are counterfactual.
+/// DynamicStructure: accepted structural chemistry mutates φ (organism biology).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, Default)]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
+pub enum StructureEvolutionMode {
+    /// Accepted structural production/decay do not mutate φ.
+    #[default]
+    FixedGeometry,
+    /// Accepted structural production/decay mutate φ.
+    DynamicStructure,
+}
+
+impl StructureEvolutionMode {
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::FixedGeometry => "FixedGeometry",
+            Self::DynamicStructure => "DynamicStructure",
+        }
+    }
+
+    /// Whether accepted structural extents update the φ field.
+    pub const fn apply_phi(self) -> bool {
+        matches!(self, Self::DynamicStructure)
+    }
+
+    /// Legacy boolean: true iff FixedGeometry.
+    pub const fn enforce_constraint(self) -> bool {
+        matches!(self, Self::FixedGeometry)
+    }
+
+    pub const fn from_enforce_constraint(enforce: bool) -> Self {
+        if enforce {
+            Self::FixedGeometry
+        } else {
+            Self::DynamicStructure
+        }
+    }
+
+    pub const fn is_counterfactual_structure_ledger(self) -> bool {
+        matches!(self, Self::FixedGeometry)
+    }
+}
+
+impl fmt::Display for StructureEvolutionMode {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.write_str(self.as_str())
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum EquationVersion {
     #[serde(rename = "d001-bulk-v1")]

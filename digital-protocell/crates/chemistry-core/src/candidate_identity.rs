@@ -98,6 +98,9 @@ pub struct CandidateIdentity {
     pub calibration_branch: Option<String>,
     pub calibration_iteration: Option<u32>,
     pub selection_reason: String,
+    /// D-061 structure-evolution execution mode (identity-bearing).
+    #[serde(default)]
+    pub structure_evolution_mode: crate::config::StructureEvolutionMode,
 }
 
 pub fn canonical_params_bytes(params: &SimParams) -> Vec<u8> {
@@ -1018,7 +1021,63 @@ pub fn build_candidate_identity(
         calibration_branch: calibration_branch.map(str::to_string),
         calibration_iteration,
         selection_reason: selection_reason.to_string(),
+        structure_evolution_mode: crate::config::StructureEvolutionMode::FixedGeometry,
     }
+}
+
+/// Configuration identity including structure-evolution mode (D-061).
+pub fn configuration_hash_with_structure_mode(
+    params: &SimParams,
+    grid: &GridConfiguration,
+    mode: crate::config::StructureEvolutionMode,
+) -> String {
+    let mut data = configuration_hash(params, grid).into_bytes();
+    data.push(0);
+    data.extend_from_slice(b"structure_evolution_mode=");
+    data.extend_from_slice(mode.as_str().as_bytes());
+    sha256_hex(&data)
+}
+
+/// Fail closed when a resume/artifact mode disagrees with the target mode.
+pub fn structure_mode_resume_compatible(
+    snapshot_mode: crate::config::StructureEvolutionMode,
+    target_mode: crate::config::StructureEvolutionMode,
+) -> Result<(), String> {
+    if snapshot_mode == target_mode {
+        Ok(())
+    } else {
+        Err(format!(
+            "structure_evolution_mode {} incompatible with target {}; refusing silent mode switch",
+            snapshot_mode.as_str(),
+            target_mode.as_str()
+        ))
+    }
+}
+
+pub fn build_candidate_identity_with_structure_mode(
+    params: SimParams,
+    source_commit: &str,
+    calibration_branch: Option<&str>,
+    calibration_iteration: Option<u32>,
+    selection_reason: &str,
+    source_snapshot_id: Option<String>,
+    source_snapshot_hash: Option<String>,
+    mode: crate::config::StructureEvolutionMode,
+) -> CandidateIdentity {
+    let mut identity = build_candidate_identity(
+        params,
+        source_commit,
+        calibration_branch,
+        calibration_iteration,
+        selection_reason,
+        source_snapshot_id,
+        source_snapshot_hash,
+    );
+    let grid = identity.grid.clone();
+    identity.structure_evolution_mode = mode;
+    identity.configuration_hash =
+        configuration_hash_with_structure_mode(&identity.params, &grid, mode);
+    identity
 }
 
 pub fn classify_candidate_match(

@@ -78,7 +78,11 @@ pub struct Simulation {
     pub structure_provenance: Option<StructureProvenanceTracer>,
     /// Observer-only membrane-material pulse-chase tracer (D-039). None ⇒ disabled.
     pub membrane_label_tracer: Option<MembraneLabelTracer>,
-    /// When false with ConstrainedRadius, φ evolves under the same rates (D-018 control).
+    /// Explicit FixedGeometry vs DynamicStructure execution mode (D-061).
+    /// Source of truth after `sync_structure_evolution_mode`; prefer typed setters.
+    pub structure_evolution_mode: crate::config::StructureEvolutionMode,
+    /// Legacy mirror of `structure_evolution_mode.enforce_constraint()`.
+    /// Callers that assign this flag are synced at each substep (D-061).
     pub enforce_structure_constraint: bool,
     /// D-026 diagnostic: skip activated normal transport (Control A).
     pub d026_disable_a_normal_transport: bool,
@@ -119,6 +123,33 @@ pub struct Simulation {
 }
 
 impl Simulation {
+
+    /// Keep typed mode and legacy boolean aligned. Prefer this over assigning the bool alone.
+    pub fn set_structure_evolution_mode(&mut self, mode: crate::config::StructureEvolutionMode) {
+        self.structure_evolution_mode = mode;
+        self.enforce_structure_constraint = mode.enforce_constraint();
+    }
+
+    /// Legacy setter: true → FixedGeometry, false → DynamicStructure.
+    pub fn set_enforce_structure_constraint(&mut self, enforce: bool) {
+        self.set_structure_evolution_mode(
+            crate::config::StructureEvolutionMode::from_enforce_constraint(enforce),
+        );
+    }
+
+    /// Sync typed mode from the legacy boolean (callers that assign the pub field).
+    pub fn sync_structure_evolution_mode(&mut self) {
+        self.structure_evolution_mode =
+            crate::config::StructureEvolutionMode::from_enforce_constraint(
+                self.enforce_structure_constraint,
+            );
+    }
+
+    #[inline]
+    pub fn apply_phi_updates(&self) -> bool {
+        self.structure_evolution_mode.apply_phi()
+    }
+
     pub fn new(params: SimParams) -> Self {
         let grid = Grid::new();
         let size = grid.width * grid.height;
@@ -141,6 +172,7 @@ impl Simulation {
             waste_budget: WasteBudgetState::default(),
             structure_provenance: None,
             membrane_label_tracer: None,
+            structure_evolution_mode: crate::config::StructureEvolutionMode::FixedGeometry,
             enforce_structure_constraint: true,
             d026_disable_a_normal_transport: false,
             d026_freeze_surface: false,
@@ -1955,7 +1987,8 @@ impl Simulation {
         let mut virtual_decay = 0.0;
         let v2 = self.params.equation_version.is_conservative_membrane_metabolism();
         let eta_phi = if v2 { self.params.eta_phi } else { 1.0 };
-        let apply_phi = !self.enforce_structure_constraint;
+        self.sync_structure_evolution_mode();
+        let apply_phi = self.apply_phi_updates();
         let need_lap = matches!(
             active_structural_mechanism(&self.params),
             Some(StructuralScalingMechanism::LocalCurvatureMaintenance)
@@ -2504,7 +2537,8 @@ impl Simulation {
         };
         let membrane_step =
             build_membrane_step(mass_m_before, pre_clamp_m, mass_m_after, evolution, &self.params);
-        let constraint_step = if self.enforce_structure_constraint {
+        let fixed_geometry = self.structure_evolution_mode.enforce_constraint();
+        let constraint_step = if fixed_geometry {
             build_constraint_step(virtual_production, virtual_decay)
         } else {
             let virtual_net = virtual_production - virtual_decay;
@@ -2516,7 +2550,7 @@ impl Simulation {
                 residual: 0.0,
             }
         };
-        let mass_phi_after = if self.enforce_structure_constraint {
+        let mass_phi_after = if fixed_geometry {
             mass_phi
         } else {
             field_mass(&self.grid, &self.fields.structure_next)
@@ -2524,14 +2558,14 @@ impl Simulation {
         let step_accounting = StepAccounting {
             structure: build_field_ledger(
                 mass_phi,
-                if self.enforce_structure_constraint {
+                if fixed_geometry {
                     0.0
                 } else {
                     virtual_production - virtual_decay
                 },
                 0.0,
                 0.0,
-                if self.enforce_structure_constraint {
+                if fixed_geometry {
                     mass_phi
                 } else {
                     mass_phi_after
@@ -2591,7 +2625,8 @@ impl Simulation {
         if self.structure_provenance.is_some() {
             let v2 = self.params.equation_version.is_conservative_membrane_metabolism();
             let eta_phi = if v2 { self.params.eta_phi } else { 1.0 };
-            let apply_phi = !self.enforce_structure_constraint;
+            self.sync_structure_evolution_mode();
+        let apply_phi = self.apply_phi_updates();
             let need_lap = matches!(
                 active_structural_mechanism(&self.params),
                 Some(StructuralScalingMechanism::LocalCurvatureMaintenance)
@@ -2694,12 +2729,13 @@ impl Simulation {
     }
 
     pub fn snapshot(&self) -> FieldSnapshot {
-        FieldSnapshot::from_sim(
+        FieldSnapshot::from_sim_with_structure_mode(
             &self.fields,
             &self.params,
             self.substep,
             self.sim_time,
             &self.detector,
+            self.structure_evolution_mode,
         )
     }
 
@@ -2716,7 +2752,17 @@ impl Simulation {
         self.sim_time = snap.sim_time;
         self.detector.turnover = snap.turnover.clone();
         self.detector.last_classification = snap.classification;
+        self.set_structure_evolution_mode(snap.structure_evolution_mode);
         Ok(())
+    }
+
+    /// Resume only when snapshot structure mode matches the pre-set target mode (D-061).
+    pub fn try_restore_snapshot_require_structure_mode(
+        &mut self,
+        snap: &FieldSnapshot,
+    ) -> Result<(), String> {
+        snap.can_resume_with_structure_mode(&self.params, self.structure_evolution_mode)?;
+        self.try_restore_snapshot(snap)
     }
 
     /// Restore fields and timing only; candidate params remain from `Simulation::new`.
