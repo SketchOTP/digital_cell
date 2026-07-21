@@ -60,6 +60,7 @@ mod d060;
 mod d061;
 mod d062;
 mod d063;
+mod d064;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -342,6 +343,10 @@ enum Commands {
     D063 {
         #[command(subcommand)]
         action: D063Commands,
+    },
+    D064 {
+        #[command(subcommand)]
+        action: D064Commands,
     },
 }
 
@@ -657,6 +662,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D061 { action } => run_d061(action)?,
         Commands::D062 { action } => run_d062(action)?,
         Commands::D063 { action } => run_d063(action)?,
+        Commands::D064 { action } => run_d064(action)?,
     }
     Ok(())
 }
@@ -3367,6 +3373,31 @@ fn run_d063(action: D063Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d063::run_pipeline(&out)?;
             println!(
                 "D-063 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D064Commands {
+    /// Connected-geometry coupled rejection and membrane-load decomposition.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d064")]
+        output: PathBuf,
+    },
+}
+
+fn run_d064(action: D064Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D064Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d064::run_pipeline(&out)?;
+            println!(
+                "D-064 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()
