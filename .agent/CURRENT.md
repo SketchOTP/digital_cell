@@ -14,6 +14,8 @@
 - Matched exponents: p_M≈2.00, p_T≈1.00 (`D058_RADIUS_EXPONENT_CONFOUNDED`)
 - Best global k_T≈1.435; viable band R6–R14 @10000 steps
 - Restoring: `NEUTRAL_SIZE_MANIFOLD` (Gates 5–6 skipped)
+- Ending commit: `6b84071`
+- Result tag: `D-059-size-membrane-area-architecture-review`
 - Artifacts: `digital-protocell/experiments/generated/d059` → `/mnt/storage1tb/.../d059`
 - Unrelated untracked/modified Cursor rules + AGENTS.md — leave uncommitted
 
