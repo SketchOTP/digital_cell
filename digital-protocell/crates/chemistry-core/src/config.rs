@@ -802,6 +802,12 @@ pub struct SimParams {
     /// D-050 fuel reference for activation schema 2.
     #[serde(default = "default_f_ref_activation")]
     pub f_ref_activation: f64,
+    /// D-053 exterior N/F conductance multiplier (≥1). Applies only to extracellular–extracellular faces.
+    #[serde(default = "default_m_ext")]
+    pub m_ext: f64,
+    /// D-053 membrane N/F attenuation multiplier (0 < m_β ≤ 1). Scales β_N and β_F together.
+    #[serde(default = "default_m_beta")]
+    pub m_beta: f64,
 }
 
 /// Validate governed v2 yields: 0 < η ≤ 1.
@@ -979,6 +985,14 @@ fn default_n_ref_activation() -> f64 {
 }
 
 fn default_f_ref_activation() -> f64 {
+    1.0
+}
+
+fn default_m_ext() -> f64 {
+    1.0
+}
+
+fn default_m_beta() -> f64 {
     1.0
 }
 
@@ -1180,6 +1194,8 @@ impl Default for SimParams {
             k_c_activation: default_k_c_activation(),
             n_ref_activation: default_n_ref_activation(),
             f_ref_activation: default_f_ref_activation(),
+            m_ext: default_m_ext(),
+            m_beta: default_m_beta(),
         }
     }
 }

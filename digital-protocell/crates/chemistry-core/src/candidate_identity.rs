@@ -8,7 +8,8 @@ use crate::config::{
 };
 use serde::{Deserialize, Serialize};
 
-/// Append transport-schema identity fragments (D-016 / D-041). Historical V1 + ρ_A=1 is silent.
+/// Append transport-schema identity fragments (D-016 / D-041 / D-053).
+/// Historical V1 + ρ_A=1 + m_ext=1 + m_beta=1 is silent.
 fn append_transport_schema_identity(s: &mut String, params: &SimParams) {
     if params.transport_schema_version != TRANSPORT_SCHEMA_VERSION_V1 {
         s.push_str(&format!(
@@ -23,6 +24,12 @@ fn append_transport_schema_identity(s: &mut String, params: &SimParams) {
         ));
     } else if (params.rho_a - 1.0).abs() > 0.0 {
         s.push_str(&format!(";rho_a={}", params.rho_a));
+    }
+    if (params.m_ext - 1.0).abs() > 0.0 {
+        s.push_str(&format!(";m_ext={}", params.m_ext));
+    }
+    if (params.m_beta - 1.0).abs() > 0.0 {
+        s.push_str(&format!(";m_beta={}", params.m_beta));
     }
 }
 
@@ -164,6 +171,7 @@ reactions_enabled={};phase_separation_enabled={};diffusion_enabled={};k_phi={};u
                 params.beta_f,
                 params.beta_w,
             ));
+            append_transport_schema_identity(&mut s, params);
             // Stage A Transport hashed only betas. Stage B MembraneDynamics appended
             // membrane rates when Stage B is enabled; later typed stages keep that
             // payload and append activation rates.

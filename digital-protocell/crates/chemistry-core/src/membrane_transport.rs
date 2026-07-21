@@ -31,13 +31,7 @@ pub fn face_geometry(phi_i: f64, phi_j: f64, membrane_i: f64, membrane_j: f64) -
 }
 
 pub fn permeability(species: TransportSpecies, geometry: FaceGeometry, params: &SimParams) -> f64 {
-    let beta = match species {
-        TransportSpecies::Catalyst => params.beta_c,
-        TransportSpecies::Activated => params.beta_a,
-        TransportSpecies::Nutrient => params.beta_n,
-        TransportSpecies::Fuel => params.beta_f,
-        TransportSpecies::Waste => params.beta_w,
-    };
+    let beta = species_beta(species, params);
     (-beta * geometry.membrane * geometry.interface).exp()
 }
 
@@ -45,6 +39,8 @@ pub fn permeability(species: TransportSpecies, geometry: FaceGeometry, params: &
 ///
 /// D-041 schema 3: for Activated only, multiply by frozen species constant `ρ_A`
 /// on φ-crossing faces: Π_A = ρ_A exp(−β_A θ_S). Historical default is ρ_A = 1.
+///
+/// D-053: N/F use β'_X = m_β β_X (co-scaled attenuation).
 pub fn permeability_surface_occupancy(
     species: TransportSpecies,
     phi_i: f64,
@@ -58,13 +54,7 @@ pub fn permeability_surface_occupancy(
     if i_inside == j_inside {
         return 1.0;
     }
-    let beta = match species {
-        TransportSpecies::Catalyst => params.beta_c,
-        TransportSpecies::Activated => params.beta_a,
-        TransportSpecies::Nutrient => params.beta_n,
-        TransportSpecies::Fuel => params.beta_f,
-        TransportSpecies::Waste => params.beta_w,
-    };
+    let beta = species_beta(species, params);
     // ponytail: single-cell |∇H| proxy when full geometry is unavailable at transport faces.
     let delta_i = cell_delta_estimate(phi_i, params.delta_floor);
     let delta_j = cell_delta_estimate(phi_j, params.delta_floor);
@@ -81,6 +71,45 @@ pub fn permeability_surface_occupancy(
     } else {
         mature
     }
+}
+
+/// Effective membrane attenuation coefficient (D-053 scales N/F by `m_beta`).
+#[inline]
+pub fn species_beta(species: TransportSpecies, params: &SimParams) -> f64 {
+    let base = match species {
+        TransportSpecies::Catalyst => params.beta_c,
+        TransportSpecies::Activated => params.beta_a,
+        TransportSpecies::Nutrient => params.beta_n,
+        TransportSpecies::Fuel => params.beta_f,
+        TransportSpecies::Waste => params.beta_w,
+    };
+    match species {
+        TransportSpecies::Nutrient | TransportSpecies::Fuel => base * params.m_beta.max(0.0),
+        _ => base,
+    }
+}
+
+/// Interior indicator H(φ): 1 inside (φ≥0.5), else 0.
+#[inline]
+pub fn interior_heaviside(phi: f64) -> f64 {
+    if phi >= 0.5 {
+        1.0
+    } else {
+        0.0
+    }
+}
+
+/// Exterior–exterior face weight g_ext = (1−H_i)(1−H_j). Symmetric in endpoints.
+#[inline]
+pub fn exterior_face_weight(phi_i: f64, phi_j: f64) -> f64 {
+    (1.0 - interior_heaviside(phi_i)) * (1.0 - interior_heaviside(phi_j))
+}
+
+/// D-053 exterior N/F diffusivity multiplier: 1+(m_ext−1)g_ext. Identity when m_ext=1.
+#[inline]
+pub fn exterior_resource_diffusivity_factor(phi_i: f64, phi_j: f64, m_ext: f64) -> f64 {
+    let m = m_ext.max(0.0);
+    1.0 + (m - 1.0) * exterior_face_weight(phi_i, phi_j)
 }
 
 /// Mature-membrane A permeability at occupancy θ (schema-independent factor exp(−β_A θ)).
@@ -131,7 +160,15 @@ pub fn face_diffusivity(
     } else {
         permeability(species, geometry, params)
     };
-    base * perm
+    let mut d = base * perm;
+    // D-053: exterior–exterior N/F conductance only; C/A/W and interior faces unchanged.
+    if matches!(
+        species,
+        TransportSpecies::Nutrient | TransportSpecies::Fuel
+    ) {
+        d *= exterior_resource_diffusivity_factor(phi_i, phi_j, params.m_ext);
+    }
+    d
 }
 
 /// Signed flux from cell i to cell j across one face.

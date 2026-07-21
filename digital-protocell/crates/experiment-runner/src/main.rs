@@ -50,6 +50,7 @@ mod d049;
 mod d050;
 mod d051;
 mod d052;
+mod d053;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -292,6 +293,10 @@ enum Commands {
     D052 {
         #[command(subcommand)]
         action: D052Commands,
+    },
+    D053 {
+        #[command(subcommand)]
+        action: D053Commands,
     },
 }
 
@@ -597,6 +602,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D050 { action } => run_d050(action)?,
         Commands::D051 { action } => run_d051(action)?,
         Commands::D052 { action } => run_d052(action)?,
+        Commands::D053 { action } => run_d053(action)?,
     }
     Ok(())
 }
@@ -3029,6 +3035,35 @@ fn run_d052(action: D052Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d052::run_pipeline(&out)?;
             println!(
                 "D-052 pipeline primary={} stage_e={} -> {}",
+                result["primary_conclusion"],
+                result["stage_e_status"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D053Commands {
+    /// Bounded combined exterior + membrane N/F delivery repair (Gates 0–14).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d053")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d053_artifact_path(path: &Path) -> PathBuf {
+    resolve_d052_artifact_path(path)
+}
+
+fn run_d053(action: D053Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D053Commands::Pipeline { output } => {
+            let out = resolve_d053_artifact_path(&output);
+            let result = d053::run_pipeline(&out)?;
+            println!(
+                "D-053 pipeline primary={} stage_e={} -> {}",
                 result["primary_conclusion"],
                 result["stage_e_status"],
                 out.join("manifest.json").display()
