@@ -18,3 +18,4 @@ This file is specifically for the operators use. It keeps record of what the AI 
 - 2026-07-21 | D-062 | event:tag | D-062-structural-maintenance-decay-review | commits:275ced5,02a79fa,+route seal
 
 - 2026-07-21 | D-063 | event:route_decision | conclusion:D063_CONNECTED_MEMBRANE_SHADOW_REPAIR_FAILURE | note:static connected-area capacity qualified; coupled shadow repair not qualified; morphogenesis/V15 unauthorized
+- 2026-07-21 | event:directive_complete | id:D-064 | conclusion:D064_STATIC_COUPLED_RESOURCE_METRIC_DEFECT | tag:D-064-connected-geometry-coupled-failure-audit | note:Route A — repair canonical χ before topology rejection
