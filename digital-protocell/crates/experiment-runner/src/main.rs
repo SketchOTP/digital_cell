@@ -52,6 +52,7 @@ mod d051;
 mod d052;
 mod d053;
 mod d055;
+mod d056;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -302,6 +303,10 @@ enum Commands {
     D055 {
         #[command(subcommand)]
         action: D055Commands,
+    },
+    D056 {
+        #[command(subcommand)]
+        action: D056Commands,
     },
 }
 
@@ -609,6 +614,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D052 { action } => run_d052(action)?,
         Commands::D053 { action } => run_d053(action)?,
         Commands::D055 { action } => run_d055(action)?,
+        Commands::D056 { action } => run_d056(action)?,
     }
     Ok(())
 }
@@ -3101,6 +3107,35 @@ fn run_d055(action: D055Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-055 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["selected_route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D056Commands {
+    /// Waste-coupled resource carrier architecture review (Gates 0–5 Phase A; Phase B gated).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d056")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d056_artifact_path(path: &Path) -> PathBuf {
+    resolve_d053_artifact_path(path)
+}
+
+fn run_d056(action: D056Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D056Commands::Pipeline { output } => {
+            let out = resolve_d056_artifact_path(&output);
+            let result = d056::run_pipeline(&out)?;
+            println!(
+                "D-056 pipeline primary={} phase_b={} -> {}",
+                result["primary_conclusion"],
+                result["phase_b_authorized"],
                 out.join("manifest.json").display()
             );
         }

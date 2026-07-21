@@ -427,3 +427,9 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d053.rs` — Gate5/8 wired to shared evaluator
 - `docs/d055_strict_resource_architecture_review.md` — `D055_PASSIVE_RESOURCE_TRANSPORT_ARCHITECTURE_INSUFFICIENT` Route_P
 - `digital-protocell/experiments/generated/d055/` — preservation through route_decision artifacts
+## D-056 waste-coupled resource carrier
+- `digital-protocell/crates/chemistry-core/src/d056_analysis.rs` — carrier law, conservation, capacity, ID helpers
+- `digital-protocell/crates/chemistry-core/tests/d056_tests.rs` — focused suite (9)
+- `digital-protocell/crates/experiment-runner/src/d056.rs` — Phase A Gates 0–5 stop-on-fail pipeline
+- `docs/d056_waste_coupled_resource_carrier.md` — `D056_CARRIER_KINETICS_NOT_IDENTIFIABLE`
+- `digital-protocell/experiments/generated/d056/` — preservation through parameter_identification artifacts

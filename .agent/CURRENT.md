@@ -1,23 +1,23 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260721-d055-strict-resource-gate-passive-architecture-review
-- Project directive: D-055
-- Goal: Unify D-053 resource gates; strict replay; resume passive architecture review
+- ID: D-20260721-d056-waste-coupled-resource-carrier
+- Project directive: D-056
+- Goal: Observer-only waste-coupled N/F↔W antiporter review
 - Status: done
-- Acceptance: met — primary `D055_PASSIVE_RESOURCE_TRANSPORT_ARCHITECTURE_INSUFFICIENT` Route_P
-- Touched files: d053_analysis/evaluator; d053.rs; d055_*; experiments/generated/d055; docs/d055_*; .agent/*
-- Next action: next directive = carrier-mediated import observer review; next_execution_started=false
+- Acceptance: met — primary `D056_CARRIER_KINETICS_NOT_IDENTIFIABLE`
+- Touched files: d056_analysis/tests; experiment-runner/d056; docs/d056_*; experiments/generated/d056; .agent/*
+- Next action: next directive = carrier-rate portability / alternate conservative import review; next_execution_started=false
 
 ## Repo facts needed now
-- Strict Gate5/8 in d053_analysis::evaluate_gate5/8; short_horizon_relaxed removed
-- Strict replay: D055_D053_STRICT_REPLAY_CONFIRMED_NOT_FOUND; retains D053_BOUNDED_DELIVERY_REPAIR_NOT_FOUND
-- Control E χ≈0.90 → PASSIVE_RESOURCE_DELIVERY_HARD_BOUND_FAIL; frontier incompatible
-- V14 remains EXPERIMENTAL_FAILED; not production
+- Gates 0–2 PASS (preservation, conservation, W capacity)
+- Gate 3 FAIL: k_T★ ~0.005–0.95 across training; no portable (K_NF,K_W,k_T)
+- Phase B not authorized; no V15; no production chemistry
+- Ordinary passive import remains closed; Stage E BLOCKED
 
 ## Last validation
-- Command: cargo test d055/d053/d054 32/32; D055_MAX_ACCEPTED=10000 D055_DIAG_HORIZON=2500 d055 pipeline release
-- Result: primary=D055_PASSIVE_RESOURCE_TRANSPORT_ARCHITECTURE_INSUFFICIENT route=Route_P
+- Command: cargo test d056_tests 9/9; D056_MAX_ACCEPTED=2500 d056 pipeline release
+- Result: primary=D056_CARRIER_KINETICS_NOT_IDENTIFIABLE
 
 ## Open blockers
 - Stage E BLOCKED_NOT_RECOVERED; Phase1 PARTIAL; production REQUIRES_REMEDIATION
