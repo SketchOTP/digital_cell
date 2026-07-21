@@ -56,6 +56,7 @@ mod d056;
 mod d057;
 mod d058;
 mod d059;
+mod d060;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -322,6 +323,10 @@ enum Commands {
     D059 {
         #[command(subcommand)]
         action: D059Commands,
+    },
+    D060 {
+        #[command(subcommand)]
+        action: D060Commands,
     },
 }
 
@@ -633,6 +638,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D057 { action } => run_d057(action)?,
         Commands::D058 { action } => run_d058(action)?,
         Commands::D059 { action } => run_d059(action)?,
+        Commands::D060 { action } => run_d060(action)?,
     }
     Ok(())
 }
@@ -3239,6 +3245,35 @@ fn run_d059(action: D059Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d059::run_pipeline(&out)?;
             println!(
                 "D-059 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D060Commands {
+    /// Structural growth law and resource-coupled size feedback (observer/shadow-only).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d060")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d060_artifact_path(path: &Path) -> PathBuf {
+    resolve_d059_artifact_path(path)
+}
+
+fn run_d060(action: D060Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D060Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d060::run_pipeline(&out)?;
+            println!(
+                "D-060 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()
