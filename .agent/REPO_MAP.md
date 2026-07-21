@@ -392,3 +392,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d051.rs` — Gates −1–10 diagnostic pipeline
 - `docs/d051_coupled_activation_throughput_audit.md` — completion (`D051_RESOURCE_THROUGHPUT_LIMIT`)
 - `digital-protocell/experiments/generated/d051/` — governed artifacts + manifest
+
+## D-052 resource delivery resistance
+- `digital-protocell/crates/chemistry-core/src/d052_analysis.rs` — ledgers/resistance/route classifiers
+- `digital-protocell/crates/chemistry-core/tests/d052_tests.rs` — focused suite (13)
+- `digital-protocell/crates/experiment-runner/src/d052.rs` — Gates 0–12 diagnostic pipeline
+- `docs/d052_resource_delivery_resistance_audit.md` — completion (`D052_MIXED_RESOURCE_DELIVERY_LIMIT`)
+- `digital-protocell/experiments/generated/d052/` — governed artifacts + manifest

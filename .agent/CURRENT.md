@@ -1,25 +1,25 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260720-d051-coupled-activation-throughput-bottleneck-audit
-- Project directive: D-051
-- Goal: Diagnose coupled activation throughput bottleneck (diagnostic only)
+- ID: D-20260720-2335-d052-resource-delivery-resistance-decomposition
+- Project directive: D-052
+- Goal: Decompose N/F delivery resistance preventing environmental resources from sustaining coupled activation (diagnostic only)
 - Status: done
-- Acceptance: met — primary `D051_RESOURCE_THROUGHPUT_LIMIT`
-- Touched files: d051_analysis, d051_tests, d051.rs, main.rs, docs/d051_*, experiments/generated/d051, .agent/*
-- Next action: N/F delivery / permeability / reservoir / activation-yield review; next_execution_started=false
+- Acceptance: met — primary `D052_MIXED_RESOURCE_DELIVERY_LIMIT`
+- Touched files: d052_analysis, d052_tests, d052.rs, main.rs, docs/d052_*, experiments/generated/d052, .agent/*
+- Next action: bounded combined exterior-near-interface + membrane-crossing delivery repair; next_execution_started=false
 
 ## Repo facts needed now
-- D-050 sealed 0b0fb89 / D-050-catalyst-saturating-activation-fail
-- Gross activation rises with V_A; free A ~3% until healthy N+F held
-- Volume activation: no hard min(N,F) extent clip; rate-law soft + positivity
-- Max control with healthy N/F: COUPLED_ACTIVATION_TOPOLOGY_CAPABLE
-- Record: CATALYST_SATURATING_CAPACITY_REPAIR_REJECTED
+- Start: e08075a / D-051-coupled-activation-throughput-audit
+- Resistance: exterior ≈43% + membrane ≈37%; no single-segment dominance
+- Reservoir / NF attenuation bypass / diffusion 5× do not restore A ≥50%
+- Healthy interior N+F still rescues A≈1.09; joint resource limit
+- Record: ACTIVATION_SUPPLY_LAW_NOT_CURRENT_REPAIR_TARGET
 
 ## Last validation
-- Command: cargo test d051_tests 13/13; D051_MAX_ACCEPTED=10000 pipeline
-- Result: primary=D051_RESOURCE_THROUGHPUT_LIMIT
+- Command: cargo test d052_tests 13/13; D052_MAX_ACCEPTED=10000 pipeline
+- Result: primary=D052_MIXED_RESOURCE_DELIVERY_LIMIT
 
 ## Open blockers
 - Stage E BLOCKED_NOT_RECOVERED; Phase1 PARTIAL; production REQUIRES_REMEDIATION
-- Do not add C_star/buffer/product inhibition/new activation law from D-051 alone
+- Do not alter activation until combined delivery resistance addressed

@@ -78,3 +78,4 @@ Append-only repo-specific lessons. Format:
 - 2026-07-20 | area:activation/d050 | lesson:Schema2 V_A scales activation extent but coupled free-A retention stays ~3% across 0.75–4× fitted V_A | evidence:experiments/generated/d050/v_a_screen/result.json
 
 - 2026-07-20 | area:activation/d051 | lesson:Coupled schema2 V_A raises gross activation but free A stays ~3% until healthy N+F held; Route R resource throughput | evidence:experiments/generated/d051/resource_controls/result.json
+2026-07-20 | area:d052-delivery | lesson:Coupled N/F bottleneck is mixed exterior-near-membrane + membrane-crossing resistance; reservoir/attenuation-bypass alone do not restore A | evidence:docs/d052_resource_delivery_resistance_audit.md
