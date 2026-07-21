@@ -49,6 +49,7 @@ mod d048;
 mod d049;
 mod d050;
 mod d051;
+mod d052;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -287,6 +288,10 @@ enum Commands {
     D051 {
         #[command(subcommand)]
         action: D051Commands,
+    },
+    D052 {
+        #[command(subcommand)]
+        action: D052Commands,
     },
 }
 
@@ -591,6 +596,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D049 { action } => run_d049(action)?,
         Commands::D050 { action } => run_d050(action)?,
         Commands::D051 { action } => run_d051(action)?,
+        Commands::D052 { action } => run_d052(action)?,
     }
     Ok(())
 }
@@ -2994,6 +3000,35 @@ fn run_d051(action: D051Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d051::run_pipeline(&out)?;
             println!(
                 "D-051 pipeline primary={} stage_e={} -> {}",
+                result["primary_conclusion"],
+                result["stage_e_status"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D052Commands {
+    /// Nutrient/fuel delivery resistance decomposition (Gates 0–12).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d052")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d052_artifact_path(path: &Path) -> PathBuf {
+    resolve_d051_artifact_path(path)
+}
+
+fn run_d052(action: D052Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D052Commands::Pipeline { output } => {
+            let out = resolve_d052_artifact_path(&output);
+            let result = d052::run_pipeline(&out)?;
+            println!(
+                "D-052 pipeline primary={} stage_e={} -> {}",
                 result["primary_conclusion"],
                 result["stage_e_status"],
                 out.join("manifest.json").display()
