@@ -61,6 +61,7 @@ mod d061;
 mod d062;
 mod d063;
 mod d064;
+mod d065;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -347,6 +348,10 @@ enum Commands {
     D064 {
         #[command(subcommand)]
         action: D064Commands,
+    },
+    D065 {
+        #[command(subcommand)]
+        action: D065Commands,
     },
 }
 
@@ -663,6 +668,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D062 { action } => run_d062(action)?,
         Commands::D063 { action } => run_d063(action)?,
         Commands::D064 { action } => run_d064(action)?,
+        Commands::D065 { action } => run_d065(action)?,
     }
     Ok(())
 }
@@ -3398,6 +3404,31 @@ fn run_d064(action: D064Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d064::run_pipeline(&out)?;
             println!(
                 "D-064 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D065Commands {
+    /// Canonical resource-sufficiency requalification and topology-necessity audit.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d065")]
+        output: PathBuf,
+    },
+}
+
+fn run_d065(action: D065Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D065Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d065::run_pipeline(&out)?;
+            println!(
+                "D-065 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()
