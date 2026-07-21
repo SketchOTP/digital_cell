@@ -479,3 +479,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d061.rs` — Gates 0–11 fixed/dynamic shadow campaign and artifacts
 - `docs/d061_structural_constraint_execution_repair.md` — Route G runaway growth after DynamicStructure repair
 - `digital-protocell/experiments/generated/d061/` → `/mnt/storage1tb/.../d061`
+
+## D-062 structural maintenance/decay review
+- `digital-protocell/crates/chemistry-core/src/d062_analysis.rs` — long-horizon baseline/scaling/candidate/route classifiers
+- `digital-protocell/crates/chemistry-core/tests/d062_tests.rs` — decay parity, scalar trend, candidate, route suite
+- `digital-protocell/crates/experiment-runner/src/d062.rs` — Gates −1–11 shadow maintenance campaign
+- `docs/d062_structural_maintenance_decay_review.md` — Route N: no local maintenance law
+- `digital-protocell/experiments/generated/d062/` → `/mnt/storage1tb/.../d062`
