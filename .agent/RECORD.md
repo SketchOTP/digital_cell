@@ -16,3 +16,5 @@ This file is specifically for the operators use. It keeps record of what the AI 
 - 2026-07-21 | D-059 | milestone: Route L `D059_EXTERNAL_CARRIER_SIZE_LIMIT_NO_RESTORING_BASIN` | tag:D-059-size-membrane-area-architecture-review | commit:6b84071 | note:global k_T~1.43 viable R6–R14@10k; NEUTRAL_SIZE_MANIFOLD; matched p_M~2/p_T~1 confounds D-058 7.81/1.07
 - 2026-07-21 | D-062 | event:route_selected | Route_N D062_NO_LOCAL_STRUCTURAL_MAINTENANCE_LAW | evidence:experiments/generated/d062/route_decision/; long_horizon_baseline @10k | note:persistent runaway; flat m_d★; C no crossing; no V15; Stage E BLOCKED
 - 2026-07-21 | D-062 | event:tag | D-062-structural-maintenance-decay-review | commits:275ced5,02a79fa,+route seal
+
+- 2026-07-21 | D-063 | event:route_decision | conclusion:D063_CONNECTED_MEMBRANE_SHADOW_REPAIR_FAILURE | note:static connected-area capacity qualified; coupled shadow repair not qualified; morphogenesis/V15 unauthorized

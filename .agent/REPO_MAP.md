@@ -486,3 +486,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d062.rs` — Gates −1–11 shadow maintenance campaign
 - `docs/d062_structural_maintenance_decay_review.md` — Route N: no local maintenance law
 - `digital-protocell/experiments/generated/d062/` → `/mnt/storage1tb/.../d062`
+
+## D-063 connected membrane architecture
+- `digital-protocell/crates/chemistry-core/src/d063_analysis.rs` — topology flood-fill, geometry families A–E, area/material/bootstrap/route
+- `digital-protocell/crates/chemistry-core/tests/d063_tests.rs` — connectivity/area/material/carrier/route suite
+- `digital-protocell/crates/experiment-runner/src/d063.rs` — Gates −1–12 shadow pipeline
+- `docs/d063_connected_membrane_architecture_review.md` — `D063_CONNECTED_MEMBRANE_SHADOW_REPAIR_FAILURE`
+- `digital-protocell/experiments/generated/d063/` → `/mnt/storage1tb/.../d063`

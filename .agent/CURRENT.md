@@ -1,28 +1,27 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260721-d062-long-horizon-structural-maintenance-decay
-- Project directive: D-062
-- Goal: Long-horizon structural maintenance/decay review under DynamicStructure
+- ID: D-20260721-d063-environmentally-connected-membrane-invagination-architecture
+- Project directive: D-063
+- Goal: Environmentally connected membrane invagination architecture review (shadow-only)
 - Status: done
-- Acceptance: met — Route N `D062_NO_LOCAL_STRUCTURAL_MAINTENANCE_LAW`
-- Touched files: d062_analysis/tests, experiment-runner/d062, main.rs, lib.rs, docs/d062_*, experiments/generated/d062, .agent/*
-- Next action: next directive closes external-carrier/small-size route; next_execution_started=false
+- Acceptance: met — `D063_CONNECTED_MEMBRANE_SHADOW_REPAIR_FAILURE`
+- Touched files: d063_analysis/tests, experiment-runner/d063, main.rs, lib.rs, docs/d063_*, experiments/generated/d063, .agent/*
+- Next action: diagnose Gate-8 shadow rejection under connected geometry; next_execution_started=false
 
 ## Repo facts needed now
-- Primary: `D062_NO_LOCAL_STRUCTURAL_MAINTENANCE_LAW` (Route N)
-- Baseline @10k: `EXISTING_STRUCTURAL_PERSISTENT_RUNAWAY_GROWTH`
-- Decay execution: OK (not Route X)
-- Scalar m_d: span~1.28 but flat vs R → not identifiable for restoring crossing
-- Candidate C: no restoring crossing on preregistered grid
+- Primary: `D063_CONNECTED_MEMBRANE_SHADOW_REPAIR_FAILURE`
+- Static capacity: p_A≈1; radial α(R22)≈2.66; χ≫1.05 under FixedGeometry assay
+- Shadow: radial@2500 rejected after 1076; A≈0.40; S 368→227
+- Bootstrap on paper: FEASIBLE with seed-affordable increments (R_i≈8.4)
+- Closed vesicles: environmental carrier area = 0
 - Frozen k_T: 1.4346157818803311 (shadow only)
-- Artifacts: `experiments/generated/d062` → `/mnt/storage1tb/.../d062` (archive_5k preserved)
+- Artifacts: `experiments/generated/d063` → `/mnt/storage1tb/.../d063`
 
 ## Last validation
-- Command: `cargo test -p chemistry-core --test d062_tests`; `D062_MAX_ACCEPTED=10000` pipeline
-- Result: 12/12 PASS; primary Route N
+- Command: `cargo test -p chemistry-core --test d063_tests`; `D063_MAX_ACCEPTED=2500 D063_SKIP_LATE_GATES=1` pipeline
+- Result: 11/11 PASS; primary ShadowRepairFailure
 
 ## Open blockers
-- External-carrier/small-size route exhausted without local structural maintenance law
+- Coupled shadow repair under connected geometry not qualified
 - Stage E remains BLOCKED_NOT_RECOVERED
-- Mimir validation_run allowlist rejected package-filtered cargo test; local tests used

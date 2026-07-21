@@ -100,3 +100,5 @@ Append-only repo-specific lessons. Format:
 - 2026-07-21 | area:d061/size | lesson:With DynamicStructure and frozen k_T≈1.435, unmodified interface-limited turnover grows at every R4–R24 (POSITIVE_ALL_RADII / Route G) | evidence:experiments/generated/d061/dynamic_drive_surface/; route_decision/
 - 2026-07-21 | area:d062/structure-decay | lesson:At DynamicStructure+frozen k_T, G/L both ~R^1 (matched); m_d★~14 is flat vs R so global decay scale cannot create restoring basin | evidence:experiments/generated/d062/required_multiplier/; long_horizon_baseline/
 - 2026-07-21 | area:d062/horizon | lesson:POSITIVE_ALL_RADII persists from 1k through 10k accepted steps; late dR/dt shrinks but does not reverse | evidence:experiments/generated/d062/long_horizon_baseline/; archive_5k/
+
+- 2026-07-21 | area:d063_connected_membrane | lesson:Explicit exterior-connected invaginations raise FixedGeometry carrier throughput with p_A≈1 and χ>1.05, but closed vesicles contribute zero environmental area; coupled shadow with frozen k_T still fails A-retention/rejection before architecture qualification. | evidence:experiments/generated/d063/manifest.json
