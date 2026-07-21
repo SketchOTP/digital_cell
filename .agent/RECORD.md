@@ -12,3 +12,4 @@ This file is specifically for the operators use. It keeps record of what the AI 
 - 2026-07-21 | D-053 | sealed source 76c0898; corrected primary D053_BOUNDED_DELIVERY_REPAIR_NOT_FOUND; V14_SCHEMA3_MIXED_RESOURCE_DELIVERY_EXPERIMENTAL_FAILED; tag D-053-combined-resource-delivery-fail
 - 2026-07-21 | D-054 | D054_D053_PROVENANCE_RERUN_DIVERGED; Gates1-10 not run; Stage E remains BLOCKED_NOT_RECOVERED
 - 2026-07-21 | event:directive_complete | id:D-058 | conclusion:D058_CARRIER_SURFACE_VOLUME_CAPACITY_LIMIT | route:V | tag:D-058-corrected-carrier-normalization-audit | commits:03bc409,2762b99,428c792 | note:normalization repaired; corrected k_T★ still nonportable; S/V limit after corrected exponents
+- 2026-07-21 | event:storage_archive | id:D-20260721-1049-archive-bulk-to-storage1tb | dest:/mnt/storage1tb/cache/project-artifacts/digital_cell | freed_approx:6G | note:symlink-preserving move of target/cocoindex/untracked generated

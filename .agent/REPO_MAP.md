@@ -446,3 +446,8 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d058.rs` — Gates −1…9 observer/shadow pipeline
 - `docs/d058_corrected_carrier_normalization_audit.md` — `D058_CARRIER_SURFACE_VOLUME_CAPACITY_LIMIT` Route V
 - `digital-protocell/experiments/generated/d058/` — artifacts + manifest
+
+## Storage archive (1TB)
+- `docs/storage_archive_policy.md` — NVMe vs `/mnt/storage1tb` policy
+- `.cursor/rules/06-storage-archive.mdc` — always-on agent reminder
+- `/mnt/storage1tb/cache/project-artifacts/digital_cell/` — target, cocoindex, experiments/generated archive + manifest

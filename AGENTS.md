@@ -7,6 +7,15 @@
 - Do not hardcode another repo's product, stack, or identity
 - Keep paths platform-neutral when the agent may run remotely
 
+## Disk / 1TB archive
+
+Root NVMe fills with regenerable bulk. Archive mount: `/mnt/storage1tb` (`~/storage1tb`).
+
+- Policy: `docs/storage_archive_policy.md` and `.cursor/rules/06-storage-archive.mdc`
+- digital_cell artifacts: `/mnt/storage1tb/cache/project-artifacts/digital_cell/` (symlinks preserve repo paths)
+- Migrate archivable folders (cargo `target`, untracked `experiments/generated/*`, indexes) to the 1TB drive; do not leave large regenerable history only on `/`
+- Never move tracked git files or `.agent` governance off the checkout without an explicit path-preserving plan
+
 ## Operating Mode
 
 Use Ponytail discipline: do the least work that is actually correct.

@@ -1,0 +1,46 @@
+---
+description: Archive regenerable bulk to /mnt/storage1tb; never fill the NVMe root with experiment/build caches
+alwaysApply: true
+---
+
+# Storage archive (1TB)
+
+Root NVMe (`/`) is small. Attached archive is **`/mnt/storage1tb`** (also `~/storage1tb`).
+
+## Before writing large outputs
+
+1. Prefer paths under `/mnt/storage1tb/cache/project-artifacts/<project>/` for regenerable bulk.
+2. In active checkouts, keep **symlinks** at the original repo paths so tools keep working.
+3. Never `git add` archive bulk, cargo `target/`, or `.cocoindex_code/`.
+
+## Safe to archive (move + symlink)
+
+| Kind | Examples |
+|------|----------|
+| Build caches | `**/target/`, `dist/`, `build/`, `.next/` |
+| Experiment history | `**/experiments/generated/<run>/` when **fully untracked** |
+| Indexes | `.cocoindex_code/`, large local DBs |
+| Stale whole projects | `~/.local/bin/archive-stale-projects.sh` → `/mnt/storage1tb/archived-projects/` |
+
+## Do not move off NVMe
+
+- Source trees, `.git/`, `.agent/` governance, tracked git files
+- Secrets / `.env`
+- Anything required for an *immediate* offline build if the 1TB disk is unmounted — unless a symlink already exists and you accept that dependency
+
+## Mixed tracked/untracked dirs
+
+If a generated folder has **any** tracked files: copy full tree to archive, delete only untracked locals, leave tracked files in place. Do **not** replace the directory with a symlink.
+
+## digital_cell locations
+
+- Archive root: `/mnt/storage1tb/cache/project-artifacts/digital_cell/`
+- Manifest: `ARCHIVE_MANIFEST.txt` + `README.md` there
+- Policy doc: `docs/storage_archive_policy.md`
+
+## If disk is nearly full
+
+1. `df -h / /mnt/storage1tb`
+2. Archive or `cargo clean` rebuildable caches
+3. Move untracked experiment artifacts; keep access via symlink or archive path
+4. Log what moved in the archive manifest

@@ -1,7 +1,9 @@
 /target/
 digital-protocell/target/
+digital-protocell/target
 **/*.rs.bk
 .cocoindex_code/
+.cocoindex_code
 .serena/cache/
 experiments/generated/
 .DS_Store
