@@ -79,3 +79,8 @@ Append-only repo-specific lessons. Format:
 
 - 2026-07-20 | area:activation/d051 | lesson:Coupled schema2 V_A raises gross activation but free A stays ~3% until healthy N+F held; Route R resource throughput | evidence:experiments/generated/d051/resource_controls/result.json
 2026-07-20 | area:d052-delivery | lesson:Coupled N/F bottleneck is mixed exterior-near-membrane + membrane-crossing resistance; reservoir/attenuation-bypass alone do not restore A | evidence:docs/d052_resource_delivery_resistance_audit.md
+- 2026-07-21 | area:membrane_transport | lesson:m_ext scales only extracellular-extracellular N/F faces; m_beta co-scales beta_n/beta_f; defaults 1.0 preserve Stage A hashes | evidence:digital-protocell/crates/chemistry-core/src/membrane_transport.rs
+- 2026-07-21 | area:d053 | lesson:At Stage A band-edge m_beta~0.578 and m_ext=4, chi rises ~0.32→0.47 but A retention stays ~5% at 10k | evidence:digital-protocell/experiments/generated/d053/healthy_attractor/result.json
+
+- 2026-07-21 | area:d053-seal | lesson:Sealed 76c0898 Gate5 rejects χ-rise-only candidates; informal run had labeled same metrics pass | evidence:experiments/generated/d054/d053_seal/result.json
+- 2026-07-21 | area:d053-gate8 | lesson:Informal Gate8 PASS used short_horizon_relaxed χ≥0.20; measured χ≈0.29–0.53 never met stated 1.05 | evidence:experiments/generated/d053_prerun_backup/*/fixed_compartment/result.json
