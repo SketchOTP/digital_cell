@@ -512,6 +512,307 @@ pub fn exterior_factor_at(phi_i: f64, phi_j: f64, m_ext: f64) -> f64 {
     exterior_resource_diffusivity_factor(phi_i, phi_j, m_ext)
 }
 
+// ---------------------------------------------------------------------------
+// Canonical D-053 Gate 5 / Gate 8 evaluator (D-055: one shared contract)
+// ---------------------------------------------------------------------------
+
+/// Minimum final-window A retention for provisional Gate 5 admission.
+pub const D053_GATE5_A_RETENTION_MIN: f64 = 0.50;
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
+pub enum HorizonClass {
+    /// Full qualification horizon — may produce PASS.
+    Full,
+    /// Quick / smoke horizon — never qualifies a candidate.
+    QuickDiagnostic,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
+pub enum Gate5Verdict {
+    Pass,
+    FailResourceSufficiency,
+    FailACapacity,
+    FailIncompleteEvidence,
+    FailChecklist,
+    DiagnosticOnly,
+}
+
+impl Gate5Verdict {
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Pass => "PASS",
+            Self::FailResourceSufficiency => "FAIL_RESOURCE_SUFFICIENCY",
+            Self::FailACapacity => "FAIL_A_CAPACITY",
+            Self::FailIncompleteEvidence => "FAIL_INCOMPLETE_EVIDENCE",
+            Self::FailChecklist => "FAIL_CHECKLIST",
+            Self::DiagnosticOnly => "DIAGNOSTIC_ONLY",
+        }
+    }
+
+    pub const fn admits_candidate(self) -> bool {
+        matches!(self, Self::Pass)
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
+pub enum Gate8Verdict {
+    Pass,
+    FailResourceSufficiency,
+    FailRetention,
+    FailTransportDirection,
+    FailRadiusScaling,
+    FailIncompleteEvidence,
+    FailChecklist,
+    DiagnosticOnly,
+}
+
+impl Gate8Verdict {
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Pass => "PASS",
+            Self::FailResourceSufficiency => "FAIL_RESOURCE_SUFFICIENCY",
+            Self::FailRetention => "FAIL_RETENTION",
+            Self::FailTransportDirection => "FAIL_TRANSPORT_DIRECTION",
+            Self::FailRadiusScaling => "FAIL_RADIUS_SCALING",
+            Self::FailIncompleteEvidence => "FAIL_INCOMPLETE_EVIDENCE",
+            Self::FailChecklist => "FAIL_CHECKLIST",
+            Self::DiagnosticOnly => "DIAGNOSTIC_ONLY",
+        }
+    }
+
+    pub const fn is_pass(self) -> bool {
+        matches!(self, Self::Pass)
+    }
+}
+
+/// Per-branch evidence for Gate 5 (analytic or restored).
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq)]
+pub struct Gate5BranchEvidence {
+    pub chi_n: f64,
+    pub chi_f: f64,
+    pub activation_meets_a_demand: bool,
+    pub a_retention_not_monotone_declining: bool,
+    pub final_a_retention: f64,
+    pub final_a_retention_slope: f64,
+    pub p_production_active: bool,
+    pub net_s_decline_arrested: bool,
+    pub n_not_exhausted: bool,
+    pub f_not_exhausted: bool,
+    pub no_numerical_invalidity: bool,
+    pub accounting_closes: bool,
+}
+
+impl Gate5BranchEvidence {
+    pub fn chi_ok(self) -> bool {
+        self.chi_n >= D053_CHI_MIN && self.chi_f >= D053_CHI_MIN
+    }
+
+    pub fn a_capacity_ok(self) -> bool {
+        self.a_retention_not_monotone_declining
+            && self.final_a_retention >= D053_GATE5_A_RETENTION_MIN
+            && self.final_a_retention_slope >= 0.0
+    }
+
+    pub fn checklist_ok(self) -> bool {
+        self.activation_meets_a_demand
+            && self.a_capacity_ok()
+            && self.p_production_active
+            && self.net_s_decline_arrested
+            && self.n_not_exhausted
+            && self.f_not_exhausted
+            && self.no_numerical_invalidity
+            && self.accounting_closes
+            && self.chi_ok()
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub struct Gate5Evidence {
+    pub horizon_class: HorizonClass,
+    pub analytic: Option<Gate5BranchEvidence>,
+    pub restored: Option<Gate5BranchEvidence>,
+}
+
+/// Single shared Gate 5 classifier — no χ-rise / A-rise / short-horizon bypass.
+pub fn evaluate_gate5(ev: &Gate5Evidence) -> Gate5Verdict {
+    if ev.horizon_class == HorizonClass::QuickDiagnostic {
+        return Gate5Verdict::DiagnosticOnly;
+    }
+    let (Some(a), Some(r)) = (ev.analytic, ev.restored) else {
+        return Gate5Verdict::FailIncompleteEvidence;
+    };
+    if !a.chi_ok() || !r.chi_ok() {
+        return Gate5Verdict::FailResourceSufficiency;
+    }
+    if !a.a_capacity_ok() || !r.a_capacity_ok() {
+        return Gate5Verdict::FailACapacity;
+    }
+    if !a.checklist_ok() || !r.checklist_ok() {
+        return Gate5Verdict::FailChecklist;
+    }
+    Gate5Verdict::Pass
+}
+
+/// Legacy informal Gate 5 path (audit only — never use for admission).
+pub fn gate5_legacy_informal_admitted(
+    capacity: bool,
+    a_rise: bool,
+    chi_rise: bool,
+    a_retention: f64,
+) -> bool {
+    capacity || a_rise || (chi_rise && a_retention >= 0.5)
+}
+
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq)]
+pub struct Gate8RadiusEvidence {
+    pub radius: f64,
+    pub chi_n: f64,
+    pub chi_f: f64,
+    pub c_retention: f64,
+    pub a_retention: f64,
+    pub n_enters: bool,
+    pub f_enters: bool,
+    pub w_exits: bool,
+    pub bounded_fields: bool,
+    pub accounting_closes: bool,
+    pub influx_per_area: f64,
+}
+
+impl Gate8RadiusEvidence {
+    pub fn chi_ok(self) -> bool {
+        self.chi_n >= D053_CHI_MIN && self.chi_f >= D053_CHI_MIN
+    }
+
+    pub fn retention_ok(self) -> bool {
+        self.c_retention >= D053_RETENTION_MIN && self.a_retention >= D053_RETENTION_MIN
+    }
+
+    pub fn transport_ok(self) -> bool {
+        self.n_enters && self.f_enters && self.w_exits
+    }
+
+    pub fn radius_pass(self) -> bool {
+        self.chi_ok()
+            && self.retention_ok()
+            && self.transport_ok()
+            && self.bounded_fields
+            && self.accounting_closes
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub struct Gate8Evidence {
+    pub horizon_class: HorizonClass,
+    /// Must include R16, R24, R32 (order unconstrained).
+    pub radii: Vec<Gate8RadiusEvidence>,
+}
+
+fn gate8_find_radius(ev: &Gate8Evidence, r: f64) -> Option<&Gate8RadiusEvidence> {
+    ev.radii.iter().find(|c| (c.radius - r).abs() < 1e-9)
+}
+
+/// Single shared Gate 8 classifier — short_horizon_relaxed is prohibited.
+pub fn evaluate_gate8(ev: &Gate8Evidence) -> Gate8Verdict {
+    if ev.horizon_class == HorizonClass::QuickDiagnostic {
+        return Gate8Verdict::DiagnosticOnly;
+    }
+    let Some(r16) = gate8_find_radius(ev, 16.0) else {
+        return Gate8Verdict::FailIncompleteEvidence;
+    };
+    let Some(r24) = gate8_find_radius(ev, 24.0) else {
+        return Gate8Verdict::FailIncompleteEvidence;
+    };
+    let Some(r32) = gate8_find_radius(ev, 32.0) else {
+        return Gate8Verdict::FailIncompleteEvidence;
+    };
+    for case in [r16, r24, r32] {
+        if !case.chi_ok() {
+            return Gate8Verdict::FailResourceSufficiency;
+        }
+        if !case.retention_ok() {
+            return Gate8Verdict::FailRetention;
+        }
+        if !case.transport_ok() {
+            return Gate8Verdict::FailTransportDirection;
+        }
+        if !case.bounded_fields || !case.accounting_closes {
+            return Gate8Verdict::FailChecklist;
+        }
+    }
+    if !(r16.influx_per_area > r24.influx_per_area && r24.influx_per_area > r32.influx_per_area) {
+        return Gate8Verdict::FailRadiusScaling;
+    }
+    Gate8Verdict::Pass
+}
+
+/// Fixture helpers for invariance tests (Gate 2).
+pub fn gate5_fixture_a_pass() -> Gate5Evidence {
+    let branch = Gate5BranchEvidence {
+        chi_n: 1.06,
+        chi_f: 1.06,
+        activation_meets_a_demand: true,
+        a_retention_not_monotone_declining: true,
+        final_a_retention: 0.55,
+        final_a_retention_slope: 0.0,
+        p_production_active: true,
+        net_s_decline_arrested: true,
+        n_not_exhausted: true,
+        f_not_exhausted: true,
+        no_numerical_invalidity: true,
+        accounting_closes: true,
+    };
+    Gate5Evidence {
+        horizon_class: HorizonClass::Full,
+        analytic: Some(branch),
+        restored: Some(branch),
+    }
+}
+
+pub fn gate5_fixture_b_resource_fail() -> Gate5Evidence {
+    let mut b = gate5_fixture_a_pass();
+    if let Some(ref mut a) = b.analytic {
+        a.chi_n = 0.53;
+        a.chi_f = 0.53;
+    }
+    if let Some(ref mut r) = b.restored {
+        r.chi_n = 0.53;
+        r.chi_f = 0.53;
+    }
+    b
+}
+
+pub fn gate5_fixture_c_a_capacity_fail() -> Gate5Evidence {
+    let mut b = gate5_fixture_a_pass();
+    if let Some(ref mut a) = b.analytic {
+        a.chi_n = 1.10;
+        a.chi_f = 1.10;
+        a.a_retention_not_monotone_declining = false;
+        a.final_a_retention_slope = -0.01;
+    }
+    if let Some(ref mut r) = b.restored {
+        r.chi_n = 1.10;
+        r.chi_f = 1.10;
+        r.a_retention_not_monotone_declining = false;
+        r.final_a_retention_slope = -0.01;
+    }
+    b
+}
+
+pub fn gate5_fixture_d_incomplete() -> Gate5Evidence {
+    let mut b = gate5_fixture_a_pass();
+    b.restored = None;
+    b
+}
+
+pub fn gate5_fixture_e_quick() -> Gate5Evidence {
+    let mut b = gate5_fixture_a_pass();
+    b.horizon_class = HorizonClass::QuickDiagnostic;
+    b
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -531,5 +832,44 @@ mod tests {
         assert!(!stage_a_nf_band_ok(lo));
         let ok = nf_permeability_normalized(1.2, m_beta_min_for_upper_band(1.2));
         assert!(stage_a_nf_band_ok(ok) || (ok - 0.50).abs() < 1e-9);
+    }
+
+    #[test]
+    fn gate5_fixtures_match_contract() {
+        assert_eq!(evaluate_gate5(&gate5_fixture_a_pass()), Gate5Verdict::Pass);
+        assert_eq!(
+            evaluate_gate5(&gate5_fixture_b_resource_fail()),
+            Gate5Verdict::FailResourceSufficiency
+        );
+        assert_eq!(
+            evaluate_gate5(&gate5_fixture_c_a_capacity_fail()),
+            Gate5Verdict::FailACapacity
+        );
+        assert_eq!(
+            evaluate_gate5(&gate5_fixture_d_incomplete()),
+            Gate5Verdict::FailIncompleteEvidence
+        );
+        assert_eq!(
+            evaluate_gate5(&gate5_fixture_e_quick()),
+            Gate5Verdict::DiagnosticOnly
+        );
+    }
+
+    #[test]
+    fn legacy_informal_gate5_is_not_admission() {
+        // Document the defect path; strict evaluator must reject the same metrics.
+        assert!(gate5_legacy_informal_admitted(false, false, true, 0.50));
+        let mut ev = gate5_fixture_a_pass();
+        if let Some(ref mut a) = ev.analytic {
+            a.chi_n = 0.53;
+            a.chi_f = 0.53;
+            a.final_a_retention = 0.50;
+        }
+        if let Some(ref mut r) = ev.restored {
+            r.chi_n = 0.53;
+            r.chi_f = 0.53;
+            r.final_a_retention = 0.50;
+        }
+        assert_eq!(evaluate_gate5(&ev), Gate5Verdict::FailResourceSufficiency);
     }
 }

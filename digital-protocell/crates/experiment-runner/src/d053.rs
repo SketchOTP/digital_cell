@@ -567,11 +567,45 @@ fn gate4_candidates(
     Ok((pass, v))
 }
 
+fn metrics_to_gate5_branch(m: &Metrics) -> Gate5BranchEvidence {
+    let chi_n = chi_supply(m.j_n_in, m.n_loss.max(1e-12));
+    let chi_f = chi_supply(m.j_f_in, m.f_loss.max(1e-12));
+    let s_arrested = m.s_mass + D053_NET_S_TOL >= m.s0;
+    Gate5BranchEvidence {
+        chi_n,
+        chi_f,
+        activation_meets_a_demand: m.activation > 0.0 && chi_n >= D053_CHI_MIN && chi_f >= D053_CHI_MIN,
+        a_retention_not_monotone_declining: m.a_retention >= D053_GATE5_A_RETENTION_MIN,
+        final_a_retention: m.a_retention,
+        // Single-window screen: nonnegative slope only if retention already at floor.
+        final_a_retention_slope: if m.a_retention >= D053_GATE5_A_RETENTION_MIN {
+            0.0
+        } else {
+            -1.0
+        },
+        p_production_active: m.activation > 0.0,
+        net_s_decline_arrested: s_arrested,
+        n_not_exhausted: m.n_loss.is_finite() && m.j_n_in >= 0.0,
+        f_not_exhausted: m.f_loss.is_finite() && m.j_f_in >= 0.0,
+        no_numerical_invalidity: m.steps_ok && !m.positivity_cascade,
+        accounting_closes: m.steps_ok,
+    }
+}
+
+fn gate5_horizon_class(h: u64) -> HorizonClass {
+    if h < 10_000 {
+        HorizonClass::QuickDiagnostic
+    } else {
+        HorizonClass::Full
+    }
+}
+
 fn gate5_screen(
     out: &Path,
     candidates: &Value,
 ) -> Result<(Option<DeliveryRepairPair>, Value), Box<dyn std::error::Error>> {
     let h = max_accepted().max(control_horizon());
+    let horizon_class = gate5_horizon_class(h);
     let baseline = run_campaign(DeliveryRepairPair::BASELINE, h, Control::baseline());
     let mut passing = Vec::new();
     let mut scored = Vec::new();
@@ -582,34 +616,51 @@ fn gate5_screen(
             cases.push(json!({
                 "candidate": parsed,
                 "pass": false,
+                "verdict": Gate5Verdict::FailIncompleteEvidence.as_str(),
                 "note": "baseline excluded from selection",
                 "metrics": metrics_json(&baseline),
             }));
             continue;
         }
-        let m = run_campaign(parsed.pair, h, Control::baseline());
-        let chi_n = chi_supply(m.j_n_in, m.n_loss.max(1e-12));
-        let chi_f = chi_supply(m.j_f_in, m.f_loss.max(1e-12));
-        let chi_base_n = chi_supply(baseline.j_n_in, baseline.n_loss.max(1e-12));
-        let a_rise = material_throughput_rise(baseline.a_retention.max(0.01), m.a_retention);
-        let chi_rise = chi_n > chi_base_n * 1.05 && chi_f > chi_base_n * 1.05;
-        let capacity = chi_n >= D053_CHI_MIN && chi_f >= D053_CHI_MIN;
-        let pass = m.steps_ok
-            && !m.positivity_cascade
-            && (capacity || a_rise || (chi_rise && m.a_retention >= 0.5));
+        let analytic_m = run_campaign(parsed.pair, h, Control::baseline());
+        let mut restored_ctrl = Control::baseline();
+        restored_ctrl.freeze_structure = true;
+        let restored_m = run_campaign(parsed.pair, h, restored_ctrl);
+        let analytic = metrics_to_gate5_branch(&analytic_m);
+        let restored = metrics_to_gate5_branch(&restored_m);
+        let evidence = Gate5Evidence {
+            horizon_class,
+            analytic: Some(analytic),
+            restored: Some(restored),
+        };
+        let verdict = evaluate_gate5(&evidence);
+        let pass = verdict.admits_candidate();
         if pass {
             passing.push(parsed.clone());
-            scored.push((parsed.clone(), m.a_retention, 0.5 * (chi_n + chi_f)));
+            scored.push((
+                parsed.clone(),
+                analytic.final_a_retention.min(restored.final_a_retention),
+                0.5 * (analytic.chi_n + analytic.chi_f),
+            ));
         }
         cases.push(json!({
             "candidate": parsed,
             "pass": pass,
-            "chi_n": chi_n,
-            "chi_f": chi_f,
-            "chi_base_n": chi_base_n,
-            "a_rise": a_rise,
-            "chi_rise": chi_rise,
-            "metrics": metrics_json(&m),
+            "verdict": verdict.as_str(),
+            "chi_n": analytic.chi_n,
+            "chi_f": analytic.chi_f,
+            "chi_n_restored": restored.chi_n,
+            "chi_f_restored": restored.chi_f,
+            "legacy_informal_would_admit": gate5_legacy_informal_admitted(
+                analytic.chi_ok(),
+                material_throughput_rise(baseline.a_retention.max(0.01), analytic_m.a_retention),
+                analytic.chi_n > chi_supply(baseline.j_n_in, baseline.n_loss.max(1e-12)) * 1.05
+                    && analytic.chi_f > chi_supply(baseline.j_n_in, baseline.n_loss.max(1e-12)) * 1.05,
+                analytic_m.a_retention,
+            ),
+            "metrics_analytic": metrics_json(&analytic_m),
+            "metrics_restored": metrics_json(&restored_m),
+            "evaluator": "d053_analysis::evaluate_gate5",
         }));
     }
     let selected = select_best_screened(&scored).or_else(|| select_minimum_change(&passing));
@@ -617,6 +668,9 @@ fn gate5_screen(
         "gate": "gate5_short_screen",
         "pass": selected.is_some(),
         "horizon": h,
+        "horizon_class": format!("{:?}", horizon_class),
+        "short_horizon_relaxed": false,
+        "evaluator": "d053_analysis::evaluate_gate5",
         "baseline": metrics_json(&baseline),
         "cases": cases,
         "selected": selected,
@@ -715,10 +769,10 @@ fn gate8_fixed(
     pair: DeliveryRepairPair,
 ) -> Result<(bool, Value), Box<dyn std::error::Error>> {
     let h = control_horizon();
-    let short = h < 10_000;
+    let horizon_class = gate5_horizon_class(h);
+    let mut radius_ev = Vec::new();
     let mut cases = Vec::new();
     let mut area_flux = Vec::new();
-    let mut all_ok = true;
     for r in [16.0, 24.0, 32.0] {
         let mut c = Control::baseline();
         c.radius = r;
@@ -728,39 +782,47 @@ fn gate8_fixed(
         let chi_f = chi_supply(m.j_f_in, m.f_loss.max(1e-12));
         let area = std::f64::consts::PI * r * r;
         let flux_per_area = (m.j_n_in + m.j_f_in) / area.max(1e-12);
-        let a_ok = if short {
-            m.a_retention >= 0.15
-        } else {
-            m.a_retention >= D053_RETENTION_MIN
-        };
-        let chi_ok = if short {
-            chi_n >= 0.20 && chi_f >= 0.20
-        } else {
-            chi_n >= D053_CHI_MIN && chi_f >= D053_CHI_MIN
-        };
-        let ok = m.steps_ok
-            && m.c_retention >= D053_RETENTION_MIN
-            && a_ok
-            && chi_ok
-            && m.j_n_in > 0.0
-            && m.j_f_in > 0.0;
-        all_ok &= ok;
         area_flux.push(flux_per_area);
+        let ev = Gate8RadiusEvidence {
+            radius: r,
+            chi_n,
+            chi_f,
+            c_retention: m.c_retention,
+            a_retention: m.a_retention,
+            n_enters: m.j_n_in > 0.0,
+            f_enters: m.j_f_in > 0.0,
+            w_exits: true, // waste sink active under schema2 params
+            bounded_fields: m.steps_ok && !m.positivity_cascade,
+            accounting_closes: m.steps_ok,
+            influx_per_area: flux_per_area,
+        };
         cases.push(json!({
             "radius": r,
-            "pass": ok,
+            "pass": ev.radius_pass(),
+            "chi_n": chi_n,
+            "chi_f": chi_f,
             "flux_per_interior_area": flux_per_area,
             "metrics": metrics_json(&m),
         }));
+        radius_ev.push(ev);
     }
+    let evidence = Gate8Evidence {
+        horizon_class,
+        radii: radius_ev,
+    };
+    let verdict = evaluate_gate8(&evidence);
+    let pass = verdict.is_pass();
     let scaling = area_flux.len() == 3
         && area_flux[0] > area_flux[1]
         && area_flux[1] > area_flux[2];
-    let pass = all_ok && scaling;
     let v = json!({
         "gate": "gate8_fixed_compartment",
         "pass": pass,
-        "short_horizon_relaxed": short,
+        "verdict": verdict.as_str(),
+        "short_horizon_relaxed": false,
+        "horizon": h,
+        "horizon_class": format!("{:?}", horizon_class),
+        "evaluator": "d053_analysis::evaluate_gate8",
         "scaling_r16_gt_r24_gt_r32_per_area": scaling,
         "area_flux": area_flux,
         "cases": cases,

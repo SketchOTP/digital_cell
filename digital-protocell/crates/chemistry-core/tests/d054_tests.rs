@@ -62,12 +62,28 @@ fn stage_a_band_and_selectivity_helpers() {
 }
 
 #[test]
-fn gate5_admission_matches_sealed_source_contract() {
-    // Identical informal/sealed upper-bracket metrics: χ-rise alone must not admit.
+fn gate5_admission_legacy_informal_vs_strict() {
+    // Legacy informal OR-path (audit): χ-rise + a_ret>=0.5 could admit without χ≥1.05.
     assert!(!gate5_candidate_admitted(false, false, true, 0.09011105905699698));
     assert!(gate5_candidate_admitted(false, false, true, 0.50));
     assert!(gate5_candidate_admitted(true, false, false, 0.09));
     assert!(gate5_candidate_admitted(false, true, false, 0.09));
+    // Strict D-055 contract rejects the same χ≪1.05 metrics.
+    use chemistry_core::d053_analysis::{
+        evaluate_gate5, gate5_fixture_a_pass, Gate5Verdict,
+    };
+    let mut ev = gate5_fixture_a_pass();
+    if let Some(ref mut a) = ev.analytic {
+        a.chi_n = 0.53;
+        a.chi_f = 0.53;
+        a.final_a_retention = 0.50;
+    }
+    if let Some(ref mut r) = ev.restored {
+        r.chi_n = 0.53;
+        r.chi_f = 0.53;
+        r.final_a_retention = 0.50;
+    }
+    assert_eq!(evaluate_gate5(&ev), Gate5Verdict::FailResourceSufficiency);
 }
 
 #[test]

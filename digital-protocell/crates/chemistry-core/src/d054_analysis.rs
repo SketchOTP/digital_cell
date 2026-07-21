@@ -241,7 +241,12 @@ pub fn select_route(
     )
 }
 
-/// Gate 5 admission under sealed source contract (must not silently accept χ-rise alone).
-pub fn gate5_candidate_admitted(capacity: bool, a_rise: bool, chi_rise: bool, a_retention: f64) -> bool {
-    capacity || a_rise || (chi_rise && a_retention >= 0.5)
+/// Legacy informal Gate 5 OR-admission (audit only). Prefer `d053_analysis::evaluate_gate5`.
+pub fn gate5_candidate_admitted(
+    capacity: bool,
+    a_rise: bool,
+    chi_rise: bool,
+    a_retention: f64,
+) -> bool {
+    crate::d053_analysis::gate5_legacy_informal_admitted(capacity, a_rise, chi_rise, a_retention)
 }

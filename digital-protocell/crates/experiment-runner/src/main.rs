@@ -51,6 +51,7 @@ mod d050;
 mod d051;
 mod d052;
 mod d053;
+mod d055;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -297,6 +298,10 @@ enum Commands {
     D053 {
         #[command(subcommand)]
         action: D053Commands,
+    },
+    D055 {
+        #[command(subcommand)]
+        action: D055Commands,
     },
 }
 
@@ -603,6 +608,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D051 { action } => run_d051(action)?,
         Commands::D052 { action } => run_d052(action)?,
         Commands::D053 { action } => run_d053(action)?,
+        Commands::D055 { action } => run_d055(action)?,
     }
     Ok(())
 }
@@ -3066,6 +3072,35 @@ fn run_d053(action: D053Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-053 pipeline primary={} stage_e={} -> {}",
                 result["primary_conclusion"],
                 result["stage_e_status"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D055Commands {
+    /// Strict D-053 gate repair + passive resource-architecture review.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d055")]
+        output: PathBuf,
+    },
+}
+
+fn resolve_d055_artifact_path(path: &Path) -> PathBuf {
+    resolve_d053_artifact_path(path)
+}
+
+fn run_d055(action: D055Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D055Commands::Pipeline { output } => {
+            let out = resolve_d055_artifact_path(&output);
+            let result = d055::run_pipeline(&out)?;
+            println!(
+                "D-055 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["selected_route"],
                 out.join("manifest.json").display()
             );
         }
