@@ -439,3 +439,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d057.rs` — Gates −1…10 observer pipeline
 - `docs/d057_carrier_geometry_driving_force_audit.md` — `D057_CARRIER_GRID_OR_SURFACE_NORMALIZATION_DEFECT` Route G
 - `digital-protocell/experiments/generated/d057/` — seal through route_decision artifacts
+
+## D-058 corrected carrier normalization
+- `digital-protocell/crates/chemistry-core/src/d058_analysis.rs` — canonical face op, corrected k_T★, synthetic invariance, Route V/Q/D/R/I
+- `digital-protocell/crates/chemistry-core/tests/d058_tests.rs` — δ/face/dt/volume/invariance/fixture/route tests
+- `digital-protocell/crates/experiment-runner/src/d058.rs` — Gates −1…9 observer/shadow pipeline
+- `docs/d058_corrected_carrier_normalization_audit.md` — `D058_CARRIER_SURFACE_VOLUME_CAPACITY_LIMIT` Route V
+- `digital-protocell/experiments/generated/d058/` — artifacts + manifest
