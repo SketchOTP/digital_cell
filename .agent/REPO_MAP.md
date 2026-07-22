@@ -528,3 +528,8 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/chemistry-core/tests/d068_tests.rs` — focused parity/ledger/route tests
 - `digital-protocell/docs/d068_precursor_demand_membrane_assembly_audit.md` — `D068_MEMBRANE_DESORPTION_DOMINANT`
 - `digital-protocell/experiments/generated/d068` → archive symlink
+
+## D-069 mature membrane exchange
+- `digital-protocell/crates/chemistry-core/src/d069_analysis.rs` — frozen P↔S equilibrium, identification, and route classifiers
+- `digital-protocell/crates/experiment-runner/src/d069.rs` — shadow-only Gates −1–16 equilibrium/desorption audit
+- `digital-protocell/crates/experiment-runner/src/main.rs` — `d069 pipeline` CLI wiring
