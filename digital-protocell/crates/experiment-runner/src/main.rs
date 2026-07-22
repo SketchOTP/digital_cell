@@ -63,6 +63,7 @@ mod d063;
 mod d064;
 mod d065;
 mod d066;
+mod d067;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -357,6 +358,10 @@ enum Commands {
     D066 {
         #[command(subcommand)]
         action: D066Commands,
+    },
+    D067 {
+        #[command(subcommand)]
+        action: D067Commands,
     },
 }
 
@@ -675,6 +680,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D064 { action } => run_d064(action)?,
         Commands::D065 { action } => run_d065(action)?,
         Commands::D066 { action } => run_d066(action)?,
+        Commands::D067 { action } => run_d067(action)?,
     }
     Ok(())
 }
@@ -3460,6 +3466,31 @@ fn run_d066(action: D066Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d066::run_pipeline(&out)?;
             println!(
                 "D-066 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D067Commands {
+    /// Shadow-only activation-capacity law identification (Gates -1–10).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d067")]
+        output: PathBuf,
+    },
+}
+
+fn run_d067(action: D067Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D067Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d067::run_pipeline(&out)?;
+            println!(
+                "D-067 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()
