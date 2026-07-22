@@ -1,26 +1,26 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260721-d065-canonical-resource-sufficiency-topology-necessity
-- Project directive: D-065
-- Goal: Canonicalize accepted net resource sufficiency; audit topology necessity (shadow-only)
+- ID: D-20260721-d066-smooth-membrane-activation-utilization-audit
+- Project directive: D-066
+- Goal: Audit smooth-membrane activation utilization and local substrate access (shadow-only)
 - Status: done
-- Acceptance: met — `D065_RESOURCE_DELIVERY_SUFFICIENT_ACTIVATION_LIMITED`
-- Touched files: d065_analysis/tests, experiment-runner/d065, main.rs, lib.rs, docs/d065_*, experiments/generated/d065, .agent/*
-- Next action: audit frozen activation law / accepted activation capacity under smooth geometry; next_execution_started=false
+- Acceptance: met — `D066_FROZEN_ACTIVATION_CAPACITY_LIMIT`
+- Touched files: d066_analysis/tests, experiment-runner/d066, main.rs, lib.rs, docs/d066_*, experiments/generated/d066, .agent/*
+- Next action: review frozen activation capacity under frozen stoichiometry; next_execution_started=false
 
 ## Repo facts needed now
-- Primary: Route A `D065_RESOURCE_DELIVERY_SUFFICIENT_ACTIVATION_LIMITED`
-- Smooth χ R22≈1.82 (≥1.05) — connected membrane not required for resource capacity
-- D-064 identity reproduced: legacy static≈13.55, proxy≈0.19, gross χ≈19.03; A≈0.40; S 368→227; W ceiling @~1076
-- Control C (unlimited local N/F) restores A≈1.81; perfect exterior N/F does not
-- W_DESTINATION_OVERCOMMIT secondary execution defect
+- Primary: Route K `D066_FROZEN_ACTIVATION_CAPACITY_LIMIT`
+- D-065 reproduced: static χ R16/22/32 ≥1.05; ordinary A≈0.36; Control-C A≈1.81; perfect exterior does not restore
+- Redistribution / healthy C do not restore A; acceptance execution defect absent
+- Activation: schema-2; accepted==requested on accepted steps; no hard N/F clip
 - Frozen k_T: 1.4346157818803311
-- Artifacts: experiments/generated/d065 → /mnt/storage1tb/.../d065
+- Artifacts: experiments/generated/d066 → /mnt/storage1tb/.../d066
 
 ## Last validation
-- Command: cargo test -p chemistry-core --test d065_tests; D065_MAX_ACCEPTED=1200 D065_SKIP_LATE_GATES=1 pipeline
-- Result: 12/12 PASS; primary ResourceDeliverySufficientActivationLimited
+- Command: cargo test -p chemistry-core --test d066_tests; D066_MAX_ACCEPTED=1200 D066_SKIP_LATE_GATES=1 pipeline
+- Result: 16/16 PASS; primary FrozenActivationCapacityLimit / Route K
 
 ## Open blockers
 - Stage E remains BLOCKED_NOT_RECOVERED
+- Unrelated dirty: .cursor/rules/*, AGENTS.md — excluded from D-066 staging

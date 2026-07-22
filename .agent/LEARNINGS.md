@@ -107,3 +107,4 @@ Append-only repo-specific lessons. Format:
 
 - 2026-07-21 | area:d065_canonical_chi | lesson:Smooth FixedGeometry R16/R22/R32 already meet signed-net χ≥1.05; connected area raises χ but not A; Control-C unlimited local N/F restores A while perfect exterior supply does not. | evidence:experiments/generated/d065/route_decision/result.json
 - 2026-07-21 | area:d065_signed_vs_gross | lesson:D-064 canonical~19 was gross-inward accepted flux; coupled signed net can go negative after oversupply reverse-export—rank topology on static signed net, not post-fill signed net alone. | evidence:experiments/generated/d065/d064_reproduction/result.json
+- 2026-07-21 | area:d066-activation | lesson:D-065 smooth χ is one_step_static_window not coupled shadow χ; Control-C restores A while redistribution/C do not → frozen capacity route K | evidence:experiments/generated/d066/result.json

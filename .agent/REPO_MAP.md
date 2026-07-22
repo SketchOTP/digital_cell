@@ -506,3 +506,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/chemistry-core/tests/d065_tests.rs` — parity, fate, topology, route tests
 - `digital-protocell/crates/experiment-runner/src/d065.rs` — Gates −1–10 shadow pipeline
 - `docs/d065_canonical_resource_topology_requalification.md` — completion (`D065_RESOURCE_DELIVERY_SUFFICIENT_ACTIVATION_LIMITED`)
+
+## D-066 activation utilization capacity audit
+- `digital-protocell/crates/chemistry-core/src/d066_analysis.rs` — activation lineage, limiter/overlap/redistribution/capacity/catalyst/A-demand classifiers, route select
+- `digital-protocell/crates/chemistry-core/tests/d066_tests.rs` — parity, limiter, redistribute, route tests
+- `digital-protocell/crates/experiment-runner/src/d066.rs` — Gates −1–12 shadow pipeline
+- `docs/d066_activation_utilization_capacity_audit.md` — completion (`D066_FROZEN_ACTIVATION_CAPACITY_LIMIT`)
+- `digital-protocell/experiments/generated/d066` → archive symlink
