@@ -1,26 +1,25 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260722-d073-mature-membrane-equilibrium-sufficiency-audit
-- Project directive: D-073
-- Goal: Audit whether D-072 Route X is upheld by equilibrium-sufficient fixed-P / long-horizon evidence
+- ID: D-20260722-d074-cellwise-exchange-integration-parity-repair
+- Project directive: D-074
+- Goal: Cellwise discrete-integrator parity audit of mature-membrane exchange
 - Status: done
-- Acceptance: met — `D073_ORGANISM_EXCHANGE_INTEGRATION_DEFECT` (Route E)
-- Touched files: d073_analysis/tests, experiment-runner/d073, docs/d073_*, experiments/generated/d073, .agent/*
-- Next action: D-074 repair organism exchange integration; next_execution_started=false
+- Acceptance: met — `D074_EXCHANGE_TIMESCALE_CLASSIFICATION_DEFECT` (Route T)
+- Touched files: d074_analysis/tests, experiment-runner/d074, docs/d074_*, experiments/generated/d074, .agent/*
+- Next action: replace membrane horizon gates with capacity-weighted Λ_i; next_execution_started=false
 
 ## Repo facts needed now
-- D-072 sealed `28dcdc4` / `D-072-membrane-damage-refill-audit`; Route X provisional retained
-- D-072 fixed_P = NOT_ACTUALLY_FIXED (P=1 once, not held)
-- p_required(0.95)≈0.38; true holds at 1.0×/1.1× do not recover ≥0.95 within 5τ
-- Long-horizon constitutive: SLOW_TRANSIENT_DECAY (0.998→0.668); A retention≈0.056
-- Endogenous mean interface p≈0.18 < 0.38; total P large
+- Start: `de407ca` / `D-073-mature-membrane-equilibrium-audit`
+- Route T: mean-τ overstated cellwise exposure (fraction_ge5=0 on damaged capacity at “5τ”)
+- Runtime matches production discrete predictor; no kinetic repair
+- Exchange-isolated p=0.38 recovery≈0.952; D-073 with diffusion≈0.941
 - Unrelated dirty: .cursor/rules/*, AGENTS.md — exclude
 
 ## Last validation
-- Command: cargo test -p chemistry-core --test d073_tests --release; D073 pipeline
-- Result: 10/10 PASS; primary D073_ORGANISM_EXCHANGE_INTEGRATION_DEFECT
+- Command: cargo test d070–d074; D074 pipeline release
+- Result: d074 12/12; d073 10/10; d072 11/11; d071 10/10; d070 13/13; pipeline → Route T
 
 ## Open blockers
 - Stage E remains BLOCKED_NOT_RECOVERED
-- Organism does not recover under analytically sufficient fixed interface p
+- Horizon gates still use mean-τ until a follow-on directive replaces them

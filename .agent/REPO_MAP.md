@@ -566,3 +566,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d073.rs` — Gates 0–7 pipeline (diagnostic fixed-P holds)
 - `digital-protocell/docs/d073_mature_membrane_equilibrium_sufficiency.md` — terminal report
 - `digital-protocell/experiments/generated/d073/` — gate artifacts (archived symlink)
+
+## D-074 cellwise exchange integration parity
+- `digital-protocell/crates/chemistry-core/src/d074_analysis.rs` — discrete bath BE, runtime BE, exposure/ceiling, Route T/Q/E/I/M/X
+- `digital-protocell/crates/chemistry-core/tests/d074_tests.rs` — focused parity/exposure/route tests
+- `digital-protocell/crates/experiment-runner/src/d074.rs` — Gates 0–7 pipeline
+- `digital-protocell/docs/d074_cellwise_exchange_integration_parity.md` — report
+- `digital-protocell/experiments/generated/d074/` — artifacts (symlink → storage1tb)

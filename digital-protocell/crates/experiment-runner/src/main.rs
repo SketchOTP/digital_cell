@@ -70,6 +70,7 @@ mod d070;
 mod d071;
 mod d072;
 mod d073;
+mod d074;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -392,6 +393,10 @@ enum Commands {
     D073 {
         #[command(subcommand)]
         action: D073Commands,
+    },
+    D074 {
+        #[command(subcommand)]
+        action: D074Commands,
     },
 }
 
@@ -717,6 +722,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D071 { action } => run_d071(action)?,
         Commands::D072 { action } => run_d072(action)?,
         Commands::D073 { action } => run_d073(action)?,
+        Commands::D074 { action } => run_d074(action)?,
     }
     Ok(())
 }
@@ -3677,6 +3683,31 @@ fn run_d073(action: D073Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d073::run_pipeline(&out)?;
             println!(
                 "D-073 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D074Commands {
+    /// Cellwise exchange integration parity audit (Gates 0–7).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d074")]
+        output: PathBuf,
+    },
+}
+
+fn run_d074(action: D074Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D074Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d074::run_pipeline(&out)?;
+            println!(
+                "D-074 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()
