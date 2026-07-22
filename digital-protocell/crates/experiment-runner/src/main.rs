@@ -72,6 +72,7 @@ mod d072;
 mod d073;
 mod d074;
 mod d075;
+mod d076;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -403,6 +404,10 @@ enum Commands {
         #[command(subcommand)]
         action: D075Commands,
     },
+    D076 {
+        #[command(subcommand)]
+        action: D076Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -729,6 +734,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D073 { action } => run_d073(action)?,
         Commands::D074 { action } => run_d074(action)?,
         Commands::D075 { action } => run_d075(action)?,
+        Commands::D076 { action } => run_d076(action)?,
     }
     Ok(())
 }
@@ -3739,6 +3745,31 @@ fn run_d075(action: D075Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d075::run_pipeline(&out)?;
             println!(
                 "D-075 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D076Commands {
+    /// Nonequilibrium surface-state cycle architecture review (Gates 0–6).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d076")]
+        output: PathBuf,
+    },
+}
+
+fn run_d076(action: D076Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D076Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d076::run_pipeline(&out)?;
+            println!(
+                "D-076 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()

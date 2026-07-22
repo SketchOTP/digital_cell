@@ -580,3 +580,8 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d075.rs` — Gates 0–8 pipeline; shared `ExposureObserver`; recovery-aware fixed-P stop
 - `digital-protocell/docs/d075_cellwise_exposure_membrane_requalification.md` — report
 - `digital-protocell/experiments/generated/d075/` — artifacts (symlink → storage1tb)
+- chemistry-core/src/d076_analysis.rs — reduced P⇄U / U+A→S+W / S→U cycle; Gates0–6; Route E energy infeasible
+- chemistry-core/tests/d076_tests.rs — conservation/FP/Jacobian/budget/route tests (10)
+- experiment-runner/src/d076.rs — artifact pipeline
+- digital-protocell/docs/d076_nonequilibrium_surface_cycle_review.md — report
+- experiments/generated/d076/ — artifacts (symlink → storage1tb)

@@ -70,6 +70,7 @@ pub mod d072_analysis;
 pub mod d073_analysis;
 pub mod d074_analysis;
 pub mod d075_analysis;
+pub mod d076_analysis;
 pub mod d011_analysis;
 pub mod d008_analysis;
 pub mod d008_diagnostics;
