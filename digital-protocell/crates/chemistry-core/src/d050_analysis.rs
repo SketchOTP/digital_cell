@@ -35,6 +35,7 @@ pub const D050_LOO_FACTOR_MAX: f64 = 2.0;
 
 pub const ACTIVATION_SCHEMA_HISTORICAL: u32 = 1;
 pub const ACTIVATION_SCHEMA_CATALYST_SATURATING_VOLUME: u32 = 2;
+pub const ACTIVATION_SCHEMA_BOUNDED_NF: u32 = 3;
 pub const ACTIVATION_SCHEMA_2_NAME: &str = "catalyst_saturating_volume_activation";
 pub const EQUATION_VERSION_V13: &str = "membrane_metabolism_v13_catalyst_saturating_activation";
 
@@ -79,6 +80,13 @@ pub fn production_activation_rate(
     f_ref: f64,
 ) -> f64 {
     match activation_schema {
+        ACTIVATION_SCHEMA_BOUNDED_NF => {
+            k_or_v_a.max(0.0)
+                * interior_weight(phi)
+                * q_c_saturation(c, k_c)
+                * q_c_saturation(n, n_ref)
+                * q_c_saturation(f, f_ref)
+        }
         ACTIVATION_SCHEMA_CATALYST_SATURATING_VOLUME => {
             schema2_activation_rate(k_or_v_a, phi, c, n, f, k_c, n_ref, f_ref)
         }
