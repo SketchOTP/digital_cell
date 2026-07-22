@@ -21,3 +21,4 @@ This file is specifically for the operators use. It keeps record of what the AI 
 - 2026-07-21 | event:directive_complete | id:D-064 | conclusion:D064_STATIC_COUPLED_RESOURCE_METRIC_DEFECT | tag:D-064-connected-geometry-coupled-failure-audit | note:Route A — repair canonical χ before topology rejection
 
 - 2026-07-21 | D-065 | event:route | D065_RESOURCE_DELIVERY_SUFFICIENT_ACTIVATION_LIMITED | CONNECTED_MEMBRANE_NOT_REQUIRED_FOR_RESOURCE_CAPACITY | artifacts:experiments/generated/d065
+- 2026-07-21 | D-066 | event:route_selected | conclusion:D066_FROZEN_ACTIVATION_CAPACITY_LIMIT | route:K | tag:D-066-activation-utilization-capacity-audit | evidence:experiments/generated/d066/result.json
