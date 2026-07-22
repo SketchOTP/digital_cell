@@ -559,3 +559,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d072.rs` — Gates 0–6 artifact pipeline and frozen D-071 repair diagnostics
 - `digital-protocell/crates/experiment-runner/src/main.rs` — `d072 pipeline` CLI wiring
 - `digital-protocell/crates/chemistry-core/src/d072_analysis.rs` — refill route/timescale/intervention helper contracts
+
+## D-073 mature-membrane equilibrium sufficiency
+- `digital-protocell/crates/chemistry-core/src/d073_analysis.rs` — p_required inversion, fixed-P control class, long-horizon class, RouteEvidence073/select_route
+- `digital-protocell/crates/chemistry-core/tests/d073_tests.rs` — Gate0–7 focused unit tests
+- `digital-protocell/crates/experiment-runner/src/d073.rs` — Gates 0–7 pipeline (diagnostic fixed-P holds)
+- `digital-protocell/docs/d073_mature_membrane_equilibrium_sufficiency.md` — terminal report
+- `digital-protocell/experiments/generated/d073/` — gate artifacts (archived symlink)

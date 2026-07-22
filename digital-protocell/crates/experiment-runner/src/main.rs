@@ -69,6 +69,7 @@ mod d069;
 mod d070;
 mod d071;
 mod d072;
+mod d073;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -387,6 +388,10 @@ enum Commands {
     D072 {
         #[command(subcommand)]
         action: D072Commands,
+    },
+    D073 {
+        #[command(subcommand)]
+        action: D073Commands,
     },
 }
 
@@ -711,6 +716,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D070 { action } => run_d070(action)?,
         Commands::D071 { action } => run_d071(action)?,
         Commands::D072 { action } => run_d072(action)?,
+        Commands::D073 { action } => run_d073(action)?,
     }
     Ok(())
 }
@@ -3646,6 +3652,31 @@ fn run_d072(action: D072Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d072::run_pipeline(&out)?;
             println!(
                 "D-072 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D073Commands {
+    /// Mature-membrane equilibrium sufficiency audit (Gates 0–7).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d073")]
+        output: PathBuf,
+    },
+}
+
+fn run_d073(action: D073Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D073Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d073::run_pipeline(&out)?;
+            println!(
+                "D-073 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()

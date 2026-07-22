@@ -1,25 +1,26 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260722-d072-mature-membrane-damage-refill-causal-audit
-- Project directive: D-072
-- Goal: Causal audit of mature-membrane damage refill failure under frozen exchange
+- ID: D-20260722-d073-mature-membrane-equilibrium-sufficiency-audit
+- Project directive: D-073
+- Goal: Audit whether D-072 Route X is upheld by equilibrium-sufficient fixed-P / long-horizon evidence
 - Status: done
-- Acceptance: met — `D072_FROZEN_EXCHANGE_CANNOT_REFILL_DAMAGE` (Route X)
-- Touched files: d072_analysis/tests, experiment-runner/d072, main.rs, docs/d072_*, experiments/generated/d072, .agent/*
-- Next action: D-073 exchange-architecture review; next_execution_started=false
+- Acceptance: met — `D073_ORGANISM_EXCHANGE_INTEGRATION_DEFECT` (Route E)
+- Touched files: d073_analysis/tests, experiment-runner/d073, docs/d073_*, experiments/generated/d073, .agent/*
+- Next action: D-074 repair organism exchange integration; next_execution_started=false
 
 ## Repo facts needed now
-- Gate0: constitutive~0.897, regulated~0.894, k_p=0~0.894; floor 0.8928
-- τ≈186; 1200-step sim_time≈6 ≈0.032τ; recovery worsens over 5τ
-- Local p≈0.057 ⇒ θ_eq≈0.74; fixed_P control ~0.892 (does not restore)
-- Synthetic isolated exchange parity PASS
+- D-072 sealed `28dcdc4` / `D-072-membrane-damage-refill-audit`; Route X provisional retained
+- D-072 fixed_P = NOT_ACTUALLY_FIXED (P=1 once, not held)
+- p_required(0.95)≈0.38; true holds at 1.0×/1.1× do not recover ≥0.95 within 5τ
+- Long-horizon constitutive: SLOW_TRANSIENT_DECAY (0.998→0.668); A retention≈0.056
+- Endogenous mean interface p≈0.18 < 0.38; total P large
 - Unrelated dirty: .cursor/rules/*, AGENTS.md — exclude
 
 ## Last validation
-- Command: cargo test -p chemistry-core --test d072_tests --release; D072 pipeline
-- Result: 11/11 PASS; primary D072_FROZEN_EXCHANGE_CANNOT_REFILL_DAMAGE
+- Command: cargo test -p chemistry-core --test d073_tests --release; D073 pipeline
+- Result: 10/10 PASS; primary D073_ORGANISM_EXCHANGE_INTEGRATION_DEFECT
 
 ## Open blockers
 - Stage E remains BLOCKED_NOT_RECOVERED
-- Organism-level frozen exchange does not refill 10% mature-membrane damage despite synthetic parity
+- Organism does not recover under analytically sufficient fixed interface p
