@@ -64,6 +64,7 @@ mod d064;
 mod d065;
 mod d066;
 mod d067;
+mod d068;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -362,6 +363,10 @@ enum Commands {
     D067 {
         #[command(subcommand)]
         action: D067Commands,
+    },
+    D068 {
+        #[command(subcommand)]
+        action: D068Commands,
     },
 }
 
@@ -681,6 +686,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D065 { action } => run_d065(action)?,
         Commands::D066 { action } => run_d066(action)?,
         Commands::D067 { action } => run_d067(action)?,
+        Commands::D068 { action } => run_d068(action)?,
     }
     Ok(())
 }
@@ -3491,6 +3497,31 @@ fn run_d067(action: D067Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d067::run_pipeline(&out)?;
             println!(
                 "D-067 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D068Commands {
+    /// Shadow-only precursor demand and membrane assembly audit (Gates -1–15).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d068")]
+        output: PathBuf,
+    },
+}
+
+fn run_d068(action: D068Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D068Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d068::run_pipeline(&out)?;
+            println!(
+                "D-068 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()
