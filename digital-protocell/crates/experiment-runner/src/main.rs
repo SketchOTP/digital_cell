@@ -68,6 +68,7 @@ mod d068;
 mod d069;
 mod d070;
 mod d071;
+mod d072;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -382,6 +383,10 @@ enum Commands {
     D071 {
         #[command(subcommand)]
         action: D071Commands,
+    },
+    D072 {
+        #[command(subcommand)]
+        action: D072Commands,
     },
 }
 
@@ -705,6 +710,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D069 { action } => run_d069(action)?,
         Commands::D070 { action } => run_d070(action)?,
         Commands::D071 { action } => run_d071(action)?,
+        Commands::D072 { action } => run_d072(action)?,
     }
     Ok(())
 }
@@ -3615,6 +3621,31 @@ fn run_d071(action: D071Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d071::run_pipeline(&out)?;
             println!(
                 "D-071 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D072Commands {
+    /// Mature-membrane damage refill causal audit (Gates 0–6).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d072")]
+        output: PathBuf,
+    },
+}
+
+fn run_d072(action: D072Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D072Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d072::run_pipeline(&out)?;
+            println!(
+                "D-072 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()

@@ -554,3 +554,8 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/docs/d071_capacity_bounded_precursor_demand_regulation.md` — terminal report
 - `digital-protocell/experiments/generated/d071/` — gate artifacts (archived symlink)
 - Opt-in params: `SimParams.precursor_m_p`, `precursor_product_inhibition_ki` (defaults 1 / 0 preserve constitutive)
+
+## D-072 mature-membrane damage refill audit
+- `digital-protocell/crates/experiment-runner/src/d072.rs` — Gates 0–6 artifact pipeline and frozen D-071 repair diagnostics
+- `digital-protocell/crates/experiment-runner/src/main.rs` — `d072 pipeline` CLI wiring
+- `digital-protocell/crates/chemistry-core/src/d072_analysis.rs` — refill route/timescale/intervention helper contracts
