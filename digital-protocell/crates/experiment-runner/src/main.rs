@@ -67,6 +67,7 @@ mod d067;
 mod d068;
 mod d069;
 mod d070;
+mod d071;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -377,6 +378,10 @@ enum Commands {
     D070 {
         #[command(subcommand)]
         action: D070Commands,
+    },
+    D071 {
+        #[command(subcommand)]
+        action: D071Commands,
     },
 }
 
@@ -699,6 +704,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D068 { action } => run_d068(action)?,
         Commands::D069 { action } => run_d069(action)?,
         Commands::D070 { action } => run_d070(action)?,
+        Commands::D071 { action } => run_d071(action)?,
     }
     Ok(())
 }
@@ -3584,6 +3590,31 @@ fn run_d070(action: D070Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d070::run_pipeline(&out)?;
             println!(
                 "D-070 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D071Commands {
+    /// Capacity-bounded precursor demand regulation (Gates 0–8).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d071")]
+        output: PathBuf,
+    },
+}
+
+fn run_d071(action: D071Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D071Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d071::run_pipeline(&out)?;
+            println!(
+                "D-071 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()

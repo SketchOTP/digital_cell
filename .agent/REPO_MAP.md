@@ -540,3 +540,17 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d070.rs` — Gates −1–12 pipeline
 - `digital-protocell/docs/d070_mature_membrane_seed_capacity_repair.md` — terminal report
 - `digital-protocell/experiments/generated/d070/` — gate artifacts (archived symlink)
+
+## D-071 — Precursor demand regulation
+- `digital-protocell/crates/chemistry-core/src/d071_analysis.rs` — PrecursorRegulationParams, derive_m_p/k_i_candidates, maintenance_windows_pass, radius_portable_row, RouteEvidence071, select_route
+- `digital-protocell/crates/chemistry-core/tests/d071_tests.rs` — unit tests for d071 analysis helpers
+- `digital-protocell/crates/experiment-runner/src/d071.rs` — Gates 0–8 pipeline (control_reproduction→demand_ledger→candidates→accounting→maintenance→repair→causal→portability→stage_e)
+- `digital-protocell/experiments/generated/d071/` — gate artifacts (archived symlink → /mnt/storage1tb/...)
+
+## D-071 capacity-bounded precursor demand regulation
+- `digital-protocell/crates/chemistry-core/src/d071_analysis.rs` — regulation schema, candidate helpers, route select
+- `digital-protocell/crates/chemistry-core/tests/d071_tests.rs` — focused Gate/equation tests
+- `digital-protocell/crates/experiment-runner/src/d071.rs` — Gates 0–8 pipeline
+- `digital-protocell/docs/d071_capacity_bounded_precursor_demand_regulation.md` — terminal report
+- `digital-protocell/experiments/generated/d071/` — gate artifacts (archived symlink)
+- Opt-in params: `SimParams.precursor_m_p`, `precursor_product_inhibition_ki` (defaults 1 / 0 preserve constitutive)

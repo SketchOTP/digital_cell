@@ -755,6 +755,12 @@ pub struct SimParams {
     /// D-023 precursor turnover rate coefficient (P → W). Frozen to k_A_decay.
     #[serde(default = "default_k_precursor_decay")]
     pub k_precursor_decay: f64,
+    /// D-071 opt-in constitutive precursor scale `m_P` (default 1 = frozen law).
+    #[serde(default = "default_precursor_m_p")]
+    pub precursor_m_p: f64,
+    /// D-071 opt-in product inhibition `K_I`. `0` disables inhibition (frozen law).
+    #[serde(default = "default_precursor_product_inhibition_ki")]
+    pub precursor_product_inhibition_ki: f64,
     /// D-023 precursor diffusivity. Frozen to D_A for the initial bounded experiment.
     #[serde(default = "default_d_p")]
     pub d_p: f64,
@@ -909,6 +915,14 @@ fn default_k_precursor() -> f64 {
 }
 
 fn default_k_assembly() -> f64 {
+    0.0
+}
+
+fn default_precursor_m_p() -> f64 {
+    1.0
+}
+
+fn default_precursor_product_inhibition_ki() -> f64 {
     0.0
 }
 
@@ -1213,6 +1227,8 @@ impl Default for SimParams {
             k_precursor: default_k_precursor(),
             k_assembly: default_k_assembly(),
             k_precursor_decay: default_k_precursor_decay(),
+            precursor_m_p: default_precursor_m_p(),
+            precursor_product_inhibition_ki: default_precursor_product_inhibition_ki(),
             d_p: default_d_p(),
             k_ads: default_k_ads(),
             k_exchange: default_k_exchange(),

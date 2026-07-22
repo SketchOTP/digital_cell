@@ -7,7 +7,9 @@
 use crate::config::{SimParams, SurfaceExchangeIntegrator, SurfaceTurnoverSchema, DX};
 use crate::fields::interior_weight;
 use crate::grid::Grid;
-use crate::membrane::{membrane_catalyst_saturation, precursor_decay_rate, precursor_synthesis_rate};
+use crate::membrane::{
+    membrane_catalyst_saturation, precursor_decay_rate, precursor_synthesis_rate_regulated,
+};
 use crate::reactions::interface_weight;
 
 /// Default regularization for interface normal.
@@ -1850,7 +1852,13 @@ fn evolve_surface_maturation_v11(
         }
 
         if enable_synthesis {
-            let syn = precursor_synthesis_rate(phi[idx], catalyst[idx], activated[idx], params) * dt;
+            let syn = precursor_synthesis_rate_regulated(
+                phi[idx],
+                catalyst[idx],
+                activated[idx],
+                precursor[idx],
+                params,
+            ) * dt;
             activated_next[idx] -= syn;
             precursor_next[idx] += syn;
             totals.precursor_synthesis_delta += syn;
@@ -2135,7 +2143,13 @@ pub fn evolve_surface_density_with_vn(
         }
 
         if enable_synthesis {
-            let syn = precursor_synthesis_rate(phi[idx], catalyst[idx], activated[idx], params) * dt;
+            let syn = precursor_synthesis_rate_regulated(
+                phi[idx],
+                catalyst[idx],
+                activated[idx],
+                precursor[idx],
+                params,
+            ) * dt;
             activated_next[idx] -= syn;
             precursor_next[idx] += syn;
             totals.precursor_synthesis_delta += syn;

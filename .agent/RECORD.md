@@ -25,3 +25,4 @@ This file is specifically for the operators use. It keeps record of what the AI 
 - 2026-07-21 | event:d067_route_n | detail:D067_NO_PORTABLE_ACTIVATION_CAPACITY_LAW; selected_activation_law=none; Stage E remains BLOCKED_NOT_RECOVERED
 - 2026-07-21 | D-068 | sealed Route S D068_MEMBRANE_DESORPTION_DOMINANT; precursor/activation unchanged; Stage E remains BLOCKED_NOT_RECOVERED
 - 2026-07-22 | D-069 | event:route_selected | Route_X D069_MEMBRANE_EXCHANGE_EXECUTION_DEFECT | seed S/capacity≈2.306; des≈over_capacity_mass | exchange/precursor/activation unauthorized | Stage E BLOCKED_NOT_RECOVERED
+- 2026-07-22 | D-071 | event:directive_complete | conclusion:D071_FAIL | note:Gates 0–4,6–7 pass; Gate5 repair unreachable constitutively; Stage E remains BLOCKED; production defaults unchanged

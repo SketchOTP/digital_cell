@@ -230,6 +230,28 @@ pub fn precursor_synthesis_rate(
         * interior_weight(phi)
 }
 
+/// D-071 regulated precursor synthesis using old-state local P.
+///
+/// `r_P = m_P · r_{P,0} · K_I/(K_I+P)` when `K_I > 0`; otherwise `m_P · r_{P,0}`.
+/// Defaults `m_P=1`, `K_I=0` preserve the frozen constitutive law.
+#[inline]
+pub fn precursor_synthesis_rate_regulated(
+    phi: f64,
+    catalyst: f64,
+    activated: f64,
+    precursor: f64,
+    params: &SimParams,
+) -> f64 {
+    let r0 = precursor_synthesis_rate(phi, catalyst, activated, params);
+    let m = params.precursor_m_p.max(0.0);
+    let ki = params.precursor_product_inhibition_ki;
+    if ki > 0.0 {
+        r0 * m * (ki / (ki + precursor.max(0.0)))
+    } else {
+        r0 * m
+    }
+}
+
 /// Interface assembly P → M: `k_assembly · P · I(φ) · max(0, 1 − M/M_max)`.
 /// Assembles only where the structural interface exists (interface weight I(φ)).
 #[inline]
@@ -326,7 +348,13 @@ pub fn evolve_precursor_assembly(
             membrane_next[idx] = 0.0;
             continue;
         }
-        let r_syn = precursor_synthesis_rate(phi[idx], catalyst[idx], activated[idx], params);
+        let r_syn = precursor_synthesis_rate_regulated(
+            phi[idx],
+            catalyst[idx],
+            activated[idx],
+            precursor[idx],
+            params,
+        );
         let r_asm = precursor_assembly_rate(phi[idx], precursor[idx], membrane[idx], params);
         let r_dec = precursor_decay_rate(precursor[idx], params);
         let loss = membrane_losses(phi[idx], membrane[idx], params);
