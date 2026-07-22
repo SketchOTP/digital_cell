@@ -71,6 +71,7 @@ mod d071;
 mod d072;
 mod d073;
 mod d074;
+mod d075;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -398,6 +399,10 @@ enum Commands {
         #[command(subcommand)]
         action: D074Commands,
     },
+    D075 {
+        #[command(subcommand)]
+        action: D075Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -723,6 +728,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D072 { action } => run_d072(action)?,
         Commands::D073 { action } => run_d073(action)?,
         Commands::D074 { action } => run_d074(action)?,
+        Commands::D075 { action } => run_d075(action)?,
     }
     Ok(())
 }
@@ -3708,6 +3714,31 @@ fn run_d074(action: D074Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d074::run_pipeline(&out)?;
             println!(
                 "D-074 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D075Commands {
+    /// Cellwise exposure-gated membrane requalification (Gates 0–8).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d075")]
+        output: PathBuf,
+    },
+}
+
+fn run_d075(action: D075Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D075Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d075::run_pipeline(&out)?;
+            println!(
+                "D-075 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()

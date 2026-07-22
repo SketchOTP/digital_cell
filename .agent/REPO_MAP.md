@@ -573,3 +573,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d074.rs` — Gates 0–7 pipeline
 - `digital-protocell/docs/d074_cellwise_exchange_integration_parity.md` — report
 - `digital-protocell/experiments/generated/d074/` — artifacts (symlink → storage1tb)
+
+## D-075 cellwise exposure-gated membrane requalification
+- `digital-protocell/crates/chemistry-core/src/d075_analysis.rs` — E_i observer (`CellExposureState`, FE/BE contraction, `qualify_exposure_capacity`, `classify_long_horizon`, `select_route`)
+- `digital-protocell/crates/chemistry-core/tests/d075_tests.rs` — contraction/exposure/route/preservation tests (12)
+- `digital-protocell/crates/experiment-runner/src/d075.rs` — Gates 0–8 pipeline; shared `ExposureObserver`; recovery-aware fixed-P stop
+- `digital-protocell/docs/d075_cellwise_exposure_membrane_requalification.md` — report
+- `digital-protocell/experiments/generated/d075/` — artifacts (symlink → storage1tb)
