@@ -533,3 +533,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/chemistry-core/src/d069_analysis.rs` — frozen P↔S equilibrium, identification, and route classifiers
 - `digital-protocell/crates/experiment-runner/src/d069.rs` — shadow-only Gates −1–16 equilibrium/desorption audit
 - `digital-protocell/crates/experiment-runner/src/main.rs` — `d069 pipeline` CLI wiring
+
+## D-070 mature-membrane seed capacity contract
+- `digital-protocell/crates/chemistry-core/src/d070_analysis.rs` — SEED_CAPACITY_CONTRACT_V1 validator + Policies A–D + route select
+- `digital-protocell/crates/chemistry-core/tests/d070_tests.rs` — capacity/migration/route tests
+- `digital-protocell/crates/experiment-runner/src/d070.rs` — Gates −1–12 pipeline
+- `digital-protocell/docs/d070_mature_membrane_seed_capacity_repair.md` — terminal report
+- `digital-protocell/experiments/generated/d070/` — gate artifacts (archived symlink)
