@@ -521,3 +521,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/chemistry-core/tests/d067_tests.rs` — focused D-067 analysis and route tests
 - `digital-protocell/docs/d067_activation_capacity_law_identification.md` — completion report (`D067_NO_PORTABLE_ACTIVATION_CAPACITY_LAW`)
 - `digital-protocell/experiments/generated/d067` → archive symlink
+
+## D-068 precursor demand / membrane assembly
+- `digital-protocell/crates/chemistry-core/src/d068_analysis.rs` — A/P/S/W ledgers, utility/replacement/assembly classifiers, route selection
+- `digital-protocell/crates/experiment-runner/src/d068.rs` — shadow-only Gates −1–15 precursor→membrane audit (uses accepted exchange_net)
+- `digital-protocell/crates/chemistry-core/tests/d068_tests.rs` — focused parity/ledger/route tests
+- `digital-protocell/docs/d068_precursor_demand_membrane_assembly_audit.md` — `D068_MEMBRANE_DESORPTION_DOMINANT`
+- `digital-protocell/experiments/generated/d068` → archive symlink
