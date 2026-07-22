@@ -66,6 +66,7 @@ mod d066;
 mod d067;
 mod d068;
 mod d069;
+mod d070;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -372,6 +373,10 @@ enum Commands {
     D069 {
         #[command(subcommand)]
         action: D069Commands,
+    },
+    D070 {
+        #[command(subcommand)]
+        action: D070Commands,
     },
 }
 
@@ -693,6 +698,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D067 { action } => run_d067(action)?,
         Commands::D068 { action } => run_d068(action)?,
         Commands::D069 { action } => run_d069(action)?,
+        Commands::D070 { action } => run_d070(action)?,
     }
     Ok(())
 }
@@ -3553,6 +3559,31 @@ fn run_d069(action: D069Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d069::run_pipeline(&out)?;
             println!(
                 "D-069 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D070Commands {
+    /// Mature-membrane seed/capacity contract repair (Gates -1–12).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d070")]
+        output: PathBuf,
+    },
+}
+
+fn run_d070(action: D070Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D070Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d070::run_pipeline(&out)?;
+            println!(
+                "D-070 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()
