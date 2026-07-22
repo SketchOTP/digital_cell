@@ -65,6 +65,7 @@ mod d065;
 mod d066;
 mod d067;
 mod d068;
+mod d069;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -367,6 +368,10 @@ enum Commands {
     D068 {
         #[command(subcommand)]
         action: D068Commands,
+    },
+    D069 {
+        #[command(subcommand)]
+        action: D069Commands,
     },
 }
 
@@ -687,6 +692,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D066 { action } => run_d066(action)?,
         Commands::D067 { action } => run_d067(action)?,
         Commands::D068 { action } => run_d068(action)?,
+        Commands::D069 { action } => run_d069(action)?,
     }
     Ok(())
 }
@@ -3522,6 +3528,31 @@ fn run_d068(action: D068Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d068::run_pipeline(&out)?;
             println!(
                 "D-068 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D069Commands {
+    /// Shadow-only mature P↔S exchange equilibrium and desorption audit (Gates -1–16).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d069")]
+        output: PathBuf,
+    },
+}
+
+fn run_d069(action: D069Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D069Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d069::run_pipeline(&out)?;
+            println!(
+                "D-069 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
                 out.join("manifest.json").display()
