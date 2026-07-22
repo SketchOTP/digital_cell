@@ -513,3 +513,11 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/experiment-runner/src/d066.rs` — Gates −1–12 shadow pipeline
 - `docs/d066_activation_utilization_capacity_audit.md` — completion (`D066_FROZEN_ACTIVATION_CAPACITY_LIMIT`)
 - `digital-protocell/experiments/generated/d066` → archive symlink
+
+## D-067 activation-capacity law identification
+- `digital-protocell/crates/chemistry-core/src/d067_analysis.rs` — observer-only substrate lineage, candidate laws, identification gates, and route selection
+- `digital-protocell/crates/chemistry-core/src/d050_analysis.rs` — schema 3 bounded-N/F diagnostic dispatcher (schema 2 remains production path for V13)
+- `digital-protocell/crates/experiment-runner/src/d067.rs` — shadow-only Gates −1–10 activation-capacity pipeline and artifacts
+- `digital-protocell/crates/chemistry-core/tests/d067_tests.rs` — focused D-067 analysis and route tests
+- `digital-protocell/docs/d067_activation_capacity_law_identification.md` — completion report (`D067_NO_PORTABLE_ACTIVATION_CAPACITY_LAW`)
+- `digital-protocell/experiments/generated/d067` → archive symlink
