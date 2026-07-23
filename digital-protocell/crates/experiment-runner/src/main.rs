@@ -74,6 +74,7 @@ mod d074;
 mod d075;
 mod d076;
 mod d077;
+mod d078;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -413,6 +414,10 @@ enum Commands {
         #[command(subcommand)]
         action: D077Commands,
     },
+    D078 {
+        #[command(subcommand)]
+        action: D078Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -741,6 +746,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D075 { action } => run_d075(action)?,
         Commands::D076 { action } => run_d076(action)?,
         Commands::D077 { action } => run_d077(action)?,
+        Commands::D078 { action } => run_d078(action)?,
     }
     Ok(())
 }
@@ -3804,6 +3810,31 @@ fn run_d077(action: D077Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["primary_conclusion"],
                 result["route"],
                 result["selected_chi"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D078Commands {
+    /// Phase 1 boundary substrate redesign downselect (Gates 0–6).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d078")]
+        output: PathBuf,
+    },
+}
+
+fn run_d078(action: D078Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D078Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d078::run_pipeline(&out)?;
+            println!(
+                "D-078 pipeline primary={} route={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
                 out.join("manifest.json").display()
             );
         }

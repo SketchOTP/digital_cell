@@ -592,3 +592,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - experiment-runner/src/d077.rs — artifact pipeline
 - digital-protocell/docs/d077_cooperative_surface_condensation_review.md — report
 - experiments/generated/d077/ — artifacts (symlink → storage1tb)
+
+## D-078 boundary substrate redesign (review)
+- chemistry-core/src/d078_analysis.rs — Gates0–6; structure-native φ vs single amphiphile M; Route N continuum rejected
+- chemistry-core/tests/d078_tests.rs — lineage/conservation/feasibility/stability/repair/route tests (12)
+- experiment-runner/src/d078.rs — artifact pipeline
+- digital-protocell/docs/d078_phase1_boundary_substrate_redesign.md — report
+- experiments/generated/d078/ — artifacts (symlink → storage1tb)
