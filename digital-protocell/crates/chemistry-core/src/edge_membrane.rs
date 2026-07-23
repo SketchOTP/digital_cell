@@ -900,3 +900,384 @@ pub fn grid_for_radius(radius: f64) -> (usize, usize) {
     let s = if s % 2 == 0 { s + 1 } else { s };
     (s, s)
 }
+
+// ─── D-080 cut-cell support-aware kinetics (legacy crossing API unchanged) ───
+
+use crate::edge_support::CutCellSupport;
+
+/// Seed free L near cut-cell supported faces (no completed bound ring).
+pub fn seed_free_near_support(
+    state: &mut EdgeMembraneState,
+    support: &CutCellSupport,
+    density_per_face: f64,
+) {
+    let faces = support.supported_faces();
+    let n = faces.len().max(1) as f64;
+    let total = density_per_face * n;
+    let mut weights = vec![0.0; state.free_l.len()];
+    let mut wsum = 0.0;
+    for &(kind, idx) in &faces {
+        let (i0, j0, i1, j1) = state.face_cells(kind, idx);
+        for (i, j) in [(i0, j0), (i1, j1)] {
+            let c = state.cell_idx(i, j);
+            weights[c] += 1.0;
+            wsum += 1.0;
+        }
+    }
+    if wsum <= 0.0 {
+        return;
+    }
+    for (c, w) in weights.iter().enumerate() {
+        state.free_l[c] += total * (*w) / wsum;
+    }
+}
+
+/// Accepted step using cut-cell support for bind eligibility, capacity, and lateral graph.
+pub fn accepted_step_supported(
+    state: &mut EdgeMembraneState,
+    phi: &[f64],
+    support: &CutCellSupport,
+    params: &EdgeMembraneParams,
+    dt: f64,
+    allow_produce: bool,
+    k_lateral_scale: f64,
+) -> StepLedger {
+    let mut ledger = StepLedger::default();
+    let supported = support.supported_faces();
+
+    for &(kind, idx) in &supported {
+        let cap = support.face_capacity(kind, idx, params.b_max);
+        let i_phi = state.face_i_phi(kind, idx, phi);
+        if i_phi < 1e-4 {
+            continue;
+        }
+        let l_face = state.face_free_l_mean(kind, idx);
+        let b = state.bound_ref(kind)[idx];
+        let room = (cap - b).max(0.0);
+        let q = catalyst_activation(state.catalyst, params.k_c);
+        let j_bind = params.k_bind * q * i_phi * l_face * (room / cap.max(1e-15));
+        let mut d = j_bind * dt;
+        let avail = {
+            let (i0, j0, i1, j1) = state.face_cells(kind, idx);
+            state.free_l[state.cell_idx(i0, j0)].max(0.0)
+                + state.free_l[state.cell_idx(i1, j1)].max(0.0)
+        };
+        d = d.min(avail).min(room);
+        if d > 0.0 {
+            take_from_face_neighbors(state, kind, idx, d);
+            state.bound_mut(kind)[idx] += d;
+            ledger.bind += d;
+        }
+    }
+
+    // Unbind wherever bound mass exists (including residual off-support).
+    for kind in [FaceKind::Horizontal, FaceKind::Vertical] {
+        let n = match kind {
+            FaceKind::Horizontal => state.n_h(),
+            FaceKind::Vertical => state.n_v(),
+        };
+        for idx in 0..n {
+            let b = state.bound_ref(kind)[idx];
+            if b < 1e-15 {
+                continue;
+            }
+            let r = state.endpoint_factor(kind, idx, params);
+            let mut d = params.k_unbind * b * r * dt;
+            d = d.min(b);
+            if d > 0.0 {
+                state.bound_mut(kind)[idx] -= d;
+                give_to_face_neighbors(state, kind, idx, d);
+                ledger.unbind += d;
+            }
+        }
+    }
+
+    lateral_transfer_supported(state, support, params, dt, k_lateral_scale, &mut ledger);
+
+    if allow_produce && params.k_produce > 0.0 && state.activated > 0.0 {
+        let q = catalyst_activation(state.catalyst, params.k_c);
+        let mut d_a = params.k_produce * q * state.activated * dt;
+        d_a = d_a.min(state.activated);
+        let d_l = d_a * params.yield_l_from_a;
+        state.activated -= d_a;
+        let mut wsum = 0.0;
+        let mut w = vec![0.0; state.free_l.len()];
+        for (c, p) in phi.iter().enumerate() {
+            let iw = interface_weight(*p);
+            w[c] = iw;
+            wsum += iw;
+        }
+        if wsum > 0.0 {
+            for c in 0..w.len() {
+                state.free_l[c] += d_l * w[c] / wsum;
+            }
+        } else {
+            let per = d_l / state.free_l.len() as f64;
+            for v in &mut state.free_l {
+                *v += per;
+            }
+        }
+        ledger.produce += d_l;
+    }
+
+    for v in &mut state.free_l {
+        *v = v.max(0.0);
+    }
+    for &(kind, idx) in &supported {
+        let cap = support.face_capacity(kind, idx, params.b_max);
+        let b = state.bound_ref(kind)[idx];
+        if b > cap {
+            let excess = b - cap;
+            state.bound_mut(kind)[idx] = cap;
+            give_to_face_neighbors(state, kind, idx, excess);
+        } else if b < 0.0 {
+            state.bound_mut(kind)[idx] = 0.0;
+        }
+    }
+    // Off-support residual: return any mass to free L (should stay ~0).
+    for kind in [FaceKind::Horizontal, FaceKind::Vertical] {
+        let n = match kind {
+            FaceKind::Horizontal => state.n_h(),
+            FaceKind::Vertical => state.n_v(),
+        };
+        for idx in 0..n {
+            if support.is_supported(kind, idx) {
+                continue;
+            }
+            let b = state.bound_ref(kind)[idx];
+            if b > 0.0 {
+                state.bound_mut(kind)[idx] = 0.0;
+                give_to_face_neighbors(state, kind, idx, b);
+            }
+        }
+    }
+    state.activated = state.activated.max(0.0);
+    state.catalyst = state.catalyst.max(0.0);
+    state.accepted_steps += 1;
+    ledger
+}
+
+fn lateral_transfer_supported(
+    state: &mut EdgeMembraneState,
+    support: &CutCellSupport,
+    params: &EdgeMembraneParams,
+    dt: f64,
+    k_lateral_scale: f64,
+    ledger: &mut StepLedger,
+) {
+    let kind_ord = |k: FaceKind| match k {
+        FaceKind::Horizontal => 0u8,
+        FaceKind::Vertical => 1u8,
+    };
+    let thr = 1e-12;
+    let faces = support.supported_faces();
+    let k_lat = params.k_lateral * k_lateral_scale;
+    let mean_m = support.mean_positive_measure().max(1e-15);
+    // Pairwise transfers with live capacity checks (conserves B exactly).
+    let mut pairs: Vec<((FaceKind, usize), (FaceKind, usize))> = Vec::new();
+    for &(kind, idx) in &faces {
+        for (nk, ni) in support.neighbors(kind, idx) {
+            if !support.is_supported(nk, ni) {
+                continue;
+            }
+            // Order pairs to avoid double-counting undirected edges.
+            let a = (kind_ord(kind), idx);
+            let b = (kind_ord(nk), ni);
+            if a < b {
+                pairs.push(((kind, idx), (nk, ni)));
+            }
+        }
+    }
+    for &((k0, i0), (k1, i1)) in &pairs {
+        let b0 = state.bound_ref(k0)[i0];
+        let b1 = state.bound_ref(k1)[i1];
+        let diff = b0 - b1;
+        if diff.abs() <= thr {
+            continue;
+        }
+        let (src_k, src_i, dst_k, dst_i, dpos) = if diff > 0.0 {
+            (k0, i0, k1, i1, diff)
+        } else {
+            (k1, i1, k0, i0, -diff)
+        };
+        let cap_dst = support.face_capacity(dst_k, dst_i, params.b_max);
+        let room = (cap_dst - state.bound_ref(dst_k)[dst_i]).max(0.0);
+        let m_scale =
+            0.5 * (support.measure(src_k, src_i) + support.measure(dst_k, dst_i)) / mean_m;
+        let mut flux = k_lat * m_scale * 0.5 * dpos * dt;
+        flux = flux
+            .min(dpos * 0.5)
+            .min(room)
+            .min(state.bound_ref(src_k)[src_i]);
+        if flux > 0.0 {
+            state.bound_mut(src_k)[src_i] -= flux;
+            state.bound_mut(dst_k)[dst_i] += flux;
+            ledger.lateral += flux;
+        }
+    }
+}
+
+pub fn support_coverage(
+    state: &EdgeMembraneState,
+    support: &CutCellSupport,
+    params: &EdgeMembraneParams,
+) -> f64 {
+    let thr = params.occupied_theta * params.b_max;
+    let faces = support.supported_faces();
+    let total = faces.len().max(1) as f64;
+    let mut occ = 0.0;
+    for &(kind, idx) in &faces {
+        if state.bound_ref(kind)[idx] >= thr {
+            occ += 1.0;
+        }
+    }
+    occ / total
+}
+
+pub fn off_support_bound_fraction(state: &EdgeMembraneState, support: &CutCellSupport) -> f64 {
+    let mut on = 0.0;
+    let mut off = 0.0;
+    for i in 0..state.n_h() {
+        let m = state.bound_h[i];
+        if support.is_supported(FaceKind::Horizontal, i) {
+            on += m;
+        } else {
+            off += m;
+        }
+    }
+    for i in 0..state.n_v() {
+        let m = state.bound_v[i];
+        if support.is_supported(FaceKind::Vertical, i) {
+            on += m;
+        } else {
+            off += m;
+        }
+    }
+    let t = on + off;
+    if t <= 1e-15 {
+        0.0
+    } else {
+        off / t
+    }
+}
+
+pub fn connected_closed_support_observer(
+    state: &EdgeMembraneState,
+    support: &CutCellSupport,
+    params: &EdgeMembraneParams,
+) -> (f64, bool, usize) {
+    let thr = params.occupied_theta * params.b_max;
+    let supported = support.supported_faces();
+    let n_sup = supported.len();
+    let mut nodes: Vec<(FaceKind, usize)> = Vec::new();
+    for &(kind, idx) in &supported {
+        if state.bound_ref(kind)[idx] >= thr {
+            nodes.push((kind, idx));
+        }
+    }
+    if nodes.is_empty() {
+        return (0.0, false, n_sup);
+    }
+    let idx_map: std::collections::HashMap<(FaceKind, usize), usize> =
+        nodes.iter().copied().enumerate().map(|(i, n)| (n, i)).collect();
+    let mut adj: Vec<Vec<usize>> = vec![vec![]; nodes.len()];
+    for a in 0..nodes.len() {
+        for (nk, ni) in support.neighbors(nodes[a].0, nodes[a].1) {
+            if let Some(&b) = idx_map.get(&(nk, ni)) {
+                if b > a {
+                    adj[a].push(b);
+                    adj[b].push(a);
+                }
+            }
+        }
+    }
+    let mut seen = vec![false; nodes.len()];
+    let mut best = 0usize;
+    let mut best_nodes = Vec::new();
+    for s in 0..nodes.len() {
+        if seen[s] {
+            continue;
+        }
+        let mut q = VecDeque::new();
+        let mut comp = Vec::new();
+        seen[s] = true;
+        q.push_back(s);
+        while let Some(u) = q.pop_front() {
+            comp.push(u);
+            for &v in &adj[u] {
+                if !seen[v] {
+                    seen[v] = true;
+                    q.push_back(v);
+                }
+            }
+        }
+        if comp.len() > best {
+            best = comp.len();
+            best_nodes = comp;
+        }
+    }
+    let coverage = best as f64 / n_sup.max(1) as f64;
+    let closed = component_has_cycle(&adj, &best_nodes);
+    (coverage, closed, n_sup)
+}
+
+pub fn mean_support_permeability(
+    state: &EdgeMembraneState,
+    support: &CutCellSupport,
+    params: &EdgeMembraneParams,
+    species: &str,
+) -> f64 {
+    let beta = species_beta(params, species);
+    let faces = support.supported_faces();
+    let mut sum = 0.0;
+    let mut n = 0.0;
+    for &(kind, idx) in &faces {
+        let cap = support.face_capacity(kind, idx, params.b_max).max(1e-15);
+        let th = (state.bound_ref(kind)[idx] / cap).clamp(0.0, 1.0);
+        sum += face_permeability(th, beta);
+        n += 1.0;
+    }
+    if n <= 0.0 {
+        1.0
+    } else {
+        sum / n
+    }
+}
+
+pub fn apply_damage_supported(
+    state: &mut EdgeMembraneState,
+    support: &CutCellSupport,
+    fraction: f64,
+    params: &EdgeMembraneParams,
+) -> f64 {
+    let mut targets: Vec<(FaceKind, usize)> = support
+        .supported_faces()
+        .into_iter()
+        .filter(|(k, i)| state.bound_ref(*k)[*i] > params.occupied_theta * params.b_max * 0.1)
+        .collect();
+    if targets.is_empty() {
+        return 0.0;
+    }
+    let n_damage = ((targets.len() as f64) * fraction).round().max(1.0) as usize;
+    let n_damage = n_damage.min(targets.len());
+    let mut removed = 0.0;
+    for &(kind, idx) in targets.iter().take(n_damage) {
+        let b = state.bound_ref(kind)[idx];
+        state.bound_mut(kind)[idx] = 0.0;
+        state.waste += b;
+        removed += b;
+    }
+    removed
+}
+
+/// Fill all supported faces to capacity (diagnostic geometry fill; not chemistry).
+pub fn diagnostic_fill_support(
+    state: &mut EdgeMembraneState,
+    support: &CutCellSupport,
+    b_max: f64,
+) {
+    for (kind, idx) in support.supported_faces() {
+        let cap = support.face_capacity(kind, idx, b_max);
+        state.bound_mut(kind)[idx] = cap;
+    }
+}

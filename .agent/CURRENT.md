@@ -1,25 +1,25 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260722-d079-conserved-edge-network-membrane-feasibility
-- Project directive: D-079
-- Goal: Conserved edge-network membrane feasibility (L/B face substrate)
-- Status: done
-- Acceptance: met — `D079_EDGE_NETWORK_SELF_ASSEMBLY_FAILURE` (Gate 2)
-- Touched files: edge_membrane, d079_analysis/tests, experiment-runner/d079, docs/d079_*, experiments/generated/d079, .agent/*
-- Next action: operator decision on edge-kinetics revise vs discrete reject vs particle phase; next_execution_started=false
+- ID: D-20260723-d081-edge-membrane-reserve-causality-audit
+- Project directive: D-081
+- Goal: Edge-membrane reserve provenance and replenishment causality audit
+- Status: started
+- Acceptance: One D081_* primary; D-080 preserved+tagged; Gate7 provisional pending audit; stop at first mandatory fail
+- Touched files: (pending) d081_*, d080 provisional record, .agent/*
+- Next action: Reproduce D-080; commit+tag preservation; then implement D-081 gates
 
 ## Repo facts needed now
-- Start: `039044f` / `D-078-boundary-substrate-downselect`
-- Scope: `PHASE1_EDGE_NETWORK_BOUNDARY_RESEARCH_AUTHORIZED`
-- Gate2: coverage R16/22/32 ≈0.85/0.89/0.92; closed=false; off-interface=0
-- Unrelated dirty: .cursor/rules/*, AGENTS.md — leave unstaged
-- Stage E BLOCKED_NOT_RECOVERED; Phase1 PARTIAL; Production REQUIRES_REMEDIATION
+- Branch: d008-membrane-metabolic-closure
+- Sealed start: 99c0236 / D-079-edge-network-boundary-fail
+- Uncommitted D-080: D080_EDGE_NETWORK_REPAIR_OR_CAUSALITY_FAILURE
+- Leave unstaged: .cursor/rules/*, AGENTS.md
+- Frozen: cut-cell support, bind/unbind/lateral/perm, damage, A→L law; no A-for-binding
 
 ## Last validation
-- Command: cargo test -p chemistry-core --test d079_tests; D079 release pipeline
-- Result: d079 12/12; stopped Gate2 self-assembly failure
+- Command: (pending D-080 reproduction)
+- Result: —
 
 ## Open blockers
-- Stage E BLOCKED_NOT_RECOVERED
-- Edge-network not qualified; no closed ≥0.95 assembly without prescribing a ring
+- Mimir baseline path degraded on remote host (task still active)
+- Stage E BLOCKED_NOT_RECOVERED pending D-081 outcome

@@ -607,3 +607,12 @@ Concise navigation map for agents. Add entries as application code lands.
 - experiment-runner/src/d079.rs — artifact pipeline
 - digital-protocell/docs/d079_conserved_edge_network_membrane.md — report (`D079_EDGE_NETWORK_SELF_ASSEMBLY_FAILURE`)
 - experiments/generated/d079/ — artifacts (symlink → storage1tb)
+
+## D-080 geometry-consistent edge-network
+- chemistry-core/src/edge_support.rs — marching-squares cut-cell support graph (strict φ>0.5)
+- chemistry-core/src/d080_analysis.rs — Gates 0–9; stop-at-first-failure
+- chemistry-core/src/edge_membrane.rs — legacy crossing + support-aware kinetics
+- chemistry-core/tests/d080_tests.rs — MS/geometry/reproduction tests (12)
+- experiment-runner/src/d080.rs — artifact pipeline
+- digital-protocell/docs/d080_geometry_consistent_edge_network.md — report
+- experiments/generated/d080/ — artifacts (symlink → storage1tb when present)
