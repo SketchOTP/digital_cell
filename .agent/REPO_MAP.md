@@ -616,3 +616,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - experiment-runner/src/d080.rs — artifact pipeline
 - digital-protocell/docs/d080_geometry_consistent_edge_network.md — report
 - experiments/generated/d080/ — artifacts (symlink → storage1tb when present)
+
+## D-081 edge-membrane reserve causality
+- chemistry-core/src/d081_analysis.rs — Gates 0–7; membrane ledger; seed contract; stop-at-first-failure
+- chemistry-core/tests/d081_tests.rs — ledger/seed/stoichiometry/damage tests (10)
+- experiment-runner/src/d081.rs — artifact pipeline
+- digital-protocell/docs/d081_edge_membrane_reserve_causality.md — report
+- experiments/generated/d081/ — artifacts (symlink → storage1tb when present)
