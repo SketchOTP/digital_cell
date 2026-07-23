@@ -623,3 +623,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - experiment-runner/src/d081.rs — artifact pipeline
 - digital-protocell/docs/d081_edge_membrane_reserve_causality.md — report
 - experiments/generated/d081/ — artifacts (symlink → storage1tb when present)
+
+## D-082 edge-membrane activation supply
+- chemistry-core/src/d082_analysis.rs — Gates 0–6; canonical activation dispatch; field-A produce coupling
+- chemistry-core/tests/d082_tests.rs — lineage/parity/resume tests
+- experiment-runner/src/d082.rs — artifact pipeline
+- digital-protocell/docs/d082_edge_activation_supply_integration.md — report (Route I)
+- experiments/generated/d082/ — artifacts

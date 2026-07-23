@@ -1,25 +1,26 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260723-d081-edge-membrane-reserve-causality-audit
-- Project directive: D-081
-- Goal: Edge-membrane reserve provenance and replenishment causality audit
+- ID: D-20260723-d082-edge-membrane-activation-supply-integration
+- Project directive: D-082
+- Goal: Integrate canonical N/F→A into edge assay; requalify affordability
 - Status: done
-- Acceptance: met — `D081_EDGE_MEMBRANE_PRODUCTION_METABOLICALLY_INFEASIBLE` (Gate 5)
-- Touched files: d081_analysis/tests, experiment-runner/d081, docs/d081_*, experiments/generated/d081, .agent/*
-- Next action: affordable A→L under frozen kinetics; next_execution_started=false
+- Acceptance: met — `D082_EDGE_ACTIVATION_INTEGRATION_REPAIRED` (Route I)
+- Touched files: d082_*, docs/d082_*, d081 provisional, experiments/generated/d082, .agent/*
+- Next action: D-080 dynamic-interface repair; next_execution_started=false
 
 ## Repo facts needed now
-- D-080 preserved: f5dc5a5 / D-080-edge-network-requalification-fail
-- D-080 Gate7: PROVISIONAL_PENDING_RESERVE_CAUSALITY_AUDIT (not upgraded)
-- Seed: EDGE_MEMBRANE_SEED_CONTRACT_V1 / CAPACITY_VALID_FINITE_RESERVE (+25% over capacity)
-- Gates 0–4 PASS; Gate5 A collapse under continuous produce
-- Unrelated dirty: .cursor/rules/*, AGENTS.md — leave unstaged
+- Start: 41e9936 / D-081-edge-reserve-causality-fail
+- D-081 Gate5 was ACTIVATION_NOT_DISPATCHED (bolus only)
+- Integration repaired; Gate4 affordability PASS
+- Resume: Gate8 dynamic FAIL; Gate9 coupled OK; structural incompatible
+- Leave unstaged: .cursor/rules/*, AGENTS.md
 
 ## Last validation
-- Command: cargo test -p chemistry-core --test d081_tests; cargo run --release d081 pipeline
-- Result: d081 10/10; pipeline stopped Gate5
+- Command: cargo test -p chemistry-core --test d082_tests; cargo run --release d082 pipeline; resume gate8/9
+- Result: d082 7/7; Route I; dynamic fail; structural incompatible
 
 ## Open blockers
 - Stage E BLOCKED_NOT_RECOVERED
-- Membrane A→L metabolically unaffordable under frozen activated packet
+- Dynamic interface under cut-cell support still fails
+- Frozen structural drive universally positive

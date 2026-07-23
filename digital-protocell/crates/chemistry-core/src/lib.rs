@@ -76,6 +76,7 @@ pub mod d078_analysis;
 pub mod d079_analysis;
 pub mod d080_analysis;
 pub mod d081_analysis;
+pub mod d082_analysis;
 pub mod edge_membrane;
 pub mod edge_support;
 pub mod d011_analysis;

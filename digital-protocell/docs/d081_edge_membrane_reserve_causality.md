@@ -4,6 +4,10 @@
 
 `D081_EDGE_MEMBRANE_PRODUCTION_METABOLICALLY_INFEASIBLE` (stopped at Gate 5)
 
+**Conclusion status (D-082):** `SUPERSEDED_BY_D082_ACTIVATION_SUPPLY_AUDIT`
+
+D-081 Gate 5 used a scalar `activated` bolus with no canonical N/F→A path; metabolic infeasibility is **not** proven. D-082 Route I restored affordability after integrating activation supply. D-080 Gate 7: `PASS_AFTER_D081_RESERVE_CAUSALITY_AUDIT`.
+
 Reserve causality through Gate 4 is qualified: the D-080 seed is a lawful finite free-`L` reserve; one-time reserve-only repair conserves \(M_L+M_B\); repeated damage eventually fails without hidden regeneration; only normal A→L metabolism replenishes reserve and supports another repair. Sustained production under the frozen A→L law collapses A (`a_retention≈0`), so replenishment is metabolically unaffordable. Binding was **not** made to consume A.
 
 ## Entry
