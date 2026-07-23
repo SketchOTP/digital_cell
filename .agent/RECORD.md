@@ -28,3 +28,5 @@ This file is specifically for the operators use. It keeps record of what the AI 
 - 2026-07-22 | D-071 | event:directive_complete | conclusion:D071_FAIL | note:Gates 0–4,6–7 pass; Gate5 repair unreachable constitutively; Stage E remains BLOCKED; production defaults unchanged
 - 2026-07-22 | event:directive_complete | id:D-072 | conclusion:D072_FROZEN_EXCHANGE_CANNOT_REFILL_DAMAGE | route:X | note:Mature-membrane damage refill causal audit under frozen exchange; Stage E remains BLOCKED; D-070/D-071 preserved
 - 2026-07-22 | D-073 | Mature-membrane equilibrium sufficiency audit → D073_ORGANISM_EXCHANGE_INTEGRATION_DEFECT (Route E); D-072 Route X retained provisional; no biology change
+
+- 2026-07-22 | D-077 | decision:D077_COOPERATIVE_COHESION_NOT_PORTABLE | record:ENERGY_DRIVEN_SURFACE_STATE_CYCLE_REJECTED | note:cooperative χ exchange thermodynamically OK but required cohesion not portable across constitutive vs reduced-p D-075 states; secondary metabolic A retention failure

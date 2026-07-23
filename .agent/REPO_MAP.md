@@ -585,3 +585,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - experiment-runner/src/d076.rs — artifact pipeline
 - digital-protocell/docs/d076_nonequilibrium_surface_cycle_review.md — report
 - experiments/generated/d076/ — artifacts (symlink → storage1tb)
+
+## D-077 cooperative surface condensation (review)
+- chemistry-core/src/d077_analysis.rs — Frumkin J_χ; Gates0–7; Route P cohesion not portable
+- chemistry-core/tests/d077_tests.rs — χ=0/thermo/LOO/metabolic/route tests (12)
+- experiment-runner/src/d077.rs — artifact pipeline
+- digital-protocell/docs/d077_cooperative_surface_condensation_review.md — report
+- experiments/generated/d077/ — artifacts (symlink → storage1tb)

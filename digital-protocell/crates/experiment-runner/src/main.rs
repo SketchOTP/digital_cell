@@ -73,6 +73,7 @@ mod d073;
 mod d074;
 mod d075;
 mod d076;
+mod d077;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -408,6 +409,10 @@ enum Commands {
         #[command(subcommand)]
         action: D076Commands,
     },
+    D077 {
+        #[command(subcommand)]
+        action: D077Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -735,6 +740,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D074 { action } => run_d074(action)?,
         Commands::D075 { action } => run_d075(action)?,
         Commands::D076 { action } => run_d076(action)?,
+        Commands::D077 { action } => run_d077(action)?,
     }
     Ok(())
 }
@@ -3772,6 +3778,32 @@ fn run_d076(action: D076Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-076 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D077Commands {
+    /// Cooperative surface condensation architecture review (Gates 0–7).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d077")]
+        output: PathBuf,
+    },
+}
+
+fn run_d077(action: D077Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D077Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d077::run_pipeline(&out)?;
+            println!(
+                "D-077 pipeline primary={} route={} chi={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                result["selected_chi"],
                 out.join("manifest.json").display()
             );
         }
