@@ -75,6 +75,7 @@ mod d075;
 mod d076;
 mod d077;
 mod d078;
+mod d079;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -418,6 +419,10 @@ enum Commands {
         #[command(subcommand)]
         action: D078Commands,
     },
+    D079 {
+        #[command(subcommand)]
+        action: D079Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -747,6 +752,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D076 { action } => run_d076(action)?,
         Commands::D077 { action } => run_d077(action)?,
         Commands::D078 { action } => run_d078(action)?,
+        Commands::D079 { action } => run_d079(action)?,
     }
     Ok(())
 }
@@ -3835,6 +3841,32 @@ fn run_d078(action: D078Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-078 pipeline primary={} route={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D079Commands {
+    /// Conserved edge-network membrane feasibility (Gates 0–8).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d079")]
+        output: PathBuf,
+    },
+}
+
+fn run_d079(action: D079Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D079Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d079::run_pipeline(&out)?;
+            println!(
+                "D-079 pipeline primary={} route={} stopped={} -> {}",
+                result["primary_conclusion"],
+                result["route"],
+                result["stopped_at_gate"],
                 out.join("manifest.json").display()
             );
         }

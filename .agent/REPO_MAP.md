@@ -599,3 +599,11 @@ Concise navigation map for agents. Add entries as application code lands.
 - experiment-runner/src/d078.rs — artifact pipeline
 - digital-protocell/docs/d078_phase1_boundary_substrate_redesign.md — report
 - experiments/generated/d078/ — artifacts (symlink → storage1tb)
+
+## D-079 conserved edge-network membrane
+- chemistry-core/src/edge_membrane.rs — L free + B on H/V faces; bind/unbind/lateral/damage/produce; observer closed-network
+- chemistry-core/src/d079_analysis.rs — Gates 0–8; stop-at-first-failure route
+- chemistry-core/tests/d079_tests.rs — indexing/conservation/schema/route tests (12)
+- experiment-runner/src/d079.rs — artifact pipeline
+- digital-protocell/docs/d079_conserved_edge_network_membrane.md — report (`D079_EDGE_NETWORK_SELF_ASSEMBLY_FAILURE`)
+- experiments/generated/d079/ — artifacts (symlink → storage1tb)
