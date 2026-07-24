@@ -52,6 +52,12 @@ pub struct ReactionLedger {
     pub f_consumed: f64,
     pub bind_extent: f64,
     pub unbind_extent: f64,
+    /// Observer/accounting: catalyst mass produced (concentration·area units).
+    pub c_produced: f64,
+    /// Observer/accounting: catalyst turned over.
+    pub c_turned: f64,
+    /// Observer/accounting: free membrane L produced from A.
+    pub l_produced: f64,
 }
 
 #[inline]
@@ -130,6 +136,8 @@ pub fn reactions_step(
         mesh.interior.c = (c_before + c_prod - c_turn).max(0.0);
         mesh.interior.a = (mesh.interior.a - c_prod).max(0.0);
         mesh.interior.w += c_turn;
+        led.c_produced += c_prod * area;
+        led.c_turned += c_turn * area;
         led.w_produced += c_turn * area;
 
         let a_dec = {
@@ -224,6 +232,7 @@ pub fn reactions_step(
             mesh.interior.a = (mesh.interior.a - take / area).max(0.0);
             mesh.interior.w += take / area;
             mesh.free_l += take;
+            led.l_produced += take;
             led.w_produced += take;
         }
     }

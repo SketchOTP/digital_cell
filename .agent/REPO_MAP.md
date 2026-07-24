@@ -668,3 +668,11 @@ Concise navigation map for agents. Add entries as application code lands.
 - experiment-runner/src/d086.rs — pipeline → experiments/generated/d086/
 - docs/d086_autopoietic_material_mesh.md — campaign report
 - experiments/generated/d086/ — artifacts (→ storage1tb)
+- phase1-certifier/ — independent D-087 Gates 0–7 (no d086_analysis imports)
+- phase1-certifier/src/metrics.rs — retention + R_X + f_label + f_pool semantics
+- phase1-certifier/src/bin/phase1_runtime.rs — digital-protocell-phase1 headless runtime
+- experiment-runner/src/d087.rs — certification pipeline
+- docs/d087_phase1_independent_certification.md — certification report
+- docs/d088_growth_division_inheritance.md — Phase 2 kickoff
+- scripts/package_phase1_linux.sh — package digital-protocell-phase1-v1
+- experiments/generated/d087/ — certification artifacts (→ storage1tb)

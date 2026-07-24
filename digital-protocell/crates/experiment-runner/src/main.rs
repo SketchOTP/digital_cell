@@ -83,6 +83,7 @@ mod d083;
 mod d084;
 mod d085;
 mod d086;
+mod d087;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -458,6 +459,10 @@ enum Commands {
         #[command(subcommand)]
         action: D086Commands,
     },
+    D087 {
+        #[command(subcommand)]
+        action: D087Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -795,6 +800,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D084 { action } => run_d084(action)?,
         Commands::D085 { action } => run_d085(action)?,
         Commands::D086 { action } => run_d086(action)?,
+        Commands::D087 { action } => run_d087(action)?,
     }
     Ok(())
 }
@@ -4092,6 +4098,33 @@ fn run_d086(action: D086Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["primary_conclusion"],
                 result["stopped_at_gate"],
                 result["selected_mech"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D087Commands {
+    /// Independent Phase 1 certification + Phase 2 launch gate (Gates 0–7).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d087")]
+        output: PathBuf,
+    },
+}
+
+fn run_d087(action: D087Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D087Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d087::run_pipeline(&out)?;
+            println!(
+                "D-087 pipeline primary={} phase1={} phase2_auth={} verdict={} -> {}",
+                result["primary_conclusion"],
+                result["phase1_status"],
+                result["phase2_authorized"],
+                result["production_verdict"],
                 out.join("manifest.json").display()
             );
         }

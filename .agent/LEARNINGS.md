@@ -151,3 +151,6 @@ Append-only repo-specific lessons. Format:
 - 2026-07-24 | area:d086-mesh | lesson:Mech candidates need Laplace α=k_π·Π_chem/k_s < 1/R_max or passive meshes expand unboundedly | evidence:chemistry-core/src/mesh_mechanics.rs
 - 2026-07-24 | area:d086-build | lesson:Structural build must be per-length (not per-edge) or remesh doubles A demand | evidence:chemistry-core/src/mesh_reactions.rs
 - 2026-07-24 | area:d086-tracers | lesson:Turnover alone keeps tracer fraction flat; unlabeled build + gated L production required for Gate4 | evidence:experiments/generated/d086/turnover/
+- 2026-07-24 | area:d087-metrics | lesson:D-086 tracer_m/b/c are f_pool=labeled/total; R_X=gross_replacement/mean_mass is separate; dual passes at 5000 steps | evidence:experiments/generated/d087/metric_semantics/
+- 2026-07-24 | area:d087-seeds | lesson:seed_mesh only changes n=24+(seed%3); held-out evidence must use deterministic perturbations not duplicate seeds | evidence:phase1-certifier/src/sim.rs
+- 2026-07-24 | area:d087-retention | lesson:retention final/initial >1 qualifies only when production is ledger-accounted (qualifies_above_one) | evidence:phase1-certifier/src/metrics.rs

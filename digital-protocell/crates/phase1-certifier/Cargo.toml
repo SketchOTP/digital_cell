@@ -1,0 +1,15 @@
+[package]
+name = "phase1-certifier"
+version.workspace = true
+edition.workspace = true
+description = "Independent Phase 1 certification of the frozen D-086 material-mesh candidate"
+
+[dependencies]
+chemistry-core = { path = "../chemistry-core" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+
+[[bin]]
+name = "digital-protocell-phase1"
+path = "src/bin/phase1_runtime.rs"

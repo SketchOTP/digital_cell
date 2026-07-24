@@ -408,6 +408,7 @@ dependencies = [
  "chrono",
  "clap",
  "image",
+ "phase1-certifier",
  "serde",
  "serde_json",
  "toml",
@@ -984,6 +985,16 @@ name = "pastey"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "35fb2e5f958ec131621fdd531e9fc186ed768cbe395337403ae56c17a74c68ec"
+
+[[package]]
+name = "phase1-certifier"
+version = "0.1.0"
+dependencies = [
+ "chemistry-core",
+ "chrono",
+ "serde",
+ "serde_json",
+]
 
 [[package]]
 name = "pin-project-lite"

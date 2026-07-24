@@ -9,6 +9,7 @@ long-experiments = ["chemistry-core/long-experiments"]
 
 [dependencies]
 chemistry-core = { path = "../chemistry-core" }
+phase1-certifier = { path = "../phase1-certifier" }
 clap = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
