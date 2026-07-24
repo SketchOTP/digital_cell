@@ -12,6 +12,7 @@ The D-008 phase-field (`φ` / Cahn–Hilliard) structural body lineage is **clos
 * Retained: Cartesian `N`/`F`/`W`, catalyst `C`, activated `A`, activation chemistry, edge-membrane binding/permeability principles (D-079–D-083)
 * Retired from the new equation identity: `φ` as body, phase-field chemical potential, Cahn–Hilliard structural evolution, φ-derived cut-cell support, phase-field structural rate laws
 * Records: `D008_PHASE_FIELD_LINEAGE_CLOSED_REJECTED`, `PHASE1_PHASE_FIELD_BODY_RETIRED`, `PHASE1_AUTOPOIETIC_MESH_RESET_AUTHORIZED`
+* D-086 result: `D086_MESH_PROTOCELL_PHASE1_CANDIDATE_PASS` → `PHASE1_AUTOPOIETIC_CANDIDATE_PASS`, `MESH_PHASE1_LINEAGE_QUALIFIED`
 
 Causal requirements unchanged: individuality, metabolism, organizational closure, material turnover, boundary maintenance, damage repair, nutrient/fuel dependence, irreversible death. No target radius/area, health variable, repair command, or stored body shape.
 
