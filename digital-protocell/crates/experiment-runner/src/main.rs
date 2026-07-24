@@ -81,6 +81,7 @@ mod d081;
 mod d082;
 mod d083;
 mod d084;
+mod d085;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -448,6 +449,10 @@ enum Commands {
         #[command(subcommand)]
         action: D084Commands,
     },
+    D085 {
+        #[command(subcommand)]
+        action: D085Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -783,6 +788,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D082 { action } => run_d082(action)?,
         Commands::D083 { action } => run_d083(action)?,
         Commands::D084 { action } => run_d084(action)?,
+        Commands::D085 { action } => run_d085(action)?,
     }
     Ok(())
 }
@@ -4028,6 +4034,32 @@ fn run_d084(action: D084Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["stopped_at_gate"],
                 result["selected_eta"],
                 result["selected_k_phi_minus"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D085Commands {
+    /// Decisive structural closure: D-084 dynamic basin + optional mechanochemical fallback.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d085")]
+        output: PathBuf,
+    },
+}
+
+fn run_d085(action: D085Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D085Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d085::run_pipeline(&out)?;
+            println!(
+                "D-085 pipeline primary={} phase_a={} stage_e={} -> {}",
+                result["primary_conclusion"],
+                result["phase_a_pass"],
+                result["stage_e_pass"],
                 out.join("manifest.json").display()
             );
         }

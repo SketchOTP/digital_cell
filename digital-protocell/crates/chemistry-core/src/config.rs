@@ -746,6 +746,21 @@ pub struct SimParams {
     /// D-084 bulk mix η ∈ [0,1]. Meaningful only when `use_mixed_structure_turnover`.
     #[serde(default)]
     pub structure_turnover_eta: f64,
+    /// D-085: local curvature/strain modulation of structural rates (off by default).
+    #[serde(default)]
+    pub use_mechanochemical_structure: bool,
+    /// D-085 curvature gain `g_κ` (bounded multiplicative response).
+    #[serde(default)]
+    pub mechano_g_kappa: f64,
+    /// D-085 strain gain `g_s`.
+    #[serde(default)]
+    pub mechano_g_s: f64,
+    /// D-085 curvature scale `K_κ` from measured local |κ| range.
+    #[serde(default)]
+    pub mechano_k_kappa: f64,
+    /// D-085 strain scale `K_s` from measured local |s| range.
+    #[serde(default)]
+    pub mechano_k_s: f64,
     /// D-021 membrane interface-protection floor ε_M ∈ (0, 1]. Used under v4/v5.
     #[serde(default = "default_eps_m")]
     pub eps_m: f64,
@@ -1230,6 +1245,11 @@ impl Default for SimParams {
             d019_mechanism_probe: None,
             use_mixed_structure_turnover: false,
             structure_turnover_eta: 0.0,
+            use_mechanochemical_structure: false,
+            mechano_g_kappa: 0.0,
+            mechano_g_s: 0.0,
+            mechano_k_kappa: 0.0,
+            mechano_k_s: 0.0,
             eps_m: default_eps_m(),
             chi_m: default_chi_m(),
             k_precursor: default_k_precursor(),

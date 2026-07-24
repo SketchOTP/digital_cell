@@ -120,6 +120,32 @@ pub fn apply_mixed_turnover_params(params: &mut SimParams, eta: f64, k_decay: f6
     params.k_structure_decay = k_decay.max(0.0);
 }
 
+/// D-085 bounded curvature/strain response on base production rate.
+#[inline]
+pub fn apply_mechano_production(r0: f64, kappa: f64, strain: f64, params: &SimParams) -> f64 {
+    if !params.use_mechanochemical_structure {
+        return r0;
+    }
+    let k_kappa = params.mechano_k_kappa.max(1e-18);
+    let k_s = params.mechano_k_s.max(1e-18);
+    let f_k = kappa.abs() / (k_kappa + kappa.abs());
+    let f_s = (strain / k_s).tanh();
+    let mult = (1.0 + params.mechano_g_kappa * f_k - params.mechano_g_s * f_s).clamp(0.5, 2.0);
+    r0 * mult
+}
+
+/// D-085 bounded strain response on base loss rate.
+#[inline]
+pub fn apply_mechano_loss(r0: f64, strain: f64, params: &SimParams) -> f64 {
+    if !params.use_mechanochemical_structure {
+        return r0;
+    }
+    let k_s = params.mechano_k_s.max(1e-18);
+    let f_s = (strain / k_s).tanh();
+    let mult = (1.0 + params.mechano_g_s * f_s).clamp(0.5, 2.0);
+    r0 * mult
+}
+
 pub fn legacy_exposure_floor() -> f64 {
     STRUCTURAL_EXPOSURE_FLOOR
 }

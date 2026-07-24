@@ -147,3 +147,4 @@ Append-only repo-specific lessons. Format:
 - 2026-07-23 | area:d083-gate5 | lesson:Do not call obsolete d080 gate7_damage_and_causality for regressions; it still recovers via free-L (no_a_fails=false). Use D-081 reserve repair/depletion/A-causal gates | evidence:experiments/generated/d083/regressions/
 - 2026-07-24 | area:d084-turnover | lesson:Mixed loss k·φ·[η+(1−η)I] at η≈0.075 creates prescribed R18+/R22≈0/R26−; η=0 interface-only does not | evidence:experiments/generated/d084/prescribed_radius/
 - 2026-07-24 | area:d084-legacy | lesson:use_mixed_structure_turnover=false keeps D-019 ε+I floor; Gate0/1 baseline must not enable mixed mode | evidence:chemistry-core/src/structural_kinetics.rs
+- 2026-07-24 | area:d085-structural | lesson:D-084 fixed-radius restoring incomplete≠scientific fail; full dynamic basin loses A~0.26; local κ/s mechano cannot restore; reject CH structural substrate | evidence:experiments/generated/d085/result.json

@@ -648,3 +648,12 @@ Concise navigation map for agents. Add entries as application code lands.
 - experiment-runner/src/d084.rs — artifact pipeline (archive symlink)
 - digital-protocell/docs/d084_edge_structural_homeostasis.md — report
 - experiments/generated/d084/ — artifacts (→ storage1tb)
+
+## D-085 decisive structural closure
+- chemistry-core/src/d085_analysis.rs — basin/parity/mechano classification; D-084 candidate seal
+- chemistry-core/tests/d085_tests.rs — focused unit tests
+- experiment-runner/src/d085.rs — Phase A/C dynamic campaign + puncture
+- chemistry-core/src/structural_kinetics.rs — apply_mechano_production/loss
+- chemistry-core/src/config.rs — use_mechanochemical_structure + g/K params
+- docs/d085_decisive_structural_closure.md — campaign report
+- experiments/generated/d085/ — artifacts (→ storage1tb)

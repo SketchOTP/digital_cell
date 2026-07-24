@@ -33,7 +33,8 @@ use crate::operators::{diffuse_constant, diffuse_variable, laplacian};
 use crate::phase_field::{chemical_potential_local, compute_interior_weights, structure_rate};
 use crate::reactions::{catalyst_diffusivity, compute_all_reactions, interface_weight, ReactionScratch};
 use crate::structural_kinetics::{
-    active_structural_mechanism, local_abs_laplacian, structure_decay_rate, structure_production_rate,
+    active_structural_mechanism, apply_mechano_loss, apply_mechano_production, local_abs_laplacian,
+    structure_decay_rate, structure_production_rate,
 };
 use crate::surface_density::{
     estimate_interface_normal_velocity, evolve_surface_density, evolve_surface_density_with_vn,
@@ -118,6 +119,9 @@ pub struct Simulation {
     pub last_reject_detail: String,
     /// Numerical dt ceiling (defaults to MAX_DT; used for refinement studies).
     pub dt_cap: f64,
+    /// D-085 per-cell |κ| / strain for mechanochemical structural rates (observer-fed; default 0).
+    pub mechano_kappa: Vec<f64>,
+    pub mechano_strain: Vec<f64>,
     run_start: Option<Instant>,
     prev_attempt_dt: f64,
 }
@@ -198,6 +202,8 @@ impl Simulation {
             last_reject_limiter: DtLimiter::Unknown,
             last_reject_detail: String::new(),
             dt_cap: MAX_DT,
+            mechano_kappa: vec![0.0; size],
+            mechano_strain: vec![0.0; size],
             run_start: None,
             prev_attempt_dt: MAX_DT,
         }
@@ -2011,14 +2017,24 @@ impl Simulation {
             let r_structure = if self.d026_disable_virtual_structure {
                 0.0
             } else {
-                structure_production_rate(
+                let base = structure_production_rate(
                     phi,
                     self.working.activated[idx],
                     self.working.catalyst[idx],
                     &self.params,
+                );
+                apply_mechano_production(
+                    base,
+                    self.mechano_kappa.get(idx).copied().unwrap_or(0.0),
+                    self.mechano_strain.get(idx).copied().unwrap_or(0.0),
+                    &self.params,
                 )
             };
-            let r_structure_decay = structure_decay_rate(phi, lap_abs, &self.params);
+            let r_structure_decay = apply_mechano_loss(
+                structure_decay_rate(phi, lap_abs, &self.params),
+                self.mechano_strain.get(idx).copied().unwrap_or(0.0),
+                &self.params,
+            );
             let produced = if v2 {
                 eta_phi * r_structure * dt
             } else {
@@ -2647,10 +2663,15 @@ impl Simulation {
                 } else {
                     0.0
                 };
-                let r_structure = structure_production_rate(
-                    phi,
-                    self.working.activated[idx],
-                    self.working.catalyst[idx],
+                let r_structure = apply_mechano_production(
+                    structure_production_rate(
+                        phi,
+                        self.working.activated[idx],
+                        self.working.catalyst[idx],
+                        &self.params,
+                    ),
+                    self.mechano_kappa.get(idx).copied().unwrap_or(0.0),
+                    self.mechano_strain.get(idx).copied().unwrap_or(0.0),
                     &self.params,
                 );
                 let produced = if v2 {
@@ -2658,7 +2679,11 @@ impl Simulation {
                 } else {
                     r_structure * dt
                 };
-                let decayed = structure_decay_rate(phi, lap_abs, &self.params) * dt;
+                let decayed = apply_mechano_loss(
+                    structure_decay_rate(phi, lap_abs, &self.params),
+                    self.mechano_strain.get(idx).copied().unwrap_or(0.0),
+                    &self.params,
+                ) * dt;
                 if let Some(tracer) = self.structure_provenance.as_mut() {
                     if apply_phi {
                         tracer.record_unconstrained_cell(idx, produced, decayed);

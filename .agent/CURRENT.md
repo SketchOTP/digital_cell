@@ -1,33 +1,32 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260723-d084-edge-boundary-structural-homeostasis
-- Project directive: D-084
-- Goal: Mixed bulk/interface structural turnover under edge boundary
-- Status: done — D084_STRUCTURAL_BASIN_NOT_ESTABLISHED
-- Acceptance: met (stop at Gate5; prescribed restoring found but basin not established)
-- Touched files: structural_kinetics, config, d084_*, docs/d084, .agent/*
-- Next action: multi-seed dynamic basin under η≈0.07535, k≈0.01963
+- ID: D-20260723-d085-decisive-structural-closure
+- Project directive: D-085
+- Goal: Complete D-084 dynamic basin; one mechanochemical fallback; Stage E or reject phase-field substrate
+- Status: done — D085_PHASE_FIELD_STRUCTURAL_SUBSTRATE_REJECTED
+- Acceptance: met (Phase A 15-run + Phase C 45-run; parity OK; substrate rejected)
+- Touched files: d085_analysis/tests, experiment-runner/d085, structural_kinetics, config, simulation, docs/d085, .agent/*
+- Next action: redesign organism body as conserved cellular/mesh material system (not scalar/curvature rate patch)
 
 ## Repo facts needed now
-- D-083 seal: b966502 / D-083-edge-dynamic-migration-repaired
-- D-084 implementation: 1d1300c / tag D-084-edge-structural-homeostasis-fail
-- Gate4 restoring for η∈{0.075,0.20,0.36}; η=0 control fails
-- Production default still legacy ε+I (mixed off)
-- Stage E BLOCKED_NOT_RECOVERED
+- D-084 candidate dynamically fails: A retention ≈0.26 at R18/22/26 × seeds 1–5
+- Failure class: RESOURCE_COUPLING_REVERSAL (parity PASS)
+- Mechano weak/center/strong all fail same floor
+- Phase-field structural substrate closed for Phase 1
+- Leave unstaged: .cursor/rules/*, AGENTS.md
 
 ## Last validation
-- Command: cargo test -p chemistry-core --test d084_tests; D084_SKIP_LATE_GATES=1 cargo run --release -- d084 pipeline
-- Result: tests 10/10; pipeline D084_STRUCTURAL_BASIN_NOT_ESTABLISHED (gates0–4 true)
+- Command: cargo test -p chemistry-core --test d085_tests --release; d085 pipeline (60 dynamic runs)
+- Result: tests 6/6; primary D085_PHASE_FIELD_STRUCTURAL_SUBSTRATE_REJECTED
 
 ## Open blockers
-- Dynamic basin (Gate5) not established
-- Stage E not recovered
-- Leave unstaged: .cursor/rules/*, AGENTS.md
+- Stage E BLOCKED_NOT_RECOVERED
+- Requires substrate redesign (not another rate directive)
 
 ## Mimir V2
 - project_id: 7bff443192353517
-- task_id: a48cb841669c4eefa35826d3ced85acd
-- status: completed (version 4)
-- retrieval_feedback: yes (2 useful)
+- task_id: 687909e3d0544fedac616905bda535d8
+- status: closing
+- retrieval_feedback: yes (1 useful)
 - validation_run: BLOCKED (allowlist/active-observed-task); local evidence used
