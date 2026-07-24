@@ -11,6 +11,7 @@
 
 ## Repo facts needed now
 - D-083 seal: b966502 / D-083-edge-dynamic-migration-repaired
+- D-084 implementation: 1d1300c / tag D-084-edge-structural-homeostasis-fail
 - Gate4 restoring for η∈{0.075,0.20,0.36}; η=0 control fails
 - Production default still legacy ε+I (mixed off)
 - Stage E BLOCKED_NOT_RECOVERED
@@ -27,7 +28,6 @@
 ## Mimir V2
 - project_id: 7bff443192353517
 - task_id: a48cb841669c4eefa35826d3ced85acd
-- ending_commit: 1d1300c
-- d083_seal: b966502
-- version: 2
-- retrieval.session_id: 86f55685e01445198ccce15189a89bcc
+- status: completed (version 4)
+- retrieval_feedback: yes (2 useful)
+- validation_run: BLOCKED (allowlist/active-observed-task); local evidence used
