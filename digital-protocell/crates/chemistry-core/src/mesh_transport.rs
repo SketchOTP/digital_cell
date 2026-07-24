@@ -120,8 +120,29 @@ pub fn transport_step(
     if dc < 0.0 && c_before > 1e-15 {
         let frac = ((-dc) / c_before).clamp(0.0, 1.0);
         mesh.interior.tracer_c = (mesh.interior.tracer_c * (1.0 - frac)).max(0.0);
+        // Compositional catalyst leaks proportionally (material, not ratio copy).
+        let parts = mesh.interior.c_h.max(0.0) + mesh.interior.c_b.max(0.0);
+        if parts > 1e-15 {
+            mesh.interior.c_h = (mesh.interior.c_h * (1.0 - frac)).max(0.0);
+            mesh.interior.c_b = (mesh.interior.c_b * (1.0 - frac)).max(0.0);
+        }
     }
     mesh.interior.c = (mesh.interior.c + dc).max(0.0);
+    if mesh.interior.c_h + mesh.interior.c_b > 1e-15 {
+        // Keep total aligned with parts after leak; influx of C (rare) stays unlabeled scalar.
+        if dc >= 0.0 {
+            mesh.interior.c = mesh.interior.c_h + mesh.interior.c_b + dc;
+            // Influx has no type — attribute proportionally to existing composition.
+            let parts = mesh.interior.c_h.max(0.0) + mesh.interior.c_b.max(0.0);
+            if parts > 1e-15 && dc > 0.0 {
+                let ph = mesh.interior.c_h.max(0.0) / parts;
+                mesh.interior.c_h += dc * ph;
+                mesh.interior.c_b += dc * (1.0 - ph);
+            }
+        } else {
+            mesh.interior.c = mesh.interior.c_h + mesh.interior.c_b;
+        }
+    }
     mesh.interior.a = (mesh.interior.a + da).max(0.0);
     if dc < 0.0 {
         led.c_leak += (-dc) * area;

@@ -107,6 +107,8 @@ pub fn try_local_fission(
     let pre_b = parent.total_bound_membrane();
     let pre_l = parent.free_l.max(0.0);
     let pre_c = parent.interior.c * parent.area().max(1e-9);
+    let pre_c_h = parent.interior.c_h * parent.area().max(1e-9);
+    let pre_c_b = parent.interior.c_b * parent.area().max(1e-9);
     let pre_a = parent.interior.a * parent.area().max(1e-9);
     let pre_n = parent.interior.n * parent.area().max(1e-9);
     let pre_f = parent.interior.f * parent.area().max(1e-9);
@@ -120,9 +122,16 @@ pub fn try_local_fission(
     d2.free_l = pre_l * (p2 / pt);
 
     // Interior concentrations: conserve mass pools by area fraction.
+    // C_H / C_B are partitioned as actual material (never from a copied parent ratio).
     let set_conc = |mesh: &mut MaterialMesh, frac: f64| {
         let a = mesh.area().max(1e-9);
         mesh.interior.c = (pre_c * frac) / a;
+        mesh.interior.c_h = (pre_c_h * frac) / a;
+        mesh.interior.c_b = (pre_c_b * frac) / a;
+        // Keep total consistent with parts when composition was active.
+        if pre_c_h + pre_c_b > 1e-15 {
+            mesh.interior.c = mesh.interior.c_h + mesh.interior.c_b;
+        }
         mesh.interior.a = (pre_a * frac) / a;
         mesh.interior.n = (pre_n * frac) / a;
         mesh.interior.f = (pre_f * frac) / a;
@@ -147,6 +156,8 @@ pub fn try_local_fission(
     let post_b = d1.total_bound_membrane() + d2.total_bound_membrane();
     let post_l = d1.free_l + d2.free_l;
     let post_c = d1.interior.c * d1.area() + d2.interior.c * d2.area();
+    let post_c_h = d1.interior.c_h * d1.area() + d2.interior.c_h * d2.area();
+    let post_c_b = d1.interior.c_b * d1.area() + d2.interior.c_b * d2.area();
     let post_a = d1.interior.a * d1.area() + d2.interior.a * d2.area();
     let post_n = d1.interior.n * d1.area() + d2.interior.n * d2.area();
     let post_f = d1.interior.f * d1.area() + d2.interior.f * d2.area();
@@ -157,6 +168,8 @@ pub fn try_local_fission(
     let residual_b = (post_b - pre_b).abs();
     let residual_l = (post_l - pre_l).abs();
     let residual_c = (post_c - pre_c).abs();
+    let residual_c_h = (post_c_h - pre_c_h).abs();
+    let residual_c_b = (post_c_b - pre_c_b).abs();
     // A and W: A decreases by take, W increases by take
     let residual_a = (post_a - (pre_a - take)).abs();
     let residual_n = (post_n - pre_n).abs();
@@ -167,6 +180,8 @@ pub fn try_local_fission(
         && residual_b < ACCOUNTING_TOL * (1.0 + pre_b)
         && residual_l < ACCOUNTING_TOL * (1.0 + pre_l)
         && residual_c < 1e-4 * (1.0 + pre_c)
+        && residual_c_h < 1e-4 * (1.0 + pre_c_h)
+        && residual_c_b < 1e-4 * (1.0 + pre_c_b)
         && residual_a < 1e-4 * (1.0 + pre_a)
         && residual_n < 1e-4 * (1.0 + pre_n)
         && residual_f < 1e-4 * (1.0 + pre_f)

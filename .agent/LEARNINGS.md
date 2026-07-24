@@ -157,3 +157,6 @@ Append-only repo-specific lessons. Format:
 - 2026-07-24 | area:d088-growth | lesson:Surplus maintenance must exclude Phase1 build flux or J_surplus≈0 at steady state | evidence:chemistry-core/src/mesh_growth.rs
 - 2026-07-24 | area:d088-fission | lesson:Cross-bond range must scale with mean edge length or grown meshes never pinch | evidence:chemistry-core/src/mesh_topology.rs
 - 2026-07-24 | area:d087-runtime | lesson:PHASE1_RESEARCH_RUNTIME_QUALIFIED requires ≥90 wall-clock minutes not step-count proxies | evidence:experiments/generated/d088/runtime_closure/status.json
+- 2026-07-24 | area:d089-selection | lesson:At σ=0.15, isolated harvest/build phenotype works but shared-dish selection fails because fission requires 1.35× birth mass — builders reach division before scarcity binds | evidence:docs/d089_compositional_catalytic_evolution.md,experiments/generated/d089/competition_*
+- 2026-07-24 | area:d089-fission | lesson:Elongated D-088 seeds (r≈10–14 + bipolar stretch) required for mesh fission; circular r=5 growth never pinches | evidence:d089_analysis seed_dividing, d088 gate_fission_campaign
+- 2026-07-24 | area:d089-composition | lesson:C_H/C_B production with μ conserves J_C; partition splits actual masses by area; μ=0 + σ=0 matches scalar catalyst to ~1e-16 | evidence:gate0/gate1/gate2 artifacts

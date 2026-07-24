@@ -85,6 +85,7 @@ mod d085;
 mod d086;
 mod d087;
 mod d088;
+mod d089;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -468,6 +469,10 @@ enum Commands {
         #[command(subcommand)]
         action: D088Commands,
     },
+    D089 {
+        #[command(subcommand)]
+        action: D089Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -807,6 +812,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D086 { action } => run_d086(action)?,
         Commands::D087 { action } => run_d087(action)?,
         Commands::D088 { action } => run_d088(action)?,
+        Commands::D089 { action } => run_d089(action)?,
     }
     Ok(())
 }
@@ -4158,6 +4164,34 @@ fn run_d088(action: D088Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["phase2_status"],
                 result["production_verdict"],
                 result["selected_y_g"],
+                result["next_execution_started"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D089Commands {
+    /// Compositional catalytic heredity and natural selection.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d089")]
+        output: PathBuf,
+    },
+}
+
+fn run_d089(action: D089Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D089Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d089::run_pipeline_cli(&out)?;
+            println!(
+                "D-089 pipeline primary={} phase2={} phase3={} mu={} next_started={} -> {}",
+                result["primary_conclusion"],
+                result["phase2_status"],
+                result["phase3_authorized"],
+                result["selected_mu"],
                 result["next_execution_started"],
                 out.join("manifest.json").display()
             );

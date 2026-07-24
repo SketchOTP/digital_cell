@@ -52,6 +52,8 @@ fn seed_mesh(radius: f64, seed: u64, ext: f64) -> MaterialMesh {
             f: 0.4,
             w: 0.1,
             tracer_c: 0.0,
+            c_h: 0.0,
+            c_b: 0.0,
         },
         LumpedChem {
             c: 0.0,
@@ -60,6 +62,8 @@ fn seed_mesh(radius: f64, seed: u64, ext: f64) -> MaterialMesh {
             f: 1.0 * ext,
             w: 0.0,
             tracer_c: 0.0,
+            c_h: 0.0,
+            c_b: 0.0,
         },
         5.0,
     )
@@ -709,6 +713,7 @@ fn gate_robustness(y_g: f64) -> GateResult {
                 lineage_id: 1,
                 generation: 0,
                 birth_mass: 0.0,
+                clade: 0,
             }],
             next_lineage: 2,
             fission_log: Vec::new(),

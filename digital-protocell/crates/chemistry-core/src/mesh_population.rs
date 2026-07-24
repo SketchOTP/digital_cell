@@ -19,6 +19,9 @@ pub struct MeshIndividual {
     pub generation: u32,
     /// Mass at birth/seed — used only to gate fission until surplus growth occurred.
     pub birth_mass: f64,
+    /// Observer-only founder clade for competition assays (+1 harvest, -1 build, 0 unset).
+    #[serde(default)]
+    pub clade: i8,
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
@@ -45,6 +48,8 @@ impl MeshPopulation {
             f: 0.4,
             w: 0.1,
             tracer_c: 0.0,
+            c_h: 0.0,
+            c_b: 0.0,
         };
         let exterior = LumpedChem {
             c: 0.0,
@@ -53,6 +58,8 @@ impl MeshPopulation {
             f: 1.0 * exterior_scale,
             w: 0.0,
             tracer_c: 0.0,
+            c_h: 0.0,
+            c_b: 0.0,
         };
         let mesh = MaterialMesh::seed_regular(
             n,
@@ -72,6 +79,7 @@ impl MeshPopulation {
                 lineage_id: 1,
                 generation: 0,
                 birth_mass,
+                clade: 0,
             }],
             next_lineage: 2,
             fission_log: Vec::new(),
@@ -136,17 +144,20 @@ impl MeshPopulation {
                     next_id += 1;
                     let m1 = d1.total_structural_mass();
                     let m2 = d2.total_structural_mass();
+                    let clade = ind.clade;
                     newborns.push(MeshIndividual {
                         mesh: d1,
                         lineage_id: id_a,
                         generation: gen,
                         birth_mass: m1,
+                        clade,
                     });
                     newborns.push(MeshIndividual {
                         mesh: d2,
                         lineage_id: id_b,
                         generation: gen,
                         birth_mass: m2,
+                        clade,
                     });
                     self.fission_log.push(ev);
                     led.fissions += 1;

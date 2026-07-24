@@ -77,8 +77,15 @@ pub fn local_a_production_rate(mesh: &MaterialMesh, i: usize, p: &ReactionParams
     let share = ell / peri;
     let area = mesh.area().max(1e-6);
     let qc = q_catalyst(mesh.interior.c, p.q_c);
+    let gh = if p.composition.enable {
+        let z = crate::catalyst_composition::composition_z(mesh.interior.c_h, mesh.interior.c_b);
+        crate::catalyst_composition::g_harvest(z, p.composition.sigma)
+    } else {
+        1.0
+    };
     let j_act = p.k_act
         * qc
+        * gh
         * mesh.interior.n.max(0.0)
         * mesh.interior.f.max(0.0)
         * area;
@@ -120,7 +127,13 @@ pub fn growth_step(
             let lb = (b[0] * b[0] + b[1] * b[1]).sqrt().max(1e-15);
             (a[0] * b[0] + a[1] * b[1]) / (la * lb)
         };
-        let j_g = growth.y_g * surplus * h_local(mesh.strain(i), cos_turn) * dt;
+        let gb = if react.composition.enable {
+            let z = crate::catalyst_composition::composition_z(mesh.interior.c_h, mesh.interior.c_b);
+            crate::catalyst_composition::g_build(z, react.composition.sigma)
+        } else {
+            1.0
+        };
+        let j_g = growth.y_g * surplus * h_local(mesh.strain(i), cos_turn) * gb * dt;
         if j_g <= 0.0 {
             continue;
         }

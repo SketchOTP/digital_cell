@@ -15,10 +15,11 @@ The D-008 phase-field (`φ` / Cahn–Hilliard) structural body lineage is **clos
 * D-086 result: `D086_MESH_PROTOCELL_PHASE1_CANDIDATE_PASS` → `PHASE1_AUTOPOIETIC_CANDIDATE_PASS`, `MESH_PHASE1_LINEAGE_QUALIFIED`
 * D-087 independent certification: `D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED` → `PHASE1_COMPLETE`, `MESH_PHASE1_V1_FROZEN`, `PHASE2_REPRODUCTION_AUTHORIZED`, `PHASE1_SCIENCE_CERTIFIED`; packaged runtime initially provisional, then `PHASE1_RESEARCH_RUNTIME_QUALIFIED` after ≥90 min wall-clock closure
 * D-088: `D088_CAUSAL_GROWTH_FISSION_INHERITANCE_QUALIFIED` → `PHASE2_PHYSICAL_REPRODUCTION_QUALIFIED`, `MATERIAL_STATE_INHERITANCE_QUALIFIED`, `MULTI_GENERATION_MESH_LINEAGE_ESTABLISHED`
+* D-089: compositional `C_H`/`C_B` heredity + mutation + isolated phenotype **qualified** → `D089_HEREDITY_AND_PHENOTYPE_QUALIFIED`; Gate 6 selection **provisional** → `D089_SELECTION_RESULT_PROVISIONAL_PENDING_ECOLOGICAL_TIMESCALE_AUDIT` (hypothesis `EARLY_FISSION_PRECEDED_SELECTION_PRESSURE`; architecture not rejected)
 
-## Phase 2 (reproduction qualified)
+## Phase 2 (reproduction qualified; heredity partial)
 
-Branch `phase2-growth-division-inheritance`. Physical reproduction without `divide()` is qualified. Active follow-on: **D-089** heritable catalytic variation and selection (minimal explicit heritable catalytic specification). No return to growth/fission parameter sweeps.
+Branch `phase2-growth-division-inheritance`. Physical reproduction without `divide()` is qualified. D-089 established physically embodied catalytic composition with imperfect copying and partition inheritance; shared-dish selection remains provisional pending ecological timescale repair (D-090). Organism frozen. No σ sweep. No growth/fission retune.
 
 Causal requirements unchanged: individuality, metabolism, organizational closure, material turnover, boundary maintenance, damage repair, nutrient/fuel dependence, irreversible death. No target radius/area, health variable, repair command, or stored body shape.
 

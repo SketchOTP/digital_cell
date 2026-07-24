@@ -45,6 +45,7 @@ impl Default for MeshEdge {
 
 #[derive(Debug, Clone, Copy, Default, Serialize, Deserialize)]
 pub struct LumpedChem {
+    /// Total catalyst C = C_H + C_B (scalar path uses only this field).
     pub c: f64,
     pub a: f64,
     pub n: f64,
@@ -53,6 +54,12 @@ pub struct LumpedChem {
     /// Observer-only catalyst tracer (pulse-chase).
     #[serde(default)]
     pub tracer_c: f64,
+    /// Harvesting-biased catalyst material (D-089 composition schema).
+    #[serde(default)]
+    pub c_h: f64,
+    /// Building-biased catalyst material (D-089 composition schema).
+    #[serde(default)]
+    pub c_b: f64,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

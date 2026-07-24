@@ -1,5 +1,9 @@
 //! D-086 mesh structural production, turnover, membrane binding, damage, death.
 
+use crate::catalyst_composition::{
+    composition_z, copy_production_fluxes, ensure_composition_initialized, g_build, g_harvest,
+    sync_total_c, turnover_composition, CompositionLedger, CompositionParams,
+};
 use crate::material_mesh::MaterialMesh;
 use serde::{Deserialize, Serialize};
 
@@ -17,6 +21,9 @@ pub struct ReactionParams {
     pub k_c_turn: f64,
     pub k_a_decay: f64,
     pub q_c: f64,
+    /// D-089 compositional catalysis (default off → frozen scalar path).
+    #[serde(default)]
+    pub composition: CompositionParams,
 }
 
 impl Default for ReactionParams {
@@ -36,6 +43,7 @@ impl Default for ReactionParams {
             k_c_turn: 0.01,
             k_a_decay: 0.008,
             q_c: 0.3,
+            composition: CompositionParams::default(),
         }
     }
 }
@@ -58,6 +66,8 @@ pub struct ReactionLedger {
     pub c_turned: f64,
     /// Observer/accounting: free membrane L produced from A.
     pub l_produced: f64,
+    #[serde(default)]
+    pub composition: CompositionLedger,
 }
 
 #[inline]
@@ -86,7 +96,13 @@ pub fn structural_build_flux(mesh: &MaterialMesh, i: usize, p: &ReactionParams) 
     // Scale by current length so mass-damaged edges (small ℓ⁰) still rebuild;
     // remesh split/merge preserves Σℓ so total demand stays remesh-invariant.
     let ell = mesh.edge_length(i);
-    p.k_build * qc * a * g * ell
+    let gb = if p.composition.enable {
+        let z = composition_z(mesh.interior.c_h, mesh.interior.c_b);
+        g_build(z, p.composition.sigma)
+    } else {
+        1.0
+    };
+    p.k_build * qc * a * g * ell * gb
 }
 
 /// Local chemistry + structure/membrane update for one accepted dt.
@@ -105,10 +121,20 @@ pub fn reactions_step(
     let area = mesh.area().max(1e-6);
 
     if enable_metab {
+        if p.composition.enable {
+            ensure_composition_initialized(&mut mesh.interior);
+        }
         // N+F → A+W (lumped interior).
         let qc = q_catalyst(mesh.interior.c, p.q_c);
+        let gh = if p.composition.enable {
+            let z = composition_z(mesh.interior.c_h, mesh.interior.c_b);
+            g_harvest(z, p.composition.sigma)
+        } else {
+            1.0
+        };
         let extent = p.k_act
             * qc
+            * gh
             * mesh.interior.n.max(0.0)
             * mesh.interior.f.max(0.0)
             * dt
@@ -126,6 +152,7 @@ pub fn reactions_step(
         led.w_produced += taken * area;
 
         // Catalyst production / turnover (new C unlabeled; turnover ages tracer).
+        // Composition mode: copy with μ during production only; turnover equal on both types.
         let c_before = mesh.interior.c.max(0.0);
         let c_prod = p.k_c_prod * mesh.interior.a.max(0.0) * dt;
         let c_turn = p.k_c_turn * c_before * dt;
@@ -133,7 +160,27 @@ pub fn reactions_step(
             let frac = (c_turn / c_before).clamp(0.0, 1.0);
             mesh.interior.tracer_c = (mesh.interior.tracer_c * (1.0 - frac)).max(0.0);
         }
-        mesh.interior.c = (c_before + c_prod - c_turn).max(0.0);
+        if p.composition.enable {
+            let c_h0 = mesh.interior.c_h.max(0.0);
+            let c_b0 = mesh.interior.c_b.max(0.0);
+            let (j_h, j_b) =
+                copy_production_fluxes(c_prod, c_h0, c_b0, p.composition.mu);
+            let (c_h1, c_b1, t_h, t_b) = turnover_composition(c_h0, c_b0, c_turn);
+            mesh.interior.c_h = (c_h1 + j_h).max(0.0);
+            mesh.interior.c_b = (c_b1 + j_b).max(0.0);
+            sync_total_c(&mut mesh.interior);
+            // Conversion mass = μ-driven alternate-type production (observer).
+            let ph0 = crate::catalyst_composition::p_h(c_h0, c_b0);
+            let pb0 = crate::catalyst_composition::p_b(c_h0, c_b0);
+            let conv = c_prod * p.composition.mu * (ph0 + pb0); // = μ J_C when pool nonempty
+            led.composition.conversion_events += conv * area;
+            led.composition.c_h_produced += j_h * area;
+            led.composition.c_b_produced += j_b * area;
+            led.composition.c_h_turned += t_h * area;
+            led.composition.c_b_turned += t_b * area;
+        } else {
+            mesh.interior.c = (c_before + c_prod - c_turn).max(0.0);
+        }
         mesh.interior.a = (mesh.interior.a - c_prod).max(0.0);
         mesh.interior.w += c_turn;
         led.c_produced += c_prod * area;
@@ -207,6 +254,12 @@ pub fn reactions_step(
     // (prevents saturated free_l from draining A after θ→1).
     if enable_metab {
         let qc = q_catalyst(mesh.interior.c, p.q_c);
+        let gb = if p.composition.enable {
+            let z = composition_z(mesh.interior.c_h, mesh.interior.c_b);
+            g_build(z, p.composition.sigma)
+        } else {
+            1.0
+        };
         let peri = mesh.perimeter().max(1e-6);
         let theta = {
             let mut s = 0.0;
@@ -226,7 +279,7 @@ pub fn reactions_step(
         };
         let reserve_cap = 0.15 * peri;
         if theta < 0.95 || mesh.free_l < reserve_cap {
-            let l_prod = 0.02 * qc * mesh.interior.a.max(0.0) * peri * dt;
+            let l_prod = 0.02 * qc * gb * mesh.interior.a.max(0.0) * peri * dt;
             let room = (reserve_cap - mesh.free_l).max(0.0) + (1.0 - theta) * peri;
             let take = l_prod.min(mesh.interior.a.max(0.0) * area).min(room.max(0.0));
             mesh.interior.a = (mesh.interior.a - take / area).max(0.0);

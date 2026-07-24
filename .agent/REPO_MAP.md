@@ -686,3 +686,13 @@ Concise navigation map for agents. Add entries as application code lands.
 - docs/d088_emergent_growth_fission_inheritance.md — report
 - docs/d089_heritable_catalytic_variation.md — D-089 kickoff
 - experiments/generated/d088/ — artifacts incl. runtime_closure 90min
+
+## D-089 compositional catalytic heredity
+- chemistry-core/src/catalyst_composition.rs — C_H/C_B, μ copy fluxes, σ tradeoff, schema ids
+- chemistry-core/src/catalyst_inheritance.rs — parent–offspring z correlation helpers
+- chemistry-core/src/population_selection.rs — SharedBath + dish_step (finite shared N/F; no fitness)
+- chemistry-core/src/d089_analysis.rs — gates 0–9 campaign
+- chemistry-core/tests/d089_tests.rs — copying/tradeoff unit tests
+- experiment-runner/src/d089.rs — pipeline CLI
+- docs/d089_compositional_catalytic_evolution.md — report
+- experiments/generated/d089/ — artifacts (symlink → storage1tb)
