@@ -40,3 +40,5 @@ This file is specifically for the operators use. It keeps record of what the AI 
 - 2026-07-24 | D089_ENVIRONMENT_DEPENDENT_SELECTION_NOT_ESTABLISHED | Compositional heredity (gates0-4) established; shared-dish env-dependent selection not qualified; Phase3 not authorized; no D-090
 
 - 2026-07-24 | D-089 | event:heredity_qualified_selection_provisional | records:D089_HEREDITY_AND_PHENOTYPE_QUALIFIED,D089_SELECTION_RESULT_PROVISIONAL_PENDING_ECOLOGICAL_TIMESCALE_AUDIT | hypothesis:EARLY_FISSION_PRECEDED_SELECTION_PRESSURE | tag:D-089-natural-selection-not-established | note:compositional architecture NOT rejected; ecology audit deferred to D-090
+
+- 2026-07-24 | D-090 | event:ecology_invalid | conclusion:D090_VALID_SELECTION_ECOLOGY_NOT_ESTABLISHED | hypothesis:EARLY_FISSION_PRECEDED_SELECTION_PRESSURE upheld as timescale incompatibility | tag:D-090-selection-ecology-invalid | note:Gates0-2 pass; Gate3 fail; C_H/C_B not selection-rejected; Phase3 not authorized

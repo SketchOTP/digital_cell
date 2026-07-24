@@ -86,6 +86,7 @@ mod d086;
 mod d087;
 mod d088;
 mod d089;
+mod d090;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -473,6 +474,10 @@ enum Commands {
         #[command(subcommand)]
         action: D089Commands,
     },
+    D090 {
+        #[command(subcommand)]
+        action: D090Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -813,6 +818,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D087 { action } => run_d087(action)?,
         Commands::D088 { action } => run_d088(action)?,
         Commands::D089 { action } => run_d089(action)?,
+        Commands::D090 { action } => run_d090(action)?,
     }
     Ok(())
 }
@@ -4192,6 +4198,33 @@ fn run_d089(action: D089Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["phase2_status"],
                 result["phase3_authorized"],
                 result["selected_mu"],
+                result["next_execution_started"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D090Commands {
+    /// Ecological timescale repair and natural selection requalification.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d090")]
+        output: PathBuf,
+    },
+}
+
+fn run_d090(action: D090Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D090Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d090::run_pipeline_cli(&out)?;
+            println!(
+                "D-090 pipeline primary={} phase2={} phase3={} next_started={} -> {}",
+                result["primary_conclusion"],
+                result["phase2_status"],
+                result["phase3_authorized"],
                 result["next_execution_started"],
                 out.join("manifest.json").display()
             );

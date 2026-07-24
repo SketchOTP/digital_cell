@@ -160,3 +160,7 @@ Append-only repo-specific lessons. Format:
 - 2026-07-24 | area:d089-selection | lesson:At σ=0.15, isolated harvest/build phenotype works but shared-dish selection fails because fission requires 1.35× birth mass — builders reach division before scarcity binds | evidence:docs/d089_compositional_catalytic_evolution.md,experiments/generated/d089/competition_*
 - 2026-07-24 | area:d089-fission | lesson:Elongated D-088 seeds (r≈10–14 + bipolar stretch) required for mesh fission; circular r=5 growth never pinches | evidence:d089_analysis seed_dividing, d088 gate_fission_campaign
 - 2026-07-24 | area:d089-composition | lesson:C_H/C_B production with μ conserves J_C; partition splits actual masses by area; μ=0 + σ=0 matches scalar catalyst to ~1e-16 | evidence:gate0/gate1/gate2 artifacts
+
+- 2026-07-24 | area:d090-ecology | lesson:Compact spatial dish volume (~400) required so O(10^2) inventories yield organism-usable concentrations; large grids dilute to starvation | evidence:docs/d090_ecological_selection_requalification.md,spatial_shared_dish.rs
+
+- 2026-07-24 | area:d090-gate3 | lesson:Under frozen organism, H candidates either never scarce before growth or never reach >=0.80 post-transfer A; B fissions before scheduled damage | evidence:experiments/generated/d090/ecology_calibration

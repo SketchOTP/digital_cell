@@ -696,3 +696,14 @@ Concise navigation map for agents. Add entries as application code lands.
 - experiment-runner/src/d089.rs — pipeline CLI
 - docs/d089_compositional_catalytic_evolution.md — report
 - experiments/generated/d089/ — artifacts (symlink → storage1tb)
+
+- chemistry-core/src/spatial_shared_dish.rs — Spatial N/F/W dish with diffusion + local uptake
+- chemistry-core/src/founder_preconditioning.rs — Maintenance preconditioning + reserve audit
+- chemistry-core/src/ecological_timescales.rs — T_limit/T_fission contracts + demand estimate
+- chemistry-core/src/shared_dish_audit.rs — Pairwise interference / harness audit
+- chemistry-core/src/d090_dish.rs — Spatial competition step
+- chemistry-core/src/d090_analysis.rs — D-090 gates pipeline
+- chemistry-core/tests/d090_tests.rs — Unit checks
+- experiment-runner/src/d090.rs — CLI
+- docs/d090_ecological_selection_requalification.md — Report
+- experiments/generated/d090/ — Artifacts (symlink → storage1tb)
