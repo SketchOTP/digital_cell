@@ -27,6 +27,8 @@
 ## Mimir V2
 - project_id: 7bff443192353517
 - task_id: 687909e3d0544fedac616905bda535d8
-- status: closing
+- status: completed (version 4)
 - retrieval_feedback: yes (1 useful)
 - validation_run: BLOCKED (allowlist/active-observed-task); local evidence used
+- commit: c2651ae
+- tag: D-085-phase-field-structure-rejected
