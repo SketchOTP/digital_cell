@@ -5,6 +5,8 @@
 - Project directive: D-086
 - Goal: Replace rejected φ body with conserved material mesh; Phase 1 Gates 0–8
 - Status: done
+- Seal commit: 20e9f78
+- Tag: D-086-mesh-protocell-phase1-pass
 - Acceptance: met — `D086_MESH_PROTOCELL_PHASE1_CANDIDATE_PASS`
 - Touched files: material_mesh, mesh_*, d086_*, docs/d086_*, PROJECT_GOAL/PROFILE, .agent/*
 - Next action: independent causal audit / reproducibility (not started)
