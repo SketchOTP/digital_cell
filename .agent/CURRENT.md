@@ -4,10 +4,10 @@
 - ID: D-20260724-d086-autopoietic-material-mesh-protocell
 - Project directive: D-086
 - Goal: Replace rejected φ body with conserved material mesh; Phase 1 Gates 0–8
-- Status: done
-- Seal commit: 20e9f78
+- Seal commit: 41d24ec
 - Tag: D-086-mesh-protocell-phase1-pass
-- Acceptance: met — `D086_MESH_PROTOCELL_PHASE1_CANDIDATE_PASS`
+- Implementation commit: 20e9f78
+- Status: done
 - Touched files: material_mesh, mesh_*, d086_*, docs/d086_*, PROJECT_GOAL/PROFILE, .agent/*
 - Next action: independent causal audit / reproducibility (not started)
 
