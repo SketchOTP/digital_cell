@@ -84,6 +84,7 @@ mod d084;
 mod d085;
 mod d086;
 mod d087;
+mod d088;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -463,6 +464,10 @@ enum Commands {
         #[command(subcommand)]
         action: D087Commands,
     },
+    D088 {
+        #[command(subcommand)]
+        action: D088Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -801,6 +806,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D085 { action } => run_d085(action)?,
         Commands::D086 { action } => run_d086(action)?,
         Commands::D087 { action } => run_d087(action)?,
+        Commands::D088 { action } => run_d088(action)?,
     }
     Ok(())
 }
@@ -4125,6 +4131,34 @@ fn run_d087(action: D087Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["phase1_status"],
                 result["phase2_authorized"],
                 result["production_verdict"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D088Commands {
+    /// Emergent growth, topological fission, material inheritance.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d088")]
+        output: PathBuf,
+    },
+}
+
+fn run_d088(action: D088Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D088Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d088::run_pipeline_cli(&out)?;
+            println!(
+                "D-088 pipeline primary={} phase2={} verdict={} y_g={} next_started={} -> {}",
+                result["primary_conclusion"],
+                result["phase2_status"],
+                result["production_verdict"],
+                result["selected_y_g"],
+                result["next_execution_started"],
                 out.join("manifest.json").display()
             );
         }

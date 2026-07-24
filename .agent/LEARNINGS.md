@@ -154,3 +154,6 @@ Append-only repo-specific lessons. Format:
 - 2026-07-24 | area:d087-metrics | lesson:D-086 tracer_m/b/c are f_pool=labeled/total; R_X=gross_replacement/mean_mass is separate; dual passes at 5000 steps | evidence:experiments/generated/d087/metric_semantics/
 - 2026-07-24 | area:d087-seeds | lesson:seed_mesh only changes n=24+(seed%3); held-out evidence must use deterministic perturbations not duplicate seeds | evidence:phase1-certifier/src/sim.rs
 - 2026-07-24 | area:d087-retention | lesson:retention final/initial >1 qualifies only when production is ledger-accounted (qualifies_above_one) | evidence:phase1-certifier/src/metrics.rs
+- 2026-07-24 | area:d088-growth | lesson:Surplus maintenance must exclude Phase1 build flux or J_surplus≈0 at steady state | evidence:chemistry-core/src/mesh_growth.rs
+- 2026-07-24 | area:d088-fission | lesson:Cross-bond range must scale with mean edge length or grown meshes never pinch | evidence:chemistry-core/src/mesh_topology.rs
+- 2026-07-24 | area:d087-runtime | lesson:PHASE1_RESEARCH_RUNTIME_QUALIFIED requires ≥90 wall-clock minutes not step-count proxies | evidence:experiments/generated/d088/runtime_closure/status.json

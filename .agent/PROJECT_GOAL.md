@@ -13,11 +13,12 @@ The D-008 phase-field (`φ` / Cahn–Hilliard) structural body lineage is **clos
 * Retired from the new equation identity: `φ` as body, phase-field chemical potential, Cahn–Hilliard structural evolution, φ-derived cut-cell support, phase-field structural rate laws
 * Records: `D008_PHASE_FIELD_LINEAGE_CLOSED_REJECTED`, `PHASE1_PHASE_FIELD_BODY_RETIRED`, `PHASE1_AUTOPOIETIC_MESH_RESET_AUTHORIZED`
 * D-086 result: `D086_MESH_PROTOCELL_PHASE1_CANDIDATE_PASS` → `PHASE1_AUTOPOIETIC_CANDIDATE_PASS`, `MESH_PHASE1_LINEAGE_QUALIFIED`
-* D-087 independent certification: `D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED` → `PHASE1_COMPLETE`, `MESH_PHASE1_V1_FROZEN`, `PHASE2_REPRODUCTION_AUTHORIZED`, research runtime `PHASE1_RESEARCH_RUNTIME_QUALIFIED`
+* D-087 independent certification: `D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED` → `PHASE1_COMPLETE`, `MESH_PHASE1_V1_FROZEN`, `PHASE2_REPRODUCTION_AUTHORIZED`, `PHASE1_SCIENCE_CERTIFIED`; packaged runtime initially provisional, then `PHASE1_RESEARCH_RUNTIME_QUALIFIED` after ≥90 min wall-clock closure
+* D-088: `D088_CAUSAL_GROWTH_FISSION_INHERITANCE_QUALIFIED` → `PHASE2_PHYSICAL_REPRODUCTION_QUALIFIED`, `MATERIAL_STATE_INHERITANCE_QUALIFIED`, `MULTI_GENERATION_MESH_LINEAGE_ESTABLISHED`
 
-## Phase 2 (authorized)
+## Phase 2 (reproduction qualified)
 
-Branch `phase2-growth-division-inheritance`. Active directive **D-088**: metabolically coupled growth, division, and inheritance without a `divide()` command. No genetics until physical division and material inheritance work.
+Branch `phase2-growth-division-inheritance`. Physical reproduction without `divide()` is qualified. Active follow-on: **D-089** heritable catalytic variation and selection (minimal explicit heritable catalytic specification). No return to growth/fission parameter sweeps.
 
 Causal requirements unchanged: individuality, metabolism, organizational closure, material turnover, boundary maintenance, damage repair, nutrient/fuel dependence, irreversible death. No target radius/area, health variable, repair command, or stored body shape.
 

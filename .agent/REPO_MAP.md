@@ -676,3 +676,13 @@ Concise navigation map for agents. Add entries as application code lands.
 - docs/d088_growth_division_inheritance.md — Phase 2 kickoff
 - scripts/package_phase1_linux.sh — package digital-protocell-phase1-v1
 - experiments/generated/d087/ — certification artifacts (→ storage1tb)
+- chemistry-core/src/mesh_growth.rs — surplus ledger + additive J_growth (y_g candidates)
+- chemistry-core/src/mesh_topology.rs — tension rupture, local pinch search (observer-safe)
+- chemistry-core/src/mesh_fission.rs — cross-bond fission + conservative partition
+- chemistry-core/src/mesh_population.rs — multi-individual bookkeeping (no divide SM)
+- chemistry-core/src/d088_analysis.rs — D-088 gates campaign
+- chemistry-core/tests/d088_tests.rs — unit tests
+- experiment-runner/src/d088.rs — pipeline
+- docs/d088_emergent_growth_fission_inheritance.md — report
+- docs/d089_heritable_catalytic_variation.md — D-089 kickoff
+- experiments/generated/d088/ — artifacts incl. runtime_closure 90min
