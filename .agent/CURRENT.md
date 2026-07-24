@@ -27,5 +27,7 @@
 ## Mimir V2
 - project_id: 7bff443192353517
 - task_id: a48cb841669c4eefa35826d3ced85acd
+- ending_commit: 1d1300c
+- d083_seal: b966502
 - version: 2
 - retrieval.session_id: 86f55685e01445198ccce15189a89bcc
