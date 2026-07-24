@@ -639,3 +639,12 @@ Concise navigation map for agents. Add entries as application code lands.
 - digital-protocell/docs/d083_conservative_dynamic_edge_migration.md — report
 - experiments/generated/d083/ — artifacts (→ storage1tb)
 - d080_analysis gate8_dynamic_interface_ex(migrate) + unmigrated path for Gate0
+
+## D-084 edge structural homeostasis
+- chemistry-core/src/structural_kinetics.rs — mixed_structure_loss_density; use_mixed_structure_turnover branch
+- chemistry-core/src/config.rs — use_mixed_structure_turnover, structure_turnover_eta
+- chemistry-core/src/d084_analysis.rs — Gates 0–8; η candidate ID; prescribed restoring screen
+- chemistry-core/tests/d084_tests.rs — mixed-loss + candidate/screen unit tests
+- experiment-runner/src/d084.rs — artifact pipeline (archive symlink)
+- digital-protocell/docs/d084_edge_structural_homeostasis.md — report
+- experiments/generated/d084/ — artifacts (→ storage1tb)

@@ -80,6 +80,7 @@ mod d080;
 mod d081;
 mod d082;
 mod d083;
+mod d084;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -443,6 +444,10 @@ enum Commands {
         #[command(subcommand)]
         action: D083Commands,
     },
+    D084 {
+        #[command(subcommand)]
+        action: D084Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -777,6 +782,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D081 { action } => run_d081(action)?,
         Commands::D082 { action } => run_d082(action)?,
         Commands::D083 { action } => run_d083(action)?,
+        Commands::D084 { action } => run_d084(action)?,
     }
     Ok(())
 }
@@ -3995,6 +4001,33 @@ fn run_d083(action: D083Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["primary_conclusion"],
                 result["structural_direction"],
                 result["stopped_at_gate"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D084Commands {
+    /// Edge-boundary structural homeostasis via mixed bulk/interface turnover.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d084")]
+        output: PathBuf,
+    },
+}
+
+fn run_d084(action: D084Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D084Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d084::run_pipeline(&out)?;
+            println!(
+                "D-084 pipeline primary={} stopped={} eta={:?} k={:?} -> {}",
+                result["primary_conclusion"],
+                result["stopped_at_gate"],
+                result["selected_eta"],
+                result["selected_k_phi_minus"],
                 out.join("manifest.json").display()
             );
         }

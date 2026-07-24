@@ -154,6 +154,12 @@ reactions_enabled={};phase_separation_enabled={};diffusion_enabled={};k_phi={};u
         params.k_phi,
         params.use_legacy_structure_kinetics,
     );
+    if params.use_mixed_structure_turnover {
+        s.push_str(&format!(
+            ";use_mixed_structure_turnover=true;structure_turnover_eta={}",
+            params.structure_turnover_eta
+        ));
+    }
     if params.equation_version != EquationVersion::D003CrowdingV1
         || params.k_structure_interface != 0.0
         || (params.k_c_structure - 0.10).abs() > 1e-15

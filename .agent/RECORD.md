@@ -31,3 +31,4 @@ This file is specifically for the operators use. It keeps record of what the AI 
 
 - 2026-07-22 | D-077 | decision:D077_COOPERATIVE_COHESION_NOT_PORTABLE | record:ENERGY_DRIVEN_SURFACE_STATE_CYCLE_REJECTED | note:cooperative χ exchange thermodynamically OK but required cohesion not portable across constitutive vs reduced-p D-075 states; secondary metabolic A retention failure
 - 2026-07-24 | D-083 | event:sealed | conclusion:D083_EDGE_DYNAMIC_MIGRATION_REPAIRED | also:STRUCTURAL_RESTORING_BLOCKER_REMAINS | tag:D-083-edge-dynamic-migration-repaired | note:D-084 entry commit; Stage E remains BLOCKED_NOT_RECOVERED
+- 2026-07-24 | D-084 | event:route | conclusion:D084_STRUCTURAL_BASIN_NOT_ESTABLISHED | gate4_restoring:yes | selected_eta≈0.07535 | k_phi_minus≈0.01963 | note:prescribed-radius crossing exists; basin not established; Stage E BLOCKED; tag:D-084-edge-structural-homeostasis-fail

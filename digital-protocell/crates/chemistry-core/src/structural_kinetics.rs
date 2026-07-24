@@ -103,15 +103,41 @@ pub fn structure_production_rate(phi: f64, activated: f64, catalyst: f64, params
     }
 }
 
+/// Mixed bulk/interface structural loss density (D-084):
+/// `k * φ * [η + (1−η) I(φ)]`. η=0 is interface-only; η=1 is bulk.
+#[inline]
+pub fn mixed_structure_loss_density(phi: f64, k_decay: f64, eta: f64) -> f64 {
+    let phi = phi.max(0.0);
+    let eta = eta.clamp(0.0, 1.0);
+    let i = interface_weight(phi);
+    k_decay.max(0.0) * phi * (eta + (1.0 - eta) * i)
+}
+
+/// Enable D-084 mixed turnover on `params` with global `(η, k_φ,-)`.
+pub fn apply_mixed_turnover_params(params: &mut SimParams, eta: f64, k_decay: f64) {
+    params.use_mixed_structure_turnover = true;
+    params.structure_turnover_eta = eta.clamp(0.0, 1.0);
+    params.k_structure_decay = k_decay.max(0.0);
+}
+
+pub fn legacy_exposure_floor() -> f64 {
+    STRUCTURAL_EXPOSURE_FLOOR
+}
+
 /// Decay rate density; `lap_abs` used only by curvature mechanism (0 otherwise).
 #[inline]
 pub fn structure_decay_rate(phi: f64, lap_abs: f64, params: &SimParams) -> f64 {
     let phi = phi.max(0.0);
     match active_structural_mechanism(params) {
         Some(StructuralScalingMechanism::InterfaceLimitedTurnover) => {
-            params.k_structure_decay
-                * phi
-                * (STRUCTURAL_EXPOSURE_FLOOR + interface_weight(phi))
+            if params.use_mixed_structure_turnover {
+                mixed_structure_loss_density(phi, params.k_structure_decay, params.structure_turnover_eta)
+            } else {
+                // Frozen D-019/D-083 legacy: ε + I(φ) floor (not the D-084 convex mix).
+                params.k_structure_decay
+                    * phi
+                    * (STRUCTURAL_EXPOSURE_FLOOR + interface_weight(phi))
+            }
         }
         Some(StructuralScalingMechanism::LocalCurvatureMaintenance) => {
             params.k_structure_decay * phi * (STRUCTURAL_CURVATURE_FLOOR + lap_abs.max(0.0))

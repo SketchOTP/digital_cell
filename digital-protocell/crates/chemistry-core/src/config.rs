@@ -740,6 +740,12 @@ pub struct SimParams {
     /// Must remain `None` for governed v2 identity hashes.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub d019_mechanism_probe: Option<StructuralScalingMechanism>,
+    /// D-084: when true, structural loss uses `k φ [η+(1−η)I]` instead of legacy `ε+I` floor.
+    #[serde(default)]
+    pub use_mixed_structure_turnover: bool,
+    /// D-084 bulk mix η ∈ [0,1]. Meaningful only when `use_mixed_structure_turnover`.
+    #[serde(default)]
+    pub structure_turnover_eta: f64,
     /// D-021 membrane interface-protection floor ε_M ∈ (0, 1]. Used under v4/v5.
     #[serde(default = "default_eps_m")]
     pub eps_m: f64,
@@ -1222,6 +1228,8 @@ impl Default for SimParams {
             transport_schema_version: default_transport_schema_version(),
             rho_a: default_rho_a(),
             d019_mechanism_probe: None,
+            use_mixed_structure_turnover: false,
+            structure_turnover_eta: 0.0,
             eps_m: default_eps_m(),
             chi_m: default_chi_m(),
             k_precursor: default_k_precursor(),
