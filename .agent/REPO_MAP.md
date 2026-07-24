@@ -630,3 +630,12 @@ Concise navigation map for agents. Add entries as application code lands.
 - experiment-runner/src/d082.rs — artifact pipeline
 - digital-protocell/docs/d082_edge_activation_supply_integration.md — report (Route I)
 - experiments/generated/d082/ — artifacts
+
+## D-083 conservative dynamic edge migration
+- chemistry-core/src/edge_migration.rs — local overlap/transfer/return-to-L operator; support transition audit
+- chemistry-core/src/d083_analysis.rs — Gates 0–6; synthetic/autonomous motion; structural separation
+- chemistry-core/tests/d083_tests.rs — migration + motion + Gate5 reserve-contract tests
+- experiment-runner/src/d083.rs — artifact pipeline (archive symlink)
+- digital-protocell/docs/d083_conservative_dynamic_edge_migration.md — report
+- experiments/generated/d083/ — artifacts (→ storage1tb)
+- d080_analysis gate8_dynamic_interface_ex(migrate) + unmigrated path for Gate0

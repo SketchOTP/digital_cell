@@ -30,3 +30,4 @@ This file is specifically for the operators use. It keeps record of what the AI 
 - 2026-07-22 | D-073 | Mature-membrane equilibrium sufficiency audit → D073_ORGANISM_EXCHANGE_INTEGRATION_DEFECT (Route E); D-072 Route X retained provisional; no biology change
 
 - 2026-07-22 | D-077 | decision:D077_COOPERATIVE_COHESION_NOT_PORTABLE | record:ENERGY_DRIVEN_SURFACE_STATE_CYCLE_REJECTED | note:cooperative χ exchange thermodynamically OK but required cohesion not portable across constitutive vs reduced-p D-075 states; secondary metabolic A retention failure
+- 2026-07-24 | D-083 | event:sealed | conclusion:D083_EDGE_DYNAMIC_MIGRATION_REPAIRED | also:STRUCTURAL_RESTORING_BLOCKER_REMAINS | tag:D-083-edge-dynamic-migration-repaired | note:D-084 entry commit; Stage E remains BLOCKED_NOT_RECOVERED

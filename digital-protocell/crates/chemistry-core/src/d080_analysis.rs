@@ -670,7 +670,17 @@ pub struct DynamicReport {
     pub failure: Option<String>,
 }
 
+/// D-082 / Gate0 reproduction path: rebuild support without migrating B.
+pub fn gate8_dynamic_interface_unmigrated(k_lateral_scale: f64) -> DynamicReport {
+    gate8_dynamic_interface_ex(k_lateral_scale, false)
+}
+
+/// D-083 repair path: migrate B across accepted support transitions.
 pub fn gate8_dynamic_interface(k_lateral_scale: f64) -> DynamicReport {
+    gate8_dynamic_interface_ex(k_lateral_scale, true)
+}
+
+pub fn gate8_dynamic_interface_ex(k_lateral_scale: f64, migrate: bool) -> DynamicReport {
     let params = frozen_d079_params();
     let (w, h) = grid_for_radius(22.0);
     let mut state = EdgeMembraneState::new(w, h);
@@ -691,8 +701,18 @@ pub fn gate8_dynamic_interface(k_lateral_scale: f64) -> DynamicReport {
     }
     let m0 = state.total_membrane();
     for &r in &[20.0_f64, 22.0, 24.0, 22.0, 20.0] {
-        phi = analytic_disk_phi(w, h, r);
-        support = build_cut_cell_support(&phi, w, h);
+        let new_phi = analytic_disk_phi(w, h, r);
+        let new_support = build_cut_cell_support(&new_phi, w, h);
+        if migrate {
+            let _ = crate::edge_migration::migrate_bound_across_support(
+                &mut state,
+                &support,
+                &new_support,
+                &params,
+            );
+        }
+        phi = new_phi;
+        support = new_support;
         for _ in 0..1_500 {
             let _ = accepted_step_supported(
                 &mut state,

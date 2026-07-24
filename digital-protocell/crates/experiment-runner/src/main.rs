@@ -79,6 +79,7 @@ mod d079;
 mod d080;
 mod d081;
 mod d082;
+mod d083;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -438,6 +439,10 @@ enum Commands {
         #[command(subcommand)]
         action: D082Commands,
     },
+    D083 {
+        #[command(subcommand)]
+        action: D083Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -771,6 +776,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D080 { action } => run_d080(action)?,
         Commands::D081 { action } => run_d081(action)?,
         Commands::D082 { action } => run_d082(action)?,
+        Commands::D083 { action } => run_d083(action)?,
     }
     Ok(())
 }
@@ -3962,6 +3968,32 @@ fn run_d082(action: D082Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-082 pipeline primary={} route={} stopped={} -> {}",
                 result["primary_conclusion"],
                 result["route"],
+                result["stopped_at_gate"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D083Commands {
+    /// Conservative dynamic edge-membrane migration repair.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d083")]
+        output: PathBuf,
+    },
+}
+
+fn run_d083(action: D083Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D083Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d083::run_pipeline(&out)?;
+            println!(
+                "D-083 pipeline primary={} structural={} stopped={} -> {}",
+                result["primary_conclusion"],
+                result["structural_direction"],
                 result["stopped_at_gate"],
                 out.join("manifest.json").display()
             );
