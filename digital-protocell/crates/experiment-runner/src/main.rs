@@ -82,6 +82,7 @@ mod d082;
 mod d083;
 mod d084;
 mod d085;
+mod d086;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -453,6 +454,10 @@ enum Commands {
         #[command(subcommand)]
         action: D085Commands,
     },
+    D086 {
+        #[command(subcommand)]
+        action: D086Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -789,6 +794,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D083 { action } => run_d083(action)?,
         Commands::D084 { action } => run_d084(action)?,
         Commands::D085 { action } => run_d085(action)?,
+        Commands::D086 { action } => run_d086(action)?,
     }
     Ok(())
 }
@@ -4060,6 +4066,32 @@ fn run_d085(action: D085Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["primary_conclusion"],
                 result["phase_a_pass"],
                 result["stage_e_pass"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D086Commands {
+    /// Autopoietic material-mesh Phase 1 qualification (Gates 0–8).
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d086")]
+        output: PathBuf,
+    },
+}
+
+fn run_d086(action: D086Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D086Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d086::run_pipeline(&out)?;
+            println!(
+                "D-086 pipeline primary={} stopped={} mech={} -> {}",
+                result["primary_conclusion"],
+                result["stopped_at_gate"],
+                result["selected_mech"],
                 out.join("manifest.json").display()
             );
         }

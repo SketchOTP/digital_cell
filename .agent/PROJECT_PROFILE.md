@@ -13,6 +13,13 @@
 ## What we are building
 A self-maintaining digital protocell that develops into a persistent, embodied individual. Aliveness must emerge from internal organization — digital chemistry, cells, metabolism, body, nervous system, memory, and environment — not from scripted behavior, reaction tables, animation states, or an LLM prompt.
 
+## Phase 1 status (D-086 amendment)
+- Active branch: `phase1-autopoietic-material-mesh`
+- Sealed lineage: `d008-membrane-metabolic-closure` (phase-field body closed/rejected)
+- Body substrate: conserved material mesh (`autopoietic_material_mesh_v1`) — D-086 Phase 1 candidate PASS (`MESH_PHASE1_LINEAGE_QUALIFIED`)
+- Records: `D008_PHASE_FIELD_LINEAGE_CLOSED_REJECTED`, `PHASE1_PHASE_FIELD_BODY_RETIRED`, `PHASE1_AUTOPOIETIC_MESH_RESET_AUTHORIZED`
+- Stack: Rust (`digital-protocell`), chemistry-core + experiment-runner
+
 ## Architectural constraints (from PROJECT_GOAL)
 - No central controller may directly command eat, repair, approach, bond, fear, reproduce, or scripted emotional responses
 - Behavior emerges from interacting subsystems and developmental history
@@ -23,14 +30,14 @@ A self-maintaining digital protocell that develops into a persistent, embodied i
 - Mature form: screen as boundary to our world; webcam/microphone perception; movement, posture, proximity, environment manipulation, nonverbal vocalization
 - Success is measured by emergent individuality and self-maintenance — not by proving consciousness
 
-## Stack (greenfield)
+## Stack
 - Target platform: Linux
-- Implementation languages, persistence, and runtime: TBD — no application code in repo yet
+- Implementation: Rust workspace `digital-protocell` (chemistry-core, experiment-runner)
 - Agent/tooling docs: Markdown, Cursor rules, Mimir, Serena, cocoindex-code
 
 ## Common commands
-- Index (when code exists): `ccc init` once, then `ccc index` from repo root
-- Tests / build / CLI: not configured yet
+- Tests: `cargo test -p chemistry-core --test d086_tests --release`
+- Pipeline: `cargo run --release -- d086 pipeline`
 
 <!-- MIMIR_PROJECT_BINDING_START -->
 ## Mimir binding

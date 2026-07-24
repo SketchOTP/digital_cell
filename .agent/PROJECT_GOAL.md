@@ -2,6 +2,23 @@
 
 Create a standalone Linux-based digital lifeform that begins as a single self-maintaining digital protocell and develops into a persistent, embodied creature whose continued existence arises from its own internal organization rather than scripted behavior.
 
+## Phase 1 substrate amendment (D-086)
+
+The D-008 phase-field (`φ` / Cahn–Hilliard) structural body lineage is **closed and rejected** after D-085 (`D085_PHASE_FIELD_STRUCTURAL_SUBSTRATE_REJECTED`). Phase 1 no longer attempts to force a scalar concentration field to act as the organism body.
+
+**Current Phase 1 requirement:** one persistent, metabolically active, spatially compartmentalized digital protocell whose **explicit conserved material mesh** body and selective boundary are continuously maintained by local chemistry and mechanics.
+
+* Body substrate: closed polygonal material mesh (structural mass `m`, bound membrane `b`, free reserve `L`)
+* Retained: Cartesian `N`/`F`/`W`, catalyst `C`, activated `A`, activation chemistry, edge-membrane binding/permeability principles (D-079–D-083)
+* Retired from the new equation identity: `φ` as body, phase-field chemical potential, Cahn–Hilliard structural evolution, φ-derived cut-cell support, phase-field structural rate laws
+* Records: `D008_PHASE_FIELD_LINEAGE_CLOSED_REJECTED`, `PHASE1_PHASE_FIELD_BODY_RETIRED`, `PHASE1_AUTOPOIETIC_MESH_RESET_AUTHORIZED`
+
+Causal requirements unchanged: individuality, metabolism, organizational closure, material turnover, boundary maintenance, damage repair, nutrient/fuel dependence, irreversible death. No target radius/area, health variable, repair command, or stored body shape.
+
+Still excluded from Phase 1: reproduction, genetics, evolution, sensing, behavior, neural systems, multiple organisms, molecular lipid particles, GPU dependence, LLM integration.
+
+## Long-horizon end goal
+
 The organism must be composed of interacting digital chemistry and cellular structures that:
 
 * consume energy and material from their environment

@@ -657,3 +657,14 @@ Concise navigation map for agents. Add entries as application code lands.
 - chemistry-core/src/config.rs — use_mechanochemical_structure + g/K params
 - docs/d085_decisive_structural_closure.md — campaign report
 - experiments/generated/d085/ — artifacts (→ storage1tb)
+
+## D-086 material mesh
+- chemistry-core/src/material_mesh.rs — closed mesh body (m,b,tracers); schema autopoietic_material_mesh_v1
+- chemistry-core/src/mesh_mechanics.rs — stretch/bend/local pressure; remesh; ≤3 MechParams
+- chemistry-core/src/mesh_reactions.rs — A→m, turnover, L⇌b, damage/rebond/death
+- chemistry-core/src/mesh_transport.rs — occupancy→permeability; conservative exchange
+- chemistry-core/src/d086_analysis.rs — Gates 0–8 + routing
+- chemistry-core/tests/d086_tests.rs — focused unit tests
+- experiment-runner/src/d086.rs — pipeline → experiments/generated/d086/
+- docs/d086_autopoietic_material_mesh.md — campaign report
+- experiments/generated/d086/ — artifacts (→ storage1tb)

@@ -1,34 +1,30 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260723-d085-decisive-structural-closure
-- Project directive: D-085
-- Goal: Complete D-084 dynamic basin; one mechanochemical fallback; Stage E or reject phase-field substrate
-- Status: done — D085_PHASE_FIELD_STRUCTURAL_SUBSTRATE_REJECTED
-- Acceptance: met (Phase A 15-run + Phase C 45-run; parity OK; substrate rejected)
-- Touched files: d085_analysis/tests, experiment-runner/d085, structural_kinetics, config, simulation, docs/d085, .agent/*
-- Next action: redesign organism body as conserved cellular/mesh material system (not scalar/curvature rate patch)
+- ID: D-20260724-d086-autopoietic-material-mesh-protocell
+- Project directive: D-086
+- Goal: Replace rejected φ body with conserved material mesh; Phase 1 Gates 0–8
+- Status: done
+- Acceptance: met — `D086_MESH_PROTOCELL_PHASE1_CANDIDATE_PASS`
+- Touched files: material_mesh, mesh_*, d086_*, docs/d086_*, PROJECT_GOAL/PROFILE, .agent/*
+- Next action: independent causal audit / reproducibility (not started)
 
 ## Repo facts needed now
-- D-084 candidate dynamically fails: A retention ≈0.26 at R18/22/26 × seeds 1–5
-- Failure class: RESOURCE_COUPLING_REVERSAL (parity PASS)
-- Mechano weak/center/strong all fail same floor
-- Phase-field structural substrate closed for Phase 1
-- Leave unstaged: .cursor/rules/*, AGENTS.md
+- Branch: `phase1-autopoietic-material-mesh`
+- Schema: `autopoietic_material_mesh_v1` / `mesh_vertices_edges_v1`
+- Mech: center (k_s=14, k_pi=0.22, κ_b=2, α≈0.022)
+- Phase1: `PHASE1_AUTOPOIETIC_CANDIDATE_PASS`; production `MESH_PHASE1_LINEAGE_QUALIFIED`
+- Leave unstaged: `.cursor/rules/*`, `AGENTS.md`
 
 ## Last validation
-- Command: cargo test -p chemistry-core --test d085_tests --release; d085 pipeline (60 dynamic runs)
-- Result: tests 6/6; primary D085_PHASE_FIELD_STRUCTURAL_SUBSTRATE_REJECTED
+- Command: `cargo test -p chemistry-core --test d086_tests --release`; `cargo run --release -p experiment-runner -- d086 pipeline`
+- Result: 9/9 tests; pipeline primary PASS gates 0–8; 15/15 basin
 
 ## Open blockers
-- Stage E BLOCKED_NOT_RECOVERED
-- Requires substrate redesign (not another rate directive)
+- None for D-086 acceptance
 
 ## Mimir V2
 - project_id: 7bff443192353517
-- task_id: 687909e3d0544fedac616905bda535d8
-- status: completed (version 4)
-- retrieval_feedback: yes (1 useful)
-- validation_run: BLOCKED (allowlist/active-observed-task); local evidence used
-- commit: c2651ae
-- tag: D-085-phase-field-structure-rejected
+- task_id: 94cb9a9d3e9a4afd8c256346c0e6491f
+- status: closed completed
+- retrieval.session_id: b5030d41ebdd4d7bb175cd7e7cbf44ef (feedback useful=[])

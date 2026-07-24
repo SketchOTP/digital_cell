@@ -148,3 +148,6 @@ Append-only repo-specific lessons. Format:
 - 2026-07-24 | area:d084-turnover | lesson:Mixed loss k·φ·[η+(1−η)I] at η≈0.075 creates prescribed R18+/R22≈0/R26−; η=0 interface-only does not | evidence:experiments/generated/d084/prescribed_radius/
 - 2026-07-24 | area:d084-legacy | lesson:use_mixed_structure_turnover=false keeps D-019 ε+I floor; Gate0/1 baseline must not enable mixed mode | evidence:chemistry-core/src/structural_kinetics.rs
 - 2026-07-24 | area:d085-structural | lesson:D-084 fixed-radius restoring incomplete≠scientific fail; full dynamic basin loses A~0.26; local κ/s mechano cannot restore; reject CH structural substrate | evidence:experiments/generated/d085/result.json
+- 2026-07-24 | area:d086-mesh | lesson:Mech candidates need Laplace α=k_π·Π_chem/k_s < 1/R_max or passive meshes expand unboundedly | evidence:chemistry-core/src/mesh_mechanics.rs
+- 2026-07-24 | area:d086-build | lesson:Structural build must be per-length (not per-edge) or remesh doubles A demand | evidence:chemistry-core/src/mesh_reactions.rs
+- 2026-07-24 | area:d086-tracers | lesson:Turnover alone keeps tracer fraction flat; unlabeled build + gated L production required for Gate4 | evidence:experiments/generated/d086/turnover/
