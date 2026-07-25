@@ -719,3 +719,12 @@ Concise navigation map for agents. Add entries as application code lands.
 - docs/d092_minimal_catalytic_template_heredity.md — D-092 kickoff
 - material_mesh LumpedChem.r + equation_id stamp; mesh_growth reserve-funded path; mesh_fission R partition
 
+## D-092 catalytic template heredity
+- chemistry-core/src/template_polymer.rs — schema, monomers, hydrolysis, founders, TemplateParams
+- chemistry-core/src/template_copying.rs — sitewise association + ligation
+- chemistry-core/src/template_motifs.rs — HHB/BBH motifs, K_H/K_B binding, activity gains
+- chemistry-core/src/template_partition.rs — spatial fission partition + diffusion
+- chemistry-core/src/d092_analysis.rs — Gates 0–10 pipeline
+- chemistry-core/tests/d092_tests.rs — unit tests
+- experiment-runner/src/d092.rs — CLI shim
+- docs/d092_minimal_catalytic_template_heredity.md — report

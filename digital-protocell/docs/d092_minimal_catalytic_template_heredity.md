@@ -1,27 +1,75 @@
 # D-092 Minimal Catalytic Template Heredity
 
-## Status
+## Primary conclusion
 
-Kickoff authorized by D-091 conclusion:
+`D092_TEMPLATE_HEREDITY_QUALIFIED_MOTIF_SELECTION_REJECTED`
 
-`D091_METABOLIC_RESERVE_QUALIFIED_COMPOSITIONAL_SELECTION_REJECTED`
+## Records
 
-## Constraint
+- `MINIMAL_CATALYTIC_TEMPLATE_HEREDITY_QUALIFIED`
+- `TEMPLATE_MOTIF_EXPRESSION_ARCHITECTURE_REJECTED`
+- `PHASE3_NOT_AUTHORIZED`
+- `TEMPLATE_INFORMATION_LOSS_IRREVERSIBLE_WITHOUT_TEMPLATE`
 
-- Do **not** increase `σ`.
-- Metabolic reserve schema remains the growth/maintenance physiology.
-- `C_H/C_B` scalar tradeoff is closed as the evolutionary substrate.
+## Schema
 
-## Objective (initial)
+- Equation: `autopoietic_material_mesh_catalytic_template_v1`
+- Fields: `mesh_vertices_edges_reserve_template_polymer_v1`
+- D-091 reserve physiology preserved under template stamp
+- `C_H/C_B` composition remains available for historical tests only (`enable: false` in D-092)
 
-Define and evaluate a minimal catalytic **template** heredity mechanism that can carry heritable catalytic organization beyond the rejected compositional mass-fraction tradeoff, while preserving local causality and D-091 reserve physiology.
+## Architecture
 
-## Entry
+Physical template chains live on `MaterialMesh.templates` (not an organism genome).
 
-- Prior: D-091 on `phase2-growth-division-inheritance`
-- Reserve schema: `autopoietic_material_mesh_metabolic_reserve_v1`
-- Frozen: `μ=0.01`, `σ=0.15` (not for selection sweeps), D-088 fission, Phase 1 maintenance
+- Free monomers `U_H` / `U_B` on `LumpedChem`
+- Ordered bonded monomers store sequence information
+- Local match/mismatch association (100× affinity ratio) + A-consuming ligation
+- Motifs `HHB` / `BBH` bind catalyst into `K_H` / `K_B` complexes
+- Complex efficiencies: free `1.0/1.0`, `K_H` `1.5/0.5`, `K_B` `0.5/1.5`
+- Fission partitions chains by spatial position (no sequence copy)
 
-## Next execution
+### Founders (L=12, 6H+6B)
 
-`next_execution_started: true` — full D-092 Animus directive pending.
+| Role | Sequence |
+|------|----------|
+| Harvest | `HHBHHBHHBBBB` |
+| Build | `BBHBBHBBHHHH` |
+| Neutral | `HBHBHBHBHBHB` |
+
+## Gate summary (smoke evidence)
+
+| Gate | Result |
+|------|--------|
+| 0 Preservation / schema | PASS |
+| 1 Polymer accounting | PASS |
+| 2 Local copying (~1% mismatch) | PASS |
+| 3 Population maintenance | PASS |
+| 4 Fission inheritance | PASS |
+| 5 Sequence→phenotype causality | PASS |
+| 6 Shared-dish selection | FAIL |
+| 7 Mutation adaptation | FAIL |
+| 8 Environmental reversal | FAIL |
+| 9 Information necessity | PASS |
+| 10 Stability | PASS |
+
+Measured per-site mismatch ≈ 0.013 (target ~0.01).
+
+## Interpretation
+
+Template material organization, local copying, fission partition, and motif-complex expression are established. Environment-dependent selection on fixed motif specialization was not established under the D-091 reserve ecologies in this campaign.
+
+Phase 3 is **not** authorized. Next architecture may retain template copying but should replace fixed motif specialization with a local catalytic reaction-network topology. Do not reopen `C_H/C_B` or raise `σ`.
+
+## Entry / seals
+
+- D-091 seal: `58817ac` / tag `D-091-metabolic-reserve-qualified-selection-rejected`
+- D-092 start: `58817ac`
+
+## Artifacts
+
+`digital-protocell/experiments/generated/d092/`
+
+## Note
+
+Smoke mode shrinks selection replicates; Gate 6–8 failures are reported honestly without smoke auto-pass. Full non-smoke matrices remain available for follow-up if desired.

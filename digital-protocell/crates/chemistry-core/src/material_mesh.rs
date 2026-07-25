@@ -9,6 +9,66 @@ pub const EQUATION_VERSION_MATERIAL_MESH: &str = "autopoietic_material_mesh_v1";
 pub const FIELD_SCHEMA_MATERIAL_MESH: &str = "mesh_vertices_edges_v1";
 pub const MATERIAL_MESH_SCHEMA_VERSION: u32 = 1;
 
+/// Template monomer identity (D-092). Sequence = ordered bonded monomers.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum MonomerKind {
+    H,
+    B,
+}
+
+impl MonomerKind {
+    pub fn from_char(c: char) -> Option<Self> {
+        match c {
+            'H' | 'h' => Some(Self::H),
+            'B' | 'b' => Some(Self::B),
+            _ => None,
+        }
+    }
+
+    pub fn as_char(self) -> char {
+        match self {
+            Self::H => 'H',
+            Self::B => 'B',
+        }
+    }
+}
+
+/// Physical template chain: hereditary information in bond order (D-092).
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct TemplateChain {
+    pub id: u64,
+    pub parent_id: Option<u64>,
+    pub pos: [f64; 2],
+    pub orientation: f64,
+    pub monomers: Vec<MonomerKind>,
+    pub backbone: Vec<bool>,
+    pub paired: Vec<Option<MonomerKind>>,
+    pub nascent_backbone: Vec<bool>,
+    pub complete: bool,
+}
+
+impl TemplateChain {
+    pub fn sequence_string(&self) -> String {
+        self.monomers.iter().map(|m| m.as_char()).collect()
+    }
+
+    pub fn is_complete_template(&self) -> bool {
+        const L: usize = 12;
+        self.complete
+            && self.monomers.len() == L
+            && self.backbone.len() + 1 == self.monomers.len()
+            && self.backbone.iter().all(|&b| b)
+    }
+
+    pub fn refresh_complete(&mut self) {
+        const L: usize = 12;
+        self.complete = self.monomers.len() == L
+            && !self.monomers.is_empty()
+            && self.backbone.len() + 1 == self.monomers.len()
+            && self.backbone.iter().all(|&b| b);
+    }
+}
+
 /// Global structural line density ρ_s: ℓ⁰ = m / ρ_s.
 pub const DEFAULT_RHO_S: f64 = 1.0;
 pub const DEFAULT_B_MAX_PER_LENGTH: f64 = 1.0;
@@ -64,6 +124,18 @@ pub struct LumpedChem {
     /// Not readiness, age, fitness, or a division trigger.
     #[serde(default)]
     pub r: f64,
+    /// Free template monomer U_H (D-092).
+    #[serde(default)]
+    pub u_h: f64,
+    /// Free template monomer U_B (D-092).
+    #[serde(default)]
+    pub u_b: f64,
+    /// Harvesting catalyst–motif complex K_H (concentration; D-092).
+    #[serde(default)]
+    pub k_h: f64,
+    /// Building catalyst–motif complex K_B (concentration; D-092).
+    #[serde(default)]
+    pub k_b: f64,
 }
 
 fn default_equation_id() -> String {
@@ -98,6 +170,19 @@ pub struct MaterialMesh {
     pub equation_id: String,
     #[serde(default = "default_schema_version")]
     pub schema_version: u32,
+    /// Physical template polymer chains (D-092). Empty under older schemas.
+    #[serde(default)]
+    pub templates: Vec<TemplateChain>,
+    /// Observer allocator for new chain ids (never enters chemistry decisions).
+    #[serde(default)]
+    pub next_template_id: u64,
+    /// Deterministic RNG state for template chemistry (D-092).
+    #[serde(default = "default_template_rng")]
+    pub template_rng: u64,
+}
+
+fn default_template_rng() -> u64 {
+    0xD092_CAFE_u64
 }
 
 impl MaterialMesh {
@@ -198,6 +283,9 @@ impl MaterialMesh {
             death_reason: None,
             equation_id: default_equation_id(),
             schema_version: default_schema_version(),
+            templates: Vec::new(),
+            next_template_id: 1,
+            template_rng: default_template_rng(),
         };
         for i in 0..n {
             let ell = mesh.edge_length(i);

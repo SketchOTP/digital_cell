@@ -97,6 +97,10 @@ pub fn seed_organism(radius: f64, seed: u64) -> MaterialMesh {
             c_h: 0.0,
             c_b: 0.0,
             r: 0.0,
+            u_h: 0.0,
+            u_b: 0.0,
+            k_h: 0.0,
+            k_b: 0.0,
         };
     let exterior = LumpedChem {
         c: 0.0,
@@ -108,6 +112,10 @@ pub fn seed_organism(radius: f64, seed: u64) -> MaterialMesh {
             c_h: 0.0,
             c_b: 0.0,
             r: 0.0,
+            u_h: 0.0,
+            u_b: 0.0,
+            k_h: 0.0,
+            k_b: 0.0,
         };
     MaterialMesh::seed_regular(
         n,

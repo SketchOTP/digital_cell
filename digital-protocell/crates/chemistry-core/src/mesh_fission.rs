@@ -5,6 +5,7 @@
 
 use crate::material_mesh::{MaterialMesh, MeshEdge};
 use crate::mesh_topology::{extract_loop, find_local_pinch, TopologyLedger, TopologyParams};
+use crate::template_partition::partition_templates;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -36,6 +37,12 @@ pub struct PartitionReport {
     pub residual_w: f64,
     #[serde(default)]
     pub residual_r: f64,
+    #[serde(default)]
+    pub residual_u_h: f64,
+    #[serde(default)]
+    pub residual_u_b: f64,
+    #[serde(default)]
+    pub residual_templates: f64,
     pub ok: bool,
 }
 
@@ -116,6 +123,11 @@ pub fn try_local_fission(
     let pre_f = parent.interior.f * parent.area().max(1e-9);
     let pre_w = parent.interior.w * parent.area().max(1e-9);
     let pre_r = parent.interior.r * parent.area().max(1e-9);
+    let pre_u_h = parent.interior.u_h * parent.area().max(1e-9);
+    let pre_u_b = parent.interior.u_b * parent.area().max(1e-9);
+    let pre_k_h = parent.interior.k_h * parent.area().max(1e-9);
+    let pre_k_b = parent.interior.k_b * parent.area().max(1e-9);
+    let pre_tmpl = parent.templates.len() as f64;
 
     // Free L split by perimeter share.
     let p1 = d1.perimeter().max(1e-9);
@@ -141,14 +153,23 @@ pub fn try_local_fission(
         mesh.interior.w = (pre_w * frac) / a;
         // R is partitioned as actual material (never copied as a ratio template).
         mesh.interior.r = (pre_r * frac) / a;
+        mesh.interior.u_h = (pre_u_h * frac) / a;
+        mesh.interior.u_b = (pre_u_b * frac) / a;
+        mesh.interior.k_h = (pre_k_h * frac) / a;
+        mesh.interior.k_b = (pre_k_b * frac) / a;
         mesh.interior.tracer_c = parent.interior.tracer_c * frac;
         mesh.exterior = parent.exterior;
         mesh.alive = true;
         mesh.equation_id = parent.equation_id.clone();
         mesh.schema_version = parent.schema_version;
+        mesh.template_rng = parent.template_rng;
+        mesh.next_template_id = parent.next_template_id;
     };
     set_conc(&mut d1, f1);
     set_conc(&mut d2, f2);
+
+    // Physical template partition by spatial location (no sequence copy).
+    let (_n1, _n2, residual_templates) = partition_templates(parent, &mut d1, &mut d2);
 
     // Cost of cross-bond: A consumed (leakage/waste).
     let take = (need * 0.5).min(have_a);
@@ -170,6 +191,9 @@ pub fn try_local_fission(
     let post_f = d1.interior.f * d1.area() + d2.interior.f * d2.area();
     let post_w = d1.interior.w * d1.area() + d2.interior.w * d2.area();
     let post_r = d1.interior.r * d1.area() + d2.interior.r * d2.area();
+    let post_u_h = d1.interior.u_h * d1.area() + d2.interior.u_h * d2.area();
+    let post_u_b = d1.interior.u_b * d1.area() + d2.interior.u_b * d2.area();
+    let post_tmpl = (d1.templates.len() + d2.templates.len()) as f64;
 
     // Structural: parent m + new cross-bond mass ≈ post (cross bonds add need)
     let residual_m = (post_m - (pre_m + need)).abs();
@@ -184,6 +208,9 @@ pub fn try_local_fission(
     let residual_f = (post_f - pre_f).abs();
     let residual_w = (post_w - (pre_w + take)).abs();
     let residual_r = (post_r - pre_r).abs();
+    // Paired monomers released into daughter free pools at fission — allow that transfer.
+    let residual_u_h = (post_u_h - pre_u_h).abs(); // may increase from paired release
+    let residual_u_b = (post_u_b - pre_u_b).abs();
 
     let ok = residual_m < ACCOUNTING_TOL * (1.0 + pre_m)
         && residual_b < ACCOUNTING_TOL * (1.0 + pre_b)
@@ -196,6 +223,8 @@ pub fn try_local_fission(
         && residual_f < 1e-4 * (1.0 + pre_f)
         && residual_w < 1e-4 * (1.0 + pre_w)
         && residual_r < 1e-4 * (1.0 + pre_r)
+        && residual_templates < 0.5
+        && (post_tmpl - pre_tmpl).abs() < 0.5
         && d1.n() >= 3
         && d2.n() >= 3
         && d1.closed_intact()
@@ -216,6 +245,9 @@ pub fn try_local_fission(
             residual_f,
             residual_w,
             residual_r,
+            residual_u_h,
+            residual_u_b,
+            residual_templates,
             ok,
         },
         leakage_w: leakage,

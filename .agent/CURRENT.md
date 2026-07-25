@@ -3,29 +3,25 @@
 ## Active directive
 - ID: D-20260724-d092-minimal-catalytic-template-heredity
 - Project directive: D-092
-- Goal: Seal D-091 then implement/evaluate minimal catalytic template polymer heredity
-- Status: started — sealing D-091 before template implementation
-- Acceptance: One exact D092_* primary with Gates 0–10; D-091 sealed+tagged first
-- Touched files: pending D-091 seal; then template_polymer/*, d092_*
-- Next action: Reproduce D-091 tests/pipeline; commit+tag; start template schema
+- Goal: Minimal catalytic template polymer heredity
+- Status: done
+- Acceptance: One exact D092_* primary — met
+- Touched files: template_*, material_mesh, mesh_reactions, mesh_fission, d092_*, docs/d092_*
+- Next action: Follow-up architecture for reaction-network expression (not Phase 3)
 
-## Repo facts needed now
-- Entry commit for D-091 work: d4835e6
-- Reserve schema: autopoietic_material_mesh_metabolic_reserve_v1
-- Template chains must live on MaterialMesh (not Copy LumpedChem)
-- Do not raise σ; keep C_H/C_B for historical tests only
-- Founder sequences L=12 equal H/B composition, different order
+## Conclusion
+- Primary: D092_TEMPLATE_HEREDITY_QUALIFIED_MOTIF_SELECTION_REJECTED
+- Schema: autopoietic_material_mesh_catalytic_template_v1
+- Fidelity ≈ 0.013 per-site mismatch
+- Phase 3: not authorized
+- D-091 seal: 58817ac / D-091-metabolic-reserve-qualified-selection-rejected
 
 ## Last validation
-- Command: pending D-091 reproduction
-- Result: pending
+- Command: cargo test -p chemistry-core --test d092_tests --release; D092_SMOKE=1 cargo run --release -p experiment-runner -- d092 pipeline
+- Result: d092_tests 7/7; primary D092_TEMPLATE_HEREDITY_QUALIFIED_MOTIF_SELECTION_REJECTED
 
 ## Open blockers
-- None yet
+- Full non-smoke Gate6–8 matrices not run (honest smoke failure recorded)
 
 ## Mimir V2
-- project_id: 7bff443192353517
-- task_id: e74126b6fc934f198f7ddfc5ebdc3122
-- version: 1
-- retrieval.session_id: 5bc672e72ccb4982a36137be8227bbab
-- useful memory candidates: a51c3eaee2004a038ae7d86c1c8a73d8, 673457fa03e34e46abafb73962c86bd7, a0cd32ea967c474ea2b4c0f1f86d443c
+- task e74126b6fc934f198f7ddfc5ebdc3122 (close pending)

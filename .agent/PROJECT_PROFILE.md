@@ -21,8 +21,9 @@ A self-maintaining digital protocell that develops into a persistent, embodied i
 - Runtime: `PHASE1_RESEARCH_RUNTIME_QUALIFIED` (≥90 min wall-clock packaged run)
 - Phase 2: `D088_CAUSAL_GROWTH_FISSION_INHERITANCE_QUALIFIED` / `PHASE2_PHYSICAL_REPRODUCTION_QUALIFIED` / `D088_PHYSICAL_REPRODUCTION_FROZEN`
 - D-089/D-090: heredity qualified; `D090_VALID_SELECTION_ECOLOGY_NOT_ESTABLISHED`
-- D-091: `D091_METABOLIC_RESERVE_QUALIFIED_COMPOSITIONAL_SELECTION_REJECTED`; schema `autopoietic_material_mesh_metabolic_reserve_v1`; μ=0.01; σ=0.15; Phase 3 not authorized
-- Next: D-092 Minimal Catalytic Template Heredity (`next_execution_started: true`)
+- D-091: `D091_METABOLIC_RESERVE_QUALIFIED_COMPOSITIONAL_SELECTION_REJECTED`; schema `autopoietic_material_mesh_metabolic_reserve_v1`; sealed `58817ac`
+- D-092: `D092_TEMPLATE_HEREDITY_QUALIFIED_MOTIF_SELECTION_REJECTED`; schema `autopoietic_material_mesh_catalytic_template_v1`; μ=0.01; σ=0.15; Phase 3 not authorized
+- Next: replace fixed motif specialization with local catalytic reaction-network topology (`next_execution_started: false`)
 - Stack: Rust (`digital-protocell`), chemistry-core + experiment-runner + phase1-certifier
 - Runtime package: `digital-protocell-phase1-v1`
 

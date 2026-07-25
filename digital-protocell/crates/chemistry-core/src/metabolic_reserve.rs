@@ -144,6 +144,7 @@ pub fn reserve_schema_load_ok(mesh: &MaterialMesh, reserve: &ReserveParams) -> b
         return true;
     }
     mesh.equation_id == EQUATION_VERSION_METABOLIC_RESERVE
+        || mesh.equation_id == crate::template_polymer::EQUATION_VERSION_CATALYTIC_TEMPLATE
 }
 
 /// Store flux density (concentration/time): A → R.
@@ -261,6 +262,8 @@ pub fn local_r_growth_rate(
     let gb = if react.composition.enable {
         let z = crate::catalyst_composition::composition_z(mesh.interior.c_h, mesh.interior.c_b);
         crate::catalyst_composition::g_build(z, react.composition.sigma)
+    } else if react.template.enable {
+        crate::template_motifs::template_activity_gains(mesh, &react.template).1
     } else {
         1.0
     };

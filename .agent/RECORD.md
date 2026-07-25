@@ -50,3 +50,10 @@ This file is specifically for the operators use. It keeps record of what the AI 
 - 2026-07-24 | D-091 | COMPOSITIONAL_C_H_C_B_SELECTION_CLOSED_REJECTED | scalar tradeoff closed as evolutionary substrate
 - 2026-07-24 | D-091 | PHASE3_NOT_AUTHORIZED | adaptation/selection incomplete
 - 2026-07-24 | D-091 | D092_MINIMAL_CATALYTIC_TEMPLATE_HEREDITY_STARTED | next_execution_started=true
+- 2026-07-24 | D-091 | SEAL 58817ac | tag D-091-metabolic-reserve-qualified-selection-rejected | METABOLIC_RESERVE_PHYSIOLOGY_QUALIFIED
+- 2026-07-24 | D-091 | COMPOSITIONAL_C_H_C_B_SELECTION_CLOSED_REJECTED | confirmed at seal
+- 2026-07-24 | D-091 | PHASE2_METABOLIC_RESERVE_QUALIFIED_SELECTION_CLOSED | D-092 start commit 58817ac
+- 2026-07-24 | D-092 | MINIMAL_CATALYTIC_TEMPLATE_HEREDITY_QUALIFIED | physical bond-order template substrate
+- 2026-07-24 | D-092 | TEMPLATE_MOTIF_EXPRESSION_ARCHITECTURE_REJECTED | fixed HHB/BBH selection not established
+- 2026-07-24 | D-092 | PHASE3_NOT_AUTHORIZED | selection/adaptation/reversal incomplete
+- 2026-07-24 | D-092 | D092_TEMPLATE_HEREDITY_QUALIFIED_MOTIF_SELECTION_REJECTED | primary conclusion

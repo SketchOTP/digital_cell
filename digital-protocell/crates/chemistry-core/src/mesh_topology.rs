@@ -209,5 +209,9 @@ pub fn extract_loop(
         death_reason: None,
         equation_id: parent.equation_id.clone(),
         schema_version: parent.schema_version,
+        // Templates partitioned separately after both daughters exist.
+        templates: Vec::new(),
+        next_template_id: parent.next_template_id,
+        template_rng: parent.template_rng,
     }
 }

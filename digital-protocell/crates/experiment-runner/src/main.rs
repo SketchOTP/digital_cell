@@ -88,6 +88,7 @@ mod d088;
 mod d089;
 mod d090;
 mod d091;
+mod d092;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -483,6 +484,10 @@ enum Commands {
         #[command(subcommand)]
         action: D091Commands,
     },
+    D092 {
+        #[command(subcommand)]
+        action: D092Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -825,6 +830,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D089 { action } => run_d089(action)?,
         Commands::D090 { action } => run_d090(action)?,
         Commands::D091 { action } => run_d091(action)?,
+        Commands::D092 { action } => run_d092(action)?,
     }
     Ok(())
 }
@@ -4255,6 +4261,33 @@ fn run_d091(action: D091Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d091::run_pipeline_cli(&out)?;
             println!(
                 "D-091 pipeline primary={} phase2={} phase3={} next_started={} -> {}",
+                result["primary_conclusion"],
+                result["phase2_status"],
+                result["phase3_authorized"],
+                result["next_execution_started"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D092Commands {
+    /// Minimal catalytic template heredity and evolution.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d092")]
+        output: PathBuf,
+    },
+}
+
+fn run_d092(action: D092Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D092Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d092::run_pipeline_cli(&out)?;
+            println!(
+                "D-092 pipeline primary={} phase2={} phase3={} next_started={} -> {}",
                 result["primary_conclusion"],
                 result["phase2_status"],
                 result["phase3_authorized"],

@@ -167,3 +167,7 @@ Append-only repo-specific lessons. Format:
 - 2026-07-24 | area:d091-reserve | lesson:K_growth must be ≫ k_store scale so R accumulates before reproductive growth; small K_g keeps R≈0 | evidence:chemistry-core/src/metabolic_reserve.rs
 - 2026-07-24 | area:d091-growth | lesson:Reserve schema replaces surplus-A growth with R→m; fission still never reads R | evidence:mesh_growth.rs,mesh_fission.rs
 - 2026-07-24 | area:d091-ecology | lesson:Pulse-lean H ecology needs ≥2 completed cycles before claiming lean-before-fission; smoke steps() alone under-runs period | evidence:d091_analysis gate5
+- 2026-07-24 | area:d092-template | lesson:Template chains must live on MaterialMesh Vec; LumpedChem stays Copy with only U_H/U_B/K_H/K_B scalars | evidence:material_mesh.rs,template_polymer.rs
+- 2026-07-24 | area:d092-copying | lesson:Match/mismatch affinity 100× yields ~1% per-site mismatch; whole-chain clone forbidden — sitewise ligation only | evidence:template_copying.rs,experiments/generated/d092/fidelity/
+- 2026-07-24 | area:d092-fission | lesson:Elongated surplus growth needs ~7k steps before try_local_fission; smoke must not shrink below that horizon | evidence:d092_analysis gate4
+- 2026-07-24 | area:d092-selection | lesson:Directive copy-rate vs half-life implies Malthusian growth unless monomer-limited; selection campaigns explode without k_mono bottleneck | evidence:template_polymer::derived,gate6
