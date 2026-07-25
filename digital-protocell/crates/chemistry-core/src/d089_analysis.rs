@@ -98,6 +98,11 @@ fn seed_mesh(radius: f64, seed: u64, ext: f64) -> MaterialMesh {
             u_b: 0.0,
             k_h: 0.0,
             k_b: 0.0,
+            q_k: 0.0,
+            q_e: 0.0,
+            k_a: 0.0,
+            k_r: 0.0,
+            k_node_b: 0.0,
         },
         LumpedChem {
             c: 0.0,
@@ -113,6 +118,11 @@ fn seed_mesh(radius: f64, seed: u64, ext: f64) -> MaterialMesh {
             u_b: 0.0,
             k_h: 0.0,
             k_b: 0.0,
+            q_k: 0.0,
+            q_e: 0.0,
+            k_a: 0.0,
+            k_r: 0.0,
+            k_node_b: 0.0,
         },
         5.0,
     )

@@ -1,29 +1,27 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260725-d094-distributed-autocatalytic-set-heredity
-- Project directive: D-094
-- Goal: Seal corrected D-093; audit zero-gen; implement distributed autocatalytic-set heredity Gates 0–10
-- Status: started
-- Acceptance: One exact D094_* primary; D-093 tagged UNTESTABLE_ZERO_GENERATION; Phase3 only if adaptation+reversal
-- Touched files: d093_* (seal), autocatalytic_*, d094_*, material_mesh, mesh_*, docs/d094_*, .agent/*
-- Next action: Finish full D-093 pipeline reproduce → commit+tag → zero-gen audit
+- ID: D-20260725-d094r-autocatalytic-selection-gate-closure
+- Project directive: D-094R
+- Goal: Autocatalytic selection gate closure — Gate 6 only to 8 gens; block G7/G8
+- Status: in-progress
+- Acceptance: Exact Gate6 conclusion; partial overnight preserved; stale IMPLEMENTATION_DEFECT rejected; G7/G8 blocked unless selection passes
+- Touched files: d094_selection.rs, d094_pipeline_lock.rs, experiment-runner d094, experiments/generated/d094r, .agent/*
+- Next action: compile; write checkpoint_invalid; run Gate6Complete; seal
 
 ## Repo facts needed now
-- D-093 uncommitted; conclusion corrected to UNTESTABLE_ZERO_GENERATION
-- Ancestor: 381ac64; branch phase2-growth-division-inheritance
-- μ_E = 0.0089 frozen from D-093 measured mismatch
-- 1TB mount emergency_ro — local NVMe artifacts only
+- Terminated PID 1509382; reason DOWNSTREAM_EXECUTION_STOPPED_AFTER_GATE6_NONPASS
+- Checkpoints ABSENT → D094_GATE6_CHECKPOINT_INVALID → rerun Gate6 from sealed source
+- D-093 sealed 973222e + tag D-093-template-network-heredity-qualified-selection-untestable
 
 ## Last validation
-- Command: cargo test -p chemistry-core --release --test d093_tests; d093 repair-info
-- Result: 5/5 PASS; primary UNTESTABLE_ZERO_GENERATION
+- Command: pending Gate6Complete
+- Result: pending
 
 ## Open blockers
-- Full D-093 pipeline rerun in progress (local d093_rerun)
-- /mnt/storage1tb I/O error (emergency_ro)
+- None for execution (storage1tb still emergency_ro — local NVMe only)
 
 ## Mimir V2
 - project: 7bff443192353517
-- task: 5fa2c781627d4246a213acdfc95a0f7a version 2
-- retrieval.session_id: cf99fb2bf0dc4960a01d73e71f14222b
+- task: 6bf10e4654bc44b6900b66871dd6e4c5 version 1
+- retrieval.session_id: bbc13ebee00142a2a58dff1f6537b25e

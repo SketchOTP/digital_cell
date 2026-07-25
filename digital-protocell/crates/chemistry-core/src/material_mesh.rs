@@ -153,6 +153,23 @@ pub struct LumpedChem {
     /// Building catalyst–motif complex K_B (concentration; D-092).
     #[serde(default)]
     pub k_b: f64,
+    /// Autocatalytic node precursor Q_K (D-094).
+    #[serde(default)]
+    pub q_k: f64,
+    /// Autocatalytic edge precursor Q_E (D-094).
+    #[serde(default)]
+    pub q_e: f64,
+    /// Free catalytic node K_A (D-094).
+    #[serde(default)]
+    pub k_a: f64,
+    /// Free catalytic node K_R (D-094).
+    #[serde(default)]
+    pub k_r: f64,
+    // Note: k_b above is D-092 motif complex; D-094 building node reuses no separate field —
+    // building node mass is stored in `k_node_b` to avoid colliding with motif K_B.
+    /// Free catalytic node K_B (D-094 building node).
+    #[serde(default)]
+    pub k_node_b: f64,
 }
 
 fn default_equation_id() -> String {
@@ -196,6 +213,12 @@ pub struct MaterialMesh {
     /// Deterministic RNG state for template chemistry (D-092).
     #[serde(default = "default_template_rng")]
     pub template_rng: u64,
+    /// Physical autocatalytic edge complexes E_ij (D-094). Empty under older schemas.
+    #[serde(default)]
+    pub autocatalytic_edges: Vec<crate::autocatalytic_edges::CatalyticEdgeComplex>,
+    /// Observer allocator for new edge ids (never enters chemistry decisions).
+    #[serde(default)]
+    pub next_edge_id: u64,
 }
 
 fn default_template_rng() -> u64 {
@@ -303,6 +326,8 @@ impl MaterialMesh {
             templates: Vec::new(),
             next_template_id: 1,
             template_rng: default_template_rng(),
+            autocatalytic_edges: Vec::new(),
+            next_edge_id: 1,
         };
         for i in 0..n {
             let ell = mesh.edge_length(i);

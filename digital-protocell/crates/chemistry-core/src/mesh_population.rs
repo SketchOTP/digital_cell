@@ -47,29 +47,12 @@ impl MeshPopulation {
             n: 0.4,
             f: 0.4,
             w: 0.1,
-            tracer_c: 0.0,
-            c_h: 0.0,
-            c_b: 0.0,
-            r: 0.0,
-            u_h: 0.0,
-            u_b: 0.0,
-            k_h: 0.0,
-            k_b: 0.0,
+            ..Default::default()
         };
         let exterior = LumpedChem {
-            c: 0.0,
-            a: 0.0,
             n: 1.0 * exterior_scale,
             f: 1.0 * exterior_scale,
-            w: 0.0,
-            tracer_c: 0.0,
-            c_h: 0.0,
-            c_b: 0.0,
-            r: 0.0,
-            u_h: 0.0,
-            u_b: 0.0,
-            k_h: 0.0,
-            k_b: 0.0,
+            ..Default::default()
         };
         let mesh = MaterialMesh::seed_regular(
             n,

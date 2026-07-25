@@ -5,6 +5,7 @@
 
 use crate::material_mesh::{MaterialMesh, MeshEdge};
 use crate::mesh_topology::{extract_loop, find_local_pinch, TopologyLedger, TopologyParams};
+use crate::autocatalytic_partition::partition_autocatalytic_edges;
 use crate::template_partition::partition_templates;
 use serde::{Deserialize, Serialize};
 
@@ -127,7 +128,13 @@ pub fn try_local_fission(
     let pre_u_b = parent.interior.u_b * parent.area().max(1e-9);
     let pre_k_h = parent.interior.k_h * parent.area().max(1e-9);
     let pre_k_b = parent.interior.k_b * parent.area().max(1e-9);
+    let pre_q_k = parent.interior.q_k * parent.area().max(1e-9);
+    let pre_q_e = parent.interior.q_e * parent.area().max(1e-9);
+    let pre_k_a = parent.interior.k_a * parent.area().max(1e-9);
+    let pre_k_r = parent.interior.k_r * parent.area().max(1e-9);
+    let pre_k_node_b = parent.interior.k_node_b * parent.area().max(1e-9);
     let pre_tmpl = parent.templates.len() as f64;
+    let pre_acs_edges = parent.autocatalytic_edges.len() as f64;
 
     // Free L split by perimeter share.
     let p1 = d1.perimeter().max(1e-9);
@@ -157,6 +164,11 @@ pub fn try_local_fission(
         mesh.interior.u_b = (pre_u_b * frac) / a;
         mesh.interior.k_h = (pre_k_h * frac) / a;
         mesh.interior.k_b = (pre_k_b * frac) / a;
+        mesh.interior.q_k = (pre_q_k * frac) / a;
+        mesh.interior.q_e = (pre_q_e * frac) / a;
+        mesh.interior.k_a = (pre_k_a * frac) / a;
+        mesh.interior.k_r = (pre_k_r * frac) / a;
+        mesh.interior.k_node_b = (pre_k_node_b * frac) / a;
         mesh.interior.tracer_c = parent.interior.tracer_c * frac;
         mesh.exterior = parent.exterior;
         mesh.alive = true;
@@ -164,12 +176,17 @@ pub fn try_local_fission(
         mesh.schema_version = parent.schema_version;
         mesh.template_rng = parent.template_rng;
         mesh.next_template_id = parent.next_template_id;
+        mesh.next_edge_id = parent.next_edge_id;
     };
     set_conc(&mut d1, f1);
     set_conc(&mut d2, f2);
 
     // Physical template partition by spatial location (no sequence copy).
     let (_n1, _n2, residual_templates) = partition_templates(parent, &mut d1, &mut d2);
+    // Physical autocatalytic edge partition by position (no whole-network clone).
+    let (_e1, _e2, residual_acs) = partition_autocatalytic_edges(parent, &mut d1, &mut d2);
+    let _ = residual_acs;
+    let _ = pre_acs_edges;
 
     // Cost of cross-bond: A consumed (leakage/waste).
     let take = (need * 0.5).min(have_a);

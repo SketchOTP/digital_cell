@@ -213,5 +213,7 @@ pub fn extract_loop(
         templates: Vec::new(),
         next_template_id: parent.next_template_id,
         template_rng: parent.template_rng,
+        autocatalytic_edges: Vec::new(),
+        next_edge_id: parent.next_edge_id,
     }
 }

@@ -146,6 +146,7 @@ pub fn reserve_schema_load_ok(mesh: &MaterialMesh, reserve: &ReserveParams) -> b
     mesh.equation_id == EQUATION_VERSION_METABOLIC_RESERVE
         || mesh.equation_id == crate::template_polymer::EQUATION_VERSION_CATALYTIC_TEMPLATE
         || mesh.equation_id == crate::template_network::EQUATION_VERSION_TEMPLATE_NETWORK
+        || mesh.equation_id == crate::autocatalytic_nodes::EQUATION_VERSION_AUTOCATALYTIC_SET
 }
 
 /// Store flux density (concentration/time): A → R.
@@ -200,7 +201,14 @@ pub fn reserve_metab_step(
     }
     let area = mesh.area().max(EPS);
     let qc = q_catalyst(mesh.interior.c, react.q_c);
-    let (qc_store, qc_rel) = if react.network.enable {
+    let (qc_store, qc_rel) = if react.autocatalytic.enable {
+        let g = crate::autocatalytic_nodes::node_storage_release_gain(
+            mesh,
+            &react.autocatalytic,
+            react.q_c,
+        );
+        (qc * g, qc * g)
+    } else if react.network.enable {
         let gs = crate::template_network_expression::network_storage_gain(
             mesh,
             &react.network,
@@ -278,6 +286,8 @@ pub fn local_r_growth_rate(
     let gb = if react.composition.enable {
         let z = crate::catalyst_composition::composition_z(mesh.interior.c_h, mesh.interior.c_b);
         crate::catalyst_composition::g_build(z, react.composition.sigma)
+    } else if react.autocatalytic.enable {
+        crate::autocatalytic_nodes::node_building_gain(mesh, &react.autocatalytic, react.q_c)
     } else if react.network.enable {
         crate::template_network_expression::network_building_gain(mesh, &react.network, react.q_c)
     } else if react.template.enable {

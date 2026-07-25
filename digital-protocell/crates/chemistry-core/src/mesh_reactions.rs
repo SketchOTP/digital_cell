@@ -8,6 +8,13 @@ use crate::material_mesh::MaterialMesh;
 use crate::metabolic_reserve::{reserve_metab_step, ReserveLedger, ReserveParams};
 use crate::template_copying::copying_step;
 use crate::template_motifs::{catalyst_binding_step, template_activity_gains};
+use crate::autocatalytic_copying::{edge_copying_step, edge_loss_step};
+use crate::autocatalytic_edges::{
+    merge_acs_ledgers, node_production_step, node_turnover_step,
+};
+use crate::autocatalytic_nodes::{
+    node_activation_gain, node_building_gain, AutocatalyticLedger, AutocatalyticParams,
+};
 use crate::template_network::{scale_bound_catalyst, NetworkLedger, NetworkParams};
 use crate::template_network_binding::network_binding_step;
 use crate::template_network_expression::{network_activation_gain, network_building_gain};
@@ -44,6 +51,9 @@ pub struct ReactionParams {
     /// D-093 template-encoded catalytic network (default off).
     #[serde(default)]
     pub network: NetworkParams,
+    /// D-094 distributed autocatalytic-set heredity (default off).
+    #[serde(default)]
+    pub autocatalytic: AutocatalyticParams,
 }
 
 impl Default for ReactionParams {
@@ -67,6 +77,7 @@ impl Default for ReactionParams {
             reserve: ReserveParams::default(),
             template: TemplateParams::default(),
             network: NetworkParams::default(),
+            autocatalytic: AutocatalyticParams::default(),
         }
     }
 }
@@ -97,6 +108,8 @@ pub struct ReactionLedger {
     pub template: TemplateLedger,
     #[serde(default)]
     pub network: NetworkLedger,
+    #[serde(default)]
+    pub autocatalytic: AutocatalyticLedger,
 }
 
 #[inline]
@@ -128,6 +141,8 @@ pub fn structural_build_flux(mesh: &MaterialMesh, i: usize, p: &ReactionParams) 
     let gb = if p.composition.enable {
         let z = composition_z(mesh.interior.c_h, mesh.interior.c_b);
         g_build(z, p.composition.sigma)
+    } else if p.autocatalytic.enable {
+        node_building_gain(mesh, &p.autocatalytic, p.q_c)
     } else if p.network.enable {
         network_building_gain(mesh, &p.network, p.q_c)
     } else if p.template.enable {
@@ -162,6 +177,8 @@ pub fn reactions_step(
         let gh = if p.composition.enable {
             let z = composition_z(mesh.interior.c_h, mesh.interior.c_b);
             g_harvest(z, p.composition.sigma)
+        } else if p.autocatalytic.enable {
+            node_activation_gain(mesh, &p.autocatalytic, p.q_c)
         } else if p.network.enable {
             network_activation_gain(mesh, &p.network, p.q_c)
         } else if p.template.enable {
@@ -271,6 +288,18 @@ pub fn reactions_step(
         } else if p.network.enable {
             led.network = network_binding_step(mesh, p, dt);
         }
+
+        // D-094 autocatalytic-set chemistry (nodes/edges; supplements baseline C).
+        if p.autocatalytic.enable {
+            let mut rng = XorShift64::new(mesh.template_rng.wrapping_add(0xD094_ACE5));
+            let mut acs = node_production_step(mesh, &p.autocatalytic, dt);
+            merge_acs_ledgers(&mut acs, &node_turnover_step(mesh, &p.autocatalytic, dt));
+            merge_acs_ledgers(&mut acs, &edge_copying_step(mesh, &p.autocatalytic, dt, &mut rng));
+            merge_acs_ledgers(&mut acs, &edge_loss_step(mesh, &p.autocatalytic, dt, &mut rng));
+            mesh.template_rng = rng.state().wrapping_add(1);
+            led.autocatalytic = acs;
+            led.w_produced += led.autocatalytic.w_produced;
+        }
     }
 
     // Per-edge build / turnover / bind.
@@ -329,6 +358,8 @@ pub fn reactions_step(
         let gb = if p.composition.enable {
             let z = composition_z(mesh.interior.c_h, mesh.interior.c_b);
             g_build(z, p.composition.sigma)
+        } else if p.autocatalytic.enable {
+            node_building_gain(mesh, &p.autocatalytic, p.q_c)
         } else if p.network.enable {
             network_building_gain(mesh, &p.network, p.q_c)
         } else if p.template.enable {

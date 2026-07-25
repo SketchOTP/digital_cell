@@ -186,6 +186,11 @@ pub fn seed_composed(radius: f64, seed: u64, z: f64, bath: &SharedBath) -> Mater
             u_b: 0.0,
             k_h: 0.0,
             k_b: 0.0,
+            q_k: 0.0,
+            q_e: 0.0,
+            k_a: 0.0,
+            k_r: 0.0,
+            k_node_b: 0.0,
         };
     set_composition_from_z(&mut interior, z);
     let exterior = LumpedChem {
@@ -202,6 +207,11 @@ pub fn seed_composed(radius: f64, seed: u64, z: f64, bath: &SharedBath) -> Mater
             u_b: 0.0,
             k_h: 0.0,
             k_b: 0.0,
+            q_k: 0.0,
+            q_e: 0.0,
+            k_a: 0.0,
+            k_r: 0.0,
+            k_node_b: 0.0,
         };
     MaterialMesh::seed_regular(
         n,

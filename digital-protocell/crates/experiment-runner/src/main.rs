@@ -90,6 +90,8 @@ mod d090;
 mod d091;
 mod d092;
 mod d093;
+mod d094;
+mod d094_pipeline_lock;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -493,6 +495,10 @@ enum Commands {
         #[command(subcommand)]
         action: D093Commands,
     },
+    D094 {
+        #[command(subcommand)]
+        action: D094Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -837,6 +843,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D091 { action } => run_d091(action)?,
         Commands::D092 { action } => run_d092(action)?,
         Commands::D093 { action } => run_d093(action)?,
+        Commands::D094 { action } => run_d094(action)?,
     }
     Ok(())
 }
@@ -4342,6 +4349,85 @@ fn run_d093(action: D093Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["primary_conclusion"],
                 result["phase2_status"],
                 result["phase3_authorized"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D094Commands {
+    /// Distributed autocatalytic-set heredity Gates 0–10.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d094")]
+        output: PathBuf,
+    },
+    /// D-093 zero-generation causality audit only.
+    Audit {
+        #[arg(long, default_value = "experiments/generated/d094")]
+        output: PathBuf,
+    },
+    /// D-094R: complete Gate 6 only to 8 generations; Gates 7/8 blocked.
+    Gate6Complete {
+        #[arg(long, default_value = "experiments/generated/d094r")]
+        output: PathBuf,
+    },
+}
+
+fn run_d094(action: D094Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D094Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let _lock = d094_pipeline_lock::acquire(&out, "d094-pipeline")?;
+            let result = d094::run_pipeline_cli(&out)?;
+            println!(
+                "D-094 pipeline primary={} phase2={} phase3={} blocker={} smoke={} -> {}",
+                result["primary_conclusion"],
+                result["phase2_status"],
+                result["phase3_authorized"],
+                result["zero_gen_blocker"],
+                result["smoke"],
+                out.join("manifest.json").display()
+            );
+        }
+        D094Commands::Audit { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d094::run_audit_cli(&out)?;
+            println!(
+                "D-094 audit blocker={} -> {}",
+                result["audit"]["first_causal_blocker"],
+                out.join("d093_zero_generation_audit/audit.json").display()
+            );
+        }
+        D094Commands::Gate6Complete { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let _lock = d094_pipeline_lock::acquire(&out, "d094r-gate6-complete")?;
+            // Refuse if another D-094 root lock exists with live PID.
+            let d094_root = resolve_d060_artifact_path(&PathBuf::from("experiments/generated/d094"));
+            if d094_root.join("d094_pipeline.lock").exists() {
+                if let Ok(text) = std::fs::read_to_string(d094_root.join("d094_pipeline.lock")) {
+                    if let Some(pid) = text
+                        .lines()
+                        .find_map(|l| l.strip_prefix("pid="))
+                        .and_then(|s| s.trim().parse::<u32>().ok())
+                    {
+                        if PathBuf::from(format!("/proc/{pid}")).exists() {
+                            return Err(format!(
+                                "refusing Gate6Complete: live D-094 pipeline lock pid={pid}"
+                            )
+                            .into());
+                        }
+                    }
+                }
+            }
+            let result = d094::run_gate6_complete_cli(&out)?;
+            println!(
+                "D-094R Gate6Complete conclusion={} horizon_ok={} selection_pass={} g7g8_blocked={} -> {}",
+                result["conclusion"],
+                result["horizon_ok"],
+                result["selection_pass"],
+                result["gates_7_8_blocked"],
                 out.join("manifest.json").display()
             );
         }
