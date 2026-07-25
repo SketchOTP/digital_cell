@@ -60,6 +60,18 @@ pub struct LumpedChem {
     /// Building-biased catalyst material (D-089 composition schema).
     #[serde(default)]
     pub c_b: f64,
+    /// Metabolic reserve R — stored activated-resource equivalents (D-091).
+    /// Not readiness, age, fitness, or a division trigger.
+    #[serde(default)]
+    pub r: f64,
+}
+
+fn default_equation_id() -> String {
+    EQUATION_VERSION_MATERIAL_MESH.to_string()
+}
+
+fn default_schema_version() -> u32 {
+    MATERIAL_MESH_SCHEMA_VERSION
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -81,6 +93,11 @@ pub struct MaterialMesh {
     pub l_min: f64,
     pub alive: bool,
     pub death_reason: Option<String>,
+    /// Equation identity stamp; old snapshots default to Phase-1 mesh schema.
+    #[serde(default = "default_equation_id")]
+    pub equation_id: String,
+    #[serde(default = "default_schema_version")]
+    pub schema_version: u32,
 }
 
 impl MaterialMesh {
@@ -179,6 +196,8 @@ impl MaterialMesh {
             l_min: DEFAULT_L_MIN,
             alive: true,
             death_reason: None,
+            equation_id: default_equation_id(),
+            schema_version: default_schema_version(),
         };
         for i in 0..n {
             let ell = mesh.edge_length(i);

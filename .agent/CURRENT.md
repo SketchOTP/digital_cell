@@ -1,26 +1,31 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260724-d090-ecological-timescale-selection-requalification
-- Project directive: D-090
-- Goal: Repair shared-dish ecology timescale; qualify or reject C_H/C_B evolution
-- Status: done — no valid selection ecology
-- Acceptance: met (primary conclusion established with Gates 0–3 evidence)
-- Touched files: spatial_shared_dish, founder_preconditioning, ecological_timescales, shared_dish_audit, d090_*, docs/d090_*, .agent/*
-- Next action: architecture review of organism–environment resource coupling (no Phase 3)
+- ID: D-20260724-d092-minimal-catalytic-template-heredity
+- Project directive: D-092
+- Goal: Seal D-091 then implement/evaluate minimal catalytic template polymer heredity
+- Status: started — sealing D-091 before template implementation
+- Acceptance: One exact D092_* primary with Gates 0–10; D-091 sealed+tagged first
+- Touched files: pending D-091 seal; then template_polymer/*, d092_*
+- Next action: Reproduce D-091 tests/pipeline; commit+tag; start template schema
 
 ## Repo facts needed now
-- D-089 seal: 6d363a7 / tag D-089-natural-selection-not-established
-- D-090 conclusion: D090_VALID_SELECTION_ECOLOGY_NOT_ESTABLISHED
-- Hypothesis upheld as ecology/timescale issue: EARLY_FISSION_PRECEDED_SELECTION_PRESSURE
-- Organism remains frozen; trait not rejected on selection grounds
+- Entry commit for D-091 work: d4835e6
+- Reserve schema: autopoietic_material_mesh_metabolic_reserve_v1
+- Template chains must live on MaterialMesh (not Copy LumpedChem)
+- Do not raise σ; keep C_H/C_B for historical tests only
+- Founder sequences L=12 equal H/B composition, different order
 
 ## Last validation
-- Command: D090_SMOKE=1 D090_ASSUME_GATE0=1 cargo run --release -p experiment-runner -- d090 pipeline; cargo test -p chemistry-core --test d090_tests
-- Result: Gates 0–2 PASS; Gate 3 FAIL all H/B candidates; unit tests PASS
+- Command: pending D-091 reproduction
+- Result: pending
 
 ## Open blockers
-- Valid selection ecology not established under frozen biology
+- None yet
 
 ## Mimir V2
-- task 75a7ae47e6204966a59d95ef7c0b48fc (closing)
+- project_id: 7bff443192353517
+- task_id: e74126b6fc934f198f7ddfc5ebdc3122
+- version: 1
+- retrieval.session_id: 5bc672e72ccb4982a36137be8227bbab
+- useful memory candidates: a51c3eaee2004a038ae7d86c1c8a73d8, 673457fa03e34e46abafb73962c86bd7, a0cd32ea967c474ea2b4c0f1f86d443c

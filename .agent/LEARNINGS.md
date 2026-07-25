@@ -164,3 +164,6 @@ Append-only repo-specific lessons. Format:
 - 2026-07-24 | area:d090-ecology | lesson:Compact spatial dish volume (~400) required so O(10^2) inventories yield organism-usable concentrations; large grids dilute to starvation | evidence:docs/d090_ecological_selection_requalification.md,spatial_shared_dish.rs
 
 - 2026-07-24 | area:d090-gate3 | lesson:Under frozen organism, H candidates either never scarce before growth or never reach >=0.80 post-transfer A; B fissions before scheduled damage | evidence:experiments/generated/d090/ecology_calibration
+- 2026-07-24 | area:d091-reserve | lesson:K_growth must be ≫ k_store scale so R accumulates before reproductive growth; small K_g keeps R≈0 | evidence:chemistry-core/src/metabolic_reserve.rs
+- 2026-07-24 | area:d091-growth | lesson:Reserve schema replaces surplus-A growth with R→m; fission still never reads R | evidence:mesh_growth.rs,mesh_fission.rs
+- 2026-07-24 | area:d091-ecology | lesson:Pulse-lean H ecology needs ≥2 completed cycles before claiming lean-before-fission; smoke steps() alone under-runs period | evidence:d091_analysis gate5

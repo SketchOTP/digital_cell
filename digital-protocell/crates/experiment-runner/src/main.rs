@@ -87,6 +87,7 @@ mod d087;
 mod d088;
 mod d089;
 mod d090;
+mod d091;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -478,6 +479,10 @@ enum Commands {
         #[command(subcommand)]
         action: D090Commands,
     },
+    D091 {
+        #[command(subcommand)]
+        action: D091Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -819,6 +824,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D088 { action } => run_d088(action)?,
         Commands::D089 { action } => run_d089(action)?,
         Commands::D090 { action } => run_d090(action)?,
+        Commands::D091 { action } => run_d091(action)?,
     }
     Ok(())
 }
@@ -4222,6 +4228,33 @@ fn run_d090(action: D090Commands) -> Result<(), Box<dyn std::error::Error>> {
             let result = d090::run_pipeline_cli(&out)?;
             println!(
                 "D-090 pipeline primary={} phase2={} phase3={} next_started={} -> {}",
+                result["primary_conclusion"],
+                result["phase2_status"],
+                result["phase3_authorized"],
+                result["next_execution_started"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D091Commands {
+    /// Metabolic reserve and ecological timescale closure.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d091")]
+        output: PathBuf,
+    },
+}
+
+fn run_d091(action: D091Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D091Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d091::run_pipeline_cli(&out)?;
+            println!(
+                "D-091 pipeline primary={} phase2={} phase3={} next_started={} -> {}",
                 result["primary_conclusion"],
                 result["phase2_status"],
                 result["phase3_authorized"],

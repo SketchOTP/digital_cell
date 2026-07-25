@@ -181,6 +181,7 @@ pub fn seed_composed(radius: f64, seed: u64, z: f64, bath: &SharedBath) -> Mater
         tracer_c: 0.0,
         c_h: 0.0,
         c_b: 0.0,
+        r: 0.0,
     };
     set_composition_from_z(&mut interior, z);
     let exterior = LumpedChem {
@@ -192,6 +193,7 @@ pub fn seed_composed(radius: f64, seed: u64, z: f64, bath: &SharedBath) -> Mater
         tracer_c: 0.0,
         c_h: 0.0,
         c_b: 0.0,
+        r: 0.0,
     };
     MaterialMesh::seed_regular(
         n,

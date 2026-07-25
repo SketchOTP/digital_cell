@@ -93,6 +93,7 @@ fn seed_mesh(radius: f64, seed: u64, ext: f64) -> MaterialMesh {
             tracer_c: 0.0,
             c_h: 0.0,
             c_b: 0.0,
+            r: 0.0,
         },
         LumpedChem {
             c: 0.0,
@@ -103,6 +104,7 @@ fn seed_mesh(radius: f64, seed: u64, ext: f64) -> MaterialMesh {
             tracer_c: 0.0,
             c_h: 0.0,
             c_b: 0.0,
+            r: 0.0,
         },
         5.0,
     )

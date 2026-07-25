@@ -42,3 +42,11 @@ This file is specifically for the operators use. It keeps record of what the AI 
 - 2026-07-24 | D-089 | event:heredity_qualified_selection_provisional | records:D089_HEREDITY_AND_PHENOTYPE_QUALIFIED,D089_SELECTION_RESULT_PROVISIONAL_PENDING_ECOLOGICAL_TIMESCALE_AUDIT | hypothesis:EARLY_FISSION_PRECEDED_SELECTION_PRESSURE | tag:D-089-natural-selection-not-established | note:compositional architecture NOT rejected; ecology audit deferred to D-090
 
 - 2026-07-24 | D-090 | event:ecology_invalid | conclusion:D090_VALID_SELECTION_ECOLOGY_NOT_ESTABLISHED | hypothesis:EARLY_FISSION_PRECEDED_SELECTION_PRESSURE upheld as timescale incompatibility | tag:D-090-selection-ecology-invalid | note:Gates0-2 pass; Gate3 fail; C_H/C_B not selection-rejected; Phase3 not authorized
+- 2026-07-24 | D-091 | STEADY_FLOW_SELECTION_ECOLOGY_CLOSED | confirmed from D-090
+- 2026-07-24 | D-091 | INSTANTANEOUS_A_GROWTH_COUPLING_IDENTIFIED | confirmed; repaired by reserve-funded growth
+- 2026-07-24 | D-091 | PHASE2_METABOLIC_RESERVE_ARCHITECTURE_AUTHORIZED | implemented as autopoietic_material_mesh_metabolic_reserve_v1
+- 2026-07-24 | D-091 | METABOLIC_RESERVE_PHYSIOLOGY_QUALIFIED | Gates 0–4 PASS (smoke)
+- 2026-07-24 | D-091 | D091_METABOLIC_RESERVE_QUALIFIED_COMPOSITIONAL_SELECTION_REJECTED | primary conclusion
+- 2026-07-24 | D-091 | COMPOSITIONAL_C_H_C_B_SELECTION_CLOSED_REJECTED | scalar tradeoff closed as evolutionary substrate
+- 2026-07-24 | D-091 | PHASE3_NOT_AUTHORIZED | adaptation/selection incomplete
+- 2026-07-24 | D-091 | D092_MINIMAL_CATALYTIC_TEMPLATE_HEREDITY_STARTED | next_execution_started=true

@@ -5,6 +5,7 @@ use crate::catalyst_composition::{
     sync_total_c, turnover_composition, CompositionLedger, CompositionParams,
 };
 use crate::material_mesh::MaterialMesh;
+use crate::metabolic_reserve::{reserve_metab_step, ReserveLedger, ReserveParams};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
@@ -24,6 +25,9 @@ pub struct ReactionParams {
     /// D-089 compositional catalysis (default off → frozen scalar path).
     #[serde(default)]
     pub composition: CompositionParams,
+    /// D-091 metabolic reserve (default off → D-088 surplus-A growth).
+    #[serde(default)]
+    pub reserve: ReserveParams,
 }
 
 impl Default for ReactionParams {
@@ -44,6 +48,7 @@ impl Default for ReactionParams {
             k_a_decay: 0.008,
             q_c: 0.3,
             composition: CompositionParams::default(),
+            reserve: ReserveParams::default(),
         }
     }
 }
@@ -68,6 +73,8 @@ pub struct ReactionLedger {
     pub l_produced: f64,
     #[serde(default)]
     pub composition: CompositionLedger,
+    #[serde(default)]
+    pub reserve: ReserveLedger,
 }
 
 #[inline]
@@ -199,6 +206,10 @@ pub fn reactions_step(
         mesh.interior.a = (mesh.interior.a - a_dec).max(0.0);
         mesh.interior.w += a_dec;
         led.w_produced += a_dec * area;
+
+        // D-091 metabolic reserve: A↔R store/release and R→W loss (before A→L).
+        let rled = reserve_metab_step(mesh, p, dt);
+        led.reserve = rled;
     }
 
     // Per-edge build / turnover / bind.

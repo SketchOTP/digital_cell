@@ -207,5 +207,7 @@ pub fn extract_loop(
         l_min: parent.l_min,
         alive: true,
         death_reason: None,
+        equation_id: parent.equation_id.clone(),
+        schema_version: parent.schema_version,
     }
 }

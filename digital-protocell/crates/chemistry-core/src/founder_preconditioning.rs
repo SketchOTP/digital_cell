@@ -151,6 +151,7 @@ fn seed_raw(radius: f64, _seed: u64, z: f64, ext_n: f64, ext_f: f64) -> Material
         tracer_c: 0.0,
         c_h: 0.0,
         c_b: 0.0,
+        r: 0.0,
     };
     set_composition_from_z(&mut interior, z);
     let exterior = LumpedChem {
@@ -162,6 +163,7 @@ fn seed_raw(radius: f64, _seed: u64, z: f64, ext_n: f64, ext_f: f64) -> Material
         tracer_c: 0.0,
         c_h: 0.0,
         c_b: 0.0,
+        r: 0.0,
     };
     let mut mesh = MaterialMesh::seed_regular(
         n,

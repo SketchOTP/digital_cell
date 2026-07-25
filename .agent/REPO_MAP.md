@@ -707,3 +707,15 @@ Concise navigation map for agents. Add entries as application code lands.
 - experiment-runner/src/d090.rs — CLI
 - docs/d090_ecological_selection_requalification.md — Report
 - experiments/generated/d090/ — Artifacts (symlink → storage1tb)
+
+## D-091 metabolic reserve
+- chemistry-core/src/metabolic_reserve.rs — R field chemistry (store/release/loss) + ReserveParams derivation
+- chemistry-core/src/seasonal_ecology.rs — pulse-lean resource schedule
+- chemistry-core/src/abrasion_front.rs — dish-coordinate identity-blind abrasion
+- chemistry-core/src/d091_analysis.rs — Gates 0–10 pipeline
+- chemistry-core/tests/d091_tests.rs — stoichiometry/schema unit tests
+- experiment-runner/src/d091.rs — CLI shim
+- docs/d091_metabolic_reserve_ecological_timescale.md — report
+- docs/d092_minimal_catalytic_template_heredity.md — D-092 kickoff
+- material_mesh LumpedChem.r + equation_id stamp; mesh_growth reserve-funded path; mesh_fission R partition
+

@@ -16,10 +16,11 @@ The D-008 phase-field (`φ` / Cahn–Hilliard) structural body lineage is **clos
 * D-087 independent certification: `D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED` → `PHASE1_COMPLETE`, `MESH_PHASE1_V1_FROZEN`, `PHASE2_REPRODUCTION_AUTHORIZED`, `PHASE1_SCIENCE_CERTIFIED`; packaged runtime initially provisional, then `PHASE1_RESEARCH_RUNTIME_QUALIFIED` after ≥90 min wall-clock closure
 * D-088: `D088_CAUSAL_GROWTH_FISSION_INHERITANCE_QUALIFIED` → `PHASE2_PHYSICAL_REPRODUCTION_QUALIFIED`, `MATERIAL_STATE_INHERITANCE_QUALIFIED`, `MULTI_GENERATION_MESH_LINEAGE_ESTABLISHED`
 * D-089: `D089_HEREDITY_AND_PHENOTYPE_QUALIFIED`; D-090: `D090_VALID_SELECTION_ECOLOGY_NOT_ESTABLISHED` (hypothesis `EARLY_FISSION_PRECEDED_SELECTION_PRESSURE` upheld as ecology/timescale incompatibility; compositional architecture not selection-rejected)
+* D-091: `D091_METABOLIC_RESERVE_QUALIFIED_COMPOSITIONAL_SELECTION_REJECTED` — conserved metabolic reserve `R` qualifies physiology and ecological timescales; `C_H/C_B` scalar tradeoff closed as evolutionary substrate; Phase 3 not authorized; next `D-092: Minimal Catalytic Template Heredity`
 
-## Phase 2 (reproduction qualified; heredity partial)
+## Phase 2 (reproduction qualified; heredity route change)
 
-Branch `phase2-growth-division-inheritance`. Physical reproduction without `divide()` is qualified. D-089 heredity/phenotype qualified; D-090 found no valid shared-dish ecology under frozen biology (`D090_VALID_SELECTION_ECOLOGY_NOT_ESTABLISHED`). C_H/C_B not selection-rejected. Next: organism–environment coupling architecture review. No σ sweep.
+Branch `phase2-growth-division-inheritance`. Physical reproduction without `divide()` is qualified. D-089 heredity/phenotype qualified; D-090 found no valid shared-dish ecology under frozen biology. D-091 introduced conserved metabolic reserve `R` and qualified reserve physiology + ecological timescales, but compositional `C_H/C_B` selection remained absent (`D091_METABOLIC_RESERVE_QUALIFIED_COMPOSITIONAL_SELECTION_REJECTED`). Next: D-092 minimal catalytic template heredity. No σ increase. Phase 3 not authorized.
 
 Causal requirements unchanged: individuality, metabolism, organizational closure, material turnover, boundary maintenance, damage repair, nutrient/fuel dependence, irreversible death. No target radius/area, health variable, repair command, or stored body shape.
 

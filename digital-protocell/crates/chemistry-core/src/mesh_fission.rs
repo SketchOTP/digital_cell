@@ -34,6 +34,8 @@ pub struct PartitionReport {
     pub residual_n: f64,
     pub residual_f: f64,
     pub residual_w: f64,
+    #[serde(default)]
+    pub residual_r: f64,
     pub ok: bool,
 }
 
@@ -113,6 +115,7 @@ pub fn try_local_fission(
     let pre_n = parent.interior.n * parent.area().max(1e-9);
     let pre_f = parent.interior.f * parent.area().max(1e-9);
     let pre_w = parent.interior.w * parent.area().max(1e-9);
+    let pre_r = parent.interior.r * parent.area().max(1e-9);
 
     // Free L split by perimeter share.
     let p1 = d1.perimeter().max(1e-9);
@@ -136,9 +139,13 @@ pub fn try_local_fission(
         mesh.interior.n = (pre_n * frac) / a;
         mesh.interior.f = (pre_f * frac) / a;
         mesh.interior.w = (pre_w * frac) / a;
+        // R is partitioned as actual material (never copied as a ratio template).
+        mesh.interior.r = (pre_r * frac) / a;
         mesh.interior.tracer_c = parent.interior.tracer_c * frac;
         mesh.exterior = parent.exterior;
         mesh.alive = true;
+        mesh.equation_id = parent.equation_id.clone();
+        mesh.schema_version = parent.schema_version;
     };
     set_conc(&mut d1, f1);
     set_conc(&mut d2, f2);
@@ -162,6 +169,7 @@ pub fn try_local_fission(
     let post_n = d1.interior.n * d1.area() + d2.interior.n * d2.area();
     let post_f = d1.interior.f * d1.area() + d2.interior.f * d2.area();
     let post_w = d1.interior.w * d1.area() + d2.interior.w * d2.area();
+    let post_r = d1.interior.r * d1.area() + d2.interior.r * d2.area();
 
     // Structural: parent m + new cross-bond mass ≈ post (cross bonds add need)
     let residual_m = (post_m - (pre_m + need)).abs();
@@ -175,6 +183,7 @@ pub fn try_local_fission(
     let residual_n = (post_n - pre_n).abs();
     let residual_f = (post_f - pre_f).abs();
     let residual_w = (post_w - (pre_w + take)).abs();
+    let residual_r = (post_r - pre_r).abs();
 
     let ok = residual_m < ACCOUNTING_TOL * (1.0 + pre_m)
         && residual_b < ACCOUNTING_TOL * (1.0 + pre_b)
@@ -186,6 +195,7 @@ pub fn try_local_fission(
         && residual_n < 1e-4 * (1.0 + pre_n)
         && residual_f < 1e-4 * (1.0 + pre_f)
         && residual_w < 1e-4 * (1.0 + pre_w)
+        && residual_r < 1e-4 * (1.0 + pre_r)
         && d1.n() >= 3
         && d2.n() >= 3
         && d1.closed_intact()
@@ -205,6 +215,7 @@ pub fn try_local_fission(
             residual_n,
             residual_f,
             residual_w,
+            residual_r,
             ok,
         },
         leakage_w: leakage,
