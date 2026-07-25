@@ -65,6 +65,8 @@ Phase 3 is **not** authorized. Next architecture may retain template copying but
 
 - D-091 seal: `58817ac` / tag `D-091-metabolic-reserve-qualified-selection-rejected`
 - D-092 start: `58817ac`
+- D-092 end: `a2196ae` / tag `D-092-template-heredity-qualified-selection-rejected`
+- Branch: `phase2-growth-division-inheritance` (no Phase 3 branch)
 
 ## Artifacts
 

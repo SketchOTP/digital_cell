@@ -15,6 +15,7 @@
 - Fidelity ≈ 0.013 per-site mismatch
 - Phase 3: not authorized
 - D-091 seal: 58817ac / D-091-metabolic-reserve-qualified-selection-rejected
+- D-092 seal: a2196ae / D-092-template-heredity-qualified-selection-rejected
 
 ## Last validation
 - Command: cargo test -p chemistry-core --test d092_tests --release; D092_SMOKE=1 cargo run --release -p experiment-runner -- d092 pipeline
@@ -24,4 +25,4 @@
 - Full non-smoke Gate6–8 matrices not run (honest smoke failure recorded)
 
 ## Mimir V2
-- task e74126b6fc934f198f7ddfc5ebdc3122 (close pending)
+- task e74126b6fc934f198f7ddfc5ebdc3122 closed (status:completed)
