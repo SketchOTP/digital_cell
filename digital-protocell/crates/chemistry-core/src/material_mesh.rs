@@ -45,6 +45,11 @@ pub struct TemplateChain {
     pub paired: Vec<Option<MonomerKind>>,
     pub nascent_backbone: Vec<bool>,
     pub complete: bool,
+    /// Bound catalyst mass at circular overlapping pair sites (D-093).
+    /// Complete L=12 templates use length L (wrap-around bond). Empty under D-092.
+    /// Never an organism-level genome weight.
+    #[serde(default)]
+    pub site_k: Vec<f64>,
 }
 
 impl TemplateChain {
@@ -66,6 +71,18 @@ impl TemplateChain {
             && !self.monomers.is_empty()
             && self.backbone.len() + 1 == self.monomers.len()
             && self.backbone.iter().all(|&b| b);
+    }
+
+    /// Ensure circular pair-site catalyst vector (one site per monomer on complete chains).
+    pub fn ensure_site_k(&mut self) {
+        let n = if self.is_complete_template() {
+            self.monomers.len()
+        } else {
+            self.monomers.len().saturating_sub(1)
+        };
+        if self.site_k.len() != n {
+            self.site_k.resize(n, 0.0);
+        }
     }
 }
 

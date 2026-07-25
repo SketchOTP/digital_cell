@@ -1,0 +1,7 @@
+{
+  "id_shuffle_no_effect": true,
+  "need": 30,
+  "parent_offspring_response_corr": 0.9845453704778969,
+  "successes": 30,
+  "unrelated_response_corr": 0.7117657970782029
+}

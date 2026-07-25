@@ -83,6 +83,8 @@ pub fn local_a_production_rate(mesh: &MaterialMesh, i: usize, p: &ReactionParams
     let gh = if p.composition.enable {
         let z = crate::catalyst_composition::composition_z(mesh.interior.c_h, mesh.interior.c_b);
         crate::catalyst_composition::g_harvest(z, p.composition.sigma)
+    } else if p.network.enable {
+        crate::template_network_expression::network_activation_gain(mesh, &p.network, p.q_c)
     } else if p.template.enable {
         crate::template_motifs::template_activity_gains(mesh, &p.template).0
     } else {

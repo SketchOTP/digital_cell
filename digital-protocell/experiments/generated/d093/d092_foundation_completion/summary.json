@@ -1,0 +1,21 @@
+{
+  "copying": {
+    "complete_copies": 100,
+    "match_binds": 2333,
+    "mismatch_binds": 21,
+    "need_copies": 100,
+    "per_site_mismatch": 0.008920985556499575,
+    "steps_run": 1280
+  },
+  "fission": {
+    "daughters_with_template": 30,
+    "inherit_fraction": 1.0,
+    "need": 30,
+    "parent_offspring_similarity": 1.0,
+    "partition_residual_ok": true,
+    "successes": 30,
+    "unrelated_similarity": 0.5
+  },
+  "foundation_incomplete": false,
+  "smoke": false
+}

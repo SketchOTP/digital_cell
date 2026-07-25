@@ -1,0 +1,8 @@
+{
+  "circular_pair_sites": true,
+  "composition_disabled": true,
+  "no_fitness_field": true,
+  "no_network_score_field": true,
+  "prior_ok": true,
+  "template_count_bounded": true
+}

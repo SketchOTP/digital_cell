@@ -1,28 +1,29 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260724-d092-minimal-catalytic-template-heredity
-- Project directive: D-092
-- Goal: Minimal catalytic template polymer heredity
-- Status: done
-- Acceptance: One exact D092_* primary — met
-- Touched files: template_*, material_mesh, mesh_reactions, mesh_fission, d092_*, docs/d092_*
-- Next action: Follow-up architecture for reaction-network expression (not Phase 3)
+- ID: D-20260725-d094-distributed-autocatalytic-set-heredity
+- Project directive: D-094
+- Goal: Seal corrected D-093; audit zero-gen; implement distributed autocatalytic-set heredity Gates 0–10
+- Status: started
+- Acceptance: One exact D094_* primary; D-093 tagged UNTESTABLE_ZERO_GENERATION; Phase3 only if adaptation+reversal
+- Touched files: d093_* (seal), autocatalytic_*, d094_*, material_mesh, mesh_*, docs/d094_*, .agent/*
+- Next action: Finish full D-093 pipeline reproduce → commit+tag → zero-gen audit
 
-## Conclusion
-- Primary: D092_TEMPLATE_HEREDITY_QUALIFIED_MOTIF_SELECTION_REJECTED
-- Schema: autopoietic_material_mesh_catalytic_template_v1
-- Fidelity ≈ 0.013 per-site mismatch
-- Phase 3: not authorized
-- D-091 seal: 58817ac / D-091-metabolic-reserve-qualified-selection-rejected
-- D-092 seal: a2196ae / D-092-template-heredity-qualified-selection-rejected
+## Repo facts needed now
+- D-093 uncommitted; conclusion corrected to UNTESTABLE_ZERO_GENERATION
+- Ancestor: 381ac64; branch phase2-growth-division-inheritance
+- μ_E = 0.0089 frozen from D-093 measured mismatch
+- 1TB mount emergency_ro — local NVMe artifacts only
 
 ## Last validation
-- Command: cargo test -p chemistry-core --test d092_tests --release; D092_SMOKE=1 cargo run --release -p experiment-runner -- d092 pipeline
-- Result: d092_tests 7/7; primary D092_TEMPLATE_HEREDITY_QUALIFIED_MOTIF_SELECTION_REJECTED
+- Command: cargo test -p chemistry-core --release --test d093_tests; d093 repair-info
+- Result: 5/5 PASS; primary UNTESTABLE_ZERO_GENERATION
 
 ## Open blockers
-- Full non-smoke Gate6–8 matrices not run (honest smoke failure recorded)
+- Full D-093 pipeline rerun in progress (local d093_rerun)
+- /mnt/storage1tb I/O error (emergency_ro)
 
 ## Mimir V2
-- task e74126b6fc934f198f7ddfc5ebdc3122 closed (status:completed)
+- project: 7bff443192353517
+- task: 5fa2c781627d4246a213acdfc95a0f7a version 2
+- retrieval.session_id: cf99fb2bf0dc4960a01d73e71f14222b

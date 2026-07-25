@@ -171,3 +171,8 @@ Append-only repo-specific lessons. Format:
 - 2026-07-24 | area:d092-copying | lesson:Match/mismatch affinity 100× yields ~1% per-site mismatch; whole-chain clone forbidden — sitewise ligation only | evidence:template_copying.rs,experiments/generated/d092/fidelity/
 - 2026-07-24 | area:d092-fission | lesson:Elongated surplus growth needs ~7k steps before try_local_fission; smoke must not shrink below that horizon | evidence:d092_analysis gate4
 - 2026-07-24 | area:d092-selection | lesson:Directive copy-rate vs half-life implies Malthusian growth unless monomer-limited; selection campaigns explode without k_mono bottleneck | evidence:template_polymer::derived,gate6
+- 2026-07-24 | area:d093-network | lesson:Equal HH/HB/BH/BB counts need circular L=12 pair sites (linear L-1=11 cannot split evenly by 4) | evidence:template_network.rs,template_network_founders.rs
+- 2026-07-24 | area:d093-smoke | lesson:steps() has min-300 floor — never use for trial counts; use trials() helper | evidence:d093_analysis.rs
+- 2026-07-24 | area:d093-selection | lesson:Full non-smoke D-093 selection also reaches max_gen=0 under frozen D-091 ecologies — invalid as selection evidence, same ecology/timescale class as D-092 | evidence:experiments/generated/d093/selection_*/gate6.json
+- 2026-07-25 | area:d093-selection | lesson:Full D-093 selection max_gen=0 is untestable not rejected; conclude UNTESTABLE_ZERO_GENERATION | evidence:experiments/generated/d093/manifest.json
+- 2026-07-25 | area:d093-heritability | lesson:Parent-offspring network response correlation ≈0.98 over 30 fissions under circular L=12 pair sites | evidence:experiments/generated/d093/network_heritability/gate4.json

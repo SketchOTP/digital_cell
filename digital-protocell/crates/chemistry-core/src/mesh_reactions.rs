@@ -8,6 +8,9 @@ use crate::material_mesh::MaterialMesh;
 use crate::metabolic_reserve::{reserve_metab_step, ReserveLedger, ReserveParams};
 use crate::template_copying::copying_step;
 use crate::template_motifs::{catalyst_binding_step, template_activity_gains};
+use crate::template_network::{scale_bound_catalyst, NetworkLedger, NetworkParams};
+use crate::template_network_binding::network_binding_step;
+use crate::template_network_expression::{network_activation_gain, network_building_gain};
 use crate::template_partition::diffuse_templates;
 use crate::template_polymer::{
     hydrolysis_step, merge_template_ledgers, monomer_production_step, TemplateLedger, TemplateParams,
@@ -38,6 +41,9 @@ pub struct ReactionParams {
     /// D-092 catalytic template polymer (default off → D-091 reserve path).
     #[serde(default)]
     pub template: TemplateParams,
+    /// D-093 template-encoded catalytic network (default off).
+    #[serde(default)]
+    pub network: NetworkParams,
 }
 
 impl Default for ReactionParams {
@@ -60,6 +66,7 @@ impl Default for ReactionParams {
             composition: CompositionParams::default(),
             reserve: ReserveParams::default(),
             template: TemplateParams::default(),
+            network: NetworkParams::default(),
         }
     }
 }
@@ -88,6 +95,8 @@ pub struct ReactionLedger {
     pub reserve: ReserveLedger,
     #[serde(default)]
     pub template: TemplateLedger,
+    #[serde(default)]
+    pub network: NetworkLedger,
 }
 
 #[inline]
@@ -119,6 +128,8 @@ pub fn structural_build_flux(mesh: &MaterialMesh, i: usize, p: &ReactionParams) 
     let gb = if p.composition.enable {
         let z = composition_z(mesh.interior.c_h, mesh.interior.c_b);
         g_build(z, p.composition.sigma)
+    } else if p.network.enable {
+        network_building_gain(mesh, &p.network, p.q_c)
     } else if p.template.enable {
         template_activity_gains(mesh, &p.template).1
     } else {
@@ -151,6 +162,8 @@ pub fn reactions_step(
         let gh = if p.composition.enable {
             let z = composition_z(mesh.interior.c_h, mesh.interior.c_b);
             g_harvest(z, p.composition.sigma)
+        } else if p.network.enable {
+            network_activation_gain(mesh, &p.network, p.q_c)
         } else if p.template.enable {
             template_activity_gains(mesh, &p.template).0
         } else {
@@ -177,12 +190,16 @@ pub fn reactions_step(
 
         // Catalyst production / turnover (new C unlabeled; turnover ages tracer).
         // Composition mode: copy with μ during production only; turnover equal on both types.
+        // D-093: turnover applies equally to free and bound catalyst; production enters free.
         let c_before = mesh.interior.c.max(0.0);
         let c_prod = p.k_c_prod * mesh.interior.a.max(0.0) * dt;
         let c_turn = p.k_c_turn * c_before * dt;
         if c_before > 1e-15 && c_turn > 0.0 {
             let frac = (c_turn / c_before).clamp(0.0, 1.0);
             mesh.interior.tracer_c = (mesh.interior.tracer_c * (1.0 - frac)).max(0.0);
+            if p.network.enable {
+                scale_bound_catalyst(mesh, 1.0 - frac);
+            }
         }
         if p.composition.enable {
             let c_h0 = mesh.interior.c_h.max(0.0);
@@ -228,7 +245,7 @@ pub fn reactions_step(
         let rled = reserve_metab_step(mesh, p, dt);
         led.reserve = rled;
 
-        // D-092 template polymer chemistry (monomers, copying, hydrolysis, complexes).
+        // D-092/D-093 template polymer chemistry (monomers, copying, hydrolysis).
         if p.template.enable {
             let mut rng = XorShift64::new(mesh.template_rng.max(1));
             let mut next_id = mesh.next_template_id.max(1);
@@ -238,13 +255,21 @@ pub fn reactions_step(
             merge_template_ledgers(&mut tled, &cled);
             let hled = hydrolysis_step(mesh, p, dt, &mut rng);
             merge_template_ledgers(&mut tled, &hled);
-            let bled = catalyst_binding_step(mesh, p, dt);
-            merge_template_ledgers(&mut tled, &bled);
+            if p.network.enable {
+                // D-093 overlapping pair-site network binding (not fixed motifs).
+                led.network = network_binding_step(mesh, p, dt);
+            } else {
+                // D-092 fixed-motif complexes (immutable historical path).
+                let bled = catalyst_binding_step(mesh, p, dt);
+                merge_template_ledgers(&mut tled, &bled);
+            }
             diffuse_templates(mesh, dt, 0.02);
             mesh.template_rng = rng.state();
             led.template = tled;
             // Template ligation/monomer A costs already deducted; account waste.
             led.w_produced += led.template.w_produced;
+        } else if p.network.enable {
+            led.network = network_binding_step(mesh, p, dt);
         }
     }
 
@@ -304,6 +329,8 @@ pub fn reactions_step(
         let gb = if p.composition.enable {
             let z = composition_z(mesh.interior.c_h, mesh.interior.c_b);
             g_build(z, p.composition.sigma)
+        } else if p.network.enable {
+            network_building_gain(mesh, &p.network, p.q_c)
         } else if p.template.enable {
             template_activity_gains(mesh, &p.template).1
         } else {

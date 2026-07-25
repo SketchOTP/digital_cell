@@ -463,7 +463,7 @@ Concise navigation map for agents. Add entries as application code lands.
 
 ## Storage archive (1TB)
 - `docs/storage_archive_policy.md` — NVMe vs `/mnt/storage1tb` policy
-- `.cursor/rules/06-storage-archive.mdc` — always-on agent reminder
+- `.cursor/rules/06-storage-archive.mdc` — regenerable bulk + space-relief whole-project archive (alwaysApply)
 - `/mnt/storage1tb/cache/project-artifacts/digital_cell/` — target, cocoindex, experiments/generated archive + manifest
 
 ## D-060 structural growth / size feedback
@@ -728,3 +728,14 @@ Concise navigation map for agents. Add entries as application code lands.
 - chemistry-core/tests/d092_tests.rs — unit tests
 - experiment-runner/src/d092.rs — CLI shim
 - docs/d092_minimal_catalytic_template_heredity.md — report
+
+## D-093 template-encoded catalytic network
+- chemistry-core/src/template_network.rs — schema autopoietic_material_mesh_template_network_v1; NetworkParams; circular pair sites
+- chemistry-core/src/template_network_binding.rs — overlapping occupancy binding; local gates; response vectors
+- chemistry-core/src/template_network_expression.rs — C_channel = C_free + ρ K_channel gains
+- chemistry-core/src/template_network_founders.rs — topology class enumeration + isolated preauthorization
+- chemistry-core/src/d093_analysis.rs — Gates 0–10 pipeline
+- chemistry-core/tests/d093_tests.rs — schema/binding/class tests
+- experiment-runner/src/d093.rs — CLI pipeline
+- docs/d093_template_encoded_catalytic_network.md — report
+- experiments/generated/d093/ — artifacts

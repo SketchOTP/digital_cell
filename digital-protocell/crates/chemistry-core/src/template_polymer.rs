@@ -192,12 +192,21 @@ pub fn stamp_base_equation(mesh: &mut MaterialMesh) {
     mesh.schema_version = MATERIAL_MESH_SCHEMA_VERSION;
 }
 
-/// Fail-closed: template chemistry requires the template schema stamp.
+/// Fail-closed: D-092 motif/template chemistry requires the catalytic-template stamp.
+/// Polymer steps that also run under D-093 use `polymer_schema_load_ok`.
 pub fn template_schema_load_ok(mesh: &MaterialMesh, tmpl: &TemplateParams) -> bool {
     if !tmpl.enable {
         return true;
     }
     mesh.equation_id == EQUATION_VERSION_CATALYTIC_TEMPLATE
+}
+
+/// Polymer copying/monomers/hydrolysis: D-092 or D-093 network stamp.
+pub fn polymer_schema_ok(mesh: &MaterialMesh, tmpl: &TemplateParams) -> bool {
+    if !tmpl.enable {
+        return true;
+    }
+    crate::template_network::polymer_schema_load_ok(mesh, tmpl.enable)
 }
 
 /// Old reserve snapshots must not run under template chemistry.
@@ -246,6 +255,7 @@ pub fn seed_founder_chains(
             paired: vec![None; FOUNDER_LEN],
             nascent_backbone: vec![false; FOUNDER_LEN - 1],
             complete: true,
+            site_k: vec![0.0; FOUNDER_LEN],
         };
         chain.refresh_complete();
         mesh.templates.push(chain);
@@ -279,7 +289,7 @@ pub fn monomer_production_step(
 ) -> TemplateLedger {
     let mut led = TemplateLedger::default();
     let p = &react.template;
-    if !p.enable || !template_schema_load_ok(mesh, p) {
+    if !p.enable || !polymer_schema_ok(mesh, p) {
         if p.enable {
             led.rejected_steps += 1;
         }
@@ -327,8 +337,8 @@ pub fn hydrolysis_step(
 ) -> TemplateLedger {
     let mut led = TemplateLedger::default();
     let p = &react.template;
-    if !p.enable || !p.enable_turnover || !template_schema_load_ok(mesh, p) {
-        if p.enable && !template_schema_load_ok(mesh, p) {
+    if !p.enable || !p.enable_turnover || !polymer_schema_ok(mesh, p) {
+        if p.enable && !polymer_schema_ok(mesh, p) {
             led.rejected_steps += 1;
         }
         return led;
@@ -393,6 +403,7 @@ pub fn hydrolysis_step(
                     paired: vec![None; n],
                     nascent_backbone: vec![false; n.saturating_sub(1)],
                     complete: false,
+                    site_k: vec![0.0; n.saturating_sub(1)],
                 };
                 frag.refresh_complete();
                 frags.push(frag);

@@ -145,6 +145,7 @@ pub fn reserve_schema_load_ok(mesh: &MaterialMesh, reserve: &ReserveParams) -> b
     }
     mesh.equation_id == EQUATION_VERSION_METABOLIC_RESERVE
         || mesh.equation_id == crate::template_polymer::EQUATION_VERSION_CATALYTIC_TEMPLATE
+        || mesh.equation_id == crate::template_network::EQUATION_VERSION_TEMPLATE_NETWORK
 }
 
 /// Store flux density (concentration/time): A → R.
@@ -199,12 +200,27 @@ pub fn reserve_metab_step(
     }
     let area = mesh.area().max(EPS);
     let qc = q_catalyst(mesh.interior.c, react.q_c);
+    let (qc_store, qc_rel) = if react.network.enable {
+        let gs = crate::template_network_expression::network_storage_gain(
+            mesh,
+            &react.network,
+            react.q_c,
+        );
+        let gr = crate::template_network_expression::network_release_gain(
+            mesh,
+            &react.network,
+            react.q_c,
+        );
+        (qc * gs, qc * gr)
+    } else {
+        (qc, qc)
+    };
     let a0 = mesh.interior.a.max(0.0);
     let r0 = mesh.interior.r.max(0.0);
 
     // Explicit Euler with capacity clamps (rejected partial steps leave state unchanged for that flux).
-    let js = j_store(a0, r0, qc, p) * dt;
-    let jr = j_release(a0, r0, qc, p) * dt;
+    let js = j_store(a0, r0, qc_store, p) * dt;
+    let jr = j_release(a0, r0, qc_rel, p) * dt;
     let jl = j_r_loss(r0, p) * dt;
 
     // Store A→R
@@ -262,6 +278,8 @@ pub fn local_r_growth_rate(
     let gb = if react.composition.enable {
         let z = crate::catalyst_composition::composition_z(mesh.interior.c_h, mesh.interior.c_b);
         crate::catalyst_composition::g_build(z, react.composition.sigma)
+    } else if react.network.enable {
+        crate::template_network_expression::network_building_gain(mesh, &react.network, react.q_c)
     } else if react.template.enable {
         crate::template_motifs::template_activity_gains(mesh, &react.template).1
     } else {

@@ -5,7 +5,7 @@
 use crate::mesh_reactions::{q_catalyst, ReactionParams};
 use crate::material_mesh::{MaterialMesh, MonomerKind, TemplateChain};
 use crate::template_polymer::{
-    template_schema_load_ok, RngLike, TemplateLedger, FOUNDER_LEN, MONOMER_MASS,
+    polymer_schema_ok, RngLike, TemplateLedger, FOUNDER_LEN, MONOMER_MASS,
 };
 
 const EPS: f64 = 1e-15;
@@ -24,8 +24,8 @@ pub fn copying_step(
 ) -> TemplateLedger {
     let mut led = TemplateLedger::default();
     let p = &react.template;
-    if !p.enable || !p.enable_copying || !template_schema_load_ok(mesh, p) {
-        if p.enable && !template_schema_load_ok(mesh, p) {
+    if !p.enable || !p.enable_copying || !polymer_schema_ok(mesh, p) {
+        if p.enable && !polymer_schema_ok(mesh, p) {
             led.rejected_steps += 1;
         }
         return led;
@@ -188,6 +188,7 @@ pub fn copying_step(
             paired: vec![None; FOUNDER_LEN],
             nascent_backbone: vec![false; FOUNDER_LEN - 1],
             complete: true,
+            site_k: vec![0.0; FOUNDER_LEN],
         };
         daughter.refresh_complete();
         *next_id += 1;

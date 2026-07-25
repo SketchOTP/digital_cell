@@ -89,6 +89,7 @@ mod d089;
 mod d090;
 mod d091;
 mod d092;
+mod d093;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -488,6 +489,10 @@ enum Commands {
         #[command(subcommand)]
         action: D092Commands,
     },
+    D093 {
+        #[command(subcommand)]
+        action: D093Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -831,6 +836,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D090 { action } => run_d090(action)?,
         Commands::D091 { action } => run_d091(action)?,
         Commands::D092 { action } => run_d092(action)?,
+        Commands::D093 { action } => run_d093(action)?,
     }
     Ok(())
 }
@@ -4292,6 +4298,50 @@ fn run_d092(action: D092Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["phase2_status"],
                 result["phase3_authorized"],
                 result["next_execution_started"],
+                out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D093Commands {
+    /// Template-encoded catalytic network topology and evolutionary closure.
+    Pipeline {
+        #[arg(long, default_value = "experiments/generated/d093")]
+        output: PathBuf,
+    },
+    /// Re-run Gate 9–10 and rewrite manifest from existing Gate 0–8 artifacts.
+    RepairInfo {
+        #[arg(long, default_value = "experiments/generated/d093")]
+        output: PathBuf,
+    },
+}
+
+fn run_d093(action: D093Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D093Commands::Pipeline { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d093::run_pipeline_cli(&out)?;
+            println!(
+                "D-093 pipeline primary={} phase2={} phase3={} next_started={} smoke={} -> {}",
+                result["primary_conclusion"],
+                result["phase2_status"],
+                result["phase3_authorized"],
+                result["next_execution_started"],
+                result["smoke"],
+                out.join("manifest.json").display()
+            );
+        }
+        D093Commands::RepairInfo { output } => {
+            let out = resolve_d060_artifact_path(&output);
+            let result = d093::repair_info_cli(&out)?;
+            println!(
+                "D-093 repair-info primary={} phase2={} phase3={} -> {}",
+                result["primary_conclusion"],
+                result["phase2_status"],
+                result["phase3_authorized"],
                 out.join("manifest.json").display()
             );
         }

@@ -1,0 +1,14 @@
+{
+  "bound_after_knockout": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "g_after_destruction": 1.0,
+  "g_binding_knockout": 1.0,
+  "g_with_network": 0.9823326437256658,
+  "phenotype_lost_without_binding": true,
+  "phenotype_lost_without_templates": true,
+  "sequences_persist_under_copying_knockout": true
+}

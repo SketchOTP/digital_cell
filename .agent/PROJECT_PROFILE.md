@@ -23,9 +23,17 @@ A self-maintaining digital protocell that develops into a persistent, embodied i
 - D-089/D-090: heredity qualified; `D090_VALID_SELECTION_ECOLOGY_NOT_ESTABLISHED`
 - D-091: `D091_METABOLIC_RESERVE_QUALIFIED_COMPOSITIONAL_SELECTION_REJECTED`; schema `autopoietic_material_mesh_metabolic_reserve_v1`; sealed `58817ac`
 - D-092: `D092_TEMPLATE_HEREDITY_QUALIFIED_MOTIF_SELECTION_REJECTED`; schema `autopoietic_material_mesh_catalytic_template_v1`; μ=0.01; σ=0.15; Phase 3 not authorized
-- Next: replace fixed motif specialization with local catalytic reaction-network topology (`next_execution_started: false`)
+- D-093: `D093_TEMPLATE_NETWORK_HEREDITY_QUALIFIED_SELECTION_UNTESTABLE_ZERO_GENERATION`; schema `autopoietic_material_mesh_template_network_v1`; circular L=12 pair sites; Phase 3 not authorized
+- Next: `D-094: Distributed Autocatalytic-Set Heredity and Evolutionary Closure` (`next_execution_started: true`)
 - Stack: Rust (`digital-protocell`), chemistry-core + experiment-runner + phase1-certifier
 - Runtime package: `digital-protocell-phase1-v1`
+
+## Storage / disk
+- Single policy: `.cursor/rules/06-storage-archive.mdc`
+- Regenerable bulk → `/mnt/storage1tb/cache/project-artifacts/digital_cell/` (symlinks at repo paths)
+- Space relief (when `/` ≥90% used or <15 GiB free): move closed/clean trees to `/mnt/storage1tb/archived-projects/`, absolute symlink at original `Projects/` path, verify Git through it, log `ARCHIVE_MANIFEST.jsonl`
+- Never auto-archive active worktrees, canonical repo root, shared Git object stores, `.git/worktrees`, uncommitted work, or active provenance
+- `independent_backup_status: NOT ESTABLISHED` (archive-to-disk ≠ independent backup)
 
 ## Architectural constraints (from PROJECT_GOAL)
 - No central controller may directly command eat, repair, approach, bond, fear, reproduce, or scripted emotional responses
