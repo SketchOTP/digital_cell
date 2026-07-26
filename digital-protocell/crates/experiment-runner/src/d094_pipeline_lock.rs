@@ -42,6 +42,20 @@ fn pid_alive(pid: u32) -> bool {
     Path::new(&format!("/proc/{pid}")).exists()
 }
 
+fn process_start_ticks(pid: u32) -> Option<String> {
+    let text = fs::read_to_string(format!("/proc/{pid}/stat")).ok()?;
+    let (_, rest) = text.rsplit_once(") ")?;
+    rest.split_whitespace().nth(19).map(str::to_owned)
+}
+
+fn hostname() -> String {
+    fs::read_to_string("/etc/hostname")
+        .ok()
+        .map(|s| s.trim().to_owned())
+        .filter(|s| !s.is_empty())
+        .unwrap_or_else(|| "unknown".into())
+}
+
 /// Acquire exclusive pipeline lock. Stale locks (dead PID) are removed after identity check.
 pub fn acquire(out: &Path, source_identity: &str) -> Result<PipelineLock, LockError> {
     fs::create_dir_all(out).map_err(|e| LockError::Io(e.to_string()))?;
@@ -52,26 +66,36 @@ pub fn acquire(out: &Path, source_identity: &str) -> Result<PipelineLock, LockEr
             .lines()
             .find_map(|l| l.strip_prefix("pid="))
             .and_then(|s| s.trim().parse::<u32>().ok());
+        let lock_start = text
+            .lines()
+            .find_map(|l| l.strip_prefix("process_start_ticks="))
+            .map(str::trim);
         if let Some(pid) = pid {
-            if pid_alive(pid) {
-                // Live holder (same or other process) — refuse duplicate pipeline.
+            let same_process = pid_alive(pid)
+                && lock_start
+                    .zip(process_start_ticks(pid).as_deref())
+                    .map(|(expected, actual)| expected == actual)
+                    .unwrap_or(false);
+            if same_process {
+                // Live holder with the same process-start identity — refuse duplicates.
                 return Err(LockError::AlreadyHeld { pid, path });
             }
-            // Stale lock: process gone — safe to replace after identity verification.
-            let _ = fs::remove_file(&path);
-        } else {
-            let _ = fs::remove_file(&path);
         }
+        // Dead PID, PID reuse, malformed, or legacy lock: replace only this exact file.
+        fs::remove_file(&path).map_err(|e| LockError::Io(e.to_string()))?;
     }
     let mut f = OpenOptions::new()
         .write(true)
         .create_new(true)
         .open(&path)
         .map_err(|e| LockError::Io(e.to_string()))?;
+    let start_ticks = process_start_ticks(process::id()).unwrap_or_else(|| "unknown".into());
     writeln!(
         f,
-        "pid={}\nsource={}\nstarted_unix={}\n",
+        "pid={}\nprocess_start_ticks={}\nhostname={}\nsource={}\nstarted_unix={}\n",
         process::id(),
+        start_ticks,
+        hostname(),
         source_identity,
         std::time::SystemTime::now()
             .duration_since(std::time::UNIX_EPOCH)
@@ -130,6 +154,28 @@ mod tests {
             let l = acquire(&dir, "recovered").expect("stale recovered");
             drop(l);
         }
+        let _ = fs::remove_dir_all(&dir);
+    }
+
+    #[test]
+    fn rejects_pid_reuse_identity_mismatch() {
+        let stamp = SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        let dir = std::env::temp_dir().join(format!("d094_lock_reuse_{stamp}"));
+        let _ = fs::remove_dir_all(&dir);
+        fs::create_dir_all(&dir).unwrap();
+        fs::write(
+            lock_path(&dir),
+            format!(
+                "pid={}\nprocess_start_ticks=not-the-current-process\n",
+                process::id()
+            ),
+        )
+        .unwrap();
+        let lock = acquire(&dir, "reuse-safe").expect("mismatched start identity is stale");
+        drop(lock);
         let _ = fs::remove_dir_all(&dir);
     }
 }

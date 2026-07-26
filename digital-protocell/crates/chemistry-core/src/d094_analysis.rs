@@ -36,8 +36,11 @@ fn write_json(path: &Path, v: &impl Serialize) -> Result<(), String> {
     if let Some(parent) = path.parent() {
         fs::create_dir_all(parent).map_err(|e| e.to_string())?;
     }
-    fs::write(path, serde_json::to_string_pretty(v).map_err(|e| e.to_string())?)
-        .map_err(|e| e.to_string())
+    fs::write(
+        path,
+        serde_json::to_string_pretty(v).map_err(|e| e.to_string())?,
+    )
+    .map_err(|e| e.to_string())
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -110,9 +113,28 @@ fn run_gates(out: &Path, blocker: &str) -> Result<(Vec<GateResult>, String), Str
         });
         write_json(&out.join("schema/ids.json"), &ids)?;
         // Schema isolation
-        let mut old = MaterialMesh::seed_regular(24, 5.0, 40.0, 40.0, DEFAULT_RHO_S, 0.7,
-            LumpedChem { c: 0.8, a: 0.5, n: 0.4, f: 0.4, w: 0.1, ..Default::default() },
-            LumpedChem { n: 1.0, f: 1.0, ..Default::default() }, 5.0);
+        let mut old = MaterialMesh::seed_regular(
+            24,
+            5.0,
+            40.0,
+            40.0,
+            DEFAULT_RHO_S,
+            0.7,
+            LumpedChem {
+                c: 0.8,
+                a: 0.5,
+                n: 0.4,
+                f: 0.4,
+                w: 0.1,
+                ..Default::default()
+            },
+            LumpedChem {
+                n: 1.0,
+                f: 1.0,
+                ..Default::default()
+            },
+            5.0,
+        );
         stamp_reserve_equation(&mut old);
         let mut acs = AutocatalyticParams::derived(40.0);
         acs.enable = true;
@@ -135,21 +157,53 @@ fn run_gates(out: &Path, blocker: &str) -> Result<(Vec<GateResult>, String), Str
         let defect = matches!(blocker, "NUMERICAL_OR_HARNESS_DEFECT");
         if defect {
             return Ok((
-                vec![gate_fail("gate0_preservation", "D094_D093_REPRODUCTION_COUPLING_DEFECT", detail)],
+                vec![gate_fail(
+                    "gate0_preservation",
+                    "D094_D093_REPRODUCTION_COUPLING_DEFECT",
+                    detail,
+                )],
                 "D094_D093_REPRODUCTION_COUPLING_DEFECT".into(),
             ));
         }
         if reject_old && accept_new && disabled_ok {
             gate_pass("gate0_preservation", detail)
         } else {
-            gate_fail("gate0_preservation", "D094_PRESERVATION_OR_SCHEMA_FAILURE", detail)
+            gate_fail(
+                "gate0_preservation",
+                "D094_PRESERVATION_OR_SCHEMA_FAILURE",
+                detail,
+            )
         }
     };
 
     let g1 = {
-        let mut mesh = MaterialMesh::seed_regular(24, 6.0, 40.0, 40.0, DEFAULT_RHO_S, 0.7,
-            LumpedChem { c: 0.8, a: 1.0, n: 0.5, f: 0.5, w: 0.1, q_k: 0.8, q_e: 0.8, k_a: 0.2, k_r: 0.2, k_node_b: 0.2, ..Default::default() },
-            LumpedChem { n: 1.0, f: 1.0, ..Default::default() }, 5.0);
+        let mut mesh = MaterialMesh::seed_regular(
+            24,
+            6.0,
+            40.0,
+            40.0,
+            DEFAULT_RHO_S,
+            0.7,
+            LumpedChem {
+                c: 0.8,
+                a: 1.0,
+                n: 0.5,
+                f: 0.5,
+                w: 0.1,
+                q_k: 0.8,
+                q_e: 0.8,
+                k_a: 0.2,
+                k_r: 0.2,
+                k_node_b: 0.2,
+                ..Default::default()
+            },
+            LumpedChem {
+                n: 1.0,
+                f: 1.0,
+                ..Default::default()
+            },
+            5.0,
+        );
         stamp_autocatalytic_equation(&mut mesh);
         seed_founder_edges(&mut mesh, &founder_h_edges());
         let p = AutocatalyticParams::derived(40.0);
@@ -182,7 +236,11 @@ fn run_gates(out: &Path, blocker: &str) -> Result<(Vec<GateResult>, String), Str
         if node_err < 0.25 && edge_err < 0.35 && has_directed_cycle(&mesh) {
             gate_pass("gate1_accounting", detail)
         } else {
-            gate_fail("gate1_accounting", "D094_AUTOCATALYTIC_SET_ACCOUNTING_FAILURE", detail)
+            gate_fail(
+                "gate1_accounting",
+                "D094_AUTOCATALYTIC_SET_ACCOUNTING_FAILURE",
+                detail,
+            )
         }
     };
 
@@ -193,9 +251,33 @@ fn run_gates(out: &Path, blocker: &str) -> Result<(Vec<GateResult>, String), Str
             ("B", founder_b_edges()),
             ("N", founder_n_edges()),
         ] {
-            let mut mesh = MaterialMesh::seed_regular(24, 6.0, 40.0, 40.0, DEFAULT_RHO_S, 0.7,
-                LumpedChem { c: 0.8, a: 1.2, n: 0.6, f: 0.6, w: 0.1, q_k: 1.0, q_e: 1.0, k_a: 0.25, k_r: 0.25, k_node_b: 0.25, ..Default::default() },
-                LumpedChem { n: 1.0, f: 1.0, ..Default::default() }, 5.0);
+            let mut mesh = MaterialMesh::seed_regular(
+                24,
+                6.0,
+                40.0,
+                40.0,
+                DEFAULT_RHO_S,
+                0.7,
+                LumpedChem {
+                    c: 0.8,
+                    a: 1.2,
+                    n: 0.6,
+                    f: 0.6,
+                    w: 0.1,
+                    q_k: 1.0,
+                    q_e: 1.0,
+                    k_a: 0.25,
+                    k_r: 0.25,
+                    k_node_b: 0.25,
+                    ..Default::default()
+                },
+                LumpedChem {
+                    n: 1.0,
+                    f: 1.0,
+                    ..Default::default()
+                },
+                5.0,
+            );
             stamp_autocatalytic_equation(&mut mesh);
             seed_founder_edges(&mut mesh, &edges);
             let mut react = ReactionParams::default();
@@ -233,7 +315,11 @@ fn run_gates(out: &Path, blocker: &str) -> Result<(Vec<GateResult>, String), Str
         if ok {
             gate_pass("gate2_closure", detail)
         } else {
-            gate_fail("gate2_closure", "D094_AUTOCATALYTIC_CLOSURE_NOT_ESTABLISHED", detail)
+            gate_fail(
+                "gate2_closure",
+                "D094_AUTOCATALYTIC_CLOSURE_NOT_ESTABLISHED",
+                detail,
+            )
         }
     };
 
@@ -368,7 +454,10 @@ fn run_gates(out: &Path, blocker: &str) -> Result<(Vec<GateResult>, String), Str
         return Ok((gates, "D094_AUTOCATALYTIC_CLOSURE_NOT_ESTABLISHED".into()));
     }
     if !gates[3].pass {
-        return Ok((gates, "D094_AUTOCATALYTIC_NETWORK_REPRODUCTION_FAILURE".into()));
+        return Ok((
+            gates,
+            "D094_AUTOCATALYTIC_NETWORK_REPRODUCTION_FAILURE".into(),
+        ));
     }
 
     // --- Gate 4: physical heritability ---
@@ -478,8 +567,7 @@ fn run_gates(out: &Path, blocker: &str) -> Result<(Vec<GateResult>, String), Str
                     if frac < 0.25 || !d.alive {
                         continue;
                     }
-                    let recoverable =
-                        has_directed_cycle(d) || d.autocatalytic_edges.len() >= 2;
+                    let recoverable = has_directed_cycle(d) || d.autocatalytic_edges.len() >= 2;
                     if recoverable {
                         closed += 1;
                     }
@@ -542,7 +630,10 @@ fn run_gates(out: &Path, blocker: &str) -> Result<(Vec<GateResult>, String), Str
         react_b.reserve.enable = true;
         react_h.autocatalytic = AutocatalyticParams::derived(40.0).with_mutation_off();
         react_b.autocatalytic = AutocatalyticParams::derived(40.0).with_mutation_off();
-        let mk = |edges: Vec<(crate::autocatalytic_nodes::NodeKind, crate::autocatalytic_nodes::NodeKind)>| {
+        let mk = |edges: Vec<(
+            crate::autocatalytic_nodes::NodeKind,
+            crate::autocatalytic_nodes::NodeKind,
+        )>| {
             let mut mesh = MaterialMesh::seed_regular(
                 24,
                 6.0,
@@ -777,7 +868,7 @@ fn run_selection_gates(out: &Path) -> Result<(GateResult, GateResult, GateResult
 
 fn decide_primary(gates: &[GateResult], is_smoke: bool) -> String {
     if is_smoke {
-        return "D094_AUTOCATALYTIC_SET_IMPLEMENTATION_DEFECT".into();
+        return "D094_AUTOCATALYTIC_SET_SELECTION_UNTESTABLE_INSUFFICIENT_GENERATIONS".into();
     }
     let pass = |i: usize| gates.get(i).map(|g| g.pass).unwrap_or(false);
     if gates.iter().all(|g| g.pass) {
@@ -803,13 +894,14 @@ fn decide_primary(gates: &[GateResult], is_smoke: bool) -> String {
             let max_gen = g6.detail["max_gen"].as_u64().unwrap_or(0);
             if max_gen == 0 {
                 // Stop rule: no terminal selection conclusion from zero-generation runs.
-                return "D094_AUTOCATALYTIC_SET_IMPLEMENTATION_DEFECT".into();
+                return "D094_AUTOCATALYTIC_SET_SELECTION_UNTESTABLE_INSUFFICIENT_GENERATIONS"
+                    .into();
             }
             if g6.detail["valid"].as_bool() == Some(true) {
                 return "D094_AUTOCATALYTIC_SET_HEREDITY_QUALIFIED_SELECTION_REJECTED".into();
             }
         }
-        return "D094_AUTOCATALYTIC_SET_IMPLEMENTATION_DEFECT".into();
+        return "D094_AUTOCATALYTIC_SET_SELECTION_UNTESTABLE_INSUFFICIENT_GENERATIONS".into();
     }
     if pass(6) && (!pass(7) || !pass(8)) {
         return "D094_PREEXISTING_SELECTION_ONLY_ADAPTATION_FAILED".into();
@@ -825,7 +917,9 @@ fn finalize(
     blocker: &str,
     audit: Value,
 ) -> Result<D094Report, String> {
-    use crate::autocatalytic_nodes::{EQUATION_VERSION_AUTOCATALYTIC_SET, FIELD_SCHEMA_AUTOCATALYTIC_SET};
+    use crate::autocatalytic_nodes::{
+        EQUATION_VERSION_AUTOCATALYTIC_SET, FIELD_SCHEMA_AUTOCATALYTIC_SET,
+    };
     let repro_fail = primary == "D094_AUTOCATALYTIC_NETWORK_REPRODUCTION_FAILURE";
     let qualified = primary == "D094_DISTRIBUTED_AUTOCATALYTIC_SET_EVOLUTION_QUALIFIED";
     let mut records = vec![

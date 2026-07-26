@@ -5,11 +5,11 @@
 //! MeshPopulation step with ecology applied as exterior pulse/lean and identity-blind
 //! membrane/structural abrasion — without changing D-091 ecology definitions' intent.
 
+use crate::abrasion_front::ABRASION_STRENGTHS;
 use crate::autocatalytic_copying::{
     founder_b_edges, founder_h_edges, redistribute_edges_along_axis, seed_founder_edges,
 };
 use crate::autocatalytic_nodes::{stamp_autocatalytic_equation, AutocatalyticParams, NodeKind};
-use crate::abrasion_front::ABRASION_STRENGTHS;
 use crate::material_mesh::{LumpedChem, MaterialMesh, DEFAULT_RHO_S};
 use crate::mesh_fission::FissionParams;
 use crate::mesh_growth::GrowthParams;
@@ -23,6 +23,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use std::fs;
 use std::path::Path;
+use std::time::{SystemTime, UNIX_EPOCH};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SelectionGateResult {
@@ -43,8 +44,101 @@ fn write_json(path: &Path, v: &impl Serialize) -> Result<(), String> {
     if let Some(parent) = path.parent() {
         fs::create_dir_all(parent).map_err(|e| e.to_string())?;
     }
-    fs::write(path, serde_json::to_string_pretty(v).map_err(|e| e.to_string())?)
-        .map_err(|e| e.to_string())
+    fs::write(
+        path,
+        serde_json::to_string_pretty(v).map_err(|e| e.to_string())?,
+    )
+    .map_err(|e| e.to_string())
+}
+
+fn write_json_atomic(path: &Path, v: &impl Serialize) -> Result<(), String> {
+    let parent = path
+        .parent()
+        .ok_or_else(|| format!("checkpoint has no parent: {}", path.display()))?;
+    fs::create_dir_all(parent).map_err(|e| e.to_string())?;
+    let stamp = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .map(|d| d.as_nanos())
+        .unwrap_or(0);
+    let tmp = parent.join(format!(
+        ".{}.{}.tmp",
+        path.file_name().unwrap().to_string_lossy(),
+        stamp
+    ));
+    fs::write(
+        &tmp,
+        serde_json::to_vec_pretty(v).map_err(|e| e.to_string())?,
+    )
+    .map_err(|e| e.to_string())?;
+    fs::rename(&tmp, path).map_err(|e| e.to_string())
+}
+
+fn source_commit() -> String {
+    std::env::var("D094_SOURCE_COMMIT").unwrap_or_else(|_| "UNCOMMITTED".into())
+}
+
+fn binary_hash() -> String {
+    std::env::current_exe()
+        .ok()
+        .and_then(|path| fs::read(path).ok())
+        .map(|bytes| crate::sha256_hex(&bytes))
+        .unwrap_or_else(|| "UNAVAILABLE".into())
+}
+
+fn config_hash(
+    ecology: &str,
+    mutation: bool,
+    n_rep: usize,
+    n_each: usize,
+    n_steps: usize,
+    target_gen: u32,
+    freq_delta_need: f64,
+) -> String {
+    crate::sha256_hex(
+        format!(
+            "d094r|{ecology}|{mutation}|{n_rep}|{n_each}|{n_steps}|{target_gen}|{freq_delta_need}"
+        )
+        .as_bytes(),
+    )
+}
+
+pub fn provenance_is_complete(v: &Value) -> bool {
+    let p = &v["provenance"];
+    let known = |key: &str| {
+        p[key].as_str().is_some_and(|value| {
+            !value.is_empty() && value != "UNCOMMITTED" && value != "UNAVAILABLE"
+        })
+    };
+    known("source_commit")
+        && known("binary_hash")
+        && known("config_hash")
+        && p["atomic_generation_checkpoints"] == true
+        && p["lineage_ledger_complete"] == true
+}
+
+pub fn hard_blocked_downstream_gates() -> Value {
+    json!({
+        "blocked": true,
+        "reason": "D094R_GATE6_ONLY_UNTIL_FUTURE_DIRECTIVE",
+        "status": "NOT_EXECUTED",
+    })
+}
+
+#[derive(Serialize)]
+struct GenerationCheckpoint<'a> {
+    source_commit: String,
+    binary_hash: String,
+    config_hash: String,
+    founder_identity: &'a str,
+    treatment_identity: &'a str,
+    seed_identity: u64,
+    mutation_contract: bool,
+    generation_index: u32,
+    accepted_steps: usize,
+    population_state_hash: String,
+    lineage_ledger_hash: String,
+    atomic_checkpoint_complete: bool,
+    lineages: &'a [MeshPopulation],
 }
 
 fn gate_pass(name: &str, detail: Value) -> SelectionGateResult {
@@ -277,6 +371,45 @@ fn obs_pop(pop: &MeshPopulation) -> (u32, usize, f64, f64, usize, usize) {
     (max_gen, alive, n_h / tot, n_b / tot, desc_h, desc_b)
 }
 
+pub fn paired_effect_summary(
+    treatment: &Value,
+    neutral: &Value,
+    frequency: &str,
+    descendants: &str,
+) -> Value {
+    let paired: Vec<Value> = treatment["rows"]
+        .as_array()
+        .into_iter()
+        .flatten()
+        .zip(neutral["rows"].as_array().into_iter().flatten())
+        .map(|(t, n)| {
+            let td = t[frequency].as_f64().unwrap_or(0.0) - 0.5;
+            let nd = n[frequency].as_f64().unwrap_or(0.0) - 0.5;
+            let tc = t[descendants].as_f64().unwrap_or(0.0);
+            let nc = n[descendants].as_f64().unwrap_or(0.0);
+            json!({"rep": t["rep"], "frequency_effect": td - nd, "descendant_effect": tc - nc})
+        })
+        .collect();
+    let values =
+        |key: &str| -> Vec<f64> { paired.iter().filter_map(|v| v[key].as_f64()).collect() };
+    let summary = |key: &str| {
+        let mut xs = values(key);
+        xs.sort_by(f64::total_cmp);
+        let mean = if xs.is_empty() {
+            0.0
+        } else {
+            xs.iter().sum::<f64>() / xs.len() as f64
+        };
+        let quantile = |p: f64| {
+            xs.get(((xs.len().saturating_sub(1)) as f64 * p).round() as usize)
+                .copied()
+                .unwrap_or(0.0)
+        };
+        json!({"mean": mean, "median": quantile(0.5), "ci95": [quantile(0.025), quantile(0.975)], "signs": xs.iter().filter(|x| **x > 0.0).count()})
+    };
+    json!({"paired_replicates": paired, "frequency": summary("frequency_effect"), "descendant_contribution": summary("descendant_effect")})
+}
+
 fn ecology_fields(
     ecology: &str,
     pulse: &mut PulseLeanState,
@@ -330,7 +463,8 @@ fn run_campaign(
     n_steps: usize,
     target_gen: u32,
     freq_delta_need: f64,
-) -> Value {
+    checkpoint_root: Option<&Path>,
+) -> Result<Value, String> {
     let mech = MechParams::default();
     let transport = TransportParams::default();
     let growth = GrowthParams {
@@ -344,6 +478,23 @@ fn run_campaign(
     let mut rows = Vec::new();
     let mut max_gen_all = 0u32;
     let mut gens = Vec::new();
+    let source_commit = source_commit();
+    let binary_hash = binary_hash();
+    let config_hash = config_hash(
+        ecology,
+        mutation,
+        n_rep,
+        n_each,
+        n_steps,
+        target_gen,
+        freq_delta_need,
+    );
+    let founder_identity = match mode {
+        SeedMode::Mixed => "equal_h_b_founders_v1",
+        SeedMode::BOnly => "b_only_founders_v1",
+        SeedMode::HOnly => "h_only_founders_v1",
+    };
+    let mut all_checkpoints_complete = checkpoint_root.is_some();
 
     for rep in 0..n_rep {
         // Parallel single-founder lineages under one shared ecology clock.
@@ -387,6 +538,7 @@ fn run_campaign(
         let mut abr_t = 0.0;
 
         let mut peak_gen = 0u32;
+        let mut checkpointed_generation = 0u32;
         for s in 0..n_steps {
             let (n, f, abrade) =
                 ecology_fields(ecology, &mut pulse, &mut abr_t, abr_period, rich, mech.dt);
@@ -407,6 +559,46 @@ fn run_campaign(
                 for ind in &pop.individuals {
                     peak_gen = peak_gen.max(ind.generation);
                 }
+            }
+            if let Some(root) = checkpoint_root {
+                for generation in checkpointed_generation.saturating_add(1)..=peak_gen {
+                    let population_state =
+                        serde_json::to_vec(&lineages).map_err(|e| e.to_string())?;
+                    let lineage_ledger: Vec<_> = lineages
+                        .iter()
+                        .flat_map(|population| population.individuals.iter())
+                        .map(|individual| {
+                            json!({
+                                "lineage_id": individual.lineage_id,
+                                "generation": individual.generation,
+                                "clade": individual.clade,
+                                "alive": individual.mesh.alive,
+                            })
+                        })
+                        .collect();
+                    let lineage_ledger =
+                        serde_json::to_vec(&lineage_ledger).map_err(|e| e.to_string())?;
+                    let checkpoint = GenerationCheckpoint {
+                        source_commit: source_commit.clone(),
+                        binary_hash: binary_hash.clone(),
+                        config_hash: config_hash.clone(),
+                        founder_identity,
+                        treatment_identity: ecology,
+                        seed_identity: rep as u64,
+                        mutation_contract: mutation,
+                        generation_index: generation,
+                        accepted_steps: s + 1,
+                        population_state_hash: crate::sha256_hex(&population_state),
+                        lineage_ledger_hash: crate::sha256_hex(&lineage_ledger),
+                        atomic_checkpoint_complete: true,
+                        lineages: &lineages,
+                    };
+                    write_json_atomic(
+                        &root.join(format!("rep_{rep}/generation_{generation}.json")),
+                        &checkpoint,
+                    )?;
+                }
+                checkpointed_generation = peak_gen;
             }
             if lineages.iter().all(|p| p.living_count() == 0) {
                 break;
@@ -431,6 +623,9 @@ fn run_campaign(
         let (_mg_live, alive, f_h, f_b, desc_h, desc_b) = obs_pop(&merged);
         // Completed generations: peak across living/dead during run (not only survivors).
         let max_gen = peak_gen;
+        let checkpoints_complete =
+            checkpoint_root.is_some() && max_gen > 0 && checkpointed_generation == max_gen;
+        all_checkpoints_complete &= checkpoints_complete;
         max_gen_all = max_gen_all.max(max_gen);
         gens.push(max_gen);
         let ratio_h = if desc_b > 0 {
@@ -454,11 +649,19 @@ fn run_campaign(
         if ecology == "B" && max_gen >= 4 && ratio_b >= 1.20 && (f_b - 0.5) >= freq_delta_need {
             wins_b += 1;
         }
-        if matches!(mode, SeedMode::BOnly) && ecology == "H" && mutation && f_h >= 0.15 && max_gen >= 4
+        if matches!(mode, SeedMode::BOnly)
+            && ecology == "H"
+            && mutation
+            && f_h >= 0.15
+            && max_gen >= 4
         {
             wins_h += 1;
         }
-        if matches!(mode, SeedMode::HOnly) && ecology == "B" && mutation && f_b >= 0.15 && max_gen >= 4
+        if matches!(mode, SeedMode::HOnly)
+            && ecology == "B"
+            && mutation
+            && f_b >= 0.15
+            && max_gen >= 4
         {
             wins_b += 1;
         }
@@ -473,10 +676,13 @@ fn run_campaign(
             "replicate_complete": max_gen >= target_gen || (extinct && max_gen >= 4),
             "desc_h": desc_h,
             "desc_b": desc_b,
+            "desc_h_fraction": if desc_h + desc_b == 0 { 0.0 } else { desc_h as f64 / (desc_h + desc_b) as f64 },
+            "desc_b_fraction": if desc_h + desc_b == 0 { 0.0 } else { desc_b as f64 / (desc_h + desc_b) as f64 },
             "ratio_h": ratio_h,
             "ratio_b": ratio_b,
             "fissions": fissions,
             "lineages": lineages.len(),
+            "generation_checkpoints_complete": checkpoints_complete,
         }));
         let mode_s = match mode {
             SeedMode::Mixed => "mixed",
@@ -485,13 +691,29 @@ fn run_campaign(
         };
         eprintln!(
             "d094-sel eco={} mut={} mode={} rep={}/{} max_gen={} alive={} f_h={:.2} f_b={:.2}",
-            ecology, mutation, mode_s, rep + 1, n_rep, max_gen, alive, f_h, f_b
+            ecology,
+            mutation,
+            mode_s,
+            rep + 1,
+            n_rep,
+            max_gen,
+            alive,
+            f_h,
+            f_b
         );
         let _ = std::fs::write(
             "/tmp/d094_sel_progress.txt",
             format!(
                 "{} mut={} mode={} rep={}/{} max_gen={} alive={} f_h={:.3} f_b={:.3}\n",
-                ecology, mutation, mode_s, rep + 1, n_rep, max_gen, alive, f_h, f_b
+                ecology,
+                mutation,
+                mode_s,
+                rep + 1,
+                n_rep,
+                max_gen,
+                alive,
+                f_h,
+                f_b
             ),
         );
     }
@@ -503,7 +725,7 @@ fn run_campaign(
         gens[gens.len() / 2]
     };
 
-    json!({
+    Ok(json!({
         "ecology": ecology,
         "mutation": mutation,
         "mode": match mode {
@@ -517,10 +739,18 @@ fn run_campaign(
         "wins_h": wins_h,
         "wins_b": wins_b,
         "rows": rows,
+        "provenance": {
+            "source_commit": source_commit,
+            "binary_hash": binary_hash,
+            "config_hash": config_hash,
+            "atomic_generation_checkpoints": all_checkpoints_complete,
+            "lineage_ledger_complete": all_checkpoints_complete,
+            "reuse_status": if all_checkpoints_complete { "FRESH_ATTEMPT_CHECKPOINTS_PRESENT" } else { "REJECT_UNTIL_CHECKPOINT_AND_LEDGER_VALIDATION" },
+        },
         "max_gen_all": max_gen_all,
         "median_gen": median_gen,
         "smoke": smoke(),
-    })
+    }))
 }
 
 fn transfer_reversal(
@@ -561,7 +791,15 @@ fn transfer_reversal(
         });
         let mut abr_t = 0.0;
         for s in 0..n_steps_sel {
-            apply_ecology(from_eco, &mut pop, &mut pulse, &mut abr_t, period * 0.5, rich, mech.dt);
+            apply_ecology(
+                from_eco,
+                &mut pop,
+                &mut pulse,
+                &mut abr_t,
+                period * 0.5,
+                rich,
+                mech.dt,
+            );
             if s % 80 == 0 {
                 for ind in &mut pop.individuals {
                     if ind.mesh.alive {
@@ -575,9 +813,17 @@ fn transfer_reversal(
                     continue;
                 }
                 for ind in &mut pop.individuals {
-                    let _ = crate::mesh_transport::transport_step(&mut ind.mesh, &transport, mech.dt);
-                    let _ = crate::mesh_reactions::reactions_step(&mut ind.mesh, &react, mech.dt, true, true);
-                    let _ = crate::mesh_growth::growth_step(&mut ind.mesh, &react, &growth, mech.dt);
+                    let _ =
+                        crate::mesh_transport::transport_step(&mut ind.mesh, &transport, mech.dt);
+                    let _ = crate::mesh_reactions::reactions_step(
+                        &mut ind.mesh,
+                        &react,
+                        mech.dt,
+                        true,
+                        true,
+                    );
+                    let _ =
+                        crate::mesh_growth::growth_step(&mut ind.mesh, &react, &growth, mech.dt);
                     mechanics_step(&mut ind.mesh, &mech);
                     remesh(&mut ind.mesh);
                     crate::mesh_reactions::evaluate_death(&mut ind.mesh);
@@ -604,7 +850,15 @@ fn transfer_reversal(
         });
         abr_t = 0.0;
         for s in 0..n_steps_rev {
-            apply_ecology(to_eco, &mut pop, &mut pulse, &mut abr_t, period * 0.5, rich, mech.dt);
+            apply_ecology(
+                to_eco,
+                &mut pop,
+                &mut pulse,
+                &mut abr_t,
+                period * 0.5,
+                rich,
+                mech.dt,
+            );
             if s % 80 == 0 {
                 for ind in &mut pop.individuals {
                     if ind.mesh.alive {
@@ -618,9 +872,17 @@ fn transfer_reversal(
                     continue;
                 }
                 for ind in &mut pop.individuals {
-                    let _ = crate::mesh_transport::transport_step(&mut ind.mesh, &transport, mech.dt);
-                    let _ = crate::mesh_reactions::reactions_step(&mut ind.mesh, &react, mech.dt, true, true);
-                    let _ = crate::mesh_growth::growth_step(&mut ind.mesh, &react, &growth, mech.dt);
+                    let _ =
+                        crate::mesh_transport::transport_step(&mut ind.mesh, &transport, mech.dt);
+                    let _ = crate::mesh_reactions::reactions_step(
+                        &mut ind.mesh,
+                        &react,
+                        mech.dt,
+                        true,
+                        true,
+                    );
+                    let _ =
+                        crate::mesh_growth::growth_step(&mut ind.mesh, &react, &growth, mech.dt);
                     mechanics_step(&mut ind.mesh, &mech);
                     remesh(&mut ind.mesh);
                     crate::mesh_reactions::evaluate_death(&mut ind.mesh);
@@ -669,7 +931,14 @@ fn transfer_reversal(
 
 pub fn run_selection_gates(
     out: &Path,
-) -> Result<(SelectionGateResult, SelectionGateResult, SelectionGateResult), String> {
+) -> Result<
+    (
+        SelectionGateResult,
+        SelectionGateResult,
+        SelectionGateResult,
+    ),
+    String,
+> {
     let n_rep = if smoke() { 2 } else { 8 };
     let n_each = if smoke() { 2 } else { 4 };
     // Reproduction-qualified MeshPopulation reaches gen2 quickly; allow headroom
@@ -677,11 +946,41 @@ pub fn run_selection_gates(
     let n_steps = if smoke() { 6_000 } else { 12_000 };
     let n_steps_rev = if smoke() { 4_000 } else { 12_000 };
 
-    let h = run_campaign("H", false, SeedMode::Mixed, n_rep, n_each, n_steps, 6, 0.15);
+    let h = run_campaign(
+        "H",
+        false,
+        SeedMode::Mixed,
+        n_rep,
+        n_each,
+        n_steps,
+        6,
+        0.15,
+        None,
+    )?;
     write_json(&out.join("selection_h/gate6.json"), &h)?;
-    let b = run_campaign("B", false, SeedMode::Mixed, n_rep, n_each, n_steps, 6, 0.15);
+    let b = run_campaign(
+        "B",
+        false,
+        SeedMode::Mixed,
+        n_rep,
+        n_each,
+        n_steps,
+        6,
+        0.15,
+        None,
+    )?;
     write_json(&out.join("selection_b/gate6.json"), &b)?;
-    let n = run_campaign("N", false, SeedMode::Mixed, n_rep, n_each, n_steps, 6, 0.15);
+    let n = run_campaign(
+        "N",
+        false,
+        SeedMode::Mixed,
+        n_rep,
+        n_each,
+        n_steps,
+        6,
+        0.15,
+        None,
+    )?;
     write_json(&out.join("neutral_controls/gate6.json"), &n)?;
 
     let max_gen = h["max_gen_all"]
@@ -720,7 +1019,7 @@ pub fn run_selection_gates(
     } else if max_gen == 0 {
         gate_fail(
             "gate6_selection",
-            "D094_AUTOCATALYTIC_SET_IMPLEMENTATION_DEFECT",
+            "D094_AUTOCATALYTIC_SET_SELECTION_UNTESTABLE_INSUFFICIENT_GENERATIONS",
             json!({"h": h, "b": b, "n": n, "valid": false, "max_gen": 0}),
         )
     } else {
@@ -740,79 +1039,15 @@ pub fn run_selection_gates(
         )
     };
 
-    // Frozen dependency: Gate 7/8 must not execute after Gate 6 nonpass.
-    if !g6.pass {
-        let blocked = json!({
-            "blocked": true,
-            "reason": "GATE7_GATE8_BLOCKED_UNTIL_GATE6_PASS",
-            "status": "UNUSABLE_FOR_SCIENTIFIC_CONCLUSION",
-        });
-        write_json(&out.join("mutation_adaptation/gate7.json"), &blocked)?;
-        write_json(&out.join("reversal/gate8.json"), &blocked)?;
-        let g7 = gate_fail(
-            "gate7_adaptation",
-            "GATE7_BLOCKED_AFTER_GATE6_NONPASS",
-            blocked.clone(),
-        );
-        let g8 = gate_fail(
-            "gate8_reversal",
-            "GATE8_BLOCKED_AFTER_GATE6_NONPASS",
-            blocked,
-        );
-        return Ok((g6, g7, g8));
-    }
-
-    // Gate 7: wrong-founder + mutation vs mutation-off controls.
-    let h_on = run_campaign("H", true, SeedMode::BOnly, n_rep, n_each, n_steps + 1_000, 12, 0.15);
-    let h_off = run_campaign("H", false, SeedMode::BOnly, n_rep, n_each, n_steps + 1_000, 12, 0.15);
-    let b_on = run_campaign("B", true, SeedMode::HOnly, n_rep, n_each, n_steps + 1_000, 12, 0.15);
-    let b_off = run_campaign("B", false, SeedMode::HOnly, n_rep, n_each, n_steps + 1_000, 12, 0.15);
-    write_json(
-        &out.join("mutation_adaptation/gate7.json"),
-        &json!({"h_on": h_on, "h_off": h_off, "b_on": b_on, "b_off": b_off}),
-    )?;
-    let adapt_gen = h_on["max_gen_all"]
-        .as_u64()
-        .unwrap_or(0)
-        .max(b_on["max_gen_all"].as_u64().unwrap_or(0));
-    let adapt_ok = !smoke()
-        && adapt_gen >= 12
-        && (h_on["wins_h"].as_u64().unwrap_or(0) >= 6
-            || b_on["wins_b"].as_u64().unwrap_or(0) >= 6)
-        && (h_on["wins_h"].as_u64().unwrap_or(0) > h_off["wins_h"].as_u64().unwrap_or(0)
-            || b_on["wins_b"].as_u64().unwrap_or(0) > b_off["wins_b"].as_u64().unwrap_or(0));
-    let g7 = if adapt_ok {
-        gate_pass(
-            "gate7_adaptation",
-            json!({"h_on": h_on, "h_off": h_off, "b_on": b_on, "b_off": b_off}),
-        )
-    } else {
-        gate_fail(
-            "gate7_adaptation",
-            "D094_AUTOCATALYTIC_SET_ADAPTATION_NOT_ESTABLISHED",
-            json!({
-                "h_on": h_on, "h_off": h_off, "b_on": b_on, "b_off": b_off,
-                "adapt_gen": adapt_gen,
-            }),
-        )
-    };
-
-    let rev_hb = transfer_reversal("H", "B", n_rep, n_each, n_steps, n_steps_rev);
-    let rev_bh = transfer_reversal("B", "H", n_rep, n_each, n_steps, n_steps_rev);
-    let rev = json!({"h_to_b": rev_hb, "b_to_h": rev_bh});
-    write_json(&out.join("reversal/gate8.json"), &rev)?;
-    let ok_hb = rev_hb["ok_transfers"].as_u64().unwrap_or(0);
-    let ok_bh = rev_bh["ok_transfers"].as_u64().unwrap_or(0);
-    let g8 = if !smoke() && ok_hb >= 6 && ok_bh >= 6 {
-        gate_pass("gate8_reversal", rev)
-    } else {
-        gate_fail(
-            "gate8_reversal",
-            "D094_AUTOCATALYTIC_SET_SELECTION_REVERSAL_FAILURE",
-            rev,
-        )
-    };
-
+    let blocked = hard_blocked_downstream_gates();
+    write_json(&out.join("mutation_adaptation/gate7.json"), &blocked)?;
+    write_json(&out.join("reversal/gate8.json"), &blocked)?;
+    let g7 = gate_fail(
+        "gate7_adaptation",
+        "GATE7_HARD_BLOCKED_BY_D094R",
+        blocked.clone(),
+    );
+    let g8 = gate_fail("gate8_reversal", "GATE8_HARD_BLOCKED_BY_D094R", blocked);
     Ok((g6, g7, g8))
 }
 
@@ -826,39 +1061,87 @@ pub fn run_gate6_completion_only(out: &Path) -> Result<Value, String> {
     let target_gen = if smoke() { 4 } else { 8u32 };
     let freq_need = 0.15f64;
 
-    let h = run_campaign(
-        "H",
-        false,
-        SeedMode::Mixed,
-        n_rep,
-        n_each,
-        n_steps,
-        target_gen,
-        freq_need,
-    );
-    write_json(&out.join("selection_h_completion/gate6.json"), &h)?;
-    let b = run_campaign(
-        "B",
-        false,
-        SeedMode::Mixed,
-        n_rep,
-        n_each,
-        n_steps,
-        target_gen,
-        freq_need,
-    );
-    write_json(&out.join("selection_b_completion/gate6.json"), &b)?;
-    let n = run_campaign(
-        "N",
-        false,
-        SeedMode::Mixed,
-        n_rep,
-        n_each,
-        n_steps,
-        target_gen,
-        freq_need,
-    );
-    write_json(&out.join("neutral_completion/gate6.json"), &n)?;
+    // Completed campaigns are not re-run (directive §6: do not restart completed generations).
+    let reuse = |path: &Path| -> Option<Value> {
+        let text = fs::read_to_string(path).ok()?;
+        let v: Value = serde_json::from_str(&text).ok()?;
+        if !provenance_is_complete(&v) {
+            return None;
+        }
+        let same_horizon = v["target_gen"].as_u64() == Some(target_gen as u64);
+        let complete = v["rows"]
+            .as_array()
+            .map(|rows| {
+                rows.len() == n_rep
+                    && rows
+                        .iter()
+                        .all(|r| r["replicate_complete"].as_bool().unwrap_or(false))
+            })
+            .unwrap_or(false);
+        if same_horizon && complete {
+            Some(v)
+        } else {
+            None
+        }
+    };
+
+    let h_path = out.join("selection_h_completion/gate6.json");
+    let h = match reuse(&h_path) {
+        Some(v) => v,
+        None => {
+            let v = run_campaign(
+                "H",
+                false,
+                SeedMode::Mixed,
+                n_rep,
+                n_each,
+                n_steps,
+                target_gen,
+                freq_need,
+                Some(&out.join("checkpoints/h_selection")),
+            )?;
+            write_json(&h_path, &v)?;
+            v
+        }
+    };
+    let b_path = out.join("selection_b_completion/gate6.json");
+    let b = match reuse(&b_path) {
+        Some(v) => v,
+        None => {
+            let v = run_campaign(
+                "B",
+                false,
+                SeedMode::Mixed,
+                n_rep,
+                n_each,
+                n_steps,
+                target_gen,
+                freq_need,
+                Some(&out.join("checkpoints/b_selection")),
+            )?;
+            write_json(&b_path, &v)?;
+            v
+        }
+    };
+    let n_path = out.join("neutral_completion/gate6.json");
+    let n = match reuse(&n_path) {
+        Some(v) => v,
+        None => {
+            let v = run_campaign(
+                "N",
+                false,
+                SeedMode::Mixed,
+                n_rep,
+                n_each,
+                n_steps,
+                target_gen,
+                freq_need,
+                Some(&out.join("checkpoints/neutral")),
+            )?;
+            write_json(&n_path, &v)?;
+            v
+        }
+    };
 
     let median_h = h["median_gen"].as_u64().unwrap_or(0);
     let median_b = b["median_gen"].as_u64().unwrap_or(0);
@@ -880,16 +1163,22 @@ pub fn run_gate6_completion_only(out: &Path) -> Result<Value, String> {
     let h_complete = campaign_complete(&h);
     let b_complete = campaign_complete(&b);
     let n_complete = campaign_complete(&n);
-    let horizon_ok = !smoke() && h_complete && b_complete && n_complete;
+    let provenance_ok =
+        provenance_is_complete(&h) && provenance_is_complete(&b) && provenance_is_complete(&n);
+    let horizon_ok = !smoke() && provenance_ok && h_complete && b_complete && n_complete;
 
     // Neutral: absolute median |Δf| < 0.10 and neither label wins >5/8.
-    // For pass criteria, also require median gen ≥6 unless lawful early terminal.
+    // Label asymmetry is |f_h - f_b|/2. This equals |f_h - 0.5| whenever label material
+    // exists (f_h + f_b = 1) and is 0 when no label material remains, which is the correct
+    // reading of "no label advantage" rather than a spurious 0.5 shift.
     let neut_shift = n["rows"]
         .as_array()
         .map(|rows| {
             let mut abs = 0.0;
             for r in rows {
-                abs += (r["f_h"].as_f64().unwrap_or(0.5) - 0.5).abs();
+                let fh = r["f_h"].as_f64().unwrap_or(0.0);
+                let fb = r["f_b"].as_f64().unwrap_or(0.0);
+                abs += (fh - fb).abs() / 2.0;
             }
             if rows.is_empty() {
                 1.0
@@ -903,7 +1192,8 @@ pub fn run_gate6_completion_only(out: &Path) -> Result<Value, String> {
             .as_array()
             .map(|rows| {
                 rows.iter().all(|r| {
-                    r["extinct"].as_bool().unwrap_or(false) && r["max_gen"].as_u64().unwrap_or(0) >= 4
+                    r["extinct"].as_bool().unwrap_or(false)
+                        && r["max_gen"].as_u64().unwrap_or(0) >= 4
                 })
             })
             .unwrap_or(false);
@@ -912,18 +1202,20 @@ pub fn run_gate6_completion_only(out: &Path) -> Result<Value, String> {
         && n["wins_b"].as_u64().unwrap_or(0) <= 5
         && neut_depth_ok;
 
+    let h_effects = paired_effect_summary(&h, &n, "f_h", "desc_h_fraction");
+    let b_effects = paired_effect_summary(&b, &n, "f_b", "desc_b_fraction");
     let selection_pass =
         horizon_ok && median_h >= 6 && median_b >= 6 && wins_h >= 6 && wins_b >= 6 && neut_ok;
     let valid_complete_no_selection = horizon_ok && !selection_pass;
 
-    let conclusion = if selection_pass {
-        "D094_AUTOCATALYTIC_SET_SELECTION_QUALIFIED"
+    let conclusion = if !provenance_ok {
+        "D094_AUTOCATALYTIC_SET_SELECTION_INVALID_PROVENANCE"
+    } else if selection_pass {
+        "D094_AUTOCATALYTIC_SET_ENVIRONMENT_DEPENDENT_SELECTION_QUALIFIED"
     } else if valid_complete_no_selection {
         "D094_AUTOCATALYTIC_SET_HEREDITY_QUALIFIED_SELECTION_REJECTED"
-    } else if median_h == 0 && median_b == 0 {
-        "D094_GATE6_NUMERICAL_FAILURE"
     } else {
-        "D094_GATE6_ECOLOGICAL_TERMINATION_INVALID"
+        "D094_AUTOCATALYTIC_SET_SELECTION_UNTESTABLE_INSUFFICIENT_GENERATIONS"
     };
 
     let decision = json!({
@@ -933,6 +1225,7 @@ pub fn run_gate6_completion_only(out: &Path) -> Result<Value, String> {
         "h_complete": h_complete,
         "b_complete": b_complete,
         "n_complete": n_complete,
+        "provenance_ok": provenance_ok,
         "valid_complete_no_selection": valid_complete_no_selection,
         "target_gen": target_gen,
         "freq_delta_need": freq_need,
@@ -943,7 +1236,8 @@ pub fn run_gate6_completion_only(out: &Path) -> Result<Value, String> {
         "wins_b": wins_b,
         "neut_ok": neut_ok,
         "neut_shift": neut_shift,
-        "gates_7_8_blocked": !selection_pass,
+        "gates_7_8_blocked": true,
+        "treatment_effects": {"H": h_effects, "B": b_effects},
         "h": h,
         "b": b,
         "n": n,
@@ -957,9 +1251,8 @@ pub fn run_gate6_completion_only(out: &Path) -> Result<Value, String> {
             ]
         } else if selection_pass {
             vec![
-                "D094_AUTOCATALYTIC_SET_SELECTION_QUALIFIED",
-                "GATE7_AUTHORIZED",
-                "GATE8_BLOCKED_UNTIL_GATE7_PASS",
+                "D094_AUTOCATALYTIC_SET_ENVIRONMENT_DEPENDENT_SELECTION_QUALIFIED",
+                "GATE7_GATE8_BLOCKED_UNTIL_FUTURE_DIRECTIVE",
             ]
         } else {
             vec!["D094_GATE6_SELECTION_CLOSURE_INCOMPLETE"]
