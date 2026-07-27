@@ -1,6 +1,7 @@
 use chemistry_core::d096_allocation::{
     allocation_schema_load_ok, apply_assay_environment, expression_step, AllocationGenotype,
-    AllocationParams, AssayEnvironment, EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION,
+    pre_fission_assay, AllocationParams, AssayEnvironment,
+    EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION,
     FINITE_ALLOCATION_SCHEMA_VERSION,
 };
 use chemistry_core::material_mesh::{LumpedChem, MaterialMesh, EQUATION_VERSION_MATERIAL_MESH};
@@ -212,6 +213,43 @@ fn d096_selecting_environments_are_observable_only_as_local_resources_and_damage
         assert!(!serialized.contains("\"B\""));
         assert!(!serialized.contains("treatment"));
     }
+}
+
+#[test]
+fn d096_reciprocal_prefission_effect_exceeds_neutral_difference() {
+    let processing = AllocationGenotype([0.55, 0.25, 0.05, 0.15]);
+    let repair = AllocationGenotype([0.10, 0.20, 0.55, 0.15]);
+    let mut h_effects = Vec::new();
+    let mut b_effects = Vec::new();
+    let mut n_reserve = Vec::new();
+    let mut n_material = Vec::new();
+    for seed in 1..=8 {
+        let hp = pre_fission_assay(processing, AssayEnvironment::H, seed, 1_000);
+        let hr = pre_fission_assay(repair, AssayEnvironment::H, seed, 1_000);
+        let bp = pre_fission_assay(processing, AssayEnvironment::B, seed, 1_000);
+        let br = pre_fission_assay(repair, AssayEnvironment::B, seed, 1_000);
+        let np = pre_fission_assay(processing, AssayEnvironment::Neutral, seed, 1_000);
+        let nr = pre_fission_assay(repair, AssayEnvironment::Neutral, seed, 1_000);
+        h_effects.push(hp.reserve_change - hr.reserve_change);
+        b_effects.push(br.final_material - bp.final_material);
+        n_reserve.push(np.reserve_change - nr.reserve_change);
+        n_material.push(nr.final_material - np.final_material);
+        assert!(hp.survived && hr.survived && bp.survived && br.survived);
+    }
+    let mean = |xs: &[f64]| xs.iter().sum::<f64>() / xs.len() as f64;
+    eprintln!(
+        "processing_hash={} repair_hash={}; H reserve effects={h_effects:?} mean={} neutral={n_reserve:?} mean={}; B material effects={b_effects:?} mean={} neutral={n_material:?} mean={}",
+        processing.candidate_hash(&AllocationParams::default()),
+        repair.candidate_hash(&AllocationParams::default()),
+        mean(&h_effects),
+        mean(&n_reserve),
+        mean(&b_effects),
+        mean(&n_material)
+    );
+    assert!(h_effects.iter().all(|x| *x > 0.0));
+    assert!(b_effects.iter().all(|x| *x > 0.0));
+    assert!(mean(&h_effects) > mean(&n_reserve));
+    assert!(mean(&b_effects) > mean(&n_material));
 }
 
 #[test]

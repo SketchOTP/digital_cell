@@ -235,3 +235,81 @@ pub fn apply_assay_environment(
     }
     ledger
 }
+
+#[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize)]
+pub struct PreFissionOutcome {
+    pub reserve_change: f64,
+    pub structural_change: f64,
+    pub activated_produced: f64,
+    pub damage_applied: f64,
+    pub final_material: f64,
+    pub survived: bool,
+}
+
+pub fn pre_fission_assay(
+    genotype: AllocationGenotype,
+    environment: AssayEnvironment,
+    seed: u64,
+    steps: usize,
+) -> PreFissionOutcome {
+    use crate::mesh_growth::{growth_step, GrowthParams};
+    use crate::mesh_reactions::{reactions_step, ReactionParams};
+    use crate::mesh_transport::{transport_step, TransportParams};
+    use crate::metabolic_reserve::ReserveParams;
+
+    let allocation = AllocationParams::default();
+    let mut mesh = MaterialMesh::seed_regular(
+        12 + (seed % 3) as usize,
+        8.0,
+        0.0,
+        0.0,
+        1.0,
+        0.8,
+        crate::material_mesh::LumpedChem {
+            c: 1.0,
+            a: 0.5,
+            n: 0.8,
+            f: 0.8,
+            r: 0.5,
+            ..crate::material_mesh::LumpedChem::default()
+        },
+        crate::material_mesh::LumpedChem::default(),
+        1.0,
+    );
+    mesh.enable_finite_allocation(genotype, &allocation);
+    let area = mesh.area();
+    let mut reaction = ReactionParams::default();
+    reaction.reserve = ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, area);
+    reaction.reserve.enable = true;
+    let transport = TransportParams::default();
+    let growth = GrowthParams {
+        y_g: 0.9,
+        enable_growth: true,
+    };
+    let initial_reserve = mesh.interior.r * area;
+    let initial_material = mesh.total_structural_mass();
+    let mut activated_produced = 0.0;
+    let mut damage_applied = 0.0;
+    for step in 0..steps {
+        let env = apply_assay_environment(&mut mesh, environment, step as u64);
+        damage_applied += env.structural_damage + env.membrane_damage;
+        if expression_step(&mut mesh, &allocation, 0.02).is_err() {
+            break;
+        }
+        let _ = transport_step(&mut mesh, &transport, 0.02);
+        let chemistry = reactions_step(&mut mesh, &reaction, 0.02, true, true);
+        activated_produced += chemistry.a_produced;
+        let _ = growth_step(&mut mesh, &reaction, &growth, 0.02);
+        if !mesh.alive {
+            break;
+        }
+    }
+    PreFissionOutcome {
+        reserve_change: mesh.interior.r * mesh.area() - initial_reserve,
+        structural_change: mesh.total_structural_mass() - initial_material,
+        activated_produced,
+        damage_applied,
+        final_material: mesh.total_structural_mass() + mesh.total_bound_membrane(),
+        survived: mesh.alive,
+    }
+}
