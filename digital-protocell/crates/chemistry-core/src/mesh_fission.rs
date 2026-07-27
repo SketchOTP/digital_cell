@@ -177,6 +177,7 @@ pub fn try_local_fission(
         mesh.template_rng = parent.template_rng;
         mesh.next_template_id = parent.next_template_id;
         mesh.next_edge_id = parent.next_edge_id;
+        mesh.finite_allocation = parent.finite_allocation;
     };
     set_conc(&mut d1, f1);
     set_conc(&mut d2, f2);

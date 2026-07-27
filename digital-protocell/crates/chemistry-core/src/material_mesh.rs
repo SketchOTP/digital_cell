@@ -219,6 +219,10 @@ pub struct MaterialMesh {
     /// Observer allocator for new edge ids (never enters chemistry decisions).
     #[serde(default)]
     pub next_edge_id: u64,
+    /// D-096 inherited finite allocation and expressed catalytic material.
+    /// Absent in every historical schema.
+    #[serde(default)]
+    pub finite_allocation: Option<crate::d096_allocation::AllocationState>,
 }
 
 fn default_template_rng() -> u64 {
@@ -328,6 +332,7 @@ impl MaterialMesh {
             template_rng: default_template_rng(),
             autocatalytic_edges: Vec::new(),
             next_edge_id: 1,
+            finite_allocation: None,
         };
         for i in 0..n {
             let ell = mesh.edge_length(i);
@@ -338,6 +343,21 @@ impl MaterialMesh {
             mesh.edges[i].ruptured = false;
         }
         mesh
+    }
+
+    pub fn enable_finite_allocation(
+        &mut self,
+        genotype: crate::d096_allocation::AllocationGenotype,
+        params: &crate::d096_allocation::AllocationParams,
+    ) {
+        assert!(genotype.valid(params), "invalid frozen allocation");
+        self.equation_id =
+            crate::d096_allocation::EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION.to_string();
+        self.schema_version = crate::d096_allocation::FINITE_ALLOCATION_SCHEMA_VERSION;
+        self.finite_allocation = Some(crate::d096_allocation::AllocationState {
+            genotype,
+            catalysts: [0.0; crate::d096_allocation::FUNCTIONS],
+        });
     }
 
     pub fn centroid(&self) -> [f64; 2] {
