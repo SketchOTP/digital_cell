@@ -1,0 +1,38 @@
+{
+  "artifacts": {
+    "activated_resource_fate/analysis.json": "0c8be298af991d8e08531645b8fefc19a467c4748e06f12bbd677380b429e7c7",
+    "b_specificity/analysis.json": "80f576bd3895a791324a2e96a86fb3c812c578cd40da61cf2350508180a1fb0b",
+    "causal_ledger/analysis.json": "23ba857f4b4a9b210a85810cd2c83cc36cb1c5a8badc22a7c6e258ba4b4f9a15",
+    "classification/analysis.json": "43964ff15c9a51bf2ec0e4631fa5aec1ca4009e6000834512f6b250704b85e44",
+    "flux_authority/analysis.json": "d18b134659146253c2836bff6e230b2b12f5b890713ba84bbc1806c3fa913fb2",
+    "net_benefit/analysis.json": "0c8be298af991d8e08531645b8fefc19a467c4748e06f12bbd677380b429e7c7",
+    "next_contract/contract.json": "1b0b8ab5495cd1bb877f8e9be46af1bce9e55e12481f1bba6dd87738a5412879",
+    "preservation/analysis.json": "38a97f92d85534e21e7b90716a57b8441fea19f9f499903fb712987c13497cda",
+    "resource_delivery/analysis.json": "fcca3282fc64fa9ed85299022e7207c3c869161db7255b336c6b670bc1c0af3d",
+    "timing/analysis.json": "dcfac50d9cae7c5e06372f94e3bbe0dc60e2bd45a13d43b235815402e85730ae",
+    "whole_organism_replay/analysis.json": "23ba857f4b4a9b210a85810cd2c83cc36cb1c5a8badc22a7c6e258ba4b4f9a15"
+  },
+  "b_specificity": "B_REPAIR_SPECIFICITY_PRESENT",
+  "binary_hash": "49068a3af6231ef7f6ba7450f4d419018227fc0b0f28c1744465cc05618c02d4",
+  "configuration_hash": "38a97f92d85534e21e7b90716a57b8441fea19f9f499903fb712987c13497cda",
+  "d096_result_commit": "a6d574f6aa84d3094f2da55ff9bc59b69d7393d3",
+  "d096_result_tag": "D-096-finite-allocation-physiology-fail",
+  "d098_contract_status": "FROZEN_NOT_IMPLEMENTED",
+  "directive": "D-097",
+  "first_broken_link": "activated-resource production -> reserve accumulation (D-096 reserve schema rejected)",
+  "forbidden_later_execution": {
+    "adaptation": false,
+    "heredity": false,
+    "mutation": false,
+    "reversal": false,
+    "selection": false
+  },
+  "input_artifact_hashes": {
+    "d096_gate5_result": "4c3f14bae72c97b874c84cbf4a1295589735ee618fdbe9f6633eeb77de1c594c",
+    "d096_manifest": "898bcf7cafdfad77017f60a5ea8a9f45cdfe7a3f9ed69bd6a0c90d2106dfc0f4"
+  },
+  "phase3_authorized": false,
+  "primary_scientific_classification": "D097_PROCESSING_IMPLEMENTATION_DEFECT_CONFIRMED",
+  "selected_repair_route": "D-098 - Finite Allocation Processing Implementation Repair",
+  "source_commit": "baab26d57cb7f2fa8d821607780781290fc1183b"
+}

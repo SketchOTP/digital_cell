@@ -34,6 +34,11 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/chemistry-core/src/d096_allocation.rs` — D-096 finite simplex, costly expression, local environment forcing, and pre-fission assay
 - `digital-protocell/crates/chemistry-core/tests/d096_tests.rs` — D-096 Gates 0–5 executable checks; Gate 5 is the terminal scientific non-pass
 - `digital-protocell/docs/d096_*.md` — D-096 implementation, gate evidence, terminal physiology conclusion
+- `digital-protocell/crates/chemistry-core/src/d097_analysis.rs` — observer-only D-096 processing-path reconstruction, elasticity, B specificity, deterministic causal classification
+- `digital-protocell/crates/chemistry-core/tests/d097_tests.rs` — D-097 pathway, fate, timing, no-later-execution, and B specificity checks
+- `digital-protocell/crates/experiment-runner/src/d097.rs` — governed D-097 artifact generator and frozen D-098 route
+- `digital-protocell/docs/d097_*.md` — processing reconstruction and exact implementation-defect conclusion
+- `digital-protocell/docs/d098_selected_repair_contract.md` — frozen narrow reserve-compatibility repair; not implemented
 - `digital-protocell/crates/godot-bridge/` — Godot GDExtension microscope shell
 - `digital-protocell/godot/` — Godot 4 project (display only, no chemistry in GDScript)
 - `digital-protocell/configs/` — baseline, starvation, sweep TOML

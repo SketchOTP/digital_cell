@@ -1,0 +1,51 @@
+{
+  "accepted_step_accounting": {
+    "dt": 0.02,
+    "fission": false,
+    "mutation": false,
+    "steps_per_run": 1000
+  },
+  "binary_hash": "49068a3af6231ef7f6ba7450f4d419018227fc0b0f28c1744465cc05618c02d4",
+  "conclusion": "D097_PROCESSING_IMPLEMENTATION_DEFECT_CONFIRMED",
+  "configuration_hash": "38a97f92d85534e21e7b90716a57b8441fea19f9f499903fb712987c13497cda",
+  "content_hash": "1b0b8ab5495cd1bb877f8e9be46af1bce9e55e12481f1bba6dd87738a5412879",
+  "d096_result_commit": "a6d574f6aa84d3094f2da55ff9bc59b69d7393d3",
+  "d096_result_tag": "D-096-finite-allocation-physiology-fail",
+  "first_broken_link": "activated-resource production -> reserve accumulation (D-096 reserve schema rejected)",
+  "formulas": {
+    "pair_difference": "processing-heavy - repair-heavy",
+    "processing_share": "allocated activation / total activation",
+    "treatment_interaction": "H difference - neutral difference"
+  },
+  "input_artifact_hashes": {
+    "d096_gate5_result": "4c3f14bae72c97b874c84cbf4a1295589735ee618fdbe9f6633eeb77de1c594c",
+    "d096_manifest": "898bcf7cafdfad77017f60a5ea8a9f45cdfe7a3f9ed69bd6a0c90d2106dfc0f4"
+  },
+  "pair_identity": "processing-heavy_vs_repair-heavy",
+  "payload": {
+    "implementation_status": "NOT_IMPLEMENTED",
+    "issue": "D-098 - Finite Allocation Processing Implementation Repair",
+    "must_not_change": [
+      "H pulse",
+      "B damage",
+      "allocation",
+      "budget",
+      "expression costs",
+      "mutation",
+      "mesh body"
+    ],
+    "phase3_authorized": false,
+    "scope": "add D-096 equation identity to reserve compatibility dispatch and regression-test reserve/growth execution"
+  },
+  "seed_identity": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "source_commit": "baab26d57cb7f2fa8d821607780781290fc1183b"
+}
