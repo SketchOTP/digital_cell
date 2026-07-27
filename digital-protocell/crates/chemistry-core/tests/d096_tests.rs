@@ -145,6 +145,51 @@ fn d096_repair_expression_is_monotonic_and_requires_local_damage_substrate() {
     assert!(repaired <= before * 1e-3);
 }
 
+fn processing_flux(genotype: AllocationGenotype) -> f64 {
+    let mut candidate = expressed(genotype);
+    candidate.interior.c = 1.0;
+    candidate.interior.n = 1.0;
+    candidate.interior.f = 1.0;
+    reactions_step(
+        &mut candidate,
+        &ReactionParams::default(),
+        0.01,
+        false,
+        true,
+    )
+    .a_produced
+}
+
+fn repair_flux(genotype: AllocationGenotype) -> f64 {
+    let mut candidate = expressed(genotype);
+    candidate.interior.c = 1.0;
+    candidate.interior.a = 1.0;
+    candidate.edges[0].m *= 0.5;
+    reactions_step(
+        &mut candidate,
+        &ReactionParams::default(),
+        0.01,
+        true,
+        false,
+    )
+    .m_produced
+}
+
+#[test]
+fn d096_tradeoff_occurs_in_conserved_processing_and_repair_fluxes() {
+    let processing = AllocationGenotype([0.55, 0.25, 0.05, 0.15]);
+    let balanced = AllocationGenotype::neutral();
+    let repair = AllocationGenotype([0.10, 0.20, 0.55, 0.15]);
+    let p = [processing_flux(processing), processing_flux(balanced), processing_flux(repair)];
+    let r = [repair_flux(processing), repair_flux(balanced), repair_flux(repair)];
+
+    assert!(p[0] > p[1] && p[1] > p[2]);
+    assert!(r[2] > r[1] && r[1] > r[0]);
+    assert!(!(p[1] >= p[0] && r[1] >= r[2]));
+    assert!(!(p[0] >= p[2] && r[0] >= r[2]));
+    assert!(!(p[2] >= p[0] && r[2] >= r[0]));
+}
+
 #[test]
 fn d096_equation_snapshot_and_candidate_identity_are_isolated() {
     let legacy = mesh();
