@@ -45,6 +45,279 @@ pub struct NormalizedEvidence {
     pub excluded: Vec<Value>,
 }
 
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct PartitionSummary {
+    pub observations: usize,
+    pub mean_network_displacement: f64,
+    pub mean_phenotype_displacement: f64,
+    pub mutation_variance: f64,
+    pub partition_variance: f64,
+    pub pre_partition_covariance: f64,
+    pub post_partition_covariance: f64,
+    pub conditioned_trait_descendant_covariance: f64,
+    pub high_parent_loss_rate: f64,
+    pub destroys_phenotype: bool,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct CausalReplaySummary {
+    pub physiology_differs: bool,
+    pub growth_or_survival_differs: bool,
+    #[serde(default)]
+    pub environment_interaction_present: bool,
+}
+
+pub fn final_causal_classification(
+    partition: &PartitionSummary,
+    replay: &CausalReplaySummary,
+) -> (&'static str, Option<&'static str>) {
+    if partition.destroys_phenotype {
+        ("PARTITION_NOISE_ERASES_SELECTION", None)
+    } else if !replay.physiology_differs {
+        ("PHENOTYPE_NOT_COUPLED_TO_CONSERVED_PHYSIOLOGY", None)
+    } else if !replay.growth_or_survival_differs {
+        ("PHYSIOLOGICAL_EFFECT_BUFFERED_BEFORE_FITNESS", None)
+    } else if !replay.environment_interaction_present {
+        (
+            "ENVIRONMENT_PHENOTYPE_INTERACTION_ABSENT",
+            Some("DEMOGRAPHIC_NOISE_DOMINATES_WEAK_DESCENDANT_DIFFERENCES"),
+        )
+    } else {
+        ("SELECTION_COUPLING_PRESENT", None)
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct LocalEnvironment {
+    pub nutrient_mean: f64,
+    pub fuel_mean: f64,
+    pub resource_timing_variance: f64,
+    pub damage_per_350_steps: f64,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct EnvironmentalContrast {
+    pub h: LocalEnvironment,
+    pub b: LocalEnvironment,
+    pub neutral: LocalEnvironment,
+    pub mechanistically_selectable: bool,
+    pub equations_contain_environment_labels: bool,
+    pub causal_pathways: Vec<String>,
+}
+
+/// Reconstructs the local fields applied by the sealed replay contract. The H/B
+/// names identify records only; no label is an input to the proposed physiology.
+pub fn environmental_contrast() -> EnvironmentalContrast {
+    let h_high: f64 = 2.2 * 1.25;
+    let h_low: f64 = 2.2 * 0.12;
+    let h_mean = 0.25 * h_high + 0.75 * h_low;
+    let h_variance =
+        0.25 * (h_high - h_mean).powi(2) + 0.75 * (h_low - h_mean).powi(2);
+    EnvironmentalContrast {
+        h: LocalEnvironment {
+            nutrient_mean: h_mean,
+            fuel_mean: h_mean,
+            resource_timing_variance: h_variance,
+            damage_per_350_steps: 0.0,
+        },
+        b: LocalEnvironment {
+            nutrient_mean: 2.2 * 0.90,
+            fuel_mean: 2.2 * 0.90,
+            resource_timing_variance: 0.0,
+            damage_per_350_steps: 0.08 + 0.048,
+        },
+        neutral: LocalEnvironment {
+            nutrient_mean: 2.2 * 0.70,
+            fuel_mean: 2.2 * 0.70,
+            resource_timing_variance: 0.0,
+            damage_per_350_steps: 0.0,
+        },
+        mechanistically_selectable: true,
+        equations_contain_environment_labels: false,
+        causal_pathways: vec![
+            "resource pulses -> processing/activation allocation -> reserve and growth".into(),
+            "structural/membrane damage -> repair allocation -> retained mass and readiness".into(),
+        ],
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct Allocation {
+    /// Resource processing, activation, repair, and growth synthesis.
+    pub fractions: [f64; 4],
+}
+
+impl Allocation {
+    pub fn new(fractions: [f64; 4]) -> Result<Self, String> {
+        if fractions.iter().any(|x| !x.is_finite() || *x < 0.0 || *x > 1.0)
+            || (fractions.iter().sum::<f64>() - 1.0).abs() > 1e-12
+        {
+            return Err("allocation fractions must be finite, bounded, and sum to one".into());
+        }
+        Ok(Self { fractions })
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct ReciprocalInteraction {
+    pub interaction_h: f64,
+    pub interaction_b: f64,
+    pub reciprocal: bool,
+    pub universally_superior: bool,
+}
+
+/// Inputs are predicted benefits in [H, B, neutral] for two associated
+/// allocations. This observer has no access to organism mutation or reproduction.
+pub fn reciprocal_interaction(
+    h_allocation: [f64; 3],
+    b_allocation: [f64; 3],
+) -> ReciprocalInteraction {
+    let interaction_h = h_allocation[0] - h_allocation[2];
+    let interaction_b = b_allocation[1] - b_allocation[2];
+    let h_cross_cost = h_allocation[0] > b_allocation[0]
+        && h_allocation[1] < b_allocation[1]
+        && h_allocation[2] <= b_allocation[2];
+    let b_cross_cost = b_allocation[1] > h_allocation[1]
+        && b_allocation[0] < h_allocation[0]
+        && b_allocation[2] <= h_allocation[2];
+    let h_dominates = (0..3).all(|i| h_allocation[i] > b_allocation[i]);
+    let b_dominates = (0..3).all(|i| b_allocation[i] > h_allocation[i]);
+    ReciprocalInteraction {
+        interaction_h,
+        interaction_b,
+        reciprocal: interaction_h > 0.0 && interaction_b > 0.0 && h_cross_cost && b_cross_cost,
+        universally_superior: h_dominates || b_dominates,
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct CandidateScore {
+    pub candidate: String,
+    pub scores: [u8; 10],
+    pub total: u8,
+    pub eligible: bool,
+    pub selected: bool,
+    pub reason: String,
+}
+
+fn scored(candidate: &str, scores: [u8; 10], selected: bool, reason: &str) -> CandidateScore {
+    let eligible = scores[0] == 2
+        && scores[1] == 2
+        && scores[2] >= 1
+        && scores[3] == 2
+        && scores[4] >= 1
+        && candidate != "A";
+    CandidateScore {
+        candidate: candidate.into(),
+        total: scores.iter().sum(),
+        scores,
+        eligible,
+        selected: selected && eligible,
+        reason: reason.into(),
+    }
+}
+
+/// Deterministic observer-only review. Score order follows the D-095C table.
+pub fn candidate_review() -> Vec<CandidateScore> {
+    vec![
+        scored(
+            "A",
+            [2, 0, 0, 2, 2, 2, 2, 2, 2, 2],
+            false,
+            "sealed control lacks a finite tradeoff and treatment specificity",
+        ),
+        scored(
+            "B",
+            [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+            true,
+            "static finite allocation maps pulse utilization against damage repair",
+        ),
+        scored(
+            "C",
+            [2, 2, 1, 1, 1, 2, 2, 1, 1, 2],
+            false,
+            "contrast is not fundamentally transport-limited and Phase-1 boundary impact is larger",
+        ),
+        scored(
+            "D",
+            [2, 2, 2, 1, 1, 1, 2, 2, 0, 1],
+            false,
+            "static allocation is sufficient; regulation adds an unproved substrate and delay cost",
+        ),
+    ]
+}
+
+pub fn select_route(scores: &[CandidateScore]) -> Option<String> {
+    let selected = scores
+        .iter()
+        .filter(|score| score.selected && score.eligible)
+        .collect::<Vec<_>>();
+    (selected.len() == 1).then(|| selected[0].candidate.clone())
+}
+
+pub fn freeze_d096_contract(route: Option<&str>) -> Option<Value> {
+    (route == Some("B")).then(|| {
+        json!({
+            "status": "FROZEN",
+            "selected_candidate": "B",
+            "scientific_hypothesis": "Inherited finite catalytic allocations favor pulse processing under temporally concentrated N/F and favor repair under recurrent local damage, causing reciprocal descendant advantage.",
+            "equation_identity": "autopoietic_material_mesh_finite_catalytic_allocation_v1",
+            "hereditary_representation": {
+                "encoded_values": ["resource_processing", "activation", "repair", "growth_synthesis"],
+                "bounds": "[0,1] each; exact normalized sum=1",
+                "initialization": {
+                    "pulse_specialist": [0.45, 0.25, 0.10, 0.20],
+                    "damage_specialist": [0.20, 0.20, 0.45, 0.15],
+                    "neutral": [0.25, 0.25, 0.25, 0.25]
+                },
+                "mutation": "At each qualified copy, probability 0.01; choose ordered source!=target uniformly; delta=min(abs(N(0,0.15)), source, 1-target); subtract delta from source and add it to target.",
+                "copying": "copy the ordered four-coordinate vector exactly before the bounded mutation operator",
+                "fission_partition": "same conservative network partition operator qualified by D-095",
+                "identity_hash": "canonical ordered IEEE-754 allocation bytes plus equation identity"
+            },
+            "conserved_expression": {
+                "shared_synthesis_flux": "J_syn = 1e-3 * min(M_local, A_local/0.2) per accepted step",
+                "allocation": "J_i = alpha_i * J_syn",
+                "material": "Delta M = -sum_i(J_i)*dt",
+                "activated_resource": "Delta A_synthesis = -0.2*sum_i(J_i)*dt; Delta A_maintenance = -1e-5*sum_i(C_i)*dt",
+                "synthesis_time": "Delta C_i = (J_i - 1e-4*C_i)*dt",
+                "turnover": "J_turn_i = 1e-4*C_i",
+                "waste": "Delta W = sum_i(J_turn_i)*dt",
+                "allocation_conservation": "sum_i allocation_i = 1"
+            },
+            "mandatory_tradeoff": "Increasing any allocation coordinate decreases at least one other coordinate under a fixed total catalyst-production budget.",
+            "environmental_coupling": {
+                "inputs": ["local nutrient", "local fuel", "local activated resource", "local reserve", "local structural damage", "local membrane damage"],
+                "environment_labels_permitted": false,
+                "flux_multiplier": "g_i = 1 + C_i/(0.1 + C_i); multiply only the corresponding existing local physiological flux",
+                "mapping": {
+                    "resource_processing": "local nutrient/fuel processing flux",
+                    "activation": "local activated-resource production flux",
+                    "repair": "existing structural and membrane repair flux",
+                    "growth_synthesis": "existing reserve-funded structural synthesis flux"
+                }
+            },
+            "gates": [
+                "Gate 0 Preservation and schema",
+                "Gate 1 Conservation and invariant domain",
+                "Gate 2 Local expression identification",
+                "Gate 3 Mandatory tradeoff",
+                "Gate 4 Environmental input observability",
+                "Gate 5 Reciprocal pre-fission physiological effect",
+                "Gate 6 Heredity and mutation continuity",
+                "Gate 7 Single-generation fitness consequence",
+                "Gate 8 Multi-generation selection",
+                "Gate 9 Adaptation",
+                "Gate 10 Environmental reversal"
+            ],
+            "stop_rule": "No later gate runs after an earlier failure.",
+            "phase_authority": "Phase 3 remains unauthorized until Gates 8, 9, and 10 pass.",
+            "phase3_authorized": false,
+            "implementation_status": "NOT_IMPLEMENTED"
+        })
+    })
+}
+
 /// Reads only the sealed terminal D-094 rows and verifies their matching terminal
 /// checkpoint identity. Earlier D-089–D-093 manifests remain summary evidence;
 /// they do not expose comparable terminal population rows.
@@ -263,40 +536,4 @@ pub fn write_observational_artifacts(attempt: &Path, out: &Path) -> Result<Value
     });
     write_json(&out.join("manifest.json"), &manifest)?;
     Ok(manifest)
-}
-
-/// Classifies the first failed link from sealed terminal observations only.
-pub fn classify_d094_failure(rows: &[NormalizedRow]) -> &'static str {
-    let h = rows
-        .iter()
-        .filter(|r| r.treatment == "H")
-        .collect::<Vec<_>>();
-    let b = rows
-        .iter()
-        .filter(|r| r.treatment == "B")
-        .collect::<Vec<_>>();
-    if h.is_empty() || b.is_empty() {
-        return "MULTIPLE_CAUSAL_FAILURES";
-    }
-    let h_effect = h.iter().map(|r| r.final_h - 0.5).sum::<f64>() / h.len() as f64;
-    let b_effect = b.iter().map(|r| (1.0 - r.final_h) - 0.5).sum::<f64>() / b.len() as f64;
-    if h_effect.abs() < 0.15 && b_effect.abs() < 0.15 {
-        "PHENOTYPE_NOT_COUPLED_TO_CONSERVED_PHYSIOLOGY"
-    } else {
-        "PHYSIOLOGICAL_EFFECT_BUFFERED_BEFORE_FITNESS"
-    }
-}
-
-/// Explicit review-only ranking. `automatic_implementation=false` is a hard guard.
-pub fn evaluate_candidates() -> Value {
-    json!({
-        "automatic_implementation": false,
-        "selected_architecture": "B_FINITE_BUDGET_CATALYTIC_ALLOCATION",
-        "candidates": [
-            {"id":"A_D094_DISTRIBUTED_AUTO_CATALYTIC_HB", "selected":false, "reason":"rejected control; no reliable physiological coupling"},
-            {"id":"B_FINITE_BUDGET_CATALYTIC_ALLOCATION", "selected":true, "reason":"smallest local conserved allocation tradeoff that directly reaches reserve, repair, and growth"},
-            {"id":"C_MEMBRANE_BOUND_TRANSPORT_ALLOCATION", "selected":false, "reason":"transport bottleneck was not demonstrated by sealed evidence"},
-            {"id":"D_RESOURCE_RESPONSIVE_CATALYTIC_REGULATION", "selected":false, "reason":"more mechanisms than fixed finite allocation before its insufficiency is proven"}
-        ]
-    })
 }

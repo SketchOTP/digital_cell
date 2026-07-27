@@ -1,29 +1,111 @@
 use chemistry_core::d095_analysis::{
-    classify_d094_failure, evaluate_candidates, normalize_d094_attempt,
-    observational_decomposition, NormalizedRow,
+    candidate_review, environmental_contrast, final_causal_classification,
+    freeze_d096_contract, normalize_d094_attempt, observational_decomposition,
+    reciprocal_interaction, select_route, Allocation, CausalReplaySummary, PartitionSummary,
 };
 use std::path::PathBuf;
 
 #[test]
-fn weak_paired_effects_select_finite_budget_allocation() {
-    let rows = vec![
-        NormalizedRow::d094("H", 0, 0.444_444, 0.480_198, 202, 194),
-        NormalizedRow::d094("H", 1, 0.5, 0.48, 200, 192),
-        NormalizedRow::d094("B", 0, 0.5, 0.459_459, 296, 288),
-        NormalizedRow::d094("B", 3, 0.533_333, 0.538_012, 342, 334),
-        NormalizedRow::d094("N", 0, 0.0, 0.510_563, 284, 276),
-        NormalizedRow::d094("N", 1, 0.0, 0.505_780, 346, 338),
-    ];
+fn corrected_classification_identifies_specificity_before_demography() {
     assert_eq!(
-        classify_d094_failure(&rows),
-        "PHENOTYPE_NOT_COUPLED_TO_CONSERVED_PHYSIOLOGY"
+        final_causal_classification(
+            &PartitionSummary {
+                destroys_phenotype: true,
+                ..Default::default()
+            },
+            &CausalReplaySummary::default(),
+        ),
+        ("PARTITION_NOISE_ERASES_SELECTION", None)
     );
-    let candidates = evaluate_candidates();
     assert_eq!(
-        candidates["selected_architecture"],
-        "B_FINITE_BUDGET_CATALYTIC_ALLOCATION"
+        final_causal_classification(
+            &PartitionSummary::default(),
+            &CausalReplaySummary::default(),
+        ),
+        ("PHENOTYPE_NOT_COUPLED_TO_CONSERVED_PHYSIOLOGY", None)
     );
-    assert_eq!(candidates["automatic_implementation"], false);
+    assert_eq!(
+        final_causal_classification(
+            &PartitionSummary::default(),
+            &CausalReplaySummary {
+                physiology_differs: true,
+                ..Default::default()
+            },
+        ),
+        ("PHYSIOLOGICAL_EFFECT_BUFFERED_BEFORE_FITNESS", None)
+    );
+    assert_eq!(
+        final_causal_classification(
+            &PartitionSummary::default(),
+            &CausalReplaySummary {
+                physiology_differs: true,
+                growth_or_survival_differs: true,
+                environment_interaction_present: false,
+            },
+        ),
+        (
+            "ENVIRONMENT_PHENOTYPE_INTERACTION_ABSENT",
+            Some("DEMOGRAPHIC_NOISE_DOMINATES_WEAK_DESCENDANT_DIFFERENCES")
+        )
+    );
+}
+
+#[test]
+fn environmental_inputs_are_local_measurable_and_label_independent() {
+    let contrast = environmental_contrast();
+    assert!(contrast.mechanistically_selectable);
+    assert!(contrast.h.resource_timing_variance > contrast.neutral.resource_timing_variance);
+    assert!(contrast.b.damage_per_350_steps > contrast.neutral.damage_per_350_steps);
+    assert!(!contrast.equations_contain_environment_labels);
+}
+
+#[test]
+fn finite_allocation_and_reciprocal_interaction_reject_universal_superiority() {
+    let h = Allocation::new([0.45, 0.25, 0.10, 0.20]).unwrap();
+    let b = Allocation::new([0.20, 0.20, 0.45, 0.15]).unwrap();
+    assert!(Allocation::new([0.6, 0.6, 0.0, 0.0]).is_err());
+
+    let reciprocal = reciprocal_interaction([1.4, 0.7, 0.8], [0.6, 1.3, 0.8]);
+    assert!(reciprocal.reciprocal);
+    assert!(!reciprocal.universally_superior);
+
+    let universal = reciprocal_interaction([1.4, 1.3, 1.2], [0.8, 0.7, 0.6]);
+    assert!(!universal.reciprocal);
+    assert!(universal.universally_superior);
+
+    assert!((h.fractions.iter().sum::<f64>() - 1.0).abs() < 1e-12);
+    assert!((b.fractions.iter().sum::<f64>() - 1.0).abs() < 1e-12);
+}
+
+#[test]
+fn candidate_scoring_is_deterministic_selects_one_route_and_freezes_complete_contract() {
+    let first = candidate_review();
+    let second = candidate_review();
+    assert_eq!(first, second);
+    assert!(!first.iter().find(|c| c.candidate == "A").unwrap().eligible);
+    assert!(first.iter().find(|c| c.candidate == "B").unwrap().eligible);
+    assert!(!first.iter().find(|c| c.candidate == "C").unwrap().eligible);
+    assert!(!first.iter().find(|c| c.candidate == "D").unwrap().eligible);
+
+    let selected = select_route(&first);
+    assert_eq!(selected.as_deref(), Some("B"));
+    assert_eq!(first.iter().filter(|c| c.selected).count(), 1);
+
+    let contract = freeze_d096_contract(selected.as_deref()).expect("selected route contract");
+    for key in [
+        "scientific_hypothesis",
+        "equation_identity",
+        "hereditary_representation",
+        "conserved_expression",
+        "mandatory_tradeoff",
+        "environmental_coupling",
+        "gates",
+        "phase_authority",
+    ] {
+        assert!(!contract[key].is_null(), "missing {key}");
+    }
+    assert_eq!(contract["implementation_status"], "NOT_IMPLEMENTED");
+    assert_eq!(contract["phase3_authorized"], false);
 }
 
 #[test]

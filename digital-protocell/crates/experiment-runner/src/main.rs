@@ -4450,6 +4450,18 @@ enum D095Commands {
         #[arg(long, default_value = "experiments/generated/d095")]
         output: PathBuf,
     },
+    /// Partition reconstruction and matched pre-fission replay; no architecture scoring.
+    Causal {
+        #[arg(long, default_value = "experiments/generated/d094r/gate6/attempt_001")]
+        attempt: PathBuf,
+        #[arg(long, default_value = "experiments/generated/d095")]
+        output: PathBuf,
+    },
+    /// Correct interpretation, observer-only A-D review, and D-096 contract freeze.
+    Review {
+        #[arg(long, default_value = "experiments/generated/d095")]
+        output: PathBuf,
+    },
 }
 
 fn run_d095(action: D095Commands) -> Result<(), Box<dyn std::error::Error>> {
@@ -4460,6 +4472,24 @@ fn run_d095(action: D095Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-095 observational status={} likely_link={} -> {}",
                 result["status"],
                 result["first_likely_broken_link"],
+                output.join("manifest.json").display()
+            );
+        }
+        D095Commands::Causal { attempt, output } => {
+            let result = d095::run_causal_cli(&attempt, &output)?;
+            println!(
+                "D-095 causal status={} classification={} -> {}",
+                result["status"],
+                result["causal_classification"],
+                output.join("manifest.json").display()
+            );
+        }
+        D095Commands::Review { output } => {
+            let result = d095::run_review_cli(&output)?;
+            println!(
+                "D-095C review status={} selected={} -> {}",
+                result["status"],
+                result["selected_candidate"],
                 output.join("manifest.json").display()
             );
         }

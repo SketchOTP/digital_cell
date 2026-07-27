@@ -27,6 +27,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/` — Phase 1 Rust workspace (chemistry-core, experiment-runner, godot-bridge)
 - `digital-protocell/crates/chemistry-core/` — simulation engine, observer, tests
 - `digital-protocell/crates/experiment-runner/` — headless experiment CLI
+- `digital-protocell/crates/chemistry-core/src/d095_analysis.rs` — D-095 evidence, corrected causal classification, environmental contrast, reciprocal scoring, and D-096 contract schema
+- `digital-protocell/crates/experiment-runner/src/d095.rs` — D-095 partition/replay plus observer-only D-095C artifact generation
+- `digital-protocell/docs/d095_*.md` — D-095 replay, contrast, architecture review, and final conclusion
+- `digital-protocell/docs/d096_selected_architecture_contract.md` — frozen Candidate B implementation/experiment contract; not implementation
 - `digital-protocell/crates/godot-bridge/` — Godot GDExtension microscope shell
 - `digital-protocell/godot/` — Godot 4 project (display only, no chemistry in GDScript)
 - `digital-protocell/configs/` — baseline, starvation, sweep TOML
