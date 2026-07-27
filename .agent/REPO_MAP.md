@@ -739,3 +739,15 @@ Concise navigation map for agents. Add entries as application code lands.
 - experiment-runner/src/d093.rs — CLI pipeline
 - docs/d093_template_encoded_catalytic_network.md — report
 - experiments/generated/d093/ — artifacts
+
+## D-094R autocatalytic selection closure
+- chemistry-core/src/d094_selection.rs — frozen Gate 6 campaigns, paired effects, hard G7/G8 block
+- chemistry-core/src/d094_analysis.rs — D-094 legacy conclusion mapping; stale implementation-defect path rejected
+- chemistry-core/tests/d094_tests.rs — autocatalytic schema, reproduction, selection contract tests
+- experiment-runner/src/d094_pipeline_lock.rs — exclusive lock with process-start identity validation
+- experiment-runner/src/d094.rs — Gate 6 runner shim
+- docs/d094r_*.md — takeover, effects, and conclusion reports
+- experiments/generated/d094r/ — takeover manifest and governed campaign output root
+- docs/d094r2_gate6_execution.md — sealed toolchain, binary, checkpoint, and D-008 validation scope
+- docs/d094r2_selection_analysis.md — raw-row Gate 6 effect analysis and negative selection evidence
+- docs/d094r2_final_conclusion.md — exact D-094R2 rejection and authorization boundary
