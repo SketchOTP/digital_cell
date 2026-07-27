@@ -124,6 +124,7 @@ pub mod autocatalytic_partition;
 pub mod d094_zero_generation_audit;
 pub mod d094_selection;
 pub mod d094_analysis;
+pub mod d095_analysis;
 pub mod d011_analysis;
 pub mod d008_analysis;
 pub mod d008_diagnostics;

@@ -92,6 +92,7 @@ mod d092;
 mod d093;
 mod d094;
 mod d094_pipeline_lock;
+mod d095;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -499,6 +500,10 @@ enum Commands {
         #[command(subcommand)]
         action: D094Commands,
     },
+    D095 {
+        #[command(subcommand)]
+        action: D095Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -844,6 +849,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D092 { action } => run_d092(action)?,
         Commands::D093 { action } => run_d093(action)?,
         Commands::D094 { action } => run_d094(action)?,
+        Commands::D095 { action } => run_d095(action)?,
     }
     Ok(())
 }
@@ -4429,6 +4435,32 @@ fn run_d094(action: D094Commands) -> Result<(), Box<dyn std::error::Error>> {
                 result["selection_pass"],
                 result["gates_7_8_blocked"],
                 out.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D095Commands {
+    /// Frozen-evidence observational decomposition only; no causal replay.
+    Observational {
+        #[arg(long, default_value = "experiments/generated/d094r/gate6/attempt_001")]
+        attempt: PathBuf,
+        #[arg(long, default_value = "experiments/generated/d095")]
+        output: PathBuf,
+    },
+}
+
+fn run_d095(action: D095Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D095Commands::Observational { attempt, output } => {
+            let result = d095::run_observational_cli(&attempt, &output)?;
+            println!(
+                "D-095 observational status={} likely_link={} -> {}",
+                result["status"],
+                result["first_likely_broken_link"],
+                output.join("manifest.json").display()
             );
         }
     }
