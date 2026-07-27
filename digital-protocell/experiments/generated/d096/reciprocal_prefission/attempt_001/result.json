@@ -1,0 +1,42 @@
+{
+  "source_commit": "83c172f2849e7fd4959ab54a73cc4e513bcbf880",
+  "binary_hash": "221e76447791a9cc844c23b67cd4d7c9fddc734556220b06515e25af00f8fbe0",
+  "contract_hash": "a8bf391e77308c6ee5b7f58e54c12102055f018b93634b43e1ea75abfa0f60fd",
+  "equation_version": "autopoietic_material_mesh_finite_catalytic_allocation_v1",
+  "schema_version": 2,
+  "candidate_hashes": {
+    "processing_heavy": "faa5c27f8ee9516f1a71817d66f4ee82414dde8e5ce9ef2f1382162985831e6d",
+    "repair_heavy": "e38978484b8872a9bd6344dc5e047c6f4ef53679607b84fd704aa4927af8b802"
+  },
+  "allocation_genotypes": {
+    "processing_heavy": [0.55, 0.25, 0.05, 0.15],
+    "repair_heavy": [0.10, 0.20, 0.55, 0.15]
+  },
+  "mutation_contract": {
+    "enabled": false,
+    "probability": 0.01,
+    "sigma": 0.15,
+    "operator": "ordered source-target bounded transfer"
+  },
+  "treatments": ["H", "B", "neutral"],
+  "paired_seeds": [1, 2, 3, 4, 5, 6, 7, 8],
+  "generation": 0,
+  "accepted_step_accounting": {
+    "steps_per_run": 1000,
+    "dt": 0.02,
+    "runs": 48,
+    "expression_rejections": 0
+  },
+  "lineage_hashes": [],
+  "continuous_effects": {
+    "h_processing_minus_repair_reserve_change": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+    "neutral_processing_minus_repair_reserve_change": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+    "b_repair_minus_processing_final_material": [2.066987456330068, 2.06508890603628, 2.068518237759065, 2.066987456330068, 2.06508890603628, 2.068518237759065, 2.066987456330068, 2.06508890603628],
+    "neutral_repair_minus_processing_final_material": [1.876274989562404, 1.876040753632438, 1.8798691170678126, 1.876274989562404, 1.876040753632438, 1.8798691170678126, 1.876274989562404, 1.876040753632438]
+  },
+  "result": "D096_PROCESSING_ADVANTAGE_NOT_ESTABLISHED",
+  "termination_reason": "Gate 5 H processing-heavy reserve effect was zero for all eight paired seeds and did not exceed neutral",
+  "later_gates_run": false,
+  "content_hash": "5ebff12c02b0ef7c2e3e96a7cdca9f6f3a33af966696474f3984df6a48a99532",
+  "content_hash_scope": "canonical sorted JSON before content_hash fields were added"
+}

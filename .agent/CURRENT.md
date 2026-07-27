@@ -4,10 +4,10 @@
 - ID: D-20260727-d096-finite-catalytic-allocation-evolutionary-closure
 - Project directive: D-096
 - Goal: Implement the frozen finite catalytic allocation contract and advance only through committed causal gate passes
-- Status: active — entry gate verified; Gate 0 tracer test next
+- Status: terminal — Gate 5 failed with D096_PROCESSING_ADVANTAGE_NOT_ESTABLISHED
 - Acceptance: exact frozen equation/schema; Gates 0–10 in order; first failure sealed without tuning; Phase 3 only after reversal
 - Touched files: expected chemistry-core allocation/snapshot/candidate/mesh flow; d096 tests/runner/docs/artifacts; .agent/*
-- Next action: trace the accepted-step, snapshot, identity, fission, and physiology integration points; write Gate 0 RED test
+- Next action: none until a new directive; do not tune or run Gates 6–10
 
 ## Repo facts needed now
 - Start 24cb2de / tag D-095-evolutionary-architecture-selected / branch phase2-growth-division-inheritance
@@ -17,8 +17,8 @@
 - Frozen contract must not change; observer estimates are not biological evidence
 
 ## Last validation
-- Command: entry identity/hash/toolchain/storage checks
-- Result: PASS; unrelated worktree changes preserved
+- Command: d096 passing subset; decisive Gate 5; runner filter; D-087 metrics; D-088–D-095 regressions
+- Result: 8/8 PASS; Gate 5 expected FAIL (H reserve effect 0 in 8/8); 0/0; 4/4; 50/50 PASS
 
 ## Open blockers
 - Mimir V2 lifecycle tools unavailable in current tool surface; legacy memory tools do not satisfy required lifecycle

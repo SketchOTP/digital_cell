@@ -1,0 +1,30 @@
+{
+  "directive": "D-096",
+  "source_start": "24cb2de1b0f4ac3f5f4b3dcd3daf090f49749c77",
+  "gate5_source_commit": "83c172f2849e7fd4959ab54a73cc4e513bcbf880",
+  "contract_hash": "a8bf391e77308c6ee5b7f58e54c12102055f018b93634b43e1ea75abfa0f60fd",
+  "d095_manifest_hash": "98bc2b05b8d692e313b150eafe4df6eb09ed618c69d16ae01cf7313381d08d23",
+  "equation_version": "autopoietic_material_mesh_finite_catalytic_allocation_v1",
+  "schema_version": 2,
+  "gate_history": {
+    "gate0": "PASS",
+    "gate1": "PASS",
+    "gate2_processing": "PASS",
+    "gate2_repair": "PASS",
+    "gate3": "PASS",
+    "gate4": "PASS",
+    "gate5": "D096_PROCESSING_ADVANTAGE_NOT_ESTABLISHED",
+    "gate6": "NOT_RUN",
+    "gate7": "NOT_RUN",
+    "gate8": "NOT_RUN",
+    "gate9": "NOT_RUN",
+    "gate10": "NOT_RUN"
+  },
+  "terminal_artifact": {
+    "path": "reciprocal_prefission/attempt_001/result.json",
+    "content_hash": "5ebff12c02b0ef7c2e3e96a7cdca9f6f3a33af966696474f3984df6a48a99532"
+  },
+  "scientific_conclusion": "D096_PROCESSING_ADVANTAGE_NOT_ESTABLISHED",
+  "phase3_authorized": false,
+  "production_verdict": "STOPPED_AT_GATE5"
+}
