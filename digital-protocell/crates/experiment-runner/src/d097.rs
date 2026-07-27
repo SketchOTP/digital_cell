@@ -1,7 +1,8 @@
 use chemistry_core::candidate_identity::sha256_hex;
+use chemistry_core::d096_allocation::{AllocationGenotype, AssayEnvironment};
 use chemistry_core::d097_analysis::{
-    b_specificity, decompose_eight_pairs, D097_PROCESSING_IMPLEMENTATION_DEFECT_CONFIRMED,
-    D098_REPAIR_ROUTE,
+    b_specificity, decompose_eight_pairs, trace_path,
+    D097_PROCESSING_IMPLEMENTATION_DEFECT_CONFIRMED, D098_REPAIR_ROUTE,
 };
 use serde_json::{json, Value};
 use std::fs;
@@ -118,6 +119,26 @@ pub fn run(output: &Path, d096_result: &Path) -> Result<Value, String> {
     let reconstruction_value =
         serde_json::to_value(&reconstruction).map_err(|e| e.to_string())?;
     let b = sealed_b_specificity(d096_result)?;
+    let full_processing: Vec<_> = (1..=8)
+        .map(|seed| {
+            trace_path(
+                AllocationGenotype([1.0, 0.0, 0.0, 0.0]),
+                AssayEnvironment::H,
+                seed,
+                1_000,
+            )
+        })
+        .collect();
+    let full_activation_mean = full_processing
+        .iter()
+        .map(|trace| trace.activated_production)
+        .sum::<f64>()
+        / full_processing.len() as f64;
+    let full_reserve_mean = full_processing
+        .iter()
+        .map(|trace| trace.reserve_change)
+        .sum::<f64>()
+        / full_processing.len() as f64;
 
     let controls = json!({
         "control_a_processing_knockout": {
@@ -132,6 +153,8 @@ pub fn run(output: &Path, d096_result: &Path) -> Result<Value, String> {
         },
         "control_c_full_processing": {
             "contract_valid": true,
+            "activated_production_mean": full_activation_mean,
+            "reserve_change_mean": full_reserve_mean,
             "downstream_reserve_still_schema_blocked": true,
             "label": "NOT BIOLOGICAL EVIDENCE; NOT A PRODUCTION CANDIDATE"
         }
