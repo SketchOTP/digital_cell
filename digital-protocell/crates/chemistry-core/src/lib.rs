@@ -126,6 +126,7 @@ pub mod d094_selection;
 pub mod d094_analysis;
 pub mod d095_analysis;
 pub mod d096_allocation;
+pub mod d097_analysis;
 pub mod d011_analysis;
 pub mod d008_analysis;
 pub mod d008_diagnostics;

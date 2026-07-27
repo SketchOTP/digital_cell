@@ -93,6 +93,7 @@ mod d093;
 mod d094;
 mod d094_pipeline_lock;
 mod d095;
+mod d097;
 
 use chemistry_core::*;
 use clap::{Parser, Subcommand};
@@ -504,6 +505,10 @@ enum Commands {
         #[command(subcommand)]
         action: D095Commands,
     },
+    D097 {
+        #[command(subcommand)]
+        action: D097Commands,
+    },
 }
 
 #[derive(Subcommand)]
@@ -850,6 +855,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Commands::D093 { action } => run_d093(action)?,
         Commands::D094 { action } => run_d094(action)?,
         Commands::D095 { action } => run_d095(action)?,
+        Commands::D097 { action } => run_d097(action)?,
     }
     Ok(())
 }
@@ -4490,6 +4496,35 @@ fn run_d095(action: D095Commands) -> Result<(), Box<dyn std::error::Error>> {
                 "D-095C review status={} selected={} -> {}",
                 result["status"],
                 result["selected_candidate"],
+                output.join("manifest.json").display()
+            );
+        }
+    }
+    Ok(())
+}
+
+#[derive(Subcommand)]
+enum D097Commands {
+    Decompose {
+        #[arg(long, default_value = "experiments/generated/d097")]
+        output: PathBuf,
+        #[arg(long)]
+        d096_result: Option<PathBuf>,
+    },
+}
+
+fn run_d097(action: D097Commands) -> Result<(), Box<dyn std::error::Error>> {
+    match action {
+        D097Commands::Decompose {
+            output,
+            d096_result,
+        } => {
+            let input = d096_result.unwrap_or_else(d097::default_d096_result);
+            let result = d097::run(&output, &input)?;
+            println!(
+                "D-097 classification={} repair={} -> {}",
+                result["primary_scientific_classification"],
+                result["selected_repair_route"],
                 output.join("manifest.json").display()
             );
         }
