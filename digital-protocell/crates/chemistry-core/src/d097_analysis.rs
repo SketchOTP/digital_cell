@@ -262,8 +262,10 @@ pub struct Decomposition {
     pub processing_share_mean_h: f64,
     pub legacy_share_mean_h: f64,
     pub pulse_expression_overlap_fraction: f64,
+    pub productive_flux_elasticity: f64,
     pub resource_delivery_limited: bool,
     pub first_broken_link: String,
+    pub stage_classification: Vec<(String, String)>,
     pub primary_classification: String,
     pub selected_repair_route: String,
     pub mutation_run: bool,
@@ -312,6 +314,18 @@ pub fn decompose_eight_pairs(steps: usize) -> Decomposition {
             })
             .collect::<Vec<_>>(),
     );
+    let productive_flux_elasticity = mean(
+        &h_pairs
+            .iter()
+            .map(|pair| {
+                let flux_change = pair.difference.activated_production
+                    / pair.repair.activated_production.max(f64::MIN_POSITIVE);
+                let catalyst_change = pair.difference.processing_expression
+                    / pair.repair.processing_expression.max(f64::MIN_POSITIVE);
+                flux_change / catalyst_change.max(f64::MIN_POSITIVE)
+            })
+            .collect::<Vec<_>>(),
+    );
     let resource_delivery_limited = h_pairs.iter().any(|pair| {
         pair.processing.internal_resource_exposure <= 0.0
             || pair.processing.unused_internal_resource <= 0.0
@@ -332,10 +346,21 @@ pub fn decompose_eight_pairs(steps: usize) -> Decomposition {
         processing_share_mean_h,
         legacy_share_mean_h: 1.0 - processing_share_mean_h,
         pulse_expression_overlap_fraction: overlap,
+        productive_flux_elasticity,
         resource_delivery_limited,
         first_broken_link:
             "activated-resource production -> reserve accumulation (D-096 reserve schema rejected)"
                 .into(),
+        stage_classification: vec![
+            ("allocation".into(), "DIFFERENT".into()),
+            ("expression".into(), "DIFFERENT".into()),
+            ("resource_encounter".into(), "DIFFERENT".into()),
+            ("resource_conversion".into(), "DIFFERENT".into()),
+            ("activated_resource_production".into(), "DIFFERENT".into()),
+            ("reserve_accumulation".into(), "BYPASSED".into()),
+            ("growth".into(), "BYPASSED".into()),
+            ("readiness".into(), "MASKED".into()),
+        ],
         primary_classification: D097_PROCESSING_IMPLEMENTATION_DEFECT_CONFIRMED.into(),
         selected_repair_route: D098_REPAIR_ROUTE.into(),
         h_pairs,
@@ -361,8 +386,8 @@ pub fn reconstruct_pair(
         processing_allocation: processing.allocation[0] - repair.allocation[0],
         repair_allocation: processing.allocation[2] - repair.allocation[2],
         processing_expression: processing.processing_expression - repair.processing_expression,
-        resource_encounter: processing.boundary_resource_exposure
-            - repair.boundary_resource_exposure,
+        resource_encounter: processing.internal_resource_exposure
+            - repair.internal_resource_exposure,
         resource_conversion: processing.nutrient_converted - repair.nutrient_converted,
         activated_production: processing.activated_production - repair.activated_production,
         reserve_inflow: processing.reserve_inflow - repair.reserve_inflow,

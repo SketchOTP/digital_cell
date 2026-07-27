@@ -10,7 +10,7 @@ fn reconstructs_the_real_d096_path_and_finds_reserve_compatibility_break() {
 
     assert!(pair.difference.processing_allocation > 0.0);
     assert!(pair.difference.processing_expression > 0.0);
-    assert!(pair.difference.resource_encounter.abs() < 1e-12);
+    assert!(pair.difference.resource_encounter.abs() > 0.0);
     assert!(pair.difference.activated_production > 0.0);
     assert_eq!(pair.difference.reserve_inflow, 0.0);
     assert_eq!(pair.difference.reserve_change, 0.0);
@@ -28,6 +28,8 @@ fn decomposition_separates_upstream_authority_from_the_downstream_schema_break()
 
     assert!(result.processing_share_mean_h > 0.0);
     assert!(result.legacy_share_mean_h > 0.0);
+    assert!((result.processing_share_mean_h + result.legacy_share_mean_h - 1.0).abs() < 1e-12);
+    assert!(result.productive_flux_elasticity > 0.0);
     assert!(result.pulse_expression_overlap_fraction > 0.99);
     assert!(!result.resource_delivery_limited);
     assert!(
@@ -43,6 +45,15 @@ fn decomposition_separates_upstream_authority_from_the_downstream_schema_break()
     assert!(!result.selection_run);
     assert!(!result.adaptation_run);
     assert!(!result.reversal_run);
+    assert_eq!(result.stage_classification[5].1, "BYPASSED");
+    for pair in &result.h_pairs {
+        assert_eq!(pair.processing.reserve_inflow, 0.0);
+        assert_eq!(pair.processing.reserve_outflow, 0.0);
+        assert_eq!(pair.processing.reserve_change, 0.0);
+        assert!(pair.processing.half_expression_step.is_some());
+        assert!(pair.processing.stable_expression_step.is_some());
+        assert!(pair.processing.expression_net_benefit > 0.0);
+    }
 }
 
 #[test]
