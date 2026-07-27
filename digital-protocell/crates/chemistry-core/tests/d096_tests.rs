@@ -3,6 +3,7 @@ use chemistry_core::d096_allocation::{
     EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION, FINITE_ALLOCATION_SCHEMA_VERSION,
 };
 use chemistry_core::material_mesh::{LumpedChem, MaterialMesh, EQUATION_VERSION_MATERIAL_MESH};
+use chemistry_core::mesh_reactions::{reactions_step, ReactionParams};
 
 fn mesh() -> MaterialMesh {
     MaterialMesh::seed_regular(
@@ -16,6 +17,17 @@ fn mesh() -> MaterialMesh {
         LumpedChem::default(),
         1.0,
     )
+}
+
+fn expressed(genotype: AllocationGenotype) -> MaterialMesh {
+    let params = AllocationParams::default();
+    let mut candidate = mesh();
+    candidate.interior.a = 2.0;
+    candidate.enable_finite_allocation(genotype, &params);
+    for _ in 0..20 {
+        expression_step(&mut candidate, &params, 0.1).unwrap();
+    }
+    candidate
 }
 
 #[test]
@@ -75,6 +87,62 @@ fn d096_no_expression_controls_and_complementarity_hold_without_normalization() 
     assert!(repair_heavy.valid(&params));
     assert!(processing_heavy.0[0] > repair_heavy.0[0]);
     assert!(processing_heavy.0[2] < repair_heavy.0[2]);
+}
+
+#[test]
+fn d096_processing_expression_is_monotonic_local_and_substrate_dependent() {
+    let reaction = ReactionParams::default();
+    let mut expression = Vec::new();
+    let mut conversion = Vec::new();
+    for processing in [0.0, 0.2, 0.4, 0.6, 0.8] {
+        let mut candidate = expressed(AllocationGenotype([
+            processing,
+            0.1,
+            0.0,
+            0.9 - processing,
+        ]));
+        expression.push(candidate.finite_allocation.unwrap().catalysts[0]);
+        candidate.interior.c = 1.0;
+        candidate.interior.n = 1.0;
+        candidate.interior.f = 1.0;
+        conversion.push(reactions_step(&mut candidate, &reaction, 0.01, false, true).a_produced);
+    }
+    assert!(expression.windows(2).all(|w| w[1] > w[0]));
+    assert!(conversion.windows(2).all(|w| w[1] > w[0]));
+
+    let mut no_substrate = expressed(AllocationGenotype::pulse());
+    no_substrate.interior.c = 1.0;
+    no_substrate.interior.n = 0.0;
+    no_substrate.interior.f = 1.0;
+    assert_eq!(
+        reactions_step(&mut no_substrate, &reaction, 0.01, false, true).a_produced,
+        0.0
+    );
+}
+
+#[test]
+fn d096_repair_expression_is_monotonic_and_requires_local_damage_substrate() {
+    let reaction = ReactionParams::default();
+    let mut expression = Vec::new();
+    let mut repair_flux = Vec::new();
+    for repair in [0.0, 0.2, 0.4, 0.6, 0.8] {
+        let mut candidate =
+            expressed(AllocationGenotype([0.0, 0.1, repair, 0.9 - repair]));
+        expression.push(candidate.finite_allocation.unwrap().catalysts[2]);
+        candidate.interior.c = 1.0;
+        candidate.interior.a = 1.0;
+        candidate.edges[0].m *= 0.5;
+        repair_flux.push(reactions_step(&mut candidate, &reaction, 0.01, true, false).m_produced);
+    }
+    assert!(expression.windows(2).all(|w| w[1] > w[0]));
+    assert!(repair_flux.windows(2).all(|w| w[1] > w[0]));
+
+    let mut no_damage = expressed(AllocationGenotype::damage());
+    no_damage.interior.c = 1.0;
+    no_damage.interior.a = 1.0;
+    let before = no_damage.total_structural_mass();
+    let repaired = reactions_step(&mut no_damage, &reaction, 0.01, true, false).m_produced;
+    assert!(repaired <= before * 1e-3);
 }
 
 #[test]
