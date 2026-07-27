@@ -1,6 +1,7 @@
 use chemistry_core::d096_allocation::{
-    allocation_schema_load_ok, expression_step, AllocationGenotype, AllocationParams,
-    EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION, FINITE_ALLOCATION_SCHEMA_VERSION,
+    allocation_schema_load_ok, apply_assay_environment, expression_step, AllocationGenotype,
+    AllocationParams, AssayEnvironment, EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION,
+    FINITE_ALLOCATION_SCHEMA_VERSION,
 };
 use chemistry_core::material_mesh::{LumpedChem, MaterialMesh, EQUATION_VERSION_MATERIAL_MESH};
 use chemistry_core::mesh_reactions::{reactions_step, ReactionParams};
@@ -188,6 +189,29 @@ fn d096_tradeoff_occurs_in_conserved_processing_and_repair_fluxes() {
     assert!(!(p[1] >= p[0] && r[1] >= r[2]));
     assert!(!(p[0] >= p[2] && r[0] >= r[2]));
     assert!(!(p[2] >= p[0] && r[2] >= r[0]));
+}
+
+#[test]
+fn d096_selecting_environments_are_observable_only_as_local_resources_and_damage() {
+    let mut h = mesh();
+    let mut b = mesh();
+    let mut neutral = mesh();
+    let h_input = apply_assay_environment(&mut h, AssayEnvironment::H, 0);
+    let b_input = apply_assay_environment(&mut b, AssayEnvironment::B, 0);
+    let n_input = apply_assay_environment(&mut neutral, AssayEnvironment::Neutral, 0);
+
+    assert!(h_input.nutrient / h_input.fuel > n_input.nutrient / n_input.fuel);
+    assert!(b_input.structural_damage > 0.0 && b_input.membrane_damage > 0.0);
+    assert_eq!(n_input.structural_damage + n_input.membrane_damage, 0.0);
+    assert_ne!(h.exterior.n, neutral.exterior.n);
+    assert!(b.edges[0].m < neutral.edges[0].m);
+    for organism in [h, b, neutral] {
+        let serialized = serde_json::to_string(&organism).unwrap();
+        assert!(!serialized.contains("AssayEnvironment"));
+        assert!(!serialized.contains("\"H\""));
+        assert!(!serialized.contains("\"B\""));
+        assert!(!serialized.contains("treatment"));
+    }
 }
 
 #[test]

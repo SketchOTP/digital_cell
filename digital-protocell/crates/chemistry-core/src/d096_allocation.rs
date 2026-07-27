@@ -189,3 +189,49 @@ pub fn function_gain(mesh: &MaterialMesh, index: usize) -> f64 {
         .map(|state| catalytic_gain(state.catalysts[index]))
         .unwrap_or(1.0)
 }
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum AssayEnvironment {
+    H,
+    B,
+    Neutral,
+}
+
+#[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize)]
+pub struct EnvironmentLedger {
+    pub nutrient: f64,
+    pub fuel: f64,
+    pub structural_damage: f64,
+    pub membrane_damage: f64,
+}
+
+/// External assay forcing. The enum remains in the harness; only resulting
+/// nutrient/fuel and physical damage enter the organism.
+pub fn apply_assay_environment(
+    mesh: &mut MaterialMesh,
+    environment: AssayEnvironment,
+    step: u64,
+) -> EnvironmentLedger {
+    let (nutrient, fuel) = match environment {
+        AssayEnvironment::H if step % 400 < 100 => (2.75, 1.0),
+        AssayEnvironment::H => (0.264, 1.0),
+        AssayEnvironment::B => (1.98, 1.0),
+        AssayEnvironment::Neutral => (1.54, 1.0),
+    };
+    mesh.exterior.n = nutrient;
+    mesh.exterior.f = fuel;
+    let mut ledger = EnvironmentLedger {
+        nutrient,
+        fuel,
+        ..EnvironmentLedger::default()
+    };
+    if environment == AssayEnvironment::B && step % 350 == 0 {
+        let structural = 0.08_f64.min(mesh.edges[0].m.max(0.0));
+        let membrane = 0.048_f64.min(mesh.edges[0].b.max(0.0));
+        mesh.edges[0].m -= structural;
+        mesh.edges[0].b -= membrane;
+        ledger.structural_damage = structural;
+        ledger.membrane_damage = membrane;
+    }
+    ledger
+}
