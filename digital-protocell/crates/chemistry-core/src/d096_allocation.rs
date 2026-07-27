@@ -183,3 +183,9 @@ pub fn expression_step(
 pub fn catalytic_gain(catalyst: f64) -> f64 {
     1.0 + catalyst.max(0.0) / (0.1 + catalyst.max(0.0))
 }
+
+pub fn function_gain(mesh: &MaterialMesh, index: usize) -> f64 {
+    mesh.finite_allocation
+        .map(|state| catalytic_gain(state.catalysts[index]))
+        .unwrap_or(1.0)
+}

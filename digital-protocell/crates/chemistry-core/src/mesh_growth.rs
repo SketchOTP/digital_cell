@@ -141,8 +141,13 @@ pub fn growth_step(
             if mesh.edges[i].ruptured {
                 continue;
             }
-            let j_mass =
-                crate::metabolic_reserve::local_r_growth_rate(mesh, i, react, growth.y_g) * dt;
+            let j_mass = crate::metabolic_reserve::local_r_growth_rate(
+                mesh,
+                i,
+                react,
+                growth.y_g,
+            ) * crate::d096_allocation::function_gain(mesh, 3)
+                * dt;
             if j_mass <= 0.0 {
                 continue;
             }

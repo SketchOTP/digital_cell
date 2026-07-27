@@ -148,7 +148,7 @@ pub fn structural_build_flux(mesh: &MaterialMesh, i: usize, p: &ReactionParams) 
     } else if p.template.enable {
         template_activity_gains(mesh, &p.template).1
     } else {
-        1.0
+        crate::d096_allocation::function_gain(mesh, 2)
     };
     p.k_build * qc * a * g * ell * gb
 }
@@ -183,6 +183,10 @@ pub fn reactions_step(
             network_activation_gain(mesh, &p.network, p.q_c)
         } else if p.template.enable {
             template_activity_gains(mesh, &p.template).0
+        } else if mesh.finite_allocation.is_some() {
+            let processing = crate::d096_allocation::function_gain(mesh, 0);
+            let activation = crate::d096_allocation::function_gain(mesh, 1);
+            (processing * activation).sqrt()
         } else {
             1.0
         };
@@ -364,6 +368,8 @@ pub fn reactions_step(
             network_building_gain(mesh, &p.network, p.q_c)
         } else if p.template.enable {
             template_activity_gains(mesh, &p.template).1
+        } else if mesh.finite_allocation.is_some() {
+            crate::d096_allocation::function_gain(mesh, 2)
         } else {
             1.0
         };
