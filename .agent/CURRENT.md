@@ -1,13 +1,13 @@
 # CURRENT.md
 
 ## Active directive
-- ID: D-20260727-d097-processing-path-causal-decomposition
-- Project directive: D-097
-- Goal: Locate the first D-096 processing-path causal break and freeze one bounded repair contract
-- Status: complete — narrow reserve-schema implementation defect confirmed; D-098 repair contract frozen, not implemented
-- Acceptance: complete observer ledger/replay/controls/timing/delivery/fate/B audit; exactly one supported classification; D-098 contract only; no later evolutionary work
-- Touched files: expected d097 analysis/tests/runner/docs/artifacts and .agent/*
-- Next action: await explicit D-098 implementation-repair directive
+- ID: D-20260813-digital-cell-prior-art-integration-rebase
+- Project directive: DC-SR-001
+- Goal: Reconcile Digital Cell strategy with prior art while preserving certified science and freezing D-094R
+- Status: complete — repository synchronized, backup verified, strategy branch/tag created, documents recorded
+- Acceptance: certified core preserved; no external code or scientific behavior changes; GitHub synchronization and all strategy records verified
+- Touched files: docs/strategy/* and .agent/*; Git refs; no organism source
+- Next action: await DC-SR-002 External ALife Implementation Audit
 
 ## Repo facts needed now
 - Start a6d574f / tag D-096-finite-allocation-physiology-fail / branch phase2-growth-division-inheritance
@@ -27,3 +27,11 @@
 ## Session constraints
 - No H/B changes, budget/cost/mutation changes, heredity/selection/adaptation/reversal, production transport change, or Phase 3
 - Mimir V2: BLOCKED; do not claim context/evidence/close-out success
+
+## DC-SR-001 state
+- Starting HEAD: 2a54b4170b0cc316b63f6aee1339ed58d449da26
+- Backup: /mnt/storage1tb/backups/digital_cell/digital_cell_pre_strategy_rebase_20260813.bundle; verified; SHA-256 281c53ab44144f9d8457150321444df0f89c3e2c4f545e590a77835c12fd782d
+- Strategy branch: strategy/prior-art-integration-rebase
+- Preservation tag: pre-prior-art-integration-rebase-20260813
+- D-094R: D094R_PRESERVED_PENDING_PRIOR_ART_REBASE
+- Scientific code changed: no

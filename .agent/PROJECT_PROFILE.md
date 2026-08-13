@@ -16,6 +16,9 @@ A self-maintaining digital protocell that develops into a persistent, embodied i
 ## Phase 1 status (D-087 certified; runtime closed)
 - Certified branch seal: `phase1-autopoietic-material-mesh` @ `D-087-phase1-autopoietic-protocell-certified` / release `phase1-v1.0-research`
 - Active Phase 2 branch: `phase2-growth-division-inheritance`
+- Strategic rebase branch: `strategy/prior-art-integration-rebase`
+- Strategic status: DC-SR-001 complete; external prior-art audit required before further evolutionary or generic subsystem work
+- D-094R status: `D094R_PRESERVED_PENDING_PRIOR_ART_REBASE`
 - Body substrate: conserved material mesh (`autopoietic_material_mesh_v1`) — **independently certified** (`MESH_PHASE1_V1_FROZEN`)
 - Science records: `PHASE1_COMPLETE`, `PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED`, `MESH_PHASE1_V1_FROZEN`, `PHASE2_REPRODUCTION_AUTHORIZED`, `PHASE1_SCIENCE_CERTIFIED`
 - Runtime: `PHASE1_RESEARCH_RUNTIME_QUALIFIED` (≥90 min wall-clock packaged run)
@@ -28,6 +31,7 @@ A self-maintaining digital protocell that develops into a persistent, embodied i
 - Next: evolutionary substrate architecture review (no execution directive active)
 - Stack: Rust (`digital-protocell`), chemistry-core + experiment-runner + phase1-certifier
 - Runtime package: `digital-protocell-phase1-v1`
+- Current strategy: `AUTOPIETIC_CORE_WITH_EXTERNAL_ALIFE_INTEGRATION`
 
 ## Storage / disk
 - Single policy: `.cursor/rules/06-storage-archive.mdc`

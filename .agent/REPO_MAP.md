@@ -8,6 +8,11 @@ Concise navigation map for agents. Add entries as application code lands.
 - `AGENTS.md` — agent governance and MCP workflows
 - `COMMANDMENTS_OF_THE_CODE.md` — ethical and execution principles for coding agents
 - `.cursor/rules/` — Cursor rule adapters (governance, Mimir, Serena, cocoindex, Animus)
+- `docs/strategy/2026-08-13_prior_art_rebase.md` — DC-SR-001 reconciliation and source-control record
+- `docs/strategy/module_disposition.md` — current module disposition inventory
+- `docs/strategy/external_alife_audit_plan.md` — ordered external ALife implementation audit
+- `docs/strategy/external_license_register.md` — pre-audit provenance and license register
+- `docs/strategy/d094r_freeze_record.md` — D-094R preservation and governance stop
 
 ## Agent memory
 - `.agent/CURRENT.md` — mutable working state
