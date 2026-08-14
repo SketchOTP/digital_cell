@@ -28,6 +28,15 @@
 - No H/B changes, budget/cost/mutation changes, heredity/selection/adaptation/reversal, production transport change, or Phase 3
 - Mimir V2: BLOCKED; do not claim context/evidence/close-out success
 
+## DC-SR-002 current state
+- Directive: External Artificial-Life Implementation Audit
+- Branch/entry: `strategy/prior-art-integration-rebase` at `24d57b474843da252efe9907e7cba510d11affb2`
+- Scope: source-pinned audit only; no Digital Cell scientific/runtime changes, dependencies, D-094 resume, D-095 work, or GPU migration
+- Tier 1: `TIER1_EVOLUTION_AUDIT_COMPLETE`; Tier 2: `TIER2_WORLD_GPU_AUDIT_COMPLETE`
+- Recommendation: keep D-094 frozen; build a thin Digital Cell-owned evolution harness next; defer GPU and discovery sidecars
+- Evidence root: `docs/strategy/external_alife_audit.json` and `docs/strategy/external_audit/`
+- External cache: `/mnt/storage1tb/cache/prior-art/digital_cell/` (outside repository)
+
 ## DC-SR-001 state
 - Starting HEAD: 2a54b4170b0cc316b63f6aee1339ed58d449da26
 - Backup: /mnt/storage1tb/backups/digital_cell/digital_cell_pre_strategy_rebase_20260813.bundle; verified; SHA-256 281c53ab44144f9d8457150321444df0f89c3e2c4f545e590a77835c12fd782d

@@ -768,3 +768,9 @@ Concise navigation map for agents. Add entries as application code lands.
 - docs/d094r2_gate6_execution.md — sealed toolchain, binary, checkpoint, and D-008 validation scope
 - docs/d094r2_selection_analysis.md — raw-row Gate 6 effect analysis and negative selection evidence
 - docs/d094r2_final_conclusion.md — exact D-094R2 rejection and authorization boundary
+
+## DC-SR-002 audit artifacts
+- `docs/strategy/external_alife_audit.json` — pinned source metadata, license SHAs, classifications and recommendations
+- `docs/strategy/external_audit/` — project reports, overlap map, tier syntheses and final recommendations
+- `docs/strategy/external_license_register.md` — additive pinned license register
+- External source cache is outside the repository at `/mnt/storage1tb/cache/prior-art/digital_cell/`; it is not a dependency or vendored tree

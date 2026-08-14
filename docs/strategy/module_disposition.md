@@ -21,3 +21,17 @@ This is a reconciliation inventory, not a deletion plan. No module is deleted or
 
 For every future candidate record path, purpose, phase, scientific authority, runtime dependency, historical status, external analogue, license, disposition, isolation/removal safety, tests, and dependent artifacts. REPLACE is not assigned until SR-002 establishes a legal and technical boundary.
 
+## DC-SR-002 external audit reconciliation
+
+The following is an additive strategy decision; the pre-audit rows above remain historical context.
+
+| Path / module family | DC-SR-002 decision | Evidence and boundary |
+|---|---|---|
+| material_mesh.rs, mesh_mechanics.rs, mesh_reactions.rs, mesh_transport.rs | KEEP | No audited source provides conserved material-mesh authority or an equivalent causal boundary. |
+| mesh_growth.rs, mesh_topology.rs, mesh_fission.rs, mesh_population.rs | KEEP / BENCHMARK | Physical growth/fission remains Digital Cell-owned; DISHTINY/Avida are method benchmarks only. |
+| template_*, template_network*, d089-d094 | KEEP / BENCHMARK | Stringmol/Aevol overlap heredity concepts but do not replace material template/fission causality; D-094 remains frozen. |
+| population_selection.rs, spatial_shared_dish.rs, experiment-runner | ADAPT | Add a thin manifest/protocol/lineage/neutral-control harness; preserve observer-only selection and causal birth boundaries. |
+| phase1-certifier, godot/, godot-bridge/ | KEEP | Certified evidence and current visualization/control bridge remain authoritative. |
+| external source code and dependencies | REJECT_INTEGRATION | No external source or dependency is authorized by DC-SR-002; unknown licenses remain no-code-reuse. |
+| future GPU/world layer | DEFER; ADOPT_WGPU_ARCHITECTURE_LATER | Only after measured need and CPU/certifier parity; use isolated wgpu patterns, not ALIEN/Ribossome organism code. |
+| discovery sidecar | DEFER; ASAL_SIDECAR_RECOMMENDED | Future adapter may propose candidates, but governed Digital Cell artifacts determine scientific outcomes. |

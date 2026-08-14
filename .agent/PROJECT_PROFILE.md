@@ -67,3 +67,10 @@ A self-maintaining digital protocell that develops into a persistent, embodied i
 - On every machine, call mimir_project_resolve with this ID and that machine's workspace path.
 - Register only when this binding is absent; never create a host path or map a drive.
 <!-- MIMIR_PROJECT_BINDING_END -->
+
+## DC-SR-002 strategy decisions
+- External ALife audit is complete at tag `DC-SR-002-external-alife-audit`.
+- Certified material mesh, physical growth/fission, template heredity, phase-1 certifier, and Godot bridge remain KEEP/authoritative.
+- D-094 remains frozen pending a repaired protocol/evolution harness. The next authorized shape is a thin Digital Cell-owned harness with neutral controls, explicit ecology schedules, generation/parent accounting, lineage, extinction reasons, and immutable artifacts.
+- GPU is deferred; a future measured need may justify a thin wgpu backend, but ALIEN/Ribossome organism code and CUDA migration are rejected.
+- ASAL is a possible future hypothesis sidecar only; its novelty/embedding metrics never certify Digital Cell biology.
