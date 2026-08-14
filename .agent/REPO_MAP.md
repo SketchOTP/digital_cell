@@ -37,7 +37,7 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/docs/d095_*.md` — D-095 replay, contrast, architecture review, and final conclusion
 - `digital-protocell/docs/d096_selected_architecture_contract.md` — frozen Candidate B implementation/experiment contract; not implementation
 - `digital-protocell/crates/chemistry-core/src/d096_allocation.rs` — D-096 finite simplex, costly expression, local environment forcing, and pre-fission assay
-- `digital-protocell/crates/chemistry-core/tests/d096_tests.rs` — D-096 Gates 0–5 executable checks; Gate 5 is the terminal scientific non-pass
+- `digital-protocell/crates/chemistry-core/tests/d096_tests.rs` — D-096 Gates 0–6 executable checks; Gate 5 remains the terminal physiology result and Gate 6 covers continuity
 - `digital-protocell/docs/d096_*.md` — D-096 implementation, gate evidence, terminal physiology conclusion
 - `digital-protocell/crates/chemistry-core/src/d097_analysis.rs` — observer-only D-096 processing-path reconstruction, elasticity, B specificity, deterministic causal classification
 - `digital-protocell/crates/chemistry-core/tests/d097_tests.rs` — D-097 pathway, fate, timing, no-later-execution, and B specificity checks
@@ -785,3 +785,7 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/evolution-harness/src/protocols.rs` — execution authorization, placement, evidence, and selective-pressure protocol contracts
 - `digital-protocell/crates/evolution-harness/src/adapter.rs` — founder placement context and mechanism-aware heredity/phenotype evidence boundary
 - `.github/workflows/evolution-harness.yml` — pinned Rust formatting/test verification for the harness workspace
+- `digital-protocell/crates/evolution-harness/examples/d096_gate6_assay.rs` — runnable Gate 6 heredity/mutation evidence assay
+- `docs/strategy/evolution_harness/d096_gate6_heredity_mutation.md` — Gate 6 scope and verification boundary
+- `docs/strategy/evolution_harness/d096_gate6_evidence.json` — committed Gate 6 assay evidence record
+- `.github/workflows/d096-gate6.yml` — scoped Gate 6 Rust formatting, tests, and evidence assay CI

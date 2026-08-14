@@ -5,12 +5,14 @@
 
 use crate::candidate_identity::sha256_hex;
 use crate::material_mesh::MaterialMesh;
+use crate::template_polymer::{RngLike, XorShift64};
 use serde::{Deserialize, Serialize};
 
 pub const EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION: &str =
     "autopoietic_material_mesh_finite_catalytic_allocation_v1";
 pub const FINITE_ALLOCATION_SCHEMA_VERSION: u32 = 2;
 pub const FUNCTIONS: usize = 4;
+const D096_RNG_DOMAIN: u64 = 0xD096_004B_5EED_0001;
 
 #[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub struct AllocationGenotype(pub [f64; FUNCTIONS]);
@@ -98,6 +100,149 @@ impl Default for AllocationParams {
 pub struct AllocationState {
     pub genotype: AllocationGenotype,
     pub catalysts: [f64; FUNCTIONS],
+}
+
+/// Evidence that the physical finite-allocation catalyst pool was partitioned
+/// rather than copied during a qualified mesh fission.
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+pub struct CatalystPartitionAudit {
+    pub fraction_a: f64,
+    pub fraction_b: f64,
+    pub pre_catalyst: [f64; FUNCTIONS],
+    pub daughter_a_catalyst: [f64; FUNCTIONS],
+    pub daughter_b_catalyst: [f64; FUNCTIONS],
+    pub residuals: [f64; FUNCTIONS],
+    pub max_residual: f64,
+    pub conserved: bool,
+}
+
+pub fn partition_catalysts(
+    parent: AllocationState,
+    fraction_a: f64,
+    fraction_b: f64,
+) -> (AllocationState, AllocationState, CatalystPartitionAudit) {
+    let pre = parent.catalysts;
+    let mut daughter_a = parent;
+    let mut daughter_b = parent;
+    daughter_a.catalysts = std::array::from_fn(|i| pre[i] * fraction_a);
+    daughter_b.catalysts = std::array::from_fn(|i| pre[i] * fraction_b);
+    let residuals = std::array::from_fn(|i| {
+        (daughter_a.catalysts[i] + daughter_b.catalysts[i] - pre[i]).abs()
+    });
+    let max_residual = residuals.iter().copied().fold(0.0, f64::max);
+    let audit = CatalystPartitionAudit {
+        fraction_a,
+        fraction_b,
+        pre_catalyst: pre,
+        daughter_a_catalyst: daughter_a.catalysts,
+        daughter_b_catalyst: daughter_b.catalysts,
+        residuals,
+        max_residual,
+        conserved: (fraction_a + fraction_b - 1.0).abs() <= 1e-12
+            && max_residual <= 1e-12 * (1.0 + pre.iter().copied().fold(0.0, f64::max)),
+    };
+    (daughter_a, daughter_b, audit)
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum MutationReject {
+    InvalidParameters,
+    InvalidParent,
+    InvalidResult,
+}
+
+/// Complete provenance for one D-096 genotype-copy decision.
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+pub struct AllocationMutationRecord {
+    pub operator: &'static str,
+    pub provenance: &'static str,
+    pub seed: u64,
+    pub mutation_probability: f64,
+    pub mutation_sigma: f64,
+    pub mutation_occurred: bool,
+    pub source: Option<usize>,
+    pub target: Option<usize>,
+    pub pre_genotype: AllocationGenotype,
+    pub post_genotype: AllocationGenotype,
+    pub raw_abs_normal: f64,
+    pub applied_delta: f64,
+}
+
+fn normal_sample(rng: &mut impl RngLike) -> f64 {
+    let radius = (-2.0 * rng.unit().max(f64::MIN_POSITIVE).ln()).sqrt();
+    let angle = std::f64::consts::TAU * rng.unit();
+    radius * angle.cos()
+}
+
+fn d096_stream_seed(seed: u64) -> u64 {
+    let mut value = seed.wrapping_add(D096_RNG_DOMAIN);
+    value = (value ^ (value >> 30)).wrapping_mul(0xBF58_476D_1CE4_E5B9);
+    value = (value ^ (value >> 27)).wrapping_mul(0x94D0_49BB_1331_11EB);
+    value ^ (value >> 31)
+}
+
+pub fn mutate_allocation_genotype(
+    pre_genotype: AllocationGenotype,
+    params: &AllocationParams,
+    seed: u64,
+) -> Result<AllocationMutationRecord, MutationReject> {
+    if !params.total_budget.is_finite()
+        || !params.allocation_min.is_finite()
+        || !params.allocation_max.is_finite()
+        || !params.mutation_probability.is_finite()
+        || !params.mutation_sigma.is_finite()
+        || params.allocation_min > params.allocation_max
+        || !(0.0..=1.0).contains(&params.mutation_probability)
+        || params.mutation_sigma < 0.0
+    {
+        return Err(MutationReject::InvalidParameters);
+    }
+    if !pre_genotype.valid(params) {
+        return Err(MutationReject::InvalidParent);
+    }
+    // Domain-separate the declared stream seed before handing it to the
+    // existing xorshift implementation. This avoids biased first draws for
+    // sequential low-valued campaign ordinals while preserving reproducibility.
+    let mut rng = XorShift64::new(d096_stream_seed(seed));
+    let mut post = pre_genotype;
+    let mut source = None;
+    let mut target = None;
+    let mut raw_abs_normal = 0.0;
+    let mut applied_delta = 0.0;
+    let mutation_occurred = rng.unit() < params.mutation_probability;
+    if mutation_occurred {
+        let selected_source = (rng.unit() * FUNCTIONS as f64) as usize % FUNCTIONS;
+        let mut selected_target = (rng.unit() * (FUNCTIONS - 1) as f64) as usize;
+        if selected_target >= selected_source {
+            selected_target += 1;
+        }
+        raw_abs_normal = (normal_sample(&mut rng) * params.mutation_sigma).abs();
+        let cap = (post.0[selected_source] - params.allocation_min)
+            .min(params.allocation_max - post.0[selected_target])
+            .max(0.0);
+        applied_delta = raw_abs_normal.min(cap);
+        post.0[selected_source] -= applied_delta;
+        post.0[selected_target] += applied_delta;
+        source = Some(selected_source);
+        target = Some(selected_target);
+    }
+    if !post.valid(params) {
+        return Err(MutationReject::InvalidResult);
+    }
+    Ok(AllocationMutationRecord {
+        operator: "D096AllocationMutationOperator",
+        provenance: "DC-SR-004B;D-096_GATE6;existing_fixed_simplex_contract",
+        seed,
+        mutation_probability: params.mutation_probability,
+        mutation_sigma: params.mutation_sigma,
+        mutation_occurred,
+        source,
+        target,
+        pre_genotype,
+        post_genotype: post,
+        raw_abs_normal,
+        applied_delta,
+    })
 }
 
 #[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize)]

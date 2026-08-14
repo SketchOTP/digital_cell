@@ -56,6 +56,8 @@ pub struct EvolutionHarness<A: OrganismAdapter> {
     emitted_schedule_events: BTreeSet<String>,
     current_environment_id: String,
     active_environment: EnvironmentProtocolV1,
+    campaign_seed: u64,
+    mutation_stream_counter: u64,
 }
 
 pub struct ReplicateRunner;
@@ -84,8 +86,8 @@ impl ReplicateRunner {
         for (replicate, seed) in protocol.random_seeds.iter().copied().enumerate() {
             let adapter = adapter_factory(replicate as u32, seed);
             let founder = founder_factory(replicate as u32, seed);
-            let mut harness =
-                EvolutionHarness::new(adapter, protocol.clone())?.with_replicate(replicate as u32);
+            let mut harness = EvolutionHarness::new(adapter, protocol.clone())?
+                .with_replicate_seed(replicate as u32, seed);
             harness.initialize_founder(founder)?;
             harness.run_to_horizon()?;
             results.push(harness.replicate_result(seed));
@@ -121,6 +123,10 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
             .as_ref()
             .map(|contract| contract.validate().is_ok())
             .unwrap_or(false);
+        let default_campaign_seed = protocol
+            .placement_protocol
+            .random_seed
+            .unwrap_or(protocol.placement_protocol.founder_seed);
         Ok(Self {
             adapter,
             current_environment_id: protocol.environment_protocol.environment_id.clone(),
@@ -144,11 +150,19 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
             environment_supported: true,
             emitted_schedule_events: BTreeSet::new(),
             active_environment,
+            campaign_seed: default_campaign_seed,
+            mutation_stream_counter: 0,
         })
     }
 
     pub fn with_replicate(mut self, replicate: u32) -> Self {
         self.replicate = replicate;
+        self
+    }
+
+    pub fn with_replicate_seed(mut self, replicate: u32, seed: u64) -> Self {
+        self.replicate = replicate;
+        self.campaign_seed = seed;
         self
     }
 
@@ -580,9 +594,13 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
                 self.first_reproduction_time
                     .get_or_insert(self.accepted_simulated_time);
                 let lineage_id = parent_record.lineage_id;
-                for mut child in offspring {
+                for (offspring_index, mut child) in offspring.into_iter().enumerate() {
+                    let qualified_copy_ordinal = self.mutation_stream_counter;
+                    self.mutation_stream_counter = self.mutation_stream_counter.wrapping_add(1);
+                    let mutation_stream_seed =
+                        d096_mutation_stream_seed(self.campaign_seed, qualified_copy_ordinal);
                     let child_id = self.population.next_organism_id;
-                    let birth = EventV1::birth(
+                    let mut birth = EventV1::birth(
                         0,
                         self.accepted_simulated_time,
                         self.accepted_step,
@@ -592,6 +610,17 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
                         lineage_id,
                         &self.current_environment_id,
                         &self.protocol.protocol_id,
+                    );
+                    birth
+                        .metadata
+                        .insert("qualified_physical_copy".into(), "true".into());
+                    birth.metadata.insert(
+                        "qualified_copy_ordinal".into(),
+                        qualified_copy_ordinal.to_string(),
+                    );
+                    birth.metadata.insert(
+                        "mutation_stream_seed".into(),
+                        mutation_stream_seed.to_string(),
                     );
                     let birth_event_id = self
                         .ledger
@@ -636,31 +665,49 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
                         &MutationContext {
                             accepted_step: self.accepted_step,
                             accepted_simulated_time: self.accepted_simulated_time,
-                            seed: child_id,
+                            // Mutation randomness is declared by the protocol
+                            // and a unique accepted-copy ordinal. It is not
+                            // derived from organism, lineage, clade, fitness,
+                            // or survival identity.
+                            seed: mutation_stream_seed,
+                            offspring_index: offspring_index as u32,
+                            qualified_physical_copy: true,
+                            qualified_copy_ordinal,
                             parent_hereditary_state: parent_state,
                         },
                     )?;
+                    let mutation_provenance_valid =
+                        if self.protocol.mutation_protocol.mutation_protocol_id
+                            == "d096_allocation_mutation_v1"
+                        {
+                            mutation.as_ref().is_some_and(valid_d096_mutation_metadata)
+                        } else {
+                            true
+                        };
                     if let Some(metadata) = mutation {
-                        let mut event = EventV1::base(
-                            0,
-                            self.accepted_simulated_time,
-                            self.accepted_step,
-                            self.replicate,
-                            EventType::Mutation,
-                            &self.current_environment_id,
-                            &self.protocol.protocol_id,
-                        );
-                        event.organism_id = Some(child_id);
-                        event.parent_id = Some(parent_id);
-                        event.lineage_id = Some(lineage_id);
-                        event.metadata = metadata;
-                        self.ledger
-                            .append(event)
-                            .map_err(|e| HarnessError::Events(e.to_string()))?;
+                        if mutation_metadata_reports_change(&metadata) {
+                            let mut event = EventV1::base(
+                                0,
+                                self.accepted_simulated_time,
+                                self.accepted_step,
+                                self.replicate,
+                                EventType::Mutation,
+                                &self.current_environment_id,
+                                &self.protocol.protocol_id,
+                            );
+                            event.organism_id = Some(child_id);
+                            event.parent_id = Some(parent_id);
+                            event.lineage_id = Some(lineage_id);
+                            event.metadata = metadata;
+                            self.ledger
+                                .append(event)
+                                .map_err(|e| HarnessError::Events(e.to_string()))?;
+                        }
                     }
                     let heredity_evidence = self.adapter.heredity_evidence(Some(parent), &child);
                     let phenotype_evidence = self.adapter.phenotype_evidence(environment, &child);
-                    self.heredity_preserved &= heredity_evidence.qualification;
+                    self.heredity_preserved &=
+                        heredity_evidence.qualification && mutation_provenance_valid;
                     self.phenotype_measurable &= phenotype_evidence.qualification;
                     self.organisms.insert(child_id, child);
                 }
@@ -806,5 +853,155 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
             protocol_hash: self.protocol.hash(),
             event_ledger_hash: self.ledger.hash().unwrap_or_default(),
         }
+    }
+}
+
+/// Deterministic D-096 mutation stream key for one replicate/copy coordinate.
+///
+/// The campaign seed and qualified-copy ordinal are independent coordinates;
+/// neither is an organism or fitness identity.
+pub fn d096_mutation_stream_seed(campaign_seed: u64, qualified_copy_ordinal: u64) -> u64 {
+    const D096_CAMPAIGN_DOMAIN: u64 = 0xd096_cafe_5eed_0001;
+    const D096_COPY_DOMAIN: u64 = 0xd096_cafe_5eed_0002;
+    const D096_COMBINE_DOMAIN: u64 = 0xd096_cafe_5eed_0003;
+
+    // Mix the campaign and copy coordinates independently before combining
+    // them. This prevents additive/XOR aliasing such as (17, 1) == (18, 0)
+    // while keeping the stream assignment deterministic and dependency-free.
+    let campaign_component = d096_splitmix64(
+        campaign_seed
+            .wrapping_mul(0x9e37_79b9_7f4a_7c15)
+            .rotate_left(23)
+            ^ D096_CAMPAIGN_DOMAIN,
+    );
+    let copy_component = d096_splitmix64(
+        qualified_copy_ordinal
+            .wrapping_mul(0xbf58_476d_1ce4_e5b9)
+            .rotate_left(41)
+            ^ D096_COPY_DOMAIN,
+    );
+
+    d096_splitmix64(
+        campaign_component.wrapping_add(copy_component.rotate_left(17)) ^ D096_COMBINE_DOMAIN,
+    )
+}
+
+fn d096_splitmix64(mut value: u64) -> u64 {
+    value = value.wrapping_add(0x9e37_79b9_7f4a_7c15);
+    value = (value ^ (value >> 30)).wrapping_mul(0xbf58_476d_1ce4_e5b9);
+    value = (value ^ (value >> 27)).wrapping_mul(0x94d0_49bb_1331_11eb);
+    value ^ (value >> 31)
+}
+
+fn mutation_metadata_reports_change(metadata: &crate::Metadata) -> bool {
+    if metadata.get("mutation_occurred").map(String::as_str) != Some("true") {
+        return false;
+    }
+    match (metadata.get("pre_genotype"), metadata.get("post_genotype")) {
+        (Some(pre), Some(post)) => {
+            let Ok(pre) = serde_json::from_str::<serde_json::Value>(pre) else {
+                return false;
+            };
+            let Ok(post) = serde_json::from_str::<serde_json::Value>(post) else {
+                return false;
+            };
+            pre != post
+        }
+        _ => true,
+    }
+}
+
+fn valid_d096_mutation_metadata(metadata: &crate::Metadata) -> bool {
+    metadata.get("operator").map(String::as_str) == Some("D096AllocationMutationOperator")
+        && metadata
+            .get("provenance")
+            .is_some_and(|value| value.starts_with("DC-SR-004B;D-096_GATE6;"))
+        && metadata
+            .get("seed")
+            .is_some_and(|value| value.parse::<u64>().is_ok())
+        && metadata
+            .get("qualified_copy_ordinal")
+            .is_some_and(|value| value.parse::<u64>().is_ok())
+        && metadata.get("pre_genotype").is_some()
+        && metadata.get("post_genotype").is_some()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{d096_mutation_stream_seed, mutation_metadata_reports_change};
+    use chemistry_core::d096_allocation::{
+        mutate_allocation_genotype, AllocationGenotype, AllocationParams,
+    };
+    use std::collections::HashSet;
+
+    #[test]
+    fn d096_mutation_stream_keys_are_deterministic_and_bounded_unique() {
+        assert_eq!(
+            d096_mutation_stream_seed(17, 1),
+            d096_mutation_stream_seed(17, 1)
+        );
+        assert_ne!(
+            d096_mutation_stream_seed(17, 1),
+            d096_mutation_stream_seed(18, 0)
+        );
+
+        let keys = (0..64_u64)
+            .flat_map(|campaign_seed| {
+                (0..256_u64).map(move |qualified_copy_ordinal| {
+                    d096_mutation_stream_seed(campaign_seed, qualified_copy_ordinal)
+                })
+            })
+            .collect::<HashSet<_>>();
+        assert_eq!(keys.len(), 64 * 256);
+    }
+
+    #[test]
+    fn mutation_event_requires_an_actual_genotype_change() {
+        let same = crate::Metadata::from([
+            ("mutation_occurred".into(), "true".into()),
+            ("pre_genotype".into(), "[0.25,0.25,0.25,0.25]".into()),
+            ("post_genotype".into(), "[0.25,0.25,0.25,0.25]".into()),
+        ]);
+        let changed = crate::Metadata::from([
+            ("mutation_occurred".into(), "true".into()),
+            ("pre_genotype".into(), "[0.25,0.25,0.25,0.25]".into()),
+            ("post_genotype".into(), "[0.20,0.30,0.25,0.25]".into()),
+        ]);
+        let inherited = crate::Metadata::from([
+            ("mutation_occurred".into(), "false".into()),
+            ("pre_genotype".into(), "[0.25,0.25,0.25,0.25]".into()),
+            ("post_genotype".into(), "[0.25,0.25,0.25,0.25]".into()),
+        ]);
+
+        assert!(!mutation_metadata_reports_change(&same));
+        assert!(mutation_metadata_reports_change(&changed));
+        assert!(!mutation_metadata_reports_change(&inherited));
+    }
+
+    #[test]
+    fn d096_mutation_stream_repeats_within_replicate_and_diverges_across_seeds() {
+        let params = AllocationParams::default();
+        let trace = |campaign_seed| {
+            (0..512_u64)
+                .map(|qualified_copy_ordinal| {
+                    let record = mutate_allocation_genotype(
+                        AllocationGenotype::neutral(),
+                        &params,
+                        d096_mutation_stream_seed(campaign_seed, qualified_copy_ordinal),
+                    )
+                    .expect("frozen D-096 stream should remain valid");
+                    (
+                        record.mutation_occurred,
+                        record.source,
+                        record.target,
+                        record.applied_delta.to_bits(),
+                        record.post_genotype,
+                    )
+                })
+                .collect::<Vec<_>>()
+        };
+
+        assert_eq!(trace(17), trace(17));
+        assert_ne!(trace(17), trace(18));
     }
 }
