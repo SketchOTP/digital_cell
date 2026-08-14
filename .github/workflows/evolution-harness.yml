@@ -1,0 +1,32 @@
+name: Evolution Harness
+
+on:
+  push:
+    branches:
+      - strategy/modular-evolution-harness
+  pull_request:
+    branches:
+      - strategy/modular-evolution-harness
+      - strategy/prior-art-integration-rebase
+
+jobs:
+  evolution-harness:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: digital-protocell
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install pinned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install rustfmt
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Check formatting
+        run: cargo +1.89.0 fmt --package evolution-harness -- --check
+
+      - name: Test evolution harness
+        run: cargo +1.89.0 test -p evolution-harness

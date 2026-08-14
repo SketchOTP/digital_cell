@@ -74,3 +74,10 @@ A self-maintaining digital protocell that develops into a persistent, embodied i
 - D-094 remains frozen pending a repaired protocol/evolution harness. The next authorized shape is a thin Digital Cell-owned harness with neutral controls, explicit ecology schedules, generation/parent accounting, lineage, extinction reasons, and immutable artifacts.
 - GPU is deferred; a future measured need may justify a thin wgpu backend, but ALIEN/Ribossome organism code and CUDA migration are rejected.
 - ASAL is a possible future hypothesis sidecar only; its novelty/embedding metrics never certify Digital Cell biology.
+
+## DC-SR-003 harness boundary
+- The next implementation layer is `evolution-harness`, above organism biology and below experiment orchestration.
+- `chemistry-core` remains authoritative and must not depend on the harness.
+- Selection observation is measurement-only; mutation context contains no fitness/winner/survival input.
+- D-090 through D-093 are representable protocol fixtures; D-094 is translated but never executed in SR-003.
+- SR-003 completed on `strategy/modular-evolution-harness`; next directive is SR-004 and only it may unfreeze D-094.

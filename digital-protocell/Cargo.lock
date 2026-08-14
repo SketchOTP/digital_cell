@@ -415,6 +415,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "evolution-harness"
+version = "0.1.0"
+dependencies = [
+ "chemistry-core",
+ "serde",
+ "serde_json",
+ "thiserror",
+]
+
+[[package]]
 name = "exr"
 version = "1.74.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"

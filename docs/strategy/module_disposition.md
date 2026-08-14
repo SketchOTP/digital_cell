@@ -35,3 +35,17 @@ The following is an additive strategy decision; the pre-audit rows above remain 
 | external source code and dependencies | REJECT_INTEGRATION | No external source or dependency is authorized by DC-SR-002; unknown licenses remain no-code-reuse. |
 | future GPU/world layer | DEFER; ADOPT_WGPU_ARCHITECTURE_LATER | Only after measured need and CPU/certifier parity; use isolated wgpu patterns, not ALIEN/Ribossome organism code. |
 | discovery sidecar | DEFER; ASAL_SIDECAR_RECOMMENDED | Future adapter may propose candidates, but governed Digital Cell artifacts determine scientific outcomes. |
+
+## DC-SR-003 structural update
+
+| Path / module family | Prior disposition | New structural disposition | Evidence / boundary |
+|---|---|---|---|
+| `experiment-runner/` D-089–D-094 runners | ADAPT | KEEP historical runners; ADAPT through harness | Existing runners remain immutable evidence. New protocol/lineage/generation logic is isolated in `crates/evolution-harness`; no runner is archived or rewritten. |
+| `crates/evolution-harness/` | Not present | KEEP / ADAPT | Native protocol, event, population, lineage, generation, adapter, observer, and export boundary; depends on `chemistry-core`, never reverse. |
+| `chemistry-core/` | KEEP | KEEP | Digital Cell biology remains authoritative; only a narrow adapter calls existing APIs. |
+| D-090–D-093 historical designs | BENCHMARK | BENCHMARK / REPRESENTABLE | Declarative fixtures prove protocol representation without rerunning science or rewriting artifacts. |
+| D-094/D-094R | Frozen | FROZEN / TRANSLATED_ONLY | `d094_requalified_protocol.json` records a non-executable translation; SR-004 alone may unfreeze. |
+
+## DC-SR-003R verification repair update
+
+The harness is now an executable campaign boundary rather than protocol-only scaffolding. Accepted simulated time comes from adapter `dt`; supported mesh ecology executes through existing resource/damage APIs; shared and spatial-local modes fail explicitly when the single-organism adapter cannot provide a population/dish capability. Treatment and neutral campaigns share `ReplicateRunner`, and final selection classifications require qualified paired replicates. Historical/D-094 fixtures record source artifacts and unresolved values; unresolved translations remain execution-disabled.
