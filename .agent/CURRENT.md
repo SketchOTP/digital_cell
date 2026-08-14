@@ -4,10 +4,10 @@
 - ID: D-20260814-1456-gate6-expansion
 - Project directive: DC-SR-004B
 - Goal: Complete the bounded D-096 Gate 6 heredity/mutation assay, evidence, documentation, and scoped CI package after midpoint clearance
-- Status: in_progress; Gate 7 blocked
-- Acceptance: runnable heredity/mutation assays, committed evidence artifacts and documentation, scoped CI, final local suite, pushed draft PR #4
+- Status: coder_complete_architect_pending; Gate 7 blocked
+- Acceptance: met for coder scope; runnable heredity/mutation assays, committed evidence artifacts and documentation, scoped CI, final local suite, pushed draft PR #4
 - Touched files: evolution-harness Gate 6 tests/docs/artifacts/CI and .agent records; no certified science changes
-- Next action: inspect existing Gate 6 coverage, define the smallest missing assay package, implement and verify
+- Next action: architect independently inspect exact PR #4 head and remote CI; do not start Gate 7
 
 ## Repo facts needed now
 - Preserved entry commit: 956b054a9b37f675a8b84ae0624db98853956d37
@@ -24,4 +24,5 @@
 ## Open blockers
 - Mimir V2 lifecycle tools are unavailable in the current tool surface; do not claim Mimir context/evidence/close-out
 - Atlas has no Rust/Cargo on PATH; local sanctioned Windows toolchain is used for verification
-- Draft PR: #4 https://github.com/SketchOTP/digital_cell/pull/4; midpoint-cleared head 00921d7651035142850af42ff4d1dc1eedb5b437
+- Draft PR: #4 https://github.com/SketchOTP/digital_cell/pull/4; head 8d54616957ba32870d9f476e815757f0cf8911ef
+- Remote CI: D-096 Gate 6 Heredity and Mutation run 31831456290 passed
