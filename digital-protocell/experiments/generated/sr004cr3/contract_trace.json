@@ -1,0 +1,19 @@
+{
+  "entry_commit": "1b477b1c53d075449368579bfba6be1ed60b69f8",
+  "hypothesis": {
+    "processing": "pulse nutrient/fuel",
+    "repair": "recurrent local damage"
+  },
+  "interpretation": "coordinate 2 is directly identified with repair/strain response, not ordinary baseline maintenance",
+  "ordered_coordinates": [
+    "resource processing",
+    "activation",
+    "repair",
+    "growth synthesis"
+  ],
+  "production_repaired": false,
+  "schema": "DC-SR-004C-R3-FrozenContractTraceV1",
+  "semantic_rule": "each allocation catalyst multiplies only its corresponding existing local flux",
+  "sha256": "a8bf391e77308c6ee5b7f58e54c12102055f018b93634b43e1ea75abfa0f60fd",
+  "source": "docs/d096_selected_architecture_contract.md"
+}

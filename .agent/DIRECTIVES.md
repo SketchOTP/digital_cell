@@ -217,3 +217,18 @@
 - Required preflights: exact Gate 5 parity with fission/mechanics/topology disabled; mechanics/topology compatibility with fission disabled; future Gate 7 protocol frozen but not executed.
 - Required correction: append-only R1 execution-history distinction between audit-runner invocation and automatic original Gate 7 CI reruns.
 - Status at issuance: ISSUED
+
+## D-20260814-d096-repair-gain-specificity-audit
+
+- Issued: `2026-08-14T20:30:00-04:00`
+- Issuer: User
+- External directive: `DC-SR-004C-R3`
+- Agent memory directive: `D-20260814-digital-cell-d096-repair-gain-specificity-audit`
+- Entry authority: `1b477b1c53d075449368579bfba6be1ed60b69f8`
+- Branch: `strategy/d096-repair-gain-specificity-audit`
+- Base: `strategy/d096-gate7-parity-correct-preflight`
+- Objective: observer-only causal attribution of D-096 repair-gain scope plus one fixed shadow counterfactual
+- Exclusions: no production repair, no parameter tuning, no fission, no mutation, no reproduction, no Gate 7, no Gate 8, no new architecture
+- Required runs: H/B/Neutral, three frozen genotypes, seeds 1..=8, 1,000 steps, dt 0.02; mechanics-off current path, mechanics/topology-on current path, isolated shadow
+- Required preservation: `sr004c`, `sr004cr1`, and `sr004cr2`
+- Status at issuance: ISSUED

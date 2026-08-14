@@ -1,0 +1,23 @@
+{
+  "accepted_time_per_row": 20.0,
+  "conclusion": "SR004CR3_D096_REPAIR_GAIN_SCOPE_IMPLEMENTATION_DEFECT_CONFIRMED",
+  "directive": "DC-SR-004C-R3",
+  "dt": 0.02,
+  "fission": false,
+  "gate7_campaign_executed": false,
+  "gate8_started": false,
+  "mechanics_off_rows": 72,
+  "mechanics_on_current_rows": 72,
+  "mutation": "mutation_none",
+  "parameters_changed": false,
+  "prior_artifacts_preserved": [
+    "sr004c",
+    "sr004cr1",
+    "sr004cr2"
+  ],
+  "production_biology_changed": false,
+  "schema": "DC-SR-004C-R3-FinalManifestV1",
+  "shadow_rows": 72,
+  "starting_commit": "1b477b1c53d075449368579bfba6be1ed60b69f8",
+  "steps_per_row": 1000
+}

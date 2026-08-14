@@ -81,3 +81,13 @@ This file is specifically for the operators use. It keeps record of what the AI 
 - R2 conclusion: `SR004CR2_MECHANICS_EXTENSION_ERASES_RECIPROCITY`
 - Boundaries: future Gate 7 protocol frozen but not executed; Gate 7 campaign false; Gate 8 false; certified Phase 1 biology/equations unchanged.
 - Evidence: `digital-protocell/experiments/generated/sr004cr2/`; `digital-protocell/docs/strategy/d096_gate7/parity_correct_preflight/`
+
+## DEC-20260814-D096-REPAIR-GAIN-SPECIFICITY-AUDIT
+
+- Date: 2026-08-14
+- Record or decision ID: DEC-20260814-D096-REPAIR-GAIN-SPECIFICITY-AUDIT
+- Status: VALIDATING
+- Decision or event: R3 observer attribution found broad coordinate-2 application over `g0 + strain`; the fixed non-authoritative shadow removes the H repair-heavy structural advantage and preserves the B damage-responsive total-material direction.
+- R3 provisional conclusion: `SR004CR3_D096_REPAIR_GAIN_SCOPE_IMPLEMENTATION_DEFECT_CONFIRMED`
+- Boundaries: no production repair, no parameter changes, no fission, no mutation, no reproduction, Gate 7 false, Gate 8 false, certified Phase 1 biology/equations unchanged.
+- Evidence: `digital-protocell/experiments/generated/sr004cr3/`; `digital-protocell/docs/strategy/d096_gate7/repair_gain_specificity/`

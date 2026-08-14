@@ -38,6 +38,9 @@
 - `digital-protocell/crates/evolution-harness/examples/d096_gate7_parity_preflight.rs` — DC-SR-004C-R2 non-reproductive exact-parity and mechanics-extension preflight runner.
 - `digital-protocell/experiments/generated/sr004cr2/` — R2 authority, exact-parity, mechanics-extension, execution-history, future-protocol, and final-manifest artifacts.
 - `digital-protocell/docs/strategy/d096_gate7/parity_correct_preflight/` — R2 authority profile, constructor audit, preflight results, future protocol, execution-history correction, and conclusion.
+- `digital-protocell/crates/evolution-harness/examples/d096_gate7_repair_gain_audit.rs` — DC-SR-004C-R3 observer-only current-path attribution and fixed shadow counterfactual.
+- `digital-protocell/experiments/generated/sr004cr3/` — R3 contract trace, callsite map, current decomposition, H/B/neutral attribution, shadow results, and final manifest.
+- `digital-protocell/docs/strategy/d096_gate7/repair_gain_specificity/` — R3 frozen-contract interpretation, callsite trace, causal attribution, counterfactual, disposition, and conclusion.
 
 ## Generated areas
 

@@ -1,0 +1,11 @@
+{
+  "schema": "DC-SR-004C-R3-DocumentationManifestV1",
+  "directive": "DC-SR-004C-R3",
+  "starting_commit": "1b477b1c53d075449368579bfba6be1ed60b69f8",
+  "artifact_directory": "experiments/generated/sr004cr3",
+  "production_biology_changed": false,
+  "parameters_changed": false,
+  "gate7_executed": false,
+  "gate8_started": false,
+  "conclusion": "SR004CR3_D096_REPAIR_GAIN_SCOPE_IMPLEMENTATION_DEFECT_CONFIRMED"
+}

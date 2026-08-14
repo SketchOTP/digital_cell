@@ -14,9 +14,10 @@ use chemistry_core::material_mesh::{LumpedChem, MaterialMesh, DEFAULT_RHO_S};
 use chemistry_core::mesh_fission::{try_local_fission, FissionParams};
 use chemistry_core::mesh_growth::{growth_step, merge_growth_into_reaction, GrowthParams};
 use chemistry_core::mesh_mechanics::MechParams;
-use chemistry_core::mesh_population::coupled_step_growth;
+use chemistry_core::mesh_population::coupled_step_growth_with_build_mode;
 use chemistry_core::mesh_reactions::{
-    apply_membrane_damage, apply_structural_damage, reactions_step, ReactionParams,
+    apply_membrane_damage, apply_structural_damage, reactions_step_with_build_mode, ReactionParams,
+    StructuralBuildMode,
 };
 use chemistry_core::mesh_transport::{transport_step, TransportParams};
 
@@ -44,6 +45,8 @@ pub struct DigitalCellMeshAdapter {
     /// Execute the already-qualified D-096 H/B/Neutral forcing verbatim.
     /// This is an observer-selected environment, never organism state.
     pub d096_assay_environment: Option<AssayEnvironment>,
+    /// Observer-only structural-build mode. `Current` preserves production.
+    pub structural_build_mode: StructuralBuildMode,
 }
 
 impl Default for DigitalCellMeshAdapter {
@@ -60,6 +63,7 @@ impl Default for DigitalCellMeshAdapter {
             allocation_params: None,
             d096_founder_genotype: None,
             d096_assay_environment: None,
+            structural_build_mode: StructuralBuildMode::Current,
         }
     }
 }
@@ -256,32 +260,83 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
             chemistry_core::d096_allocation::expression_step(organism, &params, self.mech.dt)
                 .map_err(|error| AdapterError::Advance(format!("D-096 expression: {error:?}")))?;
         }
-        let (reaction_ledger, split) = if !self.enable_mechanics && !self.enable_fission {
-            // The accepted Gate 5 path has no mechanics, remeshing, or
-            // topology step. Keep this branch explicit so the exact-parity
-            // preflight cannot accidentally inherit a physical substrate.
-            let _ = transport_step(organism, &self.transport, self.mech.dt);
-            let mut reactions = reactions_step(organism, &self.reactions, self.mech.dt, true, true);
-            let growth = growth_step(organism, &self.reactions, &self.growth, self.mech.dt);
-            merge_growth_into_reaction(&mut reactions, &growth);
-            (reactions, None)
-        } else {
-            let (reactions, _, split) = coupled_step_growth(
-                organism,
-                &self.mech,
-                &self.reactions,
-                &self.transport,
-                &self.growth,
-                &self.fission,
-                self.enable_mechanics,
-                self.enable_fission,
-            );
-            (reactions, split)
-        };
+        let (reaction_ledger, growth_ledger, split) =
+            if !self.enable_mechanics && !self.enable_fission {
+                // The accepted Gate 5 path has no mechanics, remeshing, or
+                // topology step. Keep this branch explicit so the exact-parity
+                // preflight cannot accidentally inherit a physical substrate.
+                let _ = transport_step(organism, &self.transport, self.mech.dt);
+                let mut reactions = reactions_step_with_build_mode(
+                    organism,
+                    &self.reactions,
+                    self.mech.dt,
+                    true,
+                    true,
+                    self.structural_build_mode,
+                );
+                let growth = growth_step(organism, &self.reactions, &self.growth, self.mech.dt);
+                merge_growth_into_reaction(&mut reactions, &growth);
+                (reactions, growth, None)
+            } else {
+                let (reactions, growth, split) = coupled_step_growth_with_build_mode(
+                    organism,
+                    &self.mech,
+                    &self.reactions,
+                    &self.transport,
+                    &self.growth,
+                    &self.fission,
+                    self.enable_mechanics,
+                    self.enable_fission,
+                    self.structural_build_mode,
+                );
+                (reactions, growth, split)
+            };
         let mut step_metadata = Metadata::new();
         step_metadata.insert(
             "activated_produced".into(),
             format!("{:.17e}", reaction_ledger.a_produced),
+        );
+        step_metadata.insert(
+            "structural_build_total".into(),
+            format!("{:.17e}", reaction_ledger.structural_build_total),
+        );
+        step_metadata.insert(
+            "structural_build_baseline".into(),
+            format!("{:.17e}", reaction_ledger.structural_build_baseline),
+        );
+        step_metadata.insert(
+            "structural_build_strain".into(),
+            format!("{:.17e}", reaction_ledger.structural_build_strain),
+        );
+        step_metadata.insert(
+            "structural_build_baseline_amplification".into(),
+            format!(
+                "{:.17e}",
+                reaction_ledger.structural_build_baseline_amplification
+            ),
+        );
+        step_metadata.insert(
+            "structural_build_strain_amplification".into(),
+            format!(
+                "{:.17e}",
+                reaction_ledger.structural_build_strain_amplification
+            ),
+        );
+        step_metadata.insert(
+            "reserve_a_to_r".into(),
+            format!("{:.17e}", reaction_ledger.reserve.a_to_r),
+        );
+        step_metadata.insert(
+            "reserve_r_to_a".into(),
+            format!("{:.17e}", reaction_ledger.reserve.r_to_a),
+        );
+        step_metadata.insert(
+            "reserve_r_consumed_for_growth".into(),
+            format!("{:.17e}", growth_ledger.r_consumed_growth),
+        );
+        step_metadata.insert(
+            "reserve_funded_growth_mass".into(),
+            format!("{:.17e}", growth_ledger.m_grown),
         );
         if let Some((daughter_a, daughter_b, event)) = split {
             organism.alive = false;

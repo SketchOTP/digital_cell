@@ -1,0 +1,62 @@
+{
+  "candidates": [
+    {
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "hash": "faa5c27f8ee9516f1a71817d66f4ee82414dde8e5ce9ef2f1382162985831e6d",
+      "id": "processing-heavy"
+    },
+    {
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "hash": "e38978484b8872a9bd6344dc5e047c6f4ef53679607b84fd704aa4927af8b802",
+      "id": "repair-heavy"
+    },
+    {
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "hash": "b62bf5964d0d0f46b05eb3d61b5d9d4fee2645668a0804a260b2726bee722e83",
+      "id": "neutral"
+    }
+  ],
+  "dt": 0.02,
+  "environments": [
+    "H",
+    "B",
+    "Neutral"
+  ],
+  "equation": "J_shadow = J_base + J_strain * g_repair",
+  "fission": false,
+  "mechanics": true,
+  "mutation": "mutation_none",
+  "non_authoritative_counterfactual": true,
+  "ordinary_baseline_receives_repair_gain": false,
+  "parameters_changed": false,
+  "production_biology_changed": false,
+  "schema": "DC-SR-004C-R3-ShadowCounterfactualProtocolV1",
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "steps": 1000,
+  "strain_responsive_receives_repair_gain": true,
+  "topology": true
+}
