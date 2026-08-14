@@ -12,6 +12,8 @@ pub enum ProtocolError {
     SeedCountMismatch,
     #[error("mutation rate must be between 0 and 1")]
     InvalidMutationRate,
+    #[error("mutation sigma must be finite and non-negative")]
+    InvalidMutationSigma,
     #[error("maximum generation must be at least the minimum generation requirement")]
     GenerationBounds,
     #[error("execution is not authorized while unresolved protocol fields remain")]
@@ -257,9 +259,15 @@ pub struct MutationProtocolV1 {
     pub schema: String,
     pub mutation_protocol_id: String,
     pub mutation_rate: f64,
+    #[serde(default = "default_mutation_sigma")]
+    pub mutation_sigma: f64,
     pub magnitude_distribution: String,
     pub bounds: String,
     pub provenance: String,
+}
+
+fn default_mutation_sigma() -> f64 {
+    0.15
 }
 
 impl Default for MutationProtocolV1 {
@@ -268,6 +276,7 @@ impl Default for MutationProtocolV1 {
             schema: "MutationProtocolV1".into(),
             mutation_protocol_id: "mutation_none".into(),
             mutation_rate: 0.0,
+            mutation_sigma: default_mutation_sigma(),
             magnitude_distribution: "none".into(),
             bounds: "declared_by_heredity_adapter".into(),
             provenance: "SR003R".into(),
@@ -284,6 +293,9 @@ impl MutationProtocolV1 {
         }
         if !(0.0..=1.0).contains(&self.mutation_rate) {
             return Err(ProtocolError::InvalidMutationRate);
+        }
+        if !self.mutation_sigma.is_finite() || self.mutation_sigma < 0.0 {
+            return Err(ProtocolError::InvalidMutationSigma);
         }
         Ok(())
     }

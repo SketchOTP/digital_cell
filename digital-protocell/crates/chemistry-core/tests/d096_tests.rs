@@ -1,11 +1,13 @@
 use chemistry_core::d096_allocation::{
-    allocation_schema_load_ok, apply_assay_environment, expression_step, AllocationGenotype,
-    pre_fission_assay, AllocationParams, AssayEnvironment,
+    allocation_schema_load_ok, apply_assay_environment, expression_step, mutate_allocation_genotype,
+    partition_catalysts, AllocationGenotype, AllocationState, pre_fission_assay, AllocationParams,
+    AssayEnvironment,
     EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION,
     FINITE_ALLOCATION_SCHEMA_VERSION,
 };
 use chemistry_core::material_mesh::{LumpedChem, MaterialMesh, EQUATION_VERSION_MATERIAL_MESH};
 use chemistry_core::mesh_reactions::{reactions_step, ReactionParams};
+use chemistry_core::mesh_fission::{try_local_fission, FissionParams};
 
 fn mesh() -> MaterialMesh {
     MaterialMesh::seed_regular(
@@ -273,4 +275,102 @@ fn d096_equation_snapshot_and_candidate_identity_are_isolated() {
         genotype.candidate_hash(&params),
         AllocationGenotype::pulse().candidate_hash(&params)
     );
+}
+
+#[test]
+fn d096_mutation_off_is_exact_and_environment_blind() {
+    let mut params = AllocationParams::default();
+    params.mutation_probability = 0.0;
+    let parent = AllocationGenotype::pulse();
+    let records = ["H", "B", "Neutral"]
+        .into_iter()
+        .map(|_| mutate_allocation_genotype(parent, &params, 0xD096_004B).unwrap())
+        .collect::<Vec<_>>();
+    for record in &records {
+        assert!(!record.mutation_occurred);
+        assert_eq!(record.pre_genotype, record.post_genotype);
+        assert_eq!(record.pre_genotype.candidate_hash(&params), record.post_genotype.candidate_hash(&params));
+    }
+    assert!(records.windows(2).all(|pair| pair[0] == pair[1]));
+}
+
+#[test]
+fn d096_mutation_frequency_and_simplex_transfer_are_bounded() {
+    let mut params = AllocationParams::default();
+    params.mutation_probability = 0.01;
+    params.mutation_sigma = 0.15;
+    let parent = AllocationGenotype::neutral();
+    let mut changed = 0usize;
+    let mut checked_transfer = false;
+    for seed in 0..10_000_u64 {
+        let record = mutate_allocation_genotype(parent, &params, seed).unwrap();
+        changed += usize::from(record.mutation_occurred);
+        assert!(record.post_genotype.valid(&params));
+        if record.mutation_occurred {
+            checked_transfer = true;
+            let source = record.source.unwrap();
+            let target = record.target.unwrap();
+            assert_ne!(source, target);
+            assert!(record.raw_abs_normal >= record.applied_delta);
+            assert!(record.applied_delta > 0.0);
+            for i in 0..4 {
+                let delta = record.post_genotype.0[i] - record.pre_genotype.0[i];
+                if i == source {
+                    assert_eq!(delta, -record.applied_delta);
+                } else if i == target {
+                    assert_eq!(delta, record.applied_delta);
+                } else {
+                    assert_eq!(delta, 0.0);
+                }
+            }
+        }
+    }
+    assert!((70..=130).contains(&changed), "observed mutation count={changed}");
+    assert!(checked_transfer);
+}
+
+#[test]
+fn d096_physical_fission_partitions_catalysts_and_copies_genotype() {
+    let params = AllocationParams::default();
+    let mut parent = mesh();
+    let center = parent.centroid();
+    for vertex in &mut parent.vertices {
+        vertex[0] = center[0] + (vertex[0] - center[0]) * 1.55;
+        vertex[1] = center[1] + (vertex[1] - center[1]) * 0.72;
+    }
+    parent.interior.a = 2.0;
+    parent.interior.c = 1.0;
+    parent.enable_finite_allocation(AllocationGenotype::pulse(), &params);
+    parent.finite_allocation = Some(AllocationState {
+        genotype: AllocationGenotype::pulse(),
+        catalysts: [0.11, 0.22, 0.33, 0.44],
+    });
+    let (daughter_a, daughter_b, event) =
+        try_local_fission(&parent, &FissionParams::default()).expect("controlled D-096 fission");
+    let audit = event
+        .partition
+        .catalyst_partition
+        .expect("D-096 catalyst audit");
+    assert!(audit.conserved);
+    assert!(audit.max_residual <= 1e-12);
+    assert_eq!(daughter_a.finite_allocation.unwrap().genotype, parent.finite_allocation.unwrap().genotype);
+    assert_eq!(daughter_b.finite_allocation.unwrap().genotype, parent.finite_allocation.unwrap().genotype);
+    for i in 0..4 {
+        assert!((daughter_a.finite_allocation.unwrap().catalysts[i]
+            + daughter_b.finite_allocation.unwrap().catalysts[i]
+            - parent.finite_allocation.unwrap().catalysts[i]).abs() <= 1e-12);
+    }
+}
+
+#[test]
+fn d096_partition_helper_preserves_genotype_and_physical_sum() {
+    let parent = AllocationState {
+        genotype: AllocationGenotype::damage(),
+        catalysts: [0.3, 0.2, 0.1, 0.4],
+    };
+    let (a, b, audit) = partition_catalysts(parent, 0.37, 0.63);
+    assert_eq!(a.genotype, parent.genotype);
+    assert_eq!(b.genotype, parent.genotype);
+    assert!(audit.conserved);
+    assert_eq!(audit.pre_catalyst, parent.catalysts);
 }

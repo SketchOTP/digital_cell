@@ -580,7 +580,7 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
                 self.first_reproduction_time
                     .get_or_insert(self.accepted_simulated_time);
                 let lineage_id = parent_record.lineage_id;
-                for mut child in offspring {
+                for (offspring_index, mut child) in offspring.into_iter().enumerate() {
                     let child_id = self.population.next_organism_id;
                     let birth = EventV1::birth(
                         0,
@@ -636,7 +636,19 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
                         &MutationContext {
                             accepted_step: self.accepted_step,
                             accepted_simulated_time: self.accepted_simulated_time,
-                            seed: child_id,
+                            // Mutation randomness is declared by the protocol,
+                            // replicate, accepted fission step, and offspring
+                            // ordinal. It is not derived from organism or
+                            // lineage identifiers.
+                            seed: self
+                                .protocol
+                                .placement_protocol
+                                .random_seed
+                                .unwrap_or(self.protocol.placement_protocol.founder_seed)
+                                .wrapping_add((self.replicate as u64).wrapping_mul(0x9E37_79B9))
+                                .wrapping_add(self.accepted_step.wrapping_mul(0xD1B5_4A32))
+                                .wrapping_add(offspring_index as u64),
+                            offspring_index: offspring_index as u32,
                             parent_hereditary_state: parent_state,
                         },
                     )?;

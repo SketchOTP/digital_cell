@@ -185,6 +185,7 @@ pub struct MutationContext {
     pub accepted_step: u64,
     pub accepted_simulated_time: f64,
     pub seed: u64,
+    pub offspring_index: u32,
     pub parent_hereditary_state: String,
 }
 

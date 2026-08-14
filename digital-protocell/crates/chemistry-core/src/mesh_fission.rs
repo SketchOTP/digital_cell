@@ -44,6 +44,8 @@ pub struct PartitionReport {
     pub residual_u_b: f64,
     #[serde(default)]
     pub residual_templates: f64,
+    #[serde(default)]
+    pub catalyst_partition: Option<crate::d096_allocation::CatalystPartitionAudit>,
     pub ok: bool,
 }
 
@@ -177,10 +179,21 @@ pub fn try_local_fission(
         mesh.template_rng = parent.template_rng;
         mesh.next_template_id = parent.next_template_id;
         mesh.next_edge_id = parent.next_edge_id;
+        // D-096 is the only finite-allocation schema. Its genotype is copied
+        // as hereditary state, while its expressed catalyst mass is physical
+        // material and must be partitioned below by daughter area.
         mesh.finite_allocation = parent.finite_allocation;
     };
     set_conc(&mut d1, f1);
     set_conc(&mut d2, f2);
+
+    let catalyst_partition = parent.finite_allocation.map(|state| {
+        let (state_a, state_b, audit) =
+            crate::d096_allocation::partition_catalysts(state, f1, f2);
+        d1.finite_allocation = Some(state_a);
+        d2.finite_allocation = Some(state_b);
+        audit
+    });
 
     // Physical template partition by spatial location (no sequence copy).
     let (_n1, _n2, residual_templates) = partition_templates(parent, &mut d1, &mut d2);
@@ -248,6 +261,12 @@ pub fn try_local_fission(
         && d1.closed_intact()
         && d2.closed_intact();
 
+    let ok = ok
+        && catalyst_partition
+            .as_ref()
+            .map(|audit| audit.conserved)
+            .unwrap_or(true);
+
     let event = FissionEvent {
         parent_n: parent.n(),
         daughter_a_n: d1.n(),
@@ -266,6 +285,7 @@ pub fn try_local_fission(
             residual_u_h,
             residual_u_b,
             residual_templates,
+            catalyst_partition,
             ok,
         },
         leakage_w: leakage,

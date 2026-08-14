@@ -1,7 +1,11 @@
 use crate::{
     AdapterEnvironmentEvent, AdapterError, AdvanceOutcome, EnvironmentCapability,
     EnvironmentContext, EnvironmentProtocolV1, FounderIdentityV1, FounderInitializationContext,
-    HeredityEvidenceV1, Metadata, OrganismAdapter, PhenotypeEvidenceV1,
+    HeredityAdapter, HeredityEvidenceV1, Metadata, MutationContext, MutationOperator,
+    OrganismAdapter, PhenotypeEvidenceV1, MutationProtocolV1,
+};
+use chemistry_core::d096_allocation::{
+    mutate_allocation_genotype, AllocationGenotype, AllocationParams,
 };
 use chemistry_core::material_mesh::{LumpedChem, MaterialMesh, DEFAULT_RHO_S};
 use chemistry_core::mesh_fission::FissionParams;
@@ -26,6 +30,9 @@ pub struct DigitalCellMeshAdapter {
     pub enable_mechanics: bool,
     pub enable_fission: bool,
     pub founder_radius: f64,
+    /// When present, the adapter executes the existing D-096 finite allocation
+    /// representation; None preserves the historical mesh adapter path.
+    pub allocation_params: Option<AllocationParams>,
 }
 
 impl Default for DigitalCellMeshAdapter {
@@ -39,6 +46,7 @@ impl Default for DigitalCellMeshAdapter {
             enable_mechanics: true,
             enable_fission: true,
             founder_radius: 14.0,
+            allocation_params: None,
         }
     }
 }
@@ -65,7 +73,7 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
             f: 2.0,
             ..Default::default()
         };
-        Ok(MaterialMesh::seed_regular(
+        let mut mesh = MaterialMesh::seed_regular(
             n,
             self.founder_radius,
             40.0,
@@ -75,7 +83,11 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
             interior,
             exterior,
             5.0,
-        ))
+        );
+        if let Some(params) = self.allocation_params {
+            mesh.enable_finite_allocation(AllocationGenotype::neutral(), &params);
+        }
+        Ok(mesh)
     }
 
     fn accepted_dt(&self) -> f64 {
@@ -182,6 +194,10 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
                 metadata: Metadata::new(),
             });
         }
+        if let Some(params) = self.allocation_params {
+            chemistry_core::d096_allocation::expression_step(organism, &params, self.mech.dt)
+                .map_err(|error| AdapterError::Advance(format!("D-096 expression: {error:?}")))?;
+        }
         let (_, _, split) = coupled_step_growth(
             organism,
             &self.mech,
@@ -234,25 +250,159 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
         )
     }
     fn hereditary_state(&self, organism: &Self::Organism) -> String {
+        let allocation = organism.finite_allocation.map(|state| {
+            let params = self.allocation_params.unwrap_or_default();
+            format!(
+                ";d096_genotype_hash:{}",
+                state.genotype.candidate_hash(&params)
+            )
+        }).unwrap_or_default();
         format!(
-            "equation:{};templates:{};autocatalytic_edges:{}",
+            "equation:{};templates:{};autocatalytic_edges:{}{}",
             organism.equation_id,
             organism.templates.len(),
-            organism.autocatalytic_edges.len()
+            organism.autocatalytic_edges.len(),
+            allocation
         )
     }
     fn heredity_evidence(
         &self,
-        _parent: Option<&Self::Organism>,
-        _organism: &Self::Organism,
+        parent: Option<&Self::Organism>,
+        organism: &Self::Organism,
     ) -> HeredityEvidenceV1 {
+        if let (Some(parent), Some(child), Some(params)) =
+            (parent, organism.finite_allocation, self.allocation_params)
+        {
+            let valid = parent
+                .finite_allocation
+                .map(|state| state.genotype.valid(&params))
+                .unwrap_or(false)
+                && child.genotype.valid(&params);
+            return HeredityEvidenceV1 {
+                observable: true,
+                preserved: valid,
+                comparison_basis: "D096_fixed_simplex_parent_child_validity".into(),
+                metric: "genotype_simplex_valid".into(),
+                value: Some(if valid { 1.0 } else { 0.0 }),
+                qualification: valid,
+                reason: "D-096 genotype remains within the frozen simplex; mutation provenance is recorded separately".into(),
+            };
+        }
         HeredityEvidenceV1::unavailable("HARNESS_ADAPTER_UNAVAILABLE: D-094 mechanism-specific heredity qualifier is not adapted")
     }
     fn phenotype_evidence(
         &self,
         _environment: &EnvironmentProtocolV1,
-        _organism: &Self::Organism,
+        organism: &Self::Organism,
     ) -> PhenotypeEvidenceV1 {
+        if let (Some(state), Some(params)) = (organism.finite_allocation, self.allocation_params) {
+            let expressed = state.catalysts.iter().copied().sum::<f64>() > 0.0;
+            let valid = state.genotype.valid(&params);
+            return PhenotypeEvidenceV1 {
+                observable: true,
+                expressed,
+                comparison_basis: "D096_finite_catalyst_expression".into(),
+                metric: "catalyst_mass_sum".into(),
+                value: Some(state.catalysts.iter().sum()),
+                qualification: valid && expressed,
+                reason: "D-096 catalyst expression is measured from physical catalyst mass".into(),
+            };
+        }
         PhenotypeEvidenceV1::unavailable("HARNESS_ADAPTER_UNAVAILABLE: D-094 mechanism-specific phenotype qualifier is not adapted")
+    }
+
+    fn apply_heredity_and_mutation(
+        &mut self,
+        parent: &Self::Organism,
+        offspring: &mut Self::Organism,
+        protocol: &MutationProtocolV1,
+        context: &MutationContext,
+    ) -> Result<Option<Metadata>, AdapterError> {
+        if protocol.mutation_protocol_id != "d096_allocation_mutation_v1" {
+            return if protocol.mutation_rate == 0.0 && protocol.mutation_protocol_id == "mutation_none" {
+                Ok(None)
+            } else {
+                Err(AdapterError::Unavailable)
+            };
+        }
+        let Some(params) = self.allocation_params else {
+            return Err(AdapterError::Unavailable);
+        };
+        let (Some(parent_state), Some(offspring_state)) =
+            (parent.finite_allocation, offspring.finite_allocation)
+        else {
+            return Err(AdapterError::Unavailable);
+        };
+        if parent.alive || offspring.alive || offspring.n() >= parent.n()
+            || offspring_state.genotype != parent_state.genotype
+        {
+            return Err(AdapterError::Advance(
+                "D-096 mutation requires a qualified physical fission copy".into(),
+            ));
+        }
+        let mut mutation_params = params;
+        mutation_params.mutation_probability = protocol.mutation_rate;
+        mutation_params.mutation_sigma = protocol.mutation_sigma;
+        let record = mutate_allocation_genotype(
+            parent_state.genotype,
+            &mutation_params,
+            context.seed,
+        )
+        .map_err(|error| AdapterError::Advance(format!("D-096 mutation: {error:?}")))?;
+        offspring.finite_allocation = Some(chemistry_core::d096_allocation::AllocationState {
+            genotype: record.post_genotype,
+            catalysts: offspring_state.catalysts,
+        });
+        let mut metadata = Metadata::new();
+        metadata.insert("operator".into(), record.operator.into());
+        metadata.insert("provenance".into(), record.provenance.into());
+        metadata.insert("seed".into(), record.seed.to_string());
+        metadata.insert("offspring_index".into(), context.offspring_index.to_string());
+        metadata.insert("mutation_occurred".into(), record.mutation_occurred.to_string());
+        metadata.insert("source".into(), format_opt(record.source));
+        metadata.insert("target".into(), format_opt(record.target));
+        metadata.insert("raw_abs_normal".into(), format!("{:.17e}", record.raw_abs_normal));
+        metadata.insert("applied_delta".into(), format!("{:.17e}", record.applied_delta));
+        metadata.insert("pre_genotype".into(), serde_json::to_string(&record.pre_genotype).unwrap());
+        metadata.insert("post_genotype".into(), serde_json::to_string(&record.post_genotype).unwrap());
+        metadata.insert("candidate_hash".into(), record.post_genotype.candidate_hash(&mutation_params));
+        Ok(Some(metadata))
+    }
+}
+
+fn format_opt(value: Option<usize>) -> String {
+    value.map(|v| v.to_string()).unwrap_or_else(|| "none".into())
+}
+
+/// Adapter-facing implementation of the accepted reusable mutation boundary.
+#[derive(Debug, Clone, Copy)]
+pub struct D096AllocationMutationOperator {
+    pub params: AllocationParams,
+}
+
+impl HeredityAdapter for D096AllocationMutationOperator {
+    type HereditaryState = AllocationGenotype;
+
+    fn encode(&self, state: &Self::HereditaryState) -> String {
+        serde_json::to_string(state).expect("AllocationGenotype is serializable")
+    }
+
+    fn decode(&self, encoded: &str) -> Result<Self::HereditaryState, AdapterError> {
+        serde_json::from_str(encoded)
+            .map_err(|error| AdapterError::Observation(format!("D-096 genotype decode: {error}")))
+    }
+}
+
+impl MutationOperator for D096AllocationMutationOperator {
+    type HereditaryState = AllocationGenotype;
+
+    fn mutate(
+        &self,
+        state: &Self::HereditaryState,
+        context: &MutationContext,
+    ) -> Result<Self::HereditaryState, AdapterError> {
+        mutate_allocation_genotype(*state, &self.params, context.seed)
+            .map(|record| record.post_genotype)
+            .map_err(|error| AdapterError::Advance(format!("D-096 mutation: {error:?}")))
     }
 }
