@@ -1,0 +1,29 @@
+name: D-098 Processing Repair
+
+on:
+  push:
+    branches:
+      - strategy/d098-processing-repair
+  pull_request:
+    branches:
+      - strategy/d094-evolutionary-requalification
+
+jobs:
+  chemistry-core-regressions:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: digital-protocell
+    strategy:
+      fail-fast: false
+      matrix:
+        test: [d098_tests, d096_tests, d091_tests, d092_tests, d093_tests, d094_tests]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install pinned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Run scoped chemistry-core regression
+        run: cargo +1.89.0 test -p chemistry-core --test ${{ matrix.test }}
