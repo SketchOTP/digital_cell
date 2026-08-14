@@ -147,6 +147,7 @@ pub fn reserve_schema_load_ok(mesh: &MaterialMesh, reserve: &ReserveParams) -> b
         || mesh.equation_id == crate::template_polymer::EQUATION_VERSION_CATALYTIC_TEMPLATE
         || mesh.equation_id == crate::template_network::EQUATION_VERSION_TEMPLATE_NETWORK
         || mesh.equation_id == crate::autocatalytic_nodes::EQUATION_VERSION_AUTOCATALYTIC_SET
+        || mesh.equation_id == crate::d096_allocation::EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION
 }
 
 /// Store flux density (concentration/time): A → R.
