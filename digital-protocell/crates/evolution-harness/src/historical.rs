@@ -1,6 +1,6 @@
 use crate::{
-    d094_pressure_contract, CampaignRole, DamageMode, ExperimentProtocolV1,
-    PlacementProtocolV1, ProtocolProvenanceV1, ResourceMode, ResourceVectorV1,
+    d094_pressure_contract, CampaignRole, DamageMode, ExperimentProtocolV1, PlacementProtocolV1,
+    ProtocolProvenanceV1, ResourceMode, ResourceVectorV1,
 };
 use std::collections::BTreeMap;
 
@@ -256,9 +256,18 @@ fn d094r2_protocol(
         "per_organism_exterior_NF_override_from_d094_selection_source".into();
     protocol.environment_protocol.spatial_constraints =
         "none: independent single-founder lineages".into();
-    protocol.environment_protocol.resource_ecology.shared_resource_competition = false;
-    protocol.environment_protocol.resource_ecology.spatial_local_availability = false;
-    protocol.environment_protocol.resource_ecology.continuous_supply = ResourceVectorV1 {
+    protocol
+        .environment_protocol
+        .resource_ecology
+        .shared_resource_competition = false;
+    protocol
+        .environment_protocol
+        .resource_ecology
+        .spatial_local_availability = false;
+    protocol
+        .environment_protocol
+        .resource_ecology
+        .continuous_supply = ResourceVectorV1 {
         n: if environment_id.ends_with("h_ecology") {
             2.2 * 0.18
         } else if environment_id.ends_with("b_ecology") {
@@ -276,7 +285,11 @@ fn d094r2_protocol(
         w: 0.0,
     };
     protocol.environment_protocol.resource_ecology.pulse_delta = ResourceVectorV1::default();
-    protocol.environment_protocol.resource_ecology.pulse_schedule.clear();
+    protocol
+        .environment_protocol
+        .resource_ecology
+        .pulse_schedule
+        .clear();
     protocol.environment_protocol.pulse_schedule.clear();
     protocol.environment_protocol.damage_mode = if environment_id.ends_with("b_ecology") {
         DamageMode::Abrasion
@@ -286,8 +299,14 @@ fn d094r2_protocol(
     protocol.environment_protocol.damage_interval = None;
     protocol.environment_protocol.resource_ecology.damage_mode =
         protocol.environment_protocol.damage_mode.clone();
-    protocol.environment_protocol.resource_ecology.damage_interval = None;
-    protocol.environment_protocol.resource_ecology.damage_fraction = 0.0;
+    protocol
+        .environment_protocol
+        .resource_ecology
+        .damage_interval = None;
+    protocol
+        .environment_protocol
+        .resource_ecology
+        .damage_fraction = 0.0;
     protocol.provenance.derived_values.extend([
         (
             "founder_count_and_seed_rule".into(),

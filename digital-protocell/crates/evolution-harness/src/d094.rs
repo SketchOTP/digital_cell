@@ -81,7 +81,10 @@ pub fn founder_identity(
         seed,
         D094_ARCHITECTURE,
         &format!("d094:{}:edges={edges}:copies=2", architecture.clade_label()),
-        &format!("d094:{}:functional_node_channel", architecture.clade_label()),
+        &format!(
+            "d094:{}:functional_node_channel",
+            architecture.clade_label()
+        ),
         "NOT_RECORDED_SEALED_MATERIAL_STATE",
         seed,
         &format!("sealed_d094r2_founder_index_{founder_index}"),
@@ -110,9 +113,13 @@ pub fn sealed_d094_heredity_observation() -> D094HeredityObservation {
 pub fn qualify_d094_heredity(observation: D094HeredityObservation) -> HeredityEvidenceV1 {
     let preserved = observation.pairs >= 40
         && observation.closed_or_present_fraction >= 1.0 - f64::EPSILON
-        && observation.parent_offspring_edge_frequency_correlation.is_finite()
+        && observation
+            .parent_offspring_edge_frequency_correlation
+            .is_finite()
         && observation.parent_offspring_edge_frequency_correlation > 0.0
-        && observation.parent_offspring_network_response_correlation.is_finite()
+        && observation
+            .parent_offspring_network_response_correlation
+            .is_finite()
         && observation.parent_offspring_network_response_correlation > 0.0
         && observation.id_shuffle_no_effect;
     HeredityEvidenceV1 {
@@ -161,12 +168,14 @@ pub fn qualify_d094_phenotype(observation: D094PhenotypeObservation) -> Phenotyp
     PhenotypeEvidenceV1 {
         observable: true,
         expressed,
-        comparison_basis: "D-094 Gate 5 catalytic node-channel response with node-production knockout".into(),
+        comparison_basis:
+            "D-094 Gate 5 catalytic node-channel response with node-production knockout".into(),
         metric: "H_ka-H_kb; B_kb-B_ka; gap_on-gap_off; knockout_collapse".into(),
         value: Some(observation.gap_on - observation.gap_off),
         qualification: expressed,
         reason: if expressed {
-            "functional catalytic-channel differentiation is present; clade labels are not used".into()
+            "functional catalytic-channel differentiation is present; clade labels are not used"
+                .into()
         } else {
             "functional D-094 phenotype evidence is incomplete or non-differential".into()
         },
@@ -209,8 +218,7 @@ impl D094PhenotypeDifferentialAssay {
 
     pub fn reciprocal_advantage(&self) -> Option<bool> {
         Some(
-            self.h_under_h_endpoint?
-                > self.b_under_h_endpoint?
+            self.h_under_h_endpoint? > self.b_under_h_endpoint?
                 && self.b_under_b_endpoint? > self.h_under_b_endpoint?,
         )
     }
@@ -318,7 +326,10 @@ mod tests {
 
     #[test]
     fn d094_phenotype_differential_requires_causal_endpoint() {
-        assert_eq!(D094PhenotypeDifferentialAssay::sealed_baseline().reciprocal_advantage(), None);
+        assert_eq!(
+            D094PhenotypeDifferentialAssay::sealed_baseline().reciprocal_advantage(),
+            None
+        );
     }
 
     #[test]
@@ -355,7 +366,9 @@ mod tests {
     #[test]
     fn d094_neutral_pressure_contract() {
         let protocol = crate::d094r2_protocols()[2].clone();
-        let pressure = protocol.selective_pressure.expect("neutral pressure contract");
+        let pressure = protocol
+            .selective_pressure
+            .expect("neutral pressure contract");
         assert_eq!(pressure.campaign_role, CampaignRole::Neutral);
         assert_eq!(pressure.neutral_environment, "d094r2_neutral_ecology");
         assert_eq!(protocol.replicates, D094R2_REPLICATES);
