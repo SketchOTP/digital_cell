@@ -25,8 +25,8 @@ jobs:
       - name: Install pinned Rust toolchain
         run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
 
-      - name: Check audit formatting
-        run: cargo +1.89.0 fmt --package evolution-harness -- --check
+      - name: Check audit target with pinned toolchain
+        run: cargo +1.89.0 check -p evolution-harness --example d096_gate7_parity_audit
 
       - name: Run D-096 chemistry regressions
         run: cargo +1.89.0 test -p chemistry-core --test d096_tests
