@@ -1,0 +1,23 @@
+{
+  "automatic_gate7_ci_rerun_observed": true,
+  "automatic_original_gate7_workflow_runs": [
+    {
+      "head": "b258126fb2ac1373515a09711d7dcaa07022550",
+      "run_id": "31845151456",
+      "trigger": "push"
+    },
+    {
+      "head": "b258126fb2ac1373515a09711d7dcaa07022550",
+      "run_id": "31845154403",
+      "trigger": "pull_request"
+    },
+    {
+      "head": "aa98e40a75f662b53f5f05b8f4ae7dd0d495941d",
+      "run_id": "31845606065",
+      "trigger": "pull_request"
+    }
+  ],
+  "interpretation": "R1 gate7_rerun:false means only that the R1 shadow audit runner did not invoke Gate 7.",
+  "r1_audit_runner_invoked_gate7": false,
+  "schema": "DC-SR-004C-R2-ExecutionHistoryCorrectionV1"
+}

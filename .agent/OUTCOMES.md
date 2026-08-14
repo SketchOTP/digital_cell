@@ -229,6 +229,21 @@ Entries before 2026-07-12 were imported from myCompanion and are not authoritati
 
 - D-20260814-gate7-parity-horizon-audit | follow_up:workflow_guard | The pre-existing unfiltered Gate 7 workflow reran on b258126 during PR synchronization; that run is not R1 evidence. The workflow is now path-scoped so parity-audit/governance-only changes do not launch the 144-cell assay.
 
+## D-20260814-d096-gate7-parity-correct-executor-preflight - IN PROGRESS
+
+- Outcome ID: OUT-20260814-d096-gate7-parity-correct-executor-preflight
+- Directive: `DC-SR-004C-R2`
+- Starting commit: `aa98e40a75f662b53f5f05b8f4ae7dd0d495941d`
+- Branch: `strategy/d096-gate7-parity-correct-preflight`
+- Base: `strategy/d096-gate7-single-generation-fitness`
+- Scope: shared Gate 5 authority constructors, exact parity preflight, mechanics/topology compatibility preflight, future Gate 7 protocol freeze, R1 execution-history correction, scoped CI
+- Local result: exact parity `72/72`, maximum residual `0.0`; mechanics extension H reciprocity failed; B reciprocity remained positive
+- Provisional conclusion: `SR004CR2_MECHANICS_EXTENSION_ERASES_RECIPROCITY`
+- Gate 7 campaign: not executed
+- Gate 8: not started
+- Certified Phase 1 biology/equations: unchanged
+- Remote PR/CI: pending
+
 ## D-20260814-1722-authority-governance-adoption - COMPLETE
 
 - Outcome ID: OUT-20260814-1722-authority-governance-adoption

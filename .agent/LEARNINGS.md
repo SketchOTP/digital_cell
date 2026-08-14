@@ -210,3 +210,13 @@ Append-only repo-specific lessons. Format:
 - Confidence: VERIFIED
 - Scope: DC-SR-004C-R1 shadow audit
 - Supersedes learning: none
+
+## L-20260814-d096-gate7-parity-correct-executor-preflight
+
+- Date: 2026-08-14
+- Learning ID: L-20260814-d096-gate7-parity-correct-executor-preflight
+- Fact or lesson: Exact Gate 5 physiology parity can be proven with a shared typed constructor, but adding the physical mechanics/topology substrate can erase the qualified H reciprocal effect even when the B effect remains positive; this is a stop condition, not a license to tune mechanics or run Gate 7.
+- Evidence location: `digital-protocell/experiments/generated/sr004cr2/`; `digital-protocell/docs/strategy/d096_gate7/parity_correct_preflight/`
+- Confidence: VERIFIED
+- Scope: DC-SR-004C-R2 parity-correct executor preflight
+- Supersedes learning: none

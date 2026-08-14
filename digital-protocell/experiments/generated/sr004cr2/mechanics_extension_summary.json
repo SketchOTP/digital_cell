@@ -1,0 +1,27 @@
+{
+  "b": {
+    "effect": 13.485368698695993,
+    "exceeds_neutral": true,
+    "neutral_effect": 13.454270301885149,
+    "per_seed_positive": true
+  },
+  "fission_enabled": false,
+  "h": {
+    "effect": -10.420576576644205,
+    "exceeds_neutral": true,
+    "neutral_effect": -18.680501643321076,
+    "per_seed_positive": false
+  },
+  "mechanics_enabled": true,
+  "neutral": {
+    "b_repair_vs_processing": 13.454270301885149,
+    "h_processing_vs_repair": -18.680501643321076
+  },
+  "pass": false,
+  "schema": "DC-SR-004C-R2-MechanicsExtensionSummaryV1",
+  "survival": {
+    "processing_heavy": 8,
+    "repair_heavy": 8
+  },
+  "topology_enabled": true
+}

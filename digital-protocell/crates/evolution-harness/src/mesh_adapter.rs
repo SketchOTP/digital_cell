@@ -5,18 +5,20 @@ use crate::{
     MutationProtocolV1, OrganismAdapter, PhenotypeEvidenceV1,
 };
 use chemistry_core::d096_allocation::{
-    apply_assay_environment, expression_step, mutate_allocation_genotype, AllocationGenotype,
-    AllocationParams, AllocationState, AssayEnvironment,
+    apply_assay_environment, d096_prefission_growth_params, d096_prefission_reaction_params,
+    d096_prefission_transport_params, expression_step, mutate_allocation_genotype,
+    seed_d096_prefission_founder, AllocationGenotype, AllocationParams, AllocationState,
+    AssayEnvironment, D096_PREFISSION_DT,
 };
 use chemistry_core::material_mesh::{LumpedChem, MaterialMesh, DEFAULT_RHO_S};
 use chemistry_core::mesh_fission::{try_local_fission, FissionParams};
-use chemistry_core::mesh_growth::GrowthParams;
+use chemistry_core::mesh_growth::{growth_step, merge_growth_into_reaction, GrowthParams};
 use chemistry_core::mesh_mechanics::MechParams;
 use chemistry_core::mesh_population::coupled_step_growth;
 use chemistry_core::mesh_reactions::{
-    apply_membrane_damage, apply_structural_damage, ReactionParams,
+    apply_membrane_damage, apply_structural_damage, reactions_step, ReactionParams,
 };
-use chemistry_core::mesh_transport::TransportParams;
+use chemistry_core::mesh_transport::{transport_step, TransportParams};
 
 const FROZEN_D096_MUTATION_PROBABILITY: f64 = 0.01;
 
@@ -82,6 +84,20 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
         founder: &FounderIdentityV1,
         _context: FounderInitializationContext,
     ) -> Result<Self::Organism, AdapterError> {
+        if let (Some(params), Some(genotype)) = (self.allocation_params, self.d096_founder_genotype)
+        {
+            if params != AllocationParams::default() {
+                return Err(AdapterError::Founder(
+                    "D-096 parity adapter requires frozen AllocationParams::default()".into(),
+                ));
+            }
+            self.mech.dt = D096_PREFISSION_DT;
+            let mesh = seed_d096_prefission_founder(genotype, founder.seed);
+            self.reactions = d096_prefission_reaction_params(&mesh);
+            self.transport = d096_prefission_transport_params();
+            self.growth = d096_prefission_growth_params();
+            return Ok(mesh);
+        }
         let n = 24 + (founder.seed % 3) as usize;
         let interior = LumpedChem {
             c: 0.8,
@@ -107,10 +123,6 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
             exterior,
             5.0,
         );
-        if let (Some(params), Some(genotype)) = (self.allocation_params, self.d096_founder_genotype)
-        {
-            mesh.enable_finite_allocation(genotype, &params);
-        }
         Ok(mesh)
     }
 
@@ -244,20 +256,37 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
             chemistry_core::d096_allocation::expression_step(organism, &params, self.mech.dt)
                 .map_err(|error| AdapterError::Advance(format!("D-096 expression: {error:?}")))?;
         }
-        let (_, _, split) = coupled_step_growth(
-            organism,
-            &self.mech,
-            &self.reactions,
-            &self.transport,
-            &self.growth,
-            &self.fission,
-            self.enable_mechanics,
-            self.enable_fission,
+        let (reaction_ledger, split) = if !self.enable_mechanics && !self.enable_fission {
+            // The accepted Gate 5 path has no mechanics, remeshing, or
+            // topology step. Keep this branch explicit so the exact-parity
+            // preflight cannot accidentally inherit a physical substrate.
+            let _ = transport_step(organism, &self.transport, self.mech.dt);
+            let mut reactions = reactions_step(organism, &self.reactions, self.mech.dt, true, true);
+            let growth = growth_step(organism, &self.reactions, &self.growth, self.mech.dt);
+            merge_growth_into_reaction(&mut reactions, &growth);
+            (reactions, None)
+        } else {
+            let (reactions, _, split) = coupled_step_growth(
+                organism,
+                &self.mech,
+                &self.reactions,
+                &self.transport,
+                &self.growth,
+                &self.fission,
+                self.enable_mechanics,
+                self.enable_fission,
+            );
+            (reactions, split)
+        };
+        let mut step_metadata = Metadata::new();
+        step_metadata.insert(
+            "activated_produced".into(),
+            format!("{:.17e}", reaction_ledger.a_produced),
         );
         if let Some((daughter_a, daughter_b, event)) = split {
             organism.alive = false;
             organism.death_reason = Some("fissioned".into());
-            let mut metadata = Metadata::new();
+            let mut metadata = step_metadata;
             metadata.insert("parent_vertices".into(), event.parent_n.to_string());
             metadata.insert("daughter_a_vertices".into(), event.daughter_a_n.to_string());
             metadata.insert("daughter_b_vertices".into(), event.daughter_b_n.to_string());
@@ -275,12 +304,12 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
                     .clone()
                     .unwrap_or_else(|| "mesh_derived_dead".into()),
                 accepted_dt: self.mech.dt,
-                metadata: Metadata::new(),
+                metadata: step_metadata,
             });
         }
         Ok(AdvanceOutcome::Continuing {
             accepted_dt: self.mech.dt,
-            metadata: Metadata::new(),
+            metadata: step_metadata,
         })
     }
 
