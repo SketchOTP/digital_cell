@@ -21,6 +21,7 @@ pub struct PopulationRecord {
     pub birth_event_id: EventId,
     pub birth_time: f64,
     pub birth_generation: u32,
+    pub placement: [f64; 2],
     pub death_time: Option<f64>,
     pub state: PopulationState,
 }
@@ -48,6 +49,7 @@ impl PopulationManager {
         lineage_id: LineageId,
         birth_event_id: EventId,
         birth_time: f64,
+        placement: [f64; 2],
     ) -> Result<(), PopulationError> {
         self.insert(PopulationRecord {
             organism_id,
@@ -56,6 +58,7 @@ impl PopulationManager {
             birth_event_id,
             birth_time,
             birth_generation: 0,
+            placement,
             death_time: None,
             state: PopulationState::Founder,
         })
@@ -69,6 +72,7 @@ impl PopulationManager {
         birth_event_id: EventId,
         birth_time: f64,
         birth_generation: u32,
+        placement: [f64; 2],
     ) -> Result<(), PopulationError> {
         self.insert(PopulationRecord {
             organism_id,
@@ -77,6 +81,7 @@ impl PopulationManager {
             birth_event_id,
             birth_time,
             birth_generation,
+            placement,
             death_time: None,
             state: PopulationState::NewOffspring,
         })
@@ -92,8 +97,14 @@ impl PopulationManager {
     }
 
     pub fn mark_living(&mut self, organism_id: OrganismId) -> Result<(), PopulationError> {
-        let record = self.records.get_mut(&organism_id).ok_or(PopulationError::Missing(organism_id))?;
-        if matches!(record.state, PopulationState::Dead | PopulationState::Removed) {
+        let record = self
+            .records
+            .get_mut(&organism_id)
+            .ok_or(PopulationError::Missing(organism_id))?;
+        if matches!(
+            record.state,
+            PopulationState::Dead | PopulationState::Removed
+        ) {
             return Err(PopulationError::NotLiving(organism_id));
         }
         record.state = PopulationState::Living;
@@ -101,8 +112,14 @@ impl PopulationManager {
     }
 
     pub fn mark_dead(&mut self, organism_id: OrganismId, time: f64) -> Result<(), PopulationError> {
-        let record = self.records.get_mut(&organism_id).ok_or(PopulationError::Missing(organism_id))?;
-        if matches!(record.state, PopulationState::Dead | PopulationState::Removed) {
+        let record = self
+            .records
+            .get_mut(&organism_id)
+            .ok_or(PopulationError::Missing(organism_id))?;
+        if matches!(
+            record.state,
+            PopulationState::Dead | PopulationState::Removed
+        ) {
             return Err(PopulationError::NotLiving(organism_id));
         }
         record.state = PopulationState::Dead;
@@ -113,7 +130,14 @@ impl PopulationManager {
     pub fn living_ids(&self) -> Vec<OrganismId> {
         self.records
             .values()
-            .filter(|record| matches!(record.state, PopulationState::Founder | PopulationState::Living | PopulationState::NewOffspring))
+            .filter(|record| {
+                matches!(
+                    record.state,
+                    PopulationState::Founder
+                        | PopulationState::Living
+                        | PopulationState::NewOffspring
+                )
+            })
             .map(|record| record.organism_id)
             .collect()
     }

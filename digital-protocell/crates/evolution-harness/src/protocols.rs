@@ -16,6 +16,8 @@ pub enum ProtocolError {
     GenerationBounds,
     #[error("execution is not authorized while unresolved protocol fields remain")]
     UnresolvedExecution,
+    #[error("selective pressure contract is invalid: {0}")]
+    InvalidSelectivePressure(String),
     #[error("protocol hash serialization failed: {0}")]
     Serialization(String),
 }
@@ -27,6 +29,67 @@ pub enum ResourceMode {
     Scarcity,
     Shared,
     SpatialLocal,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+pub enum CampaignRole {
+    Treatment,
+    Neutral,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub struct SelectivePressureContractV1 {
+    pub schema: String,
+    pub contrast_id: String,
+    pub campaign_role: CampaignRole,
+    pub treatment_environment: String,
+    pub neutral_environment: String,
+    pub pressure_event_or_condition: String,
+    pub pressure_start: f64,
+    pub expected_phenotype_dimension: String,
+}
+
+impl SelectivePressureContractV1 {
+    pub fn validate(&self) -> Result<(), ProtocolError> {
+        for (field, value) in [
+            ("contrast_id", self.contrast_id.as_str()),
+            ("treatment_environment", self.treatment_environment.as_str()),
+            ("neutral_environment", self.neutral_environment.as_str()),
+            (
+                "pressure_event_or_condition",
+                self.pressure_event_or_condition.as_str(),
+            ),
+            (
+                "expected_phenotype_dimension",
+                self.expected_phenotype_dimension.as_str(),
+            ),
+        ] {
+            if value.is_empty() {
+                return Err(ProtocolError::InvalidSelectivePressure(format!(
+                    "{field} is empty"
+                )));
+            }
+        }
+        if !self.pressure_start.is_finite() || self.pressure_start < 0.0 {
+            return Err(ProtocolError::InvalidSelectivePressure(
+                "pressure_start must be finite and non-negative".into(),
+            ));
+        }
+        if self.treatment_environment == self.neutral_environment {
+            return Err(ProtocolError::InvalidSelectivePressure(
+                "treatment and neutral environments must differ".into(),
+            ));
+        }
+        Ok(())
+    }
+
+    pub fn for_campaign(&self, role: CampaignRole, environment_id: &str) -> bool {
+        self.campaign_role == role
+            && match role {
+                CampaignRole::Treatment => environment_id == self.treatment_environment,
+                CampaignRole::Neutral => environment_id == self.neutral_environment,
+            }
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
@@ -56,7 +119,11 @@ pub struct ResourceVectorV1 {
 
 impl Default for ResourceVectorV1 {
     fn default() -> Self {
-        Self { n: 0.0, f: 0.0, w: 0.0 }
+        Self {
+            n: 0.0,
+            f: 0.0,
+            w: 0.0,
+        }
     }
 }
 
@@ -154,9 +221,13 @@ impl EnvironmentProtocolV1 {
             ResourceMode::Pulsed => required.push(EnvironmentCapability::PulsedResources),
             ResourceMode::Scarcity => required.push(EnvironmentCapability::Scarcity),
             ResourceMode::Shared => required.push(EnvironmentCapability::SharedCompetition),
-            ResourceMode::SpatialLocal => required.push(EnvironmentCapability::SpatialLocalResources),
+            ResourceMode::SpatialLocal => {
+                required.push(EnvironmentCapability::SpatialLocalResources)
+            }
         }
-        if self.damage_mode != DamageMode::None || self.resource_ecology.damage_mode != DamageMode::None {
+        if self.damage_mode != DamageMode::None
+            || self.resource_ecology.damage_mode != DamageMode::None
+        {
             required.push(EnvironmentCapability::Damage);
         }
         if !self.transitions.is_empty() {
@@ -207,7 +278,9 @@ impl Default for MutationProtocolV1 {
 impl MutationProtocolV1 {
     pub fn validate(&self) -> Result<(), ProtocolError> {
         if self.mutation_protocol_id.is_empty() {
-            return Err(ProtocolError::EmptyField { field: "mutation_protocol_id" });
+            return Err(ProtocolError::EmptyField {
+                field: "mutation_protocol_id",
+            });
         }
         if !(0.0..=1.0).contains(&self.mutation_rate) {
             return Err(ProtocolError::InvalidMutationRate);
@@ -273,6 +346,7 @@ pub struct ExperimentProtocolV1 {
     pub heredity_schema: String,
     pub mutation_protocol: MutationProtocolV1,
     pub environment_protocol: EnvironmentProtocolV1,
+    pub selective_pressure: Option<SelectivePressureContractV1>,
     pub placement_protocol: PlacementProtocolV1,
     pub replicates: u32,
     pub random_seeds: Vec<u64>,
@@ -298,6 +372,7 @@ impl ExperimentProtocolV1 {
             heredity_schema: "synthetic_test_heredity".into(),
             mutation_protocol: mutation,
             environment_protocol: EnvironmentProtocolV1::new(environment_id),
+            selective_pressure: None,
             placement_protocol: PlacementProtocolV1::default(),
             replicates: 1,
             random_seeds: vec![0],
@@ -332,7 +407,11 @@ impl ExperimentProtocolV1 {
         if self.maximum_generation < self.minimum_generation_requirement {
             return Err(ProtocolError::GenerationBounds);
         }
-        self.mutation_protocol.validate()
+        self.mutation_protocol.validate()?;
+        if let Some(contract) = &self.selective_pressure {
+            contract.validate()?;
+        }
+        Ok(())
     }
 
     pub fn validate_for_execution(&self) -> Result<(), ProtocolError> {
@@ -381,7 +460,15 @@ pub struct FounderIdentityV1 {
 
 impl FounderIdentityV1 {
     #[allow(clippy::too_many_arguments)]
-    pub fn new(founder_id: u64, organism_schema: &str, heredity_hash: &str, phenotype_baseline: &str, material_state_hash: &str, seed: u64, preconditioning_protocol: &str) -> Self {
+    pub fn new(
+        founder_id: u64,
+        organism_schema: &str,
+        heredity_hash: &str,
+        phenotype_baseline: &str,
+        material_state_hash: &str,
+        seed: u64,
+        preconditioning_protocol: &str,
+    ) -> Self {
         Self {
             schema: "FounderIdentityV1".into(),
             founder_id,
@@ -436,7 +523,10 @@ pub struct ReplicateResultV1 {
     pub minimum_population_seen: u64,
     pub accepted_simulated_time: f64,
     pub pressure_event_count: u64,
+    pub pressure_reached: bool,
+    pub pressure_contract_valid: bool,
     pub pressure_before_reproduction: bool,
+    pub campaign_role: Option<CampaignRole>,
     pub actual_reproduction: bool,
     pub heredity_preserved: bool,
     pub phenotype_measurable: bool,
@@ -463,7 +553,10 @@ impl ReplicateResultV1 {
             minimum_population_seen: 0,
             accepted_simulated_time: 0.0,
             pressure_event_count: 0,
+            pressure_reached: false,
+            pressure_contract_valid: false,
             pressure_before_reproduction: false,
+            campaign_role: None,
             actual_reproduction: false,
             heredity_preserved: false,
             phenotype_measurable: false,
@@ -489,7 +582,8 @@ impl ReplicateResultV1 {
 }
 
 pub fn stable_hash<T: Serialize>(value: &T) -> Result<String, ProtocolError> {
-    let bytes = serde_json::to_vec(value).map_err(|e| ProtocolError::Serialization(e.to_string()))?;
+    let bytes =
+        serde_json::to_vec(value).map_err(|e| ProtocolError::Serialization(e.to_string()))?;
     let mut hash: u64 = 0xcbf29ce484222325;
     for byte in bytes {
         hash ^= u64::from(byte);
@@ -498,7 +592,10 @@ pub fn stable_hash<T: Serialize>(value: &T) -> Result<String, ProtocolError> {
     Ok(format!("fnv1a64:{hash:016x}"))
 }
 
-pub fn classify_ecology_timing(first_reproduction_time: f64, pressure_start_time: f64) -> FailureClass {
+pub fn classify_ecology_timing(
+    first_reproduction_time: f64,
+    pressure_start_time: f64,
+) -> FailureClass {
     if first_reproduction_time <= pressure_start_time {
         FailureClass::EcologyPressurePostReproduction
     } else {

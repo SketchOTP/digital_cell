@@ -58,7 +58,15 @@ pub struct EventV1 {
 }
 
 impl EventV1 {
-    pub(crate) fn base(event_id: EventId, time: f64, step: u64, replicate: u32, event_type: EventType, env: &str, protocol: &str) -> Self {
+    pub(crate) fn base(
+        event_id: EventId,
+        time: f64,
+        step: u64,
+        replicate: u32,
+        event_type: EventType,
+        env: &str,
+        protocol: &str,
+    ) -> Self {
         Self {
             schema: "EventV1".into(),
             event_id,
@@ -75,13 +83,39 @@ impl EventV1 {
         }
     }
 
-    pub fn founder(id: EventId, time: f64, step: u64, replicate: u32, env: &str, protocol: &str, organism_id: OrganismId) -> Self {
-        let mut event = Self::base(id, time, step, replicate, EventType::FounderCreated, env, protocol);
+    pub fn founder(
+        id: EventId,
+        time: f64,
+        step: u64,
+        replicate: u32,
+        env: &str,
+        protocol: &str,
+        organism_id: OrganismId,
+    ) -> Self {
+        let mut event = Self::base(
+            id,
+            time,
+            step,
+            replicate,
+            EventType::FounderCreated,
+            env,
+            protocol,
+        );
         event.organism_id = Some(organism_id);
         event
     }
 
-    pub fn birth(id: EventId, time: f64, step: u64, replicate: u32, organism_id: OrganismId, parent_id: Option<OrganismId>, lineage_id: LineageId, env: &str, protocol: &str) -> Self {
+    pub fn birth(
+        id: EventId,
+        time: f64,
+        step: u64,
+        replicate: u32,
+        organism_id: OrganismId,
+        parent_id: Option<OrganismId>,
+        lineage_id: LineageId,
+        env: &str,
+        protocol: &str,
+    ) -> Self {
         let mut event = Self::base(id, time, step, replicate, EventType::Birth, env, protocol);
         event.organism_id = Some(organism_id);
         event.parent_id = parent_id;
@@ -89,14 +123,37 @@ impl EventV1 {
         event
     }
 
-    pub fn death(id: EventId, time: f64, step: u64, replicate: u32, organism_id: OrganismId, env: &str, protocol: &str) -> Self {
+    pub fn death(
+        id: EventId,
+        time: f64,
+        step: u64,
+        replicate: u32,
+        organism_id: OrganismId,
+        env: &str,
+        protocol: &str,
+    ) -> Self {
         let mut event = Self::base(id, time, step, replicate, EventType::Death, env, protocol);
         event.organism_id = Some(organism_id);
         event
     }
 
-    pub fn experiment_end(id: EventId, time: f64, step: u64, replicate: u32, env: &str, protocol: &str) -> Self {
-        Self::base(id, time, step, replicate, EventType::ExperimentEnd, env, protocol)
+    pub fn experiment_end(
+        id: EventId,
+        time: f64,
+        step: u64,
+        replicate: u32,
+        env: &str,
+        protocol: &str,
+    ) -> Self {
+        Self::base(
+            id,
+            time,
+            step,
+            replicate,
+            EventType::ExperimentEnd,
+            env,
+            protocol,
+        )
     }
 }
 
@@ -115,7 +172,10 @@ pub enum EventLedgerError {
     #[error("environment identity changed without an environment switch")]
     EnvironmentMismatch,
     #[error("birth of organism {child} references missing parent {parent}")]
-    MissingParent { child: OrganismId, parent: OrganismId },
+    MissingParent {
+        child: OrganismId,
+        parent: OrganismId,
+    },
     #[error("organism {0} was born more than once")]
     DoubleBirth(OrganismId),
     #[error("organism {0} died more than once")]
@@ -123,9 +183,15 @@ pub enum EventLedgerError {
     #[error("death of unknown organism {0}")]
     DeathBeforeBirth(OrganismId),
     #[error("organism {child} was born after dead parent {parent}")]
-    ParentDead { child: OrganismId, parent: OrganismId },
+    ParentDead {
+        child: OrganismId,
+        parent: OrganismId,
+    },
     #[error("organism {child} was born before parent {parent}")]
-    ChildBeforeParent { child: OrganismId, parent: OrganismId },
+    ChildBeforeParent {
+        child: OrganismId,
+        parent: OrganismId,
+    },
     #[error("event references unknown organism {0}")]
     UnknownOrganism(OrganismId),
     #[error("event ledger serialization failed: {0}")]
@@ -195,34 +261,49 @@ impl EventLedger {
                 replicate = Some(event.replicate);
             }
             if let Some(current) = environment {
-                if current != event.environment_id && event.event_type != EventType::EnvironmentSwitch {
+                if current != event.environment_id
+                    && event.event_type != EventType::EnvironmentSwitch
+                {
                     return Err(EventLedgerError::EnvironmentMismatch);
                 }
             }
             environment = Some(&event.environment_id);
             match event.event_type {
                 EventType::FounderCreated | EventType::Birth => {
-                    let organism_id = event.organism_id.ok_or(EventLedgerError::UnknownOrganism(0))?;
+                    let organism_id = event
+                        .organism_id
+                        .ok_or(EventLedgerError::UnknownOrganism(0))?;
                     if !born.insert(organism_id) {
                         return Err(EventLedgerError::DoubleBirth(organism_id));
                     }
                     if let Some(parent_id) = event.parent_id {
                         if !born.contains(&parent_id) {
-                            return Err(EventLedgerError::MissingParent { child: organism_id, parent: parent_id });
+                            return Err(EventLedgerError::MissingParent {
+                                child: organism_id,
+                                parent: parent_id,
+                            });
                         }
                         if let Some(parent_time) = birth_time.get(&parent_id) {
                             if event.accepted_simulated_time < *parent_time {
-                                return Err(EventLedgerError::ChildBeforeParent { child: organism_id, parent: parent_id });
+                                return Err(EventLedgerError::ChildBeforeParent {
+                                    child: organism_id,
+                                    parent: parent_id,
+                                });
                             }
                         }
                         if let Some(_parent_death) = death_time.get(&parent_id) {
-                            return Err(EventLedgerError::ParentDead { child: organism_id, parent: parent_id });
+                            return Err(EventLedgerError::ParentDead {
+                                child: organism_id,
+                                parent: parent_id,
+                            });
                         }
                     }
                     birth_time.insert(organism_id, event.accepted_simulated_time);
                 }
                 EventType::Death => {
-                    let organism_id = event.organism_id.ok_or(EventLedgerError::DeathBeforeBirth(0))?;
+                    let organism_id = event
+                        .organism_id
+                        .ok_or(EventLedgerError::DeathBeforeBirth(0))?;
                     if !born.contains(&organism_id) {
                         return Err(EventLedgerError::DeathBeforeBirth(organism_id));
                     }
@@ -231,7 +312,10 @@ impl EventLedger {
                     }
                     death_time.insert(organism_id, event.accepted_simulated_time);
                 }
-                EventType::FissionStarted | EventType::FissionCompleted | EventType::DamageApplied | EventType::Mutation => {
+                EventType::FissionStarted
+                | EventType::FissionCompleted
+                | EventType::DamageApplied
+                | EventType::Mutation => {
                     if let Some(organism_id) = event.organism_id {
                         if !born.contains(&organism_id) {
                             return Err(EventLedgerError::UnknownOrganism(organism_id));
@@ -244,5 +328,7 @@ impl EventLedger {
         Ok(())
     }
 
-    pub fn hash(&self) -> Result<String, ProtocolError> { stable_hash(self) }
+    pub fn hash(&self) -> Result<String, ProtocolError> {
+        stable_hash(self)
+    }
 }

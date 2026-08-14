@@ -782,3 +782,6 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/evolution-harness/src/harness.rs` — accepted-dt execution loop, scheduled ecology events, replicate runner, qualification evidence
 - `digital-protocell/crates/evolution-harness/src/selection.rs` — treatment/neutral campaign statistics and final validity gate
 - `digital-protocell/crates/evolution-harness/src/historical.rs` — sealed source-artifact mappings with unresolved execution values
+- `digital-protocell/crates/evolution-harness/src/protocols.rs` — execution authorization, placement, evidence, and selective-pressure protocol contracts
+- `digital-protocell/crates/evolution-harness/src/adapter.rs` — founder placement context and mechanism-aware heredity/phenotype evidence boundary
+- `.github/workflows/evolution-harness.yml` — pinned Rust formatting/test verification for the harness workspace

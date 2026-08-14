@@ -38,7 +38,12 @@ pub struct AnalysisExporter;
 
 impl AnalysisExporter {
     pub fn event_jsonl(ledger: &EventLedger) -> Result<String, serde_json::Error> {
-        ledger.events.iter().map(serde_json::to_string).collect::<Result<Vec<_>, _>>().map(|rows| rows.join("\n"))
+        ledger
+            .events
+            .iter()
+            .map(serde_json::to_string)
+            .collect::<Result<Vec<_>, _>>()
+            .map(|rows| rows.join("\n"))
     }
 
     pub fn bundle_json(bundle: &AnalysisBundleV1) -> Result<String, serde_json::Error> {
@@ -47,13 +52,30 @@ impl AnalysisExporter {
 
     pub fn lineage_rows(tracker: &LineageTracker) -> Vec<LineageAnalysisRow> {
         let mut rows = Vec::new();
-        for record in tracker.ancestry.values().filter(|record| record.parent_id.is_none()) {
+        for record in tracker
+            .ancestry
+            .values()
+            .filter(|record| record.parent_id.is_none())
+        {
             let members = tracker.lineage_members(record.lineage_id);
-            let max_generation = members.iter().filter_map(|id| tracker.generation(*id)).max().unwrap_or(0);
-            let deaths = members.iter().filter_map(|id| tracker.ancestry.get(id)).filter(|record| record.death_time.is_some()).count() as u64;
+            let max_generation = members
+                .iter()
+                .filter_map(|id| tracker.generation(*id))
+                .max()
+                .unwrap_or(0);
+            let deaths = members
+                .iter()
+                .filter_map(|id| tracker.ancestry.get(id))
+                .filter(|record| record.death_time.is_some())
+                .count() as u64;
             let extinction_time = members
                 .iter()
-                .filter_map(|id| tracker.ancestry.get(id).and_then(|record| record.death_time))
+                .filter_map(|id| {
+                    tracker
+                        .ancestry
+                        .get(id)
+                        .and_then(|record| record.death_time)
+                })
                 .reduce(f64::max);
             rows.push(LineageAnalysisRow {
                 lineage_id: record.lineage_id,
