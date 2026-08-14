@@ -1,0 +1,41 @@
+[
+  {
+    "candidate": "processing_heavy",
+    "environment": "neutral",
+    "candidate_hash": "faa5c27f8ee9516f1a71817d66f4ee82414dde8e5ce9ef2f1382162985831e6d",
+    "environment_hash": "fnv1a64:ed767ff504c9367a",
+    "n": 16,
+    "fission_count": 0,
+    "death_before_fission_count": 0,
+    "horizon_without_fission_count": 16,
+    "mean_restricted_reproduction_time": 80.0,
+    "min_restricted_reproduction_time": 80.0,
+    "max_restricted_reproduction_time": 80.0
+  },
+  {
+    "candidate": "repair_heavy",
+    "environment": "neutral",
+    "candidate_hash": "e38978484b8872a9bd6344dc5e047c6f4ef53679607b84fd704aa4927af8b802",
+    "environment_hash": "fnv1a64:ed767ff504c9367a",
+    "n": 16,
+    "fission_count": 0,
+    "death_before_fission_count": 0,
+    "horizon_without_fission_count": 16,
+    "mean_restricted_reproduction_time": 80.0,
+    "min_restricted_reproduction_time": 80.0,
+    "max_restricted_reproduction_time": 80.0
+  },
+  {
+    "candidate": "neutral",
+    "environment": "neutral",
+    "candidate_hash": "b62bf5964d0d0f46b05eb3d61b5d9d4fee2645668a0804a260b2726bee722e83",
+    "environment_hash": "fnv1a64:ed767ff504c9367a",
+    "n": 16,
+    "fission_count": 0,
+    "death_before_fission_count": 0,
+    "horizon_without_fission_count": 16,
+    "mean_restricted_reproduction_time": 80.0,
+    "min_restricted_reproduction_time": 80.0,
+    "max_restricted_reproduction_time": 80.0
+  }
+]

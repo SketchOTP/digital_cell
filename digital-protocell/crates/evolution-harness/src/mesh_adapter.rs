@@ -5,8 +5,8 @@ use crate::{
     MutationProtocolV1, OrganismAdapter, PhenotypeEvidenceV1,
 };
 use chemistry_core::d096_allocation::{
-    expression_step, mutate_allocation_genotype, AllocationGenotype, AllocationParams,
-    AllocationState,
+    apply_assay_environment, expression_step, mutate_allocation_genotype, AllocationGenotype,
+    AllocationParams, AllocationState, AssayEnvironment,
 };
 use chemistry_core::material_mesh::{LumpedChem, MaterialMesh, DEFAULT_RHO_S};
 use chemistry_core::mesh_fission::{try_local_fission, FissionParams};
@@ -39,6 +39,9 @@ pub struct DigitalCellMeshAdapter {
     /// Explicit D-096 founder genotype. Generic mesh founders remain generic
     /// when this is None, even when allocation parameters are configured.
     pub d096_founder_genotype: Option<AllocationGenotype>,
+    /// Execute the already-qualified D-096 H/B/Neutral forcing verbatim.
+    /// This is an observer-selected environment, never organism state.
+    pub d096_assay_environment: Option<AssayEnvironment>,
 }
 
 impl Default for DigitalCellMeshAdapter {
@@ -54,6 +57,7 @@ impl Default for DigitalCellMeshAdapter {
             founder_radius: 14.0,
             allocation_params: None,
             d096_founder_genotype: None,
+            d096_assay_environment: None,
         }
     }
 }
@@ -61,6 +65,11 @@ impl Default for DigitalCellMeshAdapter {
 impl DigitalCellMeshAdapter {
     pub fn with_d096_founder(mut self, genotype: AllocationGenotype) -> Self {
         self.d096_founder_genotype = Some(genotype);
+        self
+    }
+
+    pub fn with_d096_assay_environment(mut self, environment: AssayEnvironment) -> Self {
+        self.d096_assay_environment = Some(environment);
         self
     }
 }
@@ -123,10 +132,32 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
         &mut self,
         organism: &mut Self::Organism,
         environment: &EnvironmentProtocolV1,
-        _accepted_step: u64,
+        accepted_step: u64,
         accepted_simulated_time: f64,
         context: EnvironmentContext,
     ) -> Result<Vec<AdapterEnvironmentEvent>, AdapterError> {
+        if let Some(assay_environment) = self.d096_assay_environment {
+            let ledger = apply_assay_environment(
+                organism,
+                assay_environment,
+                accepted_step.saturating_sub(1),
+            );
+            let mut events = Vec::new();
+            if ledger.structural_damage > 0.0 || ledger.membrane_damage > 0.0 {
+                let mut metadata = Metadata::new();
+                metadata.insert(
+                    "structural".into(),
+                    format!("{:.9}", ledger.structural_damage),
+                );
+                metadata.insert("membrane".into(), format!("{:.9}", ledger.membrane_damage));
+                metadata.insert("forcing".into(), "D096_exact_assay_environment".into());
+                events.push(AdapterEnvironmentEvent {
+                    event_type: crate::EventType::DamageApplied,
+                    metadata,
+                });
+            }
+            return Ok(events);
+        }
         let ecology = &environment.resource_ecology;
         let mut events = Vec::new();
         if matches!(environment.resource_mode, crate::ResourceMode::Continuous) {

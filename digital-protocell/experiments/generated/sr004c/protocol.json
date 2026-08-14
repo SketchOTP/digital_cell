@@ -1,0 +1,474 @@
+{
+  "schema": "D096Gate7ProtocolBundleV1",
+  "entry_commit": "f4adec147f6d8c0763d1264b8954eaf2788edcca",
+  "mutation_protocol": {
+    "schema": "MutationProtocolV1",
+    "mutation_protocol_id": "mutation_none",
+    "mutation_rate": 0.0,
+    "magnitude_distribution": "none",
+    "bounds": "declared_by_heredity_adapter",
+    "provenance": "SR003R"
+  },
+  "candidates": [
+    {
+      "candidate": "processing_heavy",
+      "candidate_id": "processing-heavy",
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "candidate_hash": "faa5c27f8ee9516f1a71817d66f4ee82414dde8e5ce9ef2f1382162985831e6d"
+    },
+    {
+      "candidate": "repair_heavy",
+      "candidate_id": "repair-heavy",
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "candidate_hash": "e38978484b8872a9bd6344dc5e047c6f4ef53679607b84fd704aa4927af8b802"
+    },
+    {
+      "candidate": "neutral",
+      "candidate_id": "neutral",
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "candidate_hash": "b62bf5964d0d0f46b05eb3d61b5d9d4fee2645668a0804a260b2726bee722e83"
+    }
+  ],
+  "environments": [
+    {
+      "environment": "h",
+      "environment_id": "H",
+      "environment_hash": "fnv1a64:1ee7b9e37c4dc8ad",
+      "forcing": "fuel=1.0;nutrient=2.75 when step%400<100 else 0.264;damage=none"
+    },
+    {
+      "environment": "b",
+      "environment_id": "B",
+      "environment_hash": "fnv1a64:99401d02cf931cbe",
+      "forcing": "nutrient=1.98;fuel=1.0;damage=0.08 structural + 0.048 membrane every 350 steps"
+    },
+    {
+      "environment": "neutral",
+      "environment_id": "Neutral",
+      "environment_hash": "fnv1a64:ed767ff504c9367a",
+      "forcing": "nutrient=1.54;fuel=1.0;damage=none"
+    }
+  ],
+  "protocols": [
+    {
+      "schema": "ExperimentProtocolV1",
+      "experiment_id": "d096_gate7_h",
+      "protocol_id": "d096_gate7_h_mutation_none",
+      "organism_schema": "autopoietic_material_mesh_finite_catalytic_allocation_v1",
+      "heredity_schema": "D096AllocationGenotypeV1",
+      "mutation_protocol": {
+        "schema": "MutationProtocolV1",
+        "mutation_protocol_id": "mutation_none",
+        "mutation_rate": 0.0,
+        "magnitude_distribution": "none",
+        "bounds": "declared_by_heredity_adapter",
+        "provenance": "SR003R"
+      },
+      "environment_protocol": {
+        "schema": "EnvironmentProtocolV1",
+        "environment_id": "H",
+        "resource_mode": "Pulsed",
+        "resource_field": "D096_exact_assay_environment",
+        "resource_ecology": {
+          "schema": "ResourceEcologyV1",
+          "continuous_supply": {
+            "n": 0.0,
+            "f": 0.0,
+            "w": 0.0
+          },
+          "pulse_delta": {
+            "n": 0.0,
+            "f": 0.0,
+            "w": 0.0
+          },
+          "shared_resource_competition": false,
+          "spatial_local_availability": false,
+          "scarcity_scale": 0.0,
+          "pulse_schedule": [],
+          "scarcity_schedule": [],
+          "damage_mode": "None",
+          "damage_interval": null,
+          "damage_fraction": 0.0
+        },
+        "pulse_schedule": [
+          0.0,
+          2.0,
+          8.0,
+          10.0,
+          16.0,
+          18.0,
+          24.0,
+          26.0,
+          32.0,
+          34.0,
+          40.0,
+          42.0,
+          48.0,
+          50.0,
+          56.0,
+          58.0,
+          64.0,
+          66.0,
+          72.0,
+          74.0
+        ],
+        "scarcity_schedule": [],
+        "rich_duration": 2.0,
+        "lean_duration": 6.0,
+        "damage_mode": "None",
+        "damage_interval": null,
+        "spatial_constraints": "declared_by_experiment",
+        "transitions": [],
+        "duration": 80.0,
+        "termination_rules": [
+          "first_founder_fission",
+          "founder_death",
+          "accepted_horizon"
+        ]
+      },
+      "selective_pressure": null,
+      "placement_protocol": {
+        "schema": "PlacementProtocolV1",
+        "initial_coordinates": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "spacing": 0.0,
+        "founder_seed": 0,
+        "random_seed": null,
+        "dish_geometry": "declared_by_experiment",
+        "resource_geometry": "declared_by_environment"
+      },
+      "replicates": 16,
+      "random_seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "maximum_accepted_horizon": 80.0,
+      "maximum_generation": 1,
+      "minimum_generation_requirement": 0,
+      "minimum_population_viability": 1,
+      "termination_rules": [
+        "first_qualified_physical_fission",
+        "founder_death",
+        "accepted_horizon"
+      ],
+      "primary_endpoints": [
+        "first_fission_by_horizon",
+        "time_to_first_qualified_fission",
+        "restricted_reproduction_time",
+        "founder_death_before_reproduction",
+        "live_gen1_daughter_count_at_first_fission"
+      ],
+      "secondary_endpoints": [
+        "accepted_steps_at_stop",
+        "accepted_simulated_time_at_stop",
+        "partition_conserved",
+        "event_ledger_hash"
+      ],
+      "provenance": {
+        "source_artifacts": {
+          "d088_horizon": "digital-protocell/crates/chemistry-core/src/d088_analysis.rs:steps(4000)",
+          "d096_forcing": "digital-protocell/crates/chemistry-core/src/d096_allocation.rs:apply_assay_environment",
+          "d096_params": "digital-protocell/crates/chemistry-core/src/d096_allocation.rs:AllocationParams::default",
+          "gate6_authority": "f4adec147f6d8c0763d1264b8954eaf2788edcca"
+        },
+        "derived_values": {
+          "candidate_hash_basis": "frozen D-096 AllocationParams",
+          "dt": "MechParams::default().dt=0.02",
+          "maximum_simulated_time": "4000*0.02=80",
+          "mutation_state": "mutation_none control"
+        },
+        "unresolved_values": [],
+        "execution_authorized": true
+      }
+    },
+    {
+      "schema": "ExperimentProtocolV1",
+      "experiment_id": "d096_gate7_b",
+      "protocol_id": "d096_gate7_b_mutation_none",
+      "organism_schema": "autopoietic_material_mesh_finite_catalytic_allocation_v1",
+      "heredity_schema": "D096AllocationGenotypeV1",
+      "mutation_protocol": {
+        "schema": "MutationProtocolV1",
+        "mutation_protocol_id": "mutation_none",
+        "mutation_rate": 0.0,
+        "magnitude_distribution": "none",
+        "bounds": "declared_by_heredity_adapter",
+        "provenance": "SR003R"
+      },
+      "environment_protocol": {
+        "schema": "EnvironmentProtocolV1",
+        "environment_id": "B",
+        "resource_mode": "Continuous",
+        "resource_field": "D096_exact_assay_environment",
+        "resource_ecology": {
+          "schema": "ResourceEcologyV1",
+          "continuous_supply": {
+            "n": 0.0,
+            "f": 0.0,
+            "w": 0.0
+          },
+          "pulse_delta": {
+            "n": 0.0,
+            "f": 0.0,
+            "w": 0.0
+          },
+          "shared_resource_competition": false,
+          "spatial_local_availability": false,
+          "scarcity_scale": 0.0,
+          "pulse_schedule": [],
+          "scarcity_schedule": [],
+          "damage_mode": "None",
+          "damage_interval": null,
+          "damage_fraction": 0.0
+        },
+        "pulse_schedule": [],
+        "scarcity_schedule": [],
+        "rich_duration": 2.0,
+        "lean_duration": 6.0,
+        "damage_mode": "DeclaredExternal",
+        "damage_interval": 7.0,
+        "spatial_constraints": "declared_by_experiment",
+        "transitions": [],
+        "duration": 80.0,
+        "termination_rules": [
+          "first_founder_fission",
+          "founder_death",
+          "accepted_horizon"
+        ]
+      },
+      "selective_pressure": null,
+      "placement_protocol": {
+        "schema": "PlacementProtocolV1",
+        "initial_coordinates": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "spacing": 0.0,
+        "founder_seed": 0,
+        "random_seed": null,
+        "dish_geometry": "declared_by_experiment",
+        "resource_geometry": "declared_by_environment"
+      },
+      "replicates": 16,
+      "random_seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "maximum_accepted_horizon": 80.0,
+      "maximum_generation": 1,
+      "minimum_generation_requirement": 0,
+      "minimum_population_viability": 1,
+      "termination_rules": [
+        "first_qualified_physical_fission",
+        "founder_death",
+        "accepted_horizon"
+      ],
+      "primary_endpoints": [
+        "first_fission_by_horizon",
+        "time_to_first_qualified_fission",
+        "restricted_reproduction_time",
+        "founder_death_before_reproduction",
+        "live_gen1_daughter_count_at_first_fission"
+      ],
+      "secondary_endpoints": [
+        "accepted_steps_at_stop",
+        "accepted_simulated_time_at_stop",
+        "partition_conserved",
+        "event_ledger_hash"
+      ],
+      "provenance": {
+        "source_artifacts": {
+          "d088_horizon": "digital-protocell/crates/chemistry-core/src/d088_analysis.rs:steps(4000)",
+          "d096_forcing": "digital-protocell/crates/chemistry-core/src/d096_allocation.rs:apply_assay_environment",
+          "d096_params": "digital-protocell/crates/chemistry-core/src/d096_allocation.rs:AllocationParams::default",
+          "gate6_authority": "f4adec147f6d8c0763d1264b8954eaf2788edcca"
+        },
+        "derived_values": {
+          "candidate_hash_basis": "frozen D-096 AllocationParams",
+          "dt": "MechParams::default().dt=0.02",
+          "maximum_simulated_time": "4000*0.02=80",
+          "mutation_state": "mutation_none control"
+        },
+        "unresolved_values": [],
+        "execution_authorized": true
+      }
+    },
+    {
+      "schema": "ExperimentProtocolV1",
+      "experiment_id": "d096_gate7_neutral",
+      "protocol_id": "d096_gate7_neutral_mutation_none",
+      "organism_schema": "autopoietic_material_mesh_finite_catalytic_allocation_v1",
+      "heredity_schema": "D096AllocationGenotypeV1",
+      "mutation_protocol": {
+        "schema": "MutationProtocolV1",
+        "mutation_protocol_id": "mutation_none",
+        "mutation_rate": 0.0,
+        "magnitude_distribution": "none",
+        "bounds": "declared_by_heredity_adapter",
+        "provenance": "SR003R"
+      },
+      "environment_protocol": {
+        "schema": "EnvironmentProtocolV1",
+        "environment_id": "Neutral",
+        "resource_mode": "Continuous",
+        "resource_field": "D096_exact_assay_environment",
+        "resource_ecology": {
+          "schema": "ResourceEcologyV1",
+          "continuous_supply": {
+            "n": 0.0,
+            "f": 0.0,
+            "w": 0.0
+          },
+          "pulse_delta": {
+            "n": 0.0,
+            "f": 0.0,
+            "w": 0.0
+          },
+          "shared_resource_competition": false,
+          "spatial_local_availability": false,
+          "scarcity_scale": 0.0,
+          "pulse_schedule": [],
+          "scarcity_schedule": [],
+          "damage_mode": "None",
+          "damage_interval": null,
+          "damage_fraction": 0.0
+        },
+        "pulse_schedule": [],
+        "scarcity_schedule": [],
+        "rich_duration": 2.0,
+        "lean_duration": 6.0,
+        "damage_mode": "None",
+        "damage_interval": null,
+        "spatial_constraints": "declared_by_experiment",
+        "transitions": [],
+        "duration": 80.0,
+        "termination_rules": [
+          "first_founder_fission",
+          "founder_death",
+          "accepted_horizon"
+        ]
+      },
+      "selective_pressure": null,
+      "placement_protocol": {
+        "schema": "PlacementProtocolV1",
+        "initial_coordinates": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "spacing": 0.0,
+        "founder_seed": 0,
+        "random_seed": null,
+        "dish_geometry": "declared_by_experiment",
+        "resource_geometry": "declared_by_environment"
+      },
+      "replicates": 16,
+      "random_seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "maximum_accepted_horizon": 80.0,
+      "maximum_generation": 1,
+      "minimum_generation_requirement": 0,
+      "minimum_population_viability": 1,
+      "termination_rules": [
+        "first_qualified_physical_fission",
+        "founder_death",
+        "accepted_horizon"
+      ],
+      "primary_endpoints": [
+        "first_fission_by_horizon",
+        "time_to_first_qualified_fission",
+        "restricted_reproduction_time",
+        "founder_death_before_reproduction",
+        "live_gen1_daughter_count_at_first_fission"
+      ],
+      "secondary_endpoints": [
+        "accepted_steps_at_stop",
+        "accepted_simulated_time_at_stop",
+        "partition_conserved",
+        "event_ledger_hash"
+      ],
+      "provenance": {
+        "source_artifacts": {
+          "d088_horizon": "digital-protocell/crates/chemistry-core/src/d088_analysis.rs:steps(4000)",
+          "d096_forcing": "digital-protocell/crates/chemistry-core/src/d096_allocation.rs:apply_assay_environment",
+          "d096_params": "digital-protocell/crates/chemistry-core/src/d096_allocation.rs:AllocationParams::default",
+          "gate6_authority": "f4adec147f6d8c0763d1264b8954eaf2788edcca"
+        },
+        "derived_values": {
+          "candidate_hash_basis": "frozen D-096 AllocationParams",
+          "dt": "MechParams::default().dt=0.02",
+          "maximum_simulated_time": "4000*0.02=80",
+          "mutation_state": "mutation_none control"
+        },
+        "unresolved_values": [],
+        "execution_authorized": true
+      }
+    }
+  ]
+}

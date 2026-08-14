@@ -789,3 +789,10 @@ Concise navigation map for agents. Add entries as application code lands.
 - `docs/strategy/evolution_harness/d096_gate6_heredity_mutation.md` — Gate 6 scope and verification boundary
 - `docs/strategy/evolution_harness/d096_gate6_evidence.json` — committed Gate 6 assay evidence record
 - `.github/workflows/d096-gate6.yml` — scoped Gate 6 Rust formatting, tests, and evidence assay CI
+
+## DC-SR-004C Gate 7 artifacts
+- `digital-protocell/crates/evolution-harness/examples/d096_gate7_assay.rs` — frozen 16-seed H/B/Neutral observer-only first-fission/death/horizon assay
+- `digital-protocell/crates/evolution-harness/src/mesh_adapter.rs` — narrow adapter switch for exact existing D-096 assay forcing
+- `digital-protocell/experiments/generated/sr004c/` — preregistration, endpoints, paired analysis, ledger hashes, and final manifest
+- `digital-protocell/docs/strategy/d096_gate7/` — Gate 7 horizon, boundary, endpoint, results, and conclusion documentation
+- `.github/workflows/d096-gate7.yml` — pinned Rust scoped Gate 7 CI with Gate 6 continuity and no-gen2 assertions
