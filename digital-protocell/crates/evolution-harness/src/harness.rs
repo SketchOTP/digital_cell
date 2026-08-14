@@ -861,7 +861,38 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
 }
 
 fn d096_mutation_stream_seed(campaign_seed: u64, qualified_copy_ordinal: u64) -> u64 {
-    campaign_seed.wrapping_add(qualified_copy_ordinal)
+    const D096_CAMPAIGN_DOMAIN: u64 = 0xd096_cafe_5eed_0001;
+    const D096_COPY_DOMAIN: u64 = 0xd096_cafe_5eed_0002;
+    const D096_COMBINE_DOMAIN: u64 = 0xd096_cafe_5eed_0003;
+
+    // Mix the campaign and copy coordinates independently before combining
+    // them. This prevents additive/XOR aliasing such as (17, 1) == (18, 0)
+    // while keeping the stream assignment deterministic and dependency-free.
+    let campaign_component = d096_splitmix64(
+        campaign_seed
+            .wrapping_mul(0x9e37_79b9_7f4a_7c15)
+            .rotate_left(23)
+            ^ D096_CAMPAIGN_DOMAIN,
+    );
+    let copy_component = d096_splitmix64(
+        qualified_copy_ordinal
+            .wrapping_mul(0xbf58_476d_1ce4_e5b9)
+            .rotate_left(41)
+            ^ D096_COPY_DOMAIN,
+    );
+
+    d096_splitmix64(
+        campaign_component
+            .wrapping_add(copy_component.rotate_left(17))
+            ^ D096_COMBINE_DOMAIN,
+    )
+}
+
+fn d096_splitmix64(mut value: u64) -> u64 {
+    value = value.wrapping_add(0x9e37_79b9_7f4a_7c15);
+    value = (value ^ (value >> 30)).wrapping_mul(0xbf58_476d_1ce4_e5b9);
+    value = (value ^ (value >> 27)).wrapping_mul(0x94d0_49bb_1331_11eb);
+    value ^ (value >> 31)
 }
 
 fn mutation_metadata_reports_change(metadata: &crate::Metadata) -> bool {
@@ -902,6 +933,22 @@ mod tests {
     use chemistry_core::d096_allocation::{
         mutate_allocation_genotype, AllocationGenotype, AllocationParams,
     };
+    use std::collections::HashSet;
+
+    #[test]
+    fn d096_mutation_stream_keys_are_deterministic_and_bounded_unique() {
+        assert_eq!(d096_mutation_stream_seed(17, 1), d096_mutation_stream_seed(17, 1));
+        assert_ne!(d096_mutation_stream_seed(17, 1), d096_mutation_stream_seed(18, 0));
+
+        let keys = (0..64_u64)
+            .flat_map(|campaign_seed| {
+                (0..256_u64).map(move |qualified_copy_ordinal| {
+                    d096_mutation_stream_seed(campaign_seed, qualified_copy_ordinal)
+                })
+            })
+            .collect::<HashSet<_>>();
+        assert_eq!(keys.len(), 64 * 256);
+    }
 
     #[test]
     fn d096_mutation_stream_repeats_within_replicate_and_diverges_across_seeds() {
