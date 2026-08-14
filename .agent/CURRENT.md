@@ -4,10 +4,10 @@
 - ID: D-20260814-final-harness-acceptance-closure
 - Project directive: DC-SR-003R2
 - Goal: Close execution authorization, chronology, causal generation, mechanism evidence, selective-pressure, multi-founder, and remote-CI defects without changing certified science
-- Status: implementation complete locally; remote sync and CI pending
+- Status: coder-complete; pushed and GitHub CI passed; architect review pending
 - Acceptance: fail-closed execution, phased chronology, parent-causal generation intervals, mechanism-aware evidence, explicit treatment pressure, multi-founder placement, passing local tests, successful GitHub CI on exact PR head
 - Touched files: evolution-harness, evolution-harness docs, CI workflow, .agent records
-- Next action: sync scoped repair, push PR #1, wait for exact-head GitHub CI; do not start SR-004
+- Next action: architect independently inspect exact PR head and CI; do not start SR-004
 
 ## Repo facts needed now
 - Preserved entry commit: 956b054a9b37f675a8b84ae0624db98853956d37
@@ -23,4 +23,4 @@
 ## Open blockers
 - Mimir V2 lifecycle tools are unavailable in the current tool surface; do not claim Mimir context/evidence/close-out
 - Atlas has no Rust/Cargo on PATH; local sanctioned Windows toolchain is used for verification
-- Draft PR: #1 https://github.com/SketchOTP/digital_cell/pull/1; new head pending push
+- Draft PR: #1 https://github.com/SketchOTP/digital_cell/pull/1; final metadata head update pending push
