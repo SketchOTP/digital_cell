@@ -50,6 +50,7 @@ pub struct EvolutionHarness<A: OrganismAdapter> {
     pub environment_supported: bool,
     emitted_schedule_events: BTreeSet<String>,
     current_environment_id: String,
+    active_environment: EnvironmentProtocolV1,
 }
 
 pub struct ReplicateRunner;
@@ -121,6 +122,7 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
             phenotype_measurable: false,
             environment_supported: true,
             emitted_schedule_events: BTreeSet::new(),
+            active_environment: protocol.environment_protocol.clone(),
         })
     }
 
@@ -146,7 +148,7 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
     }
 
     fn emit_global_environment_events(&mut self) -> Result<(), HarnessError> {
-        let env = self.protocol.environment_protocol.clone();
+        let env = self.active_environment.clone();
         if env.resource_mode == crate::ResourceMode::Continuous && self.accepted_simulated_time == 0.0 {
             self.append_environment_event(EventType::ResourceContinuous, "continuous_resource_flow")?;
         }
@@ -173,6 +175,10 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
                     event.metadata.insert("from_environment".into(), self.current_environment_id.clone());
                     self.ledger.append(event).map_err(|e| HarnessError::Events(e.to_string()))?;
                     self.current_environment_id = transition.environment_id.clone();
+                    self.active_environment.environment_id = transition.environment_id.clone();
+                    if let Some(resource_mode) = &transition.resource_mode {
+                        self.active_environment.resource_mode = resource_mode.clone();
+                    }
                 }
             }
         }
@@ -210,7 +216,7 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
         let ids = self.population.living_ids();
         let living_population = ids.len();
         for (organism_index, organism_id) in ids.into_iter().enumerate() {
-            let environment = self.protocol.environment_protocol.clone();
+            let environment = self.active_environment.clone();
             if let Some(organism) = self.organisms.get_mut(&organism_id) {
                 let events = self.adapter.apply_declared_environment(organism, &environment, self.accepted_step, step_start, EnvironmentContext { living_population, organism_index, accepted_dt: expected_dt })?;
                 for adapter_event in events {
