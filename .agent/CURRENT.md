@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-14T17:34:49-04:00`
+- Last updated: `2026-08-14T19:20:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260814-1734-gate7-parity-horizon-audit`
-- External directive ID: `DC-SR-004C-R1`
-- Objective: `Audit Gate 5 physiology parity and D-088 horizon transfer for preserved Gate 7 execution without rerunning or tuning Gate 7`
-- Current status: `COMPLETE`
-- Acceptance: `Required shadow artifacts and documentation exist, original sr004c evidence is unchanged, exact Gate 7 metadata is corrected, and one allowed audit conclusion is supported by local and scoped remote validation`
-- Current phase: `DC-SR-004C-R1 shadow audit`
-- Expected or actual touched areas: `evolution-harness audit example or tests, sr004cr1 artifacts, d096_gate7 parity_audit docs, .agent records, scoped CI if required`
-- Immediate next action: `Pause for architect review; do not rerun Gate 7 or begin Gate 8`
+- Local directive ID: `D-20260814-d096-gate7-parity-correct-executor-preflight`
+- External directive ID: `DC-SR-004C-R2`
+- Objective: `Construct and verify a Gate-5-parity-correct Gate 7 execution path without executing reproductive Gate 7`
+- Current status: `VALIDATING`
+- Acceptance: `Exact Gate 5 parity preflight and mechanics/topology compatibility preflight are executed without fission; future Gate 7 protocol is frozen but not executed; R1 execution history is corrected`
+- Current phase: `DC-SR-004C-R2 parity-correct executor preflight`
+- Expected or actual touched areas: `chemistry-core D-096 shared constructors, evolution-harness mesh adapter and R2 preflight example, sr004cr2 artifacts, parity_correct_preflight docs, scoped CI, .agent records`
+- Immediate next action: `Push stacked draft PR and verify exact remote CI; do not execute Gate 7 or Gate 8`
 
 ## Temporary task-relevant facts
 
@@ -33,11 +33,11 @@
 
 ## Blockers
 
-- Gate 5-to-Gate 7 physiology parity failed in the shadow audit; no adapter repair or Gate 7 rerun is authorized without a new directive.
+- R2 mechanics/topology compatibility preflight currently erases the required H reciprocal effect; do not repair mechanics autonomously or execute Gate 7.
 
 ## Pending decisions
 
-- Do not rerun Gate 7 or begin Gate 8; architect review remains required after scoped CI and the exact R1 conclusion.
+- Gate 7 and Gate 8 remain blocked; architect review is required after the stacked R2 PR and exact remote CI.
 
 ## Status vocabulary
 

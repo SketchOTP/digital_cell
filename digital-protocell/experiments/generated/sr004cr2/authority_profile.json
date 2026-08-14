@@ -1,0 +1,233 @@
+{
+  "allocation_params": {
+    "activation_cost": 0.2,
+    "allocation_max": 1.0,
+    "allocation_min": 0.0,
+    "maintenance_rate": 0.00001,
+    "mutation_probability": 0.01,
+    "mutation_sigma": 0.15,
+    "synthesis_rate": 0.001,
+    "total_budget": 1.0,
+    "turnover_rate": 0.0001
+  },
+  "dt": 0.02,
+  "entry_commit": "aa98e40a75f662b53f5f05b8f4ae7dd0d495941d",
+  "equation": "autopoietic_material_mesh_finite_catalytic_allocation_v1",
+  "expression_order": [
+    "apply_assay_environment",
+    "expression_step",
+    "transport_step",
+    "reactions_step",
+    "growth_step"
+  ],
+  "fission": false,
+  "forcing": "chemistry-core::d096_allocation::apply_assay_environment",
+  "founder": {
+    "b_max_per_length": 1.0,
+    "bond_threshold": 0.05,
+    "center": [
+      0.0,
+      0.0
+    ],
+    "exterior": {
+      "a": 0.0,
+      "c": 0.0,
+      "c_b": 0.0,
+      "c_h": 0.0,
+      "f": 0.0,
+      "k_a": 0.0,
+      "k_b": 0.0,
+      "k_h": 0.0,
+      "k_node_b": 0.0,
+      "k_r": 0.0,
+      "n": 0.0,
+      "q_e": 0.0,
+      "q_k": 0.0,
+      "r": 0.0,
+      "tracer_c": 0.0,
+      "u_b": 0.0,
+      "u_h": 0.0,
+      "w": 0.0
+    },
+    "free_l": 1.0,
+    "interior": {
+      "a": 0.5,
+      "c": 1.0,
+      "c_b": 0.0,
+      "c_h": 0.0,
+      "f": 0.8,
+      "k_a": 0.0,
+      "k_b": 0.0,
+      "k_h": 0.0,
+      "k_node_b": 0.0,
+      "k_r": 0.0,
+      "n": 0.8,
+      "q_e": 0.0,
+      "q_k": 0.0,
+      "r": 0.5,
+      "tracer_c": 0.0,
+      "u_b": 0.0,
+      "u_h": 0.0,
+      "w": 0.0
+    },
+    "l_max": 3.5,
+    "l_min": 0.6,
+    "radius": 8.0,
+    "rho_s": 1.0,
+    "seed": 1,
+    "theta_b": 0.8,
+    "vertex_count": "12 + seed % 3",
+    "vertices_seed_1": [
+      [
+        8.0,
+        0.0
+      ],
+      [
+        7.083648205225679,
+        3.717785376350148
+      ],
+      [
+        4.544517973849247,
+        6.583870927149251
+      ],
+      [
+        0.964293442042584,
+        7.941670992784432
+      ],
+      [
+        -2.8368390963402836,
+        7.480129941483319
+      ],
+      [
+        -5.9880859853688095,
+        5.3049812659263615
+      ],
+      [
+        -7.767534539408416,
+        1.9145253143004615
+      ],
+      [
+        -7.767534539408417,
+        -1.9145253143004595
+      ],
+      [
+        -5.98808598536881,
+        -5.30498126592636
+      ],
+      [
+        -2.836839096340287,
+        -7.480129941483318
+      ],
+      [
+        0.9642934420425856,
+        -7.941670992784432
+      ],
+      [
+        4.5445179738492385,
+        -6.583870927149256
+      ],
+      [
+        7.08364820522568,
+        -3.717785376350147
+      ]
+    ]
+  },
+  "growth_params": {
+    "enable_growth": true,
+    "y_g": 0.9
+  },
+  "mechanics": false,
+  "mutation": "mutation_none",
+  "reaction_params": {
+    "autocatalytic": {
+      "enable": false,
+      "enable_edge_copy": true,
+      "enable_ka": true,
+      "enable_kb": true,
+      "enable_kr": true,
+      "enable_node_prod": true,
+      "k_edge_copy": 0.0,
+      "k_edge_loss": 0.0,
+      "k_node_prod": 0.0,
+      "k_node_turn": 0.0,
+      "mu_e": 0.0089,
+      "rho_node": 1.0
+    },
+    "composition": {
+      "enable": false,
+      "mu": 0.0,
+      "sigma": 0.0
+    },
+    "g0": 0.22,
+    "k_a_decay": 0.008,
+    "k_act": 0.24,
+    "k_bind": 1.2,
+    "k_build": 0.065,
+    "k_c_prod": 0.018,
+    "k_c_turn": 0.01,
+    "k_eps": 0.35,
+    "k_turn": 0.018,
+    "k_unbind": 0.06,
+    "network": {
+      "enable": false,
+      "enable_bb": true,
+      "enable_bh": true,
+      "enable_hb": true,
+      "enable_hh": true,
+      "k_d": 0.2,
+      "k_growth": 0.5,
+      "k_low": 0.25,
+      "k_off": 0.0,
+      "k_on": 0.0,
+      "k_r": 0.25,
+      "k_site": 1.0,
+      "k_store": 0.5,
+      "r_max": 2.0,
+      "rho": 1.5,
+      "w_m": 0.4,
+      "w_s": 0.6
+    },
+    "q_c": 0.3,
+    "reserve": {
+      "enable": true,
+      "k_growth": 8.819999999999999,
+      "k_low": 0.195,
+      "k_r": 0.15,
+      "k_r_loss": 0.002166084939249829,
+      "k_release": 0.025,
+      "k_store": 0.0125,
+      "k_store_half": 0.5,
+      "r_max": 1.0,
+      "store_horizon_mult": 2.0
+    },
+    "template": {
+      "allow_mismatch": true,
+      "eff_kb_build": 1.5,
+      "eff_kb_harvest": 0.5,
+      "eff_kh_build": 0.5,
+      "eff_kh_harvest": 1.5,
+      "enable": false,
+      "enable_binding": true,
+      "enable_copying": true,
+      "enable_turnover": true,
+      "k_bind_motif": 0.0,
+      "k_hydrolysis": 0.0,
+      "k_ligate": 0.0,
+      "k_mono": 0.0,
+      "k_off": 0.0,
+      "k_on_match": 0.0,
+      "k_unbind_motif": 0.0,
+      "match_mismatch_ratio": 100.0,
+      "next_id_hint": 1
+    },
+    "yield_a_to_m": 1.0
+  },
+  "reserve_enabled": true,
+  "schema": "DC-SR-004C-R2-Gate5AuthorityProfileV1",
+  "source": "chemistry-core::d096_allocation::pre_fission_assay",
+  "steps": 1000,
+  "topology": false,
+  "transport_params": {
+    "k_flux": 1.1
+  }
+}

@@ -61,3 +61,23 @@ This file is specifically for the operators use. It keeps record of what the AI 
 - 2026-07-24 | area:d093-entry | decision:D092_TEMPLATE_POLYMER_RETAINED_FIXED_MOTIF_EXPRESSION_CLOSED — polymer/copying/partition retained; fixed motif expression closed; D-092 smoke max_gen=0 selection is not evidence that natural selection is impossible | evidence:D-093 directive; tag D-092-template-heredity-qualified-selection-rejected @ a2196ae
 - 2026-07-24 | area:d093-close | decision:D093_TEMPLATE_NETWORK_HEREDITY_QUALIFIED_SELECTION_UNTESTABLE_ZERO_GENERATION — circular L=12 network schema qualifies heredity/phenotype; full selection max_gen=0; Phase3 not authorized; next D-094 | evidence:experiments/generated/d093/manifest.json
 - 2026-07-25 | area:d093-correction | decision:Replace D093_TEMPLATE_NETWORK_HEREDITY_QUALIFIED_SELECTION_REJECTED with D093_TEMPLATE_NETWORK_HEREDITY_QUALIFIED_SELECTION_UNTESTABLE_ZERO_GENERATION; record DIRECT_TEMPLATE_METABOLIC_EXPRESSION_CLOSED; zero-gen campaigns invalid for selection rejection | evidence:experiments/generated/d093/manifest.json; D-094 directive
+
+## DEC-20260814-AUTHORITY-GOVERNANCE-ADOPTED
+
+- Date: 2026-08-14
+- Record or decision ID: DEC-20260814-AUTHORITY-GOVERNANCE-ADOPTED
+- Status: ACTIVE
+- Decision or event: Digital Cell adopted the current canonical Authority Codex governance contract while retaining project-specific compatibility adapters and preserving pre-migration governance snapshots.
+- Rationale: The repository now uses the canonical Codex-first router, complete adopted `.agent` contract, Authority skills, validator, and compatibility structure without changing application behavior.
+- Affected areas: repository governance files and validation assets only.
+- Supersedes record: none
+
+## DEC-20260814-D096-GATE7-PARITY-CORRECT-PREFLIGHT
+
+- Date: 2026-08-14
+- Record or decision ID: DEC-20260814-D096-GATE7-PARITY-CORRECT-PREFLIGHT
+- Status: VALIDATING
+- Decision or event: R2 exact Gate 5 parity passed 72/72 cells with zero maximum residual; mechanics/topology compatibility failed the required H reciprocal criterion.
+- R2 conclusion: `SR004CR2_MECHANICS_EXTENSION_ERASES_RECIPROCITY`
+- Boundaries: future Gate 7 protocol frozen but not executed; Gate 7 campaign false; Gate 8 false; certified Phase 1 biology/equations unchanged.
+- Evidence: `digital-protocell/experiments/generated/sr004cr2/`; `digital-protocell/docs/strategy/d096_gate7/parity_correct_preflight/`

@@ -1,0 +1,16 @@
+{
+  "adapter_replay": "DigitalCellMeshAdapter with mechanics=false, fission=false, topology=false",
+  "all_boolean_endpoints_match": true,
+  "b_parity": true,
+  "cells": 72,
+  "failed": 0,
+  "gate5_replay": "pre_fission_assay",
+  "gate5_sealed_b_effect": 3.811469763347633,
+  "gate5_sealed_h_effect": 0.5988859008884848,
+  "h_parity": true,
+  "maximum_absolute_residual": 0.0,
+  "neutral_parity": true,
+  "passed": 72,
+  "schema": "DC-SR-004C-R2-ExactParitySummaryV1",
+  "tolerance": "abs(A-B) <= 1e-9 * (1 + abs(A))"
+}

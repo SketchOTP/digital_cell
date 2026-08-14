@@ -202,3 +202,18 @@
 - Relationship: amends
 - Related directive: D-20260814-gate7-single-generation-fitness
 - Status at issuance: ISSUED
+
+## D-20260814-d096-gate7-parity-correct-executor-preflight
+
+- Issued: `2026-08-14T19:20:00-04:00`
+- Issuer: User
+- External directive: `DC-SR-004C-R2`
+- Agent memory directive: `D-20260814-digital-cell-d096-gate7-parity-correct-executor-preflight`
+- Objective: Construct and verify a Gate-5-parity-correct Gate 7 executor before any corrected reproductive campaign.
+- Entry authority: `aa98e40a75f662b53f5f05b8f4ae7dd0d495941d`
+- Branch: `strategy/d096-gate7-parity-correct-preflight`
+- Base: `strategy/d096-gate7-single-generation-fitness`
+- Exclusions: no Gate 7 campaign, no 16-seed reproduction comparison, no fission, no daughters, no gen1/gen2, no Gate 8, no tuning, no Phase 1 biology changes.
+- Required preflights: exact Gate 5 parity with fission/mechanics/topology disabled; mechanics/topology compatibility with fission disabled; future Gate 7 protocol frozen but not executed.
+- Required correction: append-only R1 execution-history distinction between audit-runner invocation and automatic original Gate 7 CI reruns.
+- Status at issuance: ISSUED

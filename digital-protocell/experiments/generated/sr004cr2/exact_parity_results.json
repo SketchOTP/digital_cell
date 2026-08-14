@@ -1,0 +1,1877 @@
+{
+  "rows": [
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 227.57527044946207,
+        "damage_applied": 0.0,
+        "final_material": 111.7680740998776,
+        "fission_observed": false,
+        "reserve_change": -23.197915758567603,
+        "structural_change": 13.456809613111055,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 227.57527044946207,
+        "damage_applied": 0.0,
+        "final_material": 111.7680740998776,
+        "reserve_change": -23.197915758567603,
+        "structural_change": 13.456809613111055,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 1
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 228.25590891801593,
+        "damage_applied": 0.0,
+        "final_material": 112.18031118911642,
+        "fission_observed": false,
+        "reserve_change": -23.452355555806548,
+        "structural_change": 13.650545787117395,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 228.25590891801593,
+        "damage_applied": 0.0,
+        "final_material": 112.18031118911642,
+        "reserve_change": -23.452355555806548,
+        "structural_change": 13.650545787117395,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 2
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 226.6921092586523,
+        "damage_applied": 0.0,
+        "final_material": 111.2580573450495,
+        "fission_observed": false,
+        "reserve_change": -22.88085609516726,
+        "structural_change": 13.21514774900244,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 226.6921092586523,
+        "damage_applied": 0.0,
+        "final_material": 111.2580573450495,
+        "reserve_change": -22.88085609516726,
+        "structural_change": 13.21514774900244,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 3
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 227.57527044946207,
+        "damage_applied": 0.0,
+        "final_material": 111.7680740998776,
+        "fission_observed": false,
+        "reserve_change": -23.197915758567603,
+        "structural_change": 13.456809613111055,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 227.57527044946207,
+        "damage_applied": 0.0,
+        "final_material": 111.7680740998776,
+        "reserve_change": -23.197915758567603,
+        "structural_change": 13.456809613111055,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 4
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 228.25590891801593,
+        "damage_applied": 0.0,
+        "final_material": 112.18031118911642,
+        "fission_observed": false,
+        "reserve_change": -23.452355555806548,
+        "structural_change": 13.650545787117395,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 228.25590891801593,
+        "damage_applied": 0.0,
+        "final_material": 112.18031118911642,
+        "reserve_change": -23.452355555806548,
+        "structural_change": 13.650545787117395,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 5
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 226.6921092586523,
+        "damage_applied": 0.0,
+        "final_material": 111.2580573450495,
+        "fission_observed": false,
+        "reserve_change": -22.88085609516726,
+        "structural_change": 13.21514774900244,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 226.6921092586523,
+        "damage_applied": 0.0,
+        "final_material": 111.2580573450495,
+        "reserve_change": -22.88085609516726,
+        "structural_change": 13.21514774900244,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 6
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 227.57527044946207,
+        "damage_applied": 0.0,
+        "final_material": 111.7680740998776,
+        "fission_observed": false,
+        "reserve_change": -23.197915758567603,
+        "structural_change": 13.456809613111055,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 227.57527044946207,
+        "damage_applied": 0.0,
+        "final_material": 111.7680740998776,
+        "reserve_change": -23.197915758567603,
+        "structural_change": 13.456809613111055,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 7
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 228.25590891801593,
+        "damage_applied": 0.0,
+        "final_material": 112.18031118911642,
+        "fission_observed": false,
+        "reserve_change": -23.452355555806548,
+        "structural_change": 13.650545787117395,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 228.25590891801593,
+        "damage_applied": 0.0,
+        "final_material": 112.18031118911642,
+        "reserve_change": -23.452355555806548,
+        "structural_change": 13.650545787117395,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 8
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 282.9932589290813,
+        "damage_applied": 0.384,
+        "final_material": 113.11709742679447,
+        "fission_observed": false,
+        "reserve_change": -22.05629697975577,
+        "structural_change": 14.805896472534194,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 282.9932589290813,
+        "damage_applied": 0.384,
+        "final_material": 113.11709742679447,
+        "reserve_change": -22.05629697975577,
+        "structural_change": 14.805896472534194,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 1
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 283.6369477551897,
+        "damage_applied": 0.384,
+        "final_material": 113.52537290061869,
+        "fission_observed": false,
+        "reserve_change": -22.309466513060542,
+        "structural_change": 14.995076819362716,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 283.6369477551897,
+        "damage_applied": 0.384,
+        "final_material": 113.52537290061869,
+        "reserve_change": -22.309466513060542,
+        "structural_change": 14.995076819362716,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 2
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 282.1395723171225,
+        "damage_applied": 0.384,
+        "final_material": 112.6160802174239,
+        "fission_observed": false,
+        "reserve_change": -21.741294159140068,
+        "structural_change": 14.569569393566752,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 282.1395723171225,
+        "damage_applied": 0.384,
+        "final_material": 112.6160802174239,
+        "reserve_change": -21.741294159140068,
+        "structural_change": 14.569569393566752,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 3
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 282.9932589290813,
+        "damage_applied": 0.384,
+        "final_material": 113.11709742679447,
+        "fission_observed": false,
+        "reserve_change": -22.05629697975577,
+        "structural_change": 14.805896472534194,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 282.9932589290813,
+        "damage_applied": 0.384,
+        "final_material": 113.11709742679447,
+        "reserve_change": -22.05629697975577,
+        "structural_change": 14.805896472534194,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 4
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 283.6369477551897,
+        "damage_applied": 0.384,
+        "final_material": 113.52537290061869,
+        "fission_observed": false,
+        "reserve_change": -22.309466513060542,
+        "structural_change": 14.995076819362716,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 283.6369477551897,
+        "damage_applied": 0.384,
+        "final_material": 113.52537290061869,
+        "reserve_change": -22.309466513060542,
+        "structural_change": 14.995076819362716,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 5
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 282.1395723171225,
+        "damage_applied": 0.384,
+        "final_material": 112.6160802174239,
+        "fission_observed": false,
+        "reserve_change": -21.741294159140068,
+        "structural_change": 14.569569393566752,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 282.1395723171225,
+        "damage_applied": 0.384,
+        "final_material": 112.6160802174239,
+        "reserve_change": -21.741294159140068,
+        "structural_change": 14.569569393566752,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 6
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 282.9932589290813,
+        "damage_applied": 0.384,
+        "final_material": 113.11709742679447,
+        "fission_observed": false,
+        "reserve_change": -22.05629697975577,
+        "structural_change": 14.805896472534194,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 282.9932589290813,
+        "damage_applied": 0.384,
+        "final_material": 113.11709742679447,
+        "reserve_change": -22.05629697975577,
+        "structural_change": 14.805896472534194,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 7
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 283.6369477551897,
+        "damage_applied": 0.384,
+        "final_material": 113.52537290061869,
+        "fission_observed": false,
+        "reserve_change": -22.309466513060542,
+        "structural_change": 14.995076819362716,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 283.6369477551897,
+        "damage_applied": 0.384,
+        "final_material": 113.52537290061869,
+        "reserve_change": -22.309466513060542,
+        "structural_change": 14.995076819362716,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 8
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 262.1817835181746,
+        "damage_applied": 0.0,
+        "final_material": 112.62280365768916,
+        "fission_observed": false,
+        "reserve_change": -22.513371260538534,
+        "structural_change": 14.31072860057973,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 262.1817835181746,
+        "damage_applied": 0.0,
+        "final_material": 112.62280365768916,
+        "reserve_change": -22.513371260538534,
+        "structural_change": 14.31072860057973,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 1
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 262.83128716469156,
+        "damage_applied": 0.0,
+        "final_material": 113.03178826949986,
+        "fission_observed": false,
+        "reserve_change": -22.76711291622381,
+        "structural_change": 14.50101477424996,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 262.83128716469156,
+        "damage_applied": 0.0,
+        "final_material": 113.03178826949986,
+        "reserve_change": -22.76711291622381,
+        "structural_change": 14.50101477424996,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 2
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 261.3263707478501,
+        "damage_applied": 0.0,
+        "final_material": 112.11746808494728,
+        "fission_observed": false,
+        "reserve_change": -22.197368791814952,
+        "structural_change": 14.073156345720157,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 261.3263707478501,
+        "damage_applied": 0.0,
+        "final_material": 112.11746808494728,
+        "reserve_change": -22.197368791814952,
+        "structural_change": 14.073156345720157,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 3
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 262.1817835181746,
+        "damage_applied": 0.0,
+        "final_material": 112.62280365768916,
+        "fission_observed": false,
+        "reserve_change": -22.513371260538534,
+        "structural_change": 14.31072860057973,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 262.1817835181746,
+        "damage_applied": 0.0,
+        "final_material": 112.62280365768916,
+        "reserve_change": -22.513371260538534,
+        "structural_change": 14.31072860057973,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 4
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 262.83128716469156,
+        "damage_applied": 0.0,
+        "final_material": 113.03178826949986,
+        "fission_observed": false,
+        "reserve_change": -22.76711291622381,
+        "structural_change": 14.50101477424996,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 262.83128716469156,
+        "damage_applied": 0.0,
+        "final_material": 113.03178826949986,
+        "reserve_change": -22.76711291622381,
+        "structural_change": 14.50101477424996,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 5
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 261.3263707478501,
+        "damage_applied": 0.0,
+        "final_material": 112.11746808494728,
+        "fission_observed": false,
+        "reserve_change": -22.197368791814952,
+        "structural_change": 14.073156345720157,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 261.3263707478501,
+        "damage_applied": 0.0,
+        "final_material": 112.11746808494728,
+        "reserve_change": -22.197368791814952,
+        "structural_change": 14.073156345720157,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 6
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 262.1817835181746,
+        "damage_applied": 0.0,
+        "final_material": 112.62280365768916,
+        "fission_observed": false,
+        "reserve_change": -22.513371260538534,
+        "structural_change": 14.31072860057973,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 262.1817835181746,
+        "damage_applied": 0.0,
+        "final_material": 112.62280365768916,
+        "reserve_change": -22.513371260538534,
+        "structural_change": 14.31072860057973,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 7
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 262.83128716469156,
+        "damage_applied": 0.0,
+        "final_material": 113.03178826949986,
+        "fission_observed": false,
+        "reserve_change": -22.76711291622381,
+        "structural_change": 14.50101477424996,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 262.83128716469156,
+        "damage_applied": 0.0,
+        "final_material": 113.03178826949986,
+        "reserve_change": -22.76711291622381,
+        "structural_change": 14.50101477424996,
+        "survived": true
+      },
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 8
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 217.33654572420326,
+        "damage_applied": 0.0,
+        "final_material": 115.08956294852456,
+        "fission_observed": false,
+        "reserve_change": -23.796614214685633,
+        "structural_change": 16.776571462363115,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 217.33654572420326,
+        "damage_applied": 0.0,
+        "final_material": 115.08956294852456,
+        "reserve_change": -23.796614214685633,
+        "structural_change": 16.776571462363115,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 1
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 218.0038700314886,
+        "damage_applied": 0.0,
+        "final_material": 115.50265231846619,
+        "fission_observed": false,
+        "reserve_change": -24.054302665292667,
+        "structural_change": 16.972015724897737,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 218.0038700314886,
+        "damage_applied": 0.0,
+        "final_material": 115.50265231846619,
+        "reserve_change": -24.054302665292667,
+        "structural_change": 16.972015724897737,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 2
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 216.47313755842035,
+        "damage_applied": 0.0,
+        "final_material": 114.5785322395424,
+        "fission_observed": false,
+        "reserve_change": -23.47543135031499,
+        "structural_change": 16.532753076938263,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 216.47313755842035,
+        "damage_applied": 0.0,
+        "final_material": 114.5785322395424,
+        "reserve_change": -23.47543135031499,
+        "structural_change": 16.532753076938263,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 3
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 217.33654572420326,
+        "damage_applied": 0.0,
+        "final_material": 115.08956294852456,
+        "fission_observed": false,
+        "reserve_change": -23.796614214685633,
+        "structural_change": 16.776571462363115,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 217.33654572420326,
+        "damage_applied": 0.0,
+        "final_material": 115.08956294852456,
+        "reserve_change": -23.796614214685633,
+        "structural_change": 16.776571462363115,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 4
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 218.0038700314886,
+        "damage_applied": 0.0,
+        "final_material": 115.50265231846619,
+        "fission_observed": false,
+        "reserve_change": -24.054302665292667,
+        "structural_change": 16.972015724897737,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 218.0038700314886,
+        "damage_applied": 0.0,
+        "final_material": 115.50265231846619,
+        "reserve_change": -24.054302665292667,
+        "structural_change": 16.972015724897737,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 5
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 216.47313755842035,
+        "damage_applied": 0.0,
+        "final_material": 114.5785322395424,
+        "fission_observed": false,
+        "reserve_change": -23.47543135031499,
+        "structural_change": 16.532753076938263,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 216.47313755842035,
+        "damage_applied": 0.0,
+        "final_material": 114.5785322395424,
+        "reserve_change": -23.47543135031499,
+        "structural_change": 16.532753076938263,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 6
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 217.33654572420326,
+        "damage_applied": 0.0,
+        "final_material": 115.08956294852456,
+        "fission_observed": false,
+        "reserve_change": -23.796614214685633,
+        "structural_change": 16.776571462363115,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 217.33654572420326,
+        "damage_applied": 0.0,
+        "final_material": 115.08956294852456,
+        "reserve_change": -23.796614214685633,
+        "structural_change": 16.776571462363115,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 7
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 218.0038700314886,
+        "damage_applied": 0.0,
+        "final_material": 115.50265231846619,
+        "fission_observed": false,
+        "reserve_change": -24.054302665292667,
+        "structural_change": 16.972015724897737,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 218.0038700314886,
+        "damage_applied": 0.0,
+        "final_material": 115.50265231846619,
+        "reserve_change": -24.054302665292667,
+        "structural_change": 16.972015724897737,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 8
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 271.6595937852832,
+        "damage_applied": 0.384,
+        "final_material": 116.92881086971627,
+        "fission_observed": false,
+        "reserve_change": -22.578600816449438,
+        "structural_change": 18.617173966138644,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 271.6595937852832,
+        "damage_applied": 0.384,
+        "final_material": 116.92881086971627,
+        "reserve_change": -22.578600816449438,
+        "structural_change": 18.617173966138644,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 1
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 272.29412419253055,
+        "damage_applied": 0.384,
+        "final_material": 117.33601115608266,
+        "fission_observed": false,
+        "reserve_change": -22.834805460835213,
+        "structural_change": 18.805755146091307,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 272.29412419253055,
+        "damage_applied": 0.384,
+        "final_material": 117.33601115608266,
+        "reserve_change": -22.834805460835213,
+        "structural_change": 18.805755146091307,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 2
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 270.82003264847805,
+        "damage_applied": 0.384,
+        "final_material": 116.42843172323578,
+        "fission_observed": false,
+        "reserve_change": -22.259999632621074,
+        "structural_change": 18.38098890553043,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 270.82003264847805,
+        "damage_applied": 0.384,
+        "final_material": 116.42843172323578,
+        "reserve_change": -22.259999632621074,
+        "structural_change": 18.38098890553043,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 3
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 271.6595937852832,
+        "damage_applied": 0.384,
+        "final_material": 116.92881086971627,
+        "fission_observed": false,
+        "reserve_change": -22.578600816449438,
+        "structural_change": 18.617173966138644,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 271.6595937852832,
+        "damage_applied": 0.384,
+        "final_material": 116.92881086971627,
+        "reserve_change": -22.578600816449438,
+        "structural_change": 18.617173966138644,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 4
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 272.29412419253055,
+        "damage_applied": 0.384,
+        "final_material": 117.33601115608266,
+        "fission_observed": false,
+        "reserve_change": -22.834805460835213,
+        "structural_change": 18.805755146091307,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 272.29412419253055,
+        "damage_applied": 0.384,
+        "final_material": 117.33601115608266,
+        "reserve_change": -22.834805460835213,
+        "structural_change": 18.805755146091307,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 5
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 270.82003264847805,
+        "damage_applied": 0.384,
+        "final_material": 116.42843172323578,
+        "fission_observed": false,
+        "reserve_change": -22.259999632621074,
+        "structural_change": 18.38098890553043,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 270.82003264847805,
+        "damage_applied": 0.384,
+        "final_material": 116.42843172323578,
+        "reserve_change": -22.259999632621074,
+        "structural_change": 18.38098890553043,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 6
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 271.6595937852832,
+        "damage_applied": 0.384,
+        "final_material": 116.92881086971627,
+        "fission_observed": false,
+        "reserve_change": -22.578600816449438,
+        "structural_change": 18.617173966138644,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 271.6595937852832,
+        "damage_applied": 0.384,
+        "final_material": 116.92881086971627,
+        "reserve_change": -22.578600816449438,
+        "structural_change": 18.617173966138644,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 7
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 272.29412419253055,
+        "damage_applied": 0.384,
+        "final_material": 117.33601115608266,
+        "fission_observed": false,
+        "reserve_change": -22.834805460835213,
+        "structural_change": 18.805755146091307,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 272.29412419253055,
+        "damage_applied": 0.384,
+        "final_material": 117.33601115608266,
+        "reserve_change": -22.834805460835213,
+        "structural_change": 18.805755146091307,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 8
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 250.78082838861243,
+        "damage_applied": 0.0,
+        "final_material": 116.20919567202347,
+        "fission_observed": false,
+        "reserve_change": -23.07321982234494,
+        "structural_change": 17.896741335793457,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 250.78082838861243,
+        "damage_applied": 0.0,
+        "final_material": 116.20919567202347,
+        "reserve_change": -23.07321982234494,
+        "structural_change": 17.896741335793457,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 1
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 251.42041781894105,
+        "damage_applied": 0.0,
+        "final_material": 116.61800158732053,
+        "fission_observed": false,
+        "reserve_change": -23.330080976470313,
+        "structural_change": 18.08730728059586,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 251.42041781894105,
+        "damage_applied": 0.0,
+        "final_material": 116.61800158732053,
+        "reserve_change": -23.330080976470313,
+        "structural_change": 18.08730728059586,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 2
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 249.94203683365083,
+        "damage_applied": 0.0,
+        "final_material": 115.7030561763515,
+        "fission_observed": false,
+        "reserve_change": -22.753240095075782,
+        "structural_change": 17.65879368368836,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 249.94203683365083,
+        "damage_applied": 0.0,
+        "final_material": 115.7030561763515,
+        "reserve_change": -22.753240095075782,
+        "structural_change": 17.65879368368836,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 3
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 250.78082838861243,
+        "damage_applied": 0.0,
+        "final_material": 116.20919567202347,
+        "fission_observed": false,
+        "reserve_change": -23.07321982234494,
+        "structural_change": 17.896741335793457,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 250.78082838861243,
+        "damage_applied": 0.0,
+        "final_material": 116.20919567202347,
+        "reserve_change": -23.07321982234494,
+        "structural_change": 17.896741335793457,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 4
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 251.42041781894105,
+        "damage_applied": 0.0,
+        "final_material": 116.61800158732053,
+        "fission_observed": false,
+        "reserve_change": -23.330080976470313,
+        "structural_change": 18.08730728059586,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 251.42041781894105,
+        "damage_applied": 0.0,
+        "final_material": 116.61800158732053,
+        "reserve_change": -23.330080976470313,
+        "structural_change": 18.08730728059586,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 5
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 249.94203683365083,
+        "damage_applied": 0.0,
+        "final_material": 115.7030561763515,
+        "fission_observed": false,
+        "reserve_change": -22.753240095075782,
+        "structural_change": 17.65879368368836,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 249.94203683365083,
+        "damage_applied": 0.0,
+        "final_material": 115.7030561763515,
+        "reserve_change": -22.753240095075782,
+        "structural_change": 17.65879368368836,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 6
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 250.78082838861243,
+        "damage_applied": 0.0,
+        "final_material": 116.20919567202347,
+        "fission_observed": false,
+        "reserve_change": -23.07321982234494,
+        "structural_change": 17.896741335793457,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 250.78082838861243,
+        "damage_applied": 0.0,
+        "final_material": 116.20919567202347,
+        "reserve_change": -23.07321982234494,
+        "structural_change": 17.896741335793457,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 7
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 251.42041781894105,
+        "damage_applied": 0.0,
+        "final_material": 116.61800158732053,
+        "fission_observed": false,
+        "reserve_change": -23.330080976470313,
+        "structural_change": 18.08730728059586,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 251.42041781894105,
+        "damage_applied": 0.0,
+        "final_material": 116.61800158732053,
+        "reserve_change": -23.330080976470313,
+        "structural_change": 18.08730728059586,
+        "survived": true
+      },
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 8
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 223.3143781082417,
+        "damage_applied": 0.0,
+        "final_material": 115.47580327046275,
+        "fission_observed": false,
+        "reserve_change": -25.038110924113937,
+        "structural_change": 17.16387122712613,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 223.3143781082417,
+        "damage_applied": 0.0,
+        "final_material": 115.47580327046275,
+        "reserve_change": -25.038110924113937,
+        "structural_change": 17.16387122712613,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 1
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 223.98809296438796,
+        "damage_applied": 0.0,
+        "final_material": 115.9034758277972,
+        "fission_observed": false,
+        "reserve_change": -25.309111443604564,
+        "structural_change": 17.37111763739734,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 223.98809296438796,
+        "damage_applied": 0.0,
+        "final_material": 115.9034758277972,
+        "reserve_change": -25.309111443604564,
+        "structural_change": 17.37111763739734,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 2
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 222.4406491386599,
+        "damage_applied": 0.0,
+        "final_material": 114.95020221114851,
+        "fission_observed": false,
+        "reserve_change": -24.700691901137418,
+        "structural_change": 16.90479409347455,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 222.4406491386599,
+        "damage_applied": 0.0,
+        "final_material": 114.95020221114851,
+        "reserve_change": -24.700691901137418,
+        "structural_change": 16.90479409347455,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 3
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 223.3143781082417,
+        "damage_applied": 0.0,
+        "final_material": 115.47580327046275,
+        "fission_observed": false,
+        "reserve_change": -25.038110924113937,
+        "structural_change": 17.16387122712613,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 223.3143781082417,
+        "damage_applied": 0.0,
+        "final_material": 115.47580327046275,
+        "reserve_change": -25.038110924113937,
+        "structural_change": 17.16387122712613,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 4
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 223.98809296438796,
+        "damage_applied": 0.0,
+        "final_material": 115.9034758277972,
+        "fission_observed": false,
+        "reserve_change": -25.309111443604564,
+        "structural_change": 17.37111763739734,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 223.98809296438796,
+        "damage_applied": 0.0,
+        "final_material": 115.9034758277972,
+        "reserve_change": -25.309111443604564,
+        "structural_change": 17.37111763739734,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 5
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 222.4406491386599,
+        "damage_applied": 0.0,
+        "final_material": 114.95020221114851,
+        "fission_observed": false,
+        "reserve_change": -24.700691901137418,
+        "structural_change": 16.90479409347455,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 222.4406491386599,
+        "damage_applied": 0.0,
+        "final_material": 114.95020221114851,
+        "reserve_change": -24.700691901137418,
+        "structural_change": 16.90479409347455,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 6
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 223.3143781082417,
+        "damage_applied": 0.0,
+        "final_material": 115.47580327046275,
+        "fission_observed": false,
+        "reserve_change": -25.038110924113937,
+        "structural_change": 17.16387122712613,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 223.3143781082417,
+        "damage_applied": 0.0,
+        "final_material": 115.47580327046275,
+        "reserve_change": -25.038110924113937,
+        "structural_change": 17.16387122712613,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 7
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 223.98809296438796,
+        "damage_applied": 0.0,
+        "final_material": 115.9034758277972,
+        "fission_observed": false,
+        "reserve_change": -25.309111443604564,
+        "structural_change": 17.37111763739734,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 223.98809296438796,
+        "damage_applied": 0.0,
+        "final_material": 115.9034758277972,
+        "reserve_change": -25.309111443604564,
+        "structural_change": 17.37111763739734,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "H",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 8
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 278.08235407775896,
+        "damage_applied": 0.384,
+        "final_material": 117.20937149728908,
+        "fission_observed": false,
+        "reserve_change": -23.861674908523113,
+        "structural_change": 18.896628600757985,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 278.08235407775896,
+        "damage_applied": 0.384,
+        "final_material": 117.20937149728908,
+        "reserve_change": -23.861674908523113,
+        "structural_change": 18.896628600757985,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 1
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 278.72153317292725,
+        "damage_applied": 0.384,
+        "final_material": 117.6289721924156,
+        "fission_observed": false,
+        "reserve_change": -24.130897115131262,
+        "structural_change": 19.098160151016124,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 278.72153317292725,
+        "damage_applied": 0.384,
+        "final_material": 117.6289721924156,
+        "reserve_change": -24.130897115131262,
+        "structural_change": 19.098160151016124,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 2
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 277.2374484343889,
+        "damage_applied": 0.384,
+        "final_material": 116.68969470759595,
+        "fission_observed": false,
+        "reserve_change": -23.526433589779927,
+        "structural_change": 18.644945381561882,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 277.2374484343889,
+        "damage_applied": 0.384,
+        "final_material": 116.68969470759595,
+        "reserve_change": -23.526433589779927,
+        "structural_change": 18.644945381561882,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 3
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 278.08235407775896,
+        "damage_applied": 0.384,
+        "final_material": 117.20937149728908,
+        "fission_observed": false,
+        "reserve_change": -23.861674908523113,
+        "structural_change": 18.896628600757985,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 278.08235407775896,
+        "damage_applied": 0.384,
+        "final_material": 117.20937149728908,
+        "reserve_change": -23.861674908523113,
+        "structural_change": 18.896628600757985,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 4
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 278.72153317292725,
+        "damage_applied": 0.384,
+        "final_material": 117.6289721924156,
+        "fission_observed": false,
+        "reserve_change": -24.130897115131262,
+        "structural_change": 19.098160151016124,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 278.72153317292725,
+        "damage_applied": 0.384,
+        "final_material": 117.6289721924156,
+        "reserve_change": -24.130897115131262,
+        "structural_change": 19.098160151016124,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 5
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 277.2374484343889,
+        "damage_applied": 0.384,
+        "final_material": 116.68969470759595,
+        "fission_observed": false,
+        "reserve_change": -23.526433589779927,
+        "structural_change": 18.644945381561882,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 277.2374484343889,
+        "damage_applied": 0.384,
+        "final_material": 116.68969470759595,
+        "reserve_change": -23.526433589779927,
+        "structural_change": 18.644945381561882,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 6
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 278.08235407775896,
+        "damage_applied": 0.384,
+        "final_material": 117.20937149728908,
+        "fission_observed": false,
+        "reserve_change": -23.861674908523113,
+        "structural_change": 18.896628600757985,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 278.08235407775896,
+        "damage_applied": 0.384,
+        "final_material": 117.20937149728908,
+        "reserve_change": -23.861674908523113,
+        "structural_change": 18.896628600757985,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 7
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 278.72153317292725,
+        "damage_applied": 0.384,
+        "final_material": 117.6289721924156,
+        "fission_observed": false,
+        "reserve_change": -24.130897115131262,
+        "structural_change": 19.098160151016124,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 278.72153317292725,
+        "damage_applied": 0.384,
+        "final_material": 117.6289721924156,
+        "reserve_change": -24.130897115131262,
+        "structural_change": 19.098160151016124,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "B",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 8
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 257.33797916496565,
+        "damage_applied": 0.0,
+        "final_material": 116.5473259199511,
+        "fission_observed": false,
+        "reserve_change": -24.332464305101112,
+        "structural_change": 18.235770007687798,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 257.33797916496565,
+        "damage_applied": 0.0,
+        "final_material": 116.5473259199511,
+        "reserve_change": -24.332464305101112,
+        "structural_change": 18.235770007687798,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 1
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 257.9815228983641,
+        "damage_applied": 0.0,
+        "final_material": 116.97150390232798,
+        "fission_observed": false,
+        "reserve_change": -24.60262131419678,
+        "structural_change": 18.43845149148968,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 257.9815228983641,
+        "damage_applied": 0.0,
+        "final_material": 116.97150390232798,
+        "reserve_change": -24.60262131419678,
+        "structural_change": 18.43845149148968,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 2
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 256.4908701407225,
+        "damage_applied": 0.0,
+        "final_material": 116.02602469968548,
+        "fission_observed": false,
+        "reserve_change": -23.996259672024934,
+        "structural_change": 17.982039889763996,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 256.4908701407225,
+        "damage_applied": 0.0,
+        "final_material": 116.02602469968548,
+        "reserve_change": -23.996259672024934,
+        "structural_change": 17.982039889763996,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 3
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 257.33797916496565,
+        "damage_applied": 0.0,
+        "final_material": 116.5473259199511,
+        "fission_observed": false,
+        "reserve_change": -24.332464305101112,
+        "structural_change": 18.235770007687798,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 257.33797916496565,
+        "damage_applied": 0.0,
+        "final_material": 116.5473259199511,
+        "reserve_change": -24.332464305101112,
+        "structural_change": 18.235770007687798,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 4
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 257.9815228983641,
+        "damage_applied": 0.0,
+        "final_material": 116.97150390232798,
+        "fission_observed": false,
+        "reserve_change": -24.60262131419678,
+        "structural_change": 18.43845149148968,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 257.9815228983641,
+        "damage_applied": 0.0,
+        "final_material": 116.97150390232798,
+        "reserve_change": -24.60262131419678,
+        "structural_change": 18.43845149148968,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 5
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 256.4908701407225,
+        "damage_applied": 0.0,
+        "final_material": 116.02602469968548,
+        "fission_observed": false,
+        "reserve_change": -23.996259672024934,
+        "structural_change": 17.982039889763996,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 256.4908701407225,
+        "damage_applied": 0.0,
+        "final_material": 116.02602469968548,
+        "reserve_change": -23.996259672024934,
+        "structural_change": 17.982039889763996,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 6
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 257.33797916496565,
+        "damage_applied": 0.0,
+        "final_material": 116.5473259199511,
+        "fission_observed": false,
+        "reserve_change": -24.332464305101112,
+        "structural_change": 18.235770007687798,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 257.33797916496565,
+        "damage_applied": 0.0,
+        "final_material": 116.5473259199511,
+        "reserve_change": -24.332464305101112,
+        "structural_change": 18.235770007687798,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 7
+    },
+    {
+      "adapter": {
+        "accepted_simulated_time": 20.0,
+        "accepted_steps": 1000,
+        "activated_produced": 257.9815228983641,
+        "damage_applied": 0.0,
+        "final_material": 116.97150390232798,
+        "fission_observed": false,
+        "reserve_change": -24.60262131419678,
+        "structural_change": 18.43845149148968,
+        "survived": true
+      },
+      "authority": {
+        "activated_produced": 257.9815228983641,
+        "damage_applied": 0.0,
+        "final_material": 116.97150390232798,
+        "reserve_change": -24.60262131419678,
+        "structural_change": 18.43845149148968,
+        "survived": true
+      },
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "maximum_absolute_residual": 0.0,
+      "pass": true,
+      "seed": 8
+    }
+  ],
+  "schema": "DC-SR-004C-R2-ExactParityResultsV1"
+}

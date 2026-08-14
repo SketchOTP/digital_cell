@@ -1,0 +1,19 @@
+{
+  "authoritative_gate5": [
+    "chemistry-core::d096_allocation::pre_fission_assay",
+    "chemistry-core::d096_allocation::seed_d096_prefission_founder",
+    "chemistry-core::d096_allocation::d096_prefission_reaction_params",
+    "chemistry-core::d096_allocation::d096_prefission_transport_params",
+    "chemistry-core::d096_allocation::d096_prefission_growth_params"
+  ],
+  "behavior_preserving_refactor": true,
+  "corrected_gate7": [
+    "evolution-harness::DigitalCellMeshAdapter::initialize_founder",
+    "chemistry-core::d096_allocation::seed_d096_prefission_founder",
+    "chemistry-core::d096_allocation::d096_prefission_reaction_params",
+    "chemistry-core::d096_allocation::d096_prefission_transport_params",
+    "chemistry-core::d096_allocation::d096_prefission_growth_params"
+  ],
+  "duplicate_handwritten_gate5_state": false,
+  "schema": "DC-SR-004C-R2-SharedConstructorAuditV1"
+}

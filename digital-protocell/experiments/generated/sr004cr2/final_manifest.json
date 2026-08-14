@@ -1,0 +1,19 @@
+{
+  "certified_phase1_biology_modified": false,
+  "conclusion": "SR004CR2_MECHANICS_EXTENSION_ERASES_RECIPROCITY",
+  "d094_executed": false,
+  "directive": "DC-SR-004C-R2",
+  "dt": 0.02,
+  "exact_parity_cells": 72,
+  "exact_parity_maximum_absolute_residual": 0.0,
+  "exact_parity_passed": 72,
+  "future_protocol_executed": false,
+  "future_protocol_hash": "64e489030ad9b2d390d7f87bf4eab87c4d2751885c800ca13450da991c661bad",
+  "gate7_campaign_executed": false,
+  "gate8_started": false,
+  "horizon_steps": 4000,
+  "horizon_time": 80.0,
+  "mechanics_extension_pass": false,
+  "schema": "DC-SR-004C-R2-FinalManifestV1",
+  "starting_commit": "aa98e40a75f662b53f5f05b8f4ae7dd0d495941d"
+}

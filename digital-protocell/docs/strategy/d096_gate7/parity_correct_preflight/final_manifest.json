@@ -1,0 +1,8 @@
+{
+  "schema": "DC-SR-004C-R2-DocumentationManifestV1",
+  "generated_artifact": "digital-protocell/experiments/generated/sr004cr2/final_manifest.json",
+  "future_protocol_executed": false,
+  "gate7_campaign_executed": false,
+  "gate8_started": false,
+  "conclusion": "SR004CR2_MECHANICS_EXTENSION_ERASES_RECIPROCITY"
+}

@@ -37,9 +37,10 @@ impl AllocationGenotype {
     }
 
     pub fn valid(self, params: &AllocationParams) -> bool {
-        self.0.iter().all(|x| {
-            x.is_finite() && *x >= params.allocation_min && *x <= params.allocation_max
-        }) && (self.0.iter().sum::<f64>() - params.total_budget).abs() <= 1e-12
+        self.0
+            .iter()
+            .all(|x| x.is_finite() && *x >= params.allocation_min && *x <= params.allocation_max)
+            && (self.0.iter().sum::<f64>() - params.total_budget).abs() <= 1e-12
     }
 
     pub fn candidate_hash(self, params: &AllocationParams) -> String {
@@ -126,9 +127,8 @@ pub fn partition_catalysts(
     let mut daughter_b = parent;
     daughter_a.catalysts = std::array::from_fn(|i| pre[i] * fraction_a);
     daughter_b.catalysts = std::array::from_fn(|i| pre[i] * fraction_b);
-    let residuals = std::array::from_fn(|i| {
-        (daughter_a.catalysts[i] + daughter_b.catalysts[i] - pre[i]).abs()
-    });
+    let residuals =
+        std::array::from_fn(|i| (daughter_a.catalysts[i] + daughter_b.catalysts[i] - pre[i]).abs());
     let max_residual = residuals.iter().copied().fold(0.0, f64::max);
     let audit = CatalystPartitionAudit {
         fraction_a,
@@ -391,16 +391,17 @@ pub struct PreFissionOutcome {
     pub survived: bool,
 }
 
-pub fn pre_fission_assay(
-    genotype: AllocationGenotype,
-    environment: AssayEnvironment,
-    seed: u64,
-    steps: usize,
-) -> PreFissionOutcome {
-    use crate::mesh_growth::{growth_step, GrowthParams};
-    use crate::mesh_reactions::{reactions_step, ReactionParams};
-    use crate::mesh_transport::{transport_step, TransportParams};
-    use crate::metabolic_reserve::ReserveParams;
+/// The complete D-096 Gate 5 pre-fission construction authority.
+///
+/// This is intentionally narrow: it exposes the already-qualified founder,
+/// reaction, transport, and growth construction without introducing a generic
+/// experiment configuration framework. Gate 5 and the parity-correct
+/// evolution adapter must use these helpers so their physiology cannot drift
+/// field-by-field.
+pub const D096_PREFISSION_DT: f64 = 0.02;
+
+pub fn seed_d096_prefission_founder(genotype: AllocationGenotype, seed: u64) -> MaterialMesh {
+    use crate::material_mesh::LumpedChem;
 
     let allocation = AllocationParams::default();
     let mut mesh = MaterialMesh::seed_regular(
@@ -410,27 +411,59 @@ pub fn pre_fission_assay(
         0.0,
         1.0,
         0.8,
-        crate::material_mesh::LumpedChem {
+        LumpedChem {
             c: 1.0,
             a: 0.5,
             n: 0.8,
             f: 0.8,
             r: 0.5,
-            ..crate::material_mesh::LumpedChem::default()
+            ..LumpedChem::default()
         },
-        crate::material_mesh::LumpedChem::default(),
+        LumpedChem::default(),
         1.0,
     );
     mesh.enable_finite_allocation(genotype, &allocation);
-    let area = mesh.area();
-    let mut reaction = ReactionParams::default();
-    reaction.reserve = ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, area);
+    mesh
+}
+
+pub fn d096_prefission_reaction_params(
+    mesh: &MaterialMesh,
+) -> crate::mesh_reactions::ReactionParams {
+    use crate::metabolic_reserve::ReserveParams;
+
+    let mut reaction = crate::mesh_reactions::ReactionParams::default();
+    reaction.reserve = ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area());
     reaction.reserve.enable = true;
-    let transport = TransportParams::default();
-    let growth = GrowthParams {
+    reaction
+}
+
+pub fn d096_prefission_transport_params() -> crate::mesh_transport::TransportParams {
+    crate::mesh_transport::TransportParams::default()
+}
+
+pub fn d096_prefission_growth_params() -> crate::mesh_growth::GrowthParams {
+    crate::mesh_growth::GrowthParams {
         y_g: 0.9,
         enable_growth: true,
-    };
+    }
+}
+
+pub fn pre_fission_assay(
+    genotype: AllocationGenotype,
+    environment: AssayEnvironment,
+    seed: u64,
+    steps: usize,
+) -> PreFissionOutcome {
+    use crate::mesh_growth::growth_step;
+    use crate::mesh_reactions::reactions_step;
+    use crate::mesh_transport::{transport_step, TransportParams};
+
+    let allocation = AllocationParams::default();
+    let mut mesh = seed_d096_prefission_founder(genotype, seed);
+    let reaction = d096_prefission_reaction_params(&mesh);
+    let transport: TransportParams = d096_prefission_transport_params();
+    let growth = d096_prefission_growth_params();
+    let area = mesh.area();
     let initial_reserve = mesh.interior.r * area;
     let initial_material = mesh.total_structural_mass();
     let mut activated_produced = 0.0;
@@ -438,13 +471,13 @@ pub fn pre_fission_assay(
     for step in 0..steps {
         let env = apply_assay_environment(&mut mesh, environment, step as u64);
         damage_applied += env.structural_damage + env.membrane_damage;
-        if expression_step(&mut mesh, &allocation, 0.02).is_err() {
+        if expression_step(&mut mesh, &allocation, D096_PREFISSION_DT).is_err() {
             break;
         }
-        let _ = transport_step(&mut mesh, &transport, 0.02);
-        let chemistry = reactions_step(&mut mesh, &reaction, 0.02, true, true);
+        let _ = transport_step(&mut mesh, &transport, D096_PREFISSION_DT);
+        let chemistry = reactions_step(&mut mesh, &reaction, D096_PREFISSION_DT, true, true);
         activated_produced += chemistry.a_produced;
-        let _ = growth_step(&mut mesh, &reaction, &growth, 0.02);
+        let _ = growth_step(&mut mesh, &reaction, &growth, D096_PREFISSION_DT);
         if !mesh.alive {
             break;
         }

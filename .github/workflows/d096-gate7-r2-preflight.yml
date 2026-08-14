@@ -1,0 +1,78 @@
+name: D-096 Gate 7 R2 parity-correct executor preflight
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - strategy/d096-gate7-parity-correct-preflight
+    paths:
+      - digital-protocell/crates/chemistry-core/src/d096_allocation.rs
+      - digital-protocell/crates/evolution-harness/src/mesh_adapter.rs
+      - digital-protocell/crates/evolution-harness/examples/d096_gate7_parity_preflight.rs
+      - digital-protocell/experiments/generated/sr004cr2/**
+      - digital-protocell/docs/strategy/d096_gate7/parity_correct_preflight/**
+      - .github/workflows/d096-gate7-r2-preflight.yml
+  pull_request:
+    branches:
+      - strategy/d096-gate7-single-generation-fitness
+    paths:
+      - digital-protocell/crates/chemistry-core/src/d096_allocation.rs
+      - digital-protocell/crates/evolution-harness/src/mesh_adapter.rs
+      - digital-protocell/crates/evolution-harness/examples/d096_gate7_parity_preflight.rs
+      - digital-protocell/experiments/generated/sr004cr2/**
+      - digital-protocell/docs/strategy/d096_gate7/parity_correct_preflight/**
+      - .github/workflows/d096-gate7-r2-preflight.yml
+
+jobs:
+  r2-preflight:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: digital-protocell
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install pinned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Check R2 target with pinned toolchain
+        run: cargo +1.89.0 check -p evolution-harness --example d096_gate7_parity_preflight
+
+      - name: Run frozen D-096 chemistry regressions
+        run: cargo +1.89.0 test -p chemistry-core --test d096_tests
+
+      - name: Run evolution-harness regressions
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Run Gate 6 continuity regression
+        run: cargo +1.89.0 test -p evolution-harness d096_real_fission_daughters_close_mutation_and_expression_continuity
+
+      - name: Run R2 preflight only
+        env:
+          RUSTFLAGS: -Awarnings
+        run: cargo +1.89.0 run --release -p evolution-harness --example d096_gate7_parity_preflight
+
+      - name: Assert R2 conclusion and execution boundaries
+        shell: bash
+        run: |
+          test "$(jq -r '.conclusion' experiments/generated/sr004cr2/final_manifest.json)" = "SR004CR2_MECHANICS_EXTENSION_ERASES_RECIPROCITY"
+          test "$(jq -r '.exact_parity_cells' experiments/generated/sr004cr2/final_manifest.json)" = "72"
+          test "$(jq -r '.exact_parity_passed' experiments/generated/sr004cr2/final_manifest.json)" = "72"
+          test "$(jq -r '.gate7_campaign_executed' experiments/generated/sr004cr2/final_manifest.json)" = "false"
+          test "$(jq -r '.gate8_started' experiments/generated/sr004cr2/final_manifest.json)" = "false"
+          test "$(jq -r '.future_protocol_executed' experiments/generated/sr004cr2/final_manifest.json)" = "false"
+
+      - name: Assert original evidence and R1 artifacts are unchanged
+        shell: bash
+        run: |
+          git diff --exit-code -- experiments/generated/sr004c experiments/generated/sr004cr1
+
+      - name: Assert original Gate 7 workflow did not execute on R2 head
+        env:
+          GH_TOKEN: ${{ github.token }}
+          R2_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        shell: bash
+        run: |
+          count="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow "D-096 Gate 7 single-generation reproductive consequence" --commit "$R2_HEAD" --json databaseId --jq 'length')"
+          test "$count" = "0"
