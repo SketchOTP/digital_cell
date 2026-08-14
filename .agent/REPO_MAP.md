@@ -774,3 +774,8 @@ Concise navigation map for agents. Add entries as application code lands.
 - `docs/strategy/external_audit/` — project reports, overlap map, tier syntheses and final recommendations
 - `docs/strategy/external_license_register.md` — additive pinned license register
 - External source cache is outside the repository at `/mnt/storage1tb/cache/prior-art/digital_cell/`; it is not a dependency or vendored tree
+
+## DC-SR-003 harness artifacts
+- `digital-protocell/crates/evolution-harness/` — isolated protocol, event, population, lineage, generation, adapter, observer, and export crate
+- `docs/strategy/evolution_harness/` — architecture, schemas, semantics, failure taxonomy, controls, historical mapping, and D-094 translation plan
+- `docs/strategy/evolution_harness/d094_requalified_protocol.json` — non-executable D-094 protocol translation

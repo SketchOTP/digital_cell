@@ -37,6 +37,14 @@
 - Evidence root: `docs/strategy/external_alife_audit.json` and `docs/strategy/external_audit/`
 - External cache: `/mnt/storage1tb/cache/prior-art/digital_cell/` (outside repository)
 
+## DC-SR-003 current state
+- Directive: Modular Evolution and Ecology Harness
+- Branch: `strategy/modular-evolution-harness`, based on `cf7d311257ff92b7502b7f1a4ecc81c2e73c05ae`
+- Scope: isolated harness contracts and synthetic controls; no D-094 execution, no biology changes, no external dependencies
+- Toolchain: Atlas has no Rust/Cargo/rustup/cmake on PATH; local rustup has no configured toolchain; runtime verification is blocked unless a sanctioned toolchain appears
+- D-094: translated only, execution unauthorized until SR-004
+- New boundary: `digital-protocell/crates/evolution-harness/` depends on `chemistry-core`; reverse dependency forbidden
+
 ## DC-SR-001 state
 - Starting HEAD: 2a54b4170b0cc316b63f6aee1339ed58d449da26
 - Backup: /mnt/storage1tb/backups/digital_cell/digital_cell_pre_strategy_rebase_20260813.bundle; verified; SHA-256 281c53ab44144f9d8457150321444df0f89c3e2c4f545e590a77835c12fd782d
