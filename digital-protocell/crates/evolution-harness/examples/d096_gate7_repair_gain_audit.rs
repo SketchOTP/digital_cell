@@ -518,8 +518,8 @@ fn main() {
             "baseline_repair_gain_leakage_present": h_baseline_leakage,
             "baseline_amplification_fraction": h_current.iter().map(|pair| {
                 let repair = &pair["repair"];
-                let base = f(repair, "baseline_build_amplification");
-                let strain = f(repair, "strain_build_amplification");
+                let base = repair["baseline_build_amplification"].as_f64().unwrap_or(0.0);
+                let strain = repair["strain_build_amplification"].as_f64().unwrap_or(0.0);
                 json!({"seed": pair["seed"], "fraction": base / (base + strain).max(1e-30)})
             }).collect::<Vec<_>>(),
             "shadow_h_removes_repair_heavy_structural_advantage": h_shadow_removes_baseline_advantage,
