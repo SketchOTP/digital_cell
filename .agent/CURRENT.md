@@ -23,4 +23,4 @@
 ## Open blockers
 - Mimir V2 lifecycle tools are unavailable in the current tool surface; do not claim Mimir context/evidence/close-out
 - Atlas has no Rust/Cargo on PATH; local sanctioned Windows toolchain is used for verification
-- Draft PR: #1 https://github.com/SketchOTP/digital_cell/pull/1; final metadata head update pending push
+- Draft PR: #1 https://github.com/SketchOTP/digital_cell/pull/1; head b209f25ea8d381bbe578cc0dad4af0953f733df0
