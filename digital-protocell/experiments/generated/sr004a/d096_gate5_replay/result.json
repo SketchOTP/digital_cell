@@ -1,0 +1,37 @@
+{
+  "directive": "D-096 Gate 5 replay",
+  "source_commit": "f3af75be43a8fe1c58ab8f29885c3cc553b20fe8",
+  "binary_hash": "8da8f48d527c2bbbeffbebe2965d0faa619ce24897b9f3f7a492f169e2d40643",
+  "configuration_hash": "a8bf391e77308c6ee5b7f58e54c12102055f018b93634b43e1ea75abfa0f60fd",
+  "original_d096_manifest": "experiments/generated/d096/manifest.json",
+  "original_d096_manifest_hash": "898bcf7cafdfad77017f60a5ea8a9f45cdfe7a3f9ed69bd6a0c90d2106dfc0f4",
+  "repair_identity": "reserve_schema_load_ok accepts EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION",
+  "paired_seeds": [1, 2, 3, 4, 5, 6, 7, 8],
+  "accepted_step_accounting": {
+    "steps_per_run": 1000,
+    "dt": 0.02,
+    "runs": 48,
+    "mutation": false,
+    "fission": false
+  },
+  "continuous_effects": {
+    "h_processing_minus_repair_reserve_change": [0.5986984561180293, 0.6019471094861188, 0.594575255147717, 0.5986984561180293, 0.6019471094861188, 0.594575255147717, 0.5986984561180293, 0.6019471094861188],
+    "neutral_processing_minus_repair_reserve_change": [0.5598485618064046, 0.5629680602465044, 0.5558713032608296, 0.5598485618064046, 0.5629680602465044, 0.5558713032608296, 0.5598485618064046, 0.5629680602465044],
+    "b_repair_minus_processing_final_material": [3.8117134429218, 3.810638255463971, 3.8123515058118755, 3.8117134429218, 3.810638255463971, 3.8123515058118755, 3.8117134429218, 3.810638255463971],
+    "neutral_repair_minus_processing_final_material": [3.586392014334308, 3.586213317820693, 3.585588091404219, 3.586392014334308, 3.586213317820693, 3.585588091404219, 3.586392014334308, 3.586213317820693]
+  },
+  "means": {
+    "h_effect": 0.5988859008884848,
+    "neutral_h_effect": 0.5600240590850483,
+    "b_effect": 3.811469763347633,
+    "neutral_b_effect": 3.58612402240918
+  },
+  "criteria": {
+    "h_all_positive": true,
+    "b_all_positive": true,
+    "h_exceeds_neutral": true,
+    "b_exceeds_neutral": true
+  },
+  "verdict": "SR004A_D098_REPAIR_PASS_D096_GATE5_PASS",
+  "later_gates_run": false
+}

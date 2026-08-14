@@ -1,0 +1,28 @@
+{
+  "directive": "DC-SR-004A",
+  "source_commit": "f3af75be43a8fe1c58ab8f29885c3cc553b20fe8",
+  "repair_identity": "add d096_allocation::EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION to reserve_schema_load_ok",
+  "test": "d096_reserve_path_accumulates_releases_grows_and_closes_accounting",
+  "accepted_steps": {
+    "reserve_store": 1,
+    "reserve_release": 1,
+    "reserve_growth": 1,
+    "dt_store_release": 0.05,
+    "dt_growth": 0.2
+  },
+  "accounting": {
+    "a_before": 150.0,
+    "a_after_store": 149.44526627218934,
+    "r_after_store": 0.5547337278106509,
+    "a_to_r": 0.5547337278106509,
+    "r_to_a": 0.010287501371666747,
+    "r_to_w": 0.00027736686390532545,
+    "r_before_growth": 0.5441688595750788,
+    "r_after_growth": 0.5101043491083318,
+    "r_to_m": 0.03406451046674706,
+    "r_to_w_growth": 0.03406451046674706,
+    "reserve_residual": -9.020562075079e-17,
+    "rejected_reserve_steps": 0
+  },
+  "result": "PASS"
+}
