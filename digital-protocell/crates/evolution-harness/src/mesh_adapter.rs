@@ -2,7 +2,7 @@ use crate::{
     AdapterEnvironmentEvent, AdapterError, AdvanceOutcome, EnvironmentCapability,
     EnvironmentContext, EnvironmentProtocolV1, FounderIdentityV1, FounderInitializationContext,
     HeredityAdapter, HeredityEvidenceV1, Metadata, MutationContext, MutationOperator,
-    OrganismAdapter, PhenotypeEvidenceV1, MutationProtocolV1,
+    MutationProtocolV1, OrganismAdapter, PhenotypeEvidenceV1,
 };
 use chemistry_core::d096_allocation::{
     mutate_allocation_genotype, AllocationGenotype, AllocationParams,
@@ -97,8 +97,7 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
             exterior,
             5.0,
         );
-        if let (Some(params), Some(genotype)) =
-            (self.allocation_params, self.d096_founder_genotype)
+        if let (Some(params), Some(genotype)) = (self.allocation_params, self.d096_founder_genotype)
         {
             mesh.enable_finite_allocation(genotype, &params);
         }
@@ -265,13 +264,16 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
         )
     }
     fn hereditary_state(&self, organism: &Self::Organism) -> String {
-        let allocation = organism.finite_allocation.map(|state| {
-            let params = self.allocation_params.unwrap_or_default();
-            format!(
-                ";d096_genotype_hash:{}",
-                state.genotype.candidate_hash(&params)
-            )
-        }).unwrap_or_default();
+        let allocation = organism
+            .finite_allocation
+            .map(|state| {
+                let params = self.allocation_params.unwrap_or_default();
+                format!(
+                    ";d096_genotype_hash:{}",
+                    state.genotype.candidate_hash(&params)
+                )
+            })
+            .unwrap_or_default();
         format!(
             "equation:{};templates:{};autocatalytic_edges:{}{}",
             organism.equation_id,
@@ -326,7 +328,9 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
         context: &MutationContext,
     ) -> Result<Option<Metadata>, AdapterError> {
         if protocol.mutation_protocol_id != "d096_allocation_mutation_v1" {
-            return if protocol.mutation_rate == 0.0 && protocol.mutation_protocol_id == "mutation_none" {
+            return if protocol.mutation_rate == 0.0
+                && protocol.mutation_protocol_id == "mutation_none"
+            {
                 Ok(None)
             } else {
                 Err(AdapterError::Unavailable)
@@ -347,20 +351,16 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
         else {
             return Err(AdapterError::Unavailable);
         };
-        if !context.qualified_physical_copy || offspring_state.genotype != parent_state.genotype
-        {
+        if !context.qualified_physical_copy || offspring_state.genotype != parent_state.genotype {
             return Err(AdapterError::Advance(
                 "D-096 mutation requires a qualified physical fission copy".into(),
             ));
         }
         let mut mutation_params = params;
         mutation_params.mutation_probability = protocol.mutation_rate;
-        let record = mutate_allocation_genotype(
-            parent_state.genotype,
-            &mutation_params,
-            context.seed,
-        )
-        .map_err(|error| AdapterError::Advance(format!("D-096 mutation: {error:?}")))?;
+        let record =
+            mutate_allocation_genotype(parent_state.genotype, &mutation_params, context.seed)
+                .map_err(|error| AdapterError::Advance(format!("D-096 mutation: {error:?}")))?;
         offspring.finite_allocation = Some(chemistry_core::d096_allocation::AllocationState {
             genotype: record.post_genotype,
             catalysts: offspring_state.catalysts,
@@ -369,18 +369,36 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
         metadata.insert("operator".into(), record.operator.into());
         metadata.insert("provenance".into(), record.provenance.into());
         metadata.insert("seed".into(), record.seed.to_string());
-        metadata.insert("offspring_index".into(), context.offspring_index.to_string());
+        metadata.insert(
+            "offspring_index".into(),
+            context.offspring_index.to_string(),
+        );
         metadata.insert(
             "qualified_copy_ordinal".into(),
             context.qualified_copy_ordinal.to_string(),
         );
-        metadata.insert("mutation_occurred".into(), record.mutation_occurred.to_string());
+        metadata.insert(
+            "mutation_occurred".into(),
+            record.mutation_occurred.to_string(),
+        );
         metadata.insert("source".into(), format_opt(record.source));
         metadata.insert("target".into(), format_opt(record.target));
-        metadata.insert("raw_abs_normal".into(), format!("{:.17e}", record.raw_abs_normal));
-        metadata.insert("applied_delta".into(), format!("{:.17e}", record.applied_delta));
-        metadata.insert("pre_genotype".into(), serde_json::to_string(&record.pre_genotype).unwrap());
-        metadata.insert("post_genotype".into(), serde_json::to_string(&record.post_genotype).unwrap());
+        metadata.insert(
+            "raw_abs_normal".into(),
+            format!("{:.17e}", record.raw_abs_normal),
+        );
+        metadata.insert(
+            "applied_delta".into(),
+            format!("{:.17e}", record.applied_delta),
+        );
+        metadata.insert(
+            "pre_genotype".into(),
+            serde_json::to_string(&record.pre_genotype).unwrap(),
+        );
+        metadata.insert(
+            "post_genotype".into(),
+            serde_json::to_string(&record.post_genotype).unwrap(),
+        );
         metadata.insert(
             "candidate_hash".into(),
             record.post_genotype.candidate_hash(&params),
@@ -390,7 +408,9 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
 }
 
 fn format_opt(value: Option<usize>) -> String {
-    value.map(|v| v.to_string()).unwrap_or_else(|| "none".into())
+    value
+        .map(|v| v.to_string())
+        .unwrap_or_else(|| "none".into())
 }
 
 fn lawful_d096_copy(
@@ -416,9 +436,7 @@ fn lawful_d096_copy(
     }
     let positive = changed.iter().filter(|(_, delta)| **delta > 0.0).count();
     let negative = changed.iter().filter(|(_, delta)| **delta < 0.0).count();
-    positive == 1
-        && negative == 1
-        && (changed[0].1.abs() - changed[1].1.abs()).abs() <= 1e-12
+    positive == 1 && negative == 1 && (changed[0].1.abs() - changed[1].1.abs()).abs() <= 1e-12
 }
 
 /// Adapter-facing implementation of the accepted reusable mutation boundary.
@@ -507,15 +525,13 @@ mod tests {
         };
 
         let metadata = adapter
-            .apply_heredity_and_mutation(
-                &parent,
-                &mut live_daughter,
-                &protocol,
-                &mutation_context,
-            )
+            .apply_heredity_and_mutation(&parent, &mut live_daughter, &protocol, &mutation_context)
             .expect("qualified live daughter should be accepted");
         let metadata = metadata.expect("D-096 mutation provenance should be recorded");
-        assert_eq!(metadata.get("qualified_copy_ordinal").map(String::as_str), Some("0"));
+        assert_eq!(
+            metadata.get("qualified_copy_ordinal").map(String::as_str),
+            Some("0")
+        );
         assert!(metadata.get("candidate_hash").is_some());
 
         let mut invalid_daughter = parent.clone();
@@ -530,5 +546,108 @@ mod tests {
             ),
             Err(AdapterError::Advance(_))
         ));
+    }
+
+    #[test]
+    fn d096_adapter_reports_copy_and_mutation_provenance_separately() {
+        let params = AllocationParams::default();
+        let mut adapter = DigitalCellMeshAdapter {
+            allocation_params: Some(params),
+            ..DigitalCellMeshAdapter::default()
+        }
+        .with_d096_founder(AllocationGenotype::neutral());
+        let founder = FounderIdentityV1::new(
+            1,
+            "digital_cell_mesh_v1",
+            "d096",
+            "baseline",
+            "material",
+            7,
+            "none",
+        );
+        let context = FounderInitializationContext {
+            replicate: 0,
+            founder_index: 0,
+            population_size: 1,
+            placement: [0.0, 0.0],
+        };
+        let parent = adapter.initialize_founder(&founder, context).unwrap();
+        let protocol = MutationProtocolV1 {
+            schema: "MutationProtocolV1".into(),
+            mutation_protocol_id: "d096_allocation_mutation_v1".into(),
+            mutation_rate: FROZEN_D096_MUTATION_PROBABILITY,
+            magnitude_distribution: "abs_normal".into(),
+            bounds: "simplex_and_allocation_bounds".into(),
+            provenance: "DC-SR-004B;D-096_GATE6;test".into(),
+        };
+
+        let mut mutation_offspring = parent.clone();
+        let mutation_none = MutationProtocolV1::default();
+        let mutation_none_context = MutationContext {
+            accepted_step: 1,
+            accepted_simulated_time: adapter.accepted_dt(),
+            seed: 0,
+            offspring_index: 0,
+            qualified_physical_copy: true,
+            qualified_copy_ordinal: 0,
+            parent_hereditary_state: adapter.hereditary_state(&parent),
+        };
+        assert_eq!(
+            adapter
+                .apply_heredity_and_mutation(
+                    &parent,
+                    &mut mutation_offspring,
+                    &mutation_none,
+                    &mutation_none_context,
+                )
+                .unwrap(),
+            None
+        );
+        assert_eq!(
+            mutation_offspring.finite_allocation.unwrap().genotype,
+            parent.finite_allocation.unwrap().genotype
+        );
+
+        let mut saw_copy = false;
+        let mut saw_mutation = false;
+        for seed in 0..10_000_u64 {
+            let mut offspring = parent.clone();
+            let metadata = adapter
+                .apply_heredity_and_mutation(
+                    &parent,
+                    &mut offspring,
+                    &protocol,
+                    &MutationContext {
+                        accepted_step: 1,
+                        accepted_simulated_time: adapter.accepted_dt(),
+                        seed,
+                        offspring_index: 0,
+                        qualified_physical_copy: true,
+                        qualified_copy_ordinal: seed,
+                        parent_hereditary_state: adapter.hereditary_state(&parent),
+                    },
+                )
+                .unwrap()
+                .unwrap();
+            let occurred = metadata.get("mutation_occurred").map(String::as_str);
+            let pre = metadata.get("pre_genotype").unwrap();
+            let post = metadata.get("post_genotype").unwrap();
+            if occurred == Some("false") {
+                saw_copy = true;
+                assert_eq!(pre, post);
+                assert_eq!(
+                    metadata.get("qualified_copy_ordinal"),
+                    Some(&seed.to_string())
+                );
+            } else if occurred == Some("true") {
+                saw_mutation = true;
+                assert_ne!(pre, post);
+                assert!(metadata.get("candidate_hash").is_some());
+            }
+            if saw_copy && saw_mutation {
+                break;
+            }
+        }
+        assert!(saw_copy && saw_mutation);
     }
 }

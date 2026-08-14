@@ -1,0 +1,20 @@
+{
+  "schema": "D096Gate6EvidenceV1",
+  "equation": "autopoietic_material_mesh_finite_catalytic_allocation_v1",
+  "mutation_probability": 0.01,
+  "mutation_sigma": 0.15,
+  "mutation_samples": 10000,
+  "observed_mutations": 106,
+  "observed_mutation_frequency": 0.0106,
+  "exact_copy_observed": true,
+  "lawful_transfer_observed": true,
+  "zero_capped_transfer_observed": true,
+  "physical_partition_conserved": true,
+  "physical_partition_max_residual": 0.0,
+  "stream_key_matrix_campaign_seeds": 64,
+  "stream_key_matrix_copy_ordinals": 256,
+  "stream_key_matrix_unique": 16384,
+  "stream_pair_replay_equal": true,
+  "stream_collision_pair_distinct": true,
+  "frozen_candidate_hash": "b62bf5964d0d0f46b05eb3d61b5d9d4fee2645668a0804a260b2726bee722e83"
+}

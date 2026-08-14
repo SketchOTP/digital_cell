@@ -1,0 +1,37 @@
+name: D-096 Gate 6 Heredity and Mutation
+
+on:
+  push:
+    branches:
+      - strategy/d096-gate6-heredity-continuity
+  pull_request:
+    branches:
+      - strategy/d098-processing-repair
+
+jobs:
+  d096-gate6:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: digital-protocell
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install pinned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install rustfmt
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Check scoped formatting
+        run: cargo +1.89.0 fmt --package evolution-harness -- --check
+
+      - name: Run frozen D-096 chemistry regressions
+        run: cargo +1.89.0 test -p chemistry-core --test d096_tests
+
+      - name: Run evolution harness regressions
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Run D-096 Gate 6 evidence assay
+        run: cargo +1.89.0 run -p evolution-harness --example d096_gate6_assay
