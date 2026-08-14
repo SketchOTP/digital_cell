@@ -1,0 +1,609 @@
+{
+  "primary_conclusion": "D094_GATE6_SELECTION_CLOSURE_PENDING",
+  "phase2_status": "PHASE2_AUTOCATALYTIC_SET_OPEN",
+  "phase3_authorized": false,
+  "production_verdict": "PARTIAL_OR_DEFECT",
+  "schema_equation": "autopoietic_material_mesh_autocatalytic_set_v1",
+  "schema_fields": "mesh_vertices_edges_reserve_autocatalytic_network_v1",
+  "zero_gen_blocker": "ECOLOGY_HORIZON_TOO_SHORT",
+  "smoke": false,
+  "starting_commit": "973222e",
+  "ending_commit_hint": "pending",
+  "gates": [
+    {
+      "code": null,
+      "detail": {
+        "accept_new_stamp": true,
+        "disabled_ok": true,
+        "mu_e": 0.0089,
+        "reject_old_stamp": true,
+        "zero_gen_blocker": "ECOLOGY_HORIZON_TOO_SHORT"
+      },
+      "name": "gate0_preservation",
+      "pass": true
+    },
+    {
+      "code": null,
+      "detail": {
+        "edge_material_rel_err": 0.0,
+        "edges": [
+          [
+            2,
+            2,
+            0
+          ],
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "has_cycle": true,
+        "node_material_rel_err": 6.344131569286608e-16
+      },
+      "name": "gate1_accounting",
+      "pass": true
+    },
+    {
+      "code": null,
+      "detail": {
+        "founders": [
+          {
+            "cycle": true,
+            "cycle_after_delete": true,
+            "edges0": 10,
+            "edges1": 9,
+            "founder": "H",
+            "nodes": {
+              "k_a": 0.7285765423155544,
+              "k_node_b": 0.3667962915214124,
+              "k_r": 0.36709435486590997
+            }
+          },
+          {
+            "cycle": true,
+            "cycle_after_delete": true,
+            "edges0": 10,
+            "edges1": 9,
+            "founder": "B",
+            "nodes": {
+              "k_a": 0.3661480010980654,
+              "k_node_b": 0.726756479884561,
+              "k_r": 0.3664446478104671
+            }
+          },
+          {
+            "cycle": true,
+            "cycle_after_delete": true,
+            "edges0": 10,
+            "edges1": 9,
+            "founder": "N",
+            "nodes": {
+              "k_a": 0.5567891588554502,
+              "k_node_b": 0.3669995907454669,
+              "k_r": 0.5381742850462975
+            }
+          }
+        ]
+      },
+      "name": "gate2_closure",
+      "pass": true
+    },
+    {
+      "code": null,
+      "detail": {
+        "matrix": [
+          {
+            "campaign": "d088_mesh_population_step",
+            "fissions": 10,
+            "founder": "H",
+            "gen2_lineages": 10,
+            "grew": 10,
+            "n_parents": 10,
+            "need_fiss": 7,
+            "need_gen2": 3,
+            "need_grew": 8,
+            "need_two": 6,
+            "two_viable": 10
+          },
+          {
+            "campaign": "d088_mesh_population_step",
+            "fissions": 10,
+            "founder": "B",
+            "gen2_lineages": 10,
+            "grew": 10,
+            "n_parents": 10,
+            "need_fiss": 7,
+            "need_gen2": 3,
+            "need_grew": 8,
+            "need_two": 6,
+            "two_viable": 10
+          },
+          {
+            "campaign": "d088_mesh_population_step",
+            "fissions": 10,
+            "founder": "N",
+            "gen2_lineages": 10,
+            "grew": 10,
+            "n_parents": 10,
+            "need_fiss": 7,
+            "need_gen2": 3,
+            "need_grew": 8,
+            "need_two": 6,
+            "two_viable": 10
+          }
+        ],
+        "smoke": false
+      },
+      "name": "gate3_reproduction",
+      "pass": true
+    },
+    {
+      "code": null,
+      "detail": {
+        "closed_or_present_frac": 1.0,
+        "id_shuffle_no_effect": true,
+        "need": 40,
+        "pairs": 40,
+        "parent_offspring_edge_freq_corr": 0.7261483678362296,
+        "parent_offspring_network_response_corr": 0.8717486739032558
+      },
+      "name": "gate4_heritability",
+      "pass": true
+    },
+    {
+      "code": null,
+      "detail": {
+        "b_has_higher_kb": true,
+        "b_ka": 0.20036003729573765,
+        "b_kb": 0.43705234668580734,
+        "gap_off_node_prod": 0.0,
+        "gap_on": 0.4737206117438846,
+        "h_has_higher_ka": true,
+        "h_ka": 0.43755563269331293,
+        "h_kb": 0.20052733033949802,
+        "knockout_collapses": true
+      },
+      "name": "gate5_phenotype",
+      "pass": true
+    },
+    {
+      "code": "D094_AUTOCATALYTIC_SET_SELECTION_NOT_ESTABLISHED",
+      "detail": {
+        "b": {
+          "ecology": "B",
+          "max_gen_all": 0,
+          "mutation": false,
+          "rows": [
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 0
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 1
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 2
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 3
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 4
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 5
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 6
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 7
+            }
+          ],
+          "smoke": false,
+          "wins_b": 0,
+          "wins_h": 0
+        },
+        "h": {
+          "ecology": "H",
+          "max_gen_all": 0,
+          "mutation": false,
+          "rows": [
+            {
+              "alive": 8,
+              "f_b": 0.5,
+              "f_h": 0.5,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 0
+            },
+            {
+              "alive": 8,
+              "f_b": 0.5,
+              "f_h": 0.5,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 1
+            },
+            {
+              "alive": 8,
+              "f_b": 0.5,
+              "f_h": 0.5,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 2
+            },
+            {
+              "alive": 8,
+              "f_b": 0.5,
+              "f_h": 0.5,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 3
+            },
+            {
+              "alive": 8,
+              "f_b": 0.5,
+              "f_h": 0.5,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 4
+            },
+            {
+              "alive": 8,
+              "f_b": 0.5,
+              "f_h": 0.5,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 5
+            },
+            {
+              "alive": 8,
+              "f_b": 0.5,
+              "f_h": 0.5,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 6
+            },
+            {
+              "alive": 8,
+              "f_b": 0.5,
+              "f_h": 0.5,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 7
+            }
+          ],
+          "smoke": false,
+          "wins_b": 0,
+          "wins_h": 0
+        },
+        "max_gen": 0,
+        "n": {
+          "ecology": "N",
+          "max_gen_all": 0,
+          "mutation": false,
+          "rows": [
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 0
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 1
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 2
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 3
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 4
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 5
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 6
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 7
+            }
+          ],
+          "smoke": false,
+          "wins_b": 0,
+          "wins_h": 0
+        },
+        "valid": false
+      },
+      "name": "gate6_selection",
+      "pass": false
+    },
+    {
+      "code": "D094_AUTOCATALYTIC_SET_ADAPTATION_NOT_ESTABLISHED",
+      "detail": {
+        "adapt_gen": 0,
+        "b_on": {
+          "ecology": "B",
+          "max_gen_all": 0,
+          "mutation": true,
+          "rows": [
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 0
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 1
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 2
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 3
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 4
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 5
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 6
+            },
+            {
+              "alive": 0,
+              "f_b": 0.0,
+              "f_h": 0.0,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 7
+            }
+          ],
+          "smoke": false,
+          "wins_b": 0,
+          "wins_h": 0
+        },
+        "h_on": {
+          "ecology": "H",
+          "max_gen_all": 0,
+          "mutation": true,
+          "rows": [
+            {
+              "alive": 8,
+              "f_b": 0.5,
+              "f_h": 0.5,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 0
+            },
+            {
+              "alive": 8,
+              "f_b": 0.5,
+              "f_h": 0.5,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 1
+            },
+            {
+              "alive": 8,
+              "f_b": 0.5,
+              "f_h": 0.5,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 2
+            },
+            {
+              "alive": 8,
+              "f_b": 0.5,
+              "f_h": 0.5,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 3
+            },
+            {
+              "alive": 8,
+              "f_b": 0.5,
+              "f_h": 0.5,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 4
+            },
+            {
+              "alive": 8,
+              "f_b": 0.5,
+              "f_h": 0.5,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 5
+            },
+            {
+              "alive": 8,
+              "f_b": 0.5,
+              "f_h": 0.5,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 6
+            },
+            {
+              "alive": 8,
+              "f_b": 0.5,
+              "f_h": 0.5,
+              "fissions": 0,
+              "max_gen": 0,
+              "rep": 7
+            }
+          ],
+          "smoke": false,
+          "wins_b": 0,
+          "wins_h": 0
+        }
+      },
+      "name": "gate7_adaptation",
+      "pass": false
+    },
+    {
+      "code": "D094_AUTOCATALYTIC_SET_SELECTION_REVERSAL_FAILURE",
+      "detail": {
+        "note": "reversal requires valid multi-generation selection survivors",
+        "skipped": true
+      },
+      "name": "gate8_reversal",
+      "pass": false
+    },
+    {
+      "code": null,
+      "detail": {
+        "edges_destroyed_no_rebuild": true,
+        "nodes_remain_or_decay": true
+      },
+      "name": "gate9_information",
+      "pass": true
+    },
+    {
+      "code": "D094_AUTOCATALYTIC_SET_ARCHITECTURE_UNSTABLE",
+      "detail": {
+        "bounded_pools": true,
+        "phase1_preserved": true,
+        "phys_ok": false,
+        "reproduction_qualified": true
+      },
+      "name": "gate10_stability",
+      "pass": false
+    }
+  ],
+  "records": [
+    "D093_ZERO_GEN_BLOCKER:ECOLOGY_HORIZON_TOO_SHORT",
+    "DIRECT_TEMPLATE_METABOLIC_EXPRESSION_CLOSED",
+    "DOWNSTREAM_EXECUTION_STOPPED_AFTER_GATE6_NONPASS",
+    "D094_GATE6_SELECTION_CLOSURE_PENDING",
+    "STALE_IMPLEMENTATION_DEFECT_REJECTED",
+    "GATE7_GATE8_BLOCKED_UNTIL_GATE6_PASS"
+  ],
+  "next_directive": "Complete remaining D-094 gates or repair implementation defect",
+  "next_execution_started": false,
+  "deviations": [
+    "Gates 4\u201310 not executed when Gate 3 fails (stop rule)",
+    "zero_gen_audit=\"ECOLOGY_HORIZON_TOO_SHORT\"",
+    "Pipeline terminated after Gate 6 nonpass; Gates 7/8 not authorized",
+    "Stale D094_AUTOCATALYTIC_SET_IMPLEMENTATION_DEFECT must not be used"
+  ],
+  "stale_conclusion_superseded": "D094_AUTOCATALYTIC_SET_IMPLEMENTATION_DEFECT"
+}

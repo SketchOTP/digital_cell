@@ -1,4 +1,7 @@
-use crate::{DamageMode, ExperimentProtocolV1, ProtocolProvenanceV1, ResourceMode};
+use crate::{
+    d094_pressure_contract, CampaignRole, DamageMode, ExperimentProtocolV1,
+    PlacementProtocolV1, ProtocolProvenanceV1, ResourceMode, ResourceVectorV1,
+};
 use std::collections::BTreeMap;
 
 fn sealed_fixture(
@@ -176,42 +179,205 @@ pub fn historical_protocols() -> Vec<ExperimentProtocolV1> {
     vec![d090, d091, d092, d093]
 }
 
-pub fn d094_requalified_protocol() -> ExperimentProtocolV1 {
+fn d094r2_protocol(
+    experiment_id: &str,
+    environment_id: &str,
+    role: CampaignRole,
+    treatment_environment: &str,
+    neutral_environment: &str,
+    condition: &str,
+) -> ExperimentProtocolV1 {
     let mut protocol = sealed_fixture(
-        "d094_requalified_translation",
-        "d094_autocatalytic_set",
-        "digital_cell_material_mesh_v1",
-        "d094_autocatalytic_set_heredity",
+        experiment_id,
+        environment_id,
+        "autopoietic_material_mesh_autocatalytic_set_v1",
+        "d094_autocatalytic_set_heredity_v1",
         &[
             (
-                "historical_contract",
+                "architecture",
                 "digital-protocell/docs/d094_distributed_autocatalytic_set.md",
             ),
             (
-                "sealed_r2_evidence",
+                "execution_contract",
                 "digital-protocell/docs/d094r2_gate6_execution.md",
             ),
             (
                 "selection_analysis",
                 "digital-protocell/docs/d094r2_selection_analysis.md",
             ),
+            (
+                "sealed_attempt_manifest",
+                "digital-protocell/experiments/generated/d094r/gate6/attempt_001/manifest.json",
+            ),
+            (
+                "source_implementation",
+                "digital-protocell/crates/chemistry-core/src/d094_selection.rs@bf58edddef40753107ba18854eb85cc41ec78859",
+            ),
         ],
         &[
-            "founder artifact/config reference",
-            "treatment-neutral field difference",
-            "replicate count and seed campaign",
-            "pulse interval and pulse magnitude",
-            "damage interval and damage magnitude",
-            "minimum viable population threshold",
-            "accepted horizon and generation gate",
+            "D-094-specific heredity and phenotype adapter is observer-only and not executable",
+            "historical per-organism material initialization hash was not emitted",
+            "historical placement coordinates were not emitted",
+            "minimum viable population threshold was not preregistered as a numeric value",
+            "phenotype differential endpoints were not recorded by D-094R2",
+            "finite shared-resource state was not present in the parallel-lineage runner",
         ],
     );
-    protocol.environment_protocol.resource_mode = ResourceMode::Pulsed;
-    protocol.environment_protocol.damage_mode = DamageMode::Abrasion;
+
+    protocol.selective_pressure = Some(d094_pressure_contract(
+        if treatment_environment.ends_with("h_ecology") {
+            "d094r2_h_ecology_contrast"
+        } else {
+            "d094r2_b_ecology_contrast"
+        },
+        treatment_environment,
+        neutral_environment,
+        role,
+        condition,
+    ));
+    protocol.replicates = 8;
+    protocol.random_seeds = (0..8).collect();
+    protocol.maximum_accepted_horizon = 22_000.0 * 0.02;
+    protocol.maximum_generation = 8;
+    protocol.minimum_generation_requirement = 8;
+    // Zero is a provenance sentinel: the sealed runner emitted no numeric
+    // viability threshold.  It cannot authorize execution.
+    protocol.minimum_population_viability = 0;
+    protocol.placement_protocol = PlacementProtocolV1 {
+        schema: "PlacementProtocolV1".into(),
+        initial_coordinates: Vec::new(),
+        spacing: 0.0,
+        founder_seed: 0,
+        random_seed: None,
+        dish_geometry: "parallel_single_founder_lineages_no_shared_space".into(),
+        resource_geometry: "common_environment_clock_independent_resource_state".into(),
+    };
+    protocol.environment_protocol.resource_field =
+        "per_organism_exterior_NF_override_from_d094_selection_source".into();
+    protocol.environment_protocol.spatial_constraints =
+        "none: independent single-founder lineages".into();
+    protocol.environment_protocol.resource_ecology.shared_resource_competition = false;
+    protocol.environment_protocol.resource_ecology.spatial_local_availability = false;
+    protocol.environment_protocol.resource_ecology.continuous_supply = ResourceVectorV1 {
+        n: if environment_id.ends_with("h_ecology") {
+            2.2 * 0.18
+        } else if environment_id.ends_with("b_ecology") {
+            2.2 * 1.20
+        } else {
+            2.2 * 0.70
+        },
+        f: if environment_id.ends_with("h_ecology") {
+            2.2 * 0.18
+        } else if environment_id.ends_with("b_ecology") {
+            2.2 * 1.20
+        } else {
+            2.2 * 0.70
+        },
+        w: 0.0,
+    };
+    protocol.environment_protocol.resource_ecology.pulse_delta = ResourceVectorV1::default();
+    protocol.environment_protocol.resource_ecology.pulse_schedule.clear();
     protocol.environment_protocol.pulse_schedule.clear();
+    protocol.environment_protocol.damage_mode = if environment_id.ends_with("b_ecology") {
+        DamageMode::Abrasion
+    } else {
+        DamageMode::None
+    };
     protocol.environment_protocol.damage_interval = None;
-    protocol.replicates = 1;
-    protocol.random_seeds = vec![0];
-    protocol.provenance.execution_authorized = false;
+    protocol.environment_protocol.resource_ecology.damage_mode =
+        protocol.environment_protocol.damage_mode.clone();
+    protocol.environment_protocol.resource_ecology.damage_interval = None;
+    protocol.environment_protocol.resource_ecology.damage_fraction = 0.0;
+    protocol.provenance.derived_values.extend([
+        (
+            "founder_count_and_seed_rule".into(),
+            "8 independent lineages per replicate; H seed=100+rep*20+i; B seed=200+rep*20+i; i=0..3".into(),
+        ),
+        (
+            "resource_rich_level".into(),
+            "rich=2.2 from run_campaign".into(),
+        ),
+        (
+            "H_resource_schedule".into(),
+            "pulse absolute exterior N/F=rich*1.25; lean absolute exterior N/F=rich*0.18; pulse fraction=0.40; cycle=0.5*t_maint*4".into(),
+        ),
+        (
+            "B_resource_schedule".into(),
+            "absolute exterior N/F=rich*1.20; abrasion fires every 1.5*t_maint with ABRASION_STRENGTHS[0] and membrane factor 0.6".into(),
+        ),
+        (
+            "neutral_resource_schedule".into(),
+            "absolute exterior N/F=rich*0.70; autocatalytic rho_node=0 via with_baseline_efficiencies".into(),
+        ),
+        (
+            "reserve_parameters".into(),
+            "ReserveParams::derived(80.0,40.0,0.5,0.3,2.0,0.1,area); area runtime-derived from seed mesh".into(),
+        ),
+        (
+            "autocatalytic_parameters".into(),
+            "AutocatalyticParams::derived(1/k_release) with mutation_off; mu_E=0.0 in Gate 6; historical frozen default mu_E=0.0089".into(),
+        ),
+        (
+            "mechanical_growth_fission".into(),
+            "MechParams::default(dt=0.02); GrowthParams{y_g=0.9,enable_growth=true}; FissionParams::default()".into(),
+        ),
+        (
+            "generation_and_horizon".into(),
+            "target=8 generations; n_steps=22000; accepted horizon=440.0".into(),
+        ),
+        (
+            "selection_thresholds".into(),
+            "frequency delta requirement=0.15; descendant ratio requirement=1.20x; no numeric minimum viability emitted".into(),
+        ),
+        (
+            "shared_resource_classification".into(),
+            "COMMON_ENVIRONMENT_INDEPENDENT_RESOURCES: lineages share a clock, not a finite mutable resource pool".into(),
+        ),
+    ]);
     protocol
+}
+
+/// Exact D-094R2 contract translations. They intentionally remain
+/// provenance-gated and non-executable because the accepted harness has no
+/// D-094-specific organism adapter or finite shared-resource implementation.
+pub fn d094r2_protocols() -> Vec<ExperimentProtocolV1> {
+    vec![
+        d094r2_protocol(
+            "d094r2_h_treatment",
+            "d094r2_h_ecology",
+            CampaignRole::Treatment,
+            "d094r2_h_ecology",
+            "d094r2_neutral_ecology",
+            "H pulse/lean resource schedule",
+        ),
+        d094r2_protocol(
+            "d094r2_b_treatment",
+            "d094r2_b_ecology",
+            CampaignRole::Treatment,
+            "d094r2_b_ecology",
+            "d094r2_neutral_ecology",
+            "B identity-blind abrasion schedule",
+        ),
+        d094r2_protocol(
+            "d094r2_h_neutral",
+            "d094r2_neutral_ecology",
+            CampaignRole::Neutral,
+            "d094r2_h_ecology",
+            "d094r2_neutral_ecology",
+            "H pulse/lean resource schedule",
+        ),
+        d094r2_protocol(
+            "d094r2_b_neutral",
+            "d094r2_neutral_ecology",
+            CampaignRole::Neutral,
+            "d094r2_b_ecology",
+            "d094r2_neutral_ecology",
+            "B identity-blind abrasion schedule",
+        ),
+    ]
+}
+
+pub fn d094_requalified_protocol() -> ExperimentProtocolV1 {
+    let mut protocols = d094r2_protocols();
+    protocols.remove(0)
 }

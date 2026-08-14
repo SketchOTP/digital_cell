@@ -1,0 +1,22 @@
+{
+  "schema": "D094SR004FinalManifestV1",
+  "directive": "DC-SR-004",
+  "starting_commit": "ac5d8050a6a1c546fe36814923038e9be94ba877",
+  "sealed_source_commit": "bf58edddef40753107ba18854eb85cc41ec78859",
+  "sealed_result_commit": "935359eea2fcdb08cb1365f58128eaba3f10f3e8",
+  "outcome": "SR004_D094R2_VALID_NEGATIVE_EVIDENCE_RECONFIRMED",
+  "heredity_qualified": true,
+  "phenotype_functionally_qualified": true,
+  "reciprocal_ecology_crossover_established": false,
+  "causal_differential_endpoints": "NOT_RECORDED",
+  "new_population_campaign_justified": false,
+  "new_population_campaign_executed": false,
+  "mutation_executed": false,
+  "gate7_executed": false,
+  "gate8_executed": false,
+  "phase3_authorized": false,
+  "scientific_core_modified": false,
+  "sealed_import": "experiments/generated/sr004/sealed_d094r2_import/",
+  "execution_authorized_protocols": false,
+  "known_limitations": ["D-094-specific live adapter is not added", "finite shared-resource competition remains unimplemented", "historical physiological differential endpoints are absent"]
+}

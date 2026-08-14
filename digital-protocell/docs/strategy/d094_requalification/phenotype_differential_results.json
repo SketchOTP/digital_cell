@@ -1,0 +1,11 @@
+{
+  "schema": "D094PhenotypeDifferentialResultsV1",
+  "mutation": "off",
+  "preregistered_endpoint": "causal physiological or reproductive endpoint supported by D-094 mechanism",
+  "H_ecology": {"H": "NOT_RECORDED", "B": "NOT_RECORDED", "effect": "NOT_RECORDED"},
+  "B_ecology": {"B": "NOT_RECORDED", "H": "NOT_RECORDED", "effect": "NOT_RECORDED"},
+  "neutral": {"H": "NOT_RECORDED", "B": "NOT_RECORDED"},
+  "reciprocal_advantage": "NOT_ESTABLISHED",
+  "assay_executed": false,
+  "reason": "D-094R2 emitted functional Gate 5 node-channel evidence and population Gate 6 outcomes, but not matched causal differential endpoints such as time to fission, reserve persistence, repair recovery, or phenotype-specific survival/reproduction."
+}
