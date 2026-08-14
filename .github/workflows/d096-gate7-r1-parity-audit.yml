@@ -26,7 +26,7 @@ jobs:
         run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
 
       - name: Check audit formatting
-        run: rustfmt +1.89.0 --edition 2021 --check crates/evolution-harness/examples/d096_gate7_parity_audit.rs
+        run: cargo +1.89.0 fmt --package evolution-harness -- --check
 
       - name: Run D-096 chemistry regressions
         run: cargo +1.89.0 test -p chemistry-core --test d096_tests
