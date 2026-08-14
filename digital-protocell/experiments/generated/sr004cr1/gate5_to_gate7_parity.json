@@ -1,0 +1,1593 @@
+{
+  "gate5_authority_replay_complete": true,
+  "gate7_configuration_path_replay_complete": true,
+  "physiology_parity": false,
+  "reason": "Gate7 configuration does not preserve Gate5 radius, reserve, or initial material state",
+  "rows": [
+    {
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 227.57527044946207,
+        "damage_applied": 0.0,
+        "final_material": 111.7680740998776,
+        "reserve_change": -23.197915758567603,
+        "structural_change": 13.456809613111055,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 419.0674872811598,
+        "damage_applied": 0.0,
+        "final_material": 182.89858446997334,
+        "reserve_change": 0.0,
+        "structural_change": 8.010461329879206,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 1
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 228.25590891801593,
+        "damage_applied": 0.0,
+        "final_material": 112.18031118911642,
+        "reserve_change": -23.452355555806548,
+        "structural_change": 13.650545787117395,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 427.0360118032641,
+        "damage_applied": 0.0,
+        "final_material": 184.66686913258047,
+        "reserve_change": 0.0,
+        "structural_change": 9.369818257572163,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 2
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 226.6921092586523,
+        "damage_applied": 0.0,
+        "final_material": 111.2580573450495,
+        "reserve_change": -22.88085609516726,
+        "structural_change": 13.21514774900244,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 420.0227215763447,
+        "damage_applied": 0.0,
+        "final_material": 183.1618002794258,
+        "reserve_change": 0.0,
+        "structural_change": 8.291189297847808,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 3
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 227.57527044946207,
+        "damage_applied": 0.0,
+        "final_material": 111.7680740998776,
+        "reserve_change": -23.197915758567603,
+        "structural_change": 13.456809613111055,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 419.0674872811598,
+        "damage_applied": 0.0,
+        "final_material": 182.89858446997334,
+        "reserve_change": 0.0,
+        "structural_change": 8.010461329879206,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 4
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 228.25590891801593,
+        "damage_applied": 0.0,
+        "final_material": 112.18031118911642,
+        "reserve_change": -23.452355555806548,
+        "structural_change": 13.650545787117395,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 427.0360118032641,
+        "damage_applied": 0.0,
+        "final_material": 184.66686913258047,
+        "reserve_change": 0.0,
+        "structural_change": 9.369818257572163,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 5
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 226.6921092586523,
+        "damage_applied": 0.0,
+        "final_material": 111.2580573450495,
+        "reserve_change": -22.88085609516726,
+        "structural_change": 13.21514774900244,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 420.0227215763447,
+        "damage_applied": 0.0,
+        "final_material": 183.1618002794258,
+        "reserve_change": 0.0,
+        "structural_change": 8.291189297847808,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 6
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 227.57527044946207,
+        "damage_applied": 0.0,
+        "final_material": 111.7680740998776,
+        "reserve_change": -23.197915758567603,
+        "structural_change": 13.456809613111055,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 419.0674872811598,
+        "damage_applied": 0.0,
+        "final_material": 182.89858446997334,
+        "reserve_change": 0.0,
+        "structural_change": 8.010461329879206,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 7
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 228.25590891801593,
+        "damage_applied": 0.0,
+        "final_material": 112.18031118911642,
+        "reserve_change": -23.452355555806548,
+        "structural_change": 13.650545787117395,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 427.0360118032641,
+        "damage_applied": 0.0,
+        "final_material": 184.66686913258047,
+        "reserve_change": 0.0,
+        "structural_change": 9.369818257572163,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 8
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 282.9932589290813,
+        "damage_applied": 0.384,
+        "final_material": 113.11709742679447,
+        "reserve_change": -22.05629697975577,
+        "structural_change": 14.805896472534194,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 488.7585897706336,
+        "damage_applied": 0.384,
+        "final_material": 184.60613133851822,
+        "reserve_change": 0.0,
+        "structural_change": 9.922086111202233,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 1
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 283.6369477551897,
+        "damage_applied": 0.384,
+        "final_material": 113.52537290061869,
+        "reserve_change": -22.309466513060542,
+        "structural_change": 14.995076819362716,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 491.94418863407174,
+        "damage_applied": 0.384,
+        "final_material": 185.25305869064152,
+        "reserve_change": 0.0,
+        "structural_change": 10.082269594336637,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 2
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 282.1395723171225,
+        "damage_applied": 0.384,
+        "final_material": 112.6160802174239,
+        "reserve_change": -21.741294159140068,
+        "structural_change": 14.569569393566752,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 489.17828654291486,
+        "damage_applied": 0.384,
+        "final_material": 184.63068914626191,
+        "reserve_change": 0.0,
+        "structural_change": 9.958504422422692,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 3
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 282.9932589290813,
+        "damage_applied": 0.384,
+        "final_material": 113.11709742679447,
+        "reserve_change": -22.05629697975577,
+        "structural_change": 14.805896472534194,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 488.7585897706336,
+        "damage_applied": 0.384,
+        "final_material": 184.60613133851822,
+        "reserve_change": 0.0,
+        "structural_change": 9.922086111202233,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 4
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 283.6369477551897,
+        "damage_applied": 0.384,
+        "final_material": 113.52537290061869,
+        "reserve_change": -22.309466513060542,
+        "structural_change": 14.995076819362716,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 491.94418863407174,
+        "damage_applied": 0.384,
+        "final_material": 185.25305869064152,
+        "reserve_change": 0.0,
+        "structural_change": 10.082269594336637,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 5
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 282.1395723171225,
+        "damage_applied": 0.384,
+        "final_material": 112.6160802174239,
+        "reserve_change": -21.741294159140068,
+        "structural_change": 14.569569393566752,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 489.17828654291486,
+        "damage_applied": 0.384,
+        "final_material": 184.63068914626191,
+        "reserve_change": 0.0,
+        "structural_change": 9.958504422422692,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 6
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 282.9932589290813,
+        "damage_applied": 0.384,
+        "final_material": 113.11709742679447,
+        "reserve_change": -22.05629697975577,
+        "structural_change": 14.805896472534194,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 488.7585897706336,
+        "damage_applied": 0.384,
+        "final_material": 184.60613133851822,
+        "reserve_change": 0.0,
+        "structural_change": 9.922086111202233,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 7
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 283.6369477551897,
+        "damage_applied": 0.384,
+        "final_material": 113.52537290061869,
+        "reserve_change": -22.309466513060542,
+        "structural_change": 14.995076819362716,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 491.94418863407174,
+        "damage_applied": 0.384,
+        "final_material": 185.25305869064152,
+        "reserve_change": 0.0,
+        "structural_change": 10.082269594336637,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 8
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 262.1817835181746,
+        "damage_applied": 0.0,
+        "final_material": 112.62280365768916,
+        "reserve_change": -22.513371260538534,
+        "structural_change": 14.31072860057973,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 467.73617743634134,
+        "damage_applied": 0.0,
+        "final_material": 183.55968397717078,
+        "reserve_change": 0.0,
+        "structural_change": 8.642066841734902,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 1
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 262.83128716469156,
+        "damage_applied": 0.0,
+        "final_material": 113.03178826949986,
+        "reserve_change": -22.76711291622381,
+        "structural_change": 14.50101477424996,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 473.4786533275248,
+        "damage_applied": 0.0,
+        "final_material": 184.24912235556326,
+        "reserve_change": 0.0,
+        "structural_change": 8.970736012553218,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 2
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 261.3263707478501,
+        "damage_applied": 0.0,
+        "final_material": 112.11746808494728,
+        "reserve_change": -22.197368791814952,
+        "structural_change": 14.073156345720157,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 467.9726545632595,
+        "damage_applied": 0.0,
+        "final_material": 183.52922505379917,
+        "reserve_change": 0.0,
+        "structural_change": 8.664609850880893,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 3
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 262.1817835181746,
+        "damage_applied": 0.0,
+        "final_material": 112.62280365768916,
+        "reserve_change": -22.513371260538534,
+        "structural_change": 14.31072860057973,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 467.73617743634134,
+        "damage_applied": 0.0,
+        "final_material": 183.55968397717078,
+        "reserve_change": 0.0,
+        "structural_change": 8.642066841734902,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 4
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 262.83128716469156,
+        "damage_applied": 0.0,
+        "final_material": 113.03178826949986,
+        "reserve_change": -22.76711291622381,
+        "structural_change": 14.50101477424996,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 473.4786533275248,
+        "damage_applied": 0.0,
+        "final_material": 184.24912235556326,
+        "reserve_change": 0.0,
+        "structural_change": 8.970736012553218,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 5
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 261.3263707478501,
+        "damage_applied": 0.0,
+        "final_material": 112.11746808494728,
+        "reserve_change": -22.197368791814952,
+        "structural_change": 14.073156345720157,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 467.9726545632595,
+        "damage_applied": 0.0,
+        "final_material": 183.52922505379917,
+        "reserve_change": 0.0,
+        "structural_change": 8.664609850880893,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 6
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 262.1817835181746,
+        "damage_applied": 0.0,
+        "final_material": 112.62280365768916,
+        "reserve_change": -22.513371260538534,
+        "structural_change": 14.31072860057973,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 467.73617743634134,
+        "damage_applied": 0.0,
+        "final_material": 183.55968397717078,
+        "reserve_change": 0.0,
+        "structural_change": 8.642066841734902,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 7
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 262.83128716469156,
+        "damage_applied": 0.0,
+        "final_material": 113.03178826949986,
+        "reserve_change": -22.76711291622381,
+        "structural_change": 14.50101477424996,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 473.4786533275248,
+        "damage_applied": 0.0,
+        "final_material": 184.24912235556326,
+        "reserve_change": 0.0,
+        "structural_change": 8.970736012553218,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 8
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 217.33654572420326,
+        "damage_applied": 0.0,
+        "final_material": 115.08956294852456,
+        "reserve_change": -23.796614214685633,
+        "structural_change": 16.776571462363115,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 408.35084069597445,
+        "damage_applied": 0.0,
+        "final_material": 193.78710178860615,
+        "reserve_change": 0.0,
+        "structural_change": 12.612194070118363,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 1
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 218.0038700314886,
+        "damage_applied": 0.0,
+        "final_material": 115.50265231846619,
+        "reserve_change": -24.054302665292667,
+        "structural_change": 16.972015724897737,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 414.2795971730434,
+        "damage_applied": 0.0,
+        "final_material": 194.96591073394535,
+        "reserve_change": 0.0,
+        "structural_change": 13.348656665393008,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 2
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 216.47313755842035,
+        "damage_applied": 0.0,
+        "final_material": 114.5785322395424,
+        "reserve_change": -23.47543135031499,
+        "structural_change": 16.532753076938263,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 409.3807353703565,
+        "damage_applied": 0.0,
+        "final_material": 194.0288132863488,
+        "reserve_change": 0.0,
+        "structural_change": 12.843893330171397,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 3
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 217.33654572420326,
+        "damage_applied": 0.0,
+        "final_material": 115.08956294852456,
+        "reserve_change": -23.796614214685633,
+        "structural_change": 16.776571462363115,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 408.35084069597445,
+        "damage_applied": 0.0,
+        "final_material": 193.78710178860615,
+        "reserve_change": 0.0,
+        "structural_change": 12.612194070118363,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 4
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 218.0038700314886,
+        "damage_applied": 0.0,
+        "final_material": 115.50265231846619,
+        "reserve_change": -24.054302665292667,
+        "structural_change": 16.972015724897737,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 414.2795971730434,
+        "damage_applied": 0.0,
+        "final_material": 194.96591073394535,
+        "reserve_change": 0.0,
+        "structural_change": 13.348656665393008,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 5
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 216.47313755842035,
+        "damage_applied": 0.0,
+        "final_material": 114.5785322395424,
+        "reserve_change": -23.47543135031499,
+        "structural_change": 16.532753076938263,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 409.3807353703565,
+        "damage_applied": 0.0,
+        "final_material": 194.0288132863488,
+        "reserve_change": 0.0,
+        "structural_change": 12.843893330171397,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 6
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 217.33654572420326,
+        "damage_applied": 0.0,
+        "final_material": 115.08956294852456,
+        "reserve_change": -23.796614214685633,
+        "structural_change": 16.776571462363115,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 408.35084069597445,
+        "damage_applied": 0.0,
+        "final_material": 193.78710178860615,
+        "reserve_change": 0.0,
+        "structural_change": 12.612194070118363,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 7
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 218.0038700314886,
+        "damage_applied": 0.0,
+        "final_material": 115.50265231846619,
+        "reserve_change": -24.054302665292667,
+        "structural_change": 16.972015724897737,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 414.2795971730434,
+        "damage_applied": 0.0,
+        "final_material": 194.96591073394535,
+        "reserve_change": 0.0,
+        "structural_change": 13.348656665393008,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 8
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 271.6595937852832,
+        "damage_applied": 0.384,
+        "final_material": 116.92881086971627,
+        "reserve_change": -22.578600816449438,
+        "structural_change": 18.617173966138644,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 479.27146785278944,
+        "damage_applied": 0.384,
+        "final_material": 197.44950470312867,
+        "reserve_change": 0.0,
+        "structural_change": 17.30508121485255,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 1
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 272.29412419253055,
+        "damage_applied": 0.384,
+        "final_material": 117.33601115608266,
+        "reserve_change": -22.834805460835213,
+        "structural_change": 18.805755146091307,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 484.3456811289201,
+        "damage_applied": 0.384,
+        "final_material": 198.4259851080967,
+        "reserve_change": 0.0,
+        "structural_change": 17.65903287819576,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 2
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 270.82003264847805,
+        "damage_applied": 0.384,
+        "final_material": 116.42843172323578,
+        "reserve_change": -22.259999632621074,
+        "structural_change": 18.38098890553043,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 479.82813266014415,
+        "damage_applied": 0.384,
+        "final_material": 197.5045896376676,
+        "reserve_change": 0.0,
+        "structural_change": 17.35843650877017,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 3
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 271.6595937852832,
+        "damage_applied": 0.384,
+        "final_material": 116.92881086971627,
+        "reserve_change": -22.578600816449438,
+        "structural_change": 18.617173966138644,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 479.27146785278944,
+        "damage_applied": 0.384,
+        "final_material": 197.44950470312867,
+        "reserve_change": 0.0,
+        "structural_change": 17.30508121485255,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 4
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 272.29412419253055,
+        "damage_applied": 0.384,
+        "final_material": 117.33601115608266,
+        "reserve_change": -22.834805460835213,
+        "structural_change": 18.805755146091307,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 484.3456811289201,
+        "damage_applied": 0.384,
+        "final_material": 198.4259851080967,
+        "reserve_change": 0.0,
+        "structural_change": 17.65903287819576,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 5
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 270.82003264847805,
+        "damage_applied": 0.384,
+        "final_material": 116.42843172323578,
+        "reserve_change": -22.259999632621074,
+        "structural_change": 18.38098890553043,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 479.82813266014415,
+        "damage_applied": 0.384,
+        "final_material": 197.5045896376676,
+        "reserve_change": 0.0,
+        "structural_change": 17.35843650877017,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 6
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 271.6595937852832,
+        "damage_applied": 0.384,
+        "final_material": 116.92881086971627,
+        "reserve_change": -22.578600816449438,
+        "structural_change": 18.617173966138644,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 479.27146785278944,
+        "damage_applied": 0.384,
+        "final_material": 197.44950470312867,
+        "reserve_change": 0.0,
+        "structural_change": 17.30508121485255,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 7
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 272.29412419253055,
+        "damage_applied": 0.384,
+        "final_material": 117.33601115608266,
+        "reserve_change": -22.834805460835213,
+        "structural_change": 18.805755146091307,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 484.3456811289201,
+        "damage_applied": 0.384,
+        "final_material": 198.4259851080967,
+        "reserve_change": 0.0,
+        "structural_change": 17.65903287819576,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 8
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 250.78082838861243,
+        "damage_applied": 0.0,
+        "final_material": 116.20919567202347,
+        "reserve_change": -23.07321982234494,
+        "structural_change": 17.896741335793457,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 457.4797493723618,
+        "damage_applied": 0.0,
+        "final_material": 196.59158215330098,
+        "reserve_change": 0.0,
+        "structural_change": 15.734285508299024,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 1
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 251.42041781894105,
+        "damage_applied": 0.0,
+        "final_material": 116.61800158732053,
+        "reserve_change": -23.330080976470313,
+        "structural_change": 18.08730728059586,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 463.8979672149021,
+        "damage_applied": 0.0,
+        "final_material": 197.5336739741302,
+        "reserve_change": 0.0,
+        "structural_change": 16.19156117983819,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 2
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 249.94203683365083,
+        "damage_applied": 0.0,
+        "final_material": 115.7030561763515,
+        "reserve_change": -22.753240095075782,
+        "structural_change": 17.65879368368836,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 458.1349111648285,
+        "damage_applied": 0.0,
+        "final_material": 196.66253695040706,
+        "reserve_change": 0.0,
+        "structural_change": 15.795517267472349,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 3
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 250.78082838861243,
+        "damage_applied": 0.0,
+        "final_material": 116.20919567202347,
+        "reserve_change": -23.07321982234494,
+        "structural_change": 17.896741335793457,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 457.4797493723618,
+        "damage_applied": 0.0,
+        "final_material": 196.59158215330098,
+        "reserve_change": 0.0,
+        "structural_change": 15.734285508299024,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 4
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 251.42041781894105,
+        "damage_applied": 0.0,
+        "final_material": 116.61800158732053,
+        "reserve_change": -23.330080976470313,
+        "structural_change": 18.08730728059586,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 463.8979672149021,
+        "damage_applied": 0.0,
+        "final_material": 197.5336739741302,
+        "reserve_change": 0.0,
+        "structural_change": 16.19156117983819,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 5
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 249.94203683365083,
+        "damage_applied": 0.0,
+        "final_material": 115.7030561763515,
+        "reserve_change": -22.753240095075782,
+        "structural_change": 17.65879368368836,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 458.1349111648285,
+        "damage_applied": 0.0,
+        "final_material": 196.66253695040706,
+        "reserve_change": 0.0,
+        "structural_change": 15.795517267472349,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 6
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 250.78082838861243,
+        "damage_applied": 0.0,
+        "final_material": 116.20919567202347,
+        "reserve_change": -23.07321982234494,
+        "structural_change": 17.896741335793457,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 457.4797493723618,
+        "damage_applied": 0.0,
+        "final_material": 196.59158215330098,
+        "reserve_change": 0.0,
+        "structural_change": 15.734285508299024,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 7
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 251.42041781894105,
+        "damage_applied": 0.0,
+        "final_material": 116.61800158732053,
+        "reserve_change": -23.330080976470313,
+        "structural_change": 18.08730728059586,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 463.8979672149021,
+        "damage_applied": 0.0,
+        "final_material": 197.5336739741302,
+        "reserve_change": 0.0,
+        "structural_change": 16.19156117983819,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 8
+    },
+    {
+      "candidate": "neutral",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 223.3143781082417,
+        "damage_applied": 0.0,
+        "final_material": 115.47580327046275,
+        "reserve_change": -25.038110924113937,
+        "structural_change": 17.16387122712613,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 415.20081706696004,
+        "damage_applied": 0.0,
+        "final_material": 190.19875682340881,
+        "reserve_change": 0.0,
+        "structural_change": 10.617215341322847,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 1
+    },
+    {
+      "candidate": "neutral",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 223.98809296438796,
+        "damage_applied": 0.0,
+        "final_material": 115.9034758277972,
+        "reserve_change": -25.309111443604564,
+        "structural_change": 17.37111763739734,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 422.185367494122,
+        "damage_applied": 0.0,
+        "final_material": 191.7699303212878,
+        "reserve_change": 0.0,
+        "structural_change": 11.687433782458612,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 2
+    },
+    {
+      "candidate": "neutral",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 222.4406491386599,
+        "damage_applied": 0.0,
+        "final_material": 114.95020221114851,
+        "reserve_change": -24.700691901137418,
+        "structural_change": 16.90479409347455,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 416.22013779457797,
+        "damage_applied": 0.0,
+        "final_material": 190.4700855160327,
+        "reserve_change": 0.0,
+        "structural_change": 10.882306979855244,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 3
+    },
+    {
+      "candidate": "neutral",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 223.3143781082417,
+        "damage_applied": 0.0,
+        "final_material": 115.47580327046275,
+        "reserve_change": -25.038110924113937,
+        "structural_change": 17.16387122712613,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 415.20081706696004,
+        "damage_applied": 0.0,
+        "final_material": 190.19875682340881,
+        "reserve_change": 0.0,
+        "structural_change": 10.617215341322847,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 4
+    },
+    {
+      "candidate": "neutral",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 223.98809296438796,
+        "damage_applied": 0.0,
+        "final_material": 115.9034758277972,
+        "reserve_change": -25.309111443604564,
+        "structural_change": 17.37111763739734,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 422.185367494122,
+        "damage_applied": 0.0,
+        "final_material": 191.7699303212878,
+        "reserve_change": 0.0,
+        "structural_change": 11.687433782458612,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 5
+    },
+    {
+      "candidate": "neutral",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 222.4406491386599,
+        "damage_applied": 0.0,
+        "final_material": 114.95020221114851,
+        "reserve_change": -24.700691901137418,
+        "structural_change": 16.90479409347455,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 416.22013779457797,
+        "damage_applied": 0.0,
+        "final_material": 190.4700855160327,
+        "reserve_change": 0.0,
+        "structural_change": 10.882306979855244,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 6
+    },
+    {
+      "candidate": "neutral",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 223.3143781082417,
+        "damage_applied": 0.0,
+        "final_material": 115.47580327046275,
+        "reserve_change": -25.038110924113937,
+        "structural_change": 17.16387122712613,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 415.20081706696004,
+        "damage_applied": 0.0,
+        "final_material": 190.19875682340881,
+        "reserve_change": 0.0,
+        "structural_change": 10.617215341322847,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 7
+    },
+    {
+      "candidate": "neutral",
+      "environment": "H",
+      "gate5": {
+        "activated_produced": 223.98809296438796,
+        "damage_applied": 0.0,
+        "final_material": 115.9034758277972,
+        "reserve_change": -25.309111443604564,
+        "structural_change": 17.37111763739734,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 422.185367494122,
+        "damage_applied": 0.0,
+        "final_material": 191.7699303212878,
+        "reserve_change": 0.0,
+        "structural_change": 11.687433782458612,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 8
+    },
+    {
+      "candidate": "neutral",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 278.08235407775896,
+        "damage_applied": 0.384,
+        "final_material": 117.20937149728908,
+        "reserve_change": -23.861674908523113,
+        "structural_change": 18.896628600757985,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 485.24264400230004,
+        "damage_applied": 0.384,
+        "final_material": 192.93309579622513,
+        "reserve_change": 0.0,
+        "structural_change": 14.3137856236647,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 1
+    },
+    {
+      "candidate": "neutral",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 278.72153317292725,
+        "damage_applied": 0.384,
+        "final_material": 117.6289721924156,
+        "reserve_change": -24.130897115131262,
+        "structural_change": 19.098160151016124,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 489.59698300768946,
+        "damage_applied": 0.384,
+        "final_material": 193.83352984023946,
+        "reserve_change": 0.0,
+        "structural_change": 14.59409576305498,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 2
+    },
+    {
+      "candidate": "neutral",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 277.2374484343889,
+        "damage_applied": 0.384,
+        "final_material": 116.68969470759595,
+        "reserve_change": -23.526433589779927,
+        "structural_change": 18.644945381561882,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 485.7157175119137,
+        "damage_applied": 0.384,
+        "final_material": 192.94896305026293,
+        "reserve_change": 0.0,
+        "structural_change": 14.35733184035027,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 3
+    },
+    {
+      "candidate": "neutral",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 278.08235407775896,
+        "damage_applied": 0.384,
+        "final_material": 117.20937149728908,
+        "reserve_change": -23.861674908523113,
+        "structural_change": 18.896628600757985,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 485.24264400230004,
+        "damage_applied": 0.384,
+        "final_material": 192.93309579622513,
+        "reserve_change": 0.0,
+        "structural_change": 14.3137856236647,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 4
+    },
+    {
+      "candidate": "neutral",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 278.72153317292725,
+        "damage_applied": 0.384,
+        "final_material": 117.6289721924156,
+        "reserve_change": -24.130897115131262,
+        "structural_change": 19.098160151016124,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 489.59698300768946,
+        "damage_applied": 0.384,
+        "final_material": 193.83352984023946,
+        "reserve_change": 0.0,
+        "structural_change": 14.59409576305498,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 5
+    },
+    {
+      "candidate": "neutral",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 277.2374484343889,
+        "damage_applied": 0.384,
+        "final_material": 116.68969470759595,
+        "reserve_change": -23.526433589779927,
+        "structural_change": 18.644945381561882,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 485.7157175119137,
+        "damage_applied": 0.384,
+        "final_material": 192.94896305026293,
+        "reserve_change": 0.0,
+        "structural_change": 14.35733184035027,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 6
+    },
+    {
+      "candidate": "neutral",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 278.08235407775896,
+        "damage_applied": 0.384,
+        "final_material": 117.20937149728908,
+        "reserve_change": -23.861674908523113,
+        "structural_change": 18.896628600757985,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 485.24264400230004,
+        "damage_applied": 0.384,
+        "final_material": 192.93309579622513,
+        "reserve_change": 0.0,
+        "structural_change": 14.3137856236647,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 7
+    },
+    {
+      "candidate": "neutral",
+      "environment": "B",
+      "gate5": {
+        "activated_produced": 278.72153317292725,
+        "damage_applied": 0.384,
+        "final_material": 117.6289721924156,
+        "reserve_change": -24.130897115131262,
+        "structural_change": 19.098160151016124,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 489.59698300768946,
+        "damage_applied": 0.384,
+        "final_material": 193.83352984023946,
+        "reserve_change": 0.0,
+        "structural_change": 14.59409576305498,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 8
+    },
+    {
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 257.33797916496565,
+        "damage_applied": 0.0,
+        "final_material": 116.5473259199511,
+        "reserve_change": -24.332464305101112,
+        "structural_change": 18.235770007687798,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 464.29490023081087,
+        "damage_applied": 0.0,
+        "final_material": 192.19709594025906,
+        "reserve_change": 0.0,
+        "structural_change": 12.916468617564348,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 1
+    },
+    {
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 257.9815228983641,
+        "damage_applied": 0.0,
+        "final_material": 116.97150390232798,
+        "reserve_change": -24.60262131419678,
+        "structural_change": 18.43845149148968,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 470.4886554257348,
+        "damage_applied": 0.0,
+        "final_material": 193.08333306989928,
+        "reserve_change": 0.0,
+        "structural_change": 13.322467390504073,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 2
+    },
+    {
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 256.4908701407225,
+        "damage_applied": 0.0,
+        "final_material": 116.02602469968548,
+        "reserve_change": -23.996259672024934,
+        "structural_change": 17.982039889763996,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 464.77612340256354,
+        "damage_applied": 0.0,
+        "final_material": 192.22879484663738,
+        "reserve_change": 0.0,
+        "structural_change": 12.960515626601378,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 3
+    },
+    {
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 257.33797916496565,
+        "damage_applied": 0.0,
+        "final_material": 116.5473259199511,
+        "reserve_change": -24.332464305101112,
+        "structural_change": 18.235770007687798,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 464.29490023081087,
+        "damage_applied": 0.0,
+        "final_material": 192.19709594025906,
+        "reserve_change": 0.0,
+        "structural_change": 12.916468617564348,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 4
+    },
+    {
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 257.9815228983641,
+        "damage_applied": 0.0,
+        "final_material": 116.97150390232798,
+        "reserve_change": -24.60262131419678,
+        "structural_change": 18.43845149148968,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 470.4886554257348,
+        "damage_applied": 0.0,
+        "final_material": 193.08333306989928,
+        "reserve_change": 0.0,
+        "structural_change": 13.322467390504073,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 5
+    },
+    {
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 256.4908701407225,
+        "damage_applied": 0.0,
+        "final_material": 116.02602469968548,
+        "reserve_change": -23.996259672024934,
+        "structural_change": 17.982039889763996,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 464.77612340256354,
+        "damage_applied": 0.0,
+        "final_material": 192.22879484663738,
+        "reserve_change": 0.0,
+        "structural_change": 12.960515626601378,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 6
+    },
+    {
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 257.33797916496565,
+        "damage_applied": 0.0,
+        "final_material": 116.5473259199511,
+        "reserve_change": -24.332464305101112,
+        "structural_change": 18.235770007687798,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 464.29490023081087,
+        "damage_applied": 0.0,
+        "final_material": 192.19709594025906,
+        "reserve_change": 0.0,
+        "structural_change": 12.916468617564348,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 7
+    },
+    {
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "gate5": {
+        "activated_produced": 257.9815228983641,
+        "damage_applied": 0.0,
+        "final_material": 116.97150390232798,
+        "reserve_change": -24.60262131419678,
+        "structural_change": 18.43845149148968,
+        "survived": true
+      },
+      "gate7_adapter_path": {
+        "activated_produced": 470.4886554257348,
+        "damage_applied": 0.0,
+        "final_material": 193.08333306989928,
+        "reserve_change": 0.0,
+        "structural_change": 13.322467390504073,
+        "survived": true
+      },
+      "same_execution_configuration": false,
+      "seed": 8
+    }
+  ],
+  "schema": "DC-SR-004C-R1-Gate5ToGate7ParityV1"
+}

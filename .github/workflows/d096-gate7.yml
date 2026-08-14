@@ -1,0 +1,60 @@
+name: D-096 Gate 7 single-generation reproductive consequence
+
+on:
+  push:
+    branches:
+      - strategy/d096-gate7-single-generation-fitness
+    paths:
+      - digital-protocell/crates/chemistry-core/src/d096_allocation.rs
+      - digital-protocell/crates/evolution-harness/src/**
+      - digital-protocell/crates/evolution-harness/examples/d096_gate7_assay.rs
+      - digital-protocell/experiments/generated/sr004c/**
+      - digital-protocell/docs/strategy/d096_gate7/**
+  pull_request:
+    branches:
+      - strategy/d096-gate6-heredity-continuity
+    paths:
+      - digital-protocell/crates/chemistry-core/src/d096_allocation.rs
+      - digital-protocell/crates/evolution-harness/src/**
+      - digital-protocell/crates/evolution-harness/examples/d096_gate7_assay.rs
+      - digital-protocell/experiments/generated/sr004c/**
+      - digital-protocell/docs/strategy/d096_gate7/**
+
+jobs:
+  d096-gate7:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: digital-protocell
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install pinned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install rustfmt
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Check scoped formatting
+        run: cargo +1.89.0 fmt --package evolution-harness -- --check
+
+      - name: Run frozen D-096 chemistry regressions
+        run: cargo +1.89.0 test -p chemistry-core --test d096_tests
+
+      - name: Run evolution harness regressions
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Run Gate 6 continuity regression
+        run: cargo +1.89.0 test -p evolution-harness d096_real_fission_daughters_close_mutation_and_expression_continuity
+
+      - name: Run Gate 7 preregistered assay
+        env:
+          RUSTFLAGS: -Awarnings
+        run: cargo +1.89.0 run --release -p evolution-harness --example d096_gate7_assay
+
+      - name: Assert no generation 2 and no fitness controller
+        shell: bash
+        run: |
+          test "$(jq '[.[].maximum_generation_observed] | max' experiments/generated/sr004c/replicate_endpoints.json)" -le 1
+          ! rg -n 'fitness_score|selection_score|survival_probability|force_reproduce|preferred_candidate' experiments/generated/sr004c/replicate_endpoints.json

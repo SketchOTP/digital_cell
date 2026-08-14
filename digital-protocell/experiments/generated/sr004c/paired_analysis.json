@@ -1,0 +1,113 @@
+{
+  "h": {
+    "label": "D_H",
+    "environment": "h",
+    "left_candidate": "processing_heavy",
+    "right_candidate": "repair_heavy",
+    "expected_direction": "negative",
+    "paired_differences": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "mean_difference": 0.0,
+    "direction_count_expected": 0,
+    "bootstrap_95_ci": {
+      "mean": 0.0,
+      "lower_95": 0.0,
+      "upper_95": 0.0,
+      "resamples": 10000
+    },
+    "expected_direction_at_least_12_of_16": false,
+    "ci_excludes_zero_in_expected_direction": false
+  },
+  "b": {
+    "label": "D_B",
+    "environment": "b",
+    "left_candidate": "repair_heavy",
+    "right_candidate": "processing_heavy",
+    "expected_direction": "negative",
+    "paired_differences": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "mean_difference": 0.0,
+    "direction_count_expected": 0,
+    "bootstrap_95_ci": {
+      "mean": 0.0,
+      "lower_95": 0.0,
+      "upper_95": 0.0,
+      "resamples": 10000
+    },
+    "expected_direction_at_least_12_of_16": false,
+    "ci_excludes_zero_in_expected_direction": false
+  },
+  "neutral": {
+    "label": "D_Neutral",
+    "environment": "neutral",
+    "left_candidate": "processing_heavy",
+    "right_candidate": "repair_heavy",
+    "expected_direction": "positive",
+    "paired_differences": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "mean_difference": 0.0,
+    "direction_count_expected": 0,
+    "bootstrap_95_ci": {
+      "mean": 0.0,
+      "lower_95": 0.0,
+      "upper_95": 0.0,
+      "resamples": 10000
+    },
+    "expected_direction_at_least_12_of_16": false,
+    "ci_excludes_zero_in_expected_direction": false
+  },
+  "neutral_abs_mean_smaller_than_h": false,
+  "neutral_abs_mean_smaller_than_b": false,
+  "primary_pass_h": false,
+  "primary_pass_b": false,
+  "primary_pass": false,
+  "interpretation": "SR004C_D096_GATE7_UNTESTABLE_IN_FROZEN_HORIZON"
+}

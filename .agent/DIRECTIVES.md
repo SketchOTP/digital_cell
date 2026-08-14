@@ -173,3 +173,32 @@
 - D-20260814-final-harness-acceptance-closure | PROJECT DIRECTIVE DC-SR-003R2 | status:started | scope:execution gate; phased global chronology; parent-causal generation; mechanism-aware heredity/phenotype evidence; explicit treatment/neutral pressure; multi-founder placement; pinned GitHub CI | constraints:no D-094 execution; no PR merge; no certified science changes; no SR-004
 - D-20260814-1456-gate6-expansion | project:DC-SR-004B | status:started | scope:evolution-harness Gate 6 heredity/mutation assays, evidence artifacts, documentation, scoped CI, .agent records | ask:finish Gate 6 only after midpoint acceptance; no Gate 7 or certified science changes | accept:runnable assays, committed evidence/docs/CI, final local and remote verification, draft PR #4 updated
 - D-20260814-final-gate6-continuity | PROJECT DIRECTIVE DC-SR-004B final completion repair | status:started | scope:actual physical fission daughters through mutation-on/off, post-birth expression continuity, three-founder mutation-off hash continuity, evidence/docs/.agent correction, scoped CI | constraints:no Gate 7; no D-094 execution; certified Phase 1 biology/equations frozen; bounded post-Phase-1 D-096 heredity/fission-partition code may be modified | accept:one bounded final commit, local suite pass, remote CI pass, draft PR #4 updated, architect review pending
+- D-20260814-gate7-single-generation-fitness | PROJECT DIRECTIVE DC-SR-004C | status:started | scope:frozen D-096 Gate 7 observer-only single-generation reproductive consequence, 16 paired seeds, H/B/Neutral, artifacts/docs/scoped CI | constraints:entry f4adec147f6d8c0763d1264b8954eaf2788edcca; mutation_none; 4000 accepted steps / 80.0 simulated time; gen1 maximum; no fitness/selection/Gate 8 | accept:real first-fission/death/horizon outcomes, preregistered paired analysis, committed artifacts/docs, local and remote CI pass, new draft PR against strategy/d096-gate6-heredity-continuity
+
+## D-20260814-1722-authority-governance-adoption
+
+- Issued: 2026-08-14T17:22:15-04:00
+- Issuer: User
+- External directive: none
+- Objective: Bring Digital Cell into compliance with the current canonical Authority Codex governance standard while preserving project state and behavior.
+- Scope: Root Codex router, Authority compatibility assets, adopted `.agent` contract, governance validator and tests.
+- Exclusions: Canonical Authority repository, application behavior, scientific sources, qualified evidence, unrelated working-tree changes, and active Gate 7 implementation.
+- Acceptance: Canonical adopted validator and governance tests pass, required Authority files are present, and preserved project history remains auditable.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
+## D-20260814-1734-gate7-parity-horizon-audit
+
+- Issued: 2026-08-14T17:34:49-04:00
+- Issuer: User
+- External directive: DC-SR-004C-R1
+- Objective: Audit Gate 5 physiology parity and D-088 horizon transfer for the preserved Gate 7 execution without rerunning or tuning Gate 7.
+- Scope: Shadow-only configuration reconstruction, Gate 5 and Gate 7 path replay, D-088 horizon-transfer comparison, audit artifacts, documentation, governance metadata correction, and scoped verification.
+- Exclusions: Original `sr004c` artifacts, 144-cell rerun, horizon extension, biology or parameter tuning, Gate 8, selection, adaptation, reversal, gen2, and Phase 1 changes.
+- Acceptance: Required shadow artifacts and documentation exist, original evidence is unchanged, exact Gate 7 head and CI metadata are corrected, and one allowed audit conclusion is supported by validation.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260814-gate7-single-generation-fitness
+- Status at issuance: ISSUED

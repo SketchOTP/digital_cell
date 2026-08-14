@@ -204,3 +204,43 @@ Entries before 2026-07-12 were imported from myCompanion and are not authoritati
 - D-20260814-1456-gate6-expansion | status:local_ready_remote_pending | branch:strategy/d096-gate6-heredity-continuity | scope:Gate6_only | local_tests:45_evolution_harness_passed;14_d096_passed;assay_passed;fmt_passed | evidence:D096Gate6EvidenceV1 | d094:not_executed | gate7:blocked | Mimir_V2:blocked_unavailable
 - D-20260814-1456-gate6-expansion | status:coder_complete_architect_pending | commit:8d54616957ba32870d9f476e815757f0cf8911ef | remote_head:verified | remote_ci:run_31831456290_passed | local_tests:45_evolution_harness_passed;14_d096_passed;assay_passed;fmt_passed | evidence:D096Gate6EvidenceV1 | d094:not_executed | gate7:blocked | scientific_core_modified:no | Mimir_V2:blocked_unavailable
 - D-20260814-final-gate6-continuity | status:local_complete_remote_pending | scope:Gate6_only | local_tests:46_evolution_harness_passed;14_d096_passed;assay_passed;fmt_passed | evidence:D096Gate6EvidenceV1_extended_with_real_fission_and_post_birth_expression | scientific_core:certified_phase1_biology_equations_unchanged;bounded_post_phase1_d096_heredity_fission_partition_modified | d094:not_executed | gate7:blocked | PR:#4_draft | remote_head_and_CI:pending
+- D-20260814-gate7-single-generation-fitness | status:local_complete_remote_pending | entry:f4adec147f6d8c0763d1264b8954eaf2788edcca | branch:strategy/d096-gate7-single-generation-fitness | local_tests:14_d096_passed;46_evolution_harness_passed;gate6_continuity_passed;gate7_assay_passed;fmt_passed | campaign:144_cells;0_fission;0_founder_death;144_horizon_stops;max_generation_0 | conclusion:SR004C_D096_GATE7_UNTESTABLE_IN_FROZEN_HORIZON | mutation:mutation_none | gate8:false;d094:false;selection_operator:false | certified_phase1_biology_equations_unchanged | Mimir_V2:blocked_unavailable;jCodemunch:unavailable | remote_CI:pending
+- D-20260814-gate7-single-generation-fitness | status:coder_complete_architect_pending | entry:f4adec147f6d8c0763d1264b8954eaf2788edcca | commit:a1410fd4117418d2f6a4c32a768b38dcba3bf0ea | branch:pushed | draft_pr:#5 https://github.com/SketchOTP/digital_cell/pull/5 | remote_CI:31839637762_passed | campaign:144_cells;0_fission;0_founder_death;144_horizon_stops;max_generation_0 | conclusion:SR004C_D096_GATE7_UNTESTABLE_IN_FROZEN_HORIZON | gate8:false;d094:false;selection_operator:false | certified_phase1_biology_equations_unchanged | Mimir_V2:blocked_unavailable;jCodemunch:unavailable
+
+- D-20260814-gate7-single-generation-fitness | metadata_correction:active_remote_truth | exact_head:66200538a57f0ff76182f893a93b758b591a7363;exact_ci:31840013656_passed | note:historical_a1410fd_and_31839637762_entry_preserved_append_only;architect_withheld_scientific_acceptance_pending_DC-SR-004C-R1
+
+## D-20260814-gate7-parity-horizon-audit - COMPLETE
+
+- Outcome ID: OUT-20260814-gate7-parity-horizon-audit
+- Directive: DC-SR-004C-R1
+- Starting commit: `66200538a57f0ff76182f893a93b758b591a7363`
+- Code verification commit: `b258126fb2ac1373515a09711d7dcaa07022550f`; governance and workflow-guard follow-up is appended below
+- Branch: `strategy/d096-gate7-single-generation-fitness`
+- Pull request: `#5`, open, draft, unmerged, base `strategy/d096-gate6-heredity-continuity`
+- Remote CI: run `31845154445`, PASS on the exact ending commit
+- Acceptance: MET for the requested shadow audit; scientific Gate 7 acceptance remains architect-controlled
+- Result: `SR004CR1_GATE5_TO_GATE7_PHYSIOLOGY_PARITY_FAILED`
+- Gate 5 replay: 8 seeds, H/B/Neutral, sealed reserve-enabled path, effects matched the sealed report to floating-point precision
+- D-088 horizon shadow: 10/10 perturbed and 10/10 unperturbed fissions within the unchanged 4,000-step / 80.0-time horizon; no replacement horizon
+- Original `experiments/generated/sr004c/`: unchanged and CI-asserted
+- Gate 7 rerun: false; Gate 8: false
+- Scientific scope: certified Phase 1 biology/equations unchanged; no Gate 7 adapter repair or biological tuning
+- Follow-up: architect review required; do not begin Gate 7 rerun or Gate 8
+
+- D-20260814-gate7-parity-horizon-audit | follow_up:workflow_guard | The pre-existing unfiltered Gate 7 workflow reran on b258126 during PR synchronization; that run is not R1 evidence. The workflow is now path-scoped so parity-audit/governance-only changes do not launch the 144-cell assay.
+
+## D-20260814-1722-authority-governance-adoption - COMPLETE
+
+- Outcome ID: OUT-20260814-1722-authority-governance-adoption
+- Supersedes outcome: none
+- Closed: 2026-08-14T17:30:18-04:00
+- Acceptance: MET
+- Summary: Adopted the current canonical Authority Codex governance contract while preserving pre-migration project governance snapshots and application behavior.
+- Changed areas: AGENTS.md, COMMANDMENTS_OF_THE_CODE.md, CLAUDE.md, GEMINI.md, .agent active contract, .agents/skills, .cursor compatibility assets, and governance validator/test assets.
+- Validation:
+  - canonical Authority validator against Digital Cell in ADOPTED mode - PASSED
+  - canonical Authority governance mode tests from the reference checkout - PASSED
+  - target application tests - NOT APPLICABLE for governance-only migration
+- Remaining risks: The target checkout retains unrelated pre-existing dirty files and the Gate 7 draft PR remains architect-pending.
+- Blockers: none
+- Follow-up directive: none

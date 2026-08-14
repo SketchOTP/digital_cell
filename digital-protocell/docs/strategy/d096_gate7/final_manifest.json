@@ -1,0 +1,53 @@
+{
+  "schema": "D096Gate7FinalManifestV1",
+  "entry_commit": "f4adec147f6d8c0763d1264b8954eaf2788edcca",
+  "ending_commit": "recorded_at_artifact_generation;final_git_head_in_completion_report",
+  "gate6_authority": "SR004B_D096_GATE6_HEREDITY_MUTATION_QUALIFIED",
+  "mutation_protocol": "mutation_none",
+  "horizon_steps": 4000,
+  "dt": 0.02,
+  "maximum_accepted_simulated_time": 80.0,
+  "paired_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "candidate_hashes": {
+    "neutral": "b62bf5964d0d0f46b05eb3d61b5d9d4fee2645668a0804a260b2726bee722e83",
+    "processing-heavy": "faa5c27f8ee9516f1a71817d66f4ee82414dde8e5ce9ef2f1382162985831e6d",
+    "repair-heavy": "e38978484b8872a9bd6344dc5e047c6f4ef53679607b84fd704aa4927af8b802"
+  },
+  "environment_hashes": {
+    "B": "fnv1a64:99401d02cf931cbe",
+    "H": "fnv1a64:1ee7b9e37c4dc8ad",
+    "Neutral": "fnv1a64:ed767ff504c9367a"
+  },
+  "result_artifact_hashes": {
+    "b_results.json": "fnv1a64:611d96b29e0bbb78",
+    "event_ledger_hashes.json": "fnv1a64:83c62854133f1b94",
+    "h_results.json": "fnv1a64:fb2ef52d2bd9eeb0",
+    "horizon_provenance.json": "fnv1a64:9707a06a59c62c62",
+    "neutral_results.json": "fnv1a64:3cd972760ba2840b",
+    "paired_analysis.json": "fnv1a64:9022dec6d13bbf35",
+    "protocol.json": "fnv1a64:64663529af2290b0",
+    "replicate_endpoints.json": "fnv1a64:85611a86261a948a",
+    "replicate_preregistration.json": "fnv1a64:7bc8c146b97877f3"
+  },
+  "maximum_generation_observed": 0,
+  "gate8_executed": false,
+  "d094_executed": false,
+  "selection_operator_executed": false
+}

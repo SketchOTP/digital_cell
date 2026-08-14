@@ -1,28 +1,44 @@
 # CURRENT.md
 
-## Active directive
-- ID: D-20260814-final-gate6-continuity
-- Project directive: DC-SR-004B
-- Goal: Close the bounded D-096 Gate 6 real-fission heredity/mutation continuity gap after final architect review
-- Status: coder_complete_architect_pending; Gate 7 blocked
-- Acceptance: coder-complete pending architect review; actual fission daughters, mutation-on/off continuity, post-birth expression evidence, committed artifact/documentation, and scoped CI
-- Touched files: evolution-harness Gate 6 tests/docs/artifacts/CI and bounded post-Phase-1 D-096 chemistry-core heredity/fission-partition code; certified Phase 1 biology/equations unchanged
-- Next action: architect independently inspect exact PR #4 head and remote CI; do not start Gate 7
+## Lifecycle
 
-## Repo facts needed now
-- Preserved entry commit: 956b054a9b37f675a8b84ae0624db98853956d37
-- Preserved tag: DC-SR-003-modular-evolution-harness; do not move or delete
-- Branch: strategy/d096-gate6-heredity-continuity
-- PR #4 remains open, draft, unmerged; base strategy/d098-processing-repair
-- Certified Phase 1 chemistry-core biology/equations remain unchanged; this PR does modify bounded post-Phase-1 D-096 heredity and fission-partition code
-- D-094 translation remains non-executable and no D-094 execution is authorized
+- Status: `ADOPTED`
+- Last updated: `2026-08-14T17:34:49-04:00`
 
-## Last validation
-- Command: cargo test -p evolution-harness; cargo test -p chemistry-core --test d096_tests; cargo run -p evolution-harness --example d096_gate6_assay
-- Result: 46 harness tests passed, 14 D-096 tests passed, assay passed with real-fission continuity fields; scoped formatting check passed locally; remote CI pending new final head
+## Active state after adoption
 
-## Open blockers
-- Mimir V2 lifecycle tools are unavailable in the current tool surface; do not claim Mimir context/evidence/close-out
-- Atlas has no Rust/Cargo on PATH; local sanctioned Windows toolchain is used for verification
-- Draft PR: #4 https://github.com/SketchOTP/digital_cell/pull/4; final remediation commit and remote CI pending
-- Remote CI: prior run 31831705937 passed at the pre-remediation head; new final-head run required
+- Local directive ID: `D-20260814-1734-gate7-parity-horizon-audit`
+- External directive ID: `DC-SR-004C-R1`
+- Objective: `Audit Gate 5 physiology parity and D-088 horizon transfer for preserved Gate 7 execution without rerunning or tuning Gate 7`
+- Current status: `COMPLETE`
+- Acceptance: `Required shadow artifacts and documentation exist, original sr004c evidence is unchanged, exact Gate 7 metadata is corrected, and one allowed audit conclusion is supported by local and scoped remote validation`
+- Current phase: `DC-SR-004C-R1 shadow audit`
+- Expected or actual touched areas: `evolution-harness audit example or tests, sr004cr1 artifacts, d096_gate7 parity_audit docs, .agent records, scoped CI if required`
+- Immediate next action: `Pause for architect review; do not rerun Gate 7 or begin Gate 8`
+
+## Temporary task-relevant facts
+
+- The canonical Authority repository is reference-only and must not be modified.
+- Existing Digital Cell governance snapshots are preserved under `.agent/legacy/pre-authority-migration-20260814/`.
+- The original Gate 7 artifacts under `digital-protocell/experiments/generated/sr004c/` are immutable evidence for this audit.
+
+## Last validation after adoption
+
+- Command or check: `Atlas release focused suites; GitHub Actions run 31845154445 on b258126fb2ac1373515a09711d7dcaa07022550f`
+- Result: `PASSED: 14 D-096 tests, 46 evolution-harness tests, R1 shadow audit, original sr004c immutability assertion`
+
+## Risks
+
+- Existing project records use historical formats that must remain preserved while the active interface adopts the canonical schema.
+
+## Blockers
+
+- Gate 5-to-Gate 7 physiology parity failed in the shadow audit; no adapter repair or Gate 7 rerun is authorized without a new directive.
+
+## Pending decisions
+
+- Do not rerun Gate 7 or begin Gate 8; architect review remains required after scoped CI and the exact R1 conclusion.
+
+## Status vocabulary
+
+Allowed adopted-project statuses are `IDLE`, `PLANNING`, `IN_PROGRESS`, `VALIDATING`, `BLOCKED`, and `COMPLETE`. `CURRENT.md` is mutable and never replaces historical ledgers. Reset it to `IDLE` when an adopted task closes.

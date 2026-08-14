@@ -1,0 +1,1010 @@
+[
+  {
+    "candidate": "processing-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:00075f492a08752e",
+    "replicate": 0,
+    "seed": 1
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:32ee6884cbbad7de",
+    "replicate": 1,
+    "seed": 2
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:6d26a987eac3430e",
+    "replicate": 2,
+    "seed": 3
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:b6451196f5cd3736",
+    "replicate": 3,
+    "seed": 4
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:7eba5f9ea177f1d6",
+    "replicate": 4,
+    "seed": 5
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:5b8928bc83a2d46e",
+    "replicate": 5,
+    "seed": 6
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:0555e8971d33b2e6",
+    "replicate": 6,
+    "seed": 7
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:698bb5bd19266706",
+    "replicate": 7,
+    "seed": 8
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:aa96d663a25862ae",
+    "replicate": 8,
+    "seed": 9
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:93e649975047a93e",
+    "replicate": 9,
+    "seed": 10
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:f314fcd282a76e70",
+    "replicate": 10,
+    "seed": 11
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:3783d2ed33d67712",
+    "replicate": 11,
+    "seed": 12
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:5c899d28a93075b8",
+    "replicate": 12,
+    "seed": 13
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:0ebcd73981d7d166",
+    "replicate": 13,
+    "seed": 14
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:6d9a8d4fe72f1ef8",
+    "replicate": 14,
+    "seed": 15
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:bcb18c10563d22c2",
+    "replicate": 15,
+    "seed": 16
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:00075f492a08752e",
+    "replicate": 0,
+    "seed": 1
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:32ee6884cbbad7de",
+    "replicate": 1,
+    "seed": 2
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:6d26a987eac3430e",
+    "replicate": 2,
+    "seed": 3
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:b6451196f5cd3736",
+    "replicate": 3,
+    "seed": 4
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:7eba5f9ea177f1d6",
+    "replicate": 4,
+    "seed": 5
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:5b8928bc83a2d46e",
+    "replicate": 5,
+    "seed": 6
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:0555e8971d33b2e6",
+    "replicate": 6,
+    "seed": 7
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:698bb5bd19266706",
+    "replicate": 7,
+    "seed": 8
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:aa96d663a25862ae",
+    "replicate": 8,
+    "seed": 9
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:93e649975047a93e",
+    "replicate": 9,
+    "seed": 10
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:f314fcd282a76e70",
+    "replicate": 10,
+    "seed": 11
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:3783d2ed33d67712",
+    "replicate": 11,
+    "seed": 12
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:5c899d28a93075b8",
+    "replicate": 12,
+    "seed": 13
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:0ebcd73981d7d166",
+    "replicate": 13,
+    "seed": 14
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:6d9a8d4fe72f1ef8",
+    "replicate": 14,
+    "seed": 15
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:bcb18c10563d22c2",
+    "replicate": 15,
+    "seed": 16
+  },
+  {
+    "candidate": "neutral",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:00075f492a08752e",
+    "replicate": 0,
+    "seed": 1
+  },
+  {
+    "candidate": "neutral",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:32ee6884cbbad7de",
+    "replicate": 1,
+    "seed": 2
+  },
+  {
+    "candidate": "neutral",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:6d26a987eac3430e",
+    "replicate": 2,
+    "seed": 3
+  },
+  {
+    "candidate": "neutral",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:b6451196f5cd3736",
+    "replicate": 3,
+    "seed": 4
+  },
+  {
+    "candidate": "neutral",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:7eba5f9ea177f1d6",
+    "replicate": 4,
+    "seed": 5
+  },
+  {
+    "candidate": "neutral",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:5b8928bc83a2d46e",
+    "replicate": 5,
+    "seed": 6
+  },
+  {
+    "candidate": "neutral",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:0555e8971d33b2e6",
+    "replicate": 6,
+    "seed": 7
+  },
+  {
+    "candidate": "neutral",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:698bb5bd19266706",
+    "replicate": 7,
+    "seed": 8
+  },
+  {
+    "candidate": "neutral",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:aa96d663a25862ae",
+    "replicate": 8,
+    "seed": 9
+  },
+  {
+    "candidate": "neutral",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:93e649975047a93e",
+    "replicate": 9,
+    "seed": 10
+  },
+  {
+    "candidate": "neutral",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:f314fcd282a76e70",
+    "replicate": 10,
+    "seed": 11
+  },
+  {
+    "candidate": "neutral",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:3783d2ed33d67712",
+    "replicate": 11,
+    "seed": 12
+  },
+  {
+    "candidate": "neutral",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:5c899d28a93075b8",
+    "replicate": 12,
+    "seed": 13
+  },
+  {
+    "candidate": "neutral",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:0ebcd73981d7d166",
+    "replicate": 13,
+    "seed": 14
+  },
+  {
+    "candidate": "neutral",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:6d9a8d4fe72f1ef8",
+    "replicate": 14,
+    "seed": 15
+  },
+  {
+    "candidate": "neutral",
+    "environment": "H",
+    "event_ledger_hash": "fnv1a64:bcb18c10563d22c2",
+    "replicate": 15,
+    "seed": 16
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:168365fcf5f09fe9",
+    "replicate": 0,
+    "seed": 1
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:b9287ef5efb4ed10",
+    "replicate": 1,
+    "seed": 2
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:363b19026f9364b3",
+    "replicate": 2,
+    "seed": 3
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:bcc894665ecfe942",
+    "replicate": 3,
+    "seed": 4
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:e583cc9562857f95",
+    "replicate": 4,
+    "seed": 5
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:734d4cf48b47c504",
+    "replicate": 5,
+    "seed": 6
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:5a7c08d6a1703a1f",
+    "replicate": 6,
+    "seed": 7
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:f14ab51c60525826",
+    "replicate": 7,
+    "seed": 8
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:5014ef8c773292e1",
+    "replicate": 8,
+    "seed": 9
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:19fbd35abcacdc58",
+    "replicate": 9,
+    "seed": 10
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:474d5141014045c0",
+    "replicate": 10,
+    "seed": 11
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:d76a9b7bff587d7b",
+    "replicate": 11,
+    "seed": 12
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:b39b3ba32deea762",
+    "replicate": 12,
+    "seed": 13
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:1ba9e9c4ae068dc5",
+    "replicate": 13,
+    "seed": 14
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:888c6d0d0919f6d4",
+    "replicate": 14,
+    "seed": 15
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:bf5c51a1ed139baf",
+    "replicate": 15,
+    "seed": 16
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:168365fcf5f09fe9",
+    "replicate": 0,
+    "seed": 1
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:b9287ef5efb4ed10",
+    "replicate": 1,
+    "seed": 2
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:363b19026f9364b3",
+    "replicate": 2,
+    "seed": 3
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:bcc894665ecfe942",
+    "replicate": 3,
+    "seed": 4
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:e583cc9562857f95",
+    "replicate": 4,
+    "seed": 5
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:734d4cf48b47c504",
+    "replicate": 5,
+    "seed": 6
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:5a7c08d6a1703a1f",
+    "replicate": 6,
+    "seed": 7
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:f14ab51c60525826",
+    "replicate": 7,
+    "seed": 8
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:5014ef8c773292e1",
+    "replicate": 8,
+    "seed": 9
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:19fbd35abcacdc58",
+    "replicate": 9,
+    "seed": 10
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:474d5141014045c0",
+    "replicate": 10,
+    "seed": 11
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:d76a9b7bff587d7b",
+    "replicate": 11,
+    "seed": 12
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:b39b3ba32deea762",
+    "replicate": 12,
+    "seed": 13
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:1ba9e9c4ae068dc5",
+    "replicate": 13,
+    "seed": 14
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:888c6d0d0919f6d4",
+    "replicate": 14,
+    "seed": 15
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:bf5c51a1ed139baf",
+    "replicate": 15,
+    "seed": 16
+  },
+  {
+    "candidate": "neutral",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:168365fcf5f09fe9",
+    "replicate": 0,
+    "seed": 1
+  },
+  {
+    "candidate": "neutral",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:b9287ef5efb4ed10",
+    "replicate": 1,
+    "seed": 2
+  },
+  {
+    "candidate": "neutral",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:363b19026f9364b3",
+    "replicate": 2,
+    "seed": 3
+  },
+  {
+    "candidate": "neutral",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:bcc894665ecfe942",
+    "replicate": 3,
+    "seed": 4
+  },
+  {
+    "candidate": "neutral",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:e583cc9562857f95",
+    "replicate": 4,
+    "seed": 5
+  },
+  {
+    "candidate": "neutral",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:734d4cf48b47c504",
+    "replicate": 5,
+    "seed": 6
+  },
+  {
+    "candidate": "neutral",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:5a7c08d6a1703a1f",
+    "replicate": 6,
+    "seed": 7
+  },
+  {
+    "candidate": "neutral",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:f14ab51c60525826",
+    "replicate": 7,
+    "seed": 8
+  },
+  {
+    "candidate": "neutral",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:5014ef8c773292e1",
+    "replicate": 8,
+    "seed": 9
+  },
+  {
+    "candidate": "neutral",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:19fbd35abcacdc58",
+    "replicate": 9,
+    "seed": 10
+  },
+  {
+    "candidate": "neutral",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:474d5141014045c0",
+    "replicate": 10,
+    "seed": 11
+  },
+  {
+    "candidate": "neutral",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:d76a9b7bff587d7b",
+    "replicate": 11,
+    "seed": 12
+  },
+  {
+    "candidate": "neutral",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:b39b3ba32deea762",
+    "replicate": 12,
+    "seed": 13
+  },
+  {
+    "candidate": "neutral",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:1ba9e9c4ae068dc5",
+    "replicate": 13,
+    "seed": 14
+  },
+  {
+    "candidate": "neutral",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:888c6d0d0919f6d4",
+    "replicate": 14,
+    "seed": 15
+  },
+  {
+    "candidate": "neutral",
+    "environment": "B",
+    "event_ledger_hash": "fnv1a64:bf5c51a1ed139baf",
+    "replicate": 15,
+    "seed": 16
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:3d5d3d1a4bc59490",
+    "replicate": 0,
+    "seed": 1
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:484234de96379c17",
+    "replicate": 1,
+    "seed": 2
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:d32a257f48ba5ec2",
+    "replicate": 2,
+    "seed": 3
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:1b4d44f55540e269",
+    "replicate": 3,
+    "seed": 4
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:7ad7c323c7a06024",
+    "replicate": 4,
+    "seed": 5
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:74d1233ac594278b",
+    "replicate": 5,
+    "seed": 6
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:ad5c606710c3abc6",
+    "replicate": 6,
+    "seed": 7
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:6241266ba5704ebd",
+    "replicate": 7,
+    "seed": 8
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:b71354e229e681e8",
+    "replicate": 8,
+    "seed": 9
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:80ef4ef5c91c6a3f",
+    "replicate": 9,
+    "seed": 10
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:999f58fbc5a19045",
+    "replicate": 10,
+    "seed": 11
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:71fb212d1e924dac",
+    "replicate": 11,
+    "seed": 12
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:2dd4ff21b2883f67",
+    "replicate": 12,
+    "seed": 13
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:fd30a5381748cb36",
+    "replicate": 13,
+    "seed": 14
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:fa0a2326e0db91b9",
+    "replicate": 14,
+    "seed": 15
+  },
+  {
+    "candidate": "processing-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:c59d39e1194f7880",
+    "replicate": 15,
+    "seed": 16
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:3d5d3d1a4bc59490",
+    "replicate": 0,
+    "seed": 1
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:484234de96379c17",
+    "replicate": 1,
+    "seed": 2
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:d32a257f48ba5ec2",
+    "replicate": 2,
+    "seed": 3
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:1b4d44f55540e269",
+    "replicate": 3,
+    "seed": 4
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:7ad7c323c7a06024",
+    "replicate": 4,
+    "seed": 5
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:74d1233ac594278b",
+    "replicate": 5,
+    "seed": 6
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:ad5c606710c3abc6",
+    "replicate": 6,
+    "seed": 7
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:6241266ba5704ebd",
+    "replicate": 7,
+    "seed": 8
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:b71354e229e681e8",
+    "replicate": 8,
+    "seed": 9
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:80ef4ef5c91c6a3f",
+    "replicate": 9,
+    "seed": 10
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:999f58fbc5a19045",
+    "replicate": 10,
+    "seed": 11
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:71fb212d1e924dac",
+    "replicate": 11,
+    "seed": 12
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:2dd4ff21b2883f67",
+    "replicate": 12,
+    "seed": 13
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:fd30a5381748cb36",
+    "replicate": 13,
+    "seed": 14
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:fa0a2326e0db91b9",
+    "replicate": 14,
+    "seed": 15
+  },
+  {
+    "candidate": "repair-heavy",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:c59d39e1194f7880",
+    "replicate": 15,
+    "seed": 16
+  },
+  {
+    "candidate": "neutral",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:3d5d3d1a4bc59490",
+    "replicate": 0,
+    "seed": 1
+  },
+  {
+    "candidate": "neutral",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:484234de96379c17",
+    "replicate": 1,
+    "seed": 2
+  },
+  {
+    "candidate": "neutral",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:d32a257f48ba5ec2",
+    "replicate": 2,
+    "seed": 3
+  },
+  {
+    "candidate": "neutral",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:1b4d44f55540e269",
+    "replicate": 3,
+    "seed": 4
+  },
+  {
+    "candidate": "neutral",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:7ad7c323c7a06024",
+    "replicate": 4,
+    "seed": 5
+  },
+  {
+    "candidate": "neutral",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:74d1233ac594278b",
+    "replicate": 5,
+    "seed": 6
+  },
+  {
+    "candidate": "neutral",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:ad5c606710c3abc6",
+    "replicate": 6,
+    "seed": 7
+  },
+  {
+    "candidate": "neutral",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:6241266ba5704ebd",
+    "replicate": 7,
+    "seed": 8
+  },
+  {
+    "candidate": "neutral",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:b71354e229e681e8",
+    "replicate": 8,
+    "seed": 9
+  },
+  {
+    "candidate": "neutral",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:80ef4ef5c91c6a3f",
+    "replicate": 9,
+    "seed": 10
+  },
+  {
+    "candidate": "neutral",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:999f58fbc5a19045",
+    "replicate": 10,
+    "seed": 11
+  },
+  {
+    "candidate": "neutral",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:71fb212d1e924dac",
+    "replicate": 11,
+    "seed": 12
+  },
+  {
+    "candidate": "neutral",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:2dd4ff21b2883f67",
+    "replicate": 12,
+    "seed": 13
+  },
+  {
+    "candidate": "neutral",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:fd30a5381748cb36",
+    "replicate": 13,
+    "seed": 14
+  },
+  {
+    "candidate": "neutral",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:fa0a2326e0db91b9",
+    "replicate": 14,
+    "seed": 15
+  },
+  {
+    "candidate": "neutral",
+    "environment": "Neutral",
+    "event_ledger_hash": "fnv1a64:c59d39e1194f7880",
+    "replicate": 15,
+    "seed": 16
+  }
+]

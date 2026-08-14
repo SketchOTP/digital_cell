@@ -1,0 +1,30 @@
+{
+  "paired_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "primary_contrasts_preregistered": [
+    "D_H<0",
+    "D_B<0",
+    "abs(D_Neutral)<abs(D_H)",
+    "abs(D_Neutral)<abs(D_B)"
+  ],
+  "replicates": 16,
+  "same_seeds_across_candidates": true,
+  "same_seeds_across_environments": true,
+  "schema": "D096Gate7ReplicatePreregistrationV1"
+}

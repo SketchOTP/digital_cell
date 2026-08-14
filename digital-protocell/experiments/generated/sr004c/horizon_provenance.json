@@ -1,0 +1,9 @@
+{
+  "accepted_steps": 4000,
+  "authority": "D-088 reproduction-qualified non-smoke physical-fission campaign",
+  "dt": 0.02,
+  "frozen_before_results": true,
+  "maximum_accepted_simulated_time": 80.0,
+  "schema": "D096Gate7HorizonProvenanceV1",
+  "source": "digital-protocell/crates/chemistry-core/src/d088_analysis.rs:steps(4000)"
+}
