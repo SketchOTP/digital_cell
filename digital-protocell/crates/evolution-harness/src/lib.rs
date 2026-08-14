@@ -6,6 +6,7 @@
 
 mod adapter;
 mod analysis;
+mod d094;
 mod events;
 mod harness;
 mod historical;
@@ -17,6 +18,7 @@ mod selection;
 
 pub use adapter::*;
 pub use analysis::*;
+pub use d094::*;
 pub use events::*;
 pub use harness::*;
 pub use historical::*;

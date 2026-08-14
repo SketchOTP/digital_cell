@@ -1,0 +1,38 @@
+{
+  "schema": "D094R2SealedContractV1",
+  "source_commit": "bf58edddef40753107ba18854eb85cc41ec78859",
+  "source_tree": "d9dc1f0e9543be22019044d6033062d7502f22d3",
+  "binary_sha256": "6c49dd04411cce128ddcb9008d5ecbd4b77afe5da2a7a0cdc3a88f8a4c25f8aa",
+  "config_sha256": {
+    "H": "8cd865e452f3f59239e21f80006b7b3e54fa8239175ca90712df58b1c1fd6694",
+    "B": "7c60fe55d4149de1628878f82f8b6290e67183866602f89092d128ba98332412",
+    "neutral": "56c16311a06336f003fe37466c13895d2f0779d1d85769d98aa780996ec80658"
+  },
+  "founder_count_per_replicate": 8,
+  "founder_construction": {
+    "H": {"count": 4, "edges": ["E_AA", "E_AR", "E_RA", "E_RB", "E_BA"], "copies_per_edge": 2, "seed": "100 + replicate * 20 + i"},
+    "B": {"count": 4, "edges": ["E_BB", "E_BR", "E_RB", "E_RA", "E_AB"], "copies_per_edge": 2, "seed": "200 + replicate * 20 + i"},
+    "neutral": {"construction": "same mixed H/B founders; baseline rho_node=0"}
+  },
+  "replicates": 8,
+  "seeds": [0, 1, 2, 3, 4, 5, 6, 7],
+  "mutation": {"enabled": false, "mu_E_historical": 0.0089, "gate6_supply": 0.0},
+  "resource_levels": {"rich": 2.2, "H_pulse_absolute": 2.75, "H_lean_absolute": 0.396, "B_absolute": 2.64, "neutral_absolute": 1.54},
+  "pulse_schedule": {"H_pulse_fraction": 0.4, "H_cycle": "0.5 * t_maint * 4", "H_timing": "runtime-derived t_maint"},
+  "lean_schedule": {"H_lean": "rich * 0.18", "neutral": "rich * 0.70"},
+  "abrasion_schedule": {"B_interval": "1.5 * t_maint", "strength": "ABRASION_STRENGTHS[0]", "membrane_factor": 0.6},
+  "reserve": "ReserveParams::derived(80.0,40.0,0.5,0.3,2.0,0.1,area)",
+  "autocatalytic": "AutocatalyticParams::derived(1/k_release).with_mutation_off()",
+  "mechanical": "MechParams::default(dt=0.02)",
+  "growth": "GrowthParams{y_g=0.9,enable_growth=true}",
+  "fission": "FissionParams::default()",
+  "generation_target": 8,
+  "accepted_horizon": 440.0,
+  "selection_endpoint": ["phenotype_frequency_delta", "descendant_contribution"],
+  "frequency_requirement": 0.15,
+  "descendant_requirement": "1.20x",
+  "neutral_control": "mixed H/B founder construction under baseline node efficiency",
+  "resource_classification": "COMMON_ENVIRONMENT_INDEPENDENT_RESOURCES",
+  "execution_authorized": false,
+  "unresolved": ["D-094 adapter", "historical material hashes", "placement coordinates", "numeric minimum viability threshold", "causal differential endpoints", "finite shared-resource state"]
+}

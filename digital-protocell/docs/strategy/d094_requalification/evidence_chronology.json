@@ -1,0 +1,90 @@
+{
+  "schema": "D094EvidenceChronologyV1",
+  "directive": "DC-SR-004",
+  "entries": [
+    {
+      "directive": "D-094",
+      "commit": "82bf09d13b1cad3f7734386c8060ad28315cef41",
+      "tag": null,
+      "source_tree": "973222edafdba55cb911236ddb39f79a7f63171e",
+      "binary_hash": "NOT_RECORDED",
+      "config_hash": "NOT_RECORDED",
+      "artifact_path": "digital-protocell/experiments/generated/d094/manifest.json",
+      "manifest_hash": "a497a4c4352745ff5ddc6f0e2987d74c1ca4695c00afef22c6bfe1836d91465e",
+      "scientific_conclusion": "heredity and functional phenotype gates passed; Gate 6 pending with zero-generation blocker",
+      "supersedes": null,
+      "superseded_by": "D-094R2",
+      "execution_status": "historical evidence"
+    },
+    {
+      "directive": "D-094R",
+      "commit": "bf58edddef40753107ba18854eb85cc41ec78859",
+      "tag": null,
+      "source_tree": "bf58edddef40753107ba18854eb85cc41ec78859",
+      "binary_hash": "6c49dd04411cce128ddcb9008d5ecbd4b77afe5da2a7a0cdc3a88f8a4c25f8aa",
+      "config_hash": "H:8cd865e452f3f59239e21f80006b7b3e54fa8239175ca90712df58b1c1fd6694; B:7c60fe55d4149de1628878f82f8b6290e67183866602f89092d128ba98332412; neutral:56c16311a06336f003fe37466c13895d2f0779d1d85769d98aa780996ec80658",
+      "artifact_path": "digital-protocell/experiments/generated/d094r/gate6/attempt_001/",
+      "manifest_hash": "e9b03ff268da69b91a8ced053b311cc7e1e0c439c75503dde6e7002207d2e01e",
+      "scientific_conclusion": "reproduction-qualified Gate 6 source and analysis hardened",
+      "supersedes": "D-094",
+      "superseded_by": "D-094R2",
+      "execution_status": "historical source"
+    },
+    {
+      "directive": "D-094R2",
+      "commit": "935359eea2fcdb08cb1365f58128eaba3f10f3e8",
+      "tag": "D-094-autocatalytic-selection-rejected",
+      "source_tree": "d9dc1f0e9543be22019044d6033062d7502f22d3",
+      "binary_hash": "6c49dd04411cce128ddcb9008d5ecbd4b77afe5da2a7a0cdc3a88f8a4c25f8aa",
+      "config_hash": "H:8cd865e452f3f59239e21f80006b7b3e54fa8239175ca90712df58b1c1fd6694; B:7c60fe55d4149de1628878f82f8b6290e67183866602f89092d128ba98332412; neutral:56c16311a06336f003fe37466c13895d2f0779d1d85769d98aa780996ec80658",
+      "artifact_path": "digital-protocell/experiments/generated/d094r/gate6/attempt_001/",
+      "manifest_hash": "e9b03ff268da69b91a8ced053b311cc7e1e0c439c75503dde6e7002207d2e01e",
+      "scientific_conclusion": "D094_AUTOCATALYTIC_SET_HEREDITY_QUALIFIED_SELECTION_REJECTED",
+      "supersedes": "D-094R",
+      "superseded_by": null,
+      "execution_status": "immutable valid negative evidence"
+    },
+    {
+      "directive": "D-095",
+      "commit": "9a6dfd85b9f0e6f157a33c96256d6d5d48056a7a",
+      "tag": "D-095-evolutionary-architecture-selected",
+      "source_tree": "NOT_RECORDED",
+      "binary_hash": "NOT_RECORDED",
+      "config_hash": "NOT_RECORDED",
+      "artifact_path": "digital-protocell/experiments/generated/d095/manifest.json",
+      "manifest_hash": "b85f25104aa36bcbeef2dba874ffda8cd2c89fa230e8e969a5314f9544d98209",
+      "scientific_conclusion": "environment/phenotype interaction absent; Candidate B selected for D-096 contract only",
+      "supersedes": null,
+      "superseded_by": null,
+      "execution_status": "dependent historical evidence"
+    },
+    {
+      "directive": "D-096",
+      "commit": "b06ef28f3530fad8e3f6f3704e015b86981159a0",
+      "tag": "D-096-finite-allocation-physiology-fail",
+      "source_tree": "NOT_RECORDED",
+      "binary_hash": "NOT_RECORDED",
+      "config_hash": "NOT_RECORDED",
+      "artifact_path": "digital-protocell/experiments/generated/d096/manifest.json",
+      "manifest_hash": "898bcf7cafdfad77017f60a5ea8a9f45cdfe7a3f9ed69bd6a0c90d2106dfc0f4",
+      "scientific_conclusion": "D096_PROCESSING_ADVANTAGE_NOT_ESTABLISHED",
+      "supersedes": null,
+      "superseded_by": null,
+      "execution_status": "dependent physiology evidence"
+    },
+    {
+      "directive": "D-097",
+      "commit": "4ca2a12fb2bfef49135392abfbe0628693f11b73",
+      "tag": "D-097-processing-implementation-defect",
+      "source_tree": "NOT_RECORDED",
+      "binary_hash": "NOT_RECORDED",
+      "config_hash": "NOT_RECORDED",
+      "artifact_path": "digital-protocell/experiments/generated/d097/manifest.json",
+      "manifest_hash": "e426bcff610015eef40fbd390e872f6bd8b2cecf1c4b55a0eca74be28cdc37f6",
+      "scientific_conclusion": "D097_PROCESSING_IMPLEMENTATION_DEFECT_CONFIRMED",
+      "supersedes": null,
+      "superseded_by": null,
+      "execution_status": "dependent diagnostic evidence"
+    }
+  ]
+}

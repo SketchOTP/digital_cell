@@ -1,0 +1,11 @@
+{
+  "b_has_higher_kb": true,
+  "b_ka": 0.20036003729573765,
+  "b_kb": 0.43705234668580734,
+  "gap_off_node_prod": 0.0,
+  "gap_on": 0.4737206117438846,
+  "h_has_higher_ka": true,
+  "h_ka": 0.43755563269331293,
+  "h_kb": 0.20052733033949802,
+  "knockout_collapses": true
+}
