@@ -28,7 +28,12 @@ cargo +1.89.0 run -p evolution-harness --example d096_gate6_assay
 It checks exact inherited copies, lawful two-coordinate simplex transfer,
 legal zero capped transfer, physical catalyst conservation after partition,
 deterministic replicate/copy stream keys, the `(17,1)` versus `(18,0)` collision
-case, and a 64-by-256 bounded uniqueness matrix. The focused Rust tests also
+case, and a 64-by-256 bounded uniqueness matrix. The final continuity assay
+uses the actual daughters returned by `try_local_fission`: `mutation_none`
+preserves genotype, candidate hash, and catalysts for processing-heavy,
+repair-heavy, and neutral founders; mutation-on preserves catalyst quantities
+while recording qualified-copy provenance; and three post-birth expression
+steps show synthesis follows the mutated genotype. The focused Rust tests also
 check that mutation metadata becomes a `MUTATION` event only when the genotype
 actually changes.
 
@@ -40,6 +45,11 @@ same command before changing the reported result.
 
 The evidence is limited to heredity/mutation continuity. It is not a fitness,
 selection, adaptation, reversal, or Phase 3 result.
+
+The physical scope statement is precise: certified Phase 1 biology and
+equations were not modified; bounded post-Phase-1 D-096 heredity and
+fission-partition code in `chemistry-core` was modified and is covered by the
+focused chemistry tests.
 
 ## Verification boundary
 
