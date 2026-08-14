@@ -1,0 +1,47 @@
+name: D-096 Gate 7 R1 parity and horizon audit
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - strategy/d096-gate6-heredity-continuity
+    paths:
+      - digital-protocell/crates/chemistry-core/src/d096_allocation.rs
+      - digital-protocell/crates/chemistry-core/src/d088_analysis.rs
+      - digital-protocell/crates/evolution-harness/**
+      - digital-protocell/docs/strategy/d096_gate7/parity_audit/**
+      - digital-protocell/experiments/generated/sr004cr1/**
+
+jobs:
+  parity-audit:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: digital-protocell
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install pinned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Check audit formatting
+        run: rustfmt +1.89.0 --edition 2021 --check crates/evolution-harness/examples/d096_gate7_parity_audit.rs
+
+      - name: Run D-096 chemistry regressions
+        run: cargo +1.89.0 test -p chemistry-core --test d096_tests
+
+      - name: Run evolution-harness regressions
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Run R1 shadow audit only
+        env:
+          RUSTFLAGS: -Awarnings
+        run: cargo +1.89.0 run --release -p evolution-harness --example d096_gate7_parity_audit
+
+      - name: Assert original Gate 7 evidence was not modified
+        shell: bash
+        run: |
+          test -z "$(git status --short -- experiments/generated/sr004c)"
+          test "$(jq -r '.gate7_rerun' experiments/generated/sr004cr1/final_manifest.json)" = "false"
+          test "$(jq -r '.gate8_started' experiments/generated/sr004cr1/final_manifest.json)" = "false"

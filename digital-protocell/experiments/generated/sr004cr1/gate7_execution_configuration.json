@@ -1,0 +1,968 @@
+{
+  "audit_replay_fission_enabled": false,
+  "expression_order": [
+    "apply_assay_environment",
+    "expression_step",
+    "transport_step",
+    "reactions_step",
+    "growth_step",
+    "mechanics",
+    "topology"
+  ],
+  "exterior": {
+    "f": 2.0,
+    "n": 2.0
+  },
+  "fission_enabled": true,
+  "founder_radius": 14.0,
+  "horizon_steps": 4000,
+  "interior": {
+    "a": 0.5,
+    "c": 0.8,
+    "f": 0.4,
+    "n": 0.4,
+    "w": 0.1
+  },
+  "mech_dt": 0.02,
+  "outcomes": [
+    {
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 419.0674872811598,
+        "damage_applied": 0.0,
+        "final_material": 182.89858446997334,
+        "reserve_change": 0.0,
+        "structural_change": 8.010461329879206,
+        "survived": true
+      },
+      "seed": 1
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 427.0360118032641,
+        "damage_applied": 0.0,
+        "final_material": 184.66686913258047,
+        "reserve_change": 0.0,
+        "structural_change": 9.369818257572163,
+        "survived": true
+      },
+      "seed": 2
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 420.0227215763447,
+        "damage_applied": 0.0,
+        "final_material": 183.1618002794258,
+        "reserve_change": 0.0,
+        "structural_change": 8.291189297847808,
+        "survived": true
+      },
+      "seed": 3
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 419.0674872811598,
+        "damage_applied": 0.0,
+        "final_material": 182.89858446997334,
+        "reserve_change": 0.0,
+        "structural_change": 8.010461329879206,
+        "survived": true
+      },
+      "seed": 4
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 427.0360118032641,
+        "damage_applied": 0.0,
+        "final_material": 184.66686913258047,
+        "reserve_change": 0.0,
+        "structural_change": 9.369818257572163,
+        "survived": true
+      },
+      "seed": 5
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 420.0227215763447,
+        "damage_applied": 0.0,
+        "final_material": 183.1618002794258,
+        "reserve_change": 0.0,
+        "structural_change": 8.291189297847808,
+        "survived": true
+      },
+      "seed": 6
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 419.0674872811598,
+        "damage_applied": 0.0,
+        "final_material": 182.89858446997334,
+        "reserve_change": 0.0,
+        "structural_change": 8.010461329879206,
+        "survived": true
+      },
+      "seed": 7
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 427.0360118032641,
+        "damage_applied": 0.0,
+        "final_material": 184.66686913258047,
+        "reserve_change": 0.0,
+        "structural_change": 9.369818257572163,
+        "survived": true
+      },
+      "seed": 8
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 488.7585897706336,
+        "damage_applied": 0.384,
+        "final_material": 184.60613133851822,
+        "reserve_change": 0.0,
+        "structural_change": 9.922086111202233,
+        "survived": true
+      },
+      "seed": 1
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 491.94418863407174,
+        "damage_applied": 0.384,
+        "final_material": 185.25305869064152,
+        "reserve_change": 0.0,
+        "structural_change": 10.082269594336637,
+        "survived": true
+      },
+      "seed": 2
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 489.17828654291486,
+        "damage_applied": 0.384,
+        "final_material": 184.63068914626191,
+        "reserve_change": 0.0,
+        "structural_change": 9.958504422422692,
+        "survived": true
+      },
+      "seed": 3
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 488.7585897706336,
+        "damage_applied": 0.384,
+        "final_material": 184.60613133851822,
+        "reserve_change": 0.0,
+        "structural_change": 9.922086111202233,
+        "survived": true
+      },
+      "seed": 4
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 491.94418863407174,
+        "damage_applied": 0.384,
+        "final_material": 185.25305869064152,
+        "reserve_change": 0.0,
+        "structural_change": 10.082269594336637,
+        "survived": true
+      },
+      "seed": 5
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 489.17828654291486,
+        "damage_applied": 0.384,
+        "final_material": 184.63068914626191,
+        "reserve_change": 0.0,
+        "structural_change": 9.958504422422692,
+        "survived": true
+      },
+      "seed": 6
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 488.7585897706336,
+        "damage_applied": 0.384,
+        "final_material": 184.60613133851822,
+        "reserve_change": 0.0,
+        "structural_change": 9.922086111202233,
+        "survived": true
+      },
+      "seed": 7
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 491.94418863407174,
+        "damage_applied": 0.384,
+        "final_material": 185.25305869064152,
+        "reserve_change": 0.0,
+        "structural_change": 10.082269594336637,
+        "survived": true
+      },
+      "seed": 8
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 467.73617743634134,
+        "damage_applied": 0.0,
+        "final_material": 183.55968397717078,
+        "reserve_change": 0.0,
+        "structural_change": 8.642066841734902,
+        "survived": true
+      },
+      "seed": 1
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 473.4786533275248,
+        "damage_applied": 0.0,
+        "final_material": 184.24912235556326,
+        "reserve_change": 0.0,
+        "structural_change": 8.970736012553218,
+        "survived": true
+      },
+      "seed": 2
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 467.9726545632595,
+        "damage_applied": 0.0,
+        "final_material": 183.52922505379917,
+        "reserve_change": 0.0,
+        "structural_change": 8.664609850880893,
+        "survived": true
+      },
+      "seed": 3
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 467.73617743634134,
+        "damage_applied": 0.0,
+        "final_material": 183.55968397717078,
+        "reserve_change": 0.0,
+        "structural_change": 8.642066841734902,
+        "survived": true
+      },
+      "seed": 4
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 473.4786533275248,
+        "damage_applied": 0.0,
+        "final_material": 184.24912235556326,
+        "reserve_change": 0.0,
+        "structural_change": 8.970736012553218,
+        "survived": true
+      },
+      "seed": 5
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 467.9726545632595,
+        "damage_applied": 0.0,
+        "final_material": 183.52922505379917,
+        "reserve_change": 0.0,
+        "structural_change": 8.664609850880893,
+        "survived": true
+      },
+      "seed": 6
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 467.73617743634134,
+        "damage_applied": 0.0,
+        "final_material": 183.55968397717078,
+        "reserve_change": 0.0,
+        "structural_change": 8.642066841734902,
+        "survived": true
+      },
+      "seed": 7
+    },
+    {
+      "candidate": "processing-heavy",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 473.4786533275248,
+        "damage_applied": 0.0,
+        "final_material": 184.24912235556326,
+        "reserve_change": 0.0,
+        "structural_change": 8.970736012553218,
+        "survived": true
+      },
+      "seed": 8
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 408.35084069597445,
+        "damage_applied": 0.0,
+        "final_material": 193.78710178860615,
+        "reserve_change": 0.0,
+        "structural_change": 12.612194070118363,
+        "survived": true
+      },
+      "seed": 1
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 414.2795971730434,
+        "damage_applied": 0.0,
+        "final_material": 194.96591073394535,
+        "reserve_change": 0.0,
+        "structural_change": 13.348656665393008,
+        "survived": true
+      },
+      "seed": 2
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 409.3807353703565,
+        "damage_applied": 0.0,
+        "final_material": 194.0288132863488,
+        "reserve_change": 0.0,
+        "structural_change": 12.843893330171397,
+        "survived": true
+      },
+      "seed": 3
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 408.35084069597445,
+        "damage_applied": 0.0,
+        "final_material": 193.78710178860615,
+        "reserve_change": 0.0,
+        "structural_change": 12.612194070118363,
+        "survived": true
+      },
+      "seed": 4
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 414.2795971730434,
+        "damage_applied": 0.0,
+        "final_material": 194.96591073394535,
+        "reserve_change": 0.0,
+        "structural_change": 13.348656665393008,
+        "survived": true
+      },
+      "seed": 5
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 409.3807353703565,
+        "damage_applied": 0.0,
+        "final_material": 194.0288132863488,
+        "reserve_change": 0.0,
+        "structural_change": 12.843893330171397,
+        "survived": true
+      },
+      "seed": 6
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 408.35084069597445,
+        "damage_applied": 0.0,
+        "final_material": 193.78710178860615,
+        "reserve_change": 0.0,
+        "structural_change": 12.612194070118363,
+        "survived": true
+      },
+      "seed": 7
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 414.2795971730434,
+        "damage_applied": 0.0,
+        "final_material": 194.96591073394535,
+        "reserve_change": 0.0,
+        "structural_change": 13.348656665393008,
+        "survived": true
+      },
+      "seed": 8
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 479.27146785278944,
+        "damage_applied": 0.384,
+        "final_material": 197.44950470312867,
+        "reserve_change": 0.0,
+        "structural_change": 17.30508121485255,
+        "survived": true
+      },
+      "seed": 1
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 484.3456811289201,
+        "damage_applied": 0.384,
+        "final_material": 198.4259851080967,
+        "reserve_change": 0.0,
+        "structural_change": 17.65903287819576,
+        "survived": true
+      },
+      "seed": 2
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 479.82813266014415,
+        "damage_applied": 0.384,
+        "final_material": 197.5045896376676,
+        "reserve_change": 0.0,
+        "structural_change": 17.35843650877017,
+        "survived": true
+      },
+      "seed": 3
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 479.27146785278944,
+        "damage_applied": 0.384,
+        "final_material": 197.44950470312867,
+        "reserve_change": 0.0,
+        "structural_change": 17.30508121485255,
+        "survived": true
+      },
+      "seed": 4
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 484.3456811289201,
+        "damage_applied": 0.384,
+        "final_material": 198.4259851080967,
+        "reserve_change": 0.0,
+        "structural_change": 17.65903287819576,
+        "survived": true
+      },
+      "seed": 5
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 479.82813266014415,
+        "damage_applied": 0.384,
+        "final_material": 197.5045896376676,
+        "reserve_change": 0.0,
+        "structural_change": 17.35843650877017,
+        "survived": true
+      },
+      "seed": 6
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 479.27146785278944,
+        "damage_applied": 0.384,
+        "final_material": 197.44950470312867,
+        "reserve_change": 0.0,
+        "structural_change": 17.30508121485255,
+        "survived": true
+      },
+      "seed": 7
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 484.3456811289201,
+        "damage_applied": 0.384,
+        "final_material": 198.4259851080967,
+        "reserve_change": 0.0,
+        "structural_change": 17.65903287819576,
+        "survived": true
+      },
+      "seed": 8
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 457.4797493723618,
+        "damage_applied": 0.0,
+        "final_material": 196.59158215330098,
+        "reserve_change": 0.0,
+        "structural_change": 15.734285508299024,
+        "survived": true
+      },
+      "seed": 1
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 463.8979672149021,
+        "damage_applied": 0.0,
+        "final_material": 197.5336739741302,
+        "reserve_change": 0.0,
+        "structural_change": 16.19156117983819,
+        "survived": true
+      },
+      "seed": 2
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 458.1349111648285,
+        "damage_applied": 0.0,
+        "final_material": 196.66253695040706,
+        "reserve_change": 0.0,
+        "structural_change": 15.795517267472349,
+        "survived": true
+      },
+      "seed": 3
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 457.4797493723618,
+        "damage_applied": 0.0,
+        "final_material": 196.59158215330098,
+        "reserve_change": 0.0,
+        "structural_change": 15.734285508299024,
+        "survived": true
+      },
+      "seed": 4
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 463.8979672149021,
+        "damage_applied": 0.0,
+        "final_material": 197.5336739741302,
+        "reserve_change": 0.0,
+        "structural_change": 16.19156117983819,
+        "survived": true
+      },
+      "seed": 5
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 458.1349111648285,
+        "damage_applied": 0.0,
+        "final_material": 196.66253695040706,
+        "reserve_change": 0.0,
+        "structural_change": 15.795517267472349,
+        "survived": true
+      },
+      "seed": 6
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 457.4797493723618,
+        "damage_applied": 0.0,
+        "final_material": 196.59158215330098,
+        "reserve_change": 0.0,
+        "structural_change": 15.734285508299024,
+        "survived": true
+      },
+      "seed": 7
+    },
+    {
+      "candidate": "repair-heavy",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 463.8979672149021,
+        "damage_applied": 0.0,
+        "final_material": 197.5336739741302,
+        "reserve_change": 0.0,
+        "structural_change": 16.19156117983819,
+        "survived": true
+      },
+      "seed": 8
+    },
+    {
+      "candidate": "neutral",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 415.20081706696004,
+        "damage_applied": 0.0,
+        "final_material": 190.19875682340881,
+        "reserve_change": 0.0,
+        "structural_change": 10.617215341322847,
+        "survived": true
+      },
+      "seed": 1
+    },
+    {
+      "candidate": "neutral",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 422.185367494122,
+        "damage_applied": 0.0,
+        "final_material": 191.7699303212878,
+        "reserve_change": 0.0,
+        "structural_change": 11.687433782458612,
+        "survived": true
+      },
+      "seed": 2
+    },
+    {
+      "candidate": "neutral",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 416.22013779457797,
+        "damage_applied": 0.0,
+        "final_material": 190.4700855160327,
+        "reserve_change": 0.0,
+        "structural_change": 10.882306979855244,
+        "survived": true
+      },
+      "seed": 3
+    },
+    {
+      "candidate": "neutral",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 415.20081706696004,
+        "damage_applied": 0.0,
+        "final_material": 190.19875682340881,
+        "reserve_change": 0.0,
+        "structural_change": 10.617215341322847,
+        "survived": true
+      },
+      "seed": 4
+    },
+    {
+      "candidate": "neutral",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 422.185367494122,
+        "damage_applied": 0.0,
+        "final_material": 191.7699303212878,
+        "reserve_change": 0.0,
+        "structural_change": 11.687433782458612,
+        "survived": true
+      },
+      "seed": 5
+    },
+    {
+      "candidate": "neutral",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 416.22013779457797,
+        "damage_applied": 0.0,
+        "final_material": 190.4700855160327,
+        "reserve_change": 0.0,
+        "structural_change": 10.882306979855244,
+        "survived": true
+      },
+      "seed": 6
+    },
+    {
+      "candidate": "neutral",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 415.20081706696004,
+        "damage_applied": 0.0,
+        "final_material": 190.19875682340881,
+        "reserve_change": 0.0,
+        "structural_change": 10.617215341322847,
+        "survived": true
+      },
+      "seed": 7
+    },
+    {
+      "candidate": "neutral",
+      "environment": "H",
+      "outcome": {
+        "activated_produced": 422.185367494122,
+        "damage_applied": 0.0,
+        "final_material": 191.7699303212878,
+        "reserve_change": 0.0,
+        "structural_change": 11.687433782458612,
+        "survived": true
+      },
+      "seed": 8
+    },
+    {
+      "candidate": "neutral",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 485.24264400230004,
+        "damage_applied": 0.384,
+        "final_material": 192.93309579622513,
+        "reserve_change": 0.0,
+        "structural_change": 14.3137856236647,
+        "survived": true
+      },
+      "seed": 1
+    },
+    {
+      "candidate": "neutral",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 489.59698300768946,
+        "damage_applied": 0.384,
+        "final_material": 193.83352984023946,
+        "reserve_change": 0.0,
+        "structural_change": 14.59409576305498,
+        "survived": true
+      },
+      "seed": 2
+    },
+    {
+      "candidate": "neutral",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 485.7157175119137,
+        "damage_applied": 0.384,
+        "final_material": 192.94896305026293,
+        "reserve_change": 0.0,
+        "structural_change": 14.35733184035027,
+        "survived": true
+      },
+      "seed": 3
+    },
+    {
+      "candidate": "neutral",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 485.24264400230004,
+        "damage_applied": 0.384,
+        "final_material": 192.93309579622513,
+        "reserve_change": 0.0,
+        "structural_change": 14.3137856236647,
+        "survived": true
+      },
+      "seed": 4
+    },
+    {
+      "candidate": "neutral",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 489.59698300768946,
+        "damage_applied": 0.384,
+        "final_material": 193.83352984023946,
+        "reserve_change": 0.0,
+        "structural_change": 14.59409576305498,
+        "survived": true
+      },
+      "seed": 5
+    },
+    {
+      "candidate": "neutral",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 485.7157175119137,
+        "damage_applied": 0.384,
+        "final_material": 192.94896305026293,
+        "reserve_change": 0.0,
+        "structural_change": 14.35733184035027,
+        "survived": true
+      },
+      "seed": 6
+    },
+    {
+      "candidate": "neutral",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 485.24264400230004,
+        "damage_applied": 0.384,
+        "final_material": 192.93309579622513,
+        "reserve_change": 0.0,
+        "structural_change": 14.3137856236647,
+        "survived": true
+      },
+      "seed": 7
+    },
+    {
+      "candidate": "neutral",
+      "environment": "B",
+      "outcome": {
+        "activated_produced": 489.59698300768946,
+        "damage_applied": 0.384,
+        "final_material": 193.83352984023946,
+        "reserve_change": 0.0,
+        "structural_change": 14.59409576305498,
+        "survived": true
+      },
+      "seed": 8
+    },
+    {
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 464.29490023081087,
+        "damage_applied": 0.0,
+        "final_material": 192.19709594025906,
+        "reserve_change": 0.0,
+        "structural_change": 12.916468617564348,
+        "survived": true
+      },
+      "seed": 1
+    },
+    {
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 470.4886554257348,
+        "damage_applied": 0.0,
+        "final_material": 193.08333306989928,
+        "reserve_change": 0.0,
+        "structural_change": 13.322467390504073,
+        "survived": true
+      },
+      "seed": 2
+    },
+    {
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 464.77612340256354,
+        "damage_applied": 0.0,
+        "final_material": 192.22879484663738,
+        "reserve_change": 0.0,
+        "structural_change": 12.960515626601378,
+        "survived": true
+      },
+      "seed": 3
+    },
+    {
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 464.29490023081087,
+        "damage_applied": 0.0,
+        "final_material": 192.19709594025906,
+        "reserve_change": 0.0,
+        "structural_change": 12.916468617564348,
+        "survived": true
+      },
+      "seed": 4
+    },
+    {
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 470.4886554257348,
+        "damage_applied": 0.0,
+        "final_material": 193.08333306989928,
+        "reserve_change": 0.0,
+        "structural_change": 13.322467390504073,
+        "survived": true
+      },
+      "seed": 5
+    },
+    {
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 464.77612340256354,
+        "damage_applied": 0.0,
+        "final_material": 192.22879484663738,
+        "reserve_change": 0.0,
+        "structural_change": 12.960515626601378,
+        "survived": true
+      },
+      "seed": 6
+    },
+    {
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 464.29490023081087,
+        "damage_applied": 0.0,
+        "final_material": 192.19709594025906,
+        "reserve_change": 0.0,
+        "structural_change": 12.916468617564348,
+        "survived": true
+      },
+      "seed": 7
+    },
+    {
+      "candidate": "neutral",
+      "environment": "Neutral",
+      "outcome": {
+        "activated_produced": 470.4886554257348,
+        "damage_applied": 0.0,
+        "final_material": 193.08333306989928,
+        "reserve_change": 0.0,
+        "structural_change": 13.322467390504073,
+        "survived": true
+      },
+      "seed": 8
+    }
+  ],
+  "reaction": "ReactionParams::default; reserve.enable=false",
+  "schema": "DC-SR-004C-R1-Gate7ExecutionConfigurationV1",
+  "source": "digital-protocell/crates/evolution-harness/examples/d096_gate7_assay.rs:run_replicate"
+}

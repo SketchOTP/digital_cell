@@ -1,0 +1,11 @@
+{
+  "accepted_gate7_head": "66200538a57f0ff76182f893a93b758b591a7363",
+  "conclusion": "SR004CR1_GATE5_TO_GATE7_PHYSIOLOGY_PARITY_FAILED",
+  "d088_horizon_transfer_valid": true,
+  "directive": "DC-SR-004C-R1",
+  "gate5_to_gate7_physiology_parity": false,
+  "gate7_rerun": false,
+  "gate8_started": false,
+  "original_sr004c_immutable": true,
+  "schema": "D096Gate7ParityAuditManifestV1"
+}

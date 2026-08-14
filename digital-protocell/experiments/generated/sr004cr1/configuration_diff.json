@@ -1,0 +1,39 @@
+{
+  "differences": [
+    {
+      "authority": "Gate5 pre_fission_assay vs Gate7 DigitalCellMeshAdapter",
+      "field": "founder_radius",
+      "gate5": 8.0,
+      "gate7": 14.0
+    },
+    {
+      "field": "interior_catalyst_and_resource_state",
+      "gate5": {
+        "a": 0.5,
+        "c": 1.0,
+        "f": 0.8,
+        "n": 0.8,
+        "r": 0.5
+      },
+      "gate7": {
+        "a": 0.5,
+        "c": 0.8,
+        "f": 0.4,
+        "n": 0.4,
+        "r": 0.0
+      }
+    },
+    {
+      "field": "reserve_reaction",
+      "gate5": "ReserveParams::derived(...); enable=true",
+      "gate7": "ReactionParams::default(); reserve disabled"
+    },
+    {
+      "field": "environment_application",
+      "gate5": "apply_assay_environment(step)",
+      "gate7": "adapter accepted_step.saturating_sub(1)"
+    }
+  ],
+  "parity_confirmed": false,
+  "schema": "DC-SR-004C-R1-ConfigurationDiffV1"
+}

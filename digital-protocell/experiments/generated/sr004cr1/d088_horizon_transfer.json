@@ -1,0 +1,212 @@
+{
+  "perturbed": [
+    {
+      "accepted_steps": 2326,
+      "fissioned": true,
+      "perturbation_applied": true,
+      "perturbation_kind": "rotate",
+      "perturbation_magnitude": 0.3,
+      "seed": 1,
+      "stretch_applied": true,
+      "survived": true
+    },
+    {
+      "accepted_steps": 2276,
+      "fissioned": true,
+      "perturbation_applied": true,
+      "perturbation_kind": "vertex",
+      "perturbation_magnitude": 0.12,
+      "seed": 2,
+      "stretch_applied": true,
+      "survived": true
+    },
+    {
+      "accepted_steps": 2051,
+      "fissioned": true,
+      "perturbation_applied": true,
+      "perturbation_kind": "c",
+      "perturbation_magnitude": 0.08,
+      "seed": 3,
+      "stretch_applied": true,
+      "survived": true
+    },
+    {
+      "accepted_steps": 2226,
+      "fissioned": true,
+      "perturbation_applied": true,
+      "perturbation_kind": "a",
+      "perturbation_magnitude": 0.08,
+      "seed": 4,
+      "stretch_applied": true,
+      "survived": true
+    },
+    {
+      "accepted_steps": 1651,
+      "fissioned": true,
+      "perturbation_applied": true,
+      "perturbation_kind": "env",
+      "perturbation_magnitude": 0.1,
+      "seed": 5,
+      "stretch_applied": true,
+      "survived": true
+    },
+    {
+      "accepted_steps": 2051,
+      "fissioned": true,
+      "perturbation_applied": true,
+      "perturbation_kind": "l",
+      "perturbation_magnitude": 0.1,
+      "seed": 6,
+      "stretch_applied": true,
+      "survived": true
+    },
+    {
+      "accepted_steps": 2126,
+      "fissioned": true,
+      "perturbation_applied": true,
+      "perturbation_kind": "rotate",
+      "perturbation_magnitude": -0.5,
+      "seed": 7,
+      "stretch_applied": true,
+      "survived": true
+    },
+    {
+      "accepted_steps": 1951,
+      "fissioned": true,
+      "perturbation_applied": true,
+      "perturbation_kind": "vertex",
+      "perturbation_magnitude": -0.1,
+      "seed": 8,
+      "stretch_applied": true,
+      "survived": true
+    },
+    {
+      "accepted_steps": 2051,
+      "fissioned": true,
+      "perturbation_applied": true,
+      "perturbation_kind": "c",
+      "perturbation_magnitude": -0.05,
+      "seed": 9,
+      "stretch_applied": true,
+      "survived": true
+    },
+    {
+      "accepted_steps": 2501,
+      "fissioned": true,
+      "perturbation_applied": true,
+      "perturbation_kind": "env",
+      "perturbation_magnitude": -0.08,
+      "seed": 10,
+      "stretch_applied": true,
+      "survived": true
+    }
+  ],
+  "perturbed_fission_count": 10,
+  "replacement_horizon_used": false,
+  "same_4000_step_horizon": true,
+  "schema": "DC-SR-004C-R1-D088HorizonTransferV1",
+  "transfer_valid": true,
+  "unperturbed": [
+    {
+      "accepted_steps": 3751,
+      "fissioned": true,
+      "perturbation_applied": false,
+      "perturbation_kind": "rotate",
+      "perturbation_magnitude": 0.3,
+      "seed": 1,
+      "stretch_applied": false,
+      "survived": true
+    },
+    {
+      "accepted_steps": 3476,
+      "fissioned": true,
+      "perturbation_applied": false,
+      "perturbation_kind": "vertex",
+      "perturbation_magnitude": 0.12,
+      "seed": 2,
+      "stretch_applied": false,
+      "survived": true
+    },
+    {
+      "accepted_steps": 3876,
+      "fissioned": true,
+      "perturbation_applied": false,
+      "perturbation_kind": "c",
+      "perturbation_magnitude": 0.08,
+      "seed": 3,
+      "stretch_applied": false,
+      "survived": true
+    },
+    {
+      "accepted_steps": 3751,
+      "fissioned": true,
+      "perturbation_applied": false,
+      "perturbation_kind": "a",
+      "perturbation_magnitude": 0.08,
+      "seed": 4,
+      "stretch_applied": false,
+      "survived": true
+    },
+    {
+      "accepted_steps": 3476,
+      "fissioned": true,
+      "perturbation_applied": false,
+      "perturbation_kind": "env",
+      "perturbation_magnitude": 0.1,
+      "seed": 5,
+      "stretch_applied": false,
+      "survived": true
+    },
+    {
+      "accepted_steps": 3876,
+      "fissioned": true,
+      "perturbation_applied": false,
+      "perturbation_kind": "l",
+      "perturbation_magnitude": 0.1,
+      "seed": 6,
+      "stretch_applied": false,
+      "survived": true
+    },
+    {
+      "accepted_steps": 3751,
+      "fissioned": true,
+      "perturbation_applied": false,
+      "perturbation_kind": "rotate",
+      "perturbation_magnitude": -0.5,
+      "seed": 7,
+      "stretch_applied": false,
+      "survived": true
+    },
+    {
+      "accepted_steps": 3476,
+      "fissioned": true,
+      "perturbation_applied": false,
+      "perturbation_kind": "vertex",
+      "perturbation_magnitude": -0.1,
+      "seed": 8,
+      "stretch_applied": false,
+      "survived": true
+    },
+    {
+      "accepted_steps": 3876,
+      "fissioned": true,
+      "perturbation_applied": false,
+      "perturbation_kind": "c",
+      "perturbation_magnitude": -0.05,
+      "seed": 9,
+      "stretch_applied": false,
+      "survived": true
+    },
+    {
+      "accepted_steps": 3751,
+      "fissioned": true,
+      "perturbation_applied": false,
+      "perturbation_kind": "env",
+      "perturbation_magnitude": -0.08,
+      "seed": 10,
+      "stretch_applied": false,
+      "survived": true
+    }
+  ],
+  "unperturbed_fission_count": 10
+}

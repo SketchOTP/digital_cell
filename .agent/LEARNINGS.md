@@ -190,3 +190,23 @@ Append-only repo-specific lessons. Format:
 - 2026-08-14 | area:harness-repair | lesson:accepted simulated time must be supplied by the adapter dt and generation metrics must store intervals; protocol structs alone do not execute ecology or qualify selection | evidence:DC-SR-003R repaired harness tests
 - 2026-08-14 | area:provenance | lesson:historical and D-094 translations must carry source-artifact maps plus unresolved values and remain execution-disabled until every concrete value is authoritative | evidence:docs/strategy/evolution_harness/historical_protocol_mapping.md;d094_requalified_protocol.json
 - 2026-08-14 | area:harness-acceptance | lesson:execution authorization, event chronology, generation duration, mechanism evidence, selective pressure, and population initialization must be typed contracts rather than inferred from generic activity or strings | evidence:DC-SR-003R2 repair tests and docs/strategy/evolution_harness/architecture.md
+
+## L-20260814-authority-governance-adoption
+
+- Date: 2026-08-14
+- Learning ID: L-20260814-authority-governance-adoption
+- Fact or lesson: The current Authority contract distinguishes adopted project state from the clean template and validates the active `.agent` interface, Codex-first adapters, and append-only records.
+- Evidence location: `.agents/skills/authority-governance/SKILL.md`; `scripts/validate_governance.py`
+- Confidence: VERIFIED
+- Scope: repository governance
+- Supersedes learning: none
+
+## L-20260814-gate7-parity-horizon-audit
+
+- Date: 2026-08-14
+- Learning ID: L-20260814-gate7-parity-horizon-audit
+- Fact or lesson: A real Gate 7 mesh execution can remain scientifically unqualified when its adapter path does not preserve the accepted Gate 5 founder geometry, initial chemistry, or reserve-enabled reaction configuration; a frozen horizon must be audited separately from physiology parity.
+- Evidence location: `digital-protocell/experiments/generated/sr004cr1/`; `digital-protocell/docs/strategy/d096_gate7/parity_audit/`
+- Confidence: VERIFIED
+- Scope: DC-SR-004C-R1 shadow audit
+- Supersedes learning: none
