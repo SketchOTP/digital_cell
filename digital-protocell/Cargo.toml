@@ -5,6 +5,7 @@ members = [
     "crates/experiment-runner",
     "crates/godot-bridge",
     "crates/phase1-certifier",
+    "crates/evolution-harness",
 ]
 
 [workspace.package]
