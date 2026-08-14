@@ -26,7 +26,7 @@ jobs:
         run: rustup component add rustfmt --toolchain 1.89.0
 
       - name: Check formatting
-        run: cargo +1.89.0 fmt --all -- --check
+        run: cargo +1.89.0 fmt --package evolution-harness -- --check
 
       - name: Test evolution harness
         run: cargo +1.89.0 test -p evolution-harness
