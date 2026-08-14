@@ -56,6 +56,7 @@ pub struct EvolutionHarness<A: OrganismAdapter> {
     emitted_schedule_events: BTreeSet<String>,
     current_environment_id: String,
     active_environment: EnvironmentProtocolV1,
+    campaign_seed: u64,
     mutation_stream_counter: u64,
 }
 
@@ -86,7 +87,8 @@ impl ReplicateRunner {
             let adapter = adapter_factory(replicate as u32, seed);
             let founder = founder_factory(replicate as u32, seed);
             let mut harness =
-                EvolutionHarness::new(adapter, protocol.clone())?.with_replicate(replicate as u32);
+                EvolutionHarness::new(adapter, protocol.clone())?
+                    .with_replicate_seed(replicate as u32, seed);
             harness.initialize_founder(founder)?;
             harness.run_to_horizon()?;
             results.push(harness.replicate_result(seed));
@@ -122,6 +124,10 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
             .as_ref()
             .map(|contract| contract.validate().is_ok())
             .unwrap_or(false);
+        let default_campaign_seed = protocol
+            .placement_protocol
+            .random_seed
+            .unwrap_or(protocol.placement_protocol.founder_seed);
         Ok(Self {
             adapter,
             current_environment_id: protocol.environment_protocol.environment_id.clone(),
@@ -145,12 +151,19 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
             environment_supported: true,
             emitted_schedule_events: BTreeSet::new(),
             active_environment,
+            campaign_seed: default_campaign_seed,
             mutation_stream_counter: 0,
         })
     }
 
     pub fn with_replicate(mut self, replicate: u32) -> Self {
         self.replicate = replicate;
+        self
+    }
+
+    pub fn with_replicate_seed(mut self, replicate: u32, seed: u64) -> Self {
+        self.replicate = replicate;
+        self.campaign_seed = seed;
         self
     }
 
@@ -585,8 +598,10 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
                 for (offspring_index, mut child) in offspring.into_iter().enumerate() {
                     let qualified_copy_ordinal = self.mutation_stream_counter;
                     self.mutation_stream_counter = self.mutation_stream_counter.wrapping_add(1);
+                    let mutation_stream_seed =
+                        d096_mutation_stream_seed(self.campaign_seed, qualified_copy_ordinal);
                     let child_id = self.population.next_organism_id;
-                    let birth = EventV1::birth(
+                    let mut birth = EventV1::birth(
                         0,
                         self.accepted_simulated_time,
                         self.accepted_step,
@@ -596,6 +611,18 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
                         lineage_id,
                         &self.current_environment_id,
                         &self.protocol.protocol_id,
+                    );
+                    birth.metadata.insert(
+                        "qualified_physical_copy".into(),
+                        "true".into(),
+                    );
+                    birth.metadata.insert(
+                        "qualified_copy_ordinal".into(),
+                        qualified_copy_ordinal.to_string(),
+                    );
+                    birth.metadata.insert(
+                        "mutation_stream_seed".into(),
+                        mutation_stream_seed.to_string(),
                     );
                     let birth_event_id = self
                         .ledger
@@ -644,12 +671,7 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
                             // and a unique accepted-copy ordinal. It is not
                             // derived from organism, lineage, clade, fitness,
                             // or survival identity.
-                            seed: self
-                                .protocol
-                                .placement_protocol
-                                .random_seed
-                                .unwrap_or(self.protocol.placement_protocol.founder_seed)
-                                .wrapping_add(qualified_copy_ordinal),
+                            seed: mutation_stream_seed,
                             offspring_index: offspring_index as u32,
                             qualified_physical_copy: true,
                             qualified_copy_ordinal,
@@ -667,22 +689,24 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
                         true
                     };
                     if let Some(metadata) = mutation {
-                        let mut event = EventV1::base(
-                            0,
-                            self.accepted_simulated_time,
-                            self.accepted_step,
-                            self.replicate,
-                            EventType::Mutation,
-                            &self.current_environment_id,
-                            &self.protocol.protocol_id,
-                        );
-                        event.organism_id = Some(child_id);
-                        event.parent_id = Some(parent_id);
-                        event.lineage_id = Some(lineage_id);
-                        event.metadata = metadata;
-                        self.ledger
-                            .append(event)
-                            .map_err(|e| HarnessError::Events(e.to_string()))?;
+                        if mutation_metadata_reports_change(&metadata) {
+                            let mut event = EventV1::base(
+                                0,
+                                self.accepted_simulated_time,
+                                self.accepted_step,
+                                self.replicate,
+                                EventType::Mutation,
+                                &self.current_environment_id,
+                                &self.protocol.protocol_id,
+                            );
+                            event.organism_id = Some(child_id);
+                            event.parent_id = Some(parent_id);
+                            event.lineage_id = Some(lineage_id);
+                            event.metadata = metadata;
+                            self.ledger
+                                .append(event)
+                                .map_err(|e| HarnessError::Events(e.to_string()))?;
+                        }
                     }
                     let heredity_evidence = self.adapter.heredity_evidence(Some(parent), &child);
                     let phenotype_evidence = self.adapter.phenotype_evidence(environment, &child);
@@ -836,6 +860,28 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
     }
 }
 
+fn d096_mutation_stream_seed(campaign_seed: u64, qualified_copy_ordinal: u64) -> u64 {
+    campaign_seed.wrapping_add(qualified_copy_ordinal)
+}
+
+fn mutation_metadata_reports_change(metadata: &crate::Metadata) -> bool {
+    if metadata.get("mutation_occurred").map(String::as_str) != Some("true") {
+        return false;
+    }
+    match (metadata.get("pre_genotype"), metadata.get("post_genotype")) {
+        (Some(pre), Some(post)) => {
+            let Ok(pre) = serde_json::from_str::<serde_json::Value>(pre) else {
+                return false;
+            };
+            let Ok(post) = serde_json::from_str::<serde_json::Value>(post) else {
+                return false;
+            };
+            pre != post
+        }
+        _ => true,
+    }
+}
+
 fn valid_d096_mutation_metadata(metadata: &crate::Metadata) -> bool {
     metadata.get("operator").map(String::as_str)
         == Some("D096AllocationMutationOperator")
@@ -848,4 +894,39 @@ fn valid_d096_mutation_metadata(metadata: &crate::Metadata) -> bool {
             .is_some_and(|value| value.parse::<u64>().is_ok())
         && metadata.get("pre_genotype").is_some()
         && metadata.get("post_genotype").is_some()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::d096_mutation_stream_seed;
+    use chemistry_core::d096_allocation::{
+        mutate_allocation_genotype, AllocationGenotype, AllocationParams,
+    };
+
+    #[test]
+    fn d096_mutation_stream_repeats_within_replicate_and_diverges_across_seeds() {
+        let params = AllocationParams::default();
+        let trace = |campaign_seed| {
+            (0..512_u64)
+                .map(|qualified_copy_ordinal| {
+                    let record = mutate_allocation_genotype(
+                        AllocationGenotype::neutral(),
+                        &params,
+                        d096_mutation_stream_seed(campaign_seed, qualified_copy_ordinal),
+                    )
+                    .expect("frozen D-096 stream should remain valid");
+                    (
+                        record.mutation_occurred,
+                        record.source,
+                        record.target,
+                        record.applied_delta.to_bits(),
+                        record.post_genotype,
+                    )
+                })
+                .collect::<Vec<_>>()
+        };
+
+        assert_eq!(trace(17), trace(17));
+        assert_ne!(trace(17), trace(18));
+    }
 }

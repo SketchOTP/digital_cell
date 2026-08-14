@@ -17,6 +17,8 @@ use chemistry_core::mesh_reactions::{
 };
 use chemistry_core::mesh_transport::TransportParams;
 
+const FROZEN_D096_MUTATION_PROBABILITY: f64 = 0.01;
+
 /// Narrow adapter over the existing material mesh. It uses the certified
 /// transport/reaction/growth/mechanics/fission path and only applies ecology
 /// through existing public mesh resources and damage operations.
@@ -333,6 +335,13 @@ impl OrganismAdapter for DigitalCellMeshAdapter {
         let Some(params) = self.allocation_params else {
             return Err(AdapterError::Unavailable);
         };
+        if (params.mutation_probability - FROZEN_D096_MUTATION_PROBABILITY).abs() > 1e-12
+            || (protocol.mutation_rate - FROZEN_D096_MUTATION_PROBABILITY).abs() > 1e-12
+        {
+            return Err(AdapterError::Advance(
+                "D-096 mutation rate must remain the frozen p=0.01".into(),
+            ));
+        }
         let (Some(parent_state), Some(offspring_state)) =
             (parent.finite_allocation, offspring.finite_allocation)
         else {
@@ -482,7 +491,7 @@ mod tests {
         let protocol = MutationProtocolV1 {
             schema: "MutationProtocolV1".into(),
             mutation_protocol_id: "d096_allocation_mutation_v1".into(),
-            mutation_rate: 0.0,
+            mutation_rate: FROZEN_D096_MUTATION_PROBABILITY,
             magnitude_distribution: "abs_normal".into(),
             bounds: "simplex_and_allocation_bounds".into(),
             provenance: "DC-SR-004B;D-096_GATE6;test".into(),
@@ -506,14 +515,20 @@ mod tests {
             )
             .expect("qualified live daughter should be accepted");
         let metadata = metadata.expect("D-096 mutation provenance should be recorded");
-        assert_eq!(
-            metadata.get("mutation_occurred").map(String::as_str),
-            Some("false")
-        );
-        let expected_hash = AllocationGenotype::neutral().candidate_hash(&params);
-        assert_eq!(
-            metadata.get("candidate_hash").map(String::as_str),
-            Some(expected_hash.as_str())
-        );
+        assert_eq!(metadata.get("qualified_copy_ordinal").map(String::as_str), Some("0"));
+        assert!(metadata.get("candidate_hash").is_some());
+
+        let mut invalid_daughter = parent.clone();
+        let mut invalid_protocol = protocol.clone();
+        invalid_protocol.mutation_rate = 0.20;
+        assert!(matches!(
+            adapter.apply_heredity_and_mutation(
+                &parent,
+                &mut invalid_daughter,
+                &invalid_protocol,
+                &mutation_context,
+            ),
+            Err(AdapterError::Advance(_))
+        ));
     }
 }
