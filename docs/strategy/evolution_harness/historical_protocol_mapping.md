@@ -1,12 +1,12 @@
 # Historical protocol mapping
 
-`historical_protocols()` represents four prior designs as declarative data:
+`historical_protocols()` represents four prior designs as sealed-evidence fixtures:
 
 | Historical design | Protocol/environment representation | Execution |
 |---|---|---|
-| D-090 | `d090_style_ecology` / `d090_spatial_shared_dish_v1` | representation only |
-| D-091 | `d091_style_seasonal_reserve` / `d091_seasonal_lean_v1` | representation only |
-| D-092 | `d092_style_selection` / `d092_template_selection_v1` | representation only |
-| D-093 | `d093_style_generation_counting` / `d093_network_generation_v1` | representation only |
+| D-090 | `d090_historical_mapping` / sealed D-090 analysis and dish artifacts | non-executable; runtime sweep values unresolved |
+| D-091 | `d091_historical_mapping` / sealed D-091 analysis and seasonal artifacts | non-executable; derived sweep values unresolved |
+| D-092 | `d092_historical_mapping` / sealed D-092 analysis and template artifacts | non-executable; campaign values unresolved |
+| D-093 | `d093_historical_mapping` / sealed D-093 analysis and network artifacts | non-executable; selection campaign values unresolved |
 
-No historical manifest is rewritten and no expensive campaign is run. The zero-generation rule is a synthetic harness regression, not a rerun of D-093.
+Each fixture records exact repository source paths in `ProtocolProvenanceV1`; unresolved runtime-dependent values are listed and `execution_authorized` is false. No historical manifest is rewritten and no expensive campaign is run. The zero-generation rule is a synthetic harness regression, not a rerun of D-093.

@@ -13,15 +13,15 @@ pub enum PopulationState {
     ExtinctLineage,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct PopulationRecord {
     pub organism_id: OrganismId,
     pub parent_id: Option<OrganismId>,
     pub lineage_id: LineageId,
     pub birth_event_id: EventId,
-    pub birth_time: u64,
+    pub birth_time: f64,
     pub birth_generation: u32,
-    pub death_time: Option<u64>,
+    pub death_time: Option<f64>,
     pub state: PopulationState,
 }
 
@@ -35,7 +35,7 @@ pub enum PopulationError {
     NotLiving(OrganismId),
 }
 
-#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct PopulationManager {
     pub records: BTreeMap<OrganismId, PopulationRecord>,
     pub next_organism_id: OrganismId,
@@ -47,7 +47,7 @@ impl PopulationManager {
         organism_id: OrganismId,
         lineage_id: LineageId,
         birth_event_id: EventId,
-        birth_time: u64,
+        birth_time: f64,
     ) -> Result<(), PopulationError> {
         self.insert(PopulationRecord {
             organism_id,
@@ -67,7 +67,7 @@ impl PopulationManager {
         parent_id: OrganismId,
         lineage_id: LineageId,
         birth_event_id: EventId,
-        birth_time: u64,
+        birth_time: f64,
         birth_generation: u32,
     ) -> Result<(), PopulationError> {
         self.insert(PopulationRecord {
@@ -100,7 +100,7 @@ impl PopulationManager {
         Ok(())
     }
 
-    pub fn mark_dead(&mut self, organism_id: OrganismId, time: u64) -> Result<(), PopulationError> {
+    pub fn mark_dead(&mut self, organism_id: OrganismId, time: f64) -> Result<(), PopulationError> {
         let record = self.records.get_mut(&organism_id).ok_or(PopulationError::Missing(organism_id))?;
         if matches!(record.state, PopulationState::Dead | PopulationState::Removed) {
             return Err(PopulationError::NotLiving(organism_id));

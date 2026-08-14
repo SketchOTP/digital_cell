@@ -4,4 +4,4 @@ The crate defines `ExperimentProtocolV1`, `EnvironmentProtocolV1`, `MutationProt
 
 `ExperimentProtocolV1` declares organism and heredity schemas, mutation/environment/placement protocols, replicate seeds, accepted horizon, generation requirements, termination rules, and endpoints. Protocol validation rejects empty identities, zero replicates, seed-count mismatch, invalid mutation rates, and impossible generation bounds.
 
-The schema is intentionally generic: prior D-090–D-093 designs are represented as data returned by `historical_protocols()`, without adding runner-specific execution branches.
+The schema is intentionally generic: prior D-090–D-093 designs are represented as evidence-grounded, non-executable fixtures returned by `historical_protocols()`, without adding runner-specific execution branches. `ProtocolProvenanceV1` records source artifacts, derived values, unresolved values, and execution authorization. `validate_for_execution` rejects unresolved or unauthorized translations.

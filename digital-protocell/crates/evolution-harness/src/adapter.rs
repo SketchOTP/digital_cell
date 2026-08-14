@@ -1,7 +1,7 @@
-use crate::{EnvironmentProtocolV1, FounderIdentityV1, Metadata};
+use crate::{EnvironmentCapability, EnvironmentProtocolV1, FounderIdentityV1, Metadata, MutationProtocolV1};
 use thiserror::Error;
 
-#[derive(Debug, Error)]
+#[derive(Debug, Error, PartialEq)]
 pub enum AdapterError {
     #[error("founder could not be initialized: {0}")]
     Founder(String),
@@ -9,42 +9,78 @@ pub enum AdapterError {
     Advance(String),
     #[error("organism observation failed: {0}")]
     Observation(String),
-    #[error("adapter unavailable for the requested historical system")]
+    #[error("HARNESS_ADAPTER_UNAVAILABLE: requested existing heredity or ecology mechanism is not adapted")]
     Unavailable,
 }
 
 #[derive(Debug, Clone)]
 pub enum AdvanceOutcome<O> {
-    Continuing,
-    Fission { offspring: Vec<O>, metadata: Metadata },
-    Died { reason: String },
+    Continuing { accepted_dt: f64, metadata: Metadata },
+    Fission { offspring: Vec<O>, accepted_dt: f64, metadata: Metadata },
+    Died { reason: String, accepted_dt: f64, metadata: Metadata },
 }
 
-/// The only causal surface exposed to the harness.
+impl<O> AdvanceOutcome<O> {
+    pub fn accepted_dt(&self) -> f64 {
+        match self {
+            Self::Continuing { accepted_dt, .. }
+            | Self::Fission { accepted_dt, .. }
+            | Self::Died { accepted_dt, .. } => *accepted_dt,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy)]
+pub struct EnvironmentContext {
+    pub living_population: usize,
+    pub organism_index: usize,
+    pub accepted_dt: f64,
+}
+
+#[derive(Debug, Clone)]
+pub struct AdapterEnvironmentEvent {
+    pub event_type: crate::EventType,
+    pub metadata: Metadata,
+}
+
+/// The causal surface exposed to the harness. There is no force-reproduce,
+/// set-fitness, heal, kill, growth, or survival-probability command.
 pub trait OrganismAdapter {
     type Organism;
 
-    fn initialize_founder(&self, founder: &FounderIdentityV1) -> Result<Self::Organism, AdapterError>;
-    fn advance(
-        &self,
+    fn initialize_founder(&mut self, founder: &FounderIdentityV1) -> Result<Self::Organism, AdapterError>;
+    fn accepted_dt(&self) -> f64;
+    fn environment_capabilities(&self) -> Vec<EnvironmentCapability>;
+    fn apply_declared_environment(
+        &mut self,
         organism: &mut Self::Organism,
         environment: &EnvironmentProtocolV1,
         accepted_step: u64,
-        accepted_simulated_time: u64,
+        accepted_simulated_time: f64,
+        context: EnvironmentContext,
+    ) -> Result<Vec<AdapterEnvironmentEvent>, AdapterError>;
+    fn advance(
+        &mut self,
+        organism: &mut Self::Organism,
+        environment: &EnvironmentProtocolV1,
+        accepted_step: u64,
+        accepted_simulated_time: f64,
     ) -> Result<AdvanceOutcome<Self::Organism>, AdapterError>;
     fn is_alive(&self, organism: &Self::Organism) -> bool;
     fn phenotype(&self, organism: &Self::Organism) -> String;
     fn hereditary_state(&self, organism: &Self::Organism) -> String;
-    fn apply_declared_environment(
-        &self,
-        _organism: &mut Self::Organism,
-        _environment: &EnvironmentProtocolV1,
-        _accepted_step: u64,
-    ) -> Result<Option<String>, AdapterError> {
-        Ok(None)
-    }
-    fn resource_state(&self, _organism: &Self::Organism) -> String {
-        "adapter_resource_state_unreported".into()
+    fn apply_heredity_and_mutation(
+        &mut self,
+        _parent: &Self::Organism,
+        _offspring: &mut Self::Organism,
+        protocol: &MutationProtocolV1,
+        _context: &MutationContext,
+    ) -> Result<Option<Metadata>, AdapterError> {
+        if protocol.mutation_rate == 0.0 && protocol.mutation_protocol_id == "mutation_none" {
+            Ok(None)
+        } else {
+            Err(AdapterError::Unavailable)
+        }
     }
 }
 
@@ -53,7 +89,7 @@ pub trait OrganismAdapter {
 #[derive(Debug, Clone)]
 pub struct MutationContext {
     pub accepted_step: u64,
-    pub accepted_simulated_time: u64,
+    pub accepted_simulated_time: f64,
     pub seed: u64,
     pub parent_hereditary_state: String,
 }
@@ -68,9 +104,5 @@ pub trait HeredityAdapter {
 pub trait MutationOperator {
     type HereditaryState;
 
-    fn mutate(
-        &self,
-        state: &Self::HereditaryState,
-        context: &MutationContext,
-    ) -> Result<Self::HereditaryState, AdapterError>;
+    fn mutate(&self, state: &Self::HereditaryState, context: &MutationContext) -> Result<Self::HereditaryState, AdapterError>;
 }

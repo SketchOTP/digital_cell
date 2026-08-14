@@ -8,8 +8,8 @@ pub struct OrganismAnalysisRow {
     pub parent_id: Option<u64>,
     pub lineage_id: u64,
     pub generation: u32,
-    pub birth_time: u64,
-    pub death_time: Option<u64>,
+    pub birth_time: f64,
+    pub death_time: Option<f64>,
     pub final_phenotype: String,
     pub final_hereditary_state: String,
 }
@@ -22,7 +22,7 @@ pub struct LineageAnalysisRow {
     pub births: u64,
     pub deaths: u64,
     pub descendant_count: u64,
-    pub extinction_time: Option<u64>,
+    pub extinction_time: Option<f64>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -51,7 +51,10 @@ impl AnalysisExporter {
             let members = tracker.lineage_members(record.lineage_id);
             let max_generation = members.iter().filter_map(|id| tracker.generation(*id)).max().unwrap_or(0);
             let deaths = members.iter().filter_map(|id| tracker.ancestry.get(id)).filter(|record| record.death_time.is_some()).count() as u64;
-            let extinction_time = members.iter().filter_map(|id| tracker.ancestry.get(id).and_then(|record| record.death_time)).max();
+            let extinction_time = members
+                .iter()
+                .filter_map(|id| tracker.ancestry.get(id).and_then(|record| record.death_time))
+                .reduce(f64::max);
             rows.push(LineageAnalysisRow {
                 lineage_id: record.lineage_id,
                 founder: record.organism_id,

@@ -779,3 +779,6 @@ Concise navigation map for agents. Add entries as application code lands.
 - `digital-protocell/crates/evolution-harness/` — isolated protocol, event, population, lineage, generation, adapter, observer, and export crate
 - `docs/strategy/evolution_harness/` — architecture, schemas, semantics, failure taxonomy, controls, historical mapping, and D-094 translation plan
 - `docs/strategy/evolution_harness/d094_requalified_protocol.json` — non-executable D-094 protocol translation
+- `digital-protocell/crates/evolution-harness/src/harness.rs` — accepted-dt execution loop, scheduled ecology events, replicate runner, qualification evidence
+- `digital-protocell/crates/evolution-harness/src/selection.rs` — treatment/neutral campaign statistics and final validity gate
+- `digital-protocell/crates/evolution-harness/src/historical.rs` — sealed source-artifact mappings with unresolved execution values

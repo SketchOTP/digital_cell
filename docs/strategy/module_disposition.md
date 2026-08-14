@@ -45,3 +45,7 @@ The following is an additive strategy decision; the pre-audit rows above remain 
 | `chemistry-core/` | KEEP | KEEP | Digital Cell biology remains authoritative; only a narrow adapter calls existing APIs. |
 | D-090–D-093 historical designs | BENCHMARK | BENCHMARK / REPRESENTABLE | Declarative fixtures prove protocol representation without rerunning science or rewriting artifacts. |
 | D-094/D-094R | Frozen | FROZEN / TRANSLATED_ONLY | `d094_requalified_protocol.json` records a non-executable translation; SR-004 alone may unfreeze. |
+
+## DC-SR-003R verification repair update
+
+The harness is now an executable campaign boundary rather than protocol-only scaffolding. Accepted simulated time comes from adapter `dt`; supported mesh ecology executes through existing resource/damage APIs; shared and spatial-local modes fail explicitly when the single-organism adapter cannot provide a population/dish capability. Treatment and neutral campaigns share `ReplicateRunner`, and final selection classifications require qualified paired replicates. Historical/D-094 fixtures record source artifacts and unresolved values; unresolved translations remain execution-disabled.

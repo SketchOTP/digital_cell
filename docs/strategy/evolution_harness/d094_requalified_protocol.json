@@ -1,63 +1,38 @@
 {
   "schema": "ExperimentProtocolV1",
   "experiment_id": "d094_requalified_translation",
-  "protocol_id": "d094_requalified_translation_protocol",
-  "organism_schema": "digital_cell_material_mesh_v1",
-  "heredity_schema": "d094_autocatalytic_set_heredity_existing",
-  "mutation_protocol": {
-    "schema": "MutationProtocolV1",
-    "mutation_protocol_id": "d094_existing_mutation_contract",
-    "mutation_rate": 0.0,
-    "magnitude_distribution": "existing_d094_contract",
-    "bounds": "declared_by_heredity_adapter",
-    "provenance": "SR003_translation_only"
-  },
-  "environment_protocol": {
-    "schema": "EnvironmentProtocolV1",
-    "environment_id": "d094_autocatalytic_ecology_v1",
-    "resource_mode": "Pulsed",
-    "resource_field": "existing_digital_cell_resources",
-    "resource_ecology": {
-      "schema": "ResourceEcologyV1",
-      "continuous_supply": false,
-      "shared_resource_competition": true,
-      "spatial_local_availability": true,
-      "pulse_schedule": [0, 1000, 2000],
-      "scarcity_schedule": [],
-      "damage_mode": "Abrasion"
-    },
-    "pulse_schedule": [0, 1000, 2000],
-    "scarcity_schedule": [],
-    "rich_duration": 0,
-    "lean_duration": 0,
-    "damage_mode": "Abrasion",
-    "damage_interval": 350,
-    "spatial_constraints": "existing_d094_spatial_contract",
-    "transitions": [],
-    "duration": 250000,
-    "termination_rules": ["accepted_horizon", "global_extinction", "minimum_population_viability"]
-  },
-  "placement_protocol": {
-    "schema": "PlacementProtocolV1",
-    "initial_coordinates": [[0.0, 0.0]],
-    "spacing": 0.0,
-    "founder_seed": 0,
-    "random_seed": 0,
-    "dish_geometry": "existing_d094_contract",
-    "resource_geometry": "existing_d094_contract"
-  },
-  "replicates": 24,
-  "random_seeds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
-  "maximum_accepted_horizon": 250000,
-  "maximum_generation": 8,
-  "minimum_generation_requirement": 2,
-  "termination_rules": ["accepted_horizon", "global_extinction", "minimum_population_viability"],
-  "primary_endpoints": ["completed_generations", "descendant_count", "treatment_relative_persistence"],
-  "secondary_endpoints": ["hereditary_state_frequency", "resource_consumption", "lineage_survival"],
   "execution_authorized": false,
-  "missing_information": [
-    "final frozen founder/preconditioning artifact reference",
-    "exact treatment-neutral field-difference declaration",
-    "explicit minimum viable population threshold"
-  ]
+  "execution_status": "UNRESOLVED_TRANSLATION_ONLY",
+  "authoritative_source_artifacts": [
+    "digital-protocell/docs/d094_distributed_autocatalytic_set.md",
+    "digital-protocell/docs/d094r2_gate6_execution.md",
+    "digital-protocell/docs/d094r2_selection_analysis.md",
+    "digital-protocell/crates/chemistry-core/src/d094_analysis.rs",
+    "digital-protocell/crates/chemistry-core/src/d094_selection.rs"
+  ],
+  "authoritative": {
+    "organism_schema": "digital_cell_material_mesh_v1",
+    "heredity_schema": "d094_autocatalytic_set_heredity_existing",
+    "historical_status": "D-094/D-094R remains frozen; D-094R2 evidence is not silently substituted for D-094"
+  },
+  "unresolved": [
+    "founder and preconditioning artifact/config reference",
+    "exact treatment-neutral field difference",
+    "replicate count and seed campaign for this translation",
+    "pulse interval and pulse magnitude",
+    "damage interval and damage magnitude",
+    "minimum viable population threshold",
+    "accepted horizon and generation gate"
+  ],
+  "excluded_from_execution": {
+    "pulse_schedule": null,
+    "damage_interval": null,
+    "damage_fraction": null,
+    "replicates": null,
+    "random_seeds": null,
+    "maximum_accepted_horizon": null,
+    "minimum_generation_requirement": null,
+    "minimum_population_viability": null
+  },
+  "provenance_rule": "Every future concrete value must be traced to sealed D-094/D-094R evidence or transparently derived from it; otherwise it remains UNRESOLVED and execution is forbidden."
 }
