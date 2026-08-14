@@ -8,25 +8,548 @@
     "external_storage": "/mnt/storage1tb/cache/prior-art/digital_cell"
   },
   "evidence_policy": {
-    "source_pinning": ["commit", "tree", "license_file_sha256", "readme_sha256"],
+    "source_pinning": [
+      "commit",
+      "tree",
+      "license_file_sha256",
+      "readme_sha256"
+    ],
     "unknown_license": "NO_CODE_REUSE_UNTIL_RESOLVED",
     "legal_review": "not provided; engineering classification only"
   },
   "projects": [
-    {"name":"Stringmol","repository":"https://github.com/franticspider/stringmol","ref":"master","commit":"52b5625c1d654971a57c86b24360334fb4f34bba","tree":"2fb675d6e14e7bc24b0dbf3e7e1d1acca89698ac","license":"GPL-2.0","license_path":"LICENSE","license_file_sha256":"a45d0bb572ed792ed34627a72621834b3ba92aab6e2cc4e04301dee7a728d753","readme_sha256":"b1a6093566937ab61a167d4e7ea6ccb426404915b2d4e84a8614e54f20eefe64","build":"make -C src -j2","build_result":"PASS","overlap":"executable/catalytic heredity and local matching","reusable_concepts":["copy-error model","reaction/event logs","lineage and species analysis"],"method_lessons":["catalytic executable heredity","alignment and local interaction"],"scientific_conflicts":["no material mesh or conserved boundary","cleavage is string-level"],"integration_risk":"HIGH","disposition":["BENCHMARK","ADAPT","REJECT_INTEGRATION"]},
-    {"name":"Evo2Sim","repository":"https://github.com/charlesrocabert/Evo2Sim","ref":"master","commit":"2a5b146da280ae54c8f073a6c52f979307cfa134","tree":"421f964eaf0f0e195859412ef3c8a86d8fa7b40c","license":"GPL-3.0","license_path":"LICENSE","license_file_sha256":"8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903","readme_sha256":"cac9ba04b729e1c2e4a7f279981a4e856162cde50150b2b59c049bf434b24bd3","build":"cmake configure","build_result":"STATIC_AUDIT_ONLY_TOOL_UNAVAILABLE","overlap":"ecology, resource regimes, local competition, lineage","reusable_concepts":["environment protocol object","diffusion/degradation","trophic statistics"],"method_lessons":["generation accounting","extinction versus selection","replicate and schedule control"],"scientific_conflicts":["genome/cell model and assigned score selection"],"integration_risk":"HIGH","disposition":["BENCHMARK","ADAPT","REJECT_INTEGRATION"]},
-    {"name":"MABE2","repository":"https://github.com/mercere99/MABE2","ref":"master","commit":"1fc9eb6d261b2cb4372cfb739f0a498cd7bd22e0","tree":"3d977079378e64eb5ce21b2e94a849d3ccd8bf40","license":"MIT","license_path":"LICENSE","license_file_sha256":"214d96d713e7d6f499b0149e08402579d80727e2b81ea469821ace5a233d942a","readme_sha256":"a9f33329e74bb3775b9e51901585f5c24570c71da9f5488c96c425e40a7","build":"make or project build","build_result":"STATIC_AUDIT_ONLY_TOOL_UNAVAILABLE","overlap":"population, module, selection, placement and systematics interfaces","reusable_concepts":["event signals","population/placement separation","lineage recorder"],"method_lessons":["thin harness architecture","batch manifests"],"scientific_conflicts":["fitness traits drive selection and birth"],"integration_risk":"MEDIUM","disposition":["ADAPT","BENCHMARK","REJECT_INTEGRATION"]},
-    {"name":"Avida","repository":"https://github.com/devosoft/avida","ref":"master","commit":"47f13dadb547fcf10f620ace60247f38b30b8b16","tree":"2e8aaa1f475f41a16f3abc7e3cdd2b7c27e20c18","license":"LGPL-3.0-style","license_path":"avida-core/COPYING","license_file_sha256":"33d2aef2aa273ed6f14a5f26499895c3819921b23acecbb3e6df2ce8cc688dca","readme_sha256":"a2d899cd71c17342f76f8a2fcc2e488157b24f0921e08e95582bbffa3ad82049","build":"cmake configure","build_result":"STATIC_AUDIT_ONLY_TOOL_UNAVAILABLE","overlap":"resources, generations, demes, phylogeny and controls","reusable_concepts":["neutral controls","lineage/ancestor analysis","resource and environment schedules"],"method_lessons":["generation definitions","replicate conventions","selection versus resource failure"],"scientific_conflicts":["instruction CPU and runtime organism differ"],"integration_risk":"MEDIUM","disposition":["BENCHMARK","ADAPT","REJECT_INTEGRATION"]},
-    {"name":"Aevol","repository":"https://github.com/tgrohens/aevol","ref":"aevol-9","commit":"2ebc0dfe26f8d7aed6baf1e4d31e0c9b0fcac2d9","tree":"6bb330ab4cd58e5c15eba8fb31c16a84f4c4fd4a","license":"GPL-3.0","license_path":"COPYING","license_file_sha256":"8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903","readme_sha256":"3b4b0f81b2d3d13736b1e8237acd6945386a89d9aeef69f941531bb7d15516b9","build":"cmake configure","build_result":"STATIC_AUDIT_ONLY_TOOL_UNAVAILABLE","overlap":"mutation reports, phylogeny, robustness/evolvability","reusable_concepts":["mutation metrics","local/global selection analysis","long-term experiment controls"],"method_lessons":["environment-target analysis","fitness robustness reporting"],"scientific_conflicts":["binary genome to fuzzy phenotype, not material mesh"],"integration_risk":"HIGH","disposition":["BENCHMARK","ADAPT","REJECT_INTEGRATION"]},
-    {"name":"Ribossome","repository":"https://github.com/Manalokosdev/Ribossome","ref":"main","commit":"cb3bb85f12b8aad44969437de56696583f8847b8","tree":"712b4133e41de5245a3746fb2896d94c93690704","license":"MIT","license_path":"docs/LICENSE","license_file_sha256":"5cd879e3505327eddf9666b1c2e2ae5f172ac7b8ddd0302fc345f52b61be3441","readme_sha256":"6fedf819726f440a5b24424eed038bb84fd09d20eee4bae8a58b7efc215cf1ce","build":"cargo check","build_result":"STATIC_AUDIT_ONLY_TOOL_UNAVAILABLE","overlap":"GPU buffers, compute/render scheduling, grids, profiling","reusable_concepts":["wgpu bootstrap","storage layouts","readback and profiling"],"method_lessons":["data-oriented GPU infrastructure"],"scientific_conflicts":["genome directly builds body; runtime grants agents"],"integration_risk":"HIGH","disposition":["ADAPT","PATTERN_ONLY","REJECT_INTEGRATION"]},
-    {"name":"ALIEN","repository":"https://github.com/chrxh/alien","ref":"develop","commit":"91b58172391014c1512d6919a45fdcc9f6e8b3ba","tree":"75bcd7e07abdfc1e99d12b61297e00f270e358af","license":"BSD-3-Clause","license_path":"LICENSE","license_file_sha256":"2ac822ad2cec643a79ff260c8a52349e1cef465745c8b6f5902a83ede28955a3","readme_sha256":"01e8dee232b8fe0542ef3a39d51acfa1817c8df787d57e5cd7795f9bf9e66350","build":"cmake configure","build_result":"static_audit_only","overlap":"GPU entity arrays, processors, maps and persistence","reusable_concepts":["GPU/CPU facade","processor/kernel split","spatial and energy maps"],"method_lessons":["data-oriented world architecture"],"scientific_conflicts":["CUDA genome-built creature and neural/muscle semantics"],"integration_risk":"HIGH","disposition":["PATTERN_ONLY","ADAPT","REJECT_INTEGRATION"]},
-    {"name":"ASAL","repository":"https://github.com/SakanaAI/asal","ref":"main","commit":"677ba0ea4d3b3ca78273c9906c6e84d2b1481ce7","tree":"21833ce1ec5bed88fffa440eedbbc726f48c1f1a","license":"Apache-2.0","license_path":"LICENSE","license_file_sha256":"c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4","readme_sha256":"13cb46af1716f101286abc9f2928149b83f4f2cd78f4c72e603ecb3932ec9e64","build":"python py_compile only","build_result":"static_audit_only","overlap":"candidate search and novelty/illumination","reusable_concepts":["hypothesis proposal adapter","JAX rollout isolation"],"method_lessons":["discovery scores are not scientific PASS"],"scientific_conflicts":["embedding/novelty scores do not certify material biology"],"integration_risk":"MEDIUM","disposition":["ASAL_SIDECAR_RECOMMENDED","ADAPT","REJECT_INTEGRATION"]},
-    {"name":"Lenia","repository":"https://github.com/Chakazul/Lenia","ref":"master","commit":"adfc542939266de7f4bb7ebb552e8499701ee107","tree":"f13464bc6bd054f0f3d1303c4bb73526e68ceba6","license":"MIT","license_path":"LICENSE.md","license_file_sha256":"2b44d8d9a71aead092d67a6c365ed7c3ca54e8bbb265b1f4a8393aa66ef2cd80","readme_sha256":"ba36188d837a873daf274049cfb4ade3b8297ac3d230e94f8d655e3f45b13cbe","build":"python/JS/Matlab research repo","build_result":"static_audit_only","overlap":"grid morphology, kernels, mass and rollout","reusable_concepts":["surrogate benchmark","fast local-rule experiments"],"method_lessons":["separate surrogate metrics from organism certification"],"scientific_conflicts":["cellular automaton grid is not conserved material mesh"],"integration_risk":"MEDIUM","disposition":["BENCHMARK","DEFER","REJECT_INTEGRATION"]},
-    {"name":"FlowLenia","repository":"https://github.com/erwanplantec/FlowLenia","ref":"main","commit":"dce428c6b0c5079a06e5606fb7b5ac1fe1323bc5","tree":"e2774208bcbc0143e731b12cc89f0015d78ad20e","license":"UNRESOLVED","license_path":null,"license_file_sha256":null,"readme_sha256":"5ba8c5a2310ef137a89801f453dd65247285f2d92c63b34753292c0d180c8d05","build":"Python/JAX research repo","build_result":"static_audit_only","overlap":"flow-based cellular automaton surrogate","reusable_concepts":["JAX scan and FFT rollout patterns"],"method_lessons":["surrogate-only morphology benchmark"],"scientific_conflicts":["no material mesh or legal reuse basis"],"integration_risk":"HIGH","disposition":["BENCHMARK","DEFER","NO_CODE_REUSE_UNTIL_RESOLVED"]},
-    {"name":"Evochora","repository":"https://github.com/evochora/evochora","ref":"main","commit":"7b45ae32d83f1cec7bce3bcd011ea29a375cf92b","tree":"efa76c06a0e7abb058d516d4234fc283223e8265","license":"MIT","license_path":"LICENSE","license_file_sha256":"0c9269de97ed9fb84af1c09338f37008481f86fa02fb13cdcbf0b0f736a283e","readme_sha256":"ed712be9cdfd04edd2aadb975bc623ecc5ab4319a8bd1ddd8b4f269dbb13485f","build":"Gradle compile/test probe","build_result":"STATIC_AUDIT_ONLY_TOOL_UNAVAILABLE","overlap":"runtime/plugin/persistence/analytics boundaries","reusable_concepts":["SPI plugins","artifact analytics","runtime/data separation"],"method_lessons":["governed analytics services"],"scientific_conflicts":["VM and compiler organism model"],"integration_risk":"MEDIUM","disposition":["BENCHMARK","DEFER","REJECT_INTEGRATION"]},
-    {"name":"DISHTINY","repository":"https://github.com/mmore500/dishtiny","ref":"master","commit":"9a23e2fa9476bdb04e69e9f9f675b3650b9a334b","tree":"eb0b605ea521829a2c01d42438183d3f1a52cd6c","license":"MIT","license_path":"LICENSE","license_file_sha256":"7e1363bd41339ac8aded1881b0181cb7e0c74cbe9d29d6c6935ecadfdb48d341","readme_sha256":"089e3916d346e4eba96bc11a38639d4e353257b486381243e7365e2a8be5a2db","build":"Makefile/static analysis","build_result":"static_audit_only","overlap":"multicellularity, resources, kin and apoptosis","reusable_concepts":["group event logs","resource sharing","multicellular analysis"],"method_lessons":["individuality and group reproduction baselines"],"scientific_conflicts":["not current material mesh authority"],"integration_risk":"MEDIUM","disposition":["BENCHMARK","DEFER","REJECT_INTEGRATION"]},
-    {"name":"Polyworld","repository":"https://github.com/polyworld/polyworld","ref":"master","commit":"99debe8c40fd9f8e58eaae49bb86a68fd1af3703","tree":"da4bc2a07c53caf7b94fbe3c665ae5de4e74a36b","license":"APSL-2.0","license_path":"LICENSE.txt","license_file_sha256":"0ea94671793d45cfcedc40721b731d5e9d3b94653c222df0a1333f7245f5c0d8","readme_sha256":"f182ae96f48653e12482e0f70409560d7d2d78bc9420bad9049d209e040a6d59","build":"legacy configure/make","build_result":"static_audit_only","overlap":"neural, behaviour, anatomy and vision benchmark","reusable_concepts":["future behaviour analysis"],"method_lessons":["neural/agent experiment baselines"],"scientific_conflicts":["legacy agent model and high license risk"],"integration_risk":"HIGH","disposition":["BENCHMARK","DEFER","REJECT_INTEGRATION"]},
-    {"name":"Tierra","repository":"https://github.com/bioerrorlog/Tierra","ref":"main","commit":"34a3d16ea978bc1573f4b62d2513fc81a7821114","tree":"680875a557d12a3effbfb068d9c2960ac1b04db0","license":"UNKNOWN","license_path":null,"license_file_sha256":null,"readme_sha256":"46480ff254a8d9e161c5f7e8e36b2ad1ec71533d2a46fbac8a14e4f05310f2a7","build":"legacy make","build_result":"static_audit_only","overlap":"digital ecology and self-replicating code history","reusable_concepts":["historical parasite/resource controls"],"method_lessons":["archive benchmark only"],"scientific_conflicts":["no material organism and license unresolved"],"integration_risk":"HIGH","disposition":["BENCHMARK","DEFER","NO_CODE_REUSE_UNTIL_RESOLVED"]}
+    {
+      "name": "Stringmol",
+      "repository": "https://github.com/franticspider/stringmol",
+      "ref": "master",
+      "commit": "52b5625c1d654971a57c86b24360334fb4f34bba",
+      "tree": "2fb675d6e14e7bc24b0dbf3e7e1d1acca89698ac",
+      "license": "GPL-2.0",
+      "license_path": "LICENSE",
+      "license_file_sha256": "a45d0bb572ed792ed34627a72621834b3ba92aab6e2cc4e04301dee7a728d753",
+      "readme_sha256": "b1a6093566937ab61a167d4e7ea6ccb426404915b2d4e84a8614e54f20eefe64",
+      "build": "make -C src -j2",
+      "build_result": "PASS",
+      "overlap": "executable/catalytic heredity and local matching",
+      "reusable_concepts": [
+        "copy-error model",
+        "reaction/event logs",
+        "lineage and species analysis"
+      ],
+      "method_lessons": [
+        "catalytic executable heredity",
+        "alignment and local interaction"
+      ],
+      "scientific_conflicts": [
+        "no material mesh or conserved boundary",
+        "cleavage is string-level"
+      ],
+      "integration_risk": "HIGH",
+      "disposition": [
+        "BENCHMARK",
+        "ADAPT",
+        "REJECT_INTEGRATION"
+      ],
+      "audited_commit_date": "2021-02-17T00:02:38Z",
+      "primary_language": "C++",
+      "build_system": "Makefile",
+      "platform_requirements": "POSIX/Linux",
+      "repository_activity": "pinned commit date 2021-02-17T00:02:38Z; activity not scored beyond audited source state",
+      "official_docs": "Repository README and in-tree documentation inspected",
+      "relevant_publications": "Not separately audited in DC-SR-002; repository references remain future research inputs"
+    },
+    {
+      "name": "Evo2Sim",
+      "repository": "https://github.com/charlesrocabert/Evo2Sim",
+      "ref": "master",
+      "commit": "2a5b146da280ae54c8f073a6c52f979307cfa134",
+      "tree": "421f964eaf0f0e195859412ef3c8a86d8fa7b40c",
+      "license": "GPL-3.0",
+      "license_path": "LICENSE",
+      "license_file_sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "readme_sha256": "cac9ba04b729e1c2e4a7f279981a4e856162cde50150b2b59c049bf434b24bd3",
+      "build": "cmake configure",
+      "build_result": "STATIC_AUDIT_ONLY_TOOL_UNAVAILABLE",
+      "overlap": "ecology, resource regimes, local competition, lineage",
+      "reusable_concepts": [
+        "environment protocol object",
+        "diffusion/degradation",
+        "trophic statistics"
+      ],
+      "method_lessons": [
+        "generation accounting",
+        "extinction versus selection",
+        "replicate and schedule control"
+      ],
+      "scientific_conflicts": [
+        "genome/cell model and assigned score selection"
+      ],
+      "integration_risk": "HIGH",
+      "disposition": [
+        "BENCHMARK",
+        "ADAPT",
+        "REJECT_INTEGRATION"
+      ],
+      "audited_commit_date": "2023-04-16T13:15:58+02:00",
+      "primary_language": "C++",
+      "build_system": "CMake",
+      "platform_requirements": "POSIX/Linux",
+      "repository_activity": "pinned commit date 2023-04-16T13:15:58+02:00; activity not scored beyond audited source state",
+      "official_docs": "Repository README and in-tree documentation inspected",
+      "relevant_publications": "Not separately audited in DC-SR-002; repository references remain future research inputs"
+    },
+    {
+      "name": "MABE2",
+      "repository": "https://github.com/mercere99/MABE2",
+      "ref": "master",
+      "commit": "1fc9eb6d261b2cb4372cfb739f0a498cd7bd22e0",
+      "tree": "3d977079378e64eb5ce21b2e94a849d3ccd8bf40",
+      "license": "MIT",
+      "license_path": "LICENSE",
+      "license_file_sha256": "214d96d713e7d6f499b0149e08402579d80727e2b81ea469821ace5a233d942a",
+      "readme_sha256": "a9f33329e74bb3775b9e51901585f5c24570c71da9f5488c96c425e40a7",
+      "build": "make or project build",
+      "build_result": "STATIC_AUDIT_ONLY_TOOL_UNAVAILABLE",
+      "overlap": "population, module, selection, placement and systematics interfaces",
+      "reusable_concepts": [
+        "event signals",
+        "population/placement separation",
+        "lineage recorder"
+      ],
+      "method_lessons": [
+        "thin harness architecture",
+        "batch manifests"
+      ],
+      "scientific_conflicts": [
+        "fitness traits drive selection and birth"
+      ],
+      "integration_risk": "MEDIUM",
+      "disposition": [
+        "ADAPT",
+        "BENCHMARK",
+        "REJECT_INTEGRATION"
+      ],
+      "audited_commit_date": "2026-02-15T23:06:47-05:00",
+      "primary_language": "C++",
+      "build_system": "Makefiles",
+      "platform_requirements": "POSIX/Linux",
+      "repository_activity": "pinned commit date 2026-02-15T23:06:47-05:00; activity not scored beyond audited source state",
+      "official_docs": "Repository README and in-tree documentation inspected",
+      "relevant_publications": "Not separately audited in DC-SR-002; repository references remain future research inputs"
+    },
+    {
+      "name": "Avida",
+      "repository": "https://github.com/devosoft/avida",
+      "ref": "master",
+      "commit": "47f13dadb547fcf10f620ace60247f38b30b8b16",
+      "tree": "2e8aaa1f475f41a16f3abc7e3cdd2b7c27e20c18",
+      "license": "LGPL-3.0-style",
+      "license_path": "avida-core/COPYING",
+      "license_file_sha256": "33d2aef2aa273ed6f14a5f26499895c3819921b23acecbb3e6df2ce8cc688dca",
+      "readme_sha256": "a2d899cd71c17342f76f8a2fcc2e488157b24f0921e08e95582bbffa3ad82049",
+      "build": "cmake configure",
+      "build_result": "STATIC_AUDIT_ONLY_TOOL_UNAVAILABLE",
+      "overlap": "resources, generations, demes, phylogeny and controls",
+      "reusable_concepts": [
+        "neutral controls",
+        "lineage/ancestor analysis",
+        "resource and environment schedules"
+      ],
+      "method_lessons": [
+        "generation definitions",
+        "replicate conventions",
+        "selection versus resource failure"
+      ],
+      "scientific_conflicts": [
+        "instruction CPU and runtime organism differ"
+      ],
+      "integration_risk": "MEDIUM",
+      "disposition": [
+        "BENCHMARK",
+        "ADAPT",
+        "REJECT_INTEGRATION"
+      ],
+      "audited_commit_date": "2025-01-27T12:53:22-05:00",
+      "primary_language": "C++",
+      "build_system": "CMake",
+      "platform_requirements": "POSIX/Linux",
+      "repository_activity": "pinned commit date 2025-01-27T12:53:22-05:00; activity not scored beyond audited source state",
+      "official_docs": "Repository README and in-tree documentation inspected",
+      "relevant_publications": "Not separately audited in DC-SR-002; repository references remain future research inputs"
+    },
+    {
+      "name": "Aevol",
+      "repository": "https://github.com/tgrohens/aevol",
+      "ref": "aevol-9",
+      "commit": "2ebc0dfe26f8d7aed6baf1e4d31e0c9b0fcac2d9",
+      "tree": "6bb330ab4cd58e5c15eba8fb31c16a84f4c4fd4a",
+      "license": "GPL-3.0",
+      "license_path": "COPYING",
+      "license_file_sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "readme_sha256": "3b4b0f81b2d3d13736b1e8237acd6945386a89d9aeef69f941531bb7d15516b9",
+      "build": "cmake configure",
+      "build_result": "STATIC_AUDIT_ONLY_TOOL_UNAVAILABLE",
+      "overlap": "mutation reports, phylogeny, robustness/evolvability",
+      "reusable_concepts": [
+        "mutation metrics",
+        "local/global selection analysis",
+        "long-term experiment controls"
+      ],
+      "method_lessons": [
+        "environment-target analysis",
+        "fitness robustness reporting"
+      ],
+      "scientific_conflicts": [
+        "binary genome to fuzzy phenotype, not material mesh"
+      ],
+      "integration_risk": "HIGH",
+      "disposition": [
+        "BENCHMARK",
+        "ADAPT",
+        "REJECT_INTEGRATION"
+      ],
+      "audited_commit_date": "2025-06-05T17:39:09+02:00",
+      "primary_language": "C++",
+      "build_system": "CMake",
+      "platform_requirements": "POSIX/Linux",
+      "repository_activity": "pinned commit date 2025-06-05T17:39:09+02:00; activity not scored beyond audited source state",
+      "official_docs": "Repository README and in-tree documentation inspected",
+      "relevant_publications": "Not separately audited in DC-SR-002; repository references remain future research inputs"
+    },
+    {
+      "name": "Ribossome",
+      "repository": "https://github.com/Manalokosdev/Ribossome",
+      "ref": "main",
+      "commit": "cb3bb85f12b8aad44969437de56696583f8847b8",
+      "tree": "712b4133e41de5245a3746fb2896d94c93690704",
+      "license": "MIT",
+      "license_path": "docs/LICENSE",
+      "license_file_sha256": "5cd879e3505327eddf9666b1c2e2ae5f172ac7b8ddd0302fc345f52b61be3441",
+      "readme_sha256": "6fedf819726f440a5b24424eed038bb84fd09d20eee4bae8a58b7efc215cf1ce",
+      "build": "cargo check",
+      "build_result": "STATIC_AUDIT_ONLY_TOOL_UNAVAILABLE",
+      "overlap": "GPU buffers, compute/render scheduling, grids, profiling",
+      "reusable_concepts": [
+        "wgpu bootstrap",
+        "storage layouts",
+        "readback and profiling"
+      ],
+      "method_lessons": [
+        "data-oriented GPU infrastructure"
+      ],
+      "scientific_conflicts": [
+        "genome directly builds body; runtime grants agents"
+      ],
+      "integration_risk": "HIGH",
+      "disposition": [
+        "ADAPT",
+        "PATTERN_ONLY",
+        "REJECT_INTEGRATION"
+      ],
+      "audited_commit_date": "2026-02-04T01:47:58Z",
+      "primary_language": "Rust",
+      "build_system": "Cargo/wgpu",
+      "platform_requirements": "Linux/GPU-capable",
+      "repository_activity": "pinned commit date 2026-02-04T01:47:58Z; activity not scored beyond audited source state",
+      "official_docs": "Repository README and in-tree documentation inspected",
+      "relevant_publications": "Not separately audited in DC-SR-002; repository references remain future research inputs"
+    },
+    {
+      "name": "ALIEN",
+      "repository": "https://github.com/chrxh/alien",
+      "ref": "develop",
+      "commit": "91b58172391014c1512d6919a45fdcc9f6e8b3ba",
+      "tree": "75bcd7e07abdfc1e99d12b61297e00f270e358af",
+      "license": "BSD-3-Clause",
+      "license_path": "LICENSE",
+      "license_file_sha256": "2ac822ad2cec643a79ff260c8a52349e1cef465745c8b6f5902a83ede28955a3",
+      "readme_sha256": "01e8dee232b8fe0542ef3a39d51acfa1817c8df787d57e5cd7795f9bf9e66350",
+      "build": "cmake configure",
+      "build_result": "static_audit_only",
+      "overlap": "GPU entity arrays, processors, maps and persistence",
+      "reusable_concepts": [
+        "GPU/CPU facade",
+        "processor/kernel split",
+        "spatial and energy maps"
+      ],
+      "method_lessons": [
+        "data-oriented world architecture"
+      ],
+      "scientific_conflicts": [
+        "CUDA genome-built creature and neural/muscle semantics"
+      ],
+      "integration_risk": "HIGH",
+      "disposition": [
+        "PATTERN_ONLY",
+        "ADAPT",
+        "REJECT_INTEGRATION"
+      ],
+      "audited_commit_date": "2026-08-13T19:40:34+02:00",
+      "primary_language": "C++/CUDA/HIP",
+      "build_system": "CMake",
+      "platform_requirements": "NVIDIA/AMD GPU",
+      "repository_activity": "pinned commit date 2026-08-13T19:40:34+02:00; activity not scored beyond audited source state",
+      "official_docs": "Repository README and in-tree documentation inspected",
+      "relevant_publications": "Not separately audited in DC-SR-002; repository references remain future research inputs"
+    },
+    {
+      "name": "ASAL",
+      "repository": "https://github.com/SakanaAI/asal",
+      "ref": "main",
+      "commit": "677ba0ea4d3b3ca78273c9906c6e84d2b1481ce7",
+      "tree": "21833ce1ec5bed88fffa440eedbbc726f48c1f1a",
+      "license": "Apache-2.0",
+      "license_path": "LICENSE",
+      "license_file_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "readme_sha256": "13cb46af1716f101286abc9f2928149b83f4f2cd78f4c72e603ecb3932ec9e64",
+      "build": "python py_compile only",
+      "build_result": "static_audit_only",
+      "overlap": "candidate search and novelty/illumination",
+      "reusable_concepts": [
+        "hypothesis proposal adapter",
+        "JAX rollout isolation"
+      ],
+      "method_lessons": [
+        "discovery scores are not scientific PASS"
+      ],
+      "scientific_conflicts": [
+        "embedding/novelty scores do not certify material biology"
+      ],
+      "integration_risk": "MEDIUM",
+      "disposition": [
+        "ASAL_SIDECAR_RECOMMENDED",
+        "ADAPT",
+        "REJECT_INTEGRATION"
+      ],
+      "audited_commit_date": "2025-10-22T21:03:03-04:00",
+      "primary_language": "Python",
+      "build_system": "Python/JAX/evosax",
+      "platform_requirements": "Python/JAX accelerator",
+      "repository_activity": "pinned commit date 2025-10-22T21:03:03-04:00; activity not scored beyond audited source state",
+      "official_docs": "Repository README and in-tree documentation inspected",
+      "relevant_publications": "Not separately audited in DC-SR-002; repository references remain future research inputs"
+    },
+    {
+      "name": "Lenia",
+      "repository": "https://github.com/Chakazul/Lenia",
+      "ref": "master",
+      "commit": "adfc542939266de7f4bb7ebb552e8499701ee107",
+      "tree": "f13464bc6bd054f0f3d1303c4bb73526e68ceba6",
+      "license": "MIT",
+      "license_path": "LICENSE.md",
+      "license_file_sha256": "2b44d8d9a71aead092d67a6c365ed7c3ca54e8bbb265b1f4a8393aa66ef2cd80",
+      "readme_sha256": "ba36188d837a873daf274049cfb4ade3b8297ac3d230e94f8d655e3f45b13cbe",
+      "build": "python/JS/Matlab research repo",
+      "build_result": "static_audit_only",
+      "overlap": "grid morphology, kernels, mass and rollout",
+      "reusable_concepts": [
+        "surrogate benchmark",
+        "fast local-rule experiments"
+      ],
+      "method_lessons": [
+        "separate surrogate metrics from organism certification"
+      ],
+      "scientific_conflicts": [
+        "cellular automaton grid is not conserved material mesh"
+      ],
+      "integration_risk": "MEDIUM",
+      "disposition": [
+        "BENCHMARK",
+        "DEFER",
+        "REJECT_INTEGRATION"
+      ],
+      "audited_commit_date": "2022-03-16T01:08:40+08:00",
+      "primary_language": "Python/JavaScript/Matlab",
+      "build_system": "Python/JS/Matlab",
+      "platform_requirements": "POSIX or notebook runtime",
+      "repository_activity": "pinned commit date 2022-03-16T01:08:40+08:00; activity not scored beyond audited source state",
+      "official_docs": "Repository README and in-tree documentation inspected",
+      "relevant_publications": "Not separately audited in DC-SR-002; repository references remain future research inputs"
+    },
+    {
+      "name": "FlowLenia",
+      "repository": "https://github.com/erwanplantec/FlowLenia",
+      "ref": "main",
+      "commit": "dce428c6b0c5079a06e5606fb7b5ac1fe1323bc5",
+      "tree": "e2774208bcbc0143e731b12cc89f0015d78ad20e",
+      "license": "UNRESOLVED",
+      "license_path": null,
+      "license_file_sha256": null,
+      "readme_sha256": "5ba8c5a2310ef137a89801f453dd65247285f2d92c63b34753292c0d180c8d05",
+      "build": "Python/JAX research repo",
+      "build_result": "static_audit_only",
+      "overlap": "flow-based cellular automaton surrogate",
+      "reusable_concepts": [
+        "JAX scan and FFT rollout patterns"
+      ],
+      "method_lessons": [
+        "surrogate-only morphology benchmark"
+      ],
+      "scientific_conflicts": [
+        "no material mesh or legal reuse basis"
+      ],
+      "integration_risk": "HIGH",
+      "disposition": [
+        "BENCHMARK",
+        "DEFER",
+        "NO_CODE_REUSE_UNTIL_RESOLVED"
+      ],
+      "audited_commit_date": "2024-02-08T10:59:53+01:00",
+      "primary_language": "Python",
+      "build_system": "Python/JAX",
+      "platform_requirements": "Python/JAX accelerator",
+      "repository_activity": "pinned commit date 2024-02-08T10:59:53+01:00; activity not scored beyond audited source state",
+      "official_docs": "Repository README and in-tree documentation inspected",
+      "relevant_publications": "Not separately audited in DC-SR-002; repository references remain future research inputs"
+    },
+    {
+      "name": "Evochora",
+      "repository": "https://github.com/evochora/evochora",
+      "ref": "main",
+      "commit": "7b45ae32d83f1cec7bce3bcd011ea29a375cf92b",
+      "tree": "efa76c06a0e7abb058d516d4234fc283223e8265",
+      "license": "MIT",
+      "license_path": "LICENSE",
+      "license_file_sha256": "0c9269de97ed9fb84af1c09338f37008481f86fa02fb13cdcbf0b0f736a283e",
+      "readme_sha256": "ed712be9cdfd04edd2aadb975bc623ecc5ab4319a8bd1ddd8b4f269dbb13485f",
+      "build": "Gradle compile/test probe",
+      "build_result": "STATIC_AUDIT_ONLY_TOOL_UNAVAILABLE",
+      "overlap": "runtime/plugin/persistence/analytics boundaries",
+      "reusable_concepts": [
+        "SPI plugins",
+        "artifact analytics",
+        "runtime/data separation"
+      ],
+      "method_lessons": [
+        "governed analytics services"
+      ],
+      "scientific_conflicts": [
+        "VM and compiler organism model"
+      ],
+      "integration_risk": "MEDIUM",
+      "disposition": [
+        "BENCHMARK",
+        "DEFER",
+        "REJECT_INTEGRATION"
+      ],
+      "audited_commit_date": "2026-03-28T17:10:20+01:00",
+      "primary_language": "Kotlin/Java",
+      "build_system": "Gradle/JVM",
+      "platform_requirements": "JVM",
+      "repository_activity": "pinned commit date 2026-03-28T17:10:20+01:00; activity not scored beyond audited source state",
+      "official_docs": "Repository README and in-tree documentation inspected",
+      "relevant_publications": "Not separately audited in DC-SR-002; repository references remain future research inputs"
+    },
+    {
+      "name": "DISHTINY",
+      "repository": "https://github.com/mmore500/dishtiny",
+      "ref": "master",
+      "commit": "9a23e2fa9476bdb04e69e9f9f675b3650b9a334b",
+      "tree": "eb0b605ea521829a2c01d42438183d3f1a52cd6c",
+      "license": "MIT",
+      "license_path": "LICENSE",
+      "license_file_sha256": "7e1363bd41339ac8aded1881b0181cb7e0c74cbe9d29d6c6935ecadfdb48d341",
+      "readme_sha256": "089e3916d346e4eba96bc11a38639d4e353257b486381243e7365e2a8be5a2db",
+      "build": "Makefile/static analysis",
+      "build_result": "static_audit_only",
+      "overlap": "multicellularity, resources, kin and apoptosis",
+      "reusable_concepts": [
+        "group event logs",
+        "resource sharing",
+        "multicellular analysis"
+      ],
+      "method_lessons": [
+        "individuality and group reproduction baselines"
+      ],
+      "scientific_conflicts": [
+        "not current material mesh authority"
+      ],
+      "integration_risk": "MEDIUM",
+      "disposition": [
+        "BENCHMARK",
+        "DEFER",
+        "REJECT_INTEGRATION"
+      ],
+      "audited_commit_date": "2025-09-23T16:40:42-04:00",
+      "primary_language": "C++/Python",
+      "build_system": "Makefile/Python",
+      "platform_requirements": "POSIX/Python",
+      "repository_activity": "pinned commit date 2025-09-23T16:40:42-04:00; activity not scored beyond audited source state",
+      "official_docs": "Repository README and in-tree documentation inspected",
+      "relevant_publications": "Not separately audited in DC-SR-002; repository references remain future research inputs"
+    },
+    {
+      "name": "Polyworld",
+      "repository": "https://github.com/polyworld/polyworld",
+      "ref": "master",
+      "commit": "99debe8c40fd9f8e58eaae49bb86a68fd1af3703",
+      "tree": "da4bc2a07c53caf7b94fbe3c665ae5de4e74a36b",
+      "license": "APSL-2.0",
+      "license_path": "LICENSE.txt",
+      "license_file_sha256": "0ea94671793d45cfcedc40721b731d5e9d3b94653c222df0a1333f7245f5c0d8",
+      "readme_sha256": "f182ae96f48653e12482e0f70409560d7d2d78bc9420bad9049d209e040a6d59",
+      "build": "legacy configure/make",
+      "build_result": "static_audit_only",
+      "overlap": "neural, behaviour, anatomy and vision benchmark",
+      "reusable_concepts": [
+        "future behaviour analysis"
+      ],
+      "method_lessons": [
+        "neural/agent experiment baselines"
+      ],
+      "scientific_conflicts": [
+        "legacy agent model and high license risk"
+      ],
+      "integration_risk": "HIGH",
+      "disposition": [
+        "BENCHMARK",
+        "DEFER",
+        "REJECT_INTEGRATION"
+      ],
+      "audited_commit_date": "2025-09-21T08:20:11-04:00",
+      "primary_language": "C++/Python",
+      "build_system": "configure/Makefile",
+      "platform_requirements": "POSIX/X11",
+      "repository_activity": "pinned commit date 2025-09-21T08:20:11-04:00; activity not scored beyond audited source state",
+      "official_docs": "Repository README and in-tree documentation inspected",
+      "relevant_publications": "Not separately audited in DC-SR-002; repository references remain future research inputs"
+    },
+    {
+      "name": "Tierra",
+      "repository": "https://github.com/bioerrorlog/Tierra",
+      "ref": "main",
+      "commit": "34a3d16ea978bc1573f4b62d2513fc81a7821114",
+      "tree": "680875a557d12a3effbfb068d9c2960ac1b04db0",
+      "license": "UNKNOWN",
+      "license_path": null,
+      "license_file_sha256": null,
+      "readme_sha256": "46480ff254a8d9e161c5f7e8e36b2ad1ec71533d2a46fbac8a14e4f05310f2a7",
+      "build": "legacy make",
+      "build_result": "static_audit_only",
+      "overlap": "digital ecology and self-replicating code history",
+      "reusable_concepts": [
+        "historical parasite/resource controls"
+      ],
+      "method_lessons": [
+        "archive benchmark only"
+      ],
+      "scientific_conflicts": [
+        "no material organism and license unresolved"
+      ],
+      "integration_risk": "HIGH",
+      "disposition": [
+        "BENCHMARK",
+        "DEFER",
+        "NO_CODE_REUSE_UNTIL_RESOLVED"
+      ],
+      "audited_commit_date": "2026-03-12T09:39:57+09:00",
+      "primary_language": "C",
+      "build_system": "Makefile",
+      "platform_requirements": "POSIX/X11",
+      "repository_activity": "pinned commit date 2026-03-12T09:39:57+09:00; activity not scored beyond audited source state",
+      "official_docs": "Repository README and in-tree documentation inspected",
+      "relevant_publications": "Not separately audited in DC-SR-002; repository references remain future research inputs"
+    }
   ],
   "digital_cell_modules": {
     "material_mesh": "KEEP",
@@ -55,5 +578,8 @@
     "tier2": "TIER2_WORLD_GPU_AUDIT_COMPLETE",
     "tier3": "DEFERRED_WITH_SUFFICIENT_EVIDENCE_FOR_SR003",
     "tier4": "DEFERRED_WITH_SUFFICIENT_EVIDENCE_FOR_SR003"
-  }
+  },
+  "audited_at": "2026-08-13",
+  "digital_cell_head": "d81d12d57dfb82cc1109dea140a2e09fda23c57e",
+  "next_directive": "DC-SR-003 — Modular Evolution and Ecology Harness"
 }
