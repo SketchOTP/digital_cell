@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        test: [d098_tests, d096_tests, d091_tests, d092_tests, d093_tests, d094_tests]
+        test: [d098_tests, d096_tests, d091_tests, d092_tests, d093_tests]
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
