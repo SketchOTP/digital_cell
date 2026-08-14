@@ -220,3 +220,6 @@ Append-only repo-specific lessons. Format:
 - Confidence: VERIFIED
 - Scope: DC-SR-004C-R2 parity-correct executor preflight
 - Supersedes learning: none
+
+- 2026-08-14 | area:d096-repair-gain | lesson:coordinate-2 repair gain currently multiplies both baseline g0 structural build and strain-responsive build; a fixed observer shadow limited to strain response removes the H repair-heavy structural advantage while preserving B total-material and strain-amplification direction across all eight paired seeds | evidence:experiments/generated/sr004cr3/contract_trace.json;gain_callsite_map.json;h_causal_attribution.json;b_damage_specificity.json;shadow_counterfactual_summary.json
+- 2026-08-14 | area:d096-governance | lesson:R3 is causal classification only; the implementation-defect conclusion authorizes no production repair and Gate 7/Gate 8 remain blocked pending architect decision | evidence:docs/strategy/d096_gate7/repair_gain_specificity/final_conclusion.md

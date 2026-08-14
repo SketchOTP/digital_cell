@@ -1,5 +1,10 @@
 //! D-086 mesh structural production, turnover, membrane binding, damage, death.
 
+use crate::autocatalytic_copying::{edge_copying_step, edge_loss_step};
+use crate::autocatalytic_edges::{merge_acs_ledgers, node_production_step, node_turnover_step};
+use crate::autocatalytic_nodes::{
+    node_activation_gain, node_building_gain, AutocatalyticLedger, AutocatalyticParams,
+};
 use crate::catalyst_composition::{
     composition_z, copy_production_fluxes, ensure_composition_initialized, g_build, g_harvest,
     sync_total_c, turnover_composition, CompositionLedger, CompositionParams,
@@ -8,20 +13,13 @@ use crate::material_mesh::MaterialMesh;
 use crate::metabolic_reserve::{reserve_metab_step, ReserveLedger, ReserveParams};
 use crate::template_copying::copying_step;
 use crate::template_motifs::{catalyst_binding_step, template_activity_gains};
-use crate::autocatalytic_copying::{edge_copying_step, edge_loss_step};
-use crate::autocatalytic_edges::{
-    merge_acs_ledgers, node_production_step, node_turnover_step,
-};
-use crate::autocatalytic_nodes::{
-    node_activation_gain, node_building_gain, AutocatalyticLedger, AutocatalyticParams,
-};
 use crate::template_network::{scale_bound_catalyst, NetworkLedger, NetworkParams};
 use crate::template_network_binding::network_binding_step;
 use crate::template_network_expression::{network_activation_gain, network_building_gain};
 use crate::template_partition::diffuse_templates;
 use crate::template_polymer::{
-    hydrolysis_step, merge_template_ledgers, monomer_production_step, TemplateLedger, TemplateParams,
-    XorShift64,
+    hydrolysis_step, merge_template_ledgers, monomer_production_step, TemplateLedger,
+    TemplateParams, XorShift64,
 };
 use serde::{Deserialize, Serialize};
 
@@ -100,6 +98,17 @@ pub struct ReactionLedger {
     pub c_turned: f64,
     /// Observer/accounting: free membrane L produced from A.
     pub l_produced: f64,
+    /// Observer-only decomposition of the existing structural build flux.
+    #[serde(default)]
+    pub structural_build_total: f64,
+    #[serde(default)]
+    pub structural_build_baseline: f64,
+    #[serde(default)]
+    pub structural_build_strain: f64,
+    #[serde(default)]
+    pub structural_build_baseline_amplification: f64,
+    #[serde(default)]
+    pub structural_build_strain_amplification: f64,
     #[serde(default)]
     pub composition: CompositionLedger,
     #[serde(default)]
@@ -126,6 +135,71 @@ pub fn g_strain(eps: f64, g0: f64, k_eps: f64) -> f64 {
     let pos = eps.max(0.0);
     // Bounded strain boost (≤ +0.45) — enough for local repair, not global runaway.
     g0 + 0.45 * pos / (k_eps.max(1e-15) + pos)
+}
+
+/// Selects the structural-build law used by a bounded observer audit.
+///
+/// `Current` is the unchanged production law. The shadow mode is isolated
+/// diagnostic behavior and is never used by the default chemistry path.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum StructuralBuildMode {
+    #[default]
+    Current,
+    D096RepairSpecificShadow,
+}
+
+/// Observer-only decomposition of the D-096 structural-build rate.
+#[derive(Debug, Clone, Copy, Default, Serialize, Deserialize)]
+pub struct StructuralBuildAttribution {
+    pub baseline_rate: f64,
+    pub strain_rate: f64,
+    pub repair_gain: f64,
+    pub current_rate: f64,
+    pub shadow_rate: f64,
+}
+
+/// Decompose the existing D-096 build law without changing mesh state.
+///
+/// The returned baseline and strain rates exclude the D-096 repair gain;
+/// `current_rate` is `(baseline + strain) * repair_gain`, while `shadow_rate`
+/// is `baseline + strain * repair_gain`.
+pub fn structural_build_attribution(
+    mesh: &MaterialMesh,
+    i: usize,
+    p: &ReactionParams,
+) -> Option<StructuralBuildAttribution> {
+    if mesh.edges[i].ruptured || mesh.finite_allocation.is_none() {
+        return None;
+    }
+    let qc = q_catalyst(mesh.interior.c, p.q_c);
+    let a = mesh.interior.a.max(0.0);
+    let g = g_strain(mesh.strain(i), p.g0, p.k_eps);
+    let ell = mesh.edge_length(i);
+    let base = p.k_build * qc * a * p.g0 * ell;
+    let strain = p.k_build * qc * a * (g - p.g0).max(0.0) * ell;
+    let repair_gain = crate::d096_allocation::function_gain(mesh, 2);
+    Some(StructuralBuildAttribution {
+        baseline_rate: base,
+        strain_rate: strain,
+        repair_gain,
+        current_rate: (base + strain) * repair_gain,
+        shadow_rate: base + strain * repair_gain,
+    })
+}
+
+/// Existing build flux with an explicitly selected observer mode.
+pub fn structural_build_flux_with_mode(
+    mesh: &MaterialMesh,
+    i: usize,
+    p: &ReactionParams,
+    mode: StructuralBuildMode,
+) -> f64 {
+    match mode {
+        StructuralBuildMode::Current => structural_build_flux(mesh, i, p),
+        StructuralBuildMode::D096RepairSpecificShadow => structural_build_attribution(mesh, i, p)
+            .map(|parts| parts.shadow_rate)
+            .unwrap_or_else(|| structural_build_flux(mesh, i, p)),
+    }
 }
 
 pub fn structural_build_flux(mesh: &MaterialMesh, i: usize, p: &ReactionParams) -> f64 {
@@ -161,6 +235,25 @@ pub fn reactions_step(
     enable_build: bool,
     enable_metab: bool,
 ) -> ReactionLedger {
+    reactions_step_with_build_mode(
+        mesh,
+        p,
+        dt,
+        enable_build,
+        enable_metab,
+        StructuralBuildMode::Current,
+    )
+}
+
+/// Run the unchanged reaction step or the isolated D-096 shadow build law.
+pub fn reactions_step_with_build_mode(
+    mesh: &mut MaterialMesh,
+    p: &ReactionParams,
+    dt: f64,
+    enable_build: bool,
+    enable_metab: bool,
+    build_mode: StructuralBuildMode,
+) -> ReactionLedger {
     let mut led = ReactionLedger::default();
     if !mesh.alive {
         return led;
@@ -190,13 +283,8 @@ pub fn reactions_step(
         } else {
             1.0
         };
-        let extent = p.k_act
-            * qc
-            * gh
-            * mesh.interior.n.max(0.0)
-            * mesh.interior.f.max(0.0)
-            * dt
-            * area;
+        let extent =
+            p.k_act * qc * gh * mesh.interior.n.max(0.0) * mesh.interior.f.max(0.0) * dt * area;
         let n_take = extent.min(mesh.interior.n.max(0.0) * area) / area;
         let f_take = extent.min(mesh.interior.f.max(0.0) * area) / area;
         let taken = n_take.min(f_take);
@@ -225,8 +313,7 @@ pub fn reactions_step(
         if p.composition.enable {
             let c_h0 = mesh.interior.c_h.max(0.0);
             let c_b0 = mesh.interior.c_b.max(0.0);
-            let (j_h, j_b) =
-                copy_production_fluxes(c_prod, c_h0, c_b0, p.composition.mu);
+            let (j_h, j_b) = copy_production_fluxes(c_prod, c_h0, c_b0, p.composition.mu);
             let (c_h1, c_b1, t_h, t_b) = turnover_composition(c_h0, c_b0, c_turn);
             mesh.interior.c_h = (c_h1 + j_h).max(0.0);
             mesh.interior.c_b = (c_b1 + j_b).max(0.0);
@@ -298,8 +385,14 @@ pub fn reactions_step(
             let mut rng = XorShift64::new(mesh.template_rng.wrapping_add(0xD094_ACE5));
             let mut acs = node_production_step(mesh, &p.autocatalytic, dt);
             merge_acs_ledgers(&mut acs, &node_turnover_step(mesh, &p.autocatalytic, dt));
-            merge_acs_ledgers(&mut acs, &edge_copying_step(mesh, &p.autocatalytic, dt, &mut rng));
-            merge_acs_ledgers(&mut acs, &edge_loss_step(mesh, &p.autocatalytic, dt, &mut rng));
+            merge_acs_ledgers(
+                &mut acs,
+                &edge_copying_step(mesh, &p.autocatalytic, dt, &mut rng),
+            );
+            merge_acs_ledgers(
+                &mut acs,
+                &edge_loss_step(mesh, &p.autocatalytic, dt, &mut rng),
+            );
             mesh.template_rng = rng.state().wrapping_add(1);
             led.autocatalytic = acs;
             led.w_produced += led.autocatalytic.w_produced;
@@ -312,7 +405,8 @@ pub fn reactions_step(
             continue;
         }
         if enable_build {
-            let j_build = structural_build_flux(mesh, i, p) * dt;
+            let attribution = structural_build_attribution(mesh, i, p);
+            let j_build = structural_build_flux_with_mode(mesh, i, p, build_mode) * dt;
             let need_a = j_build / p.yield_a_to_m.max(1e-15);
             let have = mesh.interior.a.max(0.0) * area;
             let take = need_a.min(have);
@@ -323,6 +417,30 @@ pub fn reactions_step(
             led.a_consumed_build += take;
             led.m_produced += dm;
             led.w_produced += take;
+            if let Some(parts) = attribution {
+                let requested_mass = match build_mode {
+                    StructuralBuildMode::Current => parts.current_rate,
+                    StructuralBuildMode::D096RepairSpecificShadow => parts.shadow_rate,
+                } * dt
+                    * p.yield_a_to_m.max(0.0);
+                let scale = if requested_mass > 0.0 {
+                    (dm / requested_mass).clamp(0.0, 1.0)
+                } else {
+                    0.0
+                };
+                let baseline = parts.baseline_rate * dt * p.yield_a_to_m.max(0.0) * scale;
+                let strain = parts.strain_rate * dt * p.yield_a_to_m.max(0.0) * scale;
+                led.structural_build_total += dm;
+                led.structural_build_baseline += baseline;
+                led.structural_build_strain += strain;
+                if matches!(build_mode, StructuralBuildMode::Current) {
+                    led.structural_build_baseline_amplification +=
+                        baseline * (parts.repair_gain - 1.0);
+                    led.structural_build_strain_amplification += strain * (parts.repair_gain - 1.0);
+                } else {
+                    led.structural_build_strain_amplification += strain * (parts.repair_gain - 1.0);
+                }
+            }
 
             let turn_scale = 1.0 / (1.0 + 2.0 * mesh.strain(i).max(0.0));
             let turn = p.k_turn * turn_scale * mesh.edges[i].m.max(0.0) * dt;
@@ -343,7 +461,9 @@ pub fn reactions_step(
         let theta = mesh.occupancy(i);
         let bind = p.k_bind * mesh.free_l.max(0.0) * (1.0 - theta) * dt;
         let unbind = p.k_unbind * mesh.edges[i].b.max(0.0) * dt;
-        let bind_a = bind.min(mesh.free_l.max(0.0)).min((cap - mesh.edges[i].b).max(0.0));
+        let bind_a = bind
+            .min(mesh.free_l.max(0.0))
+            .min((cap - mesh.edges[i].b).max(0.0));
         let unbind_a = unbind.min(mesh.edges[i].b.max(0.0));
         if mesh.edges[i].b > 1e-15 && unbind_a > 0.0 {
             let frac = (unbind_a / mesh.edges[i].b).clamp(0.0, 1.0);
@@ -394,7 +514,9 @@ pub fn reactions_step(
         if theta < 0.95 || mesh.free_l < reserve_cap {
             let l_prod = 0.02 * qc * gb * mesh.interior.a.max(0.0) * peri * dt;
             let room = (reserve_cap - mesh.free_l).max(0.0) + (1.0 - theta) * peri;
-            let take = l_prod.min(mesh.interior.a.max(0.0) * area).min(room.max(0.0));
+            let take = l_prod
+                .min(mesh.interior.a.max(0.0) * area)
+                .min(room.max(0.0));
             mesh.interior.a = (mesh.interior.a - take / area).max(0.0);
             mesh.interior.w += take / area;
             mesh.free_l += take;

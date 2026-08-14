@@ -1,0 +1,42 @@
+{
+  "entry_commit": "1b477b1c53d075449368579bfba6be1ed60b69f8",
+  "function_gain": {
+    "coordinates": {
+      "0": "processing",
+      "1": "activation",
+      "2": "repair",
+      "3": "growth"
+    },
+    "gain": "1 + catalyst / (0.1 + catalyst)",
+    "source": "crates/chemistry-core/src/d096_allocation.rs::function_gain"
+  },
+  "production_path_unchanged": true,
+  "runtime_callsites": [
+    {
+      "coordinate": 2,
+      "effect": "multiplies g_strain(eps)=g0+strain-responsive component",
+      "source": "crates/chemistry-core/src/mesh_reactions.rs::structural_build_flux"
+    },
+    {
+      "coordinate": 0,
+      "effect": "processing gain in N+F activation extent",
+      "source": "crates/chemistry-core/src/mesh_reactions.rs::reactions_step"
+    },
+    {
+      "coordinate": 1,
+      "effect": "activation gain in N+F activation extent",
+      "source": "crates/chemistry-core/src/mesh_reactions.rs::reactions_step"
+    },
+    {
+      "coordinate": 2,
+      "effect": "free membrane production branch",
+      "source": "crates/chemistry-core/src/mesh_reactions.rs::reactions_step"
+    },
+    {
+      "coordinate": 3,
+      "effect": "reserve-funded growth synthesis",
+      "source": "crates/chemistry-core/src/mesh_growth.rs::growth_step"
+    }
+  ],
+  "schema": "DC-SR-004C-R3-D096GainCallsiteMapV1"
+}

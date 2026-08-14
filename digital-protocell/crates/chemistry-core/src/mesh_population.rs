@@ -7,7 +7,10 @@ use crate::material_mesh::{LumpedChem, MaterialMesh, DEFAULT_RHO_S};
 use crate::mesh_fission::{topology_step, try_local_fission, FissionEvent, FissionParams};
 use crate::mesh_growth::{growth_step, merge_growth_into_reaction, GrowthLedger, GrowthParams};
 use crate::mesh_mechanics::{mechanics_step, remesh, MechParams};
-use crate::mesh_reactions::{reactions_step, ReactionLedger, ReactionParams};
+use crate::mesh_reactions::{
+    reactions_step, reactions_step_with_build_mode, ReactionLedger, ReactionParams,
+    StructuralBuildMode,
+};
 use crate::mesh_transport::{transport_step, TransportParams};
 use serde::{Deserialize, Serialize};
 
@@ -124,8 +127,7 @@ impl MeshPopulation {
                 let _ = topology_step(&mut ind.mesh, fission);
             }
 
-            let grown_enough =
-                ind.mesh.total_structural_mass() >= 1.35 * ind.birth_mass.max(1e-9);
+            let grown_enough = ind.mesh.total_structural_mass() >= 1.35 * ind.birth_mass.max(1e-9);
             if grown_enough && tick % 25 == 0 {
                 if let Some((d1, d2, ev)) = try_local_fission(&ind.mesh, fission) {
                     ind.mesh.alive = false;
@@ -178,8 +180,37 @@ pub fn coupled_step_growth(
     GrowthLedger,
     Option<(MaterialMesh, MaterialMesh, FissionEvent)>,
 ) {
+    coupled_step_growth_with_build_mode(
+        mesh,
+        mech,
+        react,
+        transport,
+        growth,
+        fission,
+        enable_mech,
+        enable_fission,
+        StructuralBuildMode::Current,
+    )
+}
+
+/// Coupled step with an explicitly isolated structural-build observer mode.
+pub fn coupled_step_growth_with_build_mode(
+    mesh: &mut MaterialMesh,
+    mech: &MechParams,
+    react: &ReactionParams,
+    transport: &TransportParams,
+    growth: &GrowthParams,
+    fission: &FissionParams,
+    enable_mech: bool,
+    enable_fission: bool,
+    build_mode: StructuralBuildMode,
+) -> (
+    ReactionLedger,
+    GrowthLedger,
+    Option<(MaterialMesh, MaterialMesh, FissionEvent)>,
+) {
     let _ = transport_step(mesh, transport, mech.dt);
-    let mut r = reactions_step(mesh, react, mech.dt, true, true);
+    let mut r = reactions_step_with_build_mode(mesh, react, mech.dt, true, true, build_mode);
     let g = growth_step(mesh, react, growth, mech.dt);
     merge_growth_into_reaction(&mut r, &g);
     if enable_mech {

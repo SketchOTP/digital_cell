@@ -259,3 +259,19 @@ Entries before 2026-07-12 were imported from myCompanion and are not authoritati
 - Remaining risks: The target checkout retains unrelated pre-existing dirty files and the Gate 7 draft PR remains architect-pending.
 - Blockers: none
 - Follow-up directive: none
+
+## D-20260814-d096-repair-gain-specificity-audit - IN PROGRESS
+
+- Outcome ID: OUT-20260814-d096-repair-gain-specificity-audit
+- Directive: `DC-SR-004C-R3`
+- Starting commit: `1b477b1c53d075449368579bfba6be1ed60b69f8`
+- Branch: `strategy/d096-repair-gain-specificity-audit`
+- Base: `strategy/d096-gate7-parity-correct-preflight`
+- Scope: observer-only current-path flux attribution and one fixed non-authoritative shadow counterfactual
+- Local result: 216 observer cells completed; H baseline leakage true for all paired seeds; fixed shadow removes H repair-heavy structural advantage and preserves B damage-responsive total-material direction
+- Provisional conclusion: `SR004CR3_D096_REPAIR_GAIN_SCOPE_IMPLEMENTATION_DEFECT_CONFIRMED`
+- Production repair: not performed
+- Gate 7 campaign: not executed
+- Gate 8: not started
+- Certified Phase 1 biology/equations: unchanged
+- Remote PR/CI: pending

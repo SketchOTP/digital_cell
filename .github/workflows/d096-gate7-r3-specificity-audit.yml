@@ -1,0 +1,87 @@
+name: D-096 Gate 7 R3 repair-gain specificity audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - strategy/d096-repair-gain-specificity-audit
+    paths:
+      - digital-protocell/crates/chemistry-core/src/mesh_reactions.rs
+      - digital-protocell/crates/chemistry-core/src/mesh_population.rs
+      - digital-protocell/crates/evolution-harness/src/mesh_adapter.rs
+      - digital-protocell/crates/evolution-harness/examples/d096_gate7_repair_gain_audit.rs
+      - digital-protocell/experiments/generated/sr004cr3/**
+      - digital-protocell/docs/strategy/d096_gate7/repair_gain_specificity/**
+      - .github/workflows/d096-gate7-r3-specificity-audit.yml
+  pull_request:
+    branches:
+      - strategy/d096-gate7-parity-correct-preflight
+    paths:
+      - digital-protocell/crates/chemistry-core/src/mesh_reactions.rs
+      - digital-protocell/crates/chemistry-core/src/mesh_population.rs
+      - digital-protocell/crates/evolution-harness/src/mesh_adapter.rs
+      - digital-protocell/crates/evolution-harness/examples/d096_gate7_repair_gain_audit.rs
+      - digital-protocell/experiments/generated/sr004cr3/**
+      - digital-protocell/docs/strategy/d096_gate7/repair_gain_specificity/**
+      - .github/workflows/d096-gate7-r3-specificity-audit.yml
+
+jobs:
+  r3-specificity-audit:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: digital-protocell
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install pinned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Run frozen D-096 chemistry regressions
+        run: cargo +1.89.0 test -p chemistry-core --test d096_tests
+
+      - name: Run evolution-harness regressions
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Run Gate 6 continuity regression
+        run: cargo +1.89.0 test -p evolution-harness d096_real_fission_daughters_close_mutation_and_expression_continuity
+
+      - name: Run R2 exact-parity regression only
+        env:
+          RUSTFLAGS: -Awarnings
+        run: cargo +1.89.0 run --release -p evolution-harness --example d096_gate7_parity_preflight
+
+      - name: Assert R2 artifacts remain unchanged
+        run: git diff --exit-code -- experiments/generated/sr004c experiments/generated/sr004cr1 experiments/generated/sr004cr2
+
+      - name: Run R3 observer-only current-path audit and fixed shadow
+        env:
+          RUSTFLAGS: -Awarnings
+        run: cargo +1.89.0 run --release -p evolution-harness --example d096_gate7_repair_gain_audit
+
+      - name: Assert R3 classification and execution boundaries
+        shell: bash
+        run: |
+          test "$(jq -r '.conclusion' experiments/generated/sr004cr3/final_manifest.json)" = "SR004CR3_D096_REPAIR_GAIN_SCOPE_IMPLEMENTATION_DEFECT_CONFIRMED"
+          test "$(jq -r '.mechanics_off_rows' experiments/generated/sr004cr3/final_manifest.json)" = "72"
+          test "$(jq -r '.mechanics_on_current_rows' experiments/generated/sr004cr3/final_manifest.json)" = "72"
+          test "$(jq -r '.shadow_rows' experiments/generated/sr004cr3/final_manifest.json)" = "72"
+          test "$(jq -r '.gate7_campaign_executed' experiments/generated/sr004cr3/final_manifest.json)" = "false"
+          test "$(jq -r '.gate8_started' experiments/generated/sr004cr3/final_manifest.json)" = "false"
+          test "$(jq -r '.production_biology_changed' experiments/generated/sr004cr3/final_manifest.json)" = "false"
+          test "$(jq -r '.baseline_repair_gain_leakage_present' experiments/generated/sr004cr3/h_causal_attribution.json)" = "true"
+          test "$(jq -r '.shadow_h_removes_repair_heavy_structural_advantage' experiments/generated/sr004cr3/h_causal_attribution.json)" = "true"
+          test "$(jq -r '.shadow_preserves_damage_responsive_advantage' experiments/generated/sr004cr3/b_damage_specificity.json)" = "true"
+
+      - name: Assert prior artifacts remain unchanged after R3
+        run: git diff --exit-code -- experiments/generated/sr004c experiments/generated/sr004cr1 experiments/generated/sr004cr2
+
+      - name: Assert original Gate 7 workflow did not execute on R3 head
+        env:
+          GH_TOKEN: ${{ github.token }}
+          R3_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        shell: bash
+        run: |
+          count="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow "D-096 Gate 7 single-generation reproductive consequence" --commit "$R3_HEAD" --json databaseId --jq 'length')"
+          test "$count" = "0"
