@@ -80,3 +80,4 @@ A self-maintaining digital protocell that develops into a persistent, embodied i
 - `chemistry-core` remains authoritative and must not depend on the harness.
 - Selection observation is measurement-only; mutation context contains no fitness/winner/survival input.
 - D-090 through D-093 are representable protocol fixtures; D-094 is translated but never executed in SR-003.
+- SR-003 completed on `strategy/modular-evolution-harness`; next directive is SR-004 and only it may unfreeze D-094.

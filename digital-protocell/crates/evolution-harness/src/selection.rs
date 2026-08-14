@@ -24,7 +24,7 @@ pub struct DefaultSelectionObserver;
 impl SelectionObserver for DefaultSelectionObserver {
     fn observe(&self, result: &ReplicateResultV1) -> SelectionAnalysisV1 {
         let interpretable = matches!(
-            result.classification,
+            result.classification.clone(),
             FailureClass::ValidNoSelectionEffect | FailureClass::ValidSelectionEffect
         );
         SelectionAnalysisV1 {

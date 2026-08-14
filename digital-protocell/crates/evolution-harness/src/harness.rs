@@ -184,7 +184,7 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
             seed,
             max_generation: self.generation.max_generation,
             birth_count: self.generation.completed_births,
-            death_count: self.ledger.events.iter().filter(|event| event.event_type == EventType::Death).count() as u64,
+            death_count: self.ledger.events.iter().filter(|event| matches!(&event.event_type, EventType::Death)).count() as u64,
             population_final: self.population.living_count() as u64,
             classification,
             protocol_hash: self.protocol.hash(),

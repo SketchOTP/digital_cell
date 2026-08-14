@@ -189,7 +189,7 @@ impl EventLedger {
             if !ids.insert(event.event_id) {
                 return Err(EventLedgerError::DuplicateEvent(event.event_id));
             }
-            match event.event_type {
+            match &event.event_type {
                 EventType::FounderCreated | EventType::Birth => {
                     if let Some(organism_id) = event.organism_id {
                         if !born.insert(organism_id) {

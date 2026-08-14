@@ -196,7 +196,7 @@ mod tests {
         harness.advance_one(&environment).unwrap();
         assert_eq!(harness.generation.max_generation, 1);
         assert_eq!(harness.generation.completed_births, 2);
-        assert_eq!(harness.ledger.events.iter().filter(|event| event.event_type == EventType::Birth).count(), 2);
+        assert_eq!(harness.ledger.events.iter().filter(|event| matches!(&event.event_type, EventType::Birth)).count(), 2);
     }
 
     #[test]
