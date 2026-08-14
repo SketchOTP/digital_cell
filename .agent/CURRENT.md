@@ -10,11 +10,11 @@
 - Local directive ID: `D-20260814-1734-gate7-parity-horizon-audit`
 - External directive ID: `DC-SR-004C-R1`
 - Objective: `Audit Gate 5 physiology parity and D-088 horizon transfer for preserved Gate 7 execution without rerunning or tuning Gate 7`
-- Current status: `VALIDATING`
+- Current status: `COMPLETE`
 - Acceptance: `Required shadow artifacts and documentation exist, original sr004c evidence is unchanged, exact Gate 7 metadata is corrected, and one allowed audit conclusion is supported by local and scoped remote validation`
 - Current phase: `DC-SR-004C-R1 shadow audit`
 - Expected or actual touched areas: `evolution-harness audit example or tests, sr004cr1 artifacts, d096_gate7 parity_audit docs, .agent records, scoped CI if required`
-- Immediate next action: `Run scoped CI for the shadow audit, record its exact result, and pause for architect review`
+- Immediate next action: `Pause for architect review; do not rerun Gate 7 or begin Gate 8`
 
 ## Temporary task-relevant facts
 
@@ -24,8 +24,8 @@
 
 ## Last validation after adoption
 
-- Command or check: `Canonical Authority validator and governance mode tests`
-- Result: `PASSED`
+- Command or check: `Atlas release focused suites; GitHub Actions run 31845154445 on b258126fb2ac1373515a09711d7dcaa07022550f`
+- Result: `PASSED: 14 D-096 tests, 46 evolution-harness tests, R1 shadow audit, original sr004c immutability assertion`
 
 ## Risks
 

@@ -10,3 +10,6 @@ perturbed and unperturbed preparations.
 
 The original `sr004c` artifacts remain unchanged. `GATE7_RERUN=false` and
 `GATE8=false`. No biological repair or tuning is included in this audit.
+
+The original Gate 7 workflow is now path-scoped so parity-audit and governance
+synchronizations cannot launch the 144-cell assay accidentally.

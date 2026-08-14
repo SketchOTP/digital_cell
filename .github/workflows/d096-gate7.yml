@@ -4,9 +4,21 @@ on:
   push:
     branches:
       - strategy/d096-gate7-single-generation-fitness
+    paths:
+      - digital-protocell/crates/chemistry-core/src/d096_allocation.rs
+      - digital-protocell/crates/evolution-harness/src/**
+      - digital-protocell/crates/evolution-harness/examples/d096_gate7_assay.rs
+      - digital-protocell/experiments/generated/sr004c/**
+      - digital-protocell/docs/strategy/d096_gate7/**
   pull_request:
     branches:
       - strategy/d096-gate6-heredity-continuity
+    paths:
+      - digital-protocell/crates/chemistry-core/src/d096_allocation.rs
+      - digital-protocell/crates/evolution-harness/src/**
+      - digital-protocell/crates/evolution-harness/examples/d096_gate7_assay.rs
+      - digital-protocell/experiments/generated/sr004c/**
+      - digital-protocell/docs/strategy/d096_gate7/**
 
 jobs:
   d096-gate7:
