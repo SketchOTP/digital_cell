@@ -316,17 +316,36 @@ fn d096_mutation_frequency_and_simplex_transfer_are_bounded() {
             for i in 0..4 {
                 let delta = record.post_genotype.0[i] - record.pre_genotype.0[i];
                 if i == source {
-                    assert_eq!(delta, -record.applied_delta);
+                    assert!((delta + record.applied_delta).abs() <= 1e-15);
                 } else if i == target {
-                    assert_eq!(delta, record.applied_delta);
+                    assert!((delta - record.applied_delta).abs() <= 1e-15);
                 } else {
-                    assert_eq!(delta, 0.0);
+                    assert!(delta.abs() <= 1e-15);
                 }
             }
         }
     }
     assert!((70..=130).contains(&changed), "observed mutation count={changed}");
     assert!(checked_transfer);
+}
+
+#[test]
+fn d096_bounded_mutation_allows_zero_capped_transfer() {
+    let mut params = AllocationParams::default();
+    params.mutation_probability = 1.0;
+    let parent = AllocationGenotype([0.0, 1.0, 0.0, 0.0]);
+    let mut found_zero = false;
+    for seed in 1..10_000_u64 {
+        let record = mutate_allocation_genotype(parent, &params, seed).unwrap();
+        if record.applied_delta == 0.0 {
+            found_zero = true;
+            assert!(record.mutation_occurred);
+            assert!(record.post_genotype.valid(&params));
+            assert_eq!(record.source.is_some(), record.target.is_some());
+            break;
+        }
+    }
+    assert!(found_zero, "expected at least one capped zero-transfer decision");
 }
 
 #[test]

@@ -5,14 +5,14 @@
 
 use crate::candidate_identity::sha256_hex;
 use crate::material_mesh::MaterialMesh;
+use crate::template_polymer::{RngLike, XorShift64};
 use serde::{Deserialize, Serialize};
 
 pub const EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION: &str =
     "autopoietic_material_mesh_finite_catalytic_allocation_v1";
 pub const FINITE_ALLOCATION_SCHEMA_VERSION: u32 = 2;
 pub const FUNCTIONS: usize = 4;
-const RNG_MULTIPLIER: u64 = 0x9E37_79B9_7F4A_7C15;
-const RNG_INCREMENT: u64 = 0xD1B5_4A32_D192_ED03;
+const D096_RNG_DOMAIN: u64 = 0xD096_004B_5EED_0001;
 
 #[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub struct AllocationGenotype(pub [f64; FUNCTIONS]);
@@ -168,31 +168,17 @@ pub struct AllocationMutationRecord {
     pub applied_delta: f64,
 }
 
-#[derive(Debug, Clone, Copy)]
-struct D096Rng(u64);
+fn normal_sample(rng: &mut impl RngLike) -> f64 {
+    let radius = (-2.0 * rng.unit().max(f64::MIN_POSITIVE).ln()).sqrt();
+    let angle = std::f64::consts::TAU * rng.unit();
+    radius * angle.cos()
+}
 
-impl D096Rng {
-    fn new(seed: u64) -> Self {
-        Self(seed ^ RNG_MULTIPLIER)
-    }
-
-    fn next_u64(&mut self) -> u64 {
-        self.0 = self
-            .0
-            .wrapping_mul(RNG_MULTIPLIER)
-            .wrapping_add(RNG_INCREMENT);
-        self.0
-    }
-
-    fn unit(&mut self) -> f64 {
-        (self.next_u64() as f64 / (u64::MAX as f64 + 1.0)).max(f64::MIN_POSITIVE)
-    }
-
-    fn normal(&mut self) -> f64 {
-        let radius = (-2.0 * self.unit().ln()).sqrt();
-        let angle = std::f64::consts::TAU * self.unit();
-        radius * angle.cos()
-    }
+fn d096_stream_seed(seed: u64) -> u64 {
+    let mut value = seed.wrapping_add(D096_RNG_DOMAIN);
+    value = (value ^ (value >> 30)).wrapping_mul(0xBF58_476D_1CE4_E5B9);
+    value = (value ^ (value >> 27)).wrapping_mul(0x94D0_49BB_1331_11EB);
+    value ^ (value >> 31)
 }
 
 pub fn mutate_allocation_genotype(
@@ -214,7 +200,10 @@ pub fn mutate_allocation_genotype(
     if !pre_genotype.valid(params) {
         return Err(MutationReject::InvalidParent);
     }
-    let mut rng = D096Rng::new(seed);
+    // Domain-separate the declared stream seed before handing it to the
+    // existing xorshift implementation. This avoids biased first draws for
+    // sequential low-valued campaign ordinals while preserving reproducibility.
+    let mut rng = XorShift64::new(d096_stream_seed(seed));
     let mut post = pre_genotype;
     let mut source = None;
     let mut target = None;
@@ -222,19 +211,16 @@ pub fn mutate_allocation_genotype(
     let mut applied_delta = 0.0;
     let mutation_occurred = rng.unit() < params.mutation_probability;
     if mutation_occurred {
-        let selected_source = (rng.next_u64() as usize) % FUNCTIONS;
-        let mut selected_target = (rng.next_u64() as usize) % (FUNCTIONS - 1);
+        let selected_source = (rng.unit() * FUNCTIONS as f64) as usize % FUNCTIONS;
+        let mut selected_target = (rng.unit() * (FUNCTIONS - 1) as f64) as usize;
         if selected_target >= selected_source {
             selected_target += 1;
         }
-        raw_abs_normal = (rng.normal() * params.mutation_sigma).abs();
+        raw_abs_normal = (normal_sample(&mut rng) * params.mutation_sigma).abs();
         let cap = (post.0[selected_source] - params.allocation_min)
             .min(params.allocation_max - post.0[selected_target])
             .max(0.0);
         applied_delta = raw_abs_normal.min(cap);
-        if applied_delta <= 0.0 {
-            return Err(MutationReject::InvalidResult);
-        }
         post.0[selected_source] -= applied_delta;
         post.0[selected_target] += applied_delta;
         source = Some(selected_source);

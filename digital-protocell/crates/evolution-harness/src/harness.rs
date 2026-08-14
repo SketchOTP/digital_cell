@@ -56,6 +56,7 @@ pub struct EvolutionHarness<A: OrganismAdapter> {
     emitted_schedule_events: BTreeSet<String>,
     current_environment_id: String,
     active_environment: EnvironmentProtocolV1,
+    mutation_stream_counter: u64,
 }
 
 pub struct ReplicateRunner;
@@ -144,6 +145,7 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
             environment_supported: true,
             emitted_schedule_events: BTreeSet::new(),
             active_environment,
+            mutation_stream_counter: 0,
         })
     }
 
@@ -581,6 +583,8 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
                     .get_or_insert(self.accepted_simulated_time);
                 let lineage_id = parent_record.lineage_id;
                 for (offspring_index, mut child) in offspring.into_iter().enumerate() {
+                    let qualified_copy_ordinal = self.mutation_stream_counter;
+                    self.mutation_stream_counter = self.mutation_stream_counter.wrapping_add(1);
                     let child_id = self.population.next_organism_id;
                     let birth = EventV1::birth(
                         0,
@@ -636,22 +640,32 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
                         &MutationContext {
                             accepted_step: self.accepted_step,
                             accepted_simulated_time: self.accepted_simulated_time,
-                            // Mutation randomness is declared by the protocol,
-                            // replicate, accepted fission step, and offspring
-                            // ordinal. It is not derived from organism or
-                            // lineage identifiers.
+                            // Mutation randomness is declared by the protocol
+                            // and a unique accepted-copy ordinal. It is not
+                            // derived from organism, lineage, clade, fitness,
+                            // or survival identity.
                             seed: self
                                 .protocol
                                 .placement_protocol
                                 .random_seed
                                 .unwrap_or(self.protocol.placement_protocol.founder_seed)
-                                .wrapping_add((self.replicate as u64).wrapping_mul(0x9E37_79B9))
-                                .wrapping_add(self.accepted_step.wrapping_mul(0xD1B5_4A32))
-                                .wrapping_add(offspring_index as u64),
+                                .wrapping_add(qualified_copy_ordinal),
                             offspring_index: offspring_index as u32,
+                            qualified_physical_copy: true,
+                            qualified_copy_ordinal,
                             parent_hereditary_state: parent_state,
                         },
                     )?;
+                    let mutation_provenance_valid = if self
+                        .protocol
+                        .mutation_protocol
+                        .mutation_protocol_id
+                        == "d096_allocation_mutation_v1"
+                    {
+                        mutation.as_ref().is_some_and(valid_d096_mutation_metadata)
+                    } else {
+                        true
+                    };
                     if let Some(metadata) = mutation {
                         let mut event = EventV1::base(
                             0,
@@ -672,7 +686,8 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
                     }
                     let heredity_evidence = self.adapter.heredity_evidence(Some(parent), &child);
                     let phenotype_evidence = self.adapter.phenotype_evidence(environment, &child);
-                    self.heredity_preserved &= heredity_evidence.qualification;
+                    self.heredity_preserved &=
+                        heredity_evidence.qualification && mutation_provenance_valid;
                     self.phenotype_measurable &= phenotype_evidence.qualification;
                     self.organisms.insert(child_id, child);
                 }
@@ -819,4 +834,18 @@ impl<A: OrganismAdapter> EvolutionHarness<A> {
             event_ledger_hash: self.ledger.hash().unwrap_or_default(),
         }
     }
+}
+
+fn valid_d096_mutation_metadata(metadata: &crate::Metadata) -> bool {
+    metadata.get("operator").map(String::as_str)
+        == Some("D096AllocationMutationOperator")
+        && metadata
+            .get("provenance")
+            .is_some_and(|value| value.starts_with("DC-SR-004B;D-096_GATE6;"))
+        && metadata.get("seed").is_some_and(|value| value.parse::<u64>().is_ok())
+        && metadata
+            .get("qualified_copy_ordinal")
+            .is_some_and(|value| value.parse::<u64>().is_ok())
+        && metadata.get("pre_genotype").is_some()
+        && metadata.get("post_genotype").is_some()
 }

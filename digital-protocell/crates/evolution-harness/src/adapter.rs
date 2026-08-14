@@ -186,6 +186,8 @@ pub struct MutationContext {
     pub accepted_simulated_time: f64,
     pub seed: u64,
     pub offspring_index: u32,
+    pub qualified_physical_copy: bool,
+    pub qualified_copy_ordinal: u64,
     pub parent_hereditary_state: String,
 }
 
