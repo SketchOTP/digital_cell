@@ -1,0 +1,9 @@
+{
+  "active_edge_count": 3,
+  "artifact_status": "AUTHORITATIVE",
+  "behavior_variable": false,
+  "global_action_selector": false,
+  "one_local_rule": true,
+  "result": "DCDEV004_GATE6_DISTRIBUTED_AUTHORITY_PASS",
+  "semantic_command": false
+}

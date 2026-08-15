@@ -1,0 +1,8 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "first_maximum_tension": 0.24786121534345265,
+  "first_resource_spent": 0.007764571353075626,
+  "result": "DCDEV004_GATE5_METABOLIC_LIMITATION_PASS",
+  "second_maximum_tension": 0.0,
+  "second_zero_resource": true
+}

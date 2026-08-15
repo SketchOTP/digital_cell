@@ -1,0 +1,109 @@
+name: DC-DEV-004 validation
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-003-regulatory-topology-continuity
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-004-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate DC-DEV-004 artifacts and boundaries
+        env:
+          ENTRY_COMMIT: e4cdb8a4fd9316e51e6490fd0f833097f02be6bb
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("digital-protocell/experiments/generated/dcdev004")
+          required = [
+              "protocol.json", "energy_coupling.json", "zero_activity_parity.json",
+              "local_causality.json", "closed_loop.json", "metabolic_limitation.json",
+              "distributed_authority.json", "remesh_compatibility.json",
+              "regression_manifest.json", "final_manifest.json",
+          ]
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              raise SystemExit(f"missing artifacts: {missing}")
+          data = {name: json.loads((root / name).read_text()) for name in required}
+          if data["protocol.json"]["entry_commit"] != "e4cdb8a4fd9316e51e6490fd0f833097f02be6bb":
+              raise SystemExit("wrong entry commit")
+          final = data["final_manifest.json"]
+          if final["conclusion"] != "DCDEV004_ENERGY_COUPLED_LOCAL_ACTUATION_QUALIFIED":
+              raise SystemExit("unexpected conclusion")
+          if final["next_execution_started"] is not False:
+              raise SystemExit("next execution must remain stopped")
+          if final["certified_biology_modified"] or final["new_sensor"] or final["memory"] or final["learning"] or final["evolution"]:
+              raise SystemExit("capability or biology boundary violated")
+          if not data["zero_activity_parity.json"]["exact_legacy_vertex_trajectory"]:
+              raise SystemExit("zero-activity parity failed")
+          if not data["energy_coupling.json"]["zero_resource_no_actuation"]:
+              raise SystemExit("zero-resource boundary failed")
+          if not data["closed_loop.json"]["closed_loop_strain_reduction"]:
+              raise SystemExit("closed-loop strain reduction failed")
+          if not data["remesh_compatibility.json"]["continuity_valid"]:
+              raise SystemExit("remesh continuity failed")
+          print(f"validated {len(required)} DC-DEV-004 artifacts")
+          PY
+          chemistry_changes="$(git diff --name-only "$ENTRY_COMMIT" HEAD -- digital-protocell/crates/chemistry-core)"
+          allowed="digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs"
+          if [ -n "$chemistry_changes" ] && [ "$chemistry_changes" != "$allowed" ]; then
+            echo "$chemistry_changes"
+            exit 1
+          fi
+          if git diff --name-only "$ENTRY_COMMIT" HEAD | grep -Ei '(^|/)(d096|r4)(/|_|\.)'; then exit 1; fi
+          if grep -R -nE 'set_vertex|set_coordinate|target_coordinate|target_shape|movement_request|behavior_command|action_selector|reward|fitness' digital-protocell/crates/regulatory-core/src/contractility.rs; then exit 1; fi
+          echo "scope and non-authority assertions passed"
+
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustup run 1.89.0 rustfmt --edition 2021 --check crates/chemistry-core/src/mesh_mechanics.rs crates/regulatory-core/src/lib.rs crates/regulatory-core/src/contractility.rs examples/dcdev004_gate_assay.rs
+
+      - name: Regulatory-core and DC-DEV-004 assay
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test -p regulatory-core --lib -- --nocapture
+          cargo +1.89.0 run -p regulatory-core --example dcdev004_gate_assay -- experiments/generated/dcdev004
+
+      - name: DC-DEV-002 and DC-DEV-003 preservation assays
+        working-directory: digital-protocell
+        run: |
+          tmp_dir="$(mktemp -d)"
+          cargo +1.89.0 run -p regulatory-core --example dcdev002_gate_assay -- "$tmp_dir/dcdev002"
+          cargo +1.89.0 run -p regulatory-core --example dcdev003_gate_assay -- "$tmp_dir/dcdev003"
+
+      - name: Phase-1 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+
+      - name: D-088 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+
+      - name: Evolution-harness regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        run: git rev-parse --verify HEAD

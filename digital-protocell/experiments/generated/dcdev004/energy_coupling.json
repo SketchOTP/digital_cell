@@ -1,0 +1,12 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "conversion": 0.05,
+  "funded_reserve_after": 0.599692180930756,
+  "funded_reserve_before": 0.5996943580226219,
+  "funded_resource_spent": 0.0001689828037888138,
+  "maximum_tension": 2.0,
+  "resource": "interior.r",
+  "resource_expenditure_pass": true,
+  "result": "DCDEV004_GATE1_ENERGY_COUPLING_PASS",
+  "zero_resource_no_actuation": true
+}
