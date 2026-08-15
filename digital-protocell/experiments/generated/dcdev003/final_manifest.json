@@ -1,0 +1,33 @@
+{
+  "artifact_hashes": {
+    "live_growth_remesh.json": "2d42ec0dc649c2d2",
+    "locality_and_determinism.json": "caf9daadd70d7254",
+    "non_interference.json": "13fec2bcea2b5d51",
+    "protocol.json": "2aa3f29a0f02fd1a",
+    "regression_manifest.json": "f306f208040f28cf",
+    "topology_provenance.json": "fe8368541c897138",
+    "transfer_correctness.json": "8fa9d7bc576804e3",
+    "unsupported_boundaries.json": "1fb42239d41c8717"
+  },
+  "artifact_status": "AUTHORITATIVE",
+  "certified_biology_modified": false,
+  "chemistry_core_source_modified": false,
+  "conclusion": "DCDEV003_REGULATORY_TOPOLOGY_CONTINUITY_QUALIFIED",
+  "directive": "DC-DEV-003",
+  "effectors_or_motor": false,
+  "entry_commit": "0d8edd490ba82146faf111e82e6c72a890ad0d54",
+  "evolution": false,
+  "fission_state_inheritance": false,
+  "gates": {
+    "0": "DCDEV003_GATE0_SCOPE_PASS",
+    "1": "DCDEV003_GATE1_TOPOLOGY_PROVENANCE_PASS",
+    "2": "DCDEV003_GATE2_TRANSFER_PASS",
+    "3": "DCDEV003_GATE3_LIVE_CONTINUITY_PASS",
+    "4": "DCDEV003_GATE4_NONINTERFERENCE_PASS",
+    "5": "DCDEV003_GATE5_FAIL_CLOSED_PASS",
+    "6": "DCDEV003_GATE6_REGRESSION_PASS"
+  },
+  "learning_or_memory": false,
+  "new_sensors": false,
+  "next_execution_started": false
+}

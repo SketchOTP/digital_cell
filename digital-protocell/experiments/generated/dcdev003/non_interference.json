@@ -1,0 +1,9 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "organism_trajectory_equal_regulator_on_vs_off": true,
+  "regulator_decides_fission": false,
+  "regulator_decides_growth": false,
+  "regulator_decides_remesh": false,
+  "regulator_mesh_write_authority": false,
+  "result": "DCDEV003_GATE4_NONINTERFERENCE_PASS"
+}

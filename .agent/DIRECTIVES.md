@@ -51,3 +51,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260815-dcdev003-regulatory-topology-continuity
+
+- Issued: `2026-08-15T15:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-003`
+- Objective: Keep the accepted distributed regulatory state continuous through ordinary growth-driven material-mesh remeshing for one organism.
+- Scope: Observer-only local topology provenance, bounded split/merge state transfer, live growth/remesh assay with fission disabled, non-interference comparison, fail-closed unsupported boundaries, generated evidence, documentation, governance, focused regressions, exact-head CI, and draft PR.
+- Exclusions: chemistry-core source changes, new sensors, effectors, motor behavior, learning, memory, identity, external input, evolution, new heredity, regulatory inheritance through reproduction, fission/state inheritance, parameter tuning, and DC-DEV-004.
+- Acceptance: `DCDEV003_REGULATORY_TOPOLOGY_CONTINUITY_QUALIFIED` only after exact-head remote CI and architect review from entry `0d8edd490ba82146faf111e82e6c72a890ad0d54` on source `strategy/dc-dev-002-local-regulatory-substrate` to implementation `strategy/dc-dev-003-regulatory-topology-continuity`.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

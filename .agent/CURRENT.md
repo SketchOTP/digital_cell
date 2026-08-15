@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-15T11:35:00-04:00`
+- Last updated: `2026-08-15T15:35:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260815-dcdev002-local-regulatory-substrate`
-- External directive ID: `DC-DEV-002`
-- Objective: `Implement a minimal distributed regulatory substrate with local persistence, bounded neighbor propagation, one non-semantic local physical transducer, deterministic dynamics, and complete read-only isolation from certified organism biology.`
+- Local directive ID: `D-20260815-dcdev003-regulatory-topology-continuity`
+- External directive ID: `DC-DEV-003`
+- Objective: `Keep the accepted distributed regulatory state continuous while the same material organism undergoes ordinary growth-driven mesh remeshing, without adding new capabilities.`
 - Current status: `VALIDATING`
-- Acceptance: `DC-DEV-002 local Gates -1 through 11 and exact-head remote CI run 31892904994 pass; architect review remains pending.`
-- Current phase: `DC-DEV-002 gate package from entry 8caf5a19061b0ad34723333e979f30637bdf2c2d; remote-validated head 8d8d637d157cd79ed4e6bf4fc8124e6ac3837275.`
-- Expected or actual touched areas: `regulatory-core crate, DC-DEV-002 generated artifacts and documentation, scoped workflow, current governance state`
-- Immediate next action: `Request architect re-review; do not begin DC-DEV-003.`
+- Acceptance: `DC-DEV-003 bounded gates and exact-head remote CI run 31913029009 pass on PR #11 at fafa642c97d85566c696aad61ac57fe777ac94c0; architect review remains pending.`
+- Current phase: `DC-DEV-003 continuity package from entry 0d8edd490ba82146faf111e82e6c72a890ad0d54.`
+- Expected or actual touched areas: `regulatory-core continuity layer, DC-DEV-003 generated artifacts and documentation, scoped workflow, current governance state`
+- Immediate next action: `Run final focused regressions, push the stacked draft PR, and request architect review; do not begin DC-DEV-004.`
 
 ## Temporary task-relevant facts
 
@@ -22,13 +22,13 @@
 - R4/D-096 source remains isolated in the other worktree and is not an input to this branch.
 - Later append-only governance snapshots are preserved under `.agent/legacy/`.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
-- The DC-DEV-002 regulator receives only `LocalMaterialFrameV1`; topology changes fail closed and seed is provenance-only.
-- Entry authority is `8caf5a19061b0ad34723333e979f30637bdf2c2d`.
-- Implementation work is on `strategy/dc-dev-002-local-regulatory-substrate`.
+- The DC-DEV-002 regulator remains unchanged for fixed topology; DC-DEV-003 adds observer-only continuity frames and local topology mappings.
+- Entry authority is `0d8edd490ba82146faf111e82e6c72a890ad0d54`.
+- Implementation work is on `strategy/dc-dev-003-regulatory-topology-continuity`.
 
 ## Last validation after adoption
 
-- Command or check: `GitHub Actions DC-DEV-002 validation run 31892904994 on 8d8d637d157cd79ed4e6bf4fc8124e6ac3837275`
+- Command or check: `GitHub Actions DC-DEV-003 validation run 31913029009 on fafa642c97d85566c696aad61ac57fe777ac94c0`
 - Result: `PASSED`
 
 ## Risks
@@ -42,7 +42,7 @@
 
 ## Pending decisions
 
-- None for architecture selection; DC-DEV-002 is authorized and Gate 7 remains outside scope.
+- None; DC-DEV-003 is authorized and DC-DEV-004 or any effectors, learning, memory, sensing, or evolution remain outside scope.
 
 ## Status vocabulary
 

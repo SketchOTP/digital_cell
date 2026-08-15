@@ -37,3 +37,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-001A-R1.
 - Supersedes learning: none
+
+## L-DCDEV003-001
+
+- Learning ID: L-DCDEV003-001
+- Date: 2026-08-15
+- Fact or lesson: Regulatory continuity can be kept observer-only by deriving independent nearest-local old-to-new mappings from immutable material frames; explicit fission and unknown topology events must fail closed.
+- Evidence location: `digital-protocell/crates/regulatory-core/src/continuity.rs`, `digital-protocell/experiments/generated/dcdev003/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev003/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-003 bounded continuity assay.
+- Supersedes learning: none
