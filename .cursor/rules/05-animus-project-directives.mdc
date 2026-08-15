@@ -1,204 +1,34 @@
 ---
-alwaysApply: true
+description: Conditional handling of user-issued external project directives
+alwaysApply: false
 ---
-# Animus Project Directive Rules
 
-Animus project directives are external instructions that must be executed precisely when the active request includes a directive ID in the form `DIRECTIVE ID: D-###`.
+# External Project Directives
 
-These rules define the required Mimir V2 lifecycle for all coding tasks and the repository-local reporting expectations for directive-driven work.
+## Purpose
 
-## Applicability
+Handle user-supplied external project directives without assigning directive authority to ANIMUS ONE.
 
-Apply these rules whenever the active task is repository work of any kind, including investigation, implementation, bug fixes, refactors, tests, documentation that affects code behavior, or verification.
+## Activation
 
-Do not start a Mimir task for pure conversation with no repository work.
+Activate only when the user supplies an external directive identifier or explicitly asks for directive-driven execution. The user is the issuer of project directives.
 
-## Canonical Mimir V2 Lifecycle
+## ANIMUS ONE boundary
 
-For every coding task, the following Mimir V2 flow MUST be used in order unless a step is unavailable:
+ANIMUS ONE may copy or aggregate project governance files for centralized project visibility. It does not issue, approve, modify, reconcile, execute, or close project directives, and it does not replace project-local governance.
 
-1. `mimir_project_register(workspace_root, name?, client_id?)` when the repository is not yet registered; otherwise `mimir_project_resolve(project_id, workspace_root, client_id)` to bind the known project to the actual checkout. Never guess project identity from a path.
-2. `mimir_task_begin(project_id, workspace_root, client_id, worktree_id, objective)` at the start of every coding task. Retain the returned task ID and version.
-3. `mimir_context_compile(project_id, objective)` after task begin and before overlapping work. This is the normal project-scoped retrieval step.
-4. `mimir_task_observe(task_id, version, event_type, payload_json, evidence_json)` only for durable causal facts Git cannot prove, such as decisions, constraints, hypotheses, and root causes. Do not use it for routine narration or file-change reporting. Every successful observation returns a new task version. Retain that new version and pass the latest version to every later `mimir_task_observe` call and to `mimir_task_close`.
-5. `mimir_validation_run(task_id, command, timeout_seconds?)` for completion-critical checks. The command MUST be on the server allowlist.
-6. `mimir_task_evidence(task_id)` before closure. Failed or timed-out validations MUST NOT be represented as passing evidence.
-7. `mimir_task_close(task_id, version, status, changed_files_json, tests_json, lessons_json)` only after evidence inspection, using the latest returned version and the verified result.
+## Identifier and lifecycle rules
 
-## Direct Memory Tools
+Keep a user-supplied external directive ID distinct from the local directive ID in `DIRECTIVES.md`. Never invent an external ID. Record the directive in the project-local ledger only after accepting it for execution. Record results in `OUTCOMES.md`, not in the issuance ledger. Follow the active directive’s scope and acceptance condition; report material conflicts or amendments rather than silently changing scope.
 
-The optional direct memory tools are `mimir_memory_query`, `mimir_memory_propose`, and `mimir_memory_explain`.
+## Non-applicability
 
-They do not replace task begin, compiled context, validation, evidence inspection, or task close.
+Do not activate when the user has not supplied an external directive ID or explicitly requested directive-driven execution.
 
-Mature-repository import uses the separate reviewed `mimir_project_onboard` and backfill workflow. Do not run it on every task.
+## Fallback
 
-## Mandatory Behavior
+If no external directive is supplied, use ordinary repository workflow. This rule is advisory unless a separate deterministic control enforces a directive gate.
 
-Mimir V2 is mandatory for every coding task, including investigation, implementation, bug fixes, refactors, tests, and documentation tied to code behavior.
+## Control status
 
-Use the same application lifecycle through both CLI and MCP adapters.
-
-Never infer tool names from this file. The canonical Mimir V2 contract above overrides any pasted or older Mimir content.
-
-Treat the repository as the source of truth and Mimir as the store for reasons, evidence, failures, fixes, and predictions.
-
-Keep routine narration, raw command output, full files, credentials, and unsupported claims out of Mimir.
-
-Reject high-confidence memory that lacks evidence.
-
-Keep paths platform-neutral when the target agent can run remotely.
-
-## Prohibited Legacy Names
-
-Do not output or mention obsolete or unsupported Mimir V1 tool names or workflows.
-
-Risk approval is requested directly from the user. The current Mimir V2 MCP surface has no approval tool.
-
-## Failure Handling
-
-If Mimir V2 is unavailable, continue only when the change is safe.
-
-Record the blockage honestly in the repository's local outcome or current-state files.
-
-Never claim that Mimir context, evidence, or close-out succeeded when it did not.
-
-If the task is unsafe without Mimir, stop and report the blockage instead of guessing.
-
-## Directive Scope
-
-When a directive contains `DIRECTIVE ID: D-###`:
-
-- Preserve that exact project directive ID.
-- Create and preserve the normal local agent-memory ID for `.agent/DIRECTIVES.md`.
-- Record both IDs in `.agent/DIRECTIVES.md`.
-- Record both IDs in `.agent/OUTCOMES.md`.
-- Include both IDs in the final response.
-
-Do not merge the two ID systems.
-
-If no Animus directive ID is present, follow normal repository governance and do not invent a project directive ID.
-
-## Scope Control
-
-Follow the active Animus directive exactly.
-
-Do not:
-- implement future sprint work
-- add unrelated features
-- perform broad refactors
-- change UI when the directive is backend-only
-- add dependencies unless required
-- remove working behavior unless required
-- skip repair work after partial or failed prior work
-- treat suggestions as requirements unless the directive says they are required
-
-If the directive is broad, choose the smallest safe interpretation that satisfies the acceptance criteria.
-
-If the directive conflicts with existing repo behavior, tests, or governance rules, report the conflict instead of silently ignoring either instruction.
-
-## Partial or Failed Prior Work
-
-If the current directive follows partial or failed prior work:
-
-- prioritize repair, diagnosis, or completion before new feature work
-- do not skip ahead to unrelated implementation
-- preserve what already works
-- clearly report what remains broken
-
-## Evidence and Reporting
-
-Animus reviews pasted coder responses. Final responses for directive work MUST include concrete evidence.
-
-For directive-driven work, the final response MUST include:
-- project directive ID
-- agent-memory directive ID
-- changed summary
-- files changed
-- tests run
-- test results
-- manual verification
-- deviations from directive
-- known issues
-- backup/savepoint if requested
-- memory/MCP outcome status
-- next suggested step, if needed
-
-Do not claim tests passed unless they were actually run.
-
-If tests were not run, say why.
-
-If manual verification was not done, say `None`.
-
-If work is partial, say `partial`.
-
-If work failed, say `failed`.
-
-Do not hide failed tests, missing proof, skipped validation, or unresolved risks.
-
-## Backup or Savepoint
-
-If the Animus directive asks for a backup, savepoint, tag, or rollback point:
-
-1. Create it before changing files.
-2. Do not overwrite uncommitted user work.
-3. Report the exact branch or tag created.
-
-If a backup was not requested, report `Not requested`.
-
-## Required Final Response Format
-
-Use this exact structure for directive-driven work:
-
-```md
-PROJECT DIRECTIVE
-- D-###
-
-AGENT MEMORY DIRECTIVE
-- D-YYYYMMDD-HHMM-slug
-
-Changed:
-- <short bullet>
-- <short bullet>
-
-Files changed:
-- path/to/file — reason changed
-- path/to/file — reason changed
-
-Tests:
-- command/result
-- or: not run — reason
-
-Manual verification:
-- check performed
-- or: None
-
-Deviations:
-- None
-- or: <anything done outside directive scope>
-
-Known issues:
-- None
-- or: <remaining issue/risk>
-
-Backup/savepoint:
-- tag/branch created
-- or: Not requested
-
-Memory/MCP:
-- session outcome recorded: yes
-- or: BLOCKED (<reason>)
-
-Next:
-- <smallest logical next step, only if needed>
-```
-
-## Final Response Rules
-
-- Keep it short.
-- Do not omit the project directive ID.
-- Do not omit the agent-memory directive ID.
-- Do not claim completion if acceptance was partial or not met.
-- Do not claim tests passed unless the command was run.
-- Do not suggest broad future work when a repair step is needed.
-- Do not include long explanations unless needed to explain a blocker.
+This is advisory guidance. The local append-only ledger and any separate hooks or review gates provide enforcement only when actually configured.

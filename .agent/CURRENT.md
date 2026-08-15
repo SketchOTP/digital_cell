@@ -1,26 +1,46 @@
-# CURRENT.md
+# Current State
 
-## Active directive
-- ID: D-20260814-final-harness-acceptance-closure
-- Project directive: DC-SR-003R2
-- Goal: Close execution authorization, chronology, causal generation, mechanism evidence, selective-pressure, multi-founder, and remote-CI defects without changing certified science
-- Status: coder-complete; pushed and GitHub CI passed; architect review pending
-- Acceptance: fail-closed execution, phased chronology, parent-causal generation intervals, mechanism-aware evidence, explicit treatment pressure, multi-founder placement, passing local tests, successful GitHub CI on exact PR head
-- Touched files: evolution-harness, evolution-harness docs, CI workflow, .agent records
-- Next action: architect independently inspect exact PR head and CI; do not start SR-004
+## Lifecycle
 
-## Repo facts needed now
-- Preserved entry commit: 956b054a9b37f675a8b84ae0624db98853956d37
-- Preserved tag: DC-SR-003-modular-evolution-harness; do not move or delete
-- Branch: strategy/modular-evolution-harness
-- Certified chemistry-core and experiment-runner source must remain unchanged
-- D-094 translation remains non-executable and no D-094 execution is authorized
+- Status: `ADOPTED`
+- Last updated: `2026-08-15T07:14:02-04:00`
 
-## Last validation
-- Command: cargo +1.89.0-x86_64-pc-windows-msvc test -p evolution-harness
-- Result: 27 passed, 0 failed; rustfmt installed and applied
+## Active state after adoption
 
-## Open blockers
-- Mimir V2 lifecycle tools are unavailable in the current tool surface; do not claim Mimir context/evidence/close-out
-- Atlas has no Rust/Cargo on PATH; local sanctioned Windows toolchain is used for verification
-- Draft PR: #1 https://github.com/SketchOTP/digital_cell/pull/1; head b209f25ea8d381bbe578cc0dad4af0953f733df0
+- Local directive ID: `D-20260815-dcdev001a-r1`
+- External directive ID: `DC-DEV-001A-R1`
+- Objective: `Close provenance, governance, and first-slice contract defects for provisionally accepted DCDEV001_HYBRID_COMPOSITION_SELECTED without reopening architecture selection or modifying production organism biology.`
+- Current status: `VALIDATING`
+- Acceptance: `R1 package and exact-head remote validation passed on PR #9, which is open, draft, and unmerged; architect exact-head re-review remains pending.`
+- Current phase: `DC-DEV-001A-R1 bounded completion remediation; validated head 39a540b137e8ad38172a8345d88564a23d9126db.`
+- Expected or actual touched areas: `implementation-base provenance, first-slice contract, disposition vocabulary, source licensing records, CURRENT.md, scoped validation workflow`
+- Immediate next action: `Run exact-head remote validation, record its evidence, and request architect re-review.`
+
+## Temporary task-relevant facts
+
+- The exact scientific base is `0d2c404c0874d5430dd5d01dbdcc059a842dd689`.
+- R4/D-096 source remains isolated in the other worktree and is not an input to this branch.
+- Later append-only governance snapshots are preserved under `.agent/legacy/`.
+- The first implementation contract is observer-coupled and exposes no effector or motor output.
+
+## Last validation after adoption
+
+- Command or check: `GitHub Actions DC-DEV-001A validation run 31881383306 on 39a540b137e8ad38172a8345d88564a23d9126db`
+- Result: `PASSED`
+
+## Risks
+
+- The full workspace test remains unavailable because of the pre-existing missing D-008 fixture; R1 workflow deliberately does not invoke it.
+- Exact remote workflow identity and conclusion must be recorded after the final package commit.
+
+## Blockers
+
+- Architect exact-head re-review is required before DC-DEV-002.
+
+## Pending decisions
+
+- None for architecture selection; DC-DEV-002 remains unauthorized.
+
+## Status vocabulary
+
+Allowed adopted-project statuses: `IDLE`, `PLANNING`, `IN_PROGRESS`, `VALIDATING`, `BLOCKED`, `COMPLETE`. `CURRENT.md` is mutable and never replaces historical ledgers. Reset it to `IDLE` when an adopted task closes.

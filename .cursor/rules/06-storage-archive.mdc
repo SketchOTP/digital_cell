@@ -1,46 +1,37 @@
 ---
-description: Archive regenerable bulk to /mnt/storage1tb; never fill the NVMe root with experiment/build caches
-alwaysApply: true
+description: Conditional handling of large regenerable artifacts
+alwaysApply: false
 ---
 
-# Storage archive (1TB)
+# Generated Artifact Storage
 
-Root NVMe (`/`) is small. Attached archive is **`/mnt/storage1tb`** (also `~/storage1tb`).
+## Purpose
 
-## Before writing large outputs
+Provide conditional guidance for storing large, regenerable artifacts without confusing caches with source or backups.
 
-1. Prefer paths under `/mnt/storage1tb/cache/project-artifacts/<project>/` for regenerable bulk.
-2. In active checkouts, keep **symlinks** at the original repo paths so tools keep working.
-3. Never `git add` archive bulk, cargo `target/`, or `.cocoindex_code/`.
+## Activation
 
-## Safe to archive (move + symlink)
+Use this rule only when the task creates or manages large generated output, caches, indexes, build products, or experiment artifacts. It applies locally and in CI only where the relevant storage policy is configured.
 
-| Kind | Examples |
-|------|----------|
-| Build caches | `**/target/`, `dist/`, `build/`, `.next/` |
-| Experiment history | `**/experiments/generated/<run>/` when **fully untracked** |
-| Indexes | `.cocoindex_code/`, large local DBs |
-| Stale whole projects | `~/.local/bin/archive-stale-projects.sh` → `/mnt/storage1tb/archived-projects/` |
+## Definitions
 
-## Do not move off NVMe
+- **Source:** human-maintained files required to understand, build, test, or operate the project.
+- **Generated output:** reproducible files produced by tools from source and inputs.
+- **Cache:** disposable generated data whose loss does not change project meaning.
+- **Unknown or uncommitted work:** never assume disposable or safe to move.
 
-- Source trees, `.git/`, `.agent/` governance, tracked git files
-- Secrets / `.env`
-- Anything required for an *immediate* offline build if the 1TB disk is unmounted — unless a symlink already exists and you accept that dependency
+## Requirements
 
-## Mixed tracked/untracked dirs
+Use an explicitly approved cache or artifact location. Preserve provenance, inputs, versions, and checksums where the output matters. Confirm regeneration and recovery before moving or deleting. Keep source, governance, version-control metadata, and required offline inputs in the checkout unless an explicit project policy says otherwise. Do not delete unknown or uncommitted work.
 
-If a generated folder has **any** tracked files: copy full tree to archive, delete only untracked locals, leave tracked files in place. Do **not** replace the directory with a symlink.
+## Non-applicability
 
-## digital_cell locations
+Do not activate for ordinary source edits, small outputs, or repositories without a configured artifact/cache policy.
 
-- Archive root: `/mnt/storage1tb/cache/project-artifacts/digital_cell/`
-- Manifest: `ARCHIVE_MANIFEST.txt` + `README.md` there
-- Policy doc: `docs/storage_archive_policy.md`
+## Fallback
 
-## If disk is nearly full
+If no storage policy is configured, leave files in place and report the limitation. This rule is advisory; it does not create backups or guarantee recovery.
 
-1. `df -h / /mnt/storage1tb`
-2. Archive or `cargo clean` rebuildable caches
-3. Move untracked experiment artifacts; keep access via symlink or archive path
-4. Log what moved in the archive manifest
+## Control status
+
+This is advisory guidance. Storage permissions, CI retention, backup systems, and deletion barriers are separate enforcement controls.

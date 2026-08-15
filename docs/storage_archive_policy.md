@@ -1,41 +1,59 @@
-# Storage archive policy (1TB)
+# Storage archive policy
 
-## Why
+The system root NVMe fills quickly with Rust build output, code indexes, and
+directive experiment histories. The writable secondary storage device is
+`/mnt/storage1tb`.
 
-The system root NVMe (`/`, ~233 G) fills quickly with cargo `target/`, code indexes, and directive experiment histories. The attached drive **`/mnt/storage1tb`** (~938 G, label `storage1tb`, also `~/storage1tb`) is the durable bulk store.
+## Canonical project locator
 
-## digital_cell archive root
+Read [`STORAGE_MAP.md`](../STORAGE_MAP.md) first. It is the canonical map for
+Digital Cell material stored outside the primary repository.
 
-```text
-/mnt/storage1tb/cache/project-artifacts/digital_cell/
-  README.md
-  ARCHIVE_MANIFEST.txt
-  target/                 ← symlinked from digital-protocell/target
-  cocoindex/              ← symlinked from .cocoindex_code
-  experiments/generated/  ← per-directive dirs (symlink or full copy)
-```
+The current repository archive root is:
 
-Pass performed **2026-07-21**: moved ~6 G regenerable bulk; repo working tree dropped from ~7.0 G → ~0.8 G. Original paths kept via symlinks where safe.
+`/mnt/storage1tb/project-archives/digital_cell/`
+
+The 2026-08-15 migration archive is:
+
+`/mnt/storage1tb/project-archives/digital_cell/2026-08-15/`
+
+Its `ARCHIVE_MANIFEST.yaml`, `CHECKSUMS.sha256`, and `RESTORE.md` record the
+relocated material, integrity verification, and recovery procedure.
+
+The pre-existing July 2026 archive remains at
+`/mnt/storage1tb/cache/project-artifacts/digital_cell/`. Existing
+experiment-runner defaults and historical records may refer to that root; it
+is retained and is not changed by the current build-cache migration.
+
+## Current migration
+
+The regenerated Rust build cache formerly at
+`digital-protocell/target` was copied and SHA-256 verified before its local
+copy was removed. It is retained under the archive's
+`files/digital-protocell/target` path and may be regenerated with the sanctioned
+Rust toolchain. No symlink is required or created.
+
+Actively referenced source, governance files, `.git`, workflows,
+documentation, and scientific evidence remain local unless a future migration
+updates all references and the canonical map.
 
 ## Rules for agents
 
-1. **Migrate archivable folders to the 1TB drive**; keep them reachable (symlink at the old path, or document the archive path).
-2. Prefer new large outputs under `/mnt/storage1tb/cache/project-artifacts/<project>/` when a run will produce hundreds of MiB+.
-3. **Safe to move:** untracked `experiments/generated/*`, `target/`, `.cocoindex_code/`, other rebuildable caches.
-4. **Unsafe to move:** tracked git files, `.git`, source, `.agent` memory, secrets.
-5. **Mixed dirs** (tracked + untracked): full copy to archive; delete only untracked locals; leave tracked files on NVMe.
-6. Whole inactive *projects*: use `~/.local/bin/archive-stale-projects.sh` → `/mnt/storage1tb/archived-projects/` (not this per-artifact layout).
+1. Classify candidates before moving them; use `STORAGE_MAP.md` as the project
+   locator.
+2. Copy first, compare SHA-256 checksums, verify readability, update references
+   and manifests, then remove only the verified local copy.
+3. Never move tracked source, `.git`, `.agent` memory, secrets, or actively
+   required runtime material without an explicit supported storage design.
+4. Keep evidence discoverable and preserve its provenance and checksums.
+5. Do not create undocumented or fragile symlink dependencies.
 
 ## Recovery
 
-- Follow symlink: `readlink -f digital-protocell/target`
-- Or open `/mnt/storage1tb/cache/project-artifacts/digital_cell/ARCHIVE_MANIFEST.txt`
-- If symlinks break, remount `/mnt/storage1tb` first
+Follow the `RESTORE.md` instructions in the dated archive, or regenerate the
+build cache when an exact previous cache is not needed.
 
 ## Related tooling
 
-| Tool | Role |
-|------|------|
-| `~/.local/bin/archive-stale-projects.sh` | Move stale project directories |
-| `~/.local/bin/fix-partial-archives.sh` | Repair partial whole-project archives |
-| `.cursor/rules/06-storage-archive.mdc` | Always-on agent reminder |
+`.cursor/rules/06-storage-archive.mdc` contains the always-on agent reminder;
+it must defer to `STORAGE_MAP.md` for current paths.

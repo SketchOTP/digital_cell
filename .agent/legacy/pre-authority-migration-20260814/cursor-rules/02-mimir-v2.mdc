@@ -1,0 +1,15 @@
+---
+description: Mandatory Mimir V2 project identity, task lifecycle, version chain, validation, evidence, and closeout
+alwaysApply: true
+---
+
+# Mimir V2
+
+For every repository task, read `.agent/PROJECT_PROFILE.md`. Its committed `Mimir project ID` is the canonical cross-machine binding: when present and not `UNBOUND`, always call `mimir_project_resolve` with that ID and this machine's own workspace path. Register only when no binding exists; immediately write the returned ID to this file and commit it. Never guess an existing project from a path. When Mimir is on another PC and cannot inspect this checkout, register using this checkout's locally verified `repository_remote` and root `root_commit`; never create a host path, map a drive, or continue without Mimir.
+
+Required order: `mimir_task_begin` at task start and retain task ID/version; `mimir_context_compile` before overlapping work and retain `retrieval.session_id` plus item `memory_id` values; `mimir_task_observe` only for durable causal facts Git cannot prove; retain every returned version and pass the latest version to every later observation and `mimir_task_close`; `mimir_validation_run` for completion-critical allowlisted checks; `mimir_task_evidence` before closure; `mimir_retrieval_feedback(session_id, useful_memory_ids_json, missing?)` before close listing only compiled memories that actually helped (`[]` if none; note missing context when relevant; never invent usefulness); `mimir_task_close` only after inspecting evidence with verified changed files/tests/lessons.
+
+Never treat failed, timed-out, skipped, unavailable, or unrun checks as passing evidence. Do not store secrets, raw command output, full files/diffs, routine narration, Git-provable file lists, or unsupported high-confidence claims. Optional `mimir_memory_query`, `mimir_memory_propose`, and `mimir_memory_explain` never replace the required lifecycle.
+
+If Mimir is unavailable, record the exact blocked step in `.agent/CURRENT.md` and `.agent/OUTCOMES.md`; never claim context, validation, evidence, or closure succeeded. Continue only when work is safe and locally verifiable.
+

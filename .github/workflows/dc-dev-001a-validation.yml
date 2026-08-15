@@ -1,0 +1,100 @@
+name: DC-DEV-001A validation
+
+on:
+  pull_request:
+    branches:
+      - strategy/d094-evolutionary-requalification
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-001a-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate DC-DEV-001A JSON artifacts and contract boundary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("digital-protocell/experiments/generated/dcdev001")
+          required = [
+              "goal_alignment.json", "clean_base_manifest.json", "governance_carryforward.json",
+              "governance_carryforward_manifest.json", "external_sources.json", "component_matrix.json",
+              "constraint_matrix.json", "architecture_candidates.json", "decision_matrix.json",
+              "selected_architecture.json", "implementation_base.json", "first_implementation_contract.json",
+              "final_manifest.json",
+          ]
+          allowed = {"ADOPT", "WRAP", "EXTEND", "FORK", "COMPOSE", "REFERENCE", "BUILD", "REJECT", "DEFER"}
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              raise SystemExit(f"missing required artifacts: {missing}")
+          docs = []
+          for name in required:
+              data = json.loads((root / name).read_text())
+              if not isinstance(data, dict) or not str(data.get("schema", "")).startswith(("dcdev001.", "DC-DEV-001A-")):
+                  raise SystemExit(f"invalid schema: {name}")
+              docs.append(data)
+          for data in docs:
+              for item in data.get("sources", []) + data.get("components", []) + data.get("candidates", []):
+                  dispositions = item.get("governed_dispositions", [])
+                  if not dispositions or not set(dispositions) <= allowed:
+                      raise SystemExit(f"invalid governed disposition in {item}")
+          contract = json.loads((root / "first_implementation_contract.json").read_text())
+          forbidden = set(contract.get("forbidden_outputs", []))
+          if any("effector" in value.lower() or "motor" in value.lower() for value in contract.get("outputs", [])):
+              raise SystemExit("first contract exposes effector or motor output")
+          if "one_bounded_effector" in contract.get("first_assay", []) or "bounded_local_effector_intents" in contract.get("outputs", []):
+              raise SystemExit("old effector contract vocabulary remains")
+          required_outputs = {"regulatory_state", "neighbor_signal", "local_transduced_input", "provenance_record"}
+          if set(contract.get("outputs", [])) != required_outputs:
+              raise SystemExit("first contract outputs are not the bounded observer-coupled set")
+          if any("effector" in value.lower() or "motor" in value.lower() for value in forbidden) is False:
+              raise SystemExit("first contract does not explicitly forbid future effector/motor commands")
+          sources = json.loads((root / "external_sources.json").read_text())["sources"]
+          google = next(item for item in sources if item["id"] == "self_organising_systems")
+          if google.get("license") != "Apache-2.0":
+              raise SystemExit("Google self-organising-systems license is not Apache-2.0")
+          base = json.loads((root / "implementation_base.json").read_text())
+          if base.get("scientific_files_carried_from_later_stack") != []:
+              raise SystemExit("later scientific files were carried")
+          if base.get("rejected_d096_code_active") is not False or base.get("production_d096_repair_active") is not False:
+              raise SystemExit("rejected D-096/R4 state is active")
+          print(f"validated {len(required)} JSON artifacts and governed vocabulary")
+          PY
+
+      - name: Focused D-088 tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+
+      - name: Phase-1 metrics semantics tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --test metrics_semantics -- --nocapture
+
+      - name: Assert clean-base and scientific-source scope
+        env:
+          BASE_COMMIT: 0d2c404c0874d5430dd5d01dbdcc059a842dd689
+        run: |
+          set -euo pipefail
+          if git diff --name-only "$BASE_COMMIT" HEAD -- digital-protocell/crates/chemistry-core; then
+            :
+          fi
+          chemistry_changes="$(git diff --name-only "$BASE_COMMIT" HEAD -- digital-protocell/crates/chemistry-core)"
+          harness_changes="$(git diff --name-only "$BASE_COMMIT" HEAD -- digital-protocell/crates/evolution-harness)"
+          if [ -n "$chemistry_changes" ]; then echo "$chemistry_changes"; exit 1; fi
+          if [ -n "$harness_changes" ]; then echo "$harness_changes"; exit 1; fi
+          if git diff --name-only "$BASE_COMMIT" HEAD | grep -E '(^|/)(d096|r4)(/|_|\.)' ; then exit 1; fi
+          echo "scientific source and rejected D-096/R4 scope assertions passed"

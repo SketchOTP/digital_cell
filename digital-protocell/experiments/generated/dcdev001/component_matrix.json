@@ -1,0 +1,14 @@
+{
+  "schema": "dcdev001.component_matrix.v2",
+  "governed_vocabulary": ["ADOPT","WRAP","EXTEND","FORK","COMPOSE","REFERENCE","BUILD","REJECT","DEFER"],
+  "components": [
+    {"component":"Digital Cell material mesh","external_patterns":[],"native_authority":"existing local chemistry transport geometry","governed_dispositions":["ADOPT"],"implementation":"existing certified substrate"},
+    {"component":"local_sensor_transduction","external_patterns":["ALIEN sensors","DISHTINY local channels"],"native_authority":"existing local chemistry transport geometry","governed_dispositions":["BUILD"],"implementation":"future bounded observer-coupled adapter"},
+    {"component":"persistent_regulatory_state","external_patterns":["NCA local state","ALIEN neural nodes"],"native_authority":"Digital Cell local patch state","governed_dispositions":["BUILD"],"implementation":"future local patch"},
+    {"component":"bounded_neighbor_propagation","external_patterns":["DISHTINY channels","NCA local updates"],"native_authority":"bounded local patch interface","governed_dispositions":["COMPOSE","BUILD"],"implementation":"future assay only"},
+    {"component":"non_semantic_stimulus_transduction","external_patterns":["ALIEN sensors","NCA local update input"],"native_authority":"already-authoritative physical quantity","governed_dispositions":["BUILD"],"implementation":"future observer-coupled assay only"},
+    {"component":"effector_or_motor_behavior","external_patterns":["ALIEN muscles","Polyworld behavior"],"native_authority":"none authorized in first slice","governed_dispositions":["DEFER"],"implementation":"future architecture documentation only"},
+    {"component":"GPU_infrastructure","external_patterns":["Ribossome wgpu","ALIEN processor maps"],"native_authority":"not required at first implementation","governed_dispositions":["DEFER"],"implementation":"defer measured need"},
+    {"component":"evolution","external_patterns":["DISHTINY life history","external ALife harnesses"],"native_authority":"not authorized","governed_dispositions":["DEFER"],"implementation":"future directive"}
+  ]
+}

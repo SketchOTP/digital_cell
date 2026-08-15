@@ -1,0 +1,26 @@
+---
+description: Retained Digital Cell Mimir V2 compatibility adapter
+alwaysApply: false
+---
+
+# Mimir V2 Compatibility Adapter
+
+## Purpose
+
+Preserve the former Digital Cell Mimir V2 lifecycle reference while routing active Mimir applicability and failure handling through the canonical `.cursor/skills/mimir/SKILL.md` and Authority policy.
+
+## Activation
+
+Activate only when the project profile has a verified Mimir binding and the configured Mimir service exposes the required lifecycle operations.
+
+## Non-applicability
+
+Do not claim Mimir context, validation, evidence, retrieval feedback, or closure when the configured service or tools are unavailable.
+
+## Fallback
+
+If Mimir is unavailable, record the exact blocked step in `.agent/CURRENT.md` and `.agent/OUTCOMES.md`, continue only when safe, and report it as blocked or unrun.
+
+## Control status
+
+This is an advisory compatibility adapter; the canonical Authority governance skill and Mimir skill define active policy.

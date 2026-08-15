@@ -1,0 +1,12 @@
+{
+  "schema": "dcdev001.decision_matrix.v1",
+  "dimensions": ["causal_locality","centralization_risk","persistent_state","development","regeneration","sensor_integration","effector_integration","memory_path","heredity_compatibility","mesh_compatibility","determinism","interpretability","dependency_risk","implementation_cost","scope_safety"],
+  "scores": {
+    "A": {"causal_locality":5,"centralization_risk":5,"persistent_state":5,"development":4,"regeneration":3,"sensor_integration":5,"effector_integration":5,"memory_path":4,"heredity_compatibility":5,"mesh_compatibility":5,"determinism":5,"interpretability":4,"dependency_risk":5,"implementation_cost":4,"scope_safety":5},
+    "B": {"causal_locality":5,"centralization_risk":4,"persistent_state":5,"development":4,"regeneration":3,"sensor_integration":5,"effector_integration":4,"memory_path":5,"heredity_compatibility":4,"mesh_compatibility":4,"determinism":4,"interpretability":3,"dependency_risk":5,"implementation_cost":3,"scope_safety":4},
+    "C": {"causal_locality":3,"centralization_risk":3,"persistent_state":4,"development":4,"regeneration":2,"sensor_integration":5,"effector_integration":5,"memory_path":3,"heredity_compatibility":2,"mesh_compatibility":1,"determinism":3,"interpretability":3,"dependency_risk":1,"implementation_cost":1,"scope_safety":1},
+    "D": {"causal_locality":5,"centralization_risk":5,"persistent_state":4,"development":5,"regeneration":5,"sensor_integration":4,"effector_integration":2,"memory_path":3,"heredity_compatibility":1,"mesh_compatibility":1,"determinism":4,"interpretability":3,"dependency_risk":3,"implementation_cost":3,"scope_safety":2}
+  },
+  "scale":"5_is_strong_fit_or_low_risk_1_is_poor_fit_or_high_risk",
+  "interpretation":"A is the safe native core; B is a compatible later extension; C and D are informative but cannot replace material authority. Hybrid composition combines A with selected concepts from external references without importing their organism models."
+}
