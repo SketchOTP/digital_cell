@@ -1,0 +1,9 @@
+{
+  "alternate_runtime_flag_required": false,
+  "candidate_identity_changed": false,
+  "changed_callsite": "structural_build_flux finite-allocation branch",
+  "default_runtime_repaired": true,
+  "production_file": "digital-protocell/crates/chemistry-core/src/mesh_reactions.rs",
+  "schema_identity_changed": false,
+  "unchanged_callsite": "free membrane production coordinate-2 branch"
+}

@@ -1,0 +1,9 @@
+{
+  "baseline": "k_build * q(C) * A * g0 * edge_length",
+  "entry_commit": "3cd3649dc6dbb4d6a1e484f5f1578cd1124156f3",
+  "equation": "J_repaired = J_base + J_strain * g_repair",
+  "free_membrane_changed": false,
+  "parameters_changed": false,
+  "scope": "D-096 finite-allocation structural-build only",
+  "strain": "k_build * q(C) * A * max(g_strain(eps) - g0, 0) * edge_length"
+}

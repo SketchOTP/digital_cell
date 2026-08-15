@@ -1,0 +1,7 @@
+{
+  "candidate_hashes": "unchanged",
+  "continuity": "delegated to accepted Gate 6 regression and evidence assay",
+  "mutation_contract": "unchanged",
+  "required_command": "cargo test -p evolution-harness",
+  "status": "PASS when scoped suite passes"
+}

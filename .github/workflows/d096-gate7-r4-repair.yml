@@ -1,0 +1,67 @@
+name: D-096 Gate 7 R4 bounded repair
+
+on:
+  push:
+    branches:
+      - strategy/d096-repair-gain-scope-fix
+  pull_request:
+    branches:
+      - strategy/d096-repair-gain-specificity-audit
+
+permissions:
+  contents: read
+
+jobs:
+  r4-repair:
+    runs-on: ubuntu-latest
+    env:
+      RUST_TOOLCHAIN: 1.89.0
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: 1.89.0
+          components: rustfmt
+      - name: D-096 semantic chemistry regressions
+        working-directory: digital-protocell
+        run: |
+          cargo test --release -p chemistry-core --test d096_tests -- d096_repair_gain
+          cargo test --release -p chemistry-core --test d096_tests d096_repaired_decomposition_closes_and_matches_default_production
+          cargo test --release -p chemistry-core --test d096_tests d096_historical_mesh_build_path_is_unchanged
+      - name: Record original Gate 5 invalidation
+        working-directory: digital-protocell
+        run: |
+          set +e
+          cargo test --release -p chemistry-core --test d096_tests d096_reciprocal_prefission_effect_exceeds_neutral_difference
+          status=$?
+          set -e
+          test "$status" -ne 0
+          grep -q 'SR004CR4_REPAIR_INVALIDATES_GATE5' experiments/generated/sr004cr4/final_manifest.json
+      - name: Evolution harness regressions
+        working-directory: digital-protocell
+        run: cargo test --release -p evolution-harness --lib
+      - name: Gate 6 continuity regression
+        working-directory: digital-protocell
+        run: cargo test --release -p evolution-harness d096_real_fission_daughters_close_mutation_and_expression_continuity
+      - name: Gate 6 evidence assay
+        working-directory: digital-protocell
+        run: cargo run --release -p evolution-harness --example d096_gate6_assay
+      - name: R4 repair and requalification evidence
+        working-directory: digital-protocell
+        run: cargo run --release -p evolution-harness --example d096_gate7_repair_gain_r4
+      - name: R4 classification assertions
+        working-directory: digital-protocell
+        run: |
+          grep -q 'SR004CR4_REPAIR_INVALIDATES_GATE5' experiments/generated/sr004cr4/final_manifest.json
+          grep -q '"shadow_rows_passed": 72' experiments/generated/sr004cr4/final_manifest.json
+          grep -q '"gate7_campaign_executed": false' experiments/generated/sr004cr4/final_manifest.json
+          grep -q '"gate8_started": false' experiments/generated/sr004cr4/final_manifest.json
+      - name: Prior artifact immutability
+        run: |
+          test "$(git diff --numstat -- digital-protocell/experiments/generated/sr004c digital-protocell/experiments/generated/sr004cr1 digital-protocell/experiments/generated/sr004cr2 digital-protocell/experiments/generated/sr004cr3 | wc -l)" -eq 0
+      - name: Original Gate 7 workflow did not execute on this head
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          count=$(gh run list --workflow "D-096 Gate 7 single-generation reproductive consequence" --commit "$GITHUB_SHA" --json databaseId --jq 'length')
+          test "$count" -eq 0

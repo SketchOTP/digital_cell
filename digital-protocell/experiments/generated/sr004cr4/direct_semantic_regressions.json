@@ -1,0 +1,13 @@
+{
+  "baseline_specificity": "PASS: coordinate 2 produces no baseline amplification at zero positive strain",
+  "conservation": "PASS: existing accounting regressions remain required",
+  "decomposition": "PASS: J_repaired = J_base + J_strain * g_repair",
+  "default_production": "PASS: Current path uses repaired equation",
+  "strain_specificity": "PASS: positive strain remains sensitive to coordinate 2",
+  "tests": [
+    "d096_repair_gain_does_not_amplify_zero_strain_baseline_build",
+    "d096_repair_gain_remains_sensitive_to_positive_strain",
+    "d096_repaired_decomposition_closes_and_matches_default_production",
+    "d096_historical_mesh_build_path_is_unchanged"
+  ]
+}
