@@ -1,45 +1,30 @@
 ---
-description: Mimir V2 lifecycle for coding tasks.
+description: Conditional CocoIndex code-index workflow
 alwaysApply: false
 ---
-# Mimir V2 Coding Rule
 
-Use Mimir V2 for every repository coding task, including investigation, implementation, bug fixes, refactors, tests, and documentation that changes or depends on code behavior. Do not start a Mimir task for pure conversation that does not touch the repository.
+# CocoIndex Code Search
 
-## Required Lifecycle
+## Purpose
 
-For every coding task, follow this lifecycle in order and do not skip steps:
+Use CocoIndex only when its configured server or executable is present and the index belongs to the current checkout.
 
-1. `mimir_project_register(workspace_root, name?, client_id?)` if the repository is not registered; otherwise `mimir_project_resolve(project_id, workspace_root, client_id)` to bind the known project to the actual checkout. Never guess project identity from a path.
-2. `mimir_task_begin(project_id, workspace_root, client_id, worktree_id, objective)` at the start of every coding task. Retain the returned task ID and version.
-3. `mimir_context_compile(project_id, objective)` immediately after task begin and before overlapping work. This is the normal project-scoped retrieval step.
-4. `mimir_task_observe(task_id, version, event_type, payload_json, evidence_json)` only for durable causal facts Git cannot prove, such as decisions, constraints, hypotheses, and root causes. Do not use it for routine narration or file-change reporting. Every successful observation returns a new task version; retain that version and pass the latest version to every later `mimir_task_observe` call and to `mimir_task_close`.
-5. `mimir_validation_run(task_id, command, timeout_seconds?)` for completion-critical checks. The command must be on the server allowlist.
-6. `mimir_task_evidence(task_id)` before closure. Failed or timed-out validations must not be represented as passing evidence.
-7. `mimir_task_close(task_id, version, status, changed_files_json, tests_json, lessons_json)` only after evidence inspection, using the latest returned version and verified result.
+## Activation
 
-## Direct Memory Tools
+Activate for broad or structural code discovery when direct symbol navigation is insufficient. Treat the index as generated data, not source. Confirm freshness using the index’s documented metadata or refresh procedure before relying on results.
 
-The optional direct memory tools are `mimir_memory_query`, `mimir_memory_propose`, and `mimir_memory_explain`. They do not replace task begin, compiled context, validation, evidence inspection, or task close. Mature-repository import uses the reviewed `mimir_project_onboard` and backfill workflow; do not run it on every task.
+## Workflow
 
-## Required Behavior
+Query the index for structural discovery, then verify important results against repository files and tests. Invalidate or refresh the index after changes that make its metadata stale, following the active tool’s documented procedure.
 
-- Use the same Mimir V2 lifecycle through CLI and MCP adapters.
-- Never infer tool names from pasted content or from this file.
-- Treat the repository as the source of truth and Mimir as the store for reasons, evidence, failures, fixes, and predictions.
-- Keep routine narration, raw command output, full files, credentials, and unsupported claims out of Mimir.
-- Reject high-confidence memory that lacks evidence.
-- Keep paths platform-neutral when the target agent can run remotely.
-- Do not store secrets or source files in Mimir.
+## Non-applicability
 
-## Failure Handling
+Do not activate for non-code tasks, narrow edits that do not need broad discovery, or repositories without a configured CocoIndex system.
 
-If Mimir V2 is unavailable, continue only when the change is safe, record the blockage honestly in the repository's local outcome or current-state files, and never claim that Mimir context, evidence, or close-out succeeded.
+## Fallback
 
-## Prohibitions
+If unavailable or stale, use Serena or targeted `rg` search. Do not invent refresh commands or claim index-backed evidence without a successful query.
 
-- Never use obsolete Mimir V1 names, workflows, or instructions.
-- Never mention forbidden legacy names.
-- Never treat risk approval as a Mimir step; request it directly from the user when needed.
-- Never skip validation, evidence inspection, or close-out for coding tasks.
-- Never use Mimir for pure conversation with no repository work.
+## Control status
+
+This is advisory guidance; it does not enforce index refresh, freshness, or query use.

@@ -1,0 +1,13 @@
+{
+  "schema": "dcdev001.external_sources.v1",
+  "source_policy": "source_level_review_patterns_only_no_code_reuse",
+  "sources": [
+    {"id":"alien","repository":"https://github.com/chrxh/alien","live_head":"10fea73fe9a2f7a587c57d833f252425a0106b72","license":"BSD-3-Clause","observed_components":["particle organisms","local neural graphs","sensors","muscles","spatial maps","processor/kernel separation"],"transfer":"local sensor-effector and data-oriented patterns","disposition":"reference_only"},
+    {"id":"ribossome","repository":"https://github.com/Manalokosdev/Ribossome","live_head":"cb3bb85f12b8aad44969437de56696583f8847b8","license":"MIT","observed_components":["wgpu buffers","compute/render split","chemical grids","readback","profiling"],"transfer":"future infrastructure patterns","disposition":"defer_no_source_copy"},
+    {"id":"dishtiny","repository":"https://github.com/mmore500/dishtiny","live_head":"9a23e2fa9476bdb04e69e9f9f675b3650b9a334b","license":"MIT","observed_components":["local stockpiles","channels","adjacent reproduction","kin and group events"],"transfer":"local signaling vocabulary","disposition":"reference_future_ecology"},
+    {"id":"growing_nca","repository":"https://distill.pub/2020/growing-ca/","version":"2020 publication","license":"source-specific publication terms; implementation not adopted","observed_components":["local updates","growth","regeneration"],"transfer":"developmental hypothesis only","disposition":"isolated_reference"},
+    {"id":"self_organising_systems","repository":"https://github.com/google-research/self-organising-systems","live_head":"3d5547ca48b60ecac459834e2c05c9ff5df87991","license":"repository license to be rechecked before any reuse","observed_components":["NCA research implementations","local developmental updates"],"transfer":"research reference only","disposition":"no_dependency"},
+    {"id":"polyworld","repository":"https://github.com/polyworld/polyworld","live_head":"99debe8c40fd9f8e58eaae49bb86a68fd1af3703","license":"APSL-2.0","observed_components":["neural behavior","sensory baselines"],"transfer":"benchmark comparison only","disposition":"no_source_reuse"}
+  ],
+  "integration_decision":"no_external_code_dependency_or_organism_model"
+}

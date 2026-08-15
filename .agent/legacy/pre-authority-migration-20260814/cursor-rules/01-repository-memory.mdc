@@ -1,0 +1,16 @@
+---
+description: Mandatory local repository memory creation, use, updates, and append-only history
+alwaysApply: true
+---
+
+# Repository Memory
+
+Required files: `.agent/PROJECT_GOAL.md`, `.agent/PROJECT_PROFILE.md`, `.agent/CURRENT.md`, `.agent/DIRECTIVES.md`, `.agent/OUTCOMES.md`, `.agent/LEARNINGS.md`, `.agent/RECORD.md`, and `.agent/REPO_MAP.md`. Create missing files before repository edits and preserve compatible content.
+
+Read `PROJECT_GOAL.md`, `PROJECT_PROFILE.md`, and `CURRENT.md` every task. Read relevant recent `DIRECTIVES.md` and `OUTCOMES.md`; search `LEARNINGS.md` and `RECORD.md` when relevant; consult `REPO_MAP.md` before navigation.
+
+At task start, create a local directive ID, define objective/acceptance/scope/validation/risk, append every task start to `DIRECTIVES.md`, and replace/update `CURRENT.md`. At task end, append every task end to `OUTCOMES.md`, update `CURRENT.md`, update `REPO_MAP.md` for touched or newly understood areas, and update `PROJECT_GOAL.md`/`PROJECT_PROFILE.md` only when canonical facts change.
+
+`DIRECTIVES.md`, `OUTCOMES.md`, `LEARNINGS.md`, and `RECORD.md` are append-only. Never rewrite, reorder, or delete history. Append `LEARNINGS.md` only for reusable evidence-backed facts and `RECORD.md` only for durable decisions, milestones, savepoints, reversals, releases, or audits. Do not force meaningless writes to stable files.
+
+Git is source of truth for code. `.agent` is concise local continuity. Mimir is causal evidence, failures, decisions, and predictions that Git cannot prove.

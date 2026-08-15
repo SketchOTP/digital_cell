@@ -1,0 +1,13 @@
+{
+  "schema":"dcdev001.final_manifest.v1",
+  "directive":"DC-DEV-001A",
+  "conclusion":"DCDEV001_HYBRID_COMPOSITION_SELECTED",
+  "clean_base":"0d2c404c0874d5430dd5d01dbdcc059a842dd689",
+  "scientific_core_modified":false,
+  "external_code_integrated":false,
+  "implementation_started":false,
+  "evolution_started":false,
+  "gate7_started":false,
+  "required_documents":["README.md","goal_alignment.md","clean_scientific_base.md","governance_carryforward.md","external_landscape.md","source_level_component_matrix.md","causal_constraints.md","architecture_candidates.md","developmental_state_architectures.md","sensory_transduction_options.md","motor_effector_options.md","memory_future_path.md","evolution_reentry_path.md","selected_architecture.md","rejected_alternatives.md","first_implementation_contract.md","final_conclusion.md"],
+  "required_artifacts":["goal_alignment.json","clean_base_manifest.json","governance_carryforward.json","governance_carryforward_manifest.json","external_sources.json","component_matrix.json","constraint_matrix.json","architecture_candidates.json","decision_matrix.json","selected_architecture.json","implementation_base.json","first_implementation_contract.json","final_manifest.json"]
+}

@@ -1,0 +1,10 @@
+---
+description: Legacy Cursor compatibility adapter to the Codex-first canonical repository policy
+alwaysApply: true
+---
+
+# Canonical Policy Adapter
+
+`AGENTS.md` is the canonical Codex-first policy and is the always-on repository router. Apply it together with the user’s current request and the active runtime safety controls. Before repository work, read the complete `.agent/` contract. This Cursor rule is retained only as a compatibility adapter and adds no competing precedence, lifecycle, validation, memory, or integration policy.
+
+If this rule conflicts with `AGENTS.md`, report the conflict and use the higher-precedence source defined in `AGENTS.md`.

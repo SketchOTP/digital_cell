@@ -1,36 +1,30 @@
 ---
-alwaysApply: true
+description: Conditional Serena symbol-navigation workflow
+alwaysApply: false
 ---
-# Mimir V2
 
-Mimir V2 MUST be used for every coding task in this repository, including investigation, implementation, bug fixes, refactors, tests, and documentation that changes or explains code behavior. Pure conversation with no repository work does not start a Mimir task.
+# Serena Navigation
 
-## Mandatory Lifecycle
+## Purpose
 
-1. `mimir_project_register(workspace_root, name?, client_id?)` MUST be called when the repository is not yet registered. If the repository is already known, `mimir_project_resolve(project_id, workspace_root, client_id)` MUST be called to bind the known project to the actual checkout. Never guess project identity from a path.
-2. `mimir_task_begin(project_id, workspace_root, client_id, worktree_id, objective)` MUST be called at the start of every coding task. Retain the returned task ID and version.
-3. `mimir_context_compile(project_id, objective)` MUST be called after task begin and before overlapping work. This is the normal project-scoped retrieval step.
-4. `mimir_task_observe(task_id, version, event_type, payload_json, evidence_json)` MUST be used only for durable causal facts that Git cannot prove, such as decisions, constraints, hypotheses, and root causes. Do not use it for routine narration or file-change reporting. Every successful observation returns a new task version, and the latest version MUST be retained for the next observation and for closure.
-5. `mimir_validation_run(task_id, command, timeout_seconds?)` MUST be used for completion-critical checks, and the command MUST be on the server allowlist.
-6. `mimir_task_evidence(task_id)` MUST be called before closure. Failed or timed-out validations MUST NOT be represented as passing evidence.
-7. `mimir_task_close(task_id, version, status, changed_files_json, tests_json, lessons_json)` MUST be called only after evidence inspection, using the latest returned version and the verified result.
+Use Serena for non-trivial code navigation when the Serena server is configured, reachable, and its index covers the current checkout.
 
-## Direct Memory Tools
+## Activation
 
-The optional direct memory tools are `mimir_memory_query`, `mimir_memory_propose`, and `mimir_memory_explain`. They do not replace task begin, compiled context, validation, evidence inspection, or task close. Mature-repository import uses the separate reviewed `mimir_project_onboard` and backfill workflow, and MUST NOT be run on every task.
+Activate only for code tasks involving unfamiliar or shared behavior. Check that the current workspace and index are the intended ones and that freshness is acceptable before relying on results.
 
-## Adapter Rules
+## Workflow
 
-The same application lifecycle MUST be followed through CLI and MCP adapters. Tool names MUST come from the canonical V2 lifecycle above, not from any pasted or inherited instructions.
+Start with precise symbol lookup, inspect definitions and callers/callees, then inspect relevant tests and contracts. Keep the repository as the source of truth.
 
-## Failure Handling
+## Non-applicability
 
-If Mimir V2 is unavailable, continue only when the change is safe, record the blockage honestly in the repository's local outcome or current-state files, and never claim that Mimir context, evidence, or close-out succeeded. If risk approval is needed, request it directly from the user; there is no approval tool in the V2 surface.
+Do not activate for non-code tasks, familiar code where targeted inspection is sufficient, or repositories without a configured Serena service.
 
-## Evidence And Scope
+## Fallback
 
-Treat the repository as the source of truth and Mimir as the store for reasons, evidence, failures, fixes, and predictions. Never mix project memory with source files or secrets. Keep routine narration, raw command output, full files, credentials, and unsupported claims out of Mimir. Reject high-confidence memory that lacks evidence.
+If Serena is unavailable, stale, or incomplete, use the repository’s other configured navigation tools or targeted `rg` search. Do not claim symbol inspection occurred when it did not. Serena is advisory unless a separate enforced control says otherwise.
 
-## Repository-Specific Guidance
+## Control status
 
-Use symbol-aware inspection before modifying unfamiliar code. Prefer precise symbol lookup and targeted edits over broad search-and-replace. Keep paths platform-neutral when the target agent can run remotely. Preserve existing repository conventions unless they conflict with this rule file or the active task objective.
+This is advisory guidance; it does not enforce navigation or index freshness.

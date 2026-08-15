@@ -1,0 +1,26 @@
+---
+description: Retained Digital Cell repository-memory compatibility adapter
+alwaysApply: false
+---
+
+# Repository Memory Compatibility Adapter
+
+## Purpose
+
+Preserve the former repository-memory workflow while routing active lifecycle and append-only rules through the canonical `.agent/` contract.
+
+## Activation
+
+Consult when reconciling historical Digital Cell memory instructions with the current Authority governance skill.
+
+## Non-applicability
+
+Do not treat this adapter as a second governance contract or as permission to rewrite append-only history.
+
+## Fallback
+
+Use `.agent/PROJECT_GOAL.md`, `.agent/PROJECT_PROFILE.md`, `.agent/CURRENT.md`, and the canonical Authority governance skill.
+
+## Control status
+
+This is an advisory compatibility adapter; the canonical Authority contract is authoritative.

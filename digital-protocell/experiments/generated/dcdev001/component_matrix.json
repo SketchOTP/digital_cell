@@ -1,0 +1,11 @@
+{
+  "schema": "dcdev001.component_matrix.v1",
+  "components": [
+    {"component":"local_sensor","external_patterns":["ALIEN sensors","DISHTINY local channels"],"native_authority":"existing local chemistry transport geometry","selected":"yes","implementation":"future bounded adapter"},
+    {"component":"persistent_regulatory_state","external_patterns":["NCA local state","ALIEN neural nodes"],"native_authority":"Digital Cell local patch state","selected":"yes","implementation":"future local patch"},
+    {"component":"development","external_patterns":["Growing NCA regeneration"],"native_authority":"material growth and local regulation","selected":"yes","implementation":"future assay only"},
+    {"component":"effector","external_patterns":["ALIEN muscles"],"native_authority":"existing transport/chemistry/growth interfaces","selected":"yes","implementation":"intent only"},
+    {"component":"GPU_infrastructure","external_patterns":["Ribossome wgpu","ALIEN processor maps"],"native_authority":"not required at first implementation","selected":"no","implementation":"defer measured need"},
+    {"component":"evolution","external_patterns":["DISHTINY life history","external ALife harnesses"],"native_authority":"not authorized","selected":"no","implementation":"future directive"}
+  ]
+}

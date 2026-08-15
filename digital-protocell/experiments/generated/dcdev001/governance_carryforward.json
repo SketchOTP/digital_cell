@@ -1,0 +1,13 @@
+{
+  "schema": "dcdev001.governance_carryforward.v1",
+  "classifications": {
+    "GOVERNANCE_ONLY": ["AGENTS.md", "COMMANDMENTS_OF_THE_CODE.md", "CLAUDE.md", "GEMINI.md", ".agents/", ".cursor/", "scripts/validate_governance.py", "scripts/test_validate_governance.py", ".agent/PROJECT_GOAL.md", ".agent/SR004.md", ".agent/SR004A.md", ".agent/legacy/"],
+    "OPERATIONS_ONLY": ["STORAGE_MAP.md", "docs/storage_archive_policy.md"],
+    "SCIENTIFIC": [],
+    "MIXED": [".agent/CURRENT.md", ".agent/PROJECT_PROFILE.md", ".agent/REPO_MAP.md", ".agent/DIRECTIVES.md", ".agent/OUTCOMES.md", ".agent/LEARNINGS.md", ".agent/RECORD.md"],
+    "DO_NOT_CARRY": ["later digital-protocell/crates/ changes", "later digital-protocell/experiments/generated/ changes", ".github/workflows/ changes"]
+  },
+  "historical_snapshot": ".agent/legacy/pre-dev001-r4-governance-20260815/",
+  "active_state_reconstructed": true,
+  "r4_scientific_state_active": false
+}

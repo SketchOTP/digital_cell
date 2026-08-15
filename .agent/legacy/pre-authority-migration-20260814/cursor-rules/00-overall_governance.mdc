@@ -1,0 +1,85 @@
+---
+alwaysApply: true
+---
+# Overall Governance
+
+Use Mimir V2 for every coding task in this repository, including investigation, implementation, bug fixes, refactors, tests, and documentation that changes or explains code behavior. Pure conversation with no repository work does not start a Mimir task.
+
+## Project Identity
+
+- Source of truth: `.agent/PROJECT_GOAL.md`
+- Repo profile: `.agent/PROJECT_PROFILE.md` when present
+- Never guess project identity, slug, or workspace binding from the path
+- Do not hardcode another repo's product, stack, or identity
+- Keep paths platform-neutral when the agent may run remotely
+
+## Mimir V2 Lifecycle
+
+Follow this exact order whenever you begin repository work:
+
+1. `mimir_project_register(workspace_root, name?, client_id?)` when the repository is not already registered; otherwise `mimir_project_resolve(project_id, workspace_root, client_id)` to bind the known project to the actual checkout. Never guess project identity from a path.
+2. `mimir_task_begin(project_id, workspace_root, client_id, worktree_id, objective)` at the start of every coding task. Retain the returned task ID and version.
+3. `mimir_context_compile(project_id, objective)` after task begin and before overlapping work. This is the normal project-scoped retrieval step.
+4. `mimir_task_observe(task_id, version, event_type, payload_json, evidence_json)` only for durable causal facts Git cannot prove, such as decisions, constraints, hypotheses, and root causes. Do not use it for routine narration or file-change reporting. Every successful observation returns a new task version. Retain the latest version after every observation and pass it to every subsequent `mimir_task_observe` call and to `mimir_task_close`.
+5. `mimir_validation_run(task_id, command, timeout_seconds?)` for completion-critical checks. The command must be on the server allowlist.
+6. `mimir_task_evidence(task_id)` before closure. Failed or timed-out validations must not be represented as passing evidence.
+7. `mimir_retrieval_feedback(session_id, useful_memory_ids_json, missing?)` before close with only memory IDs that actually helped (`[]` if none); never invent usefulness.
+8. `mimir_task_close(task_id, version, status, changed_files_json, tests_json, lessons_json)` only after evidence inspection, using the latest returned version and verified result.
+
+## Required Behavior
+
+- Mimir V2 is mandatory for all repository work. Do not skip task begin, context compile, evidence inspection, or task close.
+- Use the same lifecycle through CLI and MCP adapters.
+- Do not infer tool names from pasted legacy guidance. This contract overrides all older Mimir instructions.
+- Treat the repository as source of truth and Mimir as the store for reasons, evidence, failures, fixes, and predictions.
+- Keep routine narration, raw command output, full files, credentials, and unsupported claims out of Mimir.
+- Reject high-confidence memory that lacks evidence.
+- Never mix project memory or store secrets/source files.
+
+## Direct Memory Tools
+
+The optional direct memory tools are `mimir_memory_query`, `mimir_memory_propose`, and `mimir_memory_explain`. They do not replace task begin, compiled context, validation, evidence inspection, or task close.
+
+Mature-repository onboarding uses the separate reviewed `mimir_project_onboard` and backfill workflow. Do not run it on every task.
+
+## Failure Handling
+
+If Mimir V2 is unavailable:
+
+- Continue only when the change is safe
+- Record the blockage honestly in the repository's local outcome/current-state files
+- Never claim that Mimir context, evidence, or close-out succeeded
+
+If a required Mimir step cannot be completed, say so plainly and do not fake the result.
+
+## Repository Workflow
+
+- Read the smallest useful context before editing.
+- Keep `.agent/CURRENT.md` small and current only.
+- Preserve append-only logs as append-only.
+- Update local status files honestly when Mimir is unavailable.
+- Run the smallest useful validation for the change.
+- Compare completed work against the task objective before final response.
+- Keep changes focused; fix the root cause, not only the symptom.
+- Prefer boring, minimal, repository-native solutions.
+- Preserve useful repository-specific workflow rules unless they conflict with this policy.
+
+## Local Status Files
+
+When Mimir is unavailable, use the repository's local state files for concise tracking:
+
+- `.agent/CURRENT.md`
+- `.agent/DIRECTIVES.md`
+- `.agent/OUTCOMES.md`
+- `.agent/LEARNINGS.md`
+- `.agent/REPO_MAP.md`
+
+These files are repository memory, not a substitute for Mimir V2.
+
+## Compactness
+
+Keep this file compact, but do not omit the mandatory Mimir lifecycle, validation and evidence requirements, failure handling, or prohibited content.
+
+## Mandatory retrieval feedback
+
+After every `mimir_context_compile`, retain `retrieval.session_id` and item `memory_id` values; before `mimir_task_close`, call `mimir_retrieval_feedback` with only IDs that actually helped (`[]` if none) and an optional missing-context note. Never invent usefulness; do not rely on dashboard rating when MCP is available.

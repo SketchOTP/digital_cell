@@ -1,63 +1,34 @@
 ---
-alwaysApply: true
+description: Conditional Mimir integration workflow
+alwaysApply: false
 ---
-# Mimir V2 Governance
 
-Mimir V2 MUST be used for every coding task in this repository, including investigation, implementation, bug fixes, refactors, tests, and documentation tied to code behavior. Pure conversation with no repository work does not start a Mimir task.
+# Mimir Integration
 
-## Mandatory Mimir V2 MCP Lifecycle
+## Purpose
 
-The agent MUST follow this exact lifecycle sequence and invoke the corresponding MCP tools:
+Use this rule only when a project-scoped Mimir MCP server or documented Mimir adapter is configured and reachable.
 
-1. **Project Registration / Resolution**:
-   - Call `mimir_project_register(workspace_root, name?, client_id?)` when the repository is not registered.
-   - Otherwise, call `mimir_project_resolve(project_id, workspace_root, client_id)` to bind the known project to the actual checkout.
-   - You MUST NEVER guess project identity from a path.
+## Activation
 
-2. **Task Inception**:
-   - Call `mimir_task_begin(project_id, workspace_root, client_id, worktree_id, objective)` at the start of every coding task.
-   - You MUST retain the returned task ID and version.
+Activate for repository work when the active tool catalog exposes Mimir tools or the project profile contains a verified Mimir binding. Do not activate it merely because this file exists. It is mandatory for the Mimir-governed task lifecycle only when the active project contract requires that lifecycle.
 
-3. **Context Compilation**:
-   - Call `mimir_context_compile(project_id, objective)` after task begin and before overlapping work. This is the normal project-scoped retrieval step.
+## Workflow
 
-4. **Task Observation**:
-   - Call `mimir_task_observe(task_id, version, event_type, payload_json, evidence_json)` ONLY for durable causal facts Git cannot prove, such as decisions, constraints, hypotheses, and root causes.
-   - You MUST NEVER call it for routine narration or file-change reporting.
-   - Every successful observation returns a new task version. You MUST retain the new version after every observation and pass the latest version to every subsequent observation call and to the task closure call.
+Resolve or register the current repository using verified project metadata, then follow the currently exposed Mimir lifecycle in its documented order. Preserve returned task versions and retrieval identifiers. Use Mimir for durable causal facts, evidence, and outcomes that the local repository cannot prove; keep local directive and outcome ledgers authoritative for project history.
 
-5. **Validation Run**:
-   - Call `mimir_validation_run(task_id, command, timeout_seconds?)` for completion-critical checks.
-   - The command MUST be on the server allowlist.
+## Data boundaries
 
-6. **Evidence Inspection**:
-   - Call `mimir_task_evidence(task_id)` before closure.
-   - Failed or timed-out validations MUST NEVER be represented as passing evidence.
+Never store secrets, credentials, environment files, raw logs, full source files, full diffs, routine narration, or unsupported high-confidence claims.
 
-7. **Task Closure**:
-   - Call `mimir_task_close(task_id, version, status, changed_files_json, tests_json, lessons_json)` only after evidence inspection, using the latest returned version and verified result.
+## Non-applicability
 
-## General Policies and Constraints
+Do not activate when no Mimir server or verified project binding is present, or for pure conversation with no repository work.
 
-- **Adapter Consistency**: You MUST require the same application lifecycle through CLI and MCP adapters. Never infer tool names from the current file or local environments. The canonical V2 contract above overrides all pasted Mimir content.
-- **Repository as Source of Truth**: The local repository is the source of truth. Mimir MUST be used as the store for reasons, evidence, failures, fixes, and predictions.
-- **No Source or Secrets in Memory**: You MUST NEVER mix project memory or store secrets/source files in Mimir.
-- **Evidence-Backed Memory**: You MUST reject high-confidence memory that lacks evidence. Keep routine narration, raw command output, full files, credentials, and unsupported claims out of Mimir.
-- **Platform Neutrality**: Keep all file paths platform-neutral when the target agent can run remotely.
+## Fallback
 
-## Direct Memory Tools
+If Mimir is unavailable, record the exact unavailable step locally, continue only when safe, and report the limitation. Never claim Mimir context, validation, evidence, retrieval feedback, or closure succeeded when it did not.
 
-- The optional direct memory tools are `mimir_memory_query`, `mimir_memory_propose`, and `mimir_memory_explain`.
-- These tools MUST NOT replace the core lifecycle steps: task begin, compiled context, validation, evidence inspection, or task close.
-- Mature-repository onboarding uses the separate reviewed `mimir_project_onboard` and backfill workflow; you MUST NOT run it on every task.
+## Control status
 
-## Failure Behavior
-
-- If Mimir V2 is unavailable, you MUST continue only when the change is safe.
-- You MUST record the blockage honestly in the repository's local outcome/current-state files.
-- You MUST NEVER claim that Mimir context, evidence, or close-out succeeded when the Mimir V2 service was unavailable.
-
-## Repository Notes
-
-- Prefer the repository’s local status files for concise current-state tracking when Mimir is unavailable.
-- Preserve useful repository-specific workflow rules unless they conflict with this policy.
+This is advisory guidance unless the active project contract and Mimir service enforce a required lifecycle.

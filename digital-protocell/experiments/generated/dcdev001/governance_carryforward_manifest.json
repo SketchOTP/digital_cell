@@ -1,0 +1,8 @@
+{
+  "schema": "dcdev001.governance_carryforward_manifest.v1",
+  "directive": "DC-DEV-001A",
+  "classification_file": "governance_carryforward.json",
+  "preservation_rule": "append_only_history_preserved; mutable_current_state_rewritten",
+  "excluded_authority": "R4_PR8_and_D096_stack",
+  "validation": ["ADOPTED governance validator", "direct fixture runner limitation recorded"]
+}

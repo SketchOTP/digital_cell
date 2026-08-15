@@ -1,0 +1,47 @@
+{
+  "schema": "DC-DEV-001A-governance-carryforward-manifest-v1",
+  "scientific_base_commit": "0d2c404c0874d5430dd5d01dbdcc059a842dd689",
+  "scientific_base_branch": "strategy/d094-evolutionary-requalification",
+  "operational_source_commit": "456818fffbbbff2640984a8b81a41051bf03be75",
+  "effective_branch": "strategy/dc-dev-001-architecture-selection",
+  "effective_branch_head_at_creation": "0d2c404c0874d5430dd5d01dbdcc059a842dd689",
+  "governance_source_state": "current Atlas checkout plus verified operational governance files",
+  "carried_forward": [
+    "AGENTS.md",
+    "COMMANDMENTS_OF_THE_CODE.md",
+    "CLAUDE.md",
+    "GEMINI.md",
+    ".agents/",
+    ".cursor/",
+    "scripts/validate_governance.py",
+    "scripts/test_validate_governance.py",
+    "STORAGE_MAP.md",
+    "docs/storage_archive_policy.md",
+    ".agent/PROJECT_GOAL.md",
+    ".agent/DIRECTIVES.md",
+    ".agent/OUTCOMES.md",
+    ".agent/LEARNINGS.md",
+    ".agent/RECORD.md",
+    ".agent/SR004.md",
+    ".agent/SR004A.md",
+    ".agent/legacy/"
+  ],
+  "reconstructed": [
+    ".agent/CURRENT.md",
+    ".agent/PROJECT_PROFILE.md",
+    ".agent/REPO_MAP.md"
+  ],
+  "excluded": [
+    "all later chemistry-core, mesh, experiment-runner, and evolution-harness changes",
+    "all later D-096/D-098/R1/R2/R3/R4 generated evidence",
+    "all later D-096/R4 CI workflows and assay examples",
+    "all later scientific parameter and production behavior changes"
+  ],
+  "verification_requirements": [
+    "git diff against exact scientific base contains no production organism behavior change",
+    "D-088 physical reproduction sources and tests remain from the base tree",
+    "generic evolution-harness remains from the base tree",
+    "no rejected D-096 implementation is made active or default",
+    "governance validator passes in ADOPTED mode"
+  ]
+}

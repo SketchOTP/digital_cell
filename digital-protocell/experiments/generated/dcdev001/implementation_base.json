@@ -1,0 +1,10 @@
+{
+  "schema": "dcdev001.implementation_base.v1",
+  "base_commit":"0d2c404c0874d5430dd5d01dbdcc059a842dd689",
+  "base_branch":"strategy/d094-evolutionary-requalification",
+  "new_branch":"strategy/dc-dev-001-architecture-selection",
+  "allowed_changes":["governance reconciliation","architecture-selection documentation","machine-readable manifests"],
+  "forbidden_changes":["certified chemistry","mesh mechanics","metabolism","transport","growth","fission","D-088/D-094 mechanisms","selection","evolution","production controller"],
+  "dependency_policy":"no_external_runtime_or_source_dependency",
+  "implementation_started":false
+}

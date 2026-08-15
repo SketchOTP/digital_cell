@@ -1,0 +1,12 @@
+{
+  "schema": "dcdev001.clean_base_manifest.v1",
+  "base_commit": "0d2c404c0874d5430dd5d01dbdcc059a842dd689",
+  "base_branch": "strategy/d094-evolutionary-requalification",
+  "work_branch": "strategy/dc-dev-001-architecture-selection",
+  "worktree": "/home/sketch/Projects/digital_cell_dcdev001",
+  "scientific_source_carryforward": [],
+  "excluded_later_state": ["D-096 source", "R4 source", "later generated evidence", "later workflows"],
+  "source_change_policy": "docs_and_governance_artifacts_only",
+  "scientific_core_modified": false,
+  "verification": {"base_checkout_created": true, "scientific_diff_at_gate0": "empty", "dirty_source_checkout_preserved": true}
+}

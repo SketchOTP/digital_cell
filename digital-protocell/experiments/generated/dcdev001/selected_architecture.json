@@ -1,0 +1,10 @@
+{
+  "schema": "dcdev001.selected_architecture.v1",
+  "conclusion": "DCDEV001_HYBRID_COMPOSITION_SELECTED",
+  "name": "Digital-Cell-native distributed regulatory patches informed by external patterns",
+  "causal_authority":"Digital Cell material mesh and approved chemistry/transport/growth/fission",
+  "selected_concepts": ["local sensor transduction","persistent local regulatory state","bounded local effector intent","developmental persistence and regeneration as future assays","local signaling vocabulary"],
+  "not_selected": ["external source code","external dependency","genome-built body","CA replacement substrate","central controller","target morphology","fitness scalar","selection campaign"],
+  "future_interface":"LocalRegulatoryPatch",
+  "gate7_authorized":false
+}

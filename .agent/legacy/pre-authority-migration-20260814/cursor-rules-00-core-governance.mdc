@@ -1,0 +1,18 @@
+---
+description: Mandatory repository governance, Ponytail scope control, navigation, validation, and closeout
+alwaysApply: true
+---
+
+# Core Governance
+
+Priority: explicit user request; safety/data integrity; existing contracts and tests; AGENTS.md; Cursor rules; repository evidence; assumptions. Never invent requirements.
+
+For every repository task, use this rule, `01-repository-memory.mdc`, and `02-mimir-v2.mdc`. Pure conversation does not start repository governance or Mimir.
+
+Ponytail: do the least work that is actually correct. Prefer existing behavior, deletion/configuration, native or installed capabilities, and one clear local edit. Keep the smallest correct diff. Fix root causes, not symptoms. Do not add speculative abstractions or unrelated cleanup. Ponytail never permits skipping validation, security, accessibility, compatibility, or data safety.
+
+Before edits: resolve the workspace root; perform repository-memory start; inspect Git status and relevant diffs; state objective and observable acceptance; identify scope/risk/validation; begin and compile Mimir context. Do not overwrite, revert, delete, format, or commit unrelated user work.
+
+Navigate from `REPO_MAP.md`, known symbols, tests, callers, and imports. Follow affected inputs, outputs, state, errors, and contracts. Search callers before changing shared behavior. Update stale map entries when discovered.
+
+Validate with the smallest sufficient targeted test/check. Completion requires honest acceptance status, inspected validation evidence, closed local memory, closed or BLOCKED Mimir, and final Git-status review.

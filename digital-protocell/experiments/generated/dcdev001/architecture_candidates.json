@@ -1,0 +1,9 @@
+{
+  "schema": "dcdev001.architecture_candidates.v1",
+  "candidates": [
+    {"id":"A","name":"mesh_native_distributed_patches","kind":"native","centralization":"none","development":"coupled local state and material","sensor_effector":"bounded local adapters","decision":"selected_in_hybrid"},
+    {"id":"B","name":"local_neural_or_spiking_graph","kind":"native_extension","centralization":"none","development":"local graph dynamics","sensor_effector":"explicit local nodes","decision":"future-compatible_not_first_scope"},
+    {"id":"C","name":"alien_style_genome_neural_muscle_organism","kind":"external","centralization":"distributed_but_separate_body_authority","development":"genome-built body","sensor_effector":"neural sensors muscles","decision":"rejected_integration"},
+    {"id":"D","name":"nca_developmental_field","kind":"surrogate_reference","centralization":"none","development":"local growth and regeneration","sensor_effector":"field channels","decision":"reference_or_isolated_spike_only"}
+  ]
+}

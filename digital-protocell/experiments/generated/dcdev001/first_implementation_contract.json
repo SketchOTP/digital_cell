@@ -1,0 +1,12 @@
+{
+  "schema":"dcdev001.first_implementation_contract.v1",
+  "status":"future_contract_only",
+  "type":"LocalRegulatoryPatch",
+  "inputs":["versioned_local_sensor_frame","bounded_neighbor_frame","accepted_dt","seed","implementation_version"],
+  "state":["bounded_local_regulatory_state","developmental_phase","adaptation_or_decay_state"],
+  "outputs":["bounded_local_effector_intents","provenance_record"],
+  "invariants":["no_material_creation","no_material_destruction_outside_authority","no_global_population_read","no_birth_or_death_authorization","deterministic_replay","explicit_unsupported_status"],
+  "first_assay":["one_local_sensor","one_persistent_state_variable","one_bounded_effector","perturbation_response","multi_step_persistence","neutral_noop_control","conservation_audit"],
+  "excluded":["selection","fitness","learning claim","memory claim","reproduction qualification","evolution"],
+  "implementation_started":false
+}

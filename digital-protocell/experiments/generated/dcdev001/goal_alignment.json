@@ -1,0 +1,11 @@
+{
+  "schema": "dcdev001.goal_alignment.v1",
+  "directive": "DC-DEV-001A",
+  "end_goal": "persistent embodied digital lifeform from causal material protocell dynamics",
+  "required_properties": ["distributed_regulation", "local_sensing", "development", "future_memory_identity", "lawful_heredity"],
+  "forbidden_shortcuts": ["central_controller", "llm_controller", "fitness_scalar", "target_morphology", "assigned_birth", "external_organism_authority"],
+  "current_authority": "material_mesh_and_phase1_certifier",
+  "current_disposition": "architecture_selection_only",
+  "evolution_authorized": false,
+  "selected_conclusion": "DCDEV001_HYBRID_COMPOSITION_SELECTED"
+}
