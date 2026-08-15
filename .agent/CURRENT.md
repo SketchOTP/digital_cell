@@ -10,11 +10,11 @@
 - Local directive ID: `D-20260815-dcdev004-energy-coupled-local-contractility`
 - External directive ID: `DC-DEV-004`
 - Objective: `Give the accepted distributed regulatory state exactly one causal, local, energetically funded physical influence on the material body.`
-- Current status: `IN_PROGRESS`
-- Acceptance: `DC-DEV-004 remains in bounded implementation and validation; architect review is required before any later directive.`
+- Current status: `VALIDATING`
+- Acceptance: `DC-DEV-004 scoped implementation and exact-head remote CI are complete; architect review is required before any later directive.`
 - Current phase: `DC-DEV-004 local contractility package from entry e4cdb8a4fd9316e51e6490fd0f833097f02be6bb.`
 - Expected or actual touched areas: `bounded chemistry-core mechanics hook, regulatory-core contractility adapter, DC-DEV-004 assay/artifacts/docs/workflow, current governance state`
-- Immediate next action: `Complete scoped regressions and remote draft PR validation; do not begin DC-DEV-005 or any additional actuator/sensor capability.`
+- Immediate next action: `Await architect review of the pushed draft PR; do not begin DC-DEV-005 or any additional actuator/sensor capability.`
 
 ## Temporary task-relevant facts
 
@@ -29,7 +29,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Local regulatory-core suite and DC-DEV-004 gate assay from e4cdb8a4fd9316e51e6490fd0f833097f02be6bb`
+- Command or check: `Exact-head GitHub Actions run 31914737565 at 0d45396f394f3a41f3b5b60cc46f1ce074a66bf0`
 - Result: `PASSED`
 
 ## Risks
@@ -39,7 +39,7 @@
 
 ## Blockers
 
-- Exact-head remote CI and architect re-review are required before any later directive.
+- Architect re-review is required before any later directive; exact-head remote CI run 31914737565 passed.
 
 ## Pending decisions
 

@@ -91,7 +91,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Supersedes outcome: none
 - Closed: 2026-08-15T19:17:08-04:00
 - Acceptance: PARTIAL
-- Summary: The first bounded local contractility implementation and local gate assay are complete from the accepted DC-DEV-003 head; final scoped remote CI and architect review remain pending.
+- Summary: The first bounded local contractility implementation and local gate assay are complete from the accepted DC-DEV-003 head; exact-head scoped remote CI passed and architect review remains pending.
 - Changed areas: bounded chemistry-core edge-tension mechanics hook, regulatory-core contractility adapter, DC-DEV-004 assay/artifacts/docs/workflow, current governance state.
 - Validation:
   - Regulatory-core suite - PASSED (18 tests)
@@ -102,8 +102,8 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Local deformation and tensile closed-loop reduction - PASSED
   - Repeated-actuation metabolic limitation - PASSED
   - DC-DEV-003 remesh continuity compatibility - PASSED locally
-  - Final preservation regressions and exact-head remote CI - PENDING
+  - Final preservation regressions and exact-head remote CI run 31914737565 on 0d45396f394f3a41f3b5b60cc46f1ce074a66bf0 - PASSED
   - Architect review - PENDING
-- Remaining risks: final CI must verify the exact pushed head and preservation boundaries; architect must inspect the physical interpretation and frozen resource conversion.
-- Blockers: final exact-head validation and architect review.
+- Remaining risks: architect must inspect the physical interpretation and frozen resource conversion.
+- Blockers: architect review.
 - Follow-up directive: none
