@@ -1,0 +1,33 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "nonlocal_jump": false,
+  "post_pulse_zero_stimulus_steps": 3,
+  "result": "DCDEV002_GATE5_PROPAGATION_PASS",
+  "stimulus_pulse_steps": 1,
+  "values_by_graph_distance": [
+    {
+      "activity": 0.0687724,
+      "graph_distance": 0
+    },
+    {
+      "activity": 0.00433392,
+      "graph_distance": 1
+    },
+    {
+      "activity": 0.00009120000000000002,
+      "graph_distance": 2
+    },
+    {
+      "activity": 6.400000000000001e-7,
+      "graph_distance": 3
+    },
+    {
+      "activity": 0.0,
+      "graph_distance": 4
+    },
+    {
+      "activity": 0.0,
+      "graph_distance": 5
+    }
+  ]
+}

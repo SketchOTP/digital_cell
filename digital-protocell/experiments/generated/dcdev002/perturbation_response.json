@@ -1,0 +1,8 @@
+{
+  "activity_after_off": 0.076,
+  "artifact_status": "AUTHORITATIVE",
+  "result": "DCDEV002_GATE7_PERTURBATION_PASS",
+  "stimulus_off_frame": true,
+  "stimulus_on_positive": true,
+  "stored_target_shape": false
+}

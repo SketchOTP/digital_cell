@@ -37,3 +37,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260815-dcdev001a-architecture-selection
 - Status at issuance: ISSUED
+
+## D-20260815-dcdev002-local-regulatory-substrate
+
+- Issued: `2026-08-15T18:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-002`
+- Objective: Implement the minimal distributed regulatory substrate selected by DC-DEV-001A: one bounded local state per material-mesh vertex, two-neighbor propagation, one non-semantic tensile transducer, deterministic multi-step dynamics, and read-only isolation from certified biology.
+- Scope: New `regulatory-core` crate, immutable material-frame adapter, frozen Gates -1 through 11, generated artifacts, documentation, scoped CI, focused regressions, and draft PR from exact entry commit `8caf5a19061b0ad34723333e979f30637bdf2c2d`.
+- Exclusions: chemistry-core source, mesh mechanics, chemistry, transport, growth, fission, death, reserve, D-088, D-094, D-096, effectors, motor behavior, learning, memory, evolution, topology-state transfer, and DC-DEV-003.
+- Acceptance: Exact starting head, new stacked draft PR, all frozen gates, remote CI, artifact/documentation provenance, and architect review.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

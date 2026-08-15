@@ -1,0 +1,17 @@
+[package]
+name = "regulatory-core"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+chemistry-core = { path = "../chemistry-core" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+serde_json = { workspace = true }
+
+[[example]]
+name = "dcdev002_gate_assay"
+path = "../../examples/dcdev002_gate_assay.rs"
