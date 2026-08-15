@@ -71,7 +71,7 @@ fn edge_unit(mesh: &MaterialMesh, i: usize) -> ([f64; 2], f64) {
 
 fn outward_normal(mesh: &MaterialMesh, i: usize) -> [f64; 2] {
     // Edge tangent CCW → outward for positive area is rotate tangent by -90° in screen coords
-    // if CCW (signed area > 0): outward = (ty, -tx) for inward? 
+    // if CCW (signed area > 0): outward = (ty, -tx) for inward?
     // For CCW polygon, inward normal = rotate tangent +90°: (-ty, tx); outward = (ty, -tx).
     let (t, _) = edge_unit(mesh, i);
     let sign = if mesh.signed_area() >= 0.0 { 1.0 } else { -1.0 };
@@ -82,9 +82,7 @@ fn outward_normal(mesh: &MaterialMesh, i: usize) -> [f64; 2] {
 /// Uses lumped interior vs exterior only (no total area / radius / whole-organism mass).
 pub fn local_pressure(mesh: &MaterialMesh, _i: usize) -> f64 {
     let inside = mesh.interior.c + mesh.interior.a + 0.5 * (mesh.interior.n + mesh.interior.f);
-    let outside = mesh.exterior.c
-        + mesh.exterior.a
-        + 0.5 * (mesh.exterior.n + mesh.exterior.f);
+    let outside = mesh.exterior.c + mesh.exterior.a + 0.5 * (mesh.exterior.n + mesh.exterior.f);
     inside - outside
 }
 
@@ -174,6 +172,55 @@ pub fn mechanics_step(mesh: &mut MaterialMesh, params: &MechParams) -> bool {
         && (mesh.total_bound_membrane() - b_before).abs() < 1e-12
         && (mesh.free_l - l_before).abs() < 1e-12;
     ok
+}
+
+/// Overdamped mechanics step with additional bounded tension on existing
+/// edges. The caller supplies tension only; this function retains authority
+/// over vertex movement and material-conservation checks.
+pub fn mechanics_step_with_edge_tensions(
+    mesh: &mut MaterialMesh,
+    params: &MechParams,
+    edge_tensions: &[f64],
+) -> bool {
+    if !mesh.alive || mesh.n() < 3 || edge_tensions.len() != mesh.n() {
+        return false;
+    }
+    let mut forces = compute_forces(mesh, params);
+    for (i, tension) in edge_tensions.iter().copied().enumerate() {
+        if mesh.edges[i].ruptured || !tension.is_finite() || tension < 0.0 {
+            return false;
+        }
+        if tension == 0.0 {
+            continue;
+        }
+        let n = mesh.n();
+        let a = mesh.vertices[i];
+        let b = mesh.vertices[(i + 1) % n];
+        let dx = b[0] - a[0];
+        let dy = b[1] - a[1];
+        let length = dx.hypot(dy).max(1e-15);
+        let tx = dx / length;
+        let ty = dy / length;
+        // Positive tension pulls the two existing endpoints together.
+        forces[i][0] += tension * tx;
+        forces[i][1] += tension * ty;
+        let j = (i + 1) % n;
+        forces[j][0] -= tension * tx;
+        forces[j][1] -= tension * ty;
+    }
+
+    let inv_g = 1.0 / params.gamma.max(1e-15);
+    let dt = params.dt;
+    let m_before = mesh.total_structural_mass();
+    let b_before = mesh.total_bound_membrane();
+    let l_before = mesh.free_l;
+    for (i, fi) in forces.iter().enumerate() {
+        mesh.vertices[i][0] += dt * inv_g * fi[0];
+        mesh.vertices[i][1] += dt * inv_g * fi[1];
+    }
+    (mesh.total_structural_mass() - m_before).abs() < 1e-12
+        && (mesh.total_bound_membrane() - b_before).abs() < 1e-12
+        && (mesh.free_l - l_before).abs() < 1e-12
 }
 
 /// Conservative split when length exceeds l_max.

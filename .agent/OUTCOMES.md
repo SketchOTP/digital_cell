@@ -84,3 +84,26 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: final CI may expose formatting or integration defects; architect must verify the mapping semantics and exact remote head.
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
+
+## D-20260815-dcdev004-energy-coupled-local-contractility - PARTIAL
+
+- Outcome ID: OUT-DCDEV004-ENERGY-COUPLED-LOCAL-CONTRACTILITY
+- Supersedes outcome: none
+- Closed: 2026-08-15T19:17:08-04:00
+- Acceptance: PARTIAL
+- Summary: The first bounded local contractility implementation and local gate assay are complete from the accepted DC-DEV-003 head; exact-head scoped remote CI passed and architect review remains pending.
+- Changed areas: bounded chemistry-core edge-tension mechanics hook, regulatory-core contractility adapter, DC-DEV-004 assay/artifacts/docs/workflow, current governance state.
+- Validation:
+  - Regulatory-core suite - PASSED (18 tests)
+  - DC-DEV-004 local gate assay - PASSED (Gates 0 through 7)
+  - D-091 reserve R selected as existing funding resource; R to W expenditure observed
+  - Zero-activity exact legacy parity - PASSED
+  - Zero-resource no-actuation parity - PASSED
+  - Local deformation and tensile closed-loop reduction - PASSED
+  - Repeated-actuation metabolic limitation - PASSED
+  - DC-DEV-003 remesh continuity compatibility - PASSED locally
+  - Final preservation regressions and exact-head remote CI run 31914737565 on 0d45396f394f3a41f3b5b60cc46f1ce074a66bf0 - PASSED
+  - Architect review - PENDING
+- Remaining risks: architect must inspect the physical interpretation and frozen resource conversion.
+- Blockers: architect review.
+- Follow-up directive: none

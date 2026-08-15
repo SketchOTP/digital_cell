@@ -47,3 +47,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-003 bounded continuity assay.
 - Supersedes learning: none
+
+## L-DCDEV004-001
+
+- Learning ID: L-DCDEV004-001
+- Date: 2026-08-15
+- Fact or lesson: A single local contractile edge-tension rule can be funded by existing D-091 reserve R, spend R into existing W, preserve exact zero-activity mechanics parity, and close a local tensile sensorimotor loop without target geometry or a central action selector.
+- Evidence location: `digital-protocell/crates/regulatory-core/src/contractility.rs`, `digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs`, `digital-protocell/experiments/generated/dcdev004/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev004/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-004 bounded local contractility assay.
+- Supersedes learning: none

@@ -65,3 +65,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260815-dcdev004-energy-coupled-local-contractility
+
+- Issued: `2026-08-15T19:17:08-04:00`
+- Issuer: User
+- External directive: `DC-DEV-004`
+- Objective: Give accepted distributed regulatory activity exactly one local, energetically constrained causal influence on the material body.
+- Scope: One bounded local contractile tension actuator on existing mesh edges, D-091 reserve R funding, exact zero-resource and zero-activity parity, local tensile closed-loop assay, metabolic limitation, distributed-authority proof, DC-DEV-003 remesh compatibility, generated evidence, documentation, governance, focused regressions, exact-head CI, and draft PR.
+- Exclusions: second actuator, new sensors, target coordinates/shapes, displacement commands, planner, behavior labels, reward/fitness, learning, memory, identity, external sensing, evolution, fission-state inheritance, locomotion optimization, and DC-DEV-005.
+- Acceptance: `DCDEV004_ENERGY_COUPLED_LOCAL_ACTUATION_QUALIFIED` only after exact-head remote CI and architect review from entry `e4cdb8a4fd9316e51e6490fd0f833097f02be6bb` on source `strategy/dc-dev-003-regulatory-topology-continuity` to implementation `strategy/dc-dev-004-local-contractility`.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

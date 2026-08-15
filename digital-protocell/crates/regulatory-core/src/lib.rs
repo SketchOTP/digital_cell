@@ -4,13 +4,21 @@
 //! mesh adapter is intentionally a separate module and accepts an immutable
 //! `MaterialMesh` reference; no regulator method accepts a mesh or mutable
 //! organism state.  This crate therefore computes internal regulatory state
-//! and provenance only.  It has no effector, motor, chemistry, growth, or
-//! organism-authority output.
+//! and provenance only.  The DC-DEV-004 contractility adapter is a separate,
+//! explicitly authorized boundary that consumes this state through one local
+//! edge-tension rule; it does not add a semantic action or central controller.
 
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
 
 pub mod continuity;
+pub mod contractility;
+
+pub use contractility::{
+    apply_local_contractility, ContractilityError, ContractilityParamsV1,
+    ContractilityStepLedgerV1, CONTRACTILITY_SCHEMA_V1, FROZEN_MAX_ACTIVE_TENSION,
+    FROZEN_RESERVE_COST_PER_FORCE_LENGTH_TIME,
+};
 
 pub use continuity::{
     ContinuityMaterialFrameV1, ContinuityNetworkV1, ContinuityPatchV1, ContinuityStepLedgerV1,
@@ -296,8 +304,8 @@ impl RegulatoryNetworkV1 {
     }
 }
 
-/// Immutable observation adapter.  It is the only code in this crate that
-/// accepts a `MaterialMesh`; the regulator itself receives only a frame.
+/// Immutable observation adapter for the DC-DEV-002/DC-DEV-003 material frame;
+/// the regulator itself receives only a frame.
 pub mod material_adapter {
     use super::{ContinuityMaterialFrameV1, LocalMaterialFrameV1, CLOSED_RING_TOPOLOGY_V1};
     use chemistry_core::material_mesh::MaterialMesh;

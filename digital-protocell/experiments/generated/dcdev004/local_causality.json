@@ -1,0 +1,14 @@
+{
+  "active_edge_indices": [
+    0,
+    1,
+    23
+  ],
+  "artifact_status": "AUTHORITATIVE",
+  "direct_vertex_setting_api": false,
+  "distant_instantaneous_command_absent": true,
+  "distant_vertex_delta": 0.0,
+  "local_deformation": true,
+  "local_vertex_delta": 0.0007849276549289034,
+  "result": "DCDEV004_GATE3_LOCAL_CAUSALITY_PASS"
+}

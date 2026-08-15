@@ -1,0 +1,10 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "d088_focused_regression": "PASSED (4 tests)",
+  "dcdev002_dcdev003": "PASSED",
+  "evolution_harness_regression": "PASSED (40 tests)",
+  "exact_head_remote_ci": "PENDING",
+  "governance": "PASSED",
+  "phase1_focused_regression": "PASSED (4 tests)",
+  "regulatory_core": "PASSED"
+}
