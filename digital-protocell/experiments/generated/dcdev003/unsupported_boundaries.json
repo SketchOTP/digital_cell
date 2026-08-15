@@ -1,0 +1,8 @@
+{
+  "artifact_status": "CONTROL",
+  "fission_error": "unsupported topology event: Fission",
+  "fission_fail_closed": true,
+  "result": "DCDEV003_GATE5_FAIL_CLOSED_PASS",
+  "unknown_fail_closed": true,
+  "unknown_topology_error": "unsupported topology event: Unknown"
+}

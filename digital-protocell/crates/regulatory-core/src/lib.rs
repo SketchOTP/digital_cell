@@ -10,6 +10,13 @@
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
 
+pub mod continuity;
+
+pub use continuity::{
+    ContinuityMaterialFrameV1, ContinuityNetworkV1, ContinuityPatchV1, ContinuityStepLedgerV1,
+    TopologyEventV1, TopologyMappingV1,
+};
+
 pub const LOCAL_MATERIAL_FRAME_SCHEMA_V1: &str = "digital_cell_local_material_frame_v1";
 pub const REGULATORY_STATE_SCHEMA_V1: &str = "digital_cell_regulatory_state_v1";
 pub const REGULATORY_PARAMS_SCHEMA_V1: &str = "digital_cell_regulatory_params_v1";
@@ -292,7 +299,7 @@ impl RegulatoryNetworkV1 {
 /// Immutable observation adapter.  It is the only code in this crate that
 /// accepts a `MaterialMesh`; the regulator itself receives only a frame.
 pub mod material_adapter {
-    use super::{LocalMaterialFrameV1, CLOSED_RING_TOPOLOGY_V1};
+    use super::{ContinuityMaterialFrameV1, LocalMaterialFrameV1, CLOSED_RING_TOPOLOGY_V1};
     use chemistry_core::material_mesh::MaterialMesh;
     use chemistry_core::mesh_mechanics::MechParams;
 
@@ -325,6 +332,27 @@ pub mod material_adapter {
             topology_identity: CLOSED_RING_TOPOLOGY_V1.to_string(),
             patches,
         }
+    }
+
+    /// Observe the same local tensile signal while retaining immutable vertex
+    /// positions for DC-DEV-003 local topology correspondence.
+    pub fn observe_continuity_material_frame(
+        mesh: &MaterialMesh,
+        mechanics: &MechParams,
+    ) -> ContinuityMaterialFrameV1 {
+        let n = mesh.n();
+        let edge_strain = |i: usize| {
+            let rest = mesh.rest_length(i).max(1e-12);
+            ((mesh.edge_length(i) - rest) / rest).max(0.0)
+        };
+        let stimuli: Vec<f64> = (0..n)
+            .map(|i| (0.5_f64 * (edge_strain((i + n - 1) % n) + edge_strain(i))).clamp(0.0, 1.0))
+            .collect();
+        ContinuityMaterialFrameV1::from_positions_and_stimuli(
+            &mesh.vertices,
+            &stimuli,
+            mechanics.dt,
+        )
     }
 }
 

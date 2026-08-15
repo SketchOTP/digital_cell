@@ -1,0 +1,94 @@
+name: DC-DEV-003 validation
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-002-local-regulatory-substrate
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-003-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate DC-DEV-003 artifacts and boundaries
+        env:
+          ENTRY_COMMIT: 0d8edd490ba82146faf111e82e6c72a890ad0d54
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("digital-protocell/experiments/generated/dcdev003")
+          required = [
+              "protocol.json", "topology_provenance.json", "transfer_correctness.json",
+              "live_growth_remesh.json", "non_interference.json", "locality_and_determinism.json",
+              "unsupported_boundaries.json", "regression_manifest.json", "final_manifest.json",
+          ]
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              raise SystemExit(f"missing artifacts: {missing}")
+          data = {name: json.loads((root / name).read_text()) for name in required}
+          if data["protocol.json"]["entry_commit"] != "0d8edd490ba82146faf111e82e6c72a890ad0d54":
+              raise SystemExit("wrong entry commit")
+          live = data["live_growth_remesh.json"]
+          if live["remesh_events_survived"] < 2 or not live["continuity_valid"] or not live["no_reset_to_zero"]:
+              raise SystemExit("live continuity evidence failed")
+          if not data["non_interference.json"]["organism_trajectory_equal_regulator_on_vs_off"]:
+              raise SystemExit("non-interference evidence failed")
+          final = data["final_manifest.json"]
+          if final["conclusion"] != "DCDEV003_REGULATORY_TOPOLOGY_CONTINUITY_QUALIFIED":
+              raise SystemExit("unexpected conclusion")
+          if final["next_execution_started"] is not False:
+              raise SystemExit("next execution must remain stopped")
+          if final["chemistry_core_source_modified"] or final["certified_biology_modified"]:
+              raise SystemExit("scientific core boundary violated")
+          print(f"validated {len(required)} DC-DEV-003 artifacts")
+          PY
+          chemistry_changes="$(git diff --name-only "$ENTRY_COMMIT" HEAD -- digital-protocell/crates/chemistry-core)"
+          if [ -n "$chemistry_changes" ]; then echo "$chemistry_changes"; exit 1; fi
+          if git diff --name-only "$ENTRY_COMMIT" HEAD | grep -Ei '(^|/)(d096|r4)(/|_|\.)'; then exit 1; fi
+          if grep -R -nE '&mut[[:space:]]+MaterialMesh|effector_intent|movement_request|behavior_command' digital-protocell/crates/regulatory-core/src; then exit 1; fi
+          echo "scope and non-authority assertions passed"
+
+      - name: Regulatory continuity formatting
+        working-directory: digital-protocell
+        run: rustup run 1.89.0 rustfmt --edition 2021 --check crates/regulatory-core/src/lib.rs crates/regulatory-core/src/continuity.rs examples/dcdev003_gate_assay.rs
+
+      - name: Regulatory-core continuity tests and assay
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test -p regulatory-core --lib -- --nocapture
+          cargo +1.89.0 run -p regulatory-core --example dcdev003_gate_assay -- experiments/generated/dcdev003
+
+      - name: Phase-1 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+
+      - name: D-088 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+
+      - name: Evolution-harness regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        run: git rev-parse --verify HEAD

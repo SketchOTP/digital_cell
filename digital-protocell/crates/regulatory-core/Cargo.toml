@@ -15,3 +15,7 @@ serde_json = { workspace = true }
 [[example]]
 name = "dcdev002_gate_assay"
 path = "../../examples/dcdev002_gate_assay.rs"
+
+[[example]]
+name = "dcdev003_gate_assay"
+path = "../../examples/dcdev003_gate_assay.rs"

@@ -8,10 +8,11 @@
 
 ## Core modules
 
-- `digital-protocell/crates/chemistry-core/` — certified material chemistry and mesh mechanics; frozen for DC-DEV-001A.
+- `digital-protocell/crates/chemistry-core/` — certified material chemistry and mesh mechanics; frozen for developmental continuity work.
 - `digital-protocell/crates/phase1-certifier/` — Phase 1 certification and regression checks.
 - `digital-protocell/crates/experiment-runner/` — historical experiment orchestration; not changed by architecture selection.
 - `digital-protocell/crates/evolution-harness/` — observer-only reusable evolution infrastructure; not extended by this directive.
+- `digital-protocell/crates/regulatory-core/` — accepted local regulatory state plus the DC-DEV-003 observer-only remesh continuity layer.
 
 ## Interfaces and contracts
 

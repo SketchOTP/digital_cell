@@ -1,0 +1,7 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "local_pattern_mapping_rule": "nearest_old_vertex_with_local_edge_bound",
+  "no_global_redistribution": true,
+  "repeated_replay_equal": true,
+  "result": "DCDEV003_GATE2_LOCALITY_DETERMINISM_PASS"
+}

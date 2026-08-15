@@ -62,3 +62,25 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: architect inspection of the pushed PR and scientific interpretation of the bounded substrate.
 - Blockers: architect exact-head review; DC-DEV-003 remains unauthorized.
 - Follow-up directive: none
+
+## D-20260815-dcdev003-regulatory-topology-continuity - PARTIAL
+
+- Outcome ID: OUT-DCDEV003-REGULATORY-TOPOLOGY-CONTINUITY
+- Supersedes outcome: none
+- Closed: 2026-08-15T15:00:00-04:00
+- Acceptance: PARTIAL
+- Summary: The bounded observer-only continuity layer and live assay are implemented from the exact DC-DEV-002 accepted head; final pushed-head CI and architect review remain pending.
+- Changed areas: regulatory-core continuity module and immutable continuity adapter, DC-DEV-003 assay/artifacts/docs/workflow, current governance state.
+- Validation:
+  - Regulatory-core continuity suite - PASSED (15 tests before final event-validation additions)
+  - Live growth/remesh assay - PASSED locally (3 split remesh events, 24 to 48 to 72 to 96 vertices)
+  - Regulator-on/off organism trajectory comparison - PASSED locally (serialized hashes equal)
+  - Governance ADOPTED validation - NOT RUN on final state
+  - Phase-1 focused regression - NOT RUN on final state
+  - D-088 focused regression - NOT RUN on final state
+  - Evolution-harness regression - NOT RUN on final state
+  - Exact-head remote CI - NOT RUN
+  - Full workspace fixture path - NOT RUN (pre-existing D-008 fixture boundary)
+- Remaining risks: final CI may expose formatting or integration defects; architect must verify the mapping semantics and exact remote head.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
