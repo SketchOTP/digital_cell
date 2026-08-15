@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-15T07:14:02-04:00`
+- Last updated: `2026-08-15T11:35:00-04:00`
 
 ## Active state after adoption
 
@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-002`
 - Objective: `Implement a minimal distributed regulatory substrate with local persistence, bounded neighbor propagation, one non-semantic local physical transducer, deterministic dynamics, and complete read-only isolation from certified organism biology.`
 - Current status: `VALIDATING`
-- Acceptance: `DC-DEV-002 local Gates -1 through 11 pass; exact-head remote CI and architect review remain pending.`
-- Current phase: `DC-DEV-002 gate package from entry 8caf5a19061b0ad34723333e979f30637bdf2c2d.`
+- Acceptance: `DC-DEV-002 local Gates -1 through 11 and exact-head remote CI run 31892904994 pass; architect review remains pending.`
+- Current phase: `DC-DEV-002 gate package from entry 8caf5a19061b0ad34723333e979f30637bdf2c2d; remote-validated head 8d8d637d157cd79ed4e6bf4fc8124e6ac3837275.`
 - Expected or actual touched areas: `regulatory-core crate, DC-DEV-002 generated artifacts and documentation, scoped workflow, current governance state`
-- Immediate next action: `Run exact-head remote validation, record its evidence, and request architect re-review.`
+- Immediate next action: `Request architect re-review; do not begin DC-DEV-003.`
 
 ## Temporary task-relevant facts
 
@@ -28,13 +28,13 @@
 
 ## Last validation after adoption
 
-- Command or check: `regulatory-core`, Phase-1 metrics semantics, D-088, and evolution-harness focused regressions using sanctioned Rust 1.89 compiler paths
+- Command or check: `GitHub Actions DC-DEV-002 validation run 31892904994 on 8d8d637d157cd79ed4e6bf4fc8124e6ac3837275`
 - Result: `PASSED`
 
 ## Risks
 
 - The full workspace test remains unavailable because of the pre-existing missing D-008 fixture; R1 workflow deliberately does not invoke it.
-- Exact remote workflow identity and conclusion must be recorded after the final package commit.
+- Architect exact-head review remains required before any later directive.
 
 ## Blockers
 

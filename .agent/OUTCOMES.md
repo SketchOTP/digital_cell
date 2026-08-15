@@ -42,3 +42,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: remote workflow identity/conclusion and architect re-review.
 - Blockers: exact-head validation is not yet complete.
 - Follow-up directive: none
+
+## D-20260815-dcdev002-local-regulatory-substrate - PARTIAL
+
+- Outcome ID: OUT-DCDEV002-LOCAL-REGULATORY-SUBSTRATE
+- Supersedes outcome: none
+- Closed: 2026-08-15T11:35:00-04:00
+- Acceptance: PARTIAL
+- Summary: Isolated `regulatory-core` substrate, frozen Gates -1 through 11, generated evidence, documentation, governance records, and scoped CI were completed from the exact DC-DEV-001A accepted head. The coder package is awaiting architect review.
+- Changed areas: regulatory-core workspace crate, immutable material-frame adapter, DC-DEV-002 artifacts/docs/workflow, and current governance state.
+- Validation:
+  - Governance ADOPTED validator - PASSED
+  - Regulatory-core focused suite - PASSED (12 tests)
+  - Phase-1 metrics semantics - PASSED (4 tests)
+  - D-088 focused regression - PASSED (4 tests)
+  - Evolution-harness regression - PASSED (40 tests)
+  - Exact-head GitHub Actions run 31892904994 on 8d8d637d157cd79ed4e6bf4fc8124e6ac3837275 - PASSED
+  - Full workspace fixture path - NOT RUN (pre-existing D-008 fixture boundary)
+- Remaining risks: architect inspection of the pushed PR and scientific interpretation of the bounded substrate.
+- Blockers: architect exact-head review; DC-DEV-003 remains unauthorized.
+- Follow-up directive: none
