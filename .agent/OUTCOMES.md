@@ -75,11 +75,11 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Regulatory-core continuity suite - PASSED (15 tests before final event-validation additions)
   - Live growth/remesh assay - PASSED locally (3 split remesh events, 24 to 48 to 72 to 96 vertices)
   - Regulator-on/off organism trajectory comparison - PASSED locally (serialized hashes equal)
-  - Governance ADOPTED validation - NOT RUN on final state
-  - Phase-1 focused regression - NOT RUN on final state
-  - D-088 focused regression - NOT RUN on final state
-  - Evolution-harness regression - NOT RUN on final state
-  - Exact-head remote CI - NOT RUN
+  - Governance ADOPTED validation - PASSED
+  - Phase-1 focused regression - PASSED (4 tests)
+  - D-088 focused regression - PASSED (4 tests)
+  - Evolution-harness regression - PASSED (40 tests)
+  - Exact-head remote CI run 31912858940 on a9afc648e1ea467ae7f4facf409b4664396b9114 - PASSED
   - Full workspace fixture path - NOT RUN (pre-existing D-008 fixture boundary)
 - Remaining risks: final CI may expose formatting or integration defects; architect must verify the mapping semantics and exact remote head.
 - Blockers: exact-head remote CI and architect review.

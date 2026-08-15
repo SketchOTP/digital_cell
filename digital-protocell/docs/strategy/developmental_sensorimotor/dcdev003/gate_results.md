@@ -6,4 +6,4 @@
 - Gate 3 — live growth/remesh continuity: pass for three observed split events.
 - Gate 4 — organism non-interference: pass; enabled/disabled material trajectories match exactly.
 - Gate 5 — fission and unknown topology fail closed: pass.
-- Gate 6 — focused regressions, governance, and exact-head remote CI: pending until the final pushed head is verified.
+- Gate 6 — focused regressions, governance, and exact-head remote CI: pass on remote run `31912858940` for head `a9afc648e1ea467ae7f4facf409b4664396b9114`; architect review remains pending.
