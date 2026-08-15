@@ -1,0 +1,16 @@
+{
+  "candidates": "unchanged",
+  "dt": 0.02,
+  "environments": [
+    "H",
+    "B",
+    "Neutral"
+  ],
+  "executed": false,
+  "one_generation_stop": true,
+  "protocol_artifact": "experiments/generated/sr004cr2/future_gate7_protocol.json",
+  "protocol_sha256": "3809494e7b69557d144bd05b978403243d41d47950ce2cbc40a6fccb8d3e7357",
+  "seeds": "1..=16",
+  "steps": 4000,
+  "time": 80.0
+}

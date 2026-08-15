@@ -41,6 +41,9 @@
 - `digital-protocell/crates/evolution-harness/examples/d096_gate7_repair_gain_audit.rs` — DC-SR-004C-R3 observer-only current-path attribution and fixed shadow counterfactual.
 - `digital-protocell/experiments/generated/sr004cr3/` — R3 contract trace, callsite map, current decomposition, H/B/neutral attribution, shadow results, and final manifest.
 - `digital-protocell/docs/strategy/d096_gate7/repair_gain_specificity/` — R3 frozen-contract interpretation, callsite trace, causal attribution, counterfactual, disposition, and conclusion.
+- `digital-protocell/crates/evolution-harness/examples/d096_gate7_repair_gain_r4.rs` — DC-SR-004C-R4 repaired-production shadow replay and impacted Gate 5 requalification runner.
+- `digital-protocell/experiments/generated/sr004cr4/` — R4 production repair, shadow-equivalence, Gate 5, Gate 2, Gate 6, protocol-boundary, and final-manifest artifacts.
+- `digital-protocell/docs/strategy/d096_gate7/repair_gain_scope_fix/` — R4 bounded repair scope, requalification, preservation, and conclusion documentation.
 
 ## Generated areas
 

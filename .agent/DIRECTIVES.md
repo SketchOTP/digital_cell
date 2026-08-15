@@ -189,6 +189,8 @@
 - Related directive: none
 - Status at issuance: ISSUED
 
+- D-20260814-digital-cell-d096-repair-gain-scope-bounded-repair | project:DC-SR-004C-R4 | status:started | scope:D-096 finite-allocation structural-build production callsite, impacted Gate 5 requalification, R4 artifacts/docs/CI | ask:Implement exactly the R3 shadow equation and requalify the impacted Gate 5 without Gate 7 | accept:72/72 immutable shadow equivalence, original Gate 5 semantic result recorded, no parameters or unrelated biology changed, Gate 7/Gate 8 unexecuted | plan:branch from 3cd3649, bounded source repair, semantic tests, shadow replay, Gate 5 replay, preserve artifacts, CI, architect review
+
 ## D-20260814-1734-gate7-parity-horizon-audit
 
 - Issued: 2026-08-14T17:34:49-04:00

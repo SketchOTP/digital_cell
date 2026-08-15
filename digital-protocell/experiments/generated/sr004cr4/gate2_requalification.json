@@ -1,0 +1,8 @@
+{
+  "activation_local": "PASS",
+  "conservation_and_tradeoff_regressions": "PASS",
+  "growth_reserve_local": "PASS",
+  "processing_local": "PASS",
+  "repair_strain_damage_local": "PASS",
+  "scope": "D-096 local-expression and existing invariant regressions"
+}

@@ -139,8 +139,8 @@ pub fn g_strain(eps: f64, g0: f64, k_eps: f64) -> f64 {
 
 /// Selects the structural-build law used by a bounded observer audit.
 ///
-/// `Current` is the unchanged production law. The shadow mode is isolated
-/// diagnostic behavior and is never used by the default chemistry path.
+/// `Current` is the production law. The shadow mode remains available as the
+/// immutable R3 oracle and uses the same D-096 repair-specific equation.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 pub enum StructuralBuildMode {
     #[default]
@@ -160,9 +160,8 @@ pub struct StructuralBuildAttribution {
 
 /// Decompose the existing D-096 build law without changing mesh state.
 ///
-/// The returned baseline and strain rates exclude the D-096 repair gain;
-/// `current_rate` is `(baseline + strain) * repair_gain`, while `shadow_rate`
-/// is `baseline + strain * repair_gain`.
+/// The returned baseline and strain rates exclude the D-096 repair gain.
+/// Both production and shadow rates are `baseline + strain * repair_gain`.
 pub fn structural_build_attribution(
     mesh: &MaterialMesh,
     i: usize,
@@ -182,7 +181,7 @@ pub fn structural_build_attribution(
         baseline_rate: base,
         strain_rate: strain,
         repair_gain,
-        current_rate: (base + strain) * repair_gain,
+        current_rate: base + strain * repair_gain,
         shadow_rate: base + strain * repair_gain,
     })
 }
@@ -212,6 +211,26 @@ pub fn structural_build_flux(mesh: &MaterialMesh, i: usize, p: &ReactionParams) 
     // Scale by current length so mass-damaged edges (small ℓ⁰) still rebuild;
     // remesh split/merge preserves Σℓ so total demand stays remesh-invariant.
     let ell = mesh.edge_length(i);
+    // The D-096 finite-allocation structural-build path is the one bounded
+    // production repair authorized by DC-SR-004C-R4. Coordinate 2 is a
+    // local damage/strain response and must not amplify ordinary baseline
+    // structural maintenance. All historical paths below retain their
+    // pre-R4 gain multiplication exactly.
+    if mesh.finite_allocation.is_some()
+        && !p.composition.enable
+        && !p.autocatalytic.enable
+        && !p.network.enable
+        && !p.template.enable
+    {
+        let qc = q_catalyst(mesh.interior.c, p.q_c);
+        let a = mesh.interior.a.max(0.0);
+        let g = g_strain(mesh.strain(i), p.g0, p.k_eps);
+        let ell = mesh.edge_length(i);
+        let baseline = p.k_build * qc * a * p.g0 * ell;
+        let strain = p.k_build * qc * a * (g - p.g0).max(0.0) * ell;
+        return baseline + strain * crate::d096_allocation::function_gain(mesh, 2);
+    }
+
     let gb = if p.composition.enable {
         let z = composition_z(mesh.interior.c_h, mesh.interior.c_b);
         g_build(z, p.composition.sigma)
@@ -433,13 +452,12 @@ pub fn reactions_step_with_build_mode(
                 led.structural_build_total += dm;
                 led.structural_build_baseline += baseline;
                 led.structural_build_strain += strain;
-                if matches!(build_mode, StructuralBuildMode::Current) {
-                    led.structural_build_baseline_amplification +=
-                        baseline * (parts.repair_gain - 1.0);
-                    led.structural_build_strain_amplification += strain * (parts.repair_gain - 1.0);
-                } else {
-                    led.structural_build_strain_amplification += strain * (parts.repair_gain - 1.0);
-                }
+                // R4 production and the R3 shadow both apply coordinate 2
+                // only to the strain-responsive component. Keep the branch
+                // explicit so the observer cannot accidentally reintroduce
+                // baseline amplification in either mode.
+                let _ = build_mode;
+                led.structural_build_strain_amplification += strain * (parts.repair_gain - 1.0);
             }
 
             let turn_scale = 1.0 / (1.0 + 2.0 * mesh.strain(i).max(0.0));

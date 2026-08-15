@@ -1,0 +1,11 @@
+{
+  "free_membrane": "PASS: separate callsite unchanged",
+  "paths": [
+    "base material mesh",
+    "D-089 composition",
+    "D-092 template",
+    "D-093 network",
+    "D-094 autocatalytic-set"
+  ],
+  "status": "PASS: finite-allocation condition is explicit; historical gain branches unchanged"
+}

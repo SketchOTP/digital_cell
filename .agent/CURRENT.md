@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-14T20:30:00-04:00`
+- Last updated: `2026-08-15T00:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260814-d096-repair-gain-specificity-audit`
-- External directive ID: `DC-SR-004C-R3`
-- Objective: `Classify the D-096 repair-gain scope defect using observer attribution and one fixed shadow counterfactual without repairing or executing Gate 7`
+- Local directive ID: `D-20260814-digital-cell-d096-repair-gain-scope-bounded-repair`
+- External directive ID: `DC-SR-004C-R4`
+- Objective: `Implement exactly the R3-preregistered D-096 finite-allocation structural-build repair and requalify the impacted Gate 5 without executing Gate 7`
 - Current status: `VALIDATING`
-- Acceptance: `Observer-only current-path attribution and fixed non-authoritative shadow complete; no production repair; Gate 7 and Gate 8 remain blocked`
-- Current phase: `DC-SR-004C-R3 repair-gain specificity audit`
-- Expected or actual touched areas: `observer-only structural-build ledgers, isolated shadow mode, R3 audit example, sr004cr3 artifacts, repair_gain_specificity docs, scoped CI, .agent records`
-- Immediate next action: `Push stacked draft PR and verify exact remote CI; do not execute Gate 7 or Gate 8`
+- Acceptance: `One production D-096 structural-build repair, immutable R3 shadow equivalence, impacted Gate 5 requalification, and no Gate 7/Gate 8 execution`
+- Current phase: `DC-SR-004C-R4 bounded repair and impacted Gate 5 requalification`
+- Expected or actual touched areas: `D-096 structural-build production branch, focused chemistry regressions, R4 verifier, sr004cr4 artifacts, repair_gain_scope_fix docs, scoped CI, .agent records`
+- Immediate next action: `Push stacked draft PR and obtain architect review of SR004CR4_REPAIR_INVALIDATES_GATE5; do not execute Gate 7 or Gate 8`
 
 ## Temporary task-relevant facts
 
@@ -25,7 +25,7 @@
 ## Last validation after adoption
 
 - Command or check: `Atlas release focused suites; GitHub Actions run 31845154445 on b258126fb2ac1373515a09711d7dcaa07022550f`
-- Result: `PASSED: 14 D-096 tests, 46 evolution-harness tests, R1 shadow audit, original sr004c immutability assertion`
+- Result: `R4 shadow equivalence PASSED 72/72 with max residual 2.84217094304040074e-14; H requalified; original B Gate 5 criterion failed in all eight seeds; evolution-harness 46/46`
 
 ## Risks
 
@@ -33,11 +33,11 @@
 
 ## Blockers
 
-- R2 mechanics/topology compatibility erased the required H reciprocal effect; R3 classifies broad repair-gain application as a bounded implementation-defect candidate. Do not repair production biology or execute Gate 7.
+- The single R4 repair reproduces the immutable R3 shadow, but corrected production invalidates the original Gate 5 B criterion. Do not tune, add another physiology repair, or execute Gate 7.
 
 ## Pending decisions
 
-- Gate 7 and Gate 8 remain blocked; architect review is required after the stacked R3 PR and exact remote CI.
+- Gate 7 and Gate 8 remain blocked; architect review is required after the stacked R4 PR and exact remote CI.
 
 ## Status vocabulary
 

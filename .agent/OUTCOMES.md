@@ -244,6 +244,22 @@ Entries before 2026-07-12 were imported from myCompanion and are not authoritati
 - Certified Phase 1 biology/equations: unchanged
 - Remote PR/CI: pending
 
+## D-20260815-d096-repair-gain-scope-bounded-repair - IN PROGRESS
+
+- Outcome ID: OUT-20260815-d096-repair-gain-scope-bounded-repair
+- Directive: `DC-SR-004C-R4`
+- Starting commit: `3cd3649dc6dbb4d6a1e484f5f1578cd1124156f3`
+- Branch: `strategy/d096-repair-gain-scope-fix`
+- Base: `strategy/d096-repair-gain-specificity-audit`
+- Production repair: D-096 finite-allocation structural build only; `J_base + J_strain * g_repair`
+- Shadow equivalence: local `72/72`, maximum residual `2.84217094304040074e-14`
+- Gate 5 requalification: H passed; original B criterion failed in all eight seeds; all required founders survived
+- Gate 7 campaign: not executed
+- Gate 8: not started
+- Certified Phase 1 biology/equations: unchanged; free-membrane coordinate-2 callsite unchanged
+- Provisional conclusion: `SR004CR4_REPAIR_INVALIDATES_GATE5`
+- Remote PR/CI: pending architect review
+
 ## D-20260814-1722-authority-governance-adoption - COMPLETE
 
 - Outcome ID: OUT-20260814-1722-authority-governance-adoption

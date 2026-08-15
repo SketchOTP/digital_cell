@@ -1,0 +1,21 @@
+{
+  "candidate_or_schema_identity_changed": false,
+  "conclusion": "SR004CR4_REPAIR_INVALIDATES_GATE5",
+  "directive": "DC-SR-004C-R4",
+  "free_membrane_callsite_changed": false,
+  "gate5_qualified": false,
+  "gate7_campaign_executed": false,
+  "gate8_started": false,
+  "legacy_biology_changed": false,
+  "parameters_changed": false,
+  "prior_artifacts_unchanged": [
+    "sr004c",
+    "sr004cr1",
+    "sr004cr2",
+    "sr004cr3"
+  ],
+  "shadow_max_residual": 2.842170943040401e-14,
+  "shadow_rows_passed": 72,
+  "shadow_rows_total": 72,
+  "starting_commit": "3cd3649dc6dbb4d6a1e484f5f1578cd1124156f3"
+}

@@ -1,0 +1,11 @@
+{
+  "directive": "DC-SR-004C-R4",
+  "starting_commit": "3cd3649dc6dbb4d6a1e484f5f1578cd1124156f3",
+  "conclusion": "SR004CR4_REPAIR_INVALIDATES_GATE5",
+  "shadow_rows": "72/72",
+  "shadow_max_residual": 2.84217094304040074e-14,
+  "gate5": "B criterion failed in all eight seeds",
+  "gate7_campaign_executed": false,
+  "gate8_started": false,
+  "prior_artifacts_preserved": ["sr004c", "sr004cr1", "sr004cr2", "sr004cr3"]
+}
