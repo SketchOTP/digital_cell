@@ -1,10 +1,13 @@
 {
-  "schema": "dcdev001.selected_architecture.v1",
+  "schema": "dcdev001.selected_architecture.v2",
   "conclusion": "DCDEV001_HYBRID_COMPOSITION_SELECTED",
+  "governed_dispositions": ["COMPOSE","BUILD","REFERENCE"],
   "name": "Digital-Cell-native distributed regulatory patches informed by external patterns",
-  "causal_authority":"Digital Cell material mesh and approved chemistry/transport/growth/fission",
-  "selected_concepts": ["local sensor transduction","persistent local regulatory state","bounded local effector intent","developmental persistence and regeneration as future assays","local signaling vocabulary"],
+  "causal_authority": "Digital Cell material mesh and approved chemistry/transport/growth/fission",
+  "selected_concepts": ["local sensor transduction","persistent local regulatory state","bounded neighbor propagation","one local non-semantic physical stimulus transducer","deterministic multi-step persistence"],
+  "reference_concepts": ["ALIEN locality and sensor separation","NCA local developmental updates","DISHTINY local signaling vocabulary"],
+  "deferred_concepts": ["bounded local effector architecture","motor behavior","local graph/spiking extension","GPU infrastructure"],
   "not_selected": ["external source code","external dependency","genome-built body","CA replacement substrate","central controller","target morphology","fitness scalar","selection campaign"],
-  "future_interface":"LocalRegulatoryPatch",
-  "gate7_authorized":false
+  "future_interface": "ObserverCoupledLocalRegulatoryPatch",
+  "gate7_authorized": false
 }

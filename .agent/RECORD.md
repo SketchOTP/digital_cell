@@ -2,18 +2,26 @@
 
 After adoption, this append-only record preserves decisions and events. Every live record must reference one local directive ID.
 
-## Entry schema after adoption
+## Entry guidance after adoption
 
-Use live record headings only after adoption. The following schema is instructional and is not a live entry:
-
-Record only verified decisions, events, approvals, or corrections. Do not use this ledger as mutable current status.
+Use it for architectural decisions, governance changes, releases, qualification or certification events, major reversals, important milestones, and decision supersessions. Do not use this record as mutable current status.
 
 ## DEC-DCDEV001A-001
 
-- Date: 2026-08-15T16:00:00-04:00
+- Date: 2026-08-15
 - Record or decision ID: DEC-DCDEV001A-001
 - Status: ACTIVE
 - Decision or event: `DCDEV001_HYBRID_COMPOSITION_SELECTED` was selected from the clean scientific base.
 - Rationale: A Digital-Cell-native distributed regulatory patch system preserves material causality while safely reusing external concepts as references.
 - Affected areas: developmental/sensorimotor strategy package; no scientific source.
+- Supersedes record: none
+
+## DEC-DCDEV001A-R1
+
+- Date: 2026-08-15
+- Record or decision ID: DEC-DCDEV001A-R1
+- Status: ACTIVE
+- Decision or event: R1 completion remediation narrowed the first implementation contract and added exact-head validation requirements.
+- Rationale: The architecture remains accepted provisionally while evidence, provenance, and governance closure are completed without runtime implementation.
+- Affected areas: DC-DEV-001A manifests, contracts, source provenance, current state, and scoped workflow.
 - Supersedes record: none

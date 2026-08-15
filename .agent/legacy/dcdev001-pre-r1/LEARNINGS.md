@@ -2,7 +2,7 @@
 
 After adoption, this append-only ledger records durable, verified project knowledge only.
 
-## Entry guidance after adoption
+## Entry schema after adoption
 
 Use live learning headings only after adoption. The following schema is instructional and is not a live entry:
 
@@ -26,14 +26,4 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Evidence location: digital-protocell/docs/strategy/developmental_sensorimotor/clean_scientific_base.md and governance_carryforward.json.
 - Confidence: VERIFIED
 - Scope: DC-DEV-001A Gate 0.
-- Supersedes learning: none
-
-## L-DCDEV001A-R1
-
-- Learning ID: L-DCDEV001A-R1
-- Date: 2026-08-15
-- Fact or lesson: First-slice contracts must expose only observer-coupled regulatory state, neighbor signal, local transduced input, and provenance; effector and motor outputs remain deferred.
-- Evidence location: digital-protocell/docs/strategy/developmental_sensorimotor/first_implementation_contract.md and generated first_implementation_contract.json.
-- Confidence: VERIFIED
-- Scope: DC-DEV-001A-R1.
 - Supersedes learning: none

@@ -1,20 +1,10 @@
 # Architecture candidates
 
-## A — mesh-native distributed regulatory patches
+| Candidate | Summary | Governed disposition |
+|---|---|---|
+| A — mesh-native distributed regulatory patches | Persistent local state attached to bounded material patches, with local transduction and neighbor propagation. | COMPOSE; BUILD |
+| B — explicit local neural/spiking graph | A possible later local extension with a larger new state/update surface. | DEFER |
+| C — external ALIEN-style neural/muscle organism | Genome-built neural/muscle body with a separate organism authority. | REJECT |
+| D — NCA-style developmental field | Local growth/regeneration reference whose CA substrate cannot replace conserved chemistry. | REFERENCE |
 
-Small persistent regulatory states are attached to local mesh vertices/edges or bounded local patches. They integrate local chemistry, membrane geometry, transport, and neighbor signals, then emit bounded actuation intents. Development is the coupled evolution of material and local regulatory state.
-
-## B — explicit local neural/spiking graph
-
-A graph of local nodes performs a more explicit neural-style update. Nodes receive transduced material signals and drive local effectors. The graph remains spatially embedded and distributed, but introduces a new state/update substrate and a larger verification surface.
-
-## C — external ALIEN-style neural/muscle organism
-
-Use the ALIEN pattern of genome-built neural networks, sensors, muscles, particles, and GPU processors as the organism architecture. This is materially different and useful as a comparator, but conflicts with Digital Cell's fission-defined material identity and introduces a second organism authority.
-
-## D — NCA-style developmental field
-
-A local cellular update field grows and regenerates a phenotype from a seed. This gives strong developmental and regeneration experiments, but a CA field is not conserved chemistry and would be a surrogate unless explicitly coupled through a bounded adapter.
-
-The decision matrix keeps A and B as native options, C as an external alternative, and D as a developmental reference/spike rather than a production replacement.
-
+Candidate A is selected as the Digital-Cell-native core. External patterns inform it only through `REFERENCE`; no external organism model is imported. The first implementation contract is narrower than the long-term architecture and defers effector/motor behavior.

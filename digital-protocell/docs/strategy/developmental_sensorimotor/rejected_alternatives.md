@@ -1,12 +1,11 @@
 # Rejected alternatives
 
-| Alternative | Decision | Reason |
+| Alternative | Governed disposition | Reason |
 |---|---|---|
-| ALIEN source/runtime integration | reject integration; retain pattern reference | CUDA, genome-built neural/muscle body, and separate organism authority conflict with material fission |
-| Ribossome source/runtime integration | defer/reject integration | genome-to-body reproduction and monolithic GPU application exceed the current causal boundary |
-| DISHTINY as organism substrate | reject for current phase | multicellular ecology and group reproduction are future layers, not mesh authority |
-| NCA as production organism | reject as substrate; allow isolated reference | local CA development is informative but not conserved material chemistry |
-| central neural controller | reject | violates locality and embodiment constraints |
-| target-morphology developmental optimizer | reject | creates a hidden objective and confuses morphology with life |
-| immediate evolutionary substrate | reject/defer | selection and heredity closure are not authorized and prior D-096 route is closed |
-
+| ALIEN source/runtime integration | REJECT; REFERENCE | CUDA, genome-built neural/muscle body, and separate organism authority conflict with material fission. |
+| Ribossome source/runtime integration | DEFER | GPU infrastructure may be revisited only after a measured need; genome-to-body coupling is not adopted. |
+| DISHTINY as organism substrate | REJECT; REFERENCE | Local signaling vocabulary is informative, but multicellular ecology is not the conserved mesh authority. |
+| NCA as production organism | REJECT; REFERENCE | Local CA development is informative but not conserved material chemistry. |
+| Central neural controller | REJECT | Violates locality and embodiment constraints. |
+| Target-morphology developmental optimizer | REJECT | Creates a hidden objective and confuses morphology with life. |
+| Immediate evolutionary substrate | DEFER | Selection and heredity closure are not authorized and the D-096 route is closed. |
