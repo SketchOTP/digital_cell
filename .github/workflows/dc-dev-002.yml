@@ -1,0 +1,95 @@
+name: DC-DEV-002 validation
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-001-architecture-selection
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-002-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate DC-DEV-002 artifacts and schemas
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("digital-protocell/experiments/generated/dcdev002")
+          required = [
+              "protocol.json", "scope_manifest.json", "local_frame_schema.json",
+              "regulatory_schema.json", "topology_locality.json", "transduction_results.json",
+              "neutral_control.json", "local_response.json", "neighbor_propagation.json",
+              "persistence_decay.json", "perturbation_response.json", "determinism.json",
+              "non_authority.json", "topology_fail_closed.json", "regression_manifest.json",
+              "final_manifest.json",
+          ]
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              raise SystemExit(f"missing artifacts: {missing}")
+          docs = {name: json.loads((root / name).read_text()) for name in required}
+          statuses = {"AUTHORITATIVE", "OBSERVER_ONLY", "CONTROL", "NEGATIVE_RESULT"}
+          for name, data in docs.items():
+              if not isinstance(data, dict) or data.get("artifact_status") not in statuses:
+                  raise SystemExit(f"invalid artifact status: {name}")
+          protocol = docs["protocol.json"]
+          if protocol["constants"] != {"k_neighbor": 2.0, "k_stimulus": 4.0, "k_decay": 0.5, "dt": 0.02}:
+              raise SystemExit("frozen constants changed")
+          if protocol["parameter_screening_performed"] is not False:
+              raise SystemExit("parameter screening must be false")
+          final = docs["final_manifest.json"]
+          if final.get("conclusion") != "DCDEV002_LOCAL_REGULATORY_SUBSTRATE_QUALIFIED":
+              raise SystemExit("unexpected final conclusion")
+          if final.get("next_execution_started") is not False:
+              raise SystemExit("next execution must remain stopped")
+          print(f"validated {len(required)} DC-DEV-002 artifacts")
+          PY
+
+      - name: Regulatory-core formatting
+        working-directory: digital-protocell
+        run: rustup run 1.89.0 rustfmt --edition 2021 --check crates/regulatory-core/src/lib.rs examples/dcdev002_gate_assay.rs
+
+      - name: Regulatory-core tests and gate assay
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test -p regulatory-core -- --nocapture
+          cargo +1.89.0 run -p regulatory-core --example dcdev002_gate_assay -- experiments/generated/dcdev002
+
+      - name: Phase-1 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+
+      - name: D-088 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+
+      - name: Evolution-harness regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Assert isolated scope and non-authority API
+        env:
+          ENTRY_COMMIT: 8caf5a19061b0ad34723333e979f30637bdf2c2d
+        run: |
+          set -euo pipefail
+          chemistry_changes="$(git diff --name-only "$ENTRY_COMMIT" HEAD -- digital-protocell/crates/chemistry-core)"
+          if [ -n "$chemistry_changes" ]; then echo "$chemistry_changes"; exit 1; fi
+          if git diff --name-only "$ENTRY_COMMIT" HEAD | grep -Ei '(^|/)(d096|r4)(/|_|\.)'; then exit 1; fi
+          if grep -R -nE '&mut[[:space:]]+MaterialMesh|effector_intent|movement_request|behavior_command' digital-protocell/crates/regulatory-core/src; then exit 1; fi
+          if grep -R -nE 'pub[[:space:]]+fn[^\n]*(effector|motor|movement|growth_request|repair_request|resource_request)' digital-protocell/crates/regulatory-core/src; then exit 1; fi
+          echo "chemistry-core unchanged, rejected science absent, and regulatory non-authority API assertions passed"

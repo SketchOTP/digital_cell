@@ -1,0 +1,18 @@
+{
+  "adaptive_repair_during_gates": false,
+  "artifact_status": "AUTHORITATIVE",
+  "constants": {
+    "dt": 0.02,
+    "k_decay": 0.5,
+    "k_neighbor": 2.0,
+    "k_stimulus": 4.0
+  },
+  "directive": "DC-DEV-002",
+  "entry_commit": "8caf5a19061b0ad34723333e979f30637bdf2c2d",
+  "frame_schema": "digital_cell_local_material_frame_v1",
+  "parameter_screening_performed": false,
+  "schema": "dcdev002.protocol.v1",
+  "seed_role": "provenance_only",
+  "stimulus": "positive_local_tensile_strain",
+  "topology": "closed_ring_vertices_v1"
+}

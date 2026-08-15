@@ -1,0 +1,9 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "different_seed_trajectory_equal": true,
+  "forward_evidence_hash": "e0d7c9ff401ea682",
+  "forward_reverse_state_equal": true,
+  "result": "DCDEV002_GATE8_DETERMINISM_PASS",
+  "reverse_evidence_hash": "ad077599cb437626",
+  "same_seed_replay_hash": "7ad9e85f34ef18fe"
+}

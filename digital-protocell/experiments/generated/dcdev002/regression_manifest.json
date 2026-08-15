@@ -1,0 +1,8 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "d088_focused_regression": "PASSED",
+  "evolution_harness_regression": "PASSED",
+  "known_unrelated_full_workspace_fixture": "NOT RUN",
+  "phase1_focused_regression": "PASSED",
+  "regulatory_core": "PASSED"
+}

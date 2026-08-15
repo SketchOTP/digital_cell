@@ -1,0 +1,13 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "material_mesh_after_hash": "6ae7f354edc1c61b",
+  "material_mesh_before_hash": "6ae7f354edc1c61b",
+  "material_mesh_unchanged": true,
+  "organism_authority_outputs": [],
+  "regulatory_outputs": [
+    "activity",
+    "provenance",
+    "step_ledger"
+  ],
+  "result": "DCDEV002_GATE9_NONAUTHORITY_PASS"
+}
