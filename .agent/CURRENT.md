@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-15T07:04:51-04:00`
+- Last updated: `2026-08-15T07:14:02-04:00`
 
 ## Active state after adoption
 
@@ -11,8 +11,8 @@
 - External directive ID: `DC-DEV-001A-R1`
 - Objective: `Close provenance, governance, and first-slice contract defects for provisionally accepted DCDEV001_HYBRID_COMPOSITION_SELECTED without reopening architecture selection or modifying production organism biology.`
 - Current status: `VALIDATING`
-- Acceptance: `R1 package and exact-head remote validation are pending architect re-review; PR #9 is open, draft, and unmerged.`
-- Current phase: `DC-DEV-001A-R1 bounded completion remediation; final head is recorded in the implementation-base and final manifests.`
+- Acceptance: `R1 package and exact-head remote validation passed on PR #9, which is open, draft, and unmerged; architect exact-head re-review remains pending.`
+- Current phase: `DC-DEV-001A-R1 bounded completion remediation; validated head 39a540b137e8ad38172a8345d88564a23d9126db.`
 - Expected or actual touched areas: `implementation-base provenance, first-slice contract, disposition vocabulary, source licensing records, CURRENT.md, scoped validation workflow`
 - Immediate next action: `Run exact-head remote validation, record its evidence, and request architect re-review.`
 
@@ -25,8 +25,8 @@
 
 ## Last validation after adoption
 
-- Command or check: `python3 scripts/validate_governance.py --mode ADOPTED`
-- Result: `BLOCKED`
+- Command or check: `GitHub Actions DC-DEV-001A validation run 31881383306 on 39a540b137e8ad38172a8345d88564a23d9126db`
+- Result: `PASSED`
 
 ## Risks
 

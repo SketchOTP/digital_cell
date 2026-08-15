@@ -4,7 +4,7 @@
   "scientific_base_commit": "0d2c404c0874d5430dd5d01dbdcc059a842dd689",
   "scientific_base_branch": "strategy/d094-evolutionary-requalification",
   "effective_branch": "strategy/dc-dev-001-architecture-selection",
-  "effective_final_head": "FINAL_R1_HEAD_RECORDED_AFTER_PACKAGE_COMMIT",
+  "effective_final_head": "39a540b137e8ad38172a8345d88564a23d9126db",
   "draft_pr": 9,
   "certified_phase1_provenance": {
     "tag": "D-087-phase1-certification",
