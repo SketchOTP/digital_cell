@@ -11,7 +11,7 @@
 - External directive ID: `DC-DEV-003`
 - Objective: `Keep the accepted distributed regulatory state continuous while the same material organism undergoes ordinary growth-driven mesh remeshing, without adding new capabilities.`
 - Current status: `VALIDATING`
-- Acceptance: `DC-DEV-003 bounded gates and exact-head remote CI run 31912858940 pass on PR #11; architect review remains pending.`
+- Acceptance: `DC-DEV-003 bounded gates and exact-head remote CI run 31913029009 pass on PR #11 at fafa642c97d85566c696aad61ac57fe777ac94c0; architect review remains pending.`
 - Current phase: `DC-DEV-003 continuity package from entry 0d8edd490ba82146faf111e82e6c72a890ad0d54.`
 - Expected or actual touched areas: `regulatory-core continuity layer, DC-DEV-003 generated artifacts and documentation, scoped workflow, current governance state`
 - Immediate next action: `Run final focused regressions, push the stacked draft PR, and request architect review; do not begin DC-DEV-004.`
@@ -28,7 +28,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `GitHub Actions DC-DEV-003 validation run 31912858940 on a9afc648e1ea467ae7f4facf409b4664396b9114`
+- Command or check: `GitHub Actions DC-DEV-003 validation run 31913029009 on fafa642c97d85566c696aad61ac57fe777ac94c0`
 - Result: `PASSED`
 
 ## Risks
