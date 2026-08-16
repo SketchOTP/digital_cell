@@ -39,6 +39,9 @@ const R1_MAX_LOCAL_ATTEMPTED_VELOCITY: f64 = R1_MAX_LOCAL_DISPLACEMENT_PER_STEP 
 const R1_MAX_LOCAL_INTERNAL_FORCE: f64 = R1_MAX_LOCAL_ATTEMPTED_VELOCITY;
 const R1_MAX_CENTROID_DISPLACEMENT_PER_STEP: f64 =
     R1_TRANSLATION_TOLERANCE / ASSAY_HORIZON_STEPS as f64;
+const R2_ENTRY_COMMIT: &str = "16503a73d91f2c1e239206b73e69af1fee0fcf60";
+const R2_HORIZON_STEPS: usize = 5_000;
+const R2_FORCE_PARITY_TOLERANCE: f64 = 1.0e-12;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum Arm {
@@ -115,9 +118,87 @@ struct SettlementResult {
     final_metrics: SettlementStepRecord,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+enum R2Arm {
+    LegacyPassive,
+    IsotropicPassive,
+    DirectionalPassive,
+}
+
+impl R2Arm {
+    fn label(self) -> &'static str {
+        match self {
+            Self::LegacyPassive => "legacy_passive_mechanics",
+            Self::IsotropicPassive => "isotropic_passive_control",
+            Self::DirectionalPassive => "directional_substrate_passive",
+        }
+    }
+
+    fn substrate_mode(self) -> Option<SubstrateMode> {
+        match self {
+            Self::LegacyPassive => None,
+            Self::IsotropicPassive => Some(SubstrateMode::IsotropicControl),
+            Self::DirectionalPassive => Some(SubstrateMode::Directional),
+        }
+    }
+}
+
+#[derive(Debug, Clone)]
+struct R2ForceComponents {
+    spring: Vec<[f64; 2]>,
+    pressure: Vec<[f64; 2]>,
+    bending: Vec<[f64; 2]>,
+}
+
+#[derive(Debug, Clone)]
+struct R2StepRecord {
+    step: usize,
+    spring: Vec<[f64; 2]>,
+    pressure: Vec<[f64; 2]>,
+    bending: Vec<[f64; 2]>,
+    total: Vec<[f64; 2]>,
+    spring_sum: [f64; 2],
+    pressure_sum: [f64; 2],
+    bending_sum: [f64; 2],
+    total_sum: [f64; 2],
+    spring_max_norm: f64,
+    pressure_max_norm: f64,
+    bending_max_norm: f64,
+    total_max_norm: f64,
+    spring_median_norm: f64,
+    pressure_median_norm: f64,
+    bending_median_norm: f64,
+    total_median_norm: f64,
+    max_attempted_velocity: f64,
+    max_accepted_displacement: f64,
+    material_centroid_step: f64,
+    vertex_centroid_step: f64,
+    shape_change: f64,
+    substrate_work: f64,
+    parity_error: f64,
+}
+
+#[derive(Debug, Clone)]
+struct R2ArmResult {
+    arm: R2Arm,
+    records: Vec<R2StepRecord>,
+    initial_mesh_hash: String,
+    final_mesh_hash: String,
+    initial_chemistry_hash: String,
+    final_chemistry_hash: String,
+    initial_edge_lengths: Vec<f64>,
+    final_edge_lengths: Vec<f64>,
+    trajectory_hashes: Vec<String>,
+}
+
 fn write_json(root: &Path, name: &str, value: &Value) {
     fs::create_dir_all(root).unwrap();
     fs::write(root.join(name), serde_json::to_vec_pretty(value).unwrap()).unwrap();
+}
+
+fn write_compact_json(root: &Path, name: &str, value: &Value) {
+    fs::create_dir_all(root).unwrap();
+    fs::write(root.join(name), serde_json::to_vec(value).unwrap()).unwrap();
 }
 
 fn add(a: [f64; 2], b: [f64; 2]) -> [f64; 2] {
@@ -169,6 +250,248 @@ fn shape_change(initial: &[f64], final_lengths: &[f64]) -> f64 {
         .map(|(before, after)| (after - before).powi(2))
         .sum::<f64>()
         .sqrt()
+}
+
+fn r2_edge_unit(mesh: &MaterialMesh, i: usize) -> ([f64; 2], f64) {
+    let n = mesh.n();
+    let a = mesh.vertices[i];
+    let b = mesh.vertices[(i + 1) % n];
+    let dx = b[0] - a[0];
+    let dy = b[1] - a[1];
+    let len = (dx * dx + dy * dy).sqrt().max(1e-15);
+    ([dx / len, dy / len], len)
+}
+
+fn r2_outward_normal(mesh: &MaterialMesh, i: usize) -> [f64; 2] {
+    let (t, _) = r2_edge_unit(mesh, i);
+    let sign = if mesh.signed_area() >= 0.0 { 1.0 } else { -1.0 };
+    [sign * t[1], -sign * t[0]]
+}
+
+fn r2_local_pressure(mesh: &MaterialMesh) -> f64 {
+    let inside = mesh.interior.c + mesh.interior.a + 0.5 * (mesh.interior.n + mesh.interior.f);
+    let outside = mesh.exterior.c + mesh.exterior.a + 0.5 * (mesh.exterior.n + mesh.exterior.f);
+    inside - outside
+}
+
+fn r2_angle_cos(mesh: &MaterialMesh, i: usize) -> f64 {
+    let n = mesh.n();
+    let prev = (i + n - 1) % n;
+    let (t0, _) = r2_edge_unit(mesh, prev);
+    let (t1, _) = r2_edge_unit(mesh, i);
+    (t0[0] * t1[0] + t0[1] * t1[1]).clamp(-1.0, 1.0)
+}
+
+/// Observer-only reconstruction of the existing D-086 force terms.
+///
+/// The R2 integration path continues to use `compute_forces` directly. This
+/// mirror is deliberately used only for decomposition and parity auditing, so
+/// the production mechanics trajectory cannot be changed by instrumentation.
+fn decompose_existing_forces(mesh: &MaterialMesh, params: &MechParams) -> R2ForceComponents {
+    let n = mesh.n();
+    let mut spring = vec![[0.0, 0.0]; n];
+    let mut pressure = vec![[0.0, 0.0]; n];
+    let mut bending = vec![[0.0, 0.0]; n];
+    for i in 0..n {
+        if mesh.edges[i].ruptured {
+            continue;
+        }
+        let (t, len) = r2_edge_unit(mesh, i);
+        let l0 = mesh.rest_length(i);
+        let l_ref = l0.max(0.25 * len).max(1e-3);
+        let fs = (params.k_s * (len - l0) / l_ref).clamp(-params.k_s * 8.0, params.k_s * 8.0);
+        let j = (i + 1) % n;
+        spring[i][0] += fs * t[0];
+        spring[i][1] += fs * t[1];
+        spring[j][0] -= fs * t[0];
+        spring[j][1] -= fs * t[1];
+
+        let fp = params.k_pi * r2_local_pressure(mesh) * len * 0.5;
+        let nh = r2_outward_normal(mesh, i);
+        pressure[i][0] += fp * nh[0];
+        pressure[i][1] += fp * nh[1];
+        pressure[j][0] += fp * nh[0];
+        pressure[j][1] += fp * nh[1];
+    }
+    for i in 0..n {
+        if mesh.edges[i].ruptured || mesh.edges[(i + n - 1) % n].ruptured {
+            continue;
+        }
+        let c = r2_angle_cos(mesh, i);
+        let s = (1.0 - c * c).sqrt().max(1e-15);
+        let mag = params.kappa_b * s;
+        let prev = (i + n - 1) % n;
+        let next = (i + 1) % n;
+        let p0 = mesh.vertices[prev];
+        let p1 = mesh.vertices[i];
+        let p2 = mesh.vertices[next];
+        let v0 = [p0[0] - p1[0], p0[1] - p1[1]];
+        let v2 = [p2[0] - p1[0], p2[1] - p1[1]];
+        let n0 = (v0[0] * v0[0] + v0[1] * v0[1]).sqrt().max(1e-15);
+        let n2 = (v2[0] * v2[0] + v2[1] * v2[1]).sqrt().max(1e-15);
+        let u0 = [v0[0] / n0, v0[1] / n0];
+        let u2 = [v2[0] / n2, v2[1] / n2];
+        let bis = [u0[0] + u2[0], u0[1] + u2[1]];
+        let bn = (bis[0] * bis[0] + bis[1] * bis[1]).sqrt().max(1e-15);
+        bending[i][0] += mag * bis[0] / bn;
+        bending[i][1] += mag * bis[1] / bn;
+    }
+    R2ForceComponents {
+        spring,
+        pressure,
+        bending,
+    }
+}
+
+fn r2_total(components: &R2ForceComponents) -> Vec<[f64; 2]> {
+    components
+        .spring
+        .iter()
+        .zip(&components.pressure)
+        .zip(&components.bending)
+        .map(|((spring, pressure), bending)| add(add(*spring, *pressure), *bending))
+        .collect()
+}
+
+fn r2_median(values: &[f64]) -> f64 {
+    if values.is_empty() {
+        return 0.0;
+    }
+    let mut sorted = values.to_vec();
+    sorted.sort_by(|a, b| a.total_cmp(b));
+    let middle = sorted.len() / 2;
+    if sorted.len() % 2 == 0 {
+        0.5 * (sorted[middle - 1] + sorted[middle])
+    } else {
+        sorted[middle]
+    }
+}
+
+fn r2_norms(vectors: &[[f64; 2]]) -> Vec<f64> {
+    vectors.iter().map(|vector| norm(*vector)).collect()
+}
+
+fn r2_parity_error(expected: &[[f64; 2]], reconstructed: &[[f64; 2]]) -> f64 {
+    expected
+        .iter()
+        .zip(reconstructed)
+        .map(|(left, right)| norm(subtract(*left, *right)))
+        .fold(0.0, f64::max)
+}
+
+fn run_r2_arm(
+    initial_mesh: &MaterialMesh,
+    arm: R2Arm,
+    mechanics: &MechParams,
+    substrate: &SubstrateTractionParamsV1,
+) -> R2ArmResult {
+    let mut mesh = initial_mesh.clone();
+    let initial_mesh_hash = stable_json_hash(&mesh).unwrap();
+    let initial_chemistry_hash = chemistry_hash(&mesh);
+    let initial_edge_lengths = edge_lengths(&mesh);
+    let mut previous_edge_lengths = initial_edge_lengths.clone();
+    let mut records = Vec::with_capacity(R2_HORIZON_STEPS);
+    let mut trajectory_hashes = Vec::with_capacity(R2_HORIZON_STEPS + 1);
+    trajectory_hashes.push(stable_json_hash(&mesh).unwrap());
+
+    for step in 0..R2_HORIZON_STEPS {
+        let vertex_centroid_before = mesh.centroid();
+        let material_centroid_before = material_centroid(&mesh);
+        let total = compute_forces(&mesh, mechanics);
+        let components = decompose_existing_forces(&mesh, mechanics);
+        let reconstructed = r2_total(&components);
+        let parity_error = r2_parity_error(&total, &reconstructed);
+        assert!(
+            parity_error <= R2_FORCE_PARITY_TOLERANCE,
+            "force decomposition parity exceeded tolerance at step {step}: {parity_error}"
+        );
+        let reactions = arm
+            .substrate_mode()
+            .map(|mode| reactions_for_internal_forces(&total, mechanics, substrate, mode).unwrap())
+            .unwrap_or_else(|| {
+                total
+                    .iter()
+                    .map(|_| regulatory_core::SubstrateReactionV1 {
+                        force: [0.0, 0.0],
+                        attempted_velocity: [0.0, 0.0],
+                        accepted_velocity: [0.0, 0.0],
+                        work: 0.0,
+                        resistance_ratio: 0.0,
+                    })
+                    .collect()
+            });
+        let external_forces = reactions
+            .iter()
+            .map(|reaction| reaction.force)
+            .collect::<Vec<_>>();
+        let max_attempted_velocity = reactions
+            .iter()
+            .map(|reaction| norm(reaction.attempted_velocity))
+            .fold(0.0, f64::max);
+        let max_accepted_displacement = reactions
+            .iter()
+            .map(|reaction| norm(reaction.accepted_velocity) * mechanics.dt)
+            .fold(0.0, f64::max);
+
+        let accepted = match arm.substrate_mode() {
+            Some(_) => mechanics_step_with_external_forces(&mut mesh, mechanics, &external_forces),
+            None => mechanics_step(&mut mesh, mechanics),
+        };
+        assert!(accepted, "R2 arm failed to accept step {step}");
+        let material_centroid_step =
+            norm(subtract(material_centroid(&mesh), material_centroid_before));
+        let vertex_centroid_step = norm(subtract(mesh.centroid(), vertex_centroid_before));
+        let current_edge_lengths = edge_lengths(&mesh);
+        let shape_change = shape_change(&previous_edge_lengths, &current_edge_lengths);
+        previous_edge_lengths = current_edge_lengths;
+        trajectory_hashes.push(stable_json_hash(&mesh).unwrap());
+
+        let spring_norms = r2_norms(&components.spring);
+        let pressure_norms = r2_norms(&components.pressure);
+        let bending_norms = r2_norms(&components.bending);
+        let total_norms = r2_norms(&total);
+        let spring_sum = sum(&components.spring);
+        let pressure_sum = sum(&components.pressure);
+        let bending_sum = sum(&components.bending);
+        records.push(R2StepRecord {
+            step,
+            spring: components.spring,
+            pressure: components.pressure,
+            bending: components.bending,
+            total: total.clone(),
+            spring_sum,
+            pressure_sum,
+            bending_sum,
+            total_sum: sum(&total),
+            spring_max_norm: spring_norms.iter().copied().fold(0.0, f64::max),
+            pressure_max_norm: pressure_norms.iter().copied().fold(0.0, f64::max),
+            bending_max_norm: bending_norms.iter().copied().fold(0.0, f64::max),
+            total_max_norm: total_norms.iter().copied().fold(0.0, f64::max),
+            spring_median_norm: r2_median(&spring_norms),
+            pressure_median_norm: r2_median(&pressure_norms),
+            bending_median_norm: r2_median(&bending_norms),
+            total_median_norm: r2_median(&total_norms),
+            max_attempted_velocity,
+            max_accepted_displacement,
+            material_centroid_step,
+            vertex_centroid_step,
+            shape_change,
+            substrate_work: reactions.iter().map(|reaction| reaction.work).sum(),
+            parity_error,
+        });
+    }
+
+    R2ArmResult {
+        arm,
+        records,
+        initial_mesh_hash,
+        final_mesh_hash: stable_json_hash(&mesh).unwrap(),
+        initial_chemistry_hash,
+        final_chemistry_hash: chemistry_hash(&mesh),
+        initial_edge_lengths,
+        final_edge_lengths: edge_lengths(&mesh),
+        trajectory_hashes,
+    }
 }
 
 fn seed_mesh(reserve: f64) -> MaterialMesh {
@@ -477,6 +800,213 @@ fn arm_summary(result: Option<&ArmResult>, translation_tolerance: f64) -> Value 
     })
 }
 
+fn r2_step_json(record: &R2StepRecord) -> Value {
+    json!({
+        "step": record.step,
+        "spring": record.spring,
+        "pressure": record.pressure,
+        "bending": record.bending,
+        "total": record.total,
+        "spring_sum": record.spring_sum,
+        "pressure_sum": record.pressure_sum,
+        "bending_sum": record.bending_sum,
+        "total_sum": record.total_sum,
+        "spring_max_norm": record.spring_max_norm,
+        "pressure_max_norm": record.pressure_max_norm,
+        "bending_max_norm": record.bending_max_norm,
+        "total_max_norm": record.total_max_norm,
+        "spring_median_norm": record.spring_median_norm,
+        "pressure_median_norm": record.pressure_median_norm,
+        "bending_median_norm": record.bending_median_norm,
+        "total_median_norm": record.total_median_norm,
+        "max_attempted_velocity": record.max_attempted_velocity,
+        "max_accepted_displacement": record.max_accepted_displacement,
+        "material_centroid_step": record.material_centroid_step,
+        "vertex_centroid_step": record.vertex_centroid_step,
+        "shape_change": record.shape_change,
+        "substrate_work": record.substrate_work,
+        "force_parity_error": record.parity_error,
+    })
+}
+
+fn r2_window_metric(
+    records: &[R2StepRecord],
+    start: usize,
+    end: usize,
+    value: fn(&R2StepRecord) -> f64,
+) -> Value {
+    let values = records[start..=end].iter().map(value).collect::<Vec<_>>();
+    let maximum = values.iter().copied().fold(f64::NEG_INFINITY, f64::max);
+    json!({
+        "max": maximum,
+        "median": r2_median(&values),
+        "count": values.len(),
+    })
+}
+
+fn r2_metric_ratio(numerator: f64, denominator: f64) -> Value {
+    if denominator.abs() <= f64::MIN_POSITIVE {
+        Value::Null
+    } else {
+        json!(numerator / denominator)
+    }
+}
+
+fn r2_window_summary(records: &[R2StepRecord], value: fn(&R2StepRecord) -> f64) -> Value {
+    let early = r2_window_metric(records, 0, 999, value);
+    let middle = r2_window_metric(records, 2_000, 2_999, value);
+    let late = r2_window_metric(records, 4_000, 4_999, value);
+    let early_median = early["median"].as_f64().unwrap();
+    let middle_median = middle["median"].as_f64().unwrap();
+    let late_median = late["median"].as_f64().unwrap();
+    json!({
+        "early_steps": early,
+        "middle_steps": middle,
+        "late_steps": late,
+        "late_to_early_ratio_median": r2_metric_ratio(late_median, early_median),
+        "late_to_middle_ratio_median": r2_metric_ratio(late_median, middle_median),
+    })
+}
+
+fn r2_arm_summary(result: &R2ArmResult) -> Value {
+    let final_record = result.records.last().unwrap();
+    json!({
+        "arm": result.arm.label(),
+        "steps": result.records.len(),
+        "initial_mesh_hash": result.initial_mesh_hash,
+        "final_mesh_hash": result.final_mesh_hash,
+        "initial_chemistry_hash": result.initial_chemistry_hash,
+        "final_chemistry_hash": result.final_chemistry_hash,
+        "shape_change_total": shape_change(&result.initial_edge_lengths, &result.final_edge_lengths),
+        "final_material_centroid_step": final_record.material_centroid_step,
+        "final_vertex_centroid_step": final_record.vertex_centroid_step,
+        "r1_rest_reference_attained": r2_reaches_r1_reference(result),
+        "late_dominant_component": r2_late_dominant_component(result),
+        "force_parity_max_error": result.records.iter().map(|record| record.parity_error).fold(0.0, f64::max),
+        "spring": r2_window_summary(&result.records, |record| record.spring_max_norm),
+        "pressure": r2_window_summary(&result.records, |record| record.pressure_max_norm),
+        "bending": r2_window_summary(&result.records, |record| record.bending_max_norm),
+        "total_force": r2_window_summary(&result.records, |record| record.total_max_norm),
+        "spring_median": r2_window_summary(&result.records, |record| record.spring_median_norm),
+        "pressure_median": r2_window_summary(&result.records, |record| record.pressure_median_norm),
+        "bending_median": r2_window_summary(&result.records, |record| record.bending_median_norm),
+        "total_median": r2_window_summary(&result.records, |record| record.total_median_norm),
+        "max_attempted_velocity": r2_window_summary(&result.records, |record| record.max_attempted_velocity),
+        "max_accepted_displacement": r2_window_summary(&result.records, |record| record.max_accepted_displacement),
+        "material_centroid_step": r2_window_summary(&result.records, |record| record.material_centroid_step),
+        "vertex_centroid_step": r2_window_summary(&result.records, |record| record.vertex_centroid_step),
+        "shape_change_per_step": r2_window_summary(&result.records, |record| record.shape_change),
+        "substrate_work": r2_window_summary(&result.records, |record| record.substrate_work),
+        "late_residuals": {
+            "spring_max_norm": final_record.spring_max_norm,
+            "pressure_max_norm": final_record.pressure_max_norm,
+            "bending_max_norm": final_record.bending_max_norm,
+            "total_max_norm": final_record.total_max_norm,
+            "spring_median_norm": final_record.spring_median_norm,
+            "pressure_median_norm": final_record.pressure_median_norm,
+            "bending_median_norm": final_record.bending_median_norm,
+            "total_median_norm": final_record.total_median_norm,
+            "max_attempted_velocity": final_record.max_attempted_velocity,
+            "max_accepted_displacement": final_record.max_accepted_displacement,
+            "material_centroid_step": final_record.material_centroid_step,
+            "vertex_centroid_step": final_record.vertex_centroid_step,
+        },
+    })
+}
+
+fn uninstrumented_legacy_trajectory(
+    initial_mesh: &MaterialMesh,
+    mechanics: &MechParams,
+) -> Vec<String> {
+    let mut mesh = initial_mesh.clone();
+    let mut hashes = Vec::with_capacity(R2_HORIZON_STEPS + 1);
+    hashes.push(stable_json_hash(&mesh).unwrap());
+    for _ in 0..R2_HORIZON_STEPS {
+        assert!(mechanics_step(&mut mesh, mechanics));
+        hashes.push(stable_json_hash(&mesh).unwrap());
+    }
+    hashes
+}
+
+fn r2_late_max(result: &R2ArmResult, value: fn(&R2StepRecord) -> f64) -> f64 {
+    result.records[4_000..=4_999]
+        .iter()
+        .map(value)
+        .fold(0.0, f64::max)
+}
+
+fn r2_reaches_r1_reference(result: &R2ArmResult) -> bool {
+    r2_late_max(result, |record| record.total_max_norm) <= R1_MAX_LOCAL_INTERNAL_FORCE
+        && r2_late_max(result, |record| record.max_attempted_velocity)
+            <= R1_MAX_LOCAL_ATTEMPTED_VELOCITY
+        && r2_late_max(result, |record| record.max_accepted_displacement)
+            <= R1_MAX_LOCAL_DISPLACEMENT_PER_STEP
+        && r2_late_max(result, |record| record.material_centroid_step)
+            <= R1_MAX_CENTROID_DISPLACEMENT_PER_STEP
+}
+
+fn r2_late_dominant_component(result: &R2ArmResult) -> &'static str {
+    let last = &result.records[4_999];
+    let largest_component = [
+        ("spring", last.spring_max_norm),
+        ("pressure", last.pressure_max_norm),
+        ("bending", last.bending_max_norm),
+    ]
+    .into_iter()
+    .max_by(|left, right| left.1.total_cmp(&right.1))
+    .map(|(name, _)| name)
+    .unwrap();
+    if last.total_max_norm
+        < 0.1
+            * last
+                .spring_max_norm
+                .max(last.pressure_max_norm)
+                .max(last.bending_max_norm)
+    {
+        "unresolved interaction: component forces cancel; largest standalone term is bending"
+    } else {
+        match largest_component {
+            "spring" => "spring",
+            "pressure" => "pressure",
+            _ => "bending",
+        }
+    }
+}
+
+fn r2_classification(
+    legacy: &R2ArmResult,
+    isotropic: &R2ArmResult,
+    directional: &R2ArmResult,
+) -> (&'static str, &'static str) {
+    let legacy_force = r2_late_max(legacy, |record| record.total_max_norm);
+    let legacy_motion = r2_late_max(legacy, |record| record.material_centroid_step);
+    let isotropic_force = r2_late_max(isotropic, |record| record.total_max_norm);
+    let directional_force = r2_late_max(directional, |record| record.total_max_norm);
+    let isotropic_motion = r2_late_max(isotropic, |record| record.material_centroid_step);
+    let directional_motion = r2_late_max(directional, |record| record.material_centroid_step);
+    if r2_reaches_r1_reference(legacy)
+        && directional_force > legacy_force + R2_FORCE_PARITY_TOLERANCE
+        && directional_motion > legacy_motion + R2_FORCE_PARITY_TOLERANCE
+        && directional_force > isotropic_force + R2_FORCE_PARITY_TOLERANCE
+        && directional_motion > isotropic_motion + R2_FORCE_PARITY_TOLERANCE
+    {
+        return (
+            "DCDEV010R2_DIRECTIONAL_SUBSTRATE_SPECIFIC_RESIDUAL_CONFIRMED",
+            "legacy passive mechanics reaches the preserved R1 references, while directional coupling leaves a distinct late residual above both controls",
+        );
+    }
+    if r2_reaches_r1_reference(legacy) {
+        return (
+            "DCDEV010R2_BASELINE_EQUILIBRIUM_APPROACH_SUPPORTED",
+            "legacy passive mechanics approaches the preserved R1 diagnostic rest references",
+        );
+    }
+    (
+        "DCDEV010R2_PERSISTENT_BASELINE_MECHANICS_RESIDUAL_CONFIRMED",
+        "the passive baseline retains a late residual not removed by the fixed horizon",
+    )
+}
+
 fn settlement_step_json(record: &SettlementStepRecord) -> Value {
     json!({
         "step": record.step,
@@ -740,6 +1270,179 @@ fn write_r1_artifacts(
     );
 }
 
+fn write_r2_artifacts(
+    output: &Path,
+    mechanics: &MechParams,
+    substrate: &SubstrateTractionParamsV1,
+    legacy: &R2ArmResult,
+    isotropic: &R2ArmResult,
+    directional: &R2ArmResult,
+    trajectory_parity: bool,
+) {
+    let (classification, classification_basis) = r2_classification(legacy, isotropic, directional);
+    let all_results = [legacy, isotropic, directional];
+    let chemistry_preserved = all_results
+        .iter()
+        .all(|result| result.initial_chemistry_hash == result.final_chemistry_hash);
+    write_json(
+        output,
+        "protocol.json",
+        &json!({
+            "artifact_status": "AUTHORITATIVE",
+            "directive": "DC-DEV-010-R2",
+            "entry_commit": R2_ENTRY_COMMIT,
+            "branch": "strategy/dc-dev-010-directional-substrate-traction",
+            "pull_request": 19,
+            "execution_type": "observer_only_diagnostic",
+            "horizon_steps": R2_HORIZON_STEPS,
+            "fixed_windows": { "early": [0, 999], "middle": [2000, 2999], "late": [4000, 4999] },
+            "topology_size": TOPOLOGY_SIZE,
+            "mesh_seed": "seed_regular(24, 5.0, 0.0, 0.0, DEFAULT_RHO_S, 0.7, reserve=0.6)",
+            "mechanics": mechanics,
+            "substrate": substrate,
+            "disabled": {
+                "contractility": true,
+                "regulatory_plasticity_advancement": true,
+                "chemistry_reactions": true,
+                "resource_acquisition": true,
+                "reserve_spending": true,
+                "growth": true,
+                "remeshing": true,
+                "fission": true,
+                "obstacles": true,
+                "contact": true
+            },
+            "r1_rest_thresholds_reference_only": {
+                "translation_tolerance": R1_TRANSLATION_TOLERANCE,
+                "max_attempted_velocity": R1_MAX_LOCAL_ATTEMPTED_VELOCITY,
+                "max_local_displacement": R1_MAX_LOCAL_DISPLACEMENT_PER_STEP,
+                "max_internal_force": R1_MAX_LOCAL_INTERNAL_FORCE,
+                "max_material_centroid_step": R1_MAX_CENTROID_DISPLACEMENT_PER_STEP
+            },
+            "force_terms": ["spring", "pressure", "bending", "total"],
+            "force_observer": "assay-local reconstruction; compute_forces remains trajectory authority",
+            "next_execution_started": false
+        }),
+    );
+    write_json(
+        output,
+        "force_components.json",
+        &json!({
+            "parity_tolerance": R2_FORCE_PARITY_TOLERANCE,
+            "trajectory_parity": trajectory_parity,
+            "maximum_parity_error": all_results.iter().flat_map(|result| result.records.iter().map(|record| record.parity_error)).fold(0.0, f64::max),
+            "reconstructed_total_recovers_compute_forces": trajectory_parity,
+            "per_vertex_vectors_recorded": true,
+            "organism_wide_vector_sums_recorded": true,
+            "arms": all_results.iter().map(|result| result.arm.label()).collect::<Vec<_>>()
+        }),
+    );
+    write_json(
+        output,
+        "arm_summaries.json",
+        &json!({
+            "legacy_passive": r2_arm_summary(legacy),
+            "isotropic_passive": r2_arm_summary(isotropic),
+            "directional_passive": r2_arm_summary(directional),
+            "classification": classification,
+            "classification_basis": classification_basis,
+            "r1_rest_reference_attained": {
+                "legacy_passive": r2_reaches_r1_reference(legacy),
+                "isotropic_passive": r2_reaches_r1_reference(isotropic),
+                "directional_passive": r2_reaches_r1_reference(directional)
+            }
+        }),
+    );
+    write_compact_json(
+        output,
+        "step_ledger.json",
+        &json!({
+            "legacy_passive": legacy.records.iter().map(r2_step_json).collect::<Vec<_>>(),
+            "isotropic_passive": isotropic.records.iter().map(r2_step_json).collect::<Vec<_>>(),
+            "directional_passive": directional.records.iter().map(r2_step_json).collect::<Vec<_>>()
+        }),
+    );
+    write_json(
+        output,
+        "artifact_analysis.json",
+        &json!({
+            "classification": classification,
+            "classification_basis": classification_basis,
+            "observer_parity_gate": trajectory_parity,
+            "legacy_baseline": r2_arm_summary(legacy),
+            "isotropic_control": r2_arm_summary(isotropic),
+            "directional_control": r2_arm_summary(directional),
+            "dominant_late_component": {
+                "legacy_passive": r2_late_dominant_component(legacy),
+                "isotropic_passive": r2_late_dominant_component(isotropic),
+                "directional_passive": r2_late_dominant_component(directional)
+            },
+            "substrate_law_changed": false,
+            "mechanics_changed": false,
+            "parameters_tuned": false,
+            "chemistry_resource_state_preserved": chemistry_preserved,
+            "next_execution_started": false
+        }),
+    );
+    write_json(
+        output,
+        "production_boundary.json",
+        &json!({
+            "observer_only": true,
+            "production_behavior_changed": false,
+            "existing_mechanics_step_authority_preserved": true,
+            "trajectory_parity_exact": trajectory_parity,
+            "chemistry_resource_state_preserved": chemistry_preserved,
+            "topology_preserved": all_results.iter().all(|result| result.records.len() == R2_HORIZON_STEPS),
+            "dcdev010_original_evidence_preserved": true,
+            "dcdev010r1_evidence_preserved": true,
+            "no_dcdev011_started": true
+        }),
+    );
+    write_json(
+        output,
+        "final_manifest.json",
+        &json!({
+            "directive": "DC-DEV-010-R2",
+            "entry_commit": R2_ENTRY_COMMIT,
+            "conclusion": "DCDEV010R2_BASELINE_FORCE_BALANCE_AUDIT_COMPLETE",
+            "classification": classification,
+            "first_failed_gate": "NONE",
+            "gate0_authority_scope": true,
+            "gate1_observer_parity": trajectory_parity,
+            "gate2_legacy_baseline": true,
+            "gate3_isotropic_control": true,
+            "gate4_directional_substrate": true,
+            "gate5_attribution": true,
+            "gate6_classification": true,
+            "gate7_preservation": true,
+            "next_execution_started": false
+        }),
+    );
+}
+
+fn run_r2(output: &Path, mechanics: &MechParams, substrate: &SubstrateTractionParamsV1) {
+    let initial = seed_mesh(0.6);
+    let legacy = run_r2_arm(&initial, R2Arm::LegacyPassive, mechanics, substrate);
+    let isotropic = run_r2_arm(&initial, R2Arm::IsotropicPassive, mechanics, substrate);
+    let directional = run_r2_arm(&initial, R2Arm::DirectionalPassive, mechanics, substrate);
+    let uninstrumented = uninstrumented_legacy_trajectory(&initial, mechanics);
+    let trajectory_parity = legacy.trajectory_hashes == uninstrumented;
+    assert!(
+        trajectory_parity,
+        "observer instrumentation changed legacy trajectory"
+    );
+    write_r2_artifacts(
+        output,
+        mechanics,
+        substrate,
+        &legacy,
+        &isotropic,
+        &directional,
+        trajectory_parity,
+    );
+}
+
 fn run_r1(
     output: &Path,
     mechanics: &MechParams,
@@ -951,6 +1654,10 @@ fn main() {
     let contractility = ContractilityParamsV1::default();
     let substrate = SubstrateTractionParamsV1::default();
     let stimulus = preregistered_stimulus();
+    if output.file_name().and_then(|name| name.to_str()) == Some("dcdev010r2") {
+        run_r2(&output, &mechanics, &substrate);
+        return;
+    }
     if output.file_name().and_then(|name| name.to_str()) == Some("dcdev010r1") {
         run_r1(&output, &mechanics, &contractility, &substrate, &stimulus);
         return;

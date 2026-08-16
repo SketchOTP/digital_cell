@@ -1,0 +1,897 @@
+{
+  "chemistry_resource_state_preserved": true,
+  "classification": "DCDEV010R2_DIRECTIONAL_SUBSTRATE_SPECIFIC_RESIDUAL_CONFIRMED",
+  "classification_basis": "legacy passive mechanics reaches the preserved R1 references, while directional coupling leaves a distinct late residual above both controls",
+  "directional_control": {
+    "arm": "directional_substrate_passive",
+    "bending": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.5196906824565826,
+        "median": 0.518757587971368
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.5176385039819347,
+        "median": 0.5176382355584976
+      },
+      "late_to_early_ratio_median": 0.9978422437785487,
+      "late_to_middle_ratio_median": 0.9999817026154862,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.5176658718007506,
+        "median": 0.5176477071576382
+      }
+    },
+    "bending_median": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.5179845862654445,
+        "median": 0.5176824857278204
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.5176380866190327,
+        "median": 0.5176380799967955
+      },
+      "late_to_early_ratio_median": 0.9999142220719279,
+      "late_to_middle_ratio_median": 1.0000012992432628,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.5176378531335848,
+        "median": 0.5176374074598813
+      }
+    },
+    "final_chemistry_hash": "30fbb376f3a0d4ec",
+    "final_material_centroid_step": 7.300374194136508e-11,
+    "final_mesh_hash": "4cc57415be9b0147",
+    "final_vertex_centroid_step": 7.300367949183053e-11,
+    "force_parity_max_error": 1.2412670766236366e-16,
+    "initial_chemistry_hash": "30fbb376f3a0d4ec",
+    "initial_mesh_hash": "90877852c31ea9c2",
+    "late_dominant_component": "unresolved interaction: component forces cancel; largest standalone term is bending",
+    "late_residuals": {
+      "bending_max_norm": 0.5176381412660702,
+      "bending_median_norm": 0.5176380866190327,
+      "material_centroid_step": 7.300374194136508e-11,
+      "max_accepted_displacement": 3.15650404147938e-10,
+      "max_attempted_velocity": 4.6144874144005144e-8,
+      "pressure_max_norm": 0.47885571624066164,
+      "pressure_median_norm": 0.4788557148007915,
+      "spring_max_norm": 0.03878238580181242,
+      "spring_median_norm": 0.03878237329869266,
+      "total_max_norm": 4.6144874144005144e-8,
+      "total_median_norm": 2.0393644958364205e-8,
+      "vertex_centroid_step": 7.300367949183053e-11
+    },
+    "material_centroid_step": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.00010648764892398795,
+        "median": 5.610055281083173e-6
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 5.915883512230861e-10,
+        "median": 2.078164775683156e-10
+      },
+      "late_to_early_ratio_median": 0.000037043570367133885,
+      "late_to_middle_ratio_median": 0.015116808857377494,
+      "middle_steps": {
+        "count": 1000,
+        "max": 3.975407178793966e-8,
+        "median": 1.3747377474240828e-8
+      }
+    },
+    "max_accepted_displacement": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.0005046971379499179,
+        "median": 0.000020542746460728814
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 2.5578486628763386e-9,
+        "median": 8.985475571932085e-10
+      },
+      "late_to_early_ratio_median": 0.000043740381010443036,
+      "late_to_middle_ratio_median": 0.015164028486151329,
+      "middle_steps": {
+        "count": 1000,
+        "max": 1.68970462956497e-7,
+        "median": 5.925520108418514e-8
+      }
+    },
+    "max_attempted_velocity": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.03364647586333018,
+        "median": 0.003037280985870139
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 3.739418557024976e-7,
+        "median": 1.313589976237317e-7
+      },
+      "late_to_early_ratio_median": 0.0000432488789265242,
+      "late_to_middle_ratio_median": 0.0150851727954359,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.000025392451806771632,
+        "median": 8.707821872844246e-6
+      }
+    },
+    "pressure": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.48399161434171467,
+        "median": 0.47915217270246235
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.4788557286652133,
+        "median": 0.47885571947053907
+      },
+      "late_to_early_ratio_median": 0.999381296279528,
+      "late_to_middle_ratio_median": 0.9999993203223241,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.4788566855914673,
+        "median": 0.4788560449383028
+      }
+    },
+    "pressure_median": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.4839916143417139,
+        "median": 0.47908882376417977
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.47885571699732765,
+        "median": 0.4788557153717278
+      },
+      "late_to_early_ratio_median": 0.9995134338751205,
+      "late_to_middle_ratio_median": 0.9999998762366147,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.47885591580044573,
+        "median": 0.4788557746365395
+      }
+    },
+    "r1_rest_reference_attained": false,
+    "shape_change_per_step": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.0004500196562730243,
+        "median": 0.000019018418284415608
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 1.7715933154136396e-10,
+        "median": 6.223147838713737e-11
+      },
+      "late_to_early_ratio_median": 3.272168981483183e-6,
+      "late_to_middle_ratio_median": 0.014977381612555723,
+      "middle_steps": {
+        "count": 1000,
+        "max": 1.280675386314097e-8,
+        "median": 4.155030565220289e-9
+      }
+    },
+    "shape_change_total": 0.06785501911464888,
+    "spring": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.03873455472355035,
+        "median": 0.03726194797338356
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.03878245746036693,
+        "median": 0.03878240443141297
+      },
+      "late_to_early_ratio_median": 1.0408045349404567,
+      "late_to_middle_ratio_median": 0.9999523770217468,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.038787464774633656,
+        "median": 0.03878425145297648
+      }
+    },
+    "spring_median": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.03868641777532703,
+        "median": 0.03702998543360002
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.03878237329869266,
+        "median": 0.03878236883939451
+      },
+      "late_to_early_ratio_median": 1.0473233620071702,
+      "late_to_middle_ratio_median": 1.0000119220473398,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.03878221554248526,
+        "median": 0.03878190647966953
+      }
+    },
+    "steps": 5000,
+    "substrate_work": {
+      "early_steps": {
+        "count": 1000,
+        "max": -1.9815240435031093e-9,
+        "median": -2.886118448396283e-7
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": -5.721685248882137e-17,
+        "median": -4.636539845686414e-16
+      },
+      "late_to_early_ratio_median": 1.6064967285950376e-9,
+      "late_to_middle_ratio_median": 0.00022985536890511064,
+      "middle_steps": {
+        "count": 1000,
+        "max": -2.48816713139643e-13,
+        "median": -2.0171553389298814e-12
+      }
+    },
+    "total_force": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.03364647586333018,
+        "median": 0.003037280985870139
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 3.739418557024976e-7,
+        "median": 1.313589976237317e-7
+      },
+      "late_to_early_ratio_median": 0.0000432488789265242,
+      "late_to_middle_ratio_median": 0.0150851727954359,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.000025392451806771632,
+        "median": 8.707821872844246e-6
+      }
+    },
+    "total_median": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.03364647586332739,
+        "median": 0.0015438630158997489
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 1.6525845006142564e-7,
+        "median": 5.805365092628982e-8
+      },
+      "late_to_early_ratio_median": 0.00003760285098380746,
+      "late_to_middle_ratio_median": 0.015161212579174153,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.000010928278740594958,
+        "median": 3.829090227653286e-6
+      }
+    },
+    "vertex_centroid_step": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.00010648764892399557,
+        "median": 5.610055280935722e-6
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 5.915882957119963e-10,
+        "median": 2.078163925670029e-10
+      },
+      "late_to_early_ratio_median": 0.000037043555216507675,
+      "late_to_middle_ratio_median": 0.015116802548387877,
+      "middle_steps": {
+        "count": 1000,
+        "max": 3.975407166303957e-8,
+        "median": 1.374737758873257e-8
+      }
+    }
+  },
+  "dominant_late_component": {
+    "directional_passive": "unresolved interaction: component forces cancel; largest standalone term is bending",
+    "isotropic_passive": "unresolved interaction: component forces cancel; largest standalone term is bending",
+    "legacy_passive": "unresolved interaction: component forces cancel; largest standalone term is bending"
+  },
+  "isotropic_control": {
+    "arm": "isotropic_passive_control",
+    "bending": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.5176380902050528,
+        "median": 0.5176380902050463
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.517638090205067,
+        "median": 0.517638090205048
+      },
+      "late_to_early_ratio_median": 1.0000000000000033,
+      "late_to_middle_ratio_median": 1.000000000000003,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.5176380902050544,
+        "median": 0.5176380902050464
+      }
+    },
+    "bending_median": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.5176380902050433,
+        "median": 0.5176380902050415
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.5176380902050468,
+        "median": 0.5176380902050438
+      },
+      "late_to_early_ratio_median": 1.0000000000000044,
+      "late_to_middle_ratio_median": 1.0000000000000042,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.5176380902050446,
+        "median": 0.5176380902050416
+      }
+    },
+    "final_chemistry_hash": "30fbb376f3a0d4ec",
+    "final_material_centroid_step": 4.169484787681165e-18,
+    "final_mesh_hash": "2dda9f436fad5239",
+    "final_vertex_centroid_step": 0.0,
+    "force_parity_max_error": 1.2412670766236366e-16,
+    "initial_chemistry_hash": "30fbb376f3a0d4ec",
+    "initial_mesh_hash": "90877852c31ea9c2",
+    "late_dominant_component": "unresolved interaction: component forces cancel; largest standalone term is bending",
+    "late_residuals": {
+      "bending_max_norm": 0.517638090205048,
+      "bending_median_norm": 0.5176380902050434,
+      "material_centroid_step": 4.169484787681165e-18,
+      "max_accepted_displacement": 4.80889998506022e-16,
+      "max_attempted_velocity": 4.80889998506022e-14,
+      "pressure_max_norm": 0.47885571449163655,
+      "pressure_median_norm": 0.4788557144916359,
+      "spring_max_norm": 0.03878237571336552,
+      "spring_median_norm": 0.03878237571336442,
+      "total_max_norm": 4.80889998506022e-14,
+      "total_median_norm": 4.311410343753403e-14,
+      "vertex_centroid_step": 0.0
+    },
+    "material_centroid_step": {
+      "early_steps": {
+        "count": 1000,
+        "max": 9.956691260569904e-16,
+        "median": 2.9894012517441957e-16
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 1.0407438275133494e-15,
+        "median": 4.169484787681165e-18
+      },
+      "late_to_early_ratio_median": 0.013947558178242007,
+      "late_to_middle_ratio_median": 0.01211165113831152,
+      "middle_steps": {
+        "count": 1000,
+        "max": 1.221964956444357e-15,
+        "median": 3.442540360572531e-16
+      }
+    },
+    "max_accepted_displacement": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.0003364647586333018,
+        "median": 0.0000140249969484787
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 3.1388974229382022e-15,
+        "median": 4.80889998506022e-16
+      },
+      "late_to_early_ratio_median": 3.4288064394779385e-11,
+      "late_to_middle_ratio_median": 0.000011503341464642602,
+      "middle_steps": {
+        "count": 1000,
+        "max": 1.0029006310617412e-9,
+        "median": 4.180437484048577e-11
+      }
+    },
+    "max_attempted_velocity": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.03364647586333018,
+        "median": 0.00140249969484787
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 3.138897422938202e-13,
+        "median": 4.80889998506022e-14
+      },
+      "late_to_early_ratio_median": 3.4288064394779385e-11,
+      "late_to_middle_ratio_median": 0.000011503341464642604,
+      "middle_steps": {
+        "count": 1000,
+        "max": 1.0029006310617412e-7,
+        "median": 4.180437484048577e-9
+      }
+    },
+    "pressure": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.48399161434171467,
+        "median": 0.47906979628735097
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.4788557144916768,
+        "median": 0.47885571449163655
+      },
+      "late_to_early_ratio_median": 0.9995531302591533,
+      "late_to_middle_ratio_median": 0.9999999986674325,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.47885572980020813,
+        "median": 0.4788557151297441
+      }
+    },
+    "pressure_median": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.4839916143417139,
+        "median": 0.47906979628735025
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.4788557144916762,
+        "median": 0.4788557144916359
+      },
+      "late_to_early_ratio_median": 0.9995531302591534,
+      "late_to_middle_ratio_median": 0.9999999986674325,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.4788557298002075,
+        "median": 0.47885571512974345
+      }
+    },
+    "r1_rest_reference_attained": true,
+    "shape_change_per_step": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.0004303015080431476,
+        "median": 0.00001793643221845119
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 4.265337574760008e-15,
+        "median": 4.965068306494546e-16
+      },
+      "late_to_early_ratio_median": 2.7681471131070233e-11,
+      "late_to_middle_ratio_median": 9.286923644242401e-6,
+      "middle_steps": {
+        "count": 1000,
+        "max": 1.2825997322509007e-9,
+        "median": 5.346300343034188e-11
+      }
+    },
+    "shape_change_total": 0.06785502250760614,
+    "spring": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.03871499177349995,
+        "median": 0.037165794222847943
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.03878237571336552,
+        "median": 0.03878237571336552
+      },
+      "late_to_early_ratio_median": 1.0434964871414956,
+      "late_to_middle_ratio_median": 1.0000001242445467,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.0387823755125611,
+        "median": 0.03878237089486743
+      }
+    },
+    "spring_median": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.03871499177349872,
+        "median": 0.037165794222847305
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.03878237571336454,
+        "median": 0.03878237571336436
+      },
+      "late_to_early_ratio_median": 1.0434964871414822,
+      "late_to_middle_ratio_median": 1.000000124244553,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.038782375512560044,
+        "median": 0.03878237089486602
+      }
+    },
+    "steps": 5000,
+    "substrate_work": {
+      "early_steps": {
+        "count": 1000,
+        "max": -4.1011381010332376e-10,
+        "median": -2.360430354642035e-7
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": -2.074802511844587e-28,
+        "median": -2.094284630387247e-28
+      },
+      "late_to_early_ratio_median": 8.872469489593776e-22,
+      "late_to_middle_ratio_median": 9.986370499917812e-11,
+      "middle_steps": {
+        "count": 1000,
+        "max": -3.6437101744207156e-21,
+        "median": -2.0971429313627838e-18
+      }
+    },
+    "total_force": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.03364647586333018,
+        "median": 0.00140249969484787
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 3.138897422938202e-13,
+        "median": 4.80889998506022e-14
+      },
+      "late_to_early_ratio_median": 3.4288064394779385e-11,
+      "late_to_middle_ratio_median": 0.000011503341464642604,
+      "middle_steps": {
+        "count": 1000,
+        "max": 1.0029006310617412e-7,
+        "median": 4.180437484048577e-9
+      }
+    },
+    "total_median": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.03364647586332739,
+        "median": 0.0014024996948441668
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 3.0788924639876175e-13,
+        "median": 4.3128481306480064e-14
+      },
+      "late_to_early_ratio_median": 3.075115200739642e-11,
+      "late_to_middle_ratio_median": 0.000010316754087117015,
+      "middle_steps": {
+        "count": 1000,
+        "max": 1.0029005987587235e-7,
+        "median": 4.18043126183811e-9
+      }
+    },
+    "vertex_centroid_step": {
+      "early_steps": {
+        "count": 1000,
+        "max": 9.826588806256987e-16,
+        "median": 2.5252659341309344e-16
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 7.771561172376096e-16,
+        "median": 0.0
+      },
+      "late_to_early_ratio_median": 0.0,
+      "late_to_middle_ratio_median": 0.0,
+      "middle_steps": {
+        "count": 1000,
+        "max": 1.1403830476364856e-15,
+        "median": 3.0754602824783414e-16
+      }
+    }
+  },
+  "legacy_baseline": {
+    "arm": "legacy_passive_mechanics",
+    "bending": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.5176380902050506,
+        "median": 0.5176380902050455
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.5176380902050446,
+        "median": 0.5176380902050446
+      },
+      "late_to_early_ratio_median": 0.9999999999999983,
+      "late_to_middle_ratio_median": 1.0,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.5176380902050515,
+        "median": 0.5176380902050446
+      }
+    },
+    "bending_median": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.5176380902050437,
+        "median": 0.5176380902050415
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.5176380902050426,
+        "median": 0.5176380902050426
+      },
+      "late_to_early_ratio_median": 1.0000000000000022,
+      "late_to_middle_ratio_median": 0.9999999999999993,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.5176380902050446,
+        "median": 0.5176380902050429
+      }
+    },
+    "final_chemistry_hash": "30fbb376f3a0d4ec",
+    "final_material_centroid_step": 1.334235132058012e-16,
+    "final_mesh_hash": "1c77935f8204dbaf",
+    "final_vertex_centroid_step": 0.0,
+    "force_parity_max_error": 1.2412670766236366e-16,
+    "initial_chemistry_hash": "30fbb376f3a0d4ec",
+    "initial_mesh_hash": "90877852c31ea9c2",
+    "late_dominant_component": "unresolved interaction: component forces cancel; largest standalone term is bending",
+    "late_residuals": {
+      "bending_max_norm": 0.5176380902050446,
+      "bending_median_norm": 0.5176380902050426,
+      "material_centroid_step": 1.334235132058012e-16,
+      "max_accepted_displacement": 0.0,
+      "max_attempted_velocity": 0.0,
+      "pressure_max_norm": 0.4788557144916331,
+      "pressure_median_norm": 0.4788557144916325,
+      "spring_max_norm": 0.038782375713390944,
+      "spring_median_norm": 0.03878237571339001,
+      "total_max_norm": 2.231990115566628e-14,
+      "total_median_norm": 2.0063791076984766e-14,
+      "vertex_centroid_step": 0.0
+    },
+    "material_centroid_step": {
+      "early_steps": {
+        "count": 1000,
+        "max": 1.347201764550237e-15,
+        "median": 3.0599582486403766e-16
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 3.0207910093021993e-16,
+        "median": 2.983440453250123e-16
+      },
+      "late_to_early_ratio_median": 0.9749938433231067,
+      "late_to_middle_ratio_median": 1.118033988749895,
+      "middle_steps": {
+        "count": 1000,
+        "max": 8.4223592711162e-16,
+        "median": 2.6684702641160233e-16
+      }
+    },
+    "max_accepted_displacement": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.0,
+        "median": 0.0
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.0,
+        "median": 0.0
+      },
+      "late_to_early_ratio_median": null,
+      "late_to_middle_ratio_median": null,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.0,
+        "median": 0.0
+      }
+    },
+    "max_attempted_velocity": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.0,
+        "median": 0.0
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.0,
+        "median": 0.0
+      },
+      "late_to_early_ratio_median": null,
+      "late_to_middle_ratio_median": null,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.0,
+        "median": 0.0
+      }
+    },
+    "pressure": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.48399161434171467,
+        "median": 0.47886445852449905
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.4788557144916331,
+        "median": 0.4788557144916331
+      },
+      "late_to_early_ratio_median": 0.9999817400671311,
+      "late_to_middle_ratio_median": 1.0,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.47885571449167263,
+        "median": 0.4788557144916331
+      }
+    },
+    "pressure_median": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.4839916143417139,
+        "median": 0.4788644585244983
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.4788557144916325,
+        "median": 0.4788557144916325
+      },
+      "late_to_early_ratio_median": 0.9999817400671314,
+      "late_to_middle_ratio_median": 1.0,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.4788557144916719,
+        "median": 0.4788557144916325
+      }
+    },
+    "r1_rest_reference_attained": true,
+    "shape_change_per_step": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.0008606030160860232,
+        "median": 1.465204011143288e-6
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 6.280369834735101e-16,
+        "median": 5.438959822042073e-16
+      },
+      "late_to_early_ratio_median": 3.7120836284075504e-10,
+      "late_to_middle_ratio_median": 1.224744871391589,
+      "middle_steps": {
+        "count": 1000,
+        "max": 7.070647768654696e-15,
+        "median": 4.440892098500626e-16
+      }
+    },
+    "shape_change_total": 0.06785502250765138,
+    "spring": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.03878226330283216,
+        "median": 0.03871634748508562
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.038782375713390944,
+        "median": 0.038782375713390944
+      },
+      "late_to_early_ratio_median": 1.0017054353675992,
+      "late_to_middle_ratio_median": 1.0000000000000038,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.038782375713390924,
+        "median": 0.0387823757133908
+      }
+    },
+    "spring_median": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.03878226330283135,
+        "median": 0.038716347485084984
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.03878237571339001,
+        "median": 0.03878237571339001
+      },
+      "late_to_early_ratio_median": 1.0017054353675914,
+      "late_to_middle_ratio_median": 1.0000000000000004,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.03878237571339008,
+        "median": 0.038782375713389994
+      }
+    },
+    "steps": 5000,
+    "substrate_work": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.0,
+        "median": 0.0
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.0,
+        "median": 0.0
+      },
+      "late_to_early_ratio_median": null,
+      "late_to_middle_ratio_median": null,
+      "middle_steps": {
+        "count": 1000,
+        "max": 0.0,
+        "median": 0.0
+      }
+    },
+    "total_force": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.03364647586333018,
+        "median": 0.0000572841954619588
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 2.231990115566628e-14,
+        "median": 2.231990115566628e-14
+      },
+      "late_to_early_ratio_median": 3.896345401322507e-10,
+      "late_to_middle_ratio_median": 0.9886718242211634,
+      "middle_steps": {
+        "count": 1000,
+        "max": 2.8092375701544936e-13,
+        "median": 2.2575641996522978e-14
+      }
+    },
+    "total_median": {
+      "early_steps": {
+        "count": 1000,
+        "max": 0.03364647586332739,
+        "median": 0.00005728419545773346
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 2.0178382592003708e-14,
+        "median": 2.007599498218047e-14
+      },
+      "late_to_early_ratio_median": 3.504630696435866e-10,
+      "late_to_middle_ratio_median": 0.9930865596261181,
+      "middle_steps": {
+        "count": 1000,
+        "max": 2.76834686895218e-13,
+        "median": 2.0215755401763545e-14
+      }
+    },
+    "vertex_centroid_step": {
+      "early_steps": {
+        "count": 1000,
+        "max": 1.1529241298424028e-15,
+        "median": 2.6830389761774615e-16
+      },
+      "late_steps": {
+        "count": 1000,
+        "max": 0.0,
+        "median": 0.0
+      },
+      "late_to_early_ratio_median": 0.0,
+      "late_to_middle_ratio_median": null,
+      "middle_steps": {
+        "count": 1000,
+        "max": 9.450038708866525e-16,
+        "median": 0.0
+      }
+    }
+  },
+  "mechanics_changed": false,
+  "next_execution_started": false,
+  "observer_parity_gate": true,
+  "parameters_tuned": false,
+  "substrate_law_changed": false
+}

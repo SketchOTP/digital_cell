@@ -27,3 +27,22 @@ reach the preregistered mechanical-rest contract within 5,000 accepted steps.
 No R1 matched arms were executed.
 
 Conclusion: `DCDEV010R1_BASELINE_MECHANICAL_REST_NOT_ESTABLISHED`
+
+## DC-DEV-010-R2
+
+| gate | result | evidence |
+| --- | --- | --- |
+| Gate 0 authority/scope | pass | exact R1 entry head, fixed seed/equations/horizon, observer-only |
+| Gate 1 observer parity | pass | exact legacy trajectory parity; force reconstruction max error `1.2412670766236366e-16` |
+| Gate 2 legacy baseline | pass | late net force approaches the preserved R1 references without substrate |
+| Gate 3 isotropic control | pass | isotropic passive control also converges to near-zero net force |
+| Gate 4 directional substrate | diagnostic | directional arm retains the R1-exposed late residual |
+| Gate 5 attribution | diagnostic | component terms cancel; unresolved interaction, bending largest standalone term |
+| Gate 6 classification | confirmed | `DCDEV010R2_DIRECTIONAL_SUBSTRATE_SPECIFIC_RESIDUAL_CONFIRMED` |
+| Gate 7 preservation | pass | original, R1, Phase-1, D-088, evolution-harness, and governance checks |
+
+Required conclusion:
+
+`DCDEV010R2_BASELINE_FORCE_BALANCE_AUDIT_COMPLETE`
+
+`NEXT_EXECUTION_STARTED:false`

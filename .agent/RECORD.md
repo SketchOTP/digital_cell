@@ -55,3 +55,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The R1 experiment removed startup relaxation as a confound only if the existing seeded body reached the fixed rest contract. It did not. Chemistry/resource state was preserved, no matched arms were executed, and no production behavior or frozen parameter was changed.
 - Affected areas: DC-DEV-010-R1 causal-isolation evidence and developmental/sensorimotor architecture selection; DC-DEV-011 remains blocked.
 - Supersedes record: none
+
+## DEC-DCDEV010R2-001
+
+- Date: 2026-08-16
+- Record or decision ID: DEC-DCDEV010R2-001
+- Status: PROPOSED
+- Decision or event: The R2 observer-only audit found near-equilibrium behavior in legacy and isotropic passive controls but confirmed a directional-substrate-specific late residual under the frozen law.
+- Rationale: Exact 5,000-step arms preserved the existing mechanics trajectory authority and passed observer parity; directional late residual exceeded both passive controls while no mechanics or substrate parameter was changed.
+- Affected areas: DC-DEV-010-R2 diagnostic evidence and developmental/sensorimotor architecture selection; no production mechanics repair and no DC-DEV-011.
+- Supersedes record: none

@@ -32,6 +32,7 @@ jobs:
         env:
           ENTRY_COMMIT: 8d6fe59397cabfa47bc1d8103acd68f544acc190
           R1_ENTRY_COMMIT: b4178417e30907835183c7f9c16a639bdd8d31db
+          R2_ENTRY_COMMIT: 16503a73d91f2c1e239206b73e69af1fee0fcf60
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -40,6 +41,7 @@ jobs:
 
           root = Path("digital-protocell/experiments/generated/dcdev010")
           r1_root = Path("digital-protocell/experiments/generated/dcdev010r1")
+          r2_root = Path("digital-protocell/experiments/generated/dcdev010r2")
           required = [
               "protocol.json", "passivity.json", "matched_arms.json",
               "directional_coupling.json", "step_ledger.json",
@@ -52,6 +54,14 @@ jobs:
           r1_missing = [name for name in [*required, "mechanical_rest.json"] if not (r1_root / name).is_file()]
           if r1_missing:
               raise SystemExit(f"missing R1 artifacts: {r1_missing}")
+          r2_required = [
+              "protocol.json", "force_components.json", "arm_summaries.json",
+              "step_ledger.json", "artifact_analysis.json", "production_boundary.json",
+              "final_manifest.json",
+          ]
+          r2_missing = [name for name in r2_required if not (r2_root / name).is_file()]
+          if r2_missing:
+              raise SystemExit(f"missing R2 artifacts: {r2_missing}")
           data = {name: json.loads((root / name).read_text()) for name in required}
           r1 = {name: json.loads((r1_root / name).read_text()) for name in [*required, "mechanical_rest.json"]}
           protocol = data["protocol.json"]
@@ -93,6 +103,40 @@ jobs:
               raise SystemExit("R1 must record the baseline rest stop")
           if not r1_rest["chemistry_resource_state_preserved"]:
               raise SystemExit("R1 settlement changed chemistry/resource state")
+          r2 = {name: json.loads((r2_root / name).read_text()) for name in r2_required}
+          r2_protocol = r2["protocol.json"]
+          r2_final = r2["final_manifest.json"]
+          r2_force = r2["force_components.json"]
+          r2_boundary = r2["production_boundary.json"]
+          r2_arms = r2["arm_summaries.json"]
+          if r2_protocol["entry_commit"] != "16503a73d91f2c1e239206b73e69af1fee0fcf60":
+              raise SystemExit("wrong R2 entry commit")
+          if r2_protocol["horizon_steps"] != 5000:
+              raise SystemExit("R2 horizon must remain exactly 5000")
+          if r2_protocol["fixed_windows"] != {"early": [0, 999], "middle": [2000, 2999], "late": [4000, 4999]}:
+              raise SystemExit("R2 analysis windows drifted")
+          if r2_final["conclusion"] != "DCDEV010R2_BASELINE_FORCE_BALANCE_AUDIT_COMPLETE":
+              raise SystemExit("unexpected R2 conclusion")
+          if r2_final["classification"] not in {
+              "DCDEV010R2_BASELINE_EQUILIBRIUM_APPROACH_SUPPORTED",
+              "DCDEV010R2_PERSISTENT_BASELINE_MECHANICS_RESIDUAL_CONFIRMED",
+              "DCDEV010R2_DIRECTIONAL_SUBSTRATE_SPECIFIC_RESIDUAL_CONFIRMED",
+              "DCDEV010R2_BASELINE_EQUILIBRIUM_AUDIT_INCONCLUSIVE",
+          }:
+              raise SystemExit("invalid R2 classification")
+          if not r2_final["gate1_observer_parity"] or not r2_force["trajectory_parity"]:
+              raise SystemExit("R2 observer parity failed")
+          if r2_force["maximum_parity_error"] > r2_force["parity_tolerance"]:
+              raise SystemExit("R2 force decomposition parity exceeded tolerance")
+          if not r2_force["per_vertex_vectors_recorded"] or not r2_force["organism_wide_vector_sums_recorded"]:
+              raise SystemExit("R2 force provenance incomplete")
+          if not r2_boundary["observer_only"] or r2_boundary["production_behavior_changed"]:
+              raise SystemExit("R2 crossed observer-only boundary")
+          if not r2_boundary["chemistry_resource_state_preserved"] or not r2_boundary["no_dcdev011_started"]:
+              raise SystemExit("R2 preservation boundary failed")
+          for arm in ["legacy_passive", "isotropic_passive", "directional_passive"]:
+              if r2_arms[arm]["steps"] != 5000:
+                  raise SystemExit(f"R2 arm {arm} did not execute 5000 steps")
           print(f"validated {len(required)} original and {len(r1)} R1 artifacts")
           PY
           changed="$(git diff --name-only "$ENTRY_COMMIT" HEAD)"
@@ -122,6 +166,10 @@ jobs:
       - name: Run DC-DEV-010-R1 mechanical-rest audit
         working-directory: digital-protocell
         run: cargo +1.89.0 run -p regulatory-core --example dcdev010_gate_assay -- experiments/generated/dcdev010r1
+
+      - name: Run DC-DEV-010-R2 force-balance audit
+        working-directory: digital-protocell
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev010_gate_assay -- experiments/generated/dcdev010r2
 
       - name: Preservation assays through DC-DEV-009
         working-directory: digital-protocell

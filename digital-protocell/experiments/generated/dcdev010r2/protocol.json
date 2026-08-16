@@ -1,0 +1,70 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "branch": "strategy/dc-dev-010-directional-substrate-traction",
+  "directive": "DC-DEV-010-R2",
+  "disabled": {
+    "chemistry_reactions": true,
+    "contact": true,
+    "contractility": true,
+    "fission": true,
+    "growth": true,
+    "obstacles": true,
+    "regulatory_plasticity_advancement": true,
+    "remeshing": true,
+    "reserve_spending": true,
+    "resource_acquisition": true
+  },
+  "entry_commit": "16503a73d91f2c1e239206b73e69af1fee0fcf60",
+  "execution_type": "observer_only_diagnostic",
+  "fixed_windows": {
+    "early": [
+      0,
+      999
+    ],
+    "late": [
+      4000,
+      4999
+    ],
+    "middle": [
+      2000,
+      2999
+    ]
+  },
+  "force_observer": "assay-local reconstruction; compute_forces remains trajectory authority",
+  "force_terms": [
+    "spring",
+    "pressure",
+    "bending",
+    "total"
+  ],
+  "horizon_steps": 5000,
+  "mechanics": {
+    "dt": 0.02,
+    "gamma": 1.0,
+    "k_pi": 0.22,
+    "k_s": 14.0,
+    "kappa_b": 2.0
+  },
+  "mesh_seed": "seed_regular(24, 5.0, 0.0, 0.0, DEFAULT_RHO_S, 0.7, reserve=0.6)",
+  "next_execution_started": false,
+  "pull_request": 19,
+  "r1_rest_thresholds_reference_only": {
+    "max_attempted_velocity": 2.6645352591003757e-9,
+    "max_internal_force": 2.6645352591003757e-9,
+    "max_local_displacement": 5.3290705182007514e-11,
+    "max_material_centroid_step": 2.220446049250313e-13,
+    "translation_tolerance": 5.3290705182007514e-11
+  },
+  "substrate": {
+    "axis": [
+      1.0,
+      0.0
+    ],
+    "forward_resistance_ratio": 0.25,
+    "max_reaction_force": 0.45,
+    "reverse_resistance_ratio": 0.75,
+    "schema": "digital_cell_passive_directional_substrate_v1",
+    "transverse_resistance_ratio": 0.5
+  },
+  "topology_size": 24
+}

@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260816-dcdev010r1-mechanical-rest-causal-isolation`
-- External directive ID: `DC-DEV-010-R1`
-- Objective: `Determine whether the accepted DC-DEV-010 Gate 1 motor-off translation was passive rectification of unrelaxed seeded-body mechanics, then retest only from a preregistered settled common state.`
+- Local directive ID: `D-20260816-dcdev010r2-baseline-force-balance-audit`
+- External directive ID: `DC-DEV-010-R2`
+- Objective: `Determine whether fixed-topology passive mechanics approaches force balance and identify the existing force contribution associated with the R1 residual.`
 - Current status: `VALIDATING`
-- Acceptance: `DC-DEV-010 negative result is architect-accepted; DC-DEV-010-R1 failed closed at baseline mechanical-rest Gate 1 and architect review remains required.`
-- Current phase: `DC-DEV-010-R1 mechanical-rest causal isolation from entry b4178417e30907835183c7f9c16a639bdd8d31db.`
-- Expected or actual touched areas: `observer-only DC-DEV-010-R1 settlement assay, separate evidence, scoped workflow, documentation, and governance; no production behavior change`
-- Immediate next action: `Architect review of draft PR #19 at the pushed R1 head; do not tune the frozen parameters, add another substrate, or begin DC-DEV-011.`
+- Acceptance: `R2 fixed-horizon observer audit complete locally; exact-head remote CI and architect review remain required.`
+- Current phase: `DC-DEV-010-R2 baseline force-balance audit from entry 16503a73d91f2c1e239206b73e69af1fee0fcf60.`
+- Expected or actual touched areas: `observer-only R2 force decomposition, separate evidence, scoped workflow, documentation, and governance; no production behavior change`
+- Immediate next action: `Push R2 evidence on PR #19, verify exact-head CI, then return to architect review; do not begin R3 or DC-DEV-011.`
 
 ## Temporary task-relevant facts
 
@@ -30,7 +30,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `DC-DEV-008-R1 exact-head scoped preservation workflow`
+- Command or check: `DC-DEV-010-R2 fixed-horizon local observer audit and preservation checks`
 - Result: `PASSED`
 
 ## Risks
@@ -42,18 +42,17 @@
 - DC-DEV-010 first execution used one frozen substrate parameter set. Substrate work remained non-positive, but the motor-off directional arm translated `0.013504913541228361` above tolerance `2.220446049250313e-13`.
 - DC-DEV-010 scientific conclusion is `DCDEV010_DIRECTIONAL_SUBSTRATE_TRANSLATION_NOT_ESTABLISHED`; no parameter repair or second architecture is authorized.
 - DC-DEV-011 remains blocked.
-- DC-DEV-010-R1 baseline rest did not satisfy the preregistered local/global convergence contract within 5,000 accepted steps; chemistry/resource state hash remained unchanged.
-- DC-DEV-010-R1 conclusion is `DCDEV010R1_BASELINE_MECHANICAL_REST_NOT_ESTABLISHED`; no matched R1 arms executed.
-- DC-DEV-010 branch `strategy/dc-dev-010-directional-substrate-traction` is pushed at `1a82241e14ee1e50d2b145c069044959b203aa82`; draft PR #19 is open against `strategy/dc-dev-009-motility-feasibility-audit`.
-- Exact-head remote CI run `31964201954` passed at `1a82241e14ee1e50d2b145c069044959b203aa82`; R1 architect review remains pending.
+- DC-DEV-010-R1 baseline rest did not satisfy the preregistered directional-substrate rest contract; its evidence remains preserved.
+- DC-DEV-010-R2 ran legacy, isotropic, and directional passive arms for exactly 5,000 accepted steps; observer parity passed and classification is `DCDEV010R2_DIRECTIONAL_SUBSTRATE_SPECIFIC_RESIDUAL_CONFIRMED`.
+- DC-DEV-010 branch `strategy/dc-dev-010-directional-substrate-traction` remains on draft PR #19 against `strategy/dc-dev-009-motility-feasibility-audit`; remote R2 head/CI are pending.
 
 ## Blockers
 
-- Architect review remains required for DC-DEV-010-R1; baseline mechanical rest is the active blocker.
+- Architect review remains required for DC-DEV-010-R2; no R3 or DC-DEV-011 is authorized.
 
 ## Pending decisions
 
-- DC-DEV-010-R1 may only isolate startup mechanical relaxation using the existing law and parameters. No parameter tuning, second substrate, adhesion, anchoring, sensor, planner, reward, fitness, evolution, or DC-DEV-011 is authorized.
+- DC-DEV-010-R2 is complete as an observer-only fixed-horizon force-balance audit. No mechanics repair, parameter tuning, second substrate, adhesion, fluid physics, sensors, navigation, reward, fitness, evolution, R3, or DC-DEV-011 is authorized.
 
 ## Status vocabulary
 

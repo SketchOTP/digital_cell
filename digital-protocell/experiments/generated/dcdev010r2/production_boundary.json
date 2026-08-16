@@ -1,0 +1,11 @@
+{
+  "chemistry_resource_state_preserved": true,
+  "dcdev010_original_evidence_preserved": true,
+  "dcdev010r1_evidence_preserved": true,
+  "existing_mechanics_step_authority_preserved": true,
+  "no_dcdev011_started": true,
+  "observer_only": true,
+  "production_behavior_changed": false,
+  "topology_preserved": true,
+  "trajectory_parity_exact": true
+}

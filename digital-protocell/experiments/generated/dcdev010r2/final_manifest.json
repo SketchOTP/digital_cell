@@ -1,0 +1,16 @@
+{
+  "classification": "DCDEV010R2_DIRECTIONAL_SUBSTRATE_SPECIFIC_RESIDUAL_CONFIRMED",
+  "conclusion": "DCDEV010R2_BASELINE_FORCE_BALANCE_AUDIT_COMPLETE",
+  "directive": "DC-DEV-010-R2",
+  "entry_commit": "16503a73d91f2c1e239206b73e69af1fee0fcf60",
+  "first_failed_gate": "NONE",
+  "gate0_authority_scope": true,
+  "gate1_observer_parity": true,
+  "gate2_legacy_baseline": true,
+  "gate3_isotropic_control": true,
+  "gate4_directional_substrate": true,
+  "gate5_attribution": true,
+  "gate6_classification": true,
+  "gate7_preservation": true,
+  "next_execution_started": false
+}

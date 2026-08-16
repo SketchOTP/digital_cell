@@ -192,3 +192,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260816-dcdev010-passive-directional-substrate-traction
 - Status at issuance: ISSUED
+
+## D-20260816-dcdev010r2-baseline-force-balance-audit
+
+- Issued: `2026-08-16T15:30:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-010-R2`
+- Objective: Determine whether fixed-topology passive mechanics approaches force balance and identify the existing force contribution associated with the residual exposed by R1.
+- Scope: Observer-only decomposition of existing spring, pressure, and bending forces; exact trajectory-parity proof; fixed legacy, isotropic, and directional passive arms; exactly 5,000 accepted steps; fixed early/middle/late windows; separate evidence, documentation, governance, preservation, and exact-head CI.
+- Exclusions: mechanics repair, initialization changes, parameter tuning, substrate changes, contractility, regulation/plasticity, chemistry, resources, growth, remeshing, fission, obstacles, contact, adhesion, fluid physics, sensors, navigation, resource seeking, learning, reward, fitness, evolution, DC-DEV-010-R3, and DC-DEV-011.
+- Acceptance: `DCDEV010R2_BASELINE_FORCE_BALANCE_AUDIT_COMPLETE` plus exactly one permitted Gate-6 classification, pushed PR #19, exact-head remote CI, and architect review.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260816-dcdev010r1-mechanical-rest-causal-isolation
+- Status at issuance: ISSUED

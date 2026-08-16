@@ -1,0 +1,13 @@
+{
+  "arms": [
+    "legacy_passive_mechanics",
+    "isotropic_passive_control",
+    "directional_substrate_passive"
+  ],
+  "maximum_parity_error": 1.2412670766236366e-16,
+  "organism_wide_vector_sums_recorded": true,
+  "parity_tolerance": 1e-12,
+  "per_vertex_vectors_recorded": true,
+  "reconstructed_total_recovers_compute_forces": true,
+  "trajectory_parity": true
+}

@@ -65,3 +65,12 @@ R1 stopped at the preregistered baseline-rest gate:
 `DCDEV010R1_BASELINE_MECHANICAL_REST_NOT_ESTABLISHED`
 
 See [r1_mechanical_rest.md](r1_mechanical_rest.md). DC-DEV-011 remains blocked.
+
+## R2 baseline force-balance audit
+
+The architect-authorized R2 observer-only audit starts from the accepted R1
+head and runs the fixed seeded mesh for exactly 5,000 steps with legacy,
+isotropic, and frozen directional passive arms. It decomposes existing
+internal force into spring, pressure, and bending terms while proving
+trajectory parity. See [r2_force_balance.md](r2_force_balance.md). Evidence is
+under `experiments/generated/dcdev010r2/`.

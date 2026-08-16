@@ -97,3 +97,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-010-R1 mechanical-rest causal-isolation assay.
 - Supersedes learning: none
+
+## L-DCDEV010R2-001
+
+- Learning ID: L-DCDEV010R2-001
+- Date: 2026-08-16
+- Fact or lesson: In the exact fixed-topology passive audit, legacy and isotropic controls approached the preserved R1 force/motion references, while the frozen directional substrate retained the R1-exposed residual. Spring, pressure, and bending terms were individually larger than the net residual and cancelled component-wise; no mechanics term was repaired.
+- Evidence location: `digital-protocell/experiments/generated/dcdev010r2/arm_summaries.json`, `digital-protocell/experiments/generated/dcdev010r2/force_components.json`, and `digital-protocell/experiments/generated/dcdev010r2/final_manifest.json`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-010-R2 baseline force-balance audit only; architect review pending.
+- Supersedes learning: none
