@@ -54,3 +54,14 @@ this directive. A future directive may decide whether to revisit the physical
 contact model; this branch does not do so.
 
 Generated evidence is under `digital-protocell/experiments/generated/dcdev010/`.
+
+## R1 mechanical-rest causal isolation
+
+The architect-authorized R1 falsification repair starts from PR #19 head
+`b4178417e30907835183c7f9c16a639bdd8d31db`, preserves the original evidence,
+and writes separate artifacts under `experiments/generated/dcdev010r1/`.
+R1 stopped at the preregistered baseline-rest gate:
+
+`DCDEV010R1_BASELINE_MECHANICAL_REST_NOT_ESTABLISHED`
+
+See [r1_mechanical_rest.md](r1_mechanical_rest.md). DC-DEV-011 remains blocked.

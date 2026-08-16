@@ -1,0 +1,9 @@
+{
+  "all_observed_work_nonpositive_within_tolerance": true,
+  "gate3_pass": true,
+  "maximum_positive_substrate_work": 0.0,
+  "result": "PASSIVE",
+  "settlement_passivity_observed": true,
+  "work_tolerance": 5.3290705182007514e-11,
+  "zero_motion_zero_reaction": true
+}

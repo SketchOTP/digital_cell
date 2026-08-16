@@ -1,0 +1,31 @@
+{
+  "chemistry_resource_state_preserved": true,
+  "criterion": {
+    "consecutive_steps_required": 16,
+    "max_attempted_velocity": 2.6645352591003757e-9,
+    "max_internal_force": 2.6645352591003757e-9,
+    "max_local_displacement_per_step": 5.3290705182007514e-11,
+    "max_material_centroid_displacement_per_step": 2.220446049250313e-13
+  },
+  "final_metrics": {
+    "material_centroid_step": 7.300374194136508e-11,
+    "max_accepted_velocity": 1.57825202073969e-8,
+    "max_attempted_velocity": 4.6144874144005144e-8,
+    "max_internal_force": 4.6144874144005144e-8,
+    "max_local_displacement": 3.15650404147938e-10,
+    "step": 4999,
+    "substrate_work": -5.721685248882137e-17,
+    "vertex_centroid_step": 7.300367949183053e-11
+  },
+  "initial_chemistry_hash": "30fbb376f3a0d4ec",
+  "initial_mesh_hash": "90877852c31ea9c2",
+  "maximum_settling_horizon": 5000,
+  "plasticity_state_advanced": false,
+  "regulatory_state_advanced": false,
+  "rest_achieved": false,
+  "settled_chemistry_hash": "30fbb376f3a0d4ec",
+  "settled_mesh_hash": "4cc57415be9b0147",
+  "settling_steps": null,
+  "settling_work_maximum_positive": 0.0,
+  "topology_unchanged": true
+}

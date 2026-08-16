@@ -31,6 +31,7 @@ jobs:
       - name: Validate DC-DEV-010 failure evidence and boundary
         env:
           ENTRY_COMMIT: 8d6fe59397cabfa47bc1d8103acd68f544acc190
+          R1_ENTRY_COMMIT: b4178417e30907835183c7f9c16a639bdd8d31db
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -38,6 +39,7 @@ jobs:
           from pathlib import Path
 
           root = Path("digital-protocell/experiments/generated/dcdev010")
+          r1_root = Path("digital-protocell/experiments/generated/dcdev010r1")
           required = [
               "protocol.json", "passivity.json", "matched_arms.json",
               "directional_coupling.json", "step_ledger.json",
@@ -46,8 +48,12 @@ jobs:
           ]
           missing = [name for name in required if not (root / name).is_file()]
           if missing:
-              raise SystemExit(f"missing artifacts: {missing}")
+              raise SystemExit(f"missing original artifacts: {missing}")
+          r1_missing = [name for name in [*required, "mechanical_rest.json"] if not (r1_root / name).is_file()]
+          if r1_missing:
+              raise SystemExit(f"missing R1 artifacts: {r1_missing}")
           data = {name: json.loads((root / name).read_text()) for name in required}
+          r1 = {name: json.loads((r1_root / name).read_text()) for name in [*required, "mechanical_rest.json"]}
           protocol = data["protocol.json"]
           final = data["final_manifest.json"]
           if protocol["entry_commit"] != "8d6fe59397cabfa47bc1d8103acd68f544acc190":
@@ -70,7 +76,24 @@ jobs:
               raise SystemExit("expected motor-off failure evidence is absent")
           if not data["production_boundary.json"]["disabled_substrate_legacy_parity"]:
               raise SystemExit("legacy parity failed")
-          print(f"validated {len(required)} DC-DEV-010 failure artifacts")
+          r1_protocol = r1["protocol.json"]
+          r1_final = r1["final_manifest.json"]
+          r1_rest = r1["mechanical_rest.json"]
+          if r1_protocol["entry_commit"] != "b4178417e30907835183c7f9c16a639bdd8d31db":
+              raise SystemExit("wrong R1 entry commit")
+          if r1_protocol["translation_tolerance"] != 5.3290705182007514e-11:
+              raise SystemExit("R1 translation tolerance drifted")
+          if r1_final["next_execution_started"] is not False:
+              raise SystemExit("R1 next execution must remain stopped")
+          if r1_final["conclusion"] != "DCDEV010R1_BASELINE_MECHANICAL_REST_NOT_ESTABLISHED":
+              raise SystemExit("unexpected R1 conclusion")
+          if r1_final["first_failed_gate"] != "GATE1_BASELINE_MECHANICAL_REST":
+              raise SystemExit("unexpected R1 first failed gate")
+          if r1_rest["rest_achieved"] is not False:
+              raise SystemExit("R1 must record the baseline rest stop")
+          if not r1_rest["chemistry_resource_state_preserved"]:
+              raise SystemExit("R1 settlement changed chemistry/resource state")
+          print(f"validated {len(required)} original and {len(r1)} R1 artifacts")
           PY
           changed="$(git diff --name-only "$ENTRY_COMMIT" HEAD)"
           if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then
@@ -91,9 +114,14 @@ jobs:
         working-directory: digital-protocell
         run: cargo +1.89.0 test -p regulatory-core substrate_traction -- --nocapture
 
-      - name: Run DC-DEV-010 audit
+      - name: Preserve original DC-DEV-010 audit artifacts
+        run: |
+          test -f digital-protocell/experiments/generated/dcdev010/final_manifest.json
+          test "$(python3 -c 'import json; print(json.load(open("digital-protocell/experiments/generated/dcdev010/final_manifest.json"))["conclusion"])')" = "DCDEV010_DIRECTIONAL_SUBSTRATE_TRANSLATION_NOT_ESTABLISHED"
+
+      - name: Run DC-DEV-010-R1 mechanical-rest audit
         working-directory: digital-protocell
-        run: cargo +1.89.0 run -p regulatory-core --example dcdev010_gate_assay -- experiments/generated/dcdev010
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev010_gate_assay -- experiments/generated/dcdev010r1
 
       - name: Preservation assays through DC-DEV-009
         working-directory: digital-protocell

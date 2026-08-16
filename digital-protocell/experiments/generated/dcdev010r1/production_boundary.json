@@ -1,0 +1,8 @@
+{
+  "assay_contains_independent_substrate_solver": false,
+  "certified_phase1_equations_modified": false,
+  "chemistry_resource_state_preserved": true,
+  "production_behavior_changed": false,
+  "production_module": "regulatory-core/src/substrate_traction.rs",
+  "topology_unchanged": true
+}

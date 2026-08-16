@@ -19,3 +19,11 @@ Required conclusion:
 `DCDEV010_DIRECTIONAL_SUBSTRATE_TRANSLATION_NOT_ESTABLISHED`
 
 `NEXT_EXECUTION_STARTED:false`
+
+## DC-DEV-010-R1
+
+R1 failed the first new causal-isolation gate because the seeded body did not
+reach the preregistered mechanical-rest contract within 5,000 accepted steps.
+No R1 matched arms were executed.
+
+Conclusion: `DCDEV010R1_BASELINE_MECHANICAL_REST_NOT_ESTABLISHED`

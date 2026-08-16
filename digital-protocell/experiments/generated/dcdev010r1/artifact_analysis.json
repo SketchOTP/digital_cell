@@ -1,0 +1,11 @@
+{
+  "baseline_mechanical_relaxation_isolated": false,
+  "downstream_gates_executed": false,
+  "first_failed_gate": "GATE1_BASELINE_MECHANICAL_REST",
+  "material_vertex_agreement": null,
+  "max_positive_substrate_work": 0.0,
+  "no_parameter_screening": true,
+  "no_second_substrate": true,
+  "original_negative_evidence_preserved": true,
+  "translation_tolerance": 5.3290705182007514e-11
+}

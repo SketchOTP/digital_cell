@@ -1,0 +1,50 @@
+{
+  "accepted_time_authority": "MechParams.dt on each accepted mechanics step",
+  "artifact_status": "AUTHORITATIVE",
+  "assay_horizon_simulated_time": 4.8,
+  "assay_horizon_steps": 240,
+  "conclusion": "DCDEV010R1_BASELINE_MECHANICAL_REST_NOT_ESTABLISHED",
+  "directive": "DC-DEV-010-R1",
+  "entry_commit": "b4178417e30907835183c7f9c16a639bdd8d31db",
+  "first_failed_gate": "GATE1_BASELINE_MECHANICAL_REST",
+  "fixed_topology": true,
+  "frozen_parameters": {
+    "axis": [
+      1.0,
+      0.0
+    ],
+    "forward_resistance_ratio": 0.25,
+    "max_reaction_force": 0.45,
+    "reverse_resistance_ratio": 0.75,
+    "schema": "digital_cell_passive_directional_substrate_v1",
+    "transverse_resistance_ratio": 0.5
+  },
+  "next_execution_started": false,
+  "original_dcdev010_entry_commit": "8d6fe59397cabfa47bc1d8103acd68f544acc190",
+  "rest_criterion": {
+    "max_attempted_velocity": 2.6645352591003757e-9,
+    "max_internal_force": 2.6645352591003757e-9,
+    "max_local_displacement_per_step": 5.3290705182007514e-11,
+    "max_material_centroid_displacement_per_step": 2.220446049250313e-13,
+    "uses_existing_mechanical_scale": "DC-DEV-010 authoritative translation tolerance and MechParams.dt"
+  },
+  "settlement": {
+    "chemistry_reactions": false,
+    "contact_system": false,
+    "directional_substrate": true,
+    "fission": false,
+    "growth": false,
+    "motor_contractility": false,
+    "obstacles": false,
+    "plasticity_updates": false,
+    "regulatory_stimulus": false,
+    "remeshing": false,
+    "reserve_spending": false,
+    "resource_acquisition": false
+  },
+  "settlement_consecutive_rest_steps": 16,
+  "settlement_max_simulated_time": 100.0,
+  "settlement_max_steps": 5000,
+  "topology_size": 24,
+  "translation_tolerance": 5.3290705182007514e-11
+}

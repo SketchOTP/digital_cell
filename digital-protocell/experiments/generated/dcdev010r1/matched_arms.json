@@ -1,0 +1,14 @@
+{
+  "active_directional": null,
+  "active_directional_projected_displacement": null,
+  "active_isotropic_control": null,
+  "active_isotropic_projected_displacement": null,
+  "active_no_substrate_diagnostic": null,
+  "active_no_substrate_projected_displacement": null,
+  "first_failed_gate": "GATE1_BASELINE_MECHANICAL_REST",
+  "material_vertex_agreement": null,
+  "motor_off_directional": null,
+  "settled_motor_off_projected_displacement": null,
+  "translation_tolerance": 5.3290705182007514e-11,
+  "zero_reserve_active_directional": null
+}

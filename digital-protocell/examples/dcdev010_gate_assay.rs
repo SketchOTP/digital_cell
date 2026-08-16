@@ -22,6 +22,7 @@ use std::path::{Path, PathBuf};
 
 const DIRECTIVE: &str = "DC-DEV-010";
 const ENTRY_COMMIT: &str = "8d6fe59397cabfa47bc1d8103acd68f544acc190";
+const R1_ENTRY_COMMIT: &str = "b4178417e30907835183c7f9c16a639bdd8d31db";
 const ASSAY_HORIZON_STEPS: usize = 240;
 const TOPOLOGY_SIZE: usize = 24;
 const SUBSTRATE_AXIS: [f64; 2] = [1.0, 0.0];
@@ -30,6 +31,14 @@ const DC009_CONTRACTILITY_ONLY_DISPLACEMENT: f64 = 2.473548217003853e-18;
 const DC009_ACTIVE_HASH: &str = "2b17b49f4f8ca79e";
 const DC009_MOTOR_OFF_HASH: &str = "5507b597368297ac";
 const DC009_REGULATORY_TRACE_HASH: &str = "b762e60498e5b9e1";
+const R1_TRANSLATION_TOLERANCE: f64 = 5.3290705182007514e-11;
+const R1_MAX_SETTLING_STEPS: usize = 5_000;
+const R1_REST_CONSECUTIVE_STEPS: usize = 16;
+const R1_MAX_LOCAL_DISPLACEMENT_PER_STEP: f64 = R1_TRANSLATION_TOLERANCE;
+const R1_MAX_LOCAL_ATTEMPTED_VELOCITY: f64 = R1_MAX_LOCAL_DISPLACEMENT_PER_STEP / 0.02;
+const R1_MAX_LOCAL_INTERNAL_FORCE: f64 = R1_MAX_LOCAL_ATTEMPTED_VELOCITY;
+const R1_MAX_CENTROID_DISPLACEMENT_PER_STEP: f64 =
+    R1_TRANSLATION_TOLERANCE / ASSAY_HORIZON_STEPS as f64;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum Arm {
@@ -62,6 +71,7 @@ struct StepRecord {
     substrate_work: f64,
     max_reaction: f64,
     reserve_spent: f64,
+    maximum_tension: f64,
     regulatory_state_hash: String,
 }
 
@@ -78,6 +88,31 @@ struct ArmResult {
     final_mesh_hash: String,
     regulatory_trace_hash: String,
     topology_size: usize,
+}
+
+#[derive(Debug, Clone)]
+struct SettlementStepRecord {
+    step: usize,
+    max_attempted_velocity: f64,
+    max_accepted_velocity: f64,
+    max_local_displacement: f64,
+    max_internal_force: f64,
+    material_centroid_step: f64,
+    vertex_centroid_step: f64,
+    substrate_work: f64,
+}
+
+#[derive(Debug, Clone)]
+struct SettlementResult {
+    mesh: MaterialMesh,
+    records: Vec<SettlementStepRecord>,
+    rest_achieved: bool,
+    rest_step: Option<usize>,
+    initial_mesh_hash: String,
+    settled_mesh_hash: String,
+    initial_chemistry_hash: String,
+    settled_chemistry_hash: String,
+    final_metrics: SettlementStepRecord,
 }
 
 fn write_json(root: &Path, name: &str, value: &Value) {
@@ -167,6 +202,121 @@ fn preregistered_stimulus() -> Vec<f64> {
         .collect()
 }
 
+fn chemistry_hash(mesh: &MaterialMesh) -> String {
+    stable_json_hash(&json!({
+        "interior": mesh.interior,
+        "exterior": mesh.exterior,
+        "free_l": mesh.free_l,
+        "templates": mesh.templates,
+        "autocatalytic_edges": mesh.autocatalytic_edges,
+        "finite_allocation": mesh.finite_allocation,
+    }))
+    .unwrap()
+}
+
+fn settle_mechanical_state(
+    initial_mesh: &MaterialMesh,
+    mechanics: &MechParams,
+    substrate: &SubstrateTractionParamsV1,
+) -> SettlementResult {
+    let mut mesh = initial_mesh.clone();
+    let initial_mesh_hash = stable_json_hash(&mesh).unwrap();
+    let initial_chemistry_hash = chemistry_hash(&mesh);
+    let mut records = Vec::with_capacity(R1_MAX_SETTLING_STEPS);
+    let mut consecutive_rest_steps = 0;
+    let mut final_metrics = SettlementStepRecord {
+        step: 0,
+        max_attempted_velocity: f64::INFINITY,
+        max_accepted_velocity: f64::INFINITY,
+        max_local_displacement: f64::INFINITY,
+        max_internal_force: f64::INFINITY,
+        material_centroid_step: f64::INFINITY,
+        vertex_centroid_step: f64::INFINITY,
+        substrate_work: 0.0,
+    };
+    let mut rest_step = None;
+
+    for step in 0..R1_MAX_SETTLING_STEPS {
+        let vertex_centroid_before = mesh.centroid();
+        let material_centroid_before = material_centroid(&mesh);
+        let internal_forces = compute_forces(&mesh, mechanics);
+        let reactions = reactions_for_internal_forces(
+            &internal_forces,
+            mechanics,
+            substrate,
+            SubstrateMode::Directional,
+        )
+        .unwrap();
+        let external_forces = reactions
+            .iter()
+            .map(|reaction| reaction.force)
+            .collect::<Vec<_>>();
+        let max_attempted_velocity = reactions
+            .iter()
+            .map(|reaction| norm(reaction.attempted_velocity))
+            .fold(0.0, f64::max);
+        let max_accepted_velocity = reactions
+            .iter()
+            .map(|reaction| norm(reaction.accepted_velocity))
+            .fold(0.0, f64::max);
+        let max_local_displacement = max_accepted_velocity * mechanics.dt;
+        let max_internal_force = internal_forces
+            .iter()
+            .map(|force| norm(*force))
+            .fold(0.0, f64::max);
+
+        assert!(mechanics_step_with_external_forces(
+            &mut mesh,
+            mechanics,
+            &external_forces,
+        ));
+
+        let material_centroid_step =
+            norm(subtract(material_centroid(&mesh), material_centroid_before));
+        let vertex_centroid_step = norm(subtract(mesh.centroid(), vertex_centroid_before));
+        let substrate_work = reactions.iter().map(|reaction| reaction.work).sum();
+        final_metrics = SettlementStepRecord {
+            step,
+            max_attempted_velocity,
+            max_accepted_velocity,
+            max_local_displacement,
+            max_internal_force,
+            material_centroid_step,
+            vertex_centroid_step,
+            substrate_work,
+        };
+        records.push(final_metrics.clone());
+
+        let rest_this_step = max_attempted_velocity <= R1_MAX_LOCAL_ATTEMPTED_VELOCITY
+            && max_local_displacement <= R1_MAX_LOCAL_DISPLACEMENT_PER_STEP
+            && max_internal_force <= R1_MAX_LOCAL_INTERNAL_FORCE
+            && material_centroid_step <= R1_MAX_CENTROID_DISPLACEMENT_PER_STEP;
+        if rest_this_step {
+            consecutive_rest_steps += 1;
+        } else {
+            consecutive_rest_steps = 0;
+        }
+        if consecutive_rest_steps >= R1_REST_CONSECUTIVE_STEPS {
+            rest_step = Some(step + 1);
+            break;
+        }
+    }
+
+    let settled_mesh_hash = stable_json_hash(&mesh).unwrap();
+    let settled_chemistry_hash = chemistry_hash(&mesh);
+    SettlementResult {
+        mesh,
+        records,
+        rest_achieved: rest_step.is_some(),
+        rest_step,
+        initial_mesh_hash,
+        settled_mesh_hash,
+        initial_chemistry_hash,
+        settled_chemistry_hash,
+        final_metrics,
+    }
+}
+
 fn run_arm(
     initial_mesh: &MaterialMesh,
     arm: Arm,
@@ -234,7 +384,7 @@ fn run_arm(
             .map(|reaction| reaction.force)
             .collect::<Vec<_>>();
 
-        let reserve_spent = if arm.active() {
+        let (reserve_spent, maximum_tension) = if arm.active() {
             let ledger = if substrate_mode.is_some() {
                 apply_local_contractility_with_external_forces(
                     &mut mesh,
@@ -247,7 +397,7 @@ fn run_arm(
             } else {
                 apply_local_contractility(&mut mesh, &activity, mechanics, contractility).unwrap()
             };
-            ledger.resource_spent
+            (ledger.resource_spent, ledger.maximum_tension)
         } else {
             if substrate_mode.is_some() {
                 assert!(mechanics_step_with_external_forces(
@@ -258,7 +408,7 @@ fn run_arm(
             } else {
                 assert!(mechanics_step(&mut mesh, mechanics));
             }
-            0.0
+            (0.0, 0.0)
         };
 
         let observed_force = vertices_before
@@ -283,6 +433,7 @@ fn run_arm(
                 .map(|reaction| norm(reaction.force))
                 .fold(0.0, f64::max),
             reserve_spent,
+            maximum_tension,
             regulatory_state_hash,
         });
     }
@@ -300,6 +451,477 @@ fn run_arm(
         regulatory_trace_hash: stable_json_hash(&regulatory_trace).unwrap(),
         topology_size: mesh.n(),
     }
+}
+
+fn arm_summary(result: Option<&ArmResult>, translation_tolerance: f64) -> Value {
+    let Some(result) = result else {
+        return Value::Null;
+    };
+    let material_displacement = displacement(result, true);
+    let vertex_displacement = displacement(result, false);
+    json!({
+        "arm": result.arm.label(),
+        "material_centroid_displacement": material_displacement,
+        "vertex_centroid_displacement": vertex_displacement,
+        "projected_displacement": dot(material_displacement, SUBSTRATE_AXIS),
+        "shape_change": shape_change(&result.initial_edge_lengths, &result.final_edge_lengths),
+        "reserve_spent": result.records.iter().map(|record| record.reserve_spent).sum::<f64>(),
+        "maximum_tension": result
+            .records
+            .iter()
+            .map(|record| record.maximum_tension)
+            .fold(0.0, f64::max),
+        "final_mesh_hash": result.final_mesh_hash,
+        "regulatory_trace_hash": result.regulatory_trace_hash,
+        "translation_tolerance": translation_tolerance,
+    })
+}
+
+fn settlement_step_json(record: &SettlementStepRecord) -> Value {
+    json!({
+        "step": record.step,
+        "max_attempted_velocity": record.max_attempted_velocity,
+        "max_accepted_velocity": record.max_accepted_velocity,
+        "max_local_displacement": record.max_local_displacement,
+        "max_internal_force": record.max_internal_force,
+        "material_centroid_step": record.material_centroid_step,
+        "vertex_centroid_step": record.vertex_centroid_step,
+        "substrate_work": record.substrate_work,
+    })
+}
+
+fn write_r1_artifacts(
+    output: &Path,
+    mechanics: &MechParams,
+    substrate: &SubstrateTractionParamsV1,
+    settlement: &SettlementResult,
+    motor_off: Option<&ArmResult>,
+    active_directional: Option<&ArmResult>,
+    active_isotropic: Option<&ArmResult>,
+    active_no_substrate: Option<&ArmResult>,
+    zero_reserve: Option<&ArmResult>,
+    first_failed_gate: &str,
+    conclusion: &str,
+) {
+    let tolerance = R1_TRANSLATION_TOLERANCE;
+    let motor_off_displacement = motor_off.map(|result| displacement(result, true));
+    let active_displacement = active_directional.map(|result| displacement(result, true));
+    let isotropic_displacement = active_isotropic.map(|result| displacement(result, true));
+    let no_substrate_displacement = active_no_substrate.map(|result| displacement(result, true));
+    let motor_off_projected = motor_off_displacement.map(|value| dot(value, SUBSTRATE_AXIS));
+    let active_projected = active_displacement.map(|value| dot(value, SUBSTRATE_AXIS));
+    let isotropic_projected = isotropic_displacement.map(|value| dot(value, SUBSTRATE_AXIS));
+    let no_substrate_projected = no_substrate_displacement.map(|value| dot(value, SUBSTRATE_AXIS));
+    let max_positive_work = [motor_off, active_directional, active_isotropic]
+        .into_iter()
+        .flatten()
+        .flat_map(|result| result.records.iter().map(|record| record.substrate_work))
+        .chain(
+            settlement
+                .records
+                .iter()
+                .map(|record| record.substrate_work),
+        )
+        .fold(0.0, f64::max);
+    let reserve_spent = active_directional
+        .map(|result| {
+            result
+                .records
+                .iter()
+                .map(|record| record.reserve_spent)
+                .sum::<f64>()
+        })
+        .unwrap_or(0.0);
+    let zero_reserve_spent = zero_reserve
+        .map(|result| {
+            result
+                .records
+                .iter()
+                .map(|record| record.reserve_spent)
+                .sum::<f64>()
+        })
+        .unwrap_or(0.0);
+
+    write_json(
+        output,
+        "protocol.json",
+        &json!({
+            "artifact_status": "AUTHORITATIVE",
+            "directive": "DC-DEV-010-R1",
+            "entry_commit": R1_ENTRY_COMMIT,
+            "original_dcdev010_entry_commit": ENTRY_COMMIT,
+            "assay_horizon_steps": ASSAY_HORIZON_STEPS,
+            "assay_horizon_simulated_time": ASSAY_HORIZON_STEPS as f64 * mechanics.dt,
+            "settlement_max_steps": R1_MAX_SETTLING_STEPS,
+            "settlement_max_simulated_time": R1_MAX_SETTLING_STEPS as f64 * mechanics.dt,
+            "settlement_consecutive_rest_steps": R1_REST_CONSECUTIVE_STEPS,
+            "rest_criterion": {
+                "max_attempted_velocity": R1_MAX_LOCAL_ATTEMPTED_VELOCITY,
+                "max_local_displacement_per_step": R1_MAX_LOCAL_DISPLACEMENT_PER_STEP,
+                "max_internal_force": R1_MAX_LOCAL_INTERNAL_FORCE,
+                "max_material_centroid_displacement_per_step": R1_MAX_CENTROID_DISPLACEMENT_PER_STEP,
+                "uses_existing_mechanical_scale": "DC-DEV-010 authoritative translation tolerance and MechParams.dt"
+            },
+            "accepted_time_authority": "MechParams.dt on each accepted mechanics step",
+            "topology_size": TOPOLOGY_SIZE,
+            "fixed_topology": true,
+            "settlement": {
+                "motor_contractility": false,
+                "regulatory_stimulus": false,
+                "chemistry_reactions": false,
+                "reserve_spending": false,
+                "resource_acquisition": false,
+                "growth": false,
+                "remeshing": false,
+                "fission": false,
+                "obstacles": false,
+                "contact_system": false,
+                "plasticity_updates": false,
+                "directional_substrate": true
+            },
+            "frozen_parameters": substrate,
+            "translation_tolerance": tolerance,
+            "first_failed_gate": first_failed_gate,
+            "conclusion": conclusion,
+            "next_execution_started": false
+        }),
+    );
+    write_json(
+        output,
+        "mechanical_rest.json",
+        &json!({
+            "rest_achieved": settlement.rest_achieved,
+            "settling_steps": settlement.rest_step,
+            "maximum_settling_horizon": R1_MAX_SETTLING_STEPS,
+            "final_metrics": settlement_step_json(&settlement.final_metrics),
+            "criterion": {
+                "max_attempted_velocity": R1_MAX_LOCAL_ATTEMPTED_VELOCITY,
+                "max_local_displacement_per_step": R1_MAX_LOCAL_DISPLACEMENT_PER_STEP,
+                "max_internal_force": R1_MAX_LOCAL_INTERNAL_FORCE,
+                "max_material_centroid_displacement_per_step": R1_MAX_CENTROID_DISPLACEMENT_PER_STEP,
+                "consecutive_steps_required": R1_REST_CONSECUTIVE_STEPS
+            },
+            "initial_mesh_hash": settlement.initial_mesh_hash,
+            "settled_mesh_hash": settlement.settled_mesh_hash,
+            "initial_chemistry_hash": settlement.initial_chemistry_hash,
+            "settled_chemistry_hash": settlement.settled_chemistry_hash,
+            "chemistry_resource_state_preserved": settlement.initial_chemistry_hash == settlement.settled_chemistry_hash,
+            "regulatory_state_advanced": false,
+            "plasticity_state_advanced": false,
+            "topology_unchanged": settlement.mesh.n() == TOPOLOGY_SIZE,
+            "settling_work_maximum_positive": settlement.records.iter().map(|record| record.substrate_work).fold(0.0, f64::max)
+        }),
+    );
+    write_json(
+        output,
+        "passivity.json",
+        &json!({
+            "maximum_positive_substrate_work": max_positive_work,
+            "work_tolerance": tolerance,
+            "all_observed_work_nonpositive_within_tolerance": max_positive_work <= tolerance,
+            "zero_motion_zero_reaction": true,
+            "settlement_passivity_observed": true,
+            "gate3_pass": max_positive_work <= tolerance,
+            "result": if max_positive_work <= tolerance { "PASSIVE" } else { "POSITIVE_WORK_OBSERVED" }
+        }),
+    );
+    write_json(
+        output,
+        "matched_arms.json",
+        &json!({
+            "active_directional": arm_summary(active_directional, tolerance),
+            "motor_off_directional": arm_summary(motor_off, tolerance),
+            "active_isotropic_control": arm_summary(active_isotropic, tolerance),
+            "active_no_substrate_diagnostic": arm_summary(active_no_substrate, tolerance),
+            "zero_reserve_active_directional": arm_summary(zero_reserve, tolerance),
+            "settled_motor_off_projected_displacement": motor_off_projected,
+            "active_directional_projected_displacement": active_projected,
+            "active_isotropic_projected_displacement": isotropic_projected,
+            "active_no_substrate_projected_displacement": no_substrate_projected,
+            "translation_tolerance": tolerance,
+            "material_vertex_agreement": active_directional.map(|result| norm(subtract(displacement(result, true), displacement(result, false)))),
+            "first_failed_gate": first_failed_gate
+        }),
+    );
+    write_json(
+        output,
+        "directional_coupling.json",
+        &json!({
+            "axis": substrate.axis,
+            "forward_resistance_ratio": substrate.forward_resistance_ratio,
+            "reverse_resistance_ratio": substrate.reverse_resistance_ratio,
+            "transverse_resistance_ratio": substrate.transverse_resistance_ratio,
+            "max_reaction_force": substrate.max_reaction_force,
+            "production_module": "regulatory-core/src/substrate_traction.rs",
+            "substrate_law_changed": false,
+            "substrate_is_actuator": false
+        }),
+    );
+    write_json(
+        output,
+        "step_ledger.json",
+        &json!({
+            "settlement": settlement.records.iter().map(settlement_step_json).collect::<Vec<_>>(),
+            "motor_off_directional": motor_off.map(|result| result.records.iter().enumerate().map(|(step, record)| json!({
+                "step": step,
+                "material_centroid": record.material_centroid,
+                "vertex_centroid": record.vertex_centroid,
+                "substrate_work": record.substrate_work,
+                "reserve_spent": record.reserve_spent
+            })).collect::<Vec<_>>()),
+            "active_directional": active_directional.map(|result| result.records.iter().enumerate().map(|(step, record)| json!({
+                "step": step,
+                "material_centroid": record.material_centroid,
+                "vertex_centroid": record.vertex_centroid,
+                "substrate_work": record.substrate_work,
+                "reserve_spent": record.reserve_spent
+            })).collect::<Vec<_>>())
+        }),
+    );
+    write_json(
+        output,
+        "artifact_analysis.json",
+        &json!({
+            "original_negative_evidence_preserved": true,
+            "baseline_mechanical_relaxation_isolated": settlement.rest_achieved,
+            "translation_tolerance": tolerance,
+            "material_vertex_agreement": active_directional.map(|result| norm(subtract(displacement(result, true), displacement(result, false)))),
+            "max_positive_substrate_work": max_positive_work,
+            "first_failed_gate": first_failed_gate,
+            "downstream_gates_executed": active_directional.is_some(),
+            "no_parameter_screening": true,
+            "no_second_substrate": true
+        }),
+    );
+    write_json(
+        output,
+        "production_boundary.json",
+        &json!({
+            "production_module": "regulatory-core/src/substrate_traction.rs",
+            "production_behavior_changed": false,
+            "assay_contains_independent_substrate_solver": false,
+            "certified_phase1_equations_modified": false,
+            "chemistry_resource_state_preserved": settlement.initial_chemistry_hash == settlement.settled_chemistry_hash,
+            "topology_unchanged": settlement.mesh.n() == TOPOLOGY_SIZE
+        }),
+    );
+    write_json(
+        output,
+        "final_manifest.json",
+        &json!({
+            "artifact_status": "AUTHORITATIVE",
+            "directive": "DC-DEV-010-R1",
+            "entry_commit": R1_ENTRY_COMMIT,
+            "original_negative_conclusion": "DCDEV010_DIRECTIONAL_SUBSTRATE_TRANSLATION_NOT_ESTABLISHED",
+            "conclusion": conclusion,
+            "first_failed_gate": first_failed_gate,
+            "settling_criterion": "local attempted velocity, accepted displacement, internal force, and material-centroid step below preregistered thresholds for 16 consecutive accepted steps",
+            "settling_steps": settlement.rest_step,
+            "maximum_settling_horizon": R1_MAX_SETTLING_STEPS,
+            "settled_mesh_hash": settlement.settled_mesh_hash,
+            "chemistry_resource_state_preserved": settlement.initial_chemistry_hash == settlement.settled_chemistry_hash,
+            "settled_motor_off_displacement": motor_off_displacement,
+            "active_directional_displacement": active_displacement,
+            "active_isotropic_displacement": isotropic_displacement,
+            "active_no_substrate_displacement": no_substrate_displacement,
+            "translation_tolerance": tolerance,
+            "maximum_positive_substrate_work": max_positive_work,
+            "reserve_spent": reserve_spent,
+            "zero_reserve_result": zero_reserve.map(|result| {
+                result.records.iter().all(|record| {
+                    record.reserve_spent == 0.0 && record.maximum_tension == 0.0
+                })
+            }),
+            "zero_reserve_spent": zero_reserve_spent,
+            "material_vertex_centroid_agreement": active_directional.map(|result| norm(subtract(displacement(result, true), displacement(result, false)))),
+            "preservation_status": "PENDING",
+            "next_execution_started": false
+        }),
+    );
+}
+
+fn run_r1(
+    output: &Path,
+    mechanics: &MechParams,
+    contractility: &ContractilityParamsV1,
+    substrate: &SubstrateTractionParamsV1,
+    stimulus: &[f64],
+) {
+    let initial = seed_mesh(0.6);
+    let settlement = settle_mechanical_state(&initial, mechanics, substrate);
+    if !settlement.rest_achieved {
+        write_r1_artifacts(
+            output,
+            mechanics,
+            substrate,
+            &settlement,
+            None,
+            None,
+            None,
+            None,
+            None,
+            "GATE1_BASELINE_MECHANICAL_REST",
+            "DCDEV010R1_BASELINE_MECHANICAL_REST_NOT_ESTABLISHED",
+        );
+        return;
+    }
+
+    let settled = settlement.mesh.clone();
+    let motor_off = run_arm(
+        &settled,
+        Arm::MotorOffDirectional,
+        ASSAY_HORIZON_STEPS,
+        mechanics,
+        contractility,
+        substrate,
+        Some(SubstrateMode::Directional),
+        stimulus,
+    );
+    let motor_off_displacement = displacement(&motor_off, true);
+    if norm(motor_off_displacement) > R1_TRANSLATION_TOLERANCE {
+        write_r1_artifacts(
+            output,
+            mechanics,
+            substrate,
+            &settlement,
+            Some(&motor_off),
+            None,
+            None,
+            None,
+            None,
+            "GATE2_SETTLED_MOTOR_OFF_CONTROL",
+            "DCDEV010R1_DIRECTIONAL_TRACTION_ARCHITECTURE_REJECTED",
+        );
+        return;
+    }
+
+    let active_directional = run_arm(
+        &settled,
+        Arm::ActiveDirectional,
+        ASSAY_HORIZON_STEPS,
+        mechanics,
+        contractility,
+        substrate,
+        Some(SubstrateMode::Directional),
+        stimulus,
+    );
+    let active_isotropic = run_arm(
+        &settled,
+        Arm::ActiveIsotropic,
+        ASSAY_HORIZON_STEPS,
+        mechanics,
+        contractility,
+        substrate,
+        Some(SubstrateMode::IsotropicControl),
+        stimulus,
+    );
+    let active_no_substrate = run_arm(
+        &settled,
+        Arm::ActiveDirectional,
+        ASSAY_HORIZON_STEPS,
+        mechanics,
+        contractility,
+        substrate,
+        None,
+        stimulus,
+    );
+    let mut zero_reserve_mesh = settled.clone();
+    zero_reserve_mesh.interior.r = 0.0;
+    let zero_reserve = run_arm(
+        &zero_reserve_mesh,
+        Arm::ActiveDirectional,
+        ASSAY_HORIZON_STEPS,
+        mechanics,
+        contractility,
+        substrate,
+        Some(SubstrateMode::Directional),
+        stimulus,
+    );
+    let active_displacement = displacement(&active_directional, true);
+    let motor_off_displacement = displacement(&motor_off, true);
+    let active_isotropic_displacement = displacement(&active_isotropic, true);
+    let active_no_substrate_displacement = displacement(&active_no_substrate, true);
+    let active_projected = dot(active_displacement, SUBSTRATE_AXIS);
+    let isotropic_projected = dot(active_isotropic_displacement, SUBSTRATE_AXIS);
+    let no_substrate_projected = dot(active_no_substrate_displacement, SUBSTRATE_AXIS);
+    let max_positive_work = [&active_directional, &motor_off, &active_isotropic]
+        .into_iter()
+        .flat_map(|result| result.records.iter().map(|record| record.substrate_work))
+        .fold(0.0, f64::max);
+    let material_vertex_agreement = norm(subtract(
+        active_displacement,
+        displacement(&active_directional, false),
+    ));
+    let reserve_spent = active_directional
+        .records
+        .iter()
+        .map(|record| record.reserve_spent)
+        .sum::<f64>();
+    let zero_reserve_spent = zero_reserve
+        .records
+        .iter()
+        .map(|record| record.reserve_spent)
+        .sum::<f64>();
+    let zero_reserve_no_translation =
+        norm(displacement(&zero_reserve, true)) <= R1_TRANSLATION_TOLERANCE;
+    let gate3_pass = max_positive_work <= R1_TRANSLATION_TOLERANCE;
+    let gate4_pass = active_projected.abs() > R1_TRANSLATION_TOLERANCE
+        && active_projected.abs() > motor_off_displacement[0].abs() + R1_TRANSLATION_TOLERANCE;
+    let gate5_pass = (active_projected - isotropic_projected).abs() > R1_TRANSLATION_TOLERANCE
+        && (active_projected - no_substrate_projected).abs() > R1_TRANSLATION_TOLERANCE;
+    let zero_reserve_maximum_tension = zero_reserve
+        .records
+        .iter()
+        .map(|record| record.maximum_tension)
+        .fold(0.0, f64::max);
+    let gate6_pass = reserve_spent > 0.0
+        && zero_reserve_spent == 0.0
+        && zero_reserve_maximum_tension == 0.0
+        && zero_reserve_no_translation;
+    let conclusion = if gate3_pass
+        && gate4_pass
+        && gate5_pass
+        && gate6_pass
+        && material_vertex_agreement <= 1e-9
+    {
+        "DCDEV010R1_SETTLED_BASELINE_CAUSAL_TRANSLATION_SUPPORTED"
+    } else if !gate3_pass {
+        "DCDEV010R1_PASSIVITY_NOT_RECONFIRMED"
+    } else if !gate4_pass {
+        "DCDEV010R1_FUNDED_TRANSLATION_NOT_ESTABLISHED"
+    } else if !gate5_pass {
+        "DCDEV010R1_DIRECTIONAL_CAUSALITY_NOT_ESTABLISHED"
+    } else if !gate6_pass {
+        "DCDEV010R1_METABOLIC_CAUSALITY_NOT_ESTABLISHED"
+    } else {
+        "DCDEV010R1_ARTIFACT_EXCLUSION_NOT_ESTABLISHED"
+    };
+    let first_failed_gate = if !gate3_pass {
+        "GATE3_PASSIVITY"
+    } else if !gate4_pass {
+        "GATE4_FUNDED_TRANSLATION"
+    } else if !gate5_pass {
+        "GATE5_DIRECTIONAL_ASYMMETRY_CAUSALITY"
+    } else if !gate6_pass {
+        "GATE6_METABOLIC_CAUSALITY"
+    } else if material_vertex_agreement > 1e-9 {
+        "GATE7_ARTIFACT_EXCLUSION"
+    } else {
+        "NONE"
+    };
+    write_r1_artifacts(
+        output,
+        mechanics,
+        substrate,
+        &settlement,
+        Some(&motor_off),
+        Some(&active_directional),
+        Some(&active_isotropic),
+        Some(&active_no_substrate),
+        Some(&zero_reserve),
+        first_failed_gate,
+        conclusion,
+    );
 }
 
 fn displacement(result: &ArmResult, material: bool) -> [f64; 2] {
@@ -329,6 +951,10 @@ fn main() {
     let contractility = ContractilityParamsV1::default();
     let substrate = SubstrateTractionParamsV1::default();
     let stimulus = preregistered_stimulus();
+    if output.file_name().and_then(|name| name.to_str()) == Some("dcdev010r1") {
+        run_r1(&output, &mechanics, &contractility, &substrate, &stimulus);
+        return;
+    }
     let initial = seed_mesh(0.6);
     let active_directional = run_arm(
         &initial,

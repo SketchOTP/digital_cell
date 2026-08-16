@@ -178,3 +178,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260816-dcdev010r1-mechanical-rest-causal-isolation
+
+- Issued: `2026-08-16T14:14:22-04:00`
+- Issuer: User
+- External directive: `DC-DEV-010-R1`
+- Objective: Isolate whether the accepted DC-DEV-010 Gate 1 motor-off translation came from passive directional rectification of unrelaxed seeded-body mechanics, then retest only from a preregistered settled common state.
+- Scope: Existing seeded mesh mechanical settlement, fixed local/global rest criterion, settled-state hashing and preservation checks, matched R1 arms only after rest, separate R1 evidence, documentation, governance, preservation, and exact-head CI on PR #19.
+- Exclusions: substrate-law changes, substrate-parameter changes, contractility changes, reserve-cost changes, chemistry, resources, growth, remeshing, fission, obstacles, contact systems, plasticity, sensors, navigation, resource seeking, learning, reward, fitness, evolution, second substrate, and DC-DEV-011.
+- Acceptance: First failed R1 gate stops execution; exact settled-state evidence or `DCDEV010R1_BASELINE_MECHANICAL_REST_NOT_ESTABLISHED`, pushed PR #19, exact-head remote CI, and architect review.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260816-dcdev010-passive-directional-substrate-traction
+- Status at issuance: ISSUED

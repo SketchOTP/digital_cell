@@ -1,0 +1,13 @@
+{
+  "axis": [
+    1.0,
+    0.0
+  ],
+  "forward_resistance_ratio": 0.25,
+  "max_reaction_force": 0.45,
+  "production_module": "regulatory-core/src/substrate_traction.rs",
+  "reverse_resistance_ratio": 0.75,
+  "substrate_is_actuator": false,
+  "substrate_law_changed": false,
+  "transverse_resistance_ratio": 0.5
+}
