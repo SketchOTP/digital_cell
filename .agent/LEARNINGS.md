@@ -87,3 +87,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-010 first fixed-parameter qualification execution; architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV010R1-001
+
+- Learning ID: L-DCDEV010R1-001
+- Date: 2026-08-16
+- Fact or lesson: The exact seeded DC-DEV-010 body did not meet the preregistered local and global mechanical-rest contract within 5,000 accepted directional-substrate mechanics steps. Chemistry/resource state hashes remained unchanged, so R1 stopped before any matched qualification arm.
+- Evidence location: `digital-protocell/experiments/generated/dcdev010r1/mechanical_rest.json`, `digital-protocell/experiments/generated/dcdev010r1/final_manifest.json`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev010/r1_mechanical_rest.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-010-R1 mechanical-rest causal-isolation assay.
+- Supersedes learning: none

@@ -391,3 +391,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: independent architect decision on the Gate 1 motor-off translation failure.
 - Blockers: Gate 1 motor-off no-propulsion failure and architect review.
 - Follow-up directive: none
+
+## D-20260816-dcdev010r1-mechanical-rest-causal-isolation - PARTIAL
+
+- Outcome ID: OUT-DCDEV010R1-BASELINE-REST-FAILURE-LOCAL
+- Supersedes outcome: OUT-DCDEV010-DIRECTIONAL-SUBSTRATE-FINAL-REMOTE-VERIFICATION
+- Closed: `2026-08-16T14:15:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: DC-DEV-010-R1 was executed from `b4178417e30907835183c7f9c16a639bdd8d31db`. The exact seeded body did not satisfy the preregistered local/global mechanical-rest contract within 5,000 accepted steps, so R1 stopped before matched arms with conclusion `DCDEV010R1_BASELINE_MECHANICAL_REST_NOT_ESTABLISHED`.
+- Validation:
+  - R1 assay compiled and executed with sanctioned Rust 1.89.0 - PASSED; scientific stop recorded
+  - Rest criterion remained fixed at 16 consecutive steps and 5,000-step maximum horizon
+  - Chemistry/resource state hash preserved - PASSED
+  - Maximum positive substrate work during settlement - `0.0`
+  - Original DC-DEV-010 negative evidence directory - PRESERVED and not overwritten
+  - Local governance ADOPTED validation - PASSED with `py -3.12`
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Changed areas: observer-only R1 settlement instrumentation, separate generated evidence, scoped workflow, documentation, and governance; no production substrate, contractility, chemistry, or mechanics behavior changed.
+- Remaining risks: remote exact-head verification and architect review of the preregistered rest failure.
+- Blockers: baseline mechanical rest not established within the fixed horizon and architect review.
+- Follow-up directive: none

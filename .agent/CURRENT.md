@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-16T13:43:48-04:00`
+- Last updated: `2026-08-16T14:15:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260816-dcdev010-passive-directional-substrate-traction`
-- External directive ID: `DC-DEV-010`
-- Objective: `Test whether one fixed passive direction-dependent substrate reaction can convert existing reserve-funded deformation into lawful body translation.`
+- Local directive ID: `D-20260816-dcdev010r1-mechanical-rest-causal-isolation`
+- External directive ID: `DC-DEV-010-R1`
+- Objective: `Determine whether the accepted DC-DEV-010 Gate 1 motor-off translation was passive rectification of unrelaxed seeded-body mechanics, then retest only from a preregistered settled common state.`
 - Current status: `VALIDATING`
-- Acceptance: `DC-DEV-009 is architect-accepted at 8d6fe59397cabfa47bc1d8103acd68f544acc190; DC-DEV-010 first qualification execution failed closed at Gate 1 and architect review remains required.`
-- Current phase: `DC-DEV-010 passive directional substrate coupling audit from entry 8d6fe59397cabfa47bc1d8103acd68f544acc190.`
-- Expected or actual touched areas: `regulatory-core substrate traction production module, read-only contractility force audit, DC-DEV-010 assay/artifacts/docs/workflow, current governance state`
-- Immediate next action: `Architect review of draft PR #19; do not tune the frozen parameters, add another traction architecture, or begin DC-DEV-011.`
+- Acceptance: `DC-DEV-010 negative result is architect-accepted; DC-DEV-010-R1 failed closed at baseline mechanical-rest Gate 1 and architect review remains required.`
+- Current phase: `DC-DEV-010-R1 mechanical-rest causal isolation from entry b4178417e30907835183c7f9c16a639bdd8d31db.`
+- Expected or actual touched areas: `observer-only DC-DEV-010-R1 settlement assay, separate evidence, scoped workflow, documentation, and governance; no production behavior change`
+- Immediate next action: `Architect review of draft PR #19 at the pushed R1 head; do not tune the frozen parameters, add another substrate, or begin DC-DEV-011.`
 
 ## Temporary task-relevant facts
 
@@ -42,16 +42,18 @@
 - DC-DEV-010 first execution used one frozen substrate parameter set. Substrate work remained non-positive, but the motor-off directional arm translated `0.013504913541228361` above tolerance `2.220446049250313e-13`.
 - DC-DEV-010 scientific conclusion is `DCDEV010_DIRECTIONAL_SUBSTRATE_TRANSLATION_NOT_ESTABLISHED`; no parameter repair or second architecture is authorized.
 - DC-DEV-011 remains blocked.
-- DC-DEV-010 branch `strategy/dc-dev-010-directional-substrate-traction` is pushed at `83d1cd747e5ad750b2b6b2ae145c7ae4ff3444b`; draft PR #19 is open against `strategy/dc-dev-009-motility-feasibility-audit`.
-- Exact-head remote CI run `31962293477` passed at `83d1cd747e5ad750b2b6b2ae145c7ae4ff3444b`; architect review remains pending.
+- DC-DEV-010-R1 baseline rest did not satisfy the preregistered local/global convergence contract within 5,000 accepted steps; chemistry/resource state hash remained unchanged.
+- DC-DEV-010-R1 conclusion is `DCDEV010R1_BASELINE_MECHANICAL_REST_NOT_ESTABLISHED`; no matched R1 arms executed.
+- DC-DEV-010 branch `strategy/dc-dev-010-directional-substrate-traction` is pushed at `89a57f68253af431a80f8b66dc7e626a0846b5de`; draft PR #19 is open against `strategy/dc-dev-009-motility-feasibility-audit`.
+- Exact-head remote CI for the R1 head is pending; local governance validation and R1 assay execution passed/failed closed as specified.
 
 ## Blockers
 
-- Architect review remains required for DC-DEV-010; Gate 1 failure is the active blocker.
+- Architect review remains required for DC-DEV-010-R1; baseline mechanical rest is the active blocker.
 
 ## Pending decisions
 
-- DC-DEV-010 may contain exactly one passive local directional substrate law. No parameter tuning, second traction architecture, new sensor, actuator, planner, reward, fitness, or evolution is authorized. DC-DEV-011 is blocked.
+- DC-DEV-010-R1 may only isolate startup mechanical relaxation using the existing law and parameters. No parameter tuning, second substrate, adhesion, anchoring, sensor, planner, reward, fitness, evolution, or DC-DEV-011 is authorized.
 
 ## Status vocabulary
 

@@ -45,3 +45,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Maximum positive substrate work was `0.0`, but the substrate law converted baseline mechanics relaxation into `0.013504913541228361` of material-centroid translation without funded contractility. No parameter repair or second traction architecture is authorized.
 - Affected areas: DC-DEV-010 substrate coupling evidence and developmental/sensorimotor architecture selection; DC-DEV-011 remains blocked.
 - Supersedes record: none
+
+## DEC-DCDEV010R1-001
+
+- Date: 2026-08-16
+- Record or decision ID: DEC-DCDEV010R1-001
+- Status: PROPOSED
+- Decision or event: DC-DEV-010-R1 failed closed at baseline mechanical-rest Gate 1 because the seeded body did not satisfy the preregistered local and global rest contract within the 5,000-step horizon.
+- Rationale: The R1 experiment removed startup relaxation as a confound only if the existing seeded body reached the fixed rest contract. It did not. Chemistry/resource state was preserved, no matched arms were executed, and no production behavior or frozen parameter was changed.
+- Affected areas: DC-DEV-010-R1 causal-isolation evidence and developmental/sensorimotor architecture selection; DC-DEV-011 remains blocked.
+- Supersedes record: none
