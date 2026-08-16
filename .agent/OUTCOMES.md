@@ -81,7 +81,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Phase-1 focused regression - PASSED (4 tests)
   - D-088 focused regression - PASSED (4 tests)
   - Evolution-harness regression - PASSED (40 tests)
-  - Exact-head GitHub Actions run `31938214782` at `9872d4e251817177989a980760796a8ba767d037` - PASSED
+  - Exact-head GitHub Actions run `31938453863` at `746e12514dfdbd5dd3f8a6cd90d10900f8a6b5cf` - PASSED
 - Remaining risks: architect inspection of the runtime boundary.
 - Blockers: architect review; DC-DEV-009 remains blocked.
 - Follow-up directive: none
