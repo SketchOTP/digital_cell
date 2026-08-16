@@ -10,11 +10,11 @@
 - Local directive ID: `D-20260816-dcdev008-finite-spatial-resource-acquisition`
 - External directive ID: `DC-DEV-008`
 - Objective: `Give the existing organism finite, local, mass-conservative access to existing N/F material and demonstrate coupling into existing metabolism.`
-- Current status: `IN_PROGRESS`
-- Acceptance: `DC-DEV-007 is architect-accepted at 2968882769991f48c987ceb40c719fd351b2e046; DC-DEV-008 Gates 0-8, exact-head remote CI, and architect review remain pending.`
+- Current status: `VALIDATING`
+- Acceptance: `DC-DEV-007 is architect-accepted at 2968882769991f48c987ceb40c719fd351b2e046; DC-DEV-008 local Gates 0-8 pass, exact-head remote CI and architect review remain pending.`
 - Current phase: `DC-DEV-008 finite spatial resource acquisition from entry 2968882769991f48c987ceb40c719fd351b2e046.`
 - Expected or actual touched areas: `chemistry-core local resource-region transport, DC-DEV-008 assay/artifacts/docs/workflow, current governance state`
-- Immediate next action: `Implement and validate the bounded DC-DEV-008 assay; do not start DC-DEV-009.`
+- Immediate next action: `Wait for exact-head CI on draft PR #16; do not start DC-DEV-009.`
 
 ## Temporary task-relevant facts
 
@@ -41,6 +41,7 @@
 ## Blockers
 
 - Mimir V2 tools are unavailable in this session; lifecycle evidence must be reported as blocked, not fabricated.
+- Exact-head CI is not yet attached to `d37d23b3d948a4c03bf579c29e2656493fcadb40`.
 
 ## Pending decisions
 
