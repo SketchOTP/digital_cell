@@ -190,9 +190,9 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - 40 evolution-harness tests - PASSED
   - DC-DEV-002 through DC-DEV-009 preservation assays - PASSED
   - Scoped formatting - PASSED
-  - Exact-head remote CI - NOT RUN
-- Remaining risks: exact-head scoped remote CI, draft PR inspection, and independent architect review.
-- Blockers: exact-head scoped remote CI and architect review.
+  - Exact-head remote CI run `31970618654` at `4937478afd0d0e80a987a532012ce6b192a1cff8` - PASSED
+- Remaining risks: final evidence-seal head CI rerun, draft PR inspection, and independent architect review.
+- Blockers: final evidence-seal head CI rerun and architect review.
 - Follow-up directive: none
 
 ## D-20260815-dcdev005-local-experience-dependent-plasticity - PARTIAL

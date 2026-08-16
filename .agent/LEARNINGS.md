@@ -85,5 +85,5 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Fact or lesson: A single frozen local isotropic stick-slip reaction law, coupled only through existing local attempted velocity and force, retained active reserve-funded displacement through relaxation in the preregistered fixed-topology assay while motor-off and zero-reserve controls remained stationary. This is evidence for the bounded substrate mechanism, not autonomous gait, steering, navigation, resource seeking, learning, or evolution.
 - Evidence location: `digital-protocell/crates/regulatory-core/src/stick_slip_traction.rs`, `digital-protocell/examples/dcdev011_gate_assay.rs`, `digital-protocell/experiments/generated/dcdev011/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev011/qualification_results.md`.
 - Confidence: PROVISIONAL
-- Scope: DC-DEV-011 local qualification; exact-head remote CI and architect review pending.
+- Scope: DC-DEV-011 local qualification; exact-head remote CI passed, architect review pending.
 - Supersedes learning: none

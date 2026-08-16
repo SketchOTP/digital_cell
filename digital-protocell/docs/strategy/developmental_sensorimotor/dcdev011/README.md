@@ -79,6 +79,7 @@ steering, navigation, resource seeking, learning, or evolution.
 The local qualification produced
 `DCDEV011_PASSIVE_ISOTROPIC_STICK_SLIP_TRANSLATION_QUALIFIED`; see
 `qualification_results.md` and the compact generated JSON artifacts. The
-remote preservation status remains pending until the scoped workflow passes.
+exact-head scoped remote preservation workflow has passed; independent
+architect review remains pending.
 
 `NEXT_EXECUTION_STARTED:false`.

@@ -41,8 +41,9 @@ Local Rust 1.89.0 checks passed:
 - DC-DEV-002 through DC-DEV-009 preservation assay invocations: passed
 - scoped formatting: passed
 
-The generated manifest intentionally remains
-`PENDING_SCOPED_REMOTE_CI` until the exact-head GitHub workflow passes. No
-architect acceptance is claimed here.
+The exact-head scoped GitHub workflow passed at run `31970618654` on the
+implementation head before this evidence-seal commit. The same workflow is
+being rerun for the final evidence-seal head. No architect acceptance is
+claimed here.
 
 `NEXT_EXECUTION_STARTED:false`

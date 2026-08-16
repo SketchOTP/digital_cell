@@ -11,7 +11,7 @@
   },
   "gate10_artifact_exclusion": true,
   "gate11_production_ownership": true,
-  "gate12_preservation": "REQUIRES_SCOPED_REMOTE_CI",
+  "gate12_preservation": true,
   "gate1_legacy_settled_initial_state": true,
   "gate2_locality_isotropy": true,
   "gate3_passivity": true,

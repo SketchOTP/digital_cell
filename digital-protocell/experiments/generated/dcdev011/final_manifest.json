@@ -17,6 +17,6 @@
     "stick_slip_engagement": true
   },
   "next_execution_started": false,
-  "preservation_status": "PENDING_SCOPED_REMOTE_CI",
+  "preservation_status": "PASSED_SCOPED_REMOTE_CI",
   "scientific_finding": "DCDEV011_PASSIVE_ISOTROPIC_STICK_SLIP_TRANSLATION_QUALIFIED"
 }
