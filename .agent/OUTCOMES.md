@@ -354,7 +354,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: Gate 1 motor-off no-propulsion failure and architect review.
 - Follow-up directive: none
 
-## D-20260816-dcdev010-passive-directional-substrate-traction - REMOTE VERIFIED PARTIAL
+## D-20260816-dcdev010-passive-directional-substrate-traction - PARTIAL
 
 - Outcome ID: OUT-DCDEV010-DIRECTIONAL-SUBSTRATE-REMOTE-VERIFICATION
 - Supersedes outcome: OUT-DCDEV010-DIRECTIONAL-SUBSTRATE-GATE1-FAILURE
