@@ -35,3 +35,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Contractile force-vector sum max norm was `6.804363002006077e-16`; contractility-only centroid displacement was `2.473548217003853e-18`; observed active-minus-control drift was attributed to the changed baseline mechanics force field after deformation.
 - Affected areas: DC-DEV-009 audit evidence and developmental/sensorimotor architecture selection; no production locomotion mechanism.
 - Supersedes record: none
+
+## DEC-DCDEV010-001
+
+- Date: 2026-08-16
+- Record or decision ID: DEC-DCDEV010-001
+- Status: PROPOSED
+- Decision or event: The first DC-DEV-010 fixed-parameter execution failed at Gate 1 because the motor-off directional-substrate control translated above the preregistered tolerance.
+- Rationale: Maximum positive substrate work was `0.0`, but the substrate law converted baseline mechanics relaxation into `0.013504913541228361` of material-centroid translation without funded contractility. No parameter repair or second traction architecture is authorized.
+- Affected areas: DC-DEV-010 substrate coupling evidence and developmental/sensorimotor architecture selection; DC-DEV-011 remains blocked.
+- Supersedes record: none

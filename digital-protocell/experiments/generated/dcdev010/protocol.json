@@ -1,0 +1,40 @@
+{
+  "accepted_time_authority": "MechParams.dt on each accepted mechanics step",
+  "artifact_status": "AUTHORITATIVE",
+  "assay_horizon_simulated_time": 4.8,
+  "assay_horizon_steps": 240,
+  "conclusion": "DCDEV010_DIRECTIONAL_SUBSTRATE_TRANSLATION_NOT_ESTABLISHED",
+  "contact_sensing": false,
+  "directive": "DC-DEV-010",
+  "downstream_gates_executed_for_diagnostic_only": true,
+  "entry_commit": "8d6fe59397cabfa47bc1d8103acd68f544acc190",
+  "first_failed_gate": "GATE1_PASSIVITY_AND_MOTOR_OFF_NO_PROPULSION",
+  "fission": false,
+  "fixed_topology": true,
+  "frozen_parameters": {
+    "axis": [
+      1.0,
+      0.0
+    ],
+    "forward_resistance_ratio": 0.25,
+    "max_reaction_force": 0.45,
+    "reverse_resistance_ratio": 0.75,
+    "schema": "digital_cell_passive_directional_substrate_v1",
+    "transverse_resistance_ratio": 0.5
+  },
+  "growth": false,
+  "navigation": false,
+  "next_execution_started": false,
+  "obstacles": false,
+  "parameter_screening": false,
+  "remeshing": false,
+  "resource_patches": false,
+  "resource_sensing": false,
+  "substrate_axis": [
+    1.0,
+    0.0
+  ],
+  "substrate_law": "local piecewise direction-dependent dissipative traction from attempted velocity along fixed axis",
+  "substrate_mechanisms": 1,
+  "topology_size": 24
+}

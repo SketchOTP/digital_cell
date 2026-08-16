@@ -1,0 +1,19 @@
+{
+  "baseline_mechanics_artifact_retested": true,
+  "directional_active_projected_displacement": 0.09066122609307165,
+  "downstream_gate_claims": "stopped_after_gate_1",
+  "first_failed_gate": "GATE1_PASSIVITY_AND_MOTOR_OFF_NO_PROPULSION",
+  "isotropic_active_projected_displacement": -0.0003046698622079286,
+  "material_vertex_agreement": 4.648860964860743e-16,
+  "motor_off_projected_displacement": 0.013504913541228361,
+  "result": "DCDEV010_GATE7_ARTIFACT_EXCLUSION_PASS",
+  "shape_change": 0.4170588502457278,
+  "translation_attribution": "existing reserve-funded deformation plus local passive direction-dependent substrate reaction",
+  "translation_tolerance_derivation": {
+    "dcdev009_contractility_only_displacement": 2.473548217003853e-18,
+    "dcdev009_motor_off_displacement": 3.5925380388006317e-16,
+    "post_result_tuning": false,
+    "selected_tolerance": 5.3290705182007514e-11,
+    "solver_precision_term": 5.3290705182007514e-11
+  }
+}

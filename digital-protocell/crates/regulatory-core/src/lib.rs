@@ -16,11 +16,18 @@ pub mod contractility;
 pub mod plasticity;
 pub mod spatial;
 pub mod spatial_resource;
+pub mod substrate_traction;
 
 pub use contractility::{
-    apply_local_contractility, apply_local_contractility_with_external_forces, ContractilityError,
-    ContractilityParamsV1, ContractilityStepLedgerV1, CONTRACTILITY_SCHEMA_V1,
-    FROZEN_MAX_ACTIVE_TENSION, FROZEN_RESERVE_COST_PER_FORCE_LENGTH_TIME,
+    apply_local_contractility, apply_local_contractility_with_external_forces,
+    contractile_force_vectors, ContractilityError, ContractilityParamsV1,
+    ContractilityStepLedgerV1, CONTRACTILITY_SCHEMA_V1, FROZEN_MAX_ACTIVE_TENSION,
+    FROZEN_RESERVE_COST_PER_FORCE_LENGTH_TIME,
+};
+
+pub use substrate_traction::{
+    reaction_for_velocity, reactions_for_internal_forces, SubstrateMode, SubstrateReactionV1,
+    SubstrateTractionError, SubstrateTractionParamsV1,
 };
 
 pub use continuity::{

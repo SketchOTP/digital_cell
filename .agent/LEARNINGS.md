@@ -77,3 +77,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-009 fixed-topology free-space audit; architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV010-001
+
+- Learning ID: L-DCDEV010-001
+- Date: 2026-08-16
+- Fact or lesson: A local piecewise direction-dependent dissipative substrate reaction can create deterministic active translation, but it also converted baseline mechanics relaxation into `0.013504913541228361` of motor-off translation, far above the preregistered tolerance. Passivity alone is insufficient; the no-actuation control must remain stationary before translation can be credited to funded contractility.
+- Evidence location: `digital-protocell/crates/regulatory-core/src/substrate_traction.rs`, `digital-protocell/experiments/generated/dcdev010/passivity.json`, `digital-protocell/experiments/generated/dcdev010/matched_arms.json`, and `digital-protocell/experiments/generated/dcdev010/final_manifest.json`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-010 first fixed-parameter qualification execution; architect review pending.
+- Supersedes learning: none

@@ -65,6 +65,16 @@ pub enum ContractilityError {
     MechanicsRejected,
 }
 
+#[derive(Debug, Clone)]
+struct ContractilityPlanV1 {
+    active_edge_indices: Vec<usize>,
+    maximum_activity: f64,
+    maximum_tension: f64,
+    requested_resource: f64,
+    resource_spent: f64,
+    tensions: Vec<f64>,
+}
+
 fn validate_params(params: &ContractilityParamsV1) -> Result<(), ContractilityError> {
     if params.schema != CONTRACTILITY_SCHEMA_V1
         || !params.max_active_tension.is_finite()
@@ -77,31 +87,12 @@ fn validate_params(params: &ContractilityParamsV1) -> Result<(), ContractilityEr
     Ok(())
 }
 
-/// Apply one local contractility step from the current distributed activity.
-///
-/// The only actuator decision is endpoint-local activity averaged onto each
-/// existing edge. Available reserve is a scalar material budget; if it cannot
-/// fund the requested tension, all available reserve funds a proportionally
-/// reduced tension. With zero activity or zero reserve the exact legacy
-/// mechanics path is used.
-pub fn apply_local_contractility(
-    mesh: &mut MaterialMesh,
+fn plan_contractility(
+    mesh: &MaterialMesh,
     activity: &[f64],
     mechanics: &MechParams,
     params: &ContractilityParamsV1,
-) -> Result<ContractilityStepLedgerV1, ContractilityError> {
-    apply_local_contractility_with_external_forces(mesh, activity, mechanics, params, None)
-}
-
-/// Apply local contractility while allowing one bounded local force vector from
-/// an external physical geometry.  `None` is the exact DC-DEV-004 path.
-pub fn apply_local_contractility_with_external_forces(
-    mesh: &mut MaterialMesh,
-    activity: &[f64],
-    mechanics: &MechParams,
-    params: &ContractilityParamsV1,
-    external_forces: Option<&[[f64; 2]]>,
-) -> Result<ContractilityStepLedgerV1, ContractilityError> {
+) -> Result<ContractilityPlanV1, ContractilityError> {
     validate_params(params)?;
     if activity.len() != mesh.n() {
         return Err(ContractilityError::ActivityLength {
@@ -118,28 +109,6 @@ pub fn apply_local_contractility_with_external_forces(
 
     let maximum_activity = activity.iter().copied().fold(0.0_f64, f64::max);
     let reserve_before = mesh.interior.r.max(0.0);
-    if maximum_activity <= f64::EPSILON || reserve_before <= f64::EPSILON {
-        let accepted = match external_forces {
-            Some(forces) => mechanics_step_with_external_forces(mesh, mechanics, forces),
-            None => mechanics_step(mesh, mechanics),
-        };
-        if !accepted {
-            return Err(ContractilityError::MechanicsRejected);
-        }
-        return Ok(ContractilityStepLedgerV1 {
-            schema: CONTRACTILITY_SCHEMA_V1.to_string(),
-            active_edge_indices: Vec::new(),
-            maximum_activity,
-            maximum_tension: 0.0,
-            requested_resource: 0.0,
-            resource_spent: 0.0,
-            reserve_before,
-            reserve_after: mesh.interior.r.max(0.0),
-            zero_resource_no_actuation: reserve_before <= f64::EPSILON,
-            mechanics_accepted: true,
-        });
-    }
-
     let dt = mechanics.dt.max(0.0);
     let mut requested_tensions = vec![0.0; mesh.n()];
     let mut active_edge_indices = Vec::new();
@@ -176,30 +145,125 @@ pub fn apply_local_contractility_with_external_forces(
         .collect();
     let maximum_tension = tensions.iter().copied().fold(0.0_f64, f64::max);
 
-    let accepted = match (maximum_tension <= f64::EPSILON, external_forces) {
-        (true, Some(forces)) => mechanics_step_with_external_forces(mesh, mechanics, forces),
-        (true, None) => mechanics_step(mesh, mechanics),
-        (false, Some(forces)) => mechanics_step_with_edge_tensions_and_external_forces(
-            mesh, mechanics, &tensions, forces,
-        ),
-        (false, None) => mechanics_step_with_edge_tensions(mesh, mechanics, &tensions),
-    };
-    if !accepted {
-        return Err(ContractilityError::MechanicsRejected);
-    }
-
-    if resource_spent > 0.0 {
-        let area = mesh.area().max(1e-12);
-        mesh.interior.r = (reserve_before - resource_spent / area).max(0.0);
-        mesh.interior.w += resource_spent / area;
-    }
-    Ok(ContractilityStepLedgerV1 {
-        schema: CONTRACTILITY_SCHEMA_V1.to_string(),
+    Ok(ContractilityPlanV1 {
         active_edge_indices,
         maximum_activity,
         maximum_tension,
         requested_resource,
         resource_spent,
+        tensions,
+    })
+}
+
+fn edge_tension_forces(mesh: &MaterialMesh, tensions: &[f64]) -> Vec<[f64; 2]> {
+    let mut forces = vec![[0.0, 0.0]; mesh.n()];
+    for (i, tension) in tensions.iter().copied().enumerate() {
+        if tension <= f64::EPSILON || mesh.edges[i].ruptured {
+            continue;
+        }
+        let next = (i + 1) % mesh.n();
+        let a = mesh.vertices[i];
+        let b = mesh.vertices[next];
+        let length = (b[0] - a[0]).hypot(b[1] - a[1]).max(1e-15);
+        let direction = [(b[0] - a[0]) / length, (b[1] - a[1]) / length];
+        forces[i][0] += tension * direction[0];
+        forces[i][1] += tension * direction[1];
+        forces[next][0] -= tension * direction[0];
+        forces[next][1] -= tension * direction[1];
+    }
+    forces
+}
+
+/// Read-only reconstruction of the exact funded contractile force vectors
+/// that the next adapter step will apply. This is an audit hook for passive
+/// post-Phase-1 world couplings; it never mutates the mesh or reserve.
+pub fn contractile_force_vectors(
+    mesh: &MaterialMesh,
+    activity: &[f64],
+    mechanics: &MechParams,
+    params: &ContractilityParamsV1,
+) -> Result<Vec<[f64; 2]>, ContractilityError> {
+    let plan = plan_contractility(mesh, activity, mechanics, params)?;
+    Ok(edge_tension_forces(mesh, &plan.tensions))
+}
+
+/// Apply one local contractility step from the current distributed activity.
+///
+/// The only actuator decision is endpoint-local activity averaged onto each
+/// existing edge. Available reserve is a scalar material budget; if it cannot
+/// fund the requested tension, all available reserve funds a proportionally
+/// reduced tension. With zero activity or zero reserve the exact legacy
+/// mechanics path is used.
+pub fn apply_local_contractility(
+    mesh: &mut MaterialMesh,
+    activity: &[f64],
+    mechanics: &MechParams,
+    params: &ContractilityParamsV1,
+) -> Result<ContractilityStepLedgerV1, ContractilityError> {
+    apply_local_contractility_with_external_forces(mesh, activity, mechanics, params, None)
+}
+
+/// Apply local contractility while allowing one bounded local force vector from
+/// an external physical geometry.  `None` is the exact DC-DEV-004 path.
+pub fn apply_local_contractility_with_external_forces(
+    mesh: &mut MaterialMesh,
+    activity: &[f64],
+    mechanics: &MechParams,
+    params: &ContractilityParamsV1,
+    external_forces: Option<&[[f64; 2]]>,
+) -> Result<ContractilityStepLedgerV1, ContractilityError> {
+    let plan = plan_contractility(mesh, activity, mechanics, params)?;
+    let maximum_activity = plan.maximum_activity;
+    let reserve_before = mesh.interior.r.max(0.0);
+    if maximum_activity <= f64::EPSILON || reserve_before <= f64::EPSILON {
+        let accepted = match external_forces {
+            Some(forces) => mechanics_step_with_external_forces(mesh, mechanics, forces),
+            None => mechanics_step(mesh, mechanics),
+        };
+        if !accepted {
+            return Err(ContractilityError::MechanicsRejected);
+        }
+        return Ok(ContractilityStepLedgerV1 {
+            schema: CONTRACTILITY_SCHEMA_V1.to_string(),
+            active_edge_indices: Vec::new(),
+            maximum_activity,
+            maximum_tension: 0.0,
+            requested_resource: 0.0,
+            resource_spent: 0.0,
+            reserve_before,
+            reserve_after: mesh.interior.r.max(0.0),
+            zero_resource_no_actuation: reserve_before <= f64::EPSILON,
+            mechanics_accepted: true,
+        });
+    }
+
+    let accepted = match (plan.maximum_tension <= f64::EPSILON, external_forces) {
+        (true, Some(forces)) => mechanics_step_with_external_forces(mesh, mechanics, forces),
+        (true, None) => mechanics_step(mesh, mechanics),
+        (false, Some(forces)) => mechanics_step_with_edge_tensions_and_external_forces(
+            mesh,
+            mechanics,
+            &plan.tensions,
+            forces,
+        ),
+        (false, None) => mechanics_step_with_edge_tensions(mesh, mechanics, &plan.tensions),
+    };
+    if !accepted {
+        return Err(ContractilityError::MechanicsRejected);
+    }
+
+    if plan.resource_spent > 0.0 {
+        let area = mesh.area().max(1e-12);
+        mesh.interior.r = (reserve_before - plan.resource_spent / area).max(0.0);
+        mesh.interior.w += plan.resource_spent / area;
+    }
+    Ok(ContractilityStepLedgerV1 {
+        schema: CONTRACTILITY_SCHEMA_V1.to_string(),
+        active_edge_indices: plan.active_edge_indices,
+        maximum_activity,
+        maximum_tension: plan.maximum_tension,
+        requested_resource: plan.requested_resource,
+        resource_spent: plan.resource_spent,
         reserve_before,
         reserve_after: mesh.interior.r.max(0.0),
         zero_resource_no_actuation: false,

@@ -1,0 +1,53 @@
+{
+  "active_directional": {
+    "arm": "active_directional_substrate",
+    "final_mesh_hash": "b33fcaed9d72ea9d",
+    "material_centroid_displacement": [
+      0.09066122609307165,
+      -0.00032286674964047605
+    ],
+    "projected_displacement": 0.09066122609307165,
+    "regulatory_trace_hash": "b762e60498e5b9e1",
+    "reserve_spent": 4.0761830195540645,
+    "shape_change": 0.4170588502457278,
+    "vertex_centroid_displacement": [
+      0.09066122609307195,
+      -0.0003228667496408266
+    ]
+  },
+  "active_isotropic_control": {
+    "arm": "active_isotropic_control",
+    "final_mesh_hash": "2bbd8736e3fddf44",
+    "material_centroid_displacement": [
+      -0.0003046698622079286,
+      -0.00033012485110055033
+    ],
+    "projected_displacement": -0.0003046698622079286,
+    "regulatory_trace_hash": "b762e60498e5b9e1",
+    "shape_change": 0.42764851892671973,
+    "vertex_centroid_displacement": [
+      -0.00030466986220800685,
+      -0.00033012485110152834
+    ]
+  },
+  "gate4_pass": true,
+  "gate5_pass": true,
+  "material_vertex_agreement": 4.648860964860743e-16,
+  "motor_off_directional": {
+    "arm": "motor_off_directional_substrate",
+    "final_mesh_hash": "977518719252e2f6",
+    "material_centroid_displacement": [
+      0.013504913541228361,
+      3.5023672216522814e-16
+    ],
+    "projected_displacement": 0.013504913541228361,
+    "regulatory_trace_hash": "b762e60498e5b9e1",
+    "shape_change": 0.0526199723350664,
+    "vertex_centroid_displacement": [
+      0.013504913541228588,
+      -3.0531133177191805e-16
+    ]
+  },
+  "result": "DCDEV010_DOWNSTREAM_DIAGNOSTICS_NOT_QUALIFYING",
+  "translation_tolerance": 5.3290705182007514e-11
+}

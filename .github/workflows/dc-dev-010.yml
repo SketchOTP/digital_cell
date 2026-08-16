@@ -1,0 +1,129 @@
+name: DC-DEV-010 passive directional substrate audit
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-009-motility-feasibility-audit
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-010-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate DC-DEV-010 failure evidence and boundary
+        env:
+          ENTRY_COMMIT: 8d6fe59397cabfa47bc1d8103acd68f544acc190
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("digital-protocell/experiments/generated/dcdev010")
+          required = [
+              "protocol.json", "passivity.json", "matched_arms.json",
+              "directional_coupling.json", "step_ledger.json",
+              "artifact_analysis.json", "production_boundary.json",
+              "final_manifest.json",
+          ]
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              raise SystemExit(f"missing artifacts: {missing}")
+          data = {name: json.loads((root / name).read_text()) for name in required}
+          protocol = data["protocol.json"]
+          final = data["final_manifest.json"]
+          if protocol["entry_commit"] != "8d6fe59397cabfa47bc1d8103acd68f544acc190":
+              raise SystemExit("wrong entry commit")
+          if protocol["parameter_screening"] is not False:
+              raise SystemExit("parameter screening must remain false")
+          if protocol["substrate_mechanisms"] != 1:
+              raise SystemExit("more than one substrate mechanism")
+          if final["conclusion"] != "DCDEV010_DIRECTIONAL_SUBSTRATE_TRANSLATION_NOT_ESTABLISHED":
+              raise SystemExit("unexpected scientific conclusion")
+          if final["first_failed_gate"] != "GATE1_PASSIVITY_AND_MOTOR_OFF_NO_PROPULSION":
+              raise SystemExit("unexpected first failed gate")
+          if final["next_execution_started"] is not False:
+              raise SystemExit("next execution must remain stopped")
+          passivity = data["passivity.json"]
+          if passivity["maximum_positive_substrate_work"] > passivity["work_tolerance"]:
+              raise SystemExit("substrate positive work exceeded tolerance")
+          arms = data["matched_arms.json"]
+          if abs(arms["motor_off_directional"]["projected_displacement"]) <= arms["translation_tolerance"]:
+              raise SystemExit("expected motor-off failure evidence is absent")
+          if not data["production_boundary.json"]["disabled_substrate_legacy_parity"]:
+              raise SystemExit("legacy parity failed")
+          print(f"validated {len(required)} DC-DEV-010 failure artifacts")
+          PY
+          changed="$(git diff --name-only "$ENTRY_COMMIT" HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then
+            echo "DC-DEV-010 may not modify chemistry-core"
+            exit 1
+          fi
+
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: |
+          rustup run 1.89.0 rustfmt --edition 2021 --check \
+            examples/dcdev010_gate_assay.rs \
+            crates/regulatory-core/src/contractility.rs \
+            crates/regulatory-core/src/substrate_traction.rs \
+            crates/regulatory-core/src/lib.rs
+
+      - name: Production substrate tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p regulatory-core substrate_traction -- --nocapture
+
+      - name: Run DC-DEV-010 audit
+        working-directory: digital-protocell
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev010_gate_assay -- experiments/generated/dcdev010
+
+      - name: Preservation assays through DC-DEV-009
+        working-directory: digital-protocell
+        run: |
+          tmp_dir="$(mktemp -d)"
+          cargo +1.89.0 run -p regulatory-core --example dcdev002_gate_assay -- "$tmp_dir/dcdev002"
+          cargo +1.89.0 run -p regulatory-core --example dcdev003_gate_assay -- "$tmp_dir/dcdev003"
+          cargo +1.89.0 run -p regulatory-core --example dcdev004_gate_assay -- "$tmp_dir/dcdev004"
+          cargo +1.89.0 run -p regulatory-core --example dcdev005_gate_assay -- "$tmp_dir/dcdev005"
+          cargo +1.89.0 run -p regulatory-core --example dcdev006_gate_assay -- "$tmp_dir/dcdev006"
+          cargo +1.89.0 run -p regulatory-core --example dcdev007_gate_assay -- "$tmp_dir/dcdev007"
+          cargo +1.89.0 run -p regulatory-core --example dcdev008_gate_assay -- "$tmp_dir/dcdev008"
+          cargo +1.89.0 run -p regulatory-core --example dcdev009_gate_assay -- "$tmp_dir/dcdev009"
+
+      - name: Phase-1 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+
+      - name: D-088 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+
+      - name: Evolution-harness regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          actual="$(git rev-parse --verify HEAD)"
+          echo "checked out $actual"
+          test "$actual" = "$EXPECTED_HEAD"

@@ -1,0 +1,14 @@
+{
+  "all_steps_nonpositive_within_tolerance": true,
+  "gate1_pass": false,
+  "max_reaction_force": 0.45,
+  "maximum_positive_substrate_work": 0.0,
+  "minimum_substrate_work": -0.0061078897791088825,
+  "motor_off_no_propulsion": false,
+  "result": "DCDEV010_GATE1_FAIL_MOTOR_OFF_BASELINE_TRANSLATION",
+  "work_tolerance": 5.3290705182007514e-11,
+  "zero_motion_zero_reaction": true,
+  "zero_reserve_maximum_tension": 0.0,
+  "zero_reserve_observed_one_step_displacement": 0.00010648764892399557,
+  "zero_reserve_resource_spent": 0.0
+}

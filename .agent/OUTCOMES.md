@@ -330,3 +330,26 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: independent architect review of the finite-horizon free-space artifact classification and recommended next experiment.
 - Blockers: architect review.
 - Follow-up directive: none
+
+## D-20260816-dcdev010-passive-directional-substrate-traction - PARTIAL
+
+- Outcome ID: OUT-DCDEV010-DIRECTIONAL-SUBSTRATE-GATE1-FAILURE
+- Supersedes outcome: OUT-DCDEV009-FREE-SPACE-MOTILITY-AUDIT-REMOTE
+- Closed: `2026-08-16T12:20:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: One reusable passive direction-dependent substrate law was implemented and executed from accepted DC-DEV-009 head `8d6fe59397cabfa47bc1d8103acd68f544acc190`. The law was dissipative, but the matched motor-off directional arm translated above the preregistered tolerance, so the scientific conclusion is `DCDEV010_DIRECTIONAL_SUBSTRATE_TRANSLATION_NOT_ESTABLISHED`.
+- Validation:
+  - Four direct substrate production tests - PASSED
+  - Substrate maximum positive work - PASSED at `0.0`
+  - DC-DEV-010 fixed-world assay - EXECUTED; Gate 1 FAILED
+  - Motor-off directional displacement - `0.013504913541228361`
+  - Preregistered translation tolerance - `2.220446049250313e-13`
+  - Legacy no-substrate parity - PASSED diagnostically
+  - Parameter screening or repair - NOT DONE
+  - Second traction architecture - NOT DONE
+  - DC-DEV-011 - NOT STARTED
+  - Architect review - PENDING
+- Changed areas: one reusable regulatory-core substrate module, read-only contractility force audit, DC-DEV-010 assay, generated failure evidence, scoped workflow, documentation, and governance state; certified chemistry-core equations were not changed.
+- Remaining risks: architect decision on whether the observed motor-off translation disqualifies this passive law as a valid contractility-to-translation mechanism.
+- Blockers: Gate 1 motor-off no-propulsion failure and architect review.
+- Follow-up directive: none

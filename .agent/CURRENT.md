@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260816-dcdev009-free-space-motility-feasibility-audit`
-- External directive ID: `DC-DEV-009`
-- Objective: `Determine whether accepted fixed-topology mechanics and local contractility produce physically meaningful free-space translation.`
+- Local directive ID: `D-20260816-dcdev010-passive-directional-substrate-traction`
+- External directive ID: `DC-DEV-010`
+- Objective: `Test whether one fixed passive direction-dependent substrate reaction can convert existing reserve-funded deformation into lawful body translation.`
 - Current status: `VALIDATING`
-- Acceptance: `DC-DEV-008-R1 is architect-accepted at 79751bed5ad78d367b7409f0ec677e32a3b9d527; DC-DEV-009 is observer-only and architect review remains required.`
-- Current phase: `DC-DEV-009 fixed-topology free-space motility feasibility audit from entry 79751bed5ad78d367b7409f0ec677e32a3b9d527.`
-- Expected or actual touched areas: `DC-DEV-009 observer assay/artifacts/docs/workflow, regulatory-core example registration, current governance state`
-- Immediate next action: `Architect review of the stacked DC-DEV-009 draft PR #18; do not implement the recommended substrate coupling and do not begin DC-DEV-010.`
+- Acceptance: `DC-DEV-009 is architect-accepted at 8d6fe59397cabfa47bc1d8103acd68f544acc190; DC-DEV-010 first qualification execution failed closed at Gate 1 and architect review remains required.`
+- Current phase: `DC-DEV-010 passive directional substrate coupling audit from entry 8d6fe59397cabfa47bc1d8103acd68f544acc190.`
+- Expected or actual touched areas: `regulatory-core substrate traction production module, read-only contractility force audit, DC-DEV-010 assay/artifacts/docs/workflow, current governance state`
+- Immediate next action: `Architect review of the stacked DC-DEV-010 failure-evidence draft PR; do not tune the frozen parameters, add another traction architecture, or begin DC-DEV-011.`
 
 ## Temporary task-relevant facts
 
@@ -38,18 +38,18 @@
 - The full workspace test remains unavailable because of the pre-existing missing D-008 fixture; the scoped workflow deliberately does not invoke it.
 - DC-DEV-008-R1 retains the accepted evidence values and closes the runtime-boundary defect by making regulatory-core the sole resource implementation.
 - Exact-head remote CI run `31938648765` passed at `79751bed5ad78d367b7409f0ec677e32a3b9d527` for DC-DEV-008-R1.
-- Local DC-DEV-009 audit passes with zero contractile force sum within `6.804363002006077e-16` and no valid contractility-only translation.
-- DC-DEV-009 branch `strategy/dc-dev-009-motility-feasibility-audit` is pushed at `5cbd46d34167519748b5b888fd29f4359cbf019a`; draft PR #18 is open against `strategy/dc-dev-008-spatial-resource-acquisition`.
-- Exact-head remote CI run `31957461248` passed at `5cbd46d34167519748b5b888fd29f4359cbf019a`; architect review remains pending.
-- DC-DEV-010 remains blocked.
+- Local DC-DEV-009 audit passed with zero contractile force sum within `6.804363002006077e-16` and no valid contractility-only translation; architect accepted it at `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
+- DC-DEV-010 first execution used one frozen substrate parameter set. Substrate work remained non-positive, but the motor-off directional arm translated `0.013504913541228361` above tolerance `2.220446049250313e-13`.
+- DC-DEV-010 scientific conclusion is `DCDEV010_DIRECTIONAL_SUBSTRATE_TRANSLATION_NOT_ESTABLISHED`; no parameter repair or second architecture is authorized.
+- DC-DEV-011 remains blocked.
 
 ## Blockers
 
-- Architect review remains required; DC-DEV-010 is not authorized.
+- Architect review remains required for DC-DEV-010; Gate 1 failure is the active blocker.
 
 ## Pending decisions
 
-- DC-DEV-009 may only observe accepted mechanics and contractility in fixed free space. No new physical coupling, sensor, actuator, planner, reward, fitness, or evolution is authorized.
+- DC-DEV-010 may contain exactly one passive local directional substrate law. No parameter tuning, second traction architecture, new sensor, actuator, planner, reward, fitness, or evolution is authorized. DC-DEV-011 is blocked.
 
 ## Status vocabulary
 

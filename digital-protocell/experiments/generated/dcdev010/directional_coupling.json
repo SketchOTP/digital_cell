@@ -1,0 +1,15 @@
+{
+  "active_force_source": "existing reserve-funded local contractility",
+  "axis": [
+    1.0,
+    0.0
+  ],
+  "directional_asymmetry": true,
+  "forward_resistance_ratio": 0.25,
+  "isotropic_control_ratio": 0.5,
+  "local_reaction_only": true,
+  "result": "DCDEV010_GATE3_DIRECTIONAL_LOCAL_REACTION_PASS",
+  "reverse_resistance_ratio": 0.75,
+  "semantic_inputs": [],
+  "substrate_is_actuator": false
+}

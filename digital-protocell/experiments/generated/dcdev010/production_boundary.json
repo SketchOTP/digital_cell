@@ -1,0 +1,9 @@
+{
+  "assay_contains_independent_substrate_solver": false,
+  "certified_phase1_equations_modified": false,
+  "disabled_substrate_legacy_parity": true,
+  "existing_mechanics_remains_movement_authority": true,
+  "gate8_pass": true,
+  "production_module": "regulatory-core/src/substrate_traction.rs",
+  "result": "DCDEV010_GATE8_PRODUCTION_OWNERSHIP_PASS"
+}

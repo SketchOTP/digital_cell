@@ -1,0 +1,41 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "conclusion": "DCDEV010_DIRECTIONAL_SUBSTRATE_TRANSLATION_NOT_ESTABLISHED",
+  "directional_active_displacement": 0.09066122609307165,
+  "directive": "DC-DEV-010",
+  "entry_commit": "8d6fe59397cabfa47bc1d8103acd68f544acc190",
+  "failure_reason": "motor-off directional substrate arm translated above the preregistered tolerance",
+  "first_failed_gate": "GATE1_PASSIVITY_AND_MOTOR_OFF_NO_PROPULSION",
+  "gate_results": {
+    "gate1": false,
+    "gate2": true,
+    "gate3": true,
+    "gate4": true,
+    "gate5": true,
+    "gate6": true,
+    "gate7": true,
+    "gate8": true
+  },
+  "isotropic_active_displacement": -0.0003046698622079286,
+  "material_centroid_displacement": [
+    0.09066122609307165,
+    -0.00032286674964047605
+  ],
+  "motor_off_displacement": 0.013504913541228361,
+  "motor_off_displacement_vector": [
+    0.013504913541228361,
+    3.5023672216522814e-16
+  ],
+  "next_execution_started": false,
+  "parameter_screening": false,
+  "passivity_maximum_positive_work": 0.0,
+  "preservation_status": "PENDING",
+  "production_substrate_module": "regulatory-core/src/substrate_traction.rs",
+  "reserve_spent": 4.0761830195540645,
+  "scientific_finding": "Digital Cell can convert existing funded deformation into translation only in this fixed passive directional substrate world",
+  "vertex_centroid_displacement": [
+    0.09066122609307195,
+    -0.0003228667496408266
+  ],
+  "zero_reserve_result": true
+}

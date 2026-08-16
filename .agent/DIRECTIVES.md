@@ -24,6 +24,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260816-dcdev010-passive-directional-substrate-traction
+
+- Issued: `2026-08-16T12:20:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-010`
+- Objective: Test exactly one fixed passive direction-dependent substrate reaction as the minimum missing coupling for translating existing reserve-funded body deformation.
+- Scope: Reusable post-Phase-1 substrate traction module, frozen parameter set, fixed-topology matched active/motor-off/isotropic arms, passivity and zero-motion tests, legacy parity, artifact exclusion, production ownership, preservation, governance, exact-head remote CI, and stacked draft PR.
+- Exclusions: parameter screening or repair, second traction architecture, adhesion, fluid physics, cilia, flagella, new sensors, new actuators, controllers, navigation, nutrient sensing, resource seeking, reward, fitness, reinforcement learning, evolution, and DC-DEV-011.
+- Acceptance: `DCDEV010_PASSIVE_DIRECTIONAL_SUBSTRATE_TRANSLATION_QUALIFIED` only if the motor-off control shows no substrate-driven translation above the preregistered tolerance and every earlier gate passes. The first failed scientific gate stops the directive.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: `DC-DEV-009`
+- Status at issuance: ISSUED
+
 ## D-20260816-dcdev009-free-space-motility-feasibility-audit
 
 - Issued: `2026-08-16T11:40:00-04:00`
