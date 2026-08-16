@@ -401,7 +401,7 @@ mod tests {
     }
 
     #[test]
-    fn rotation_equivalence_holds_without_world_axis() {
+    fn rotation_equivalence_holds_without_global_direction() {
         let params = StickSlipTractionParamsV1::default();
         let force = [0.7, -0.2];
         let velocity = [0.7, -0.2];
