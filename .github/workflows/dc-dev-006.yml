@@ -61,15 +61,15 @@ jobs:
               if final[key]:
                   raise SystemExit(f"forbidden capability enabled: {key}")
           checks = [
-              data["zero_world_parity"]["exact_dcdev005_trajectory"],
-              data["contact_physics"]["non_contact_forces_zero"],
-              data["contact_physics"]["world_did_not_move_coordinates"],
-              data["contact_transduction"]["deterministic"],
-              data["contact_transduction"]["distant_zero"],
+              data["zero_world_parity.json"]["exact_dcdev005_trajectory"],
+              data["contact_physics.json"]["non_contact_forces_zero"],
+              data["contact_physics.json"]["world_did_not_move_coordinates"],
+              data["contact_transduction.json"]["deterministic"],
+              data["contact_transduction.json"]["distant_zero"],
               data["regulatory_response.json"]["contacted_activity_increased"],
-              data["experience_dependence"]["same_physical_contact"],
-              data["remesh_boundaries"]["continuity_valid"],
-              data["remesh_boundaries"]["fission_rejected"],
+              data["experience_dependence.json"]["same_physical_contact"],
+              data["remesh_boundaries.json"]["continuity_valid"],
+              data["remesh_boundaries.json"]["fission_rejected"],
           ]
           if not all(checks):
               raise SystemExit("one or more DC-DEV-006 gate assertions failed")
