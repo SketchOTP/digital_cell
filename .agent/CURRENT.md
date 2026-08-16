@@ -7,18 +7,18 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260816-dcdev011-passive-isotropic-stick-slip-traction`
-- External directive ID: `DC-DEV-011`
-- Objective: `Determine whether existing reserve-funded local contractility can produce retained displacement through one passive local isotropic stick-slip substrate.`
-- Current status: `VALIDATING`
-- Acceptance: `Local four-arm qualification and preservation checks passed; exact-head scoped remote CI and independent architect review remain pending.`
-- Current phase: `DC-DEV-011 qualification package complete locally; remote preservation verification and draft-PR review are next.`
-- Expected or actual touched areas: `regulatory-core stick-slip production module, DC-DEV-011 assay/docs/artifacts/workflow, scoped CI, current governance state`
-- Immediate next action: `Return the complete DC-DEV-011 package for independent architect review; do not begin DC-DEV-012.`
+- Local directive ID: `D-20260816-dcdev012-endogenous-polarity`
+- External directive ID: `DC-DEV-012`
+- Objective: `Determine whether finite endogenous stochastic polarity can form without an external cue and drive the accepted funded motility path.`
+- Current status: `IN_PROGRESS`
+- Acceptance: `Frozen 24-seed endogenous-polarity qualification, preservation, exact-head remote CI, and independent architect review are pending.`
+- Current phase: `DC-DEV-012 production polarity module and direct tests are being implemented before protocol freeze.`
+- Expected or actual touched areas: `regulatory-core endogenous polarity production module, DC-DEV-012 assay/docs/artifacts/workflow, scoped CI, current governance state`
+- Immediate next action: `Freeze the production polarity contract and protocol before executing any preregistered seed.`
 
 ## Temporary task-relevant facts
 
-- The exact scientific base is `0d2c404c0874d5430dd5d01dbdcc059a842dd689`.
+- The exact DC-DEV-012 entry authority is `f9c6d4e83fc9dc50e4d2ec4004ea640084ce5732`.
 - R4/D-096 source remains isolated in the other worktree and is not an input to this branch.
 - Later append-only governance snapshots are preserved under `.agent/legacy/`.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
@@ -27,7 +27,8 @@
 - Entry authority is `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
-- Implementation work is on `strategy/dc-dev-011-local-stick-slip-traction` based on `strategy/dc-dev-009-motility-feasibility-audit`.
+- Implementation work is on `strategy/dc-dev-012-endogenous-polarity` based on `strategy/dc-dev-011-local-stick-slip-traction`.
+- DC-DEV-011 is architect-accepted as `DCDEV011_PASSIVE_ISOTROPIC_STICK_SLIP_TRANSLATION_QUALIFIED` and remains preserved.
 
 ## Last validation after adoption
 
@@ -47,7 +48,7 @@
 ## Pending decisions
 
 - The frozen static/kinetic set must not be changed after the protocol commit.
-- DC-DEV-012, parameter repair, parameter screening, navigation, sensing, resource seeking, and evolution remain unauthorized.
+- DC-DEV-013, parameter repair, parameter screening, navigation, sensing, resource seeking, and evolution remain unauthorized.
 
 ## Status vocabulary
 

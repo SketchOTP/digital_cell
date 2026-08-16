@@ -13,6 +13,7 @@ use thiserror::Error;
 
 pub mod continuity;
 pub mod contractility;
+pub mod endogenous_polarity;
 pub mod plasticity;
 pub mod spatial;
 pub mod spatial_resource;
@@ -27,6 +28,13 @@ pub use contractility::{
 pub use continuity::{
     ContinuityMaterialFrameV1, ContinuityNetworkV1, ContinuityPatchV1, ContinuityStepLedgerV1,
     TopologyEventV1, TopologyMappingV1,
+};
+
+pub use endogenous_polarity::{
+    EndogenousPolarityError, EndogenousPolarityV1, PolarityParametersV1, PolarityStepLedgerV1,
+    ENDOGENOUS_POLARITY_SCHEMA_V1, FROZEN_DIFFUSION_COEFFICIENT, FROZEN_DISSOCIATION_RATE,
+    FROZEN_FEEDBACK_RATE, FROZEN_POLARITY_DT, FROZEN_SPONTANEOUS_ASSOCIATION_RATE,
+    POLARITY_TOKEN_COUNT, SUPPORTED_POLARITY_TOPOLOGY,
 };
 
 pub use plasticity::{

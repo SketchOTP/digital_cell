@@ -178,3 +178,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260816-dcdev012-endogenous-polarity
+
+- Issued: `2026-08-16T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-012`
+- Objective: Determine whether a finite endogenous stochastic local polarity process can spontaneously form an asymmetric internal state without an external cue and drive the accepted funded motility pathway.
+- Scope: Exact DC-DEV-011 accepted entry, one production 24-patch conserved-token Markov process, frozen reference parameters, diffusion derivation, 24 preregistered seeds, matched autonomous arms, compact evidence, governance, preservation, scoped CI, and stacked draft PR.
+- Exclusions: DC-DEV-010 import, mechanics changes, substrate changes, contractility changes, chemistry/resource changes, plasticity, topology changes, navigation, sensing, target/reward/planner behavior, evolution, heredity/continuity, and DC-DEV-013.
+- Acceptance: `DCDEV012_ENDOGENOUS_POLARITY_SELF_INITIATED_MOTILITY_QUALIFIED` or the preregistered negative result, exact-head remote CI, preservation of DC-DEV-002 through DC-DEV-011, pushed stacked draft PR, and architect review from entry `f9c6d4e83fc9dc50e4d2ec4004ea640084ce5732`.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

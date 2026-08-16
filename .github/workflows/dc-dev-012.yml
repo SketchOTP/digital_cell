@@ -1,0 +1,142 @@
+name: DC-DEV-012 endogenous stochastic polarity
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-011-local-stick-slip-traction
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-012-qualification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate frozen DC-DEV-012 contract and evidence
+        env:
+          ENTRY_COMMIT: f9c6d4e83fc9dc50e4d2ec4004ea640084ce5732
+          FREEZE_COMMIT: ${{ vars.DCDEV012_FREEZE_COMMIT }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path("digital-protocell/experiments/generated/dcdev012")
+          required = [
+              "protocol.json", "settled_state.json", "polarity_summary.json",
+              "seed_results.json", "canonical_rotation.json", "gate_results.json",
+              "final_manifest.json",
+          ]
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              raise SystemExit(f"missing artifacts: {missing}")
+          data = {name: json.loads((root / name).read_text()) for name in required}
+          protocol = data["protocol.json"]
+          final = data["final_manifest.json"]
+          if protocol["entry_commit"] != os.environ["ENTRY_COMMIT"]:
+              raise SystemExit("wrong entry commit")
+          if os.environ.get("FREEZE_COMMIT") and protocol["freeze_commit"] != os.environ["FREEZE_COMMIT"]:
+              raise SystemExit("wrong freeze commit")
+          if protocol["topology_size"] != 24 or protocol["token_count"] != 1000:
+              raise SystemExit("topology or token count changed")
+          if protocol["seed_ensemble"] != list(range(12001, 12025)):
+              raise SystemExit("preregistered seed ensemble changed")
+          if protocol["qualification_steps"] != 1500 or abs(protocol["qualification_time"] - 30.0) > 1e-12:
+              raise SystemExit("qualification horizon changed")
+          if protocol["parameter_screening"] or not protocol["environmental_stimulus_zero"]:
+              raise SystemExit("forbidden parameter screening or cue enabled")
+          if final["next_execution_started"] is not False:
+              raise SystemExit("next execution must remain stopped")
+          if final["scientific_finding"] not in {
+              "DCDEV012_ENDOGENOUS_POLARITY_SELF_INITIATED_MOTILITY_QUALIFIED",
+              "DCDEV012_ENDOGENOUS_POLARITY_OR_MOTILITY_NOT_ESTABLISHED",
+          }:
+              raise SystemExit("unexpected scientific conclusion")
+          if len(data["seed_results.json"]) != 24:
+              raise SystemExit("not all preregistered seeds executed")
+          production = Path("digital-protocell/crates/regulatory-core/src/endogenous_polarity.rs").read_text()
+          assay = Path("digital-protocell/examples/dcdev012_gate_assay.rs").read_text()
+          for forbidden in ["world_coordinates", "world_axis", "resource_location", "target_location", "centroid"]:
+              if forbidden in production:
+                  raise SystemExit(f"forbidden polarity input residue: {forbidden}")
+          if '"environmental_stimulus_zero": true' not in assay:
+              raise SystemExit("missing explicit zero-environment assertion")
+          gates = data["gate_results.json"]
+          for name in ["gate1_token_conservation", "gate2_local_stochastic_law", "gate3_no_external_cue", "gate10_passive_substrate_preservation", "gate11_artifact_exclusion", "gate12_production_ownership"]:
+              if not gates[name]:
+                  raise SystemExit(f"failed production gate: {name}")
+          print(f"validated {len(required)} DC-DEV-012 artifacts")
+          PY
+          changed="$(git diff --name-only "$ENTRY_COMMIT" HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then
+            echo "DC-DEV-012 may not modify chemistry-core"
+            exit 1
+          fi
+          if printf '%s\n' "$changed" | grep -Ei '(^|/)(d096|dcdev010|directional)/'; then
+            echo "DC-DEV-012 may not import rejected directional substrate work"
+            exit 1
+          fi
+
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustup run 1.89.0 rustfmt --edition 2021 --check crates/regulatory-core/src/lib.rs crates/regulatory-core/src/endogenous_polarity.rs examples/dcdev012_gate_assay.rs
+
+      - name: Run DC-DEV-012 qualification and production tests
+        working-directory: digital-protocell
+        env:
+          DCDEV012_FREEZE_COMMIT: ${{ vars.DCDEV012_FREEZE_COMMIT }}
+        run: |
+          cargo +1.89.0 test -p regulatory-core --lib -- --nocapture
+          cargo +1.89.0 run -p regulatory-core --example dcdev012_gate_assay -- experiments/generated/dcdev012
+
+      - name: Preservation assays through DC-DEV-011
+        working-directory: digital-protocell
+        run: |
+          tmp_dir="$(mktemp -d)"
+          cargo +1.89.0 run -p regulatory-core --example dcdev002_gate_assay -- "$tmp_dir/dcdev002"
+          cargo +1.89.0 run -p regulatory-core --example dcdev003_gate_assay -- "$tmp_dir/dcdev003"
+          cargo +1.89.0 run -p regulatory-core --example dcdev004_gate_assay -- "$tmp_dir/dcdev004"
+          cargo +1.89.0 run -p regulatory-core --example dcdev005_gate_assay -- "$tmp_dir/dcdev005"
+          cargo +1.89.0 run -p regulatory-core --example dcdev006_gate_assay -- "$tmp_dir/dcdev006"
+          cargo +1.89.0 run -p regulatory-core --example dcdev007_gate_assay -- "$tmp_dir/dcdev007"
+          cargo +1.89.0 run -p regulatory-core --example dcdev008_gate_assay -- "$tmp_dir/dcdev008"
+          cargo +1.89.0 run -p regulatory-core --example dcdev009_gate_assay -- "$tmp_dir/dcdev009"
+          cargo +1.89.0 run -p regulatory-core --example dcdev011_gate_assay -- "$tmp_dir/dcdev011"
+
+      - name: Phase-1 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+
+      - name: D-088 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+
+      - name: Evolution-harness regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          actual="$(git rev-parse --verify HEAD)"
+          echo "checked out $actual"
+          test "$actual" = "$EXPECTED_HEAD"
