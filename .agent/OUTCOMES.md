@@ -85,6 +85,28 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260815-dcdev006-minimal-spatial-contact-environment - REMOTE VALIDATION UPDATE
+
+- Outcome ID: OUT-DCDEV006-MINIMAL-SPATIAL-CONTACT-ENVIRONMENT-REMOTE
+- Supersedes outcome: `OUT-DCDEV006-MINIMAL-SPATIAL-CONTACT-ENVIRONMENT`
+- Closed: `2026-08-15T22:46:41-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Exact-head remote validation passed for PR #14 at commit `50eb7383d2df58395b4da906dc7436a00f1ad027`; independent architect review remains required.
+- Validation:
+  - Governance ADOPTED validation - PASSED
+  - DC-DEV-006 artifact and boundary validation - PASSED
+  - Scoped formatting - PASSED
+  - Regulatory-core and DC-DEV-006 assay - PASSED
+  - DC-DEV-002 through DC-DEV-005 preservation assays - PASSED
+  - Phase-1 metrics semantics - PASSED
+  - D-088 focused regression - PASSED
+  - Evolution-harness regression - PASSED
+  - Exact-head remote CI run 31922533764 - PASSED
+  - Architect review - PENDING
+- Remaining risks: independent architect review of the external-force and contact-signal boundary.
+- Blockers: architect review.
+- Follow-up directive: none; DC-DEV-007 remains unauthorized.
+
 ## D-20260815-dcdev004-energy-coupled-local-contractility - PARTIAL
 
 - Outcome ID: OUT-DCDEV004-ENERGY-COUPLED-LOCAL-CONTRACTILITY

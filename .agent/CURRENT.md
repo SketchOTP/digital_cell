@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-15T20:33:20-04:00`
+- Last updated: `2026-08-15T22:46:41-04:00`
 
 ## Active state after adoption
 
@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-006`
 - Objective: `Place the accepted organism in one deterministic spatial world and transduce one local physical contact relation.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `DC-DEV-006 is authorized from accepted DC-DEV-005 head; local Gates 0-6 pass and exact-head remote CI plus architect review remain pending.`
+- Acceptance: `DC-DEV-006 is authorized from accepted DC-DEV-005 head; local Gates 0-6 and exact-head remote CI run 31922533764 at 50eb7383d2df58395b4da906dc7436a00f1ad027 pass; architect review remains pending.`
 - Current phase: `DC-DEV-006 minimal spatial contact environment from entry 4da04a5cf8153e4ab31603965eeba305ad4bb721.`
 - Expected or actual touched areas: `bounded chemistry-core external-force hook, regulatory-core spatial adapter, DC-DEV-006 assay/artifacts/docs/workflow, current governance state`
-- Immediate next action: `Run preservation regressions, publish the exact implementation branch and draft PR, obtain exact-head remote CI, and await architect review; do not begin DC-DEV-007.`
+- Immediate next action: `Await independent architect review of PR #14 at exact head 50eb7383d2df58395b4da906dc7436a00f1ad027; do not begin DC-DEV-007.`
 
 ## Temporary task-relevant facts
 
@@ -35,7 +35,7 @@
 ## Risks
 
 - The full workspace test remains unavailable because of the pre-existing missing D-008 fixture; R1 workflow deliberately does not invoke it.
-- Architect exact-head review remains required before any later directive.
+- Architect exact-head review remains required before any later directive; remote run 31922533764 passed.
 
 ## Blockers
 
