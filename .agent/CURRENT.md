@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-16T12:08:00-04:00`
+- Last updated: `2026-08-16T13:36:00-04:00`
 
 ## Active state after adoption
 
@@ -14,7 +14,7 @@
 - Acceptance: `DC-DEV-009 is architect-accepted at 8d6fe59397cabfa47bc1d8103acd68f544acc190; DC-DEV-010 first qualification execution failed closed at Gate 1 and architect review remains required.`
 - Current phase: `DC-DEV-010 passive directional substrate coupling audit from entry 8d6fe59397cabfa47bc1d8103acd68f544acc190.`
 - Expected or actual touched areas: `regulatory-core substrate traction production module, read-only contractility force audit, DC-DEV-010 assay/artifacts/docs/workflow, current governance state`
-- Immediate next action: `Architect review of the stacked DC-DEV-010 failure-evidence draft PR; do not tune the frozen parameters, add another traction architecture, or begin DC-DEV-011.`
+- Immediate next action: `Architect review of draft PR #19; do not tune the frozen parameters, add another traction architecture, or begin DC-DEV-011.`
 
 ## Temporary task-relevant facts
 
@@ -42,6 +42,8 @@
 - DC-DEV-010 first execution used one frozen substrate parameter set. Substrate work remained non-positive, but the motor-off directional arm translated `0.013504913541228361` above tolerance `2.220446049250313e-13`.
 - DC-DEV-010 scientific conclusion is `DCDEV010_DIRECTIONAL_SUBSTRATE_TRANSLATION_NOT_ESTABLISHED`; no parameter repair or second architecture is authorized.
 - DC-DEV-011 remains blocked.
+- DC-DEV-010 branch `strategy/dc-dev-010-directional-substrate-traction` is pushed at `0a185a2032832fe7c24142b6cfa61d5af4d7ae4d`; draft PR #19 is open against `strategy/dc-dev-009-motility-feasibility-audit`.
+- Exact-head remote CI run `31961901397` passed at `0a185a2032832fe7c24142b6cfa61d5af4d7ae4d`; architect review remains pending.
 
 ## Blockers
 
