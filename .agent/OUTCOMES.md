@@ -76,7 +76,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Validation:
   - Six direct production-module tests - PASSED
   - DC-DEV-008 assay reproduction - PASSED with accepted values
-- DC-DEV-002 through DC-DEV-007 preservation assays - PASSED locally
+  - DC-DEV-002 through DC-DEV-007 preservation assays - PASSED locally
   - Governance ADOPTED validation - PASSED
   - Phase-1 focused regression - PASSED (4 tests)
   - D-088 focused regression - PASSED (4 tests)
