@@ -4,7 +4,7 @@
   "dcdev002_dcdev003_dcdev004": "PASSED locally",
   "dcdev005_gate_assay": "PASSED (Gates 0 through 6)",
   "evolution_harness_regression": "PASSED (40 tests)",
-  "exact_head_remote_ci": "PENDING",
+  "exact_head_remote_ci": "PASSED (run 31917550450 at 9fe97069185ac48d4e979fe358b12d32433eb6d7)",
   "governance": "PASSED",
   "parameter_screening": false,
   "phase1_focused_regression": "PASSED (4 tests)",

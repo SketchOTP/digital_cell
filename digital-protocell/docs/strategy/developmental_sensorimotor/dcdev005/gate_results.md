@@ -8,4 +8,6 @@
 - Gate 5, body continuity: pass through ordinary remeshing; fission is fail-closed.
 - Gate 6, causal/governance boundary: pass with prior Phase-1, D-088, DC-DEV-002/003/004, and evolution-harness regressions.
 
-Exact-head remote CI and architect review remain required for acceptance.
+Exact-head remote CI run `31917550450` passed on head
+`9fe97069185ac48d4e979fe358b12d32433eb6d7`. Architect review remains required
+for acceptance.

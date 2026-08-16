@@ -29,7 +29,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `DC-DEV-005 gate assay, scoped regressions, and governance validation`
+- Command or check: `DC-DEV-005 gate assay, scoped regressions, governance validation, and exact-head GitHub Actions run 31917550450 at 9fe97069185ac48d4e979fe358b12d32433eb6d7`
 - Result: `PASSED`
 
 ## Risks
@@ -39,7 +39,7 @@
 
 ## Blockers
 
-- DC-DEV-005 qualification, exact-head remote CI, and architect review remain required before any later directive.
+- Architect review remains required before any later directive; exact-head GitHub Actions run 31917550450 passed.
 
 ## Pending decisions
 

@@ -124,8 +124,8 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Phase-1 metrics semantics - PASSED (4 tests)
   - D-088 focused regression - PASSED (4 tests)
   - Evolution-harness regression - PASSED (40 tests)
-  - Exact-head remote CI - NOT RUN
+  - Exact-head remote CI run 31917550450 on 9fe97069185ac48d4e979fe358b12d32433eb6d7 - PASSED
   - Architect review - PENDING
-- Remaining risks: remote CI must validate the exact pushed head and the architect must inspect the first history-dependent response claim.
-- Blockers: exact-head remote CI and architect review.
+- Remaining risks: the architect must inspect the first history-dependent response claim.
+- Blockers: architect review.
 - Follow-up directive: none
