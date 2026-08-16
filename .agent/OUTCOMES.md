@@ -107,3 +107,25 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: architect must inspect the physical interpretation and frozen resource conversion.
 - Blockers: architect review.
 - Follow-up directive: none
+
+## D-20260815-dcdev005-local-experience-dependent-plasticity - PARTIAL
+
+- Outcome ID: OUT-DCDEV005-LOCAL-EXPERIENCE-DEPENDENT-PLASTICITY
+- Supersedes outcome: none
+- Closed: 2026-08-15T20:33:20-04:00
+- Acceptance: PARTIAL
+- Summary: The preregistered one-trace local plasticity implementation, habituation/recovery assay, remesh continuity checks, and scoped regressions pass locally from the accepted DC-DEV-004 head; exact-head remote CI and architect review remain pending.
+- Changed areas: regulatory-core plasticity adapter, DC-DEV-005 assay/artifacts/docs/workflow, and current governance state.
+- Validation:
+  - Governance ADOPTED validation - PASSED
+  - Regulatory-core suite - PASSED (22 tests)
+  - DC-DEV-005 gate assay - PASSED (Gates 0 through 6)
+  - DC-DEV-002, DC-DEV-003, and DC-DEV-004 preservation assays - PASSED locally
+  - Phase-1 metrics semantics - PASSED (4 tests)
+  - D-088 focused regression - PASSED (4 tests)
+  - Evolution-harness regression - PASSED (40 tests)
+  - Exact-head remote CI - NOT RUN
+  - Architect review - PENDING
+- Remaining risks: remote CI must validate the exact pushed head and the architect must inspect the first history-dependent response claim.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none

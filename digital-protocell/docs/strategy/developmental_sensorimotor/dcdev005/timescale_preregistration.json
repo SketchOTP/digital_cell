@@ -1,0 +1,14 @@
+{
+  "artifact_status": "PREREGISTERED_BEFORE_QUALIFICATION",
+  "directive": "DC-DEV-005",
+  "entry_commit": "edf517e6b802a7cd9cf141980061127dbb697b21",
+  "trace": "one adaptation_i value per local regulatory patch, bounded to [0,1]",
+  "load_rate_per_time": 0.1,
+  "recovery_rate_per_time": 0.05,
+  "existing_fast_regulatory_decay_rate_per_time": 0.5,
+  "fast_regulatory_timescale": 2.0,
+  "load_timescale": 10.0,
+  "recovery_timescale": 20.0,
+  "parameter_screening": false,
+  "selection_rule": "adaptation changes only from local activity and accepted MechParams.dt; contractility uses the prior-step trace; zero activity recovers"
+}

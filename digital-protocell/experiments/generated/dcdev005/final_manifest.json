@@ -1,0 +1,34 @@
+{
+  "artifact_hashes": {
+    "baseline_parity.json": "4dbbc53a4ffaac89",
+    "governance_boundary.json": "4f08412ea9ca13d8",
+    "habituation.json": "b96d7154df7b84ab",
+    "local_trace.json": "7457b0f72dc277cb",
+    "protocol.json": "9cbeb8ad9b582420",
+    "recovery.json": "98e53ccbc10a11d8",
+    "regression_manifest.json": "a2221d200e45cccb",
+    "remesh_continuity.json": "823f01d34c7c4409",
+    "timescale_preregistration.json": "476db273c186ea92"
+  },
+  "artifact_status": "AUTHORITATIVE",
+  "conclusion": "DCDEV005_LOCAL_HISTORY_DEPENDENT_PLASTICITY_QUALIFIED",
+  "directive": "DC-DEV-005",
+  "entry_commit": "edf517e6b802a7cd9cf141980061127dbb697b21",
+  "evolution": false,
+  "fitness": false,
+  "gates": {
+    "0": "DCDEV005_GATE0_SCOPE_PASS",
+    "1": "DCDEV005_GATE1_BASELINE_PRESERVATION_PASS",
+    "2": "DCDEV005_GATE2_LOCAL_EXPERIENCE_TRACE_PASS",
+    "3": "DCDEV005_GATE3_HISTORY_DEPENDENT_RESPONSE_PASS",
+    "4": "DCDEV005_GATE4_RECOVERY_PASS",
+    "5": "DCDEV005_GATE5_BODY_CONTINUITY_PASS",
+    "6": "DCDEV005_GATE6_CAUSAL_GOVERNANCE_BOUNDARY_PASS",
+    "7": "REMOTE_CI_PENDING"
+  },
+  "new_actuator": false,
+  "new_sensor": false,
+  "next_execution_started": false,
+  "parameter_screening": false,
+  "reward": false
+}

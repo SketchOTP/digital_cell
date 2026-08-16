@@ -13,6 +13,7 @@ use thiserror::Error;
 
 pub mod continuity;
 pub mod contractility;
+pub mod plasticity;
 
 pub use contractility::{
     apply_local_contractility, ContractilityError, ContractilityParamsV1,
@@ -23,6 +24,12 @@ pub use contractility::{
 pub use continuity::{
     ContinuityMaterialFrameV1, ContinuityNetworkV1, ContinuityPatchV1, ContinuityStepLedgerV1,
     TopologyEventV1, TopologyMappingV1,
+};
+
+pub use plasticity::{
+    apply_local_plasticity, PlasticityError, PlasticityParamsV1, PlasticityStateV1,
+    PlasticityStepLedgerV1, FROZEN_ADAPTATION_LOAD_RATE_PER_TIME,
+    FROZEN_ADAPTATION_RECOVERY_RATE_PER_TIME, PLASTICITY_SCHEMA_V1,
 };
 
 pub const LOCAL_MATERIAL_FRAME_SCHEMA_V1: &str = "digital_cell_local_material_frame_v1";

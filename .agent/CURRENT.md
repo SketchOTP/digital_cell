@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-15T19:17:08-04:00`
+- Last updated: `2026-08-15T20:33:20-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260815-dcdev004-energy-coupled-local-contractility`
-- External directive ID: `DC-DEV-004`
-- Objective: `Give the accepted distributed regulatory state exactly one causal, local, energetically funded physical influence on the material body.`
+- Local directive ID: `D-20260815-dcdev005-local-experience-dependent-plasticity`
+- External directive ID: `DC-DEV-005`
+- Objective: `Make prior local experience change a later local physical response through exactly one slow local adaptation trace.`
 - Current status: `VALIDATING`
-- Acceptance: `DC-DEV-004 scoped implementation and exact-head remote CI are complete; architect review is required before any later directive.`
-- Current phase: `DC-DEV-004 local contractility package from entry e4cdb8a4fd9316e51e6490fd0f833097f02be6bb.`
-- Expected or actual touched areas: `bounded chemistry-core mechanics hook, regulatory-core contractility adapter, DC-DEV-004 assay/artifacts/docs/workflow, current governance state`
-- Immediate next action: `Await architect review of the pushed draft PR; do not begin DC-DEV-005 or any additional actuator/sensor capability.`
+- Acceptance: `DC-DEV-005 is authorized from accepted DC-DEV-004 head; qualification and architect review remain pending.`
+- Current phase: `DC-DEV-005 local history-dependent plasticity from entry edf517e6b802a7cd9cf141980061127dbb697b21.`
+- Expected or actual touched areas: `regulatory-core local plasticity adapter, DC-DEV-005 assay/artifacts/docs/workflow, current governance state`
+- Immediate next action: `Publish the locally passing assay and scoped regression evidence, obtain exact-head remote CI, and await architect review; do not begin DC-DEV-006.`
 
 ## Temporary task-relevant facts
 
@@ -24,12 +24,12 @@
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
 - DC-DEV-003 continuity remains authoritative; DC-DEV-004 adds one local contractile tension path and does not add sensors, commands, memory, learning, or evolution.
 - The frozen funding quantity is existing D-091 metabolic reserve `R` in `MaterialMesh.interior.r`; expenditure enters existing `W`.
-- Entry authority is `e4cdb8a4fd9316e51e6490fd0f833097f02be6bb`.
-- Implementation work is on `strategy/dc-dev-004-local-contractility`.
+- Entry authority is `edf517e6b802a7cd9cf141980061127dbb697b21`.
+- Implementation work is on `strategy/dc-dev-005-local-plasticity`.
 
 ## Last validation after adoption
 
-- Command or check: `Exact-head GitHub Actions run 31914737565 at 0d45396f394f3a41f3b5b60cc46f1ce074a66bf0`
+- Command or check: `DC-DEV-005 gate assay, scoped regressions, and governance validation`
 - Result: `PASSED`
 
 ## Risks
@@ -39,11 +39,11 @@
 
 ## Blockers
 
-- Architect re-review is required before any later directive; exact-head remote CI run 31914737565 passed.
+- DC-DEV-005 qualification, exact-head remote CI, and architect review remain required before any later directive.
 
 ## Pending decisions
 
-- None; DC-DEV-004 is authorized only for one energy-coupled local actuator. DC-DEV-005, additional actuators/sensors, learning, memory, identity, and evolution remain outside scope.
+- None; DC-DEV-005 is authorized only for one slow local plasticity trace. DC-DEV-006, additional traces, sensors, actuators, reward, fitness, learning optimizers, identity, and evolution remain outside scope.
 
 ## Status vocabulary
 

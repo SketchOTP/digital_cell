@@ -1,0 +1,14 @@
+{
+  "central_memory": false,
+  "evolution": false,
+  "fission_fail_closed": true,
+  "fitness": false,
+  "new_actuator": false,
+  "new_sensor": false,
+  "one_slow_trace": true,
+  "optimizer": false,
+  "result": "DCDEV005_GATE6_CAUSAL_GOVERNANCE_BOUNDARY_PASS",
+  "reward": false,
+  "semantic_command": false,
+  "target_behavior": false
+}
