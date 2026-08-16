@@ -309,3 +309,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: independent architect review of the external-force and contact-signal boundary.
 - Blockers: architect review.
 - Follow-up directive: none
+
+## D-20260816-dcdev009-free-space-motility-feasibility-audit - PARTIAL
+
+- Outcome ID: OUT-DCDEV009-FREE-SPACE-MOTILITY-AUDIT-REMOTE
+- Supersedes outcome: OUT-DCDEV009-FREE-SPACE-MOTILITY-AUDIT-LOCAL
+- Closed: `2026-08-16T12:08:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: DC-DEV-009 observer-only motility feasibility audit is pushed at `5cbd46d34167519748b5b888fd29f4359cbf019a` with draft PR #18 stacked on `strategy/dc-dev-008-spatial-resource-acquisition`; the scientific finding remains that existing free-space motility is not established.
+- Validation:
+  - Local DC-DEV-009 assay and committed evidence artifacts - PASSED
+  - Local DC-DEV-002 through DC-DEV-008 preservation matrix - PASSED
+  - Local Phase-1 metrics semantics - PASSED
+  - Local D-088 focused regression - PASSED
+  - Local evolution-harness regression - PASSED
+  - Exact-head remote CI run `31957461248` - PASSED at `5cbd46d34167519748b5b888fd29f4359cbf019a`
+  - Draft PR #18 - OPEN and UNMERGED
+  - Architect review - PENDING
+- Changed areas: observer-only DC-DEV-009 assay, generated evidence, scoped workflow, developmental sensorimotor documentation, and governance records; no chemistry-core changes.
+- Remaining risks: independent architect review of the finite-horizon free-space artifact classification and recommended next experiment.
+- Blockers: architect review.
+- Follow-up directive: none

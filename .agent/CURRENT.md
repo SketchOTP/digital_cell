@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-16T11:51:10-04:00`
+- Last updated: `2026-08-16T12:08:00-04:00`
 
 ## Active state after adoption
 
@@ -14,7 +14,7 @@
 - Acceptance: `DC-DEV-008-R1 is architect-accepted at 79751bed5ad78d367b7409f0ec677e32a3b9d527; DC-DEV-009 is observer-only and architect review remains required.`
 - Current phase: `DC-DEV-009 fixed-topology free-space motility feasibility audit from entry 79751bed5ad78d367b7409f0ec677e32a3b9d527.`
 - Expected or actual touched areas: `DC-DEV-009 observer assay/artifacts/docs/workflow, regulatory-core example registration, current governance state`
-- Immediate next action: `Run preservation and exact-head remote validation for the stacked DC-DEV-009 draft PR; do not implement the recommended substrate coupling and do not begin DC-DEV-010.`
+- Immediate next action: `Architect review of the stacked DC-DEV-009 draft PR #18; do not implement the recommended substrate coupling and do not begin DC-DEV-010.`
 
 ## Temporary task-relevant facts
 
@@ -38,12 +38,14 @@
 - The full workspace test remains unavailable because of the pre-existing missing D-008 fixture; the scoped workflow deliberately does not invoke it.
 - DC-DEV-008-R1 retains the accepted evidence values and closes the runtime-boundary defect by making regulatory-core the sole resource implementation.
 - Exact-head remote CI run `31938648765` passed at `79751bed5ad78d367b7409f0ec677e32a3b9d527` for DC-DEV-008-R1.
-- Local DC-DEV-009 audit passes with zero contractile force sum within `6.804363002006077e-16` and no valid contractility-only translation; remote validation and architect review remain pending.
+- Local DC-DEV-009 audit passes with zero contractile force sum within `6.804363002006077e-16` and no valid contractility-only translation.
+- DC-DEV-009 branch `strategy/dc-dev-009-motility-feasibility-audit` is pushed at `5cbd46d34167519748b5b888fd29f4359cbf019a`; draft PR #18 is open against `strategy/dc-dev-008-spatial-resource-acquisition`.
+- Exact-head remote CI run `31957461248` passed at `5cbd46d34167519748b5b888fd29f4359cbf019a`; architect review remains pending.
 - DC-DEV-010 remains blocked.
 
 ## Blockers
 
-- Exact-head remote validation and architect review remain required; DC-DEV-010 is not authorized.
+- Architect review remains required; DC-DEV-010 is not authorized.
 
 ## Pending decisions
 
