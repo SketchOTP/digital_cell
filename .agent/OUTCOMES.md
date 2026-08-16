@@ -412,3 +412,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: remote exact-head verification and architect review of the preregistered rest failure.
 - Blockers: baseline mechanical rest not established within the fixed horizon and architect review.
 - Follow-up directive: none
+
+## D-20260816-dcdev010r1-mechanical-rest-causal-isolation - PARTIAL
+
+- Outcome ID: OUT-DCDEV010R1-BASELINE-REST-REMOTE-VERIFICATION
+- Supersedes outcome: OUT-DCDEV010R1-BASELINE-REST-FAILURE-LOCAL
+- Closed: `2026-08-16T14:22:38-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Draft PR #19 was remotely verified at exact head `1a82241e14ee1e50d2b145c069044959b203aa82`; exact-head CI run `31964201954` passed. The R1 scientific result remains `DCDEV010R1_BASELINE_MECHANICAL_REST_NOT_ESTABLISHED`.
+- Validation:
+  - Remote governance ADOPTED validation - PASSED
+  - Original DC-DEV-010 negative evidence preservation - PASSED
+  - R1 mechanical-rest evidence validation - PASSED
+  - Production substrate tests and scoped formatting - PASSED
+  - Preservation through DC-DEV-009, Phase-1, D-088, evolution-harness, and exact-head assertion - PASSED
+  - Draft PR #19 - OPEN and UNMERGED
+  - Architect review - PENDING
+- Changed areas: remote verification record only; no scientific implementation or production behavior changed.
+- Remaining risks: architect review of the preregistered baseline-rest failure.
+- Blockers: baseline mechanical rest not established within the fixed horizon and architect review.
+- Follow-up directive: none

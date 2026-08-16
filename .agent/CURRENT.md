@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-16T14:15:00-04:00`
+- Last updated: `2026-08-16T14:22:38-04:00`
 
 ## Active state after adoption
 
@@ -44,8 +44,8 @@
 - DC-DEV-011 remains blocked.
 - DC-DEV-010-R1 baseline rest did not satisfy the preregistered local/global convergence contract within 5,000 accepted steps; chemistry/resource state hash remained unchanged.
 - DC-DEV-010-R1 conclusion is `DCDEV010R1_BASELINE_MECHANICAL_REST_NOT_ESTABLISHED`; no matched R1 arms executed.
-- DC-DEV-010 branch `strategy/dc-dev-010-directional-substrate-traction` is pushed at `89a57f68253af431a80f8b66dc7e626a0846b5de`; draft PR #19 is open against `strategy/dc-dev-009-motility-feasibility-audit`.
-- Exact-head remote CI for the R1 head is pending; local governance validation and R1 assay execution passed/failed closed as specified.
+- DC-DEV-010 branch `strategy/dc-dev-010-directional-substrate-traction` is pushed at `1a82241e14ee1e50d2b145c069044959b203aa82`; draft PR #19 is open against `strategy/dc-dev-009-motility-feasibility-audit`.
+- Exact-head remote CI run `31964201954` passed at `1a82241e14ee1e50d2b145c069044959b203aa82`; R1 architect review remains pending.
 
 ## Blockers
 
