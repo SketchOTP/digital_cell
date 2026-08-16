@@ -43,6 +43,28 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head validation is not yet complete.
 - Follow-up directive: none
 
+## D-20260816-dcdev008-finite-spatial-resource-acquisition - PARTIAL
+
+- Outcome ID: OUT-DCDEV008-FINITE-SPATIAL-RESOURCE-ACQUISITION-LOCAL
+- Supersedes outcome: none
+- Closed: `2026-08-16T00:35:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Local DC-DEV-008 Gates 0-7 pass from exact entry `2968882769991f48c987ceb40c719fd351b2e046`; remote CI and architect review remain pending.
+- Changed areas: regulatory-core assay registration, DC-DEV-008 assay, generated evidence, documentation, scoped workflow, and governance records; no chemistry-core or certified Phase-1 biology/equations changed.
+- Validation:
+  - DC-DEV-008 local assay Gates 0-7 - PASSED
+  - Finite N/F depletion continuation - PASSED at step 543 with zero post-exhaustion uptake
+  - Per-step N/F world-to-organism mass conservation - PASSED with zero maximum residual
+  - Resource-free and noncontact uptake controls - PASSED
+  - Existing A/R coupling and persistence measure - PASSED
+  - Ordinary remeshing and fission fail-closed boundary - PASSED
+  - Governance ADOPTED validation - PENDING
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: remote exact-head preservation matrix and independent architect interpretation of the finite-resource boundary semantics.
+- Blockers: remote exact-head CI and architect review.
+- Follow-up directive: none
+
 ## D-20260815-dcdev002-local-regulatory-substrate - PARTIAL
 
 - Outcome ID: OUT-DCDEV002-LOCAL-REGULATORY-SUBSTRATE

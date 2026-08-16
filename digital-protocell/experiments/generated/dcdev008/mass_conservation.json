@@ -1,0 +1,10 @@
+{
+  "active_organism_f_gain": 0.7134192544023445,
+  "active_organism_n_gain": 0.7134192544023445,
+  "active_world_f_loss": 0.7134192544023441,
+  "active_world_n_loss": 0.7134192544023441,
+  "local_only": true,
+  "maximum_step_conservation_error": 0.0,
+  "resource_never_negative": true,
+  "result": "DCDEV008_GATE2_MASS_CONSERVATION_PASS"
+}

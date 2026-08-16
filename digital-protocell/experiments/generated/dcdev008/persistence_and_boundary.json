@@ -1,0 +1,11 @@
+{
+  "no_resource_seeking_requirement": true,
+  "persistence_measure": "retained_existing_A_plus_R",
+  "resource_bearing_final_a_plus_r": 1.0341205318977045,
+  "resource_bearing_improves_internal_state": true,
+  "resource_bearing_maximum_a_plus_r": 1.1,
+  "resource_free_final_a_plus_r": 1.008496516372006,
+  "resource_free_maximum_a_plus_r": 1.1,
+  "result": "DCDEV008_GATE5_PERSISTENCE_BOUNDARY_PASS",
+  "sensorimotor_path_preserved": true
+}

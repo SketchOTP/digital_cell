@@ -1,0 +1,141 @@
+name: DC-DEV-008 validation
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-007-active-contact-regulation
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-008-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate DC-DEV-008 artifacts and boundaries
+        env:
+          ENTRY_COMMIT: 2968882769991f48c987ceb40c719fd351b2e046
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("digital-protocell/experiments/generated/dcdev008")
+          required = [
+              "protocol.json", "matched_arms.json", "mass_conservation.json",
+              "metabolic_coupling.json", "finite_depletion.json",
+              "persistence_and_boundary.json", "body_and_preservation.json",
+              "governance_boundary.json", "final_manifest.json",
+          ]
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              raise SystemExit(f"missing artifacts: {missing}")
+          data = {name: json.loads((root / name).read_text()) for name in required}
+          protocol = data["protocol.json"]
+          final = data["final_manifest.json"]
+          if protocol["entry_commit"] != "2968882769991f48c987ceb40c719fd351b2e046":
+              raise SystemExit("wrong entry commit")
+          if protocol["assay_horizon_steps"] != 120:
+              raise SystemExit("primary horizon changed")
+          if protocol["depletion_verification_horizon_steps"] != 2000:
+              raise SystemExit("depletion horizon changed")
+          if protocol["parameter_screening"]:
+              raise SystemExit("parameter screening must remain false")
+          if final["conclusion"] != "DCDEV008_SPATIAL_RESOURCE_ACQUISITION_QUALIFIED":
+              raise SystemExit("unexpected conclusion")
+          if final["next_execution_started"] is not False:
+              raise SystemExit("next execution must remain stopped")
+          for key in ["new_species", "reward", "fitness", "planner", "evolution", "dcdev009_started"]:
+              if protocol[key]:
+                  raise SystemExit(f"forbidden capability enabled: {key}")
+          arms = data["matched_arms.json"]
+          active = arms["resource_bearing"]
+          free = arms["resource_free"]
+          noncontact = arms["noncontact_resource"]
+          if active["total_n_uptake"] <= 0 or active["total_f_uptake"] <= 0:
+              raise SystemExit("resource-bearing arm did not acquire N/F")
+          if free["total_n_uptake"] != 0 or free["total_f_uptake"] != 0:
+              raise SystemExit("resource-free arm acquired material")
+          if noncontact["total_n_uptake"] != 0 or noncontact["total_f_uptake"] != 0:
+              raise SystemExit("noncontact arm acquired material")
+          if data["mass_conservation.json"]["maximum_step_conservation_error"] > 1e-12:
+              raise SystemExit("mass conservation tolerance exceeded")
+          if not data["finite_depletion.json"]["uptake_ceased_after_exhaustion"]:
+              raise SystemExit("finite depletion did not stop uptake")
+          checks = [
+              data["metabolic_coupling.json"]["resource_bearing_total_a_produced"] > 0,
+              data["persistence_and_boundary.json"]["resource_bearing_improves_internal_state"],
+              data["body_and_preservation.json"]["ordinary_remeshing"],
+              data["body_and_preservation.json"]["fission_regulatory_state_fail_closed"],
+          ]
+          if not all(checks) or not all(final["gates"]):
+              raise SystemExit("one or more DC-DEV-008 gate assertions failed")
+          print(f"validated {len(required)} DC-DEV-008 artifacts")
+          PY
+          changed="$(git diff --name-only "$ENTRY_COMMIT" HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then
+            echo "DC-DEV-008 may not modify chemistry-core"
+            exit 1
+          fi
+          if printf '%s\n' "$changed" | grep -Ei '(^|/)(d096|r4)(/|_|\.)'; then
+            echo "DC-DEV-008 may not modify D-096/R4"
+            exit 1
+          fi
+
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustup run 1.89.0 rustfmt --edition 2021 --check crates/regulatory-core/src/lib.rs crates/regulatory-core/src/contractility.rs crates/regulatory-core/src/plasticity.rs crates/regulatory-core/src/spatial.rs examples/dcdev007_gate_assay.rs examples/dcdev008_gate_assay.rs
+
+      - name: Regulatory-core and DC-DEV-008 assay
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test -p regulatory-core --lib -- --nocapture
+          cargo +1.89.0 run -p regulatory-core --example dcdev008_gate_assay -- experiments/generated/dcdev008
+
+      - name: Developmental preservation assays
+        working-directory: digital-protocell
+        run: |
+          tmp_dir="$(mktemp -d)"
+          cargo +1.89.0 run -p regulatory-core --example dcdev002_gate_assay -- "$tmp_dir/dcdev002"
+          cargo +1.89.0 run -p regulatory-core --example dcdev003_gate_assay -- "$tmp_dir/dcdev003"
+          cargo +1.89.0 run -p regulatory-core --example dcdev004_gate_assay -- "$tmp_dir/dcdev004"
+          cargo +1.89.0 run -p regulatory-core --example dcdev005_gate_assay -- "$tmp_dir/dcdev005"
+          cargo +1.89.0 run -p regulatory-core --example dcdev006_gate_assay -- "$tmp_dir/dcdev006"
+          cargo +1.89.0 run -p regulatory-core --example dcdev007_gate_assay -- "$tmp_dir/dcdev007"
+
+      - name: Phase-1 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+
+      - name: D-088 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+
+      - name: Evolution-harness regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          actual="$(git rev-parse --verify HEAD)"
+          echo "checked out $actual"
+          test "$actual" = "$EXPECTED_HEAD"

@@ -1,0 +1,35 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "assay_horizon_simulated_time": 2.4,
+  "assay_horizon_steps": 120,
+  "dcdev009_started": false,
+  "depletion_verification_horizon_steps": 2000,
+  "directive": "DC-DEV-008",
+  "dt_source": "MechParams.dt",
+  "entry_commit": "2968882769991f48c987ceb40c719fd351b2e046",
+  "evolution": false,
+  "existing_path": "local exposed-segment reuse of mesh_transport::permeability followed by reactions_step N+F->A+W and D-091 reserve chemistry",
+  "fitness": false,
+  "global_transport_path_changed": false,
+  "new_species": false,
+  "next_execution_started": false,
+  "parameter_screening": false,
+  "planner": false,
+  "resource_species": [
+    "N",
+    "F"
+  ],
+  "reward": false,
+  "world_region": {
+    "boundary_semantics": "fixed local boundary concentration while finite material inventory remains; inventory clamp is authoritative",
+    "center": [
+      4.8,
+      0.0
+    ],
+    "initial_f_mass": 3.0,
+    "initial_n_mass": 3.0,
+    "material_volume": 7.0685834705770345,
+    "radius": 1.5,
+    "shape": "static_disk"
+  }
+}

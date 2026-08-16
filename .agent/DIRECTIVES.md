@@ -24,6 +24,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260816-dcdev008-finite-spatial-resource-acquisition
+
+- Issued: `2026-08-16T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-008`
+- Objective: Prove finite local spatial N/F material enters the existing permeability, N+F→A, and D-091 A/R pathway.
+- Scope: One finite static resource region, local exposed-segment uptake, resource-free and noncontact controls, exact mass conservation, finite depletion, persistence-relevant A/R measure, body/remesh/fission authority boundary, generated evidence, governance, preservation, scoped CI, and draft PR.
+- Exclusions: new metabolic species, changes to certified permeability/reaction/reserve/growth laws, global transport changes, food points, reward, fitness, planner, sensor, actuator, plasticity trace, navigation, preference, competition, regeneration, evolution, and DC-DEV-009.
+- Acceptance: `DCDEV008_SPATIAL_RESOURCE_ACQUISITION_QUALIFIED` only after the fixed primary assay, depletion continuation, exact-head remote CI, and architect review from entry `2968882769991f48c987ceb40c719fd351b2e046` on source `strategy/dc-dev-007-active-contact-regulation` to implementation `strategy/dc-dev-008-spatial-resource-acquisition`.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260815-dcdev005-local-experience-dependent-plasticity
 
 - Issued: `2026-08-15T20:17:42-04:00`
