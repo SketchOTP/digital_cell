@@ -432,3 +432,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: architect review of the preregistered baseline-rest failure.
 - Blockers: baseline mechanical rest not established within the fixed horizon and architect review.
 - Follow-up directive: none
+
+## D-20260816-dcdev010r2-baseline-force-balance-audit - PARTIAL
+
+- Outcome ID: OUT-DCDEV010R2-REMOTE-VERIFICATION
+- Supersedes outcome: OUT-DCDEV010R1-BASELINE-REST-REMOTE-VERIFICATION
+- Closed: `2026-08-16T15:35:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: DC-DEV-010-R2 ran from exact entry `16503a73d91f2c1e239206b73e69af1fee0fcf60` and was remotely verified at exact head `508729be172e65e76dce03d3ecb9131faa1d1662`. Legacy and isotropic passive controls approached the preserved R1 references; the frozen directional substrate retained a distinct late residual.
+- Validation:
+  - Exact three-arm, 5,000-step observer audit - PASSED
+  - Force decomposition parity maximum `1.2412670766236366e-16` against `1e-12` - PASSED
+  - Exact legacy trajectory parity - PASSED
+  - Chemistry/resource preservation and original/R1 evidence preservation - PASSED
+  - Remote exact-head CI run `31967718589` - PASSED
+  - Draft PR #19 - OPEN and UNMERGED
+  - Architect review - PENDING
+- Changed areas: observer-only R2 assay, separate generated evidence, scoped workflow, documentation, and governance; no mechanics, substrate, chemistry, or production behavior change.
+- Remaining risks: architect review of the R2 classification and attribution.
+- Blockers: architect review; DC-DEV-010-R3 and DC-DEV-011 remain blocked.
+- Follow-up directive: none

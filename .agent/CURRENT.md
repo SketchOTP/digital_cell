@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-16T14:22:38-04:00`
+- Last updated: `2026-08-16T15:35:00-04:00`
 
 ## Active state after adoption
 
@@ -14,7 +14,7 @@
 - Acceptance: `R2 fixed-horizon observer audit complete locally; exact-head remote CI and architect review remain required.`
 - Current phase: `DC-DEV-010-R2 baseline force-balance audit from entry 16503a73d91f2c1e239206b73e69af1fee0fcf60.`
 - Expected or actual touched areas: `observer-only R2 force decomposition, separate evidence, scoped workflow, documentation, and governance; no production behavior change`
-- Immediate next action: `Push R2 evidence on PR #19, verify exact-head CI, then return to architect review; do not begin R3 or DC-DEV-011.`
+- Immediate next action: `Architect review of draft PR #19 at exact R2 head; do not begin R3 or DC-DEV-011.`
 
 ## Temporary task-relevant facts
 
@@ -44,7 +44,8 @@
 - DC-DEV-011 remains blocked.
 - DC-DEV-010-R1 baseline rest did not satisfy the preregistered directional-substrate rest contract; its evidence remains preserved.
 - DC-DEV-010-R2 ran legacy, isotropic, and directional passive arms for exactly 5,000 accepted steps; observer parity passed and classification is `DCDEV010R2_DIRECTIONAL_SUBSTRATE_SPECIFIC_RESIDUAL_CONFIRMED`.
-- DC-DEV-010 branch `strategy/dc-dev-010-directional-substrate-traction` remains on draft PR #19 against `strategy/dc-dev-009-motility-feasibility-audit`; remote R2 head/CI are pending.
+- DC-DEV-010 branch `strategy/dc-dev-010-directional-substrate-traction` is pushed at `508729be172e65e76dce03d3ecb9131faa1d1662`; draft PR #19 remains open against `strategy/dc-dev-009-motility-feasibility-audit`.
+- Exact-head remote CI run `31967718589` passed at `508729be172e65e76dce03d3ecb9131faa1d1662`; architect review remains pending.
 
 ## Blockers
 
