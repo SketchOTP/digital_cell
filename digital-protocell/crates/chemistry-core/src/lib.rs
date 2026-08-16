@@ -88,6 +88,7 @@ pub mod material_mesh;
 pub mod mesh_mechanics;
 pub mod mesh_reactions;
 pub mod mesh_transport;
+pub mod spatial_resource;
 pub mod mesh_growth;
 pub mod mesh_topology;
 pub mod mesh_fission;

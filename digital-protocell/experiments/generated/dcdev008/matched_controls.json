@@ -1,0 +1,48 @@
+{
+  "active_resource": {
+    "exposed_steps": 120,
+    "final_a": 0.5113897710193833,
+    "final_f": 0.37337491241046766,
+    "final_inventory": 10.322397050168249,
+    "final_n": 0.37337491241046766,
+    "final_r": 0.6,
+    "initial_f": 0.4,
+    "initial_inventory": 16.0,
+    "initial_n": 0.4,
+    "mass_conservative": true,
+    "uptake_f": 2.838801474915872,
+    "uptake_n": 2.838801474915872
+  },
+  "active_uptake": 5.677602949831744,
+  "noncontact_resource": {
+    "exposed_steps": 0,
+    "final_a": 0.5068165398395282,
+    "final_f": 0.3425089027873199,
+    "final_inventory": 16.0,
+    "final_n": 0.3425089027873199,
+    "final_r": 0.6,
+    "initial_f": 0.4,
+    "initial_inventory": 16.0,
+    "initial_n": 0.4,
+    "mass_conservative": true,
+    "uptake_f": 0.0,
+    "uptake_n": 0.0
+  },
+  "noncontact_uptake": 0.0,
+  "resource_free": {
+    "exposed_steps": 120,
+    "final_a": 0.5068165398395282,
+    "final_f": 0.3425089027873199,
+    "final_inventory": 0.0,
+    "final_n": 0.3425089027873199,
+    "final_r": 0.6,
+    "initial_f": 0.4,
+    "initial_inventory": 0.0,
+    "initial_n": 0.4,
+    "mass_conservative": true,
+    "uptake_f": 0.0,
+    "uptake_n": 0.0
+  },
+  "resource_supports_internal_state": true,
+  "world_loss_equals_organism_gain": true
+}

@@ -24,6 +24,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260816-dcdev008-finite-spatial-resource-acquisition
+
+- Issued: `2026-08-16T01:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-008`
+- Objective: Give the existing organism finite, local, mass-conservative access to existing N/F material and demonstrate coupling into existing metabolism.
+- Scope: One static finite resource region, local uptake through exposed boundary segments, matched resource-free and noncontact controls, finite depletion, existing metabolic coupling, persistence-relevant internal-state comparison, DC-DEV-007 preservation, body/reproduction boundaries, generated evidence, governance, focused regressions, exact-head CI, and draft PR.
+- Exclusions: new metabolic species, reward, fitness, score, planner, seeking policy, new sensor, actuator, plasticity trace, evolution, parameter screening, post-result tuning, and DC-DEV-009.
+- Acceptance: `DCDEV008_SPATIAL_RESOURCE_ACQUISITION_QUALIFIED` only after Gates 0-8, exact-head remote CI, and architect review.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260815-dcdev005-local-experience-dependent-plasticity
 
 - Issued: `2026-08-15T20:17:42-04:00`

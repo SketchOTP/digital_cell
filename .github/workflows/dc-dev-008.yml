@@ -1,0 +1,76 @@
+name: DC-DEV-008 validation
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-007-active-contact-regulation
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-008-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+      - name: Validate DC-DEV-008 artifacts and boundaries
+        env:
+          ENTRY_COMMIT: 2968882769991f48c987ceb40c719fd351b2e046
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("digital-protocell/experiments/generated/dcdev008")
+          required = ["protocol.json", "matched_controls.json", "final_manifest.json"]
+          data = {name: json.loads((root / name).read_text()) for name in required}
+          if data["protocol.json"]["entry_commit"] != "2968882769991f48c987ceb40c719fd351b2e046": raise SystemExit("wrong entry")
+          if data["final_manifest.json"]["conclusion"] != "DCDEV008_SPATIAL_RESOURCE_ACQUISITION_QUALIFIED": raise SystemExit("wrong conclusion")
+          controls = data["matched_controls.json"]
+          if not controls["world_loss_equals_organism_gain"] or not controls["resource_supports_internal_state"]: raise SystemExit("resource gates failed")
+          if controls["noncontact_uptake"] != 0.0: raise SystemExit("noncontact uptake must be zero")
+          print(f"validated {len(required)} DC-DEV-008 artifacts")
+          PY
+          changed="$(git diff --name-only "$ENTRY_COMMIT" HEAD)"
+          printf '%s\n' "$changed" | grep -E '(^|/)(d096|r4)(/|_|\.)' && exit 1 || true
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustup run 1.89.0 rustfmt --edition 2021 --check crates/chemistry-core/src/spatial_resource.rs examples/dcdev008_gate_assay.rs
+      - name: DC-DEV-008 focused validation
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test -p chemistry-core --lib spatial_resource
+          cargo +1.89.0 run -p regulatory-core --example dcdev008_gate_assay -- experiments/generated/dcdev008
+      - name: DC-DEV-007 preservation
+        working-directory: digital-protocell
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev007_gate_assay -- /tmp/dcdev007
+      - name: Developmental preservation assays
+        working-directory: digital-protocell
+        run: |
+          tmp_dir="$(mktemp -d)"
+          cargo +1.89.0 run -p regulatory-core --example dcdev002_gate_assay -- "$tmp_dir/dcdev002"
+          cargo +1.89.0 run -p regulatory-core --example dcdev003_gate_assay -- "$tmp_dir/dcdev003"
+          cargo +1.89.0 run -p regulatory-core --example dcdev004_gate_assay -- "$tmp_dir/dcdev004"
+          cargo +1.89.0 run -p regulatory-core --example dcdev005_gate_assay -- "$tmp_dir/dcdev005"
+          cargo +1.89.0 run -p regulatory-core --example dcdev006_gate_assay -- "$tmp_dir/dcdev006"
+      - name: Phase-1 and evolution preservation
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p evolution-harness
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse --verify HEAD)" = "$EXPECTED_HEAD"

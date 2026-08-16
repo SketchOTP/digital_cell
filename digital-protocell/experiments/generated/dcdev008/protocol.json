@@ -1,0 +1,14 @@
+{
+  "conclusion": "DCDEV008_SPATIAL_RESOURCE_ACQUISITION_QUALIFIED",
+  "directive": "DC-DEV-008",
+  "entry_commit": "2968882769991f48c987ceb40c719fd351b2e046",
+  "fitness": false,
+  "horizon_steps": 120,
+  "new_actuator": false,
+  "new_metabolic_species": false,
+  "new_sensor": false,
+  "parameter_screening": false,
+  "planner": false,
+  "resource_region": "one finite static circular N/F region",
+  "reward": false
+}
