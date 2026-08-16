@@ -85,7 +85,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
-## D-20260815-dcdev006-minimal-spatial-contact-environment - REMOTE VALIDATION UPDATE
+## D-20260815-dcdev006-minimal-spatial-contact-environment - PARTIAL
 
 - Outcome ID: OUT-DCDEV006-MINIMAL-SPATIAL-CONTACT-ENVIRONMENT-REMOTE
 - Supersedes outcome: `OUT-DCDEV006-MINIMAL-SPATIAL-CONTACT-ENVIRONMENT`
