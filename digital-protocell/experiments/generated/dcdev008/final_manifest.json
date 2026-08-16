@@ -1,0 +1,23 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "assay_local_resource_implementation": false,
+  "chemistry_core_changed": false,
+  "conclusion": "DCDEV008_SPATIAL_RESOURCE_ACQUISITION_QUALIFIED",
+  "dcdev009_started": false,
+  "gates": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "global_transport_changed": false,
+  "next_execution_started": false,
+  "primary_claim": "finite local N/F material enters the existing metabolic resource pathway and supports internal A/R state",
+  "production_module": "crates/regulatory-core/src/spatial_resource.rs",
+  "scientific_core_modified": false
+}

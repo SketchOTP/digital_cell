@@ -1,0 +1,11 @@
+{
+  "final_vertices": 70,
+  "fission_regulatory_state_fail_closed": true,
+  "ordinary_remeshing": true,
+  "remesh_events": 4,
+  "resource_world_decides_death": false,
+  "resource_world_decides_fission": false,
+  "resource_world_decides_growth": false,
+  "resource_world_decides_heredity": false,
+  "result": "DCDEV008_GATES6_AND7_BOUNDARY_PASS"
+}

@@ -43,6 +43,49 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head validation is not yet complete.
 - Follow-up directive: none
 
+## D-20260816-dcdev008-finite-spatial-resource-acquisition - PARTIAL
+
+- Outcome ID: OUT-DCDEV008-FINITE-SPATIAL-RESOURCE-ACQUISITION-LOCAL
+- Supersedes outcome: none
+- Closed: `2026-08-16T00:35:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Local DC-DEV-008 Gates 0-7 and exact-head remote CI run `31926377883` pass at commit `4e0d31dd1e991e6c983279589d6144dc73b57235`; architect review remains pending.
+- Changed areas: regulatory-core assay registration, DC-DEV-008 assay, generated evidence, documentation, scoped workflow, and governance records; no chemistry-core or certified Phase-1 biology/equations changed.
+- Validation:
+  - DC-DEV-008 local assay Gates 0-7 - PASSED
+  - Finite N/F depletion continuation - PASSED at step 543 with zero post-exhaustion uptake
+  - Per-step N/F world-to-organism mass conservation - PASSED with zero maximum residual
+  - Resource-free and noncontact uptake controls - PASSED
+  - Existing A/R coupling and persistence measure - PASSED
+  - Ordinary remeshing and fission fail-closed boundary - PASSED
+  - Governance ADOPTED validation - PASSED
+  - Exact-head remote CI run 31926377883 - PASSED
+  - Architect review - PENDING
+- Remaining risks: remote exact-head preservation matrix and independent architect interpretation of the finite-resource boundary semantics.
+- Blockers: remote exact-head CI and architect review.
+- Follow-up directive: none
+
+## D-20260816-dcdev008r1-runtime-boundary-closure - PARTIAL
+
+- Outcome ID: OUT-DCDEV008R1-RUNTIME-BOUNDARY-CLOSURE
+- Supersedes outcome: OUT-DCDEV008-FINITE-SPATIAL-RESOURCE-ACQUISITION-LOCAL
+- Closed: `2026-08-16T01:00:00-04:00`
+- Acceptance: PARTIAL
+- Summary: The qualified finite spatial N/F acquisition mechanism is being promoted from the assay into reusable `regulatory-core` production code; the assay now calls the versioned production API and the accepted scientific values remain unchanged.
+- Changed areas: `regulatory-core/src/spatial_resource.rs`, regulatory-core exports/tests, DC-DEV-008 assay/workflow/docs, and active governance records.
+- Validation:
+  - Six direct production-module tests - PASSED
+  - DC-DEV-008 assay reproduction - PASSED with accepted values
+  - DC-DEV-002 through DC-DEV-007 preservation assays - PASSED locally
+  - Governance ADOPTED validation - PASSED
+  - Phase-1 focused regression - PASSED (4 tests)
+  - D-088 focused regression - PASSED (4 tests)
+  - Evolution-harness regression - PASSED (40 tests)
+  - Exact-head GitHub Actions run `31938453863` at `746e12514dfdbd5dd3f8a6cd90d10900f8a6b5cf` - PASSED
+- Remaining risks: architect inspection of the runtime boundary.
+- Blockers: architect review; DC-DEV-009 remains blocked.
+- Follow-up directive: none
+
 ## D-20260815-dcdev002-local-regulatory-substrate - PARTIAL
 
 - Outcome ID: OUT-DCDEV002-LOCAL-REGULATORY-SUBSTRATE

@@ -1,0 +1,15 @@
+{
+  "actuator": false,
+  "dcdev009_started": false,
+  "evolution": false,
+  "fitness": false,
+  "food_points": false,
+  "global_transport_changed": false,
+  "new_metabolic_species": false,
+  "new_permeability_law": false,
+  "planner": false,
+  "plasticity_trace": false,
+  "result": "DCDEV008_GATE0_SCOPE_PASS",
+  "reward": false,
+  "sensor": false
+}
