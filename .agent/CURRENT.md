@@ -30,7 +30,7 @@
 ## Last validation after adoption
 
 - Command or check: `DC-DEV-007 local Gates 0-8 assay`
-- Result: `PASSED; exact-head remote CI run 31924373883 also PASSED`
+- Result: `PASSED`
 
 ## Risks
 
