@@ -1,0 +1,9 @@
+{
+  "contact_indices": [
+    0
+  ],
+  "mechanics_resolved_contact": true,
+  "non_contact_forces_zero": true,
+  "result": "DCDEV006_GATE2_LOCAL_CONTACT_PHYSICS_PASS",
+  "world_did_not_move_coordinates": true
+}

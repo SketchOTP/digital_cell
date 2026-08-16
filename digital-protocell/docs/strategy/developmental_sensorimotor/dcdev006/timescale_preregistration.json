@@ -1,0 +1,14 @@
+{
+  "artifact_status": "PREREGISTERED_BEFORE_QUALIFICATION",
+  "directive": "DC-DEV-006",
+  "parameter_screening": false,
+  "contact_stiffness_per_length": 0.5,
+  "mechanics_hook_max_force_per_vertex": 0.5,
+  "contact_stimulus_normalization_force": 0.5,
+  "obstacle_center": [5.0, 0.0],
+  "obstacle_radius": 0.9,
+  "accepted_dt_source": "existing MechParams.dt",
+  "additional_plasticity_trace": false,
+  "next_execution_started": false
+}
+

@@ -93,3 +93,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260815-dcdev006-minimal-spatial-contact-environment
+
+- Issued: `2026-08-15T22:36:55-04:00`
+- Issuer: User
+- External directive: `DC-DEV-006`
+- Objective: Place the accepted organism in the smallest deterministic spatial external world and establish exactly one local physical contact relation.
+- Scope: One static inert obstacle, one bounded local contact-force hook through existing mechanics, one penetration-normalized `contact_stimulus_i`, existing regulatory coupling, DC-DEV-005 experience dependence, remesh continuity, fission fail-closed boundaries, generated evidence, documentation, governance, focused regressions, exact-head CI, and draft PR.
+- Exclusions: vision, hearing, object recognition, resources, locomotion control, planner, reward, fitness, semantics, new actuator, new plasticity trace, fission inheritance, evolution, and DC-DEV-007.
+- Acceptance: `DCDEV006_SPATIAL_CONTACT_ENVIRONMENT_QUALIFIED` only after Gates 0-7, exact-head remote CI, and architect review from entry `4da04a5cf8153e4ab31603965eeba305ad4bb721` on source `strategy/dc-dev-005-local-plasticity` to implementation `strategy/dc-dev-006-spatial-contact-environment`.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

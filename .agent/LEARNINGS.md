@@ -57,3 +57,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-004 bounded local contractility assay.
 - Supersedes learning: none
+
+## L-DCDEV006-001
+
+- Learning ID: L-DCDEV006-001
+- Date: 2026-08-15
+- Fact or lesson: A deterministic static geometric obstacle can provide one bounded local contact-force vector and one penetration-normalized external signal while preserving exact zero-contact DC-DEV-005 trajectory parity; existing mechanics remains the movement authority.
+- Evidence location: `digital-protocell/crates/regulatory-core/src/spatial.rs`, `digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs`, and `digital-protocell/experiments/generated/dcdev006/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-006 local Gates 0-6 assay; architect review and exact-head remote CI pending.
+- Supersedes learning: none

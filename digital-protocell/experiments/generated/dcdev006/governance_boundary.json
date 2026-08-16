@@ -1,0 +1,14 @@
+{
+  "evolution": false,
+  "extra_plasticity": false,
+  "fission_inheritance": false,
+  "fitness": false,
+  "new_actuator": false,
+  "new_sensor": false,
+  "next_execution_started": false,
+  "one_external_signal": true,
+  "one_static_primitive": true,
+  "parameter_screening": false,
+  "result": "DCDEV006_GATE0_SCOPE_PASS",
+  "reward": false
+}

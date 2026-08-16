@@ -27,3 +27,7 @@ path = "../../examples/dcdev004_gate_assay.rs"
 [[example]]
 name = "dcdev005_gate_assay"
 path = "../../examples/dcdev005_gate_assay.rs"
+
+[[example]]
+name = "dcdev006_gate_assay"
+path = "../../examples/dcdev006_gate_assay.rs"

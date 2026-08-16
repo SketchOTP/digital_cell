@@ -1,0 +1,6 @@
+{
+  "exact_dcdev005_trajectory": true,
+  "far_obstacle_contact_is_zero": true,
+  "result": "DCDEV006_GATE1_ZERO_WORLD_PARITY_PASS",
+  "steps": 24
+}

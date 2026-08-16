@@ -129,3 +129,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: the architect must inspect the first history-dependent response claim.
 - Blockers: architect review.
 - Follow-up directive: none
+
+## D-20260815-dcdev006-minimal-spatial-contact-environment - PARTIAL
+
+- Outcome ID: OUT-DCDEV006-MINIMAL-SPATIAL-CONTACT-ENVIRONMENT
+- Supersedes outcome: none
+- Closed: `2026-08-15T22:36:55-04:00`
+- Acceptance: PARTIAL
+- Summary: One deterministic static obstacle, bounded local mechanics force hook, penetration-normalized contact signal, existing regulatory/plasticity coupling, local repeated-contact assay, remesh continuity, and fission fail-closed boundaries are implemented from the accepted DC-DEV-005 head. Architect qualification remains pending.
+- Changed areas: bounded `chemistry-core` mesh mechanics force hook, `regulatory-core` spatial adapter and external-force wrappers, DC-DEV-006 assay/artifacts/docs/workflow, and current governance state.
+- Validation:
+  - Regulatory-core focused suite - PASSED
+  - DC-DEV-006 gate assay - PASSED
+  - DC-DEV-005 zero-contact trajectory parity - PASSED
+  - Contact force locality and deterministic transduction - PASSED
+  - Repeated-contact experience dependence and recovery - PASSED
+  - Remesh continuity and fission fail-closed boundaries - PASSED
+  - Exact-head remote CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: remote exact-head validation and independent architect interpretation of the external-force boundary.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
