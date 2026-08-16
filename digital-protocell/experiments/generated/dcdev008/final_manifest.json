@@ -1,0 +1,16 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "conclusion": "DCDEV008_SPATIAL_RESOURCE_ACQUISITION_QUALIFIED",
+  "gates": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "next_directive_started": false
+}

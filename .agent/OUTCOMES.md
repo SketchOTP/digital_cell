@@ -172,6 +172,17 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260816-dcdev008-finite-spatial-resource-acquisition - PENDING_CI
+
+- Outcome ID: OUT-DCDEV008-SPATIAL-RESOURCE-ACQUISITION-LOCAL
+- Acceptance: `PENDING_CI`
+- Summary: DC-DEV-008 implementation and generated local evidence pass the focused resource-region assay; exact-head remote CI and architect review remain pending.
+- Head: `d37d23b3d948a4c03bf579c29e2656493fcadb40`
+- Pull request: `https://github.com/SketchOTP/digital_cell/pull/16`
+- Validation: chemistry-core spatial-resource unit tests passed; DC-DEV-008 executable assay passed; Governance ADOPTED validation passed; targeted rustfmt check passed.
+- Measured local result: active local uptake `5.677602949831744`; noncontact uptake `0.0`; world loss equals organism gain within `1e-12`; final active A exceeds both controls.
+- Blockers: exact-head remote CI is not yet attached; Mimir V2 lifecycle tools are unavailable in this session.
+
 ## D-20260815-dcdev007-active-external-contact-regulation - PARTIAL
 
 - Outcome ID: OUT-DCDEV007-ACTIVE-EXTERNAL-CONTACT-REGULATION-REMOTE
