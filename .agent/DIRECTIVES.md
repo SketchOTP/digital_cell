@@ -35,7 +35,7 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Acceptance: `DCDEV010_PASSIVE_DIRECTIONAL_SUBSTRATE_TRANSLATION_QUALIFIED` only if the motor-off control shows no substrate-driven translation above the preregistered tolerance and every earlier gate passes. The first failed scientific gate stops the directive.
 - Risk class: NORMAL
 - Relationship: new
-- Related directive: `DC-DEV-009`
+- Related directive: none
 - Status at issuance: ISSUED
 
 ## D-20260816-dcdev009-free-space-motility-feasibility-audit
