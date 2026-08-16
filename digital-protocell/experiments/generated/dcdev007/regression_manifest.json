@@ -1,0 +1,13 @@
+{
+  "d088": "PENDING_REMOTE_CI",
+  "dcdev002": "PENDING_REMOTE_CI",
+  "dcdev003": "PENDING_REMOTE_CI",
+  "dcdev004": "PENDING_REMOTE_CI",
+  "dcdev005": "PENDING_REMOTE_CI",
+  "dcdev006": "PENDING_REMOTE_CI",
+  "evolution_harness": "PENDING_REMOTE_CI",
+  "exact_head_remote_ci": "PENDING_REMOTE_CI",
+  "governance": "PENDING_REMOTE_CI",
+  "next_execution_started": false,
+  "phase1_focused_certification": "PENDING_REMOTE_CI"
+}

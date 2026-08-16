@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260815-dcdev006-minimal-spatial-contact-environment`
-- External directive ID: `DC-DEV-006`
-- Objective: `Place the accepted organism in one deterministic spatial world and transduce one local physical contact relation.`
+- Local directive ID: `D-20260815-dcdev007-active-external-contact-regulation`
+- External directive ID: `DC-DEV-007`
+- Objective: `Prove that existing local contact sensing, regulation, adaptation, reserve-funded contractility, and mechanics alter future external contact.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `DC-DEV-006 is authorized from accepted DC-DEV-005 head; local Gates 0-6 and exact-head remote CI run 31923037384 at 30f9b0cab792ac6742d1820ad0f5677f29af5631 pass; architect review remains pending.`
-- Current phase: `DC-DEV-006 minimal spatial contact environment from entry 4da04a5cf8153e4ab31603965eeba305ad4bb721.`
-- Expected or actual touched areas: `bounded chemistry-core external-force hook, regulatory-core spatial adapter, DC-DEV-006 assay/artifacts/docs/workflow, current governance state`
-- Immediate next action: `Await independent architect review of PR #14 at exact head 30f9b0cab792ac6742d1820ad0f5677f29af5631; do not begin DC-DEV-007.`
+- Acceptance: `DC-DEV-006 is architect-accepted at 3a5971be332f94848250196e8148b722464066f2; DC-DEV-007 local Gates 0-8 pass and exact-head remote CI plus architect review remain pending.`
+- Current phase: `DC-DEV-007 active external-contact regulation from entry 3a5971be332f94848250196e8148b722464066f2.`
+- Expected or actual touched areas: `regulatory-core assay registration, DC-DEV-007 assay/artifacts/docs/workflow, current governance state`
+- Immediate next action: `Run the scoped DC-DEV-007 preservation suite, push strategy/dc-dev-007-active-contact-regulation, open a stacked draft PR, and await exact-head remote CI and architect review; do not begin DC-DEV-008.`
 
 ## Temporary task-relevant facts
 
@@ -24,12 +24,12 @@
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
 - DC-DEV-003 continuity remains authoritative; DC-DEV-004 adds one local contractile tension path and does not add sensors, commands, memory, learning, or evolution.
 - The frozen funding quantity is existing D-091 metabolic reserve `R` in `MaterialMesh.interior.r`; expenditure enters existing `W`.
-- Entry authority is `4da04a5cf8153e4ab31603965eeba305ad4bb721`.
-- Implementation work is on `strategy/dc-dev-006-spatial-contact-environment`.
+- Entry authority is `3a5971be332f94848250196e8148b722464066f2`.
+- Implementation work is on `strategy/dc-dev-007-active-contact-regulation` stacked on `strategy/dc-dev-006-spatial-contact-environment`.
 
 ## Last validation after adoption
 
-- Command or check: `DC-DEV-006 local Gates 0-6 assay`
+- Command or check: `DC-DEV-007 local Gates 0-8 assay`
 - Result: `PASSED`
 
 ## Risks
@@ -39,11 +39,11 @@
 
 ## Blockers
 
-- Architect review remains required before any later directive; DC-DEV-007 is not authorized.
+- Exact-head remote CI and architect review remain required; DC-DEV-008 is not authorized.
 
 ## Pending decisions
 
-- None; DC-DEV-006 is authorized only for one static obstacle and one local contact signal. Additional signals, actuators, reward, fitness, identity, evolution, and DC-DEV-007 remain outside scope.
+- None; DC-DEV-007 is authorized only as an integration qualification over the accepted static obstacle, contact signal, distributed regulator, existing adaptation trace, D-091 reserve-funded contractility, and mechanics. Additional sensors, actuators, traces, world primitives, reward, fitness, identity, evolution, and DC-DEV-008 remain outside scope.
 
 ## Status vocabulary
 
