@@ -1,0 +1,29 @@
+{
+  "active_final_material_displacement": 0.004404569847979622,
+  "active_no_substrate_final_material_displacement": 0.0018021246021144236,
+  "active_retained_displacement_fraction": 1.0,
+  "gate0_authority_scope": {
+    "dcdev012_started": false,
+    "directional_substrate_imported": false,
+    "exact_start": "8d6fe59397cabfa47bc1d8103acd68f544acc190",
+    "one_new_traction_mechanism": true,
+    "pr19_imported": false
+  },
+  "gate10_artifact_exclusion": true,
+  "gate11_production_ownership": true,
+  "gate12_preservation": "REQUIRES_SCOPED_REMOTE_CI",
+  "gate1_legacy_settled_initial_state": true,
+  "gate2_locality_isotropy": true,
+  "gate3_passivity": true,
+  "gate4_motor_off_stability": true,
+  "gate5_physical_stick_slip_engagement": true,
+  "gate6_funded_body_translation": true,
+  "gate7_retention_after_relaxation": true,
+  "gate8_metabolic_causality": true,
+  "gate9_no_hidden_world_direction": true,
+  "material_vertex_agreement_error": 2.740863092043355e-16,
+  "motor_off_final_material_displacement": 0.0,
+  "regulatory_trajectory_identical": true,
+  "scientific_pass": true,
+  "zero_reserve_final_material_displacement": 0.0
+}

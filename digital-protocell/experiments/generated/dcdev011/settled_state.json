@@ -1,0 +1,18 @@
+{
+  "chemistry_unchanged": true,
+  "initial_chemistry_hash": "d8752b48a7e2fece",
+  "initial_mesh_hash": "90877852c31ea9c2",
+  "maximum_attempted_velocity": 0.03364647586334157,
+  "maximum_local_displacement": 0.0006729295172668313,
+  "maximum_material_centroid_step": 1.347201764550237e-15,
+  "plasticity_advanced": false,
+  "r1_reference_max_attempted_velocity": 2.6645352591003757e-9,
+  "r1_reference_max_local_displacement": 5.3290705182007514e-11,
+  "r1_reference_max_material_centroid_step": 2.220446049250313e-13,
+  "regulation_advanced": false,
+  "settled": true,
+  "settled_chemistry_hash": "d8752b48a7e2fece",
+  "settled_mesh_hash": "1c77935f8204dbaf",
+  "settlement_steps": 5000,
+  "topology_unchanged": true
+}

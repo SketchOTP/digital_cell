@@ -10,11 +10,11 @@
 - Local directive ID: `D-20260816-dcdev011-passive-isotropic-stick-slip-traction`
 - External directive ID: `DC-DEV-011`
 - Objective: `Determine whether existing reserve-funded local contractility can produce retained displacement through one passive local isotropic stick-slip substrate.`
-- Current status: `IN_PROGRESS`
-- Acceptance: `Freeze one production stick-slip law and protocol, then execute the four-arm 480-step qualification with all gates and preservation checks.`
-- Current phase: `DC-DEV-011 frozen mechanism and pre-qualification protocol from clean DC-DEV-009 entry 8d6fe59397cabfa47bc1d8103acd68f544acc190.`
+- Current status: `VALIDATING`
+- Acceptance: `Local four-arm qualification and preservation checks passed; exact-head scoped remote CI and independent architect review remain pending.`
+- Current phase: `DC-DEV-011 qualification package complete locally; remote preservation verification and draft-PR review are next.`
 - Expected or actual touched areas: `regulatory-core stick-slip production module, DC-DEV-011 assay/docs/artifacts/workflow, scoped CI, current governance state`
-- Immediate next action: `Commit frozen mechanism, direct tests, exact parameters, assay protocol, and governance state before qualification; do not begin DC-DEV-012.`
+- Immediate next action: `Commit the qualification evidence/workflow, push the branch, open the required draft PR, and verify exact-head scoped remote CI; do not begin DC-DEV-012.`
 
 ## Temporary task-relevant facts
 
@@ -32,7 +32,7 @@
 ## Last validation after adoption
 
 - Command or check: `cargo test -p regulatory-core stick_slip_traction::tests` using sanctioned Rust 1.89.0 with local NTFS target directory
-- Result: `5 passed, 0 failed`; frozen mechanism tests pass before qualification
+- Result: `35 regulatory-core tests, 4 Phase-1 tests, 4 D-088 tests, and 40 evolution-harness tests passed locally; DC-DEV-002 through DC-DEV-009 preservation assays passed; scoped remote CI and architect review pending`
 
 ## Risks
 
@@ -42,7 +42,7 @@
 
 ## Blockers
 
-- None for the pre-qualification freeze. Failure to reproduce the 5,000-step legacy settled body or any first failed scientific gate stops DC-DEV-011 and returns to architect review.
+- Scoped remote CI, exact draft-PR verification, and independent architect review remain open. Any failed remote gate stops DC-DEV-011 and returns to architect review.
 
 ## Pending decisions
 

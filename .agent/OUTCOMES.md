@@ -175,6 +175,17 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: architect review.
 - Follow-up directive: none
 
+## D-20260816-dcdev011-passive-isotropic-stick-slip-traction - PARTIAL
+
+- Outcome ID: OUT-DCDEV011-PASSIVE-ISOTROPIC-STICK-SLIP-LOCAL
+- Closed: `2026-08-16T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The frozen local isotropic stick-slip mechanism qualified the preregistered four-arm assay locally. Active stick-slip retained `0.004404569847979622` material-centroid displacement, versus `0` motor-off and `0.0018021246021144236` active no-substrate; both stick and slip occurred, passivity and rotational equivalence passed.
+- Validation: `35 regulatory-core tests; 4 Phase-1 metrics tests; 4 D-088 tests; 40 evolution-harness tests; DC-DEV-002 through DC-DEV-009 preservation assays; scoped formatting - all passed locally.`
+- Evidence: `digital-protocell/experiments/generated/dcdev011/` and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev011/qualification_results.md`.
+- Remaining risks: exact-head scoped remote CI, draft PR inspection, and independent architect review.
+- Follow-up directive: none; DC-DEV-012 remains unauthorized.
+
 ## D-20260815-dcdev005-local-experience-dependent-plasticity - PARTIAL
 
 - Outcome ID: OUT-DCDEV005-LOCAL-EXPERIENCE-DEPENDENT-PLASTICITY

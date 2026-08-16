@@ -1,7 +1,7 @@
 # DC-DEV-011: passive isotropic stick-slip traction
 
-Status: frozen pre-qualification protocol. No qualification result is
-recorded by this document.
+Status: qualification executed locally; scoped remote preservation CI and
+architect review pending. The result is not yet architect-accepted.
 
 Entry authority: `8d6fe59397cabfa47bc1d8103acd68f544acc190` on
 `strategy/dc-dev-009-motility-feasibility-audit`.
@@ -66,6 +66,7 @@ final material-centroid displacements by at least this tolerance. At least one
 stuck contact and one slipping contact are required. At least 25% of active
 phase displacement must remain after relaxation. The 180-degree rotational
 equivalence control uses an absolute displacement-vector tolerance of `1e-9`.
+Material- and vertex-centroid displacement vectors must agree within `1e-8`.
 
 The pass/fail conclusions are exactly:
 
@@ -75,5 +76,9 @@ The pass/fail conclusions are exactly:
 Neither conclusion establishes autonomous gait, continuous locomotion,
 steering, navigation, resource seeking, learning, or evolution.
 
-`NEXT_EXECUTION_STARTED:false` until the qualification assay is explicitly
-run after this frozen protocol commit.
+The local qualification produced
+`DCDEV011_PASSIVE_ISOTROPIC_STICK_SLIP_TRANSLATION_QUALIFIED`; see
+`qualification_results.md` and the compact generated JSON artifacts. The
+remote preservation status remains pending until the scoped workflow passes.
+
+`NEXT_EXECUTION_STARTED:false`.

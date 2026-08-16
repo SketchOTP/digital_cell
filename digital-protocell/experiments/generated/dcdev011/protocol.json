@@ -1,0 +1,34 @@
+{
+  "active_steps": 240,
+  "artifact_status": "AUTHORITATIVE",
+  "centroid_agreement_tolerance": 1e-8,
+  "conclusion": "DCDEV011_PASSIVE_ISOTROPIC_STICK_SLIP_TRANSLATION_QUALIFIED",
+  "dcdev010_imported": false,
+  "dcdev012_started": false,
+  "directive": "DC-DEV-011",
+  "entry_commit": "8d6fe59397cabfa47bc1d8103acd68f544acc190",
+  "execution_type": "bounded_four_arm_qualification",
+  "freeze_commit": "f263536bc2da028630fe09108d07e7ada2e8ca38",
+  "mechanics": {
+    "dt": 0.02,
+    "gamma": 1.0,
+    "k_pi": 0.22,
+    "k_s": 14.0,
+    "kappa_b": 2.0
+  },
+  "minimum_retained_displacement_fraction": 0.25,
+  "next_execution_started": false,
+  "parameter_screening": false,
+  "relaxation_steps": 240,
+  "rotational_symmetry_tolerance": 1e-9,
+  "settlement_steps": 5000,
+  "stimulus_is_assay_input_only": true,
+  "topology_size": 24,
+  "traction": {
+    "kinetic_traction": 0.2,
+    "schema": "digital_cell_passive_isotropic_stick_slip_v1",
+    "static_traction_limit": 0.45,
+    "zero_motion_tolerance": 1e-12
+  },
+  "translation_tolerance": 1e-10
+}
