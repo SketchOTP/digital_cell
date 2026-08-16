@@ -372,3 +372,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: independent architect decision on the Gate 1 motor-off translation failure.
 - Blockers: Gate 1 motor-off no-propulsion failure and architect review.
 - Follow-up directive: none
+
+## D-20260816-dcdev010-passive-directional-substrate-traction - PARTIAL
+
+- Outcome ID: OUT-DCDEV010-DIRECTIONAL-SUBSTRATE-FINAL-REMOTE-VERIFICATION
+- Supersedes outcome: OUT-DCDEV010-DIRECTIONAL-SUBSTRATE-REMOTE-VERIFICATION
+- Closed: `2026-08-16T13:43:48-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The governance heading correction was pushed at `83d1cd747e5ad750b2b6b2ae145c7ae4ff3444b`; exact-head remote CI run `31962293477` passed. The scientific Gate 1 failure remains unchanged, and DC-DEV-011 remains blocked.
+- Validation:
+  - Remote governance ADOPTED validation - PASSED
+  - Remote DC-DEV-010 evidence and boundary validation - PASSED
+  - Remote scoped formatting, substrate tests, audit, preservation through DC-DEV-009, Phase-1, D-088, evolution-harness, and exact-head assertion - PASSED
+  - Scientific conclusion - `DCDEV010_DIRECTIONAL_SUBSTRATE_TRANSLATION_NOT_ESTABLISHED`
+  - Draft PR #19 - OPEN and UNMERGED
+  - Architect review - PENDING
+- Changed areas: governance heading correction and current-state verification only; no scientific implementation or evidence artifacts changed.
+- Remaining risks: independent architect decision on the Gate 1 motor-off translation failure.
+- Blockers: Gate 1 motor-off no-propulsion failure and architect review.
+- Follow-up directive: none

@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-16T13:36:00-04:00`
+- Last updated: `2026-08-16T13:43:48-04:00`
 
 ## Active state after adoption
 
@@ -42,8 +42,8 @@
 - DC-DEV-010 first execution used one frozen substrate parameter set. Substrate work remained non-positive, but the motor-off directional arm translated `0.013504913541228361` above tolerance `2.220446049250313e-13`.
 - DC-DEV-010 scientific conclusion is `DCDEV010_DIRECTIONAL_SUBSTRATE_TRANSLATION_NOT_ESTABLISHED`; no parameter repair or second architecture is authorized.
 - DC-DEV-011 remains blocked.
-- DC-DEV-010 branch `strategy/dc-dev-010-directional-substrate-traction` is pushed at `0a185a2032832fe7c24142b6cfa61d5af4d7ae4d`; draft PR #19 is open against `strategy/dc-dev-009-motility-feasibility-audit`.
-- Exact-head remote CI run `31961901397` passed at `0a185a2032832fe7c24142b6cfa61d5af4d7ae4d`; architect review remains pending.
+- DC-DEV-010 branch `strategy/dc-dev-010-directional-substrate-traction` is pushed at `83d1cd747e5ad750b2b6b2ae145c7ae4ff3444b`; draft PR #19 is open against `strategy/dc-dev-009-motility-feasibility-audit`.
+- Exact-head remote CI run `31962293477` passed at `83d1cd747e5ad750b2b6b2ae145c7ae4ff3444b`; architect review remains pending.
 
 ## Blockers
 
