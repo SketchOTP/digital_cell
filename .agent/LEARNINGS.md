@@ -67,3 +67,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-006 local Gates 0-6 assay; architect review and exact-head remote CI pending.
 - Supersedes learning: none
+
+## L-DCDEV009-001
+
+- Learning ID: L-DCDEV009-001
+- Date: 2026-08-16
+- Fact or lesson: In the accepted fixed-topology free-space arm, local contractility produces large shape change but its equal-and-opposite edge forces have zero net force. The measured active-minus-control centroid drift is reproduced by the changed baseline force field after deformation and is not sufficient evidence of locomotion.
+- Evidence location: `digital-protocell/examples/dcdev009_gate_assay.rs`, `digital-protocell/experiments/generated/dcdev009/force_accounting.json`, `digital-protocell/experiments/generated/dcdev009/matched_arms.json`, and `digital-protocell/experiments/generated/dcdev009/artifact_analysis.json`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-009 fixed-topology free-space audit; architect review pending.
+- Supersedes learning: none

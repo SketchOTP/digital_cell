@@ -1,0 +1,10 @@
+{
+  "active_contractile_force_vector_sum_max_norm": 6.804363002006077e-16,
+  "active_observed_total_force_vector_sum_max_norm": 0.007161593405950254,
+  "active_total_force_vector_sum_max_norm": 0.007161593405969243,
+  "equal_and_opposite_contractile_pairing": true,
+  "motor_off_contractile_force_vector_sum_max_norm": 0.0,
+  "motor_off_observed_total_force_vector_sum_max_norm": 1.3412926612454829e-13,
+  "motor_off_total_force_vector_sum_max_norm": 1.1423476398226122e-14,
+  "result": "DCDEV009_GATE1_FORCE_ACCOUNTING_PASS"
+}

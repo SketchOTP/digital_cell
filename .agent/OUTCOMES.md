@@ -86,6 +86,30 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: architect review; DC-DEV-009 remains blocked.
 - Follow-up directive: none
 
+## D-20260816-dcdev009-free-space-motility-feasibility-audit - PARTIAL
+
+- Outcome ID: OUT-DCDEV009-FREE-SPACE-MOTILITY-AUDIT-LOCAL
+- Supersedes outcome: none
+- Closed: `2026-08-16T11:51:10-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only fixed-topology audit passes locally. Existing contractility produces shape change but no valid free-space translation attributable to contractile propulsion.
+- Changed areas: regulatory-core example registration, DC-DEV-009 observer assay/artifacts/docs/workflow, and current governance state; no chemistry-core source changed.
+- Validation:
+  - Fixed 24-vertex, 240-step, 4.8 simulated-time active/motor-off assay - PASSED
+  - Regulatory trajectory identity - PASSED
+  - Equal-and-opposite contractile force accounting - PASSED; max norm `6.804363002006077e-16`
+  - Contractility-only centroid displacement - PASSED; `2.473548217003853e-18`
+  - Shape change without accepted locomotion - PASSED
+  - Artifact audit - PASSED; active-minus-control drift matched baseline force-field integral
+  - External prior-art review and three-option architecture comparison - COMPLETE
+  - Governance ADOPTED validation - PENDING
+  - DC-DEV-002 through DC-DEV-008 preservation - PENDING
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: remote exact-head validation and architect review of the artifact classification and recommended substrate experiment.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
+
 ## D-20260815-dcdev002-local-regulatory-substrate - PARTIAL
 
 - Outcome ID: OUT-DCDEV002-LOCAL-REGULATORY-SUBSTRATE

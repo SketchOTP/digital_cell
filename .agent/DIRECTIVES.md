@@ -24,6 +24,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260816-dcdev009-free-space-motility-feasibility-audit
+
+- Issued: `2026-08-16T11:40:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-009`
+- Objective: Determine whether accepted fixed-topology mechanics and local contractility produce physically meaningful free-space translation, and identify the missing organism-environment coupling if not.
+- Scope: Observer-only force and displacement ledgers, fixed-topology active/motor-off arms, force accounting, centroid and material-centroid measurements, artifact audit, outside-force inventory, external locomotion prior art, bounded architecture comparison, recommendation of one smallest falsifying experiment, preservation, governance, evidence, and scoped CI.
+- Exclusions: new actuator, friction, adhesion, cilia, flagella, propulsion forces, swimming physics, locomotion controller, navigation, chemotaxis, nutrient sensing, resource seeking, target coordinates, reward, reinforcement learning, fitness, another plasticity trace, evolution, and DC-DEV-010.
+- Acceptance: `DCDEV009_MOTILITY_FEASIBILITY_AUDIT_COMPLETE` with exactly one scientific finding, exact-head remote CI, preservation of DC-DEV-002 through DC-DEV-008, pushed stacked draft PR, and architect review from entry `79751bed5ad78d367b7409f0ec677e32a3b9d527` on source `strategy/dc-dev-008-spatial-resource-acquisition`.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 
 ## D-20260816-dcdev008-finite-spatial-resource-acquisition
 

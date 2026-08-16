@@ -13,6 +13,7 @@
 - `digital-protocell/crates/experiment-runner/` — historical experiment orchestration; not changed by architecture selection.
 - `digital-protocell/crates/evolution-harness/` — observer-only reusable evolution infrastructure; not extended by this directive.
 - `digital-protocell/crates/regulatory-core/` — accepted regulatory state, DC-DEV-003 remesh continuity, the single DC-DEV-004 local contractility adapter, DC-DEV-005 plasticity, and the bounded DC-DEV-006 spatial contact adapter.
+- `digital-protocell/examples/dcdev009_gate_assay.rs` — observer-only fixed-topology free-space motility audit; it does not add production locomotion.
 
 ## Interfaces and contracts
 
@@ -38,6 +39,7 @@
 - `digital-protocell/experiments/generated/` — generated evidence and provenance; preserve historical evidence.
 - `digital-protocell/experiments/generated/dcdev001/` — DC-DEV-001A machine-readable decision artifacts.
 - `digital-protocell/experiments/generated/dcdev006/` — DC-DEV-006 local spatial-contact evidence artifacts.
+- `digital-protocell/experiments/generated/dcdev009/` — DC-DEV-009 force, displacement, coupling, and audit evidence artifacts.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/` — DC-DEV-001A human-readable analysis.
 
 ## External integration points

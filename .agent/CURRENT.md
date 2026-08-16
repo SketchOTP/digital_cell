@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-16T01:15:00-04:00`
+- Last updated: `2026-08-16T11:51:10-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260816-dcdev008-finite-spatial-resource-acquisition`
-- External directive ID: `DC-DEV-008`
-- Objective: `Prove finite local environmental N/F material enters the existing metabolic pathway and supports internal A/R state.`
-- Current status: `IN_PROGRESS`
-- Acceptance: `DC-DEV-007 is architect-accepted at 2968882769991f48c987ceb40c719fd351b2e046; DC-DEV-008-R1 production boundary is complete at 746e12514dfdbd5dd3f8a6cd90d10900f8a6b5cf and exact-head remote CI run 31938453863 passed; architect review is required.`
-- Current phase: `DC-DEV-008 finite spatial resource acquisition from entry 2968882769991f48c987ceb40c719fd351b2e046.`
-- Expected or actual touched areas: `regulatory-core spatial_resource production module/tests, DC-DEV-008 assay/artifacts/docs/workflow, current governance state`
-- Immediate next action: `Await independent architect review of PR #17 at exact head 746e12514dfdbd5dd3f8a6cd90d10900f8a6b5cf; do not begin DC-DEV-009.`
+- Local directive ID: `D-20260816-dcdev009-free-space-motility-feasibility-audit`
+- External directive ID: `DC-DEV-009`
+- Objective: `Determine whether accepted fixed-topology mechanics and local contractility produce physically meaningful free-space translation.`
+- Current status: `VALIDATING`
+- Acceptance: `DC-DEV-008-R1 is architect-accepted at 79751bed5ad78d367b7409f0ec677e32a3b9d527; DC-DEV-009 is observer-only and architect review remains required.`
+- Current phase: `DC-DEV-009 fixed-topology free-space motility feasibility audit from entry 79751bed5ad78d367b7409f0ec677e32a3b9d527.`
+- Expected or actual touched areas: `DC-DEV-009 observer assay/artifacts/docs/workflow, regulatory-core example registration, current governance state`
+- Immediate next action: `Run preservation and exact-head remote validation for the stacked DC-DEV-009 draft PR; do not implement the recommended substrate coupling and do not begin DC-DEV-010.`
 
 ## Temporary task-relevant facts
 
@@ -37,16 +37,17 @@
 
 - The full workspace test remains unavailable because of the pre-existing missing D-008 fixture; the scoped workflow deliberately does not invoke it.
 - DC-DEV-008-R1 retains the accepted evidence values and closes the runtime-boundary defect by making regulatory-core the sole resource implementation.
-- Exact-head remote CI run `31938453863` passed at `746e12514dfdbd5dd3f8a6cd90d10900f8a6b5cf`.
-- Architect exact-head review remains required before any later directive; DC-DEV-009 remains blocked.
+- Exact-head remote CI run `31938648765` passed at `79751bed5ad78d367b7409f0ec677e32a3b9d527` for DC-DEV-008-R1.
+- Local DC-DEV-009 audit passes with zero contractile force sum within `6.804363002006077e-16` and no valid contractility-only translation; remote validation and architect review remain pending.
+- DC-DEV-010 remains blocked.
 
 ## Blockers
 
-- Architect review remains required; DC-DEV-009 is not authorized.
+- Exact-head remote validation and architect review remain required; DC-DEV-010 is not authorized.
 
 ## Pending decisions
 
-- None; DC-DEV-008 is authorized only as a finite local N/F environment adapter over existing permeability, metabolism, A, and reserve R. New species, global transport changes, sensors, actuators, traces, planner, reward, fitness, and evolution remain outside scope.
+- DC-DEV-009 may only observe accepted mechanics and contractility in fixed free space. No new physical coupling, sensor, actuator, planner, reward, fitness, or evolution is authorized.
 
 ## Status vocabulary
 

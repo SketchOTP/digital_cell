@@ -1,0 +1,35 @@
+{
+  "active": {
+    "arm": "active_contractility",
+    "final_mesh_hash": "2b17b49f4f8ca79e",
+    "material_centroid_displacement": 0.0011021808181206488,
+    "regulatory_trace_hash": "b762e60498e5b9e1",
+    "shape_change": 0.49448972028754373,
+    "vertex_centroid_displacement": 0.00110218081812107
+  },
+  "active_minus_control_displacement_norm": 0.001102180818121483,
+  "active_minus_control_material_displacement": [
+    -0.000747429829943231,
+    -0.0008100316074974329
+  ],
+  "active_minus_control_material_displacement_norm": 0.0011021808181209843,
+  "active_minus_control_shape_change": 0.44683399200843127,
+  "active_minus_control_vertex_displacement": [
+    -0.000747429829943062,
+    -0.0008100316074982674
+  ],
+  "baseline_force_difference_centroid_displacement": 0.001102180818121326,
+  "contractile_only_centroid_displacement": 2.473548217003853e-18,
+  "fixed_topology": true,
+  "motor_off": {
+    "arm": "motor_off",
+    "final_mesh_hash": "5507b597368297ac",
+    "material_centroid_displacement": 3.5925380388006317e-16,
+    "regulatory_trace_hash": "b762e60498e5b9e1",
+    "shape_change": 0.06468419178539876,
+    "vertex_centroid_displacement": 4.505949562318948e-16
+  },
+  "regulatory_trajectory_identical": true,
+  "result": "DCDEV009_GATE2_FIXED_TOPOLOGY_NO_VALID_TRANSLATION",
+  "shape_change_without_translation": true
+}
