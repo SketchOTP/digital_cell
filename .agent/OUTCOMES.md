@@ -76,11 +76,14 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Validation:
   - Six direct production-module tests - PASSED
   - DC-DEV-008 assay reproduction - PASSED with accepted values
-  - DC-DEV-002 through DC-DEV-007 preservation assays - PASSED locally
-  - Governance ADOPTED validation - PENDING final record correction
-  - Phase-1, D-088, evolution-harness, and exact-head remote CI - PENDING
-- Remaining risks: exact-head remote preservation matrix and architect inspection of the runtime boundary.
-- Blockers: final governance validation, remote exact-head CI, and architect review; DC-DEV-009 remains blocked.
+- DC-DEV-002 through DC-DEV-007 preservation assays - PASSED locally
+  - Governance ADOPTED validation - PASSED
+  - Phase-1 focused regression - PASSED (4 tests)
+  - D-088 focused regression - PASSED (4 tests)
+  - Evolution-harness regression - PASSED (40 tests)
+  - Exact-head GitHub Actions run `31938214782` at `9872d4e251817177989a980760796a8ba767d037` - PASSED
+- Remaining risks: architect inspection of the runtime boundary.
+- Blockers: architect review; DC-DEV-009 remains blocked.
 - Follow-up directive: none
 
 ## D-20260815-dcdev002-local-regulatory-substrate - PARTIAL
