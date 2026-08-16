@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-16T12:08:00-04:00`
+- Last updated: `2026-08-16T00:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260816-dcdev009-free-space-motility-feasibility-audit`
-- External directive ID: `DC-DEV-009`
-- Objective: `Determine whether accepted fixed-topology mechanics and local contractility produce physically meaningful free-space translation.`
+- Local directive ID: `D-20260816-dcdev011-passive-isotropic-stick-slip-traction`
+- External directive ID: `DC-DEV-011`
+- Objective: `Determine whether existing reserve-funded local contractility can produce retained displacement through one passive local isotropic stick-slip substrate.`
 - Current status: `VALIDATING`
-- Acceptance: `DC-DEV-008-R1 is architect-accepted at 79751bed5ad78d367b7409f0ec677e32a3b9d527; DC-DEV-009 is observer-only and architect review remains required.`
-- Current phase: `DC-DEV-009 fixed-topology free-space motility feasibility audit from entry 79751bed5ad78d367b7409f0ec677e32a3b9d527.`
-- Expected or actual touched areas: `DC-DEV-009 observer assay/artifacts/docs/workflow, regulatory-core example registration, current governance state`
-- Immediate next action: `Architect review of the stacked DC-DEV-009 draft PR #18; do not implement the recommended substrate coupling and do not begin DC-DEV-010.`
+- Acceptance: `Local four-arm qualification and preservation checks passed; exact-head scoped remote CI and independent architect review remain pending.`
+- Current phase: `DC-DEV-011 qualification package complete locally; remote preservation verification and draft-PR review are next.`
+- Expected or actual touched areas: `regulatory-core stick-slip production module, DC-DEV-011 assay/docs/artifacts/workflow, scoped CI, current governance state`
+- Immediate next action: `Return the complete DC-DEV-011 package for independent architect review; do not begin DC-DEV-012.`
 
 ## Temporary task-relevant facts
 
@@ -24,32 +24,30 @@
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
 - DC-DEV-003 continuity remains authoritative; DC-DEV-004 adds one local contractile tension path and does not add sensors, commands, memory, learning, or evolution.
 - The frozen funding quantity is existing D-091 metabolic reserve `R` in `MaterialMesh.interior.r`; expenditure enters existing `W`.
-- Entry authority is `2968882769991f48c987ceb40c719fd351b2e046`.
+- Entry authority is `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
-- Implementation work is on `strategy/dc-dev-008-spatial-resource-acquisition` stacked on `strategy/dc-dev-007-active-contact-regulation`.
+- DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
+- Implementation work is on `strategy/dc-dev-011-local-stick-slip-traction` based on `strategy/dc-dev-009-motility-feasibility-audit`.
 
 ## Last validation after adoption
 
-- Command or check: `DC-DEV-008-R1 exact-head scoped preservation workflow`
+- Command or check: `Local Rust 1.89.0 scoped qualification, preservation matrix, focused regressions, and formatting`
 - Result: `PASSED`
 
 ## Risks
 
-- The full workspace test remains unavailable because of the pre-existing missing D-008 fixture; the scoped workflow deliberately does not invoke it.
-- DC-DEV-008-R1 retains the accepted evidence values and closes the runtime-boundary defect by making regulatory-core the sole resource implementation.
-- Exact-head remote CI run `31938648765` passed at `79751bed5ad78d367b7409f0ec677e32a3b9d527` for DC-DEV-008-R1.
-- Local DC-DEV-009 audit passes with zero contractile force sum within `6.804363002006077e-16` and no valid contractility-only translation.
-- DC-DEV-009 branch `strategy/dc-dev-009-motility-feasibility-audit` is pushed at `5cbd46d34167519748b5b888fd29f4359cbf019a`; draft PR #18 is open against `strategy/dc-dev-008-spatial-resource-acquisition`.
-- Exact-head remote CI run `31957461248` passed at `5cbd46d34167519748b5b888fd29f4359cbf019a`; architect review remains pending.
-- DC-DEV-010 remains blocked.
+- Atlas has no Rust toolchain; local sanctioned Rust 1.89.0 is used with the Atlas worktree mounted through SSHFS and a local NTFS target directory.
+- The frozen substrate must remain local, isotropic, passive, and reaction-only; no DC-DEV-010 directional substrate code may enter this branch.
+- Qualification is not valid until the exact frozen protocol commit precedes all assay execution.
 
 ## Blockers
 
-- Architect review remains required; DC-DEV-010 is not authorized.
+- Independent architect review remains open. Any failed remote gate stops DC-DEV-011 and returns to architect review.
 
 ## Pending decisions
 
-- DC-DEV-009 may only observe accepted mechanics and contractility in fixed free space. No new physical coupling, sensor, actuator, planner, reward, fitness, or evolution is authorized.
+- The frozen static/kinetic set must not be changed after the protocol commit.
+- DC-DEV-012, parameter repair, parameter screening, navigation, sensing, resource seeking, and evolution remain unauthorized.
 
 ## Status vocabulary
 

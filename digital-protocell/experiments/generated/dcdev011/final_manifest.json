@@ -1,0 +1,22 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "conclusion": "DCDEV011_PASSIVE_ISOTROPIC_STICK_SLIP_TRANSLATION_QUALIFIED",
+  "directive": "DC-DEV-011",
+  "entry_commit": "8d6fe59397cabfa47bc1d8103acd68f544acc190",
+  "evidence_storage_disposition": "compact_authoritative_json_only",
+  "freeze_commit": "f263536bc2da028630fe09108d07e7ada2e8ca38",
+  "gate_results": {
+    "artifact_exclusion": true,
+    "funded_translation": true,
+    "legacy_settled": true,
+    "metabolic_causality": true,
+    "motor_off_stability": true,
+    "passivity": true,
+    "retention": true,
+    "rotational_equivalence": true,
+    "stick_slip_engagement": true
+  },
+  "next_execution_started": false,
+  "preservation_status": "PASSED_SCOPED_REMOTE_CI",
+  "scientific_finding": "DCDEV011_PASSIVE_ISOTROPIC_STICK_SLIP_TRANSLATION_QUALIFIED"
+}
