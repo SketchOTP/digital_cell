@@ -16,6 +16,7 @@ pub mod contractility;
 pub mod plasticity;
 pub mod spatial;
 pub mod spatial_resource;
+pub mod stick_slip_traction;
 
 pub use contractility::{
     apply_local_contractility, apply_local_contractility_with_external_forces, ContractilityError,
@@ -44,6 +45,13 @@ pub use spatial::{
 pub use spatial_resource::{
     FiniteSpatialResourceRegionV1, SpatialResourceStepLedgerV1,
     FINITE_SPATIAL_RESOURCE_REGION_SCHEMA_V1, SPATIAL_RESOURCE_STEP_LEDGER_SCHEMA_V1,
+};
+
+pub use stick_slip_traction::{
+    apply_local_contractility_with_stick_slip, apply_stick_slip_to_legacy_mechanics,
+    evaluate_contact, ContactLedgerV1, ContactRegimeV1, StickSlipError, StickSlipStepLedgerV1,
+    StickSlipTractionParamsV1, FROZEN_KINETIC_TRACTION, FROZEN_STATIC_TRACTION_LIMIT,
+    FROZEN_ZERO_MOTION_TOLERANCE, STICK_SLIP_TRACTION_SCHEMA_V1,
 };
 
 pub const LOCAL_MATERIAL_FRAME_SCHEMA_V1: &str = "digital_cell_local_material_frame_v1";
