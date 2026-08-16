@@ -1,0 +1,19 @@
+{
+  "accepted_time_authority": "MechParams.dt after accepted existing mechanics step",
+  "artifact_status": "AUTHORITATIVE",
+  "causal_role": "modulates existing DC-DEV-004 local contractility response",
+  "directive": "DC-DEV-005",
+  "entry_commit": "edf517e6b802a7cd9cf141980061127dbb697b21",
+  "evolution": false,
+  "fission_state_inheritance": false,
+  "fitness": false,
+  "input_activity": "local regulatory activity only",
+  "new_actuator": false,
+  "new_sensor": false,
+  "next_execution_started": false,
+  "optimizer": false,
+  "parameter_screening": false,
+  "reward": false,
+  "trace": "adaptation_i per local regulatory patch in [0,1]",
+  "trace_count": 1
+}

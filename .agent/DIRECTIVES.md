@@ -24,6 +24,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260815-dcdev005-local-experience-dependent-plasticity
+
+- Issued: `2026-08-15T20:17:42-04:00`
+- Issuer: User
+- External directive: `DC-DEV-005`
+- Objective: Make prior local experience change a later local physical response through exactly one slow local adaptation trace.
+- Scope: One bounded per-patch adaptation trace driven only by local regulatory activity and accepted simulation time, fixed preregistered load/recovery constants, DC-DEV-004 baseline parity, local habituation, recovery, DC-DEV-003 remesh continuity, fission fail-closed behavior, generated evidence, documentation, governance, focused regressions, exact-head CI, and draft PR.
+- Exclusions: new sensors, new actuators, planner, reward, fitness, target behavior, neural-network framework, learning optimizer, evolution, fission-state inheritance, and DC-DEV-006.
+- Acceptance: `DCDEV005_LOCAL_HISTORY_DEPENDENT_PLASTICITY_QUALIFIED` only after the preregistered habituation/recovery assay, exact-head remote CI, and architect review from entry `edf517e6b802a7cd9cf141980061127dbb697b21` on source `strategy/dc-dev-004-local-contractility` to implementation `strategy/dc-dev-005-local-plasticity`.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260815-dcdev001a-r1
 
 - Issued: `2026-08-15T07:04:51-04:00`

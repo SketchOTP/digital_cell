@@ -1,0 +1,14 @@
+{
+  "adaptation_after_exposure": 0.0398495112092337,
+  "experienced_region": "local patches reached by standardized perturbation activity",
+  "experienced_response": 0.9850507628666366,
+  "exposure_response_first": 1.0259337201475889,
+  "exposure_response_last": 0.9860429494506853,
+  "exposure_steps": 40,
+  "habituation_magnitude": 0.04088295728095226,
+  "naive_response": 1.0259337201475889,
+  "result": "DCDEV005_GATE3_HISTORY_DEPENDENT_RESPONSE_PASS",
+  "same_current_activity": true,
+  "same_present_perturbation": true,
+  "time_matched_naive_control": true
+}
