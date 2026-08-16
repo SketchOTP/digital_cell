@@ -24,6 +24,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260816-dcdev011-passive-isotropic-stick-slip-traction
+
+- Issued: `2026-08-16T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-011`
+- Objective: Determine whether one frozen passive local isotropic stick-slip substrate can retain reserve-funded displacement without importing the rejected directional substrate.
+- Scope: Exact clean-base branch, one production reaction-only stick-slip law, 5,000-step settlement, four-arm 240-step active plus 240-step relaxation qualification, rotational/passivity controls, compact evidence, preservation, governance, and scoped CI.
+- Exclusions: DC-DEV-010 directional substrate, DC-DEV-012, mechanics repair, parameter search, navigation, sensing, resource seeking, learning, fitness, evolution, chemistry-core biology/equation changes, and any new locomotion capability.
+- Acceptance: `DCDEV011_PASSIVE_ISOTROPIC_STICK_SLIP_TRANSLATION_QUALIFIED` or the preregistered negative result, exact-head remote CI, preservation, pushed draft PR, and architect review from entry `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260816-dcdev009-free-space-motility-feasibility-audit
 
 - Issued: `2026-08-16T11:40:00-04:00`

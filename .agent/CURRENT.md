@@ -31,8 +31,8 @@
 
 ## Last validation after adoption
 
-- Command or check: `cargo test -p regulatory-core stick_slip_traction::tests` using sanctioned Rust 1.89.0 with local NTFS target directory
-- Result: `35 regulatory-core tests, 4 Phase-1 tests, 4 D-088 tests, and 40 evolution-harness tests passed locally; DC-DEV-002 through DC-DEV-009 preservation assays passed; scoped remote CI and architect review pending`
+- Command or check: `Local Rust 1.89.0 scoped qualification, preservation matrix, focused regressions, and formatting`
+- Result: `PASSED`
 
 ## Risks
 
