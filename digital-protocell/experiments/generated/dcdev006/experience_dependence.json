@@ -1,0 +1,12 @@
+{
+  "adaptation_after_exposure": 0.00564121183908194,
+  "adaptation_after_recovery": 0.004618171468905454,
+  "adaptation_before_recovery": 0.00564121183908194,
+  "experienced_response": 0.07160377599545324,
+  "exposure_steps": 40,
+  "habituation_magnitude": 0.0003962240045467663,
+  "naive_response": 0.07200000000000001,
+  "recovered_response": 0.07166749165423882,
+  "result": "DCDEV006_GATE5_EXPERIENCE_DEPENDENCE_PASS",
+  "same_physical_contact": true
+}

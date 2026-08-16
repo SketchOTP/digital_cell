@@ -7,7 +7,9 @@
 
 use chemistry_core::material_mesh::MaterialMesh;
 use chemistry_core::mesh_mechanics::{
-    mechanics_step, mechanics_step_with_edge_tensions, MechParams,
+    mechanics_step, mechanics_step_with_edge_tensions,
+    mechanics_step_with_edge_tensions_and_external_forces, mechanics_step_with_external_forces,
+    MechParams,
 };
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
@@ -88,6 +90,18 @@ pub fn apply_local_contractility(
     mechanics: &MechParams,
     params: &ContractilityParamsV1,
 ) -> Result<ContractilityStepLedgerV1, ContractilityError> {
+    apply_local_contractility_with_external_forces(mesh, activity, mechanics, params, None)
+}
+
+/// Apply local contractility while allowing one bounded local force vector from
+/// an external physical geometry.  `None` is the exact DC-DEV-004 path.
+pub fn apply_local_contractility_with_external_forces(
+    mesh: &mut MaterialMesh,
+    activity: &[f64],
+    mechanics: &MechParams,
+    params: &ContractilityParamsV1,
+    external_forces: Option<&[[f64; 2]]>,
+) -> Result<ContractilityStepLedgerV1, ContractilityError> {
     validate_params(params)?;
     if activity.len() != mesh.n() {
         return Err(ContractilityError::ActivityLength {
@@ -105,7 +119,10 @@ pub fn apply_local_contractility(
     let maximum_activity = activity.iter().copied().fold(0.0_f64, f64::max);
     let reserve_before = mesh.interior.r.max(0.0);
     if maximum_activity <= f64::EPSILON || reserve_before <= f64::EPSILON {
-        let accepted = mechanics_step(mesh, mechanics);
+        let accepted = match external_forces {
+            Some(forces) => mechanics_step_with_external_forces(mesh, mechanics, forces),
+            None => mechanics_step(mesh, mechanics),
+        };
         if !accepted {
             return Err(ContractilityError::MechanicsRejected);
         }
@@ -159,10 +176,13 @@ pub fn apply_local_contractility(
         .collect();
     let maximum_tension = tensions.iter().copied().fold(0.0_f64, f64::max);
 
-    let accepted = if maximum_tension <= f64::EPSILON {
-        mechanics_step(mesh, mechanics)
-    } else {
-        mechanics_step_with_edge_tensions(mesh, mechanics, &tensions)
+    let accepted = match (maximum_tension <= f64::EPSILON, external_forces) {
+        (true, Some(forces)) => mechanics_step_with_external_forces(mesh, mechanics, forces),
+        (true, None) => mechanics_step(mesh, mechanics),
+        (false, Some(forces)) => mechanics_step_with_edge_tensions_and_external_forces(
+            mesh, mechanics, &tensions, forces,
+        ),
+        (false, None) => mechanics_step_with_edge_tensions(mesh, mechanics, &tensions),
     };
     if !accepted {
         return Err(ContractilityError::MechanicsRejected);

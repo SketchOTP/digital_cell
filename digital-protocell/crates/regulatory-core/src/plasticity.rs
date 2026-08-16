@@ -7,8 +7,8 @@
 //! global state.
 
 use crate::{
-    apply_local_contractility, ContractilityError, ContractilityParamsV1,
-    ContractilityStepLedgerV1, TopologyEventV1, TopologyMappingV1,
+    apply_local_contractility, apply_local_contractility_with_external_forces, ContractilityError,
+    ContractilityParamsV1, ContractilityStepLedgerV1, TopologyEventV1, TopologyMappingV1,
 };
 use chemistry_core::material_mesh::MaterialMesh;
 use chemistry_core::mesh_mechanics::MechParams;
@@ -166,6 +166,29 @@ pub fn apply_local_plasticity(
     contractility: &ContractilityParamsV1,
     params: &PlasticityParamsV1,
 ) -> Result<PlasticityStepLedgerV1, PlasticityError> {
+    apply_local_plasticity_with_external_forces(
+        mesh,
+        activity,
+        state,
+        mechanics,
+        contractility,
+        params,
+        None,
+    )
+}
+
+/// Apply the existing one-trace plasticity path with an optional local force
+/// vector supplied by physical external geometry.  `None` preserves the exact
+/// DC-DEV-005 behavior.
+pub fn apply_local_plasticity_with_external_forces(
+    mesh: &mut MaterialMesh,
+    activity: &[f64],
+    state: &mut PlasticityStateV1,
+    mechanics: &MechParams,
+    contractility: &ContractilityParamsV1,
+    params: &PlasticityParamsV1,
+    external_forces: Option<&[[f64; 2]]>,
+) -> Result<PlasticityStepLedgerV1, PlasticityError> {
     validate_params(params)?;
     if activity.len() != mesh.n() {
         return Err(PlasticityError::ActivityLength {
@@ -194,8 +217,16 @@ pub fn apply_local_plasticity(
     } else {
         activity.to_vec()
     };
-    let contractility_ledger =
-        apply_local_contractility(mesh, &effective_activity, mechanics, contractility)?;
+    let contractility_ledger = match external_forces {
+        Some(forces) => apply_local_contractility_with_external_forces(
+            mesh,
+            &effective_activity,
+            mechanics,
+            contractility,
+            Some(forces),
+        )?,
+        None => apply_local_contractility(mesh, &effective_activity, mechanics, contractility)?,
+    };
 
     let mut adaptation_after = adaptation_before.clone();
     if state.enabled {

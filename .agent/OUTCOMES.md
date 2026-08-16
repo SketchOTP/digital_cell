@@ -129,3 +129,71 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: the architect must inspect the first history-dependent response claim.
 - Blockers: architect review.
 - Follow-up directive: none
+
+## D-20260815-dcdev006-minimal-spatial-contact-environment - PARTIAL
+
+- Outcome ID: OUT-DCDEV006-MINIMAL-SPATIAL-CONTACT-ENVIRONMENT
+- Supersedes outcome: none
+- Closed: `2026-08-15T22:36:55-04:00`
+- Acceptance: PARTIAL
+- Summary: One deterministic static obstacle, bounded local mechanics force hook, penetration-normalized contact signal, existing regulatory/plasticity coupling, local repeated-contact assay, remesh continuity, and fission fail-closed boundaries are implemented from the accepted DC-DEV-005 head. Architect qualification remains pending.
+- Changed areas: bounded `chemistry-core` mesh mechanics force hook, `regulatory-core` spatial adapter and external-force wrappers, DC-DEV-006 assay/artifacts/docs/workflow, and current governance state.
+- Validation:
+  - Regulatory-core focused suite - PASSED
+  - DC-DEV-006 gate assay - PASSED
+  - DC-DEV-005 zero-contact trajectory parity - PASSED
+  - Contact force locality and deterministic transduction - PASSED
+  - Repeated-contact experience dependence and recovery - PASSED
+  - Remesh continuity and fission fail-closed boundaries - PASSED
+  - Exact-head remote CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: remote exact-head validation and independent architect interpretation of the external-force boundary.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
+
+## D-20260815-dcdev006-minimal-spatial-contact-environment - PARTIAL
+
+- Outcome ID: OUT-DCDEV006-MINIMAL-SPATIAL-CONTACT-ENVIRONMENT-REMOTE
+- Supersedes outcome: OUT-DCDEV006-MINIMAL-SPATIAL-CONTACT-ENVIRONMENT
+- Closed: `2026-08-15T22:46:41-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Exact-head remote validation passed for PR #14 at commit `50eb7383d2df58395b4da906dc7436a00f1ad027`; independent architect review remains required.
+- Changed areas: governance current-state and outcome records only; no scientific implementation or evidence artifacts changed.
+- Validation:
+  - Governance ADOPTED validation - PASSED
+  - DC-DEV-006 artifact and boundary validation - PASSED
+  - Scoped formatting - PASSED
+  - Regulatory-core and DC-DEV-006 assay - PASSED
+  - DC-DEV-002 through DC-DEV-005 preservation assays - PASSED
+  - Phase-1 metrics semantics - PASSED
+  - D-088 focused regression - PASSED
+  - Evolution-harness regression - PASSED
+  - Exact-head remote CI run 31922533764 - PASSED
+  - Architect review - PENDING
+- Remaining risks: independent architect review of the external-force and contact-signal boundary.
+- Blockers: architect review.
+- Follow-up directive: none
+
+## D-20260815-dcdev006-minimal-spatial-contact-environment - PARTIAL
+
+- Outcome ID: OUT-DCDEV006-MINIMAL-SPATIAL-CONTACT-ENVIRONMENT-EXACT-HEAD
+- Supersedes outcome: OUT-DCDEV006-MINIMAL-SPATIAL-CONTACT-ENVIRONMENT-REMOTE
+- Closed: `2026-08-15T22:59:22-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The scoped workflow now checks out and asserts the actual PR head; exact-head remote CI run 31923037384 passed at commit `30f9b0cab792ac6742d1820ad0f5677f29af5631`; independent architect review remains required.
+- Changed areas: scoped DC-DEV-006 workflow checkout/assertion and governance current-state/outcome records; no scientific implementation changed.
+- Validation:
+  - Governance ADOPTED validation - PASSED
+  - DC-DEV-006 artifact and boundary validation - PASSED
+  - Scoped formatting - PASSED
+  - Regulatory-core and DC-DEV-006 assay - PASSED
+  - DC-DEV-002 through DC-DEV-005 preservation assays - PASSED
+  - Phase-1 metrics semantics - PASSED
+  - D-088 focused regression - PASSED
+  - Evolution-harness regression - PASSED
+  - Exact PR-head checkout assertion - PASSED
+  - Exact-head remote CI run 31923037384 - PASSED
+  - Architect review - PENDING
+- Remaining risks: independent architect review of the external-force and contact-signal boundary.
+- Blockers: architect review.
+- Follow-up directive: none

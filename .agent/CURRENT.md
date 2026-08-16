@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-15T20:33:20-04:00`
+- Last updated: `2026-08-15T22:46:41-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260815-dcdev005-local-experience-dependent-plasticity`
-- External directive ID: `DC-DEV-005`
-- Objective: `Make prior local experience change a later local physical response through exactly one slow local adaptation trace.`
-- Current status: `VALIDATING`
-- Acceptance: `DC-DEV-005 is authorized from accepted DC-DEV-004 head; qualification and architect review remain pending.`
-- Current phase: `DC-DEV-005 local history-dependent plasticity from entry edf517e6b802a7cd9cf141980061127dbb697b21.`
-- Expected or actual touched areas: `regulatory-core local plasticity adapter, DC-DEV-005 assay/artifacts/docs/workflow, current governance state`
-- Immediate next action: `Publish the locally passing assay and scoped regression evidence, obtain exact-head remote CI, and await architect review; do not begin DC-DEV-006.`
+- Local directive ID: `D-20260815-dcdev006-minimal-spatial-contact-environment`
+- External directive ID: `DC-DEV-006`
+- Objective: `Place the accepted organism in one deterministic spatial world and transduce one local physical contact relation.`
+- Current status: `IN_PROGRESS`
+- Acceptance: `DC-DEV-006 is authorized from accepted DC-DEV-005 head; local Gates 0-6 and exact-head remote CI run 31923037384 at 30f9b0cab792ac6742d1820ad0f5677f29af5631 pass; architect review remains pending.`
+- Current phase: `DC-DEV-006 minimal spatial contact environment from entry 4da04a5cf8153e4ab31603965eeba305ad4bb721.`
+- Expected or actual touched areas: `bounded chemistry-core external-force hook, regulatory-core spatial adapter, DC-DEV-006 assay/artifacts/docs/workflow, current governance state`
+- Immediate next action: `Await independent architect review of PR #14 at exact head 30f9b0cab792ac6742d1820ad0f5677f29af5631; do not begin DC-DEV-007.`
 
 ## Temporary task-relevant facts
 
@@ -24,26 +24,26 @@
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
 - DC-DEV-003 continuity remains authoritative; DC-DEV-004 adds one local contractile tension path and does not add sensors, commands, memory, learning, or evolution.
 - The frozen funding quantity is existing D-091 metabolic reserve `R` in `MaterialMesh.interior.r`; expenditure enters existing `W`.
-- Entry authority is `edf517e6b802a7cd9cf141980061127dbb697b21`.
-- Implementation work is on `strategy/dc-dev-005-local-plasticity`.
+- Entry authority is `4da04a5cf8153e4ab31603965eeba305ad4bb721`.
+- Implementation work is on `strategy/dc-dev-006-spatial-contact-environment`.
 
 ## Last validation after adoption
 
-- Command or check: `DC-DEV-005 gate assay, scoped regressions, governance validation, and exact-head GitHub Actions run 31917550450 at 9fe97069185ac48d4e979fe358b12d32433eb6d7`
+- Command or check: `DC-DEV-006 local Gates 0-6 assay`
 - Result: `PASSED`
 
 ## Risks
 
 - The full workspace test remains unavailable because of the pre-existing missing D-008 fixture; R1 workflow deliberately does not invoke it.
-- Architect exact-head review remains required before any later directive.
+- Architect exact-head review remains required before any later directive; remote run 31923037384 passed at the exact PR head.
 
 ## Blockers
 
-- Architect review remains required before any later directive; exact-head GitHub Actions run 31917550450 passed.
+- Architect review remains required before any later directive; DC-DEV-007 is not authorized.
 
 ## Pending decisions
 
-- None; DC-DEV-005 is authorized only for one slow local plasticity trace. DC-DEV-006, additional traces, sensors, actuators, reward, fitness, learning optimizers, identity, and evolution remain outside scope.
+- None; DC-DEV-006 is authorized only for one static obstacle and one local contact signal. Additional signals, actuators, reward, fitness, identity, evolution, and DC-DEV-007 remain outside scope.
 
 ## Status vocabulary
 

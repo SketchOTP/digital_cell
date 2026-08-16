@@ -1,0 +1,12 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "d088_focused_regression": "PENDING",
+  "dcdev002_dcdev003_dcdev004": "PASSED locally",
+  "dcdev005_preservation": "PASSED locally",
+  "dcdev006_gate_assay": "PASSED (Gates 0 through 6)",
+  "evolution_harness_regression": "PENDING",
+  "exact_head_remote_ci": "PENDING",
+  "governance": "PENDING",
+  "parameter_screening": false,
+  "phase1_focused_regression": "PENDING"
+}

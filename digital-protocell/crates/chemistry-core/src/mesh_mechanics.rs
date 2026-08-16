@@ -15,6 +15,10 @@ pub struct MechParams {
     pub dt: f64,
 }
 
+/// Bounded post-Phase-1 force-hook contract for local external geometry.
+/// World adapters must normalize their contact force into this bound.
+pub const MAX_EXTERNAL_FORCE_PER_VERTEX: f64 = 0.5;
+
 impl Default for MechParams {
     fn default() -> Self {
         // Center candidate: see `mechanical_candidates` Laplace derivation.
@@ -159,6 +163,17 @@ pub fn mechanics_step(mesh: &mut MaterialMesh, params: &MechParams) -> bool {
         return false;
     }
     let forces = compute_forces(mesh, params);
+    mechanics_step_from_forces(mesh, params, forces)
+}
+
+fn mechanics_step_from_forces(
+    mesh: &mut MaterialMesh,
+    params: &MechParams,
+    forces: Vec<[f64; 2]>,
+) -> bool {
+    if forces.len() != mesh.n() {
+        return false;
+    }
     let inv_g = 1.0 / params.gamma.max(1e-15);
     let dt = params.dt;
     let m_before = mesh.total_structural_mass();
@@ -172,6 +187,35 @@ pub fn mechanics_step(mesh: &mut MaterialMesh, params: &MechParams) -> bool {
         && (mesh.total_bound_membrane() - b_before).abs() < 1e-12
         && (mesh.free_l - l_before).abs() < 1e-12;
     ok
+}
+
+/// Overdamped mechanics step with bounded local forces supplied by an
+/// external physical geometry.  The caller supplies forces only; this
+/// function retains authority over vertex movement and material-conservation
+/// checks.  A zero force vector follows the same force/integration path as
+/// [`mechanics_step`].
+pub fn mechanics_step_with_external_forces(
+    mesh: &mut MaterialMesh,
+    params: &MechParams,
+    external_forces: &[[f64; 2]],
+) -> bool {
+    if !mesh.alive || mesh.n() < 3 || external_forces.len() != mesh.n() {
+        return false;
+    }
+    let mut forces = compute_forces(mesh, params);
+    for (force, external) in forces.iter_mut().zip(external_forces) {
+        let magnitude = external[0].hypot(external[1]);
+        if !external[0].is_finite()
+            || !external[1].is_finite()
+            || !magnitude.is_finite()
+            || magnitude > MAX_EXTERNAL_FORCE_PER_VERTEX
+        {
+            return false;
+        }
+        force[0] += external[0];
+        force[1] += external[1];
+    }
+    mechanics_step_from_forces(mesh, params, forces)
 }
 
 /// Overdamped mechanics step with additional bounded tension on existing
@@ -209,18 +253,59 @@ pub fn mechanics_step_with_edge_tensions(
         forces[j][1] -= tension * ty;
     }
 
-    let inv_g = 1.0 / params.gamma.max(1e-15);
-    let dt = params.dt;
-    let m_before = mesh.total_structural_mass();
-    let b_before = mesh.total_bound_membrane();
-    let l_before = mesh.free_l;
-    for (i, fi) in forces.iter().enumerate() {
-        mesh.vertices[i][0] += dt * inv_g * fi[0];
-        mesh.vertices[i][1] += dt * inv_g * fi[1];
+    mechanics_step_from_forces(mesh, params, forces)
+}
+
+/// Combined bounded local edge tension and external physical force step.
+/// Existing mechanics remains the sole authority for movement.
+pub fn mechanics_step_with_edge_tensions_and_external_forces(
+    mesh: &mut MaterialMesh,
+    params: &MechParams,
+    edge_tensions: &[f64],
+    external_forces: &[[f64; 2]],
+) -> bool {
+    if !mesh.alive
+        || mesh.n() < 3
+        || edge_tensions.len() != mesh.n()
+        || external_forces.len() != mesh.n()
+    {
+        return false;
     }
-    (mesh.total_structural_mass() - m_before).abs() < 1e-12
-        && (mesh.total_bound_membrane() - b_before).abs() < 1e-12
-        && (mesh.free_l - l_before).abs() < 1e-12
+    let mut forces = compute_forces(mesh, params);
+    for (i, tension) in edge_tensions.iter().copied().enumerate() {
+        if mesh.edges[i].ruptured || !tension.is_finite() || tension < 0.0 {
+            return false;
+        }
+        if tension == 0.0 {
+            continue;
+        }
+        let n = mesh.n();
+        let a = mesh.vertices[i];
+        let b = mesh.vertices[(i + 1) % n];
+        let dx = b[0] - a[0];
+        let dy = b[1] - a[1];
+        let length = dx.hypot(dy).max(1e-15);
+        let tx = dx / length;
+        let ty = dy / length;
+        forces[i][0] += tension * tx;
+        forces[i][1] += tension * ty;
+        let j = (i + 1) % n;
+        forces[j][0] -= tension * tx;
+        forces[j][1] -= tension * ty;
+    }
+    for (force, external) in forces.iter_mut().zip(external_forces) {
+        let magnitude = external[0].hypot(external[1]);
+        if !external[0].is_finite()
+            || !external[1].is_finite()
+            || !magnitude.is_finite()
+            || magnitude > MAX_EXTERNAL_FORCE_PER_VERTEX
+        {
+            return false;
+        }
+        force[0] += external[0];
+        force[1] += external[1];
+    }
+    mechanics_step_from_forces(mesh, params, forces)
 }
 
 /// Conservative split when length exceeds l_max.
