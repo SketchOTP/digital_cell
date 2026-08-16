@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-008`
 - Objective: `Prove finite local environmental N/F material enters the existing metabolic pathway and supports internal A/R state.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `DC-DEV-007 is architect-accepted at 2968882769991f48c987ceb40c719fd351b2e046; DC-DEV-008 local Gates 0-7 and exact-head remote CI run 31926377883 at 4e0d31dd1e991e6c983279589d6144dc73b57235 pass; architect review is required.`
+- Acceptance: `DC-DEV-007 is architect-accepted at 2968882769991f48c987ceb40c719fd351b2e046; DC-DEV-008-R1 promotes the qualified finite spatial resource mechanism into regulatory-core; architect review is required.`
 - Current phase: `DC-DEV-008 finite spatial resource acquisition from entry 2968882769991f48c987ceb40c719fd351b2e046.`
-- Expected or actual touched areas: `regulatory-core assay registration, DC-DEV-008 assay/artifacts/docs/workflow, current governance state`
-- Immediate next action: `Await independent architect review of PR #17 at exact head 4e0d31dd1e991e6c983279589d6144dc73b57235; do not begin DC-DEV-009.`
+- Expected or actual touched areas: `regulatory-core spatial_resource production module/tests, DC-DEV-008 assay/artifacts/docs/workflow, current governance state`
+- Immediate next action: `Await independent architect review of the pushed DC-DEV-008-R1 PR #17 head; do not begin DC-DEV-009.`
 
 ## Temporary task-relevant facts
 
@@ -36,7 +36,8 @@
 ## Risks
 
 - The full workspace test remains unavailable because of the pre-existing missing D-008 fixture; the scoped workflow deliberately does not invoke it.
-- Architect exact-head review remains required before any later directive; remote run 31926377883 passed at the exact PR head.
+- DC-DEV-008-R1 retains the accepted evidence values and closes the runtime-boundary defect by making regulatory-core the sole resource implementation.
+- Architect exact-head review remains required before any later directive; DC-DEV-009 remains blocked.
 
 ## Blockers
 

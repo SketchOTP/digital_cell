@@ -65,6 +65,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: remote exact-head CI and architect review.
 - Follow-up directive: none
 
+## D-20260816-dcdev008r1-runtime-boundary-closure - PARTIAL
+
+- Outcome ID: OUT-DCDEV008R1-RUNTIME-BOUNDARY-CLOSURE
+- Supersedes outcome: OUT-DCDEV008-FINITE-SPATIAL-RESOURCE-ACQUISITION-LOCAL
+- Closed: `2026-08-16T01:00:00-04:00`
+- Acceptance: PARTIAL
+- Summary: The qualified finite spatial N/F acquisition mechanism is being promoted from the assay into reusable `regulatory-core` production code; the assay now calls the versioned production API and the accepted scientific values remain unchanged.
+- Changed areas: `regulatory-core/src/spatial_resource.rs`, regulatory-core exports/tests, DC-DEV-008 assay/workflow/docs, and active governance records.
+- Validation:
+  - Six direct production-module tests - PASSED
+  - DC-DEV-008 assay reproduction - PASSED with accepted values
+  - DC-DEV-002 through DC-DEV-007 preservation assays - PASSED locally
+  - Governance ADOPTED validation - PENDING final record correction
+  - Phase-1, D-088, evolution-harness, and exact-head remote CI - PENDING
+- Remaining risks: exact-head remote preservation matrix and architect inspection of the runtime boundary.
+- Blockers: final governance validation, remote exact-head CI, and architect review; DC-DEV-009 remains blocked.
+- Follow-up directive: none
+
 ## D-20260815-dcdev002-local-regulatory-substrate - PARTIAL
 
 - Outcome ID: OUT-DCDEV002-LOCAL-REGULATORY-SUBSTRATE

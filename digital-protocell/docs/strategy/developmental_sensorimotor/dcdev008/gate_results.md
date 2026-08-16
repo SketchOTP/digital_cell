@@ -1,7 +1,9 @@
 # DC-DEV-008 gate results
 
 All nine assay gates pass locally at entry
-`2968882769991f48c987ceb40c719fd351b2e046`.
+`2968882769991f48c987ceb40c719fd351b2e046`. The reusable production boundary
+is covered by six direct regulatory-core tests for finite inventory, locality,
+transfer, conservation, exhaustion, and deterministic replay.
 
 | Gate | Result | Evidence |
 |---|---|---|

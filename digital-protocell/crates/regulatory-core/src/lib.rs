@@ -15,6 +15,7 @@ pub mod continuity;
 pub mod contractility;
 pub mod plasticity;
 pub mod spatial;
+pub mod spatial_resource;
 
 pub use contractility::{
     apply_local_contractility, apply_local_contractility_with_external_forces, ContractilityError,
@@ -38,6 +39,11 @@ pub use spatial::{
     augment_frame_with_contact, ContactObservationV1, SpatialError, StaticObstacleV1,
     CONTACT_FORCE_NORMALIZATION, CONTACT_STIFFNESS_PER_LENGTH, CONTACT_STIMULUS_NORMALIZATION,
     SPATIAL_WORLD_SCHEMA_V1,
+};
+
+pub use spatial_resource::{
+    FiniteSpatialResourceRegionV1, SpatialResourceStepLedgerV1,
+    FINITE_SPATIAL_RESOURCE_REGION_SCHEMA_V1, SPATIAL_RESOURCE_STEP_LEDGER_SCHEMA_V1,
 };
 
 pub const LOCAL_MATERIAL_FRAME_SCHEMA_V1: &str = "digital_cell_local_material_frame_v1";

@@ -13,10 +13,12 @@ use chemistry_core::mesh_growth::{growth_step, merge_growth_into_reaction, Growt
 use chemistry_core::mesh_mechanics::MechParams;
 use chemistry_core::mesh_population::coupled_step_growth;
 use chemistry_core::mesh_reactions::{reactions_step, ReactionParams};
-use chemistry_core::mesh_transport::{permeability, TransportParams};
+use chemistry_core::mesh_transport::TransportParams;
 use chemistry_core::metabolic_reserve::{stamp_reserve_equation, ReserveParams};
 use regulatory_core::material_adapter::observe_continuity_material_frame;
-use regulatory_core::{stable_json_hash, ContinuityNetworkV1, PlasticityStateV1, TopologyEventV1};
+use regulatory_core::{
+    stable_json_hash, ContinuityNetworkV1, FiniteSpatialResourceRegionV1, TopologyEventV1,
+};
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use std::fs;
@@ -48,16 +50,6 @@ impl Arm {
             Self::NonContact => "noncontact_resource",
         }
     }
-}
-
-#[derive(Debug, Clone, Copy, Default, Serialize, Deserialize)]
-struct ResourceStepLedger {
-    exposed_edges: usize,
-    n_world_loss: f64,
-    f_world_loss: f64,
-    n_delivered: f64,
-    f_delivered: f64,
-    conservation_error: f64,
 }
 
 #[derive(Debug, Clone, Copy, Default, Serialize, Deserialize)]
@@ -101,142 +93,6 @@ struct CampaignResult {
     final_mesh_hash: String,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
-struct FiniteSpatialResourceRegion {
-    schema: String,
-    center: [f64; 2],
-    radius: f64,
-    material_volume: f64,
-    boundary_n_concentration: f64,
-    boundary_f_concentration: f64,
-    n_mass: f64,
-    f_mass: f64,
-}
-
-impl FiniteSpatialResourceRegion {
-    fn new(center: [f64; 2], n_mass: f64, f_mass: f64) -> Self {
-        let material_volume = std::f64::consts::PI * RESOURCE_RADIUS * RESOURCE_RADIUS;
-        Self {
-            schema: "dcdev008_finite_static_nf_region_v1".to_string(),
-            center,
-            radius: RESOURCE_RADIUS,
-            material_volume,
-            boundary_n_concentration: n_mass / material_volume,
-            boundary_f_concentration: f_mass / material_volume,
-            n_mass,
-            f_mass,
-        }
-    }
-
-    fn finite_local() -> Self {
-        Self::new(
-            LOCAL_RESOURCE_CENTER,
-            INITIAL_PATCH_N_MASS,
-            INITIAL_PATCH_F_MASS,
-        )
-    }
-
-    fn empty_local() -> Self {
-        Self::new(LOCAL_RESOURCE_CENTER, 0.0, 0.0)
-    }
-
-    fn finite_noncontact() -> Self {
-        Self::new(
-            NONCONTACT_RESOURCE_CENTER,
-            INITIAL_PATCH_N_MASS,
-            INITIAL_PATCH_F_MASS,
-        )
-    }
-
-    fn contains(&self, point: [f64; 2]) -> bool {
-        (point[0] - self.center[0]).hypot(point[1] - self.center[1]) <= self.radius
-    }
-
-    fn edge_exposed(&self, mesh: &MaterialMesh, edge: usize) -> bool {
-        let a = mesh.vertices[edge];
-        let b = mesh.vertices[(edge + 1) % mesh.n()];
-        self.contains([(a[0] + b[0]) * 0.5, (a[1] + b[1]) * 0.5])
-    }
-
-    /// Apply the inward part of the existing D-086 N/F permeability law to
-    /// each exposed segment.  The region is a finite source, so outward
-    /// exchange is not an acquisition event and is clamped to zero.  Every
-    /// delivered mass unit is removed from the finite world inventory.
-    fn uptake(
-        &mut self,
-        mesh: &mut MaterialMesh,
-        transport: &TransportParams,
-        dt: f64,
-    ) -> ResourceStepLedger {
-        let mut ledger = ResourceStepLedger::default();
-        if !mesh.alive || self.n_mass < 0.0 || self.f_mass < 0.0 {
-            return ledger;
-        }
-        let area = mesh.area().max(1e-6);
-        for edge in 0..mesh.n() {
-            if !self.edge_exposed(mesh, edge) || mesh.edges[edge].ruptured {
-                continue;
-            }
-            ledger.exposed_edges += 1;
-            let theta = mesh.occupancy(edge);
-            let segment = mesh.edge_length(edge);
-            let n_delta = Self::inward_mass(
-                self.n_mass,
-                self.boundary_n_concentration,
-                mesh.interior.n,
-                permeability(theta, "N"),
-                transport.k_flux,
-                segment,
-                dt,
-            );
-            let f_delta = Self::inward_mass(
-                self.f_mass,
-                self.boundary_f_concentration,
-                mesh.interior.f,
-                permeability(theta, "F"),
-                transport.k_flux,
-                segment,
-                dt,
-            );
-            self.n_mass -= n_delta;
-            self.f_mass -= f_delta;
-            mesh.interior.n += n_delta / area;
-            mesh.interior.f += f_delta / area;
-            ledger.n_world_loss += n_delta;
-            ledger.f_world_loss += f_delta;
-            ledger.n_delivered += n_delta;
-            ledger.f_delivered += f_delta;
-        }
-        ledger.conservation_error = (ledger.n_world_loss - ledger.n_delivered).abs()
-            + (ledger.f_world_loss - ledger.f_delivered).abs();
-        ledger
-    }
-
-    fn inward_mass(
-        world_mass: f64,
-        boundary_concentration: f64,
-        interior_concentration: f64,
-        permeability: f64,
-        k_flux: f64,
-        segment_length: f64,
-        dt: f64,
-    ) -> f64 {
-        if world_mass <= METRIC_TOLERANCE || boundary_concentration <= 0.0 || dt <= 0.0 {
-            return 0.0;
-        }
-        let requested = k_flux
-            * permeability
-            * (boundary_concentration - interior_concentration.max(0.0))
-            * segment_length
-            * dt;
-        requested.max(0.0).min(world_mass)
-    }
-
-    fn total_mass(&self) -> f64 {
-        self.n_mass + self.f_mass
-    }
-}
-
 fn write_json(root: &Path, name: &str, value: &Value) {
     fs::create_dir_all(root).unwrap();
     fs::write(root.join(name), serde_json::to_vec_pretty(value).unwrap()).unwrap();
@@ -275,11 +131,23 @@ fn reaction_params(mesh: &MaterialMesh) -> ReactionParams {
     params
 }
 
-fn campaign_region(arm: Arm) -> FiniteSpatialResourceRegion {
+fn campaign_region(arm: Arm) -> FiniteSpatialResourceRegionV1 {
     match arm {
-        Arm::ResourceBearing => FiniteSpatialResourceRegion::finite_local(),
-        Arm::ResourceFree => FiniteSpatialResourceRegion::empty_local(),
-        Arm::NonContact => FiniteSpatialResourceRegion::finite_noncontact(),
+        Arm::ResourceBearing => FiniteSpatialResourceRegionV1::new(
+            LOCAL_RESOURCE_CENTER,
+            RESOURCE_RADIUS,
+            INITIAL_PATCH_N_MASS,
+            INITIAL_PATCH_F_MASS,
+        ),
+        Arm::ResourceFree => {
+            FiniteSpatialResourceRegionV1::new(LOCAL_RESOURCE_CENTER, RESOURCE_RADIUS, 0.0, 0.0)
+        }
+        Arm::NonContact => FiniteSpatialResourceRegionV1::new(
+            NONCONTACT_RESOURCE_CENTER,
+            RESOURCE_RADIUS,
+            INITIAL_PATCH_N_MASS,
+            INITIAL_PATCH_F_MASS,
+        ),
     }
 }
 
@@ -296,7 +164,6 @@ fn run_campaign(
     let reactions = reaction_params(&mesh);
     let initial_world_n_mass = region.n_mass;
     let initial_world_f_mass = region.f_mass;
-    let area = mesh.area().max(1e-6);
     let mut steps = Vec::with_capacity(horizon);
     let mut total_n_uptake = 0.0;
     let mut total_f_uptake = 0.0;
@@ -524,6 +391,8 @@ fn main() {
             "dt_source": "MechParams.dt",
             "world_region": {"shape": "static_disk", "center": LOCAL_RESOURCE_CENTER, "radius": RESOURCE_RADIUS, "material_volume": std::f64::consts::PI * RESOURCE_RADIUS * RESOURCE_RADIUS, "initial_n_mass": INITIAL_PATCH_N_MASS, "initial_f_mass": INITIAL_PATCH_F_MASS, "boundary_semantics": "fixed local boundary concentration while finite material inventory remains; inventory clamp is authoritative"},
             "depletion_verification_horizon_steps": DEPLETION_HORIZON_STEPS,
+            "production_module": "crates/regulatory-core/src/spatial_resource.rs",
+            "assay_local_resource_implementation": false,
             "resource_species": ["N", "F"],
             "existing_path": "local exposed-segment reuse of mesh_transport::permeability followed by reactions_step N+F->A+W and D-091 reserve chemistry",
             "global_transport_path_changed": false,
@@ -652,6 +521,10 @@ fn main() {
             "conclusion": "DCDEV008_SPATIAL_RESOURCE_ACQUISITION_QUALIFIED",
             "gates": gates,
             "primary_claim": "finite local N/F material enters the existing metabolic resource pathway and supports internal A/R state",
+            "production_module": "crates/regulatory-core/src/spatial_resource.rs",
+            "assay_local_resource_implementation": false,
+            "chemistry_core_changed": false,
+            "global_transport_changed": false,
             "scientific_core_modified": false,
             "dcdev009_started": false,
             "next_execution_started": false

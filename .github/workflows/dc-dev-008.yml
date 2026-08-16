@@ -50,6 +50,13 @@ jobs:
           data = {name: json.loads((root / name).read_text()) for name in required}
           protocol = data["protocol.json"]
           final = data["final_manifest.json"]
+          production = Path("digital-protocell/crates/regulatory-core/src/spatial_resource.rs")
+          assay = Path("digital-protocell/examples/dcdev008_gate_assay.rs")
+          if not production.is_file():
+              raise SystemExit("missing production spatial-resource module")
+          assay_text = assay.read_text()
+          if "struct FiniteSpatialResourceRegion" in assay_text or "fn inward_mass" in assay_text:
+              raise SystemExit("assay must not contain an independent resource implementation")
           if protocol["entry_commit"] != "2968882769991f48c987ceb40c719fd351b2e046":
               raise SystemExit("wrong entry commit")
           if protocol["assay_horizon_steps"] != 120:
@@ -58,10 +65,18 @@ jobs:
               raise SystemExit("depletion horizon changed")
           if protocol["parameter_screening"]:
               raise SystemExit("parameter screening must remain false")
+          if protocol["production_module"] != "crates/regulatory-core/src/spatial_resource.rs":
+              raise SystemExit("wrong production module path")
+          if protocol["assay_local_resource_implementation"] is not False:
+              raise SystemExit("assay-local resource implementation must remain false")
           if final["conclusion"] != "DCDEV008_SPATIAL_RESOURCE_ACQUISITION_QUALIFIED":
               raise SystemExit("unexpected conclusion")
           if final["next_execution_started"] is not False:
               raise SystemExit("next execution must remain stopped")
+          if final["production_module"] != "crates/regulatory-core/src/spatial_resource.rs":
+              raise SystemExit("final manifest missing production module")
+          if final["assay_local_resource_implementation"] is not False:
+              raise SystemExit("final manifest reports assay-local implementation")
           for key in ["new_species", "reward", "fitness", "planner", "evolution", "dcdev009_started"]:
               if protocol[key]:
                   raise SystemExit(f"forbidden capability enabled: {key}")
@@ -77,6 +92,20 @@ jobs:
               raise SystemExit("noncontact arm acquired material")
           if data["mass_conservation.json"]["maximum_step_conservation_error"] > 1e-12:
               raise SystemExit("mass conservation tolerance exceeded")
+          expected = {
+              "n": 0.7134192544023445,
+              "f": 0.7134192544023445,
+              "final_a_plus_r": 1.0341205318977045,
+              "free_final_a_plus_r": 1.008496516372006,
+          }
+          if abs(active["total_n_uptake"] - expected["n"]) > 1e-12:
+              raise SystemExit("N uptake changed")
+          if abs(active["total_f_uptake"] - expected["f"]) > 1e-12:
+              raise SystemExit("F uptake changed")
+          if abs(active["final_a_plus_r"] - expected["final_a_plus_r"]) > 1e-12:
+              raise SystemExit("resource-bearing A+R changed")
+          if abs(free["final_a_plus_r"] - expected["free_final_a_plus_r"]) > 1e-12:
+              raise SystemExit("resource-free A+R changed")
           if not data["finite_depletion.json"]["uptake_ceased_after_exhaustion"]:
               raise SystemExit("finite depletion did not stop uptake")
           checks = [
@@ -101,7 +130,7 @@ jobs:
 
       - name: Scoped formatting
         working-directory: digital-protocell
-        run: rustup run 1.89.0 rustfmt --edition 2021 --check crates/regulatory-core/src/lib.rs crates/regulatory-core/src/contractility.rs crates/regulatory-core/src/plasticity.rs crates/regulatory-core/src/spatial.rs examples/dcdev007_gate_assay.rs examples/dcdev008_gate_assay.rs
+        run: rustup run 1.89.0 rustfmt --edition 2021 --check crates/regulatory-core/src/lib.rs crates/regulatory-core/src/contractility.rs crates/regulatory-core/src/plasticity.rs crates/regulatory-core/src/spatial.rs crates/regulatory-core/src/spatial_resource.rs examples/dcdev007_gate_assay.rs examples/dcdev008_gate_assay.rs
 
       - name: Regulatory-core and DC-DEV-008 assay
         working-directory: digital-protocell

@@ -24,6 +24,7 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+
 ## D-20260816-dcdev008-finite-spatial-resource-acquisition
 
 - Issued: `2026-08-16T00:00:00-04:00`
@@ -131,6 +132,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Scope: Fixed-horizon matched active, motor-off, and zero-reserve arms; causal-loop, locality, experience, recovery, remesh, fission-boundary, generated-evidence, governance, preservation, exact-head CI, and draft-PR validation.
 - Exclusions: new sensors, actuators, traces, world primitives, planner, action selector, target, reward, fitness, reinforcement learning, neural network, navigation, resource ecology, evolution, DC-DEV-008, and direct coordinate commands.
 - Acceptance: `DCDEV007_ACTIVE_EXTERNAL_CONTACT_REGULATION_QUALIFIED` only after the fixed 120-step assay, exact-head remote CI, and architect review from entry `3a5971be332f94848250196e8148b722464066f2` on source `strategy/dc-dev-006-spatial-contact-environment` to implementation `strategy/dc-dev-007-active-contact-regulation`.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
+## D-20260816-dcdev008r1-runtime-boundary-closure
+
+- Issued: `2026-08-16T01:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-008-R1`
+- Objective: Promote the already-qualified finite local spatial N/F acquisition mechanism into reusable `regulatory-core` production code without changing the accepted science.
+- Scope: Starting from `3f0ef35413da8b26538eeed70880a1bb0235c08e` on `strategy/dc-dev-008-spatial-resource-acquisition` / PR #17, promote the versioned finite spatial region and step ledger, local edge exposure, finite N/F inventory, permeability-based uptake, world-to-organism conservation, direct production tests, assay replacement, documentation, governance, preservation validation, and exact-head remote CI.
+- Exclusions: chemistry-core equations, global transport, new species, reward, fitness, planner, resource preference/seeking, new sensors/actuators, plasticity, navigation, competition, evolution, and DC-DEV-009.
+- Acceptance: `DCDEV008R1_RESOURCE_RUNTIME_BOUNDARY_CLOSED` only when the assay uses the production module as its sole implementation, required production tests and preservation matrix pass, the branch is pushed, and architect review completes.
 - Risk class: NORMAL
 - Relationship: new
 - Related directive: none

@@ -1,5 +1,14 @@
 # DC-DEV-008 implementation contract
 
+## Reusable runtime boundary
+
+The production mechanism is implemented in
+`crates/regulatory-core/src/spatial_resource.rs` as the versioned
+`FiniteSpatialResourceRegionV1` and `SpatialResourceStepLedgerV1` API. The
+DC-DEV-008 assay configures and calls that API; it does not contain an
+independent resource-region, edge-exposure, uptake, depletion, or mass
+transfer implementation.
+
 ## Environment
 
 The world contains one static disk of radius `1.5` centered at `[4.8, 0.0]`
@@ -16,7 +25,7 @@ an environmental material-boundary convention, not a new organism law.
 
 ## Organism path
 
-For each exposed mesh edge, the adapter reuses `mesh_transport::permeability`
+For each exposed mesh edge, the production adapter reuses `mesh_transport::permeability`
 with the edge occupancy and `TransportParams.k_flux`. Delivered N/F is added
 to the existing interior concentrations. The next step is the unchanged
 `reactions_step`, which performs the existing N+F→A+W chemistry; existing
