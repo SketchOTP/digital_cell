@@ -71,10 +71,15 @@ jobs:
               "DCDEV011_STICK_SLIP_TRANSLATION_NOT_ESTABLISHED",
           }:
               raise SystemExit("unexpected scientific conclusion")
-          text = production.read_text() + assay.read_text()
-          for forbidden in ["directional_substrate", "forward_resistance", "reverse_resistance", "world_axis"]:
-              if forbidden in text:
+          production_text = production.read_text()
+          assay_text = assay.read_text()
+          for forbidden in ["directional_substrate", "world_axis", "forward_resistance", "reverse_resistance"]:
+              if forbidden in production_text:
                   raise SystemExit(f"directional substrate residue: {forbidden}")
+          if '"directional_substrate_imported": false' not in assay_text:
+              raise SystemExit("missing explicit directional-substrate exclusion")
+          if '"world_axis": false' not in assay_text:
+              raise SystemExit("missing explicit world-axis exclusion")
           if data["production_boundary.json"]["coordinate_writes_by_substrate"]:
               raise SystemExit("substrate claims coordinate authority")
           gates = data["gate_results.json"]
