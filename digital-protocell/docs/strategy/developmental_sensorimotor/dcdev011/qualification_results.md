@@ -41,9 +41,8 @@ Local Rust 1.89.0 checks passed:
 - DC-DEV-002 through DC-DEV-009 preservation assay invocations: passed
 - scoped formatting: passed
 
-The exact-head scoped GitHub workflow passed at run `31970618654` on the
-implementation head before this evidence-seal commit. The same workflow is
-being rerun for the final evidence-seal head. No architect acceptance is
+The exact-head scoped GitHub workflow passed at run `31970906725` on final
+head `1a1a97ece380dc5438a568c2642d20de850576fc`. No architect acceptance is
 claimed here.
 
 `NEXT_EXECUTION_STARTED:false`

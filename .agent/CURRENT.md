@@ -14,7 +14,7 @@
 - Acceptance: `Local four-arm qualification and preservation checks passed; exact-head scoped remote CI and independent architect review remain pending.`
 - Current phase: `DC-DEV-011 qualification package complete locally; remote preservation verification and draft-PR review are next.`
 - Expected or actual touched areas: `regulatory-core stick-slip production module, DC-DEV-011 assay/docs/artifacts/workflow, scoped CI, current governance state`
-- Immediate next action: `Verify the final evidence-seal CI head and return the complete DC-DEV-011 package for independent architect review; do not begin DC-DEV-012.`
+- Immediate next action: `Return the complete DC-DEV-011 package for independent architect review; do not begin DC-DEV-012.`
 
 ## Temporary task-relevant facts
 
