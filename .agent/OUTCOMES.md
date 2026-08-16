@@ -173,3 +173,27 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: independent architect review of the external-force and contact-signal boundary.
 - Blockers: architect review.
 - Follow-up directive: none
+
+## D-20260815-dcdev006-minimal-spatial-contact-environment - PARTIAL
+
+- Outcome ID: OUT-DCDEV006-MINIMAL-SPATIAL-CONTACT-ENVIRONMENT-EXACT-HEAD
+- Supersedes outcome: OUT-DCDEV006-MINIMAL-SPATIAL-CONTACT-ENVIRONMENT-REMOTE
+- Closed: `2026-08-15T22:59:22-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The scoped workflow now checks out and asserts the actual PR head; exact-head remote CI run 31923037384 passed at commit `30f9b0cab792ac6742d1820ad0f5677f29af5631`; independent architect review remains required.
+- Changed areas: scoped DC-DEV-006 workflow checkout/assertion and governance current-state/outcome records; no scientific implementation changed.
+- Validation:
+  - Governance ADOPTED validation - PASSED
+  - DC-DEV-006 artifact and boundary validation - PASSED
+  - Scoped formatting - PASSED
+  - Regulatory-core and DC-DEV-006 assay - PASSED
+  - DC-DEV-002 through DC-DEV-005 preservation assays - PASSED
+  - Phase-1 metrics semantics - PASSED
+  - D-088 focused regression - PASSED
+  - Evolution-harness regression - PASSED
+  - Exact PR-head checkout assertion - PASSED
+  - Exact-head remote CI run 31923037384 - PASSED
+  - Architect review - PENDING
+- Remaining risks: independent architect review of the external-force and contact-signal boundary.
+- Blockers: architect review.
+- Follow-up directive: none
