@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-15T22:46:41-04:00`
+- Last updated: `2026-08-15T23:34:00-04:00`
 
 ## Active state after adoption
 
@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-007`
 - Objective: `Prove that existing local contact sensing, regulation, adaptation, reserve-funded contractility, and mechanics alter future external contact.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `DC-DEV-006 is architect-accepted at 3a5971be332f94848250196e8148b722464066f2; DC-DEV-007 local Gates 0-8 pass and exact-head remote CI plus architect review remain pending.`
+- Acceptance: `DC-DEV-006 is architect-accepted at 3a5971be332f94848250196e8148b722464066f2; DC-DEV-007 local Gates 0-8 and exact-head remote CI run 31924373883 at ad65385c247acda681d10ce182943bb5d28afd6e pass; architect review remains pending.`
 - Current phase: `DC-DEV-007 active external-contact regulation from entry 3a5971be332f94848250196e8148b722464066f2.`
 - Expected or actual touched areas: `regulatory-core assay registration, DC-DEV-007 assay/artifacts/docs/workflow, current governance state`
-- Immediate next action: `Run the scoped DC-DEV-007 preservation suite, push strategy/dc-dev-007-active-contact-regulation, open a stacked draft PR, and await exact-head remote CI and architect review; do not begin DC-DEV-008.`
+- Immediate next action: `Await independent architect review of PR #15 at exact head ad65385c247acda681d10ce182943bb5d28afd6e; do not begin DC-DEV-008.`
 
 ## Temporary task-relevant facts
 
@@ -30,16 +30,16 @@
 ## Last validation after adoption
 
 - Command or check: `DC-DEV-007 local Gates 0-8 assay`
-- Result: `PASSED`
+- Result: `PASSED; exact-head remote CI run 31924373883 also PASSED`
 
 ## Risks
 
 - The full workspace test remains unavailable because of the pre-existing missing D-008 fixture; R1 workflow deliberately does not invoke it.
-- Architect exact-head review remains required before any later directive; remote run 31923037384 passed at the exact PR head.
+- Architect exact-head review remains required before any later directive; remote run 31924373883 passed at the exact PR head.
 
 ## Blockers
 
-- Exact-head remote CI and architect review remain required; DC-DEV-008 is not authorized.
+- Architect review remains required; DC-DEV-008 is not authorized.
 
 ## Pending decisions
 

@@ -172,6 +172,30 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260815-dcdev007-active-external-contact-regulation - PARTIAL
+
+- Outcome ID: OUT-DCDEV007-ACTIVE-EXTERNAL-CONTACT-REGULATION-REMOTE
+- Supersedes outcome: OUT-DCDEV007-ACTIVE-EXTERNAL-CONTACT-REGULATION
+- Closed: `2026-08-15T23:34:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Exact-head remote CI passed for PR #15 at commit `ad65385c247acda681d10ce182943bb5d28afd6e`; architect review remains pending.
+- Changed areas: DC-DEV-007 assay/artifacts/docs/workflow and governance records; no chemistry-core or certified Phase-1 biology/equations changed.
+- Validation:
+  - Governance ADOPTED validation - PASSED
+  - DC-DEV-007 artifact and boundary validation - PASSED
+  - Scoped formatting - PASSED
+  - Regulatory-core and DC-DEV-007 assay - PASSED
+  - DC-DEV-002 through DC-DEV-006 preservation assays - PASSED
+  - Phase-1 metrics semantics - PASSED
+  - D-088 focused regression - PASSED
+  - Evolution-harness regression - PASSED
+  - Exact PR-head checkout assertion - PASSED
+  - Exact-head remote CI run 31924373883 - PASSED
+  - Architect review - PENDING
+- Remaining risks: independent architect interpretation of the causal sensorimotor claim.
+- Blockers: architect review.
+- Follow-up directive: none
+
 ## D-20260815-dcdev006-minimal-spatial-contact-environment - PARTIAL
 
 - Outcome ID: OUT-DCDEV006-MINIMAL-SPATIAL-CONTACT-ENVIRONMENT-REMOTE
