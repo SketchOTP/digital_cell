@@ -1,0 +1,24 @@
+{
+  "active_j_contact": 1.2769320427077326,
+  "artifact_status": "AUTHORITATIVE",
+  "conclusion": "DCDEV007_ACTIVE_EXTERNAL_CONTACT_REGULATION_QUALIFIED",
+  "fission_fail_closed": true,
+  "gates": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "motor_off_j_contact": 1.455377562683942,
+  "next_execution_started": false,
+  "primary_metric": "integrated contact penetration",
+  "remote_ci_run": 31924373883,
+  "remote_ci_head": "ad65385c247acda681d10ce182943bb5d28afd6e",
+  "remesh_pass": true,
+  "zero_reserve_j_contact": 1.455377562683942
+}

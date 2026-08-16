@@ -107,3 +107,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260815-dcdev007-active-external-contact-regulation
+
+- Issued: `2026-08-15T23:15:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-007`
+- Objective: Prove the first autonomous environmental sensorimotor behavior by showing that existing contact sensing, distributed regulation, local history, reserve-funded contractility, and mechanics measurably alter future contact with the accepted inert obstacle.
+- Scope: Fixed-horizon matched active, motor-off, and zero-reserve arms; causal-loop, locality, experience, recovery, remesh, fission-boundary, generated-evidence, governance, preservation, exact-head CI, and draft-PR validation.
+- Exclusions: new sensors, actuators, traces, world primitives, planner, action selector, target, reward, fitness, reinforcement learning, neural network, navigation, resource ecology, evolution, DC-DEV-008, and direct coordinate commands.
+- Acceptance: `DCDEV007_ACTIVE_EXTERNAL_CONTACT_REGULATION_QUALIFIED` only after the fixed 120-step assay, exact-head remote CI, and architect review from entry `3a5971be332f94848250196e8148b722464066f2` on source `strategy/dc-dev-006-spatial-contact-environment` to implementation `strategy/dc-dev-007-active-contact-regulation`.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

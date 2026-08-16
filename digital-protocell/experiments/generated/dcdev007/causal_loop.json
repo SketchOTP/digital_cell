@@ -1,0 +1,8 @@
+{
+  "active_vertex_trajectory_differs_from_motor_off": true,
+  "contact_stimulus_positive": true,
+  "direct_coordinate_command": false,
+  "local_activity_increased": true,
+  "local_funded_tension_positive": true,
+  "result": "DCDEV007_GATE2_CAUSAL_EXTERNAL_LOOP_PASS"
+}
