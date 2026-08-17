@@ -5,6 +5,7 @@ use crate::catalyst_composition::{
     sync_total_c, turnover_composition, CompositionLedger, CompositionParams,
 };
 use crate::material_mesh::MaterialMesh;
+use crate::integral_homeostat::{MetabolicHomeostatParamsV1, MetabolicHomeostatStateV1};
 use crate::metabolic_reserve::{reserve_metab_step, ReserveLedger, ReserveParams};
 use crate::template_copying::copying_step;
 use crate::template_motifs::{catalyst_binding_step, template_activity_gains};
@@ -161,6 +162,32 @@ pub fn reactions_step(
     enable_build: bool,
     enable_metab: bool,
 ) -> ReactionLedger {
+    reactions_step_impl(mesh, p, dt, enable_build, enable_metab, 1.0)
+}
+
+/// Opt-in DC-DEV-018 wrapper. The legacy path above remains the identity
+/// behavior when the homeostat is not explicitly used.
+pub fn reactions_step_with_homeostat(
+    mesh: &mut MaterialMesh,
+    p: &ReactionParams,
+    dt: f64,
+    enable_build: bool,
+    enable_metab: bool,
+    homeostat: &MetabolicHomeostatParamsV1,
+    state: &mut MetabolicHomeostatStateV1,
+) -> ReactionLedger {
+    let step = state.step(mesh.area(), mesh.interior.a, mesh.interior.r, homeostat, dt);
+    reactions_step_impl(mesh, p, dt, enable_build, enable_metab, step.activation_gain)
+}
+
+fn reactions_step_impl(
+    mesh: &mut MaterialMesh,
+    p: &ReactionParams,
+    dt: f64,
+    enable_build: bool,
+    enable_metab: bool,
+    activation_capacity_gain: f64,
+) -> ReactionLedger {
     let mut led = ReactionLedger::default();
     if !mesh.alive {
         return led;
@@ -193,6 +220,7 @@ pub fn reactions_step(
         let extent = p.k_act
             * qc
             * gh
+            * activation_capacity_gain.max(1.0)
             * mesh.interior.n.max(0.0)
             * mesh.interior.f.max(0.0)
             * dt

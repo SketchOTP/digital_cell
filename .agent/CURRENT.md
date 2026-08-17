@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-018`
 - Objective: `Resolve the metabolic-homeostasis bottleneck with one derived stateful integral assimilation homeostat, then continue only through the preregistered persistence gates if metabolism qualifies.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `Phase 0A source feasibility passed and Commit A is frozen; production implementation and Phase 2 qualification remain conditional on the exact preregistered gates.`
-- Current phase: `Phase 0 complete; Phase 1 implementation is authorized.`
+- Acceptance: `Phase 0A source feasibility passed and Commit A is frozen; the single Phase 1 homeostat and direct tests are frozen in Commit B; formal Phase 2 qualification is the current gate.`
+- Current phase: `Phase 1 implementation frozen; Phase 2 metabolic qualification is running.`
 - Expected or actual touched areas: `DC-DEV-018 observer audit, one default-off post-Phase-1 chemistry wrapper, evidence, documentation, governance, and scoped CI; certified Phase-1 equations remain frozen.`
-- Immediate next action: `Implement the single derived integral homeostat and direct tests; do not import DC-DEV-017 production behavior or begin DC-DEV-019.`
+- Immediate next action: `Run the exact M0-M4 metabolic qualification and, on failure, record the quarter diagnostic and stop all downstream behavior.`
 
 ## Temporary task-relevant facts
 

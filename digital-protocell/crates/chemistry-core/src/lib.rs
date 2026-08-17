@@ -1,5 +1,6 @@
 pub mod accounting;
 pub mod activated_metabolism;
+pub mod integral_homeostat;
 pub mod attractor;
 pub mod basin;
 pub mod bottleneck;
