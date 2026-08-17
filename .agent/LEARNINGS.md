@@ -127,3 +127,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-019 Phase 1 delivery-capacity audit; homeostasis and architect review remain pending.
 - Supersedes learning: none
+
+## L-DCDEV019-002
+
+- Learning ID: `L-DCDEV019-002`
+- Date: `2026-08-17`
+- Fact or lesson: The frozen one-state material homeostat is executable and exact feature-off compatible, and starvation accumulates bounded demand, but the selected finite feeding arm lowers stored material and the sustained R1-style precursor clamp reaches `76.82632823803954` without satisfying the target, Q4 slope, or Q4 mean-demand gates. M4/M5 and behavior were correctly stopped.
+- Evidence location: `digital-protocell/examples/dcdev019_homeostasis.rs`, `digital-protocell/experiments/generated/dcdev019/phase3/homeostasis_qualification.json`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev019/phase3_qualification.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-019 Gate 3 negative result; no controller tuning or behavior implementation.
+- Supersedes learning: none

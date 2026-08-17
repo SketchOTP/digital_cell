@@ -1,0 +1,17 @@
+{
+  "conclusion": "DCDEV019_FINITE_NUTRIENT_DELIVERY_PHASE_1_COMPLETE",
+  "dense_raw_ledgers_external": true,
+  "directive": "DC-DEV-019",
+  "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "evidence_files": [
+    "protocol.json",
+    "entry_parity.json",
+    "resource_semantics.json",
+    "delivery_diagnostic.json",
+    "results.json",
+    "artifact_manifest.json"
+  ],
+  "finding": "DCDEV019_FINITE_NUTRIENT_DELIVERY_CAPACITY_ESTABLISHED",
+  "next_execution_started": false,
+  "phase": "0-1"
+}

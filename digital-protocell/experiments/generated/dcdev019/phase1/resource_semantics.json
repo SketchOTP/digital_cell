@@ -1,0 +1,15 @@
+{
+  "boundary_concentration": "fixed from initial mass; not recomputed after depletion",
+  "center": [
+    4.8,
+    0.0
+  ],
+  "classification": "finite static reservoir with fixed boundary concentration and inventory clamp",
+  "exposure": "edge midpoint containment and non-ruptured edge",
+  "interior_concentration": "mesh interior species concentration; only positive external-minus-internal gradient transfers",
+  "material_volume": 7.0685834705770345,
+  "radius": 1.5,
+  "schema": "dcdev019_live_resource_semantics_v1",
+  "shape": "static_disk",
+  "world_mass": "mutable finite n_mass/f_mass; delivery is exact world loss"
+}

@@ -1,0 +1,16 @@
+{
+  "center": [
+    4.8,
+    0.0
+  ],
+  "e_deprived": 60.82781514212436,
+  "e_target": 77.91027880846893,
+  "entry": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "m3_nf": 0.1476710565778127,
+  "m3_steps": 4000,
+  "m_selected": 19.878372106390554,
+  "next_execution_started": false,
+  "radius": 1.5,
+  "settlement_steps": 5000,
+  "window_steps": 480
+}

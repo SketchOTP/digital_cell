@@ -1,0 +1,28 @@
+{
+  "base_branch": "strategy/dc-dev-016-metabolic-break-even",
+  "dcdev020_started": false,
+  "directive": "DC-DEV-019",
+  "dt": 0.02,
+  "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "feeding_steps": 480,
+  "homeostat_started": false,
+  "observer_only": true,
+  "phase": "0-1",
+  "production_behavior_changed": false,
+  "resource": {
+    "boundary_concentration": "initial mass / disk material volume, fixed while inventory remains",
+    "center": [
+      4.8,
+      0.0
+    ],
+    "edge_exposure": "intact mesh-edge midpoint inside static disk",
+    "ideal_transport": "well-mixed equilibration upper bound, exposure/gradient/world-mass constrained",
+    "initial_f_mass": 14.588954880632265,
+    "initial_n_mass": 14.588954880632265,
+    "material_volume": 7.0685834705770345,
+    "radius": 1.5,
+    "uptake": "existing permeability(theta,species) * k_flux * positive concentration gradient * segment length * dt, inventory capped"
+  },
+  "settlement_steps": 5000,
+  "source_saturation": "observer-only gain on existing N/F -> A extent; no direct A/R writes"
+}

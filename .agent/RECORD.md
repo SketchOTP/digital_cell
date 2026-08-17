@@ -45,3 +45,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Existing delivery is sufficient at the selected finite inventory; adding a transport-capacity actuator is not scientifically required by this gate.
 - Affected areas: DC-DEV-019 Phase 1 delivery protocol and subsequent homeostat qualification.
 - Supersedes record: none
+
+## DEC-DCDEV019-002
+
+- Date: `2026-08-17`
+- Record or decision ID: `DEC-DCDEV019-002`
+- Status: `ACTIVE`
+- Decision or event: DC-DEV-019 Gate 3 returned `DCDEV019_COORDINATED_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED`; M4/M5, behavior, encounter, repeatability, and DC-DEV-020 remain stopped.
+- Rationale: M0 and M1 passed, but M2 finite feeding failed restoration and M3 failed the frozen target, Q4 slope, and Q4 mean-demand conditions. The result is a bounded negative architectural diagnostic, not authorization for tuning.
+- Affected areas: DC-DEV-019 homeostat qualification and next-directive boundary.
+- Supersedes record: `DEC-DCDEV019-001` for Gate 3 disposition only

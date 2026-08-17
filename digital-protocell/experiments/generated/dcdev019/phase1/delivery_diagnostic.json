@@ -1,0 +1,377 @@
+{
+  "current_inventory_sufficient": false,
+  "d1_existing_delivery": {
+    "alive": true,
+    "arm": "D1_existing_delivery",
+    "consumed_f": 11.833015164804774,
+    "consumed_n": 11.833015164804774,
+    "delivered_f": 11.833015164804774,
+    "delivered_n": 11.833015164804774,
+    "delivery_multiplier": 1.0,
+    "final_mesh_hash": "c86facdfe4e5e23f",
+    "final_resource_f": 2.755939715827497,
+    "final_resource_n": 2.755939715827497,
+    "final_state": {
+      "a": 0.32102435446576855,
+      "alive": true,
+      "area": 70.8275261895172,
+      "e_stored": 58.43844935623427,
+      "f": 5.421010862427522e-20,
+      "n": 5.421010862427522e-20,
+      "r": 0.5040566910004705,
+      "step": 480
+    },
+    "finite_nonnegative": true,
+    "initial": {
+      "a": 0.303630027599798,
+      "alive": true,
+      "area": 70.8275261895172,
+      "e_stored": 60.82781514212436,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.5551860064286098,
+      "step": 0
+    },
+    "inventory": 14.588954880632265,
+    "max_resource_error": 0.0,
+    "resource_center": [
+      4.8,
+      0.0
+    ],
+    "resource_conservation": true,
+    "resource_radius": 1.5,
+    "trajectory_hash": "3ce83f6addfeb5fb"
+  },
+  "d2_ideal_transport": {
+    "alive": true,
+    "arm": "D2_ideal_transport_upper_bound",
+    "consumed_f": 14.588954880632263,
+    "consumed_n": 14.588954880632263,
+    "delivered_f": 14.588954880632265,
+    "delivered_n": 14.588954880632265,
+    "delivery_multiplier": null,
+    "final_mesh_hash": "4d9b44f9db3b6187",
+    "final_resource_f": 0.0,
+    "final_resource_n": 0.0,
+    "final_state": {
+      "a": 0.302494952934619,
+      "alive": true,
+      "area": 70.8275261895172,
+      "e_stored": 57.819981156419516,
+      "f": 2.7755575615628914e-17,
+      "n": 2.7755575615628914e-17,
+      "r": 0.5138540608895732,
+      "step": 480
+    },
+    "finite_nonnegative": true,
+    "initial": {
+      "a": 0.303630027599798,
+      "alive": true,
+      "area": 70.8275261895172,
+      "e_stored": 60.82781514212436,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.5551860064286098,
+      "step": 0
+    },
+    "inventory": 14.588954880632265,
+    "max_resource_error": 0.0,
+    "resource_center": [
+      4.8,
+      0.0
+    ],
+    "resource_conservation": true,
+    "resource_radius": 1.5,
+    "trajectory_hash": "95b1eab21d1cbe7d"
+  },
+  "finite_delivery_finding": "DCDEV019_FINITE_NUTRIENT_DELIVERY_CAPACITY_ESTABLISHED",
+  "g_transport_max": 1.0,
+  "gate_1_pass": true,
+  "gate_2_pass": true,
+  "phase_1b_bracket": [
+    {
+      "final_e_stored": 66.08930128054257,
+      "mass": 29.17790976126453,
+      "passed": true
+    }
+  ],
+  "phase_1b_iterations": [
+    {
+      "final_e_stored": 61.96484506947304,
+      "mass": 21.883432320948398,
+      "passed": true
+    },
+    {
+      "final_e_stored": 59.895338423580554,
+      "mass": 18.23619360079033,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.9307730039533,
+      "mass": 20.059812960869365,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.41323206453522,
+      "mass": 19.148003280829847,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.67204585417519,
+      "mass": 19.603908120849606,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.80142016425396,
+      "mass": 19.831860540859488,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.86609925612395,
+      "mass": 19.945836750864427,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.83376037966279,
+      "mass": 19.888848645861955,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.81759043951059,
+      "mass": 19.86035459336072,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.825675451451865,
+      "mass": 19.87460161961134,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.82971792602061,
+      "mass": 19.881725132736648,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.827696691352855,
+      "mass": 19.878163376173994,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.82870730934065,
+      "mass": 19.87994425445532,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.82820200051057,
+      "mass": 19.879053815314656,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.827949345972506,
+      "mass": 19.878608595744325,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.82782301867261,
+      "mass": 19.87838598595916,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.82775985501505,
+      "mass": 19.87827468106658,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.827791436844336,
+      "mass": 19.87833033351287,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.82780722775872,
+      "mass": 19.878358159736017,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.82781512321561,
+      "mass": 19.87837207284759,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.82781907094424,
+      "mass": 19.878379029403376,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.82781709708,
+      "mass": 19.878375551125483,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.82781611014751,
+      "mass": 19.878373811986535,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.82781561668202,
+      "mass": 19.878372942417062,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.82781536994893,
+      "mass": 19.878372507632328,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.82781524658259,
+      "mass": 19.87837229023996,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.82781518489899,
+      "mass": 19.878372181543774,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.8278151540572,
+      "mass": 19.878372127195682,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.827815138636545,
+      "mass": 19.878372100021636,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.82781514634689,
+      "mass": 19.87837211360866,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.82781514249189,
+      "mass": 19.87837210681515,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.827815140564326,
+      "mass": 19.878372103418393,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.82781514152791,
+      "mass": 19.87837210511677,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.827815142009925,
+      "mass": 19.87837210596596,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.82781514225075,
+      "mass": 19.878372106390554,
+      "passed": true
+    },
+    {
+      "final_e_stored": 60.827815142130085,
+      "mass": 19.878372106178254,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.82781514219041,
+      "mass": 19.878372106284402,
+      "passed": false
+    },
+    {
+      "final_e_stored": 60.82781514222052,
+      "mass": 19.87837210633748,
+      "passed": false
+    }
+  ],
+  "phase_1c_passive_selected": {
+    "alive": true,
+    "arm": "D1_passive_selected_inventory",
+    "consumed_f": 16.109969158762276,
+    "consumed_n": 16.109969158762276,
+    "delivered_f": 16.109969158762276,
+    "delivered_n": 16.109969158762276,
+    "delivery_multiplier": 1.0,
+    "final_mesh_hash": "35c63b67957c18a0",
+    "final_resource_f": 3.7684029476282745,
+    "final_resource_n": 3.7684029476282745,
+    "final_state": {
+      "a": 0.3634061072520288,
+      "alive": true,
+      "area": 70.8275261895172,
+      "e_stored": 61.68434818478833,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.5075031494081014,
+      "step": 480
+    },
+    "finite_nonnegative": true,
+    "initial": {
+      "a": 0.303630027599798,
+      "alive": true,
+      "area": 70.8275261895172,
+      "e_stored": 60.82781514212436,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.5551860064286098,
+      "step": 0
+    },
+    "inventory": 19.878372106390554,
+    "max_resource_error": 0.0,
+    "resource_center": [
+      4.8,
+      0.0
+    ],
+    "resource_conservation": true,
+    "resource_radius": 1.5,
+    "trajectory_hash": "8b2093237d5cd0a9"
+  },
+  "phase_1d_transport_iterations": [],
+  "r1_reference_replay": {
+    "alive": true,
+    "arm": "R1_reference_replay",
+    "consumed_f": 12.765505555173306,
+    "consumed_n": 12.765505555173306,
+    "delivered_f": 12.765505555173306,
+    "delivered_n": 12.765505555173306,
+    "delivery_multiplier": 1.0,
+    "final_mesh_hash": "bdf7f015edfec56a",
+    "final_resource_f": 1.823449325458959,
+    "final_resource_n": 1.823449325458959,
+    "final_state": {
+      "a": 0.33024564531752854,
+      "alive": true,
+      "area": 70.8275261895172,
+      "e_stored": 59.14641669238137,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.5048310526052533,
+      "step": 480
+    },
+    "finite_nonnegative": true,
+    "initial": {
+      "a": 0.303630027599798,
+      "alive": true,
+      "area": 70.8275261895172,
+      "e_stored": 60.82781514212436,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.5551860064286098,
+      "step": 0
+    },
+    "inventory": 14.588954880632265,
+    "max_resource_error": 0.0,
+    "resource_center": [
+      0.0,
+      0.0
+    ],
+    "resource_conservation": true,
+    "resource_radius": 5.0,
+    "trajectory_hash": "09394f44a6390517"
+  },
+  "selected_inventory": 19.878372106390554,
+  "selected_inventory_derivation": "minimum equal N/F inventory by deterministic ideal-transport bisection"
+}

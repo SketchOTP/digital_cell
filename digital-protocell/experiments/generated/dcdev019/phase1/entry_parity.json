@@ -1,0 +1,12 @@
+{
+  "chemistry_gain_1_parity": true,
+  "deprived_body_hash": "990c1abe7e178d30",
+  "deprived_e_stored": 60.82781514212436,
+  "expected_deprived_e_stored": 60.82781514212436,
+  "pass": true,
+  "r1_reference_replay_e_stored": 59.14641669238137,
+  "r1_reference_replay_expected": 59.1464166923814,
+  "resource_gain_1_parity": true,
+  "settled_body_hash": "c985c08ab226a061",
+  "target_e_stored": 77.91027880846893
+}
