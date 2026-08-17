@@ -87,3 +87,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-011 local qualification; exact-head remote CI passed, architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV013-001
+
+- Learning ID: L-DCDEV013-001
+- Date: 2026-08-16
+- Fact or lesson: The production local resource-contact signal is physically local and causal through the accepted regulator and funded motor, but under the frozen DC-DEV-013 resource geometry and 480-step horizon the active arm acquired less finite N/F material than both sensor-off and motor-off controls; local sensing and movement therefore did not establish a feeding benefit.
+- Evidence location: `digital-protocell/crates/regulatory-core/src/spatial_resource.rs`, `digital-protocell/examples/dcdev013_gate_assay.rs`, `digital-protocell/experiments/generated/dcdev013/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev013/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-013 frozen local resource-contact feeding assay; exact-head remote CI and architect review pending.
+- Supersedes learning: none

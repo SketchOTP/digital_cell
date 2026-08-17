@@ -1,0 +1,37 @@
+{
+  "absolute_improvement_tolerance": 1e-12,
+  "accepted_dt": 0.02,
+  "accepted_steps": 480,
+  "arms": [
+    "active_sensor_funded_stick_slip",
+    "sensor_off_funded_stick_slip",
+    "motor_off_local_sensor",
+    "zero_reserve_local_sensor",
+    "empty_resource_sham"
+  ],
+  "causal_step_order": [
+    "observe_current_local_contact",
+    "advance_existing_regulator",
+    "apply_existing_funded_contractility_and_dcdev011_stick_slip",
+    "advance_existing_mechanics",
+    "execute_existing_local_uptake",
+    "record_material_state"
+  ],
+  "dcdev012_imported": false,
+  "directive": "DC-DEV-013",
+  "entry_commit": "f9c6d4e83fc9dc50e4d2ec4004ea640084ce5732",
+  "freeze_commit": "fa8a689adff8cbc3b981038c4812ebdc0623116c",
+  "geometry_screening": false,
+  "initial_f_mass": 3.0,
+  "initial_n_mass": 3.0,
+  "minimum_relative_improvement": 0.1,
+  "parameter_screening": false,
+  "resource_center": [
+    4.8,
+    0.0
+  ],
+  "resource_radius": 1.5,
+  "rotation_tolerance": 1e-9,
+  "settlement_steps": 5000,
+  "topology_size": 24
+}

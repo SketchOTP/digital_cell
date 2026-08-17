@@ -1,0 +1,10 @@
+{
+  "initial_mesh_hash": "90877852c31ea9c2",
+  "maximum_attempted_velocity": 0.03364647586334157,
+  "maximum_local_displacement": 0.0006729295172668313,
+  "maximum_material_centroid_step": 1.347201764550237e-15,
+  "settled": true,
+  "settled_chemistry_hash": "d8752b48a7e2fece",
+  "settled_mesh_hash": "1c77935f8204dbaf",
+  "settlement_steps": 5000
+}

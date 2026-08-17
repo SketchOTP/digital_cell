@@ -178,3 +178,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260816-dcdev013-resource-contact-feeding
+
+- Issued: `2026-08-16T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-013`
+- Objective: Determine whether actual local contact with finite N/F resource can drive the existing distributed regulator, reserve-funded contractility, and accepted DC-DEV-011 stick-slip interaction so the organism increases its own resource acquisition.
+- Scope: Exact DC-DEV-011 entry, production reuse of DC-DEV-008 finite local N/F resource exposure, one local per-edge contact signal, fixed 5,000-step settlement, fixed 480-step matched five-arm assay, resource conservation, empty-resource specificity, 180-degree rotation, evidence, documentation, governance, scoped CI, preservation through DC-DEV-011, and frozen geometry/inventory/horizon/threshold provenance at `fa8a689adff8cbc3b981038c4812ebdc0623116c`.
+- Exclusions: DC-DEV-012 import, endogenous polarity, parameter or geometry screening, new gain, new actuator, new traction law, target/gradient/planner/reward, chemistry-core equation changes, mechanics changes, and DC-DEV-014.
+- Acceptance: `DCDEV013_LOCAL_RESOURCE_CONTACT_FEEDING_QUALIFIED` or the preregistered negative result `DCDEV013_RESOURCE_CONTACT_FEEDING_NOT_ESTABLISHED`, with exact frozen evidence, pushed stacked draft PR, exact-head remote CI, and architect review from entry `f9c6d4e83fc9dc50e4d2ec4004ea640084ce5732` on source `strategy/dc-dev-011-local-stick-slip-traction`.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

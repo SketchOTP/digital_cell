@@ -12,6 +12,7 @@ use serde::{Deserialize, Serialize};
 
 pub const FINITE_SPATIAL_RESOURCE_REGION_SCHEMA_V1: &str = "dcdev008_finite_static_nf_region_v1";
 pub const SPATIAL_RESOURCE_STEP_LEDGER_SCHEMA_V1: &str = "dcdev008_spatial_resource_step_ledger_v1";
+pub const LOCAL_RESOURCE_CONTACT_SIGNAL_SCHEMA_V1: &str = "dcdev013_local_nf_contact_signal_v1";
 
 /// A finite static circular region containing only N and F material.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -109,6 +110,22 @@ impl FiniteSpatialResourceRegionV1 {
 
     pub fn total_mass(&self) -> f64 {
         self.n_mass + self.f_mass
+    }
+
+    /// Observe the same local physical boundary exposure used by [`Self::uptake`].
+    ///
+    /// The signal contains no world coordinates or resource gradient.  A value
+    /// is one only when the corresponding material edge is geometrically
+    /// exposed to non-depleted N and F inventory; otherwise it is zero.  The
+    /// assay may feed this vector into the existing local regulator, but this
+    /// production boundary does not decide an action or write mesh state.
+    pub fn local_contact_signal(&self, mesh: &MaterialMesh) -> Vec<f64> {
+        if !mesh.alive || self.n_mass <= 1e-12 || self.f_mass <= 1e-12 {
+            return vec![0.0; mesh.n()];
+        }
+        (0..mesh.n())
+            .map(|edge| self.edge_exposed(mesh, edge).then_some(1.0).unwrap_or(0.0))
+            .collect()
     }
 
     fn contains(&self, point: [f64; 2]) -> bool {
@@ -228,6 +245,33 @@ mod tests {
         assert!(ledger.n_delivered > 0.0);
         assert!(ledger.f_delivered > 0.0);
         assert_eq!(ledger.conservation_error, 0.0);
+    }
+
+    #[test]
+    fn local_contact_signal_reuses_physical_exposure_and_depletion_boundary() {
+        let body = mesh();
+        let bearing = FiniteSpatialResourceRegionV1::new(CENTER, RADIUS, N_MASS, F_MASS);
+        let noncontact = FiniteSpatialResourceRegionV1::new([30.0, 30.0], RADIUS, N_MASS, F_MASS);
+        let empty = FiniteSpatialResourceRegionV1::new(CENTER, RADIUS, 0.0, 0.0);
+        let depleted = FiniteSpatialResourceRegionV1::new(CENTER, RADIUS, 1e-13, 1e-13);
+
+        let bearing_signal = bearing.local_contact_signal(&body);
+        assert!(bearing_signal.iter().any(|value| *value == 1.0));
+        assert!(bearing_signal
+            .iter()
+            .all(|value| *value == 0.0 || *value == 1.0));
+        assert!(noncontact
+            .local_contact_signal(&body)
+            .iter()
+            .all(|value| *value == 0.0));
+        assert!(empty
+            .local_contact_signal(&body)
+            .iter()
+            .all(|value| *value == 0.0));
+        assert!(depleted
+            .local_contact_signal(&body)
+            .iter()
+            .all(|value| *value == 0.0));
     }
 
     #[test]

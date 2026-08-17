@@ -350,3 +350,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: independent architect review of the finite-horizon free-space artifact classification and recommended next experiment.
 - Blockers: architect review.
 - Follow-up directive: none
+
+## D-20260816-dcdev013-resource-contact-feeding - PARTIAL
+
+- Outcome ID: OUT-DCDEV013-LOCAL-RESOURCE-CONTACT-FEEDING
+- Supersedes outcome: none
+- Closed: `2026-08-16T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The frozen DC-DEV-013 assay completed with the preregistered negative result. Active finite N/F acquisition was `0.354201468008014`, below sensor-off and motor-off at `0.364097551510532`; the first scientific failure was Gate 5 active acquisition benefit.
+- Changed areas: regulatory-core local resource-contact observation, DC-DEV-013 assay, generated evidence, documentation, workflow, and governance; no chemistry-core source or certified Phase-1 equations changed.
+- Validation:
+  - Regulatory-core production tests - PASSED (36 tests)
+  - Exact 5,000-step legacy settlement - PASSED
+  - Exact 480-step matched five-arm assay - PASSED with negative scientific conclusion
+  - Local resource physicality, conservation, empty sham, rotation, passivity, and ownership controls - PASSED
+  - Gate 5 active acquisition benefit - FAILED as preregistered negative result
+  - Gate 6 contact benefit - FAILED as dependent negative result
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: remote exact-head validation and independent architect interpretation of the negative feeding result.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
