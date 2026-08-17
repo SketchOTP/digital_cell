@@ -6,7 +6,9 @@
 
 use chemistry_core::material_mesh::{LumpedChem, MaterialMesh, DEFAULT_RHO_S};
 use chemistry_core::mesh_mechanics::{mechanics_step, MechParams};
-use chemistry_core::mesh_reactions::{reactions_step, reactions_step_counterfactual, ReactionParams};
+use chemistry_core::mesh_reactions::{
+    reactions_step, reactions_step_counterfactual, ReactionParams,
+};
 use chemistry_core::mesh_transport::TransportParams;
 use chemistry_core::metabolic_reserve::{stamp_reserve_equation, ReserveParams};
 use regulatory_core::{
@@ -96,9 +98,22 @@ struct Qualification {
 
 fn seed() -> MaterialMesh {
     let mut mesh = MaterialMesh::seed_regular(
-        24, 5.0, 0.0, 0.0, DEFAULT_RHO_S, 0.7,
-        LumpedChem { c: 0.8, a: 0.5, n: 0.0, f: 0.0, r: 0.6, ..Default::default() },
-        LumpedChem::default(), 5.0,
+        24,
+        5.0,
+        0.0,
+        0.0,
+        DEFAULT_RHO_S,
+        0.7,
+        LumpedChem {
+            c: 0.8,
+            a: 0.5,
+            n: 0.0,
+            f: 0.0,
+            r: 0.6,
+            ..Default::default()
+        },
+        LumpedChem::default(),
+        5.0,
     );
     stamp_reserve_equation(&mut mesh);
     mesh
@@ -114,7 +129,11 @@ fn e_stored(mesh: &MaterialMesh) -> f64 {
     mesh.area() * (mesh.interior.a + mesh.interior.r).max(0.0)
 }
 
-fn observation(mesh: &MaterialMesh, h: &MetabolicAcquisitionHomeostatV1, step: usize) -> Observation {
+fn observation(
+    mesh: &MaterialMesh,
+    h: &MetabolicAcquisitionHomeostatV1,
+    step: usize,
+) -> Observation {
     Observation {
         step,
         e_stored: e_stored(mesh),
@@ -135,10 +154,18 @@ fn slope(values: &[f64]) -> f64 {
     }
 }
 
-fn summarize(samples: &[Observation], n_loss: f64, f_loss: f64, conservation_error: f64) -> WindowSummary {
+fn summarize(
+    samples: &[Observation],
+    n_loss: f64,
+    f_loss: f64,
+    conservation_error: f64,
+) -> WindowSummary {
     let values: Vec<f64> = samples.iter().map(|s| s.e_stored).collect();
     let hs: Vec<f64> = samples.iter().map(|s| s.h).collect();
-    let hashes: Vec<String> = samples.iter().map(|s| stable_json_hash(s).unwrap()).collect();
+    let hashes: Vec<String> = samples
+        .iter()
+        .map(|s| stable_json_hash(s).unwrap())
+        .collect();
     let quarter = values.len() / 4;
     let quarter_e_slopes = [
         slope(&values[..quarter]),
@@ -192,7 +219,12 @@ fn deprive(settled: &MaterialMesh, mechanics: &MechParams) -> MaterialMesh {
 fn homeostat(enabled: bool) -> MetabolicAcquisitionHomeostatV1 {
     let e0 = (E_TARGET - E_DEPRIVED) / E_TARGET;
     MetabolicAcquisitionHomeostatV1::try_new(
-        enabled, E_TARGET, e0, HOMEOSTAT_TAU, HOMEOSTAT_SOURCE_GAIN_MAX, 1.0,
+        enabled,
+        E_TARGET,
+        e0,
+        HOMEOSTAT_TAU,
+        HOMEOSTAT_SOURCE_GAIN_MAX,
+        1.0,
     )
     .unwrap()
 }
@@ -208,15 +240,16 @@ fn step(
     let (mut n_loss, mut f_loss, mut conservation_error) = (0.0, 0.0, 0.0);
     if let Some(resource) = patch {
         let ledger = resource.uptake_with_capacity_multiplier(
-            mesh, &TransportParams::default(), mechanics.dt, gains.g_transport,
+            mesh,
+            &TransportParams::default(),
+            mechanics.dt,
+            gains.g_transport,
         );
         n_loss = ledger.n_world_loss;
         f_loss = ledger.f_world_loss;
         conservation_error = ledger.conservation_error;
     }
-    reactions_step_counterfactual(
-        mesh, params, mechanics.dt, true, true, gains.g_source,
-    );
+    reactions_step_counterfactual(mesh, params, mechanics.dt, true, true, gains.g_source);
     (n_loss, f_loss, conservation_error)
 }
 
@@ -230,13 +263,19 @@ fn run_window(
     start_step: usize,
 ) -> WindowSummary {
     let params = reaction_params(mesh);
-    let mut persistent_patch = patch_mass.map(|m| FiniteSpatialResourceRegionV1::new(CENTER, RADIUS, m, m));
+    let mut persistent_patch =
+        patch_mass.map(|m| FiniteSpatialResourceRegionV1::new(CENTER, RADIUS, m, m));
     let mut samples = Vec::with_capacity(steps);
     let (mut n_loss, mut f_loss, mut conservation_error) = (0.0, 0.0, 0.0);
     for i in 0..steps {
-        let mut fresh = patch_mass.filter(|_| fresh_patch_each_step)
+        let mut fresh = patch_mass
+            .filter(|_| fresh_patch_each_step)
             .map(|m| FiniteSpatialResourceRegionV1::new(CENTER, RADIUS, m, m));
-        let patch = if fresh_patch_each_step { fresh.as_mut() } else { persistent_patch.as_mut() };
+        let patch = if fresh_patch_each_step {
+            fresh.as_mut()
+        } else {
+            persistent_patch.as_mut()
+        };
         let (n, f, err) = step(mesh, &params, h, mechanics, patch);
         n_loss += n;
         f_loss += f;
@@ -284,7 +323,13 @@ fn main() {
     let mut feature_off = deprived.clone();
     let mut feature_off_h = homeostat(false);
     for _ in 0..WINDOW {
-        step(&mut feature_off, &params, &mut feature_off_h, &mechanics, None);
+        step(
+            &mut feature_off,
+            &params,
+            &mut feature_off_h,
+            &mechanics,
+            None,
+        );
     }
     let m0_feature_off_exact = stable_json_hash(&legacy_a).unwrap()
         == stable_json_hash(&parity_a).unwrap()
@@ -299,12 +344,23 @@ fn main() {
 
     let mut m2_mesh = deprived.clone();
     let mut m2_h = homeostat(true);
-    let m2 = run_window(&mut m2_mesh, &mut m2_h, &mechanics, WINDOW, Some(M_SELECTED), false, 0);
+    let m2 = run_window(
+        &mut m2_mesh,
+        &mut m2_h,
+        &mechanics,
+        WINDOW,
+        Some(M_SELECTED),
+        false,
+        0,
+    );
     let m2_final_above_initial = m2.final_e_stored > m2.initial_e_stored + 1e-10;
-    let m2_distance_decreased = (E_TARGET - m2.final_e_stored).abs() < (E_TARGET - E_DEPRIVED).abs();
+    let m2_distance_decreased =
+        (E_TARGET - m2.final_e_stored).abs() < (E_TARGET - E_DEPRIVED).abs();
     let replete = &settled;
-    let a_toward = (replete.interior.a - m2_mesh.interior.a).abs() < (replete.interior.a - deprived.interior.a).abs();
-    let r_toward = (replete.interior.r - m2_mesh.interior.r).abs() < (replete.interior.r - deprived.interior.r).abs();
+    let a_toward = (replete.interior.a - m2_mesh.interior.a).abs()
+        < (replete.interior.a - deprived.interior.a).abs();
+    let r_toward = (replete.interior.r - m2_mesh.interior.r).abs()
+        < (replete.interior.r - deprived.interior.r).abs();
 
     let mut m3_mesh = deprived.clone();
     let mut m3_h = homeostat(true);
@@ -313,7 +369,15 @@ fn main() {
     let m3_q4_depletion_reference_slope = {
         let mut baseline_mesh = deprived.clone();
         let mut baseline_h = homeostat(false);
-        let baseline = run_window(&mut baseline_mesh, &mut baseline_h, &mechanics, M3_STEPS, None, false, 0);
+        let baseline = run_window(
+            &mut baseline_mesh,
+            &mut baseline_h,
+            &mechanics,
+            M3_STEPS,
+            None,
+            false,
+            0,
+        );
         Some(baseline.quarter_e_slopes[3].abs())
     };
     let m3_pass = m3.final_e_stored >= 0.95 * E_TARGET
@@ -329,8 +393,24 @@ fn main() {
         let mut m4_mesh = m3_mesh.clone();
         let mut m4_h = m3_h.clone();
         let before_h = m4_h.h;
-        let starved = run_window(&mut m4_mesh, &mut m4_h, &mechanics, WINDOW, None, false, M3_STEPS);
-        let fed = run_window(&mut m4_mesh, &mut m4_h, &mechanics, WINDOW, Some(M_SELECTED), true, M3_STEPS + WINDOW);
+        let starved = run_window(
+            &mut m4_mesh,
+            &mut m4_h,
+            &mechanics,
+            WINDOW,
+            None,
+            false,
+            M3_STEPS,
+        );
+        let fed = run_window(
+            &mut m4_mesh,
+            &mut m4_h,
+            &mechanics,
+            WINDOW,
+            Some(M_SELECTED),
+            true,
+            M3_STEPS + WINDOW,
+        );
         let m4 = WindowSummary {
             steps: starved.steps + fed.steps,
             initial_e_stored: starved.initial_e_stored,
@@ -347,14 +427,31 @@ fn main() {
             n_world_loss: fed.n_world_loss,
             f_world_loss: fed.f_world_loss,
             conservation_error: starved.conservation_error + fed.conservation_error,
-            trajectory_hash: stable_json_hash(&(starved.trajectory_hash, fed.trajectory_hash)).unwrap(),
+            trajectory_hash: stable_json_hash(&(starved.trajectory_hash, fed.trajectory_hash))
+                .unwrap(),
         };
         let mut cycle_mesh = m3_mesh;
         let mut cycle_h = m3_h;
         let mut cycles = Vec::new();
         for cycle in 0..3 {
-            let starve = run_window(&mut cycle_mesh, &mut cycle_h, &mechanics, WINDOW, None, false, cycle * 2 * WINDOW);
-            let feed = run_window(&mut cycle_mesh, &mut cycle_h, &mechanics, WINDOW, Some(M_SELECTED), true, cycle * 2 * WINDOW + WINDOW);
+            let starve = run_window(
+                &mut cycle_mesh,
+                &mut cycle_h,
+                &mechanics,
+                WINDOW,
+                None,
+                false,
+                cycle * 2 * WINDOW,
+            );
+            let feed = run_window(
+                &mut cycle_mesh,
+                &mut cycle_h,
+                &mechanics,
+                WINDOW,
+                Some(M_SELECTED),
+                true,
+                cycle * 2 * WINDOW + WINDOW,
+            );
             cycles.push(WindowSummary {
                 steps: WINDOW * 2,
                 initial_e_stored: starve.initial_e_stored,
@@ -371,12 +468,15 @@ fn main() {
                 n_world_loss: feed.n_world_loss,
                 f_world_loss: feed.f_world_loss,
                 conservation_error: starve.conservation_error + feed.conservation_error,
-                trajectory_hash: stable_json_hash(&(starve.trajectory_hash, feed.trajectory_hash)).unwrap(),
+                trajectory_hash: stable_json_hash(&(starve.trajectory_hash, feed.trajectory_hash))
+                    .unwrap(),
             });
         }
         let first = cycles[0].final_e_stored;
         let third = cycles[2].final_e_stored;
-        let m5_pass = cycles.iter().all(|c| c.alive && c.conservation_error <= 1e-10)
+        let m5_pass = cycles
+            .iter()
+            .all(|c| c.alive && c.conservation_error <= 1e-10)
             && third >= 0.90 * first;
         (Some(m4), Some(cycles), m5_pass)
     } else {
@@ -421,18 +521,30 @@ fn main() {
         next_execution_started: false,
     };
     fs::create_dir_all(&output).unwrap();
-    fs::write(output.join("homeostasis_qualification.json"), serde_json::to_vec_pretty(&report).unwrap()).unwrap();
-    fs::write(output.join("protocol.json"), serde_json::to_vec_pretty(&json!({
-        "entry": ENTRY, "settlement_steps": SETTLE, "window_steps": WINDOW,
-        "m3_steps": M3_STEPS, "center": CENTER, "radius": RADIUS,
-        "m_selected": M_SELECTED, "m3_nf": M3_NF, "e_target": E_TARGET,
-        "e_deprived": E_DEPRIVED, "next_execution_started": false,
-    })).unwrap()).unwrap();
+    fs::write(
+        output.join("homeostasis_qualification.json"),
+        serde_json::to_vec_pretty(&report).unwrap(),
+    )
+    .unwrap();
+    fs::write(
+        output.join("protocol.json"),
+        serde_json::to_vec_pretty(&json!({
+            "entry": ENTRY, "settlement_steps": SETTLE, "window_steps": WINDOW,
+            "m3_steps": M3_STEPS, "center": CENTER, "radius": RADIUS,
+            "m_selected": M_SELECTED, "m3_nf": M3_NF, "e_target": E_TARGET,
+            "e_deprived": E_DEPRIVED, "next_execution_started": false,
+        }))
+        .unwrap(),
+    )
+    .unwrap();
     println!("DCDEV019_FINITE_NUTRIENT_HOMEOSTASIS_PHASE_3_COMPLETE");
     println!("{classification}");
     println!("M0_feature_off_exact={m0_feature_off_exact}");
     println!("M3_pass={m3_pass}");
     println!("M5_pass={m5_pass}");
-    println!("M3_final_E_stored={}", report.m3_sustained.as_ref().unwrap().final_e_stored);
+    println!(
+        "M3_final_E_stored={}",
+        report.m3_sustained.as_ref().unwrap().final_e_stored
+    );
     println!("NEXT_EXECUTION_STARTED:false");
 }

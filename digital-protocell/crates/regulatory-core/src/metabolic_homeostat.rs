@@ -137,8 +137,8 @@ mod tests {
 
     #[test]
     fn feature_off_is_neutral_and_does_not_accumulate() {
-        let mut h = MetabolicAcquisitionHomeostatV1::try_new(false, 100.0, 0.2, 80.0, 6.0, 2.0)
-            .unwrap();
+        let mut h =
+            MetabolicAcquisitionHomeostatV1::try_new(false, 100.0, 0.2, 80.0, 6.0, 2.0).unwrap();
         let step = h.advance(10.0, 0.0, 0.0, 0.02);
         assert_eq!(step.g_source, 1.0);
         assert_eq!(step.g_transport, 1.0);
@@ -147,8 +147,8 @@ mod tests {
 
     #[test]
     fn starvation_accumulates_but_gains_remain_bounded() {
-        let mut h = MetabolicAcquisitionHomeostatV1::try_new(true, 100.0, 0.2, 80.0, 6.0, 2.0)
-            .unwrap();
+        let mut h =
+            MetabolicAcquisitionHomeostatV1::try_new(true, 100.0, 0.2, 80.0, 6.0, 2.0).unwrap();
         let step = h.advance(10.0, 0.0, 0.0, 80.0);
         assert_eq!(step.h_after, 1.0);
         assert_eq!(step.g_source, 6.0);
