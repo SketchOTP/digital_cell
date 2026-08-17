@@ -1,0 +1,99 @@
+name: DC-DEV-019-R1 continuous-state requalification
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-019-nutrient-homeostasis-persistence
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-019r1-gate1-stop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate committed R1 evidence and scope
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('digital-protocell/experiments/generated/dcdev019r1')
+          q = json.loads((root / 'phase0-3/qualification.json').read_text())
+          manifest = json.loads((root / 'artifact_manifest.json').read_text())
+          if q['entry'] != '59633ebcc37c936e2d04ca5d53477129ab1dca13':
+              raise SystemExit('wrong R1 entry')
+          if q['production_homeostat_blob'] != '1172bf792292cfb50269f3f19c01034f446f1af6':
+              raise SystemExit('candidate blob changed')
+          if not q['material_parity'] or not q['historical_controls_reproduced']:
+              raise SystemExit('entry/control parity failed')
+          if q['gate1_pass']:
+              raise SystemExit('Gate 1 disposition changed')
+          if abs(q['carried_state_feed']['final_e_stored'] - 56.54155735320212) > 1e-12:
+              raise SystemExit('carried-state result changed')
+          if abs(q['reset_state_feed']['final_e_stored'] - 55.84948101858201) > 1e-12:
+              raise SystemExit('reset-state result changed')
+          if abs(q['source_saturated_feed']['final_e_stored'] - 61.68434818478833) > 1e-12:
+              raise SystemExit('source-saturated result changed')
+          if q['classification'] != 'DCDEV019R1_CONTINUOUS_COORDINATED_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED':
+              raise SystemExit('unexpected classification')
+          if q['production_behavior_changed'] or q['chemistry_behavior_changed'] or q['next_execution_started']:
+              raise SystemExit('scope contamination')
+          if manifest['code_sha'] != '9961f1450cea4b37c6f61254747d3a2bcb49581b':
+              raise SystemExit('wrong protocol/code SHA')
+          print('validated DC-DEV-019-R1 committed Gate-1 stop evidence')
+          PY
+          changed="$(git diff --name-only 59633ebcc37c936e2d04ca5d53477129ab1dca13 HEAD)"
+          printf '%s\n' "$changed"
+          if printf '%s\n' "$changed" | grep -Ei 'dcdev020|dc-dev-020|forag|navigation|chemotax|reinforcement|planner'; then exit 1; fi
+
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustup run 1.89.0 rustfmt --edition 2021 --check examples/dcdev019_homeostasis.rs
+
+      - name: Regulatory-core tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p regulatory-core
+
+      - name: Reproduce exact R1 Gate-1 assay
+        working-directory: digital-protocell
+        env:
+          DCDEV019R1_OUTPUT_ROOT: ${{ runner.temp }}/dcdev019r1
+        run: |
+          cargo +1.89.0 run -p regulatory-core --example dcdev019_homeostasis
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          q = json.loads((Path(os.environ['DCDEV019R1_OUTPUT_ROOT']) / 'qualification.json').read_text())
+          assert q['classification'] == 'DCDEV019R1_CONTINUOUS_COORDINATED_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED'
+          assert not q['gate1_pass']
+          assert not q['next_execution_started']
+          PY
+
+      - name: Preserve accepted scientific baselines
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test -p phase1-certifier --test metrics_semantics
+          cargo +1.89.0 test -p chemistry-core d088_tests
+          cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        run: |
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
+          git rev-parse HEAD
