@@ -44,7 +44,8 @@ pub use spatial::{
 
 pub use spatial_resource::{
     FiniteSpatialResourceRegionV1, SpatialResourceStepLedgerV1,
-    FINITE_SPATIAL_RESOURCE_REGION_SCHEMA_V1, SPATIAL_RESOURCE_STEP_LEDGER_SCHEMA_V1,
+    FINITE_SPATIAL_RESOURCE_REGION_SCHEMA_V1, LOCAL_RESOURCE_CONTACT_SIGNAL_SCHEMA_V1,
+    SPATIAL_RESOURCE_STEP_LEDGER_SCHEMA_V1,
 };
 
 pub use stick_slip_traction::{
