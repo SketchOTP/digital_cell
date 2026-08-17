@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-019`
 - Objective: `Qualify finite nutrient delivery, one material-state homeostat, and the M0–M5 metabolic persistence loop from the exact clean DC-DEV-016 base.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `Phase 1 and Gate 2 passed locally; M0–M5 and exact-head remote validation remain open.`
-- Current phase: `DC-DEV-019 Phase 2 homeostat implementation and frozen M0–M5 qualification.`
+- Acceptance: `Phase 1 and Gate 2 passed; Gate 3 homeostasis qualification returned the preregistered negative result, so behavior phases are stopped; exact-head remote validation and architect review remain open.`
+- Current phase: `DC-DEV-019 Gate 3 negative-result evidence and review package.`
 - Expected or actual touched areas: `regulatory-core post-Phase-1 homeostat, observer assays, compact evidence, documentation, governance, scoped CI`
-- Immediate next action: `Implement and test the default-off homeostat, then run M0–M5; stop before behavior if Gate 3 fails.`
+- Immediate next action: `Push the bounded homeostat/qualification package, run exact-head remote CI, and return for architect review; do not begin DC-DEV-020 or behavior work.`
 
 ## Temporary task-relevant facts
 

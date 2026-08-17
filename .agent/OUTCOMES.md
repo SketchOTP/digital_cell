@@ -439,3 +439,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: the one-state homeostat must remain feature-off compatible and pass the frozen M0–M5 qualification before any behavior work is authorized.
 - Blockers: Gate 3, exact-head remote CI, and architect review.
 - Follow-up directive: none
+
+## D-20260817-dcdev019-nutrient-homeostasis-persistence - PARTIAL
+
+- Outcome ID: `OUT-DCDEV019-GATE3-HOMEOSTASIS`
+- Supersedes outcome: `OUT-DCDEV019-PHASE1-DELIVERY`
+- Closed: `2026-08-17T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The default-off one-state homeostat passed M0 feature-off parity and M1 starvation demand accumulation, but M2 finite feeding did not restore stored material and M3 sustained precursor homeostasis failed its target, Q4 slope, and Q4 mean-h bounds. Gate 3 classification: `DCDEV019_COORDINATED_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED`.
+- Changed areas: post-Phase-1 default-off homeostat API, observer-only qualification example, compact evidence, documentation, and governance; no behavior/exploration implementation was started.
+- Validation:
+  - Homeostat unit tests - PENDING final focused command
+  - M0 feature-off exact parity - PASSED
+  - M1 starvation source-zero/no-material-creation checks - PASSED
+  - M2 finite-feeding restoration - FAILED as preregistered diagnostic
+  - M3 sustained homeostasis - FAILED as preregistered diagnostic
+  - M4/M5 - NOT RUN after M3 stop condition
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: this is a negative result for the frozen one-state architecture; no controller tuning or behavior work is authorized without a new directive.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
