@@ -390,8 +390,8 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Activated-material restoration - FAILED as the diagnostic result
   - Precursor-inclusive restoration - FAILED as the diagnostic result
   - Material destination reconciliation - residuals reported, not hidden
-  - Exact-head remote CI - PENDING
+  - Exact-head remote CI run 32011192247 - PASSED
   - Architect review - PENDING
-- Remaining risks: remote exact-head validation and independent architect interpretation of the destination residuals and rate-limiting classification.
-- Blockers: exact-head remote CI and architect review.
+- Remaining risks: independent architect interpretation of the destination residuals and rate-limiting classification.
+- Blockers: architect review.
 - Follow-up directive: none

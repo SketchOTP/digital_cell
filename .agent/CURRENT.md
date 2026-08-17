@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-015`
 - Objective: `Determine whether existing finite N/F intake closes through precursor availability, A production, A/R activated material, and existing maintenance/structure/reserve/waste channels.`
 - Current status: `VALIDATING`
-- Acceptance: `Observer-only DC-DEV-015 audit completed locally with resource delivery and N/F-to-A conversion observed, but no A/R/E_stored/E_available restoration; exact-head remote CI and architect review remain pending.`
-- Current phase: `DC-DEV-015 evidence and governance package are prepared for pushed draft-PR validation; architect review is next.`
+- Acceptance: `Observer-only DC-DEV-015 audit completed with resource delivery and N/F-to-A conversion observed, but no A/R/E_stored/E_available restoration; exact-head remote CI passed and architect review remains pending.`
+- Current phase: `DC-DEV-015 evidence and governance package are pushed in draft PR #24; exact-head remote CI passed; architect review is next.`
 - Expected or actual touched areas: `DC-DEV-015 observer assay/docs/artifacts/workflow, regulatory-core example registration, scoped CI, current governance state`
-- Immediate next action: `Push DC-DEV-015, open the draft PR against DC-DEV-013, run exact-head remote CI, and return for architect review; do not begin DC-DEV-016.`
+- Immediate next action: `Return the exact pushed DC-DEV-015 package to architect review; do not begin DC-DEV-016.`
 
 ## Temporary task-relevant facts
 
@@ -32,7 +32,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Local Rust 1.89.0 regulatory-core tests, exact DC-DEV-013 assay, evidence validation, and governance validation`
+- Command or check: `Local Rust 1.89.0 regulatory-core tests, exact DC-DEV-015 assay, evidence/governance validation, and remote CI run 32011192247`
 - Result: `PASSED`
 
 ## Risks
@@ -43,7 +43,7 @@
 
 ## Blockers
 
-- Exact-head remote CI and independent architect review remain open. DC-DEV-015 is observer-only; no metabolism repair, tuning, new hunger state, behavior, or DC-DEV-016 is authorized.
+- Independent architect review remains open. DC-DEV-015 is observer-only; no metabolism repair, tuning, new hunger state, behavior, or DC-DEV-016 is authorized.
 
 ## Pending decisions
 
