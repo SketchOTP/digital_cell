@@ -117,3 +117,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-016 observer-only metabolic break-even resource sufficiency challenge.
 - Supersedes learning: none
+
+## L-DCDEV017-001
+
+- Learning ID: L-DCDEV017-001
+- Date: 2026-08-17
+- Fact or lesson: The existing reserve demand signal can be reused in one bounded opt-in multiplier over N/F activation while preserving exact feature-off trajectories and finite N/F conservation, but the frozen-gain repair did not establish metabolic homeostasis. At the derived resource inventory, E_stored remained far below the deprived starting state; under sustained precursor clamp, the late depletion slope improved but remained above the preregistered 1% threshold. This is a negative result for the repair, not evidence for autonomous foraging or a basis for a second metabolic design.
+- Evidence location: `digital-protocell/crates/chemistry-core/src/demand_coupled_activation.rs`, `digital-protocell/examples/dcdev017_metabolic_homeostasis_foraging.rs`, `digital-protocell/experiments/generated/dcdev017/phase2_results.json`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev017/phase2_negative_result.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-017 bounded Phase 2 metabolic homeostasis audit; exact-head remote CI and architect review pending.
+- Supersedes learning: none

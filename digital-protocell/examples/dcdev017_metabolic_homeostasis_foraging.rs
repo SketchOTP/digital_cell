@@ -7,8 +7,9 @@
 use chemistry_core::material_mesh::{LumpedChem, MaterialMesh, DEFAULT_RHO_S};
 use chemistry_core::mesh_mechanics::{mechanics_step, MechParams};
 use chemistry_core::mesh_reactions::{reactions_step, ReactionLedger, ReactionParams};
+use chemistry_core::mesh_transport::TransportParams;
 use chemistry_core::metabolic_reserve::{stamp_reserve_equation, ReserveParams};
-use regulatory_core::stable_json_hash;
+use regulatory_core::{stable_json_hash, FiniteSpatialResourceRegionV1};
 use serde::Serialize;
 use serde_json::{json, Value};
 use std::{
@@ -82,8 +83,12 @@ struct ArmResult {
     injections: Vec<Injection>,
     total_n_injected: f64,
     total_f_injected: f64,
+    n_delivered: f64,
+    f_delivered: f64,
     max_a: f64,
     max_r: f64,
+    max_resource_error: f64,
+    resource_conservation: bool,
     finite_nonnegative: bool,
     trajectory_hash: String,
     alive: bool,
@@ -154,9 +159,10 @@ fn seed() -> MaterialMesh {
     mesh
 }
 
-fn params(mesh: &MaterialMesh) -> ReactionParams {
+fn params(mesh: &MaterialMesh, demand_coupled: bool) -> ReactionParams {
     let mut p = ReactionParams::default();
     p.reserve = ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area());
+    p.demand_coupled_activation.enable = demand_coupled;
     p
 }
 
@@ -198,7 +204,7 @@ fn settle(mechanics: &MechParams) -> MaterialMesh {
 
 fn deprived(settled: &MaterialMesh, mechanics: &MechParams) -> MaterialMesh {
     let mut mesh = settled.clone();
-    let p = params(&mesh);
+    let p = params(&mesh, false);
     for _ in 0..DEPRIVATION {
         let before = mesh.interior;
         let ledger = reactions_step(&mut mesh, &p, mechanics.dt, true, true);
@@ -218,9 +224,15 @@ fn run_arm(
     mechanics: &MechParams,
     steps: usize,
     clamp: Option<f64>,
+    inventory: Option<f64>,
+    demand_coupled: bool,
+    name: &str,
 ) -> ArmResult {
     let mut mesh = initial.clone();
-    let p = params(&mesh);
+    let p = params(&mesh, demand_coupled);
+    let mut region =
+        inventory.map(|mass| FiniteSpatialResourceRegionV1::new([0.0, 0.0], 5.0, mass, mass));
+    let transport = TransportParams::default();
     let initial_snap = snap(&mesh, 0, mechanics.dt);
     let quarter = steps / 4;
     let mut quarter_snapshots = vec![initial_snap];
@@ -229,6 +241,9 @@ fn run_arm(
     let mut injections = Vec::new();
     let mut n_injected = 0.0;
     let mut f_injected = 0.0;
+    let mut n_delivered = 0.0;
+    let mut f_delivered = 0.0;
+    let mut max_resource_error: f64 = 0.0;
     let mut max_a = mesh.interior.a;
     let mut max_r = mesh.interior.r;
     let mut finite_nonnegative = true;
@@ -249,6 +264,14 @@ fn run_arm(
                 n_material: n_delta * area,
                 f_material: f_delta * area,
             });
+        }
+        let resource = region
+            .as_mut()
+            .map(|r| r.uptake(&mut mesh, &transport, mechanics.dt));
+        if let Some(resource) = resource {
+            n_delivered += resource.n_delivered;
+            f_delivered += resource.f_delivered;
+            max_resource_error = max_resource_error.max(resource.conservation_error.abs());
         }
         let before = mesh.interior;
         let reaction = reactions_step(&mut mesh, &p, mechanics.dt, true, true);
@@ -291,12 +314,7 @@ fn run_arm(
         .collect::<Vec<_>>();
     let final_state = *quarter_snapshots.last().unwrap();
     ArmResult {
-        name: if clamp.is_some() {
-            "P1-B_sustained_precursor"
-        } else {
-            "P1-A_no_precursor"
-        }
-        .into(),
+        name: name.into(),
         initial: initial_snap,
         final_state,
         quarter_snapshots,
@@ -306,8 +324,12 @@ fn run_arm(
         injections,
         total_n_injected: n_injected,
         total_f_injected: f_injected,
+        n_delivered,
+        f_delivered,
         max_a,
         max_r,
+        max_resource_error,
+        resource_conservation: max_resource_error <= EPS,
         finite_nonnegative,
         trajectory_hash: stable_json_hash(&trajectory).unwrap(),
         alive: mesh.alive,
@@ -372,7 +394,7 @@ fn main() {
     assert!((mechanics.dt - DT).abs() < 1e-12);
     let settled = settle(&mechanics);
     let deprived_mesh = deprived(&settled, &mechanics);
-    let p = params(&deprived_mesh);
+    let p = params(&deprived_mesh, false);
     let phase0 = audit(&deprived_mesh, &mechanics, &p);
     assert_eq!(phase0.storage_horizon_steps, 4_000);
     let no_precursor = run_arm(
@@ -380,12 +402,18 @@ fn main() {
         &mechanics,
         phase0.storage_horizon_steps,
         None,
+        None,
+        false,
+        "P1-A_no_precursor",
     );
     let sustained = run_arm(
         &deprived_mesh,
         &mechanics,
         phase0.storage_horizon_steps,
         Some(D016_CLAMP),
+        None,
+        false,
+        "P1-B_sustained_precursor",
     );
     let q4 = 3;
     let q4_depletion_slope = no_precursor.quarter_slopes[q4];
@@ -404,6 +432,89 @@ fn main() {
         "DCDEV017_EXISTING_METABOLISM_INTRINSIC_HOMEOSTASIS_SUPPORTED"
     } else {
         "DCDEV017_INTRINSIC_HOMEOSTASIS_NOT_ESTABLISHED"
+    };
+    let phase2 = if intrinsic_pass {
+        None
+    } else {
+        let p2_a = run_arm(
+            &deprived_mesh,
+            &mechanics,
+            phase0.storage_horizon_steps,
+            None,
+            None,
+            true,
+            "P2-A_resource_free_control_enabled",
+        );
+        let p2_b = run_arm(
+            &deprived_mesh,
+            &mechanics,
+            phase0.storage_horizon_steps,
+            None,
+            Some(3.0),
+            true,
+            "P2-B_current_resource",
+        );
+        let p2_c = run_arm(
+            &deprived_mesh,
+            &mechanics,
+            phase0.storage_horizon_steps,
+            None,
+            Some(14.588954880632265),
+            true,
+            "P2-C_derived_break_even_resource",
+        );
+        let p2_d = run_arm(
+            &deprived_mesh,
+            &mechanics,
+            phase0.storage_horizon_steps,
+            Some(D016_CLAMP),
+            None,
+            true,
+            "P2-D_sustained_precursor_clamp",
+        );
+        let p2_a_legacy = run_arm(
+            &deprived_mesh,
+            &mechanics,
+            phase0.storage_horizon_steps,
+            None,
+            None,
+            false,
+            "P2-A_legacy_parity_reference",
+        );
+        let feature_off_parity = p2_a.trajectory_hash == p2_a_legacy.trajectory_hash
+            && p2_a.final_state.e_stored == p2_a_legacy.final_state.e_stored;
+        let ref_a = sustained.final_state.a;
+        let ref_r = sustained.final_state.r;
+        let before_a = (p2_c.initial.a - ref_a).abs();
+        let before_r = (p2_c.initial.r - ref_r).abs();
+        let after_a = (p2_c.final_state.a - ref_a).abs();
+        let after_r = (p2_c.final_state.r - ref_r).abs();
+        let toward_reference = after_a < before_a || after_r < before_r;
+        let p2_d_homeostasis = p2_d.quarter_net_changes[q4] >= -EPS
+            && p2_d.quarter_slopes[q4].abs() <= 0.01 * q4_depletion_slope.abs();
+        let p2_pass = feature_off_parity
+            && p2_b.resource_conservation
+            && p2_c.resource_conservation
+            && p2_c.alive
+            && p2_c.finite_nonnegative
+            && p2_c.final_state.e_stored >= p2_c.initial.e_stored - EPS
+            && toward_reference
+            && p2_d_homeostasis
+            && p2_a.ledger.a_produced.abs() <= EPS;
+        Some(json!({
+            "directive":"DC-DEV-017","phase":"PHASE_2",
+            "production_module":"chemistry-core demand_coupled_activation v1, opt-in default off",
+            "exact_feedback_equation":"multiplier = clamp(1 + (8.58379474604017 - 1) * demand / demand_reference, 1, 8.58379474604017); demand = K_low/(K_low+A) * R/(K_R+R)",
+            "demand_signal":"existing reserve low-A/release-demand composition",
+            "gain_derivation":{"sink_target":8.092100679490137,"legacy_source":0.9427183336627594,"reference_multiplier":8.58379474604017},
+            "arms":{"p2_a":p2_a,"p2_b":p2_b,"p2_c":p2_c,"p2_d":p2_d},
+            "controls":{"feature_off_reference":p2_a_legacy,"feature_off_trajectory_parity":feature_off_parity,"no_substrate_additional_a":p2_a.ledger.a_produced.abs() <= EPS},
+            "fed_reference":{"a":ref_a,"r":ref_r},
+            "reference_direction":{"before_a":before_a,"after_a":after_a,"before_r":before_r,"after_r":after_r,"toward":toward_reference},
+            "checks":{"p2_d_intrinsic_homeostasis":p2_d_homeostasis,"metabolic_repair_pass":p2_pass},
+            "finding":if p2_pass {"DCDEV017_DEMAND_COUPLED_METABOLIC_HOMEOSTASIS_QUALIFIED"} else {"DCDEV017_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED"},
+            "production_behavior_changed":true,"chemistry_behavior_changed":true,"phase3_started":false,"next_execution_started":false
+        }))
     };
     let prior_art = format!(
         "# DC-DEV-017 prior-art disposition\n\n- **REFERENCE**: Pols et al., *Nature Communications* (2019), [A synthetic metabolic network for physicochemical homeostasis](https://www.nature.com/articles/s41467-019-12287-2). It supports the relevance of sustained ATP production, substrate import, dissipation, and load-sensitive homeostasis in a synthetic vesicle.\n- **REFERENCE**: Covian et al., *PLOS ONE* (2021), [Energy homeostasis is a conserved process](https://pmc.ncbi.nlm.nih.gov/articles/PMC8575270/). It supports demand-coupled respiratory activation under changed energetic demand while high-energy state remains comparatively constrained.\n- **COMPOSE**: use the general demand-coupled principle as a rationale for the single later opt-in repair only if the existing metabolism fails its intrinsic-timescale test.\n- **BUILD**: implement only the bounded Digital Cell-native adapter authorized by DC-DEV-017, using existing A/R/N/F state and reserve demand.\n- **REJECT**: no external code, model, parameter, species, ATP/ADP implementation, or world-behavior mechanism is imported.\n\nPhase 0 and Phase 1 remain observer/assay-only; no production behavior is changed.\n"
@@ -424,15 +535,18 @@ fn main() {
             "intrinsic_horizon":{"maintenance_horizon":phase0.maintenance_horizon,"storage_horizon":phase0.storage_horizon,"dt":phase0.dt,"steps":phase0.storage_horizon_steps,"quarters":["Q1","Q2","Q3","Q4"]},
             "p1_a_no_precursor":no_precursor,"p1_b_sustained_precursor":sustained,
             "checks":{"q4_depletion_slope":q4_depletion_slope,"q4_sustained_slope":sustained.quarter_slopes[q4],"intrinsic_pass":intrinsic_pass},
-            "finding":finding,"production_behavior_changed":false,"phase2_started":false,"phase3_started":false,"next_execution_started":false
+            "finding":finding,"production_behavior_changed":false,"phase2_started":phase2.is_some(),"phase3_started":false,"next_execution_started":false
         }),
     );
+    if let Some(ref phase2_value) = phase2 {
+        write(&out, "phase2_results.json", phase2_value);
+    }
     write(
         &out,
         "artifact_manifest.json",
         &json!({
             "directive":"DC-DEV-017","entry_commit":ENTRY,"phase":"PHASE_1",
-            "files":["control_surface_audit.json","prior_art_disposition.md","phase1_results.json","artifact_manifest.json"],
+            "files":["control_surface_audit.json","prior_art_disposition.md","phase1_results.json","phase2_results.json if Phase 2 executed","artifact_manifest.json"],
             "finding":finding,"production_behavior_changed":false,"next_execution_started":false
         }),
     );

@@ -10,11 +10,11 @@
 - Local directive ID: `D-20260817-dcdev017-metabolic-homeostasis-foraging`
 - External directive ID: `DC-DEV-017`
 - Objective: `Run the gated metabolic homeostasis and reversible autonomous foraging bundle from the architect-accepted DC-DEV-016 head, stopping at the first failed phase.`
-- Current status: `IN_PROGRESS`
+- Current status: `VALIDATING`
 - Acceptance: `Phase 0 control-surface audit and Phase 1 intrinsic-timescale challenge are frozen; later phases remain conditional on the exact preregistered gates.`
-- Current phase: `Phase 0 and Phase 1 implementation/freeze commit are in progress; no Phase 2 repair or behavioral phase has started.`
+- Current phase: `Phase 2 single-repair audit completed as a valid negative result; downstream behavioral phases are stopped.`
 - Expected or actual touched areas: `DC-DEV-017 assay, evidence, documentation, governance, and scoped workflow; chemistry production remains unchanged unless the single conditional Phase 2 repair is authorized by the Phase 1 result.`
-- Immediate next action: `Run the frozen Phase 1 intrinsic-timescale challenge and stop or advance only according to its preregistered finding.`
+- Immediate next action: `Run scoped exact-head validation and submit DC-DEV-017 for architect review; do not start DC-DEV-018.`
 
 ## Temporary task-relevant facts
 
@@ -43,7 +43,7 @@
 
 ## Blockers
 
-- `DC-DEV-017` Phase 1 result, exact-head remote CI, and architect review remain open. No second metabolic design, parameter sweep, or DC-DEV-018 is authorized.
+- `DC-DEV-017` exact-head remote CI and architect review remain open. Phase 2 classification is `DCDEV017_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED`; no second metabolic design, parameter sweep, downstream behavior, or DC-DEV-018 is authorized.
 
 ## Pending decisions
 

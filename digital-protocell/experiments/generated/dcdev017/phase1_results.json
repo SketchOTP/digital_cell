@@ -28,6 +28,7 @@
   "next_execution_started": false,
   "p1_a_no_precursor": {
     "alive": true,
+    "f_delivered": 0.0,
     "final_state": {
       "a": 0.06943282142358279,
       "alive": true,
@@ -80,6 +81,8 @@
     },
     "max_a": 0.303630027599798,
     "max_r": 0.5551860064286098,
+    "max_resource_error": 0.0,
+    "n_delivered": 0.0,
     "name": "P1-A_no_precursor",
     "quarter_net_changes": [
       -20.42632432189722,
@@ -170,12 +173,14 @@
         "waste": 1.6071409528958018
       }
     ],
+    "resource_conservation": true,
     "total_f_injected": 0.0,
     "total_n_injected": 0.0,
     "trajectory_hash": "bce99da378e811c5"
   },
   "p1_b_sustained_precursor": {
     "alive": true,
+    "f_delivered": 0.0,
     "final_state": {
       "a": 0.20716728613657207,
       "alive": true,
@@ -32229,6 +32234,8 @@
     },
     "max_a": 0.303630027599798,
     "max_r": 0.5551860064286098,
+    "max_resource_error": 0.0,
+    "n_delivered": 0.0,
     "name": "P1-B_sustained_precursor",
     "quarter_net_changes": [
       -11.594345381523496,
@@ -32319,12 +32326,13 @@
         "waste": 1.8754631674764841
       }
     ],
+    "resource_conservation": true,
     "total_f_injected": 31.036434284041395,
     "total_n_injected": 31.036434284041395,
     "trajectory_hash": "888044ced0c8b1f8"
   },
   "phase": "PHASE_1",
-  "phase2_started": false,
+  "phase2_started": true,
   "phase3_started": false,
   "production_behavior_changed": false
 }

@@ -418,3 +418,27 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: exact-head remote validation and independent architect interpretation of the conversion/storage bottleneck classification.
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
+
+## D-20260817-dcdev017-metabolic-homeostasis-foraging - PARTIAL
+
+- Outcome ID: OUT-DCDEV017-METABOLIC-HOMEOSTASIS-NEGATIVE
+- Supersedes outcome: none
+- Closed: `2026-08-17T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Phase 0 and Phase 1 reproduced the authorized DC-DEV-016 settlement/deprivation and failed to establish intrinsic homeostasis. The one authorized opt-in demand-coupled N/F-to-A activation repair was then executed across the four preregistered Phase 2 arms. It preserved exact feature-off parity and finite resource conservation, but the derived-resource arm ended at `E_stored=20.698866355495912` versus the deprived starting `60.82781514212436`, and the sustained-clamp Q4 slope was `-0.04512837251548092` versus the allowed magnitude `0.003936479727492739`. Classification: `DCDEV017_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED`.
+- Changed areas: DC-DEV-017 assay, one opt-in default-off chemistry adapter, evidence, documentation, workflow, and governance records; no downstream behavior or DC-DEV-018 work started.
+- Validation:
+  - Governance validation in ADOPTED mode - PASSED
+  - Phase 0/1 exact assay - PASSED with intrinsic homeostasis not established
+  - Demand-coupled activation focused library tests - PASSED
+  - D017 example check/run - PASSED with Phase 2 negative classification
+  - Feature-off trajectory parity - PASSED
+  - Resource world-loss/organism-delivery conservation - PASSED
+  - P2-C strict E_stored restoration - FAILED as the diagnostic result
+  - P2-D strict homeostasis threshold - FAILED as the diagnostic result
+  - Broad chemistry integration target - BLOCKED by pre-existing missing D008 fixture and unrelated ambiguous test imports
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: exact-head remote validation and independent architect review of the negative-result evidence.
+- Blockers: exact-head remote CI and architect review; no further metabolic repair is authorized.
+- Follow-up directive: none
