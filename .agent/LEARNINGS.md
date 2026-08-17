@@ -117,3 +117,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-016 observer-only metabolic break-even resource sufficiency challenge.
 - Supersedes learning: none
+
+## L-DCDEV019-001
+
+- Learning ID: `L-DCDEV019-001`
+- Date: `2026-08-17`
+- Fact or lesson: The current DC-DEV-019 resource geometry requires more finite N/F inventory than the accepted DC-DEV-018-R1 reference replay. Under center `[4.8,0.0]`, radius `1.5`, and 480 steps, the well-mixed upper bound fails at the prior inventory, while deterministic Phase 1B/1C selects `19.878372106390554` and passive existing delivery passes without a transport multiplier.
+- Evidence location: `digital-protocell/examples/dcdev019_phase1_delivery.rs`, `digital-protocell/experiments/generated/dcdev019/phase1/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev019/phase1_delivery.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-019 Phase 1 delivery-capacity audit; homeostasis and architect review remain pending.
+- Supersedes learning: none

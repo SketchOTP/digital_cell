@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260817-dcdev016-metabolic-break-even`
-- External directive ID: `DC-DEV-016`
-- Objective: `Determine whether one preregistered resource inventory derived from the DC-DEV-015 measured deficit can maintain available metabolic potential and restore stored activated material under the existing metabolism.`
-- Current status: `VALIDATING`
-- Acceptance: `Observer-only DC-DEV-016 challenge completed locally with baseline parity, resource conservation, supply sufficiency, and available-potential break-even; stored A/R/E_stored restoration was not observed; exact-head remote CI and architect review remain pending.`
-- Current phase: `DC-DEV-016 evidence and governance package are prepared for pushed draft-PR validation; architect review is next.`
-- Expected or actual touched areas: `DC-DEV-016 observer assay/docs/artifacts/workflow, regulatory-core example registration, scoped CI, current governance state`
-- Immediate next action: `Push DC-DEV-016, open the draft PR against DC-DEV-015, run exact-head remote CI, and return for architect review; do not begin DC-DEV-017.`
+- Local directive ID: `D-20260817-dcdev019-nutrient-homeostasis-persistence`
+- External directive ID: `DC-DEV-019`
+- Objective: `Qualify finite nutrient delivery, one material-state homeostat, and the M0–M5 metabolic persistence loop from the exact clean DC-DEV-016 base.`
+- Current status: `IN_PROGRESS`
+- Acceptance: `Phase 1 and Gate 2 passed locally; M0–M5 and exact-head remote validation remain open.`
+- Current phase: `DC-DEV-019 Phase 2 homeostat implementation and frozen M0–M5 qualification.`
+- Expected or actual touched areas: `regulatory-core post-Phase-1 homeostat, observer assays, compact evidence, documentation, governance, scoped CI`
+- Immediate next action: `Implement and test the default-off homeostat, then run M0–M5; stop before behavior if Gate 3 fails.`
 
 ## Temporary task-relevant facts
 

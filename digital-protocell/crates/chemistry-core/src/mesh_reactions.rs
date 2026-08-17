@@ -161,6 +161,21 @@ pub fn reactions_step(
     enable_build: bool,
     enable_metab: bool,
 ) -> ReactionLedger {
+    reactions_step_counterfactual(mesh, p, dt, enable_build, enable_metab, 1.0)
+}
+
+/// Execute the canonical reaction sequence with an observer-only multiplier
+/// on the existing N/F -> A activation extent. Gain 1.0 is the ordinary
+/// production path; the helper carries no persistent state or controller.
+pub fn reactions_step_counterfactual(
+    mesh: &mut MaterialMesh,
+    p: &ReactionParams,
+    dt: f64,
+    enable_build: bool,
+    enable_metab: bool,
+    activation_gain: f64,
+) -> ReactionLedger {
+    debug_assert!(activation_gain.is_finite() && activation_gain >= 0.0);
     let mut led = ReactionLedger::default();
     if !mesh.alive {
         return led;
@@ -193,6 +208,7 @@ pub fn reactions_step(
         let extent = p.k_act
             * qc
             * gh
+            * activation_gain
             * mesh.interior.n.max(0.0)
             * mesh.interior.f.max(0.0)
             * dt

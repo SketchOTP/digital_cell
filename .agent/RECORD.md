@@ -35,3 +35,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Contractile force-vector sum max norm was `6.804363002006077e-16`; contractility-only centroid displacement was `2.473548217003853e-18`; observed active-minus-control drift was attributed to the changed baseline mechanics force field after deformation.
 - Affected areas: DC-DEV-009 audit evidence and developmental/sensorimotor architecture selection; no production locomotion mechanism.
 - Supersedes record: none
+
+## DEC-DCDEV019-001
+
+- Date: `2026-08-17`
+- Record or decision ID: `DEC-DCDEV019-001`
+- Status: `ACTIVE`
+- Decision or event: DC-DEV-019 Gate 2 selected `M_selected=19.878372106390554` with `G_transport_max=1` after the required current-inventory D1/D2 challenge failed and the bounded passive-delivery root passed.
+- Rationale: Existing delivery is sufficient at the selected finite inventory; adding a transport-capacity actuator is not scientifically required by this gate.
+- Affected areas: DC-DEV-019 Phase 1 delivery protocol and subsequent homeostat qualification.
+- Supersedes record: none

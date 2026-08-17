@@ -418,3 +418,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: exact-head remote validation and independent architect interpretation of the conversion/storage bottleneck classification.
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
+
+## D-20260817-dcdev019-nutrient-homeostasis-persistence - PARTIAL
+
+- Outcome ID: `OUT-DCDEV019-PHASE1-DELIVERY`
+- Supersedes outcome: none
+- Closed: `2026-08-17T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Phase 1 reconstructed the production finite-resource boundary and passed Gates 0–2. Under the required current geometry, D1 ended at `E_stored=58.43844935623427` and D2's well-mixed upper bound ended at `57.819981156419516`; deterministic Phase 1B/1C selected `M_selected=19.878372106390554`, where passive delivery ended at `61.68434818478833`. `G_transport_max=1` was therefore retained. The accepted R1 value was separately reproduced only under its recorded reference geometry.
+- Changed areas: observer-only counterfactual helpers, Phase 1 assay registration, compact Phase 1 evidence, documentation, and governance; no default production trajectory change.
+- Validation:
+  - Exact entry and protocol parity - PASSED
+  - Chemistry gain-1 observer parity - PASSED
+  - Resource uptake gain-1 observer parity - PASSED
+  - Current-geometry D1/D2 delivery audit - PASSED as a Gate 2 diagnostic
+  - Deterministic mass root and passive selected-mass restoration - PASSED
+  - M0–M5 homeostasis qualification - PENDING
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: the one-state homeostat must remain feature-off compatible and pass the frozen M0–M5 qualification before any behavior work is authorized.
+- Blockers: Gate 3, exact-head remote CI, and architect review.
+- Follow-up directive: none

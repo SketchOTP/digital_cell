@@ -24,6 +24,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260817-dcdev019-nutrient-homeostasis-persistence
+
+- Issued: `2026-08-17T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-019`
+- Objective: Qualify the finite nutrient delivery contract, one coordinated metabolic acquisition homeostat, and the preregistered M0–M5 persistence loop from clean DC-DEV-016.
+- Scope: Exact entry `1e242f28152797b512e25cd56c7b718e45d6ca97`, reconstructed finite-resource semantics, current-geometry D1/D2 delivery bounds, deterministic mass selection, one default-off material-state homeostat, M0–M5 metabolic qualification, compact evidence, documentation, governance, and exact-head remote CI.
+- Exclusions: chemistry equation repair, mechanics or substrate changes, behavior/exploration before Gate 3, new sensors, targets, contact inputs, reward, fitness, planners, parameter screening, second controllers, and DC-DEV-020.
+- Acceptance: `DCDEV019_FINITE_NUTRIENT_HOMEOSTASIS_PERSISTENCE_BUNDLE_COMPLETE` plus exactly one authorized classification only after all passed gates, pushed draft PR, exact-head CI, and architect review.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: `DC-DEV-016`
+- Status at issuance: ISSUED
+
 ## D-20260816-dcdev011-passive-isotropic-stick-slip-traction
 
 - Issued: `2026-08-16T00:00:00-04:00`

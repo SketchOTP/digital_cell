@@ -64,6 +64,19 @@ impl FiniteSpatialResourceRegionV1 {
         transport: &TransportParams,
         dt: f64,
     ) -> SpatialResourceStepLedgerV1 {
+        self.uptake_with_capacity_multiplier(mesh, transport, dt, 1.0)
+    }
+
+    /// Observer-only diagnostic multiplier for the existing inward-gradient
+    /// flux. A multiplier of 1.0 is exactly the production uptake path.
+    pub fn uptake_with_capacity_multiplier(
+        &mut self,
+        mesh: &mut MaterialMesh,
+        transport: &TransportParams,
+        dt: f64,
+        capacity_multiplier: f64,
+    ) -> SpatialResourceStepLedgerV1 {
+        debug_assert!(capacity_multiplier.is_finite() && capacity_multiplier >= 0.0);
         let mut ledger = SpatialResourceStepLedgerV1::default();
         if !mesh.alive || dt <= 0.0 {
             return ledger;
@@ -84,6 +97,7 @@ impl FiniteSpatialResourceRegionV1 {
                 transport.k_flux,
                 segment,
                 dt,
+                capacity_multiplier,
             );
             let f_delta = Self::inward_mass(
                 self.f_mass,
@@ -93,6 +107,7 @@ impl FiniteSpatialResourceRegionV1 {
                 transport.k_flux,
                 segment,
                 dt,
+                capacity_multiplier,
             );
             self.n_mass = (self.n_mass - n_delta).max(0.0);
             self.f_mass = (self.f_mass - f_delta).max(0.0);
@@ -146,6 +161,7 @@ impl FiniteSpatialResourceRegionV1 {
         k_flux: f64,
         segment_length: f64,
         dt: f64,
+        capacity_multiplier: f64,
     ) -> f64 {
         if world_mass <= 1e-12 || boundary_concentration <= 0.0 || dt <= 0.0 {
             return 0.0;
@@ -155,7 +171,9 @@ impl FiniteSpatialResourceRegionV1 {
             * (boundary_concentration - interior_concentration.max(0.0))
             * segment_length
             * dt;
-        requested.max(0.0).min(world_mass)
+        (requested * capacity_multiplier.max(0.0))
+            .max(0.0)
+            .min(world_mass)
     }
 }
 
