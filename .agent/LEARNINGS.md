@@ -97,3 +97,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-012 fixed-topology endogenous-polarity qualification; remote CI and architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV012-002
+
+- Learning ID: L-DCDEV012-002
+- Date: 2026-08-16
+- Fact or lesson: Exact-head remote CI run `31980775578` passed governance, the frozen DC-DEV-012 qualification, preservation through DC-DEV-011, Phase-1, D-088, evolution-harness, and checkout-head verification at result commit `ac09a485f8d0b637da76ecd198ea0ee4d94e331b`.
+- Evidence location: GitHub PR #21 and `.github/workflows/dc-dev-012.yml`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-012 remote validation.
+- Supersedes learning: none

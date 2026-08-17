@@ -129,6 +129,29 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260816-dcdev012-endogenous-polarity - PARTIAL
+
+- Outcome ID: OUT-DCDEV012-ENDOGENOUS-POLARITY-NEGATIVE-REMOTE
+- Supersedes outcome: none
+- Closed: `2026-08-16T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Exact-head remote CI run `31980775578` passed at result commit `ac09a485f8d0b637da76ecd198ea0ee4d94e331b`. The preregistered negative result remains `DCDEV012_ENDOGENOUS_POLARITY_OR_MOTILITY_NOT_ESTABLISHED`; architect review is pending.
+- Changed areas: remote-validation governance record only; scientific implementation and evidence remain the sealed DC-DEV-012 package.
+- Validation:
+  - Governance ADOPTED validation - PASSED
+  - Frozen artifact and boundary validation - PASSED
+  - DC-DEV-012 qualification and production tests - PASSED
+  - DC-DEV-002 through DC-DEV-011 preservation assays - PASSED
+  - Phase-1 focused regression - PASSED
+  - D-088 focused regression - PASSED
+  - Evolution-harness regression - PASSED
+  - Exact checkout-head assertion - PASSED
+  - Exact-head remote CI run `31980775578` - PASSED
+  - Architect review - PENDING
+- Remaining risks: independent architect review of the negative result and production stochastic boundary.
+- Blockers: architect review.
+- Follow-up directive: none
+
 ## D-20260815-dcdev002-local-regulatory-substrate - PARTIAL
 
 - Outcome ID: OUT-DCDEV002-LOCAL-REGULATORY-SUBSTRATE

@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-012`
 - Objective: `Determine whether finite endogenous stochastic polarity can form without an external cue and drive the accepted funded motility path.`
 - Current status: `VALIDATING`
-- Acceptance: `Frozen 24-seed qualification produced the preregistered negative result locally; exact-head remote CI and independent architect review are pending.`
-- Current phase: `DC-DEV-012 evidence is sealed locally and the stacked draft PR/remote validation are next.`
+- Acceptance: `Frozen 24-seed qualification produced the preregistered negative result; exact-head remote CI passed and independent architect review is pending.`
+- Current phase: `DC-DEV-012 evidence and exact-head remote validation are complete; architect review is next.`
 - Expected or actual touched areas: `regulatory-core endogenous polarity production module, DC-DEV-012 assay/docs/artifacts/workflow, scoped CI, current governance state`
-- Immediate next action: `Push the sealed negative-result package for exact-head remote CI and architect review; do not begin DC-DEV-013.`
+- Immediate next action: `Return PR #21 and exact-head remote CI evidence for independent architect review; do not begin DC-DEV-013.`
 
 ## Temporary task-relevant facts
 
@@ -32,7 +32,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Local Rust 1.89.0 scoped qualification, preservation matrix, focused regressions, and formatting`
+- Command or check: `Exact-head remote CI run 31980775578 at result commit ac09a485f8d0b637da76ecd198ea0ee4d94e331b`
 - Result: `PASSED`
 
 ## Risks
@@ -43,7 +43,7 @@
 
 ## Blockers
 
-- Independent architect review remains open. DC-DEV-012 is a valid negative result locally until exact-head remote CI and architect review complete.
+- Independent architect review remains open. DC-DEV-012 is a valid negative result with exact-head remote CI passed.
 
 ## Pending decisions
 
