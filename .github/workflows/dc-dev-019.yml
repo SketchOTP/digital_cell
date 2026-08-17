@@ -1,0 +1,112 @@
+name: DC-DEV-019 finite nutrient homeostasis persistence
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-019-gate3-stop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate committed DC-DEV-019 stop evidence and scope
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("digital-protocell/experiments/generated/dcdev019")
+          phase1 = json.loads((root / "phase1/results.json").read_text())
+          phase3 = json.loads((root / "phase3/homeostasis_qualification.json").read_text())
+          manifest = json.loads((root / "artifact_manifest.json").read_text())
+
+          entry = "1e242f28152797b512e25cd56c7b718e45d6ca97"
+          if phase1["entry_commit"] != entry or phase3["entry"] != entry:
+              raise SystemExit("wrong DC-DEV-019 entry authority")
+          if abs(phase1["diagnostic"]["selected_inventory"] - 19.878372106390554) > 1e-12:
+              raise SystemExit("selected inventory changed")
+          if not phase1["gate_1"] or not phase1["gate_2"]:
+              raise SystemExit("finite delivery qualification changed")
+          if not phase3["m0_feature_off_exact"] or not phase3["m1_h_increased"] or not phase3["m1_source_zero"] or not phase3["m1_no_material_created"]:
+              raise SystemExit("homeostat causal/parity controls changed")
+          if phase3["m2_final_above_initial"] or phase3["m2_distance_decreased"] or phase3["m3_pass"]:
+              raise SystemExit("negative metabolic disposition changed")
+          if phase3["m4_controller_unwinding"] is not None or phase3["m5_three_cycle"] is not None:
+              raise SystemExit("downstream metabolic phases executed after stop")
+          if phase3["classification"] != "DCDEV019_COORDINATED_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED":
+              raise SystemExit("unexpected DC-DEV-019 classification")
+          if phase3["next_execution_started"]:
+              raise SystemExit("next execution started")
+          if manifest.get("next_execution_started") is not False:
+              raise SystemExit("manifest next_execution_started not false")
+          print("validated DC-DEV-019 committed stop evidence")
+          PY
+
+          changed="$(git diff --name-only 1e242f28152797b512e25cd56c7b718e45d6ca97 HEAD)"
+          printf '%s\n' "$changed"
+          if printf '%s\n' "$changed" | grep -Ei 'dcdev020|dc-dev-020|forag|navigation|chemotax|reinforcement|planner'; then
+            exit 1
+          fi
+
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: |
+          rustup run 1.89.0 rustfmt --edition 2021 --check \
+            crates/regulatory-core/src/metabolic_homeostat.rs \
+            crates/regulatory-core/src/spatial_resource.rs \
+            crates/chemistry-core/src/mesh_reactions.rs \
+            examples/dcdev019_phase1_delivery.rs \
+            examples/dcdev019_homeostasis.rs
+
+      - name: Homeostat direct tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p regulatory-core metabolic_homeostat -- --nocapture
+
+      - name: Reproduce Phase 1 delivery audit
+        working-directory: digital-protocell
+        env:
+          DCDEV019_OUTPUT_ROOT: ${{ runner.temp }}/dcdev019-phase1
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev019_phase1_delivery --quiet
+
+      - name: Reproduce frozen Gate 3 homeostasis result
+        working-directory: digital-protocell
+        env:
+          DCDEV019_OUTPUT_ROOT: ${{ runner.temp }}/dcdev019-phase3
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev019_homeostasis --quiet
+
+      - name: Preserve accepted DC-DEV-016 and scientific baselines
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run -p regulatory-core --example dcdev016_metabolic_break_even --quiet
+          cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          actual="$(git rev-parse --verify HEAD)"
+          echo "checked out $actual"
+          test "$actual" = "$EXPECTED_HEAD"
