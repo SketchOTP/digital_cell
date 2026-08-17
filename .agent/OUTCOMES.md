@@ -446,7 +446,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Supersedes outcome: `OUT-DCDEV019-PHASE1-DELIVERY`
 - Closed: `2026-08-17T00:00:00-04:00`
 - Acceptance: `PARTIAL`
-- Summary: The default-off one-state homeostat passed M0 feature-off parity and M1 starvation demand accumulation, but M2 finite feeding did not restore stored material and M3 sustained precursor homeostasis failed its target, Q4 slope, and Q4 mean-h bounds. Gate 3 classification: `DCDEV019_COORDINATED_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED`.
+- Summary: The default-off one-state homeostat passed M0 feature-off parity and M1 starvation demand accumulation, but M2 finite feeding did not restore stored material and M3 sustained precursor homeostasis remained within the target band while failing the Q4 slope and Q4 mean-h bounds. Gate 3 classification: `DCDEV019_COORDINATED_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED`.
 - Changed areas: post-Phase-1 default-off homeostat API, observer-only qualification example, compact evidence, documentation, and governance; no behavior/exploration implementation was started.
 - Validation:
   - Homeostat unit tests - PASSED (`4/4`)

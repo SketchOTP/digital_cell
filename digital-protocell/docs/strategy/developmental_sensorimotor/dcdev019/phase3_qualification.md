@@ -23,8 +23,8 @@ world source or an implicit material claim.
   `E_stored=55.84948101858201`, below the window start; distance to target and
   both A/R replete-reference comparisons also failed, although resource
   conservation, finite nonnegative state, and viability passed.
-- M3 sustained clamp: failed. Final `E_stored=76.82632823803954` is below the
-  lower target bound `0.95*E_target`; Q4 slope was
+- M3 sustained clamp: failed. Final `E_stored=76.82632823803954` lies within
+  the `0.95–1.05*E_target` band, but Q4 slope was
   `0.004561319184379901`, against the allowed
   `0.00007871648451166625`, and Q4 mean `h` was `1.0`, above `0.95`.
 - M4 and M5: correctly not executed because the frozen M3 qualification did
