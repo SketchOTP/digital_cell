@@ -418,3 +418,28 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: exact-head remote validation and independent architect interpretation of the conversion/storage bottleneck classification.
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
+
+## D-20260817-dcdev018-integral-homeostat-persistence - PARTIAL
+
+- Outcome ID: OUT-DCDEV018-INTEGRAL-HOMEOSTASIS-NEGATIVE
+- Supersedes outcome: none
+- Closed: `2026-08-17T10:30:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Phase 0A established finite source-side feasibility with `G_cap_required=3.368462987851295`. The one derived stateful integral homeostat then failed the finite-resource restoration and sustained-precursor homeostasis gates. Final finding: `DCDEV018_INTEGRAL_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED`; diagnostic: `DCDEV018_FAIL_SOURCE_OUTPUT_INSUFFICIENT`.
+- Changed areas: DC-DEV-018 observer audit, one default-off post-Phase-1 chemistry wrapper, evidence, documentation, governance, and scoped workflow. Certified Phase-1 equations and all downstream behavior remain unchanged.
+- Validation:
+  - Phase 0 source feasibility - PASSED
+  - Prior-art disposition - RECORDED as reference/compose, native build
+  - Direct integral-homeostat tests - PASSED (3 tests)
+  - Feature-off trajectory parity - PASSED
+  - Zero-substrate causality - PASSED
+  - Resource world-loss conservation - PASSED
+  - Finite-resource restoration - FAILED as the diagnostic result
+  - Sustained homeostasis - FAILED as the diagnostic result
+  - Controller capacity saturation - NOT the dominant failure (`max_capacity=1.07089297644381` vs cap `2.3684629878513`)
+  - Downstream phases 3-6 - NOT RUN
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: exact-head remote validation and independent architect interpretation of the negative homeostat result.
+- Blockers: exact-head remote CI and architect review; no tuning or DC-DEV-019 is authorized.
+- Follow-up directive: none

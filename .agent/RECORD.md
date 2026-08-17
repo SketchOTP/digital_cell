@@ -35,3 +35,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Contractile force-vector sum max norm was `6.804363002006077e-16`; contractility-only centroid displacement was `2.473548217003853e-18`; observed active-minus-control drift was attributed to the changed baseline mechanics force field after deformation.
 - Affected areas: DC-DEV-009 audit evidence and developmental/sensorimotor architecture selection; no production locomotion mechanism.
 - Supersedes record: none
+
+## DEC-DCDEV018-001
+
+- Date: 2026-08-17
+- Record or decision ID: DEC-DCDEV018-001
+- Status: PROPOSED
+- Decision or event: The first DC-DEV-018 integral metabolic homeostat attempt failed metabolic qualification and was stopped before downstream behavior.
+- Rationale: Phase 0 source feasibility was finite, but the frozen stateful controller failed finite-resource stored-material restoration and sustained homeostasis. The required negative diagnostic was source-output insufficiency; tuning and DC-DEV-019 remain unauthorized.
+- Affected areas: DC-DEV-018 post-Phase-1 homeostat adapter and evidence only; certified Phase-1 equations and accepted downstream capabilities are preserved.
+- Supersedes record: none

@@ -117,3 +117,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-016 observer-only metabolic break-even resource sufficiency challenge.
 - Supersedes learning: none
+
+## L-DCDEV018-001
+
+- Learning ID: L-DCDEV018-001
+- Date: 2026-08-17
+- Fact or lesson: A finite source-side activation capacity exists in the exact DC-DEV-016 matched-precursor trace, but one derived signed integral assimilation-capacity state did not establish stored-material restoration or sustained homeostasis. The derived-resource arm was source-output limited on the bounded feeding window, while the sustained precursor arm retained negative late E_stored drift without reaching the controller cap.
+- Evidence location: `digital-protocell/crates/chemistry-core/src/integral_homeostat.rs`, `digital-protocell/examples/dcdev018_integral_homeostat.rs`, `digital-protocell/experiments/generated/dcdev018/failure_diagnostic.json`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev018/phase2_negative_result.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-018 integral metabolic homeostat qualification; downstream persistence phases not authorized.
+- Supersedes learning: none

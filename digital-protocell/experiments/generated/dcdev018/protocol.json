@@ -1,17 +1,25 @@
 {
+  "arms": [
+    "M0_feature_off",
+    "M1_starvation_homeostat_on",
+    "M2_current_resource_homeostat_on",
+    "M3_derived_sufficient_resource_homeostat_on",
+    "M4_sustained_precursor_homeostat_on"
+  ],
+  "capacity_max": 2.368462987851295,
   "dcdev017_production_imported": false,
   "deprivation_steps": 480,
   "directive": "DC-DEV-018",
+  "downstream_behavior_started": false,
   "dt": 0.02,
-  "e_stored": "area*(A+R)",
   "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
-  "observer_only": true,
+  "k_integral": 0.029605787348141187,
+  "observer_only": false,
   "parameter_sweep": false,
-  "phase": "0",
-  "production_behavior_changed": false,
+  "phase": "0-2",
   "settlement_steps": 5000,
   "source_branch": "strategy/dc-dev-016-metabolic-break-even",
-  "source_feasibility_steps": 4000,
-  "storage_horizon": 80.0,
+  "storage_horizon_steps": 4000,
+  "target_e_stored": 77.91027880846893,
   "target_precursor": 0.1476710565778127
 }

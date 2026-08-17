@@ -1,12 +1,17 @@
 {
-  "conclusion": "DCDEV018_SOURCE_ONLY_HOMEOSTASIS_FEASIBLE",
+  "chemistry_behavior_changed": true,
+  "conclusion": "DCDEV018_INTEGRAL_HOMEOSTASIS_PERSISTENCE_BUNDLE_COMPLETE",
   "directive": "DC-DEV-018",
   "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
   "files": [
     "protocol.json",
     "source_feasibility.json",
+    "metabolic_results.json",
+    "failure_diagnostic.json if metabolism fails",
     "artifact_manifest.json"
   ],
   "next_execution_started": false,
-  "phase": "0"
+  "overall_classification": "DCDEV018_INTEGRAL_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED",
+  "phase": "0-2",
+  "production_behavior_changed": true
 }

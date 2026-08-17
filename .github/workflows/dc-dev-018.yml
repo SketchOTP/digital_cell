@@ -1,0 +1,116 @@
+name: DC-DEV-018 integral homeostat persistence bundle
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-018-metabolic-stop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate committed DC-DEV-018 stop evidence
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("digital-protocell/experiments/generated/dcdev018")
+          required = ["protocol.json", "source_feasibility.json", "metabolic_results.json", "failure_diagnostic.json", "artifact_manifest.json"]
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              raise SystemExit(f"missing artifacts: {missing}")
+          protocol = json.loads((root / "protocol.json").read_text())
+          results = json.loads((root / "metabolic_results.json").read_text())
+          diagnostic = json.loads((root / "failure_diagnostic.json").read_text())
+          manifest = json.loads((root / "artifact_manifest.json").read_text())
+          if protocol["entry_commit"] != "1e242f28152797b512e25cd56c7b718e45d6ca97":
+              raise SystemExit("wrong entry authority")
+          if protocol["settlement_steps"] != 5000 or protocol["deprivation_steps"] != 480 or protocol["storage_horizon_steps"] != 4000:
+              raise SystemExit("formal horizon changed")
+          if results["finding"] != "DCDEV018_INTEGRAL_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED":
+              raise SystemExit("unexpected metabolic finding")
+          if diagnostic["classification"] != "DCDEV018_FAIL_SOURCE_OUTPUT_INSUFFICIENT":
+              raise SystemExit("unexpected failure classification")
+          if results["downstream_phases_started"] or results["next_execution_started"]:
+              raise SystemExit("downstream execution was started")
+          if not results["feature_off"]["parity"]:
+              raise SystemExit("feature-off parity failed")
+          if not results["gates"]["zero_substrate_causality"] or not results["gates"]["resource_conservation"]:
+              raise SystemExit("causality or conservation failed")
+          if results["gates"]["finite_resource_restoration"] or results["gates"]["sustained_homeostasis"]:
+              raise SystemExit("negative disposition changed")
+          if manifest["next_execution_started"]:
+              raise SystemExit("manifest permits next execution")
+          print("validated DC-DEV-018 committed metabolic stop evidence")
+          PY
+          changed="$(git diff --name-only 1e242f28152797b512e25cd56c7b718e45d6ca97 HEAD)"
+          if printf '%s\n' "$changed" | grep -Ei 'dcdev017|dc-dev-017|dcdev019|dc-dev-019|navigation|chemotaxis|foraging|exploration'; then exit 1; fi
+
+      - name: Scoped formatting
+        run: rustup run 1.89.0 rustfmt --edition 2021 --check digital-protocell/crates/chemistry-core/src/integral_homeostat.rs digital-protocell/examples/dcdev018_integral_homeostat.rs
+
+      - name: Integral homeostat focused tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --lib integral_homeostat
+
+      - name: Reproduce exact Phase 0-2 assay
+        working-directory: digital-protocell
+        run: |
+          tmp_dir="$(mktemp -d)"
+          DCDEV018_OUTPUT_ROOT="$tmp_dir" cargo +1.89.0 run -p regulatory-core --example dcdev018_integral_homeostat --quiet
+
+      - name: Preserve accepted DC-DEV-002 through DC-DEV-016 paths
+        working-directory: digital-protocell
+        run: |
+          tmp_dir="$(mktemp -d)"
+          cargo +1.89.0 run -p regulatory-core --example dcdev002_gate_assay -- "$tmp_dir/dcdev002"
+          cargo +1.89.0 run -p regulatory-core --example dcdev003_gate_assay -- "$tmp_dir/dcdev003"
+          cargo +1.89.0 run -p regulatory-core --example dcdev004_gate_assay -- "$tmp_dir/dcdev004"
+          cargo +1.89.0 run -p regulatory-core --example dcdev005_gate_assay -- "$tmp_dir/dcdev005"
+          cargo +1.89.0 run -p regulatory-core --example dcdev006_gate_assay -- "$tmp_dir/dcdev006"
+          cargo +1.89.0 run -p regulatory-core --example dcdev007_gate_assay -- "$tmp_dir/dcdev007"
+          cargo +1.89.0 run -p regulatory-core --example dcdev008_gate_assay -- "$tmp_dir/dcdev008"
+          cargo +1.89.0 run -p regulatory-core --example dcdev009_gate_assay -- "$tmp_dir/dcdev009"
+          cargo +1.89.0 run -p regulatory-core --example dcdev011_gate_assay -- "$tmp_dir/dcdev011"
+          cargo +1.89.0 run -p regulatory-core --example dcdev013_gate_assay -- "$tmp_dir/dcdev013"
+          cargo +1.89.0 run -p regulatory-core --example dcdev015_metabolic_restoration_assay --quiet
+          cargo +1.89.0 run -p regulatory-core --example dcdev016_metabolic_break_even --quiet
+
+      - name: Phase-1 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+
+      - name: D-088 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+
+      - name: Evolution-harness regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          actual="$(git rev-parse --verify HEAD)"
+          test "$actual" = "$EXPECTED_HEAD"

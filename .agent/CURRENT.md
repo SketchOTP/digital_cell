@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-018`
 - Objective: `Resolve the metabolic-homeostasis bottleneck with one derived stateful integral assimilation homeostat, then continue only through the preregistered persistence gates if metabolism qualifies.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `Phase 0A source feasibility passed and Commit A is frozen; the single Phase 1 homeostat and direct tests are frozen in Commit B; formal Phase 2 qualification is the current gate.`
-- Current phase: `Phase 1 implementation frozen; Phase 2 metabolic qualification is running.`
+- Acceptance: `Phase 0A source feasibility and Phase 1 implementation are frozen; Phase 2 produced the preregistered negative metabolic result and downstream phases are stopped pending exact-head CI and architect review.`
+- Current phase: `Phase 2 failure diagnostic complete; no Phase 3-6 execution started.`
 - Expected or actual touched areas: `DC-DEV-018 observer audit, one default-off post-Phase-1 chemistry wrapper, evidence, documentation, governance, and scoped CI; certified Phase-1 equations remain frozen.`
-- Immediate next action: `Run the exact M0-M4 metabolic qualification and, on failure, record the quarter diagnostic and stop all downstream behavior.`
+- Immediate next action: `Validate the committed negative evidence, push the branch, open one draft PR against DC-DEV-016, and submit DC-DEV-018 for architect review; do not begin DC-DEV-019.`
 
 ## Temporary task-relevant facts
 
@@ -43,7 +43,7 @@
 
 ## Blockers
 
-- DC-DEV-018 remains conditional on the Phase 2 metabolic gates. If the integral controller fails, downstream behavior must stop and the failure diagnostic must be recorded without tuning.
+- DC-DEV-018 metabolic qualification failed with `DCDEV018_FAIL_SOURCE_OUTPUT_INSUFFICIENT`; downstream behavior, tuning, and DC-DEV-019 are blocked.
 
 ## Pending decisions
 
