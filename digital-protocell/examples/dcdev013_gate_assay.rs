@@ -20,6 +20,7 @@ use std::path::{Path, PathBuf};
 
 const DIRECTIVE: &str = "DC-DEV-013";
 const ENTRY_COMMIT: &str = "f9c6d4e83fc9dc50e4d2ec4004ea640084ce5732";
+const FREEZE_COMMIT: &str = "fa8a689adff8cbc3b981038c4812ebdc0623116c";
 const TOPOLOGY_SIZE: usize = 24;
 const SETTLEMENT_STEPS: usize = 5_000;
 const ASSAY_STEPS: usize = 480;
@@ -686,8 +687,9 @@ fn main() {
         &output_root,
         "protocol.json",
         &json!({
-            "directive": DIRECTIVE,
-            "entry_commit": ENTRY_COMMIT,
+        "directive": DIRECTIVE,
+        "entry_commit": ENTRY_COMMIT,
+        "freeze_commit": FREEZE_COMMIT,
             "topology_size": TOPOLOGY_SIZE,
             "settlement_steps": SETTLEMENT_STEPS,
             "accepted_steps": ASSAY_STEPS,
@@ -739,11 +741,13 @@ fn main() {
         &json!({
             "directive": DIRECTIVE,
             "entry_commit": ENTRY_COMMIT,
+            "freeze_commit": FREEZE_COMMIT,
             "conclusion": conclusion,
             "settled_body_hash": settlement.settled_mesh_hash,
             "production_module": "crates/regulatory-core/src/spatial_resource.rs",
             "assay": "examples/dcdev013_gate_assay.rs",
-            "evidence_files": ["protocol.json", "settled_body.json", "arm_results.json", "gate_results.json", "final_manifest.json"]
+            "evidence_files": ["protocol.json", "settled_body.json", "arm_results.json", "gate_results.json", "final_manifest.json"],
+            "next_execution_started": false
         }),
     );
     println!("{conclusion}");

@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260816-dcdev011-passive-isotropic-stick-slip-traction`
-- External directive ID: `DC-DEV-011`
-- Objective: `Determine whether existing reserve-funded local contractility can produce retained displacement through one passive local isotropic stick-slip substrate.`
+- Local directive ID: `D-20260816-dcdev013-resource-contact-feeding`
+- External directive ID: `DC-DEV-013`
+- Objective: `Determine whether actual local contact with finite N/F resource can causally increase the organism's own resource acquisition through the accepted regulator, funded contractility, and DC-DEV-011 stick-slip path.`
 - Current status: `VALIDATING`
-- Acceptance: `Local four-arm qualification and preservation checks passed; exact-head scoped remote CI and independent architect review remain pending.`
-- Current phase: `DC-DEV-011 qualification package complete locally; remote preservation verification and draft-PR review are next.`
-- Expected or actual touched areas: `regulatory-core stick-slip production module, DC-DEV-011 assay/docs/artifacts/workflow, scoped CI, current governance state`
-- Immediate next action: `Return the complete DC-DEV-011 package for independent architect review; do not begin DC-DEV-012.`
+- Acceptance: `Frozen 480-step qualification produced the preregistered negative result; local production tests and exact frozen evidence are complete; stacked draft PR and remote CI are pending.`
+- Current phase: `DC-DEV-013 evidence and governance package are prepared for pushed draft-PR validation; architect review is next.`
+- Expected or actual touched areas: `regulatory-core spatial_resource production interface, DC-DEV-013 assay/docs/artifacts/workflow, scoped CI, current governance state`
+- Immediate next action: `Push DC-DEV-013, open the stacked draft PR against DC-DEV-011, run exact-head remote CI, and return for architect review; do not begin DC-DEV-014.`
 
 ## Temporary task-relevant facts
 
@@ -31,23 +31,23 @@
 
 ## Last validation after adoption
 
-- Command or check: `Local Rust 1.89.0 scoped qualification, preservation matrix, focused regressions, and formatting`
+- Command or check: `Local Rust 1.89.0 regulatory-core tests, exact DC-DEV-013 assay, evidence validation, and governance validation`
 - Result: `PASSED`
 
 ## Risks
 
 - Atlas has no Rust toolchain; local sanctioned Rust 1.89.0 is used with the Atlas worktree mounted through SSHFS and a local NTFS target directory.
-- The frozen substrate must remain local, isotropic, passive, and reaction-only; no DC-DEV-010 directional substrate code may enter this branch.
-- Qualification is not valid until the exact frozen protocol commit precedes all assay execution.
+- The frozen substrate remains local, isotropic, passive, and reaction-only; no DC-DEV-010 directional substrate code may enter this branch.
+- DC-DEV-012 is closed as valid negative evidence and is not imported.
 
 ## Blockers
 
-- Independent architect review remains open. Any failed remote gate stops DC-DEV-011 and returns to architect review.
+- Exact-head remote CI and independent architect review remain open. The first failed scientific gate is preserved as a negative result; no tuning is authorized.
 
 ## Pending decisions
 
-- The frozen static/kinetic set must not be changed after the protocol commit.
-- DC-DEV-012, parameter repair, parameter screening, navigation, sensing, resource seeking, and evolution remain unauthorized.
+- The frozen DC-DEV-013 geometry, inventory, horizon, and thresholds must not be changed after protocol commit `fa8a689adff8cbc3b981038c4812ebdc0623116c`.
+- DC-DEV-014, parameter repair, parameter screening, navigation, resource seeking, and evolution remain unauthorized.
 
 ## Status vocabulary
 
