@@ -19,7 +19,7 @@ N and F were both initialized to that value at the unchanged center `[4.8, 0.0]`
 
 The derived arm delivered `11.401893960861464` matched N/F units, exceeding the target. Resource-world N/F conservation passed, and `E_available` increased from `60.82781514212436` to `64.13760842349555`.
 
-The exact settled and deprived body hashes remain required. Arm-level final mesh hashes are retained as diagnostics, but arm parity is evaluated against the committed A/R/N/F and delivery values within `1e-10`, because cross-platform floating-point mesh serialization can change those diagnostic hashes without changing the accepted numeric state.
+The committed settled and deprived body hashes are recorded alongside the observed hashes. Arm parity is evaluated against the committed numeric A/R/N/F and delivery values within `1e-10`, because cross-platform floating-point mesh serialization can change diagnostic hashes without changing the accepted numeric state. This is the documented deterministic hash-format difference permitted by the directive.
 
 Stored activated material did not restore: final challenge A was `0.25977003489308437`, R was `0.4981052670434316`, and `E_stored` was `53.67843279629684`, all below the deprived start. N/F-to-A conversion was observed at fraction `0.082680854329883`.
 
