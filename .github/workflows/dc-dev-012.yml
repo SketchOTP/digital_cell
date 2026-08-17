@@ -31,7 +31,7 @@ jobs:
       - name: Validate frozen DC-DEV-012 contract and evidence
         env:
           ENTRY_COMMIT: f9c6d4e83fc9dc50e4d2ec4004ea640084ce5732
-          FREEZE_COMMIT: ${{ vars.DCDEV012_FREEZE_COMMIT }}
+          FREEZE_COMMIT: 72b72cd415bdbcbfebd79021deeb6391b1b85dda
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -102,7 +102,7 @@ jobs:
       - name: Run DC-DEV-012 qualification and production tests
         working-directory: digital-protocell
         env:
-          DCDEV012_FREEZE_COMMIT: ${{ vars.DCDEV012_FREEZE_COMMIT }}
+          DCDEV012_FREEZE_COMMIT: 72b72cd415bdbcbfebd79021deeb6391b1b85dda
         run: |
           cargo +1.89.0 test -p regulatory-core --lib -- --nocapture
           cargo +1.89.0 run -p regulatory-core --example dcdev012_gate_assay -- experiments/generated/dcdev012

@@ -1,0 +1,2498 @@
+[
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "999c9bc09ff345d2",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.5999341431998076,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0073256156766881,
+        "maximum_positive_substrate_work": 8.261318945032655e-24,
+        "regulatory_trace_hash": "573704aa8ec44e0d",
+        "reserve_spent": 0.005005549791235036,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": -1.7219360944483483e-23
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "573704aa8ec44e0d",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "1615d1075a535cf3",
+        "final_displacement_vector": [
+          6.962842601948118e-7,
+          2.727466517456062e-7
+        ],
+        "final_material_displacement": 7.47798440111689e-7,
+        "final_reserve": 0.5999341477642816,
+        "final_vertex_displacement": 7.47798440284469e-7,
+        "material_vertex_agreement_error": 1.7278000404241873e-16,
+        "maximum_funded_tension": 0.0073256156766881,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "573704aa8ec44e0d",
+        "reserve_spent": 0.005005060695689745,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "573704aa8ec44e0d",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "a5d39dc3e095b01f",
+      "event_totals": {
+        "association": 4,
+        "diffusion": 0,
+        "dissociation": 4,
+        "recruitment": 0
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 1,
+      "polarized": false,
+      "seed": 12001,
+      "state_trace_hash": "ff7288fecd4f182f",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12001,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "765963a8de9ad2c2",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.599980463565293,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.005578938789888,
+        "maximum_positive_substrate_work": 1.0244706571013599e-27,
+        "regulatory_trace_hash": "ec41f300dd1f5cca",
+        "reserve_spent": 0.0014848974803747738,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 3.348060204296749e-27
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "ec41f300dd1f5cca",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "5394a55fa6e0fa93",
+        "final_displacement_vector": [
+          5.362465400619995e-7,
+          -7.088124139058188e-16
+        ],
+        "final_material_displacement": 5.362465400619995e-7,
+        "final_reserve": 0.5999804647114823,
+        "final_vertex_displacement": 5.36246540061569e-7,
+        "material_vertex_agreement_error": 4.3050449544199815e-19,
+        "maximum_funded_tension": 0.005578938789888,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "ec41f300dd1f5cca",
+        "reserve_spent": 0.001484776916662368,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "ec41f300dd1f5cca",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "d82cd77f11ace167",
+      "event_totals": {
+        "association": 1,
+        "diffusion": 0,
+        "dissociation": 1,
+        "recruitment": 0
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 1,
+      "polarized": false,
+      "seed": 12002,
+      "state_trace_hash": "7ae82a5925ecbb75",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12002,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "30cb11e67a1cac56",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.5996973628366608,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.05966023474657939,
+        "maximum_positive_substrate_work": 3.299168241402026e-23,
+        "regulatory_trace_hash": "d26283980b97c31a",
+        "reserve_spent": 0.02300241410669243,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": -2.101290202320838e-23
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "d26283980b97c31a",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "b71c5766568b22a5",
+        "final_displacement_vector": [
+          -4.862029508451675e-6,
+          5.438080865688203e-6
+        ],
+        "final_material_displacement": 7.294659309578412e-6,
+        "final_reserve": 0.599697519212397,
+        "final_vertex_displacement": 7.294659309906974e-6,
+        "material_vertex_agreement_error": 3.285623861740486e-16,
+        "maximum_funded_tension": 0.05966023474657939,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "d26283980b97c31a",
+        "reserve_spent": 0.022983333105915108,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "d26283980b97c31a",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "05a0f05c52d74eae",
+      "event_totals": {
+        "association": 4,
+        "diffusion": 3,
+        "dissociation": 11,
+        "recruitment": 7
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 5,
+      "polarized": false,
+      "seed": 12003,
+      "state_trace_hash": "17f1b43a90d37d10",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12003,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "6b866c5422748c42",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.5999936307204706,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.00192,
+        "maximum_positive_substrate_work": 1.0799456522562216e-25,
+        "regulatory_trace_hash": "37f074cc4df6c116",
+        "reserve_spent": 0.00048410711913185234,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": -3.3554467813228267e-25
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "37f074cc4df6c116",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "d94b66c38cf92592",
+        "final_displacement_vector": [
+          -1.5145822268660895e-7,
+          -8.744444647681498e-8
+        ],
+        "final_material_displacement": 1.7488889169705142e-7,
+        "final_reserve": 0.5999936308485044,
+        "final_vertex_displacement": 1.748888913525545e-7,
+        "material_vertex_agreement_error": 3.444969287964741e-16,
+        "maximum_funded_tension": 0.00192,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "37f074cc4df6c116",
+        "reserve_spent": 0.0004840936686241094,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "37f074cc4df6c116",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "97b234eefc71d0af",
+      "event_totals": {
+        "association": 1,
+        "diffusion": 0,
+        "dissociation": 1,
+        "recruitment": 0
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 1,
+      "polarized": false,
+      "seed": 12004,
+      "state_trace_hash": "3cda88dc73ca7369",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12004,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "cf23acc2678372c8",
+        "final_displacement_vector": [
+          0.0,
+          -1.6677939150725142e-16
+        ],
+        "final_material_displacement": 1.6677939150725142e-16,
+        "final_reserve": 0.5994668326026354,
+        "final_vertex_displacement": 3.700743415417195e-17,
+        "material_vertex_agreement_error": 1.2977195735307947e-16,
+        "maximum_funded_tension": 0.09859893060470955,
+        "maximum_positive_substrate_work": 1.3402646530537174e-22,
+        "regulatory_trace_hash": "a37a18ac9380e009",
+        "reserve_spent": 0.04052422751749471,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": -1.1318658400833138e-18
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "a37a18ac9380e009",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "5f25c287bbbabe6e",
+        "final_displacement_vector": [
+          2.2195712892328877e-6,
+          9.521983301925966e-6
+        ],
+        "final_material_displacement": 9.777252308810685e-6,
+        "final_reserve": 0.5994673026840673,
+        "final_vertex_displacement": 9.77725230901861e-6,
+        "material_vertex_agreement_error": 2.0792456569430212e-16,
+        "maximum_funded_tension": 0.09859893060470955,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "a37a18ac9380e009",
+        "reserve_spent": 0.04047424628491511,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "a37a18ac9380e009",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "24198454a9de5df7",
+      "event_totals": {
+        "association": 6,
+        "diffusion": 5,
+        "dissociation": 30,
+        "recruitment": 27
+      },
+      "final_cytosolic": 997,
+      "final_membrane_bound": 3,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 6,
+      "polarized": false,
+      "seed": 12005,
+      "state_trace_hash": "a11fe8828b72bf34",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12005,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "3c3610a2a08dea8a",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.5999277135860859,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.015290129970122085,
+        "maximum_positive_substrate_work": 8.16774084349376e-24,
+        "regulatory_trace_hash": "192df1799efe18bf",
+        "reserve_spent": 0.005494242705745524,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 2.106173409984354e-23
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "192df1799efe18bf",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "2fd6172a4de7c62f",
+        "final_displacement_vector": [
+          4.3433902606493103e-7,
+          1.3691914955853033e-6
+        ],
+        "final_material_displacement": 1.436431599884294e-6,
+        "final_reserve": 0.5999277235854872,
+        "final_vertex_displacement": 1.4364315997731978e-6,
+        "material_vertex_agreement_error": 1.110962060871636e-16,
+        "maximum_funded_tension": 0.015290129970122085,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "192df1799efe18bf",
+        "reserve_spent": 0.005493090760897266,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "192df1799efe18bf",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "28bb7a5180c59f7d",
+      "event_totals": {
+        "association": 3,
+        "diffusion": 0,
+        "dissociation": 3,
+        "recruitment": 0
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 1,
+      "polarized": false,
+      "seed": 12006,
+      "state_trace_hash": "020b45c311dbb653",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12006,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "81bfbf91736290c7",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.5999674966997398,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.009014327529092984,
+        "maximum_positive_substrate_work": 5.242553826314898e-25,
+        "regulatory_trace_hash": "882fcbf0d1205fb2",
+        "reserve_spent": 0.002470464513326199,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 9.623673880835649e-25
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "882fcbf0d1205fb2",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "811c458a6d1ce71a",
+        "final_displacement_vector": [
+          6.307980228771418e-7,
+          6.307980206756538e-7
+        ],
+        "final_material_displacement": 8.920831175143007e-7,
+        "final_reserve": 0.5999674998560229,
+        "final_vertex_displacement": 8.920831177807252e-7,
+        "material_vertex_agreement_error": 2.6642447267994675e-16,
+        "maximum_funded_tension": 0.009014327529092984,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "882fcbf0d1205fb2",
+        "reserve_spent": 0.002470132063963282,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "882fcbf0d1205fb2",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "5f726ddcc97645ef",
+      "event_totals": {
+        "association": 1,
+        "diffusion": 0,
+        "dissociation": 1,
+        "recruitment": 0
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 1,
+      "polarized": false,
+      "seed": 12007,
+      "state_trace_hash": "78193d835174f24d",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12007,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "ed098151c1b2d016",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.589731441207031,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.7820750724020996,
+        "maximum_positive_substrate_work": 1.3422554101020645e-19,
+        "regulatory_trace_hash": "7b33c927746ea7b6",
+        "reserve_spent": 0.780477979073005,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 2.1886401831268045e-20
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "7b33c927746ea7b6",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "ba1b2f20fc70ff95",
+        "final_displacement_vector": [
+          0.00011520185660841743,
+          0.00024251450057883445
+        ],
+        "final_material_displacement": 0.00026848603456609783,
+        "final_reserve": 0.5898366389349511,
+        "final_vertex_displacement": 0.0002684860345661078,
+        "material_vertex_agreement_error": 9.974659986866641e-18,
+        "maximum_funded_tension": 0.7820750724020996,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "7b33c927746ea7b6",
+        "reserve_spent": 0.7647802606633638,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "7b33c927746ea7b6",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "af4f8d87f0cd22e7",
+      "event_totals": {
+        "association": 2,
+        "diffusion": 52,
+        "dissociation": 400,
+        "recruitment": 398
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 29,
+      "polarized": false,
+      "seed": 12008,
+      "state_trace_hash": "6963a2242a138867",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12008,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "bcffbff0a6119038",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.5995616041826548,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.044659027180595445,
+        "maximum_positive_substrate_work": 1.6956857279626287e-21,
+        "regulatory_trace_hash": "67e8113418c66d0f",
+        "reserve_spent": 0.033320964358705955,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 2.954527613404637e-21
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "67e8113418c66d0f",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "a31eaf2e4c07ff8e",
+        "final_displacement_vector": [
+          7.909615525769552e-7,
+          3.985518378974913e-6
+        ],
+        "final_material_displacement": 4.063247091526894e-6,
+        "final_reserve": 0.5995618069386707,
+        "final_vertex_displacement": 4.063247091642325e-6,
+        "material_vertex_agreement_error": 1.1543110895297429e-16,
+        "maximum_funded_tension": 0.044659027180595445,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "67e8113418c66d0f",
+        "reserve_spent": 0.03329831578791343,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "67e8113418c66d0f",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "16169d760878aa09",
+      "event_totals": {
+        "association": 4,
+        "diffusion": 3,
+        "dissociation": 15,
+        "recruitment": 11
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 4,
+      "polarized": false,
+      "seed": 12009,
+      "state_trace_hash": "155ab7f2310d120c",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12009,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "91f9b027805d9ef3",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.5998766977846983,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.018455101672822983,
+        "maximum_positive_substrate_work": 1.3504025797227017e-22,
+        "regulatory_trace_hash": "16c85f717d1788a1",
+        "reserve_spent": 0.009371779015302633,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": -6.437780526668455e-23
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "16c85f717d1788a1",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "2a619e78ebabb25c",
+        "final_displacement_vector": [
+          5.0103207232166e-7,
+          2.7685711876031915e-7
+        ],
+        "final_material_displacement": 5.724360241137892e-7,
+        "final_reserve": 0.5998767131153051,
+        "final_vertex_displacement": 5.724360242917757e-7,
+        "material_vertex_agreement_error": 1.779865038109541e-16,
+        "maximum_funded_tension": 0.018455101672822983,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "16c85f717d1788a1",
+        "reserve_spent": 0.009369533559346699,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "16c85f717d1788a1",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "632233ec6d86548b",
+      "event_totals": {
+        "association": 2,
+        "diffusion": 1,
+        "dissociation": 4,
+        "recruitment": 2
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 2,
+      "polarized": false,
+      "seed": 12010,
+      "state_trace_hash": "92b3ae5fb91cb34b",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12010,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "99bb47765c831f25",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.5998458256843361,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.03322490584792403,
+        "maximum_positive_substrate_work": 1.7349333426095395e-21,
+        "regulatory_trace_hash": "8ff05ff9c110c895",
+        "reserve_spent": 0.011718261612004052,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": -8.74289969870546e-22
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "8ff05ff9c110c895",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "49ddec27405831fa",
+        "final_displacement_vector": [
+          1.227119885630085e-6,
+          -3.9113770248797115e-6
+        ],
+        "final_material_displacement": 4.099352808000997e-6,
+        "final_reserve": 0.5998458870317589,
+        "final_vertex_displacement": 4.099352807814739e-6,
+        "material_vertex_agreement_error": 1.8625830993648437e-16,
+        "maximum_funded_tension": 0.03322490584792403,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "8ff05ff9c110c895",
+        "reserve_spent": 0.01171169165252423,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "8ff05ff9c110c895",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "c638b724f6bbdccd",
+      "event_totals": {
+        "association": 2,
+        "diffusion": 0,
+        "dissociation": 6,
+        "recruitment": 4
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 2,
+      "polarized": false,
+      "seed": 12011,
+      "state_trace_hash": "9060812560695912",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12011,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "09cd9f5558874364",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.5996501772330982,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.07681986222550373,
+        "maximum_positive_substrate_work": 1.1918523357099227e-22,
+        "regulatory_trace_hash": "fa12ac97c9cdcb9d",
+        "reserve_spent": 0.026588830200197186,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": -2.5652574938546033e-21
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "fa12ac97c9cdcb9d",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "5d4e86da46b45292",
+        "final_displacement_vector": [
+          2.3873425559739133e-6,
+          -8.374392951394003e-6
+        ],
+        "final_material_displacement": 8.708034323768002e-6,
+        "final_reserve": 0.5996504204494122,
+        "final_vertex_displacement": 8.708034323721366e-6,
+        "material_vertex_agreement_error": 4.663594000992727e-17,
+        "maximum_funded_tension": 0.07681986222550373,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "fa12ac97c9cdcb9d",
+        "reserve_spent": 0.026560390099582873,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "fa12ac97c9cdcb9d",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "dfbbc02615bbca0d",
+      "event_totals": {
+        "association": 3,
+        "diffusion": 2,
+        "dissociation": 11,
+        "recruitment": 8
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 6,
+      "polarized": false,
+      "seed": 12012,
+      "state_trace_hash": "4ddaab7d87742bed",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12012,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "42949bd953e68461",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.5993914781405901,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.11908724144182409,
+        "maximum_positive_substrate_work": 5.319886368892847e-22,
+        "regulatory_trace_hash": "b1099db6beb7f394",
+        "reserve_spent": 0.046251662052145294,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 5.93737002510766e-22
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "b1099db6beb7f394",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "59a711047e6281c8",
+        "final_displacement_vector": [
+          0.000016233612078153774,
+          -1.3250735139611734e-6
+        ],
+        "final_material_displacement": 0.000016287602061733383,
+        "final_reserve": 0.5993922722416586,
+        "final_vertex_displacement": 0.000016287602061764252,
+        "material_vertex_agreement_error": 3.086926872973572e-17,
+        "maximum_funded_tension": 0.11908724144182409,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "b1099db6beb7f394",
+        "reserve_spent": 0.04616196987955201,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "b1099db6beb7f394",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "a27888377a43a99a",
+      "event_totals": {
+        "association": 3,
+        "diffusion": 4,
+        "dissociation": 22,
+        "recruitment": 19
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 5,
+      "polarized": false,
+      "seed": 12013,
+      "state_trace_hash": "7b99bbe6eb853bf5",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12013,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "40913c01007d1011",
+        "final_displacement_vector": [
+          -0.004304344518390473,
+          -0.0007304962165714362
+        ],
+        "final_material_displacement": 0.0043658912555654995,
+        "final_reserve": 0.5471740552699075,
+        "final_vertex_displacement": 0.004365891255565447,
+        "material_vertex_agreement_error": 5.2909066017292616e-17,
+        "maximum_funded_tension": 1.6125254724251947,
+        "maximum_positive_substrate_work": 2.507727939171365e-16,
+        "regulatory_trace_hash": "e3e3feb02e50bf3b",
+        "reserve_spent": 4.011147800934389,
+        "slipping_contacts": 34,
+        "stuck_contacts": 35966,
+        "substrate_work": -0.034998038573310866
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "e3e3feb02e50bf3b",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "fb0670f1f84009c0",
+        "final_displacement_vector": [
+          0.0006162125853242405,
+          -0.0011106603022368279
+        ],
+        "final_material_displacement": 0.0012701512733831297,
+        "final_reserve": 0.5479416788534269,
+        "final_vertex_displacement": 0.0012701512733830976,
+        "material_vertex_agreement_error": 3.209238430557093e-17,
+        "maximum_funded_tension": 1.6125254724251947,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "e3e3feb02e50bf3b",
+        "reserve_spent": 3.7890316568450917,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "e3e3feb02e50bf3b",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "71f8c69ce6f1f889",
+      "event_totals": {
+        "association": 1,
+        "diffusion": 636,
+        "dissociation": 3739,
+        "recruitment": 3738
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": 285,
+      "maximum_membrane_bound": 141,
+      "polarized": true,
+      "seed": 12014,
+      "state_trace_hash": "b852a4092f42eb13",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": 6
+    },
+    "seed": 12014,
+    "self_initiated_motility_success": true
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "9a76b497054a1b11",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.5999310924112613,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.010778656284628731,
+        "maximum_positive_substrate_work": 1.1905905387208192e-22,
+        "regulatory_trace_hash": "2d7645fa5d460be2",
+        "reserve_spent": 0.0052374297780917786,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": -1.0271961730960965e-22
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "2d7645fa5d460be2",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "ecaca409f673afff",
+        "final_displacement_vector": [
+          -3.7302427398703164e-7,
+          -1.656709557728451e-6
+        ],
+        "final_material_displacement": 1.6981854043809091e-6,
+        "final_reserve": 0.5999310992829201,
+        "final_vertex_displacement": 1.6981854052257406e-6,
+        "material_vertex_agreement_error": 8.448315086243864e-16,
+        "maximum_funded_tension": 0.010778656284628731,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "2d7645fa5d460be2",
+        "reserve_spent": 0.005236700602243161,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "2d7645fa5d460be2",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "f24db6d3419e631d",
+      "event_totals": {
+        "association": 3,
+        "diffusion": 1,
+        "dissociation": 6,
+        "recruitment": 3
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 2,
+      "polarized": false,
+      "seed": 12015,
+      "state_trace_hash": "f2acaa5adb0f0f93",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12015,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "f1d6f27e74a7d78f",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "f1d6f27e74a7d78f",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          -2.6684702641160233e-16
+        ],
+        "final_material_displacement": 2.6684702641160233e-16,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 2.6684702641160233e-16,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "f1d6f27e74a7d78f",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "f1d6f27e74a7d78f",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "6a1bc6bcf93db74d",
+      "event_totals": {
+        "association": 0,
+        "diffusion": 0,
+        "dissociation": 0,
+        "recruitment": 0
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 0,
+      "polarized": false,
+      "seed": 12016,
+      "state_trace_hash": "993425e903792a18",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12016,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "d5396ae1174480cf",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.5999414740365944,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.009014327529092984,
+        "maximum_positive_substrate_work": 3.128344845499306e-23,
+        "regulatory_trace_hash": "0257f78de2c5c6b4",
+        "reserve_spent": 0.0044483579987646535,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": -3.337699235853585e-23
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "0257f78de2c5c6b4",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "fbd4c390e597abbd",
+        "final_displacement_vector": [
+          1.5820328811172622e-6,
+          1.8487133780729534e-7
+        ],
+        "final_material_displacement": 1.5927979936196694e-6,
+        "final_reserve": 0.5999414792126561,
+        "final_vertex_displacement": 1.5927979940896112e-6,
+        "material_vertex_agreement_error": 4.699417141914479e-16,
+        "maximum_funded_tension": 0.009014327529092984,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "0257f78de2c5c6b4",
+        "reserve_spent": 0.004447809968244318,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "0257f78de2c5c6b4",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "d8f6bc90adf8a76f",
+      "event_totals": {
+        "association": 2,
+        "diffusion": 0,
+        "dissociation": 2,
+        "recruitment": 0
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 1,
+      "polarized": false,
+      "seed": 12017,
+      "state_trace_hash": "9368653471574cdb",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12017,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "704b25a4e6024908",
+        "final_displacement_vector": [
+          0.004831093130386848,
+          0.005568242260561523
+        ],
+        "final_material_displacement": 0.0073718913927685,
+        "final_reserve": 0.33727918668619916,
+        "final_vertex_displacement": 0.007371891392768135,
+        "material_vertex_agreement_error": 3.651592916931179e-16,
+        "maximum_funded_tension": 1.644596451350362,
+        "maximum_positive_substrate_work": 3.6797912813267816e-16,
+        "regulatory_trace_hash": "bf083d3daaef69d9",
+        "reserve_spent": 19.93551364362241,
+        "slipping_contacts": 73,
+        "stuck_contacts": 35927,
+        "substrate_work": -0.07522295906355483
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "bf083d3daaef69d9",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "eb0ccac18f6b4665",
+        "final_displacement_vector": [
+          -0.00413087682318693,
+          -0.0031532312696098933
+        ],
+        "final_material_displacement": 0.005196826990384476,
+        "final_reserve": 0.3362309272768046,
+        "final_vertex_displacement": 0.0051968269903844054,
+        "material_vertex_agreement_error": 7.025630077706069e-17,
+        "maximum_funded_tension": 1.644596451350362,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "bf083d3daaef69d9",
+        "reserve_spent": 18.43036011196953,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "bf083d3daaef69d9",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "8b90b8039ff8658e",
+      "event_totals": {
+        "association": 4,
+        "diffusion": 3334,
+        "dissociation": 21379,
+        "recruitment": 21375
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": 348,
+      "maximum_membrane_bound": 179,
+      "polarized": true,
+      "seed": 12018,
+      "state_trace_hash": "b1a5b7aeb36fd22e",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": 1
+    },
+    "seed": 12018,
+    "self_initiated_motility_success": true
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "0ccb12936025183c",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "0ccb12936025183c",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          -2.6684702641160233e-16
+        ],
+        "final_material_displacement": 2.6684702641160233e-16,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 2.6684702641160233e-16,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "0ccb12936025183c",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "0ccb12936025183c",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "6a1bc6bcf93db74d",
+      "event_totals": {
+        "association": 0,
+        "diffusion": 0,
+        "dissociation": 0,
+        "recruitment": 0
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 0,
+      "polarized": false,
+      "seed": 12019,
+      "state_trace_hash": "de38ad8346524ad7",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12019,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "42cc1f7828d13fff",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.5998006871588807,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.027842971983433332,
+        "maximum_positive_substrate_work": 4.774387777102753e-22,
+        "regulatory_trace_hash": "820c8d66ac54489f",
+        "reserve_spent": 0.015149086310520308,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": -4.564176885136232e-22
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "820c8d66ac54489f",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "42e89a09bdd71db5",
+        "final_displacement_vector": [
+          -4.300403690908146e-6,
+          2.4306411041621175e-6
+        ],
+        "final_material_displacement": 4.93978623849442e-6,
+        "final_reserve": 0.5998007408889735,
+        "final_vertex_displacement": 4.939786238359434e-6,
+        "material_vertex_agreement_error": 1.3498571157328706e-16,
+        "maximum_funded_tension": 0.027842971983433332,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "820c8d66ac54489f",
+        "reserve_spent": 0.015143335413596548,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "820c8d66ac54489f",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "70a45cd66a958be7",
+      "event_totals": {
+        "association": 5,
+        "diffusion": 1,
+        "dissociation": 10,
+        "recruitment": 5
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 2,
+      "polarized": false,
+      "seed": 12020,
+      "state_trace_hash": "5ace32344824d291",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12020,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "12f1de3f53a7a68f",
+        "final_displacement_vector": [
+          0.000252328545344281,
+          0.0011912721050796485
+        ],
+        "final_material_displacement": 0.0012177023130209032,
+        "final_reserve": 0.4978606655544325,
+        "final_vertex_displacement": 0.0012177023130211374,
+        "material_vertex_agreement_error": 2.3418766925686896e-16,
+        "maximum_funded_tension": 1.715241998634435,
+        "maximum_positive_substrate_work": 4.786137666815367e-17,
+        "regulatory_trace_hash": "cb931a07dd39baad",
+        "reserve_spent": 7.752825550320536,
+        "slipping_contacts": 50,
+        "stuck_contacts": 35950,
+        "substrate_work": -0.05103882409281637
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "cb931a07dd39baad",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "8d56242e8616590e",
+        "final_displacement_vector": [
+          -0.001958236733125539,
+          -0.0011210052365243713
+        ],
+        "final_material_displacement": 0.0022564006389108396,
+        "final_reserve": 0.49914286520630397,
+        "final_vertex_displacement": 0.002256400638910581,
+        "material_vertex_agreement_error": 2.5847379792054426e-16,
+        "maximum_funded_tension": 1.715241998634435,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "cb931a07dd39baad",
+        "reserve_spent": 7.219000522992624,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "cb931a07dd39baad",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "2c75fea22fcd122f",
+      "event_totals": {
+        "association": 1,
+        "diffusion": 1791,
+        "dissociation": 11036,
+        "recruitment": 11131
+      },
+      "final_cytosolic": 904,
+      "final_membrane_bound": 96,
+      "first_qualifying_step": 976,
+      "maximum_membrane_bound": 188,
+      "polarized": true,
+      "seed": 12021,
+      "state_trace_hash": "305b4be19598263b",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": 0
+    },
+    "seed": 12021,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "f29c572d7583a0d8",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.5935114990809894,
+        "final_vertex_displacement": 1.480297366166875e-16,
+        "material_vertex_agreement_error": 1.480297366166875e-16,
+        "maximum_funded_tension": 0.7303998763712032,
+        "maximum_positive_substrate_work": 1.2841374883247214e-19,
+        "regulatory_trace_hash": "937e13392019ca66",
+        "reserve_spent": 0.49316872859996747,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": -2.5076126664654948e-17
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "937e13392019ca66",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "8d649195b79e073f",
+        "final_displacement_vector": [
+          -0.000022859678118350124,
+          -0.00016950051449736043
+        ],
+        "final_material_displacement": 0.00017103505283579874,
+        "final_reserve": 0.5935723351651808,
+        "final_vertex_displacement": 0.00017103505283597671,
+        "material_vertex_agreement_error": 1.7797178661349555e-16,
+        "maximum_funded_tension": 0.7303998763712032,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "937e13392019ca66",
+        "reserve_spent": 0.485138293782198,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "937e13392019ca66",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "ccb7ebdc2f1151f1",
+      "event_totals": {
+        "association": 1,
+        "diffusion": 34,
+        "dissociation": 250,
+        "recruitment": 249
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 30,
+      "polarized": false,
+      "seed": 12022,
+      "state_trace_hash": "d13ca9bb30caed5c",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12022,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "46534cfe7e2950c6",
+        "final_displacement_vector": [
+          -0.00005933091661356884,
+          -0.00044173197371983176
+        ],
+        "final_material_displacement": 0.0004456986585941497,
+        "final_reserve": 0.5485954503169456,
+        "final_vertex_displacement": 0.00044569865859451845,
+        "material_vertex_agreement_error": 3.6873715886232006e-16,
+        "maximum_funded_tension": 1.7009995405684708,
+        "maximum_positive_substrate_work": 1.460986525912106e-16,
+        "regulatory_trace_hash": "7a04642046174d3e",
+        "reserve_spent": 3.9033934209877947,
+        "slipping_contacts": 39,
+        "stuck_contacts": 35961,
+        "substrate_work": -0.04029627823525777
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "7a04642046174d3e",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "1c11a96d5ab26342",
+        "final_displacement_vector": [
+          -0.00037877865753218617,
+          0.0010509403468244554
+        ],
+        "final_material_displacement": 0.0011171163251807719,
+        "final_reserve": 0.5496078912879097,
+        "final_vertex_displacement": 0.0011171163251803495,
+        "material_vertex_agreement_error": 4.2240516640035253e-16,
+        "maximum_funded_tension": 1.7009995405684708,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "7a04642046174d3e",
+        "reserve_spent": 3.671968283382758,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "7a04642046174d3e",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "21d4ebc29ddfecdb",
+      "event_totals": {
+        "association": 6,
+        "diffusion": 982,
+        "dissociation": 5700,
+        "recruitment": 5829
+      },
+      "final_cytosolic": 865,
+      "final_membrane_bound": 135,
+      "first_qualifying_step": 1264,
+      "maximum_membrane_bound": 181,
+      "polarized": true,
+      "seed": 12023,
+      "state_trace_hash": "31fec0ec57c9e35a",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": 16
+    },
+    "seed": 12023,
+    "self_initiated_motility_success": false
+  },
+  {
+    "arms": {
+      "active": {
+        "arm": "active_endogenous_stick_slip",
+        "final_chemistry_hash": "9b9368992426db13",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.5999350051759542,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.009230740119552,
+        "maximum_positive_substrate_work": 1.0480902058866137e-24,
+        "regulatory_trace_hash": "b8178090e8bea759",
+        "reserve_spent": 0.004940033936982918,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 1.0018410806772673e-23
+      },
+      "motor_off": {
+        "arm": "motor_off_endogenous_stick_slip",
+        "final_chemistry_hash": "d8752b48a7e2fece",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.6,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "b8178090e8bea759",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      },
+      "no_substrate": {
+        "arm": "active_endogenous_no_substrate",
+        "final_chemistry_hash": "d5e337d283325c53",
+        "final_displacement_vector": [
+          7.699183482454994e-10,
+          -1.2615924518877182e-6
+        ],
+        "final_material_displacement": 1.2615926868186608e-6,
+        "final_reserve": 0.5999350113757098,
+        "final_vertex_displacement": 1.2615926867985524e-6,
+        "material_vertex_agreement_error": 2.0108350409580276e-17,
+        "maximum_funded_tension": 0.009230740119552,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "b8178090e8bea759",
+        "reserve_spent": 0.004939359021522968,
+        "slipping_contacts": 0,
+        "stuck_contacts": 0,
+        "substrate_work": 0.0
+      },
+      "zero_reserve": {
+        "arm": "zero_reserve_endogenous_stick_slip",
+        "final_chemistry_hash": "bbf6988bcb769240",
+        "final_displacement_vector": [
+          0.0,
+          0.0
+        ],
+        "final_material_displacement": 0.0,
+        "final_reserve": 0.0,
+        "final_vertex_displacement": 0.0,
+        "material_vertex_agreement_error": 0.0,
+        "maximum_funded_tension": 0.0,
+        "maximum_positive_substrate_work": 0.0,
+        "regulatory_trace_hash": "b8178090e8bea759",
+        "reserve_spent": 0.0,
+        "slipping_contacts": 0,
+        "stuck_contacts": 36000,
+        "substrate_work": 0.0
+      }
+    },
+    "environmental_stimulus_zero": true,
+    "plasticity_enabled": false,
+    "polarity": {
+      "accepted_time": 30.0,
+      "drive_trace_hash": "93de2d601a9e3be5",
+      "event_totals": {
+        "association": 2,
+        "diffusion": 0,
+        "dissociation": 3,
+        "recruitment": 1
+      },
+      "final_cytosolic": 1000,
+      "final_membrane_bound": 0,
+      "first_qualifying_step": null,
+      "maximum_membrane_bound": 2,
+      "polarized": false,
+      "seed": 12024,
+      "state_trace_hash": "5df38b2bcb84efda",
+      "steps": 1500,
+      "token_conservation": true,
+      "winning_patch": null
+    },
+    "seed": 12024,
+    "self_initiated_motility_success": false
+  }
+]

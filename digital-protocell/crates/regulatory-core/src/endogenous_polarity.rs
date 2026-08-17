@@ -1,7 +1,7 @@
 //! DC-DEV-012: finite endogenous stochastic polarity.
 //!
 //! This module owns a conserved abstract token population on a fixed local
-//! material ring.  It has no access to coordinates, forces, centroids,
+//! material ring.  It has no access to coordinates, forces, body aggregates,
 //! stimulus labels, or any actuator.  Its only output is a body-attached
 //! bounded local drive for the already-accepted regulatory network.
 

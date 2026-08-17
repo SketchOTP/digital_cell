@@ -1,0 +1,19 @@
+{
+  "artifact_status": "AUTHORITATIVE",
+  "conclusion": "DCDEV012_ENDOGENOUS_POLARITY_OR_MOTILITY_NOT_ESTABLISHED",
+  "directive": "DC-DEV-012",
+  "entry_commit": "f9c6d4e83fc9dc50e4d2ec4004ea640084ce5732",
+  "evidence_storage_disposition": "compact_authoritative_json_only",
+  "execution_head": "72b72cd415bdbcbfebd79021deeb6391b1b85dda",
+  "freeze_commit": "72b72cd415bdbcbfebd79021deeb6391b1b85dda",
+  "material_vertex_agreement_error": 8.448315086243864e-16,
+  "maximum_funded_tension": 1.644596451350362,
+  "maximum_positive_substrate_work": 3.6797912813267816e-16,
+  "movement_direction_resultant_length": 0.33728105296895816,
+  "next_execution_started": false,
+  "polarized_seed_count": 4,
+  "preservation_status": "PENDING_SCOPED_REMOTE_CI",
+  "reserve_spending": 23.9466614445568,
+  "scientific_finding": "DCDEV012_ENDOGENOUS_POLARITY_OR_MOTILITY_NOT_ESTABLISHED",
+  "self_initiated_motility_success_count": 2
+}

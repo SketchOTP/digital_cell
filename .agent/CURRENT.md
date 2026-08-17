@@ -10,11 +10,11 @@
 - Local directive ID: `D-20260816-dcdev012-endogenous-polarity`
 - External directive ID: `DC-DEV-012`
 - Objective: `Determine whether finite endogenous stochastic polarity can form without an external cue and drive the accepted funded motility path.`
-- Current status: `IN_PROGRESS`
-- Acceptance: `Frozen 24-seed endogenous-polarity qualification, preservation, exact-head remote CI, and independent architect review are pending.`
-- Current phase: `DC-DEV-012 production polarity module and direct tests are being implemented before protocol freeze.`
+- Current status: `VALIDATING`
+- Acceptance: `Frozen 24-seed qualification produced the preregistered negative result locally; exact-head remote CI and independent architect review are pending.`
+- Current phase: `DC-DEV-012 evidence is sealed locally and the stacked draft PR/remote validation are next.`
 - Expected or actual touched areas: `regulatory-core endogenous polarity production module, DC-DEV-012 assay/docs/artifacts/workflow, scoped CI, current governance state`
-- Immediate next action: `Freeze the production polarity contract and protocol before executing any preregistered seed.`
+- Immediate next action: `Push the sealed negative-result package for exact-head remote CI and architect review; do not begin DC-DEV-013.`
 
 ## Temporary task-relevant facts
 
@@ -39,15 +39,15 @@
 
 - Atlas has no Rust toolchain; local sanctioned Rust 1.89.0 is used with the Atlas worktree mounted through SSHFS and a local NTFS target directory.
 - The frozen substrate must remain local, isotropic, passive, and reaction-only; no DC-DEV-010 directional substrate code may enter this branch.
-- Qualification is not valid until the exact frozen protocol commit precedes all assay execution.
+- The formal run used freeze commit `72b72cd415bdbcbfebd79021deeb6391b1b85dda`; no second parameter set or post-result tuning is authorized.
 
 ## Blockers
 
-- Independent architect review remains open. Any failed remote gate stops DC-DEV-011 and returns to architect review.
+- Independent architect review remains open. DC-DEV-012 is a valid negative result locally until exact-head remote CI and architect review complete.
 
 ## Pending decisions
 
-- The frozen static/kinetic set must not be changed after the protocol commit.
+- The frozen polarity rates, token count, seed ensemble, horizon, and criteria must not be changed after the protocol commit.
 - DC-DEV-013, parameter repair, parameter screening, navigation, sensing, resource seeking, and evolution remain unauthorized.
 
 ## Status vocabulary

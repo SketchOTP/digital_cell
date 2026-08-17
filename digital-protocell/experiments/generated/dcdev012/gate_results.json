@@ -1,0 +1,28 @@
+{
+  "canonical_rotation_error": 0.0,
+  "gate0_authority_scope": {
+    "dcdev010_imported": false,
+    "dcdev013_started": false,
+    "exact_entry": "f9c6d4e83fc9dc50e4d2ec4004ea640084ce5732",
+    "external_stimulus": false,
+    "one_new_polarity_process": true
+  },
+  "gate10_passive_substrate_preservation": true,
+  "gate11_artifact_exclusion": true,
+  "gate12_production_ownership": true,
+  "gate13_preservation": "REQUIRES_SCOPED_REMOTE_CI",
+  "gate1_token_conservation": true,
+  "gate2_local_stochastic_law": true,
+  "gate3_no_external_cue": true,
+  "gate4_spontaneous_polarity": false,
+  "gate5_no_built_in_direction": true,
+  "gate6_motor_off_stability": true,
+  "gate7_zero_reserve_causality": true,
+  "gate8_self_initiated_funded_translation": false,
+  "gate9_directional_diversity": false,
+  "material_vertex_agreement_error": 8.448315086243864e-16,
+  "maximum_positive_substrate_work": 3.6797912813267816e-16,
+  "movement_direction_resultant_length": 0.33728105296895816,
+  "polarized_seed_count": 4,
+  "self_initiated_motility_success_count": 2
+}

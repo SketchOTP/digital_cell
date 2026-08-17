@@ -1,0 +1,15 @@
+{
+  "error_norm_against_rotated_result": 0.0,
+  "original_displacement": [
+    0.0,
+    0.0
+  ],
+  "pass": true,
+  "rotated_displacement": [
+    0.0,
+    0.0
+  ],
+  "rotation": "180_degrees",
+  "seed": 12001,
+  "tolerance": 1e-9
+}

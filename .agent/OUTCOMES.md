@@ -110,6 +110,25 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260816-dcdev012-endogenous-polarity - PARTIAL
+
+- Outcome ID: OUT-DCDEV012-ENDOGENOUS-POLARITY-NEGATIVE-LOCAL
+- Supersedes outcome: none
+- Closed: `2026-08-16T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The frozen 24-seed DC-DEV-012 qualification executed exactly once from freeze commit `72b72cd415bdbcbfebd79021deeb6391b1b85dda`. Four seeds polarized and two met the complete self-initiated motility definition, below the fixed 12/24 and 8/24 thresholds. The preregistered negative result is `DCDEV012_ENDOGENOUS_POLARITY_OR_MOTILITY_NOT_ESTABLISHED`.
+- Changed areas: bounded regulatory-core endogenous polarity process, DC-DEV-012 assay/docs/artifacts/workflow, and governance state; no chemistry-core source changed.
+- Validation:
+  - Endogenous polarity direct tests - PASSED (6 tests)
+  - Local DC-DEV-012 qualification - PASSED as a valid negative result
+  - Token conservation, zero-cue, motor-off, zero-reserve, passivity, rotation, and centroid-agreement gates - PASSED
+  - First failed scientific gate: Gate 4 spontaneous polarity threshold
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: exact-head remote validation and independent architect review of the negative result and production stochastic boundary.
+- Blockers: remote CI and architect review.
+- Follow-up directive: none
+
 ## D-20260815-dcdev002-local-regulatory-substrate - PARTIAL
 
 - Outcome ID: OUT-DCDEV002-LOCAL-REGULATORY-SUBSTRATE

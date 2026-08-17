@@ -87,3 +87,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-011 local qualification; exact-head remote CI passed, architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV012-001
+
+- Learning ID: L-DCDEV012-001
+- Date: 2026-08-16
+- Fact or lesson: The frozen 24-patch endogenous stochastic polarity process is conserved, deterministic under replay, zero-cue, and physically isolated from movement, but the preregistered reference set produced polarization in only 4/24 seeds and complete funded motility success in 2/24 seeds. The negative result does not authorize rate tuning or a second architecture.
+- Evidence location: `digital-protocell/crates/regulatory-core/src/endogenous_polarity.rs`, `digital-protocell/examples/dcdev012_gate_assay.rs`, `digital-protocell/experiments/generated/dcdev012/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev012/qualification_results.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-012 fixed-topology endogenous-polarity qualification; remote CI and architect review pending.
+- Supersedes learning: none
