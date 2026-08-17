@@ -48,8 +48,8 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Exclusions: homeostat tuning, parameter changes, alternate controllers, production chemistry/resource changes, behavior before metabolic qualification, and DC-DEV-020.
 - Acceptance: `DCDEV019R1_CONTINUOUS_STATE_REQUALIFICATION_BUNDLE_COMPLETE` plus exactly one authorized classification after exact-head CI and architect review.
 - Risk class: NORMAL
-- Relationship: remediation
-- Related directive: `DC-DEV-019`
+- Relationship: amends
+- Related directive: D-20260817-dcdev019-nutrient-homeostasis-persistence
 - Status at issuance: ISSUED
 
 ## D-20260816-dcdev011-passive-isotropic-stick-slip-traction

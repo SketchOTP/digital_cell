@@ -140,10 +140,10 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 
 ## L-DCDEV019R1-001
 
-- Learning ID: `L-DCDEV019R1-001`
+- Learning ID: L-DCDEV019R1-001
 - Date: 2026-08-17
 - Fact or lesson: Keeping the frozen homeostat alive through 480-step deprivation reproduces the accepted legacy deprived material hash while accumulating `h=0.12874703683936634`. Carrying that state into the selected finite refeed still lowers stored material to `56.54155735320212`; the reset-state control reaches `55.84948101858201`, and the source-saturated observer reaches `61.68434818478833`.
 - Evidence location: `digital-protocell/examples/dcdev019_homeostasis.rs`, `digital-protocell/experiments/generated/dcdev019r1/phase0-3/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev019r1/phase0_3_requalification.md`.
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-019-R1 Gate 1 continuous-state finite refeeding diagnostic; no tuning or behavior work.
-- Supersedes learning: `L-DCDEV019-002`
+- Supersedes learning: L-DCDEV019-002

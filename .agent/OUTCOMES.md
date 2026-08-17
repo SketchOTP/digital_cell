@@ -422,7 +422,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 ## D-20260817-dcdev019r1-continuous-state-requalification - PARTIAL
 
 - Outcome ID: `OUT-DCDEV019R1-GATE1-CONTINUOUS-REFEED`
-- Supersedes outcome: `OUT-DCDEV019-GATE3-HOMEOSTASIS`
+- Supersedes outcome: none
 - Closed: `2026-08-17T00:00:00-04:00`
 - Acceptance: `PARTIAL`
 - Summary: Exact candidate requalification passed Gate 0 and reproduced the accepted settled body, legacy deprived body, Phase-1 selected-mass result, original DC-DEV-019 M2 result, and original M3 result. Continuous deprivation preserved the legacy material hash while carrying `h` from `0.0` to `0.12874703683936634`. The unchanged carried-state finite refeed ended at `E_stored=56.54155735320212`, below the prefeed `60.82781514212436`; Gate 1 therefore failed and all later phases were stopped.
