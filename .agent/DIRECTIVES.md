@@ -220,3 +220,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260817-dcdev017-metabolic-homeostasis-foraging
+
+- Issued: `2026-08-17T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-017`
+- Objective: Resolve the current persistence bottleneck through a gated intrinsic-timescale metabolism challenge, one conditional single demand-coupled repair if required, reversible homeostatic exploration, and a bounded stochastic resource-encounter cycle.
+- Scope: Exact DC-DEV-016 accepted entry `1e242f28152797b512e25cd56c7b718e45d6ca97`, Phase 0 live-code and primary-prior-art audit, Phase 1 intrinsic reserve-horizon challenge, conditional single Phase 2 repair, conditional Phase 3 signal, Phase 4 reversible exploration, conditional Phase 5 stochastic encounter, evidence, governance, preservation, scoped CI, and one draft PR.
+- Exclusions: second metabolic design, gain or inventory sweep, horizon extension, new traction, actuator, resource sensor, positive contact motor command, world-axis locomotion, target/distance/gradient oracle, reward, RL, planner, navigation, chemotaxis, new memory, evolution, and DC-DEV-018.
+- Acceptance: One exact overall DC-DEV-017 classification, exact phase findings, exact-head remote CI, preservation matrix, pushed draft PR, and architect review from the accepted DC-DEV-016 head.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

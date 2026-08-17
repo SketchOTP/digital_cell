@@ -1,0 +1,47 @@
+{
+  "activation_equation": "J_A = k_act * q(C) * g_harvest * N * F; dA/dt += J_A and dW/dt += J_A",
+  "activation_inputs": [
+    "ReactionParams.k_act",
+    "q_catalyst(C, q_c)",
+    "D-096 function gain or active template/network/composition gain",
+    "interior N and F concentrations",
+    "accepted dt and mesh area"
+  ],
+  "directive": "DC-DEV-017",
+  "dt": 0.02,
+  "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "maintenance_horizon": 40.0,
+  "post_phase1_extensions": [
+    "DC-DEV-017 assay-only precursor top-up",
+    "DC-DEV-017 observer evidence and phase gate calculations"
+  ],
+  "prior_art_disposition": "REFERENCE: primary literature only; COMPOSE: demand/homeostasis principle; BUILD: bounded Digital Cell assay adapter; REJECT: external code and unqualified biological parameters",
+  "sealed_values": [
+    "certified Phase-1 equations and chemistry-core source",
+    "DC-DEV-016 settlement/deprivation authority",
+    "DC-DEV-016 matched endpoint N=F=0.1476710565778127"
+  ],
+  "sink_equations": [
+    "catalyst production = k_c_prod * A * dt",
+    "A decay = k_a_decay * starve(N*F) * A * dt",
+    "structural A use = min(structural_build_flux * dt / yield, A * area)",
+    "membrane A use = min(0.02 * q(C) * g_build * A * perimeter * dt, A * area, room)",
+    "catalyst turnover = k_c_turn * C * dt"
+  ],
+  "source_sink_units": "N,F,A,R,C,L,M,W are concentration or material ledgers as implemented; area multiplication converts concentration flux to material ledger units",
+  "storage_equations": [
+    "J_store = k_store*q(C)*(A^2/(K_store^2+A^2))*(1-R/Rmax)",
+    "J_release = k_release*q(C)*(R/(K_R+R))*(K_low/(K_low+A))",
+    "J_R_loss = k_r_loss*R"
+  ],
+  "storage_horizon": 80.0,
+  "storage_horizon_steps": 4000,
+  "thresholds": {
+    "d016_clamp_concentration": 0.1476710565778127,
+    "finite_nonnegative_epsilon": 1e-10,
+    "mesh_area": 70.8275261895172,
+    "reserve_k_release": 0.025,
+    "reserve_r_max": 1.0,
+    "reserve_store_horizon_mult": 2.0
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "directive": "DC-DEV-017",
+  "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "files": [
+    "control_surface_audit.json",
+    "prior_art_disposition.md",
+    "phase1_results.json",
+    "artifact_manifest.json"
+  ],
+  "finding": "DCDEV017_INTRINSIC_HOMEOSTASIS_NOT_ESTABLISHED",
+  "next_execution_started": false,
+  "phase": "PHASE_1",
+  "production_behavior_changed": false
+}

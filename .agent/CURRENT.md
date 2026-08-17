@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260817-dcdev016-metabolic-break-even`
-- External directive ID: `DC-DEV-016`
-- Objective: `Determine whether one preregistered resource inventory derived from the DC-DEV-015 measured deficit can maintain available metabolic potential and restore stored activated material under the existing metabolism.`
-- Current status: `VALIDATING`
-- Acceptance: `Observer-only DC-DEV-016 challenge completed locally with baseline parity, resource conservation, supply sufficiency, and available-potential break-even; stored A/R/E_stored restoration was not observed; exact-head remote CI and architect review remain pending.`
-- Current phase: `DC-DEV-016 evidence and governance package are prepared for pushed draft-PR validation; architect review is next.`
-- Expected or actual touched areas: `DC-DEV-016 observer assay/docs/artifacts/workflow, regulatory-core example registration, scoped CI, current governance state`
-- Immediate next action: `Push DC-DEV-016, open the draft PR against DC-DEV-015, run exact-head remote CI, and return for architect review; do not begin DC-DEV-017.`
+- Local directive ID: `D-20260817-dcdev017-metabolic-homeostasis-foraging`
+- External directive ID: `DC-DEV-017`
+- Objective: `Run the gated metabolic homeostasis and reversible autonomous foraging bundle from the architect-accepted DC-DEV-016 head, stopping at the first failed phase.`
+- Current status: `IN_PROGRESS`
+- Acceptance: `Phase 0 control-surface audit and Phase 1 intrinsic-timescale challenge are frozen; later phases remain conditional on the exact preregistered gates.`
+- Current phase: `Phase 0 and Phase 1 implementation/freeze commit are in progress; no Phase 2 repair or behavioral phase has started.`
+- Expected or actual touched areas: `DC-DEV-017 assay, evidence, documentation, governance, and scoped workflow; chemistry production remains unchanged unless the single conditional Phase 2 repair is authorized by the Phase 1 result.`
+- Immediate next action: `Run the frozen Phase 1 intrinsic-timescale challenge and stop or advance only according to its preregistered finding.`
 
 ## Temporary task-relevant facts
 
@@ -43,7 +43,7 @@
 
 ## Blockers
 
-- Exact-head remote CI and independent architect review remain open. DC-DEV-016 is observer-only; no metabolism repair, tuning, new hunger state, behavior, or DC-DEV-017 is authorized.
+- `DC-DEV-017` Phase 1 result, exact-head remote CI, and architect review remain open. No second metabolic design, parameter sweep, or DC-DEV-018 is authorized.
 
 ## Pending decisions
 
