@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-16T00:00:00-04:00`
+- Last updated: `2026-08-17T00:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260816-dcdev013-resource-contact-feeding`
-- External directive ID: `DC-DEV-013`
-- Objective: `Determine whether actual local contact with finite N/F resource can causally increase the organism's own resource acquisition through the accepted regulator, funded contractility, and DC-DEV-011 stick-slip path.`
+- Local directive ID: `D-20260817-dcdev015-metabolic-restoration-audit`
+- External directive ID: `DC-DEV-015`
+- Objective: `Determine whether existing finite N/F intake closes through precursor availability, A production, A/R activated material, and existing maintenance/structure/reserve/waste channels.`
 - Current status: `VALIDATING`
-- Acceptance: `Frozen 480-step qualification produced the preregistered negative result; local production tests and exact frozen evidence are complete; stacked draft PR and remote CI are pending.`
-- Current phase: `DC-DEV-013 evidence and governance package are prepared for pushed draft-PR validation; architect review is next.`
-- Expected or actual touched areas: `regulatory-core spatial_resource production interface, DC-DEV-013 assay/docs/artifacts/workflow, scoped CI, current governance state`
-- Immediate next action: `Push DC-DEV-013, open the stacked draft PR against DC-DEV-011, run exact-head remote CI, and return for architect review; do not begin DC-DEV-014.`
+- Acceptance: `Observer-only DC-DEV-015 audit completed locally with resource delivery and N/F-to-A conversion observed, but no A/R/E_stored/E_available restoration; exact-head remote CI and architect review remain pending.`
+- Current phase: `DC-DEV-015 evidence and governance package are prepared for pushed draft-PR validation; architect review is next.`
+- Expected or actual touched areas: `DC-DEV-015 observer assay/docs/artifacts/workflow, regulatory-core example registration, scoped CI, current governance state`
+- Immediate next action: `Push DC-DEV-015, open the draft PR against DC-DEV-013, run exact-head remote CI, and return for architect review; do not begin DC-DEV-016.`
 
 ## Temporary task-relevant facts
 
@@ -27,7 +27,8 @@
 - Entry authority is `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
-- Implementation work is on `strategy/dc-dev-011-local-stick-slip-traction` based on `strategy/dc-dev-009-motility-feasibility-audit`.
+- Implementation work is on `strategy/dc-dev-015-metabolic-restoration-audit` based on `strategy/dc-dev-013-resource-contact-feeding`.
+- DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
 
 ## Last validation after adoption
 
@@ -42,7 +43,7 @@
 
 ## Blockers
 
-- Exact-head remote CI and independent architect review remain open. The first failed scientific gate is preserved as a negative result; no tuning is authorized.
+- Exact-head remote CI and independent architect review remain open. DC-DEV-015 is observer-only; no metabolism repair, tuning, new hunger state, behavior, or DC-DEV-016 is authorized.
 
 ## Pending decisions
 

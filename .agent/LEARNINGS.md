@@ -97,3 +97,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-013 frozen local resource-contact feeding assay; exact-head remote CI and architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV015-001
+
+- Learning ID: L-DCDEV015-001
+- Date: 2026-08-17
+- Fact or lesson: Existing finite N/F uptake is conserved and delivers measurable precursor material; existing reactions convert a small fraction to A within 480 steps, but A, R, E_stored, and E_available all move farther from their replete references despite feeding outperforming no-delivery. Intake-to-internal restoration is therefore not established on the behavioral window.
+- Evidence location: `digital-protocell/examples/dcdev015_metabolic_restoration_assay.rs`, `digital-protocell/experiments/generated/dcdev015/results.json`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev015/qualification_results.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-015 observer-only metabolic intake-to-restoration audit.
+- Supersedes learning: none

@@ -371,3 +371,27 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: remote exact-head validation and independent architect interpretation of the negative feeding result.
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
+
+## D-20260817-dcdev015-metabolic-restoration-audit - PARTIAL
+
+- Outcome ID: OUT-DCDEV015-METABOLIC-RESTORATION-LOCAL
+- Supersedes outcome: none
+- Closed: `2026-08-17T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only DC-DEV-015 audit reproduced the exact 5,000-step settlement and 480-step deprivation, then found lawful finite N/F delivery and measurable N/F-to-A conversion without restoration of A, R, E_stored, or E_available toward replete references. Gate-8 classification: `DCDEV015_RESOURCE_CONVERSION_WITHOUT_HOMEOSTATIC_RESTORATION`.
+- Changed areas: DC-DEV-015 assay registration, evidence, documentation, workflow, and governance records; no chemistry-core source or certified Phase-1 equations changed.
+- Validation:
+  - Sanctioned local Rust 1.89.0 example check - PASSED
+  - DC-DEV-015 exact assay - PASSED with the required negative classification
+  - Observer parity between instrumented and non-instrumented feeding trajectories - PASSED
+  - Resource delivery/world-loss conservation - PASSED
+  - Precursor ingress - PASSED
+  - N/F-to-A conversion - PASSED (`0.01843919491375493` matched conversion fraction)
+  - Activated-material restoration - FAILED as the diagnostic result
+  - Precursor-inclusive restoration - FAILED as the diagnostic result
+  - Material destination reconciliation - residuals reported, not hidden
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: remote exact-head validation and independent architect interpretation of the destination residuals and rate-limiting classification.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none

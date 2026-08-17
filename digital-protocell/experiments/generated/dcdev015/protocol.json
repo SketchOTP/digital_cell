@@ -1,0 +1,31 @@
+{
+  "a_decay_observer_derivation": "A balance residual after explicit ledger destinations",
+  "accepted_dt": 0.02,
+  "arms": [
+    "A_resource_free_maintenance",
+    "B_real_nf_feeding",
+    "C_same_geometry_no_delivery",
+    "D_uptake_no_metabolic_conversion"
+  ],
+  "behavior": false,
+  "dcdev014_imported": false,
+  "directive": "DC-DEV-015",
+  "entry_commit": "5a4e0a2d7314af411ec2283b0ffcf4950eb217db",
+  "geometry_screening": false,
+  "initial_f_mass": 3.0,
+  "initial_n_mass": 3.0,
+  "metabolic_steps": 480,
+  "observer_pools": [
+    "E_stored=area*(A+R)",
+    "E_precursor=area*min(N,F)",
+    "E_available=E_stored+E_precursor"
+  ],
+  "parameter_screening": false,
+  "reaction_ledger_source": "existing ReactionLedger and ReserveLedger",
+  "resource_center": [
+    4.8,
+    0.0
+  ],
+  "resource_radius": 1.5,
+  "settlement_steps": 5000
+}

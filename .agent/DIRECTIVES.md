@@ -192,3 +192,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260817-dcdev015-metabolic-restoration-audit
+
+- Issued: `2026-08-17T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-015`
+- Objective: Determine whether existing finite N/F intake closes through precursor availability, N/F to A conversion, A/R activated material, and existing maintenance, structure, reserve, membrane, catalyst, and waste channels.
+- Scope: Exact DC-DEV-013 entry `5a4e0a2d7314af411ec2283b0ffcf4950eb217db`, 5,000-step mechanics settlement, 480-step resource-free deprivation, matched resource-free, real-feeding, same-geometry no-delivery, and uptake-only arms, observer material snapshots, existing reaction/reserve ledger aggregation, derived E_stored/E_precursor/E_available pools, destination reconciliation, evidence, governance, preservation, scoped CI, and draft PR.
+- Exclusions: chemistry equations, reaction/reserve/transport parameters, resource geometry/inventory/permeability, mechanics, stick-slip, contractility, regulator, DC-DEV-013 sensor, behavior, exploration, hunger state, parameter or geometry screening, and DC-DEV-016.
+- Acceptance: One exact Gate-8 classification, exact-head remote CI, preservation through DC-DEV-013, pushed draft PR, and architect review from the exact DC-DEV-013 entry.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

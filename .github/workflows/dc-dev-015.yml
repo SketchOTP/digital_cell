@@ -1,0 +1,112 @@
+name: DC-DEV-015 metabolic restoration audit
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-013-resource-contact-feeding
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-015-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate committed DC-DEV-015 evidence
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("digital-protocell/experiments/generated/dcdev015")
+          required = ["protocol.json", "settled_body.json", "deprivation_audit.json", "results.json", "artifact_manifest.json"]
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              raise SystemExit(f"missing artifacts: {missing}")
+          protocol = json.loads((root / "protocol.json").read_text())
+          results = json.loads((root / "results.json").read_text())
+          manifest = json.loads((root / "artifact_manifest.json").read_text())
+          if protocol["entry_commit"] != "5a4e0a2d7314af411ec2283b0ffcf4950eb217db":
+              raise SystemExit("wrong entry authority")
+          if protocol["settlement_steps"] != 5000 or protocol["metabolic_steps"] != 480:
+              raise SystemExit("formal horizon changed")
+          if protocol["dcdev014_imported"] or results["production_behavior_changed"]:
+              raise SystemExit("scope contamination")
+          if results["conclusion"] != "DCDEV015_METABOLIC_INTAKE_TO_RESTORATION_AUDIT_COMPLETE":
+              raise SystemExit("unexpected conclusion")
+          if results["gate_8_classification"] != "DCDEV015_RESOURCE_CONVERSION_WITHOUT_HOMEOSTATIC_RESTORATION":
+              raise SystemExit("unexpected Gate-8 classification")
+          if not results["gates"]["gate_1_observer_parity"]["pass"]:
+              raise SystemExit("observer parity failed")
+          if not results["gates"]["gate_2_resource_delivery"]["pass"] or not results["gates"]["gate_3_precursor_ingress"]["pass"]:
+              raise SystemExit("resource delivery or precursor ingress failed")
+          if not results["gates"]["gate_4_metabolic_conversion"]["pass"]:
+              raise SystemExit("metabolic conversion was not observed")
+          if results["gates"]["gate_5_activated_material_restoration"]["pass"] or results["gates"]["gate_6_precursor_inclusive_restoration"]["pass"]:
+              raise SystemExit("restoration disposition changed")
+          if manifest["conclusion"] != results["conclusion"] or manifest["next_execution_started"]:
+              raise SystemExit("manifest mismatch or next execution started")
+          print("validated DC-DEV-015 committed evidence")
+          PY
+          changed="$(git diff --name-only 5a4e0a2d7314af411ec2283b0ffcf4950eb217db HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then exit 1; fi
+          if printf '%s\n' "$changed" | grep -E 'dcdev014|homeostatic_exploration|dc-dev-014'; then exit 1; fi
+
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustup run 1.89.0 rustfmt --edition 2021 --check examples/dcdev015_metabolic_restoration_assay.rs
+
+      - name: Run DC-DEV-015 assay
+        working-directory: digital-protocell
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev015_metabolic_restoration_assay --quiet
+
+      - name: Preservation through DC-DEV-013
+        working-directory: digital-protocell
+        run: |
+          tmp_dir="$(mktemp -d)"
+          cargo +1.89.0 run -p regulatory-core --example dcdev002_gate_assay -- "$tmp_dir/dcdev002"
+          cargo +1.89.0 run -p regulatory-core --example dcdev003_gate_assay -- "$tmp_dir/dcdev003"
+          cargo +1.89.0 run -p regulatory-core --example dcdev004_gate_assay -- "$tmp_dir/dcdev004"
+          cargo +1.89.0 run -p regulatory-core --example dcdev005_gate_assay -- "$tmp_dir/dcdev005"
+          cargo +1.89.0 run -p regulatory-core --example dcdev006_gate_assay -- "$tmp_dir/dcdev006"
+          cargo +1.89.0 run -p regulatory-core --example dcdev007_gate_assay -- "$tmp_dir/dcdev007"
+          cargo +1.89.0 run -p regulatory-core --example dcdev008_gate_assay -- "$tmp_dir/dcdev008"
+          cargo +1.89.0 run -p regulatory-core --example dcdev009_gate_assay -- "$tmp_dir/dcdev009"
+          cargo +1.89.0 run -p regulatory-core --example dcdev011_gate_assay -- "$tmp_dir/dcdev011"
+          cargo +1.89.0 run -p regulatory-core --example dcdev013_gate_assay -- "$tmp_dir/dcdev013"
+
+      - name: Phase-1 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+
+      - name: D-088 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+
+      - name: Evolution-harness regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          actual="$(git rev-parse --verify HEAD)"
+          echo "checked out $actual"
+          test "$actual" = "$EXPECTED_HEAD"

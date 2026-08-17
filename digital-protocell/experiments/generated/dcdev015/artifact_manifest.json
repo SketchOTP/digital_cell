@@ -1,0 +1,14 @@
+{
+  "conclusion": "DCDEV015_METABOLIC_INTAKE_TO_RESTORATION_AUDIT_COMPLETE",
+  "directive": "DC-DEV-015",
+  "entry_commit": "5a4e0a2d7314af411ec2283b0ffcf4950eb217db",
+  "evidence_files": [
+    "protocol.json",
+    "settled_body.json",
+    "deprivation_audit.json",
+    "results.json",
+    "artifact_manifest.json"
+  ],
+  "gate_8_classification": "DCDEV015_RESOURCE_CONVERSION_WITHOUT_HOMEOSTATIC_RESTORATION",
+  "next_execution_started": false
+}
