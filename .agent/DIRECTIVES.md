@@ -220,3 +220,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260817-dcdev018-integral-homeostat-persistence
+
+- Issued: `2026-08-17T10:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-018`
+- Objective: Resolve the metabolic-homeostasis bottleneck with one derived stateful integral assimilation homeostat and, only if metabolism qualifies, test reversible homeostatic exploration and bounded stochastic persistence-loop closure.
+- Scope: Exact DC-DEV-016 entry `1e242f28152797b512e25cd56c7b718e45d6ca97`, Phase 0 live-code source-feasibility and prior-art audit, one versioned default-off integral homeostat, metabolic qualification, conditional behavior and resource-encounter phases, evidence, governance, preservation, scoped CI, and one draft PR.
+- Exclusions: DC-DEV-017 proportional-gain production behavior, second controller, PI/PID, parameter or inventory sweeps, sink suppression, new actuator/traction/sensor, contact-to-motor excitation, navigation, chemotaxis, reward, planner, learning, memory, evolution, and DC-DEV-019.
+- Acceptance: One exact DC-DEV-018 overall classification, exact phase findings, exact-head remote CI, preservation matrix, pushed draft PR, and architect review from the clean DC-DEV-016 head.
+- Risk class: HIGH
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

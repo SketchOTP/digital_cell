@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260817-dcdev016-metabolic-break-even`
-- External directive ID: `DC-DEV-016`
-- Objective: `Determine whether one preregistered resource inventory derived from the DC-DEV-015 measured deficit can maintain available metabolic potential and restore stored activated material under the existing metabolism.`
-- Current status: `VALIDATING`
-- Acceptance: `Observer-only DC-DEV-016 challenge completed locally with baseline parity, resource conservation, supply sufficiency, and available-potential break-even; stored A/R/E_stored restoration was not observed; exact-head remote CI and architect review remain pending.`
-- Current phase: `DC-DEV-016 evidence and governance package are prepared for pushed draft-PR validation; architect review is next.`
-- Expected or actual touched areas: `DC-DEV-016 observer assay/docs/artifacts/workflow, regulatory-core example registration, scoped CI, current governance state`
-- Immediate next action: `Push DC-DEV-016, open the draft PR against DC-DEV-015, run exact-head remote CI, and return for architect review; do not begin DC-DEV-017.`
+- Local directive ID: `D-20260817-dcdev018-integral-homeostat-persistence`
+- External directive ID: `DC-DEV-018`
+- Objective: `Resolve the metabolic-homeostasis bottleneck with one derived stateful integral assimilation homeostat, then continue only through the preregistered persistence gates if metabolism qualifies.`
+- Current status: `IN_PROGRESS`
+- Acceptance: `Phase 0A source feasibility passed and Commit A is frozen; production implementation and Phase 2 qualification remain conditional on the exact preregistered gates.`
+- Current phase: `Phase 0 complete; Phase 1 implementation is authorized.`
+- Expected or actual touched areas: `DC-DEV-018 observer audit, one default-off post-Phase-1 chemistry wrapper, evidence, documentation, governance, and scoped CI; certified Phase-1 equations remain frozen.`
+- Immediate next action: `Implement the single derived integral homeostat and direct tests; do not import DC-DEV-017 production behavior or begin DC-DEV-019.`
 
 ## Temporary task-relevant facts
 
@@ -43,7 +43,7 @@
 
 ## Blockers
 
-- Exact-head remote CI and independent architect review remain open. DC-DEV-016 is observer-only; no metabolism repair, tuning, new hunger state, behavior, or DC-DEV-017 is authorized.
+- DC-DEV-018 remains conditional on the Phase 2 metabolic gates. If the integral controller fails, downstream behavior must stop and the failure diagnostic must be recorded without tuning.
 
 ## Pending decisions
 

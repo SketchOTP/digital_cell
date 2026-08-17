@@ -1,0 +1,92 @@
+{
+  "deprived": {
+    "a": 0.303630027599798,
+    "alive": true,
+    "area": 70.8275261895172,
+    "e_stored": 60.82781514212436,
+    "f": 0.0,
+    "n": 0.0,
+    "r": 0.5551860064286098,
+    "step": 480,
+    "time": 9.6
+  },
+  "deprived_body_hash": "990c1abe7e178d30",
+  "directive": "DC-DEV-018",
+  "e_stored_equation": "E_stored = area*(A+R)",
+  "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "finite_capacity": true,
+  "g_required_max": 3.368462987851295,
+  "hard_substrate_source_ceiling": 10.459175627198706,
+  "irreversible_demand_equation": "J_demand = inferred A decay + A->structure + A->catalyst + A->membrane + R->W + R->structure; A<->R excluded",
+  "observer_only": true,
+  "prior_art_disposition": "REFERENCE primary literature; COMPOSE integral-feedback principle; BUILD native Digital Cell wrapper; REJECT external code, species, parameters, and ATP/ADP model imports",
+  "production_behavior_changed": false,
+  "replete": {
+    "a": 0.5,
+    "alive": true,
+    "area": 70.8275261895172,
+    "e_stored": 77.91027880846893,
+    "f": 0.0,
+    "n": 0.0,
+    "r": 0.6,
+    "step": 0,
+    "time": 0.0
+  },
+  "settled_body_hash": "c985c08ab226a061",
+  "source_equation": "J_source = k_act*q_catalyst(C)*g_harvest*area*N*F*dt, with existing finite substrate clamps",
+  "source_only_feasibility": "DCDEV018_SOURCE_ONLY_HOMEOSTASIS_FEASIBLE",
+  "storage_horizon_steps": 4000,
+  "storage_horizon_time": 80.0,
+  "target_precursor": 0.1476710565778127,
+  "trajectory_hash": "de16bdafafe3b662",
+  "windows": [
+    {
+      "demand_max": 0.018105665213926894,
+      "demand_sum": 16.918985188073,
+      "mean_a": 0.27648055920097425,
+      "mean_e_stored": 54.838475065752,
+      "mean_r": 0.49777315282360723,
+      "required_gain_max": 3.368462987851295,
+      "source_max": 0.005375052443570501,
+      "source_sum": 5.324639806549512,
+      "steps": 1000,
+      "substrate_ceiling_min": 10.459175627198706
+    },
+    {
+      "demand_max": 0.015795628072784458,
+      "demand_sum": 14.89698143594069,
+      "mean_a": 0.2399423958265021,
+      "mean_e_stored": 44.253526455106446,
+      "mean_r": 0.3848644954475884,
+      "required_gain_max": 2.997194912763705,
+      "source_max": 0.005270137089022133,
+      "source_sum": 5.210437978235634,
+      "steps": 1000,
+      "substrate_ceiling_min": 10.459175627198706
+    },
+    {
+      "demand_max": 0.014084987734167453,
+      "demand_sum": 12.733919501970542,
+      "mean_a": 0.2196101624406703,
+      "mean_e_stored": 35.438049646336815,
+      "mean_r": 0.28073273463458914,
+      "required_gain_max": 2.735516002566518,
+      "source_max": 0.005148932677035201,
+      "source_sum": 5.085481300707082,
+      "steps": 1000,
+      "substrate_ceiling_min": 10.459175627198706
+    },
+    {
+      "demand_max": 0.01143236278316337,
+      "demand_sum": 11.126626545127273,
+      "mean_a": 0.21284337346225693,
+      "mean_e_stored": 28.764140039154476,
+      "mean_r": 0.19327189819340748,
+      "required_gain_max": 2.2763347564204883,
+      "source_max": 0.005022267814923952,
+      "source_sum": 4.961600963917906,
+      "steps": 1000,
+      "substrate_ceiling_min": 10.459175627198706
+    }
+  ]
+}

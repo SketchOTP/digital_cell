@@ -1,0 +1,17 @@
+{
+  "dcdev017_production_imported": false,
+  "deprivation_steps": 480,
+  "directive": "DC-DEV-018",
+  "dt": 0.02,
+  "e_stored": "area*(A+R)",
+  "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "observer_only": true,
+  "parameter_sweep": false,
+  "phase": "0",
+  "production_behavior_changed": false,
+  "settlement_steps": 5000,
+  "source_branch": "strategy/dc-dev-016-metabolic-break-even",
+  "source_feasibility_steps": 4000,
+  "storage_horizon": 80.0,
+  "target_precursor": 0.1476710565778127
+}

@@ -1,0 +1,12 @@
+{
+  "conclusion": "DCDEV018_SOURCE_ONLY_HOMEOSTASIS_FEASIBLE",
+  "directive": "DC-DEV-018",
+  "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "files": [
+    "protocol.json",
+    "source_feasibility.json",
+    "artifact_manifest.json"
+  ],
+  "next_execution_started": false,
+  "phase": "0"
+}
