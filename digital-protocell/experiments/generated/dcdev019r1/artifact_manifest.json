@@ -1,0 +1,41 @@
+{
+  "directive": "DC-DEV-019-R1",
+  "entry_sha": "59633ebcc37c936e2d04ca5d53477129ab1dca13",
+  "branch": "strategy/dc-dev-019r1-continuous-state-requalification",
+  "code_sha": "9961f1450cea4b37c6f61254747d3a2bcb49581b",
+  "candidate": {
+    "schema": "digital_cell_metabolic_acquisition_homeostat_v1",
+    "production_file": "digital-protocell/crates/regulatory-core/src/metabolic_homeostat.rs",
+    "production_blob_sha": "1172bf792292cfb50269f3f19c01034f446f1af6",
+    "e_target": 77.91027880846893,
+    "e_deprived": 60.82781514212436,
+    "tau": 80.0,
+    "dt": 0.02,
+    "g_source_max": 6.97512279078733,
+    "g_transport_max": 1.0,
+    "m_selected": 19.878372106390554,
+    "resource_center": [4.8, 0.0],
+    "resource_radius": 1.5,
+    "parameter_changes": false
+  },
+  "phase": "0-3",
+  "gate_stop": "Gate 1",
+  "classification": "DCDEV019R1_CONTINUOUS_COORDINATED_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED",
+  "next_execution_started": false,
+  "compact_output_root": "C:\\Users\\sketc\\OneDrive\\Documents\\ChatGPT\\Digital Cell\\_dcdev019\\digital-protocell\\experiments\\generated\\dcdev019r1\\phase0-3",
+  "dense_raw_trajectories": "not generated; no dense raw ledger retained",
+  "artifacts": [
+    {
+      "path": "phase0-3/protocol.json",
+      "sha256": "47170DA0001BDB11C3E3567DB0357F6F77120E023E38728FF939AAC46E25D554",
+      "schema": "dcdev019r1_protocol_compact_v1",
+      "reproduction": "DCDEV019R1_OUTPUT_ROOT=<compact_output_root> cargo run -p regulatory-core --example dcdev019_homeostasis"
+    },
+    {
+      "path": "phase0-3/qualification.json",
+      "sha256": "A1DB13D5251354AAB077D4BC009549C253EEA61519A1592485A9AA1F9ACD2E1E",
+      "schema": "dcdev019r1_qualification_compact_v1",
+      "reproduction": "DCDEV019R1_OUTPUT_ROOT=<compact_output_root> cargo run -p regulatory-core --example dcdev019_homeostasis"
+    }
+  ]
+}
