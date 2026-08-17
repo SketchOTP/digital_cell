@@ -1,0 +1,25 @@
+{
+  "directive": "DC-DEV-019",
+  "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "code_commit_for_phase_1": "1b215e0452e839d0c9c72a79362ce5cd794d377f",
+  "code_commit_for_phase_3": "429728a994efb85909112f06e3cb592c63e3e35f",
+  "phase_1_external_output_root": "C:\\Users\\sketc\\OneDrive\\Documents\\ChatGPT\\Digital Cell\\_dcdev019-phase1-evidence",
+  "phase_3_external_output_root": "C:\\Users\\sketc\\OneDrive\\Documents\\ChatGPT\\Digital Cell\\_dcdev019-phase3-evidence",
+  "dense_raw_ledgers_external": true,
+  "phase_1": {
+    "protocol.json": "B65857D02EAB819CB937DDEDF2E54B29B3C26B2F12DF2DA25AB61751BE0DA260",
+    "entry_parity.json": "D1D89A75DDF38E2F5E1D1C192F6114A4BB4AE0248C5C5048EB2579B138125202",
+    "resource_semantics.json": "9816FE3C4CF0A6788E3A3E711A2E2C2F6BF2408E2E0DE04EE5C908A391EE112C",
+    "delivery_diagnostic.json": "810C251B30B743F11B951C98A0E795B0EFC426BEA3634ABB994EEECC52F8A0BF",
+    "results.json": "DA625B7C986080D21EC942D0D07C9A57C2F37B47DBD91E2E058C9E0EC5072C55"
+  },
+  "phase_3": {
+    "protocol.json": "9812E6FD266EB927AF30DE4F62717C16E45191B03CD2F8B6247846E0235A60A8",
+    "homeostasis_qualification.json": "C0A5F6CE32E2BE5B53BF91767395BE7B9721E58A86A8E8367E00F46492495413"
+  },
+  "reproduction": [
+    "cargo test -p regulatory-core metabolic_homeostat",
+    "DCDEV019_OUTPUT_ROOT=<governed-output-root> cargo run -p regulatory-core --example dcdev019_homeostasis"
+  ],
+  "next_execution_started": false
+}
