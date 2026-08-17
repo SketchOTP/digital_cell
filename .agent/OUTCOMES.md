@@ -395,3 +395,26 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: independent architect interpretation of the destination residuals and rate-limiting classification.
 - Blockers: architect review.
 - Follow-up directive: none
+
+## D-20260817-dcdev016-metabolic-break-even - PARTIAL
+
+- Outcome ID: OUT-DCDEV016-METABOLIC-BREAK-EVEN-LOCAL
+- Supersedes outcome: none
+- Closed: `2026-08-17T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only DC-DEV-016 challenge reproduced the DC-DEV-015 settlement/deprivation and current-resource reference, then executed exactly one derived inventory of `14.588954880632265` N and F. Matched delivery reached `11.401893960861464` against the preregistered `11.387290380605897` target; E_available increased, but A, R, and E_stored did not restore from deprivation. Gate-8 classification: `DCDEV016_CONVERSION_STORAGE_BOTTLENECK_CONFIRMED`.
+- Changed areas: DC-DEV-016 assay registration, evidence, documentation, workflow, and governance records; no chemistry-core source or certified Phase-1 equations changed.
+- Validation:
+  - Sanctioned local Rust 1.89.0 example check - PASSED
+  - DC-DEV-016 exact assay - PASSED with the required classification
+  - DC-DEV-015 settled/deprived/current/no-delivery parity - PASSED
+  - N/F resource-world conservation for current, derived, and uptake-only arms - PASSED
+  - Derived matched-delivery target - PASSED
+  - E_available break-even - PASSED
+  - A/R/E_stored strict restoration - FAILED as the diagnostic result
+  - Legacy scalar destination reconciliation - not used; status recorded as `ACCOUNTING_CONTRACT_NOT_CLOSED`
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: exact-head remote validation and independent architect interpretation of the conversion/storage bottleneck classification.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none

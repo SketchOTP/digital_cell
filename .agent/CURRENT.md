@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260817-dcdev015-metabolic-restoration-audit`
-- External directive ID: `DC-DEV-015`
-- Objective: `Determine whether existing finite N/F intake closes through precursor availability, A production, A/R activated material, and existing maintenance/structure/reserve/waste channels.`
+- Local directive ID: `D-20260817-dcdev016-metabolic-break-even`
+- External directive ID: `DC-DEV-016`
+- Objective: `Determine whether one preregistered resource inventory derived from the DC-DEV-015 measured deficit can maintain available metabolic potential and restore stored activated material under the existing metabolism.`
 - Current status: `VALIDATING`
-- Acceptance: `Observer-only DC-DEV-015 audit completed with resource delivery and N/F-to-A conversion observed, but no A/R/E_stored/E_available restoration; exact-head remote CI passed and architect review remains pending.`
-- Current phase: `DC-DEV-015 evidence and governance package are pushed in draft PR #24; exact-head remote CI passed; architect review is next.`
-- Expected or actual touched areas: `DC-DEV-015 observer assay/docs/artifacts/workflow, regulatory-core example registration, scoped CI, current governance state`
-- Immediate next action: `Return the exact pushed DC-DEV-015 package to architect review; do not begin DC-DEV-016.`
+- Acceptance: `Observer-only DC-DEV-016 challenge completed locally with baseline parity, resource conservation, supply sufficiency, and available-potential break-even; stored A/R/E_stored restoration was not observed; exact-head remote CI and architect review remain pending.`
+- Current phase: `DC-DEV-016 evidence and governance package are prepared for pushed draft-PR validation; architect review is next.`
+- Expected or actual touched areas: `DC-DEV-016 observer assay/docs/artifacts/workflow, regulatory-core example registration, scoped CI, current governance state`
+- Immediate next action: `Push DC-DEV-016, open the draft PR against DC-DEV-015, run exact-head remote CI, and return for architect review; do not begin DC-DEV-017.`
 
 ## Temporary task-relevant facts
 
@@ -27,12 +27,12 @@
 - Entry authority is `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
-- Implementation work is on `strategy/dc-dev-015-metabolic-restoration-audit` based on `strategy/dc-dev-013-resource-contact-feeding`.
+- Implementation work is on `strategy/dc-dev-016-metabolic-break-even` based on `strategy/dc-dev-015-metabolic-restoration-audit`.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
 
 ## Last validation after adoption
 
-- Command or check: `Local Rust 1.89.0 regulatory-core tests, exact DC-DEV-015 assay, evidence/governance validation, and remote CI run 32011192247`
+- Command or check: `Local Rust 1.89.0 DC-DEV-016 example check/run and evidence inspection`
 - Result: `PASSED`
 
 ## Risks
@@ -43,7 +43,7 @@
 
 ## Blockers
 
-- Independent architect review remains open. DC-DEV-015 is observer-only; no metabolism repair, tuning, new hunger state, behavior, or DC-DEV-016 is authorized.
+- Exact-head remote CI and independent architect review remain open. DC-DEV-016 is observer-only; no metabolism repair, tuning, new hunger state, behavior, or DC-DEV-017 is authorized.
 
 ## Pending decisions
 

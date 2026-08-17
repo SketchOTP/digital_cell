@@ -55,3 +55,7 @@ path = "../../examples/dcdev013_gate_assay.rs"
 [[example]]
 name = "dcdev015_metabolic_restoration_assay"
 path = "../../examples/dcdev015_metabolic_restoration_assay.rs"
+
+[[example]]
+name = "dcdev016_metabolic_break_even"
+path = "../../examples/dcdev016_metabolic_break_even.rs"

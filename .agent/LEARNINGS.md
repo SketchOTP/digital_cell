@@ -107,3 +107,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-015 observer-only metabolic intake-to-restoration audit.
 - Supersedes learning: none
+
+## L-DCDEV016-001
+
+- Learning ID: L-DCDEV016-001
+- Date: 2026-08-17
+- Fact or lesson: A single resource inventory derived from the DC-DEV-015 activated-store decline delivered `11.401893960861464` matched N/F units against the `11.387290380605897` target and raised E_available from `60.82781514212436` to `64.13760842349555`, but A, R, and E_stored remained below the deprived starting state. Existing uptake and conversion therefore passed supply sufficiency while stored activated-material restoration remained unsupported.
+- Evidence location: `digital-protocell/examples/dcdev016_metabolic_break_even.rs`, `digital-protocell/experiments/generated/dcdev016/results.json`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev016/qualification_results.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-016 observer-only metabolic break-even resource sufficiency challenge.
+- Supersedes learning: none

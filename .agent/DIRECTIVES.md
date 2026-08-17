@@ -206,3 +206,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260817-dcdev016-metabolic-break-even
+
+- Issued: `2026-08-17T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-016`
+- Objective: Determine whether one resource inventory derived from the DC-DEV-015 measured activated-store decline is sufficient for existing metabolism to reach available-potential break-even and restore stored activated material.
+- Scope: Exact DC-DEV-015 entry `aa33c5d2fa5dfe545a82925c28d95e57c480293f`, 5,000-step settlement, 480-step deprivation, one derived inventory `14.588954880632265` for N and F, four matched arms, baseline parity, N/F world-loss conservation, primary A/R/N/F and derived-pool observers, existing reaction ledgers, evidence, governance, preservation, scoped CI, and draft PR.
+- Exclusions: chemistry equations, ReactionParams, ReserveParams, TransportParams, permeability, resource geometry, mechanics, regulation, contractility, stick-slip, DC-DEV-013 sensor, behavior, hunger, parameter screening, additional inventory challenges, and DC-DEV-017.
+- Acceptance: One exact Gate-8 classification, exact-head remote CI, preservation through DC-DEV-013, pushed draft PR, and architect review from the exact DC-DEV-015 entry.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

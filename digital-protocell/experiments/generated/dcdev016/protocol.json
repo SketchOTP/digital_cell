@@ -1,0 +1,37 @@
+{
+  "accepted_dt": 0.02,
+  "accounting_contract": "ACCOUNTING_CONTRACT_NOT_CLOSED",
+  "arms": [
+    "A_no_delivery",
+    "B_current_resource_reference",
+    "C_derived_break_even_resource",
+    "D_derived_resource_uptake_only"
+  ],
+  "behavior": false,
+  "current_inventory_f": 3.0,
+  "current_inventory_n": 3.0,
+  "dcdev015_delivery_fraction": 0.7805418875976666,
+  "dcdev017_started": false,
+  "delivery_target": 11.387290380605897,
+  "derived_inventory_f": 14.588954880632265,
+  "derived_inventory_formula": "delivery_target / dcdev015_delivery_fraction",
+  "derived_inventory_n": 14.588954880632265,
+  "directive": "DC-DEV-016",
+  "entry_commit": "aa33c5d2fa5dfe545a82925c28d95e57c480293f",
+  "geometry_screening": false,
+  "metabolic_steps": 480,
+  "observer_pools": [
+    "E_stored=area*(A+R)",
+    "E_precursor=area*min(N,F)",
+    "E_available=E_stored+E_precursor"
+  ],
+  "parameter_screening": false,
+  "reaction_ledger_source": "existing ReactionLedger and ReserveLedger",
+  "resource_center": [
+    4.8,
+    0.0
+  ],
+  "resource_radius": 1.5,
+  "settlement_steps": 5000,
+  "source_directive": "DC-DEV-015"
+}
