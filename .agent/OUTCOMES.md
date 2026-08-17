@@ -435,7 +435,6 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Gain-1 counterfactual parity - PASSED
   - Remote exact-head CI - PENDING
   - Architect review - PENDING
-- Remaining risks: committed DC-DEV-018 evidence lacks a per-step M4 error trace; the reachability record does not claim exact trace reconstruction. Remote exact-head validation and architect review remain pending.
-- Known issue: the broad chemistry-core lib suite retains one unrelated `d029_analysis::tests::nnls_recovers_known_alpha_beta` failure; no R1-touched code is involved.
+- Remaining risks: committed DC-DEV-018 evidence lacks a per-step M4 error trace; the reachability record does not claim exact trace reconstruction. The broad chemistry-core lib suite retains one unrelated `d029_analysis::tests::nnls_recovers_known_alpha_beta` failure; no R1-touched code is involved. Remote exact-head validation and architect review remain pending.
 - Blockers: GitHub draft PR creation requires available GitHub CLI authentication; exact-head remote CI and architect review.
 - Follow-up directive: none
