@@ -1,0 +1,72 @@
+name: DC-DEV-019-R1 governance metadata repair
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-019-nutrient-homeostasis-persistence
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out PR branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Apply schema-only corrections
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          replacements = {
+              Path('.agent/DIRECTIVES.md'): [
+                  ('- Relationship: remediation\n- Related directive: `DC-DEV-019`',
+                   '- Relationship: amends\n- Related directive: D-20260817-dcdev019-nutrient-homeostasis-persistence'),
+              ],
+              Path('.agent/OUTCOMES.md'): [
+                  ('- Supersedes outcome: `OUT-DCDEV019-GATE3-HOMEOSTASIS`',
+                   '- Supersedes outcome: none'),
+              ],
+              Path('.agent/LEARNINGS.md'): [
+                  ('- Learning ID: `L-DCDEV019R1-001`', '- Learning ID: L-DCDEV019R1-001'),
+                  ('- Supersedes learning: `L-DCDEV019-002`', '- Supersedes learning: L-DCDEV019-002'),
+              ],
+          }
+
+          for path, pairs in replacements.items():
+              text = path.read_text()
+              new = text
+              for old, repl in pairs:
+                  if old not in new:
+                      raise SystemExit(f'missing expected metadata text in {path}: {old}')
+                  new = new.replace(old, repl, 1)
+              path.write_text(new)
+          PY
+
+      - name: Validate governance
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Commit metadata-only repair
+        run: |
+          set -euo pipefail
+          changed="$(git diff --name-only)"
+          printf '%s\n' "$changed"
+          if printf '%s\n' "$changed" | grep -Ev '^\.agent/(DIRECTIVES|OUTCOMES|LEARNINGS)\.md$'; then
+            echo 'Unexpected non-governance scope'
+            exit 1
+          fi
+          if git diff --quiet; then
+            echo 'No repair needed'
+            exit 0
+          fi
+          git config user.name 'digital-cell-architect'
+          git config user.email 'actions@users.noreply.github.com'
+          git add .agent/DIRECTIVES.md .agent/OUTCOMES.md .agent/LEARNINGS.md
+          git commit -m 'Fix DC-DEV-019-R1 governance metadata'
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
