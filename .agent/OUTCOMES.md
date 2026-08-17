@@ -419,6 +419,28 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260817-dcdev019r1-continuous-state-requalification - PARTIAL
+
+- Outcome ID: `OUT-DCDEV019R1-GATE1-CONTINUOUS-REFEED`
+- Supersedes outcome: `OUT-DCDEV019-GATE3-HOMEOSTASIS`
+- Closed: `2026-08-17T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Exact candidate requalification passed Gate 0 and reproduced the accepted settled body, legacy deprived body, Phase-1 selected-mass result, original DC-DEV-019 M2 result, and original M3 result. Continuous deprivation preserved the legacy material hash while carrying `h` from `0.0` to `0.12874703683936634`. The unchanged carried-state finite refeed ended at `E_stored=56.54155735320212`, below the prefeed `60.82781514212436`; Gate 1 therefore failed and all later phases were stopped.
+- Changed areas: observer-only continuous-state requalification assay, compact evidence, documentation, and governance; no production homeostat or scientific parameter changed.
+- Validation:
+  - Exact entry and frozen production blob - PASSED
+  - Historical control reproduction - PASSED
+  - Continuous deprivation material parity - PASSED
+  - Carried-state finite refeed - FAILED as preregistered diagnostic
+  - Reset-state control reproduction - PASSED
+  - Source-saturated sufficiency control - PASSED
+  - Phases 2–6 - NOT RUN after Gate 1 stop
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: the unchanged homeostat remains unqualified for the current continuous finite-persistence contract; no tuning or alternate controller is authorized.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
+
 ## D-20260817-dcdev019-nutrient-homeostasis-persistence - PARTIAL
 
 - Outcome ID: `OUT-DCDEV019-PHASE1-DELIVERY`

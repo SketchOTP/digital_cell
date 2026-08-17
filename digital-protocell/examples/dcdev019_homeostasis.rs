@@ -303,7 +303,7 @@ fn run_sustained_clamp(
     summarize(&samples, 0.0, 0.0, 0.0)
 }
 
-fn main() {
+fn legacy_main() {
     let output = std::env::var_os("DCDEV019_OUTPUT_ROOT")
         .map(PathBuf::from)
         .unwrap_or_else(|| PathBuf::from("experiments/generated/dcdev019/phase3"));
@@ -546,5 +546,539 @@ fn main() {
         "M3_final_E_stored={}",
         report.m3_sustained.as_ref().unwrap().final_e_stored
     );
+    println!("NEXT_EXECUTION_STARTED:false");
+}
+
+// ---------------------------------------------------------------------------
+// DC-DEV-019-R1 continuous-state requalification.
+// This remains an observer assay. The production homeostat and all frozen
+// chemistry/resource implementations above are intentionally unchanged.
+
+const R1_ENTRY: &str = "59633ebcc37c936e2d04ca5d53477129ab1dca13";
+const R1_SETTLED_HASH: &str = "c985c08ab226a061";
+const R1_DEPRIVED_HASH: &str = "990c1abe7e178d30";
+const ACCEPTED_PHASE1_SELECTED_E: f64 = 61.68434818478833;
+const ACCEPTED_ORIGINAL_M2_E: f64 = 55.84948101858201;
+const ACCEPTED_ORIGINAL_M3_E: f64 = 76.82632823803954;
+const R1_SUSTAINED_STEPS: usize = 8_000;
+const R1_SEGMENT_STEPS: usize = 1_000;
+
+#[derive(Debug, Clone, Serialize)]
+struct R1ArmSummary {
+    initial_e_stored: f64,
+    final_e_stored: f64,
+    initial_a: f64,
+    final_a: f64,
+    initial_r: f64,
+    final_r: f64,
+    initial_h: f64,
+    final_h: f64,
+    n_delivered: f64,
+    f_delivered: f64,
+    n_world_loss: f64,
+    f_world_loss: f64,
+    conservation_error: f64,
+    alive: bool,
+    final_mesh_hash: String,
+    trajectory_hash: String,
+}
+
+#[derive(Debug, Clone, Serialize)]
+struct R1Qualification {
+    entry: String,
+    schema: &'static str,
+    production_homeostat_blob: &'static str,
+    e_target: f64,
+    e_deprived: f64,
+    tau: f64,
+    k_h: f64,
+    g_source_max: f64,
+    g_transport_max: f64,
+    m_selected: f64,
+    settled_material_hash: String,
+    legacy_deprived_material_hash: String,
+    continuous_deprived_material_hash: String,
+    material_parity: bool,
+    h_start: f64,
+    h_deprived: f64,
+    g_source_at_deprivation_end: f64,
+    deprivation_error_trajectory_hash: String,
+    historical_phase1_selected_e: f64,
+    historical_original_m2_e: f64,
+    historical_original_m3_e: f64,
+    historical_controls_reproduced: bool,
+    carried_state_feed: R1ArmSummary,
+    reset_state_feed: R1ArmSummary,
+    source_saturated_feed: R1ArmSummary,
+    gate1_reset_control_reproduced: bool,
+    gate1_source_sufficiency_confirmed: bool,
+    gate1_pass: bool,
+    sustained_epoch1: Option<WindowSummary>,
+    sustained_epoch2_quarters: Option<[WindowSummary; 4]>,
+    first_target_crossing_step: Option<usize>,
+    peak_h: Option<f64>,
+    final_h: Option<f64>,
+    h_unwinding_magnitude: Option<f64>,
+    sustained_final_e_stored: Option<f64>,
+    sustained_q4_abs_slope: Option<f64>,
+    depletion_q4_abs_slope: Option<f64>,
+    gate2_pass: bool,
+    gate3_pass: bool,
+    classification: &'static str,
+    production_behavior_changed: bool,
+    chemistry_behavior_changed: bool,
+    next_execution_started: bool,
+}
+
+fn r1_arm_summary(
+    before: &MaterialMesh,
+    before_h: f64,
+    after: &MaterialMesh,
+    after_h: f64,
+    run: &WindowSummary,
+) -> R1ArmSummary {
+    R1ArmSummary {
+        initial_e_stored: e_stored(before),
+        final_e_stored: e_stored(after),
+        initial_a: before.interior.a,
+        final_a: after.interior.a,
+        initial_r: before.interior.r,
+        final_r: after.interior.r,
+        initial_h: before_h,
+        final_h: after_h,
+        n_delivered: run.n_world_loss,
+        f_delivered: run.f_world_loss,
+        n_world_loss: run.n_world_loss,
+        f_world_loss: run.f_world_loss,
+        conservation_error: run.conservation_error,
+        alive: run.alive,
+        final_mesh_hash: stable_json_hash(after).unwrap(),
+        trajectory_hash: run.trajectory_hash.clone(),
+    }
+}
+
+fn r1_source_saturated_step(
+    mesh: &mut MaterialMesh,
+    params: &ReactionParams,
+    dt: f64,
+) -> (f64, f64) {
+    let area = mesh.area().max(1e-15);
+    let mut one_mesh = mesh.clone();
+    let one = reactions_step_counterfactual(&mut one_mesh, params, dt, true, true, 1.0);
+    let capacity = (mesh.interior.n.max(0.0) * area).min(mesh.interior.f.max(0.0) * area);
+    let gain = if one.n_consumed > 1e-15 {
+        (capacity / one.n_consumed).max(1.0)
+    } else {
+        1.0
+    };
+    let ledger = reactions_step_counterfactual(mesh, params, dt, true, true, gain);
+    (ledger.n_consumed, ledger.f_consumed)
+}
+
+fn r1_run_source_saturated(
+    mesh: &mut MaterialMesh,
+    mechanics: &MechParams,
+    steps: usize,
+) -> WindowSummary {
+    let params = reaction_params(mesh);
+    let mut region = FiniteSpatialResourceRegionV1::new(CENTER, RADIUS, M_SELECTED, M_SELECTED);
+    let mut h = homeostat(false);
+    let mut samples = Vec::with_capacity(steps);
+    let (mut n_loss, mut f_loss, mut conservation_error) = (0.0, 0.0, 0.0);
+    for i in 0..steps {
+        let uptake = region.uptake_with_capacity_multiplier(
+            mesh,
+            &TransportParams::default(),
+            mechanics.dt,
+            1.0,
+        );
+        n_loss += uptake.n_world_loss;
+        f_loss += uptake.f_world_loss;
+        conservation_error += uptake.conservation_error;
+        r1_source_saturated_step(mesh, &params, mechanics.dt);
+        samples.push(observation(mesh, &h, i + 1));
+    }
+    summarize(&samples, n_loss, f_loss, conservation_error)
+}
+
+fn r1_run_clamp_segment(
+    mesh: &mut MaterialMesh,
+    h: &mut MetabolicAcquisitionHomeostatV1,
+    mechanics: &MechParams,
+    steps: usize,
+    start_step: usize,
+) -> (WindowSummary, Vec<Observation>) {
+    let params = reaction_params(mesh);
+    let mut samples = Vec::with_capacity(steps);
+    for i in 0..steps {
+        mesh.interior.n = M3_NF;
+        mesh.interior.f = M3_NF;
+        step(mesh, &params, h, mechanics, None);
+        samples.push(observation(mesh, h, start_step + i + 1));
+    }
+    let summary = summarize(&samples, 0.0, 0.0, 0.0);
+    (summary, samples)
+}
+
+fn r1_concat_observations(parts: &[Vec<Observation>]) -> Vec<Observation> {
+    parts.iter().flat_map(|part| part.iter().cloned()).collect()
+}
+
+fn r1_r1_report() -> R1Qualification {
+    let mechanics = MechParams::default();
+    assert!((mechanics.dt - DT).abs() < 1e-12);
+
+    let settled = settle(&mechanics);
+    let legacy_deprived = deprive(&settled, &mechanics);
+    let settled_hash = stable_json_hash(&settled).unwrap();
+    let legacy_deprived_hash = stable_json_hash(&legacy_deprived).unwrap();
+    assert_eq!(settled_hash, R1_SETTLED_HASH);
+    assert_eq!(legacy_deprived_hash, R1_DEPRIVED_HASH);
+
+    let mut phase1_selected = legacy_deprived.clone();
+    let phase1_selected_run = r1_run_source_saturated(&mut phase1_selected, &mechanics, WINDOW);
+    let historical_phase1_selected_e = e_stored(&phase1_selected);
+
+    let mut original_m2 = legacy_deprived.clone();
+    let mut original_m2_h = homeostat(true);
+    let original_m2_run = run_window(
+        &mut original_m2,
+        &mut original_m2_h,
+        &mechanics,
+        WINDOW,
+        Some(M_SELECTED),
+        false,
+        0,
+    );
+    let historical_original_m2_e = e_stored(&original_m2);
+
+    let mut original_m3 = legacy_deprived.clone();
+    let mut original_m3_h = homeostat(true);
+    let (original_m3_run, _) = r1_run_clamp_segment(
+        &mut original_m3,
+        &mut original_m3_h,
+        &mechanics,
+        4_000,
+        0,
+    );
+    let historical_original_m3_e = e_stored(&original_m3);
+    let historical_controls_reproduced =
+        (historical_phase1_selected_e - ACCEPTED_PHASE1_SELECTED_E).abs() <= 1e-10
+            && (historical_original_m2_e - ACCEPTED_ORIGINAL_M2_E).abs() <= 1e-10
+            && (historical_original_m3_e - ACCEPTED_ORIGINAL_M3_E).abs() <= 1e-10;
+    assert!(
+        historical_controls_reproduced,
+        "historical controls: phase1={} m2={} m3={}",
+        historical_phase1_selected_e,
+        historical_original_m2_e,
+        historical_original_m3_e
+    );
+    assert_eq!(phase1_selected_run.final_e_stored, ACCEPTED_PHASE1_SELECTED_E);
+    assert_eq!(original_m2_run.final_e_stored, ACCEPTED_ORIGINAL_M2_E);
+    assert_eq!(original_m3_run.final_e_stored, ACCEPTED_ORIGINAL_M3_E);
+
+    let mut continuous_deprived = settled.clone();
+    let mut continuous_h = homeostat(true);
+    let h_start = continuous_h.h;
+    let continuous_deprived_run = run_window(
+        &mut continuous_deprived,
+        &mut continuous_h,
+        &mechanics,
+        WINDOW,
+        None,
+        false,
+        0,
+    );
+    let continuous_deprived_hash = stable_json_hash(&continuous_deprived).unwrap();
+    let material_parity = continuous_deprived_hash == legacy_deprived_hash;
+    assert!(material_parity);
+    let h_deprived = continuous_h.h;
+    let g_source_at_deprivation_end =
+        1.0 + continuous_h.h * (HOMEOSTAT_SOURCE_GAIN_MAX - 1.0);
+
+    let carried_before = continuous_deprived.clone();
+    let carried_h_before = continuous_h.h;
+    let carried_run = run_window(
+        &mut continuous_deprived,
+        &mut continuous_h,
+        &mechanics,
+        WINDOW,
+        Some(M_SELECTED),
+        false,
+        WINDOW,
+    );
+    let carried = r1_arm_summary(
+        &carried_before,
+        carried_h_before,
+        &continuous_deprived,
+        continuous_h.h,
+        &carried_run,
+    );
+
+    let mut reset_mesh = legacy_deprived.clone();
+    let mut reset_h = homeostat(true);
+    let reset_before = reset_mesh.clone();
+    let reset_h_before = reset_h.h;
+    let reset_run = run_window(
+        &mut reset_mesh,
+        &mut reset_h,
+        &mechanics,
+        WINDOW,
+        Some(M_SELECTED),
+        false,
+        0,
+    );
+    let reset = r1_arm_summary(
+        &reset_before,
+        reset_h_before,
+        &reset_mesh,
+        reset_h.h,
+        &reset_run,
+    );
+
+    let mut saturated_mesh = legacy_deprived.clone();
+    let saturated_before = saturated_mesh.clone();
+    let saturated_run = r1_run_source_saturated(&mut saturated_mesh, &mechanics, WINDOW);
+    let saturated = r1_arm_summary(
+        &saturated_before,
+        0.0,
+        &saturated_mesh,
+        0.0,
+        &saturated_run,
+    );
+
+    let replete = &settled;
+    let a_toward = (replete.interior.a - continuous_deprived.interior.a).abs()
+        < (replete.interior.a - carried_before.interior.a).abs();
+    let r_toward = (replete.interior.r - continuous_deprived.interior.r).abs()
+        < (replete.interior.r - carried_before.interior.r).abs();
+    let gate1_reset_control_reproduced =
+        (reset.final_e_stored - ACCEPTED_ORIGINAL_M2_E).abs() <= 1e-10;
+    let gate1_source_sufficiency_confirmed = saturated.final_e_stored
+        > saturated.initial_e_stored + 1e-10
+        && saturated.conservation_error <= 1e-10
+        && saturated.alive;
+    let gate1_pass = carried.alive
+        && carried.conservation_error <= 1e-10
+        && carried.final_e_stored > carried.initial_e_stored + 1e-10
+        && (E_TARGET - carried.final_e_stored).abs() < (E_TARGET - carried.initial_e_stored).abs()
+        && (a_toward || r_toward)
+        && carried.final_e_stored > reset.final_e_stored + 1e-10
+        && gate1_reset_control_reproduced
+        && gate1_source_sufficiency_confirmed;
+
+    let mut sustained_epoch1 = None;
+    let mut sustained_epoch2_quarters = None;
+    let mut first_target_crossing_step = None;
+    let mut peak_h = None;
+    let mut final_h = None;
+    let mut h_unwinding_magnitude = None;
+    let mut sustained_final_e_stored = None;
+    let mut sustained_q4_abs_slope = None;
+    let mut depletion_q4_abs_slope = None;
+    let mut gate2_pass = false;
+    let mut gate3_pass = false;
+
+    if gate1_pass {
+        let mut sustained_mesh = carried_before.clone();
+        let mut sustained_h = {
+            let mut h = homeostat(true);
+            h.h = h_deprived;
+            h
+        };
+        let (epoch1, epoch1_samples) = r1_run_clamp_segment(
+            &mut sustained_mesh,
+            &mut sustained_h,
+            &mechanics,
+            4_000,
+            0,
+        );
+        let mut epoch2_parts = Vec::new();
+        for quarter in 0..4 {
+            let (summary, samples) = r1_run_clamp_segment(
+                &mut sustained_mesh,
+                &mut sustained_h,
+                &mechanics,
+                R1_SEGMENT_STEPS,
+                4_000 + quarter * R1_SEGMENT_STEPS,
+            );
+            epoch2_parts.push((summary, samples));
+        }
+        let all_samples = r1_concat_observations(
+            &[
+                epoch1_samples,
+                epoch2_parts[0].1.clone(),
+                epoch2_parts[1].1.clone(),
+                epoch2_parts[2].1.clone(),
+                epoch2_parts[3].1.clone(),
+            ],
+        );
+        first_target_crossing_step = all_samples
+            .iter()
+            .find(|sample| sample.e_stored >= E_TARGET)
+            .map(|sample| sample.step);
+        peak_h = all_samples.iter().map(|sample| sample.h).reduce(f64::max);
+        final_h = Some(sustained_h.h);
+        let first_negative_index = all_samples.iter().position(|sample| sample.error < 0.0);
+        h_unwinding_magnitude = first_negative_index.and_then(|index| {
+            let prior_peak = all_samples[..=index]
+                .iter()
+                .map(|sample| sample.h)
+                .reduce(f64::max)?;
+            let later_min = all_samples[index..]
+                .iter()
+                .map(|sample| sample.h)
+                .reduce(f64::min)?;
+            Some(prior_peak - later_min)
+        });
+        let epoch2_summaries = [
+            epoch2_parts[0].0.clone(),
+            epoch2_parts[1].0.clone(),
+            epoch2_parts[2].0.clone(),
+            epoch2_parts[3].0.clone(),
+        ];
+        sustained_epoch1 = Some(epoch1);
+        sustained_final_e_stored = Some(epoch2_summaries[3].final_e_stored);
+        sustained_q4_abs_slope = Some(epoch2_summaries[3].e_slope.abs());
+
+        let mut depletion_mesh = carried_before.clone();
+        let mut depletion_h = homeostat(false);
+        let (_, depletion_epoch1_samples) = r1_run_clamp_segment(
+            &mut depletion_mesh,
+            &mut depletion_h,
+            &mechanics,
+            4_000,
+            0,
+        );
+        let mut depletion_q4 = None;
+        for quarter in 0..4 {
+            let (summary, _) = r1_run_clamp_segment(
+                &mut depletion_mesh,
+                &mut depletion_h,
+                &mechanics,
+                R1_SEGMENT_STEPS,
+                4_000 + quarter * R1_SEGMENT_STEPS,
+            );
+            if quarter == 3 {
+                depletion_q4 = Some(summary.e_slope.abs());
+            }
+        }
+        let _ = depletion_epoch1_samples;
+        depletion_q4_abs_slope = depletion_q4;
+        sustained_epoch2_quarters = Some(epoch2_summaries);
+
+        let q4 = sustained_epoch2_quarters.as_ref().unwrap()[3].clone();
+        let final_e = sustained_final_e_stored.unwrap();
+        let crossing_or_exact = first_target_crossing_step.is_some()
+            || (final_e - E_TARGET).abs() <= 1e-10;
+        let h_unwound = h_unwinding_magnitude.unwrap_or(0.0) > 1e-10;
+        gate2_pass = sustained_epoch2_quarters.as_ref().unwrap().iter().all(|s| s.alive)
+            && q4.final_e_stored >= 0.95 * E_TARGET
+            && q4.final_e_stored <= 1.05 * E_TARGET
+            && q4.max_e_stored <= 1.10 * E_TARGET
+            && crossing_or_exact
+            && peak_h.is_some_and(|value| value.is_finite())
+            && h_unwound
+            && final_h.unwrap_or(f64::INFINITY) < 0.95
+            && sustained_q4_abs_slope.unwrap_or(f64::INFINITY)
+                <= 0.01 * depletion_q4_abs_slope.unwrap_or(f64::INFINITY);
+        gate3_pass = false;
+    }
+
+    let classification = if !gate1_pass || !gate2_pass || !gate3_pass {
+        "DCDEV019R1_CONTINUOUS_COORDINATED_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED"
+    } else {
+        "DCDEV019R1_CONTINUOUS_COORDINATED_METABOLIC_HOMEOSTASIS_ONLY_QUALIFIED"
+    };
+    R1Qualification {
+        entry: R1_ENTRY.to_string(),
+        schema: regulatory_core::METABOLIC_ACQUISITION_HOMEOSTAT_SCHEMA_V1,
+        production_homeostat_blob: "1172bf792292cfb50269f3f19c01034f446f1af6",
+        e_target: E_TARGET,
+        e_deprived: E_DEPRIVED,
+        tau: HOMEOSTAT_TAU,
+        k_h: 2.0 / (((E_TARGET - E_DEPRIVED) / E_TARGET) * HOMEOSTAT_TAU),
+        g_source_max: HOMEOSTAT_SOURCE_GAIN_MAX,
+        g_transport_max: 1.0,
+        m_selected: M_SELECTED,
+        settled_material_hash: settled_hash,
+        legacy_deprived_material_hash: legacy_deprived_hash,
+        continuous_deprived_material_hash: continuous_deprived_hash,
+        material_parity,
+        h_start,
+        h_deprived,
+        g_source_at_deprivation_end,
+        deprivation_error_trajectory_hash: continuous_deprived_run.trajectory_hash.clone(),
+        historical_phase1_selected_e,
+        historical_original_m2_e,
+        historical_original_m3_e,
+        historical_controls_reproduced,
+        carried_state_feed: carried,
+        reset_state_feed: reset,
+        source_saturated_feed: saturated,
+        gate1_reset_control_reproduced,
+        gate1_source_sufficiency_confirmed,
+        gate1_pass,
+        sustained_epoch1,
+        sustained_epoch2_quarters,
+        first_target_crossing_step,
+        peak_h,
+        final_h,
+        h_unwinding_magnitude,
+        sustained_final_e_stored,
+        sustained_q4_abs_slope,
+        depletion_q4_abs_slope,
+        gate2_pass,
+        gate3_pass,
+        classification,
+        production_behavior_changed: false,
+        chemistry_behavior_changed: false,
+        next_execution_started: false,
+    }
+}
+
+fn main() {
+    let output = std::env::var_os("DCDEV019R1_OUTPUT_ROOT")
+        .map(PathBuf::from)
+        .unwrap_or_else(|| PathBuf::from("experiments/generated/dcdev019r1/phase0-3"));
+    let report = r1_r1_report();
+    fs::create_dir_all(&output).unwrap();
+    fs::write(
+        output.join("qualification.json"),
+        serde_json::to_vec_pretty(&report).unwrap(),
+    )
+    .unwrap();
+    fs::write(
+        output.join("protocol.json"),
+        serde_json::to_vec_pretty(&json!({
+            "directive": "DC-DEV-019-R1",
+            "entry": R1_ENTRY,
+            "settlement_steps": SETTLE,
+            "deprivation_steps": WINDOW,
+            "finite_refeed_steps": WINDOW,
+            "sustained_steps": R1_SUSTAINED_STEPS,
+            "sustained_epoch_1_steps": 4_000,
+            "sustained_epoch_2_quarter_steps": R1_SEGMENT_STEPS,
+            "center": CENTER,
+            "radius": RADIUS,
+            "m_selected": M_SELECTED,
+            "m3_nf": M3_NF,
+            "production_behavior_changed": false,
+            "next_execution_started": false,
+        }))
+        .unwrap(),
+    )
+    .unwrap();
+    println!("DCDEV019R1_EXACT_CANDIDATE_REQUALIFICATION_AUTHORIZED");
+    println!("DCDEV019R1_CONTINUOUS_STATE_REQUALIFICATION_PHASES_0_3_COMPLETE");
+    println!("{}", report.classification);
+    println!("Gate1_pass={}", report.gate1_pass);
+    println!("Gate2_pass={}", report.gate2_pass);
+    println!("Gate3_pass={}", report.gate3_pass);
+    println!("carried_final_E_stored={}", report.carried_state_feed.final_e_stored);
+    println!("continuous_deprived_h={}", report.h_deprived);
+    if let Some(value) = report.sustained_final_e_stored {
+        println!("sustained_final_E_stored={value}");
+    }
     println!("NEXT_EXECUTION_STARTED:false");
 }

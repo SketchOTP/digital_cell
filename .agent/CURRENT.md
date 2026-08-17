@@ -7,18 +7,19 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260817-dcdev019-nutrient-homeostasis-persistence`
-- External directive ID: `DC-DEV-019`
-- Objective: `Qualify finite nutrient delivery, one material-state homeostat, and the M0–M5 metabolic persistence loop from the exact clean DC-DEV-016 base.`
-- Current status: `IN_PROGRESS`
-- Acceptance: `Phase 1 and Gate 2 passed; Gate 3 homeostasis qualification returned the preregistered negative result, so behavior phases are stopped; exact-head remote validation and architect review remain open.`
-- Current phase: `DC-DEV-019 Gate 3 negative-result evidence and review package.`
-- Expected or actual touched areas: `regulatory-core post-Phase-1 homeostat, observer assays, compact evidence, documentation, governance, scoped CI`
-- Immediate next action: `Push the bounded homeostat/qualification package, run exact-head remote CI, and return for architect review; do not begin DC-DEV-020 or behavior work.`
+- Local directive ID: `D-20260817-dcdev019r1-continuous-state-requalification`
+- External directive ID: `DC-DEV-019-R1`
+- Objective: `Requalify the unchanged one-state homeostat through continuous deprivation and finite refeeding, stopping at the first failed metabolic gate.`
+- Current status: `VALIDATING`
+- Acceptance: `Gate 0 passed; Gate 1 failed because carried-state finite refeeding did not restore stored material. Phases 2–6 are not authorized.`
+- Current phase: `DC-DEV-019-R1 Gate 1 negative-result evidence and review package.`
+- Expected or actual touched areas: `observer requalification assay, compact evidence, documentation, governance, scoped CI`
+- Immediate next action: `Push the bounded negative requalification package, run exact-head remote CI, and return for architect review; do not rerun DC-DEV-019 or begin DC-DEV-020.`
 
 ## Temporary task-relevant facts
 
-- The exact scientific base is `0d2c404c0874d5430dd5d01dbdcc059a842dd689`.
+- The exact R1 entry is `59633ebcc37c936e2d04ca5d53477129ab1dca13`.
+- The frozen homeostat production blob is `1172bf792292cfb50269f3f19c01034f446f1af6`.
 - R4/D-096 source remains isolated in the other worktree and is not an input to this branch.
 - Later append-only governance snapshots are preserved under `.agent/legacy/`.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.

@@ -38,6 +38,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260817-dcdev019r1-continuous-state-requalification
+
+- Issued: `2026-08-17T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-019-R1`
+- Objective: Requalify the unchanged homeostat through continuous deprivation, carried-state finite refeeding, sustained settling, and conditional persistence.
+- Scope: Exact entry `59633ebcc37c936e2d04ca5d53477129ab1dca13`, candidate seal, Phases 0–3, and conditional Phases 4–6 only after metabolic gates pass.
+- Exclusions: homeostat tuning, parameter changes, alternate controllers, production chemistry/resource changes, behavior before metabolic qualification, and DC-DEV-020.
+- Acceptance: `DCDEV019R1_CONTINUOUS_STATE_REQUALIFICATION_BUNDLE_COMPLETE` plus exactly one authorized classification after exact-head CI and architect review.
+- Risk class: NORMAL
+- Relationship: remediation
+- Related directive: `DC-DEV-019`
+- Status at issuance: ISSUED
+
 ## D-20260816-dcdev011-passive-isotropic-stick-slip-traction
 
 - Issued: `2026-08-16T00:00:00-04:00`

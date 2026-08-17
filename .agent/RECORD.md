@@ -55,3 +55,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: M0 and M1 passed, but M2 finite feeding failed restoration and M3 failed the frozen target, Q4 slope, and Q4 mean-demand conditions. The result is a bounded negative architectural diagnostic, not authorization for tuning.
 - Affected areas: DC-DEV-019 homeostat qualification and next-directive boundary.
 - Supersedes record: DEC-DCDEV019-001
+
+## DEC-DCDEV019R1-001
+
+- Date: 2026-08-17
+- Record or decision ID: DEC-DCDEV019R1-001
+- Status: PROPOSED
+- Decision or event: DC-DEV-019-R1 Gate 1 returned `DCDEV019R1_CONTINUOUS_COORDINATED_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED`.
+- Rationale: The exact unchanged homeostat accumulated state during continuous deprivation, but the carried-state selected finite refeed failed the required stored-material restoration test; reset-state and source-saturated controls separated carried-state failure from finite-resource sufficiency. Phases 2–6 remain stopped.
+- Affected areas: DC-DEV-019-R1 observer assay and evidence boundary; no production homeostat, chemistry, resource, reserve, mechanics, or behavior change.
+- Supersedes record: DEC-DCDEV019-002

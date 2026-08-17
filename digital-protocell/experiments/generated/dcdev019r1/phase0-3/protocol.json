@@ -1,0 +1,19 @@
+{
+  "center": [
+    4.8,
+    0.0
+  ],
+  "deprivation_steps": 480,
+  "directive": "DC-DEV-019-R1",
+  "entry": "59633ebcc37c936e2d04ca5d53477129ab1dca13",
+  "finite_refeed_steps": 480,
+  "m3_nf": 0.1476710565778127,
+  "m_selected": 19.878372106390554,
+  "next_execution_started": false,
+  "production_behavior_changed": false,
+  "radius": 1.5,
+  "settlement_steps": 5000,
+  "sustained_epoch_1_steps": 4000,
+  "sustained_epoch_2_quarter_steps": 1000,
+  "sustained_steps": 8000
+}
