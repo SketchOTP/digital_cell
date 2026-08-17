@@ -25397,10 +25397,11 @@
       "production_behavior_changed": false
     },
     "gate_1_baseline_reproduction": {
-      "current_reference_hash": "7852248c14d9551b",
+      "comparison": "settled/deprived exact hashes; arm A/B committed A/R/N/F and delivery values within 1e-10",
+      "current_reference_mesh_hash": "7852248c14d9551b",
       "dcdev015_deprived_hash": "990c1abe7e178d30",
       "dcdev015_settled_hash": "c985c08ab226a061",
-      "no_delivery_hash": "03f9e5a6aa1e6a08",
+      "no_delivery_mesh_hash": "03f9e5a6aa1e6a08",
       "pass": true
     },
     "gate_2_resource_conservation": {

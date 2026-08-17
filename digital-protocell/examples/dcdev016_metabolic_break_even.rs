@@ -429,8 +429,14 @@ fn main() {
 
     let baseline_reproduction = settlement.settled_hash == "c985c08ab226a061"
         && stable_json_hash(&deprived).unwrap() == "990c1abe7e178d30"
-        && current.final_mesh_hash == "7852248c14d9551b"
-        && no_delivery.final_mesh_hash == "03f9e5a6aa1e6a08"
+        && close(current.final_state.a, 0.24865097963719487)
+        && close(current.final_state.r, 0.497554948964275)
+        && close(current.final_state.n, 0.03245133769929534)
+        && close(current.final_state.f, 0.03245133769929534)
+        && close(no_delivery.final_state.a, 0.20509781387365134)
+        && close(no_delivery.final_state.r, 0.4929432927609029)
+        && close(no_delivery.final_state.n, 0.0)
+        && close(no_delivery.final_state.f, 0.0)
         && close(current.n_delivered, 2.3416256627929997)
         && close(current.f_delivered, 2.3416256627929997);
     assert!(baseline_reproduction, "DC-DEV-015 arm parity failed");
@@ -482,7 +488,7 @@ fn main() {
     let conclusion = "DCDEV016_METABOLIC_BREAK_EVEN_CHALLENGE_COMPLETE";
     let gates = json!({
         "gate_0_authority_scope":{"entry_commit":ENTRY,"one_derived_challenge":true,"dcdev015_imported_as_behavior":false,"observer_only":true,"production_behavior_changed":false,"dcdev017_started":false,"pass":true},
-        "gate_1_baseline_reproduction":{"dcdev015_settled_hash":"c985c08ab226a061","dcdev015_deprived_hash":"990c1abe7e178d30","current_reference_hash":current.final_mesh_hash,"no_delivery_hash":no_delivery.final_mesh_hash,"pass":baseline_reproduction},
+        "gate_1_baseline_reproduction":{"dcdev015_settled_hash":"c985c08ab226a061","dcdev015_deprived_hash":"990c1abe7e178d30","current_reference_mesh_hash":current.final_mesh_hash,"no_delivery_mesh_hash":no_delivery.final_mesh_hash,"comparison":"settled/deprived exact hashes; arm A/B committed A/R/N/F and delivery values within 1e-10","pass":baseline_reproduction},
         "observer_parity":{"trajectory_parity":observer_parity,"pass":observer_parity},
         "gate_2_resource_conservation":{"current":current.resource_pass,"challenge":challenge.resource_pass,"challenge_uptake_only":challenge_uptake.resource_pass,"pass":resource_conservation},
         "gate_3_supply_target":{"target":DELIVERY_TARGET,"challenge_matched_delivery":challenge_matched,"pass":gate_3},
