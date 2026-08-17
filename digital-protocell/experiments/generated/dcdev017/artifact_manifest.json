@@ -8,7 +8,7 @@
     "phase2_results.json",
     "artifact_manifest.json"
   ],
-  "finding": "DCDEV017_INTRINSIC_HOMEOSTASIS_NOT_ESTABLISHED",
+  "finding": "DCDEV017_METABOLIC_HOMEOSTASIS_NOT_ESTABLISHED",
   "next_execution_started": false,
   "phase": "PHASE_2",
   "production_behavior_changed": true
