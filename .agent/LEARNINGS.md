@@ -117,3 +117,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-016 observer-only metabolic break-even resource sufficiency challenge.
 - Supersedes learning: none
+
+## L-DCDEV018R1-001
+
+- Learning ID: L-DCDEV018R1-001
+- Date: 2026-08-17
+- Fact or lesson: A gain-1 open-loop demand/source ratio is not a closed-loop feasibility proof because increasing N/F-to-A source raises downstream state-dependent sinks. The existing source law can restore under sustained matched precursor, but the exact finite-resource source-saturated upper bound cannot exceed the deprived E_stored starting point.
+- Evidence location: `digital-protocell/examples/dcdev018r1_closed_loop_feasibility.rs`, `digital-protocell/experiments/generated/dcdev018r1/results.json`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev018r1/closed_loop_feasibility.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-018-R1 observer-only closed-loop source-demand feasibility audit.
+- Supersedes learning: none

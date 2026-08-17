@@ -1,0 +1,23 @@
+{
+  "base_branch": "strategy/dc-dev-016-metabolic-break-even",
+  "directive": "DC-DEV-018-R1",
+  "downstream_started": false,
+  "dt": 0.02,
+  "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "finite_inventory": 14.588954880632265,
+  "finite_steps": 480,
+  "fractions": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "g_sat": "min(N*area,F*area)/B when B>epsilon",
+  "gains": "g=1+u*(g_sat-1)",
+  "observer_only": true,
+  "precursor_clamp": 0.1476710565778127,
+  "production_behavior_changed": false,
+  "source_law": "B=k_act*q_catalyst(C)*g_harvest*N*F*dt*area; J_source=min(g*B,N*area,F*area)",
+  "storage_steps": 4000
+}

@@ -1,0 +1,18 @@
+{
+  "classification": "DCDEV018R1_SOURCE_SIDE_HOMEOSTASIS_FEASIBLE_FINITE_RESOURCE_LIMIT_CONFIRMED",
+  "directive": "DC-DEV-018-R1",
+  "downstream_started": false,
+  "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "evidence_files": [
+    "protocol.json",
+    "entry_parity.json",
+    "response_envelope.json",
+    "ideal_source.json",
+    "finite_resource.json",
+    "controller_reachability.json",
+    "results.json",
+    "artifact_manifest.json"
+  ],
+  "next_execution_started": false,
+  "production_behavior_changed": false
+}

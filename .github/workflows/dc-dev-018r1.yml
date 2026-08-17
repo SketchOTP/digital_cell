@@ -1,0 +1,94 @@
+name: DC-DEV-018-R1 closed-loop feasibility
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-018r1-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate committed R1 evidence and scope
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("digital-protocell/experiments/generated/dcdev018r1")
+          required = ["protocol.json", "entry_parity.json", "response_envelope.json", "ideal_source.json", "finite_resource.json", "controller_reachability.json", "results.json", "artifact_manifest.json"]
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              raise SystemExit(f"missing artifacts: {missing}")
+          protocol = json.loads((root / "protocol.json").read_text())
+          results = json.loads((root / "results.json").read_text())
+          ideal = results["ideal"]
+          finite = results["finite_resource"]
+          if protocol["entry_commit"] != "1e242f28152797b512e25cd56c7b718e45d6ca97":
+              raise SystemExit("wrong entry authority")
+          if protocol["storage_steps"] != 4000 or protocol["finite_steps"] != 480 or protocol["dt"] != 0.02:
+              raise SystemExit("formal horizon or dt changed")
+          if results["production_behavior_changed"] or results["downstream_started"] or results["next_execution_started"]:
+              raise SystemExit("scope contamination or downstream execution")
+          if not results["counterfactual_parity"] or results["baseline_trajectory_hash"] != "de16bdafafe3b662":
+              raise SystemExit("entry or counterfactual parity failed")
+          if ideal["first_infeasible_step"] is not None or not ideal["alive"] or not ideal["finite_nonnegative"]:
+              raise SystemExit("ideal source feasibility changed")
+          if finite["final_state"]["e_stored"] >= finite["initial"]["e_stored"] + 1e-10:
+              raise SystemExit("finite-resource sufficiency disposition changed")
+          if not finite["resource_conservation"] or not finite["alive"] or not finite["finite_nonnegative"]:
+              raise SystemExit("finite-resource conservation or viability failed")
+          if results["classification"] != "DCDEV018R1_SOURCE_SIDE_HOMEOSTASIS_FEASIBLE_FINITE_RESOURCE_LIMIT_CONFIRMED":
+              raise SystemExit("unexpected R1 classification")
+          print("validated DC-DEV-018-R1 committed evidence")
+          PY
+          changed="$(git diff --name-only 1e242f28152797b512e25cd56c7b718e45d6ca97 HEAD)"
+          printf '%s\n' "$changed"
+          if printf '%s\n' "$changed" | grep -Ei 'integral_homeostat|homeostat|dcdev019|dc-dev-019|forag|navigation|behavior'; then exit 1; fi
+
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustup run 1.89.0 rustfmt --edition 2021 --check examples/dcdev018r1_closed_loop_feasibility.rs
+
+      - name: Counterfactual API and assay tests
+        working-directory: digital-protocell
+        env:
+          DCDEV018R1_OUTPUT_ROOT: ${{ github.workspace }}/digital-protocell/experiments/generated/dcdev018r1
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev018r1_closed_loop_feasibility --quiet
+
+      - name: Preservation through DC-DEV-016 and evolution harness
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          tmp_dir="$(mktemp -d)"
+          cargo +1.89.0 run -p regulatory-core --example dcdev016_metabolic_break_even --quiet
+          cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          actual="$(git rev-parse --verify HEAD)"
+          echo "checked out $actual"
+          test "$actual" = "$EXPECTED_HEAD"

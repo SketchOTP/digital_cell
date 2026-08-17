@@ -59,3 +59,7 @@ path = "../../examples/dcdev015_metabolic_restoration_assay.rs"
 [[example]]
 name = "dcdev016_metabolic_break_even"
 path = "../../examples/dcdev016_metabolic_break_even.rs"
+
+[[example]]
+name = "dcdev018r1_closed_loop_feasibility"
+path = "../../examples/dcdev018r1_closed_loop_feasibility.rs"

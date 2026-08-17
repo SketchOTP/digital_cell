@@ -1,0 +1,9 @@
+{
+  "baseline_trajectory_hash": "de16bdafafe3b662",
+  "counterfactual_parity": true,
+  "deprived_body_hash": "990c1abe7e178d30",
+  "deprived_e_stored": 60.82781514212436,
+  "pass": true,
+  "settled_body_hash": "c985c08ab226a061",
+  "target_e_stored": 77.91027880846893
+}

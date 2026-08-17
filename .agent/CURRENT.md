@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260817-dcdev016-metabolic-break-even`
-- External directive ID: `DC-DEV-016`
-- Objective: `Determine whether one preregistered resource inventory derived from the DC-DEV-015 measured deficit can maintain available metabolic potential and restore stored activated material under the existing metabolism.`
+- Local directive ID: `D-20260817-dcdev018r1-closed-loop-feasibility`
+- External directive ID: `DC-DEV-018-R1`
+- Objective: `Resolve closed-loop N/F-to-A source feasibility, state-dependent sink coupling, finite-resource sufficiency, and failed-controller reachability without adding a controller.`
 - Current status: `VALIDATING`
-- Acceptance: `Observer-only DC-DEV-016 challenge completed locally with baseline parity, resource conservation, supply sufficiency, and available-potential break-even; stored A/R/E_stored restoration was not observed; exact-head remote CI and architect review remain pending.`
-- Current phase: `DC-DEV-016 evidence and governance package are prepared for pushed draft-PR validation; architect review is next.`
-- Expected or actual touched areas: `DC-DEV-016 observer assay/docs/artifacts/workflow, regulatory-core example registration, scoped CI, current governance state`
-- Immediate next action: `Push DC-DEV-016, open the draft PR against DC-DEV-015, run exact-head remote CI, and return for architect review; do not begin DC-DEV-017.`
+- Acceptance: `Local exact entry parity, gain-1 counterfactual parity, ideal source feasibility, finite-resource upper-bound result, and generated evidence are complete; pushed draft PR, exact-head remote CI, and architect review remain pending.`
+- Current phase: `DC-DEV-018-R1 observer-only feasibility audit complete locally; final classification recorded.`
+- Expected or actual touched areas: `assay-only counterfactual reaction entry point, regulatory-core example registration, R1 evidence/docs/workflow, governance`
+- Immediate next action: `Push the R1 branch and open a draft PR against DC-DEV-016; do not start DC-DEV-018-R2 or DC-DEV-019.`
 
 ## Temporary task-relevant facts
 
@@ -32,7 +32,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Local Rust 1.89.0 DC-DEV-016 example check/run and evidence inspection`
+- Command or check: `Local Rust 1.89.0 DC-DEV-018-R1 example check/run, exact entry parity, and evidence inspection`
 - Result: `PASSED`
 
 ## Risks
@@ -40,10 +40,11 @@
 - Atlas has no Rust toolchain; local sanctioned Rust 1.89.0 is used with the Atlas worktree mounted through SSHFS and a local NTFS target directory.
 - The frozen substrate remains local, isotropic, passive, and reaction-only; no DC-DEV-010 directional substrate code may enter this branch.
 - DC-DEV-012 is closed as valid negative evidence and is not imported.
+- The broad chemistry-core lib suite has one unrelated clean-base failure in `d029_analysis::tests::nnls_recovers_known_alpha_beta`; the R1 assay and regulatory-core tests pass.
 
 ## Blockers
 
-- Exact-head remote CI and independent architect review remain open. DC-DEV-016 is observer-only; no metabolism repair, tuning, new hunger state, behavior, or DC-DEV-017 is authorized.
+- Exact-head remote CI, draft PR creation, and independent architect review remain open. The committed DC-DEV-018 artifact lacks the per-step M4 error trace; exact trace reconstruction is not claimed. No metabolism repair, tuning, new hunger state, behavior, DC-DEV-018-R2, or DC-DEV-019 is authorized.
 
 ## Pending decisions
 

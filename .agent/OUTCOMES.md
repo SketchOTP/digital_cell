@@ -418,3 +418,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: exact-head remote validation and independent architect interpretation of the conversion/storage bottleneck classification.
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
+
+## D-20260817-dcdev018r1-closed-loop-feasibility - PARTIAL
+
+- Outcome ID: `OUT-DCDEV018R1-CLOSED-LOOP-FEASIBILITY-LOCAL`
+- Supersedes outcome: none
+- Closed: `2026-08-17T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R1 audit reproduced clean DC-DEV-016 entry hashes and gain-1 counterfactual parity. Full state-dependent response evaluation showed sink demand rises with source. Ideal sustained source-only actuation reached the target, while the exact finite-resource source-saturated upper bound remained below deprived E_stored. Final classification: `DCDEV018R1_SOURCE_SIDE_HOMEOSTASIS_FEASIBLE_FINITE_RESOURCE_LIMIT_CONFIRMED`.
+- Changed areas: assay-only counterfactual reaction entry point, R1 example registration, generated evidence, documentation, and governance; no controller, sink, resource, or certified Phase-1 equation changes.
+- Validation:
+  - Local example check - PASSED
+  - Exact 5,000-step settlement and 480-step deprivation - PASSED
+  - Exact 4,000-step response/ideal audit - PASSED
+  - Exact 480-step finite-resource audit - PASSED
+  - Gain-1 counterfactual parity - PASSED
+  - Remote exact-head CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: committed DC-DEV-018 evidence lacks a per-step M4 error trace; the reachability record does not claim exact trace reconstruction. Remote exact-head validation and architect review remain pending.
+- Known issue: the broad chemistry-core lib suite retains one unrelated `d029_analysis::tests::nnls_recovers_known_alpha_beta` failure; no R1-touched code is involved.
+- Blockers: GitHub draft PR creation requires available GitHub CLI authentication; exact-head remote CI and architect review.
+- Follow-up directive: none

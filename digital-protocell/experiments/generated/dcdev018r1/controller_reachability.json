@@ -1,0 +1,12 @@
+{
+  "capacity_max": 2.368462987851295,
+  "could_reach_cap_in_horizon": false,
+  "finding": "DCDEV018R1_CONTROLLER_REACHABILITY_TRACE_NOT_RECONSTRUCTIBLE_FROM_COMMITTED_EVIDENCE",
+  "fraction_of_required_capacity_reached": 0.4521449853686319,
+  "integrated_error": 36.171598829490556,
+  "k_integral": 0.029605787348141187,
+  "observed_capacity": 1.07088866298817,
+  "predicted_capacity": 1.07088866298817,
+  "source": "DC-DEV-018 committed M4 observed capacity; per-step error trace absent from committed artifacts",
+  "trace_provenance_complete": false
+}

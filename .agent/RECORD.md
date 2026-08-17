@@ -35,3 +35,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Contractile force-vector sum max norm was `6.804363002006077e-16`; contractility-only centroid displacement was `2.473548217003853e-18`; observed active-minus-control drift was attributed to the changed baseline mechanics force field after deformation.
 - Affected areas: DC-DEV-009 audit evidence and developmental/sensorimotor architecture selection; no production locomotion mechanism.
 - Supersedes record: none
+
+## DEC-DCDEV018R1-001
+
+- Date: 2026-08-17
+- Record or decision ID: DEC-DCDEV018R1-001
+- Status: PROPOSED
+- Decision or event: The closed-loop source-demand audit classified the existing source-side architecture as physically feasible under sustained matched precursor but finite-resource-limited under the frozen uptake/inventory contract.
+- Rationale: The ideal source-only arm reached target E_stored without exceeding g_sat; the finite-resource source-saturated upper bound ended below deprived E_stored while preserving resource conservation and survival. Full-reaction response curves also showed source-dependent sink amplification.
+- Affected areas: DC-DEV-018-R1 observer evidence and developmental metabolic feasibility; no controller qualification or production metabolic repair.
+- Supersedes record: none

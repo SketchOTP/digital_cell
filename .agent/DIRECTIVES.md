@@ -220,3 +220,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260817-dcdev018r1-closed-loop-feasibility
+
+- Issued: `2026-08-17T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-018-R1`
+- Objective: Determine whether the existing N/F-to-A source can restore and maintain activated material under full state-dependent sinks, whether finite resource is sufficient, and whether the failed DC-DEV-018 controller could reach its intended actuation region.
+- Scope: Exact clean DC-DEV-016 entry, canonical full-reaction counterfactual gain, 4,000-step response envelope, ideal source-only bisection, 480-step finite-resource source-saturated upper bound, committed-controller reachability audit, evidence, governance, scoped validation, and draft PR.
+- Exclusions: failed controller import, new homeostat, controller tuning, sink or parameter changes, behavior, exploration, navigation, resource seeking, evolution, DC-DEV-018-R2, and DC-DEV-019.
+- Acceptance: One exact A-E classification, exact entry parity, observer parity, generated evidence, pushed draft PR, exact-head remote CI, and architect review.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
