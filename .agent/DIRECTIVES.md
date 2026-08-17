@@ -192,3 +192,18 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+
+## D-20260816-dcdev014-homeostatic-exploration
+
+- Issued: `2026-08-16T22:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-014`
+- Objective: Determine whether one existing accepted material variable that depletes under resource-free maintenance and restores through accepted N/F uptake can drive a direction-neutral local exploration/feeding-state switch.
+- Scope: Exact DC-DEV-013 accepted entry `5a4e0a2d7314af411ec2283b0ffcf4950eb217db`, physiology audit, one local deterministic homeostatic nucleation module, fixed matched A-E arms, finite N/F restoration and empty/depleted contact control, early/late activity metrics, zero-reserve causality, rotation, passive substrate, provenance, evidence, governance, scoped CI, and preservation through DC-DEV-013.
+- Exclusions: DC-DEV-012 import, endogenous polarity, directional exploration, coordinates, resource/contact input to exploration, target/reward/fitness/planner, new reserve or hunger state, mechanics/substrate changes, parameter search, horizon extension, navigation, selection, evolution, and DC-DEV-015.
+- Acceptance: `DCDEV014_HOMEOSTATIC_EXPLORATION_FEEDING_SWITCH_QUALIFIED`, `DCDEV014_HOMEOSTATIC_EXPLORATION_NOT_ESTABLISHED`, or `DCDEV014_HOMEOSTATIC_MATERIAL_SIGNAL_NOT_AVAILABLE`, with exact-head remote CI, pushed stacked draft PR, and architect review.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

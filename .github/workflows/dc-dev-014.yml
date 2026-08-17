@@ -1,0 +1,110 @@
+name: DC-DEV-014 homeostatic exploration
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-013-resource-contact-feeding
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-014-qualification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate committed DC-DEV-014 evidence
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("digital-protocell/experiments/generated/dcdev014")
+          required = ["protocol.json", "deprivation_audit.json", "results.json", "artifact_manifest.json"]
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              raise SystemExit(f"missing artifacts: {missing}")
+          protocol = json.loads((root / "protocol.json").read_text())
+          results = json.loads((root / "results.json").read_text())
+          manifest = json.loads((root / "artifact_manifest.json").read_text())
+          if protocol["entry_commit"] != "5a4e0a2d7314af411ec2283b0ffcf4950eb217db":
+              raise SystemExit("wrong entry authority")
+          if protocol["settlement_steps"] != 5000 or protocol["assay_steps"] != 480 or protocol["window_steps"] != 160:
+              raise SystemExit("formal horizon changed")
+          if protocol["selected_variable"] != "MaterialMesh.interior.a":
+              raise SystemExit("selected variable changed")
+          if results["conclusion"] != "DCDEV014_HOMEOSTATIC_EXPLORATION_NOT_ESTABLISHED":
+              raise SystemExit("unexpected conclusion")
+          if results["gates"]["gate6_late_relief"] or not all(results["gates"][key] for key in results["gates"] if key != "gate6_late_relief"):
+              raise SystemExit("gate disposition changed")
+          if manifest["conclusion"] != results["conclusion"] or manifest["next_execution_started"]:
+              raise SystemExit("manifest mismatch or next execution started")
+          exploration = Path("digital-protocell/crates/regulatory-core/src/homeostatic_exploration.rs").read_text().lower()
+          for forbidden in ["materialmesh", "centroid", "reward", "fitness", "coordinate"]:
+              if forbidden in exploration:
+                  raise SystemExit(f"forbidden exploration dependency: {forbidden}")
+          print("validated DC-DEV-014 committed evidence")
+          PY
+          changed="$(git diff --name-only 5a4e0a2d7314af411ec2283b0ffcf4950eb217db HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then exit 1; fi
+          if printf '%s\n' "$changed" | grep -E 'dcdev012|directional'; then exit 1; fi
+
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustup run 1.89.0 rustfmt --edition 2021 --check crates/regulatory-core/src/lib.rs crates/regulatory-core/src/homeostatic_exploration.rs examples/dcdev014_gate_assay.rs
+
+      - name: Run DC-DEV-014 tests and frozen assay
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test -p regulatory-core --lib -- --nocapture
+          cargo +1.89.0 run -p regulatory-core --example dcdev014_gate_assay -- experiments/generated/dcdev014-ci
+
+      - name: Preservation through DC-DEV-013
+        working-directory: digital-protocell
+        run: |
+          tmp_dir="$(mktemp -d)"
+          cargo +1.89.0 run -p regulatory-core --example dcdev002_gate_assay -- "$tmp_dir/dcdev002"
+          cargo +1.89.0 run -p regulatory-core --example dcdev003_gate_assay -- "$tmp_dir/dcdev003"
+          cargo +1.89.0 run -p regulatory-core --example dcdev004_gate_assay -- "$tmp_dir/dcdev004"
+          cargo +1.89.0 run -p regulatory-core --example dcdev005_gate_assay -- "$tmp_dir/dcdev005"
+          cargo +1.89.0 run -p regulatory-core --example dcdev006_gate_assay -- "$tmp_dir/dcdev006"
+          cargo +1.89.0 run -p regulatory-core --example dcdev007_gate_assay -- "$tmp_dir/dcdev007"
+          cargo +1.89.0 run -p regulatory-core --example dcdev008_gate_assay -- "$tmp_dir/dcdev008"
+          cargo +1.89.0 run -p regulatory-core --example dcdev009_gate_assay -- "$tmp_dir/dcdev009"
+          cargo +1.89.0 run -p regulatory-core --example dcdev011_gate_assay -- "$tmp_dir/dcdev011"
+          cargo +1.89.0 run -p regulatory-core --example dcdev013_gate_assay -- "$tmp_dir/dcdev013"
+
+      - name: Phase-1 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+
+      - name: D-088 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+
+      - name: Evolution-harness regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          actual="$(git rev-parse --verify HEAD)"
+          echo "checked out $actual"
+          test "$actual" = "$EXPECTED_HEAD"

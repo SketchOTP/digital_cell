@@ -1,0 +1,9 @@
+{
+  "accepted_replete_reference": 0.5,
+  "depleted": true,
+  "final_value": 0.303630027599798,
+  "initial_value": 0.5,
+  "resource_free_maintenance": "existing reactions_step, no new state",
+  "steps": 480,
+  "variable": "MaterialMesh.interior.a (activated material A)"
+}

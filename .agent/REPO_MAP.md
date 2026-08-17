@@ -12,9 +12,10 @@
 - `digital-protocell/crates/phase1-certifier/` — Phase 1 certification and regression checks.
 - `digital-protocell/crates/experiment-runner/` — historical experiment orchestration; not changed by architecture selection.
 - `digital-protocell/crates/evolution-harness/` — observer-only reusable evolution infrastructure; not extended by this directive.
-- `digital-protocell/crates/regulatory-core/` — accepted regulatory state, DC-DEV-003 remesh continuity, the single DC-DEV-004 local contractility adapter, DC-DEV-005 plasticity, the bounded DC-DEV-006 spatial contact adapter, and the DC-DEV-008 finite-resource boundary with the DC-DEV-013 local contact observation.
+- `digital-protocell/crates/regulatory-core/` — accepted regulatory state, DC-DEV-003 remesh continuity, the single DC-DEV-004 local contractility adapter, DC-DEV-005 plasticity, the bounded DC-DEV-006 spatial contact adapter, and the DC-DEV-008 finite-resource boundary with the DC-DEV-013 local contact observation, and the DC-DEV-014 direction-neutral homeostatic nucleator.
 - `digital-protocell/examples/dcdev009_gate_assay.rs` — observer-only fixed-topology free-space motility audit; it does not add production locomotion.
 - `digital-protocell/examples/dcdev013_gate_assay.rs` — fixed-horizon local resource-contact feeding assay; it composes production resource observation, regulation, funded contractility, stick-slip, and uptake without implementing a second sensor.
+- `digital-protocell/examples/dcdev014_gate_assay.rs` — fixed-horizon matched homeostatic exploration/finite N/F restoration assay; it keeps resource/contact observation outside the exploration module and records the negative late-relief result.
 
 ## Interfaces and contracts
 
@@ -42,6 +43,7 @@
 - `digital-protocell/experiments/generated/dcdev006/` — DC-DEV-006 local spatial-contact evidence artifacts.
 - `digital-protocell/experiments/generated/dcdev009/` — DC-DEV-009 force, displacement, coupling, and audit evidence artifacts.
 - `digital-protocell/experiments/generated/dcdev013/` — frozen local resource-contact feeding protocol, settled body, matched-arm results, gate results, and final manifest.
+- `digital-protocell/experiments/generated/dcdev014/` — frozen homeostatic exploration protocol, depletion audit, matched A-E arm trajectories, gate results, and conclusion.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/` — DC-DEV-001A human-readable analysis.
 
 ## External integration points

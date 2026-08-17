@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-16T00:00:00-04:00`
+- Last updated: `2026-08-16T22:30:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260816-dcdev013-resource-contact-feeding`
-- External directive ID: `DC-DEV-013`
-- Objective: `Determine whether actual local contact with finite N/F resource can causally increase the organism's own resource acquisition through the accepted regulator, funded contractility, and DC-DEV-011 stick-slip path.`
+- Local directive ID: `D-20260816-dcdev014-homeostatic-exploration`
+- External directive ID: `DC-DEV-014`
+- Objective: `Determine whether one existing material depletion/restoration signal can causally switch direction-neutral local exploration and reduce exploration after finite N/F restoration.`
 - Current status: `VALIDATING`
-- Acceptance: `Frozen 480-step qualification produced the preregistered negative result; local production tests and exact frozen evidence are complete; stacked draft PR and remote CI are pending.`
-- Current phase: `DC-DEV-013 evidence and governance package are prepared for pushed draft-PR validation; architect review is next.`
-- Expected or actual touched areas: `regulatory-core spatial_resource production interface, DC-DEV-013 assay/docs/artifacts/workflow, scoped CI, current governance state`
-- Immediate next action: `Push DC-DEV-013, open the stacked draft PR against DC-DEV-011, run exact-head remote CI, and return for architect review; do not begin DC-DEV-014.`
+- Acceptance: `The existing A signal closes depletion/restoration and the fixed assay executes; Gates 1-5 and 7-11 pass, Gate 6 late relief fails, so the current scientific result is DCDEV014_HOMEOSTATIC_EXPLORATION_NOT_ESTABLISHED pending remote CI and architect review.`
+- Current phase: `DC-DEV-014 bounded exploration package is prepared for pushed stacked-PR validation; architect review is next.`
+- Expected or actual touched areas: `regulatory-core homeostatic exploration module, DC-DEV-014 assay/docs/artifacts/workflow, scoped CI, current governance state`
+- Immediate next action: `Push DC-DEV-014, open a stacked draft PR against DC-DEV-013, run exact-head remote CI, and return for architect review; do not begin DC-DEV-015.`
 
 ## Temporary task-relevant facts
 
@@ -28,10 +28,13 @@
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
 - Implementation work is on `strategy/dc-dev-011-local-stick-slip-traction` based on `strategy/dc-dev-009-motility-feasibility-audit`.
+- DC-DEV-014 entry authority is `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` on `strategy/dc-dev-013-resource-contact-feeding`; implementation branch is `strategy/dc-dev-014-homeostatic-exploration`.
+- The selected existing material signal is `MaterialMesh.interior.a`; accepted replete reference is the seed `A=0.5`, and accepted no-resource maintenance decreased A to `0.303630027599798` after 480 steps.
+- Finite N/F plus existing `reactions_step` restored A relative to the matched no-delivery control (`C final A=0.2502233661813926`, `D final A=0.20689179981214934`); this is restoration, not yet late homeostatic relief.
 
 ## Last validation after adoption
 
-- Command or check: `Local Rust 1.89.0 regulatory-core tests, exact DC-DEV-013 assay, evidence validation, and governance validation`
+- Command or check: `Local Rust 1.89.0 regulatory-core tests, exact DC-DEV-014 assay, evidence validation, and governance validation`
 - Result: `PASSED`
 
 ## Risks
@@ -39,15 +42,17 @@
 - Atlas has no Rust toolchain; local sanctioned Rust 1.89.0 is used with the Atlas worktree mounted through SSHFS and a local NTFS target directory.
 - The frozen substrate remains local, isotropic, passive, and reaction-only; no DC-DEV-010 directional substrate code may enter this branch.
 - DC-DEV-012 is closed as valid negative evidence and is not imported.
+- Exploration is direction-neutral and receives only normalized interior-A need, local topology size, and its deterministic provenance state; it has no resource/contact/coordinate input.
 
 ## Blockers
 
-- Exact-head remote CI and independent architect review remain open. The first failed scientific gate is preserved as a negative result; no tuning is authorized.
+- Exact-head remote CI and independent architect review remain open. Gate 6 late relief is a negative result; no parameter tuning or horizon extension is authorized.
 
 ## Pending decisions
 
 - The frozen DC-DEV-013 geometry, inventory, horizon, and thresholds must not be changed after protocol commit `fa8a689adff8cbc3b981038c4812ebdc0623116c`.
-- DC-DEV-014, parameter repair, parameter screening, navigation, resource seeking, and evolution remain unauthorized.
+- DC-DEV-014 uses 5,000 settlement steps, 480 assay steps, 160-step analysis windows, and the existing regulator `k_decay=0.5` rate scale; these are frozen for this package.
+- DC-DEV-015, parameter repair, parameter screening, navigation, resource seeking, selection, and evolution remain unauthorized.
 
 ## Status vocabulary
 

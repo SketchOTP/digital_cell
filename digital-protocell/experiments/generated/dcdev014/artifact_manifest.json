@@ -1,0 +1,30 @@
+{
+  "directive": "DC-DEV-014",
+  "entry_commit": "5a4e0a2d7314af411ec2283b0ffcf4950eb217db",
+  "selected_variable": "MaterialMesh.interior.a",
+  "replete_reference": 0.5,
+  "settlement_steps": 5000,
+  "assay_steps": 480,
+  "window_steps": 160,
+  "artifacts": [
+    "protocol.json",
+    "deprivation_audit.json",
+    "results.json",
+    "artifact_manifest.json"
+  ],
+  "conclusion": "DCDEV014_HOMEOSTATIC_EXPLORATION_NOT_ESTABLISHED",
+  "gates": {
+    "1_depletion_restoration": true,
+    "2_locality_replay": true,
+    "3_deprived_more_active": true,
+    "4_replete_quieter": true,
+    "5_C_restoration_D_control": true,
+    "6_late_relief": false,
+    "7_zero_reserve": true,
+    "8_rotation": true,
+    "9_passive_substrate": true,
+    "10_sensor_preserved": true,
+    "11_artifact_exclusion": true
+  },
+  "next_execution_started": false
+}

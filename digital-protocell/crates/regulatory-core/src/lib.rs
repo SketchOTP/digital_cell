@@ -13,6 +13,7 @@ use thiserror::Error;
 
 pub mod continuity;
 pub mod contractility;
+pub mod homeostatic_exploration;
 pub mod plasticity;
 pub mod spatial;
 pub mod spatial_resource;
@@ -22,6 +23,12 @@ pub use contractility::{
     apply_local_contractility, apply_local_contractility_with_external_forces, ContractilityError,
     ContractilityParamsV1, ContractilityStepLedgerV1, CONTRACTILITY_SCHEMA_V1,
     FROZEN_MAX_ACTIVE_TENSION, FROZEN_RESERVE_COST_PER_FORCE_LENGTH_TIME,
+};
+
+pub use homeostatic_exploration::{
+    HomeostaticExplorationError, HomeostaticExplorationParamsV1, HomeostaticExplorationStateV1,
+    HomeostaticExplorationStepV1, HomeostaticExplorationV1, HOMEOSTATIC_EXPLORATION_DOMAIN_V1,
+    HOMEOSTATIC_EXPLORATION_SCHEMA_V1,
 };
 
 pub use continuity::{

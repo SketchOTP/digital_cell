@@ -371,3 +371,26 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: remote exact-head validation and independent architect interpretation of the negative feeding result.
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
+
+
+## D-20260816-dcdev014-homeostatic-exploration - PARTIAL
+
+- Outcome ID: OUT-DCDEV014-HOMEOSTATIC-EXPLORATION-LOCAL
+- Supersedes outcome: none
+- Closed: `2026-08-16T22:30:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The existing accepted material variable `MaterialMesh.interior.a` passed the depletion/restoration audit. The fixed 5,000-step settlement and 480-step A-E assay executed with direction-neutral deterministic local nucleation. Gates 1-5 and 7-11 passed; Gate 6 late relief failed, so the current conclusion is `DCDEV014_HOMEOSTATIC_EXPLORATION_NOT_ESTABLISHED`.
+- Changed areas: regulatory-core homeostatic exploration production module, DC-DEV-014 assay, generated evidence, documentation, workflow, and governance; no chemistry-core source or certified Phase-1 equation was modified.
+- Validation:
+  - Local regulatory-core tests - PASSED (39 tests)
+  - Exact 5,000-step settlement - PASSED
+  - Exact 480-step matched A-E assay - PASSED with negative scientific conclusion
+  - Material A depletion - PASSED (`0.5` to `0.303630027599798` in accepted no-resource maintenance)
+  - Finite N/F restoration and same-geometry no-delivery control - PASSED
+  - Zero-reserve no-funding/passivity/rotation/locality controls - PASSED
+  - Gate 6 late relief - FAILED as preregistered negative result
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: remote exact-head validation and independent architect interpretation of the bounded negative result.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none

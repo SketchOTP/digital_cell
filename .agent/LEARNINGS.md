@@ -97,3 +97,14 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-013 frozen local resource-contact feeding assay; exact-head remote CI and architect review pending.
 - Supersedes learning: none
+
+
+## L-DCDEV014-001
+
+- Learning ID: L-DCDEV014-001
+- Date: 2026-08-16
+- Fact or lesson: Existing interior activated material A is a valid homeostatic audit signal: accepted resource-free maintenance depleted A from the replete seed reference, while finite N/F uptake followed by existing reactions restored A relative to a matched same-geometry no-delivery control. A direction-neutral stochastic local nucleator driven only by normalized A need produced a deprived/replete activity contrast, but the fixed 480-step assay did not establish late relief after restoration.
+- Evidence location: `digital-protocell/crates/regulatory-core/src/homeostatic_exploration.rs`, `digital-protocell/examples/dcdev014_gate_assay.rs`, `digital-protocell/experiments/generated/dcdev014/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev014/qualification_results.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-014 bounded homeostatic exploration/feeding-state assay; exact-head remote CI and architect review pending.
+- Supersedes learning: none

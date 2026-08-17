@@ -1,0 +1,17 @@
+{
+  "arms": [
+    "A_deprived_no_resource",
+    "B_replete_no_resource",
+    "C_deprived_finite_NF_restoration",
+    "D_same_contact_geometry_no_delivery",
+    "E_zero_reserve_deprived"
+  ],
+  "assay_steps": 480,
+  "deprivation_steps": 480,
+  "directive": "DC-DEV-014",
+  "entry_commit": "5a4e0a2d7314af411ec2283b0ffcf4950eb217db",
+  "replete_reference": 0.5,
+  "selected_variable": "MaterialMesh.interior.a",
+  "settlement_steps": 5000,
+  "window_steps": 160
+}
