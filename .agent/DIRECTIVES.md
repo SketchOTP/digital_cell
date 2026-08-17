@@ -35,7 +35,7 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Acceptance: `DCDEV019_FINITE_NUTRIENT_HOMEOSTASIS_PERSISTENCE_BUNDLE_COMPLETE` plus exactly one authorized classification only after all passed gates, pushed draft PR, exact-head CI, and architect review.
 - Risk class: NORMAL
 - Relationship: new
-- Related directive: `DC-DEV-016`
+- Related directive: none
 - Status at issuance: ISSUED
 
 ## D-20260816-dcdev011-passive-isotropic-stick-slip-traction

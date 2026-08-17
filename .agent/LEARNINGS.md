@@ -120,8 +120,8 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 
 ## L-DCDEV019-001
 
-- Learning ID: `L-DCDEV019-001`
-- Date: `2026-08-17`
+- Learning ID: L-DCDEV019-001
+- Date: 2026-08-17
 - Fact or lesson: The current DC-DEV-019 resource geometry requires more finite N/F inventory than the accepted DC-DEV-018-R1 reference replay. Under center `[4.8,0.0]`, radius `1.5`, and 480 steps, the well-mixed upper bound fails at the prior inventory, while deterministic Phase 1B/1C selects `19.878372106390554` and passive existing delivery passes without a transport multiplier.
 - Evidence location: `digital-protocell/examples/dcdev019_phase1_delivery.rs`, `digital-protocell/experiments/generated/dcdev019/phase1/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev019/phase1_delivery.md`.
 - Confidence: PROVISIONAL
@@ -130,8 +130,8 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 
 ## L-DCDEV019-002
 
-- Learning ID: `L-DCDEV019-002`
-- Date: `2026-08-17`
+- Learning ID: L-DCDEV019-002
+- Date: 2026-08-17
 - Fact or lesson: The frozen one-state material homeostat is executable and exact feature-off compatible, and starvation accumulates bounded demand, but the selected finite feeding arm lowers stored material and the sustained R1-style precursor clamp reaches `76.82632823803954` within the target band while failing the Q4 slope and Q4 mean-demand gates. M4/M5 and behavior were correctly stopped.
 - Evidence location: `digital-protocell/examples/dcdev019_homeostasis.rs`, `digital-protocell/experiments/generated/dcdev019/phase3/homeostasis_qualification.json`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev019/phase3_qualification.md`.
 - Confidence: PROVISIONAL
