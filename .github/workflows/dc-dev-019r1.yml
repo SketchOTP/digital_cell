@@ -90,7 +90,7 @@ jobs:
         working-directory: digital-protocell
         run: |
           cargo +1.89.0 test -p phase1-certifier --test metrics_semantics
-          cargo +1.89.0 test -p chemistry-core d088_tests
+          cargo +1.89.0 test -p chemistry-core --test d088_tests
           cargo +1.89.0 test -p evolution-harness
 
       - name: Record exact checkout head
