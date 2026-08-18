@@ -1,0 +1,69 @@
+name: DC-DEV-019-R1 Linux portability diagnostic
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-019-nutrient-homeostasis-persistence
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install Rust 1.89
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Disable only cross-platform absolute hash assertions in working tree
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('digital-protocell/examples/dcdev019_homeostasis.rs')
+          s=p.read_text()
+          for line in [
+              '    assert_eq!(settled_hash, R1_SETTLED_HASH);\n',
+              '    assert_eq!(legacy_deprived_hash, R1_DEPRIVED_HASH);\n',
+          ]:
+              if line not in s:
+                  raise SystemExit(f'missing expected assertion: {line!r}')
+              s=s.replace(line,'',1)
+          p.write_text(s)
+          PY
+
+      - name: Reproduce R1 numerics on Linux
+        working-directory: digital-protocell
+        env:
+          DCDEV019R1_OUTPUT_ROOT: ${{ runner.temp }}/dcdev019r1-linux
+        run: |
+          cargo +1.89.0 run -p regulatory-core --example dcdev019_homeostasis
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          q=json.loads((Path(os.environ['DCDEV019R1_OUTPUT_ROOT'])/'qualification.json').read_text())
+          print(json.dumps({
+            'settled_hash':q['settled_material_hash'],
+            'deprived_hash':q['legacy_deprived_material_hash'],
+            'continuous_deprived_hash':q['continuous_deprived_material_hash'],
+            'material_parity':q['material_parity'],
+            'historical_controls_reproduced':q['historical_controls_reproduced'],
+            'h_deprived':q['h_deprived'],
+            'carried_final':q['carried_state_feed']['final_e_stored'],
+            'reset_final':q['reset_state_feed']['final_e_stored'],
+            'saturated_final':q['source_saturated_feed']['final_e_stored'],
+            'gate1_pass':q['gate1_pass'],
+            'classification':q['classification'],
+          }, indent=2))
+          assert q['material_parity']
+          assert q['historical_controls_reproduced']
+          assert abs(q['carried_state_feed']['final_e_stored']-56.54155735320212) <= 1e-10
+          assert abs(q['reset_state_feed']['final_e_stored']-55.84948101858201) <= 1e-10
+          assert abs(q['source_saturated_feed']['final_e_stored']-61.68434818478833) <= 1e-10
+          assert not q['gate1_pass']
+          PY
