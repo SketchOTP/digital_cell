@@ -478,7 +478,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Gate 4 finite V_max/K_S identification - FAILED as the required negative result
   - Candidate, finite-feed, dose, sustained, cycle, and production gates - NOT RUN by fail-closed rule
   - Sanctioned local Rust 1.89.0 check/run - PASSED
-  - Exact-head remote CI - PENDING
+  - Exact-head remote CI `32183126542` at implementation/evidence head `90421f9f867e16ff369f9ecf7f7fe384b66d6857` - PASSED
   - Architect review - PENDING
 - Remaining risks: exact-head remote validation and independent architect interpretation; only one symmetric substrate trajectory was authorized, so the two parameters remain structurally confounded.
 - Blockers: exact-head remote CI and architect review.
@@ -543,5 +543,5 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Exact-head remote CI - PENDING
   - Architect review - PENDING
 - Remaining risks: N/F sufficiency is diagnostic and bounded to the frozen P0-P4 one-step state manifold; it does not select or qualify a production law, restoration controller, or durable metabolism.
-- Blockers: exact-head remote CI and architect review; production integration and DC-DEV-021 remain unauthorized.
+- Blockers: architect review; production integration and DC-DEV-021 remain unauthorized.
 - Follow-up directive: none
