@@ -1,0 +1,31 @@
+{
+  "directive": "DC-DEV-020-R7",
+  "source_commit": "3ddae9ea3c954431c8b3ae2ecbf2d6fc94278e56",
+  "files": [
+    {
+      "name": "external_evidence_manifest.json",
+      "bytes": 679,
+      "sha256": "067e8eb20103570401ff18918f5c6394c38619a383af508fcacd2a3394786fc6"
+    },
+    {
+      "name": "literature_review.json",
+      "bytes": 675,
+      "sha256": "b03d132789986190741923b3973bf36b3a8403cfedd1a6d3772b3dd641a34310"
+    },
+    {
+      "name": "protocol.json",
+      "bytes": 1541,
+      "sha256": "ebd6dc8241f77288ce89cd68145aef43336a9f1f475b4cf802e88e1e9ecfab37"
+    },
+    {
+      "name": "qualification.json",
+      "bytes": 678,
+      "sha256": "fa839c2ca52c818d6b902121e7bef17592421e939557316c2d78a6de7d6c08c2"
+    },
+    {
+      "name": "summary.json",
+      "bytes": 9706,
+      "sha256": "fbeef012045606a9a510db5ad385f3a0c126b46b7a07cce86116346a9da25c52"
+    }
+  ]
+}

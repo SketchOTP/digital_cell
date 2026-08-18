@@ -304,3 +304,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260818-dcdev020r7-on-policy-zero-drift-audit
+
+- Issued: `2026-08-18T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R7`
+- Objective: Determine why the accepted R6 N/F power law failed finite-feed restoration despite accurate R5 one-step prediction by solving the physical zero-drift root on all R6-induced states.
+- Scope: Accepted R6 head `f01b716d9051c9f0114f3c5c0d1b123e2df037cf`, clean production base `1e242f28152797b512e25cd56c7b718e45d6ca97`, exact 480-step R6 replay, post-uptake pre-reaction capture, frozen R5 root procedure, R6/root causal accounting, frozen NF/NFA observers without refit, training-support distances, one exact-root oracle, external dense evidence, compact Git evidence, governance, preservation, scoped CI, and draft PR.
+- Exclusions: Another kinetic law, R6 refit, K_PL/p changes, runtime A/R/history/controller state, targets, restoration multiplier, transport/resource/sink/reaction/A-decay changes, production integration, behavior, and DC-DEV-021.
+- Acceptance: All R6 states physically accounted for, exact drift closure, unchanged observer replay, one authorized R7 classification, external ledger seal, exact-head CI, and architect review; no result automatically authorizes production integration.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

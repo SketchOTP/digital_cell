@@ -207,3 +207,33 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R6 observer-only two-parameter generalized N/F power-law family through Gate 5; exact-head CI and architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV020R6-002
+
+- Learning ID: L-DCDEV020R6-002
+- Date: 2026-08-18
+- Fact or lesson: Architect acceptance at exact head `f01b716d9051c9f0114f3c5c0d1b123e2df037cf` closes the exact generalized N/F power-law restoration route after exact-head CI `32187547222`, but does not close N/F information sufficiency outside the frozen R5 manifold.
+- Evidence location: closed-unmerged PR #35, accepted R6 compact evidence, and exact-head CI `32187547222`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-020-R6 accepted negative-result boundary.
+- Supersedes learning: none
+
+## L-DCDEV020R7-001
+
+- Learning ID: L-DCDEV020R7-001
+- Date: 2026-08-18
+- Fact or lesson: On the exact R6-induced finite-feed path, every physical zero-drift root remains finite and monotone, and the R6 law undersupplies every state. The frozen NF observer remains accurate in aggregate but exceeds its ambiguity limit, while the unchanged NFA observer passes strongly. Existing A therefore disambiguates on-policy maintenance demand diagnostically; this does not authorize an A-dependent runtime law.
+- Evidence location: `digital-protocell/examples/dcdev020r7_on_policy_zero_drift_audit.rs`, `digital-protocell/experiments/generated/dcdev020r7/`, the governed external dense ledger, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r7/on_policy_zero_drift_audit.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R7 observer-only on-policy zero-drift and coordinate audit; exact-head CI and architect review pending.
+- Supersedes learning: none
+
+## L-DCDEV020R7-002
+
+- Learning ID: L-DCDEV020R7-002
+- Date: 2026-08-18
+- Fact or lesson: A memoryless exact-zero-drift oracle ends at `E_stored=60.82857175353983` from depleted `60.82781514212436`, a sub-0.01% change and below the frozen R5 1% material-state criterion. Local zero-drift demand is maintenance-like at the depleted state and does not itself generate restorative surplus.
+- Evidence location: R7 compact oracle summary and external 480-state ledger sealed at SHA-256 `abdaea6d075c700e36d14d369dba62982f4a65cea47d2d1f162b5dfe8afa59f8`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R7 exact-root oracle diagnostic only; not a production mechanism.
+- Supersedes learning: none

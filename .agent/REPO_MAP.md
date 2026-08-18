@@ -22,6 +22,7 @@
 - `digital-protocell/examples/dcdev020r4_asymmetric_two_substrate_identifiability.rs` — observer-only DC-DEV-020-R4 five-probe independent-axis audit; it changes no production chemistry and stops fail-closed on reciprocal family mismatch.
 - `digital-protocell/examples/dcdev020r5_local_zero_drift_source_audit.rs` — observer-only DC-DEV-020-R5 exact R4 replay, statewise physical source-response, zero-drift root, surrogate, and existing-coordinate audit; it changes no production chemistry.
 - `digital-protocell/examples/dcdev020r6_nf_power_law_source.rs` — observer-only DC-DEV-020-R6 closed-form N/F power-law identification, held-out local-root validation, and fail-closed selected finite-feed counterfactual; it changes no production chemistry.
+- `digital-protocell/examples/dcdev020r7_on_policy_zero_drift_audit.rs` — observer-only DC-DEV-020-R7 exact R6 replay, on-policy physical root audit, frozen NF/NFA observer replay, support-distance analysis, and exact-root oracle; it changes no production chemistry.
 
 ## Interfaces and contracts
 
@@ -56,12 +57,14 @@
 - `digital-protocell/experiments/generated/dcdev020r4/` — append-only R4 protocol, compact result/qualification, sole dense five-probe identification ledger, and primary-literature classification.
 - `digital-protocell/experiments/generated/dcdev020r5/` — compact append-only R5 protocol, results, qualification, schema, representative diagnostics, literature classification, and external dense-ledger SHA-256 manifest.
 - `digital-protocell/experiments/generated/dcdev020r6/` — compact append-only R6 protocol, identification, finite-feed physiology, qualification, literature disposition, and R5 dense-input manifest; no dense R6 trajectory package is committed.
+- `digital-protocell/experiments/generated/dcdev020r7/` — compact append-only R7 protocol, on-policy root/source summary, frozen observer/support statistics, oracle result, qualification, literature disposition, and external dense-ledger manifest.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/` — DC-DEV-001A human-readable analysis.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r2/` — DC-DEV-020-R2 observer requalification and Gate 4 disposition.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r3/` — DC-DEV-020-R3 two-substrate identifiability audit and fail-closed disposition.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r4/` — DC-DEV-020-R4 asymmetric independent-axis identifiability audit and fail-closed disposition.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r5/` — DC-DEV-020-R5 local zero-drift source requirement, R3/R4 surrogate, and existing-coordinate audit.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r6/` — DC-DEV-020-R6 generalized N/F power-law identification and Gate 5 negative-result audit.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r7/` — DC-DEV-020-R7 on-policy zero-drift attribution, frozen coordinate replay, and exact-root oracle audit.
 
 ## External integration points
 

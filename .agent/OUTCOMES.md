@@ -590,3 +590,46 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: The two-parameter law accurately approximates one-step local balance but does not restore stored material on the frozen finite-feed window; no broader kinetic or control architecture is authorized by this result.
 - Blockers: exact-head remote CI and architect review; production integration and DC-DEV-021 remain unauthorized.
 - Follow-up directive: none
+
+## D-20260818-dcdev020r6-nf-power-law-source - COMPLETE
+
+- Outcome ID: `OUT-DCDEV020R6-ARCHITECT-ACCEPTED-NEGATIVE`
+- Supersedes outcome: `OUT-DCDEV020R6-FINITE-FEED-RESTORATION-FAILURE`
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `MET`
+- Summary: Architect review accepted R6 at exact head `f01b716d9051c9f0114f3c5c0d1b123e2df037cf`; PR #35 closed unmerged and exact-head CI `32187547222` passed. Classification remains `DCDEV020R6_FINITE_FEED_RESTORATION_FAILURE`. The exact generalized N/F power-law restoration route is closed, but NF information sufficiency is not closed.
+- Changed areas: governance acceptance record only; R6 scientific evidence remains unchanged.
+- Validation:
+  - Exact R6 head and closed-unmerged PR #35 - PASSED
+  - Exact-head CI run 32187547222 - PASSED
+  - Architect negative-result review - PASSED
+- Remaining risks: R6 one-step fit success did not identify whether its free-running failure was law-family error, induced-state ambiguity, or maintenance-only zero-drift behavior.
+- Blockers: production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: D-20260818-dcdev020r7-on-policy-zero-drift-audit
+
+## D-20260818-dcdev020r7-on-policy-zero-drift-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R7-NFA-COORDINATE-REQUIRED-ON-POLICY`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R7 reproduced the exact R6 finite-feed endpoint, solved 480/480 finite monotone physical zero-drift roots, and closed summed local drift exactly against the observed `-0.7657841303405846` endpoint change. R6 remained below every root. The unchanged NF observer passed RMSE and p95 but failed ambiguity at `0.26505161065124994`; unchanged NFA passed with RMSE `0.017325292104497104`, p95 `0.04444189891888537`, and ambiguity `0.010315383793568476`. The exact-root oracle maintained depleted stored material rather than restoring it. Classification: `DCDEV020R7_NFA_COORDINATE_REQUIRED_ON_POLICY`.
+- Changed areas: R7 observer example registration, compact append-only evidence, external dense-ledger seal, R7 documentation, scoped workflow, and governance; no production chemistry or behavior changed.
+- Validation:
+  - Accepted R6 authority and R1-R6 evidence immutability - PASSED locally
+  - Exact R6 endpoint and committed realization hash - PASSED locally
+  - 480 bounded source-response and zero-drift audits - PASSED
+  - Source capacity and monotonicity - PASSED with zero failures
+  - Maximum root relative interval `9.53674316472667e-7` - PASSED
+  - Maximum root accounting residual `1.660910992073994e-14` - PASSED
+  - Summed local drift and endpoint closure - PASSED exactly
+  - Frozen NF observer limits - FAILED on ambiguity only as the authorized diagnostic result
+  - Frozen NFA observer limits - PASSED
+  - Exact-root oracle accounting and maintenance-only result - PASSED
+  - External ledger SHA-256 `abdaea6d075c700e36d14d369dba62982f4a65cea47d2d1f162b5dfe8afa59f8` - PASSED locally and on Atlas
+  - Focused observer tests - PASSED (2 tests)
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: NFA is only information-sufficient under a frozen diagnostic; R7 does not identify or authorize an NFA production law. Exact zero drift is maintenance-like at the depleted state and does not supply restorative surplus.
+- Blockers: exact-head remote CI and architect review; production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none

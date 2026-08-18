@@ -1,0 +1,56 @@
+{
+  "accepted_r6_head": "f01b716d9051c9f0114f3c5c0d1b123e2df037cf",
+  "capture_boundary": "after passive uptake and before reaction execution",
+  "clean_scientific_base": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "deprivation_steps": 480,
+  "directive": "DC-DEV-020-R7",
+  "feed_steps": 480,
+  "material_error_fraction": 0.1,
+  "meaningful_oracle_gain": {
+    "fraction": 0.01,
+    "provenance": "frozen R5 material-state fraction"
+  },
+  "observer": {
+    "holdout_reference": [
+      "P3",
+      "P4"
+    ],
+    "k": 16,
+    "limits": {
+      "ambiguity": 0.25,
+      "p95": 0.3,
+      "rmse": 0.15
+    },
+    "target": "S_zero/(q_c*area*dt)",
+    "training": [
+      "P0",
+      "P1",
+      "P2"
+    ],
+    "training_min_max_scaling": true,
+    "unweighted": true
+  },
+  "observer_only": true,
+  "production_integration": false,
+  "r5_external_location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r5/6dbb8d45c520e2756a81b2cc1e81dff9c3878992/statewise_root_ledger.json",
+  "r5_ledger_sha256": "4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585",
+  "r6": {
+    "accepted_trajectory_hash": "97010613dc36e447",
+    "k_pl": 0.017556661171593057,
+    "p": 0.0003277429681759396
+  },
+  "refit": false,
+  "root": {
+    "relative_interval_tolerance": 1e-6,
+    "shape_fractions": [
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ]
+  },
+  "selected_patch_mass_each": 19.878372106390554,
+  "settle_steps": 5000,
+  "source_commit": "3ddae9ea3c954431c8b3ae2ecbf2d6fc94278e56"
+}

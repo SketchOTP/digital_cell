@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260818-dcdev020r6-nf-power-law-source`
-- External directive ID: `DC-DEV-020-R6`
-- Objective: `Test one symmetric local generalized-mass-action N/F power law against accepted R5 roots and the frozen finite-feed physiology.`
+- Local directive ID: `D-20260818-dcdev020r7-on-policy-zero-drift-audit`
+- External directive ID: `DC-DEV-020-R7`
+- Objective: `Determine why the accepted R6 N/F power law failed restoration by solving the physical zero-drift requirement on its own induced states and replaying the frozen R5 observers without refitting.`
 - Current status: `VALIDATING`
-- Acceptance: `R5 is architect-accepted at d215cfc00ce70517e25fa7c3b51b13d85d9ce521. R6 passes deterministic identification and held-out local-root validation, then stops at Gate 5 as DCDEV020R6_FINITE_FEED_RESTORATION_FAILURE because final E_stored 60.0620310117838 remains below deprived 60.82781514212436.`
-- Current phase: `DC-DEV-020-R6 observer-only negative-result packaging and exact-head validation; production integration is unauthorized.`
-- Expected or actual touched areas: `R6 observer assay registration, compact evidence, R6 documentation, governance, and scoped CI`
-- Immediate next action: `Complete preservation, push the R6 branch, open a draft PR, verify exact-head CI, and return for architect review; do not integrate, extend R6, or begin DC-DEV-021.`
+- Acceptance: `R6 is architect-accepted negative at f01b716d9051c9f0114f3c5c0d1b123e2df037cf with exact-head CI 32187547222. R7 reproduces R6, obtains 480/480 finite monotone roots, closes drift exactly, finds frozen NF insufficient only by ambiguity 0.26505161065124994 while NFA passes, and classifies DCDEV020R7_NFA_COORDINATE_REQUIRED_ON_POLICY.`
+- Current phase: `DC-DEV-020-R7 observer-only evidence packaging and exact-head validation; no production law or DC-DEV-021 work is authorized.`
+- Expected or actual touched areas: `R7 observer example registration, compact evidence, external dense-ledger seal, R7 documentation, governance, and scoped CI`
+- Immediate next action: `Complete preservation, push the R7 branch, open a draft PR, verify exact-head CI, and return for architect review; do not construct an NFA law or begin DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -28,11 +28,12 @@
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
 - R5 is accepted as `DCDEV020R5_ACCEPTED`, `DCDEV020R5_NF_LOCAL_COORDINATE_SUFFICIENT`, and `ENDPOINT_SURROGATE_NOT_LOCAL_REQUIREMENT` at `d215cfc00ce70517e25fa7c3b51b13d85d9ce521`; R6 work is isolated on `strategy/dc-dev-020r6-nf-power-law-source`.
+- R6 is accepted as `DCDEV020R6_ACCEPTED_NEGATIVE` and `DCDEV020R6_FINITE_FEED_RESTORATION_FAILURE` at `f01b716d9051c9f0114f3c5c0d1b123e2df037cf`; `NF_POWER_LAW_RESTORATION_ROUTE_CLOSED` does not close NF information sufficiency.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
 
 ## Last validation after adoption
 
-- Command or check: `Local Rust 1.89.0 R6 compile, 3 focused candidate tests, governed R5 ledger SHA-256, deterministic fit, held-out root validation, and selected finite-feed counterfactual; Gates 0-4 passed and Gate 5 returned DCDEV020R6_FINITE_FEED_RESTORATION_FAILURE`
+- Command or check: `Local Rust 1.89.0 R7 compile, 2 focused observer tests, exact R6 replay, 480 physical roots, frozen NF/NFA replay, drift closure, exact-root oracle, and governed external dense-ledger SHA-256`
 - Result: `PASSED`
 
 ## Risks
@@ -43,7 +44,7 @@
 
 ## Blockers
 
-- Exact-head remote CI and independent architect review remain open. Gates 6-8 were not run after the Gate 5 failure; no production integration, parameter tuning, additional kinetic family, behavior, or DC-DEV-021 is authorized.
+- Exact-head remote CI and independent architect review remain open. No NFA production law, refit, parameter tuning, additional kinetic family, behavior, or DC-DEV-021 is authorized.
 
 ## Pending decisions
 

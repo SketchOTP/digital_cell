@@ -1,0 +1,19 @@
+{
+  "classification": "DCDEV020R7_NFA_COORDINATE_REQUIRED_ON_POLICY",
+  "dc_dev_021_authorized": false,
+  "drift_accounting_valid": true,
+  "implementation_authorized": false,
+  "next_execution_started": false,
+  "nf_coordinate_closed": false,
+  "nf_on_policy_sufficient": false,
+  "nfa_on_policy_sufficient": true,
+  "oracle_restorative_gain": false,
+  "physics_valid": true,
+  "production_behavior_changed": false,
+  "production_chemistry_changed": false,
+  "r6_accepted_negative": "DCDEV020R6_ACCEPTED_NEGATIVE",
+  "r6_tracks_frozen_limits": true,
+  "route_disposition": "NF_POWER_LAW_RESTORATION_ROUTE_CLOSED",
+  "systematic_undersupply": true,
+  "trajectory_parity": true
+}
