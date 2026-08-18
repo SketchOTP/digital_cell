@@ -30,6 +30,10 @@ const M_SELECTED: f64 = 19.878372106390554;
 const DT: f64 = 0.02;
 const E_DEPRIVED: f64 = 60.82781514212436;
 const R6_FINAL_E: f64 = 60.0620310117838;
+const R6_FINAL_A: f64 = 0.3423623895976825;
+const R6_FINAL_R: f64 = 0.5056416879564652;
+const R6_FINAL_NF: f64 = 0.10185789865759344;
+const R6_FINAL_C: f64 = 0.7722488011667238;
 const K_PL: f64 = 0.017556661171593057;
 const POWER_P: f64 = 0.0003277429681759396;
 const SOURCE_EPS: f64 = 1e-12;
@@ -793,8 +797,17 @@ fn main() {
     }
     fs::write(&dense_path, serde_json::to_vec(&records).unwrap()).unwrap();
 
-    let parity = trajectory_hash == ACCEPTED_R6_HASH
-        && (final_state.e_stored - R6_FINAL_E).abs() <= MASS_TOL;
+    // R5 established that non-authoritative mechanics internals can create a
+    // different byte hash across operating systems. Scientific parity is the
+    // exact frozen path plus its explicit endpoint snapshot within tolerance;
+    // the committed Windows realization hash is retained as a separate seal.
+    let artifact_hash_match = trajectory_hash == ACCEPTED_R6_HASH;
+    let parity = (final_state.e_stored - R6_FINAL_E).abs() <= MASS_TOL
+        && (final_state.a - R6_FINAL_A).abs() <= MASS_TOL
+        && (final_state.r - R6_FINAL_R).abs() <= MASS_TOL
+        && (final_state.n - R6_FINAL_NF).abs() <= MASS_TOL
+        && (final_state.f - R6_FINAL_NF).abs() <= MASS_TOL
+        && (final_state.c - R6_FINAL_C).abs() <= MASS_TOL;
     let capacity = records
         .iter()
         .filter(|r| r.root_audit.status == "LOCAL_SOURCE_CAPACITY_INSUFFICIENT")
@@ -883,7 +896,7 @@ fn main() {
         &output,
         "summary.json",
         &json!({
-            "r6":{"trajectory_parity":parity,"trajectory_hash":trajectory_hash,"final_state":final_state,"uptake_conservation_error":uptake_error},
+        "r6":{"trajectory_parity":parity,"trajectory_hash":trajectory_hash,"committed_artifact_hash_match":artifact_hash_match,"final_state":final_state,"uptake_conservation_error":uptake_error},
             "roots":{"states":records.len(),"finite":finite,"capacity_insufficient":capacity,"nonmonotonic":nonmonotonic,"max_relative_interval":max_root_interval,"max_accounting_residual":max_root_residual,"s_zero_over_saturated":distribution(records.iter().filter_map(|r|r.root_audit.s_zero_over_saturated).collect())},
             "r6_versus_root":{"all":r6_errors,"windows":r6_windows,"summed_local_drift":summed_drift,"observed_endpoint_drift":observed_drift,"drift_accounting_closure":drift_closure},
             "support":{"nf":nf_support,"nfa":nfa_support},
