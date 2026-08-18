@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-020-R8`
 - Objective: `Audit whether existing local A can support a target-free product-feedback topology when combined with the frozen N/F coordinate, using an observer-only reciprocal-feasibility analysis.`
 - Current status: `VALIDATING`
-- Acceptance: `R8 local training Gate 3 failed closed with DCDEV020R8_PRODUCT_FEEDBACK_TOPOLOGY_INCOMPATIBLE; compact evidence and the governed dense-ledger seal are present. Exact-head CI and architect review remain pending.`
+- Acceptance: `R8 local training Gate 3 failed closed with DCDEV020R8_PRODUCT_FEEDBACK_TOPOLOGY_INCOMPATIBLE; compact evidence and the governed dense-ledger seal are present. Exact-head CI 32195362719 passed at bfbfece349ec4c637b15c432388b4ddff6ab689d; architect review remains pending.`
 - Current phase: `DC-DEV-020-R8 observer-only product-feedback topology audit and exact-head validation; no production law or DC-DEV-021 work is authorized.`
 - Expected or actual touched areas: `R8 observer example registration, compact evidence, external dense-ledger seal, R8 documentation, governance, and scoped CI`
-- Immediate next action: `Complete preservation, commit and push the R8 package, open a draft PR, verify exact-head CI, and return for architect review; do not begin R9 or DC-DEV-021.`
+- Immediate next action: `Return the pushed draft PR #37 at exact head bfbfece349ec4c637b15c432388b4ddff6ab689d for independent architect review; do not begin R9 or DC-DEV-021.`
 
 ## Temporary task-relevant facts
 

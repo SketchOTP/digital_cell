@@ -87,5 +87,6 @@ DCDEV020R8_EXTERNAL_LEDGER=<external dense output>
 cargo +1.89.0 run -p regulatory-core --example dcdev020r8_nfa_restorative_attractor --release --quiet
 ```
 
-Production chemistry and behavior remain unchanged. `DC-DEV-021` remains
-unauthorized.
+Exact-head CI run `32195362719` passed at final PR head
+`bfbfece349ec4c637b15c432388b4ddff6ab689d`; architect review remains pending.
+Production chemistry and behavior remain unchanged. `DC-DEV-021` remains unauthorized.

@@ -500,7 +500,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Positive reciprocal coefficients and alpha*gamma approximately beta^2 - FAILED as the required negative result
   - Finite V_max/K_S, P3/P4 finite-model holdout, boundary witnesses, qualification, and production integration - NOT RUN by fail-closed rule
   - Sanctioned local Rust 1.89.0 check/run - PASSED
-  - Exact-head remote CI - PENDING
+  - Exact-head remote CI run `32195362719` at head `bfbfece349ec4c637b15c432388b4ddff6ab689d` - PASSED
   - Architect review - PENDING
 - Remaining risks: exact-head remote validation and independent architect interpretation; the permitted symmetric family is structurally mismatched after independent-axis excitation, but no broader kinetic family is authorized.
 - Blockers: exact-head remote CI and architect review.
@@ -588,7 +588,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Exact-head remote CI - PENDING
   - Architect review - PENDING
 - Remaining risks: The two-parameter law accurately approximates one-step local balance but does not restore stored material on the frozen finite-feed window; no broader kinetic or control architecture is authorized by this result.
-- Blockers: exact-head remote CI and architect review; production integration and DC-DEV-021 remain unauthorized.
+- Blockers: architect review; production integration and DC-DEV-021 remain unauthorized.
 - Follow-up directive: none
 
 ## D-20260818-dcdev020r8-nfa-restorative-attractor - PARTIAL
@@ -607,10 +607,10 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Zero-substrate control and production-scope guards - PASSED locally
   - External R8 dense-ledger SHA-256 `12b41f27c928635899a7ea3a8d496cfdd3af7d3fd83aaa93024724663e2df9ff` - PASSED locally and on Atlas
   - Focused R8 tests - PASSED locally
-  - Exact-head remote CI - PENDING
+  - Exact-head remote CI run `32195362719` at head `bfbfece349ec4c637b15c432388b4ddff6ab689d` - PASSED
   - Architect review - PENDING
 - Remaining risks: This closes only the tested reciprocal product-feedback topology on the frozen R5/R7 training support; it does not close the wider NFA route or authorize a production A-dependent law.
-- Blockers: exact-head remote CI and architect review; R9 and DC-DEV-021 remain unauthorized.
+- Blockers: architect review; R9 and DC-DEV-021 remain unauthorized.
 - Follow-up directive: none
 
 ## D-20260818-dcdev020r6-nf-power-law-source - COMPLETE
