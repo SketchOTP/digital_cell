@@ -1,0 +1,7 @@
+{
+  "classification": "DCDEV020R3_SATURATING_KINETICS_NOT_IDENTIFIABLE",
+  "gate_2_supported": true,
+  "gate_4_pass": false,
+  "implementation_authorized": false,
+  "next_execution_started": false
+}

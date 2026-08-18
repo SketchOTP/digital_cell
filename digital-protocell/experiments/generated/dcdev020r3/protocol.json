@@ -1,0 +1,25 @@
+{
+  "accepted_r2_head": "e394aa675a4f44d91d1a8729736679fb4b7e7ab8",
+  "candidate_family": "q_c * g_h * V_max * N*F/(K_S^2 + K_S*N + K_S*F + N*F)",
+  "clean_scientific_base": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "constant_break_even_gain": 13.9482421875,
+  "deprivation_steps": 480,
+  "directive": "DC-DEV-020-R3",
+  "feed_steps": 480,
+  "identified_parameters": [
+    "V_max",
+    "K_S"
+  ],
+  "observer_only": true,
+  "production_integration": false,
+  "resource_center": [
+    4.8,
+    0.0
+  ],
+  "resource_mass_f": 19.878372106390554,
+  "resource_mass_n": 19.878372106390554,
+  "resource_radius": 1.5,
+  "settle_steps": 5000,
+  "source_commit": "bf2d52bf4f32f7c3015b53707e0ecf10024e6a3f",
+  "sustained_steps": 8000
+}

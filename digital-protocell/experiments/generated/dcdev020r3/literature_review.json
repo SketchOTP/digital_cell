@@ -1,0 +1,36 @@
+{
+  "disposition": "ADAPTABLE_ARCHITECTURE_ONLY",
+  "external_constants_imported": false,
+  "molecular_identities_imported": false,
+  "sources": [
+    {
+      "citation": "Cleland 1963, The kinetics of enzyme-catalyzed reactions with two or more substrates or products. I. Nomenclature and rate equations",
+      "classification": "ADAPTABLE",
+      "imported_constants": false,
+      "reusable_finding": "Two-or-more-substrate reactions admit explicit steady-state rate equations rather than requiring unrestricted bilinear mass action.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/14021667/"
+    },
+    {
+      "citation": "Pettersson 1969, Relationships between rapid equilibrium conditions and linearization of the reciprocal rate equation for the sequential random two-substrate enzyme mechanism",
+      "classification": "REFERENCE_ONLY",
+      "imported_constants": false,
+      "reusable_finding": "Sequential-random two-substrate mechanisms have identifiable reciprocal-rate structure under stated equilibrium assumptions.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/5381399/"
+    },
+    {
+      "citation": "Wang and Mittermaier 2021, Characterizing Bi-substrate Enzyme Kinetics at High Resolution by 2D-ITC",
+      "classification": "ADAPTABLE",
+      "imported_constants": false,
+      "reusable_finding": "Bi-substrate rate surfaces must be characterized across both substrate concentrations and can distinguish random sequential kinetic structure.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34514786/"
+    },
+    {
+      "citation": "Link, Kochanowski and Sauer 2013, Systematic identification of allosteric protein-metabolite interactions that control enzyme activity in vivo",
+      "classification": "REFERENCE_ONLY",
+      "imported_constants": false,
+      "reusable_finding": "Rapid nutrient switches can produce rapid metabolite and flux changes, supporting explicit transition and stability observations.",
+      "url": "https://www.nature.com/articles/nbt.2489"
+    }
+  ],
+  "status": "primary_literature_reviewed_before_implementation"
+}
