@@ -508,6 +508,13 @@ fn summarize_pairs(pairs: &[Pair]) -> Value {
     })
 }
 
+fn compact_region(bundle: &RegionBundle) -> Value {
+    json!({
+        "constraint_count": bundle.constraints.len(),
+        "report": bundle.report,
+    })
+}
+
 fn distribution(values: &[f64]) -> Value {
     if values.is_empty() {
         return json!({"count": 0});
@@ -565,6 +572,8 @@ fn main() {
         .unwrap_or_else(|_| "LOCAL_UNCOMMITTED".into());
     let external_location = std::env::var("DCDEV020R8_EXTERNAL_LOCATION")
         .unwrap_or_else(|_| "UNRECORDED_EXTERNAL_LOCATION".into());
+    let external_sha256 = std::env::var("DCDEV020R8_EXTERNAL_SHA256")
+        .unwrap_or_else(|_| "COMPUTED_AFTER_RUN".into());
     let r5: Vec<R5Row> = serde_json::from_slice(&fs::read(r5_path).unwrap()).unwrap();
     let r7: Vec<R7Row> = serde_json::from_slice(&fs::read(r7_path).unwrap()).unwrap();
     let r5_rows: Vec<SurfaceRow> = r5.iter().filter_map(source_row_from_r5).collect();
@@ -711,13 +720,13 @@ fn main() {
         "p_nf": P_NF,
     });
     let constraints = json!({
-        "training": training_region,
-        "after_P3_P4": holdout_region,
-        "after_R7_on_policy": on_policy_region,
+        "training": compact_region(&training_region),
+        "after_P3_P4": compact_region(&holdout_region),
+        "after_R7_on_policy": compact_region(&on_policy_region),
         "sensitivity_remove_probe": sensitivity,
     });
     let capacity = json!({
-        "region_after_capacity_constraints": final_region,
+        "region_after_capacity_constraints": compact_region(&final_region),
         "capacity_invalid_states": capacity_invalid,
         "clipping_dependent": clipping_dependent,
         "zero_substrate_source_is_explicit_zero": zero_substrate_control,
@@ -773,7 +782,7 @@ fn main() {
     let manifest = json!({
         "directive": "DC-DEV-020-R8",
         "source_commit": source_commit,
-        "external_dense_ledger": {"location": external_location, "path_argument": dense_path},
+        "external_dense_ledger": {"location": external_location, "sha256": external_sha256},
         "compact_files": ["protocol.json", "pairing_summary.json", "constraint_summary.json", "feasible_region.json", "capacity_validation.json", "qualification.json", "literature_review.json", "external_evidence_manifest.json", "manifest.json"],
         "preserved": ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "Phase-1", "D-088", "evolution-harness"],
     });
@@ -784,7 +793,7 @@ fn main() {
     write_json(&output, "capacity_validation.json", &capacity);
     write_json(&output, "qualification.json", &qualification);
     write_json(&output, "literature_review.json", &literature);
-    write_json(&output, "external_evidence_manifest.json", &json!({"R5": {"sha256": R5_SHA256, "location": R5_LOCATION}, "R7": {"sha256": R7_SHA256, "location": R7_LOCATION}, "dense_R8": {"location": external_location}}));
+    write_json(&output, "external_evidence_manifest.json", &json!({"R5": {"sha256": R5_SHA256, "location": R5_LOCATION}, "R7": {"sha256": R7_SHA256, "location": R7_LOCATION}, "dense_R8": {"sha256": external_sha256, "location": external_location}}));
     write_json(&output, "manifest.json", &manifest);
     println!("{}", topology);
 }
