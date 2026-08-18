@@ -754,13 +754,8 @@ fn r1_r1_report() -> R1Qualification {
 
     let mut original_m3 = legacy_deprived.clone();
     let mut original_m3_h = homeostat(true);
-    let (original_m3_run, _) = r1_run_clamp_segment(
-        &mut original_m3,
-        &mut original_m3_h,
-        &mechanics,
-        4_000,
-        0,
-    );
+    let (original_m3_run, _) =
+        r1_run_clamp_segment(&mut original_m3, &mut original_m3_h, &mechanics, 4_000, 0);
     let historical_original_m3_e = e_stored(&original_m3);
     let historical_controls_reproduced =
         (historical_phase1_selected_e - ACCEPTED_PHASE1_SELECTED_E).abs() <= 1e-10
@@ -769,11 +764,12 @@ fn r1_r1_report() -> R1Qualification {
     assert!(
         historical_controls_reproduced,
         "historical controls: phase1={} m2={} m3={}",
-        historical_phase1_selected_e,
-        historical_original_m2_e,
-        historical_original_m3_e
+        historical_phase1_selected_e, historical_original_m2_e, historical_original_m3_e
     );
-    assert_eq!(phase1_selected_run.final_e_stored, ACCEPTED_PHASE1_SELECTED_E);
+    assert_eq!(
+        phase1_selected_run.final_e_stored,
+        ACCEPTED_PHASE1_SELECTED_E
+    );
     assert_eq!(original_m2_run.final_e_stored, ACCEPTED_ORIGINAL_M2_E);
     assert_eq!(original_m3_run.final_e_stored, ACCEPTED_ORIGINAL_M3_E);
 
@@ -793,8 +789,7 @@ fn r1_r1_report() -> R1Qualification {
     let material_parity = continuous_deprived_hash == legacy_deprived_hash;
     assert!(material_parity);
     let h_deprived = continuous_h.h;
-    let g_source_at_deprivation_end =
-        1.0 + continuous_h.h * (HOMEOSTAT_SOURCE_GAIN_MAX - 1.0);
+    let g_source_at_deprivation_end = 1.0 + continuous_h.h * (HOMEOSTAT_SOURCE_GAIN_MAX - 1.0);
 
     let carried_before = continuous_deprived.clone();
     let carried_h_before = continuous_h.h;
@@ -839,13 +834,7 @@ fn r1_r1_report() -> R1Qualification {
     let mut saturated_mesh = legacy_deprived.clone();
     let saturated_before = saturated_mesh.clone();
     let saturated_run = r1_run_source_saturated(&mut saturated_mesh, &mechanics, WINDOW);
-    let saturated = r1_arm_summary(
-        &saturated_before,
-        0.0,
-        &saturated_mesh,
-        0.0,
-        &saturated_run,
-    );
+    let saturated = r1_arm_summary(&saturated_before, 0.0, &saturated_mesh, 0.0, &saturated_run);
 
     let replete = &settled;
     let a_toward = (replete.interior.a - continuous_deprived.interior.a).abs()
@@ -886,13 +875,8 @@ fn r1_r1_report() -> R1Qualification {
             h.h = h_deprived;
             h
         };
-        let (epoch1, epoch1_samples) = r1_run_clamp_segment(
-            &mut sustained_mesh,
-            &mut sustained_h,
-            &mechanics,
-            4_000,
-            0,
-        );
+        let (epoch1, epoch1_samples) =
+            r1_run_clamp_segment(&mut sustained_mesh, &mut sustained_h, &mechanics, 4_000, 0);
         let mut epoch2_parts = Vec::new();
         for quarter in 0..4 {
             let (summary, samples) = r1_run_clamp_segment(
@@ -904,15 +888,13 @@ fn r1_r1_report() -> R1Qualification {
             );
             epoch2_parts.push((summary, samples));
         }
-        let all_samples = r1_concat_observations(
-            &[
-                epoch1_samples,
-                epoch2_parts[0].1.clone(),
-                epoch2_parts[1].1.clone(),
-                epoch2_parts[2].1.clone(),
-                epoch2_parts[3].1.clone(),
-            ],
-        );
+        let all_samples = r1_concat_observations(&[
+            epoch1_samples,
+            epoch2_parts[0].1.clone(),
+            epoch2_parts[1].1.clone(),
+            epoch2_parts[2].1.clone(),
+            epoch2_parts[3].1.clone(),
+        ]);
         first_target_crossing_step = all_samples
             .iter()
             .find(|sample| sample.e_stored >= E_TARGET)
@@ -943,13 +925,8 @@ fn r1_r1_report() -> R1Qualification {
 
         let mut depletion_mesh = carried_before.clone();
         let mut depletion_h = homeostat(false);
-        let (_, depletion_epoch1_samples) = r1_run_clamp_segment(
-            &mut depletion_mesh,
-            &mut depletion_h,
-            &mechanics,
-            4_000,
-            0,
-        );
+        let (_, depletion_epoch1_samples) =
+            r1_run_clamp_segment(&mut depletion_mesh, &mut depletion_h, &mechanics, 4_000, 0);
         let mut depletion_q4 = None;
         for quarter in 0..4 {
             let (summary, _) = r1_run_clamp_segment(
@@ -969,10 +946,14 @@ fn r1_r1_report() -> R1Qualification {
 
         let q4 = sustained_epoch2_quarters.as_ref().unwrap()[3].clone();
         let final_e = sustained_final_e_stored.unwrap();
-        let crossing_or_exact = first_target_crossing_step.is_some()
-            || (final_e - E_TARGET).abs() <= 1e-10;
+        let crossing_or_exact =
+            first_target_crossing_step.is_some() || (final_e - E_TARGET).abs() <= 1e-10;
         let h_unwound = h_unwinding_magnitude.unwrap_or(0.0) > 1e-10;
-        gate2_pass = sustained_epoch2_quarters.as_ref().unwrap().iter().all(|s| s.alive)
+        gate2_pass = sustained_epoch2_quarters
+            .as_ref()
+            .unwrap()
+            .iter()
+            .all(|s| s.alive)
             && q4.final_e_stored >= 0.95 * E_TARGET
             && q4.final_e_stored <= 1.05 * E_TARGET
             && q4.max_e_stored <= 1.10 * E_TARGET
@@ -1075,7 +1056,10 @@ fn main() {
     println!("Gate1_pass={}", report.gate1_pass);
     println!("Gate2_pass={}", report.gate2_pass);
     println!("Gate3_pass={}", report.gate3_pass);
-    println!("carried_final_E_stored={}", report.carried_state_feed.final_e_stored);
+    println!(
+        "carried_final_E_stored={}",
+        report.carried_state_feed.final_e_stored
+    );
     println!("continuous_deprived_h={}", report.h_deprived);
     if let Some(value) = report.sustained_final_e_stored {
         println!("sustained_final_E_stored={value}");
