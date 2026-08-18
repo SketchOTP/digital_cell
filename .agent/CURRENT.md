@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260818-dcdev020r3-two-substrate-saturating-activation`
-- External directive ID: `DC-DEV-020-R3`
-- Objective: `Determine whether bilinear low-substrate suppression is material and whether the bounded symmetric two-substrate saturating family identifies one finite V_max and K_S pair.`
+- Local directive ID: `D-20260818-dcdev020r4-asymmetric-two-substrate-identifiability`
+- External directive ID: `DC-DEV-020-R4`
+- Objective: `Determine whether independent N/F excitation identifies one finite V_max and K_S pair for the bounded symmetric two-substrate source family.`
 - Current status: `VALIDATING`
-- Acceptance: `R2 is architect-accepted at e394aa675a4f44d91d1a8729736679fb4b7e7ab8. R3 Gate 2 passed, but Gate 4 failed with DCDEV020R3_SATURATING_KINETICS_NOT_IDENTIFIABLE; no candidate or later gate ran.`
-- Current phase: `DC-DEV-020-R3 observer-only negative-result package; exact-head remote CI and architect review remain pending.`
-- Expected or actual touched areas: `R3 observer assay, append-only compact evidence, R3 documentation, governance, scoped CI`
-- Immediate next action: `Validate preservation and governance, push the R3 branch, open a draft PR, and return for architect review; do not integrate or begin DC-DEV-021.`
+- Acceptance: `R3 is architect-accepted negative at 2f32cd40e62c8874d14dfe5aa98d1837c890547f. R4 Gates 0-3 pass, but Gate 4 fails with DCDEV020R4_SATURATING_FAMILY_STRUCTURAL_MISMATCH; no finite pair, holdout candidate, boundary witness, qualification, or integration ran.`
+- Current phase: `DC-DEV-020-R4 observer-only negative-result package; exact-head remote CI and architect review remain pending.`
+- Expected or actual touched areas: `R4 observer assay, append-only compact evidence, R4 documentation, governance, scoped CI`
+- Immediate next action: `Validate preservation and governance, push the R4 branch, open a draft PR, and return for architect review; do not integrate or begin DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -27,12 +27,12 @@
 - Entry authority is `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
-- R2 is accepted as `DCDEV020R2_ACCEPTED_NEGATIVE` and closed as `A_ONLY_ALLOSTERIC_ASSIMILATION_CLOSED` at `e394aa675a4f44d91d1a8729736679fb4b7e7ab8`; R3 work is isolated on `strategy/dc-dev-020r3-two-substrate-saturating-activation`.
+- R3 is accepted as `DCDEV020R3_ACCEPTED_NEGATIVE` with `DCDEV020R3_SATURATING_KINETICS_NOT_IDENTIFIABLE` at `2f32cd40e62c8874d14dfe5aa98d1837c890547f`; R4 work is isolated on `strategy/dc-dev-020r4-asymmetric-two-substrate-identifiability`.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
 
 ## Last validation after adoption
 
-- Command or check: `Local Rust 1.89.0 DC-DEV-020-R3 example check/run and evidence inspection`
+- Command or check: `Local Rust 1.89.0 DC-DEV-020-R4 example check/run and evidence inspection`
 - Result: `PASSED`
 
 ## Risks
@@ -43,7 +43,7 @@
 
 ## Blockers
 
-- Exact-head remote CI and independent architect review remain open. R3 Gate 4 failed; no production integration, parameter tuning, behavior, persistence, exploration, or DC-DEV-021 is authorized.
+- Exact-head remote CI and independent architect review remain open. R4 Gate 4 failed; no production integration, parameter tuning, behavior, persistence, exploration, or DC-DEV-021 is authorized.
 
 ## Pending decisions
 

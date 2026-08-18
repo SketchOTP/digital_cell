@@ -1,0 +1,58 @@
+{
+  "accepted_r3_head": "2f32cd40e62c8874d14dfe5aa98d1837c890547f",
+  "base_mass_m": 19.878372106390554,
+  "candidate_family": "q_c * g_h * V_max * N*F/(K_S^2 + K_S*N + K_S*F + N*F)",
+  "clean_scientific_base": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "deprivation_steps": 480,
+  "design_condition_limit": 100000000.0,
+  "directive": "DC-DEV-020-R4",
+  "family_consistency_relative_tolerance": 0.05,
+  "feed_steps": 480,
+  "holdout": [
+    "P3",
+    "P4"
+  ],
+  "observer_only": true,
+  "probes": [
+    {
+      "f_scale": 1.0,
+      "id": "P0",
+      "n_scale": 1.0
+    },
+    {
+      "f_scale": 1.0,
+      "id": "P1",
+      "n_scale": 2.0
+    },
+    {
+      "f_scale": 2.0,
+      "id": "P2",
+      "n_scale": 1.0
+    },
+    {
+      "f_scale": 1.0,
+      "id": "P3",
+      "n_scale": 4.0
+    },
+    {
+      "f_scale": 4.0,
+      "id": "P4",
+      "n_scale": 1.0
+    }
+  ],
+  "production_integration": false,
+  "r3_low_substrate_ratio": 3.34757812500001,
+  "resource_center": [
+    4.8,
+    0.0
+  ],
+  "resource_radius": 1.5,
+  "root_relative_tolerance": 0.00001,
+  "settle_steps": 5000,
+  "source_commit": "bb1612b0e79cfda922cfab05915e08069887e08f",
+  "training": [
+    "P0",
+    "P1",
+    "P2"
+  ]
+}

@@ -1,0 +1,1322 @@
+{
+  "accepted_r3_head": "2f32cd40e62c8874d14dfe5aa98d1837c890547f",
+  "clean_scientific_base": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "conclusion": "DCDEV020R4_SATURATING_FAMILY_STRUCTURAL_MISMATCH",
+  "deprived": {
+    "a": 0.303630027599798,
+    "alive": true,
+    "area": 70.8275261895172,
+    "e_stored": 60.82781514212436,
+    "f": 0.0,
+    "n": 0.0,
+    "r": 0.5551860064286098,
+    "step": 480
+  },
+  "directive": "DC-DEV-020-R4",
+  "identification": {
+    "alpha": 0.558251618117446,
+    "beta": -0.6297555013009063,
+    "classification": "DCDEV020R4_SATURATING_FAMILY_STRUCTURAL_MISMATCH",
+    "design_condition": 25.682977705015958,
+    "design_rank": 3,
+    "excitation_sufficient": true,
+    "family_consistency_relative_error": 0.9660583733339541,
+    "gamma": 20.930581646236423,
+    "k_s": null,
+    "method": "deterministic reciprocal normal-equation least squares; no parameter sweep",
+    "p3_bilinear": {
+      "points": 480,
+      "relative_rmse": 0.5201042742177621
+    },
+    "p3_finite": null,
+    "p3_points": 480,
+    "p3_r3_asymptote": {
+      "points": 480,
+      "relative_rmse": 5.693701807956764
+    },
+    "p4_bilinear": {
+      "points": 480,
+      "relative_rmse": 0.5201042742177621
+    },
+    "p4_finite": null,
+    "p4_points": 480,
+    "p4_r3_asymptote": {
+      "points": 480,
+      "relative_rmse": 5.693701807956764
+    },
+    "train_points": 1440,
+    "training_bilinear": {
+      "points": 1440,
+      "relative_rmse": 0.8387272333463764
+    },
+    "training_finite": null,
+    "training_r3_asymptote": {
+      "points": 1440,
+      "relative_rmse": 1.5735525496177765
+    },
+    "v_max": null,
+    "witnesses": []
+  },
+  "implementation_authorized": false,
+  "next_execution_started": false,
+  "observer_only": true,
+  "probes": [
+    {
+      "baseline": {
+        "alive": true,
+        "arm": "baseline_bilinear_source",
+        "final_mesh_hash": "3a8f33ff53474fc2",
+        "final_state": {
+          "a": 0.2689270569757677,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 54.3584702923158,
+          "f": 0.19558452009022698,
+          "n": 0.19558452009022698,
+          "r": 0.4985495614630265,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "gain": null,
+        "initial": {
+          "a": 0.303630027599798,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82781514212436,
+          "f": 0.0,
+          "n": 0.0,
+          "r": 0.5551860064286098,
+          "step": 0
+        },
+        "ledger": {
+          "a_decay": 1.5209688786954632,
+          "a_produced": 1.6911055453576689,
+          "a_to_r": 0.6896397051774904,
+          "accelerated_a_decay": 0.0,
+          "accelerated_steps": 0,
+          "catalyst_a_consumption": 3.423412405530627,
+          "f_consumed": 1.6911055453576689,
+          "f_delivered": 15.543873264312364,
+          "max_conservation_error": 0.0,
+          "membrane_a_consumption": 1.1594064521884808,
+          "n_consumed": 1.6911055453576689,
+          "n_delivered": 15.543873264312364,
+          "r_to_a": 3.9247627163513386,
+          "r_to_w": 0.7762962779072315,
+          "structural_a_consumption": 1.2803663808445707,
+          "world_f_loss": 15.543873264312364,
+          "world_n_loss": 15.543873264312364
+        },
+        "probe": "P0",
+        "resource_f_initial": 19.878372106390554,
+        "resource_f_remaining": 4.334498842078193,
+        "resource_n_initial": 19.878372106390554,
+        "resource_n_remaining": 4.334498842078193,
+        "trajectory_hash": "ab6267772acc25ce"
+      },
+      "constant": {
+        "alive": true,
+        "arm": "constant_break_even_gain",
+        "final_mesh_hash": "d891b056a59abf62",
+        "final_state": {
+          "a": 0.35506531430575017,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82782595938608,
+          "f": 0.09464341080469764,
+          "n": 0.09464341080469764,
+          "r": 0.5037508724494619,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "gain": 13.9482421875,
+        "initial": {
+          "a": 0.303630027599798,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82781514212436,
+          "f": 0.0,
+          "n": 0.0,
+          "r": 0.5551860064286098,
+          "step": 0
+        },
+        "ledger": {
+          "a_decay": 1.7001659720792668,
+          "a_produced": 9.036371311881991,
+          "a_to_r": 0.8144949433053336,
+          "accelerated_a_decay": 0.0,
+          "accelerated_steps": 0,
+          "catalyst_a_consumption": 3.826751067562934,
+          "f_consumed": 9.036371311881991,
+          "f_delivered": 15.739729969316945,
+          "max_conservation_error": 0.0,
+          "membrane_a_consumption": 1.296305654960276,
+          "n_consumed": 9.036371311881991,
+          "n_delivered": 15.739729969316945,
+          "r_to_a": 3.679228208674642,
+          "r_to_w": 0.7782900336002045,
+          "structural_a_consumption": 1.4348477664176438,
+          "world_f_loss": 15.739729969316945,
+          "world_n_loss": 15.739729969316945
+        },
+        "probe": "P0",
+        "resource_f_initial": 19.878372106390554,
+        "resource_f_remaining": 4.138642137073605,
+        "resource_n_initial": 19.878372106390554,
+        "resource_n_remaining": 4.138642137073605,
+        "trajectory_hash": "309eeeed0d68d4da"
+      },
+      "probe": {
+        "f_scale": 1.0,
+        "id": "P0",
+        "n_scale": 1.0
+      },
+      "root_gain": 13.9482421875,
+      "root_trials": [
+        {
+          "final_e_stored": 54.3584702923158,
+          "gain": 1.0
+        },
+        {
+          "final_e_stored": 55.54157704482118,
+          "gain": 2.0
+        },
+        {
+          "final_e_stored": 57.24250730229875,
+          "gain": 4.0
+        },
+        {
+          "final_e_stored": 59.258511427337275,
+          "gain": 8.0
+        },
+        {
+          "final_e_stored": 61.183403246453494,
+          "gain": 16.0
+        },
+        {
+          "final_e_stored": 60.42095828095631,
+          "gain": 12.0
+        },
+        {
+          "final_e_stored": 60.83762629499854,
+          "gain": 14.0
+        },
+        {
+          "final_e_stored": 60.63950724124618,
+          "gain": 13.0
+        },
+        {
+          "final_e_stored": 60.74093018435785,
+          "gain": 13.5
+        },
+        {
+          "final_e_stored": 60.78984735698247,
+          "gain": 13.75
+        },
+        {
+          "final_e_stored": 60.81387650477971,
+          "gain": 13.875
+        },
+        {
+          "final_e_stored": 60.82578600147067,
+          "gain": 13.9375
+        },
+        {
+          "final_e_stored": 60.831714759289895,
+          "gain": 13.96875
+        },
+        {
+          "final_e_stored": 60.828752538042515,
+          "gain": 13.953125
+        },
+        {
+          "final_e_stored": 60.82726980978625,
+          "gain": 13.9453125
+        },
+        {
+          "final_e_stored": 60.82801130884512,
+          "gain": 13.94921875
+        },
+        {
+          "final_e_stored": 60.82764059305772,
+          "gain": 13.947265625
+        },
+        {
+          "final_e_stored": 60.82782595938608,
+          "gain": 13.9482421875
+        },
+        {
+          "final_e_stored": 60.827733278330825,
+          "gain": 13.94775390625
+        },
+        {
+          "final_e_stored": 60.82777961938536,
+          "gain": 13.947998046875
+        },
+        {
+          "final_e_stored": 60.8278027895172,
+          "gain": 13.9481201171875
+        }
+      ],
+      "source_saturated": {
+        "alive": true,
+        "arm": "source_saturated_upper_bound",
+        "final_mesh_hash": "6a234dc69516d720",
+        "final_state": {
+          "a": 0.3634061072520288,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 61.68434818478833,
+          "f": 5.421010862427522e-20,
+          "n": 5.421010862427522e-20,
+          "r": 0.5075031494081014,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "gain": null,
+        "initial": {
+          "a": 0.303630027599798,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82781514212436,
+          "f": 0.0,
+          "n": 0.0,
+          "r": 0.5551860064286098,
+          "step": 0
+        },
+        "ledger": {
+          "a_decay": 7.3706916369499655,
+          "a_produced": 16.109969158762276,
+          "a_to_r": 0.9079467885273369,
+          "accelerated_a_decay": 7.3706916369499655,
+          "accelerated_steps": 480,
+          "catalyst_a_consumption": 4.147507148357892,
+          "f_consumed": 16.109969158762276,
+          "f_delivered": 16.109969158762276,
+          "max_conservation_error": 0.0,
+          "membrane_a_consumption": 1.4053929896186148,
+          "n_consumed": 16.109969158762276,
+          "n_delivered": 16.109969158762276,
+          "r_to_a": 3.5040358450613924,
+          "r_to_w": 0.7811697478769387,
+          "structural_a_consumption": 1.5486745932948056,
+          "world_f_loss": 16.109969158762276,
+          "world_n_loss": 16.109969158762276
+        },
+        "probe": "P0",
+        "resource_f_initial": 19.878372106390554,
+        "resource_f_remaining": 3.7684029476282745,
+        "resource_n_initial": 19.878372106390554,
+        "resource_n_remaining": 3.7684029476282745,
+        "trajectory_hash": "7aae33ea5c3af913"
+      },
+      "unusable_reason": null,
+      "usable": true
+    },
+    {
+      "baseline": {
+        "alive": true,
+        "arm": "baseline_bilinear_source",
+        "final_mesh_hash": "b81405ff1bf1abec",
+        "final_state": {
+          "a": 0.2870480981501754,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 55.70460111106059,
+          "f": 0.17504796250399723,
+          "n": 0.39398691821229226,
+          "r": 0.49943427823564746,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "gain": null,
+        "initial": {
+          "a": 0.303630027599798,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82781514212436,
+          "f": 0.0,
+          "n": 0.0,
+          "r": 0.5551860064286098,
+          "step": 0
+        },
+        "ledger": {
+          "a_decay": 1.5494255462798403,
+          "a_produced": 3.1765738492177964,
+          "a_to_r": 0.7096999115029188,
+          "accelerated_a_decay": 0.0,
+          "accelerated_steps": 0,
+          "catalyst_a_consumption": 3.4874629657974157,
+          "f_consumed": 3.1765738492177964,
+          "f_delivered": 15.57478799789127,
+          "max_conservation_error": 0.0,
+          "membrane_a_consumption": 1.1811049450503128,
+          "n_consumed": 3.1765738492177964,
+          "n_delivered": 31.08169261722607,
+          "r_to_a": 3.8818783078601253,
+          "r_to_w": 0.7765785923405695,
+          "structural_a_consumption": 1.3052158308132145,
+          "world_f_loss": 15.57478799789127,
+          "world_n_loss": 31.08169261722607
+        },
+        "probe": "P1",
+        "resource_f_initial": 19.878372106390554,
+        "resource_f_remaining": 4.303584108499235,
+        "resource_n_initial": 39.75674421278111,
+        "resource_n_remaining": 8.675051595554995,
+        "trajectory_hash": "12a913168f9a11d0"
+      },
+      "constant": {
+        "alive": true,
+        "arm": "constant_break_even_gain",
+        "final_mesh_hash": "0bfede504ad76cf7",
+        "final_state": {
+          "a": 0.3555372904480546,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82783645605774,
+          "f": 0.09554326025208,
+          "n": 0.3143661309124272,
+          "r": 0.5032790445076132,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "gain": 4.765045166015625,
+        "initial": {
+          "a": 0.303630027599798,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82781514212436,
+          "f": 0.0,
+          "n": 0.0,
+          "r": 0.5551860064286098,
+          "step": 0
+        },
+        "ledger": {
+          "a_decay": 1.6831136627944974,
+          "a_produced": 8.953451876421568,
+          "a_to_r": 0.8029657580265648,
+          "accelerated_a_decay": 0.0,
+          "accelerated_steps": 0,
+          "catalyst_a_consumption": 3.788369554327615,
+          "f_consumed": 8.953451876421568,
+          "f_delivered": 15.720544644157625,
+          "max_conservation_error": 0.0,
+          "membrane_a_consumption": 1.2832141174965044,
+          "n_consumed": 8.953451876421568,
+          "n_delivered": 31.219227246718702,
+          "r_to_a": 3.701411186635396,
+          "r_to_w": 0.777996276268927,
+          "structural_a_consumption": 1.420736951600796,
+          "world_f_loss": 15.720544644157625,
+          "world_n_loss": 31.219227246718702
+        },
+        "probe": "P1",
+        "resource_f_initial": 19.878372106390554,
+        "resource_f_remaining": 4.157827462232949,
+        "resource_n_initial": 39.75674421278111,
+        "resource_n_remaining": 8.53751696606236,
+        "trajectory_hash": "b7b207568a0dd0f4"
+      },
+      "probe": {
+        "f_scale": 1.0,
+        "id": "P1",
+        "n_scale": 2.0
+      },
+      "root_gain": 4.765045166015625,
+      "root_trials": [
+        {
+          "final_e_stored": 55.70460111106059,
+          "gain": 1.0
+        },
+        {
+          "final_e_stored": 57.67843197701595,
+          "gain": 2.0
+        },
+        {
+          "final_e_stored": 60.175375431165065,
+          "gain": 4.0
+        },
+        {
+          "final_e_stored": 62.6356823782472,
+          "gain": 8.0
+        },
+        {
+          "final_e_stored": 61.664024262238755,
+          "gain": 6.0
+        },
+        {
+          "final_e_stored": 61.00534747347565,
+          "gain": 5.0
+        },
+        {
+          "final_e_stored": 60.61542470423409,
+          "gain": 4.5
+        },
+        {
+          "final_e_stored": 60.81613386813383,
+          "gain": 4.75
+        },
+        {
+          "final_e_stored": 60.912118894341155,
+          "gain": 4.875
+        },
+        {
+          "final_e_stored": 60.86447803124846,
+          "gain": 4.8125
+        },
+        {
+          "final_e_stored": 60.84039476984054,
+          "gain": 4.78125
+        },
+        {
+          "final_e_stored": 60.82828663881863,
+          "gain": 4.765625
+        },
+        {
+          "final_e_stored": 60.82221584786794,
+          "gain": 4.7578125
+        },
+        {
+          "final_e_stored": 60.82525264013344,
+          "gain": 4.76171875
+        },
+        {
+          "final_e_stored": 60.826769988447616,
+          "gain": 4.763671875
+        },
+        {
+          "final_e_stored": 60.82752840084799,
+          "gain": 4.7646484375
+        },
+        {
+          "final_e_stored": 60.82790754163339,
+          "gain": 4.76513671875
+        },
+        {
+          "final_e_stored": 60.82771797669108,
+          "gain": 4.764892578125
+        },
+        {
+          "final_e_stored": 60.82781276052472,
+          "gain": 4.7650146484375
+        },
+        {
+          "final_e_stored": 60.827860151419785,
+          "gain": 4.76507568359375
+        },
+        {
+          "final_e_stored": 60.82783645605774,
+          "gain": 4.765045166015625
+        }
+      ],
+      "source_saturated": {
+        "alive": true,
+        "arm": "source_saturated_upper_bound",
+        "final_mesh_hash": "5eb4e11a462028b4",
+        "final_state": {
+          "a": 0.3634061072520288,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 61.68434818478833,
+          "f": 0.0,
+          "n": 0.21851595293957793,
+          "r": 0.5075031494081014,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "gain": null,
+        "initial": {
+          "a": 0.303630027599798,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82781514212436,
+          "f": 0.0,
+          "n": 0.0,
+          "r": 0.5551860064286098,
+          "step": 0
+        },
+        "ledger": {
+          "a_decay": 7.370691636949976,
+          "a_produced": 16.109969158762276,
+          "a_to_r": 0.9079467885273367,
+          "accelerated_a_decay": 7.370691636949976,
+          "accelerated_steps": 480,
+          "catalyst_a_consumption": 4.147507148357892,
+          "f_consumed": 16.109969158762276,
+          "f_delivered": 16.109969158762276,
+          "max_conservation_error": 0.0,
+          "membrane_a_consumption": 1.4053929896186148,
+          "n_consumed": 16.109969158762276,
+          "n_delivered": 31.58691353841754,
+          "r_to_a": 3.5040358450613924,
+          "r_to_w": 0.7811697478769387,
+          "structural_a_consumption": 1.5486745932948056,
+          "world_f_loss": 16.109969158762276,
+          "world_n_loss": 31.58691353841754
+        },
+        "probe": "P1",
+        "resource_f_initial": 19.878372106390554,
+        "resource_f_remaining": 3.7684029476282745,
+        "resource_n_initial": 39.75674421278111,
+        "resource_n_remaining": 8.169830674363538,
+        "trajectory_hash": "fa7b37a7523be4f4"
+      },
+      "unusable_reason": null,
+      "usable": true
+    },
+    {
+      "baseline": {
+        "alive": true,
+        "arm": "baseline_bilinear_source",
+        "final_mesh_hash": "645e19a2a1001cb0",
+        "final_state": {
+          "a": 0.2870480981501754,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 55.70460111106059,
+          "f": 0.39398691821229226,
+          "n": 0.17504796250399723,
+          "r": 0.49943427823564746,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "gain": null,
+        "initial": {
+          "a": 0.303630027599798,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82781514212436,
+          "f": 0.0,
+          "n": 0.0,
+          "r": 0.5551860064286098,
+          "step": 0
+        },
+        "ledger": {
+          "a_decay": 1.5494255462798403,
+          "a_produced": 3.1765738492177964,
+          "a_to_r": 0.7096999115029188,
+          "accelerated_a_decay": 0.0,
+          "accelerated_steps": 0,
+          "catalyst_a_consumption": 3.4874629657974157,
+          "f_consumed": 3.1765738492177964,
+          "f_delivered": 31.08169261722607,
+          "max_conservation_error": 0.0,
+          "membrane_a_consumption": 1.1811049450503128,
+          "n_consumed": 3.1765738492177964,
+          "n_delivered": 15.57478799789127,
+          "r_to_a": 3.8818783078601253,
+          "r_to_w": 0.7765785923405695,
+          "structural_a_consumption": 1.3052158308132145,
+          "world_f_loss": 31.08169261722607,
+          "world_n_loss": 15.57478799789127
+        },
+        "probe": "P2",
+        "resource_f_initial": 39.75674421278111,
+        "resource_f_remaining": 8.675051595554995,
+        "resource_n_initial": 19.878372106390554,
+        "resource_n_remaining": 4.303584108499235,
+        "trajectory_hash": "976cc99ad3d5cd7a"
+      },
+      "constant": {
+        "alive": true,
+        "arm": "constant_break_even_gain",
+        "final_mesh_hash": "3ab8f2ecaf8e1769",
+        "final_state": {
+          "a": 0.3555372904480546,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82783645605774,
+          "f": 0.3143661309124272,
+          "n": 0.09554326025208,
+          "r": 0.5032790445076132,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "gain": 4.765045166015625,
+        "initial": {
+          "a": 0.303630027599798,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82781514212436,
+          "f": 0.0,
+          "n": 0.0,
+          "r": 0.5551860064286098,
+          "step": 0
+        },
+        "ledger": {
+          "a_decay": 1.6831136627944974,
+          "a_produced": 8.953451876421568,
+          "a_to_r": 0.8029657580265648,
+          "accelerated_a_decay": 0.0,
+          "accelerated_steps": 0,
+          "catalyst_a_consumption": 3.788369554327615,
+          "f_consumed": 8.953451876421568,
+          "f_delivered": 31.219227246718702,
+          "max_conservation_error": 0.0,
+          "membrane_a_consumption": 1.2832141174965044,
+          "n_consumed": 8.953451876421568,
+          "n_delivered": 15.720544644157625,
+          "r_to_a": 3.701411186635396,
+          "r_to_w": 0.777996276268927,
+          "structural_a_consumption": 1.420736951600796,
+          "world_f_loss": 31.219227246718702,
+          "world_n_loss": 15.720544644157625
+        },
+        "probe": "P2",
+        "resource_f_initial": 39.75674421278111,
+        "resource_f_remaining": 8.53751696606236,
+        "resource_n_initial": 19.878372106390554,
+        "resource_n_remaining": 4.157827462232949,
+        "trajectory_hash": "12df7caa589d5338"
+      },
+      "probe": {
+        "f_scale": 2.0,
+        "id": "P2",
+        "n_scale": 1.0
+      },
+      "root_gain": 4.765045166015625,
+      "root_trials": [
+        {
+          "final_e_stored": 55.70460111106059,
+          "gain": 1.0
+        },
+        {
+          "final_e_stored": 57.67843197701595,
+          "gain": 2.0
+        },
+        {
+          "final_e_stored": 60.175375431165065,
+          "gain": 4.0
+        },
+        {
+          "final_e_stored": 62.6356823782472,
+          "gain": 8.0
+        },
+        {
+          "final_e_stored": 61.664024262238755,
+          "gain": 6.0
+        },
+        {
+          "final_e_stored": 61.00534747347565,
+          "gain": 5.0
+        },
+        {
+          "final_e_stored": 60.61542470423409,
+          "gain": 4.5
+        },
+        {
+          "final_e_stored": 60.81613386813383,
+          "gain": 4.75
+        },
+        {
+          "final_e_stored": 60.912118894341155,
+          "gain": 4.875
+        },
+        {
+          "final_e_stored": 60.86447803124846,
+          "gain": 4.8125
+        },
+        {
+          "final_e_stored": 60.84039476984054,
+          "gain": 4.78125
+        },
+        {
+          "final_e_stored": 60.82828663881863,
+          "gain": 4.765625
+        },
+        {
+          "final_e_stored": 60.82221584786794,
+          "gain": 4.7578125
+        },
+        {
+          "final_e_stored": 60.82525264013344,
+          "gain": 4.76171875
+        },
+        {
+          "final_e_stored": 60.826769988447616,
+          "gain": 4.763671875
+        },
+        {
+          "final_e_stored": 60.82752840084799,
+          "gain": 4.7646484375
+        },
+        {
+          "final_e_stored": 60.82790754163339,
+          "gain": 4.76513671875
+        },
+        {
+          "final_e_stored": 60.82771797669108,
+          "gain": 4.764892578125
+        },
+        {
+          "final_e_stored": 60.827812760524715,
+          "gain": 4.7650146484375
+        },
+        {
+          "final_e_stored": 60.82786015141979,
+          "gain": 4.76507568359375
+        },
+        {
+          "final_e_stored": 60.82783645605774,
+          "gain": 4.765045166015625
+        }
+      ],
+      "source_saturated": {
+        "alive": true,
+        "arm": "source_saturated_upper_bound",
+        "final_mesh_hash": "607bc23faafe6a8f",
+        "final_state": {
+          "a": 0.3634061072520288,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 61.68434818478833,
+          "f": 0.21851595293957796,
+          "n": 0.0,
+          "r": 0.5075031494081014,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "gain": null,
+        "initial": {
+          "a": 0.303630027599798,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82781514212436,
+          "f": 0.0,
+          "n": 0.0,
+          "r": 0.5551860064286098,
+          "step": 0
+        },
+        "ledger": {
+          "a_decay": 7.370691636949969,
+          "a_produced": 16.109969158762276,
+          "a_to_r": 0.9079467885273369,
+          "accelerated_a_decay": 7.370691636949969,
+          "accelerated_steps": 480,
+          "catalyst_a_consumption": 4.147507148357892,
+          "f_consumed": 16.109969158762276,
+          "f_delivered": 31.58691353841754,
+          "max_conservation_error": 0.0,
+          "membrane_a_consumption": 1.4053929896186148,
+          "n_consumed": 16.109969158762276,
+          "n_delivered": 16.109969158762276,
+          "r_to_a": 3.5040358450613924,
+          "r_to_w": 0.7811697478769387,
+          "structural_a_consumption": 1.5486745932948056,
+          "world_f_loss": 31.58691353841754,
+          "world_n_loss": 16.109969158762276
+        },
+        "probe": "P2",
+        "resource_f_initial": 39.75674421278111,
+        "resource_f_remaining": 8.169830674363538,
+        "resource_n_initial": 19.878372106390554,
+        "resource_n_remaining": 3.7684029476282745,
+        "trajectory_hash": "def70a7fd4f7bdf1"
+      },
+      "unusable_reason": null,
+      "usable": true
+    },
+    {
+      "baseline": {
+        "alive": true,
+        "arm": "baseline_bilinear_source",
+        "final_mesh_hash": "86cc012e6139279c",
+        "final_state": {
+          "a": 0.3167344930026216,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 57.91265618036632,
+          "f": 0.14119124721670798,
+          "n": 0.7978899846836112,
+          "r": 0.5009229813726116,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "gain": null,
+        "initial": {
+          "a": 0.303630027599798,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82781514212436,
+          "f": 0.0,
+          "n": 0.0,
+          "r": 0.5551860064286098,
+          "step": 0
+        },
+        "ledger": {
+          "a_decay": 1.599318877080804,
+          "a_produced": 5.628794856054768,
+          "a_to_r": 0.7448041666601879,
+          "accelerated_a_decay": 0.0,
+          "accelerated_steps": 0,
+          "catalyst_a_consumption": 3.5997633882514557,
+          "f_consumed": 5.628794856054768,
+          "f_delivered": 15.62902161602676,
+          "max_conservation_error": 0.0,
+          "membrane_a_consumption": 1.2191746272612283,
+          "n_consumed": 5.628794856054768,
+          "n_delivered": 62.14136864258661,
+          "r_to_a": 3.8110417524463207,
+          "r_to_w": 0.7770782424900566,
+          "structural_a_consumption": 1.348618682729316,
+          "world_f_loss": 15.62902161602676,
+          "world_n_loss": 62.14136864258661
+        },
+        "probe": "P3",
+        "resource_f_initial": 19.878372106390554,
+        "resource_f_remaining": 4.249350490363792,
+        "resource_n_initial": 79.51348842556222,
+        "resource_n_remaining": 17.37211978297558,
+        "trajectory_hash": "566e1e59bbb754d9"
+      },
+      "constant": {
+        "alive": true,
+        "arm": "constant_break_even_gain",
+        "final_mesh_hash": "7293018f74c0747f",
+        "final_state": {
+          "a": 0.3557032426700127,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82782435986802,
+          "f": 0.09585859732039757,
+          "n": 0.752353804510542,
+          "r": 0.5031129215019164,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "gain": 2.0837860107421875,
+        "initial": {
+          "a": 0.303630027599798,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82781514212436,
+          "f": 0.0,
+          "n": 0.0,
+          "r": 0.5551860064286098,
+          "step": 0
+        },
+        "ledger": {
+          "a_decay": 1.6771503686842038,
+          "a_produced": 8.924421287600339,
+          "a_to_r": 0.7989190453418161,
+          "accelerated_a_decay": 0.0,
+          "accelerated_steps": 0,
+          "catalyst_a_consumption": 3.774947310571274,
+          "f_consumed": 8.924421287600339,
+          "f_delivered": 15.713848599801175,
+          "max_conservation_error": 0.0,
+          "membrane_a_consumption": 1.2786384499930818,
+          "n_consumed": 8.924421287600339,
+          "n_delivered": 62.21178008035364,
+          "r_to_a": 3.709229805039856,
+          "r_to_w": 0.7778970267164305,
+          "structural_a_consumption": 1.415778913891861,
+          "world_f_loss": 15.713848599801175,
+          "world_n_loss": 62.21178008035364
+        },
+        "probe": "P3",
+        "resource_f_initial": 19.878372106390554,
+        "resource_f_remaining": 4.1645235065893935,
+        "resource_n_initial": 79.51348842556222,
+        "resource_n_remaining": 17.301708345208553,
+        "trajectory_hash": "6ac77b0b68033825"
+      },
+      "probe": {
+        "f_scale": 1.0,
+        "id": "P3",
+        "n_scale": 4.0
+      },
+      "root_gain": 2.0837860107421875,
+      "root_trials": [
+        {
+          "final_e_stored": 57.91265618036632,
+          "gain": 1.0
+        },
+        {
+          "final_e_stored": 60.658677333543466,
+          "gain": 2.0
+        },
+        {
+          "final_e_stored": 63.30751093048459,
+          "gain": 4.0
+        },
+        {
+          "final_e_stored": 62.2832227775132,
+          "gain": 3.0
+        },
+        {
+          "final_e_stored": 61.569467750720044,
+          "gain": 2.5
+        },
+        {
+          "final_e_stored": 61.14265067167023,
+          "gain": 2.25
+        },
+        {
+          "final_e_stored": 60.90838842666788,
+          "gain": 2.125
+        },
+        {
+          "final_e_stored": 60.785542855221955,
+          "gain": 2.0625
+        },
+        {
+          "final_e_stored": 60.847457968676565,
+          "gain": 2.09375
+        },
+        {
+          "final_e_stored": 60.81662474478261,
+          "gain": 2.078125
+        },
+        {
+          "final_e_stored": 60.832072282354886,
+          "gain": 2.0859375
+        },
+        {
+          "final_e_stored": 60.824356264596396,
+          "gain": 2.08203125
+        },
+        {
+          "final_e_stored": 60.82821620877501,
+          "gain": 2.083984375
+        },
+        {
+          "final_e_stored": 60.82628672081706,
+          "gain": 2.0830078125
+        },
+        {
+          "final_e_stored": 60.82725158579081,
+          "gain": 2.08349609375
+        },
+        {
+          "final_e_stored": 60.82773392752659,
+          "gain": 2.083740234375
+        },
+        {
+          "final_e_stored": 60.82797507571102,
+          "gain": 2.0838623046875
+        },
+        {
+          "final_e_stored": 60.82785450350894,
+          "gain": 2.08380126953125
+        },
+        {
+          "final_e_stored": 60.8277942159905,
+          "gain": 2.083770751953125
+        },
+        {
+          "final_e_stored": 60.82782435986802,
+          "gain": 2.0837860107421875
+        }
+      ],
+      "source_saturated": {
+        "alive": true,
+        "arm": "source_saturated_upper_bound",
+        "final_mesh_hash": "7ba52c74f4b1d43a",
+        "final_state": {
+          "a": 0.3634061072520288,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 61.68434818478833,
+          "f": 1.6263032587282567e-19,
+          "n": 0.655547858818733,
+          "r": 0.5075031494081014,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "gain": null,
+        "initial": {
+          "a": 0.303630027599798,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82781514212436,
+          "f": 0.0,
+          "n": 0.0,
+          "r": 0.5551860064286098,
+          "step": 0
+        },
+        "ledger": {
+          "a_decay": 7.370691636949973,
+          "a_produced": 16.109969158762276,
+          "a_to_r": 0.9079467885273367,
+          "accelerated_a_decay": 7.370691636949973,
+          "accelerated_steps": 480,
+          "catalyst_a_consumption": 4.147507148357892,
+          "f_consumed": 16.109969158762276,
+          "f_delivered": 16.109969158762276,
+          "max_conservation_error": 0.0,
+          "membrane_a_consumption": 1.4053929896186148,
+          "n_consumed": 16.109969158762276,
+          "n_delivered": 62.54080229772803,
+          "r_to_a": 3.5040358450613924,
+          "r_to_w": 0.7811697478769387,
+          "structural_a_consumption": 1.5486745932948056,
+          "world_f_loss": 16.109969158762276,
+          "world_n_loss": 62.54080229772803
+        },
+        "probe": "P3",
+        "resource_f_initial": 19.878372106390554,
+        "resource_f_remaining": 3.7684029476282745,
+        "resource_n_initial": 79.51348842556222,
+        "resource_n_remaining": 16.972686127834166,
+        "trajectory_hash": "1d01a76e535c9829"
+      },
+      "unusable_reason": null,
+      "usable": true
+    },
+    {
+      "baseline": {
+        "alive": true,
+        "arm": "baseline_bilinear_source",
+        "final_mesh_hash": "e4720107c7cb2d97",
+        "final_state": {
+          "a": 0.3167344930026216,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 57.91265618036632,
+          "f": 0.7978899846836112,
+          "n": 0.14119124721670798,
+          "r": 0.5009229813726116,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "gain": null,
+        "initial": {
+          "a": 0.303630027599798,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82781514212436,
+          "f": 0.0,
+          "n": 0.0,
+          "r": 0.5551860064286098,
+          "step": 0
+        },
+        "ledger": {
+          "a_decay": 1.599318877080804,
+          "a_produced": 5.628794856054768,
+          "a_to_r": 0.7448041666601879,
+          "accelerated_a_decay": 0.0,
+          "accelerated_steps": 0,
+          "catalyst_a_consumption": 3.5997633882514557,
+          "f_consumed": 5.628794856054768,
+          "f_delivered": 62.14136864258661,
+          "max_conservation_error": 0.0,
+          "membrane_a_consumption": 1.2191746272612283,
+          "n_consumed": 5.628794856054768,
+          "n_delivered": 15.62902161602676,
+          "r_to_a": 3.8110417524463207,
+          "r_to_w": 0.7770782424900566,
+          "structural_a_consumption": 1.348618682729316,
+          "world_f_loss": 62.14136864258661,
+          "world_n_loss": 15.62902161602676
+        },
+        "probe": "P4",
+        "resource_f_initial": 79.51348842556222,
+        "resource_f_remaining": 17.37211978297558,
+        "resource_n_initial": 19.878372106390554,
+        "resource_n_remaining": 4.249350490363792,
+        "trajectory_hash": "7a44a8711de7f285"
+      },
+      "constant": {
+        "alive": true,
+        "arm": "constant_break_even_gain",
+        "final_mesh_hash": "d48c1688f595f62f",
+        "final_state": {
+          "a": 0.3557032426700127,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82782435986802,
+          "f": 0.752353804510542,
+          "n": 0.09585859732039757,
+          "r": 0.5031129215019164,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "gain": 2.0837860107421875,
+        "initial": {
+          "a": 0.303630027599798,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82781514212436,
+          "f": 0.0,
+          "n": 0.0,
+          "r": 0.5551860064286098,
+          "step": 0
+        },
+        "ledger": {
+          "a_decay": 1.6771503686842002,
+          "a_produced": 8.92442128760034,
+          "a_to_r": 0.7989190453418161,
+          "accelerated_a_decay": 0.0,
+          "accelerated_steps": 0,
+          "catalyst_a_consumption": 3.774947310571274,
+          "f_consumed": 8.92442128760034,
+          "f_delivered": 62.21178008035364,
+          "max_conservation_error": 0.0,
+          "membrane_a_consumption": 1.2786384499930818,
+          "n_consumed": 8.92442128760034,
+          "n_delivered": 15.713848599801175,
+          "r_to_a": 3.709229805039856,
+          "r_to_w": 0.7778970267164305,
+          "structural_a_consumption": 1.415778913891861,
+          "world_f_loss": 62.21178008035364,
+          "world_n_loss": 15.713848599801175
+        },
+        "probe": "P4",
+        "resource_f_initial": 79.51348842556222,
+        "resource_f_remaining": 17.301708345208553,
+        "resource_n_initial": 19.878372106390554,
+        "resource_n_remaining": 4.1645235065893935,
+        "trajectory_hash": "ea54d37a6b3f2809"
+      },
+      "probe": {
+        "f_scale": 4.0,
+        "id": "P4",
+        "n_scale": 1.0
+      },
+      "root_gain": 2.0837860107421875,
+      "root_trials": [
+        {
+          "final_e_stored": 57.91265618036632,
+          "gain": 1.0
+        },
+        {
+          "final_e_stored": 60.658677333543466,
+          "gain": 2.0
+        },
+        {
+          "final_e_stored": 63.30751093048459,
+          "gain": 4.0
+        },
+        {
+          "final_e_stored": 62.2832227775132,
+          "gain": 3.0
+        },
+        {
+          "final_e_stored": 61.569467750720044,
+          "gain": 2.5
+        },
+        {
+          "final_e_stored": 61.14265067167023,
+          "gain": 2.25
+        },
+        {
+          "final_e_stored": 60.90838842666788,
+          "gain": 2.125
+        },
+        {
+          "final_e_stored": 60.785542855221955,
+          "gain": 2.0625
+        },
+        {
+          "final_e_stored": 60.847457968676565,
+          "gain": 2.09375
+        },
+        {
+          "final_e_stored": 60.81662474478261,
+          "gain": 2.078125
+        },
+        {
+          "final_e_stored": 60.832072282354886,
+          "gain": 2.0859375
+        },
+        {
+          "final_e_stored": 60.824356264596396,
+          "gain": 2.08203125
+        },
+        {
+          "final_e_stored": 60.82821620877501,
+          "gain": 2.083984375
+        },
+        {
+          "final_e_stored": 60.82628672081706,
+          "gain": 2.0830078125
+        },
+        {
+          "final_e_stored": 60.82725158579081,
+          "gain": 2.08349609375
+        },
+        {
+          "final_e_stored": 60.82773392752659,
+          "gain": 2.083740234375
+        },
+        {
+          "final_e_stored": 60.82797507571102,
+          "gain": 2.0838623046875
+        },
+        {
+          "final_e_stored": 60.827854503508945,
+          "gain": 2.08380126953125
+        },
+        {
+          "final_e_stored": 60.8277942159905,
+          "gain": 2.083770751953125
+        },
+        {
+          "final_e_stored": 60.82782435986802,
+          "gain": 2.0837860107421875
+        }
+      ],
+      "source_saturated": {
+        "alive": true,
+        "arm": "source_saturated_upper_bound",
+        "final_mesh_hash": "0651dcc090f8b76a",
+        "final_state": {
+          "a": 0.3634061072520288,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 61.68434818478833,
+          "f": 0.655547858818733,
+          "n": 0.0,
+          "r": 0.5075031494081014,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "gain": null,
+        "initial": {
+          "a": 0.303630027599798,
+          "alive": true,
+          "area": 70.8275261895172,
+          "e_stored": 60.82781514212436,
+          "f": 0.0,
+          "n": 0.0,
+          "r": 0.5551860064286098,
+          "step": 0
+        },
+        "ledger": {
+          "a_decay": 7.370691636949969,
+          "a_produced": 16.109969158762276,
+          "a_to_r": 0.9079467885273367,
+          "accelerated_a_decay": 7.370691636949969,
+          "accelerated_steps": 480,
+          "catalyst_a_consumption": 4.147507148357892,
+          "f_consumed": 16.109969158762276,
+          "f_delivered": 62.54080229772803,
+          "max_conservation_error": 0.0,
+          "membrane_a_consumption": 1.4053929896186148,
+          "n_consumed": 16.109969158762276,
+          "n_delivered": 16.109969158762276,
+          "r_to_a": 3.5040358450613924,
+          "r_to_w": 0.7811697478769387,
+          "structural_a_consumption": 1.5486745932948056,
+          "world_f_loss": 62.54080229772803,
+          "world_n_loss": 16.109969158762276
+        },
+        "probe": "P4",
+        "resource_f_initial": 79.51348842556222,
+        "resource_f_remaining": 16.972686127834166,
+        "resource_n_initial": 19.878372106390554,
+        "resource_n_remaining": 3.7684029476282745,
+        "trajectory_hash": "a123e4facaa203f8"
+      },
+      "unusable_reason": null,
+      "usable": true
+    }
+  ],
+  "production_behavior_changed": false,
+  "production_chemistry_changed": false,
+  "qualification_run": false,
+  "settled_hash": "c985c08ab226a061",
+  "source_commit": "bb1612b0e79cfda922cfab05915e08069887e08f"
+}

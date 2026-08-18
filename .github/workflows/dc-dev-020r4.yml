@@ -1,0 +1,131 @@
+name: DC-DEV-020-R4 asymmetric identifiability audit
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-020r4-observer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate R4 evidence, prior immutability, and fail-closed scope
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("digital-protocell/experiments/generated/dcdev020r4")
+          required = ["protocol.json", "results.json", "kinetic_identification.json",
+                      "qualification.json", "literature_review.json"]
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              raise SystemExit(f"missing R4 artifacts: {missing}")
+          protocol = json.loads((root / "protocol.json").read_text())
+          results = json.loads((root / "results.json").read_text())
+          kinetic = json.loads((root / "kinetic_identification.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          literature = json.loads((root / "literature_review.json").read_text())
+          if protocol["accepted_r3_head"] != "2f32cd40e62c8874d14dfe5aa98d1837c890547f":
+              raise SystemExit("wrong accepted R3 authority")
+          if protocol["clean_scientific_base"] != "1e242f28152797b512e25cd56c7b718e45d6ca97":
+              raise SystemExit("wrong clean scientific base")
+          expected_probes = [("P0",1,1),("P1",2,1),("P2",1,2),("P3",4,1),("P4",1,4)]
+          actual = [(p["id"],p["n_scale"],p["f_scale"]) for p in protocol["probes"]]
+          if actual != expected_probes or (protocol["settle_steps"], protocol["deprivation_steps"], protocol["feed_steps"]) != (5000,480,480):
+              raise SystemExit("R4 probe or horizon contract changed")
+          expected = "DCDEV020R4_SATURATING_FAMILY_STRUCTURAL_MISMATCH"
+          if results["conclusion"] != expected or qualification["classification"] != expected:
+              raise SystemExit("unexpected R4 classification")
+          if not qualification["all_probes_usable"] or not all(p["usable"] for p in results["probes"]):
+              raise SystemExit("asymmetric probe invalid")
+          fit = results["identification"]
+          if fit["design_rank"] != 3 or fit["design_condition"] > protocol["design_condition_limit"]:
+              raise SystemExit("independent-axis excitation did not pass")
+          if fit["beta"] >= 0 or fit["family_consistency_relative_error"] <= protocol["family_consistency_relative_tolerance"]:
+              raise SystemExit("structural mismatch evidence absent")
+          if fit["v_max"] is not None or fit["k_s"] is not None or fit["witnesses"]:
+              raise SystemExit("later identification gate ran after family mismatch")
+          if kinetic["record_count"] != 2400 or len(kinetic["points"]) != 2400:
+              raise SystemExit("incomplete R4 kinetic ledger")
+          if results["qualification_run"] or results["implementation_authorized"] or results["next_execution_started"]:
+              raise SystemExit("fail-closed boundary opened")
+          if literature["external_constants_imported"] or literature["molecular_identities_imported"] or literature["experimental_concentrations_imported"]:
+              raise SystemExit("external biology imported")
+          print("validated DC-DEV-020-R4 structural-mismatch evidence")
+          PY
+          for path in \
+            digital-protocell/experiments/generated/dcdev020/observer/artifact_manifest.json \
+            digital-protocell/experiments/generated/dcdev020/observer/protocol.json \
+            digital-protocell/experiments/generated/dcdev020/observer/qualification.json \
+            digital-protocell/experiments/generated/dcdev020/observer/results.json \
+            digital-protocell/experiments/generated/dcdev020r2/literature_review.json \
+            digital-protocell/experiments/generated/dcdev020r2/protocol.json \
+            digital-protocell/experiments/generated/dcdev020r2/qualification.json \
+            digital-protocell/experiments/generated/dcdev020r2/results.json \
+            digital-protocell/experiments/generated/dcdev020r2/source_actuation_envelope.json \
+            digital-protocell/experiments/generated/dcdev020r3/kinetic_diagnosis.json \
+            digital-protocell/experiments/generated/dcdev020r3/literature_review.json \
+            digital-protocell/experiments/generated/dcdev020r3/protocol.json \
+            digital-protocell/experiments/generated/dcdev020r3/qualification.json \
+            digital-protocell/experiments/generated/dcdev020r3/results.json; do
+            test "$(git hash-object "$path")" = "$(git rev-parse 2f32cd40e62c8874d14dfe5aa98d1837c890547f:"$path")"
+          done
+          changed="$(git diff --name-only 1e242f28152797b512e25cd56c7b718e45d6ca97 HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then exit 1; fi
+          if printf '%s\n' "$changed" | grep -Ei 'dcdev021|dc-dev-021'; then exit 1; fi
+
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustup run 1.89.0 rustfmt --edition 2021 --check examples/dcdev020r4_asymmetric_two_substrate_identifiability.rs
+
+      - name: Reproduce DC-DEV-020-R4 observer assay
+        working-directory: digital-protocell
+        env:
+          DCDEV020R4_SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          DCDEV020R4_OUTPUT_ROOT: target/dcdev020r4-ci
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev020r4_asymmetric_two_substrate_identifiability --quiet
+
+      - name: Regulatory-core regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p regulatory-core
+
+      - name: Phase-1 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+
+      - name: D-088 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+
+      - name: Evolution-harness preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          actual="$(git rev-parse --verify HEAD)"
+          echo "checked out $actual"
+          test "$actual" = "$EXPECTED_HEAD"

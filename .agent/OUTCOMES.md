@@ -483,3 +483,25 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: exact-head remote validation and independent architect interpretation; only one symmetric substrate trajectory was authorized, so the two parameters remain structurally confounded.
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
+
+## D-20260818-dcdev020r4-asymmetric-two-substrate-identifiability - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R4-SATURATING-FAMILY-STRUCTURAL-MISMATCH`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R3 is architect-accepted as `DCDEV020R3_ACCEPTED_NEGATIVE`. All five R4 asymmetric probes were finite, conservative, source-comparable, and admitted deterministic break-even roots. The reciprocal design reached rank 3 with condition number `25.682977705016`, so the R3 collinearity was broken. The P0-P2 reciprocal fit nevertheless produced alpha `0.558251618117446`, beta `-0.629755501300906`, gamma `20.9305816462364`, and family-consistency relative error `0.966058373333954`. Positive symmetric two-substrate saturation therefore cannot represent the observed required-source surface. Classification: `DCDEV020R4_SATURATING_FAMILY_STRUCTURAL_MISMATCH`.
+- Changed areas: new R4 observer example registration, append-only `dcdev020r4` evidence, R4 documentation, workflow, and governance; no production chemistry, behavior, or certified Phase-1 equations changed.
+- Validation:
+  - Accepted R3 and clean scientific-base authority - PASSED
+  - R1/R2/R3 evidence immutability - PASSED locally
+  - P0-P4 conservation, paired-substrate ingress, finite break-even roots, and source-saturation comparability - PASSED
+  - Reciprocal design rank and conditioning - PASSED
+  - Positive reciprocal coefficients and alpha*gamma approximately beta^2 - FAILED as the required negative result
+  - Finite V_max/K_S, P3/P4 finite-model holdout, boundary witnesses, qualification, and production integration - NOT RUN by fail-closed rule
+  - Sanctioned local Rust 1.89.0 check/run - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: exact-head remote validation and independent architect interpretation; the permitted symmetric family is structurally mismatched after independent-axis excitation, but no broader kinetic family is authorized.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none

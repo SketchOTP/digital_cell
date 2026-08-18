@@ -262,3 +262,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260818-dcdev020r4-asymmetric-two-substrate-identifiability
+
+- Issued: `2026-08-18T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R4`
+- Objective: Break the frozen symmetric N=F collinearity and determine whether independent N/F excitation identifies one finite V_max and K_S for the bounded symmetric two-substrate source family.
+- Scope: Accepted R3 evidence head `2f32cd40e62c8874d14dfe5aa98d1837c890547f`, clean production base `1e242f28152797b512e25cd56c7b718e45d6ca97`, exact P0-P4 asymmetric finite-resource probes, deterministic per-probe break-even roots, source-saturation comparability, reciprocal design-rank analysis, P0-P2 training, P3-P4 holdout, constrained family-consistency test, fixed boundary witnesses only if prior gates pass, primary-literature review, append-only evidence, governance, preservation, scoped CI, and draft PR.
+- Exclusions: production chemistry or behavior changes, candidate qualification or integration, resource/transport/sink changes, parameter sweep, additional kinetic parameters or probes, controller state, sensing, behavior, DC-DEV-021, and mutation of R1/R2/R3 evidence.
+- Acceptance: Stop at the first decisive failure and return exactly one authorized R4 classification with exact-head remote CI and architect review; qualification and production integration remain separate future authority.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

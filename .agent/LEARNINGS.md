@@ -147,3 +147,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R3 observer-only two-substrate kinetic audit; exact-head remote CI and architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV020R4-001
+
+- Learning ID: L-DCDEV020R4-001
+- Date: 2026-08-18
+- Fact or lesson: Independent N/F excitation removed the R3 design degeneracy, but the required-source response did not satisfy the positive reciprocal-coefficient structure of the permitted symmetric two-substrate saturation family. The negative beta and approximately 0.966 alpha*gamma-versus-beta^2 relative error establish structural mismatch, not merely weak identifiability; selecting V_max or K_S would invent authority.
+- Evidence location: `digital-protocell/examples/dcdev020r4_asymmetric_two_substrate_identifiability.rs`, `digital-protocell/experiments/generated/dcdev020r4/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r4/asymmetric_identifiability.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R4 observer-only asymmetric two-substrate identifiability audit; exact-head remote CI and architect review pending.
+- Supersedes learning: none

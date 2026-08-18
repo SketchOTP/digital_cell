@@ -1,0 +1,30 @@
+{
+  "disposition": "ADAPTABLE_ARCHITECTURE_ONLY",
+  "experimental_concentrations_imported": false,
+  "external_constants_imported": false,
+  "molecular_identities_imported": false,
+  "sources": [
+    {
+      "citation": "Cleland 1963, The kinetics of enzyme-catalyzed reactions with two or more substrates or products. I. Nomenclature and rate equations",
+      "classification": "ADAPTABLE",
+      "imported_constants": false,
+      "reusable_finding": "Use an explicit multi-reactant rate equation and preserve its reciprocal coefficient constraints.",
+      "url": "https://doi.org/10.1016/0926-6569(63)90211-6"
+    },
+    {
+      "citation": "Pettersson 1969, Relationships between rapid equilibrium conditions and linearization of the reciprocal rate equation for the sequential random two-substrate enzyme mechanism",
+      "classification": "ADAPTABLE",
+      "imported_constants": false,
+      "reusable_finding": "Vary substrate conditions and test reciprocal-rate relationships rather than inferring two parameters from one coupled axis.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/5381399/"
+    },
+    {
+      "citation": "Wang and Mittermaier 2021, Characterizing Bi-substrate Enzyme Kinetics at High Resolution by 2D-ITC",
+      "classification": "ADAPTABLE",
+      "imported_constants": false,
+      "reusable_finding": "Characterize a bi-substrate response by independently varying both substrate concentrations.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34514786/"
+    }
+  ],
+  "status": "primary_literature_reviewed_for_experimental_structure"
+}
