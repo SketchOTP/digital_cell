@@ -1,0 +1,7 @@
+{
+  "capture_boundary": "after resource uptake and before reactions_step",
+  "conservation_residual": "observed stored drift minus source and all recorded stored-material sinks",
+  "dense_ledger": "array of RootRecord",
+  "drift": "area*(A_after+R_after)-area*(A_before+R_before)",
+  "source_interval": "0 through min(N*area,F*area)"
+}

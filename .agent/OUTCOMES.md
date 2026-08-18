@@ -505,3 +505,43 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: exact-head remote validation and independent architect interpretation; the permitted symmetric family is structurally mismatched after independent-axis excitation, but no broader kinetic family is authorized.
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
+
+## D-20260818-dcdev020r4-asymmetric-two-substrate-identifiability - COMPLETE
+
+- Outcome ID: `OUT-DCDEV020R4-ARCHITECT-ACCEPTED-NEGATIVE`
+- Supersedes outcome: `OUT-DCDEV020R4-SATURATING-FAMILY-STRUCTURAL-MISMATCH`
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `MET`
+- Summary: Architect review accepted the R4 negative result at exact head `669a511aacb227240bd7a4698efecfb564f481d4`; PR #33 closed unmerged and exact-head CI `32171718751` passed. The tested saturation family failed against the endpoint-derived constant-gain surrogate surface; R4 did not establish a unique instantaneous source-demand surface.
+- Changed areas: governance acceptance record only; R4 scientific evidence remains unchanged.
+- Validation:
+  - Exact R4 head and closed-unmerged PR #33 - PASSED
+  - Exact-head CI run 32171718751 - PASSED
+  - Architect negative-result review - PASSED
+- Remaining risks: the endpoint-derived constant-gain target required local physiological requalification before selecting another activation topology.
+- Blockers: production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: D-20260818-dcdev020r5-local-zero-drift-source-audit
+
+## D-20260818-dcdev020r5-local-zero-drift-source-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R5-NF-LOCAL-COORDINATE-SUFFICIENT`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer replayed all ten R4 baseline/constant trajectories exactly and audited 4,800 post-uptake pre-reaction states. Every state had a finite physical zero-drift root; none was capacity-insufficient or non-monotonic before its first root. The endpoint constant-gain trajectories were not local requirements. A fixed P0-P2-trained, P3-P4-held-out diagnostic supported N/F as sufficient on the frozen audited manifold. Classification: `DCDEV020R5_NF_LOCAL_COORDINATE_SUFFICIENT`; independent surrogate classification: `ENDPOINT_SURROGATE_NOT_LOCAL_REQUIREMENT`.
+- Changed areas: R5 observer example registration, compact append-only evidence, external dense-ledger manifest, R5 documentation, scoped workflow, and governance; no production chemistry or behavior changed.
+- Validation:
+  - Accepted R4 authority and R1-R4 evidence immutability - PASSED locally
+  - Historical D-043, D-045, and D-067 guard - PASSED
+  - Ten R4 trajectory hashes - PASSED
+  - 4,800 bounded source-response and zero-drift audits - PASSED
+  - Maximum root relative interval `9.53674316472667e-7` - PASSED
+  - Maximum stored-material accounting residual `2.2849994466001e-14` - PASSED
+  - External ledger SHA-256 `7a292953682f1587373e9171cec86764792c2ce2622ed5444336dda82480e1e0` - PASSED locally and on Atlas
+  - Sanctioned Rust 1.89.0 check/run - PASSED
+  - Local full preservation - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: N/F sufficiency is diagnostic and bounded to the frozen P0-P4 one-step state manifold; it does not select or qualify a production law, restoration controller, or durable metabolism.
+- Blockers: exact-head remote CI and architect review; production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none

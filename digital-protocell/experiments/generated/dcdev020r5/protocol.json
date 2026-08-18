@@ -1,0 +1,91 @@
+{
+  "accepted_r4_head": "669a511aacb227240bd7a4698efecfb564f481d4",
+  "base_mass_m": 19.878372106390554,
+  "clean_scientific_base": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "coordinate_predictor": {
+    "ambiguity_limit": 0.25,
+    "feature_scaling": "training min-max",
+    "holdout": [
+      "P3",
+      "P4"
+    ],
+    "k": 16,
+    "p95_limit": 0.3,
+    "rmse_limit": 0.15,
+    "target": "S_zero/(q_c*area*dt)",
+    "training": [
+      "P0",
+      "P1",
+      "P2"
+    ],
+    "type": "fixed unweighted Euclidean k-nearest-neighbor"
+  },
+  "deprivation_steps": 480,
+  "directive": "DC-DEV-020-R5",
+  "feed_steps": 480,
+  "material_state_fraction": 0.01,
+  "observer_only": true,
+  "probes": [
+    {
+      "baseline_hash": "ab6267772acc25ce",
+      "constant_gain": 13.9482421875,
+      "constant_hash": "309eeeed0d68d4da",
+      "f_scale": 1.0,
+      "id": "P0",
+      "n_scale": 1.0
+    },
+    {
+      "baseline_hash": "12a913168f9a11d0",
+      "constant_gain": 4.765045166015625,
+      "constant_hash": "b7b207568a0dd0f4",
+      "f_scale": 1.0,
+      "id": "P1",
+      "n_scale": 2.0
+    },
+    {
+      "baseline_hash": "976cc99ad3d5cd7a",
+      "constant_gain": 4.765045166015625,
+      "constant_hash": "12df7caa589d5338",
+      "f_scale": 2.0,
+      "id": "P2",
+      "n_scale": 1.0
+    },
+    {
+      "baseline_hash": "566e1e59bbb754d9",
+      "constant_gain": 2.0837860107421875,
+      "constant_hash": "6ac77b0b68033825",
+      "f_scale": 1.0,
+      "id": "P3",
+      "n_scale": 4.0
+    },
+    {
+      "baseline_hash": "7a44a8711de7f285",
+      "constant_gain": 2.0837860107421875,
+      "constant_hash": "ea54d37a6b3f2809",
+      "f_scale": 4.0,
+      "id": "P4",
+      "n_scale": 1.0
+    }
+  ],
+  "production_integration": false,
+  "resource_center": [
+    4.8,
+    0.0
+  ],
+  "resource_radius": 1.5,
+  "root_relative_tolerance": 1e-6,
+  "settle_steps": 5000,
+  "shape_fractions": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "source_commit": "4a4bab987bad900199d6a4e362fa3b924d24e3c4",
+  "surrogate_material_over_fraction": 0.1,
+  "trajectories": [
+    "baseline_bilinear_source",
+    "constant_endpoint_break_even_gain"
+  ]
+}

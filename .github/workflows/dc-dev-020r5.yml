@@ -1,0 +1,138 @@
+name: DC-DEV-020-R5 local zero-drift source audit
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-020r5-observer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate compact R5 evidence and prior immutability
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("digital-protocell/experiments/generated/dcdev020r5")
+          required = ["protocol.json", "results.json", "qualification.json", "schema.json",
+                      "representative_diagnostics.json", "literature_review.json",
+                      "external_evidence_manifest.json"]
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              raise SystemExit(f"missing R5 artifacts: {missing}")
+          protocol = json.loads((root / "protocol.json").read_text())
+          results = json.loads((root / "results.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          manifest = json.loads((root / "external_evidence_manifest.json").read_text())
+          if protocol["accepted_r4_head"] != "669a511aacb227240bd7a4698efecfb564f481d4":
+              raise SystemExit("wrong accepted R4 authority")
+          if protocol["clean_scientific_base"] != "1e242f28152797b512e25cd56c7b718e45d6ca97":
+              raise SystemExit("wrong clean scientific base")
+          if protocol["source_commit"] != "4a4bab987bad900199d6a4e362fa3b924d24e3c4":
+              raise SystemExit("wrong source commit")
+          expected = "DCDEV020R5_NF_LOCAL_COORDINATE_SUFFICIENT"
+          if results["scientific_conclusion"] != expected or qualification["classification"] != expected:
+              raise SystemExit("unexpected R5 classification")
+          if results["surrogate_classification"] != "ENDPOINT_SURROGATE_NOT_LOCAL_REQUIREMENT":
+              raise SystemExit("surrogate audit classification changed")
+          if not all(t["parity"] for t in results["trajectory_parity"]):
+              raise SystemExit("R4 trajectory parity failed")
+          if (results["states_audited"], results["states_with_s_zero_0"],
+              results["finite_zero_drift_roots"], results["source_capacity_insufficient_states"],
+              results["nonmonotonic_states"], results["accelerated_decay_at_root_states"]) != (4800, 0, 4800, 0, 0, 0):
+              raise SystemExit("local source classification counts changed")
+          if results["max_root_relative_interval"] > protocol["root_relative_tolerance"]:
+              raise SystemExit("root tolerance failed")
+          if results["max_conservation_residual"] > 1e-10 or results["max_source_acceptance_error"] > 1e-10:
+              raise SystemExit("local accounting failed")
+          if not results["nf_coordinate"]["sufficient"] or not results["nfa_coordinate"]["sufficient"]:
+              raise SystemExit("coordinate result changed")
+          if results["production_chemistry_changed"] or results["production_behavior_changed"] or results["implementation_authorized"]:
+              raise SystemExit("observer-only boundary opened")
+          if manifest["record_count"] != 4800 or manifest["byte_length"] != 19349320:
+              raise SystemExit("external manifest shape changed")
+          if manifest["sha256"] != "7a292953682f1587373e9171cec86764792c2ce2622ed5444336dda82480e1e0":
+              raise SystemExit("external ledger hash changed")
+          print("validated DC-DEV-020-R5 compact evidence")
+          PY
+          git diff --quiet 669a511aacb227240bd7a4698efecfb564f481d4 -- \
+            digital-protocell/experiments/generated/dcdev020/observer \
+            digital-protocell/experiments/generated/dcdev020r2 \
+            digital-protocell/experiments/generated/dcdev020r3 \
+            digital-protocell/experiments/generated/dcdev020r4
+          changed="$(git diff --name-only 1e242f28152797b512e25cd56c7b718e45d6ca97 HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then exit 1; fi
+          if printf '%s\n' "$changed" | grep -Ei 'dcdev021|dc-dev-021'; then exit 1; fi
+
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustup run 1.89.0 rustfmt --edition 2021 --check examples/dcdev020r5_local_zero_drift_source_audit.rs
+
+      - name: Reproduce R5 compact and dense evidence
+        working-directory: digital-protocell
+        env:
+          DCDEV020R5_SOURCE_COMMIT: 4a4bab987bad900199d6a4e362fa3b924d24e3c4
+          DCDEV020R5_OUTPUT_ROOT: target/dcdev020r5-ci
+          DCDEV020R5_EXTERNAL_LEDGER: target/dcdev020r5-statewise-ledger.json
+          DCDEV020R5_EXTERNAL_LOCATION: /mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r5/4a4bab987bad900199d6a4e362fa3b924d24e3c4/statewise_root_ledger.json
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run -p regulatory-core --example dcdev020r5_local_zero_drift_source_audit --release --quiet
+          for name in protocol.json results.json qualification.json schema.json representative_diagnostics.json literature_review.json; do
+            cmp "target/dcdev020r5-ci/$name" "experiments/generated/dcdev020r5/$name"
+          done
+          test "$(sha256sum target/dcdev020r5-statewise-ledger.json | cut -d' ' -f1)" = "7a292953682f1587373e9171cec86764792c2ce2622ed5444336dda82480e1e0"
+          test "$(stat -c '%s' target/dcdev020r5-statewise-ledger.json)" = "19349320"
+          python3 - <<'PY'
+          import json
+          rows = json.load(open("target/dcdev020r5-statewise-ledger.json"))
+          assert len(rows) == 4800
+          assert all(row["root_relative_interval"] <= 1e-6 for row in rows)
+          assert all(abs(row["root"]["accounting"]["conservation_residual"]) <= 1e-10 for row in rows)
+          PY
+
+      - name: Regulatory-core regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p regulatory-core
+
+      - name: Phase-1 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+
+      - name: D-088 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+
+      - name: Evolution-harness preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          actual="$(git rev-parse --verify HEAD)"
+          echo "checked out $actual"
+          test "$actual" = "$EXPECTED_HEAD"

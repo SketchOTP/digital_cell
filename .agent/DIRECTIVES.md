@@ -276,3 +276,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260818-dcdev020r5-local-zero-drift-source-audit
+
+- Issued: `2026-08-18T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R5`
+- Objective: Derive the actual local source requirement of the frozen certified metabolism before selecting another activation topology.
+- Scope: Accepted R4 evidence head `669a511aacb227240bd7a4698efecfb564f481d4`, exact P0-P4 baseline and constant-gain replay, post-uptake pre-reaction state cloning, bounded one-step source-response mapping, monotonicity and accelerated-decay checks, zero-drift roots, R3/R4 surrogate audit, existing N/F and N/F/A coordinate diagnostics, external dense-evidence storage, compact Git evidence, governance, preservation, scoped CI, and draft PR.
+- Exclusions: Production source changes, new species or catalyst states, controller, new kinetic law, Vmax/Km/Ks fitting, food/transport/sink/A-decay/reaction-order changes, behavior, DC-DEV-021, and modification of R1-R4 evidence.
+- Acceptance: One authorized R5 diagnostic conclusion plus an independent R3/R4 surrogate classification, exact-head remote CI, external-ledger hash verification, and architect review; no result automatically authorizes production integration.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

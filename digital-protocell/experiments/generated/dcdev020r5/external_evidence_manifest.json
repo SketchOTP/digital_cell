@@ -1,0 +1,12 @@
+{
+  "directive": "DC-DEV-020-R5",
+  "source_commit": "4a4bab987bad900199d6a4e362fa3b924d24e3c4",
+  "artifact": "statewise_root_ledger.json",
+  "record_count": 4800,
+  "byte_length": 19349320,
+  "sha256": "7a292953682f1587373e9171cec86764792c2ce2622ed5444336dda82480e1e0",
+  "external_location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r5/4a4bab987bad900199d6a4e362fa3b924d24e3c4/statewise_root_ledger.json",
+  "storage_policy": "Dense statewise evidence is external; Git retains compact summaries, schema, representative diagnostics, and this integrity manifest.",
+  "reproduction": "DCDEV020R5_SOURCE_COMMIT=4a4bab987bad900199d6a4e362fa3b924d24e3c4 DCDEV020R5_OUTPUT_ROOT=<compact-output> DCDEV020R5_EXTERNAL_LEDGER=<dense-ledger-path> DCDEV020R5_EXTERNAL_LOCATION=/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r5/4a4bab987bad900199d6a4e362fa3b924d24e3c4/statewise_root_ledger.json cargo +1.89.0 run -p regulatory-core --example dcdev020r5_local_zero_drift_source_audit --release",
+  "remote_sha256_verified": true
+}

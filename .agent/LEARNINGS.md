@@ -157,3 +157,23 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R4 observer-only asymmetric two-substrate identifiability audit; exact-head remote CI and architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV020R4-002
+
+- Learning ID: L-DCDEV020R4-002
+- Date: 2026-08-18
+- Fact or lesson: Architect acceptance preserves the R4 structural mismatch only for the endpoint-derived constant-gain surrogate surface. R4 did not establish a unique instantaneous source-demand surface and must not be generalized to every temporal source trajectory.
+- Evidence location: accepted R4 head `669a511aacb227240bd7a4698efecfb564f481d4`, closed-unmerged PR #33, and exact-head CI `32171718751`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-020-R4 accepted limitation.
+- Supersedes learning: none
+
+## L-DCDEV020R5-001
+
+- Learning ID: L-DCDEV020R5-001
+- Date: 2026-08-18
+- Fact or lesson: Across all 4,800 frozen P0-P4 baseline and constant-trajectory states, a finite physical source extent produced nonnegative one-step stored-material drift before source saturation and before accelerated A decay. The endpoint-derived constant-gain trajectories strongly under-supplied early states and over-supplied later states, so they are not local source requirements. On the frozen held-out diagnostic, normalized local need was sufficiently represented by existing N/F coordinates, while adding A improved prediction but was not required to pass the preregistered C0 limits.
+- Evidence location: `digital-protocell/examples/dcdev020r5_local_zero_drift_source_audit.rs`, `digital-protocell/experiments/generated/dcdev020r5/`, external evidence manifest, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r5/local_source_requirement_audit.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R5 observer-only one-step local source requirement audit; exact-head CI and architect review pending.
+- Supersedes learning: none

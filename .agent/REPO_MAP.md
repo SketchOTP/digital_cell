@@ -20,6 +20,7 @@
 - `digital-protocell/examples/dcdev020r2_allosteric_requalification.rs` — observer-only DC-DEV-020-R2 source-actuation, sequencing, August DC-DEV-017 replay, and A-only sufficiency audit; it stops before any derived law or downstream assay when Gate 4 fails.
 - `digital-protocell/examples/dcdev020r3_two_substrate_saturating_activation.rs` — observer-only DC-DEV-020-R3 bilinear attribution and bounded symmetric two-substrate identifiability audit; it changes no production chemistry and stops fail-closed at Gate 4.
 - `digital-protocell/examples/dcdev020r4_asymmetric_two_substrate_identifiability.rs` — observer-only DC-DEV-020-R4 five-probe independent-axis audit; it changes no production chemistry and stops fail-closed on reciprocal family mismatch.
+- `digital-protocell/examples/dcdev020r5_local_zero_drift_source_audit.rs` — observer-only DC-DEV-020-R5 exact R4 replay, statewise physical source-response, zero-drift root, surrogate, and existing-coordinate audit; it changes no production chemistry.
 
 ## Interfaces and contracts
 
@@ -52,10 +53,12 @@
 - `digital-protocell/experiments/generated/dcdev020r2/` — immutable R2 protocol, compact qualification, results, source-actuation envelope, and literature classification; historical `dcdev020/` evidence is preserved.
 - `digital-protocell/experiments/generated/dcdev020r3/` — append-only R3 protocol, compact result/qualification, sole dense per-step kinetic ledger, and primary-literature classification.
 - `digital-protocell/experiments/generated/dcdev020r4/` — append-only R4 protocol, compact result/qualification, sole dense five-probe identification ledger, and primary-literature classification.
+- `digital-protocell/experiments/generated/dcdev020r5/` — compact append-only R5 protocol, results, qualification, schema, representative diagnostics, literature classification, and external dense-ledger SHA-256 manifest.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/` — DC-DEV-001A human-readable analysis.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r2/` — DC-DEV-020-R2 observer requalification and Gate 4 disposition.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r3/` — DC-DEV-020-R3 two-substrate identifiability audit and fail-closed disposition.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r4/` — DC-DEV-020-R4 asymmetric independent-axis identifiability audit and fail-closed disposition.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r5/` — DC-DEV-020-R5 local zero-drift source requirement, R3/R4 surrogate, and existing-coordinate audit.
 
 ## External integration points
 
