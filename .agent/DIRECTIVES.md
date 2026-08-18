@@ -248,3 +248,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260818-dcdev020r3-two-substrate-saturating-activation
+
+- Issued: `2026-08-18T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R3`
+- Objective: Test whether the frozen bilinear source has material low-substrate suppression and whether one bounded symmetric two-substrate saturating catalytic law is identifiable from the exact constant-break-even source trajectory.
+- Scope: Accepted R2 head `e394aa675a4f44d91d1a8729736679fb4b7e7ab8`, clean production base `1e242f28152797b512e25cd56c7b718e45d6ca97`, exact 5,000/480/480 horizons, per-step kinetic ledger, Gate-2 bilinear attribution, deterministic train/holdout identification of only V_max and K_S, fail-closed later gates, external primary literature, append-only evidence, governance, preservation, scoped CI, and draft PR.
+- Exclusions: production integration, source-parameter changes, food/transport/sink/reserve/A-decay/reaction-order changes, parameter sweep, controller, behavior, DC-DEV-021, and mutation of R2 evidence.
+- Acceptance: Stop on the first decisive gate and return exactly one authorized classification with exact-head remote CI and architect review; no later gate may run after failure.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

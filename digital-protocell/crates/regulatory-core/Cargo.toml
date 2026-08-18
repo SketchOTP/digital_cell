@@ -67,3 +67,7 @@ path = "../../examples/dcdev020_fast_allosteric_assimilation.rs"
 [[example]]
 name = "dcdev020r2_allosteric_requalification"
 path = "../../examples/dcdev020r2_allosteric_requalification.rs"
+
+[[example]]
+name = "dcdev020r3_two_substrate_saturating_activation"
+path = "../../examples/dcdev020r3_two_substrate_saturating_activation.rs"

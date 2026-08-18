@@ -462,3 +462,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: exact-head remote validation and independent architect interpretation of whether a materially different allosteric topology is authorized; no new topology is authorized by this result.
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
+
+## D-20260818-dcdev020r3-two-substrate-saturating-activation - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R3-SATURATING-KINETICS-NOT-IDENTIFIABLE`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R2 is architect-accepted and its A-only architecture is closed. The R3 observer found material bilinear low-substrate suppression, but the symmetric N=F trajectory constrained only V_max/K_S^2. Deterministic asymptotic witnesses improved continuously as both parameters grew, so no unique finite V_max and K_S pair was identifiable. Classification: `DCDEV020R3_SATURATING_KINETICS_NOT_IDENTIFIABLE`.
+- Changed areas: new R3 observer example registration, append-only `dcdev020r3` evidence, R3 documentation, workflow, and governance; no production chemistry, behavior, or certified Phase-1 equations changed.
+- Validation:
+  - Accepted R2 and clean scientific-base authority - PASSED
+  - Required per-step source ledger - PASSED
+  - Gate 2 bilinear low-substrate attribution - PASSED
+  - Gate 4 finite V_max/K_S identification - FAILED as the required negative result
+  - Candidate, finite-feed, dose, sustained, cycle, and production gates - NOT RUN by fail-closed rule
+  - Sanctioned local Rust 1.89.0 check/run - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: exact-head remote validation and independent architect interpretation; only one symmetric substrate trajectory was authorized, so the two parameters remain structurally confounded.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none

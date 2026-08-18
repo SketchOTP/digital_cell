@@ -137,3 +137,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R2 observer-only allosteric requalification.
 - Supersedes learning: none
+
+## L-DCDEV020R3-001
+
+- Learning ID: L-DCDEV020R3-001
+- Date: 2026-08-18
+- Fact or lesson: On the frozen symmetric N=F feed trajectory, the ordinary bilinear source is materially suppressed at low substrate, but the permitted saturating law cannot identify V_max and K_S separately. Only V_max/K_S^2 is constrained; deterministic larger-K_S witnesses continue to reduce holdout error without violating source capacity, so selecting a finite pair would invent authority.
+- Evidence location: `digital-protocell/examples/dcdev020r3_two_substrate_saturating_activation.rs`, `digital-protocell/experiments/generated/dcdev020r3/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r3/two_substrate_audit.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R3 observer-only two-substrate kinetic audit; exact-head remote CI and architect review pending.
+- Supersedes learning: none
