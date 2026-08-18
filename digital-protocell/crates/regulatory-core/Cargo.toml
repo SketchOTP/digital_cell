@@ -71,3 +71,7 @@ path = "../../examples/dcdev020r2_allosteric_requalification.rs"
 [[example]]
 name = "dcdev020r3_two_substrate_saturating_activation"
 path = "../../examples/dcdev020r3_two_substrate_saturating_activation.rs"
+
+[[example]]
+name = "dcdev020r4_asymmetric_two_substrate_identifiability"
+path = "../../examples/dcdev020r4_asymmetric_two_substrate_identifiability.rs"
