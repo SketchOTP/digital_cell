@@ -38,6 +38,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260818-dcdev020r2-allosteric-requalification
+
+- Issued: `2026-08-18T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R2`
+- Objective: Requalify the broader A-only allosteric architecture with source-actuation, sequencing, correct August DC-DEV-017 replay, and a fail-closed sufficiency gate.
+- Scope: Exact clean DC-DEV-016 entry, prior DC-DEV-020 protocol audit, observer-local source envelope, break-even root, A-only coordinate sufficiency, bounded literature review, compact R2 evidence, documentation, governance, preservation, and scoped validation.
+- Exclusions: Production chemistry, parameter tuning, resource or sink changes, new controller/state, behavior, exploration, encounter, repeatability, DC-DEV-021, and modification of prior DC-DEV-020 artifacts.
+- Acceptance: One exact R2 classification, immutable new evidence namespace, preserved prior evidence, local validation, pushed branch, exact-head remote CI when authority is available, and architect review.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260816-dcdev011-passive-isotropic-stick-slip-traction
 
 - Issued: `2026-08-16T00:00:00-04:00`

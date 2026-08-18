@@ -17,6 +17,7 @@
 - `digital-protocell/examples/dcdev013_gate_assay.rs` — fixed-horizon local resource-contact feeding assay; it composes production resource observation, regulation, funded contractility, stick-slip, and uptake without implementing a second sensor.
 - `digital-protocell/examples/dcdev015_metabolic_restoration_assay.rs` — observer-only 5,000-step settlement, 480-step deprivation, and matched metabolic intake-to-restoration audit; it reuses existing uptake and reaction/reserve ledgers without changing biology.
 - `digital-protocell/examples/dcdev016_metabolic_break_even.rs` — observer-only one-shot derived-resource sufficiency challenge; it reproduces DC-DEV-015 baseline arms, tests one derived N/F inventory, and reports supply sufficiency versus stored activation restoration without changing biology.
+- `digital-protocell/examples/dcdev020r2_allosteric_requalification.rs` — observer-only DC-DEV-020-R2 source-actuation, sequencing, August DC-DEV-017 replay, and A-only sufficiency audit; it stops before any derived law or downstream assay when Gate 4 fails.
 
 ## Interfaces and contracts
 
@@ -46,7 +47,9 @@
 - `digital-protocell/experiments/generated/dcdev013/` — frozen local resource-contact feeding protocol, settled body, matched-arm results, gate results, and final manifest.
 - `digital-protocell/experiments/generated/dcdev015/` — frozen metabolic intake/restoration protocol, settlement, deprivation, matched-arm snapshots, ledgers, destination reconciliation, gate results, and final manifest.
 - `digital-protocell/experiments/generated/dcdev016/` — frozen derived-resource break-even protocol, settlement, deprivation, matched-arm results, existing ledgers, gate results, and final manifest.
+- `digital-protocell/experiments/generated/dcdev020r2/` — immutable R2 protocol, compact qualification, results, source-actuation envelope, and literature classification; historical `dcdev020/` evidence is preserved.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/` — DC-DEV-001A human-readable analysis.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r2/` — DC-DEV-020-R2 observer requalification and Gate 4 disposition.
 
 ## External integration points
 

@@ -1,0 +1,360 @@
+{
+  "a_only_fit": null,
+  "baseline": {
+    "alive": true,
+    "arm": "baseline_existing_nf_to_a",
+    "constant_gain": null,
+    "final_mesh_hash": "3a8f33ff53474fc2",
+    "final_state": {
+      "a": 0.2689270569757677,
+      "alive": true,
+      "area": 70.8275261895172,
+      "e_available": 68.2112380112705,
+      "e_stored": 54.3584702923158,
+      "f": 0.19558452009022698,
+      "n": 0.19558452009022698,
+      "r": 0.4985495614630265,
+      "step": 480
+    },
+    "finite_nonnegative": true,
+    "initial": {
+      "a": 0.303630027599798,
+      "alive": true,
+      "area": 70.8275261895172,
+      "e_available": 60.82781514212436,
+      "e_stored": 60.82781514212436,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.5551860064286098,
+      "step": 0
+    },
+    "ledger": {
+      "a_decay": 1.5209688786954632,
+      "a_produced": 1.6911055453576689,
+      "a_to_r": 0.6896397051774904,
+      "accelerated_a_decay": 0.0,
+      "accelerated_steps": 0,
+      "catalyst_a_consumption": 3.423412405530627,
+      "f_consumed": 1.6911055453576689,
+      "f_delivered": 15.543873264312364,
+      "max_conservation_error": 0.0,
+      "membrane_a_consumption": 1.1594064521884808,
+      "n_consumed": 1.6911055453576689,
+      "n_delivered": 15.543873264312364,
+      "r_to_a": 3.9247627163513386,
+      "r_to_w": 0.7762962779072315,
+      "structural_a_consumption": 1.2803663808445707,
+      "world_f_loss": 15.543873264312364,
+      "world_n_loss": 15.543873264312364
+    },
+    "resource_f_remaining": 4.334498842078193,
+    "resource_n_remaining": 4.334498842078193,
+    "trajectory_hash": "ff0c59089e4c44a7"
+  },
+  "chemistry_behavior_changed": false,
+  "conclusion": "DCDEV020_A_ONLY_ALLOSTERIC_COORDINATE_INSUFFICIENT",
+  "dcdev017_correct_replay": {
+    "alive": true,
+    "arm": "dcdev017_demand_coupled_activation_v1_observer",
+    "constant_gain": null,
+    "final_mesh_hash": "4af0624e380095c1",
+    "final_state": {
+      "a": 0.30260728729192427,
+      "alive": true,
+      "area": 70.8275261895172,
+      "e_available": 67.98743427176109,
+      "e_stored": 56.87141935745088,
+      "f": 0.15694484210229886,
+      "n": 0.15694484210229886,
+      "r": 0.5003491678760399,
+      "step": 480
+    },
+    "finite_nonnegative": true,
+    "initial": {
+      "a": 0.303630027599798,
+      "alive": true,
+      "area": 70.8275261895172,
+      "e_available": 60.82781514212436,
+      "e_stored": 60.82781514212436,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.5551860064286098,
+      "step": 0
+    },
+    "ledger": {
+      "a_decay": 1.5797874365491062,
+      "a_produced": 4.491919364994494,
+      "a_to_r": 0.7310218416587346,
+      "accelerated_a_decay": 0.0,
+      "accelerated_steps": 0,
+      "catalyst_a_consumption": 3.555801820890995,
+      "f_consumed": 4.491919364994494,
+      "f_delivered": 15.60793427930473,
+      "max_conservation_error": 0.0,
+      "membrane_a_consumption": 1.2042792762091703,
+      "n_consumed": 4.491919364994494,
+      "n_delivered": 15.60793427930473,
+      "r_to_a": 3.838072227788696,
+      "r_to_w": 0.7769072326026086,
+      "structural_a_consumption": 1.3315393834161802,
+      "world_f_loss": 15.60793427930473,
+      "world_n_loss": 15.60793427930473
+    },
+    "resource_f_remaining": 4.270437827085828,
+    "resource_n_remaining": 4.270437827085828,
+    "trajectory_hash": "18fa778740fed5df"
+  },
+  "deprived": {
+    "a": 0.303630027599798,
+    "alive": true,
+    "area": 70.8275261895172,
+    "e_available": 60.82781514212436,
+    "e_stored": 60.82781514212436,
+    "f": 0.0,
+    "n": 0.0,
+    "r": 0.5551860064286098,
+    "step": 480
+  },
+  "directive": "DC-DEV-020-R2",
+  "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "gate_4_pass": false,
+  "implementation_authorized": false,
+  "next_execution_started": false,
+  "observer_only": true,
+  "prior_dcdev020_head": "876012f8888b074285c55167613471a59d4be25d",
+  "prior_exact_two_x": {
+    "alive": true,
+    "arm": "dcdev020_prior_exact_two_x_candidate",
+    "constant_gain": null,
+    "final_mesh_hash": "bdcae8f6e6b267b5",
+    "final_state": {
+      "a": 0.2816811475240975,
+      "alive": true,
+      "area": 70.8275261895172,
+      "e_available": 68.13222074555914,
+      "e_stored": 55.30767262894278,
+      "f": 0.1810672884762484,
+      "n": 0.1810672884762484,
+      "r": 0.4991970731969387,
+      "step": 480
+    },
+    "finite_nonnegative": true,
+    "initial": {
+      "a": 0.303630027599798,
+      "alive": true,
+      "area": 70.8275261895172,
+      "e_available": 60.82781514212436,
+      "e_stored": 60.82781514212436,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.5551860064286098,
+      "step": 0
+    },
+    "ledger": {
+      "a_decay": 1.5417165882128139,
+      "a_produced": 2.741890690082671,
+      "a_to_r": 0.7042537541215022,
+      "accelerated_a_decay": 0.0,
+      "accelerated_steps": 0,
+      "catalyst_a_consumption": 3.470111563642134,
+      "f_consumed": 2.741890690082671,
+      "f_delivered": 15.566438806699026,
+      "max_conservation_error": 0.0,
+      "membrane_a_consumption": 1.1752277547938799,
+      "n_consumed": 2.741890690082671,
+      "n_delivered": 15.566438806699026,
+      "r_to_a": 3.8933049638097805,
+      "r_to_w": 0.7765064251009195,
+      "structural_a_consumption": 1.2984708715143678,
+      "world_f_loss": 15.566438806699026,
+      "world_n_loss": 15.566438806699026
+    },
+    "resource_f_remaining": 4.311933299691482,
+    "resource_n_remaining": 4.311933299691482,
+    "trajectory_hash": "69292fe9d1842c91"
+  },
+  "production_behavior_changed": false,
+  "protocol_audit": {
+    "classification": "DCDEV020_PROTOCOL_NONCONFORMANCE_CONFIRMED",
+    "discrepancies": [
+      "no derived source-actuation requirement",
+      "arbitrary K_I=1",
+      "arbitrary additional-capacity ceiling 1.0",
+      "D-017 and DC-DEV-017 identity collision",
+      "resource-free long-horizon assay",
+      "incomplete three-cycle assay"
+    ],
+    "prior_artifacts_immutable": true,
+    "prior_head": "876012f8888b074285c55167613471a59d4be25d"
+  },
+  "r2_candidate": null,
+  "root_solve": {
+    "minimum_constant_break_even_gain": 13.9482421875,
+    "target_e_stored": 60.82781514212436,
+    "trials": [
+      {
+        "final_e_stored": 54.3584702923158,
+        "gain": 1.0
+      },
+      {
+        "final_e_stored": 55.54157704482118,
+        "gain": 2.0
+      },
+      {
+        "final_e_stored": 57.24250730229875,
+        "gain": 4.0
+      },
+      {
+        "final_e_stored": 59.258511427337275,
+        "gain": 8.0
+      },
+      {
+        "final_e_stored": 61.183403246453494,
+        "gain": 16.0
+      },
+      {
+        "final_e_stored": 60.42095828095631,
+        "gain": 12.0
+      },
+      {
+        "final_e_stored": 60.83762629499854,
+        "gain": 14.0
+      },
+      {
+        "final_e_stored": 60.63950724124618,
+        "gain": 13.0
+      },
+      {
+        "final_e_stored": 60.74093018435785,
+        "gain": 13.5
+      },
+      {
+        "final_e_stored": 60.78984735698247,
+        "gain": 13.75
+      },
+      {
+        "final_e_stored": 60.81387650477971,
+        "gain": 13.875
+      },
+      {
+        "final_e_stored": 60.82578600147067,
+        "gain": 13.9375
+      },
+      {
+        "final_e_stored": 60.831714759289895,
+        "gain": 13.96875
+      },
+      {
+        "final_e_stored": 60.828752538042515,
+        "gain": 13.953125
+      },
+      {
+        "final_e_stored": 60.82726980978625,
+        "gain": 13.9453125
+      },
+      {
+        "final_e_stored": 60.82801130884512,
+        "gain": 13.94921875
+      },
+      {
+        "final_e_stored": 60.82764059305772,
+        "gain": 13.947265625
+      },
+      {
+        "final_e_stored": 60.82782595938608,
+        "gain": 13.9482421875
+      },
+      {
+        "final_e_stored": 60.827733278330825,
+        "gain": 13.94775390625
+      },
+      {
+        "final_e_stored": 60.82777961938536,
+        "gain": 13.947998046875
+      },
+      {
+        "final_e_stored": 60.8278027895172,
+        "gain": 13.9481201171875
+      }
+    ]
+  },
+  "sequencing_audit": {
+    "ordinary": {
+      "a_decay": 1.5209688786954632,
+      "accelerated_a_decay": 0.0,
+      "accelerated_fraction": 0.0,
+      "accelerated_steps": 0,
+      "fraction_new_a_lost_through_accelerated_branch": 0.0,
+      "steps": 480
+    },
+    "reaction_order_unchanged": true,
+    "source_saturated": {
+      "a_decay": 7.3706916369499655,
+      "accelerated_a_decay": 7.3706916369499655,
+      "accelerated_fraction": 1.0,
+      "accelerated_steps": 480,
+      "fraction_new_a_lost_through_accelerated_branch": 0.45752363423619696,
+      "steps": 480
+    },
+    "stop_classification": "not_triggered_by_observer_accounting"
+  },
+  "settled_hash": "c985c08ab226a061",
+  "source_saturated": {
+    "alive": true,
+    "arm": "source_saturated_upper_bound",
+    "constant_gain": null,
+    "final_mesh_hash": "6a234dc69516d720",
+    "final_state": {
+      "a": 0.3634061072520288,
+      "alive": true,
+      "area": 70.8275261895172,
+      "e_available": 61.68434818478833,
+      "e_stored": 61.68434818478833,
+      "f": 5.421010862427522e-20,
+      "n": 5.421010862427522e-20,
+      "r": 0.5075031494081014,
+      "step": 480
+    },
+    "finite_nonnegative": true,
+    "initial": {
+      "a": 0.303630027599798,
+      "alive": true,
+      "area": 70.8275261895172,
+      "e_available": 60.82781514212436,
+      "e_stored": 60.82781514212436,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.5551860064286098,
+      "step": 0
+    },
+    "ledger": {
+      "a_decay": 7.3706916369499655,
+      "a_produced": 16.109969158762276,
+      "a_to_r": 0.9079467885273369,
+      "accelerated_a_decay": 7.3706916369499655,
+      "accelerated_steps": 480,
+      "catalyst_a_consumption": 4.147507148357892,
+      "f_consumed": 16.109969158762276,
+      "f_delivered": 16.109969158762276,
+      "max_conservation_error": 0.0,
+      "membrane_a_consumption": 1.4053929896186148,
+      "n_consumed": 16.109969158762276,
+      "n_delivered": 16.109969158762276,
+      "r_to_a": 3.5040358450613924,
+      "r_to_w": 0.7811697478769387,
+      "structural_a_consumption": 1.5486745932948056,
+      "world_f_loss": 16.109969158762276,
+      "world_n_loss": 16.109969158762276
+    },
+    "resource_f_remaining": 3.7684029476282745,
+    "resource_n_remaining": 3.7684029476282745,
+    "trajectory_hash": "9d9fdb9ca992b388"
+  },
+  "sustained_fed": null,
+  "three_cycles": null,
+  "verdicts": {
+    "finite_feed": "NOT_RUN_GATE_4",
+    "sustained_fed": "NOT_RUN_GATE_6",
+    "three_cycles": "NOT_RUN_GATE_7"
+  }
+}

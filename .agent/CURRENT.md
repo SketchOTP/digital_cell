@@ -3,22 +3,22 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-17T00:00:00-04:00`
+- Last updated: `2026-08-18T00:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260817-dcdev020-fast-allosteric-assimilation`
-- External directive ID: `DC-DEV-020`
-- Objective: `Test exactly one target-free fast A-product feedback law counterfactually against the accepted finite nutrient ecology, integrating it into production only if the observer gate passes.`
+- Local directive ID: `D-20260818-dcdev020r2-allosteric-requalification`
+- External directive ID: `DC-DEV-020-R2`
+- Objective: `Requalify the broader A-only allosteric architecture with a source-actuation envelope, sequencing audit, correct August DC-DEV-017 replay, and a fail-closed A-only sufficiency gate.`
 - Current status: `VALIDATING`
-- Acceptance: `DC-DEV-020 observer gate failed: the fixed A-product feedback law improved finite-feed E_stored relative to baseline but did not restore the deprived state; no production integration or downstream phases were run.`
-- Current phase: `DC-DEV-020 observer-only negative-result package; exact-head remote CI and architect review remain pending.`
-- Expected or actual touched areas: `DC-DEV-020 observer assay, compact evidence, documentation, governance, scoped CI`
-- Immediate next action: `Push the bounded observer-only package and return for architect review; do not tune the law, integrate production chemistry, or begin downstream persistence/exploration.`
+- Acceptance: `R2 Gate 4 failed with DCDEV020_A_ONLY_ALLOSTERIC_COORDINATE_INSUFFICIENT; no derived law, production integration, downstream persistence, exploration, or DC-DEV-021 work was run.`
+- Current phase: `DC-DEV-020-R2 observer-only Gate 4 negative-result package; exact-head remote CI and architect review remain pending.`
+- Expected or actual touched areas: `R2 observer assay, new compact evidence namespace, R2 documentation, governance, scoped CI`
+- Immediate next action: `Validate preservation and governance, push the R2 branch if authority is available, and return for architect review; do not tune, integrate, or begin DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
-- The exact scientific base is `0d2c404c0874d5430dd5d01dbdcc059a842dd689`.
+- The exact scientific base for R2 is `1e242f28152797b512e25cd56c7b718e45d6ca97`; the prior R1 head is `876012f8888b074285c55167613471a59d4be25d`.
 - R4/D-096 source remains isolated in the other worktree and is not an input to this branch.
 - Later append-only governance snapshots are preserved under `.agent/legacy/`.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
@@ -27,12 +27,12 @@
 - Entry authority is `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
-- Implementation work is on `strategy/dc-dev-016-metabolic-break-even` based on `strategy/dc-dev-015-metabolic-restoration-audit`.
+- R2 implementation work is on `strategy/dc-dev-020r2-allosteric-requalification` based on prior head `876012f8888b074285c55167613471a59d4be25d`.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
 
 ## Last validation after adoption
 
-- Command or check: `Local Rust 1.89.0 DC-DEV-016 example check/run and evidence inspection`
+- Command or check: `Local Rust 1.89.0 DC-DEV-020-R2 example check/run and evidence inspection`
 - Result: `PASSED`
 
 ## Risks
@@ -43,7 +43,7 @@
 
 ## Blockers
 
-- Exact-head remote CI and independent architect review remain open. The DC-DEV-020 observer gate failed; no production integration, parameter tuning, second controller, behavior, persistence, exploration, or later directive is authorized.
+- Exact-head remote CI and independent architect review remain open. R2 Gate 4 failed; no production integration, parameter tuning, second controller, behavior, persistence, exploration, or DC-DEV-021 is authorized.
 
 ## Pending decisions
 

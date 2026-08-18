@@ -440,3 +440,25 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: independent architect interpretation of the chosen single-law negative result and whether a materially different metabolic-control topology is authorized.
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
+
+## D-20260818-dcdev020r2-allosteric-requalification - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R2-A-ONLY-COORDINATE-INSUFFICIENT`
+- Supersedes outcome: `OUT-DCDEV020-A-PRODUCT-FEEDBACK-OBSERVER-NEGATIVE`
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R2 requalification audited the prior protocol, reconstructed the finite-source actuation envelope, replayed the correct August DC-DEV-017 observer, and audited post-activation A decay. The source-saturated upper bound ended at `61.6843481847883` from deprived `60.82781514212436`, but the constant-gain break-even root was `13.9482421875`; measured required gain increased as A decreased, so the permitted A-only inhibitory family was not sufficient or identifiable. Classification: `DCDEV020_A_ONLY_ALLOSTERIC_COORDINATE_INSUFFICIENT`.
+- Changed areas: new R2 observer example registration, new `dcdev020r2` evidence namespace, R2 documentation, and governance records; no production chemistry or certified Phase-1 equations changed.
+- Validation:
+  - Exact clean entry and prior head recorded - PASSED
+  - Source-actuation envelope - PASSED
+  - Post-activation A-decay sequencing audit - PASSED
+  - Correct August DC-DEV-017 observer replay - PASSED
+  - A-only coordinate sufficiency - FAILED as the preregistered negative result
+  - Derived law, finite-feed qualification, sustained 8,000-step assay, and three-cycle assay - NOT RUN by fail-closed rule
+  - Sanctioned local Rust 1.89.0 check/run - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: exact-head remote validation and independent architect interpretation of whether a materially different allosteric topology is authorized; no new topology is authorized by this result.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
