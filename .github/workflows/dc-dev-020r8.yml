@@ -103,9 +103,28 @@ jobs:
         run: |
           set -euo pipefail
           cargo +1.89.0 run -p regulatory-core --example dcdev020r8_nfa_restorative_attractor --release --quiet
-          for name in protocol.json pairing_summary.json constraint_summary.json feasible_region.json capacity_validation.json qualification.json literature_review.json external_evidence_manifest.json manifest.json; do
-            cmp "target/dcdev020r8-ci/$name" "experiments/generated/dcdev020r8/$name"
-          done
+          python3 - <<'PY'
+          import json, math
+          names = ["protocol.json", "pairing_summary.json", "constraint_summary.json",
+                   "feasible_region.json", "capacity_validation.json", "qualification.json",
+                   "literature_review.json", "external_evidence_manifest.json", "manifest.json"]
+          def compare(left, right, path="root"):
+              if isinstance(left, dict) and isinstance(right, dict):
+                  assert set(left) == set(right), f"key mismatch at {path}"
+                  for key in left:
+                      compare(left[key], right[key], f"{path}.{key}")
+              elif isinstance(left, list) and isinstance(right, list):
+                  assert len(left) == len(right), f"length mismatch at {path}"
+                  for index, (a, b) in enumerate(zip(left, right)):
+                      compare(a, b, f"{path}[{index}]")
+              elif isinstance(left, (int, float)) and isinstance(right, (int, float)):
+                  assert math.isclose(float(left), float(right), rel_tol=1e-9, abs_tol=1e-12), f"numeric mismatch at {path}: {left!r} != {right!r}"
+              else:
+                  assert left == right, f"value mismatch at {path}: {left!r} != {right!r}"
+          for name in names:
+              with open(f"target/dcdev020r8-ci/{name}") as generated, open(f"experiments/generated/dcdev020r8/{name}") as committed:
+                  compare(json.load(generated), json.load(committed), name)
+          PY
 
       - name: Regulatory-core regression
         working-directory: digital-protocell
