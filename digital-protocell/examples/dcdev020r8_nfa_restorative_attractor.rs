@@ -237,7 +237,11 @@ fn choose_pairs(rows: &[SurfaceRow], min: [f64; 2], max: [f64; 2]) -> Vec<Pair> 
         if let Some((other_ref, distance, _)) = candidates.first() {
             let other = *other_ref;
             if seen.insert(pair_key(&row.id, &other.id)) {
-                let (low, high) = if row.a < other.a { (row, other) } else { (other, row) };
+                let (low, high) = if row.a < other.a {
+                    (row, other)
+                } else {
+                    (other, row)
+                };
                 pairs.push(Pair {
                     low_id: low.id.clone(),
                     high_id: high.id.clone(),
@@ -250,7 +254,11 @@ fn choose_pairs(rows: &[SurfaceRow], min: [f64; 2], max: [f64; 2]) -> Vec<Pair> 
             }
         }
     }
-    pairs.sort_by(|a, b| a.low_id.cmp(&b.low_id).then_with(|| a.high_id.cmp(&b.high_id)));
+    pairs.sort_by(|a, b| {
+        a.low_id
+            .cmp(&b.low_id)
+            .then_with(|| a.high_id.cmp(&b.high_id))
+    });
     pairs
 }
 
@@ -279,7 +287,11 @@ fn choose_r7_pairs(
             });
             candidates.first().map(|(other_ref, distance)| {
                 let other = *other_ref;
-                let (low, high) = if row.a < other.a { (row, other) } else { (other, row) };
+                let (low, high) = if row.a < other.a {
+                    (row, other)
+                } else {
+                    (other, row)
+                };
                 Pair {
                     low_id: low.id.clone(),
                     high_id: high.id.clone(),
@@ -568,12 +580,12 @@ fn main() {
     let dense_path = std::env::var_os("DCDEV020R8_EXTERNAL_LEDGER")
         .map(PathBuf::from)
         .unwrap_or_else(|| PathBuf::from("target/dcdev020r8-pair-constraint-ledger.json"));
-    let source_commit = std::env::var("DCDEV020R8_SOURCE_COMMIT")
-        .unwrap_or_else(|_| "LOCAL_UNCOMMITTED".into());
+    let source_commit =
+        std::env::var("DCDEV020R8_SOURCE_COMMIT").unwrap_or_else(|_| "LOCAL_UNCOMMITTED".into());
     let external_location = std::env::var("DCDEV020R8_EXTERNAL_LOCATION")
         .unwrap_or_else(|_| "UNRECORDED_EXTERNAL_LOCATION".into());
-    let external_sha256 = std::env::var("DCDEV020R8_EXTERNAL_SHA256")
-        .unwrap_or_else(|_| "COMPUTED_AFTER_RUN".into());
+    let external_sha256 =
+        std::env::var("DCDEV020R8_EXTERNAL_SHA256").unwrap_or_else(|_| "COMPUTED_AFTER_RUN".into());
     let r5: Vec<R5Row> = serde_json::from_slice(&fs::read(r5_path).unwrap()).unwrap();
     let r7: Vec<R7Row> = serde_json::from_slice(&fs::read(r7_path).unwrap()).unwrap();
     let r5_rows: Vec<SurfaceRow> = r5.iter().filter_map(source_row_from_r5).collect();
@@ -588,8 +600,14 @@ fn main() {
         training.iter().map(|r| r.f).fold(f64::INFINITY, f64::min),
     ];
     let max = [
-        training.iter().map(|r| r.n).fold(f64::NEG_INFINITY, f64::max),
-        training.iter().map(|r| r.f).fold(f64::NEG_INFINITY, f64::max),
+        training
+            .iter()
+            .map(|r| r.n)
+            .fold(f64::NEG_INFINITY, f64::max),
+        training
+            .iter()
+            .map(|r| r.f)
+            .fold(f64::NEG_INFINITY, f64::max),
     ];
     let training_pairs = choose_pairs(&training, min, max);
     assert!(!training_pairs.is_empty());
@@ -601,12 +619,20 @@ fn main() {
     let (p3_pairs, p4_pairs, r7_pairs, holdout_region, on_policy_region) =
         if training_region.report.feasible {
             let p3_pairs = choose_pairs(
-                &r5_rows.iter().filter(|r| r.probe == "P3").cloned().collect::<Vec<_>>(),
+                &r5_rows
+                    .iter()
+                    .filter(|r| r.probe == "P3")
+                    .cloned()
+                    .collect::<Vec<_>>(),
                 min,
                 max,
             );
             let p4_pairs = choose_pairs(
-                &r5_rows.iter().filter(|r| r.probe == "P4").cloned().collect::<Vec<_>>(),
+                &r5_rows
+                    .iter()
+                    .filter(|r| r.probe == "P4")
+                    .cloned()
+                    .collect::<Vec<_>>(),
                 min,
                 max,
             );
@@ -621,7 +647,13 @@ fn main() {
                 on_policy_constraints.extend(pair_constraint(pair, "r7_on_policy"));
             }
             let on_policy_region = solve_region(on_policy_constraints);
-            (p3_pairs, p4_pairs, r7_pairs, holdout_region, on_policy_region)
+            (
+                p3_pairs,
+                p4_pairs,
+                r7_pairs,
+                holdout_region,
+                on_policy_region,
+            )
         } else {
             (
                 Vec::new(),
@@ -671,15 +703,13 @@ fn main() {
     } else {
         "DCDEV020R8_NFA_PRODUCT_FEEDBACK_ATTRACTOR_TOPOLOGY_FEASIBLE"
     };
-    let zero_substrate_control = [
-        (0.0, 1.0, 0.0),
-        (1.0, 0.0, 0.0),
-    ]
-    .iter()
-    .all(|(n, f, expected)| {
-        let source: f64 = if *n <= 0.0 || *f <= 0.0 { 0.0 } else { *n * *f };
-        (source - expected).abs() <= EPS
-    });
+    let zero_substrate_control =
+        [(0.0, 1.0, 0.0), (1.0, 0.0, 0.0)]
+            .iter()
+            .all(|(n, f, expected)| {
+                let source: f64 = if *n <= 0.0 || *f <= 0.0 { 0.0 } else { *n * *f };
+                (source - expected).abs() <= EPS
+            });
     let sensitivity = ["P0", "P1", "P2"]
         .into_iter()
         .map(|removed| {
@@ -793,7 +823,11 @@ fn main() {
     write_json(&output, "capacity_validation.json", &capacity);
     write_json(&output, "qualification.json", &qualification);
     write_json(&output, "literature_review.json", &literature);
-    write_json(&output, "external_evidence_manifest.json", &json!({"R5": {"sha256": R5_SHA256, "location": R5_LOCATION}, "R7": {"sha256": R7_SHA256, "location": R7_LOCATION}, "dense_R8": {"sha256": external_sha256, "location": external_location}}));
+    write_json(
+        &output,
+        "external_evidence_manifest.json",
+        &json!({"R5": {"sha256": R5_SHA256, "location": R5_LOCATION}, "R7": {"sha256": R7_SHA256, "location": R7_LOCATION}, "dense_R8": {"sha256": external_sha256, "location": external_location}}),
+    );
     write_json(&output, "manifest.json", &manifest);
     println!("{}", topology);
 }
@@ -805,8 +839,18 @@ mod tests {
     #[test]
     fn reciprocal_constraints_recover_bounded_positive_region() {
         let mut constraints = base_constraints();
-        constraints.push(Constraint { a: 1.0, b: 1.0, c: 4.0, label: "upper".into() });
-        constraints.push(Constraint { a: -1.0, b: -2.0, c: -1.0, label: "lower".into() });
+        constraints.push(Constraint {
+            a: 1.0,
+            b: 1.0,
+            c: 4.0,
+            label: "upper".into(),
+        });
+        constraints.push(Constraint {
+            a: -1.0,
+            b: -2.0,
+            c: -1.0,
+            label: "lower".into(),
+        });
         let region = solve_region(constraints);
         assert!(region.report.feasible);
         assert!(region.report.positive_interior);
@@ -819,6 +863,18 @@ mod tests {
         let no_source = |n: f64, f: f64| if n <= 0.0 || f <= 0.0 { 0.0 } else { n * f };
         assert_eq!(no_source(0.0, 1.0), 0.0);
         assert_eq!(no_source(1.0, 0.0), 0.0);
-        assert!(capacity_constraint(&make_surface_row("x".into(), "test".into(), "x".into(), 0, 1.0, 0.2, 1.0, 1.0, 1.0, 0.1)).is_some());
+        assert!(capacity_constraint(&make_surface_row(
+            "x".into(),
+            "test".into(),
+            "x".into(),
+            0,
+            1.0,
+            0.2,
+            1.0,
+            1.0,
+            1.0,
+            0.1
+        ))
+        .is_some());
     }
 }
