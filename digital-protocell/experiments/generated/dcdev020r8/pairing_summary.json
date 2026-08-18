@@ -1,0 +1,74 @@
+{
+  "P3": {
+    "a_span": {
+      "count": 0
+    },
+    "maintenance_demand_falls_with_a": 0,
+    "maintenance_demand_rises_with_a": 0,
+    "nf_distance": {
+      "count": 0
+    },
+    "pair_count": 0,
+    "restorative_sign_fraction": 0.0
+  },
+  "P4": {
+    "a_span": {
+      "count": 0
+    },
+    "maintenance_demand_falls_with_a": 0,
+    "maintenance_demand_rises_with_a": 0,
+    "nf_distance": {
+      "count": 0
+    },
+    "pair_count": 0,
+    "restorative_sign_fraction": 0.0
+  },
+  "R7_on_policy": {
+    "a_span": {
+      "count": 0
+    },
+    "maintenance_demand_falls_with_a": 0,
+    "maintenance_demand_rises_with_a": 0,
+    "nf_distance": {
+      "count": 0
+    },
+    "pair_count": 0,
+    "restorative_sign_fraction": 0.0
+  },
+  "g_h": 1.0,
+  "normalized_surface": "Y_zero=S_zero/(q_c*g_h*area*dt*G_NF(N,F))",
+  "p_nf": 0.0003277429681759396,
+  "training": {
+    "a_span": {
+      "count": 2425,
+      "max": 0.07592912697965365,
+      "median": 0.00012234951464140664,
+      "min": 3.05768941277762e-8,
+      "p05": 8.79679671139666e-6,
+      "p95": 0.04990161636939422
+    },
+    "maintenance_demand_falls_with_a": 310,
+    "maintenance_demand_rises_with_a": 2115,
+    "nf_distance": {
+      "count": 2425,
+      "max": 0.002484649724899476,
+      "median": 0.0019401409847849861,
+      "min": 1.0994515145395418e-7,
+      "p05": 0.000938347906741381,
+      "p95": 0.002431173577439419
+    },
+    "pair_count": 2425,
+    "restorative_sign_fraction": 0.12783505154639174
+  },
+  "training_nf_scaling": {
+    "distance_limit": 0.0024847602445668224,
+    "max": [
+      0.3942252232425893,
+      0.3942252232425893
+    ],
+    "min": [
+      0.00048344984901468554,
+      0.00048344984901468554
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "capacity_invalid_states": 0,
+  "clipping_dependent": false,
+  "region_after_capacity_constraints": {
+    "constraint_count": 4852,
+    "report": {
+      "area": null,
+      "bounded": false,
+      "feasible": false,
+      "k_a_range": null,
+      "positive_interior": false,
+      "u_range": null,
+      "v_fb_range": null,
+      "v_range": null,
+      "vertex_count": 0,
+      "vertices": []
+    }
+  },
+  "validation_state_count": 5280,
+  "zero_substrate_source_is_explicit_zero": true
+}

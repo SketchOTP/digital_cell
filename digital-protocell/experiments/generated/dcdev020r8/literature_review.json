@@ -1,0 +1,17 @@
+{
+  "external_parameters_imported": false,
+  "sources": [
+    {
+      "citation": "Goyal et al. 2010, PLoS Computational Biology, PMC2880561",
+      "disposition": "ADAPTABLE_ARCHITECTURE_ONLY",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2880561/",
+      "use": "product-feedback topology rationale only; no values imported"
+    },
+    {
+      "citation": "Bi et al. 2023, Nature Communications, s41467-023-37957-0",
+      "disposition": "REFERENCE_STABILITY_WARNING",
+      "url": "https://www.nature.com/articles/s41467-023-37957-0",
+      "use": "later free-running stability must be qualified; no values imported"
+    }
+  ]
+}

@@ -318,3 +318,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260818-dcdev020r8-nfa-restorative-attractor
+
+- Issued: `2026-08-18T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R8`
+- Objective: Audit whether existing local A can support a target-free product-feedback topology when combined with the frozen N/F coordinate, using a deterministic observer-only feasibility analysis.
+- Scope: Accepted R7 head `7d5f772f0db67b8d754d27c1182c933533f750fd`, sealed R5/R7 dense ledgers, frozen N/F exponent and distance limit, matched N/F pair construction, reciprocal feasibility constraints, capacity and zero-substrate controls, fail-closed first-decisive-gate execution, primary literature, compact append-only evidence, governed external dense evidence, preservation, scoped CI, and draft PR.
+- Exclusions: Production chemistry, production behavior, parameter selection, runtime integration, controller or history state, new kinetics, transport/resource/sink changes, behavior, and DC-DEV-021.
+- Acceptance: Stop at the first decisive failure and return exactly one authorized R8 classification with sealed evidence, exact-head remote CI, and architect review; no later gate may run after failure.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

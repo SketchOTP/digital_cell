@@ -591,6 +591,28 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review; production integration and DC-DEV-021 remain unauthorized.
 - Follow-up directive: none
 
+## D-20260818-dcdev020r8-nfa-restorative-attractor - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R8-PRODUCT-FEEDBACK-TOPOLOGY-INCOMPATIBLE`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R8 used the accepted R7 state, sealed R5/R7 dense ledgers, frozen N/F support, and deterministic matched pairs to test a reciprocal target-free product-feedback topology. The training set contained `2425` matched pairs; only `310` showed the required maintenance-demand decrease with A while `2115` showed the opposite sign. The reciprocal positive-feasibility region was empty, so execution stopped at Gate 3 with classification `DCDEV020R8_PRODUCT_FEEDBACK_TOPOLOGY_INCOMPATIBLE`.
+- Changed areas: R8 observer example registration, compact append-only evidence, governed external dense pair/constraint ledger, R8 documentation, scoped workflow, and governance; no production chemistry or behavior changed.
+- Validation:
+  - Accepted R7 head and sealed R5/R7 dense inputs - PASSED locally
+  - Deterministic matched-pair construction and reciprocal constraint audit - PASSED
+  - Training Gate 3 feasibility - FAILED closed with the authorized negative classification
+  - Holdout, P3/P4, R7, and capacity gates - NOT RUN by fail-closed rule
+  - Zero-substrate control and production-scope guards - PASSED locally
+  - External R8 dense-ledger SHA-256 `12b41f27c928635899a7ea3a8d496cfdd3af7d3fd83aaa93024724663e2df9ff` - PASSED locally and on Atlas
+  - Focused R8 tests - PASSED locally
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: This closes only the tested reciprocal product-feedback topology on the frozen R5/R7 training support; it does not close the wider NFA route or authorize a production A-dependent law.
+- Blockers: exact-head remote CI and architect review; R9 and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none
+
 ## D-20260818-dcdev020r6-nf-power-law-source - COMPLETE
 
 - Outcome ID: `OUT-DCDEV020R6-ARCHITECT-ACCEPTED-NEGATIVE`

@@ -1,0 +1,97 @@
+{
+  "after_P3_P4": {
+    "constraint_count": 4852,
+    "report": {
+      "area": null,
+      "bounded": false,
+      "feasible": false,
+      "k_a_range": null,
+      "positive_interior": false,
+      "u_range": null,
+      "v_fb_range": null,
+      "v_range": null,
+      "vertex_count": 0,
+      "vertices": []
+    }
+  },
+  "after_R7_on_policy": {
+    "constraint_count": 4852,
+    "report": {
+      "area": null,
+      "bounded": false,
+      "feasible": false,
+      "k_a_range": null,
+      "positive_interior": false,
+      "u_range": null,
+      "v_fb_range": null,
+      "v_range": null,
+      "vertex_count": 0,
+      "vertices": []
+    }
+  },
+  "sensitivity_remove_probe": [
+    [
+      "P0",
+      1572,
+      {
+        "area": null,
+        "bounded": false,
+        "feasible": false,
+        "k_a_range": null,
+        "positive_interior": false,
+        "u_range": null,
+        "v_fb_range": null,
+        "v_range": null,
+        "vertex_count": 0,
+        "vertices": []
+      }
+    ],
+    [
+      "P1",
+      1636,
+      {
+        "area": null,
+        "bounded": false,
+        "feasible": false,
+        "k_a_range": null,
+        "positive_interior": false,
+        "u_range": null,
+        "v_fb_range": null,
+        "v_range": null,
+        "vertex_count": 0,
+        "vertices": []
+      }
+    ],
+    [
+      "P2",
+      1636,
+      {
+        "area": null,
+        "bounded": false,
+        "feasible": false,
+        "k_a_range": null,
+        "positive_interior": false,
+        "u_range": null,
+        "v_fb_range": null,
+        "v_range": null,
+        "vertex_count": 0,
+        "vertices": []
+      }
+    ]
+  ],
+  "training": {
+    "constraint_count": 4852,
+    "report": {
+      "area": null,
+      "bounded": false,
+      "feasible": false,
+      "k_a_range": null,
+      "positive_interior": false,
+      "u_range": null,
+      "v_fb_range": null,
+      "v_range": null,
+      "vertex_count": 0,
+      "vertices": []
+    }
+  }
+}

@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260818-dcdev020r7-on-policy-zero-drift-audit`
-- External directive ID: `DC-DEV-020-R7`
-- Objective: `Determine why the accepted R6 N/F power law failed restoration by solving the physical zero-drift requirement on its own induced states and replaying the frozen R5 observers without refitting.`
+- Local directive ID: `D-20260818-dcdev020r8-nfa-restorative-attractor`
+- External directive ID: `DC-DEV-020-R8`
+- Objective: `Audit whether existing local A can support a target-free product-feedback topology when combined with the frozen N/F coordinate, using an observer-only reciprocal-feasibility analysis.`
 - Current status: `VALIDATING`
-- Acceptance: `R6 is architect-accepted negative at f01b716d9051c9f0114f3c5c0d1b123e2df037cf with exact-head CI 32187547222. R7 reproduces R6, obtains 480/480 finite monotone roots, closes drift exactly, finds frozen NF insufficient only by ambiguity 0.26505161065124994 while NFA passes, and classifies DCDEV020R7_NFA_COORDINATE_REQUIRED_ON_POLICY.`
-- Current phase: `DC-DEV-020-R7 observer-only evidence packaging and exact-head validation; no production law or DC-DEV-021 work is authorized.`
-- Expected or actual touched areas: `R7 observer example registration, compact evidence, external dense-ledger seal, R7 documentation, governance, and scoped CI`
-- Immediate next action: `Complete preservation, push the R7 branch, open a draft PR, verify exact-head CI, and return for architect review; do not construct an NFA law or begin DC-DEV-021.`
+- Acceptance: `R8 local training Gate 3 failed closed with DCDEV020R8_PRODUCT_FEEDBACK_TOPOLOGY_INCOMPATIBLE; compact evidence and the governed dense-ledger seal are present. Exact-head CI and architect review remain pending.`
+- Current phase: `DC-DEV-020-R8 observer-only product-feedback topology audit and exact-head validation; no production law or DC-DEV-021 work is authorized.`
+- Expected or actual touched areas: `R8 observer example registration, compact evidence, external dense-ledger seal, R8 documentation, governance, and scoped CI`
+- Immediate next action: `Complete preservation, commit and push the R8 package, open a draft PR, verify exact-head CI, and return for architect review; do not begin R9 or DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -50,6 +50,9 @@
 
 - The frozen DC-DEV-013 geometry, inventory, horizon, and thresholds must not be changed after protocol commit `fa8a689adff8cbc3b981038c4812ebdc0623116c`.
 - DC-DEV-014, parameter repair, parameter screening, navigation, resource seeking, and evolution remain unauthorized.
+- R7 is accepted at `7d5f772f0db67b8d754d27c1182c933533f750fd`; R8 uses frozen `p_NF=0.0003277429681759396` and distance limit `0.0024847602445668224`.
+- R5 dense input is sealed at `4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585`; R7 dense input is sealed at `abdaea6d075c700e36d14d369dba62982f4a65cea47d2d1f162b5dfe8afa59f8`.
+- R8 implementation source is `6e2b03a7551409086c1a38d6cf5f62827fb91929`; its dense pair/constraint ledger is sealed externally at `12b41f27c928635899a7ea3a8d496cfdd3af7d3fd83aaa93024724663e2df9ff`.
 
 ## Status vocabulary
 

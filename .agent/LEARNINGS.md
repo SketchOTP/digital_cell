@@ -237,3 +237,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R7 exact-root oracle diagnostic only; not a production mechanism.
 - Supersedes learning: none
+
+## L-DCDEV020R8-001
+
+- Learning ID: L-DCDEV020R8-001
+- Date: 2026-08-18
+- Fact or lesson: On frozen R5/R7 support, deterministic matched pairs produce `2425` training constraints. Only `310` pairs show maintenance demand falling with A, while `2115` show it rising, leaving the reciprocal positive product-feedback feasible region empty. R8 therefore stops at Gate 3 and classifies the tested topology as incompatible; this does not close the wider NFA route or authorize production integration.
+- Evidence location: `digital-protocell/examples/dcdev020r8_nfa_restorative_attractor.rs`, `digital-protocell/experiments/generated/dcdev020r8/`, `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8/product_feedback_attractor_audit.md`, and the governed external dense ledger at SHA-256 `12b41f27c928635899a7ea3a8d496cfdd3af7d3fd83aaa93024724663e2df9ff`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R8 observer-only reciprocal product-feedback topology audit through the training Gate 3 failure; exact-head CI and architect review pending.
+- Supersedes learning: none
