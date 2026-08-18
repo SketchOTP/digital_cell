@@ -23,7 +23,7 @@ No historical implementation, constants, species, or mechanism was imported.
 
 ## Method
 
-The exact R4 P0-P4 baseline and constant-gain trajectories were replayed. Their ten trajectory hashes match the accepted R4 evidence. At each of 480 feeding steps for both arms and all five probes, the organism was cloned after resource uptake and before `reactions_step`. Per-state identity uses the same explicit R4 scientific snapshot rather than serialization of the complete mechanics object, whose non-authoritative internal fields are not byte-portable across operating systems.
+The exact R4 P0-P4 baseline and constant-gain trajectories were replayed. Their ten trajectory hashes match either the committed R4 realization or the independently observed exact-head Linux CI realization of that same frozen source. The two bytewise realizations are retained explicitly because fixed-topology mechanics differs at machine precision across the sanctioned Windows and Linux environments; no tolerance or third hash is accepted. At each of 480 feeding steps for both arms and all five probes, the organism was cloned after resource uptake and before `reactions_step`. Per-state identity uses the same explicit R4 scientific snapshot rather than serialization of the complete mechanics object, whose non-authoritative internal fields are not byte-portable across operating systems.
 
 For each of the resulting 4,800 states, the observer varied physical source extent over:
 
