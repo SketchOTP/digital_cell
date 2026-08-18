@@ -469,7 +469,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Supersedes outcome: none
 - Closed: `2026-08-18T00:00:00-04:00`
 - Acceptance: `PARTIAL`
-- Summary: R2 is architect-accepted and its A-only architecture is closed. The R3 observer found material bilinear low-substrate suppression, but the symmetric N=F trajectory constrained only V_max/K_S^2. Deterministic asymptotic witnesses improved continuously as both parameters grew, so no unique finite V_max and K_S pair was identifiable. Classification: `DCDEV020R3_SATURATING_KINETICS_NOT_IDENTIFIABLE`.
+- Summary: R2 is architect-accepted as `DCDEV020R2_ACCEPTED_NEGATIVE`, with `A_ONLY_ALLOSTERIC_ASSIMILATION_CLOSED`. The R3 observer found material bilinear low-substrate suppression, but the symmetric N=F trajectory constrained only V_max/K_S^2. Deterministic asymptotic witnesses improved continuously as both parameters grew, so no unique finite V_max and K_S pair was identifiable. Classification: `DCDEV020R3_SATURATING_KINETICS_NOT_IDENTIFIABLE`.
 - Changed areas: new R3 observer example registration, append-only `dcdev020r3` evidence, R3 documentation, workflow, and governance; no production chemistry, behavior, or certified Phase-1 equations changed.
 - Validation:
   - Accepted R2 and clean scientific-base authority - PASSED
