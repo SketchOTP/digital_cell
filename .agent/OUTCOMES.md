@@ -537,7 +537,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - 4,800 bounded source-response and zero-drift audits - PASSED
   - Maximum root relative interval `9.53674316472667e-7` - PASSED
   - Maximum stored-material accounting residual `2.2849994466001e-14` - PASSED
-  - External ledger SHA-256 `7a292953682f1587373e9171cec86764792c2ce2622ed5444336dda82480e1e0` - PASSED locally and on Atlas
+  - External ledger SHA-256 `4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585` - PASSED locally and on Atlas
   - Sanctioned Rust 1.89.0 check/run - PASSED
   - Local full preservation - PASSED
   - Exact-head remote CI - PENDING

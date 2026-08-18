@@ -177,3 +177,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R5 observer-only one-step local source requirement audit; exact-head CI and architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV020R5-002
+
+- Learning ID: L-DCDEV020R5-002
+- Date: 2026-08-18
+- Fact or lesson: Serializing the complete `MaterialMesh` is not a portable scientific state identity because non-authoritative mechanics internals can differ bytewise across operating systems even when the accepted R4 scientific trajectory snapshot has parity. Observer evidence must hash the explicit scientific snapshot used by the authority assay.
+- Evidence location: initial exact-head R5 CI run `32182012906` and the platform-portable observer correction at `2cd158a5f680f7c184f98cef4f4ee21d7c83e385`.
+- Confidence: VERIFIED
+- Scope: Observer evidence portability only; no scientific trajectory or production behavior changed.
+- Supersedes learning: none

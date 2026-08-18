@@ -17,7 +17,7 @@
     "step": 480
   },
   "directive": "DC-DEV-020-R5",
-  "external_ledger_path": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r5/4a4bab987bad900199d6a4e362fa3b924d24e3c4/statewise_root_ledger.json",
+  "external_ledger_path": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r5/2cd158a5f680f7c184f98cef4f4ee21d7c83e385/statewise_root_ledger.json",
   "finite_zero_drift_roots": 4800,
   "implementation_authorized": false,
   "max_conservation_residual": 2.2849994466001e-14,
@@ -54,9 +54,8 @@
     "p95": 0.021189069747924946
   },
   "scientific_conclusion": "DCDEV020R5_NF_LOCAL_COORDINATE_SUFFICIENT",
-  "settled_hash": "c985c08ab226a061",
   "source_capacity_insufficient_states": 0,
-  "source_commit": "4a4bab987bad900199d6a4e362fa3b924d24e3c4",
+  "source_commit": "2cd158a5f680f7c184f98cef4f4ee21d7c83e385",
   "states_audited": 4800,
   "states_with_s_zero_0": 0,
   "surrogate_audit": [
