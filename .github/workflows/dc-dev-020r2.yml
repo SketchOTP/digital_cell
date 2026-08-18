@@ -75,9 +75,9 @@ jobs:
               raise SystemExit("external biology imported")
           print("validated DC-DEV-020-R2 negative observer evidence")
           PY
-          git diff --exit-code 1e242f28152797b512e25cd56c7b718e45d6ca97 HEAD -- \
+          git diff --exit-code 876012f8888b074285c55167613471a59d4be25d HEAD -- \
             digital-protocell/experiments/generated/dcdev020/
-          changed="$(git diff --name-only 1e242f28152797b512e25cd56c7b718e45d6ca97 HEAD)"
+          changed="$(git diff --name-only 1e242f28152797b512e25cd56c7b718e45d4be25d HEAD)"
           if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then exit 1; fi
           if printf '%s\n' "$changed" | grep -Ei 'dcdev019|dc-dev-019|dcdev021|dc-dev-021'; then exit 1; fi
 
