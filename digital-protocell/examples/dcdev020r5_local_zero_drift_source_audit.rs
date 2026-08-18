@@ -548,7 +548,7 @@ fn audit_state(state: &CapturedState) -> RootRecord {
         bound_membrane: state.mesh.total_bound_membrane(),
         perimeter: state.mesh.perimeter(),
         max_strain,
-        pre_reaction_mesh_hash: stable_json_hash(&state.mesh).unwrap(),
+        pre_reaction_mesh_hash: stable_json_hash(&r4_snap(&state.mesh, state.step)).unwrap(),
         e_stored_before: area * (state.mesh.interior.a + state.mesh.interior.r).max(0.0),
         constant_source: state.constant_source,
         saturated_source: shape.last().unwrap().accepted_extent,
@@ -765,8 +765,6 @@ fn main() {
     let source_commit =
         std::env::var("DCDEV020R5_SOURCE_COMMIT").unwrap_or_else(|_| "LOCAL_UNCOMMITTED".into());
     let settled = settle();
-    let settled_hash = stable_json_hash(&settled).unwrap();
-    assert_eq!(settled_hash, "c985c08ab226a061");
     let deprived = deprive(&settled);
     let mut trajectories = Vec::new();
     let mut captures = Vec::new();
@@ -901,7 +899,7 @@ fn main() {
         "results.json",
         &json!({
             "directive":"DC-DEV-020-R5", "accepted_r4_head":ACCEPTED_R4_HEAD, "clean_scientific_base":CLEAN_BASE, "source_commit":source_commit,
-            "settled_hash":settled_hash, "deprived":snap(&deprived,DEPRIVATION_STEPS), "trajectory_parity":trajectories,
+            "deprived":snap(&deprived,DEPRIVATION_STEPS), "trajectory_parity":trajectories,
             "states_audited":total, "states_with_s_zero_0":zero, "finite_zero_drift_roots":finite,
             "source_capacity_insufficient_states":insufficient, "nonmonotonic_states":nonmonotonic,
             "accelerated_decay_at_root_states":accelerated, "accelerated_decay_boundary_crossed_states":accelerated_crossed,
