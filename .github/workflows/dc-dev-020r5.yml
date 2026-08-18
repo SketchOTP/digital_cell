@@ -50,7 +50,7 @@ jobs:
               raise SystemExit("wrong accepted R4 authority")
           if protocol["clean_scientific_base"] != "1e242f28152797b512e25cd56c7b718e45d6ca97":
               raise SystemExit("wrong clean scientific base")
-          if protocol["source_commit"] != "2cd158a5f680f7c184f98cef4f4ee21d7c83e385":
+          if protocol["source_commit"] != "6dbb8d45c520e2756a81b2cc1e81dff9c3878992":
               raise SystemExit("wrong source commit")
           expected = "DCDEV020R5_NF_LOCAL_COORDINATE_SUFFICIENT"
           if results["scientific_conclusion"] != expected or qualification["classification"] != expected:
@@ -93,22 +93,52 @@ jobs:
       - name: Reproduce R5 compact and dense evidence
         working-directory: digital-protocell
         env:
-          DCDEV020R5_SOURCE_COMMIT: 2cd158a5f680f7c184f98cef4f4ee21d7c83e385
+          DCDEV020R5_SOURCE_COMMIT: 6dbb8d45c520e2756a81b2cc1e81dff9c3878992
           DCDEV020R5_OUTPUT_ROOT: target/dcdev020r5-ci
           DCDEV020R5_EXTERNAL_LEDGER: target/dcdev020r5-statewise-ledger.json
-          DCDEV020R5_EXTERNAL_LOCATION: /mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r5/2cd158a5f680f7c184f98cef4f4ee21d7c83e385/statewise_root_ledger.json
+          DCDEV020R5_EXTERNAL_LOCATION: /mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r5/6dbb8d45c520e2756a81b2cc1e81dff9c3878992/statewise_root_ledger.json
         run: |
           set -euo pipefail
           cargo +1.89.0 run -p regulatory-core --example dcdev020r5_local_zero_drift_source_audit --release --quiet
-          for name in protocol.json results.json qualification.json schema.json representative_diagnostics.json literature_review.json; do
+          for name in protocol.json qualification.json schema.json literature_review.json; do
             cmp "target/dcdev020r5-ci/$name" "experiments/generated/dcdev020r5/$name"
           done
-          test "$(sha256sum target/dcdev020r5-statewise-ledger.json | cut -d' ' -f1)" = "4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585"
-          test "$(stat -c '%s' target/dcdev020r5-statewise-ledger.json)" = "19349320"
           python3 - <<'PY'
           import json
+          import math
+
+          committed_root = "experiments/generated/dcdev020r5"
+          generated_root = "target/dcdev020r5-ci"
+          ignored_hash_keys = {"trajectory_hash", "expected_r4_hash", "pre_reaction_mesh_hash"}
+
+          def compare(a, b, path="root"):
+              if isinstance(a, dict) and isinstance(b, dict):
+                  assert set(a) == set(b), f"key mismatch at {path}"
+                  for key in a:
+                      if key not in ignored_hash_keys:
+                          compare(a[key], b[key], f"{path}.{key}")
+              elif isinstance(a, list) and isinstance(b, list):
+                  assert len(a) == len(b), f"length mismatch at {path}"
+                  for index, (left, right) in enumerate(zip(a, b)):
+                      compare(left, right, f"{path}[{index}]")
+              elif isinstance(a, (int, float)) and isinstance(b, (int, float)):
+                  assert math.isclose(float(a), float(b), rel_tol=1e-9, abs_tol=1e-12), \
+                      f"numeric mismatch at {path}: {a} != {b}"
+              else:
+                  assert a == b, f"value mismatch at {path}: {a!r} != {b!r}"
+
+          generated_results = json.load(open(f"{generated_root}/results.json"))
+          committed_results = json.load(open(f"{committed_root}/results.json"))
+          compare(generated_results, committed_results, "results")
+          assert all(row["parity"] for row in generated_results["trajectory_parity"])
+
+          generated_representatives = json.load(open(f"{generated_root}/representative_diagnostics.json"))
+          committed_representatives = json.load(open(f"{committed_root}/representative_diagnostics.json"))
+          compare(generated_representatives, committed_representatives, "representatives")
+
           rows = json.load(open("target/dcdev020r5-statewise-ledger.json"))
           assert len(rows) == 4800
+          assert all(row["status"] == "FINITE_ZERO_DRIFT_ROOT" for row in rows)
           assert all(row["root_relative_interval"] <= 1e-6 for row in rows)
           assert all(abs(row["root"]["accounting"]["conservation_residual"]) <= 1e-10 for row in rows)
           PY

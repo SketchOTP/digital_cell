@@ -183,7 +183,7 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Learning ID: L-DCDEV020R5-002
 - Date: 2026-08-18
 - Fact or lesson: Serializing the complete `MaterialMesh` is not a portable scientific state identity because non-authoritative mechanics internals can differ bytewise across operating systems even when the accepted R4 scientific trajectory snapshot has parity. Observer evidence must hash the explicit scientific snapshot used by the authority assay.
-- Evidence location: initial exact-head R5 CI run `32182012906` and the platform-portable observer correction at `2cd158a5f680f7c184f98cef4f4ee21d7c83e385`.
+- Evidence location: exact-head R5 CI runs `32182012906` and `32182642782`, plus the bounded dual-realization parity correction at `6dbb8d45c520e2756a81b2cc1e81dff9c3878992`.
 - Confidence: VERIFIED
 - Scope: Observer evidence portability only; no scientific trajectory or production behavior changed.
 - Supersedes learning: none
