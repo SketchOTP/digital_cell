@@ -27,8 +27,7 @@
 - Entry authority is `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
-- R2 is accepted and closed as an A-only architecture at `e394aa675a4f44d91d1a8729736679fb4b7e7ab8`; R3 work is isolated on `strategy/dc-dev-020r3-two-substrate-saturating-activation`.
-- Architect disposition records: `DCDEV020R2_ACCEPTED_NEGATIVE` and `A_ONLY_ALLOSTERIC_ASSIMILATION_CLOSED`.
+- R2 is accepted as `DCDEV020R2_ACCEPTED_NEGATIVE` and closed as `A_ONLY_ALLOSTERIC_ASSIMILATION_CLOSED` at `e394aa675a4f44d91d1a8729736679fb4b7e7ab8`; R3 work is isolated on `strategy/dc-dev-020r3-two-substrate-saturating-activation`.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
 
 ## Last validation after adoption
