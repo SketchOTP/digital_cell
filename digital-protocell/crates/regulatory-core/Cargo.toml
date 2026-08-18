@@ -87,3 +87,7 @@ path = "../../examples/dcdev020r6_nf_power_law_source.rs"
 [[example]]
 name = "dcdev020r7_on_policy_zero_drift_audit"
 path = "../../examples/dcdev020r7_on_policy_zero_drift_audit.rs"
+
+[[example]]
+name = "dcdev020r8_nfa_restorative_attractor"
+path = "../../examples/dcdev020r8_nfa_restorative_attractor.rs"
