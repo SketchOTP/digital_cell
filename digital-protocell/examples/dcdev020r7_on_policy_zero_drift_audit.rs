@@ -778,6 +778,8 @@ fn main() {
         .unwrap_or_else(|| PathBuf::from("target/dcdev020r7-on-policy-ledger.json"));
     let external_location = std::env::var("DCDEV020R7_EXTERNAL_LOCATION")
         .unwrap_or_else(|_| "UNRECORDED_EXTERNAL_LOCATION".into());
+    let dense_sha256 =
+        std::env::var("DCDEV020R7_LEDGER_SHA256").unwrap_or_else(|_| "COMPUTED_AFTER_RUN".into());
     let source_commit =
         std::env::var("DCDEV020R7_SOURCE_COMMIT").unwrap_or_else(|_| "LOCAL_UNCOMMITTED".into());
     let r5: Vec<R5Root> = serde_json::from_slice(&fs::read(&r5_path).unwrap()).unwrap();
@@ -907,7 +909,7 @@ fn main() {
         "external_evidence_manifest.json",
         &json!({
             "r5_dense_input":{"sha256":R5_LEDGER_SHA256,"location":R5_EXTERNAL_LOCATION},
-            "r7_dense_output":{"local_path":dense_path,"external_location":external_location,"sha256":"COMPUTED_AFTER_RUN"},
+        "r7_dense_output":{"local_path":dense_path,"external_location":external_location,"sha256":dense_sha256},
             "git_evidence":"compact summaries only"
         }),
     );
