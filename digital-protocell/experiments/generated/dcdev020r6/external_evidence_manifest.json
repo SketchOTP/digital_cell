@@ -1,0 +1,6 @@
+{
+  "dense_input": "accepted R5 statewise root ledger",
+  "external_location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r5/6dbb8d45c520e2756a81b2cc1e81dff9c3878992/statewise_root_ledger.json",
+  "r6_dense_output": "none; compact summaries and trajectory hashes only",
+  "sha256": "4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585"
+}

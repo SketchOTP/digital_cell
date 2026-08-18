@@ -187,3 +187,23 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: Observer evidence portability only; no scientific trajectory or production behavior changed.
 - Supersedes learning: none
+
+## L-DCDEV020R5-003
+
+- Learning ID: L-DCDEV020R5-003
+- Date: 2026-08-18
+- Fact or lesson: Architect acceptance at exact head `d215cfc00ce70517e25fa7c3b51b13d85d9ce521` confirms that N/F is information-sufficient for approximating the one-step zero-drift requirement on the audited P0-P4 manifold, while explicitly not qualifying an NF controller or production law.
+- Evidence location: closed-unmerged PR #34, exact-head CI `32183498937`, and the accepted R5 compact/external evidence package.
+- Confidence: VERIFIED
+- Scope: DC-DEV-020-R5 accepted diagnostic boundary.
+- Supersedes learning: none
+
+## L-DCDEV020R6-001
+
+- Learning ID: L-DCDEV020R6-001
+- Date: 2026-08-18
+- Fact or lesson: A closed-form symmetric N/F power law with `K_PL=0.017556661171593057` and `p=0.0003277429681759396` predicts held-out R5 local zero-drift roots within the frozen limits without clipping or capacity violations, but finite-feed execution ends at E_stored `60.0620310117838`, below deprived `60.82781514212436`. One-step local balance approximation is therefore insufficient for finite-window restoration under the frozen organism dynamics.
+- Evidence location: `digital-protocell/examples/dcdev020r6_nf_power_law_source.rs`, `digital-protocell/experiments/generated/dcdev020r6/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r6/nf_power_law_audit.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R6 observer-only two-parameter generalized N/F power-law family through Gate 5; exact-head CI and architect review pending.
+- Supersedes learning: none

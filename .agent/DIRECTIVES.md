@@ -290,3 +290,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260818-dcdev020r6-nf-power-law-source
+
+- Issued: `2026-08-18T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R6`
+- Objective: Determine whether one symmetric local generalized-mass-action N/F power law can reproduce accepted R5 local zero-drift roots and, without targets or controller state, produce finite-feed restoration and stable persistence.
+- Scope: Accepted R5 head `d215cfc00ce70517e25fa7c3b51b13d85d9ce521`, clean production base `1e242f28152797b512e25cd56c7b718e45d6ca97`, governed R5 dense-ledger verification, D-043/D-067/R4 historical guard, one closed-form `K_PL*N^p*F^p` fit on P0-P2, P3-P4 holdout, source sanity, selected finite-feed counterfactual, fail-closed later gates, primary/theoretical literature, compact evidence, governance, preservation, scoped CI, and draft PR.
+- Exclusions: Production chemistry integration, second kinetic family, iterative parameter search, A/R feedback, target/error/history/controller state, transport/resource/sink/A-decay/reaction-order changes, behavior, and DC-DEV-021.
+- Acceptance: Stop on the first decisive failure or return the one authorized observer qualification, with exact-head remote CI and architect review; no production integration occurs in R6.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

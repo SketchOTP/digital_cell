@@ -1,0 +1,24 @@
+{
+  "digital_cell_parameter_source": "K_PL and p fitted only from accepted R5 roots",
+  "disposition": "ADAPTABLE_ARCHITECTURE_ONLY",
+  "external_values_imported": false,
+  "sources": [
+    {
+      "citation": "Savageau 1969, Biochemical systems analysis I",
+      "doi": "10.1016/S0022-5193(69)80026-3",
+      "pmid": "5387046",
+      "use": "component enzymatic rate-law architecture precedent only"
+    },
+    {
+      "citation": "Savageau 1969, Biochemical systems analysis II",
+      "doi": "10.1016/S0022-5193(69)80027-5",
+      "pmid": "5387047",
+      "use": "power-law approximation architecture precedent only"
+    },
+    {
+      "citation": "Muller and Regensburger 2012, Generalized Mass Action Systems",
+      "doi": "10.1137/110847056",
+      "use": "arbitrary kinetic-order reaction-network formalism precedent only"
+    }
+  ]
+}

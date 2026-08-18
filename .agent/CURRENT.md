@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260818-dcdev020r5-local-zero-drift-source-audit`
-- External directive ID: `DC-DEV-020-R5`
-- Objective: `Derive the actual one-step local zero-drift source requirement of the frozen metabolism before selecting another activation topology.`
+- Local directive ID: `D-20260818-dcdev020r6-nf-power-law-source`
+- External directive ID: `DC-DEV-020-R6`
+- Objective: `Test one symmetric local generalized-mass-action N/F power law against accepted R5 roots and the frozen finite-feed physiology.`
 - Current status: `VALIDATING`
-- Acceptance: `R4 is architect-accepted negative at 669a511aacb227240bd7a4698efecfb564f481d4. R5 locally classifies DCDEV020R5_NF_LOCAL_COORDINATE_SUFFICIENT and ENDPOINT_SURROGATE_NOT_LOCAL_REQUIREMENT after 4,800 finite zero-drift roots; exact-head remote CI and architect review remain pending.`
-- Current phase: `DC-DEV-020-R5 observer-only local source requirement package; no production law or integration is authorized.`
-- Expected or actual touched areas: `R5 observer assay, compact append-only evidence, governed external dense ledger, R5 documentation, governance, scoped CI`
-- Immediate next action: `Run the full preservation matrix, push the R5 branch, open a draft PR, verify exact-head CI, and return for architect review; do not integrate or begin DC-DEV-021.`
+- Acceptance: `R5 is architect-accepted at d215cfc00ce70517e25fa7c3b51b13d85d9ce521. R6 passes deterministic identification and held-out local-root validation, then stops at Gate 5 as DCDEV020R6_FINITE_FEED_RESTORATION_FAILURE because final E_stored 60.0620310117838 remains below deprived 60.82781514212436.`
+- Current phase: `DC-DEV-020-R6 observer-only negative-result packaging and exact-head validation; production integration is unauthorized.`
+- Expected or actual touched areas: `R6 observer assay registration, compact evidence, R6 documentation, governance, and scoped CI`
+- Immediate next action: `Complete preservation, push the R6 branch, open a draft PR, verify exact-head CI, and return for architect review; do not integrate, extend R6, or begin DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -27,12 +27,12 @@
 - Entry authority is `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
-- R4 is accepted as `DCDEV020R4_ACCEPTED_NEGATIVE` with `DCDEV020R4_SATURATING_FAMILY_STRUCTURAL_MISMATCH` at `669a511aacb227240bd7a4698efecfb564f481d4`; R5 work is isolated on `strategy/dc-dev-020r5-local-zero-drift-source-audit`.
+- R5 is accepted as `DCDEV020R5_ACCEPTED`, `DCDEV020R5_NF_LOCAL_COORDINATE_SUFFICIENT`, and `ENDPOINT_SURROGATE_NOT_LOCAL_REQUIREMENT` at `d215cfc00ce70517e25fa7c3b51b13d85d9ce521`; R6 work is isolated on `strategy/dc-dev-020r6-nf-power-law-source`.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
 
 ## Last validation after adoption
 
-- Command or check: `Local Rust 1.89.0 DC-DEV-020-R5 example check/run, exact R4 parity, 4,800-state root audit, and external SHA-256 verification`
+- Command or check: `Local Rust 1.89.0 R6 compile, 3 focused candidate tests, governed R5 ledger SHA-256, deterministic fit, held-out root validation, and selected finite-feed counterfactual; Gates 0-4 passed and Gate 5 returned DCDEV020R6_FINITE_FEED_RESTORATION_FAILURE`
 - Result: `PASSED`
 
 ## Risks
@@ -43,7 +43,7 @@
 
 ## Blockers
 
-- Exact-head remote CI and independent architect review remain open. R5 is diagnostic only; no production integration, parameter tuning, behavior, persistence, exploration, or DC-DEV-021 is authorized.
+- Exact-head remote CI and independent architect review remain open. Gates 6-8 were not run after the Gate 5 failure; no production integration, parameter tuning, additional kinetic family, behavior, or DC-DEV-021 is authorized.
 
 ## Pending decisions
 

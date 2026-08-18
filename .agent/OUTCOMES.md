@@ -545,3 +545,48 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: N/F sufficiency is diagnostic and bounded to the frozen P0-P4 one-step state manifold; it does not select or qualify a production law, restoration controller, or durable metabolism.
 - Blockers: architect review; production integration and DC-DEV-021 remain unauthorized.
 - Follow-up directive: none
+
+## D-20260818-dcdev020r5-local-zero-drift-source-audit - COMPLETE
+
+- Outcome ID: `OUT-DCDEV020R5-ARCHITECT-ACCEPTED`
+- Supersedes outcome: `OUT-DCDEV020R5-NF-LOCAL-COORDINATE-SUFFICIENT`
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `MET`
+- Summary: Architect review accepted R5 at exact head `d215cfc00ce70517e25fa7c3b51b13d85d9ce521`; PR #34 closed unmerged and exact-head CI `32183498937` passed. Source capacity is sufficient on all 4,800 audited states, endpoint-derived source is not the local requirement, and N/F is information-sufficient on the tested one-step manifold without qualifying an NF controller.
+- Changed areas: governance acceptance record only; R5 scientific evidence remains unchanged.
+- Validation:
+  - Exact R5 head and closed-unmerged PR #34 - PASSED
+  - Exact-head CI run 32183498937 - PASSED
+  - Architect positive diagnostic review - PASSED
+- Remaining risks: N/F information sufficiency did not establish one explicit causal production law, finite-feed restoration, or durable homeostasis.
+- Blockers: production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: D-20260818-dcdev020r6-nf-power-law-source
+
+## D-20260818-dcdev020r6-nf-power-law-source - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R6-FINITE-FEED-RESTORATION-FAILURE`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only symmetric generalized-mass-action power law passed deterministic P0-P2 identification, P3/P4 held-out local-root validation, and source-response sanity, then stopped at Gate 5. The R6 arm increased final E_stored to `60.0620310117838` versus baseline `54.3584702923158`, but remained below deprived `60.82781514212436`. Classification: `DCDEV020R6_FINITE_FEED_RESTORATION_FAILURE`.
+- Changed areas: R6 observer example registration, compact append-only evidence, R6 documentation, scoped workflow, and governance; no production chemistry or behavior changed.
+- Validation:
+  - Accepted R5 authority and governed dense-ledger SHA-256 - PASSED
+  - Historical D-043/D-067/R4 architecture guard - PASSED
+  - Closed-form fit `K_PL=0.017556661171593057`, `p=0.0003277429681759396` - PASSED
+  - P3/P4 combined relative RMSE `0.05106673550084852` and p95 `0.12868568862094845` - PASSED
+  - All-state capacity violations and clipping dependence - PASSED with zero
+  - Selected finite-feed safety, physical bounds, and accounting - PASSED
+  - Selected finite-feed stored-material restoration - FAILED as the authorized negative result
+  - Balanced dose, sustained-fed, and three-cycle gates - NOT RUN by fail-closed rule
+  - Three focused candidate tests - PASSED
+  - Regulatory-core complete suite - PASSED (36 tests)
+  - Phase-1 focused preservation - PASSED (4 tests)
+  - D-088 focused preservation - PASSED (4 tests)
+  - Evolution-harness preservation - PASSED (40 tests)
+  - Governance ADOPTED validation - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The two-parameter law accurately approximates one-step local balance but does not restore stored material on the frozen finite-feed window; no broader kinetic or control architecture is authorized by this result.
+- Blockers: exact-head remote CI and architect review; production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none

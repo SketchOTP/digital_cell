@@ -1,0 +1,15 @@
+{
+  "classification": "DCDEV020R6_FINITE_FEED_RESTORATION_FAILURE",
+  "dc_dev_021_authorized": false,
+  "gate2": true,
+  "gate3": true,
+  "gate4": true,
+  "gate5": false,
+  "gate6": false,
+  "gate7": false,
+  "gate8": false,
+  "implementation_authorized": false,
+  "next_execution_started": false,
+  "production_behavior_changed": false,
+  "production_chemistry_changed": false
+}

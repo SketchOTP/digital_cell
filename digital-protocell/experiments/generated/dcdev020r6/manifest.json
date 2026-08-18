@@ -1,0 +1,36 @@
+{
+  "directive": "DC-DEV-020-R6",
+  "source_commit": "8d87f0e7cfc109d093127090dd68af21bfb483f4",
+  "files": [
+    {
+      "name": "external_evidence_manifest.json",
+      "bytes": 391,
+      "sha256": "eb8dd826099a8089dd1151a86c1b46aff32daf989f3b079a1ba8bdcfafdfc62f"
+    },
+    {
+      "name": "identification.json",
+      "bytes": 4005,
+      "sha256": "4994c84d664ed7c86dc094500fff884df7c778cdbefc5d53cfa3eda9756c1ae9"
+    },
+    {
+      "name": "literature_review.json",
+      "bytes": 843,
+      "sha256": "ebaeb0cd730586b36bb3c69f1c94e623561036e734a930e3f2678bc8af8c6658"
+    },
+    {
+      "name": "physiology.json",
+      "bytes": 5377,
+      "sha256": "e59a93e107bc5040e895175e9f824e11ceb650208fb9f5fba2db1dc5ec56df32"
+    },
+    {
+      "name": "protocol.json",
+      "bytes": 1072,
+      "sha256": "30822e43da3a64484e03683888f9237bed85576419fc8a47e521473276976e6c"
+    },
+    {
+      "name": "qualification.json",
+      "bytes": 379,
+      "sha256": "07982fad330592fa97a1663c981a5ad513f767ca2b99d6be073b48735dad5bc9"
+    }
+  ]
+}
