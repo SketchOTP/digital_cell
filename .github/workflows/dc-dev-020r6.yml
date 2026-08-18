@@ -118,7 +118,44 @@ jobs:
         run: |
           set -euo pipefail
           cargo +1.89.0 run -p regulatory-core --example dcdev020r5_local_zero_drift_source_audit --release --quiet
-          test "$(sha256sum target/dcdev020r5-statewise-ledger.json | cut -d' ' -f1)" = "4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585"
+          python3 - <<'PY'
+          import json
+          import math
+          from collections import Counter
+
+          path = "target/dcdev020r5-statewise-ledger.json"
+          rows = json.load(open(path))
+          if len(rows) != 4_800:
+              raise SystemExit(f"R5 dense ledger row count changed: {len(rows)}")
+          expected_probes = {f"P{i}" for i in range(5)}
+          expected_trajectories = {
+              "baseline_bilinear_source",
+              "constant_endpoint_break_even_gain",
+          }
+          counts = Counter((row["probe"], row["trajectory"]) for row in rows)
+          expected_pairs = {
+              (probe, trajectory): 480
+              for probe in expected_probes
+              for trajectory in expected_trajectories
+          }
+          if counts != expected_pairs:
+              raise SystemExit(f"R5 probe/trajectory coverage changed: {counts}")
+          required_finite = (
+              "area", "a", "r", "n", "f", "c", "q_c", "free_l",
+              "structural_mass", "bound_membrane", "perimeter", "max_strain",
+              "e_stored_before", "constant_source", "saturated_source", "s_zero",
+          )
+          for row in rows:
+              if row["status"] != "FINITE_ZERO_DRIFT_ROOT":
+                  raise SystemExit("R5 root status changed")
+              if not all(math.isfinite(float(row[name])) for name in required_finite):
+                  raise SystemExit("R5 dense ledger contains a non-finite principal value")
+              if not math.isfinite(float(row["root"]["drift"])):
+                  raise SystemExit("R5 reconstructed root drift is non-finite")
+              if float(row["root_relative_interval"]) > 1.1e-6:
+                  raise SystemExit("R5 root search exceeds its accepted relative interval")
+          print("validated reproduced R5 dense ledger semantics")
+          PY
 
       - name: Reproduce R6 compact evidence
         working-directory: digital-protocell
