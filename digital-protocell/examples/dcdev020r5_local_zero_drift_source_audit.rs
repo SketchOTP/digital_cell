@@ -760,6 +760,8 @@ fn main() {
     let external = std::env::var_os("DCDEV020R5_EXTERNAL_LEDGER")
         .map(PathBuf::from)
         .unwrap_or_else(|| PathBuf::from("target/dcdev020r5-statewise-ledger.json"));
+    let external_location = std::env::var("DCDEV020R5_EXTERNAL_LOCATION")
+        .unwrap_or_else(|_| "UNRECORDED_EXTERNAL_LOCATION".into());
     let source_commit =
         std::env::var("DCDEV020R5_SOURCE_COMMIT").unwrap_or_else(|_| "LOCAL_UNCOMMITTED".into());
     let settled = settle();
@@ -909,7 +911,7 @@ fn main() {
             "coordinate_audit_ran":coordinate_ran, "nf_coordinate":c0, "nfa_coordinate":c1,
             "coordinate_classification":coordinate_class, "scientific_conclusion":conclusion,
             "production_chemistry_changed":false, "production_behavior_changed":false, "implementation_authorized":false,
-            "external_ledger_path":external.to_string_lossy(), "next_execution_started":false
+        "external_ledger_path":external_location, "next_execution_started":false
         }),
     );
     write_json(
