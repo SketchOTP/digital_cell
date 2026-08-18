@@ -68,10 +68,11 @@ Gate 4 failed and therefore terminates the requalification:
 
 The deprived start was `E_stored = 60.82781514212436`. The measured finite-feed
 source-saturated upper bound ended at `61.6843481847883`, but the constant-gain
-break-even root was `13.9482421875`. Across the source envelope, the required
-gain increased as A decreased (from approximately `594372.493647309` at the
-first sampled A to `1482.08151596166` at the last sampled A), which is
-opposite the permitted monotone product-inhibition family
+break-even root was `13.9482421875`. Across the sampled source envelope, A
+decreased while the required saturation gain also decreased (from approximately
+`594372.493647309` at the first sample to `1482.08151596166` at the last), as
+internal N/F accumulated. That direction is opposite the permitted monotone
+product-inhibition family
 `1 + (G_max - 1)/(1 + (A/K_A)^n)`. The bounded A-only fit therefore remained
 unidentified and no R2 candidate law was executed.
 

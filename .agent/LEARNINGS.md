@@ -132,7 +132,7 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 
 - Learning ID: L-DCDEV020R2-001
 - Date: 2026-08-18
-- Fact or lesson: In the frozen finite-resource observer, source saturation can raise final stored material above the deprived start, but the minimum constant gain needed to reach that target was `13.9482421875`. The measured source-actuation requirement increased as A decreased, so the permitted A-only product-inhibition family could not be identified as sufficient. The source-saturated sequencing audit also showed accelerated A-decay activation without changing reaction order; this does not establish that sequencing was the limiting coordinate.
+- Fact or lesson: In the frozen finite-resource observer, source saturation can raise final stored material above the deprived start, but the minimum constant gain needed to reach that target was `13.9482421875`. Across the sampled envelope, A and the required saturation gain decreased together as internal N/F accumulated, which is opposite the permitted A-only product-inhibition family; that family therefore could not be identified as sufficient. The source-saturated sequencing audit also showed accelerated A-decay activation without changing reaction order; this does not establish that sequencing was the limiting coordinate.
 - Evidence location: `digital-protocell/examples/dcdev020r2_allosteric_requalification.rs`, `digital-protocell/experiments/generated/dcdev020r2/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r2/requalification.md`.
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R2 observer-only allosteric requalification.
