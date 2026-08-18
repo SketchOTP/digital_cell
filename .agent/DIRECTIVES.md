@@ -24,6 +24,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260817-dcdev020-fast-allosteric-assimilation
+
+- Issued: `2026-08-17T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020`
+- Objective: Test one target-free fast A-product feedback law counterfactually against the qualified finite nutrient ecology and integrate it only if the observer gate passes.
+- Scope: Exact clean DC-DEV-016 entry `1e242f28152797b512e25cd56c7b718e45d6ca97`, source-actuation accounting, historical D-017 observer replay, one fixed local A-product law, finite-feed observer, bounded long-horizon observer, compact evidence, documentation, governance, and preservation.
+- Exclusions: homeostat/controller tuning, second controller, target/error/need inputs, chemistry parameter search, resource changes, sink changes, production integration after a failed observer gate, behavior, exploration, encounter, repeatability, and DC-DEV-021.
+- Acceptance: One exact observer classification, compact evidence, pushed branch, exact-head remote CI, and architect review.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260816-dcdev011-passive-isotropic-stick-slip-traction
 
 - Issued: `2026-08-16T00:00:00-04:00`

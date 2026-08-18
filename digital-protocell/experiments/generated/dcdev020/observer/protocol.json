@@ -1,0 +1,22 @@
+{
+  "arms": [
+    "baseline_existing_nf_to_a",
+    "d017_historical_stateless_observer",
+    "dcdev020_a_product_feedback_counterfactual"
+  ],
+  "directive": "DC-DEV-020",
+  "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "feeding_steps": 480,
+  "long_horizon_steps": 8000,
+  "no_parameter_search": true,
+  "phase": "observer_counterfactual",
+  "production_integration": "forbidden_until_observer_gate_pass",
+  "resource_center": [
+    4.8,
+    0.0
+  ],
+  "resource_mass": 19.878372106390554,
+  "resource_radius": 1.5,
+  "settle_steps": 5000,
+  "starvation_steps": 480
+}

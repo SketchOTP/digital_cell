@@ -117,3 +117,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-016 observer-only metabolic break-even resource sufficiency challenge.
 - Supersedes learning: none
+
+## L-DCDEV020-001
+
+- Learning ID: L-DCDEV020-001
+- Date: 2026-08-17
+- Fact or lesson: A fixed, stateless local A-product multiplier can increase N/F consumption and improve finite-feed E_stored relative to the existing reaction path without restoring the deprived state. The accepted finite ecology and passive uptake are not the limiting conservation boundary in this assay; the selected feedback law is insufficient within the fixed feed window and does not support a bounded no-resource continuation.
+- Evidence location: `digital-protocell/examples/dcdev020_fast_allosteric_assimilation.rs`, `digital-protocell/experiments/generated/dcdev020/observer/results.json`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020/observer_counterfactual.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020 observer-only metabolic architecture test.
+- Supersedes learning: none

@@ -418,3 +418,25 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: exact-head remote validation and independent architect interpretation of the conversion/storage bottleneck classification.
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
+
+## D-20260817-dcdev020-fast-allosteric-assimilation - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020-A-PRODUCT-FEEDBACK-OBSERVER-NEGATIVE`
+- Supersedes outcome: none
+- Closed: `2026-08-17T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: One fixed target-free local A-product feedback law was evaluated in observer/counterfactual mode from the clean DC-DEV-016 authority. Existing passive delivery and finite-resource conservation passed. The feedback arm improved final stored material relative to the matched baseline (`55.30767262894278` versus `54.3584702923158`) but remained below the deprived pre-feed state (`60.82781514212436`), so the observer gate failed. The 8,000-step no-resource continuation also lost viability.
+- Changed areas: DC-DEV-020 observer example registration, compact evidence, documentation, and governance; no production chemistry, resource boundary, mechanics, homeostat, or certified Phase-1 equations changed.
+- Validation:
+  - Exact clean DC-DEV-016 entry - PASSED
+  - Selected finite ecology delivery - PASSED (`15.566438806699026` N/F delivered in feedback arm)
+  - Resource conservation - PASSED (maximum error `0`)
+  - Historical D-017 observer replay - PASSED as comparison-only provenance
+  - A-product feedback finite-feed restoration - FAILED as the diagnostic result
+  - 8,000-step no-resource bounded continuation - FAILED viability
+  - Production integration - NOT RUN by fail-closed rule
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: independent architect interpretation of the chosen single-law negative result and whether a materially different metabolic-control topology is authorized.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none

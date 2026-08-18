@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260817-dcdev016-metabolic-break-even`
-- External directive ID: `DC-DEV-016`
-- Objective: `Determine whether one preregistered resource inventory derived from the DC-DEV-015 measured deficit can maintain available metabolic potential and restore stored activated material under the existing metabolism.`
+- Local directive ID: `D-20260817-dcdev020-fast-allosteric-assimilation`
+- External directive ID: `DC-DEV-020`
+- Objective: `Test exactly one target-free fast A-product feedback law counterfactually against the accepted finite nutrient ecology, integrating it into production only if the observer gate passes.`
 - Current status: `VALIDATING`
-- Acceptance: `Observer-only DC-DEV-016 challenge completed locally with baseline parity, resource conservation, supply sufficiency, and available-potential break-even; stored A/R/E_stored restoration was not observed; exact-head remote CI and architect review remain pending.`
-- Current phase: `DC-DEV-016 evidence and governance package are prepared for pushed draft-PR validation; architect review is next.`
-- Expected or actual touched areas: `DC-DEV-016 observer assay/docs/artifacts/workflow, regulatory-core example registration, scoped CI, current governance state`
-- Immediate next action: `Push DC-DEV-016, open the draft PR against DC-DEV-015, run exact-head remote CI, and return for architect review; do not begin DC-DEV-017.`
+- Acceptance: `DC-DEV-020 observer gate failed: the fixed A-product feedback law improved finite-feed E_stored relative to baseline but did not restore the deprived state; no production integration or downstream phases were run.`
+- Current phase: `DC-DEV-020 observer-only negative-result package; exact-head remote CI and architect review remain pending.`
+- Expected or actual touched areas: `DC-DEV-020 observer assay, compact evidence, documentation, governance, scoped CI`
+- Immediate next action: `Push the bounded observer-only package and return for architect review; do not tune the law, integrate production chemistry, or begin downstream persistence/exploration.`
 
 ## Temporary task-relevant facts
 
@@ -43,7 +43,7 @@
 
 ## Blockers
 
-- Exact-head remote CI and independent architect review remain open. DC-DEV-016 is observer-only; no metabolism repair, tuning, new hunger state, behavior, or DC-DEV-017 is authorized.
+- Exact-head remote CI and independent architect review remain open. The DC-DEV-020 observer gate failed; no production integration, parameter tuning, second controller, behavior, persistence, exploration, or later directive is authorized.
 
 ## Pending decisions
 
