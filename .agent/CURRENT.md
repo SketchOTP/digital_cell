@@ -11,7 +11,7 @@
 - External directive ID: `DC-DEV-020-R8-R5-R1`
 - Objective: `Requalify R8-R5 local catalyst-allocation authority using true incoming-state net A/R drift, with reversible and forward-only A↔C envelopes.`
 - Current status: `VALIDATING`
-- Acceptance: `Local result is DCDEV020R8R5R1_RECYCLING_ONLY_LOCAL_CAPACITY; evidence sealing, exact-head remote CI, and architect review are pending.`
+- Acceptance: `Local result is DCDEV020R8R5R1_RECYCLING_ONLY_LOCAL_CAPACITY; exact-head remote CI run 32270631382 passed and architect review is pending.`
 - Current phase: `DC-DEV-020-R8-R5-R1 observer-only corrected net allocation drift; no allocator, recycling law, production law, behavior, source/sink change, or DC-DEV-021 work is authorized.`
 - Expected or actual touched areas: `R8-R5-R1 observer wrapper, corrected net-envelope implementation, compact evidence, governed external dense-ledger seal, documentation, governance, and scoped CI`
 - Immediate next action: `Complete evidence sealing, exact-head CI, and architect review; do not begin DC-DEV-021.`
@@ -44,7 +44,7 @@
 
 ## Blockers
 
-- Exact-head remote CI and architect review for R8-R5-R1 remain open. No allocator, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
+- Architect review for R8-R5-R1 remains open. No allocator, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
 
 ## Pending decisions
 

@@ -494,8 +494,9 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - 65-point allocation mesh and deterministic refinement to relative width <= 1e-6 - PASSED
   - Original sustained qualification across constant-C arms - EXECUTED; zero complete-gate passes
   - Late-state local allocation envelopes at 40-step spacing - PASSED; 200 deferred and 200 shared states audited
-  - External dense-ledger SHA-256 - PENDING final seal
-  - Governance, preservation, exact-head remote CI, and architect review - PENDING
+  - External dense-ledger SHA-256 `afa9c26f8845f9321450ec12e7e4fe55dc54a088eb6857ff8e1e272dddc8c390` - PASSED locally and on Atlas
+  - Governance, preservation, and exact-head remote CI run `32258092477` - PASSED
+  - Architect review - PENDING
 - Remaining risks: Mixed local drift means catalyst allocation capacity is not closed as insufficient; no allocator or next catalyst law is authorized by this result.
 - Blockers: final evidence seal, exact-head remote CI, and architect review; DC-DEV-021 remains unauthorized.
 - Follow-up directive: none
@@ -514,10 +515,11 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Incoming-state net-drift decomposition - PASSED
   - Reversible and forward-only 65-point envelopes with deterministic refinement - PASSED
   - Worst-case aggregation uses minimum, with focused regression - PASSED
-  - External dense-ledger SHA-256 - PENDING final seal
-  - Governance, preservation, exact-head remote CI, and architect review - PENDING
+  - External dense-ledger SHA-256 `bdedb478eb3c32025fc62ecbc2af538b0e594d3182ee97ebeb7c68c2bb9d8efc` - PASSED locally and on Atlas
+  - Governance, preservation, and exact-head remote CI run `32270631382` - PASSED
+  - Architect review - PENDING
 - Remaining risks: The positive local authority depends on privileged C→A recovery and does not establish forward A→C allocation capacity. The prior R8-R5 dense ledger lacks a deferred checkpoint-hash field, so R1 records deterministic replay hashes and reports direct prior-ledger hash-field matching as unavailable.
-- Blockers: final evidence seal, exact-head remote CI, and architect review; dynamic allocation, catalyst recycling, and DC-DEV-021 remain unauthorized.
+- Blockers: architect review; dynamic allocation, catalyst recycling, and DC-DEV-021 remain unauthorized.
 - Follow-up directive: none
 
 ## D-20260818-dcdev020r3-two-substrate-saturating-activation - PARTIAL
