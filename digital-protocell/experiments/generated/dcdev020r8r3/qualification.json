@@ -3,7 +3,7 @@
   "classification": "DCDEV020R8R3_CATALYST_RESERVE_SOURCE_CONTEXT_DEPENDENT",
   "dc_dev_021_authorized": false,
   "deferred_viable_through_horizon": true,
-  "gate_0_authority": false,
+  "gate_0_authority": true,
   "gate_1_acute_reproduction": true,
   "gate_2_frozen_catalyst_timescale": true,
   "gate_3_sustained_trajectories": true,

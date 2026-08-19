@@ -28,7 +28,7 @@
   "r8r1_dense_sha256": "f44e8f9fa441451ee40bcbfccac5f556131e4d26868868607e9507c29e7bcf90",
   "r8r2_dense_sha256": "e932f6ab96e34516de98c97c2cae102553db9764383af3d61abf015743c3a376",
   "result_commit": "958b366b8fa10edb86cb88a7b604b7f86aa368e1",
-  "source_commit": "a468619d4158036277f168d2013b52516bc3c144",
+  "source_commit": "9fdd292bbd13f62ef9c88d08e8d887f15326d242",
   "source_contexts": [
     "D016 bilinear source",
     "sealed R6 NF power-law source"
