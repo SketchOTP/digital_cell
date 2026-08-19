@@ -388,3 +388,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260819-dcdev020r8r5-ac-allocation-upper-bound
+
+- Issued: `2026-08-19T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R8-R5`
+- Objective: Determine whether catalyst allocation alone has enough causal authority to establish sustained R6 homeostasis using an intentionally optimistic, observer-only, mass-conserving A↔C allocation envelope.
+- Scope: Accepted R8-R4 head `37b47ec89e02418018a138f670e826c6945c8030`, sealed R8-R2/R8-R3/R8-R4 evidence, exact R8-R4 reproduction, frozen R6 economic sanity check, complete constant-allocation interval, deterministic refinement, original sustained qualification, late-state local drift envelopes, external literature disposition, compact evidence, governed dense evidence, governance, preservation, scoped CI, and draft PR.
+- Exclusions: Production chemistry or behavior changes, another catalyst-production law, source or sink tuning, parameter fitting, targets, runtime feedback, history, timers, new state, and DC-DEV-021.
+- Acceptance: One authorized capacity classification with exact A+C conservation, 1:1 turnover accounting, exact R8-R4 reproduction, refined envelope, local late-state decomposition, exact-head remote CI, and architect review; no result authorizes a target or production integration.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

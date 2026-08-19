@@ -463,6 +463,43 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260819-dcdev020r8r4-shared-affinity-autogenous-cprod - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R8R4-SHARED-AFFINITY-ACCEPTED-NEGATIVE`
+- Supersedes outcome: none
+- Closed: `2026-08-19T00:00:00-04:00`
+- Acceptance: `MET`
+- Summary: Architect review accepted R8-R4 at exact head `37b47ec89e02418018a138f670e826c6945c8030` with exact-head CI `32254177853` passed. The tested shared-affinity topology is closed as a negative sustained-homeostasis route, while the broader catalyst-allocation capacity question remains open.
+- Changed areas: governance acceptance record only; R8-R4 scientific evidence remains unchanged.
+- Validation:
+  - Exact R8-R4 head and closed draft PR #41 - PASSED
+  - Exact-head CI run 32254177853 - PASSED
+  - Architect acceptance - PASSED
+- Remaining risks: The result does not reject all favorable A/C allocations and does not authorize another catalyst law or production integration.
+- Blockers: R8-R5 capacity classification and architect review; DC-DEV-021 remains unauthorized.
+- Follow-up directive: none
+
+## D-20260819-dcdev020r8r5-ac-allocation-upper-bound - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R8R5-CATALYST-ALLOCATION-ENVELOPE-MIXED`
+- Supersedes outcome: none
+- Closed: `2026-08-19T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R8-R5 audit reproduced the accepted R8-R2 acute and R8-R4 finite/sustained endpoints, evaluated the complete conservative constant-C interval with deterministic refinement, and found no constant allocation satisfying the original sustained homeostasis gate. The best final E_AR was approximately `57.63054549392781`. All 200 R8-R3 deferred and 200 R8-R4 shared-affinity late states retained at least one nonnegative one-step allocation region, with worst observed maximum drift approximately `0.00619040719167074`; classification is `DCDEV020R8R5_CATALYST_ALLOCATION_ENVELOPE_MIXED`.
+- Changed areas: R8-R5 observer example, Cargo registration, compact append-only evidence, governed external dense-ledger manifest, documentation, governance, and scoped workflow; no production chemistry or behavior changed.
+- Validation:
+  - Exact R8-R2 and R8-R4 reproduction - PASSED
+  - A+C conservation during repartition - PASSED
+  - Exact 1:1 catalyst-turnover replacement accounting - PASSED
+  - 65-point allocation mesh and deterministic refinement to relative width <= 1e-6 - PASSED
+  - Original sustained qualification across constant-C arms - EXECUTED; zero complete-gate passes
+  - Late-state local allocation envelopes at 40-step spacing - PASSED; 200 deferred and 200 shared states audited
+  - External dense-ledger SHA-256 - PENDING final seal
+  - Governance, preservation, exact-head remote CI, and architect review - PENDING
+- Remaining risks: Mixed local drift means catalyst allocation capacity is not closed as insufficient; no allocator or next catalyst law is authorized by this result.
+- Blockers: final evidence seal, exact-head remote CI, and architect review; DC-DEV-021 remains unauthorized.
+- Follow-up directive: none
+
 ## D-20260818-dcdev020r3-two-substrate-saturating-activation - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020R3-SATURATING-KINETICS-NOT-IDENTIFIABLE`

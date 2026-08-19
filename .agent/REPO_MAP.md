@@ -79,6 +79,9 @@
 - `digital-protocell/examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs` — DC-DEV-020-R8-R4 observer-only shared-affinity audit; includes the normalized R8-R3 helper and must not be imported into production chemistry.
 - `digital-protocell/experiments/generated/dcdev020r8r4/` — compact R8-R4 evidence; dense ledger is externalized to governed Atlas storage.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r4/` — R8-R4 protocol and disposition.
+- `digital-protocell/examples/dcdev020r8r5_ac_allocation_upper_bound.rs` — DC-DEV-020-R8-R5 observer-only conservative A↔C allocation capacity envelope; it changes no production chemistry or behavior.
+- `digital-protocell/experiments/generated/dcdev020r8r5/` — compact R8-R5 protocol, economic envelope, R8-R4 reproduction, constant-allocation results, local late-state drift summaries, qualification, literature disposition, and external dense-ledger manifest.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r5/` — R8-R5 A↔C allocation upper-bound audit and mixed-envelope disposition.
 
 ## External integration points
 

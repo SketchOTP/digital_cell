@@ -286,3 +286,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R8-R4 observer-only shared-affinity catalyst-production audit; no production integration or DC-DEV-021 authorization.
 - Supersedes learning: none
+
+## L-DCDEV020R8R5-001
+
+- Learning ID: L-DCDEV020R8R5-001
+- Date: 2026-08-19
+- Fact or lesson: Under the frozen R6 source and turnover, no conservative constant-C A↔C allocation in the complete physical interval satisfied the original 8,000-step sustained homeostasis gate. The best final E_AR was approximately `57.63054549392781`, while deterministic late-state one-step envelopes retained nonnegative drift regions in all 200 deferred and 200 shared-affinity states, so catalyst allocation capacity is mixed rather than closed as insufficient.
+- Evidence location: `digital-protocell/examples/dcdev020r8r5_ac_allocation_upper_bound.rs`, `digital-protocell/experiments/generated/dcdev020r8r5/`, `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r5/`, and the governed external dense ledger referenced by `external_evidence_manifest.json`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R8-R5 observer-only A↔C allocation capacity envelope; no allocator, catalyst law, production integration, source tuning, sink change, or DC-DEV-021 authorization.
+- Supersedes learning: none

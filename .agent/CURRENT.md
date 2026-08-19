@@ -7,13 +7,13 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260819-dcdev020r8r4-shared-affinity-autogenous-cprod`
-- External directive ID: `DC-DEV-020-R8-R4`
-- Objective: `Test exactly one target-free, memoryless, negative-autogenous catalyst-production topology jointly with the sealed R6 assimilation source.`
+- Local directive ID: `D-20260819-dcdev020r8r5-ac-allocation-upper-bound`
+- External directive ID: `DC-DEV-020-R8-R5`
+- Objective: `Determine whether catalyst allocation alone has enough causal authority to establish sustained R6 homeostasis using an intentionally optimistic conservative A↔C observer envelope.`
 - Current status: `VALIDATING`
-- Acceptance: `Local observer result is DCDEV020R8R4_SHARED_AFFINITY_NO_STABLE_HOMEOSTASIS; exact-head remote CI and architect review are pending.`
-- Current phase: `DC-DEV-020-R8-R4 observer-only shared-affinity audit; no production law, behavior, or DC-DEV-021 work is authorized.`
-- Expected or actual touched areas: `R8-R4 observer example/helper, Cargo registration, compact evidence, governed external dense-ledger seal, documentation, governance, and scoped CI`
+- Acceptance: `Local observer result is DCDEV020R8R5_CATALYST_ALLOCATION_ENVELOPE_MIXED; exact-head remote CI and architect review are pending.`
+- Current phase: `DC-DEV-020-R8-R5 observer-only A↔C allocation capacity envelope; no allocator, production law, behavior, source/sink change, or DC-DEV-021 work is authorized.`
+- Expected or actual touched areas: `R8-R5 observer example, Cargo registration, compact evidence, governed external dense-ledger seal, documentation, governance, and scoped CI`
 - Immediate next action: `Complete evidence sealing, exact-head CI, and architect review; do not begin DC-DEV-021.`
 
 ## Temporary task-relevant facts
@@ -33,7 +33,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Local Rust 1.89.0 R7 compile, 2 focused observer tests, exact R6 replay, 480 physical roots, frozen NF/NFA replay, drift closure, exact-root oracle, and governed external dense-ledger SHA-256`
+- Command or check: `Local Rust 1.89.0 R8-R5 build/execution, exact R8-R2/R8-R4 replay, 65-point A↔C mesh with deterministic refinement, 400 late-state local envelopes, and governed external dense-ledger SHA-256`
 - Result: `PASSED`
 
 ## Risks
@@ -44,7 +44,7 @@
 
 ## Blockers
 
-- Exact-head remote CI and architect review for R8-R4 remain open. No production law, parameter tuning, additional kinetic family, behavior, or DC-DEV-021 is authorized.
+- Exact-head remote CI and architect review for R8-R5 remain open. No allocator, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
 
 ## Pending decisions
 
@@ -57,7 +57,8 @@
 - Accepted R8-R2 head for this audit is `9fdd292bbd13f62ef9c88d08e8d887f15326d242`; its dense ledger is sealed at `e932f6ab96e34516de98c97c2cae102553db9764383af3d61abf015743c3a376`.
 - R8-R3 frozen catalyst half-life is `3465.7359027997263` accepted steps from `k_c_turn=0.01` and `dt=0.02`; governed horizon is `8000`; checkpoints are `433, 480, 866, 1733, 3466, 5199, 6931`.
 - R8-R3 result is `DCDEV020R8R3_CATALYST_RESERVE_SOURCE_CONTEXT_DEPENDENT`: D016 has no marginal payback, while R6 pays back only at early checkpoints and not at later checkpoints; deferred arms remain alive and finite.
-- R8-R4 tests `J_C,shared=k_c_prod*A*(1-q_c(C))` using existing `K_C=q_c=0.3`; finite restoration and dose monotonicity pass, but R6 sustained homeostasis fails at `E_AR=54.45821737181944` versus the frozen target `77.91027880846893`.
+- R8-R4 tests `J_C,shared=k_c_prod*A*(1-q_c(C))` using existing `K_C=q_c=0.3`; architect acceptance closed that exact topology as a negative sustained-homeostasis result.
+- R8-R5 tests the full conservative constant-C interval `0 <= C_hold <= A+C` with exact turnover replacement. No constant-C arm passes sustained homeostasis; all 200 deferred and 200 shared late states retain a nonnegative one-step allocation region, so classification is `DCDEV020R8R5_CATALYST_ALLOCATION_ENVELOPE_MIXED`.
 
 ## Status vocabulary
 
