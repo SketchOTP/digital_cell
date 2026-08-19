@@ -1168,7 +1168,7 @@
     "hereditary/template material"
   ],
   "historical_e_ar_revised": true,
-  "primary_classification": "DCDEV020R9_TRUE_MATERIAL_CYCLE_DEFICIT_CONFIRMED",
+  "primary_classification": "DCDEV020R9R1_TRUE_MATERIAL_CYCLE_DEFICIT_CONFIRMED",
   "phase1_status": "historical certification preserved; conservative requalification bounded and separate",
   "production_chemistry_changed": "NO — certified Phase 1 biology/equations unchanged; bounded post-Phase-1 contract and observer accounting code changed",
   "production_behavior_changed": "NO — no controller, source, sink, transport, behavior, or evolution change",
