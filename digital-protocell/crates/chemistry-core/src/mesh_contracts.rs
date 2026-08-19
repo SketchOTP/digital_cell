@@ -562,5 +562,38 @@ mod tests {
             MeshContractVersion::ConservativeV2
         );
         assert!(reserve_v2.uses_observer_only_death());
+
+        let mut template_v2 = reserve_v2.clone();
+        crate::template_polymer::stamp_template_equation(&mut template_v2);
+        assert_eq!(
+            template_v2.equation_id,
+            crate::template_polymer::EQUATION_VERSION_CATALYTIC_TEMPLATE
+        );
+        assert_eq!(
+            template_v2.contract_version,
+            MeshContractVersion::ConservativeV2
+        );
+
+        let mut network_v2 = reserve_v2.clone();
+        crate::template_network::stamp_network_equation(&mut network_v2);
+        assert_eq!(
+            network_v2.equation_id,
+            crate::template_network::EQUATION_VERSION_TEMPLATE_NETWORK
+        );
+        assert_eq!(
+            network_v2.contract_version,
+            MeshContractVersion::ConservativeV2
+        );
+
+        let mut autocatalytic_v2 = reserve_v2;
+        crate::autocatalytic_nodes::stamp_autocatalytic_equation(&mut autocatalytic_v2);
+        assert_eq!(
+            autocatalytic_v2.equation_id,
+            crate::autocatalytic_nodes::EQUATION_VERSION_AUTOCATALYTIC_SET
+        );
+        assert_eq!(
+            autocatalytic_v2.contract_version,
+            MeshContractVersion::ConservativeV2
+        );
     }
 }
