@@ -1268,6 +1268,45 @@ fn root_stats_r8r2(rows: &[RootPairR8R2]) -> RootStatsR8R2 {
     }
 }
 
+fn payback_compact_r8r2(result: &PaybackResultR8R2) -> Value {
+    json!({
+        "context": result.context,
+        "checkpoint": result.checkpoint,
+        "initial_a_cost": result.initial_a_cost,
+        "initial_delta_c": result.initial_delta_c,
+        "initial_delta_q_c": result.initial_delta_q_c,
+        "payback_step": result.payback_step,
+        "no_payback": result.no_payback,
+        "final_delta_e_ar": result.final_delta_e_ar,
+        "final_delta_c": result.final_delta_c,
+        "final_delta_q_c": result.final_delta_q_c,
+        "cumulative_extra_nf_a": result.cumulative_extra_nf_a,
+        "irreversible_loss_difference": result.irreversible_loss_difference,
+        "retained_material_difference": result.retained_material_difference,
+        "retained_vector_difference": result.retained_vector_difference,
+        "alive": result.alive,
+        "finite": result.finite,
+        "max_accounting_residual": result.max_accounting_residual,
+        "dense_frames_externalized": true
+    })
+}
+
+fn shadow_compact_r8r2(result: &ShadowResultR8R2) -> Value {
+    json!({
+        "law": result.law,
+        "cprod_enabled": result.cprod_enabled,
+        "initial": result.initial,
+        "final_state": result.final_state,
+        "total_flux": result.total_flux,
+        "alive": result.alive,
+        "finite": result.finite,
+        "max_resource_error": result.max_resource_error,
+        "max_accounting_residual": result.max_accounting_residual,
+        "trajectory_hash": result.trajectory_hash,
+        "dense_frames_externalized": true
+    })
+}
+
 fn main() {
     let output = std::env::var_os("DCDEV020R8R2_OUTPUT_ROOT")
         .map(PathBuf::from)
@@ -1368,6 +1407,10 @@ fn main() {
         fs::create_dir_all(parent).unwrap();
     }
     fs::write(&dense_path, serde_json::to_vec(&dense).unwrap()).unwrap();
+    let d016_compact: Vec<Value> = d016_payback.iter().map(payback_compact_r8r2).collect();
+    let r6_compact: Vec<Value> = r6_payback.iter().map(payback_compact_r8r2).collect();
+    let normal_compact = shadow_compact_r8r2(&r6_normal);
+    let deferred_compact = shadow_compact_r8r2(&r6_deferred);
 
     write_json(
         &output,
@@ -1419,16 +1462,16 @@ fn main() {
         "payback_summary.json",
         &json!({
             "checkpoints": CHECKPOINTS_R8R2,
-            "d016_bilinear": d016_payback,
-            "r6_power_law": r6_payback
+            "d016_bilinear": d016_compact,
+            "r6_power_law": r6_compact
         }),
     );
     write_json(
         &output,
         "shadow_summary.json",
         &json!({
-            "normal": r6_normal,
-            "cprod_deferred": r6_deferred,
+            "normal": normal_compact,
+            "cprod_deferred": deferred_compact,
             "deprived_e_ar": E_DEPRIVED,
             "final_delta_e_ar_deferred_minus_normal": r6_deferred.final_state.e_stored - r6_normal.final_state.e_stored
         }),
