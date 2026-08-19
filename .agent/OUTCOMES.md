@@ -810,3 +810,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Remaining risks: This closes only the tested shared-affinity topology as a sustained-homeostasis route. It does not reject all coupled source/allocation architectures and does not authorize production integration.
   - Blockers: exact-head remote CI and architect review; DC-DEV-021 remains unauthorized.
   - Follow-up directive: none
+
+## D-20260819-dcdev020r9r1-mesh-contract-requalification - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R1-MESH-CONTRACT-ORTHOGONALIZATION`
+- Supersedes outcome: `OUT-DCDEV020R9-METRIC-CONFOUNDING-DOMINANT`
+- Closed: `2026-08-19T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: ConservativeV2 is an orthogonal serialized mesh contract, so D-091 retains `autopoietic_material_mesh_metabolic_reserve_v1` equation identity while observer-only death and strict material semantics are selected by contract version. D-091 reserve schema loading and 200-step A/R execution pass with zero rejected steps. The reserve-bearing D-087 Gates 0–7 matrix passes locally. Exact D-015/D-016 replay rows close strict material against delivered N/F with zero residual; the exact R8-R2 machinery also runs under ConservativeV2 with the historical default path preserved.
+- Changed areas: versioned mesh contract field, reserve schema compatibility, D-091 composition test, reserve-bearing D-087 gate matrix, exact replay runners/manifests, scoped workflow, documentation, and governance; no new biology, controller, transport law, source law, sink law, behavior, evolution, or DC-DEV-021 work.
+- Validation:
+  - Local sanctioned Rust 1.89.0 compile and focused contract/D-091 tests - PASSED
+  - D-087 ConservativeV2 Gates 0–7 matrix - PASSED locally
+  - Exact D-015/D-016 replay, 7 rows, zero closure residual, zero reserve rejects - PASSED locally
+  - Exact R8-R2 replay under ConservativeV2 compatibility mode - PASSED locally
+  - Scoped exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: R9-R1 remains unaccepted until exact-head remote CI and independent architect review verify the pushed branch. Historical R9 evidence remains immutable; generic R9 E5 rows are retained as proxy diagnostics and are not represented as exact historical replay evidence.
+- Blockers: exact-head remote CI and architect review; production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none

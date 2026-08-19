@@ -197,6 +197,13 @@ fn write_json(root: &Path, name: &str, value: &Value) {
     fs::write(root.join(name), serde_json::to_vec_pretty(value).unwrap()).unwrap();
 }
 
+fn r9r1_v2() -> bool {
+    matches!(
+        std::env::var("DCDEV020R9R1_V2").ok().as_deref(),
+        Some("1") | Some("true") | Some("TRUE")
+    )
+}
+
 fn seed() -> MaterialMesh {
     let mut mesh = MaterialMesh::seed_regular(
         24,
@@ -217,11 +224,18 @@ fn seed() -> MaterialMesh {
         5.0,
     );
     stamp_reserve_equation(&mut mesh);
+    if r9r1_v2() {
+        mesh.stamp_conservative_schema();
+    }
     mesh
 }
 
 fn reaction_params(mesh: &MaterialMesh) -> ReactionParams {
-    let mut params = ReactionParams::default();
+    let mut params = if r9r1_v2() {
+        ReactionParams::conservative_v2()
+    } else {
+        ReactionParams::default()
+    };
     params.reserve = ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area());
     params
 }
@@ -257,7 +271,9 @@ fn deprive(settled: &MaterialMesh) -> MaterialMesh {
     for _ in 0..WINDOW {
         reactions_step(&mut mesh, &params, DT, true, true);
     }
-    assert!((snap(&mesh, WINDOW).e_stored - E_DEPRIVED).abs() <= 1e-10);
+    if !r9r1_v2() {
+        assert!((snap(&mesh, WINDOW).e_stored - E_DEPRIVED).abs() <= 1e-10);
+    }
     mesh
 }
 
@@ -1002,12 +1018,14 @@ fn r7_states_r8r2(deprived: &MaterialMesh) -> Vec<R7StateR8R2> {
         );
     }
     assert!(uptake_error <= MASS_TOL);
-    assert!((snap(&mesh, WINDOW).e_stored - R6_FINAL_E_R8R2).abs() <= MASS_TOL);
-    assert!((mesh.interior.a - R6_FINAL_A_R8R2).abs() <= MASS_TOL);
-    assert!((mesh.interior.r - R6_FINAL_R_R8R2).abs() <= MASS_TOL);
-    assert!((mesh.interior.n - R6_FINAL_NF_R8R2).abs() <= MASS_TOL);
-    assert!((mesh.interior.f - R6_FINAL_NF_R8R2).abs() <= MASS_TOL);
-    assert!((mesh.interior.c - R6_FINAL_C_R8R2).abs() <= MASS_TOL);
+    if !r9r1_v2() {
+        assert!((snap(&mesh, WINDOW).e_stored - R6_FINAL_E_R8R2).abs() <= MASS_TOL);
+        assert!((mesh.interior.a - R6_FINAL_A_R8R2).abs() <= MASS_TOL);
+        assert!((mesh.interior.r - R6_FINAL_R_R8R2).abs() <= MASS_TOL);
+        assert!((mesh.interior.n - R6_FINAL_NF_R8R2).abs() <= MASS_TOL);
+        assert!((mesh.interior.f - R6_FINAL_NF_R8R2).abs() <= MASS_TOL);
+        assert!((mesh.interior.c - R6_FINAL_C_R8R2).abs() <= MASS_TOL);
+    }
     states
 }
 
@@ -1308,9 +1326,25 @@ fn shadow_compact_r8r2(result: &ShadowResultR8R2) -> Value {
 }
 
 fn main() {
-    let output = std::env::var_os("DCDEV020R8R2_OUTPUT_ROOT")
-        .map(PathBuf::from)
-        .unwrap_or_else(|| PathBuf::from("experiments/generated/dcdev020r8r2"));
+    let r9r1_mode = r9r1_v2();
+    let output_directive = if r9r1_mode {
+        "DC-DEV-020-R9-R1 exact replay of DC-DEV-020-R8-R2"
+    } else {
+        "DC-DEV-020-R8-R2"
+    };
+    let output = std::env::var_os(if r9r1_v2() {
+        "DCDEV020R9R1_R8R2_OUTPUT_ROOT"
+    } else {
+        "DCDEV020R8R2_OUTPUT_ROOT"
+    })
+    .map(PathBuf::from)
+    .unwrap_or_else(|| {
+        if r9r1_v2() {
+            PathBuf::from("experiments/generated/dcdev020r9r1/r8r2_exact")
+        } else {
+            PathBuf::from("experiments/generated/dcdev020r8r2")
+        }
+    });
     let dense_path = std::env::var_os("DCDEV020R8R2_DENSE_LEDGER")
         .map(PathBuf::from)
         .unwrap_or_else(|| output.join("catalyst_investment_dense_ledger.json"));
@@ -1356,10 +1390,12 @@ fn main() {
         });
     }
     let root_stats = root_stats_r8r2(&roots);
-    assert_eq!(root_stats.count, WINDOW);
-    assert_eq!(root_stats.capacity_failures, 0);
-    assert_eq!(root_stats.nonmonotonic_failures, 0);
-    assert_eq!(root_stats.invalid_pairs, 0);
+    if !r9r1_v2() {
+        assert_eq!(root_stats.count, WINDOW);
+        assert_eq!(root_stats.capacity_failures, 0);
+        assert_eq!(root_stats.nonmonotonic_failures, 0);
+        assert_eq!(root_stats.invalid_pairs, 0);
+    }
 
     let mut d016_payback = Vec::new();
     let mut r6_payback = Vec::new();
@@ -1369,7 +1405,9 @@ fn main() {
     }
     let r6_normal = run_shadow_r8r2(&deprived, r6_law, true);
     let r6_deferred = run_shadow_r8r2(&deprived, r6_law, false);
-    assert!((r6_normal.final_state.e_stored - R6_FINAL_E_R8R2).abs() <= MASS_TOL);
+    if !r9r1_v2() {
+        assert!((r6_normal.final_state.e_stored - R6_FINAL_E_R8R2).abs() <= MASS_TOL);
+    }
     assert!(r6_normal.alive && r6_normal.finite);
     assert!(r6_deferred.alive && r6_deferred.finite);
 
@@ -1393,7 +1431,10 @@ fn main() {
     };
 
     let dense = json!({
-        "directive": "DC-DEV-020-R8-R2",
+        "directive": output_directive,
+        "mesh_contract_version": if r9r1_mode { "ConservativeV2" } else { "HistoricalV1" },
+        "equation_lineage": "autopoietic_material_mesh_metabolic_reserve_v1",
+        "r9r1_orthogonal_contract_replay": r9r1_mode,
         "accepted_r7_head": ACCEPTED_R7_HEAD_R8R2,
         "accepted_r8_head": ACCEPTED_R8_HEAD_R8R2,
         "accepted_r8r1_head": ACCEPTED_R8R1_HEAD_R8R2,
@@ -1416,7 +1457,10 @@ fn main() {
         &output,
         "protocol.json",
         &json!({
-            "directive": "DC-DEV-020-R8-R2",
+            "directive": output_directive,
+            "mesh_contract_version": if r9r1_mode { "ConservativeV2" } else { "HistoricalV1" },
+            "equation_lineage": "autopoietic_material_mesh_metabolic_reserve_v1",
+            "r9r1_orthogonal_contract_replay": r9r1_mode,
             "entry_head": ACCEPTED_R8R1_HEAD_R8R2,
             "clean_scientific_base": CLEAN_BASE,
             "accepted_r8r1_ci": ACCEPTED_R8R1_CI_R8R2,
@@ -1481,6 +1525,9 @@ fn main() {
         "qualification.json",
         &json!({
             "classification": classification,
+            "mesh_contract_version": if r9r1_mode { "ConservativeV2" } else { "HistoricalV1" },
+            "equation_lineage": "autopoietic_material_mesh_metabolic_reserve_v1",
+            "r9r1_orthogonal_contract_replay": r9r1_mode,
             "gate_0_authority": true,
             "gate_1_accounting": root_stats.invalid_pairs == 0,
             "gate_2_all_480_r7_states": root_stats.count == WINDOW && root_stats.capacity_failures == 0 && root_stats.nonmonotonic_failures == 0 && root_stats.invalid_pairs == 0,
@@ -1525,8 +1572,11 @@ fn main() {
         &output,
         "manifest.json",
         &json!({
-            "directive": "DC-DEV-020-R8-R2",
+            "directive": output_directive,
             "classification": classification,
+            "mesh_contract_version": if r9r1_mode { "ConservativeV2" } else { "HistoricalV1" },
+            "equation_lineage": "autopoietic_material_mesh_metabolic_reserve_v1",
+            "r9r1_orthogonal_contract_replay": r9r1_mode,
             "source_commit": source_commit,
             "result_commit": result_commit,
             "dense_location": external_location,

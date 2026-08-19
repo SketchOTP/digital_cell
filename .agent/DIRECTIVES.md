@@ -263,6 +263,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260819-dcdev020r9r1-mesh-contract-requalification
+
+- Issued: `2026-08-19T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R9-R1`
+- Objective: Orthogonalize the ConservativeV2 physical/material/death contract from D-091 equation identity, prove reserve composition, run affected D-087 Gates 0–7, and replay exact D-015/D-016/R8 protocols without changing biology.
+- Scope: Exact entry `22529ca0caa570e1603c28fe39b05786052b969e`, PR #44, versioned contract metadata, D-091 reserve composition, three-ledger closure, exact replay manifests, compact evidence, governance, preservation, and scoped CI.
+- Exclusions: New chemistry, source/sink/transport changes, reserve tuning, parameter search, behavior, evolution, DC-DEV-021, and rewriting historical evidence.
+- Acceptance: Contract/equation orthogonality, reserve-bearing D-087 Gates 0–7, exact D-015/D-016/R8 replay artifacts, exact-head remote CI, and architect review.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260819-dcdev020r8r5r1-net-allocation-drift
 
 - Issued: `2026-08-19T00:00:00-04:00`

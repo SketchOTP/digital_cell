@@ -9,8 +9,10 @@ use crate::material_mesh::{
 use crate::mesh_reactions::{q_catalyst, ReactionParams};
 use serde::{Deserialize, Serialize};
 
-pub const EQUATION_VERSION_METABOLIC_RESERVE: &str = "autopoietic_material_mesh_metabolic_reserve_v1";
-pub const FIELD_SCHEMA_METABOLIC_RESERVE: &str = "mesh_vertices_edges_catalyst_composition_reserve_v1";
+pub const EQUATION_VERSION_METABOLIC_RESERVE: &str =
+    "autopoietic_material_mesh_metabolic_reserve_v1";
+pub const FIELD_SCHEMA_METABOLIC_RESERVE: &str =
+    "mesh_vertices_edges_catalyst_composition_reserve_v1";
 
 /// Charging timescale multipliers on the maintenance horizon (at most three).
 pub const STORE_HORIZON_CANDIDATES: [f64; 3] = [2.0, 4.0, 8.0];
@@ -77,7 +79,9 @@ impl ReserveParams {
         // Release timescale ≈ one maintenance horizon (Michaelis saturating).
         let k_release = 1.0 / t_maint;
         // Charging: characteristic fill of R_max over t_store at A ≫ K_store.
-        let r_max = (fission_a_cost / area.max(EPS)).max(a_median * 2.0).max(1.0);
+        let r_max = (fission_a_cost / area.max(EPS))
+            .max(a_median * 2.0)
+            .max(1.0);
         let k_store = r_max / t_store.max(EPS);
         // K_growth must be large vs k_store so R accumulates before reproductive-scale growth.
         // At low R: dR/dt ≈ k_store − y_g·q·h·R/K_g; choose K_g so steady R ≳ 0.35 R_max.
@@ -143,7 +147,12 @@ pub fn reserve_schema_load_ok(mesh: &MaterialMesh, reserve: &ReserveParams) -> b
     if !reserve.enable {
         return true;
     }
-    mesh.equation_id == EQUATION_VERSION_METABOLIC_RESERVE
+    // The physical contract is independent of the biological lineage. A
+    // ConservativeV2 mesh may therefore carry the D-091 reserve identity,
+    // template/network identity, or another governed lineage without being
+    // rejected merely because its equation_id is not the base reserve stamp.
+    mesh.uses_observer_only_death()
+        || mesh.equation_id == EQUATION_VERSION_METABOLIC_RESERVE
         || mesh.equation_id == crate::template_polymer::EQUATION_VERSION_CATALYTIC_TEMPLATE
         || mesh.equation_id == crate::template_network::EQUATION_VERSION_TEMPLATE_NETWORK
         || mesh.equation_id == crate::autocatalytic_nodes::EQUATION_VERSION_AUTOCATALYTIC_SET
@@ -271,12 +280,7 @@ pub fn reserve_metab_step(
 
 /// Growth flux from R (schema-enabled path only): J_growth = y_g · g_build · q(C) · R/(K_g+R) · h(ε)
 #[inline]
-pub fn local_r_growth_rate(
-    mesh: &MaterialMesh,
-    i: usize,
-    react: &ReactionParams,
-    y_g: f64,
-) -> f64 {
+pub fn local_r_growth_rate(mesh: &MaterialMesh, i: usize, react: &ReactionParams, y_g: f64) -> f64 {
     let p = &react.reserve;
     if !p.enable || mesh.edges[i].ruptured {
         return 0.0;

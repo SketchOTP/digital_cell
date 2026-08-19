@@ -1,0 +1,10 @@
+[
+  "experiments/generated/dcdev020r9r1/exact_replays/manifest.json",
+  "experiments/generated/dcdev020r9r1/exact_replays/results.json",
+  "experiments/generated/dcdev020r9r1/r8r2_exact/manifest.json",
+  "experiments/generated/dcdev020r9r1/r8r2_exact/protocol.json",
+  "experiments/generated/dcdev020r9r1/r8r2_exact/root_summary.json",
+  "experiments/generated/dcdev020r9r1/r8r2_exact/payback_summary.json",
+  "experiments/generated/dcdev020r9r1/r8r2_exact/shadow_summary.json",
+  "experiments/generated/dcdev020r9r1/r8r2_exact/qualification.json"
+]

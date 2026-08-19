@@ -115,3 +115,7 @@ path = "../../examples/dcdev020r8r5_ac_allocation_upper_bound.rs"
 [[example]]
 name = "dcdev020r8r5r1_net_allocation_drift"
 path = "../../examples/dcdev020r8r5r1_net_allocation_drift.rs"
+
+[[example]]
+name = "dcdev020r9r1_exact_metabolic_replays"
+path = "../../examples/dcdev020r9r1_exact_metabolic_replays.rs"

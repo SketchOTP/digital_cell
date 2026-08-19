@@ -1,0 +1,47 @@
+{
+  "gates": [
+    {
+      "gate": "D087-G0 authority/contract/lineage",
+      "pass": true,
+      "detail": "contract=ConservativeV2 equation_id=autopoietic_material_mesh_metabolic_reserve_v1 reserve_schema_load_ok=true"
+    },
+    {
+      "gate": "D087-G1 passive mechanics",
+      "pass": true,
+      "detail": "steps_ok=true closed=true structural_delta=0.000e0 membrane_delta=0.000e0 area_ratio=0.918290"
+    },
+    {
+      "gate": "D087-G2 passive reserve basin",
+      "pass": true,
+      "detail": "closed=true viable=true area_ratio=0.764772"
+    },
+    {
+      "gate": "D087-G3 reserve metabolism",
+      "pass": true,
+      "detail": "a_to_r=1.067203 r_to_a=3.612804 r_to_w=0.935425 rejected=0 viable=true"
+    },
+    {
+      "gate": "D087-G4 turnover/replacement",
+      "pass": true,
+      "detail": "reserve_turnover=8.608783 viable=true strict_finite=true"
+    },
+    {
+      "gate": "D087-G5 dynamic reserve basin",
+      "pass": true,
+      "detail": "closed=true viable=true area_ratio=0.635655 strict_finite=true"
+    },
+    {
+      "gate": "D087-G6 damage/repair causality",
+      "pass": true,
+      "detail": "rebonded=true edge_mass=1.305262 strict_after=213.546113 strict_before=31.326286"
+    },
+    {
+      "gate": "D087-G7 starvation/observer-death",
+      "pass": true,
+      "detail": "observer_viable=false physical_alive_before=true physical_alive_after=true"
+    }
+  ],
+  "all_pass": true,
+  "contract": "ConservativeV2",
+  "equation_lineage": "autopoietic_material_mesh_metabolic_reserve_v1"
+}

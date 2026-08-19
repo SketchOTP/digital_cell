@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260819-dcdev020r9-mesh-contract-requalification`
-- External directive ID: `DC-DEV-020-R9`
-- Objective: `Requalify the D-086 material-mesh substrate for strict conservation, observer-only death, and separate material/activation/organized-retained ledgers.`
+- Local directive ID: `D-20260819-dcdev020r9r1-mesh-contract-requalification`
+- External directive ID: `DC-DEV-020-R9-R1`
+- Objective: `Orthogonalize the ConservativeV2 physical/material/death contract from D-091 biological equation identity and requalify the affected D-087 gates with exact D-015/D-016/R8 protocol replays.`
 - Current status: `VALIDATING`
-- Acceptance: `Local E0-E5 evidence and exact-head remote CI run 32290370285 are passed; architect review remains pending.`
-- Current phase: `DC-DEV-020-R9 versioned conservative substrate requalification; no new metabolic mechanism, behavior, evolution, or DC-DEV-021 work is authorized.`
-- Expected or actual touched areas: `versioned mesh chemistry, observer-only viability guards, exact stoichiometric/ledger audit, compact E0-E5 evidence, documentation, governance, and scoped CI`
-- Immediate next action: `Obtain architect review of the pushed R9 package; no new scientific execution is authorized.`
+- Acceptance: `Local R9-R1 evidence is generated and exact-head remote CI plus architect review remain pending.`
+- Current phase: `DC-DEV-020-R9-R1 observer-only contract requalification; no new metabolic mechanism, behavior, evolution, or DC-DEV-021 work is authorized.`
+- Expected or actual touched areas: `versioned mesh contract metadata, reserve schema composition, reserve-bearing D-087 gates 0-7, exact protocol replay evidence, governance, and scoped CI`
+- Immediate next action: `Run the scoped local suite, commit, push PR #44, and await architect review; no new scientific execution is authorized.`
 
 ## Temporary task-relevant facts
 
@@ -41,6 +41,8 @@
 - Atlas has no Rust toolchain; local sanctioned Rust 1.89.0 is used with the Atlas worktree mounted through SSHFS and a local NTFS target directory.
 - The frozen substrate remains local, isotropic, passive, and reaction-only; no DC-DEV-010 directional substrate code may enter this branch.
 - DC-DEV-012 is closed as valid negative evidence and is not imported.
+- R9-R1 correction: ConservativeV2 is now an orthogonal physical/material/death contract; D-091 remains the biological equation lineage. The old R9 final classification was not architect-accepted because D-091 reserve composition and exact historical replay semantics were not yet proven.
+- R9-R1 exact artifacts are under `digital-protocell/experiments/generated/dcdev020r9r1/`; dense R8-R2 frames remain externalized and the compact manifest records the v2 replay mode.
 
 ## Blockers
 

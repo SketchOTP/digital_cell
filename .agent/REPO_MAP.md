@@ -91,6 +91,12 @@
 - `digital-protocell/experiments/generated/dcdev020r9/` — compact R9 E0-E5 evidence and preserved legacy runtime smoke artifact.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9/` — R9 mesh contract requalification documentation.
 - `.github/workflows/dc-dev-020r9.yml` — scoped R9 governance, format, preservation, contract-test, and evidence-runner CI.
+- `digital-protocell/crates/chemistry-core/src/material_mesh.rs` — orthogonal `MeshContractVersion` metadata and observer-only death selection.
+- `digital-protocell/crates/chemistry-core/src/d020r9_analysis.rs` — R9-R1 reserve-bearing D-087 Gates 0–7 matrix and compact evidence writer.
+- `digital-protocell/examples/dcdev020r9r1_exact_metabolic_replays.rs` — exact D-015/D-016 observer replay and three-ledger closure evidence.
+- `digital-protocell/examples/dcdev020r8r2_catalyst_investment_payback.rs` — preserved R8-R2 machinery with explicit R9-R1 ConservativeV2 compatibility mode.
+- `digital-protocell/experiments/generated/dcdev020r9r1/` — R9-R1 compact mesh-contract, exact metabolic replay, and exact R8 compatibility evidence.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r1/` — R9-R1 protocol, provenance, and pending-acceptance documentation.
 
 ## External integration points
 

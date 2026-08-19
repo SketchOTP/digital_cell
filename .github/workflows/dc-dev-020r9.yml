@@ -31,11 +31,19 @@ jobs:
         run: >-
           rustfmt +1.89.0 --edition 2021 --check
           crates/chemistry-core/src/mesh_contracts.rs
+          crates/chemistry-core/src/material_mesh.rs
+          crates/chemistry-core/src/mesh_topology.rs
+          crates/chemistry-core/src/metabolic_reserve.rs
           crates/chemistry-core/src/d020r9_analysis.rs
           crates/chemistry-core/examples/dcdev020r9_mesh_contract_requalification.rs
+          examples/dcdev020r9r1_exact_metabolic_replays.rs
+          examples/dcdev020r8r2_catalyst_investment_payback.rs
       - name: R9 contract tests
         working-directory: digital-protocell
         run: cargo +1.89.0 test -p chemistry-core --lib mesh_contracts -- --nocapture
+      - name: D-091 reserve composition tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
       - name: D-086 preservation tests
         working-directory: digital-protocell
         run: cargo +1.89.0 test -p chemistry-core --test d086_tests -- --nocapture
@@ -47,4 +55,31 @@ jobs:
         run: cargo +1.89.0 test -p phase1-certifier --test metrics_semantics -- --nocapture
       - name: R9 evidence runner
         working-directory: digital-protocell
-        run: cargo +1.89.0 run -p chemistry-core --example dcdev020r9_mesh_contract_requalification --quiet -- experiments/generated/dcdev020r9
+        run: cargo +1.89.0 run -p chemistry-core --example dcdev020r9_mesh_contract_requalification --quiet -- experiments/generated/dcdev020r9r1/mesh_contract
+      - name: Exact D-015 and D-016 replay
+        working-directory: digital-protocell
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev020r9r1_exact_metabolic_replays --quiet
+      - name: Exact R8-R2 replay under ConservativeV2
+        working-directory: digital-protocell
+        run: env DCDEV020R9R1_V2=1 cargo +1.89.0 run -p regulatory-core --example dcdev020r8r2_catalyst_investment_payback --quiet
+      - name: Verify R1 replay artifacts
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r9r1")
+          rows = json.loads((root / "exact_replays" / "results.json").read_text())
+          assert len(rows) == 7
+          assert all(row["result"]["closure_residual"] <= 1e-9 for row in rows)
+          assert all(row["result"]["reserve_rejected_steps"] == 0 for row in rows)
+          assert all(row["contract_version"] == "ConservativeV2" for row in rows)
+          protocol = json.loads((root / "r8r2_exact" / "protocol.json").read_text())
+          assert protocol["mesh_contract_version"] == "ConservativeV2"
+          assert protocol["r9r1_orthogonal_contract_replay"] is True
+          matrix = json.loads((root / "mesh_contract" / "d087_gate_matrix.json").read_text())
+          assert len(matrix["gates"]) == 8
+          assert matrix["all_pass"] is True
+          print("DCDEV020R9R1_REPLAY_AND_D087_GATE_VERIFICATION_PASS")
+          PY

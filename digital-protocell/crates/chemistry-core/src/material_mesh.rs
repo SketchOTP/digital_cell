@@ -15,6 +15,20 @@ pub const EQUATION_VERSION_MATERIAL_MESH_CONSERVATIVE: &str =
 pub const FIELD_SCHEMA_MATERIAL_MESH_CONSERVATIVE: &str = "mesh_vertices_edges_material_v2";
 pub const MATERIAL_MESH_CONSERVATIVE_SCHEMA_VERSION: u32 = 2;
 
+/// Physical material/death contract, orthogonal to the biological equation
+/// lineage stamped in `equation_id`.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum MeshContractVersion {
+    HistoricalV1,
+    ConservativeV2,
+}
+
+impl Default for MeshContractVersion {
+    fn default() -> Self {
+        Self::HistoricalV1
+    }
+}
+
 /// Template monomer identity (D-092). Sequence = ordered bonded monomers.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum MonomerKind {
@@ -210,6 +224,9 @@ pub struct MaterialMesh {
     pub equation_id: String,
     #[serde(default = "default_schema_version")]
     pub schema_version: u32,
+    /// Independent physical contract. Historical snapshots deserialize as V1.
+    #[serde(default)]
+    pub contract_version: MeshContractVersion,
     /// Physical template polymer chains (D-092). Empty under older schemas.
     #[serde(default)]
     pub templates: Vec<TemplateChain>,
@@ -291,10 +308,14 @@ impl MaterialMesh {
     /// biological viability and never reads the historical `alive` latch.
     pub fn physical_runtime_valid(&self) -> bool {
         self.n() >= 3
-            && self.vertices.iter().all(|p| p[0].is_finite() && p[1].is_finite())
-            && self.edges.iter().all(|e| {
-                e.m.is_finite() && e.m >= 0.0 && e.b.is_finite() && e.b >= 0.0
-            })
+            && self
+                .vertices
+                .iter()
+                .all(|p| p[0].is_finite() && p[1].is_finite())
+            && self
+                .edges
+                .iter()
+                .all(|e| e.m.is_finite() && e.m >= 0.0 && e.b.is_finite() && e.b >= 0.0)
             && self.interior.c.is_finite()
             && self.interior.a.is_finite()
             && self.interior.n.is_finite()
@@ -303,14 +324,13 @@ impl MaterialMesh {
     }
 
     pub fn uses_observer_only_death(&self) -> bool {
-        self.equation_id == EQUATION_VERSION_MATERIAL_MESH_CONSERVATIVE
+        self.contract_version == MeshContractVersion::ConservativeV2
     }
 
     /// Production kernels use this guard. In the R9 schema, biological
     /// viability is an observer result and cannot halt physical equations.
     pub fn can_advance_physics(&self) -> bool {
-        self.physical_runtime_valid()
-            && (self.uses_observer_only_death() || self.alive)
+        self.physical_runtime_valid() && (self.uses_observer_only_death() || self.alive)
     }
 
     pub fn observer_viable(&self) -> bool {
@@ -348,7 +368,7 @@ impl MaterialMesh {
     }
 
     pub fn stamp_conservative_schema(&mut self) {
-        self.equation_id = EQUATION_VERSION_MATERIAL_MESH_CONSERVATIVE.to_string();
+        self.contract_version = MeshContractVersion::ConservativeV2;
         self.schema_version = MATERIAL_MESH_CONSERVATIVE_SCHEMA_VERSION;
     }
 
@@ -394,6 +414,7 @@ impl MaterialMesh {
             death_reason: None,
             equation_id: default_equation_id(),
             schema_version: default_schema_version(),
+            contract_version: MeshContractVersion::HistoricalV1,
             templates: Vec::new(),
             next_template_id: 1,
             template_rng: default_template_rng(),

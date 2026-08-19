@@ -316,3 +316,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R8-R5-R1 observer-only corrected net allocation drift; no allocator, recycling law, production integration, source tuning, sink change, or DC-DEV-021 authorization.
 - Supersedes learning: none
+
+## L-DCDEV020R9R1-001
+
+- Learning ID: L-DCDEV020R9R1-001
+- Date: 2026-08-19
+- Fact or lesson: ConservativeV2 must be an orthogonal physical/material/death contract rather than an equation-id replacement. D-091 reserve physiology composes with the contract when equation lineage remains autopoietic_material_mesh_metabolic_reserve_v1; exact D-015/D-016 rows close delivered N/F against strict material with zero residual, and the frozen R8-R2 machinery executes under the same contract mode.
+- Evidence location: digital-protocell/crates/chemistry-core/src/material_mesh.rs, digital-protocell/crates/chemistry-core/src/metabolic_reserve.rs, digital-protocell/experiments/generated/dcdev020r9r1/, and digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r1/.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R9-R1 observer-only contract requalification; exact-head CI and architect review pending.
+- Supersedes learning: L-DCDEV020R9-001

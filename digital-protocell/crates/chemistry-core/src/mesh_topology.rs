@@ -95,7 +95,8 @@ pub fn local_rebond_range(mesh: &MaterialMesh, topo: &TopologyParams) -> f64 {
     let n = mesh.n().max(1) as f64;
     let mean_ell = mesh.perimeter() / n;
     // Allow cross-neck bonding when opposing free ends are within a few local edge lengths.
-    (topo.rebond_dist.max(DEFAULT_REBOND_DIST) * 0.5 + 3.5 * mean_ell).clamp(DEFAULT_REBOND_DIST, 18.0)
+    (topo.rebond_dist.max(DEFAULT_REBOND_DIST) * 0.5 + 3.5 * mean_ell)
+        .clamp(DEFAULT_REBOND_DIST, 18.0)
 }
 
 /// Find a local pinch candidate with O(n) sampling (stride) rather than full O(n²).
@@ -209,6 +210,7 @@ pub fn extract_loop(
         death_reason: None,
         equation_id: parent.equation_id.clone(),
         schema_version: parent.schema_version,
+        contract_version: parent.contract_version,
         // Templates partitioned separately after both daughters exist.
         templates: Vec::new(),
         next_template_id: parent.next_template_id,

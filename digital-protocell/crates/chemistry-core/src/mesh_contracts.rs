@@ -432,7 +432,7 @@ pub fn closure(before: MaterialLedgerSnapshot, after: MaterialLedgerSnapshot) ->
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::material_mesh::{LumpedChem, MaterialMesh};
+    use crate::material_mesh::{LumpedChem, MaterialMesh, MeshContractVersion};
     use crate::mesh_reactions::{evaluate_death, reactions_step, ReactionParams};
     use crate::mesh_transport::{transport_step, TransportParams};
 
@@ -529,5 +529,38 @@ mod tests {
         let conservative = serde_json::to_string(&ReactionParams::conservative_v2()).unwrap();
         assert!(!historical.contains("mesh_schema"));
         assert!(conservative.contains("ConservativeV2"));
+    }
+
+    #[test]
+    fn contract_version_is_orthogonal_and_historical_meshes_default_to_v1() {
+        let historical = serde_json::to_value(MaterialMesh::seed_regular(
+            12,
+            2.0,
+            0.0,
+            0.0,
+            1.0,
+            0.7,
+            LumpedChem::default(),
+            LumpedChem::default(),
+            1.0,
+        ))
+        .unwrap();
+        let mut legacy = historical.clone();
+        legacy.as_object_mut().unwrap().remove("contract_version");
+        let decoded: MaterialMesh = serde_json::from_value(legacy).unwrap();
+        assert_eq!(decoded.contract_version, MeshContractVersion::HistoricalV1);
+
+        let mut reserve_v2 = decoded;
+        crate::metabolic_reserve::stamp_reserve_equation(&mut reserve_v2);
+        reserve_v2.stamp_conservative_schema();
+        assert_eq!(
+            reserve_v2.equation_id,
+            crate::metabolic_reserve::EQUATION_VERSION_METABOLIC_RESERVE
+        );
+        assert_eq!(
+            reserve_v2.contract_version,
+            MeshContractVersion::ConservativeV2
+        );
+        assert!(reserve_v2.uses_observer_only_death());
     }
 }

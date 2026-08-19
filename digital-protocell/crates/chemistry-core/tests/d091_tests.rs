@@ -1,6 +1,9 @@
 //! D-091 metabolic reserve unit tests.
 
-use chemistry_core::material_mesh::{LumpedChem, MaterialMesh, DEFAULT_RHO_S, EQUATION_VERSION_MATERIAL_MESH};
+use chemistry_core::material_mesh::{
+    LumpedChem, MaterialMesh, MeshContractVersion, DEFAULT_RHO_S,
+    EQUATION_VERSION_MATERIAL_MESH,
+};
 use chemistry_core::mesh_growth::{growth_step, GrowthParams};
 use chemistry_core::mesh_reactions::{q_catalyst, ReactionParams};
 use chemistry_core::metabolic_reserve::{
@@ -115,4 +118,35 @@ fn reserve_disabled_matches_default_path_identity() {
     let p = ReserveParams::default();
     assert!(!p.enable);
     assert_eq!(p.k_store, 0.0);
+}
+
+#[test]
+fn conservative_contract_composes_with_d091_lineage_and_runs_fluxes() {
+    let mut mesh = tiny_mesh();
+    mesh.interior.r = 0.2;
+    stamp_reserve_equation(&mut mesh);
+    mesh.stamp_conservative_schema();
+    let equation = mesh.equation_id.clone();
+    let mut react = ReactionParams::conservative_v2();
+    react.reserve = reserve_params();
+
+    assert_eq!(mesh.contract_version, MeshContractVersion::ConservativeV2);
+    assert_eq!(mesh.equation_id, EQUATION_VERSION_METABOLIC_RESERVE);
+    assert!(reserve_schema_load_ok(&mesh, &react.reserve));
+
+    let mut a_to_r = 0.0;
+    let mut r_to_a = 0.0;
+    let mut r_to_w = 0.0;
+    for _ in 0..200 {
+        let led = reserve_metab_step(&mut mesh, &react, 0.02);
+        a_to_r += led.a_to_r;
+        r_to_a += led.r_to_a;
+        r_to_w += led.r_to_w;
+        assert_eq!(led.rejected_steps, 0);
+    }
+    assert!(a_to_r > 0.0);
+    assert!(r_to_a > 0.0);
+    assert!(r_to_w > 0.0);
+    assert_eq!(mesh.equation_id, equation);
+    assert_eq!(mesh.contract_version, MeshContractVersion::ConservativeV2);
 }
