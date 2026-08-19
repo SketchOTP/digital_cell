@@ -697,7 +697,3 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: The result diagnoses catalyst-production investment as an acute finite-feed recovery bottleneck; it does not establish a production repair, a different resource contract, or a sufficient alternative catalyst strategy. No implementation or DC-DEV-021 work is authorized.
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
-- Risk class: NORMAL
-- Relationship: new
-- Related directive: none
-- Status at issuance: ISSUED
