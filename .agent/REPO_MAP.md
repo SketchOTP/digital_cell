@@ -76,6 +76,9 @@
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r7/` — DC-DEV-020-R7 on-policy zero-drift attribution, frozen coordinate replay, and exact-root oracle audit.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8/` — DC-DEV-020-R8 product-feedback topology feasibility audit and fail-closed Gate 3 disposition.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r1/` — DC-DEV-020-R8-R1 causal A-demand elasticity audit and independent R8 pair-confounding disposition.
+- `digital-protocell/examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs` — DC-DEV-020-R8-R4 observer-only shared-affinity audit; includes the normalized R8-R3 helper and must not be imported into production chemistry.
+- `digital-protocell/experiments/generated/dcdev020r8r4/` — compact R8-R4 evidence; dense ledger is externalized to governed Atlas storage.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r4/` — R8-R4 protocol and disposition.
 
 ## External integration points
 

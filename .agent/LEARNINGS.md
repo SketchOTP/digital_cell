@@ -277,3 +277,12 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R8-R3 observer-only catalyst reserve horizon; no production repair or DC-DEV-021 authorization.
 - Supersedes learning: none
+## L-DCDEV020R8R4-001
+
+- Learning ID: L-DCDEV020R8R4-001
+- Date: 2026-08-19
+- Fact or lesson: Catalyst production cannot be selected independently of assimilation. The single shared-affinity topology passed finite restoration and dose monotonicity but failed the original R6 sustained homeostasis gate, so it remains an observer-only negative result and does not authorize production integration.
+- Evidence location: `digital-protocell/examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs`, `digital-protocell/experiments/generated/dcdev020r8r4/`, and the governed external dense ledger referenced by `external_evidence_manifest.json`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R8-R4 observer-only shared-affinity catalyst-production audit; no production integration or DC-DEV-021 authorization.
+- Supersedes learning: none

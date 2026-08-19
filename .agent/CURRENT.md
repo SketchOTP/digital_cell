@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-18T00:00:00-04:00`
+- Last updated: `2026-08-19T00:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260818-dcdev020r8r3-catalyst-reserve-horizon`
-- External directive ID: `DC-DEV-020-R8-R3`
-- Objective: `Determine the catalyst reserve horizon and whether a source-portable delayed catalyst-investment window exists, without changing production chemistry.`
+- Local directive ID: `D-20260819-dcdev020r8r4-shared-affinity-autogenous-cprod`
+- External directive ID: `DC-DEV-020-R8-R4`
+- Objective: `Test exactly one target-free, memoryless, negative-autogenous catalyst-production topology jointly with the sealed R6 assimilation source.`
 - Current status: `VALIDATING`
-- Acceptance: `Observer execution classifies DCDEV020R8R3_CATALYST_RESERVE_SOURCE_CONTEXT_DEPENDENT at local/remote head fd8dc438e738fc61e9d56fe4f3749f77b86b0fe2; exact-head CI and architect review are pending because GitHub PR creation is unauthenticated.`
-- Current phase: `DC-DEV-020-R8-R3 observer-only catalyst reserve horizon audit; no production law or DC-DEV-021 work is authorized.`
-- Expected or actual touched areas: `R8-R3 observer example registration, compact evidence, governed external dense-ledger seal, documentation, governance, and scoped CI`
-- Immediate next action: `Complete exact-head CI and return the R8-R3 package for architect review; do not begin DC-DEV-021.`
+- Acceptance: `Local observer result is DCDEV020R8R4_SHARED_AFFINITY_NO_STABLE_HOMEOSTASIS; exact-head remote CI and architect review are pending.`
+- Current phase: `DC-DEV-020-R8-R4 observer-only shared-affinity audit; no production law, behavior, or DC-DEV-021 work is authorized.`
+- Expected or actual touched areas: `R8-R4 observer example/helper, Cargo registration, compact evidence, governed external dense-ledger seal, documentation, governance, and scoped CI`
+- Immediate next action: `Complete evidence sealing, exact-head CI, and architect review; do not begin DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -44,7 +44,7 @@
 
 ## Blockers
 
-- Independent architect review for R8-R1 remains open. No NFA production law, refit, parameter tuning, additional kinetic family, behavior, or DC-DEV-021 is authorized.
+- Exact-head remote CI and architect review for R8-R4 remain open. No production law, parameter tuning, additional kinetic family, behavior, or DC-DEV-021 is authorized.
 
 ## Pending decisions
 
@@ -57,6 +57,7 @@
 - Accepted R8-R2 head for this audit is `9fdd292bbd13f62ef9c88d08e8d887f15326d242`; its dense ledger is sealed at `e932f6ab96e34516de98c97c2cae102553db9764383af3d61abf015743c3a376`.
 - R8-R3 frozen catalyst half-life is `3465.7359027997263` accepted steps from `k_c_turn=0.01` and `dt=0.02`; governed horizon is `8000`; checkpoints are `433, 480, 866, 1733, 3466, 5199, 6931`.
 - R8-R3 result is `DCDEV020R8R3_CATALYST_RESERVE_SOURCE_CONTEXT_DEPENDENT`: D016 has no marginal payback, while R6 pays back only at early checkpoints and not at later checkpoints; deferred arms remain alive and finite.
+- R8-R4 tests `J_C,shared=k_c_prod*A*(1-q_c(C))` using existing `K_C=q_c=0.3`; finite restoration and dose monotonicity pass, but R6 sustained homeostasis fails at `E_AR=54.45821737181944` versus the frozen target `77.91027880846893`.
 
 ## Status vocabulary
 

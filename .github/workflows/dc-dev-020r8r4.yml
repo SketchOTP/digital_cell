@@ -1,0 +1,103 @@
+name: DC-DEV-020-R8-R4 shared-affinity catalyst audit
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-020r8r4-observer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate R8-R4 boundary and compact evidence
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("digital-protocell/experiments/generated/dcdev020r8r4")
+          required = [
+              "protocol.json", "acute_reproduction.json", "finite_feed_summary.json",
+              "dose_summary.json", "sustained_summary.json", "cycle_summary.json",
+              "qualification.json", "literature_review.json",
+              "external_evidence_manifest.json", "manifest.json",
+          ]
+          if any(not (root / name).is_file() for name in required):
+              raise SystemExit("missing R8-R4 compact evidence")
+          protocol = json.loads((root / "protocol.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          if protocol["entry_head"] != "c9b200ee24b88c542eeb0c14038867f4c7fbb466":
+              raise SystemExit("wrong R8-R3 authority")
+          if protocol["shared_affinity_formula"] != "k_c_prod*A*(1-q_c(C))":
+              raise SystemExit("wrong candidate law")
+          if qualification["dc_dev_021_authorized"] or qualification["next_execution_started"]:
+              raise SystemExit("R8-R4 scope boundary opened")
+          if qualification["production_chemistry_changed"] or qualification["production_behavior_changed"]:
+              raise SystemExit("production boundary opened")
+          PY
+          changed="$(git diff --name-only 1e242f28152797b512e25cd56c7b718e45d6ca97 HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then exit 1; fi
+          if printf '%s\n' "$changed" | grep -Ei 'dcdev021|dc-dev-021'; then exit 1; fi
+
+      - name: Scoped formatting and R8-R4 compile
+        working-directory: digital-protocell
+        run: |
+          rustup run 1.89.0 rustfmt --edition 2021 --check examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs
+          cargo +1.89.0 test -p regulatory-core --example dcdev020r8r4_shared_affinity_autogenous_cprod --release
+
+      - name: Execute R8-R4 fixed observer audit
+        working-directory: digital-protocell
+        env:
+          DCDEV020R8R4_OUTPUT_ROOT: experiments/generated/dcdev020r8r4-ci
+          DCDEV020R8R4_DENSE_LEDGER: target/dcdev020r8r4-shared-affinity-dense.json
+          DCDEV020R8R4_EXTERNAL_LOCATION: CI_UNSEALED
+          DCDEV020R8R4_EXTERNAL_SHA256: CI_UNSEALED
+          DCDEV020R8R4_RESULT_COMMIT: PENDING
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run -p regulatory-core --example dcdev020r8r4_shared_affinity_autogenous_cprod --release --quiet
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r8r4-ci")
+          q = json.loads((root / "qualification.json").read_text())
+          dose = json.loads((root / "dose_summary.json").read_text())
+          assert q["classification"] == "DCDEV020R8R4_SHARED_AFFINITY_NO_STABLE_HOMEOSTASIS"
+          assert q["gate_3"] and q["gate_4"] and not q["gate_5"]
+          assert dose["monotonic"]
+          assert not q["dc_dev_021_authorized"] and not q["next_execution_started"]
+          PY
+
+      - name: Preservation regressions
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test -p regulatory-core
+          cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse --verify HEAD)" = "$EXPECTED_HEAD"

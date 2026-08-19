@@ -374,3 +374,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260819-dcdev020r8r4-shared-affinity-autogenous-cprod
+
+- Issued: `2026-08-19T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R8-R4`
+- Objective: Test exactly one target-free, memoryless, negative-autogenous catalyst-production topology jointly with the sealed R6 assimilation source.
+- Scope: Accepted R8-R3 head `c9b200ee24b88c542eeb0c14038867f4c7fbb466`, exact R8-R2 acute and R8-R3 sustained reproduction, shared-affinity counterfactual `k_c_prod*A*(1-q_c(C))` using existing `K_C=q_c`, R6 finite restoration, dose robustness, sustained and conditional three-cycle gates, D016 preservation, literature disposition, compact evidence, governed dense evidence, governance, preservation, scoped CI, and draft PR.
+- Exclusions: Production chemistry or behavior changes, parameter fitting, source/resource/transport/sink/reserve/A-decay changes, targets, timers, history, controllers, additional catalyst families, and DC-DEV-021.
+- Acceptance: Stop on the first decisive failed gate and return exactly one authorized R8-R4 classification with exact-head remote CI and architect review; positive classification does not authorize production integration.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

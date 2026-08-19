@@ -720,3 +720,14 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: The result diagnoses catalyst-production investment as an acute finite-feed recovery bottleneck; it does not establish a production repair, a different resource contract, or a sufficient alternative catalyst strategy. No implementation or DC-DEV-021 work is authorized.
 - Blockers: architect review; production integration and DC-DEV-021 remain unauthorized.
 - Follow-up directive: none
+- D-20260819-dcdev020r8r4-shared-affinity-autogenous-cprod - PARTIAL
+  - Outcome ID: `OUT-DCDEV020R8R4-SHARED-AFFINITY-NO-STABLE-HOMEOSTASIS`
+  - Supersedes outcome: none
+  - Closed: `2026-08-19T00:00:00-04:00`
+  - Acceptance: `PARTIAL`
+  - Summary: The observer-only shared-affinity law `J_C=k_c_prod*A*(1-q_c(C))`, reusing existing `K_C=q_c=0.3` and adding no parameter or state, reproduced the accepted R8-R2 acute authority and R8-R3 sustained authority. Under sealed R6, finite-feed restoration passed with final `E_AR=62.575632782724874`, all dose scales were monotonic (`62.571943751789135`, `62.575632782724874`, `62.57772981708882`), but the 8,000-step sustained gate failed at `E_AR=54.45821737181944` against target `77.91027880846893`; the conditional three-cycle assay was correctly not run. Classification: `DCDEV020R8R4_SHARED_AFFINITY_NO_STABLE_HOMEOSTASIS`.
+  - Changed areas: observer example/helper, Cargo registration, compact evidence, external dense-ledger manifest, documentation, governance, and scoped workflow; no production chemistry or behavior changed.
+  - Validation: local Rust 1.89.0 compile and execution passed; exact authority reproduction passed; finite-feed, dose, D016 preservation, accounting, and boundary checks passed; exact-head remote CI and architect review are pending.
+  - Remaining risks: This closes only the tested shared-affinity topology as a sustained-homeostasis route. It does not reject all coupled source/allocation architectures and does not authorize production integration.
+  - Blockers: exact-head remote CI and architect review; DC-DEV-021 remains unauthorized.
+  - Follow-up directive: none

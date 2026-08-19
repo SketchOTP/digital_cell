@@ -103,3 +103,7 @@ path = "../../examples/dcdev020r8r2_catalyst_investment_payback.rs"
 [[example]]
 name = "dcdev020r8r3_catalyst_reserve_horizon"
 path = "../../examples/dcdev020r8r3_catalyst_reserve_horizon.rs"
+
+[[example]]
+name = "dcdev020r8r4_shared_affinity_autogenous_cprod"
+path = "../../examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs"
