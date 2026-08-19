@@ -531,6 +531,14 @@ pub fn run_pipeline(out: &Path) -> Result<R9Report, String> {
             "experiments/generated/dcdev020r9r1/r8r2_exact/payback_summary.json".into(),
             "experiments/generated/dcdev020r9r1/r8r2_exact/shadow_summary.json".into(),
             "experiments/generated/dcdev020r9r1/r8r2_exact/qualification.json".into(),
+            "experiments/generated/dcdev020r9r1/r8r4_exact/manifest.json".into(),
+            "experiments/generated/dcdev020r9r1/r8r4_exact/protocol.json".into(),
+            "experiments/generated/dcdev020r9r1/r8r4_exact/acute_reproduction.json".into(),
+            "experiments/generated/dcdev020r9r1/r8r4_exact/finite_feed_summary.json".into(),
+            "experiments/generated/dcdev020r9r1/r8r4_exact/dose_summary.json".into(),
+            "experiments/generated/dcdev020r9r1/r8r4_exact/sustained_summary.json".into(),
+            "experiments/generated/dcdev020r9r1/r8r4_exact/cycle_summary.json".into(),
+            "experiments/generated/dcdev020r9r1/r8r4_exact/qualification.json".into(),
         ],
         material_vector_weights: crate::mesh_contracts::MESH_SPECIES
             .iter()

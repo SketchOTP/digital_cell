@@ -30,6 +30,10 @@ evolution, or DC-DEV-021 work is included.
   ConservativeV2 compatibility mode. Its compact manifest records the v2
   contract and unchanged D-091 equation lineage; dense frames remain governed
   external evidence.
+- `../r8r4_exact/` contains the exact R8-R4 shared-affinity/autogenous-Cprod
+  machinery replayed under the same ConservativeV2 compatibility mode. The
+  replay is independently qualified as a negative bounded result; its dense
+  8,000-step traces remain governed external evidence.
 
 The historical `dcdev020r9/` evidence is preserved and not overwritten. The
 legacy R9 E5 rows remain proxy diagnostics and are not presented as exact

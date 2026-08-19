@@ -38,6 +38,8 @@ jobs:
           crates/chemistry-core/examples/dcdev020r9_mesh_contract_requalification.rs
           examples/dcdev020r9r1_exact_metabolic_replays.rs
           examples/dcdev020r8r2_catalyst_investment_payback.rs
+          examples/dcdev020r8r3_shared_affinity_helper.rs
+          examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs
       - name: R9 contract tests
         working-directory: digital-protocell
         run: cargo +1.89.0 test -p chemistry-core --lib mesh_contracts -- --nocapture
@@ -62,6 +64,13 @@ jobs:
       - name: Exact R8-R2 replay under ConservativeV2
         working-directory: digital-protocell
         run: env DCDEV020R9R1_V2=1 cargo +1.89.0 run -p regulatory-core --example dcdev020r8r2_catalyst_investment_payback --quiet
+      - name: Exact R8-R4 replay under ConservativeV2
+        working-directory: digital-protocell
+        run: >-
+          env DCDEV020R9R1_V2=1
+          DCDEV020R8R4_OUTPUT_ROOT=experiments/generated/dcdev020r9r1/r8r4_exact
+          cargo +1.89.0 run -p regulatory-core
+          --example dcdev020r8r4_shared_affinity_autogenous_cprod --quiet
       - name: Verify R1 replay artifacts
         working-directory: digital-protocell
         run: |
@@ -78,6 +87,9 @@ jobs:
           protocol = json.loads((root / "r8r2_exact" / "protocol.json").read_text())
           assert protocol["mesh_contract_version"] == "ConservativeV2"
           assert protocol["r9r1_orthogonal_contract_replay"] is True
+          r8r4 = json.loads((root / "r8r4_exact" / "qualification.json").read_text())
+          assert r8r4["mesh_contract_version"] == "ConservativeV2"
+          assert r8r4["r9r1_orthogonal_contract_replay"] is True
           matrix = json.loads((root / "mesh_contract" / "d087_gate_matrix.json").read_text())
           assert len(matrix["gates"]) == 8
           assert matrix["all_pass"] is True

@@ -1,0 +1,130 @@
+{
+  "arms": [
+    {
+      "a_toward_settled": true,
+      "accelerated_decay_steps": 0,
+      "alive": true,
+      "capacity_violations": 0,
+      "clipping_steps": 0,
+      "context": "R6",
+      "dose_scale": 0.75,
+      "final_state": {
+        "a": 0.375149410648825,
+        "alive": true,
+        "area": 70.8275261895172,
+        "c": 0.7345709915819825,
+        "e_stored": 62.571943751789135,
+        "f": 0.047999637167088716,
+        "n": 0.047999637167088716,
+        "r": 0.5082916343533943,
+        "step": 480
+      },
+      "finite": true,
+      "initial": {
+        "a": 0.303630027599798,
+        "alive": true,
+        "area": 70.8275261895172,
+        "c": 0.7909794528553131,
+        "e_stored": 60.82781514212436,
+        "f": 0.0,
+        "n": 0.0,
+        "r": 0.5551860064286098,
+        "step": 0
+      },
+      "max_accounting_residual": 1.8427100123563633e-14,
+      "max_resource_error": 0.0,
+      "mode": "shared_affinity_k_c_prod_A_one_minus_qc",
+      "r_toward_settled": false,
+      "settled_distance_final": 0.15491318210826105,
+      "settled_distance_initial": 0.2014186190010067,
+      "steps": 480,
+      "trajectory_hash": "2c8dd7498f205fa3"
+    },
+    {
+      "a_toward_settled": true,
+      "accelerated_decay_steps": 0,
+      "alive": true,
+      "capacity_violations": 0,
+      "clipping_steps": 0,
+      "context": "R6",
+      "dose_scale": 1.0,
+      "final_state": {
+        "a": 0.3751980599643887,
+        "alive": true,
+        "area": 70.8275261895172,
+        "c": 0.7345722043164538,
+        "e_stored": 62.575632782724874,
+        "f": 0.10257170362924495,
+        "n": 0.10257170362924495,
+        "r": 0.5082950697446418,
+        "step": 480
+      },
+      "finite": true,
+      "initial": {
+        "a": 0.303630027599798,
+        "alive": true,
+        "area": 70.8275261895172,
+        "c": 0.7909794528553131,
+        "e_stored": 60.82781514212436,
+        "f": 0.0,
+        "n": 0.0,
+        "r": 0.5551860064286098,
+        "step": 0
+      },
+      "max_accounting_residual": 2.3215370598128615e-14,
+      "max_resource_error": 0.0,
+      "mode": "shared_affinity_k_c_prod_A_one_minus_qc",
+      "r_toward_settled": false,
+      "settled_distance_final": 0.15487194216446187,
+      "settled_distance_initial": 0.2014186190010067,
+      "steps": 480,
+      "trajectory_hash": "7b74e0f217c402d5"
+    },
+    {
+      "a_toward_settled": true,
+      "accelerated_decay_steps": 0,
+      "alive": true,
+      "capacity_violations": 0,
+      "clipping_steps": 0,
+      "context": "R6",
+      "dose_scale": 1.25,
+      "final_state": {
+        "a": 0.3752257024292887,
+        "alive": true,
+        "area": 70.8275261895172,
+        "c": 0.7345728977635518,
+        "e_stored": 62.57772981708882,
+        "f": 0.15716800570512915,
+        "n": 0.15716800570512915,
+        "r": 0.5082970348980898,
+        "step": 480
+      },
+      "finite": true,
+      "initial": {
+        "a": 0.303630027599798,
+        "alive": true,
+        "area": 70.8275261895172,
+        "c": 0.7909794528553131,
+        "e_stored": 60.82781514212436,
+        "f": 0.0,
+        "n": 0.0,
+        "r": 0.5551860064286098,
+        "step": 0
+      },
+      "max_accounting_residual": 1.758662659945287e-14,
+      "max_resource_error": 0.0,
+      "mode": "shared_affinity_k_c_prod_A_one_minus_qc",
+      "r_toward_settled": false,
+      "settled_distance_final": 0.15484850384406876,
+      "settled_distance_initial": 0.2014186190010067,
+      "steps": 480,
+      "trajectory_hash": "3521014f62e9f555"
+    }
+  ],
+  "monotonic": true,
+  "scales": [
+    0.75,
+    1.0,
+    1.25
+  ]
+}

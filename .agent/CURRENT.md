@@ -14,7 +14,7 @@
 - Acceptance: `Local R9-R1 evidence is generated and exact-head remote CI plus architect review remain pending.`
 - Current phase: `DC-DEV-020-R9-R1 observer-only contract requalification; no new metabolic mechanism, behavior, evolution, or DC-DEV-021 work is authorized.`
 - Expected or actual touched areas: `versioned mesh contract metadata, reserve schema composition, reserve-bearing D-087 gates 0-7, exact protocol replay evidence, governance, and scoped CI`
-- Immediate next action: `Run the scoped local suite, commit, push PR #44, and await architect review; no new scientific execution is authorized.`
+- Immediate next action: `Run the final scoped suite, commit the exact R8-R4 replay wiring/evidence, push PR #44, and await architect review; no new scientific execution is authorized.`
 
 ## Temporary task-relevant facts
 
@@ -42,7 +42,7 @@
 - The frozen substrate remains local, isotropic, passive, and reaction-only; no DC-DEV-010 directional substrate code may enter this branch.
 - DC-DEV-012 is closed as valid negative evidence and is not imported.
 - R9-R1 correction: ConservativeV2 is now an orthogonal physical/material/death contract; D-091 remains the biological equation lineage. The old R9 final classification was not architect-accepted because D-091 reserve composition and exact historical replay semantics were not yet proven.
-- R9-R1 exact artifacts are under `digital-protocell/experiments/generated/dcdev020r9r1/`; dense R8-R2 frames remain externalized and the compact manifest records the v2 replay mode.
+- R9-R1 exact artifacts are under `digital-protocell/experiments/generated/dcdev020r9r1/`; R8-R2 and R8-R4 dense frames remain externalized and their compact manifests record ConservativeV2 replay mode. R8-R4 is a bounded negative replay (`DCDEV020R8R4_SHARED_AFFINITY_NO_STABLE_HOMEOSTASIS`).
 
 ## Blockers
 

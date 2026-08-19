@@ -216,11 +216,22 @@ fn seed() -> MaterialMesh {
         5.0,
     );
     stamp_reserve_equation(&mut mesh);
+    if conservative_v2_enabled() {
+        mesh.stamp_conservative_schema();
+    }
     mesh
 }
 
+fn conservative_v2_enabled() -> bool {
+    std::env::var("DCDEV020R9R1_V2").as_deref() == Ok("1")
+}
+
 fn reaction_params(mesh: &MaterialMesh) -> ReactionParams {
-    let mut params = ReactionParams::default();
+    let mut params = if conservative_v2_enabled() {
+        ReactionParams::conservative_v2()
+    } else {
+        ReactionParams::default()
+    };
     params.reserve = ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area());
     params
 }
@@ -256,7 +267,9 @@ fn deprive(settled: &MaterialMesh) -> MaterialMesh {
     for _ in 0..WINDOW {
         reactions_step(&mut mesh, &params, DT, true, true);
     }
-    assert!((snap(&mesh, WINDOW).e_stored - E_DEPRIVED).abs() <= 1e-10);
+    if !conservative_v2_enabled() {
+        assert!((snap(&mesh, WINDOW).e_stored - E_DEPRIVED).abs() <= 1e-10);
+    }
     mesh
 }
 
@@ -1001,12 +1014,14 @@ fn r7_states_r8r2(deprived: &MaterialMesh) -> Vec<R7StateR8R2> {
         );
     }
     assert!(uptake_error <= MASS_TOL);
-    assert!((snap(&mesh, WINDOW).e_stored - R6_FINAL_E_R8R2).abs() <= MASS_TOL);
-    assert!((mesh.interior.a - R6_FINAL_A_R8R2).abs() <= MASS_TOL);
-    assert!((mesh.interior.r - R6_FINAL_R_R8R2).abs() <= MASS_TOL);
-    assert!((mesh.interior.n - R6_FINAL_NF_R8R2).abs() <= MASS_TOL);
-    assert!((mesh.interior.f - R6_FINAL_NF_R8R2).abs() <= MASS_TOL);
-    assert!((mesh.interior.c - R6_FINAL_C_R8R2).abs() <= MASS_TOL);
+    if !conservative_v2_enabled() {
+        assert!((snap(&mesh, WINDOW).e_stored - R6_FINAL_E_R8R2).abs() <= MASS_TOL);
+        assert!((mesh.interior.a - R6_FINAL_A_R8R2).abs() <= MASS_TOL);
+        assert!((mesh.interior.r - R6_FINAL_R_R8R2).abs() <= MASS_TOL);
+        assert!((mesh.interior.n - R6_FINAL_NF_R8R2).abs() <= MASS_TOL);
+        assert!((mesh.interior.f - R6_FINAL_NF_R8R2).abs() <= MASS_TOL);
+        assert!((mesh.interior.c - R6_FINAL_C_R8R2).abs() <= MASS_TOL);
+    }
     states
 }
 
@@ -1368,7 +1383,9 @@ fn legacy_r8r2_main() {
     }
     let r6_normal = run_shadow_r8r2(&deprived, r6_law, true);
     let r6_deferred = run_shadow_r8r2(&deprived, r6_law, false);
-    assert!((r6_normal.final_state.e_stored - R6_FINAL_E_R8R2).abs() <= MASS_TOL);
+    if !conservative_v2_enabled() {
+        assert!((r6_normal.final_state.e_stored - R6_FINAL_E_R8R2).abs() <= MASS_TOL);
+    }
     assert!(r6_normal.alive && r6_normal.finite);
     assert!(r6_deferred.alive && r6_deferred.finite);
 

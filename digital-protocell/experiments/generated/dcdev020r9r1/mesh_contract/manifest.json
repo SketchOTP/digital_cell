@@ -1071,7 +1071,15 @@
     "experiments/generated/dcdev020r9r1/r8r2_exact/root_summary.json",
     "experiments/generated/dcdev020r9r1/r8r2_exact/payback_summary.json",
     "experiments/generated/dcdev020r9r1/r8r2_exact/shadow_summary.json",
-    "experiments/generated/dcdev020r9r1/r8r2_exact/qualification.json"
+    "experiments/generated/dcdev020r9r1/r8r2_exact/qualification.json",
+    "experiments/generated/dcdev020r9r1/r8r4_exact/manifest.json",
+    "experiments/generated/dcdev020r9r1/r8r4_exact/protocol.json",
+    "experiments/generated/dcdev020r9r1/r8r4_exact/acute_reproduction.json",
+    "experiments/generated/dcdev020r9r1/r8r4_exact/finite_feed_summary.json",
+    "experiments/generated/dcdev020r9r1/r8r4_exact/dose_summary.json",
+    "experiments/generated/dcdev020r9r1/r8r4_exact/sustained_summary.json",
+    "experiments/generated/dcdev020r9r1/r8r4_exact/cycle_summary.json",
+    "experiments/generated/dcdev020r9r1/r8r4_exact/qualification.json"
   ],
   "material_vector_weights": [
     [

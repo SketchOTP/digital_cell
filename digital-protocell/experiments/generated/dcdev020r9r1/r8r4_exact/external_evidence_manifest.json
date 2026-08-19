@@ -1,0 +1,17 @@
+{
+  "compact_git_artifacts": [
+    "protocol.json",
+    "acute_reproduction.json",
+    "finite_feed_summary.json",
+    "dose_summary.json",
+    "sustained_summary.json",
+    "cycle_summary.json",
+    "qualification.json",
+    "literature_review.json",
+    "external_evidence_manifest.json",
+    "manifest.json"
+  ],
+  "dense_artifact": "experiments/generated/dcdev020r9r1/r8r4_exact\\shared_affinity_dense_ledger.json",
+  "external_location": "UNRECORDED_EXTERNAL_LOCATION",
+  "sha256": "COMPUTED_AFTER_RUN"
+}

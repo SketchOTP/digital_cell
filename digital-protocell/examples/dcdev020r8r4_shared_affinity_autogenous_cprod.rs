@@ -371,6 +371,12 @@ mod r8r3 {
             .unwrap_or_else(|_| "COMPUTED_AFTER_RUN".into());
         let result_commit =
             std::env::var("DCDEV020R8R4_RESULT_COMMIT").unwrap_or_else(|_| "PENDING".into());
+        let conservative_v2 = conservative_v2_enabled();
+        let contract_version = if conservative_v2 {
+            "ConservativeV2"
+        } else {
+            "HistoricalV1"
+        };
 
         let settled = settle();
         let deprived = deprive(&settled);
@@ -381,8 +387,12 @@ mod r8r3 {
         let r6_law = r6();
         let acute = run_shadow_r8r2(&deprived, r6_law, true);
         let acute_deferred = run_shadow_r8r2(&deprived, r6_law, false);
-        assert!((acute.final_state.e_stored - 60.0620310117838).abs() <= MASS_TOL_R4);
-        assert!((acute_deferred.final_state.e_stored - 63.645566711951915).abs() <= MASS_TOL_R4);
+        if !conservative_v2 {
+            assert!((acute.final_state.e_stored - 60.0620310117838).abs() <= MASS_TOL_R4);
+            assert!(
+                (acute_deferred.final_state.e_stored - 63.645566711951915).abs() <= MASS_TOL_R4
+            );
+        }
 
         let sustained_d016_current =
             run_sustained_r8r3(&deprived, SourceLaw::Baseline, true, 8_000, &[]);
@@ -589,6 +599,8 @@ mod r8r3 {
         let dense = json!({
             "directive": "DC-DEV-020-R8-R4",
             "entry_head": ENTRY,
+            "mesh_contract_version": contract_version,
+            "r9r1_orthogonal_contract_replay": conservative_v2,
             "finite_current_trace": trace_phase(&deprived, r6_law, ProductionMode::Current, WINDOW, Some(PATCH), 1.0, false),
             "finite_none_trace": trace_phase(&deprived, r6_law, ProductionMode::None, WINDOW, Some(PATCH), 1.0, false),
             "finite_shared_trace": trace_phase(&deprived, r6_law, ProductionMode::SharedAffinity, WINDOW, Some(PATCH), 1.0, false),
@@ -610,6 +622,8 @@ mod r8r3 {
             "directive": "DC-DEV-020-R8-R4",
             "entry_head": ENTRY,
             "clean_scientific_base": CLEAN_BASE_R4,
+            "mesh_contract_version": contract_version,
+            "r9r1_orthogonal_contract_replay": conservative_v2,
             "seals": {"R5": R5_SHA, "R7": R7_SHA, "R8": R8_SHA, "R8-R1": R8R1_SHA, "R8-R2": R8R2_SHA, "R8-R3": R8R3_SHA},
             "candidate": {"K_C": params.q_c, "formula": "k_c_prod*A*(1-q_c(C))", "new_parameters": false, "observer_only": true},
             "acute": {"normal": acute.final_state, "deferred": acute_deferred.final_state},
@@ -621,19 +635,19 @@ mod r8r3 {
             "cycles": cycles,
             "d016_finite": d016_finite,
             "d016_sustained": d016_shared,
-            "qualification": {"gate_0": true, "gate_1": candidate_semantics(&params), "gate_2": true, "gate_3": gate3, "gate_4": gate4, "gate_5": gate5, "gate_6": gate6, "gate_7": gate7, "classification": classification, "production_chemistry_changed": false, "production_behavior_changed": false, "dc_dev_021_authorized": false, "architect_acceptance": "PENDING", "next_execution_started": false},
+            "qualification": {"gate_0": true, "gate_1": candidate_semantics(&params), "gate_2": true, "gate_3": gate3, "gate_4": gate4, "gate_5": gate5, "gate_6": gate6, "gate_7": gate7, "classification": classification, "mesh_contract_version": contract_version, "r9r1_orthogonal_contract_replay": conservative_v2, "production_chemistry_changed": false, "production_behavior_changed": false, "dc_dev_021_authorized": false, "architect_acceptance": "PENDING", "next_execution_started": false},
             "external_evidence": {"location": external_location, "sha256": external_sha},
             "result_commit": result_commit,
         });
         write_json(
             &output,
             "protocol.json",
-            &json!({"directive": "DC-DEV-020-R8-R4", "entry_head": ENTRY, "clean_scientific_base": CLEAN_BASE_R4, "R6_source": {"K_PL": R6_K_PL, "p": R6_P}, "K_C": params.q_c, "shared_affinity_formula": "k_c_prod*A*(1-q_c(C))", "finite_feed_patch": PATCH, "finite_feed_steps": WINDOW, "sustained_steps": 8_000, "E_target": E_TARGET_R4, "observer_only": true, "production_chemistry_changed": false, "production_behavior_changed": false, "dc_dev_021_authorized": false}),
+            &json!({"directive": "DC-DEV-020-R8-R4", "entry_head": ENTRY, "clean_scientific_base": CLEAN_BASE_R4, "mesh_contract_version": contract_version, "r9r1_orthogonal_contract_replay": conservative_v2, "R6_source": {"K_PL": R6_K_PL, "p": R6_P}, "K_C": params.q_c, "shared_affinity_formula": "k_c_prod*A*(1-q_c(C))", "finite_feed_patch": PATCH, "finite_feed_steps": WINDOW, "sustained_steps": 8_000, "E_target": E_TARGET_R4, "observer_only": true, "production_chemistry_changed": false, "production_behavior_changed": false, "dc_dev_021_authorized": false}),
         );
         write_json(
             &output,
             "acute_reproduction.json",
-            &json!({"normal": acute.final_state, "deferred": acute_deferred.final_state, "normal_expected": 60.0620310117838, "deferred_expected": 63.645566711951915}),
+            &json!({"normal": acute.final_state, "deferred": acute_deferred.final_state, "historical_v1_expected": {"normal": 60.0620310117838, "deferred": 63.645566711951915}, "mesh_contract_version": contract_version}),
         );
         write_json(
             &output,
@@ -669,7 +683,7 @@ mod r8r3 {
         write_json(
             &output,
             "manifest.json",
-            &json!({"directive": "DC-DEV-020-R8-R4", "classification": classification, "source_commit": ENTRY, "result_commit": result_commit, "dense_location": external_location, "dense_sha256": external_sha, "preservation": ["DC-DEV-002", "DC-DEV-003", "DC-DEV-004", "DC-DEV-005", "DC-DEV-006", "DC-DEV-007", "DC-DEV-008", "DC-DEV-009", "DC-DEV-010-R1", "DC-DEV-010-R2", "DC-DEV-011", "DC-DEV-012", "DC-DEV-013", "DC-DEV-014", "DC-DEV-015", "DC-DEV-016", "DC-DEV-017", "DC-DEV-018", "DC-DEV-018-R1", "DC-DEV-019", "DC-DEV-019-R1", "DC-DEV-020-R1", "DC-DEV-020-R2", "DC-DEV-020-R3", "DC-DEV-020-R4", "DC-DEV-020-R5", "DC-DEV-020-R6", "DC-DEV-020-R7", "DC-DEV-020-R8", "DC-DEV-020-R8-R1", "DC-DEV-020-R8-R2", "DC-DEV-020-R8-R3", "Phase-1", "D-088", "evolution-harness", "governance"]}),
+            &json!({"directive": "DC-DEV-020-R8-R4", "classification": classification, "source_commit": ENTRY, "result_commit": result_commit, "mesh_contract_version": contract_version, "r9r1_orthogonal_contract_replay": conservative_v2, "dense_location": external_location, "dense_sha256": external_sha, "preservation": ["DC-DEV-002", "DC-DEV-003", "DC-DEV-004", "DC-DEV-005", "DC-DEV-006", "DC-DEV-007", "DC-DEV-008", "DC-DEV-009", "DC-DEV-010-R1", "DC-DEV-010-R2", "DC-DEV-011", "DC-DEV-012", "DC-DEV-013", "DC-DEV-014", "DC-DEV-015", "DC-DEV-016", "DC-DEV-017", "DC-DEV-018", "DC-DEV-018-R1", "DC-DEV-019", "DC-DEV-019-R1", "DC-DEV-020-R1", "DC-DEV-020-R2", "DC-DEV-020-R3", "DC-DEV-020-R4", "DC-DEV-020-R5", "DC-DEV-020-R6", "DC-DEV-020-R7", "DC-DEV-020-R8", "DC-DEV-020-R8-R1", "DC-DEV-020-R8-R2", "DC-DEV-020-R8-R3", "DC-DEV-020-R8-R4", "DC-DEV-020-R9-R1", "Phase-1", "D-088", "evolution-harness", "governance"]}),
         );
         println!("DCDEV020R8R4_SHARED_AFFINITY_AUDIT_COMPLETE");
         println!("classification={classification}");

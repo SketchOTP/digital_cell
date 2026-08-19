@@ -1,0 +1,21 @@
+{
+  "E_target": 77.91027880846893,
+  "K_C": 0.3,
+  "R6_source": {
+    "K_PL": 0.017556661171593057,
+    "p": 0.0003277429681759396
+  },
+  "clean_scientific_base": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "dc_dev_021_authorized": false,
+  "directive": "DC-DEV-020-R8-R4",
+  "entry_head": "c9b200ee24b88c542eeb0c14038867f4c7fbb466",
+  "finite_feed_patch": 19.878372106390554,
+  "finite_feed_steps": 480,
+  "mesh_contract_version": "ConservativeV2",
+  "observer_only": true,
+  "production_behavior_changed": false,
+  "production_chemistry_changed": false,
+  "r9r1_orthogonal_contract_replay": true,
+  "shared_affinity_formula": "k_c_prod*A*(1-q_c(C))",
+  "sustained_steps": 8000
+}
