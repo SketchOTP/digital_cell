@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-020-R8-R1`
 - Objective: `Determine causal elasticity of the physical zero-drift source requirement with respect to A and decompose the existing downstream demand blocks without changing production chemistry.`
 - Current status: `VALIDATING`
-- Acceptance: `R8 is architect-accepted negative at 5b314792fe896504f6f8b99218ba48f0328de9f0; R8-R1 local assay classifies DCDEV020R8R1_A_DEMAND_ELASTICITY_POSITIVE with R8_PAIR_CONFOUNDING_CONFIRMED. Remote CI and architect review are pending.`
+- Acceptance: `R8 is architect-accepted negative at 5b314792fe896504f6f8b99218ba48f0328de9f0; R8-R1 classifies DCDEV020R8R1_A_DEMAND_ELASTICITY_POSITIVE with R8_PAIR_CONFOUNDING_CONFIRMED. Exact-head CI 32203590517 passed at bbf636626b0009e339d4250eb998123cb1f193fe; architect review is pending.`
 - Current phase: `DC-DEV-020-R8-R1 observer-only causal A-demand elasticity audit; no production law or DC-DEV-021 work is authorized.`
 - Expected or actual touched areas: `R8-R1 observer example registration, compact evidence, external dense-ledger seal, documentation, governance, and scoped CI`
-- Immediate next action: `Run preservation validation, push strategy/dc-dev-020r8r1-causal-a-demand-elasticity, and return the draft PR for independent architect review; do not begin DC-DEV-021.`
+- Immediate next action: `Return draft PR #38 at exact head bbf636626b0009e339d4250eb998123cb1f193fe for independent architect review; do not begin DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -44,7 +44,7 @@
 
 ## Blockers
 
-- Exact-head remote CI and independent architect review for R8-R1 remain open. No NFA production law, refit, parameter tuning, additional kinetic family, behavior, or DC-DEV-021 is authorized.
+- Independent architect review for R8-R1 remains open. No NFA production law, refit, parameter tuning, additional kinetic family, behavior, or DC-DEV-021 is authorized.
 
 ## Pending decisions
 

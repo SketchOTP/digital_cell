@@ -670,8 +670,8 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - R8 pair confounding audit (2,425 pairs; 155 background-state sign reversals) - PASSED
   - External dense-ledger SHA-256 `f44e8f9fa441451ee40bcbfccac5f556131e4d26868868607e9507c29e7bcf90` on local and Atlas copies - PASSED
   - Focused R8-R1 compile/execution and governance validation - PASSED
-  - Exact-head remote CI - PENDING
+  - Exact-head remote CI run `32203590517` at head `bbf636626b0009e339d4250eb998123cb1f193fe` - PASSED
   - Architect review - PENDING
 - Remaining risks: This establishes causal A-demand elasticity and explains R8 pair confounding, but authorizes no A-feedback law, production integration, or DC-DEV-021 work.
-- Blockers: exact-head remote CI and architect review; production changes and DC-DEV-021 remain unauthorized.
+- Blockers: architect review; production changes and DC-DEV-021 remain unauthorized.
 - Follow-up directive: none
