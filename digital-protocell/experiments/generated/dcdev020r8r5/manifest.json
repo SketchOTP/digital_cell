@@ -1,0 +1,17 @@
+{
+  "classification": "DCDEV020R8R5_CATALYST_ALLOCATION_ENVELOPE_MIXED",
+  "dense_location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r8r5/b4da434a340eb81e70890697c3d94a35ab860c72/ac_allocation_dense_ledger.json",
+  "dense_sha256": "afa9c26f8845f9321450ec12e7e4fe55dc54a088eb6857ff8e1e272dddc8c390",
+  "directive": "DC-DEV-020-R8-R5",
+  "preservation": [
+    "R8-R2",
+    "R8-R3",
+    "R8-R4",
+    "Phase-1",
+    "D-088",
+    "evolution-harness",
+    "governance"
+  ],
+  "result_commit": "b4da434a340eb81e70890697c3d94a35ab860c72",
+  "source_commit": "37b47ec89e02418018a138f670e826c6945c8030"
+}
