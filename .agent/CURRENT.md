@@ -11,7 +11,7 @@
 - External directive ID: `DC-DEV-020-R8-R3`
 - Objective: `Determine the catalyst reserve horizon and whether a source-portable delayed catalyst-investment window exists, without changing production chemistry.`
 - Current status: `VALIDATING`
-- Acceptance: `Observer execution classifies DCDEV020R8R3_CATALYST_RESERVE_SOURCE_CONTEXT_DEPENDENT; architect review is pending.`
+- Acceptance: `Observer execution classifies DCDEV020R8R3_CATALYST_RESERVE_SOURCE_CONTEXT_DEPENDENT at local/remote head fd8dc438e738fc61e9d56fe4f3749f77b86b0fe2; exact-head CI and architect review are pending because GitHub PR creation is unauthenticated.`
 - Current phase: `DC-DEV-020-R8-R3 observer-only catalyst reserve horizon audit; no production law or DC-DEV-021 work is authorized.`
 - Expected or actual touched areas: `R8-R3 observer example registration, compact evidence, governed external dense-ledger seal, documentation, governance, and scoped CI`
 - Immediate next action: `Complete exact-head CI and return the R8-R3 package for architect review; do not begin DC-DEV-021.`
