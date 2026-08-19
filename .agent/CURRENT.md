@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260818-dcdev020r8-nfa-restorative-attractor`
-- External directive ID: `DC-DEV-020-R8`
-- Objective: `Audit whether existing local A can support a target-free product-feedback topology when combined with the frozen N/F coordinate, using an observer-only reciprocal-feasibility analysis.`
+- Local directive ID: `D-20260818-dcdev020r8r1-causal-a-demand-elasticity`
+- External directive ID: `DC-DEV-020-R8-R1`
+- Objective: `Determine causal elasticity of the physical zero-drift source requirement with respect to A and decompose the existing downstream demand blocks without changing production chemistry.`
 - Current status: `VALIDATING`
-- Acceptance: `R8 local training Gate 3 failed closed with DCDEV020R8_PRODUCT_FEEDBACK_TOPOLOGY_INCOMPATIBLE; compact evidence and the governed dense-ledger seal are present. Exact-head CI 32195362719 passed at bfbfece349ec4c637b15c432388b4ddff6ab689d; architect review remains pending.`
-- Current phase: `DC-DEV-020-R8 observer-only product-feedback topology audit and exact-head validation; no production law or DC-DEV-021 work is authorized.`
-- Expected or actual touched areas: `R8 observer example registration, compact evidence, external dense-ledger seal, R8 documentation, governance, and scoped CI`
-- Immediate next action: `Return the pushed draft PR #37 at exact head bfbfece349ec4c637b15c432388b4ddff6ab689d for independent architect review; do not begin R9 or DC-DEV-021.`
+- Acceptance: `R8 is architect-accepted negative at 5b314792fe896504f6f8b99218ba48f0328de9f0; R8-R1 local assay classifies DCDEV020R8R1_A_DEMAND_ELASTICITY_POSITIVE with R8_PAIR_CONFOUNDING_CONFIRMED. Remote CI and architect review are pending.`
+- Current phase: `DC-DEV-020-R8-R1 observer-only causal A-demand elasticity audit; no production law or DC-DEV-021 work is authorized.`
+- Expected or actual touched areas: `R8-R1 observer example registration, compact evidence, external dense-ledger seal, documentation, governance, and scoped CI`
+- Immediate next action: `Run preservation validation, push strategy/dc-dev-020r8r1-causal-a-demand-elasticity, and return the draft PR for independent architect review; do not begin DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -44,7 +44,7 @@
 
 ## Blockers
 
-- Exact-head remote CI and independent architect review remain open. No NFA production law, refit, parameter tuning, additional kinetic family, behavior, or DC-DEV-021 is authorized.
+- Exact-head remote CI and independent architect review for R8-R1 remain open. No NFA production law, refit, parameter tuning, additional kinetic family, behavior, or DC-DEV-021 is authorized.
 
 ## Pending decisions
 
@@ -53,6 +53,7 @@
 - R7 is accepted at `7d5f772f0db67b8d754d27c1182c933533f750fd`; R8 uses frozen `p_NF=0.0003277429681759396` and distance limit `0.0024847602445668224`.
 - R5 dense input is sealed at `4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585`; R7 dense input is sealed at `abdaea6d075c700e36d14d369dba62982f4a65cea47d2d1f162b5dfe8afa59f8`.
 - R8 implementation source is `6e2b03a7551409086c1a38d6cf5f62827fb91929`; its dense pair/constraint ledger is sealed externally at `12b41f27c928635899a7ea3a8d496cfdd3af7d3fd83aaa93024724663e2df9ff`.
+- R8-R1 implementation source is `d50037e53d041d8b06895553933c3b0a78c7a024`; its dense demand ledger is sealed externally at `f44e8f9fa441451ee40bcbfccac5f556131e4d26868868607e9507c29e7bcf90`.
 
 ## Status vocabulary
 

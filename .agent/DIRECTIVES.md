@@ -249,6 +249,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260818-dcdev020r8r1-causal-a-demand-elasticity
+
+- Issued: `2026-08-18T20:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R8-R1`
+- Objective: Determine the causal elasticity of the physical zero-drift source requirement with respect to A while holding every other reconstructed organism state fixed, then decompose existing downstream demand blocks and re-explain the R8 pair contradictions.
+- Scope: Accepted R8 head `5b314792fe896504f6f8b99218ba48f0328de9f0`, sealed R5/R7/R8 evidence, exact R5/R7 state reconstruction, three observer-only A probes, physical zero-drift roots, demand-block ledgers, R8 pair A-only swaps, P3/P4 portability, primary-literature methodology, compact evidence, governed dense evidence, preservation, governance, and scoped CI.
+- Exclusions: New source law, source parameters, A or R feedback implementation, reserve or sink tuning, transport/resource changes, reaction-order changes, A-decay changes, new species, target state, history/integrator, behavior, production integration, and DC-DEV-021.
+- Acceptance: One exact causal A-elasticity classification plus independent R8 pair-confounding verdict, sealed evidence, exact-head remote CI, and architect review; no production mechanism is authorized by the result.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260818-dcdev020r3-two-substrate-saturating-activation
 
 - Issued: `2026-08-18T00:00:00-04:00`

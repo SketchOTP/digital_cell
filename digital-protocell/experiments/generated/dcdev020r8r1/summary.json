@@ -1,0 +1,368 @@
+{
+  "capacity_failures": 0,
+  "demand_decomposition_closure": {
+    "max_abs_residual": 2.6549075438087044e-14,
+    "tolerance": 1e-10
+  },
+  "finite_perturbation_roots": 10560,
+  "non_monotonic_perturbations": 0,
+  "p3": {
+    "block_elasticities": {
+      "a_decay": {
+        "count": 960,
+        "max": 0.9999385507609038,
+        "median": 0.999920909150509,
+        "min": 0.9999186576732821,
+        "p05": 0.9999187380972163,
+        "p95": 0.9999353352424745
+      },
+      "catalyst_production": {
+        "count": 960,
+        "max": 0.9999385508435044,
+        "median": 0.9999209092357741,
+        "min": 0.9999186575101682,
+        "p05": 0.9999187381889207,
+        "p95": 0.999935335216362
+      },
+      "membrane_production": {
+        "count": 960,
+        "max": 0.9995031799352017,
+        "median": 0.9993158536917512,
+        "min": 0.9992791578728344,
+        "p05": 0.9992802273837587,
+        "p95": 0.9994645626230536
+      },
+      "reserve_loss": {
+        "count": 960,
+        "max": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "p05": 0.0,
+        "p95": 0.0
+      },
+      "structural_production": {
+        "count": 960,
+        "max": 0.9995031834743706,
+        "median": 0.999315856355576,
+        "min": 0.999279160414801,
+        "p05": 0.9992802299575221,
+        "p95": 0.9994645659680668
+      }
+    },
+    "block_magnitude": {
+      "a_decay": {
+        "median": 0.0033525175761121833
+      },
+      "catalyst_production": {
+        "median": 0.007545881063431066
+      },
+      "membrane_production": {
+        "median": 0.002558722087278704
+      },
+      "reserve_loss": {
+        "median": 0.0016186927816619625
+      },
+      "structural_production": {
+        "median": 0.002783980388793861
+      }
+    },
+    "dominant_block_by_median_demand": {
+      "median": 0.007545881063431066,
+      "name": "catalyst_production"
+    },
+    "epsilon_A": {
+      "count": 960,
+      "max": 0.9275584001373405,
+      "median": 0.9076652271428287,
+      "min": 0.9046271011439622,
+      "p05": 0.9046950941009602,
+      "p95": 0.9239163890876645
+    },
+    "epsilon_Y_zero": {
+      "count": 960,
+      "max": 0.9275584001373405,
+      "median": 0.9076652271428731,
+      "min": 0.9046271011439178,
+      "p05": 0.9046950941009602,
+      "p95": 0.9239163890876645
+    },
+    "p05_positive": true,
+    "p95_negative": false,
+    "sign_counts": {
+      "negative": 0,
+      "positive": 960,
+      "zero": 0
+    },
+    "states": 960
+  },
+  "p4": {
+    "block_elasticities": {
+      "a_decay": {
+        "count": 960,
+        "max": 0.9999385507609038,
+        "median": 0.999920909150509,
+        "min": 0.9999186576732821,
+        "p05": 0.9999187380972163,
+        "p95": 0.9999353352424745
+      },
+      "catalyst_production": {
+        "count": 960,
+        "max": 0.9999385508435044,
+        "median": 0.9999209092357741,
+        "min": 0.9999186575101682,
+        "p05": 0.9999187381889207,
+        "p95": 0.999935335216362
+      },
+      "membrane_production": {
+        "count": 960,
+        "max": 0.9995031799352017,
+        "median": 0.9993158536917512,
+        "min": 0.9992791578728344,
+        "p05": 0.9992802273837587,
+        "p95": 0.9994645626230536
+      },
+      "reserve_loss": {
+        "count": 960,
+        "max": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "p05": 0.0,
+        "p95": 0.0
+      },
+      "structural_production": {
+        "count": 960,
+        "max": 0.9995031834743706,
+        "median": 0.999315856355576,
+        "min": 0.999279160414801,
+        "p05": 0.9992802299575221,
+        "p95": 0.9994645659680668
+      }
+    },
+    "block_magnitude": {
+      "a_decay": {
+        "median": 0.0033525175761121833
+      },
+      "catalyst_production": {
+        "median": 0.007545881063431066
+      },
+      "membrane_production": {
+        "median": 0.002558722087278704
+      },
+      "reserve_loss": {
+        "median": 0.0016186927816619625
+      },
+      "structural_production": {
+        "median": 0.002783980388793861
+      }
+    },
+    "dominant_block_by_median_demand": {
+      "median": 0.007545881063431066,
+      "name": "catalyst_production"
+    },
+    "epsilon_A": {
+      "count": 960,
+      "max": 0.9275584001373627,
+      "median": 0.9076652271428287,
+      "min": 0.9046271011439622,
+      "p05": 0.9046950941009602,
+      "p95": 0.9239163890876645
+    },
+    "epsilon_Y_zero": {
+      "count": 960,
+      "max": 0.9275584001373627,
+      "median": 0.9076652271428731,
+      "min": 0.9046271011439178,
+      "p05": 0.9046950941009158,
+      "p95": 0.9239163890876645
+    },
+    "p05_positive": true,
+    "p95_negative": false,
+    "sign_counts": {
+      "negative": 0,
+      "positive": 960,
+      "zero": 0
+    },
+    "states": 960
+  },
+  "pair_confounding_verdict": "R8_PAIR_CONFOUNDING_CONFIRMED",
+  "primary_classification": "DCDEV020R8R1_A_DEMAND_ELASTICITY_POSITIVE",
+  "r7_on_policy": {
+    "block_elasticities": {
+      "a_decay": {
+        "count": 480,
+        "max": 0.9999358726464624,
+        "median": 0.9999296139192815,
+        "min": 0.9999206492625312,
+        "p05": 0.999921717245611,
+        "p95": 0.9999353386856313
+      },
+      "catalyst_production": {
+        "count": 480,
+        "max": 0.9999358727318608,
+        "median": 0.9999296140092984,
+        "min": 0.9999206492062207,
+        "p05": 0.999921717107144,
+        "p95": 0.9999353385899745
+      },
+      "membrane_production": {
+        "count": 480,
+        "max": 0.9994688803120155,
+        "median": 0.9994161530756607,
+        "min": 0.9993347903404892,
+        "p05": 0.9993447270819189,
+        "p95": 0.9994644888220883
+      },
+      "reserve_loss": {
+        "count": 480,
+        "max": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "p05": 0.0,
+        "p95": 0.0
+      },
+      "structural_production": {
+        "count": 480,
+        "max": 0.9994688836887811,
+        "median": 0.9994161560218817,
+        "min": 0.9993347927204521,
+        "p05": 0.9993447295255642,
+        "p95": 0.999464492160751
+      }
+    },
+    "block_magnitude": {
+      "a_decay": {
+        "median": 0.0037002623376383628
+      },
+      "catalyst_production": {
+        "median": 0.008328588551571212
+      },
+      "membrane_production": {
+        "median": 0.0028226121796364944
+      },
+      "reserve_loss": {
+        "median": 0.0016242316272916445
+      },
+      "structural_production": {
+        "median": 0.0031277273880774806
+      }
+    },
+    "dominant_block_by_median_demand": {
+      "median": 0.008328588551571212,
+      "name": "catalyst_production"
+    },
+    "epsilon_A": {
+      "count": 480,
+      "max": 0.9246073847810177,
+      "median": 0.916933005153675,
+      "min": 0.9057211171193291,
+      "p05": 0.9070701708024487,
+      "p95": 0.9239570356867732
+    },
+    "epsilon_Y_zero": {
+      "count": 480,
+      "max": 0.9246073847810177,
+      "median": 0.916933005153675,
+      "min": 0.9057211171192847,
+      "p05": 0.9070701708024043,
+      "p95": 0.923957035686751
+    },
+    "p05_positive": true,
+    "p95_negative": false,
+    "sign_counts": {
+      "negative": 0,
+      "positive": 480,
+      "zero": 0
+    },
+    "states": 480
+  },
+  "r8_pairs_audited": 2425,
+  "training": {
+    "block_elasticities": {
+      "a_decay": {
+        "count": 2880,
+        "max": 0.9999385118963477,
+        "median": 0.9999199889832777,
+        "min": 0.9999170529857437,
+        "p05": 0.9999173703381992,
+        "p95": 0.9999356367903722
+      },
+      "catalyst_production": {
+        "count": 2880,
+        "max": 0.9999385117535287,
+        "median": 0.999919988944109,
+        "min": 0.9999170529508383,
+        "p05": 0.9999173700644182,
+        "p95": 0.9999356371223733
+      },
+      "membrane_production": {
+        "count": 2880,
+        "max": 0.9995027467695206,
+        "median": 0.9993042685830567,
+        "min": 0.9992272711665251,
+        "p05": 0.9992315606428548,
+        "p95": 0.9994691837059477
+      },
+      "reserve_loss": {
+        "count": 2880,
+        "max": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "p05": 0.0,
+        "p95": 0.0
+      },
+      "structural_production": {
+        "count": 2880,
+        "max": 0.999502750305048,
+        "median": 0.9993042710497946,
+        "min": 0.9992272738008179,
+        "p05": 0.9992315633573501,
+        "p95": 0.9994691870693462
+      }
+    },
+    "block_magnitude": {
+      "a_decay": {
+        "median": 0.0033234292932874526
+      },
+      "catalyst_production": {
+        "median": 0.007480408857073671
+      },
+      "membrane_production": {
+        "median": 0.002539086626528436
+      },
+      "reserve_loss": {
+        "median": 0.0016185788444026353
+      },
+      "structural_production": {
+        "median": 0.0027200876737677863
+      }
+    },
+    "dominant_block_by_median_demand": {
+      "median": 0.007480408857073671,
+      "name": "catalyst_production"
+    },
+    "epsilon_A": {
+      "count": 2880,
+      "max": 0.9275137989479321,
+      "median": 0.9057807016746633,
+      "min": 0.903666517328805,
+      "p05": 0.9039517000080988,
+      "p95": 0.9242253515323595
+    },
+    "epsilon_Y_zero": {
+      "count": 2880,
+      "max": 0.9275137989479099,
+      "median": 0.9057807016746633,
+      "min": 0.903666517328805,
+      "p05": 0.9039517000080988,
+      "p95": 0.9242253515323817
+    },
+    "p05_positive": true,
+    "p95_negative": false,
+    "sign_counts": {
+      "negative": 0,
+      "positive": 2880,
+      "zero": 0
+    },
+    "states": 2880
+  }
+}

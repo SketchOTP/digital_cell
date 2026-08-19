@@ -1,0 +1,17 @@
+{
+  "external_values_or_models_imported": false,
+  "sources": [
+    {
+      "citation": "Hofmeyr and Cornish-Bowden 2000, Regulating the cellular economy of supply and demand",
+      "disposition": "ADAPTABLE_METHOD",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10878248/",
+      "use": "supply-demand block coupling methodology only"
+    },
+    {
+      "citation": "Koebmann et al. 2002, The glycolytic flux in Escherichia coli is controlled by the demand for ATP",
+      "disposition": "REFERENCE_EXPERIMENTAL_SUPPORT",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12081962/",
+      "use": "demand-side flux-control context only"
+    }
+  ]
+}

@@ -655,3 +655,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: NFA is only information-sufficient under a frozen diagnostic; R7 does not identify or authorize an NFA production law. Exact zero drift is maintenance-like at the depleted state and does not supply restorative surplus.
 - Blockers: exact-head remote CI and architect review; production integration and DC-DEV-021 remain unauthorized.
 - Follow-up directive: none
+
+## D-20260818-dcdev020r8r1-causal-a-demand-elasticity - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R8R1-A-DEMAND-ELASTICITY-POSITIVE`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R8-R1 audit held every reconstructed state fixed and perturbed only A. Across 2,880 training states, 960 P3 states, 960 P4 states, and 480 R7 on-policy states, all finite A perturbations produced positive physical zero-drift demand elasticity. Catalyst production was the dominant demand block by median magnitude. An independent 2,425-pair A-only swap audit confirmed R8 pair confounding, including 155 background-state sign reversals. Classification is `DCDEV020R8R1_A_DEMAND_ELASTICITY_POSITIVE` with pair verdict `R8_PAIR_CONFOUNDING_CONFIRMED`.
+- Changed areas: observer-only R8-R1 example, compact append-only evidence, governed external dense demand ledger, documentation, scoped workflow, and governance; no production chemistry or behavior changed.
+- Validation:
+  - Finite A perturbation roots (10,560 roots; zero capacity failures; zero non-monotonicity failures) - PASSED
+  - Accounting closure (maximum residual `2.6549075438087044e-14`, tolerance `1e-10`) - PASSED
+  - R8 pair confounding audit (2,425 pairs; 155 background-state sign reversals) - PASSED
+  - External dense-ledger SHA-256 `f44e8f9fa441451ee40bcbfccac5f556131e4d26868868607e9507c29e7bcf90` on local and Atlas copies - PASSED
+  - Focused R8-R1 compile/execution and governance validation - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: This establishes causal A-demand elasticity and explains R8 pair confounding, but authorizes no A-feedback law, production integration, or DC-DEV-021 work.
+- Blockers: exact-head remote CI and architect review; production changes and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none

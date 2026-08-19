@@ -1,0 +1,137 @@
+name: DC-DEV-020-R8-R1 causal A-demand elasticity
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-020r8r1-observer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate R8-R1 boundary and compact evidence
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("digital-protocell/experiments/generated/dcdev020r8r1")
+          names = ["protocol.json", "summary.json", "decomposition.json", "pair_decomposition.json", "qualification.json", "literature_review.json", "external_evidence_manifest.json", "manifest.json"]
+          if any(not (root / name).is_file() for name in names):
+              raise SystemExit("missing R8-R1 compact evidence")
+          protocol = json.loads((root / "protocol.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          if protocol["accepted_r8_head"] != "5b314792fe896504f6f8b99218ba48f0328de9f0":
+              raise SystemExit("wrong R8 authority")
+          if protocol["source_commit"] != "d50037e53d041d8b06895553933c3b0a78c7a024":
+              raise SystemExit("wrong R8-R1 source commit")
+          if qualification["dc_dev_021_authorized"] or qualification["next_execution_started"]:
+              raise SystemExit("R8-R1 scope boundary opened")
+          if qualification["production_chemistry_changed"] or qualification["production_behavior_changed"]:
+              raise SystemExit("production boundary opened")
+          PY
+          changed="$(git diff --name-only 1e242f28152797b512e25cd56c7b718e45d6ca97 HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then exit 1; fi
+          if printf '%s\n' "$changed" | grep -Ei 'dcdev021|dc-dev-021'; then exit 1; fi
+
+      - name: Scoped formatting and R8-R1 compile
+        working-directory: digital-protocell
+        run: |
+          rustup run 1.89.0 rustfmt --edition 2021 --check examples/dcdev020r8r1_causal_a_demand_elasticity.rs
+          cargo +1.89.0 test -p regulatory-core --example dcdev020r8r1_causal_a_demand_elasticity --release
+
+      - name: Reproduce sealed R5, R7 and R8 observers
+        working-directory: digital-protocell
+        env:
+          DCDEV020R5_SOURCE_COMMIT: 6dbb8d45c520e2756a81b2cc1e81dff9c3878992
+          DCDEV020R5_OUTPUT_ROOT: target/dcdev020r5-ci
+          DCDEV020R5_EXTERNAL_LEDGER: target/dcdev020r5-statewise-ledger.json
+          DCDEV020R5_EXTERNAL_LOCATION: /mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r5/6dbb8d45c520e2756a81b2cc1e81dff9c3878992/statewise_root_ledger.json
+          DCDEV020R7_EXTERNAL_LEDGER: target/dcdev020r7-on-policy-ledger.json
+          DCDEV020R7_OUTPUT_ROOT: target/dcdev020r7-ci
+          DCDEV020R7_EXTERNAL_LOCATION: /mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r7/3ddae9ea3c954431c8b3ae2ecbf2d6fc94278e56/on_policy_root_ledger.json
+          DCDEV020R7_LEDGER_SHA256: abdaea6d075c700e36d14d369dba62982f4a65cea47d2d1f162b5dfe8afa59f8
+          DCDEV020R7_SOURCE_COMMIT: 3ddae9ea3c954431c8b3ae2ecbf2d6fc94278e56
+          DCDEV020R8_R5_LEDGER: target/dcdev020r5-statewise-ledger.json
+          DCDEV020R8_R7_LEDGER: target/dcdev020r7-on-policy-ledger.json
+          DCDEV020R8_OUTPUT_ROOT: target/dcdev020r8-ci
+          DCDEV020R8_EXTERNAL_LEDGER: target/dcdev020r8-pair-constraint-ledger.json
+          DCDEV020R8_EXTERNAL_LOCATION: /mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r8/6e2b03a7551409086c1a38d6cf5f62827fb91929/pair_constraint_ledger.json
+          DCDEV020R8_EXTERNAL_SHA256: 12b41f27c928635899a7ea3a8d496cfdd3af7d3fd83aaa93024724663e2df9ff
+          DCDEV020R8_SOURCE_COMMIT: 6e2b03a7551409086c1a38d6cf5f62827fb91929
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run -p regulatory-core --example dcdev020r5_local_zero_drift_source_audit --release --quiet
+          test "$(python3 -c 'import json; print(len(json.load(open("target/dcdev020r5-statewise-ledger.json"))))')" = 4800
+          cargo +1.89.0 run -p regulatory-core --example dcdev020r7_on_policy_zero_drift_audit --release --quiet
+          test "$(python3 -c 'import json; print(len(json.load(open("target/dcdev020r7-on-policy-ledger.json"))))')" = 480
+          cargo +1.89.0 run -p regulatory-core --example dcdev020r8_nfa_restorative_attractor --release --quiet
+          python3 - <<'PY'
+          import json
+          q = json.load(open("target/dcdev020r8-ci/qualification.json"))
+          if q["classification"] != "DCDEV020R8_PRODUCT_FEEDBACK_TOPOLOGY_INCOMPATIBLE": raise SystemExit("R8 replay changed")
+          PY
+
+      - name: Reproduce R8-R1 and compare compact evidence
+        working-directory: digital-protocell
+        env:
+          DCDEV020R8R1_R5_LEDGER: target/dcdev020r5-statewise-ledger.json
+          DCDEV020R8R1_R7_LEDGER: target/dcdev020r7-on-policy-ledger.json
+          DCDEV020R8R1_R8_LEDGER: target/dcdev020r8-pair-constraint-ledger.json
+          DCDEV020R8R1_OUTPUT_ROOT: target/dcdev020r8r1-ci
+          DCDEV020R8R1_DENSE_LEDGER: target/dcdev020r8r1-ci-dense.json
+          DCDEV020R8R1_EXTERNAL_LOCATION: /mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r8r1/d50037e53d041d8b06895553933c3b0a78c7a024/demand_elasticity_ledger.json
+          DCDEV020R8R1_EXTERNAL_SHA256: f44e8f9fa441451ee40bcbfccac5f556131e4d26868868607e9507c29e7bcf90
+          DCDEV020R8R1_SOURCE_COMMIT: d50037e53d041d8b06895553933c3b0a78c7a024
+          DCDEV020R8R1_RESULT_COMMIT: PENDING
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run -p regulatory-core --example dcdev020r8r1_causal_a_demand_elasticity --release --quiet
+          python3 - <<'PY'
+          import json, math
+          names = ["protocol.json", "summary.json", "decomposition.json", "pair_decomposition.json", "qualification.json", "literature_review.json", "external_evidence_manifest.json", "manifest.json"]
+          def compare(a, b, path="root"):
+              if isinstance(a, dict) and isinstance(b, dict):
+                  assert set(a) == set(b), f"keys differ at {path}"
+                  for k in a: compare(a[k], b[k], f"{path}.{k}")
+              elif isinstance(a, list) and isinstance(b, list):
+                  assert len(a) == len(b), f"length differs at {path}"
+                  for i, (x, y) in enumerate(zip(a, b)): compare(x, y, f"{path}[{i}]")
+              elif isinstance(a, (int, float)) and isinstance(b, (int, float)):
+                  assert math.isclose(float(a), float(b), rel_tol=1e-9, abs_tol=1e-12), f"numeric differs at {path}: {a} != {b}"
+              else: assert a == b, f"value differs at {path}: {a!r} != {b!r}"
+          for name in names:
+              compare(json.load(open(f"target/dcdev020r8r1-ci/{name}")), json.load(open(f"experiments/generated/dcdev020r8r1/{name}")), name)
+          PY
+
+      - name: Preservation regressions
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test -p regulatory-core
+          cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse --verify HEAD)" = "$EXPECTED_HEAD"

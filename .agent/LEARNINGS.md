@@ -138,6 +138,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-020-R2 observer-only allosteric requalification.
 - Supersedes learning: none
 
+## L-DCDEV020R8R1-001
+
+- Learning ID: L-DCDEV020R8R1-001
+- Date: 2026-08-18
+- Fact or lesson: Within-state A perturbation on 2,880 P0-P2 training states, 960 P3/P4 portability states each, and 480 R7 on-policy states produced positive physical zero-drift demand elasticity everywhere. Catalyst production is the dominant existing demand block by median magnitude. The independent 2,425-pair A-only swap audit confirms R8 pair confounding, including 155 background-state sign reversals; this supports causal A-demand coupling but does not authorize an A-feedback law.
+- Evidence location: `digital-protocell/examples/dcdev020r8r1_causal_a_demand_elasticity.rs`, `digital-protocell/experiments/generated/dcdev020r8r1/`, governed external dense ledger SHA-256 `f44e8f9fa441451ee40bcbfccac5f556131e4d26868868607e9507c29e7bcf90`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r1/causal_a_demand_elasticity.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R8-R1 observer-only causal demand elasticity audit; exact-head CI and architect review pending.
+- Supersedes learning: none
+
 ## L-DCDEV020R3-001
 
 - Learning ID: L-DCDEV020R3-001
