@@ -540,7 +540,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - External ledger SHA-256 `4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585` - PASSED locally and on Atlas
   - Sanctioned Rust 1.89.0 check/run - PASSED
   - Local full preservation - PASSED
-  - Exact-head remote CI run `32207457412` at head `55c45646ad5cb2727d9cd57fae77808daf3bfb10` - PASSED
+  - Exact-head remote CI run `32207702692` at head `4f9e637f5d0dd97ed13df9266d18624538107588` - PASSED
   - Architect review - PENDING
 - Remaining risks: N/F sufficiency is diagnostic and bounded to the frozen P0-P4 one-step state manifold; it does not select or qualify a production law, restoration controller, or durable metabolism.
 - Blockers: architect review; production integration and DC-DEV-021 remain unauthorized.

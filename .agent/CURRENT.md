@@ -11,7 +11,7 @@
 - External directive ID: `DC-DEV-020-R8-R2`
 - Objective: `Determine whether existing catalyst-production A investment pays back its cost in the frozen finite-feed window without changing production chemistry.`
 - Current status: `VALIDATING`
-- Acceptance: `Observer execution classifies DCDEV020R8R2_CATALYST_INVESTMENT_ACUTE_RECOVERY_BOTTLENECK; PR #39 is open/draft/unmerged at 55c45646ad5cb2727d9cd57fae77808daf3bfb10 and exact-head CI 32207457412 passed; architect review is pending.`
+- Acceptance: `Observer execution classifies DCDEV020R8R2_CATALYST_INVESTMENT_ACUTE_RECOVERY_BOTTLENECK; PR #39 is open/draft/unmerged at 4f9e637f5d0dd97ed13df9266d18624538107588 and exact-head CI 32207702692 passed; architect review is pending.`
 - Current phase: `DC-DEV-020-R8-R2 observer-only catalyst investment payback audit; no production law or DC-DEV-021 work is authorized.`
 - Expected or actual touched areas: `R8-R2 observer example registration, compact evidence, governed external dense-ledger seal, documentation, governance, and scoped CI`
 - Immediate next action: `Return PR #39 at the exact verified head for architect review; do not begin DC-DEV-021.`
