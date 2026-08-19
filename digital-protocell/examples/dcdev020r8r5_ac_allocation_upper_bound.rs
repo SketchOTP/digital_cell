@@ -290,7 +290,9 @@ mod r8r3 {
             }
             let before = mesh.interior;
             let area = mesh.area().max(1e-6);
-            let Some((ledger, source)) = apply_constant_allocation(&mut mesh, &params, r6(), c_hold) else {
+            let Some((ledger, source)) =
+                apply_constant_allocation(&mut mesh, &params, r6(), c_hold)
+            else {
                 infeasible = true;
                 break;
             };
@@ -313,8 +315,10 @@ mod r8r3 {
             .copied()
             .fold(f64::NEG_INFINITY, f64::max);
         let denominator = (values.len().saturating_sub(q4 + 1)).max(1) as f64;
-        let final_quarter_slope = (values.last().copied().unwrap_or(initial.e_stored) - values[q4]) / denominator;
-        let oscillatory = final_quarter_min < 0.95 * E_TARGET && final_quarter_max > 1.05 * E_TARGET;
+        let final_quarter_slope =
+            (values.last().copied().unwrap_or(initial.e_stored) - values[q4]) / denominator;
+        let oscillatory =
+            final_quarter_min < 0.95 * E_TARGET && final_quarter_max > 1.05 * E_TARGET;
         let complete_sustained_gate = !infeasible
             && executed_steps == steps
             && alive
@@ -480,24 +484,54 @@ mod r8r3 {
         let mut refined_brackets = Vec::new();
         for (left, right, target_cross, slope_cross) in coarse_brackets {
             let (a, b) = if target_cross {
-                refine_boundary(left, right, |c| {
-                    run_oracle(start, c, steps, set_sustained_nf, baseline_slope)
-                        .final_state
-                        .e_stored
-                        >= E_TARGET
-                }, total)
+                refine_boundary(
+                    left,
+                    right,
+                    |c| {
+                        run_oracle(start, c, steps, set_sustained_nf, baseline_slope)
+                            .final_state
+                            .e_stored
+                            >= E_TARGET
+                    },
+                    total,
+                )
             } else if slope_cross {
-                refine_boundary(left, right, |c| {
-                    run_oracle(start, c, steps, set_sustained_nf, baseline_slope)
-                        .final_quarter_slope
-                        >= 0.0
-                }, total)
+                refine_boundary(
+                    left,
+                    right,
+                    |c| {
+                        run_oracle(start, c, steps, set_sustained_nf, baseline_slope)
+                            .final_quarter_slope
+                            >= 0.0
+                    },
+                    total,
+                )
             } else {
-                refine_maximum(start, left, right, steps, set_sustained_nf, baseline_slope, total)
+                refine_maximum(
+                    start,
+                    left,
+                    right,
+                    steps,
+                    set_sustained_nf,
+                    baseline_slope,
+                    total,
+                )
             };
             refined_brackets.push((a, b));
-            runs.push(run_oracle(start, a, steps, set_sustained_nf, baseline_slope));
-            runs.push(run_oracle(start, b, steps, set_sustained_nf, baseline_slope));
+            runs.push(run_oracle(
+                start,
+                a,
+                steps,
+                set_sustained_nf,
+                baseline_slope,
+            ));
+            runs.push(run_oracle(
+                start,
+                b,
+                steps,
+                set_sustained_nf,
+                baseline_slope,
+            ));
         }
         runs.sort_by(|a, b| a.c_hold.partial_cmp(&b.c_hold).unwrap_or(Ordering::Equal));
         runs.dedup_by(|a, b| (a.c_hold - b.c_hold).abs() <= total.max(1.0) * 1e-12);
@@ -569,7 +603,8 @@ mod r8r3 {
     fn run_r8r4_finite(start: &MaterialMesh, mass: f64) -> f64 {
         let params = reaction_params(start);
         let mut mesh = start.clone();
-        let mut region = FiniteSpatialResourceRegionV1::new(RESOURCE_CENTER, RESOURCE_RADIUS, mass, mass);
+        let mut region =
+            FiniteSpatialResourceRegionV1::new(RESOURCE_CENTER, RESOURCE_RADIUS, mass, mass);
         for _ in 0..WINDOW {
             region.uptake(&mut mesh, &TransportParams::default(), DT);
             apply_shared(&mut mesh, &params, r6());
@@ -588,8 +623,8 @@ mod r8r3 {
             .unwrap_or_else(|_| "UNRECORDED_EXTERNAL_LOCATION".into());
         let external_sha = std::env::var("DCDEV020R8R5_EXTERNAL_SHA256")
             .unwrap_or_else(|_| "COMPUTED_AFTER_RUN".into());
-        let result_commit = std::env::var("DCDEV020R8R5_RESULT_COMMIT")
-            .unwrap_or_else(|_| "PENDING".into());
+        let result_commit =
+            std::env::var("DCDEV020R8R5_RESULT_COMMIT").unwrap_or_else(|_| "PENDING".into());
 
         let settled = settle();
         let deprived = deprive(&settled);
@@ -608,16 +643,32 @@ mod r8r3 {
         let sustained_checkpoints: Vec<usize> = (LOCAL_SPACING..=SUSTAINED_STEPS_R5)
             .step_by(LOCAL_SPACING)
             .collect();
-        let deferred = run_sustained_r8r3(&deprived, r6_law, false, SUSTAINED_STEPS_R5, &sustained_checkpoints);
-        let (shared_frames, shared_states) = run_shared_sustained(&deprived, r6_law, &sustained_checkpoints);
+        let deferred = run_sustained_r8r3(
+            &deprived,
+            r6_law,
+            false,
+            SUSTAINED_STEPS_R5,
+            &sustained_checkpoints,
+        );
+        let (shared_frames, shared_states) =
+            run_shared_sustained(&deprived, r6_law, &sustained_checkpoints);
         assert!((shared_frames.last().unwrap().state.e_stored - R8R4_SUSTAINED).abs() <= 1e-9);
 
         let economic = economic(&deprived, &params);
-        let (oracle_runs, refinement_brackets) = envelope(&deprived, SUSTAINED_STEPS_R5, true, baseline_slope);
-        let complete_runs: Vec<&OracleRun> = oracle_runs.iter().filter(|run| run.complete_sustained_gate).collect();
+        let (oracle_runs, refinement_brackets) =
+            envelope(&deprived, SUSTAINED_STEPS_R5, true, baseline_slope);
+        let complete_runs: Vec<&OracleRun> = oracle_runs
+            .iter()
+            .filter(|run| run.complete_sustained_gate)
+            .collect();
         let best = oracle_runs
             .iter()
-            .max_by(|a, b| a.final_state.e_stored.partial_cmp(&b.final_state.e_stored).unwrap_or(Ordering::Equal))
+            .max_by(|a, b| {
+                a.final_state
+                    .e_stored
+                    .partial_cmp(&b.final_state.e_stored)
+                    .unwrap_or(Ordering::Equal)
+            })
             .unwrap();
 
         let deferred_local: Vec<LocalEnvelope> = deferred
@@ -627,10 +678,18 @@ mod r8r3 {
             .collect();
         let shared_local: Vec<LocalEnvelope> = shared_states
             .iter()
-            .map(|(step, state)| local_envelope("R8-R4 R6 shared-affinity", *step, state, baseline_slope))
+            .map(|(step, state)| {
+                local_envelope("R8-R4 R6 shared-affinity", *step, state, baseline_slope)
+            })
             .collect();
-        let deferred_nonnegative = deferred_local.iter().filter(|x| x.max_delta_e_ar >= 0.0).count();
-        let shared_nonnegative = shared_local.iter().filter(|x| x.max_delta_e_ar >= 0.0).count();
+        let deferred_nonnegative = deferred_local
+            .iter()
+            .filter(|x| x.max_delta_e_ar >= 0.0)
+            .count();
+        let shared_nonnegative = shared_local
+            .iter()
+            .filter(|x| x.max_delta_e_ar >= 0.0)
+            .count();
         let worst_max_drift = deferred_local
             .iter()
             .chain(shared_local.iter())
@@ -650,7 +709,9 @@ mod r8r3 {
             && (acute_deferred.final_state.e_stored - 63.645566711951915).abs() <= MASS_TOL_R5
             && (run_r8r4_finite(&deprived, M_SELECTED) - R8R4_FINITE).abs() <= MASS_TOL_R5
             && (shared_frames.last().unwrap().state.e_stored - R8R4_SUSTAINED).abs() <= 1e-9;
-        let gate2 = oracle_runs.iter().all(|run| run.partition_residual.abs() <= MASS_TOL_R5);
+        let gate2 = oracle_runs
+            .iter()
+            .all(|run| run.partition_residual.abs() <= MASS_TOL_R5);
         let gate3 = !oracle_runs.is_empty()
             && refinement_brackets.iter().all(|(a, b)| {
                 (b - a) / (deprived.interior.a + deprived.interior.c).max(1.0)
@@ -675,33 +736,65 @@ mod r8r3 {
             "next_execution_started": false
         });
 
-        write_json(&output, "protocol.json", &json!({
-            "directive": "DC-DEV-020-R8-R5",
-            "entry_head": ENTRY,
-            "clean_scientific_base": CLEAN_BASE_R5,
-            "sustained_steps": SUSTAINED_STEPS_R5,
-            "constant_allocation": {"c_hold_min": 0.0, "c_hold_max": deprived.interior.a + deprived.interior.c, "production": "exact_turnover_replacement", "a_c_conserving": true},
-            "frozen_r6": {"K_PL": R6_K_PL, "p": R6_P, "K_C": params.q_c, "k_c_turn": params.k_c_turn, "N": SUSTAINED_NF, "F": SUSTAINED_NF},
-            "observer_only": true,
-            "production_chemistry_changed": false,
-            "production_behavior_changed": false,
-            "dc_dev_021_authorized": false
-        }));
-        write_json(&output, "economic_envelope.json", &serde_json::to_value(economic).unwrap());
-        write_json(&output, "r8r4_reproduction.json", &json!({"acute_normal": acute.final_state, "acute_deferred": acute_deferred.final_state, "finite_shared": run_r8r4_finite(&deprived, M_SELECTED), "sustained_shared": shared_frames.last().unwrap()}));
-        write_json(&output, "constant_allocation_summary.json", &json!({"runs": oracle_runs, "best": best, "refinement_brackets": refinement_brackets, "complete_gate_passes": complete_runs.len()}));
-        write_json(&output, "local_drift_summary.json", &json!({"deferred": deferred_local, "shared": shared_local, "deferred_nonnegative": deferred_nonnegative, "shared_nonnegative": shared_nonnegative, "worst_max_drift": worst_max_drift}));
+        write_json(
+            &output,
+            "protocol.json",
+            &json!({
+                "directive": "DC-DEV-020-R8-R5",
+                "entry_head": ENTRY,
+                "clean_scientific_base": CLEAN_BASE_R5,
+                "sustained_steps": SUSTAINED_STEPS_R5,
+                "constant_allocation": {"c_hold_min": 0.0, "c_hold_max": deprived.interior.a + deprived.interior.c, "production": "exact_turnover_replacement", "a_c_conserving": true},
+                "frozen_r6": {"K_PL": R6_K_PL, "p": R6_P, "K_C": params.q_c, "k_c_turn": params.k_c_turn, "N": SUSTAINED_NF, "F": SUSTAINED_NF},
+                "observer_only": true,
+                "production_chemistry_changed": false,
+                "production_behavior_changed": false,
+                "dc_dev_021_authorized": false
+            }),
+        );
+        write_json(
+            &output,
+            "economic_envelope.json",
+            &serde_json::to_value(economic).unwrap(),
+        );
+        write_json(
+            &output,
+            "r8r4_reproduction.json",
+            &json!({"acute_normal": acute.final_state, "acute_deferred": acute_deferred.final_state, "finite_shared": run_r8r4_finite(&deprived, M_SELECTED), "sustained_shared": shared_frames.last().unwrap()}),
+        );
+        write_json(
+            &output,
+            "constant_allocation_summary.json",
+            &json!({"runs": oracle_runs, "best": best, "refinement_brackets": refinement_brackets, "complete_gate_passes": complete_runs.len()}),
+        );
+        write_json(
+            &output,
+            "local_drift_summary.json",
+            &json!({"deferred": deferred_local, "shared": shared_local, "deferred_nonnegative": deferred_nonnegative, "shared_nonnegative": shared_nonnegative, "worst_max_drift": worst_max_drift}),
+        );
         write_json(&output, "qualification.json", &qualification);
-        write_json(&output, "literature_review.json", &json!({
-            "dispositions": ["ADAPTABLE_ENZYME_COST_METHOD", "REFERENCE_FLUX_SIGNALING_MECHANISM"],
-            "external_values_imported": false,
-            "sources": [
-                {"pmc": "PMC5094713", "use": "enzyme cost and flux coupling method only"},
-                {"pmc": "PMC3549114", "use": "flux-signaling mechanism reference only"}
-            ]
-        }));
-        write_json(&output, "external_evidence_manifest.json", &json!({"dense_artifact": dense_path.display().to_string(), "external_location": external_location, "sha256": external_sha, "compact_git_artifacts": ["protocol.json", "economic_envelope.json", "r8r4_reproduction.json", "constant_allocation_summary.json", "local_drift_summary.json", "qualification.json", "literature_review.json", "external_evidence_manifest.json", "manifest.json"]}));
-        write_json(&output, "manifest.json", &json!({"directive": "DC-DEV-020-R8-R5", "classification": classification, "source_commit": ENTRY, "result_commit": result_commit, "dense_location": external_location, "dense_sha256": external_sha, "preservation": ["R8-R2", "R8-R3", "R8-R4", "Phase-1", "D-088", "evolution-harness", "governance"]}));
+        write_json(
+            &output,
+            "literature_review.json",
+            &json!({
+                "dispositions": ["ADAPTABLE_ENZYME_COST_METHOD", "REFERENCE_FLUX_SIGNALING_MECHANISM"],
+                "external_values_imported": false,
+                "sources": [
+                    {"pmc": "PMC5094713", "use": "enzyme cost and flux coupling method only"},
+                    {"pmc": "PMC3549114", "use": "flux-signaling mechanism reference only"}
+                ]
+            }),
+        );
+        write_json(
+            &output,
+            "external_evidence_manifest.json",
+            &json!({"dense_artifact": dense_path.display().to_string(), "external_location": external_location, "sha256": external_sha, "compact_git_artifacts": ["protocol.json", "economic_envelope.json", "r8r4_reproduction.json", "constant_allocation_summary.json", "local_drift_summary.json", "qualification.json", "literature_review.json", "external_evidence_manifest.json", "manifest.json"]}),
+        );
+        write_json(
+            &output,
+            "manifest.json",
+            &json!({"directive": "DC-DEV-020-R8-R5", "classification": classification, "source_commit": ENTRY, "result_commit": result_commit, "dense_location": external_location, "dense_sha256": external_sha, "preservation": ["R8-R2", "R8-R3", "R8-R4", "Phase-1", "D-088", "evolution-harness", "governance"]}),
+        );
 
         let dense = json!({"directive": "DC-DEV-020-R8-R5", "economic": economic, "constant_allocation_runs": oracle_runs, "deferred_local": deferred_local, "shared_local": shared_local, "shared_frames": shared_frames});
         fs::create_dir_all(dense_path.parent().unwrap()).unwrap();
