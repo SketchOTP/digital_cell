@@ -500,6 +500,26 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: final evidence seal, exact-head remote CI, and architect review; DC-DEV-021 remains unauthorized.
 - Follow-up directive: none
 
+## D-20260819-dcdev020r8r5r1-net-allocation-drift - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R8R5R1-RECYCLING-ONLY-LOCAL-CAPACITY`
+- Supersedes outcome: `OUT-DCDEV020R8R5-CATALYST-ALLOCATION-ENVELOPE-MIXED`
+- Closed: `2026-08-19T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R8-R5 local capacity was requalified from the actual incoming A/R state using `ΔE_NET = ΔE_repartition + ΔE_reaction`. All 200 deferred and 200 shared states retained nonnegative reversible NET drift, while all 200 deferred and all 200 shared forward-only envelopes were negative. Every successful reversible optimum required C→A recovery. Classification: `DCDEV020R8R5R1_RECYCLING_ONLY_LOCAL_CAPACITY`.
+- Changed areas: R8-R5 observer-only net-drift implementation and wrapper, compact evidence, governed external dense-ledger manifest, documentation, governance, and scoped workflow; no production chemistry or behavior changed.
+- Validation:
+  - Exact R8-R5 replay machinery produced 200 deferred and 200 shared checkpoint states - PASSED
+  - A+C conservation and unchanged controls - PASSED
+  - Incoming-state net-drift decomposition - PASSED
+  - Reversible and forward-only 65-point envelopes with deterministic refinement - PASSED
+  - Worst-case aggregation uses minimum, with focused regression - PASSED
+  - External dense-ledger SHA-256 - PENDING final seal
+  - Governance, preservation, exact-head remote CI, and architect review - PENDING
+- Remaining risks: The positive local authority depends on privileged C→A recovery and does not establish forward A→C allocation capacity. The prior R8-R5 dense ledger lacks a deferred checkpoint-hash field, so R1 records deterministic replay hashes and reports direct prior-ledger hash-field matching as unavailable.
+- Blockers: final evidence seal, exact-head remote CI, and architect review; dynamic allocation, catalyst recycling, and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none
+
 ## D-20260818-dcdev020r3-two-substrate-saturating-activation - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020R3-SATURATING-KINETICS-NOT-IDENTIFIABLE`

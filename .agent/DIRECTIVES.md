@@ -263,6 +263,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260819-dcdev020r8r5r1-net-allocation-drift
+
+- Issued: `2026-08-19T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R8-R5-R1`
+- Objective: Requalify the R8-R5 local allocation result using true incoming-state `ΔE_NET`, with reversible and forward-only A↔C envelopes over the exact 400 R8-R5 checkpoint states.
+- Scope: Exact R8-R5 evidence head `95247dfc6b2b0e9903338e2b76ee55c08f502f84`, sealed dense SHA `afa9c26f8845f9321450ec12e7e4fe55dc54a088eb6857ff8e1e272dddc8c390`, exact R8-R5 replay machinery, incoming-state repartition accounting, 65-point mesh and deterministic refinement, statewise attribution, compact evidence, governed external dense evidence, governance, preservation, scoped CI, and draft PR.
+- Exclusions: New 8000-step allocator, production chemistry or behavior, kinetic parameters, catalyst law, recycling law, source/sink/resource/transport changes, mechanics, dynamic allocator, and DC-DEV-021.
+- Acceptance: One authorized R8-R5-R1 classification with A+C conservation, exact reaction semantics, corrected minimum/median/maximum aggregation, exact-head remote CI, and architect review; no result authorizes dynamic allocation or catalyst recycling.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260818-dcdev020r8r1-causal-a-demand-elasticity
 
 - Issued: `2026-08-18T20:00:00-04:00`

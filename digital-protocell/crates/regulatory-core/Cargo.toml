@@ -111,3 +111,7 @@ path = "../../examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs"
 [[example]]
 name = "dcdev020r8r5_ac_allocation_upper_bound"
 path = "../../examples/dcdev020r8r5_ac_allocation_upper_bound.rs"
+
+[[example]]
+name = "dcdev020r8r5r1_net_allocation_drift"
+path = "../../examples/dcdev020r8r5r1_net_allocation_drift.rs"

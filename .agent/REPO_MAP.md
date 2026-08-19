@@ -82,6 +82,9 @@
 - `digital-protocell/examples/dcdev020r8r5_ac_allocation_upper_bound.rs` — DC-DEV-020-R8-R5 observer-only conservative A↔C allocation capacity envelope; it changes no production chemistry or behavior.
 - `digital-protocell/experiments/generated/dcdev020r8r5/` — compact R8-R5 protocol, economic envelope, R8-R4 reproduction, constant-allocation results, local late-state drift summaries, qualification, literature disposition, and external dense-ledger manifest.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r5/` — R8-R5 A↔C allocation upper-bound audit and mixed-envelope disposition.
+- `digital-protocell/examples/dcdev020r8r5r1_net_allocation_drift.rs` — DC-DEV-020-R8-R5-R1 corrected incoming-state net-drift observer wrapper; it preserves the R8-R5 constant-allocation runner.
+- `digital-protocell/experiments/generated/dcdev020r8r5r1/` — compact R8-R5-R1 checkpoint hashes, statewise reversible/forward-only envelopes, attribution, qualification, and external dense-ledger manifest.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r5r1/` — R8-R5-R1 corrected net allocation drift documentation.
 
 ## External integration points
 

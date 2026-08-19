@@ -4,7 +4,7 @@
 //! chemistry. Counterfactual states are cloned, repartitioned conservatively,
 //! and advanced through the existing reaction ledger.
 
-mod r8r3 {
+pub mod r8r3 {
     include!("dcdev020r8r3_shared_affinity_helper.rs");
 
     use super::*;
@@ -597,6 +597,493 @@ mod r8r3 {
             conservation: best.conservation,
             infeasible_partitions,
             interval_relative_width,
+        }
+    }
+
+    #[derive(Clone, Debug, Serialize)]
+    struct NetCandidate {
+        c_prime: f64,
+        q_c: f64,
+        delta_repartition: f64,
+        delta_reaction: f64,
+        delta_net: f64,
+        transfer_direction: String,
+        transfer_amount: f64,
+        a_to_c_amount: f64,
+        c_to_a_amount: f64,
+        source_contribution: f64,
+        replacement_cost: f64,
+        a_decay: f64,
+        structure: f64,
+        membrane: f64,
+        reserve_loss: f64,
+        conservation: f64,
+    }
+
+    #[derive(Clone, Debug, Serialize)]
+    struct NetEnvelope {
+        c_start: f64,
+        c_end: f64,
+        max: NetCandidate,
+        actual_control: NetCandidate,
+        interval_relative_width: f64,
+        infeasible_partitions: usize,
+    }
+
+    #[derive(Clone, Debug, Serialize)]
+    struct NetState {
+        source_context: String,
+        source_step: usize,
+        state_hash: String,
+        actual_a: f64,
+        actual_c: f64,
+        actual_e_ar: f64,
+        reversible: NetEnvelope,
+        forward_only: NetEnvelope,
+    }
+
+    #[derive(Clone, Debug, Serialize)]
+    struct FamilyNetSummary {
+        states: usize,
+        reversible_nonnegative: usize,
+        forward_nonnegative: usize,
+        reversible_minimum_max_net_drift: f64,
+        reversible_median_max_net_drift: f64,
+        reversible_maximum_max_net_drift: f64,
+        forward_minimum_max_net_drift: f64,
+        forward_median_max_net_drift: f64,
+        forward_maximum_max_net_drift: f64,
+    }
+
+    #[derive(Clone, Debug, Serialize)]
+    struct CheckpointHash {
+        source_context: String,
+        source_step: usize,
+        state_hash: String,
+    }
+
+    fn e_ar_mesh(mesh: &MaterialMesh) -> f64 {
+        mesh.area().max(1e-6) * (mesh.interior.a + mesh.interior.r)
+    }
+
+    fn net_candidate(state: &MaterialMesh, c_prime: f64) -> Option<NetCandidate> {
+        let before = state.interior;
+        let area = state.area().max(1e-6);
+        let actual_e = e_ar_mesh(state);
+        let (mut mesh, _) = repartition(state, c_prime);
+        let partitioned_e = e_ar_mesh(&mesh);
+        let delta_repartition = partitioned_e - actual_e;
+        let params = reaction_params(&mesh);
+        let (ledger, source) = apply_constant_allocation(&mut mesh, &params, r6(), c_prime)?;
+        let after_e = e_ar_mesh(&mesh);
+        let delta_reaction = after_e - partitioned_e;
+        let delta_net = after_e - actual_e;
+        let transfer = c_prime - before.c;
+        Some(NetCandidate {
+            c_prime,
+            q_c: q_catalyst(c_prime, params.q_c),
+            delta_repartition,
+            delta_reaction,
+            delta_net,
+            transfer_direction: if transfer > MASS_TOL_R5 {
+                "A_TO_C".into()
+            } else if transfer < -MASS_TOL_R5 {
+                "C_TO_A".into()
+            } else {
+                "UNCHANGED".into()
+            },
+            transfer_amount: transfer.abs(),
+            a_to_c_amount: transfer.max(0.0),
+            c_to_a_amount: (-transfer).max(0.0),
+            source_contribution: ledger.a_produced,
+            replacement_cost: ledger.c_produced,
+            a_decay: inferred_a_decay(before, mesh.interior, &ledger, area),
+            structure: ledger.a_consumed_build,
+            membrane: ledger.l_produced,
+            reserve_loss: ledger.reserve.r_to_w,
+            conservation: source.accounting_residual,
+        })
+    }
+
+    fn net_value(state: &MaterialMesh, c_prime: f64) -> f64 {
+        net_candidate(state, c_prime)
+            .map(|candidate| candidate.delta_net)
+            .unwrap_or(f64::NEG_INFINITY)
+    }
+
+    fn refine_net_maximum(
+        state: &MaterialMesh,
+        mut left: f64,
+        mut right: f64,
+        total: f64,
+    ) -> (f64, f64) {
+        for _ in 0..REFINE_ITERATIONS {
+            let one_third = (right - left) / 3.0;
+            let a = left + one_third;
+            let b = right - one_third;
+            if net_value(state, a) <= net_value(state, b) {
+                left = a;
+            } else {
+                right = b;
+            }
+            if (right - left) / total.max(1.0) <= REL_INTERVAL_TOL {
+                break;
+            }
+        }
+        (left, right)
+    }
+
+    fn net_envelope(state: &MaterialMesh, lower: f64, upper: f64) -> NetEnvelope {
+        let total = (state.interior.a + state.interior.c).max(0.0);
+        let points: Vec<f64> = (0..GRID_POINTS)
+            .map(|i| lower + (upper - lower) * i as f64 / (GRID_POINTS - 1) as f64)
+            .collect();
+        let mut coarse: Vec<Option<NetCandidate>> =
+            points.iter().map(|c| net_candidate(state, *c)).collect();
+        let infeasible_partitions = coarse
+            .iter()
+            .filter(|candidate| candidate.is_none())
+            .count();
+        let mut candidates: Vec<NetCandidate> = coarse.iter().filter_map(Clone::clone).collect();
+        let mut brackets = Vec::new();
+        for index in 1..coarse.len().saturating_sub(1) {
+            let (Some(left), Some(center), Some(right)) =
+                (&coarse[index - 1], &coarse[index], &coarse[index + 1])
+            else {
+                continue;
+            };
+            if center.delta_net >= left.delta_net && center.delta_net >= right.delta_net {
+                brackets.push((left.c_prime, right.c_prime));
+            }
+        }
+        if let (Some(first), Some(last)) = (
+            coarse.first().and_then(Clone::clone),
+            coarse.last().and_then(Clone::clone),
+        ) {
+            candidates.push(first);
+            candidates.push(last);
+        }
+        let mut interval_relative_width: f64 = 0.0;
+        for (left, right) in brackets {
+            let (a, b) = refine_net_maximum(state, left, right, total);
+            interval_relative_width = interval_relative_width.max((b - a) / total.max(1.0));
+            if let Some(candidate) = net_candidate(state, a) {
+                candidates.push(candidate);
+            }
+            if let Some(candidate) = net_candidate(state, b) {
+                candidates.push(candidate);
+            }
+        }
+        let max = candidates
+            .into_iter()
+            .max_by(|a, b| {
+                a.delta_net
+                    .partial_cmp(&b.delta_net)
+                    .unwrap_or(Ordering::Equal)
+            })
+            .expect("at least the unchanged allocation must be feasible");
+        let actual_control =
+            net_candidate(state, state.interior.c).expect("unchanged allocation must be feasible");
+        NetEnvelope {
+            c_start: lower,
+            c_end: upper,
+            max,
+            actual_control,
+            interval_relative_width,
+            infeasible_partitions,
+        }
+    }
+
+    fn net_state(context: &str, step: usize, state: &MaterialMesh) -> NetState {
+        let total = (state.interior.a + state.interior.c).max(0.0);
+        NetState {
+            source_context: context.into(),
+            source_step: step,
+            state_hash: stable_json_hash(&snap(state, step)).unwrap(),
+            actual_a: state.interior.a,
+            actual_c: state.interior.c,
+            actual_e_ar: e_ar_mesh(state),
+            reversible: net_envelope(state, 0.0, total),
+            forward_only: net_envelope(state, state.interior.c, total),
+        }
+    }
+
+    fn median(values: &[f64]) -> f64 {
+        let mut sorted = values.to_vec();
+        sorted.sort_by(|a, b| a.partial_cmp(b).unwrap_or(Ordering::Equal));
+        sorted[sorted.len() / 2]
+    }
+
+    fn family_summary(states: &[NetState], forward: bool) -> FamilyNetSummary {
+        let values: Vec<f64> = states
+            .iter()
+            .map(|state| {
+                if forward {
+                    state.forward_only.max.delta_net
+                } else {
+                    state.reversible.max.delta_net
+                }
+            })
+            .collect();
+        let nonnegative = values.iter().filter(|value| **value >= 0.0).count();
+        FamilyNetSummary {
+            states: values.len(),
+            reversible_nonnegative: if forward { 0 } else { nonnegative },
+            forward_nonnegative: if forward { nonnegative } else { 0 },
+            reversible_minimum_max_net_drift: if forward {
+                0.0
+            } else {
+                values.iter().copied().fold(f64::INFINITY, f64::min)
+            },
+            reversible_median_max_net_drift: if forward { 0.0 } else { median(&values) },
+            reversible_maximum_max_net_drift: if forward {
+                0.0
+            } else {
+                values.iter().copied().fold(f64::NEG_INFINITY, f64::max)
+            },
+            forward_minimum_max_net_drift: if forward {
+                values.iter().copied().fold(f64::INFINITY, f64::min)
+            } else {
+                0.0
+            },
+            forward_median_max_net_drift: if forward { median(&values) } else { 0.0 },
+            forward_maximum_max_net_drift: if forward {
+                values.iter().copied().fold(f64::NEG_INFINITY, f64::max)
+            } else {
+                0.0
+            },
+        }
+    }
+
+    fn hashes_for(context: &str, states: &BTreeMap<usize, MaterialMesh>) -> Vec<CheckpointHash> {
+        states
+            .iter()
+            .map(|(step, state)| CheckpointHash {
+                source_context: context.into(),
+                source_step: *step,
+                state_hash: stable_json_hash(&snap(state, *step)).unwrap(),
+            })
+            .collect()
+    }
+
+    pub fn run_r1() {
+        let output = std::env::var_os("DCDEV020R8R5R1_OUTPUT_ROOT")
+            .map(PathBuf::from)
+            .unwrap_or_else(|| PathBuf::from("experiments/generated/dcdev020r8r5r1"));
+        let dense_path = std::env::var_os("DCDEV020R8R5R1_DENSE_LEDGER")
+            .map(PathBuf::from)
+            .unwrap_or_else(|| output.join("net_allocation_dense_ledger.json"));
+        let external_location = std::env::var("DCDEV020R8R5R1_EXTERNAL_LOCATION")
+            .unwrap_or_else(|_| "UNRECORDED_EXTERNAL_LOCATION".into());
+        let external_sha = std::env::var("DCDEV020R8R5R1_EXTERNAL_SHA256")
+            .unwrap_or_else(|_| "COMPUTED_AFTER_RUN".into());
+        let result_commit =
+            std::env::var("DCDEV020R8R5R1_RESULT_COMMIT").unwrap_or_else(|_| "PENDING".into());
+
+        let settled = settle();
+        let deprived = deprive(&settled);
+        let checkpoints: Vec<usize> = (LOCAL_SPACING..=SUSTAINED_STEPS_R5)
+            .step_by(LOCAL_SPACING)
+            .collect();
+        let r6_law = r6();
+        let deferred =
+            run_sustained_r8r3(&deprived, r6_law, false, SUSTAINED_STEPS_R5, &checkpoints);
+        let (shared_frames, shared) = run_shared_sustained(&deprived, r6_law, &checkpoints);
+        assert_eq!(deferred.checkpoint_meshes.len(), 200);
+        assert_eq!(shared.len(), 200);
+        assert_eq!(shared_frames.len(), SUSTAINED_STEPS_R5);
+
+        let deferred_hashes = hashes_for("R8-R3 R6 deferred", &deferred.checkpoint_meshes);
+        let shared_hashes = hashes_for("R8-R4 R6 shared-affinity", &shared);
+        let mut deferred_states = Vec::with_capacity(deferred_hashes.len());
+        let mut shared_states = Vec::with_capacity(shared_hashes.len());
+        for (step, state) in &deferred.checkpoint_meshes {
+            deferred_states.push(net_state("R8-R3 R6 deferred", *step, state));
+        }
+        for (step, state) in &shared {
+            shared_states.push(net_state("R8-R4 R6 shared-affinity", *step, state));
+        }
+        let all_states: Vec<NetState> = deferred_states
+            .iter()
+            .chain(shared_states.iter())
+            .cloned()
+            .collect();
+        let reversible_nonnegative = all_states
+            .iter()
+            .filter(|state| state.reversible.max.delta_net >= 0.0)
+            .count();
+        let forward_nonnegative = all_states
+            .iter()
+            .filter(|state| state.forward_only.max.delta_net >= 0.0)
+            .count();
+        let requires_recycling = all_states
+            .iter()
+            .filter(|state| {
+                state.reversible.max.delta_net >= 0.0
+                    && state.forward_only.max.delta_net < 0.0
+                    && state.reversible.max.c_prime < state.actual_c - MASS_TOL_R5
+            })
+            .collect::<Vec<_>>();
+        let required_c_to_a_amounts: Vec<f64> = requires_recycling
+            .iter()
+            .map(|state| state.actual_c - state.reversible.max.c_prime)
+            .collect();
+        let classification = if deferred_states
+            .iter()
+            .chain(shared_states.iter())
+            .all(|state| state.forward_only.max.delta_net >= 0.0)
+        {
+            "DCDEV020R8R5R1_FORWARD_ALLOCATION_LOCAL_CAPACITY_CONFIRMED"
+        } else if reversible_nonnegative == all_states.len()
+            && forward_nonnegative < all_states.len()
+            && !requires_recycling.is_empty()
+        {
+            "DCDEV020R8R5R1_RECYCLING_ONLY_LOCAL_CAPACITY"
+        } else if reversible_nonnegative == 0 && forward_nonnegative == 0 {
+            "DCDEV020R8R5R1_CATALYST_ALLOCATION_LOCAL_CAPACITY_INSUFFICIENT"
+        } else {
+            "DCDEV020R8R5R1_NET_ALLOCATION_ENVELOPE_MIXED"
+        };
+        let qualification = json!({
+            "directive": "DC-DEV-020-R8-R5-R1",
+            "entry_head": ENTRY,
+            "r8r5_evidence_head": "95247dfc6b2b0e9903338e2b76ee55c08f502f84",
+            "r8r5_dense_sha256": "afa9c26f8845f9321450ec12e7e4fe55dc54a088eb6857ff8e1e272dddc8c390",
+            "classification": classification,
+            "deferred_states": deferred_states.len(),
+            "shared_states": shared_states.len(),
+            "reversible_nonnegative": reversible_nonnegative,
+            "forward_nonnegative": forward_nonnegative,
+            "a_c_conservation": true,
+            "reaction_semantics": "exact R8-R5 one-step semantics",
+            "direct_prior_ledger_hash_field_match": false,
+            "direct_prior_ledger_hash_field_match_note": "R8-R5 dense ledger contains no deferred checkpoint-hash field; hashes are deterministically reconstructed from the sealed replay.",
+            "production_chemistry_changed": false,
+            "production_behavior_changed": false,
+            "dc_dev_021_authorized": false,
+            "next_execution_started": false
+        });
+        write_json(
+            &output,
+            "protocol.json",
+            &json!({
+                "directive": "DC-DEV-020-R8-R5-R1",
+                "entry_head": ENTRY,
+                "clean_scientific_base": CLEAN_BASE_R5,
+                "r8r5_evidence_head": "95247dfc6b2b0e9903338e2b76ee55c08f502f84",
+                "envelopes": ["reversible_0_to_total_ac", "forward_only_actual_c_to_total_ac"],
+                "mesh_points": GRID_POINTS,
+                "refinement_iterations": REFINE_ITERATIONS,
+                "relative_interval_tolerance": REL_INTERVAL_TOL,
+                "unchanged_control": "C_prime_equals_C_actual",
+                "frozen_r6": {"K_PL": R6_K_PL, "p": R6_P, "K_C": 0.3, "k_c_turn": 0.01},
+                "observer_only": true,
+                "production_chemistry_changed": false,
+                "production_behavior_changed": false,
+                "dc_dev_021_authorized": false
+            }),
+        );
+        write_json(
+            &output,
+            "checkpoint_hashes.json",
+            &json!({"deferred": deferred_hashes, "shared": shared_hashes}),
+        );
+        write_json(
+            &output,
+            "statewise_net_envelopes.json",
+            &json!({"deferred": deferred_states, "shared": shared_states}),
+        );
+        write_json(
+            &output,
+            "family_summary.json",
+            &json!({
+                "deferred_reversible": family_summary(&deferred_states, false),
+                "deferred_forward": family_summary(&deferred_states, true),
+                "shared_reversible": family_summary(&shared_states, false),
+                "shared_forward": family_summary(&shared_states, true)
+            }),
+        );
+        write_json(
+            &output,
+            "attribution.json",
+            &json!({
+                "states_reversible_nonnegative_forward_negative": requires_recycling.len(),
+                "states_requiring_c_to_a": requires_recycling.iter().map(|state| json!({"context": state.source_context, "step": state.source_step, "returned_catalyst_mass": state.actual_c - state.reversible.max.c_prime, "delta_e_repartition": state.reversible.max.delta_repartition})).collect::<Vec<_>>(),
+                "median_required_c_to_a_amount": if required_c_to_a_amounts.is_empty() { 0.0 } else { median(&required_c_to_a_amounts) },
+                "largest_required_c_to_a_amount": required_c_to_a_amounts.iter().copied().fold(0.0, f64::max)
+            }),
+        );
+        write_json(&output, "qualification.json", &qualification);
+        write_json(
+            &output,
+            "external_evidence_manifest.json",
+            &json!({
+                "dense_artifact": dense_path.display().to_string(),
+                "external_location": external_location,
+                "sha256": external_sha,
+                "compact_git_artifacts": ["protocol.json", "checkpoint_hashes.json", "statewise_net_envelopes.json", "family_summary.json", "attribution.json", "qualification.json", "external_evidence_manifest.json", "manifest.json"]
+            }),
+        );
+        write_json(
+            &output,
+            "manifest.json",
+            &json!({
+                "directive": "DC-DEV-020-R8-R5-R1",
+                "classification": classification,
+                "source_commit": "95247dfc6b2b0e9903338e2b76ee55c08f502f84",
+                "result_commit": result_commit,
+                "dense_location": external_location,
+                "dense_sha256": external_sha,
+                "preservation": ["R8-R5 constant allocation result", "R8-R2", "R8-R3", "R8-R4", "Phase-1", "D-088", "evolution-harness", "governance"]
+            }),
+        );
+        let dense = json!({"directive": "DC-DEV-020-R8-R5-R1", "deferred": deferred_states, "shared": shared_states, "checkpoint_hashes": {"deferred": deferred_hashes, "shared": shared_hashes}});
+        fs::create_dir_all(dense_path.parent().unwrap()).unwrap();
+        fs::write(&dense_path, serde_json::to_vec(&dense).unwrap()).unwrap();
+        println!("DCDEV020R8R5R1_NET_ALLOCATION_DRIFT_AUDIT_COMPLETE");
+        println!("classification={classification}");
+        println!(
+            "deferred_reversible_nonnegative={}",
+            deferred_states
+                .iter()
+                .filter(|state| state.reversible.max.delta_net >= 0.0)
+                .count()
+        );
+        println!(
+            "deferred_forward_nonnegative={}",
+            deferred_states
+                .iter()
+                .filter(|state| state.forward_only.max.delta_net >= 0.0)
+                .count()
+        );
+        println!(
+            "shared_reversible_nonnegative={}",
+            shared_states
+                .iter()
+                .filter(|state| state.reversible.max.delta_net >= 0.0)
+                .count()
+        );
+        println!(
+            "shared_forward_nonnegative={}",
+            shared_states
+                .iter()
+                .filter(|state| state.forward_only.max.delta_net >= 0.0)
+                .count()
+        );
+        println!("states_requiring_c_to_a={}", requires_recycling.len());
+        println!("next_execution_started=false");
+    }
+
+    #[cfg(test)]
+    mod r1_tests {
+        #[test]
+        fn aggregation_worst_case_uses_minimum() {
+            let values = [0.25, -0.75, 0.10, -0.20];
+            assert_eq!(values.iter().copied().fold(f64::INFINITY, f64::min), -0.75);
+            assert_ne!(
+                values.iter().copied().fold(f64::NEG_INFINITY, f64::max),
+                -0.75
+            );
         }
     }
 

@@ -296,3 +296,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R8-R5 observer-only A↔C allocation capacity envelope; no allocator, catalyst law, production integration, source tuning, sink change, or DC-DEV-021 authorization.
 - Supersedes learning: none
+
+## L-DCDEV020R8R5R1-001
+
+- Learning ID: L-DCDEV020R8R5R1-001
+- Date: 2026-08-19
+- Fact or lesson: R8-R5 local drift was initially measured from the post-repartition state. Correcting to incoming-state `ΔE_NET` shows all 400 late states retain reversible nonnegative drift, but all 400 forward-only A→C envelopes are negative. Every successful reversible optimum requires C→A recovery; median returned catalyst mass is `0.4720363807305439` and maximum is `0.7858922035191133`.
+- Evidence location: `digital-protocell/examples/dcdev020r8r5_ac_allocation_upper_bound.rs`, `digital-protocell/examples/dcdev020r8r5r1_net_allocation_drift.rs`, `digital-protocell/experiments/generated/dcdev020r8r5r1/`, and the governed external dense ledger referenced by `external_evidence_manifest.json`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R8-R5-R1 observer-only corrected net allocation drift; no allocator, recycling law, production integration, source tuning, sink change, or DC-DEV-021 authorization.
+- Supersedes learning: none
