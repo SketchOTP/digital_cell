@@ -91,3 +91,7 @@ path = "../../examples/dcdev020r7_on_policy_zero_drift_audit.rs"
 [[example]]
 name = "dcdev020r8_nfa_restorative_attractor"
 path = "../../examples/dcdev020r8_nfa_restorative_attractor.rs"
+
+[[example]]
+name = "dcdev020r8r1_causal_a_demand_elasticity"
+path = "../../examples/dcdev020r8r1_causal_a_demand_elasticity.rs"
