@@ -1,0 +1,114 @@
+name: DC-DEV-020-R8-R3 catalyst reserve horizon
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-020r8r3-observer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate R8-R3 boundary and compact evidence
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("digital-protocell/experiments/generated/dcdev020r8r3")
+          names = [
+              "protocol.json",
+              "acute_reproduction.json",
+              "sustained_summary.json",
+              "payback_summary.json",
+              "delayed_resume_summary.json",
+              "qualification.json",
+              "literature_review.json",
+              "external_evidence_manifest.json",
+              "manifest.json",
+          ]
+          if any(not (root / name).is_file() for name in names):
+              raise SystemExit("missing R8-R3 compact evidence")
+          protocol = json.loads((root / "protocol.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          if protocol["entry_head"] != "9fdd292bbd13f62ef9c88d08e8d887f15326d242":
+              raise SystemExit("wrong R8-R2 authority")
+          if protocol["governed_sustained_horizon"] != 8000:
+              raise SystemExit("wrong sustained horizon")
+          if qualification["dc_dev_021_authorized"] or qualification["next_execution_started"]:
+              raise SystemExit("R8-R3 scope boundary opened")
+          if qualification["production_chemistry_changed"] or qualification["production_behavior_changed"]:
+              raise SystemExit("production boundary opened")
+          PY
+          changed="$(git diff --name-only 1e242f28152797b512e25cd56c7b718e45d6ca97 HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then exit 1; fi
+          if printf '%s\n' "$changed" | grep -Ei 'dcdev021|dc-dev-021'; then exit 1; fi
+
+      - name: Scoped formatting and R8-R3 compile
+        working-directory: digital-protocell
+        run: |
+          rustup run 1.89.0 rustfmt --edition 2021 --check examples/dcdev020r8r3_catalyst_reserve_horizon.rs
+          cargo +1.89.0 test -p regulatory-core --example dcdev020r8r3_catalyst_reserve_horizon --release
+
+      - name: Execute R8-R3 fixed observer audit
+        working-directory: digital-protocell
+        env:
+          DCDEV020R8R3_OUTPUT_ROOT: experiments/generated/dcdev020r8r3-ci
+          DCDEV020R8R3_DENSE_LEDGER: target/dcdev020r8r3-catalyst-reserve-dense.json
+          DCDEV020R8R3_SOURCE_COMMIT: 9fdd292bbd13f62ef9c88d08e8d887f15326d242
+          DCDEV020R8R3_RESULT_COMMIT: PENDING
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run -p regulatory-core --example dcdev020r8r3_catalyst_reserve_horizon --release --quiet
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r8r3-ci")
+          protocol = json.loads((root / "protocol.json").read_text())
+          acute = json.loads((root / "acute_reproduction.json").read_text())
+          sustained = json.loads((root / "sustained_summary.json").read_text())
+          payback = json.loads((root / "payback_summary.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          assert protocol["catalyst_half_life_steps"] > 3400
+          assert protocol["governed_sustained_horizon"] == 8000
+          assert acute["exact_reproduction"]
+          assert sustained["d016"]["normal"]["steps"] == 8000
+          assert sustained["r6"]["deferred"]["steps"] == 8000
+          assert all(row["alive"] and row["finite"] for row in payback["d016"]["results"])
+          assert all(row["alive"] and row["finite"] for row in payback["r6"]["results"])
+          assert qualification["classification"] == "DCDEV020R8R3_CATALYST_RESERVE_SOURCE_CONTEXT_DEPENDENT"
+          PY
+
+      - name: Preservation regressions
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test -p regulatory-core
+          cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse --verify HEAD)" = "$EXPECTED_HEAD"

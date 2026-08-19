@@ -267,3 +267,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R8-R2 observer-only catalyst investment payback; no production repair or DC-DEV-021 authorization.
 - Supersedes learning: none
+
+## L-DCDEV020R8R3-001
+
+- Learning ID: L-DCDEV020R8R3-001
+- Date: 2026-08-18
+- Fact or lesson: The frozen catalyst turnover half-life is `3465.7359027997263` accepted steps. Over the governed 8000-step continuous-feed horizon, deferred catalyst production remains alive, finite, and conservative in both D016 and R6 contexts. D016 has no marginal catalyst-investment payback at the deterministic checkpoints, while R6 pays back only at early checkpoints through `3466` and fails to pay back at `5199` and `6931`; the reserve horizon is therefore source-context dependent.
+- Evidence location: `digital-protocell/examples/dcdev020r8r3_catalyst_reserve_horizon.rs`, `digital-protocell/experiments/generated/dcdev020r8r3/`, and the governed external dense ledger referenced by `external_evidence_manifest.json`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R8-R3 observer-only catalyst reserve horizon; no production repair or DC-DEV-021 authorization.
+- Supersedes learning: none

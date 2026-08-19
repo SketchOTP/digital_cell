@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260818-dcdev020r8r2-catalyst-investment-payback`
-- External directive ID: `DC-DEV-020-R8-R2`
-- Objective: `Determine whether existing catalyst-production A investment pays back its cost in the frozen finite-feed window without changing production chemistry.`
+- Local directive ID: `D-20260818-dcdev020r8r3-catalyst-reserve-horizon`
+- External directive ID: `DC-DEV-020-R8-R3`
+- Objective: `Determine the catalyst reserve horizon and whether a source-portable delayed catalyst-investment window exists, without changing production chemistry.`
 - Current status: `VALIDATING`
-- Acceptance: `Observer execution classifies DCDEV020R8R2_CATALYST_INVESTMENT_ACUTE_RECOVERY_BOTTLENECK; PR #39 is open/draft/unmerged at 4f9e637f5d0dd97ed13df9266d18624538107588 and exact-head CI 32207702692 passed; architect review is pending.`
-- Current phase: `DC-DEV-020-R8-R2 observer-only catalyst investment payback audit; no production law or DC-DEV-021 work is authorized.`
-- Expected or actual touched areas: `R8-R2 observer example registration, compact evidence, governed external dense-ledger seal, documentation, governance, and scoped CI`
-- Immediate next action: `Return PR #39 at the exact verified head for architect review; do not begin DC-DEV-021.`
+- Acceptance: `Observer execution classifies DCDEV020R8R3_CATALYST_RESERVE_SOURCE_CONTEXT_DEPENDENT; architect review is pending.`
+- Current phase: `DC-DEV-020-R8-R3 observer-only catalyst reserve horizon audit; no production law or DC-DEV-021 work is authorized.`
+- Expected or actual touched areas: `R8-R3 observer example registration, compact evidence, governed external dense-ledger seal, documentation, governance, and scoped CI`
+- Immediate next action: `Complete exact-head CI and return the R8-R3 package for architect review; do not begin DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -54,6 +54,9 @@
 - R5 dense input is sealed at `4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585`; R7 dense input is sealed at `abdaea6d075c700e36d14d369dba62982f4a65cea47d2d1f162b5dfe8afa59f8`.
 - R8 implementation source is `6e2b03a7551409086c1a38d6cf5f62827fb91929`; its dense pair/constraint ledger is sealed externally at `12b41f27c928635899a7ea3a8d496cfdd3af7d3fd83aaa93024724663e2df9ff`.
 - R8-R1 implementation source is `d50037e53d041d8b06895553933c3b0a78c7a024`; its dense demand ledger is sealed externally at `f44e8f9fa441451ee40bcbfccac5f556131e4d26868868607e9507c29e7bcf90`.
+- Accepted R8-R2 head for this audit is `9fdd292bbd13f62ef9c88d08e8d887f15326d242`; its dense ledger is sealed at `e932f6ab96e34516de98c97c2cae102553db9764383af3d61abf015743c3a376`.
+- R8-R3 frozen catalyst half-life is `3465.7359027997263` accepted steps from `k_c_turn=0.01` and `dt=0.02`; governed horizon is `8000`; checkpoints are `433, 480, 866, 1733, 3466, 5199, 6931`.
+- R8-R3 result is `DCDEV020R8R3_CATALYST_RESERVE_SOURCE_CONTEXT_DEPENDENT`: D016 has no marginal payback, while R6 pays back only at early checkpoints and not at later checkpoints; deferred arms remain alive and finite.
 
 ## Status vocabulary
 

@@ -546,6 +546,29 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: architect review; production integration and DC-DEV-021 remain unauthorized.
 - Follow-up directive: none
 
+## D-20260818-dcdev020r8r3-catalyst-reserve-horizon - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R8R3-CATALYST-RESERVE-SOURCE-CONTEXT-DEPENDENT`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R8-R3 audit reproduced the accepted R8-R2 acute endpoints, derived the frozen catalyst half-life as `3465.7359027997263` accepted steps, and executed the fixed 8000-step sustained horizon under D016 bilinear and sealed R6 NF power-law source contexts. Deferred catalyst production retained frozen turnover and both deferred arms remained alive, finite, and conservation-closed. D016 had no marginal payback at any deterministic checkpoint; R6 paid back at `433, 480, 866, 1733, 3466` but not at `5199` or `6931`. Classification: `DCDEV020R8R3_CATALYST_RESERVE_SOURCE_CONTEXT_DEPENDENT`.
+- Changed areas: R8-R3 observer example registration, compact append-only evidence, governed external dense-ledger manifest, documentation, governance, and scoped CI; no production chemistry or behavior changed.
+- Validation:
+  - Accepted R8-R2 authority and sealed R5/R7/R8/R8-R1/R8-R2 input hashes - PASSED
+  - Accepted R8-R2 480-step normal and deferred endpoint reproduction - PASSED
+  - Frozen `k_c_turn`, `dt`, half-life, deterministic checkpoints, and 8000-step horizon - PASSED
+  - D016/R6 sustained NORMAL and DEFERRED trajectories - PASSED
+  - D016/R6 marginal INVEST/SKIP checkpoint shadows - PASSED
+  - Source-context comparison and fail-closed classification - PASSED
+  - Conditional delayed-resume validation - NOT RUN; no overlapping source-context payback bracket
+  - Local sanctioned Rust 1.89.0 compile and actual observer execution - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: Payback is source-context dependent and no portable delayed-resume timing oracle was authorized by the result. The audit does not establish a production law, catalyst target, deficit signal, or DC-DEV-021 authorization.
+- Blockers: exact-head remote CI and architect review; production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none
+
 ## D-20260818-dcdev020r5-local-zero-drift-source-audit - COMPLETE
 
 - Outcome ID: `OUT-DCDEV020R5-ARCHITECT-ACCEPTED`

@@ -360,3 +360,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260818-dcdev020r8r3-catalyst-reserve-horizon
+
+- Issued: `2026-08-18T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R8-R3`
+- Objective: Determine the catalyst reserve horizon and whether a source-portable delayed catalyst-investment window exists without changing production chemistry.
+- Scope: Exact accepted R8-R2 entry, sealed R5/R7/R8/R8-R1/R8-R2 evidence seals, exact R8-R2 acute replay, frozen catalyst half-life, 8000-step sustained NORMAL/DEFERRED trajectories under D016 and R6 contexts, deterministic half-life checkpoints, one-event marginal INVEST/SKIP shadows, conditional delayed-resume oracle only for overlapping brackets, compact evidence, governed dense evidence, governance, preservation, scoped CI, and draft PR.
+- Exclusions: Changes to `k_c_prod`, `k_c_turn`, `q_c`, source laws, reserves, A decay, transport, resources, behavior, production integration, C targets, deficit/error state, feedback laws, tuning, and DC-DEV-021.
+- Acceptance: One authorized R8-R3 classification with exact R8-R2 reproduction, frozen timescale, sustained trajectories, marginal payback, source-context comparison, conditional delayed-resume validation, conservation accounting, exact-head remote CI, and architect review; no production integration is authorized.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

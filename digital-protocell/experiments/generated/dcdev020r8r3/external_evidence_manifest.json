@@ -1,0 +1,17 @@
+{
+  "compact_git_artifacts": [
+    "protocol.json",
+    "acute_reproduction.json",
+    "sustained_summary.json",
+    "payback_summary.json",
+    "delayed_resume_summary.json",
+    "qualification.json",
+    "literature_review.json",
+    "external_evidence_manifest.json",
+    "manifest.json"
+  ],
+  "dense_artifact": "target/dcdev020r8r3-catalyst-reserve-dense.json",
+  "external_location": "UNRECORDED_EXTERNAL_LOCATION",
+  "r8r2_input_sha256": "e932f6ab96e34516de98c97c2cae102553db9764383af3d61abf015743c3a376",
+  "sha256": "COMPUTED_AFTER_RUN"
+}

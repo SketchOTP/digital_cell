@@ -1,0 +1,16 @@
+{
+  "architect_acceptance": "PENDING",
+  "classification": "DCDEV020R8R3_CATALYST_RESERVE_SOURCE_CONTEXT_DEPENDENT",
+  "dc_dev_021_authorized": false,
+  "deferred_viable_through_horizon": true,
+  "gate_0_authority": true,
+  "gate_1_acute_reproduction": true,
+  "gate_2_frozen_catalyst_timescale": true,
+  "gate_3_sustained_trajectories": true,
+  "gate_4_payback_recorded": true,
+  "gate_5_delayed_resume_conditional": true,
+  "implementation_authorized": false,
+  "next_execution_started": false,
+  "production_behavior_changed": false,
+  "production_chemistry_changed": false
+}

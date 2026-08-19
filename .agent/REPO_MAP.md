@@ -64,6 +64,9 @@
 - `digital-protocell/experiments/generated/dcdev020r8/` — compact append-only R8 protocol, matched-pair summary, reciprocal constraint summary, qualification, literature disposition, and external dense-ledger manifest; dense pair/constraint records remain in governed external evidence storage.
 - `digital-protocell/experiments/generated/dcdev020r8r1/` — compact append-only R8-R1 protocol, A-elasticity decomposition, pair-confounding summary, qualification, literature disposition, and external dense-ledger manifest; the dense demand ledger remains in governed external evidence storage.
 - `digital-protocell/experiments/generated/dcdev020r8r2/` — compact append-only R8-R2 protocol, 480 paired-root summary, two-context payback, whole-window shadow, qualification, literature disposition, and external dense-ledger manifest; the dense ledger remains in governed external evidence storage.
+- `digital-protocell/examples/dcdev020r8r3_catalyst_reserve_horizon.rs` — observer-only R8-R3 frozen catalyst half-life, sustained reserve trajectories, deterministic marginal payback, source-context comparison, and conditional delayed-resume audit; it changes no production chemistry or behavior.
+- `digital-protocell/experiments/generated/dcdev020r8r3/` — compact append-only R8-R3 acute reproduction, timescale, sustained trajectory, marginal payback, delayed-resume disposition, qualification, literature, and external dense-ledger manifest.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r3/` — R8-R3 catalyst reserve horizon documentation.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/` — DC-DEV-001A human-readable analysis.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r2/` — DC-DEV-020-R2 observer requalification and Gate 4 disposition.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r3/` — DC-DEV-020-R3 two-substrate identifiability audit and fail-closed disposition.

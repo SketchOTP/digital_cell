@@ -65,3 +65,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: All 480 paired physical roots were valid; the normal sealed R6 replay remained below the deprived start, while the whole-window no-catalyst-production shadow exceeded it. No checkpoint paid back within either authorized source context.
 - Affected areas: DC-DEV-020 observer evidence and developmental metabolic architecture selection; no production chemistry, certified biology, or behavior.
 - Supersedes record: none
+
+## DEC-DCDEV020R8R3-001
+
+- Date: 2026-08-18
+- Record or decision ID: DEC-DCDEV020R8R3-001
+- Status: PROPOSED
+- Decision or event: The DC-DEV-020-R8-R3 observer audit classified catalyst-reserve payback as source-context dependent.
+- Rationale: D016 produced no marginal payback at the fixed half-life checkpoints, while R6 produced early payback through step `3466` but not at later checkpoints. Both deferred trajectories remained viable through 8000 steps, so no source-portable delayed-resume checkpoint was authorized.
+- Affected areas: DC-DEV-020 observer evidence and developmental metabolic architecture selection; no production chemistry, certified biology, or behavior.
+- Supersedes record: DEC-DCDEV020R8R2-001
