@@ -1,0 +1,94 @@
+name: DC-DEV-020-R8-R2 catalyst investment payback
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-020r8r2-observer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate R8-R2 boundary and compact evidence
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("digital-protocell/experiments/generated/dcdev020r8r2")
+          names = ["protocol.json", "root_summary.json", "payback_summary.json", "shadow_summary.json", "qualification.json", "literature_review.json", "external_evidence_manifest.json", "manifest.json"]
+          if any(not (root / name).is_file() for name in names):
+              raise SystemExit("missing R8-R2 compact evidence")
+          protocol = json.loads((root / "protocol.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          if protocol["entry_head"] != "d2c4f76a46f6baf7eab544847dd58c034adea156":
+              raise SystemExit("wrong R8-R1 authority")
+          if qualification["dc_dev_021_authorized"] or qualification["next_execution_started"]:
+              raise SystemExit("R8-R2 scope boundary opened")
+          if qualification["production_chemistry_changed"] or qualification["production_behavior_changed"]:
+              raise SystemExit("production boundary opened")
+          PY
+          changed="$(git diff --name-only 1e242f28152797b512e25cd56c7b718e45d6ca97 HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then exit 1; fi
+          if printf '%s\n' "$changed" | grep -Ei 'dcdev021|dc-dev-021'; then exit 1; fi
+
+      - name: Scoped formatting and R8-R2 compile
+        working-directory: digital-protocell
+        run: |
+          rustup run 1.89.0 rustfmt --edition 2021 --check examples/dcdev020r8r2_catalyst_investment_payback.rs
+          cargo +1.89.0 test -p regulatory-core --example dcdev020r8r2_catalyst_investment_payback --release
+
+      - name: Execute R8-R2 fixed observer audit
+        working-directory: digital-protocell
+        env:
+          DCDEV020R8R2_OUTPUT_ROOT: target/dcdev020r8r2-ci
+          DCDEV020R8R2_DENSE_LEDGER: target/dcdev020r8r2-catalyst-investment-dense.json
+          DCDEV020R8R2_SOURCE_COMMIT: d2c4f76a46f6baf7eab544847dd58c034adea156
+          DCDEV020R8R2_RESULT_COMMIT: PENDING
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run -p regulatory-core --example dcdev020r8r2_catalyst_investment_payback --release --quiet
+          python3 - <<'PY'
+          import json, math
+          root = json.load(open("target/dcdev020r8r2-ci/root_summary.json"))
+          shadow = json.load(open("target/dcdev020r8r2-ci/shadow_summary.json"))
+          q = json.load(open("target/dcdev020r8r2-ci/qualification.json"))
+          stats = root["root_stats"]
+          assert stats["count"] == 480 and stats["valid_pairs"] == 480
+          assert stats["capacity_failures"] == 0 and stats["nonmonotonic_failures"] == 0
+          assert q["classification"] == "DCDEV020R8R2_CATALYST_INVESTMENT_ACUTE_RECOVERY_BOTTLENECK"
+          assert math.isclose(shadow["normal"]["final_state"]["e_stored"], 60.0620310117838, abs_tol=1e-10)
+          assert shadow["cprod_deferred"]["final_state"]["e_stored"] > shadow["deprived_e_ar"]
+          PY
+
+      - name: Preservation regressions
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test -p regulatory-core
+          cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse --verify HEAD)" = "$EXPECTED_HEAD"

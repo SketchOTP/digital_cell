@@ -55,3 +55,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The finite-source upper bound exceeded the deprived starting stored material, but the required gain envelope was not represented by the permitted A-only inhibitory family and required a constant gain of `13.9482421875`; no bounded A-only candidate could therefore be honestly qualified.
 - Affected areas: DC-DEV-020-R2 observer evidence and developmental metabolic architecture selection; no production chemistry, controller, behavior, or DC-DEV-021.
 - Supersedes record: DEC-DCDEV020-001
+
+## DEC-DCDEV020R8R2-001
+
+- Date: 2026-08-18
+- Record or decision ID: DEC-DCDEV020R8R2-001
+- Status: PROPOSED
+- Decision or event: The DC-DEV-020-R8-R2 observer audit classified existing catalyst-production investment as an acute finite-feed recovery bottleneck.
+- Rationale: All 480 paired physical roots were valid; the normal sealed R6 replay remained below the deprived start, while the whole-window no-catalyst-production shadow exceeded it. No checkpoint paid back within either authorized source context.
+- Affected areas: DC-DEV-020 observer evidence and developmental metabolic architecture selection; no production chemistry, certified biology, or behavior.
+- Supersedes record: none

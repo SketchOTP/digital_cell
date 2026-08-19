@@ -257,3 +257,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R8 observer-only reciprocal product-feedback topology audit through the training Gate 3 failure; exact-head CI and architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV020R8R2-001
+
+- Learning ID: L-DCDEV020R8R2-001
+- Date: 2026-08-18
+- Fact or lesson: On all 480 accepted R7 on-policy pre-reaction states, the physical catalyst-production burden is substantial relative to the normal zero-drift source requirement. In the exact 480-step finite-feed counterfactual, deferring catalyst production raises final E_AR above deprived while normal production remains below deprived; all authorized payback checkpoints report NO_PAYBACK.
+- Evidence location: `digital-protocell/examples/dcdev020r8r2_catalyst_investment_payback.rs`, `digital-protocell/experiments/generated/dcdev020r8r2/`, and the governed external dense ledger referenced by `external_evidence_manifest.json`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R8-R2 observer-only catalyst investment payback; no production repair or DC-DEV-021 authorization.
+- Supersedes learning: none

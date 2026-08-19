@@ -25,6 +25,7 @@
 - `digital-protocell/examples/dcdev020r7_on_policy_zero_drift_audit.rs` — observer-only DC-DEV-020-R7 exact R6 replay, on-policy physical root audit, frozen NF/NFA observer replay, support-distance analysis, and exact-root oracle; it changes no production chemistry.
 - `digital-protocell/examples/dcdev020r8_nfa_restorative_attractor.rs` — observer-only DC-DEV-020-R8 product-feedback topology feasibility audit using frozen N/F support, reciprocal constraints, and fail-closed training-gate classification; it changes no production chemistry.
 - `digital-protocell/examples/dcdev020r8r1_causal_a_demand_elasticity.rs` — observer-only DC-DEV-020-R8-R1 within-state A perturbation, physical zero-drift demand decomposition, and R8 pair-confounding audit; it changes no production chemistry or behavior.
+- `digital-protocell/examples/dcdev020r8r2_catalyst_investment_payback.rs` — observer-only DC-DEV-020-R8-R2 physical root, catalyst-production shadow, checkpoint payback, and whole-window R6 comparison; it changes no production chemistry or behavior.
 
 ## Interfaces and contracts
 
@@ -62,6 +63,7 @@
 - `digital-protocell/experiments/generated/dcdev020r7/` — compact append-only R7 protocol, on-policy root/source summary, frozen observer/support statistics, oracle result, qualification, literature disposition, and external dense-ledger manifest.
 - `digital-protocell/experiments/generated/dcdev020r8/` — compact append-only R8 protocol, matched-pair summary, reciprocal constraint summary, qualification, literature disposition, and external dense-ledger manifest; dense pair/constraint records remain in governed external evidence storage.
 - `digital-protocell/experiments/generated/dcdev020r8r1/` — compact append-only R8-R1 protocol, A-elasticity decomposition, pair-confounding summary, qualification, literature disposition, and external dense-ledger manifest; the dense demand ledger remains in governed external evidence storage.
+- `digital-protocell/experiments/generated/dcdev020r8r2/` — compact append-only R8-R2 protocol, 480 paired-root summary, two-context payback, whole-window shadow, qualification, literature disposition, and external dense-ledger manifest; the dense ledger remains in governed external evidence storage.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/` — DC-DEV-001A human-readable analysis.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r2/` — DC-DEV-020-R2 observer requalification and Gate 4 disposition.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r3/` — DC-DEV-020-R3 two-substrate identifiability audit and fail-closed disposition.

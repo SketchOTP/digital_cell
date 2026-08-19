@@ -675,3 +675,29 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: This establishes causal A-demand elasticity and explains R8 pair confounding, but authorizes no A-feedback law, production integration, or DC-DEV-021 work.
 - Blockers: architect review; production changes and DC-DEV-021 remain unauthorized.
 - Follow-up directive: none
+
+## D-20260818-dcdev020r8r2-catalyst-investment-payback - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R8R2-CATALYST-INVESTMENT-ACUTE-RECOVERY-BOTTLENECK`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R8-R2 audit reconstructed all 480 accepted R7 on-policy pre-reaction states and paired each with normal and one-step no-catalyst-production physical zero-drift shadows. All 480 pairs were valid, with zero capacity failures and zero pre-crossing non-monotonicity failures. Median catalyst-production burden was `0.008328836524032168` E_AR units and the burden was at least the R6 source shortfall on all 480 states. Exact sealed R6 normal replay ended at `60.06203101178377`, while whole-window catalyst-production deferral ended at `63.645566711951915` from a deprived start of `60.82781514212436`. All 24 checkpoint payback runs reported `NO_PAYBACK`. Classification: `DCDEV020R8R2_CATALYST_INVESTMENT_ACUTE_RECOVERY_BOTTLENECK`.
+- Changed areas: R8-R2 observer example registration, compact append-only evidence, governed external dense-ledger manifest, documentation, scoped workflow, and governance; no production chemistry or behavior changed.
+- Validation:
+  - Accepted R8-R1 authority and sealed R5/R7/R8/R8-R1 input hashes - PASSED
+  - Local sanctioned Rust 1.89.0 compile and focused example test - PASSED
+  - 480 paired physical roots, zero capacity failures, zero non-monotonicity failures - PASSED
+  - D016 bilinear and R6 power-law payback checkpoints - EXECUTED; all `NO_PAYBACK`
+  - Exact normal R6 endpoint parity - PASSED
+  - Whole-window cprod-deferred shadow alive/finite and above deprived start - PASSED
+  - External dense-ledger SHA-256 - PENDING external copy/seal
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The result diagnoses catalyst-production investment as an acute finite-feed recovery bottleneck; it does not establish a production repair, a different resource contract, or a sufficient alternative catalyst strategy. No implementation or DC-DEV-021 work is authorized.
+- Blockers: external dense-ledger seal, exact-head remote CI, and architect review.
+- Follow-up directive: none
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

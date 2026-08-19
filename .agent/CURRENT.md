@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260818-dcdev020r8r1-causal-a-demand-elasticity`
-- External directive ID: `DC-DEV-020-R8-R1`
-- Objective: `Determine causal elasticity of the physical zero-drift source requirement with respect to A and decompose the existing downstream demand blocks without changing production chemistry.`
+- Local directive ID: `D-20260818-dcdev020r8r2-catalyst-investment-payback`
+- External directive ID: `DC-DEV-020-R8-R2`
+- Objective: `Determine whether existing catalyst-production A investment pays back its cost in the frozen finite-feed window without changing production chemistry.`
 - Current status: `VALIDATING`
-- Acceptance: `R8 is architect-accepted negative at 5b314792fe896504f6f8b99218ba48f0328de9f0; R8-R1 classifies DCDEV020R8R1_A_DEMAND_ELASTICITY_POSITIVE with R8_PAIR_CONFOUNDING_CONFIRMED. Exact-head CI 32203590517 passed at bbf636626b0009e339d4250eb998123cb1f193fe; architect review is pending.`
-- Current phase: `DC-DEV-020-R8-R1 observer-only causal A-demand elasticity audit; no production law or DC-DEV-021 work is authorized.`
-- Expected or actual touched areas: `R8-R1 observer example registration, compact evidence, external dense-ledger seal, documentation, governance, and scoped CI`
-- Immediate next action: `Return draft PR #38 at exact head bbf636626b0009e339d4250eb998123cb1f193fe for independent architect review; do not begin DC-DEV-021.`
+- Acceptance: `Observer execution classifies DCDEV020R8R2_CATALYST_INVESTMENT_ACUTE_RECOVERY_BOTTLENECK; compact evidence and scoped CI are prepared; architect review is pending.`
+- Current phase: `DC-DEV-020-R8-R2 observer-only catalyst investment payback audit; no production law or DC-DEV-021 work is authorized.`
+- Expected or actual touched areas: `R8-R2 observer example registration, compact evidence, governed external dense-ledger seal, documentation, governance, and scoped CI`
+- Immediate next action: `Push the bounded R8-R2 branch, open a draft PR, run exact-head CI, and return for architect review; do not begin DC-DEV-021.`
 
 ## Temporary task-relevant facts
 

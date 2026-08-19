@@ -249,6 +249,18 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260818-dcdev020r8r2-catalyst-investment-payback
+
+- Issued: `2026-08-18T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R8-R2`
+- Entry authority: accepted R8-R1 head `d2c4f76a46f6baf7eab544847dd58c034adea156`; branch `strategy/dc-dev-020r8r2-catalyst-investment-payback`
+- Objective: Determine whether existing A-to-C catalyst production pays back its A/R-store cost within the exact 480-step finite-feed window.
+- Scope: all 480 accepted R7 on-policy pre-reaction states, physical zero-drift root pairs with and without one-step catalyst production, D016 and sealed R6 checkpoint payback, exact R6 normal replay, and one whole-window cprod-deferred shadow.
+- Exclusions: production chemistry, source/resource/reserve/turnover/transport laws, certified biology, behavior, tuning, implementation, and DC-DEV-021.
+- Acceptance: one authorized observer classification, compact evidence, governed dense-ledger hash, scoped CI, preservation, and architect review.
+- Status at issuance: ISSUED
+
 ## D-20260818-dcdev020r8r1-causal-a-demand-elasticity
 
 - Issued: `2026-08-18T20:00:00-04:00`
