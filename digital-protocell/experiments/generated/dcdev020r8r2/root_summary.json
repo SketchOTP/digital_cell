@@ -1,0 +1,29 @@
+{
+  "catalyst_production_burden_definition": "S_normal - S_no_cprod",
+  "r6_constants": {
+    "g_h": 1.0,
+    "k_pl": 0.017556661171593057,
+    "p": 0.0003277429681759396
+  },
+  "r6_deficit_definition": "S_normal - S_R6",
+  "root_drift_tolerance": 1e-6,
+  "root_relative_tolerance": 1e-9,
+  "root_stats": {
+    "burden_over_zero_median": 0.4248821456687416,
+    "capacity_failures": 0,
+    "catalyst_production_burden_median": 0.008328836524032168,
+    "count": 480,
+    "early_burden_median": 0.007964582908614973,
+    "early_burden_over_zero_median": 0.4266049318807055,
+    "fraction_burden_at_least_r6_shortfall": 1.0,
+    "invalid_pairs": 0,
+    "late_burden_median": 0.008617016731987065,
+    "late_burden_over_zero_median": 0.423701054854032,
+    "middle_burden_median": 0.008328836524032168,
+    "middle_burden_over_zero_median": 0.4248821456687416,
+    "no_cprod_root_median": 0.011274271575667124,
+    "nonmonotonic_failures": 0,
+    "normal_root_median": 0.01960310809969929,
+    "valid_pairs": 480
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "cprod_deferred": {
+    "alive": true,
+    "cprod_enabled": false,
+    "dense_frames_externalized": true,
+    "final_state": {
+      "a": 0.38926474962818736,
+      "alive": true,
+      "area": 70.8275261895172,
+      "c": 0.7185694711488153,
+      "e_stored": 63.645566711951915,
+      "f": 0.10287811840076616,
+      "n": 0.10287811840076616,
+      "r": 0.5093345681236693,
+      "step": 480
+    },
+    "finite": true,
+    "initial": {
+      "a": 0.303630027599798,
+      "alive": true,
+      "area": 70.8275261895172,
+      "c": 0.7909794528553131,
+      "e_stored": 60.82781514212436,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.5551860064286098,
+      "step": 0
+    },
+    "law": "r6_nf_power_law_source",
+    "max_accounting_residual": 2.0880866480332827e-14,
+    "max_resource_error": 0.0,
+    "total_flux": {
+      "a_decay": 1.9025933720053396,
+      "a_produced": 8.521278364332124,
+      "catalyst_a_consumption": 0.0,
+      "f_consumed": 8.521278364332124,
+      "f_delivered": 15.807880989690668,
+      "membrane_a_consumption": 1.4362798514241115,
+      "n_consumed": 8.521278364332124,
+      "n_delivered": 15.807880989690668,
+      "reserve_a_to_r": 0.9373269333232574,
+      "reserve_r_to_a": 3.402842297344296,
+      "reserve_r_to_w": 0.7820285833492618,
+      "structural_a_consumption": 1.5826249877259473
+    },
+    "trajectory_hash": "4111cf96d04c88d5"
+  },
+  "deprived_e_ar": 60.82781514212436,
+  "final_delta_e_ar_deferred_minus_normal": 3.5835357001681416,
+  "normal": {
+    "alive": true,
+    "cprod_enabled": true,
+    "dense_frames_externalized": true,
+    "final_state": {
+      "a": 0.3423623895976825,
+      "alive": true,
+      "area": 70.8275261895172,
+      "c": 0.7722488011667238,
+      "e_stored": 60.06203101178377,
+      "f": 0.10185789865759344,
+      "n": 0.10185789865759344,
+      "r": 0.5056416879564652,
+      "step": 480
+    },
+    "finite": true,
+    "initial": {
+      "a": 0.303630027599798,
+      "alive": true,
+      "area": 70.8275261895172,
+      "c": 0.7909794528553131,
+      "e_stored": 60.82781514212436,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.5551860064286098,
+      "step": 0
+    },
+    "law": "r6_nf_power_law_source",
+    "max_accounting_residual": 2.6168303635110135e-14,
+    "max_resource_error": 0.0,
+    "total_flux": {
+      "a_decay": 1.7696939245616334,
+      "a_produced": 8.606131882961254,
+      "catalyst_a_consumption": 3.983245298571395,
+      "f_consumed": 8.606131882961254,
+      "f_delivered": 15.82047486774115,
+      "membrane_a_consumption": 1.3500271341591628,
+      "n_consumed": 8.606131882961254,
+      "n_delivered": 15.82047486774115,
+      "reserve_a_to_r": 0.8597872937918263,
+      "reserve_r_to_a": 3.5887608243013083,
+      "reserve_r_to_w": 0.7801279836182549,
+      "structural_a_consumption": 1.4888216723915362
+    },
+    "trajectory_hash": "97010613dc36e447"
+  }
+}

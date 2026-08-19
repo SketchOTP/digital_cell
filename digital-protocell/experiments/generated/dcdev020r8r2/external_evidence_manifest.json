@@ -1,0 +1,18 @@
+{
+  "compact_git_artifacts": [
+    "protocol.json",
+    "root_summary.json",
+    "payback_summary.json",
+    "shadow_summary.json",
+    "qualification.json",
+    "literature_review.json",
+    "external_evidence_manifest.json",
+    "manifest.json"
+  ],
+  "dense_artifact": "target/dcdev020r8r2-catalyst-investment-dense.json",
+  "external_location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r8r2/1d3d72bbd0af4bf569ae4d86e7654a2896bb2def/catalyst_investment_payback_ledger.json",
+  "r7_input_sha256": "abdaea6d075c700e36d14d369dba62982f4a65cea47d2d1f162b5dfe8afa59f8",
+  "r8_input_sha256": "12b41f27c928635899a7ea3a8d496cfdd3af7d3fd83aaa93024724663e2df9ff",
+  "r8r1_input_sha256": "f44e8f9fa441451ee40bcbfccac5f556131e4d26868868607e9507c29e7bcf90",
+  "sha256": "e932f6ab96e34516de98c97c2cae102553db9764383af3d61abf015743c3a376"
+}

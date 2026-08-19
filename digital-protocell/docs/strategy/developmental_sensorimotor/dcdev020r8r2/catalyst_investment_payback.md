@@ -48,8 +48,10 @@ turnover paths remained active.
 
 Compact evidence is committed under
 `digital-protocell/experiments/generated/dcdev020r8r2/`. The dense root,
-payback, and full-shadow ledger is stored in governed external evidence
-storage and referenced by `external_evidence_manifest.json`.
+payback, and full-shadow ledger is stored at
+`/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r8r2/1d3d72bbd0af4bf569ae4d86e7654a2896bb2def/catalyst_investment_payback_ledger.json`
+with SHA-256
+`e932f6ab96e34516de98c97c2cae102553db9764383af3d61abf015743c3a376`.
 
 Prior sealed inputs are preserved by hash: R5
 `4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585`, R7

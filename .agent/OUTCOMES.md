@@ -691,11 +691,11 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - D016 bilinear and R6 power-law payback checkpoints - EXECUTED; all `NO_PAYBACK`
   - Exact normal R6 endpoint parity - PASSED
   - Whole-window cprod-deferred shadow alive/finite and above deprived start - PASSED
-  - External dense-ledger SHA-256 - PENDING external copy/seal
+  - External dense-ledger SHA-256 `e932f6ab96e34516de98c97c2cae102553db9764383af3d61abf015743c3a376` - PASSED locally and on Atlas
   - Exact-head remote CI - PENDING
   - Architect review - PENDING
 - Remaining risks: The result diagnoses catalyst-production investment as an acute finite-feed recovery bottleneck; it does not establish a production repair, a different resource contract, or a sufficient alternative catalyst strategy. No implementation or DC-DEV-021 work is authorized.
-- Blockers: external dense-ledger seal, exact-head remote CI, and architect review.
+- Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 - Risk class: NORMAL
 - Relationship: new
