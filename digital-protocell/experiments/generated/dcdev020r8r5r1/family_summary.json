@@ -1,0 +1,46 @@
+{
+  "deferred_forward": {
+    "forward_maximum_max_net_drift": -0.0038031231612407623,
+    "forward_median_max_net_drift": -0.004925950970275039,
+    "forward_minimum_max_net_drift": -0.007639987747324994,
+    "forward_nonnegative": 0,
+    "reversible_maximum_max_net_drift": 0.0,
+    "reversible_median_max_net_drift": 0.0,
+    "reversible_minimum_max_net_drift": 0.0,
+    "reversible_nonnegative": 0,
+    "states": 200
+  },
+  "deferred_reversible": {
+    "forward_maximum_max_net_drift": 0.0,
+    "forward_median_max_net_drift": 0.0,
+    "forward_minimum_max_net_drift": 0.0,
+    "forward_nonnegative": 0,
+    "reversible_maximum_max_net_drift": 55.56255492759853,
+    "reversible_median_max_net_drift": 25.158683970422416,
+    "reversible_minimum_max_net_drift": 11.29970370008354,
+    "reversible_nonnegative": 200,
+    "states": 200
+  },
+  "shared_forward": {
+    "forward_maximum_max_net_drift": -0.0026907225541279445,
+    "forward_median_max_net_drift": -0.003740419909611603,
+    "forward_minimum_max_net_drift": -0.006993533285061915,
+    "forward_nonnegative": 0,
+    "reversible_maximum_max_net_drift": 0.0,
+    "reversible_median_max_net_drift": 0.0,
+    "reversible_minimum_max_net_drift": 0.0,
+    "reversible_nonnegative": 0,
+    "states": 200
+  },
+  "shared_reversible": {
+    "forward_maximum_max_net_drift": 0.0,
+    "forward_median_max_net_drift": 0.0,
+    "forward_minimum_max_net_drift": 0.0,
+    "forward_nonnegative": 0,
+    "reversible_maximum_max_net_drift": 55.64867893623712,
+    "reversible_median_max_net_drift": 36.24275922947591,
+    "reversible_minimum_max_net_drift": 30.29151000822666,
+    "reversible_nonnegative": 200,
+    "states": 200
+  }
+}

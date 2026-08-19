@@ -1,0 +1,18 @@
+{
+  "classification": "DCDEV020R8R5R1_RECYCLING_ONLY_LOCAL_CAPACITY",
+  "dense_location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r8r5r1/21fc9192362b56c0e57096ce228da15d00b7de38/net_allocation_dense_ledger.json",
+  "dense_sha256": "bdedb478eb3c32025fc62ecbc2af538b0e594d3182ee97ebeb7c68c2bb9d8efc",
+  "directive": "DC-DEV-020-R8-R5-R1",
+  "preservation": [
+    "R8-R5 constant allocation result",
+    "R8-R2",
+    "R8-R3",
+    "R8-R4",
+    "Phase-1",
+    "D-088",
+    "evolution-harness",
+    "governance"
+  ],
+  "result_commit": "21fc9192362b56c0e57096ce228da15d00b7de38",
+  "source_commit": "95247dfc6b2b0e9903338e2b76ee55c08f502f84"
+}

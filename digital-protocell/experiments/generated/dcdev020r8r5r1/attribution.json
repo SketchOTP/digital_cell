@@ -1,0 +1,2407 @@
+{
+  "largest_required_c_to_a_amount": 0.7858922035191133,
+  "median_required_c_to_a_amount": 0.4720363807305439,
+  "states_requiring_c_to_a": [
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 55.57667647057162,
+      "returned_catalyst_mass": 0.7846762333878776,
+      "step": 40
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 55.133792666447356,
+      "returned_catalyst_mass": 0.7784232435130202,
+      "step": 80
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 54.694438149722316,
+      "returned_catalyst_mass": 0.772220082957201,
+      "step": 120
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 54.25858479593254,
+      "returned_catalyst_mass": 0.7660663546366111,
+      "step": 160
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 53.82620470473467,
+      "returned_catalyst_mass": 0.7599616646317545,
+      "step": 200
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 53.39727019811974,
+      "returned_catalyst_mass": 0.7539056221622318,
+      "step": 240
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 52.97175381864143,
+      "returned_catalyst_mass": 0.7478978395617254,
+      "step": 280
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 52.54962832765862,
+      "returned_catalyst_mass": 0.7419379322531839,
+      "step": 320
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 52.13086670359153,
+      "returned_catalyst_mass": 0.7360255187242037,
+      "step": 360
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 51.71544214019207,
+      "returned_catalyst_mass": 0.7301602205026072,
+      "step": 400
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 51.30332804482793,
+      "returned_catalyst_mass": 0.7243416621322157,
+      "step": 440
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 50.89449803678025,
+      "returned_catalyst_mass": 0.7185694711488153,
+      "step": 480
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 50.488925945554925,
+      "returned_catalyst_mass": 0.7128432780563148,
+      "step": 520
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 50.08658580920736,
+      "returned_catalyst_mass": 0.7071627163030918,
+      "step": 560
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 49.68745187268051,
+      "returned_catalyst_mass": 0.7015274222585297,
+      "step": 600
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 49.29149858615634,
+      "returned_catalyst_mass": 0.6959370351897409,
+      "step": 640
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 48.898700603420124,
+      "returned_catalyst_mass": 0.6903911972384735,
+      "step": 680
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 48.50903278023817,
+      "returned_catalyst_mass": 0.6848895533982058,
+      "step": 720
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 48.12247017274801,
+      "returned_catalyst_mass": 0.6794317514914188,
+      "step": 760
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 47.73898803586192,
+      "returned_catalyst_mass": 0.6740174421470548,
+      "step": 800
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 47.358561821682684,
+      "returned_catalyst_mass": 0.6686462787781507,
+      "step": 840
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 46.98116717793235,
+      "returned_catalyst_mass": 0.663317917559653,
+      "step": 880
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 46.60677994639326,
+      "returned_catalyst_mass": 0.6580320174064087,
+      "step": 920
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 46.23537616136177,
+      "returned_catalyst_mass": 0.6527882399513315,
+      "step": 960
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 45.86693204811398,
+      "returned_catalyst_mass": 0.6475862495237409,
+      "step": 1000
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 45.501424021383855,
+      "returned_catalyst_mass": 0.6424257131278754,
+      "step": 1040
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 45.138828683853546,
+      "returned_catalyst_mass": 0.6373063004215764,
+      "step": 1080
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 44.7791228246555,
+      "returned_catalyst_mass": 0.6322276836951424,
+      "step": 1120
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 44.42228341788689,
+      "returned_catalyst_mass": 0.6271895378503504,
+      "step": 1160
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 44.0682876211354,
+      "returned_catalyst_mass": 0.6221915403796456,
+      "step": 1200
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 43.71711277401721,
+      "returned_catalyst_mass": 0.6172333713454974,
+      "step": 1240
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 43.368736396726334,
+      "returned_catalyst_mass": 0.6123147133599184,
+      "step": 1280
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 43.023136188595586,
+      "returned_catalyst_mass": 0.6074352515641471,
+      "step": 1320
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 42.68029002666921,
+      "returned_catalyst_mass": 0.6025946736084945,
+      "step": 1360
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 42.3401759642865,
+      "returned_catalyst_mass": 0.5977926696323475,
+      "step": 1400
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 42.00277222967701,
+      "returned_catalyst_mass": 0.5930289322443343,
+      "step": 1440
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 41.66805722456701,
+      "returned_catalyst_mass": 0.588303156502649,
+      "step": 1480
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 41.33600952279677,
+      "returned_catalyst_mass": 0.5836150398955298,
+      "step": 1520
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 41.00660786894892,
+      "returned_catalyst_mass": 0.5789642823218933,
+      "step": 1560
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 40.6798311769881,
+      "returned_catalyst_mass": 0.5743505860721266,
+      "step": 1600
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 40.355658528910865,
+      "returned_catalyst_mass": 0.5697736558090277,
+      "step": 1640
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 40.034069173406905,
+      "returned_catalyst_mass": 0.5652331985489017,
+      "step": 1680
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 39.71504252453059,
+      "returned_catalyst_mass": 0.5607289236428054,
+      "step": 1720
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 39.39855816038309,
+      "returned_catalyst_mass": 0.5562605427579406,
+      "step": 1760
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 39.08459582180531,
+      "returned_catalyst_mass": 0.5518277698591993,
+      "step": 1800
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 38.77313541108097,
+      "returned_catalyst_mass": 0.5474303211908533,
+      "step": 1840
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 38.464156990649926,
+      "returned_catalyst_mass": 0.5430679152583872,
+      "step": 1880
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 38.15764078183216,
+      "returned_catalyst_mass": 0.5387402728104836,
+      "step": 1920
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 37.85356716356152,
+      "returned_catalyst_mass": 0.534447116821144,
+      "step": 1960
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 37.55191667112972,
+      "returned_catalyst_mass": 0.530188172471956,
+      "step": 2000
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 37.25266999494043,
+      "returned_catalyst_mass": 0.5259631671345031,
+      "step": 2040
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 36.95580797927312,
+      "returned_catalyst_mass": 0.5217718303529107,
+      "step": 2080
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 36.66131162105685,
+      "returned_catalyst_mass": 0.5176138938265347,
+      "step": 2120
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 36.369162068653964,
+      "returned_catalyst_mass": 0.5134890913927864,
+      "step": 2160
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 36.07934062065311,
+      "returned_catalyst_mass": 0.5093971590100943,
+      "step": 2200
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 35.79182872467223,
+      "returned_catalyst_mass": 0.505337834741002,
+      "step": 2240
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 35.50660797617104,
+      "returned_catalyst_mass": 0.5013108587354018,
+      "step": 2280
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 35.22366011727267,
+      "returned_catalyst_mass": 0.4973159732138993,
+      "step": 2320
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 34.94296703559522,
+      "returned_catalyst_mass": 0.49335292245131296,
+      "step": 2360
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 34.664510763092025,
+      "returned_catalyst_mass": 0.4894214527603043,
+      "step": 2400
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 34.38827347490165,
+      "returned_catalyst_mass": 0.48552131247513863,
+      "step": 2440
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 34.11423748820688,
+      "returned_catalyst_mass": 0.48165225193557487,
+      "step": 2480
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 33.84238526110266,
+      "returned_catalyst_mass": 0.4778140234708845,
+      "step": 2520
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 33.57269939147329,
+      "returned_catalyst_mass": 0.47400638138399676,
+      "step": 2560
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 33.30516261587847,
+      "returned_catalyst_mass": 0.4702290819357712,
+      "step": 2600
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 33.03975780844799,
+      "returned_catalyst_mass": 0.46648188332939455,
+      "step": 2640
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 32.77646797978582,
+      "returned_catalyst_mass": 0.46276454569490383,
+      "step": 2680
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 32.5152762758823,
+      "returned_catalyst_mass": 0.4590768310738305,
+      "step": 2720
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 32.25616597703528,
+      "returned_catalyst_mass": 0.4554185034039682,
+      "step": 2760
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 31.999120496779966,
+      "returned_catalyst_mass": 0.4517893285042615,
+      "step": 2800
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 31.744123380827062,
+      "returned_catalyst_mass": 0.44818907405981556,
+      "step": 2840
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 31.49115830600948,
+      "returned_catalyst_mass": 0.44461750960702495,
+      "step": 2880
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 31.240209079237516,
+      "returned_catalyst_mass": 0.4410744065188207,
+      "step": 2920
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 30.99125963646229,
+      "returned_catalyst_mass": 0.4375595379900353,
+      "step": 2960
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 30.74429404164721,
+      "returned_catalyst_mass": 0.434072679022884,
+      "step": 3000
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 30.499296485748218,
+      "returned_catalyst_mass": 0.4306136064125624,
+      "step": 3040
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 30.25625128570151,
+      "returned_catalyst_mass": 0.427182098732958,
+      "step": 3080
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 30.015142883419728,
+      "returned_catalyst_mass": 0.42377793632247607,
+      "step": 3120
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 29.775955844796044,
+      "returned_catalyst_mass": 0.4204009012699788,
+      "step": 3160
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 29.538674858716192,
+      "returned_catalyst_mass": 0.4170507774008357,
+      "step": 3200
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 29.303284736078254,
+      "returned_catalyst_mass": 0.4137273502630855,
+      "step": 3240
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 29.069770408820432,
+      "returned_catalyst_mass": 0.410430407113709,
+      "step": 3280
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 28.838116928956552,
+      "returned_catalyst_mass": 0.4071597369050104,
+      "step": 3320
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 28.608309467619094,
+      "returned_catalyst_mass": 0.40391513027110704,
+      "step": 3360
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 28.38033331410996,
+      "returned_catalyst_mass": 0.40069637951452786,
+      "step": 3400
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 28.154173874958815,
+      "returned_catalyst_mass": 0.39750327859291773,
+      "step": 3440
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 27.929816672989062,
+      "returned_catalyst_mass": 0.39433562310584835,
+      "step": 3480
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 27.70724734639076,
+      "returned_catalyst_mass": 0.39119321028173326,
+      "step": 3520
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 27.486451647801672,
+      "returned_catalyst_mass": 0.3880758389648484,
+      "step": 3560
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 27.26741544339491,
+      "returned_catalyst_mass": 0.3849833096024554,
+      "step": 3600
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 27.05012471197449,
+      "returned_catalyst_mass": 0.3819154242320275,
+      "step": 3640
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 26.834565544077535,
+      "returned_catalyst_mass": 0.378871986468577,
+      "step": 3680
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 26.62072414108404,
+      "returned_catalyst_mass": 0.37585280149208483,
+      "step": 3720
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 26.408586814333532,
+      "returned_catalyst_mass": 0.3728576760350287,
+      "step": 3760
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 26.198139984248755,
+      "returned_catalyst_mass": 0.3698864183700123,
+      "step": 3800
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 25.98937017946659,
+      "returned_catalyst_mass": 0.3669388382974913,
+      "step": 3840
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 25.78226403597543,
+      "returned_catalyst_mass": 0.36401474713359866,
+      "step": 3880
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 25.57680829625997,
+      "returned_catalyst_mass": 0.361113957698066,
+      "step": 3920
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 25.372989808452374,
+      "returned_catalyst_mass": 0.358236284302242,
+      "step": 3960
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 25.170795525490476,
+      "returned_catalyst_mass": 0.35538154273720574,
+      "step": 4000
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 24.970212504282543,
+      "returned_catalyst_mass": 0.3525495502619749,
+      "step": 4040
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 24.7712279048788,
+      "returned_catalyst_mass": 0.3497401255918076,
+      "step": 4080
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 24.57382898964947,
+      "returned_catalyst_mass": 0.3469530888865989,
+      "step": 4120
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 24.37800312246941,
+      "returned_catalyst_mass": 0.3441882617393672,
+      "step": 4160
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 24.183737767909236,
+      "returned_catalyst_mass": 0.34144546716483454,
+      "step": 4200
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 23.991020490432845,
+      "returned_catalyst_mass": 0.33872452958809735,
+      "step": 4240
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 23.799838953601423,
+      "returned_catalyst_mass": 0.3360252748333871,
+      "step": 4280
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 23.610180919283806,
+      "returned_catalyst_mass": 0.3333475301129214,
+      "step": 4320
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 23.42203424687294,
+      "returned_catalyst_mass": 0.330691124015842,
+      "step": 4360
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 23.2353868925088,
+      "returned_catalyst_mass": 0.32805588649724343,
+      "step": 4400
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 23.05022690830748,
+      "returned_catalyst_mass": 0.3254416488672875,
+      "step": 4440
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 22.866542441596252,
+      "returned_catalyst_mass": 0.32284824378040494,
+      "step": 4480
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 22.68432173415499,
+      "returned_catalyst_mass": 0.3202755052245828,
+      "step": 4520
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 22.5035531214633,
+      "returned_catalyst_mass": 0.3177232685107378,
+      "step": 4560
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 22.324225031953958,
+      "returned_catalyst_mass": 0.3151913702621742,
+      "step": 4600
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 22.146325986272217,
+      "returned_catalyst_mass": 0.3126796484041254,
+      "step": 4640
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 21.969844596540867,
+      "returned_catalyst_mass": 0.3101879421533787,
+      "step": 4680
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 21.79476956563134,
+      "returned_catalyst_mass": 0.30771609200798367,
+      "step": 4720
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 21.6210896864405,
+      "returned_catalyst_mass": 0.30526393973704136,
+      "step": 4760
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 21.448793841173256,
+      "returned_catalyst_mass": 0.30283132837057586,
+      "step": 4800
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 21.277871000630867,
+      "returned_catalyst_mass": 0.3004181021894857,
+      "step": 4840
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 21.108310223504972,
+      "returned_catalyst_mass": 0.29802410671557655,
+      "step": 4880
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 20.94010065567717,
+      "returned_catalyst_mass": 0.2956491887016718,
+      "step": 4920
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 20.77323152952421,
+      "returned_catalyst_mass": 0.2932931961218029,
+      "step": 4960
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 20.607692163228677,
+      "returned_catalyst_mass": 0.29095597816147806,
+      "step": 5000
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 20.443471960095366,
+      "returned_catalyst_mass": 0.2886373852080279,
+      "step": 5040
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 20.28056040787277,
+      "returned_catalyst_mass": 0.2863372688410284,
+      "step": 5080
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 20.118947078080254,
+      "returned_catalyst_mass": 0.2840554818227994,
+      "step": 5120
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 19.9586216253405,
+      "returned_catalyst_mass": 0.28179187808898054,
+      "step": 5160
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 19.79957378671729,
+      "returned_catalyst_mass": 0.2795463127391806,
+      "step": 5200
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 19.641793381058392,
+      "returned_catalyst_mass": 0.2773186420277016,
+      "step": 5240
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 19.485270308344028,
+      "returned_catalyst_mass": 0.27510872335433806,
+      "step": 5280
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 19.32999454904025,
+      "returned_catalyst_mass": 0.2729164152552483,
+      "step": 5320
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 19.175956163457528,
+      "returned_catalyst_mass": 0.27074157739389837,
+      "step": 5360
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 19.023145291114545,
+      "returned_catalyst_mass": 0.2685840705520794,
+      "step": 5400
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 18.871552150106936,
+      "returned_catalyst_mass": 0.266443756620996,
+      "step": 5440
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 18.72116703648119,
+      "returned_catalyst_mass": 0.26432049859242457,
+      "step": 5480
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 18.571980323613403,
+      "returned_catalyst_mass": 0.2622141605499435,
+      "step": 5520
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 18.423982461593027,
+      "returned_catalyst_mass": 0.26012460766023277,
+      "step": 5560
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 18.277163976611646,
+      "returned_catalyst_mass": 0.2580517061644426,
+      "step": 5600
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 18.131515470356504,
+      "returned_catalyst_mass": 0.2559953233696315,
+      "step": 5640
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 17.987027619408778,
+      "returned_catalyst_mass": 0.25395532764027207,
+      "step": 5680
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 17.84369117464692,
+      "returned_catalyst_mass": 0.25193158838982393,
+      "step": 5720
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 17.701496960654467,
+      "returned_catalyst_mass": 0.2499239760723759,
+      "step": 5760
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 17.560435875132754,
+      "returned_catalyst_mass": 0.24793236217435152,
+      "step": 5800
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 17.420498888318207,
+      "returned_catalyst_mass": 0.24595661920628414,
+      "step": 5840
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 17.281677042404354,
+      "returned_catalyst_mass": 0.24399662069465497,
+      "step": 5880
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 17.14396145096846,
+      "returned_catalyst_mass": 0.24205224117379734,
+      "step": 5920
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 17.007343298402517,
+      "returned_catalyst_mass": 0.24012335617786526,
+      "step": 5960
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 16.871813839349088,
+      "returned_catalyst_mass": 0.23820984223286626,
+      "step": 6000
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 16.737364398141438,
+      "returned_catalyst_mass": 0.23631157684875695,
+      "step": 6040
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 16.60398636824813,
+      "returned_catalyst_mass": 0.23442843851160228,
+      "step": 6080
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 16.471671211722153,
+      "returned_catalyst_mass": 0.23256030667579702,
+      "step": 6120
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 16.34041045865439,
+      "returned_catalyst_mass": 0.23070706175634922,
+      "step": 6160
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 16.210195706631353,
+      "returned_catalyst_mass": 0.22886858512122546,
+      "step": 6200
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 16.081018620197383,
+      "returned_catalyst_mass": 0.2270447590837564,
+      "step": 6240
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 15.952870930321083,
+      "returned_catalyst_mass": 0.22523546689510368,
+      "step": 6280
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 15.825744433865964,
+      "returned_catalyst_mass": 0.22344059273678613,
+      "step": 6320
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 15.699630993065313,
+      "returned_catalyst_mass": 0.22166002171326618,
+      "step": 6360
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 15.574522535001293,
+      "returned_catalyst_mass": 0.2198936398445948,
+      "step": 6400
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 15.450411051088224,
+      "returned_catalyst_mass": 0.2181413340591154,
+      "step": 6440
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 15.327288596559782,
+      "returned_catalyst_mass": 0.21640299218622577,
+      "step": 6480
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 15.205147289960621,
+      "returned_catalyst_mass": 0.2146785029491975,
+      "step": 6520
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 15.083979312641702,
+      "returned_catalyst_mass": 0.21296775595805298,
+      "step": 6560
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 14.963776908259874,
+      "returned_catalyst_mass": 0.2112706417024993,
+      "step": 6600
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 14.84453238228133,
+      "returned_catalyst_mass": 0.20958705154491739,
+      "step": 6640
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 14.726238101489074,
+      "returned_catalyst_mass": 0.20791687771340836,
+      "step": 6680
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 14.60888649349431,
+      "returned_catalyst_mass": 0.2062600132948944,
+      "step": 6720
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 14.49247004625164,
+      "returned_catalyst_mass": 0.20461635222827534,
+      "step": 6760
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 14.376981307578347,
+      "returned_catalyst_mass": 0.2029857892976389,
+      "step": 6800
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 14.262412884677147,
+      "returned_catalyst_mass": 0.2013682201255258,
+      "step": 6840
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 14.14875744366313,
+      "returned_catalyst_mass": 0.1997635411662479,
+      "step": 6880
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 14.036007709094193,
+      "returned_catalyst_mass": 0.1981716496992602,
+      "step": 6920
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 13.92415646350534,
+      "returned_catalyst_mass": 0.19659244382258537,
+      "step": 6960
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 13.813196546946756,
+      "returned_catalyst_mass": 0.19502582244629035,
+      "step": 7000
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 13.70312085652533,
+      "returned_catalyst_mass": 0.19347168528601574,
+      "step": 7040
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 13.593922345950006,
+      "returned_catalyst_mass": 0.19192993285655607,
+      "step": 7080
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 13.485594025080871,
+      "returned_catalyst_mass": 0.1904004664654913,
+      "step": 7120
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 13.378128959481543,
+      "returned_catalyst_mass": 0.18888318820686925,
+      "step": 7160
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 13.271520269975298,
+      "returned_catalyst_mass": 0.18737800095493873,
+      "step": 7200
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 13.165761132204779,
+      "returned_catalyst_mass": 0.18588480835793159,
+      "step": 7240
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 13.060844776195097,
+      "returned_catalyst_mass": 0.18440351483189538,
+      "step": 7280
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 12.95676448592043,
+      "returned_catalyst_mass": 0.18293402555457458,
+      "step": 7320
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 12.85351359887423,
+      "returned_catalyst_mass": 0.18147624645934082,
+      "step": 7360
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 12.751085505642607,
+      "returned_catalyst_mass": 0.1800300842291711,
+      "step": 7400
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 12.64947364948128,
+      "returned_catalyst_mass": 0.17859544629067475,
+      "step": 7440
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 12.548671525895898,
+      "returned_catalyst_mass": 0.17717224080816693,
+      "step": 7480
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 12.44867268222562,
+      "returned_catalyst_mass": 0.17576037667779054,
+      "step": 7520
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 12.349470717230076,
+      "returned_catalyst_mass": 0.17435976352168384,
+      "step": 7560
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 12.25105928067967,
+      "returned_catalyst_mass": 0.1729703116821955,
+      "step": 7600
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 12.15343207294886,
+      "returned_catalyst_mass": 0.17159193221614508,
+      "step": 7640
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 12.056582844613246,
+      "returned_catalyst_mass": 0.1702245368891295,
+      "step": 7680
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 11.960505396049228,
+      "returned_catalyst_mass": 0.16886803816987506,
+      "step": 7720
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 11.865193577037232,
+      "returned_catalyst_mass": 0.1675223492246342,
+      "step": 7760
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 11.770641286368104,
+      "returned_catalyst_mass": 0.16618738391162696,
+      "step": 7800
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 11.676842471452474,
+      "returned_catalyst_mass": 0.16486305677552673,
+      "step": 7840
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 11.583791127933324,
+      "returned_catalyst_mass": 0.16354928304199018,
+      "step": 7880
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 11.491481299301583,
+      "returned_catalyst_mass": 0.16224597861223028,
+      "step": 7920
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 11.399907076514964,
+      "returned_catalyst_mass": 0.16095306005763313,
+      "step": 7960
+    },
+    {
+      "context": "R8-R3 R6 deferred",
+      "delta_e_repartition": 11.309062597619501,
+      "returned_catalyst_mass": 0.15967044461441732,
+      "step": 8000
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 55.66280062688739,
+      "returned_catalyst_mass": 0.7858922035191133,
+      "step": 40
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 55.30782287833654,
+      "returned_catalyst_mass": 0.7808803420628624,
+      "step": 80
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 54.95807023063767,
+      "returned_catalyst_mass": 0.775942252784366,
+      "step": 120
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 54.61343168148378,
+      "returned_catalyst_mass": 0.7710763684637462,
+      "step": 160
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 54.27379951482357,
+      "returned_catalyst_mass": 0.766281168279125,
+      "step": 200
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 53.93906916323974,
+      "returned_catalyst_mass": 0.7615551758635751,
+      "step": 240
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 53.60913907924685,
+      "returned_catalyst_mass": 0.756896957487995,
+      "step": 280
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 53.283910614586716,
+      "returned_catalyst_mass": 0.7523051203569071,
+      "step": 320
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 52.96328790673649,
+      "returned_catalyst_mass": 0.747778311006086,
+      "step": 360
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 52.64717777195348,
+      "returned_catalyst_mass": 0.7433152137924802,
+      "step": 400
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 52.33548960427252,
+      "returned_catalyst_mass": 0.7389145494681757,
+      "step": 440
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 52.02813527994629,
+      "returned_catalyst_mass": 0.7345750738312061,
+      "step": 480
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 51.72502906688218,
+      "returned_catalyst_mass": 0.7302955764469116,
+      "step": 520
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 51.42608753868251,
+      "returned_catalyst_mass": 0.7260748794342871,
+      "step": 560
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 51.131229492938935,
+      "returned_catalyst_mass": 0.7219118363123994,
+      "step": 600
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 50.84037587347106,
+      "returned_catalyst_mass": 0.7178053309024884,
+      "step": 640
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 50.55344969623128,
+      "returned_catalyst_mass": 0.713754276281831,
+      "step": 680
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 50.27037597862606,
+      "returned_catalyst_mass": 0.7097576137858433,
+      "step": 720
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 49.99108167202914,
+      "returned_catalyst_mass": 0.7058143120552479,
+      "step": 760
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 49.71549559728233,
+      "returned_catalyst_mass": 0.7019233661254209,
+      "step": 800
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 49.44354838299875,
+      "returned_catalyst_mass": 0.6980837965553088,
+      "step": 840
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 49.17517240650014,
+      "returned_catalyst_mass": 0.6942946485935337,
+      "step": 880
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 48.91030173723356,
+      "returned_catalyst_mass": 0.6905549913795026,
+      "step": 920
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 48.64887208252566,
+      "returned_catalyst_mass": 0.6868639171775269,
+      "step": 960
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 48.390820735545574,
+      "returned_catalyst_mass": 0.683220540642116,
+      "step": 1000
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 48.13608652535453,
+      "returned_catalyst_mass": 0.6796239981127405,
+      "step": 1040
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 47.88460976893321,
+      "returned_catalyst_mass": 0.6760734469365153,
+      "step": 1080
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 47.63633222508304,
+      "returned_catalyst_mass": 0.6725680648173398,
+      "step": 1120
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 47.391197050106534,
+      "returned_catalyst_mass": 0.6691070491901586,
+      "step": 1160
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 47.14914875517788,
+      "returned_catalyst_mass": 0.6656896166190848,
+      "step": 1200
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 46.91013316532141,
+      "returned_catalyst_mass": 0.662315002218224,
+      "step": 1240
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 46.67409737992025,
+      "returned_catalyst_mass": 0.6589824590941061,
+      "step": 1280
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 46.440989734683825,
+      "returned_catalyst_mass": 0.6556912578087091,
+      "step": 1320
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 46.21075976500593,
+      "returned_catalyst_mass": 0.652440685862121,
+      "step": 1360
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 45.983358170650426,
+      "returned_catalyst_mass": 0.6492300471939423,
+      "step": 1400
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 45.7587367817044,
+      "returned_catalyst_mass": 0.6460586617025867,
+      "step": 1440
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 45.536848525743665,
+      "returned_catalyst_mass": 0.6429258647816973,
+      "step": 1480
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 45.31764739615668,
+      "returned_catalyst_mass": 0.6398310068729169,
+      "step": 1520
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 45.101088421577764,
+      "returned_catalyst_mass": 0.6367734530343224,
+      "step": 1560
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 44.887127636382225,
+      "returned_catalyst_mass": 0.6337525825238509,
+      "step": 1600
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 44.675724579116306,
+      "returned_catalyst_mass": 0.6307678240741452,
+      "step": 1640
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 44.46721004356834,
+      "returned_catalyst_mass": 0.6278238480980535,
+      "step": 1680
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 44.26181894846216,
+      "returned_catalyst_mass": 0.6249239713671252,
+      "step": 1720
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 44.059494669136384,
+      "returned_catalyst_mass": 0.6220673944088335,
+      "step": 1760
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 43.86017932501625,
+      "returned_catalyst_mass": 0.6192533000186552,
+      "step": 1800
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 43.663816287348666,
+      "returned_catalyst_mass": 0.6164808886662924,
+      "step": 1840
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 43.47035014754576,
+      "returned_catalyst_mass": 0.6137493780487221,
+      "step": 1880
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 43.27972668655038,
+      "returned_catalyst_mass": 0.6110580026576728,
+      "step": 1920
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 43.09189284517664,
+      "returned_catalyst_mass": 0.6084060133608681,
+      "step": 1960
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 42.90679669538374,
+      "returned_catalyst_mass": 0.6057926769964492,
+      "step": 2000
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 42.72438741244299,
+      "returned_catalyst_mass": 0.6032172759800043,
+      "step": 2040
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 42.544615247959854,
+      "returned_catalyst_mass": 0.6006791079236742,
+      "step": 2080
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 42.36743150371669,
+      "returned_catalyst_mass": 0.5981774852668407,
+      "step": 2120
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 42.19278850630205,
+      "returned_catalyst_mass": 0.595711734917925,
+      "step": 2160
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 42.02063958249522,
+      "returned_catalyst_mass": 0.5932811979068453,
+      "step": 2200
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 41.85093903537683,
+      "returned_catalyst_mass": 0.5908852290477282,
+      "step": 2240
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 41.68364212113688,
+      "returned_catalyst_mass": 0.5885231966114642,
+      "step": 2280
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 41.51870502655352,
+      "returned_catalyst_mass": 0.5861944820077379,
+      "step": 2320
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 41.35608484711823,
+      "returned_catalyst_mass": 0.5838984794761775,
+      "step": 2360
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 41.1957395657819,
+      "returned_catalyst_mass": 0.5816345957862786,
+      "step": 2400
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 41.03762803230075,
+      "returned_catalyst_mass": 0.5794022499457916,
+      "step": 2440
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 40.881709943158995,
+      "returned_catalyst_mass": 0.5772008729172542,
+      "step": 2480
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 40.72794582204866,
+      "returned_catalyst_mass": 0.5750299073423882,
+      "step": 2520
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 40.576297000886086,
+      "returned_catalyst_mass": 0.5728888072740789,
+      "step": 2560
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 40.42672560134702,
+      "returned_catalyst_mass": 0.5707770379156678,
+      "step": 2600
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 40.279194516901825,
+      "returned_catalyst_mass": 0.5686940753673159,
+      "step": 2640
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 40.13366739533433,
+      "returned_catalyst_mass": 0.5666394063791865,
+      "step": 2680
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 39.99010862172709,
+      "returned_catalyst_mass": 0.5646125281112221,
+      "step": 2720
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 39.84848330189849,
+      "returned_catalyst_mass": 0.5626129478992906,
+      "step": 2760
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 39.708757246275496,
+      "returned_catalyst_mass": 0.5606401830274932,
+      "step": 2800
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 39.570896954188896,
+      "returned_catalyst_mass": 0.5586937605064284,
+      "step": 2840
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 39.43486959857637,
+      "returned_catalyst_mass": 0.5567732168572183,
+      "step": 2880
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 39.300643011080304,
+      "returned_catalyst_mass": 0.5548780979011093,
+      "step": 2920
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 39.168185667528576,
+      "returned_catalyst_mass": 0.5530079585544759,
+      "step": 2960
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 39.03746667378454,
+      "returned_catalyst_mass": 0.5511623626290405,
+      "step": 3000
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 38.908455751956126,
+      "returned_catalyst_mass": 0.5493408826371624,
+      "step": 3040
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 38.78112322695171,
+      "returned_catalyst_mass": 0.5475430996020231,
+      "step": 3080
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 38.655440013372655,
+      "returned_catalyst_mass": 0.5457686028725627,
+      "step": 3120
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 38.53137760273168,
+      "returned_catalyst_mass": 0.5440169899430216,
+      "step": 3160
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 38.40890805098716,
+      "returned_catalyst_mass": 0.542287866276937,
+      "step": 3200
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 38.28800396638404,
+      "returned_catalyst_mass": 0.540580845135473,
+      "step": 3240
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 38.16863849759192,
+      "returned_catalyst_mass": 0.5388955474099427,
+      "step": 3280
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 38.05078532213107,
+      "returned_catalyst_mass": 0.5372316014583995,
+      "step": 3320
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 37.93441863507839,
+      "returned_catalyst_mass": 0.5355886429461779,
+      "step": 3360
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 37.819513138044755,
+      "returned_catalyst_mass": 0.5339663146902653,
+      "step": 3400
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 37.706044028415434,
+      "returned_catalyst_mass": 0.5323642665073922,
+      "step": 3440
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 37.59398698884677,
+      "returned_catalyst_mass": 0.5307821550657358,
+      "step": 3480
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 37.48331817701068,
+      "returned_catalyst_mass": 0.5292196437401254,
+      "step": 3520
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 37.37401421558077,
+      "returned_catalyst_mass": 0.5276764024706585,
+      "step": 3560
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 37.26605218245234,
+      "returned_catalyst_mass": 0.5261521076246185,
+      "step": 3600
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 37.15940960119042,
+      "returned_catalyst_mass": 0.5246464418616131,
+      "step": 3640
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 37.054064431698706,
+      "returned_catalyst_mass": 0.5231590940018299,
+      "step": 3680
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 36.94999506110388,
+      "returned_catalyst_mass": 0.5216897588973347,
+      "step": 3720
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 36.84718029484882,
+      "returned_catalyst_mass": 0.5202381373063171,
+      "step": 3760
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 36.74559934798884,
+      "returned_catalyst_mass": 0.5188039357702058,
+      "step": 3800
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 36.64523183668647,
+      "returned_catalyst_mass": 0.5173868664935828,
+      "step": 3840
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 36.54605776989769,
+      "returned_catalyst_mass": 0.515986647226805,
+      "step": 3880
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 36.44805754124591,
+      "returned_catalyst_mass": 0.5146030011512726,
+      "step": 3920
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 36.35121192107785,
+      "returned_catalyst_mass": 0.5132356567672696,
+      "step": 3960
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 36.25550204869687,
+      "returned_catalyst_mass": 0.5118843477843062,
+      "step": 4000
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 36.160909424768754,
+      "returned_catalyst_mass": 0.5105488130138978,
+      "step": 4040
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 36.06741590389572,
+      "returned_catalyst_mass": 0.5092287962647193,
+      "step": 4080
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 35.97500368735385,
+      "returned_catalyst_mass": 0.5079240462400663,
+      "step": 4120
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 35.883655315990524,
+      "returned_catalyst_mass": 0.5066343164375756,
+      "step": 4160
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 35.7933536632767,
+      "returned_catalyst_mass": 0.5053593650511301,
+      "step": 4200
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 35.70408192851066,
+      "returned_catalyst_mass": 0.5040989548749062,
+      "step": 4240
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 35.61582363016961,
+      "returned_catalyst_mass": 0.5028528532095043,
+      "step": 4280
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 35.52856259940498,
+      "returned_catalyst_mass": 0.5016208317701114,
+      "step": 4320
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 35.442282973677784,
+      "returned_catalyst_mass": 0.5004026665966403,
+      "step": 4360
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 35.356969190531125,
+      "returned_catalyst_mass": 0.49919813796580303,
+      "step": 4400
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 35.272605981495865,
+      "returned_catalyst_mass": 0.4980070303050677,
+      "step": 4440
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 35.1891783661265,
+      "returned_catalyst_mass": 0.496829132108452,
+      "step": 4480
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 35.10667164616411,
+      "returned_catalyst_mass": 0.49566423585411123,
+      "step": 4520
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 35.025071399823176,
+      "returned_catalyst_mass": 0.49451213792367416,
+      "step": 4560
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 34.944363476199364,
+      "returned_catalyst_mass": 0.4933726385232876,
+      "step": 4600
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 34.86453398979536,
+      "returned_catalyst_mass": 0.4922455416063292,
+      "step": 4640
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 34.78556931516206,
+      "returned_catalyst_mass": 0.4911306547977457,
+      "step": 4680
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 34.70745608165239,
+      "returned_catalyst_mass": 0.4900277893199841,
+      "step": 4720
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 34.63018116828494,
+      "returned_catalyst_mass": 0.4889367599204722,
+      "step": 4760
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 34.55373169871515,
+      "returned_catalyst_mass": 0.487857384800618,
+      "step": 4800
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 34.47809503631139,
+      "returned_catalyst_mass": 0.486789485546289,
+      "step": 4840
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 34.40325877933359,
+      "returned_catalyst_mass": 0.48573288705974094,
+      "step": 4880
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 34.32921075621204,
+      "returned_catalyst_mass": 0.4846874174929594,
+      "step": 4920
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 34.255939020924195,
+      "returned_catalyst_mass": 0.48365290818238726,
+      "step": 4960
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 34.183431848467144,
+      "returned_catalyst_mass": 0.4826291935849999,
+      "step": 5000
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 34.111677730423814,
+      "returned_catalyst_mass": 0.4816161112157055,
+      "step": 5040
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 34.04066537062053,
+      "returned_catalyst_mass": 0.480613501586036,
+      "step": 5080
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 33.97038368087419,
+      "returned_catalyst_mass": 0.47962120814410114,
+      "step": 5120
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 33.900821776826994,
+      "returned_catalyst_mass": 0.47863907721578,
+      "step": 5160
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 33.83196897386666,
+      "returned_catalyst_mass": 0.47766695794711994,
+      "step": 5200
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 33.7638147831304,
+      "returned_catalyst_mass": 0.47670470224791783,
+      "step": 5240
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 33.6963489075912,
+      "returned_catalyst_mass": 0.4757521647364611,
+      "step": 5280
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 33.62956123822369,
+      "returned_catalyst_mass": 0.4748092026853964,
+      "step": 5320
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 33.56344185024896,
+      "returned_catalyst_mass": 0.47387567596870966,
+      "step": 5360
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 33.49798099945583,
+      "returned_catalyst_mass": 0.47295144700978803,
+      "step": 5400
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 33.433169118597505,
+      "returned_catalyst_mass": 0.4720363807305439,
+      "step": 5440
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 33.368996813861756,
+      "returned_catalyst_mass": 0.47113034450157787,
+      "step": 5480
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 33.30545486141288,
+      "returned_catalyst_mass": 0.4702332080933564,
+      "step": 5520
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 33.24253420400444,
+      "returned_catalyst_mass": 0.46934484362838697,
+      "step": 5560
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 33.18022594766079,
+      "returned_catalyst_mass": 0.46846512553436614,
+      "step": 5600
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 33.118521358426406,
+      "returned_catalyst_mass": 0.4675939304982827,
+      "step": 5640
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 33.057411859181265,
+      "returned_catalyst_mass": 0.46673113742145494,
+      "step": 5680
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.9968890265209,
+      "returned_catalyst_mass": 0.465876627375482,
+      "step": 5720
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.936944587700225,
+      "returned_catalyst_mass": 0.4650302835590924,
+      "step": 5760
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.877570417639234,
+      "returned_catalyst_mass": 0.46419199125586924,
+      "step": 5800
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.818758535989666,
+      "returned_catalyst_mass": 0.4633616377928357,
+      "step": 5840
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.76050110426137,
+      "returned_catalyst_mass": 0.4625391124998811,
+      "step": 5880
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.702790423007016,
+      "returned_catalyst_mass": 0.46172430667001296,
+      "step": 5920
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.645618929063964,
+      "returned_catalyst_mass": 0.4609171135204165,
+      "step": 5960
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.58897919285239,
+      "returned_catalyst_mass": 0.4601174281543056,
+      "step": 6000
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.53286391572803,
+      "returned_catalyst_mass": 0.459325147523549,
+      "step": 6040
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.4772659273889,
+      "returned_catalyst_mass": 0.45854017039205425,
+      "step": 6080
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.42217818333488,
+      "returned_catalyst_mass": 0.4577623972999005,
+      "step": 6120
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.36759376237857,
+      "returned_catalyst_mass": 0.45699173052819564,
+      "step": 6160
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.31350586420701,
+      "returned_catalyst_mass": 0.4562280740646503,
+      "step": 6200
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.25990780699295,
+      "returned_catalyst_mass": 0.4554713335698512,
+      "step": 6240
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.20679302505467,
+      "returned_catalyst_mass": 0.4547214163442209,
+      "step": 6280
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.15415506656331,
+      "returned_catalyst_mass": 0.4539782312956496,
+      "step": 6320
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.10198759129707,
+      "returned_catalyst_mass": 0.4532416889077837,
+      "step": 6360
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 32.05028436844085,
+      "returned_catalyst_mass": 0.4525117012089638,
+      "step": 6400
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.999039274431034,
+      "returned_catalyst_mass": 0.45178818174179064,
+      "step": 6440
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.948246290843684,
+      "returned_catalyst_mass": 0.45107104553331384,
+      "step": 6480
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.897899502326304,
+      "returned_catalyst_mass": 0.450360209065827,
+      "step": 6520
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.847993094571244,
+      "returned_catalyst_mass": 0.4496555902482572,
+      "step": 6560
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.79852135233085,
+      "returned_catalyst_mass": 0.44895710838813924,
+      "step": 6600
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.749478657472686,
+      "returned_catalyst_mass": 0.44826468416415977,
+      "step": 6640
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.700859487074787,
+      "returned_catalyst_mass": 0.4475782395992627,
+      "step": 6680
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.652658411559592,
+      "returned_catalyst_mass": 0.44689769803430385,
+      "step": 6720
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.604870092865994,
+      "returned_catalyst_mass": 0.4462229841022411,
+      "step": 6760
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.557489282658693,
+      "returned_catalyst_mass": 0.4455540237028545,
+      "step": 6800
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.510510820574268,
+      "returned_catalyst_mass": 0.44489074397798145,
+      "step": 6840
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.463929632503024,
+      "returned_catalyst_mass": 0.4442330732872586,
+      "step": 6880
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.417740728905812,
+      "returned_catalyst_mass": 0.443580941184358,
+      "step": 6920
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.371939203165596,
+      "returned_catalyst_mass": 0.44293427839371313,
+      "step": 6960
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.326520229972623,
+      "returned_catalyst_mass": 0.44229301678771754,
+      "step": 7000
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.281479063742374,
+      "returned_catalyst_mass": 0.44165708936439135,
+      "step": 7040
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.236811037066353,
+      "returned_catalyst_mass": 0.4410264302255068,
+      "step": 7080
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.192511559194486,
+      "returned_catalyst_mass": 0.4404009745551598,
+      "step": 7120
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.148576114548355,
+      "returned_catalyst_mass": 0.43978065859878207,
+      "step": 7160
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.105000261265317,
+      "returned_catalyst_mass": 0.4391654196425825,
+      "step": 7200
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.061779629772182,
+      "returned_catalyst_mass": 0.4385551959934115,
+      "step": 7240
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 31.018909921388357,
+      "returned_catalyst_mass": 0.4379499269590374,
+      "step": 7280
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.976386906957465,
+      "returned_catalyst_mass": 0.43734955282882837,
+      "step": 7320
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.934206425507327,
+      "returned_catalyst_mass": 0.43675401485483084,
+      "step": 7360
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.892364382937117,
+      "returned_catalyst_mass": 0.436163255233236,
+      "step": 7400
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.850856750731843,
+      "returned_catalyst_mass": 0.43557721708622804,
+      "step": 7440
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.809679564703096,
+      "returned_catalyst_mass": 0.43499584444420525,
+      "step": 7480
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.768828923755592,
+      "returned_catalyst_mass": 0.4344190822283655,
+      "step": 7520
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.72830098867918,
+      "returned_catalyst_mass": 0.4338468762336516,
+      "step": 7560
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.68809198096583,
+      "returned_catalyst_mass": 0.43327917311204645,
+      "step": 7600
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.6481981816506,
+      "returned_catalyst_mass": 0.43271592035621126,
+      "step": 7640
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.608615930176825,
+      "returned_catalyst_mass": 0.4321570662834619,
+      "step": 7680
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.569341623284487,
+      "returned_catalyst_mass": 0.4316025600200743,
+      "step": 7720
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.53037171392149,
+      "returned_catalyst_mass": 0.4310523514859131,
+      "step": 7760
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.491702710177286,
+      "returned_catalyst_mass": 0.43050639137937585,
+      "step": 7800
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.453331174238684,
+      "returned_catalyst_mass": 0.4299646311626499,
+      "step": 7840
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.415253721366845,
+      "returned_catalyst_mass": 0.429427023047269,
+      "step": 7880
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.377467018895615,
+      "returned_catalyst_mass": 0.42889351997997105,
+      "step": 7920
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.339967785250394,
+      "returned_catalyst_mass": 0.4283640756288457,
+      "step": 7960
+    },
+    {
+      "context": "R8-R4 R6 shared-affinity",
+      "delta_e_repartition": 30.302752788987128,
+      "returned_catalyst_mass": 0.427838644369766,
+      "step": 8000
+    }
+  ],
+  "states_reversible_nonnegative_forward_negative": 400
+}
