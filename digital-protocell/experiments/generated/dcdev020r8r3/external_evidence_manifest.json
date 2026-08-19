@@ -11,7 +11,7 @@
     "manifest.json"
   ],
   "dense_artifact": "target/dcdev020r8r3-catalyst-reserve-dense.json",
-  "external_location": "UNRECORDED_EXTERNAL_LOCATION",
+  "external_location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r8r3/a468619d4158036277f168d2013b52516bc3c144/catalyst_reserve_horizon_ledger.json",
   "r8r2_input_sha256": "e932f6ab96e34516de98c97c2cae102553db9764383af3d61abf015743c3a376",
-  "sha256": "COMPUTED_AFTER_RUN"
+  "sha256": "c0850577954996e1ee566f936d8965ab61647281dc67eab401c7c47be0670c12"
 }
