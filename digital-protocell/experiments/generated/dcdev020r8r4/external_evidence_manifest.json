@@ -1,0 +1,17 @@
+{
+  "compact_git_artifacts": [
+    "protocol.json",
+    "acute_reproduction.json",
+    "finite_feed_summary.json",
+    "dose_summary.json",
+    "sustained_summary.json",
+    "cycle_summary.json",
+    "qualification.json",
+    "literature_review.json",
+    "external_evidence_manifest.json",
+    "manifest.json"
+  ],
+  "dense_artifact": "target/dcdev020r8r4-shared-affinity-dense.json",
+  "external_location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r8r4/1d5d2c2c6e98523cd5321332c1ae34d793f83743/shared_affinity_dense_ledger.json",
+  "sha256": "f72a81b18a19aadec8eed4533640b6db287fb45d0f7fd2415bd2add1456c1263"
+}

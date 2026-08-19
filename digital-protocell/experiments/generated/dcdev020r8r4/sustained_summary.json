@@ -1,0 +1,78 @@
+{
+  "d016_shared_affinity": {
+    "accelerated_decay_steps": 0,
+    "alive": true,
+    "clipping_steps": 0,
+    "context": "D016",
+    "final_quarter_max": 25.394186348281888,
+    "final_quarter_min": 18.09486270584427,
+    "final_quarter_slope": -0.0036514875650013093,
+    "final_state": {
+      "a": 0.19502370666895516,
+      "alive": true,
+      "area": 70.8275261895172,
+      "c": 0.3066625303300328,
+      "e_stored": 18.09486270584427,
+      "f": 0.1476181433595113,
+      "n": 0.1476181433595113,
+      "r": 0.060454123481808945,
+      "step": 8000
+    },
+    "finite": true,
+    "initial": {
+      "a": 0.303630027599798,
+      "alive": true,
+      "area": 70.8275261895172,
+      "c": 0.7909794528553131,
+      "e_stored": 60.82781514212436,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.5551860064286098,
+      "step": 0
+    },
+    "max_accounting_residual": 1.9110581173098495e-14,
+    "mode": "shared_affinity_k_c_prod_A_one_minus_qc",
+    "peak_e_ar": 60.82781514212436,
+    "steps": 8000,
+    "trajectory_hash": "feaef9ae9b3a4638"
+  },
+  "frozen_r6_baseline_final_quarter_slope": -0.002017807297002126,
+  "r6_shared_affinity": {
+    "accelerated_decay_steps": 0,
+    "alive": true,
+    "clipping_steps": 0,
+    "context": "R6",
+    "final_quarter_max": 58.12504243725729,
+    "final_quarter_min": 54.45821737181944,
+    "final_quarter_slope": -0.0018343296975677115,
+    "final_state": {
+      "a": 0.4882745066393498,
+      "alive": true,
+      "area": 70.8275261895172,
+      "c": 0.427838644369766,
+      "e_stored": 54.45821737181944,
+      "f": 0.14746490921534675,
+      "n": 0.14746490921534675,
+      "r": 0.2806104213207559,
+      "step": 8000
+    },
+    "finite": true,
+    "initial": {
+      "a": 0.303630027599798,
+      "alive": true,
+      "area": 70.8275261895172,
+      "c": 0.7909794528553131,
+      "e_stored": 60.82781514212436,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.5551860064286098,
+      "step": 0
+    },
+    "max_accounting_residual": 2.403329271705168e-14,
+    "mode": "shared_affinity_k_c_prod_A_one_minus_qc",
+    "peak_e_ar": 63.02591155993432,
+    "steps": 8000,
+    "trajectory_hash": "63c84e36e1182bee"
+  },
+  "target": 77.91027880846893
+}
