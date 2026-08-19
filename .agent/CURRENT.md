@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260819-dcdev020r8r5r1-net-allocation-drift`
-- External directive ID: `DC-DEV-020-R8-R5-R1`
-- Objective: `Requalify R8-R5 local catalyst-allocation authority using true incoming-state net A/R drift, with reversible and forward-only A↔C envelopes.`
+- Local directive ID: `D-20260819-dcdev020r9-mesh-contract-requalification`
+- External directive ID: `DC-DEV-020-R9`
+- Objective: `Requalify the D-086 material-mesh substrate for strict conservation, observer-only death, and separate material/activation/organized-retained ledgers.`
 - Current status: `VALIDATING`
-- Acceptance: `Local result is DCDEV020R8R5R1_RECYCLING_ONLY_LOCAL_CAPACITY; exact-head remote CI run 32270631382 passed and architect review is pending.`
-- Current phase: `DC-DEV-020-R8-R5-R1 observer-only corrected net allocation drift; no allocator, recycling law, production law, behavior, source/sink change, or DC-DEV-021 work is authorized.`
-- Expected or actual touched areas: `R8-R5-R1 observer wrapper, corrected net-envelope implementation, compact evidence, governed external dense-ledger seal, documentation, governance, and scoped CI`
-- Immediate next action: `Complete evidence sealing, exact-head CI, and architect review; do not begin DC-DEV-021.`
+- Acceptance: `Local E0-E5 evidence is generated; exact-head remote CI and architect review remain pending.`
+- Current phase: `DC-DEV-020-R9 versioned conservative substrate requalification; no new metabolic mechanism, behavior, evolution, or DC-DEV-021 work is authorized.`
+- Expected or actual touched areas: `versioned mesh chemistry, observer-only viability guards, exact stoichiometric/ledger audit, compact E0-E5 evidence, documentation, governance, and scoped CI`
+- Immediate next action: `Run governance validation, preserve the unrelated .gitignore change, commit and push R9, then obtain exact-head CI and architect review.`
 
 ## Temporary task-relevant facts
 
@@ -33,7 +33,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Local Rust 1.89.0 R8-R5 build/execution, exact R8-R2/R8-R4 replay, 65-point A↔C mesh with deterministic refinement, 400 late-state local envelopes, and governed external dense-ledger SHA-256`
+- Command or check: `Governance ADOPTED; R9 mesh-contract tests, D-086/D-088 tests, phase1-certifier tests, R9 evidence runner, and legacy D-087 runtime smoke`
 - Result: `PASSED`
 
 ## Risks
@@ -44,7 +44,7 @@
 
 ## Blockers
 
-- Architect review for R8-R5-R1 remains open. No allocator, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
+- Exact-head remote CI and architect review for R9 remain open. No allocator, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
 
 ## Pending decisions
 

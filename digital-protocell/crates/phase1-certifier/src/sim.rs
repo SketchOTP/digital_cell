@@ -177,7 +177,7 @@ pub fn run_coupled(
     let transport = frozen_transport();
     let mut acc = AccumLedger::default();
     for _ in 0..steps {
-        if !mesh.alive {
+        if !mesh.can_advance_physics() {
             break;
         }
         let led = coupled_step(mesh, &mech, &react, &transport, build, metab);
@@ -217,7 +217,7 @@ pub fn audit_turnover(steps: usize) -> TurnoverAudit {
     let react = frozen_reactions();
     let transport = frozen_transport();
     for _ in 0..steps {
-        if !mesh.alive {
+        if !mesh.can_advance_physics() {
             break;
         }
         let led = coupled_step(&mut mesh, &mech, &react, &transport, true, true);

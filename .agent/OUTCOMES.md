@@ -463,6 +463,26 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260819-dcdev020r9-mesh-contract-requalification - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9-METRIC-CONFOUNDING-DOMINANT`
+- Supersedes outcome: none
+- Closed: `2026-08-19T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The R9 historical mesh audit confirms `NO_POSITIVE_CONSERVATION_VECTOR`; the versioned conservative v2 audit confirms a strictly positive all-material vector. Runtime v2 reactions close the strict material ledger to approximately `2.84e-14`. A physically ruptured v2 mesh remains governed by observer viability while transport continues. Conservative fission partition accounting passes. The compact E5 contract replay separates strict material, activation, and organized-retained ledgers and classifies `DCDEV020R9_METRIC_CONFOUNDING_DOMINANT`.
+- Changed areas: Versioned mesh stoichiometry and v2 runtime guards only; compact R9 analysis/example, evidence, documentation, and governance. Historical D-012/D-086/D-087/D-088 and D-015 through R8-R5-R1 evidence remain preserved.
+- Validation:
+  - chemistry-core mesh-contract tests - PASSED (5 tests)
+  - D-086 tests - PASSED (9 tests)
+  - D-088 tests - PASSED (4 tests)
+  - phase1-certifier tests - PASSED (4 tests)
+  - R9 example/evidence generation - PASSED
+  - exact-head remote CI - PENDING
+  - architect review - PENDING
+- Remaining risks: E5 rows are bounded v2 contract replays and do not overwrite the sealed historical D-015/D-016/R8 protocol artifacts. Full architect acceptance and remote CI remain outstanding. No salvage, controller, behavior, evolution, or DC-DEV-021 work is authorized.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
+
 ## D-20260819-dcdev020r8r4-shared-affinity-autogenous-cprod - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020R8R4-SHARED-AFFINITY-ACCEPTED-NEGATIVE`

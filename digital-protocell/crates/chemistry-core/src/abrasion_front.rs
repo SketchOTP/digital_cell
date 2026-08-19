@@ -56,7 +56,7 @@ impl AbrasionFront {
     /// Apply local damage to any mesh whose centroid or vertices contact the front.
     /// Does not read lineage, clade, catalyst type, or labels.
     pub fn apply_to_individual(&self, ind: &mut MeshIndividual) -> f64 {
-        if !ind.mesh.alive {
+        if !ind.mesh.can_advance_physics() {
             return 0.0;
         }
         let c = ind.mesh.centroid();

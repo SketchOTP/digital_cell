@@ -8,6 +8,12 @@ use serde::{Deserialize, Serialize};
 pub const EQUATION_VERSION_MATERIAL_MESH: &str = "autopoietic_material_mesh_v1";
 pub const FIELD_SCHEMA_MATERIAL_MESH: &str = "mesh_vertices_edges_v1";
 pub const MATERIAL_MESH_SCHEMA_VERSION: u32 = 1;
+/// Versioned R9 substrate contract. Historical v1 snapshots remain readable and
+/// retain their original equation identity.
+pub const EQUATION_VERSION_MATERIAL_MESH_CONSERVATIVE: &str =
+    "material_mesh_stoichiometry_v2_conservative";
+pub const FIELD_SCHEMA_MATERIAL_MESH_CONSERVATIVE: &str = "mesh_vertices_edges_material_v2";
+pub const MATERIAL_MESH_CONSERVATIVE_SCHEMA_VERSION: u32 = 2;
 
 /// Template monomer identity (D-092). Sequence = ordered bonded monomers.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
@@ -281,8 +287,69 @@ impl MaterialMesh {
         self.free_l.max(0.0) + self.total_bound_membrane()
     }
 
+    /// R9 physical validity guard. This is numerical geometry validity, not
+    /// biological viability and never reads the historical `alive` latch.
+    pub fn physical_runtime_valid(&self) -> bool {
+        self.n() >= 3
+            && self.vertices.iter().all(|p| p[0].is_finite() && p[1].is_finite())
+            && self.edges.iter().all(|e| {
+                e.m.is_finite() && e.m >= 0.0 && e.b.is_finite() && e.b >= 0.0
+            })
+            && self.interior.c.is_finite()
+            && self.interior.a.is_finite()
+            && self.interior.n.is_finite()
+            && self.interior.f.is_finite()
+            && self.interior.w.is_finite()
+    }
+
+    pub fn uses_observer_only_death(&self) -> bool {
+        self.equation_id == EQUATION_VERSION_MATERIAL_MESH_CONSERVATIVE
+    }
+
+    /// Production kernels use this guard. In the R9 schema, biological
+    /// viability is an observer result and cannot halt physical equations.
+    pub fn can_advance_physics(&self) -> bool {
+        self.physical_runtime_valid()
+            && (self.uses_observer_only_death() || self.alive)
+    }
+
+    pub fn observer_viable(&self) -> bool {
+        let ruptured = self.edges.iter().filter(|e| e.ruptured).count();
+        let n = self.n().max(1);
+        ruptured * 2 < n
+            && !(self.interior.c < 1e-4
+                && self.total_structural_mass() < self.bond_threshold * n as f64)
+            && !(self.interior.a < 1e-5 && self.interior.c < 1e-4)
+            && !(self.interior.a < 0.02 && self.interior.n * self.interior.f < 1e-8)
+    }
+
+    pub fn observer_death_reason(&self) -> Option<&'static str> {
+        let ruptured = self.edges.iter().filter(|e| e.ruptured).count();
+        let n = self.n().max(1);
+        if ruptured * 2 >= n {
+            Some("mesh_rupture")
+        } else if self.interior.c < 1e-4
+            && self.total_structural_mass() < self.bond_threshold * n as f64
+        {
+            Some("catalytic_structural_loss")
+        } else if self.interior.a < 1e-5 && self.interior.c < 1e-4 {
+            Some("activated_catalyst_collapse")
+        } else if self.interior.a < 0.02 && self.interior.n * self.interior.f < 1e-8 {
+            Some("starvation_collapse")
+        } else {
+            None
+        }
+    }
+
     pub fn closed_intact(&self) -> bool {
-        self.alive && self.n() >= 3 && self.edges.iter().all(|e| !e.ruptured && e.m > 0.0)
+        (self.uses_observer_only_death() || self.alive)
+            && self.n() >= 3
+            && self.edges.iter().all(|e| !e.ruptured && e.m > 0.0)
+    }
+
+    pub fn stamp_conservative_schema(&mut self) {
+        self.equation_id = EQUATION_VERSION_MATERIAL_MESH_CONSERVATIVE.to_string();
+        self.schema_version = MATERIAL_MESH_CONSERVATIVE_SCHEMA_VERSION;
     }
 
     pub fn b_max_for_edge(&self, i: usize) -> f64 {

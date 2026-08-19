@@ -85,6 +85,12 @@
 - `digital-protocell/examples/dcdev020r8r5r1_net_allocation_drift.rs` — DC-DEV-020-R8-R5-R1 corrected incoming-state net-drift observer wrapper; it preserves the R8-R5 constant-allocation runner.
 - `digital-protocell/experiments/generated/dcdev020r8r5r1/` — compact R8-R5-R1 checkpoint hashes, statewise reversible/forward-only envelopes, attribution, qualification, and external dense-ledger manifest.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r5r1/` — R8-R5-R1 corrected net allocation drift documentation.
+- `digital-protocell/crates/chemistry-core/src/mesh_contracts.rs` — R9 exact historical/conservative mesh stoichiometric descriptors, runtime parity, and three-ledger accounting.
+- `digital-protocell/crates/chemistry-core/src/d020r9_analysis.rs` — bounded R9 E0-E5 contract requalification and compact evidence writer.
+- `digital-protocell/crates/chemistry-core/examples/dcdev020r9_mesh_contract_requalification.rs` — R9 reproducible observer/requalification runner.
+- `digital-protocell/experiments/generated/dcdev020r9/` — compact R9 E0-E5 evidence and preserved legacy runtime smoke artifact.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9/` — R9 mesh contract requalification documentation.
+- `.github/workflows/dc-dev-020r9.yml` — scoped R9 governance, format, preservation, contract-test, and evidence-runner CI.
 
 ## External integration points
 

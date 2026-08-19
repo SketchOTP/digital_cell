@@ -1,0 +1,50 @@
+name: DC-DEV-020-R9 mesh contract requalification
+
+on:
+  push:
+    branches:
+      - strategy/dc-dev-020r9-mesh-contract-requalification
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+
+permissions:
+  contents: read
+
+jobs:
+  r9:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.89.0
+          components: rustfmt
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Governance validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+      - name: Formatting
+        working-directory: digital-protocell
+        run: >-
+          rustfmt +1.89.0 --edition 2021 --check
+          crates/chemistry-core/src/mesh_contracts.rs
+          crates/chemistry-core/src/d020r9_analysis.rs
+          crates/chemistry-core/examples/dcdev020r9_mesh_contract_requalification.rs
+      - name: R9 contract tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --lib mesh_contracts -- --nocapture
+      - name: D-086 preservation tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d086_tests -- --nocapture
+      - name: D-088 preservation tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+      - name: Phase 1 preservation tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --test metrics_semantics -- --nocapture
+      - name: R9 evidence runner
+        working-directory: digital-protocell
+        run: cargo +1.89.0 run -p chemistry-core --example dcdev020r9_mesh_contract_requalification --quiet -- experiments/generated/dcdev020r9

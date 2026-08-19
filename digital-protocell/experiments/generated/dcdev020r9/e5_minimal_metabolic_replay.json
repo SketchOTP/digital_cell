@@ -1,0 +1,230 @@
+[
+  {
+    "protocol_reference": "DC-DEV-015",
+    "execution": "bounded_v2_mesh_contract_replay; historical protocol result not rewritten",
+    "external_nf_scale": 1.0,
+    "accepted_steps": 240,
+    "ledgers": {
+      "initial": {
+        "n": 6.2116570824604995,
+        "f": 6.2116570824604995,
+        "a": 7.453988498952599,
+        "r": 0.0,
+        "c": 9.9386513319368,
+        "waste": 1.2423314164921,
+        "structural_m": 12.530514453124956,
+        "free_l": 1.0,
+        "bound_b": 8.771360117187466,
+        "hereditary": 0.0
+      },
+      "final_state": {
+        "n": 6.292625452804671,
+        "f": 6.292625452804671,
+        "a": 7.975081013273672,
+        "r": 0.0,
+        "c": 9.88879172356152,
+        "waste": 2.547370913010455,
+        "structural_m": 11.964464635945914,
+        "free_l": 0.13439817464584528,
+        "bound_b": 10.18085395137228,
+        "hereditary": 0.0
+      },
+      "strict_material_delta": 1.9160513348041093,
+      "activation_delta": 0.6020608846652458,
+      "organized_retained_delta": 0.44907509759740094,
+      "boundary_material_delta": 1.9160513348041968,
+      "closure_residual": 8.748557434046234e-14
+    },
+    "observer_viable_at_end": true
+  },
+  {
+    "protocol_reference": "DC-DEV-016",
+    "execution": "bounded_v2_mesh_contract_replay; historical protocol result not rewritten",
+    "external_nf_scale": 2.0,
+    "accepted_steps": 240,
+    "ledgers": {
+      "initial": {
+        "n": 6.2116570824604995,
+        "f": 6.2116570824604995,
+        "a": 7.453988498952599,
+        "r": 0.0,
+        "c": 9.9386513319368,
+        "waste": 1.2423314164921,
+        "structural_m": 12.530514453124956,
+        "free_l": 1.0,
+        "bound_b": 8.771360117187466,
+        "hereditary": 0.0
+      },
+      "final_state": {
+        "n": 9.183582216007933,
+        "f": 9.183582216007933,
+        "a": 9.639062135199413,
+        "r": 0.0,
+        "c": 9.942380878081165,
+        "waste": 3.692292594715035,
+        "structural_m": 11.998264626156184,
+        "free_l": 0.14121091123936913,
+        "bound_b": 10.218241372133548,
+        "hereditary": 0.0
+      },
+      "strict_material_delta": 10.638456966925666,
+      "activation_delta": 5.156998769794246,
+      "organized_retained_delta": 2.2446455216078505,
+      "boundary_material_delta": 10.638456966925675,
+      "closure_residual": 8.881784197001252e-15
+    },
+    "observer_viable_at_end": true
+  },
+  {
+    "protocol_reference": "R8-R2 normal",
+    "execution": "bounded_v2_mesh_contract_replay; historical protocol result not rewritten",
+    "external_nf_scale": 1.0,
+    "accepted_steps": 240,
+    "ledgers": {
+      "initial": {
+        "n": 6.2116570824604995,
+        "f": 6.2116570824604995,
+        "a": 7.453988498952599,
+        "r": 0.0,
+        "c": 9.9386513319368,
+        "waste": 1.2423314164921,
+        "structural_m": 12.530514453124956,
+        "free_l": 1.0,
+        "bound_b": 8.771360117187466,
+        "hereditary": 0.0
+      },
+      "final_state": {
+        "n": 6.292625452804671,
+        "f": 6.292625452804671,
+        "a": 7.975081013273672,
+        "r": 0.0,
+        "c": 9.88879172356152,
+        "waste": 2.547370913010455,
+        "structural_m": 11.964464635945914,
+        "free_l": 0.13439817464584528,
+        "bound_b": 10.18085395137228,
+        "hereditary": 0.0
+      },
+      "strict_material_delta": 1.9160513348041093,
+      "activation_delta": 0.6020608846652458,
+      "organized_retained_delta": 0.44907509759740094,
+      "boundary_material_delta": 1.9160513348041968,
+      "closure_residual": 8.748557434046234e-14
+    },
+    "observer_viable_at_end": true
+  },
+  {
+    "protocol_reference": "R8-R2 catalyst-production-deferred",
+    "execution": "bounded_v2_mesh_contract_replay; historical protocol result not rewritten",
+    "external_nf_scale": 0.6,
+    "accepted_steps": 240,
+    "ledgers": {
+      "initial": {
+        "n": 6.2116570824604995,
+        "f": 6.2116570824604995,
+        "a": 7.453988498952599,
+        "r": 0.0,
+        "c": 9.9386513319368,
+        "waste": 1.2423314164921,
+        "structural_m": 12.530514453124956,
+        "free_l": 1.0,
+        "bound_b": 8.771360117187466,
+        "hereditary": 0.0
+      },
+      "final_state": {
+        "n": 5.022765856477726,
+        "f": 5.022765856477726,
+        "a": 7.4265333295380245,
+        "r": 0.0,
+        "c": 9.870664079527264,
+        "waste": 2.1731061969043806,
+        "structural_m": 11.952978821867287,
+        "free_l": 0.13216470798573027,
+        "bound_b": 10.168146377435253,
+        "hereditary": 0.0
+      },
+      "strict_material_delta": -1.5910347564015268,
+      "activation_delta": -1.2163463953973483,
+      "organized_retained_delta": -0.14402708484826832,
+      "boundary_material_delta": -1.5910347564014893,
+      "closure_residual": 3.752553823233029e-14
+    },
+    "observer_viable_at_end": true
+  },
+  {
+    "protocol_reference": "R8-R4 shared-affinity",
+    "execution": "bounded_v2_mesh_contract_replay; historical protocol result not rewritten",
+    "external_nf_scale": 1.2,
+    "accepted_steps": 240,
+    "ledgers": {
+      "initial": {
+        "n": 6.2116570824604995,
+        "f": 6.2116570824604995,
+        "a": 7.453988498952599,
+        "r": 0.0,
+        "c": 9.9386513319368,
+        "waste": 1.2423314164921,
+        "structural_m": 12.530514453124956,
+        "free_l": 1.0,
+        "bound_b": 8.771360117187466,
+        "hereditary": 0.0
+      },
+      "final_state": {
+        "n": 6.901570294471867,
+        "f": 6.901570294471867,
+        "a": 8.2761909992278,
+        "r": 0.0,
+        "c": 9.89859796057207,
+        "waste": 2.753840923711137,
+        "structural_m": 11.970669358606933,
+        "free_l": 0.13562410186255333,
+        "bound_b": 10.187712412625274,
+        "hereditary": 0.0
+      },
+      "strict_material_delta": 3.6656163629345855,
+      "activation_delta": 1.512115712286569,
+      "organized_retained_delta": 0.7742804316928016,
+      "boundary_material_delta": 3.6656163629345957,
+      "closure_residual": 1.021405182655144e-14
+    },
+    "observer_viable_at_end": true
+  },
+  {
+    "protocol_reference": "R8-R3/R8-R5 sustained reference",
+    "execution": "bounded_v2_mesh_contract_replay; historical protocol result not rewritten",
+    "external_nf_scale": 1.0,
+    "accepted_steps": 240,
+    "ledgers": {
+      "initial": {
+        "n": 6.2116570824604995,
+        "f": 6.2116570824604995,
+        "a": 7.453988498952599,
+        "r": 0.0,
+        "c": 9.9386513319368,
+        "waste": 1.2423314164921,
+        "structural_m": 12.530514453124956,
+        "free_l": 1.0,
+        "bound_b": 8.771360117187466,
+        "hereditary": 0.0
+      },
+      "final_state": {
+        "n": 6.292625452804671,
+        "f": 6.292625452804671,
+        "a": 7.975081013273672,
+        "r": 0.0,
+        "c": 9.88879172356152,
+        "waste": 2.547370913010455,
+        "structural_m": 11.964464635945914,
+        "free_l": 0.13439817464584528,
+        "bound_b": 10.18085395137228,
+        "hereditary": 0.0
+      },
+      "strict_material_delta": 1.9160513348041093,
+      "activation_delta": 0.6020608846652458,
+      "organized_retained_delta": 0.44907509759740094,
+      "boundary_material_delta": 1.9160513348041968,
+      "closure_residual": 8.748557434046234e-14
+    },
+    "observer_viable_at_end": true
+  }
+]

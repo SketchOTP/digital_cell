@@ -1,5 +1,10 @@
 //! D-086 mesh structural production, turnover, membrane binding, damage, death.
 
+use crate::autocatalytic_copying::{edge_copying_step, edge_loss_step};
+use crate::autocatalytic_edges::{merge_acs_ledgers, node_production_step, node_turnover_step};
+use crate::autocatalytic_nodes::{
+    node_activation_gain, node_building_gain, AutocatalyticLedger, AutocatalyticParams,
+};
 use crate::catalyst_composition::{
     composition_z, copy_production_fluxes, ensure_composition_initialized, g_build, g_harvest,
     sync_total_c, turnover_composition, CompositionLedger, CompositionParams,
@@ -8,22 +13,27 @@ use crate::material_mesh::MaterialMesh;
 use crate::metabolic_reserve::{reserve_metab_step, ReserveLedger, ReserveParams};
 use crate::template_copying::copying_step;
 use crate::template_motifs::{catalyst_binding_step, template_activity_gains};
-use crate::autocatalytic_copying::{edge_copying_step, edge_loss_step};
-use crate::autocatalytic_edges::{
-    merge_acs_ledgers, node_production_step, node_turnover_step,
-};
-use crate::autocatalytic_nodes::{
-    node_activation_gain, node_building_gain, AutocatalyticLedger, AutocatalyticParams,
-};
 use crate::template_network::{scale_bound_catalyst, NetworkLedger, NetworkParams};
 use crate::template_network_binding::network_binding_step;
 use crate::template_network_expression::{network_activation_gain, network_building_gain};
 use crate::template_partition::diffuse_templates;
 use crate::template_polymer::{
-    hydrolysis_step, merge_template_ledgers, monomer_production_step, TemplateLedger, TemplateParams,
-    XorShift64,
+    hydrolysis_step, merge_template_ledgers, monomer_production_step, TemplateLedger,
+    TemplateParams, XorShift64,
 };
 use serde::{Deserialize, Serialize};
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum MeshChemistrySchema {
+    HistoricalV1,
+    ConservativeV2,
+}
+
+impl Default for MeshChemistrySchema {
+    fn default() -> Self {
+        Self::HistoricalV1
+    }
+}
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub struct ReactionParams {
@@ -39,6 +49,10 @@ pub struct ReactionParams {
     pub k_c_turn: f64,
     pub k_a_decay: f64,
     pub q_c: f64,
+    /// Historical v1 is the serde/default path. R9 explicitly opts into the
+    /// versioned conservative mesh contract.
+    #[serde(default, skip_serializing_if = "is_historical_mesh_schema")]
+    pub mesh_schema: MeshChemistrySchema,
     /// D-089 compositional catalysis (default off → frozen scalar path).
     #[serde(default)]
     pub composition: CompositionParams,
@@ -73,12 +87,25 @@ impl Default for ReactionParams {
             k_c_turn: 0.01,
             k_a_decay: 0.008,
             q_c: 0.3,
+            mesh_schema: MeshChemistrySchema::HistoricalV1,
             composition: CompositionParams::default(),
             reserve: ReserveParams::default(),
             template: TemplateParams::default(),
             network: NetworkParams::default(),
             autocatalytic: AutocatalyticParams::default(),
         }
+    }
+}
+
+fn is_historical_mesh_schema(schema: &MeshChemistrySchema) -> bool {
+    *schema == MeshChemistrySchema::HistoricalV1
+}
+
+impl ReactionParams {
+    pub fn conservative_v2() -> Self {
+        let mut params = Self::default();
+        params.mesh_schema = MeshChemistrySchema::ConservativeV2;
+        params
     }
 }
 
@@ -162,7 +189,7 @@ pub fn reactions_step(
     enable_metab: bool,
 ) -> ReactionLedger {
     let mut led = ReactionLedger::default();
-    if !mesh.alive {
+    if !mesh.can_advance_physics() {
         return led;
     }
     let n_edges = mesh.n();
@@ -190,13 +217,8 @@ pub fn reactions_step(
         } else {
             1.0
         };
-        let extent = p.k_act
-            * qc
-            * gh
-            * mesh.interior.n.max(0.0)
-            * mesh.interior.f.max(0.0)
-            * dt
-            * area;
+        let extent =
+            p.k_act * qc * gh * mesh.interior.n.max(0.0) * mesh.interior.f.max(0.0) * dt * area;
         let n_take = extent.min(mesh.interior.n.max(0.0) * area) / area;
         let f_take = extent.min(mesh.interior.f.max(0.0) * area) / area;
         let taken = n_take.min(f_take);
@@ -225,8 +247,7 @@ pub fn reactions_step(
         if p.composition.enable {
             let c_h0 = mesh.interior.c_h.max(0.0);
             let c_b0 = mesh.interior.c_b.max(0.0);
-            let (j_h, j_b) =
-                copy_production_fluxes(c_prod, c_h0, c_b0, p.composition.mu);
+            let (j_h, j_b) = copy_production_fluxes(c_prod, c_h0, c_b0, p.composition.mu);
             let (c_h1, c_b1, t_h, t_b) = turnover_composition(c_h0, c_b0, c_turn);
             mesh.interior.c_h = (c_h1 + j_h).max(0.0);
             mesh.interior.c_b = (c_b1 + j_b).max(0.0);
@@ -298,8 +319,14 @@ pub fn reactions_step(
             let mut rng = XorShift64::new(mesh.template_rng.wrapping_add(0xD094_ACE5));
             let mut acs = node_production_step(mesh, &p.autocatalytic, dt);
             merge_acs_ledgers(&mut acs, &node_turnover_step(mesh, &p.autocatalytic, dt));
-            merge_acs_ledgers(&mut acs, &edge_copying_step(mesh, &p.autocatalytic, dt, &mut rng));
-            merge_acs_ledgers(&mut acs, &edge_loss_step(mesh, &p.autocatalytic, dt, &mut rng));
+            merge_acs_ledgers(
+                &mut acs,
+                &edge_copying_step(mesh, &p.autocatalytic, dt, &mut rng),
+            );
+            merge_acs_ledgers(
+                &mut acs,
+                &edge_loss_step(mesh, &p.autocatalytic, dt, &mut rng),
+            );
             mesh.template_rng = rng.state().wrapping_add(1);
             led.autocatalytic = acs;
             led.w_produced += led.autocatalytic.w_produced;
@@ -318,11 +345,18 @@ pub fn reactions_step(
             let take = need_a.min(have);
             let dm = take * p.yield_a_to_m;
             mesh.interior.a = (mesh.interior.a - take / area).max(0.0);
-            mesh.interior.w += take / area;
+            let w_product = if p.mesh_schema == MeshChemistrySchema::ConservativeV2
+                || mesh.uses_observer_only_death()
+            {
+                (take - dm).max(0.0)
+            } else {
+                take
+            };
+            mesh.interior.w += w_product / area;
             mesh.edges[i].m += dm;
             led.a_consumed_build += take;
             led.m_produced += dm;
-            led.w_produced += take;
+            led.w_produced += w_product;
 
             let turn_scale = 1.0 / (1.0 + 2.0 * mesh.strain(i).max(0.0));
             let turn = p.k_turn * turn_scale * mesh.edges[i].m.max(0.0) * dt;
@@ -343,7 +377,9 @@ pub fn reactions_step(
         let theta = mesh.occupancy(i);
         let bind = p.k_bind * mesh.free_l.max(0.0) * (1.0 - theta) * dt;
         let unbind = p.k_unbind * mesh.edges[i].b.max(0.0) * dt;
-        let bind_a = bind.min(mesh.free_l.max(0.0)).min((cap - mesh.edges[i].b).max(0.0));
+        let bind_a = bind
+            .min(mesh.free_l.max(0.0))
+            .min((cap - mesh.edges[i].b).max(0.0));
         let unbind_a = unbind.min(mesh.edges[i].b.max(0.0));
         if mesh.edges[i].b > 1e-15 && unbind_a > 0.0 {
             let frac = (unbind_a / mesh.edges[i].b).clamp(0.0, 1.0);
@@ -394,12 +430,21 @@ pub fn reactions_step(
         if theta < 0.95 || mesh.free_l < reserve_cap {
             let l_prod = 0.02 * qc * gb * mesh.interior.a.max(0.0) * peri * dt;
             let room = (reserve_cap - mesh.free_l).max(0.0) + (1.0 - theta) * peri;
-            let take = l_prod.min(mesh.interior.a.max(0.0) * area).min(room.max(0.0));
+            let take = l_prod
+                .min(mesh.interior.a.max(0.0) * area)
+                .min(room.max(0.0));
             mesh.interior.a = (mesh.interior.a - take / area).max(0.0);
-            mesh.interior.w += take / area;
+            let w_product = if p.mesh_schema == MeshChemistrySchema::ConservativeV2
+                || mesh.uses_observer_only_death()
+            {
+                0.0
+            } else {
+                take
+            };
+            mesh.interior.w += w_product / area;
             mesh.free_l += take;
             led.l_produced += take;
-            led.w_produced += take;
+            led.w_produced += w_product;
         }
     }
 
@@ -416,6 +461,9 @@ pub fn reactions_step(
 }
 
 pub fn evaluate_death(mesh: &mut MaterialMesh) {
+    if mesh.uses_observer_only_death() {
+        return;
+    }
     if !mesh.alive {
         return;
     }
@@ -501,7 +549,7 @@ pub fn apply_local_rupture(mesh: &mut MaterialMesh, i: usize) {
 
 /// Attempt local rebond of a ruptured edge if free ends are close and A/C available.
 pub fn try_local_rebond(mesh: &mut MaterialMesh, max_dist: f64) -> bool {
-    if !mesh.alive {
+    if !mesh.can_advance_physics() {
         return false;
     }
     if mesh.interior.a < 0.05 || mesh.interior.c < 0.05 {

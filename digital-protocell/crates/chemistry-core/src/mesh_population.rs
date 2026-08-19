@@ -80,7 +80,7 @@ impl MeshPopulation {
     }
 
     pub fn living_count(&self) -> usize {
-        self.individuals.iter().filter(|i| i.mesh.alive).count()
+        self.individuals.iter().filter(|i| i.mesh.observer_viable()).count()
     }
 
     pub fn step(
@@ -100,7 +100,7 @@ impl MeshPopulation {
         let tick = STEP_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
 
         for ind in self.individuals.iter_mut() {
-            if !ind.mesh.alive {
+            if !ind.mesh.can_advance_physics() {
                 continue;
             }
             let _ = transport_step(&mut ind.mesh, transport, mech.dt);

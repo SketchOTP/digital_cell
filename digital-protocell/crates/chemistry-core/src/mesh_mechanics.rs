@@ -159,7 +159,7 @@ pub fn compute_forces(mesh: &MaterialMesh, params: &MechParams) -> Vec<[f64; 2]>
 
 /// Overdamped step: γ dx/dt = F. Conserves edge material (m,b) — only vertex positions move.
 pub fn mechanics_step(mesh: &mut MaterialMesh, params: &MechParams) -> bool {
-    if !mesh.alive || mesh.n() < 3 {
+    if !mesh.can_advance_physics() || mesh.n() < 3 {
         return false;
     }
     let forces = compute_forces(mesh, params);
@@ -199,7 +199,7 @@ pub fn mechanics_step_with_external_forces(
     params: &MechParams,
     external_forces: &[[f64; 2]],
 ) -> bool {
-    if !mesh.alive || mesh.n() < 3 || external_forces.len() != mesh.n() {
+    if !mesh.can_advance_physics() || mesh.n() < 3 || external_forces.len() != mesh.n() {
         return false;
     }
     let mut forces = compute_forces(mesh, params);
@@ -226,7 +226,7 @@ pub fn mechanics_step_with_edge_tensions(
     params: &MechParams,
     edge_tensions: &[f64],
 ) -> bool {
-    if !mesh.alive || mesh.n() < 3 || edge_tensions.len() != mesh.n() {
+    if !mesh.can_advance_physics() || mesh.n() < 3 || edge_tensions.len() != mesh.n() {
         return false;
     }
     let mut forces = compute_forces(mesh, params);
@@ -264,7 +264,7 @@ pub fn mechanics_step_with_edge_tensions_and_external_forces(
     edge_tensions: &[f64],
     external_forces: &[[f64; 2]],
 ) -> bool {
-    if !mesh.alive
+    if !mesh.can_advance_physics()
         || mesh.n() < 3
         || edge_tensions.len() != mesh.n()
         || external_forces.len() != mesh.n()

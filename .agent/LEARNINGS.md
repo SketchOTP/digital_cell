@@ -138,6 +138,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-020-R2 observer-only allosteric requalification.
 - Supersedes learning: none
 
+## L-DCDEV020R9-001
+
+- Learning ID: L-DCDEV020R9-001
+- Date: 2026-08-19
+- Fact or lesson: The D-086 historical mesh reset reintroduced nonconservative unit-yield structural and membrane production (`A -> M + W` and `A -> L + W`) and used the biological `alive` latch as a production gate. The versioned v2 path removes the extra unit waste at unit conversion and makes viability observer-only. The strict material ledger can close while `E_AR` declines and organized retained material rises, confirming that `A+R` cannot stand in for organism-level homeostasis.
+- Evidence location: `digital-protocell/crates/chemistry-core/src/mesh_contracts.rs`, `digital-protocell/crates/chemistry-core/src/d020r9_analysis.rs`, `digital-protocell/experiments/generated/dcdev020r9/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9/mesh_contract_requalification.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R9 versioned substrate requalification; no new metabolic mechanism or DC-DEV-021 authorization.
+- Supersedes learning: none
+
 ## L-DCDEV020R8R1-001
 
 - Learning ID: L-DCDEV020R8R1-001

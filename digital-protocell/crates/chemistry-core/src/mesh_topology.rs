@@ -36,7 +36,7 @@ pub struct TopologyLedger {
 
 /// Rupture bonds under excessive local tension (or below mass threshold already handled elsewhere).
 pub fn tension_rupture_step(mesh: &mut MaterialMesh, topo: &TopologyParams) -> usize {
-    if !topo.enable_rupture || !mesh.alive {
+    if !topo.enable_rupture || !mesh.can_advance_physics() {
         return 0;
     }
     let n = mesh.n();
@@ -59,7 +59,7 @@ pub fn tension_rupture_step(mesh: &mut MaterialMesh, topo: &TopologyParams) -> u
 
 /// Local rebond of original ruptured edge if ends are close (Phase 1 behavior).
 pub fn local_same_edge_rebond(mesh: &mut MaterialMesh, topo: &TopologyParams) -> usize {
-    if !topo.enable_rebond || !mesh.alive {
+    if !topo.enable_rebond || !mesh.can_advance_physics() {
         return 0;
     }
     if mesh.interior.a < 0.05 || mesh.interior.c < 0.05 {

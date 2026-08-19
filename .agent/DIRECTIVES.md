@@ -416,3 +416,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260819-dcdev020r9-mesh-contract-requalification
+
+- Issued: `2026-08-19T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R9`
+- Objective: Requalify the D-086 material-mesh substrate for strict material conservation, observer-only death semantics, and separate material/activation/organized-retained ledgers, then replay only the minimum decisive metabolic references.
+- Scope: Exact entry `600bc8bef735a6be4b019a65263b023b2bada48a`, clean base `1e242f28152797b512e25cd56c7b718e45d6ca97`, versioned conservative mesh schema, exact stoichiometric audit, observer-only viability, D087/D088 bounded requalification, compact E0-E5 evidence, governance, preservation, and scoped CI.
+- Exclusions: New source feedback, catalyst feedback, recycling/salvage, reserve tuning, sink or transport tuning, new species, behavior, evolution, DC-DEV-021, and rewriting historical evidence.
+- Acceptance: Formal conserved chemistry, no authoritative biological death latch in v2 production kernels, separated ledgers, decisive bottleneck classification, exact-head remote CI, and architect review.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

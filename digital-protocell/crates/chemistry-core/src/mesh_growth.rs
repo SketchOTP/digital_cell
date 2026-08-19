@@ -90,12 +90,7 @@ pub fn local_a_production_rate(mesh: &MaterialMesh, i: usize, p: &ReactionParams
     } else {
         1.0
     };
-    let j_act = p.k_act
-        * qc
-        * gh
-        * mesh.interior.n.max(0.0)
-        * mesh.interior.f.max(0.0)
-        * area;
+    let j_act = p.k_act * qc * gh * mesh.interior.n.max(0.0) * mesh.interior.f.max(0.0) * area;
     // Rate of A mass added to interior pool attributable to this segment.
     j_act * share
 }
@@ -126,7 +121,7 @@ pub fn growth_step(
     dt: f64,
 ) -> GrowthLedger {
     let mut led = GrowthLedger::default();
-    if !growth.enable_growth || !mesh.alive {
+    if !growth.enable_growth || !mesh.can_advance_physics() {
         return led;
     }
     let n = mesh.n();
@@ -141,12 +136,8 @@ pub fn growth_step(
             if mesh.edges[i].ruptured {
                 continue;
             }
-            let j_mass = crate::metabolic_reserve::local_r_growth_rate(
-                mesh,
-                i,
-                react,
-                growth.y_g,
-            ) * crate::d096_allocation::function_gain(mesh, 3)
+            let j_mass = crate::metabolic_reserve::local_r_growth_rate(mesh, i, react, growth.y_g)
+                * crate::d096_allocation::function_gain(mesh, 3)
                 * dt;
             if j_mass <= 0.0 {
                 continue;
@@ -157,12 +148,20 @@ pub fn growth_step(
                 continue;
             }
             mesh.interior.r = (mesh.interior.r - take / area).max(0.0);
-            mesh.interior.w += take / area;
             let dm = take * growth.y_g.max(0.0);
+            let w_product = if react.mesh_schema
+                == crate::mesh_reactions::MeshChemistrySchema::ConservativeV2
+                || mesh.uses_observer_only_death()
+            {
+                (take - dm).max(0.0)
+            } else {
+                take
+            };
+            mesh.interior.w += w_product / area;
             mesh.edges[i].m += dm;
             led.r_consumed_growth += take;
             led.m_grown += dm;
-            led.w_from_growth += take;
+            led.w_from_growth += w_product;
         }
         return led;
     }
@@ -174,7 +173,8 @@ pub fn growth_step(
         let surplus = local_a_surplus_rate(mesh, i, react);
         led.a_surplus_total += surplus * dt;
         let gb = if react.composition.enable {
-            let z = crate::catalyst_composition::composition_z(mesh.interior.c_h, mesh.interior.c_b);
+            let z =
+                crate::catalyst_composition::composition_z(mesh.interior.c_h, mesh.interior.c_b);
             crate::catalyst_composition::g_build(z, react.composition.sigma)
         } else {
             1.0
@@ -189,13 +189,21 @@ pub fn growth_step(
             continue;
         }
         mesh.interior.a = (mesh.interior.a - take / area).max(0.0);
-        mesh.interior.w += take / area;
         // Structural mass from surplus A at yield y_g (A→m).
         let dm = take * growth.y_g.max(0.0);
+        let w_product = if react.mesh_schema
+            == crate::mesh_reactions::MeshChemistrySchema::ConservativeV2
+            || mesh.uses_observer_only_death()
+        {
+            (take - dm).max(0.0)
+        } else {
+            take
+        };
+        mesh.interior.w += w_product / area;
         mesh.edges[i].m += dm;
         led.a_consumed_growth += take;
         led.m_grown += dm;
-        led.w_from_growth += take;
+        led.w_from_growth += w_product;
     }
     led
 }

@@ -1,0 +1,22 @@
+{
+  "a": 0.5115919460749507,
+  "alive": true,
+  "area": 610.3295461952903,
+  "b_total": 66.72770916804501,
+  "c": 0.7990847625118412,
+  "gpu": false,
+  "ledger": {
+    "a_produced": 17.001808471943626,
+    "bind_extent": 9.276386175517171,
+    "c_produced": 5.558359383760964,
+    "c_turned": 4.876458624551845,
+    "l_produced": 0.6448285664554695,
+    "m_produced": 0.4743123805425109,
+    "m_to_w": 1.5545933379720502,
+    "unbind_extent": 3.961961453981256
+  },
+  "m_total": 86.65298253758343,
+  "offline": true,
+  "package": "digital-protocell-phase1-v1",
+  "steps": 50
+}

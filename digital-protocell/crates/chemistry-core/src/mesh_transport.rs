@@ -79,7 +79,7 @@ pub fn transport_step(
     dt: f64,
 ) -> TransportLedger {
     let mut led = TransportLedger::default();
-    if !mesh.alive {
+    if !mesh.can_advance_physics() {
         return led;
     }
     let area = mesh.area().max(1e-6);

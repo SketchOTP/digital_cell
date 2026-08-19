@@ -192,7 +192,7 @@ pub fn reserve_metab_step(
 ) -> ReserveLedger {
     let mut led = ReserveLedger::default();
     let p = &react.reserve;
-    if !p.enable || !mesh.alive || dt <= 0.0 {
+    if !p.enable || !mesh.can_advance_physics() || dt <= 0.0 {
         return led;
     }
     if !reserve_schema_load_ok(mesh, p) {

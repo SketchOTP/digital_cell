@@ -65,7 +65,7 @@ pub fn try_local_fission(
     parent: &MaterialMesh,
     params: &FissionParams,
 ) -> Option<(MaterialMesh, MaterialMesh, FissionEvent)> {
-    if !parent.alive || parent.n() < params.min_vertices {
+    if !parent.can_advance_physics() || parent.n() < params.min_vertices {
         return None;
     }
     if !params.topo.enable_rebond {
@@ -83,7 +83,8 @@ pub fn try_local_fission(
     let need = parent.rho_s * dist;
     let area = parent.area().max(1e-6);
     let have_a = parent.interior.a.max(0.0) * area;
-    if have_a < need * 0.25 {
+    let conservative = parent.uses_observer_only_death();
+    if have_a < if conservative { need } else { need * 0.25 } {
         return None;
     }
 
@@ -190,13 +191,21 @@ pub fn try_local_fission(
     let _ = pre_acs_edges;
 
     // Cost of cross-bond: A consumed (leakage/waste).
-    let take = (need * 0.5).min(have_a);
+    // Conservative v2 pays the full cross-bond mass from A. Historical v1
+    // retains its legacy half-cost and explicit W leakage for compatibility.
+    let take = if conservative {
+        need
+    } else {
+        (need * 0.5).min(have_a)
+    };
     let leakage = take;
     // Deduct from daughters proportionally (already split); reduce A slightly.
     d1.interior.a = (d1.interior.a - (take * f1) / d1.area().max(1e-9)).max(0.0);
     d2.interior.a = (d2.interior.a - (take * f2) / d2.area().max(1e-9)).max(0.0);
-    d1.interior.w += (take * f1) / d1.area().max(1e-9);
-    d2.interior.w += (take * f2) / d2.area().max(1e-9);
+    if !parent.uses_observer_only_death() {
+        d1.interior.w += (take * f1) / d1.area().max(1e-9);
+        d2.interior.w += (take * f2) / d2.area().max(1e-9);
+    }
 
     let post_m = d1.total_structural_mass() + d2.total_structural_mass();
     let post_b = d1.total_bound_membrane() + d2.total_bound_membrane();
@@ -224,7 +233,12 @@ pub fn try_local_fission(
     let residual_a = (post_a - (pre_a - take)).abs();
     let residual_n = (post_n - pre_n).abs();
     let residual_f = (post_f - pre_f).abs();
-    let residual_w = (post_w - (pre_w + take)).abs();
+    let expected_w = if parent.uses_observer_only_death() {
+        pre_w
+    } else {
+        pre_w + take
+    };
+    let residual_w = (post_w - expected_w).abs();
     let residual_r = (post_r - pre_r).abs();
     // Paired monomers released into daughter free pools at fission — allow that transfer.
     let residual_u_h = (post_u_h - pre_u_h).abs(); // may increase from paired release
