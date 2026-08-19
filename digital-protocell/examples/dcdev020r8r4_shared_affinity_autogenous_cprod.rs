@@ -281,6 +281,41 @@ mod r8r3 {
             && rates.last().unwrap() < &rates[0]
     }
 
+    fn trace_phase(
+        start: &MaterialMesh,
+        law: SourceLaw,
+        mode: ProductionMode,
+        steps: usize,
+        patch: Option<f64>,
+        dose_scale: f64,
+        sustained_feed: bool,
+    ) -> Vec<Snap> {
+        let params = reaction_params(start);
+        let mut mesh = start.clone();
+        let mut region = patch.map(|mass| {
+            FiniteSpatialResourceRegionV1::new(
+                RESOURCE_CENTER,
+                RESOURCE_RADIUS,
+                mass * dose_scale,
+                mass * dose_scale,
+            )
+        });
+        let mut frames = Vec::with_capacity(steps + 1);
+        frames.push(snap(&mesh, 0));
+        for step in 0..steps {
+            if sustained_feed {
+                mesh.interior.n = SUSTAINED_NF;
+                mesh.interior.f = SUSTAINED_NF;
+            }
+            if let Some(resource) = region.as_mut() {
+                resource.uptake(&mut mesh, &TransportParams::default(), DT);
+            }
+            apply_counterfactual(&mut mesh, &params, law, mode);
+            frames.push(snap(&mesh, step + 1));
+        }
+        frames
+    }
+
     fn finite_gate(arm: &Arm) -> bool {
         arm.alive
             && arm.finite
@@ -554,11 +589,17 @@ mod r8r3 {
         let dense = json!({
             "directive": "DC-DEV-020-R8-R4",
             "entry_head": ENTRY,
-            "finite": [finite_current, finite_none, finite_shared],
-            "dose": doses,
-            "sustained_shared": {"candidate": sustained_shared, "frozen_r6_baseline_final_quarter_slope": baseline_slope},
-            "d016_finite": d016_finite,
-            "d016_sustained": d016_shared,
+            "finite_current_trace": trace_phase(&deprived, r6_law, ProductionMode::Current, WINDOW, Some(PATCH), 1.0, false),
+            "finite_none_trace": trace_phase(&deprived, r6_law, ProductionMode::None, WINDOW, Some(PATCH), 1.0, false),
+            "finite_shared_trace": trace_phase(&deprived, r6_law, ProductionMode::SharedAffinity, WINDOW, Some(PATCH), 1.0, false),
+            "dose_traces": [
+                trace_phase(&deprived, r6_law, ProductionMode::SharedAffinity, WINDOW, Some(PATCH), 0.75, false),
+                trace_phase(&deprived, r6_law, ProductionMode::SharedAffinity, WINDOW, Some(PATCH), 1.0, false),
+                trace_phase(&deprived, r6_law, ProductionMode::SharedAffinity, WINDOW, Some(PATCH), 1.25, false)
+            ],
+            "sustained_shared_trace": trace_phase(&deprived, r6_law, ProductionMode::SharedAffinity, 8_000, None, 1.0, true),
+            "d016_sustained_trace": trace_phase(&deprived, SourceLaw::Baseline, ProductionMode::SharedAffinity, 8_000, None, 1.0, true),
+            "summary": {"finite": [finite_current, finite_none, finite_shared], "dose": doses, "sustained_shared": sustained_shared, "d016_finite": d016_finite, "d016_sustained": d016_shared},
             "cycles": cycles,
             "cycle_final_state": cycle_state,
         });
