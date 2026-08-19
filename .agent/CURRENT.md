@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-020-R9`
 - Objective: `Requalify the D-086 material-mesh substrate for strict conservation, observer-only death, and separate material/activation/organized-retained ledgers.`
 - Current status: `VALIDATING`
-- Acceptance: `Local E0-E5 evidence is generated; exact-head remote CI and architect review remain pending.`
+- Acceptance: `Local E0-E5 evidence and exact-head remote CI run 32290370285 are passed; architect review remains pending.`
 - Current phase: `DC-DEV-020-R9 versioned conservative substrate requalification; no new metabolic mechanism, behavior, evolution, or DC-DEV-021 work is authorized.`
 - Expected or actual touched areas: `versioned mesh chemistry, observer-only viability guards, exact stoichiometric/ledger audit, compact E0-E5 evidence, documentation, governance, and scoped CI`
-- Immediate next action: `Run governance validation, preserve the unrelated .gitignore change, commit and push R9, then obtain exact-head CI and architect review.`
+- Immediate next action: `Obtain architect review of the pushed R9 package; no new scientific execution is authorized.`
 
 ## Temporary task-relevant facts
 

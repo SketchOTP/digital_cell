@@ -477,10 +477,10 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - D-088 tests - PASSED (4 tests)
   - phase1-certifier tests - PASSED (4 tests)
   - R9 example/evidence generation - PASSED
-  - exact-head remote CI - PENDING
+  - exact-head remote CI run `32290370285` at head `4c4f88995a4f7e224b6b211580039ade81ad8c9e` - PASSED
   - architect review - PENDING
-- Remaining risks: E5 rows are bounded v2 contract replays and do not overwrite the sealed historical D-015/D-016/R8 protocol artifacts. Full architect acceptance and remote CI remain outstanding. No salvage, controller, behavior, evolution, or DC-DEV-021 work is authorized.
-- Blockers: exact-head remote CI and architect review.
+- Remaining risks: E5 rows are bounded v2 contract replays and do not overwrite the sealed historical D-015/D-016/R8 protocol artifacts. Architect acceptance remains outstanding. No salvage, controller, behavior, evolution, or DC-DEV-021 work is authorized.
+- Blockers: architect review.
 - Follow-up directive: none
 
 ## D-20260819-dcdev020r8r4-shared-affinity-autogenous-cprod - PARTIAL
