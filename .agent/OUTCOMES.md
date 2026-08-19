@@ -825,8 +825,8 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Exact D-015/D-016 replay, 7 rows, zero closure residual, zero reserve rejects - PASSED locally
   - Exact R8-R2 replay under ConservativeV2 compatibility mode - PASSED locally
   - Exact R8-R4 replay under ConservativeV2 compatibility mode - PASSED locally; Gates 0-4 and 7 pass, Gates 5-6 fail with the sealed negative classification
-  - Scoped exact-head remote CI - PENDING
+  - Scoped exact-head remote CI run `32312400733` at head `d26c524c9d813b99c858b2124904214b28cba251` - PASSED; all scoped stages including Exact R8-R4 replay and artifact verification passed
   - Architect review - PENDING
-- Remaining risks: R9-R1 remains unaccepted until exact-head remote CI and independent architect review verify the pushed branch. Historical R9 evidence remains immutable; generic R9 E5 rows are retained as proxy diagnostics and are not represented as exact historical replay evidence. The new R8-R4 replay is compatibility evidence only and does not alter or reopen the accepted R8-R4 result.
-- Blockers: exact-head remote CI and architect review; production integration and DC-DEV-021 remain unauthorized.
+- Remaining risks: R9-R1 remains unaccepted until independent architect review verifies the pushed branch. Historical R9 evidence remains immutable; generic R9 E5 rows are retained as proxy diagnostics and are not represented as exact historical replay evidence. The new R8-R4 replay is compatibility evidence only and does not alter or reopen the accepted R8-R4 result.
+- Blockers: independent architect review; production integration and DC-DEV-021 remain unauthorized.
 - Follow-up directive: none

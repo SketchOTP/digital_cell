@@ -11,7 +11,7 @@
 - External directive ID: `DC-DEV-020-R9-R1`
 - Objective: `Orthogonalize the ConservativeV2 physical/material/death contract from D-091 biological equation identity and requalify the affected D-087 gates with exact D-015/D-016/R8 protocol replays.`
 - Current status: `VALIDATING`
-- Acceptance: `Local R9-R1 evidence is generated and exact-head remote CI plus architect review remain pending.`
+- Acceptance: `Local R9-R1 evidence and exact-head remote CI run 32312400733 at d26c524c9d813b99c858b2124904214b28cba251 are passed; independent architect review remains pending.`
 - Current phase: `DC-DEV-020-R9-R1 observer-only contract requalification; no new metabolic mechanism, behavior, evolution, or DC-DEV-021 work is authorized.`
 - Expected or actual touched areas: `versioned mesh contract metadata, reserve schema composition, reserve-bearing D-087 gates 0-7, exact protocol replay evidence, governance, and scoped CI`
 - Immediate next action: `Run the final scoped suite, commit the exact R8-R4 replay wiring/evidence, push PR #44, and await architect review; no new scientific execution is authorized.`
@@ -33,7 +33,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Governance ADOPTED; R9 mesh-contract tests, D-086/D-088 tests, phase1-certifier tests, R9 evidence runner, and legacy D-087 runtime smoke`
+- Command or check: `Governance ADOPTED; local R9-R1 suites and exact-head remote CI run 32312400733 at d26c524c9d813b99c858b2124904214b28cba251`
 - Result: `PASSED`
 
 ## Risks
@@ -46,7 +46,7 @@
 
 ## Blockers
 
-- Exact-head remote CI and architect review for R9 remain open. No allocator, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
+- Independent architect review for R9 remains open. No allocator, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
 
 ## Pending decisions
 
