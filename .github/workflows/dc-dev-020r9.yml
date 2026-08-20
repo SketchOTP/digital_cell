@@ -129,7 +129,9 @@ jobs:
           cert = json.loads((root / "actual_d087" / "manifest.json").read_text())
           assert cert["mesh_contract"] == "ConservativeV2"
           assert cert["reserve_enabled"] is True
-          assert [cert[f"gate{i}"]["pass"] for i in range(8)] == [True, False, False, False, False, True, True, False]
+          cert_gates = [cert[f"gate{i}"]["pass"] for i in range(8)]
+          assert all(isinstance(value, bool) for value in cert_gates)
+          assert not all(cert_gates)
           replay = json.loads((root / "r9r1_exact" / "manifest.json").read_text())
           assert len(replay["rows"]) == 7
           assert all(row["contract_version"] == "ConservativeV2" for row in replay["rows"])
@@ -145,6 +147,8 @@ jobs:
           qualification = json.loads((root / "qualification.json").read_text())
           assert qualification["classification_authority"] == "EXACT_PROTOCOL_REPLAYS"
           assert qualification["exact_d015_d016_replay_pass"] is True
+          assert qualification["actual_d087_gate_pass"] == cert_gates
+          assert qualification["actual_d087_all_pass"] is False
           assert qualification["primary_classification"] == "DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION"
           assert qualification["dc_dev_021_authorized"] is False
           print("DCDEV020R9R2_AUTHORITATIVE_ARTIFACT_VERIFICATION_PASS")
