@@ -1,0 +1,32 @@
+{
+  "branch": "strategy/dc-dev-020r9-mesh-contract-requalification",
+  "dc_dev_021_authorized": false,
+  "directive": "DC-DEV-020-R9-R3",
+  "h0_hard_stop": "scientific gates 0-6 must pass before V20/H1/V21 execute",
+  "matrix": [
+    {
+      "contract": "HistoricalV1",
+      "id": "H0",
+      "reserve": false
+    },
+    {
+      "contract": "ConservativeV2",
+      "id": "V20",
+      "reserve": false
+    },
+    {
+      "contract": "HistoricalV1",
+      "id": "H1",
+      "reserve": true
+    },
+    {
+      "contract": "ConservativeV2",
+      "id": "V21",
+      "reserve": true
+    }
+  ],
+  "pr": "#44",
+  "r9r2_material_fate_not_rerun": true,
+  "recycling_authorized": false,
+  "starting_head": "904efc95919f67243681d3512fb7b46e0ab85710"
+}

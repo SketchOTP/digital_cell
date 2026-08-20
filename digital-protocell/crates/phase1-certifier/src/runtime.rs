@@ -7,7 +7,20 @@ use std::process::Command;
 use std::time::{Duration, Instant};
 
 use crate::gates::{smoke, steps, D087Conclusion, GateResult};
-use crate::sim::{conservative_v2_enabled, fingerprint, run_coupled, seed_mesh};
+use crate::sim::{conservative_v2_enabled, fingerprint, reserve_enabled, run_coupled, seed_mesh};
+
+fn propagate_mode_env(command: &mut Command) {
+    for key in [
+        "DCDEV020R9R1_V2",
+        "DCDEV020R9R2_V2",
+        "DCDEV020R9R3_CONTRACT",
+        "DCDEV020R9R3_RESERVE",
+    ] {
+        if let Ok(value) = std::env::var(key) {
+            command.env(key, value);
+        }
+    }
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct RuntimeReport {
@@ -40,8 +53,8 @@ pub fn gate7_linux_runtime(repo_root: &Path, out_root: &Path) -> (GateResult, Ru
             "digital-protocell-phase1",
             "--release",
         ]);
-    if conservative_v2_enabled() {
-        build_command.env("DCDEV020R9R2_V2", "1");
+    if conservative_v2_enabled() || reserve_enabled() {
+        propagate_mode_env(&mut build_command);
     }
     let build = build_command
         .current_dir(repo_root.join("digital-protocell"))
@@ -135,8 +148,8 @@ pub fn gate7_linux_runtime(repo_root: &Path, out_root: &Path) -> (GateResult, Ru
     if built && bin_dst.exists() {
         let mut bin_command = Command::new(&bin_dst);
         bin_command.args(["--steps", "50", "--out", &pkg_dir.join("bin_run.json").display().to_string()]);
-        if conservative_v2_enabled() {
-            bin_command.env("DCDEV020R9R2_V2", "1");
+        if conservative_v2_enabled() || reserve_enabled() {
+            propagate_mode_env(&mut bin_command);
         }
         let out = bin_command.output();
         bin_ok = out.map(|o| o.status.success()).unwrap_or(false);

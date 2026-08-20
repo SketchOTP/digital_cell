@@ -39,6 +39,7 @@ jobs:
           crates/chemistry-core/examples/dcdev020r9_mesh_contract_requalification.rs
           examples/dcdev020r9r1_exact_metabolic_replays.rs
           examples/dcdev020r9r2_material_fate_audit.rs
+          crates/phase1-certifier/examples/dcdev020r9r3_conservation_reserve_decomposition.rs
           examples/dcdev020r8r2_catalyst_investment_payback.rs
           examples/dcdev020r8r3_shared_affinity_helper.rs
           examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs
@@ -84,6 +85,11 @@ jobs:
           DCDEV020R9R2_REPLAY_REPORT: experiments/generated/dcdev020r9r2/r9r1_exact/manifest.json
           DCDEV020R9R2_OUTPUT: experiments/generated/dcdev020r9r2
         run: cargo +1.89.0 run -p regulatory-core --example dcdev020r9r2_material_fate_audit --quiet
+      - name: R9-R3 actual D087 contract x reserve matrix
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R3_OUTPUT: experiments/generated/dcdev020r9r3
+        run: cargo +1.89.0 run -p phase1-certifier --example dcdev020r9r3_conservation_reserve_decomposition --quiet
       - name: Exact R8-R2 replay under ConservativeV2
         working-directory: digital-protocell
         run: env DCDEV020R9R1_V2=1 cargo +1.89.0 run -p regulatory-core --example dcdev020r8r2_catalyst_investment_payback --quiet
@@ -153,6 +159,51 @@ jobs:
           assert qualification["dc_dev_021_authorized"] is False
           print("DCDEV020R9R2_AUTHORITATIVE_ARTIFACT_VERIFICATION_PASS")
           PY
+      - name: Verify R9-R3 decomposition artifacts
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r9r3")
+          protocol = json.loads((root / "protocol.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          assert protocol["directive"] == "DC-DEV-020-R9-R3"
+          assert protocol["starting_head"] == "904efc95919f67243681d3512fb7b46e0ab85710"
+          assert [arm["id"] for arm in protocol["matrix"]] == ["H0", "V20", "H1", "V21"]
+          assert qualification["h0_historical_reproduction"] is True
+          assert qualification["h0_hard_stop"] is False
+          assert len(qualification["arms"]) == 4
+          expected = {
+              "h0": ("HistoricalV1", False),
+              "v20": ("ConservativeV2", False),
+              "h1": ("HistoricalV1", True),
+              "v21": ("ConservativeV2", True),
+          }
+          for arm in qualification["arms"]:
+              assert (arm["contract"], arm["reserve"]) == expected[arm["id"]]
+              assert len(arm["gates"]) == 8
+          assert qualification["arms"][0]["scientific_gates_pass"] is True
+          for arm in qualification["arms"][2:]:
+              assert arm["reserve_execution"]["rejected_steps"] == 0
+              assert arm["reserve_execution"]["a_to_r"] > 0
+              assert arm["reserve_execution"]["r_to_a"] > 0
+              assert arm["reserve_execution"]["r_to_w"] > 0
+          assert qualification["r9r2_material_fate_preserved"] is True
+          assert qualification["recycling_authorized"] is False
+          assert qualification["dc_dev_021_authorized"] is False
+          assert qualification["next_execution_started"] is False
+          allowed = {
+              "DCDEV020R9R3_RESERVE_PHYSIOLOGY_CERTIFICATION_GAP_CONFIRMED",
+              "DCDEV020R9R3_CONSERVATIVE_CONTRACT_REGRESSION_CONFIRMED",
+              "DCDEV020R9R3_CONSERVATIVE_RESERVE_INTERACTION_REGRESSION",
+              "DCDEV020R9R3_MIXED_CERTIFICATION_REGRESSION",
+              "DCDEV020R9R3_CERTIFIER_HARNESS_DEFECT",
+          }
+          assert qualification["primary_classification"] in allowed
+          print("DCDEV020R9R3_DECOMPOSITION_ARTIFACT_VERIFICATION_PASS")
+          PY
       - name: Upload compact R9-R2 evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -165,4 +216,17 @@ jobs:
             digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/*/gate*.json
             digital-protocell/experiments/generated/dcdev020r9r2/r9r1_exact/*.json
             !digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/source_audit/**
+          include-hidden-files: false
+      - name: Upload compact R9-R3 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020r9r3-compact-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020r9r3/protocol.json
+            digital-protocell/experiments/generated/dcdev020r9r3/qualification.json
+            digital-protocell/experiments/generated/dcdev020r9r3/matrix/*/manifest.json
+            digital-protocell/experiments/generated/dcdev020r9r3/matrix/*/metric_semantics/audit.json
+            digital-protocell/experiments/generated/dcdev020r9r3/matrix/*/certification/report.json
+            digital-protocell/experiments/generated/dcdev020r9r3/matrix/*/*/gate*.json
           include-hidden-files: false

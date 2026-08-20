@@ -336,3 +336,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R9-R2 observer-only material-fate and certifier requalification; no recycling, source/sink tuning, production integration, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020R9R1-001
+
+## L-DCDEV020R9R3-001
+
+- Learning ID: L-DCDEV020R9R3-001
+- Date: 2026-08-20
+- Fact or lesson: The required contract × reserve decomposition separates the accepted R9-R2 result. HistoricalV1 with reserve OFF reproduces the historical D-087 scientific Gates 0–6, and ConservativeV2 with reserve OFF also passes those scientific gates. Enabling the unchanged D-091 reserve causes both HistoricalV1 and ConservativeV2 to fail Gates 1–4 despite nonzero A→R, R→A, and R→W execution with zero reserve rejects. The fail-closed classification is `DCDEV020R9R3_RESERVE_PHYSIOLOGY_CERTIFICATION_GAP_CONFIRMED`.
+- Evidence location: `digital-protocell/crates/phase1-certifier/examples/dcdev020r9r3_conservation_reserve_decomposition.rs`, `digital-protocell/experiments/generated/dcdev020r9r3/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r3/conservation_reserve_decomposition.md`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R9-R3 observer-only conservation × reserve certification decomposition; no reserve repair, recycling, production integration, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020R9R2-001

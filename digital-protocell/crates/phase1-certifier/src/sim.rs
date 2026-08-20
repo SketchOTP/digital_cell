@@ -12,7 +12,7 @@ use chemistry_core::mesh_transport::{transport_step, TransportParams};
 use chemistry_core::metabolic_reserve::{stamp_reserve_equation, ReserveParams};
 use serde::{Deserialize, Serialize};
 
-use crate::frozen::{frozen_reactions, frozen_transport, FROZEN_CENTER};
+use crate::frozen::{frozen_reactions, frozen_transport, FROZEN_CENTER, FROZEN_SCHEMA};
 use crate::metrics::{replacement_report, retention_report, ReplacementReport, RetentionReport};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -30,6 +30,14 @@ pub struct AccumLedger {
     pub c_turned: f64,
     pub l_produced: f64,
     pub a_produced: f64,
+    #[serde(default)]
+    pub reserve_a_to_r: f64,
+    #[serde(default)]
+    pub reserve_r_to_a: f64,
+    #[serde(default)]
+    pub reserve_r_to_w: f64,
+    #[serde(default)]
+    pub reserve_rejected_steps: u64,
 }
 
 impl AccumLedger {
@@ -42,6 +50,10 @@ impl AccumLedger {
         self.c_turned += r.c_turned;
         self.l_produced += r.l_produced;
         self.a_produced += r.a_produced;
+        self.reserve_a_to_r += r.reserve.a_to_r;
+        self.reserve_r_to_a += r.reserve.r_to_a;
+        self.reserve_r_to_w += r.reserve.r_to_w;
+        self.reserve_rejected_steps += r.reserve.rejected_steps;
     }
 }
 
@@ -98,27 +110,65 @@ pub fn seed_mesh(radius: f64, seed: u64) -> MaterialMesh {
         exterior,
         5.0,
     );
-    if conservative_v2_enabled() {
+    if reserve_enabled() {
         stamp_reserve_equation(&mut mesh);
+    }
+    if conservative_v2_enabled() {
         mesh.stamp_conservative_schema();
     }
     mesh
 }
 
-/// Explicit R9-R2 opt-in. The default certifier path remains the frozen V1
-/// candidate and is unchanged when this variable is absent.
+/// Select the physical/material contract for the observer-only R9 matrix.
+///
+/// The R9-R3 selector is deliberately independent from reserve selection. The
+/// older R9-R2 switch remains supported so historical workflows retain their
+/// exact behavior when the new selectors are absent.
 pub fn conservative_v2_enabled() -> bool {
-    std::env::var("DCDEV020R9R2_V2").as_deref() == Ok("1")
+    match std::env::var("DCDEV020R9R3_CONTRACT").ok().as_deref() {
+        Some("ConservativeV2") => true,
+        Some("HistoricalV1") => false,
+        Some(_) => false,
+        None => std::env::var("DCDEV020R9R2_V2").as_deref() == Ok("1"),
+    }
+}
+
+/// Select D-091 reserve physiology independently from the material contract.
+pub fn reserve_enabled() -> bool {
+    match std::env::var("DCDEV020R9R3_RESERVE").ok().as_deref() {
+        Some("1") | Some("on") | Some("ON") | Some("true") => true,
+        Some("0") | Some("off") | Some("OFF") | Some("false") => false,
+        Some(_) => false,
+        None => conservative_v2_enabled(),
+    }
+}
+
+pub fn contract_label() -> &'static str {
+    if conservative_v2_enabled() {
+        "ConservativeV2"
+    } else {
+        "HistoricalV1"
+    }
+}
+
+pub fn equation_lineage() -> &'static str {
+    if reserve_enabled() {
+        chemistry_core::metabolic_reserve::EQUATION_VERSION_METABOLIC_RESERVE
+    } else {
+        FROZEN_SCHEMA
+    }
 }
 
 pub fn reaction_params_for(mesh: &MaterialMesh) -> ReactionParams {
-    if conservative_v2_enabled() {
-        let mut params = ReactionParams::conservative_v2();
-        params.reserve = ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area());
-        params
+    let mut params = if conservative_v2_enabled() {
+        ReactionParams::conservative_v2()
     } else {
         frozen_reactions()
+    };
+    if reserve_enabled() {
+        params.reserve = ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area());
     }
+    params
 }
 
 /// Lawful perturbation of a seeded mesh (deterministic path for Gate 3).

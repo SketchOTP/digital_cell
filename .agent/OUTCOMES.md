@@ -850,3 +850,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: The ConservativeV2+D-091 certifier regression is not localized to a new biology claim by this directive. No tuning, gate weakening, or production integration is authorized. Existing R9-R1 and prior evidence remain preserved.
 - Blockers: exact-head remote CI and independent architect review; DC-DEV-021 remains unauthorized.
 - Follow-up directive: none
+
+## D-20260820-dcdev020r9r3-conservation-reserve-decomposition - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R3-RESERVE-PHYSIOLOGY-CERTIFICATION-GAP`
+- Supersedes outcome: `OUT-DCDEV020R9R2-CONSERVATIVE-CERTIFICATION-REGRESSION`
+- Closed: `2026-08-20T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The actual D-087 certifier was run in the required H0/V20/H1/V21 matrix. H0 HistoricalV1 plus reserve OFF reproduced the historical scientific result through Gates 0–6 (`R_m=1.0180981834599838`, `R_b=5.818353471059928`, `R_C=1.446090001246529`). V20 ConservativeV2 plus reserve OFF also passed Gates 0–6. Both reserve-enabled arms failed Gates 1–4 while recording nonzero A→R, R→A, and R→W flows with zero reserve rejects. Classification: `DCDEV020R9R3_RESERVE_PHYSIOLOGY_CERTIFICATION_GAP_CONFIRMED`. Local Windows packaging did not qualify Gate 7; exact remote Linux CI remains authoritative.
+- Changed areas: orthogonal phase1-certifier contract/reserve selectors, actual four-arm certifier runner, reserve execution ledger, compact evidence, scoped workflow, documentation, and governance. Certified Phase-1 equations, production chemistry, production behavior, recycling, and DC-DEV-021 were not changed.
+- Validation:
+  - Sanctioned Rust 1.89.0 compile/check for the R9-R3 runner - PASSED
+  - Smoke run stopped at the required H0 hard stop - PASSED as non-authoritative smoke behavior
+  - Full local H0/V20/H1/V21 actual-certifier matrix - COMPLETED
+  - H0 and V20 scientific Gates 0–6 - PASSED
+  - H1 and V21 reserve execution - nonzero flows, zero rejects; scientific Gates 1–4 failed as expected for the diagnostic
+  - R9-R2 compact material-fate preservation predicate - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: This local result diagnoses a reserve-physiology certification gap but does not distinguish which reserve sub-behavior requires repair. No reserve tuning, recycling, source/sink change, production integration, or DC-DEV-021 work is authorized.
+- Blockers: exact-head remote CI and independent architect review; DC-DEV-021 remains unauthorized.
+- Follow-up directive: none

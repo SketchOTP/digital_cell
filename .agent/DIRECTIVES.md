@@ -458,3 +458,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260819-dcdev020r9r1-mesh-contract-requalification
 - Status at issuance: ISSUED
+
+## D-20260820-dcdev020r9r3-conservation-reserve-decomposition
+
+- Issued: `2026-08-20T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R9-R3`
+- Objective: Decompose the accepted R9-R2 ConservativeV2 plus D-091 reserve certification regression across independent contract and reserve axes using the actual D-087 Gates 0–7 certifier.
+- Scope: Exact entry `904efc95919f67243681d3512fb7b46e0ab85710`, PR #44, HistoricalV1/ConservativeV2 × reserve-off/on matrix, H0 historical positive control, metric-level differential attribution, reserve execution proof, R9-R2 material-fate preservation, compact evidence, governance, preservation, and scoped CI.
+- Exclusions: Organism kinetic or reserve parameter changes, threshold weakening, production chemistry repair, recycling/salvage, source/sink/resource/transport changes, behavior, evolution, and DC-DEV-021.
+- Acceptance: Valid H0 historical reproduction, complete four-arm actual-certifier matrix or immediate H0 hard stop, one authorized causal classification, exact-head remote CI, preserved R9-R2 evidence, and architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260819-dcdev020r9r2-material-fate-requalification
+- Status at issuance: ISSUED
