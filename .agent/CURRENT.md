@@ -34,7 +34,7 @@
 ## Last validation after adoption
 
 - Command or check: `Exact-head scoped DC-DEV-020-R9 CI run 32421756950 at 6a266514fcb616084ea43be42ff726c4c51dec0e; actual H0/V20/H1/V21 certifier matrix and artifact verification`
-- Result: `PASSED; compact R9-R3 artifact SHA-256 951fb0f5bc79ab70dc2d50d614c3ca43520069eb8a73360817f01951b2ecfbdf`
+- Result: `PASSED`
 
 ## Risks
 
