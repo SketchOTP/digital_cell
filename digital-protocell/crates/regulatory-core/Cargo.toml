@@ -119,3 +119,7 @@ path = "../../examples/dcdev020r8r5r1_net_allocation_drift.rs"
 [[example]]
 name = "dcdev020r9r1_exact_metabolic_replays"
 path = "../../examples/dcdev020r9r1_exact_metabolic_replays.rs"
+
+[[example]]
+name = "dcdev020r9r2_material_fate_audit"
+path = "../../examples/dcdev020r9r2_material_fate_audit.rs"

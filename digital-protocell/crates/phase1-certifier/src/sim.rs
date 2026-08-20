@@ -9,6 +9,7 @@ use chemistry_core::mesh_reactions::{
     tracer_structural_fraction, try_local_rebond, ReactionLedger, ReactionParams,
 };
 use chemistry_core::mesh_transport::{transport_step, TransportParams};
+use chemistry_core::metabolic_reserve::{stamp_reserve_equation, ReserveParams};
 use serde::{Deserialize, Serialize};
 
 use crate::frozen::{frozen_reactions, frozen_transport, FROZEN_CENTER};
@@ -86,7 +87,7 @@ pub fn seed_mesh(radius: f64, seed: u64) -> MaterialMesh {
             k_r: 0.0,
             k_node_b: 0.0,
         };
-    MaterialMesh::seed_regular(
+    let mut mesh = MaterialMesh::seed_regular(
         n,
         radius,
         40.0,
@@ -96,7 +97,28 @@ pub fn seed_mesh(radius: f64, seed: u64) -> MaterialMesh {
         interior,
         exterior,
         5.0,
-    )
+    );
+    if conservative_v2_enabled() {
+        stamp_reserve_equation(&mut mesh);
+        mesh.stamp_conservative_schema();
+    }
+    mesh
+}
+
+/// Explicit R9-R2 opt-in. The default certifier path remains the frozen V1
+/// candidate and is unchanged when this variable is absent.
+pub fn conservative_v2_enabled() -> bool {
+    std::env::var("DCDEV020R9R2_V2").as_deref() == Ok("1")
+}
+
+pub fn reaction_params_for(mesh: &MaterialMesh) -> ReactionParams {
+    if conservative_v2_enabled() {
+        let mut params = ReactionParams::conservative_v2();
+        params.reserve = ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area());
+        params
+    } else {
+        frozen_reactions()
+    }
 }
 
 /// Lawful perturbation of a seeded mesh (deterministic path for Gate 3).
@@ -173,7 +195,7 @@ pub fn run_coupled(
     metab: bool,
 ) -> AccumLedger {
     let mech = FROZEN_CENTER;
-    let react = frozen_reactions();
+    let react = reaction_params_for(mesh);
     let transport = frozen_transport();
     let mut acc = AccumLedger::default();
     for _ in 0..steps {
@@ -214,7 +236,7 @@ pub fn audit_turnover(steps: usize) -> TurnoverAudit {
     let mut mass_c = Vec::new();
     let mut acc = AccumLedger::default();
     let mech = FROZEN_CENTER;
-    let react = frozen_reactions();
+    let react = reaction_params_for(&mesh);
     let transport = frozen_transport();
     for _ in 0..steps {
         if !mesh.can_advance_physics() {

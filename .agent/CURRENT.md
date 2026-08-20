@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260819-dcdev020r9r1-mesh-contract-requalification`
-- External directive ID: `DC-DEV-020-R9-R1`
-- Objective: `Orthogonalize the ConservativeV2 physical/material/death contract from D-091 biological equation identity and requalify the affected D-087 gates with exact D-015/D-016/R8 protocol replays.`
+- Local directive ID: `D-20260819-dcdev020r9r2-material-fate-requalification`
+- External directive ID: `DC-DEV-020-R9-R2`
+- Objective: `Use exact ConservativeV2 D-015/D-016 replays, complete material-fate accounting, and run the actual D-087 Gates 0–7 certifier under ConservativeV2 with D-091 reserve composition.`
 - Current status: `VALIDATING`
-- Acceptance: `Local R9-R1 evidence and exact-head remote CI run 32313240060 at 885a1cbe5b713b17a3eb2090938b3b7890c91fcc are passed; independent architect review remains pending.`
-- Current phase: `DC-DEV-020-R9-R1 observer-only contract requalification; no new metabolic mechanism, behavior, evolution, or DC-DEV-021 work is authorized.`
-- Expected or actual touched areas: `versioned mesh contract metadata, reserve schema composition, reserve-bearing D-087 gates 0-7, exact protocol replay evidence, governance, and scoped CI`
-- Immediate next action: `Run the final scoped suite, commit the exact R8-R4 replay wiring/evidence, push PR #44, and await architect review; no new scientific execution is authorized.`
+- Acceptance: `Local R9-R2 evidence is fail-closed at ConservativeV2 certifier result 3/8 with classification DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION; architect review remains pending.`
+- Current phase: `DC-DEV-020-R9-R2 observer-only material-fate and certifier requalification; no new metabolic mechanism, behavior, evolution, recycling, or DC-DEV-021 work is authorized.`
+- Expected or actual touched areas: `observer-only reaction ledger accounting, actual ConservativeV2+D-091 certifier launcher, exact D-015/D-016 replay evidence, material-fate/sustained evidence, governance, and scoped CI`
+- Immediate next action: `Run the final scoped suite, commit and push the R9-R2 package on PR #44, and await architect review; do not begin DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -33,18 +33,20 @@
 
 ## Last validation after adoption
 
-- Command or check: `Governance ADOPTED; local R9-R1 suites and exact-head remote CI run 32313240060 at 885a1cbe5b713b17a3eb2090938b3b7890c91fcc`
-- Result: `PASSED`
+- Command or check: `Governance ADOPTED; actual ConservativeV2+D-091 D-087 certifier and R9-R2 exact replay/material-fate runners`
+- Result: `FAILED`
 
 ## Risks
 
 - Atlas has no Rust toolchain; local sanctioned Rust 1.89.0 is used with the Atlas worktree mounted through SSHFS and a local NTFS target directory.
 - The frozen substrate remains local, isotropic, passive, and reaction-only; no DC-DEV-010 directional substrate code may enter this branch.
 - DC-DEV-012 is closed as valid negative evidence and is not imported.
-- R9-R1 correction: ConservativeV2 is now an orthogonal physical/material/death contract; D-091 remains the biological equation lineage. The old R9 final classification was not architect-accepted because D-091 reserve composition and exact historical replay semantics were not yet proven.
+- R9-R2 correction: the actual D-087 certifier, not an R9 facsimile, is classification authority. ConservativeV2 remains an orthogonal physical/material/death contract; D-091 remains the biological equation lineage. The actual 3/8 result is a certification regression and must not be tuned around.
 - R9-R1 exact artifacts are under `digital-protocell/experiments/generated/dcdev020r9r1/`; R8-R2 and R8-R4 dense frames remain externalized and their compact manifests record ConservativeV2 replay mode. R8-R4 is a bounded negative replay (`DCDEV020R8R4_SHARED_AFFINITY_NO_STABLE_HOMEOSTASIS`).
 
 ## Blockers
+
+- R9-R2 independent architect review remains open; the actual ConservativeV2+D-091 certifier is 3/8 and classification is fail-closed. No DC-DEV-021 is authorized.
 
 - Independent architect review for R9 remains open. No allocator, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
 

@@ -1,0 +1,27 @@
+{
+  "actual_d087_all_pass": false,
+  "actual_d087_gate_pass": [
+    true,
+    false,
+    false,
+    false,
+    false,
+    true,
+    true,
+    false
+  ],
+  "architect_acceptance": "PENDING",
+  "classification_authority": "EXACT_PROTOCOL_REPLAYS",
+  "dc_dev_021_authorized": false,
+  "exact_d015_d016_replay_pass": true,
+  "exact_d016_activation_nonnegative": true,
+  "exact_d016_fate_reconciles": true,
+  "exact_d016_organized_negative": true,
+  "exact_d016_strict_closure": true,
+  "next_execution_started": false,
+  "next_loss_route": "CATALYST_DOMINANT",
+  "primary_classification": "DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION",
+  "production_behavior_changed": false,
+  "production_chemistry_changed": false,
+  "sustained_organized_decline_all_arms": true
+}

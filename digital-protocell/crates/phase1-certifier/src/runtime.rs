@@ -7,7 +7,7 @@ use std::process::Command;
 use std::time::{Duration, Instant};
 
 use crate::gates::{smoke, steps, D087Conclusion, GateResult};
-use crate::sim::{fingerprint, run_coupled, seed_mesh};
+use crate::sim::{conservative_v2_enabled, fingerprint, run_coupled, seed_mesh};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct RuntimeReport {
@@ -31,15 +31,19 @@ pub fn gate7_linux_runtime(repo_root: &Path, out_root: &Path) -> (GateResult, Ru
     let _ = fs::create_dir_all(&pkg_dir);
 
     // Build the runtime binary if possible.
-    let build = Command::new("cargo")
-        .args([
+    let mut build_command = Command::new("cargo");
+    build_command.args([
             "build",
             "-p",
             "phase1-certifier",
             "--bin",
             "digital-protocell-phase1",
             "--release",
-        ])
+        ]);
+    if conservative_v2_enabled() {
+        build_command.env("DCDEV020R9R2_V2", "1");
+    }
+    let build = build_command
         .current_dir(repo_root.join("digital-protocell"))
         .output();
     let built = build
@@ -129,9 +133,12 @@ pub fn gate7_linux_runtime(repo_root: &Path, out_root: &Path) -> (GateResult, Ru
     // External binary smoke if built
     let mut bin_ok = !built; // if not built, don't fail solely on package (science path)
     if built && bin_dst.exists() {
-        let out = Command::new(&bin_dst)
-            .args(["--steps", "50", "--out", &pkg_dir.join("bin_run.json").display().to_string()])
-            .output();
+        let mut bin_command = Command::new(&bin_dst);
+        bin_command.args(["--steps", "50", "--out", &pkg_dir.join("bin_run.json").display().to_string()]);
+        if conservative_v2_enabled() {
+            bin_command.env("DCDEV020R9R2_V2", "1");
+        }
+        let out = bin_command.output();
         bin_ok = out.map(|o| o.status.success()).unwrap_or(false);
     }
 

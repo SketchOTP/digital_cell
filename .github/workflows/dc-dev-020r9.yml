@@ -34,12 +34,15 @@ jobs:
           crates/chemistry-core/src/material_mesh.rs
           crates/chemistry-core/src/mesh_topology.rs
           crates/chemistry-core/src/metabolic_reserve.rs
+          crates/chemistry-core/src/mesh_reactions.rs
           crates/chemistry-core/src/d020r9_analysis.rs
           crates/chemistry-core/examples/dcdev020r9_mesh_contract_requalification.rs
           examples/dcdev020r9r1_exact_metabolic_replays.rs
+          examples/dcdev020r9r2_material_fate_audit.rs
           examples/dcdev020r8r2_catalyst_investment_payback.rs
           examples/dcdev020r8r3_shared_affinity_helper.rs
           examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs
+          crates/phase1-certifier/src/bin/phase1_certification.rs
       - name: R9 contract tests
         working-directory: digital-protocell
         run: cargo +1.89.0 test -p chemistry-core --lib mesh_contracts -- --nocapture
@@ -61,6 +64,26 @@ jobs:
       - name: Exact D-015 and D-016 replay
         working-directory: digital-protocell
         run: cargo +1.89.0 run -p regulatory-core --example dcdev020r9r1_exact_metabolic_replays --quiet
+      - name: R9-R2 exact D-015 and D-016 replay
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R1_REPLAY_OUTPUT: experiments/generated/dcdev020r9r2/r9r1_exact
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev020r9r1_exact_metabolic_replays --quiet
+      - name: R9-R2 actual D087 ConservativeV2 certifier
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R2_V2: '1'
+        run: >-
+          cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --quiet --
+          --output experiments/generated/dcdev020r9r2/actual_d087
+      - name: R9-R2 material-fate and sustained audit
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R2_V2: '1'
+          DCDEV020R9R2_CERTIFIER_REPORT: experiments/generated/dcdev020r9r2/actual_d087/manifest.json
+          DCDEV020R9R2_REPLAY_REPORT: experiments/generated/dcdev020r9r2/r9r1_exact/manifest.json
+          DCDEV020R9R2_OUTPUT: experiments/generated/dcdev020r9r2
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev020r9r2_material_fate_audit --quiet
       - name: Exact R8-R2 replay under ConservativeV2
         working-directory: digital-protocell
         run: env DCDEV020R9R1_V2=1 cargo +1.89.0 run -p regulatory-core --example dcdev020r8r2_catalyst_investment_payback --quiet
@@ -95,3 +118,47 @@ jobs:
           assert matrix["all_pass"] is True
           print("DCDEV020R9R1_REPLAY_AND_D087_GATE_VERIFICATION_PASS")
           PY
+      - name: Verify R9-R2 authoritative artifacts
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r9r2")
+          cert = json.loads((root / "actual_d087" / "manifest.json").read_text())
+          assert cert["mesh_contract"] == "ConservativeV2"
+          assert cert["reserve_enabled"] is True
+          assert [cert[f"gate{i}"]["pass"] for i in range(8)] == [True, False, False, False, False, True, True, False]
+          replay = json.loads((root / "r9r1_exact" / "manifest.json").read_text())
+          assert len(replay["rows"]) == 7
+          assert all(row["contract_version"] == "ConservativeV2" for row in replay["rows"])
+          assert all(row["result"]["closure_residual"] <= 1e-9 for row in replay["rows"])
+          fate = json.loads((root / "material_fate.json").read_text())
+          finite = fate["finite_d016"]
+          assert finite["organized_reconciliation_residual"] <= 1e-8
+          assert finite["closure_residual"] <= 1e-8
+          assert finite["fate"]["a_to_c"] >= 0
+          assert finite["fate"]["c_to_w"] >= 0
+          assert finite["fate"]["r_to_w"] >= 0
+          assert all(run["final_quarter_organized_slope"] < 0 for run in fate["sustained"].values())
+          qualification = json.loads((root / "qualification.json").read_text())
+          assert qualification["classification_authority"] == "EXACT_PROTOCOL_REPLAYS"
+          assert qualification["exact_d015_d016_replay_pass"] is True
+          assert qualification["primary_classification"] == "DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION"
+          assert qualification["dc_dev_021_authorized"] is False
+          print("DCDEV020R9R2_AUTHORITATIVE_ARTIFACT_VERIFICATION_PASS")
+          PY
+      - name: Upload compact R9-R2 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020r9r2-compact-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020r9r2/*.json
+            digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/manifest.json
+            digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/certification/report.json
+            digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/*/gate*.json
+            digital-protocell/experiments/generated/dcdev020r9r2/r9r1_exact/*.json
+            !digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/source_audit/**
+          include-hidden-files: false

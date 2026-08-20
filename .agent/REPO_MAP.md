@@ -99,6 +99,11 @@
 - `digital-protocell/examples/dcdev020r8r2_catalyst_investment_payback.rs` — preserved R8-R2 machinery with explicit R9-R1 ConservativeV2 compatibility mode.
 - `digital-protocell/experiments/generated/dcdev020r9r1/` — R9-R1 compact mesh-contract, exact metabolic replay, and exact R8 compatibility evidence.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r1/` — R9-R1 protocol, provenance, and pending-acceptance documentation.
+- `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs` — observer-only direct A-decay accounting used by the R9-R2 material-fate ledger.
+- `digital-protocell/crates/phase1-certifier/src/bin/phase1_certification.rs` — direct actual D-087 Gates 0–7 launcher with ConservativeV2+D-091 mode selection.
+- `digital-protocell/examples/dcdev020r9r2_material_fate_audit.rs` — exact D-015/D-016 material-fate and sustained-trajectory observer runner.
+- `digital-protocell/experiments/generated/dcdev020r9r2/` — compact R9-R2 certifier, replay, fate, qualification, protocol, and manifest evidence.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r2/` — R9-R2 material-fate and certifier requalification documentation.
 
 ## External integration points
 

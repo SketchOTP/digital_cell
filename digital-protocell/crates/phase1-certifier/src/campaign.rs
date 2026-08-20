@@ -11,6 +11,7 @@ use crate::gates::{
     gate5_ablations, gate6_damage_generalization, smoke, D087Conclusion, GateResult,
 };
 use crate::runtime::{gate7_linux_runtime, RuntimeReport};
+use crate::sim::conservative_v2_enabled;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CertificationReport {
@@ -35,6 +36,9 @@ pub struct CertificationReport {
     pub production_verdict: String,
     pub elapsed_secs: f64,
     pub artifact_root: String,
+    pub mesh_contract: String,
+    pub equation_lineage: String,
+    pub reserve_enabled: bool,
 }
 
 fn write_json(path: &Path, v: &impl Serialize) -> Result<(), String> {
@@ -207,6 +211,17 @@ pub fn run_certification(repo_root: &Path, out_root: &Path) -> Result<Certificat
         production_verdict: production,
         elapsed_secs: t0.elapsed().as_secs_f64(),
         artifact_root: out_root.display().to_string(),
+        mesh_contract: if conservative_v2_enabled() {
+            "ConservativeV2".into()
+        } else {
+            "HistoricalV1".into()
+        },
+        equation_lineage: if conservative_v2_enabled() {
+            chemistry_core::metabolic_reserve::EQUATION_VERSION_METABOLIC_RESERVE.into()
+        } else {
+            crate::frozen::FROZEN_SCHEMA.into()
+        },
+        reserve_enabled: conservative_v2_enabled(),
     };
     write_json(&out_root.join("certification/report.json"), &report)?;
     write_json(&out_root.join("manifest.json"), &report)?;

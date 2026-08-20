@@ -125,6 +125,9 @@ pub struct ReactionLedger {
     pub c_produced: f64,
     /// Observer/accounting: catalyst turned over.
     pub c_turned: f64,
+    /// Observer/accounting: activated material decayed directly to waste.
+    #[serde(default)]
+    pub a_decayed: f64,
     /// Observer/accounting: free membrane L produced from A.
     pub l_produced: f64,
     #[serde(default)]
@@ -281,6 +284,7 @@ pub fn reactions_step(
         };
         mesh.interior.a = (mesh.interior.a - a_dec).max(0.0);
         mesh.interior.w += a_dec;
+        led.a_decayed += a_dec * area;
         led.w_produced += a_dec * area;
 
         // D-091 metabolic reserve: A↔R store/release and R→W loss (before A→L).

@@ -830,3 +830,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: R9-R1 remains unaccepted until independent architect review verifies the pushed branch. Historical R9 evidence remains immutable; generic R9 E5 rows are retained as proxy diagnostics and are not represented as exact historical replay evidence. The new R8-R4 replay is compatibility evidence only and does not alter or reopen the accepted R8-R4 result.
 - Blockers: independent architect review; production integration and DC-DEV-021 remain unauthorized.
 - Follow-up directive: none
+
+## D-20260819-dcdev020r9r2-material-fate-requalification - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R2-CONSERVATIVE-CERTIFICATION-REGRESSION`
+- Supersedes outcome: `OUT-DCDEV020R9R1-MESH-CONTRACT-ORTHOGONALIZATION`
+- Closed: `2026-08-19T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The exact ConservativeV2 D-015/D-016 replay and the R9-R2 material-fate ledger close numerically, but the actual D-087 Phase-1 certifier under ConservativeV2+D-091 reserve passes only 3/8 gates. Gates 0, 5, and 6 pass; Gates 1, 2, 3, 4, and 7 fail. The fail-closed classification is `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`.
+- Changed areas: observer-only direct A-decay accounting, actual ConservativeV2+D-091 certifier launcher, exact replay/fate runner, compact evidence, documentation, governance, and scoped CI. No certified Phase-1 equation, production behavior, recycling law, source/sink law, or DC-DEV-021 work changed.
+- Validation:
+  - Local sanctioned Rust 1.89.0 compile for the certifier launcher and R9-R2 example - PASSED
+  - Actual D-087 Gates 0–7 under ConservativeV2+D-091 - COMPLETED 3/8; fail-closed regression
+  - Exact D-015/D-016 replay - 7 rows, zero reserve rejects, zero closure residual - PASSED
+  - D-016 finite fate closure - PASSED; closure `4.263256414560601e-14`, organized reconciliation `3.552713678800501e-14`
+  - Four 8,000-step sustained arms - PASSED as evidence generation; all final-quarter organized slopes negative
+  - Scoped exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The ConservativeV2+D-091 certifier regression is not localized to a new biology claim by this directive. No tuning, gate weakening, or production integration is authorized. Existing R9-R1 and prior evidence remain preserved.
+- Blockers: exact-head remote CI and independent architect review; DC-DEV-021 remains unauthorized.
+- Follow-up directive: none

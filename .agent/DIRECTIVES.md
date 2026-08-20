@@ -444,3 +444,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260819-dcdev020r9r2-material-fate-requalification
+
+- Issued: `2026-08-19T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R9-R2`
+- Objective: Use exact ConservativeV2 D-015/D-016 replays, full material-fate accounting, sustained trajectories, and the actual D-087 Gates 0–7 certifier under ConservativeV2 with D-091 reserve composition.
+- Scope: Entry `364599aea8d4a0def3964b1b299fe45edaaaa1b3`, PR #44, observer-only reaction accounting, actual certifier launcher, compact exact replay/fate evidence, governance, preservation, and scoped CI.
+- Exclusions: Recycling implementation, source/sink/transport changes, reserve tuning, certified biology changes, behavior, evolution, DC-DEV-021, and gate weakening.
+- Acceptance: One fail-closed R9-R2 classification based on exact replay/sustained evidence and actual D-087 certifier, exact-head remote CI, preservation, and architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260819-dcdev020r9r1-mesh-contract-requalification
+- Status at issuance: ISSUED

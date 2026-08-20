@@ -224,6 +224,7 @@ fn seed() -> MaterialMesh {
 
 fn conservative_v2_enabled() -> bool {
     std::env::var("DCDEV020R9R1_V2").as_deref() == Ok("1")
+        || std::env::var("DCDEV020R9R2_V2").as_deref() == Ok("1")
 }
 
 fn reaction_params(mesh: &MaterialMesh) -> ReactionParams {

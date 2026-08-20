@@ -326,3 +326,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R9-R1 observer-only contract requalification; exact-head CI and architect review pending.
 - Supersedes learning: L-DCDEV020R9-001
+
+## L-DCDEV020R9R2-001
+
+- Learning ID: L-DCDEV020R9R2-001
+- Date: 2026-08-19
+- Fact or lesson: The actual D-087 certifier is the R9-R2 authority. Under ConservativeV2 with D-091 reserve composition it completed but passed only Gates 0, 5, and 6 (`3/8`), so the result must classify fail-closed as `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`. Exact D-015/D-016 replay closure and sustained material-fate slopes remain valid observer evidence, not permission to tune or integrate a mechanism.
+- Evidence location: `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs`, `digital-protocell/crates/phase1-certifier/`, `digital-protocell/examples/dcdev020r9r2_material_fate_audit.rs`, `digital-protocell/experiments/generated/dcdev020r9r2/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r2/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R9-R2 observer-only material-fate and certifier requalification; no recycling, source/sink tuning, production integration, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020R9R1-001
