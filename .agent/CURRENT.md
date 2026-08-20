@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-020-R9-R2`
 - Objective: `Use exact ConservativeV2 D-015/D-016 replays, complete material-fate accounting, and run the actual D-087 Gates 0–7 certifier under ConservativeV2 with D-091 reserve composition.`
 - Current status: `VALIDATING`
-- Acceptance: `Local R9-R2 evidence is fail-closed at ConservativeV2 certifier result 3/8 with classification DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION; architect review remains pending.`
+- Acceptance: `Local and exact-head remote R9-R2 evidence are fail-closed at ConservativeV2 certifier result 3/8 with classification DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION; remote CI run 32317704754 passed at head b6633d99d0f8baa7faae6d569215ec8d7ff9c8cd; architect review remains pending.`
 - Current phase: `DC-DEV-020-R9-R2 observer-only material-fate and certifier requalification; no new metabolic mechanism, behavior, evolution, recycling, or DC-DEV-021 work is authorized.`
 - Expected or actual touched areas: `observer-only reaction ledger accounting, actual ConservativeV2+D-091 certifier launcher, exact D-015/D-016 replay evidence, material-fate/sustained evidence, governance, and scoped CI`
-- Immediate next action: `Run the final scoped suite, commit and push the R9-R2 package on PR #44, and await architect review; do not begin DC-DEV-021.`
+- Immediate next action: `Await independent architect review of PR #44; do not begin DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -34,7 +34,7 @@
 ## Last validation after adoption
 
 - Command or check: `Governance ADOPTED; actual ConservativeV2+D-091 D-087 certifier and R9-R2 exact replay/material-fate runners`
-- Result: `FAILED`
+- Result: `PASSED`
 
 ## Risks
 

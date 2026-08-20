@@ -25,7 +25,7 @@ organized-material reconciliation are recorded independently.
 ## Actual certifier result
 
 The actual Phase-1 certifier launcher ran Gates 0–7 under ConservativeV2 with
-D-091 reserve enabled. The result was `3/8` gates passing:
+D-091 reserve enabled. The direct local invocation was `3/8` gates passing:
 
 ```text
 Gate 0 PASS
@@ -42,6 +42,12 @@ This is a certification regression, not a reason to tune biology or weaken a
 gate. The fail-closed R9-R2 classification is therefore:
 
 `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`
+
+The exact-head PR artifact from remote CI run `32317704754` also reports `3/8`
+with gate vector `[false, false, false, false, false, true, true, true]` and
+the merge-checkout conclusion `D087_SOURCE_OR_ARTIFACT_INTEGRITY_FAILURE`.
+This differs from the direct local vector only because the remote workflow
+checks out the PR merge ref; it does not alter the fail-closed classification.
 
 ## Exact replay and sustained observations
 
@@ -80,6 +86,11 @@ Compact authoritative artifacts are written under
 
 No dense raw ledger is introduced. Existing R9-R1 and earlier evidence remain
 preserved.
+
+Remote verification: all 21 scoped workflow steps passed at head
+`b6633d99d0f8baa7faae6d569215ec8d7ff9c8cd`. The uploaded compact artifact
+`dcdev020r9r2-compact-evidence` has SHA-256
+`c5de085cffceff448a7dbe20f5f8280a973700ecbf800da6b11ac19cc09e65ea`.
 
 ## Governance disposition
 

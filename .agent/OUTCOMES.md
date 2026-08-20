@@ -837,7 +837,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Supersedes outcome: `OUT-DCDEV020R9R1-MESH-CONTRACT-ORTHOGONALIZATION`
 - Closed: `2026-08-19T00:00:00-04:00`
 - Acceptance: `PARTIAL`
-- Summary: The exact ConservativeV2 D-015/D-016 replay and the R9-R2 material-fate ledger close numerically, but the actual D-087 Phase-1 certifier under ConservativeV2+D-091 reserve passes only 3/8 gates. Gates 0, 5, and 6 pass; Gates 1, 2, 3, 4, and 7 fail. The fail-closed classification is `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`.
+- Summary: The exact ConservativeV2 D-015/D-016 replay and the R9-R2 material-fate ledger close numerically, but the actual D-087 Phase-1 certifier under ConservativeV2+D-091 reserve passes only 3/8 gates. The direct local invocation has gates 0, 5, and 6 passing; the exact-head PR artifact has gates 5, 6, and 7 passing and reports a source/artifact integrity conclusion. Both are fail-closed as `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`.
 - Changed areas: observer-only direct A-decay accounting, actual ConservativeV2+D-091 certifier launcher, exact replay/fate runner, compact evidence, documentation, governance, and scoped CI. No certified Phase-1 equation, production behavior, recycling law, source/sink law, or DC-DEV-021 work changed.
 - Validation:
   - Local sanctioned Rust 1.89.0 compile for the certifier launcher and R9-R2 example - PASSED
@@ -845,7 +845,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Exact D-015/D-016 replay - 7 rows, zero reserve rejects, zero closure residual - PASSED
   - D-016 finite fate closure - PASSED; closure `4.263256414560601e-14`, organized reconciliation `3.552713678800501e-14`
   - Four 8,000-step sustained arms - PASSED as evidence generation; all final-quarter organized slopes negative
-  - Scoped exact-head remote CI - PENDING
+  - Scoped exact-head remote CI run `32317704754` at head `b6633d99d0f8baa7faae6d569215ec8d7ff9c8cd` - PASSED (21/21 steps; compact artifact SHA-256 `c5de085cffceff448a7dbe20f5f8280a973700ecbf800da6b11ac19cc09e65ea`)
   - Architect review - PENDING
 - Remaining risks: The ConservativeV2+D-091 certifier regression is not localized to a new biology claim by this directive. No tuning, gate weakening, or production integration is authorized. Existing R9-R1 and prior evidence remain preserved.
 - Blockers: exact-head remote CI and independent architect review; DC-DEV-021 remains unauthorized.
