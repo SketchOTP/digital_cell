@@ -12,9 +12,9 @@
 - Objective: `Decompose the accepted R9-R2 ConservativeV2 plus D-091 reserve certification regression with independent contract and reserve axes using the actual D-087 Gates 0–7 certifier.`
 - Current status: `IN_PROGRESS`
 - Acceptance: `H0 HistoricalV1 + reserve OFF must reproduce the historical scientific D-087 result before V20/H1/V21 execute; then one of the authorized R9-R3 causal classifications must be supported by the complete matrix, exact-head remote CI, preserved R9-R2 evidence, and architect review.`
-- Current phase: `DC-DEV-020-R9-R3 observer-only certification decomposition completed locally; exact-head remote CI and architect review remain pending. No organism biology, recycling, tuning, behavior, evolution, or DC-DEV-021 work is authorized.`
+- Current phase: `DC-DEV-020-R9-R3 observer-only certification decomposition completed; exact-head remote CI passed and architect review remains pending. No organism biology, recycling, tuning, behavior, evolution, or DC-DEV-021 work is authorized.`
 - Expected or actual touched areas: `independent phase1-certifier contract/reserve selectors, actual four-arm D-087 matrix runner, reserve execution ledger, compact evidence, scoped CI, governance, and documentation`
-- Immediate next action: `Commit and push the bounded R9-R3 evidence/governance package, verify exact-head remote CI, then return for architect review.`
+- Immediate next action: `Return PR #44 at exact head for independent architect review; do not begin DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -33,8 +33,8 @@
 
 ## Last validation after adoption
 
-- Command or check: `Governance ADOPTED; actual ConservativeV2+D-091 D-087 certifier and R9-R2 exact replay/material-fate runners`
-- Result: `PASSED`
+- Command or check: `Exact-head scoped DC-DEV-020-R9 CI run 32421756950 at 6a266514fcb616084ea43be42ff726c4c51dec0e; actual H0/V20/H1/V21 certifier matrix and artifact verification`
+- Result: `PASSED; compact R9-R3 artifact SHA-256 951fb0f5bc79ab70dc2d50d614c3ca43520069eb8a73360817f01951b2ecfbdf`
 
 ## Risks
 
@@ -42,7 +42,7 @@
 - The frozen substrate remains local, isotropic, passive, and reaction-only; no DC-DEV-010 directional substrate code may enter this branch.
 - DC-DEV-012 is closed as valid negative evidence and is not imported.
 - R9-R2 correction: the actual D-087 certifier, not an R9 facsimile, is classification authority. ConservativeV2 remains an orthogonal physical/material/death contract; D-091 remains the biological equation lineage. The actual 3/8 result is a certification regression and must not be tuned around.
-- R9-R3 local result: H0 HistoricalV1/reserve OFF and V20 ConservativeV2/reserve OFF pass scientific Gates 0–6; H1 and V21 fail Gates 1–4 with nonzero reserve flows and zero rejects. The authorized classification is `DCDEV020R9R3_RESERVE_PHYSIOLOGY_CERTIFICATION_GAP_CONFIRMED`; this remains provisional pending exact-head remote CI and architect review.
+- R9-R3 result: H0 HistoricalV1/reserve OFF and V20 ConservativeV2/reserve OFF pass scientific Gates 0–6; H1 and V21 fail Gates 1–4 with nonzero reserve flows and zero rejects. The authorized classification is `DCDEV020R9R3_RESERVE_PHYSIOLOGY_CERTIFICATION_GAP_CONFIRMED`; exact-head remote CI passed and architect review remains pending.
 - R9-R1 exact artifacts are under `digital-protocell/experiments/generated/dcdev020r9r1/`; R8-R2 and R8-R4 dense frames remain externalized and their compact manifests record ConservativeV2 replay mode. R8-R4 is a bounded negative replay (`DCDEV020R8R4_SHARED_AFFINITY_NO_STABLE_HOMEOSTASIS`).
 
 ## Blockers

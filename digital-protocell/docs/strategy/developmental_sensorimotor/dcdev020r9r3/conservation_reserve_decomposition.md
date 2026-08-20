@@ -1,6 +1,6 @@
 # DC-DEV-020-R9-R3 — Conservation × Reserve Certification Decomposition
 
-Status: observer-only diagnostic; architect review pending.
+Status: observer-only diagnostic; remote CI passed; architect review pending.
 
 ## Authority and scope
 
@@ -23,6 +23,8 @@ The four arms were executed with independent selectors:
 | V21 | ConservativeV2 | ON |
 
 H0 was the hard scientific gate. Because H0 passed Gates 0–6, the remaining three arms executed. The local Windows runtime packaging check did not qualify Gate 7 (`bin_ok=false`) for any arm; this is recorded as a runtime qualification result and does not change the scientific Gates 0–6 decomposition. Remote Linux CI is authoritative for final acceptance.
+
+Exact-head remote CI run `32421756950` at head `6a266514fcb616084ea43be42ff726c4c51dec0e` passed all scoped stages, including the full matrix and artifact validation. The compact artifact `dcdev020r9r3-compact-evidence` has SHA-256 `951fb0f5bc79ab70dc2d50d614c3ca43520069eb8a73360817f01951b2ecfbdf`.
 
 ## Results
 

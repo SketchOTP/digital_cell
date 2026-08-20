@@ -866,7 +866,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - H0 and V20 scientific Gates 0–6 - PASSED
   - H1 and V21 reserve execution - nonzero flows, zero rejects; scientific Gates 1–4 failed as expected for the diagnostic
   - R9-R2 compact material-fate preservation predicate - PASSED
-  - Exact-head remote CI - PENDING
+  - Exact-head remote CI run `32421756950` at head `6a266514fcb616084ea43be42ff726c4c51dec0e` - PASSED; compact R9-R3 artifact SHA-256 `951fb0f5bc79ab70dc2d50d614c3ca43520069eb8a73360817f01951b2ecfbdf`
   - Architect review - PENDING
 - Remaining risks: This local result diagnoses a reserve-physiology certification gap but does not distinguish which reserve sub-behavior requires repair. No reserve tuning, recycling, source/sink change, production integration, or DC-DEV-021 work is authorized.
 - Blockers: exact-head remote CI and independent architect review; DC-DEV-021 remains unauthorized.
