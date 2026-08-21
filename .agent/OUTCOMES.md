@@ -484,6 +484,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and independent architect review.
 - Follow-up directive: none
 
+## D-20260821-dcdev020r9r4r1-governance-remote-closure - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R4R1-GOVERNANCE-REMOTE-CLOSURE`
+- Supersedes outcome: none
+- Closed: `2026-08-21T04:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The malformed R9-R4 adopted governance records were corrected without changing scientific source or evidence. Exact-head workflow `32459018571` passed at `19bd21f25d8cf955fb1fe58d32aa4d6d74c5cf21`; the unchanged R9-R4 classification remains `DCDEV020R9R4_STORAGE_CAUSAL_PRIORITY_INSUFFICIENT`.
+- Changed areas: governance-format corrections in DIRECTIVES.md, OUTCOMES.md, and REPO_MAP.md only.
+- Validation:
+  - adopted governance validator - PASSED
+  - exact-head workflow `32459018571` - PASSED
+  - R9-R4 reserve interference audit - PASSED
+  - R9-R4 observer artifact verification and compact evidence upload - PASSED
+  - scientific source and evidence identity preservation - PASSED
+- Remaining risks: Independent architect acceptance of the R9-R4 scientific result remains pending; no reserve repair, recycling, salvage, tuning, behavior, or DC-DEV-021 work is authorized.
+- Blockers: independent architect review.
+- Follow-up directive: none
+
 ## D-20260819-dcdev020r9-mesh-contract-requalification - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020R9-METRIC-CONFOUNDING-DOMINANT`

@@ -500,3 +500,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260820-dcdev020r9r3r1-packaged-runtime-closure
 - Status at issuance: ISSUED
+
+## D-20260821-dcdev020r9r4r1-governance-remote-closure
+
+- Issued: `2026-08-21T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R9-R4-R1`
+- Objective: Repair the malformed R9-R4 governance records and obtain exact-head remote validation of the unchanged R9-R4 evidence.
+- Scope: Adopted governance conformance for DIRECTIVES.md, OUTCOMES.md, and REPO_MAP.md; exact-head workflow `32459018571`; R9-R4 artifact identity; and architect handoff.
+- Exclusions: Scientific source, R9-R4 observer code, protocol, qualification evidence, reserve parameters, reaction ordering, production chemistry, production behavior, recycling, salvage, and DC-DEV-021.
+- Acceptance: Governance validator pass, exact-head remote workflow success, unchanged R9-R4 artifact identity, and architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260820-dcdev020r9r4-reserve-interference-audit
+- Status at issuance: ISSUED
