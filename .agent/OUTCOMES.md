@@ -885,7 +885,8 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Gate-7 executable-path unit test - PASSED
   - Fresh H0 actual D-087 certifier - 8/8; packaged binary exit `0`, output and snapshot present - PASSED
   - Fresh H0/V20/H1/V21 matrix - COMPLETED; H0/V20 8/8, H1/V21 Gates 1–4 failed with preserved reserve signature
-  - Exact-head remote CI and architect review - PENDING
-- Remaining risks: Remote Linux exact-head CI must confirm the cross-platform path/diagnostic repair and the architect must formally accept R9-R3. No reserve tuning, recycling, source/sink change, production integration, or DC-DEV-021 work is authorized.
-- Blockers: exact-head remote CI and independent architect review.
+  - Exact-head remote CI run `32436117572` at head `7c6b35c5b67a798c4ff32a61c3f6cf8e4fa8b5e5` - PASSED; compact artifact `dcdev020r3r1-compact-evidence` digest `sha256:b13107fa4ed5a77531cae816754435debae65199ce82e868e208e83e82f6ba86`
+  - Architect review - PENDING
+- Remaining risks: Independent architect review remains. No reserve tuning, recycling, source/sink change, production integration, or DC-DEV-021 work is authorized.
+- Blockers: independent architect review.
 - Follow-up directive: none
