@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260820-dcdev020r9r3-conservation-reserve-decomposition`
-- External directive ID: `DC-DEV-020-R9-R3`
-- Objective: `Decompose the accepted R9-R2 ConservativeV2 plus D-091 reserve certification regression with independent contract and reserve axes using the actual D-087 Gates 0–7 certifier.`
+- Local directive ID: `D-20260820-dcdev020r9r3r1-packaged-runtime-closure`
+- External directive ID: `DC-DEV-020-R9-R3-R1`
+- Objective: `Close the remaining D-087 Gate-7 packaged-runtime defect without changing the H0/V20/H1/V21 organism configurations or scientific Gates 0–6.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `H0 HistoricalV1 + reserve OFF must reproduce the historical scientific D-087 result before V20/H1/V21 execute; then one of the authorized R9-R3 causal classifications must be supported by the complete matrix, exact-head remote CI, preserved R9-R2 evidence, and architect review.`
-- Current phase: `DC-DEV-020-R9-R3 observer-only certification decomposition completed; exact-head remote CI passed and architect review remains pending. No organism biology, recycling, tuning, behavior, evolution, or DC-DEV-021 work is authorized.`
-- Expected or actual touched areas: `independent phase1-certifier contract/reserve selectors, actual four-arm D-087 matrix runner, reserve execution ledger, compact evidence, scoped CI, governance, and documentation`
-- Immediate next action: `Return PR #44 at exact head for independent architect review; do not begin DC-DEV-021.`
+- Acceptance: `H0 and V20 must reach 8/8 after the packaging-only repair while H1/V21 retain the reserve-associated Gates 1–4 failure signature; exact-head remote CI and architect review remain required.`
+- Current phase: `R9-R3-R1 local packaging diagnosis and fresh four-arm replay completed; source executable suffix handling repaired, H0/V20 are 8/8, H1/V21 preserve the scientific negative, and remote CI is next. No organism biology, recycling, tuning, behavior, evolution, or DC-DEV-021 work is authorized.`
+- Expected or actual touched areas: `phase1-certifier Gate-7 runtime diagnostics and platform executable path handling, scoped evidence upload, fresh R9-R3-R1 evidence, governance, and documentation`
+- Immediate next action: `Commit and push the bounded repair to PR #44, run exact-head remote CI, and return for architect review; do not begin reserve repair or DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -43,13 +43,15 @@
 - DC-DEV-012 is closed as valid negative evidence and is not imported.
 - R9-R2 correction: the actual D-087 certifier, not an R9 facsimile, is classification authority. ConservativeV2 remains an orthogonal physical/material/death contract; D-091 remains the biological equation lineage. The actual 3/8 result is a certification regression and must not be tuned around.
 - R9-R3 result: H0 HistoricalV1/reserve OFF and V20 ConservativeV2/reserve OFF pass scientific Gates 0–6; H1 and V21 fail Gates 1–4 with nonzero reserve flows and zero rejects. The authorized classification is `DCDEV020R9R3_RESERVE_PHYSIOLOGY_CERTIFICATION_GAP_CONFIRMED`; exact-head remote CI passed and architect review remains pending.
+- R9-R3-R1 diagnosis: the prior Gate-7 `bin_ok=false` was caused locally by extensionless source/destination paths on Windows (`digital-protocell-phase1` versus the actual `.exe` artifact); the runtime now derives the platform executable suffix and records build/copy/launch diagnostics without capturing unrelated environment secrets.
+- Fresh R9-R3-R1 local evidence is under `digital-protocell/experiments/generated/dcdev020r3r1/`; H0 and V20 are 8/8 with unchanged replacement metrics, while H1 and V21 retain Gates 1–4 failure and the same reserve flows.
 - R9-R1 exact artifacts are under `digital-protocell/experiments/generated/dcdev020r9r1/`; R8-R2 and R8-R4 dense frames remain externalized and their compact manifests record ConservativeV2 replay mode. R8-R4 is a bounded negative replay (`DCDEV020R8R4_SHARED_AFFINITY_NO_STABLE_HOMEOSTASIS`).
 
 ## Blockers
 
 - R9-R2 is architect-accepted as `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`; the actual ConservativeV2+D-091 certifier is 3/8 and remains diagnostic only. R9-R3 must determine whether contract, reserve, interaction, mixed causes, or the certifier harness explains the loss.
 
-- Independent architect review for R9-R3 remains open. No allocator, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
+- R9-R3-R1 exact-head remote CI and independent architect review remain open. No reserve repair, allocator, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
 
 ## Pending decisions
 

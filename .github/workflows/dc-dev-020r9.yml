@@ -88,10 +88,10 @@ jobs:
           DCDEV020R9R2_REPLAY_REPORT: experiments/generated/dcdev020r9r2/r9r1_exact/manifest.json
           DCDEV020R9R2_OUTPUT: experiments/generated/dcdev020r9r2
         run: cargo +1.89.0 run -p regulatory-core --example dcdev020r9r2_material_fate_audit --quiet
-      - name: R9-R3 actual D087 contract x reserve matrix
+      - name: R9-R3-R1 actual D087 contract x reserve matrix
         working-directory: digital-protocell
         env:
-          DCDEV020R9R3_OUTPUT: experiments/generated/dcdev020r9r3
+          DCDEV020R9R3_OUTPUT: experiments/generated/dcdev020r3r1
         run: cargo +1.89.0 run -p phase1-certifier --example dcdev020r9r3_conservation_reserve_decomposition --quiet
       - name: Exact R8-R2 replay under ConservativeV2
         working-directory: digital-protocell
@@ -162,19 +162,20 @@ jobs:
           assert qualification["dc_dev_021_authorized"] is False
           print("DCDEV020R9R2_AUTHORITATIVE_ARTIFACT_VERIFICATION_PASS")
           PY
-      - name: Verify R9-R3 decomposition artifacts
+      - name: Verify R9-R3-R1 decomposition and packaged-runtime artifacts
         working-directory: digital-protocell
         run: |
           python3 - <<'PY'
           import json
           from pathlib import Path
 
-          root = Path("experiments/generated/dcdev020r9r3")
+          root = Path("experiments/generated/dcdev020r3r1")
           protocol = json.loads((root / "protocol.json").read_text())
           qualification = json.loads((root / "qualification.json").read_text())
           assert protocol["directive"] == "DC-DEV-020-R9-R3"
-          assert protocol["starting_head"] == "904efc95919f67243681d3512fb7b46e0ab85710"
+          assert protocol["starting_head"] == "b7be0e7476ad153f8657d832c9df629e522f09b9"
           assert [arm["id"] for arm in protocol["matrix"]] == ["H0", "V20", "H1", "V21"]
+          assert qualification["starting_head"] == "b7be0e7476ad153f8657d832c9df629e522f09b9"
           assert qualification["h0_historical_reproduction"] is True
           assert qualification["h0_hard_stop"] is False
           assert len(qualification["arms"]) == 4
@@ -188,11 +189,31 @@ jobs:
               assert (arm["contract"], arm["reserve"]) == expected[arm["id"]]
               assert len(arm["gates"]) == 8
           assert qualification["arms"][0]["scientific_gates_pass"] is True
+          assert qualification["arms"][0]["gates"] == [True] * 8
+          assert qualification["arms"][1]["gates"] == [True] * 8
+          assert qualification["arms"][2]["gates"] == [True, False, False, False, False, True, True, True]
+          assert qualification["arms"][3]["gates"] == [True, False, False, False, False, True, True, True]
+          assert qualification["arms"][0]["r_m"] == qualification["arms"][1]["r_m"]
+          assert qualification["arms"][0]["r_b"] == qualification["arms"][1]["r_b"]
+          assert qualification["arms"][0]["r_c"] == qualification["arms"][1]["r_c"]
           for arm in qualification["arms"][2:]:
               assert arm["reserve_execution"]["rejected_steps"] == 0
               assert arm["reserve_execution"]["a_to_r"] > 0
               assert arm["reserve_execution"]["r_to_a"] > 0
               assert arm["reserve_execution"]["r_to_w"] > 0
+          for arm_id in ("h0", "v20", "h1", "v21"):
+              runtime = json.loads((root / "matrix" / arm_id / "linux_runtime" / "report.json").read_text())
+              diagnostics = runtime["diagnostics"]
+              assert runtime["steps_run"] == 80000
+              assert runtime["snapshot_ok"] is True
+              assert diagnostics["build_exit_status"] == 0
+              assert diagnostics["binary_source_exists"] is True
+              assert diagnostics["binary_destination_exists"] is True
+              assert diagnostics["destination_executable"] is True
+              assert diagnostics["copy_error"] is None
+              assert diagnostics["binary_exit_status"] == 0
+              assert diagnostics["output_exists"] is True
+              assert diagnostics["snapshot_exists"] is True
           assert qualification["r9r2_material_fate_preserved"] is True
           assert qualification["recycling_authorized"] is False
           assert qualification["dc_dev_021_authorized"] is False
@@ -205,7 +226,7 @@ jobs:
               "DCDEV020R9R3_CERTIFIER_HARNESS_DEFECT",
           }
           assert qualification["primary_classification"] in allowed
-          print("DCDEV020R9R3_DECOMPOSITION_ARTIFACT_VERIFICATION_PASS")
+          print("DCDEV020R9R3R1_DECOMPOSITION_AND_RUNTIME_ARTIFACT_VERIFICATION_PASS")
           PY
       - name: Upload compact R9-R2 evidence
         if: always()
@@ -220,16 +241,17 @@ jobs:
             digital-protocell/experiments/generated/dcdev020r9r2/r9r1_exact/*.json
             !digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/source_audit/**
           include-hidden-files: false
-      - name: Upload compact R9-R3 evidence
+      - name: Upload compact R9-R3-R1 evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: dcdev020r9r3-compact-evidence
+          name: dcdev020r3r1-compact-evidence
           path: |
-            digital-protocell/experiments/generated/dcdev020r9r3/protocol.json
-            digital-protocell/experiments/generated/dcdev020r9r3/qualification.json
-            digital-protocell/experiments/generated/dcdev020r9r3/matrix/*/manifest.json
-            digital-protocell/experiments/generated/dcdev020r9r3/matrix/*/metric_semantics/audit.json
-            digital-protocell/experiments/generated/dcdev020r9r3/matrix/*/certification/report.json
-            digital-protocell/experiments/generated/dcdev020r9r3/matrix/*/*/gate*.json
+            digital-protocell/experiments/generated/dcdev020r3r1/protocol.json
+            digital-protocell/experiments/generated/dcdev020r3r1/qualification.json
+            digital-protocell/experiments/generated/dcdev020r3r1/matrix/*/manifest.json
+            digital-protocell/experiments/generated/dcdev020r3r1/matrix/*/metric_semantics/audit.json
+            digital-protocell/experiments/generated/dcdev020r3r1/matrix/*/certification/report.json
+            digital-protocell/experiments/generated/dcdev020r3r1/matrix/*/linux_runtime/report.json
+            digital-protocell/experiments/generated/dcdev020r3r1/matrix/*/*/gate*.json
           include-hidden-files: false

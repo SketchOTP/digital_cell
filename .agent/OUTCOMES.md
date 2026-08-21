@@ -871,3 +871,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: This local result diagnoses a reserve-physiology certification gap but does not distinguish which reserve sub-behavior requires repair. No reserve tuning, recycling, source/sink change, production integration, or DC-DEV-021 work is authorized.
 - Blockers: exact-head remote CI and independent architect review; DC-DEV-021 remains unauthorized.
 - Follow-up directive: none
+
+## D-20260820-dcdev020r9r3r1-packaged-runtime-closure - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R3R1-GATE7-PACKAGED-RUNTIME-CLOSURE`
+- Supersedes outcome: `OUT-DCDEV020R9R3-RESERVE-PHYSIOLOGY-CERTIFICATION-GAP`
+- Closed: `2026-08-20T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R9-R3's only unresolved positive-control defect was Gate 7 packaged-binary execution. Exact local reproduction showed Cargo built successfully, but the runtime used extensionless binary paths while Windows emitted `digital-protocell-phase1.exe`; the source was therefore not found, no package copy was made, and `bin_ok` was false. The bounded repair derives the platform executable suffix and records build/copy/launch diagnostics. Fresh local H0 and V20 replays are 8/8 with unchanged `R_m=1.0180981834599838`, `R_b=5.818353471059928`, and `R_C=1.446090001246529`; H1 and V21 retain Gates 1–4 failure, identical reserve flows, zero rejects, and Gate 7 pass. The R9-R3 classification remains `DCDEV020R9R3_RESERVE_PHYSIOLOGY_CERTIFICATION_GAP_CONFIRMED`.
+- Changed areas: Gate-7 runtime packaging diagnostics and platform path handling, scoped compact-evidence upload, fresh R9-R3-R1 evidence, and governance. No certified Phase-1 equation, production chemistry, production behavior, reserve parameter, threshold, recycling law, or DC-DEV-021 work changed.
+- Validation:
+  - `cargo +1.89.0 check -p phase1-certifier --bin digital-protocell-phase1 --bin phase1_certification` - PASSED
+  - Gate-7 executable-path unit test - PASSED
+  - Fresh H0 actual D-087 certifier - 8/8; packaged binary exit `0`, output and snapshot present - PASSED
+  - Fresh H0/V20/H1/V21 matrix - COMPLETED; H0/V20 8/8, H1/V21 Gates 1–4 failed with preserved reserve signature
+  - Exact-head remote CI and architect review - PENDING
+- Remaining risks: Remote Linux exact-head CI must confirm the cross-platform path/diagnostic repair and the architect must formally accept R9-R3. No reserve tuning, recycling, source/sink change, production integration, or DC-DEV-021 work is authorized.
+- Blockers: exact-head remote CI and independent architect review.
+- Follow-up directive: none

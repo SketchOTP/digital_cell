@@ -103,9 +103,11 @@
 - `digital-protocell/crates/phase1-certifier/src/bin/phase1_certification.rs` — direct actual D-087 Gates 0–7 launcher with ConservativeV2+D-091 mode selection.
 - `digital-protocell/examples/dcdev020r9r2_material_fate_audit.rs` — exact D-015/D-016 material-fate and sustained-trajectory observer runner.
 - `digital-protocell/crates/phase1-certifier/examples/dcdev020r9r3_conservation_reserve_decomposition.rs` — observer-only actual D-087 contract × reserve matrix with H0 historical hard stop and reserve-execution proof.
+- `digital-protocell/crates/phase1-certifier/src/runtime.rs` — Gate-7 packaged-runtime build/copy/launch qualification with platform executable-path handling and fail-visible subprocess diagnostics.
 - `digital-protocell/experiments/generated/dcdev020r9r2/` — compact R9-R2 certifier, replay, fate, qualification, protocol, and manifest evidence.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r2/` — R9-R2 material-fate and certifier requalification documentation.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r3/conservation_reserve_decomposition.md` — R9-R3 observer-only contract × reserve decomposition, provisional classification, and preservation boundary.
+- `digital-protocell/experiments/generated/dcdev020r3r1/` — fresh R9-R3-R1 H0/V20/H1/V21 replay evidence and Gate-7 packaging diagnostics; prior R9-R3 evidence remains preserved.
 
 ## External integration points
 

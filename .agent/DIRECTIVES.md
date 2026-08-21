@@ -472,3 +472,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260819-dcdev020r9r2-material-fate-requalification
 - Status at issuance: ISSUED
+
+## D-20260820-dcdev020r9r3r1-packaged-runtime-closure
+
+- Issued: `2026-08-20T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R9-R3-R1`
+- Objective: Close the remaining D-087 Gate-7 packaged-runtime defect and formally qualify the existing R9-R3 decomposition without changing organism science.
+- Scope: Exact entry `b7be0e7476ad153f8657d832c9df629e522f09b9`, PR #44, Gate-7 subprocess diagnostics, platform executable-path handling, output/snapshot verification, fresh H0/V20/H1/V21 replay, compact evidence, governance, and scoped CI.
+- Exclusions: Chemistry, reserve physiology, kinetics, thresholds, source/sink/resource/transport laws, recycling, salvage, behavior, evolution, and DC-DEV-021.
+- Acceptance: H0 and V20 must be 8/8 with unchanged scientific metrics; H1/V21 must retain the reserve-associated Gates 1–4 failure signature; exact-head remote CI and architect review remain required.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260820-dcdev020r9r3-conservation-reserve-decomposition
+- Status at issuance: ISSUED

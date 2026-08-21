@@ -12,7 +12,7 @@ use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
 
-const STARTING_HEAD: &str = "904efc95919f67243681d3512fb7b46e0ab85710";
+const STARTING_HEAD: &str = "b7be0e7476ad153f8657d832c9df629e522f09b9";
 const BRANCH: &str = "strategy/dc-dev-020r9-mesh-contract-requalification";
 const PR: &str = "#44";
 const R9R2_CLASSIFICATION: &str = "DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION";

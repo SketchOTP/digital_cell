@@ -346,3 +346,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R9-R3 observer-only conservation × reserve certification decomposition; no reserve repair, recycling, production integration, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020R9R2-001
+
+## L-DCDEV020R9R3R1-001
+
+- Learning ID: L-DCDEV020R9R3R1-001
+- Date: 2026-08-20
+- Fact or lesson: Gate-7 packaged-runtime failure was an infrastructure path defect, not organism dynamics. The runtime constructed extensionless executable paths; on Windows the built artifact is `digital-protocell-phase1.exe`, so the source was not found and the copied-binary smoke was never launched. Platform executable-suffix resolution repaired the failure. Fresh H0 and V20 are 8/8 with unchanged D-087 replacement metrics; H1 and V21 preserve the reserve-associated Gates 1–4 failure and identical nonzero reserve flows.
+- Evidence location: `digital-protocell/crates/phase1-certifier/src/runtime.rs`, `digital-protocell/experiments/generated/dcdev020r3r1/`, and `.github/workflows/dc-dev-020r9.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R9-R3-R1 runtime/harness-only Gate-7 closure; no reserve repair, recycling, production integration, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020R9R3-001
