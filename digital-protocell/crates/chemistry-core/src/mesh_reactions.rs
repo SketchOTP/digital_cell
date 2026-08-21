@@ -10,7 +10,9 @@ use crate::catalyst_composition::{
     sync_total_c, turnover_composition, CompositionLedger, CompositionParams,
 };
 use crate::material_mesh::MaterialMesh;
-use crate::metabolic_reserve::{reserve_metab_step, ReserveLedger, ReserveParams};
+use crate::metabolic_reserve::{
+    reserve_metab_step_with_controls, ReserveFluxControls, ReserveLedger, ReserveParams,
+};
 use crate::template_copying::copying_step;
 use crate::template_motifs::{catalyst_binding_step, template_activity_gains};
 use crate::template_network::{scale_bound_catalyst, NetworkLedger, NetworkParams};
@@ -140,6 +142,43 @@ pub struct ReactionLedger {
     pub network: NetworkLedger,
     #[serde(default)]
     pub autocatalytic: AutocatalyticLedger,
+    /// R9-R4 observer accounting. These fields do not affect state updates.
+    #[serde(default)]
+    pub a_to_c: f64,
+    #[serde(default)]
+    pub a_before_reserve: f64,
+    #[serde(default)]
+    pub a_after_reserve: f64,
+    #[serde(default)]
+    pub a_after_pre_maintenance_reserve: f64,
+    #[serde(default)]
+    pub a_after_post_maintenance_storage: f64,
+    #[serde(default)]
+    pub a_before_structural_build: f64,
+    #[serde(default)]
+    pub a_after_structural_build: f64,
+    #[serde(default)]
+    pub a_before_membrane_production: f64,
+    #[serde(default)]
+    pub a_after_membrane_production: f64,
+    #[serde(default)]
+    pub structural_demand_a: f64,
+    #[serde(default)]
+    pub membrane_demand_a: f64,
+    #[serde(default)]
+    pub a_to_r_before_later_demand: f64,
+    #[serde(default)]
+    pub reserve_closure_residual: f64,
+}
+
+/// Observer-only reserve scheduling for the R9-R4 audit.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ReserveDiagnosticMode {
+    Full,
+    StoreOff,
+    ReleaseOff,
+    LossOff,
+    MaintenancePriority,
 }
 
 #[inline]
@@ -190,6 +229,25 @@ pub fn reactions_step(
     dt: f64,
     enable_build: bool,
     enable_metab: bool,
+) -> ReactionLedger {
+    reactions_step_with_reserve_mode(
+        mesh,
+        p,
+        dt,
+        enable_build,
+        enable_metab,
+        ReserveDiagnosticMode::Full,
+    )
+}
+
+/// Execute the normal reaction step with a bounded observer-only reserve mode.
+pub fn reactions_step_with_reserve_mode(
+    mesh: &mut MaterialMesh,
+    p: &ReactionParams,
+    dt: f64,
+    enable_build: bool,
+    enable_metab: bool,
+    reserve_mode: ReserveDiagnosticMode,
 ) -> ReactionLedger {
     let mut led = ReactionLedger::default();
     if !mesh.can_advance_physics() {
@@ -270,6 +328,7 @@ pub fn reactions_step(
         mesh.interior.a = (mesh.interior.a - c_prod).max(0.0);
         mesh.interior.w += c_turn;
         led.c_produced += c_prod * area;
+        led.a_to_c += c_prod * area;
         led.c_turned += c_turn * area;
         led.w_produced += c_turn * area;
 
@@ -287,9 +346,29 @@ pub fn reactions_step(
         led.a_decayed += a_dec * area;
         led.w_produced += a_dec * area;
 
-        // D-091 metabolic reserve: A↔R store/release and R→W loss (before A→L).
-        let rled = reserve_metab_step(mesh, p, dt);
-        led.reserve = rled;
+        // D-091 metabolic reserve. Full mode preserves the existing ordering;
+        // the other modes are observer-only R9-R4 controls.
+        led.a_before_reserve = mesh.interior.a.max(0.0) * area;
+        let pre_controls = match reserve_mode {
+            ReserveDiagnosticMode::Full => ReserveFluxControls::FULL,
+            ReserveDiagnosticMode::StoreOff => ReserveFluxControls::STORE_OFF,
+            ReserveDiagnosticMode::ReleaseOff => ReserveFluxControls::RELEASE_OFF,
+            ReserveDiagnosticMode::LossOff => ReserveFluxControls::LOSS_OFF,
+            ReserveDiagnosticMode::MaintenancePriority => {
+                ReserveFluxControls::RELEASE_AND_LOSS_ONLY
+            }
+        };
+        let reserve_area = mesh.area().max(1e-6);
+        let reserve_a0 = mesh.interior.a.max(0.0) * reserve_area;
+        let reserve_r0 = mesh.interior.r.max(0.0) * reserve_area;
+        let pre_ledger = reserve_metab_step_with_controls(mesh, p, dt, pre_controls);
+        let reserve_a1 = mesh.interior.a.max(0.0) * reserve_area;
+        let reserve_r1 = mesh.interior.r.max(0.0) * reserve_area;
+        led.reserve = pre_ledger.clone();
+        led.reserve_closure_residual +=
+            (reserve_a0 + reserve_r0 - reserve_a1 - reserve_r1 - pre_ledger.r_to_w).abs();
+        led.a_after_pre_maintenance_reserve = mesh.interior.a.max(0.0) * area;
+        led.a_after_reserve = led.a_after_pre_maintenance_reserve;
 
         // D-092/D-093 template polymer chemistry (monomers, copying, hydrolysis).
         if p.template.enable {
@@ -337,6 +416,8 @@ pub fn reactions_step(
         }
     }
 
+    led.a_before_structural_build = mesh.interior.a.max(0.0) * area;
+
     // Per-edge build / turnover / bind.
     for i in 0..n_edges {
         if mesh.edges[i].ruptured {
@@ -345,6 +426,7 @@ pub fn reactions_step(
         if enable_build {
             let j_build = structural_build_flux(mesh, i, p) * dt;
             let need_a = j_build / p.yield_a_to_m.max(1e-15);
+            led.structural_demand_a += need_a;
             let have = mesh.interior.a.max(0.0) * area;
             let take = need_a.min(have);
             let dm = take * p.yield_a_to_m;
@@ -395,6 +477,9 @@ pub fn reactions_step(
         led.unbind_extent += unbind_a;
     }
 
+    led.a_after_structural_build = mesh.interior.a.max(0.0) * area;
+    led.a_before_membrane_production = led.a_after_structural_build;
+
     // Free membrane reserve production from A — only when binding capacity remains
     // (prevents saturated free_l from draining A after θ→1).
     if enable_metab {
@@ -433,6 +518,7 @@ pub fn reactions_step(
         let reserve_cap = 0.15 * peri;
         if theta < 0.95 || mesh.free_l < reserve_cap {
             let l_prod = 0.02 * qc * gb * mesh.interior.a.max(0.0) * peri * dt;
+            led.membrane_demand_a += l_prod;
             let room = (reserve_cap - mesh.free_l).max(0.0) + (1.0 - theta) * peri;
             let take = l_prod
                 .min(mesh.interior.a.max(0.0) * area)
@@ -450,6 +536,37 @@ pub fn reactions_step(
             led.l_produced += take;
             led.w_produced += w_product;
         }
+    }
+
+    led.a_after_membrane_production = mesh.interior.a.max(0.0) * area;
+
+    if reserve_mode == ReserveDiagnosticMode::MaintenancePriority && enable_metab {
+        let reserve_area = mesh.area().max(1e-6);
+        let reserve_a0 = mesh.interior.a.max(0.0) * reserve_area;
+        let reserve_r0 = mesh.interior.r.max(0.0) * reserve_area;
+        let post = reserve_metab_step_with_controls(mesh, p, dt, ReserveFluxControls::STORE_ONLY);
+        let reserve_a1 = mesh.interior.a.max(0.0) * reserve_area;
+        let reserve_r1 = mesh.interior.r.max(0.0) * reserve_area;
+        led.reserve_closure_residual +=
+            (reserve_a0 + reserve_r0 - reserve_a1 - reserve_r1 - post.r_to_w).abs();
+        led.reserve.a_to_r += post.a_to_r;
+        led.reserve.r_to_a += post.r_to_a;
+        led.reserve.r_to_w += post.r_to_w;
+        led.reserve.r_to_m += post.r_to_m;
+        led.reserve.w_from_r_growth += post.w_from_r_growth;
+        led.reserve.rejected_steps += post.rejected_steps;
+        led.a_after_post_maintenance_storage = mesh.interior.a.max(0.0) * area;
+        led.a_after_reserve = led.a_after_post_maintenance_storage;
+    } else {
+        led.a_after_post_maintenance_storage = led.a_after_reserve;
+    }
+    if led.structural_demand_a + led.membrane_demand_a > 1e-15 {
+        led.a_to_r_before_later_demand =
+            if reserve_mode == ReserveDiagnosticMode::MaintenancePriority {
+                0.0
+            } else {
+                led.reserve.a_to_r
+            };
     }
 
     // Rupture check.

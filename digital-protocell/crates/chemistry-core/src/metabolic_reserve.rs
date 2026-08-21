@@ -131,6 +131,56 @@ pub struct ReserveLedger {
     pub rejected_steps: u64,
 }
 
+/// Observer-only switches for the R9-R4 reserve interference audit.
+///
+/// The production reserve equation is unchanged: `reserve_metab_step` always
+/// calls this with all three fluxes enabled. These controls exist so a sealed
+/// diagnostic can remove exactly one existing flux without changing any rate.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct ReserveFluxControls {
+    pub store: bool,
+    pub release: bool,
+    pub loss: bool,
+}
+
+impl ReserveFluxControls {
+    pub const FULL: Self = Self {
+        store: true,
+        release: true,
+        loss: true,
+    };
+
+    pub const STORE_OFF: Self = Self {
+        store: false,
+        release: true,
+        loss: true,
+    };
+
+    pub const RELEASE_OFF: Self = Self {
+        store: true,
+        release: false,
+        loss: true,
+    };
+
+    pub const LOSS_OFF: Self = Self {
+        store: true,
+        release: true,
+        loss: false,
+    };
+
+    pub const RELEASE_AND_LOSS_ONLY: Self = Self {
+        store: false,
+        release: true,
+        loss: true,
+    };
+
+    pub const STORE_ONLY: Self = Self {
+        store: true,
+        release: false,
+        loss: false,
+    };
+}
+
 /// Stamp mesh equation identity for the metabolic-reserve schema.
 pub fn stamp_reserve_equation(mesh: &mut MaterialMesh) {
     mesh.equation_id = EQUATION_VERSION_METABOLIC_RESERVE.to_string();
@@ -199,6 +249,20 @@ pub fn reserve_metab_step(
     react: &ReactionParams,
     dt: f64,
 ) -> ReserveLedger {
+    reserve_metab_step_with_controls(mesh, react, dt, ReserveFluxControls::FULL)
+}
+
+/// Execute the unchanged D-091 kernels with explicit observer-only flux gates.
+///
+/// This is intentionally not part of `ReserveParams`, candidate identity, or
+/// serialized production configuration. It is used only by bounded R9-R4
+/// ablations and the maintenance-priority shadow.
+pub fn reserve_metab_step_with_controls(
+    mesh: &mut MaterialMesh,
+    react: &ReactionParams,
+    dt: f64,
+    controls: ReserveFluxControls,
+) -> ReserveLedger {
     let mut led = ReserveLedger::default();
     let p = &react.reserve;
     if !p.enable || !mesh.can_advance_physics() || dt <= 0.0 {
@@ -236,9 +300,21 @@ pub fn reserve_metab_step(
     let r0 = mesh.interior.r.max(0.0);
 
     // Explicit Euler with capacity clamps (rejected partial steps leave state unchanged for that flux).
-    let js = j_store(a0, r0, qc_store, p) * dt;
-    let jr = j_release(a0, r0, qc_rel, p) * dt;
-    let jl = j_r_loss(r0, p) * dt;
+    let js = if controls.store {
+        j_store(a0, r0, qc_store, p) * dt
+    } else {
+        0.0
+    };
+    let jr = if controls.release {
+        j_release(a0, r0, qc_rel, p) * dt
+    } else {
+        0.0
+    };
+    let jl = if controls.loss {
+        j_r_loss(r0, p) * dt
+    } else {
+        0.0
+    };
 
     // Store A→R
     let store = js.min(a0).min((p.r_max - r0).max(0.0));

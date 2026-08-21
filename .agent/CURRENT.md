@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-19T00:00:00-04:00`
+- Last updated: `2026-08-20T00:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260820-dcdev020r9r3r1-packaged-runtime-closure`
-- External directive ID: `DC-DEV-020-R9-R3-R1`
-- Objective: `Close the remaining D-087 Gate-7 packaged-runtime defect without changing the H0/V20/H1/V21 organism configurations or scientific Gates 0–6.`
+- Local directive ID: `D-20260820-dcdev020r9r4-reserve-interference-audit`
+- External directive ID: `DC-DEV-020-R9-R4`
+- Objective: `Determine whether D-091 pre-maintenance A→R storage causes the ConservativeV2/D-091 Phase-1 maintenance regression, using exact 5,000-step observer-only controls and one parameter-free maintenance-priority shadow.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `H0 and V20 must reach 8/8 after the packaging-only repair while H1/V21 retain the reserve-associated Gates 1–4 failure signature; exact-head remote CI and architect review remain required.`
-- Current phase: `R9-R3-R1 local packaging diagnosis and fresh four-arm replay completed; source executable suffix handling repaired, H0/V20 are 8/8, H1/V21 preserve the scientific negative, and remote CI is next. No organism biology, recycling, tuning, behavior, evolution, or DC-DEV-021 work is authorized.`
-- Expected or actual touched areas: `phase1-certifier Gate-7 runtime diagnostics and platform executable path handling, scoped evidence upload, fresh R9-R3-R1 evidence, governance, and documentation`
-- Immediate next action: `Commit and push the bounded repair to PR #44, run exact-head remote CI, and return for architect review; do not begin reserve repair or DC-DEV-021.`
+- Acceptance: `V20 must reproduce 8/8; V21 must retain the reserve-associated failure; all five R9-R4 arms must complete 5,000 steps; exact-head remote CI and architect review remain required.`
+- Current phase: `R9-R4 local exact-control reproduction, reserve interference ledger, four ablations, and maintenance-priority shadow completed. The shadow removes A→R-before-later-demand but does not restore Gate 1; remote CI is next. No reserve repair, recycling, behavior, evolution, or DC-DEV-021 work is authorized.`
+- Expected or actual touched areas: `bounded chemistry-core observer ledger and reserve diagnostic scheduling, phase1-certifier R9-R4 runner, compact evidence, documentation, governance, and scoped workflow`
+- Immediate next action: `Add the bounded R9-R4 verification to PR #44, run exact-head remote CI, and return for architect review; do not begin reserve repair or DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -42,16 +42,16 @@
 - The frozen substrate remains local, isotropic, passive, and reaction-only; no DC-DEV-010 directional substrate code may enter this branch.
 - DC-DEV-012 is closed as valid negative evidence and is not imported.
 - R9-R2 correction: the actual D-087 certifier, not an R9 facsimile, is classification authority. ConservativeV2 remains an orthogonal physical/material/death contract; D-091 remains the biological equation lineage. The actual 3/8 result is a certification regression and must not be tuned around.
-- R9-R3 result: H0 HistoricalV1/reserve OFF and V20 ConservativeV2/reserve OFF pass scientific Gates 0–6; H1 and V21 fail Gates 1–4 with nonzero reserve flows and zero rejects. The authorized classification is `DCDEV020R9R3_RESERVE_PHYSIOLOGY_CERTIFICATION_GAP_CONFIRMED`; exact-head remote CI passed and architect review remains pending.
+- R9-R3 result: H0 HistoricalV1/reserve OFF and V20 ConservativeV2/reserve OFF pass scientific Gates 0–6; H1 and V21 fail Gates 1–4 with nonzero reserve flows and zero rejects. The architect-accepted classification is `DCDEV020R9R3_RESERVE_PHYSIOLOGY_CERTIFICATION_GAP_CONFIRMED`.
 - R9-R3-R1 diagnosis: the prior Gate-7 `bin_ok=false` was caused locally by extensionless source/destination paths on Windows (`digital-protocell-phase1` versus the actual `.exe` artifact); the runtime now derives the platform executable suffix and records build/copy/launch diagnostics without capturing unrelated environment secrets.
-- Fresh R9-R3-R1 local evidence is under `digital-protocell/experiments/generated/dcdev020r3r1/`; H0 and V20 are 8/8 with unchanged replacement metrics, while H1 and V21 retain Gates 1–4 failure and the same reserve flows. Exact-head CI run `32436117572` passed all 24 stages at head `7c6b35c5b67a798c4ff32a61c3f6cf8e4fa8b5e5`; architect acceptance remains pending.
+- Fresh R9-R3-R1 local evidence is under `digital-protocell/experiments/generated/dcdev020r3r1/`; H0 and V20 are 8/8 with unchanged replacement metrics, while H1 and V21 retain Gates 1–4 failure and the same reserve flows. Exact-head CI run `32436117572` passed all 24 stages at head `7c6b35c5b67a798c4ff32a61c3f6cf8e4fa8b5e5`; the R9-R3-R1 package is architect-accepted.
 - R9-R1 exact artifacts are under `digital-protocell/experiments/generated/dcdev020r9r1/`; R8-R2 and R8-R4 dense frames remain externalized and their compact manifests record ConservativeV2 replay mode. R8-R4 is a bounded negative replay (`DCDEV020R8R4_SHARED_AFFINITY_NO_STABLE_HOMEOSTASIS`).
 
 ## Blockers
 
-- R9-R2 is architect-accepted as `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`; R9-R3-R1 has closed the packaging defect and preserved the reserve-physiology classification. Only independent architect review remains; no reserve repair, recycling, salvage, production integration, or DC-DEV-021 work is authorized.
+- R9-R2 is architect-accepted as `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`; R9-R3-R1 is architect-accepted and preserved the reserve-physiology classification. R9-R4 is now the only active review boundary; no reserve repair, recycling, salvage, production integration, or DC-DEV-021 work is authorized.
 
-- R9-R3-R1 exact-head remote CI and independent architect review remain open. No reserve repair, allocator, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
+- R9-R4 exact-head remote CI and independent architect review remain open. The local negative does not authorize reserve repair, allocator changes, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021.
 
 ## Pending decisions
 

@@ -108,6 +108,10 @@
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r2/` — R9-R2 material-fate and certifier requalification documentation.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r3/conservation_reserve_decomposition.md` — R9-R3 observer-only contract × reserve decomposition, provisional classification, and preservation boundary.
 - `digital-protocell/experiments/generated/dcdev020r3r1/` — fresh R9-R3-R1 H0/V20/H1/V21 replay evidence and Gate-7 packaging diagnostics; prior R9-R3 evidence remains preserved.
+- `digital-protocell/crates/chemistry-core/src/metabolic_reserve.rs` and `mesh_reactions.rs` — bounded R9-R4 observer-only reserve flux controls and additive A/R/build/membrane interference ledger; default production path remains Full.
+- `digital-protocell/crates/phase1-certifier/examples/dcdev020r9r4_reserve_interference_audit.rs` — exact 5,000-step V20/V21 control, four required reserve ablations, maintenance-priority shadow, and Gate-5 reserve preservation observer.
+- `digital-protocell/experiments/generated/dcdev020r9r4/` — compact R9-R4 protocol, qualification, and dense-ledger manifest; dense JSONL is external/local and hash-bound.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r4/` — R9-R4 observer-only reserve interference audit and fail-closed classification.
 
 ## External integration points
 

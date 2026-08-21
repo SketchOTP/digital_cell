@@ -43,6 +43,7 @@ jobs:
           examples/dcdev020r9r1_exact_metabolic_replays.rs
           examples/dcdev020r9r2_material_fate_audit.rs
           crates/phase1-certifier/examples/dcdev020r9r3_conservation_reserve_decomposition.rs
+          crates/phase1-certifier/examples/dcdev020r9r4_reserve_interference_audit.rs
           examples/dcdev020r8r2_catalyst_investment_payback.rs
           examples/dcdev020r8r3_shared_affinity_helper.rs
           examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs
@@ -228,6 +229,45 @@ jobs:
           assert qualification["primary_classification"] in allowed
           print("DCDEV020R9R3R1_DECOMPOSITION_AND_RUNTIME_ARTIFACT_VERIFICATION_PASS")
           PY
+      - name: R9-R4 reserve interference audit
+        working-directory: digital-protocell
+        run: >-
+          cargo +1.89.0 run -p phase1-certifier
+          --example dcdev020r9r4_reserve_interference_audit --quiet --
+          --output experiments/generated/dcdev020r9r4
+      - name: Verify R9-R4 observer artifacts
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r9r4")
+          report = json.loads((root / "r9r4_report.json").read_text())
+          assert report["directive"] == "DC-DEV-020-R9-R4"
+          assert report["starting_head"] == "f9bc1d5bffe828b2599c85d4fcbbabdf7f3e3ff3"
+          assert report["horizon_steps"] == 5000
+          assert report["classification"] == "DCDEV020R9R4_STORAGE_CAUSAL_PRIORITY_INSUFFICIENT"
+          assert report["gate0"]["v20_gates_passed"] == 8
+          assert report["gate0"]["v21_gates_passed"] == 4
+          assert len(report["gate2"]) == 4
+          assert all(arm["accepted_steps"] == 5000 for arm in report["gate2"])
+          shadow = report["gate3"]["shadow"]
+          assert shadow["accepted_steps"] == 5000
+          assert shadow["ledger"]["a_to_r_before_later_demand"] == 0
+          assert report["gate3"]["qualification_restored"] is False
+          assert report["gate4"]["executed"] is False
+          assert report["gate5"]["replete_r_to_a_positive"] is True
+          assert report["gate5"]["starvation_r_to_a_positive"] is True
+          assert report["gate5"]["rejects_zero"] is True
+          assert report["gate5"]["strict_reserve_closure"] is True
+          assert report["production_chemistry_changed"] is False
+          assert report["production_behavior_changed"] is False
+          assert report["recycling_authorized"] is False
+          assert report["dc_dev_021_authorized"] is False
+          assert report["next_execution_started"] is False
+          print("DCDEV020R9R4_RESERVE_INTERFERENCE_ARTIFACT_VERIFICATION_PASS")
+          PY
       - name: Upload compact R9-R2 evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -254,4 +294,17 @@ jobs:
             digital-protocell/experiments/generated/dcdev020r3r1/matrix/*/certification/report.json
             digital-protocell/experiments/generated/dcdev020r3r1/matrix/*/linux_runtime/report.json
             digital-protocell/experiments/generated/dcdev020r3r1/matrix/*/*/gate*.json
+          include-hidden-files: false
+      - name: Upload compact R9-R4 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020r9r4-compact-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020r9r4/r9r4_report.json
+            digital-protocell/experiments/generated/dcdev020r9r4/gate0.json
+            digital-protocell/experiments/generated/dcdev020r9r4/gate5_reserve_preservation.json
+            digital-protocell/experiments/generated/dcdev020r9r4/protocol.json
+            digital-protocell/experiments/generated/dcdev020r9r4/qualification.json
+            digital-protocell/experiments/generated/dcdev020r9r4/ledger_manifest.json
           include-hidden-files: false

@@ -356,3 +356,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R9-R3-R1 runtime/harness-only Gate-7 closure; no reserve repair, recycling, production integration, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020R9R3-001
+
+## L-DCDEV020R9R4-001
+
+- Learning ID: L-DCDEV020R9R4-001
+- Date: 2026-08-20
+- Fact or lesson: Existing D-091 A→R storage executes before structural and membrane maintenance on every full-reserve 5,000-step arm where later productive demand is positive. The parameter-free shadow that preserves release/loss before maintenance and defers only storage removes that interference exactly, but does not restore the D-087 Gate-1 replacement qualification. Therefore storage priority is causally implicated but insufficient as a standalone repair. The authorized fail-closed classification is `DCDEV020R9R4_STORAGE_CAUSAL_PRIORITY_INSUFFICIENT`.
+- Evidence location: `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs`, `digital-protocell/crates/chemistry-core/src/metabolic_reserve.rs`, `digital-protocell/crates/phase1-certifier/examples/dcdev020r9r4_reserve_interference_audit.rs`, `digital-protocell/experiments/generated/dcdev020r9r4/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r4/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R9-R4 observer-only reserve interference audit; no production repair, recycling, parameter tuning, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020R9R3R1-001

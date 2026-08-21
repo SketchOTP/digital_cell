@@ -5,8 +5,9 @@ use chemistry_core::material_mesh::{
 };
 use chemistry_core::mesh_mechanics::{mechanics_step, remesh, MechParams};
 use chemistry_core::mesh_reactions::{
-    pulse_tracers, reactions_step, tracer_catalyst_fraction, tracer_membrane_fraction,
-    tracer_structural_fraction, try_local_rebond, ReactionLedger, ReactionParams,
+    pulse_tracers, reactions_step_with_reserve_mode, tracer_catalyst_fraction,
+    tracer_membrane_fraction, tracer_structural_fraction, try_local_rebond, ReactionLedger,
+    ReactionParams, ReserveDiagnosticMode,
 };
 use chemistry_core::mesh_transport::{transport_step, TransportParams};
 use chemistry_core::metabolic_reserve::{stamp_reserve_equation, ReserveParams};
@@ -38,6 +39,16 @@ pub struct AccumLedger {
     pub reserve_r_to_w: f64,
     #[serde(default)]
     pub reserve_rejected_steps: u64,
+    #[serde(default)]
+    pub a_to_c: f64,
+    #[serde(default)]
+    pub a_to_r_before_later_demand: f64,
+    #[serde(default)]
+    pub structural_demand_a: f64,
+    #[serde(default)]
+    pub membrane_demand_a: f64,
+    #[serde(default)]
+    pub reserve_closure_residual: f64,
 }
 
 impl AccumLedger {
@@ -54,6 +65,11 @@ impl AccumLedger {
         self.reserve_r_to_a += r.reserve.r_to_a;
         self.reserve_r_to_w += r.reserve.r_to_w;
         self.reserve_rejected_steps += r.reserve.rejected_steps;
+        self.a_to_c += r.a_to_c;
+        self.a_to_r_before_later_demand += r.a_to_r_before_later_demand;
+        self.structural_demand_a += r.structural_demand_a;
+        self.membrane_demand_a += r.membrane_demand_a;
+        self.reserve_closure_residual += r.reserve_closure_residual;
     }
 }
 
@@ -230,8 +246,28 @@ pub fn coupled_step(
     build: bool,
     metab: bool,
 ) -> ReactionLedger {
+    coupled_step_with_reserve_mode(
+        mesh,
+        mech,
+        react,
+        transport,
+        build,
+        metab,
+        ReserveDiagnosticMode::Full,
+    )
+}
+
+pub fn coupled_step_with_reserve_mode(
+    mesh: &mut MaterialMesh,
+    mech: &MechParams,
+    react: &ReactionParams,
+    transport: &TransportParams,
+    build: bool,
+    metab: bool,
+    reserve_mode: ReserveDiagnosticMode,
+) -> ReactionLedger {
     let _ = transport_step(mesh, transport, mech.dt);
-    let led = reactions_step(mesh, react, mech.dt, build, metab);
+    let led = reactions_step_with_reserve_mode(mesh, react, mech.dt, build, metab, reserve_mode);
     mechanics_step(mesh, mech);
     remesh(mesh);
     try_local_rebond(mesh, DEFAULT_REBOND_DIST);
@@ -406,3 +442,39 @@ pub fn pass_basin_row(mesh: &MaterialMesh, a0: f64, c0: f64, aa0: f64) -> bool {
 pub use chemistry_core::mesh_reactions::{
     apply_local_rupture, apply_membrane_damage, apply_structural_damage, evaluate_death,
 };
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn full_reserve_observer_mode_has_exact_default_trajectory_parity() {
+        std::env::set_var("DCDEV020R9R3_CONTRACT", "ConservativeV2");
+        std::env::set_var("DCDEV020R9R3_RESERVE", "1");
+        let mut ordinary = seed_mesh(14.0, 2);
+        let mut observer = ordinary.clone();
+        let react = reaction_params_for(&ordinary);
+        let transport = frozen_transport();
+        for _ in 0..256 {
+            let a = coupled_step(
+                &mut ordinary,
+                &FROZEN_CENTER,
+                &react,
+                &transport,
+                true,
+                true,
+            );
+            let b = coupled_step_with_reserve_mode(
+                &mut observer,
+                &FROZEN_CENTER,
+                &react,
+                &transport,
+                true,
+                true,
+                ReserveDiagnosticMode::Full,
+            );
+            assert_eq!(serde_json::to_value(a).unwrap(), serde_json::to_value(b).unwrap());
+            assert_eq!(fingerprint(&ordinary), fingerprint(&observer));
+        }
+    }
+}

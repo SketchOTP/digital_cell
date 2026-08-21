@@ -249,6 +249,21 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260820-dcdev020r9r4-reserve-interference-audit
+
+- Issued: `2026-08-20T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R9-R4`
+- Objective: Determine whether existing D-091 pre-maintenance A→R storage causes the ConservativeV2/D-091 Phase-1 maintenance regression, and test exactly one parameter-free maintenance-priority shadow.
+- Scope: Exact entry `f9bc1d5bffe828b2599c85d4fcbbabdf7f3e3ff3`, PR #44, exact 5,000-step V20/V21 controls, per-step/cumulative reserve interference ledger, exactly four reserve ablations, one diagnostic shadow, compact evidence, governance, and scoped CI.
+- Exclusions: Reserve rate/parameter changes, target A/R/health state, production reserve repair, recycling/salvage, source/sink/resource/transport changes, behavior, evolution, and DC-DEV-021.
+- Acceptance: V20 8/8 reproduction, complete five-arm 5,000-step observer audit, one authorized R9-R4 classification, exact-head remote CI, and architect review.
+- Local result: `DCDEV020R9R4_STORAGE_CAUSAL_PRIORITY_INSUFFICIENT`; the shadow removed A→R-before-later-demand but did not restore Gate 1.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260820-dcdev020r9r3r1-packaged-runtime-closure
+- Status at issuance: IN_PROGRESS
+
 ## D-20260818-dcdev020r8r2-catalyst-investment-payback
 
 - Issued: `2026-08-18T00:00:00-04:00`

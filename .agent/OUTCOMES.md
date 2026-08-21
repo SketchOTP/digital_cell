@@ -463,6 +463,19 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260820-dcdev020r9r4-reserve-interference-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R4-STORAGE-CAUSAL-PRIORITY-INSUFFICIENT`
+- Supersedes outcome: `OUT-DCDEV020R9R3R1-GATE7-PACKAGED-RUNTIME-CLOSURE`
+- Closed: `2026-08-20T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: From exact head `f9bc1d5bffe828b2599c85d4fcbbabdf7f3e3ff3`, V20 reproduced 8/8 and V21 retained the reserve-bearing negative. Five exact 5,000-step ConservativeV2 arms recorded per-step reserve/build/membrane ledgers. Full reserve stored A before later productive demand (`147.585809275616`); the parameter-free maintenance-priority shadow reduced that interference to zero while preserving the unchanged reserve kernels, but replacement metrics remained below Gate-1 qualification (`R_m=0.8399735283623063`). Gate 4 was correctly skipped. Classification: `DCDEV020R9R4_STORAGE_CAUSAL_PRIORITY_INSUFFICIENT`.
+- Changed areas: additive observer ledger fields, explicit reserve diagnostic controls, phase1-certifier R9-R4 runner, compact evidence, documentation, governance, and scoped workflow. Certified Phase-1 biology/equations, production behavior, reserve parameters, recycling, and DC-DEV-021 were not changed.
+- Validation: `cargo check -p phase1-certifier`; exact R9-R4 release runner completed; V20 8/8; V21 4/8; all arms 5,000/5,000; reserve rejects zero; strict reserve closure passed; Gate-1 full and shadow qualification false; Gate 4 not executed by rule. Existing unrelated full chemistry test failure in `d008_tests.rs` remains outside this slice.
+- Remaining risks: The diagnostic establishes that pre-maintenance storage is causally present but insufficient as a standalone parameter-free priority repair. It does not authorize production reserve repair, recycling, salvage, tuning, source/sink changes, behavior, or DC-DEV-021.
+- Blockers: exact-head remote CI and independent architect review.
+- Follow-up directive: none
+
 ## D-20260819-dcdev020r9-mesh-contract-requalification - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020R9-METRIC-CONFOUNDING-DOMINANT`
