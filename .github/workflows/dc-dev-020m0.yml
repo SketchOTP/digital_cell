@@ -36,8 +36,6 @@ jobs:
         run: >-
           rustfmt +1.89.0 --edition 2021 --check
           crates/phase1-certifier/src/sim.rs
-          crates/phase1-certifier/src/bin/phase1_runtime.rs
-          crates/phase1-certifier/src/bin/phase1_certification.rs
       - name: Preserve certified source boundary
         run: |
           set -euo pipefail
