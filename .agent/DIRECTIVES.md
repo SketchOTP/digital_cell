@@ -598,3 +598,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260822-dcdev020r9r6r2-ci-closure
 - Status at issuance: ISSUED
+
+## D-20260822-dcdev020m1r0requal001
+
+- Issued: `2026-08-22T17:15:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R0-REQUAL-001`
+- Objective: Requalify the preserved DC-DEV-015 and DC-DEV-016 finite-resource deprivation/restoration evidence against the accepted ConservativeV2/reserve-OFF M0 organism without changing biology.
+- Scope: Starting head `4895135deee7dbd782446dbfe25662181951afe0`, PR #44, exact historical 5,000-step settlement, 480-step deprivation and matched finite-resource arms, 5,000-step bounded starvation continuation, compact artifacts, governance, preservation checks, and scoped exact-head CI.
+- Exclusions: Chemistry-core, ConservativeV2 equations, M0 selector, D-091, uptake, transport, resource geometry, N/F inventories, reaction kinetics, degradation, death semantics, D-087, production homeostasis, controllers, behavior, M2, R9-R7, recycling, salvage, evolution, and DC-DEV-021.
+- Acceptance: Baseline identity is ConservativeV2/reserve OFF; historical 3/3 and 14.588954880632265/14.588954880632265 arms execute; deprivation and starvation continuation complete; world↔organism accounting closes; no biology changes; local artifact verification and exact-head remote CI succeed; architect review remains required.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260822-dcdev020m0baseline001
+- Status at issuance: ISSUED

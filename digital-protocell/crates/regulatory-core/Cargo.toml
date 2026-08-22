@@ -123,3 +123,7 @@ path = "../../examples/dcdev020r9r1_exact_metabolic_replays.rs"
 [[example]]
 name = "dcdev020r9r2_material_fate_audit"
 path = "../../examples/dcdev020r9r2_material_fate_audit.rs"
+
+[[example]]
+name = "dcdev020m1r0_requalification"
+path = "../../examples/dcdev020m1r0_requalification.rs"

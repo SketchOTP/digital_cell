@@ -435,3 +435,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-020-M0-BASELINE-001 production selection and R9 preservation boundary.
 - Supersedes learning: none
+
+## L-DCDEV020M1R0-001
+
+- Learning ID: L-DCDEV020M1R0-001
+- Date: 2026-08-22
+- Fact or lesson: On the accepted M0 `ConservativeV2 / reserve OFF` organism, the preserved 480-step deprivation replay reduces organized material by `18.5240742455985`. Finite N/F delivery is conserved and produces A, but the 3/3 and `14.588954880632265` arms retain negative organized-material changes; the uptake-only control confirms ingress without conversion. A no-resource continuation reaches observer `starvation_collapse` at accepted step `2057`. The current M1-R0 diagnostic classification is `productive_allocation_or_replacement_limitation`, not a production repair authorization.
+- Evidence location: `digital-protocell/examples/dcdev020m1r0_requalification.rs`, `digital-protocell/experiments/generated/dcdev020m1r0/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r0/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R0 observer-only finite-resource requalification; no chemistry, uptake, transport, resource, death, controller, behavior, evolution, recycling, salvage, M2, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M0-002

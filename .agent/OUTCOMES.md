@@ -1045,3 +1045,25 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: Final acceptance depends on exact-head remote Linux execution and independent architect verification. M1, reserve redesign, recycling/salvage, R9-R7, and DC-DEV-021 remain unauthorized.
 - Blockers: exact-head M0 CI and architect review.
 - Follow-up directive: none
+
+## D-20260822-dcdev020m1r0requal001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R0-FINITE-RESOURCE-REQUALIFICATION-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M0-BASELINE-QUALIFICATION-PENDING-ARCHITECT`
+- Closed: `2026-08-22T17:15:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only M1-R0 replay runs from accepted M0 head `4895135deee7dbd782446dbfe25662181951afe0` using `ConservativeV2` with reserve disabled and zero initial reserve. The exact 5,000-step settlement and 480-step deprivation complete; organized material declines by `18.5240742455985`. The 3/3 and high-inventory finite N/F arms consume `2.34938455157938` and `11.4396891103526` per substrate respectively, produce `0.0433163220514441` and `0.945737637075` A, and both retain negative organized-material change. The uptake-only control consumes `11.5964868177898` per substrate without conversion. All four world↔organism closure residuals are below `2.4e-13`. The no-resource continuation reaches observer `starvation_collapse` at accepted step `2057`. Local classification is `productive_allocation_or_replacement_limitation` and remains diagnostic.
+- Changed areas: M1-R0 observer example registration, compact evidence, documentation, scoped CI, and governance only. No chemistry-core, phase1-certifier production source, D-091, uptake, transport, resource, death, behavior, or DC-DEV-021 work changed.
+- Validation:
+  - Governance ADOPTED validation via `py -3 scripts/validate_governance.py --mode ADOPTED` - PASSED
+  - New observer example formatting - PASSED
+  - Fresh local M1-R0 replay and deterministic committed/fresh qualification match - PASSED
+  - Phase-1 metrics regression - PASSED
+  - D-091 preservation regression - PASSED
+  - D-088 preservation regression - PASSED
+  - Evolution-harness regression - PASSED (40 tests)
+  - Exact-head remote M1-R0 CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: This is a requalification result, not a production repair. The current finite-resource mass/conversion/allocation limitation is not isolated to a permitted implementation change. No M1 production change, M2, reserve redesign, recycling, salvage, behavior, evolution, or DC-DEV-021 work is authorized.
+- Blockers: exact-head remote CI and independent architect review.
+- Follow-up directive: none
