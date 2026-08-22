@@ -1024,3 +1024,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: Independent architect review remains. No reserve tuning, recycling, source/sink change, production integration, or DC-DEV-021 work is authorized.
 - Blockers: independent architect review.
 - Follow-up directive: none
+## D-20260822-dcdev020m0baseline001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M0-BASELINE-QUALIFICATION-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020R9R6R2-CI-CLOSURE`
+- Closed: `2026-08-22T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The production-selection audit identified `phase1-certifier/src/sim.rs` as the selector boundary. The bounded default change selects ConservativeV2 while requiring explicit opt-in for D-091 reserve physiology; the R9 diagnostic workflow now declares reserve-enabled arms explicitly. Fresh local ordinary production execution reports ConservativeV2/reserve OFF, actual D-087 Gates 0–7 pass `8/8`, and the 5,000-step packaged runtime reports zero A→R, R→A, and R→W flows, zero reserve rejects, and activation-equivalent closure residual `2.580691216280684e-10`. D-091 source and certified chemistry remain unchanged. Remote Linux runtime identity and exact-head CI are pending architect review.
+- Changed areas: phase-1 certifier selector defaults, explicit R9 diagnostic environment declarations, compact M0 evidence, M0 documentation, scoped M0 CI, and governance handoff. No chemistry-core source or D-091 implementation changed.
+- Validation:
+  - Governance ADOPTED validation - PASSED
+  - Sanctioned Rust 1.89.0 phase1 metrics regression - PASSED (4/4)
+  - Phase1 certifier selector tests - PASSED (5/5)
+  - Fresh ordinary selected-production actual D-087 - PASSED (8/8)
+  - Fresh local packaged runtime - PASSED; alive after 5,000 steps; zero reserve flows; strict closure
+  - D-091 source preservation - PENDING remote exact-head CI
+  - Packaged Linux runtime identity - PENDING remote exact-head CI
+  - Architect review - PENDING
+- Remaining risks: Final acceptance depends on exact-head remote Linux execution and independent architect verification. M1, reserve redesign, recycling/salvage, R9-R7, and DC-DEV-021 remain unauthorized.
+- Blockers: exact-head M0 CI and architect review.
+- Follow-up directive: none

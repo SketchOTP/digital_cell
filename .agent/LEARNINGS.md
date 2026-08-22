@@ -416,3 +416,22 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R9-R6-R1 metadata, artifact-verifier, count, classification, and exact-head CI closure only; no production repair, recycling, salvage, R9-R7, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: none
+## L-DCDEV020M0-001
+
+- Learning ID: L-DCDEV020M0-001
+- Date: 2026-08-22
+- Fact or lesson: R9-R6-R2 closed the reserve phase-order diagnostic as `DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_INSUFFICIENT`; no R9-R7 or reserve redesign is justified. M0 should select the already-qualified ConservativeV2 reserve-OFF physiology and preserve D-091 for later research.
+- Evidence location: architect acceptance of result head `737b0c905e9bd80b6d256681c8530d66917019b6` and exact-head CI `32582990923`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-020-M0-BASELINE-001 production selection.
+- Supersedes learning: none
+
+## L-DCDEV020M0-002
+
+- Learning ID: L-DCDEV020M0-002
+- Date: 2026-08-22
+- Fact or lesson: The M0 production selector boundary is `phase1-certifier/src/sim.rs`: contract selection and D-091 reserve selection must remain independent. ConservativeV2 without an explicit reserve selector previously enabled D-091; the M0 default is ConservativeV2 with reserve OFF, while R9 diagnostics opt in explicitly.
+- Evidence location: DC-DEV-020-M0-BASELINE-001 Gate 0 and Gate 1 audit, `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m0baseline001/production_selection.md`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-020-M0-BASELINE-001 production selection and R9 preservation boundary.
+- Supersedes learning: none

@@ -26,6 +26,8 @@
 - `digital-protocell/examples/dcdev020r8_nfa_restorative_attractor.rs` — observer-only DC-DEV-020-R8 product-feedback topology feasibility audit using frozen N/F support, reciprocal constraints, and fail-closed training-gate classification; it changes no production chemistry.
 - `digital-protocell/examples/dcdev020r8r1_causal_a_demand_elasticity.rs` — observer-only DC-DEV-020-R8-R1 within-state A perturbation, physical zero-drift demand decomposition, and R8 pair-confounding audit; it changes no production chemistry or behavior.
 - `digital-protocell/examples/dcdev020r8r2_catalyst_investment_payback.rs` — observer-only DC-DEV-020-R8-R2 physical root, catalyst-production shadow, checkpoint payback, and whole-window R6 comparison; it changes no production chemistry or behavior.
+- `.github/workflows/dc-dev-020m0.yml` — scoped exact-head CI for the selected ConservativeV2/reserve-OFF M0 production baseline, fresh D-087 certification, packaged Linux runtime, and preservation checks.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m0baseline001/` — M0 production-selection provenance and dependency boundary.
 - `digital-protocell/examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs` — preserved exact R8-R4 machinery with explicit R9-R1 ConservativeV2 compatibility replay; historical default behavior remains unchanged.
 - `digital-protocell/examples/dcdev020r8r3_shared_affinity_helper.rs` — shared R8-R4 replay helper with explicit R9-R1 ConservativeV2 compatibility mode; historical default behavior remains unchanged.
 

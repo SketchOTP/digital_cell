@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260822-dcdev020r9r6r2-ci-closure`
-- External directive ID: `DC-DEV-020-R9-R6-R2`
-- Objective: `Obtain exact-head remote closure by extending the unchanged R9 workflow timeout from 30 to 45 minutes.`
+- Local directive ID: `D-20260822-dcdev020m0baseline001`
+- External directive ID: `DC-DEV-020-M0-BASELINE-001`
+- Objective: `Select ConservativeV2 with D-091 reserve disabled as the production M0 organism and prove that selected baseline end-to-end.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `V20 must reproduce 8/8; FULL must reproduce accepted R9-R5-R1 control identity; the shadow must use only frozen release/loss before productive chemistry and frozen storage afterward, preserve reserve function and strict closure, complete actual D-087 replay, and pass exact-head remote CI and architect review.`
-- Current phase: `R9-R6-R1 is CONTINUE / NOT ACCEPTED solely because exact-head runs 32566149213 and 32566146792 were cancelled at the 30-minute workflow ceiling after substantive verification passed. R9-R6 science is resolved as INSUFFICIENT. No production reserve repair, recycling, salvage, behavior, evolution, R9-R7, or DC-DEV-021 work is authorized.`
-- Expected or actual touched areas: `one CI timeout value and CI-closure governance only`
-- Immediate next action: `Run exact-head DC-DEV-020-R9 CI with timeout 45 minutes, then return to the Architect; do not begin R9-R7 or DC-DEV-021.`
+- Acceptance: `Identify the production reserve selector, select ConservativeV2/reserve OFF without changing D-091 science, reproduce fresh actual D-087 8/8, prove zero reserve flows and strict closure, qualify packaged Linux runtime identity, and pass exact-head remote CI.`
+- Current phase: `R9-R6-R2 is architect-accepted and the R9 diagnostic phase is closed. M0 is the only authorized execution boundary. D-091 remains preserved but is not selected for M0 production; M1, R9-R7, recycling, salvage, behavior, and evolution remain unauthorized.`
+- Expected or actual touched areas: `phase1-certifier production selector default, explicit R9 diagnostic workflow environment, compact M0 evidence, M0 documentation, scoped CI, and governance handoff`
+- Immediate next action: `Commit the bounded M0 selection/evidence package, regenerate result-head provenance, run exact-head M0 and preservation CI, then return to the Architect.`
 
 ## Temporary task-relevant facts
 

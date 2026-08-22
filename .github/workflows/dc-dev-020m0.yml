@@ -1,0 +1,126 @@
+name: DC-DEV-020-M0 selected baseline qualification
+
+on:
+  push:
+    branches:
+      - strategy/dc-dev-020r9-mesh-contract-requalification
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+
+permissions:
+  contents: read
+
+jobs:
+  m0:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out exact head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.89.0
+          components: rustfmt
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Governance validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: >-
+          rustfmt +1.89.0 --edition 2021 --check
+          crates/phase1-certifier/src/sim.rs
+          crates/phase1-certifier/src/bin/phase1_runtime.rs
+          crates/phase1-certifier/src/bin/phase1_certification.rs
+      - name: Preserve certified source boundary
+        run: |
+          set -euo pipefail
+          changed="$(git diff --name-only 737b0c905e9bd80b6d256681c8530d66917019b6 HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then
+            echo 'M0 may not modify chemistry-core'
+            exit 1
+          fi
+          if printf '%s\n' "$changed" | grep -Ei 'dcdev020r7|dcdev020r8|dcdev020r9r[1-6]|dc-dev-021|recycl|salvage'; then
+            echo 'M0 may not rewrite sealed diagnostics or begin later work'
+            exit 1
+          fi
+      - name: Fresh selected-production D087 certification
+        working-directory: digital-protocell
+        run: |
+          unset DCDEV020R9R2_V2 DCDEV020R9R3_CONTRACT DCDEV020R9R3_RESERVE
+          cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- \
+            --output experiments/generated/dcdev020m0baseline001/ci/certification
+      - name: Fresh packaged Linux production runtime
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          unset DCDEV020R9R2_V2 DCDEV020R9R3_CONTRACT DCDEV020R9R3_RESERVE
+          cargo +1.89.0 build -p phase1-certifier --bin digital-protocell-phase1 --release
+          out="experiments/generated/dcdev020m0baseline001/ci/linux_runtime"
+          mkdir -p "$out"
+          cp target/release/digital-protocell-phase1 "$out/digital-protocell-phase1"
+          "$out/digital-protocell-phase1" --steps 5000 --seed 2 --out "$out/production_runtime.json"
+      - name: Verify selected M0 artifacts
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020m0baseline001")
+          protocol = json.loads((root / "protocol.json").read_text())
+          selection = json.loads((root / "selection.json").read_text())
+          committed = json.loads((root / "qualification.json").read_text())
+          report = json.loads((root / "ci/certification/certification/report.json").read_text())
+          runtime = json.loads((root / "ci/linux_runtime/production_runtime.json").read_text())
+          head = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          assert protocol["starting_head"] == "737b0c905e9bd80b6d256681c8530d66917019b6"
+          assert protocol["evidence_generation_head"] == "737b0c905e9bd80b6d256681c8530d66917019b6"
+          assert committed["evidence_generation_head"] == "737b0c905e9bd80b6d256681c8530d66917019b6"
+          assert subprocess.run(["git", "merge-base", "--is-ancestor", protocol["starting_head"], head]).returncode == 0
+          assert selection["selected_contract"] == "ConservativeV2"
+          assert selection["selected_reserve_enabled"] is False
+          assert report["mesh_contract"] == "ConservativeV2"
+          assert report["reserve_enabled"] is False
+          gates = [report[f"gate{i}"]["pass"] for i in range(8)]
+          assert gates == [True] * 8
+          ledger = runtime["ledger"]
+          assert runtime["steps"] == 5000 and runtime["alive"] is True
+          assert ledger["reserve_a_to_r"] == 0.0
+          assert ledger["reserve_r_to_a"] == 0.0
+          assert ledger["reserve_r_to_w"] == 0.0
+          assert ledger["reserve_rejected_steps"] == 0
+          assert ledger["activation_equivalent_closure_residual"] <= 1e-6
+          assert committed["fresh_d087_vector"] == [True] * 8
+          assert committed["selected_production_reserve_flows"] == {"a_to_r": 0.0, "r_to_a": 0.0, "r_to_w": 0.0}
+          assert committed["strict_material_closure"] is True
+          assert committed["causal_death_semantics"] is True
+          assert committed["m1_execution_authorized"] is False
+          print("DCDEV020M0_SELECTED_BASELINE_ARTIFACT_VERIFICATION_PASS")
+          PY
+      - name: Phase-1 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics -- --nocapture
+      - name: D091 preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+      - name: Upload compact M0 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020m0baseline001-compact-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020m0baseline001/protocol.json
+            digital-protocell/experiments/generated/dcdev020m0baseline001/selection.json
+            digital-protocell/experiments/generated/dcdev020m0baseline001/qualification.json
+            digital-protocell/experiments/generated/dcdev020m0baseline001/ci/certification/certification/report.json
+            digital-protocell/experiments/generated/dcdev020m0baseline001/ci/linux_runtime/production_runtime.json
+          include-hidden-files: false

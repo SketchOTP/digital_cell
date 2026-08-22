@@ -80,6 +80,8 @@ jobs:
         working-directory: digital-protocell
         env:
           DCDEV020R9R2_V2: '1'
+          DCDEV020R9R3_CONTRACT: ConservativeV2
+          DCDEV020R9R3_RESERVE: '1'
         run: >-
           cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --quiet --
           --output experiments/generated/dcdev020r9r2/actual_d087
@@ -87,6 +89,8 @@ jobs:
         working-directory: digital-protocell
         env:
           DCDEV020R9R2_V2: '1'
+          DCDEV020R9R3_CONTRACT: ConservativeV2
+          DCDEV020R9R3_RESERVE: '1'
           DCDEV020R9R2_CERTIFIER_REPORT: experiments/generated/dcdev020r9r2/actual_d087/manifest.json
           DCDEV020R9R2_REPLAY_REPORT: experiments/generated/dcdev020r9r2/r9r1_exact/manifest.json
           DCDEV020R9R2_OUTPUT: experiments/generated/dcdev020r9r2

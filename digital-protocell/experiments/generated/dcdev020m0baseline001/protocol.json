@@ -1,0 +1,24 @@
+{
+  "directive": "DC-DEV-020-M0-BASELINE-001",
+  "starting_head": "737b0c905e9bd80b6d256681c8530d66917019b6",
+  "production_selection_site": "digital-protocell/crates/phase1-certifier/src/sim.rs",
+  "selectors": {
+    "contract": "conservative_v2_enabled()",
+    "reserve": "reserve_enabled()"
+  },
+  "ordinary_default": {
+    "contract": "ConservativeV2",
+    "reserve_enabled": false
+  },
+  "explicit_diagnostic_selectors": {
+    "historical_contract": "DCDEV020R9R3_CONTRACT=HistoricalV1",
+    "reserve_on": "DCDEV020R9R3_RESERVE=1"
+  },
+  "d091_preserved": true,
+  "chemistry_equations_changed": false,
+  "parameters_changed": false,
+  "d087_thresholds_changed": false,
+  "m1_execution_authorized": false,
+  "next_execution_started": false,
+  "evidence_generation_head": "737b0c905e9bd80b6d256681c8530d66917019b6"
+}

@@ -187,27 +187,34 @@ pub fn seed_mesh(radius: f64, seed: u64) -> MaterialMesh {
     mesh
 }
 
-/// Select the physical/material contract for the observer-only R9 matrix.
+/// Select the physical/material contract for production and the observer-only R9 matrix.
 ///
 /// The R9-R3 selector is deliberately independent from reserve selection. The
 /// older R9-R2 switch remains supported so historical workflows retain their
-/// exact behavior when the new selectors are absent.
+/// exact behavior when explicitly selecting HistoricalV1 or ConservativeV2.
+/// The ordinary M0 production default is ConservativeV2.
 pub fn conservative_v2_enabled() -> bool {
     match std::env::var("DCDEV020R9R3_CONTRACT").ok().as_deref() {
         Some("ConservativeV2") => true,
         Some("HistoricalV1") => false,
         Some(_) => false,
-        None => std::env::var("DCDEV020R9R2_V2").as_deref() == Ok("1"),
+        None => match std::env::var("DCDEV020R9R2_V2").ok().as_deref() {
+            Some("0") => false,
+            _ => true,
+        },
     }
 }
 
 /// Select D-091 reserve physiology independently from the material contract.
+///
+/// Reserve is not part of the ordinary M0 production default. Diagnostic and
+/// historical callers must opt in explicitly with the R9-R3 reserve selector.
 pub fn reserve_enabled() -> bool {
     match std::env::var("DCDEV020R9R3_RESERVE").ok().as_deref() {
         Some("1") | Some("on") | Some("ON") | Some("true") => true,
         Some("0") | Some("off") | Some("OFF") | Some("false") => false,
         Some(_) => false,
-        None => conservative_v2_enabled(),
+        None => false,
     }
 }
 

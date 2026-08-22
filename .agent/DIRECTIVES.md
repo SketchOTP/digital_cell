@@ -584,3 +584,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260822-dcdev020r9r6r1-evidence-closure
 - Status at issuance: ISSUED
+
+## D-20260822-dcdev020m0baseline001
+
+- Issued: `2026-08-22T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M0-BASELINE-001`
+- Objective: Select ConservativeV2 with D-091 reserve disabled as the production M0 organism and prove that selected baseline end-to-end.
+- Scope: Entry `737b0c905e9bd80b6d256681c8530d66917019b6`, PR #44, production selector provenance, minimal default-selection change, fresh actual D-087 qualification, zero reserve-flow evidence, packaged Linux runtime identity, compact evidence, governance, and scoped exact-head CI.
+- Exclusions: D-091 source/equations/constants, D-087 thresholds, certified chemistry, reserve redesign, recycling/salvage, sensors, actuators, feeding, locomotion, learning, evolution, DC-DEV-021, M1, and deletion of D-091.
+- Acceptance: Selected ordinary production path is ConservativeV2/reserve OFF; fresh actual D-087 is 8/8; strict closure and causal death semantics remain valid; packaged Linux runtime uses identical configuration; exact-head remote CI succeeds; and architect review accepts the bounded result.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260822-dcdev020r9r6r2-ci-closure
+- Status at issuance: ISSUED
