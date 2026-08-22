@@ -317,7 +317,59 @@ jobs:
           assert report["next_execution_started"] is False
           assert protocol["observer_only"] is True
           assert qualification["primary_classification"] == report["classification"]
-          print("DCDEV020R9R5_CHARGE_LIQUIDITY_ARTIFACT_VERIFICATION_PASS")
+           print("DCDEV020R9R5_CHARGE_LIQUIDITY_ARTIFACT_VERIFICATION_PASS")
+           PY
+      - name: R9-R5-R1 valid liquidity counterfactual audit
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R5_R1: '1'
+        run: >-
+          cargo +1.89.0 run -p phase1-certifier
+          --example dcdev020r9r5_charge_liquidity_audit --quiet --
+          --output experiments/generated/dcdev020r9r5r1
+      - name: Verify R9-R5-R1 diagnostic artifacts
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r9r5r1")
+          report = json.loads((root / "r9r5_report.json").read_text())
+          protocol = json.loads((root / "protocol.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          assert report["directive"] == "DC-DEV-020-R9-R5-R1"
+          assert report["starting_head"] == "f1fad5c65859f3a314102d3ec5a0751822a2f5ea"
+          assert report["horizon_steps"] == 5000
+          assert report["gate0"]["v20_gates"] == [True] * 8
+          assert report["gate0"]["v20_all_pass"] is True
+          assert abs(report["gate0"]["full_r_m"] - 0.8398695202805284) <= 1e-9
+          assert abs(report["gate0"]["store_off_r_m"] - 1.0180981834599838) <= 1e-9
+          arm = report["gate3_liquid_reserve_ub"]["arm"]
+          assert arm["mode"] == "LIQUID_RESERVE_PRETHROTTLE_UB"
+          assert arm["accepted_steps"] == 5000
+          assert arm["exact_horizon"] is True
+          assert arm["diagnostic_liquid_r_available"] > 0
+          assert arm["diagnostic_liquid_r_used"] > 0
+          assert arm["diagnostic_liquid_r_used_for_m"] > 0
+          assert arm["diagnostic_liquid_r_used_for_l"] > 0
+          assert arm["reserve_function"]["rejected_steps"] == 0
+          assert arm["reserve_function"]["strict_closure"] is True
+          assert report["gate3_liquid_reserve_ub"]["actual_d087"]["gates"] == [True, False, True, True, True, True, True, True]
+          assert report["gate3_liquid_reserve_ub"]["restored"] is False
+          assert report["strict_closure"] is True
+          assert report["production_changes"] is False
+          assert report["r9r5_architect_status"] == "REPLAN_NOT_ACCEPTED"
+          assert report["r9r5_outside_factorization_classification_retired"] is True
+          assert report["recycling_authorized"] is False
+          assert report["dc_dev_021_authorized"] is False
+          assert report["next_execution_started"] is False
+          assert protocol["observer_only"] is True
+          assert protocol["production_defaults_unchanged"] is True
+          assert protocol["counterfactual"]["acts_before_a_limited_m_l_rate_calculation"] is True
+          assert qualification["primary_classification"] == report["classification"]
+          assert report["classification"] == "DCDEV020R9R5R1_RESERVE_LIQUIDITY_CONTRIBUTORY_NOT_SUFFICIENT"
+          print("DCDEV020R9R5R1_LIQUIDITY_ARTIFACT_VERIFICATION_PASS")
           PY
       - name: Upload compact R9-R2 evidence
         if: always()
@@ -369,4 +421,15 @@ jobs:
             digital-protocell/experiments/generated/dcdev020r9r5/protocol.json
             digital-protocell/experiments/generated/dcdev020r9r5/qualification.json
             digital-protocell/experiments/generated/dcdev020r9r5/ledger_manifest.json
+           include-hidden-files: false
+      - name: Upload compact R9-R5-R1 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020r9r5r1-compact-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020r9r5r1/r9r5_report.json
+            digital-protocell/experiments/generated/dcdev020r9r5r1/protocol.json
+            digital-protocell/experiments/generated/dcdev020r9r5r1/qualification.json
+            digital-protocell/experiments/generated/dcdev020r9r5r1/ledger_manifest.json
           include-hidden-files: false

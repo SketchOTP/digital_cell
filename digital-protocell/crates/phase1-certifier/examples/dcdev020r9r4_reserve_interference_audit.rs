@@ -123,8 +123,14 @@ fn mode_label(mode: ReserveDiagnosticMode) -> &'static str {
         ReserveDiagnosticMode::MaintenancePriority => "MAINTENANCE_PRIORITY_SHADOW",
         ReserveDiagnosticMode::SurplusOnlyStore => "SURPLUS_ONLY_STORE",
         ReserveDiagnosticMode::LiquidReserveUpperBound => "LIQUID_RESERVE_UB",
+        ReserveDiagnosticMode::LiquidReservePreThrottleUpperBound => {
+            "LIQUID_RESERVE_PRETHROTTLE_UB"
+        }
         ReserveDiagnosticMode::SurplusOnlyStoreLiquidReserveUpperBound => {
             "SURPLUS_ONLY_STORE_LIQUID_RESERVE_UB"
+        }
+        ReserveDiagnosticMode::SurplusOnlyStoreLiquidReservePreThrottleUpperBound => {
+            "SURPLUS_ONLY_STORE_LIQUID_RESERVE_PRETHROTTLE_UB"
         }
     }
 }

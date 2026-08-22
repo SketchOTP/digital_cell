@@ -1,8 +1,6 @@
 //! Independent simulation driver — uses mesh kernels, never d086_analysis gates.
 
-use chemistry_core::material_mesh::{
-    LumpedChem, MaterialMesh, DEFAULT_REBOND_DIST, DEFAULT_RHO_S,
-};
+use chemistry_core::material_mesh::{LumpedChem, MaterialMesh, DEFAULT_REBOND_DIST, DEFAULT_RHO_S};
 use chemistry_core::mesh_mechanics::{mechanics_step, remesh, MechParams};
 use chemistry_core::mesh_reactions::{
     pulse_tracers, reactions_step_with_reserve_mode, tracer_catalyst_fraction,
@@ -68,6 +66,12 @@ pub struct AccumLedger {
     #[serde(default)]
     pub diagnostic_liquid_r_used: f64,
     #[serde(default)]
+    pub diagnostic_liquid_r_available: f64,
+    #[serde(default)]
+    pub diagnostic_liquid_r_used_for_m: f64,
+    #[serde(default)]
+    pub diagnostic_liquid_r_used_for_l: f64,
+    #[serde(default)]
     pub net_activation_equivalent: f64,
     #[serde(default)]
     pub activation_equivalent_closure_residual: f64,
@@ -101,6 +105,9 @@ impl AccumLedger {
         self.a_to_r_same_step_new_a += r.a_to_r_same_step_new_a;
         self.a_to_r_pre_existing_a += r.a_to_r_pre_existing_a;
         self.diagnostic_liquid_r_used += r.diagnostic_liquid_r_used;
+        self.diagnostic_liquid_r_available += r.diagnostic_liquid_r_available;
+        self.diagnostic_liquid_r_used_for_m += r.diagnostic_liquid_r_used_for_m;
+        self.diagnostic_liquid_r_used_for_l += r.diagnostic_liquid_r_used_for_l;
         self.net_activation_equivalent += r.net_activation_equivalent;
         self.activation_equivalent_closure_residual += r.activation_equivalent_closure_residual;
     }
@@ -115,19 +122,19 @@ pub fn seed_mesh(radius: f64, seed: u64) -> MaterialMesh {
         f: 0.4,
         w: 0.1,
         tracer_c: 0.0,
-            c_h: 0.0,
-            c_b: 0.0,
-            r: 0.0,
-            u_h: 0.0,
-            u_b: 0.0,
-            k_h: 0.0,
-            k_b: 0.0,
-            q_k: 0.0,
-            q_e: 0.0,
-            k_a: 0.0,
-            k_r: 0.0,
-            k_node_b: 0.0,
-        };
+        c_h: 0.0,
+        c_b: 0.0,
+        r: 0.0,
+        u_h: 0.0,
+        u_b: 0.0,
+        k_h: 0.0,
+        k_b: 0.0,
+        q_k: 0.0,
+        q_e: 0.0,
+        k_a: 0.0,
+        k_r: 0.0,
+        k_node_b: 0.0,
+    };
     let exterior = LumpedChem {
         c: 0.0,
         a: 0.0,
@@ -135,19 +142,19 @@ pub fn seed_mesh(radius: f64, seed: u64) -> MaterialMesh {
         f: 1.0,
         w: 0.0,
         tracer_c: 0.0,
-            c_h: 0.0,
-            c_b: 0.0,
-            r: 0.0,
-            u_h: 0.0,
-            u_b: 0.0,
-            k_h: 0.0,
-            k_b: 0.0,
-            q_k: 0.0,
-            q_e: 0.0,
-            k_a: 0.0,
-            k_r: 0.0,
-            k_node_b: 0.0,
-        };
+        c_h: 0.0,
+        c_b: 0.0,
+        r: 0.0,
+        u_h: 0.0,
+        u_b: 0.0,
+        k_h: 0.0,
+        k_b: 0.0,
+        q_k: 0.0,
+        q_e: 0.0,
+        k_a: 0.0,
+        k_r: 0.0,
+        k_node_b: 0.0,
+    };
     let mut mesh = MaterialMesh::seed_regular(
         n,
         radius,
@@ -296,8 +303,14 @@ pub fn reserve_diagnostic_mode_from_env() -> ReserveDiagnosticMode {
     match std::env::var("DCDEV020R9R5_MODE").ok().as_deref() {
         Some("SURPLUS_ONLY_STORE") => ReserveDiagnosticMode::SurplusOnlyStore,
         Some("LIQUID_RESERVE_UB") => ReserveDiagnosticMode::LiquidReserveUpperBound,
+        Some("LIQUID_RESERVE_PRETHROTTLE_UB") => {
+            ReserveDiagnosticMode::LiquidReservePreThrottleUpperBound
+        }
         Some("SURPLUS_ONLY_STORE_LIQUID_RESERVE_UB") => {
             ReserveDiagnosticMode::SurplusOnlyStoreLiquidReserveUpperBound
+        }
+        Some("SURPLUS_ONLY_STORE_LIQUID_RESERVE_PRETHROTTLE_UB") => {
+            ReserveDiagnosticMode::SurplusOnlyStoreLiquidReservePreThrottleUpperBound
         }
         _ => ReserveDiagnosticMode::Full,
     }
@@ -320,12 +333,7 @@ pub fn coupled_step_with_reserve_mode(
     led
 }
 
-pub fn run_coupled(
-    mesh: &mut MaterialMesh,
-    steps: usize,
-    build: bool,
-    metab: bool,
-) -> AccumLedger {
+pub fn run_coupled(mesh: &mut MaterialMesh, steps: usize, build: bool, metab: bool) -> AccumLedger {
     let mech = FROZEN_CENTER;
     let react = reaction_params_for(mesh);
     let transport = frozen_transport();
@@ -519,7 +527,10 @@ mod tests {
                 true,
                 ReserveDiagnosticMode::Full,
             );
-            assert_eq!(serde_json::to_value(a).unwrap(), serde_json::to_value(b).unwrap());
+            assert_eq!(
+                serde_json::to_value(a).unwrap(),
+                serde_json::to_value(b).unwrap()
+            );
             assert_eq!(fingerprint(&ordinary), fingerprint(&observer));
         }
     }
@@ -569,5 +580,60 @@ mod tests {
             assert!(led.activation_equivalent_closure_residual <= 1e-6);
             assert_eq!(led.reserve.rejected_steps, 0);
         }
+    }
+
+    #[test]
+    fn r9r5r1_prethrottle_liquidity_is_exercised_before_m_l_demand_suppression() {
+        std::env::set_var("DCDEV020R9R3_CONTRACT", "ConservativeV2");
+        std::env::set_var("DCDEV020R9R3_RESERVE", "1");
+        let mut full = seed_mesh(14.0, 2);
+        let mut shadow = full.clone();
+        for mesh in [&mut full, &mut shadow] {
+            mesh.interior.a = 1e-5;
+            mesh.interior.r = 0.5;
+            mesh.interior.c = 2.0;
+            mesh.interior.n = 0.0;
+            mesh.interior.f = 0.0;
+        }
+        let mut react = reaction_params_for(&full);
+        // Hold the constructed reserve stock in place so the test isolates the
+        // pre-throttle M/L availability question from ordinary D-091 release.
+        react.reserve.k_release = 0.0;
+        let full_led = reactions_step_with_reserve_mode(
+            &mut full,
+            &react,
+            FROZEN_CENTER.dt,
+            true,
+            true,
+            ReserveDiagnosticMode::Full,
+        );
+        let shadow_led = reactions_step_with_reserve_mode(
+            &mut shadow,
+            &react,
+            FROZEN_CENTER.dt,
+            true,
+            true,
+            ReserveDiagnosticMode::LiquidReservePreThrottleUpperBound,
+        );
+        assert!(full_led.diagnostic_liquid_r_used.abs() <= 1e-12);
+        assert!(shadow_led.structural_demand_a > full_led.structural_demand_a);
+        assert!(shadow_led.membrane_demand_a > full_led.membrane_demand_a);
+        assert!(shadow_led.diagnostic_liquid_r_available > 0.0);
+        assert!(shadow_led.diagnostic_liquid_r_used > 0.0);
+        assert!(shadow_led.diagnostic_liquid_r_used_for_m > 0.0);
+        assert!(shadow_led.diagnostic_liquid_r_used_for_l > 0.0);
+        assert!(shadow_led.m_produced > full_led.m_produced);
+        assert!(shadow_led.l_produced > full_led.l_produced);
+        assert!(
+            shadow_led.activation_equivalent_closure_residual <= 1e-6,
+            "closure residual {} reserve residual {} r_to_a {} r_to_w {} used {} a_to_m {} a_to_l {}",
+            shadow_led.activation_equivalent_closure_residual,
+            shadow_led.reserve_closure_residual,
+            shadow_led.reserve.r_to_a,
+            shadow_led.reserve.r_to_w,
+            shadow_led.diagnostic_liquid_r_used,
+            shadow_led.a_to_m,
+            shadow_led.a_to_l
+        );
     }
 }

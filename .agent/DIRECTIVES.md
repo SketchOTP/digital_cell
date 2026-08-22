@@ -249,6 +249,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260821-dcdev020r9r5r1-valid-liquidity-counterfactual
+
+- Issued: `2026-08-21T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R9-R5-R1`
+- Objective: Repair the R9-R5 Gate-7 runner-root defect and determine whether an exercised, pre-throttle diagnostic liquidity counterfactual can account for the D-091 replacement regression.
+- Scope: Exact 5,000-step V20 control, preserved R9-R5 charge-side evidence, pre-throttle M/L availability shadow, positive diagnostic-R utilization, strict closure, actual D-087 comparison, compact evidence, governance, and scoped CI.
+- Exclusions: Production reserve kinetics, parameters, thresholds, sources, sinks, chemistry, behavior, heredity, reproduction, recycling/salvage, and DC-DEV-021.
+- Acceptance: V20 packaged-runtime 8/8, focused pre-throttle test, positive diagnostic R use for M/L, strict closure, narrow classification, exact-head remote CI, and architect review.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260818-dcdev020r8r2-catalyst-investment-payback
 
 - Issued: `2026-08-18T00:00:00-04:00`

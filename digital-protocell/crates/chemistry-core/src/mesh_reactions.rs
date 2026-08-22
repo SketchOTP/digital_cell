@@ -199,6 +199,16 @@ pub struct ReactionLedger {
     /// R9-R5 observer accounting: reserve material used directly for M/L.
     #[serde(default)]
     pub diagnostic_liquid_r_used: f64,
+    /// R9-R5-R1 observer accounting: reserve made available to the pre-throttle
+    /// M/L shadow demand calculation during this step.
+    #[serde(default)]
+    pub diagnostic_liquid_r_available: f64,
+    /// R9-R5-R1 observer accounting: reserve consumed for structural M.
+    #[serde(default)]
+    pub diagnostic_liquid_r_used_for_m: f64,
+    /// R9-R5-R1 observer accounting: reserve consumed for membrane L.
+    #[serde(default)]
+    pub diagnostic_liquid_r_used_for_l: f64,
     /// R9-R5 observer accounting: net activation-equivalent production/loss.
     #[serde(default)]
     pub net_activation_equivalent: f64,
@@ -221,8 +231,13 @@ pub enum ReserveDiagnosticMode {
     /// Preserve frozen reserve fluxes while allowing R as a diagnostic-only
     /// 1:1 substitute for existing A-dependent M/L maintenance.
     LiquidReserveUpperBound,
+    /// Diagnostic-only upper bound that exposes existing R to the unchanged
+    /// M/L demand equations before low A can throttle those equations.
+    LiquidReservePreThrottleUpperBound,
     /// Apply both independent observer-only counterfactuals.
     SurplusOnlyStoreLiquidReserveUpperBound,
+    /// Apply surplus-only storage and the pre-throttle liquidity shadow.
+    SurplusOnlyStoreLiquidReservePreThrottleUpperBound,
 }
 
 #[inline]
@@ -242,11 +257,21 @@ pub fn g_strain(eps: f64, g0: f64, k_eps: f64) -> f64 {
 }
 
 pub fn structural_build_flux(mesh: &MaterialMesh, i: usize, p: &ReactionParams) -> f64 {
+    structural_build_flux_with_a(mesh, i, p, mesh.interior.a)
+}
+
+#[inline]
+pub fn structural_build_flux_with_a(
+    mesh: &MaterialMesh,
+    i: usize,
+    p: &ReactionParams,
+    activation_a: f64,
+) -> f64 {
     if mesh.edges[i].ruptured {
         return 0.0;
     }
     let qc = q_catalyst(mesh.interior.c, p.q_c);
-    let a = mesh.interior.a.max(0.0);
+    let a = activation_a.max(0.0);
     let g = g_strain(mesh.strain(i), p.g0, p.k_eps);
     // Scale by current length so mass-damaged edges (small ℓ⁰) still rebuild;
     // remesh split/merge preserves Σℓ so total demand stays remesh-invariant.
@@ -311,6 +336,12 @@ pub fn reactions_step_with_reserve_mode(
         ReserveDiagnosticMode::LiquidReserveUpperBound
             | ReserveDiagnosticMode::SurplusOnlyStoreLiquidReserveUpperBound
     );
+    let liquid_pre_throttle = matches!(
+        reserve_mode,
+        ReserveDiagnosticMode::LiquidReservePreThrottleUpperBound
+            | ReserveDiagnosticMode::SurplusOnlyStoreLiquidReservePreThrottleUpperBound
+    );
+    let liquid_for_m_l = liquid_reserve || liquid_pre_throttle;
 
     if enable_metab {
         if p.composition.enable {
@@ -415,10 +446,14 @@ pub fn reactions_step_with_reserve_mode(
                 ReserveFluxControls::RELEASE_AND_LOSS_ONLY
             }
             ReserveDiagnosticMode::SurplusOnlyStore
-            | ReserveDiagnosticMode::SurplusOnlyStoreLiquidReserveUpperBound => {
+            | ReserveDiagnosticMode::SurplusOnlyStoreLiquidReserveUpperBound
+            | ReserveDiagnosticMode::SurplusOnlyStoreLiquidReservePreThrottleUpperBound => {
                 ReserveFluxControls::RELEASE_AND_LOSS_ONLY
             }
-            ReserveDiagnosticMode::LiquidReserveUpperBound => ReserveFluxControls::FULL,
+            ReserveDiagnosticMode::LiquidReserveUpperBound
+            | ReserveDiagnosticMode::LiquidReservePreThrottleUpperBound => {
+                ReserveFluxControls::FULL
+            }
         };
         let reserve_area = mesh.area().max(1e-6);
         let reserve_a0 = mesh.interior.a.max(0.0) * reserve_area;
@@ -479,6 +514,9 @@ pub fn reactions_step_with_reserve_mode(
     }
 
     led.a_before_structural_build = mesh.interior.a.max(0.0) * area;
+    if liquid_pre_throttle {
+        led.diagnostic_liquid_r_available = mesh.interior.r.max(0.0) * area;
+    }
 
     // Per-edge build / turnover / bind.
     for i in 0..n_edges {
@@ -486,13 +524,24 @@ pub fn reactions_step_with_reserve_mode(
             continue;
         }
         if enable_build {
-            let j_build = structural_build_flux(mesh, i, p) * dt;
+            let activation_for_flux = if liquid_pre_throttle {
+                mesh.interior.a.max(0.0) + mesh.interior.r.max(0.0)
+            } else {
+                mesh.interior.a.max(0.0)
+            };
+            let j_build = structural_build_flux_with_a(mesh, i, p, activation_for_flux) * dt;
             let need_a = j_build / p.yield_a_to_m.max(1e-15);
             led.structural_demand_a += need_a;
             let have = mesh.interior.a.max(0.0) * area;
-            let a_take = need_a.min(have);
+            let a_baseline = if liquid_pre_throttle {
+                structural_build_flux_with_a(mesh, i, p, mesh.interior.a.max(0.0)) * dt
+                    / p.yield_a_to_m.max(1e-15)
+            } else {
+                need_a
+            };
+            let a_take = a_baseline.min(have);
             let r_have = mesh.interior.r.max(0.0) * area;
-            let r_take = if liquid_reserve {
+            let r_take = if liquid_for_m_l {
                 (need_a - a_take).max(0.0).min(r_have)
             } else {
                 0.0
@@ -513,6 +562,7 @@ pub fn reactions_step_with_reserve_mode(
             led.a_consumed_build += take;
             led.a_to_m += a_take;
             led.diagnostic_liquid_r_used += r_take;
+            led.diagnostic_liquid_r_used_for_m += r_take;
             led.m_produced += dm;
             led.w_produced += w_product;
 
@@ -589,14 +639,24 @@ pub fn reactions_step_with_reserve_mode(
         };
         let reserve_cap = 0.15 * peri;
         if theta < 0.95 || mesh.free_l < reserve_cap {
-            let l_prod = 0.02 * qc * gb * mesh.interior.a.max(0.0) * peri * dt;
+            let activation_for_flux = if liquid_pre_throttle {
+                mesh.interior.a.max(0.0) + mesh.interior.r.max(0.0)
+            } else {
+                mesh.interior.a.max(0.0)
+            };
+            let l_prod = 0.02 * qc * gb * activation_for_flux * peri * dt;
             led.membrane_demand_a += l_prod;
             let room = (reserve_cap - mesh.free_l).max(0.0) + (1.0 - theta) * peri;
-            let a_take = l_prod
+            let l_baseline = if liquid_pre_throttle {
+                0.02 * qc * gb * mesh.interior.a.max(0.0) * peri * dt
+            } else {
+                l_prod
+            };
+            let a_take = l_baseline
                 .min(mesh.interior.a.max(0.0) * area)
                 .min(room.max(0.0));
             let r_have = mesh.interior.r.max(0.0) * area;
-            let r_take = if liquid_reserve {
+            let r_take = if liquid_for_m_l {
                 (l_prod - a_take).max(0.0).min(r_have)
             } else {
                 0.0
@@ -616,6 +676,7 @@ pub fn reactions_step_with_reserve_mode(
             led.l_produced += take;
             led.a_to_l += a_take;
             led.diagnostic_liquid_r_used += r_take;
+            led.diagnostic_liquid_r_used_for_l += r_take;
             led.w_produced += w_product;
         }
     }
@@ -650,6 +711,7 @@ pub fn reactions_step_with_reserve_mode(
                 - led.a_decayed
                 - led.a_to_m
                 - led.a_to_l
+                - led.diagnostic_liquid_r_used
                 - led.reserve.r_to_w
                 - reserve_a1
                 - reserve_r1)
@@ -689,8 +751,13 @@ pub fn reactions_step_with_reserve_mode(
 
     led.a_to_r_same_step_new_a = led.reserve.a_to_r.min(led.new_a_surplus);
     led.a_to_r_pre_existing_a = (led.reserve.a_to_r - led.a_to_r_same_step_new_a).max(0.0);
-    led.net_activation_equivalent =
-        led.a_produced - led.a_to_c - led.a_decayed - led.a_to_m - led.a_to_l - led.reserve.r_to_w;
+    led.net_activation_equivalent = led.a_produced
+        - led.a_to_c
+        - led.a_decayed
+        - led.a_to_m
+        - led.a_to_l
+        - led.diagnostic_liquid_r_used
+        - led.reserve.r_to_w;
     let final_activation = mesh.interior.a.max(0.0) * area + mesh.interior.r.max(0.0) * area;
     led.activation_equivalent_closure_residual =
         (led.a_stock_entering + led.r_stock_entering + led.a_produced
@@ -698,6 +765,7 @@ pub fn reactions_step_with_reserve_mode(
             - led.a_decayed
             - led.a_to_m
             - led.a_to_l
+            - led.diagnostic_liquid_r_used
             - led.reserve.r_to_w
             - final_activation)
             .abs();

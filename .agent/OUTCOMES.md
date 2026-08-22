@@ -463,6 +463,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260821-dcdev020r9r5r1-valid-liquidity-counterfactual - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R5R1-VALID-LIQUIDITY-COUNTERFACTUAL`
+- Supersedes outcome: none
+- Closed: `2026-08-21T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R9-R5 is recorded as `REPLAN / NOT ACCEPTED`; the broad `DCDEV020R9R5_RESERVE_DEFECT_OUTSIDE_CHARGE_LIQUIDITY_FACTORIZATION` classification is retired as authority. The R9-R5 Gate-7 failure was reproduced as a runner-root defect. R9-R5-R1 uses a diagnostic-only `LIQUID_RESERVE_PRETHROTTLE_UB` shadow that evaluates frozen M/L demand with A+R, funds baseline demand from A, and funds only incremental demand from R. Local V20 is 8/8. The 5,000-step treatment uses `10.986875147245845` diagnostic R (`9.741776616086431` for M and `1.2450985311594456` for L), improves `R_m` from `0.8398695202805284` to `0.9994257946133822`, but remains D-087 Gate-1 negative. Classification: `DCDEV020R9R5R1_RESERVE_LIQUIDITY_CONTRIBUTORY_NOT_SUFFICIENT`.
+- Changed areas: additive observer-only M/L availability ledger, pre-throttle diagnostic mode, R9-R5 runner-root resolution, focused phase1-certifier test, compact R9-R5-R1 evidence, documentation, governance, and scoped workflow. Production D-091 reserve physiology and certified Phase-1 biology were not changed.
+- Validation:
+  - Focused pre-throttle liquidity regression - PASSED
+  - Phase1-certifier sim tests - `4 passed, 0 failed`
+  - Local 5,000-step R9-R5-R1 audit - COMPLETED; strict closure true; reserve rejects zero
+  - Local V20 packaged-runtime control - `8/8`
+  - Exact-head remote CI and architect review - PENDING
+- Remaining risks: The result remains provisional until exact-head remote CI verifies the R9-R5-R1 generated artifact and the architect independently reviews the causal interpretation. No reserve repair, recycling/salvage, production integration, behavior, evolution, or DC-DEV-021 work is authorized.
+- Blockers: exact-head remote CI and independent architect review.
+- Follow-up directive: none
+
 ## D-20260820-dcdev020r9r4-reserve-interference-audit - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020R9R4-STORAGE-CAUSAL-PRIORITY-INSUFFICIENT`

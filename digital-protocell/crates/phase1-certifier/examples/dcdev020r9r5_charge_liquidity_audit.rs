@@ -19,6 +19,7 @@ use std::io::Write;
 use std::path::{Path, PathBuf};
 
 const STARTING_HEAD: &str = "08e1c45b11892e0b5533b11c74f175ee84d243ed";
+const R1_STARTING_HEAD: &str = "f1fad5c65859f3a314102d3ec5a0751822a2f5ea";
 const STEPS: usize = 5_000;
 const SEED: u64 = 2;
 const EPS: f64 = 1e-8;
@@ -58,7 +59,17 @@ struct ArmReport {
     store_cap_respected: bool,
     ordinary_r_to_a: f64,
     diagnostic_liquid_r_used: f64,
+    diagnostic_liquid_r_available: f64,
+    diagnostic_liquid_r_used_for_m: f64,
+    diagnostic_liquid_r_used_for_l: f64,
     row_file: String,
+}
+
+fn r1_enabled() -> bool {
+    matches!(
+        env::var("DCDEV020R9R5_R1").ok().as_deref(),
+        Some("1") | Some("true") | Some("TRUE")
+    )
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -68,6 +79,10 @@ struct ActualD087Summary {
     all_pass: bool,
     primary_conclusion: String,
     artifact_root: String,
+    gate1_detail: String,
+    gate2_detail: String,
+    gate3_detail: String,
+    gate4_detail: String,
 }
 
 fn mode_label(mode: ReserveDiagnosticMode) -> &'static str {
@@ -79,8 +94,14 @@ fn mode_label(mode: ReserveDiagnosticMode) -> &'static str {
         ReserveDiagnosticMode::MaintenancePriority => "MAINTENANCE_PRIORITY",
         ReserveDiagnosticMode::SurplusOnlyStore => "SURPLUS_ONLY_STORE",
         ReserveDiagnosticMode::LiquidReserveUpperBound => "LIQUID_RESERVE_UB",
+        ReserveDiagnosticMode::LiquidReservePreThrottleUpperBound => {
+            "LIQUID_RESERVE_PRETHROTTLE_UB"
+        }
         ReserveDiagnosticMode::SurplusOnlyStoreLiquidReserveUpperBound => {
             "SURPLUS_ONLY_STORE_LIQUID_RESERVE_UB"
+        }
+        ReserveDiagnosticMode::SurplusOnlyStoreLiquidReservePreThrottleUpperBound => {
+            "SURPLUS_ONLY_STORE_LIQUID_RESERVE_PRETHROTTLE_UB"
         }
     }
 }
@@ -120,6 +141,7 @@ fn run_arm(out: &Path, arm: &str, mode: ReserveDiagnosticMode) -> Result<ArmRepo
             mode,
             ReserveDiagnosticMode::SurplusOnlyStore
                 | ReserveDiagnosticMode::SurplusOnlyStoreLiquidReserveUpperBound
+                | ReserveDiagnosticMode::SurplusOnlyStoreLiquidReservePreThrottleUpperBound
         ) && led.reserve.a_to_r > led.reserve_store_potential.min(led.new_a_surplus) + EPS
         {
             store_cap_respected = false;
@@ -178,6 +200,9 @@ fn run_arm(out: &Path, arm: &str, mode: ReserveDiagnosticMode) -> Result<ArmRepo
         store_cap_respected,
         ordinary_r_to_a: acc.reserve_r_to_a,
         diagnostic_liquid_r_used: acc.diagnostic_liquid_r_used,
+        diagnostic_liquid_r_available: acc.diagnostic_liquid_r_available,
+        diagnostic_liquid_r_used_for_m: acc.diagnostic_liquid_r_used_for_m,
+        diagnostic_liquid_r_used_for_l: acc.diagnostic_liquid_r_used_for_l,
         row_file: row_path.display().to_string(),
     })
 }
@@ -243,13 +268,18 @@ fn actual_d087(
         gates,
         primary_conclusion: report.primary_conclusion,
         artifact_root: report.artifact_root,
+        gate1_detail: report.gate1.detail,
+        gate2_detail: report.gate2.detail,
+        gate3_detail: report.gate3.detail,
+        gate4_detail: report.gate4.detail,
     })
 }
 
 fn main() -> Result<(), String> {
+    let r1 = r1_enabled();
     let cwd = env::current_dir().map_err(|e| e.to_string())?;
     let repo_root = if cwd.join("crates/phase1-certifier").exists() {
-        cwd.clone()
+        cwd.parent().unwrap_or(&cwd).to_path_buf()
     } else {
         cwd.join("digital-protocell")
     };
@@ -286,11 +316,12 @@ fn main() -> Result<(), String> {
         "surplus_only_store",
         ReserveDiagnosticMode::SurplusOnlyStore,
     )?;
-    let liquid = run_arm(
-        &out,
-        "liquid_reserve_ub",
-        ReserveDiagnosticMode::LiquidReserveUpperBound,
-    )?;
+    let liquid_mode = if r1 {
+        ReserveDiagnosticMode::LiquidReservePreThrottleUpperBound
+    } else {
+        ReserveDiagnosticMode::LiquidReserveUpperBound
+    };
+    let liquid = run_arm(&out, "liquid_reserve_ub", liquid_mode)?;
     let surplus_d087 = actual_d087(
         &repo_root,
         &out.join("surplus_only_store_d087"),
@@ -299,9 +330,13 @@ fn main() -> Result<(), String> {
     let liquid_d087 = actual_d087(
         &repo_root,
         &out.join("liquid_reserve_ub_d087"),
-        Some("LIQUID_RESERVE_UB"),
+        Some(if r1 {
+            "LIQUID_RESERVE_PRETHROTTLE_UB"
+        } else {
+            "LIQUID_RESERVE_UB"
+        }),
     )?;
-    let run_combined = !surplus_d087.all_pass && !liquid_d087.all_pass;
+    let run_combined = !r1 && !surplus_d087.all_pass && !liquid_d087.all_pass;
     let combined = if run_combined {
         Some(run_arm(
             &out,
@@ -323,7 +358,7 @@ fn main() -> Result<(), String> {
     env::remove_var("DCDEV020R9R5_MODE");
 
     let gate0 = serde_json::json!({
-        "entry_head": STARTING_HEAD,
+        "entry_head": if r1 { R1_STARTING_HEAD } else { STARTING_HEAD },
         "v20_gates": v20_gates,
         "v20_all_pass": v20_all_pass,
         "full_r_m": full.structural.r_x,
@@ -336,18 +371,30 @@ fn main() -> Result<(), String> {
         .as_ref()
         .map(|summary| summary.all_pass)
         .unwrap_or(false);
-    let classification = match (surplus_restored, liquid_restored, combined_restored) {
-        (true, true, _) => "DCDEV020R9R5_OVERCHARGE_AND_LIQUIDITY_DUAL_CAPACITY",
-        (true, false, _) => "DCDEV020R9R5_STANDING_STOCK_OVERCHARGE_CONFIRMED",
-        (false, true, _) => "DCDEV020R9R5_RESERVE_LIQUIDITY_DEFICIT_CONFIRMED",
-        (false, false, true) => "DCDEV020R9R5_COUPLED_OVERCHARGE_LIQUIDITY_INTERACTION",
-        (false, false, false) => {
-            "DCDEV020R9R5_RESERVE_DEFECT_OUTSIDE_CHARGE_LIQUIDITY_FACTORIZATION"
+    let classification = if r1 {
+        if !v20_all_pass {
+            "DCDEV020R9R5R1_V20_CONTROL_NOT_REPRODUCED"
+        } else if liquid_restored {
+            "DCDEV020R9R5R1_RESERVE_LIQUIDITY_DEFECT_CONFIRMED"
+        } else if liquid.structural.r_x > full.structural.r_x + 1e-9 {
+            "DCDEV020R9R5R1_RESERVE_LIQUIDITY_CONTRIBUTORY_NOT_SUFFICIENT"
+        } else {
+            "DCDEV020R9R5R1_RESERVE_LIQUIDITY_NOT_SUFFICIENT"
+        }
+    } else {
+        match (surplus_restored, liquid_restored, combined_restored) {
+            (true, true, _) => "DCDEV020R9R5_OVERCHARGE_AND_LIQUIDITY_DUAL_CAPACITY",
+            (true, false, _) => "DCDEV020R9R5_STANDING_STOCK_OVERCHARGE_CONFIRMED",
+            (false, true, _) => "DCDEV020R9R5_RESERVE_LIQUIDITY_DEFICIT_CONFIRMED",
+            (false, false, true) => "DCDEV020R9R5_COUPLED_OVERCHARGE_LIQUIDITY_INTERACTION",
+            (false, false, false) => {
+                "DCDEV020R9R5_RESERVE_DEFECT_OUTSIDE_CHARGE_LIQUIDITY_FACTORIZATION"
+            }
         }
     };
     let report = serde_json::json!({
-        "directive": "DC-DEV-020-R9-R5",
-        "starting_head": STARTING_HEAD,
+        "directive": if r1 { "DC-DEV-020-R9-R5-R1" } else { "DC-DEV-020-R9-R5" },
+        "starting_head": if r1 { R1_STARTING_HEAD } else { STARTING_HEAD },
         "horizon_steps": STEPS,
         "seed": SEED,
         "gate0": gate0,
@@ -356,6 +403,18 @@ fn main() -> Result<(), String> {
         "gate3_liquid_reserve_ub": {"arm": liquid, "actual_d087": liquid_d087, "restored": liquid_restored},
         "gate4_combined": {"arm": combined, "actual_d087": combined_d087, "restored": combined_restored, "executed": run_combined},
         "classification": classification,
+        "r9r5_architect_status": if r1 { "REPLAN_NOT_ACCEPTED" } else { "PENDING" },
+        "r9r5_outside_factorization_classification_retired": r1,
+        "valid_liquid_counterfactual_definition": if r1 { "Existing frozen structural M and membrane L demand equations receive only the currently available activation-equivalent R as a pre-throttle shadow availability; A is consumed first, diagnostic R supplies only the unmet M/L amount, and no unrelated chemistry sees the substitution." } else { "not_applicable" },
+        "counterfactual_acts_before_a_limited_m_l_rate_calculation": r1,
+        "diagnostic_r_usage": {
+            "full_available": full.diagnostic_liquid_r_available,
+            "full_used": full.diagnostic_liquid_r_used,
+            "liquid_available": liquid.diagnostic_liquid_r_available,
+            "liquid_used": liquid.diagnostic_liquid_r_used,
+            "liquid_used_for_m": liquid.diagnostic_liquid_r_used_for_m,
+            "liquid_used_for_l": liquid.diagnostic_liquid_r_used_for_l
+        },
         "reserve_function": {
             "surplus": surplus.reserve_function,
             "liquid": liquid.reserve_function,

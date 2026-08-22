@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260821-dcdev020r9r5-charge-liquidity-audit`
-- External directive ID: `DC-DEV-020-R9-R5`
-- Objective: `Separate standing-stock A→R overcharge from reserve-liquidity insufficiency using exact 5,000-step observer-only counterfactuals.`
+- Local directive ID: `D-20260821-dcdev020r9r5r1-valid-liquidity-counterfactual`
+- External directive ID: `DC-DEV-020-R9-R5-R1`
+- Objective: `Repair the R9-R5 Gate-7 runner root and execute a causally operative pre-throttle reserve-liquidity counterfactual without changing production biology.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `V20 must reproduce 8/8 on the sanctioned packaged runtime; FULL and STORE_OFF must match the sealed R9-R4 R_m controls; both independent R9-R5 arms and the combined arm must complete 5,000 steps with strict closure; exact-head remote CI and architect review remain required.`
-- Current phase: `R9-R4 and R9-R4-R1 are architect-accepted. R9-R5 observer implementation and local audit are complete provisionally: surplus storage is non-binding, direct liquid-R use is zero in the frozen trajectory, and neither shadow restores D-087. No reserve repair, recycling, behavior, evolution, or DC-DEV-021 work is authorized.`
-- Expected or actual touched areas: `bounded R9-R5 observer ledger and diagnostic reserve modes, phase1-certifier runner/tests, compact evidence, documentation, governance, and scoped workflow`
-- Immediate next action: `Run exact-head remote R9-R5 CI and return the compact report for architect review; do not begin reserve repair or DC-DEV-021.`
+- Acceptance: `V20 must reproduce actual packaged-runtime 8/8; the valid liquidity shadow must use positive diagnostic R before A-limited M/L demand suppression, preserve strict closure, preserve FULL/STORE_OFF controls, and pass exact-head remote CI and architect review.`
+- Current phase: `R9-R4 and R9-R4-R1 are architect-accepted. R9-R5 is REPLAN / NOT ACCEPTED; its broad OUTSIDE_CHARGE_LIQUIDITY_FACTORIZATION classification is retired. R9-R5-R1 local evidence exercises positive diagnostic R and improves but does not restore D-087. No reserve repair, recycling, behavior, evolution, or DC-DEV-021 work is authorized.`
+- Expected or actual touched areas: `bounded R9-R5-R1 observer counterfactual, Gate-7 runner-root repair, phase1-certifier runner/tests, compact evidence, documentation, governance, and scoped workflow`
+- Immediate next action: `Run exact-head remote R9-R5-R1 CI and return the compact report for architect review; do not begin reserve repair or DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -49,9 +49,9 @@
 
 ## Blockers
 
-- R9-R2 is architect-accepted as `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`; R9-R3-R1, R9-R4, and R9-R4-R1 are architect-accepted and preserved. R9-R5 is now the only active review boundary; no reserve repair, recycling, salvage, production integration, or DC-DEV-021 work is authorized.
+- R9-R2 is architect-accepted as `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`; R9-R3-R1, R9-R4, and R9-R4-R1 are architect-accepted and preserved. R9-R5 is REPLAN / NOT ACCEPTED and R9-R5-R1 is now the only active review boundary; no reserve repair, recycling, salvage, production integration, or DC-DEV-021 work is authorized.
 
-- R9-R5 exact-head remote CI and independent architect review remain open. The local Windows run cannot qualify the Linux packaged-runtime Gate 7 stage; this is an infrastructure boundary, not a scientific claim. The R9-R5 negative does not authorize reserve repair, allocator changes, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021.
+- R9-R5 is REPLAN / NOT ACCEPTED. Its exact remote V20 artifact showed Gate 7 false because the R9-R5 runner supplied the wrong repository root; its broad classification is retired as authority. R9-R5-R1 must restore V20 8/8 and exercise positive diagnostic R before any causal liquidity classification is accepted. No reserve repair, allocator changes, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
 
 ## Pending decisions
 

@@ -118,6 +118,9 @@
 - `digital-protocell/crates/phase1-certifier/examples/dcdev020r9r5_charge_liquidity_audit.rs` — exact 5,000-step FULL/STORE_OFF, surplus-only, liquid upper-bound, combined observer arms and actual D-087 shadow summaries.
 - `digital-protocell/experiments/generated/dcdev020r9r5/` — compact R9-R5 protocol, qualification, and report; dense rows remain local/external audit output.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r5/` — R9-R5 charge/liquidity protocol and provisional fail-closed disposition.
+- `digital-protocell/crates/phase1-certifier/examples/dcdev020r9r5_charge_liquidity_audit.rs` — R9-R5 preserved audit plus R9-R5-R1 pre-throttle liquidity counterfactual selected by `DCDEV020R9R5_R1`.
+- `digital-protocell/experiments/generated/dcdev020r9r5r1/` — compact R9-R5-R1 protocol, qualification, and local dense-ledger manifest.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r5r1/` — R9-R5-R1 Gate-7 repair, counterfactual definition, evidence, and provisional classification.
 
 ## External integration points
 

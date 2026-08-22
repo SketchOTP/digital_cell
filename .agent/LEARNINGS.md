@@ -376,3 +376,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R9-R5 observer-only charge/liquidity decomposition; no production repair, recycling, parameter tuning, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020R9R4-001
+
+## L-DCDEV020R9R5R1-001
+
+- Learning ID: L-DCDEV020R9R5R1-001
+- Date: 2026-08-21
+- Fact or lesson: R9-R5's original liquid arm was not causally operative because its A-dependent demand was evaluated before any diagnostic R substitution and it used zero diagnostic R. The R9-R5 Gate-7 failure also contained a runner-root defect: the example passed `digital-protocell` while the runtime resolver expects the parent repository root. R9-R5-R1 repairs only the runner root and adds `LIQUID_RESERVE_PRETHROTTLE_UB`, which evaluates frozen M/L demand using A+R, funds baseline A demand from A, and funds only incremental demand from diagnostic R. The local 5,000-step arm uses `10.986875147245845` diagnostic R (`9.741776616086431` for M and `1.2450985311594456` for L), improves `R_m` from `0.8398695202805284` to `0.9994257946133822`, but remains D-087 Gate 1 negative. Classification: `DCDEV020R9R5R1_RESERVE_LIQUIDITY_CONTRIBUTORY_NOT_SUFFICIENT`, pending exact-head remote CI and architect review.
+- Evidence location: `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs`, `digital-protocell/crates/phase1-certifier/src/sim.rs`, `digital-protocell/crates/phase1-certifier/examples/dcdev020r9r5_charge_liquidity_audit.rs`, `digital-protocell/experiments/generated/dcdev020r9r5r1/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r5r1/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R9-R5-R1 observer-only liquidity identifiability and Gate-7 harness closure; no production repair, recycling, salvage, parameter tuning, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: none
