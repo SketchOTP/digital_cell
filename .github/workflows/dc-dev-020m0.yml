@@ -92,6 +92,10 @@ jobs:
           assert gates == [True] * 8
           ledger = runtime["ledger"]
           assert runtime["steps"] == 5000 and runtime["alive"] is True
+          assert runtime["mesh_contract"] == "ConservativeV2"
+          assert runtime["reserve_enabled"] is False
+          assert report["mesh_contract"] == runtime["mesh_contract"]
+          assert report["reserve_enabled"] == runtime["reserve_enabled"]
           assert ledger["reserve_a_to_r"] == 0.0
           assert ledger["reserve_r_to_a"] == 0.0
           assert ledger["reserve_r_to_w"] == 0.0

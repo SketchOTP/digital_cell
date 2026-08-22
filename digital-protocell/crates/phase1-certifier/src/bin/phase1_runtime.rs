@@ -2,7 +2,7 @@
 
 use chemistry_core::material_mesh::MaterialMesh;
 use phase1_certifier::frozen::FROZEN_CENTER;
-use phase1_certifier::sim::{run_coupled, seed_mesh};
+use phase1_certifier::sim::{contract_label, reserve_enabled, run_coupled, seed_mesh};
 use std::env;
 use std::fs;
 use std::path::PathBuf;
@@ -88,6 +88,8 @@ fn main() {
     let ledger = run_coupled(&mut mesh, steps, true, true);
     let report = serde_json::json!({
         "package": "digital-protocell-phase1-v1",
+        "mesh_contract": contract_label(),
+        "reserve_enabled": reserve_enabled(),
         "steps": steps,
         "alive": mesh.alive,
         "area": mesh.area(),

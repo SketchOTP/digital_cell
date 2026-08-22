@@ -43,7 +43,9 @@
     "unbind_extent": 373.9537673562889
   },
   "m_total": 47.91880296540307,
+  "mesh_contract": "ConservativeV2",
   "offline": true,
   "package": "digital-protocell-phase1-v1",
+  "reserve_enabled": false,
   "steps": 5000
 }
