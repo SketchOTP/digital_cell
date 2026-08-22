@@ -317,8 +317,8 @@ jobs:
           assert report["next_execution_started"] is False
           assert protocol["observer_only"] is True
           assert qualification["primary_classification"] == report["classification"]
-           print("DCDEV020R9R5_CHARGE_LIQUIDITY_ARTIFACT_VERIFICATION_PASS")
-           PY
+          print("DCDEV020R9R5_CHARGE_LIQUIDITY_ARTIFACT_VERIFICATION_PASS")
+          PY
       - name: R9-R5-R1 valid liquidity counterfactual audit
         working-directory: digital-protocell
         env:
