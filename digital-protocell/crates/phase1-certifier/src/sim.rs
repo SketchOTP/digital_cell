@@ -52,6 +52,14 @@ pub struct AccumLedger {
     #[serde(default)]
     pub r_stock_entering: f64,
     #[serde(default)]
+    pub a_after_activation: f64,
+    #[serde(default)]
+    pub r_before_release: f64,
+    #[serde(default)]
+    pub a_before_catalyst_production: f64,
+    #[serde(default)]
+    pub a_before_final_storage: f64,
+    #[serde(default)]
     pub a_to_m: f64,
     #[serde(default)]
     pub a_to_l: f64,
@@ -98,6 +106,10 @@ impl AccumLedger {
         self.reserve_closure_residual += r.reserve_closure_residual;
         self.a_stock_entering += r.a_stock_entering;
         self.r_stock_entering += r.r_stock_entering;
+        self.a_after_activation += r.a_after_activation;
+        self.r_before_release += r.r_before_release;
+        self.a_before_catalyst_production += r.a_before_catalyst_production;
+        self.a_before_final_storage += r.a_before_final_storage;
         self.a_to_m += r.a_to_m;
         self.a_to_l += r.a_to_l;
         self.reserve_store_potential += r.reserve_store_potential;
@@ -312,6 +324,7 @@ pub fn reserve_diagnostic_mode_from_env() -> ReserveDiagnosticMode {
         Some("SURPLUS_ONLY_STORE_LIQUID_RESERVE_PRETHROTTLE_UB") => {
             ReserveDiagnosticMode::SurplusOnlyStoreLiquidReservePreThrottleUpperBound
         }
+        Some("MOBILIZE_FIRST_STORE_LAST") => ReserveDiagnosticMode::MobilizeFirstStoreLast,
         _ => ReserveDiagnosticMode::Full,
     }
 }
@@ -635,5 +648,36 @@ mod tests {
             shadow_led.a_to_m,
             shadow_led.a_to_l
         );
+    }
+
+    #[test]
+    fn r9r6_mobilizes_before_production_and_stores_after_demand() {
+        std::env::set_var("DCDEV020R9R3_CONTRACT", "ConservativeV2");
+        std::env::set_var("DCDEV020R9R3_RESERVE", "1");
+        let mut shadow = seed_mesh(14.0, 2);
+        shadow.interior.a = 0.02;
+        shadow.interior.r = 0.8;
+        shadow.interior.c = 2.0;
+        shadow.interior.n = 0.0;
+        shadow.interior.f = 0.0;
+        let react = reaction_params_for(&shadow);
+        let transport = frozen_transport();
+        let led = coupled_step_with_reserve_mode(
+            &mut shadow,
+            &FROZEN_CENTER,
+            &react,
+            &transport,
+            true,
+            true,
+            ReserveDiagnosticMode::MobilizeFirstStoreLast,
+        );
+        assert!(led.reserve.r_to_a > 0.0);
+        assert!(led.reserve.a_to_r > 0.0);
+        assert!(led.a_before_catalyst_production > 0.0);
+        assert!(led.a_before_final_storage >= 0.0);
+        assert_eq!(led.reserve.r_to_m, 0.0);
+        assert!(led.activation_equivalent_closure_residual <= 1e-6);
+        assert!(led.reserve_closure_residual <= 1e-6);
+        assert_eq!(led.reserve.rejected_steps, 0);
     }
 }

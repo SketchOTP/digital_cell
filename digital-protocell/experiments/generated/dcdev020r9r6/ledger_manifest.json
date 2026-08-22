@@ -1,0 +1,13 @@
+{
+  "directive": "DC-DEV-020-R9-R6",
+  "dense_ledgers": "local target-r9r6-final/full.jsonl and target-r9r6-final/mobilize_first_store_last.jsonl; not committed",
+  "compact_files": {
+    "r9r6_report.json": "9FD1FED8EA50E87F5F20D10B974B76EB11731DEDF27E16BD11955880CB9812D2",
+    "protocol.json": "FC2CE74A461ECF92F9F60B7953151E2FB7BDF823684541C6D3CD3B1A0EFA1A0F",
+    "qualification.json": "82AA260E135E9870C29238E20F42C0D39A81483AC7B0EA26F9E1D73F31376D2D",
+    "docs/strategy/developmental_sensorimotor/dcdev020r9r6/mobilize_first_store_last.md": "F6F39A200DE42D0E4487D63FCD31D5A3444ADE74093AD36F443182A52BBE1CC3"
+  },
+  "hash_algorithm": "SHA-256",
+  "source_head": "f1704acff5ca64e509a28c74af8cccbf76439ef2",
+  "remote_ci_required": true
+}

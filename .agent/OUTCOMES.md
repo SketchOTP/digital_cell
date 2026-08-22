@@ -463,6 +463,26 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260822-dcdev020r9r6-mobilize-first-store-last - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R6-MOBILIZE-FIRST-STORE-LAST`
+- Supersedes outcome: none
+- Closed: `2026-08-22T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The final observer-only D-091 phase-order topology was run from `f1704acff5ca64e509a28c74af8cccbf76439ef2` for exactly 5,000 accepted steps. V20 reproduced 8/8 and FULL reproduced `R_m=0.839869520280528`. `MOBILIZE_FIRST_STORE_LAST` reused frozen release/loss before unchanged productive chemistry and frozen storage afterward, reaching `R_m=0.839973528362306` with actual D-087 gates `[true,false,false,false,false,true,true,true]`. Replete A→R was `147.5982725689982`; post-starvation R→A was `26.15666583047419`; reserve rejects were zero and strict closure passed. Classification: `DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_CONTRIBUTORY_NOT_SUFFICIENT`.
+- Changed areas: additive observer phase-order ledger fields, one explicit observer mode, phase1-certifier test/runner, compact evidence, documentation, governance, and scoped workflow. Production chemistry, production reserve physiology, parameters, thresholds, recycling, and DC-DEV-021 were not changed.
+- Validation:
+  - Sanctioned Rust 1.89.0 compile/check - PASSED
+  - Focused R9-R6 ordering regression - PASSED
+  - Local exact 5,000-step FULL/shadow audit and actual D-087 replay - COMPLETED
+  - V20 control - 8/8
+  - Shadow actual D-087 - 3/8; Gates 0, 5, 6, and 7 pass
+  - Reserve function - replete A→R and post-starvation R→A positive; zero rejects; strict closure - PASSED
+  - Exact-head remote CI and architect review - PENDING
+- Remaining risks: The topology is contributory but does not restore D-087 certification. R9-R6 is the final observer-only D-091 topology audit; return to the Architect for a production D-091 decision. No R9-R7, reserve repair, recycling/salvage, behavior, evolution, or DC-DEV-021 work is authorized.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
+
 ## D-20260821-dcdev020r9r5r1-valid-liquidity-counterfactual - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020R9R5R1-VALID-LIQUIDITY-COUNTERFACTUAL`

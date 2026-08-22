@@ -176,6 +176,18 @@ pub struct ReactionLedger {
     /// R9-R5 observer accounting: R stock entering the reaction step.
     #[serde(default)]
     pub r_stock_entering: f64,
+    /// R9-R6 phase-order ledger: A after unchanged N/F activation.
+    #[serde(default)]
+    pub a_after_activation: f64,
+    /// R9-R6 phase-order ledger: reserve stock immediately before release/loss.
+    #[serde(default)]
+    pub r_before_release: f64,
+    /// R9-R6 phase-order ledger: A entering catalyst production.
+    #[serde(default)]
+    pub a_before_catalyst_production: f64,
+    /// R9-R6 phase-order ledger: A available before final A→R storage.
+    #[serde(default)]
+    pub a_before_final_storage: f64,
     /// R9-R5 observer accounting: A actually spent on structural maintenance.
     #[serde(default)]
     pub a_to_m: f64,
@@ -238,6 +250,9 @@ pub enum ReserveDiagnosticMode {
     SurplusOnlyStoreLiquidReserveUpperBound,
     /// Apply surplus-only storage and the pre-throttle liquidity shadow.
     SurplusOnlyStoreLiquidReservePreThrottleUpperBound,
+    /// Execute unchanged R→A/R→W before productive chemistry and unchanged
+    /// A→R storage after productive chemistry.
+    MobilizeFirstStoreLast,
 }
 
 #[inline]
@@ -342,6 +357,7 @@ pub fn reactions_step_with_reserve_mode(
             | ReserveDiagnosticMode::SurplusOnlyStoreLiquidReservePreThrottleUpperBound
     );
     let liquid_for_m_l = liquid_reserve || liquid_pre_throttle;
+    let mobilize_first_store_last = reserve_mode == ReserveDiagnosticMode::MobilizeFirstStoreLast;
 
     if enable_metab {
         if p.composition.enable {
@@ -378,6 +394,8 @@ pub fn reactions_step_with_reserve_mode(
         led.f_consumed += taken * area;
         led.a_produced += taken * area;
         led.w_produced += taken * area;
+        led.a_after_activation = mesh.interior.a.max(0.0) * area;
+        led.a_before_catalyst_production = led.a_after_activation;
 
         // Catalyst production / turnover (new C unlabeled; turnover ages tracer).
         // Composition mode: copy with μ during production only; turnover equal on both types.
@@ -436,6 +454,7 @@ pub fn reactions_step_with_reserve_mode(
         // D-091 metabolic reserve. Full mode preserves the existing ordering;
         // the other modes are bounded observer-only R9-R4/R9-R5 controls.
         led.a_before_reserve = mesh.interior.a.max(0.0) * area;
+        led.r_before_release = mesh.interior.r.max(0.0) * area;
         led.reserve_store_potential = reserve_store_potential_amount(mesh, p, dt);
         let pre_controls = match reserve_mode {
             ReserveDiagnosticMode::Full => ReserveFluxControls::FULL,
@@ -453,6 +472,9 @@ pub fn reactions_step_with_reserve_mode(
             ReserveDiagnosticMode::LiquidReserveUpperBound
             | ReserveDiagnosticMode::LiquidReservePreThrottleUpperBound => {
                 ReserveFluxControls::FULL
+            }
+            ReserveDiagnosticMode::MobilizeFirstStoreLast => {
+                ReserveFluxControls::RELEASE_AND_LOSS_ONLY
             }
         };
         let reserve_area = mesh.area().max(1e-6);
@@ -682,6 +704,7 @@ pub fn reactions_step_with_reserve_mode(
     }
 
     led.a_after_membrane_production = mesh.interior.a.max(0.0) * area;
+    led.a_before_final_storage = led.a_after_membrane_production;
 
     // R9-R5 attribution is deliberately an accounting decomposition. It does
     // not alter any frozen production coefficient or introduce a controller.
@@ -716,6 +739,25 @@ pub fn reactions_step_with_reserve_mode(
                 - reserve_a1
                 - reserve_r1)
                 .abs();
+    }
+
+    if mobilize_first_store_last && enable_metab {
+        let reserve_area = mesh.area().max(1e-6);
+        let reserve_a0 = mesh.interior.a.max(0.0) * reserve_area;
+        let reserve_r0 = mesh.interior.r.max(0.0) * reserve_area;
+        let post = reserve_metab_step_with_controls(mesh, p, dt, ReserveFluxControls::STORE_ONLY);
+        let reserve_a1 = mesh.interior.a.max(0.0) * reserve_area;
+        let reserve_r1 = mesh.interior.r.max(0.0) * reserve_area;
+        led.reserve_closure_residual +=
+            (reserve_a0 + reserve_r0 - reserve_a1 - reserve_r1 - post.r_to_w).abs();
+        led.reserve.a_to_r += post.a_to_r;
+        led.reserve.r_to_a += post.r_to_a;
+        led.reserve.r_to_w += post.r_to_w;
+        led.reserve.r_to_m += post.r_to_m;
+        led.reserve.w_from_r_growth += post.w_from_r_growth;
+        led.reserve.rejected_steps += post.rejected_steps;
+        led.a_after_post_maintenance_storage = reserve_a1;
+        led.a_after_reserve = reserve_a1;
     }
 
     if reserve_mode == ReserveDiagnosticMode::MaintenancePriority && enable_metab {

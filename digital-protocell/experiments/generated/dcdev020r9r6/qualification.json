@@ -1,0 +1,41 @@
+{
+  "directive": "DC-DEV-020-R9-R6",
+  "classification": "DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_CONTRIBUTORY_NOT_SUFFICIENT",
+  "v20_gates": [true, true, true, true, true, true, true, true],
+  "full_d087_gates": [true, false, false, false, false, true, true, true],
+  "shadow_d087_gates": [true, false, false, false, false, true, true, true],
+  "shadow_gate1": {
+    "r_m": 0.839973528362306,
+    "r_b": 5.57800284642538,
+    "r_c": 1.37732517447396,
+    "detail": "R_m=0.840 f_m=0.178 pool_m=0.419 R_b=5.578 f_b=0.002 pool_b=0.004 R_c=1.377 f_c=0.317 pool_c=0.238 ret_c=1.330 ret_a=1.923 dual=false d086_soft=true"
+  },
+  "reserve_function": {
+    "replete_a_to_r": 147.5982725689982,
+    "starvation_r_to_a": 26.15666583047419,
+    "a_at_starvation": 175.29580449186074,
+    "r_at_starvation": 40.537538757225555,
+    "maximum_starvation_r_to_a_step": 0.015335285323728683,
+    "rejected_steps": 0,
+    "strict_closure": true,
+    "preserved": true
+  },
+  "matched_comparison": {
+    "full_r_m": 0.839869520280528,
+    "shadow_r_m": 0.839973528362306,
+    "full_r_to_a": 46.8347246395621,
+    "shadow_r_to_a": 46.8396780892466,
+    "full_a_to_r": 147.585809275616,
+    "shadow_a_to_r": 147.5982725689982,
+    "full_a_to_c": 346.414314406431,
+    "shadow_a_to_c": 346.433703292473,
+    "full_c_produced": 346.414314406431,
+    "shadow_c_produced": 346.433703292473,
+    "full_m_produced": 48.3171907454217,
+    "shadow_m_produced": 48.3252704859018,
+    "full_l_produced": 15.927405321174,
+    "shadow_l_produced": 15.9302131548495,
+    "strict_material_closure": true
+  },
+  "architect_acceptance": "PENDING"
+}

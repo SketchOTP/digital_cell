@@ -263,6 +263,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260822-dcdev020r9r6-mobilize-first-store-last
+
+- Issued: `2026-08-22T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R9-R6`
+- Objective: Determine whether one parameter-free temporal topology—mobilize existing R→A before productive chemistry and charge A→R after productive demand—materially improves the accepted ConservativeV2/D-091 certification defect.
+- Scope: Exact entry `f1704acff5ca64e509a28c74af8cccbf76439ef2`, PR #44, exact 5,000-step matched FULL/shadow arms, frozen D-091 release/loss/store kernels, phase-order ledgers, actual D-087 replay, reserve-function preservation, compact evidence, governance, and scoped CI.
+- Exclusions: All rate/threshold/parameter changes, target A/R/health state, direct R→M/R→L production, controllers, recycling/salvage, source/sink/resource/transport changes, mechanics, behavior, evolution, R9-R7, and DC-DEV-021.
+- Acceptance: V20 8/8, accepted FULL control identity, correctly exercised `MOBILIZE_FIRST_STORE_LAST` shadow, actual D-087 result, genuine reserve function, strict closure, exact-head remote CI, and architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260821-dcdev020r9r5r1-valid-liquidity-counterfactual
+- Status at issuance: ISSUED
+
 ## D-20260818-dcdev020r8r2-catalyst-investment-payback
 
 - Issued: `2026-08-18T00:00:00-04:00`

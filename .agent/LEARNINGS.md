@@ -386,3 +386,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R9-R5-R1 observer-only liquidity identifiability and Gate-7 harness closure; no production repair, recycling, salvage, parameter tuning, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: none
+
+## L-DCDEV020R9R6-001
+
+- Learning ID: L-DCDEV020R9R6-001
+- Date: 2026-08-22
+- Fact or lesson: The final observer-only `MOBILIZE_FIRST_STORE_LAST` topology reuses the frozen D-091 R→A and R→W kernels before unchanged catalyst/structural/membrane production and the frozen A→R kernel afterward. V20 reproduces 8/8 and FULL reproduces `R_m=0.839869520280528`; the shadow reaches `R_m=0.839973528362306`, with actual D-087 gates `[true,false,false,false,false,true,true,true]`. Replete A→R is `147.5982725689982`, post-starvation R→A is `26.15666583047419`, rejects are zero, and strict closure passes. The topology is therefore contributory but insufficient, not a certification restoration.
+- Evidence location: `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs`, `digital-protocell/crates/phase1-certifier/src/sim.rs`, `digital-protocell/crates/phase1-certifier/examples/dcdev020r6_mobilize_first_store_last.rs`, `digital-protocell/experiments/generated/dcdev020r9r6/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r6/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R9-R6 final observer-only D-091 phase-order audit; no production repair, recycling, salvage, R9-R7, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020R9R5R1-001

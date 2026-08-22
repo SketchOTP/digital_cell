@@ -371,6 +371,67 @@ jobs:
           assert report["classification"] == "DCDEV020R9R5R1_RESERVE_LIQUIDITY_CONTRIBUTORY_NOT_SUFFICIENT"
           print("DCDEV020R9R5R1_LIQUIDITY_ARTIFACT_VERIFICATION_PASS")
           PY
+      - name: R9-R6 mobilize-first/store-last phase-order audit
+        working-directory: digital-protocell
+        run: >-
+          cargo +1.89.0 run -p phase1-certifier
+          --example dcdev020r6_mobilize_first_store_last --quiet --
+          --output experiments/generated/dcdev020r9r6
+      - name: Verify R9-R6 phase-order artifacts
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r9r6")
+          report = json.loads((root / "r9r6_report.json").read_text())
+          protocol = json.loads((root / "protocol.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          manifest = json.loads((root / "ledger_manifest.json").read_text())
+          assert report["directive"] == "DC-DEV-020-R9-R6"
+          assert report["starting_head"] == "f1704acff5ca64e509a28c74af8cccbf76439ef2"
+          assert report["horizon_steps"] == 5000
+          assert report["gate0"]["v20_gates"] == [True] * 8
+          assert report["gate0"]["v20_all_pass"] is True
+          assert report["gate0"]["controls_match"] is True
+          assert abs(report["gate0"]["full_r_m"] - 0.8398695202805284) <= 1e-9
+          full = report["gate1_phase_order"]["full"]
+          shadow = report["gate1_phase_order"]["shadow"]
+          assert full["accepted_steps"] == shadow["accepted_steps"] == 5000
+          assert full["exact_horizon"] is shadow["exact_horizon"] is True
+          assert report["gate1_phase_order"]["same_frozen_release_loss_kernels"] is True
+          assert report["gate1_phase_order"]["same_frozen_store_kernel"] is True
+          assert report["gate1_phase_order"]["direct_r_to_m_or_l"] is False
+          assert shadow["ledger"]["reserve_r_to_a"] > 0
+          assert shadow["ledger"]["reserve_a_to_r"] > 0
+          assert shadow["ledger"]["a_before_final_storage"] >= 0
+          assert report["gate1_phase_order"]["strict_material_closure"] is True
+          assert report["gate3_causal_comparison"]["shadow_improves_gate1_mechanism"] is True
+          assert report["gate4_actual_d087"]["shadow"]["gates"] == [True, False, False, False, False, True, True, True]
+          assert report["gate4_actual_d087"]["shadow"]["all_pass"] is False
+          rf = report["gate5_reserve_function"]
+          assert rf["replete_a_to_r"] > 0
+          assert rf["starvation_r_to_a"] > 0
+          assert rf["rejected_steps"] == 0
+          assert rf["strict_closure"] is True
+          assert rf["preserved"] is True
+          assert report["production_chemistry_changed"] is False
+          assert report["production_reserve_physiology_changed"] is False
+          assert report["recycling_authorized"] is False
+          assert report["dc_dev_021_authorized"] is False
+          assert report["next_execution_started"] is False
+          assert protocol["scope"] == "observer-only"
+          assert protocol["production_defaults_unchanged"] is True
+          assert protocol["shadow_semantics"]["direct_r_to_m_or_l"] is False
+          assert protocol["shadow_semantics"]["new_rates"] is False
+          assert protocol["shadow_semantics"]["target_signal"] is False
+          assert qualification["classification"] == report["classification"]
+          assert qualification["shadow_d087_gates"] == [True, False, False, False, False, True, True, True]
+          assert manifest["source_head"] == report["starting_head"]
+          assert report["classification"] == "DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_CONTRIBUTORY_NOT_SUFFICIENT"
+          print("DCDEV020R9R6_PHASE_ORDER_ARTIFACT_VERIFICATION_PASS")
+          PY
       - name: Upload compact R9-R2 evidence
         if: always()
         uses: actions/upload-artifact@v4

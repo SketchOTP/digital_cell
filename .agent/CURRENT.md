@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260821-dcdev020r9r5r1-valid-liquidity-counterfactual`
-- External directive ID: `DC-DEV-020-R9-R5-R1`
-- Objective: `Repair the R9-R5 Gate-7 runner root and execute a causally operative pre-throttle reserve-liquidity counterfactual without changing production biology.`
+- Local directive ID: `D-20260822-dcdev020r9r6-mobilize-first-store-last`
+- External directive ID: `DC-DEV-020-R9-R6`
+- Objective: `Determine whether the final observer-only mobilize-first/store-last D-091 phase ordering materially improves the accepted reserve-ON defect without changing production biology.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `V20 must reproduce actual packaged-runtime 8/8; the valid liquidity shadow must use positive diagnostic R before A-limited M/L demand suppression, preserve strict closure, preserve FULL/STORE_OFF controls, and pass exact-head remote CI and architect review.`
-- Current phase: `R9-R4 and R9-R4-R1 are architect-accepted. R9-R5 is REPLAN / NOT ACCEPTED; its broad OUTSIDE_CHARGE_LIQUIDITY_FACTORIZATION classification is retired. R9-R5-R1 local evidence exercises positive diagnostic R and improves but does not restore D-087. No reserve repair, recycling, behavior, evolution, or DC-DEV-021 work is authorized.`
-- Expected or actual touched areas: `bounded R9-R5-R1 observer counterfactual, Gate-7 runner-root repair, phase1-certifier runner/tests, compact evidence, documentation, governance, and scoped workflow`
-- Immediate next action: `Run exact-head remote R9-R5-R1 CI and return the compact report for architect review; do not begin reserve repair or DC-DEV-021.`
+- Acceptance: `V20 must reproduce 8/8; FULL must reproduce accepted R9-R5-R1 control identity; the shadow must use only frozen release/loss before productive chemistry and frozen storage afterward, preserve reserve function and strict closure, complete actual D-087 replay, and pass exact-head remote CI and architect review.`
+- Current phase: `R9-R5-R1 is architect-accepted. R9-R6 is the final authorized observer-only D-091 topology audit; local evidence is contributory but insufficient with shadow D-087 3/8. No production reserve repair, recycling, salvage, behavior, evolution, R9-R7, or DC-DEV-021 work is authorized.`
+- Expected or actual touched areas: `bounded R9-R6 phase-order observer mode, phase-order ledger fields, phase1-certifier runner/test, compact evidence, documentation, governance, and scoped workflow`
+- Immediate next action: `Validate compact R9-R6 evidence, run governance and scoped exact-head CI, then return to the Architect for the production D-091 decision; do not begin R9-R7 or DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -52,6 +52,7 @@
 - R9-R2 is architect-accepted as `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`; R9-R3-R1, R9-R4, and R9-R4-R1 are architect-accepted and preserved. R9-R5 is REPLAN / NOT ACCEPTED and R9-R5-R1 is now the only active review boundary; no reserve repair, recycling, salvage, production integration, or DC-DEV-021 work is authorized.
 
 - R9-R5 is REPLAN / NOT ACCEPTED. Its exact remote V20 artifact showed Gate 7 false because the R9-R5 runner supplied the wrong repository root; its broad classification is retired as authority. R9-R5-R1 must restore V20 8/8 and exercise positive diagnostic R before any causal liquidity classification is accepted. No reserve repair, allocator changes, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
+- R9-R5-R1 is architect-accepted at `f1704acff5ca64e509a28c74af8cccbf76439ef2` with CI `32549697865` and classification `DCDEV020R9R5R1_RESERVE_LIQUIDITY_CONTRIBUTORY_NOT_SUFFICIENT`. R9-R6 is the final observer-only topology audit; after it, return to the Architect and do not start R9-R7.
 
 ## Pending decisions
 

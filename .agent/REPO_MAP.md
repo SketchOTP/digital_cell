@@ -121,6 +121,11 @@
 - `digital-protocell/crates/phase1-certifier/examples/dcdev020r9r5_charge_liquidity_audit.rs` — R9-R5 preserved audit plus R9-R5-R1 pre-throttle liquidity counterfactual selected by `DCDEV020R9R5_R1`.
 - `digital-protocell/experiments/generated/dcdev020r9r5r1/` — compact R9-R5-R1 protocol, qualification, and local dense-ledger manifest.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r5r1/` — R9-R5-R1 Gate-7 repair, counterfactual definition, evidence, and provisional classification.
+- `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs` — bounded R9-R6 observer phase-order mode and additive phase ledger; production default remains `Full`.
+- `digital-protocell/crates/phase1-certifier/src/sim.rs` — R9-R6 mode selector, accumulator fields, and focused phase-order regression.
+- `digital-protocell/crates/phase1-certifier/examples/dcdev020r6_mobilize_first_store_last.rs` — exact 5,000-step FULL/shadow audit, actual D-087 replay, reserve-function checks, and compact report.
+- `digital-protocell/experiments/generated/dcdev020r9r6/` — compact R9-R6 report, protocol, qualification, and SHA-256 manifest; dense ledgers remain local/external.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r6/` — R9-R6 phase-order audit and contributory-not-sufficient disposition.
 
 ## External integration points
 
