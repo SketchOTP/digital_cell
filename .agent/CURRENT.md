@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-22T17:15:00-04:00`
+- Last updated: `2026-08-22T18:10:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260822-dcdev020m1r1capacitydecomp001`
-- External directive ID: `DC-DEV-020-M1-R1-CAPACITY-DECOMP-001`
-- Objective: `Causally decompose the accepted M1-R0 finite-feed failure with four observer-only matched capacity shadows without changing production biology.`
+- Local directive ID: `D-20260822-dcdev020m1r1r1-decay-confound001`
+- External directive ID: `DC-DEV-020-M1-R1-R1-DECAY-CONFOUND-001`
+- Objective: `Isolate the existing 4x starvation A-decay confound in the M1-R1 source-capacity shadow without changing production biology.`
 - Current status: `VALIDATING`
-- Acceptance: `Reproduce exact M1-R0 Arm C, prove conservative source stoichiometry and closure, execute source-capacity, catalyst-deferral, and combined shadows, classify one bounded result, and obtain exact-head remote CI.`
-- Current phase: `M0 and M1-R0 are architect-accepted. M1-R1 is the only authorized execution boundary; production change, M2, R9-R7, reserve redesign, recycling, salvage, behavior, evolution, and DC-DEV-021 remain unauthorized.`
-- Expected or actual touched areas: `regulatory-core observer example registration, compact M1-R1 evidence, M1-R1 documentation, scoped CI, and governance handoff`
-- Immediate next action: `Run local preservation and artifact checks, push the bounded M1-R1 package, verify exact-head remote CI, and return to the Architect without starting a production repair.`
+- Acceptance: `Reproduce M1-R1 exactly, prove 480/480 starvation-branch selection, neutralize only k_a_decay by K/4 in two diagnostic shadows, close accounting, and obtain exact-head remote CI.`
+- Current phase: `M0 and M1-R0 are architect-accepted. M1-R1 was replanned because source capacity was confounded by starvation decay. This R1-R1 isolation is the only authorized execution boundary; production change, M2, R9-R7, reserve redesign, recycling, salvage, behavior, evolution, and DC-DEV-021 remain unauthorized.`
+- Expected or actual touched areas: `M1-R1 observer reuse seam, decay-confound observer example, compact evidence, scoped CI, documentation, and governance handoff`
+- Immediate next action: `Run local preservation and artifact checks, push the bounded decay-confound package, verify exact-head remote CI, and return to the Architect without starting a production repair.`
 
 ## Temporary task-relevant facts
 
@@ -33,7 +33,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Local DC-DEV-020-M1-R0 observer replay plus phase-1, D-091, D-088, and evolution-harness preservation tests; M0 exact-head CI `32592048545` remains the accepted remote baseline`
+- Command or check: `Local M1-R1-R1 decay-confound assay, tolerant compact-artifact verification, governance validation, and scoped compile`
 - Result: `PASSED`
 
 ## Risks

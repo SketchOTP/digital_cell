@@ -30,7 +30,7 @@ const DT: f64 = 0.02;
 const TOL: f64 = 1e-8;
 
 #[derive(Debug, Clone, Copy, Serialize)]
-struct Snap {
+pub struct Snap {
     step: usize,
     area: f64,
     n: f64,
@@ -68,7 +68,7 @@ fn snap(mesh: &MaterialMesh, step: usize) -> Snap {
 }
 
 #[derive(Debug, Clone, Default, Serialize)]
-struct Ledger {
+pub struct Ledger {
     ordinary_n_consumed: f64,
     ordinary_f_consumed: f64,
     ordinary_a_produced: f64,
@@ -110,7 +110,7 @@ impl Ledger {
 }
 
 #[derive(Debug, Clone, Copy, Serialize)]
-enum Shadow {
+pub enum Shadow {
     Base,
     SourceCapacityUpperBound,
     CatalystInvestmentOff,
@@ -137,22 +137,39 @@ impl Shadow {
 }
 
 #[derive(Debug, Clone, Serialize)]
-struct ArmResult {
-    id: String,
-    shadow_definition: String,
-    initial: Snap,
-    final_state: Snap,
-    checkpoints: Vec<Snap>,
-    ledger: Ledger,
-    n_remaining: f64,
-    f_remaining: f64,
-    organized_material_delta: f64,
-    strict_material_delta: f64,
-    world_to_organism_closure_residual: f64,
-    internal_material_closure_residual: f64,
-    trajectory_hash: String,
-    final_mesh_hash: String,
-    viable_at_end: bool,
+pub struct ArmResult {
+    pub id: String,
+    pub shadow_definition: String,
+    pub initial: Snap,
+    pub final_state: Snap,
+    pub checkpoints: Vec<Snap>,
+    pub ledger: Ledger,
+    pub n_remaining: f64,
+    pub f_remaining: f64,
+    pub organized_material_delta: f64,
+    pub strict_material_delta: f64,
+    pub world_to_organism_closure_residual: f64,
+    pub internal_material_closure_residual: f64,
+    pub trajectory_hash: String,
+    pub final_mesh_hash: String,
+    pub viable_at_end: bool,
+}
+
+/// Per-step observer evidence for the frozen starvation predicate and its
+/// selected A-decay multiplier. This records existing production decisions;
+/// it does not provide a production override.
+#[derive(Debug, Clone, Copy, Serialize)]
+pub struct DecayObservation {
+    pub step: usize,
+    pub post_uptake_n: f64,
+    pub post_uptake_f: f64,
+    pub post_source_ub_n: f64,
+    pub post_source_ub_f: f64,
+    pub starvation_predicate: bool,
+    pub selected_multiplier: f64,
+    pub declared_k_a_decay: f64,
+    pub effective_k_a_decay: f64,
+    pub a_decay: f64,
 }
 
 #[derive(Debug, Clone, Serialize)]
@@ -184,7 +201,7 @@ fn close(a: f64, b: f64) -> bool {
     (a - b).abs() <= TOL
 }
 
-fn reaction_params() -> ReactionParams {
+pub fn reaction_params() -> ReactionParams {
     let mut p = ReactionParams::conservative_v2();
     p.reserve = chemistry_core::metabolic_reserve::ReserveParams::default();
     assert!(!p.reserve.enable);
@@ -204,13 +221,34 @@ fn source_capacity_upper_bound(mesh: &mut MaterialMesh, ledger: &mut Ledger) {
     ledger.diagnostic_waste_produced += paired;
 }
 
-fn run_arm(initial_mesh: &MaterialMesh, shadow: Shadow, mechanics: &MechParams) -> ArmResult {
+pub fn run_arm(initial_mesh: &MaterialMesh, shadow: Shadow, mechanics: &MechParams) -> ArmResult {
+    run_arm_with_options(initial_mesh, shadow, mechanics, None, false).0
+}
+
+pub fn m1r1_entry_state() -> (MaterialMesh, MechParams) {
+    m1r0::m1r1_entry_state()
+}
+
+/// Run the exact M1-R1 arm, optionally with the one authorized diagnostic
+/// decay coefficient and optional per-step starvation provenance capture.
+/// `decay_override` is intentionally an example-local observer shadow input;
+/// the chemistry-core production function remains unchanged.
+pub fn run_arm_with_options(
+    initial_mesh: &MaterialMesh,
+    shadow: Shadow,
+    mechanics: &MechParams,
+    decay_override: Option<f64>,
+    capture_decay: bool,
+) -> (ArmResult, Vec<DecayObservation>) {
     let mut mesh = initial_mesh.clone();
     let mut params = reaction_params();
     if shadow.catalyst_investment_off() {
         // This is the accepted R8-R2 observer concept: suppress only the
         // current step's A→new C investment. Existing C and C turnover stay.
         params.k_c_prod = 0.0;
+    }
+    if let Some(k_a_decay) = decay_override {
+        params.k_a_decay = k_a_decay;
     }
     let transport = TransportParams::default();
     let mut region = FiniteSpatialResourceRegionV1::new(
@@ -224,6 +262,7 @@ fn run_arm(initial_mesh: &MaterialMesh, shadow: Shadow, mechanics: &MechParams) 
     let mut ledger = Ledger::default();
     let mut checkpoints = Vec::new();
     let mut trajectory = vec![stable_json_hash(&initial).unwrap()];
+    let mut decay_observations = Vec::new();
 
     for step in 0..HORIZON_STEPS {
         let uptake = region.uptake(&mut mesh, &transport, mechanics.dt);
@@ -236,11 +275,31 @@ fn run_arm(initial_mesh: &MaterialMesh, shadow: Shadow, mechanics: &MechParams) 
             .max(uptake.conservation_error);
         assert!(uptake.conservation_error <= TOL);
 
+        let post_uptake_n = mesh.interior.n.max(0.0);
+        let post_uptake_f = mesh.interior.f.max(0.0);
         if shadow.source_upper_bound() {
             source_capacity_upper_bound(&mut mesh, &mut ledger);
         }
+        let starvation_predicate = mesh.interior.n.max(0.0) * mesh.interior.f.max(0.0) < 1e-8;
+        let selected_multiplier = if starvation_predicate { 4.0 } else { 1.0 };
+        let declared_k_a_decay = params.k_a_decay;
+        let effective_k_a_decay = declared_k_a_decay * selected_multiplier;
         let reaction = reactions_step(&mut mesh, &params, mechanics.dt, true, true);
         ledger.absorb(&reaction);
+        if capture_decay {
+            decay_observations.push(DecayObservation {
+                step: step + 1,
+                post_uptake_n,
+                post_uptake_f,
+                post_source_ub_n: mesh.interior.n.max(0.0),
+                post_source_ub_f: mesh.interior.f.max(0.0),
+                starvation_predicate,
+                selected_multiplier,
+                declared_k_a_decay,
+                effective_k_a_decay,
+                a_decay: reaction.a_decayed,
+            });
+        }
         current = snap(&mesh, step + 1);
         if [1, 120, 240, 360, 480].contains(&current.step) {
             checkpoints.push(current);
@@ -281,7 +340,7 @@ fn run_arm(initial_mesh: &MaterialMesh, shadow: Shadow, mechanics: &MechParams) 
     };
     assert!(result.world_to_organism_closure_residual <= TOL);
     assert!(result.internal_material_closure_residual <= TOL);
-    result
+    (result, decay_observations)
 }
 
 fn classify(results: &[ArmResult; 4]) -> &'static str {

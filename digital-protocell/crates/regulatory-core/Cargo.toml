@@ -131,3 +131,7 @@ path = "../../examples/dcdev020m1r0_requalification.rs"
 [[example]]
 name = "dcdev020m1r1_capacity_decomp"
 path = "../../examples/dcdev020m1r1_capacity_decomp.rs"
+
+[[example]]
+name = "dcdev020m1r1r1_decay_confound"
+path = "../../examples/dcdev020m1r1r1_decay_confound.rs"

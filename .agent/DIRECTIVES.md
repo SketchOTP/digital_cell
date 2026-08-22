@@ -626,3 +626,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260822-dcdev020m0baseline001
 - Status at issuance: ISSUED
+
+## D-20260822-dcdev020m1r1r1-decay-confound001
+
+- Issued: `2026-08-22T18:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R1-R1-DECAY-CONFOUND-001`
+- Objective: Isolate whether the existing 4x starvation A-decay branch materially confounds the M1-R1 source-capacity observer shadow.
+- Scope: Starting head `9db2c7d08495f8e935a59385bf51927bcd951a7b`, PR #44, exact M1-R1 replay, four matched observer arms, 480/480 starvation provenance, diagnostic `k_a_decay=K/4` neutralization, compact evidence, governance, preservation, and exact-head CI.
+- Exclusions: Chemistry-core production source, ConservativeV2, D-091, uptake, transport, resource geometry/inventory, N/F stoichiometry, structural/catalyst kinetics, membrane chemistry, death semantics, D-087, recycling, salvage, controllers, M2, R9-R7, behavior, evolution, and DC-DEV-021.
+- Acceptance: Exact M1-R1 reproduction, raw source branch 4x provenance for 480/480 steps, only-decay-field neutralization, closure, no W→A transfer, local verifier pass, exact-head remote CI success, and architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260822-dcdev020m1r1capacitydecomp001
+- Status at issuance: ISSUED

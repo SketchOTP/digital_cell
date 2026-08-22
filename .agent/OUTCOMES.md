@@ -463,6 +463,29 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260822-dcdev020m1r1r1-decay-confound001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R1R1-DECAY-CONFOUND-PENDING-ARCHITECT`
+- Supersedes outcome: none
+- Closed: `2026-08-22T18:20:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only causal isolation reproduces the original M1-R1 BASE, source-capacity, catalyst-off, and combined ledgers. The raw source-capacity arm selects the frozen existing 4x starvation multiplier on all `480/480` steps. Changing only the diagnostic A-decay coefficient to `K/4` neutralizes that multiplier while retaining the ordinary effective coefficient and yields organized-material changes `+1.25718049040759` for source capacity and `+1.2755639121915` for the combined shadow. The bounded classification is `M1_SOURCE_CAPACITY_SUFFICIENT_AFTER_DECAY_NEUTRALIZATION`.
+- Changed areas: M1-R1 observer reuse seam, decay-confound observer example, compact evidence, documentation, scoped workflow, and governance. No chemistry-core production source or Phase-1 biology changed.
+- Validation:
+  - Scoped Rust formatting - PASSED
+  - `cargo +1.89.0 check -p regulatory-core --example dcdev020m1r1r1_decay_confound` - PASSED
+  - Fresh four-arm decay-confound assay - PASSED
+  - Exact M1-R1 reproduction - PASSED
+  - Raw source starvation branch provenance `480/480` - PASSED
+  - Decay neutralization with only `k_a_decay` changed - PASSED
+  - World↔organism and internal closure - PASSED
+  - Local artifact verifier - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The neutralized nonnegative result is an acute 480-step capacity shadow, not sustained M1 homeostasis or production authorization. Exact-head CI and independent architect verification remain required. M1 production change, M2, reserve redesign, recycling/salvage, behavior, evolution, and DC-DEV-021 remain unauthorized.
+- Blockers: exact-head remote CI and independent architect review.
+- Follow-up directive: none
+
 ## D-20260822-dcdev020m1r1capacitydecomp001 - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020M1R1-CAPACITY-DECOMPOSITION-PENDING-ARCHITECT`

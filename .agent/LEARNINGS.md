@@ -446,6 +446,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-020-M1-R0 observer-only finite-resource requalification; no chemistry, uptake, transport, resource, death, controller, behavior, evolution, recycling, salvage, M2, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M0-002
 
+## L-DCDEV020M1R1R1-001
+
+- Learning ID: L-DCDEV020M1R1R1-001
+- Date: 2026-08-22
+- Fact or lesson: The M1-R1 source-capacity upper bound selected the existing starvation predicate on all `480/480` steps because it exhausted paired internal N/F before production. Its raw organized-material change was `-3.09944444397982` with A decay `6.064743776472449`, versus BASE A decay `1.281486275525163`. A diagnostic shadow changing only `k_a_decay` from `0.008` to `0.002` restored an effective `4x` coefficient of `0.008` and produced organized-material changes `+1.25718049040759` for source capacity and `+1.2755639121915` for the combined arm.
+- Evidence location: `digital-protocell/examples/dcdev020m1r1_capacity_decomp.rs`, `digital-protocell/examples/dcdev020m1r1r1_decay_confound.rs`, `digital-protocell/experiments/generated/dcdev020m1r1r1/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r1r1/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R1-R1 observer-only starvation-decay causal isolation; no production chemistry, degradation law, resource, reserve, controller, behavior, evolution, recycling, salvage, M2, or DC-DEV-021 authorization.
+- Supersedes learning: none
+
 ## L-DCDEV020M1R1-001
 
 - Learning ID: L-DCDEV020M1R1-001
