@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-20T00:00:00-04:00`
+- Last updated: `2026-08-21T00:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260820-dcdev020r9r4-reserve-interference-audit`
-- External directive ID: `DC-DEV-020-R9-R4`
-- Objective: `Determine whether D-091 pre-maintenance A→R storage causes the ConservativeV2/D-091 Phase-1 maintenance regression, using exact 5,000-step observer-only controls and one parameter-free maintenance-priority shadow.`
+- Local directive ID: `D-20260821-dcdev020r9r5-charge-liquidity-audit`
+- External directive ID: `DC-DEV-020-R9-R5`
+- Objective: `Separate standing-stock A→R overcharge from reserve-liquidity insufficiency using exact 5,000-step observer-only counterfactuals.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `V20 must reproduce 8/8; V21 must retain the reserve-associated failure; all five R9-R4 arms must complete 5,000 steps; exact-head remote CI and architect review remain required.`
-- Current phase: `R9-R4 local exact-control reproduction, reserve interference ledger, four ablations, and maintenance-priority shadow completed. The shadow removes A→R-before-later-demand but does not restore Gate 1; remote CI is next. No reserve repair, recycling, behavior, evolution, or DC-DEV-021 work is authorized.`
-- Expected or actual touched areas: `bounded chemistry-core observer ledger and reserve diagnostic scheduling, phase1-certifier R9-R4 runner, compact evidence, documentation, governance, and scoped workflow`
-- Immediate next action: `Add the bounded R9-R4 verification to PR #44, run exact-head remote CI, and return for architect review; do not begin reserve repair or DC-DEV-021.`
+- Acceptance: `V20 must reproduce 8/8 on the sanctioned packaged runtime; FULL and STORE_OFF must match the sealed R9-R4 R_m controls; both independent R9-R5 arms and the combined arm must complete 5,000 steps with strict closure; exact-head remote CI and architect review remain required.`
+- Current phase: `R9-R4 and R9-R4-R1 are architect-accepted. R9-R5 observer implementation and local audit are complete provisionally: surplus storage is non-binding, direct liquid-R use is zero in the frozen trajectory, and neither shadow restores D-087. No reserve repair, recycling, behavior, evolution, or DC-DEV-021 work is authorized.`
+- Expected or actual touched areas: `bounded R9-R5 observer ledger and diagnostic reserve modes, phase1-certifier runner/tests, compact evidence, documentation, governance, and scoped workflow`
+- Immediate next action: `Run exact-head remote R9-R5 CI and return the compact report for architect review; do not begin reserve repair or DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -49,9 +49,9 @@
 
 ## Blockers
 
-- R9-R2 is architect-accepted as `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`; R9-R3-R1 is architect-accepted and preserved the reserve-physiology classification. R9-R4 is now the only active review boundary; no reserve repair, recycling, salvage, production integration, or DC-DEV-021 work is authorized.
+- R9-R2 is architect-accepted as `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`; R9-R3-R1, R9-R4, and R9-R4-R1 are architect-accepted and preserved. R9-R5 is now the only active review boundary; no reserve repair, recycling, salvage, production integration, or DC-DEV-021 work is authorized.
 
-- R9-R4 exact-head remote CI and independent architect review remain open. The local negative does not authorize reserve repair, allocator changes, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021.
+- R9-R5 exact-head remote CI and independent architect review remain open. The local Windows run cannot qualify the Linux packaged-runtime Gate 7 stage; this is an infrastructure boundary, not a scientific claim. The R9-R5 negative does not authorize reserve repair, allocator changes, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021.
 
 ## Pending decisions
 

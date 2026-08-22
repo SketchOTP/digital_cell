@@ -468,7 +468,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Outcome ID: `OUT-DCDEV020R9R4-STORAGE-CAUSAL-PRIORITY-INSUFFICIENT`
 - Supersedes outcome: none
 - Closed: `2026-08-20T00:00:00-04:00`
-- Acceptance: `PARTIAL`
+- Acceptance: `MET`
 - Summary: From exact head `f9bc1d5bffe828b2599c85d4fcbbabdf7f3e3ff3`, V20 reproduced 8/8 and V21 retained the reserve-bearing negative. Five exact 5,000-step ConservativeV2 arms recorded per-step reserve/build/membrane ledgers. Full reserve stored A before later productive demand (`147.585809275616`); the parameter-free maintenance-priority shadow reduced that interference to zero while preserving the unchanged reserve kernels, but replacement metrics remained below Gate-1 qualification (`R_m=0.8399735283623063`). Gate 4 was correctly skipped. Classification: `DCDEV020R9R4_STORAGE_CAUSAL_PRIORITY_INSUFFICIENT`.
 - Changed areas: additive observer ledger fields, explicit reserve diagnostic controls, phase1-certifier R9-R4 runner, compact evidence, documentation, governance, and scoped workflow. Certified Phase-1 biology/equations, production behavior, reserve parameters, recycling, and DC-DEV-021 were not changed.
 - Validation:
@@ -480,16 +480,17 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Gate-1 full and maintenance-priority shadow qualification - FAILED
   - Gate 4 execution by fail-closed rule - NOT APPLICABLE
   - unrelated full chemistry failure in `d008_tests.rs` - NOT APPLICABLE
+  - Architect acceptance of R9-R4 at exact reviewed head - PASSED
 - Remaining risks: The diagnostic establishes that pre-maintenance storage is causally present but insufficient as a standalone parameter-free priority repair. It does not authorize production reserve repair, recycling, salvage, tuning, source/sink changes, behavior, or DC-DEV-021.
-- Blockers: exact-head remote CI and independent architect review.
-- Follow-up directive: none
+- Blockers: none for R9-R4; R9-R5 is the authorized next diagnostic and DC-DEV-021 remains unauthorized.
+- Follow-up directive: D-20260821-dcdev020r9r5-charge-liquidity-audit
 
 ## D-20260821-dcdev020r9r4r1-governance-remote-closure - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020R9R4R1-GOVERNANCE-REMOTE-CLOSURE`
 - Supersedes outcome: none
 - Closed: `2026-08-21T04:00:00-04:00`
-- Acceptance: `PARTIAL`
+- Acceptance: `MET`
 - Summary: The malformed R9-R4 adopted governance records were corrected without changing scientific source or evidence. Exact-head workflow `32459018571` passed at `19bd21f25d8cf955fb1fe58d32aa4d6d74c5cf21`; the unchanged R9-R4 classification remains `DCDEV020R9R4_STORAGE_CAUSAL_PRIORITY_INSUFFICIENT`.
 - Changed areas: governance-format corrections in DIRECTIVES.md, OUTCOMES.md, and REPO_MAP.md only.
 - Validation:
@@ -498,8 +499,28 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - R9-R4 reserve interference audit - PASSED
   - R9-R4 observer artifact verification and compact evidence upload - PASSED
   - scientific source and evidence identity preservation - PASSED
-- Remaining risks: Independent architect acceptance of the R9-R4 scientific result remains pending; no reserve repair, recycling, salvage, tuning, behavior, or DC-DEV-021 work is authorized.
-- Blockers: independent architect review.
+  - Architect acceptance at exact head `08e1c45b11892e0b5533b11c74f175ee84d243ed` with exact-head workflow `32460044729` - PASSED
+- Remaining risks: R9-R4 evidence remains sealed and no reserve repair, recycling, salvage, tuning, behavior, or DC-DEV-021 work is authorized.
+- Blockers: none for R9-R4-R1; R9-R5 review remains open.
+- Follow-up directive: D-20260821-dcdev020r9r5-charge-liquidity-audit
+
+## D-20260821-dcdev020r9r5-charge-liquidity-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R5-CHARGE-LIQUIDITY-DECOMPOSITION`
+- Supersedes outcome: `OUT-DCDEV020R9R4R1-GOVERNANCE-REMOTE-CLOSURE`
+- Closed: `2026-08-21T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The exact 5,000-step observer audit separates standing-stock charging from direct reserve liquidity. FULL reproduces sealed `R_m=0.8398695202805284`; STORE_OFF reproduces `R_m=1.0180981834599838`. Surplus-only storage remains capped and non-binding (`R_m=0.8399798978913839`), while the liquid upper bound uses zero direct diagnostic R in the frozen trajectory. Neither independent arm nor their combined counterfactual restores the actual D-087 Gate-1 qualification. The provisional fail-closed classification is `DCDEV020R9R5_RESERVE_DEFECT_OUTSIDE_CHARGE_LIQUIDITY_FACTORIZATION`.
+- Changed areas: additive observer-only reserve ledger fields and diagnostic modes, phase1-certifier R9-R5 runner/tests, compact evidence, documentation, governance, and scoped workflow. No production reserve law, parameter, target/controller/state, certified Phase-1 biology, recycling, salvage, behavior, evolution, or DC-DEV-021 work changed.
+- Validation:
+  - sanctioned Rust 1.89.0 compile and R9-R5 example - PASSED
+  - exact 5,000-step FULL, STORE_OFF, surplus-only, liquid upper-bound, and combined arms - PASSED
+  - positive replete A→R and starvation R→A, zero rejects, strict closure - PASSED
+  - actual D-087 shadow execution - completed; Gates 1–4 not restored
+  - local Windows packaged-runtime Gate 7 - environment-limited; remote Linux CI required
+  - exact-head remote CI and architect review - PENDING
+- Remaining risks: The negative identifies no restoration from the bounded charge/liquidity factorization, but does not authorize production repair or any new kinetic family. Dense ledgers remain local/external and compact evidence is provenance-bound.
+- Blockers: exact-head remote CI and independent architect review.
 - Follow-up directive: none
 
 ## D-20260819-dcdev020r9-mesh-contract-requalification - PARTIAL

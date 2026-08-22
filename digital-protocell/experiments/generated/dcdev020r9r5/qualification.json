@@ -1,0 +1,55 @@
+{
+  "directive": "DC-DEV-020-R9-R5",
+  "starting_head": "08e1c45b11892e0b5533b11c74f175ee84d243ed",
+  "horizon_steps": 5000,
+  "gate0": {
+    "v20_scientific_gates": "8/8 expected on Linux packaged runtime; local Windows runtime gate is environment-limited",
+    "full_r_m": 0.8398695202805284,
+    "store_off_r_m": 1.0180981834599838
+  },
+  "gate1": {
+    "full_a_to_r": 147.585809275616,
+    "full_r_to_a": 46.83472463956206,
+    "full_r_to_w": 7.440433037092543,
+    "full_same_step_new_a_fraction": 1.0,
+    "full_pre_existing_a_fraction": 0.0,
+    "store_off_a_to_r": 0.0,
+    "activation_equivalent_closure_residual": 2.4644464247103315e-10
+  },
+  "gate2_surplus_only_store": {
+    "accepted_steps": 5000,
+    "r_m": 0.8399798978913839,
+    "a_to_r": 147.59445092313737,
+    "new_a_surplus": 306.4293331944204,
+    "store_cap_respected": true,
+    "actual_d087_gates": [true, false, false, false, false, true, true, false],
+    "restored": false
+  },
+  "gate3_liquid_reserve_ub": {
+    "accepted_steps": 5000,
+    "r_m": 0.8398695202805284,
+    "diagnostic_liquid_r_used": 0.0,
+    "actual_d087_gates": [true, false, false, false, false, true, true, false],
+    "restored": false
+  },
+  "gate4_combined": {
+    "executed": true,
+    "accepted_steps": 5000,
+    "r_m": 0.8399798978913839,
+    "diagnostic_liquid_r_used": 0.0,
+    "actual_d087_gates": [true, false, false, false, false, true, true, false],
+    "restored": false
+  },
+  "reserve_function": {
+    "replete_a_to_r_positive": true,
+    "starvation_r_to_a_positive": true,
+    "rejected_steps_zero": true,
+    "strict_closure": true
+  },
+  "primary_classification": "DCDEV020R9R5_RESERVE_DEFECT_OUTSIDE_CHARGE_LIQUIDITY_FACTORIZATION",
+  "production_changes": false,
+  "recycling_authorized": false,
+  "dc_dev_021_authorized": false,
+  "architect_acceptance": "PENDING",
+  "next_execution_started": false
+}

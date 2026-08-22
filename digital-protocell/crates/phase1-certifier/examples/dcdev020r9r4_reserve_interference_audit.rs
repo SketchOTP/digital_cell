@@ -121,6 +121,11 @@ fn mode_label(mode: ReserveDiagnosticMode) -> &'static str {
         ReserveDiagnosticMode::ReleaseOff => "RELEASE_OFF",
         ReserveDiagnosticMode::LossOff => "LOSS_OFF",
         ReserveDiagnosticMode::MaintenancePriority => "MAINTENANCE_PRIORITY_SHADOW",
+        ReserveDiagnosticMode::SurplusOnlyStore => "SURPLUS_ONLY_STORE",
+        ReserveDiagnosticMode::LiquidReserveUpperBound => "LIQUID_RESERVE_UB",
+        ReserveDiagnosticMode::SurplusOnlyStoreLiquidReserveUpperBound => {
+            "SURPLUS_ONLY_STORE_LIQUID_RESERVE_UB"
+        }
     }
 }
 

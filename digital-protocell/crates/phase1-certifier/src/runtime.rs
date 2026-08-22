@@ -13,11 +13,12 @@ use std::os::unix::fs::PermissionsExt;
 use crate::gates::{smoke, steps, D087Conclusion, GateResult};
 use crate::sim::{conservative_v2_enabled, fingerprint, reserve_enabled, run_coupled, seed_mesh};
 
-const MODE_ENV_KEYS: [&str; 4] = [
+const MODE_ENV_KEYS: [&str; 5] = [
     "DCDEV020R9R1_V2",
     "DCDEV020R9R2_V2",
     "DCDEV020R9R3_CONTRACT",
     "DCDEV020R9R3_RESERVE",
+    "DCDEV020R9R5_MODE",
 ];
 
 fn mode_env() -> BTreeMap<String, String> {

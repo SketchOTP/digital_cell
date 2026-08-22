@@ -113,6 +113,11 @@
 - `digital-protocell/crates/phase1-certifier/examples/dcdev020r9r4_reserve_interference_audit.rs` — exact 5,000-step V20/V21 control, four required reserve ablations, maintenance-priority shadow, and Gate-5 reserve preservation observer.
 - `digital-protocell/experiments/generated/dcdev020r9r4/` — compact R9-R4 protocol, qualification, and dense-ledger manifest; dense JSONL is external/local and hash-bound.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r4/` — R9-R4 observer-only reserve interference audit and fail-closed classification.
+- `digital-protocell/crates/chemistry-core/src/metabolic_reserve.rs` — R9-R5 observer-only frozen-store potential and capped-storage helpers; default D-091 reserve kernel remains unchanged.
+- `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs` — additive R9-R5 stock/flux/closure ledger and surplus/liquid diagnostic modes; production mode remains Full.
+- `digital-protocell/crates/phase1-certifier/examples/dcdev020r9r5_charge_liquidity_audit.rs` — exact 5,000-step FULL/STORE_OFF, surplus-only, liquid upper-bound, combined observer arms and actual D-087 shadow summaries.
+- `digital-protocell/experiments/generated/dcdev020r9r5/` — compact R9-R5 protocol, qualification, and report; dense rows remain local/external audit output.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r5/` — R9-R5 charge/liquidity protocol and provisional fail-closed disposition.
 
 ## External integration points
 

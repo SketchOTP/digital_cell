@@ -221,6 +221,78 @@ pub fn j_store(a: f64, r: f64, qc: f64, p: &ReserveParams) -> f64 {
     p.k_store * qc * sat * room
 }
 
+/// Return the unchanged frozen A→R charging potential as material amount.
+///
+/// This is an observer helper for R9-R5. It does not update state and does
+/// not add a new production parameter or alter candidate identity.
+pub fn reserve_store_potential_amount(mesh: &MaterialMesh, react: &ReactionParams, dt: f64) -> f64 {
+    let p = &react.reserve;
+    if !p.enable || !mesh.can_advance_physics() || dt <= 0.0 {
+        return 0.0;
+    }
+    if !reserve_schema_load_ok(mesh, p) {
+        return 0.0;
+    }
+    let qc = q_catalyst(mesh.interior.c, react.q_c);
+    let qc_store = if react.autocatalytic.enable {
+        qc * crate::autocatalytic_nodes::node_storage_release_gain(
+            mesh,
+            &react.autocatalytic,
+            react.q_c,
+        )
+    } else if react.network.enable {
+        qc * crate::template_network_expression::network_storage_gain(
+            mesh,
+            &react.network,
+            react.q_c,
+        )
+    } else {
+        qc
+    };
+    j_store(
+        mesh.interior.a.max(0.0),
+        mesh.interior.r.max(0.0),
+        qc_store,
+        p,
+    ) * dt
+        * mesh.area().max(EPS)
+}
+
+/// Apply only the unchanged frozen A→R kernel with an observer cap.
+///
+/// `max_amount` is in the same concentration·area material units used by the
+/// R9 ledgers. A zero cap is a lawful no-op, not a rejected reserve step.
+pub fn reserve_store_with_limit(
+    mesh: &mut MaterialMesh,
+    react: &ReactionParams,
+    dt: f64,
+    max_amount: f64,
+) -> ReserveLedger {
+    let mut led = ReserveLedger::default();
+    let p = &react.reserve;
+    if !p.enable || !mesh.can_advance_physics() || dt <= 0.0 || max_amount <= 0.0 {
+        return led;
+    }
+    if !reserve_schema_load_ok(mesh, p) {
+        led.rejected_steps += 1;
+        return led;
+    }
+    let area = mesh.area().max(EPS);
+    let a0 = mesh.interior.a.max(0.0);
+    let r0 = mesh.interior.r.max(0.0);
+    let potential = reserve_store_potential_amount(mesh, react, dt);
+    let store = potential
+        .min(max_amount)
+        .min(a0 * area)
+        .min((p.r_max - r0).max(0.0) * area);
+    if store > 0.0 {
+        mesh.interior.a = (a0 - store / area).max(0.0);
+        mesh.interior.r = (r0 + store / area).min(p.r_max);
+        led.a_to_r = store;
+    }
+    led
+}
+
 /// Release flux density: R → A (strongest when A is locally low).
 #[inline]
 pub fn j_release(a: f64, r: f64, qc: f64, p: &ReserveParams) -> f64 {

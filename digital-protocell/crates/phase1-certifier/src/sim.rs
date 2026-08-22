@@ -49,6 +49,28 @@ pub struct AccumLedger {
     pub membrane_demand_a: f64,
     #[serde(default)]
     pub reserve_closure_residual: f64,
+    #[serde(default)]
+    pub a_stock_entering: f64,
+    #[serde(default)]
+    pub r_stock_entering: f64,
+    #[serde(default)]
+    pub a_to_m: f64,
+    #[serde(default)]
+    pub a_to_l: f64,
+    #[serde(default)]
+    pub reserve_store_potential: f64,
+    #[serde(default)]
+    pub new_a_surplus: f64,
+    #[serde(default)]
+    pub a_to_r_same_step_new_a: f64,
+    #[serde(default)]
+    pub a_to_r_pre_existing_a: f64,
+    #[serde(default)]
+    pub diagnostic_liquid_r_used: f64,
+    #[serde(default)]
+    pub net_activation_equivalent: f64,
+    #[serde(default)]
+    pub activation_equivalent_closure_residual: f64,
 }
 
 impl AccumLedger {
@@ -70,6 +92,17 @@ impl AccumLedger {
         self.structural_demand_a += r.structural_demand_a;
         self.membrane_demand_a += r.membrane_demand_a;
         self.reserve_closure_residual += r.reserve_closure_residual;
+        self.a_stock_entering += r.a_stock_entering;
+        self.r_stock_entering += r.r_stock_entering;
+        self.a_to_m += r.a_to_m;
+        self.a_to_l += r.a_to_l;
+        self.reserve_store_potential += r.reserve_store_potential;
+        self.new_a_surplus += r.new_a_surplus;
+        self.a_to_r_same_step_new_a += r.a_to_r_same_step_new_a;
+        self.a_to_r_pre_existing_a += r.a_to_r_pre_existing_a;
+        self.diagnostic_liquid_r_used += r.diagnostic_liquid_r_used;
+        self.net_activation_equivalent += r.net_activation_equivalent;
+        self.activation_equivalent_closure_residual += r.activation_equivalent_closure_residual;
     }
 }
 
@@ -253,8 +286,21 @@ pub fn coupled_step(
         transport,
         build,
         metab,
-        ReserveDiagnosticMode::Full,
+        reserve_diagnostic_mode_from_env(),
     )
+}
+
+/// Select only the bounded R9 observer mode when explicitly requested. With
+/// no selector, the established production trajectory remains exactly Full.
+pub fn reserve_diagnostic_mode_from_env() -> ReserveDiagnosticMode {
+    match std::env::var("DCDEV020R9R5_MODE").ok().as_deref() {
+        Some("SURPLUS_ONLY_STORE") => ReserveDiagnosticMode::SurplusOnlyStore,
+        Some("LIQUID_RESERVE_UB") => ReserveDiagnosticMode::LiquidReserveUpperBound,
+        Some("SURPLUS_ONLY_STORE_LIQUID_RESERVE_UB") => {
+            ReserveDiagnosticMode::SurplusOnlyStoreLiquidReserveUpperBound
+        }
+        _ => ReserveDiagnosticMode::Full,
+    }
 }
 
 pub fn coupled_step_with_reserve_mode(
@@ -475,6 +521,53 @@ mod tests {
             );
             assert_eq!(serde_json::to_value(a).unwrap(), serde_json::to_value(b).unwrap());
             assert_eq!(fingerprint(&ordinary), fingerprint(&observer));
+        }
+    }
+
+    #[test]
+    fn r9r5_surplus_storage_is_capped_without_rejected_reserve_steps() {
+        std::env::set_var("DCDEV020R9R3_CONTRACT", "ConservativeV2");
+        std::env::set_var("DCDEV020R9R3_RESERVE", "1");
+        let mut mesh = seed_mesh(14.0, 2);
+        let react = reaction_params_for(&mesh);
+        let transport = frozen_transport();
+        for _ in 0..256 {
+            let led = coupled_step_with_reserve_mode(
+                &mut mesh,
+                &FROZEN_CENTER,
+                &react,
+                &transport,
+                true,
+                true,
+                ReserveDiagnosticMode::SurplusOnlyStore,
+            );
+            assert!(led.reserve.a_to_r <= led.reserve_store_potential + 1e-8);
+            assert!(led.reserve.a_to_r <= led.new_a_surplus + 1e-8);
+            assert_eq!(led.reserve.rejected_steps, 0);
+            assert!(led.activation_equivalent_closure_residual <= 1e-6);
+        }
+    }
+
+    #[test]
+    fn r9r5_liquid_upper_bound_has_separate_nonnegative_accounting() {
+        std::env::set_var("DCDEV020R9R3_CONTRACT", "ConservativeV2");
+        std::env::set_var("DCDEV020R9R3_RESERVE", "1");
+        let mut mesh = seed_mesh(14.0, 2);
+        let react = reaction_params_for(&mesh);
+        let transport = frozen_transport();
+        for _ in 0..256 {
+            let led = coupled_step_with_reserve_mode(
+                &mut mesh,
+                &FROZEN_CENTER,
+                &react,
+                &transport,
+                true,
+                true,
+                ReserveDiagnosticMode::LiquidReserveUpperBound,
+            );
+            assert!(led.diagnostic_liquid_r_used >= 0.0);
+            assert!(led.activation_equivalent_closure_residual <= 1e-6);
+            assert_eq!(led.reserve.rejected_steps, 0);
         }
     }
 }

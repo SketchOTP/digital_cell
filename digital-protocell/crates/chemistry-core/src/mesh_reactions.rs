@@ -11,7 +11,8 @@ use crate::catalyst_composition::{
 };
 use crate::material_mesh::MaterialMesh;
 use crate::metabolic_reserve::{
-    reserve_metab_step_with_controls, ReserveFluxControls, ReserveLedger, ReserveParams,
+    reserve_metab_step_with_controls, reserve_store_potential_amount, reserve_store_with_limit,
+    ReserveFluxControls, ReserveLedger, ReserveParams,
 };
 use crate::template_copying::copying_step;
 use crate::template_motifs::{catalyst_binding_step, template_activity_gains};
@@ -169,6 +170,42 @@ pub struct ReactionLedger {
     pub a_to_r_before_later_demand: f64,
     #[serde(default)]
     pub reserve_closure_residual: f64,
+    /// R9-R5 observer accounting: A stock entering the reaction step.
+    #[serde(default)]
+    pub a_stock_entering: f64,
+    /// R9-R5 observer accounting: R stock entering the reaction step.
+    #[serde(default)]
+    pub r_stock_entering: f64,
+    /// R9-R5 observer accounting: A actually spent on structural maintenance.
+    #[serde(default)]
+    pub a_to_m: f64,
+    /// R9-R5 observer accounting: A actually spent on membrane maintenance.
+    #[serde(default)]
+    pub a_to_l: f64,
+    /// R9-R5 observer accounting: frozen charging potential before the step's
+    /// diagnostic storage cap is applied.
+    #[serde(default)]
+    pub reserve_store_potential: f64,
+    /// R9-R5 observer accounting: positive new-A surplus available after
+    /// productive and loss fluxes, before A→R storage.
+    #[serde(default)]
+    pub new_a_surplus: f64,
+    /// R9-R5 observer accounting: A→R funded by same-step newly produced A.
+    #[serde(default)]
+    pub a_to_r_same_step_new_a: f64,
+    /// R9-R5 observer accounting: A→R funded by pre-existing A.
+    #[serde(default)]
+    pub a_to_r_pre_existing_a: f64,
+    /// R9-R5 observer accounting: reserve material used directly for M/L.
+    #[serde(default)]
+    pub diagnostic_liquid_r_used: f64,
+    /// R9-R5 observer accounting: net activation-equivalent production/loss.
+    #[serde(default)]
+    pub net_activation_equivalent: f64,
+    /// R9-R5 observer accounting: A+R closure residual after all internal
+    /// transfers and direct diagnostic reserve use.
+    #[serde(default)]
+    pub activation_equivalent_closure_residual: f64,
 }
 
 /// Observer-only reserve scheduling for the R9-R4 audit.
@@ -179,6 +216,13 @@ pub enum ReserveDiagnosticMode {
     ReleaseOff,
     LossOff,
     MaintenancePriority,
+    /// Defer only A→R and cap it by positive same-step A surplus.
+    SurplusOnlyStore,
+    /// Preserve frozen reserve fluxes while allowing R as a diagnostic-only
+    /// 1:1 substitute for existing A-dependent M/L maintenance.
+    LiquidReserveUpperBound,
+    /// Apply both independent observer-only counterfactuals.
+    SurplusOnlyStoreLiquidReserveUpperBound,
 }
 
 #[inline]
@@ -255,6 +299,18 @@ pub fn reactions_step_with_reserve_mode(
     }
     let n_edges = mesh.n();
     let area = mesh.area().max(1e-6);
+    led.a_stock_entering = mesh.interior.a.max(0.0) * area;
+    led.r_stock_entering = mesh.interior.r.max(0.0) * area;
+    let surplus_only_store = matches!(
+        reserve_mode,
+        ReserveDiagnosticMode::SurplusOnlyStore
+            | ReserveDiagnosticMode::SurplusOnlyStoreLiquidReserveUpperBound
+    );
+    let liquid_reserve = matches!(
+        reserve_mode,
+        ReserveDiagnosticMode::LiquidReserveUpperBound
+            | ReserveDiagnosticMode::SurplusOnlyStoreLiquidReserveUpperBound
+    );
 
     if enable_metab {
         if p.composition.enable {
@@ -347,8 +403,9 @@ pub fn reactions_step_with_reserve_mode(
         led.w_produced += a_dec * area;
 
         // D-091 metabolic reserve. Full mode preserves the existing ordering;
-        // the other modes are observer-only R9-R4 controls.
+        // the other modes are bounded observer-only R9-R4/R9-R5 controls.
         led.a_before_reserve = mesh.interior.a.max(0.0) * area;
+        led.reserve_store_potential = reserve_store_potential_amount(mesh, p, dt);
         let pre_controls = match reserve_mode {
             ReserveDiagnosticMode::Full => ReserveFluxControls::FULL,
             ReserveDiagnosticMode::StoreOff => ReserveFluxControls::STORE_OFF,
@@ -357,6 +414,11 @@ pub fn reactions_step_with_reserve_mode(
             ReserveDiagnosticMode::MaintenancePriority => {
                 ReserveFluxControls::RELEASE_AND_LOSS_ONLY
             }
+            ReserveDiagnosticMode::SurplusOnlyStore
+            | ReserveDiagnosticMode::SurplusOnlyStoreLiquidReserveUpperBound => {
+                ReserveFluxControls::RELEASE_AND_LOSS_ONLY
+            }
+            ReserveDiagnosticMode::LiquidReserveUpperBound => ReserveFluxControls::FULL,
         };
         let reserve_area = mesh.area().max(1e-6);
         let reserve_a0 = mesh.interior.a.max(0.0) * reserve_area;
@@ -428,9 +490,17 @@ pub fn reactions_step_with_reserve_mode(
             let need_a = j_build / p.yield_a_to_m.max(1e-15);
             led.structural_demand_a += need_a;
             let have = mesh.interior.a.max(0.0) * area;
-            let take = need_a.min(have);
+            let a_take = need_a.min(have);
+            let r_have = mesh.interior.r.max(0.0) * area;
+            let r_take = if liquid_reserve {
+                (need_a - a_take).max(0.0).min(r_have)
+            } else {
+                0.0
+            };
+            let take = a_take + r_take;
             let dm = take * p.yield_a_to_m;
-            mesh.interior.a = (mesh.interior.a - take / area).max(0.0);
+            mesh.interior.a = (mesh.interior.a - a_take / area).max(0.0);
+            mesh.interior.r = (mesh.interior.r - r_take / area).max(0.0);
             let w_product = if p.mesh_schema == MeshChemistrySchema::ConservativeV2
                 || mesh.uses_observer_only_death()
             {
@@ -441,6 +511,8 @@ pub fn reactions_step_with_reserve_mode(
             mesh.interior.w += w_product / area;
             mesh.edges[i].m += dm;
             led.a_consumed_build += take;
+            led.a_to_m += a_take;
+            led.diagnostic_liquid_r_used += r_take;
             led.m_produced += dm;
             led.w_produced += w_product;
 
@@ -520,10 +592,18 @@ pub fn reactions_step_with_reserve_mode(
             let l_prod = 0.02 * qc * gb * mesh.interior.a.max(0.0) * peri * dt;
             led.membrane_demand_a += l_prod;
             let room = (reserve_cap - mesh.free_l).max(0.0) + (1.0 - theta) * peri;
-            let take = l_prod
+            let a_take = l_prod
                 .min(mesh.interior.a.max(0.0) * area)
                 .min(room.max(0.0));
-            mesh.interior.a = (mesh.interior.a - take / area).max(0.0);
+            let r_have = mesh.interior.r.max(0.0) * area;
+            let r_take = if liquid_reserve {
+                (l_prod - a_take).max(0.0).min(r_have)
+            } else {
+                0.0
+            };
+            let take = a_take + r_take;
+            mesh.interior.a = (mesh.interior.a - a_take / area).max(0.0);
+            mesh.interior.r = (mesh.interior.r - r_take / area).max(0.0);
             let w_product = if p.mesh_schema == MeshChemistrySchema::ConservativeV2
                 || mesh.uses_observer_only_death()
             {
@@ -534,11 +614,47 @@ pub fn reactions_step_with_reserve_mode(
             mesh.interior.w += w_product / area;
             mesh.free_l += take;
             led.l_produced += take;
+            led.a_to_l += a_take;
+            led.diagnostic_liquid_r_used += r_take;
             led.w_produced += w_product;
         }
     }
 
     led.a_after_membrane_production = mesh.interior.a.max(0.0) * area;
+
+    // R9-R5 attribution is deliberately an accounting decomposition. It does
+    // not alter any frozen production coefficient or introduce a controller.
+    led.new_a_surplus = (led.a_produced + led.reserve.r_to_a
+        - led.a_to_c
+        - led.a_decayed
+        - led.a_to_m
+        - led.a_to_l)
+        .max(0.0);
+
+    if surplus_only_store && enable_metab {
+        let cap = led.new_a_surplus.min(led.reserve_store_potential);
+        let post = reserve_store_with_limit(mesh, p, dt, cap);
+        led.reserve.a_to_r += post.a_to_r;
+        led.reserve.r_to_a += post.r_to_a;
+        led.reserve.r_to_w += post.r_to_w;
+        led.reserve.r_to_m += post.r_to_m;
+        led.reserve.w_from_r_growth += post.w_from_r_growth;
+        led.reserve.rejected_steps += post.rejected_steps;
+        led.a_after_post_maintenance_storage = mesh.interior.a.max(0.0) * area;
+        led.a_after_reserve = led.a_after_post_maintenance_storage;
+        let reserve_a1 = mesh.interior.a.max(0.0) * area;
+        let reserve_r1 = mesh.interior.r.max(0.0) * area;
+        led.reserve_closure_residual +=
+            (led.a_stock_entering + led.r_stock_entering + led.a_produced
+                - led.a_to_c
+                - led.a_decayed
+                - led.a_to_m
+                - led.a_to_l
+                - led.reserve.r_to_w
+                - reserve_a1
+                - reserve_r1)
+                .abs();
+    }
 
     if reserve_mode == ReserveDiagnosticMode::MaintenancePriority && enable_metab {
         let reserve_area = mesh.area().max(1e-6);
@@ -558,7 +674,9 @@ pub fn reactions_step_with_reserve_mode(
         led.a_after_post_maintenance_storage = mesh.interior.a.max(0.0) * area;
         led.a_after_reserve = led.a_after_post_maintenance_storage;
     } else {
-        led.a_after_post_maintenance_storage = led.a_after_reserve;
+        if !surplus_only_store {
+            led.a_after_post_maintenance_storage = led.a_after_reserve;
+        }
     }
     if led.structural_demand_a + led.membrane_demand_a > 1e-15 {
         led.a_to_r_before_later_demand =
@@ -568,6 +686,21 @@ pub fn reactions_step_with_reserve_mode(
                 led.reserve.a_to_r
             };
     }
+
+    led.a_to_r_same_step_new_a = led.reserve.a_to_r.min(led.new_a_surplus);
+    led.a_to_r_pre_existing_a = (led.reserve.a_to_r - led.a_to_r_same_step_new_a).max(0.0);
+    led.net_activation_equivalent =
+        led.a_produced - led.a_to_c - led.a_decayed - led.a_to_m - led.a_to_l - led.reserve.r_to_w;
+    let final_activation = mesh.interior.a.max(0.0) * area + mesh.interior.r.max(0.0) * area;
+    led.activation_equivalent_closure_residual =
+        (led.a_stock_entering + led.r_stock_entering + led.a_produced
+            - led.a_to_c
+            - led.a_decayed
+            - led.a_to_m
+            - led.a_to_l
+            - led.reserve.r_to_w
+            - final_activation)
+            .abs();
 
     // Rupture check.
     for e in &mut mesh.edges {

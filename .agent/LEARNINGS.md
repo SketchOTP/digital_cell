@@ -366,3 +366,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R9-R4 observer-only reserve interference audit; no production repair, recycling, parameter tuning, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020R9R3R1-001
+
+## L-DCDEV020R9R5-001
+
+- Learning ID: L-DCDEV020R9R5-001
+- Date: 2026-08-21
+- Fact or lesson: The R9-R5 factorization does not restore the ConservativeV2/D-091 D-087 qualification. In the exact 5,000-step frozen trajectory, FULL storage potential is `147.585809275616` while positive same-step new-A surplus is larger, so surplus-only storage is non-binding (`R_m=0.8399798978913839`). The instantaneous 1:1 liquid-reserve upper bound consumes zero direct diagnostic R because existing A remains sufficient for the frozen M/L demands. The combined arm is therefore also unchanged for this trajectory. Reserve execution remains positive in replete and starvation phases with zero rejects and strict closure. Classification: `DCDEV020R9R5_RESERVE_DEFECT_OUTSIDE_CHARGE_LIQUIDITY_FACTORIZATION`.
+- Evidence location: `digital-protocell/crates/chemistry-core/src/metabolic_reserve.rs`, `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs`, `digital-protocell/crates/phase1-certifier/examples/dcdev020r9r5_charge_liquidity_audit.rs`, `digital-protocell/experiments/generated/dcdev020r9r5/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r5/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R9-R5 observer-only charge/liquidity decomposition; no production repair, recycling, parameter tuning, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020R9R4-001

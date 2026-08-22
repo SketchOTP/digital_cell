@@ -514,3 +514,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260820-dcdev020r9r4-reserve-interference-audit
 - Status at issuance: ISSUED
+
+## D-20260821-dcdev020r9r5-charge-liquidity-audit
+
+- Issued: `2026-08-21T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R9-R5`
+- Objective: Distinguish standing-stock A→R overcharge from reserve-liquidity insufficiency using the unchanged ConservativeV2/D-091 kernels.
+- Scope: Exact entry `08e1c45b11892e0b5533b11c74f175ee84d243ed`, PR #44, exact 5,000-step FULL/STORE_OFF controls, per-step charge/liquidity ledger, surplus-capped storage arm, liquid-reserve upper-bound arm, conditional combined arm, compact evidence, governance, preservation, and scoped CI.
+- Exclusions: Production reserve repair, reserve parameter changes, new targets/controllers/state, recycling/salvage, source/sink/transport changes, certified biology changes, behavior, evolution, DC-DEV-021, and rewriting sealed R9-R4 evidence.
+- Acceptance: V20 8/8 on sanctioned packaged runtime; sealed FULL/STORE_OFF R_m controls reproduced; both independent arms and the combined arm complete 5,000 steps with reserve function and strict closure evidence; one authorized classification; exact-head remote CI; architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260821-dcdev020r9r4r1-governance-remote-closure
+- Status at issuance: ISSUED

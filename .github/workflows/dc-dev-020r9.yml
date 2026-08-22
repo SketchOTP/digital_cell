@@ -44,6 +44,8 @@ jobs:
           examples/dcdev020r9r2_material_fate_audit.rs
           crates/phase1-certifier/examples/dcdev020r9r3_conservation_reserve_decomposition.rs
           crates/phase1-certifier/examples/dcdev020r9r4_reserve_interference_audit.rs
+          crates/phase1-certifier/examples/dcdev020r9r5_charge_liquidity_audit.rs
+          crates/phase1-certifier/src/runtime.rs
           examples/dcdev020r8r2_catalyst_investment_payback.rs
           examples/dcdev020r8r3_shared_affinity_helper.rs
           examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs
@@ -268,6 +270,55 @@ jobs:
           assert report["next_execution_started"] is False
           print("DCDEV020R9R4_RESERVE_INTERFERENCE_ARTIFACT_VERIFICATION_PASS")
           PY
+      - name: R9-R5 charge/liquidity audit
+        working-directory: digital-protocell
+        run: >-
+          cargo +1.89.0 run -p phase1-certifier
+          --example dcdev020r9r5_charge_liquidity_audit --quiet --
+          --output experiments/generated/dcdev020r9r5
+      - name: R9-R5 observer tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --lib sim::tests -- --nocapture
+      - name: Verify R9-R5 charge/liquidity artifacts
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r9r5")
+          report = json.loads((root / "r9r5_report.json").read_text())
+          protocol = json.loads((root / "protocol.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          assert report["directive"] == "DC-DEV-020-R9-R5"
+          assert report["starting_head"] == "08e1c45b11892e0b5533b11c74f175ee84d243ed"
+          assert report["horizon_steps"] == 5000
+          assert report["gate0"]["v20_all_pass"] is True
+          assert abs(report["gate0"]["full_r_m"] - 0.8398695202805284) <= 1e-9
+          assert abs(report["gate0"]["store_off_r_m"] - 1.0180981834599838) <= 1e-9
+          for key in ("gate2_surplus_only_store", "gate3_liquid_reserve_ub", "gate4_combined"):
+              if key == "gate4_combined" and not report["gate4_combined"]["executed"]:
+                  assert report["gate2_surplus_only_store"]["restored"] or report["gate3_liquid_reserve_ub"]["restored"]
+                  continue
+              arm = report[key]["arm"]
+              assert arm["accepted_steps"] == 5000
+              assert arm["exact_horizon"] is True
+              assert arm["reserve_function"]["replete_a_to_r"] > 0
+              assert arm["reserve_function"]["starvation_r_to_a"] > 0
+              assert arm["reserve_function"]["rejected_steps"] == 0
+              assert arm["reserve_function"]["strict_closure"] is True
+              assert len(report[key]["actual_d087"]["gates"]) == 8
+              assert report[key]["restored"] is False
+          assert report["gate2_surplus_only_store"]["arm"]["store_cap_respected"] is True
+          assert report["strict_closure"] is True
+          assert report["production_changes"] is False
+          assert report["recycling_authorized"] is False
+          assert report["dc_dev_021_authorized"] is False
+          assert report["next_execution_started"] is False
+          assert protocol["observer_only"] is True
+          assert qualification["primary_classification"] == report["classification"]
+          print("DCDEV020R9R5_CHARGE_LIQUIDITY_ARTIFACT_VERIFICATION_PASS")
+          PY
       - name: Upload compact R9-R2 evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -307,4 +358,15 @@ jobs:
             digital-protocell/experiments/generated/dcdev020r9r4/protocol.json
             digital-protocell/experiments/generated/dcdev020r9r4/qualification.json
             digital-protocell/experiments/generated/dcdev020r9r4/ledger_manifest.json
+          include-hidden-files: false
+      - name: Upload compact R9-R5 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020r9r5-compact-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020r9r5/r9r5_report.json
+            digital-protocell/experiments/generated/dcdev020r9r5/protocol.json
+            digital-protocell/experiments/generated/dcdev020r9r5/qualification.json
+            digital-protocell/experiments/generated/dcdev020r9r5/ledger_manifest.json
           include-hidden-files: false
