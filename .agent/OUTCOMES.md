@@ -1038,8 +1038,9 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Phase1 certifier selector tests - PASSED (5/5)
   - Fresh ordinary selected-production actual D-087 - PASSED (8/8)
   - Fresh local packaged runtime - PASSED; alive after 5,000 steps; zero reserve flows; strict closure
-  - D-091 source preservation - PENDING remote exact-head CI
-  - Packaged Linux runtime identity - PENDING remote exact-head CI
+  - Exact-head M0 workflow run `32591546718` at head `0b2db2ddc8e02f72b748a26455de608106a7a9de` - PASSED; fresh D-087, packaged Linux runtime, artifact verification, phase-1 regression, and D-091 preservation all passed
+  - D-091 source preservation - PASSED in exact-head M0 CI
+  - Packaged Linux runtime identity - PASSED in exact-head M0 CI
   - Architect review - PENDING
 - Remaining risks: Final acceptance depends on exact-head remote Linux execution and independent architect verification. M1, reserve redesign, recycling/salvage, R9-R7, and DC-DEV-021 remain unauthorized.
 - Blockers: exact-head M0 CI and architect review.

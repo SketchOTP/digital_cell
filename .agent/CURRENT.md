@@ -33,7 +33,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Exact-head scoped DC-DEV-020-R9 CI run 32421756950 at 6a266514fcb616084ea43be42ff726c4c51dec0e; actual H0/V20/H1/V21 certifier matrix and artifact verification`
+- Command or check: `Exact-head DC-DEV-020-M0 CI run 32591546718 at 0b2db2ddc8e02f72b748a26455de608106a7a9de; fresh selected-production D-087, packaged Linux runtime, artifact verification, phase-1 regression, and D-091 preservation`
 - Result: `PASSED`
 
 ## Risks
