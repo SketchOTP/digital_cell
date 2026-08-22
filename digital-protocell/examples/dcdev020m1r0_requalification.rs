@@ -430,6 +430,17 @@ fn run_starvation_continuation(
     }
 }
 
+/// Reuse the accepted M1-R0 settlement/deprivation path as the immutable entry
+/// state for the M1-R1 observer shadows. This deliberately exposes no
+/// production hook and keeps the R1 baseline on the exact M1-R0 trajectory.
+pub fn m1r1_entry_state() -> (MaterialMesh, MechParams) {
+    let mechanics = MechParams::default();
+    assert!((mechanics.dt - DT).abs() <= 1e-12);
+    let settled = settle(founder(), &mechanics);
+    let (deprived, _) = run_deprivation(&settled, &mechanics);
+    (deprived, mechanics)
+}
+
 fn write_json(path: &Path, value: &serde_json::Value) -> Result<(), Box<dyn std::error::Error>> {
     if let Some(parent) = path.parent() {
         fs::create_dir_all(parent)?;

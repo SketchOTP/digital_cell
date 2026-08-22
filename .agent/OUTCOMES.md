@@ -463,6 +463,25 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260822-dcdev020m1r1capacitydecomp001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R1-CAPACITY-DECOMPOSITION-PENDING-ARCHITECT`
+- Supersedes outcome: none
+- Closed: `2026-08-22T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The exact accepted M1-R0 high-inventory deprived state was replayed through the accepted M1-R0 settlement/deprivation path. Four matched observer-only shadows were executed: exact BASE, conservative paired N/F→A source-capacity upper bound, catalyst-investment deferral, and the combined bound. The source bound uses the existing ConservativeV2 `N + F -> A + W` coefficients and all world↔organism and internal material closures pass. The baseline reproduces the accepted Arm C values. The bounded classification is `M1_SOURCE_AND_ALLOCATION_INSUFFICIENT`; neither acute source capacity nor catalyst-investment deferral, alone or combined, establishes nonnegative organized-material change over 480 steps.
+- Changed areas: M1-R1 observer example, example registration, compact evidence, documentation, scoped CI, and governance only. No production chemistry, ConservativeV2, D-091, uptake, transport, resource quantity, degradation, recycling, salvage, M2, or DC-DEV-021 work changed.
+- Validation:
+  - Sanctioned Rust 1.89.0 compile/check and scoped rustfmt - PASSED
+  - Exact M1-R0 Arm C baseline reproduction - PASSED locally
+  - Conservative source stoichiometry and four-arm material closure - PASSED locally
+  - Fresh local artifact generation - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The negative decomposition does not establish whether conversion throughput, productive allocation, or deeper maintenance/degradation is the remaining causal blocker. No production repair is authorized.
+- Blockers: exact-head remote CI and independent architect review.
+- Follow-up directive: none
+
 ## D-20260822-dcdev020r9r6-mobilize-first-store-last - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020R9R6-MOBILIZE-FIRST-STORE-LAST`

@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260822-dcdev020m1r0requal001`
-- External directive ID: `DC-DEV-020-M1-R0-REQUAL-001`
-- Objective: `Requalify preserved finite-resource deprivation/restoration evidence against the accepted ConservativeV2/reserve-OFF M0 organism without changing biology.`
+- Local directive ID: `D-20260822-dcdev020m1r1capacitydecomp001`
+- External directive ID: `DC-DEV-020-M1-R1-CAPACITY-DECOMP-001`
+- Objective: `Causally decompose the accepted M1-R0 finite-feed failure with four observer-only matched capacity shadows without changing production biology.`
 - Current status: `VALIDATING`
-- Acceptance: `Complete the exact 5,000-step settlement, 480-step deprivation and matched finite-resource replay, bounded starvation continuation, closed material accounting, compact artifacts, preservation checks, and exact-head remote CI.`
-- Current phase: `M0 is architect-accepted and closed. M1-R0 is the only authorized execution boundary. The result is observer-only; M1 production change, M2, R9-R7, reserve redesign, recycling, salvage, behavior, evolution, and DC-DEV-021 remain unauthorized.`
-- Expected or actual touched areas: `regulatory-core observer example registration, compact M1-R0 evidence, M1-R0 documentation, scoped CI, and governance handoff`
-- Immediate next action: `Run exact-head M1-R0 CI from the committed bounded package, verify the artifact result, and return to the Architect without starting a repair.`
+- Acceptance: `Reproduce exact M1-R0 Arm C, prove conservative source stoichiometry and closure, execute source-capacity, catalyst-deferral, and combined shadows, classify one bounded result, and obtain exact-head remote CI.`
+- Current phase: `M0 and M1-R0 are architect-accepted. M1-R1 is the only authorized execution boundary; production change, M2, R9-R7, reserve redesign, recycling, salvage, behavior, evolution, and DC-DEV-021 remain unauthorized.`
+- Expected or actual touched areas: `regulatory-core observer example registration, compact M1-R1 evidence, M1-R1 documentation, scoped CI, and governance handoff`
+- Immediate next action: `Run local preservation and artifact checks, push the bounded M1-R1 package, verify exact-head remote CI, and return to the Architect without starting a production repair.`
 
 ## Temporary task-relevant facts
 

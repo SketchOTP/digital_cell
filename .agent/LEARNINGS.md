@@ -445,3 +445,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-M1-R0 observer-only finite-resource requalification; no chemistry, uptake, transport, resource, death, controller, behavior, evolution, recycling, salvage, M2, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M0-002
+
+## L-DCDEV020M1R1-001
+
+- Learning ID: L-DCDEV020M1R1-001
+- Date: 2026-08-22
+- Fact or lesson: On the exact accepted M1-R0 high-inventory deprived state, the observer-only ConservativeV2 source-capacity upper bound improves but does not reverse organized-material decline, catalyst-investment deferral alone does not reverse it, and the combined bound remains negative. The bounded classification is `M1_SOURCE_AND_ALLOCATION_INSUFFICIENT`; conversion throughput, productive allocation, and deeper maintenance/degradation remain causally unresolved.
+- Evidence location: `digital-protocell/examples/dcdev020m1r1_capacity_decomp.rs`, `digital-protocell/experiments/generated/dcdev020m1r1/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r1/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R1 observer-only capacity decomposition; no production chemistry, uptake, transport, resource, degradation, reserve, controller, behavior, evolution, recycling, salvage, M2, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R0-001

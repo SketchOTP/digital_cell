@@ -249,6 +249,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260822-dcdev020m1r1capacitydecomp001
+
+- Issued: `2026-08-22T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R1-CAPACITY-DECOMP-001`
+- Objective: Causally separate the current M1 finite-feed failure into N/F→A conversion capacity, productive catalyst allocation, a coupled limitation, or a deeper maintenance/degradation limitation using four observer-only matched shadows.
+- Scope: Starting head `3cab12551072ad1eafaece72615f448d8efb9bea`, PR #44, exact accepted M1-R0 Arm C reproduction, existing ConservativeV2 activation stoichiometry, source-capacity upper bound, catalyst-investment deferral, combined shadow, compact evidence, documentation, governance, and scoped exact-head CI.
+- Exclusions: Production chemistry, chemistry-core, ConservativeV2, M0 selectors, D-091, uptake, transport, finite-resource geometry and quantity, degradation, membrane/structural equations, catalyst turnover, death semantics, D-087, controllers, recycling, salvage, M2, R9-R7, behavior, evolution, and DC-DEV-021.
+- Acceptance: Exact baseline reproduction, materially conservative source upper bound, isolated catalyst deferral, matched four-arm execution, closed accounting, one bounded classification, unchanged production biology, and exact-head remote CI success.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260821-dcdev020r9r5r1-valid-liquidity-counterfactual
 
 - Issued: `2026-08-21T00:00:00-04:00`
