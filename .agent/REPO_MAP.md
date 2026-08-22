@@ -125,7 +125,7 @@
 - `digital-protocell/crates/phase1-certifier/src/sim.rs` — R9-R6 mode selector, accumulator fields, and focused phase-order regression.
 - `digital-protocell/crates/phase1-certifier/examples/dcdev020r6_mobilize_first_store_last.rs` — exact 5,000-step FULL/shadow audit, actual D-087 replay, reserve-function checks, and compact report.
 - `digital-protocell/experiments/generated/dcdev020r9r6/` — compact R9-R6 report, protocol, qualification, and SHA-256 manifest; dense ledgers remain local/external.
-- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r6/` — R9-R6 phase-order audit and contributory-not-sufficient disposition.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r6/` — R9-R6 phase-order audit and corrected insufficient disposition; R9-R6-R1 closure evidence remains compact and append-only.
 
 ## External integration points
 

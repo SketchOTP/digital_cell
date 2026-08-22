@@ -12,14 +12,15 @@ R→M/R→L pathway, or production default.
 
 The V20 control reproduces 8/8. FULL reproduces `R_m=0.839869520280528`.
 The shadow reaches `R_m=0.839973528362306`, with D-087 gates
-`[true,false,false,false,false,true,true,true]`. The small improvement is
-real but insufficient for certification. Replete `A→R` is
+`[true,false,false,false,false,true,true,true]` (4/8). The small movement is
+retained in the matched comparison but does not satisfy the preregistered
+certification boundary. Replete `A→R` is
 `147.5982725689982`; post-starvation `R→A` is `26.15666583047419`; reserve
 rejects are zero and strict material closure passes.
 
 ## Classification
 
-`DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_CONTRIBUTORY_NOT_SUFFICIENT`
+`DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_INSUFFICIENT`
 
 No production reserve physiology or chemistry was changed. Recycling,
 salvage, and DC-DEV-021 remain unauthorized. The project returns to the

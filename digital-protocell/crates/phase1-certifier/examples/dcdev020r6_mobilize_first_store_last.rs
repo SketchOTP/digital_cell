@@ -45,6 +45,7 @@ struct ReserveFunction {
 struct ActualD087Summary {
     mode: String,
     gates: Vec<bool>,
+    pass_count: usize,
     all_pass: bool,
     primary_conclusion: String,
     artifact_root: String,
@@ -103,6 +104,7 @@ fn actual_d087(
     let gate_values = gates(&report);
     Ok(ActualD087Summary {
         mode: mode.unwrap_or("FULL").into(),
+        pass_count: gate_values.iter().filter(|pass| **pass).count(),
         all_pass: gate_values.iter().all(|pass| *pass),
         gates: gate_values,
         primary_conclusion: report.primary_conclusion,
@@ -323,9 +325,10 @@ fn main() -> Result<(), String> {
         "DCDEV020R9R6_CONTROL_REGRESSION"
     } else if shadow_d087.all_pass {
         "DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_CAPACITY_CONFIRMED"
-    } else if shadow_improves {
-        "DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_CONTRIBUTORY_NOT_SUFFICIENT"
     } else {
+        // The preregistered R9-R6 boundary requires restored D-087 certification.
+        // The small matched R_m/C-production movement is retained as evidence but
+        // does not justify the contributory class when the boundary remains false.
         "DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_INSUFFICIENT"
     };
     let reserve_function_preserved = shadow.reserve_function.replete_a_to_r > EPS

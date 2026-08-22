@@ -1,9 +1,10 @@
 {
   "directive": "DC-DEV-020-R9-R6",
-  "classification": "DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_CONTRIBUTORY_NOT_SUFFICIENT",
+  "classification": "DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_INSUFFICIENT",
   "v20_gates": [true, true, true, true, true, true, true, true],
   "full_d087_gates": [true, false, false, false, false, true, true, true],
   "shadow_d087_gates": [true, false, false, false, false, true, true, true],
+  "shadow_d087_pass_count": 4,
   "shadow_gate1": {
     "r_m": 0.839973528362306,
     "r_b": 5.57800284642538,

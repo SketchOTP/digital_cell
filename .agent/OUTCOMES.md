@@ -483,6 +483,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260822-dcdev020r9r6r1-evidence-closure - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R6R1-EVIDENCE-CLOSURE`
+- Supersedes outcome: none
+- Closed: `2026-08-22T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R9-R6 exact-head CI run `32553371490` completed the scientific runner and failed only at `Verify R9-R6 phase-order artifacts` because the verifier asserted stale key `shadow_semantics.target_signal`; the protocol schema uses `controller_or_target: false`. The authoritative shadow D-087 vector is `[true,false,false,false,false,true,true,true]`, correctly counted as 4/8. Full `R_m=0.839869520280528`, shadow `R_m=0.839973528362306`, `R_b` and `R_C` remain identity-matched, replete A→R is `147.5982725689982`, post-starvation R→A is `26.15666583047419`, reserve rejects are zero, and strict closure passes. The preregistered certification boundary is not restored; classification is corrected to `DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_INSUFFICIENT`.
+- Changed areas: closure-only artifact verifier schema assertion, derived pass-count fields, compact evidence classification/count, documentation, and governance. Scientific values, scientific configuration, production chemistry, and production reserve physiology were not changed.
+- Validation:
+  - Local JSON artifact identity and vector/count reconciliation - PASSED
+  - Local governance and formatting checks - PENDING
+  - Exact-head remote DC-DEV-020-R9 CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The corrected classification and closure evidence require exact-head remote CI and independent architect review. No reserve repair, recycling/salvage, R9-R7, behavior, evolution, or DC-DEV-021 work is authorized.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
+
 ## D-20260821-dcdev020r9r5r1-valid-liquidity-counterfactual - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020R9R5R1-VALID-LIQUIDITY-COUNTERFACTUAL`

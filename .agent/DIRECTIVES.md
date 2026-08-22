@@ -556,3 +556,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260821-dcdev020r9r4r1-governance-remote-closure
 - Status at issuance: ISSUED
+
+## D-20260822-dcdev020r9r6r1-evidence-closure
+
+- Issued: `2026-08-22T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R9-R6-R1`
+- Objective: Close the exact-head R9-R6 artifact-verifier failure and reconcile the authoritative D-087 gate count and preregistered classification without changing the scientific run.
+- Scope: Exact entry `58460400dce7a6380b99fa8d1727a2a456094cd8`, PR #44, failed CI run `32553371490`, compact R9-R6 evidence, verifier schema assertion, derived gate count, classification, governance, and exact-head scoped CI.
+- Exclusions: New experiments, changed scientific values or configuration, production chemistry, production reserve physiology, reserve repair, recycling/salvage, R9-R7, behavior, evolution, and DC-DEV-021.
+- Acceptance: Failed stage/root cause identified, authoritative vector/count reconciled as 4/8, corrected classification recorded literally, local governance and artifact verification pass, exact-head remote workflow succeeds, and architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260822-dcdev020r9r6-mobilize-first-store-last
+- Status at issuance: ISSUED

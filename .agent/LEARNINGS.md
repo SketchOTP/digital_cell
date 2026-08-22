@@ -396,3 +396,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-R9-R6 final observer-only D-091 phase-order audit; no production repair, recycling, salvage, R9-R7, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020R9R5R1-001
+
+## L-DCDEV020R9R6R1-001
+
+- Learning ID: L-DCDEV020R9R6R1-001
+- Date: 2026-08-22
+- Fact or lesson: The R9-R6 scientific runner completed, but exact-head CI run `32553371490` failed in the artifact verifier because it asserted the stale protocol key `shadow_semantics.target_signal`; the committed protocol correctly uses `controller_or_target: false`. The authoritative actual-D-087 vector is `[true,false,false,false,false,true,true,true]`, which is 4/8, not 3/8. Full `R_m=0.839869520280528`, shadow `R_m=0.839973528362306`, and the unchanged reserve/closure values remain valid. Under the preregistered certification boundary, the corrected classification is `DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_INSUFFICIENT`; no scientific values or configuration changed.
+- Evidence location: `.github/workflows/dc-dev-020r9.yml`, `digital-protocell/crates/phase1-certifier/examples/dcdev020r6_mobilize_first_store_last.rs`, `digital-protocell/experiments/generated/dcdev020r9r6/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r6/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R9-R6-R1 metadata, artifact-verifier, count, classification, and exact-head CI closure only; no production repair, recycling, salvage, R9-R7, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: none

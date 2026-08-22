@@ -407,8 +407,9 @@ jobs:
           assert shadow["ledger"]["reserve_a_to_r"] > 0
           assert shadow["ledger"]["a_before_final_storage"] >= 0
           assert report["gate1_phase_order"]["strict_material_closure"] is True
-          assert report["gate3_causal_comparison"]["shadow_improves_gate1_mechanism"] is True
           assert report["gate4_actual_d087"]["shadow"]["gates"] == [True, False, False, False, False, True, True, True]
+          assert sum(report["gate4_actual_d087"]["shadow"]["gates"]) == 4
+          assert report["gate4_actual_d087"]["shadow"]["pass_count"] == 4
           assert report["gate4_actual_d087"]["shadow"]["all_pass"] is False
           rf = report["gate5_reserve_function"]
           assert rf["replete_a_to_r"] > 0
@@ -425,13 +426,25 @@ jobs:
           assert protocol["production_defaults_unchanged"] is True
           assert protocol["shadow_semantics"]["direct_r_to_m_or_l"] is False
           assert protocol["shadow_semantics"]["new_rates"] is False
-          assert protocol["shadow_semantics"]["target_signal"] is False
+          assert protocol["shadow_semantics"]["controller_or_target"] is False
           assert qualification["classification"] == report["classification"]
           assert qualification["shadow_d087_gates"] == [True, False, False, False, False, True, True, True]
+          assert qualification["shadow_d087_pass_count"] == 4
           assert manifest["source_head"] == report["starting_head"]
-          assert report["classification"] == "DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_CONTRIBUTORY_NOT_SUFFICIENT"
+          assert report["classification"] == "DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_INSUFFICIENT"
           print("DCDEV020R9R6_PHASE_ORDER_ARTIFACT_VERIFICATION_PASS")
           PY
+      - name: Upload compact R9-R6 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020r9r6-compact-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020r9r6/r9r6_report.json
+            digital-protocell/experiments/generated/dcdev020r9r6/protocol.json
+            digital-protocell/experiments/generated/dcdev020r9r6/qualification.json
+            digital-protocell/experiments/generated/dcdev020r9r6/ledger_manifest.json
+          include-hidden-files: false
       - name: Upload compact R9-R2 evidence
         if: always()
         uses: actions/upload-artifact@v4

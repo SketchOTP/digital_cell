@@ -1,5 +1,5 @@
 {
-  "classification": "DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_CONTRIBUTORY_NOT_SUFFICIENT",
+  "classification": "DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_INSUFFICIENT",
   "dc_dev_021_authorized": false,
   "directive": "DC-DEV-020-R9-R6",
   "gate0": {
@@ -301,6 +301,7 @@
   },
   "gate4_actual_d087": {
     "full": {
+      "pass_count": 4,
       "all_pass": false,
       "artifact_root": "certification_artifacts",
       "gate1_detail": "R_m=0.840 f_m=0.178 pool_m=0.419 R_b=5.578 f_b=0.002 pool_b=0.004 R_c=1.377 f_c=0.317 pool_c=0.238 ret_c=1.330 ret_a=1.923 dual=false d086_soft=true",
@@ -318,6 +319,7 @@
       "primary_conclusion": "D087_D086_ACCEPTANCE_INVALID"
     },
     "shadow": {
+      "pass_count": 4,
       "all_pass": false,
       "artifact_root": "certification_artifacts",
       "gate1_detail": "R_m=0.840 f_m=0.178 pool_m=0.419 R_b=5.578 f_b=0.002 pool_b=0.004 R_c=1.377 f_c=0.317 pool_c=0.238 ret_c=1.330 ret_a=1.923 dual=false d086_soft=true",
