@@ -138,6 +138,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-020-R2 observer-only allosteric requalification.
 - Supersedes learning: none
 
+## L-DCDEV020R9R6R2-001
+
+- Learning ID: L-DCDEV020R9R6R2-001
+- Date: 2026-08-22
+- Fact or lesson: Exact-head R9-R6 runs `32566149213` and `32566146792` at `a2c21c1664a7f1d44be0edc8b6819665b0455a82` completed the substantive R9-R6 generation, regenerated-artifact verification, and identity checks, then were cancelled at the workflow's explicit 30-minute ceiling during artifact upload. The remaining R9-R6 blocker is CI orchestration only. The authorized repair is a 45-minute timeout with no scientific or verifier changes.
+- Evidence location: `.github/workflows/dc-dev-020r9.yml`, remote runs `32566149213` and `32566146792`, and `digital-protocell/experiments/generated/dcdev020r9r6/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-R9-R6-R2 CI-only closure; no scientific or production authorization.
+- Supersedes learning: none
+
 ## L-DCDEV020R9-001
 
 - Learning ID: L-DCDEV020R9-001

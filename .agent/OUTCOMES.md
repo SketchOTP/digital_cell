@@ -500,6 +500,25 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260822-dcdev020r9r6r2-ci-closure - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R6R2-CI-CLOSURE`
+- Supersedes outcome: none
+- Closed: `2026-08-22T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R9-R6-R1 remains CONTINUE / NOT ACCEPTED solely because exact-head runs `32566149213` and `32566146792` at head `a2c21c1664a7f1d44be0edc8b6819665b0455a82` were cancelled at the explicit 30-minute workflow ceiling during artifact upload after substantive R9-R6 generation, artifact verification, and identity checks passed. The R9-R6 scientific classification remains `DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_INSUFFICIENT` with D-087 4/8 and unchanged evidence. R9-R6-R2 authorizes only changing the workflow timeout to 45 minutes.
+- Changed areas: `.github/workflows/dc-dev-020r9.yml` timeout only, plus governance handoff records. No scientific or production files changed.
+- Validation:
+  - Timeout provenance - CONFIRMED
+  - Workflow-only diff isolation - PASSED
+  - R9-R6 evidence identity - PASSED
+  - Local governance validation - PENDING
+  - Exact-head remote workflow - PENDING
+  - Architect review - PENDING
+- Remaining risks: E5 remains open until the new exact-head workflow completes SUCCESS. No R9-R7, reserve repair, recycling/salvage, behavior, evolution, or DC-DEV-021 work is authorized.
+- Blockers: exact-head workflow SUCCESS and architect acceptance.
+- Follow-up directive: none
+
 ## D-20260821-dcdev020r9r5r1-valid-liquidity-counterfactual - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020R9R5R1-VALID-LIQUIDITY-COUNTERFACTUAL`

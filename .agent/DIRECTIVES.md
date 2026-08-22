@@ -570,3 +570,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260822-dcdev020r9r6-mobilize-first-store-last
 - Status at issuance: ISSUED
+
+## D-20260822-dcdev020r9r6r2-ci-closure
+
+- Issued: `2026-08-22T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-R9-R6-R2`
+- Objective: Obtain clean exact-head remote closure of the resolved R9-R6 evidence by correcting only the workflow timeout that cancelled otherwise-passing CI.
+- Scope: Starting head `a2c21c1664a7f1d44be0edc8b6819665b0455a82`, PR #44, workflow `.github/workflows/dc-dev-020r9.yml`, and the required CI-closure governance handoff.
+- Exclusions: All scientific source, R9-R6 semantics, seeds, horizons, thresholds, artifacts, verifier logic, harness, production chemistry, reserve physiology, recycling/salvage, R9-R7, behavior, evolution, and DC-DEV-021.
+- Acceptance: Timeout provenance confirmed, only `timeout-minutes: 30` to `45` changed, evidence identity preserved, exact-head generation/verifier/upload complete, and workflow result `SUCCESS`.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260822-dcdev020r9r6r1-evidence-closure
+- Status at issuance: ISSUED

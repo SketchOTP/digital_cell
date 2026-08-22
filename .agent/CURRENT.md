@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260822-dcdev020r9r6r1-evidence-closure`
-- External directive ID: `DC-DEV-020-R9-R6-R1`
-- Objective: `Close the R9-R6 artifact-verifier failure and reconcile the authoritative D-087 count/classification without changing the scientific run.`
+- Local directive ID: `D-20260822-dcdev020r9r6r2-ci-closure`
+- External directive ID: `DC-DEV-020-R9-R6-R2`
+- Objective: `Obtain exact-head remote closure by extending the unchanged R9 workflow timeout from 30 to 45 minutes.`
 - Current status: `IN_PROGRESS`
 - Acceptance: `V20 must reproduce 8/8; FULL must reproduce accepted R9-R5-R1 control identity; the shadow must use only frozen release/loss before productive chemistry and frozen storage afterward, preserve reserve function and strict closure, complete actual D-087 replay, and pass exact-head remote CI and architect review.`
-- Current phase: `R9-R6 is REPLAN / NOT ACCEPTED pending metadata and verifier closure. The authoritative shadow vector is 4/8; corrected classification is INSUFFICIENT. No production reserve repair, recycling, salvage, behavior, evolution, R9-R7, or DC-DEV-021 work is authorized.`
-- Expected or actual touched areas: `R9-R6 compact evidence, artifact verifier schema assertion, classification/count reconciliation, governance, and scoped workflow only`
-- Immediate next action: `Run governance and exact-head DC-DEV-020-R9 CI, then return to the Architect; do not begin R9-R7 or DC-DEV-021.`
+- Current phase: `R9-R6-R1 is CONTINUE / NOT ACCEPTED solely because exact-head runs 32566149213 and 32566146792 were cancelled at the 30-minute workflow ceiling after substantive verification passed. R9-R6 science is resolved as INSUFFICIENT. No production reserve repair, recycling, salvage, behavior, evolution, R9-R7, or DC-DEV-021 work is authorized.`
+- Expected or actual touched areas: `one CI timeout value and CI-closure governance only`
+- Immediate next action: `Run exact-head DC-DEV-020-R9 CI with timeout 45 minutes, then return to the Architect; do not begin R9-R7 or DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
