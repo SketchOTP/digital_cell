@@ -110,6 +110,7 @@ jobs:
 
           def require(condition, message):
               if not condition:
+                  Path('r3_verifier_failure.txt').write_text(message + '\n', encoding='utf-8')
                   print(f'::error title=R3 verifier::{message}')
                   raise SystemExit(1)
 
@@ -160,6 +161,19 @@ jobs:
           require(qualification['next_execution_started'] is False, f"next_execution_started={qualification.get('next_execution_started')}")
           print('DCDEV020M1R3_ARTIFACT_AND_D087_VERIFICATION_PASS')
           PY
+      - name: Capture R3 verifier diagnostic
+        if: failure()
+        id: verifier_diagnostic
+        working-directory: digital-protocell
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -f r3_verifier_failure.txt ]]; then
+            code="$(tr -cs '[:alnum:]' '_' < r3_verifier_failure.txt | sed 's/^_//;s/_$//' | cut -c1-96)"
+            echo "failure_code=${code:-unknown}" >> "$GITHUB_OUTPUT"
+          else
+            echo "failure_code=unknown" >> "$GITHUB_OUTPUT"
+          fi
       - name: Phase-1 preservation regression
         working-directory: digital-protocell
         run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics -- --nocapture
@@ -176,7 +190,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: dcdev020m1r3-ordinary-decay-candidate-evidence
+          name: dcdev020m1r3-ordinary-decay-candidate-evidence-${{ steps.verifier_diagnostic.outputs.failure_code || 'pass' }}
           path: |
             digital-protocell/experiments/generated/dcdev020m1r3/protocol.json
             digital-protocell/experiments/generated/dcdev020m1r3/results.json
@@ -184,4 +198,5 @@ jobs:
             digital-protocell/experiments/generated/dcdev020m1r3/artifact_manifest.json
             digital-protocell/experiments/generated/dcdev020m1r3/ci/v3_d087/certification/report.json
             digital-protocell/experiments/generated/dcdev020m1r3/ci/v2_d087/certification/report.json
+            digital-protocell/r3_verifier_failure.txt
           include-hidden-files: false
