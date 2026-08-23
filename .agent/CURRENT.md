@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-22T22:20:00-04:00`
+- Last updated: `2026-08-22T22:40:00-04:00`
 
 ## Active state after adoption
 
@@ -14,7 +14,7 @@
 - Acceptance: `Reproduce both accepted M1-R2 endpoints exactly, continue each exact state for at most 150,000 accepted chemistry steps, apply existing terminal criteria only, restore exact finite N/F without reset after terminal failure, verify closure and fresh D-087 8/8, and obtain exact-head remote CI.`
 - Current phase: `M1-R2 is architect-accepted as valid inconclusive. This physical-failure closure is the only authorized execution boundary; M1 production change, M2, reserve redesign, recycling, salvage, behavior, evolution, and DC-DEV-021 remain unauthorized.`
 - Expected or actual touched areas: `M1-R2-R1 observer example, compact evidence, scoped CI, documentation, and governance handoff`
-- Immediate next action: `Complete local and remote verification of the bounded continuation, push PR #44, and return to the Architect without starting downstream work.`
+- Immediate next action: `Return the completed bounded package to the Architect for independent review; do not start downstream work.`
 
 ## Temporary task-relevant facts
 

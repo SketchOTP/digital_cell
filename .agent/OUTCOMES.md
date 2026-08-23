@@ -479,7 +479,8 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Internal and restoration material closure - PASSED
   - Scoped Rust format and regulatory-core example compile/run - PASSED
   - Fresh actual D-087 8/8 - PASSED locally and in exact-head CI
-  - Exact-head remote CI runs `32612860278` (push) and `32612861856` (PR synchronize) at head `11fed776b7e694fb9af5debc4c2914c0a23ba615` - PASSED
+  - Exact-head remote CI runs `32612860278` and `32612861856` at head `11fed776b7e694fb9af5debc4c2914c0a23ba615` - PASSED
+  - Final governance-head push CI run `32613089232` at head `7831808a08443e7be8e58e423b232cb7780d5b05` - PASSED
   - Architect review - PENDING
 - Remaining risks: This is a chemistry-path material-failure result, not full-runtime organism death; mechanics/remesh/rebond are outside the assay. Independent architect review remains required before acceptance. No M1 production change, M2, reserve redesign, recycling, salvage, behavior, evolution, or DC-DEV-021 work is authorized.
 - Blockers: independent architect review.
