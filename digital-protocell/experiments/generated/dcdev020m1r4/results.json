@@ -1,0 +1,405 @@
+{
+  "classification": "M1_COUPLED_SOURCE_CANDIDATE_QUALIFIED",
+  "controller_added": false,
+  "coupled_candidate": {
+    "arm": "COUPLED_SOURCE_CANDIDATE",
+    "final_state": {
+      "a": 23.438472816483948,
+      "area": 70.8275261895172,
+      "bound_b": 28.487147952368105,
+      "c": 54.35317576313366,
+      "closed_intact": true,
+      "f": 4.223524677154668e-17,
+      "free_l": 1.2943518925680397,
+      "n": 4.223524677154668e-17,
+      "observer_viable": true,
+      "organized_material": 133.06357671696253,
+      "ruptured_edges": 0,
+      "step": 480,
+      "strict_material": 174.04941033860567,
+      "structural_m": 25.490428292408755,
+      "waste": 40.98583362164314
+    },
+    "initial": {
+      "a": 19.69467805250676,
+      "area": 70.8275261895172,
+      "bound_b": 27.69189400182488,
+      "c": 55.87794642665143,
+      "closed_intact": true,
+      "f": 0.0,
+      "free_l": 0.817237066738601,
+      "n": 0.0,
+      "observer_viable": true,
+      "organized_material": 131.80639622655494,
+      "ruptured_edges": 0,
+      "step": 0,
+      "strict_material": 150.33047047215322,
+      "structural_m": 27.72464067883328,
+      "waste": 18.52407424559829
+    },
+    "ordinary_reactions": {
+      "a_produced_ordinary": 6.596468569891666e-36,
+      "c_production": 3.7601548349343927,
+      "c_turnover": 5.284925498452181,
+      "m_production": 1.4125732560779902,
+      "m_turnover": 3.646785642502505,
+      "membrane_production": 1.2723687763726537,
+      "membrane_turnover": 33.16531680815503
+    },
+    "organized_material_delta": 1.2571804904075918,
+    "source": {
+      "a_produced_coupled": 11.859469933226054,
+      "f_delivered": 11.859469933226054,
+      "f_deposited_unpaired": 0.0,
+      "f_world_loss": 11.859469933226054,
+      "max_conservation_residual": 0.0,
+      "max_v1_conservation_error": 0.0,
+      "n_delivered": 11.859469933226054,
+      "n_deposited_unpaired": 0.0,
+      "n_world_loss": 11.859469933226054,
+      "paired_activated": 11.859469933226054,
+      "w_produced_coupled": 11.859469933226054
+    },
+    "source_schema": "FINITE_SPATIAL_RESOURCE_COUPLED_ACTIVATION_V1",
+    "world_to_organism_closure_residual": 3.375077994860476e-13
+  },
+  "d087": {
+    "v2": {
+      "agent_directive": "D-20260724-d087-independent-phase1-certification-phase2-launch",
+      "artifact_root": "experiments/generated/dcdev020m1r4/v2_d087",
+      "elapsed_secs": 4.9864442,
+      "entry_commit": "6f8a80a",
+      "entry_tag": "D-086-mesh-protocell-phase1-pass",
+      "equation_lineage": "autopoietic_material_mesh_v1",
+      "frozen": {
+        "alpha_approx": 0.022,
+        "dt": 0.02,
+        "gamma": 1.0,
+        "k_pi": 0.22,
+        "k_s": 14.0,
+        "kappa_b": 2.0,
+        "schema": "autopoietic_material_mesh_v1",
+        "state": "mesh_vertices_edges_v1"
+      },
+      "gate0": {
+        "detail": "head=17226fb tag=6f8a80a tag_ok=true ancestor_ok=true frozen_ok=true hits=2145 controller_hits=0 dirty_candidate=false",
+        "failure": null,
+        "pass": true
+      },
+      "gate1": {
+        "detail": "R_m=1.018 f_m=0.191 pool_m=0.349 R_b=5.818 f_b=0.002 pool_b=0.003 R_c=1.446 f_c=0.321 pool_c=0.230 ret_c=1.397 ret_a=1.898 dual=true d086_soft=true",
+        "failure": null,
+        "pass": true
+      },
+      "gate2": {
+        "detail": "basin_sizes=3/3 snap_ok=true mem_alive=true st_alive=true ruptured=true starved=true no_respawn=true",
+        "failure": null,
+        "pass": true
+      },
+      "gate3": {
+        "detail": "seed_distinct_fps=3 seeds_effective=true size_pass=3/3 path=deterministic_perturbation",
+        "failure": null,
+        "pass": true
+      },
+      "gate4": {
+        "detail": "pass_rate=1.000 (13/13)",
+        "failure": null,
+        "pass": true
+      },
+      "gate5": {
+        "detail": "ablations_ok=9/8",
+        "failure": null,
+        "pass": true
+      },
+      "gate6": {
+        "detail": "damage_generalization=8/8",
+        "failure": null,
+        "pass": true
+      },
+      "gate7": {
+        "detail": "built=true bin_ok=true steps=80000 wall_s=0.7 snap_ok=true verts=50 growing_flags=0 smoke=false",
+        "failure": null,
+        "pass": true
+      },
+      "mesh_contract": "ConservativeV2",
+      "next_execution_started": false,
+      "phase1_status": "PHASE1_COMPLETE",
+      "phase2_authorized": true,
+      "primary_conclusion": "D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED",
+      "production_verdict": "PHASE1_RESEARCH_RUNTIME_QUALIFIED",
+      "project_directive": "D-087",
+      "reserve_enabled": false,
+      "smoke": false
+    },
+    "v3": {
+      "agent_directive": "D-20260724-d087-independent-phase1-certification-phase2-launch",
+      "artifact_root": "experiments/generated/dcdev020m1r4/v3_d087",
+      "elapsed_secs": 4.8879871,
+      "entry_commit": "6f8a80a",
+      "entry_tag": "D-086-mesh-protocell-phase1-pass",
+      "equation_lineage": "autopoietic_material_mesh_v1",
+      "frozen": {
+        "alpha_approx": 0.022,
+        "dt": 0.02,
+        "gamma": 1.0,
+        "k_pi": 0.22,
+        "k_s": 14.0,
+        "kappa_b": 2.0,
+        "schema": "autopoietic_material_mesh_v1",
+        "state": "mesh_vertices_edges_v1"
+      },
+      "gate0": {
+        "detail": "head=17226fb tag=6f8a80a tag_ok=true ancestor_ok=true frozen_ok=true hits=2145 controller_hits=0 dirty_candidate=false",
+        "failure": null,
+        "pass": true
+      },
+      "gate1": {
+        "detail": "R_m=1.018 f_m=0.191 pool_m=0.349 R_b=5.818 f_b=0.002 pool_b=0.003 R_c=1.446 f_c=0.321 pool_c=0.230 ret_c=1.397 ret_a=1.898 dual=true d086_soft=true",
+        "failure": null,
+        "pass": true
+      },
+      "gate2": {
+        "detail": "basin_sizes=3/3 snap_ok=true mem_alive=true st_alive=true ruptured=true starved=true no_respawn=true",
+        "failure": null,
+        "pass": true
+      },
+      "gate3": {
+        "detail": "seed_distinct_fps=3 seeds_effective=true size_pass=3/3 path=deterministic_perturbation",
+        "failure": null,
+        "pass": true
+      },
+      "gate4": {
+        "detail": "pass_rate=1.000 (13/13)",
+        "failure": null,
+        "pass": true
+      },
+      "gate5": {
+        "detail": "ablations_ok=9/8",
+        "failure": null,
+        "pass": true
+      },
+      "gate6": {
+        "detail": "damage_generalization=8/8",
+        "failure": null,
+        "pass": true
+      },
+      "gate7": {
+        "detail": "built=true bin_ok=true steps=80000 wall_s=0.7 snap_ok=true verts=50 growing_flags=0 smoke=false",
+        "failure": null,
+        "pass": true
+      },
+      "mesh_contract": "ConservativeV3",
+      "next_execution_started": false,
+      "phase1_status": "PHASE1_COMPLETE",
+      "phase2_authorized": true,
+      "primary_conclusion": "D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED",
+      "production_verdict": "PHASE1_RESEARCH_RUNTIME_QUALIFIED",
+      "project_directive": "D-087",
+      "reserve_enabled": false,
+      "smoke": false
+    }
+  },
+  "dc_dev_021_authorized": false,
+  "directive": "DC-DEV-020-M1-R4-COUPLED-SOURCE-CANDIDATE-001",
+  "m2_authorized": false,
+  "next_execution_started": false,
+  "parameter_search": false,
+  "physical_controls": [
+    {
+      "coupled_a_delta": 0.0,
+      "coupled_w_delta": 0.0,
+      "f_delivered": 0.0,
+      "n_delivered": 0.0,
+      "name": "NO_CONTACT",
+      "paired_activated": 0.0,
+      "pass": true,
+      "preexisting_nf_preserved": true,
+      "schema": "FINITE_SPATIAL_RESOURCE_COUPLED_ACTIVATION_V1"
+    },
+    {
+      "coupled_a_delta": 0.0,
+      "coupled_w_delta": 0.0,
+      "f_delivered": 0.0,
+      "n_delivered": 0.02516934953863479,
+      "name": "N_ONLY",
+      "paired_activated": 0.0,
+      "pass": true,
+      "preexisting_nf_preserved": true,
+      "schema": "FINITE_SPATIAL_RESOURCE_COUPLED_ACTIVATION_V1"
+    },
+    {
+      "coupled_a_delta": 0.0,
+      "coupled_w_delta": 0.0,
+      "f_delivered": 0.02516934953863479,
+      "n_delivered": 0.0,
+      "name": "F_ONLY",
+      "paired_activated": 0.0,
+      "pass": true,
+      "preexisting_nf_preserved": true,
+      "schema": "FINITE_SPATIAL_RESOURCE_COUPLED_ACTIVATION_V1"
+    },
+    {
+      "coupled_a_delta": 0.0,
+      "coupled_w_delta": 0.0,
+      "f_delivered": 0.0,
+      "n_delivered": 0.0,
+      "name": "DEPLETED",
+      "paired_activated": 0.0,
+      "pass": true,
+      "preexisting_nf_preserved": true,
+      "schema": "FINITE_SPATIAL_RESOURCE_COUPLED_ACTIVATION_V1"
+    },
+    {
+      "coupled_a_delta": 0.0,
+      "coupled_w_delta": 0.0,
+      "f_delivered": 0.0,
+      "n_delivered": 0.0,
+      "name": "ALL_EXPOSED_EDGES_RUPTURED",
+      "paired_activated": 0.0,
+      "pass": true,
+      "preexisting_nf_preserved": true,
+      "schema": "FINITE_SPATIAL_RESOURCE_COUPLED_ACTIVATION_V1"
+    },
+    {
+      "coupled_a_delta": 0.0003551889489452281,
+      "coupled_w_delta": 0.0003551889489452281,
+      "f_delivered": 0.02515715458364523,
+      "n_delivered": 0.02515715458364523,
+      "name": "PRE_EXISTING_INTERNAL_NF",
+      "paired_activated": 0.02515715458364523,
+      "pass": true,
+      "preexisting_nf_preserved": true,
+      "schema": "FINITE_SPATIAL_RESOURCE_COUPLED_ACTIVATION_V1"
+    }
+  ],
+  "recycling": false,
+  "selected_production_changed": false,
+  "source_capacity_reference": {
+    "arm": "ACCEPTED_SOURCE_CAPACITY_REFERENCE",
+    "final_state": {
+      "a": 23.438472816483948,
+      "area": 70.8275261895172,
+      "bound_b": 28.487147952368105,
+      "c": 54.35317576313366,
+      "closed_intact": true,
+      "f": 0.0,
+      "free_l": 1.2943518925680397,
+      "n": 0.0,
+      "observer_viable": true,
+      "organized_material": 133.06357671696253,
+      "ruptured_edges": 0,
+      "step": 480,
+      "strict_material": 174.04941033860567,
+      "structural_m": 25.490428292408755,
+      "waste": 40.98583362164314
+    },
+    "initial": {
+      "a": 19.69467805250676,
+      "area": 70.8275261895172,
+      "bound_b": 27.69189400182488,
+      "c": 55.87794642665143,
+      "closed_intact": true,
+      "f": 0.0,
+      "free_l": 0.817237066738601,
+      "n": 0.0,
+      "observer_viable": true,
+      "organized_material": 131.80639622655494,
+      "ruptured_edges": 0,
+      "step": 0,
+      "strict_material": 150.33047047215322,
+      "structural_m": 27.72464067883328,
+      "waste": 18.52407424559829
+    },
+    "ordinary_reactions": {
+      "a_produced_ordinary": 0.0,
+      "c_production": 3.7601548349343927,
+      "c_turnover": 5.284925498452181,
+      "m_production": 1.4125732560779902,
+      "m_turnover": 3.646785642502505,
+      "membrane_production": 1.2723687763726537,
+      "membrane_turnover": 33.16531680815503
+    },
+    "organized_material_delta": 1.2571804904075918,
+    "source": {
+      "a_produced_coupled": 0.0,
+      "f_delivered": 11.859469933226054,
+      "f_deposited_unpaired": 0.0,
+      "f_world_loss": 11.859469933226054,
+      "max_conservation_residual": 0.0,
+      "max_v1_conservation_error": 0.0,
+      "n_delivered": 11.859469933226054,
+      "n_deposited_unpaired": 0.0,
+      "n_world_loss": 11.859469933226054,
+      "paired_activated": 11.859469933226054,
+      "w_produced_coupled": 0.0
+    },
+    "source_schema": "dcdev008_finite_static_nf_region_v1",
+    "world_to_organism_closure_residual": 3.375077994860476e-13
+  },
+  "starting_head": "17226fb7484eb50079c1c30ce9fd8039b3f23c60",
+  "v1_baseline": {
+    "arm": "V1_BASELINE_V3",
+    "final_state": {
+      "a": 14.417573565583695,
+      "area": 70.8275261895172,
+      "bound_b": 28.335433956756454,
+      "c": 53.506132055982654,
+      "closed_intact": true,
+      "f": 10.493951473277624,
+      "free_l": 1.1486309197872266,
+      "n": 10.493951473277624,
+      "observer_viable": true,
+      "organized_material": 122.60541779905688,
+      "ruptured_edges": 0,
+      "step": 480,
+      "strict_material": 173.20984869285869,
+      "structural_m": 25.197647300946855,
+      "waste": 29.616527947246542
+    },
+    "initial": {
+      "a": 19.69467805250676,
+      "area": 70.8275261895172,
+      "bound_b": 27.69189400182488,
+      "c": 55.87794642665143,
+      "closed_intact": true,
+      "f": 0.0,
+      "free_l": 0.817237066738601,
+      "n": 0.0,
+      "observer_viable": true,
+      "organized_material": 131.80639622655494,
+      "ruptured_edges": 0,
+      "step": 0,
+      "strict_material": 150.33047047215322,
+      "structural_m": 27.72464067883328,
+      "waste": 18.52407424559829
+    },
+    "ordinary_reactions": {
+      "a_produced_ordinary": 0.9457376370749997,
+      "c_production": 2.884382497630763,
+      "c_turnover": 5.256196868299571,
+      "m_production": 1.0820395428619851,
+      "m_turnover": 3.6090329207484135,
+      "membrane_production": 0.974933807980189,
+      "membrane_turnover": 32.94958500973012
+    },
+    "organized_material_delta": -9.200978427498057,
+    "source": {
+      "a_produced_coupled": 0.0,
+      "f_delivered": 11.439689110352614,
+      "f_deposited_unpaired": 0.0,
+      "f_world_loss": 11.439689110352614,
+      "max_conservation_residual": 0.0,
+      "max_v1_conservation_error": 0.0,
+      "n_delivered": 11.439689110352614,
+      "n_deposited_unpaired": 0.0,
+      "n_world_loss": 11.439689110352614,
+      "paired_activated": 0.0,
+      "w_produced_coupled": 0.0
+    },
+    "source_schema": "dcdev008_finite_static_nf_region_v1",
+    "world_to_organism_closure_residual": 2.3447910280083306e-13
+  },
+  "v1_chemistry_changed": false,
+  "v1_semantics_unchanged": true,
+  "v3_chemistry_changed": false
+}

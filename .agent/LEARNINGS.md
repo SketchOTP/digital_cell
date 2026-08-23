@@ -505,3 +505,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-M1-R3 candidate qualification only; exact-head remote CI and Architect acceptance remain pending; V3 is not selected for production and no source implementation, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work is authorized.
 - Supersedes learning: none
+
+## L-DCDEV020M1R4-001
+
+- Learning ID: L-DCDEV020M1R4-001
+- Date: 2026-08-23
+- Fact or lesson: R4 is restricted to an opt-in boundary adapter. Exact V1 finite-resource transport remains authoritative; only same-step newly delivered paired N/F may become existing A+W, while unmatched material remains N/F and pre-existing internal N/F is not eligible for pairing. Candidate qualification is pending final local and remote verification.
+- Evidence location: `digital-protocell/crates/regulatory-core/src/coupled_resource.rs`, `digital-protocell/examples/dcdev020m1r4_coupled_source_candidate.rs`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r4/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R4 candidate qualification only; no V1 transport, V2/V3 chemistry, production selection, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work.
+- Supersedes learning: none

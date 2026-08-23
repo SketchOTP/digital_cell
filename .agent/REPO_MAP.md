@@ -145,6 +145,11 @@
 - `digital-protocell/experiments/generated/dcdev020m1r3/` — compact ordinary-decay candidate qualification artifacts; dense CI outputs remain runtime evidence.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r3/ordinary_decay_candidate.md` — R3 candidate protocol, scope, result, and preservation boundary.
 - `.github/workflows/dc-dev-020m1r3.yml` — exact-head R3 candidate, V3/V2 D-087, artifact, and preservation CI.
+- `digital-protocell/crates/regulatory-core/src/coupled_resource.rs` — versioned opt-in R4 wrapper that preserves exact V1 finite-resource transport and applies same-step paired N/F to existing A+W.
+- `digital-protocell/examples/dcdev020m1r4_coupled_source_candidate.rs` — bounded R4 V1/reference/candidate replay, physical controls, closure checks, D-087 integration, and compact evidence writer.
+- `digital-protocell/experiments/generated/dcdev020m1r4/` — compact R4 protocol, result, qualification, and artifact manifest; dense runtime ledgers remain external/local evidence.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r4/` — R4 coupled-source candidate protocol and preservation boundary.
+- `.github/workflows/dc-dev-020m1r4.yml` — scoped R4 governance, formatting, candidate assay, D-087, artifact, preservation, and exact-head CI.
 
 ## External integration points
 

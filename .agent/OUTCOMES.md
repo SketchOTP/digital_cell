@@ -483,6 +483,25 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and independent Architect acceptance.
 - Follow-up directive: none
 
+## D-20260823-dcdev020m1r4-coupled-source-candidate001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R4-COUPLED-SOURCE-CANDIDATE-PENDING-ARCHITECT`
+- Supersedes outcome: none
+- Closed: `2026-08-23T00:30:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The bounded R4 implementation adds an opt-in `FINITE_SPATIAL_RESOURCE_COUPLED_ACTIVATION_V1` wrapper around the unchanged V1 finite-resource boundary. Only same-step newly delivered paired N/F is transformed into existing A+W; unmatched material remains N/F and pre-existing internal N/F is not selected. The local preregistered 480-step V1 baseline/reference/candidate matrix and controls qualify, actual D-087 V3/V2 are 8/8, and the preservation suite passes; exact-head remote CI and Architect review remain pending.
+- Changed areas: versioned regulatory-core adapter, bounded R4 example, compact evidence, documentation, scoped CI, and governance. No V1 transport, V2/V3 chemistry, production selection, reserve, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work is authorized.
+- Validation:
+  - Coupled adapter focused tests - PASSED
+  - Exact 480-step assay - PASSED
+  - Actual D-087 V3/V2 - PASSED
+  - Preservation suite - PASSED
+  - Exact-head remote CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: This is an experimental candidate qualification, not a production source-law change. Exact remote CI and independent Architect interpretation remain required.
+- Blockers: final local/remote verification and Architect review.
+- Follow-up directive: none
+
 ## D-20260822-dcdev020m1r2r2-topology-death-closure001 - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020M1R2R2-TOPOLOGY-DEATH-CLOSURE-PENDING-ARCHITECT`

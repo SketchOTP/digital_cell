@@ -151,3 +151,7 @@ path = "../../examples/dcdev020m1r2r2_topology_death_closure.rs"
 [[example]]
 name = "dcdev020m1r3_ordinary_decay_candidate"
 path = "../../examples/dcdev020m1r3_ordinary_decay_candidate.rs"
+
+[[example]]
+name = "dcdev020m1r4_coupled_source_candidate"
+path = "../../examples/dcdev020m1r4_coupled_source_candidate.rs"

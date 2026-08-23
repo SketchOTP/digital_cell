@@ -696,3 +696,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260822-dcdev020m1r2r2-topology-death-closure001
 - Status at issuance: ISSUED
+
+## D-20260823-dcdev020m1r4-coupled-source-candidate001
+
+- Issued: `2026-08-23T00:30:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R4-COUPLED-SOURCE-CANDIDATE-001`
+- Objective: Qualify one versioned, opt-in finite-resource candidate that preserves exact V1 transport and transforms only same-step newly delivered paired N/F into existing A+W.
+- Scope: Start exactly at accepted R3 head `17226fb7484eb50079c1c30ce9fd8039b3f23c60`; ConservativeV3, reserve OFF; exact 480-step V1 baseline, accepted source-capacity reference, and coupled candidate; no-contact, N-only, F-only, depleted, ruptured, and pre-existing-internal-N/F controls; actual V3/V2 D-087 8/8; compact evidence, governance, preservation, scoped exact-head CI, and architect handoff.
+- Exclusions: V1 transport changes, V2/V3 chemistry changes, production selection, reserve redesign, recycling, salvage, M2, behavior, evolution, and DC-DEV-021.
+- Acceptance: V1 transport replay remains exact; same-step paired-only activation and controls pass; candidate and accepted source-capacity reference agree within tolerance; closure and stoichiometry pass; V3/V2 D-087 remain 8/8; exact-head remote CI succeeds; Architect review remains required.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260823-dcdev020m1r3-ordinary-decay-candidate001
+- Status at issuance: ISSUED

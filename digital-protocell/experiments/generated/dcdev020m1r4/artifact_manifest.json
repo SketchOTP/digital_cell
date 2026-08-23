@@ -1,0 +1,14 @@
+{
+  "artifact_files": [
+    "protocol.json",
+    "results.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "authoritative_result": "results.json",
+  "dense_ledgers_committed": false,
+  "directive": "DC-DEV-020-M1-R4-COUPLED-SOURCE-CANDIDATE-001",
+  "evidence_hash": "f5f84be662ce01c7",
+  "next_execution_started": false,
+  "starting_head": "17226fb7484eb50079c1c30ce9fd8039b3f23c60"
+}

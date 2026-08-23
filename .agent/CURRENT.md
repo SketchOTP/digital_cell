@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260823-dcdev020m1r3-ordinary-decay-candidate001`
-- External directive ID: `DC-DEV-020-M1-R3-ORDINARY-DECAY-CANDIDATE-001`
-- Objective: `Qualify an experimental ConservativeV3 schema that removes only the starvation-specific 4x activated-material decay multiplier while preserving ConservativeV2 and the selected production configuration.`
-- Current status: `VALIDATING`
-- Acceptance: `V2/V3 non-starved parity, ordinary-starvation equivalence, topology-death preservation, source-capacity replay without /4, V3 and V2 actual D-087 8/8, preservation regressions, and exact-head remote CI.`
-- Current phase: `R2-R2 topology death is architect-accepted. R3 is the only authorized execution boundary; ConservativeV2 remains frozen/selected, production source implementation, M2, recycling, salvage, behavior, evolution, and DC-DEV-021 remain unauthorized.`
-- Expected or actual touched areas: `versioned mesh chemistry schema, candidate assay, compact evidence, scoped CI, documentation, and governance handoff`
-- Immediate next action: `Run exact-head remote CI and return the bounded candidate package for Architect review; do not select V3 or start downstream work.`
+- Local directive ID: `D-20260823-dcdev020m1r4-coupled-source-candidate001`
+- External directive ID: `DC-DEV-020-M1-R4-COUPLED-SOURCE-CANDIDATE-001`
+- Objective: `Qualify one versioned, opt-in finite-resource boundary that transforms only newly delivered paired N/F into existing A+W material.`
+- Current status: `IN_PROGRESS`
+- Acceptance: `Preserve V1 transport exactly, prove same-step paired-only activation and physical controls, run the preregistered 480-step V1/reference/candidate matrix, preserve V3/V2 D-087 and frozen suites, and obtain exact-head remote CI.`
+- Current phase: `R3 is architect-accepted. ConservativeV2 remains frozen/selected, ConservativeV3 is qualified/experimental/unselected, topology death is established, source capacity is sufficient, and only R4 coupled-source qualification is authorized.`
+- Expected or actual touched areas: `versioned regulatory-core coupled-source adapter, bounded assay, compact evidence, scoped CI, documentation, and governance handoff`
+- Immediate next action: `Commit only the bounded R4 package, push PR #44, verify exact-head remote CI, and stop for Architect review.`
 
 ## Temporary task-relevant facts
 
@@ -31,11 +31,12 @@
 - R6 is accepted as `DCDEV020R6_ACCEPTED_NEGATIVE` and `DCDEV020R6_FINITE_FEED_RESTORATION_FAILURE` at `f01b716d9051c9f0114f3c5c0d1b123e2df037cf`; `NF_POWER_LAW_RESTORATION_ROUTE_CLOSED` does not close NF information sufficiency.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
 - R2-R2 is architect-accepted at `1622b664a4a37b8a0ac4ea51fbc97ca71f9d853c` with exact-head CI `32615395736`; ordinary starvation reaches actual topology rupture and remains non-intact after both refeeding shadows.
-- R3 local qualification currently reports `M1_ORDINARY_DECAY_CANDIDATE_QUALIFIED`: V2/V3 parity exact, observer collapse `3279`, rupture `124717`, source-capacity organized delta `+1.2571804904075918`, V3/V2 D-087 `8/8`; remote CI and Architect acceptance remain pending.
+- R3 is architect-accepted at `17226fb7484eb50079c1c30ce9fd8039b3f23c60` with exact-head CI `32617847392` and artifact digest `sha256:dde942ef96c37ee4e0c9882abacd89202dd4eaf245c81b53d4f0efc039fe5700`; classification `M1_ORDINARY_DECAY_CANDIDATE_QUALIFIED`.
+- R4 entry authority is exactly `17226fb7484eb50079c1c30ce9fd8039b3f23c60`; V3 remains experimental/unselected and the finite-resource source production realization is not established.
 
 ## Last validation after adoption
 
-- Command or check: `Local M1-R2-R2 replay, compact base/fresh artifact verification, fresh actual D-087, governance validation, preservation suite, and exact-head remote CI run 32615105226`
+- Command or check: `R4 local governance, Rust formatting, exact 480-step assay, V3/V2 actual D-087, coupled/V1 tests, and Phase-1/D-091/D-088/evolution preservation suite`
 - Result: `PASSED`
 
 ## Risks
@@ -58,7 +59,7 @@
 
 ## Blockers
 
-- R9-R2 is architect-accepted as `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`; R9-R3-R1, R9-R4, and R9-R4-R1 are architect-accepted and preserved. M0 is closed, M1-R2 is accepted as valid inconclusive, M1-R2-R1 is re-planned, and M1-R2-R2 is the active review boundary; no production repair, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work is authorized.
+- R9-R2 is architect-accepted as `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`; R9-R3-R1, R9-R4, and R9-R4-R1 are architect-accepted and preserved. M0 is closed, M1 topology death is established, R3 is accepted, and R4 is the active review boundary; no production repair, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work is authorized.
 
 - R9-R5 is REPLAN / NOT ACCEPTED. Its exact remote V20 artifact showed Gate 7 false because the R9-R5 runner supplied the wrong repository root; its broad classification is retired as authority. R9-R5-R1 must restore V20 8/8 and exercise positive diagnostic R before any causal liquidity classification is accepted. No reserve repair, allocator changes, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
 - R9-R5-R1 is architect-accepted at `f1704acff5ca64e509a28c74af8cccbf76439ef2` with CI `32549697865` and classification `DCDEV020R9R5R1_RESERVE_LIQUIDITY_CONTRIBUTORY_NOT_SUFFICIENT`. R9-R6 is REPLAN / NOT ACCEPTED until R9-R6-R1 passes exact-head CI; its corrected shadow count is 4/8 and classification is `DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_INSUFFICIENT`.

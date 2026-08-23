@@ -1,0 +1,48 @@
+{
+  "arms": [
+    "V1_BASELINE_V3",
+    "ACCEPTED_SOURCE_CAPACITY_REFERENCE",
+    "COUPLED_SOURCE_CANDIDATE"
+  ],
+  "chemistry": "ConservativeV3",
+  "coupled_source_schema": "FINITE_SPATIAL_RESOURCE_COUPLED_ACTIVATION_V1",
+  "directive": "DC-DEV-020-M1-R4-COUPLED-SOURCE-CANDIDATE-001",
+  "dt": 0.02,
+  "forbidden_changes": [
+    "V1 transport",
+    "V3 chemistry",
+    "k_act",
+    "k_a_decay",
+    "finite inventory",
+    "resource geometry",
+    "permeability",
+    "rupture",
+    "death",
+    "D-091",
+    "D-087",
+    "mechanics",
+    "remesh",
+    "controller",
+    "recycling",
+    "salvage",
+    "M2",
+    "DC-DEV-021"
+  ],
+  "horizon_steps": 480,
+  "law": "paired=min(newly_delivered_N,newly_delivered_F); paired -> A+W; unmatched remains N/F",
+  "reserve_enabled": false,
+  "resource": {
+    "center": [
+      4.8,
+      0.0
+    ],
+    "f": 14.588954880632265,
+    "n": 14.588954880632265,
+    "radius": 1.5
+  },
+  "selected_production": {
+    "mesh_contract": "ConservativeV2",
+    "reserve_enabled": false
+  },
+  "starting_head": "17226fb7484eb50079c1c30ce9fd8039b3f23c60"
+}
