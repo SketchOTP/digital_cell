@@ -46,7 +46,10 @@ chemistry path only; M0 mechanics/remesh/rebond are outside the assay.
 
 ## Result
 
-The exact R2 endpoint replay passed for both arms. Both arms subsequently
+The exact R2 endpoint replay passed for both arms. Scalar endpoint values are
+checked with the accepted numeric tolerance; trajectory hashes remain recorded
+as provenance but are not required to match across Windows and Linux
+floating-point replays. Both arms subsequently
 reached the existing `activated_catalyst_collapse` boundary without any edge
 ruptures:
 

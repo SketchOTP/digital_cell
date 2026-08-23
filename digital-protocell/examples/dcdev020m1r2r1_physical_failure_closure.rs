@@ -36,11 +36,6 @@ const RESTORED_N: f64 = 14.588954880632265;
 const RESTORED_F: f64 = 14.588954880632265;
 const TOL: f64 = 1e-8;
 
-const R2_A_COMPARISON_HASH: &str = "3bc8203cb5b0beaa";
-const R2_A_CONTINUATION_HASH: &str = "b46f176bfc65b11c";
-const R2_B_COMPARISON_HASH: &str = "1617ceeab5bd87f5";
-const R2_B_CONTINUATION_HASH: &str = "78fbf25c4acd3c96";
-
 #[derive(Debug, Clone, Copy, Serialize)]
 struct CompactSnapshot {
     step: usize,
@@ -495,16 +490,12 @@ fn run_restoration(
 fn assert_r2_endpoint(id: &str, comparison: &PhaseEvidence, continuation: &PhaseEvidence) {
     let expected = match id {
         "A_PRODUCTION_STARVATION_4X" => (
-            R2_A_COMPARISON_HASH,
-            R2_A_CONTINUATION_HASH,
             1.118750007707361e-9,
             1.0394156425111607,
             5.441679269932585,
             36.82914217972928,
         ),
         "B_ORDINARY_DECAY_STARVATION" => (
-            R2_B_COMPARISON_HASH,
-            R2_B_CONTINUATION_HASH,
             1.8843399128823503e-5,
             1.1281509822624136,
             5.534912482156821,
@@ -512,22 +503,15 @@ fn assert_r2_endpoint(id: &str, comparison: &PhaseEvidence, continuation: &Phase
         ),
         _ => panic!("unknown R2 arm {id}"),
     };
-    assert_eq!(
-        comparison.trajectory_hash, expected.0,
-        "R2 comparison hash mismatch"
-    );
-    assert_eq!(
-        continuation.trajectory_hash, expected.1,
-        "R2 continuation hash mismatch"
-    );
+    // Trajectory hashes remain provenance fields, but are derived from
+    // floating-point replay and are not cross-platform identity fields.
+    assert!(!comparison.trajectory_hash.is_empty());
+    assert!(!continuation.trajectory_hash.is_empty());
     assert_eq!(continuation.accepted_steps, R2_CONTINUATION_STEPS);
-    assert!(close(continuation.final_state.a, expected.2));
-    assert!(close(continuation.final_state.c, expected.3));
-    assert!(close(continuation.final_state.structural_m, expected.4));
-    assert!(close(
-        continuation.final_state.organized_material,
-        expected.5
-    ));
+    assert!(close(continuation.final_state.a, expected.0));
+    assert!(close(continuation.final_state.c, expected.1));
+    assert!(close(continuation.final_state.structural_m, expected.2));
+    assert!(close(continuation.final_state.organized_material, expected.3));
     assert_eq!(continuation.final_state.ruptured_edges, 0);
     assert_eq!(
         continuation.final_state.observer_death_reason,
