@@ -1,0 +1,21 @@
+{
+  "classification": "M1_ORDINARY_DECAY_CANDIDATE_QUALIFIED",
+  "dc_dev_021_authorized": false,
+  "directive": "DC-DEV-020-M1-R3-ORDINARY-DECAY-CANDIDATE-001",
+  "e0_authority_and_v2_preservation": true,
+  "e1_version_isolation": true,
+  "e2_causal_ordinary_starvation_equivalence": true,
+  "e3_source_capacity_without_decay_compensation": true,
+  "e4_internal_material_closure": true,
+  "e4_v2_d087_preservation": true,
+  "e4_v3_d087": true,
+  "e5_exact_head_remote_ci_required": true,
+  "m2_authorized": false,
+  "next_execution_started": false,
+  "observer_only": true,
+  "parameter_search": false,
+  "production_source_law_changed": false,
+  "recycling": false,
+  "selected_production_changed": false,
+  "starting_head": "1622b664a4a37b8a0ac4ea51fbc97ca71f9d853c"
+}

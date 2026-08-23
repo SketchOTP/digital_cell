@@ -463,6 +463,26 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260823-dcdev020m1r3-ordinary-decay-candidate001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R3-ORDINARY-DECAY-CANDIDATE-PENDING-ARCHITECT`
+- Supersedes outcome: none
+- Closed: `2026-08-23T00:30:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The versioned `ConservativeV3` candidate differs from `ConservativeV2` only in starvation activated-material decay: V3 uses ordinary `k_a_decay=0.008` with no fourfold multiplier. Local E0–E4 qualification passes. Non-starved V2/V3 replay is exact; ordinary-decay equivalence matches observer collapse `3279` and rupture `124717`; source-capacity replay without `/4` produces organized delta `+1.2571804904075918`; both ordinary and source-capacity refeeding forks remain topologically ruptured; actual V3 and preserved V2 D-087 are `8/8`. Classification is `M1_ORDINARY_DECAY_CANDIDATE_QUALIFIED`, pending exact-head remote CI and Architect review.
+- Changed areas: versioned mesh chemistry schema, certifier candidate selector, bounded R3 assay, compact evidence, documentation, scoped CI, and governance. `ConservativeV2` remains unchanged and selected; no production source law, D-091, D-087 criteria, mechanics, transport, reserve, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work changed.
+- Validation:
+  - `cargo +1.89.0 check -p regulatory-core --example dcdev020m1r3_ordinary_decay_candidate` - PASSED
+  - Scoped Rust formatting - PASSED
+  - Actual D-087 ConservativeV3/reserve OFF - PASSED (8/8)
+  - Actual D-087 ConservativeV2/reserve OFF preservation - PASSED (8/8)
+  - Fresh local R3 assay and compact artifact generation - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: Exact-head remote CI must verify fresh V3/V2 reports, artifact identity, preservation regressions, and bounded diff. V3 is an experimental candidate only; sustained production homeostasis and source implementation remain unresolved and unauthorized.
+- Blockers: exact-head remote CI and independent Architect acceptance.
+- Follow-up directive: none
+
 ## D-20260822-dcdev020m1r2r2-topology-death-closure001 - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020M1R2R2-TOPOLOGY-DEATH-CLOSURE-PENDING-ARCHITECT`

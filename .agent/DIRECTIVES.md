@@ -682,3 +682,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260822-dcdev020m1r2r1-physical-failure-closure001
 - Status at issuance: ISSUED
+
+## D-20260823-dcdev020m1r3-ordinary-decay-candidate001
+
+- Issued: `2026-08-23T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R3-ORDINARY-DECAY-CANDIDATE-001`
+- Objective: Qualify versioned experimental `MeshChemistrySchema::ConservativeV3`, identical to `ConservativeV2` except that starvation uses ordinary `k_a_decay` with no fourfold multiplier.
+- Scope: Starting exactly from `1622b664a4a37b8a0ac4ea51fbc97ca71f9d853c`, qualify the versioned chemistry schema, candidate assay, non-starved parity, ordinary-starvation equivalence, topology-death preservation, source-capacity replay without diagnostic `/4`, actual V3/V2 D-087 qualification, compact evidence, governance, preservation, and exact-head CI on PR #44.
+- Exclusions: ConservativeV2 semantics, selected production configuration, N/F→A source law, uptake, transport, D-091, D-087 criteria, mechanics, remesh, production source implementation, reserve redesign, recycling, salvage, M2, behavior, evolution, and DC-DEV-021.
+- Acceptance: V2/V3 non-starved parity; V3 reproduces accepted ordinary-decay starvation and topology rupture; both refeeding shadows preserve rupture; source-capacity result reproduces `organized Δ≈+1.25718049040759` without `/4`; V3 and V2 actual D-087 are 8/8; closure and preservation pass; exact-head remote CI succeeds; Architect review remains required.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260822-dcdev020m1r2r2-topology-death-closure001
+- Status at issuance: ISSUED

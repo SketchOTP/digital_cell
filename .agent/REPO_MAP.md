@@ -139,6 +139,12 @@
 - `digital-protocell/experiments/generated/dcdev020m1r2r1/` — compact M1-R2-R1 protocol, results, qualification, and manifest; dense trajectories remain uncommitted.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r2r1/` — M1-R2-R1 physical-failure closure protocol, restoration boundary, and provisional classification.
 - `.github/workflows/dc-dev-020m1r2r1.yml` — scoped M1-R2-R1 governance, formatting, observer assay, fresh D-087, artifact verification, and preservation CI.
+- `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs` — versioned `ConservativeV3` candidate decay branch; `ConservativeV2` remains the selected production schema.
+- `digital-protocell/crates/phase1-certifier/src/sim.rs` — explicit V2/V3 candidate selector for qualification; default remains ConservativeV2.
+- `digital-protocell/examples/dcdev020m1r3_ordinary_decay_candidate.rs` — bounded V2/V3 parity, ordinary-starvation equivalence, topology-death, source-capacity, refeed, and artifact runner.
+- `digital-protocell/experiments/generated/dcdev020m1r3/` — compact ordinary-decay candidate qualification artifacts; dense CI outputs remain runtime evidence.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r3/ordinary_decay_candidate.md` — R3 candidate protocol, scope, result, and preservation boundary.
+- `.github/workflows/dc-dev-020m1r3.yml` — exact-head R3 candidate, V3/V2 D-087, artifact, and preservation CI.
 
 ## External integration points
 

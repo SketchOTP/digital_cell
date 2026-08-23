@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-22T22:40:00-04:00`
+- Last updated: `2026-08-23T00:30:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260822-dcdev020m1r2r2-topology-death-closure001`
-- External directive ID: `DC-DEV-020-M1-R2-R2-TOPOLOGY-DEATH-CLOSURE-001`
-- Objective: `Continue the exact accepted M1-R2 endpoint through the existing production edge-rupture rule, then test the exact ruptured state under ordinary finite refeeding and the qualified source-capacity shadow.`
+- Local directive ID: `D-20260823-dcdev020m1r3-ordinary-decay-candidate001`
+- External directive ID: `DC-DEV-020-M1-R3-ORDINARY-DECAY-CANDIDATE-001`
+- Objective: `Qualify an experimental ConservativeV3 schema that removes only the starvation-specific 4x activated-material decay multiplier while preserving ConservativeV2 and the selected production configuration.`
 - Current status: `VALIDATING`
-- Acceptance: `Reproduce both accepted M1-R2 endpoints exactly, continue past observer collapse until actual edge rupture or the bounded fail-closed limit, test both refeeding shadows without resetting the ruptured state, verify closure and fresh D-087 8/8, and obtain exact-head remote CI.`
-- Current phase: `M1-R2-R1 was re-planned because observer collapse was reversible and did not establish physical death. M1-R2-R2 topology-death closure is the only authorized execution boundary; M1 production change, M2, reserve redesign, recycling, salvage, behavior, evolution, and DC-DEV-021 remain unauthorized.`
-- Expected or actual touched areas: `M1-R2-R2 observer example, compact evidence, scoped CI, documentation, and governance handoff`
-- Immediate next action: `Return the completed bounded package to the Architect for independent review; do not start downstream work.`
+- Acceptance: `V2/V3 non-starved parity, ordinary-starvation equivalence, topology-death preservation, source-capacity replay without /4, V3 and V2 actual D-087 8/8, preservation regressions, and exact-head remote CI.`
+- Current phase: `R2-R2 topology death is architect-accepted. R3 is the only authorized execution boundary; ConservativeV2 remains frozen/selected, production source implementation, M2, recycling, salvage, behavior, evolution, and DC-DEV-021 remain unauthorized.`
+- Expected or actual touched areas: `versioned mesh chemistry schema, candidate assay, compact evidence, scoped CI, documentation, and governance handoff`
+- Immediate next action: `Run exact-head remote CI and return the bounded candidate package for Architect review; do not select V3 or start downstream work.`
 
 ## Temporary task-relevant facts
 
@@ -30,6 +30,8 @@
 - R5 is accepted as `DCDEV020R5_ACCEPTED`, `DCDEV020R5_NF_LOCAL_COORDINATE_SUFFICIENT`, and `ENDPOINT_SURROGATE_NOT_LOCAL_REQUIREMENT` at `d215cfc00ce70517e25fa7c3b51b13d85d9ce521`; R6 work is isolated on `strategy/dc-dev-020r6-nf-power-law-source`.
 - R6 is accepted as `DCDEV020R6_ACCEPTED_NEGATIVE` and `DCDEV020R6_FINITE_FEED_RESTORATION_FAILURE` at `f01b716d9051c9f0114f3c5c0d1b123e2df037cf`; `NF_POWER_LAW_RESTORATION_ROUTE_CLOSED` does not close NF information sufficiency.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
+- R2-R2 is architect-accepted at `1622b664a4a37b8a0ac4ea51fbc97ca71f9d853c` with exact-head CI `32615395736`; ordinary starvation reaches actual topology rupture and remains non-intact after both refeeding shadows.
+- R3 local qualification currently reports `M1_ORDINARY_DECAY_CANDIDATE_QUALIFIED`: V2/V3 parity exact, observer collapse `3279`, rupture `124717`, source-capacity organized delta `+1.2571804904075918`, V3/V2 D-087 `8/8`; remote CI and Architect acceptance remain pending.
 
 ## Last validation after adoption
 

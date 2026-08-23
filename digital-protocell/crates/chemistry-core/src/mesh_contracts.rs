@@ -315,7 +315,7 @@ pub fn audit(schema: MeshChemistrySchema) -> MeshStoichiometricAudit {
     MeshStoichiometricAudit {
         schema: match schema {
             MeshChemistrySchema::HistoricalV1 => EQUATION_VERSION_MATERIAL_MESH.to_string(),
-            MeshChemistrySchema::ConservativeV2 => {
+            MeshChemistrySchema::ConservativeV2 | MeshChemistrySchema::ConservativeV3 => {
                 EQUATION_VERSION_MATERIAL_MESH_CONSERVATIVE.to_string()
             }
         },

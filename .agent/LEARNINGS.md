@@ -495,3 +495,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-M1-R2-R2 observer-only topology-death closure; no production chemistry, chemistry-core, resource, death, reserve, controller, behavior, evolution, recycling, salvage, M2, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M1R2R1-001
+
+## L-DCDEV020M1R3-001
+
+- Learning ID: L-DCDEV020M1R3-001
+- Date: 2026-08-23
+- Fact or lesson: `ConservativeV3` can remove only the starvation-specific fourfold activated-material decay multiplier while retaining `ConservativeV2` physical/material semantics. In the bounded local qualification, non-starved V2/V3 mesh and ledger replay is exact; V3 matches the accepted ordinary-decay reference at observer collapse step `3279` and topology rupture step `124717`; source-capacity replay without `/4` gives organized-material change `+1.2571804904075918`; V3 and preserved V2 actual D-087 both pass `8/8`.
+- Evidence location: `digital-protocell/examples/dcdev020m1r3_ordinary_decay_candidate.rs`, `digital-protocell/experiments/generated/dcdev020m1r3/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r3/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R3 candidate qualification only; exact-head remote CI and Architect acceptance remain pending; V3 is not selected for production and no source implementation, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work is authorized.
+- Supersedes learning: none

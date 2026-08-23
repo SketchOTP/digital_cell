@@ -149,9 +149,11 @@ pub fn growth_step(
             }
             mesh.interior.r = (mesh.interior.r - take / area).max(0.0);
             let dm = take * growth.y_g.max(0.0);
-            let w_product = if react.mesh_schema
-                == crate::mesh_reactions::MeshChemistrySchema::ConservativeV2
-                || mesh.uses_observer_only_death()
+            let w_product = if matches!(
+                react.mesh_schema,
+                crate::mesh_reactions::MeshChemistrySchema::ConservativeV2
+                    | crate::mesh_reactions::MeshChemistrySchema::ConservativeV3
+            ) || mesh.uses_observer_only_death()
             {
                 (take - dm).max(0.0)
             } else {
@@ -191,9 +193,11 @@ pub fn growth_step(
         mesh.interior.a = (mesh.interior.a - take / area).max(0.0);
         // Structural mass from surplus A at yield y_g (A→m).
         let dm = take * growth.y_g.max(0.0);
-        let w_product = if react.mesh_schema
-            == crate::mesh_reactions::MeshChemistrySchema::ConservativeV2
-            || mesh.uses_observer_only_death()
+        let w_product = if matches!(
+            react.mesh_schema,
+            crate::mesh_reactions::MeshChemistrySchema::ConservativeV2
+                | crate::mesh_reactions::MeshChemistrySchema::ConservativeV3
+        ) || mesh.uses_observer_only_death()
         {
             (take - dm).max(0.0)
         } else {

@@ -30,6 +30,9 @@ use serde::{Deserialize, Serialize};
 pub enum MeshChemistrySchema {
     HistoricalV1,
     ConservativeV2,
+    /// Experimental M1 candidate: ordinary activated-material decay during
+    /// starvation while retaining the ConservativeV2 material contract.
+    ConservativeV3,
 }
 
 impl Default for MeshChemistrySchema {
@@ -108,6 +111,12 @@ impl ReactionParams {
     pub fn conservative_v2() -> Self {
         let mut params = Self::default();
         params.mesh_schema = MeshChemistrySchema::ConservativeV2;
+        params
+    }
+
+    pub fn conservative_v3() -> Self {
+        let mut params = Self::conservative_v2();
+        params.mesh_schema = MeshChemistrySchema::ConservativeV3;
         params
     }
 }
@@ -439,7 +448,9 @@ pub fn reactions_step_with_reserve_mode(
 
         let a_dec = {
             // Accelerate A loss when activation substrates are absent (starvation).
-            let starve = if mesh.interior.n.max(0.0) * mesh.interior.f.max(0.0) < 1e-8 {
+            let starve = if p.mesh_schema == MeshChemistrySchema::ConservativeV3 {
+                1.0
+            } else if mesh.interior.n.max(0.0) * mesh.interior.f.max(0.0) < 1e-8 {
                 4.0
             } else {
                 1.0
@@ -572,8 +583,10 @@ pub fn reactions_step_with_reserve_mode(
             let dm = take * p.yield_a_to_m;
             mesh.interior.a = (mesh.interior.a - a_take / area).max(0.0);
             mesh.interior.r = (mesh.interior.r - r_take / area).max(0.0);
-            let w_product = if p.mesh_schema == MeshChemistrySchema::ConservativeV2
-                || mesh.uses_observer_only_death()
+            let w_product = if matches!(
+                p.mesh_schema,
+                MeshChemistrySchema::ConservativeV2 | MeshChemistrySchema::ConservativeV3
+            ) || mesh.uses_observer_only_death()
             {
                 (take - dm).max(0.0)
             } else {
@@ -686,8 +699,10 @@ pub fn reactions_step_with_reserve_mode(
             let take = a_take + r_take;
             mesh.interior.a = (mesh.interior.a - a_take / area).max(0.0);
             mesh.interior.r = (mesh.interior.r - r_take / area).max(0.0);
-            let w_product = if p.mesh_schema == MeshChemistrySchema::ConservativeV2
-                || mesh.uses_observer_only_death()
+            let w_product = if matches!(
+                p.mesh_schema,
+                MeshChemistrySchema::ConservativeV2 | MeshChemistrySchema::ConservativeV3
+            ) || mesh.uses_observer_only_death()
             {
                 0.0
             } else {

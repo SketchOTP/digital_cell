@@ -4,8 +4,8 @@ use chemistry_core::material_mesh::{LumpedChem, MaterialMesh, DEFAULT_REBOND_DIS
 use chemistry_core::mesh_mechanics::{mechanics_step, remesh, MechParams};
 use chemistry_core::mesh_reactions::{
     pulse_tracers, reactions_step_with_reserve_mode, tracer_catalyst_fraction,
-    tracer_membrane_fraction, tracer_structural_fraction, try_local_rebond, ReactionLedger,
-    ReactionParams, ReserveDiagnosticMode,
+    tracer_membrane_fraction, tracer_structural_fraction, try_local_rebond, MeshChemistrySchema,
+    ReactionLedger, ReactionParams, ReserveDiagnosticMode,
 };
 use chemistry_core::mesh_transport::{transport_step, TransportParams};
 use chemistry_core::metabolic_reserve::{stamp_reserve_equation, ReserveParams};
@@ -194,13 +194,18 @@ pub fn seed_mesh(radius: f64, seed: u64) -> MaterialMesh {
 /// exact behavior when explicitly selecting HistoricalV1 or ConservativeV2.
 /// The ordinary M0 production default is ConservativeV2.
 pub fn conservative_v2_enabled() -> bool {
+    !matches!(selected_mesh_schema(), MeshChemistrySchema::HistoricalV1)
+}
+
+pub fn selected_mesh_schema() -> MeshChemistrySchema {
     match std::env::var("DCDEV020R9R3_CONTRACT").ok().as_deref() {
-        Some("ConservativeV2") => true,
-        Some("HistoricalV1") => false,
-        Some(_) => false,
+        Some("ConservativeV3") => MeshChemistrySchema::ConservativeV3,
+        Some("ConservativeV2") => MeshChemistrySchema::ConservativeV2,
+        Some("HistoricalV1") => MeshChemistrySchema::HistoricalV1,
+        Some(_) => MeshChemistrySchema::HistoricalV1,
         None => match std::env::var("DCDEV020R9R2_V2").ok().as_deref() {
-            Some("0") => false,
-            _ => true,
+            Some("0") => MeshChemistrySchema::HistoricalV1,
+            _ => MeshChemistrySchema::ConservativeV2,
         },
     }
 }
@@ -219,10 +224,10 @@ pub fn reserve_enabled() -> bool {
 }
 
 pub fn contract_label() -> &'static str {
-    if conservative_v2_enabled() {
-        "ConservativeV2"
-    } else {
-        "HistoricalV1"
+    match selected_mesh_schema() {
+        MeshChemistrySchema::HistoricalV1 => "HistoricalV1",
+        MeshChemistrySchema::ConservativeV2 => "ConservativeV2",
+        MeshChemistrySchema::ConservativeV3 => "ConservativeV3",
     }
 }
 
@@ -235,10 +240,10 @@ pub fn equation_lineage() -> &'static str {
 }
 
 pub fn reaction_params_for(mesh: &MaterialMesh) -> ReactionParams {
-    let mut params = if conservative_v2_enabled() {
-        ReactionParams::conservative_v2()
-    } else {
-        frozen_reactions()
+    let mut params = match selected_mesh_schema() {
+        MeshChemistrySchema::HistoricalV1 => frozen_reactions(),
+        MeshChemistrySchema::ConservativeV2 => ReactionParams::conservative_v2(),
+        MeshChemistrySchema::ConservativeV3 => ReactionParams::conservative_v3(),
     };
     if reserve_enabled() {
         params.reserve = ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area());
