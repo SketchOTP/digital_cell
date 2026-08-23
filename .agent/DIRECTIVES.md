@@ -668,3 +668,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260822-dcdev020m1r2-starvation-law-audit001
 - Status at issuance: ISSUED
+
+## D-20260822-dcdev020m1r2r2-topology-death-closure001
+
+- Issued: `2026-08-22T23:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R2-R2-TOPOLOGY-DEATH-CLOSURE-001`
+- Objective: Continue the exact accepted M1-R2 endpoint through actual production edge rupture and test the exact ruptured state under ordinary finite refeeding and the qualified source-capacity shadow.
+- Scope: Starting head `40a066424a5a0fe08db9609c4ec71a708b44115f`, exact R2 endpoint replay, unchanged reaction continuation to actual edge rupture, 5,000-step ordinary finite refeeding, 5,000-step source-capacity upper-bound shadow, compact evidence, governance, preservation, fresh D-087, and scoped exact-head CI on PR #44.
+- Exclusions: Chemistry-core, production chemistry, activation, uptake, transport, resource law/inventory, death criteria, D-091, D-087, M0, recycling, salvage, M2, behavior, evolution, DC-DEV-021, and parameter search.
+- Acceptance: Actual rupture is observed under the existing production rule; exact ruptured state remains topologically non-intact under both refeeding shadows; strict closure passes; fresh D-087 is 8/8; exact-head CI succeeds; and architect review remains required.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260822-dcdev020m1r2r1-physical-failure-closure001
+- Status at issuance: ISSUED

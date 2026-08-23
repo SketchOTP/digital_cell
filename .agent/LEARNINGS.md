@@ -485,3 +485,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-M1-R2 observer-only starvation-law audit; no production chemistry, chemistry-core, D-087 implementation, resource, death, reserve, controller, behavior, evolution, recycling, salvage, M2, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M1R1R1-001
+
+## L-DCDEV020M1R2R2-001
+
+- Learning ID: L-DCDEV020M1R2R2-001
+- Date: 2026-08-22
+- Fact or lesson: Observer collapse is not topology death. The exact M1-R2 endpoint can continue through reversible observer collapse until the existing production edge rupture rule marks actual rupture. In the bounded R2-R2 replay, both arms ruptured at steps `124249` and `124717` and remained `closed_intact=false` through ordinary finite refeeding and the existing source-capacity upper-bound shadow.
+- Evidence location: `digital-protocell/examples/dcdev020m1r2r2_topology_death_closure.rs`, `digital-protocell/experiments/generated/dcdev020m1r2r2/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r2r2/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R2-R2 observer-only topology-death closure; no production chemistry, chemistry-core, resource, death, reserve, controller, behavior, evolution, recycling, salvage, M2, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R2R1-001

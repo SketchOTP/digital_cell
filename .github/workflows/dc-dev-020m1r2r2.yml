@@ -1,0 +1,161 @@
+name: DC-DEV-020-M1-R2-R2 topology-death closure
+
+on:
+  push:
+    branches:
+      - strategy/dc-dev-020r9-mesh-contract-requalification
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+
+permissions:
+  contents: read
+
+jobs:
+  topology-death-closure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out exact head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.89.0
+          components: rustfmt
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Governance validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustfmt +1.89.0 --edition 2021 --check examples/dcdev020m1r2r2_topology_death_closure.rs
+      - name: Preserve production and downstream boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          changed="$(git diff --name-only bc65098c3d26777aca2d1da5dab8cc118ecc6e19 HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/(chemistry-core|phase1-certifier/src)/'; then
+            echo 'M1-R2-R2 may not modify production chemistry or Phase-1 source'
+            exit 1
+          fi
+          if printf '%s\n' "$changed" | grep -Ei 'dcdev020r[2-9]|dc-dev-021|recycl|salvage|homeostat|controller|behavior|source_law'; then
+            echo 'M1-R2-R2 later-scope contamination detected'
+            exit 1
+          fi
+      - name: Fresh topology-death closure assay
+        working-directory: digital-protocell
+        env:
+          DCDEV020M1R2R2_OUTPUT: experiments/generated/dcdev020m1r2r2/ci
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev020m1r2r2_topology_death_closure --release --quiet
+      - name: Fresh actual D-087 certification
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          unset DCDEV020R9R2_V2 DCDEV020R9R3_CONTRACT DCDEV020R9R3_RESERVE
+          cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- \
+            --output experiments/generated/dcdev020m1r2r2/ci/actual_d087
+      - name: Verify compact artifacts and actual D-087
+        working-directory: digital-protocell
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          base = Path('experiments/generated/dcdev020m1r2r2')
+          fresh = base / 'ci'
+          names = ('protocol.json', 'results.json', 'qualification.json', 'artifact_manifest.json')
+          for root in (base, fresh):
+              for name in names:
+                  assert (root / name).is_file(), f'missing {root/name}'
+
+          protocol = json.loads((base / 'protocol.json').read_text())
+          results = json.loads((base / 'results.json').read_text())
+          qualification = json.loads((base / 'qualification.json').read_text())
+          fresh_protocol = json.loads((fresh / 'protocol.json').read_text())
+          fresh_results = json.loads((fresh / 'results.json').read_text())
+          fresh_qualification = json.loads((fresh / 'qualification.json').read_text())
+          report = json.loads((fresh / 'actual_d087/certification/report.json').read_text())
+
+          def equivalent(a, b, path='root'):
+              if isinstance(a, (int, float)) and isinstance(b, (int, float)) and not isinstance(a, bool) and not isinstance(b, bool):
+                  assert abs(a - b) <= 1e-8 * max(1.0, abs(a), abs(b)), f'{path}: numeric mismatch'
+                  return
+              if isinstance(a, (int, str, bool)) or a is None:
+                  assert a == b, f'{path}: value mismatch'
+                  return
+              if isinstance(a, list):
+                  assert isinstance(b, list) and len(a) == len(b), f'{path}: list mismatch'
+                  for i, (x, y) in enumerate(zip(a, b)):
+                      equivalent(x, y, f'{path}[{i}]')
+                  return
+              assert isinstance(b, dict) and set(a) == set(b), f'{path}: object keys mismatch'
+              for key in a:
+                  if key not in ('trajectory_hash',):
+                      equivalent(a[key], b[key], f'{path}.{key}')
+
+          assert protocol['directive'] == 'DC-DEV-020-M1-R2-R2-TOPOLOGY-DEATH-CLOSURE-001'
+          assert protocol['starting_head'] == '40a066424a5a0fe08db9609c4ec71a708b44115f'
+          assert protocol['rupture_search_steps'] == 1_000_000
+          assert protocol['refeed_steps'] == 5_000
+          assert results['classification'] == 'M1_TOPOLOGY_DEATH_ESTABLISHED'
+          assert results['topology_death_closure'] is True
+          for arm_id in ('A_PRODUCTION_STARVATION_4X', 'B_ORDINARY_DECAY_STARVATION'):
+              arm = results['arms'][arm_id]
+              assert arm['r2_endpoint']['step'] == 20_480
+              assert arm['first_edge_rupture_step'] is not None
+              assert arm['rupture_state']['ruptured_edges'] > 0
+              assert arm['rupture_state']['closed_intact'] is False
+              assert arm['rupture_state']['physical_runtime_valid'] is True
+              for mode in ('ordinary_finite_refeed', 'source_capacity_refeed'):
+                  refeed = arm[mode]
+                  assert refeed['accepted_steps'] == 5_000
+                  assert refeed['closed_intact_before'] is False
+                  assert refeed['closed_intact_after'] is False
+                  assert refeed['ruptured_edges_after'] >= refeed['ruptured_edges_before']
+                  assert refeed['world_to_organism_closure_residual'] <= 1e-8
+          assert results['chemistry_core_changed'] is False
+          assert results['production_biology_changed'] is False
+          assert results['parameter_search'] is False
+          assert results['recycling'] is False
+          assert results['next_execution_started'] is False
+          assert fresh_protocol == protocol
+          equivalent(results, fresh_results, 'results')
+          assert fresh_qualification == qualification
+
+          assert report['mesh_contract'] == 'ConservativeV2'
+          assert report['reserve_enabled'] is False
+          assert [report[f'gate{i}']['pass'] for i in range(8)] == [True] * 8
+          assert report['primary_conclusion'] == 'D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED'
+          print('DCDEV020M1R2R2_ARTIFACT_AND_D087_VERIFICATION_PASS')
+          PY
+      - name: Phase-1 preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics -- --nocapture
+      - name: D-091 preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+      - name: D-088 preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+      - name: Evolution-harness preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness -- --nocapture
+      - name: Upload compact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020m1r2r2-topology-death-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020m1r2r2/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r2r2/results.json
+            digital-protocell/experiments/generated/dcdev020m1r2r2/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r2r2/artifact_manifest.json
+            digital-protocell/experiments/generated/dcdev020m1r2r2/ci/actual_d087/certification/report.json
+          include-hidden-files: false

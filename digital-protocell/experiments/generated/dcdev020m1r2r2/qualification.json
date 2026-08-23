@@ -1,0 +1,18 @@
+{
+  "chemistry_core_changed": false,
+  "classification": "M1_TOPOLOGY_DEATH_ESTABLISHED",
+  "dc_dev_021_authorized": false,
+  "directive": "DC-DEV-020-M1-R2-R2-TOPOLOGY-DEATH-CLOSURE-001",
+  "e0_exact_r2_endpoint_reproduction": true,
+  "e1_actual_production_edge_rupture": true,
+  "e2_ordinary_finite_refeed": true,
+  "e3_source_capacity_refeed": true,
+  "e4_topology_persistence": true,
+  "m2_authorized": false,
+  "next_execution_started": false,
+  "observer_only": true,
+  "parameter_search": false,
+  "production_biology_changed": false,
+  "recycling": false,
+  "starting_head": "40a066424a5a0fe08db9609c4ec71a708b44115f"
+}

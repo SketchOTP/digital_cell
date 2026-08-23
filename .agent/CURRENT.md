@@ -7,13 +7,13 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260822-dcdev020m1r2r1-physical-failure-closure001`
-- External directive ID: `DC-DEV-020-M1-R2-R1-PHYSICAL-FAILURE-CLOSURE-001`
-- Objective: `Determine whether ordinary resource deprivation reaches the existing irreversible chemistry-path material-failure boundary and whether exact finite N/F restoration reverses that state.`
+- Local directive ID: `D-20260822-dcdev020m1r2r2-topology-death-closure001`
+- External directive ID: `DC-DEV-020-M1-R2-R2-TOPOLOGY-DEATH-CLOSURE-001`
+- Objective: `Continue the exact accepted M1-R2 endpoint through the existing production edge-rupture rule, then test the exact ruptured state under ordinary finite refeeding and the qualified source-capacity shadow.`
 - Current status: `VALIDATING`
-- Acceptance: `Reproduce both accepted M1-R2 endpoints exactly, continue each exact state for at most 150,000 accepted chemistry steps, apply existing terminal criteria only, restore exact finite N/F without reset after terminal failure, verify closure and fresh D-087 8/8, and obtain exact-head remote CI.`
-- Current phase: `M1-R2 is architect-accepted as valid inconclusive. This physical-failure closure is the only authorized execution boundary; M1 production change, M2, reserve redesign, recycling, salvage, behavior, evolution, and DC-DEV-021 remain unauthorized.`
-- Expected or actual touched areas: `M1-R2-R1 observer example, compact evidence, scoped CI, documentation, and governance handoff`
+- Acceptance: `Reproduce both accepted M1-R2 endpoints exactly, continue past observer collapse until actual edge rupture or the bounded fail-closed limit, test both refeeding shadows without resetting the ruptured state, verify closure and fresh D-087 8/8, and obtain exact-head remote CI.`
+- Current phase: `M1-R2-R1 was re-planned because observer collapse was reversible and did not establish physical death. M1-R2-R2 topology-death closure is the only authorized execution boundary; M1 production change, M2, reserve redesign, recycling, salvage, behavior, evolution, and DC-DEV-021 remain unauthorized.`
+- Expected or actual touched areas: `M1-R2-R2 observer example, compact evidence, scoped CI, documentation, and governance handoff`
 - Immediate next action: `Return the completed bounded package to the Architect for independent review; do not start downstream work.`
 
 ## Temporary task-relevant facts
@@ -46,6 +46,8 @@
 - M1-R1-R1 is architect-accepted at `7bb48874771144795a9559f7570f5ebc77e1004a` with exact-head workflows `32603849571` and `32603852368` passed; source capacity crosses the frozen 480-step boundary only after diagnostic decay neutralization, while the 4x coefficient remains provenance/necessity unresolved.
 - M1-R2 is architect-accepted at `bc65098c3d26777aca2d1da5dab8cc118ecc6e19` as `M1_STARVATION_LAW_AUDIT_INCONCLUSIVE`; exact-head workflows `32611593080` and `32611594966` passed. Both no-resource arms lost observer viability without terminal chemistry-path failure within 20,000 continuation steps.
 - M1-R2-R1 local replay from the exact accepted endpoint reproduces both R2 trajectory hashes and endpoint values. Both arms reach existing `activated_catalyst_collapse` during the 150,000-step extension (production 4x step `45422`, ordinary decay step `45831`), and both fail the exact 5,000-step no-reset finite N/F restoration challenge. Local classification is `M1_ORDINARY_DECAY_IRREVERSIBLE_FAILURE_ESTABLISHED`; architect acceptance and exact-head CI remain pending.
+- M1-R2-R1 architect re-plan: observer collapse was reversible while topology remained intact. Its `M1_ORDINARY_DECAY_IRREVERSIBLE_FAILURE_ESTABLISHED` classification is retired.
+- M1-R2-R2 local result reaches actual edge rupture in both arms (steps `124249` and `124717`) and preserves `closed_intact=false` through both refeeding shadows; exact-head CI and architect review remain pending.
 - R9-R2 correction: the actual D-087 certifier, not an R9 facsimile, is classification authority. ConservativeV2 remains an orthogonal physical/material/death contract; D-091 remains the biological equation lineage. The actual 3/8 result is a certification regression and must not be tuned around.
 - R9-R3 result: H0 HistoricalV1/reserve OFF and V20 ConservativeV2/reserve OFF pass scientific Gates 0–6; H1 and V21 fail Gates 1–4 with nonzero reserve flows and zero rejects. The architect-accepted classification is `DCDEV020R9R3_RESERVE_PHYSIOLOGY_CERTIFICATION_GAP_CONFIRMED`.
 - R9-R3-R1 diagnosis: the prior Gate-7 `bin_ok=false` was caused locally by extensionless source/destination paths on Windows (`digital-protocell-phase1` versus the actual `.exe` artifact); the runtime now derives the platform executable suffix and records build/copy/launch diagnostics without capturing unrelated environment secrets.
@@ -54,7 +56,7 @@
 
 ## Blockers
 
-- R9-R2 is architect-accepted as `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`; R9-R3-R1, R9-R4, and R9-R4-R1 are architect-accepted and preserved. M0 is closed, M1-R2 is accepted as valid inconclusive, and M1-R2-R1 is the active review boundary; no production repair, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work is authorized.
+- R9-R2 is architect-accepted as `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`; R9-R3-R1, R9-R4, and R9-R4-R1 are architect-accepted and preserved. M0 is closed, M1-R2 is accepted as valid inconclusive, M1-R2-R1 is re-planned, and M1-R2-R2 is the active review boundary; no production repair, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work is authorized.
 
 - R9-R5 is REPLAN / NOT ACCEPTED. Its exact remote V20 artifact showed Gate 7 false because the R9-R5 runner supplied the wrong repository root; its broad classification is retired as authority. R9-R5-R1 must restore V20 8/8 and exercise positive diagnostic R before any causal liquidity classification is accepted. No reserve repair, allocator changes, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
 - R9-R5-R1 is architect-accepted at `f1704acff5ca64e509a28c74af8cccbf76439ef2` with CI `32549697865` and classification `DCDEV020R9R5R1_RESERVE_LIQUIDITY_CONTRIBUTORY_NOT_SUFFICIENT`. R9-R6 is REPLAN / NOT ACCEPTED until R9-R6-R1 passes exact-head CI; its corrected shadow count is 4/8 and classification is `DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_INSUFFICIENT`.

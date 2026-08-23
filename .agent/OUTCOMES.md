@@ -463,6 +463,27 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
+## D-20260822-dcdev020m1r2r2-topology-death-closure001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R2R2-TOPOLOGY-DEATH-CLOSURE-PENDING-ARCHITECT`
+- Supersedes outcome: none
+- Closed: `2026-08-22T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The M1-R2-R1 observer-collapse classification was retired after review because both arms remained physically intact and became observer-viable after refeeding. M1-R2-R2 replays the exact accepted step-20480 endpoint, continues the unchanged reaction path until actual edge rupture, and tests the exact ruptured state under ordinary finite refeeding and the existing source-capacity upper-bound shadow. Both arms rupture at steps 124249 and 124717, remain `closed_intact=false` after both 5000-step branches, and preserve strict material closure. Local classification: `M1_TOPOLOGY_DEATH_ESTABLISHED`.
+- Changed areas: New observer example, example registration, compact evidence, scoped workflow, documentation, and governance only.
+- Validation:
+  - Scoped Rust 1.89.0 formatting - PASSED
+  - Regulatory-core compile and fresh M1-R2-R2 replay - PASSED
+  - Actual edge rupture in both arms - PASSED
+  - Ordinary finite and source-capacity refeed closure - PASSED
+  - Fresh actual D-087 8/8 - PENDING REMOTE WORKFLOW
+  - Phase-1, D-091, D-088, and evolution-harness preservation - PENDING REMOTE WORKFLOW
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The classification is bounded to irreversible topology loss under this frozen chemistry path and does not authorize production repair, source-law changes, recycling/salvage, M2, behavior, evolution, or DC-DEV-021.
+- Blockers: exact-head remote CI and independent architect review.
+- Follow-up directive: none
+
 ## D-20260822-dcdev020m1r2r1-physical-failure-closure001 - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020M1R2R1-PHYSICAL-FAILURE-CLOSURE-PENDING-ARCHITECT`
