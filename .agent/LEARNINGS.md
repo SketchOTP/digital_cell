@@ -535,3 +535,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-M1-R6 full-runtime integration certification only; V3 remains unselected and no mechanics repair, chemistry repair, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work is authorized.
 - Supersedes learning: none
+
+## L-DCDEV020M1R6R1-001
+
+- Learning ID: L-DCDEV020M1R6R1-001
+- Date: 2026-08-23
+- Fact or lesson: Observer-only stage attribution reproduces the accepted R6 trajectory and confirms the full-runtime closure loss is created by mechanics/remesh geometry changes while interior concentrations remain fixed. The 8,000-step geometry residual is `-125.27019370631099`, the fixed-concentration area effect is `-125.27019370631108`, and the unexplained remainder is `1.9895196601282805e-13`. Mechanics contributes `-122.35109442317224`; remesh contributes `-2.919099283138749`; reaction, uptake, and rebond residuals are at numerical noise. First permanent resource-contact loss is step `612`, after the first geometry change at step `1`.
+- Evidence location: `digital-protocell/examples/dcdev020m1r6r1_geometry_material_closure_audit.rs`, `digital-protocell/experiments/generated/dcdev020m1r6r1/`, `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r1/`, and shared-drive `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r1\\`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6-R1 observer-only closure attribution; no repair, production selection, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: none

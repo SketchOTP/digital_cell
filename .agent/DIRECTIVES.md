@@ -738,3 +738,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260823-dcdev020m1r5-sustained-homeostasis001
 - Status at issuance: ISSUED
+
+## D-20260823-dcdev020m1r6r1-geometry-material-closure-audit001
+
+- Issued: `2026-08-23T20:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R6-R1-GEOMETRY-MATERIAL-CLOSURE-AUDIT-001`
+- Objective: Causally determine which unchanged full-runtime stage creates the R6 material-closure failure, with primary focus on geometry/concentration coupling.
+- Scope: Start exactly at `adea13fafa1f2a85e521a44b5d77249820d107bd`; replay R6 through S0 step entry, S1 finite uptake, S2 reactions, S3 mechanics, S4 remesh, and S5 rebond; record independent stage ledgers, area/species counterfactuals, mechanics-only and remesh-only isolation, resource-contact chronology, compact evidence, shared-drive dense evidence, preservation, and exact-head CI.
+- Exclusions: All production equation/law/parameter changes, concentration rescaling, mass correction, mechanics/remesh/rebond repair, V1 transport changes, chemistry changes, resource changes, death-rule changes, production selection, controller, recycling, salvage, M2, behavior, evolution, and DC-DEV-021.
+- Acceptance: Exact R6 replay and observer parity; independent stage accounting; cumulative residual reconstruction; area/concentration attribution; isolation evidence; resource-contact chronology; no scientific changes; shared-drive dense evidence; exact-head remote CI; Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260823-dcdev020m1r6-full-runtime-integration-cert001
+- Status at issuance: ISSUED

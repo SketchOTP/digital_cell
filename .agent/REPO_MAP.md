@@ -159,6 +159,10 @@
 - `digital-protocell/experiments/generated/dcdev020m1r6/` — compact R6 protocol/results/qualification/manifest; dense runtime ledgers are written to governed shared storage.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6/` — R6 runtime integration protocol and evidence boundary.
 - `.github/workflows/dc-dev-020m1r6.yml` — scoped R6 governance, full-runtime assay, D-087, artifact, and preservation CI.
+- `digital-protocell/examples/dcdev020m1r6r1_geometry_material_closure_audit.rs` — observer-only S0-S5 full-runtime stage ledger, area/species attribution, plain/instrumented parity, mechanics-only and remesh-only isolation, and resource-contact chronology.
+- `digital-protocell/experiments/generated/dcdev020m1r6r1/` — compact R6-R1 protocol/results/qualification/manifest; dense stage ledger is archived in governed shared storage.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r1/` — R6-R1 geometry/material closure attribution protocol and provisional classification.
+- `.github/workflows/dc-dev-020m1r6r1.yml` — scoped R6-R1 governance, observer audit, D-087, preservation, and artifact-verification CI.
 
 ## External integration points
 

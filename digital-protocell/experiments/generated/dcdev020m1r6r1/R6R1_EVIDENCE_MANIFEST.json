@@ -1,0 +1,33 @@
+{
+  "schema": "dcdev020m1r6r1_shared_evidence_manifest_v1",
+  "directive": "DC-DEV-020-M1-R6-R1-GEOMETRY-MATERIAL-CLOSURE-AUDIT-001",
+  "starting_head": "adea13fafa1f2a85e521a44b5d77249820d107bd",
+  "classification": "M1_RUNTIME_GEOMETRY_MASS_COUPLING_CONFIRMED",
+  "dense": {
+    "stage_ledger.jsonl": {
+      "bytes": 72538151,
+      "sha256": "65d3909d6d5048be7d265e6c139a9123dd8df7c5abb114cd0055ec934769f511"
+    }
+  },
+  "compact": {
+    "protocol.json": {
+      "bytes": 1417,
+      "sha256": "cab4905696f754e3a5fd4aa8cc60242c9345f793bf9641e364d2802037c1f72b"
+    },
+    "results.json": {
+      "bytes": 8608,
+      "sha256": "d1571e13c7ea55af58b18a4da1e7e85727151f514da9eb1e8a6ffdbc52f21a2e"
+    },
+    "qualification.json": {
+      "bytes": 522,
+      "sha256": "89c7d6100db3627d7dfcdb6294a2164ee7a60769a368024e5bb6a6b4ef637224"
+    },
+    "artifact_manifest.json": {
+      "bytes": 480,
+      "sha256": "d0e247cf015965c9e1e9798d8cdb63bced97ecd8d59b47a8e4ecc4fee42b7781"
+    }
+  },
+  "shared_drive_canonical": true,
+  "local_dense_deleted": false,
+  "next_execution_started": false
+}

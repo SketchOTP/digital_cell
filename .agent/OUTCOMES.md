@@ -1249,3 +1249,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: R6 is not a production qualification. The large closure residual and absence of topology rupture within the authorized bound require Architect disposition; no mechanics or chemistry repair is authorized in this directive. R5 remains reaction-subsystem evidence, V3 remains unselected, and M2/DC-DEV-021 remain blocked.
 - Blockers: exact-head remote CI and independent Architect review.
 - Follow-up directive: none
+
+## D-20260823-dcdev020m1r6r1-geometry-material-closure-audit001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R1-GEOMETRY-MATERIAL-CLOSURE-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6-FULL-RUNTIME-INTEGRATION-PENDING-ARCHITECT`
+- Closed: `2026-08-23T20:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R6-R1 replay preserves the stored R6 trajectory and final mesh. Independent S0-S5 ledgers reconstruct the full 8,000-step residual. Mechanics/remesh geometry residuals sum to `-125.27019370631099`, matching the fixed-concentration area counterfactual `-125.27019370631108`; unexplained residual is `1.9895196601282805e-13`. Mechanics-only and an existing lawful remesh-only fixture both show strict material loss without uptake or reactions. The first permanent resource-contact loss is step `612`, following geometry change at step `1`. Classification is `M1_RUNTIME_GEOMETRY_MASS_COUPLING_CONFIRMED`.
+- Changed areas: Observer-only R6-R1 example registration, compact evidence, scoped CI, documentation, and governance. No chemistry-core, mechanics, remesh, rebond, transport, chemistry, resource, death, selector, or downstream behavior changed.
+- Validation:
+  - Sanctioned Rust 1.89.0 formatting and compile - PASSED
+  - Fresh 8,000-step observer replay with plain/instrumented trajectory parity - PASSED
+  - Mechanics-only and remesh-only isolation - PASSED; rebond isolation NOT EXERCISED because no lawful fixture was available
+  - Dense stage ledger written to the canonical shared drive - COMPLETE
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: This is causal attribution, not a repair or biological qualification. The geometry/concentration hypothesis is supported by numerical closure, but no concentration rescaling or mechanics/remesh correction is authorized until independent Architect review.
+- Blockers: exact-head remote CI and independent Architect review.
+- Follow-up directive: none

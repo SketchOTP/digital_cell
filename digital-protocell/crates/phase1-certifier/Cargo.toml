@@ -18,3 +18,7 @@ path = "src/bin/phase1_runtime.rs"
 [[example]]
 name = "dcdev020m1r6_full_runtime"
 path = "../../examples/dcdev020m1r6_full_runtime.rs"
+
+[[example]]
+name = "dcdev020m1r6r1_geometry_material_closure_audit"
+path = "../../examples/dcdev020m1r6r1_geometry_material_closure_audit.rs"

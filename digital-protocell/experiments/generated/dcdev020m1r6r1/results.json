@@ -1,0 +1,240 @@
+{
+  "attribution_1000": {
+    "geometry_cumulative_residual": -68.19637692336634,
+    "geometry_fixed_concentration_delta": -68.19637692336651,
+    "mechanics_cumulative_residual": -68.19637692336634,
+    "mechanics_fixed_concentration_geometry_delta": -68.19637692336651,
+    "observed_r6_residual_abs": 68.19637692336687,
+    "observed_r6_residual_signed": -68.19637692336687,
+    "reaction_cumulative_residual": -1.2789769243681803e-13,
+    "rebond_cumulative_residual": 0.0,
+    "remesh_cumulative_residual": 0.0,
+    "remesh_fixed_concentration_geometry_delta": 0.0,
+    "total_reconstructed_residual": -68.19637692336687,
+    "unexplained_residual": 0.0,
+    "uptake_cumulative_expected_world": 21.589259527156784,
+    "uptake_cumulative_observed": 21.589259527156386,
+    "uptake_cumulative_residual": -4.0351749719391705e-13
+  },
+  "attribution_8000": {
+    "geometry_cumulative_residual": -125.27019370631099,
+    "geometry_fixed_concentration_delta": -125.27019370631108,
+    "mechanics_cumulative_residual": -122.35109442317224,
+    "mechanics_fixed_concentration_geometry_delta": -122.35109442317233,
+    "observed_r6_residual_abs": 125.27019370631045,
+    "observed_r6_residual_signed": -125.27019370631045,
+    "reaction_cumulative_residual": 7.460698725481052e-13,
+    "rebond_cumulative_residual": 0.0,
+    "remesh_cumulative_residual": -2.919099283138749,
+    "remesh_fixed_concentration_geometry_delta": -2.919099283138748,
+    "total_reconstructed_residual": -125.27019370631065,
+    "unexplained_residual": 1.9895196601282805e-13,
+    "uptake_cumulative_expected_world": 21.589259527156784,
+    "uptake_cumulative_observed": 21.589259527156386,
+    "uptake_cumulative_residual": -4.0351749719391705e-13
+  },
+  "chemistry_changed": false,
+  "classification": "M1_RUNTIME_GEOMETRY_MASS_COUPLING_CONFIRMED",
+  "contact_loss_follows_geometry_change": "YES",
+  "controller_added": false,
+  "directive": "DC-DEV-020-M1-R6-R1-GEOMETRY-MATERIAL-CLOSURE-AUDIT-001",
+  "first_geometry_change_step": 1,
+  "first_permanent_resource_contact_loss_step": 612,
+  "mechanics_changed": false,
+  "mechanics_only_isolation": {
+    "area_after": 70.52125138656744,
+    "area_audit": [
+      {
+        "concentration_after": 0.0,
+        "concentration_before": 0.0,
+        "conservative_concentration_after": 0.0,
+        "fixed_concentration_geometry_delta": -0.0,
+        "mass_after": 0.0,
+        "mass_before": 0.0,
+        "observed_mass_delta": 0.0,
+        "species": "N"
+      },
+      {
+        "concentration_after": 0.0,
+        "concentration_before": 0.0,
+        "conservative_concentration_after": 0.0,
+        "fixed_concentration_geometry_delta": -0.0,
+        "mass_after": 0.0,
+        "mass_before": 0.0,
+        "observed_mass_delta": 0.0,
+        "species": "F"
+      },
+      {
+        "concentration_after": 0.2780653103682966,
+        "concentration_before": 0.2780653103682966,
+        "conservative_concentration_after": 0.27927295198647184,
+        "fixed_concentration_geometry_delta": -0.08516439814021345,
+        "mass_after": 19.609513654366545,
+        "mass_before": 19.69467805250676,
+        "observed_mass_delta": -0.08516439814021481,
+        "species": "A"
+      },
+      {
+        "concentration_after": 0.0,
+        "concentration_before": 0.0,
+        "conservative_concentration_after": 0.0,
+        "fixed_concentration_geometry_delta": -0.0,
+        "mass_after": 0.0,
+        "mass_before": 0.0,
+        "observed_mass_delta": 0.0,
+        "species": "R"
+      },
+      {
+        "concentration_after": 0.7889298050186824,
+        "concentration_before": 0.7889298050186824,
+        "conservative_concentration_after": 0.7923561384404871,
+        "fixed_concentration_geometry_delta": -0.24162932057328826,
+        "mass_after": 55.63631710607814,
+        "mass_before": 55.87794642665143,
+        "observed_mass_delta": -0.24162932057328845,
+        "species": "C"
+      },
+      {
+        "concentration_after": 0.261537783997035,
+        "concentration_before": 0.261537783997035,
+        "conservative_concentration_after": 0.2626736463319009,
+        "fixed_concentration_geometry_delta": -0.08010243325760837,
+        "mass_after": 18.443971812340678,
+        "mass_before": 18.52407424559829,
+        "observed_mass_delta": -0.08010243325761124,
+        "species": "W"
+      }
+    ],
+    "area_before": 70.8275261895172,
+    "executed": true,
+    "interior_mass_change": {
+      "A": -0.08516439814021481,
+      "C": -0.24162932057328845,
+      "F": 0.0,
+      "N": 0.0,
+      "R": 0.0,
+      "W": -0.08010243325761124
+    },
+    "strict_delta": -0.40689615197109674
+  },
+  "next_execution_started": false,
+  "parameter_search": false,
+  "production_biology_changed": false,
+  "r6_reproduction": {
+    "checkpoint_agreement": {
+      "0": true,
+      "1000": true,
+      "2000": true,
+      "3466": true,
+      "4000": true,
+      "480": true,
+      "6000": true,
+      "6931": true,
+      "8000": true
+    },
+    "checkpoint_hashes": {
+      "0": "2cee42a8d2e2f392",
+      "1": "6bb1bfc38c56ab65",
+      "10": "c4eef54e8cfcb87d",
+      "100": "2311b2448ab51b32",
+      "1000": "3ae3706cdf5e3eb0",
+      "480": "a5ac41b6d75dc3bb"
+    },
+    "checkpoint_steps": [
+      0,
+      1,
+      10,
+      100,
+      480,
+      1000
+    ],
+    "committed_checkpoint_agreement": true,
+    "expected_final_mesh_hash": "e4c4dd4ff2e443d8",
+    "expected_trajectory_hash": "be91ed02266a0078",
+    "final_mesh_hash": "e4c4dd4ff2e443d8",
+    "observer_trajectory_parity": true,
+    "plain_trajectory_hash": "be91ed02266a0078",
+    "r6_starting_head": "9ff1bba4a48caf582e4598b4030d746e4360a61b",
+    "trajectory_hash": "be91ed02266a0078"
+  },
+  "recycling": false,
+  "remesh_changed": false,
+  "remesh_only_isolation": {
+    "area_after": 15.837312342923823,
+    "area_audit": [
+      {
+        "concentration_after": 0.11469033325086231,
+        "concentration_before": 0.11469033325086231,
+        "conservative_concentration_after": 0.11873617013805533,
+        "fixed_concentration_geometry_delta": -0.06407518247099858,
+        "mass_after": 1.8163866304079281,
+        "mass_before": 1.8804618128789268,
+        "observed_mass_delta": -0.06407518247099864,
+        "species": "N"
+      },
+      {
+        "concentration_after": 0.11469033325086231,
+        "concentration_before": 0.11469033325086231,
+        "conservative_concentration_after": 0.11873617013805533,
+        "fixed_concentration_geometry_delta": -0.06407518247099858,
+        "mass_after": 1.8163866304079281,
+        "mass_before": 1.8804618128789268,
+        "observed_mass_delta": -0.06407518247099864,
+        "species": "F"
+      },
+      {
+        "concentration_after": 0.15843037686820302,
+        "concentration_before": 0.15843037686820302,
+        "conservative_concentration_after": 0.16401919542524082,
+        "fixed_concentration_geometry_delta": -0.08851186511573639,
+        "mass_after": 2.5091113630688646,
+        "mass_before": 2.597623228184601,
+        "observed_mass_delta": -0.08851186511573639,
+        "species": "A"
+      },
+      {
+        "concentration_after": 0.0,
+        "concentration_before": 0.0,
+        "conservative_concentration_after": 0.0,
+        "fixed_concentration_geometry_delta": -0.0,
+        "mass_after": 0.0,
+        "mass_before": 0.0,
+        "observed_mass_delta": 0.0,
+        "species": "R"
+      },
+      {
+        "concentration_after": 0.6656565972044709,
+        "concentration_before": 0.6656565972044709,
+        "conservative_concentration_after": 0.6891384194194482,
+        "fixed_concentration_geometry_delta": -0.37188895279960127,
+        "mass_after": 10.542211443055038,
+        "mass_before": 10.914100395854641,
+        "observed_mass_delta": -0.371888952799603,
+        "species": "C"
+      },
+      {
+        "concentration_after": 1.1281183319858135,
+        "concentration_before": 1.1281183319858135,
+        "conservative_concentration_after": 1.1679140377902741,
+        "fixed_concentration_geometry_delta": -0.6302570227323502,
+        "mass_after": 17.866362383437558,
+        "mass_before": 18.49661940616991,
+        "observed_mass_delta": -0.6302570227323514,
+        "species": "W"
+      }
+    ],
+    "area_before": 16.395992230363394,
+    "executed": true,
+    "interior_mass_change": {
+      "A": -0.08851186511573639,
+      "C": -0.371888952799603,
+      "F": -0.06407518247099864,
+      "N": -0.06407518247099864,
+      "R": 0.0,
+      "W": -0.6302570227323514
+    },
+    "strict_delta": -1.2188082055896814
+  },
+  "stage_ledger_pass": true,
+  "starting_head": "adea13fafa1f2a85e521a44b5d77249820d107bd"
+}
