@@ -1230,3 +1230,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: The R5 classification is provisional until exact-head Linux CI verifies fresh D-087, artifact equality, preservation, and the sustained gates. Authoritative R5 evidence is stored at `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r5`; compact CI-required artifacts remain in `digital-protocell/experiments/generated/dcdev020m1r5/` and are duplicated there. No production selection or downstream directive is authorized.
 - Blockers: exact-head remote CI and independent Architect review.
 - Follow-up directive: none
+
+## D-20260823-dcdev020m1r6-full-runtime-integration-cert001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6-FULL-RUNTIME-INTEGRATION-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R5-SUSTAINED-HOMEOSTASIS-PENDING-ARCHITECT`
+- Closed: `2026-08-23T19:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R6 executes the exact R5 depleted entry through the packaged order `transport -> ConservativeV3 reactions -> mechanics -> remesh -> try_local_rebond`. The fed full-runtime arm remains intact and observer-viable but declines by `101.13283694705021` organized material. No-resource and feed-removal controls decline. Full-runtime strict material closure does not close (`125.27019370631` fed residual), and the bounded 150,000-step no-resource continuation reaches its bound without actual topology rupture; M1 remains unclosed.
+- Changed areas: R6 phase1-certifier example registration, compact evidence, scoped CI, documentation, shared-drive dense evidence, and governance only. No chemistry-core equations, mechanics/remesh/rebond laws, V1 transport, D-091, D-087 criteria, production default, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work changed.
+- Validation:
+  - Sanctioned Rust 1.89.0 compile and formatting - PASSED
+  - Fresh V3 D-087 - PASSED 8/8
+  - Fresh V2 D-087 - PASSED 8/8
+  - Full-runtime local arms and dense shared-drive write - COMPLETE
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: R6 is not a production qualification. The large closure residual and absence of topology rupture within the authorized bound require Architect disposition; no mechanics or chemistry repair is authorized in this directive. R5 remains reaction-subsystem evidence, V3 remains unselected, and M2/DC-DEV-021 remain blocked.
+- Blockers: exact-head remote CI and independent Architect review.
+- Follow-up directive: none

@@ -155,6 +155,10 @@
 - `digital-protocell/experiments/generated/dcdev020m1r5/` — compact R5 protocol/results/qualification/manifest; dense runtime evidence is archived on the shared drive.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r5/` — R5 sustained-homeostasis protocol and preservation boundary.
 - `.github/workflows/dc-dev-020m1r5.yml` — scoped R5 governance, reservoir, sustained-assay, D-087, preservation, and artifact-verification CI.
+- `digital-protocell/examples/dcdev020m1r6_full_runtime.rs` — R6 full packaged-runtime transport/reactions/mechanics/remesh/rebond integration, resource controls, bounded death continuation, and compact evidence writer.
+- `digital-protocell/experiments/generated/dcdev020m1r6/` — compact R6 protocol/results/qualification/manifest; dense runtime ledgers are written to governed shared storage.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6/` — R6 runtime integration protocol and evidence boundary.
+- `.github/workflows/dc-dev-020m1r6.yml` — scoped R6 governance, full-runtime assay, D-087, artifact, and preservation CI.
 
 ## External integration points
 

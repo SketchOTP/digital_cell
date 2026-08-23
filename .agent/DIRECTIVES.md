@@ -724,3 +724,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260823-dcdev020m1r4-coupled-source-candidate001
 - Status at issuance: ISSUED
+
+## D-20260823-dcdev020m1r6-full-runtime-integration-cert001
+
+- Issued: `2026-08-23T19:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R6-FULL-RUNTIME-INTEGRATION-CERT-001`
+- Objective: Certify or reject the simplest R5-qualified ConservativeV3 organism through the actual packaged runtime loop, including mechanics, remesh, local rebond, causal resource controls, and bounded topology-death continuation.
+- Scope: Exact R5 entry head `9ff1bba4a48caf582e4598b4030d746e4360a61b`; ConservativeV3, reserve OFF, uncoupled V1 finite-resource transport, finite backing reservoir, 8,000-step fed/no-resource arms, exact R4 feed-then-remove control, bounded 150,000-step death continuation and conditional 5,000-step restoration, V2/V3 D-087, preservation, shared-drive dense evidence, compact evidence, scoped CI, and Architect review.
+- Exclusions: Chemistry equations, V1 transport law, backing-reservoir values, mechanics, remesh, rebond, D-091, D-087 criteria, production selection, controller, target state, recycling, salvage, M2, behavior, evolution, and DC-DEV-021.
+- Acceptance: One of the four preregistered full-runtime classifications, exact runtime inventory, fail-closed accounting, causal resource controls, topology-death result or bound, V2/V3 D-087 preservation, shared-drive evidence, exact-head CI, and Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260823-dcdev020m1r5-sustained-homeostasis001
+- Status at issuance: ISSUED

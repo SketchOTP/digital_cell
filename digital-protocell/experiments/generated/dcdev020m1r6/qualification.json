@@ -1,0 +1,13 @@
+{
+  "classification": "M1_FULL_RUNTIME_CERTIFICATION_INVALID",
+  "directive": "DC-DEV-020-M1-R6-FULL-RUNTIME-INTEGRATION-CERT-001",
+  "e0_authority": true,
+  "e1_runtime_inventory": true,
+  "e2_full_runtime_sustained": false,
+  "e3_resource_dependence": true,
+  "e4_full_runtime_death": false,
+  "e5_d087_preservation": false,
+  "next_execution_started": false,
+  "observer_only_integration": true,
+  "production_biology_changed": false
+}

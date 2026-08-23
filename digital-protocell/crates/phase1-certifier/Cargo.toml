@@ -6,6 +6,7 @@ description = "Independent Phase 1 certification of the frozen D-086 material-me
 
 [dependencies]
 chemistry-core = { path = "../chemistry-core" }
+regulatory-core = { path = "../regulatory-core" }
 serde = { workspace = true }
 serde_json = { workspace = true }
 chrono = { workspace = true }
@@ -13,3 +14,7 @@ chrono = { workspace = true }
 [[bin]]
 name = "digital-protocell-phase1"
 path = "src/bin/phase1_runtime.rs"
+
+[[example]]
+name = "dcdev020m1r6_full_runtime"
+path = "../../examples/dcdev020m1r6_full_runtime.rs"

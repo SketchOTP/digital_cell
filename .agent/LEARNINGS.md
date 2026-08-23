@@ -525,3 +525,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-M1-R4 candidate qualification only; no V1 transport, V2/V3 chemistry, production selection, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work.
 - Supersedes learning: none
+
+## L-DCDEV020M1R6-001
+
+- Learning ID: L-DCDEV020M1R6-001
+- Date: 2026-08-23
+- Fact or lesson: Reaction-only R5 evidence does not transfer automatically to the packaged organism runtime. With unchanged ConservativeV3 chemistry and finite V1 transport, adding the existing mechanics -> remesh -> local-rebond stages produced a fed 8,000-step organized-material decline of `101.13283694705021`, while the fed organism remained intact/observer-viable. The strict material closure residual was `125.27019370631`, and the bounded 150,000-step no-resource full-runtime continuation reached no topology rupture. This is a full-runtime certification boundary, not a repair authorization.
+- Evidence location: `digital-protocell/examples/dcdev020m1r6_full_runtime.rs`, `digital-protocell/experiments/generated/dcdev020m1r6/`, `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6/`, and shared-drive `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6\\`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6 full-runtime integration certification only; V3 remains unselected and no mechanics repair, chemistry repair, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work is authorized.
+- Supersedes learning: none

@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260823-dcdev020m1r5-sustained-homeostasis001`
-- External directive ID: `DC-DEV-020-M1-R5-SUSTAINED-HOMEOSTASIS-001`
-- Objective: `Determine whether the accepted ConservativeV3 plus coupled finite-resource stack sustains viability for 8,000 steps and whether the simpler uncoupled V1 path is sufficient.`
+- Local directive ID: `D-20260823-dcdev020m1r6-full-runtime-integration-cert001`
+- External directive ID: `DC-DEV-020-M1-R6-FULL-RUNTIME-INTEGRATION-CERT-001`
+- Objective: `Determine whether the simplest R5-qualified ConservativeV3 organism satisfies sustained homeostasis and topology-death requirements through the actual full production runtime loop.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `Preserve exact R4 behavior, execute the preregistered 8,000-step finite-reservoir arms and feed-removal control, preserve V1/V2/V3/D-087 and frozen suites, archive evidence on the shared drive, and obtain exact-head remote CI.`
-- Current phase: `R4 is architect-accepted at 68d1c88ec1b915a4bee86efe24e985222b529d5a. ConservativeV2 remains frozen/selected; ConservativeV3 and the coupled source remain qualified/experimental/unselected; topology death is established; sustained homeostasis is active qualification.`
-- Expected or actual touched areas: `versioned world-side backing reservoir, bounded 8,000-step assay, compact evidence, shared-drive evidence archive, scoped CI, documentation, and governance handoff`
-- Immediate next action: `Run and verify R5 only, push PR #44, verify exact-head remote CI/artifact, and stop for Architect review.`
+- Acceptance: `Trace and execute the exact packaged transport -> reactions -> mechanics -> remesh -> rebond loop, preserve V1/V2/V3/D-087 and frozen suites, write dense evidence to the shared drive, obtain exact-head remote CI, and stop for Architect review.`
+- Current phase: `R5 is reaction-subsystem evidence only. ConservativeV2 remains frozen/selected; ConservativeV3 remains qualified/experimental/unselected; coupled source remains unselected; full-runtime M1 certification is active qualification.`
+- Expected or actual touched areas: `bounded full-runtime assay, compact evidence, shared-drive dense evidence, scoped CI, documentation, and governance handoff`
+- Immediate next action: `Complete R6 only, push PR #44, verify exact-head remote CI/artifact, and stop for Architect review.`
 
 ## Temporary task-relevant facts
 
@@ -34,11 +34,12 @@
 - R3 is architect-accepted at `17226fb7484eb50079c1c30ce9fd8039b3f23c60` with exact-head CI `32617847392` and artifact digest `sha256:dde942ef96c37ee4e0c9882abacd89202dd4eaf245c81b53d4f0efc039fe5700`; classification `M1_ORDINARY_DECAY_CANDIDATE_QUALIFIED`.
 - R4 is architect-accepted at exact head `68d1c88ec1b915a4bee86efe24e985222b529d5a`, CI `32648997395`, artifact digest `sha256:ea8e2161e0889da26a613fd95b6ffa0aa1b7bdb7e0dde23a9fa9aea26d559305`; coupled source is qualified only for the bounded 480-step candidate and remains unselected.
 - R5 is preregistered with `FINITE_SPATIAL_BACKING_RESERVOIR_V1`, fixed boundary concentration `2.063914918930895`, finite N/F inventory `243.14924801053778` each, and zero replenishment. All authoritative evidence is archived under `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\` with manifests and hashes; compact CI-required artifacts remain in Git.
+- R6 uses the exact R5 depleted entry but executes the packaged full-runtime order `transport -> reactions -> mechanics -> remesh -> try_local_rebond`; the candidate remains ConservativeV3/reserve OFF and is not selected.
 
 ## Last validation after adoption
 
-- Command or check: `R5 local governance, Rust formatting, backing-reservoir tests, exact 8,000-step four-arm assay, and shared-drive evidence write`
-- Result: `BLOCKED`
+- Command or check: `R6 local governance, Rust formatting/check, V2/V3 D-087, full-runtime arms, dense shared-drive write`
+- Result: `PASSED`
 
 ## Risks
 

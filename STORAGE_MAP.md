@@ -32,6 +32,9 @@ outside the primary repository filesystem.
 - Shared-drive root: `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL`
 - Evidence root: `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\`
 - R5 evidence root: `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r5\\`
+- R6 evidence root: `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6\\`
+- R6 dense runtime root: `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6\\dense\\`
+- R6 evidence manifest: `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6\\R6_EVIDENCE_MANIFEST.json`
 - Policy: dense experiment evidence, runtime ledgers, and archived prior evidence are copied to the shared-drive root, checksum-verified, and referenced by a manifest before local cleanup. Compact protocol/results/qualification/manifests required for GitHub CI remain in Git and are duplicated on the shared drive.
 - Restore: copy the manifest-listed files back to the repository-relative path, verify SHA-256, then rerun the scoped verifier. Do not restore build caches as scientific evidence.
 
