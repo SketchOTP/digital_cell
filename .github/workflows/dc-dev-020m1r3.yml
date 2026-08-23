@@ -168,12 +168,35 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          {
+            echo '--- expected artifact paths ---'
+            for path in \
+              experiments/generated/dcdev020m1r3/protocol.json \
+              experiments/generated/dcdev020m1r3/results.json \
+              experiments/generated/dcdev020m1r3/qualification.json \
+              experiments/generated/dcdev020m1r3/artifact_manifest.json \
+              experiments/generated/dcdev020m1r3/ci/protocol.json \
+              experiments/generated/dcdev020m1r3/ci/results.json \
+              experiments/generated/dcdev020m1r3/ci/qualification.json \
+              experiments/generated/dcdev020m1r3/ci/artifact_manifest.json \
+              experiments/generated/dcdev020m1r3/ci/v3_d087/certification/report.json \
+              experiments/generated/dcdev020m1r3/ci/v2_d087/certification/report.json; do
+              if [[ -f "$path" ]]; then echo "present $path"; else echo "missing $path"; fi
+            done
+            echo '--- generated tree ---'
+            find experiments/generated/dcdev020m1r3 -maxdepth 5 -type f -print | sort
+          } > r3_remote_tree.txt
+          missing="$(sed -n 's/^missing //p' r3_remote_tree.txt | tr '\n' '+')"
           if [[ -f r3_verifier_failure.txt ]]; then
             code="$(tr -cs '[:alnum:]' '_' < r3_verifier_failure.txt | sed 's/^_//;s/_$//' | cut -c1-96)"
             echo "failure_code=${code:-unknown}" >> "$GITHUB_OUTPUT"
+          elif [[ -n "$missing" ]]; then
+            code="missing_${missing}"
+            code="$(printf '%s' "$code" | tr -cs '[:alnum:]' '_' | sed 's/^_//;s/_$//' | cut -c1-96)"
           else
-            echo "failure_code=unknown" >> "$GITHUB_OUTPUT"
+            code=all_expected_files_present
           fi
+          echo "failure_code=${code:-unknown}" >> "$GITHUB_OUTPUT"
       - name: Phase-1 preservation regression
         working-directory: digital-protocell
         run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics -- --nocapture
@@ -199,4 +222,5 @@ jobs:
             digital-protocell/experiments/generated/dcdev020m1r3/ci/v3_d087/certification/report.json
             digital-protocell/experiments/generated/dcdev020m1r3/ci/v2_d087/certification/report.json
             digital-protocell/r3_verifier_failure.txt
+            digital-protocell/r3_remote_tree.txt
           include-hidden-files: false
