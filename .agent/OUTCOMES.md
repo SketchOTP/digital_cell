@@ -478,11 +478,11 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Exact no-reset restoration challenge - PASSED; 5,000 steps per terminal arm, no coherent recovery
   - Internal and restoration material closure - PASSED
   - Scoped Rust format and regulatory-core example compile/run - PASSED
-  - Fresh actual D-087 8/8 - PENDING CI
-  - Exact-head remote CI - PENDING
+  - Fresh actual D-087 8/8 - PASSED locally and in exact-head CI
+  - Exact-head remote CI runs `32612860278` (push) and `32612861856` (PR synchronize) at head `11fed776b7e694fb9af5debc4c2914c0a23ba615` - PASSED
   - Architect review - PENDING
-- Remaining risks: This is a chemistry-path material-failure result, not full-runtime organism death; mechanics/remesh/rebond are outside the assay. The local result requires exact-head remote CI and independent architect review before acceptance. No M1 production change, M2, reserve redesign, recycling, salvage, behavior, evolution, or DC-DEV-021 work is authorized.
-- Blockers: exact-head remote CI and independent architect review.
+- Remaining risks: This is a chemistry-path material-failure result, not full-runtime organism death; mechanics/remesh/rebond are outside the assay. Independent architect review remains required before acceptance. No M1 production change, M2, reserve redesign, recycling, salvage, behavior, evolution, or DC-DEV-021 work is authorized.
+- Blockers: independent architect review.
 - Follow-up directive: none
 
 ## D-20260822-dcdev020m1r1r1-decay-confound001 - PARTIAL
