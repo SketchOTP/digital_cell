@@ -139,3 +139,7 @@ path = "../../examples/dcdev020m1r1r1_decay_confound.rs"
 [[example]]
 name = "dcdev020m1r2_starvation_law_audit"
 path = "../../examples/dcdev020m1r2_starvation_law_audit.rs"
+
+[[example]]
+name = "dcdev020m1r2r1_physical_failure_closure"
+path = "../../examples/dcdev020m1r2r1_physical_failure_closure.rs"

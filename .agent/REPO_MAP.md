@@ -135,6 +135,10 @@
 - `digital-protocell/examples/dcdev020m1r2_starvation_law_audit.rs` — observer-only M1-R2 production-4x versus ordinary-decay starvation comparison, bounded continuation, conditional restoration, and provenance report.
 - `digital-protocell/experiments/generated/dcdev020m1r2/` — compact M1-R2 protocol, results, qualification, and manifest; dense trajectories remain uncommitted.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r2/` — M1-R2 starvation-law audit protocol, provenance boundary, and bounded classification.
+- `digital-protocell/examples/dcdev020m1r2r1_physical_failure_closure.rs` — observer-only exact M1-R2 endpoint replay, extended chemistry-path starvation, existing terminal-boundary detection, failure margins, and no-reset restoration.
+- `digital-protocell/experiments/generated/dcdev020m1r2r1/` — compact M1-R2-R1 protocol, results, qualification, and manifest; dense trajectories remain uncommitted.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r2r1/` — M1-R2-R1 physical-failure closure protocol, restoration boundary, and provisional classification.
+- `.github/workflows/dc-dev-020m1r2r1.yml` — scoped M1-R2-R1 governance, formatting, observer assay, fresh D-087, artifact verification, and preservation CI.
 
 ## External integration points
 

@@ -654,3 +654,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260822-dcdev020m1r1r1-decay-confound001
 - Status at issuance: ISSUED
+
+## D-20260822-dcdev020m1r2r1-physical-failure-closure001
+
+- Issued: `2026-08-22T22:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R2-R1-PHYSICAL-FAILURE-CLOSURE-001`
+- Objective: Continue the exact accepted M1-R2 production-4x and ordinary-decay chemistry-path states for up to 150,000 accepted steps, classify only existing terminal material-failure conditions, and challenge every terminal arm with exact finite N/F restoration without resetting state.
+- Scope: Starting head `bc65098c3d26777aca2d1da5dab8cc118ecc6e19`, exact R2 endpoint reproduction, failure-margin observers, extended starvation, conditional 5,000-step restoration, compact evidence, governance, preservation, fresh D-087, and scoped exact-head CI on PR #44.
+- Exclusions: Chemistry-core, production chemistry, k_a_decay, activation, uptake, transport, resource inventory/law, death criteria, D-091, D-087, M0, recycling, salvage, M2, behavior, evolution, DC-DEV-021, and any parameter search.
+- Acceptance: Exact R2 endpoint identity, bounded continuation, existing terminal criteria only, no-reset restoration and no-resurrection evidence, strict closure, fresh D-087 8/8, exact-head CI, and architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260822-dcdev020m1r2-starvation-law-audit001
+- Status at issuance: ISSUED

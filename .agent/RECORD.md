@@ -85,3 +85,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Repository provenance does not independently qualify the production fourfold A-decay multiplier. Both production and ordinary-decay no-resource arms completed the authorized 480-step comparison and 20,000-step continuation without irreversible physical failure, so the local bounded classification is `M1_STARVATION_LAW_AUDIT_INCONCLUSIVE`.
 - Affected areas: M1 starvation-law evidence and developmental metabolic architecture selection; no production chemistry, certified biology, resource law, death semantics, reserve, recycling, salvage, M2, behavior, evolution, or DC-DEV-021.
 - Supersedes record: none
+
+## DEC-DCDEV020M1R2R1-001
+
+- Date: 2026-08-22
+- Record or decision ID: DEC-DCDEV020M1R2R1-001
+- Status: PROPOSED
+- Decision or event: The M1-R2-R1 observer continuation reached the existing chemistry-path `activated_catalyst_collapse` terminal boundary in both production-4x and ordinary-decay starvation arms, and exact no-reset finite-resource restoration did not recover coherent organization.
+- Rationale: Ordinary decay reached the same bounded terminal failure class, so the fourfold term is not necessary for this chemistry-path failure. This does not establish full-runtime death or authorize production repair, recycling, salvage, M2, or DC-DEV-021.
+- Affected areas: M1-R2-R1 observer evidence and developmental metabolic architecture selection; no certified biology or production chemistry.
+- Supersedes record: none

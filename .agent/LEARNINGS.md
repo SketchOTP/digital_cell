@@ -138,6 +138,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-020-R2 observer-only allosteric requalification.
 - Supersedes learning: none
 
+## L-DCDEV020M1R2R1-001
+
+- Learning ID: L-DCDEV020M1R2R1-001
+- Date: 2026-08-22
+- Fact or lesson: From the exact accepted M1-R2 endpoint, both the production 4x and ordinary-decay no-resource chemistry paths reach the existing `activated_catalyst_collapse` terminal observer boundary within the authorized 150,000-step continuation, at accepted steps `45422` and `45831` respectively. Neither arm ruptures an edge before terminal failure. Exact finite N/F restoration for 5,000 steps without resetting state delivers both requested substrates, closes material accounting, and does not recover coherent organized material or a closed intact body. The bounded classification is `M1_ORDINARY_DECAY_IRREVERSIBLE_FAILURE_ESTABLISHED`.
+- Evidence location: `digital-protocell/examples/dcdev020m1r2r1_physical_failure_closure.rs`, `digital-protocell/experiments/generated/dcdev020m1r2r1/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r2r1/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R2-R1 observer-only chemistry-path continuation; no production chemistry, death-rule, resource, reserve, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: none
+
 ## L-DCDEV020R9R6R2-001
 
 - Learning ID: L-DCDEV020R9R6R2-001
