@@ -476,12 +476,12 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Regulatory-core compile and fresh M1-R2-R2 replay - PASSED
   - Actual edge rupture in both arms - PASSED
   - Ordinary finite and source-capacity refeed closure - PASSED
-  - Fresh actual D-087 8/8 - PENDING REMOTE WORKFLOW
-  - Phase-1, D-091, D-088, and evolution-harness preservation - PENDING REMOTE WORKFLOW
-  - Exact-head remote CI - PENDING
+  - Fresh actual D-087 8/8 - PASSED in exact-head CI run `32615105226`
+  - Phase-1, D-091, D-088, and evolution-harness preservation - PASSED in exact-head CI run `32615105226`
+  - Exact-head remote CI run `32615105226` at head `d5160ab` - PASSED; artifact digest `sha256:8c714086484bab1eae58d60e126152c79120d21ba33468076ac14e0b246077fd`
   - Architect review - PENDING
 - Remaining risks: The classification is bounded to irreversible topology loss under this frozen chemistry path and does not authorize production repair, source-law changes, recycling/salvage, M2, behavior, evolution, or DC-DEV-021.
-- Blockers: exact-head remote CI and independent architect review.
+- Blockers: independent architect review.
 - Follow-up directive: none
 
 ## D-20260822-dcdev020m1r2r1-physical-failure-closure001 - PARTIAL
