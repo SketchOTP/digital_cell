@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-22T18:35:00-04:00`
+- Last updated: `2026-08-22T21:55:00-04:00`
 
 ## Active state after adoption
 
@@ -33,7 +33,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Local M1-R2 starvation-law assay, compact base/fresh artifact verification, fresh actual D-087, governance validation, and Phase-1/D-091/D-088/evolution preservation suite`
+- Command or check: `Local M1-R2 starvation-law assay, compact base/fresh artifact verification, fresh actual D-087, governance validation, preservation suite, and exact-head remote CI`
 - Result: `PASSED`
 
 ## Risks

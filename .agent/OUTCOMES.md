@@ -480,10 +480,10 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Decay neutralization with only `k_a_decay` changed - PASSED
   - World↔organism and internal closure - PASSED
   - Local artifact verifier - PASSED
-  - Exact-head remote CI - PENDING
+  - Exact-head remote CI at `b11e9815d317fe09ae227d13eefc5d89a463fe51` - PASSED; PR synchronize run `32611416322` and push run `32611416748`, all stages passed
   - Architect review - PENDING
 - Remaining risks: The neutralized nonnegative result is an acute 480-step capacity shadow, not sustained M1 homeostasis or production authorization. Exact-head CI and independent architect verification remain required. M1 production change, M2, reserve redesign, recycling/salvage, behavior, evolution, and DC-DEV-021 remain unauthorized.
-- Blockers: exact-head remote CI and independent architect review.
+- Blockers: independent architect review.
 - Follow-up directive: none
 
 ## D-20260822-dcdev020m1r1capacitydecomp001 - PARTIAL
