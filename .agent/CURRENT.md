@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-23T00:30:00-04:00`
+- Last updated: `2026-08-23T01:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260823-dcdev020m1r4-coupled-source-candidate001`
-- External directive ID: `DC-DEV-020-M1-R4-COUPLED-SOURCE-CANDIDATE-001`
-- Objective: `Qualify one versioned, opt-in finite-resource boundary that transforms only newly delivered paired N/F into existing A+W material.`
+- Local directive ID: `D-20260823-dcdev020m1r5-sustained-homeostasis001`
+- External directive ID: `DC-DEV-020-M1-R5-SUSTAINED-HOMEOSTASIS-001`
+- Objective: `Determine whether the accepted ConservativeV3 plus coupled finite-resource stack sustains viability for 8,000 steps and whether the simpler uncoupled V1 path is sufficient.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `Preserve V1 transport exactly, prove same-step paired-only activation and physical controls, run the preregistered 480-step V1/reference/candidate matrix, preserve V3/V2 D-087 and frozen suites, and obtain exact-head remote CI.`
-- Current phase: `R3 is architect-accepted. ConservativeV2 remains frozen/selected, ConservativeV3 is qualified/experimental/unselected, topology death is established, source capacity is sufficient, and only R4 coupled-source qualification is authorized.`
-- Expected or actual touched areas: `versioned regulatory-core coupled-source adapter, bounded assay, compact evidence, scoped CI, documentation, and governance handoff`
-- Immediate next action: `Commit only the bounded R4 package, push PR #44, verify exact-head remote CI, and stop for Architect review.`
+- Acceptance: `Preserve exact R4 behavior, execute the preregistered 8,000-step finite-reservoir arms and feed-removal control, preserve V1/V2/V3/D-087 and frozen suites, archive evidence on the shared drive, and obtain exact-head remote CI.`
+- Current phase: `R4 is architect-accepted at 68d1c88ec1b915a4bee86efe24e985222b529d5a. ConservativeV2 remains frozen/selected; ConservativeV3 and the coupled source remain qualified/experimental/unselected; topology death is established; sustained homeostasis is active qualification.`
+- Expected or actual touched areas: `versioned world-side backing reservoir, bounded 8,000-step assay, compact evidence, shared-drive evidence archive, scoped CI, documentation, and governance handoff`
+- Immediate next action: `Run and verify R5 only, push PR #44, verify exact-head remote CI/artifact, and stop for Architect review.`
 
 ## Temporary task-relevant facts
 
@@ -32,12 +32,13 @@
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
 - R2-R2 is architect-accepted at `1622b664a4a37b8a0ac4ea51fbc97ca71f9d853c` with exact-head CI `32615395736`; ordinary starvation reaches actual topology rupture and remains non-intact after both refeeding shadows.
 - R3 is architect-accepted at `17226fb7484eb50079c1c30ce9fd8039b3f23c60` with exact-head CI `32617847392` and artifact digest `sha256:dde942ef96c37ee4e0c9882abacd89202dd4eaf245c81b53d4f0efc039fe5700`; classification `M1_ORDINARY_DECAY_CANDIDATE_QUALIFIED`.
-- R4 entry authority is exactly `17226fb7484eb50079c1c30ce9fd8039b3f23c60`; V3 remains experimental/unselected and the finite-resource source production realization is not established.
+- R4 is architect-accepted at exact head `68d1c88ec1b915a4bee86efe24e985222b529d5a`, CI `32648997395`, artifact digest `sha256:ea8e2161e0889da26a613fd95b6ffa0aa1b7bdb7e0dde23a9fa9aea26d559305`; coupled source is qualified only for the bounded 480-step candidate and remains unselected.
+- R5 is preregistered with `FINITE_SPATIAL_BACKING_RESERVOIR_V1`, fixed boundary concentration `2.063914918930895`, finite N/F inventory `243.14924801053778` each, and zero replenishment. All authoritative evidence is archived under `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\` with manifests and hashes; compact CI-required artifacts remain in Git.
 
 ## Last validation after adoption
 
-- Command or check: `R4 local governance, Rust formatting, exact 480-step assay, V3/V2 actual D-087, coupled/V1 tests, and Phase-1/D-091/D-088/evolution preservation suite`
-- Result: `PASSED`
+- Command or check: `R5 local governance, Rust formatting, backing-reservoir tests, exact 8,000-step four-arm assay, and shared-drive evidence write`
+- Result: `BLOCKED`
 
 ## Risks
 

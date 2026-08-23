@@ -155,3 +155,7 @@ path = "../../examples/dcdev020m1r3_ordinary_decay_candidate.rs"
 [[example]]
 name = "dcdev020m1r4_coupled_source_candidate"
 path = "../../examples/dcdev020m1r4_coupled_source_candidate.rs"
+
+[[example]]
+name = "dcdev020m1r5_sustained_homeostasis"
+path = "../../examples/dcdev020m1r5_sustained_homeostasis.rs"

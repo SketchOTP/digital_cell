@@ -1,0 +1,12 @@
+{
+  "classification": "M1_SUSTAINED_HOMEOSTASIS_V1_SUFFICIENT",
+  "directive": "DC-DEV-020-M1-R5-SUSTAINED-HOMEOSTASIS-001",
+  "e0_authority": true,
+  "e1_backing_reservoir_isolation": true,
+  "e2_sustained_execution": true,
+  "e3_resource_dependence": true,
+  "e4_preservation": true,
+  "e5_remote_required": true,
+  "next_execution_started": false,
+  "starting_head": "68d1c88ec1b915a4bee86efe24e985222b529d5a"
+}

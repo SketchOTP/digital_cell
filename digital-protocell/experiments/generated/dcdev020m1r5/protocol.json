@@ -1,0 +1,69 @@
+{
+  "arms": [
+    "COUPLED_SUSTAINED",
+    "UNCOUPLED_SUSTAINED",
+    "NO_RESOURCE",
+    "FEED_THEN_REMOVE"
+  ],
+  "backing_reservoir_schema": "FINITE_SPATIAL_BACKING_RESERVOIR_V1",
+  "contact_center": [
+    4.8,
+    0.0
+  ],
+  "contact_radius": 1.5,
+  "directive": "DC-DEV-020-M1-R5-SUSTAINED-HOMEOSTASIS-001",
+  "dt": 0.02,
+  "feed_then_remove": {
+    "feed_steps": 480,
+    "withdraw_only_remaining_external_inventory": true,
+    "withdrawal_steps": 8000
+  },
+  "forbidden_changes": [
+    "ConservativeV2",
+    "ConservativeV3",
+    "k_act",
+    "k_a_decay",
+    "catalyst turnover",
+    "structural turnover",
+    "membrane chemistry",
+    "permeability",
+    "geometry",
+    "mechanics",
+    "remesh",
+    "rupture",
+    "death",
+    "D-091",
+    "D-087",
+    "controller",
+    "resource replenishment",
+    "recycling",
+    "salvage",
+    "M2",
+    "DC-DEV-021"
+  ],
+  "horizon_ratio": {
+    "denominator": 3,
+    "numerator": 50,
+    "value": 16.666666666666668
+  },
+  "horizon_steps": 8000,
+  "initial_boundary_concentration": {
+    "f": 2.063914918930895,
+    "n": 2.063914918930895
+  },
+  "initial_finite_mass": {
+    "f": 243.14924801053778,
+    "n": 243.14924801053778
+  },
+  "preserved_laws": [
+    "V1 local exposure",
+    "V1 permeability",
+    "V1 segment and dt transport",
+    "R4 same-step paired N/F to A+W"
+  ],
+  "r4_entry_head": "17226fb7484eb50079c1c30ce9fd8039b3f23c60",
+  "r4_horizon_steps": 480,
+  "r4_schema": "FINITE_SPATIAL_RESOURCE_COUPLED_ACTIVATION_V1",
+  "replenishment_events": 0,
+  "starting_head": "68d1c88ec1b915a4bee86efe24e985222b529d5a"
+}

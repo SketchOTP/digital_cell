@@ -11,6 +11,7 @@
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
 
+pub mod backing_reservoir;
 pub mod continuity;
 pub mod contractility;
 pub mod coupled_resource;
@@ -26,8 +27,13 @@ pub use contractility::{
 };
 
 pub use coupled_resource::{
-    CoupledFiniteSpatialResourceRegionV1, CoupledSpatialResourceStepLedgerV1,
-    COUPLED_FINITE_SPATIAL_RESOURCE_SCHEMA_V1, COUPLED_SPATIAL_RESOURCE_STEP_LEDGER_SCHEMA_V1,
+    apply_coupled_delivery, CoupledFiniteSpatialResourceRegionV1,
+    CoupledSpatialResourceStepLedgerV1, COUPLED_FINITE_SPATIAL_RESOURCE_SCHEMA_V1,
+    COUPLED_SPATIAL_RESOURCE_STEP_LEDGER_SCHEMA_V1,
+};
+
+pub use backing_reservoir::{
+    FiniteSpatialBackingReservoirV1, FINITE_SPATIAL_BACKING_RESERVOIR_SCHEMA_V1,
 };
 
 pub use continuity::{

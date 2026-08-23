@@ -27,6 +27,14 @@ outside the primary repository filesystem.
   2026-08-15 build-cache migration; future changes must preserve its evidence
   and provenance chain.
 
+## Current authoritative evidence storage
+
+- Shared-drive root: `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL`
+- Evidence root: `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\`
+- R5 evidence root: `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r5\\`
+- Policy: dense experiment evidence, runtime ledgers, and archived prior evidence are copied to the shared-drive root, checksum-verified, and referenced by a manifest before local cleanup. Compact protocol/results/qualification/manifests required for GitHub CI remain in Git and are duplicated on the shared drive.
+- Restore: copy the manifest-listed files back to the repository-relative path, verify SHA-256, then rerun the scoped verifier. Do not restore build caches as scientific evidence.
+
 ## Relocated material in the current migration
 
 The regenerated Rust build cache formerly at:
@@ -52,4 +60,6 @@ current migration, so no scientific evidence references required rewriting.
 
 Future archives should use a repository-isolated subdirectory beneath the
 secondary storage root and must update this map and their archive manifest
-after copy, checksum verification, and any reference changes.
+after copy, checksum verification, and any reference changes. Evidence is now
+authoritatively stored on the RPI5 shared drive above; local evidence copies
+must not be deleted until the shared-drive manifest and checksums verify.

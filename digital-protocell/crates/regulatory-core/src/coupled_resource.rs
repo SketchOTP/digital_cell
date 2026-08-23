@@ -32,6 +32,24 @@ impl CoupledFiniteSpatialResourceRegionV1 {
         }
     }
 
+    /// Construct the R4 adapter with a finite inventory whose boundary
+    /// concentrations are fixed by an already-qualified world contract.
+    /// This changes capacity only; V1 exposure, permeability, and uptake are
+    /// still executed by the wrapped region.
+    pub fn new_with_boundary_concentrations(
+        center: [f64; 2],
+        radius: f64,
+        n_mass: f64,
+        f_mass: f64,
+        boundary_n_concentration: f64,
+        boundary_f_concentration: f64,
+    ) -> Self {
+        let mut adapter = Self::new(center, radius, n_mass, f_mass);
+        adapter.region.boundary_n_concentration = boundary_n_concentration.max(0.0);
+        adapter.region.boundary_f_concentration = boundary_f_concentration.max(0.0);
+        adapter
+    }
+
     /// Run the exact V1 transport calculation, then transform only this step's
     /// newly delivered paired mass into the existing A+W material fields.
     pub fn uptake(
@@ -41,40 +59,50 @@ impl CoupledFiniteSpatialResourceRegionV1 {
         dt: f64,
     ) -> CoupledSpatialResourceStepLedgerV1 {
         let v1 = self.region.uptake(mesh, transport, dt);
-        let area = mesh.area().max(1e-6);
-        let paired = v1.n_delivered.min(v1.f_delivered).max(0.0);
-        let n_unpaired = v1.n_delivered - paired;
-        let f_unpaired = v1.f_delivered - paired;
-        let paired_concentration = paired / area;
-
-        mesh.interior.n -= paired_concentration;
-        mesh.interior.f -= paired_concentration;
-        mesh.interior.a += paired_concentration;
-        mesh.interior.w += paired_concentration;
-
-        let conservation_residual = (v1.n_world_loss - (n_unpaired + paired)).abs()
-            + (v1.f_world_loss - (f_unpaired + paired)).abs()
-            + (paired - v1.n_delivered.min(v1.f_delivered)).abs();
-
-        CoupledSpatialResourceStepLedgerV1 {
-            schema: COUPLED_SPATIAL_RESOURCE_STEP_LEDGER_SCHEMA_V1.to_string(),
-            exposed_edges: v1.exposed_edges,
-            n_world_loss: v1.n_world_loss,
-            f_world_loss: v1.f_world_loss,
-            n_delivered: v1.n_delivered,
-            f_delivered: v1.f_delivered,
-            paired_activated: paired,
-            n_deposited_unpaired: n_unpaired,
-            f_deposited_unpaired: f_unpaired,
-            a_produced_coupled: paired,
-            w_produced_coupled: paired,
-            conservation_residual: conservation_residual + v1.conservation_error,
-            v1_ledger: v1,
-        }
+        apply_coupled_delivery(mesh, v1)
     }
 
     pub fn total_mass(&self) -> f64 {
         self.region.total_mass()
+    }
+}
+
+/// Apply the R4 same-step paired-delivery law to an already-executed V1
+/// ledger. This lets R5 reuse the exact R4 transformation without duplicating
+/// transport semantics.
+pub fn apply_coupled_delivery(
+    mesh: &mut MaterialMesh,
+    v1: SpatialResourceStepLedgerV1,
+) -> CoupledSpatialResourceStepLedgerV1 {
+    let area = mesh.area().max(1e-6);
+    let paired = v1.n_delivered.min(v1.f_delivered).max(0.0);
+    let n_unpaired = v1.n_delivered - paired;
+    let f_unpaired = v1.f_delivered - paired;
+    let paired_concentration = paired / area;
+
+    mesh.interior.n -= paired_concentration;
+    mesh.interior.f -= paired_concentration;
+    mesh.interior.a += paired_concentration;
+    mesh.interior.w += paired_concentration;
+
+    let conservation_residual = (v1.n_world_loss - (n_unpaired + paired)).abs()
+        + (v1.f_world_loss - (f_unpaired + paired)).abs()
+        + (paired - v1.n_delivered.min(v1.f_delivered)).abs();
+
+    CoupledSpatialResourceStepLedgerV1 {
+        schema: COUPLED_SPATIAL_RESOURCE_STEP_LEDGER_SCHEMA_V1.to_string(),
+        exposed_edges: v1.exposed_edges,
+        n_world_loss: v1.n_world_loss,
+        f_world_loss: v1.f_world_loss,
+        n_delivered: v1.n_delivered,
+        f_delivered: v1.f_delivered,
+        paired_activated: paired,
+        n_deposited_unpaired: n_unpaired,
+        f_deposited_unpaired: f_unpaired,
+        a_produced_coupled: paired,
+        w_produced_coupled: paired,
+        conservation_residual: conservation_residual + v1.conservation_error,
+        v1_ledger: v1,
     }
 }
 

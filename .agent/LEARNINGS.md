@@ -138,6 +138,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-020-R2 observer-only allosteric requalification.
 - Supersedes learning: none
 
+## L-DCDEV020M1R5-001
+
+- Learning ID: L-DCDEV020M1R5-001
+- Date: 2026-08-23
+- Fact or lesson: Sustained qualification must separate environmental capacity from local transport identity. R5 therefore holds the accepted R4 boundary concentration fixed while scaling only a strictly finite, non-replenishing N/F inventory by the preregistered horizon ratio `50/3`; coupled and uncoupled arms share the same V1 transport execution, and feed removal is an environmental ablation rather than observer feedback.
+- Evidence location: `digital-protocell/crates/regulatory-core/src/backing_reservoir.rs`, `digital-protocell/examples/dcdev020m1r5_sustained_homeostasis.rs`, `digital-protocell/experiments/generated/dcdev020m1r5/`, and `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r5`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R5 sustained finite-resource homeostasis qualification only; no production selection, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: none
+
 ## L-DCDEV020M1R2R1-001
 
 - Learning ID: L-DCDEV020M1R2R1-001

@@ -150,6 +150,11 @@
 - `digital-protocell/experiments/generated/dcdev020m1r4/` — compact R4 protocol, result, qualification, and artifact manifest; dense runtime ledgers remain external/local evidence.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r4/` — R4 coupled-source candidate protocol and preservation boundary.
 - `.github/workflows/dc-dev-020m1r4.yml` — scoped R4 governance, formatting, candidate assay, D-087, artifact, preservation, and exact-head CI.
+- `digital-protocell/crates/regulatory-core/src/backing_reservoir.rs` — R5 world-side fixed-concentration finite backing reservoir that delegates all local transport to V1 and never replenishes.
+- `digital-protocell/examples/dcdev020m1r5_sustained_homeostasis.rs` — R5 8,000-step coupled, uncoupled, no-resource, and feed-then-remove qualification runner with closure and checkpoint evidence.
+- `digital-protocell/experiments/generated/dcdev020m1r5/` — compact R5 protocol/results/qualification/manifest; dense runtime evidence is archived on the shared drive.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r5/` — R5 sustained-homeostasis protocol and preservation boundary.
+- `.github/workflows/dc-dev-020m1r5.yml` — scoped R5 governance, reservoir, sustained-assay, D-087, preservation, and artifact-verification CI.
 
 ## External integration points
 

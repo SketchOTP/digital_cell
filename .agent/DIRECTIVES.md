@@ -710,3 +710,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260823-dcdev020m1r3-ordinary-decay-candidate001
 - Status at issuance: ISSUED
+
+## D-20260823-dcdev020m1r5-sustained-homeostasis001
+
+- Issued: `2026-08-23T01:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R5-SUSTAINED-HOMEOSTASIS-001`
+- Objective: Determine whether the accepted ConservativeV3 plus coupled finite-resource stack sustains organized material and existing viability for 8,000 accepted steps, while testing whether the unchanged uncoupled V1 path is sufficient.
+- Scope: Start at exact R4 head `68d1c88ec1b915a4bee86efe24e985222b529d5a`; continue PR #44 on `strategy/dc-dev-020r9-mesh-contract-requalification` without merging. World-side `FINITE_SPATIAL_BACKING_RESERVOIR_V1` only; contact center `[4.8, 0.0]`, radius `1.5`, fixed R4 boundary concentration `2.063914918930895`, finite N/F inventory `243.14924801053778` each, horizon ratio `50/3`, no replenishment; coupled, uncoupled, no-resource, and feed-then-remove arms; exact R4 reproduction, accounting, preservation, compact evidence, shared-drive evidence archive, and exact-head CI.
+- Exclusions: ConservativeV2/V3 biology, R4 coupling semantics, V1 transport law, kinetics, membrane chemistry, mechanics, remesh, rupture/death rules, D-091, D-087, production selection, controllers, replenishment, recycling, salvage, reserve redesign, M2, behavior, evolution, and DC-DEV-021.
+- Acceptance: R4 replay and first-step transport parity; finite-resource closure with zero replenishment; Arm A/B sustained criteria; Arm C worse than A; Arm D post-removal delivery and coupled activation zero with material deterioration; strict/internal closure; V2/V3 D-087 8/8 on remote Linux; preservation suites; shared-drive manifest and hashes; exact-head CI; Architect review remains required.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260823-dcdev020m1r4-coupled-source-candidate001
+- Status at issuance: ISSUED

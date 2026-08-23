@@ -1213,3 +1213,20 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: No physical failure occurred within the authorized 20,000-step continuation, so the necessity question remains bounded and inconclusive. This result does not authorize removing or changing the production multiplier, source-law implementation, M1 production repair, M2, reserve redesign, recycling/salvage, behavior, evolution, or DC-DEV-021.
 - Blockers: exact-head remote CI and independent architect review.
 - Follow-up directive: none
+
+## D-20260823-dcdev020m1r5-sustained-homeostasis001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R5-SUSTAINED-HOMEOSTASIS-PENDING-ARCHITECT`
+- Supersedes outcome: none
+- Closed: `2026-08-23T01:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R5 executes the accepted R4 depleted entry through 8,000-step coupled, uncoupled, no-resource, and feed-then-remove arms under the preregistered finite backing reservoir. Local accounting and R4 checkpoint reproduction pass. The local Windows D-087 runtime remains 7/8 because Gate 7 is Linux-packaging dependent; exact-head remote Linux CI and Architect review remain authoritative.
+- Changed areas: World-side fixed-concentration finite backing-reservoir wrapper, bounded R5 assay, compact evidence, shared-drive evidence manifest, scoped CI, documentation, and governance. No certified Phase-1 equations, V1 transport, R4 coupling law, production selection, reserve, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work changed.
+- Validation:
+  - Sanctioned Rust 1.89.0 formatting/check and focused backing/coupled tests - PASSED
+  - Fresh local 8,000-step R5 assay, R4 reproduction, and closure - PASSED
+  - Local V3/V2 D-087 Gate 7 packaging - BLOCKED
+  - Exact-head remote Linux CI and artifact verification - NOT RUN
+- Remaining risks: The R5 classification is provisional until exact-head Linux CI verifies fresh D-087, artifact equality, preservation, and the sustained gates. Authoritative R5 evidence is stored at `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r5`; compact CI-required artifacts remain in `digital-protocell/experiments/generated/dcdev020m1r5/` and are duplicated there. No production selection or downstream directive is authorized.
+- Blockers: exact-head remote CI and independent Architect review.
+- Follow-up directive: none
