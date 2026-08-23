@@ -511,7 +511,10 @@ fn assert_r2_endpoint(id: &str, comparison: &PhaseEvidence, continuation: &Phase
     assert!(close(continuation.final_state.a, expected.0));
     assert!(close(continuation.final_state.c, expected.1));
     assert!(close(continuation.final_state.structural_m, expected.2));
-    assert!(close(continuation.final_state.organized_material, expected.3));
+    assert!(close(
+        continuation.final_state.organized_material,
+        expected.3
+    ));
     assert_eq!(continuation.final_state.ruptured_edges, 0);
     assert_eq!(
         continuation.final_state.observer_death_reason,
