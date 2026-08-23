@@ -1109,3 +1109,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: This is a requalification result, not a production repair. The current finite-resource mass/conversion/allocation limitation is not isolated to a permitted implementation change. No M1 production change, M2, reserve redesign, recycling, salvage, behavior, evolution, or DC-DEV-021 work is authorized.
 - Blockers: exact-head remote CI and independent architect review.
 - Follow-up directive: none
+
+## D-20260822-dcdev020m1r2-starvation-law-audit001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R2-STARVATION-LAW-AUDIT-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R1R1-DECAY-CONFOUND-PENDING-ARCHITECT`
+- Closed: `2026-08-22T18:35:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only audit starts from accepted M1-R1-R1 head `7bb48874771144795a9559f7570f5ebc77e1004a`. Repository provenance traces the fourfold starvation A-decay branch to D-086 commit `20e9f7814020ca38ed1893fdd94fb3264307de2e`; the source comment provides no explicit quantitative rationale, and D-087 requires starvation/death behavior but does not explicitly require fourfold A destruction. The production 4x arm and ordinary-decay `k_a_decay=0.002` arm both complete the 480-step comparison and the full 20,000-step continuation. Both lose observer viability through the existing reversible `starvation_collapse` predicate, but neither reaches mesh rupture, catalytic/structural physical failure, or invalid runtime geometry within the authorized bound. Local classification is `M1_STARVATION_LAW_AUDIT_INCONCLUSIVE`. Fresh actual D-087 independently returns ConservativeV2/reserve OFF with 8/8 gates and `D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED`.
+- Changed areas: New observer example, compact generated evidence, scoped workflow, documentation, and governance only. No chemistry-core, phase1-certifier production source, ConservativeV2, D-087 implementation, resource, death, reserve, recycling, M2, behavior, evolution, or DC-DEV-021 work changed.
+- Validation:
+  - Rust 1.89.0 scoped formatting - PASSED
+  - Regulatory-core observer compile - PASSED
+  - Fresh local 480-step / 20,000-step audit - PASSED; both arms reached the bound without physical failure
+  - Fresh actual D-087 certifier - PASSED (8/8, ConservativeV2, reserve OFF)
+  - Local compact base/fresh artifact verification - PASSED
+  - Phase-1, D-091, D-088, and evolution-harness preservation - PASSED; evolution-harness 40 tests
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: No physical failure occurred within the authorized 20,000-step continuation, so the necessity question remains bounded and inconclusive. This result does not authorize removing or changing the production multiplier, source-law implementation, M1 production repair, M2, reserve redesign, recycling/salvage, behavior, evolution, or DC-DEV-021.
+- Blockers: exact-head remote CI and independent architect review.
+- Follow-up directive: none

@@ -1,0 +1,68 @@
+{
+  "arms": [
+    {
+      "declared_k_a_decay": 0.008,
+      "id": "A_PRODUCTION_STARVATION_4X",
+      "resource_delivery": "none",
+      "starvation_multiplier": 4.0
+    },
+    {
+      "declared_k_a_decay": 0.002,
+      "id": "B_ORDINARY_DECAY_STARVATION",
+      "resource_delivery": "none",
+      "starvation_multiplier": 4.0
+    },
+    {
+      "declared_k_a_decay": 0.008,
+      "id": "C_FED_CONTROL",
+      "resource_delivery": "accepted finite-resource reference"
+    }
+  ],
+  "comparison_steps": 480,
+  "continuation_steps": 20000,
+  "directive": "DC-DEV-020-M1-R2-STARVATION-LAW-AUDIT-001",
+  "dt": 0.02,
+  "forbidden_changes": [
+    "production chemistry",
+    "chemistry-core",
+    "ConservativeV2",
+    "activation law",
+    "uptake",
+    "transport",
+    "resources",
+    "death semantics",
+    "D-087",
+    "recycling",
+    "salvage",
+    "M2",
+    "DC-DEV-021"
+  ],
+  "m1r1r1_entry": "7bb48874771144795a9559f7570f5ebc77e1004a",
+  "observer_only": true,
+  "provenance": {
+    "d087_requires_starvation_death_behavior": true,
+    "explicit_scientific_rationale": false,
+    "explicitly_required_by_d087": false,
+    "implementation_comment": "Accelerate A loss when activation substrates are absent (starvation).",
+    "interpretation": "The term is carried in frozen production code, but repository provenance does not independently qualify the coefficient as necessary.",
+    "originating_commit": "20e9f7814020ca38ed1893fdd94fb3264307de2e",
+    "originating_directive": "D-20260724-d086-autopoietic-material-mesh-protocell",
+    "required_by_current_m0_8_of_8": "UNTESTED_UNTIL_FRESH_CERTIFIER_STAGE",
+    "source": "digital-protocell/crates/chemistry-core/src/mesh_reactions.rs"
+  },
+  "resource_restoration": {
+    "center": [
+      4.8,
+      0.0
+    ],
+    "inventory_f": 14.588954880632265,
+    "inventory_n": 14.588954880632265,
+    "radius": 1.5
+  },
+  "restoration_steps": 5000,
+  "selected_contract": {
+    "mesh_contract": "ConservativeV2",
+    "reserve_enabled": false
+  },
+  "starting_head": "7bb48874771144795a9559f7570f5ebc77e1004a"
+}

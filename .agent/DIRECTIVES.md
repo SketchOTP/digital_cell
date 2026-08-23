@@ -640,3 +640,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260822-dcdev020m1r1capacitydecomp001
 - Status at issuance: ISSUED
+
+## D-20260822-dcdev020m1r2-starvation-law-audit001
+
+- Issued: `2026-08-22T18:35:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R2-STARVATION-LAW-AUDIT-001`
+- Objective: Determine whether the production fourfold starvation A-decay multiplier is necessary for causal starvation deterioration and irreversible organizational loss on the accepted M0 organism.
+- Scope: Starting at `7bb48874771144795a9559f7570f5ebc77e1004a`, observer-only exact M1-R1-R1 reproduction; production 4x no-resource arm; ordinary-decay `k_a_decay=0.002` shadow with the frozen multiplier; accepted finite-resource fed control; 480-step comparison; up to 20,000 additional accepted steps; conditional 5,000-step restoration after physical failure; provenance; compact evidence; fresh actual D-087 8/8; preservation checks; exact-head CI.
+- Exclusions: Production chemistry, chemistry-core, ConservativeV2, activation law, uptake, transport, resources, N/F stoichiometry, structural/catalyst kinetics, membrane chemistry, death semantics, D-087 source, recycling, salvage, controllers, M2, R9-R7, behavior, evolution, and DC-DEV-021.
+- Acceptance: R1-R1 authority reproduces; provenance is resolved as far as repository evidence permits; exact matched arms complete; irreversible physical failure is distinguished from reversible starvation observer loss; restoration/no-resurrection is reported if reached; closure passes; production remains unchanged; fresh D-087 is 8/8; exact-head remote CI succeeds; architect review remains required.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260822-dcdev020m1r1r1-decay-confound001
+- Status at issuance: ISSUED

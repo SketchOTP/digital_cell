@@ -132,6 +132,9 @@
 - `digital-protocell/crates/phase1-certifier/examples/dcdev020r6_mobilize_first_store_last.rs` — exact 5,000-step FULL/shadow audit, actual D-087 replay, reserve-function checks, and compact report.
 - `digital-protocell/experiments/generated/dcdev020r9r6/` — compact R9-R6 report, protocol, qualification, and SHA-256 manifest; dense ledgers remain local/external.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r6/` — R9-R6 phase-order audit and corrected insufficient disposition; R9-R6-R1 closure evidence remains compact and append-only.
+- `digital-protocell/examples/dcdev020m1r2_starvation_law_audit.rs` — observer-only M1-R2 production-4x versus ordinary-decay starvation comparison, bounded continuation, conditional restoration, and provenance report.
+- `digital-protocell/experiments/generated/dcdev020m1r2/` — compact M1-R2 protocol, results, qualification, and manifest; dense trajectories remain uncommitted.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r2/` — M1-R2 starvation-law audit protocol, provenance boundary, and bounded classification.
 
 ## External integration points
 

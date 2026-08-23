@@ -75,3 +75,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: D016 produced no marginal payback at the fixed half-life checkpoints, while R6 produced early payback through step `3466` but not at later checkpoints. Both deferred trajectories remained viable through 8000 steps, so no source-portable delayed-resume checkpoint was authorized.
 - Affected areas: DC-DEV-020 observer evidence and developmental metabolic architecture selection; no production chemistry, certified biology, or behavior.
 - Supersedes record: DEC-DCDEV020R8R2-001
+
+## DEC-DCDEV020M1R2-001
+
+- Date: 2026-08-22
+- Record or decision ID: DEC-DCDEV020M1R2-001
+- Status: PROPOSED
+- Decision or event: DC-DEV-020-M1-R2 was executed as an observer-only starvation-law audit from the accepted M1-R1-R1 head.
+- Rationale: Repository provenance does not independently qualify the production fourfold A-decay multiplier. Both production and ordinary-decay no-resource arms completed the authorized 480-step comparison and 20,000-step continuation without irreversible physical failure, so the local bounded classification is `M1_STARVATION_LAW_AUDIT_INCONCLUSIVE`.
+- Affected areas: M1 starvation-law evidence and developmental metabolic architecture selection; no production chemistry, certified biology, resource law, death semantics, reserve, recycling, salvage, M2, behavior, evolution, or DC-DEV-021.
+- Supersedes record: none

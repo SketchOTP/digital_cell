@@ -465,3 +465,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-M1-R1 observer-only capacity decomposition; no production chemistry, uptake, transport, resource, degradation, reserve, controller, behavior, evolution, recycling, salvage, M2, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M1R0-001
+
+## L-DCDEV020M1R2-001
+
+- Learning ID: L-DCDEV020M1R2-001
+- Date: 2026-08-22
+- Fact or lesson: The fourfold starvation A-decay branch is present from D-086 commit `20e9f7814020ca38ed1893fdd94fb3264307de2e` with a qualitative source comment but no explicit quantitative repository rationale; D-087 requires starvation/death behavior, not that coefficient. In the bounded M1-R2 audit, production `k_a_decay=0.008` and ordinary-decay `k_a_decay=0.002` shadows both complete 480 plus 20,000 additional accepted no-resource steps, lose observer viability through existing `starvation_collapse`, and reach no mesh rupture or other irreversible physical failure. The bounded classification is `M1_STARVATION_LAW_AUDIT_INCONCLUSIVE`.
+- Evidence location: `digital-protocell/examples/dcdev020m1r2_starvation_law_audit.rs`, `digital-protocell/experiments/generated/dcdev020m1r2/`, and `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r2/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R2 observer-only starvation-law audit; no production chemistry, chemistry-core, D-087 implementation, resource, death, reserve, controller, behavior, evolution, recycling, salvage, M2, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R1R1-001

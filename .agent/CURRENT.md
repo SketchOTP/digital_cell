@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-22T18:10:00-04:00`
+- Last updated: `2026-08-22T18:35:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260822-dcdev020m1r1r1-decay-confound001`
-- External directive ID: `DC-DEV-020-M1-R1-R1-DECAY-CONFOUND-001`
-- Objective: `Isolate the existing 4x starvation A-decay confound in the M1-R1 source-capacity shadow without changing production biology.`
+- Local directive ID: `D-20260822-dcdev020m1r2-starvation-law-audit001`
+- External directive ID: `DC-DEV-020-M1-R2-STARVATION-LAW-AUDIT-001`
+- Objective: `Determine whether the production 4x starvation A-decay multiplier is necessary for causal deterioration and irreversible physical failure without changing production biology.`
 - Current status: `VALIDATING`
-- Acceptance: `Reproduce M1-R1 exactly, prove 480/480 starvation-branch selection, neutralize only k_a_decay by K/4 in two diagnostic shadows, close accounting, and obtain exact-head remote CI.`
-- Current phase: `M0 and M1-R0 are architect-accepted. M1-R1 was replanned because source capacity was confounded by starvation decay. This R1-R1 isolation is the only authorized execution boundary; production change, M2, R9-R7, reserve redesign, recycling, salvage, behavior, evolution, and DC-DEV-021 remain unauthorized.`
-- Expected or actual touched areas: `M1-R1 observer reuse seam, decay-confound observer example, compact evidence, scoped CI, documentation, and governance handoff`
-- Immediate next action: `Run local preservation and artifact checks, push the bounded decay-confound package, verify exact-head remote CI, and return to the Architect without starting a production repair.`
+- Acceptance: `Reproduce M1-R1-R1, audit 4x provenance, compare exact production and ordinary-decay starvation arms for 480 steps plus 20,000 additional steps, challenge restoration only after physical failure, verify fresh D-087 8/8, and obtain exact-head remote CI.`
+- Current phase: `M1-R1-R1 is architect-accepted with source capacity sufficient only after decay neutralization. This starvation-law audit is the only authorized execution boundary; source-law production change, M2, R9-R7, reserve redesign, recycling, salvage, behavior, evolution, and DC-DEV-021 remain unauthorized.`
+- Expected or actual touched areas: `M1-R1 observer reuse, starvation-law observer example, compact evidence, scoped CI, documentation, and governance handoff`
+- Immediate next action: `Run the local 480-step and 20,000-step audit, verify actual D-087 8/8 and preservation suites, push the bounded package, verify exact-head remote CI, and return to the Architect without starting a production repair.`
 
 ## Temporary task-relevant facts
 
@@ -33,7 +33,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Local M1-R1-R1 decay-confound assay, tolerant compact-artifact verification, governance validation, and scoped compile`
+- Command or check: `Local M1-R2 starvation-law assay, compact base/fresh artifact verification, fresh actual D-087, governance validation, and Phase-1/D-091/D-088/evolution preservation suite`
 - Result: `PASSED`
 
 ## Risks
@@ -43,6 +43,8 @@
 - DC-DEV-012 is closed as valid negative evidence and is not imported.
 - M0 is architect-accepted at `4895135deee7dbd782446dbfe25662181951afe0` with exact-head CI `32592048545`; the selected production identity is ConservativeV2/reserve OFF.
 - M1-R0 local replay currently classifies the accepted M0 organism as `productive_allocation_or_replacement_limitation`: high finite N/F delivery reduces but does not reverse organized-material decline, and no-resource continuation reaches observer starvation collapse at accepted step 2057. This remains pending exact-head CI and architect review.
+- M1-R1-R1 is architect-accepted at `7bb48874771144795a9559f7570f5ebc77e1004a` with exact-head workflows `32603849571` and `32603852368` passed; source capacity crosses the frozen 480-step boundary only after diagnostic decay neutralization, while the 4x coefficient remains provenance/necessity unresolved.
+- M1-R2 starts at `7bb48874771144795a9559f7570f5ebc77e1004a`; the local classification is `M1_STARVATION_LAW_AUDIT_INCONCLUSIVE`. Both no-resource arms complete 480 plus 20,000 accepted steps without mesh rupture, catalytic/structural physical failure, or invalid runtime geometry, while both lose observer viability through the existing starvation predicate. Fresh actual D-087 is ConservativeV2/reserve OFF with 8/8 gates.
 - R9-R2 correction: the actual D-087 certifier, not an R9 facsimile, is classification authority. ConservativeV2 remains an orthogonal physical/material/death contract; D-091 remains the biological equation lineage. The actual 3/8 result is a certification regression and must not be tuned around.
 - R9-R3 result: H0 HistoricalV1/reserve OFF and V20 ConservativeV2/reserve OFF pass scientific Gates 0–6; H1 and V21 fail Gates 1–4 with nonzero reserve flows and zero rejects. The architect-accepted classification is `DCDEV020R9R3_RESERVE_PHYSIOLOGY_CERTIFICATION_GAP_CONFIRMED`.
 - R9-R3-R1 diagnosis: the prior Gate-7 `bin_ok=false` was caused locally by extensionless source/destination paths on Windows (`digital-protocell-phase1` versus the actual `.exe` artifact); the runtime now derives the platform executable suffix and records build/copy/launch diagnostics without capturing unrelated environment secrets.

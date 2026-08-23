@@ -135,3 +135,7 @@ path = "../../examples/dcdev020m1r1_capacity_decomp.rs"
 [[example]]
 name = "dcdev020m1r1r1_decay_confound"
 path = "../../examples/dcdev020m1r1r1_decay_confound.rs"
+
+[[example]]
+name = "dcdev020m1r2_starvation_law_audit"
+path = "../../examples/dcdev020m1r2_starvation_law_audit.rs"

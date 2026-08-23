@@ -1,0 +1,15 @@
+{
+  "artifact_files": [
+    "protocol.json",
+    "results.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "authoritative_result": "results.json",
+  "dense_ledgers_committed": false,
+  "directive": "DC-DEV-020-M1-R2-STARVATION-LAW-AUDIT-001",
+  "next_execution_started": false,
+  "observer_only": true,
+  "qualification": "qualification.json",
+  "starting_head": "7bb48874771144795a9559f7570f5ebc77e1004a"
+}
