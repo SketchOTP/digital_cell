@@ -58,9 +58,11 @@ ruptures:
 | production 4x | 45,422 | `activated_catalyst_collapse` | 5,000 steps | negative |
 | ordinary decay | 45,831 | `activated_catalyst_collapse` | 5,000 steps | negative |
 
-Both restoration runs delivered the requested N/F, closed the internal/world
-material accounting within tolerance, and failed to restore coherent
-organized material or a closed intact body. Therefore the exact bounded
+Both restoration runs delivered the requested N/F and closed the internal/world
+material accounting within tolerance. The topology remained closed intact and
+observer viability returned, but organized material stayed below the
+failed-state baseline, so coherent material organization was not recovered.
+Therefore the exact bounded
 classification is:
 
 ```text

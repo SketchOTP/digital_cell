@@ -469,7 +469,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Supersedes outcome: none
 - Closed: `2026-08-22T22:20:00-04:00`
 - Acceptance: `PARTIAL`
-- Summary: The observer-only continuation starts at accepted M1-R2 head `bc65098c3d26777aca2d1da5dab8cc118ecc6e19` and reproduces both accepted R2 trajectory hashes and endpoint values before continuing. The production 4x and ordinary-decay arms both reach the existing `activated_catalyst_collapse` chemistry-path terminal boundary within the 150,000-step extension, at steps `45422` and `45831` respectively, without edge rupture. Both receive the exact 5,000-step finite N/F restoration without state reset; both deliver the requested resources, close material accounting, and fail to recover coherent organized material or a closed intact body. Local classification: `M1_ORDINARY_DECAY_IRREVERSIBLE_FAILURE_ESTABLISHED`.
+- Summary: The observer-only continuation starts at accepted M1-R2 head `bc65098c3d26777aca2d1da5dab8cc118ecc6e19` and reproduces both accepted R2 trajectory hashes and endpoint values before continuing. The production 4x and ordinary-decay arms both reach the existing `activated_catalyst_collapse` chemistry-path terminal boundary within the 150,000-step extension, at steps `45422` and `45831` respectively, without edge rupture. Both receive the exact 5,000-step finite N/F restoration without state reset; both deliver the requested resources and close material accounting, but organized material remains below the failed-state baseline despite closed-intact topology and returned observer viability. Local classification: `M1_ORDINARY_DECAY_IRREVERSIBLE_FAILURE_ESTABLISHED`.
 - Changed areas: observer-only M1-R2-R1 example, compact evidence, scoped workflow, documentation, and governance. No chemistry-core, Phase-1 source, production chemistry, resource law, death rule, D-091, D-087, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work changed.
 - Validation:
   - Exact R2 endpoint reproduction with committed trajectory hashes - PASSED
@@ -479,8 +479,8 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Internal and restoration material closure - PASSED
   - Scoped Rust format and regulatory-core example compile/run - PASSED
   - Fresh actual D-087 8/8 - PASSED locally and in exact-head CI
-  - Exact-head remote CI runs `32612860278` and `32612861856` at head `11fed776b7e694fb9af5debc4c2914c0a23ba615` - PASSED
-  - Final governance-head push CI run `32613089232` at head `7831808a08443e7be8e58e423b232cb7780d5b05` - PASSED
+- Exact-head remote CI runs `32612860278` and `32612861856` at head `11fed776b7e694fb9af5debc4c2914c0a23ba615` - PASSED
+- Final governance-head CI runs `32613245695` (push) and `32613247896` (PR synchronize) at head `38d18083b66f1daa9914fac3a2b724017cc33155` - PASSED
   - Architect review - PENDING
 - Remaining risks: This is a chemistry-path material-failure result, not full-runtime organism death; mechanics/remesh/rebond are outside the assay. Independent architect review remains required before acceptance. No M1 production change, M2, reserve redesign, recycling, salvage, behavior, evolution, or DC-DEV-021 work is authorized.
 - Blockers: independent architect review.
