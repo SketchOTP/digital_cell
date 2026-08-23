@@ -108,51 +108,56 @@ jobs:
           import json
           from pathlib import Path
 
+          def require(condition, message):
+              if not condition:
+                  print(f'::error title=R3 verifier::{message}')
+                  raise SystemExit(1)
+
           base = Path('experiments/generated/dcdev020m1r3')
           fresh = base / 'ci'
           names = ('protocol.json', 'results.json', 'qualification.json', 'artifact_manifest.json')
           for root in (base, fresh):
               for name in names:
-                  assert (root / name).is_file(), f'missing {root/name}'
+                  require((root / name).is_file(), f'missing {root/name}')
           protocol = json.loads((base / 'protocol.json').read_text())
           fresh_protocol = json.loads((fresh / 'protocol.json').read_text())
           results = json.loads((fresh / 'results.json').read_text())
           qualification = json.loads((fresh / 'qualification.json').read_text())
           v3 = json.loads((fresh / 'v3_d087/certification/report.json').read_text())
           v2 = json.loads((fresh / 'v2_d087/certification/report.json').read_text())
-          assert fresh_protocol == protocol
-          assert protocol['directive'] == 'DC-DEV-020-M1-R3-ORDINARY-DECAY-CANDIDATE-001'
-          assert protocol['starting_head'] == '1622b664a4a37b8a0ac4ea51fbc97ca71f9d853c'
-          assert protocol['candidate']['mesh_chemistry_schema'] == 'ConservativeV3'
-          assert protocol['candidate']['physical_mesh_contract'] == 'ConservativeV2'
-          assert protocol['candidate']['k_a_decay'] == 0.008
-          assert protocol['candidate']['starvation_multiplier'] == 1.0
-          assert results['classification'] == 'M1_ORDINARY_DECAY_CANDIDATE_QUALIFIED'
-          assert results['conservative_v2_semantics_changed'] is False
-          assert results['selected_production_changed'] is False
+          require(fresh_protocol == protocol, 'fresh protocol differs from committed protocol')
+          require(protocol['directive'] == 'DC-DEV-020-M1-R3-ORDINARY-DECAY-CANDIDATE-001', f"directive={protocol.get('directive')}")
+          require(protocol['starting_head'] == '1622b664a4a37b8a0ac4ea51fbc97ca71f9d853c', f"starting_head={protocol.get('starting_head')}")
+          require(protocol['candidate']['mesh_chemistry_schema'] == 'ConservativeV3', f"candidate_schema={protocol['candidate'].get('mesh_chemistry_schema')}")
+          require(protocol['candidate']['physical_mesh_contract'] == 'ConservativeV2', f"physical_contract={protocol['candidate'].get('physical_mesh_contract')}")
+          require(protocol['candidate']['k_a_decay'] == 0.008, f"k_a_decay={protocol['candidate'].get('k_a_decay')}")
+          require(protocol['candidate']['starvation_multiplier'] == 1.0, f"starvation_multiplier={protocol['candidate'].get('starvation_multiplier')}")
+          require(results['classification'] == 'M1_ORDINARY_DECAY_CANDIDATE_QUALIFIED', f"classification={results.get('classification')}")
+          require(results['conservative_v2_semantics_changed'] is False, f"conservative_v2_semantics_changed={results.get('conservative_v2_semantics_changed')}")
+          require(results['selected_production_changed'] is False, f"selected_production_changed={results.get('selected_production_changed')}")
           eq = results['ordinary_starvation_equivalence']
-          assert eq['v2_first_rupture_step'] == 124717
-          assert eq['v3_first_rupture_step'] == 124717
-          assert eq['v2_observer_collapse_step'] == eq['v3_observer_collapse_step']
-          assert eq['pass'] is True
+          require(eq['v2_first_rupture_step'] == 124717, f"v2_first_rupture_step={eq.get('v2_first_rupture_step')}")
+          require(eq['v3_first_rupture_step'] == 124717, f"v3_first_rupture_step={eq.get('v3_first_rupture_step')}")
+          require(eq['v2_observer_collapse_step'] == eq['v3_observer_collapse_step'], f"collapse_steps={eq.get('v2_observer_collapse_step')}/{eq.get('v3_observer_collapse_step')}")
+          require(eq['pass'] is True, f"equivalence_pass={eq.get('pass')}")
           cap = results['source_capacity_v3']
-          assert abs(cap['organized_material_delta'] - 1.25718049040759) <= 1e-8
-          assert cap['world_to_organism_closure_residual'] <= 1e-8
-          assert results['v3_refeed_ordinary']['closed_intact_after'] is False
-          assert results['v3_refeed_source_capacity']['closed_intact_after'] is False
+          require(abs(cap['organized_material_delta'] - 1.25718049040759) <= 1e-8, f"organized_delta={cap.get('organized_material_delta')}")
+          require(cap['world_to_organism_closure_residual'] <= 1e-8, f"closure_residual={cap.get('world_to_organism_closure_residual')}")
+          require(results['v3_refeed_ordinary']['closed_intact_after'] is False, f"ordinary_refeed_closed={results['v3_refeed_ordinary'].get('closed_intact_after')}")
+          require(results['v3_refeed_source_capacity']['closed_intact_after'] is False, f"capacity_refeed_closed={results['v3_refeed_source_capacity'].get('closed_intact_after')}")
           for report, contract in ((v3, 'ConservativeV3'), (v2, 'ConservativeV2')):
-              assert report['mesh_contract'] == contract
-              assert report['reserve_enabled'] is False
-              assert [report[f'gate{i}']['pass'] for i in range(8)] == [True] * 8
-              assert report['primary_conclusion'] == 'D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED'
-          assert qualification['e0_authority_and_v2_preservation'] is True
-          assert qualification['e1_version_isolation'] is True
-          assert qualification['e2_causal_ordinary_starvation_equivalence'] is True
-          assert qualification['e3_source_capacity_without_decay_compensation'] is True
-          assert qualification['e4_v3_d087'] is True
-          assert qualification['e4_v2_d087_preservation'] is True
-          assert qualification['e4_internal_material_closure'] is True
-          assert qualification['next_execution_started'] is False
+              require(report['mesh_contract'] == contract, f"mesh_contract={report.get('mesh_contract')} expected={contract}")
+              require(report['reserve_enabled'] is False, f"reserve_enabled={report.get('reserve_enabled')} contract={contract}")
+              require([report[f'gate{i}']['pass'] for i in range(8)] == [True] * 8, f"d087_gates={[report[f'gate{i}']['pass'] for i in range(8)]} contract={contract}")
+              require(report['primary_conclusion'] == 'D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED', f"d087_conclusion={report.get('primary_conclusion')} contract={contract}")
+          require(qualification['e0_authority_and_v2_preservation'] is True, f"e0={qualification.get('e0_authority_and_v2_preservation')}")
+          require(qualification['e1_version_isolation'] is True, f"e1={qualification.get('e1_version_isolation')}")
+          require(qualification['e2_causal_ordinary_starvation_equivalence'] is True, f"e2={qualification.get('e2_causal_ordinary_starvation_equivalence')}")
+          require(qualification['e3_source_capacity_without_decay_compensation'] is True, f"e3={qualification.get('e3_source_capacity_without_decay_compensation')}")
+          require(qualification['e4_v3_d087'] is True, f"e4_v3={qualification.get('e4_v3_d087')}")
+          require(qualification['e4_v2_d087_preservation'] is True, f"e4_v2={qualification.get('e4_v2_d087_preservation')}")
+          require(qualification['e4_internal_material_closure'] is True, f"e4_closure={qualification.get('e4_internal_material_closure')}")
+          require(qualification['next_execution_started'] is False, f"next_execution_started={qualification.get('next_execution_started')}")
           print('DCDEV020M1R3_ARTIFACT_AND_D087_VERIFICATION_PASS')
           PY
       - name: Phase-1 preservation regression
