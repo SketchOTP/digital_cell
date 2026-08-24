@@ -1289,3 +1289,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: Linux may show numeric or discrete remesh divergence; acceptance depends on causal invariants rather than bitwise long-horizon trajectory equality. No mass-conservation repair is authorized.
 - Blockers: exact-head remote CI and independent Architect review.
 - Follow-up directive: none
+
+## D-20260823-dcdev020m1r6r1r1r1-remote-verifier-order-closure001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R1R1R1-REMOTE-VERIFIER-ORDER-CLOSURE-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R1R1-CROSS-PLATFORM-CLOSURE-PENDING-ARCHITECT`
+- Closed: `2026-08-23T23:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Exact-head run `32683284347` completed the fresh Linux R6-R1-R1 audit with causal classification `M1_RUNTIME_GEOMETRY_MASS_COUPLING_CONFIRMED`, then failed because the cross-platform verifier read `ci/v2_d087/certification/report.json` before the V2/V3 D-087 generation steps. The authorized repair is workflow dependency ordering only.
+- Changed areas: `.github/workflows/dc-dev-020m1r6r1.yml` ordering and governance records; no audit, production, chemistry, mechanics, remesh, transport, resource, or preservation source changes.
+- Validation:
+  - Original missing-report blocker reproduced from remote logs - CONFIRMED
+  - D-087 producer-before-verifier ordering repair - APPLIED LOCALLY
+  - Scientific verifier logic and thresholds changed - NO
+  - Local YAML parse and diff check - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The final cross-platform result, D-087 counts, and preservation suite remain unverified until the repaired exact-head workflow completes. No geometry/material repair is authorized.
+- Blockers: exact-head remote CI and independent Architect review.
+- Follow-up directive: none

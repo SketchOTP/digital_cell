@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260823-dcdev020m1r6r1r1-cross-platform-closure-validation001`
-- External directive ID: `DC-DEV-020-M1-R6-R1-R1-CROSS-PLATFORM-CLOSURE-VALIDATION-001`
-- Objective: `Separate scientific protocol from execution metadata and validate the R6 geometry/material closure invariants across platforms without repairing production physics.`
+- Local directive ID: `D-20260823-dcdev020m1r6r1r1r1-remote-verifier-order-closure001`
+- External directive ID: `DC-DEV-020-M1-R6-R1-R1-R1-REMOTE-VERIFIER-ORDER-CLOSURE-001`
+- Objective: `Repair the remote CI dependency order so existing V2/V3 D-087 reports are generated before the unchanged cross-platform verifier consumes them.`
 - Current status: `VALIDATING`
-- Acceptance: `Portable scientific protocol, within-platform observer parity, cross-platform causal invariants, Atlas evidence reconciliation, scoped preservation, exact-head remote CI, and Architect review.`
-- Current phase: `R6 is a valid invalidation. R6-R1 strongly supports geometry/material coupling but is not formally accepted because the prior verifier required bitwise Windows/Linux trajectory identity. Cross-platform invariant validation is active; ConservativeV2 remains frozen/selected, ConservativeV3 remains qualified/experimental/unselected, and M1/M2 remain blocked.`
-- Expected or actual touched areas: `R6-R1-R1 audit representation, execution metadata, portable verifier, scoped CI, immutable compact evidence namespace, Atlas dense evidence, documentation, and governance handoff`
-- Immediate next action: `Complete R6-R1-R1, push PR #44, obtain exact-head remote CI, and stop for Architect review.`
+- Acceptance: `Workflow order repair, unchanged scientific verifier, fresh Linux causal audit, V2/V3 D-087 8/8, preservation, exact-head remote CI, and Architect review.`
+- Current phase: `R6-R1-R1 remains not accepted. The prior remote audit completed with the expected causal classification, but CI read V2/V3 D-087 reports before generation. Only workflow dependency closure is authorized; no geometry/material repair or downstream work is authorized.`
+- Expected or actual touched areas: `.github/workflows/dc-dev-020m1r6r1.yml, .agent governance records, and compact CI/status metadata only`
+- Immediate next action: `Run local governance checks, commit the ordering-only repair, push PR #44, obtain exact-head remote CI, and stop for Architect review.`
 
 ## Temporary task-relevant facts
 

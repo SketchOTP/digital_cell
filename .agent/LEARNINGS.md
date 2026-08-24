@@ -148,6 +148,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-020-M1-R6-R1-R1 cross-platform closure validation only; no production repair or downstream authorization.
 - Supersedes learning: none
 
+## L-DCDEV020M1R6R1R1R1-001
+
+- Learning ID: L-DCDEV020M1R6R1R1R1-001
+- Date: 2026-08-23
+- Fact or lesson: Remote R6-R1-R1 CI run `32683284347` completed the fresh Linux audit and reached `M1_RUNTIME_GEOMETRY_MASS_COUPLING_CONFIRMED`, but the cross-platform verifier failed because it read `ci/v2_d087/certification/report.json` before the V2/V3 D-087 producer steps ran. This is a workflow dependency defect, not a scientific contradiction. The narrow repair is to reorder the existing producers before the unchanged verifier.
+- Evidence location: `.github/workflows/dc-dev-020m1r6r1.yml`, remote run `32683284347`, and compact evidence under `digital-protocell/experiments/generated/dcdev020m1r6r1r1/`; dense evidence remains under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r1r1\\`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6-R1-R1-R1 workflow order closure only; no scientific or production repair and no downstream authorization.
+- Supersedes learning: none
+
 ## L-DCDEV020M1R5-001
 
 - Learning ID: L-DCDEV020M1R5-001

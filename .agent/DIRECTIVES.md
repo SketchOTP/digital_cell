@@ -766,3 +766,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260823-dcdev020m1r6r1-geometry-material-closure-audit001
 - Status at issuance: ISSUED
+
+## D-20260823-dcdev020m1r6r1r1r1-remote-verifier-order-closure001
+
+- Issued: `2026-08-23T23:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R6-R1-R1-R1-REMOTE-VERIFIER-ORDER-CLOSURE-001`
+- Objective: Repair the remote CI dependency/order defect where the cross-platform verifier consumed V2/V3 D-087 reports before those reports were generated.
+- Scope: Start exactly at `f9f69bdabc7e3f13444e96f85e1d9803478383a0`; move the existing unchanged V2/V3 D-087 producers before the existing verifier; validate workflow ordering, unchanged scientific checks, fresh Linux causal audit, D-087 8/8, preservation, compact evidence, and exact-head CI.
+- Exclusions: Audit equations, causal invariants, scientific tolerances, protocol inputs, mechanics, remesh, rebond, chemistry, transport, resource configuration, D-087 criteria, production selection, geometry/material repair, controller, recycling, salvage, M2, behavior, evolution, and DC-DEV-021.
+- Acceptance: Dependency ordering repaired; scientific verifier and thresholds unchanged; fresh Linux audit completes; V2 and V3 D-087 each pass 8/8; cross-platform verifier and remaining preservation complete; exact-head remote CI succeeds; Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260823-dcdev020m1r6r1r1-cross-platform-closure-validation001
+- Status at issuance: ISSUED

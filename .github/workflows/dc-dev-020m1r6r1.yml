@@ -78,6 +78,18 @@ jobs:
           DCDEV020M1R6R1_OUTPUT: experiments/generated/dcdev020m1r6r1r1/ci
           DCDEV020M1R6R1_DENSE_OUTPUT: experiments/generated/dcdev020m1r6r1r1/ci_dense
         run: cargo +1.89.0 run -p phase1-certifier --example dcdev020m1r6r1_geometry_material_closure_audit --release --quiet
+      - name: D-087 ConservativeV3 preservation regression
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R3_CONTRACT: ConservativeV3
+          DCDEV020R9R3_RESERVE: '0'
+        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1r6r1r1/ci/v3_d087
+      - name: D-087 ConservativeV2 preservation regression
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R3_CONTRACT: ConservativeV2
+          DCDEV020R9R3_RESERVE: '0'
+        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1r6r1r1/ci/v2_d087
       - name: Verify fresh audit artifacts and fail-closed gates
         working-directory: digital-protocell
         shell: bash
@@ -228,18 +240,6 @@ jobs:
           print('DCDEV020M1R6R1_CROSS_PLATFORM_CAUSAL_VERIFICATION_PASS')
           print(json.dumps(comparison, indent=2))
           PY
-      - name: D-087 preservation regression
-        working-directory: digital-protocell
-        env:
-          DCDEV020R9R3_CONTRACT: ConservativeV3
-          DCDEV020R9R3_RESERVE: '0'
-        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1r6r1/ci/v3_d087
-      - name: D-087 ConservativeV2 preservation
-        working-directory: digital-protocell
-        env:
-          DCDEV020R9R3_CONTRACT: ConservativeV2
-          DCDEV020R9R3_RESERVE: '0'
-        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1r6r1/ci/v2_d087
       - name: D-088 preservation regression
         working-directory: digital-protocell
         run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
