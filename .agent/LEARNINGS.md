@@ -138,6 +138,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-020-R2 observer-only allosteric requalification.
 - Supersedes learning: none
 
+## L-DCDEV020M1R6R1R1R1-002
+
+- Learning ID: L-DCDEV020M1R6R1R1R1-002
+- Date: 2026-08-24
+- Fact or lesson: Moving the unchanged V2/V3 D-087 generation steps before the R6-R1-R1 cross-platform verifier closed the missing-report dependency. Exact-head CI `32686612525` at `a3205d6c99cbc845d406043580f99577fa6a73e6` succeeded; the verifier, preservation stages, and artifact upload completed. This closes the workflow blocker only; Architect scientific acceptance remains pending.
+- Evidence location: `.github/workflows/dc-dev-020m1r6r1.yml`, remote run `32686612525`, artifact `dcdev020m1r6r1-geometry-material-closure-evidence`, digest `sha256:d7f91883db1155308d576f2c6f09d2eb2c92bf60dcd617493275ade036f7d181`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6-R1-R1-R1 remote verifier order closure only; no scientific or production repair and no downstream authorization.
+- Supersedes learning: none
+
 ## L-DCDEV020M1R6R1R1-001
 
 - Learning ID: L-DCDEV020M1R6R1R1-001

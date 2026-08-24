@@ -1294,17 +1294,17 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 
 - Outcome ID: `OUT-DCDEV020M1R6R1R1R1-REMOTE-VERIFIER-ORDER-CLOSURE-PENDING-ARCHITECT`
 - Supersedes outcome: `OUT-DCDEV020M1R6R1R1-CROSS-PLATFORM-CLOSURE-PENDING-ARCHITECT`
-- Closed: `2026-08-23T23:00:00-04:00`
+- Closed: `2026-08-24T00:00:00-04:00`
 - Acceptance: `PARTIAL`
-- Summary: Exact-head run `32683284347` completed the fresh Linux R6-R1-R1 audit with causal classification `M1_RUNTIME_GEOMETRY_MASS_COUPLING_CONFIRMED`, then failed because the cross-platform verifier read `ci/v2_d087/certification/report.json` before the V2/V3 D-087 generation steps. The authorized repair is workflow dependency ordering only.
-- Changed areas: `.github/workflows/dc-dev-020m1r6r1.yml` ordering and governance records; no audit, production, chemistry, mechanics, remesh, transport, resource, or preservation source changes.
+- Summary: The exact workflow-order repair is present at `a3205d6c99cbc845d406043580f99577fa6a73e6`. Remote CI run `32686612525` succeeded in `3m25s`; the fresh audit, D-087 producers, cross-platform verifier, remaining preservation stages, and artifact upload completed. The workflow blocker is closed, while independent Architect acceptance remains pending.
+- Changed areas: Workflow dependency ordering and governance/status records only; no audit, verifier, production, chemistry, mechanics, remesh, transport, resource, or preservation source changes.
 - Validation:
-  - Original missing-report blocker reproduced from remote logs - CONFIRMED
-  - D-087 producer-before-verifier ordering repair - APPLIED LOCALLY
+  - Original missing-report blocker - REPAIRED
   - Scientific verifier logic and thresholds changed - NO
-  - Local YAML parse and diff check - PASSED
-  - Exact-head remote CI - PENDING
+  - Exact-head remote CI `32686612525` - PASSED
+  - Artifact `dcdev020m1r6r1-geometry-material-closure-evidence` - PRESENT
+  - Artifact digest `sha256:d7f91883db1155308d576f2c6f09d2eb2c92bf60dcd617493275ade036f7d181` - VERIFIED BY GITHUB
   - Architect review - PENDING
-- Remaining risks: The final cross-platform result, D-087 counts, and preservation suite remain unverified until the repaired exact-head workflow completes. No geometry/material repair is authorized.
-- Blockers: exact-head remote CI and independent Architect review.
+- Remaining risks: Remote completion establishes workflow and preservation execution, not Architect scientific acceptance or authorization for geometry/material repair. M1 remains not established and M2/DC-DEV-021 remain unauthorized.
+- Blockers: independent Architect review.
 - Follow-up directive: none

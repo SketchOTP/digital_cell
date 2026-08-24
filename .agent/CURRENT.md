@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-23T22:00:00-04:00`
+- Last updated: `2026-08-24T00:00:00-04:00`
 
 ## Active state after adoption
 
@@ -14,7 +14,7 @@
 - Acceptance: `Workflow order repair, unchanged scientific verifier, fresh Linux causal audit, V2/V3 D-087 8/8, preservation, exact-head remote CI, and Architect review.`
 - Current phase: `R6-R1-R1 remains not accepted. The prior remote audit completed with the expected causal classification, but CI read V2/V3 D-087 reports before generation. Only workflow dependency closure is authorized; no geometry/material repair or downstream work is authorized.`
 - Expected or actual touched areas: `.github/workflows/dc-dev-020m1r6r1.yml, .agent governance records, and compact CI/status metadata only`
-- Immediate next action: `Run local governance checks, commit the ordering-only repair, push PR #44, obtain exact-head remote CI, and stop for Architect review.`
+- Immediate next action: `Stop for Architect review; no geometry/material repair or downstream execution is authorized.`
 
 ## Temporary task-relevant facts
 
@@ -36,11 +36,12 @@
 - R5 is preregistered with `FINITE_SPATIAL_BACKING_RESERVOIR_V1`, fixed boundary concentration `2.063914918930895`, finite N/F inventory `243.14924801053778` each, and zero replenishment. Current authoritative evidence is archived under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\` with manifests and hashes; the retired RPI5 endpoint is historical only, and compact CI-required artifacts remain in Git.
 - R6 uses the exact R5 depleted entry but executes the packaged full-runtime order `transport -> reactions -> mechanics -> remesh -> try_local_rebond`; the candidate remains ConservativeV3/reserve OFF and is not selected.
 - R6 is architect-accepted as a valid invalidation at `adea13fafa1f2a85e521a44b5d77249820d107bd` with exact-head CI `32673647585`; full-runtime closure failed, and R6-R1 is authorized only to attribute that failure without repair.
+- R6-R1-R1-R1 workflow closure is pushed at `a3205d6c99cbc845d406043580f99577fa6a73e6`; exact-head CI `32686612525` passed after moving unchanged V2/V3 D-087 producers before the verifier. Artifact digest: `sha256:d7f91883db1155308d576f2c6f09d2eb2c92bf60dcd617493275ade036f7d181`. Architect acceptance remains pending.
 
 ## Last validation after adoption
 
-- Command or check: `R6-R1 local governance, Rust formatting/check, plain/instrumented trajectory parity, stage-ledger attribution, isolation fixtures, dense shared-drive write`
-- Result: `PASSED`
+- Command or check: `R6-R1-R1-R1 workflow-order repair, governance, YAML parse, exact-head remote CI`
+- Result: `PASSED; remote CI run 32686612525 succeeded`
 
 ## Risks
 
