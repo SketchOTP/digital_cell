@@ -168,6 +168,8 @@ jobs:
                   return {'valid': True, **verify_platform(label, payload)}
               except VerificationFailure as failure:
                   return {'valid': False, 'failure': str(failure)}
+              except Exception as failure:
+                  return {'valid': False, 'failure': f'{type(failure).__name__}: {failure}'}
 
           local_platform = safe_verify_platform('local', local_results)
           linux_platform = safe_verify_platform('linux', results)
