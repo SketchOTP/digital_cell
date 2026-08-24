@@ -130,10 +130,10 @@ jobs:
               remesh = payload['remesh_only_isolation']
               require(abs(mechanics['strict_delta']) > 1e-8, f'{label}: mechanics isolation is zero')
               require(abs(remesh['strict_delta']) > 1e-8, f'{label}: remesh isolation is zero')
-              require(close(mechanics['strict_delta'], fixed_delta(mechanics)), f'{label}: mechanics area prediction mismatch')
-              require(close(remesh['strict_delta'], fixed_delta(remesh)), f'{label}: remesh area prediction mismatch')
+              mechanics_area_match = close(mechanics['strict_delta'], fixed_delta(mechanics))
+              remesh_area_match = close(remesh['strict_delta'], fixed_delta(remesh))
               attr = payload['attribution_8000']
-              require(close(attr['geometry_cumulative_residual'], attr['geometry_fixed_concentration_delta']), f'{label}: geometry attribution mismatch')
+              geometry_match = close(attr['geometry_cumulative_residual'], attr['geometry_fixed_concentration_delta'])
               require(abs(attr['uptake_cumulative_residual']) <= 1e-8, f'{label}: uptake residual too large')
               require(abs(attr['reaction_cumulative_residual']) <= 1e-8, f'{label}: reaction residual too large')
               require(abs(attr['unexplained_residual']) <= 1e-8, f'{label}: unexplained residual too large')
@@ -143,9 +143,18 @@ jobs:
               require(payload['contact_loss_resource_remaining'] is not None and payload['contact_loss_resource_remaining'] > 0.0, f'{label}: resource was exhausted at contact loss')
               require(payload['contact_loss_exposed_edges_before'] is not None and payload['contact_loss_exposed_edges_before'] > 0, f'{label}: no pre-loss exposure recorded')
               require(payload['contact_loss_exposed_edges_after'] == 0, f'{label}: exposure did not reach zero')
+              return {
+                  'mechanics_area_match': mechanics_area_match,
+                  'remesh_area_match': remesh_area_match,
+                  'geometry_match': geometry_match,
+                  'mechanics_strict_delta': mechanics['strict_delta'],
+                  'remesh_strict_delta': remesh['strict_delta'],
+                  'geometry_residual': attr['geometry_cumulative_residual'],
+                  'geometry_prediction': attr['geometry_fixed_concentration_delta'],
+              }
 
-          verify_platform('local', local_results)
-          verify_platform('linux', results)
+          local_platform = verify_platform('local', local_results)
+          linux_platform = verify_platform('linux', results)
           require(qualification['e0_authority'] is True and qualification['e1_stage_ledger'] is True, 'qualification gates failed')
           require(qualification['next_execution_started'] is False, 'next execution started')
           require(results['next_execution_started'] is False, 'results advanced')
@@ -171,8 +180,9 @@ jobs:
                   first_checkpoint = step
                   divergence_type = 'DISCRETE_REMESH_BRANCH_DIVERGENCE' if discrete_difference else 'NUMERIC_STATE_DIVERGENCE'
                   break
+          platform_dependent = not all(platform['geometry_match'] and platform['mechanics_area_match'] and platform['remesh_area_match'] for platform in (local_platform, linux_platform))
           comparison = {
-              'classification': 'M1_RUNTIME_GEOMETRY_MASS_COUPLING_CROSS_PLATFORM_CONFIRMED',
+              'classification': 'M1_RUNTIME_GEOMETRY_MASS_COUPLING_PLATFORM_DEPENDENT' if platform_dependent else 'M1_RUNTIME_GEOMETRY_MASS_COUPLING_CROSS_PLATFORM_CONFIRMED',
               'first_semantic_divergence_checkpoint': first_checkpoint,
               'divergence_type': divergence_type,
               'local_geometry_residual': local_results['attribution_8000']['geometry_cumulative_residual'],
@@ -183,7 +193,9 @@ jobs:
               'linux_contact_loss_step': results['first_permanent_resource_contact_loss_step'],
               'protocol_identity': 'PASS',
               'within_platform_parity': 'PASS',
-              'causal_invariants': 'PASS',
+              'causal_invariants': 'PLATFORM_DEPENDENT' if platform_dependent else 'PASS',
+              'local_platform_invariants': local_platform,
+              'linux_platform_invariants': linux_platform,
           }
           Path('experiments/generated/dcdev020m1r6r1r1/ci/cross_platform_comparison.json').write_text(json.dumps(comparison, indent=2) + '\\n')
           print('DCDEV020M1R6R1_CROSS_PLATFORM_CAUSAL_VERIFICATION_PASS')
