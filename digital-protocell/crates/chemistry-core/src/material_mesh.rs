@@ -14,6 +14,12 @@ pub const EQUATION_VERSION_MATERIAL_MESH_CONSERVATIVE: &str =
     "material_mesh_stoichiometry_v2_conservative";
 pub const FIELD_SCHEMA_MATERIAL_MESH_CONSERVATIVE: &str = "mesh_vertices_edges_material_v2";
 pub const MATERIAL_MESH_CONSERVATIVE_SCHEMA_VERSION: u32 = 2;
+/// Experimental post-M1 contract: preserve interior concentration-based
+/// material when geometry changes while retaining the ConservativeV2
+/// chemistry/death semantics.
+pub const FIELD_SCHEMA_MATERIAL_MESH_GEOMETRY_CONSERVATIVE: &str =
+    "mesh_vertices_edges_material_geometry_v3";
+pub const MATERIAL_MESH_GEOMETRY_CONSERVATIVE_SCHEMA_VERSION: u32 = 3;
 
 /// Physical material/death contract, orthogonal to the biological equation
 /// lineage stamped in `equation_id`.
@@ -21,6 +27,7 @@ pub const MATERIAL_MESH_CONSERVATIVE_SCHEMA_VERSION: u32 = 2;
 pub enum MeshContractVersion {
     HistoricalV1,
     ConservativeV2,
+    GeometryConservativeV3,
 }
 
 impl Default for MeshContractVersion {
@@ -114,7 +121,7 @@ pub const DEFAULT_L_MAX: f64 = 3.5;
 pub const DEFAULT_L_MIN: f64 = 0.6;
 pub const DEFAULT_REBOND_DIST: f64 = 1.2;
 
-#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub struct MeshEdge {
     /// Structural material mass on this edge.
     pub m: f64,
@@ -140,7 +147,7 @@ impl Default for MeshEdge {
     }
 }
 
-#[derive(Debug, Clone, Copy, Default, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize)]
 pub struct LumpedChem {
     /// Total catalyst C = C_H + C_B (scalar path uses only this field).
     pub c: f64,
@@ -324,7 +331,10 @@ impl MaterialMesh {
     }
 
     pub fn uses_observer_only_death(&self) -> bool {
-        self.contract_version == MeshContractVersion::ConservativeV2
+        matches!(
+            self.contract_version,
+            MeshContractVersion::ConservativeV2 | MeshContractVersion::GeometryConservativeV3
+        )
     }
 
     /// Production kernels use this guard. In the R9 schema, biological
@@ -370,6 +380,16 @@ impl MaterialMesh {
     pub fn stamp_conservative_schema(&mut self) {
         self.contract_version = MeshContractVersion::ConservativeV2;
         self.schema_version = MATERIAL_MESH_CONSERVATIVE_SCHEMA_VERSION;
+    }
+
+    /// Stamp the experimental geometry/material conservation contract.
+    ///
+    /// This is intentionally separate from [`Self::stamp_conservative_schema`]
+    /// so historical ConservativeV2 snapshots and their serialized identity
+    /// remain unchanged.
+    pub fn stamp_geometry_conservative_schema(&mut self) {
+        self.contract_version = MeshContractVersion::GeometryConservativeV3;
+        self.schema_version = MATERIAL_MESH_GEOMETRY_CONSERVATIVE_SCHEMA_VERSION;
     }
 
     pub fn b_max_for_edge(&self, i: usize) -> f64 {
@@ -476,4 +496,58 @@ impl MaterialMesh {
         }
         inside
     }
+}
+
+/// Preserve every area-based interior concentration amount across a geometry
+/// operation.  The material identity is `amount = concentration * area`.
+///
+/// This primitive is deliberately limited to `GeometryConservativeV3`; V1 and
+/// V2 retain their historical behavior.  Exterior concentrations, explicit
+/// edge/free-membrane amounts, templates, and D-096 expressed catalyst amounts
+/// are not touched here.
+pub fn conserve_interior_amount_across_area_change(
+    mesh: &mut MaterialMesh,
+    area_before: f64,
+    area_after: f64,
+) -> bool {
+    if mesh.contract_version != MeshContractVersion::GeometryConservativeV3
+        || !area_before.is_finite()
+        || !area_after.is_finite()
+        || area_before <= 0.0
+        || area_after <= 0.0
+        || (mesh.area() - area_after).abs() > 1e-12 * (1.0 + area_after.abs())
+    {
+        return false;
+    }
+    if area_before == area_after {
+        return true;
+    }
+    let scale = area_before / area_after;
+    if !scale.is_finite() {
+        return false;
+    }
+    let chem = &mut mesh.interior;
+    for value in [
+        &mut chem.c,
+        &mut chem.a,
+        &mut chem.n,
+        &mut chem.f,
+        &mut chem.w,
+        &mut chem.tracer_c,
+        &mut chem.c_h,
+        &mut chem.c_b,
+        &mut chem.r,
+        &mut chem.u_h,
+        &mut chem.u_b,
+        &mut chem.k_h,
+        &mut chem.k_b,
+        &mut chem.q_k,
+        &mut chem.q_e,
+        &mut chem.k_a,
+        &mut chem.k_r,
+        &mut chem.k_node_b,
+    ] {
+        *value *= scale;
+    }
+    true
 }

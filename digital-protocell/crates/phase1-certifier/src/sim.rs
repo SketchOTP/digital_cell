@@ -182,7 +182,11 @@ pub fn seed_mesh(radius: f64, seed: u64) -> MaterialMesh {
         stamp_reserve_equation(&mut mesh);
     }
     if conservative_v2_enabled() {
-        mesh.stamp_conservative_schema();
+        if geometry_conservative_enabled() {
+            mesh.stamp_geometry_conservative_schema();
+        } else {
+            mesh.stamp_conservative_schema();
+        }
     }
     mesh
 }
@@ -195,6 +199,18 @@ pub fn seed_mesh(radius: f64, seed: u64) -> MaterialMesh {
 /// The ordinary M0 production default is ConservativeV2.
 pub fn conservative_v2_enabled() -> bool {
     !matches!(selected_mesh_schema(), MeshChemistrySchema::HistoricalV1)
+}
+
+/// Opt-in experimental material contract for R6-R2.  The chemistry schema
+/// selector remains independent so ConservativeV2 and its historical evidence
+/// are unchanged unless this explicit diagnostic switch is present.
+pub fn geometry_conservative_enabled() -> bool {
+    matches!(
+        std::env::var("DCDEV020M1R6R2_GEOMETRY_CONTRACT")
+            .ok()
+            .as_deref(),
+        Some("1") | Some("on") | Some("ON") | Some("true")
+    ) && conservative_v2_enabled()
 }
 
 pub fn selected_mesh_schema() -> MeshChemistrySchema {
@@ -380,6 +396,9 @@ pub struct TurnoverAudit {
     pub structural: ReplacementReport,
     pub membrane: ReplacementReport,
     pub catalyst: ReplacementReport,
+    pub catalyst_label_amount_initial: f64,
+    pub catalyst_label_amount_final: f64,
+    pub catalyst_legacy_concentration_ratio: f64,
     pub d086_tracer_interpretation: Vec<String>,
     pub dual_requirement_pass: bool,
     pub d086_pool_m: f64,
@@ -388,12 +407,19 @@ pub struct TurnoverAudit {
     pub d086_soft_pass: bool,
 }
 
+/// Convert the catalyst pulse tracer concentration to the labeled material
+/// amount required by the D-087 replacement metric.
+pub fn catalyst_label_amount(tracer_concentration: f64, area: f64) -> f64 {
+    tracer_concentration * area
+}
+
 pub fn audit_turnover(steps: usize) -> TurnoverAudit {
     let mut mesh = seed_mesh(14.0, 2);
     pulse_tracers(&mut mesh, 1.0);
     let label_m0: f64 = mesh.edges.iter().map(|e| e.tracer_m).sum();
     let label_b0: f64 = mesh.edges.iter().map(|e| e.tracer_b).sum();
     let label_c0 = mesh.interior.tracer_c;
+    let catalyst_label_amount_initial = catalyst_label_amount(label_c0, mesh.area());
     let mut series_c = vec![mesh.interior.c];
     let mut series_a = vec![mesh.interior.a];
     let mut mass_m = Vec::new();
@@ -425,6 +451,12 @@ pub fn audit_turnover(steps: usize) -> TurnoverAudit {
     let label_m_t: f64 = mesh.edges.iter().map(|e| e.tracer_m).sum();
     let label_b_t: f64 = mesh.edges.iter().map(|e| e.tracer_b).sum();
     let label_c_t = mesh.interior.tracer_c;
+    let catalyst_label_amount_final = catalyst_label_amount(label_c_t, mesh.area());
+    let catalyst_legacy_concentration_ratio = if label_c0 <= 1e-15 {
+        0.0
+    } else {
+        (label_c_t / label_c0).clamp(0.0, 1.0)
+    };
     // Gross replacement: newly incorporated material (production / bind / c_prod).
     let structural = replacement_report(
         "m",
@@ -446,9 +478,9 @@ pub fn audit_turnover(steps: usize) -> TurnoverAudit {
         "C",
         mean(&mass_c),
         acc.c_produced,
-        label_c0,
-        label_c_t,
-        mesh.interior.c.max(1e-15),
+        catalyst_label_amount_initial,
+        catalyst_label_amount_final,
+        (mesh.interior.c * mesh.area()).max(1e-15),
     );
     let dual = structural.r_x_ok
         && structural.f_label_ok
@@ -465,6 +497,9 @@ pub fn audit_turnover(steps: usize) -> TurnoverAudit {
         structural,
         membrane,
         catalyst,
+        catalyst_label_amount_initial,
+        catalyst_label_amount_final,
+        catalyst_legacy_concentration_ratio,
         d086_tracer_interpretation: vec![
             crate::metrics::interpret_d086_tracer("m", 0.35),
             crate::metrics::interpret_d086_tracer("b", 0.00),

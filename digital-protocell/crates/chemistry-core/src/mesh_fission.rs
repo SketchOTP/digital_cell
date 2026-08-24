@@ -3,9 +3,9 @@
 //! No `divide()` command. Topology change is local bond events; component
 //! discovery is observer bookkeeping only.
 
+use crate::autocatalytic_partition::partition_autocatalytic_edges;
 use crate::material_mesh::{MaterialMesh, MeshEdge};
 use crate::mesh_topology::{extract_loop, find_local_pinch, TopologyLedger, TopologyParams};
-use crate::autocatalytic_partition::partition_autocatalytic_edges;
 use crate::template_partition::partition_templates;
 use serde::{Deserialize, Serialize};
 

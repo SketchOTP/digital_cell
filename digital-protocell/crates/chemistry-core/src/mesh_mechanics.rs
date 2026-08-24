@@ -2,7 +2,9 @@
 //!
 //! No target radius, target area, or global shape energy.
 
-use crate::material_mesh::{MaterialMesh, MeshEdge};
+use crate::material_mesh::{
+    conserve_interior_amount_across_area_change, MaterialMesh, MeshContractVersion, MeshEdge,
+};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
@@ -179,11 +181,17 @@ fn mechanics_step_from_forces(
     let m_before = mesh.total_structural_mass();
     let b_before = mesh.total_bound_membrane();
     let l_before = mesh.free_l;
+    let area_before =
+        (mesh.contract_version == MeshContractVersion::GeometryConservativeV3).then(|| mesh.area());
     for (i, fi) in forces.iter().enumerate() {
         mesh.vertices[i][0] += dt * inv_g * fi[0];
         mesh.vertices[i][1] += dt * inv_g * fi[1];
     }
-    let ok = (mesh.total_structural_mass() - m_before).abs() < 1e-12
+    let geometry_ok = area_before.map_or(true, |before| {
+        conserve_interior_amount_across_area_change(mesh, before, mesh.area())
+    });
+    let ok = geometry_ok
+        && (mesh.total_structural_mass() - m_before).abs() < 1e-12
         && (mesh.total_bound_membrane() - b_before).abs() < 1e-12
         && (mesh.free_l - l_before).abs() < 1e-12;
     ok
@@ -422,8 +430,13 @@ pub fn remesh_merge(mesh: &mut MaterialMesh) -> usize {
 pub fn remesh(mesh: &mut MaterialMesh) -> (usize, usize) {
     let m0 = mesh.total_structural_mass();
     let b0 = mesh.total_bound_membrane();
+    let area_before =
+        (mesh.contract_version == MeshContractVersion::GeometryConservativeV3).then(|| mesh.area());
     let s = remesh_split(mesh);
     let m = remesh_merge(mesh);
+    if let Some(before) = area_before {
+        let _ = conserve_interior_amount_across_area_change(mesh, before, mesh.area());
+    }
     let _ = (
         (mesh.total_structural_mass() - m0).abs() < 1e-9,
         (mesh.total_bound_membrane() - b0).abs() < 1e-9,
