@@ -42,8 +42,8 @@
 
 ## Last validation after adoption
 
-- Command or check: `R6-R2-R4 governance, scoped workflow, local qualifier, exact-head push and PR remote CI, Atlas compact evidence`
-- Result: `PASSED at 26297def20ea9a53e573e6e720b6c0630e2aa1a4; push run 32759841130; PR run 32759846211; artifact digest sha256:20474f84fc168df5af6dacac7bf2a4a044925ab285d648ea74dbd64f8d32fbb0`
+- Command or check: `R6-R2-R4 governance, scoped workflow, local qualifier, exact-head push and PR remote CI, Atlas compact evidence; head 26297def20ea9a53e573e6e720b6c0630e2aa1a4; push run 32759841130; PR run 32759846211; artifact digest sha256:20474f84fc168df5af6dacac7bf2a4a044925ab285d648ea74dbd64f8d32fbb0`
+- Result: `PASSED`
 
 ## Risks
 

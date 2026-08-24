@@ -1414,26 +1414,10 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Actual D-087 control 8/8 and candidate 7/8 with sole historical Gate-2 failure - PASSED
   - 15-row decomposition, causal starvation gate, zero post-switch N delivery, conservation, and tracer preservation - PASSED
   - Compact Atlas evidence at `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r4\\compact` - PASSED
-  - Exact-head remote CI - NOT RUN
-  - Architect review - NOT RUN
+  - Exact-head push CI `32759841130` at `26297def20ea9a53e573e6e720b6c0630e2aa1a4` - PASSED
+  - Exact-head pull-request CI `32759846211` - PASSED
+  - Remote artifact `dcdev020m1r6r2r4-gc-preservation-evidence`, digest `sha256:20474f84fc168df5af6dacac7bf2a4a044925ab285d648ea74dbd64f8d32fbb0` - VERIFIED
+  - Architect review - PENDING
 - Remaining risks: This qualifies only the experimental GC conservation candidate. It does not close M1, select GC/V3 for production, establish sustained homeostasis, authorize reserve/recycling/salvage, M2, or DC-DEV-021.
-- Blockers: Exact-head remote CI and independent Architect review.
-- Follow-up directive: none
-
-## D-20260824-dcdev020m1r6r2r4-gc-preservation-qualification001-remote-closure - PARTIAL
-
-- Outcome ID: `OUT-DCDEV020M1R6R2R4-GC-PRESERVATION-QUALIFICATION-REMOTE-CLOSURE-PENDING-ARCHITECT`
-- Supersedes outcome: `OUT-DCDEV020M1R6R2R4-GC-PRESERVATION-QUALIFICATION-PENDING-ARCHITECT`
-- Closed: `2026-08-24T14:06:26-04:00`
-- Acceptance: `PARTIAL`
-- Summary: The bounded workflow correction admitted only the six pre-existing GeometryConservativeV3 candidate/tracer files explicitly authorized by the directive. Exact-head push CI `32759841130` and matching PR CI `32759846211` both passed at `26297def20ea9a53e573e6e720b6c0630e2aa1a4`. The compact artifact `dcdev020m1r6r2r4-gc-preservation-evidence` was produced with remote digest `sha256:20474f84fc168df5af6dacac7bf2a4a044925ab285d648ea74dbd64f8d32fbb0`. The scientific classification remains `M1_GC_CONSERVATION_CANDIDATE_QUALIFIED`.
-- Changed areas: One scoped CI allowlist correction and append-only governance closure; no scientific source, candidate behavior, assay, thresholds, or production selection changes in this closure commit.
-- Validation:
-  - Exact-head push CI - PASSED (`32759841130`)
-  - Exact-head pull-request CI - PASSED (`32759846211`)
-  - Remote compact artifact - PRODUCED and digest verified on GitHub
-  - Canonical Atlas compact evidence - PRESENT
-  - Unrelated dirty work - PRESERVED and not committed in the closure commit
-- Remaining risks: This qualifies only the experimental GC conservation candidate. It does not close M1, select GC/V3 for production, establish sustained homeostasis, authorize reserve/recycling/salvage, M2, or DC-DEV-021.
-- Blockers: Independent Architect review; PR #44 remains open, draft, unmerged, and must not be merged.
+- Blockers: Independent Architect review.
 - Follow-up directive: none
