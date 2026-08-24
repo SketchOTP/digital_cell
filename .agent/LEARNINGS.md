@@ -575,3 +575,53 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-M1-R6-R1 observer-only closure attribution; no repair, production selection, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: none
+
+## L-DCDEV020M1R6R2-001
+
+- Learning ID: L-DCDEV020M1R6R2-001
+- Date: 2026-08-24
+- Fact or lesson: The versioned GeometryConservativeV3 contract removes the measured mechanics-only and remesh-only material losses and closes the integrated 8,000-step ledger, but unchanged actual D-087 preservation regresses to `6/8` under the new contract while unchanged ConservativeV3 under ConservativeV2 remains `8/8`. This is a preservation blocker and must not be addressed by tuning criteria, initialization, or biology.
+- Evidence location: `digital-protocell/crates/chemistry-core/src/material_mesh.rs`, `digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs`, `digital-protocell/crates/chemistry-core/tests/d098_geometry_material_conservation.rs`, `digital-protocell/examples/dcdev020m1r6r2_geometry_material_conservation.rs`, `digital-protocell/experiments/generated/dcdev020m1r6r2/`, and shared-drive `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2\\`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6-R2 geometry/material conservation repair only; no production selection, full M1 recertification, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: none
+
+## L-DCDEV020M1R6R2R1-001
+
+- Learning ID: L-DCDEV020M1R6R2R1-001
+- Date: 2026-08-24
+- Fact or lesson: The GeometryConservativeV3 R6-R2 preservation regression is mixed. It preserves material amounts and closes the geometry ledger, but actual D-087 Gate 1 first fails on the existing catalyst concentration `f_label`, while an amount-aware tracer shadow passes. Gate 2 basin rows and damage/replay/rupture/no-respawn predicates pass, but the unchanged starvation predicate fails because candidate A remains `0.10147286122118783` after the starvation continuation. The matched candidate/control chronology diverges at step `1` after geometry changes, while mechanics/remesh-disabled chemistry shadows are identical to tolerance. This is diagnostic evidence, not authorization to change gates or biology.
+- Evidence location: `digital-protocell/examples/dcdev020m1r6r2r1_d087_semantics_audit.rs`, and canonical Atlas compact evidence under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r1\\compact`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6-R2-R1 observer-only D-087 semantics regression audit; no conservation repair, production selection, D-087 criteria, parameter tuning, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R6R2-001
+
+## L-DCDEV020M1R6R2R2-001
+
+- Learning ID: L-DCDEV020M1R6R2R2-001
+- Date: 2026-08-24
+- Fact or lesson: D-087's catalyst `f_label` caller was using tracer concentration while `replacement_report()` defines the quantity as labeled material. Replacing only the catalyst caller inputs with `tracer_c × area` preserves the existing thresholds and trajectories, changes the candidate Gate 1 catalyst result from legacy `0.39221229068962093` to `0.3277186407367453` (PASS), preserves the ConservativeV3 control at `8/8`, and leaves the GeometryConservativeV3 candidate at `7/8` because the independent Gate 2 starvation predicate still fails at final A `0.10147286122118783`.
+- Evidence location: `digital-protocell/crates/phase1-certifier/src/sim.rs`, `digital-protocell/crates/phase1-certifier/tests/metrics_semantics.rs`, and canonical Atlas compact evidence under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r2\\compact`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6-R2-R2 D-087 catalyst tracer semantics correction only; no starvation investigation, production selection, D-087 criterion change, parameter tuning, biology repair, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R6R2R1-001
+
+## L-DCDEV020M1R6R2R3-001
+
+- Learning ID: L-DCDEV020M1R6R2R3-001
+- Date: 2026-08-24
+- Fact or lesson: Under the unchanged GeometryConservativeV3 candidate, nitrogen withdrawal leaves the historical D-087 A concentration above `0.05` at relative step `6000` (`0.10147286122118783`) while A amount and organized material decline. The starvation-entry area is `605.115299165549`, the candidate area at 6000 is `64.99938747021656` (`0.10741653294810162` ratio), and the geometry-frozen shadow reaches A concentration `0.0119095371850178`. Post-switch N delivery is zero. Existing observer viability and `activated_catalyst_collapse` occur later at relative step `10383`; no topology rupture or runtime invalidity occurs through `150000` steps. The bounded classification is `M1_GC_STARVATION_SURROGATE_STALE_CAUSAL_FAILURE_PRESERVED`, pending Architect acceptance; D-087 itself remains unchanged.
+- Evidence location: `digital-protocell/examples/dcdev020m1r6r2r3_starvation_semantics_audit.rs`, `digital-protocell/crates/phase1-certifier/Cargo.toml`, and canonical Atlas compact evidence under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r3\\compact`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6-R2-R3 observer-only starvation-semantics audit; no D-087 criterion, chemistry, mechanics, transport, resource, conservation, production, reserve, controller, behavior, evolution, recycling, salvage, M2, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R6R2R2-001
+
+## L-DCDEV020M1R6R2R4-001
+
+- Learning ID: L-DCDEV020M1R6R2R4-001
+- Date: 2026-08-24
+- Fact or lesson: The GeometryConservativeV3 preservation qualifier separates the unchanged historical D-087 Gate-2 surrogate from causal nitrogen starvation. The candidate remains `7/8` only because the historical Gate 2 fails; after the preregistered switch, N delivery is exactly zero, no hidden N source is present, observer viability fails at `10383`, and organized material declines through the authorized `150000`-step bound. This is an experimental conservation qualification, not a production certification or M1 closure.
+- Evidence location: `digital-protocell/examples/dcdev020m1r6r2r4_gc_preservation_qualification.rs`, `digital-protocell/experiments/generated/dcdev020m1r6r2r4/`, and canonical Atlas compact evidence under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r4\\compact`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6-R2-R4 GC preservation qualification only; no D-087 criterion, chemistry, mechanics, transport, resource, production, reserve, controller, behavior, evolution, recycling, salvage, M2, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R6R2R3-001

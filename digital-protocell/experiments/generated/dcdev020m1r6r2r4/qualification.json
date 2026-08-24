@@ -1,0 +1,12 @@
+{
+  "architect_acceptance": "PENDING",
+  "classification": "M1_GC_CONSERVATION_CANDIDATE_QUALIFIED",
+  "directive": "DC-DEV-020-M1-R6-R2-R4-GC-PRESERVATION-QUALIFICATION-001",
+  "e0_dirty_lineage": true,
+  "e1_historical_v2_d087": true,
+  "e2_candidate_gate2_decomposition": true,
+  "e3_gc_causal_starvation": true,
+  "e4_conservation_and_tracer": true,
+  "e5_remote_ci": "REQUIRED",
+  "next_execution_started": false
+}

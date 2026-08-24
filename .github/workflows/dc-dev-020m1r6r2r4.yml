@@ -1,0 +1,165 @@
+name: DC-DEV-020-M1-R6-R2-R4 GC preservation qualification
+
+on:
+  push:
+    branches:
+      - strategy/dc-dev-020r9-mesh-contract-requalification
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+
+permissions:
+  contents: read
+
+jobs:
+  gc-preservation-qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Check out exact head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.89.0
+          components: rustfmt
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Governance validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: |
+          rustfmt +1.89.0 --edition 2021 --check \
+            crates/phase1-certifier/src/lib.rs \
+            crates/phase1-certifier/src/gc_preservation.rs \
+            examples/dcdev020m1r6r2r4_gc_preservation_qualification.rs
+      - name: Verify bounded R6-R2-R4 diff
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import subprocess
+
+          start = 'ffa0f8756a3d152d70292b4f366087bef0680c70'
+          changed = subprocess.check_output(['git', 'diff', '--name-only', start, 'HEAD'], text=True).splitlines()
+          allowed = {
+              '.agent/CURRENT.md', '.agent/DIRECTIVES.md', '.agent/LEARNINGS.md',
+              '.agent/OUTCOMES.md', '.agent/REPO_MAP.md',
+              '.github/workflows/dc-dev-020m1r6r2r4.yml',
+              'digital-protocell/Cargo.lock',
+              'digital-protocell/crates/phase1-certifier/Cargo.toml',
+              'digital-protocell/crates/phase1-certifier/src/lib.rs',
+              'digital-protocell/crates/phase1-certifier/src/gc_preservation.rs',
+              'digital-protocell/examples/dcdev020m1r6r2r4_gc_preservation_qualification.rs',
+              'digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r2r4/gc_preservation_qualification.md',
+              'digital-protocell/experiments/generated/dcdev020m1r6r2r4/protocol.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r2r4/results.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r2r4/qualification.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r2r4/preservation.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r2r4/artifact_manifest.json',
+          }
+          assert set(changed) <= allowed, f'unexpected R6-R2-R4 paths: {sorted(set(changed) - allowed)}'
+          forbidden = [path for path in changed if any(token in path.lower() for token in (
+              'chemistry-core/src', 'mesh_reactions.rs', 'mesh_transport.rs',
+              'mesh_mechanics.rs', 'mesh_fission.rs', 'phase1-certifier/src/gates.rs',
+              'recycl', 'salvage', 'dc-dev-021',
+          ))]
+          assert not forbidden, f'forbidden R6-R2-R4 paths: {forbidden}'
+          print('DCDEV020M1R6R2R4_BOUNDED_DIFF_PASS')
+          PY
+      - name: Fresh GC preservation qualification
+        working-directory: digital-protocell
+        env:
+          DCDEV020M1R6R2R4_OUTPUT: experiments/generated/dcdev020m1r6r2r4/ci
+        run: cargo +1.89.0 run -p phase1-certifier --example dcdev020m1r6r2r4_gc_preservation_qualification --release --quiet
+      - name: Verify fresh qualification and fail-closed gates
+        working-directory: digital-protocell
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          def require(condition, message):
+              if not condition:
+                  raise SystemExit(f'R6-R2-R4 verifier failure: {message}')
+
+          base = Path('experiments/generated/dcdev020m1r6r2r4')
+          fresh = base / 'ci'
+          names = ('protocol.json', 'results.json', 'qualification.json', 'preservation.json', 'artifact_manifest.json')
+          for root in (base, fresh):
+              for name in names:
+                  require((root / name).is_file(), f'missing {root/name}')
+          protocol = json.loads((base / 'protocol.json').read_text())
+          fresh_protocol = json.loads((fresh / 'protocol.json').read_text())
+          results = json.loads((fresh / 'results.json').read_text())
+          qualification = json.loads((fresh / 'qualification.json').read_text())
+          preservation = json.loads((fresh / 'preservation.json').read_text())
+          require(fresh_protocol == protocol, 'fresh protocol differs from committed protocol')
+          require(protocol['directive'] == 'DC-DEV-020-M1-R6-R2-R4-GC-PRESERVATION-QUALIFICATION-001', 'directive mismatch')
+          require(protocol['starting_head'] == 'ffa0f8756a3d152d70292b4f366087bef0680c70', 'starting head mismatch')
+          require(protocol['historical_d087']['gate2_source_unchanged'] is True, 'historical Gate 2 was not frozen')
+          require(protocol['observer_only'] is True and protocol['next_execution_started'] is False, 'scope flags invalid')
+          control = results['historical_v2_d087']
+          candidate = results['candidate_d087']
+          control_flags = [control[f'gate{i}']['pass'] for i in range(8)]
+          candidate_flags = [candidate[f'gate{i}']['pass'] for i in range(8)]
+          require(control_flags == [True] * 8, f'historical V2 D087 changed: {control_flags}')
+          require(candidate_flags == [True, True, False, True, True, True, True, True], f'candidate D087 changed: {candidate_flags}')
+          require(results['candidate_gate2_isolated'] is True, 'candidate failure was not isolated to historical Gate 2')
+          decomp = results['basin_and_gate2_decomposition']
+          for key in ('basin_pass', 'snapshot_resume_pass', 'membrane_damage_pass', 'structural_damage_pass', 'rupture_recognition_pass', 'no_respawn_pass'):
+              require(decomp[key] is True, f'Gate 2 decomposition failed: {key}')
+          starvation = results['starvation']
+          require(starvation['causal_gate_pass'] is True, 'causal starvation gate failed')
+          require(starvation['totals']['n_delivered'] == 0.0, 'post-switch N delivery was nonzero')
+          require(starvation['first_observer_viability_loss_step'] is not None, 'observer viability never failed')
+          require(starvation['first_observer_viability_loss_step'] <= 150000, 'observer failure exceeded bound')
+          require(starvation['final_state']['organized_material'] < starvation['entry']['organized_material'], 'organized material did not deteriorate')
+          require(results['classification'] == 'M1_GC_CONSERVATION_CANDIDATE_QUALIFIED', f"unexpected classification={results['classification']}")
+          require(qualification['e5_remote_ci'] == 'REQUIRED', 'qualification metadata was not preserved')
+          require(qualification['next_execution_started'] is False, 'next execution started')
+          require(preservation['conservation']['integrated_8000']['pass'] is True, 'conservation failed')
+          require(preservation['tracer']['pass'] is True, 'tracer qualification failed')
+          print('DCDEV020M1R6R2R4_ARTIFACT_AND_FAIL_CLOSED_GATE_VERIFICATION_PASS')
+          PY
+      - name: Geometry/material conservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d098_geometry_material_conservation -- --nocapture
+      - name: GC qualifier unit tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier gc_preservation -- --nocapture
+      - name: Phase-1 metrics preservation
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --test metrics_semantics -- --nocapture
+      - name: D-088 preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+      - name: D-091 preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+      - name: Evolution-harness preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness -- --nocapture
+      - name: Upload compact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020m1r6r2r4-gc-preservation-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020m1r6r2r4/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r6r2r4/results.json
+            digital-protocell/experiments/generated/dcdev020m1r6r2r4/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r6r2r4/preservation.json
+            digital-protocell/experiments/generated/dcdev020m1r6r2r4/artifact_manifest.json
+            digital-protocell/experiments/generated/dcdev020m1r6r2r4/ci/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r6r2r4/ci/results.json
+            digital-protocell/experiments/generated/dcdev020m1r6r2r4/ci/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r6r2r4/ci/preservation.json
+            digital-protocell/experiments/generated/dcdev020m1r6r2r4/ci/artifact_manifest.json

@@ -1,0 +1,115 @@
+{
+  "candidate_d087": true,
+  "candidate_gate2_decomposition": {
+    "basin_pass": true,
+    "membrane_damage_pass": true,
+    "no_respawn_pass": true,
+    "passed_rows": 15,
+    "rows": [
+      {
+        "pass": true,
+        "radius": 10.0,
+        "seed": 1
+      },
+      {
+        "pass": true,
+        "radius": 10.0,
+        "seed": 2
+      },
+      {
+        "pass": true,
+        "radius": 10.0,
+        "seed": 3
+      },
+      {
+        "pass": true,
+        "radius": 10.0,
+        "seed": 4
+      },
+      {
+        "pass": true,
+        "radius": 10.0,
+        "seed": 5
+      },
+      {
+        "pass": true,
+        "radius": 14.0,
+        "seed": 1
+      },
+      {
+        "pass": true,
+        "radius": 14.0,
+        "seed": 2
+      },
+      {
+        "pass": true,
+        "radius": 14.0,
+        "seed": 3
+      },
+      {
+        "pass": true,
+        "radius": 14.0,
+        "seed": 4
+      },
+      {
+        "pass": true,
+        "radius": 14.0,
+        "seed": 5
+      },
+      {
+        "pass": true,
+        "radius": 18.0,
+        "seed": 1
+      },
+      {
+        "pass": true,
+        "radius": 18.0,
+        "seed": 2
+      },
+      {
+        "pass": true,
+        "radius": 18.0,
+        "seed": 3
+      },
+      {
+        "pass": true,
+        "radius": 18.0,
+        "seed": 4
+      },
+      {
+        "pass": true,
+        "radius": 18.0,
+        "seed": 5
+      }
+    ],
+    "rupture_recognition_pass": true,
+    "snapshot_resume_pass": true,
+    "structural_damage_pass": true,
+    "total_rows": 15
+  },
+  "conservation": {
+    "integrated_8000": {
+      "pass": true,
+      "residual": 4.263256414560601e-14
+    },
+    "mechanics_only": {
+      "pass": true,
+      "residual": 0.0
+    },
+    "remesh_only": {
+      "pass": true,
+      "residual": 0.0
+    },
+    "source": "accepted R6-R2 conservation evidence replay; no conservation code changed in this directive",
+    "tolerance": 1e-8
+  },
+  "historical_v2_d087": true,
+  "new_d087_failure": false,
+  "next_execution_started": false,
+  "tracer": {
+    "candidate_f_label": 0.3277186407367453,
+    "label_amount_semantics": "tracer_c * area",
+    "pass": true,
+    "v2_d087_pass": true
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "candidate": {
+    "chemistry": "ConservativeV3",
+    "material_contract": "GeometryConservativeV3",
+    "reserve": "OFF"
+  },
+  "causal_starvation": {
+    "extension_bound": 150000,
+    "no_topology_rupture_required": true,
+    "required_post_switch_n_delivery": 0.0
+  },
+  "directive": "DC-DEV-020-M1-R6-R2-R4-GC-PRESERVATION-QUALIFICATION-001",
+  "historical_d087": {
+    "gate2_source_unchanged": true,
+    "material_contract": "ConservativeV2",
+    "starvation_surrogate": "!alive || A < 0.05 at 6000 steps"
+  },
+  "m1_established": false,
+  "next_execution_started": false,
+  "no_parameter_search": true,
+  "observer_only": true,
+  "production_default_changed": false,
+  "schema": "dcdev020m1r6r2r4_gc_preservation_qualification_v1",
+  "starting_head": "ffa0f8756a3d152d70292b4f366087bef0680c70"
+}

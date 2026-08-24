@@ -780,3 +780,73 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260823-dcdev020m1r6r1r1-cross-platform-closure-validation001
 - Status at issuance: ISSUED
+
+## D-20260824-dcdev020m1r6r2-geometry-material-conservation-repair001
+
+- Issued: `2026-08-24T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R6-R2-GEOMETRY-MATERIAL-CONSERVATION-REPAIR-001`
+- Objective: Qualify one versioned experimental material contract that preserves interior concentration-based material across mechanics and remesh geometry changes while preserving ConservativeV2.
+- Scope: Start exactly at `ffa0f8756a3d152d70292b4f366087bef0680c70`; add `GeometryConservativeV3`, one common interior concentration conservation primitive, mechanics/remesh integration, field-semantics evidence, focused parity/conservation tests, the bounded R6 8,000-step replay, and shared-drive evidence. No production switch or full M1 recertification.
+- Exclusions: ConservativeV2 behavior, mechanics equations, MechParams, pressure/stretch/bend/integration laws, remesh decisions/geometry, chemistry, transport, resources, D-087 criteria, D-091, targets/controllers, recycling, salvage, M2, behavior, evolution, and DC-DEV-021.
+- Acceptance: Candidate local/Linux conservation closure, actual candidate D-087 8/8, V2 historical defect replay, candidate preservation, shared-drive evidence, exact-head CI, and Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260823-dcdev020m1r6r1r1r1-remote-verifier-order-closure001
+- Status at issuance: ISSUED
+
+## D-20260824-dcdev020m1r6r2r1-d087-semantics-regression-audit001
+
+- Issued: `2026-08-24T01:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R6-R2-R1-D087-SEMANTICS-REGRESSION-AUDIT-001`
+- Objective: Determine whether the GeometryConservativeV3 D-087 Gate 1 and Gate 2 regression is concentration dilution, amount/turnover metric semantics, geometry feedback, or broader Phase-1 physiology, without repair.
+- Scope: Start exactly at `ffa0f8756a3d152d70292b4f366087bef0680c70`; preserve dirty R6-R2 candidate; reproduce accepted V3-chemistry/V2-material control and GeometryConservativeV3 candidate; decompose Gate 1, all 15 Gate 2 basin rows, non-basin predicates, matched chronology, geometry-frozen shadow, and amount-aware shadows; compact Atlas evidence only.
+- Exclusions: GeometryConservativeV3 changes, conservation equation, ConservativeV2/V3 chemistry, mechanics, pressure, remesh, rebond, transport, reaction rates, D-087/D-086 thresholds and gates, initial conditions, target/controller/synthesis/source/sink/recycling/salvage, production selection, M2, behavior, evolution, and DC-DEV-021.
+- Acceptance: Exact 8/8 control, exact 6/8 candidate reproduction with Gates 1 and 2 false, complete decomposition, causal chronology, observer shadows, no production changes, compact governed evidence, and Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260824-dcdev020m1r6r2-geometry-material-conservation-repair001
+- Status at issuance: ISSUED
+
+## D-20260824-dcdev020m1r6r2r2-d087-catalyst-tracer-semantics-correction001
+
+- Issued: `2026-08-24T02:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R6-R2-R2-D087-CATALYST-TRACER-SEMANTICS-CORRECTION-001`
+- Objective: Correct only D-087 catalyst pulse-label accounting from tracer concentration to labeled catalyst material amount, then rerun the unchanged ConservativeV3 control and dirty GeometryConservativeV3 candidate.
+- Scope: Start at committed head `ffa0f8756a3d152d70292b4f366087bef0680c70`; preserve dirty R6-R2 candidate and R6-R2-R1 evidence; change only the phase1-certifier catalyst metric caller, required report fields/test, and governance; write fresh compact evidence to Atlas.
+- Exclusions: Starvation investigation, GeometryConservativeV3 changes, conservation law, mechanics, remesh, rebond, transport, chemistry equations, reaction parameters, resource environment, D-087/D-086 thresholds, initial conditions, production selection, controller, recycling, salvage, M2, behavior, evolution, and DC-DEV-021.
+- Acceptance: Reproduce the historical concentration/material mismatch; use `tracer_c × area` for catalyst `label0` and `label_t`; preserve trajectory and gate definitions; keep V2/ConservativeV3 control at `8/8`; make candidate Gate 1 pass while leaving Gate 2 starvation unchanged; focused validation; Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260824-dcdev020m1r6r2r1-d087-semantics-regression-audit001
+- Status at issuance: ISSUED
+
+## D-20260824-dcdev020m1r6r2r3-starvation-semantics-audit001
+
+- Issued: `2026-08-24T03:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R6-R2-R3-STARVATION-SEMANTICS-AUDIT-001`
+- Objective: Determine whether the sole remaining GeometryConservativeV3 D-087 Gate-2 failure is a stale fixed-horizon A-concentration surrogate, delayed starvation consequence, or genuine loss of causal starvation dependence.
+- Scope: Start at committed head `ffa0f8756a3d152d70292b4f366087bef0680c70`; preserve the dirty worktree; reproduce unchanged D-087 control and candidate; record concentration versus amount, geometry coupling, post-starvation flux, observer chronology, 150,000-step extension, geometry-frozen shadow, amount-matched shadow, and conditional unchanged refeed evidence to canonical Atlas compact storage.
+- Exclusions: Gate-2 changes, A threshold/horizon changes, chemistry, A decay, mechanics, pressure, remesh, rebond, transport, rupture rules, resource parameters, initial conditions, production selection, controllers, target states, recycling, salvage, M2, behavior, evolution, and DC-DEV-021.
+- Acceptance: Exact Gate-2 reproduction; independent concentration/amount and geometry evidence; zero hidden N input after the starvation switch; existing observer/topology/runtime chronology beyond 6,000 steps; no scientific changes; one directive classification; Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260824-dcdev020m1r6r2r2-d087-catalyst-tracer-semantics-correction001
+- Status at issuance: ISSUED
+
+## D-20260824-dcdev020m1r6r2r4-gc-preservation-qualification001
+
+- Issued: `2026-08-24T04:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R6-R2-R4-GC-PRESERVATION-QUALIFICATION-001`
+- Objective: Qualify the versioned GeometryConservativeV3 material contract as a causal conservation candidate under unchanged historical D-087 semantics, using a bounded nitrogen-starvation gate.
+- Scope: Start exactly at `ffa0f8756a3d152d70292b4f366087bef0680c70`; preserve the dirty worktree; add only the versioned GC qualifier, compact Atlas/Git evidence, scoped workflow, documentation, and governance wiring.
+- Exclusions: D-087 Gate 2, chemistry, mechanics, transport, remesh, rebond, thresholds, parameters, initial conditions, production selection, M1 closure, recycling, salvage, M2, behavior, evolution, and DC-DEV-021.
+- Acceptance: V2 control 8/8; candidate 7/8 with only historical Gate-2 failure; 15/15 basin and non-basin decomposition; zero post-switch N delivery; no hidden N source; organized-material decline; observer viability failure within 150000; conservation/tracer/frozen-suite preservation; compact Atlas evidence; exact-head remote CI; Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260824-dcdev020m1r6r2r3-starvation-semantics-audit001
+- Status at issuance: ISSUED

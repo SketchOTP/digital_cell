@@ -22,3 +22,19 @@ path = "../../examples/dcdev020m1r6_full_runtime.rs"
 [[example]]
 name = "dcdev020m1r6r1_geometry_material_closure_audit"
 path = "../../examples/dcdev020m1r6r1_geometry_material_closure_audit.rs"
+
+[[example]]
+name = "dcdev020m1r6r2_geometry_material_conservation"
+path = "../../examples/dcdev020m1r6r2_geometry_material_conservation.rs"
+
+[[example]]
+name = "dcdev020m1r6r2r1_d087_semantics_audit"
+path = "../../examples/dcdev020m1r6r2r1_d087_semantics_audit.rs"
+
+[[example]]
+name = "dcdev020m1r6r2r3_starvation_semantics_audit"
+path = "../../examples/dcdev020m1r6r2r3_starvation_semantics_audit.rs"
+
+[[example]]
+name = "dcdev020m1r6r2r4_gc_preservation_qualification"
+path = "../../examples/dcdev020m1r6r2r4_gc_preservation_qualification.rs"

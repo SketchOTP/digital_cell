@@ -1308,3 +1308,114 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: Remote completion establishes workflow and preservation execution, not Architect scientific acceptance or authorization for geometry/material repair. M1 remains not established and M2/DC-DEV-021 remain unauthorized.
 - Blockers: independent Architect review.
 - Follow-up directive: none
+
+## D-20260824-dcdev020m1r6r2-geometry-material-conservation-repair001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R2-GEOMETRY-MATERIAL-CONSERVATION-PRESERVATION-REGRESSION-REVIEW`
+- Supersedes outcome: `OUT-DCDEV020M1R6R1R1R1-REMOTE-VERIFIER-ORDER-CLOSURE-PENDING-ARCHITECT`
+- Closed: `2026-08-24T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: A versioned `MeshContractVersion::GeometryConservativeV3` was implemented without changing ConservativeV2. The common mechanics path and authoritative remesh path rescale the 18 area-based interior concentration fields using `M_after = C_after * A_after = C_before * A_before`; exterior chemistry, edge/free membrane amounts, templates, autocatalytic edge amounts, and D-096 expressed catalyst amounts are untouched. Local mechanics-only and remesh-only candidate strict deltas are `0`, and the integrated 8,000-step candidate closure residual is `4.263256414560601e-14`. The required actual D-087 candidate run under the new contract returns `6/8`, failing Gate 1 and Gate 2, while unchanged ConservativeV3 under ConservativeV2 returns `8/8`. Per directive, execution stopped before remote CI, push, or any tuning.
+- Changed areas: New versioned material contract, mechanics/remesh conservation primitive integration, phase1 candidate contract selector, focused chemistry-core tests, R6-R2 observer/evidence harness, field-semantics evidence, and governance only. No chemistry equations, mechanics force law, remesh decision law, transport, resource, D-087 criteria, production selection, or downstream behavior changed.
+- Validation:
+  - Focused geometry/material conservation test `d098_geometry_material_conservation` (4/4) - PASSED
+  - R6-R2 local 8,000-step candidate replay and canonical Atlas compact/dense evidence (conservation closure) - PASSED
+  - Candidate mechanics-only strict delta (`0`) - PASSED
+  - Candidate remesh-only strict delta (`0`) - PASSED
+  - Candidate integrated world↔organism closure (`4.263256414560601e-14`) - PASSED
+  - Candidate actual D-087 (6/8; Gate 1 and Gate 2) - FAILED
+  - Unchanged ConservativeV3 under ConservativeV2 actual D-087 (8/8) - PASSED
+  - Remote CI (hard stop on candidate D-087 regression) - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: The conservation law removes the measured geometry/material artifact locally, but the unchanged D-087 acceptance criteria are not preserved under the new candidate contract. No criteria relaxation, initialization change, parameter tuning, biology repair, production switch, M1 recertification, M2, recycling/salvage, or DC-DEV-021 work is authorized.
+- Blockers: Candidate D-087 preservation regression; Architect disposition required.
+- Follow-up directive: none
+
+## D-20260824-dcdev020m1r6r2r1-d087-semantics-regression-audit001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R2R1-D087-SEMANTICS-MIXED-REGRESSION-REVIEW`
+- Supersedes outcome: `OUT-DCDEV020M1R6R2-GEOMETRY-MATERIAL-CONSERVATION-PRESERVATION-REGRESSION-REVIEW`
+- Closed: `2026-08-24T01:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The exact accepted R6-R2 control, ConservativeV3 chemistry under the ConservativeV2 material contract, reproduces D-087 `8/8`. The GeometryConservativeV3 candidate reproduces `6/8`, with Gate 1 and Gate 2 false. Gate 1's C/A concentration retention, structural/membrane turnover, catalyst R_X, and all non-catalyst label booleans pass; its first failed boolean is the legacy catalyst concentration `f_label=0.39221229068962093`, while the observer-only catalyst amount shadow gives `f_label=0.3277186407367453` and passes. All 15 candidate basin rows pass both the unchanged concentration basin predicate and the amount-aware shadow. Gate 2's snapshot/resume, membrane damage, structural damage, rupture recognition, and no-respawn checks pass; only the starvation predicate fails, with candidate final A `0.10147286122118783` versus control `0.010790080759377037`. Matched control/candidate chronology first diverges at step `1`; the geometry-frozen shadow has maximum difference `0`. Classification: `M1_GC_D087_MIXED_REGRESSION`.
+- Changed areas: Observer-only diagnostic example and Cargo registration, compact Atlas evidence, and governance records. No conservation law, D-087/D-086 gate, parameter, production, or downstream behavior change.
+- Validation:
+  - Cargo check for `dcdev020m1r6r2r1_d087_semantics_audit` - PASSED
+  - Exact D-087 control reproduction `8/8` - PASSED
+  - Exact D-087 candidate reproduction `6/8`, Gates 1 and 2 false - PASSED
+  - Gate 1 decomposition, Gate 2 15-row matrix, non-basin decomposition, matched chronology, geometry-frozen shadow, and amount-aware shadow - PASSED
+  - Compact evidence written to canonical Atlas path - COMPLETE
+  - Remote CI - NOT REQUIRED BY DIRECTIVE
+  - Architect review - PENDING
+- Remaining risks: The mixed classification is diagnostic, not a repair authorization. The legacy concentration tracer semantic contribution and the starvation-predicate regression require Architect interpretation; no criteria relaxation, initialization change, kinetic change, concentration controller, compensating synthesis, or biology repair is authorized.
+- Blockers: Architect review and any separately authorized repair directive.
+- Follow-up directive: none
+
+## D-20260824-dcdev020m1r6r2r2-d087-catalyst-tracer-semantics-correction001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R2R2-D087-CATALYST-TRACER-CORRECTION-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R2R1-D087-SEMANTICS-MIXED-REGRESSION-REVIEW`
+- Closed: `2026-08-24T02:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The D-087 catalyst replacement caller now supplies labeled catalyst material amounts (`tracer_c × area`) to the existing `replacement_report()` definition. The legacy concentration ratio remains recorded as diagnostic-only metadata. The unchanged ConservativeV3 control reruns `8/8`; the unchanged dirty GeometryConservativeV3 candidate reruns `7/8`, with Gate 1 passing at corrected catalyst `f_label=0.3277186407367453` and Gate 2 still failing only starvation. Historical R6-R2-R1 artifacts were not overwritten.
+- Changed areas: `phase1-certifier/src/sim.rs`, focused `phase1-certifier` metric test, and local governance records only. No D-087 thresholds, equations, mechanics, remesh, transport, chemistry, resource, production, or downstream behavior changed.
+- Validation:
+  - Historical mismatch reproduced: legacy candidate catalyst `f_label=0.39221229068962093`; amount-aware value `0.3277186407367453` - PASSED
+  - Catalyst amount fields recorded: initial `487.82105008375765`, candidate final `159.8680514562208` - PASSED
+  - Actual ConservativeV3 control D-087: `8/8` - PASSED
+  - Actual GeometryConservativeV3 candidate D-087: `7/8`; Gate 1 PASS, Gate 2 FAIL - PASSED / expected stop
+  - Candidate starvation final A: `0.10147286122118783`, unchanged - CONFIRMED
+  - Focused phase1-certifier tests: `5/5` - PASSED
+  - Focused geometry/material conservation tests: `4/4` - PASSED
+  - Rust formatting check: PASSED
+  - Certifier binary check: PASSED
+  - Governance validation: PASSED
+  - Fresh compact evidence: `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r2\\compact` - COMPLETE
+  - Remote CI: NOT REQUIRED BY DIRECTIVE
+  - Architect review: PENDING
+- Remaining risks: The candidate remains uncertified because the unchanged Gate 2 starvation predicate fails. The correction is observer/certifier-only and does not explain or authorize starvation repair.
+- Blockers: Architect review of the corrected local evidence.
+- Follow-up directive: none
+
+## D-20260824-dcdev020m1r6r2r3-starvation-semantics-audit001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R2R3-STARVATION-SEMANTICS-AUDIT-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R2R2-D087-CATALYST-TRACER-CORRECTION-PENDING-ARCHITECT`
+- Closed: `2026-08-24T03:30:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The unchanged D-087 certifier reproduces the ConservativeV3 chemistry plus ConservativeV2 material control at `8/8` and the GeometryConservativeV3 candidate at `7/8`, with Gate 2 starvation as the only candidate failure. Replaying the exact 200-step pre-switch sequence followed by zero interior/exterior N shows candidate `A=0.10147286122118783` at the historical relative step `6000`, but labeled A amount is `6.5956738242275`, area is `64.99938747021656` versus starvation-entry area `605.115299165549`, and organized material declines from `969.86673089034` to `84.5056465029607` by relative step `150000`. Post-switch N delivery is exactly `0`; F delivery remains allowed by the nitrogen-starvation design. Candidate observer viability and the existing `activated_catalyst_collapse` reason first fail at relative step `10383`. No topology rupture or physical-runtime invalidity occurs through the authorized `150000`-step bound, and closed topology remains true under the existing predicates. The geometry-frozen shadow reaches `A=0.0119095371850178` at relative step `6000`, showing that contraction accounts for the elevated full-candidate concentration while amount declines. Classification: `M1_GC_STARVATION_SURROGATE_STALE_CAUSAL_FAILURE_PRESERVED`.
+- Changed areas: Observer-only starvation audit example, Cargo registration, compact Atlas evidence and manifest, and governance records. No chemistry, mechanics, transport, conservation law, D-087 gate, parameter, production, or downstream behavior changed.
+- Validation:
+  - Unchanged D-087 control: `8/8` - PASSED
+  - Unchanged GeometryConservativeV3 candidate: `7/8`; Gate 2 only - PASSED / expected diagnostic boundary
+  - Concentration/amount/geometry checkpoints through relative step `6000` - PASSED
+  - Post-starvation zero-N delivery audit - PASSED
+  - Observer chronology through relative step `150000` - PASSED
+  - Geometry-frozen candidate shadow - PASSED
+  - Conditional topology refeed - NOT EXERCISED because no topology rupture occurred
+  - Sanctioned Rust 1.89.0 formatting and example check - PASSED
+  - Compact Atlas evidence and manifest at `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r3\\compact` - COMPLETE
+  - Remote CI - NOT REQUIRED BY DIRECTIVE
+  - Architect review - PENDING
+- Remaining risks: The old `A<0.05` Gate-2 surrogate is not changed by this diagnostic. The candidate remains uncertified under unchanged D-087 because its historical endpoint surrogate does not fire at 6000; actual topology death and topology recovery remain unresolved for this arm because no rupture occurred within the authorized bound. No starvation repair or Gate-2 rewrite is authorized.
+- Blockers: Architect review and any separately authorized topology/death follow-up.
+- Follow-up directive: none
+
+## D-20260824-dcdev020m1r6r2r4-gc-preservation-qualification001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R2R4-GC-PRESERVATION-QUALIFICATION-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R2R3-STARVATION-SEMANTICS-AUDIT-PENDING-ARCHITECT`
+- Closed: `2026-08-24T04:30:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The unchanged actual D-087 certifier returns V2/ConservativeV3 control `8/8` and GeometryConservativeV3 candidate `7/8`, with the sole historical Gate-2 failure isolated. The versioned GC qualifier passes the 15-row basin/decomposition and non-basin controls, records tracer `f_label=0.3277186407367453`, zero post-switch N delivery, observer viability loss at relative step `10383`, organized material decline from `969.8667308903401` to `84.50564650296067`, and no topology rupture or runtime invalidity through the authorized `150000`-step extension. Classification: `M1_GC_CONSERVATION_CANDIDATE_QUALIFIED`.
+- Changed areas: Versioned phase1-certifier GC preservation qualifier, compact generated evidence, scoped workflow/docs, and governance only. Historical D-087 Gate 2 and certified biology/equations remain unchanged; unrelated dirty work is not included.
+- Validation:
+  - Local sanctioned Rust 1.89 formatting/checks - PASSED
+  - Actual D-087 control 8/8 and candidate 7/8 with sole historical Gate-2 failure - PASSED
+  - 15-row decomposition, causal starvation gate, zero post-switch N delivery, conservation, and tracer preservation - PASSED
+  - Compact Atlas evidence at `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r4\\compact` - PASSED
+  - Exact-head remote CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: This qualifies only the experimental GC conservation candidate. It does not close M1, select GC/V3 for production, establish sustained homeostasis, authorize reserve/recycling/salvage, M2, or DC-DEV-021.
+- Blockers: Exact-head remote CI and independent Architect review.
+- Follow-up directive: none

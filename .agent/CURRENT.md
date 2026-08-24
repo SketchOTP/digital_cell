@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260823-dcdev020m1r6r1r1r1-remote-verifier-order-closure001`
-- External directive ID: `DC-DEV-020-M1-R6-R1-R1-R1-REMOTE-VERIFIER-ORDER-CLOSURE-001`
-- Objective: `Repair the remote CI dependency order so existing V2/V3 D-087 reports are generated before the unchanged cross-platform verifier consumes them.`
+- Local directive ID: `D-20260824-dcdev020m1r6r2r4-gc-preservation-qualification001`
+- External directive ID: `DC-DEV-020-M1-R6-R2-R4-GC-PRESERVATION-QUALIFICATION-001`
+- Objective: `Qualify the GeometryConservativeV3 contract for causal GC preservation under the unchanged historical D-087 semantics.`
 - Current status: `VALIDATING`
-- Acceptance: `Workflow order repair, unchanged scientific verifier, fresh Linux causal audit, V2/V3 D-087 8/8, preservation, exact-head remote CI, and Architect review.`
-- Current phase: `R6-R1-R1 remains not accepted. The prior remote audit completed with the expected causal classification, but CI read V2/V3 D-087 reports before generation. Only workflow dependency closure is authorized; no geometry/material repair or downstream work is authorized.`
-- Expected or actual touched areas: `.github/workflows/dc-dev-020m1r6r1.yml, .agent governance records, and compact CI/status metadata only`
-- Immediate next action: `Stop for Architect review; no geometry/material repair or downstream execution is authorized.`
+- Acceptance: `Historical V2 8/8, candidate 7/8 with only the known historical Gate-2 failure, causal starvation gate, conservation/tracer preservation, compact Atlas evidence, exact-head remote CI, and Architect review.`
+- Current phase: `R6-R2-R4 local qualifier passes as M1_GC_CONSERVATION_CANDIDATE_QUALIFIED: zero post-switch N delivery, observer viability loss at 10,383, organized-material decline, and no hidden source. Remote exact-head CI is the remaining validation gate.`
+- Expected or actual touched areas: `versioned phase1-certifier GC qualifier, compact generated evidence, scoped workflow/docs, and append-only governance only; the dirty R6-R2 candidate is preserved`
+- Immediate next action: `Push the bounded commit, verify exact-head remote CI, then stop for Architect review; no M1 closure, production switch, recycling/salvage, M2, or DC-DEV-021 execution.`
 
 ## Temporary task-relevant facts
 
@@ -37,6 +37,8 @@
 - R6 uses the exact R5 depleted entry but executes the packaged full-runtime order `transport -> reactions -> mechanics -> remesh -> try_local_rebond`; the candidate remains ConservativeV3/reserve OFF and is not selected.
 - R6 is architect-accepted as a valid invalidation at `adea13fafa1f2a85e521a44b5d77249820d107bd` with exact-head CI `32673647585`; full-runtime closure failed, and R6-R1 is authorized only to attribute that failure without repair.
 - R6-R1-R1-R1 workflow closure is pushed at `a3205d6c99cbc845d406043580f99577fa6a73e6`; exact-head CI `32686612525` passed after moving unchanged V2/V3 D-087 producers before the verifier. Artifact digest: `sha256:d7f91883db1155308d576f2c6f09d2eb2c92bf60dcd617493275ade036f7d181`. Architect acceptance remains pending.
+- R6-R2 local conservation repair is blocked pending Architect disposition: mechanics-only and remesh-only candidate strict deltas are zero; integrated 8,000-step candidate closure is `4.263256414560601e-14`; actual candidate D-087 is `6/8` with Gate 1 and Gate 2 failing, while unchanged ConservativeV3 under ConservativeV2 remains `8/8`.
+- R6-R2-R1 local semantics audit is complete: unchanged V3 chemistry under the V2 material contract reproduces D-087 `8/8`; GeometryConservativeV3 reproduces `6/8`. Gate 1 first fails at catalyst `f_label` (`0.39221229068962093`), while amount-based catalyst `f_label` is `0.3277186407367453` and passes. All 15 candidate basin rows pass; Gate 2's non-basin starvation predicate is false (`final A=0.10147286122118783`), while replay, membrane/structural damage, rupture, and no-respawn pass. The matched chronology first diverges at step `1`; the geometry-frozen shadow has max difference `0`. Classification: `M1_GC_D087_MIXED_REGRESSION`.
 
 ## Last validation after adoption
 
@@ -67,6 +69,8 @@
 
 - R9-R5 is REPLAN / NOT ACCEPTED. Its exact remote V20 artifact showed Gate 7 false because the R9-R5 runner supplied the wrong repository root; its broad classification is retired as authority. R9-R5-R1 must restore V20 8/8 and exercise positive diagnostic R before any causal liquidity classification is accepted. No reserve repair, allocator changes, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
 - R9-R5-R1 is architect-accepted at `f1704acff5ca64e509a28c74af8cccbf76439ef2` with CI `32549697865` and classification `DCDEV020R9R5R1_RESERVE_LIQUIDITY_CONTRIBUTORY_NOT_SUFFICIENT`. R9-R6 is REPLAN / NOT ACCEPTED until R9-R6-R1 passes exact-head CI; its corrected shadow count is 4/8 and classification is `DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_INSUFFICIENT`.
+- R6-R2-R1 is local observer evidence only and remains pending Architect review. Its compact package is under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r1\\compact`; no commit, push, or remote CI was authorized or performed.
+- R6-R2-R2 local certifier correction is complete and remains pending Architect review. Catalyst pulse labels now use labeled material amount (`tracer_c × area`) for D-087 replacement semantics; ConservativeV3 control is `8/8`, GeometryConservativeV3 candidate is `7/8` with Gate 1 passing and Gate 2 starvation unchanged. Corrected compact evidence is under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r2\\compact`; no D-087 thresholds, biology, production selection, commit, push, or remote CI was authorized or performed.
 
 ## Pending decisions
 

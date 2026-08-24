@@ -167,6 +167,15 @@
 - `digital-protocell/experiments/generated/dcdev020m1r6r1r1/` — immutable R6-R1-R1 compact protocol/results/qualification/manifest namespace; the failed R6-R1 namespace remains preserved.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r1r1/` — R6-R1-R1 cross-platform closure validation protocol and pending handoff.
 - `.github/workflows/dc-dev-020m1r6r1.yml` — scoped R6-R1-R1 portable protocol, cross-platform invariant verifier, D-087, preservation, and artifact CI.
+- `digital-protocell/examples/dcdev020m1r6r2r3_starvation_semantics_audit.rs` — observer-only R6-R2-R3 starvation-semantics audit, actual D-087 replay, concentration/amount/geometry chronology, 150,000-step continuation, and geometry-frozen candidate shadow.
+- `\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r3\\compact\\` — compact R6-R2-R3 audit evidence and SHA-256 manifest; dense runtime ledgers remain governed external evidence.
+
+- `digital-protocell/crates/phase1-certifier/src/gc_preservation.rs` — versioned causal GC preservation qualification predicates and unit tests; historical D-087 thresholds remain untouched.
+- `digital-protocell/examples/dcdev020m1r6r2r4_gc_preservation_qualification.rs` — actual D-087 control/candidate replay, decomposition, bounded causal starvation extension, compact evidence writer, and classification.
+- `digital-protocell/experiments/generated/dcdev020m1r6r2r4/` — compact protocol, results, qualification, preservation, and SHA-256 manifest; dense runtime evidence remains on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r2r4/` — GC preservation qualification protocol and handoff.
+- `.github/workflows/dc-dev-020m1r6r2r4.yml` — scoped governance, qualifier, frozen-suite preservation, artifact verification, and exact-head CI.
+- `\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r4\\compact\\` — canonical compact GC preservation evidence; dense ledgers remain governed external evidence.
 
 ## External integration points
 
