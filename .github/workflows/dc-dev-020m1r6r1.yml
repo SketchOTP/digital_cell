@@ -87,10 +87,13 @@ jobs:
           import json
           from pathlib import Path
 
+          class VerificationFailure(Exception):
+              pass
+
           def require(condition, message):
               if not condition:
                   print(f'::error title=R6-R1 verifier::{message}')
-                  raise SystemExit(1)
+                  raise VerificationFailure(message)
 
           base = Path('experiments/generated/dcdev020m1r6r1r1')
           fresh = base / 'ci'
@@ -160,8 +163,14 @@ jobs:
                   'geometry_change_step': geometry,
               }
 
-          local_platform = verify_platform('local', local_results)
-          linux_platform = verify_platform('linux', results)
+          def safe_verify_platform(label, payload):
+              try:
+                  return {'valid': True, **verify_platform(label, payload)}
+              except VerificationFailure as failure:
+                  return {'valid': False, 'failure': str(failure)}
+
+          local_platform = safe_verify_platform('local', local_results)
+          linux_platform = safe_verify_platform('linux', results)
           require(qualification['e0_authority'] is True and qualification['e1_stage_ledger'] is True, 'qualification gates failed')
           require(qualification['next_execution_started'] is False, 'next execution started')
           require(results['next_execution_started'] is False, 'results advanced')
@@ -187,7 +196,8 @@ jobs:
                   first_checkpoint = step
                   divergence_type = 'DISCRETE_REMESH_BRANCH_DIVERGENCE' if discrete_difference else 'NUMERIC_STATE_DIVERGENCE'
                   break
-          platform_dependent = not all(
+          platform_invalid = not local_platform['valid'] or not linux_platform['valid']
+          platform_dependent = not platform_invalid and not all(
               platform['geometry_match']
               and platform['mechanics_area_match']
               and platform['remesh_area_match']
@@ -197,7 +207,7 @@ jobs:
               for platform in (local_platform, linux_platform)
           )
           comparison = {
-              'classification': 'M1_RUNTIME_GEOMETRY_MASS_COUPLING_PLATFORM_DEPENDENT' if platform_dependent else 'M1_RUNTIME_GEOMETRY_MASS_COUPLING_CROSS_PLATFORM_CONFIRMED',
+              'classification': 'M1_RUNTIME_CROSS_PLATFORM_VALIDATION_INVALID' if platform_invalid else ('M1_RUNTIME_GEOMETRY_MASS_COUPLING_PLATFORM_DEPENDENT' if platform_dependent else 'M1_RUNTIME_GEOMETRY_MASS_COUPLING_CROSS_PLATFORM_CONFIRMED'),
               'first_semantic_divergence_checkpoint': first_checkpoint,
               'divergence_type': divergence_type,
               'local_geometry_residual': local_results['attribution_8000']['geometry_cumulative_residual'],
@@ -208,7 +218,7 @@ jobs:
               'linux_contact_loss_step': results.get('first_permanent_resource_contact_loss_step'),
               'protocol_identity': 'PASS',
               'within_platform_parity': 'PASS',
-              'causal_invariants': 'PLATFORM_DEPENDENT' if platform_dependent else 'PASS',
+              'causal_invariants': 'INVALID' if platform_invalid else ('PLATFORM_DEPENDENT' if platform_dependent else 'PASS'),
               'local_platform_invariants': local_platform,
               'linux_platform_invariants': linux_platform,
           }
