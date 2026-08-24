@@ -22,8 +22,9 @@ use std::fs::{self, File};
 use std::io::{BufWriter, Write};
 use std::path::{Path, PathBuf};
 
-const DIRECTIVE: &str = "DC-DEV-020-M1-R6-R1-GEOMETRY-MATERIAL-CLOSURE-AUDIT-001";
-const STARTING_HEAD: &str = "adea13fafa1f2a85e521a44b5d77249820d107bd";
+const DIRECTIVE: &str = "DC-DEV-020-M1-R6-R1-R1-CROSS-PLATFORM-CLOSURE-VALIDATION-001";
+const STARTING_HEAD: &str = "1d681694e0dd5334e8267a881a2e1c4bec71324d";
+const AUDIT_ENTRY_HEAD: &str = "adea13fafa1f2a85e521a44b5d77249820d107bd";
 const R6_STARTING_HEAD: &str = "9ff1bba4a48caf582e4598b4030d746e4360a61b";
 const DT: f64 = 0.02;
 const RESOURCE_CENTER: [f64; 2] = [4.8, 0.0];
@@ -31,12 +32,14 @@ const RESOURCE_RADIUS: f64 = 1.5;
 const RESOURCE_MASS: f64 = 243.14924801053778;
 const RESOURCE_CONCENTRATION: f64 = 2.063914918930895;
 const HORIZON: usize = 8_000;
-const R6_REPRODUCTION_STEPS: [usize; 6] = [0, 1, 10, 100, 480, 1_000];
+const SEMANTIC_CHECKPOINT_STEPS: [usize; 12] = [
+    0, 1, 10, 100, 480, 1_000, 2_000, 3_466, 4_000, 6_000, 6_931, 8_000,
+];
 const R6_TRAJECTORY_HASH: &str = "be91ed02266a0078";
 const R6_FINAL_MESH_HASH: &str = "e4c4dd4ff2e443d8";
 const TOL: f64 = 1e-8;
 const SHARED_DENSE_ROOT: &str =
-    r"\\RPI5\RPI5SharedDrive\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r1\dense";
+    r"\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r1r1\dense";
 
 #[derive(Debug, Clone, Serialize)]
 struct R6State {
@@ -352,8 +355,20 @@ struct ReproductionResult {
     checkpoint_steps: Vec<usize>,
     checkpoint_hashes: BTreeMap<usize, String>,
     checkpoint_agreement: BTreeMap<usize, bool>,
+    semantic_checkpoints: BTreeMap<usize, SemanticCheckpoint>,
     observer_trajectory_parity: bool,
+    observer_final_mesh_parity: bool,
+    bitwise_matches_committed_r6: bool,
     committed_checkpoint_agreement: bool,
+}
+
+#[derive(Debug, Clone, Serialize)]
+struct SemanticCheckpoint {
+    observation: MaterialObservation,
+    r6_state: R6State,
+    cumulative_n_delivered: f64,
+    cumulative_f_delivered: f64,
+    remesh_event_count: usize,
 }
 
 #[derive(Debug, Clone, Serialize)]
@@ -363,16 +378,33 @@ struct AuditRun {
     trajectory: Vec<String>,
     checkpoint_states: BTreeMap<usize, MaterialObservation>,
     checkpoint_r6_states: BTreeMap<usize, R6State>,
+    checkpoint_cumulative_delivery: BTreeMap<usize, [f64; 2]>,
+    checkpoint_remesh_event_counts: BTreeMap<usize, usize>,
     attribution_1000: AttributionAccumulator,
     attribution_8000: AttributionAccumulator,
     first_permanent_resource_contact_loss_step: Option<usize>,
     first_geometry_change_step: Option<usize>,
+    contact_loss_resource_remaining: Option<f64>,
+    contact_loss_exposed_edges_before: Option<usize>,
+    contact_loss_exposed_edges_after: Option<usize>,
     final_mesh: MaterialMesh,
     first_remesh_fixture: Option<MaterialMesh>,
 }
 
 fn close(a: f64, b: f64) -> bool {
     (a - b).abs() <= TOL * (1.0 + a.abs().max(b.abs()))
+}
+
+fn storage_mode(path: Option<&Path>) -> &'static str {
+    let Some(path) = path else {
+        return "CI_EPHEMERAL_VALIDATION";
+    };
+    let normalized = path.to_string_lossy().to_ascii_lowercase();
+    if normalized.starts_with(r"\\atlas\atlas") {
+        "LOCAL_CANONICAL_SHARED_DRIVE"
+    } else {
+        "CI_EPHEMERAL_VALIDATION"
+    }
 }
 
 fn v3_params() -> ReactionParams {
@@ -495,14 +527,24 @@ fn run_fed_audit(
     let mut trajectory = vec![stable_json_hash(&r6_state(&mesh, 0))?];
     let mut checkpoint_states = BTreeMap::new();
     let mut checkpoint_r6_states = BTreeMap::new();
+    let mut checkpoint_cumulative_delivery = BTreeMap::new();
+    let mut checkpoint_remesh_event_counts = BTreeMap::new();
     checkpoint_states.insert(0, initial_observation.clone());
     checkpoint_r6_states.insert(0, r6_state(&mesh, 0));
+    checkpoint_cumulative_delivery.insert(0, [0.0, 0.0]);
+    checkpoint_remesh_event_counts.insert(0, 0);
     let mut attribution_1000 = AttributionAccumulator::default();
     let mut attribution_8000 = AttributionAccumulator::default();
     let mut first_remesh_fixture = None;
     let mut first_permanent_resource_contact_loss_step = None;
     let mut first_geometry_change_step = None;
-    let mut last_delivery_step = None;
+    let mut cumulative_n_delivered = 0.0;
+    let mut cumulative_f_delivered = 0.0;
+    let mut remesh_event_count = 0usize;
+    let mut contact_loss_resource_remaining = None;
+    let mut contact_loss_exposed_edges_before = None;
+    let mut contact_loss_exposed_edges_after = None;
+    let mut previous_exposed_resource_edges = initial_observation.exposed_resource_edges;
     for step in 1..=HORIZON {
         let ledger = run_audited_step(
             &mut mesh,
@@ -520,11 +562,26 @@ fn run_fed_audit(
             first_geometry_change_step.get_or_insert(step);
         }
         if ledger.n_delivered > 0.0 || ledger.f_delivered > 0.0 {
-            last_delivery_step = Some(step);
-            first_permanent_resource_contact_loss_step = None;
-        } else if last_delivery_step.is_some() {
-            first_permanent_resource_contact_loss_step.get_or_insert(step);
+            if ledger.s5_after_rebond.exposed_resource_edges > 0 {
+                first_permanent_resource_contact_loss_step = None;
+                contact_loss_resource_remaining = None;
+                contact_loss_exposed_edges_before = None;
+                contact_loss_exposed_edges_after = None;
+            }
         }
+        if previous_exposed_resource_edges > 0
+            && ledger.s5_after_rebond.exposed_resource_edges == 0
+            && first_permanent_resource_contact_loss_step.is_none()
+        {
+            first_permanent_resource_contact_loss_step = Some(step);
+            contact_loss_resource_remaining = Some(world.total_mass());
+            contact_loss_exposed_edges_before = Some(previous_exposed_resource_edges);
+            contact_loss_exposed_edges_after = Some(ledger.s5_after_rebond.exposed_resource_edges);
+        }
+        cumulative_n_delivered += ledger.n_delivered;
+        cumulative_f_delivered += ledger.f_delivered;
+        remesh_event_count += ledger.remesh_splits + ledger.remesh_merges;
+        previous_exposed_resource_edges = ledger.s5_after_rebond.exposed_resource_edges;
         attribution_8000.absorb(&ledger);
         if step <= 1_000 {
             attribution_1000.absorb(&ledger);
@@ -535,13 +592,12 @@ fn run_fed_audit(
             writer.write_all(b"\n")?;
         }
         trajectory.push(stable_json_hash(&r6_state(&mesh, step))?);
-        if [
-            1, 10, 100, 480, 1_000, 2_000, 3_466, 4_000, 6_000, 6_931, 8_000,
-        ]
-        .contains(&step)
-        {
+        if SEMANTIC_CHECKPOINT_STEPS.contains(&step) {
             checkpoint_states.insert(step, current);
             checkpoint_r6_states.insert(step, r6_state(&mesh, step));
+            checkpoint_cumulative_delivery
+                .insert(step, [cumulative_n_delivered, cumulative_f_delivered]);
+            checkpoint_remesh_event_counts.insert(step, remesh_event_count);
         }
     }
     if let Some(writer) = dense.as_mut() {
@@ -553,10 +609,15 @@ fn run_fed_audit(
         trajectory,
         checkpoint_states,
         checkpoint_r6_states,
+        checkpoint_cumulative_delivery,
+        checkpoint_remesh_event_counts,
         attribution_1000,
         attribution_8000,
         first_permanent_resource_contact_loss_step,
         first_geometry_change_step,
+        contact_loss_resource_remaining,
+        contact_loss_exposed_edges_before,
+        contact_loss_exposed_edges_after,
         final_mesh: mesh,
         first_remesh_fixture,
     })
@@ -707,7 +768,7 @@ fn reproduction(
 ) -> Result<ReproductionResult, Box<dyn std::error::Error>> {
     let mut checkpoint_hashes = BTreeMap::new();
     let mut checkpoint_agreement = BTreeMap::new();
-    for step in R6_REPRODUCTION_STEPS {
+    for step in SEMANTIC_CHECKPOINT_STEPS {
         checkpoint_hashes.insert(
             step,
             stable_json_hash(
@@ -725,10 +786,9 @@ fn reproduction(
     let observer_trajectory_hash = stable_json_hash(&run.trajectory)?;
     let observer_final_mesh_hash = stable_json_hash(&run.final_mesh)?;
     let observer_trajectory_parity = observer_trajectory_hash == plain_trajectory_hash;
-    let mut agreement = plain_trajectory_hash == R6_TRAJECTORY_HASH;
-    agreement &= plain_final_mesh_hash == R6_FINAL_MESH_HASH;
-    agreement &= observer_trajectory_parity;
-    agreement &= observer_final_mesh_hash == plain_final_mesh_hash;
+    let bitwise_matches_committed_r6 =
+        plain_trajectory_hash == R6_TRAJECTORY_HASH && plain_final_mesh_hash == R6_FINAL_MESH_HASH;
+    let observer_final_mesh_parity = observer_final_mesh_hash == plain_final_mesh_hash;
     for expected in committed_checkpoints {
         let step = expected["step"]
             .as_u64()
@@ -736,9 +796,9 @@ fn reproduction(
         if let Some(actual) = run.checkpoint_r6_states.get(&step) {
             let matches = baseline_state_matches(actual, expected);
             checkpoint_agreement.insert(step, matches);
-            agreement &= matches;
         }
     }
+    let committed_checkpoint_agreement = checkpoint_agreement.values().all(|matches| *matches);
     Ok(ReproductionResult {
         r6_starting_head: R6_STARTING_HEAD,
         plain_trajectory_hash,
@@ -746,11 +806,47 @@ fn reproduction(
         final_mesh_hash: observer_final_mesh_hash,
         expected_trajectory_hash: R6_TRAJECTORY_HASH,
         expected_final_mesh_hash: R6_FINAL_MESH_HASH,
-        checkpoint_steps: R6_REPRODUCTION_STEPS.to_vec(),
+        checkpoint_steps: SEMANTIC_CHECKPOINT_STEPS.to_vec(),
         checkpoint_hashes,
         checkpoint_agreement,
+        semantic_checkpoints: SEMANTIC_CHECKPOINT_STEPS
+            .into_iter()
+            .map(|step| {
+                let observation = run
+                    .checkpoint_states
+                    .get(&step)
+                    .ok_or("missing semantic observation checkpoint")?
+                    .clone();
+                let r6_state = run
+                    .checkpoint_r6_states
+                    .get(&step)
+                    .ok_or("missing semantic state checkpoint")?
+                    .clone();
+                let delivery = run
+                    .checkpoint_cumulative_delivery
+                    .get(&step)
+                    .copied()
+                    .ok_or("missing cumulative delivery checkpoint")?;
+                let remesh_event_count = *run
+                    .checkpoint_remesh_event_counts
+                    .get(&step)
+                    .ok_or("missing remesh event checkpoint")?;
+                Ok((
+                    step,
+                    SemanticCheckpoint {
+                        observation,
+                        r6_state,
+                        cumulative_n_delivered: delivery[0],
+                        cumulative_f_delivered: delivery[1],
+                        remesh_event_count,
+                    },
+                ))
+            })
+            .collect::<Result<BTreeMap<_, _>, Box<dyn std::error::Error>>>()?,
         observer_trajectory_parity,
-        committed_checkpoint_agreement: agreement,
+        observer_final_mesh_parity,
+        bitwise_matches_committed_r6,
+        committed_checkpoint_agreement,
     })
 }
 
@@ -779,7 +875,7 @@ fn attribution_json(acc: &AttributionAccumulator, initial: f64, final_state: f64
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let out = std::env::var_os("DCDEV020M1R6R1_OUTPUT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| PathBuf::from("experiments/generated/dcdev020m1r6r1"));
+        .unwrap_or_else(|| PathBuf::from("experiments/generated/dcdev020m1r6r1r1"));
     fs::create_dir_all(&out)?;
     let dense_root = std::env::var_os("DCDEV020M1R6R1_DENSE_OUTPUT").map(PathBuf::from);
     if let Some(root) = dense_root.as_ref() {
@@ -835,7 +931,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .unwrap_or(f64::INFINITY)
         .abs()
         <= TOL;
-    let classification = if !reproduction.committed_checkpoint_agreement || !stage_ledger_pass {
+    let classification = if !reproduction.observer_trajectory_parity
+        || !reproduction.observer_final_mesh_parity
+        || !stage_ledger_pass
+    {
         "M1_RUNTIME_CLOSURE_AUDIT_INVALID"
     } else if geometry_dominant && geometry_mass_coupling_matches {
         "M1_RUNTIME_GEOMETRY_MASS_COUPLING_CONFIRMED"
@@ -850,6 +949,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let protocol = json!({
         "directive": DIRECTIVE,
         "starting_head": STARTING_HEAD,
+        "audit_entry_head": AUDIT_ENTRY_HEAD,
         "r6_authority": {"starting_head": R6_STARTING_HEAD, "classification": "M1_FULL_RUNTIME_CERTIFICATION_INVALID", "ci": "32673647585"},
         "runtime_order": ["S0 step entry", "S1 finite uptake", "S2 reactions", "S3 mechanics", "S4 remesh", "S5 rebond"],
         "observer_only": true,
@@ -857,9 +957,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "horizon": HORIZON,
         "tolerance": TOL,
         "resource": {"center": RESOURCE_CENTER, "radius": RESOURCE_RADIUS, "initial_n": RESOURCE_MASS, "initial_f": RESOURCE_MASS, "boundary_n": RESOURCE_CONCENTRATION, "boundary_f": RESOURCE_CONCENTRATION, "replenishment_events": 0},
-        "dense_output": SHARED_DENSE_ROOT,
-        "execution_dense_output": dense_root.as_ref().map(|p| p.display().to_string()),
-        "canonical_shared_dense_output": SHARED_DENSE_ROOT,
         "production_biology_changed": false,
         "mechanics_changed": false,
         "remesh_changed": false,
@@ -869,9 +966,17 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "recycling": false,
         "next_execution_started": false,
     });
+    let execution_metadata = json!({
+        "platform": std::env::consts::OS,
+        "architecture": std::env::consts::ARCH,
+        "dense_output_path": dense_root.as_ref().map(|p| p.display().to_string()),
+        "storage_mode": storage_mode(dense_root.as_deref()),
+        "canonical_shared_dense_output": SHARED_DENSE_ROOT,
+    });
     let results = json!({
         "directive": DIRECTIVE,
         "starting_head": STARTING_HEAD,
+        "audit_entry_head": AUDIT_ENTRY_HEAD,
         "r6_reproduction": reproduction,
         "mechanics_only_isolation": mechanics_isolation,
         "remesh_only_isolation": remesh_isolation,
@@ -879,6 +984,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "attribution_8000": attribution_8000,
         "first_permanent_resource_contact_loss_step": run.first_permanent_resource_contact_loss_step,
         "first_geometry_change_step": run.first_geometry_change_step,
+        "contact_loss_resource_remaining": run.contact_loss_resource_remaining,
+        "contact_loss_exposed_edges_before": run.contact_loss_exposed_edges_before,
+        "contact_loss_exposed_edges_after": run.contact_loss_exposed_edges_after,
         "contact_loss_follows_geometry_change": contact_loss_follows_geometry_change,
         "stage_ledger_pass": stage_ledger_pass,
         "classification": classification,
@@ -893,20 +1001,26 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     });
     let qualification = json!({
         "directive": DIRECTIVE,
-        "e0_authority": reproduction.committed_checkpoint_agreement,
+        "e0_authority": STARTING_HEAD == "1d681694e0dd5334e8267a881a2e1c4bec71324d"
+            && AUDIT_ENTRY_HEAD == "adea13fafa1f2a85e521a44b5d77249820d107bd",
         "e1_stage_ledger": stage_ledger_pass,
-        "e2_isolation": {"mechanics_only": mechanics_isolation.executed, "remesh_only": remesh_isolation.executed, "rebond": "NOT_EXERCISED"},
+        "e2_isolation": {"mechanics_only": mechanics_isolation.executed, "remesh_only": remesh_isolation.executed, "rebond": "NOT_EXERCISED", "within_platform_observer_parity": reproduction.observer_trajectory_parity && reproduction.observer_final_mesh_parity},
         "e3_cumulative_attribution": attribution_8000["unexplained_residual"].as_f64().unwrap_or(f64::INFINITY).abs() <= TOL,
         "e4_preservation": "REMOTE_CI_REQUIRED",
         "e5_remote": "PENDING",
         "classification": classification,
-        "shared_drive_dense_evidence": dense_root.as_ref().map(|p| p.starts_with(r"\\RPI5\")).unwrap_or(false),
+        "shared_drive_dense_evidence": storage_mode(dense_root.as_deref()) == "LOCAL_CANONICAL_SHARED_DRIVE",
+        "execution_storage_mode": storage_mode(dense_root.as_deref()),
         "production_biology_changed": false,
         "next_execution_started": false,
     });
     fs::write(
         out.join("protocol.json"),
         serde_json::to_vec_pretty(&protocol)?,
+    )?;
+    fs::write(
+        out.join("execution_metadata.json"),
+        serde_json::to_vec_pretty(&execution_metadata)?,
     )?;
     fs::write(
         out.join("results.json"),
@@ -916,10 +1030,25 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         out.join("qualification.json"),
         serde_json::to_vec_pretty(&qualification)?,
     )?;
-    let manifest = json!({"schema": "dcdev020m1r6r1_manifest_v1", "directive": DIRECTIVE, "starting_head": STARTING_HEAD, "files": ["protocol.json", "results.json", "qualification.json", "artifact_manifest.json"], "dense_output": SHARED_DENSE_ROOT, "shared_drive_required": true, "sha256": "computed-by-workflow"});
+    let manifest = json!({"schema": "dcdev020m1r6r1_manifest_v2", "directive": DIRECTIVE, "starting_head": STARTING_HEAD, "files": ["protocol.json", "execution_metadata.json", "results.json", "qualification.json", "artifact_manifest.json"], "canonical_shared_dense_output": SHARED_DENSE_ROOT, "shared_drive_required": true, "sha256": "computed-by-workflow"});
     fs::write(
         out.join("artifact_manifest.json"),
         serde_json::to_vec_pretty(&manifest)?,
+    )?;
+    let evidence_manifest = json!({
+        "schema": "dcdev020m1r6r1r1_evidence_manifest_v1",
+        "directive": DIRECTIVE,
+        "starting_head": STARTING_HEAD,
+        "preserved_failed_r6r1_namespace": "dcdev020m1r6r1",
+        "dense_storage_mode": storage_mode(dense_root.as_deref()),
+        "dense_path": SHARED_DENSE_ROOT,
+        "dense_sha256": "computed-after-run",
+        "compact": ["protocol.json", "execution_metadata.json", "results.json", "qualification.json", "artifact_manifest.json"],
+        "next_execution_started": false,
+    });
+    fs::write(
+        out.join("R6R1R1_EVIDENCE_MANIFEST.json"),
+        serde_json::to_vec_pretty(&evidence_manifest)?,
     )?;
     println!("classification={classification}");
     println!(

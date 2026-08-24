@@ -1268,3 +1268,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: This is causal attribution, not a repair or biological qualification. The geometry/concentration hypothesis is supported by numerical closure, but no concentration rescaling or mechanics/remesh correction is authorized until independent Architect review.
 - Blockers: exact-head remote CI and independent Architect review.
 - Follow-up directive: none
+
+## D-20260823-dcdev020m1r6r1r1-cross-platform-closure-validation001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R1R1-CROSS-PLATFORM-CLOSURE-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R1-GEOMETRY-MATERIAL-CLOSURE-PENDING-ARCHITECT`
+- Closed: `2026-08-23T22:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The R6-R1 verifier was narrowed so scientific protocol identity excludes execution paths, while the failed R6-R1 evidence remains preserved. The audit now records exact within-platform plain/instrumented parity, semantic checkpoints through step 8000, cumulative delivery, remesh-event counts, and explicit resource-contact chronology. Local validation passes with the Atlas canonical dense ledger; remote Linux validation and Architect acceptance remain pending.
+- Changed areas: Cross-platform audit representation, execution metadata, scoped workflow verifier, immutable `dcdev020m1r6r1r1` evidence namespace, documentation, and governance.
+- Validation:
+  - Sanctioned Rust 1.89.0 compile and local replay - PASSED
+  - Scientific protocol excludes execution-path fields - PASSED locally
+  - Local within-platform observer trajectory/final-mesh parity - PASSED
+  - Local mechanics/remesh isolation and fixed-concentration attribution - PASSED
+  - Local contact chronology: exposure `2` to `0` at step `611` with resource remaining `464.709236493918` - PASSED
+  - Original failed R6-R1 evidence namespace preserved - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: Linux may show numeric or discrete remesh divergence; acceptance depends on causal invariants rather than bitwise long-horizon trajectory equality. No mass-conservation repair is authorized.
+- Blockers: exact-head remote CI and independent Architect review.
+- Follow-up directive: none

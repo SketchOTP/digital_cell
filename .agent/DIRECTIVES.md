@@ -752,3 +752,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260823-dcdev020m1r6-full-runtime-integration-cert001
 - Status at issuance: ISSUED
+
+## D-20260823-dcdev020m1r6r1r1-cross-platform-closure-validation001
+
+- Issued: `2026-08-23T22:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R6-R1-R1-CROSS-PLATFORM-CLOSURE-VALIDATION-001`
+- Objective: Separate scientific protocol identity from execution metadata and validate the R6 geometry/material closure invariants across Windows and Linux without changing production physics.
+- Scope: Start at `1d681694e0dd5334e8267a881a2e1c4bec71324d`; preserve the failed R6-R1 namespace; normalize only execution-path metadata out of the protocol; require exact within-platform parity; compare cross-platform causal isolation, stage attribution, semantic checkpoints, contact chronology, and Atlas/shared-drive evidence.
+- Exclusions: Material conservation repair, concentration rescaling, mechanics/remesh/rebond changes, V1 transport, V3 chemistry, resource geometry/inventory/concentration, D-087/D-091, production selection, controller, recycling, salvage, M2, behavior, evolution, and DC-DEV-021.
+- Acceptance: Portable scientific protocol, local and Linux causal invariants, within-platform observer parity, explicit trajectory-divergence classification, Atlas evidence manifest, scoped preservation, exact-head CI, and Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260823-dcdev020m1r6r1-geometry-material-closure-audit001
+- Status at issuance: ISSUED

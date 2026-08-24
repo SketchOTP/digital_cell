@@ -50,11 +50,12 @@ jobs:
               'digital-protocell/crates/phase1-certifier/Cargo.toml',
               'digital-protocell/examples/dcdev020m1r6r1_geometry_material_closure_audit.rs',
               'digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r1/geometry_material_closure_audit.md',
-              'digital-protocell/experiments/generated/dcdev020m1r6r1/protocol.json',
-              'digital-protocell/experiments/generated/dcdev020m1r6r1/results.json',
-              'digital-protocell/experiments/generated/dcdev020m1r6r1/qualification.json',
-              'digital-protocell/experiments/generated/dcdev020m1r6r1/artifact_manifest.json',
-              'digital-protocell/experiments/generated/dcdev020m1r6r1/R6R1_EVIDENCE_MANIFEST.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1r1/protocol.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1r1/execution_metadata.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1r1/results.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1r1/qualification.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1r1/artifact_manifest.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1r1/R6R1R1_EVIDENCE_MANIFEST.json',
           }
           assert set(changed) <= allowed, f'unexpected R6-R1 paths: {sorted(set(changed) - allowed)}'
           forbidden = [path for path in changed if any(token in path.lower() for token in (
@@ -68,8 +69,8 @@ jobs:
       - name: Fresh geometry/material closure audit
         working-directory: digital-protocell
         env:
-          DCDEV020M1R6R1_OUTPUT: experiments/generated/dcdev020m1r6r1/ci
-          DCDEV020M1R6R1_DENSE_OUTPUT: experiments/generated/dcdev020m1r6r1/ci_dense
+          DCDEV020M1R6R1_OUTPUT: experiments/generated/dcdev020m1r6r1r1/ci
+          DCDEV020M1R6R1_DENSE_OUTPUT: experiments/generated/dcdev020m1r6r1r1/ci_dense
         run: cargo +1.89.0 run -p phase1-certifier --example dcdev020m1r6r1_geometry_material_closure_audit --release --quiet
       - name: Verify fresh audit artifacts and fail-closed gates
         working-directory: digital-protocell
@@ -85,35 +86,60 @@ jobs:
                   print(f'::error title=R6-R1 verifier::{message}')
                   raise SystemExit(1)
 
-          base = Path('experiments/generated/dcdev020m1r6r1')
+          base = Path('experiments/generated/dcdev020m1r6r1r1')
           fresh = base / 'ci'
-          names = ('protocol.json', 'results.json', 'qualification.json', 'artifact_manifest.json')
+          names = ('protocol.json', 'execution_metadata.json', 'results.json', 'qualification.json', 'artifact_manifest.json')
           for root in (base, fresh):
               for name in names:
                   require((root / name).is_file(), f'missing {root/name}')
           protocol = json.loads((base / 'protocol.json').read_text())
           fresh_protocol = json.loads((fresh / 'protocol.json').read_text())
+          metadata = json.loads((base / 'execution_metadata.json').read_text())
+          fresh_metadata = json.loads((fresh / 'execution_metadata.json').read_text())
           results = json.loads((fresh / 'results.json').read_text())
+          local_results = json.loads((base / 'results.json').read_text())
           qualification = json.loads((fresh / 'qualification.json').read_text())
           require(fresh_protocol == protocol, 'fresh protocol differs from committed protocol')
-          require(protocol['directive'] == 'DC-DEV-020-M1-R6-R1-GEOMETRY-MATERIAL-CLOSURE-AUDIT-001', 'directive mismatch')
-          require(protocol['starting_head'] == 'adea13fafa1f2a85e521a44b5d77249820d107bd', 'starting head mismatch')
+          require(protocol['directive'] == 'DC-DEV-020-M1-R6-R1-R1-CROSS-PLATFORM-CLOSURE-VALIDATION-001', 'directive mismatch')
+          require(protocol['starting_head'] == '1d681694e0dd5334e8267a881a2e1c4bec71324d', 'authority starting head mismatch')
+          require(protocol['audit_entry_head'] == 'adea13fafa1f2a85e521a44b5d77249820d107bd', 'audit entry head mismatch')
           require(protocol['observer_only'] is True, 'observer-only flag missing')
-          require(results['classification'] in {
-              'M1_RUNTIME_GEOMETRY_MASS_COUPLING_CONFIRMED',
-              'M1_RUNTIME_CLOSURE_OTHER_STAGE_CONFIRMED',
-              'M1_RUNTIME_CLOSURE_CAUSE_UNRESOLVED',
-              'M1_RUNTIME_CLOSURE_AUDIT_INVALID',
-          }, 'unknown classification')
-          require(results['r6_reproduction']['committed_checkpoint_agreement'] is True, 'R6 checkpoint replay failed')
-          require(results['r6_reproduction']['observer_trajectory_parity'] is True, 'observer trajectory parity failed')
-          require(results['r6_reproduction']['trajectory_hash'] == 'be91ed02266a0078', 'trajectory hash mismatch')
-          require(results['r6_reproduction']['final_mesh_hash'] == 'e4c4dd4ff2e443d8', 'final mesh hash mismatch')
-          require(results['stage_ledger_pass'] is True, 'stage ledger failed')
-          require(abs(results['attribution_8000']['unexplained_residual']) <= 1e-8, 'unexplained residual too large')
-          require(abs(results['attribution_8000']['geometry_cumulative_residual'] - results['attribution_8000']['geometry_fixed_concentration_delta']) <= 1e-8, 'geometry attribution mismatch')
-          require(results['mechanics_only_isolation']['executed'] is True, 'mechanics isolation not executed')
-          require(results['remesh_only_isolation']['executed'] is True, 'remesh isolation not executed')
+          require('execution_dense_output' not in protocol and 'dense_output' not in protocol, 'execution path leaked into scientific protocol')
+          require(metadata['storage_mode'] == 'LOCAL_CANONICAL_SHARED_DRIVE', 'committed evidence is not marked canonical shared-drive storage')
+          require(fresh_metadata['storage_mode'] == 'CI_EPHEMERAL_VALIDATION', 'fresh CI evidence is not marked ephemeral')
+
+          def close(a, b):
+              return abs(a - b) <= 1e-8 * (1.0 + max(abs(a), abs(b)))
+
+          def fixed_delta(isolation):
+              return sum(item['fixed_concentration_geometry_delta'] for item in isolation['area_audit'])
+
+          def verify_platform(label, payload):
+              require(payload['r6_reproduction']['observer_trajectory_parity'] is True, f'{label}: observer trajectory parity failed')
+              require(payload['r6_reproduction']['observer_final_mesh_parity'] is True, f'{label}: observer final mesh parity failed')
+              require(payload['stage_ledger_pass'] is True, f'{label}: stage ledger failed')
+              require(payload['mechanics_only_isolation']['executed'] is True, f'{label}: mechanics isolation not executed')
+              require(payload['remesh_only_isolation']['executed'] is True, f'{label}: remesh isolation not executed')
+              mechanics = payload['mechanics_only_isolation']
+              remesh = payload['remesh_only_isolation']
+              require(abs(mechanics['strict_delta']) > 1e-8, f'{label}: mechanics isolation is zero')
+              require(abs(remesh['strict_delta']) > 1e-8, f'{label}: remesh isolation is zero')
+              require(close(mechanics['strict_delta'], fixed_delta(mechanics)), f'{label}: mechanics area prediction mismatch')
+              require(close(remesh['strict_delta'], fixed_delta(remesh)), f'{label}: remesh area prediction mismatch')
+              attr = payload['attribution_8000']
+              require(close(attr['geometry_cumulative_residual'], attr['geometry_fixed_concentration_delta']), f'{label}: geometry attribution mismatch')
+              require(abs(attr['uptake_cumulative_residual']) <= 1e-8, f'{label}: uptake residual too large')
+              require(abs(attr['reaction_cumulative_residual']) <= 1e-8, f'{label}: reaction residual too large')
+              require(abs(attr['unexplained_residual']) <= 1e-8, f'{label}: unexplained residual too large')
+              contact = payload['first_permanent_resource_contact_loss_step']
+              geometry = payload['first_geometry_change_step']
+              require(contact is not None and geometry is not None and contact >= geometry, f'{label}: contact/geometry chronology invalid')
+              require(payload['contact_loss_resource_remaining'] is not None and payload['contact_loss_resource_remaining'] > 0.0, f'{label}: resource was exhausted at contact loss')
+              require(payload['contact_loss_exposed_edges_before'] is not None and payload['contact_loss_exposed_edges_before'] > 0, f'{label}: no pre-loss exposure recorded')
+              require(payload['contact_loss_exposed_edges_after'] == 0, f'{label}: exposure did not reach zero')
+
+          verify_platform('local', local_results)
+          verify_platform('linux', results)
           require(qualification['e0_authority'] is True and qualification['e1_stage_ledger'] is True, 'qualification gates failed')
           require(qualification['next_execution_started'] is False, 'next execution started')
           require(results['next_execution_started'] is False, 'results advanced')
@@ -123,7 +149,39 @@ jobs:
               require(report['mesh_contract'] == contract, f'{contract} contract mismatch')
               require(report['reserve_enabled'] is False, f'{contract} reserve enabled')
               require([report[f'gate{i}']['pass'] for i in range(8)] == [True] * 8, f'{contract} D-087 preservation failed')
-          print('DCDEV020M1R6R1_ARTIFACT_AND_FAIL_CLOSED_GATE_VERIFICATION_PASS')
+          required_steps = [0, 1, 10, 100, 480, 1000, 2000, 3466, 4000, 6000, 6931, 8000]
+          numeric_fields = ('area', 'organized_material', 'strict_material', 'n_concentration', 'f_concentration', 'a_concentration', 'c_concentration', 'structural_m', 'cumulative_n_delivered', 'cumulative_f_delivered')
+          first_checkpoint = None
+          divergence_type = 'BITWISE_DIFFERENCE_ONLY'
+          for step in required_steps:
+              key = str(step)
+              local_cp = local_results['r6_reproduction']['semantic_checkpoints'][key]
+              linux_cp = results['r6_reproduction']['semantic_checkpoints'][key]
+              numeric_difference = any(not close(local_cp['observation'][field], linux_cp['observation'][field]) for field in numeric_fields if field in local_cp['observation'])
+              numeric_difference |= not close(local_cp['cumulative_n_delivered'], linux_cp['cumulative_n_delivered'])
+              numeric_difference |= not close(local_cp['cumulative_f_delivered'], linux_cp['cumulative_f_delivered'])
+              discrete_difference = local_cp['observation']['vertex_count'] != linux_cp['observation']['vertex_count'] or local_cp['remesh_event_count'] != linux_cp['remesh_event_count']
+              if discrete_difference or numeric_difference:
+                  first_checkpoint = step
+                  divergence_type = 'DISCRETE_REMESH_BRANCH_DIVERGENCE' if discrete_difference else 'NUMERIC_STATE_DIVERGENCE'
+                  break
+          comparison = {
+              'classification': 'M1_RUNTIME_GEOMETRY_MASS_COUPLING_CROSS_PLATFORM_CONFIRMED',
+              'first_semantic_divergence_checkpoint': first_checkpoint,
+              'divergence_type': divergence_type,
+              'local_geometry_residual': local_results['attribution_8000']['geometry_cumulative_residual'],
+              'linux_geometry_residual': results['attribution_8000']['geometry_cumulative_residual'],
+              'local_fixed_concentration_prediction': local_results['attribution_8000']['geometry_fixed_concentration_delta'],
+              'linux_fixed_concentration_prediction': results['attribution_8000']['geometry_fixed_concentration_delta'],
+              'local_contact_loss_step': local_results['first_permanent_resource_contact_loss_step'],
+              'linux_contact_loss_step': results['first_permanent_resource_contact_loss_step'],
+              'protocol_identity': 'PASS',
+              'within_platform_parity': 'PASS',
+              'causal_invariants': 'PASS',
+          }
+          Path('experiments/generated/dcdev020m1r6r1r1/ci/cross_platform_comparison.json').write_text(json.dumps(comparison, indent=2) + '\\n')
+          print('DCDEV020M1R6R1_CROSS_PLATFORM_CAUSAL_VERIFICATION_PASS')
+          print(json.dumps(comparison, indent=2))
           PY
       - name: D-087 preservation regression
         working-directory: digital-protocell
@@ -155,12 +213,15 @@ jobs:
         with:
           name: dcdev020m1r6r1-geometry-material-closure-evidence
           path: |
-            digital-protocell/experiments/generated/dcdev020m1r6r1/protocol.json
-            digital-protocell/experiments/generated/dcdev020m1r6r1/results.json
-            digital-protocell/experiments/generated/dcdev020m1r6r1/qualification.json
-            digital-protocell/experiments/generated/dcdev020m1r6r1/artifact_manifest.json
-            digital-protocell/experiments/generated/dcdev020m1r6r1/R6R1_EVIDENCE_MANIFEST.json
-            digital-protocell/experiments/generated/dcdev020m1r6r1/ci/protocol.json
-            digital-protocell/experiments/generated/dcdev020m1r6r1/ci/results.json
-            digital-protocell/experiments/generated/dcdev020m1r6r1/ci/qualification.json
-            digital-protocell/experiments/generated/dcdev020m1r6r1/ci/artifact_manifest.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/execution_metadata.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/results.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/artifact_manifest.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/R6R1R1_EVIDENCE_MANIFEST.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/ci/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/ci/execution_metadata.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/ci/results.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/ci/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/ci/artifact_manifest.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/ci/cross_platform_comparison.json

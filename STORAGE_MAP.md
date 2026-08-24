@@ -9,6 +9,16 @@ outside the primary repository filesystem.
 - Basis commit for the current storage migration: `456818fffbbbff2640984a8b81a41051bf03be75`
 - Current branch at migration: `strategy/d096-repair-gain-scope-fix`
 
+## Current canonical Atlas storage
+
+- Canonical network endpoint: `\\atlas\\ATLAS`
+- Catalog map: `\\atlas\\ATLAS\\000_CATALOG\\ATLAS_DIRECTORY_MAP.md`
+- Migration notes: `\\atlas\\ATLAS\\000_CATALOG\\ATLAS_MIGRATION_NOTES.md`
+- Active Digital Cell evidence root: `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\`
+- Retired endpoint: `\\rpi5\\RPI5SharedDrive` — historical references only; do not use for new work
+- Current R6-R1-R1 dense evidence: `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r1r1\\dense\\stage_ledger.jsonl`
+- Storage rule: preserve repository instructions, dirty state, evidence, and uncertainty; do not move or delete existing data without explicit authorization. Refresh `ATLAS_DIRECTORY_TREE.txt` and migration notes after major moves.
+
 ## Secondary project storage
 
 - Mounted storage: `/mnt/storage1tb`
@@ -65,6 +75,7 @@ current migration, so no scientific evidence references required rewriting.
 
 Future archives should use a repository-isolated subdirectory beneath the
 secondary storage root and must update this map and their archive manifest
-after copy, checksum verification, and any reference changes. Evidence is now
-authoritatively stored on the RPI5 shared drive above; local evidence copies
-must not be deleted until the shared-drive manifest and checksums verify.
+after copy, checksum verification, and any reference changes. The prior RPI5
+evidence references above are historical migration records. New authoritative
+evidence is stored on the Atlas endpoint above; local evidence copies must not
+be deleted until the Atlas manifest and checksums verify.

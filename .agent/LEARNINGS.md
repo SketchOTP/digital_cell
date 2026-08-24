@@ -138,6 +138,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-020-R2 observer-only allosteric requalification.
 - Supersedes learning: none
 
+## L-DCDEV020M1R6R1R1-001
+
+- Learning ID: L-DCDEV020M1R6R1R1-001
+- Date: 2026-08-23
+- Fact or lesson: The prior R6-R1 verifier incorrectly treated the committed Windows 8,000-step trajectory and execution-path strings as scientific identity. Portable validation must compare exact observer parity within each platform and compare mechanics/remesh geometry residuals, fixed-concentration predictions, negligible reaction/uptake/unexplained residuals, semantic checkpoints, and contact chronology across platforms. Local Windows and fresh Linux evidence may diverge in long-horizon mesh state while preserving the same causal closure mechanism.
+- Evidence location: `digital-protocell/examples/dcdev020m1r6r1_geometry_material_closure_audit.rs`, `digital-protocell/experiments/generated/dcdev020m1r6r1r1/`, `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r1r1/`, and Atlas dense evidence under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r1r1\\`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6-R1-R1 cross-platform closure validation only; no production repair or downstream authorization.
+- Supersedes learning: none
+
 ## L-DCDEV020M1R5-001
 
 - Learning ID: L-DCDEV020M1R5-001

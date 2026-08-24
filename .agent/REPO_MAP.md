@@ -163,6 +163,10 @@
 - `digital-protocell/experiments/generated/dcdev020m1r6r1/` — compact R6-R1 protocol/results/qualification/manifest; dense stage ledger is archived in governed shared storage.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r1/` — R6-R1 geometry/material closure attribution protocol and provisional classification.
 - `.github/workflows/dc-dev-020m1r6r1.yml` — scoped R6-R1 governance, observer audit, D-087, preservation, and artifact-verification CI.
+- `digital-protocell/examples/dcdev020m1r6r1_geometry_material_closure_audit.rs` — R6-R1-R1 portable scientific protocol, execution metadata, within-platform parity, semantic checkpoint, isolation, and contact-invariance audit.
+- `digital-protocell/experiments/generated/dcdev020m1r6r1r1/` — immutable R6-R1-R1 compact protocol/results/qualification/manifest namespace; the failed R6-R1 namespace remains preserved.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r1r1/` — R6-R1-R1 cross-platform closure validation protocol and pending handoff.
+- `.github/workflows/dc-dev-020m1r6r1.yml` — scoped R6-R1-R1 portable protocol, cross-platform invariant verifier, D-087, preservation, and artifact CI.
 
 ## External integration points
 

@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-23T01:00:00-04:00`
+- Last updated: `2026-08-23T22:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260823-dcdev020m1r6r1-geometry-material-closure-audit001`
-- External directive ID: `DC-DEV-020-M1-R6-R1-GEOMETRY-MATERIAL-CLOSURE-AUDIT-001`
-- Objective: `Causally attribute the accepted R6 full-runtime material-closure failure using observer-only stage ledgers and isolation replays.`
-- Current status: `IN_PROGRESS`
-- Acceptance: `Trace and execute the exact packaged transport -> reactions -> mechanics -> remesh -> rebond loop, preserve V1/V2/V3/D-087 and frozen suites, write dense evidence to the shared drive, obtain exact-head remote CI, and stop for Architect review.`
-- Current phase: `R6 is a valid invalidation with full-runtime closure failed. The geometry/concentration bookkeeping hypothesis is under observer-only causal audit; ConservativeV2 remains frozen/selected, ConservativeV3 remains qualified/experimental/unselected, and M1/M2 remain blocked.`
-- Expected or actual touched areas: `observer-only stage ledger, mechanics/remesh isolation replay, compact evidence, shared-drive dense evidence, scoped CI, documentation, and governance handoff`
-- Immediate next action: `Complete R6-R1 only, push PR #44, verify exact-head remote CI/artifact, and stop for Architect review.`
+- Local directive ID: `D-20260823-dcdev020m1r6r1r1-cross-platform-closure-validation001`
+- External directive ID: `DC-DEV-020-M1-R6-R1-R1-CROSS-PLATFORM-CLOSURE-VALIDATION-001`
+- Objective: `Separate scientific protocol from execution metadata and validate the R6 geometry/material closure invariants across platforms without repairing production physics.`
+- Current status: `VALIDATING`
+- Acceptance: `Portable scientific protocol, within-platform observer parity, cross-platform causal invariants, Atlas evidence reconciliation, scoped preservation, exact-head remote CI, and Architect review.`
+- Current phase: `R6 is a valid invalidation. R6-R1 strongly supports geometry/material coupling but is not formally accepted because the prior verifier required bitwise Windows/Linux trajectory identity. Cross-platform invariant validation is active; ConservativeV2 remains frozen/selected, ConservativeV3 remains qualified/experimental/unselected, and M1/M2 remain blocked.`
+- Expected or actual touched areas: `R6-R1-R1 audit representation, execution metadata, portable verifier, scoped CI, immutable compact evidence namespace, Atlas dense evidence, documentation, and governance handoff`
+- Immediate next action: `Complete R6-R1-R1, push PR #44, obtain exact-head remote CI, and stop for Architect review.`
 
 ## Temporary task-relevant facts
 
@@ -33,7 +33,7 @@
 - R2-R2 is architect-accepted at `1622b664a4a37b8a0ac4ea51fbc97ca71f9d853c` with exact-head CI `32615395736`; ordinary starvation reaches actual topology rupture and remains non-intact after both refeeding shadows.
 - R3 is architect-accepted at `17226fb7484eb50079c1c30ce9fd8039b3f23c60` with exact-head CI `32617847392` and artifact digest `sha256:dde942ef96c37ee4e0c9882abacd89202dd4eaf245c81b53d4f0efc039fe5700`; classification `M1_ORDINARY_DECAY_CANDIDATE_QUALIFIED`.
 - R4 is architect-accepted at exact head `68d1c88ec1b915a4bee86efe24e985222b529d5a`, CI `32648997395`, artifact digest `sha256:ea8e2161e0889da26a613fd95b6ffa0aa1b7bdb7e0dde23a9fa9aea26d559305`; coupled source is qualified only for the bounded 480-step candidate and remains unselected.
-- R5 is preregistered with `FINITE_SPATIAL_BACKING_RESERVOIR_V1`, fixed boundary concentration `2.063914918930895`, finite N/F inventory `243.14924801053778` each, and zero replenishment. All authoritative evidence is archived under `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\` with manifests and hashes; compact CI-required artifacts remain in Git.
+- R5 is preregistered with `FINITE_SPATIAL_BACKING_RESERVOIR_V1`, fixed boundary concentration `2.063914918930895`, finite N/F inventory `243.14924801053778` each, and zero replenishment. Current authoritative evidence is archived under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\` with manifests and hashes; the retired RPI5 endpoint is historical only, and compact CI-required artifacts remain in Git.
 - R6 uses the exact R5 depleted entry but executes the packaged full-runtime order `transport -> reactions -> mechanics -> remesh -> try_local_rebond`; the candidate remains ConservativeV3/reserve OFF and is not selected.
 - R6 is architect-accepted as a valid invalidation at `adea13fafa1f2a85e521a44b5d77249820d107bd` with exact-head CI `32673647585`; full-runtime closure failed, and R6-R1 is authorized only to attribute that failure without repair.
 
