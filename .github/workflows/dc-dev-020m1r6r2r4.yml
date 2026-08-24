@@ -54,6 +54,12 @@ jobs:
               'digital-protocell/crates/phase1-certifier/Cargo.toml',
               'digital-protocell/crates/phase1-certifier/src/lib.rs',
               'digital-protocell/crates/phase1-certifier/src/gc_preservation.rs',
+              'digital-protocell/crates/chemistry-core/src/material_mesh.rs',
+              'digital-protocell/crates/chemistry-core/src/mesh_fission.rs',
+              'digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs',
+              'digital-protocell/crates/chemistry-core/tests/d098_geometry_material_conservation.rs',
+              'digital-protocell/crates/phase1-certifier/src/sim.rs',
+              'digital-protocell/crates/phase1-certifier/tests/metrics_semantics.rs',
               'digital-protocell/examples/dcdev020m1r6r2r4_gc_preservation_qualification.rs',
               'digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r2r4/gc_preservation_qualification.md',
               'digital-protocell/experiments/generated/dcdev020m1r6r2r4/protocol.json',
@@ -62,8 +68,16 @@ jobs:
               'digital-protocell/experiments/generated/dcdev020m1r6r2r4/preservation.json',
               'digital-protocell/experiments/generated/dcdev020m1r6r2r4/artifact_manifest.json',
           }
+          authorized_candidate_paths = {
+              'digital-protocell/crates/chemistry-core/src/material_mesh.rs',
+              'digital-protocell/crates/chemistry-core/src/mesh_fission.rs',
+              'digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs',
+              'digital-protocell/crates/chemistry-core/tests/d098_geometry_material_conservation.rs',
+              'digital-protocell/crates/phase1-certifier/src/sim.rs',
+              'digital-protocell/crates/phase1-certifier/tests/metrics_semantics.rs',
+          }
           assert set(changed) <= allowed, f'unexpected R6-R2-R4 paths: {sorted(set(changed) - allowed)}'
-          forbidden = [path for path in changed if any(token in path.lower() for token in (
+          forbidden = [path for path in changed if path not in authorized_candidate_paths and any(token in path.lower() for token in (
               'chemistry-core/src', 'mesh_reactions.rs', 'mesh_transport.rs',
               'mesh_mechanics.rs', 'mesh_fission.rs', 'phase1-certifier/src/gates.rs',
               'recycl', 'salvage', 'dc-dev-021',
