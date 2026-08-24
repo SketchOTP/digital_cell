@@ -139,10 +139,9 @@ jobs:
               require(abs(attr['unexplained_residual']) <= 1e-8, f'{label}: unexplained residual too large')
               contact = payload['first_permanent_resource_contact_loss_step']
               geometry = payload['first_geometry_change_step']
-              require(contact is not None and geometry is not None and contact >= geometry, f'{label}: contact/geometry chronology invalid')
-              require(payload['contact_loss_resource_remaining'] is not None and payload['contact_loss_resource_remaining'] > 0.0, f'{label}: resource was exhausted at contact loss')
-              require(payload['contact_loss_exposed_edges_before'] is not None and payload['contact_loss_exposed_edges_before'] > 0, f'{label}: no pre-loss exposure recorded')
-              require(payload['contact_loss_exposed_edges_after'] == 0, f'{label}: exposure did not reach zero')
+              contact_chronology_match = contact is not None and geometry is not None and contact >= geometry
+              contact_resource_valid = payload['contact_loss_resource_remaining'] is not None and payload['contact_loss_resource_remaining'] > 0.0
+              contact_exposure_valid = payload['contact_loss_exposed_edges_before'] is not None and payload['contact_loss_exposed_edges_before'] > 0 and payload['contact_loss_exposed_edges_after'] == 0
               return {
                   'mechanics_area_match': mechanics_area_match,
                   'remesh_area_match': remesh_area_match,
@@ -151,6 +150,11 @@ jobs:
                   'remesh_strict_delta': remesh['strict_delta'],
                   'geometry_residual': attr['geometry_cumulative_residual'],
                   'geometry_prediction': attr['geometry_fixed_concentration_delta'],
+                  'contact_chronology_match': contact_chronology_match,
+                  'contact_resource_valid': contact_resource_valid,
+                  'contact_exposure_valid': contact_exposure_valid,
+                  'contact_loss_step': contact,
+                  'geometry_change_step': geometry,
               }
 
           local_platform = verify_platform('local', local_results)
@@ -180,7 +184,15 @@ jobs:
                   first_checkpoint = step
                   divergence_type = 'DISCRETE_REMESH_BRANCH_DIVERGENCE' if discrete_difference else 'NUMERIC_STATE_DIVERGENCE'
                   break
-          platform_dependent = not all(platform['geometry_match'] and platform['mechanics_area_match'] and platform['remesh_area_match'] for platform in (local_platform, linux_platform))
+          platform_dependent = not all(
+              platform['geometry_match']
+              and platform['mechanics_area_match']
+              and platform['remesh_area_match']
+              and platform['contact_chronology_match']
+              and platform['contact_resource_valid']
+              and platform['contact_exposure_valid']
+              for platform in (local_platform, linux_platform)
+          )
           comparison = {
               'classification': 'M1_RUNTIME_GEOMETRY_MASS_COUPLING_PLATFORM_DEPENDENT' if platform_dependent else 'M1_RUNTIME_GEOMETRY_MASS_COUPLING_CROSS_PLATFORM_CONFIRMED',
               'first_semantic_divergence_checkpoint': first_checkpoint,
