@@ -1407,16 +1407,16 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Supersedes outcome: `OUT-DCDEV020M1R6R2R3-STARVATION-SEMANTICS-AUDIT-PENDING-ARCHITECT`
 - Closed: `2026-08-24T04:30:00-04:00`
 - Acceptance: `PARTIAL`
-- Summary: The unchanged actual D-087 certifier returns V2/ConservativeV3 control `8/8` and GeometryConservativeV3 candidate `7/8`, with the sole historical Gate-2 failure isolated. The versioned GC qualifier passes the 15-row basin/decomposition and non-basin controls, records tracer `f_label=0.3277186407367453`, zero post-switch N delivery, observer viability loss at relative step `10383`, organized material decline from `969.8667308903401` to `84.50564650296067`, and no topology rupture or runtime invalidity through the authorized `150000`-step extension. Classification: `M1_GC_CONSERVATION_CANDIDATE_QUALIFIED`.
+- Summary: The unchanged actual D-087 certifier returns V2/ConservativeV3 control `8/8` and GeometryConservativeV3 candidate `7/8`, with the sole historical Gate-2 failure isolated. The versioned GC qualifier passes the 15-row basin/decomposition and non-basin controls, records tracer `f_label=0.3277186407367453`, zero post-switch N delivery, observer viability loss at relative step `10383`, organized material decline from `969.8667308903401` to `84.50564650296067`, and no topology rupture or runtime invalidity through the authorized `150000`-step extension. Final remote closure passed at `dcce40b38b467615008699984a8cb52329b404e8`, with push CI `32760632483`, PR CI `32760643807`, and artifact digest `sha256:080f93693c34a22611351abba60a2aa23964938fc02039364b0fc127cac3fb86`. Classification: `M1_GC_CONSERVATION_CANDIDATE_QUALIFIED`.
 - Changed areas: Versioned phase1-certifier GC preservation qualifier, compact generated evidence, scoped workflow/docs, and governance only. Historical D-087 Gate 2 and certified biology/equations remain unchanged; unrelated dirty work is not included.
 - Validation:
   - Local sanctioned Rust 1.89 formatting/checks - PASSED
   - Actual D-087 control 8/8 and candidate 7/8 with sole historical Gate-2 failure - PASSED
   - 15-row decomposition, causal starvation gate, zero post-switch N delivery, conservation, and tracer preservation - PASSED
   - Compact Atlas evidence at `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r4\\compact` - PASSED
-  - Exact-head push CI `32759841130` at `26297def20ea9a53e573e6e720b6c0630e2aa1a4` - PASSED
-  - Exact-head pull-request CI `32759846211` - PASSED
-  - Remote artifact `dcdev020m1r6r2r4-gc-preservation-evidence`, digest `sha256:20474f84fc168df5af6dacac7bf2a4a044925ab285d648ea74dbd64f8d32fbb0` - VERIFIED
+  - Exact-head push CI `32760632483` at `dcce40b38b467615008699984a8cb52329b404e8` - PASSED
+  - Exact-head pull-request CI `32760643807` - PASSED
+  - Remote artifact `dcdev020m1r6r2r4-gc-preservation-evidence`, digest `sha256:080f93693c34a22611351abba60a2aa23964938fc02039364b0fc127cac3fb86` - VERIFIED
   - Architect review - PENDING
 - Remaining risks: This qualifies only the experimental GC conservation candidate. It does not close M1, select GC/V3 for production, establish sustained homeostasis, authorize reserve/recycling/salvage, M2, or DC-DEV-021.
 - Blockers: Independent Architect review.

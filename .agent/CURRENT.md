@@ -12,7 +12,7 @@
 - Objective: `Qualify the GeometryConservativeV3 contract for causal GC preservation under the unchanged historical D-087 semantics.`
 - Current status: `VALIDATING`
 - Acceptance: `Historical V2 8/8, candidate 7/8 with only the known historical Gate-2 failure, causal starvation gate, conservation/tracer preservation, compact Atlas evidence, exact-head remote CI, and Architect review.`
-- Current phase: `R6-R2-R4 qualifier passes as M1_GC_CONSERVATION_CANDIDATE_QUALIFIED: zero post-switch N delivery, observer viability loss at 10,383, organized-material decline, and no hidden source. Exact-head push CI 32759841130 and matching PR CI 32759846211 passed at 26297def20ea9a53e573e6e720b6c0630e2aa1a4; Architect review is pending.`
+- Current phase: `R6-R2-R4 qualifier passes as M1_GC_CONSERVATION_CANDIDATE_QUALIFIED: zero post-switch N delivery, observer viability loss at 10,383, organized-material decline, and no hidden source. Final exact-head push CI 32760632483 and matching PR CI 32760643807 passed at dcce40b38b467615008699984a8cb52329b404e8; Architect review is pending.`
 - Expected or actual touched areas: `versioned phase1-certifier GC qualifier, compact generated evidence, scoped workflow/docs, and append-only governance only; the dirty R6-R2 candidate is preserved`
 - Immediate next action: `Stop for Architect review; no M1 closure, production switch, recycling/salvage, M2, or DC-DEV-021 execution.`
 
@@ -42,7 +42,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `R6-R2-R4 governance, scoped workflow, local qualifier, exact-head push and PR remote CI, Atlas compact evidence; head 26297def20ea9a53e573e6e720b6c0630e2aa1a4; push run 32759841130; PR run 32759846211; artifact digest sha256:20474f84fc168df5af6dacac7bf2a4a044925ab285d648ea74dbd64f8d32fbb0`
+- Command or check: `R6-R2-R4 governance, scoped workflow, local qualifier, final exact-head push and PR remote CI, Atlas compact evidence; head dcce40b38b467615008699984a8cb52329b404e8; push run 32760632483; PR run 32760643807; artifact digest sha256:080f93693c34a22611351abba60a2aa23964938fc02039364b0fc127cac3fb86`
 - Result: `PASSED`
 
 ## Risks
