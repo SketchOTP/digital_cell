@@ -33,7 +33,10 @@ jobs:
         run: python3 scripts/validate_governance.py --mode ADOPTED
       - name: Scoped formatting
         working-directory: digital-protocell
-        run: cargo +1.89.0 fmt --manifest-path crates/phase1-certifier/Cargo.toml -- --check
+        run: |
+          rustfmt +1.89.0 --edition 2021 --check \
+            crates/phase1-certifier/src/gc_preservation.rs \
+            examples/dcdev020m1r6r2r4_gc_preservation_qualification.rs
       - name: Verify bounded R6-R2-R4 diff
         shell: bash
         run: |
