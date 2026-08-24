@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260824-dcdev020m1r6r2r4-gc-preservation-qualification001`
-- External directive ID: `DC-DEV-020-M1-R6-R2-R4-GC-PRESERVATION-QUALIFICATION-001`
-- Objective: `Qualify the GeometryConservativeV3 contract for causal GC preservation under the unchanged historical D-087 semantics.`
+- Local directive ID: `D-20260824-dcdev020m1r6r3-full-runtime-m1-certification001`
+- External directive ID: `DC-DEV-020-M1-R6-R3-FULL-RUNTIME-M1-CERTIFICATION-001`
+- Objective: `Certify the GeometryConservativeV3 body through the unchanged full runtime for sustained homeostasis, restoration, causal withdrawal, physical death, and strict stage-level conservation.`
 - Current status: `VALIDATING`
-- Acceptance: `Historical V2 8/8, candidate 7/8 with only the known historical Gate-2 failure, causal starvation gate, conservation/tracer preservation, compact Atlas evidence, exact-head remote CI, and Architect review.`
-- Current phase: `R6-R2-R4 qualifier passes as M1_GC_CONSERVATION_CANDIDATE_QUALIFIED: zero post-switch N delivery, observer viability loss at 10,383, organized-material decline, and no hidden source. Final exact-head push CI 32760632483 and matching PR CI 32760643807 passed at dcce40b38b467615008699984a8cb52329b404e8; Architect review is pending.`
-- Expected or actual touched areas: `versioned phase1-certifier GC qualifier, compact generated evidence, scoped workflow/docs, and append-only governance only; the dirty R6-R2 candidate is preserved`
-- Immediate next action: `Stop for Architect review; no M1 closure, production switch, recycling/salvage, M2, or DC-DEV-021 execution.`
+- Acceptance: `One exact classification, stage-level closure, no-reset restoration/withdrawal/death evidence, physical-loss refeed result, frozen preservation suite, compact Atlas evidence, exact-head Linux CI, and Architect review.`
+- Current phase: `The local full-runtime certification is a valid negative candidate: stage closure and V2/V3 D-087 preservation pass, but fed organized material declines by 82.9654506509167 and 480-step deprivation refeed increases the deficit. Remote exact-head verification and Architect review are pending.`
+- Expected or actual touched areas: `new observer-only full-runtime certification example, compact generated evidence, scoped workflow/docs, and append-only governance only; the dirty R6-R2 candidate is preserved`
+- Immediate next action: `Run exact-head remote verification for R6-R3, then stop for Architect review; no production switch, M2, recycling/salvage, or DC-DEV-021 execution.`
 
 ## Temporary task-relevant facts
 

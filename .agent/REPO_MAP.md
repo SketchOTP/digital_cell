@@ -176,6 +176,11 @@
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r2r4/` — GC preservation qualification protocol and handoff.
 - `.github/workflows/dc-dev-020m1r6r2r4.yml` — scoped governance, qualifier, frozen-suite preservation, artifact verification, and exact-head CI.
 - `\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r4\\compact\\` — canonical compact GC preservation evidence; dense ledgers remain governed external evidence.
+- `digital-protocell/examples/dcdev020m1r6r3_full_runtime_m1_certification.rs` — observer-only full-runtime M1 certification with stage closure, sustained fed/deprivation/withdrawal arms, physical-loss refeed, and fail-closed classification.
+- `digital-protocell/experiments/generated/dcdev020m1r6r3/` — compact R6-R3 protocol/results/qualification/preservation/manifest and D-087 preservation manifests; dense ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3/` — full-runtime M1 certification protocol and handoff.
+- `.github/workflows/dc-dev-020m1r6r3.yml` — scoped R6-R3 governance, exact runtime assay, D-087 preservation, fail-closed verification, and remote CI.
+- `\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3\\` — canonical dense R6-R3 runtime ledgers; compact authority remains in Git.
 
 ## External integration points
 

@@ -1421,3 +1421,27 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: This qualifies only the experimental GC conservation candidate. It does not close M1, select GC/V3 for production, establish sustained homeostasis, authorize reserve/recycling/salvage, M2, or DC-DEV-021.
 - Blockers: Independent Architect review.
 - Follow-up directive: none
+
+## D-20260824-dcdev020m1r6r3-full-runtime-m1-certification001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R3-FULL-RUNTIME-M1-CERTIFICATION-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R2R4-GC-PRESERVATION-QUALIFICATION-PENDING-ARCHITECT`
+- Closed: `2026-08-24T08:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only GeometryConservativeV3/ConservativeV3 full-runtime certification executes the unchanged finite-resource uptake, reactions, mechanics, remesh, and rebond order with strict per-stage closure. Fresh ConservativeV2 and ConservativeV3 D-087 preservation reports are both 8/8. The finite fed arm remains viable and closed at 8,000 steps but loses `82.9654506509167` organized material; 480-step deprivation followed by no-reset refeed does not restore the deficit. Zero-resource and feed-then-remove arms reach physical topology rupture at local steps `8867` and `11283`. Classification candidate: `M1_FULL_RUNTIME_HOMEOSTASIS_FAILED`; exact-head remote CI and Architect review remain pending.
+- Changed areas: New observer-only certification example, Cargo registration, compact evidence, scoped workflow/docs, and append-only governance. No chemistry equations, transport/resource law, mechanics, remesh/rebond law, death rule, D-087/D-091, production selection, M2, recycling/salvage, or DC-DEV-021 changes.
+- Validation:
+  - Governance validator ADOPTED - PASSED
+  - Rust formatting and compact fail-closed verifier - PASSED
+  - Geometry/material conservation - 4 passed
+  - Phase-1 metrics semantics - 5 passed
+  - D-088 preservation - 4 passed
+  - D-091 preservation - 8 passed
+  - Evolution-harness preservation - 40 passed
+  - Fresh V2/V3 D-087 - 8/8 each
+  - Dense ledgers - written to canonical Atlas R6-R3 evidence root
+  - Remote exact-head CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: This is a valid local negative candidate, not M1 closure. Sustained fed homeostasis and no-reset restoration are not established; remote Linux execution, artifact verification, and Architect disposition remain authoritative. No repair or downstream directive is authorized.
+- Blockers: Exact-head remote CI and Architect review.
+- Follow-up directive: none

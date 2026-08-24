@@ -850,3 +850,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260824-dcdev020m1r6r2r3-starvation-semantics-audit001
 - Status at issuance: ISSUED
+
+## D-20260824-dcdev020m1r6r3-full-runtime-m1-certification001
+
+- Issued: 2026-08-24T00:00:00-04:00
+- Issuer: User
+- External directive: DC-DEV-020-M1-R6-R3-FULL-RUNTIME-M1-CERTIFICATION-001
+- Objective: Perform final organism-level M1 certification using GeometryConservativeV3 through the unchanged full runtime.
+- Scope: Exact accepted R6-R2-R4 head, GeometryConservativeV3, ConservativeV3 chemistry, reserve OFF, unchanged uncoupled V1 finite-resource transport, stage-level closure, sustained fed runtime, no-reset restoration, zero-resource and feed-then-remove withdrawal, physical-loss refeed, preservation, compact Atlas evidence, governance, and exact-head Linux CI.
+- Exclusions: Scientific-core equation changes, transport/resource/decay/mechanics/remesh/rebond changes, production selection, controllers, target states, scripted death, recycling, salvage, M2, behavior, evolution, and DC-DEV-021.
+- Acceptance: One exact classification from the authorized list, fail-closed stage accounting, preservation, shared-drive evidence, exact-head remote CI, and Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260824-dcdev020m1r6r2r4-gc-preservation-qualification001
+- Status at issuance: ISSUED

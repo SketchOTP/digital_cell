@@ -26,3 +26,7 @@ path = "../../examples/dcdev020m1r6r1_geometry_material_closure_audit.rs"
 [[example]]
 name = "dcdev020m1r6r2r4_gc_preservation_qualification"
 path = "../../examples/dcdev020m1r6r2r4_gc_preservation_qualification.rs"
+
+[[example]]
+name = "dcdev020m1r6r3_full_runtime_m1_certification"
+path = "../../examples/dcdev020m1r6r3_full_runtime_m1_certification.rs"

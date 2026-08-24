@@ -625,3 +625,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-M1-R6-R2-R4 GC preservation qualification only; no D-087 criterion, chemistry, mechanics, transport, resource, production, reserve, controller, behavior, evolution, recycling, salvage, M2, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M1R6R2R3-001
+
+## L-DCDEV020M1R6R3-001
+
+- Learning ID: L-DCDEV020M1R6R3-001
+- Date: 2026-08-24
+- Fact or lesson: Under the accepted GeometryConservativeV3 and ConservativeV3 stack, the unchanged full runtime closes at every observed stage within `1e-8` and both fresh D-087 preservation vectors are `8/8`, but the finite fed 8,000-step arm loses `82.9654506509167` organized material. A 480-step deprivation followed by no-reset refeed increases rather than restores the deficit. Physical topology rupture is reached under zero-resource and feed-then-remove continuation at local steps `8867` and `11283`. The bounded classification candidate is `M1_FULL_RUNTIME_HOMEOSTASIS_FAILED`, pending remote Linux CI and Architect review.
+- Evidence location: `digital-protocell/examples/dcdev020m1r6r3_full_runtime_m1_certification.rs`, compact evidence under `digital-protocell/experiments/generated/dcdev020m1r6r3/`, and dense ledgers under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6-R3 observer-only full-runtime M1 certification; no biology, equations, parameter tuning, production selection, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R6R2R4-001
