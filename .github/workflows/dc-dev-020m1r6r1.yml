@@ -137,11 +137,14 @@ jobs:
               require(abs(attr['uptake_cumulative_residual']) <= 1e-8, f'{label}: uptake residual too large')
               require(abs(attr['reaction_cumulative_residual']) <= 1e-8, f'{label}: reaction residual too large')
               require(abs(attr['unexplained_residual']) <= 1e-8, f'{label}: unexplained residual too large')
-              contact = payload['first_permanent_resource_contact_loss_step']
-              geometry = payload['first_geometry_change_step']
+              contact = payload.get('first_permanent_resource_contact_loss_step')
+              geometry = payload.get('first_geometry_change_step')
               contact_chronology_match = contact is not None and geometry is not None and contact >= geometry
-              contact_resource_valid = payload['contact_loss_resource_remaining'] is not None and payload['contact_loss_resource_remaining'] > 0.0
-              contact_exposure_valid = payload['contact_loss_exposed_edges_before'] is not None and payload['contact_loss_exposed_edges_before'] > 0 and payload['contact_loss_exposed_edges_after'] == 0
+              contact_resource = payload.get('contact_loss_resource_remaining')
+              contact_before = payload.get('contact_loss_exposed_edges_before')
+              contact_after = payload.get('contact_loss_exposed_edges_after')
+              contact_resource_valid = contact_resource is not None and contact_resource > 0.0
+              contact_exposure_valid = contact_before is not None and contact_before > 0 and contact_after == 0
               return {
                   'mechanics_area_match': mechanics_area_match,
                   'remesh_area_match': remesh_area_match,
@@ -201,8 +204,8 @@ jobs:
               'linux_geometry_residual': results['attribution_8000']['geometry_cumulative_residual'],
               'local_fixed_concentration_prediction': local_results['attribution_8000']['geometry_fixed_concentration_delta'],
               'linux_fixed_concentration_prediction': results['attribution_8000']['geometry_fixed_concentration_delta'],
-              'local_contact_loss_step': local_results['first_permanent_resource_contact_loss_step'],
-              'linux_contact_loss_step': results['first_permanent_resource_contact_loss_step'],
+              'local_contact_loss_step': local_results.get('first_permanent_resource_contact_loss_step'),
+              'linux_contact_loss_step': results.get('first_permanent_resource_contact_loss_step'),
               'protocol_identity': 'PASS',
               'within_platform_parity': 'PASS',
               'causal_invariants': 'PLATFORM_DEPENDENT' if platform_dependent else 'PASS',
