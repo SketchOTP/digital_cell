@@ -41,7 +41,7 @@
 ## Last validation after adoption
 
 - Command or check: `R6-R1-R1-R1 workflow-order repair, governance, YAML parse, exact-head remote CI`
-- Result: `PASSED; remote CI run 32686612525 succeeded`
+- Result: `PASSED`
 
 ## Risks
 
