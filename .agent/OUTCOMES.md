@@ -1657,3 +1657,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: The front-loaded probe establishes schedule-history harm under the sealed diagnostic, but factor-swap values are observer shadows and do not uniquely identify one structural build factor. Recovery correspondence is recorded but does not establish a production repair or M1 closure. No diagnostic conclusion is authoritative until exact-head remote validation and Architect review.
 - Blockers: Exact-head remote CI and Architect review.
 - Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r6-source-geometry-state-coupling-audit001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R6-SOURCE-GEOMETRY-STATE-COUPLING-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R6-SOURCE-GEOMETRY-STATE-COUPLING-LOCAL`
+- Closed: `2026-08-26T17:20:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Exact-head Linux PR validation passed at `c3c5da567e57e2e182e55e303575418b1043aada` for the bounded observer-only R6-R6 source/geometry audit. Governance, formatting, bounded diff, accepted R6-R4/R6-R5 replays, explicit V2/V3 D-087 preservation, R6-R6 execution, compact evidence verification, geometry/material, Phase-1, D-088, D-091, and evolution preservation all passed. The diagnostic classification remains `M1_SOURCE_FRONTLOAD_AND_GEOMETRY_STRUCTURAL_CYCLE_CONFIRMED`: equal-total front-loaded source delivery fails on static geometry while the matched successful frozen schedule fails on moving geometry with measured structural-turnover excess.
+- Changed areas: No scientific implementation or evidence values changed after the local package. The remote-verified package contains only the previously bounded R6-R6 observer harness, workflow, compact evidence, documentation, and governance records; no production biology, reaction coefficients, mechanics, transport, resource configuration, source repair, production selection, controller, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 behavior changed.
+- Validation:
+  - Exact-head Linux workflow `33014350775` - PASSED
+  - All workflow job steps, including artifact verification and preservation suites - PASSED
+  - Uploaded artifact `dcdev020m1r6r6-source-geometry-evidence`, digest `sha256:a10ee0d650eb8858236041c098fce7de38012f6e6016b479dafb40912456c067` - VERIFIED
+  - PR #44 OPEN / DRAFT / UNMERGED with required base - VERIFIED
+  - Dense evidence - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r6`
+  - Architect review - PENDING
+- Remaining risks: The front-loaded result establishes schedule-history harm under the sealed diagnostic, while factor-swap values remain observer shadows and do not uniquely identify one structural build factor. The diagnostic does not authorize source-history or geometry repair, production selection, M1 closure, recycling/salvage, M2, or DC-DEV-021.
+- Blockers: Architect review.
+- Follow-up directive: none

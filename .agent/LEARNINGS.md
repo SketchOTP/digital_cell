@@ -705,3 +705,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-M1-R6-R6 observer-only source-history and moving-geometry state-coupling audit; no production biology, reaction coefficients, mechanics, transport, resource redesign, source repair, production selection, controller, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M1R6R5-REMOTE-VERIFIED-001
+
+## L-DCDEV020M1R6R6-REMOTE-VERIFIED-001
+
+- Learning ID: L-DCDEV020M1R6R6-REMOTE-VERIFIED-001
+- Date: 2026-08-26
+- Fact or lesson: Exact-head Linux PR validation passed at `c3c5da567e57e2e182e55e303575418b1043aada` in workflow `33014350775`. The R6-R6 diagnostic classification is `M1_SOURCE_FRONTLOAD_AND_GEOMETRY_STRUCTURAL_CYCLE_CONFIRMED`: matched static geometry with the frozen schedule remains positive, equal-total front-loading is negative, and matched moving geometry is negative with positive excess structural turnover. The uploaded compact artifact is `dcdev020m1r6r6-source-geometry-evidence` with digest `sha256:a10ee0d650eb8858236041c098fce7de38012f6e6016b479dafb40912456c067`. This remains diagnostic evidence only and awaits Architect acceptance.
+- Evidence location: compact evidence under `digital-protocell/experiments/generated/dcdev020m1r6r6/`, dense ledgers under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r6`, and exact-head workflow `33014350775`.
+- Confidence: PROVISIONAL
+- Scope: R6-R6 remote diagnostic verification only; no source-history repair, geometry/mechanics repair, production change, controller, recycling, salvage, M1 closure, M2, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R6R6-001

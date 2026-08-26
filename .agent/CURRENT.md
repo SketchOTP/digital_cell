@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-26T14:00:00-04:00`
+- Last updated: `2026-08-26T17:20:00-04:00`
 
 ## Active state after adoption
 
@@ -12,9 +12,9 @@
 - Objective: `Determine whether source-history/front-loading and moving-geometry structural cycling are causally separable contributors to the valid R6-R5 homeostasis failure, using observer-only replays.`
 - Current status: `VALIDATING`
 - Acceptance: `Reproduce R6-R5 references; characterize sealed source schedules; prove or disprove equal-total front-loaded source harm; quantify A/C/M stock-history and structural factors; preserve material closure and certified suites; write compact Git evidence and dense Atlas ledgers; obtain exact-head diagnostic CI and Architect review.`
-- Current phase: `R6-R5 is Architect-accepted as M1_EMBODIED_SINK_CAUSE_UNRESOLVED. R6-R6 observer-only execution is complete locally with the equal-total front-loaded source-history effect and matched moving-geometry structural-turnover excess both measured; exact-head remote validation and Architect review are pending.`
+- Current phase: `R6-R5 is Architect-accepted as M1_EMBODIED_SINK_CAUSE_UNRESOLVED. R6-R6 observer-only execution and exact-head remote validation are complete; the remote workflow passed at c3c5da567e57e2e182e55e303575418b1043aada, and Architect review is pending.`
 - Expected or actual touched areas: `R6-R6 observer-only audit example, phase1-certifier example registration, scoped workflow, compact evidence, documentation, and append-only governance only; no production biology, reaction source, mechanics, transport, resource configuration, or production selection; all unrelated dirty work is preserved`
-- Immediate next action: `Run exact-head remote R6-R6 validation and return the diagnostic classification to Architect review; do not repair source history or geometry coupling, change production, add recycling/salvage, add a controller, or begin M2/DC-DEV-021.`
+- Immediate next action: `Return the exact-head R6-R6 diagnostic package to Architect review; do not repair source history or geometry coupling, change production, add recycling/salvage, add a controller, or begin M2/DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -42,7 +42,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `DC-DEV-020-M1-R6-R6 local Rust 1.89.0 audit; R6-R5 reference replays, equal-total front-loaded schedule, matched source/geometry decomposition, recovery correspondence, Atlas dense output`
+- Command or check: `DC-DEV-020-M1-R6-R6 local Rust 1.89.0 audit plus exact-head Linux workflow 33014350775; R6-R5 reference replays, equal-total front-loaded schedule, matched source/geometry decomposition, recovery correspondence, Atlas dense output`
 - Result: `PASSED`
 
 ## Risks
@@ -66,7 +66,7 @@
 ## Blockers
 
 - R6-R5 is architect-accepted at `73067f702a8f5386c440629c454e40ab1e434e91` with exact-head PR CI `33008519410` and classification `M1_EMBODIED_SINK_CAUSE_UNRESOLVED`.
-- R6-R6 exact-head remote validation and independent Architect review remain pending. The local diagnostic classification is `M1_SOURCE_FRONTLOAD_AND_GEOMETRY_STRUCTURAL_CYCLE_CONFIRMED`, but it is not authoritative until remote verification and review.
+- R6-R6 exact-head remote validation passed in PR workflow `33014350775` at `c3c5da567e57e2e182e55e303575418b1043aada`; the uploaded compact artifact digest is `sha256:a10ee0d650eb8858236041c098fce7de38012f6e6016b479dafb40912456c067`. The local/remote diagnostic classification is `M1_SOURCE_FRONTLOAD_AND_GEOMETRY_STRUCTURAL_CYCLE_CONFIRMED`, pending independent Architect review.
 - No source-history repair, geometry/mechanics repair, production switch, recycling, salvage, controller, M2, behavior, evolution, or DC-DEV-021 work is authorized.
 
 ## Pending decisions
