@@ -12,9 +12,9 @@
 - Objective: `Determine whether the historical reaction-area floor causes the remaining Linux material residual under GeometryConservativeV3, without repairing production chemistry.`
 - Current status: `VALIDATING`
 - Acceptance: `Complete static floor-path map, first divergence and frozen replay evidence, transfer-level causal attribution, separate floating-point conditioning, trajectory parity, preservation, compact Atlas evidence, exact-head Linux diagnostic CI, and Architect review.`
-- Current phase: `R2 observer instrumentation and local evidence are complete. Windows reaches topology rupture before sub-floor reaction area; Linux exact-head execution is required to determine the causal classification.`
+- Current phase: `R2 observer instrumentation and local evidence are complete. Windows reaches topology rupture before sub-floor reaction area; exact-head Linux push and PR diagnostics passed and classify the floor mechanism as causally confirmed. Architect review is pending.`
 - Expected or actual touched areas: `R2 observer-only reaction audit, compact evidence namespace, diagnostic workflow/docs, and append-only governance only; all unrelated dirty work is preserved`
-- Immediate next action: `Push the bounded R2 diagnostic package, obtain exact-head Linux CI, and stop for Architect review; no production reaction repair, homeostasis repair, production switch, M2, recycling/salvage, or DC-DEV-021 execution.`
+- Immediate next action: `Return the exact-head R2 diagnostic package to Architect review; no production reaction repair, homeostasis repair, production switch, M2, recycling/salvage, or DC-DEV-021 execution.`
 
 ## Temporary task-relevant facts
 
@@ -42,8 +42,8 @@
 
 ## Last validation after adoption
 
-- Command or check: `R6-R2-R4 governance, scoped workflow, local qualifier, final exact-head push and PR remote CI, Atlas compact evidence; head dcce40b38b467615008699984a8cb52329b404e8; push run 32760632483; PR run 32760643807; artifact digest sha256:080f93693c34a22611351abba60a2aa23964938fc02039364b0fc127cac3fb86`
-- Result: `PASSED`
+- Command or check: `DC-DEV-020-M1-R6-R3-R2 exact-head push and PR diagnostic CI; head d4d4d2ef6627ebba660a034139439bf1a3ac508c; push run 32957391440; PR run 32957395432; artifact digests sha256:bb442b7d2f8955830013e19bf82c6f9351de9dfcb07bf1badcd3e9ca03f52134 and sha256:5f1abcedf4ea82b713f8304e462c70e784fbcaf5dc833cd2cfa402a1406c8072`
+- Result: `PASSED; remote classification M1_GC_REACTION_AREA_FLOOR_CAUSALLY_CONFIRMED; Architect review PENDING`
 
 ## Risks
 
