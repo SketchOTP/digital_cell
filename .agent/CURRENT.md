@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-25T00:00:00-04:00`
+- Last updated: `2026-08-26T00:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260825-dcdev020m1r6r3r1-gc-snapshot-area-semantics-correction001`
-- External directive ID: `DC-DEV-020-M1-R6-R3-R1-GC-SNAPSHOT-AREA-SEMANTICS-CORRECTION-001`
-- Objective: `Correct only GeometryConservativeV3 observer snapshot area semantics, rerun unchanged R6-R3, and obtain a valid exact-head scientific classification.`
+- Local directive ID: `D-20260826-dcdev020m1r6r3r2-gc-reaction-area-semantics-audit001`
+- External directive ID: `DC-DEV-020-M1-R6-R3-R2-GC-REACTION-AREA-SEMANTICS-AUDIT-001`
+- Objective: `Determine whether the historical reaction-area floor causes the remaining Linux material residual under GeometryConservativeV3, without repairing production chemistry.`
 - Current status: `VALIDATING`
-- Acceptance: `Snapshot caller audit, sub-floor defect reproduction, GC actual-area semantics, HistoricalV1/V2 preservation, trajectory noninterference, unchanged R6-R3 closure, frozen preservation suite, compact Atlas evidence, exact-head Linux CI, and Architect review.`
-- Current phase: `The observer-floor invalidation is reproduced and corrected narrowly. Local R6-R3 rerun closes every stage and returns M1_FULL_RUNTIME_HOMEOSTASIS_FAILED; exact-head remote verification and Architect review are pending.`
-- Expected or actual touched areas: `observer-only mesh snapshot semantics, focused geometry/material tests, R6-R3 compact evidence namespace, scoped workflow/docs, and append-only governance only; the dirty R6-R2 candidate is preserved`
-- Immediate next action: `Run exact-head remote verification for R6-R3-R1, then stop for Architect review; no homeostasis repair, production switch, M2, recycling/salvage, or DC-DEV-021 execution.`
+- Acceptance: `Complete static floor-path map, first divergence and frozen replay evidence, transfer-level causal attribution, separate floating-point conditioning, trajectory parity, preservation, compact Atlas evidence, exact-head Linux diagnostic CI, and Architect review.`
+- Current phase: `R2 observer instrumentation and local evidence are complete. Windows reaches topology rupture before sub-floor reaction area; Linux exact-head execution is required to determine the causal classification.`
+- Expected or actual touched areas: `R2 observer-only reaction audit, compact evidence namespace, diagnostic workflow/docs, and append-only governance only; all unrelated dirty work is preserved`
+- Immediate next action: `Push the bounded R2 diagnostic package, obtain exact-head Linux CI, and stop for Architect review; no production reaction repair, homeostasis repair, production switch, M2, recycling/salvage, or DC-DEV-021 execution.`
 
 ## Temporary task-relevant facts
 

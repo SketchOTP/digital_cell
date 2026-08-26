@@ -22,8 +22,8 @@ use std::fs::{self, File};
 use std::io::{BufWriter, Write};
 use std::path::{Path, PathBuf};
 
-const DIRECTIVE: &str = "DC-DEV-020-M1-R6-R3-FULL-RUNTIME-M1-CERTIFICATION-001";
-const STARTING_HEAD: &str = "0c56890d1f59c5dc2ffc66fd1d69181d7ca7b8c5";
+const DIRECTIVE: &str = "DC-DEV-020-M1-R6-R3-R2-GC-REACTION-AREA-SEMANTICS-AUDIT-001";
+const STARTING_HEAD: &str = "dac4973ea74e298744a69b5829c33dd0f7db85f4";
 const DT: f64 = 0.02;
 const RESOURCE_CENTER: [f64; 2] = [4.8, 0.0];
 const RESOURCE_RADIUS: f64 = 1.5;
@@ -36,7 +36,8 @@ const REFEED_STEPS: usize = 5_000;
 const TOLERANCE: f64 = 1e-8;
 const CHECKPOINTS: [usize; 7] = [0, 480, 1_000, 2_000, 4_000, 6_000, 8_000];
 const ATLAS_DENSE_ROOT: &str =
-    r"\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r3";
+    r"\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r3r2";
+const REACTION_AREA_FLOOR: f64 = 1e-6;
 
 #[derive(Debug, Clone, Serialize)]
 struct State {
@@ -112,6 +113,256 @@ struct SourceTotals {
     min_remaining_n: f64,
     min_remaining_f: f64,
     replenishment_events: u64,
+}
+
+#[derive(Debug, Clone, Serialize)]
+struct ReactionTransferAudit {
+    actual_area: f64,
+    reaction_area: f64,
+    area_ratio: f64,
+    active_bridges: Vec<&'static str>,
+    structural_build_residual: f64,
+    structural_turnover_residual: f64,
+    membrane_residual: f64,
+    reserve_residual: f64,
+    other_residual: f64,
+    predicted_floor_residual: f64,
+    floating_remainder: f64,
+    largest_interior_concentration: f64,
+    smallest_active_transfer: f64,
+    largest_active_transfer: f64,
+    ulp_scale: f64,
+    estimated_rounding_increment: f64,
+}
+
+#[derive(Debug, Clone, Serialize)]
+struct ReactionObservation {
+    step: usize,
+    actual_area: f64,
+    reaction_area: f64,
+    reaction_residual: f64,
+    state_before_reaction: State,
+    state_after_reaction: State,
+    transfer: ReactionTransferAudit,
+    replay_mesh_match: bool,
+    replay_ledger_match: bool,
+    ledger_hash: String,
+    #[serde(skip)]
+    before_mesh: Option<MaterialMesh>,
+}
+
+#[derive(Debug, Clone, Serialize, Default)]
+struct ReactionAreaAudit {
+    first_area_below_floor_step: Option<usize>,
+    first_area_below_floor: Option<ReactionObservation>,
+    immediately_before_first_area_below_floor: Option<ReactionObservation>,
+    first_residual_above_tolerance_step: Option<usize>,
+    first_residual_above_tolerance: Option<ReactionObservation>,
+    maximum_residual_step: Option<usize>,
+    maximum_residual: Option<ReactionObservation>,
+    cumulative_observed_reaction_residual: f64,
+    cumulative_predicted_floor_residual: f64,
+    cumulative_structural_build_residual: f64,
+    cumulative_structural_turnover_residual: f64,
+    cumulative_membrane_residual: f64,
+    cumulative_reserve_residual: f64,
+    cumulative_other_residual: f64,
+    cumulative_floating_remainder: f64,
+    replay_checks: usize,
+    replay_pass: bool,
+    #[serde(skip)]
+    last_observation: Option<ReactionObservation>,
+}
+
+impl ReactionAreaAudit {
+    fn observe(
+        &mut self,
+        step: usize,
+        mesh_before: &MaterialMesh,
+        mesh_after: &MaterialMesh,
+        ledger: &ReactionLedger,
+        reactions: &ReactionParams,
+        dt: f64,
+    ) {
+        let actual_area = mesh_before.area();
+        let reaction_area = actual_area.max(REACTION_AREA_FLOOR);
+        let reaction_residual = snapshot(mesh_after).strict_material_equivalent()
+            - snapshot(mesh_before).strict_material_equivalent();
+        let transfer = transfer_audit(
+            mesh_before,
+            ledger,
+            actual_area,
+            reaction_area,
+            reaction_residual,
+        );
+        let mut observation = ReactionObservation {
+            step,
+            actual_area,
+            reaction_area,
+            reaction_residual,
+            state_before_reaction: state(mesh_before, step, 0),
+            state_after_reaction: state(mesh_after, step, 0),
+            transfer,
+            replay_mesh_match: false,
+            replay_ledger_match: false,
+            ledger_hash: stable_json_hash(ledger).unwrap_or_else(|_| "hash-error".into()),
+            before_mesh: Some(mesh_before.clone()),
+        };
+
+        self.cumulative_observed_reaction_residual += reaction_residual;
+        self.cumulative_predicted_floor_residual += observation.transfer.predicted_floor_residual;
+        self.cumulative_structural_build_residual += observation.transfer.structural_build_residual;
+        self.cumulative_structural_turnover_residual +=
+            observation.transfer.structural_turnover_residual;
+        self.cumulative_membrane_residual += observation.transfer.membrane_residual;
+        self.cumulative_reserve_residual += observation.transfer.reserve_residual;
+        self.cumulative_other_residual += observation.transfer.other_residual;
+        self.cumulative_floating_remainder += observation.transfer.floating_remainder;
+        if self.replay_checks == 0 {
+            self.replay_pass = true;
+        }
+
+        if actual_area < REACTION_AREA_FLOOR && self.first_area_below_floor_step.is_none() {
+            self.first_area_below_floor_step = Some(step);
+            if let Some(previous) = self.last_observation.take() {
+                self.immediately_before_first_area_below_floor = Some(previous);
+            }
+            self.record_replay(&mut observation, mesh_after, reactions, dt);
+            self.first_area_below_floor = Some(observation.clone());
+        }
+        if reaction_residual.abs() > TOLERANCE && self.first_residual_above_tolerance_step.is_none()
+        {
+            self.first_residual_above_tolerance_step = Some(step);
+            self.record_replay(&mut observation, mesh_after, reactions, dt);
+            self.first_residual_above_tolerance = Some(observation.clone());
+        }
+        if self
+            .maximum_residual
+            .as_ref()
+            .map(|item| reaction_residual.abs() > item.reaction_residual.abs())
+            .unwrap_or(true)
+        {
+            self.record_replay(&mut observation, mesh_after, reactions, dt);
+            self.maximum_residual_step = Some(step);
+            self.maximum_residual = Some(observation.clone());
+        }
+        self.last_observation = Some(observation);
+    }
+
+    fn record_replay(
+        &mut self,
+        observation: &mut ReactionObservation,
+        expected_after: &MaterialMesh,
+        reactions: &ReactionParams,
+        dt: f64,
+    ) {
+        replay_reaction(observation, expected_after, reactions, dt);
+        self.replay_checks += 1;
+        self.replay_pass &= observation.replay_mesh_match && observation.replay_ledger_match;
+    }
+}
+
+fn transfer_audit(
+    mesh: &MaterialMesh,
+    ledger: &ReactionLedger,
+    actual_area: f64,
+    reaction_area: f64,
+    reaction_residual: f64,
+) -> ReactionTransferAudit {
+    let ratio = if reaction_area > 0.0 {
+        actual_area / reaction_area
+    } else {
+        0.0
+    };
+    let structural_source = ledger.a_to_m + ledger.diagnostic_liquid_r_used_for_m;
+    let structural_waste = (structural_source - ledger.m_produced).max(0.0);
+    let structural_build_residual =
+        ledger.m_produced + structural_waste * ratio - structural_source * ratio;
+    let structural_turnover_residual = -ledger.m_to_w + ledger.m_to_w * ratio;
+    let membrane_source = ledger.a_to_l + ledger.diagnostic_liquid_r_used_for_l;
+    let membrane_waste = (membrane_source - ledger.l_produced).max(0.0);
+    let membrane_residual = ledger.l_produced + membrane_waste * ratio - membrane_source * ratio;
+    let reserve_residual = 0.0;
+    let other_residual = 0.0;
+    let predicted_floor_residual = structural_build_residual
+        + structural_turnover_residual
+        + membrane_residual
+        + reserve_residual
+        + other_residual;
+    let transfers = [
+        ledger.m_produced,
+        ledger.m_to_w,
+        ledger.l_produced,
+        ledger.a_to_m,
+        ledger.a_to_l,
+        ledger.c_produced,
+        ledger.c_turned,
+        ledger.a_decayed,
+        ledger.n_consumed,
+        ledger.f_consumed,
+    ];
+    let active: Vec<f64> = transfers.into_iter().filter(|value| *value > 0.0).collect();
+    let largest_interior_concentration = [
+        mesh.interior.n,
+        mesh.interior.f,
+        mesh.interior.a,
+        mesh.interior.c,
+        mesh.interior.r,
+        mesh.interior.w,
+    ]
+    .into_iter()
+    .map(f64::abs)
+    .fold(0.0, f64::max);
+    let ulp_scale = f64::EPSILON * largest_interior_concentration.max(1.0);
+    let estimated_rounding_increment = ulp_scale * active.len() as f64;
+    let smallest_active_transfer = active.iter().copied().fold(f64::INFINITY, f64::min);
+    ReactionTransferAudit {
+        actual_area,
+        reaction_area,
+        area_ratio: ratio,
+        active_bridges: vec![
+            "structural_build",
+            "structural_turnover",
+            "membrane_production",
+        ],
+        structural_build_residual,
+        structural_turnover_residual,
+        membrane_residual,
+        reserve_residual,
+        other_residual,
+        predicted_floor_residual,
+        floating_remainder: reaction_residual - predicted_floor_residual,
+        largest_interior_concentration,
+        smallest_active_transfer: if smallest_active_transfer.is_finite() {
+            smallest_active_transfer
+        } else {
+            0.0
+        },
+        largest_active_transfer: active.iter().copied().fold(0.0, f64::max),
+        ulp_scale,
+        estimated_rounding_increment,
+    }
+}
+
+fn replay_reaction(
+    observation: &mut ReactionObservation,
+    expected_after: &MaterialMesh,
+    reactions: &ReactionParams,
+    dt: f64,
+) {
+    let Some(before_mesh) = observation.before_mesh.as_ref() else {
+        return;
+    };
+    let mut replay_mesh = before_mesh.clone();
+    let replay_ledger = reactions_step(&mut replay_mesh, reactions, dt, true, true);
+    observation.replay_mesh_match = stable_json_hash(&replay_mesh)
+        .ok()
+        .zip(stable_json_hash(expected_after).ok())
+        .map(|(left, right)| left == right)
+        .unwrap_or(false);
+    observation.replay_ledger_match = stable_json_hash(&replay_ledger)
+        .map(|hash| hash == observation.ledger_hash)
+        .unwrap_or(false);
 }
 
 #[derive(Debug, Clone, Default, Serialize)]
@@ -215,6 +466,7 @@ struct RuntimeTotals {
     membrane_turnover: f64,
     a_decay: f64,
     accounting: StageAccounting,
+    reaction_area_audit: ReactionAreaAudit,
 }
 
 impl RuntimeTotals {
@@ -305,6 +557,49 @@ fn close(a: f64, b: f64) -> bool {
     (a - b).abs() <= TOLERANCE * (1.0 + a.abs().max(b.abs()))
 }
 
+fn floor_causally_sufficient(audit: &ReactionAreaAudit) -> bool {
+    audit.first_area_below_floor_step.is_some()
+        && audit.first_residual_above_tolerance_step.is_some()
+        && audit.replay_checks >= 2
+        && audit.replay_pass
+        && close(
+            audit.cumulative_observed_reaction_residual,
+            audit.cumulative_predicted_floor_residual,
+        )
+}
+
+fn reaction_floor_classification(
+    zero: &ReactionAreaAudit,
+    removal: &ReactionAreaAudit,
+    preservation_pass: bool,
+    preempted_by_topology_loss: bool,
+) -> &'static str {
+    if !preservation_pass {
+        return "M1_GC_REACTION_AREA_CAUSE_UNRESOLVED";
+    }
+    let floor_crossed =
+        zero.first_area_below_floor_step.is_some() && removal.first_area_below_floor_step.is_some();
+    if !floor_crossed {
+        return if preempted_by_topology_loss {
+            "M1_GC_REACTION_AREA_CAUSE_UNRESOLVED"
+        } else {
+            "M1_GC_REACTION_AREA_CAUSE_DISPROVEN"
+        };
+    }
+    if floor_causally_sufficient(zero) && floor_causally_sufficient(removal) {
+        return "M1_GC_REACTION_AREA_FLOOR_CAUSALLY_CONFIRMED";
+    }
+    let observed = zero.cumulative_observed_reaction_residual.abs()
+        + removal.cumulative_observed_reaction_residual.abs();
+    let floating =
+        zero.cumulative_floating_remainder.abs() + removal.cumulative_floating_remainder.abs();
+    if floating > observed * 0.5 && floating > TOLERANCE {
+        "M1_GC_REACTION_FLOATING_PRECISION_DOMINANT"
+    } else {
+        "M1_GC_REACTION_AREA_CAUSE_UNRESOLVED"
+    }
+}
+
 fn v3_params() -> ReactionParams {
     let params = ReactionParams::conservative_v3();
     assert_eq!(params.mesh_schema, MeshChemistrySchema::ConservativeV3);
@@ -332,6 +627,7 @@ fn write_dense(writer: &mut Option<BufWriter<File>>, value: &Checkpoint) -> std:
 }
 
 fn run_step(
+    step: usize,
     mesh: &mut MaterialMesh,
     mechanics: &MechParams,
     reactions: &ReactionParams,
@@ -375,9 +671,18 @@ fn run_step(
         strict_after_uptake - strict_before - uptake.n_delivered - uptake.f_delivered;
 
     let strict_before_reactions = strict_after_uptake;
+    let mesh_before_reactions = mesh.clone();
     let ledger = reactions_step(mesh, reactions, mechanics.dt, true, true);
     let strict_after_reactions = snapshot(mesh).strict_material_equivalent();
     let reaction_residual = strict_after_reactions - strict_before_reactions;
+    runtime.reaction_area_audit.observe(
+        step,
+        &mesh_before_reactions,
+        mesh,
+        &ledger,
+        reactions,
+        mechanics.dt,
+    );
 
     let strict_before_mechanics = strict_after_reactions;
     if !mechanics_step(mesh, mechanics) {
@@ -445,6 +750,7 @@ fn run_segment(
     for offset in 1..=steps {
         let absolute_step = start_step + offset;
         last_exposed = run_step(
+            absolute_step,
             mesh,
             &mechanics,
             &reactions,
@@ -773,11 +1079,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     std::env::set_var("DCDEV020R9R3_CONTRACT", "ConservativeV3");
     std::env::set_var("DCDEV020R9R3_RESERVE", "0");
     std::env::set_var("DCDEV020M1R6R2_GEOMETRY_CONTRACT", "1");
-    let out = std::env::var_os("DCDEV020M1R6R3_OUTPUT")
+    let out = std::env::var_os("DCDEV020M1R6R3R2_OUTPUT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| PathBuf::from("experiments/generated/dcdev020m1r6r3"));
+        .unwrap_or_else(|| PathBuf::from("experiments/generated/dcdev020m1r6r3r2"));
     fs::create_dir_all(&out)?;
-    let dense_root = std::env::var_os("DCDEV020M1R6R3_DENSE_OUTPUT")
+    let dense_root = std::env::var_os("DCDEV020M1R6R3R2_DENSE_OUTPUT")
         .map(PathBuf::from)
         .or_else(|| Some(PathBuf::from(ATLAS_DENSE_ROOT)));
     if let Some(root) = dense_root.as_ref() {
@@ -856,7 +1162,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         && zero.evidence.world_organism_closure_residual <= TOLERANCE
         && recovery.world_organism_closure_residual <= TOLERANCE
         && removal.evidence.world_organism_closure_residual <= TOLERANCE;
-    let classification = if !accounting_pass || !preservation_pass {
+    let r6_r3_classification = if !accounting_pass || !preservation_pass {
         "M1_FULL_RUNTIME_CERTIFICATION_INVALID"
     } else if !fed_pass || !restoration_pass {
         "M1_FULL_RUNTIME_HOMEOSTASIS_FAILED"
@@ -867,6 +1173,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     } else {
         "M1_FULL_RUNTIME_CERTIFIED"
     };
+    let diagnostic_classification = reaction_floor_classification(
+        &zero.evidence.runtime.reaction_area_audit,
+        &removal.evidence.runtime.reaction_area_audit,
+        preservation_pass,
+        zero.evidence.first_topology_rupture_step.is_some()
+            || removal.evidence.first_topology_rupture_step.is_some(),
+    );
 
     let protocol = json!({
         "directive": DIRECTIVE,
@@ -881,6 +1194,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "checkpoints": CHECKPOINTS,
         "stage_closure": {"identity": "strict material before/after each stage; uptake additionally subtracts delivered N+F", "tolerance": TOLERANCE, "remesh_return_value_is_authority": false},
         "dense_output": ATLAS_DENSE_ROOT,
+        "reaction_area_audit": {"historical_floor": REACTION_AREA_FLOOR, "scope": "observer-only; no reaction equation or runtime state change"},
         "production_default_changed": false,
         "m2_authorized": false,
         "next_execution_started": false,
@@ -894,7 +1208,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "recovery": recovery,
         "feed_then_remove": removal.evidence,
         "post_loss_refeed": post_loss_refeed,
-        "classification": classification,
+        "classification": diagnostic_classification,
+        "r6_r3_classification": r6_r3_classification,
         "fed_homeostasis_pass": fed_pass,
         "restoration_pass": restoration_pass,
         "resource_dependence_pass": resource_dependence_pass,
@@ -922,7 +1237,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "production_biology_changed": false,
         "production_default_changed": false,
         "next_execution_started": false,
-        "classification": classification,
+        "classification": diagnostic_classification,
     });
     let preservation = json!({
         "historical_v2_d087": d087_pass(&out_v2, "ConservativeV2"),
@@ -940,12 +1255,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     ] {
         fs::write(out.join(name), serde_json::to_vec_pretty(value)?)?;
     }
-    let manifest = json!({"schema": "dcdev020m1r6r3_manifest_v1", "directive": DIRECTIVE, "starting_head": STARTING_HEAD, "files": ["protocol.json", "results.json", "qualification.json", "preservation.json", "artifact_manifest.json"], "dense_output": ATLAS_DENSE_ROOT, "shared_drive_required": true, "sha256": "computed-by-workflow"});
+    let manifest = json!({"schema": "dcdev020m1r6r3r2_manifest_v1", "directive": DIRECTIVE, "starting_head": STARTING_HEAD, "files": ["protocol.json", "results.json", "qualification.json", "preservation.json", "artifact_manifest.json"], "dense_output": ATLAS_DENSE_ROOT, "shared_drive_required": true, "sha256": "computed-by-workflow"});
     fs::write(
         out.join("artifact_manifest.json"),
         serde_json::to_vec_pretty(&manifest)?,
     )?;
-    println!("classification={classification}");
+    println!("classification={diagnostic_classification}");
     println!(
         "fed_organized_delta={}",
         fed.evidence.organized_material_delta

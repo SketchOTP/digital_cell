@@ -249,6 +249,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260826-dcdev020m1r6r3r2-gc-reaction-area-semantics-audit001
+
+- Issued: 2026-08-26T00:00:00-04:00
+- Issuer: User
+- External directive: DC-DEV-020-M1-R6-R3-R2-GC-REACTION-AREA-SEMANTICS-AUDIT-001
+- Objective: Audit every active amount/concentration bridge using the historical `max(area, 1e-6)` reaction area and determine whether it causes the remaining Linux GC material residual.
+- Scope: Observer-only static pathway map, dynamic first-divergence capture, transfer-level predicted residuals, frozen one-step reaction replay, floating-point conditioning, trajectory parity, preservation, compact Git evidence, dense canonical Atlas evidence, and exact-head diagnostic CI.
+- Exclusions: No reaction equation, area floor, coefficient, tolerance, chemistry, mechanics, transport, GC contract, remesh, rebond, death, production selection, homeostasis repair, recycling, salvage, M2, or DC-DEV-021 changes.
+- Acceptance: All relevant floor paths enumerated; first floor crossing and closure failure established where platform reaches them; frozen replay and residual attribution complete; floating-point contribution separated; preservation and remote diagnostic CI pass; Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260817-dcdev020-fast-allosteric-assimilation
+- Status at issuance: ISSUED
+
 ## D-20260822-dcdev020m1r1capacitydecomp001
 
 - Issued: `2026-08-22T00:00:00-04:00`

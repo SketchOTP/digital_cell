@@ -645,3 +645,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-M1-R6-R3-R1 observer snapshot-area semantics correction only; no homeostasis repair, production selection, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M1R6R3-001
+
+## L-DCDEV020M1R6R3R2-001
+
+- Learning ID: L-DCDEV020M1R6R3R2-001
+- Date: 2026-08-26
+- Fact or lesson: The production reaction path still uses `max(mesh.area(), 1e-6)` while GeometryConservativeV3 accounting uses actual positive area. The R2 observer maps structural build, structural turnover, and membrane production as active amount/concentration bridges in the reserve-OFF full runtime; reserve, damage, and other floor paths are inactive for this assay. Frozen clone replays use the exact live reaction parameters and timestep. Windows reaches topology rupture before the reaction area crosses the floor, so Linux exact-head evidence is required for causal attribution.
+- Evidence location: `digital-protocell/examples/dcdev020m1r6r3_full_runtime_m1_certification.rs`, `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3r2/`, compact evidence under `digital-protocell/experiments/generated/dcdev020m1r6r3r2/`, and dense ledgers under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r2\\`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6-R3-R2 observer-only reaction-area semantics audit; no production reaction repair, biology, coefficients, tolerances, production selection, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R6R3R1-001

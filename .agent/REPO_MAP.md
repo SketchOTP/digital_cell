@@ -188,6 +188,12 @@
 - `.github/workflows/dc-dev-020m1r6r3.yml` — R6-R3-R1 observer-accounting correction, unchanged full-runtime replay, preservation, artifact, and exact-head CI.
 - `\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r1\\` — canonical dense corrected R6-R3 runtime ledgers; compact authority remains in Git.
 
+- `digital-protocell/examples/dcdev020m1r6r3_full_runtime_m1_certification.rs` — R2 observer-only reaction-area floor audit, transfer-level residual decomposition, exact-parameter frozen reaction replay, and conditioning measurements.
+- `digital-protocell/experiments/generated/dcdev020m1r6r3r2/` — compact R2 protocol/results/qualification/preservation/manifest namespace; dense ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3r2/` — R2 reaction-area semantics audit protocol and handoff.
+- `.github/workflows/dc-dev-020m1r6r3.yml` — scoped R2 governance, diagnostic verifier, preservation, artifact, and exact-head CI.
+- `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r2\\` — canonical dense R2 runtime ledgers; compact authority remains in Git.
+
 ## External integration points
 
 - `atlas:/home/sketch/Projects/authority/` — reference-only Authority governance checkout.

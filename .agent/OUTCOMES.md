@@ -1468,3 +1468,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: Full-runtime homeostasis and no-reset restoration remain failed; irreversible death remains platform-sensitive until remote replay; no repair or downstream execution is authorized.
 - Blockers: Exact-head push/PR CI and Architect review.
 - Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r3r2-gc-reaction-area-semantics-audit001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R3R2-GC-REACTION-AREA-SEMANTICS-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R3R1-GC-SNAPSHOT-AREA-SEMANTICS-PENDING-ARCHITECT`
+- Closed: `2026-08-26T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R2 audit maps the active historical reaction-area floor bridges and records per-step predicted transfer residuals, conditioning data, and exact-parameter frozen replays. Local Windows execution reaches topology rupture before sub-floor reaction area; Linux exact-head diagnostic execution remains authoritative for the floor-causality result.
+- Changed areas: `examples/dcdev020m1r6r3_full_runtime_m1_certification.rs`, the R2 diagnostic workflow, R2 documentation, R2 compact evidence, and append-only governance only. No production chemistry source was changed.
+- Validation:
+  - Local Rust 1.89.0 compile - PASSED
+  - Observer replay with live reaction parameters and timestep - PASSED locally
+  - Local physical trajectory remains the unchanged runtime path; topology rupture preempts sub-floor observation on Windows
+  - Dense evidence target - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r2\\`
+  - Exact-head Linux diagnostic CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The local platform cannot establish or disprove Linux sub-floor floor causality. The R6-R3 homeostasis failure remains preserved; no production repair or downstream execution is authorized.
+- Blockers: Exact-head push/PR diagnostic CI and Architect review.
+- Follow-up directive: none
