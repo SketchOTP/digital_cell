@@ -475,12 +475,8 @@ fn edge_frames(
                 occupancy: mesh.occupancy(i),
                 permeability: permeability(mesh.occupancy(i), "N"),
                 exposed: projection.map(|p| p.exposed[i]).unwrap_or(false),
-                n_requested: projection
-                    .map(|p| p.n_requested_by_edge[i])
-                    .unwrap_or(0.0),
-                f_requested: projection
-                    .map(|p| p.f_requested_by_edge[i])
-                    .unwrap_or(0.0),
+                n_requested: projection.map(|p| p.n_requested_by_edge[i]).unwrap_or(0.0),
+                f_requested: projection.map(|p| p.f_requested_by_edge[i]).unwrap_or(0.0),
                 n_delivered: projection.map(|p| p.n_by_edge[i]).unwrap_or(0.0),
                 f_delivered: projection.map(|p| p.f_by_edge[i]).unwrap_or(0.0),
             }
