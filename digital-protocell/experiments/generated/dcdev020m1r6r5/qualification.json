@@ -1,0 +1,20 @@
+{
+  "classification": "M1_EMBODIED_SINK_CAUSE_UNRESOLVED",
+  "directive": "DC-DEV-020-M1-R6-R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-001",
+  "e0_authority": true,
+  "e10_geometry_coupling": true,
+  "e11_prior_evidence_reconciled": true,
+  "e12_preservation": true,
+  "e13_remote_ci": "required",
+  "e1_organized_material_identity": true,
+  "e2_false_demand_terms_excluded": true,
+  "e3_time_resolved_sink_chronology": true,
+  "e4_normalized_excess_attribution": true,
+  "e5_matched_source_static": true,
+  "e6_matched_source_moving": true,
+  "e7_single_sink_interventions": true,
+  "e8_conditional_pairwise_interventions": true,
+  "e9_restoration": true,
+  "next_execution_started": false,
+  "observer_only": true
+}

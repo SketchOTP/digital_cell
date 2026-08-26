@@ -920,3 +920,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260826-dcdev020m1r6r3r3-gc-reaction-area-conservation-repair001
 - Status at issuance: ISSUED
+
+## D-20260826-dcdev020m1r6r5-embodied-sink-causal-decomposition001
+
+- Issued: `2026-08-26T12:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R6-R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-001`
+- Objective: Determine which irreversible organized-material sink or coupling causes the materially conservative moving body to lose organized material faster than finite metabolism can replace it.
+- Scope: Start exactly at accepted R6-R4 head `48ac1da5c6af6a9157d482d6fffecd32ee6e82c8`; record the per-step activation/A-decay/C-turnover/M-turnover identity; compare geometry-frozen, moving, matched-source, and contact-upper diagnostic clones; run fixed single sink knockouts and conditional pairwise probes; repeat decisive probes on no-reset restoration; preserve all certified suites; write compact Git evidence and dense Atlas ledgers; obtain exact-head remote CI.
+- Exclusions: All production reaction coefficients and laws, mechanics, transport, resources, GC conservation, death semantics, D-087, production selection, controllers, target states, recycling, salvage, M2, behavior, evolution, and DC-DEV-021.
+- Acceptance: Exact organized-material sink identity; time-resolved sink chronology; normalized excess attribution; matched-source causal comparisons; valid fixed knockout results; restoration shadows; preservation; compact evidence; dense Atlas evidence; exact-head remote CI; Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260826-dcdev020m1r6r4-homeostasis-contact-causal-audit001
+- Status at issuance: ISSUED

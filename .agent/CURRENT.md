@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260826-dcdev020m1r6r4-homeostasis-contact-causal-audit001`
-- External directive ID: `DC-DEV-020-M1-R6-R4-HOMEOSTASIS-CONTACT-CAUSAL-AUDIT-001`
-- Objective: `Determine whether loss of geometric resource contact or embodied moving-body demand is causally sufficient for the valid full-runtime homeostasis and restoration failure, using observer-only arms.`
+- Local directive ID: `D-20260826-dcdev020m1r6r5-embodied-sink-causal-decomposition001`
+- External directive ID: `DC-DEV-020-M1-R6-R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-001`
+- Objective: `Determine which irreversible organized-material sink or coupling causes the materially conservative moving body to lose organized material faster than finite metabolism can replace it, using observer-only arms.`
 - Current status: `VALIDATING`
-- Acceptance: `Separate exposure, permeability, concentration drive, edge-length, and embodied-demand contributions; preserve the actual R6 failure and R5 static reference; write compact evidence to Git and dense ledgers to canonical Atlas; obtain exact-head diagnostic CI and Architect review.`
-- Current phase: `R6-R3-R3 is Architect-accepted. The R6-R4 observer-only audit has a reproducible local negative result: actual contact becomes permanently zero at step 850 while the fixed reservoir remains available, but the all-intact finite-resource upper bound still declines. Remote exact-head verification and Architect review are pending.`
-- Expected or actual touched areas: `R6-R4 observer-only qualification example, workflow, compact evidence, R4 documentation, and append-only governance only; no production biology or resource/mechanics code; all unrelated dirty work is preserved`
-- Immediate next action: `Run exact-head Linux diagnostic CI, verify compact and Atlas evidence, and return the bounded causal result to Architect review; do not repair homeostasis, change production, redesign resources, add M2 behavior, or begin DC-DEV-021.`
+- Acceptance: `Close the organized-material sink identity, time-resolved sink attribution, matched-source static/moving comparisons, fixed one-at-a-time knockouts, conditional pairwise probes when required, restoration shadows, preservation, compact evidence, dense Atlas ledgers, exact-head diagnostic CI, and Architect review.`
+- Current phase: `R6-R4 is Architect-accepted as M1_FULL_RUNTIME_EMBODIED_DEMAND_DOMINANT. R6-R5 local observer-only decomposition reproduces the accepted arms, preserves material closure, and finds all three single sink knockouts individually sufficient under the contact-upper schedule; the strict bounded classification is M1_EMBODIED_SINK_CAUSE_UNRESOLVED pending remote validation.`
+- Expected or actual touched areas: `R6-R5 observer-only qualification example, phase1-certifier example registration, scoped workflow, compact evidence, R5 documentation, and append-only governance only; no production biology, reaction source, mechanics, transport, resource configuration, or production selection; all unrelated dirty work is preserved`
+- Immediate next action: `Run exact-head Linux diagnostic CI, verify compact evidence and preservation, and return the bounded R6-R5 result to Architect review; do not repair sinks, change production, add recycling/salvage, change resources, add a controller, or begin M2/DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -42,7 +42,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `DC-DEV-020-M1-R6-R4 local Rust 1.89.0 audit; exact R6 reproduction, R5 static reference, geometry-frozen and contact-preserved diagnostic arms, Atlas dense output`
+- Command or check: `DC-DEV-020-M1-R6-R5 local Rust 1.89.0 audit; accepted R6-R4 reproduction, geometry-frozen/contact-upper arms, matched-source replays, single sink knockouts, restoration shadows, Atlas dense output`
 - Result: `PASSED`
 
 ## Risks

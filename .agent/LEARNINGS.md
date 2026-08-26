@@ -675,3 +675,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-M1-R6-R4 observer-only homeostasis/contact causal audit; no biology, equations, mechanics, transport, resource redesign, production selection, controller, behavior, evolution, recycling, salvage, M2, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M1R6R3R3-001
+
+## L-DCDEV020M1R6R5-001
+
+- Learning ID: L-DCDEV020M1R6R5-001
+- Date: 2026-08-26
+- Fact or lesson: The accepted R6-R4 moving-body result decomposes cleanly into activation minus A decay, catalyst turnover, and structural turnover under reserve OFF; reserve loss, structural damage, and membrane damage are zero in the diagnostic runtime. R6-R5 matched-source replays show static geometry declines under the contact-upper source schedule, while moving geometry declines under the R5-like schedule that keeps static geometry at break-even. All three fixed single sink knockouts individually restore the existing organized-material endpoint criterion, so the directive's strict single-dominant and conditional pairwise classifications are not met; the bounded local classification is `M1_EMBODIED_SINK_CAUSE_UNRESOLVED` pending exact-head Linux validation.
+- Evidence location: `digital-protocell/examples/dcdev020m1r6r5_embodied_sink_causal_decomposition.rs`, `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r5/`, compact evidence under `digital-protocell/experiments/generated/dcdev020m1r6r5/`, and dense ledgers under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r5`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6-R5 observer-only embodied-sink causal decomposition; no production biology, reaction coefficients, mechanics, transport, resources, GC conservation, production selection, controller, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R6R4-001

@@ -1556,6 +1556,32 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: Exact-head diagnostic CI and Architect review.
 - Follow-up directive: none
 
+## D-20260826-dcdev020m1r6r5-embodied-sink-causal-decomposition001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R4-HOMEOSTASIS-CONTACT-CAUSAL-AUDIT-PENDING-REMOTE`
+- Closed: `2026-08-26T12:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The bounded observer-only R6-R5 decomposition reproduces the accepted R6-R4 actual moving, geometry-frozen, and contact-upper results. The per-step organized-material identity closes as activation minus A decay, catalyst turnover, and structural turnover; reserve loss and damage terms are zero. Static geometry declines under the contact-upper source schedule, while moving geometry declines under the R5-like schedule that keeps static geometry at break-even. All three fixed single sink knockout probes individually cross the existing organized-material endpoint criterion, so no single dominant sink or conditional pairwise mixed classification is established. The local classification is `M1_EMBODIED_SINK_CAUSE_UNRESOLVED`, pending exact-head remote validation.
+- Changed areas: `digital-protocell/examples/dcdev020m1r6r5_embodied_sink_causal_decomposition.rs`, its phase1-certifier example registration, R6-R5 workflow, compact evidence, documentation, and append-only governance only. No production biology, reaction source, mechanics, transport, resource configuration, GC conservation, or production selection changed.
+- Validation:
+  - Rust 1.89.0 formatting and example compile - PASSED
+  - Actual R6-R4 reproduction - `-82.9654506509167` organized delta and `14.6275901001589` N/F delivered - PASSED
+  - Geometry-frozen reference - `+0.342140676890381` - PASSED
+  - Contact-upper reference - `-17.4947722071266` - PASSED
+  - Matched source static upper schedule - `-16.0257265275525` - RECORDED NEGATIVE
+  - Matched source static frozen schedule - `+0.342140676890352` - PASSED
+  - Matched source moving frozen schedule - `-9.95495920654304` - RECORDED NEGATIVE
+  - Organized sink identity and strict closure - PASSED within `1e-8`
+  - Single knockouts A-decay/C-turnover/M-turnover - all restoration endpoint probes PASSED; no single dominant classification
+  - V2/V3 D-087 - `8/8` each - PASSED locally
+  - Dense evidence - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r5`
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The local classification is unresolved by the directive's strict acceptance definitions; remote Linux execution must confirm the compact evidence, closure, preservation, and classification. M1 remains not established; no sink repair, production switch, recycling/salvage work, M2, or DC-DEV-021 is authorized.
+- Blockers: Exact-head diagnostic CI and Architect review.
+- Follow-up directive: none
+
 ## D-20260826-dcdev020m1r6r3r3-gc-reaction-area-conservation-repair001 - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-FINAL-HEAD-PENDING-ARCHITECT`

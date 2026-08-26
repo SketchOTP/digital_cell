@@ -218,3 +218,9 @@
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r4/` — R6-R4 homeostasis/contact causal audit protocol and bounded interpretation.
 - `.github/workflows/dc-dev-020m1r6r4.yml` — scoped R6-R4 governance, D-087 preservation, observer audit, compact artifact verification, frozen-suite preservation, and exact-head CI.
 - `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r4\` — canonical dense R6-R4 runtime ledgers; compact authority remains in Git.
+
+- `digital-protocell/examples/dcdev020m1r6r5_embodied_sink_causal_decomposition.rs` — R6-R5 observer-only organized-material identity, sink chronology, matched-source clones, fixed sink knockouts, conditional pairwise probes, and no-reset recovery shadows.
+- `digital-protocell/experiments/generated/dcdev020m1r6r5/` — compact R6-R5 protocol/results/qualification/preservation/manifest; dense ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r5/` — R6-R5 embodied-sink causal decomposition protocol and provisional result.
+- `.github/workflows/dc-dev-020m1r6r5.yml` — scoped R6-R5 governance, R6-R4 reproduction, fixed diagnostic decomposition, D-087, preservation, artifact verification, and exact-head CI.
+- `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r5\` — canonical dense R6-R5 runtime ledgers; compact authority remains in Git.

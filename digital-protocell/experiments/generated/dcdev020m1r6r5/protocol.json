@@ -1,0 +1,55 @@
+{
+  "arms": [
+    "actual_moving",
+    "geometry_frozen",
+    "contact_upper_bound",
+    "matched_source_static",
+    "matched_source_static_frozen_schedule",
+    "matched_source_moving",
+    "single_sink_knockouts",
+    "conditional_pairwise_knockouts",
+    "no_reset_recovery"
+  ],
+  "deprivation": 480,
+  "diagnostic_interventions": [
+    "A_DECAY_OFF",
+    "C_TURNOVER_OFF",
+    "M_TURNOVER_OFF"
+  ],
+  "directive": "DC-DEV-020-M1-R6-R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-001",
+  "forbidden_changes": [
+    "production rates",
+    "chemistry equations",
+    "mechanics",
+    "resource geometry",
+    "resource inventory",
+    "permeability",
+    "recycling",
+    "salvage",
+    "controller",
+    "M2"
+  ],
+  "horizon": 8000,
+  "next_execution_started": false,
+  "organized_identity": "activation - A_decay - C_turnover - M_turnover; reserve/damage terms are zero in this reserve-OFF, no-damage runtime",
+  "resource": {
+    "boundary_f": 2.063914918930895,
+    "boundary_n": 2.063914918930895,
+    "center": [
+      4.8,
+      0.0
+    ],
+    "initial_f": 243.14924801053778,
+    "initial_n": 243.14924801053778,
+    "radius": 1.5,
+    "replenishment_events": 0
+  },
+  "runtime": {
+    "chemistry": "ConservativeV3",
+    "dt": 0.02,
+    "material": "GeometryConservativeV3",
+    "reserve": "OFF"
+  },
+  "source_schedule": "per-step schedule is captured from a live diagnostic arm and replayed without changing production transport",
+  "starting_head": "48ac1da5c6af6a9157d482d6fffecd32ee6e82c8"
+}

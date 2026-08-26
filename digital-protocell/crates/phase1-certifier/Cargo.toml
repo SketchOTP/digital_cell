@@ -34,3 +34,7 @@ path = "../../examples/dcdev020m1r6r3_full_runtime_m1_certification.rs"
 [[example]]
 name = "dcdev020m1r6r4_homeostasis_contact_audit"
 path = "../../examples/dcdev020m1r6r4_homeostasis_contact_audit.rs"
+
+[[example]]
+name = "dcdev020m1r6r5_embodied_sink_causal_decomposition"
+path = "../../examples/dcdev020m1r6r5_embodied_sink_causal_decomposition.rs"
