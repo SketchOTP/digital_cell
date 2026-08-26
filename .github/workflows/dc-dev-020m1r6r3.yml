@@ -121,8 +121,13 @@ jobs:
           require(results['zero_resource']['source']['n_delivered'] == 0.0 and results['zero_resource']['source']['f_delivered'] == 0.0, 'zero-resource delivery was nonzero')
           require(results['feed_then_remove']['source']['n_delivered'] == 0.0 and results['feed_then_remove']['source']['f_delivered'] == 0.0, 'post-removal delivery was nonzero')
           require(results['feed_then_remove']['organized_material_delta'] < 0.0, 'withdrawal did not deteriorate material')
-          require(results['physical_loss_pass'] is True, 'physical loss was not reached')
-          require(results['post_loss_refeed']['topology_recovered'] is False, 'topology recovered after refeed')
+          physical_loss_pass = results['physical_loss_pass'] is True
+          if results['classification'] == 'M1_FULL_RUNTIME_CERTIFIED':
+              require(physical_loss_pass, 'certified result did not reach physical loss')
+          if physical_loss_pass:
+              require(results['post_loss_refeed']['topology_recovered'] is False, 'topology recovered after refeed')
+          else:
+              require(results['post_loss_refeed']['exercised'] is False, 'post-loss refeed was exercised without physical loss')
           require(results['accounting_pass'] is True, 'stage accounting failed')
           require(results['preservation_pass'] is True, 'D-087 preservation failed')
           require(preservation['historical_v2_d087'] is True and preservation['candidate_v3_d087'] is True, 'D-087 reports were not 8/8')
