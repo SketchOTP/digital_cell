@@ -126,6 +126,22 @@ jobs:
               'v3_d087': preservation.get('candidate_v3_d087'),
               'next_execution_started': qualification.get('next_execution_started'),
           }
+          for arm_name in ('fed_8000', 'zero_resource', 'feed_then_remove'):
+              arm = results.get(arm_name, {})
+              accounting = arm.get('runtime', {}).get('accounting', {})
+              diagnostic[f'{arm_name}_accounting'] = {
+                  'stage_closure': arm.get('stage_closure_pass'),
+                  'world_organism_residual': arm.get('world_organism_closure_residual'),
+                  'max_step': {key: accounting.get(key) for key in accounting if key.startswith('max_step_')},
+                  'cumulative': {key: accounting.get(key) for key in accounting if key.startswith('cumulative_')},
+              }
+          diagnostic['recovery_accounting'] = {
+              'stage_closure': results.get('recovery', {}).get('stage_closure_pass'),
+              'world_organism_residual': results.get('recovery', {}).get('world_organism_closure_residual'),
+          }
+          diagnostic['post_loss_accounting'] = {
+              'stage_closure': results.get('post_loss_refeed', {}).get('stage_closure_pass'),
+          }
           diagnostic_text = json.dumps(diagnostic, sort_keys=True, separators=(',', ':'))
           print(f'R6-R3 remote gate diagnostics: {diagnostic_text}')
           print(f'::error title=R6-R3 remote gate diagnostics::{diagnostic_text}')
