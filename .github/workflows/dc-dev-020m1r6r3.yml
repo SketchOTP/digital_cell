@@ -108,6 +108,27 @@ jobs:
           qualification = json.loads((fresh / 'qualification.json').read_text())
           preservation = json.loads((fresh / 'preservation.json').read_text())
           require(fresh_protocol == protocol, 'fresh protocol differs from committed protocol')
+          diagnostic = {
+              'classification': results.get('classification'),
+              'fed_delta': results.get('fed_8000', {}).get('organized_material_delta'),
+              'fed_stage': results.get('fed_8000', {}).get('stage_closure_pass'),
+              'recovery_no_reset': results.get('recovery', {}).get('no_state_reset'),
+              'recovery_refed_delta': results.get('recovery', {}).get('refed_organized_delta_from_deprived'),
+              'zero_delivery': [results.get('zero_resource', {}).get('source', {}).get('n_delivered'), results.get('zero_resource', {}).get('source', {}).get('f_delivered')],
+              'removal_delivery': [results.get('feed_then_remove', {}).get('source', {}).get('n_delivered'), results.get('feed_then_remove', {}).get('source', {}).get('f_delivered')],
+              'removal_delta': results.get('feed_then_remove', {}).get('organized_material_delta'),
+              'physical_loss': results.get('physical_loss_pass'),
+              'post_loss_exercised': results.get('post_loss_refeed', {}).get('exercised'),
+              'post_loss_recovered': results.get('post_loss_refeed', {}).get('topology_recovered'),
+              'accounting': results.get('accounting_pass'),
+              'preservation': results.get('preservation_pass'),
+              'v2_d087': preservation.get('historical_v2_d087'),
+              'v3_d087': preservation.get('candidate_v3_d087'),
+              'next_execution_started': qualification.get('next_execution_started'),
+          }
+          diagnostic_text = json.dumps(diagnostic, sort_keys=True, separators=(',', ':'))
+          print(f'R6-R3 remote gate diagnostics: {diagnostic_text}')
+          print(f'::error title=R6-R3 remote gate diagnostics::{diagnostic_text}')
           require(protocol['directive'] == 'DC-DEV-020-M1-R6-R3-FULL-RUNTIME-M1-CERTIFICATION-001', 'directive mismatch')
           require(protocol['starting_head'] == '0c56890d1f59c5dc2ffc66fd1d69181d7ca7b8c5', 'starting head mismatch')
           require(protocol['runtime_contract'] == {'material': 'GeometryConservativeV3', 'chemistry': 'ConservativeV3', 'reserve': 'OFF', 'transport': 'unchanged uncoupled V1 finite spatial transport', 'world': 'FINITE_SPATIAL_BACKING_RESERVOIR_V1'}, 'runtime identity mismatch')
