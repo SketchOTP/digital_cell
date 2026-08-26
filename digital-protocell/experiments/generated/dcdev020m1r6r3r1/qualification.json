@@ -1,0 +1,17 @@
+{
+  "classification": "M1_FULL_RUNTIME_HOMEOSTASIS_FAILED",
+  "directive": "DC-DEV-020-M1-R6-R3-FULL-RUNTIME-M1-CERTIFICATION-001",
+  "e0_authority": true,
+  "e1_runtime_identity": "GeometryConservativeV3",
+  "e2_stage_level_closure": true,
+  "e3_sustained_homeostasis": false,
+  "e4_restoration": false,
+  "e5_resource_dependence": true,
+  "e6_irreversible_physical_loss": true,
+  "e7_post_loss_refeed": true,
+  "e8_preservation": true,
+  "next_execution_started": false,
+  "observer_only": true,
+  "production_biology_changed": false,
+  "production_default_changed": false
+}

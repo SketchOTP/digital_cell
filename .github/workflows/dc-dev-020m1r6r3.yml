@@ -33,7 +33,11 @@ jobs:
         run: python3 scripts/validate_governance.py --mode ADOPTED
       - name: Scoped formatting
         working-directory: digital-protocell
-        run: rustfmt +1.89.0 --edition 2021 --check examples/dcdev020m1r6r3_full_runtime_m1_certification.rs
+        run: >-
+          rustfmt +1.89.0 --edition 2021 --check
+          crates/chemistry-core/src/mesh_contracts.rs
+          crates/chemistry-core/tests/d098_geometry_material_conservation.rs
+          examples/dcdev020m1r6r3_full_runtime_m1_certification.rs
       - name: Verify bounded R6-R3 diff
         shell: bash
         run: |
@@ -47,21 +51,31 @@ jobs:
               '.agent/CURRENT.md', '.agent/DIRECTIVES.md', '.agent/LEARNINGS.md',
               '.agent/OUTCOMES.md', '.agent/REPO_MAP.md',
               '.github/workflows/dc-dev-020m1r6r3.yml',
+              'digital-protocell/crates/chemistry-core/src/mesh_contracts.rs',
+              'digital-protocell/crates/chemistry-core/tests/d098_geometry_material_conservation.rs',
               'digital-protocell/crates/phase1-certifier/Cargo.toml',
               'digital-protocell/examples/dcdev020m1r6r3_full_runtime_m1_certification.rs',
+              'digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3r1/gc_snapshot_area_semantics_correction.md',
               'digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3/full_runtime_m1_certification.md',
-              'digital-protocell/experiments/generated/dcdev020m1r6r3/protocol.json',
-              'digital-protocell/experiments/generated/dcdev020m1r6r3/results.json',
-              'digital-protocell/experiments/generated/dcdev020m1r6r3/qualification.json',
-              'digital-protocell/experiments/generated/dcdev020m1r6r3/preservation.json',
-              'digital-protocell/experiments/generated/dcdev020m1r6r3/artifact_manifest.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r3r1/protocol.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r3r1/results.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r3r1/qualification.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r3r1/preservation.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r3r1/artifact_manifest.json',
           }
           assert set(changed) <= allowed, f'unexpected R6-R3 paths: {sorted(set(changed) - allowed)}'
-          forbidden = [path for path in changed if any(token in path.lower() for token in (
-              'chemistry-core/src', 'mesh_reactions.rs', 'mesh_transport.rs',
-              'mesh_mechanics.rs', 'mesh_fission.rs', 'phase1-certifier/src/gates.rs',
-              'recycl', 'salvage', 'dc-dev-021',
-          ))]
+          allowed_observer_source = 'digital-protocell/crates/chemistry-core/src/mesh_contracts.rs'
+          forbidden = [path for path in changed if (
+              (path.startswith('digital-protocell/crates/chemistry-core/src/') and path != allowed_observer_source)
+              or path in {
+                  'digital-protocell/crates/phase1-certifier/src/gates.rs',
+                  'digital-protocell/crates/chemistry-core/src/mesh_reactions.rs',
+                  'digital-protocell/crates/chemistry-core/src/mesh_transport.rs',
+                  'digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs',
+                  'digital-protocell/crates/chemistry-core/src/mesh_fission.rs',
+              }
+              or any(token in path.lower() for token in ('recycl', 'salvage', 'dc-dev-021'))
+          )]
           assert not forbidden, f'forbidden R6-R3 paths: {forbidden}'
           print('DCDEV020M1R6R3_BOUNDED_DIFF_PASS')
           PY
@@ -70,17 +84,17 @@ jobs:
         env:
           DCDEV020R9R3_CONTRACT: ConservativeV3
           DCDEV020R9R3_RESERVE: '0'
-        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1r6r3/ci/v3_d087
+          run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1r6r3r1/ci/v3_d087
       - name: Actual D-087 ConservativeV2 preservation
         working-directory: digital-protocell
         env:
           DCDEV020R9R3_CONTRACT: ConservativeV2
           DCDEV020R9R3_RESERVE: '0'
-        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1r6r3/ci/v2_d087
+          run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1r6r3r1/ci/v2_d087
       - name: Fresh full-runtime M1 certification
         working-directory: digital-protocell
         env:
-          DCDEV020M1R6R3_OUTPUT: experiments/generated/dcdev020m1r6r3/ci
+          DCDEV020M1R6R3_OUTPUT: experiments/generated/dcdev020m1r6r3r1/ci
           DCDEV020M1R6R3_DENSE_OUTPUT: ${{ runner.temp }}/dcdev020m1r6r3-dense
         run: cargo +1.89.0 run -p phase1-certifier --example dcdev020m1r6r3_full_runtime_m1_certification --release --quiet
       - name: Verify compact evidence and fail-closed M1 gates
@@ -96,7 +110,7 @@ jobs:
               if not condition:
                   raise SystemExit(f'R6-R3 verifier failure: {message}')
 
-          base = Path('experiments/generated/dcdev020m1r6r3')
+          base = Path('experiments/generated/dcdev020m1r6r3r1')
           fresh = base / 'ci'
           names = ('protocol.json', 'results.json', 'qualification.json', 'preservation.json', 'artifact_manifest.json')
           for root in (base, fresh):
@@ -190,15 +204,15 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: dcdev020m1r6r3-full-runtime-m1-evidence
+          name: dcdev020m1r6r3r1-gc-snapshot-area-semantics-evidence
           path: |
-            digital-protocell/experiments/generated/dcdev020m1r6r3/protocol.json
-            digital-protocell/experiments/generated/dcdev020m1r6r3/results.json
-            digital-protocell/experiments/generated/dcdev020m1r6r3/qualification.json
-            digital-protocell/experiments/generated/dcdev020m1r6r3/preservation.json
-            digital-protocell/experiments/generated/dcdev020m1r6r3/artifact_manifest.json
-            digital-protocell/experiments/generated/dcdev020m1r6r3/ci/protocol.json
-            digital-protocell/experiments/generated/dcdev020m1r6r3/ci/results.json
-            digital-protocell/experiments/generated/dcdev020m1r6r3/ci/qualification.json
-            digital-protocell/experiments/generated/dcdev020m1r6r3/ci/preservation.json
-            digital-protocell/experiments/generated/dcdev020m1r6r3/ci/artifact_manifest.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r1/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r1/results.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r1/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r1/preservation.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r1/artifact_manifest.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r1/ci/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r1/ci/results.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r1/ci/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r1/ci/preservation.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r1/ci/artifact_manifest.json

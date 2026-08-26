@@ -864,3 +864,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260824-dcdev020m1r6r2r4-gc-preservation-qualification001
 - Status at issuance: ISSUED
+
+## D-20260825-dcdev020m1r6r3r1-gc-snapshot-area-semantics-correction001
+
+- Issued: 2026-08-25T00:00:00-04:00
+- Issuer: User
+- External directive: DC-DEV-020-M1-R6-R3-R1-GC-SNAPSHOT-AREA-SEMANTICS-CORRECTION-001
+- Objective: Correct only GeometryConservativeV3 observer snapshot area semantics, rerun unchanged R6-R3, and obtain a valid exact-head scientific classification.
+- Scope: Start at `3b86680465dbfed26f2bcf6ac9765468f67a0afb`; audit snapshot callers; reproduce the `1e-9` floor mismatch; use actual positive area only for GC; preserve HistoricalV1/V2; rerun R6-R3 and frozen preservation on canonical Atlas evidence; obtain exact-head push/PR CI.
+- Exclusions: No GC physical-law change, mechanics, remesh, rebond, chemistry, transport, resource, observer death, D-087, production selection, homeostasis repair, minimum-area death, recycling, salvage, M2, behavior, evolution, or DC-DEV-021.
+- Acceptance: Observer-only caller audit; sub-floor causal reproduction; GC actual-area snapshot identity; historical V1/V2 floor preservation; physical trajectory parity; R6-R3 accounting closure; fed/recovery negative preservation; frozen suites; compact Atlas evidence; exact-head remote CI; Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260824-dcdev020m1r6r3-full-runtime-m1-certification001
+- Status at issuance: ISSUED

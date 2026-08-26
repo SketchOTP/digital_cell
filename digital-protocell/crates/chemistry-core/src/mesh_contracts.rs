@@ -6,7 +6,8 @@
 //! a new biological reaction.
 
 use crate::material_mesh::{
-    MaterialMesh, EQUATION_VERSION_MATERIAL_MESH, EQUATION_VERSION_MATERIAL_MESH_CONSERVATIVE,
+    MaterialMesh, MeshContractVersion, EQUATION_VERSION_MATERIAL_MESH,
+    EQUATION_VERSION_MATERIAL_MESH_CONSERVATIVE,
 };
 use crate::mesh_reactions::MeshChemistrySchema;
 use crate::stoichiometry::{exact_rank, left_nullspace, verify_m_transpose_s_zero, Rational};
@@ -377,8 +378,30 @@ impl MaterialLedgerSnapshot {
     }
 }
 
+/// Return the area used by the observer/accounting snapshot.
+///
+/// HistoricalV1 and ConservativeV2 deliberately retain their serialized and
+/// numerical snapshot semantics, including the historical minimum area.  The
+/// GeometryConservativeV3 contract instead defines concentration-derived
+/// material as `concentration * actual positive mesh area`, matching the
+/// post-mechanics conservation primitive.  This helper is observer-only: it
+/// does not clamp or otherwise alter the physical mesh.
+fn accounting_area(mesh: &MaterialMesh) -> f64 {
+    let actual = mesh.area();
+    match mesh.contract_version {
+        MeshContractVersion::HistoricalV1 | MeshContractVersion::ConservativeV2 => actual.max(1e-9),
+        MeshContractVersion::GeometryConservativeV3 => {
+            if actual.is_finite() && actual > 0.0 {
+                actual
+            } else {
+                0.0
+            }
+        }
+    }
+}
+
 pub fn snapshot(mesh: &MaterialMesh) -> MaterialLedgerSnapshot {
-    let area = mesh.area().max(1e-9);
+    let area = accounting_area(mesh);
     MaterialLedgerSnapshot {
         n: mesh.interior.n.max(0.0) * area,
         f: mesh.interior.f.max(0.0) * area,

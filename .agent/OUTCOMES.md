@@ -1445,3 +1445,26 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: This is a valid local negative candidate, not M1 closure. Sustained fed homeostasis and no-reset restoration are not established; remote Linux execution, artifact verification, and Architect disposition remain authoritative. No repair or downstream directive is authorized.
 - Blockers: Exact-head remote CI and Architect review.
 - Follow-up directive: none
+
+## D-20260825-dcdev020m1r6r3r1-gc-snapshot-area-semantics-correction001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R3R1-GC-SNAPSHOT-AREA-SEMANTICS-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R3-FULL-RUNTIME-M1-CERTIFICATION-PENDING-ARCHITECT`
+- Closed: `2026-08-25T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The R6-R3 Linux invalidation is causally reproduced as a snapshot observer mismatch: the historical `max(area, 1e-9)` floor disagreed with GeometryConservativeV3 actual-area conservation below the floor. Snapshot callers are diagnostic/accounting/certification-only. GeometryConservativeV3 now uses actual positive area while HistoricalV1 and ConservativeV2 retain the historical floor. The unchanged local R6-R3 replay closes all stages and returns `M1_FULL_RUNTIME_HOMEOSTASIS_FAILED`; exact-head remote CI and Architect acceptance remain pending.
+- Changed areas: `chemistry-core/src/mesh_contracts.rs` observer accounting only, focused `d098` tests, R6-R3 scoped workflow/evidence namespace/docs, and append-only governance. No certified biology/equations, physical trajectory path, transport, chemistry, mechanics, remesh, rebond, death, production, or downstream behavior changed.
+- Validation:
+  - Focused GC sub-floor and historical V1/V2 snapshot tests `7/7` - PASSED
+  - Local V3/V2 D-087 preservation - `8/8` each - PASSED
+  - Fed organized delta `-82.9654506509167` - PRESERVED
+  - Deprivation delta `-10.979091022310868` - PRESERVED
+  - No-reset refeed delta from deprived `-75.90268439405197` - PRESERVED
+  - Fed, recovery, zero-resource, and feed/remove stage closure - PASSED within `1e-8`
+  - Local compact evidence - `digital-protocell/experiments/generated/dcdev020m1r6r3r1/` - COMPLETE
+  - Dense evidence - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r1\\` - COMPLETE
+  - Remote exact-head CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: Full-runtime homeostasis and no-reset restoration remain failed; irreversible death remains platform-sensitive until remote replay; no repair or downstream execution is authorized.
+- Blockers: Exact-head push/PR CI and Architect review.
+- Follow-up directive: none

@@ -181,6 +181,12 @@
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3/` — full-runtime M1 certification protocol and handoff.
 - `.github/workflows/dc-dev-020m1r6r3.yml` — scoped R6-R3 governance, exact runtime assay, D-087 preservation, fail-closed verification, and remote CI.
 - `\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3\\` — canonical dense R6-R3 runtime ledgers; compact authority remains in Git.
+- `digital-protocell/crates/chemistry-core/src/mesh_contracts.rs` — observer-only versioned accounting-area selection for HistoricalV1, ConservativeV2, and GeometryConservativeV3.
+- `digital-protocell/crates/chemistry-core/tests/d098_geometry_material_conservation.rs` — GC sub-floor snapshot identity, strict conservation, and historical-floor preservation tests.
+- `digital-protocell/experiments/generated/dcdev020m1r6r3r1/` — append-only corrected R6-R3 compact protocol/results/qualification/preservation/manifest namespace; the invalid R6-R3 namespace remains preserved.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3r1/` — GC snapshot-area semantics correction protocol and handoff.
+- `.github/workflows/dc-dev-020m1r6r3.yml` — R6-R3-R1 observer-accounting correction, unchanged full-runtime replay, preservation, artifact, and exact-head CI.
+- `\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r1\\` — canonical dense corrected R6-R3 runtime ledgers; compact authority remains in Git.
 
 ## External integration points
 

@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-24T00:00:00-04:00`
+- Last updated: `2026-08-25T00:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260824-dcdev020m1r6r3-full-runtime-m1-certification001`
-- External directive ID: `DC-DEV-020-M1-R6-R3-FULL-RUNTIME-M1-CERTIFICATION-001`
-- Objective: `Certify the GeometryConservativeV3 body through the unchanged full runtime for sustained homeostasis, restoration, causal withdrawal, physical death, and strict stage-level conservation.`
+- Local directive ID: `D-20260825-dcdev020m1r6r3r1-gc-snapshot-area-semantics-correction001`
+- External directive ID: `DC-DEV-020-M1-R6-R3-R1-GC-SNAPSHOT-AREA-SEMANTICS-CORRECTION-001`
+- Objective: `Correct only GeometryConservativeV3 observer snapshot area semantics, rerun unchanged R6-R3, and obtain a valid exact-head scientific classification.`
 - Current status: `VALIDATING`
-- Acceptance: `One exact classification, stage-level closure, no-reset restoration/withdrawal/death evidence, physical-loss refeed result, frozen preservation suite, compact Atlas evidence, exact-head Linux CI, and Architect review.`
-- Current phase: `The local full-runtime certification is a valid negative candidate: stage closure and V2/V3 D-087 preservation pass, but fed organized material declines by 82.9654506509167 and 480-step deprivation refeed increases the deficit. Remote exact-head verification and Architect review are pending.`
-- Expected or actual touched areas: `new observer-only full-runtime certification example, compact generated evidence, scoped workflow/docs, and append-only governance only; the dirty R6-R2 candidate is preserved`
-- Immediate next action: `Run exact-head remote verification for R6-R3, then stop for Architect review; no production switch, M2, recycling/salvage, or DC-DEV-021 execution.`
+- Acceptance: `Snapshot caller audit, sub-floor defect reproduction, GC actual-area semantics, HistoricalV1/V2 preservation, trajectory noninterference, unchanged R6-R3 closure, frozen preservation suite, compact Atlas evidence, exact-head Linux CI, and Architect review.`
+- Current phase: `The observer-floor invalidation is reproduced and corrected narrowly. Local R6-R3 rerun closes every stage and returns M1_FULL_RUNTIME_HOMEOSTASIS_FAILED; exact-head remote verification and Architect review are pending.`
+- Expected or actual touched areas: `observer-only mesh snapshot semantics, focused geometry/material tests, R6-R3 compact evidence namespace, scoped workflow/docs, and append-only governance only; the dirty R6-R2 candidate is preserved`
+- Immediate next action: `Run exact-head remote verification for R6-R3-R1, then stop for Architect review; no homeostasis repair, production switch, M2, recycling/salvage, or DC-DEV-021 execution.`
 
 ## Temporary task-relevant facts
 

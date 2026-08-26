@@ -635,3 +635,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-M1-R6-R3 observer-only full-runtime M1 certification; no biology, equations, parameter tuning, production selection, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M1R6R2R4-001
+
+## L-DCDEV020M1R6R3R1-001
+
+- Learning ID: L-DCDEV020M1R6R3R1-001
+- Date: 2026-08-25
+- Fact or lesson: The R6-R3 Linux accounting invalidation was an observer semantic mismatch, not evidence that GeometryConservativeV3 created material. Historical snapshots used `max(area, 1e-9)` for every contract while the qualified GC conservation primitive used actual positive area. Versioning snapshot accounting to actual GC area closes the sub-floor ledger without changing physical trajectories or HistoricalV1/V2 behavior. The unchanged full-runtime replay preserves the fed `-82.9654506509167` organized-material delta and failed no-reset restoration, while local zero-resource/feed-remove arms close and rupture at `8867`/`11283`.
+- Evidence location: `digital-protocell/crates/chemistry-core/src/mesh_contracts.rs`, `digital-protocell/crates/chemistry-core/tests/d098_geometry_material_conservation.rs`, `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3r1/`, compact evidence under `digital-protocell/experiments/generated/dcdev020m1r6r3r1/`, and dense evidence under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r1\\`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6-R3-R1 observer snapshot-area semantics correction only; no homeostasis repair, production selection, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R6R3-001

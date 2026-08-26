@@ -2,6 +2,7 @@ use chemistry_core::d096_allocation::{AllocationGenotype, AllocationState};
 use chemistry_core::material_mesh::{
     conserve_interior_amount_across_area_change, LumpedChem, MaterialMesh, MeshContractVersion,
 };
+use chemistry_core::mesh_contracts::snapshot;
 use chemistry_core::mesh_mechanics::{compute_forces, mechanics_step, remesh, MechParams};
 
 fn fixture() -> MaterialMesh {
@@ -63,6 +64,19 @@ fn assert_close(left: f64, right: f64) {
         (left - right).abs() <= 1e-10 * (1.0 + left.abs().max(right.abs())),
         "{left} != {right}"
     );
+}
+
+fn sub_floor_mesh(contract: MeshContractVersion) -> MaterialMesh {
+    let mut mesh = fixture();
+    mesh.stamp_geometry_conservative_schema();
+    let centroid = mesh.centroid();
+    let scale = 1.0e-7;
+    for vertex in &mut mesh.vertices {
+        vertex[0] = centroid[0] + (vertex[0] - centroid[0]) * scale;
+        vertex[1] = centroid[1] + (vertex[1] - centroid[1]) * scale;
+    }
+    mesh.contract_version = contract;
+    mesh
 }
 
 #[test]
@@ -182,4 +196,65 @@ fn no_geometry_change_is_inert_and_v2_remains_unchanged() {
     ));
     assert_eq!(v2.interior, v2_before);
     assert_eq!(v2.contract_version, MeshContractVersion::ConservativeV2);
+}
+
+#[test]
+fn geometry_conservative_snapshot_uses_actual_sub_floor_area() {
+    let mesh = sub_floor_mesh(MeshContractVersion::GeometryConservativeV3);
+    let actual_area = mesh.area();
+    assert!(actual_area > 0.0 && actual_area < 1e-9);
+    let s = snapshot(&mesh);
+
+    assert_close(s.n, mesh.interior.n.max(0.0) * actual_area);
+    assert_close(s.f, mesh.interior.f.max(0.0) * actual_area);
+    assert_close(s.a, mesh.interior.a.max(0.0) * actual_area);
+    assert_close(s.r, mesh.interior.r.max(0.0) * actual_area);
+    assert_close(s.c, mesh.interior.c.max(0.0) * actual_area);
+    assert_close(s.waste, mesh.interior.w.max(0.0) * actual_area);
+    assert_eq!(s.free_l, mesh.free_l.max(0.0));
+    assert_eq!(s.bound_b, mesh.total_bound_membrane());
+    let historical_floor_a = mesh.interior.a.max(0.0) * 1e-9;
+    assert!(historical_floor_a > s.a);
+}
+
+#[test]
+fn geometry_conservative_sub_floor_area_change_closes_strict_material() {
+    let mut mesh = sub_floor_mesh(MeshContractVersion::GeometryConservativeV3);
+    let area_before = mesh.area();
+    let before = snapshot(&mesh).strict_material_equivalent();
+    let centroid = mesh.centroid();
+    let scale = 0.5_f64.sqrt();
+    for vertex in &mut mesh.vertices {
+        vertex[0] = centroid[0] + (vertex[0] - centroid[0]) * scale;
+        vertex[1] = centroid[1] + (vertex[1] - centroid[1]) * scale;
+    }
+    let area_after = mesh.area();
+    assert!(area_after > 0.0 && area_after < 1e-9);
+    assert!(conserve_interior_amount_across_area_change(
+        &mut mesh,
+        area_before,
+        area_after
+    ));
+    let after = snapshot(&mesh).strict_material_equivalent();
+    assert!((after - before).abs() <= 1e-8, "{after} != {before}");
+}
+
+#[test]
+fn historical_snapshot_floor_is_preserved_for_tiny_v1_and_v2_meshes() {
+    for contract in [
+        MeshContractVersion::HistoricalV1,
+        MeshContractVersion::ConservativeV2,
+    ] {
+        let mesh = sub_floor_mesh(contract);
+        let actual_area = mesh.area();
+        assert!(actual_area > 0.0 && actual_area < 1e-9);
+        let expected_area = 1e-9;
+        let s = snapshot(&mesh);
+        assert_close(s.n, mesh.interior.n.max(0.0) * expected_area);
+        assert_close(s.f, mesh.interior.f.max(0.0) * expected_area);
+        assert_close(s.a, mesh.interior.a.max(0.0) * expected_area);
+        assert_close(s.r, mesh.interior.r.max(0.0) * expected_area);
+        assert_close(s.c, mesh.interior.c.max(0.0) * expected_area);
+        assert_close(s.waste, mesh.interior.w.max(0.0) * expected_area);
+    }
 }
