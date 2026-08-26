@@ -1491,23 +1491,6 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 
 ## D-20260826-dcdev020m1r6r3r3-gc-reaction-area-conservation-repair001 - PARTIAL
 
-- Outcome ID: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-FINAL-HEAD-PENDING-ARCHITECT`
-- Supersedes outcome: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-REMOTE-VERIFIED-PENDING-ARCHITECT`
-- Closed: 2026-08-26T00:00:00-04:00
-- Acceptance: PARTIAL
-- Summary: Final-head remote validation passed at `27bf41caf9dbb931fde6d796c3cd686d6629ee90`. The governance-only follow-up preserved the bounded R3 repair; both exact-head Linux workflows passed, and Architect review remains pending.
-- Changed areas: Mutable current-state and append-only outcome governance only after the R3 scientific repair; no scientific implementation changed.
-- Validation:
-  - Exact-head push CI `32962808927`, artifact digest `sha256:8f4bbf59a7a3e9827c2d9b9991a64384e2be842930e4ef3cfd8c4bbb0cebbde1` - PASSED
-  - Exact-head PR CI `32962813751`, artifact digest `sha256:5864610618c970cbeffcf3e2141c1608840de554567864b678dc8debeed703f3` - PASSED
-  - PR #44 OPEN / DRAFT / UNMERGED with required base - PASSED
-  - Final branch head `27bf41caf9dbb931fde6d796c3cd686d6629ee90` - PASSED
-- Remaining risks: Architect must independently inspect the bounded R3 diff and remote evidence before acceptance. M1 remains not established; no production repair, production switch, reserve/recycling/salvage work, M2, or DC-DEV-021 is authorized.
-- Blockers: Architect review only.
-- Follow-up directive: none
-
-## D-20260826-dcdev020m1r6r3r3-gc-reaction-area-conservation-repair001 - PARTIAL
-
 - Outcome ID: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-PENDING-ARCHITECT`
 - Supersedes outcome: `OUT-DCDEV020M1R6R3R2-GC-REACTION-AREA-SEMANTICS-PENDING-ARCHITECT`
 - Closed: 2026-08-26T00:00:00-04:00
@@ -1545,6 +1528,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Exact-head PR CI `32962210562`, artifact digest `sha256:bf918e79ee3e523bcc1614fb93a2be5cdabfbc9f670b03dd8a9deadfded9b028` - PASSED
   - PR #44 authority OPEN / DRAFT / UNMERGED - PASSED
   - Branch head `109adc55f762bf13feecd667be56e8ba9e956c9a` - PASSED
+- Remaining risks: Architect must independently inspect the bounded R3 diff and remote evidence before acceptance. M1 remains not established; no production repair, production switch, reserve/recycling/salvage work, M2, or DC-DEV-021 is authorized.
+- Blockers: Architect review only.
+- Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r3r3-gc-reaction-area-conservation-repair001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-FINAL-HEAD-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Closed: 2026-08-26T00:00:00-04:00
+- Acceptance: PARTIAL
+- Summary: Final-head remote validation passed at `27bf41caf9dbb931fde6d796c3cd686d6629ee90`. The final governance-only follow-up preserved the bounded R3 repair; both exact-head Linux workflows passed, and Architect review remains pending.
+- Changed areas: Mutable current-state and append-only outcome governance only after the R3 scientific repair; no scientific implementation changed.
+- Validation:
+  - Exact-head push CI `32962808927`, artifact digest `sha256:8f4bbf59a7a3e9827c2d9b9991a64384e2be842930e4ef3cfd8c4bbb0cebbde1` - PASSED
+  - Exact-head PR CI `32962813751`, artifact digest `sha256:5864610618c970cbeffcf3e2141c1608840de554567864b678dc8debeed703f3` - PASSED
+  - PR #44 OPEN / DRAFT / UNMERGED with required base - PASSED
+  - Final branch head `27bf41caf9dbb931fde6d796c3cd686d6629ee90` - PASSED
 - Remaining risks: Architect must independently inspect the bounded R3 diff and remote evidence before acceptance. M1 remains not established; no production repair, production switch, reserve/recycling/salvage work, M2, or DC-DEV-021 is authorized.
 - Blockers: Architect review only.
 - Follow-up directive: none
