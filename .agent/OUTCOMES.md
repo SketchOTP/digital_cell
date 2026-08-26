@@ -1491,8 +1491,8 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 
 ## D-20260826-dcdev020m1r6r3r3-gc-reaction-area-conservation-repair001 - PARTIAL
 
-- Outcome ID: OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-PENDING-ARCHITECT
-- Supersedes outcome: OUT-DCDEV020M1R6R3R2-GC-REACTION-AREA-SEMANTICS-PENDING-ARCHITECT
+- Outcome ID: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R3R2-GC-REACTION-AREA-SEMANTICS-PENDING-ARCHITECT`
 - Closed: 2026-08-26T00:00:00-04:00
 - Acceptance: PARTIAL
 - Summary: The bounded R3 repair versions the reaction material-transfer area semantic: GeometryConservativeV3 uses actual finite positive physical area for absolute-material/interior-concentration bridges, while HistoricalV1 and ConservativeV2 retain the historical reaction-area floor. Local Windows execution closes the repaired accounting and preserves the fed/recovery negative evidence, but ruptures before sub-floor entry; exact-head Linux CI remains the authority for post-floor qualification.
