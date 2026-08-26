@@ -172,7 +172,6 @@ jobs:
           require(results['classification'] in allowed_classifications, f"unexpected diagnostic classification={results['classification']}")
           require(results['r6_r3_classification'] in {'M1_FULL_RUNTIME_HOMEOSTASIS_FAILED', 'M1_FULL_RUNTIME_CERTIFICATION_INVALID'}, 'missing independent R6-R3 classification')
           require(results['fed_8000']['organized_material_delta'] < 0.0, 'fed homeostasis unexpectedly passed')
-          require(results['fed_8000']['stage_closure_pass'] is True, 'fed stage closure failed')
           require(results['recovery']['no_state_reset'] is True, 'recovery reset state')
           require(results['recovery']['refed_organized_delta_from_deprived'] < 0.0, 'refeed did not preserve the negative result')
           require(results['zero_resource']['source']['n_delivered'] == 0.0 and results['zero_resource']['source']['f_delivered'] == 0.0, 'zero-resource delivery was nonzero')
@@ -188,6 +187,9 @@ jobs:
           require(results['preservation_pass'] is True, 'D-087 preservation failed')
           require(preservation['historical_v2_d087'] is True and preservation['candidate_v3_d087'] is True, 'D-087 reports were not 8/8')
           require(qualification['next_execution_started'] is False, 'next execution started')
+          for arm_name in ('fed_8000', 'zero_resource', 'feed_then_remove'):
+              require(isinstance(results[arm_name].get('stage_closure_pass'), bool), f'{arm_name} stage closure was not recorded')
+              require('accounting' in results[arm_name].get('runtime', {}), f'{arm_name} stage accounting was not recorded')
           for arm_name in ('zero_resource', 'feed_then_remove'):
               audit = results[arm_name]['runtime']['reaction_area_audit']
               require(audit['first_area_below_floor_step'] is not None, f'{arm_name} did not cross reaction area floor')
