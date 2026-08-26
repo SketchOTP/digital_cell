@@ -655,3 +655,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-M1-R6-R3-R2 observer-only reaction-area semantics audit; no production reaction repair, biology, coefficients, tolerances, production selection, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M1R6R3R1-001
+
+## L-DCDEV020M1R6R3R3-001
+
+- Learning ID: L-DCDEV020M1R6R3R3-001
+- Date: 2026-08-26
+- Fact or lesson: The accepted R2 audit identified the historical `max(mesh.area(), 1e-6)` as causally sufficient for GC reaction nonconservation below the floor. The bounded R3 repair keeps that historical kinetic/fallback area for HistoricalV1 and ConservativeV2, while GeometryConservativeV3 uses the actual finite positive physical area only for absolute-material/interior-concentration transfers. Concentration-only kinetics remain on the historical reaction area. Windows preserves the fed/recovery negative evidence but ruptures before sub-floor entry; Linux exact-head CI is required to qualify the post-floor repair.
+- Evidence location: `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs`, `digital-protocell/examples/dcdev020m1r6r3_full_runtime_m1_certification.rs`, `digital-protocell/experiments/generated/dcdev020m1r6r3r3/`, `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3r3/`, and dense evidence under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r3\\`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6-R3-R3 reaction-area conservation repair qualification only; no M1 closure or downstream authorization.
+- Supersedes learning: L-DCDEV020M1R6R3R2-001

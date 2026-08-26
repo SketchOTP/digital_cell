@@ -194,6 +194,13 @@
 - `.github/workflows/dc-dev-020m1r6r3.yml` — scoped R2 governance, diagnostic verifier, preservation, artifact, and exact-head CI.
 - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r2\\` — canonical dense R2 runtime ledgers; compact authority remains in Git.
 
+- `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs` — versioned reaction-area semantics: historical floor retained for V1/V2 and actual positive area used for GC material-transfer bridges.
+- `digital-protocell/examples/dcdev020m1r6r3_full_runtime_m1_certification.rs` — bounded R3 GC reaction-area repair qualification, long-runtime accounting, and preserved fed/recovery negative evidence.
+- `digital-protocell/experiments/generated/dcdev020m1r6r3r3/` — compact R3 protocol/results/qualification/preservation/manifest; dense runtime ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3r3/` — R3 GC reaction-area conservation repair protocol and handoff.
+- `.github/workflows/dc-dev-020m1r6r3r3.yml` — scoped R3 governance, sub-floor repair qualification, preservation, artifact verification, and exact-head CI.
+- `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r3\\` — canonical dense R3 runtime ledgers; compact authority remains in Git.
+
 ## External integration points
 
 - `atlas:/home/sketch/Projects/authority/` — reference-only Authority governance checkout.

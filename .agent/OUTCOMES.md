@@ -1488,3 +1488,29 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: The local platform cannot establish or disprove Linux sub-floor floor causality; Linux exact-head evidence now confirms it. The R6-R3 homeostasis failure remains preserved; no production repair or downstream execution is authorized.
 - Blockers: Architect review only.
 - Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r3r3-gc-reaction-area-conservation-repair001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-PENDING-ARCHITECT
+- Supersedes outcome: OUT-DCDEV020M1R6R3R2-GC-REACTION-AREA-SEMANTICS-PENDING-ARCHITECT
+- Closed: 2026-08-26T00:00:00-04:00
+- Acceptance: PARTIAL
+- Summary: The bounded R3 repair versions the reaction material-transfer area semantic: GeometryConservativeV3 uses actual finite positive physical area for absolute-material/interior-concentration bridges, while HistoricalV1 and ConservativeV2 retain the historical reaction-area floor. Local Windows execution closes the repaired accounting and preserves the fed/recovery negative evidence, but ruptures before sub-floor entry; exact-head Linux CI remains the authority for post-floor qualification.
+- Changed areas: `chemistry-core/src/mesh_reactions.rs` bounded GC material-transfer area semantic and focused tests, R3 qualification example/workflow/documentation/compact evidence, compatibility gating for the obsolete R2 workflow, and append-only governance. No coefficients, reaction laws, historical V1/V2 behavior, production default, or downstream behavior changed.
+- Validation:
+  - Governance validator - PASSED
+  - Rust formatting check - PASSED
+  - GC sub-floor transfer regressions - `5/5` - PASSED
+  - Geometry/material preservation - `7/7` - PASSED
+  - Phase-1 metrics semantics - `5/5` - PASSED
+  - D-088 preservation - `4/4` - PASSED
+  - D-091 preservation - `8/8` - PASSED
+  - Evolution-harness preservation - `40/40` - PASSED
+  - Local V2/V3 D-087 preservation - `8/8` each - PASSED
+  - Local fed/recovery reference values and repaired stage closure - PASSED
+  - Dense evidence target - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r3\\`
+  - Exact-head push/PR CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: Windows cannot exercise the Linux sub-floor repair boundary; exact-head remote CI must verify sub-floor closure and artifact identity. M1 remains not established; no production repair, production switch, reserve/recycling/salvage work, M2, or DC-DEV-021 is authorized.
+- Blockers: Exact-head push/PR CI and Architect review.
+- Follow-up directive: none

@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260826-dcdev020m1r6r3r2-gc-reaction-area-semantics-audit001`
-- External directive ID: `DC-DEV-020-M1-R6-R3-R2-GC-REACTION-AREA-SEMANTICS-AUDIT-001`
-- Objective: `Determine whether the historical reaction-area floor causes the remaining Linux material residual under GeometryConservativeV3, without repairing production chemistry.`
+- Local directive ID: `D-20260826-dcdev020m1r6r3r3-gc-reaction-area-conservation-repair001`
+- External directive ID: `DC-DEV-020-M1-R6-R3-R3-GC-REACTION-AREA-CONSERVATION-REPAIR-001`
+- Objective: `Repair and qualify only the GeometryConservativeV3 reaction material-transfer area semantic; retain HistoricalV1 and ConservativeV2 floor behavior exactly.`
 - Current status: `VALIDATING`
-- Acceptance: `Complete static floor-path map, first divergence and frozen replay evidence, transfer-level causal attribution, separate floating-point conditioning, trajectory parity, preservation, compact Atlas evidence, exact-head Linux diagnostic CI, and Architect review.`
-- Current phase: `R2 observer instrumentation and local evidence are complete. Windows reaches topology rupture before sub-floor reaction area; exact-head Linux push and PR diagnostics passed and classify the floor mechanism as causally confirmed. Architect review is pending.`
-- Expected or actual touched areas: `R2 observer-only reaction audit, compact evidence namespace, diagnostic workflow/docs, and append-only governance only; all unrelated dirty work is preserved`
-- Immediate next action: `Return the exact-head R2 diagnostic package to Architect review; no production reaction repair, homeostasis repair, production switch, M2, recycling/salvage, or DC-DEV-021 execution.`
+- Acceptance: `Complete isolated GC structural turnover/build/membrane conservation tests, historical V1/V2 preservation, pre-floor parity, Linux long-run closure, compact Atlas evidence, exact-head CI, and Architect review.`
+- Current phase: `R3 bounded repair and local qualification are complete. Windows preserves the fed/recovery negative evidence and ruptures before the sub-floor regime; exact-head Linux verification is the authority for post-floor closure. Architect review is pending.`
+- Expected or actual touched areas: `R3 bounded mesh_reactions material-transfer semantic, qualification example, workflow compatibility gate, compact evidence, R3 documentation, and append-only governance only; all unrelated dirty work is preserved`
+- Immediate next action: `Return the exact-head R3 repair package to Architect review; no homeostasis repair, production switch, reserve/recycling/salvage work, M2, or DC-DEV-021 execution.`
 
 ## Temporary task-relevant facts
 

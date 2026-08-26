@@ -1,0 +1,8 @@
+{
+  "candidate_v3_d087": true,
+  "d088": "required_by_remote_workflow",
+  "d091": "required_by_remote_workflow",
+  "evolution_harness": "required_by_remote_workflow",
+  "gc_preservation_qualifier": "required_by_remote_workflow",
+  "historical_v2_d087": true
+}

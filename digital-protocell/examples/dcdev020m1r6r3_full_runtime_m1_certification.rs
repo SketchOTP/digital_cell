@@ -1,8 +1,9 @@
-//! DC-DEV-020-M1-R6-R3 full-runtime M1 certification.
+//! DC-DEV-020-M1-R6-R3-R3 GC reaction-area conservation qualification.
 //!
 //! This is an observer/certification harness. It uses the existing runtime
 //! order and records amount-based closure around every stage. It does not
-//! change any chemistry, mechanics, transport, death, or production law.
+//! change reaction coefficients or laws; only the authorized
+//! GeometryConservativeV3 material-transfer area semantic is versioned below.
 
 #[path = "dcdev020m1r1_capacity_decomp.rs"]
 mod r5_entry;
@@ -22,8 +23,8 @@ use std::fs::{self, File};
 use std::io::{BufWriter, Write};
 use std::path::{Path, PathBuf};
 
-const DIRECTIVE: &str = "DC-DEV-020-M1-R6-R3-R2-GC-REACTION-AREA-SEMANTICS-AUDIT-001";
-const STARTING_HEAD: &str = "dac4973ea74e298744a69b5829c33dd0f7db85f4";
+const DIRECTIVE: &str = "DC-DEV-020-M1-R6-R3-R3-GC-REACTION-AREA-CONSERVATION-REPAIR-001";
+const STARTING_HEAD: &str = "1d94c5f69e2be3b9fe2f6db48e66a4d4948dc4fb";
 const DT: f64 = 0.02;
 const RESOURCE_CENTER: [f64; 2] = [4.8, 0.0];
 const RESOURCE_RADIUS: f64 = 1.5;
@@ -36,7 +37,7 @@ const REFEED_STEPS: usize = 5_000;
 const TOLERANCE: f64 = 1e-8;
 const CHECKPOINTS: [usize; 7] = [0, 480, 1_000, 2_000, 4_000, 6_000, 8_000];
 const ATLAS_DENSE_ROOT: &str =
-    r"\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r3r2";
+    r"\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r3r3";
 const REACTION_AREA_FLOOR: f64 = 1e-6;
 
 #[derive(Debug, Clone, Serialize)]
@@ -600,6 +601,29 @@ fn reaction_floor_classification(
     }
 }
 
+fn gc_repair_classification(
+    zero: &ReactionAreaAudit,
+    removal: &ReactionAreaAudit,
+    accounting_pass: bool,
+    preservation_pass: bool,
+) -> &'static str {
+    if !preservation_pass {
+        return "M1_GC_REACTION_AREA_CONSERVATION_PRESERVATION_REGRESSION";
+    }
+    let floor_replayed_without_failure = [zero, removal].into_iter().all(|audit| {
+        audit.first_area_below_floor_step.is_some()
+            && audit.first_residual_above_tolerance_step.is_none()
+            && audit.replay_checks >= 1
+            && audit.replay_pass
+            && audit.cumulative_observed_reaction_residual.abs() <= TOLERANCE
+    });
+    if accounting_pass && floor_replayed_without_failure {
+        "M1_GC_REACTION_AREA_CONSERVATION_REPAIR_QUALIFIED"
+    } else {
+        "M1_GC_REACTION_AREA_CONSERVATION_REPAIR_INCOMPLETE"
+    }
+}
+
 fn v3_params() -> ReactionParams {
     let params = ReactionParams::conservative_v3();
     assert_eq!(params.mesh_schema, MeshChemistrySchema::ConservativeV3);
@@ -1079,11 +1103,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     std::env::set_var("DCDEV020R9R3_CONTRACT", "ConservativeV3");
     std::env::set_var("DCDEV020R9R3_RESERVE", "0");
     std::env::set_var("DCDEV020M1R6R2_GEOMETRY_CONTRACT", "1");
-    let out = std::env::var_os("DCDEV020M1R6R3R2_OUTPUT")
+    let out = std::env::var_os("DCDEV020M1R6R3R3_OUTPUT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| PathBuf::from("experiments/generated/dcdev020m1r6r3r2"));
+        .unwrap_or_else(|| PathBuf::from("experiments/generated/dcdev020m1r6r3r3"));
     fs::create_dir_all(&out)?;
-    let dense_root = std::env::var_os("DCDEV020M1R6R3R2_DENSE_OUTPUT")
+    let dense_root = std::env::var_os("DCDEV020M1R6R3R3_DENSE_OUTPUT")
         .map(PathBuf::from)
         .or_else(|| Some(PathBuf::from(ATLAS_DENSE_ROOT)));
     if let Some(root) = dense_root.as_ref() {
@@ -1173,12 +1197,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     } else {
         "M1_FULL_RUNTIME_CERTIFIED"
     };
-    let diagnostic_classification = reaction_floor_classification(
+    let floor_audit_classification = reaction_floor_classification(
         &zero.evidence.runtime.reaction_area_audit,
         &removal.evidence.runtime.reaction_area_audit,
         preservation_pass,
         zero.evidence.first_topology_rupture_step.is_some()
             || removal.evidence.first_topology_rupture_step.is_some(),
+    );
+    let diagnostic_classification = gc_repair_classification(
+        &zero.evidence.runtime.reaction_area_audit,
+        &removal.evidence.runtime.reaction_area_audit,
+        accounting_pass,
+        preservation_pass,
     );
 
     let protocol = json!({
@@ -1194,7 +1224,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "checkpoints": CHECKPOINTS,
         "stage_closure": {"identity": "strict material before/after each stage; uptake additionally subtracts delivered N+F", "tolerance": TOLERANCE, "remesh_return_value_is_authority": false},
         "dense_output": ATLAS_DENSE_ROOT,
-        "reaction_area_audit": {"historical_floor": REACTION_AREA_FLOOR, "scope": "observer-only; no reaction equation or runtime state change"},
+        "reaction_area_audit": {"historical_floor": REACTION_AREA_FLOOR, "scope": "post-repair observer audit; historical V1/V2 floor retained; GC material transfers use actual positive area"},
         "production_default_changed": false,
         "m2_authorized": false,
         "next_execution_started": false,
@@ -1209,6 +1239,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "feed_then_remove": removal.evidence,
         "post_loss_refeed": post_loss_refeed,
         "classification": diagnostic_classification,
+        "r2_floor_audit_classification": floor_audit_classification,
         "r6_r3_classification": r6_r3_classification,
         "fed_homeostasis_pass": fed_pass,
         "restoration_pass": restoration_pass,
@@ -1255,7 +1286,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     ] {
         fs::write(out.join(name), serde_json::to_vec_pretty(value)?)?;
     }
-    let manifest = json!({"schema": "dcdev020m1r6r3r2_manifest_v1", "directive": DIRECTIVE, "starting_head": STARTING_HEAD, "files": ["protocol.json", "results.json", "qualification.json", "preservation.json", "artifact_manifest.json"], "dense_output": ATLAS_DENSE_ROOT, "shared_drive_required": true, "sha256": "computed-by-workflow"});
+    let manifest = json!({"schema": "dcdev020m1r6r3r3_manifest_v1", "directive": DIRECTIVE, "starting_head": STARTING_HEAD, "files": ["protocol.json", "results.json", "qualification.json", "preservation.json", "artifact_manifest.json"], "dense_output": ATLAS_DENSE_ROOT, "shared_drive_required": true, "sha256": "computed-by-workflow"});
     fs::write(
         out.join("artifact_manifest.json"),
         serde_json::to_vec_pretty(&manifest)?,

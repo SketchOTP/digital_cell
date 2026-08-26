@@ -4,9 +4,13 @@ on:
   push:
     branches:
       - strategy/dc-dev-020r9-mesh-contract-requalification
+    paths:
+      - digital-protocell/experiments/generated/dcdev020m1r6r3r2/**
   pull_request:
     branches:
       - strategy/dc-dev-016-metabolic-break-even
+    paths:
+      - digital-protocell/experiments/generated/dcdev020m1r6r3r2/**
 
 permissions:
   contents: read

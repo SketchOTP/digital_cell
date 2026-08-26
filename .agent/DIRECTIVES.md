@@ -892,3 +892,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260824-dcdev020m1r6r3-full-runtime-m1-certification001
 - Status at issuance: ISSUED
+
+## D-20260826-dcdev020m1r6r3r3-gc-reaction-area-conservation-repair001
+
+- Issued: 2026-08-26T00:00:00-04:00
+- Issuer: User
+- External directive: DC-DEV-020-M1-R6-R3-R3-GC-REACTION-AREA-CONSERVATION-REPAIR-001
+- Objective: Repair and qualify only the GeometryConservativeV3 absolute-material/interior-concentration area semantic after the R2 floor audit causally confirmed the historical `1e-6` defect.
+- Scope: Preserve HistoricalV1 and ConservativeV2 reaction behavior; use actual finite positive area for GC material-transfer bridges; qualify structural build, structural turnover, and membrane production below the historical floor; preserve pre-floor parity, fed/recovery negative evidence, D-087, Phase-1, D-088, D-091, and evolution; write compact evidence to Git and dense ledgers to canonical Atlas storage.
+- Exclusions: No coefficient or reaction-law redesign, minimum-area rule, controller, target state, mechanics/remesh/rebond/transport/resource/death change, production switch, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260826-dcdev020m1r6r3r2-gc-reaction-area-semantics-audit001
+- Acceptance: Historical V1/V2 unchanged; GC pre-floor parity; sub-floor GC transfer closure; long Linux zero-resource and feed/remove accounting; preservation; exact-head push and PR CI; Architect review.
+- Status at issuance: ISSUED
