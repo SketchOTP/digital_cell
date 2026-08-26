@@ -906,3 +906,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: D-20260826-dcdev020m1r6r3r2-gc-reaction-area-semantics-audit001
 - Acceptance: Historical V1/V2 unchanged; GC pre-floor parity; sub-floor GC transfer closure; long Linux zero-resource and feed/remove accounting; preservation; exact-head push and PR CI; Architect review.
 - Status at issuance: ISSUED
+
+## D-20260826-dcdev020m1r6r4-homeostasis-contact-causal-audit001
+
+- Issued: `2026-08-26T12:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R6-R4-HOMEOSTASIS-CONTACT-CAUSAL-AUDIT-001`
+- Objective: Determine whether mechanics-driven loss of geometric resource exposure is causally sufficient for the valid full-runtime homeostasis and restoration failure, or whether moving-body embodied demand remains limiting when contact opportunity is preserved.
+- Scope: Start exactly at accepted R6-R3-R3 head `69b6133a5f76d3c7839705c78922c7452ad5d550`; reproduce the actual repaired full runtime, accepted R5 static reference, contact chronology and factor decomposition, geometry-frozen diagnostic, contact-preserved all-intact upper bound, no-reset recovery, preservation suite, compact Git evidence, dense Atlas evidence, and exact-head Linux diagnostic CI.
+- Exclusions: No production chemistry, mechanics, remesh, rebond, transport, resource geometry/inventory/concentration, parameter, death, production-selection, controller, target-size, resource-following, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 changes.
+- Acceptance: Separate exposure, permeability, concentration drive, edge-length, and embodied-demand contributions; preserve actual R6 and R5 reference behavior; keep all counterfactuals observer-only; record one authorized classification; preserve frozen suites; exact-head CI; Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260826-dcdev020m1r6r3r3-gc-reaction-area-conservation-repair001
+- Status at issuance: ISSUED

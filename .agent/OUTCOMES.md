@@ -1532,6 +1532,30 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: Architect review only.
 - Follow-up directive: none
 
+## D-20260826-dcdev020m1r6r4-homeostasis-contact-causal-audit001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R4-HOMEOSTASIS-CONTACT-CAUSAL-AUDIT-PENDING-REMOTE`
+- Supersedes outcome: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Closed: `2026-08-26T12:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R6-R4 audit locally reproduces the accepted repaired R6 full-runtime failure and accepted R5 static reference. Actual resource exposure becomes permanently zero at step 850 while the fixed reservoir retains `228.521657910379` N/F and actual delivery is `14.627590100158919` each. The geometry-frozen diagnostic remains approximately nondeclining, but the all-intact contact-preserved diagnostic receives the complete fixed finite inventory and still loses `17.4947722071266` organized material. The bounded local classification is `M1_FULL_RUNTIME_EMBODIED_DEMAND_DOMINANT`; remote exact-head CI and Architect review are pending.`
+- Changed areas: `digital-protocell/examples/dcdev020m1r6r4_homeostasis_contact_audit.rs`, its phase1-certifier example registration, the R6-R4 workflow, R6-R4 documentation, compact evidence, and append-only governance only. No production biology, mechanics, transport, resource configuration, parameters, or production selection changed.`
+- Validation:
+  - Accepted R6-R3-R3 starting head `69b6133a5f76d3c7839705c78922c7452ad5d550` - CONFIRMED
+  - Local Rust 1.89.0 compile and release execution - PASSED
+  - Actual fed R6 reference reproduction - PASSED
+  - R5 static reference delivery `162.464640538382` and organized delta `+0.342140676890381` - PASSED
+  - Geometry-frozen diagnostic parity with static reference - PASSED
+  - Contact chronology: last positive delivery `849`, first permanent zero exposure `850`, reservoir remains positive - PASSED
+  - Contact-preserved upper bound: full fixed inventory delivered, organized delta `-17.4947722071266` - RECORDED NEGATIVE
+  - No-reset actual/contact-upper recovery - FAILED restoration criterion as expected diagnostic result
+  - Dense evidence target - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r4`
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The upper bound exhausts the fixed finite inventory, so the result is bounded to the preregistered resource contract and does not establish behavior under unlimited source. Contact loss is a major contributor but not sufficient to explain the full failure; M1 remains not established and no repair or downstream execution is authorized.
+- Blockers: Exact-head diagnostic CI and Architect review.
+- Follow-up directive: none
+
 ## D-20260826-dcdev020m1r6r3r3-gc-reaction-area-conservation-repair001 - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-FINAL-HEAD-PENDING-ARCHITECT`

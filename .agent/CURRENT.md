@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-26T00:00:00-04:00`
+- Last updated: `2026-08-26T12:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260826-dcdev020m1r6r3r3-gc-reaction-area-conservation-repair001`
-- External directive ID: `DC-DEV-020-M1-R6-R3-R3-GC-REACTION-AREA-CONSERVATION-REPAIR-001`
-- Objective: `Repair and qualify only the GeometryConservativeV3 reaction material-transfer area semantic; retain HistoricalV1 and ConservativeV2 floor behavior exactly.`
+- Local directive ID: `D-20260826-dcdev020m1r6r4-homeostasis-contact-causal-audit001`
+- External directive ID: `DC-DEV-020-M1-R6-R4-HOMEOSTASIS-CONTACT-CAUSAL-AUDIT-001`
+- Objective: `Determine whether loss of geometric resource contact or embodied moving-body demand is causally sufficient for the valid full-runtime homeostasis and restoration failure, using observer-only arms.`
 - Current status: `VALIDATING`
-- Acceptance: `Complete isolated GC structural turnover/build/membrane conservation tests, historical V1/V2 preservation, pre-floor parity, Linux long-run closure, compact Atlas evidence, exact-head CI, and Architect review.`
-- Current phase: `R3 bounded repair and local qualification are complete. Windows preserves the fed/recovery negative evidence and ruptures before the sub-floor regime; exact-head Linux verification is the authority for post-floor closure. Architect review is pending.`
-- Expected or actual touched areas: `R3 bounded mesh_reactions material-transfer semantic, qualification example, workflow compatibility gate, compact evidence, R3 documentation, and append-only governance only; all unrelated dirty work is preserved`
-- Immediate next action: `Return the exact-head R3 repair package to Architect review; no homeostasis repair, production switch, reserve/recycling/salvage work, M2, or DC-DEV-021 execution.`
+- Acceptance: `Separate exposure, permeability, concentration drive, edge-length, and embodied-demand contributions; preserve the actual R6 failure and R5 static reference; write compact evidence to Git and dense ledgers to canonical Atlas; obtain exact-head diagnostic CI and Architect review.`
+- Current phase: `R6-R3-R3 is Architect-accepted. The R6-R4 observer-only audit has a reproducible local negative result: actual contact becomes permanently zero at step 850 while the fixed reservoir remains available, but the all-intact finite-resource upper bound still declines. Remote exact-head verification and Architect review are pending.`
+- Expected or actual touched areas: `R6-R4 observer-only qualification example, workflow, compact evidence, R4 documentation, and append-only governance only; no production biology or resource/mechanics code; all unrelated dirty work is preserved`
+- Immediate next action: `Run exact-head Linux diagnostic CI, verify compact and Atlas evidence, and return the bounded causal result to Architect review; do not repair homeostasis, change production, redesign resources, add M2 behavior, or begin DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -42,7 +42,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `DC-DEV-020-M1-R6-R3-R3 exact-head push and PR qualification CI; head 109adc55f762bf13feecd667be56e8ba9e956c9a; push run 32962206301; PR run 32962210562; artifact digests sha256:f4ece0d2c13d4d8185c94610a925f6fbefaa4a934c9f490197759237f41de9c4 and sha256:bf918e79ee3e523bcc1614fb93a2be5cdabfbc9f670b03dd8a9deadfded9b028`
+- Command or check: `DC-DEV-020-M1-R6-R4 local Rust 1.89.0 audit; exact R6 reproduction, R5 static reference, geometry-frozen and contact-preserved diagnostic arms, Atlas dense output`
 - Result: `PASSED`
 
 ## Risks

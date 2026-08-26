@@ -212,3 +212,9 @@
 - `digital-protocell/experiments/generated/` — evidence is append-only and provenance-bound.
 - `.git/` — Git metadata and object storage.
 - `.agent/legacy/` — preserved historical governance snapshots.
+
+- `digital-protocell/examples/dcdev020m1r6r4_homeostasis_contact_audit.rs` — observer-only actual, R5 static, geometry-frozen, contact-preserved upper-bound, contact chronology, flux-factor, demand, and no-reset recovery audit.
+- `digital-protocell/experiments/generated/dcdev020m1r6r4/` — compact R6-R4 protocol/results/qualification/manifest; dense ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r4/` — R6-R4 homeostasis/contact causal audit protocol and bounded interpretation.
+- `.github/workflows/dc-dev-020m1r6r4.yml` — scoped R6-R4 governance, D-087 preservation, observer audit, compact artifact verification, frozen-suite preservation, and exact-head CI.
+- `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r4\` — canonical dense R6-R4 runtime ledgers; compact authority remains in Git.

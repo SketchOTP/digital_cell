@@ -665,3 +665,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-M1-R6-R3-R3 reaction-area conservation repair qualification only; no M1 closure or downstream authorization.
 - Supersedes learning: L-DCDEV020M1R6R3R2-001
+
+## L-DCDEV020M1R6R4-001
+
+- Learning ID: L-DCDEV020M1R6R4-001
+- Date: 2026-08-26
+- Fact or lesson: Under the accepted GeometryConservativeV3/ConservativeV3 full runtime, actual contact opportunity is lost permanently at step 850 while the fixed finite reservoir retains `228.521657910379` N/F and actual delivery is `14.627590100158919` each. The accepted R5 static reference and geometry-frozen diagnostic deliver `162.464640538382` each and remain approximately organized-material nondeclining. An observer-only all-intact contact upper bound receives the complete fixed inventory `243.149248010538` each but still loses `17.4947722071266` organized material, so contact preservation alone is insufficient under the preregistered finite inventory; the bounded classification is `M1_FULL_RUNTIME_EMBODIED_DEMAND_DOMINANT`, pending exact-head CI and Architect review.
+- Evidence location: `digital-protocell/examples/dcdev020m1r6r4_homeostasis_contact_audit.rs`, `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r4/`, compact evidence under `digital-protocell/experiments/generated/dcdev020m1r6r4/`, and dense ledgers under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r4`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6-R4 observer-only homeostasis/contact causal audit; no biology, equations, mechanics, transport, resource redesign, production selection, controller, behavior, evolution, recycling, salvage, M2, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R6R3R3-001
