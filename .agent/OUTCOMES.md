@@ -1514,3 +1514,20 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: Windows cannot exercise the Linux sub-floor repair boundary; exact-head remote CI must verify sub-floor closure and artifact identity. M1 remains not established; no production repair, production switch, reserve/recycling/salvage work, M2, or DC-DEV-021 is authorized.
 - Blockers: Exact-head push/PR CI and Architect review.
 - Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r3r3-gc-reaction-area-conservation-repair001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-PENDING-ARCHITECT`
+- Closed: 2026-08-26T00:00:00-04:00
+- Acceptance: PARTIAL
+- Summary: Exact-head remote validation passed for the bounded R3 repair at `109adc55f762bf13feecd667be56e8ba9e956c9a`. Push and PR workflows completed successfully, including Linux governance, bounded scope, actual D-087 V2/V3 preservation, repaired sub-floor qualification, accounting, and frozen-suite preservation. The package remains pending Architect acceptance.
+- Changed areas: No scientific changes after the initial R3 repair commit; this follow-up records remote validation only and updates mutable current-state governance.
+- Validation:
+  - Exact-head push CI `32962206301`, artifact digest `sha256:f4ece0d2c13d4d8185c94610a925f6fbefaa4a934c9f490197759237f41de9c4` - PASSED
+  - Exact-head PR CI `32962210562`, artifact digest `sha256:bf918e79ee3e523bcc1614fb93a2be5cdabfbc9f670b03dd8a9deadfded9b028` - PASSED
+  - PR #44 authority OPEN / DRAFT / UNMERGED - PASSED
+  - Branch head `109adc55f762bf13feecd667be56e8ba9e956c9a` - PASSED
+- Remaining risks: Architect must independently inspect the bounded R3 diff and remote evidence before acceptance. M1 remains not established; no production repair, production switch, reserve/recycling/salvage work, M2, or DC-DEV-021 is authorized.
+- Blockers: Architect review only.
+- Follow-up directive: none

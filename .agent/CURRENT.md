@@ -42,7 +42,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `DC-DEV-020-M1-R6-R3-R2 exact-head push and PR diagnostic CI; head d4d4d2ef6627ebba660a034139439bf1a3ac508c; push run 32957391440; PR run 32957395432; artifact digests sha256:bb442b7d2f8955830013e19bf82c6f9351de9dfcb07bf1badcd3e9ca03f52134 and sha256:5f1abcedf4ea82b713f8304e462c70e784fbcaf5dc833cd2cfa402a1406c8072`
+- Command or check: `DC-DEV-020-M1-R6-R3-R3 exact-head push and PR qualification CI; head 109adc55f762bf13feecd667be56e8ba9e956c9a; push run 32962206301; PR run 32962210562; artifact digests sha256:f4ece0d2c13d4d8185c94610a925f6fbefaa4a934c9f490197759237f41de9c4 and sha256:bf918e79ee3e523bcc1614fb93a2be5cdabfbc9f670b03dd8a9deadfded9b028`
 - Result: `PASSED`
 
 ## Risks
