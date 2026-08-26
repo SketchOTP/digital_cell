@@ -685,3 +685,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-020-M1-R6-R5 observer-only embodied-sink causal decomposition; no production biology, reaction coefficients, mechanics, transport, resources, GC conservation, production selection, controller, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M1R6R4-001
+
+## L-DCDEV020M1R6R5-REMOTE-VERIFIED-001
+
+- Learning ID: L-DCDEV020M1R6R5-REMOTE-VERIFIED-001
+- Date: 2026-08-26
+- Fact or lesson: Exact-head Linux PR validation for the bounded R6-R5 observer-only sink decomposition passed at `4f4774f9393ad8978cecd1b8de21120313fdd559` in workflow `33007407520`. The authoritative diagnostic classification remains `M1_EMBODIED_SINK_CAUSE_UNRESOLVED`: A-decay, catalyst-turnover, and structural-turnover single knockouts each independently pass the fixed endpoint probe, so no single dominant sink or conditional pairwise mixed result is established.
+- Evidence location: compact evidence under `digital-protocell/experiments/generated/dcdev020m1r6r5/`, dense ledgers under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r5`, and uploaded artifact digest `sha256:86634ff3587b0cd2c6630a63a7ae2e83161f8e2243af0bacfb0c2450203527ba`.
+- Confidence: PROVISIONAL
+- Scope: R6-R5 remote diagnostic verification only; no production sink repair, M1 closure, production selection, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R6R5-001
