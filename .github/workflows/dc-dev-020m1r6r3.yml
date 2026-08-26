@@ -103,7 +103,8 @@ jobs:
 
           def require(condition, message):
               if not condition:
-              raise SystemExit(f'R6-R3-R2 verifier failure: {message}')
+                  print(f'::error title=R6-R3-R2 verifier::{message}')
+                  raise SystemExit(f'R6-R3-R2 verifier failure: {message}')
 
           base = Path('experiments/generated/dcdev020m1r6r3r2')
           fresh = base / 'ci'
