@@ -1616,3 +1616,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: This is diagnostic evidence only. It does not establish an admissible production sink repair, M1 closure, production selection change, recycling/salvage work, M2, or DC-DEV-021 authorization. Architect must independently review the exact pushed head and evidence.
 - Blockers: Architect review.
 - Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r5-embodied-sink-causal-decomposition001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-FINAL-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Closed: `2026-08-26T16:10:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Final exact-head PR validation passed at `d6b6ea10e6cde7e0305c2ef5c558ad69e1639c7a` after the governance-only reconciliation. The scientific package and classification are unchanged: `M1_EMBODIED_SINK_CAUSE_UNRESOLVED` because all three fixed single sink knockouts individually pass the endpoint probe.
+- Changed areas: Mutable current-state and append-only outcome/learning governance only; no scientific implementation or evidence values changed after the R6-R5 diagnostic commit.
+- Validation:
+  - Exact-head PR workflow `33008078238` - PASSED
+  - Governance, formatting, bounded diff, accepted R6-R4 reproduction, D-087 V2/V3 preservation, R6-R5 execution, compact evidence verification, geometry/material, Phase-1 metrics, D-088, D-091, and evolution preservation - PASSED
+  - Uploaded artifact `dcdev020m1r6r5-embodied-sink-evidence`, digest `sha256:a0285f9447194551ac53ac915acc5c5cbb614ee13aca27bc274e85fbb3703e98` - VERIFIED
+  - PR #44 OPEN / DRAFT / UNMERGED with required base - VERIFIED
+  - Dense evidence - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r5`
+  - Architect review - PENDING
+- Remaining risks: This is diagnostic evidence only. It does not establish an admissible production sink repair, M1 closure, production selection change, recycling/salvage work, M2, or DC-DEV-021 authorization. Architect must independently review the final pushed head and evidence.
+- Blockers: Architect review.
+- Follow-up directive: none
