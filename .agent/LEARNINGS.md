@@ -695,3 +695,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: R6-R5 remote diagnostic verification only; no production sink repair, M1 closure, production selection, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M1R6R5-001
+
+## L-DCDEV020M1R6R6-001
+
+- Learning ID: L-DCDEV020M1R6R6-001
+- Date: 2026-08-26
+- Fact or lesson: The bounded R6-R6 observer-only diagnostic separates two contributors to the accepted R6-R5 homeostasis failure. With static geometry and the accepted frozen source schedule, organized material ends at `+0.3421406768903523`; a deterministic equal-total front-loaded schedule ends at `-36.974874683266776`, with source-history excess A-decay material-time `12.220590145703955` and excess catalyst-turnover material-time `32.144418468305574`. With the same successful frozen schedule, matched moving geometry ends at `-9.954959206543037` and exhibits `13.44250096660451` excess structural turnover relative to matched static geometry. Local closure and explicit V2/V3 D-087 preservation pass. The provisional diagnostic classification is `M1_SOURCE_FRONTLOAD_AND_GEOMETRY_STRUCTURAL_CYCLE_CONFIRMED`, pending exact-head remote CI and Architect review.
+- Evidence location: `digital-protocell/examples/dcdev020m1r6r6_source_geometry_state_coupling_audit.rs`, `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r6/`, compact evidence under `digital-protocell/experiments/generated/dcdev020m1r6r6/`, and dense ledgers under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r6\\local-final`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-020-M1-R6-R6 observer-only source-history and moving-geometry state-coupling audit; no production biology, reaction coefficients, mechanics, transport, resource redesign, source repair, production selection, controller, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R6R5-REMOTE-VERIFIED-001

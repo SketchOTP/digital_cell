@@ -1,0 +1,51 @@
+{
+  "arms": [
+    "actual_moving",
+    "geometry_frozen",
+    "contact_upper_bound",
+    "matched_source_static",
+    "matched_source_static_frozen_schedule",
+    "matched_source_moving",
+    "frontloaded_equal_total_static",
+    "recovery_deprivation",
+    "recovery_refeed_upper"
+  ],
+  "deprivation": 480,
+  "directive": "DC-DEV-020-M1-R6-R6-SOURCE-GEOMETRY-STATE-COUPLING-AUDIT-001",
+  "equal_total_target": 162.4646405383817,
+  "forbidden_changes": [
+    "production coefficients",
+    "chemistry",
+    "mechanics",
+    "transport",
+    "resource geometry",
+    "resource inventory",
+    "recycling",
+    "salvage",
+    "reserve",
+    "controller",
+    "M2"
+  ],
+  "horizon": 8000,
+  "next_execution_started": false,
+  "observer_only": true,
+  "resource": {
+    "boundary_f": 2.063914918930895,
+    "boundary_n": 2.063914918930895,
+    "center": [
+      4.8,
+      0.0
+    ],
+    "initial_f": 243.14924801053778,
+    "initial_n": 243.14924801053778,
+    "radius": 1.5,
+    "replenishment_events": 0
+  },
+  "runtime": {
+    "chemistry": "ConservativeV3",
+    "dt": 0.02,
+    "material": "GeometryConservativeV3",
+    "reserve": "OFF"
+  },
+  "starting_head": "73067f702a8f5386c440629c454e40ab1e434e91"
+}

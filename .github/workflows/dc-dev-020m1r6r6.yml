@@ -1,0 +1,177 @@
+name: DC-DEV-020-M1-R6-R6 source-geometry state coupling audit
+
+on:
+  push:
+    branches:
+      - strategy/dc-dev-020r9-mesh-contract-requalification
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+
+permissions:
+  contents: read
+
+jobs:
+  source-geometry-state-coupling:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - name: Check out exact head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.89.0
+          components: rustfmt
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Governance validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustfmt +1.89.0 --edition 2021 --check examples/dcdev020m1r6r6_source_geometry_state_coupling_audit.rs
+      - name: Verify bounded R6-R6 diff
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import subprocess
+          start = '73067f702a8f5386c440629c454e40ab1e434e91'
+          changed = subprocess.check_output(['git', 'diff', '--name-only', start, 'HEAD'], text=True).splitlines()
+          allowed = {
+              '.agent/CURRENT.md', '.agent/DIRECTIVES.md', '.agent/LEARNINGS.md',
+              '.agent/OUTCOMES.md', '.agent/REPO_MAP.md',
+              '.github/workflows/dc-dev-020m1r6r6.yml',
+              'digital-protocell/crates/phase1-certifier/Cargo.toml',
+              'digital-protocell/examples/dcdev020m1r6r6_source_geometry_state_coupling_audit.rs',
+              'digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r6/source_geometry_state_coupling_audit.md',
+              'digital-protocell/experiments/generated/dcdev020m1r6r6/protocol.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r6/results.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r6/qualification.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r6/preservation.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r6/artifact_manifest.json',
+          }
+          unexpected = set(changed) - allowed
+          assert not unexpected, f'unexpected R6-R6 paths: {sorted(unexpected)}'
+          print('DCDEV020M1R6R6_BOUNDED_DIFF_PASS')
+          PY
+      - name: Reproduce accepted R6-R4 reference
+        working-directory: digital-protocell
+        env:
+          DCDEV020M1R6R4_OUTPUT: ${{ runner.temp }}/dcdev020m1r6r4
+          DCDEV020M1R6R4_DENSE_OUTPUT: ${{ runner.temp }}/dcdev020m1r6r4-dense
+        run: cargo +1.89.0 run -p phase1-certifier --example dcdev020m1r6r4_homeostasis_contact_audit --release --quiet
+      - name: Reproduce accepted R6-R5 reference
+        working-directory: digital-protocell
+        env:
+          DCDEV020M1R6R5_OUTPUT: ${{ runner.temp }}/dcdev020m1r6r5
+          DCDEV020M1R6R5_DENSE_OUTPUT: ${{ runner.temp }}/dcdev020m1r6r5-dense
+        run: cargo +1.89.0 run -p phase1-certifier --example dcdev020m1r6r5_embodied_sink_causal_decomposition --release --quiet
+      - name: Actual D-087 ConservativeV3 preservation
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R3_CONTRACT: ConservativeV3
+          DCDEV020R9R3_RESERVE: '0'
+        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1r6r6/ci/v3_d087
+      - name: Actual D-087 ConservativeV2 preservation
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R3_CONTRACT: ConservativeV2
+          DCDEV020R9R3_RESERVE: '0'
+        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1r6r6/ci/v2_d087
+      - name: Run R6-R6 qualification
+        working-directory: digital-protocell
+        env:
+          DCDEV020M1R6R6_OUTPUT: experiments/generated/dcdev020m1r6r6/ci
+          DCDEV020M1R6R6_DENSE_OUTPUT: ${{ runner.temp }}/dcdev020m1r6r6-dense
+        run: cargo +1.89.0 run -p phase1-certifier --example dcdev020m1r6r6_source_geometry_state_coupling_audit --release --quiet
+      - name: Verify R6-R6 compact evidence
+        working-directory: digital-protocell
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          def require(condition, message):
+              if not condition:
+                  raise SystemExit(f'R6-R6 verifier failure: {message}')
+
+          base = Path('experiments/generated/dcdev020m1r6r6')
+          fresh = base / 'ci'
+          names = ('protocol.json', 'results.json', 'qualification.json', 'preservation.json', 'artifact_manifest.json')
+          for root in (base, fresh):
+              for name in names:
+                  require((root / name).is_file(), f'missing {root/name}')
+          protocol = json.loads((base / 'protocol.json').read_text())
+          fresh_protocol = json.loads((fresh / 'protocol.json').read_text())
+          results = json.loads((fresh / 'results.json').read_text())
+          qualification = json.loads((fresh / 'qualification.json').read_text())
+          preservation = json.loads((fresh / 'preservation.json').read_text())
+          require(fresh_protocol == protocol, 'fresh protocol differs from committed protocol')
+          require(protocol['directive'] == 'DC-DEV-020-M1-R6-R6-SOURCE-GEOMETRY-STATE-COUPLING-AUDIT-001', 'directive mismatch')
+          require(protocol['starting_head'] == '73067f702a8f5386c440629c454e40ab1e434e91', 'starting head mismatch')
+          require(protocol['runtime'] == {'material': 'GeometryConservativeV3', 'chemistry': 'ConservativeV3', 'reserve': 'OFF', 'dt': 0.02}, 'runtime identity mismatch')
+          require(results['classification'] in {
+              'M1_SOURCE_FRONTLOAD_AND_GEOMETRY_STRUCTURAL_CYCLE_CONFIRMED',
+              'M1_SOURCE_FRONTLOAD_CAUSAL_GEOMETRY_MECHANISM_UNRESOLVED',
+              'M1_GEOMETRY_STRUCTURAL_CYCLE_CAUSAL_SOURCE_PROFILE_NOT_CONFIRMED',
+              'M1_SOURCE_GEOMETRY_ALTERNATE_COUPLING_CONFIRMED',
+              'M1_SOURCE_GEOMETRY_STATE_COUPLING_UNRESOLVED',
+          }, 'classification outside directive list')
+          refs = results['r6_r5_reproduction']
+          require(abs(refs['geometry_frozen']['organized_material_delta'] - 0.342140676890381) <= 1e-8, 'frozen reference changed')
+          require(abs(refs['contact_upper_bound']['organized_material_delta'] + 17.4947722071266) <= 1e-8, 'contact-upper reference changed')
+          require(abs(refs['matched_source_static_frozen_schedule']['organized_material_delta'] - 0.3421406768903523) <= 1e-8, 'matched static reference changed')
+          require(abs(refs['matched_source_moving']['organized_material_delta'] + 9.954959206543037) <= 1e-8, 'matched moving reference changed')
+          front = results['frontloaded_equal_total_static']
+          require(abs(front['n_delivered'] - 162.4646405383817) <= 1e-8 and abs(front['f_delivered'] - 162.4646405383817) <= 1e-8, 'equal-total target changed')
+          require(front['organized_material_delta'] < 0.0, 'front-loaded equal-total arm did not fail')
+          require(results['source_history']['causal'] is True, 'source-history causality not established')
+          require(results['geometry_structural_turnover_excess'] > 0.0, 'moving structural-turnover excess not measured')
+          require(results['r6_r5_reproduction']['matched_source_moving']['closure']['max_strict_residual'] <= 1e-8, 'matched moving closure failed')
+          require(qualification['e0_authority'] and qualification['e1_r6_r5_reproduction'], 'authority/reference gate failed')
+          require(qualification['e2_stock_sink_identity'] and qualification['e3_source_profiles'], 'stock/source gate failed')
+          require(qualification['e4_equal_total_frontloaded_test'] and qualification['e5_geometry_decomposition'], 'causal decomposition gate failed')
+          require(qualification['observer_only'] is True and qualification['next_execution_started'] is False, 'observer boundary changed')
+          require(results['production_changed'] is False and results['parameter_search'] is False, 'production/search boundary changed')
+          require(results['recycling_salvage_reserve_added'] is False and results['target_size_or_homeostat_added'] is False, 'forbidden mechanism added')
+          require(preservation['historical_v2_d087'] is True and preservation['candidate_v3_d087'] is True, 'D-087 preservation failed')
+          print('DCDEV020M1R6R6_ARTIFACT_VERIFICATION_PASS')
+          PY
+      - name: Geometry/material preservation
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d098_geometry_material_conservation -- --nocapture
+      - name: Phase-1 metrics preservation
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --test metrics_semantics -- --nocapture
+      - name: D-088 preservation
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+      - name: D-091 preservation
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+      - name: Evolution harness preservation
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness -- --nocapture
+      - name: Upload compact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020m1r6r6-source-geometry-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020m1r6r6/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r6r6/results.json
+            digital-protocell/experiments/generated/dcdev020m1r6r6/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r6r6/preservation.json
+            digital-protocell/experiments/generated/dcdev020m1r6r6/artifact_manifest.json
+            digital-protocell/experiments/generated/dcdev020m1r6r6/ci/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r6r6/ci/results.json
+            digital-protocell/experiments/generated/dcdev020m1r6r6/ci/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r6r6/ci/preservation.json
+            digital-protocell/experiments/generated/dcdev020m1r6r6/ci/artifact_manifest.json

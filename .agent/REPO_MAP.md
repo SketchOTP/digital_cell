@@ -224,3 +224,9 @@
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r5/` — R6-R5 embodied-sink causal decomposition protocol and provisional result.
 - `.github/workflows/dc-dev-020m1r6r5.yml` — scoped R6-R5 governance, R6-R4 reproduction, fixed diagnostic decomposition, D-087, preservation, artifact verification, and exact-head CI.
 - `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r5\` — canonical dense R6-R5 runtime ledgers; compact authority remains in Git.
+
+- `digital-protocell/examples/dcdev020m1r6r6_source_geometry_state_coupling_audit.rs` — observer-only R6-R6 source-history/front-loading and moving-geometry structural-cycle diagnostic with matched schedules, material-time integrals, factor shadows, and recovery correspondence.
+- `digital-protocell/experiments/generated/dcdev020m1r6r6/` — compact R6-R6 protocol/results/qualification/preservation/manifest; dense ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r6/` — R6-R6 source-geometry state-coupling audit protocol and provisional interpretation.
+- `.github/workflows/dc-dev-020m1r6r6.yml` — scoped R6-R6 governance, accepted-reference reproduction, equal-total source-history probe, matched geometry decomposition, preservation, compact artifact verification, and exact-head diagnostic CI.
+- `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r6\` — canonical dense R6-R6 runtime ledgers; compact authority remains in Git.

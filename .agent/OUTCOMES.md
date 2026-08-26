@@ -1635,3 +1635,25 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: This is diagnostic evidence only. It does not establish an admissible production sink repair, M1 closure, production selection change, recycling/salvage work, M2, or DC-DEV-021 authorization. Architect must independently review the final pushed head and evidence.
 - Blockers: Architect review.
 - Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r6-source-geometry-state-coupling-audit001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R6-SOURCE-GEOMETRY-STATE-COUPLING-LOCAL`
+- Supersedes outcome: `OUT-DCDEV020M1R6R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-FINAL-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Closed: `2026-08-26T17:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The bounded observer-only R6-R6 audit reproduces the accepted R6-R5 reference state, establishes an equal-total source-history probe, and measures an independent moving-geometry structural-turnover path. The static frozen schedule ends at `+0.3421406768903523` organized material, while the deterministic equal-total front-loaded schedule ends at `-36.974874683266776`; the matched moving frozen-schedule arm ends at `-9.954959206543037` with `13.44250096660451` excess structural turnover relative to matched static geometry. The local diagnostic classification is `M1_SOURCE_FRONTLOAD_AND_GEOMETRY_STRUCTURAL_CYCLE_CONFIRMED` and remains provisional pending exact-head remote validation and Architect review.
+- Changed areas: New observer-only R6-R6 example and documentation, phase1-certifier example registration, scoped workflow, compact evidence, and governance records only. No production biology, reaction coefficients, mechanics, transport, resource configuration, source implementation, production selection, controller, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 behavior changed.
+- Validation:
+  - Rust 1.89.0 release execution - PASSED
+  - Accepted R6-R5 reference reproduction - PASSED locally
+  - Explicit ConservativeV3 and ConservativeV2 D-087 controls - 8/8 each
+  - Material/organized closure across diagnostic arms - PASSED within numerical tolerance
+  - Equal-total front-loaded source-history probe - PASSED as diagnostic
+  - Matched moving/static source decomposition and structural-turnover measurement - PASSED
+  - Dense ledgers - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r6\\local-final`
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The front-loaded probe establishes schedule-history harm under the sealed diagnostic, but factor-swap values are observer shadows and do not uniquely identify one structural build factor. Recovery correspondence is recorded but does not establish a production repair or M1 closure. No diagnostic conclusion is authoritative until exact-head remote validation and Architect review.
+- Blockers: Exact-head remote CI and Architect review.
+- Follow-up directive: none

@@ -1,0 +1,15 @@
+{
+  "dense_output": "\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r6",
+  "directive": "DC-DEV-020-M1-R6-R6-SOURCE-GEOMETRY-STATE-COUPLING-AUDIT-001",
+  "files": [
+    "protocol.json",
+    "results.json",
+    "qualification.json",
+    "preservation.json",
+    "artifact_manifest.json"
+  ],
+  "schema": "dcdev020m1r6r6_manifest_v1",
+  "sha256": "computed-by-workflow",
+  "shared_drive_required": true,
+  "starting_head": "73067f702a8f5386c440629c454e40ab1e434e91"
+}

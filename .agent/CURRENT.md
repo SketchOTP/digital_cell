@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-26T12:00:00-04:00`
+- Last updated: `2026-08-26T14:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260826-dcdev020m1r6r5-embodied-sink-causal-decomposition001`
-- External directive ID: `DC-DEV-020-M1-R6-R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-001`
-- Objective: `Determine which irreversible organized-material sink or coupling causes the materially conservative moving body to lose organized material faster than finite metabolism can replace it, using observer-only arms.`
+- Local directive ID: `D-20260826-dcdev020m1r6r6-source-geometry-state-coupling-audit001`
+- External directive ID: `DC-DEV-020-M1-R6-R6-SOURCE-GEOMETRY-STATE-COUPLING-AUDIT-001`
+- Objective: `Determine whether source-history/front-loading and moving-geometry structural cycling are causally separable contributors to the valid R6-R5 homeostasis failure, using observer-only replays.`
 - Current status: `VALIDATING`
-- Acceptance: `Close the organized-material sink identity, time-resolved sink attribution, matched-source static/moving comparisons, fixed one-at-a-time knockouts, conditional pairwise probes when required, restoration shadows, preservation, compact evidence, dense Atlas ledgers, exact-head diagnostic CI, and Architect review.`
-- Current phase: `R6-R4 is Architect-accepted as M1_FULL_RUNTIME_EMBODIED_DEMAND_DOMINANT. R6-R5 observer-only decomposition reproduces the accepted arms, preserves material closure, and finds all three single sink knockouts individually sufficient under the contact-upper schedule; final exact-head PR validation passed at d6b6ea10e6cde7e0305c2ef5c558ad69e1639c7a with classification M1_EMBODIED_SINK_CAUSE_UNRESOLVED. Architect review is next.`
-- Expected or actual touched areas: `R6-R5 observer-only qualification example, phase1-certifier example registration, scoped workflow, compact evidence, R5 documentation, and append-only governance only; no production biology, reaction source, mechanics, transport, resource configuration, or production selection; all unrelated dirty work is preserved`
-- Immediate next action: `Return the exact-head R6-R5 result and artifact to Architect review; do not repair sinks, change production, add recycling/salvage, change resources, add a controller, or begin M2/DC-DEV-021.`
+- Acceptance: `Reproduce R6-R5 references; characterize sealed source schedules; prove or disprove equal-total front-loaded source harm; quantify A/C/M stock-history and structural factors; preserve material closure and certified suites; write compact Git evidence and dense Atlas ledgers; obtain exact-head diagnostic CI and Architect review.`
+- Current phase: `R6-R5 is Architect-accepted as M1_EMBODIED_SINK_CAUSE_UNRESOLVED. R6-R6 observer-only execution is complete locally with the equal-total front-loaded source-history effect and matched moving-geometry structural-turnover excess both measured; exact-head remote validation and Architect review are pending.`
+- Expected or actual touched areas: `R6-R6 observer-only audit example, phase1-certifier example registration, scoped workflow, compact evidence, documentation, and append-only governance only; no production biology, reaction source, mechanics, transport, resource configuration, or production selection; all unrelated dirty work is preserved`
+- Immediate next action: `Run exact-head remote R6-R6 validation and return the diagnostic classification to Architect review; do not repair source history or geometry coupling, change production, add recycling/salvage, add a controller, or begin M2/DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -42,7 +42,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `DC-DEV-020-M1-R6-R5 local Rust 1.89.0 audit; accepted R6-R4 reproduction, geometry-frozen/contact-upper arms, matched-source replays, single sink knockouts, restoration shadows, Atlas dense output`
+- Command or check: `DC-DEV-020-M1-R6-R6 local Rust 1.89.0 audit; R6-R5 reference replays, equal-total front-loaded schedule, matched source/geometry decomposition, recovery correspondence, Atlas dense output`
 - Result: `PASSED`
 
 ## Risks
@@ -65,12 +65,9 @@
 
 ## Blockers
 
-- R9-R2 is architect-accepted as `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`; R9-R3-R1, R9-R4, and R9-R4-R1 are architect-accepted and preserved. M0 is closed, M1 topology death is established, R3 is accepted, and R4 is the active review boundary; no production repair, reserve redesign, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work is authorized.
-
-- R9-R5 is REPLAN / NOT ACCEPTED. Its exact remote V20 artifact showed Gate 7 false because the R9-R5 runner supplied the wrong repository root; its broad classification is retired as authority. R9-R5-R1 must restore V20 8/8 and exercise positive diagnostic R before any causal liquidity classification is accepted. No reserve repair, allocator changes, recycling law, production law, parameter tuning, additional kinetic family, source/sink change, behavior, or DC-DEV-021 is authorized.
-- R9-R5-R1 is architect-accepted at `f1704acff5ca64e509a28c74af8cccbf76439ef2` with CI `32549697865` and classification `DCDEV020R9R5R1_RESERVE_LIQUIDITY_CONTRIBUTORY_NOT_SUFFICIENT`. R9-R6 is REPLAN / NOT ACCEPTED until R9-R6-R1 passes exact-head CI; its corrected shadow count is 4/8 and classification is `DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_INSUFFICIENT`.
-- R6-R2-R1 is local observer evidence only and remains pending Architect review. Its compact package is under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r1\\compact`; no commit, push, or remote CI was authorized or performed.
-- R6-R2-R2 local certifier correction is complete and remains pending Architect review. Catalyst pulse labels now use labeled material amount (`tracer_c × area`) for D-087 replacement semantics; ConservativeV3 control is `8/8`, GeometryConservativeV3 candidate is `7/8` with Gate 1 passing and Gate 2 starvation unchanged. Corrected compact evidence is under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r2\\compact`; no D-087 thresholds, biology, production selection, commit, push, or remote CI was authorized or performed.
+- R6-R5 is architect-accepted at `73067f702a8f5386c440629c454e40ab1e434e91` with exact-head PR CI `33008519410` and classification `M1_EMBODIED_SINK_CAUSE_UNRESOLVED`.
+- R6-R6 exact-head remote validation and independent Architect review remain pending. The local diagnostic classification is `M1_SOURCE_FRONTLOAD_AND_GEOMETRY_STRUCTURAL_CYCLE_CONFIRMED`, but it is not authoritative until remote verification and review.
+- No source-history repair, geometry/mechanics repair, production switch, recycling, salvage, controller, M2, behavior, evolution, or DC-DEV-021 work is authorized.
 
 ## Pending decisions
 

@@ -934,3 +934,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260826-dcdev020m1r6r4-homeostasis-contact-causal-audit001
 - Status at issuance: ISSUED
+
+## D-20260826-dcdev020m1r6r6-source-geometry-state-coupling-audit001
+
+- Issued: `2026-08-26T14:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R6-R6-SOURCE-GEOMETRY-STATE-COUPLING-AUDIT-001`
+- Objective: Determine whether source-history/front-loading and moving-geometry structural cycling are causally separable contributors to the valid R6-R5 homeostasis failure.
+- Scope: Start exactly at accepted R6-R5 head `73067f702a8f5386c440629c454e40ab1e434e91`; reproduce accepted reference arms; characterize sealed source schedules; run the deterministic equal-total front-loaded static test; measure A/C/M stock integrals, structural turnover and build factors, recovery correspondence, preservation, compact evidence, dense Atlas ledgers, and exact-head diagnostic CI.
+- Exclusions: No production biology, reaction coefficients, mechanics, transport, resource geometry/inventory, source redesign, recycling, salvage, reserve, controller, target geometry, M2, behavior, evolution, or DC-DEV-021.
+- Acceptance: The diagnostic must establish or disprove equal-total front-loaded source harm and independently quantify the moving-geometry structural-cycle pathway, with material closure, preservation, exact-head remote CI, and Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260826-dcdev020m1r6r5-embodied-sink-causal-decomposition001
+- Status at issuance: ISSUED
