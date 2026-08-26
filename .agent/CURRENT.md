@@ -43,7 +43,7 @@
 ## Last validation after adoption
 
 - Command or check: `DC-DEV-020-M1-R6-R3-R2 exact-head push and PR diagnostic CI; head d4d4d2ef6627ebba660a034139439bf1a3ac508c; push run 32957391440; PR run 32957395432; artifact digests sha256:bb442b7d2f8955830013e19bf82c6f9351de9dfcb07bf1badcd3e9ca03f52134 and sha256:5f1abcedf4ea82b713f8304e462c70e784fbcaf5dc833cd2cfa402a1406c8072`
-- Result: `PASSED; remote classification M1_GC_REACTION_AREA_FLOOR_CAUSALLY_CONFIRMED; Architect review PENDING`
+- Result: `PASSED`
 
 ## Risks
 
