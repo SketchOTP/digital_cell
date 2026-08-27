@@ -755,3 +755,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: Observer-only REPLAN-002 feasibility diagnostic; no production biology, coefficients, mechanics production path, source redesign, production selection, controller, reserve, recycling, salvage, M1 closure, M2, REPLAN-003, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M1REPLAN001-REMOTE-VERIFIED
+
+## L-DCDEV020M1REPLAN002-REMOTE-VERIFIED
+
+- Learning ID: L-DCDEV020M1REPLAN002-REMOTE-VERIFIED
+- Date: 2026-08-27
+- Fact or lesson: Exact-head Linux verification of the bounded observer-only maturation/load-bearing diagnostic passed at `00f63b84a4080841835516f83881927a16115063` in workflow `33102252577`. Governance, formatting, bounded diff, V2/V3 D-087 controls, REPLAN-002 execution, focused tests, compact evidence, GC conservation, Phase-1 metrics, D-088, D-091, and evolution preservation all passed. The diagnostic classification remains `M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED`; Architect acceptance is pending.
+- Evidence location: compact Git evidence under `digital-protocell/experiments/generated/dcdev020m1replan002/`, dense ledgers under `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1replan002`, PR #44, workflow `33102252577`, and artifact digest `sha256:0d6c7af67893635ebb49f301f70eed6854985dfa67c10fc027898244b3289009`.
+- Confidence: VERIFIED
+- Scope: Exact-head remote verification of REPLAN-002 only; no production repair, parameter search, source redesign, reserve/recycling/salvage, M1 closure, M2, REPLAN-003, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1REPLAN002-001

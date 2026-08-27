@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-27T13:30:00-04:00`
+- Last updated: `2026-08-27T14:20:00-04:00`
 
 ## Active state after adoption
 
@@ -12,9 +12,9 @@
 - Objective: `Determine whether mature-derived load-bearing reference semantics, with existing young/mature structural bookkeeping and no new timescale, can restore fed moving homeostasis and no-reset recovery without changing production biology.`
 - Current status: `IN_PROGRESS`
 - Acceptance: `Reproduce the accepted static/current/age-only controls; execute the bounded maturation/load-bearing diagnostic under the sealed source schedule; preserve physical material identity, remesh lineage, explicit damage, starvation decline, D-087 controls, compact Git evidence, dense Atlas ledgers, and exact-head Linux CI.`
-- Current phase: `R6-R2-R4 and R6-R3 numerical conservation repairs remain accepted; R6-R7 is accepted as insufficient; REPLAN-001 is accepted as M1_AGE_STRUCTURED_TURNOVER_INSUFFICIENT at 92075021ae1f4c9917f7ace9b160e5694e001de2. REPLAN-002 is locally executed as M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED with candidate organized delta +1.33231221701902, candidate recovery PASS, current-control recovery FAIL, and physical topology loss NOT REACHED. Exact-head remote CI and Architect review are pending; M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
+- Current phase: `R6-R2-R4 and R6-R3 numerical conservation repairs remain accepted; R6-R7 is accepted as insufficient; REPLAN-001 is accepted as M1_AGE_STRUCTURED_TURNOVER_INSUFFICIENT at 92075021ae1f4c9917f7ace9b160e5694e001de2. REPLAN-002 is exact-head Linux verified at 00f63b84a4080841835516f83881927a16115063 by workflow 33102252577 as M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED, with candidate organized delta +1.33231221701902, candidate recovery PASS, current-control recovery FAIL, and physical topology loss NOT REACHED. Architect review is pending; M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
 - Expected or actual touched areas: `New observer-only maturation/load-bearing example, phase1-certifier example registration, scoped workflow, compact evidence, documentation, and append-only governance only; no production biology, coefficients, mechanics equations, source schedule, transport, resource configuration, production selection, controller, reserve, recycling, salvage, M2, behavior, evolution, REPLAN-003, or DC-DEV-021 behavior; all unrelated dirty work is preserved`
-- Immediate next action: `Push the bounded REPLAN-002 package to PR #44, obtain exact-head Linux CI, reconcile the result in append-only governance, and stop for Architect review. Do not repair production, tune parameters, add another candidate, or begin REPLAN-003/M2/DC-DEV-021.`
+- Immediate next action: `Stop for Architect review of the exact-head Linux-verified REPLAN-002 package. Do not repair production, tune parameters, add another candidate, or begin REPLAN-003/M2/DC-DEV-021.`
 
 ## Temporary task-relevant facts
 
@@ -42,8 +42,8 @@
 
 ## Last validation after adoption
 
-- Command or check: `REPLAN-002 local Rust 1.89.0 compile, focused tests, and fixed-horizon execution`
-- Result: `NOT RUN`
+- Command or check: `REPLAN-002 exact-head Linux workflow 33102252577`
+- Result: `PASSED`
 
 ## Risks
 

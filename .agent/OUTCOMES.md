@@ -1772,3 +1772,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: The candidate is only a diagnostic shadow and has not been selected for production. The positive candidate result requires exact-head Linux verification and Architect review; physical topology loss was not reached; the current-control recovery failure remains part of the evidence. No production repair, parameter search, source redesign, reserve/recycling/salvage, M1 closure, M2, REPLAN-003, or DC-DEV-021 is authorized.
 - Blockers: Exact-head Linux CI and Architect review.
 - Follow-up directive: none
+
+## D-20260827-dcdev020m1replan002-maturation-coupled-load-bearing-feasibility001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1REPLAN002-MATURATION-COUPLED-LOAD-BEARING-FEASIBILITY-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1REPLAN002-MATURATION-COUPLED-LOAD-BEARING-FEASIBILITY-LOCAL`
+- Closed: `2026-08-27T14:20:00-04:00`
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux verification passed at `00f63b84a4080841835516f83881927a16115063` for the bounded observer-only maturation/load-bearing diagnostic. The classification remains `M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED`; M1 remains not established and Architect acceptance is pending.
+- Changed areas: Remote-verification governance record only; the diagnostic implementation and compact evidence were not changed after the scientific commit. No production biology, coefficients, mechanics equations, source schedule, transport, resource configuration, production selection, controller, reserve, recycling, salvage, M2, REPLAN-003, behavior, evolution, or DC-DEV-021 behavior changed.
+- Validation:
+  - Exact-head Linux workflow `33102252577` at `00f63b84a4080841835516f83881927a16115063` - PASSED
+  - Governance, formatting, bounded diff, D-087 V2/V3, REPLAN-002 execution, focused tests, compact evidence, GC conservation, Phase-1 metrics, D-088, D-091, and evolution preservation - PASSED
+  - Uploaded artifact `dcdev020m1replan002-maturation-coupled-load-bearing-evidence`, digest `sha256:0d6c7af67893635ebb49f301f70eed6854985dfa67c10fc027898244b3289009` - VERIFIED
+  - PR #44 OPEN / DRAFT / UNMERGED with required base - VERIFIED
+  - Architect review - PENDING
+- Remaining risks: The positive maturation-coupled candidate remains a diagnostic shadow and has not been selected for production; physical topology loss was not reached; current-control recovery remains negative evidence. M1 remains not established and no production repair, parameter search, source redesign, reserve/recycling/salvage, M2, REPLAN-003, or DC-DEV-021 is authorized.
+- Blockers: Architect acceptance.
+- Follow-up directive: none
