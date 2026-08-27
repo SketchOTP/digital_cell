@@ -238,3 +238,9 @@
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r7/` — R6-R7 reference-geometry coupling decision protocol and provisional result.
 - `.github/workflows/dc-dev-020m1r6r7.yml` — scoped R6-R7 governance, D-087 preservation, diagnostic execution, compact verification, and exact-head CI.
 - `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r7\` — canonical dense R6-R7 runtime ledgers; compact authority remains in Git.
+
+- `digital-protocell/examples/dcdev020m1replan001_age_structured_structural_turnover_feasibility.rs` — diagnostic two-age structural-material turnover shadow, controls, recovery, starvation degradation, damage, and compact evidence.
+- `digital-protocell/experiments/generated/dcdev020m1replan001/` — compact age-structured feasibility protocol/results/qualification/preservation/manifest; dense runtime ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan001/` — age-structured structural-turnover feasibility protocol and handoff.
+- `.github/workflows/dc-dev-020m1replan001.yml` — scoped age-structured diagnostic, preservation, artifact, and exact-head CI.
+- `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1replan001\` — canonical dense age-structured diagnostic ledgers; compact authority remains in Git.

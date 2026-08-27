@@ -46,3 +46,7 @@ path = "../../examples/dcdev020m1r6r6_source_geometry_state_coupling_audit.rs"
 [[example]]
 name = "dcdev020m1r6r7_reference_geometry_coupling_decision"
 path = "../../examples/dcdev020m1r6r7_reference_geometry_coupling_decision.rs"
+
+[[example]]
+name = "dcdev020m1replan001_age_structured_structural_turnover_feasibility"
+path = "../../examples/dcdev020m1replan001_age_structured_structural_turnover_feasibility.rs"

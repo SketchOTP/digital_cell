@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260826-dcdev020m1r6r7-reference-geometry-coupling-decision001`
-- External directive ID: `DC-DEV-020-M1-R6-R7-REFERENCE-GEOMETRY-COUPLING-DECISION-001`
-- Objective: `Determine whether instantaneous structural material to mechanical-reference-length coupling is causally sufficient to explain the moving-body homeostasis and restoration failure, using one observer-only reference-decoupled shadow.`
+- Local directive ID: `D-20260827-dcdev020m1replan001-age-structured-structural-turnover-feasibility001`
+- External directive ID: `DC-DEV-020-M1-REPLAN-001-AGE-STRUCTURED-STRUCTURAL-TURNOVER-FEASIBILITY-001`
+- Objective: `Determine whether a diagnostic two-age structural-material turnover shadow can satisfy fed moving homeostasis, no-reset recovery, and prolonged starvation-driven physical degradation without changing production biology.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `Reconcile accepted R6-R6 authority; audit rest-length/strain consumers; run static, current-moving, and reference-decoupled moving arms under the sealed R6-R6 source schedule; preserve material closure, boundedness, remesh reference lineage, and tiered R6-R6/GC/D-087 validation; write compact Git evidence and dense Atlas ledgers; obtain exact-head diagnostic CI and Architect review.`
-- Current phase: `R6-R6 is Architect-accepted at 821f6a85c1d4825715090c8ccb3482ceddccbde5 with classification M1_SOURCE_FRONTLOAD_AND_GEOMETRY_STRUCTURAL_CYCLE_CONFIRMED. R6-R7 is the sole authorized next execution; M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
-- Expected or actual touched areas: `R6-R7 observer-only diagnostic harness, narrowly scoped optional reference-length helper APIs if required, example registration, scoped workflow, compact evidence, documentation, and append-only governance only; no production biology, coefficients, source schedule, resource configuration, production selection, controller, recycling, salvage, M2, R6-R8, or DC-DEV-021; all unrelated dirty work is preserved`
-- Immediate next action: `Complete and validate only the R6-R7 reference-geometry coupling decision, then stop for Architect review. Do not repair production, tune parameters, add another attribution study, change source history, add recycling/salvage, or begin M2/DC-DEV-021.`
+- Acceptance: `Reconcile accepted R6-R7 authority; audit structural-material ownership; run frozen-geometry and current-moving controls plus the diagnostic age-structured moving shadow under the sealed R6-R6 source schedule; preserve material identity, remesh lineage, explicit damage, starvation degradation, D-087 controls, compact Git evidence, dense Atlas ledgers, and exact-head Linux CI.`
+- Current phase: `R6-R7 is Architect-accepted at f537bc064030d6f336608488935620e2f9256322 with classification M1_REFERENCE_GEOMETRY_COUPLING_NOT_SUFFICIENT. The R6 M1 microarchitecture line is terminated. Only the age-structured turnover feasibility diagnostic is authorized; M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
+- Expected or actual touched areas: `Diagnostic age-structured turnover example, example registration, scoped workflow, compact evidence, documentation, and append-only governance only; no production biology, coefficients, mechanics, source schedule, resource configuration, production selection, controller, recycling, salvage, M2, R6-R8/R9, or DC-DEV-021; all unrelated dirty work is preserved`
+- Immediate next action: `Complete and validate only the age-structured structural-turnover feasibility diagnostic, then stop for Architect review. Do not repair production, tune parameters, add another physiology candidate, change source history, add recycling/salvage, or begin M2/DC-DEV-021.`
 
 ## Temporary task-relevant facts
 

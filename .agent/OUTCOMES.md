@@ -1698,3 +1698,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: The front-loaded result establishes schedule-history harm under the sealed diagnostic, while factor-swap values remain observer shadows and do not uniquely identify one structural build factor. The diagnostic does not authorize source-history or geometry repair, production selection, M1 closure, recycling/salvage, M2, or DC-DEV-021.
 - Blockers: Architect review.
 - Follow-up directive: none
+
+## D-20260827-dcdev020m1replan001-age-structured-structural-turnover-feasibility001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1REPLAN001-AGE-STRUCTURED-STRUCTURAL-TURNOVER-FEASIBILITY-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R7-REFERENCE-GEOMETRY-COUPLING-LOCAL`
+- Closed: 2026-08-27T00:00:00-04:00
+- Acceptance: PARTIAL
+- Summary: The sole authorized follow-up to accepted R6-R7 is a diagnostic age-structured structural-material turnover feasibility package. Existing controls must reproduce, while the shadow routes new ordinary structural build into a conserved young pool, matures it using existing `k_turn`, and applies unchanged ordinary turnover only to mature material.
+- Changed areas: Diagnostic harness, scoped workflow, compact evidence, documentation, and append-only governance only; no production biology, coefficients, mechanics, source schedule, transport, resource configuration, production selection, controller, reserve, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 behavior.
+- Validation:
+  - Exact starting head `f537bc064030d6f336608488935620e2f9256322` - PASSED
+  - R6-R7 authority and negative classification - PASSED
+  - Local D-087 V2/V3 controls - PASSED (8/8 each)
+  - Local age-structured qualification and focused tests - PASSED (classification recorded as INSUFFICIENT)
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: Feasibility, recovery, starvation physical loss, and whether the diagnostic can run without production-code changes remain unresolved until execution and remote validation. M1 remains not established; no production repair, second candidate, M2, or DC-DEV-021 is authorized.
+- Blockers: Exact-head diagnostic CI and Architect review.
+- Follow-up directive: none

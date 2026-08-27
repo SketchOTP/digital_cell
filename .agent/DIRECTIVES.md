@@ -962,3 +962,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260826-dcdev020m1r6r6-source-geometry-state-coupling-audit001
 - Status at issuance: ISSUED
+
+## D-20260827-dcdev020m1replan001-age-structured-structural-turnover-feasibility001
+
+- Issued: `2026-08-27T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-REPLAN-001-AGE-STRUCTURED-STRUCTURAL-TURNOVER-FEASIBILITY-001`
+- Objective: Determine whether a diagnostic two-age structural-material turnover shadow can satisfy fed moving homeostasis, no-reset recovery, and prolonged starvation-driven physical degradation from exact R6-R7 authority `f537bc064030d6f336608488935620e2f9256322`.
+- Scope: Audit structural material ownership; run frozen and current controls plus a parameter-free age-structured moving shadow using existing `k_turn`; preserve material identity, remesh lineage, damage, starvation degradation, D-087 controls, compact Git evidence, dense Atlas evidence, and exact-head Linux CI.
+- Exclusions: No production biology, coefficients, mechanics, source schedule, transport, resource configuration, production selection, controller, reserve, recycling, salvage, R6-R8/R9, M2, behavior, evolution, or DC-DEV-021 changes; no second candidate or parameter search.
+- Acceptance: Controls reproduce; age shadow is materially closed and locally lineage-preserving; fed homeostasis, no-reset recovery, and starvation physical degradation are measured; explicit damage remains effective; tiered preservation and exact-head CI pass; Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260826-dcdev020m1r6r7-reference-geometry-coupling-decision001
+- Status at issuance: ISSUED

@@ -1,0 +1,15 @@
+{
+  "dense_output": "\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1replan001",
+  "directive": "DC-DEV-020-M1-REPLAN-001-AGE-STRUCTURED-STRUCTURAL-TURNOVER-FEASIBILITY-001",
+  "files": [
+    "protocol.json",
+    "results.json",
+    "qualification.json",
+    "preservation.json",
+    "artifact_manifest.json"
+  ],
+  "schema": "dcdev020m1replan001_manifest_v1",
+  "sha256": "computed-by-workflow",
+  "shared_drive_required": true,
+  "starting_head": "f537bc064030d6f336608488935620e2f9256322"
+}

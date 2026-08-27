@@ -725,3 +725,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: R6-R7 reference-geometry coupling decision only; no production repair, production selection, homeostasis repair, controller, resource redesign, recycling, salvage, M2, R6-R8, R6-R9, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M1R6R6-REMOTE-VERIFIED-001
+
+## L-DCDEV020M1REPLAN001-001
+
+- Learning ID: L-DCDEV020M1REPLAN001-001
+- Date: 2026-08-27
+- Fact or lesson: R6-R7 was accepted as `M1_REFERENCE_GEOMETRY_COUPLING_NOT_SUFFICIENT` at `f537bc064030d6f336608488935620e2f9256322`. The next and only authorized work is a diagnostic two-age structural-material turnover feasibility test using existing `k_turn` as the maturation timescale, with entry material mature, new build material young, and mature-only ordinary turnover.
+- Evidence location: `digital-protocell/examples/dcdev020m1replan001_age_structured_structural_turnover_feasibility.rs`, `digital-protocell/experiments/generated/dcdev020m1replan001/`, `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan001/`, and dense evidence under `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1replan001`.
+- Confidence: PROVISIONAL
+- Scope: Diagnostic feasibility only; no production repair, parameter search, source redesign, reserve/recycling/salvage, M1 closure, M2, R6-R8/R9, behavior, evolution, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R6R7-001
