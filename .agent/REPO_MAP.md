@@ -230,3 +230,11 @@
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r6/` — R6-R6 source-geometry state-coupling audit protocol and provisional interpretation.
 - `.github/workflows/dc-dev-020m1r6r6.yml` — scoped R6-R6 governance, accepted-reference reproduction, equal-total source-history probe, matched geometry decomposition, preservation, compact artifact verification, and exact-head diagnostic CI.
 - `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r6\` — canonical dense R6-R6 runtime ledgers; compact authority remains in Git.
+
+- `digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs` — optional reference-length mechanics helpers for the observer-only R6-R7 shadow; default mechanics path remains unchanged.
+- `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs` — optional reference-length structural build/turnover helpers for the observer-only R6-R7 shadow; default reaction path remains unchanged.
+- `digital-protocell/examples/dcdev020m1r6r7_reference_geometry_coupling_decision.rs` — R6-R7 static/current/reference-decoupled arms, no-reset recovery, closure, and focused split/merge lineage test.
+- `digital-protocell/experiments/generated/dcdev020m1r6r7/` — compact R6-R7 protocol/results/qualification/preservation/manifest; dense runtime ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r7/` — R6-R7 reference-geometry coupling decision protocol and provisional result.
+- `.github/workflows/dc-dev-020m1r6r7.yml` — scoped R6-R7 governance, D-087 preservation, diagnostic execution, compact verification, and exact-head CI.
+- `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r7\` — canonical dense R6-R7 runtime ledgers; compact authority remains in Git.

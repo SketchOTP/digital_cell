@@ -314,12 +314,27 @@ pub fn structural_build_flux_with_a(
     p: &ReactionParams,
     activation_a: f64,
 ) -> f64 {
+    structural_build_flux_with_reference_lengths(mesh, i, p, activation_a, None)
+}
+
+#[inline]
+pub fn structural_build_flux_with_reference_lengths(
+    mesh: &MaterialMesh,
+    i: usize,
+    p: &ReactionParams,
+    activation_a: f64,
+    reference_lengths: Option<&[f64]>,
+) -> f64 {
     if mesh.edges[i].ruptured {
         return 0.0;
     }
     let qc = q_catalyst(mesh.interior.c, p.q_c);
     let a = activation_a.max(0.0);
-    let g = g_strain(mesh.strain(i), p.g0, p.k_eps);
+    let l0 = reference_lengths
+        .and_then(|lengths| lengths.get(i).copied())
+        .unwrap_or_else(|| mesh.rest_length(i));
+    let strain = (mesh.edge_length(i) - l0) / l0;
+    let g = g_strain(strain, p.g0, p.k_eps);
     // Scale by current length so mass-damaged edges (small ℓ⁰) still rebuild;
     // remesh split/merge preserves Σℓ so total demand stays remesh-invariant.
     let ell = mesh.edge_length(i);
@@ -365,9 +380,60 @@ pub fn reactions_step_with_reserve_mode(
     enable_metab: bool,
     reserve_mode: ReserveDiagnosticMode,
 ) -> ReactionLedger {
+    reactions_step_with_reserve_mode_and_reference_lengths(
+        mesh,
+        p,
+        dt,
+        enable_build,
+        enable_metab,
+        reserve_mode,
+        None,
+    )
+}
+
+/// Diagnostic-only reaction step using caller-owned per-edge reference
+/// lengths for structural build strain and turnover strain.  The normal
+/// production path passes `None`, preserving its existing semantics.
+pub fn reactions_step_with_reference_lengths(
+    mesh: &mut MaterialMesh,
+    p: &ReactionParams,
+    dt: f64,
+    enable_build: bool,
+    enable_metab: bool,
+    reference_lengths: &[f64],
+) -> ReactionLedger {
+    reactions_step_with_reserve_mode_and_reference_lengths(
+        mesh,
+        p,
+        dt,
+        enable_build,
+        enable_metab,
+        ReserveDiagnosticMode::Full,
+        Some(reference_lengths),
+    )
+}
+
+fn reactions_step_with_reserve_mode_and_reference_lengths(
+    mesh: &mut MaterialMesh,
+    p: &ReactionParams,
+    dt: f64,
+    enable_build: bool,
+    enable_metab: bool,
+    reserve_mode: ReserveDiagnosticMode,
+    reference_lengths: Option<&[f64]>,
+) -> ReactionLedger {
     let mut led = ReactionLedger::default();
     if !mesh.can_advance_physics() {
         return led;
+    }
+    if let Some(reference_lengths) = reference_lengths {
+        if reference_lengths.len() != mesh.n()
+            || reference_lengths
+                .iter()
+                .any(|length| !length.is_finite() || *length <= 0.0)
+        {
+            return led;
+        }
     }
     let n_edges = mesh.n();
     let reaction_area = reaction_area(mesh);
@@ -594,7 +660,13 @@ pub fn reactions_step_with_reserve_mode(
             } else {
                 mesh.interior.a.max(0.0)
             };
-            let j_build = structural_build_flux_with_a(mesh, i, p, activation_for_flux) * dt;
+            let j_build = structural_build_flux_with_reference_lengths(
+                mesh,
+                i,
+                p,
+                activation_for_flux,
+                reference_lengths,
+            ) * dt;
             let need_a = j_build / p.yield_a_to_m.max(1e-15);
             led.structural_demand_a += need_a;
             let have = mesh.interior.a.max(0.0) * material_area;
@@ -633,7 +705,11 @@ pub fn reactions_step_with_reserve_mode(
             led.m_produced += dm;
             led.w_produced += w_product;
 
-            let turn_scale = 1.0 / (1.0 + 2.0 * mesh.strain(i).max(0.0));
+            let l0 = reference_lengths
+                .and_then(|lengths| lengths.get(i).copied())
+                .unwrap_or_else(|| mesh.rest_length(i));
+            let strain = (mesh.edge_length(i) - l0) / l0;
+            let turn_scale = 1.0 / (1.0 + 2.0 * strain.max(0.0));
             let turn = p.k_turn * turn_scale * mesh.edges[i].m.max(0.0) * dt;
             let rem = turn.min(mesh.edges[i].m.max(0.0));
             mesh.edges[i].m -= rem;

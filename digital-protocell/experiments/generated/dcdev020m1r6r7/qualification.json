@@ -1,0 +1,12 @@
+{
+  "classification": "M1_REFERENCE_GEOMETRY_COUPLING_NOT_SUFFICIENT",
+  "directive": "DC-DEV-020-M1-R6-R7-REFERENCE-GEOMETRY-COUPLING-DECISION-001",
+  "e0_authority": true,
+  "e1_reference_length_caller_audit": true,
+  "e2_isolated_shadow_correctness": true,
+  "e3_causal_full_runtime": false,
+  "e4_restoration_boundedness": true,
+  "e5_remote_ci": "required",
+  "next_execution_started": false,
+  "observer_only": true
+}

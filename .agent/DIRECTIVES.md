@@ -948,3 +948,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260826-dcdev020m1r6r5-embodied-sink-causal-decomposition001
 - Status at issuance: ISSUED
+
+## D-20260826-dcdev020m1r6r7-reference-geometry-coupling-decision001
+
+- Issued: `2026-08-26T16:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-R6-R7-REFERENCE-GEOMETRY-COUPLING-DECISION-001`
+- Objective: Determine, at entry authority `821f6a85c1d4825715090c8ccb3482ceddccbde5` on `strategy/dc-dev-020r9-mesh-contract-requalification` / PR #44 open/draft/unmerged, using one observer-only diagnostic clone, whether instantaneous `structural material M -> mechanical reference length` coupling is causally sufficient to explain the moving-body homeostasis and restoration failure.
+- Scope: Trace rest-length/strain consumers; add only diagnostic per-edge reference-length state with deterministic remesh split/merge mapping; run the sealed R6-R6 source schedule in static, current-moving, and reference-decoupled moving arms; preserve closure and tiered R6-R6/GC/D-087 validation; compact Git evidence and dense Atlas evidence.
+- Exclusions: No production mechanics, chemistry, transport, resource schedule, material law, coefficients, integrator, topology, remesh thresholds, rebond, death semantics, production selection, target geometry, controller, repair, recycling, salvage, M2, R6-R8, or DC-DEV-021.
+- Acceptance: Static and current-moving references reproduce; reference-decoupled clone is isolated, materially closed, mechanically bounded, and classified only from the prescribed sustained-homeostasis/restoration comparison; exact-head Linux diagnostic CI and Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260826-dcdev020m1r6r6-source-geometry-state-coupling-audit001
+- Status at issuance: ISSUED

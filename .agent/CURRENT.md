@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-26T17:20:00-04:00`
+- Last updated: `2026-08-27T00:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260826-dcdev020m1r6r6-source-geometry-state-coupling-audit001`
-- External directive ID: `DC-DEV-020-M1-R6-R6-SOURCE-GEOMETRY-STATE-COUPLING-AUDIT-001`
-- Objective: `Determine whether source-history/front-loading and moving-geometry structural cycling are causally separable contributors to the valid R6-R5 homeostasis failure, using observer-only replays.`
-- Current status: `VALIDATING`
-- Acceptance: `Reproduce R6-R5 references; characterize sealed source schedules; prove or disprove equal-total front-loaded source harm; quantify A/C/M stock-history and structural factors; preserve material closure and certified suites; write compact Git evidence and dense Atlas ledgers; obtain exact-head diagnostic CI and Architect review.`
-- Current phase: `R6-R5 is Architect-accepted as M1_EMBODIED_SINK_CAUSE_UNRESOLVED. R6-R6 observer-only execution and exact-head remote validation are complete; the remote workflow passed at c3c5da567e57e2e182e55e303575418b1043aada, and Architect review is pending.`
-- Expected or actual touched areas: `R6-R6 observer-only audit example, phase1-certifier example registration, scoped workflow, compact evidence, documentation, and append-only governance only; no production biology, reaction source, mechanics, transport, resource configuration, or production selection; all unrelated dirty work is preserved`
-- Immediate next action: `Return the exact-head R6-R6 diagnostic package to Architect review; do not repair source history or geometry coupling, change production, add recycling/salvage, add a controller, or begin M2/DC-DEV-021.`
+- Local directive ID: `D-20260826-dcdev020m1r6r7-reference-geometry-coupling-decision001`
+- External directive ID: `DC-DEV-020-M1-R6-R7-REFERENCE-GEOMETRY-COUPLING-DECISION-001`
+- Objective: `Determine whether instantaneous structural material to mechanical-reference-length coupling is causally sufficient to explain the moving-body homeostasis and restoration failure, using one observer-only reference-decoupled shadow.`
+- Current status: `IN_PROGRESS`
+- Acceptance: `Reconcile accepted R6-R6 authority; audit rest-length/strain consumers; run static, current-moving, and reference-decoupled moving arms under the sealed R6-R6 source schedule; preserve material closure, boundedness, remesh reference lineage, and tiered R6-R6/GC/D-087 validation; write compact Git evidence and dense Atlas ledgers; obtain exact-head diagnostic CI and Architect review.`
+- Current phase: `R6-R6 is Architect-accepted at 821f6a85c1d4825715090c8ccb3482ceddccbde5 with classification M1_SOURCE_FRONTLOAD_AND_GEOMETRY_STRUCTURAL_CYCLE_CONFIRMED. R6-R7 is the sole authorized next execution; M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
+- Expected or actual touched areas: `R6-R7 observer-only diagnostic harness, narrowly scoped optional reference-length helper APIs if required, example registration, scoped workflow, compact evidence, documentation, and append-only governance only; no production biology, coefficients, source schedule, resource configuration, production selection, controller, recycling, salvage, M2, R6-R8, or DC-DEV-021; all unrelated dirty work is preserved`
+- Immediate next action: `Complete and validate only the R6-R7 reference-geometry coupling decision, then stop for Architect review. Do not repair production, tune parameters, add another attribution study, change source history, add recycling/salvage, or begin M2/DC-DEV-021.`
 
 ## Temporary task-relevant facts
 

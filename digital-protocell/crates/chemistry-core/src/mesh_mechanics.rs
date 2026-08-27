@@ -102,6 +102,28 @@ fn angle_cos(mesh: &MaterialMesh, i: usize) -> f64 {
 
 /// Accumulate vertex forces from stretch, bend, and local pressure.
 pub fn compute_forces(mesh: &MaterialMesh, params: &MechParams) -> Vec<[f64; 2]> {
+    compute_forces_with_reference_lengths(mesh, params, None)
+}
+
+/// Accumulate forces using an optional diagnostic per-edge reference length.
+///
+/// The production path passes `None` and therefore remains byte/semantically
+/// unchanged.  The reference slice is observer-only state owned by a
+/// diagnostic clone; it has no material or serialized-organism authority.
+pub fn compute_forces_with_reference_lengths(
+    mesh: &MaterialMesh,
+    params: &MechParams,
+    reference_lengths: Option<&[f64]>,
+) -> Vec<[f64; 2]> {
+    if let Some(reference_lengths) = reference_lengths {
+        if reference_lengths.len() != mesh.n()
+            || reference_lengths
+                .iter()
+                .any(|length| !length.is_finite() || *length <= 0.0)
+        {
+            return Vec::new();
+        }
+    }
     let n = mesh.n();
     let mut f = vec![[0.0, 0.0]; n];
     for i in 0..n {
@@ -109,7 +131,9 @@ pub fn compute_forces(mesh: &MaterialMesh, params: &MechParams) -> Vec<[f64; 2]>
             continue;
         }
         let (t, len) = edge_unit(mesh, i);
-        let l0 = mesh.rest_length(i);
+        let l0 = reference_lengths
+            .and_then(|lengths| lengths.get(i).copied())
+            .unwrap_or_else(|| mesh.rest_length(i));
         // Stretch: dE/dℓ = k_s (ℓ-ℓ0)/ℓ0 ; clamp reference length so mass-damaged
         // edges cannot produce unbounded restoring forces that hang remesh.
         let l_ref = l0.max(0.25 * len).max(1e-3);
@@ -165,6 +189,27 @@ pub fn mechanics_step(mesh: &mut MaterialMesh, params: &MechParams) -> bool {
         return false;
     }
     let forces = compute_forces(mesh, params);
+    mechanics_step_from_forces(mesh, params, forces)
+}
+
+/// Diagnostic-only mechanics step using caller-owned per-edge reference
+/// lengths.  The normal production function remains the authority whenever
+/// this API is not explicitly selected by a diagnostic clone.
+pub fn mechanics_step_with_reference_lengths(
+    mesh: &mut MaterialMesh,
+    params: &MechParams,
+    reference_lengths: &[f64],
+) -> bool {
+    if !mesh.can_advance_physics()
+        || mesh.n() < 3
+        || reference_lengths.len() != mesh.n()
+        || reference_lengths
+            .iter()
+            .any(|length| !length.is_finite() || *length <= 0.0)
+    {
+        return false;
+    }
+    let forces = compute_forces_with_reference_lengths(mesh, params, Some(reference_lengths));
     mechanics_step_from_forces(mesh, params, forces)
 }
 

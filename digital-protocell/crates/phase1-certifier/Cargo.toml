@@ -42,3 +42,7 @@ path = "../../examples/dcdev020m1r6r5_embodied_sink_causal_decomposition.rs"
 [[example]]
 name = "dcdev020m1r6r6_source_geometry_state_coupling_audit"
 path = "../../examples/dcdev020m1r6r6_source_geometry_state_coupling_audit.rs"
+
+[[example]]
+name = "dcdev020m1r6r7_reference_geometry_coupling_decision"
+path = "../../examples/dcdev020m1r6r7_reference_geometry_coupling_decision.rs"

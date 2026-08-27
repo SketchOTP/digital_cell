@@ -483,6 +483,28 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and independent Architect acceptance.
 - Follow-up directive: none
 
+## D-20260826-dcdev020m1r6r7-reference-geometry-coupling-decision001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R7-REFERENCE-GEOMETRY-COUPLING-LOCAL`
+- Supersedes outcome: none
+- Closed: `2026-08-27T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R6-R7 diagnostic reproduces the sealed R6-R6 static and current-moving references. The frozen static arm ends at `+0.342140676890381` organized material, the current moving arm at `-9.95495920654304`, and the persistent per-edge-reference shadow at `-7.90146640791825`. The reference shadow reduces the no-reset recovery deficit but does not restore sustained homeostasis, so the local classification is `M1_REFERENCE_GEOMETRY_COUPLING_NOT_SUFFICIENT`.
+- Changed areas: R6-R7 example registration, narrowly scoped optional reference-length helper APIs whose default paths remain unchanged, observer-only diagnostic harness, focused remesh lineage test, scoped workflow, compact evidence, documentation, and append-only governance. No production selection, resource/source schedule, controller, recycling, salvage, M2, R6-R8, or DC-DEV-021 behavior changed.
+- Validation:
+  - Rust 1.89.0 example build and execution - PASSED
+  - Focused split/merge reference-lineage test - PASSED
+  - R6-R6 static/current reproduction - PASSED
+  - Geometry/material closure - PASSED within tolerance
+  - ConservativeV2 D-087 - 8/8 locally
+  - ConservativeV3 D-087 - 8/8 locally
+  - Dense ledgers - `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r7`
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The actual sealed trajectory performs no split/merge, so remesh mapping is proven by the focused diagnostic fixture rather than runtime occurrence. The classification is provisional until exact-head Linux CI and Architect review. This result does not authorize production reference coupling, homeostasis repair, M2, R6-R8, or R6-R9.
+- Blockers: Exact-head remote CI and Architect review.
+- Follow-up directive: none
+
 ## D-20260823-dcdev020m1r4-coupled-source-candidate001 - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020M1R4-COUPLED-SOURCE-CANDIDATE-PENDING-ARCHITECT`

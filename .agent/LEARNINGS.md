@@ -715,3 +715,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: R6-R6 remote diagnostic verification only; no source-history repair, geometry/mechanics repair, production change, controller, recycling, salvage, M1 closure, M2, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M1R6R6-001
+
+## L-DCDEV020M1R6R7-001
+
+- Learning ID: L-DCDEV020M1R6R7-001
+- Date: 2026-08-27
+- Fact or lesson: The R6-R7 observer-only persistent per-edge reference-length shadow improves the accepted moving-body recovery deficit but does not make the moving organism materially nondeclining over the sealed R6-R6 source schedule. Static frozen geometry remains positive at `+0.342140676890381`, current moving production remains negative at `-9.95495920654304`, and the reference-decoupled moving shadow remains negative at `-7.90146640791825`. The bounded local classification is `M1_REFERENCE_GEOMETRY_COUPLING_NOT_SUFFICIENT`.
+- Evidence location: `digital-protocell/examples/dcdev020m1r6r7_reference_geometry_coupling_decision.rs`, `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r7/`, compact evidence under `digital-protocell/experiments/generated/dcdev020m1r6r7/`, and dense ledgers under `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r7`.
+- Confidence: PROVISIONAL
+- Scope: R6-R7 reference-geometry coupling decision only; no production repair, production selection, homeostasis repair, controller, resource redesign, recycling, salvage, M2, R6-R8, R6-R9, or DC-DEV-021 authorization.
+- Supersedes learning: L-DCDEV020M1R6R6-REMOTE-VERIFIED-001

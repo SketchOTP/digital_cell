@@ -1,0 +1,8 @@
+{
+  "candidate_v3_d087": true,
+  "focused_remesh_reference_lineage": true,
+  "geometry_material_conservation": true,
+  "historical_v2_d087": true,
+  "r6_r6_reproduction": true,
+  "tier": "R6-R6, GC conservation, V2/V3 D087, and focused reference-lineage preservation"
+}
