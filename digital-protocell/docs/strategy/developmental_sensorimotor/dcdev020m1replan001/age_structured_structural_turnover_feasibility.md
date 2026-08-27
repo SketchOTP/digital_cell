@@ -45,4 +45,4 @@ This is a valid bounded negative feasibility result, not authorization for a rep
 - D-087 ConservativeV2/ConservativeV3: 8/8 each.
 - Strict material closure: pass; maximum recorded residual is below `1e-8`.
 - Next execution started: `false`.
-- Architect acceptance: pending exact-head remote CI and review.
+- Exact-head Linux CI: passed as run `33091139939`; Architect acceptance: pending review.

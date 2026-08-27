@@ -735,3 +735,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: Diagnostic feasibility only; no production repair, parameter search, source redesign, reserve/recycling/salvage, M1 closure, M2, R6-R8/R9, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M1R6R7-001
+
+## L-DCDEV020M1REPLAN001-REMOTE-VERIFIED
+
+- Learning ID: L-DCDEV020M1REPLAN001-REMOTE-VERIFIED
+- Date: 2026-08-27
+- Fact or lesson: The age-structured structural-turnover shadow improved the moving current-production result but remained insufficient for fed 8,000-step homeostasis. The diagnostic is remote-verified at `a9dbd3d95cfbfcacc5ec99278c7d145024b435b3` by CI `33091139939`; classification is `M1_AGE_STRUCTURED_TURNOVER_INSUFFICIENT`.
+- Evidence location: compact Git evidence under `digital-protocell/experiments/generated/dcdev020m1replan001/`, dense ledgers under `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1replan001`, and PR #44.
+- Confidence: VERIFIED
+- Scope: This closes the authorized diagnostic only. It does not authorize production repair, parameter search, another physiology candidate, source redesign, reserve/recycling/salvage, M1 closure, M2, R6-R8/R9, behavior, evolution, or DC-DEV-021.
+- Supersedes learning: L-DCDEV020M1REPLAN001-001

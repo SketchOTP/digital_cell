@@ -1578,6 +1578,25 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: Exact-head diagnostic CI and Architect review.
 - Follow-up directive: none
 
+## D-20260827-dcdev020m1replan001-age-structured-structural-turnover-feasibility001 - COMPLETE
+
+- Outcome ID: `OUT-DCDEV020M1REPLAN001-AGE-STRUCTURED-STRUCTURAL-TURNOVER-FEASIBILITY-REMOTE-VERIFIED`
+- Supersedes outcome: `OUT-DCDEV020M1REPLAN001-AGE-STRUCTURED-STRUCTURAL-TURNOVER-FEASIBILITY-PENDING-ARCHITECT`
+- Closed: 2026-08-27T12:10:00-04:00
+- Acceptance: COMPLETE pending Architect acceptance
+- Summary: The age-structured structural-material turnover diagnostic completed at `a9dbd3d95cfbfcacc5ec99278c7d145024b435b3` as `M1_AGE_STRUCTURED_TURNOVER_INSUFFICIENT`. The frozen-geometry and moving current-production controls reproduced; the age shadow improved but did not pass fed 8,000-step homeostasis. No-reset recovery, age identity, closure, damage preservation, starvation decline, D-087 V2/V3 controls, and exact-head Linux verification passed; physical loss was not reached within the frozen bound.
+- Changed areas: Diagnostic harness, scoped workflow, compact evidence, documentation, and append-only governance only; no production biology, coefficients, mechanics, source schedule, transport, resource configuration, production selection, controller, reserve, recycling, salvage, parameter search, second candidate, M2, behavior, evolution, or DC-DEV-021 behavior.
+- Validation:
+  - Exact starting head `f537bc064030d6f336608488935620e2f9256322` - PASSED
+  - Local D-087 V2/V3 controls - PASSED (8/8 each)
+  - Local age-structured qualification and focused tests - PASSED
+  - Local preservation suite - PASSED
+  - Exact-head GitHub Actions run `33091139939` - PASSED
+  - Compact artifact digest `sha256:bceeff2138ad174dbc51f71a18b00290aafb95c5104c6d1a55bbecfc1b8ee4a4` - VERIFIED
+- Remaining risks: The age-structured candidate is insufficient for fed homeostasis under the frozen diagnostic contract. M1 remains not established; no production repair, second candidate, M2, or DC-DEV-021 is authorized.
+- Blockers: Architect acceptance.
+- Follow-up directive: none
+
 ## D-20260826-dcdev020m1r6r5-embodied-sink-causal-decomposition001 - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020M1R6R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-PENDING-ARCHITECT`
