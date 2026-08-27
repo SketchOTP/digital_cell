@@ -1578,12 +1578,12 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: Exact-head diagnostic CI and Architect review.
 - Follow-up directive: none
 
-## D-20260827-dcdev020m1replan001-age-structured-structural-turnover-feasibility001 - COMPLETE
+## D-20260827-dcdev020m1replan001-age-structured-structural-turnover-feasibility001 - PARTIAL
 
-- Outcome ID: `OUT-DCDEV020M1REPLAN001-AGE-STRUCTURED-STRUCTURAL-TURNOVER-FEASIBILITY-REMOTE-VERIFIED`
-- Supersedes outcome: `OUT-DCDEV020M1REPLAN001-AGE-STRUCTURED-STRUCTURAL-TURNOVER-FEASIBILITY-PENDING-ARCHITECT`
+- Outcome ID: `OUT-DCDEV020M1REPLAN001-AGE-STRUCTURED-STRUCTURAL-TURNOVER-FEASIBILITY-LOCAL-VERIFIED-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R7-REFERENCE-GEOMETRY-COUPLING-LOCAL`
 - Closed: 2026-08-27T12:10:00-04:00
-- Acceptance: COMPLETE pending Architect acceptance
+- Acceptance: PARTIAL
 - Summary: The age-structured structural-material turnover diagnostic completed at `a9dbd3d95cfbfcacc5ec99278c7d145024b435b3` as `M1_AGE_STRUCTURED_TURNOVER_INSUFFICIENT`. The frozen-geometry and moving current-production controls reproduced; the age shadow improved but did not pass fed 8,000-step homeostasis. No-reset recovery, age identity, closure, damage preservation, starvation decline, D-087 V2/V3 controls, and exact-head Linux verification passed; physical loss was not reached within the frozen bound.
 - Changed areas: Diagnostic harness, scoped workflow, compact evidence, documentation, and append-only governance only; no production biology, coefficients, mechanics, source schedule, transport, resource configuration, production selection, controller, reserve, recycling, salvage, parameter search, second candidate, M2, behavior, evolution, or DC-DEV-021 behavior.
 - Validation:
@@ -1735,4 +1735,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Architect review - NOT RUN
 - Remaining risks: Feasibility, recovery, starvation physical loss, and whether the diagnostic can run without production-code changes remain unresolved until execution and remote validation. M1 remains not established; no production repair, second candidate, M2, or DC-DEV-021 is authorized.
 - Blockers: Exact-head diagnostic CI and Architect review.
+- Follow-up directive: none
+
+## D-20260827-dcdev020m1replan001-age-structured-structural-turnover-feasibility001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1REPLAN001-AGE-STRUCTURED-TURNOVER-FEASIBILITY-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1REPLAN001-AGE-STRUCTURED-STRUCTURAL-TURNOVER-FEASIBILITY-PENDING-ARCHITECT`
+- Closed: `2026-08-27T12:20:00-04:00`
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux verification passed at `a9dbd3d95cfbfcacc5ec99278c7d145024b435b3` for the bounded observer-only diagnostic. The authoritative classification is `M1_AGE_STRUCTURED_TURNOVER_INSUFFICIENT`; M1 remains not established.
+- Changed areas: Remote-verification governance record only; no scientific implementation or evidence values changed after the diagnostic commit.
+- Validation:
+  - Exact-head diagnostic run `33091139939` - PASSED
+  - Governance-only run `33091697469` - FAILED
+  - Compact artifact digest `sha256:bceeff2138ad174dbc51f71a18b00290aafb95c5104c6d1a55bbecfc1b8ee4a4` - PASSED
+  - Architect review - PENDING
+- Remaining risks: The age-structured candidate is insufficient for fed homeostasis under the frozen diagnostic contract. M1 remains not established; no production repair, second candidate, M2, or DC-DEV-021 is authorized.
+- Blockers: Architect acceptance.
 - Follow-up directive: none
