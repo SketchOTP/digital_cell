@@ -244,3 +244,9 @@
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan001/` — age-structured structural-turnover feasibility protocol and handoff.
 - `.github/workflows/dc-dev-020m1replan001.yml` — scoped age-structured diagnostic, preservation, artifact, and exact-head CI.
 - `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1replan001\` — canonical dense age-structured diagnostic ledgers; compact authority remains in Git.
+
+- `digital-protocell/examples/dcdev020m1replan002_maturation_coupled_load_bearing_feasibility.rs` — observer-only maturation/load-bearing candidate with static/current/age-only controls, B/C/D recovery, starvation, damage, material identity, and mature-reference evidence.
+- `digital-protocell/experiments/generated/dcdev020m1replan002/` — compact REPLAN-002 protocol/results/qualification/preservation/manifest; dense runtime ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002/` — REPLAN-002 diagnostic protocol and bounded interpretation.
+- `.github/workflows/dc-dev-020m1replan002.yml` — scoped REPLAN-002 governance, D-087 preservation, diagnostic execution, compact verification, and exact-head CI.
+- `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1replan002\` — canonical dense REPLAN-002 runtime ledgers; compact authority remains in Git.
