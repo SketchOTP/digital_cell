@@ -1597,25 +1597,6 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: Architect acceptance.
 - Follow-up directive: none
 
-## D-20260827-dcdev020m1replan002-maturation-coupled-load-bearing-feasibility001 - PARTIAL
-
-- Outcome ID: `OUT-DCDEV020M1REPLAN002-MATURATION-COUPLED-LOAD-BEARING-FEASIBILITY-LOCAL`
-- Supersedes outcome: `OUT-DCDEV020M1REPLAN001-AGE-STRUCTURED-TURNOVER-FEASIBILITY-REMOTE-VERIFIED-PENDING-ARCHITECT`
-- Closed: `2026-08-27T13:45:00-04:00`
-- Acceptance: `PARTIAL`
-- Summary: Local execution of the bounded observer-only maturation/load-bearing diagnostic from `92075021ae1f4c9917f7ace9b160e5694e001de2` produced `M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED` provisionally. The static/current/age-only controls reproduce exactly; the candidate organized-material delta is `+1.33231221701902`; candidate recovery passes; current-control recovery fails; starvation structural decline and explicit damage pass; physical topology loss is not reached. M1 remains not established.
-- Changed areas: New diagnostic example and focused test, phase1-certifier example registration, scoped workflow, compact evidence, diagnostic documentation, and append-only governance only. No production biology, coefficients, mechanics equations, source schedule, transport, resource configuration, production selection, controller, reserve, recycling, salvage, M2, REPLAN-003, behavior, evolution, or DC-DEV-021 behavior changed.
-- Validation:
-  - Local sanctioned Rust 1.89.0 compile - PASSED
-  - Focused REPLAN-002 tests - PASSED (4 tests)
-  - Fixed-horizon REPLAN-002 execution - PASSED
-  - Compact evidence and dense Atlas output - PASSED
-  - Exact-head Linux CI - NOT RUN
-  - Architect review - NOT RUN
-- Remaining risks: The candidate is only a diagnostic shadow and has not been selected for production. The positive candidate result requires exact-head Linux verification and Architect review; physical topology loss was not reached; the current-control recovery failure remains part of the evidence. No production repair, parameter search, source redesign, reserve/recycling/salvage, M1 closure, M2, REPLAN-003, or DC-DEV-021 is authorized.
-- Blockers: Exact-head Linux CI and Architect review.
-- Follow-up directive: none
-
 ## D-20260826-dcdev020m1r6r5-embodied-sink-causal-decomposition001 - PARTIAL
 
 - Outcome ID: `OUT-DCDEV020M1R6R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-PENDING-ARCHITECT`
@@ -1771,4 +1752,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Architect review - PENDING
 - Remaining risks: The age-structured candidate is insufficient for fed homeostasis under the frozen diagnostic contract. M1 remains not established; no production repair, second candidate, M2, or DC-DEV-021 is authorized.
 - Blockers: Architect acceptance.
+- Follow-up directive: none
+
+## D-20260827-dcdev020m1replan002-maturation-coupled-load-bearing-feasibility001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1REPLAN002-MATURATION-COUPLED-LOAD-BEARING-FEASIBILITY-LOCAL`
+- Supersedes outcome: `OUT-DCDEV020M1REPLAN001-AGE-STRUCTURED-TURNOVER-FEASIBILITY-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Closed: `2026-08-27T13:45:00-04:00`
+- Acceptance: PARTIAL
+- Summary: Local execution of the bounded observer-only maturation/load-bearing diagnostic from `92075021ae1f4c9917f7ace9b160e5694e001de2` produced `M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED` provisionally. The static/current/age-only controls reproduce exactly; the candidate organized-material delta is `+1.33231221701902`; candidate recovery passes; current-control recovery fails; starvation structural decline and explicit damage pass; physical topology loss is not reached. M1 remains not established.
+- Changed areas: New diagnostic example and focused test, phase1-certifier example registration, scoped workflow, compact evidence, diagnostic documentation, and append-only governance only. No production biology, coefficients, mechanics equations, source schedule, transport, resource configuration, production selection, controller, reserve, recycling, salvage, M2, REPLAN-003, behavior, evolution, or DC-DEV-021 behavior changed.
+- Validation:
+  - Local sanctioned Rust 1.89.0 compile - PASSED
+  - Focused REPLAN-002 tests - PASSED (4 tests)
+  - Fixed-horizon REPLAN-002 execution - PASSED
+  - Compact evidence and dense Atlas output - PASSED
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: The candidate is only a diagnostic shadow and has not been selected for production. The positive candidate result requires exact-head Linux verification and Architect review; physical topology loss was not reached; the current-control recovery failure remains part of the evidence. No production repair, parameter search, source redesign, reserve/recycling/salvage, M1 closure, M2, REPLAN-003, or DC-DEV-021 is authorized.
+- Blockers: Exact-head Linux CI and Architect review.
 - Follow-up directive: none

@@ -980,13 +980,13 @@ Do not record execution results here. Do not rewrite historical entries after ad
 ## D-20260827-dcdev020m1replan002-maturation-coupled-load-bearing-feasibility001
 
 - Issued: `2026-08-27T13:30:00-04:00`
-- Issuer: `Architect/User`
+- Issuer: User
 - External directive: `DC-DEV-020-M1-REPLAN-002-MATURATION-COUPLED-LOAD-BEARING-FEASIBILITY-001`
 - Objective: Determine whether a mature-derived load-bearing mechanical/reference semantic, using the existing young/mature structural ledger and existing `k_turn` maturation, can restore fed moving homeostasis and no-reset recovery.
-- Entry authority: `92075021ae1f4c9917f7ace9b160e5694e001de2`; branch `strategy/dc-dev-020r9-mesh-contract-requalification`; PR `#44` open/draft/unmerged.
-- Scope: Observer-only diagnostic with static current, moving current, moving age-structured, and moving maturation/load-bearing arms; sealed source schedule; B/C/D deprivation/recovery; fixed zero-resource starvation bound; explicit damage; age/reference identity; D-087 and preservation; compact Git evidence and dense Atlas evidence.
-- Diagnostic contract: New build enters young material; maturation is `min(M_young, k_turn * M_young * dt)`; mature material alone supplies `reference_length = M_mature / rho_s` for stretch force and build/turnover strain; physical `edge.m` remains `M_young + M_mature`.
+- Scope: Start at entry authority `92075021ae1f4c9917f7ace9b160e5694e001de2` on branch `strategy/dc-dev-020r9-mesh-contract-requalification` / PR `#44` open/draft/unmerged. Run the observer-only static current, moving current, moving age-structured, and moving maturation/load-bearing arms under the sealed source schedule, with B/C/D deprivation/recovery, fixed zero-resource starvation bound, explicit damage, age/reference identity, D-087 and preservation, compact Git evidence, and dense Atlas evidence. New build enters young material; maturation is `min(M_young, k_turn * M_young * dt)`; mature material alone supplies `reference_length = M_mature / rho_s` for stretch force and build/turnover strain; physical `edge.m` remains `M_young + M_mature`. Compact outputs are under `digital-protocell/experiments/generated/dcdev020m1replan002/`; dense ledgers are under `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1replan002\`.
 - Exclusions: No production biology/equation/coefficient, production selector, source schedule, mechanics production path, transport/resource redesign, target geometry/size, controller, reserve, recycling, salvage, M2, REPLAN-003, behavior, evolution, or DC-DEV-021.
-- Evidence: Compact outputs under `digital-protocell/experiments/generated/dcdev020m1replan002/`; dense ledgers under `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1replan002\`.
 - Acceptance: Controls reproduce; candidate identity and closure pass; candidate fed homeostasis and recovery are assessed; starvation decline and damage pass; no production scientific code changes; exact-head Linux CI succeeds; Architect review.
-- Status at issuance: `ISSUED`
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260826-dcdev020m1r6r7-reference-geometry-coupling-decision001
+- Status at issuance: ISSUED

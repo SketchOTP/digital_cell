@@ -748,10 +748,10 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 
 ## L-DCDEV020M1REPLAN002-001
 
-- Learning ID: `L-DCDEV020M1REPLAN002-001`
-- Date: `2026-08-27`
+- Learning ID: L-DCDEV020M1REPLAN002-001
+- Date: 2026-08-27
 - Fact or lesson: The bounded maturation/load-bearing shadow uses the accepted REPLAN-001 young/mature ledger, but derives stretch-force rest length and structural build/turnover strain from mature material only. Static/current/age-only controls reproduce at `+0.34214067689038075`, `-9.954959206543037`, and `-1.7633945824468071` organized material. The candidate ends at `+1.33231221701902`, candidate recovery passes, starvation structural decline and damage pass, material/age identity and source parity pass, and physical topology loss is not reached. The current-production control's recovery remains negative and is recorded separately.
 - Evidence location: `digital-protocell/examples/dcdev020m1replan002_maturation_coupled_load_bearing_feasibility.rs`, `digital-protocell/experiments/generated/dcdev020m1replan002/`, `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002/`, and dense ledgers under `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1replan002`.
-- Confidence: `PROVISIONAL`
+- Confidence: PROVISIONAL
 - Scope: Observer-only REPLAN-002 feasibility diagnostic; no production biology, coefficients, mechanics production path, source redesign, production selection, controller, reserve, recycling, salvage, M1 closure, M2, REPLAN-003, behavior, evolution, or DC-DEV-021 authorization.
-- Supersedes learning: `L-DCDEV020M1REPLAN001-REMOTE-VERIFIED`
+- Supersedes learning: L-DCDEV020M1REPLAN001-REMOTE-VERIFIED

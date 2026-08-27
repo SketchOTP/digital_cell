@@ -43,7 +43,7 @@
 ## Last validation after adoption
 
 - Command or check: `REPLAN-002 local Rust 1.89.0 compile, focused tests, and fixed-horizon execution`
-- Result: `PASSED locally; exact-head Linux CI and Architect review pending`
+- Result: `NOT RUN`
 
 ## Risks
 
