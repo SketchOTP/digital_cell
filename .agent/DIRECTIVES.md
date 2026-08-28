@@ -1046,3 +1046,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260828-dcdev020m1replan002r3-d087-n-starvation-causal-divergence-audit001
 - Status at issuance: ISSUED
+
+## D-20260828-dcdev020m1replan002r5-v4-irreversible-physical-death-qualification001
+
+- Issued: `2026-08-28T23:30:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-REPLAN-002-R5-V4-IRREVERSIBLE-PHYSICAL-DEATH-QUALIFICATION-001`
+- Objective: Replay the accepted V4 starvation trajectory and test fixed-checkpoint no-reset finite refeeding for irreversible physical-loss evidence.
+- Scope: Accepted R4 head `9f4d6c34e88a613b0bf677f9f2aa25f8854edbb5`; exact R1 deprived entry S0; fixed starvation checkpoints S1 `5277`, S2 `6130`, S3 `10200`, S4 `150200`; exact R1 finite source schedule for 8,000 refeed steps; no-reset resource opportunity, physics advancement, topology, observer, and material-closure evidence; compact Git evidence, dense Atlas evidence, scoped Linux CI, and append-only governance.
+- Exclusions: No V4 biology, lifecycle, chemistry, mechanics, transport, resource schedule, D-087, production selection, M1 closure, successor experiment, M2, reserve, recycling, salvage, tuning, or physical-death intervention beyond the fixed diagnostic.
+- Acceptance: S0 recovery; deep S3/S4 non-recovery despite positive delivery and no latch block; strict material closure across starvation and refeed; preservation of R4/D-087 and all required suites; exact-head Linux CI; Architect review. If closure fails, retain the unresolved classification and stop.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260828-dcdev020m1replan002r4-v4-contract-aware-preservation-qualification001
+- Status at issuance: ISSUED

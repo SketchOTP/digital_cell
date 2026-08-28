@@ -70,3 +70,7 @@ path = "../../examples/dcdev020m1replan002r3_d087_n_starvation_causal_divergence
 [[example]]
 name = "dcdev020m1replan002r4_v4_contract_aware_preservation"
 path = "../../examples/dcdev020m1replan002r4_v4_contract_aware_preservation.rs"
+
+[[example]]
+name = "dcdev020m1replan002r5_v4_irreversible_physical_death"
+path = "../../examples/dcdev020m1replan002r5_v4_irreversible_physical_death.rs"

@@ -1930,3 +1930,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: This is not Architect acceptance. Gate-1 certifier repair remains deferred; V4 remains unqualified, M1 remains not established, and physical-death, production selection, M2, reserve/recycling/salvage, and successor work remain unauthorized.
 - Blockers: Architect disposition.
 - Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5-v4-irreversible-physical-death-qualification001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5-V4-IRREVERSIBLE-PHYSICAL-DEATH-QUALIFICATION-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R4-V4-CONTRACT-AWARE-PRESERVATION-QUALIFICATION-REMOTE-PARTIAL
+- Closed: 2026-08-28T23:30:00-04:00
+- Acceptance: PARTIAL
+- Summary: The R5 fixed-checkpoint no-reset refeed diagnostic executed from accepted R4 authority. S0, S1, and S2 recover under positive finite refeeding; S3 and S4 do not recover while physics advances and the death latch does not block the replay. Starvation strict-material closure reaches `0.45051928554230614`, above the unchanged `1e-8` tolerance, so irreversible physical death is not qualified and the local classification remains `M1_V4_DEATH_QUALIFICATION_UNRESOLVED`.
+- Changed areas: R5 observer-only qualification example, phase1-certifier example registration, scoped workflow, compact evidence, documentation, and append-only governance; no scientific-core biology or production behavior changed.
+- Validation:
+  - R5 full bounded local replay - PASSED as an executed diagnostic
+  - S0/S1/S2 recovery - PASSED
+  - S3/S4 positive source opportunity and no-latch physics advancement - PASSED
+  - starvation material closure at unchanged tolerance - FAILED; residual `0.45051928554230614`
+  - refeed material closure - PASSED
+  - Architect review - NOT RUN
+- Remaining risks: Exact-head Linux CI and Architect disposition remain pending. The deep-collapse refeed result must not be promoted to irreversible-death qualification while the complete starvation/refeed material-closure gate is false. M1 remains not established; no production selection, successor work, M2, reserve, recycling, salvage, or tuning is authorized.
+- Blockers: Exact-head R5 CI and Architect disposition; starvation strict-material closure exceeds tolerance.
+- Follow-up directive: none

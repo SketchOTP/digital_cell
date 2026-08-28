@@ -165,3 +165,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Remote CI verified governance, bounded diff, scoped observer tracer, V2/V3 preservation, V4 seven-of-eight D-087 vector, existing causal-starvation predicate, R1 preservation, compact evidence, and artifact identity. Architect acceptance remains pending.
 - Affected areas: R4 remote verification and governance only; no V4 physical biology, D-087 threshold/predicate, historical contract, production default, physical-death qualification, M1 closure, M2, behavior, evolution, reserve, recycling, or salvage changed.
 - Supersedes record: DEC-DCDEV020M1REPLAN002R4-001
+
+## DEC-DCDEV020M1REPLAN002R5-001
+
+- Date: 2026-08-28
+- Record or decision ID: DEC-DCDEV020M1REPLAN002R5-001
+- Status: PROPOSED
+- Decision or event: The R5 fixed-checkpoint no-reset refeed diagnostic was executed from accepted R4 head `9f4d6c34e88a613b0bf677f9f2aa25f8854edbb5`.
+- Rationale: S0, S1, and S2 recover with positive finite N/F delivery; S3 and S4 do not recover while physics advances without a death-latch block. The starvation strict-material closure residual is `0.45051928554230614`, above tolerance, so the diagnostic remains unresolved and does not qualify irreversible physical death.
+- Affected areas: R5 observer-only evidence, compact artifact, dense Atlas ledgers, workflow, documentation, and governance only; no V4 biology, D-087, production default, M1 closure, successor, M2, reserve, recycling, salvage, or tuning changed.
+- Supersedes record: DEC-DCDEV020M1REPLAN002R4-REMOTE-001

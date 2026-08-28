@@ -1,0 +1,14 @@
+{
+  "dense_output": null,
+  "directive": "DC-DEV-020-M1-REPLAN-002-R5-V4-IRREVERSIBLE-PHYSICAL-DEATH-QUALIFICATION-001",
+  "files": [
+    "protocol.json",
+    "results.json",
+    "qualification.json",
+    "preservation.json",
+    "artifact_manifest.json"
+  ],
+  "next_execution_started": false,
+  "schema": "dcdev020m1replan002r5_manifest_v1",
+  "starting_head": "9f4d6c34e88a613b0bf677f9f2aa25f8854edbb5"
+}

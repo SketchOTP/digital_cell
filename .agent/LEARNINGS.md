@@ -835,3 +835,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: Exact-head remote verification of R4 only; no V4 physical biology, D-087 threshold/predicate, production default, physical-death qualification, M1 closure, M2, reserve, recycling, salvage, or downstream work changed.
 - Supersedes learning: L-DCDEV020M1REPLAN002R4-LOCAL
+
+## L-DCDEV020M1REPLAN002R5-LOCAL
+
+- Learning ID: L-DCDEV020M1REPLAN002R5-LOCAL
+- Date: 2026-08-28
+- Fact or lesson: The fixed-checkpoint no-reset refeed diagnostic from accepted R4 head `9f4d6c34e88a613b0bf677f9f2aa25f8854edbb5` gives positive finite resource opportunity at S0/S1/S2/S3/S4. S0, S1, and S2 recover; S3 and S4 do not recover and physics advances without a death-latch block. The starvation continuation has maximum strict-material closure residual `0.45051928554230614`, above the unchanged `1e-8` tolerance, so the local result is fail-closed as `M1_V4_DEATH_QUALIFICATION_UNRESOLVED`.
+- Evidence location: compact R5 evidence under `digital-protocell/experiments/generated/dcdev020m1replan002r5/`; dense starvation and refeed ledgers under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5/dense/`; R5 documentation and workflow are in the repository.
+- Confidence: PROVISIONAL
+- Scope: R5 fixed-checkpoint physical-death qualification only; no V4 biology, D-087, production selection, M1 closure, successor, M2, reserve, recycling, salvage, or tuning.
+- Supersedes learning: none

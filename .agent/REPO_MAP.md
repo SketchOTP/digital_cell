@@ -249,4 +249,9 @@
 - `digital-protocell/experiments/generated/dcdev020m1replan002/` — compact REPLAN-002 protocol/results/qualification/preservation/manifest; dense runtime ledgers remain on Atlas.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002/` — REPLAN-002 diagnostic protocol and bounded interpretation.
 - `.github/workflows/dc-dev-020m1replan002.yml` — scoped REPLAN-002 governance, D-087 preservation, diagnostic execution, compact verification, and exact-head CI.
+- `digital-protocell/examples/dcdev020m1replan002r5_v4_irreversible_physical_death.rs` — observer-only fixed-checkpoint starvation replay and no-reset finite N/F refeed qualification for S0/S1/S2/S3/S4.
+- `digital-protocell/experiments/generated/dcdev020m1replan002r5/` — compact R5 protocol/results/qualification/preservation/manifest; dense ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r5/` — R5 physical-death qualification protocol and fail-closed interpretation.
+- `.github/workflows/dc-dev-020m1replan002r5.yml` — scoped R5 governance, D-087 preservation, fixed-checkpoint qualification, artifact verification, and exact-head CI.
+- `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5/` — canonical dense R5 starvation and refeed ledgers; compact authority remains in Git.
 - `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1replan002\` — canonical dense REPLAN-002 runtime ledgers; compact authority remains in Git.
