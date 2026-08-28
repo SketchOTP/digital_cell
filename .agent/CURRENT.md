@@ -43,7 +43,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `REPLAN-002-R1 exact-head Linux workflow 33186408566`
+- Command or check: `REPLAN-002-R3 exact-head Linux push/PR workflows 33202806266 and 33202802404`
 - Result: `PASSED`
 
 ## Risks

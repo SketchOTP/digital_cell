@@ -1868,3 +1868,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: The combined classification is a family-level observational result, not an independent necessity proof for lifecycle or embodied coupling. Gate-1 certifier repair remains deferred; V4 remains unqualified, M1 remains not established, and physical-death, production selection, M2, reserve/recycling/salvage, and successor work remain unauthorized.
 - Blockers: Exact-head R3 CI and Architect disposition.
 - Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r3-d087-n-starvation-causal-divergence-audit001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R3-D087-N-STARVATION-CAUSAL-DIVERGENCE-REMOTE-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R3-D087-N-STARVATION-CAUSAL-DIVERGENCE-PARTIAL
+- Closed: 2026-08-28T19:00:00-04:00
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux push and pull-request workflows passed for the R3 observer-only audit at `5f2e6195ae2d52bf2e7121b1ade144fbcb4c64e7`. The artifact verifies the frozen V2/V3/V4 replay, compact evidence, preservation suite, and family-level `M1_V4_N_STARVATION_COMBINED_COUPLING` classification.
+- Changed areas: Remote verification record only; no scientific implementation or historical evidence was changed.
+- Validation:
+  - Push workflow `33202806266` at exact head - PASSED
+  - Pull-request workflow `33202802404` at exact head - PASSED
+  - Compact evidence verification - PASSED
+  - V2/V3 D-087 `8/8` and V4 legacy `6/8` - PASSED
+  - R1/R2 and preservation suites - PASSED
+  - Uploaded artifact digest `sha256:32e9175e022fd9a267d1e105ef8fef41d2bd9b7256a5d18c3a5afd14eaad4d28` - PASSED
+  - Architect review - NOT RUN
+- Remaining risks: This is not Architect acceptance. Gate-1 certifier repair remains deferred; V4 remains unqualified, M1 remains not established, and physical-death, production selection, M2, reserve/recycling/salvage, and successor work remain unauthorized.
+- Blockers: Architect disposition.
+- Follow-up directive: none

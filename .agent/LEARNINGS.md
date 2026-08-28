@@ -805,3 +805,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: R3 causal audit only; no certifier repair, V4 biology change, physical-death qualification, production switch, M1 closure, M2, reserve, recycling, salvage, or downstream work.
 - Supersedes learning: L-DCDEV020M1REPLAN002R2-LOCAL
+
+## L-DCDEV020M1REPLAN002R3-REMOTE-VERIFIED
+
+- Learning ID: L-DCDEV020M1REPLAN002R3-REMOTE-VERIFIED
+- Date: 2026-08-28
+- Fact or lesson: Exact-head Linux push workflow `33202806266` and pull-request workflow `33202802404` passed at `5f2e6195ae2d52bf2e7121b1ade144fbcb4c64e7`. The remote artifact digest is `sha256:32e9175e022fd9a267d1e105ef8fef41d2bd9b7256a5d18c3a5afd14eaad4d28`. R3 preserves V2/V3 D-087 `8/8`, V4 legacy `6/8`, R1 capabilities, and V4 closure; its provisional family-level classification is `M1_V4_N_STARVATION_COMBINED_COUPLING`.
+- Evidence location: compact R3 evidence under `digital-protocell/experiments/generated/dcdev020m1replan002r3/`; dense observer ledgers and remote artifact under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r3/`; R3 documentation under `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r3/`; PR #44.
+- Confidence: VERIFIED
+- Scope: Exact-head remote verification of R3 only; no certifier repair, V4 biology change, physical-death qualification, production switch, M1 closure, M2, reserve, recycling, salvage, or downstream work.
+- Supersedes learning: L-DCDEV020M1REPLAN002R3-LOCAL

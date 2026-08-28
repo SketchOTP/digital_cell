@@ -135,3 +135,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: V2/V3 reach the unchanged certified starvation state, while V4 continues to decline structurally but remains viable. V4 has lower mature-only structural turnover and much larger retained area, supporting `M1_V4_N_STARVATION_COMBINED_COUPLING` as a family-level observational result; no independent necessity claim is made without intervention.
 - Affected areas: R3 observer evidence and M1 causal interpretation only; no V4 biology, D-087 threshold, historical contract, production default, physical-death qualification, M1 closure, M2, behavior, evolution, or DC-DEV-021 behavior changed.
 - Supersedes record: DEC-DCDEV020M1REPLAN002R2-001
+
+## DEC-DCDEV020M1REPLAN002R3-REMOTE-001
+
+- Date: 2026-08-28
+- Record or decision ID: DEC-DCDEV020M1REPLAN002R3-REMOTE-001
+- Status: PROPOSED
+- Decision or event: Exact-head Linux push and pull-request workflows passed for the R3 D-087 N-starvation causal divergence audit at `5f2e6195ae2d52bf2e7121b1ade144fbcb4c64e7`.
+- Rationale: Remote CI verified governance, bounded diff, frozen V2/V3/V4 replays, R3 compact evidence, R1/R2 capability preservation, Phase-1/D-088/D-091/evolution preservation, and the uploaded artifact digest. The scientific classification remains provisional pending Architect review.
+- Affected areas: R3 remote validation and governance only; no V4 biology, D-087 threshold, historical contract, production default, physical-death qualification, M1 closure, M2, behavior, evolution, or DC-DEV-021 behavior changed.
+- Supersedes record: DEC-DCDEV020M1REPLAN002R3-001
