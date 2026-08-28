@@ -1,0 +1,7 @@
+{
+  "classification": "SEALED_INTERNAL_DELIVERY_UPPER_BOUND",
+  "no_direct_internal_chemistry_injection": false,
+  "ordinary_physical_resource_restoration_only": false,
+  "same_external_resource_opportunity": false,
+  "statement": "S3/S4 non-recovery is an upper-bound no-recovery observation, not a physical resource-opportunity certification"
+}

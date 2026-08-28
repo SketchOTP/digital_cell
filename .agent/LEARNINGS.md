@@ -855,3 +855,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: Exact-head remote verification of R5 only; no V4 biology, D-087, production selection, M1 closure, successor, M2, reserve, recycling, salvage, or tuning.
 - Supersedes learning: L-DCDEV020M1REPLAN002R5-LOCAL
+
+## L-DCDEV020M1REPLAN002R5R1-LOCAL
+
+- Learning ID: L-DCDEV020M1REPLAN002R5R1-LOCAL
+- Date: 2026-08-28
+- Fact or lesson: The R5-R1 observer audit from `0cdab2f5dcccfe6b7f41936e546b96ffe8df7c4b` finds the maximum raw R5 strict-material delta `0.4505192855423097` at `TRANSPORT` step `8177`, before the first failed mechanics return at step `8566`; the maximum equals internal C/A/W transport export, while the existing transport ledger overstates requested export at the contracted low-area boundary. The first signed-area nonpositive step is `7675`, first unexplained transport residual is `7684`, and mechanics changes mesh state before returning false at `8566`. R5/R4 diagnostics ignore that return, while the authoritative full-runtime caller stops. R5 refeed is `SEALED_INTERNAL_DELIVERY_UPPER_BOUND` because it directly inserts a healthy reference schedule into clone interior concentrations. S1/S2 are pre-failure valid; S3/S4 are post-invalid continuation. Local classification is `M1_R5_ALTERNATE_CLOSURE_CAUSE_CONFIRMED` pending exact-head CI and Architect review.
+- Evidence location: compact evidence under `digital-protocell/experiments/generated/dcdev020m1replan002r5r1/`; dense stage ledger under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r1/`; R5-R1 documentation and workflow are in the repository.
+- Confidence: PROVISIONAL
+- Scope: R5-R1 observer-only test-integrity audit; no production biology, mechanics, transport, D-087, refeed, production selection, M1 closure, M2, or successor work changed.
+- Supersedes learning: L-DCDEV020M1REPLAN002R5-REMOTE-VERIFIED

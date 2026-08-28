@@ -74,3 +74,7 @@ path = "../../examples/dcdev020m1replan002r4_v4_contract_aware_preservation.rs"
 [[example]]
 name = "dcdev020m1replan002r5_v4_irreversible_physical_death"
 path = "../../examples/dcdev020m1replan002r5_v4_irreversible_physical_death.rs"
+
+[[example]]
+name = "dcdev020m1replan002r5r1_zero_area_closure_refeed_semantics_audit"
+path = "../../examples/dcdev020m1replan002r5r1_zero_area_closure_refeed_semantics_audit.rs"

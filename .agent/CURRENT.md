@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260828-dcdev020m1replan002r5-v4-irreversible-physical-death-qualification001`
-- External directive ID: `DC-DEV-020-M1-REPLAN-002-R5-V4-IRREVERSIBLE-PHYSICAL-DEATH-QUALIFICATION-001`
-- Objective: `Replay the accepted V4 starvation path and test fixed-checkpoint no-reset finite refeeding for irreversible physical-loss evidence.`
+- Local directive ID: `D-20260828-dcdev020m1replan002r5r1-zero-area-closure-and-refeed-semantics-audit001`
+- External directive ID: `DC-DEV-020-M1-REPLAN-002-R5-R1-ZERO-AREA-CLOSURE-AND-REFEED-SEMANTICS-AUDIT-001`
+- Objective: `Audit the first material/accounting failure in R5, mechanics-failure continuation, and the committed R5 refeed intervention without repairing either path.`
 - Current status: `VALIDATING`
-- Acceptance: `R5 local diagnostic executed. S0, S1, and S2 recover; S3 and S4 receive positive finite refeeding but do not recover and physics advances without a death-latch block. Starvation strict-material closure reaches 0.45051928554230614, above the unchanged 1e-8 tolerance, so the fail-closed classification is M1_V4_DEATH_QUALIFICATION_UNRESOLVED pending exact-head CI and Architect review.`
-- Current phase: `REPLAN-002 is Architect accepted as M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED at 4becff4fff7d096c70468b759ace09f747c4eb56. R1 is a real V4 implementation candidate with fed homeostasis/recovery and closure, but V4 remains legacy D-087 6/8. R2 is Architect accepted as M1_V4_D087_MIXED_REGRESSION at 7d7303900e17e1fc3cb0ded911e60ddfe70bb621. R3 is Architect accepted as M1_V4_N_STARVATION_COMBINED_COUPLING at ad1642ec3b2e565e0651efe3daf36e0390351dfb. R4 is Architect accepted at 9f4d6c34e88a613b0bf677f9f2aa25f8854edbb5. R5 is active and fail-closed pending review; M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
-- Expected or actual touched areas: `R5 observer-only qualification example, phase1-certifier example registration, scoped workflow, compact evidence, R5 documentation, and append-only governance only; no V4 physical equation/lifecycle change, historical contract change, D-087 threshold/predicate change, production-default, parameter, reserve/recycling/salvage, M2, behavior, evolution, or DC-DEV-021 change; dense evidence is stored on Atlas and all unrelated dirty work is preserved`
-- Immediate next action: `Run scoped R5 preservation tests and exact-head Linux CI, push PR #44, then stop for Architect review. Do not select V4, close M1, start a successor, begin M2, or alter the closure tolerance.`
+- Acceptance: `R5-R1 local observer audit executed. The R5 maximum raw strict-material delta is 0.45051928554230614 at transport step 8177, before the first failed mechanics return at 8566; it is the internal C/A/W transport export. The later failed mechanics transition changes state while returning false and invalidates deeper continuation. R5 refeed is a SEALED_INTERNAL_DELIVERY_UPPER_BOUND, not live spatial acquisition. Local classification is M1_R5_ALTERNATE_CLOSURE_CAUSE_CONFIRMED pending exact-head CI and Architect review.`
+- Current phase: `REPLAN-002 is Architect accepted as M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED at 4becff4fff7d096c70468b759ace09f747c4eb56. R1 is a real V4 implementation candidate with fed homeostasis/recovery and closure, but V4 remains legacy D-087 6/8. R2 is Architect accepted as M1_V4_D087_MIXED_REGRESSION at 7d7303900e17e1fc3cb0ded911e60ddfe70bb621. R3 is Architect accepted as M1_V4_N_STARVATION_COMBINED_COUPLING at ad1642ec3b2e565e0651efe3daf36e0390351dfb. R4 is Architect accepted at 9f4d6c34e88a613b0bf677f9f2aa25f8854edbb5. R5 remains unresolved; R5-R1 is the active observer-only integrity audit. M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
+- Expected or actual touched areas: `R5-R1 observer-only stage ledger, phase1-certifier example registration, scoped workflow, compact evidence, R5-R1 documentation, and append-only governance only; no V4 physical equation/lifecycle change, historical contract change, D-087 threshold/predicate change, production-default, parameter, reserve/recycling/salvage, M2, behavior, evolution, or DC-DEV-021 change; dense evidence is stored on Atlas and all unrelated dirty work is preserved`
+- Immediate next action: `Run scoped R5-R1 preservation tests and exact-head Linux CI, push PR #44, then stop for Architect review. Do not repair mechanics, transport, refeed semantics, or V4; do not select V4, close M1, start a successor, or begin M2.`
 
 ## Temporary task-relevant facts
 
@@ -33,7 +33,7 @@
 - R2-R2 is architect-accepted at `1622b664a4a37b8a0ac4ea51fbc97ca71f9d853c` with exact-head CI `32615395736`; ordinary starvation reaches actual topology rupture and remains non-intact after both refeeding shadows.
 - R3 is architect-accepted at `17226fb7484eb50079c1c30ce9fd8039b3f23c60` with exact-head CI `32617847392` and artifact digest `sha256:dde942ef96c37ee4e0c9882abacd89202dd4eaf245c81b53d4f0efc039fe5700`; classification `M1_ORDINARY_DECAY_CANDIDATE_QUALIFIED`.
 - R4 is architect-accepted at exact head `68d1c88ec1b915a4bee86efe24e985222b529d5a`, CI `32648997395`, artifact digest `sha256:ea8e2161e0889da26a613fd95b6ffa0aa1b7bdb7e0dde23a9fa9aea26d559305`; coupled source is qualified only for the bounded 480-step candidate and remains unselected.
-- R5 is the authorized fixed-checkpoint no-reset physical-death qualification from accepted R4 head `9f4d6c34e88a613b0bf677f9f2aa25f8854edbb5`. Local execution recorded S0/S1/S2 recovery, S3/S4 non-recovery with positive source opportunity and no latch block, but starvation strict-material closure residual `0.45051928554230614` exceeds tolerance; local classification is `M1_V4_DEATH_QUALIFICATION_UNRESOLVED` pending exact-head CI and Architect review. Dense evidence is under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5/dense/`; compact evidence is under `digital-protocell/experiments/generated/dcdev020m1replan002r5/`.
+- R5-R1 audit is the active follow-up from R5 head `0cdab2f5dcccfe6b7f41936e546b96ffe8df7c4b`. It records first signed-area nonpositive step `7675`, first unexplained transport residual step `7684`, maximum raw R5 residual at transport step `8177`, and first `mechanics_step == false`/area-zero step `8566`, with state mutation despite the false return. R5 checkpoints 5277 and 6130 are pre-failure; 10200 and 150200 are post-invalid continuation. R5 refeed is direct internal N/F insertion from a healthy reference schedule and is classified `SEALED_INTERNAL_DELIVERY_UPPER_BOUND`. Dense evidence is under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r1/`; compact evidence is under `digital-protocell/experiments/generated/dcdev020m1replan002r5r1/`.
 - Exact-head R5 push workflow `33212288812` and PR workflow `33212291854` passed at `400c7f0f002018071c83a3b3b89351a3ce4a6fb0`; compact R5 files match across both artifacts. GitHub artifact digests are push `sha256:86eb35e97618fdac985557bfb022a32226a40c42465e028fcdc770025e80b096` and PR `sha256:8bfbc99070ace6aff794eeda7e12d074276d050eba3b1b75ca2839585c7f4e7b`.
 - R5 is preregistered with `FINITE_SPATIAL_BACKING_RESERVOIR_V1`, fixed boundary concentration `2.063914918930895`, finite N/F inventory `243.14924801053778` each, and zero replenishment. Current authoritative evidence is archived under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\` with manifests and hashes; the retired RPI5 endpoint is historical only, and compact CI-required artifacts remain in Git.
 - R6 uses the exact R5 depleted entry but executes the packaged full-runtime order `transport -> reactions -> mechanics -> remesh -> try_local_rebond`; the candidate remains ConservativeV3/reserve OFF and is not selected.
@@ -45,7 +45,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `R5 exact-head Linux push/PR workflows 33212288812 and 33212291854 at 400c7f0f002018071c83a3b3b89351a3ce4a6fb0`
+- Command or check: `R5-R1 exact 150000-step stage audit at starting head 0cdab2f5dcccfe6b7f41936e546b96ffe8df7c4b`
 - Result: `PASSED`
 
 ## Risks
@@ -69,7 +69,7 @@
 ## Blockers
 
 - R1 exact-head remote qualification passed workflow `33186408566`; its artifact is `dcdev020m1replan002r1-maturation-coupled-production-candidate-evidence` with digest `sha256:e663a75f49dabf5adbe8bd86700b25ae628a36ac2b6c21a4bcb9f32b49702d45`. V4 D-087 remains 6/8, so R1 is not qualified pending Architect review.
-- R5 exact-head Linux CI verifies the diagnostic package, but Architect acceptance remains pending. The qualification must remain fail-closed while starvation closure is above tolerance; no M1 closure, production selection, successor work, or M2 follows from the deep-collapse refeed result alone.
+- R5-R1 exact-head Linux CI is pending. The audit does not repair the transport/zero-area boundary or refeed semantics; no M1 closure, production selection, successor work, physical-death qualification, or M2 follows from the R5 deep-collapse result.
 - No D-087 repair, V4 tuning, physical-death follow-up, production switch, recycling, salvage, controller, M2, behavior, evolution, REPLAN-003, or DC-DEV-021 work is authorized.
 
 ## Pending decisions

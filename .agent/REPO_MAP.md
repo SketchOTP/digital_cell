@@ -255,3 +255,9 @@
 - `.github/workflows/dc-dev-020m1replan002r5.yml` — scoped R5 governance, D-087 preservation, fixed-checkpoint qualification, artifact verification, and exact-head CI.
 - `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5/` — canonical dense R5 starvation and refeed ledgers; compact authority remains in Git.
 - `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1replan002\` — canonical dense REPLAN-002 runtime ledgers; compact authority remains in Git.
+
+- `digital-protocell/examples/dcdev020m1replan002r5r1_zero_area_closure_refeed_semantics_audit.rs` — observer-only R5-R1 stage closure, mechanics-return, checkpoint-validity, and refeed-semantics audit.
+- `digital-protocell/experiments/generated/dcdev020m1replan002r5r1/` — compact R5-R1 protocol, caller audit, stage summary, first-failure, zero-area attribution, checkpoint validity, refeed semantics, preservation, qualification, and manifest; dense ledger remains on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r5r1/` — R5-R1 test-integrity audit documentation and bounded interpretation.
+- `.github/workflows/dc-dev-020m1replan002r5r1.yml` — scoped R5-R1 governance, D-087 preservation, observer audit, artifact verification, and exact-head CI.
+- `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r1/` — canonical dense R5-R1 stage ledger; compact authority remains in Git.

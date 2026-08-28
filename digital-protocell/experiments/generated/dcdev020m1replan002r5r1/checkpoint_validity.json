@@ -1,0 +1,34 @@
+{
+  "r4": {
+    "first_a_below_0_05": {
+      "step": 5277,
+      "validity": "VALID_PRE_FAILURE"
+    },
+    "first_observer_nonviable": {
+      "step": 6130,
+      "validity": "VALID_PRE_FAILURE"
+    },
+    "late_150k": {
+      "step": 150200,
+      "validity": "POST_INVALID_CONTINUATION"
+    }
+  },
+  "r5": [
+    {
+      "step": 5277,
+      "validity": "VALID_PRE_FAILURE"
+    },
+    {
+      "step": 6130,
+      "validity": "VALID_PRE_FAILURE"
+    },
+    {
+      "step": 10200,
+      "validity": "POST_INVALID_CONTINUATION"
+    },
+    {
+      "step": 150200,
+      "validity": "POST_INVALID_CONTINUATION"
+    }
+  ]
+}

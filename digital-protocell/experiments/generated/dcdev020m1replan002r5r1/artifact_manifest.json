@@ -1,0 +1,22 @@
+{
+  "canonical_dense_output": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r1/dense/local/stage_ledger.jsonl",
+  "dense_output": null,
+  "directive": "DC-DEV-020-M1-REPLAN-002-R5-R1-ZERO-AREA-CLOSURE-AND-REFEED-SEMANTICS-AUDIT-001",
+  "files": [
+    "protocol.json",
+    "runtime_caller_audit.json",
+    "stage_closure_ledger_summary.json",
+    "first_failure.json",
+    "zero_area_attribution.json",
+    "checkpoint_validity.json",
+    "r4_impact.json",
+    "refeed_semantics.json",
+    "r5_compliance.json",
+    "preservation.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "next_execution_started": false,
+  "schema": "dcdev020m1replan002r5r1_manifest_v1",
+  "starting_head": "0cdab2f5dcccfe6b7f41936e546b96ffe8df7c4b"
+}

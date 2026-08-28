@@ -185,3 +185,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Remote execution verified the fail-closed R5 result, with S0/S1/S2 recovery, S3/S4 non-recovery under positive source opportunity, no death-latch block, and starvation closure residual `0.45051928554230614` above tolerance. The result remains unresolved pending Architect disposition.
 - Affected areas: Remote verification and governance only; no scientific implementation, historical evidence, V4 biology, D-087, production default, M1 closure, successor, M2, reserve, recycling, salvage, or tuning changed.
 - Supersedes record: DEC-DCDEV020M1REPLAN002R5-001
+
+## DEC-DCDEV020M1REPLAN002R5R1-001
+
+- Date: 2026-08-28
+- Record or decision ID: DEC-DCDEV020M1REPLAN002R5R1-001
+- Status: PROPOSED
+- Decision or event: The R5-R1 observer-only test-integrity audit was executed from exact R5 head `0cdab2f5dcccfe6b7f41936e546b96ffe8df7c4b`.
+- Rationale: The R5 maximum raw strict-material delta occurs at transport step `8177` before the first failed mechanics return at `8566` and is attributable to internal C/A/W transport export, not the later zero-area transition. The first signed-area nonpositive state is `7675`; the first unexplained transport residual is `7684`; the failed mechanics call mutates the mesh before returning false. R5/R4 diagnostics continue after that false return, whereas the authoritative full-runtime caller stops. R5 refeed directly inserts a healthy reference schedule into clone interior concentrations and is classified `SEALED_INTERNAL_DELIVERY_UPPER_BOUND`. Local classification: `M1_R5_ALTERNATE_CLOSURE_CAUSE_CONFIRMED`, pending remote CI and Architect review.
+- Affected areas: R5-R1 observer evidence, compact artifact, dense Atlas ledger, workflow, documentation, and governance only; no V4 biology, mechanics, transport, D-087, refeed, production default, M1 closure, M2, or successor work changed.
+- Supersedes record: DEC-DCDEV020M1REPLAN002R5-REMOTE-001

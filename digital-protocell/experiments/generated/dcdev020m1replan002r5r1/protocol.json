@@ -1,0 +1,28 @@
+{
+  "closure_tolerance": 1e-8,
+  "directive": "DC-DEV-020-M1-REPLAN-002-R5-R1-ZERO-AREA-CLOSURE-AND-REFEED-SEMANTICS-AUDIT-001",
+  "next_execution_started": false,
+  "observer_only": true,
+  "production_code_changed": false,
+  "r4_head": "9f4d6c34e88a613b0bf677f9f2aa25f8854edbb5",
+  "refeed_audit": "classification only; R5 S0-S4 not rerun with a new intervention",
+  "schema": "dcdev020m1replan002r5r1_protocol_v1",
+  "stage_order": [
+    "TRANSPORT",
+    "REACTIONS",
+    "MECHANICS",
+    "REMESH",
+    "REBOND"
+  ],
+  "starting_head": "0cdab2f5dcccfe6b7f41936e546b96ffe8df7c4b",
+  "starvation": {
+    "bound": 150000,
+    "fixed_checkpoints": [
+      5277,
+      6130,
+      10200,
+      150200
+    ],
+    "warmup_steps": 200
+  }
+}

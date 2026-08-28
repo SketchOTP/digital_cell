@@ -1060,3 +1060,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260828-dcdev020m1replan002r4-v4-contract-aware-preservation-qualification001
 - Status at issuance: ISSUED
+
+## D-20260828-dcdev020m1replan002r5r1-zero-area-closure-and-refeed-semantics-audit001
+
+- Issued: `2026-08-28T18:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-REPLAN-002-R5-R1-ZERO-AREA-CLOSURE-AND-REFEED-SEMANTICS-AUDIT-001`
+- Objective: Determine whether R5's unresolved death result is attributable to failed zero-area continuation, a production/runtime conservation defect, invalid refeed semantics, or another closure cause, without repair.
+- Scope: Exact R5 reproduction; stage-level transport/reaction/mechanics/remesh/rebond ledger through 150000 starvation steps; mechanics caller return-authority audit; zero-area transition audit; checkpoint validity; R5 refeed code-path classification; compact Git evidence; dense Atlas evidence; scoped Linux CI.
+- Exclusions: No V4 biology, mechanics, conservation primitive, transport, chemistry, topology, death semantics, D-087, thresholds, refeed redesign, production switch, parameter tuning, M1 closure, M2, or successor work.
+- Acceptance: Identify the first physical/accounting boundary; reconcile the reported R5 maximum residual; classify deep checkpoints and refeed semantics; preserve R1/R4/D-087 results; obtain exact-head Linux CI and Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260828-dcdev020m1replan002r5-v4-irreversible-physical-death-qualification001
+- Status at issuance: ISSUED

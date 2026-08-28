@@ -1967,3 +1967,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: R5 does not qualify irreversible physical death while the complete starvation/refeed material-closure gate is false. M1 remains not established; no production selection, successor work, M2, reserve, recycling, salvage, or tuning is authorized.
 - Blockers: Architect disposition; starvation strict-material closure exceeds tolerance.
 - Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5r1-zero-area-closure-and-refeed-semantics-audit001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5R1-ZERO-AREA-CLOSURE-AND-REFEED-SEMANTICS-AUDIT-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5-V4-IRREVERSIBLE-PHYSICAL-DEATH-QUALIFICATION-REMOTE-PARTIAL
+- Closed: 2026-08-28T18:00:00-04:00
+- Acceptance: PARTIAL
+- Summary: The observer-only R5-R1 audit reproduces the R5 maximum raw strict-material delta at transport step `8177`, before the first failed mechanics return at step `8566`. The maximum is the internal C/A/W transport export; the later zero-area mechanics transition changes the mesh before returning false and invalidates deeper continuation. R5 refeed is direct internal insertion from a healthy reference schedule and is therefore a sealed internal-delivery upper bound, not a live spatial-resource test. Local classification: `M1_R5_ALTERNATE_CLOSURE_CAUSE_CONFIRMED`.
+- Changed areas: R5-R1 observer-only stage audit, example registration, scoped workflow, compact evidence, documentation, and append-only governance only; no scientific production equations or historical evidence changed.
+- Validation:
+  - R5 exact reproduction - PASSED
+  - 150000-step stage ledger - PASSED
+  - first signed-area nonpositive step `7675`, first unexplained transport residual step `7684`, first mechanics false/area-zero step `8566` - VERIFIED
+  - mechanics state mutation despite false return - VERIFIED
+  - authoritative runtime caller stops on mechanics false - VERIFIED
+  - R5 refeed classification - VERIFIED as `SEALED_INTERNAL_DELIVERY_UPPER_BOUND`
+  - Architect review - NOT RUN
+- Remaining risks: Exact-head Linux CI and Architect disposition remain pending. R5 S3/S4 are not physical death qualification: they are post-invalid continuation and use invalid direct-internal refeeding semantics. R4 observer-collapse evidence at step `6130` is pre-failure valid, while its late material trajectory requires requalification. M1 remains not established; no production repair, physical-death follow-up, M2, reserve, recycling, salvage, or tuning is authorized.
+- Blockers: Exact-head R5-R1 CI and Architect disposition.
+- Follow-up directive: none
