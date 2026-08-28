@@ -20,6 +20,10 @@ pub const MATERIAL_MESH_CONSERVATIVE_SCHEMA_VERSION: u32 = 2;
 pub const FIELD_SCHEMA_MATERIAL_MESH_GEOMETRY_CONSERVATIVE: &str =
     "mesh_vertices_edges_material_geometry_v3";
 pub const MATERIAL_MESH_GEOMETRY_CONSERVATIVE_SCHEMA_VERSION: u32 = 3;
+/// Experimental maturation-coupled material contract.
+pub const FIELD_SCHEMA_MATERIAL_MESH_MATURATION_COUPLED: &str =
+    "mesh_vertices_edges_material_maturation_v4";
+pub const MATERIAL_MESH_MATURATION_COUPLED_SCHEMA_VERSION: u32 = 4;
 
 /// Physical material/death contract, orthogonal to the biological equation
 /// lineage stamped in `equation_id`.
@@ -28,6 +32,7 @@ pub enum MeshContractVersion {
     HistoricalV1,
     ConservativeV2,
     GeometryConservativeV3,
+    MaturationCoupledV4,
 }
 
 impl Default for MeshContractVersion {
@@ -131,6 +136,10 @@ pub struct MeshEdge {
     pub tracer_m: f64,
     /// Observer-only membrane tracer.
     pub tracer_b: f64,
+    /// Newly synthesized structural material not yet mature/load-bearing.
+    /// Historical contracts deserialize this as zero and ignore it.
+    #[serde(default)]
+    pub m_young: f64,
     /// True when structural mass fell below bond threshold (connection ruptured).
     pub ruptured: bool,
 }
@@ -142,6 +151,7 @@ impl Default for MeshEdge {
             b: 0.0,
             tracer_m: 0.0,
             tracer_b: 0.0,
+            m_young: 0.0,
             ruptured: false,
         }
     }
@@ -271,8 +281,42 @@ impl MaterialMesh {
         ((b[0] - a[0]).hypot(b[1] - a[1])).max(1e-15)
     }
 
+    pub fn is_maturation_coupled(&self) -> bool {
+        self.contract_version == MeshContractVersion::MaturationCoupledV4
+    }
+
+    pub fn young_structural_mass(&self, i: usize) -> f64 {
+        if self.is_maturation_coupled() {
+            self.edges[i].m_young.max(0.0).min(self.edges[i].m.max(0.0))
+        } else {
+            0.0
+        }
+    }
+
+    pub fn mature_structural_mass(&self, i: usize) -> f64 {
+        (self.edges[i].m.max(0.0) - self.young_structural_mass(i)).max(0.0)
+    }
+
+    pub fn total_young_structural_mass(&self) -> f64 {
+        (0..self.n()).map(|i| self.young_structural_mass(i)).sum()
+    }
+
+    pub fn lifecycle_invariants_hold(&self) -> bool {
+        !self.is_maturation_coupled()
+            || self.edges.iter().all(|edge| {
+                edge.m_young.is_finite()
+                    && edge.m_young >= -1e-12
+                    && edge.m_young <= edge.m.max(0.0) + 1e-12
+            })
+    }
+
     pub fn rest_length(&self, i: usize) -> f64 {
-        (self.edges[i].m / self.rho_s.max(1e-15)).max(1e-15)
+        let material = if self.is_maturation_coupled() {
+            self.mature_structural_mass(i)
+        } else {
+            self.edges[i].m.max(0.0)
+        };
+        (material / self.rho_s.max(1e-15)).max(1e-15)
     }
 
     pub fn strain(&self, i: usize) -> f64 {
@@ -319,10 +363,15 @@ impl MaterialMesh {
                 .vertices
                 .iter()
                 .all(|p| p[0].is_finite() && p[1].is_finite())
-            && self
-                .edges
-                .iter()
-                .all(|e| e.m.is_finite() && e.m >= 0.0 && e.b.is_finite() && e.b >= 0.0)
+            && self.edges.iter().all(|e| {
+                e.m.is_finite()
+                    && e.m >= 0.0
+                    && e.m_young.is_finite()
+                    && e.m_young >= 0.0
+                    && e.m_young <= e.m + 1e-12
+                    && e.b.is_finite()
+                    && e.b >= 0.0
+            })
             && self.interior.c.is_finite()
             && self.interior.a.is_finite()
             && self.interior.n.is_finite()
@@ -333,7 +382,9 @@ impl MaterialMesh {
     pub fn uses_observer_only_death(&self) -> bool {
         matches!(
             self.contract_version,
-            MeshContractVersion::ConservativeV2 | MeshContractVersion::GeometryConservativeV3
+            MeshContractVersion::ConservativeV2
+                | MeshContractVersion::GeometryConservativeV3
+                | MeshContractVersion::MaturationCoupledV4
         )
     }
 
@@ -390,6 +441,13 @@ impl MaterialMesh {
     pub fn stamp_geometry_conservative_schema(&mut self) {
         self.contract_version = MeshContractVersion::GeometryConservativeV3;
         self.schema_version = MATERIAL_MESH_GEOMETRY_CONSERVATIVE_SCHEMA_VERSION;
+    }
+
+    /// Stamp the experimental maturation-coupled load-bearing contract.
+    /// This is never selected by default and does not rewrite historical schemas.
+    pub fn stamp_maturation_coupled_schema(&mut self) {
+        self.contract_version = MeshContractVersion::MaturationCoupledV4;
+        self.schema_version = MATERIAL_MESH_MATURATION_COUPLED_SCHEMA_VERSION;
     }
 
     pub fn b_max_for_edge(&self, i: usize) -> f64 {
@@ -510,8 +568,10 @@ pub fn conserve_interior_amount_across_area_change(
     area_before: f64,
     area_after: f64,
 ) -> bool {
-    if mesh.contract_version != MeshContractVersion::GeometryConservativeV3
-        || !area_before.is_finite()
+    if !matches!(
+        mesh.contract_version,
+        MeshContractVersion::GeometryConservativeV3 | MeshContractVersion::MaturationCoupledV4
+    ) || !area_before.is_finite()
         || !area_after.is_finite()
         || area_before <= 0.0
         || area_after <= 0.0

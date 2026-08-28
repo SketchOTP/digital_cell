@@ -390,7 +390,7 @@ fn accounting_area(mesh: &MaterialMesh) -> f64 {
     let actual = mesh.area();
     match mesh.contract_version {
         MeshContractVersion::HistoricalV1 | MeshContractVersion::ConservativeV2 => actual.max(1e-9),
-        MeshContractVersion::GeometryConservativeV3 => {
+        MeshContractVersion::GeometryConservativeV3 | MeshContractVersion::MaturationCoupledV4 => {
             if actual.is_finite() && actual > 0.0 {
                 actual
             } else {

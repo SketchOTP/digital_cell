@@ -226,8 +226,11 @@ fn mechanics_step_from_forces(
     let m_before = mesh.total_structural_mass();
     let b_before = mesh.total_bound_membrane();
     let l_before = mesh.free_l;
-    let area_before =
-        (mesh.contract_version == MeshContractVersion::GeometryConservativeV3).then(|| mesh.area());
+    let area_before = matches!(
+        mesh.contract_version,
+        MeshContractVersion::GeometryConservativeV3 | MeshContractVersion::MaturationCoupledV4
+    )
+    .then(|| mesh.area());
     for (i, fi) in forces.iter().enumerate() {
         mesh.vertices[i][0] += dt * inv_g * fi[0];
         mesh.vertices[i][1] += dt * inv_g * fi[1];
@@ -378,12 +381,14 @@ pub fn remesh_split(mesh: &mut MaterialMesh) -> usize {
             let b_half = 0.5 * e.b;
             let tm_half = 0.5 * e.tracer_m;
             let tb_half = 0.5 * e.tracer_b;
+            let my_half = 0.5 * e.m_young;
             mesh.vertices.insert(i + 1, mid);
             mesh.edges[i] = MeshEdge {
                 m: m_half,
                 b: b_half,
                 tracer_m: tm_half,
                 tracer_b: tb_half,
+                m_young: my_half,
                 ruptured: false,
             };
             mesh.edges.insert(
@@ -393,6 +398,7 @@ pub fn remesh_split(mesh: &mut MaterialMesh) -> usize {
                     b: b_half,
                     tracer_m: tm_half,
                     tracer_b: tb_half,
+                    m_young: my_half,
                     ruptured: false,
                 },
             );
@@ -439,6 +445,7 @@ pub fn remesh_merge(mesh: &mut MaterialMesh) -> usize {
             b: e0.b + e1.b,
             tracer_m: e0.tracer_m + e1.tracer_m,
             tracer_b: e0.tracer_b + e1.tracer_b,
+            m_young: e0.m_young + e1.m_young,
             ruptured: false,
         };
         // Remove vertex j and edge j; keep combined material on edge i.
@@ -457,6 +464,7 @@ pub fn remesh_merge(mesh: &mut MaterialMesh) -> usize {
                 b: e_a.b + e_b.b,
                 tracer_m: e_a.tracer_m + e_b.tracer_m,
                 tracer_b: e_a.tracer_b + e_b.tracer_b,
+                m_young: e_a.m_young + e_b.m_young,
                 ruptured: false,
             };
             mesh.edges.pop();
@@ -475,8 +483,11 @@ pub fn remesh_merge(mesh: &mut MaterialMesh) -> usize {
 pub fn remesh(mesh: &mut MaterialMesh) -> (usize, usize) {
     let m0 = mesh.total_structural_mass();
     let b0 = mesh.total_bound_membrane();
-    let area_before =
-        (mesh.contract_version == MeshContractVersion::GeometryConservativeV3).then(|| mesh.area());
+    let area_before = matches!(
+        mesh.contract_version,
+        MeshContractVersion::GeometryConservativeV3 | MeshContractVersion::MaturationCoupledV4
+    )
+    .then(|| mesh.area());
     let s = remesh_split(mesh);
     let m = remesh_merge(mesh);
     if let Some(before) = area_before {

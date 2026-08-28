@@ -54,3 +54,7 @@ path = "../../examples/dcdev020m1replan001_age_structured_structural_turnover_fe
 [[example]]
 name = "dcdev020m1replan002_maturation_coupled_load_bearing_feasibility"
 path = "../../examples/dcdev020m1replan002_maturation_coupled_load_bearing_feasibility.rs"
+
+[[example]]
+name = "dcdev020m1replan002r1_maturation_coupled_production_candidate"
+path = "../../examples/dcdev020m1replan002r1_maturation_coupled_production_candidate.rs"

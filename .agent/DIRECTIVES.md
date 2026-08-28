@@ -990,3 +990,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260826-dcdev020m1r6r7-reference-geometry-coupling-decision001
 - Status at issuance: ISSUED
+
+## D-20260828-dcdev020m1replan002r1-maturation-production-candidate001
+
+- Issued: `2026-08-28T11:30:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-REPLAN-002-R1-MATURATION-COUPLED-PRODUCTION-CANDIDATE-QUALIFICATION-001`
+- Objective: Qualify one explicit `MaturationCoupledV4` physical candidate against the accepted REPLAN-002 shadow, historical contracts, lifecycle continuity, D-087, and preservation requirements.
+- Scope: Versioned young/mature structural state; mature-derived rest length and mature-only ordinary turnover; actual V4 moving fed/recovery/starvation execution; damage, remesh, fission, serialization, shadow parity, compact Git evidence, dense Atlas evidence, and exact-head Linux CI.
+- Exclusions: No HistoricalV1/ConservativeV2/GeometryConservativeV3 behavior changes, coefficients, parameters, production-default switch, controller, target geometry, source schedule, transport, reserve, recycling, salvage, physical-death follow-up, M2, behavior, evolution, REPLAN-003, or DC-DEV-021.
+- Acceptance: V4 reproduces the immutable shadow, fed homeostasis and recovery pass, starvation decline passes, lifecycle and material closure pass, V2/V3/V4 D-087 requirements pass, preservation passes, and exact-head Linux CI succeeds; otherwise report the exact fail-closed classification.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260827-dcdev020m1replan002-maturation-coupled-load-bearing-feasibility001
+- Status at issuance: ISSUED

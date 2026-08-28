@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-27T14:20:00-04:00`
+- Last updated: `2026-08-28T11:30:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260827-dcdev020m1replan002-maturation-coupled-load-bearing-feasibility001`
-- External directive ID: `DC-DEV-020-M1-REPLAN-002-MATURATION-COUPLED-LOAD-BEARING-FEASIBILITY-001`
-- Objective: `Determine whether mature-derived load-bearing reference semantics, with existing young/mature structural bookkeeping and no new timescale, can restore fed moving homeostasis and no-reset recovery without changing production biology.`
+- Local directive ID: `D-20260828-dcdev020m1replan002r1-maturation-production-candidate001`
+- External directive ID: `DC-DEV-020-M1-REPLAN-002-R1-MATURATION-COUPLED-PRODUCTION-CANDIDATE-QUALIFICATION-001`
+- Objective: `Qualify one versioned MaturationCoupledV4 production candidate against the accepted REPLAN-002 shadow while preserving V1/V2/V3, D-087, material closure, and the unchanged production default.`
 - Current status: `IN_PROGRESS`
-- Acceptance: `Reproduce the accepted static/current/age-only controls; execute the bounded maturation/load-bearing diagnostic under the sealed source schedule; preserve physical material identity, remesh lineage, explicit damage, starvation decline, D-087 controls, compact Git evidence, dense Atlas ledgers, and exact-head Linux CI.`
-- Current phase: `R6-R2-R4 and R6-R3 numerical conservation repairs remain accepted; R6-R7 is accepted as insufficient; REPLAN-001 is accepted as M1_AGE_STRUCTURED_TURNOVER_INSUFFICIENT at 92075021ae1f4c9917f7ace9b160e5694e001de2. REPLAN-002 is exact-head Linux verified at 00f63b84a4080841835516f83881927a16115063 by workflow 33102252577 as M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED, with candidate organized delta +1.33231221701902, candidate recovery PASS, current-control recovery FAIL, and physical topology loss NOT REACHED. Architect review is pending; M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
-- Expected or actual touched areas: `New observer-only maturation/load-bearing example, phase1-certifier example registration, scoped workflow, compact evidence, documentation, and append-only governance only; no production biology, coefficients, mechanics equations, source schedule, transport, resource configuration, production selection, controller, reserve, recycling, salvage, M2, behavior, evolution, REPLAN-003, or DC-DEV-021 behavior; all unrelated dirty work is preserved`
-- Immediate next action: `Stop for Architect review of the exact-head Linux-verified REPLAN-002 package. Do not repair production, tune parameters, add another candidate, or begin REPLAN-003/M2/DC-DEV-021.`
+- Acceptance: `Run the real V4 candidate, preserve historical V1/V2/V3 behavior, reproduce the immutable shadow, qualify fed homeostasis/recovery/starvation decline, validate lifecycle continuity and serialization, run D-087 V2/V3/V4, store dense ledgers on Atlas, and obtain exact-head Linux CI.`
+- Current phase: `REPLAN-002 is Architect accepted as M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED at 4becff4fff7d096c70468b759ace09f747c4eb56. R1 implementation locally reproduces the shadow and passes fed homeostasis, recovery, starvation decline, closure, damage, serialization, deterministic replay, and fission lifecycle tests. Fresh D-087 V2/V3 pass 8/8; V4 currently fails 2 D-087 gates (6/8), so the candidate is not qualified. M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
+- Expected or actual touched areas: `Versioned V4 lifecycle state and dispatch, R1 candidate harness/tests/workflow/evidence/docs, and append-only governance only; no V1/V2/V3 rewrite, coefficient/tolerance change, production-default switch, parameter search, reserve/recycling/salvage, M2, behavior, evolution, or DC-DEV-021 behavior; all unrelated dirty work is preserved`
+- Immediate next action: `Finish the bounded R1 evidence and preservation workflow, report the V4 D-087 preservation regression fail-closed, push to PR #44, and stop for Architect review. Do not repair D-087, tune V4, or begin physical-death follow-up/M2.`
 
 ## Temporary task-relevant facts
 

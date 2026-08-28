@@ -1,0 +1,26 @@
+{
+  "arms": [
+    "V4_FED_8000",
+    "V4_DEPRIVED_480",
+    "V4_RECOVERY_8000",
+    "V4_STARVATION_150000"
+  ],
+  "contract": "MaturationCoupledV4",
+  "directive": "DC-DEV-020-M1-REPLAN-002-R1-MATURATION-COUPLED-PRODUCTION-CANDIDATE-QUALIFICATION-001",
+  "load_bearing_reference": "mature / rho_s with existing 1e-15 numerical guard",
+  "material_state": "edge.m = total physical material; edge.m_young = newly synthesized material; mature = max(m - young, 0)",
+  "maturation": "min(m_young, k_turn * m_young * dt)",
+  "next_execution_started": false,
+  "observer_only_qualification": true,
+  "runtime": {
+    "chemistry": "ConservativeV3",
+    "dt": 0.02,
+    "production_default": "ConservativeV2 / reserve OFF",
+    "reserve": "OFF"
+  },
+  "shadow_oracle": {
+    "organized_delta": 1.33231221701902,
+    "source": "accepted immutable REPLAN-002 shadow"
+  },
+  "starting_head": "4becff4fff7d096c70468b759ace09f747c4eb56"
+}

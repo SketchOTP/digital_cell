@@ -319,6 +319,7 @@ fn diagnostic_split(mesh: &mut MaterialMesh, refs: &mut Vec<f64>) -> usize {
             b: edge.b * 0.5,
             tracer_m: edge.tracer_m * 0.5,
             tracer_b: edge.tracer_b * 0.5,
+            m_young: 0.0,
             ruptured: false,
         };
         mesh.edges.insert(
@@ -328,6 +329,7 @@ fn diagnostic_split(mesh: &mut MaterialMesh, refs: &mut Vec<f64>) -> usize {
                 b: edge.b * 0.5,
                 tracer_m: edge.tracer_m * 0.5,
                 tracer_b: edge.tracer_b * 0.5,
+                m_young: 0.0,
                 ruptured: false,
             },
         );
@@ -367,6 +369,7 @@ fn diagnostic_merge(mesh: &mut MaterialMesh, refs: &mut Vec<f64>) -> usize {
                 b: mesh.edges[i2].b + mesh.edges[i2 + 1].b,
                 tracer_m: mesh.edges[i2].tracer_m + mesh.edges[i2 + 1].tracer_m,
                 tracer_b: mesh.edges[i2].tracer_b + mesh.edges[i2 + 1].tracer_b,
+                m_young: 0.0,
                 ruptured: false,
             };
             refs[i2] += refs[i2 + 1];
@@ -379,6 +382,7 @@ fn diagnostic_merge(mesh: &mut MaterialMesh, refs: &mut Vec<f64>) -> usize {
                 b: mesh.edges[i].b + mesh.edges[j].b,
                 tracer_m: mesh.edges[i].tracer_m + mesh.edges[j].tracer_m,
                 tracer_b: mesh.edges[i].tracer_b + mesh.edges[j].tracer_b,
+                m_young: 0.0,
                 ruptured: false,
             };
             refs[i] += refs[j];

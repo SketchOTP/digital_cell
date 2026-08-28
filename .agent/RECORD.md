@@ -16,6 +16,16 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Affected areas: developmental/sensorimotor strategy package; no scientific source.
 - Supersedes record: none
 
+## DEC-DCDEV020M1REPLAN002R1-001
+
+- Date: 2026-08-28
+- Record or decision ID: DEC-DCDEV020M1REPLAN002R1-001
+- Status: PROPOSED
+- Decision or event: The accepted REPLAN-002 maturation/load-bearing shadow was implemented as an explicit experimental `MaturationCoupledV4` candidate and is under bounded qualification.
+- Rationale: The candidate preserves one total physical edge-material authority with `edge.m_young` as lifecycle state, derives load-bearing reference from mature material, and passes local shadow/homeostasis/recovery/starvation/lifecycle checks. Fresh V2/V3 D-087 controls pass `8/8`, but V4 currently fails D-087 gates 1 and 2 (`6/8`), so no production selection or M1 closure is justified.
+- Affected areas: Experimental V4 scientific-core contract and R1 qualification evidence only; historical contracts, certified Phase-1 behavior, production default, M2, behavior, evolution, and DC-DEV-021 remain unchanged.
+- Supersedes record: none
+
 ## DEC-DCDEV001A-R1
 
 - Date: 2026-08-15

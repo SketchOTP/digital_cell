@@ -181,7 +181,9 @@ pub fn seed_mesh(radius: f64, seed: u64) -> MaterialMesh {
     if reserve_enabled() {
         stamp_reserve_equation(&mut mesh);
     }
-    if conservative_v2_enabled() {
+    if maturation_coupled_enabled() {
+        mesh.stamp_maturation_coupled_schema();
+    } else if conservative_v2_enabled() {
         if geometry_conservative_enabled() {
             mesh.stamp_geometry_conservative_schema();
         } else {
@@ -213,6 +215,16 @@ pub fn geometry_conservative_enabled() -> bool {
     ) && conservative_v2_enabled()
 }
 
+/// Explicit opt-in for the REPLAN-002 experimental physical contract. This
+/// is orthogonal to the chemistry selector so V4 uses ConservativeV3
+/// chemistry without redefining any historical chemistry schema.
+pub fn maturation_coupled_enabled() -> bool {
+    matches!(
+        std::env::var("DCDEV020M1REPLAN002R1_V4").ok().as_deref(),
+        Some("1") | Some("on") | Some("ON") | Some("true")
+    )
+}
+
 pub fn selected_mesh_schema() -> MeshChemistrySchema {
     match std::env::var("DCDEV020R9R3_CONTRACT").ok().as_deref() {
         Some("ConservativeV3") => MeshChemistrySchema::ConservativeV3,
@@ -240,6 +252,9 @@ pub fn reserve_enabled() -> bool {
 }
 
 pub fn contract_label() -> &'static str {
+    if maturation_coupled_enabled() {
+        return "MaturationCoupledV4";
+    }
     match selected_mesh_schema() {
         MeshChemistrySchema::HistoricalV1 => "HistoricalV1",
         MeshChemistrySchema::ConservativeV2 => "ConservativeV2",

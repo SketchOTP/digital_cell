@@ -94,6 +94,7 @@ pub fn try_local_fission(
         b: 0.0,
         tracer_m: 0.0,
         tracer_b: 0.0,
+        m_young: need * 0.5,
         ruptured: false,
     };
     let close_ba = MeshEdge {
@@ -101,6 +102,7 @@ pub fn try_local_fission(
         b: 0.0,
         tracer_m: 0.0,
         tracer_b: 0.0,
+        m_young: need * 0.5,
         ruptured: false,
     };
 
@@ -179,6 +181,7 @@ pub fn try_local_fission(
         mesh.next_template_id = parent.next_template_id;
         mesh.next_edge_id = parent.next_edge_id;
         mesh.finite_allocation = parent.finite_allocation;
+        mesh.contract_version = parent.contract_version;
     };
     set_conc(&mut d1, f1);
     set_conc(&mut d2, f2);

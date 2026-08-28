@@ -187,6 +187,7 @@ pub fn extract_loop(
             b: 0.0,
             tracer_m: 0.0,
             tracer_b: 0.0,
+            m_young: 0.0,
             ruptured: false,
         });
     }

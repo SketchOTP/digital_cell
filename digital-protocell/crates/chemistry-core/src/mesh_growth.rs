@@ -66,7 +66,7 @@ pub fn local_maintenance_a_rate(mesh: &MaterialMesh, i: usize, p: &ReactionParam
     let qc = q_catalyst(mesh.interior.c, p.q_c);
     let a = mesh.interior.a.max(0.0);
     // A required to replace structural turnover on this edge.
-    let turn = p.k_turn * mesh.edges[i].m.max(0.0);
+    let turn = p.k_turn * mesh.mature_structural_mass(i);
     let a_turn = turn / p.yield_a_to_m.max(1e-15);
     let a_c_share = p.k_c_prod * a * share;
     let a_l_share = 0.02 * qc * a * ell;
@@ -161,6 +161,9 @@ pub fn growth_step(
             };
             mesh.interior.w += w_product / area;
             mesh.edges[i].m += dm;
+            if mesh.is_maturation_coupled() {
+                mesh.edges[i].m_young += dm;
+            }
             led.r_consumed_growth += take;
             led.m_grown += dm;
             led.w_from_growth += w_product;
@@ -205,6 +208,9 @@ pub fn growth_step(
         };
         mesh.interior.w += w_product / area;
         mesh.edges[i].m += dm;
+        if mesh.is_maturation_coupled() {
+            mesh.edges[i].m_young += dm;
+        }
         led.a_consumed_growth += take;
         led.m_grown += dm;
         led.w_from_growth += w_product;

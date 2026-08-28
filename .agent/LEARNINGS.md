@@ -765,3 +765,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: Exact-head remote verification of REPLAN-002 only; no production repair, parameter search, source redesign, reserve/recycling/salvage, M1 closure, M2, REPLAN-003, behavior, evolution, or DC-DEV-021 authorization.
 - Supersedes learning: L-DCDEV020M1REPLAN002-001
+
+## L-DCDEV020M1REPLAN002R1-LOCAL
+
+- Learning ID: L-DCDEV020M1REPLAN002R1-LOCAL
+- Date: 2026-08-28
+- Fact or lesson: The real `MaturationCoupledV4` candidate reproduces the accepted REPLAN-002 shadow at organized delta `+1.3323122170185968`, passes fed homeostasis, no-reset recovery, starvation structural decline, material closure, damage, serialization, deterministic replay, and actual fission lifecycle continuity. Fresh historical controls are V2 `8/8` and V3 `8/8`; V4 D-087 is `6/8`, failing only dual-retention and starvation gates, so the candidate is not qualified.
+- Evidence location: compact R1 evidence under digital-protocell/experiments/generated/dcdev020m1replan002r1/; dense ledgers under /srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r1/; exact entry 4becff4fff7d096c70468b759ace09f747c4eb56.
+- Confidence: PROVISIONAL
+- Scope: R1 qualification only; no production switch, parameter search, D-087 repair, physical-death follow-up, M2, reserve, recycling, salvage, or downstream work.
+- Supersedes learning: L-DCDEV020M1REPLAN002-REMOTE-VERIFIED

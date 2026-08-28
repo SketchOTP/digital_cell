@@ -1790,3 +1790,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: The positive maturation-coupled candidate remains a diagnostic shadow and has not been selected for production; physical topology loss was not reached; current-control recovery remains negative evidence. M1 remains not established and no production repair, parameter search, source redesign, reserve/recycling/salvage, M2, REPLAN-003, or DC-DEV-021 is authorized.
 - Blockers: Architect acceptance.
 - Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r1-maturation-production-candidate001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R1-MATURATION-COUPLED-PRODUCTION-CANDIDATE-PARTIAL
+- Supersedes outcome: `OUT-DCDEV020M1REPLAN002-MATURATION-COUPLED-LOAD-BEARING-FEASIBILITY-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Closed: 2026-08-28T11:30:00-04:00
+- Acceptance: PARTIAL
+- Summary: The versioned `MaturationCoupledV4` candidate is being qualified from accepted REPLAN-002 authority `4becff4fff7d096c70468b759ace09f747c4eb56`. Local R1 execution reproduces the immutable shadow, passes fed homeostasis, no-reset recovery, starvation structural decline, material closure, damage, serialization, deterministic replay, and fission lifecycle continuity. Fresh V2 and V3 D-087 controls pass 8/8; V4 currently returns 6/8 and is therefore not qualified.
+- Changed areas: Versioned V4 lifecycle dispatch/state and R1 candidate harness/tests; compact evidence, dense Atlas evidence, workflow, documentation, and append-only governance. No historical contract, coefficient, parameter, production default, controller, reserve/recycling/salvage, M2, or downstream behavior change.
+- Validation:
+  - Focused R1 lifecycle tests - PASSED
+  - Candidate shadow parity, fed homeostasis, recovery, starvation decline, and material closure - PASSED
+  - V2 D-087 preservation - PASSED
+  - V3 D-087 preservation - PASSED
+  - V4 D-087 8/8 requirement - FAILED
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: V4 D-087 preservation is currently a fail-closed regression (`D087_D086_ACCEPTANCE_INVALID`), so no candidate qualification or production selection is authorized. M1 remains not established; no physical-death follow-up or M2 is authorized.
+- Blockers: V4 D-087 8/8 requirement and exact-head Linux CI/Architect review.
+- Follow-up directive: none

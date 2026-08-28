@@ -42,7 +42,9 @@ fn reaction_area(mesh: &MaterialMesh) -> f64 {
 #[inline]
 fn material_transfer_area(mesh: &MaterialMesh) -> f64 {
     match mesh.contract_version {
-        MeshContractVersion::GeometryConservativeV3 => mesh.area(),
+        MeshContractVersion::GeometryConservativeV3 | MeshContractVersion::MaturationCoupledV4 => {
+            mesh.area()
+        }
         MeshContractVersion::HistoricalV1 | MeshContractVersion::ConservativeV2 => {
             reaction_area(mesh)
         }
@@ -149,6 +151,9 @@ pub struct ReactionLedger {
     pub a_consumed_build: f64,
     pub m_produced: f64,
     pub m_to_w: f64,
+    /// Newly synthesized material that matured during this step.
+    #[serde(default)]
+    pub m_matured: f64,
     pub b_to_w: f64,
     pub w_produced: f64,
     pub a_produced: f64,
@@ -441,6 +446,23 @@ fn reactions_step_with_reserve_mode_and_reference_lengths(
     if !material_area.is_finite() || material_area <= 0.0 {
         return led;
     }
+    // V4 uses the material state at the beginning of this reaction step as
+    // the load-bearing reference for all structural conversions. Capture it
+    // before build/maturation can change the mature pool. Diagnostic callers
+    // may still supply an explicit reference slice.
+    let v4_reference_lengths = if mesh.is_maturation_coupled() && reference_lengths.is_none() {
+        Some(
+            (0..mesh.n())
+                .map(|i| mesh.rest_length(i))
+                .collect::<Vec<_>>(),
+        )
+    } else {
+        None
+    };
+    let effective_reference_lengths = match reference_lengths {
+        Some(lengths) => Some(lengths),
+        None => v4_reference_lengths.as_deref(),
+    };
     led.a_stock_entering = mesh.interior.a.max(0.0) * material_area;
     led.r_stock_entering = mesh.interior.r.max(0.0) * material_area;
     let surplus_only_store = matches!(
@@ -665,7 +687,7 @@ fn reactions_step_with_reserve_mode_and_reference_lengths(
                 i,
                 p,
                 activation_for_flux,
-                reference_lengths,
+                effective_reference_lengths,
             ) * dt;
             let need_a = j_build / p.yield_a_to_m.max(1e-15);
             led.structural_demand_a += need_a;
@@ -698,6 +720,9 @@ fn reactions_step_with_reserve_mode_and_reference_lengths(
             };
             mesh.interior.w += w_product / material_area;
             mesh.edges[i].m += dm;
+            if mesh.is_maturation_coupled() {
+                mesh.edges[i].m_young += dm;
+            }
             led.a_consumed_build += take;
             led.a_to_m += a_take;
             led.diagnostic_liquid_r_used += r_take;
@@ -705,12 +730,21 @@ fn reactions_step_with_reserve_mode_and_reference_lengths(
             led.m_produced += dm;
             led.w_produced += w_product;
 
-            let l0 = reference_lengths
+            let m_for_turnover = if mesh.is_maturation_coupled() {
+                let young = mesh.edges[i].m_young.max(0.0);
+                let matured = (p.k_turn * young * dt).min(young);
+                mesh.edges[i].m_young -= matured;
+                led.m_matured += matured;
+                mesh.mature_structural_mass(i)
+            } else {
+                mesh.edges[i].m.max(0.0)
+            };
+            let l0 = effective_reference_lengths
                 .and_then(|lengths| lengths.get(i).copied())
                 .unwrap_or_else(|| mesh.rest_length(i));
             let strain = (mesh.edge_length(i) - l0) / l0;
             let turn_scale = 1.0 / (1.0 + 2.0 * strain.max(0.0));
-            let turn = p.k_turn * turn_scale * mesh.edges[i].m.max(0.0) * dt;
+            let turn = p.k_turn * turn_scale * m_for_turnover * dt;
             let rem = turn.min(mesh.edges[i].m.max(0.0));
             mesh.edges[i].m -= rem;
             // Tracer ages with turnover.
@@ -985,8 +1019,12 @@ pub fn apply_structural_damage(mesh: &mut MaterialMesh, fraction: f64) -> f64 {
     let count = ((n as f64) * fraction.clamp(0.0, 1.0)).round() as usize;
     let area = mesh.area().max(1e-6);
     for i in 0..count.min(n) {
-        let rem = mesh.edges[i].m * 0.5;
+        let total_before = mesh.edges[i].m.max(0.0);
+        let rem = total_before * 0.5;
         mesh.edges[i].m -= rem;
+        if mesh.is_maturation_coupled() && total_before > 0.0 {
+            mesh.edges[i].m_young *= mesh.edges[i].m / total_before;
+        }
         removed += rem;
         mesh.interior.w += rem / area;
         if mesh.edges[i].m < mesh.bond_threshold {
@@ -1030,6 +1068,7 @@ pub fn apply_local_rupture(mesh: &mut MaterialMesh, i: usize) {
     if i < mesh.edges.len() {
         let rem = mesh.edges[i].m;
         mesh.edges[i].m = 0.0;
+        mesh.edges[i].m_young = 0.0;
         mesh.edges[i].ruptured = true;
         mesh.interior.w += rem / mesh.area().max(1e-6);
     }
@@ -1058,6 +1097,11 @@ pub fn try_local_rebond(mesh: &mut MaterialMesh, max_dist: f64) -> bool {
             if have >= need {
                 mesh.interior.a = (mesh.interior.a - need / area).max(0.0);
                 mesh.edges[i].m = need;
+                mesh.edges[i].m_young = if mesh.is_maturation_coupled() {
+                    need
+                } else {
+                    0.0
+                };
                 mesh.edges[i].ruptured = false;
                 return true;
             }
