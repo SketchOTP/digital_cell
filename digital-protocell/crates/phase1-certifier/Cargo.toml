@@ -66,3 +66,7 @@ path = "../../examples/dcdev020m1replan002r2_d087_v4_lifecycle_semantics_audit.r
 [[example]]
 name = "dcdev020m1replan002r3_d087_n_starvation_causal_divergence"
 path = "../../examples/dcdev020m1replan002r3_d087_n_starvation_causal_divergence.rs"
+
+[[example]]
+name = "dcdev020m1replan002r4_v4_contract_aware_preservation"
+path = "../../examples/dcdev020m1replan002r4_v4_contract_aware_preservation.rs"

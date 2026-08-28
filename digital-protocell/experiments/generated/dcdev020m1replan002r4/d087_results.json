@@ -1,0 +1,44 @@
+{
+  "gate2_failure": "D087_D086_REPRODUCTION_FAILURE",
+  "thresholds_unchanged": true,
+  "v2": {
+    "all_pass": true,
+    "gates": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "v3": {
+    "all_pass": true,
+    "gates": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "v4": {
+    "all_pass": false,
+    "gates": [
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "v4_sole_historical_failure_gate2": true
+}

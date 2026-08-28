@@ -1,0 +1,18 @@
+{
+  "dense_output": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r4/dense/final-local",
+  "directive": "DC-DEV-020-M1-REPLAN-002-R4-V4-CONTRACT-AWARE-PRESERVATION-QUALIFICATION-001",
+  "files": [
+    "protocol.json",
+    "tracer_semantics.json",
+    "d087_results.json",
+    "causal_starvation.json",
+    "starvation_fate.json",
+    "r1_preservation.json",
+    "historical_preservation.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "next_execution_started": false,
+  "schema": "dcdev020m1replan002r4_manifest_v1",
+  "starting_head": "ad1642ec3b2e565e0651efe3daf36e0390351dfb"
+}

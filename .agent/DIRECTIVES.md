@@ -1032,3 +1032,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260828-dcdev020m1replan002r2-d087-v4-lifecycle-semantics-audit001
 - Status at issuance: ISSUED
+
+## D-20260828-dcdev020m1replan002r4-v4-contract-aware-preservation-qualification001
+
+- Issued: `2026-08-28T20:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-REPLAN-002-R4-V4-CONTRACT-AWARE-PRESERVATION-QUALIFICATION-001`
+- Objective: Correct the V4 D-087 structural observer tracer and qualify the unchanged causal-starvation predicate without changing V4 physical biology.
+- Scope: Exact R3 head; observer/certifier-only V4 tracer correction; frozen V2/V3/V4 D-087 replay; existing 150000-step causal-starvation continuation; R1 and historical preservation; compact Git evidence; dense Atlas evidence; scoped Linux CI; append-only governance.
+- Exclusions: No V4 physical equation/lifecycle change, historical contract change, D-087 threshold/duration/predicate change, production switch, parameter search, controller, physical-death follow-up, reserve, recycling, salvage, M2, behavior, evolution, or DC-DEV-021.
+- Acceptance: V2/V3 `8/8`; V4 `[true,true,false,true,true,true,true,true]`; lifecycle-consistent Gate-1 tracer passes unchanged thresholds; physical trajectory parity; existing causal-starvation predicate passes; R1/historical preservation; exact-head Linux CI; Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260828-dcdev020m1replan002r3-d087-n-starvation-causal-divergence-audit001
+- Status at issuance: ISSUED

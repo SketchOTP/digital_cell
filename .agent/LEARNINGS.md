@@ -815,3 +815,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: Exact-head remote verification of R3 only; no certifier repair, V4 biology change, physical-death qualification, production switch, M1 closure, M2, reserve, recycling, salvage, or downstream work.
 - Supersedes learning: L-DCDEV020M1REPLAN002R3-LOCAL
+
+## L-DCDEV020M1REPLAN002R4-LOCAL
+
+- Learning ID: L-DCDEV020M1REPLAN002R4-LOCAL
+- Date: 2026-08-28
+- Fact or lesson: The R4 observer-only V4 contract-aware tracer preserves the physical trajectory and makes the frozen D-087 vector `[true,true,false,true,true,true,true,true]`. V2/V3 remain `8/8`; the unchanged 150000-step causal-starvation predicate passes, with first `A < 0.05` at step `5277`, first observer viability loss at `6130`, and no topology rupture. Local classification is `M1_V4_CONTRACT_AWARE_PRESERVATION_QUALIFIED`, pending exact-head CI and Architect review.
+- Evidence location: compact evidence under `digital-protocell/experiments/generated/dcdev020m1replan002r4/`; dense ledger under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r4/dense/local`; R4 documentation and workflow; authorized entry `ad1642ec3b2e565e0651efe3daf36e0390351dfb`.
+- Confidence: PROVISIONAL
+- Scope: R4 contract-aware preservation qualification only; no V4 biology change, D-087 threshold change, production switch, physical-death follow-up, M1 closure, M2, reserve, recycling, salvage, or downstream work.
+- Supersedes learning: L-DCDEV020M1REPLAN002R3-REMOTE-VERIFIED

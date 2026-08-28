@@ -352,6 +352,65 @@ pub fn coupled_step(
     )
 }
 
+/// Update only the V4 structural label after the physical reaction step.
+///
+/// This is certifier observer state, not a second material ledger.  V4's
+/// ordinary turnover is mature-only, so the pulse label must be removed from
+/// that same mature turnover-eligible pool.  Historical contracts retain the
+/// reaction kernel's existing tracer behavior because this helper is called
+/// only for the explicit V4 contract.
+fn update_maturation_coupled_tracer(
+    before: &MaterialMesh,
+    after_reaction: &mut MaterialMesh,
+    params: &ReactionParams,
+    dt: f64,
+) {
+    let q_maturation = params.k_turn * dt;
+    if !q_maturation.is_finite() || q_maturation >= 1.0 {
+        return;
+    }
+    for i in 0..before.n().min(after_reaction.n()) {
+        let before_edge = before.edges[i];
+        let after_edge = after_reaction.edges[i];
+        if before_edge.ruptured || after_edge.ruptured {
+            after_reaction.edges[i].tracer_m = 0.0;
+            continue;
+        }
+        let q_turn = params.k_turn
+            * (1.0
+                / (1.0
+                    + 2.0
+                        * ((before.edge_length(i) - before.rest_length(i))
+                            / before.rest_length(i))
+                        .max(0.0)))
+            * dt;
+        if !q_turn.is_finite() || q_turn >= 1.0 {
+            return;
+        }
+        let y0 = before_edge.m_young.max(0.0);
+        let y1 = after_edge.m_young.max(0.0);
+        let m0 = before_edge.m.max(0.0);
+        let m1 = after_edge.m.max(0.0);
+        let build = (((m1 - m0) + q_turn * (m0 - y1)) / (1.0 - q_turn)).max(0.0);
+        let mature_before_turnover = (m0 + build - y1).max(0.0);
+        let turnover = (q_turn * mature_before_turnover).min((m0 + build).max(0.0));
+        let old_label = before_edge.tracer_m.max(0.0);
+        let label = if mature_before_turnover > 1e-15 {
+            old_label * (1.0 - (turnover / mature_before_turnover).clamp(0.0, 1.0))
+        } else {
+            old_label
+        };
+        let expected_y1 = ((y0 + build) * (1.0 - q_maturation)).max(0.0);
+        let expected_m1 = (m0 + build - turnover).max(0.0);
+        if (expected_y1 - y1).abs() > 1e-8 * (1.0 + expected_y1.abs().max(y1.abs()))
+            || (expected_m1 - m1).abs() > 1e-8 * (1.0 + expected_m1.abs().max(m1.abs()))
+        {
+            return;
+        }
+        after_reaction.edges[i].tracer_m = label.max(0.0);
+    }
+}
+
 /// Select only the bounded R9 observer mode when explicitly requested. With
 /// no selector, the established production trajectory remains exactly Full.
 pub fn reserve_diagnostic_mode_from_env() -> ReserveDiagnosticMode {
@@ -382,7 +441,11 @@ pub fn coupled_step_with_reserve_mode(
     reserve_mode: ReserveDiagnosticMode,
 ) -> ReactionLedger {
     let _ = transport_step(mesh, transport, mech.dt);
+    let v4_before_reaction = maturation_coupled_enabled().then(|| mesh.clone());
     let led = reactions_step_with_reserve_mode(mesh, react, mech.dt, build, metab, reserve_mode);
+    if let Some(before) = v4_before_reaction.as_ref() {
+        update_maturation_coupled_tracer(before, mesh, react, mech.dt);
+    }
     mechanics_step(mesh, mech);
     remesh(mesh);
     try_local_rebond(mesh, DEFAULT_REBOND_DIST);

@@ -1869,6 +1869,27 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: Exact-head R3 CI and Architect disposition.
 - Follow-up directive: none
 
+## D-20260828-dcdev020m1replan002r4-v4-contract-aware-preservation-qualification001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R4-V4-CONTRACT-AWARE-PRESERVATION-QUALIFICATION-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R3-D087-N-STARVATION-CAUSAL-DIVERGENCE-PARTIAL
+- Closed: 2026-08-28T20:00:00-04:00
+- Acceptance: PARTIAL
+- Summary: Local R4 qualification at the authorized R3 head applies a lifecycle-consistent V4 structural observer tracer without changing physical state. V2 and V3 remain D-087 `8/8`; V4 becomes `[true,true,false,true,true,true,true,true]`, with only the unchanged starvation Gate 2 false. The existing 150000-step causal-starvation predicate passes with observer viability loss at step `6130`; remote CI and Architect review remain pending.
+- Changed areas: V4 observer tracer hook, R4 qualification example, scoped workflow, compact evidence, R4 documentation, and append-only governance. No V4 physical biology, D-087 threshold/predicate, historical contract, production default, or downstream behavior changed.
+- Validation:
+  - V2 D-087 8/8 - PASSED
+  - V3 D-087 8/8 - PASSED
+  - V4 D-087 7/8 - PASSED
+  - V4 physical trajectory parity - PASSED
+  - Existing causal starvation predicate through 150000 - PASSED
+  - R1 capabilities and historical preservation - PASSED
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: This is not Architect acceptance. V4 Gate 2 remains the unchanged biological D-087 failure; M1 remains not established; no physical-death follow-up, production selection, M2, reserve/recycling/salvage, or successor work is authorized.
+- Blockers: Exact-head R4 CI and Architect disposition.
+- Follow-up directive: none
+
 ## D-20260828-dcdev020m1replan002r3-d087-n-starvation-causal-divergence-audit001 - PARTIAL
 
 - Outcome ID: OUT-DCDEV020M1REPLAN002R3-D087-N-STARVATION-CAUSAL-DIVERGENCE-REMOTE-PARTIAL
