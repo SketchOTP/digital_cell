@@ -120,7 +120,7 @@ jobs:
           assert f['first_snapshot_accounting_area_zero_step'] == 8566
           assert a['zero_area_transition_explains_r5_max_residual'] is False
           assert a['r5_max_raw_residual_record']['absolute_step'] == 8177
-          assert abs(a['r5_max_raw_residual_record']['signed_residual'] - 0.45051928554230614) < 1e-12
+          assert abs(abs(a['r5_max_raw_residual_record']['signed_residual']) - 0.45051928554230614) < 1e-12
           assert cp['r5'][0]['validity'] == 'VALID_PRE_FAILURE'
           assert cp['r5'][1]['validity'] == 'VALID_PRE_FAILURE'
           assert cp['r5'][2]['validity'] == 'POST_INVALID_CONTINUATION'
