@@ -1,0 +1,14 @@
+{
+  "comparison": [
+    "vertices",
+    "edge_m",
+    "edge_m_young",
+    "edge_b",
+    "free_l",
+    "interior chemistry",
+    "rupture state"
+  ],
+  "observer_choice_feeds_back_into_physics": false,
+  "physical_trajectory_difference": 0,
+  "physical_trajectory_parity": true
+}

@@ -1,0 +1,83 @@
+{
+  "contract": "MaturationCoupledV4",
+  "cumulative_build": 118.94261619793141,
+  "cumulative_mature_turnover": 88.54942757396807,
+  "initial_mature_labeled": 87.75070322587518,
+  "legacy_physical_hash": "99241fdda9dedc65",
+  "legacy_structural_report": {
+    "component": "m_legacy",
+    "f_label": 0.39365548976559395,
+    "f_label_ok": false,
+    "f_pool": 0.2923853744344416,
+    "gross_replacement_integral": 118.94261619793141,
+    "interpretation": "R_X=gross_replacement/mean_mass; f_label=labeled(T)/labeled(0); f_pool=labeled(T)/pool(T)=D-086 tracer_* metric",
+    "label_final": 34.54354605565718,
+    "label_initial": 87.75070322587518,
+    "mean_mass": 97.89257511096167,
+    "r_x": 1.2150320498067337,
+    "r_x_ok": true
+  },
+  "lifecycle_physical_hash": "99241fdda9dedc65",
+  "lifecycle_structural_report": {
+    "component": "m_lifecycle",
+    "f_label": 0.24710833271945795,
+    "f_label_ok": true,
+    "f_pool": 0.18353830764832416,
+    "gross_replacement_integral": 118.94261619793141,
+    "interpretation": "R_X=gross_replacement/mean_mass; f_label=labeled(T)/labeled(0); f_pool=labeled(T)/pool(T)=D-086 tracer_* metric",
+    "label_final": 21.68392996910598,
+    "label_initial": 87.75070322587518,
+    "mean_mass": 97.89257511096167,
+    "r_x": 1.2150320498067337,
+    "r_x_ok": true
+  },
+  "max_material_decomposition_residual": 7.105427357601002e-14,
+  "physical_hash_sequences_equal": true,
+  "physical_mismatch_steps": [],
+  "physical_trajectory_parity": true,
+  "schema": "dcdev020m1replan002r2_parallel_tracer_v1",
+  "selected_mesh_schema": "ConservativeV3",
+  "snapshots": [
+    {
+      "legacy_label": 87.75070322587518,
+      "lifecycle_label": 87.75070322587518,
+      "mature_m": 87.75070322587518,
+      "step": 0,
+      "total_m": 87.75070322587518,
+      "young_m": 0.0
+    },
+    {
+      "legacy_label": 66.12256216282816,
+      "lifecycle_label": 64.5592029008,
+      "mature_m": 66.736116990388,
+      "step": 1000,
+      "total_m": 81.32752616471434,
+      "young_m": 14.591409174326337
+    },
+    {
+      "legacy_label": 50.05522732213204,
+      "lifecycle_label": 43.103436412357965,
+      "mature_m": 57.3627815173421,
+      "step": 2500,
+      "total_m": 97.41228553250451,
+      "young_m": 40.04950401516245
+    },
+    {
+      "legacy_label": 34.54354605565718,
+      "lifecycle_label": 21.68392996910598,
+      "mature_m": 62.19855014298432,
+      "step": 5000,
+      "total_m": 118.14389184983841,
+      "young_m": 55.94534170685406
+    },
+    {
+      "legacy_label": 34.54354605565718,
+      "lifecycle_label": 21.68392996910598,
+      "mature_m": 62.19855014298432,
+      "step": 5000,
+      "total_m": 118.14389184983841,
+      "young_m": 55.94534170685406
+    }
+  ],
+  "steps": 5000
+}

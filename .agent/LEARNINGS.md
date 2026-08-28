@@ -785,3 +785,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: Exact-head verification of R1 only; no D-087 repair, V4 tuning, production switch, physical-death follow-up, M2, reserve, recycling, salvage, or downstream work.
 - Supersedes learning: L-DCDEV020M1REPLAN002R1-LOCAL
+
+## L-DCDEV020M1REPLAN002R2-LOCAL
+
+- Learning ID: L-DCDEV020M1REPLAN002R2-LOCAL
+- Date: 2026-08-28
+- Fact or lesson: The R2 observer-only audit reproduces V2/V3 D-087 at 8/8 and V4 at 6/8. V4's legacy structural label fraction is `0.39365548976559395` and fails the frozen predicate, while a lifecycle-consistent mature-pool tracer gives `0.24710833271945795` and passes; physical hash sequences are identical. The frozen 200-step warmup plus 6000-step starvation continuation ends with `alive=true`, `A=0.09087892901751628`, `observer_viable=true`, no observer death reason, and no rupture, so Gate 2 is not explained by a stale latch in this protocol. Local classification: `M1_V4_D087_MIXED_REGRESSION`.
+- Evidence location: compact R2 evidence under `digital-protocell/experiments/generated/dcdev020m1replan002r2/`; dense observer ledgers under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r2/`; R2 documentation under `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r2/`.
+- Confidence: PROVISIONAL
+- Scope: R2 semantics audit only; no certifier repair, threshold change, V4 biology change, production switch, physical-death follow-up, M2, reserve, recycling, salvage, or downstream work.
+- Supersedes learning: L-DCDEV020M1REPLAN002R1-REMOTE-VERIFIED

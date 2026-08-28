@@ -1004,3 +1004,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260827-dcdev020m1replan002-maturation-coupled-load-bearing-feasibility001
 - Status at issuance: ISSUED
+
+## D-20260828-dcdev020m1replan002r2-d087-v4-lifecycle-semantics-audit001
+
+- Issued: `2026-08-28T15:30:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-REPLAN-002-R2-D087-V4-LIFECYCLE-SEMANTICS-AUDIT-001`
+- Objective: Causally determine whether V4's failed D-087 dual-retention and starvation gates are certifier-semantic mismatches, genuine biological regression, mixed, or unresolved.
+- Scope: Exact-head V2/V3/V4 reproduction; raw Gate-1 and Gate-2 metrics; observer-only lifecycle-consistent structural tracer; immutable physical trajectory parity; existing observer viability comparison; compact Git evidence, dense Atlas evidence, and scoped exact-head Linux diagnostic CI.
+- Exclusions: No V4 biology, lifecycle equations/state, historical V1/V2/V3 behavior, D-087 thresholds/durations/pulses, production selection, physical-death qualification, parameter search, reserve, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 changes.
+- Acceptance: Resolve both failed gates causally without changing physical trajectory, or report the exact fail-closed classification; preserve V2/V3 8/8 and R1 V4 capabilities; obtain exact-head Linux CI; Architect review pending.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260828-dcdev020m1replan002r1-maturation-production-candidate001
+- Status at issuance: ISSUED

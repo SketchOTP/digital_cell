@@ -1,0 +1,332 @@
+{
+  "contract": "MaturationCoupledV4",
+  "directive": "DC-DEV-020-M1-REPLAN-002-R2-D087-V4-LIFECYCLE-SEMANTICS-AUDIT-001",
+  "starting_head": "98b1104165039359bdc609898e0d0371f9ce05c4",
+  "v2_gate_array": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "v2_report": {
+    "agent_directive": "D-20260724-d087-independent-phase1-certification-phase2-launch",
+    "artifact_root": "/tmp/dcdev020r2-baseline/v2",
+    "elapsed_secs": 12.216167497,
+    "entry_commit": "6f8a80a",
+    "entry_tag": "D-086-mesh-protocell-phase1-pass",
+    "equation_lineage": "autopoietic_material_mesh_v1",
+    "frozen": {
+      "alpha_approx": 0.022,
+      "dt": 0.02,
+      "gamma": 1.0,
+      "k_pi": 0.22,
+      "k_s": 14.0,
+      "kappa_b": 2.0,
+      "schema": "autopoietic_material_mesh_v1",
+      "state": "mesh_vertices_edges_v1"
+    },
+    "gate0": {
+      "detail": "head=98b1104 tag=6f8a80a tag_ok=true ancestor_ok=true frozen_ok=true hits=2145 controller_hits=0 dirty_candidate=false",
+      "failure": null,
+      "pass": true
+    },
+    "gate1": {
+      "detail": "R_m=1.018 f_m=0.191 pool_m=0.349 R_b=5.818 f_b=0.002 pool_b=0.003 R_c=1.446 f_c=0.105 pool_c=0.230 ret_c=1.397 ret_a=1.898 dual=true d086_soft=true",
+      "failure": null,
+      "pass": true
+    },
+    "gate2": {
+      "detail": "basin_sizes=3/3 snap_ok=true mem_alive=true st_alive=true ruptured=true starved=true no_respawn=true",
+      "failure": null,
+      "pass": true
+    },
+    "gate3": {
+      "detail": "seed_distinct_fps=3 seeds_effective=true size_pass=3/3 path=deterministic_perturbation",
+      "failure": null,
+      "pass": true
+    },
+    "gate4": {
+      "detail": "pass_rate=1.000 (13/13)",
+      "failure": null,
+      "pass": true
+    },
+    "gate5": {
+      "detail": "ablations_ok=9/8",
+      "failure": null,
+      "pass": true
+    },
+    "gate6": {
+      "detail": "damage_generalization=8/8",
+      "failure": null,
+      "pass": true
+    },
+    "gate7": {
+      "detail": "built=true bin_ok=true steps=80000 wall_s=1.2 snap_ok=true verts=50 growing_flags=0 smoke=false",
+      "failure": null,
+      "pass": true
+    },
+    "mesh_contract": "ConservativeV2",
+    "next_execution_started": false,
+    "phase1_status": "PHASE1_COMPLETE",
+    "phase2_authorized": true,
+    "primary_conclusion": "D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED",
+    "production_verdict": "PHASE1_RESEARCH_RUNTIME_QUALIFIED",
+    "project_directive": "D-087",
+    "reserve_enabled": false,
+    "smoke": false
+  },
+  "v3_gate_array": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "v3_report": {
+    "agent_directive": "D-20260724-d087-independent-phase1-certification-phase2-launch",
+    "artifact_root": "/tmp/dcdev020r2-baseline/v3",
+    "elapsed_secs": 12.245345605,
+    "entry_commit": "6f8a80a",
+    "entry_tag": "D-086-mesh-protocell-phase1-pass",
+    "equation_lineage": "autopoietic_material_mesh_v1",
+    "frozen": {
+      "alpha_approx": 0.022,
+      "dt": 0.02,
+      "gamma": 1.0,
+      "k_pi": 0.22,
+      "k_s": 14.0,
+      "kappa_b": 2.0,
+      "schema": "autopoietic_material_mesh_v1",
+      "state": "mesh_vertices_edges_v1"
+    },
+    "gate0": {
+      "detail": "head=98b1104 tag=6f8a80a tag_ok=true ancestor_ok=true frozen_ok=true hits=2145 controller_hits=0 dirty_candidate=false",
+      "failure": null,
+      "pass": true
+    },
+    "gate1": {
+      "detail": "R_m=1.018 f_m=0.191 pool_m=0.349 R_b=5.818 f_b=0.002 pool_b=0.003 R_c=1.446 f_c=0.105 pool_c=0.230 ret_c=1.397 ret_a=1.898 dual=true d086_soft=true",
+      "failure": null,
+      "pass": true
+    },
+    "gate2": {
+      "detail": "basin_sizes=3/3 snap_ok=true mem_alive=true st_alive=true ruptured=true starved=true no_respawn=true",
+      "failure": null,
+      "pass": true
+    },
+    "gate3": {
+      "detail": "seed_distinct_fps=3 seeds_effective=true size_pass=3/3 path=deterministic_perturbation",
+      "failure": null,
+      "pass": true
+    },
+    "gate4": {
+      "detail": "pass_rate=1.000 (13/13)",
+      "failure": null,
+      "pass": true
+    },
+    "gate5": {
+      "detail": "ablations_ok=9/8",
+      "failure": null,
+      "pass": true
+    },
+    "gate6": {
+      "detail": "damage_generalization=8/8",
+      "failure": null,
+      "pass": true
+    },
+    "gate7": {
+      "detail": "built=true bin_ok=true steps=80000 wall_s=2.2 snap_ok=true verts=50 growing_flags=0 smoke=false",
+      "failure": null,
+      "pass": true
+    },
+    "mesh_contract": "ConservativeV3",
+    "next_execution_started": false,
+    "phase1_status": "PHASE1_COMPLETE",
+    "phase2_authorized": true,
+    "primary_conclusion": "D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED",
+    "production_verdict": "PHASE1_RESEARCH_RUNTIME_QUALIFIED",
+    "project_directive": "D-087",
+    "reserve_enabled": false,
+    "smoke": false
+  },
+  "v4_gate1_metric_semantics": {
+    "audit": {
+      "catalyst": {
+        "component": "C",
+        "f_label": 0.3257709240668205,
+        "f_label_ok": true,
+        "f_pool": 0.2914306693604638,
+        "gross_replacement_integral": 648.5411950807545,
+        "interpretation": "R_X=gross_replacement/mean_mass; f_label=labeled(T)/labeled(0); f_pool=labeled(T)/pool(T)=D-086 tracer_* metric",
+        "label_final": 158.91791426503246,
+        "label_initial": 487.82105008375765,
+        "mean_mass": 527.5432595896256,
+        "r_x": 1.2293611628840693,
+        "r_x_ok": true
+      },
+      "catalyst_label_amount_final": 158.91791426503246,
+      "catalyst_label_amount_initial": 487.82105008375765,
+      "catalyst_legacy_concentration_ratio": 0.5069409039271414,
+      "d086_pool_b": 0.0021758210903439893,
+      "d086_pool_c": 0.2914306693604638,
+      "d086_pool_m": 0.2923853744344416,
+      "d086_soft_pass": true,
+      "d086_tracer_interpretation": [
+        "m=0.350: remaining pulse-chase label fraction f_label ≈ M_labeled(T)/M_total(T) after unit pulse; NOT R_X replacement equivalents. Pass threshold in D-086 was f_label < 0.55 (m) / 0.70 (b,c), not the D-087 dual requirement R_X≥1 ∧ f_label≤e⁻¹.",
+        "b=0.000: remaining pulse-chase label fraction f_label ≈ M_labeled(T)/M_total(T) after unit pulse; NOT R_X replacement equivalents. Pass threshold in D-086 was f_label < 0.55 (m) / 0.70 (b,c), not the D-087 dual requirement R_X≥1 ∧ f_label≤e⁻¹.",
+        "c=0.230: remaining pulse-chase label fraction f_label ≈ M_labeled(T)/M_total(T) after unit pulse; NOT R_X replacement equivalents. Pass threshold in D-086 was f_label < 0.55 (m) / 0.70 (b,c), not the D-087 dual requirement R_X≥1 ∧ f_label≤e⁻¹.",
+        "independent_recompute_f_pool: m=0.292 b=0.002 c=0.291 (D-086 reported ~0.35/0.00/0.23)"
+      ],
+      "dual_requirement_pass": false,
+      "membrane": {
+        "component": "b",
+        "f_label": 0.002469837592336789,
+        "f_label_ok": true,
+        "f_pool": 0.0021758210903439893,
+        "gross_replacement_integral": 424.0604401952216,
+        "interpretation": "R_X=gross_replacement/mean_mass; f_label=labeled(T)/labeled(0); f_pool=labeled(T)/pool(T)=D-086 tracer_* metric",
+        "label_final": 0.15171098990687898,
+        "label_initial": 61.42549225811264,
+        "mean_mass": 69.29500600448584,
+        "r_x": 6.1196392733954,
+        "r_x_ok": true
+      },
+      "retention_a": {
+        "denominator": "initial value at pulse/window start",
+        "final_value": 0.8350701380587178,
+        "formula": "retention = final / initial (concentration or mass units as recorded)",
+        "increase_accounted_by_production": true,
+        "initial": 0.5,
+        "minimum": 0.5,
+        "qualifies_above_one": true,
+        "retention_final_over_initial": 1.6701402761174355,
+        "species": "A",
+        "time_averaged": 0.8955610070592992
+      },
+      "retention_c": {
+        "denominator": "initial value at pulse/window start",
+        "final_value": 1.391592463592411,
+        "formula": "retention = final / initial (concentration or mass units as recorded)",
+        "increase_accounted_by_production": true,
+        "initial": 0.8,
+        "minimum": 0.7980792006774179,
+        "qualifies_above_one": true,
+        "retention_final_over_initial": 1.7394905794905138,
+        "species": "C",
+        "time_averaged": 1.319261815472757
+      },
+      "structural": {
+        "component": "m",
+        "f_label": 0.39365548976559395,
+        "f_label_ok": false,
+        "f_pool": 0.2923853744344416,
+        "gross_replacement_integral": 118.94261619793134,
+        "interpretation": "R_X=gross_replacement/mean_mass; f_label=labeled(T)/labeled(0); f_pool=labeled(T)/pool(T)=D-086 tracer_* metric",
+        "label_final": 34.54354605565718,
+        "label_initial": 87.75070322587518,
+        "mean_mass": 97.89257511096167,
+        "r_x": 1.215032049806733,
+        "r_x_ok": true
+      }
+    },
+    "d086_reported_numbers_match": true,
+    "d086_style_label_pass": true,
+    "d087_dual_pass": false,
+    "e_inv": 0.3678794411714423,
+    "frozen": {
+      "alpha_approx": 0.022,
+      "dt": 0.02,
+      "gamma": 1.0,
+      "k_pi": 0.22,
+      "k_s": 14.0,
+      "kappa_b": 2.0,
+      "schema": "autopoietic_material_mesh_v1",
+      "state": "mesh_vertices_edges_v1"
+    },
+    "tracer_semantics": "D-086 tracer_m/b/c are f_pool=labeled/total after pulse; NOT R_X. D-087 requires R_X≥1 and f_label=labeled(T)/labeled(0)≤e^{-1}."
+  },
+  "v4_gate_array": [
+    true,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "v4_report": {
+    "agent_directive": "D-20260724-d087-independent-phase1-certification-phase2-launch",
+    "artifact_root": "/tmp/dcdev020r2-baseline/v4",
+    "elapsed_secs": 8.381884941,
+    "entry_commit": "6f8a80a",
+    "entry_tag": "D-086-mesh-protocell-phase1-pass",
+    "equation_lineage": "autopoietic_material_mesh_v1",
+    "frozen": {
+      "alpha_approx": 0.022,
+      "dt": 0.02,
+      "gamma": 1.0,
+      "k_pi": 0.22,
+      "k_s": 14.0,
+      "kappa_b": 2.0,
+      "schema": "autopoietic_material_mesh_v1",
+      "state": "mesh_vertices_edges_v1"
+    },
+    "gate0": {
+      "detail": "head=98b1104 tag=6f8a80a tag_ok=true ancestor_ok=true frozen_ok=true hits=2145 controller_hits=0 dirty_candidate=false",
+      "failure": null,
+      "pass": true
+    },
+    "gate1": {
+      "detail": "R_m=1.215 f_m=0.394 pool_m=0.292 R_b=6.120 f_b=0.002 pool_b=0.002 R_c=1.229 f_c=0.326 pool_c=0.291 ret_c=1.739 ret_a=1.670 dual=false d086_soft=true",
+      "failure": "D087_D086_ACCEPTANCE_INVALID",
+      "pass": false
+    },
+    "gate2": {
+      "detail": "basin_sizes=3/3 snap_ok=true mem_alive=true st_alive=true ruptured=true starved=false no_respawn=true",
+      "failure": "D087_D086_REPRODUCTION_FAILURE",
+      "pass": false
+    },
+    "gate3": {
+      "detail": "seed_distinct_fps=3 seeds_effective=true size_pass=3/3 path=deterministic_perturbation",
+      "failure": null,
+      "pass": true
+    },
+    "gate4": {
+      "detail": "pass_rate=1.000 (13/13)",
+      "failure": null,
+      "pass": true
+    },
+    "gate5": {
+      "detail": "ablations_ok=9/8",
+      "failure": null,
+      "pass": true
+    },
+    "gate6": {
+      "detail": "damage_generalization=8/8",
+      "failure": null,
+      "pass": true
+    },
+    "gate7": {
+      "detail": "built=true bin_ok=true steps=80000 wall_s=1.1 snap_ok=true verts=50 growing_flags=0 smoke=false",
+      "failure": null,
+      "pass": true
+    },
+    "mesh_contract": "MaturationCoupledV4",
+    "next_execution_started": false,
+    "phase1_status": "PHASE1_ACCEPTANCE_INVALID",
+    "phase2_authorized": false,
+    "primary_conclusion": "D087_D086_ACCEPTANCE_INVALID",
+    "production_verdict": "PHASE1_NOT_CERTIFIED",
+    "project_directive": "D-087",
+    "reserve_enabled": false,
+    "smoke": false
+  }
+}

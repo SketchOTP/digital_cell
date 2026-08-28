@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-28T11:55:00-04:00`
+- Last updated: `2026-08-28T15:30:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260828-dcdev020m1replan002r1-maturation-production-candidate001`
-- External directive ID: `DC-DEV-020-M1-REPLAN-002-R1-MATURATION-COUPLED-PRODUCTION-CANDIDATE-QUALIFICATION-001`
-- Objective: `Qualify one versioned MaturationCoupledV4 production candidate against the accepted REPLAN-002 shadow while preserving V1/V2/V3, D-087, material closure, and the unchanged production default.`
+- Local directive ID: `D-20260828-dcdev020m1replan002r2-d087-v4-lifecycle-semantics-audit001`
+- External directive ID: `DC-DEV-020-M1-REPLAN-002-R2-D087-V4-LIFECYCLE-SEMANTICS-AUDIT-001`
+- Objective: `Causally audit the two failed V4 D-087 gates using observer-only lifecycle-consistent tracers and existing observer viability semantics without changing V4 biology, thresholds, historical contracts, or production behavior.`
 - Current status: `VALIDATING`
-- Acceptance: `Run the real V4 candidate, preserve historical V1/V2/V3 behavior, reproduce the immutable shadow, qualify fed homeostasis/recovery/starvation decline, validate lifecycle continuity and serialization, run D-087 V2/V3/V4, store dense ledgers on Atlas, and obtain exact-head Linux CI.`
-- Current phase: `REPLAN-002 is Architect accepted as M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED at 4becff4fff7d096c70468b759ace09f747c4eb56. R1 implementation reproduces the shadow and passes fed homeostasis, recovery, starvation decline, closure, damage, serialization, deterministic replay, and fission lifecycle tests. Fresh D-087 V2/V3 pass 8/8; V4 returns 6/8 with dual-retention and starvation gates failing, so the candidate is not qualified. Exact-head Linux workflow 33186408566 passed at 3c5d0c143ea1031a987fed792269760dfdab48d2; artifact digest is sha256:e663a75f49dabf5adbe8bd86700b25ae628a36ac2b6c21a4bcb9f32b49702d45. M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
-- Expected or actual touched areas: `Versioned V4 lifecycle state and dispatch, R1 candidate harness/tests/workflow/evidence/docs, and append-only governance only; no V1/V2/V3 rewrite, coefficient/tolerance change, production-default switch, parameter search, reserve/recycling/salvage, M2, behavior, evolution, or DC-DEV-021 behavior; all unrelated dirty work is preserved`
-- Immediate next action: `Stop for Architect review of the exact-head R1 result. Do not repair D-087, tune V4, begin a physical-death follow-up, switch production, or begin M2.`
+- Acceptance: `Reproduce V2/V3 8/8 and V4 6/8; compare legacy and lifecycle-consistent D-087 Gate-1 metrics on an immutable physical trajectory; compare legacy alive/A and existing observer viability for Gate 2; preserve R1 capabilities; store compact evidence in Git and dense ledgers on Atlas; obtain exact-head Linux diagnostic CI.`
+- Current phase: `REPLAN-002 is Architect accepted as M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED at 4becff4fff7d096c70468b759ace09f747c4eb56. R1 is remotely verified at 3c5d0c143ea1031a987fed792269760dfdab48d2 with V2/V3 8/8 and V4 6/8; V4 homeostasis, recovery, starvation decline, closure, and lifecycle continuity pass. R2 local audit classifies Gate 1 as CERTIFIER_SEMANTICS and Gate 2 as BIOLOGICAL, yielding M1_V4_D087_MIXED_REGRESSION. This is not Architect accepted; exact-head Linux R2 CI is pending. M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
+- Expected or actual touched areas: `R2 observer-only diagnostic example, scoped workflow, compact evidence, R2 documentation, and append-only governance only; no V4 equation, lifecycle state, historical contract, D-087 threshold, production-default, parameter, physical-death, reserve/recycling/salvage, M2, behavior, evolution, or DC-DEV-021 change; all unrelated dirty work is preserved`
+- Immediate next action: `Run scoped validation and exact-head Linux diagnostic CI, push the existing PR #44 branch, then stop for Architect review. Do not repair D-087, change V4, begin physical-death qualification, switch production, or begin M2.`
 
 ## Temporary task-relevant facts
 
@@ -39,6 +39,7 @@
 - R6-R1-R1-R1 workflow closure is pushed at `a3205d6c99cbc845d406043580f99577fa6a73e6`; exact-head CI `32686612525` passed after moving unchanged V2/V3 D-087 producers before the verifier. Artifact digest: `sha256:d7f91883db1155308d576f2c6f09d2eb2c92bf60dcd617493275ade036f7d181`. Architect acceptance remains pending.
 - R6-R2 local conservation repair is blocked pending Architect disposition: mechanics-only and remesh-only candidate strict deltas are zero; integrated 8,000-step candidate closure is `4.263256414560601e-14`; actual candidate D-087 is `6/8` with Gate 1 and Gate 2 failing, while unchanged ConservativeV3 under ConservativeV2 remains `8/8`.
 - R6-R2-R1 local semantics audit is complete: unchanged V3 chemistry under the V2 material contract reproduces D-087 `8/8`; GeometryConservativeV3 reproduces `6/8`. Gate 1 first fails at catalyst `f_label` (`0.39221229068962093`), while amount-based catalyst `f_label` is `0.3277186407367453` and passes. All 15 candidate basin rows pass; Gate 2's non-basin starvation predicate is false (`final A=0.10147286122118783`), while replay, membrane/structural damage, rupture, and no-respawn pass. The matched chronology first diverges at step `1`; the geometry-frozen shadow has max difference `0`. Classification: `M1_GC_D087_MIXED_REGRESSION`.
+- R2 local audit from `98b1104165039359bdc609898e0d0371f9ce05c4` reproduces V2/V3 D-087 `8/8` and V4 `6/8`. A lifecycle-consistent mature-pool tracer passes the frozen structural Gate 1 while physical hash sequences remain identical; the frozen starvation continuation ends at step `6200` with `alive=true`, `A=0.09087892901751628`, `observer_viable=true`, and no rupture. Local classification is `M1_V4_D087_MIXED_REGRESSION`; exact-head R2 CI and Architect review are pending.
 
 ## Last validation after adoption
 

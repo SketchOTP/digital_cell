@@ -1827,3 +1827,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: V4 D-087 8/8 is not met, so no production selection or M1 closure is authorized. Do not repair D-087 or start a downstream directive from this result.
 - Blockers: Architect acceptance of the fail-closed V4 preservation result.
 - Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r2-d087-v4-lifecycle-semantics-audit001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R2-D087-V4-LIFECYCLE-SEMANTICS-AUDIT-IN_PROGRESS
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R1-MATURATION-COUPLED-PRODUCTION-CANDIDATE-REMOTE-VERIFIED-PARTIAL
+- Closed: 2026-08-28T15:30:00-04:00
+- Acceptance: PARTIAL
+- Summary: The exact-head V4 baseline reproduces at 6/8, with dual-retention and starvation gates failing. The observer-only audit reports a lifecycle-consistent structural tracer that passes the unchanged Gate-1 predicates while preserving the exact physical trajectory; the frozen Gate-2 continuation does not reach either the legacy alive/A predicate or existing conservative observer viability loss. Local classification is `M1_V4_D087_MIXED_REGRESSION`, pending exact-head Linux diagnostic CI and Architect review.
+- Changed areas: R2 observer-only diagnostic example, scoped workflow, compact evidence, documentation, and append-only governance. No V4 biology, D-087 threshold, historical contract, production default, or downstream behavior change.
+- Validation:
+  - V2 D-087 - PASSED 8/8
+  - V3 D-087 - PASSED 8/8
+  - V4 legacy D-087 - PASSED 6/8
+  - Lifecycle-consistent Gate-1 observer - PASSED
+  - Physical trajectory parity - PASSED
+  - Existing observer-defined starvation state - NOT REACHED in frozen continuation
+  - Exact-head Linux CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: Gate 2 remains a genuine V4 D-087 failure under the frozen protocol because V4 stays alive, A remains above 0.05, and existing observer viability remains true. No D-087 repair, V4 change, physical-death work, production selection, M1 closure, or M2 is authorized.
+- Blockers: Exact-head R2 CI and Architect disposition.
+- Follow-up directive: none

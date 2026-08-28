@@ -115,3 +115,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The workflow verified the bounded implementation, shadow/homeostasis/recovery/starvation/lifecycle evidence, V2/V3 D-087 preservation, compact artifact, and all scoped preservation suites. V4 D-087 remains 6/8 with dual-retention and starvation gates failing; no production selection or M1 closure follows.
 - Affected areas: R1 remote verification and governance only; no historical contract, production default, D-087 certifier, or downstream behavior changed.
 - Supersedes record: DEC-DCDEV020M1REPLAN002R1-001
+
+## DEC-DCDEV020M1REPLAN002R2-001
+
+- Date: 2026-08-28
+- Record or decision ID: DEC-DCDEV020M1REPLAN002R2-001
+- Status: PROPOSED
+- Decision or event: The R2 observer-only D-087 lifecycle-semantics audit was executed from the exact R1 head. A mature-pool structural tracer passes the frozen Gate-1 predicates without changing the physical trajectory, while the frozen Gate-2 continuation does not reach either legacy or existing conservative observer starvation state.
+- Rationale: Gate 1 is classified locally as a certifier-semantic mismatch and Gate 2 as a genuine V4 D-087 failure under the unchanged protocol, yielding `M1_V4_D087_MIXED_REGRESSION`. This is provisional pending exact-head Linux diagnostic CI and Architect review.
+- Affected areas: R2 observer metrics and D-087 interpretation only; no V4 biology, D-087 thresholds, historical contracts, production default, physical-death qualification, M1 closure, M2, behavior, evolution, or DC-DEV-021.
+- Supersedes record: DEC-DCDEV020M1REPLAN002R1-REMOTE-001

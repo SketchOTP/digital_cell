@@ -58,3 +58,7 @@ path = "../../examples/dcdev020m1replan002_maturation_coupled_load_bearing_feasi
 [[example]]
 name = "dcdev020m1replan002r1_maturation_coupled_production_candidate"
 path = "../../examples/dcdev020m1replan002r1_maturation_coupled_production_candidate.rs"
+
+[[example]]
+name = "dcdev020m1replan002r2_d087_v4_lifecycle_semantics_audit"
+path = "../../examples/dcdev020m1replan002r2_d087_v4_lifecycle_semantics_audit.rs"
