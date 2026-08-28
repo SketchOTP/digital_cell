@@ -105,3 +105,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Ordinary decay reached the same bounded terminal failure class, so the fourfold term is not necessary for this chemistry-path failure. This does not establish full-runtime death or authorize production repair, recycling, salvage, M2, or DC-DEV-021.
 - Affected areas: M1-R2-R1 observer evidence and developmental metabolic architecture selection; no certified biology or production chemistry.
 - Supersedes record: none
+
+## DEC-DCDEV020M1REPLAN002R1-REMOTE-001
+
+- Date: 2026-08-28
+- Record or decision ID: DEC-DCDEV020M1REPLAN002R1-REMOTE-001
+- Status: PROPOSED
+- Decision or event: Exact-head Linux verification of the real MaturationCoupledV4 R1 qualification passed workflow 33186408566 at 3c5d0c143ea1031a987fed792269760dfdab48d2.
+- Rationale: The workflow verified the bounded implementation, shadow/homeostasis/recovery/starvation/lifecycle evidence, V2/V3 D-087 preservation, compact artifact, and all scoped preservation suites. V4 D-087 remains 6/8 with dual-retention and starvation gates failing; no production selection or M1 closure follows.
+- Affected areas: R1 remote verification and governance only; no historical contract, production default, D-087 certifier, or downstream behavior changed.
+- Supersedes record: DEC-DCDEV020M1REPLAN002R1-001

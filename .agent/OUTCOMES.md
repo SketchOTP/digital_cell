@@ -1810,3 +1810,20 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: V4 D-087 preservation is currently a fail-closed regression (`D087_D086_ACCEPTANCE_INVALID`), so no candidate qualification or production selection is authorized. M1 remains not established; no physical-death follow-up or M2 is authorized.
 - Blockers: V4 D-087 8/8 requirement and exact-head Linux CI/Architect review.
 - Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r1-maturation-production-candidate001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R1-MATURATION-COUPLED-PRODUCTION-CANDIDATE-REMOTE-VERIFIED-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R1-MATURATION-COUPLED-PRODUCTION-CANDIDATE-PARTIAL
+- Closed: 2026-08-28T11:55:00-04:00
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux workflow 33186408566 passed at 3c5d0c143ea1031a987fed792269760dfdab48d2. It verified governance, formatting, bounded diff, V2/V3 D-087 8/8 controls, V4 execution, focused lifecycle tests, compact evidence, geometry/material preservation, Phase-1 metrics, D-088, D-091, and evolution-harness preservation. The V4 D-087 certifier remains 6/8, failing dual-retention and starvation gates, so the production candidate is not qualified and M1 remains not established.
+- Changed areas: Remote verification of the bounded R1 package; no new scientific implementation or historical evidence rewrite.
+- Validation:
+  - Exact-head Linux R1 workflow 33186408566 - PASSED
+  - Uploaded compact artifact digest sha256:e663a75f49dabf5adbe8bd86700b25ae628a36ac2b6c21a4bcb9f32b49702d45 - VERIFIED
+  - PR #44 open, draft, unmerged, and based on the required strategy branch - VERIFIED
+  - Architect acceptance - NOT RUN
+- Remaining risks: V4 D-087 8/8 is not met, so no production selection or M1 closure is authorized. Do not repair D-087 or start a downstream directive from this result.
+- Blockers: Architect acceptance of the fail-closed V4 preservation result.
+- Follow-up directive: none

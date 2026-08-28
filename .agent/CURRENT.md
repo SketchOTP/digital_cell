@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-28T11:30:00-04:00`
+- Last updated: `2026-08-28T11:55:00-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20260828-dcdev020m1replan002r1-maturation-production-candidate001`
 - External directive ID: `DC-DEV-020-M1-REPLAN-002-R1-MATURATION-COUPLED-PRODUCTION-CANDIDATE-QUALIFICATION-001`
 - Objective: `Qualify one versioned MaturationCoupledV4 production candidate against the accepted REPLAN-002 shadow while preserving V1/V2/V3, D-087, material closure, and the unchanged production default.`
-- Current status: `IN_PROGRESS`
+- Current status: `VALIDATING`
 - Acceptance: `Run the real V4 candidate, preserve historical V1/V2/V3 behavior, reproduce the immutable shadow, qualify fed homeostasis/recovery/starvation decline, validate lifecycle continuity and serialization, run D-087 V2/V3/V4, store dense ledgers on Atlas, and obtain exact-head Linux CI.`
-- Current phase: `REPLAN-002 is Architect accepted as M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED at 4becff4fff7d096c70468b759ace09f747c4eb56. R1 implementation locally reproduces the shadow and passes fed homeostasis, recovery, starvation decline, closure, damage, serialization, deterministic replay, and fission lifecycle tests. Fresh D-087 V2/V3 pass 8/8; V4 currently fails 2 D-087 gates (6/8), so the candidate is not qualified. M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
+- Current phase: `REPLAN-002 is Architect accepted as M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED at 4becff4fff7d096c70468b759ace09f747c4eb56. R1 implementation reproduces the shadow and passes fed homeostasis, recovery, starvation decline, closure, damage, serialization, deterministic replay, and fission lifecycle tests. Fresh D-087 V2/V3 pass 8/8; V4 returns 6/8 with dual-retention and starvation gates failing, so the candidate is not qualified. Exact-head Linux workflow 33186408566 passed at 3c5d0c143ea1031a987fed792269760dfdab48d2; artifact digest is sha256:e663a75f49dabf5adbe8bd86700b25ae628a36ac2b6c21a4bcb9f32b49702d45. M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
 - Expected or actual touched areas: `Versioned V4 lifecycle state and dispatch, R1 candidate harness/tests/workflow/evidence/docs, and append-only governance only; no V1/V2/V3 rewrite, coefficient/tolerance change, production-default switch, parameter search, reserve/recycling/salvage, M2, behavior, evolution, or DC-DEV-021 behavior; all unrelated dirty work is preserved`
-- Immediate next action: `Finish the bounded R1 evidence and preservation workflow, report the V4 D-087 preservation regression fail-closed, push to PR #44, and stop for Architect review. Do not repair D-087, tune V4, or begin physical-death follow-up/M2.`
+- Immediate next action: `Stop for Architect review of the exact-head R1 result. Do not repair D-087, tune V4, begin a physical-death follow-up, switch production, or begin M2.`
 
 ## Temporary task-relevant facts
 
@@ -42,7 +42,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `REPLAN-002 exact-head Linux workflow 33102252577`
+- Command or check: `REPLAN-002-R1 exact-head Linux workflow 33186408566`
 - Result: `PASSED`
 
 ## Risks
@@ -65,9 +65,8 @@
 
 ## Blockers
 
-- R6-R5 is architect-accepted at `73067f702a8f5386c440629c454e40ab1e434e91` with exact-head PR CI `33008519410` and classification `M1_EMBODIED_SINK_CAUSE_UNRESOLVED`.
-- R6-R6 exact-head remote validation passed in PR workflow `33014350775` at `c3c5da567e57e2e182e55e303575418b1043aada`; the uploaded compact artifact digest is `sha256:a10ee0d650eb8858236041c098fce7de38012f6e6016b479dafb40912456c067`. The local/remote diagnostic classification is `M1_SOURCE_FRONTLOAD_AND_GEOMETRY_STRUCTURAL_CYCLE_CONFIRMED`, pending independent Architect review.
-- No source-history repair, geometry/mechanics repair, production switch, recycling, salvage, controller, M2, behavior, evolution, or DC-DEV-021 work is authorized.
+- R1 exact-head remote qualification passed workflow `33186408566`; its artifact is `dcdev020m1replan002r1-maturation-coupled-production-candidate-evidence` with digest `sha256:e663a75f49dabf5adbe8bd86700b25ae628a36ac2b6c21a4bcb9f32b49702d45`. V4 D-087 remains 6/8, so R1 is not qualified pending Architect review.
+- No D-087 repair, V4 tuning, physical-death follow-up, production switch, recycling, salvage, controller, M2, behavior, evolution, REPLAN-003, or DC-DEV-021 work is authorized.
 
 ## Pending decisions
 

@@ -775,3 +775,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: R1 qualification only; no production switch, parameter search, D-087 repair, physical-death follow-up, M2, reserve, recycling, salvage, or downstream work.
 - Supersedes learning: L-DCDEV020M1REPLAN002-REMOTE-VERIFIED
+
+## L-DCDEV020M1REPLAN002R1-REMOTE-VERIFIED
+
+- Learning ID: L-DCDEV020M1REPLAN002R1-REMOTE-VERIFIED
+- Date: 2026-08-28
+- Fact or lesson: Exact-head Linux workflow 33186408566 passed for the real MaturationCoupledV4 R1 qualification at 3c5d0c143ea1031a987fed792269760dfdab48d2. Shadow parity, fed homeostasis, no-reset recovery, starvation decline, material closure, lifecycle continuity, V2 D-087 8/8, V3 D-087 8/8, and preservation passed. V4 D-087 remains 6/8 because dual-retention and starvation gates fail; the candidate is not qualified.
+- Evidence location: compact R1 evidence under digital-protocell/experiments/generated/dcdev020m1replan002r1/; dense ledgers under /srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r1/dense/; PR #44; artifact digest sha256:e663a75f49dabf5adbe8bd86700b25ae628a36ac2b6c21a4bcb9f32b49702d45.
+- Confidence: VERIFIED
+- Scope: Exact-head verification of R1 only; no D-087 repair, V4 tuning, production switch, physical-death follow-up, M2, reserve, recycling, salvage, or downstream work.
+- Supersedes learning: L-DCDEV020M1REPLAN002R1-LOCAL
