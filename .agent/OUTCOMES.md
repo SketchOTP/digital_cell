@@ -1890,6 +1890,27 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: Exact-head R4 CI and Architect disposition.
 - Follow-up directive: none
 
+## D-20260828-dcdev020m1replan002r4-v4-contract-aware-preservation-qualification001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R4-V4-CONTRACT-AWARE-PRESERVATION-QUALIFICATION-REMOTE-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R4-V4-CONTRACT-AWARE-PRESERVATION-QUALIFICATION-PARTIAL
+- Closed: 2026-08-28T20:12:00-04:00
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux push and pull-request workflows passed for R4 at `793e71aee1e5efda9c5aa840bdcb6df749ae4d31`. Remote artifacts verify the corrected V4 observer tracer, V2/V3 `8/8`, V4 `7/8` with only unchanged Gate 2 false, the existing 150000-step causal-starvation predicate, and preservation package.
+- Changed areas: Remote verification record only; no scientific implementation or historical evidence changed.
+- Validation:
+  - Push workflow 33206675011 - PASSED
+  - Pull-request workflow 33206681523 - PASSED
+  - Compact artifact verification - PASSED
+  - V2/V3 D-087 8/8 - PASSED
+  - V4 D-087 7/8 with only Gate 2 false - PASSED
+  - Existing causal starvation predicate through 150000 - PASSED
+  - R1 and broader preservation suites - PASSED
+  - Architect review - NOT RUN
+- Remaining risks: This is not Architect acceptance. V4 Gate 2 remains the unchanged biological D-087 failure; M1 remains not established; no physical-death follow-up, production selection, M2, reserve/recycling/salvage, or successor work is authorized.
+- Blockers: Architect disposition.
+- Follow-up directive: none
+
 ## D-20260828-dcdev020m1replan002r3-d087-n-starvation-causal-divergence-audit001 - PARTIAL
 
 - Outcome ID: OUT-DCDEV020M1REPLAN002R3-D087-N-STARVATION-CAUSAL-DIVERGENCE-REMOTE-PARTIAL

@@ -43,7 +43,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `R4 local exact qualification at the authorized R3 head`
+- Command or check: `R4 exact-head Linux push/PR workflows 33206675011 and 33206681523 at 793e71aee1e5efda9c5aa840bdcb6df749ae4d31`
 - Result: `PASSED`
 
 ## Risks

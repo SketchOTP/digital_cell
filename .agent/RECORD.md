@@ -155,3 +155,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The physical trajectory remains unchanged; V2/V3 remain `8/8`; V4 is `7/8` with only the unchanged Gate-2 starvation failure; the existing 150000-step causal predicate passes. This is provisional pending exact-head remote CI and Architect review.
 - Affected areas: V4 observer/certifier semantics, R4 evidence, workflow, documentation, and governance only; no V4 physical biology, D-087 threshold, historical contract, production default, physical-death qualification, M1 closure, M2, behavior, evolution, reserve, recycling, or salvage changed.
 - Supersedes record: DEC-DCDEV020M1REPLAN002R3-REMOTE-001
+
+## DEC-DCDEV020M1REPLAN002R4-REMOTE-001
+
+- Date: 2026-08-28
+- Record or decision ID: DEC-DCDEV020M1REPLAN002R4-REMOTE-001
+- Status: PROPOSED
+- Decision or event: Exact-head Linux push and pull-request workflows passed for the R4 V4 contract-aware preservation qualification at `793e71aee1e5efda9c5aa840bdcb6df749ae4d31`.
+- Rationale: Remote CI verified governance, bounded diff, scoped observer tracer, V2/V3 preservation, V4 seven-of-eight D-087 vector, existing causal-starvation predicate, R1 preservation, compact evidence, and artifact identity. Architect acceptance remains pending.
+- Affected areas: R4 remote verification and governance only; no V4 physical biology, D-087 threshold/predicate, historical contract, production default, physical-death qualification, M1 closure, M2, behavior, evolution, reserve, recycling, or salvage changed.
+- Supersedes record: DEC-DCDEV020M1REPLAN002R4-001

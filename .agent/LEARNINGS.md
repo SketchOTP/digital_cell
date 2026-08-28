@@ -825,3 +825,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: R4 contract-aware preservation qualification only; no V4 biology change, D-087 threshold change, production switch, physical-death follow-up, M1 closure, M2, reserve, recycling, salvage, or downstream work.
 - Supersedes learning: L-DCDEV020M1REPLAN002R3-REMOTE-VERIFIED
+
+## L-DCDEV020M1REPLAN002R4-REMOTE-VERIFIED
+
+- Learning ID: L-DCDEV020M1REPLAN002R4-REMOTE-VERIFIED
+- Date: 2026-08-28
+- Fact or lesson: Exact-head Linux push workflow `33206675011` and pull-request workflow `33206681523` passed at `793e71aee1e5efda9c5aa840bdcb6df749ae4d31`. Remote compact evidence verifies V2/V3 D-087 `8/8`, V4 `[true,true,false,true,true,true,true,true]`, physical trajectory parity, the existing 150000-step causal-starvation predicate, and R1/historical preservation. Artifact digests are push `sha256:6a4e7f45cd5cb65f3a6b9cabe584c11b8cb390bc4c5103aaca986515b70adf80` and PR `sha256:303b8e54b6934cdb1bbb6517845be9fd68bd52a749188fa3b85ba67c3475f7b0`.
+- Evidence location: compact evidence under `digital-protocell/experiments/generated/dcdev020m1replan002r4/`; dense local and remote artifacts under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r4/`; PR #44; exact head `793e71aee1e5efda9c5aa840bdcb6df749ae4d31`.
+- Confidence: VERIFIED
+- Scope: Exact-head remote verification of R4 only; no V4 physical biology, D-087 threshold/predicate, production default, physical-death qualification, M1 closure, M2, reserve, recycling, salvage, or downstream work changed.
+- Supersedes learning: L-DCDEV020M1REPLAN002R4-LOCAL
