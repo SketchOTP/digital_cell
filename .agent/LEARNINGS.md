@@ -845,3 +845,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: R5 fixed-checkpoint physical-death qualification only; no V4 biology, D-087, production selection, M1 closure, successor, M2, reserve, recycling, salvage, or tuning.
 - Supersedes learning: none
+
+## L-DCDEV020M1REPLAN002R5-REMOTE-VERIFIED
+
+- Learning ID: L-DCDEV020M1REPLAN002R5-REMOTE-VERIFIED
+- Date: 2026-08-28
+- Fact or lesson: Exact-head Linux push workflow `33212288812` and pull-request workflow `33212291854` passed at `400c7f0f002018071c83a3b3b89351a3ce4a6fb0`. The remote package verifies the fixed-checkpoint no-reset refeed diagnostic, compact evidence, preservation suites, and the fail-closed classification `M1_V4_DEATH_QUALIFICATION_UNRESOLVED`; starvation closure remains false at `0.45051928554230614`, while S0/S1/S2 recover and S3/S4 do not under positive finite delivery.
+- Evidence location: remote compact artifacts preserved under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5/remote-ci/`; dense R5 ledgers under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5/dense/`; compact repository evidence under `digital-protocell/experiments/generated/dcdev020m1replan002r5/`.
+- Confidence: VERIFIED
+- Scope: Exact-head remote verification of R5 only; no V4 biology, D-087, production selection, M1 closure, successor, M2, reserve, recycling, salvage, or tuning.
+- Supersedes learning: L-DCDEV020M1REPLAN002R5-LOCAL

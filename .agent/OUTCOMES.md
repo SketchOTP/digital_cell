@@ -1935,7 +1935,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 
 - Outcome ID: OUT-DCDEV020M1REPLAN002R5-V4-IRREVERSIBLE-PHYSICAL-DEATH-QUALIFICATION-PARTIAL
 - Supersedes outcome: OUT-DCDEV020M1REPLAN002R4-V4-CONTRACT-AWARE-PRESERVATION-QUALIFICATION-REMOTE-PARTIAL
-- Closed: 2026-08-28T23:30:00-04:00
+- Closed: 2026-08-28T17:28:00-04:00
 - Acceptance: PARTIAL
 - Summary: The R5 fixed-checkpoint no-reset refeed diagnostic executed from accepted R4 authority. S0, S1, and S2 recover under positive finite refeeding; S3 and S4 do not recover while physics advances and the death latch does not block the replay. Starvation strict-material closure reaches `0.45051928554230614`, above the unchanged `1e-8` tolerance, so irreversible physical death is not qualified and the local classification remains `M1_V4_DEATH_QUALIFICATION_UNRESOLVED`.
 - Changed areas: R5 observer-only qualification example, phase1-certifier example registration, scoped workflow, compact evidence, documentation, and append-only governance; no scientific-core biology or production behavior changed.
@@ -1948,4 +1948,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Architect review - NOT RUN
 - Remaining risks: Exact-head Linux CI and Architect disposition remain pending. The deep-collapse refeed result must not be promoted to irreversible-death qualification while the complete starvation/refeed material-closure gate is false. M1 remains not established; no production selection, successor work, M2, reserve, recycling, salvage, or tuning is authorized.
 - Blockers: Exact-head R5 CI and Architect disposition; starvation strict-material closure exceeds tolerance.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5-v4-irreversible-physical-death-qualification001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5-V4-IRREVERSIBLE-PHYSICAL-DEATH-QUALIFICATION-REMOTE-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5-V4-IRREVERSIBLE-PHYSICAL-DEATH-QUALIFICATION-PARTIAL
+- Closed: 2026-08-28T17:29:00-04:00
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux push workflow `33212288812` and pull-request workflow `33212291854` passed at `400c7f0f002018071c83a3b3b89351a3ce4a6fb0`. Compact R5 files match across both remote artifacts. The scientific result remains `M1_V4_DEATH_QUALIFICATION_UNRESOLVED` because starvation strict-material closure is false at the unchanged tolerance; Architect acceptance remains pending.
+- Changed areas: Remote verification record and append-only governance only; no scientific implementation or historical evidence changed after the local R5 package.
+- Validation:
+  - Governance, formatting, bounded diff, D-087 preservation, R5 execution, compact verification, focused preservation, and broader preservation suites - PASSED
+  - Push artifact digest `sha256:86eb35e97618fdac985557bfb022a32226a40c42465e028fcdc770025e80b096` - VERIFIED
+  - PR artifact digest `sha256:8bfbc99070ace6aff794eeda7e12d074276d050eba3b1b75ca2839585c7f4e7b` - VERIFIED
+  - Compact top-level evidence equality across push and PR artifacts - PASSED
+  - Architect review - NOT RUN
+- Remaining risks: R5 does not qualify irreversible physical death while the complete starvation/refeed material-closure gate is false. M1 remains not established; no production selection, successor work, M2, reserve, recycling, salvage, or tuning is authorized.
+- Blockers: Architect disposition; starvation strict-material closure exceeds tolerance.
 - Follow-up directive: none

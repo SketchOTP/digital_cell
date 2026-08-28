@@ -1049,7 +1049,7 @@ Do not record execution results here. Do not rewrite historical entries after ad
 
 ## D-20260828-dcdev020m1replan002r5-v4-irreversible-physical-death-qualification001
 
-- Issued: `2026-08-28T23:30:00-04:00`
+- Issued: `2026-08-28T17:28:00-04:00`
 - Issuer: User
 - External directive: `DC-DEV-020-M1-REPLAN-002-R5-V4-IRREVERSIBLE-PHYSICAL-DEATH-QUALIFICATION-001`
 - Objective: Replay the accepted V4 starvation trajectory and test fixed-checkpoint no-reset finite refeeding for irreversible physical-loss evidence.

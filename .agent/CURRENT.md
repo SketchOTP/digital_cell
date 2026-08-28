@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-28T23:30:00-04:00`
+- Last updated: `2026-08-28T17:29:00-04:00`
 
 ## Active state after adoption
 
@@ -34,6 +34,7 @@
 - R3 is architect-accepted at `17226fb7484eb50079c1c30ce9fd8039b3f23c60` with exact-head CI `32617847392` and artifact digest `sha256:dde942ef96c37ee4e0c9882abacd89202dd4eaf245c81b53d4f0efc039fe5700`; classification `M1_ORDINARY_DECAY_CANDIDATE_QUALIFIED`.
 - R4 is architect-accepted at exact head `68d1c88ec1b915a4bee86efe24e985222b529d5a`, CI `32648997395`, artifact digest `sha256:ea8e2161e0889da26a613fd95b6ffa0aa1b7bdb7e0dde23a9fa9aea26d559305`; coupled source is qualified only for the bounded 480-step candidate and remains unselected.
 - R5 is the authorized fixed-checkpoint no-reset physical-death qualification from accepted R4 head `9f4d6c34e88a613b0bf677f9f2aa25f8854edbb5`. Local execution recorded S0/S1/S2 recovery, S3/S4 non-recovery with positive source opportunity and no latch block, but starvation strict-material closure residual `0.45051928554230614` exceeds tolerance; local classification is `M1_V4_DEATH_QUALIFICATION_UNRESOLVED` pending exact-head CI and Architect review. Dense evidence is under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5/dense/`; compact evidence is under `digital-protocell/experiments/generated/dcdev020m1replan002r5/`.
+- Exact-head R5 push workflow `33212288812` and PR workflow `33212291854` passed at `400c7f0f002018071c83a3b3b89351a3ce4a6fb0`; compact R5 files match across both artifacts. GitHub artifact digests are push `sha256:86eb35e97618fdac985557bfb022a32226a40c42465e028fcdc770025e80b096` and PR `sha256:8bfbc99070ace6aff794eeda7e12d074276d050eba3b1b75ca2839585c7f4e7b`.
 - R5 is preregistered with `FINITE_SPATIAL_BACKING_RESERVOIR_V1`, fixed boundary concentration `2.063914918930895`, finite N/F inventory `243.14924801053778` each, and zero replenishment. Current authoritative evidence is archived under `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\` with manifests and hashes; the retired RPI5 endpoint is historical only, and compact CI-required artifacts remain in Git.
 - R6 uses the exact R5 depleted entry but executes the packaged full-runtime order `transport -> reactions -> mechanics -> remesh -> try_local_rebond`; the candidate remains ConservativeV3/reserve OFF and is not selected.
 - R6 is architect-accepted as a valid invalidation at `adea13fafa1f2a85e521a44b5d77249820d107bd` with exact-head CI `32673647585`; full-runtime closure failed, and R6-R1 is authorized only to attribute that failure without repair.
@@ -44,7 +45,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `R4 exact-head Linux push/PR workflows 33206675011 and 33206681523 at 793e71aee1e5efda9c5aa840bdcb6df749ae4d31`
+- Command or check: `R5 exact-head Linux push/PR workflows 33212288812 and 33212291854 at 400c7f0f002018071c83a3b3b89351a3ce4a6fb0`
 - Result: `PASSED`
 
 ## Risks
@@ -68,7 +69,7 @@
 ## Blockers
 
 - R1 exact-head remote qualification passed workflow `33186408566`; its artifact is `dcdev020m1replan002r1-maturation-coupled-production-candidate-evidence` with digest `sha256:e663a75f49dabf5adbe8bd86700b25ae628a36ac2b6c21a4bcb9f32b49702d45`. V4 D-087 remains 6/8, so R1 is not qualified pending Architect review.
-- R5 remains unaccepted until exact-head Linux CI verifies the diagnostic package. The qualification must remain fail-closed while starvation closure is above tolerance; no M1 closure, production selection, successor work, or M2 follows from the deep-collapse refeed result alone.
+- R5 exact-head Linux CI verifies the diagnostic package, but Architect acceptance remains pending. The qualification must remain fail-closed while starvation closure is above tolerance; no M1 closure, production selection, successor work, or M2 follows from the deep-collapse refeed result alone.
 - No D-087 repair, V4 tuning, physical-death follow-up, production switch, recycling, salvage, controller, M2, behavior, evolution, REPLAN-003, or DC-DEV-021 work is authorized.
 
 ## Pending decisions

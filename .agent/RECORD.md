@@ -175,3 +175,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: S0, S1, and S2 recover with positive finite N/F delivery; S3 and S4 do not recover while physics advances without a death-latch block. The starvation strict-material closure residual is `0.45051928554230614`, above tolerance, so the diagnostic remains unresolved and does not qualify irreversible physical death.
 - Affected areas: R5 observer-only evidence, compact artifact, dense Atlas ledgers, workflow, documentation, and governance only; no V4 biology, D-087, production default, M1 closure, successor, M2, reserve, recycling, salvage, or tuning changed.
 - Supersedes record: DEC-DCDEV020M1REPLAN002R4-REMOTE-001
+
+## DEC-DCDEV020M1REPLAN002R5-REMOTE-001
+
+- Date: 2026-08-28
+- Record or decision ID: DEC-DCDEV020M1REPLAN002R5-REMOTE-001
+- Status: PROPOSED
+- Decision or event: Exact-head Linux push workflow `33212288812` and pull-request workflow `33212291854` passed at `400c7f0f002018071c83a3b3b89351a3ce4a6fb0` for the R5 fixed-checkpoint no-reset refeed diagnostic.
+- Rationale: Remote execution verified the fail-closed R5 result, with S0/S1/S2 recovery, S3/S4 non-recovery under positive source opportunity, no death-latch block, and starvation closure residual `0.45051928554230614` above tolerance. The result remains unresolved pending Architect disposition.
+- Affected areas: Remote verification and governance only; no scientific implementation, historical evidence, V4 biology, D-087, production default, M1 closure, successor, M2, reserve, recycling, salvage, or tuning changed.
+- Supersedes record: DEC-DCDEV020M1REPLAN002R5-001
