@@ -795,3 +795,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: R2 semantics audit only; no certifier repair, threshold change, V4 biology change, production switch, physical-death follow-up, M2, reserve, recycling, salvage, or downstream work.
 - Supersedes learning: L-DCDEV020M1REPLAN002R1-REMOTE-VERIFIED
+
+## L-DCDEV020M1REPLAN002R3-LOCAL
+
+- Learning ID: L-DCDEV020M1REPLAN002R3-LOCAL
+- Date: 2026-08-28
+- Fact or lesson: The R3 observer-only audit reproduces the frozen D-087 comparator outcomes: V2 and V3 remain `8/8`, V4 remains legacy `6/8`, and R1 V4 capabilities remain unchanged. V4 ends at `A=0.09087892901751628`, total M `36.62413505096765`, with observer viability true and no rupture, while structural material declines from `84.19393140889689`. The first post-removal full-state divergence from both comparators is step `201`. V4 structural turnover is slightly lower than both comparators and V4 retains much larger area, supporting `M1_V4_N_STARVATION_COMBINED_COUPLING` as a family-level classification; aggregate V4 A loss is not lower, so energetic-demand dominance is not supported.
+- Evidence location: compact R3 evidence under `digital-protocell/experiments/generated/dcdev020m1replan002r3/`; dense observer ledgers under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r3/`; R3 documentation under `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r3/`; exact entry `7d7303900e17e1fc3cb0ded911e60ddfe70bb621`.
+- Confidence: PROVISIONAL
+- Scope: R3 causal audit only; no certifier repair, V4 biology change, physical-death qualification, production switch, M1 closure, M2, reserve, recycling, salvage, or downstream work.
+- Supersedes learning: L-DCDEV020M1REPLAN002R2-LOCAL

@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-28T15:30:00-04:00`
+- Last updated: `2026-08-28T18:30:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260828-dcdev020m1replan002r2-d087-v4-lifecycle-semantics-audit001`
-- External directive ID: `DC-DEV-020-M1-REPLAN-002-R2-D087-V4-LIFECYCLE-SEMANTICS-AUDIT-001`
-- Objective: `Causally audit the two failed V4 D-087 gates using observer-only lifecycle-consistent tracers and existing observer viability semantics without changing V4 biology, thresholds, historical contracts, or production behavior.`
+- Local directive ID: `D-20260828-dcdev020m1replan002r3-d087-n-starvation-causal-divergence-audit001`
+- External directive ID: `DC-DEV-020-M1-REPLAN-002-R3-D087-N-STARVATION-CAUSAL-DIVERGENCE-AUDIT-001`
+- Objective: `Causally identify why MaturationCoupledV4 remains viable under the frozen D-087 N-starvation protocol while ConservativeV2 and ConservativeV3 reach the certified starvation state, using observer-only trajectory and flux comparisons.`
 - Current status: `VALIDATING`
-- Acceptance: `Reproduce V2/V3 8/8 and V4 6/8; compare legacy and lifecycle-consistent D-087 Gate-1 metrics on an immutable physical trajectory; compare legacy alive/A and existing observer viability for Gate 2; preserve R1 capabilities; store compact evidence in Git and dense ledgers on Atlas; obtain exact-head Linux diagnostic CI.`
-- Current phase: `REPLAN-002 is Architect accepted as M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED at 4becff4fff7d096c70468b759ace09f747c4eb56. R1 is remotely verified at 3c5d0c143ea1031a987fed792269760dfdab48d2 with V2/V3 8/8 and V4 6/8; V4 homeostasis, recovery, starvation decline, closure, and lifecycle continuity pass. R2 local audit classifies Gate 1 as CERTIFIER_SEMANTICS and Gate 2 as BIOLOGICAL, yielding M1_V4_D087_MIXED_REGRESSION. This is not Architect accepted; exact-head Linux R2 CI is pending. M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
-- Expected or actual touched areas: `R2 observer-only diagnostic example, scoped workflow, compact evidence, R2 documentation, and append-only governance only; no V4 equation, lifecycle state, historical contract, D-087 threshold, production-default, parameter, physical-death, reserve/recycling/salvage, M2, behavior, evolution, or DC-DEV-021 change; all unrelated dirty work is preserved`
-- Immediate next action: `Run scoped validation and exact-head Linux diagnostic CI, push the existing PR #44 branch, then stop for Architect review. Do not repair D-087, change V4, begin physical-death qualification, switch production, or begin M2.`
+- Acceptance: `Reproduce V2/V3 8/8 and V4 6/8; compare frozen starvation trajectories and flux/lifecycle/geometry consequences; identify the strongest supported family-level causal classification without intervention; preserve R1 capabilities; store compact evidence in Git and dense ledgers on Atlas; obtain exact-head Linux diagnostic CI.`
+- Current phase: `REPLAN-002 is Architect accepted as M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED at 4becff4fff7d096c70468b759ace09f747c4eb56. R1 is accepted as a real V4 implementation candidate with homeostasis/recovery and closure, but V4 remains legacy D-087 6/8. R2 is Architect accepted as M1_V4_D087_MIXED_REGRESSION at 7d7303900e17e1fc3cb0ded911e60ddfe70bb621: Gate 1 is a certifier-semantic mismatch and Gate 2 is biological under the frozen protocol. R3 is the active observer-only causal audit; M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
+- Expected or actual touched areas: `R3 observer-only causal audit example, scoped workflow, compact evidence, R3 documentation, and append-only governance only; no V4 equation, lifecycle state, historical contract, D-087 threshold, production-default, parameter, physical-death, reserve/recycling/salvage, M2, behavior, evolution, or DC-DEV-021 change; all unrelated dirty work is preserved`
+- Immediate next action: `Run scoped preservation checks and exact-head Linux diagnostic CI, push the existing PR #44 branch, then stop for Architect review. Do not repair D-087 or V4, begin physical-death qualification, switch production, or begin M2.`
 
 ## Temporary task-relevant facts
 

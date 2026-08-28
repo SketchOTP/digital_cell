@@ -1018,3 +1018,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260828-dcdev020m1replan002r1-maturation-production-candidate001
 - Status at issuance: ISSUED
+
+## D-20260828-dcdev020m1replan002r3-d087-n-starvation-causal-divergence-audit001
+
+- Issued: `2026-08-28T18:30:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-REPLAN-002-R3-D087-N-STARVATION-CAUSAL-DIVERGENCE-AUDIT-001`
+- Objective: Causally identify why MaturationCoupledV4 remains viable through the frozen D-087 N-starvation horizon while ConservativeV2 and ConservativeV3 reach the certified starvation state.
+- Scope: Exact frozen V2/V3/V4 replay; observer-only common state and flux ledgers; A balance; structural lifecycle and primitive geometry comparison; first post-removal divergence; R1 and D-087 preservation; compact Git evidence, dense Atlas evidence, and exact-head Linux diagnostic CI.
+- Exclusions: No V4 biology, lifecycle equations/state, historical contracts, D-087 thresholds/durations/pulses, certifier repair, production selection, physical-death qualification, parameter search, reserve, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 changes.
+- Acceptance: Resolve the strongest supported causal family or return unresolved; preserve V2/V3 `8/8`, V4 `6/8`, R1 capabilities, and exact observer-only trajectory; obtain exact-head Linux CI and Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260828-dcdev020m1replan002r2-d087-v4-lifecycle-semantics-audit001
+- Status at issuance: ISSUED

@@ -1,0 +1,21 @@
+{
+  "interpretation": "Primitive geometry and reaction fluxes only; no synthetic demand score was introduced.",
+  "v2": {
+    "area_at_removal": 604.9275490785683,
+    "area_final": 10.141142151389658,
+    "perimeter_at_removal": 87.24541874831483,
+    "perimeter_final": 11.440925521114599
+  },
+  "v3": {
+    "area_at_removal": 604.9275490785683,
+    "area_final": 13.516839685916693,
+    "perimeter_at_removal": 87.24541874831483,
+    "perimeter_final": 13.196555601080762
+  },
+  "v4": {
+    "area_at_removal": 599.6449640024833,
+    "area_final": 71.64059009041944,
+    "perimeter_at_removal": 86.86364415627868,
+    "perimeter_final": 30.024136581742802
+  }
+}

@@ -125,3 +125,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Gate 1 is classified locally as a certifier-semantic mismatch and Gate 2 as a genuine V4 D-087 failure under the unchanged protocol, yielding `M1_V4_D087_MIXED_REGRESSION`. This is provisional pending exact-head Linux diagnostic CI and Architect review.
 - Affected areas: R2 observer metrics and D-087 interpretation only; no V4 biology, D-087 thresholds, historical contracts, production default, physical-death qualification, M1 closure, M2, behavior, evolution, or DC-DEV-021.
 - Supersedes record: DEC-DCDEV020M1REPLAN002R1-REMOTE-001
+
+## DEC-DCDEV020M1REPLAN002R3-001
+
+- Date: 2026-08-28
+- Record or decision ID: DEC-DCDEV020M1REPLAN002R3-001
+- Status: PROPOSED
+- Decision or event: The R3 observer-only audit replayed the exact frozen D-087 N-starvation protocol for ConservativeV2, ConservativeV3, and MaturationCoupledV4 and decomposed the resulting A, structural lifecycle, and primitive geometry trajectories.
+- Rationale: V2/V3 reach the unchanged certified starvation state, while V4 continues to decline structurally but remains viable. V4 has lower mature-only structural turnover and much larger retained area, supporting `M1_V4_N_STARVATION_COMBINED_COUPLING` as a family-level observational result; no independent necessity claim is made without intervention.
+- Affected areas: R3 observer evidence and M1 causal interpretation only; no V4 biology, D-087 threshold, historical contract, production default, physical-death qualification, M1 closure, M2, behavior, evolution, or DC-DEV-021 behavior changed.
+- Supersedes record: DEC-DCDEV020M1REPLAN002R2-001

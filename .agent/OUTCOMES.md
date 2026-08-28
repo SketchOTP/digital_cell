@@ -1848,3 +1848,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: Gate 2 remains a genuine V4 D-087 failure under the frozen protocol because V4 stays alive, A remains above 0.05, and existing observer viability remains true. No D-087 repair, V4 change, physical-death work, production selection, M1 closure, or M2 is authorized.
 - Blockers: Exact-head R2 CI and Architect disposition.
 - Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r3-d087-n-starvation-causal-divergence-audit001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R3-D087-N-STARVATION-CAUSAL-DIVERGENCE-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R2-D087-V4-LIFECYCLE-SEMANTICS-AUDIT-IN_PROGRESS
+- Closed: 2026-08-28T18:30:00-04:00
+- Acceptance: PARTIAL
+- Summary: The observer-only R3 audit replays the exact frozen D-087 starvation protocol for V2, V3, and V4. Local execution reproduces V2/V3 `8/8`, V4 legacy `6/8`, R1 capability flags, and V4 material closure. V4 shows continuing structural decline without certified collapse; its lower structural loss and much larger retained area support the family-level classification `M1_V4_N_STARVATION_COMBINED_COUPLING`.
+- Changed areas: R3 observer-only example, scoped workflow, compact evidence, documentation, and append-only governance. No V4 biology, certifier semantics, historical contract, D-087 threshold, production default, or downstream behavior changed.
+- Validation:
+  - Local exact frozen replay - PASSED
+  - V2 D-087 8/8 - PASSED
+  - V3 D-087 8/8 - PASSED
+  - V4 D-087 legacy 6/8 - PASSED
+  - R1 capability and V4 closure flags - PASSED
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: The combined classification is a family-level observational result, not an independent necessity proof for lifecycle or embodied coupling. Gate-1 certifier repair remains deferred; V4 remains unqualified, M1 remains not established, and physical-death, production selection, M2, reserve/recycling/salvage, and successor work remain unauthorized.
+- Blockers: Exact-head R3 CI and Architect disposition.
+- Follow-up directive: none

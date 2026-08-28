@@ -1,0 +1,19 @@
+{
+  "dense_output": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r3/dense/local-r3",
+  "directive": "DC-DEV-020-M1-REPLAN-002-R3-D087-N-STARVATION-CAUSAL-DIVERGENCE-AUDIT-001",
+  "files": [
+    "protocol.json",
+    "qualification.json",
+    "comparator_endpoints.json",
+    "starvation_flux_comparison.json",
+    "a_balance_comparison.json",
+    "structural_lifecycle_comparison.json",
+    "embodied_demand_comparison.json",
+    "first_divergence.json",
+    "preservation.json",
+    "artifact_manifest.json"
+  ],
+  "next_execution_started": false,
+  "schema": "dcdev020m1replan002r3_manifest_v1",
+  "starting_head": "7d7303900e17e1fc3cb0ded911e60ddfe70bb621"
+}
