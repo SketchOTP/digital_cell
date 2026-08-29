@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-020-POST-M1-BASELINE-001-CLEAN-CAPABILITY-BASELINE-001`
 - Objective: `Extract a clean post-M1 capability baseline from the accepted V4 closure while preserving the source provenance stack and changing no science.`
 - Current status: `VALIDATING`
-- Acceptance: `Baseline extraction is prepared from the pre-M1 base; exact-head Linux validation and Architect acceptance remain pending.`
-- Current phase: `Post-M1 clean capability baseline validation; M1 remains closed and frozen.`
+- Acceptance: `Baseline extraction and exact-head Linux validation are complete; Architect acceptance of the final baseline package remains pending.`
+- Current phase: `Post-M1 clean capability baseline evidence finalized; M1 remains closed and frozen.`
 - Expected or actual touched areas: `baseline branch, retained V4 runtime/capabilities, compact manifests, current governance, scoped CI`
-- Immediate next action: `Run local and exact-head Linux baseline validation, archive compact evidence, and return for Architect review; do not begin M2.`
+- Immediate next action: `Run the final exact-head Linux validation for the finalized compact manifest, archive compact evidence, and return for Architect review; do not begin M2.`
 
 ## Temporary task-relevant facts
 
@@ -44,7 +44,7 @@
 
 ## Blockers
 
-- Exact-head baseline CI and Architect acceptance remain open; no M2 implementation or M1 reopening is authorized.
+- Architect acceptance of the finalized baseline remains open; no M2 implementation or M1 reopening is authorized.
 
 ## Pending decisions
 

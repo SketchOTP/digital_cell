@@ -1,0 +1,37 @@
+{
+  "schema": "dcdev020postm1baseline001-capability-comparison-v1",
+  "directive": "DC-DEV-020-POST-M1-BASELINE-001-CLEAN-CAPABILITY-BASELINE-001",
+  "source_closure_head": "fb77f472b1519a9e0f713833efba5b1d403f4723",
+  "source_base": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "baseline_branch": "baseline/m1-v4-closed",
+  "scientific_implementation": "BYTE_IDENTICAL_TO_ACCEPTED_SOURCE",
+  "comparison": [
+    {"capability": "MaturationCoupledV4 lifecycle", "status": "PASS", "implementation": "identical"},
+    {"capability": "Actual-area V3/V4 transport conservation", "status": "PASS", "implementation": "identical"},
+    {"capability": "Geometry/reaction/material conservation", "status": "PASS", "implementation": "identical"},
+    {"capability": "Damage/remesh/rebond/fission/serialization", "status": "PASS", "implementation": "identical"},
+    {"capability": "Observer-only viability/death semantics", "status": "PASS", "implementation": "identical"},
+    {"capability": "Production default selector", "status": "PASS", "implementation": "identical"},
+    {"capability": "Reserve infrastructure", "status": "PASS", "implementation": "identical; production OFF"},
+    {"capability": "DC-DEV-002 distributed regulator", "status": "PASS", "implementation": "identical"},
+    {"capability": "DC-DEV-003 topology/remesh continuity", "status": "PASS", "implementation": "identical"},
+    {"capability": "DC-DEV-004 energy-coupled contractility", "status": "PASS", "implementation": "identical"},
+    {"capability": "DC-DEV-005 local history-dependent plasticity", "status": "PASS", "implementation": "identical"},
+    {"capability": "DC-DEV-006 spatial contact environment", "status": "PASS", "implementation": "identical"},
+    {"capability": "DC-DEV-007 active external-contact regulation", "status": "PASS", "implementation": "identical"},
+    {"capability": "DC-DEV-008 finite spatial resource infrastructure", "status": "PASS", "implementation": "identical"},
+    {"capability": "DC-DEV-011 passive isotropic stick-slip traction", "status": "PASS", "implementation": "identical"},
+    {"capability": "D-088 growth/fission/inheritance foundation", "status": "PASS", "implementation": "identical"},
+    {"capability": "D-091 reserve infrastructure", "status": "PASS", "implementation": "identical; production OFF"},
+    {"capability": "Evolution harness", "status": "PASS", "implementation": "identical"}
+  ],
+  "omitted_from_clean_baseline": [
+    "superseded diagnostic examples",
+    "historical investigation-only workflows",
+    "dense/generated experimental evidence",
+    "obsolete intermediate governance archive"
+  ],
+  "source_branch_preserved": true,
+  "pr_44_untouched": true,
+  "status": "PASS"
+}

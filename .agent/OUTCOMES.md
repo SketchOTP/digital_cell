@@ -60,6 +60,27 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: final validation and Architect acceptance.
 - Follow-up directive: none
 
+## D-20260829-post-m1-clean-capability-baseline-r1 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020-POST-M1-CLEAN-CAPABILITY-BASELINE-R1
+- Supersedes outcome: OUT-DCDEV020-POST-M1-CLEAN-CAPABILITY-BASELINE
+- Closed: `2026-08-29T15:30:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Clean-baseline extraction from the pre-M1 base is complete. Accepted V4 runtime and required downstream capability sources are retained, the compact capability comparison is explicit, and the first exact-head Linux validation passed; final authority/Architect acceptance remains pending.
+- Changed areas: baseline branch tree, compact evidence, current governance, and scoped validation workflow; PR #44 and scientific source authority remain unchanged.
+- Validation:
+  - Exact accepted source closure head and PR provenance - PASSED
+  - Dependency/reference inventory - PASSED
+  - Clean baseline extraction - PASSED
+  - Retained scientific/runtime source byte identity - PASSED
+  - Production selector smoke - PASSED (`MaturationCoupledV4`, reserve OFF)
+  - Reusable downstream foundation preservation - PASSED
+  - D-087 preservation boundary - PASSED (`8/8`, `8/8`, `7/8`)
+  - Exact-head Linux validation run `33270482562` at `9b45e41c2d5f6ed908665d53051eb73b09dad420` - PASSED
+- Remaining risks: final manifest-bearing exact-head CI and Architect acceptance.
+- Blockers: final validation and Architect acceptance.
+- Follow-up directive: none
+
 ## D-20260816-dcdev008-finite-spatial-resource-acquisition - PARTIAL
 
 - Outcome ID: OUT-DCDEV008-FINITE-SPATIAL-RESOURCE-ACQUISITION-LOCAL

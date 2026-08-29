@@ -134,5 +134,8 @@ jobs:
             ${{ runner.temp }}/production.json
             ${{ runner.temp }}/ConservativeV2.json
             ${{ runner.temp }}/ConservativeV3.json
+            ${{ runner.temp }}/d087-ConservativeV2/
+            ${{ runner.temp }}/d087-ConservativeV3/
+            ${{ runner.temp }}/d087-MaturationCoupledV4/
             ${{ runner.temp }}/foundations/
           if-no-files-found: warn

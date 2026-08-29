@@ -38,6 +38,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260829-post-m1-clean-capability-baseline-r1
+
+- Issued: `2026-08-29T15:30:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-POST-M1-BASELINE-001-CLEAN-CAPABILITY-BASELINE-001` (continuation)
+- Objective: Finalize explicit baseline evidence and exact-head validation after the clean capability extraction.
+- Scope: Explicit capability comparison, finalized compact manifest, artifact completeness, current governance, and exact-head Linux validation.
+- Exclusions: M1 reopening, scientific equation changes, behavior tuning, M2 implementation, parameter search, reserve/recycling/salvage, and PR #44 merge or mutation.
+- Acceptance: Exact-head Linux validation passes against the finalized manifest, accepted capabilities remain equivalent, and PR #44 provenance remains untouched.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260829-post-m1-clean-capability-baseline
+- Status at issuance: ISSUED
+
 ## D-20260816-dcdev011-passive-isotropic-stick-slip-traction
 
 - Issued: `2026-08-16T00:00:00-04:00`

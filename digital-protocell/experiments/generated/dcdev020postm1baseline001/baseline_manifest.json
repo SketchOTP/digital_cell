@@ -20,32 +20,59 @@
   "pr_44": {"state": "OPEN", "draft": true, "merged": false, "modified": false},
   "historical_provenance": "PR #44 and the Atlas evidence root remain authoritative and are not copied wholesale into this branch.",
   "scientific_source_changed": false,
-  "validation": {"status": "PENDING_EXACT_HEAD_CI"},
-  "capability_equivalence": {
-    "fed_homeostasis": "PENDING",
-    "bounded_recovery": "PENDING",
-    "irreversible_death": "PENDING",
-    "material_closure": "PENDING",
-    "transport_conservation": "PENDING",
-    "geometry_conservation": "PENDING",
-    "reaction_area_conservation": "PENDING",
-    "lifecycle": "PENDING",
-    "damage": "PENDING",
-    "remesh": "PENDING",
-    "fission": "PENDING",
-    "serialization": "PENDING",
-    "forbidden_controller_audit": "PENDING"
+  "validation": {
+    "status": "PASSED",
+    "initial_exact_head_run": 33270482562,
+    "initial_exact_head": "9b45e41c2d5f6ed908665d53051eb73b09dad420",
+    "workflow": ".github/workflows/dc-dev-020-post-m1-baseline.yml",
+    "authority": "Linux GitHub Actions exact-head validation; final run recorded in handoff"
   },
-  "d087": {"v2": "PENDING", "v3": "PENDING", "v4": "PENDING", "v4_vector": "PENDING"},
+  "capability_equivalence": {
+    "fed_homeostasis": "PASS",
+    "bounded_recovery": "PASS",
+    "irreversible_death": "PASS",
+    "material_closure": "PASS",
+    "transport_conservation": "PASS",
+    "geometry_conservation": "PASS",
+    "reaction_area_conservation": "PASS",
+    "lifecycle": "PASS",
+    "damage": "PASS",
+    "remesh": "PASS",
+    "fission": "PASS",
+    "serialization": "PASS",
+    "forbidden_controller_audit": "NONE"
+  },
+  "d087": {
+    "v2": "8/8",
+    "v3": "8/8",
+    "v4": "7/8",
+    "v4_vector": [true, true, false, true, true, true, true, true],
+    "sole_v4_mismatch": "Gate 2 historical starvation surrogate; intentionally unchanged"
+  },
   "downstream_preservation": {
-    "regulator": "PENDING",
-    "plasticity": "PENDING",
-    "contact": "PENDING",
-    "contact_regulation": "PENDING",
-    "finite_resource": "PENDING",
-    "traction": "PENDING",
-    "d088": "PENDING",
-    "d091": "PENDING",
-    "evolution_harness": "PENDING"
-  }
+    "regulator": "PASS",
+    "plasticity": "PASS",
+    "contact": "PASS",
+    "contact_regulation": "PASS",
+    "finite_resource": "PASS",
+    "traction": "PASS",
+    "d088": "PASS",
+    "d091": "PASS",
+    "evolution_harness": "PASS"
+  },
+  "production_runtime": {
+    "default_contract": "MaturationCoupledV4",
+    "reserve_enabled": false,
+    "explicit_v2_available": true,
+    "explicit_v3_available": true,
+    "smoke": "PASS"
+  },
+  "omissions": {
+    "historical_only_files_omitted": 774,
+    "dense_evidence_copied": false,
+    "source_branch_modified": false,
+    "pr_44_modified": false
+  },
+  "classification": "M1_POST_CLOSURE_CLEAN_BASELINE_QUALIFIED",
+  "architect_acceptance": "PENDING"
 }
