@@ -2045,3 +2045,20 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: S0 fails the required live positive control because body-resource contact is lost while finite inventory remains. S1/S2 are not irreversible-death evidence; S2's immediate stop makes refeed outcome uninterpretable for death. M1 remains not established. No death repair, R4 requalification, production selection, M2, reserve, recycling, salvage, or tuning is authorized.
 - Blockers: Exact-head R5-R3 CI and Architect disposition.
 - Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5r3-v4-live-resource-irreversible-death-qualification001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5R3-V4-LIVE-RESOURCE-IRREVERSIBLE-DEATH-QUALIFICATION-REMOTE-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5R3-V4-LIVE-RESOURCE-IRREVERSIBLE-DEATH-QUALIFICATION-PARTIAL
+- Closed: `2026-08-28T22:55:00-04:00`
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux push workflow `33229822934` and pull-request workflow `33229823637` both passed at `6ee1e79a79e8492bae00a3d1e0cef786814de540`. Remote execution confirms the R5-R3 live-resource qualification is fail-closed: S0 receives live finite N/F but does not recover after contact loss, S1 has no contact or delivery, and S2 stops on mechanics false at refeed step `1`. The classification remains `M1_V4_LIVE_RESOURCE_DEATH_QUALIFICATION_INVALID`; irreversible physical death is not established.
+- Changed areas: Remote validation record and metadata-only governance reconciliation. No V4 biology, transport, mechanics, D-087, production selection, or historical evidence changed.
+- Validation:
+  - Governance, formatting, bounded-diff, D-087, R5-R3 qualification, compact verification, and focused preservation tests - PASSED
+  - Push artifact digest `sha256:24e6ddf08a2574c97331a8414e07a9e9d5d9c082881736a93cf85e805463a528` - VERIFIED
+  - PR artifact digest `sha256:067959b146e7a1924cf017c798b202dad5ae079a394c6b68e2a1c21eec3904e9` - VERIFIED
+  - Architect review - PENDING
+- Remaining risks: S0 fails the required live positive control because body-resource contact is lost while finite inventory remains. S1/S2 are not irreversible-death evidence; S2's immediate stop makes refeed outcome uninterpretable for death. M1 remains not established. No death repair, R4 requalification, production selection, M2, reserve, recycling, salvage, or tuning is authorized.
+- Blockers: Architect disposition of R5-R3.
+- Follow-up directive: none

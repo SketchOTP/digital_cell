@@ -225,3 +225,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The accepted starvation prefix closes through step `8565` and stops before the failed mechanics transition at `8566`. The live S0 positive control physically receives `12.075682888285865` N and F each but fails recovery after resource contact is lost; S1 has no physical contact or delivery; S2 stops immediately on authoritative mechanics false. Therefore the qualification is invalid as a death claim and is classified `M1_V4_LIVE_RESOURCE_DEATH_QUALIFICATION_INVALID`.
 - Affected areas: R5-R3 live-resource qualification evidence, workflow, documentation, and append-only governance only; no V4 biology, transport, mechanics, D-087, production default, R4 requalification, M1 closure, M2, reserve, recycling, salvage, or tuning changed.
 - Supersedes record: DEC-DCDEV020M1REPLAN002R5R2-REMOTE-001
+
+## DEC-DCDEV020M1REPLAN002R5R3-REMOTE-001
+
+- Date: 2026-08-28
+- Record or decision ID: DEC-DCDEV020M1REPLAN002R5R3-REMOTE-001
+- Status: PROPOSED
+- Decision or event: Exact-head Linux push workflow `33229822934` and pull-request workflow `33229823637` both passed at `6ee1e79a79e8492bae00a3d1e0cef786814de540` for the R5-R3 live-resource qualification.
+- Rationale: Remote execution verifies the fail-closed live-resource result, including the accepted starvation prefix through step `8565`, authoritative stop at mechanics false step `8566`, live S0 delivery of `12.075682888285865` N and F each without recovery after contact loss, no-contact S1, and immediate S2 stop on refeed. The classification remains `M1_V4_LIVE_RESOURCE_DEATH_QUALIFICATION_INVALID`; no irreversible-death claim is established. GitHub artifact digests are push `sha256:24e6ddf08a2574c97331a8414e07a9e9d5d9c082881736a93cf85e805463a528` and PR `sha256:067959b146e7a1924cf017c798b202dad5ae079a394c6b68e2a1c21eec3904e9`.
+- Affected areas: Exact-head remote validation and metadata-only governance reconciliation; no V4 biology, transport, mechanics, D-087, production default, R4 requalification, M1 closure, M2, reserve, recycling, salvage, or tuning changed.
+- Supersedes record: DEC-DCDEV020M1REPLAN002R5R3-001

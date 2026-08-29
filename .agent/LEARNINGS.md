@@ -895,3 +895,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: R5-R3 live-resource irreversible-death qualification only; no direct internal N/F insertion, V4 biology, transport/mechanics, D-087, production selection, R4 requalification, M1 closure, M2, reserve, recycling, salvage, or tuning.
 - Supersedes learning: L-DCDEV020M1REPLAN002R5R2-REMOTE-VERIFIED
+
+## L-DCDEV020M1REPLAN002R5R3-REMOTE-VERIFIED
+
+- Learning ID: L-DCDEV020M1REPLAN002R5R3-REMOTE-VERIFIED
+- Date: 2026-08-28
+- Fact or lesson: Exact-head Linux push workflow `33229822934` and pull-request workflow `33229823637` both passed at `6ee1e79a79e8492bae00a3d1e0cef786814de540`. Remote R5-R3 evidence verifies live finite spatial resource use, no direct internal N/F insertion, valid-prefix closure through step `8565`, authoritative mechanics stop at `8566`, S0 live delivery of `12.075682888285865` N and F each without recovery after contact loss, and V2/V3 D-087 `8/8` with V4 `7/8`. The classification remains `M1_V4_LIVE_RESOURCE_DEATH_QUALIFICATION_INVALID`; irreversible physical death is not established. Artifact digests are push `sha256:24e6ddf08a2574c97331a8414e07a9e9d5d9c082881736a93cf85e805463a528` and PR `sha256:067959b146e7a1924cf017c798b202dad5ae079a394c6b68e2a1c21eec3904e9`.
+- Evidence location: compact evidence under `digital-protocell/experiments/generated/dcdev020m1replan002r5r3/`; dense and downloaded remote artifacts under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r3/`.
+- Confidence: VERIFIED
+- Scope: Exact-head R5-R3 live-resource qualification only; no death repair, V4 biology, transport/mechanics, D-087, production selection, R4 requalification, M1 closure, M2, reserve, recycling, salvage, or tuning.
+- Supersedes learning: L-DCDEV020M1REPLAN002R5R3-LOCAL
