@@ -2132,9 +2132,12 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Summary: The closure package was finalized with selector provenance corrected to `7720546ccc75a7d5becb1dc6eac8a063e0d75b8c`, closure starting head `d011543f58fa684d04c97c0cccba9f7202957546`, and project-goal blob `94864614625a8f3388a51b33b79ad203b2f66588`. Existing DC-DEV-002, DC-DEV-005, DC-DEV-006, DC-DEV-007, DC-DEV-008, and DC-DEV-011 runners all passed on Atlas. Focused D-098 geometry, D-088, D-091, evolution-harness, and metrics tests passed.
 - Validation:
   - Atlas packaged default `MaturationCoupledV4 / reserve OFF`, explicit V2/V3 selection, forbidden-controller audit, V2/V3/V4 D-087 preservation, accepted R5-R4 qualification, and focused closure tests - PASSED
-  - Fresh exact-head push/PR CI - PENDING
+  - Fresh exact-head push workflow `33264510427` and PR workflow `33264513824` at `9697c29ac402e89ecbb0d9787ffec31ba875cfbe` - PASSED
+  - Push artifact digest `sha256:7736d1ad7cb3bbfd522a8b276fa014589f7787d43557c86ff03894e06b4c6c63` - VERIFIED
+  - PR artifact digest `sha256:4e00cb96e1bfe8c99ba03086314b2b9a1b136adafdb3b3c7201f65810ee383c7` - VERIFIED
+  - PR #44 open, draft, unmerged, and at exact head - PASSED
 - Changed areas: Closure verifier/workflow, compact closure evidence, closure documentation, and append-only governance only; no scientific source, selector behavior, V4 biology, D-087 semantics, reserve, M2, clean baseline, or PR #44 merge changed.
 - Atlas dense evidence is preserved under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1closure001/`.
-- Remaining risks: Exact-head CI and Architect acceptance remain pending. M1 formal closure is not yet declared; M2 remains unauthorized; PR #44 remains open, draft, and unmerged.
-- Blockers: Fresh exact-head CI and Architect acceptance.
+- Remaining risks: Architect acceptance remains pending. M1 formal closure is not yet declared; M2 remains unauthorized; PR #44 remains open, draft, and unmerged.
+- Blockers: Architect acceptance of the finalized closure evidence.
 - Follow-up directive: none

@@ -275,3 +275,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The closure manifest now records the actual selector implementation commit `7720546ccc75a7d5becb1dc6eac8a063e0d75b8c` instead of the pre-selection head, binds project-goal blob `94864614625a8f3388a51b33b79ad203b2f66588`, and explicitly records passing regulator, plasticity, contact, finite-resource, and traction preservation results.
 - Affected areas: Closure verifier/workflow, compact evidence, documentation, and append-only governance only; no scientific source or production behavior changed.
 - Supersedes record: DEC-DCDEV020M1CLOSURE001-001
+
+## DEC-DCDEV020M1CLOSURE001-R1-REMOTE-001
+
+- Date: 2026-08-29
+- Record or decision ID: DEC-DCDEV020M1CLOSURE001-R1-REMOTE-001
+- Status: PROPOSED
+- Decision or event: Exact-head Linux push workflow `33264510427` and pull-request workflow `33264513824` both passed at `9697c29ac402e89ecbb0d9787ffec31ba875cfbe` for the provenance and downstream-preservation finalization.
+- Rationale: Remote validation confirms corrected selector provenance, explicit regulator/plasticity/contact/resource/traction preservation, production V4 with reserve OFF, unchanged V2/V3/V4 D-087 boundary, accepted closure evidence, and PR #44 open/draft/unmerged. Push artifact digest is `sha256:7736d1ad7cb3bbfd522a8b276fa014589f7787d43557c86ff03894e06b4c6c63`; PR artifact digest is `sha256:4e00cb96e1bfe8c99ba03086314b2b9a1b136adafdb3b3c7201f65810ee383c7`.
+- Affected areas: Exact-head remote validation and append-only governance only; no scientific source, production selector behavior, V4 biology, D-087 semantics, reserve, M2, clean baseline, or PR #44 merge changed.
+- Supersedes record: DEC-DCDEV020M1CLOSURE001-R1-001

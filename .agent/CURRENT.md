@@ -45,7 +45,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `M1 closure candidate exact-head push/PR CI at 7720546ccc75a7d5becb1dc6eac8a063e0d75b8c`
+- Command or check: `M1 closure R1 exact-head push/PR CI at 9697c29ac402e89ecbb0d9787ffec31ba875cfbe; push 33264510427; PR 33264513824`
 - Result: `PASSED`
 
 ## Risks
