@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-28T17:29:00-04:00`
+- Last updated: `2026-08-28T21:58:00-04:00`
 
 ## Active state after adoption
 
@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-020-M1-REPLAN-002-R5-R2-V4-GC-TRANSPORT-AMOUNT-CONSERVATION-REPAIR-001`
 - Objective: `Repair only V3/V4 sub-floor transport amount conservation, preserve V1/V2 semantics, and qualify the valid starvation prefix with authoritative stop semantics.`
 - Current status: `VALIDATING`
-- Acceptance: `R5-R1 is Architect accepted at 4b1a82877246c58ba21464963eb5bc4cb2a535cf as M1_R5_ALTERNATE_CLOSURE_CAUSE_CONFIRMED. The verified blocker is V3/V4 sub-floor transport amount nonconservation; R5 deep death evidence remains invalid and is not being rerun.`
-- Current phase: `V3/V4 amount-space transport using actual positive area is implemented with outbound inventory caps and signed applied-transfer ledgers. Focused sub-floor V3/V4 and above-floor parity tests pass. The bounded integrated replay is stopped at the first authoritative mechanics false return; M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
+- Acceptance: `R5-R1 is Architect accepted at 4b1a82877246c58ba21464963eb5bc4cb2a535cf as M1_R5_ALTERNATE_CLOSURE_CAUSE_CONFIRMED. R5-R2 exact-head push 33227623962 and PR 33227626644 both passed at 1410593005b7d0c42238704b4f19c3cbfeea132b; Architect acceptance remains pending.`
+- Current phase: `V3/V4 amount-space transport using actual positive area is implemented with outbound inventory caps and signed applied-transfer ledgers. Focused sub-floor V3/V4, above-floor parity, preservation, and bounded integrated replay pass; the replay stops at the first authoritative mechanics false return. Exact-head Linux push and PR CI passed, with compact artifacts preserved on Atlas. M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
 - Expected or actual touched areas: `version-aware transport/material accounting, focused tests, R5-R2 qualification example/workflow, compact evidence, documentation, and append-only governance only; HistoricalV1/ConservativeV2 behavior, other biology, D-087, production default, reserve/recycling/salvage, M2, and downstream work remain unchanged; dense evidence is stored on Atlas`
-- Immediate next action: `Run R5-R2 preservation and exact-head Linux CI, push PR #44, and stop for Architect review. Do not start death qualification, live refeeding, R4 150k requalification, production selection, or M2.`
+- Immediate next action: `Stop for Architect review of R5-R2. Do not start death qualification, live refeeding, R4 150k requalification, production selection, or M2.`
 
 ## Temporary task-relevant facts
 

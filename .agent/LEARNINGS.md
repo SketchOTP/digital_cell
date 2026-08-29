@@ -875,3 +875,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: R5-R2 transport conservation repair qualification only; no death qualification, live refeed, production switch, M1 closure, M2, reserve, recycling, salvage, or downstream work.
 - Supersedes learning: L-DCDEV020M1REPLAN002R5R1-LOCAL
+
+## L-DCDEV020M1REPLAN002R5R2-REMOTE-VERIFIED
+
+- Learning ID: L-DCDEV020M1REPLAN002R5R2-REMOTE-VERIFIED
+- Date: 2026-08-28
+- Fact or lesson: Exact-head Linux push workflow `33227623962` and pull-request workflow `33227626644` both passed at `1410593005b7d0c42238704b4f19c3cbfeea132b`. Remote compact evidence verifies the V3/V4 actual-positive-area amount-space transport repair, elimination of the former step-7684/8177 transport failure class, authoritative stop at mechanics false step `8566`, V2/V3 D-087 `8/8`, V4 D-087 `[true,true,false,true,true,true,true,true]` (`7/8`), and preserved V4 homeostasis/recovery. GitHub artifact digests are push `sha256:c39728cdbca81a9d69b1b29b3a0430c186388f383574f448fb94bb9b1b57a8f8` and PR `sha256:c84e8b363f13d560bbbffa0e6454638c4dcec0c4d2c00fff7066bd7dc3be66e8`.
+- Evidence location: compact remote artifacts and checksum manifests under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r2/remote-ci/`; dense valid-prefix ledger under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r2/dense/`; compact repository evidence under `digital-protocell/experiments/generated/dcdev020m1replan002r5r2/`.
+- Confidence: VERIFIED
+- Scope: R5-R2 transport conservation repair qualification only; no death qualification, live refeed, production switch, M1 closure, M2, reserve, recycling, salvage, or tuning.
+- Supersedes learning: L-DCDEV020M1REPLAN002R5R2-LOCAL

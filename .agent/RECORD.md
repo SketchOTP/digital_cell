@@ -205,3 +205,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Actual-positive-area V3/V4 transport closes focused sub-floor fixtures and the integrated valid-prefix starvation replay, while HistoricalV1 and ConservativeV2 retain the historical transport path. The prior step-7684/8177 transport failure class is eliminated; the replay stops at the authoritative mechanics false return at step `8566` and creates no post-failure death evidence. Classification is provisional pending exact-head CI and Architect review.
 - Affected areas: V3/V4 transport/material accounting, focused tests, compact evidence, dense Atlas evidence, workflow, documentation, and governance only; no V1/V2 transport, other biology, D-087, production default, death qualification, M1 closure, live refeed, M2, reserve, recycling, salvage, or tuning changed.
 - Supersedes record: DEC-DCDEV020M1REPLAN002R5R1-001
+
+## DEC-DCDEV020M1REPLAN002R5R2-REMOTE-001
+
+- Date: 2026-08-28
+- Record or decision ID: DEC-DCDEV020M1REPLAN002R5R2-REMOTE-001
+- Status: PROPOSED
+- Decision or event: Exact-head Linux push workflow `33227623962` and pull-request workflow `33227626644` both passed at `1410593005b7d0c42238704b4f19c3cbfeea132b` for the R5-R2 V3/V4 transport amount-conservation repair.
+- Rationale: Remote qualification verifies actual-positive-area V3/V4 amount-space transport, outbound material caps, applied-transfer ledgers, elimination of the former transport closure failure class, authoritative stop at mechanics false step `8566`, V4 homeostasis/recovery preservation, V2/V3 D-087 `8/8`, and V4 D-087 `7/8` with only the frozen Gate 2 failure. GitHub artifact digests are push `sha256:c39728cdbca81a9d69b1b29b3a0430c186388f383574f448fb94bb9b1b57a8f8` and PR `sha256:c84e8b363f13d560bbbffa0e6454638c4dcec0c4d2c00fff7066bd7dc3be66e8`.
+- Affected areas: Scoped transport implementation, qualification evidence, workflow verifier correction, compact evidence, dense Atlas evidence, and append-only governance; no death qualification, live refeed, production switch, M1 closure, M2, reserve, recycling, salvage, or tuning.
+- Supersedes record: DEC-DCDEV020M1REPLAN002R5R2-001

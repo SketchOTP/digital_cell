@@ -2007,3 +2007,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: This is not M1 closure. R4 150k evidence remains pending requalification; R5 S3/S4 remain invalid death evidence; no live refeed, death qualification, production selection, M2, reserve, recycling, salvage, or tuning is authorized.
 - Blockers: Exact-head R5-R2 CI and Architect disposition.
 - Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5r2-v4-gc-transport-amount-conservation-repair001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5R2-V4-GC-TRANSPORT-AMOUNT-CONSERVATION-REPAIR-REMOTE-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5R2-V4-GC-TRANSPORT-AMOUNT-CONSERVATION-REPAIR-PARTIAL
+- Closed: 2026-08-28T21:58:00-04:00
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux push workflow `33227623962` and pull-request workflow `33227626644` both passed at `1410593005b7d0c42238704b4f19c3cbfeea132b`. The compact verifier correction was metadata-only and now matches the actual V4 D-087 vector `[true,true,false,true,true,true,true,true]`. Remote evidence confirms V3/V4 amount-space actual-positive-area transport, no transport residual above `4.0946412926956555e-14`, elimination of the former step-7684/8177 failure class, and authoritative stop at mechanics false step `8566`.
+- Changed areas: One V4/D-087 verifier expectation in the scoped workflow after the first remote run exposed the mismatch; no scientific source, coefficients, thresholds, production behavior, or historical evidence changed. Compact evidence and dense ledgers are preserved on Atlas.
+- Validation:
+  - Local focused transport and preservation suites - PASSED
+  - Governance, formatting, bounded diff, V2/V3/V4 D-087, R5-R2 qualification, V4 R1 phenotype, compact verification, and remote focused tests - PASSED
+  - Push artifact digest `sha256:c39728cdbca81a9d69b1b29b3a0430c186388f383574f448fb94bb9b1b57a8f8` - VERIFIED
+  - PR artifact digest `sha256:c84e8b363f13d560bbbffa0e6454638c4dcec0c4d2c00fff7066bd7dc3be66e8` - VERIFIED
+  - Architect review - PENDING
+- Remaining risks: R4 150k evidence remains pending requalification; R5 S3/S4 remain invalid death evidence; the authoritative mechanics-false boundary remains a stop rather than a death result. M1 remains not established; no death qualification, live refeed, production selection, M2, reserve, recycling, salvage, or tuning is authorized.
+- Blockers: Architect disposition of R5-R2.
+- Follow-up directive: none
