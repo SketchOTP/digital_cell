@@ -1,0 +1,154 @@
+name: DC-DEV-020-M1 REPLAN-002-R5-R2 V4/GC transport conservation repair
+
+on:
+  push:
+    branches:
+      - strategy/dc-dev-020r9-mesh-contract-requalification
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+
+permissions:
+  contents: read
+
+jobs:
+  qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - name: Check out exact head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.89.0
+          components: rustfmt
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Governance validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustfmt +1.89.0 --edition 2021 --check crates/chemistry-core/src/mesh_transport.rs examples/dcdev020m1replan002r5r2_v4_gc_transport_amount_conservation_repair.rs
+      - name: Verify bounded R5-R2 diff
+        run: |
+          python3 - <<'PY'
+          import subprocess
+
+          start = '4b1a82877246c58ba21464963eb5bc4cb2a535cf'
+          changed = set(subprocess.check_output(['git', 'diff', '--name-only', start, 'HEAD'], text=True).splitlines())
+          allowed = {
+              '.agent/CURRENT.md', '.agent/DIRECTIVES.md', '.agent/LEARNINGS.md',
+              '.agent/OUTCOMES.md', '.agent/RECORD.md',
+              '.github/workflows/dc-dev-020m1replan002r5r2.yml',
+              'digital-protocell/crates/chemistry-core/src/mesh_reactions.rs',
+              'digital-protocell/crates/chemistry-core/src/mesh_transport.rs',
+              'digital-protocell/crates/phase1-certifier/Cargo.toml',
+              'digital-protocell/examples/dcdev020m1replan002r5r2_v4_gc_transport_amount_conservation_repair.rs',
+              'digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r5r2/dcdev020m1replan002r5r2_v4_gc_transport_amount_conservation_repair.md',
+          }
+          allowed |= {
+              f'digital-protocell/experiments/generated/dcdev020m1replan002r5r2/{name}'
+              for name in ('protocol.json', 'transport_contract.json',
+                           'integrated_valid_prefix.json', 'qualification.json',
+                           'preservation.json', 'artifact_manifest.json')
+          }
+          unexpected = changed - allowed
+          if unexpected:
+              raise SystemExit(f'unexpected R5-R2 paths: {sorted(unexpected)}')
+          print('DCDEV020M1REPLAN002R5R2_BOUNDED_DIFF_PASS')
+          PY
+      - name: V2 D-087 preservation
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R3_CONTRACT: ConservativeV2
+          DCDEV020R9R3_RESERVE: '0'
+        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1replan002r5r2/ci/v2_d087
+      - name: V3 D-087 preservation
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R3_CONTRACT: ConservativeV3
+          DCDEV020R9R3_RESERVE: '0'
+        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1replan002r5r2/ci/v3_d087
+      - name: V4 D-087 preservation
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R3_CONTRACT: ConservativeV3
+          DCDEV020R9R3_RESERVE: '0'
+          DCDEV020M1REPLAN002R1_V4: '1'
+        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1replan002r5r2/ci/v4_d087
+      - name: R5-R2 transport repair qualification
+        working-directory: digital-protocell
+        env:
+          DCDEV020M1REPLAN002R5R2_OUTPUT: experiments/generated/dcdev020m1replan002r5r2/ci
+          DCDEV020M1REPLAN002R5R2_DENSE_OUTPUT: ${{ runner.temp }}/dcdev020m1replan002r5r2-dense
+        run: cargo +1.89.0 run -p phase1-certifier --example dcdev020m1replan002r5r2_v4_gc_transport_amount_conservation_repair --release --quiet
+      - name: V4 R1 phenotype preservation
+        working-directory: digital-protocell
+        env:
+          DCDEV020M1REPLAN002R1_OUTPUT: experiments/generated/dcdev020m1replan002r5r2/ci/r1
+          DCDEV020M1REPLAN002R1_DENSE_OUTPUT: ${{ runner.temp }}/dcdev020m1replan002r5r2-r1-dense
+        run: cargo +1.89.0 run -p phase1-certifier --example dcdev020m1replan002r1_maturation_coupled_production_candidate --release --quiet
+      - name: Verify compact R5-R2 evidence
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          base = Path('experiments/generated/dcdev020m1replan002r5r2/ci')
+          names = ('protocol.json', 'transport_contract.json',
+                   'integrated_valid_prefix.json', 'qualification.json',
+                   'preservation.json', 'artifact_manifest.json')
+          for name in names:
+              assert (base / name).is_file(), f'missing {base/name}'
+          q = json.loads((base / 'qualification.json').read_text())
+          i = json.loads((base / 'integrated_valid_prefix.json').read_text())
+          assert q['starting_head'] == '4b1a82877246c58ba21464963eb5bc4cb2a535cf'
+          assert q['classification'] == 'M1_V4_GC_TRANSPORT_AMOUNT_CONSERVATION_REPAIR_QUALIFIED'
+          assert q['historical_v1_transport_changed'] is False
+          assert q['conservative_v2_transport_changed'] is False
+          assert q['outbound_material_cap'] is True
+          assert q['c_tracer_composition_conservation'] is True
+          assert q['step_7684_failure_class_eliminated'] is True
+          assert q['step_8177_failure_class_eliminated'] is True
+          assert q['authoritative_replay_stopped_on_false'] is True
+          assert q['pre_defect_observer_collapse_preserved'] is True
+          assert q['death_qualification_started'] is False
+          assert i['first_transport_residual_step'] is None
+          assert i['max_transport_residual'] <= 1e-8
+          assert i['first_mechanics_false'] is not None
+          assert i['authoritative_replay_stopped_on_false'] is True
+          v2 = json.loads((base / 'v2_d087/certification/report.json').read_text())
+          v3 = json.loads((base / 'v3_d087/certification/report.json').read_text())
+          v4 = json.loads((base / 'v4_d087/certification/report.json').read_text())
+          assert sum(g['pass'] for g in [v2[f'gate{x}'] for x in range(8)]) == 8
+          assert sum(g['pass'] for g in [v3[f'gate{x}'] for x in range(8)]) == 8
+          assert [v4[f'gate{x}']['pass'] for x in range(8)] == [True, False, False, True, True, True, True, True]
+          r1 = json.loads((base / 'r1/qualification.json').read_text())
+          assert r1['fed_homeostasis'] is True and r1['recovery'] is True
+          print('DCDEV020M1REPLAN002R5R2_ARTIFACT_VERIFICATION_PASS')
+          PY
+      - name: Focused transport and preservation tests
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test -p chemistry-core --lib mesh_transport::tests -- --nocapture
+          cargo +1.89.0 test -p phase1-certifier --example dcdev020m1replan002r5r2_v4_gc_transport_amount_conservation_repair -- --nocapture
+          cargo +1.89.0 test -p phase1-certifier --example dcdev020m1replan002r1_maturation_coupled_production_candidate -- --nocapture
+          cargo +1.89.0 test -p phase1-certifier --example dcdev020m1replan002r4_v4_contract_aware_preservation -- --nocapture
+          cargo +1.89.0 test -p phase1-certifier --test metrics_semantics -- --nocapture
+          cargo +1.89.0 test -p chemistry-core --test d098_geometry_material_conservation -- --nocapture
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test -p evolution-harness -- --nocapture
+      - name: Upload compact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020m1replan002r5r2-v4-gc-transport-amount-conservation-repair
+          path: |
+            digital-protocell/experiments/generated/dcdev020m1replan002r5r2/ci/**/*.json

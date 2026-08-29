@@ -1074,3 +1074,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260828-dcdev020m1replan002r5-v4-irreversible-physical-death-qualification001
 - Status at issuance: ISSUED
+
+## D-20260828-dcdev020m1replan002r5r2-v4-gc-transport-amount-conservation-repair001
+
+- Issued: `2026-08-28T21:40:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-REPLAN-002-R5-R2-V4-GC-TRANSPORT-AMOUNT-CONSERVATION-REPAIR-001`
+- Objective: Repair the verified sub-floor transport amount-conservation defect for GeometryConservativeV3 and MaturationCoupledV4 while preserving HistoricalV1 and ConservativeV2 transport semantics exactly.
+- Scope: Version-aware actual-positive-area amount transport, outbound available-material caps, applied-transfer ledgers, V3/V4 focused fixtures, authoritative valid-prefix starvation replay, compact Git evidence, dense Atlas evidence, preservation, and exact-head Linux CI.
+- Exclusions: No V1/V2 transport change, coefficient or permeability change, geometry/mechanics/topology/death change, D-087 change, live refeed rerun, death qualification, production switch, M2, reserve, recycling, salvage, or PR merge.
+- Acceptance: V3/V4 sub-floor transport closes; old step-7684/8177 transport failure class is eliminated; authoritative mechanics-stop semantics are honored; prior V4 homeostasis/recovery and D-087/preservation outputs remain unchanged; exact-head CI succeeds; Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260828-dcdev020m1replan002r5r1-zero-area-closure-and-refeed-semantics-audit001
+- Status at issuance: ISSUED

@@ -1,0 +1,29 @@
+{
+  "authoritative_stop": "mechanics_step false",
+  "closure_tolerance": 1e-8,
+  "death_qualification_started": false,
+  "directive": "DC-DEV-020-M1-REPLAN-002-R5-R2-V4-GC-TRANSPORT-AMOUNT-CONSERVATION-REPAIR-001",
+  "historical_contracts_preserved": [
+    "HistoricalV1",
+    "ConservativeV2"
+  ],
+  "live_refeed_rerun_started": false,
+  "material_contracts": [
+    "GeometryConservativeV3",
+    "MaturationCoupledV4"
+  ],
+  "next_execution_started": false,
+  "outbound_cap": "available_absolute_material_amount",
+  "schema": "dcdev020m1replan002r5r2_protocol_v1",
+  "stage_order": [
+    "TRANSPORT",
+    "REACTIONS",
+    "MECHANICS",
+    "REMESH",
+    "REBOND"
+  ],
+  "starting_head": "4b1a82877246c58ba21464963eb5bc4cb2a535cf",
+  "starvation_bound": 150000,
+  "transport_mode": "AMOUNT_SPACE_ACTUAL_POSITIVE_AREA",
+  "warmup_steps": 200
+}

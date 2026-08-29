@@ -1,0 +1,16 @@
+{
+  "c_tracer_and_composition": "scaled by actual C amount removed; inbound C preserves composition",
+  "historical_floor": "unchanged for HistoricalV1 and ConservativeV2",
+  "species": [
+    "N",
+    "F",
+    "W",
+    "C",
+    "A"
+  ],
+  "v3_v4": {
+    "area": "actual finite positive mesh area",
+    "reconstruction": "amount_after / actual_area",
+    "representation": "signed absolute amount"
+  }
+}

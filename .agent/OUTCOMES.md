@@ -1987,3 +1987,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: Exact-head Linux CI and Architect disposition remain pending. R5 S3/S4 are not physical death qualification: they are post-invalid continuation and use invalid direct-internal refeeding semantics. R4 observer-collapse evidence at step `6130` is pre-failure valid, while its late material trajectory requires requalification. M1 remains not established; no production repair, physical-death follow-up, M2, reserve, recycling, salvage, or tuning is authorized.
 - Blockers: Exact-head R5-R1 CI and Architect disposition.
 - Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5r2-v4-gc-transport-amount-conservation-repair001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5R2-V4-GC-TRANSPORT-AMOUNT-CONSERVATION-REPAIR-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5R1-ZERO-AREA-CLOSURE-AND-REFEED-SEMANTICS-AUDIT-PARTIAL
+- Closed: `2026-08-28T21:50:00-04:00`
+- Acceptance: PARTIAL
+- Summary: R5-R2 local qualification applies actual-positive-area amount-space transport only to GeometryConservativeV3 and MaturationCoupledV4. Focused sub-floor V3/V4 conservation and above-floor parity pass. The integrated valid-prefix replay records no transport residual above `4.0946412926956555e-14`, eliminates the prior step-7684/8177 transport failure class, preserves the pre-defect observer-collapse chronology, and stops at the first authoritative mechanics false return at step `8566`. Exact-head CI and Architect disposition remain pending.
+- Changed areas: version-aware transport implementation and signed applied-transfer ledger fields, focused transport tests, R5-R2 qualification example/registration, scoped workflow, compact evidence, documentation, and append-only governance. Historical V1/V2 transport and unrelated biology remain unchanged.
+- Validation:
+  - Focused chemistry-core transport tests - PASSED (3/3)
+  - R5-R2 bounded valid-prefix replay - PASSED as a fail-closed transport qualification
+  - V3/V4 sub-floor transport closure - PASSED
+  - Above-floor parity - PASSED
+  - Authoritative mechanics-stop handling - PASSED
+  - Exact-head CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: This is not M1 closure. R4 150k evidence remains pending requalification; R5 S3/S4 remain invalid death evidence; no live refeed, death qualification, production selection, M2, reserve, recycling, salvage, or tuning is authorized.
+- Blockers: Exact-head R5-R2 CI and Architect disposition.
+- Follow-up directive: none

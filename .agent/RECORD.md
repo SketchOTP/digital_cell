@@ -195,3 +195,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The R5 maximum raw strict-material delta occurs at transport step `8177` before the first failed mechanics return at `8566` and is attributable to internal C/A/W transport export, not the later zero-area transition. The first signed-area nonpositive state is `7675`; the first unexplained transport residual is `7684`; the failed mechanics call mutates the mesh before returning false. R5/R4 diagnostics continue after that false return, whereas the authoritative full-runtime caller stops. R5 refeed directly inserts a healthy reference schedule into clone interior concentrations and is classified `SEALED_INTERNAL_DELIVERY_UPPER_BOUND`. Local classification: `M1_R5_ALTERNATE_CLOSURE_CAUSE_CONFIRMED`, pending remote CI and Architect review.
 - Affected areas: R5-R1 observer evidence, compact artifact, dense Atlas ledger, workflow, documentation, and governance only; no V4 biology, mechanics, transport, D-087, refeed, production default, M1 closure, M2, or successor work changed.
 - Supersedes record: DEC-DCDEV020M1REPLAN002R5-REMOTE-001
+
+## DEC-DCDEV020M1REPLAN002R5R2-001
+
+- Date: 2026-08-28
+- Record or decision ID: DEC-DCDEV020M1REPLAN002R5R2-001
+- Status: PROPOSED
+- Decision or event: R5-R2 implements and locally executes the authorized V3/V4 transport amount-conservation repair from exact R5-R1 authority `4b1a82877246c58ba21464963eb5bc4cb2a535cf`.
+- Rationale: Actual-positive-area V3/V4 transport closes focused sub-floor fixtures and the integrated valid-prefix starvation replay, while HistoricalV1 and ConservativeV2 retain the historical transport path. The prior step-7684/8177 transport failure class is eliminated; the replay stops at the authoritative mechanics false return at step `8566` and creates no post-failure death evidence. Classification is provisional pending exact-head CI and Architect review.
+- Affected areas: V3/V4 transport/material accounting, focused tests, compact evidence, dense Atlas evidence, workflow, documentation, and governance only; no V1/V2 transport, other biology, D-087, production default, death qualification, M1 closure, live refeed, M2, reserve, recycling, salvage, or tuning changed.
+- Supersedes record: DEC-DCDEV020M1REPLAN002R5R1-001

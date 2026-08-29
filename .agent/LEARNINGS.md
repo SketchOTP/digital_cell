@@ -865,3 +865,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: R5-R1 observer-only test-integrity audit; no production biology, mechanics, transport, D-087, refeed, production selection, M1 closure, M2, or successor work changed.
 - Supersedes learning: L-DCDEV020M1REPLAN002R5-REMOTE-VERIFIED
+
+## L-DCDEV020M1REPLAN002R5R2-LOCAL
+
+- Learning ID: L-DCDEV020M1REPLAN002R5R2-LOCAL
+- Date: 2026-08-28
+- Fact or lesson: R5-R2 implements a version-aware transport representation split. HistoricalV1 and ConservativeV2 retain the existing `max(actual_area, 1e-6)` concentration path; GeometryConservativeV3 and MaturationCoupledV4 apply signed transport amounts against the actual finite positive physical area, cap outbound transfer by available material, reconstruct concentrations from amount, and scale C tracer/composition by actual C removed. Focused V3/V4 fixtures at `1e-7`, `1e-9`, and `1e-12` plus above-floor parity pass. The integrated V4 starvation valid-prefix replay has no transport residual above `1e-8`, eliminates the former step-7684/8177 transport failure class, and stops at the authoritative first mechanics false return at step `8566`; this does not requalify R4 long-horizon evidence or establish death/M1.
+- Evidence location: compact evidence under `digital-protocell/experiments/generated/dcdev020m1replan002r5r2/`; dense stage ledger under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r2/`; R5-R2 documentation and workflow are in the repository.
+- Confidence: PROVISIONAL
+- Scope: R5-R2 transport conservation repair qualification only; no death qualification, live refeed, production switch, M1 closure, M2, reserve, recycling, salvage, or downstream work.
+- Supersedes learning: L-DCDEV020M1REPLAN002R5R1-LOCAL

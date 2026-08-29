@@ -1162,6 +1162,7 @@ mod tests {
             MeshContractVersion::GeometryConservativeV3 => {
                 mesh.stamp_geometry_conservative_schema()
             }
+            MeshContractVersion::MaturationCoupledV4 => mesh.stamp_maturation_coupled_schema(),
         }
         for edge in &mut mesh.edges {
             edge.m = 1.0;
