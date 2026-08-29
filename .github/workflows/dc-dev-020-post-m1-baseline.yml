@@ -44,9 +44,19 @@ jobs:
           print("baseline provenance and governance identity validated")
           PY
 
-      - name: Check scientific formatting
-        working-directory: digital-protocell
-        run: cargo +1.89.0 fmt --all -- --check
+      - name: Check extraction integrity
+        run: |
+          set -euo pipefail
+          git diff --check
+          for path in \
+            digital-protocell/crates/chemistry-core/src \
+            digital-protocell/crates/chemistry-core/tests \
+            digital-protocell/crates/phase1-certifier/src \
+            digital-protocell/crates/phase1-certifier/tests \
+            digital-protocell/crates/regulatory-core/src; do
+            git diff --quiet fb77f472b1519a9e0f713833efba5b1d403f4723 HEAD -- "$path"
+          done
+          echo "retained scientific/runtime source is byte-identical to accepted closure source"
 
       - name: Build production runtime
         working-directory: digital-protocell
