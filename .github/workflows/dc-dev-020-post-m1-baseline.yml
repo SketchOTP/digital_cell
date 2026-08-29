@@ -86,9 +86,10 @@ jobs:
           done
           python3 - <<'PY'
           import json, os
-          for name in ("ConservativeV2", "ConservativeV3"):
+          expected = {"ConservativeV2": "ConservativeV2", "ConservativeV3": "GeometryConservativeV3"}
+          for name, label in expected.items():
               r = json.load(open(os.path.join(os.environ["RUNNER_TEMP"], name + ".json")))
-              assert r["mesh_contract"] == name and r["reserve_enabled"] is False, r
+              assert r["mesh_contract"] == label and r["reserve_enabled"] is False, r
           print("explicit V2/V3 selectors remain available")
           PY
 
