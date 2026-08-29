@@ -55,7 +55,7 @@ def main() -> None:
         "baseline_branch": "baseline/m1-v4-closed",
         "baseline_tree_ref": "HEAD",
         "source_changed_file_count": len(changed),
-        "source_commit_count_above_base": len(git("rev-list", "--first-parent", "--count", f"{BASE}..{SOURCE}")),
+        "source_commit_count_above_base": int(git("rev-list", "--count", f"{BASE}..{SOURCE}")[0]),
         "classification_counts": dict(sorted(categories.items())),
         "dependency_proof": {
             "cargo_workspace": "digital-protocell/Cargo.toml",

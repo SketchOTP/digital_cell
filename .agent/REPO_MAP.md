@@ -59,4 +59,4 @@
 - `digital-protocell/crates/chemistry-core/` — certified biology and equations are frozen.
 - `digital-protocell/experiments/generated/` — evidence is append-only and provenance-bound.
 - `.git/` — Git metadata and object storage.
-- PR #44 and `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1closure001/` — historical M1 provenance and dense evidence; do not rewrite from the baseline branch.
+- `PR #44 and /srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1closure001/` — historical M1 provenance and dense evidence; do not rewrite from the baseline branch.
