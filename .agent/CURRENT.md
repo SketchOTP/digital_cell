@@ -14,7 +14,7 @@
 - Acceptance: `R5-R4 is Architect accepted at c56cf3791fc17e85073f6b1ed13cf827353ca3da as M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED. The only authorized follow-up is M1 closure selection/freeze; PR #44 remains open, draft, and unmerged.`
 - Current phase: `The accepted V4 physiology has passed moving homeostasis, bounded recovery, causal starvation deterioration, admissible-boundary no-resurrection, material conservation, and preservation. This directive changes only the production selector to MaturationCoupledV4 with reserve OFF, proves packaged Linux selection, and assembles the final closure manifest. M1 formal closure remains pending Architect acceptance; M2 remains unauthorized.`
 - Expected or actual touched areas: `production selector and packaged runtime wiring, focused closure verifier/workflow, compact closure evidence, documentation, and append-only governance; no V4 equations, D-087 predicates/thresholds, reserve, recycling, salvage, M2 behavior, or PR merge; dense evidence is stored on Atlas`
-- Immediate next action: `Complete the bounded selector/integration checks and exact-head CI, then stop for Architect review. Do not start new M1 science, alter D-087, merge PR #44, or begin M2.`
+- Immediate next action: `Stop for Architect review of the qualified M1 closure candidate. Do not start new M1 science, alter D-087, merge PR #44, extract a clean baseline, or begin M2.`
 
 ## Temporary task-relevant facts
 
@@ -45,7 +45,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `R5-R4 Architect acceptance at c56cf3791fc17e85073f6b1ed13cf827353ca3da`
+- Command or check: `M1 closure candidate exact-head push/PR CI at 7720546ccc75a7d5becb1dc6eac8a063e0d75b8c`
 - Result: `PASSED`
 
 ## Risks

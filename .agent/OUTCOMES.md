@@ -2102,3 +2102,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: This qualifies the R5-R4 assay result but does not by itself close M1 or authorize V4 production selection; Architect acceptance remains pending. S2 remained physically executable through the unchanged 8,000-step refeed and ended with ruptured topology rather than an authoritative mechanics-failure return. No production selection, M2, reserve, recycling, salvage, tuning, or successor execution is authorized.
 - Blockers: Architect disposition of R5-R4.
 - Follow-up directive: none
+
+## D-20260829-dcdev020m1closure001-v4-production-selection-and-freeze001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1CLOSURE001-V4-PRODUCTION-SELECTION-AND-FREEZE-REMOTE-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5R4-V4-ADMISSIBLE-BOUNDARY-NO-RESURRECTION-QUALIFICATION-REMOTE-PARTIAL
+- Closed: `2026-08-29T11:02:00-04:00`
+- Acceptance: PARTIAL
+- Summary: The bounded M1 closure candidate selects `MaturationCoupledV4` as the fresh packaged Linux production default with reserve OFF, preserves explicit V2/V3 selection, binds the Architect-accepted R5-R4 result, and preserves the frozen V4 historical D-087 boundary at `7/8` with vector `[true,true,false,true,true,true,true,true]`. Candidate classification is `M1_V4_PRODUCTION_SELECTION_AND_CLOSURE_CANDIDATE_QUALIFIED`; formal M1 Architect closure remains pending.
+- Changed areas: Production selector/runtime wiring, closure verifier/workflow, compact closure evidence, documentation, and append-only governance. No V4 equations, D-087 predicates/thresholds, reserve, recycling, salvage, M2 behavior, or PR #44 merge changed.
+- Validation:
+  - Governance validation, scoped formatting, bounded diff, packaged default selector, explicit V2/V3 availability, V2/V3/V4 D-087, accepted R5-R4 reproduction, forbidden-controller audit, and focused downstream/lifecycle tests - PASSED
+  - Push workflow `33258711403` at `7720546ccc75a7d5becb1dc6eac8a063e0d75b8c` - SUCCESS
+  - PR workflow `33258714464` at `7720546ccc75a7d5becb1dc6eac8a063e0d75b8c` - SUCCESS
+  - Push artifact digest `sha256:74f1e6744a2bb1f86fec0b7c277c604a590d795b877ede01a7d894c0bc0520e0` - VERIFIED
+  - PR artifact digest `sha256:d5959042f25ff34ebf5270ba169954d2c89af417871aa14f497026039a781987` - VERIFIED
+  - PR #44 open, draft, unmerged, correct base, and exact head - PASSED
+  - Dense evidence and remote artifacts preserved on canonical Atlas
+- Remaining risks: Formal M1 Architect acceptance is pending. M2 remains unauthorized; PR #44 remains unmerged; no clean capability baseline or successor execution is authorized.
+- Blockers: Architect acceptance of the closure candidate.
+- Follow-up directive: none
