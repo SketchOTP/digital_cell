@@ -1,0 +1,11 @@
+{
+  "initial_mature_labeled": 87.75070322587518,
+  "legacy_structural_f_label": 0.39365548976559395,
+  "lifecycle_structural_f_label": 0.24710833271945795,
+  "lifecycle_tracer_gate1": true,
+  "observer_feeds_back_into_physics": false,
+  "physical_trajectory_difference": 0.0,
+  "schema": "dcdev020m1replan002r4_tracer_semantics_v1",
+  "source": "R2 proven lifecycle-consistent mature turnover pool",
+  "thresholds_unchanged": true
+}

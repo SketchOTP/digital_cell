@@ -1,0 +1,33 @@
+{
+  "classification": "M1_R5_ALTERNATE_CLOSURE_CAUSE_CONFIRMED",
+  "directive": "DC-DEV-020-M1-REPLAN-002-R5-R1-ZERO-AREA-CLOSURE-AND-REFEED-SEMANTICS-AUDIT-001",
+  "failure_owner": "HARNESS_ONLY_FOR_DEEP_CONTINUATION",
+  "m1": "NOT ESTABLISHED",
+  "m2_authorized": false,
+  "next_execution_started": false,
+  "production_runtime_accepts_failed_mechanics_continuation": false,
+  "r1_fed_homeostasis": true,
+  "r1_recovery": true,
+  "r5_max_raw_residual": 0.4505192855423097,
+  "r5_max_raw_residual_cause": "TRANSPORT_INTERNAL_C_A_W_EXPORT_AT_STEP_8177",
+  "r5_no_direct_injection_requirement": false,
+  "r5_physical_resource_opportunity_requirement": false,
+  "r5_refeed_classification": "SEALED_INTERNAL_DELIVERY_UPPER_BOUND",
+  "r5_s3_s4_evidence_status": "BOTH_POST_FAILURE_AND_INVALID_INTERVENTION",
+  "scientific_core_diff": "NONE",
+  "starting_head": "0cdab2f5dcccfe6b7f41936e546b96ffe8df7c4b",
+  "v2_d087": true,
+  "v3_d087": true,
+  "v4_d087": [
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "zero_area_mechanics_failure_step": 8566,
+  "zero_area_residual_reconciled": false
+}

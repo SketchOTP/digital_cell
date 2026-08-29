@@ -1,0 +1,16 @@
+{
+  "production_default": "ConservativeV2 / reserve OFF",
+  "r4": true,
+  "v2_d087": true,
+  "v3_d087": true,
+  "v4_d087": [
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ]
+}

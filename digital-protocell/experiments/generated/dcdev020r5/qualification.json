@@ -1,0 +1,9 @@
+{
+  "classification": "DCDEV020R5_NF_LOCAL_COORDINATE_SUFFICIENT",
+  "dc_dev_021_authorized": false,
+  "next_execution_started": false,
+  "observer_only": true,
+  "production_integration": false,
+  "surrogate_classification": "ENDPOINT_SURROGATE_NOT_LOCAL_REQUIREMENT",
+  "trajectory_parity": true
+}

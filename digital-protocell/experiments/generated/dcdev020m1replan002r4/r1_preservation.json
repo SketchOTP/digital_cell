@@ -1,0 +1,10 @@
+{
+  "fed_homeostasis": true,
+  "fed_organized_delta_reference": 1.3323122170185968,
+  "material_closure": true,
+  "preserved": true,
+  "recovery": true,
+  "shadow_parity": true,
+  "source": "committed R1 qualification plus fresh R4-preserved flags",
+  "starvation_decline": true
+}

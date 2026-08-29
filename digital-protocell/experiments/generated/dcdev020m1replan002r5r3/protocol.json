@@ -1,0 +1,32 @@
+{
+  "checkpoints": [
+    "S0 accepted bounded deprivation state",
+    "S1 first accepted observer-nonviable state",
+    "S2 last fully accepted pre-stop state"
+  ],
+  "contract": "MaturationCoupledV4",
+  "direct_internal_nf_insertion": false,
+  "directive": "DC-DEV-020-M1-REPLAN-002-R5-R3-V4-LIVE-RESOURCE-IRREVERSIBLE-DEATH-QUALIFICATION-001",
+  "next_execution_started": false,
+  "refeed_horizon": 8000,
+  "resource": {
+    "boundary_concentration": 2.063914918930895,
+    "center": [
+      4.8,
+      0.0
+    ],
+    "f_mass": 243.14924801053778,
+    "n_mass": 243.14924801053778,
+    "radius": 1.5,
+    "replenishment_events": 0
+  },
+  "resource_interface": "FiniteSpatialBackingReservoirV1 LIVE",
+  "schema": "dcdev020m1replan002r5r3_protocol_v1",
+  "sealed_internal_delivery_used": false,
+  "starting_head": "d0a9601aed170c43a5c288c8300f3fe65e64237f",
+  "starvation": {
+    "bound": 150000,
+    "stop": "mechanics_step false",
+    "warmup_steps": 200
+  }
+}

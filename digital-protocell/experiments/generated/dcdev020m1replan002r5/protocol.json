@@ -1,0 +1,33 @@
+{
+  "contract": "MaturationCoupledV4",
+  "directive": "DC-DEV-020-M1-REPLAN-002-R5-V4-IRREVERSIBLE-PHYSICAL-DEATH-QUALIFICATION-001",
+  "intervention": "resource restoration only; no state, geometry, chemistry, topology, lifecycle, or viability reset",
+  "next_execution_started": false,
+  "observer_only": true,
+  "production_default": "ConservativeV2 / reserve OFF",
+  "refeed": {
+    "boundary_concentration": 2.063914918930895,
+    "center": [
+      4.8,
+      0.0
+    ],
+    "f_mass": 243.14924801053778,
+    "horizon": 8000,
+    "n_mass": 243.14924801053778,
+    "radius": 1.5,
+    "replenishment": 0,
+    "source": "exact accepted R1 finite resource schedule"
+  },
+  "schema": "dcdev020m1replan002r5_protocol_v1",
+  "starting_head": "9f4d6c34e88a613b0bf677f9f2aa25f8854edbb5",
+  "starvation": {
+    "bound": 150000,
+    "fixed_checkpoints": [
+      5277,
+      6130,
+      10200,
+      150200
+    ],
+    "warmup_steps": 200
+  }
+}

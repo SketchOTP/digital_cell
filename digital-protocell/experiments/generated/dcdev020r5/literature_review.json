@@ -1,0 +1,24 @@
+{
+  "external_constants_imported": false,
+  "sources": [
+    {
+      "citation": "Galvez, Varon, and Canovas 1981, Transient phase of two-substrate enzyme systems",
+      "classification": "ADAPTABLE",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/7278306/",
+      "use": "supports transient statewise analysis of two-substrate systems; no mechanism or constants imported"
+    },
+    {
+      "citation": "Zechel et al. 1998, Pre-steady state kinetic analysis monitored by time-resolved ESI-MS",
+      "classification": "REFERENCE_ONLY",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9601025/",
+      "use": "supports direct observation of transient catalytic states; no enzyme identity, intermediate, or constants imported"
+    },
+    {
+      "citation": "Flach and Schnell 2006, Use and abuse of the quasi-steady-state approximation",
+      "classification": "ADAPTABLE",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2265107/",
+      "use": "supports preserving full coupled transient dynamics instead of reducing to a static source equation"
+    }
+  ],
+  "status": "primary_literature_reviewed_for_transient_experimental_reasoning"
+}

@@ -1,0 +1,5 @@
+{
+  "pass": false,
+  "detail": "R_m=0.840 f_m=0.178 pool_m=0.419 R_b=5.578 f_b=0.002 pool_b=0.004 R_c=1.377 f_c=0.317 pool_c=0.238 ret_c=1.330 ret_a=1.923 dual=false d086_soft=true",
+  "failure": "D087_D086_ACCEPTANCE_INVALID"
+}

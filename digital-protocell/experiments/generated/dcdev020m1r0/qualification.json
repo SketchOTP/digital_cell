@@ -1,0 +1,35 @@
+{
+  "chemistry_changed": false,
+  "current_m1_bottleneck": "productive_allocation_or_replacement_limitation",
+  "dc_dev_021_authorized": false,
+  "deprivation_480_completed": true,
+  "directive": "DC-DEV-020-M1-R0-REQUAL-001",
+  "finite_resource_closure": true,
+  "gates": {
+    "gate0_baseline_identity": true,
+    "gate1_historical_provenance": true,
+    "gate2_deprivation_replay": true,
+    "gate3_finite_resource_matched_replay": true,
+    "gate4_high_inventory_challenge": true,
+    "gate5_starvation_continuation": true,
+    "gate6_bottleneck_classification": true,
+    "gate7_production_preservation": true,
+    "gate8_accounting_closure": true
+  },
+  "historical_d015_replay": true,
+  "historical_d016_replay": true,
+  "matched_arms_valid": true,
+  "next_execution_started": false,
+  "parameter_search": false,
+  "primary_classification": "DCDEV020M1R0_FINITE_RESOURCE_REQUALIFICATION_COMPLETE",
+  "production_biology_changed": false,
+  "reserve_enabled": false,
+  "reserve_flows": {
+    "a_to_r": 0.0,
+    "r_to_a": 0.0,
+    "r_to_w": 0.0
+  },
+  "selected_contract": "ConservativeV2",
+  "starting_head": "4895135deee7dbd782446dbfe25662181951afe0",
+  "starvation_continuation_completed": true
+}

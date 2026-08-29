@@ -1,0 +1,28 @@
+{
+  "classification": "M1_V4_D087_MIXED_REGRESSION",
+  "d087_threshold_changed": false,
+  "directive": "DC-DEV-020-M1-REPLAN-002-R2-D087-V4-LIFECYCLE-SEMANTICS-AUDIT-001",
+  "gate1_cause": "CERTIFIER_SEMANTICS",
+  "gate2_cause": "BIOLOGICAL",
+  "lifecycle_tracer_gate1": true,
+  "m1": "NOT ESTABLISHED",
+  "m2_authorized": false,
+  "next_execution_started": false,
+  "observer_semantics_starvation_state": false,
+  "physical_trajectory_parity": true,
+  "production_biology_changed": false,
+  "schema": "dcdev020m1replan002r2_qualification_v1",
+  "starting_head": "98b1104165039359bdc609898e0d0371f9ce05c4",
+  "v2_d087": true,
+  "v3_d087": true,
+  "v4_legacy_d087": [
+    true,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ]
+}

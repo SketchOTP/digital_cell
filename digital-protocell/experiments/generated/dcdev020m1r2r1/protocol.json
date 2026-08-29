@@ -1,0 +1,52 @@
+{
+  "arms": [
+    {
+      "declared_k_a_decay": 0.008,
+      "effective_starvation_k_a_decay": 0.032,
+      "id": "A_PRODUCTION_STARVATION_4X"
+    },
+    {
+      "declared_k_a_decay": 0.002,
+      "effective_starvation_k_a_decay": 0.008,
+      "id": "B_ORDINARY_DECAY_STARVATION"
+    }
+  ],
+  "directive": "DC-DEV-020-M1-R2-R1-PHYSICAL-FAILURE-CLOSURE-001",
+  "entry_state": "accepted M1-R2 exact endpoint at step 20480; no founder regeneration",
+  "extended_continuation_steps": 150000,
+  "forbidden_changes": [
+    "chemistry-core",
+    "k_a_decay",
+    "4x production branch",
+    "activation",
+    "uptake",
+    "transport",
+    "resources",
+    "death criteria",
+    "D-091",
+    "D-087",
+    "recycling",
+    "salvage",
+    "M2",
+    "DC-DEV-021"
+  ],
+  "observer_only": true,
+  "r2_comparison_steps": 480,
+  "r2_continuation_steps": 20000,
+  "restoration_resource": {
+    "center": [
+      4.8,
+      0.0
+    ],
+    "f": 14.588954880632265,
+    "n": 14.588954880632265,
+    "radius": 1.5
+  },
+  "restoration_steps": 5000,
+  "starting_head": "bc65098c3d26777aca2d1da5dab8cc118ecc6e19",
+  "terminal_failure_condition": [
+    "ruptured_edges * 2 >= edge_count",
+    "observer_death_reason is non-starvation",
+    "physical_runtime_valid == false"
+  ]
+}

@@ -17,6 +17,23 @@
 - `digital-protocell/examples/dcdev013_gate_assay.rs` — fixed-horizon local resource-contact feeding assay; it composes production resource observation, regulation, funded contractility, stick-slip, and uptake without implementing a second sensor.
 - `digital-protocell/examples/dcdev015_metabolic_restoration_assay.rs` — observer-only 5,000-step settlement, 480-step deprivation, and matched metabolic intake-to-restoration audit; it reuses existing uptake and reaction/reserve ledgers without changing biology.
 - `digital-protocell/examples/dcdev016_metabolic_break_even.rs` — observer-only one-shot derived-resource sufficiency challenge; it reproduces DC-DEV-015 baseline arms, tests one derived N/F inventory, and reports supply sufficiency versus stored activation restoration without changing biology.
+- `digital-protocell/examples/dcdev020r2_allosteric_requalification.rs` — observer-only DC-DEV-020-R2 source-actuation, sequencing, August DC-DEV-017 replay, and A-only sufficiency audit; it stops before any derived law or downstream assay when Gate 4 fails.
+- `digital-protocell/examples/dcdev020r3_two_substrate_saturating_activation.rs` — observer-only DC-DEV-020-R3 bilinear attribution and bounded symmetric two-substrate identifiability audit; it changes no production chemistry and stops fail-closed at Gate 4.
+- `digital-protocell/examples/dcdev020r4_asymmetric_two_substrate_identifiability.rs` — observer-only DC-DEV-020-R4 five-probe independent-axis audit; it changes no production chemistry and stops fail-closed on reciprocal family mismatch.
+- `digital-protocell/examples/dcdev020r5_local_zero_drift_source_audit.rs` — observer-only DC-DEV-020-R5 exact R4 replay, statewise physical source-response, zero-drift root, surrogate, and existing-coordinate audit; it changes no production chemistry.
+- `digital-protocell/examples/dcdev020r6_nf_power_law_source.rs` — observer-only DC-DEV-020-R6 closed-form N/F power-law identification, held-out local-root validation, and fail-closed selected finite-feed counterfactual; it changes no production chemistry.
+- `digital-protocell/examples/dcdev020r7_on_policy_zero_drift_audit.rs` — observer-only DC-DEV-020-R7 exact R6 replay, on-policy physical root audit, frozen NF/NFA observer replay, support-distance analysis, and exact-root oracle; it changes no production chemistry.
+- `digital-protocell/examples/dcdev020r8_nfa_restorative_attractor.rs` — observer-only DC-DEV-020-R8 product-feedback topology feasibility audit using frozen N/F support, reciprocal constraints, and fail-closed training-gate classification; it changes no production chemistry.
+- `digital-protocell/examples/dcdev020r8r1_causal_a_demand_elasticity.rs` — observer-only DC-DEV-020-R8-R1 within-state A perturbation, physical zero-drift demand decomposition, and R8 pair-confounding audit; it changes no production chemistry or behavior.
+- `digital-protocell/examples/dcdev020r8r2_catalyst_investment_payback.rs` — observer-only DC-DEV-020-R8-R2 physical root, catalyst-production shadow, checkpoint payback, and whole-window R6 comparison; it changes no production chemistry or behavior.
+- `.github/workflows/dc-dev-020m0.yml` — scoped exact-head CI for the selected ConservativeV2/reserve-OFF M0 production baseline, fresh D-087 certification, packaged Linux runtime, and preservation checks.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m0baseline001/` — M0 production-selection provenance and dependency boundary.
+- `.github/workflows/dc-dev-020m1r0.yml` — scoped exact-head CI for the observer-only finite-resource requalification against the accepted M0 organism.
+- `digital-protocell/examples/dcdev020m1r0_requalification.rs` — exact 5,000-step settlement, 480-step deprivation, matched 3/3 and high-inventory finite N/F arms, uptake-only control, and bounded starvation continuation.
+- `digital-protocell/experiments/generated/dcdev020m1r0/` — compact M1-R0 protocol, results, qualification, manifest, and fresh CI evidence.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r0/` — M1-R0 provenance, finite-resource replay, closure, and diagnostic classification.
+- `digital-protocell/examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs` — preserved exact R8-R4 machinery with explicit R9-R1 ConservativeV2 compatibility replay; historical default behavior remains unchanged.
+- `digital-protocell/examples/dcdev020r8r3_shared_affinity_helper.rs` — shared R8-R4 replay helper with explicit R9-R1 ConservativeV2 compatibility mode; historical default behavior remains unchanged.
 
 ## Interfaces and contracts
 
@@ -46,7 +63,143 @@
 - `digital-protocell/experiments/generated/dcdev013/` — frozen local resource-contact feeding protocol, settled body, matched-arm results, gate results, and final manifest.
 - `digital-protocell/experiments/generated/dcdev015/` — frozen metabolic intake/restoration protocol, settlement, deprivation, matched-arm snapshots, ledgers, destination reconciliation, gate results, and final manifest.
 - `digital-protocell/experiments/generated/dcdev016/` — frozen derived-resource break-even protocol, settlement, deprivation, matched-arm results, existing ledgers, gate results, and final manifest.
+- `digital-protocell/experiments/generated/dcdev020r2/` — immutable R2 protocol, compact qualification, results, source-actuation envelope, and literature classification; historical `dcdev020/` evidence is preserved.
+- `digital-protocell/experiments/generated/dcdev020r3/` — append-only R3 protocol, compact result/qualification, sole dense per-step kinetic ledger, and primary-literature classification.
+- `digital-protocell/experiments/generated/dcdev020r4/` — append-only R4 protocol, compact result/qualification, sole dense five-probe identification ledger, and primary-literature classification.
+- `digital-protocell/experiments/generated/dcdev020r5/` — compact append-only R5 protocol, results, qualification, schema, representative diagnostics, literature classification, and external dense-ledger SHA-256 manifest.
+- `digital-protocell/experiments/generated/dcdev020r6/` — compact append-only R6 protocol, identification, finite-feed physiology, qualification, literature disposition, and R5 dense-input manifest; no dense R6 trajectory package is committed.
+- `digital-protocell/experiments/generated/dcdev020r7/` — compact append-only R7 protocol, on-policy root/source summary, frozen observer/support statistics, oracle result, qualification, literature disposition, and external dense-ledger manifest.
+- `digital-protocell/experiments/generated/dcdev020r8/` — compact append-only R8 protocol, matched-pair summary, reciprocal constraint summary, qualification, literature disposition, and external dense-ledger manifest; dense pair/constraint records remain in governed external evidence storage.
+- `digital-protocell/experiments/generated/dcdev020r8r1/` — compact append-only R8-R1 protocol, A-elasticity decomposition, pair-confounding summary, qualification, literature disposition, and external dense-ledger manifest; the dense demand ledger remains in governed external evidence storage.
+- `digital-protocell/experiments/generated/dcdev020r8r2/` — compact append-only R8-R2 protocol, 480 paired-root summary, two-context payback, whole-window shadow, qualification, literature disposition, and external dense-ledger manifest; the dense ledger remains in governed external evidence storage.
+- `digital-protocell/examples/dcdev020r8r3_catalyst_reserve_horizon.rs` — observer-only R8-R3 frozen catalyst half-life, sustained reserve trajectories, deterministic marginal payback, source-context comparison, and conditional delayed-resume audit; it changes no production chemistry or behavior.
+- `digital-protocell/experiments/generated/dcdev020r8r3/` — compact append-only R8-R3 acute reproduction, timescale, sustained trajectory, marginal payback, delayed-resume disposition, qualification, literature, and external dense-ledger manifest.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r3/` — R8-R3 catalyst reserve horizon documentation.
 - `digital-protocell/docs/strategy/developmental_sensorimotor/` — DC-DEV-001A human-readable analysis.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r2/` — DC-DEV-020-R2 observer requalification and Gate 4 disposition.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r3/` — DC-DEV-020-R3 two-substrate identifiability audit and fail-closed disposition.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r4/` — DC-DEV-020-R4 asymmetric independent-axis identifiability audit and fail-closed disposition.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r5/` — DC-DEV-020-R5 local zero-drift source requirement, R3/R4 surrogate, and existing-coordinate audit.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r6/` — DC-DEV-020-R6 generalized N/F power-law identification and Gate 5 negative-result audit.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r7/` — DC-DEV-020-R7 on-policy zero-drift attribution, frozen coordinate replay, and exact-root oracle audit.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8/` — DC-DEV-020-R8 product-feedback topology feasibility audit and fail-closed Gate 3 disposition.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r1/` — DC-DEV-020-R8-R1 causal A-demand elasticity audit and independent R8 pair-confounding disposition.
+- `digital-protocell/examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs` — DC-DEV-020-R8-R4 observer-only shared-affinity audit; includes the normalized R8-R3 helper and must not be imported into production chemistry.
+- `digital-protocell/experiments/generated/dcdev020r8r4/` — compact R8-R4 evidence; dense ledger is externalized to governed Atlas storage.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r4/` — R8-R4 protocol and disposition.
+- `digital-protocell/examples/dcdev020r8r5_ac_allocation_upper_bound.rs` — DC-DEV-020-R8-R5 observer-only conservative A↔C allocation capacity envelope; it changes no production chemistry or behavior.
+- `digital-protocell/experiments/generated/dcdev020r8r5/` — compact R8-R5 protocol, economic envelope, R8-R4 reproduction, constant-allocation results, local late-state drift summaries, qualification, literature disposition, and external dense-ledger manifest.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r5/` — R8-R5 A↔C allocation upper-bound audit and mixed-envelope disposition.
+- `digital-protocell/examples/dcdev020r8r5r1_net_allocation_drift.rs` — DC-DEV-020-R8-R5-R1 corrected incoming-state net-drift observer wrapper; it preserves the R8-R5 constant-allocation runner.
+- `digital-protocell/experiments/generated/dcdev020r8r5r1/` — compact R8-R5-R1 checkpoint hashes, statewise reversible/forward-only envelopes, attribution, qualification, and external dense-ledger manifest.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r5r1/` — R8-R5-R1 corrected net allocation drift documentation.
+- `digital-protocell/crates/chemistry-core/src/mesh_contracts.rs` — R9 exact historical/conservative mesh stoichiometric descriptors, runtime parity, and three-ledger accounting.
+- `digital-protocell/crates/chemistry-core/src/d020r9_analysis.rs` — bounded R9 E0-E5 contract requalification and compact evidence writer.
+- `digital-protocell/crates/chemistry-core/examples/dcdev020r9_mesh_contract_requalification.rs` — R9 reproducible observer/requalification runner.
+- `digital-protocell/experiments/generated/dcdev020r9/` — compact R9 E0-E5 evidence and preserved legacy runtime smoke artifact.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9/` — R9 mesh contract requalification documentation.
+- `.github/workflows/dc-dev-020r9.yml` — scoped R9 governance, format, preservation, contract-test, and evidence-runner CI.
+- `digital-protocell/crates/chemistry-core/src/material_mesh.rs` — orthogonal `MeshContractVersion` metadata and observer-only death selection.
+- `digital-protocell/crates/chemistry-core/src/d020r9_analysis.rs` — R9-R1 reserve-bearing D-087 Gates 0–7 matrix and compact evidence writer.
+- `digital-protocell/examples/dcdev020r9r1_exact_metabolic_replays.rs` — exact D-015/D-016 observer replay and three-ledger closure evidence.
+- `digital-protocell/examples/dcdev020r8r2_catalyst_investment_payback.rs` — preserved R8-R2 machinery with explicit R9-R1 ConservativeV2 compatibility mode.
+- `digital-protocell/experiments/generated/dcdev020r9r1/` — R9-R1 compact mesh-contract, exact metabolic replay, and exact R8 compatibility evidence.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r1/` — R9-R1 protocol, provenance, and pending-acceptance documentation.
+- `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs` — observer-only direct A-decay accounting used by the R9-R2 material-fate ledger.
+- `digital-protocell/crates/phase1-certifier/src/bin/phase1_certification.rs` — direct actual D-087 Gates 0–7 launcher with ConservativeV2+D-091 mode selection.
+- `digital-protocell/examples/dcdev020r9r2_material_fate_audit.rs` — exact D-015/D-016 material-fate and sustained-trajectory observer runner.
+- `digital-protocell/crates/phase1-certifier/examples/dcdev020r9r3_conservation_reserve_decomposition.rs` — observer-only actual D-087 contract × reserve matrix with H0 historical hard stop and reserve-execution proof.
+- `digital-protocell/crates/phase1-certifier/src/runtime.rs` — Gate-7 packaged-runtime build/copy/launch qualification with platform executable-path handling and fail-visible subprocess diagnostics.
+- `digital-protocell/experiments/generated/dcdev020r9r2/` — compact R9-R2 certifier, replay, fate, qualification, protocol, and manifest evidence.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r2/` — R9-R2 material-fate and certifier requalification documentation.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r3/conservation_reserve_decomposition.md` — R9-R3 observer-only contract × reserve decomposition, provisional classification, and preservation boundary.
+- `digital-protocell/experiments/generated/dcdev020r3r1/` — fresh R9-R3-R1 H0/V20/H1/V21 replay evidence and Gate-7 packaging diagnostics; prior R9-R3 evidence remains preserved.
+- `digital-protocell/crates/chemistry-core/src/metabolic_reserve.rs` — bounded R9-R4 observer-only reserve flux controls; default production path remains Full.
+- `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs` — additive R9-R4 observer-only A/R/build/membrane interference ledger; default production path remains Full.
+- `digital-protocell/crates/phase1-certifier/examples/dcdev020r9r4_reserve_interference_audit.rs` — exact 5,000-step V20/V21 control, four required reserve ablations, maintenance-priority shadow, and Gate-5 reserve preservation observer.
+- `digital-protocell/experiments/generated/dcdev020r9r4/` — compact R9-R4 protocol, qualification, and dense-ledger manifest; dense JSONL is external/local and hash-bound.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r4/` — R9-R4 observer-only reserve interference audit and fail-closed classification.
+- `digital-protocell/crates/chemistry-core/src/metabolic_reserve.rs` — R9-R5 observer-only frozen-store potential and capped-storage helpers; default D-091 reserve kernel remains unchanged.
+- `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs` — additive R9-R5 stock/flux/closure ledger and surplus/liquid diagnostic modes; production mode remains Full.
+- `digital-protocell/crates/phase1-certifier/examples/dcdev020r9r5_charge_liquidity_audit.rs` — exact 5,000-step FULL/STORE_OFF, surplus-only, liquid upper-bound, combined observer arms and actual D-087 shadow summaries.
+- `digital-protocell/experiments/generated/dcdev020r9r5/` — compact R9-R5 protocol, qualification, and report; dense rows remain local/external audit output.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r5/` — R9-R5 charge/liquidity protocol and provisional fail-closed disposition.
+- `digital-protocell/crates/phase1-certifier/examples/dcdev020r9r5_charge_liquidity_audit.rs` — R9-R5 preserved audit plus R9-R5-R1 pre-throttle liquidity counterfactual selected by `DCDEV020R9R5_R1`.
+- `digital-protocell/experiments/generated/dcdev020r9r5r1/` — compact R9-R5-R1 protocol, qualification, and local dense-ledger manifest.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r5r1/` — R9-R5-R1 Gate-7 repair, counterfactual definition, evidence, and provisional classification.
+- `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs` — bounded R9-R6 observer phase-order mode and additive phase ledger; production default remains `Full`.
+- `digital-protocell/crates/phase1-certifier/src/sim.rs` — R9-R6 mode selector, accumulator fields, and focused phase-order regression.
+- `digital-protocell/crates/phase1-certifier/examples/dcdev020r6_mobilize_first_store_last.rs` — exact 5,000-step FULL/shadow audit, actual D-087 replay, reserve-function checks, and compact report.
+- `digital-protocell/experiments/generated/dcdev020r9r6/` — compact R9-R6 report, protocol, qualification, and SHA-256 manifest; dense ledgers remain local/external.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r6/` — R9-R6 phase-order audit and corrected insufficient disposition; R9-R6-R1 closure evidence remains compact and append-only.
+- `digital-protocell/examples/dcdev020m1r2_starvation_law_audit.rs` — observer-only M1-R2 production-4x versus ordinary-decay starvation comparison, bounded continuation, conditional restoration, and provenance report.
+- `digital-protocell/experiments/generated/dcdev020m1r2/` — compact M1-R2 protocol, results, qualification, and manifest; dense trajectories remain uncommitted.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r2/` — M1-R2 starvation-law audit protocol, provenance boundary, and bounded classification.
+- `digital-protocell/examples/dcdev020m1r2r1_physical_failure_closure.rs` — observer-only exact M1-R2 endpoint replay, extended chemistry-path starvation, existing terminal-boundary detection, failure margins, and no-reset restoration.
+- `digital-protocell/experiments/generated/dcdev020m1r2r1/` — compact M1-R2-R1 protocol, results, qualification, and manifest; dense trajectories remain uncommitted.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r2r1/` — M1-R2-R1 physical-failure closure protocol, restoration boundary, and provisional classification.
+- `.github/workflows/dc-dev-020m1r2r1.yml` — scoped M1-R2-R1 governance, formatting, observer assay, fresh D-087, artifact verification, and preservation CI.
+- `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs` — versioned `ConservativeV3` candidate decay branch; `ConservativeV2` remains the selected production schema.
+- `digital-protocell/crates/phase1-certifier/src/sim.rs` — explicit V2/V3 candidate selector for qualification; default remains ConservativeV2.
+- `digital-protocell/examples/dcdev020m1r3_ordinary_decay_candidate.rs` — bounded V2/V3 parity, ordinary-starvation equivalence, topology-death, source-capacity, refeed, and artifact runner.
+- `digital-protocell/experiments/generated/dcdev020m1r3/` — compact ordinary-decay candidate qualification artifacts; dense CI outputs remain runtime evidence.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r3/ordinary_decay_candidate.md` — R3 candidate protocol, scope, result, and preservation boundary.
+- `.github/workflows/dc-dev-020m1r3.yml` — exact-head R3 candidate, V3/V2 D-087, artifact, and preservation CI.
+- `digital-protocell/crates/regulatory-core/src/coupled_resource.rs` — versioned opt-in R4 wrapper that preserves exact V1 finite-resource transport and applies same-step paired N/F to existing A+W.
+- `digital-protocell/examples/dcdev020m1r4_coupled_source_candidate.rs` — bounded R4 V1/reference/candidate replay, physical controls, closure checks, D-087 integration, and compact evidence writer.
+- `digital-protocell/experiments/generated/dcdev020m1r4/` — compact R4 protocol, result, qualification, and artifact manifest; dense runtime ledgers remain external/local evidence.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r4/` — R4 coupled-source candidate protocol and preservation boundary.
+- `.github/workflows/dc-dev-020m1r4.yml` — scoped R4 governance, formatting, candidate assay, D-087, artifact, preservation, and exact-head CI.
+- `digital-protocell/crates/regulatory-core/src/backing_reservoir.rs` — R5 world-side fixed-concentration finite backing reservoir that delegates all local transport to V1 and never replenishes.
+- `digital-protocell/examples/dcdev020m1r5_sustained_homeostasis.rs` — R5 8,000-step coupled, uncoupled, no-resource, and feed-then-remove qualification runner with closure and checkpoint evidence.
+- `digital-protocell/experiments/generated/dcdev020m1r5/` — compact R5 protocol/results/qualification/manifest; dense runtime evidence is archived on the shared drive.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r5/` — R5 sustained-homeostasis protocol and preservation boundary.
+- `.github/workflows/dc-dev-020m1r5.yml` — scoped R5 governance, reservoir, sustained-assay, D-087, preservation, and artifact-verification CI.
+- `digital-protocell/examples/dcdev020m1r6_full_runtime.rs` — R6 full packaged-runtime transport/reactions/mechanics/remesh/rebond integration, resource controls, bounded death continuation, and compact evidence writer.
+- `digital-protocell/experiments/generated/dcdev020m1r6/` — compact R6 protocol/results/qualification/manifest; dense runtime ledgers are written to governed shared storage.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6/` — R6 runtime integration protocol and evidence boundary.
+- `.github/workflows/dc-dev-020m1r6.yml` — scoped R6 governance, full-runtime assay, D-087, artifact, and preservation CI.
+- `digital-protocell/examples/dcdev020m1r6r1_geometry_material_closure_audit.rs` — observer-only S0-S5 full-runtime stage ledger, area/species attribution, plain/instrumented parity, mechanics-only and remesh-only isolation, and resource-contact chronology.
+- `digital-protocell/experiments/generated/dcdev020m1r6r1/` — compact R6-R1 protocol/results/qualification/manifest; dense stage ledger is archived in governed shared storage.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r1/` — R6-R1 geometry/material closure attribution protocol and provisional classification.
+- `.github/workflows/dc-dev-020m1r6r1.yml` — scoped R6-R1 governance, observer audit, D-087, preservation, and artifact-verification CI.
+- `digital-protocell/examples/dcdev020m1r6r1_geometry_material_closure_audit.rs` — R6-R1-R1 portable scientific protocol, execution metadata, within-platform parity, semantic checkpoint, isolation, and contact-invariance audit.
+- `digital-protocell/experiments/generated/dcdev020m1r6r1r1/` — immutable R6-R1-R1 compact protocol/results/qualification/manifest namespace; the failed R6-R1 namespace remains preserved.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r1r1/` — R6-R1-R1 cross-platform closure validation protocol and pending handoff.
+- `.github/workflows/dc-dev-020m1r6r1.yml` — scoped R6-R1-R1 portable protocol, cross-platform invariant verifier, D-087, preservation, and artifact CI.
+- `digital-protocell/examples/dcdev020m1r6r2r3_starvation_semantics_audit.rs` — observer-only R6-R2-R3 starvation-semantics audit, actual D-087 replay, concentration/amount/geometry chronology, 150,000-step continuation, and geometry-frozen candidate shadow.
+- `\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r3\\compact\\` — compact R6-R2-R3 audit evidence and SHA-256 manifest; dense runtime ledgers remain governed external evidence.
+
+- `digital-protocell/crates/phase1-certifier/src/gc_preservation.rs` — versioned causal GC preservation qualification predicates and unit tests; historical D-087 thresholds remain untouched.
+- `digital-protocell/examples/dcdev020m1r6r2r4_gc_preservation_qualification.rs` — actual D-087 control/candidate replay, decomposition, bounded causal starvation extension, compact evidence writer, and classification.
+- `digital-protocell/experiments/generated/dcdev020m1r6r2r4/` — compact protocol, results, qualification, preservation, and SHA-256 manifest; dense runtime evidence remains on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r2r4/` — GC preservation qualification protocol and handoff.
+- `.github/workflows/dc-dev-020m1r6r2r4.yml` — scoped governance, qualifier, frozen-suite preservation, artifact verification, and exact-head CI.
+- `\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r4\\compact\\` — canonical compact GC preservation evidence; dense ledgers remain governed external evidence.
+- `digital-protocell/examples/dcdev020m1r6r3_full_runtime_m1_certification.rs` — observer-only full-runtime M1 certification with stage closure, sustained fed/deprivation/withdrawal arms, physical-loss refeed, and fail-closed classification.
+- `digital-protocell/experiments/generated/dcdev020m1r6r3/` — compact R6-R3 protocol/results/qualification/preservation/manifest and D-087 preservation manifests; dense ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3/` — full-runtime M1 certification protocol and handoff.
+- `.github/workflows/dc-dev-020m1r6r3.yml` — scoped R6-R3 governance, exact runtime assay, D-087 preservation, fail-closed verification, and remote CI.
+- `\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3\\` — canonical dense R6-R3 runtime ledgers; compact authority remains in Git.
+- `digital-protocell/crates/chemistry-core/src/mesh_contracts.rs` — observer-only versioned accounting-area selection for HistoricalV1, ConservativeV2, and GeometryConservativeV3.
+- `digital-protocell/crates/chemistry-core/tests/d098_geometry_material_conservation.rs` — GC sub-floor snapshot identity, strict conservation, and historical-floor preservation tests.
+- `digital-protocell/experiments/generated/dcdev020m1r6r3r1/` — append-only corrected R6-R3 compact protocol/results/qualification/preservation/manifest namespace; the invalid R6-R3 namespace remains preserved.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3r1/` — GC snapshot-area semantics correction protocol and handoff.
+- `.github/workflows/dc-dev-020m1r6r3.yml` — R6-R3-R1 observer-accounting correction, unchanged full-runtime replay, preservation, artifact, and exact-head CI.
+- `\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r1\\` — canonical dense corrected R6-R3 runtime ledgers; compact authority remains in Git.
+
+- `digital-protocell/examples/dcdev020m1r6r3_full_runtime_m1_certification.rs` — R2 observer-only reaction-area floor audit, transfer-level residual decomposition, exact-parameter frozen reaction replay, and conditioning measurements.
+- `digital-protocell/experiments/generated/dcdev020m1r6r3r2/` — compact R2 protocol/results/qualification/preservation/manifest namespace; dense ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3r2/` — R2 reaction-area semantics audit protocol and handoff.
+- `.github/workflows/dc-dev-020m1r6r3.yml` — scoped R2 governance, diagnostic verifier, preservation, artifact, and exact-head CI.
+- `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r2\\` — canonical dense R2 runtime ledgers; compact authority remains in Git.
+
+- `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs` — versioned reaction-area semantics: historical floor retained for V1/V2 and actual positive area used for GC material-transfer bridges.
+- `digital-protocell/examples/dcdev020m1r6r3_full_runtime_m1_certification.rs` — bounded R3 GC reaction-area repair qualification, long-runtime accounting, and preserved fed/recovery negative evidence.
+- `digital-protocell/experiments/generated/dcdev020m1r6r3r3/` — compact R3 protocol/results/qualification/preservation/manifest; dense runtime ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3r3/` — R3 GC reaction-area conservation repair protocol and handoff.
+- `.github/workflows/dc-dev-020m1r6r3r3.yml` — scoped R3 governance, sub-floor repair qualification, preservation, artifact verification, and exact-head CI.
+- `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r3\\` — canonical dense R3 runtime ledgers; compact authority remains in Git.
 
 ## External integration points
 
@@ -59,3 +212,52 @@
 - `digital-protocell/experiments/generated/` — evidence is append-only and provenance-bound.
 - `.git/` — Git metadata and object storage.
 - `.agent/legacy/` — preserved historical governance snapshots.
+
+- `digital-protocell/examples/dcdev020m1r6r4_homeostasis_contact_audit.rs` — observer-only actual, R5 static, geometry-frozen, contact-preserved upper-bound, contact chronology, flux-factor, demand, and no-reset recovery audit.
+- `digital-protocell/experiments/generated/dcdev020m1r6r4/` — compact R6-R4 protocol/results/qualification/manifest; dense ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r4/` — R6-R4 homeostasis/contact causal audit protocol and bounded interpretation.
+- `.github/workflows/dc-dev-020m1r6r4.yml` — scoped R6-R4 governance, D-087 preservation, observer audit, compact artifact verification, frozen-suite preservation, and exact-head CI.
+- `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r4\` — canonical dense R6-R4 runtime ledgers; compact authority remains in Git.
+
+- `digital-protocell/examples/dcdev020m1r6r5_embodied_sink_causal_decomposition.rs` — R6-R5 observer-only organized-material identity, sink chronology, matched-source clones, fixed sink knockouts, conditional pairwise probes, and no-reset recovery shadows.
+- `digital-protocell/experiments/generated/dcdev020m1r6r5/` — compact R6-R5 protocol/results/qualification/preservation/manifest; dense ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r5/` — R6-R5 embodied-sink causal decomposition protocol and provisional result.
+- `.github/workflows/dc-dev-020m1r6r5.yml` — scoped R6-R5 governance, R6-R4 reproduction, fixed diagnostic decomposition, D-087, preservation, artifact verification, and exact-head CI.
+- `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r5\` — canonical dense R6-R5 runtime ledgers; compact authority remains in Git.
+
+- `digital-protocell/examples/dcdev020m1r6r6_source_geometry_state_coupling_audit.rs` — observer-only R6-R6 source-history/front-loading and moving-geometry structural-cycle diagnostic with matched schedules, material-time integrals, factor shadows, and recovery correspondence.
+- `digital-protocell/experiments/generated/dcdev020m1r6r6/` — compact R6-R6 protocol/results/qualification/preservation/manifest; dense ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r6/` — R6-R6 source-geometry state-coupling audit protocol and provisional interpretation.
+- `.github/workflows/dc-dev-020m1r6r6.yml` — scoped R6-R6 governance, accepted-reference reproduction, equal-total source-history probe, matched geometry decomposition, preservation, compact artifact verification, and exact-head diagnostic CI.
+- `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r6\` — canonical dense R6-R6 runtime ledgers; compact authority remains in Git.
+
+- `digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs` — optional reference-length mechanics helpers for the observer-only R6-R7 shadow; default mechanics path remains unchanged.
+- `digital-protocell/crates/chemistry-core/src/mesh_reactions.rs` — optional reference-length structural build/turnover helpers for the observer-only R6-R7 shadow; default reaction path remains unchanged.
+- `digital-protocell/examples/dcdev020m1r6r7_reference_geometry_coupling_decision.rs` — R6-R7 static/current/reference-decoupled arms, no-reset recovery, closure, and focused split/merge lineage test.
+- `digital-protocell/experiments/generated/dcdev020m1r6r7/` — compact R6-R7 protocol/results/qualification/preservation/manifest; dense runtime ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r7/` — R6-R7 reference-geometry coupling decision protocol and provisional result.
+- `.github/workflows/dc-dev-020m1r6r7.yml` — scoped R6-R7 governance, D-087 preservation, diagnostic execution, compact verification, and exact-head CI.
+- `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r7\` — canonical dense R6-R7 runtime ledgers; compact authority remains in Git.
+
+- `digital-protocell/examples/dcdev020m1replan001_age_structured_structural_turnover_feasibility.rs` — diagnostic two-age structural-material turnover shadow, controls, recovery, starvation degradation, damage, and compact evidence.
+- `digital-protocell/experiments/generated/dcdev020m1replan001/` — compact age-structured feasibility protocol/results/qualification/preservation/manifest; dense runtime ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan001/` — age-structured structural-turnover feasibility protocol and handoff.
+- `.github/workflows/dc-dev-020m1replan001.yml` — scoped age-structured diagnostic, preservation, artifact, and exact-head CI.
+- `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1replan001\` — canonical dense age-structured diagnostic ledgers; compact authority remains in Git.
+
+- `digital-protocell/examples/dcdev020m1replan002_maturation_coupled_load_bearing_feasibility.rs` — observer-only maturation/load-bearing candidate with static/current/age-only controls, B/C/D recovery, starvation, damage, material identity, and mature-reference evidence.
+- `digital-protocell/experiments/generated/dcdev020m1replan002/` — compact REPLAN-002 protocol/results/qualification/preservation/manifest; dense runtime ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002/` — REPLAN-002 diagnostic protocol and bounded interpretation.
+- `.github/workflows/dc-dev-020m1replan002.yml` — scoped REPLAN-002 governance, D-087 preservation, diagnostic execution, compact verification, and exact-head CI.
+- `digital-protocell/examples/dcdev020m1replan002r5_v4_irreversible_physical_death.rs` — observer-only fixed-checkpoint starvation replay and no-reset finite N/F refeed qualification for S0/S1/S2/S3/S4.
+- `digital-protocell/experiments/generated/dcdev020m1replan002r5/` — compact R5 protocol/results/qualification/preservation/manifest; dense ledgers remain on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r5/` — R5 physical-death qualification protocol and fail-closed interpretation.
+- `.github/workflows/dc-dev-020m1replan002r5.yml` — scoped R5 governance, D-087 preservation, fixed-checkpoint qualification, artifact verification, and exact-head CI.
+- `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5/` — canonical dense R5 starvation and refeed ledgers; compact authority remains in Git.
+- `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1replan002\` — canonical dense REPLAN-002 runtime ledgers; compact authority remains in Git.
+
+- `digital-protocell/examples/dcdev020m1replan002r5r1_zero_area_closure_refeed_semantics_audit.rs` — observer-only R5-R1 stage closure, mechanics-return, checkpoint-validity, and refeed-semantics audit.
+- `digital-protocell/experiments/generated/dcdev020m1replan002r5r1/` — compact R5-R1 protocol, caller audit, stage summary, first-failure, zero-area attribution, checkpoint validity, refeed semantics, preservation, qualification, and manifest; dense ledger remains on Atlas.
+- `digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r5r1/` — R5-R1 test-integrity audit documentation and bounded interpretation.
+- `.github/workflows/dc-dev-020m1replan002r5r1.yml` — scoped R5-R1 governance, D-087 preservation, observer audit, artifact verification, and exact-head CI.
+- `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r1/` — canonical dense R5-R1 stage ledger; compact authority remains in Git.

@@ -1,0 +1,36 @@
+{
+  "net_structural_loss": {
+    "v2": -70.82553614113897,
+    "v3": -68.87751683403663,
+    "v4": -47.569796357929235
+  },
+  "v2": {
+    "final_total": 13.101233878701333,
+    "maturation": 0.0,
+    "mature_at_removal": 83.9267700198403,
+    "mature_turnover": 82.46077080052895,
+    "production": 11.635234659389747,
+    "young_at_removal": 0.0
+  },
+  "v3": {
+    "final_total": 15.049253185803678,
+    "maturation": 0.0,
+    "mature_at_removal": 83.9267700198403,
+    "mature_turnover": 87.30067148233664,
+    "production": 18.423154648299608,
+    "young_at_removal": 0.0
+  },
+  "v4": {
+    "final_mature": 27.603111312815482,
+    "final_total": 36.62413505096765,
+    "final_young": 9.02102373815217,
+    "fraction_young_at_endpoint": 0.24631363240655765,
+    "fraction_young_at_removal": 0.025500850914768707,
+    "maturation": 26.922945344348868,
+    "mature_at_removal": 82.04691451611032,
+    "mature_turnover": 81.36674854764374,
+    "maximum_young_fraction": 0.2592063387022042,
+    "production": 33.79695218971461,
+    "young_at_removal": 2.147016892786542
+  }
+}

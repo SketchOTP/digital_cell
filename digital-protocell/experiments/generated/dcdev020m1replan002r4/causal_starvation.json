@@ -1,0 +1,15 @@
+{
+  "evidence": {
+    "extension_bound": 150000,
+    "late_organized_material_max": 126.25553962492748,
+    "observer_viability_loss_step": 6130,
+    "organized_material_entry": 126.25553962492748,
+    "organized_material_late": 29.51187358387537,
+    "post_switch_n_delivery": 0.0
+  },
+  "no_resource_recovery": true,
+  "observer_viability_loss_within_bound": true,
+  "passes_existing_predicate": true,
+  "schema": "dcdev020m1replan002r4_causal_starvation_v1",
+  "starvation_material_decline": true
+}

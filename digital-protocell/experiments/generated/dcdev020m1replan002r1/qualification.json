@@ -1,0 +1,13 @@
+{
+  "classification": "M1_MATURATION_COUPLED_PRODUCTION_PRESERVATION_REGRESSION",
+  "d087_v2": true,
+  "d087_v3": true,
+  "d087_v4": false,
+  "directive": "DC-DEV-020-M1-REPLAN-002-R1-MATURATION-COUPLED-PRODUCTION-CANDIDATE-QUALIFICATION-001",
+  "fed_homeostasis": true,
+  "material_closure": true,
+  "next_execution_started": false,
+  "recovery": true,
+  "shadow_parity": true,
+  "starvation_decline": true
+}

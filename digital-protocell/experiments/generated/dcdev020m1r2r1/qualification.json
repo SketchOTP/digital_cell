@@ -1,0 +1,21 @@
+{
+  "chemistry_core_changed": false,
+  "classification": "M1_ORDINARY_DECAY_IRREVERSIBLE_FAILURE_ESTABLISHED",
+  "dc_dev_021_authorized": false,
+  "directive": "DC-DEV-020-M1-R2-R1-PHYSICAL-FAILURE-CLOSURE-001",
+  "e0_exact_r2_endpoint_reproduction": true,
+  "e1_failure_margin_instrumentation": true,
+  "e2_extended_starvation": true,
+  "e3_no_reset_restoration": true,
+  "e4_fresh_d087_required": "PENDING_SEPARATE_CERTIFIER_STAGE",
+  "e4_strict_material_closure": true,
+  "m1_production_change_authorized": false,
+  "m2_authorized": false,
+  "next_execution_started": false,
+  "observer_only": true,
+  "parameter_search": false,
+  "production_biology_changed": false,
+  "recycling": false,
+  "recycling_authorized": false,
+  "starting_head": "bc65098c3d26777aca2d1da5dab8cc118ecc6e19"
+}

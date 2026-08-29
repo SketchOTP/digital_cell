@@ -1,0 +1,24 @@
+{
+  "accepted_r8_ci": "32195720217",
+  "accepted_r8_head": "5b314792fe896504f6f8b99218ba48f0328de9f0",
+  "clean_scientific_base": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "directive": "DC-DEV-020-R8-R1",
+  "observer_only": true,
+  "p3_states": 960,
+  "p4_states": 960,
+  "perturbations": [
+    "A_minus=A*exp(-0.01)",
+    "A_base=A",
+    "A_plus=A*exp(+0.01)"
+  ],
+  "production_integration": false,
+  "r5_sha256": "4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585",
+  "r5_states": 4800,
+  "r7_on_policy_states": 480,
+  "r7_sha256": "abdaea6d075c700e36d14d369dba62982f4a65cea47d2d1f162b5dfe8afa59f8",
+  "r8_sha256": "12b41f27c928635899a7ea3a8d496cfdd3af7d3fd83aaa93024724663e2df9ff",
+  "refit": false,
+  "root_drift_tolerance": 1e-6,
+  "root_relative_tolerance": 1e-6,
+  "source_commit": "d50037e53d041d8b06895553933c3b0a78c7a024"
+}

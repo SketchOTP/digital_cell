@@ -8,7 +8,7 @@ use std::env;
 use std::path::Path;
 
 use crate::frozen::{
-    frozen_identity, frozen_reactions, frozen_transport, verify_frozen_center, FROZEN_CENTER,
+    frozen_identity, frozen_transport, verify_frozen_center, FROZEN_CENTER,
     FROZEN_COMMIT,
 };
 use crate::metrics::{RETENTION_MIN, E_INV};
@@ -485,7 +485,7 @@ pub fn gate5_ablations() -> (GateResult, serde_json::Value) {
     for name in names {
         let mut mesh = seed_mesh(14.0, 1);
         run_coupled(&mut mesh, steps(200), true, true);
-        let mut react = frozen_reactions();
+        let mut react = reaction_params_for(&mesh);
         apply_ablation(name, &mut react, &mut mesh);
         let mech = FROZEN_CENTER;
         let transport = frozen_transport();

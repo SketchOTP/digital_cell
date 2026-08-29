@@ -1,0 +1,46 @@
+{
+  "directive": "DC-DEV-020-R9-R5",
+  "starting_head": "08e1c45b11892e0b5533b11c74f175ee84d243ed",
+  "branch": "strategy/dc-dev-020r9-mesh-contract-requalification",
+  "pr": 44,
+  "observer_only": true,
+  "contract": "ConservativeV2",
+  "reserve": "D-091 unchanged",
+  "seed": 2,
+  "accepted_steps": 5000,
+  "gate1": {
+    "required_fields": [
+      "a_stock_entering",
+      "r_stock_entering",
+      "a_produced",
+      "a_to_c",
+      "a_decayed",
+      "a_to_m",
+      "a_to_l",
+      "r_to_a",
+      "r_to_w",
+      "a_to_r",
+      "new_a_surplus",
+      "net_activation_equivalent",
+      "same_step_new_a_fraction",
+      "pre_existing_a_fraction"
+    ],
+    "windows": ["0-999", "2000-2999", "4000-4999"]
+  },
+  "arms": [
+    {"id": "FULL", "mode": "frozen D-091 ordering"},
+    {"id": "STORE_OFF", "mode": "Gate-1 reference"},
+    {"id": "SURPLUS_ONLY_STORE", "mode": "A_to_R <= min(frozen potential, positive same-step surplus)"},
+    {"id": "LIQUID_RESERVE_UB", "mode": "frozen reserve plus instantaneous 1:1 R substitute for existing M/L A demand"},
+    {"id": "SURPLUS_ONLY_STORE_LIQUID_RESERVE_UB", "mode": "independent arms combined only after both fail"}
+  ],
+  "frozen_inputs": {
+    "mesh_seed_radius": 14.0,
+    "mechanics": "FROZEN_CENTER",
+    "transport": "frozen_transport",
+    "production_parameters_changed": false,
+    "new_targets_or_controller": false,
+    "new_state": false
+  },
+  "dense_ledger_storage": "local/external target output; compact committed evidence only"
+}

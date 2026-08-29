@@ -1,0 +1,15 @@
+{
+  "dense_output": "\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1replan002",
+  "directive": "DC-DEV-020-M1-REPLAN-002-MATURATION-COUPLED-LOAD-BEARING-FEASIBILITY-001",
+  "files": [
+    "protocol.json",
+    "results.json",
+    "qualification.json",
+    "preservation.json",
+    "artifact_manifest.json"
+  ],
+  "schema": "dcdev020m1replan002_manifest_v1",
+  "sha256": "computed-by-workflow",
+  "shared_drive_required": true,
+  "starting_head": "92075021ae1f4c9917f7ace9b160e5694e001de2"
+}

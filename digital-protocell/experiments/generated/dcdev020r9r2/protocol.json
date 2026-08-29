@@ -1,0 +1,19 @@
+{
+  "classification_authority": "EXACT_PROTOCOL_REPLAYS",
+  "contract": "MeshContractVersion::ConservativeV2",
+  "cprod_deferred": "catalyst production zero, frozen turnover retained",
+  "dc_dev_021_authorized": false,
+  "directive": "DC-DEV-020-R9-R2",
+  "entry_head": "364599aea8d4a0def3964b1b299fe45edaaaa1b3",
+  "equation_lineage": "autopoietic_material_mesh_metabolic_reserve_v1",
+  "exact_replay_report": "experiments/generated/dcdev020r9r2/r9r1_exact/manifest.json",
+  "finite_d016_steps": 480,
+  "normal": "frozen catalyst production and turnover",
+  "production_behavior_changed": false,
+  "production_chemistry_changed": false,
+  "source_contexts": [
+    "D016 bilinear source",
+    "sealed R6 NF power-law source"
+  ],
+  "sustained_steps": 8000
+}

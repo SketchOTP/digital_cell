@@ -1,0 +1,15 @@
+{
+  "artifact_files": [
+    "protocol.json",
+    "results.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "authoritative_result": "results.json",
+  "dense_ledgers_committed": false,
+  "directive": "DC-DEV-020-M1-R3-ORDINARY-DECAY-CANDIDATE-001",
+  "evidence_hash": "652ca084c1fd5f3b",
+  "next_execution_started": false,
+  "observer_only": true,
+  "starting_head": "1622b664a4a37b8a0ac4ea51fbc97ca71f9d853c"
+}

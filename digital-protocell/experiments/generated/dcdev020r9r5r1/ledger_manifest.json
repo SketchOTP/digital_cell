@@ -1,0 +1,12 @@
+{
+  "directive": "DC-DEV-020-R9-R5-R1",
+  "dense_ledger_policy": "dense rows are governed external/local audit evidence; compact report remains authoritative in Git",
+  "source_head": "f1fad5c65859f3a314102d3ec5a0751822a2f5ea",
+  "local_platform": "Windows packaged-runtime diagnostic; remote Linux CI is authoritative",
+  "rows": [
+    {"file": "full.jsonl", "bytes": 12661064, "sha256": "d573262f5a47ac38bd6a4d79e3d916134964c1b26e55233e954785fa34451626"},
+    {"file": "store_off.jsonl", "bytes": 11991806, "sha256": "1863af3d4dc11321e50665f0e1dc355e72cfc7779e60b313d680254b1076c319"},
+    {"file": "surplus_only_store.jsonl", "bytes": 12660209, "sha256": "fb23f925fb948b0335e2884424b34658225ea33549a1d61908c88c9933b7c3d4"},
+    {"file": "liquid_reserve_ub.jsonl", "bytes": 12926021, "sha256": "869f3afa161eec1c2f2553b1bf039935459637d90cf5e29b2bdc03aea97502c5"}
+  ]
+}

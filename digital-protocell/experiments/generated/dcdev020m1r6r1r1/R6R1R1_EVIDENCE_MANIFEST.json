@@ -1,0 +1,25 @@
+{
+  "compact": [
+    "protocol.json",
+    "execution_metadata.json",
+    "results.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "dense_path": "\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r1r1\\dense",
+  "dense_bytes": 72538151,
+  "dense_sha256": "65d3909d6d5048be7d265e6c139a9123dd8df7c5abb114cd0055ec934769f511",
+  "dense_storage_mode": "LOCAL_CANONICAL_SHARED_DRIVE",
+  "directive": "DC-DEV-020-M1-R6-R1-R1-CROSS-PLATFORM-CLOSURE-VALIDATION-001",
+  "next_execution_started": false,
+  "preserved_failed_r6r1_namespace": "dcdev020m1r6r1",
+  "schema": "dcdev020m1r6r1r1_evidence_manifest_v1",
+  "starting_head": "1d681694e0dd5334e8267a881a2e1c4bec71324d",
+  "compact_sha256": {
+    "artifact_manifest.json": "f876d6be9a02f51ac97ba2da74049d07becf6fe39f2620f47dfafe971e046dc2",
+    "execution_metadata.json": "fa9ef6f45df25d026af1a275f8088425c08fc4c905bdfc4b3b9ad7a76359266d",
+    "protocol.json": "bbf705c581ee04a805891da567b817b5e4c712b9382b9c8381d7ce5409418570",
+    "qualification.json": "2b6fe77c18bc4ced04a4fe661a551b4d7940f00eb79511d688e57eb4f185c331",
+    "results.json": "e8beb05c37029f1e85a9fb47ed924571664eeb9b5dcb649787cb967cd46fc5bf"
+  }
+}

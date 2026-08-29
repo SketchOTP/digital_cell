@@ -1,0 +1,18 @@
+{
+  "architect_acceptance": "PENDING",
+  "classification": "DCDEV020R8R4_SHARED_AFFINITY_NO_STABLE_HOMEOSTASIS",
+  "dc_dev_021_authorized": false,
+  "gate_0": true,
+  "gate_1": true,
+  "gate_2": true,
+  "gate_3": true,
+  "gate_4": true,
+  "gate_5": false,
+  "gate_6": false,
+  "gate_7": true,
+  "mesh_contract_version": "ConservativeV2",
+  "next_execution_started": false,
+  "production_behavior_changed": false,
+  "production_chemistry_changed": false,
+  "r9r1_orthogonal_contract_replay": true
+}

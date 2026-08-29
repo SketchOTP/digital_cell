@@ -1,0 +1,391 @@
+{
+  "arms": {
+    "a_product_feedback": {
+      "alive": true,
+      "arm": "dcdev020_a_product_feedback_counterfactual",
+      "final_mesh_hash": "bdcae8f6e6b267b5",
+      "final_state": {
+        "a": 0.2816811475240975,
+        "area": 70.8275261895172,
+        "e_available": 68.13222074555914,
+        "e_stored": 55.30767262894278,
+        "f": 0.1810672884762484,
+        "n": 0.1810672884762484,
+        "r": 0.4991970731969387,
+        "step": 480
+      },
+      "finite_nonnegative": true,
+      "initial": {
+        "a": 0.303630027599798,
+        "area": 70.8275261895172,
+        "e_available": 60.82781514212436,
+        "e_stored": 60.82781514212436,
+        "f": 0.0,
+        "n": 0.0,
+        "r": 0.5551860064286098,
+        "step": 0
+      },
+      "ledger": {
+        "a_produced": 2.741890690082671,
+        "f_consumed": 2.741890690082671,
+        "f_delivered": 15.566438806699026,
+        "max_conservation_error": 0.0,
+        "n_consumed": 2.741890690082671,
+        "n_delivered": 15.566438806699026,
+        "world_f_loss": 15.566438806699026,
+        "world_n_loss": 15.566438806699026
+      },
+      "resource_f_remaining": 4.311933299691482,
+      "resource_n_remaining": 4.311933299691482,
+      "trajectory_hash": "830832267bb3cecd"
+    },
+    "baseline": {
+      "alive": true,
+      "arm": "baseline_existing_nf_to_a",
+      "final_mesh_hash": "3a8f33ff53474fc2",
+      "final_state": {
+        "a": 0.2689270569757677,
+        "area": 70.8275261895172,
+        "e_available": 68.2112380112705,
+        "e_stored": 54.3584702923158,
+        "f": 0.19558452009022698,
+        "n": 0.19558452009022698,
+        "r": 0.4985495614630265,
+        "step": 480
+      },
+      "finite_nonnegative": true,
+      "initial": {
+        "a": 0.303630027599798,
+        "area": 70.8275261895172,
+        "e_available": 60.82781514212436,
+        "e_stored": 60.82781514212436,
+        "f": 0.0,
+        "n": 0.0,
+        "r": 0.5551860064286098,
+        "step": 0
+      },
+      "ledger": {
+        "a_produced": 1.6911055453576689,
+        "f_consumed": 1.6911055453576689,
+        "f_delivered": 15.543873264312364,
+        "max_conservation_error": 0.0,
+        "n_consumed": 1.6911055453576689,
+        "n_delivered": 15.543873264312364,
+        "world_f_loss": 15.543873264312364,
+        "world_n_loss": 15.543873264312364
+      },
+      "resource_f_remaining": 4.334498842078193,
+      "resource_n_remaining": 4.334498842078193,
+      "trajectory_hash": "4ef97fe219eecef2"
+    },
+    "d017_historical_observer": {
+      "alive": true,
+      "arm": "d017_historical_stateless_observer",
+      "final_mesh_hash": "3a8f33ff53474fc2",
+      "final_state": {
+        "a": 0.2689270569757677,
+        "area": 70.8275261895172,
+        "e_available": 68.2112380112705,
+        "e_stored": 54.3584702923158,
+        "f": 0.19558452009022698,
+        "n": 0.19558452009022698,
+        "r": 0.4985495614630265,
+        "step": 480
+      },
+      "finite_nonnegative": true,
+      "initial": {
+        "a": 0.303630027599798,
+        "area": 70.8275261895172,
+        "e_available": 60.82781514212436,
+        "e_stored": 60.82781514212436,
+        "f": 0.0,
+        "n": 0.0,
+        "r": 0.5551860064286098,
+        "step": 0
+      },
+      "ledger": {
+        "a_produced": 1.6911055453576689,
+        "f_consumed": 1.6911055453576689,
+        "f_delivered": 15.543873264312364,
+        "max_conservation_error": 0.0,
+        "n_consumed": 1.6911055453576689,
+        "n_delivered": 15.543873264312364,
+        "world_f_loss": 15.543873264312364,
+        "world_n_loss": 15.543873264312364
+      },
+      "resource_f_remaining": 4.334498842078193,
+      "resource_n_remaining": 4.334498842078193,
+      "trajectory_hash": "4ef97fe219eecef2"
+    }
+  },
+  "candidate": {
+    "K_I": 1.0,
+    "additional_capacity_ceiling": 1.0,
+    "law": "k_act_effective = k_act * (1 + K_I/(K_I + A))",
+    "need_or_error_read": false,
+    "resource_read": false,
+    "schema": "digital_cell_fast_a_product_feedback_v1",
+    "state": "none",
+    "target_read": false
+  },
+  "chemistry_behavior_changed": false,
+  "deprivation": {
+    "alive": true,
+    "arm": "common_baseline_deprivation",
+    "end": {
+      "a": 0.303630027599798,
+      "area": 70.8275261895172,
+      "e_available": 60.82781514212436,
+      "e_stored": 60.82781514212436,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.5551860064286098,
+      "step": 480
+    },
+    "finite_nonnegative": true,
+    "label": "starvation",
+    "ledger": {
+      "a_produced": 0.0,
+      "f_consumed": 0.0,
+      "f_delivered": 0.0,
+      "max_conservation_error": 0.0,
+      "n_consumed": 0.0,
+      "n_delivered": 0.0,
+      "world_f_loss": 0.0,
+      "world_n_loss": 0.0
+    },
+    "start": {
+      "a": 0.5,
+      "area": 70.8275261895172,
+      "e_available": 77.91027880846893,
+      "e_stored": 77.91027880846893,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.6,
+      "step": 0
+    }
+  },
+  "directive": "DC-DEV-020",
+  "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "gates": {
+    "gate_0_exact_entry_and_scope": true,
+    "gate_1_source_actuation_and_conservation": true,
+    "gate_2_historical_d017_replay": true,
+    "gate_3_new_feedback_counterfactual_finite_feed": false,
+    "gate_4_long_horizon_bounded": false,
+    "gate_5_repeated_starvation_refeeding": false
+  },
+  "historical_d017_replay": {
+    "accepted_runtime_candidate": false,
+    "alpha": 1.0,
+    "counterfactual_only": true,
+    "historical_candidate": "A_FIXED_EXTENT_COUNTERFACTUAL",
+    "historical_primary_conclusion": "D017RejectBothArchitectures",
+    "material_residual": 0.0,
+    "reason_not_replayed_as_production": "D-017 accepted evidence rejects runtime activation-yield deployment because frozen potential weights make alpha>0 potential-creating and all tested alpha values remain transport-ceiling limited",
+    "source": "chemistry-core::d017_comparison"
+  },
+  "implementation_authorized": false,
+  "long_horizon_observer": {
+    "alive": false,
+    "final": {
+      "a": 0.019993165307728166,
+      "area": 70.8275261895172,
+      "e_available": 1.7341138118551649,
+      "e_stored": 1.7341138118551649,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.004490448693064391,
+      "step": 8000
+    },
+    "finite_nonnegative": true,
+    "initial": {
+      "a": 0.303630027599798,
+      "area": 70.8275261895172,
+      "e_available": 60.82781514212436,
+      "e_stored": 60.82781514212436,
+      "f": 0.0,
+      "n": 0.0,
+      "r": 0.5551860064286098,
+      "step": 0
+    },
+    "steps": 8000
+  },
+  "next_execution_started": false,
+  "observer_only": true,
+  "production_behavior_changed": false,
+  "repeatability_observer": {
+    "cycles": [
+      {
+        "alive": true,
+        "arm": "common_baseline_deprivation",
+        "end": {
+          "a": 0.262748744571347,
+          "area": 70.8275261895172,
+          "e_available": 60.04628454555423,
+          "e_stored": 50.1695993785122,
+          "f": 0.13944698761064206,
+          "n": 0.13944698761064206,
+          "r": 0.44558602409289494,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "label": "starvation",
+        "ledger": {
+          "a_produced": 2.9478629495743105,
+          "f_consumed": 2.9478629495743105,
+          "f_delivered": 0.0,
+          "max_conservation_error": 0.0,
+          "n_consumed": 2.9478629495743105,
+          "n_delivered": 0.0,
+          "world_f_loss": 0.0,
+          "world_n_loss": 0.0
+        },
+        "start": {
+          "a": 0.2816811475240975,
+          "area": 70.8275261895172,
+          "e_available": 68.13222074555914,
+          "e_stored": 55.30767262894278,
+          "f": 0.1810672884762484,
+          "n": 0.1810672884762484,
+          "r": 0.4991970731969387,
+          "step": 0
+        }
+      },
+      {
+        "alive": true,
+        "arm": "dcdev020_a_product_feedback_counterfactual",
+        "final_mesh_hash": "e0c64de80bf672bc",
+        "final_state": {
+          "a": 0.30644065089188893,
+          "area": 70.8275261895172,
+          "e_available": 66.15031818590576,
+          "e_stored": 49.821108573528186,
+          "f": 0.23054891919681897,
+          "n": 0.23054891919681897,
+          "r": 0.39697384420453774,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "initial": {
+          "a": 0.262748744571347,
+          "area": 70.8275261895172,
+          "e_available": 60.04628454555423,
+          "e_stored": 50.1695993785122,
+          "f": 0.13944698761064206,
+          "n": 0.13944698761064206,
+          "r": 0.44558602409289494,
+          "step": 0
+        },
+        "ledger": {
+          "a_produced": 7.895999633053777,
+          "f_consumed": 7.895999633053777,
+          "f_delivered": 14.348524078389334,
+          "max_conservation_error": 0.0,
+          "n_consumed": 7.895999633053777,
+          "n_delivered": 14.348524078389334,
+          "world_f_loss": 14.348524078389334,
+          "world_n_loss": 14.348524078389334
+        },
+        "resource_f_remaining": 5.529848028001167,
+        "resource_n_remaining": 5.529848028001167,
+        "trajectory_hash": "ddaee9cb4a2f26f8"
+      },
+      {
+        "alive": true,
+        "arm": "common_baseline_deprivation",
+        "end": {
+          "a": 0.2868064061340546,
+          "area": 70.8275261895172,
+          "e_available": 57.375107470044554,
+          "e_stored": 45.48834353826877,
+          "f": 0.16782689684755744,
+          "n": 0.16782689684755744,
+          "r": 0.35543462620912014,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "label": "starvation",
+        "ledger": {
+          "a_produced": 4.442445680601807,
+          "f_consumed": 4.442445680601807,
+          "f_delivered": 0.0,
+          "max_conservation_error": 0.0,
+          "n_consumed": 4.442445680601807,
+          "n_delivered": 0.0,
+          "world_f_loss": 0.0,
+          "world_n_loss": 0.0
+        },
+        "start": {
+          "a": 0.30644065089188893,
+          "area": 70.8275261895172,
+          "e_available": 66.15031818590576,
+          "e_stored": 49.821108573528186,
+          "f": 0.23054891919681897,
+          "n": 0.23054891919681897,
+          "r": 0.39697384420453774,
+          "step": 0
+        }
+      },
+      {
+        "alive": true,
+        "arm": "dcdev020_a_product_feedback_counterfactual",
+        "final_mesh_hash": "c9de2419674fc4c4",
+        "final_state": {
+          "a": 0.33224931490133314,
+          "area": 70.8275261895172,
+          "e_available": 62.94746188869015,
+          "e_stored": 46.060165373154184,
+          "f": 0.23842843911207168,
+          "n": 0.23842843911207168,
+          "r": 0.318065158173844,
+          "step": 480
+        },
+        "finite_nonnegative": true,
+        "initial": {
+          "a": 0.2868064061340546,
+          "area": 70.8275261895172,
+          "e_available": 57.375107470044554,
+          "e_stored": 45.48834353826877,
+          "f": 0.16782689684755744,
+          "n": 0.16782689684755744,
+          "r": 0.35543462620912014,
+          "step": 0
+        },
+        "ledger": {
+          "a_produced": 9.000811777274143,
+          "f_consumed": 9.000811777274143,
+          "f_delivered": 14.001344361034313,
+          "max_conservation_error": 0.0,
+          "n_consumed": 9.000811777274143,
+          "n_delivered": 14.001344361034313,
+          "world_f_loss": 14.001344361034313,
+          "world_n_loss": 14.001344361034313
+        },
+        "resource_f_remaining": 5.877027745356227,
+        "resource_n_remaining": 5.877027745356227,
+        "trajectory_hash": "a7f1d9d90765edce"
+      }
+    ],
+    "third_over_first_recovery": null
+  },
+  "settled_hash": "c985c08ab226a061",
+  "source_actuation": {
+    "baseline_f_consumed": 1.6911055453576689,
+    "baseline_f_delivered": 15.543873264312364,
+    "baseline_n_consumed": 1.6911055453576689,
+    "baseline_n_delivered": 15.543873264312364,
+    "feedback_f_consumed": 2.741890690082671,
+    "feedback_f_delivered": 15.566438806699026,
+    "feedback_n_consumed": 2.741890690082671,
+    "feedback_n_delivered": 15.566438806699026,
+    "interpretation": "selected finite ecology and existing passive uptake are held fixed; only the local A-dependent activation multiplier differs",
+    "resource_center": [
+      4.8,
+      0.0
+    ],
+    "resource_conservation_error": 0.0,
+    "resource_mass_each": 19.878372106390554,
+    "resource_radius": 1.5
+  }
+}

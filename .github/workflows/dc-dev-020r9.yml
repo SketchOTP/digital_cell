@@ -1,0 +1,513 @@
+name: DC-DEV-020-R9 mesh contract requalification
+
+on:
+  push:
+    branches:
+      - strategy/dc-dev-020r9-mesh-contract-requalification
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+
+permissions:
+  contents: read
+
+jobs:
+  r9:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.89.0
+          components: rustfmt
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Governance validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+      - name: Formatting
+        working-directory: digital-protocell
+        run: >-
+          rustfmt +1.89.0 --edition 2021 --check
+          crates/chemistry-core/src/mesh_contracts.rs
+          crates/chemistry-core/src/material_mesh.rs
+          crates/chemistry-core/src/mesh_topology.rs
+          crates/chemistry-core/src/metabolic_reserve.rs
+          crates/chemistry-core/src/mesh_reactions.rs
+          crates/chemistry-core/src/d020r9_analysis.rs
+          crates/chemistry-core/examples/dcdev020r9_mesh_contract_requalification.rs
+          examples/dcdev020r9r1_exact_metabolic_replays.rs
+          examples/dcdev020r9r2_material_fate_audit.rs
+          crates/phase1-certifier/examples/dcdev020r9r3_conservation_reserve_decomposition.rs
+          crates/phase1-certifier/examples/dcdev020r9r4_reserve_interference_audit.rs
+          crates/phase1-certifier/examples/dcdev020r9r5_charge_liquidity_audit.rs
+          crates/phase1-certifier/src/runtime.rs
+          examples/dcdev020r8r2_catalyst_investment_payback.rs
+          examples/dcdev020r8r3_shared_affinity_helper.rs
+          examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs
+          crates/phase1-certifier/src/bin/phase1_certification.rs
+      - name: R9 contract tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --lib mesh_contracts -- --nocapture
+      - name: D-091 reserve composition tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+      - name: D-086 preservation tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d086_tests -- --nocapture
+      - name: D-088 preservation tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+      - name: Phase 1 preservation tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --test metrics_semantics -- --nocapture
+      - name: R9 evidence runner
+        working-directory: digital-protocell
+        run: cargo +1.89.0 run -p chemistry-core --example dcdev020r9_mesh_contract_requalification --quiet -- experiments/generated/dcdev020r9r1/mesh_contract
+      - name: Exact D-015 and D-016 replay
+        working-directory: digital-protocell
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev020r9r1_exact_metabolic_replays --quiet
+      - name: R9-R2 exact D-015 and D-016 replay
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R1_REPLAY_OUTPUT: experiments/generated/dcdev020r9r2/r9r1_exact
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev020r9r1_exact_metabolic_replays --quiet
+      - name: R9-R2 actual D087 ConservativeV2 certifier
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R2_V2: '1'
+          DCDEV020R9R3_CONTRACT: ConservativeV2
+          DCDEV020R9R3_RESERVE: '1'
+        run: >-
+          cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --quiet --
+          --output experiments/generated/dcdev020r9r2/actual_d087
+      - name: R9-R2 material-fate and sustained audit
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R2_V2: '1'
+          DCDEV020R9R3_CONTRACT: ConservativeV2
+          DCDEV020R9R3_RESERVE: '1'
+          DCDEV020R9R2_CERTIFIER_REPORT: experiments/generated/dcdev020r9r2/actual_d087/manifest.json
+          DCDEV020R9R2_REPLAY_REPORT: experiments/generated/dcdev020r9r2/r9r1_exact/manifest.json
+          DCDEV020R9R2_OUTPUT: experiments/generated/dcdev020r9r2
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev020r9r2_material_fate_audit --quiet
+      - name: R9-R3-R1 actual D087 contract x reserve matrix
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R3_OUTPUT: experiments/generated/dcdev020r3r1
+        run: cargo +1.89.0 run -p phase1-certifier --example dcdev020r9r3_conservation_reserve_decomposition --quiet
+      - name: Exact R8-R2 replay under ConservativeV2
+        working-directory: digital-protocell
+        run: env DCDEV020R9R1_V2=1 cargo +1.89.0 run -p regulatory-core --example dcdev020r8r2_catalyst_investment_payback --quiet
+      - name: Exact R8-R4 replay under ConservativeV2
+        working-directory: digital-protocell
+        run: >-
+          env DCDEV020R9R1_V2=1
+          DCDEV020R8R4_OUTPUT_ROOT=experiments/generated/dcdev020r9r1/r8r4_exact
+          cargo +1.89.0 run -p regulatory-core
+          --example dcdev020r8r4_shared_affinity_autogenous_cprod --quiet
+      - name: Verify R1 replay artifacts
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r9r1")
+          rows = json.loads((root / "exact_replays" / "results.json").read_text())
+          assert len(rows) == 7
+          assert all(row["result"]["closure_residual"] <= 1e-9 for row in rows)
+          assert all(row["result"]["reserve_rejected_steps"] == 0 for row in rows)
+          assert all(row["contract_version"] == "ConservativeV2" for row in rows)
+          protocol = json.loads((root / "r8r2_exact" / "protocol.json").read_text())
+          assert protocol["mesh_contract_version"] == "ConservativeV2"
+          assert protocol["r9r1_orthogonal_contract_replay"] is True
+          r8r4 = json.loads((root / "r8r4_exact" / "qualification.json").read_text())
+          assert r8r4["mesh_contract_version"] == "ConservativeV2"
+          assert r8r4["r9r1_orthogonal_contract_replay"] is True
+          matrix = json.loads((root / "mesh_contract" / "d087_gate_matrix.json").read_text())
+          assert len(matrix["gates"]) == 8
+          assert matrix["all_pass"] is True
+          print("DCDEV020R9R1_REPLAY_AND_D087_GATE_VERIFICATION_PASS")
+          PY
+      - name: Verify R9-R2 authoritative artifacts
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r9r2")
+          cert = json.loads((root / "actual_d087" / "manifest.json").read_text())
+          assert cert["mesh_contract"] == "ConservativeV2"
+          assert cert["reserve_enabled"] is True
+          cert_gates = [cert[f"gate{i}"]["pass"] for i in range(8)]
+          assert all(isinstance(value, bool) for value in cert_gates)
+          assert not all(cert_gates)
+          replay = json.loads((root / "r9r1_exact" / "manifest.json").read_text())
+          assert len(replay["rows"]) == 7
+          assert all(row["contract_version"] == "ConservativeV2" for row in replay["rows"])
+          assert all(row["result"]["closure_residual"] <= 1e-9 for row in replay["rows"])
+          fate = json.loads((root / "material_fate.json").read_text())
+          finite = fate["finite_d016"]
+          assert finite["organized_reconciliation_residual"] <= 1e-8
+          assert finite["closure_residual"] <= 1e-8
+          assert finite["fate"]["a_to_c"] >= 0
+          assert finite["fate"]["c_to_w"] >= 0
+          assert finite["fate"]["r_to_w"] >= 0
+          assert all(run["final_quarter_organized_slope"] < 0 for run in fate["sustained"].values())
+          qualification = json.loads((root / "qualification.json").read_text())
+          assert qualification["classification_authority"] == "EXACT_PROTOCOL_REPLAYS"
+          assert qualification["exact_d015_d016_replay_pass"] is True
+          assert qualification["actual_d087_gate_pass"] == cert_gates
+          assert qualification["actual_d087_all_pass"] is False
+          assert qualification["primary_classification"] == "DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION"
+          assert qualification["dc_dev_021_authorized"] is False
+          print("DCDEV020R9R2_AUTHORITATIVE_ARTIFACT_VERIFICATION_PASS")
+          PY
+      - name: Verify R9-R3-R1 decomposition and packaged-runtime artifacts
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r3r1")
+          protocol = json.loads((root / "protocol.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          assert protocol["directive"] == "DC-DEV-020-R9-R3"
+          assert protocol["starting_head"] == "b7be0e7476ad153f8657d832c9df629e522f09b9"
+          assert [arm["id"] for arm in protocol["matrix"]] == ["H0", "V20", "H1", "V21"]
+          assert qualification["starting_head"] == "b7be0e7476ad153f8657d832c9df629e522f09b9"
+          assert qualification["h0_historical_reproduction"] is True
+          assert qualification["h0_hard_stop"] is False
+          assert len(qualification["arms"]) == 4
+          expected = {
+              "h0": ("HistoricalV1", False),
+              "v20": ("ConservativeV2", False),
+              "h1": ("HistoricalV1", True),
+              "v21": ("ConservativeV2", True),
+          }
+          for arm in qualification["arms"]:
+              assert (arm["contract"], arm["reserve"]) == expected[arm["id"]]
+              assert len(arm["gates"]) == 8
+          assert qualification["arms"][0]["scientific_gates_pass"] is True
+          assert qualification["arms"][0]["gates"] == [True] * 8
+          assert qualification["arms"][1]["gates"] == [True] * 8
+          assert qualification["arms"][2]["gates"] == [True, False, False, False, False, True, True, True]
+          assert qualification["arms"][3]["gates"] == [True, False, False, False, False, True, True, True]
+          assert qualification["arms"][0]["r_m"] == qualification["arms"][1]["r_m"]
+          assert qualification["arms"][0]["r_b"] == qualification["arms"][1]["r_b"]
+          assert qualification["arms"][0]["r_c"] == qualification["arms"][1]["r_c"]
+          for arm in qualification["arms"][2:]:
+              assert arm["reserve_execution"]["rejected_steps"] == 0
+              assert arm["reserve_execution"]["a_to_r"] > 0
+              assert arm["reserve_execution"]["r_to_a"] > 0
+              assert arm["reserve_execution"]["r_to_w"] > 0
+          for arm_id in ("h0", "v20", "h1", "v21"):
+              runtime = json.loads((root / "matrix" / arm_id / "linux_runtime" / "report.json").read_text())
+              diagnostics = runtime["diagnostics"]
+              assert runtime["steps_run"] == 80000
+              assert runtime["snapshot_ok"] is True
+              assert diagnostics["build_exit_status"] == 0
+              assert diagnostics["binary_source_exists"] is True
+              assert diagnostics["binary_destination_exists"] is True
+              assert diagnostics["destination_executable"] is True
+              assert diagnostics["copy_error"] is None
+              assert diagnostics["binary_exit_status"] == 0
+              assert diagnostics["output_exists"] is True
+              assert diagnostics["snapshot_exists"] is True
+          assert qualification["r9r2_material_fate_preserved"] is True
+          assert qualification["recycling_authorized"] is False
+          assert qualification["dc_dev_021_authorized"] is False
+          assert qualification["next_execution_started"] is False
+          allowed = {
+              "DCDEV020R9R3_RESERVE_PHYSIOLOGY_CERTIFICATION_GAP_CONFIRMED",
+              "DCDEV020R9R3_CONSERVATIVE_CONTRACT_REGRESSION_CONFIRMED",
+              "DCDEV020R9R3_CONSERVATIVE_RESERVE_INTERACTION_REGRESSION",
+              "DCDEV020R9R3_MIXED_CERTIFICATION_REGRESSION",
+              "DCDEV020R9R3_CERTIFIER_HARNESS_DEFECT",
+          }
+          assert qualification["primary_classification"] in allowed
+          print("DCDEV020R9R3R1_DECOMPOSITION_AND_RUNTIME_ARTIFACT_VERIFICATION_PASS")
+          PY
+      - name: R9-R4 reserve interference audit
+        working-directory: digital-protocell
+        run: >-
+          cargo +1.89.0 run -p phase1-certifier
+          --example dcdev020r9r4_reserve_interference_audit --quiet --
+          --output experiments/generated/dcdev020r9r4
+      - name: Verify R9-R4 observer artifacts
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r9r4")
+          report = json.loads((root / "r9r4_report.json").read_text())
+          assert report["directive"] == "DC-DEV-020-R9-R4"
+          assert report["starting_head"] == "f9bc1d5bffe828b2599c85d4fcbbabdf7f3e3ff3"
+          assert report["horizon_steps"] == 5000
+          assert report["classification"] == "DCDEV020R9R4_STORAGE_CAUSAL_PRIORITY_INSUFFICIENT"
+          assert report["gate0"]["v20_gates_passed"] == 8
+          assert report["gate0"]["v21_gates_passed"] == 4
+          assert len(report["gate2"]) == 4
+          assert all(arm["accepted_steps"] == 5000 for arm in report["gate2"])
+          shadow = report["gate3"]["shadow"]
+          assert shadow["accepted_steps"] == 5000
+          assert shadow["ledger"]["a_to_r_before_later_demand"] == 0
+          assert report["gate3"]["qualification_restored"] is False
+          assert report["gate4"]["executed"] is False
+          assert report["gate5"]["replete_r_to_a_positive"] is True
+          assert report["gate5"]["starvation_r_to_a_positive"] is True
+          assert report["gate5"]["rejects_zero"] is True
+          assert report["gate5"]["strict_reserve_closure"] is True
+          assert report["production_chemistry_changed"] is False
+          assert report["production_behavior_changed"] is False
+          assert report["recycling_authorized"] is False
+          assert report["dc_dev_021_authorized"] is False
+          assert report["next_execution_started"] is False
+          print("DCDEV020R9R4_RESERVE_INTERFERENCE_ARTIFACT_VERIFICATION_PASS")
+          PY
+      - name: R9-R5 charge/liquidity audit
+        working-directory: digital-protocell
+        run: >-
+          cargo +1.89.0 run -p phase1-certifier
+          --example dcdev020r9r5_charge_liquidity_audit --quiet --
+          --output experiments/generated/dcdev020r9r5
+      - name: R9-R5 observer tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --lib sim::tests -- --nocapture
+      - name: Verify R9-R5 charge/liquidity artifacts
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r9r5")
+          report = json.loads((root / "r9r5_report.json").read_text())
+          protocol = json.loads((root / "protocol.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          assert report["directive"] == "DC-DEV-020-R9-R5"
+          assert report["starting_head"] == "08e1c45b11892e0b5533b11c74f175ee84d243ed"
+          assert report["horizon_steps"] == 5000
+          assert report["gate0"]["v20_all_pass"] is True
+          assert abs(report["gate0"]["full_r_m"] - 0.8398695202805284) <= 1e-9
+          assert abs(report["gate0"]["store_off_r_m"] - 1.0180981834599838) <= 1e-9
+          for key in ("gate2_surplus_only_store", "gate3_liquid_reserve_ub", "gate4_combined"):
+              if key == "gate4_combined" and not report["gate4_combined"]["executed"]:
+                  assert report["gate2_surplus_only_store"]["restored"] or report["gate3_liquid_reserve_ub"]["restored"]
+                  continue
+              arm = report[key]["arm"]
+              assert arm["accepted_steps"] == 5000
+              assert arm["exact_horizon"] is True
+              assert arm["reserve_function"]["replete_a_to_r"] > 0
+              assert arm["reserve_function"]["starvation_r_to_a"] > 0
+              assert arm["reserve_function"]["rejected_steps"] == 0
+              assert arm["reserve_function"]["strict_closure"] is True
+              assert len(report[key]["actual_d087"]["gates"]) == 8
+              assert report[key]["restored"] is False
+          assert report["gate2_surplus_only_store"]["arm"]["store_cap_respected"] is True
+          assert report["strict_closure"] is True
+          assert report["production_changes"] is False
+          assert report["recycling_authorized"] is False
+          assert report["dc_dev_021_authorized"] is False
+          assert report["next_execution_started"] is False
+          assert protocol["observer_only"] is True
+          assert qualification["primary_classification"] == report["classification"]
+          print("DCDEV020R9R5_CHARGE_LIQUIDITY_ARTIFACT_VERIFICATION_PASS")
+          PY
+      - name: R9-R5-R1 valid liquidity counterfactual audit
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R5_R1: '1'
+        run: >-
+          cargo +1.89.0 run -p phase1-certifier
+          --example dcdev020r9r5_charge_liquidity_audit --quiet --
+          --output experiments/generated/dcdev020r9r5r1
+      - name: Verify R9-R5-R1 diagnostic artifacts
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r9r5r1")
+          report = json.loads((root / "r9r5_report.json").read_text())
+          protocol = json.loads((root / "protocol.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          assert report["directive"] == "DC-DEV-020-R9-R5-R1"
+          assert report["starting_head"] == "f1fad5c65859f3a314102d3ec5a0751822a2f5ea"
+          assert report["horizon_steps"] == 5000
+          assert report["gate0"]["v20_gates"] == [True] * 8
+          assert report["gate0"]["v20_all_pass"] is True
+          assert abs(report["gate0"]["full_r_m"] - 0.8398695202805284) <= 1e-9
+          assert abs(report["gate0"]["store_off_r_m"] - 1.0180981834599838) <= 1e-9
+          arm = report["gate3_liquid_reserve_ub"]["arm"]
+          assert arm["mode"] == "LIQUID_RESERVE_PRETHROTTLE_UB"
+          assert arm["accepted_steps"] == 5000
+          assert arm["exact_horizon"] is True
+          assert arm["diagnostic_liquid_r_available"] > 0
+          assert arm["diagnostic_liquid_r_used"] > 0
+          assert arm["diagnostic_liquid_r_used_for_m"] > 0
+          assert arm["diagnostic_liquid_r_used_for_l"] > 0
+          assert arm["reserve_function"]["rejected_steps"] == 0
+          assert arm["reserve_function"]["strict_closure"] is True
+          assert report["gate3_liquid_reserve_ub"]["actual_d087"]["gates"] == [True, False, True, True, True, True, True, True]
+          assert report["gate3_liquid_reserve_ub"]["restored"] is False
+          assert report["strict_closure"] is True
+          assert report["production_changes"] is False
+          assert report["r9r5_architect_status"] == "REPLAN_NOT_ACCEPTED"
+          assert report["r9r5_outside_factorization_classification_retired"] is True
+          assert report["recycling_authorized"] is False
+          assert report["dc_dev_021_authorized"] is False
+          assert report["next_execution_started"] is False
+          assert protocol["observer_only"] is True
+          assert protocol["production_defaults_unchanged"] is True
+          assert protocol["counterfactual"]["acts_before_a_limited_m_l_rate_calculation"] is True
+          assert qualification["primary_classification"] == report["classification"]
+          assert report["classification"] == "DCDEV020R9R5R1_RESERVE_LIQUIDITY_CONTRIBUTORY_NOT_SUFFICIENT"
+          print("DCDEV020R9R5R1_LIQUIDITY_ARTIFACT_VERIFICATION_PASS")
+          PY
+      - name: R9-R6 mobilize-first/store-last phase-order audit
+        working-directory: digital-protocell
+        run: >-
+          cargo +1.89.0 run -p phase1-certifier
+          --example dcdev020r6_mobilize_first_store_last --quiet --
+          --output experiments/generated/dcdev020r9r6
+      - name: Verify R9-R6 phase-order artifacts
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r9r6")
+          report = json.loads((root / "r9r6_report.json").read_text())
+          protocol = json.loads((root / "protocol.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          manifest = json.loads((root / "ledger_manifest.json").read_text())
+          assert report["directive"] == "DC-DEV-020-R9-R6"
+          assert report["starting_head"] == "f1704acff5ca64e509a28c74af8cccbf76439ef2"
+          assert report["horizon_steps"] == 5000
+          assert report["gate0"]["v20_gates"] == [True] * 8
+          assert report["gate0"]["v20_all_pass"] is True
+          assert report["gate0"]["controls_match"] is True
+          assert abs(report["gate0"]["full_r_m"] - 0.8398695202805284) <= 1e-9
+          full = report["gate1_phase_order"]["full"]
+          shadow = report["gate1_phase_order"]["shadow"]
+          assert full["accepted_steps"] == shadow["accepted_steps"] == 5000
+          assert full["exact_horizon"] is shadow["exact_horizon"] is True
+          assert report["gate1_phase_order"]["same_frozen_release_loss_kernels"] is True
+          assert report["gate1_phase_order"]["same_frozen_store_kernel"] is True
+          assert report["gate1_phase_order"]["direct_r_to_m_or_l"] is False
+          assert shadow["ledger"]["reserve_r_to_a"] > 0
+          assert shadow["ledger"]["reserve_a_to_r"] > 0
+          assert shadow["ledger"]["a_before_final_storage"] >= 0
+          assert report["gate1_phase_order"]["strict_material_closure"] is True
+          assert report["gate4_actual_d087"]["shadow"]["gates"] == [True, False, False, False, False, True, True, True]
+          assert sum(report["gate4_actual_d087"]["shadow"]["gates"]) == 4
+          assert report["gate4_actual_d087"]["shadow"]["pass_count"] == 4
+          assert report["gate4_actual_d087"]["shadow"]["all_pass"] is False
+          rf = report["gate5_reserve_function"]
+          assert rf["replete_a_to_r"] > 0
+          assert rf["starvation_r_to_a"] > 0
+          assert rf["rejected_steps"] == 0
+          assert rf["strict_closure"] is True
+          assert rf["preserved"] is True
+          assert report["production_chemistry_changed"] is False
+          assert report["production_reserve_physiology_changed"] is False
+          assert report["recycling_authorized"] is False
+          assert report["dc_dev_021_authorized"] is False
+          assert report["next_execution_started"] is False
+          assert protocol["scope"] == "observer-only"
+          assert protocol["production_defaults_unchanged"] is True
+          assert protocol["shadow_semantics"]["direct_r_to_m_or_l"] is False
+          assert protocol["shadow_semantics"]["new_rates"] is False
+          assert protocol["shadow_semantics"]["controller_or_target"] is False
+          assert qualification["classification"] == report["classification"]
+          assert qualification["shadow_d087_gates"] == [True, False, False, False, False, True, True, True]
+          assert qualification["shadow_d087_pass_count"] == 4
+          assert manifest["source_head"] == report["starting_head"]
+          assert report["classification"] == "DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_INSUFFICIENT"
+          print("DCDEV020R9R6_PHASE_ORDER_ARTIFACT_VERIFICATION_PASS")
+          PY
+      - name: Upload compact R9-R6 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020r9r6-compact-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020r9r6/r9r6_report.json
+            digital-protocell/experiments/generated/dcdev020r9r6/protocol.json
+            digital-protocell/experiments/generated/dcdev020r9r6/qualification.json
+            digital-protocell/experiments/generated/dcdev020r9r6/ledger_manifest.json
+          include-hidden-files: false
+      - name: Upload compact R9-R2 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020r9r2-compact-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020r9r2/*.json
+            digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/manifest.json
+            digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/certification/report.json
+            digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/*/gate*.json
+            digital-protocell/experiments/generated/dcdev020r9r2/r9r1_exact/*.json
+            !digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/source_audit/**
+          include-hidden-files: false
+      - name: Upload compact R9-R3-R1 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020r3r1-compact-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020r3r1/protocol.json
+            digital-protocell/experiments/generated/dcdev020r3r1/qualification.json
+            digital-protocell/experiments/generated/dcdev020r3r1/matrix/*/manifest.json
+            digital-protocell/experiments/generated/dcdev020r3r1/matrix/*/metric_semantics/audit.json
+            digital-protocell/experiments/generated/dcdev020r3r1/matrix/*/certification/report.json
+            digital-protocell/experiments/generated/dcdev020r3r1/matrix/*/linux_runtime/report.json
+            digital-protocell/experiments/generated/dcdev020r3r1/matrix/*/*/gate*.json
+          include-hidden-files: false
+      - name: Upload compact R9-R4 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020r9r4-compact-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020r9r4/r9r4_report.json
+            digital-protocell/experiments/generated/dcdev020r9r4/gate0.json
+            digital-protocell/experiments/generated/dcdev020r9r4/gate5_reserve_preservation.json
+            digital-protocell/experiments/generated/dcdev020r9r4/protocol.json
+            digital-protocell/experiments/generated/dcdev020r9r4/qualification.json
+            digital-protocell/experiments/generated/dcdev020r9r4/ledger_manifest.json
+          include-hidden-files: false
+      - name: Upload compact R9-R5 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020r9r5-compact-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020r9r5/r9r5_report.json
+            digital-protocell/experiments/generated/dcdev020r9r5/protocol.json
+            digital-protocell/experiments/generated/dcdev020r9r5/qualification.json
+            digital-protocell/experiments/generated/dcdev020r9r5/ledger_manifest.json
+          include-hidden-files: false
+      - name: Upload compact R9-R5-R1 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020r9r5r1-compact-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020r9r5r1/r9r5_report.json
+            digital-protocell/experiments/generated/dcdev020r9r5r1/protocol.json
+            digital-protocell/experiments/generated/dcdev020r9r5r1/qualification.json
+            digital-protocell/experiments/generated/dcdev020r9r5r1/ledger_manifest.json
+          include-hidden-files: false

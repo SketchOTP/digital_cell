@@ -1,0 +1,25 @@
+{
+  "directive": "DC-DEV-020-R9-R6",
+  "starting_head": "f1704acff5ca64e509a28c74af8cccbf76439ef2",
+  "branch": "strategy/dc-dev-020r9-mesh-contract-requalification",
+  "pr": 44,
+  "horizon_steps": 5000,
+  "seed": 2,
+  "scope": "observer-only",
+  "arms": ["FULL", "MOBILIZE_FIRST_STORE_LAST"],
+  "shadow_semantics": {
+    "release_and_loss_phase": "existing frozen D-091 R→A and R→W kernels before productive chemistry",
+    "productive_phase": "existing N/F activation, catalyst, decay, structural M, and membrane L chemistry using A only",
+    "store_phase": "existing frozen D-091 A→R kernel after productive chemistry",
+    "direct_r_to_m_or_l": false,
+    "new_rates": false,
+    "parameter_sweep": false,
+    "controller_or_target": false
+  },
+  "production_defaults_unchanged": true,
+  "production_chemistry_changed": false,
+  "production_reserve_physiology_changed": false,
+  "recycling_authorized": false,
+  "dc_dev_021_authorized": false,
+  "next_execution_started": false
+}

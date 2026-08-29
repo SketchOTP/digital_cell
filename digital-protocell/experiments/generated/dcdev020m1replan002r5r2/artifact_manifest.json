@@ -1,0 +1,16 @@
+{
+  "canonical_dense_root": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r2/",
+  "dense_output": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r2/dense/local",
+  "directive": "DC-DEV-020-M1-REPLAN-002-R5-R2-V4-GC-TRANSPORT-AMOUNT-CONSERVATION-REPAIR-001",
+  "files": [
+    "protocol.json",
+    "transport_contract.json",
+    "integrated_valid_prefix.json",
+    "qualification.json",
+    "preservation.json",
+    "artifact_manifest.json"
+  ],
+  "next_execution_started": false,
+  "schema": "dcdev020m1replan002r5r2_manifest_v1",
+  "starting_head": "4b1a82877246c58ba21464963eb5bc4cb2a535cf"
+}

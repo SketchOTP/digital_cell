@@ -1,0 +1,5 @@
+{
+  "pass": false,
+  "detail": "basin_sizes=0/3 snap_ok=true mem_alive=true st_alive=true ruptured=true starved=true no_respawn=true",
+  "failure": "D087_D086_REPRODUCTION_FAILURE"
+}

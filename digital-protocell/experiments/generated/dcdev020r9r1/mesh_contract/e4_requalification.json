@@ -1,0 +1,9 @@
+{
+  "d087_conservative_contract_smoke": "D087_CONSERVATIVE_CONTRACT_SMOKE_PASS",
+  "d087_material_closure": true,
+  "d087_observer_only_death": true,
+  "d087_damage_path_executed": true,
+  "d088_conservative_fission_api": "D088_CONSERVATIVE_FISSION_PATH_EXERCISED",
+  "d088_partition_accounting": true,
+  "d088_daughters_closed": true
+}

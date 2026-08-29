@@ -1,0 +1,12 @@
+{
+  "directive": "DC-DEV-020-R9-R5",
+  "dense_ledger_policy": "dense rows are governed external/local audit evidence; compact report remains authoritative in Git",
+  "source_head": "08e1c45b11892e0b5533b11c74f175ee84d243ed",
+  "rows": [
+    {"file": "full.jsonl", "bytes": 12111064, "sha256": "821bb774b1d13b6aafd960c679ddad7ecf905d4e11db0603f9b7b63ee69173ff"},
+    {"file": "store_off.jsonl", "bytes": 11441806, "sha256": "d9939ecadbd060a94addac95eebdb46fbfa4acc29247d7d92c19fcb098dfb6a3"},
+    {"file": "surplus_only_store.jsonl", "bytes": 12110209, "sha256": "db520016dd50b5cb9937a1466d5c99c36a35d2136b353fd3784a341235400115"},
+    {"file": "liquid_reserve_ub.jsonl", "bytes": 12111064, "sha256": "821bb774b1d13b6aafd960c679ddad7ecf905d4e11db0603f9b7b63ee69173ff"},
+    {"file": "surplus_only_store_liquid_reserve_ub.jsonl", "bytes": 12110209, "sha256": "db520016dd50b5cb9937a1466d5c99c36a35d2136b353fd3784a341235400115"}
+  ]
+}

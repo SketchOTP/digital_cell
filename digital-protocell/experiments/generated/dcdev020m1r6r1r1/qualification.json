@@ -1,0 +1,19 @@
+{
+  "classification": "M1_RUNTIME_GEOMETRY_MASS_COUPLING_CONFIRMED",
+  "directive": "DC-DEV-020-M1-R6-R1-R1-CROSS-PLATFORM-CLOSURE-VALIDATION-001",
+  "e0_authority": true,
+  "e1_stage_ledger": true,
+  "e2_isolation": {
+    "mechanics_only": true,
+    "rebond": "NOT_EXERCISED",
+    "remesh_only": true,
+    "within_platform_observer_parity": true
+  },
+  "e3_cumulative_attribution": true,
+  "e4_preservation": "REMOTE_CI_REQUIRED",
+  "e5_remote": "PENDING",
+  "execution_storage_mode": "LOCAL_CANONICAL_SHARED_DRIVE",
+  "next_execution_started": false,
+  "production_biology_changed": false,
+  "shared_drive_dense_evidence": true
+}

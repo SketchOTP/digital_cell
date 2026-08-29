@@ -1,0 +1,18 @@
+{
+  "classification": "M1_FULL_RUNTIME_EMBODIED_DEMAND_DOMINANT",
+  "directive": "DC-DEV-020-M1-R6-R4-HOMEOSTASIS-CONTACT-CAUSAL-AUDIT-001",
+  "e0_authority": true,
+  "e10_recovery_decomposition": false,
+  "e11_preservation": true,
+  "e1_exact_reproduction": true,
+  "e2_r5_static_reference": true,
+  "e3_contact_chronology": true,
+  "e4_uptake_factor_decomposition": true,
+  "e5_resource_opportunity_shadow": false,
+  "e6_geometry_frozen": true,
+  "e7_contact_preserved_upper_bound": false,
+  "e8_embodied_demand": true,
+  "e9_causal_order": true,
+  "next_execution_started": false,
+  "observer_only": true
+}

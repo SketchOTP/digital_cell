@@ -1,0 +1,17 @@
+{
+  "classification_basis": "DCDEV020R8_PRODUCT_FEEDBACK_TOPOLOGY_INCOMPATIBLE",
+  "parameter_selection": "none; no midpoint or final pair selected",
+  "predicted_crossing_a_range": null,
+  "reciprocal": {
+    "area": null,
+    "bounded": false,
+    "feasible": false,
+    "k_a_range": null,
+    "positive_interior": false,
+    "u_range": null,
+    "v_fb_range": null,
+    "v_range": null,
+    "vertex_count": 0,
+    "vertices": []
+  }
+}

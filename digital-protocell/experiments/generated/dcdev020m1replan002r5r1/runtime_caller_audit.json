@@ -1,0 +1,33 @@
+{
+  "mechanics_step": [
+    {
+      "class": "QUALIFICATION_HARNESS",
+      "false_handling": "CONTINUE / IGNORE",
+      "path": "examples/dcdev020m1replan002r5_v4_irreversible_physical_death.rs"
+    },
+    {
+      "class": "DIAGNOSTIC_ONLY",
+      "false_handling": "CONTINUE / IGNORE",
+      "path": "examples/dcdev020m1replan002r4_v4_contract_aware_preservation.rs"
+    },
+    {
+      "class": "QUALIFICATION_HARNESS",
+      "false_handling": "STOP with error",
+      "path": "examples/dcdev020m1replan002r1_maturation_coupled_production_candidate.rs"
+    },
+    {
+      "class": "AUTHORITATIVE_RUNTIME_QUALIFICATION",
+      "false_handling": "STOP with error",
+      "path": "examples/dcdev020m1r6r3_full_runtime_m1_certification.rs"
+    },
+    {
+      "class": "TEST_ONLY / HISTORICAL_CERTIFIER",
+      "false_handling": "STOP in Gate 2; IGNORE in helper",
+      "path": "crates/chemistry-core/src/d086_analysis.rs"
+    }
+  ],
+  "production_runtime_accepts_failed_mechanics_continuation": false,
+  "production_runtime_handling": "STOP with error",
+  "remesh_false_status": "NO_REJECTION_STATUS_API",
+  "schema": "dcdev020m1replan002r5r1_runtime_caller_audit_v1"
+}

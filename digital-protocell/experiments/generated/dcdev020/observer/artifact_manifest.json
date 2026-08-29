@@ -1,0 +1,30 @@
+{
+  "directive": "DC-DEV-020",
+  "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "phase": "observer_counterfactual",
+  "branch": "strategy/dc-dev-020-fast-allosteric-assimilation",
+  "candidate_schema": "digital_cell_fast_a_product_feedback_v1",
+  "law": "k_act_effective = k_act * (1 + K_I/(K_I + A))",
+  "K_I": 1.0,
+  "additional_capacity_ceiling": 1.0,
+  "observer_only": true,
+  "production_integration": false,
+  "classification": "DCDEV020_A_PRODUCT_FEEDBACK_COUNTERFACTUAL_NOT_ESTABLISHED",
+  "source_actuation": {
+    "mass_n": 19.878372106390554,
+    "mass_f": 19.878372106390554,
+    "center": [4.8, 0.0],
+    "radius": 1.5,
+    "feedback_delivered_n": 15.566438806699026,
+    "feedback_delivered_f": 15.566438806699026,
+    "max_conservation_error": 0.0
+  },
+  "dense_raw_trajectories": "not generated",
+  "reproduction_command": "cargo +1.89.0 run -p regulatory-core --example dcdev020_fast_allosteric_assimilation --quiet",
+  "file_sha256": {
+    "protocol.json": "41B1544C9BC2DFF6225EB6C9BCDF1874E2B32460AD9DA385053BAC130BD6ABEC",
+    "results.json": "E2CEFA11450F6D64C232E07899119CF6351F6FE35FB60FB7A542C6F9656A1D32",
+    "qualification.json": "9CAECD734575A58BF957C87685B3F2C73CC5B327D1A2DF61EEC5A795E1C4FAFD"
+  },
+  "next_execution_started": false
+}

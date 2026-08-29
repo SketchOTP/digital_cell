@@ -1,0 +1,127 @@
+name: DC-DEV-020-M1-R0 finite-resource requalification
+
+on:
+  push:
+    branches:
+      - strategy/dc-dev-020r9-mesh-contract-requalification
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+
+permissions:
+  contents: read
+
+jobs:
+  m1r0:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out exact head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.89.0
+          components: rustfmt
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Governance validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustfmt +1.89.0 --edition 2021 --check examples/dcdev020m1r0_requalification.rs
+      - name: Preserve certified and diagnostic source boundaries
+        run: |
+          set -euo pipefail
+          changed="$(git diff --name-only 4895135deee7dbd782446dbfe25662181951afe0 HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then
+            echo 'M1-R0 may not modify chemistry-core'
+            exit 1
+          fi
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/phase1-certifier/src/'; then
+            echo 'M1-R0 may not modify phase1-certifier production source'
+            exit 1
+          fi
+          if printf '%s\n' "$changed" | grep -Ei 'dcdev020r[2-9]|dc-dev-021|recycl|salvage|homeostat|controller|behavior'; then
+            echo 'M1-R0 later-scope contamination detected'
+            exit 1
+          fi
+      - name: Fresh M1-R0 observer assay
+        working-directory: digital-protocell
+        env:
+          DCDEV020M1R0_OUTPUT: experiments/generated/dcdev020m1r0/ci
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev020m1r0_requalification --quiet
+      - name: Verify committed and fresh M1-R0 artifacts
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          base = Path("experiments/generated/dcdev020m1r0")
+          for root in (base, base / "ci"):
+              for name in ("protocol.json", "results.json", "qualification.json", "artifact_manifest.json"):
+                  assert (root / name).is_file(), f"missing {root/name}"
+          protocol = json.loads((base / "protocol.json").read_text())
+          results = json.loads((base / "results.json").read_text())
+          qualification = json.loads((base / "qualification.json").read_text())
+          fresh = json.loads((base / "ci" / "qualification.json").read_text())
+          assert protocol["starting_head"] == "4895135deee7dbd782446dbfe25662181951afe0"
+          assert protocol["evidence_generation_head"] == protocol["starting_head"]
+          assert protocol["settlement_steps"] == 5000
+          assert protocol["deprivation_steps"] == 480
+          assert protocol["comparison_steps"] == 480
+          assert protocol["starvation_continuation_max_steps"] == 5000
+          assert protocol["selected_production"] == {"mesh_contract": "ConservativeV2", "reserve_enabled": False}
+          assert [arm["id"] for arm in protocol["arms"]] == ["A", "B", "C", "D"]
+          assert results["mesh_contract"] == "ConservativeV2"
+          assert results["reserve_enabled"] is False
+          assert results["reserve_flows"] == {"a_to_r": 0.0, "r_to_a": 0.0, "r_to_w": 0.0}
+          assert results["deprivation"]["deprivation_steps"] == 480
+          assert len(results["arms"]) == 4
+          assert all(arm["exact_contract"] == "ConservativeV2" for arm in results["arms"])
+          assert all(arm["reserve_enabled"] is False for arm in results["arms"])
+          assert all(arm["world_to_organism_closure_residual"] <= 1e-8 for arm in results["arms"])
+          assert all(arm["maximum_resource_conservation_error"] <= 1e-8 for arm in results["arms"])
+          assert results["starvation_continuation"]["accepted_steps"] <= 5000
+          assert results["starvation_continuation"]["accepted_steps"] > 0
+          assert qualification["current_m1_bottleneck"] == "productive_allocation_or_replacement_limitation"
+          assert qualification["production_biology_changed"] is False
+          assert qualification["chemistry_changed"] is False
+          assert qualification["parameter_search"] is False
+          assert qualification["dc_dev_021_authorized"] is False
+          assert qualification["next_execution_started"] is False
+          assert fresh == qualification
+          assert subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          print("DCDEV020M1R0_ARTIFACT_VERIFICATION_PASS")
+          PY
+      - name: Phase-1 preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics -- --nocapture
+      - name: D-091 preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+      - name: D-088 preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+      - name: Evolution-harness preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness -- --nocapture
+      - name: Upload compact M1-R0 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020m1r0-compact-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020m1r0/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r0/results.json
+            digital-protocell/experiments/generated/dcdev020m1r0/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r0/artifact_manifest.json
+            digital-protocell/experiments/generated/dcdev020m1r0/ci/qualification.json
+          include-hidden-files: false

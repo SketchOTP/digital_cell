@@ -1,0 +1,12 @@
+{
+  "classification": "M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED",
+  "directive": "DC-DEV-020-M1-REPLAN-002-MATURATION-COUPLED-LOAD-BEARING-FEASIBILITY-001",
+  "e0_authority": true,
+  "e1_material_identity_and_lineage": true,
+  "e2_fed_moving_feasibility": true,
+  "e3_no_reset_recovery": true,
+  "e4_starvation_degradation": true,
+  "e5_remote_ci": "required",
+  "next_execution_started": false,
+  "observer_only": true
+}

@@ -9,8 +9,10 @@ use crate::material_mesh::{
 use crate::mesh_reactions::{q_catalyst, ReactionParams};
 use serde::{Deserialize, Serialize};
 
-pub const EQUATION_VERSION_METABOLIC_RESERVE: &str = "autopoietic_material_mesh_metabolic_reserve_v1";
-pub const FIELD_SCHEMA_METABOLIC_RESERVE: &str = "mesh_vertices_edges_catalyst_composition_reserve_v1";
+pub const EQUATION_VERSION_METABOLIC_RESERVE: &str =
+    "autopoietic_material_mesh_metabolic_reserve_v1";
+pub const FIELD_SCHEMA_METABOLIC_RESERVE: &str =
+    "mesh_vertices_edges_catalyst_composition_reserve_v1";
 
 /// Charging timescale multipliers on the maintenance horizon (at most three).
 pub const STORE_HORIZON_CANDIDATES: [f64; 3] = [2.0, 4.0, 8.0];
@@ -77,7 +79,9 @@ impl ReserveParams {
         // Release timescale ≈ one maintenance horizon (Michaelis saturating).
         let k_release = 1.0 / t_maint;
         // Charging: characteristic fill of R_max over t_store at A ≫ K_store.
-        let r_max = (fission_a_cost / area.max(EPS)).max(a_median * 2.0).max(1.0);
+        let r_max = (fission_a_cost / area.max(EPS))
+            .max(a_median * 2.0)
+            .max(1.0);
         let k_store = r_max / t_store.max(EPS);
         // K_growth must be large vs k_store so R accumulates before reproductive-scale growth.
         // At low R: dR/dt ≈ k_store − y_g·q·h·R/K_g; choose K_g so steady R ≳ 0.35 R_max.
@@ -127,6 +131,56 @@ pub struct ReserveLedger {
     pub rejected_steps: u64,
 }
 
+/// Observer-only switches for the R9-R4 reserve interference audit.
+///
+/// The production reserve equation is unchanged: `reserve_metab_step` always
+/// calls this with all three fluxes enabled. These controls exist so a sealed
+/// diagnostic can remove exactly one existing flux without changing any rate.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct ReserveFluxControls {
+    pub store: bool,
+    pub release: bool,
+    pub loss: bool,
+}
+
+impl ReserveFluxControls {
+    pub const FULL: Self = Self {
+        store: true,
+        release: true,
+        loss: true,
+    };
+
+    pub const STORE_OFF: Self = Self {
+        store: false,
+        release: true,
+        loss: true,
+    };
+
+    pub const RELEASE_OFF: Self = Self {
+        store: true,
+        release: false,
+        loss: true,
+    };
+
+    pub const LOSS_OFF: Self = Self {
+        store: true,
+        release: true,
+        loss: false,
+    };
+
+    pub const RELEASE_AND_LOSS_ONLY: Self = Self {
+        store: false,
+        release: true,
+        loss: true,
+    };
+
+    pub const STORE_ONLY: Self = Self {
+        store: true,
+        release: false,
+        loss: false,
+    };
+}
+
 /// Stamp mesh equation identity for the metabolic-reserve schema.
 pub fn stamp_reserve_equation(mesh: &mut MaterialMesh) {
     mesh.equation_id = EQUATION_VERSION_METABOLIC_RESERVE.to_string();
@@ -143,7 +197,12 @@ pub fn reserve_schema_load_ok(mesh: &MaterialMesh, reserve: &ReserveParams) -> b
     if !reserve.enable {
         return true;
     }
-    mesh.equation_id == EQUATION_VERSION_METABOLIC_RESERVE
+    // The physical contract is independent of the biological lineage. A
+    // ConservativeV2 mesh may therefore carry the D-091 reserve identity,
+    // template/network identity, or another governed lineage without being
+    // rejected merely because its equation_id is not the base reserve stamp.
+    mesh.uses_observer_only_death()
+        || mesh.equation_id == EQUATION_VERSION_METABOLIC_RESERVE
         || mesh.equation_id == crate::template_polymer::EQUATION_VERSION_CATALYTIC_TEMPLATE
         || mesh.equation_id == crate::template_network::EQUATION_VERSION_TEMPLATE_NETWORK
         || mesh.equation_id == crate::autocatalytic_nodes::EQUATION_VERSION_AUTOCATALYTIC_SET
@@ -160,6 +219,78 @@ pub fn j_store(a: f64, r: f64, qc: f64, p: &ReserveParams) -> f64 {
     let sat = (a * a) / (p.k_store_half * p.k_store_half + a * a + EPS);
     let room = (1.0 - r / p.r_max).max(0.0);
     p.k_store * qc * sat * room
+}
+
+/// Return the unchanged frozen A→R charging potential as material amount.
+///
+/// This is an observer helper for R9-R5. It does not update state and does
+/// not add a new production parameter or alter candidate identity.
+pub fn reserve_store_potential_amount(mesh: &MaterialMesh, react: &ReactionParams, dt: f64) -> f64 {
+    let p = &react.reserve;
+    if !p.enable || !mesh.can_advance_physics() || dt <= 0.0 {
+        return 0.0;
+    }
+    if !reserve_schema_load_ok(mesh, p) {
+        return 0.0;
+    }
+    let qc = q_catalyst(mesh.interior.c, react.q_c);
+    let qc_store = if react.autocatalytic.enable {
+        qc * crate::autocatalytic_nodes::node_storage_release_gain(
+            mesh,
+            &react.autocatalytic,
+            react.q_c,
+        )
+    } else if react.network.enable {
+        qc * crate::template_network_expression::network_storage_gain(
+            mesh,
+            &react.network,
+            react.q_c,
+        )
+    } else {
+        qc
+    };
+    j_store(
+        mesh.interior.a.max(0.0),
+        mesh.interior.r.max(0.0),
+        qc_store,
+        p,
+    ) * dt
+        * mesh.area().max(EPS)
+}
+
+/// Apply only the unchanged frozen A→R kernel with an observer cap.
+///
+/// `max_amount` is in the same concentration·area material units used by the
+/// R9 ledgers. A zero cap is a lawful no-op, not a rejected reserve step.
+pub fn reserve_store_with_limit(
+    mesh: &mut MaterialMesh,
+    react: &ReactionParams,
+    dt: f64,
+    max_amount: f64,
+) -> ReserveLedger {
+    let mut led = ReserveLedger::default();
+    let p = &react.reserve;
+    if !p.enable || !mesh.can_advance_physics() || dt <= 0.0 || max_amount <= 0.0 {
+        return led;
+    }
+    if !reserve_schema_load_ok(mesh, p) {
+        led.rejected_steps += 1;
+        return led;
+    }
+    let area = mesh.area().max(EPS);
+    let a0 = mesh.interior.a.max(0.0);
+    let r0 = mesh.interior.r.max(0.0);
+    let potential = reserve_store_potential_amount(mesh, react, dt);
+    let store = potential
+        .min(max_amount)
+        .min(a0 * area)
+        .min((p.r_max - r0).max(0.0) * area);
+    if store > 0.0 {
+        mesh.interior.a = (a0 - store / area).max(0.0);
+        mesh.interior.r = (r0 + store / area).min(p.r_max);
+        led.a_to_r = store;
+    }
+    led
 }
 
 /// Release flux density: R → A (strongest when A is locally low).
@@ -190,9 +321,23 @@ pub fn reserve_metab_step(
     react: &ReactionParams,
     dt: f64,
 ) -> ReserveLedger {
+    reserve_metab_step_with_controls(mesh, react, dt, ReserveFluxControls::FULL)
+}
+
+/// Execute the unchanged D-091 kernels with explicit observer-only flux gates.
+///
+/// This is intentionally not part of `ReserveParams`, candidate identity, or
+/// serialized production configuration. It is used only by bounded R9-R4
+/// ablations and the maintenance-priority shadow.
+pub fn reserve_metab_step_with_controls(
+    mesh: &mut MaterialMesh,
+    react: &ReactionParams,
+    dt: f64,
+    controls: ReserveFluxControls,
+) -> ReserveLedger {
     let mut led = ReserveLedger::default();
     let p = &react.reserve;
-    if !p.enable || !mesh.alive || dt <= 0.0 {
+    if !p.enable || !mesh.can_advance_physics() || dt <= 0.0 {
         return led;
     }
     if !reserve_schema_load_ok(mesh, p) {
@@ -227,9 +372,21 @@ pub fn reserve_metab_step(
     let r0 = mesh.interior.r.max(0.0);
 
     // Explicit Euler with capacity clamps (rejected partial steps leave state unchanged for that flux).
-    let js = j_store(a0, r0, qc_store, p) * dt;
-    let jr = j_release(a0, r0, qc_rel, p) * dt;
-    let jl = j_r_loss(r0, p) * dt;
+    let js = if controls.store {
+        j_store(a0, r0, qc_store, p) * dt
+    } else {
+        0.0
+    };
+    let jr = if controls.release {
+        j_release(a0, r0, qc_rel, p) * dt
+    } else {
+        0.0
+    };
+    let jl = if controls.loss {
+        j_r_loss(r0, p) * dt
+    } else {
+        0.0
+    };
 
     // Store A→R
     let store = js.min(a0).min((p.r_max - r0).max(0.0));
@@ -271,12 +428,7 @@ pub fn reserve_metab_step(
 
 /// Growth flux from R (schema-enabled path only): J_growth = y_g · g_build · q(C) · R/(K_g+R) · h(ε)
 #[inline]
-pub fn local_r_growth_rate(
-    mesh: &MaterialMesh,
-    i: usize,
-    react: &ReactionParams,
-    y_g: f64,
-) -> f64 {
+pub fn local_r_growth_rate(mesh: &MaterialMesh, i: usize, react: &ReactionParams, y_g: f64) -> f64 {
     let p = &react.reserve;
     if !p.enable || mesh.edges[i].ruptured {
         return 0.0;

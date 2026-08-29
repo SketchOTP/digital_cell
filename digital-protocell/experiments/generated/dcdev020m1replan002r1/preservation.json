@@ -1,0 +1,7 @@
+{
+  "production_default": "ConservativeV2 / reserve OFF",
+  "v2_d087": true,
+  "v3_d087": true,
+  "v4_d087": false,
+  "v4_lifecycle": true
+}

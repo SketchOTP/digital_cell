@@ -1,0 +1,28 @@
+{
+  "directive": "DC-DEV-020-M1-R6-R2-R4-GC-PRESERVATION-QUALIFICATION-001",
+  "files": [
+    {
+      "bytes": 807,
+      "path": "protocol.json",
+      "sha256": "ada7c73cde53f2d79657c3800b0fb79b5baf2249878bd48087e82f7b28111ea9"
+    },
+    {
+      "bytes": 13954,
+      "path": "results.json",
+      "sha256": "94e2203940582268f24378fb970f87ec680da1e931544196e257f5fcd2ec71d5"
+    },
+    {
+      "bytes": 419,
+      "path": "qualification.json",
+      "sha256": "6308570544bca69a900becc7cae6868a5fb216c54e72f6bb7239a388c2693c8d"
+    },
+    {
+      "bytes": 2185,
+      "path": "preservation.json",
+      "sha256": "aa172ddd3f9be68ffa3a36d98594fddf051177f5f7703e656dde0f456a28ba56"
+    }
+  ],
+  "next_execution_started": false,
+  "schema": "dcdev020m1r6r2r4_compact_manifest_v1",
+  "starting_head": "ffa0f8756a3d152d70292b4f366087bef0680c70"
+}

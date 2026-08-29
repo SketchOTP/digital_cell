@@ -1,0 +1,52 @@
+{
+  "arms": [
+    {
+      "id": "BASE",
+      "intervention": "exact M1-R1 baseline"
+    },
+    {
+      "id": "SOURCE_CAPACITY_UB_RAW",
+      "intervention": "exact M1-R1 source upper bound"
+    },
+    {
+      "id": "SOURCE_CAPACITY_UB_DECAY_NEUTRAL",
+      "intervention": "source upper bound plus diagnostic k_a_decay=K/4"
+    },
+    {
+      "id": "COMBINED_DECAY_NEUTRAL",
+      "intervention": "source upper bound plus catalyst investment deferral plus diagnostic k_a_decay=K/4"
+    }
+  ],
+  "decay_rule": "existing production multiplier is 4 when post-source-UB N*F < 1e-8",
+  "directive": "DC-DEV-020-M1-R1-R1-DECAY-CONFOUND-001",
+  "dt": 0.02,
+  "effective_neutral_decay_coefficient": 0.008,
+  "forbidden_changes": [
+    "production biology",
+    "chemistry-core",
+    "ConservativeV2",
+    "D-091",
+    "uptake",
+    "transport",
+    "resource inventory",
+    "recycling",
+    "salvage",
+    "M2",
+    "DC-DEV-021"
+  ],
+  "horizon_steps": 480,
+  "m1r1_entry": "3cab12551072ad1eafaece72615f448d8efb9bea",
+  "neutral_shadow_k_a_decay": 0.002,
+  "neutralized_field_difference": "only ReactionParams.k_a_decay",
+  "original_m1r1_controls": [
+    "CATALYST_INVESTMENT_OFF",
+    "COMBINED"
+  ],
+  "production_k_a_decay": 0.008,
+  "selected_production": {
+    "mesh_contract": "ConservativeV2",
+    "reserve_enabled": false
+  },
+  "starting_head": "9db2c7d08495f8e935a59385bf51927bcd951a7b",
+  "stoichiometry": "N + F -> A + W"
+}

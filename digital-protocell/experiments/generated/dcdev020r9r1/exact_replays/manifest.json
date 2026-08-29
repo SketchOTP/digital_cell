@@ -1,0 +1,265 @@
+{
+  "directive": "DC-DEV-020-R9-R1",
+  "exact_correspondence": {
+    "contract": "MeshContractVersion::ConservativeV2",
+    "d015_current_inventory": 3.0,
+    "d016_challenge_inventory": 14.588954880632265,
+    "deprivation_steps": 480,
+    "dt": 0.02,
+    "equation_lineage": "autopoietic_material_mesh_metabolic_reserve_v1",
+    "feed_steps": 480,
+    "reserve_parameters": "ReserveParams::derived(80,40,0.5,0.3,2,0.1,area)",
+    "resource_center": [
+      4.8,
+      0.0
+    ],
+    "resource_radius": 1.5,
+    "settlement_steps": 5000
+  },
+  "historical_artifacts_overwritten": false,
+  "observer_only": true,
+  "rows": [
+    {
+      "arm": "no_delivery",
+      "contract_version": "ConservativeV2",
+      "deprivation_steps": 480,
+      "dt": 0.02,
+      "equation_id": "autopoietic_material_mesh_metabolic_reserve_v1",
+      "feed_steps": 480,
+      "inventory_f": 0.0,
+      "inventory_n": 0.0,
+      "protocol": "D-015",
+      "reserve_enabled": true,
+      "resource_center": [
+        4.8,
+        0.0
+      ],
+      "resource_radius": 1.5,
+      "result": {
+        "a_to_r": 0.5733076178578455,
+        "activation_delta": -11.387290380605897,
+        "boundary_material_delta": 0.0,
+        "closure_residual": 2.842170943040401e-14,
+        "f_delivered": 0.0,
+        "f_world_loss": 0.0,
+        "n_delivered": 0.0,
+        "n_world_loss": 0.0,
+        "observer_viable_at_end": true,
+        "organized_retained_delta": -15.091121219957813,
+        "r_to_a": 4.208191100444797,
+        "r_to_w": 0.7736139498192071,
+        "reserve_rejected_steps": 0,
+        "strict_material_delta": 2.842170943040401e-14
+      },
+      "settlement_steps": 5000
+    },
+    {
+      "arm": "current_resource_feed",
+      "contract_version": "ConservativeV2",
+      "deprivation_steps": 480,
+      "dt": 0.02,
+      "equation_id": "autopoietic_material_mesh_metabolic_reserve_v1",
+      "feed_steps": 480,
+      "inventory_f": 3.0,
+      "inventory_n": 3.0,
+      "protocol": "D-015",
+      "reserve_enabled": true,
+      "resource_center": [
+        4.8,
+        0.0
+      ],
+      "resource_radius": 1.5,
+      "result": {
+        "a_to_r": 0.667876726346022,
+        "activation_delta": -5.677447220549034,
+        "boundary_material_delta": 4.683251325585999,
+        "closure_residual": 1.4210854715202004e-14,
+        "f_delivered": 2.3416256627929997,
+        "f_world_loss": 2.3416256627929997,
+        "n_delivered": 2.3416256627929997,
+        "n_world_loss": 2.3416256627929997,
+        "observer_viable_at_end": true,
+        "organized_retained_delta": -11.16831196644003,
+        "r_to_a": 3.9737608351529894,
+        "r_to_w": 0.775981123077823,
+        "reserve_rejected_steps": 0,
+        "strict_material_delta": 4.6832513255860135
+      },
+      "settlement_steps": 5000
+    },
+    {
+      "arm": "uptake_only",
+      "contract_version": "ConservativeV2",
+      "deprivation_steps": 480,
+      "dt": 0.02,
+      "equation_id": "autopoietic_material_mesh_metabolic_reserve_v1",
+      "feed_steps": 480,
+      "inventory_f": 3.0,
+      "inventory_n": 3.0,
+      "protocol": "D-015",
+      "reserve_enabled": true,
+      "resource_center": [
+        4.8,
+        0.0
+      ],
+      "resource_radius": 1.5,
+      "result": {
+        "a_to_r": 0.0,
+        "activation_delta": 2.3810900869361262,
+        "boundary_material_delta": 4.762180173872254,
+        "closure_residual": 1.7763568394002505e-15,
+        "f_delivered": 2.381090086936127,
+        "f_world_loss": 2.381090086936127,
+        "n_delivered": 2.381090086936127,
+        "n_world_loss": 2.381090086936127,
+        "observer_viable_at_end": true,
+        "organized_retained_delta": 0.0,
+        "r_to_a": 0.0,
+        "r_to_w": 0.0,
+        "reserve_rejected_steps": 0,
+        "strict_material_delta": 4.7621801738722525
+      },
+      "settlement_steps": 5000
+    },
+    {
+      "arm": "no_delivery",
+      "contract_version": "ConservativeV2",
+      "deprivation_steps": 480,
+      "dt": 0.02,
+      "equation_id": "autopoietic_material_mesh_metabolic_reserve_v1",
+      "feed_steps": 480,
+      "inventory_f": 0.0,
+      "inventory_n": 0.0,
+      "protocol": "D-016",
+      "reserve_enabled": true,
+      "resource_center": [
+        4.8,
+        0.0
+      ],
+      "resource_radius": 1.5,
+      "result": {
+        "a_to_r": 0.5733076178578455,
+        "activation_delta": -11.387290380605897,
+        "boundary_material_delta": 0.0,
+        "closure_residual": 2.842170943040401e-14,
+        "f_delivered": 0.0,
+        "f_world_loss": 0.0,
+        "n_delivered": 0.0,
+        "n_world_loss": 0.0,
+        "observer_viable_at_end": true,
+        "organized_retained_delta": -15.091121219957813,
+        "r_to_a": 4.208191100444797,
+        "r_to_w": 0.7736139498192071,
+        "reserve_rejected_steps": 0,
+        "strict_material_delta": 2.842170943040401e-14
+      },
+      "settlement_steps": 5000
+    },
+    {
+      "arm": "current_resource_reference",
+      "contract_version": "ConservativeV2",
+      "deprivation_steps": 480,
+      "dt": 0.02,
+      "equation_id": "autopoietic_material_mesh_metabolic_reserve_v1",
+      "feed_steps": 480,
+      "inventory_f": 3.0,
+      "inventory_n": 3.0,
+      "protocol": "D-016",
+      "reserve_enabled": true,
+      "resource_center": [
+        4.8,
+        0.0
+      ],
+      "resource_radius": 1.5,
+      "result": {
+        "a_to_r": 0.667876726346022,
+        "activation_delta": -5.677447220549034,
+        "boundary_material_delta": 4.683251325585999,
+        "closure_residual": 1.4210854715202004e-14,
+        "f_delivered": 2.3416256627929997,
+        "f_world_loss": 2.3416256627929997,
+        "n_delivered": 2.3416256627929997,
+        "n_world_loss": 2.3416256627929997,
+        "observer_viable_at_end": true,
+        "organized_retained_delta": -11.16831196644003,
+        "r_to_a": 3.9737608351529894,
+        "r_to_w": 0.775981123077823,
+        "reserve_rejected_steps": 0,
+        "strict_material_delta": 4.6832513255860135
+      },
+      "settlement_steps": 5000
+    },
+    {
+      "arm": "derived_break_even_resource",
+      "contract_version": "ConservativeV2",
+      "deprivation_steps": 480,
+      "dt": 0.02,
+      "equation_id": "autopoietic_material_mesh_metabolic_reserve_v1",
+      "feed_steps": 480,
+      "inventory_f": 14.588954880632265,
+      "inventory_n": 14.588954880632265,
+      "protocol": "D-016",
+      "reserve_enabled": true,
+      "resource_center": [
+        4.8,
+        0.0
+      ],
+      "resource_radius": 1.5,
+      "result": {
+        "a_to_r": 0.6798146491531561,
+        "activation_delta": 3.309793281371199,
+        "boundary_material_delta": 22.80378792172293,
+        "closure_residual": 4.263256414560601e-14,
+        "f_delivered": 11.401893960861464,
+        "f_world_loss": 11.401893960861464,
+        "n_delivered": 11.401893960861464,
+        "n_world_loss": 11.401893960861464,
+        "observer_viable_at_end": true,
+        "organized_retained_delta": -10.277547850163131,
+        "r_to_a": 3.946544208577756,
+        "r_to_w": 0.7761580042959846,
+        "reserve_rejected_steps": 0,
+        "strict_material_delta": 22.80378792172297
+      },
+      "settlement_steps": 5000
+    },
+    {
+      "arm": "derived_resource_uptake_only",
+      "contract_version": "ConservativeV2",
+      "deprivation_steps": 480,
+      "dt": 0.02,
+      "equation_id": "autopoietic_material_mesh_metabolic_reserve_v1",
+      "feed_steps": 480,
+      "inventory_f": 14.588954880632265,
+      "inventory_n": 14.588954880632265,
+      "protocol": "D-016",
+      "reserve_enabled": true,
+      "resource_center": [
+        4.8,
+        0.0
+      ],
+      "resource_radius": 1.5,
+      "result": {
+        "a_to_r": 0.0,
+        "activation_delta": 11.57920528167729,
+        "boundary_material_delta": 23.158410563354586,
+        "closure_residual": 7.105427357601002e-15,
+        "f_delivered": 11.579205281677293,
+        "f_world_loss": 11.579205281677293,
+        "n_delivered": 11.579205281677293,
+        "n_world_loss": 11.579205281677293,
+        "observer_viable_at_end": true,
+        "organized_retained_delta": 0.0,
+        "r_to_a": 0.0,
+        "r_to_w": 0.0,
+        "reserve_rejected_steps": 0,
+        "strict_material_delta": 23.15841056335458
+      },
+      "settlement_steps": 5000
+    }
+  ],
+  "source_protocols": [
+    "experiments/generated/dcdev015/protocol.json",
+    "experiments/generated/dcdev016/protocol.json"
+  ]
+}

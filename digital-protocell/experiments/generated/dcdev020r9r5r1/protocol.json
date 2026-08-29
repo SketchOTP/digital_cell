@@ -1,0 +1,39 @@
+{
+  "directive": "DC-DEV-020-R9-R5-R1",
+  "starting_head": "f1fad5c65859f3a314102d3ec5a0751822a2f5ea",
+  "branch": "strategy/dc-dev-020r9-mesh-contract-requalification",
+  "pr": 44,
+  "observer_only": true,
+  "production_defaults_unchanged": true,
+  "contract": "ConservativeV2",
+  "reserve": "D-091 unchanged",
+  "seed": 2,
+  "accepted_steps": 5000,
+  "arms": [
+    {"id": "V20", "mode": "ConservativeV2 with reserve OFF packaged-runtime positive control"},
+    {"id": "FULL", "mode": "frozen D-091 production ordering"},
+    {"id": "STORE_OFF", "mode": "accepted R9-R4 storage-side reference"},
+    {"id": "SURPLUS_ONLY_STORE", "mode": "A_to_R <= min(frozen potential, positive same-step surplus)"},
+    {"id": "VALID_LIQUID_RESERVE_COUNTERFACTUAL", "mode": "pre-throttle M/L demand shadow; baseline A demand is A-funded and only incremental demand is R-funded"}
+  ],
+  "counterfactual": {
+    "acts_before_a_limited_m_l_rate_calculation": true,
+    "uses_frozen_m_l_equations": true,
+    "availability_substitution": "A plus currently available R only for structural M and membrane L demand calculation",
+    "ordinary_a_priority": "A funds the existing A-limited baseline demand",
+    "diagnostic_r_use": "R funds only unmet incremental M/L demand",
+    "unrelated_chemistry_affected": false,
+    "free_material_created": false
+  },
+  "frozen_inputs": {
+    "mesh_seed_radius": 14.0,
+    "mechanics": "FROZEN_CENTER",
+    "transport": "frozen_transport",
+    "production_parameters_changed": false,
+    "new_targets_or_controller": false,
+    "new_state": false
+  },
+  "prior_r9r5_classification": "DCDEV020R9R5_RESERVE_DEFECT_OUTSIDE_CHARGE_LIQUIDITY_FACTORIZATION",
+  "prior_r9r5_classification_authority": "retired_not_architect_accepted",
+  "dense_ledger_storage": "governed external/local audit output; compact committed evidence only"
+}

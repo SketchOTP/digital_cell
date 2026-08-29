@@ -2,7 +2,9 @@
 
 use chemistry_core::material_mesh::MaterialMesh;
 use phase1_certifier::frozen::FROZEN_CENTER;
-use phase1_certifier::sim::{run_coupled, seed_mesh};
+use phase1_certifier::sim::{
+    contract_label_for_mesh, reserve_enabled, run_coupled, seed_production_mesh,
+};
 use std::env;
 use std::fs;
 use std::path::PathBuf;
@@ -81,13 +83,15 @@ fn main() {
             }
         }
     } else {
-        seed_mesh(radius, seed)
+        seed_production_mesh(radius, seed)
     };
 
     let _ = FROZEN_CENTER; // identity seal
     let ledger = run_coupled(&mut mesh, steps, true, true);
     let report = serde_json::json!({
         "package": "digital-protocell-phase1-v1",
+        "mesh_contract": contract_label_for_mesh(&mesh),
+        "reserve_enabled": reserve_enabled(),
         "steps": steps,
         "alive": mesh.alive,
         "area": mesh.area(),
@@ -102,7 +106,10 @@ fn main() {
     if let Some(parent) = out.parent() {
         let _ = fs::create_dir_all(parent);
     }
-    if let Err(e) = fs::write(&out, serde_json::to_string_pretty(&report).unwrap_or_default()) {
+    if let Err(e) = fs::write(
+        &out,
+        serde_json::to_string_pretty(&report).unwrap_or_default(),
+    ) {
         eprintln!("write failed: {e}");
         process::exit(5);
     }

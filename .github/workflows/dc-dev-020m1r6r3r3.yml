@@ -1,0 +1,172 @@
+name: DC-DEV-020-M1-R6-R3-R3 GC reaction-area conservation repair
+
+on:
+  push:
+    branches:
+      - strategy/dc-dev-020r9-mesh-contract-requalification
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+
+permissions:
+  contents: read
+
+jobs:
+  gc-reaction-area-repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Check out exact head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.89.0
+          components: rustfmt
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Governance validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: >-
+          rustfmt +1.89.0 --edition 2021 --check
+          crates/chemistry-core/src/mesh_reactions.rs
+          examples/dcdev020m1r6r3_full_runtime_m1_certification.rs
+      - name: Verify bounded R6-R3-R3 diff
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import subprocess
+
+          start = '1d94c5f69e2be3b9fe2f6db48e66a4d4948dc4fb'
+          changed = subprocess.check_output(['git', 'diff', '--name-only', start, 'HEAD'], text=True).splitlines()
+          allowed = {
+              '.agent/CURRENT.md', '.agent/DIRECTIVES.md', '.agent/LEARNINGS.md',
+              '.agent/OUTCOMES.md', '.agent/REPO_MAP.md',
+              '.github/workflows/dc-dev-020m1r6r3.yml',
+              '.github/workflows/dc-dev-020m1r6r3r3.yml',
+              'digital-protocell/crates/chemistry-core/src/mesh_reactions.rs',
+              'digital-protocell/examples/dcdev020m1r6r3_full_runtime_m1_certification.rs',
+              'digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3r3/reaction_area_conservation_repair.md',
+              'digital-protocell/experiments/generated/dcdev020m1r6r3r3/protocol.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r3r3/results.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r3r3/qualification.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r3r3/preservation.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r3r3/artifact_manifest.json',
+          }
+          assert set(changed) <= allowed, f'unexpected R6-R3-R3 paths: {sorted(set(changed) - allowed)}'
+          assert 'digital-protocell/crates/chemistry-core/src/mesh_reactions.rs' in changed
+          print('DCDEV020M1R6R3R3_BOUNDED_DIFF_PASS')
+          PY
+      - name: Actual D-087 ConservativeV3 preservation
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R3_CONTRACT: ConservativeV3
+          DCDEV020R9R3_RESERVE: '0'
+        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1r6r3r3/ci/v3_d087
+      - name: Actual D-087 ConservativeV2 preservation
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R3_CONTRACT: ConservativeV2
+          DCDEV020R9R3_RESERVE: '0'
+        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1r6r3r3/ci/v2_d087
+      - name: Run R6-R3-R3 qualification
+        working-directory: digital-protocell
+        env:
+          DCDEV020M1R6R3R3_OUTPUT: experiments/generated/dcdev020m1r6r3r3/ci
+          DCDEV020M1R6R3R3_DENSE_OUTPUT: ${{ runner.temp }}/dcdev020m1r6r3r3-dense
+        run: cargo +1.89.0 run -p phase1-certifier --example dcdev020m1r6r3_full_runtime_m1_certification --release --quiet
+      - name: Verify R6-R3-R3 compact evidence
+        working-directory: digital-protocell
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          def require(condition, message):
+              if not condition:
+                  print(f'::error title=R6-R3-R3 verifier::{message}')
+                  raise SystemExit(f'R6-R3-R3 verifier failure: {message}')
+
+          base = Path('experiments/generated/dcdev020m1r6r3r3')
+          fresh = base / 'ci'
+          names = ('protocol.json', 'results.json', 'qualification.json', 'preservation.json', 'artifact_manifest.json')
+          for root in (base, fresh):
+              for name in names:
+                  require((root / name).is_file(), f'missing {root/name}')
+          protocol = json.loads((base / 'protocol.json').read_text())
+          fresh_protocol = json.loads((fresh / 'protocol.json').read_text())
+          results = json.loads((fresh / 'results.json').read_text())
+          qualification = json.loads((fresh / 'qualification.json').read_text())
+          preservation = json.loads((fresh / 'preservation.json').read_text())
+          require(fresh_protocol == protocol, 'fresh protocol differs from committed protocol')
+          require(protocol['directive'] == 'DC-DEV-020-M1-R6-R3-R3-GC-REACTION-AREA-CONSERVATION-REPAIR-001', 'directive mismatch')
+          require(protocol['starting_head'] == '1d94c5f69e2be3b9fe2f6db48e66a4d4948dc4fb', 'starting head mismatch')
+          require(protocol['runtime_contract'] == {'material': 'GeometryConservativeV3', 'chemistry': 'ConservativeV3', 'reserve': 'OFF', 'transport': 'unchanged uncoupled V1 finite spatial transport', 'world': 'FINITE_SPATIAL_BACKING_RESERVOIR_V1'}, 'runtime identity mismatch')
+          require(protocol['production_default_changed'] is False, 'production default changed')
+          require(qualification['next_execution_started'] is False, 'next execution started')
+          require(results['classification'] in {
+              'M1_GC_REACTION_AREA_CONSERVATION_REPAIR_QUALIFIED',
+              'M1_GC_REACTION_AREA_CONSERVATION_REPAIR_INCOMPLETE',
+              'M1_GC_REACTION_AREA_CONSERVATION_PRESERVATION_REGRESSION',
+              'M1_GC_REACTION_AREA_CONSERVATION_REPAIR_INVALID',
+          }, f"unexpected classification={results['classification']}")
+          require(results['accounting_pass'] is True, 'integrated accounting failed')
+          require(results['preservation_pass'] is True, 'preservation failed')
+          require(preservation['historical_v2_d087'] is True and preservation['candidate_v3_d087'] is True, 'D-087 reports were not 8/8')
+          for arm_name in ('zero_resource', 'feed_then_remove'):
+              arm = results[arm_name]
+              require(arm['stage_closure_pass'] is True, f'{arm_name} stage closure failed')
+              audit = arm['runtime']['reaction_area_audit']
+              require(audit['first_area_below_floor_step'] is not None, f'{arm_name} did not reach sub-floor area')
+              require(audit['first_residual_above_tolerance_step'] is None, f'{arm_name} still exceeds reaction tolerance after repair')
+              require(audit['replay_checks'] >= 1 and audit['replay_pass'] is True, f'{arm_name} replay failed')
+              require(abs(audit['cumulative_observed_reaction_residual']) <= 1e-8, f'{arm_name} reaction residual remains nonzero')
+              require(abs(audit['cumulative_predicted_floor_residual']) > 1e-8, f'{arm_name} did not exercise the repaired historical floor boundary')
+          require(abs(results['fed_8000']['organized_material_delta'] - (-82.9654506509167)) <= 1e-8, 'fed negative evidence changed')
+          require(abs(results['recovery']['deprived_organized_delta'] - (-10.979091022310868)) <= 1e-8, 'deprivation reference changed')
+          require(abs(results['recovery']['refed_organized_delta_from_deprived'] - (-75.90268439405205)) <= 1e-8, 'refeed reference changed')
+          print('DCDEV020M1R6R3R3_ARTIFACT_VERIFICATION_PASS')
+          PY
+      - name: GC reaction transfer regressions
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --lib mesh_reactions::tests -- --nocapture
+      - name: Geometry/material preservation
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d098_geometry_material_conservation -- --nocapture
+      - name: Phase-1 metrics preservation
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --test metrics_semantics -- --nocapture
+      - name: D-088 preservation
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+      - name: D-091 preservation
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+      - name: Evolution harness preservation
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness -- --nocapture
+      - name: Upload compact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020m1r6r3r3-gc-reaction-area-conservation-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020m1r6r3r3/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r3/results.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r3/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r3/preservation.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r3/artifact_manifest.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r3/ci/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r3/ci/results.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r3/ci/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r3/ci/preservation.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r3/ci/artifact_manifest.json

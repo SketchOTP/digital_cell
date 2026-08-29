@@ -8,6 +8,38 @@ use serde::{Deserialize, Serialize};
 pub const EQUATION_VERSION_MATERIAL_MESH: &str = "autopoietic_material_mesh_v1";
 pub const FIELD_SCHEMA_MATERIAL_MESH: &str = "mesh_vertices_edges_v1";
 pub const MATERIAL_MESH_SCHEMA_VERSION: u32 = 1;
+/// Versioned R9 substrate contract. Historical v1 snapshots remain readable and
+/// retain their original equation identity.
+pub const EQUATION_VERSION_MATERIAL_MESH_CONSERVATIVE: &str =
+    "material_mesh_stoichiometry_v2_conservative";
+pub const FIELD_SCHEMA_MATERIAL_MESH_CONSERVATIVE: &str = "mesh_vertices_edges_material_v2";
+pub const MATERIAL_MESH_CONSERVATIVE_SCHEMA_VERSION: u32 = 2;
+/// Experimental post-M1 contract: preserve interior concentration-based
+/// material when geometry changes while retaining the ConservativeV2
+/// chemistry/death semantics.
+pub const FIELD_SCHEMA_MATERIAL_MESH_GEOMETRY_CONSERVATIVE: &str =
+    "mesh_vertices_edges_material_geometry_v3";
+pub const MATERIAL_MESH_GEOMETRY_CONSERVATIVE_SCHEMA_VERSION: u32 = 3;
+/// Experimental maturation-coupled material contract.
+pub const FIELD_SCHEMA_MATERIAL_MESH_MATURATION_COUPLED: &str =
+    "mesh_vertices_edges_material_maturation_v4";
+pub const MATERIAL_MESH_MATURATION_COUPLED_SCHEMA_VERSION: u32 = 4;
+
+/// Physical material/death contract, orthogonal to the biological equation
+/// lineage stamped in `equation_id`.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum MeshContractVersion {
+    HistoricalV1,
+    ConservativeV2,
+    GeometryConservativeV3,
+    MaturationCoupledV4,
+}
+
+impl Default for MeshContractVersion {
+    fn default() -> Self {
+        Self::HistoricalV1
+    }
+}
 
 /// Template monomer identity (D-092). Sequence = ordered bonded monomers.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
@@ -94,7 +126,7 @@ pub const DEFAULT_L_MAX: f64 = 3.5;
 pub const DEFAULT_L_MIN: f64 = 0.6;
 pub const DEFAULT_REBOND_DIST: f64 = 1.2;
 
-#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub struct MeshEdge {
     /// Structural material mass on this edge.
     pub m: f64,
@@ -104,6 +136,10 @@ pub struct MeshEdge {
     pub tracer_m: f64,
     /// Observer-only membrane tracer.
     pub tracer_b: f64,
+    /// Newly synthesized structural material not yet mature/load-bearing.
+    /// Historical contracts deserialize this as zero and ignore it.
+    #[serde(default)]
+    pub m_young: f64,
     /// True when structural mass fell below bond threshold (connection ruptured).
     pub ruptured: bool,
 }
@@ -115,12 +151,13 @@ impl Default for MeshEdge {
             b: 0.0,
             tracer_m: 0.0,
             tracer_b: 0.0,
+            m_young: 0.0,
             ruptured: false,
         }
     }
 }
 
-#[derive(Debug, Clone, Copy, Default, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize)]
 pub struct LumpedChem {
     /// Total catalyst C = C_H + C_B (scalar path uses only this field).
     pub c: f64,
@@ -204,6 +241,9 @@ pub struct MaterialMesh {
     pub equation_id: String,
     #[serde(default = "default_schema_version")]
     pub schema_version: u32,
+    /// Independent physical contract. Historical snapshots deserialize as V1.
+    #[serde(default)]
+    pub contract_version: MeshContractVersion,
     /// Physical template polymer chains (D-092). Empty under older schemas.
     #[serde(default)]
     pub templates: Vec<TemplateChain>,
@@ -241,8 +281,42 @@ impl MaterialMesh {
         ((b[0] - a[0]).hypot(b[1] - a[1])).max(1e-15)
     }
 
+    pub fn is_maturation_coupled(&self) -> bool {
+        self.contract_version == MeshContractVersion::MaturationCoupledV4
+    }
+
+    pub fn young_structural_mass(&self, i: usize) -> f64 {
+        if self.is_maturation_coupled() {
+            self.edges[i].m_young.max(0.0).min(self.edges[i].m.max(0.0))
+        } else {
+            0.0
+        }
+    }
+
+    pub fn mature_structural_mass(&self, i: usize) -> f64 {
+        (self.edges[i].m.max(0.0) - self.young_structural_mass(i)).max(0.0)
+    }
+
+    pub fn total_young_structural_mass(&self) -> f64 {
+        (0..self.n()).map(|i| self.young_structural_mass(i)).sum()
+    }
+
+    pub fn lifecycle_invariants_hold(&self) -> bool {
+        !self.is_maturation_coupled()
+            || self.edges.iter().all(|edge| {
+                edge.m_young.is_finite()
+                    && edge.m_young >= -1e-12
+                    && edge.m_young <= edge.m.max(0.0) + 1e-12
+            })
+    }
+
     pub fn rest_length(&self, i: usize) -> f64 {
-        (self.edges[i].m / self.rho_s.max(1e-15)).max(1e-15)
+        let material = if self.is_maturation_coupled() {
+            self.mature_structural_mass(i)
+        } else {
+            self.edges[i].m.max(0.0)
+        };
+        (material / self.rho_s.max(1e-15)).max(1e-15)
     }
 
     pub fn strain(&self, i: usize) -> f64 {
@@ -281,8 +355,99 @@ impl MaterialMesh {
         self.free_l.max(0.0) + self.total_bound_membrane()
     }
 
+    /// R9 physical validity guard. This is numerical geometry validity, not
+    /// biological viability and never reads the historical `alive` latch.
+    pub fn physical_runtime_valid(&self) -> bool {
+        self.n() >= 3
+            && self
+                .vertices
+                .iter()
+                .all(|p| p[0].is_finite() && p[1].is_finite())
+            && self.edges.iter().all(|e| {
+                e.m.is_finite()
+                    && e.m >= 0.0
+                    && e.m_young.is_finite()
+                    && e.m_young >= 0.0
+                    && e.m_young <= e.m + 1e-12
+                    && e.b.is_finite()
+                    && e.b >= 0.0
+            })
+            && self.interior.c.is_finite()
+            && self.interior.a.is_finite()
+            && self.interior.n.is_finite()
+            && self.interior.f.is_finite()
+            && self.interior.w.is_finite()
+    }
+
+    pub fn uses_observer_only_death(&self) -> bool {
+        matches!(
+            self.contract_version,
+            MeshContractVersion::ConservativeV2
+                | MeshContractVersion::GeometryConservativeV3
+                | MeshContractVersion::MaturationCoupledV4
+        )
+    }
+
+    /// Production kernels use this guard. In the R9 schema, biological
+    /// viability is an observer result and cannot halt physical equations.
+    pub fn can_advance_physics(&self) -> bool {
+        self.physical_runtime_valid() && (self.uses_observer_only_death() || self.alive)
+    }
+
+    pub fn observer_viable(&self) -> bool {
+        let ruptured = self.edges.iter().filter(|e| e.ruptured).count();
+        let n = self.n().max(1);
+        ruptured * 2 < n
+            && !(self.interior.c < 1e-4
+                && self.total_structural_mass() < self.bond_threshold * n as f64)
+            && !(self.interior.a < 1e-5 && self.interior.c < 1e-4)
+            && !(self.interior.a < 0.02 && self.interior.n * self.interior.f < 1e-8)
+    }
+
+    pub fn observer_death_reason(&self) -> Option<&'static str> {
+        let ruptured = self.edges.iter().filter(|e| e.ruptured).count();
+        let n = self.n().max(1);
+        if ruptured * 2 >= n {
+            Some("mesh_rupture")
+        } else if self.interior.c < 1e-4
+            && self.total_structural_mass() < self.bond_threshold * n as f64
+        {
+            Some("catalytic_structural_loss")
+        } else if self.interior.a < 1e-5 && self.interior.c < 1e-4 {
+            Some("activated_catalyst_collapse")
+        } else if self.interior.a < 0.02 && self.interior.n * self.interior.f < 1e-8 {
+            Some("starvation_collapse")
+        } else {
+            None
+        }
+    }
+
     pub fn closed_intact(&self) -> bool {
-        self.alive && self.n() >= 3 && self.edges.iter().all(|e| !e.ruptured && e.m > 0.0)
+        (self.uses_observer_only_death() || self.alive)
+            && self.n() >= 3
+            && self.edges.iter().all(|e| !e.ruptured && e.m > 0.0)
+    }
+
+    pub fn stamp_conservative_schema(&mut self) {
+        self.contract_version = MeshContractVersion::ConservativeV2;
+        self.schema_version = MATERIAL_MESH_CONSERVATIVE_SCHEMA_VERSION;
+    }
+
+    /// Stamp the experimental geometry/material conservation contract.
+    ///
+    /// This is intentionally separate from [`Self::stamp_conservative_schema`]
+    /// so historical ConservativeV2 snapshots and their serialized identity
+    /// remain unchanged.
+    pub fn stamp_geometry_conservative_schema(&mut self) {
+        self.contract_version = MeshContractVersion::GeometryConservativeV3;
+        self.schema_version = MATERIAL_MESH_GEOMETRY_CONSERVATIVE_SCHEMA_VERSION;
+    }
+
+    /// Stamp the experimental maturation-coupled load-bearing contract.
+    /// This is never selected by default and does not rewrite historical schemas.
+    pub fn stamp_maturation_coupled_schema(&mut self) {
+        self.contract_version = MeshContractVersion::MaturationCoupledV4;
+        self.schema_version = MATERIAL_MESH_MATURATION_COUPLED_SCHEMA_VERSION;
     }
 
     pub fn b_max_for_edge(&self, i: usize) -> f64 {
@@ -327,6 +492,7 @@ impl MaterialMesh {
             death_reason: None,
             equation_id: default_equation_id(),
             schema_version: default_schema_version(),
+            contract_version: MeshContractVersion::HistoricalV1,
             templates: Vec::new(),
             next_template_id: 1,
             template_rng: default_template_rng(),
@@ -388,4 +554,60 @@ impl MaterialMesh {
         }
         inside
     }
+}
+
+/// Preserve every area-based interior concentration amount across a geometry
+/// operation.  The material identity is `amount = concentration * area`.
+///
+/// This primitive is deliberately limited to `GeometryConservativeV3`; V1 and
+/// V2 retain their historical behavior.  Exterior concentrations, explicit
+/// edge/free-membrane amounts, templates, and D-096 expressed catalyst amounts
+/// are not touched here.
+pub fn conserve_interior_amount_across_area_change(
+    mesh: &mut MaterialMesh,
+    area_before: f64,
+    area_after: f64,
+) -> bool {
+    if !matches!(
+        mesh.contract_version,
+        MeshContractVersion::GeometryConservativeV3 | MeshContractVersion::MaturationCoupledV4
+    ) || !area_before.is_finite()
+        || !area_after.is_finite()
+        || area_before <= 0.0
+        || area_after <= 0.0
+        || (mesh.area() - area_after).abs() > 1e-12 * (1.0 + area_after.abs())
+    {
+        return false;
+    }
+    if area_before == area_after {
+        return true;
+    }
+    let scale = area_before / area_after;
+    if !scale.is_finite() {
+        return false;
+    }
+    let chem = &mut mesh.interior;
+    for value in [
+        &mut chem.c,
+        &mut chem.a,
+        &mut chem.n,
+        &mut chem.f,
+        &mut chem.w,
+        &mut chem.tracer_c,
+        &mut chem.c_h,
+        &mut chem.c_b,
+        &mut chem.r,
+        &mut chem.u_h,
+        &mut chem.u_b,
+        &mut chem.k_h,
+        &mut chem.k_b,
+        &mut chem.q_k,
+        &mut chem.q_e,
+        &mut chem.k_a,
+        &mut chem.k_r,
+        &mut chem.k_node_b,
+    ] {
+        *value *= scale;
+    }
+    true
 }

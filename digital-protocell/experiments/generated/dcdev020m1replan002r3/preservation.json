@@ -1,0 +1,9 @@
+{
+  "observer_only": true,
+  "production_default": "ConservativeV2 / reserve OFF",
+  "r1_capabilities_preserved": true,
+  "thresholds_unchanged": true,
+  "v2_d087_8_of_8": true,
+  "v3_d087_8_of_8": true,
+  "v4_expected_legacy_6_of_8": true
+}

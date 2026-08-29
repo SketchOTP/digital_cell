@@ -1,0 +1,19 @@
+{
+  "classification": "DCDEV020R9R4_STORAGE_CAUSAL_PRIORITY_INSUFFICIENT",
+  "starting_head": "f9bc1d5bffe828b2599c85d4fcbbabdf7f3e3ff3",
+  "gate0": {"v20_gates_passed": 8, "v21_gates_passed": 4, "v20_conclusion": "D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED", "v21_conclusion": "D087_D086_ACCEPTANCE_INVALID"},
+  "gate1_full_reserve": {"accepted_steps": 5000, "a_to_r": 147.585809275616, "r_to_a": 46.83472463956206, "r_to_w": 7.440433037092543, "a_to_r_before_later_demand": 147.585809275616, "reserve_rejected_steps": 0, "reserve_closure_residual": 9.155664961633069e-11, "r_m": 0.8398695202805284, "r_b": 5.577914641225577, "r_c": 1.3773440992225712, "gate1_qualification": false},
+  "gate2": {
+    "FULL_RESERVE": {"r_m": 0.8398695202805284, "r_b": 5.577914641225577, "r_c": 1.3773440992225712, "final_r": 33.05669773412974},
+    "STORE_OFF": {"r_m": 1.0180981834599838, "r_b": 5.818353471059928, "r_c": 1.446090001246529, "final_r": 0.0},
+    "RELEASE_OFF": {"r_m": 0.7844448406135788, "r_b": 5.504100254893117, "r_c": 1.347924495563244, "final_r": 38.57288363382687},
+    "LOSS_OFF": {"r_m": 0.8426057161012855, "r_b": 5.581748012678238, "r_c": 1.3788106636057145, "final_r": 36.203666557599774}
+  },
+  "gate3_shadow": {"a_to_r_before_later_demand": 0.0, "a_to_r": 147.5982725689982, "r_to_a": 46.83967808924662, "r_to_w": 7.441286018803014, "reserve_closure_residual": 1.6371134869909684e-10, "r_m": 0.8399735283623063, "r_b": 5.578002846425376, "r_c": 1.37732517447396, "gate1_qualification_restored": false},
+  "gate5": {"replete_r_to_a_positive": true, "starvation_r_to_a_positive": true, "reserve_rejects_zero": true, "strict_reserve_closure": true, "reserve_off_comparison_present": true},
+  "production_chemistry_changed": false,
+  "production_behavior_changed": false,
+  "recycling_authorized": false,
+  "dc_dev_021_authorized": false,
+  "next_execution_started": false
+}

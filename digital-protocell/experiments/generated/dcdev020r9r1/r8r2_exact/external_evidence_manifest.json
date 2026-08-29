@@ -1,0 +1,18 @@
+{
+  "compact_git_artifacts": [
+    "protocol.json",
+    "root_summary.json",
+    "payback_summary.json",
+    "shadow_summary.json",
+    "qualification.json",
+    "literature_review.json",
+    "external_evidence_manifest.json",
+    "manifest.json"
+  ],
+  "dense_artifact": "experiments/generated/dcdev020r9r1/r8r2_exact\\catalyst_investment_dense_ledger.json",
+  "external_location": "UNRECORDED_EXTERNAL_LOCATION",
+  "r7_input_sha256": "abdaea6d075c700e36d14d369dba62982f4a65cea47d2d1f162b5dfe8afa59f8",
+  "r8_input_sha256": "12b41f27c928635899a7ea3a8d496cfdd3af7d3fd83aaa93024724663e2df9ff",
+  "r8r1_input_sha256": "f44e8f9fa441451ee40bcbfccac5f556131e4d26868868607e9507c29e7bcf90",
+  "sha256": "COMPUTED_AFTER_RUN"
+}

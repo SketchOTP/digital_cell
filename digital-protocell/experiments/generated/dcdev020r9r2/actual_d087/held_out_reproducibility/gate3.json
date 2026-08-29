@@ -1,0 +1,5 @@
+{
+  "pass": false,
+  "detail": "seed_distinct_fps=3 seeds_effective=true size_pass=0/3 path=deterministic_perturbation",
+  "failure": "D087_HELD_OUT_REPRODUCIBILITY_FAILURE"
+}

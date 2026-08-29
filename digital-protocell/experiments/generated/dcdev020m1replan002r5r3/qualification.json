@@ -1,0 +1,31 @@
+{
+  "authoritative_stop": true,
+  "classification": "M1_V4_LIVE_RESOURCE_DEATH_QUALIFICATION_INVALID",
+  "direct_internal_nf_insertion": false,
+  "directive": "DC-DEV-020-M1-REPLAN-002-R5-R3-V4-LIVE-RESOURCE-IRREVERSIBLE-DEATH-QUALIFICATION-001",
+  "next_execution_started": false,
+  "no_latch_proof": false,
+  "old_r5_post_failure_states_used": false,
+  "refeed_material_closure": true,
+  "s0_live_uptake": true,
+  "s0_recovery": false,
+  "s1_recovery": false,
+  "s2_irreversible_organizational_loss": false,
+  "s2_recovery": false,
+  "s2_resource_opportunity": "NO_PHYSICAL_RESOURCE_CONTACT",
+  "sealed_internal_delivery_used": false,
+  "starting_head": "d0a9601aed170c43a5c288c8300f3fe65e64237f",
+  "starvation_material_closure": true,
+  "v2_d087": true,
+  "v3_d087": true,
+  "v4_d087": [
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ]
+}

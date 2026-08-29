@@ -1,0 +1,35 @@
+{
+  "external_constants_imported": false,
+  "sources": [
+    {
+      "citation": "Goyal et al. 2010, Achieving Optimal Growth through Product Feedback Inhibition in Metabolism",
+      "classification": "ADAPTABLE",
+      "imported_into_assay": false,
+      "reusable_finding": "Product feedback can support homeostatic control, while simple feedback can produce large metabolite pools; ultrasensitivity can constrain those pools.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2880561/"
+    },
+    {
+      "citation": "Link, Kochanowski & Sauer 2013, Systematic identification of allosteric protein-metabolite interactions that control enzyme activity in vivo",
+      "classification": "ADAPTABLE",
+      "imported_into_assay": false,
+      "reusable_finding": "Rapid nutrient switches and allosteric interactions can control flux on short timescales; organism-specific interaction identities are not imported.",
+      "url": "https://www.nature.com/articles/nbt.2489"
+    },
+    {
+      "citation": "Buffing et al. 2018, Capacity for instantaneous catabolism of preferred and non-preferred carbon sources in E. coli and B. subtilis",
+      "classification": "ADAPTABLE",
+      "imported_into_assay": false,
+      "reusable_finding": "E. coli can reverse carbon flux rapidly through allosteric regulation, whereas B. subtilis requires additional interactions and transcriptional deregulation; species-specific details are not imported.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6079084/"
+    },
+    {
+      "citation": "Goyal & Wingreen 2007, Growth-Induced Instability in Metabolic Networks",
+      "classification": "REFERENCE_ONLY",
+      "imported_into_assay": false,
+      "reusable_finding": "Coupled product-feedback networks can become oscillatory through a Hopf-like instability, supporting an explicit stability gate without importing model constants.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1995071/"
+    }
+  ],
+  "species_specific_identities_imported": false,
+  "status": "reviewed_for_observer_requalification"
+}

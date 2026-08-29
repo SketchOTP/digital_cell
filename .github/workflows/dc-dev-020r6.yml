@@ -1,0 +1,221 @@
+name: DC-DEV-020-R6 N-F power-law observer audit
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-020r6-observer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate compact R6 evidence and preservation boundary
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("digital-protocell/experiments/generated/dcdev020r6")
+          required = ["protocol.json", "identification.json", "physiology.json",
+                      "qualification.json", "literature_review.json",
+                      "external_evidence_manifest.json", "manifest.json"]
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              raise SystemExit(f"missing R6 artifacts: {missing}")
+          protocol = json.loads((root / "protocol.json").read_text())
+          identification = json.loads((root / "identification.json").read_text())
+          physiology = json.loads((root / "physiology.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          manifest = json.loads((root / "external_evidence_manifest.json").read_text())
+          compact_manifest = json.loads((root / "manifest.json").read_text())
+          if protocol["accepted_r5_head"] != "d215cfc00ce70517e25fa7c3b51b13d85d9ce521":
+              raise SystemExit("wrong accepted R5 authority")
+          if protocol["clean_scientific_base"] != "1e242f28152797b512e25cd56c7b718e45d6ca97":
+              raise SystemExit("wrong clean scientific base")
+          if protocol["source_commit"] != "8d87f0e7cfc109d093127090dd68af21bfb483f4":
+              raise SystemExit("wrong R6 source commit")
+          expected = "DCDEV020R6_FINITE_FEED_RESTORATION_FAILURE"
+          if qualification["classification"] != expected:
+              raise SystemExit("unexpected R6 classification")
+          if not all(qualification[f"gate{i}"] for i in (2, 3, 4)) or qualification["gate5"]:
+              raise SystemExit("R6 gate sequence changed")
+          if any(qualification[f"gate{i}"] for i in (6, 7, 8)):
+              raise SystemExit("post-failure gate executed")
+          fit = identification["fit"]
+          holdout = identification["combined_holdout"]
+          if not (fit["model"]["k_pl"] > 0 and 0 <= fit["model"]["p"] <= 1):
+              raise SystemExit("invalid fitted parameters")
+          if holdout["relative_rmse"] > 0.15 or holdout["p95_absolute_relative_error"] > 0.30:
+              raise SystemExit("held-out root fit changed")
+          if holdout["predicted_capacity_violations"] != 0 or identification["all_state_sanity"]["clipping_fraction"] != 0:
+              raise SystemExit("candidate became capacity or clipping dependent")
+          r6 = physiology["r6"]
+          if r6["final_state"]["e_stored"] >= r6["initial"]["e_stored"]:
+              raise SystemExit("finite-feed classification no longer matches evidence")
+          if not r6["alive_throughout"] or not r6["finite_nonnegative"]:
+              raise SystemExit("R6 safety changed")
+          if r6["capacity_violation_steps"] or r6["clipping_steps"] or r6["accelerated_a_decay_steps"]:
+              raise SystemExit("R6 physical-boundary result changed")
+          if r6["max_resource_conservation_error"] > 1e-10 or r6["max_stored_accounting_residual"] > 1e-10:
+              raise SystemExit("R6 accounting failed")
+          if physiology["dose_arms"] or physiology["sustained_r6"] is not None or physiology["cycles"]:
+              raise SystemExit("downstream gates were not stopped")
+          if manifest["sha256"] != "4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585":
+              raise SystemExit("R5 dense ledger hash changed")
+          import hashlib
+          for item in compact_manifest["files"]:
+              data = (root / item["name"]).read_bytes()
+              if len(data) != item["bytes"] or hashlib.sha256(data).hexdigest() != item["sha256"]:
+                  raise SystemExit(f"R6 compact manifest mismatch: {item['name']}")
+          if qualification["production_chemistry_changed"] or qualification["production_behavior_changed"] or qualification["implementation_authorized"]:
+              raise SystemExit("observer-only boundary opened")
+          print("validated DC-DEV-020-R6 compact evidence")
+          PY
+          git diff --quiet d215cfc00ce70517e25fa7c3b51b13d85d9ce521 -- \
+            digital-protocell/experiments/generated/dcdev020/observer \
+            digital-protocell/experiments/generated/dcdev020r2 \
+            digital-protocell/experiments/generated/dcdev020r3 \
+            digital-protocell/experiments/generated/dcdev020r4 \
+            digital-protocell/experiments/generated/dcdev020r5
+          changed="$(git diff --name-only 1e242f28152797b512e25cd56c7b718e45d6ca97 HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then exit 1; fi
+          if printf '%s\n' "$changed" | grep -Ei 'dcdev021|dc-dev-021'; then exit 1; fi
+          if printf '%s\n' "$changed" | grep -E '^\.gitignore$'; then exit 1; fi
+
+      - name: Scoped formatting and candidate unit tests
+        working-directory: digital-protocell
+        run: |
+          rustup run 1.89.0 rustfmt --edition 2021 --check examples/dcdev020r6_nf_power_law_source.rs
+          cargo +1.89.0 test -p regulatory-core --example dcdev020r6_nf_power_law_source --release
+
+      - name: Reproduce governed R5 dense input
+        working-directory: digital-protocell
+        env:
+          DCDEV020R5_SOURCE_COMMIT: 6dbb8d45c520e2756a81b2cc1e81dff9c3878992
+          DCDEV020R5_OUTPUT_ROOT: target/dcdev020r5-ci
+          DCDEV020R5_EXTERNAL_LEDGER: target/dcdev020r5-statewise-ledger.json
+          DCDEV020R5_EXTERNAL_LOCATION: /mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r5/6dbb8d45c520e2756a81b2cc1e81dff9c3878992/statewise_root_ledger.json
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run -p regulatory-core --example dcdev020r5_local_zero_drift_source_audit --release --quiet
+          python3 - <<'PY'
+          import json
+          import math
+          from collections import Counter
+
+          path = "target/dcdev020r5-statewise-ledger.json"
+          rows = json.load(open(path))
+          if len(rows) != 4_800:
+              raise SystemExit(f"R5 dense ledger row count changed: {len(rows)}")
+          expected_probes = {f"P{i}" for i in range(5)}
+          expected_trajectories = {
+              "baseline_bilinear_source",
+              "constant_endpoint_break_even_gain",
+          }
+          counts = Counter((row["probe"], row["trajectory"]) for row in rows)
+          expected_pairs = {
+              (probe, trajectory): 480
+              for probe in expected_probes
+              for trajectory in expected_trajectories
+          }
+          if counts != expected_pairs:
+              raise SystemExit(f"R5 probe/trajectory coverage changed: {counts}")
+          required_finite = (
+              "area", "a", "r", "n", "f", "c", "q_c", "free_l",
+              "structural_mass", "bound_membrane", "perimeter", "max_strain",
+              "e_stored_before", "constant_source", "saturated_source", "s_zero",
+          )
+          for row in rows:
+              if row["status"] != "FINITE_ZERO_DRIFT_ROOT":
+                  raise SystemExit("R5 root status changed")
+              if not all(math.isfinite(float(row[name])) for name in required_finite):
+                  raise SystemExit("R5 dense ledger contains a non-finite principal value")
+              if not math.isfinite(float(row["root"]["drift"])):
+                  raise SystemExit("R5 reconstructed root drift is non-finite")
+              if float(row["root_relative_interval"]) > 1.1e-6:
+                  raise SystemExit("R5 root search exceeds its accepted relative interval")
+          print("validated reproduced R5 dense ledger semantics")
+          PY
+
+      - name: Reproduce R6 compact evidence
+        working-directory: digital-protocell
+        env:
+          DCDEV020R5_EXTERNAL_LEDGER: target/dcdev020r5-statewise-ledger.json
+          DCDEV020R6_OUTPUT_ROOT: target/dcdev020r6-ci
+          DCDEV020R6_SOURCE_COMMIT: 8d87f0e7cfc109d093127090dd68af21bfb483f4
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run -p regulatory-core --example dcdev020r6_nf_power_law_source --release --quiet
+          for name in protocol.json qualification.json literature_review.json external_evidence_manifest.json; do
+            cmp "target/dcdev020r6-ci/$name" "experiments/generated/dcdev020r6/$name"
+          done
+          python3 - <<'PY'
+          import json
+          import math
+
+          ignored = {"trajectory_hash"}
+          def compare(a, b, path="root"):
+              if isinstance(a, dict) and isinstance(b, dict):
+                  assert set(a) == set(b), f"key mismatch at {path}"
+                  for key in a:
+                      if key not in ignored:
+                          compare(a[key], b[key], f"{path}.{key}")
+              elif isinstance(a, list) and isinstance(b, list):
+                  assert len(a) == len(b), f"length mismatch at {path}"
+                  for index, (left, right) in enumerate(zip(a, b)):
+                      compare(left, right, f"{path}[{index}]")
+              elif isinstance(a, (int, float)) and isinstance(b, (int, float)):
+                  assert math.isclose(float(a), float(b), rel_tol=1e-9, abs_tol=1e-12), \
+                      f"numeric mismatch at {path}: {a} != {b}"
+              else:
+                  assert a == b, f"value mismatch at {path}: {a!r} != {b!r}"
+
+          for name in ("identification.json", "physiology.json"):
+              generated = json.load(open(f"target/dcdev020r6-ci/{name}"))
+              committed = json.load(open(f"experiments/generated/dcdev020r6/{name}"))
+              compare(generated, committed, name)
+          PY
+
+      - name: Regulatory-core regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p regulatory-core
+
+      - name: Phase-1 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+
+      - name: D-088 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+
+      - name: Evolution-harness preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          actual="$(git rev-parse --verify HEAD)"
+          echo "checked out $actual"
+          test "$actual" = "$EXPECTED_HEAD"

@@ -1,0 +1,22 @@
+{
+  "biology_changed": false,
+  "gc_conservation": true,
+  "production_default": "ConservativeV2 / reserve OFF",
+  "reaction_area_preservation": true,
+  "transport_conservation": true,
+  "v2_d087": true,
+  "v3_d087": true,
+  "v4_bounded_recovery": true,
+  "v4_d087": [
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "v4_fed_homeostasis": true,
+  "v4_lifecycle_invariants": true
+}

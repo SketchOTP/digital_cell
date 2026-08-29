@@ -1,0 +1,31 @@
+{
+  "compact_files": [
+    "protocol.json",
+    "pairing_summary.json",
+    "constraint_summary.json",
+    "feasible_region.json",
+    "capacity_validation.json",
+    "qualification.json",
+    "literature_review.json",
+    "external_evidence_manifest.json",
+    "manifest.json"
+  ],
+  "directive": "DC-DEV-020-R8",
+  "external_dense_ledger": {
+    "location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r8/6e2b03a7551409086c1a38d6cf5f62827fb91929/pair_constraint_ledger.json",
+    "sha256": "12b41f27c928635899a7ea3a8d496cfdd3af7d3fd83aaa93024724663e2df9ff"
+  },
+  "preserved": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6",
+    "R7",
+    "Phase-1",
+    "D-088",
+    "evolution-harness"
+  ],
+  "source_commit": "6e2b03a7551409086c1a38d6cf5f62827fb91929"
+}

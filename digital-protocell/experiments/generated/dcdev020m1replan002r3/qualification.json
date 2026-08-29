@@ -1,0 +1,122 @@
+{
+  "causal_order": "N removal -> V4 lifecycle/geometry and flux divergence -> lower V4 structural loss with larger retained area -> V2/V3 A-threshold and observer collapse while V4 remains viable.",
+  "causal_sentence": "Under frozen N starvation, V4 remains viable because its lifecycle changes reduce mature-only structural turnover and preserve a larger embodied area before the V2/V3 starvation collapse, causing lower structural loss and delayed energetic/viability collapse relative to V2/V3.",
+  "classification": "M1_V4_N_STARVATION_COMBINED_COUPLING",
+  "contract_closure": {
+    "v2_historical_reference": {
+      "max_mechanics_residual": 0.5122715954034902,
+      "max_reaction_residual": 6.821210263296962e-13,
+      "max_rebond_residual": 0.0,
+      "max_remesh_residual": 0.2730645482621412,
+      "max_transport_residual": 4.053979374418759e-13,
+      "max_unexplained_residual": 0.5122715954033407
+    },
+    "v3_historical_reference": {
+      "max_mechanics_residual": 0.5125369491008769,
+      "max_reaction_residual": 6.821210263296962e-13,
+      "max_rebond_residual": 0.0,
+      "max_remesh_residual": 0.3136434538015749,
+      "max_transport_residual": 4.902744876744691e-13,
+      "max_unexplained_residual": 0.5125369491011821
+    },
+    "v4_qualification": {
+      "max_mechanics_residual": 4.547473508864641e-13,
+      "max_reaction_residual": 6.821210263296962e-13,
+      "max_rebond_residual": 0.0,
+      "max_remesh_residual": 2.2737367544323206e-13,
+      "max_transport_residual": 4.50417481090426e-13,
+      "max_unexplained_residual": 9.092726571680032e-13
+    }
+  },
+  "directive": "DC-DEV-020-M1-REPLAN-002-R3-D087-N-STARVATION-CAUSAL-DIVERGENCE-AUDIT-001",
+  "first_divergence_v4_vs_v2": {
+    "comparator": "ConservativeV2",
+    "fields": [
+      "a",
+      "c",
+      "w",
+      "total_m",
+      "young_m",
+      "mature_m",
+      "free_l",
+      "bound_b",
+      "area",
+      "perimeter"
+    ],
+    "first_step": 201,
+    "note": "First post-removal divergence from the full in-memory state ledger; dense ledgers provide the audit trail."
+  },
+  "first_divergence_v4_vs_v3": {
+    "comparator": "ConservativeV3",
+    "fields": [
+      "a",
+      "c",
+      "w",
+      "total_m",
+      "young_m",
+      "mature_m",
+      "free_l",
+      "bound_b",
+      "area",
+      "perimeter"
+    ],
+    "first_step": 201,
+    "note": "First post-removal divergence from the full in-memory state ledger; dense ledgers provide the audit trail."
+  },
+  "material_closure": true,
+  "next_execution_started": false,
+  "production_default_changed": false,
+  "r1_shadow_parity": true,
+  "r2_reproduction": {
+    "v2_d087": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "v3_d087": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "v4_d087": [
+      true,
+      false,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "schema": "dcdev020m1replan002r3_qualification_v1",
+  "starting_head": "7d7303900e17e1fc3cb0ded911e60ddfe70bb621",
+  "v2_d087": true,
+  "v2_starvation_pass_mechanism": "A < 0.05 followed by observer starvation collapse; alive/topology did not fail first.",
+  "v3_d087": true,
+  "v3_starvation_pass_mechanism": "A < 0.05 followed by observer starvation collapse; alive/topology did not fail first.",
+  "v4_d087": [
+    true,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "v4_fed_homeostasis": true,
+  "v4_frozen_horizon_diagnosis": "CONTINUING_DECLINE_WITHOUT_CERTIFIED_COLLAPSE",
+  "v4_recovery": true,
+  "v4_starvation_structural_decline": true
+}

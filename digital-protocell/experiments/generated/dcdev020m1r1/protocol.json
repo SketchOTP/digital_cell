@@ -1,0 +1,68 @@
+{
+  "arms": [
+    {
+      "id": "BASE",
+      "intervention": "none"
+    },
+    {
+      "id": "SOURCE_CAPACITY_UB",
+      "intervention": "paired internal N/F to A upper bound"
+    },
+    {
+      "id": "CATALYST_INVESTMENT_OFF",
+      "intervention": "k_c_prod=0 observer shadow only"
+    },
+    {
+      "id": "COMBINED",
+      "intervention": "SOURCE_CAPACITY_UB plus CATALYST_INVESTMENT_OFF"
+    }
+  ],
+  "deprivation_steps": 480,
+  "directive": "DC-DEV-020-M1-R1-CAPACITY-DECOMP-001",
+  "dt": 0.02,
+  "forbidden_changes": [
+    "production chemistry",
+    "chemistry-core",
+    "ConservativeV2",
+    "D-091",
+    "uptake",
+    "transport",
+    "resource quantity",
+    "degradation",
+    "recycling",
+    "M2",
+    "DC-DEV-021"
+  ],
+  "horizon_steps": 480,
+  "inventory_f": 14.588954880632265,
+  "inventory_n": 14.588954880632265,
+  "m1r0_entry": "4895135deee7dbd782446dbfe25662181951afe0",
+  "prior_constraints": {
+    "R5": "d215cfc00ce70517e25fa7c3b51b13d85d9ce521: local N/F source coordinate sufficient on audited manifold",
+    "R8-R2": "9fdd292bbd13f62ef9c88d08e8d887f15326d242: catalyst investment is an acute recovery burden",
+    "R8-R4": "shared-affinity production did not establish sustained homeostasis",
+    "R8-R5-R1": "reversible allocation had local capacity in the prior state; this is not current-baseline proof"
+  },
+  "resource_center": [
+    4.8,
+    0.0
+  ],
+  "resource_radius": 1.5,
+  "selected_production": {
+    "mesh_contract": "ConservativeV2",
+    "reserve_enabled": false
+  },
+  "settlement_steps": 5000,
+  "starting_head": "3cab12551072ad1eafaece72615f448d8efb9bea",
+  "stoichiometry": {
+    "coefficients": {
+      "A": 1.0,
+      "F": -1.0,
+      "N": -1.0,
+      "W": 1.0
+    },
+    "diagnostic_rule": "paired=min(N,F), applied only to immediately available internal material",
+    "reaction": "N + F -> A + W",
+    "source": "chemistry-core/src/mesh_contracts.rs::MeshReaction::Activation"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "pass": true,
+  "detail": "basin_sizes=3/3 snap_ok=true mem_alive=true st_alive=true ruptured=true starved=true no_respawn=true",
+  "failure": null
+}

@@ -1,0 +1,120 @@
+{
+  "d016": {
+    "deferred": {
+      "alive": true,
+      "context": "D016 bilinear source",
+      "cprod_enabled": false,
+      "final": {
+        "a": 0.2699185957612728,
+        "a_decay": 0.0030594292397970297,
+        "a_produced": 0.0025755424979828517,
+        "alive": true,
+        "c": 0.15967044461441732,
+        "catalyst_turnover": 0.0022622649725184034,
+        "conservation_residual": -2.1918231118966958e-15,
+        "e_ar": 28.288825588259833,
+        "f": 0.1476346929966382,
+        "irreversible_w": 0.012479054336476938,
+        "membrane_cost": 0.0,
+        "n": 0.1476346929966382,
+        "q_c": 0.3473585184454327,
+        "r": 0.12948580405590884,
+        "source_accepted": 0.0025755424979828517,
+        "source_requested": 0.0025755424979828512,
+        "step": 8000,
+        "structural_cost": 0.0018891998255244362
+      },
+      "finite": true,
+      "max_conservation_residual": 1.9051600574915284e-14,
+      "steps": 8000
+    },
+    "normal": {
+      "alive": true,
+      "context": "D016 bilinear source",
+      "cprod_enabled": true,
+      "final": {
+        "a": 0.1274984712394785,
+        "a_decay": 0.0014452422602106128,
+        "a_produced": 0.004344649062680486,
+        "alive": true,
+        "c": 0.4246530224937693,
+        "catalyst_turnover": 0.006015977216639687,
+        "conservation_residual": 2.733924198139448e-15,
+        "e_ar": 10.21053275249319,
+        "f": 0.14760971532679887,
+        "irreversible_w": 0.015653740084015776,
+        "membrane_cost": 0.0,
+        "n": 0.14760971532679887,
+        "q_c": 0.586008764625584,
+        "r": 0.016662045184210963,
+        "source_accepted": 0.004344649062680486,
+        "source_requested": 0.004344649062680485,
+        "step": 8000,
+        "structural_cost": 0.0015496159723536766
+      },
+      "finite": true,
+      "max_conservation_residual": 2.3358051604027708e-14,
+      "steps": 8000,
+      "whole_strategy_crossover": null
+    }
+  },
+  "r6": {
+    "deferred": {
+      "alive": true,
+      "context": "sealed R6 NF power-law source",
+      "cprod_enabled": false,
+      "final": {
+        "a": 0.5748676160884278,
+        "a_decay": 0.006516270050653259,
+        "a_produced": 0.008629072675570466,
+        "alive": true,
+        "c": 0.15967044461441732,
+        "catalyst_turnover": 0.0022622649725184034,
+        "conservation_residual": -3.6936599612236165e-15,
+        "e_ar": 64.60321845649534,
+        "f": 0.14754922438714038,
+        "irreversible_w": 0.025300105634321793,
+        "membrane_cost": 0.0,
+        "n": 0.14754922438714038,
+        "q_c": 0.3473585184454327,
+        "r": 0.337252599484722,
+        "source_accepted": 0.008629072675570466,
+        "source_requested": 0.008629072675570466,
+        "step": 8000,
+        "structural_cost": 0.0035560352366329185
+      },
+      "finite": true,
+      "max_conservation_residual": 2.8146755759461684e-14,
+      "steps": 8000
+    },
+    "normal": {
+      "alive": true,
+      "context": "sealed R6 NF power-law source",
+      "cprod_enabled": true,
+      "final": {
+        "a": 0.38138023145046085,
+        "a_decay": 0.004323262569350129,
+        "a_produced": 0.017512309598224557,
+        "alive": true,
+        "c": 0.7170820843581157,
+        "catalyst_turnover": 0.010157915436291897,
+        "conservation_residual": -2.0213865303819745e-15,
+        "e_ar": 39.53660884982543,
+        "f": 0.1474238037011364,
+        "irreversible_w": 0.04136925284231901,
+        "membrane_cost": 0.0,
+        "n": 0.1474238037011364,
+        "q_c": 0.7050385562642851,
+        "r": 0.17682942201159993,
+        "source_accepted": 0.017512309598224557,
+        "source_requested": 0.017512309598224553,
+        "step": 8000,
+        "structural_cost": 0.004639155206309512
+      },
+      "finite": true,
+      "max_conservation_residual": 2.088433592728478e-14,
+      "steps": 8000,
+      "whole_strategy_crossover": null
+    }
+  }
+}

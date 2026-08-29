@@ -1,0 +1,24 @@
+{
+  "clean_scientific_base": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "dc_dev_021_authorized": false,
+  "directive": "DC-DEV-020-R8-R5-R1",
+  "entry_head": "37b47ec89e02418018a138f670e826c6945c8030",
+  "envelopes": [
+    "reversible_0_to_total_ac",
+    "forward_only_actual_c_to_total_ac"
+  ],
+  "frozen_r6": {
+    "K_C": 0.3,
+    "K_PL": 0.017556661171593057,
+    "k_c_turn": 0.01,
+    "p": 0.0003277429681759396
+  },
+  "mesh_points": 65,
+  "observer_only": true,
+  "production_behavior_changed": false,
+  "production_chemistry_changed": false,
+  "r8r5_evidence_head": "95247dfc6b2b0e9903338e2b76ee55c08f502f84",
+  "refinement_iterations": 26,
+  "relative_interval_tolerance": 1e-6,
+  "unchanged_control": "C_prime_equals_C_actual"
+}

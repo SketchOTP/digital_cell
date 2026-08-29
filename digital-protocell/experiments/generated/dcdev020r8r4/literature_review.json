@@ -1,0 +1,22 @@
+{
+  "dispositions": [
+    "ADAPTABLE_COUPLED_CONTROL_METHOD",
+    "ADAPTABLE_AUTOGENOUS_FEEDBACK_TOPOLOGY",
+    "REFERENCE_DYNAMIC_RESERVE"
+  ],
+  "external_values_imported": false,
+  "sources": [
+    {
+      "pmid": "10878248",
+      "use": "supply-demand coupling architecture only"
+    },
+    {
+      "pmc": "PMC210154",
+      "use": "negative autogenous topology only"
+    },
+    {
+      "doi": "10.1038/s41564-022-01310-w",
+      "use": "dynamic reserve reference only"
+    }
+  ]
+}

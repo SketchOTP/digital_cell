@@ -1,0 +1,65 @@
+{
+  "accepted_dt": 0.02,
+  "arms": [
+    {
+      "f": 0.0,
+      "id": "A",
+      "label": "deprivation_no_delivery",
+      "n": 0.0
+    },
+    {
+      "f": 3.0,
+      "id": "B",
+      "label": "historical_3_0_3_0",
+      "n": 3.0
+    },
+    {
+      "f": 14.588954880632265,
+      "id": "C",
+      "label": "historical_high_inventory",
+      "n": 14.588954880632265
+    },
+    {
+      "f": 14.588954880632265,
+      "id": "D",
+      "label": "uptake_present_no_metabolic_conversion",
+      "n": 14.588954880632265
+    }
+  ],
+  "comparison_steps": 480,
+  "deprivation_steps": 480,
+  "directive": "DC-DEV-020-M1-R0-REQUAL-001",
+  "evidence_generation_head": "4895135deee7dbd782446dbfe25662181951afe0",
+  "forbidden_changes": [
+    "chemistry-core",
+    "uptake law",
+    "transport",
+    "resource inventories",
+    "settlement horizon",
+    "480-step horizon",
+    "D-087",
+    "D-091",
+    "behavior",
+    "DC-DEV-021"
+  ],
+  "historical_sources": {
+    "adapter_only": "M0 ConservativeV2 contract and reserve-off ReactionParams",
+    "d015_entry": "5a4e0a2d7314af411ec2283b0ffcf4950eb217db",
+    "d015_protocol": "experiments/generated/dcdev015/protocol.json",
+    "d016_entry": "aa33c5d2fa5dfe545a82925c28d95e57c480293f",
+    "d016_protocol": "experiments/generated/dcdev016/protocol.json",
+    "historical_only": "legacy accounting_contract and reserve-bearing physiology are not selected"
+  },
+  "resource_center": [
+    4.8,
+    0.0
+  ],
+  "resource_radius": 1.5,
+  "selected_production": {
+    "mesh_contract": "ConservativeV2",
+    "reserve_enabled": false
+  },
+  "settlement_steps": 5000,
+  "starting_head": "4895135deee7dbd782446dbfe25662181951afe0",
+  "starvation_continuation_max_steps": 5000
+}

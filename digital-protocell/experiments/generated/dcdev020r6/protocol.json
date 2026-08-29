@@ -1,0 +1,37 @@
+{
+  "accepted_r5_head": "d215cfc00ce70517e25fa7c3b51b13d85d9ce521",
+  "candidate": "q_c*g_h*K_PL*N^p*F^p",
+  "clean_scientific_base": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "constraints": {
+    "k_pl_positive": true,
+    "p_max": 1.0,
+    "p_min": 0.0
+  },
+  "cycles": 3,
+  "directive": "DC-DEV-020-R6",
+  "dose_scales": [
+    0.75,
+    1.0,
+    1.25
+  ],
+  "finite_feed_steps": 480,
+  "fit": "closed-form OLS in log space; no search",
+  "g_h": 1.0,
+  "holdout_probes": [
+    "P3",
+    "P4"
+  ],
+  "observer_only": true,
+  "production_integration": false,
+  "r5_dense_ledger_sha256": "4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585",
+  "r5_external_location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r5/6dbb8d45c520e2756a81b2cc1e81dff9c3878992/statewise_root_ledger.json",
+  "selected_mass": 19.878372106390554,
+  "source_commit": "8d87f0e7cfc109d093127090dd68af21bfb483f4",
+  "sustained_nf_clamp": 0.1476710565778127,
+  "sustained_steps": 8000,
+  "training_probes": [
+    "P0",
+    "P1",
+    "P2"
+  ]
+}

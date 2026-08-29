@@ -1,0 +1,15 @@
+{
+  "artifact_files": [
+    "protocol.json",
+    "results.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "authoritative_result": "results.json",
+  "dense_ledgers_committed": false,
+  "directive": "DC-DEV-020-M1-R1-R1-DECAY-CONFOUND-001",
+  "next_execution_started": false,
+  "observer_only": true,
+  "qualification": "qualification.json",
+  "starting_head": "9db2c7d08495f8e935a59385bf51927bcd951a7b"
+}

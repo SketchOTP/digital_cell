@@ -1,13 +1,98 @@
 //! Gate 7: standalone headless Linux runtime qualification.
 
 use serde::{Deserialize, Serialize};
+use std::collections::BTreeMap;
 use std::fs;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::time::{Duration, Instant};
 
+#[cfg(unix)]
+use std::os::unix::fs::PermissionsExt;
+
 use crate::gates::{smoke, steps, D087Conclusion, GateResult};
-use crate::sim::{fingerprint, run_coupled, seed_mesh};
+use crate::sim::{conservative_v2_enabled, fingerprint, reserve_enabled, run_coupled, seed_mesh};
+
+const MODE_ENV_KEYS: [&str; 6] = [
+    "DCDEV020R9R1_V2",
+    "DCDEV020R9R2_V2",
+    "DCDEV020R9R3_CONTRACT",
+    "DCDEV020R9R3_RESERVE",
+    "DCDEV020R9R5_MODE",
+    "DCDEV020M1REPLAN002R1_V4",
+];
+
+fn mode_env() -> BTreeMap<String, String> {
+    MODE_ENV_KEYS
+        .into_iter()
+        .filter_map(|key| std::env::var(key).ok().map(|value| (key.into(), value)))
+        .collect()
+}
+
+fn propagate_mode_env(command: &mut Command) {
+    for (key, value) in mode_env() {
+        command.env(key, value);
+    }
+}
+
+fn executable_path(path_without_suffix: &Path) -> PathBuf {
+    if std::env::consts::EXE_SUFFIX.is_empty() {
+        path_without_suffix.to_path_buf()
+    } else {
+        PathBuf::from(format!(
+            "{}{}",
+            path_without_suffix.display(),
+            std::env::consts::EXE_SUFFIX
+        ))
+    }
+}
+
+fn executable_permission(path: &Path) -> bool {
+    let Ok(metadata) = fs::metadata(path) else {
+        return false;
+    };
+
+    #[cfg(unix)]
+    {
+        metadata.permissions().mode() & 0o111 != 0
+    }
+    #[cfg(not(unix))]
+    {
+        metadata.is_file()
+    }
+}
+
+fn command_output_text(output: Option<&std::process::Output>, stdout: bool) -> String {
+    output
+        .map(|value| {
+            let bytes = if stdout { &value.stdout } else { &value.stderr };
+            String::from_utf8_lossy(bytes).into_owned()
+        })
+        .unwrap_or_default()
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct RuntimeDiagnostics {
+    pub build_exit_status: Option<i32>,
+    pub build_stdout: String,
+    pub build_stderr: String,
+    pub binary_source_path: String,
+    pub binary_source_exists: bool,
+    pub binary_destination_path: String,
+    pub binary_destination_exists: bool,
+    pub destination_executable: bool,
+    pub copy_error: Option<String>,
+    pub binary_command: String,
+    pub binary_working_directory: String,
+    pub binary_environment: BTreeMap<String, String>,
+    pub binary_exit_status: Option<i32>,
+    pub binary_stdout: String,
+    pub binary_stderr: String,
+    pub requested_output_path: String,
+    pub output_exists: bool,
+    pub snapshot_path: String,
+    pub snapshot_exists: bool,
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct RuntimeReport {
@@ -22,6 +107,7 @@ pub struct RuntimeReport {
     pub offline: bool,
     pub no_gpu: bool,
     pub detail: String,
+    pub diagnostics: RuntimeDiagnostics,
 }
 
 /// Adaptive stability: smoke ≈ short; full ≥ 90 min wall or equivalent sim horizon.
@@ -31,28 +117,37 @@ pub fn gate7_linux_runtime(repo_root: &Path, out_root: &Path) -> (GateResult, Ru
     let _ = fs::create_dir_all(&pkg_dir);
 
     // Build the runtime binary if possible.
-    let build = Command::new("cargo")
-        .args([
-            "build",
-            "-p",
-            "phase1-certifier",
-            "--bin",
-            "digital-protocell-phase1",
-            "--release",
-        ])
+    let mut build_command = Command::new("cargo");
+    build_command.args([
+        "build",
+        "-p",
+        "phase1-certifier",
+        "--bin",
+        "digital-protocell-phase1",
+        "--release",
+    ]);
+    if conservative_v2_enabled() || reserve_enabled() {
+        propagate_mode_env(&mut build_command);
+    }
+    let build = build_command
         .current_dir(repo_root.join("digital-protocell"))
         .output();
-    let built = build
-        .as_ref()
-        .map(|o| o.status.success())
-        .unwrap_or(false);
+    let built = build.as_ref().map(|o| o.status.success()).unwrap_or(false);
 
-    let bin_src = repo_root.join(
-        "digital-protocell/target/release/digital-protocell-phase1",
+    let bin_src = executable_path(
+        &repo_root.join("digital-protocell/target/release/digital-protocell-phase1"),
     );
-    let bin_dst = pkg_dir.join("digital-protocell-phase1");
-    if built && bin_src.exists() {
-        let _ = fs::copy(&bin_src, &bin_dst);
+    let bin_dst = executable_path(&pkg_dir.join("digital-protocell-phase1"));
+    let copy_error = if !built {
+        Some("build did not complete successfully".into())
+    } else if !bin_src.exists() {
+        Some("built=true but source executable was not found".into())
+    } else {
+        fs::copy(&bin_src, &bin_dst)
+            .map(|_| None)
+            .unwrap_or_else(|error| Some(error.to_string()))
+    };
+    if built && bin_src.exists() && copy_error.is_none() {
         let _ = fs::write(
             pkg_dir.join("README.txt"),
             "digital-protocell-phase1-v1 headless research runtime\nno network / no GPU required\n",
@@ -127,21 +222,40 @@ pub fn gate7_linux_runtime(repo_root: &Path, out_root: &Path) -> (GateResult, Ru
     };
 
     // External binary smoke if built
+    let requested_output = pkg_dir.join("bin_run.json");
+    let snapshot_path = requested_output.with_extension("snapshot.json");
+    let binary_working_directory = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
+    let binary_environment = mode_env();
+    let binary_command = format!(
+        "{} --steps 50 --out {}",
+        bin_dst.display(),
+        requested_output.display()
+    );
+    let mut bin_output = None;
     let mut bin_ok = !built; // if not built, don't fail solely on package (science path)
     if built && bin_dst.exists() {
-        let out = Command::new(&bin_dst)
-            .args(["--steps", "50", "--out", &pkg_dir.join("bin_run.json").display().to_string()])
-            .output();
-        bin_ok = out.map(|o| o.status.success()).unwrap_or(false);
+        let mut bin_command = Command::new(&bin_dst);
+        bin_command.args([
+            "--steps",
+            "50",
+            "--out",
+            &requested_output.display().to_string(),
+        ]);
+        if conservative_v2_enabled() || reserve_enabled() {
+            propagate_mode_env(&mut bin_command);
+        }
+        bin_output = bin_command.output().ok();
+        bin_ok = bin_output
+            .as_ref()
+            .map(|output| output.status.success())
+            .unwrap_or(false);
     }
 
     let memory_unbounded = growing > 3;
     let autonomous = steps_run > 0 && !crash;
-    let pass = autonomous
-        && snap_ok
-        && !memory_unbounded
-        && (bin_ok || smoke())
-        && (built || smoke());
+    let build_output = build.as_ref().ok();
+    let pass =
+        autonomous && snap_ok && !memory_unbounded && (bin_ok || smoke()) && (built || smoke());
 
     let detail = format!(
         "built={built} bin_ok={bin_ok} steps={steps_run} wall_s={:.1} snap_ok={snap_ok} verts={last_rss_hint} growing_flags={growing} smoke={}",
@@ -160,6 +274,27 @@ pub fn gate7_linux_runtime(repo_root: &Path, out_root: &Path) -> (GateResult, Ru
         offline: true,
         no_gpu: true,
         detail: detail.clone(),
+        diagnostics: RuntimeDiagnostics {
+            build_exit_status: build_output.and_then(|output| output.status.code()),
+            build_stdout: command_output_text(build_output, true),
+            build_stderr: command_output_text(build_output, false),
+            binary_source_path: bin_src.display().to_string(),
+            binary_source_exists: bin_src.exists(),
+            binary_destination_path: bin_dst.display().to_string(),
+            binary_destination_exists: bin_dst.exists(),
+            destination_executable: executable_permission(&bin_dst),
+            copy_error,
+            binary_command,
+            binary_working_directory: binary_working_directory.display().to_string(),
+            binary_environment,
+            binary_exit_status: bin_output.as_ref().and_then(|output| output.status.code()),
+            binary_stdout: command_output_text(bin_output.as_ref(), true),
+            binary_stderr: command_output_text(bin_output.as_ref(), false),
+            requested_output_path: requested_output.display().to_string(),
+            output_exists: requested_output.exists(),
+            snapshot_path: snapshot_path.display().to_string(),
+            snapshot_exists: snapshot_path.exists(),
+        },
     };
     (
         GateResult {
@@ -177,4 +312,20 @@ pub fn gate7_linux_runtime(repo_root: &Path, out_root: &Path) -> (GateResult, Ru
         },
         report,
     )
+}
+
+#[cfg(test)]
+mod tests {
+    use super::executable_path;
+    use std::path::Path;
+
+    #[test]
+    fn packaged_runtime_path_uses_platform_executable_suffix() {
+        let base = Path::new("package/digital-protocell-phase1");
+        let expected = format!(
+            "package/digital-protocell-phase1{}",
+            std::env::consts::EXE_SUFFIX
+        );
+        assert_eq!(executable_path(base), Path::new(&expected));
+    }
 }

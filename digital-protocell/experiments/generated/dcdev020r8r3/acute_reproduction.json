@@ -1,0 +1,9 @@
+{
+  "accepted_r8r2_deferred_final_e_ar": 63.645566711951915,
+  "accepted_r8r2_normal_final_e_ar": 60.0620310117838,
+  "deferred_trajectory_hash": "4111cf96d04c88d5",
+  "exact_reproduction": true,
+  "normal_trajectory_hash": "97010613dc36e447",
+  "reproduced_deferred_final_e_ar": 63.645566711951915,
+  "reproduced_normal_final_e_ar": 60.06203101178377
+}

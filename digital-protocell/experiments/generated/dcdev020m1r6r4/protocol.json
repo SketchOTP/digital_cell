@@ -1,0 +1,61 @@
+{
+  "actual_runtime_order": [
+    "finite resource uptake",
+    "reactions",
+    "mechanics",
+    "remesh",
+    "try_local_rebond"
+  ],
+  "arms": [
+    "ACTUAL_FULL_RUNTIME",
+    "R5_STATIC_REFERENCE",
+    "GEOMETRY_FROZEN_DIAGNOSTIC",
+    "CONTACT_PRESERVED_UPPER_BOUND_DIAGNOSTIC",
+    "NO_RESET_RECOVERY"
+  ],
+  "deprivation": 480,
+  "diagnostic_rules": {
+    "contact_upper_bound": "same flux law over all intact edges; no exposure predicate; state is never fed back to actual arm",
+    "edge_lineage": "observer geometric lineage labels are remapped after remesh; edge index is not identity",
+    "geometry_frozen": "uptake plus reactions only; no mechanics/remesh/rebond"
+  },
+  "directive": "DC-DEV-020-M1-R6-R4-HOMEOSTASIS-CONTACT-CAUSAL-AUDIT-001",
+  "dt": 0.02,
+  "forbidden_changes": [
+    "resource geometry",
+    "resource concentration",
+    "resource inventory",
+    "transport",
+    "permeability",
+    "chemistry",
+    "mechanics",
+    "remesh",
+    "rebond",
+    "death",
+    "controller",
+    "M2",
+    "DC-DEV-021"
+  ],
+  "horizon": 8000,
+  "next_execution_started": false,
+  "resource": {
+    "boundary_f": 2.063914918930895,
+    "boundary_n": 2.063914918930895,
+    "center": [
+      4.8,
+      0.0
+    ],
+    "initial_f": 243.14924801053778,
+    "initial_n": 243.14924801053778,
+    "radius": 1.5,
+    "replenishment_events": 0
+  },
+  "runtime_contract": {
+    "chemistry": "ConservativeV3",
+    "material": "GeometryConservativeV3",
+    "reserve": "OFF",
+    "transport": "unchanged uncoupled V1 finite spatial transport",
+    "world": "FINITE_SPATIAL_BACKING_RESERVOIR_V1"
+  },
+  "starting_head": "69b6133a5f76d3c7839705c78922c7452ad5d550"
+}

@@ -1,0 +1,93 @@
+{
+  "audit": {
+    "catalyst": {
+      "component": "C",
+      "f_label": 0.32148263482844536,
+      "f_label_ok": true,
+      "f_pool": 0.23008942466878438,
+      "gross_replacement_integral": 445.36497875235244,
+      "interpretation": "R_X=gross_replacement/mean_mass; f_label=labeled(T)/labeled(0); f_pool=labeled(T)/pool(T)=D-086 tracer_* metric",
+      "label_final": 0.2571861078627563,
+      "label_initial": 0.8,
+      "mean_mass": 307.9787415502825,
+      "r_x": 1.446090001246529,
+      "r_x_ok": true
+    },
+    "d086_pool_b": 0.0030287033934387644,
+    "d086_pool_c": 0.23008942466878438,
+    "d086_pool_m": 0.34912217117872313,
+    "d086_soft_pass": true,
+    "d086_tracer_interpretation": [
+      "m=0.350: remaining pulse-chase label fraction f_label ≈ M_labeled(T)/M_total(T) after unit pulse; NOT R_X replacement equivalents. Pass threshold in D-086 was f_label < 0.55 (m) / 0.70 (b,c), not the D-087 dual requirement R_X≥1 ∧ f_label≤e⁻¹.",
+      "b=0.000: remaining pulse-chase label fraction f_label ≈ M_labeled(T)/M_total(T) after unit pulse; NOT R_X replacement equivalents. Pass threshold in D-086 was f_label < 0.55 (m) / 0.70 (b,c), not the D-087 dual requirement R_X≥1 ∧ f_label≤e⁻¹.",
+      "c=0.230: remaining pulse-chase label fraction f_label ≈ M_labeled(T)/M_total(T) after unit pulse; NOT R_X replacement equivalents. Pass threshold in D-086 was f_label < 0.55 (m) / 0.70 (b,c), not the D-087 dual requirement R_X≥1 ∧ f_label≤e⁻¹.",
+      "independent_recompute_f_pool: m=0.349 b=0.003 c=0.230 (D-086 reported ~0.35/0.00/0.23)"
+    ],
+    "dual_requirement_pass": true,
+    "membrane": {
+      "component": "b",
+      "f_label": 0.002469837592336789,
+      "f_label_ok": true,
+      "f_pool": 0.0030287033934387644,
+      "gross_replacement_integral": 362.6193438490964,
+      "interpretation": "R_X=gross_replacement/mean_mass; f_label=labeled(T)/labeled(0); f_pool=labeled(T)/pool(T)=D-086 tracer_* metric",
+      "label_final": 0.15171098990687898,
+      "label_initial": 61.42549225811264,
+      "mean_mass": 62.323361008013514,
+      "r_x": 5.818353471059928,
+      "r_x_ok": true
+    },
+    "retention_a": {
+      "denominator": "initial value at pulse/window start",
+      "final_value": 0.9489278958436037,
+      "formula": "retention = final / initial (concentration or mass units as recorded)",
+      "increase_accounted_by_production": true,
+      "initial": 0.5,
+      "minimum": 0.5,
+      "qualifies_above_one": true,
+      "retention_final_over_initial": 1.8978557916872074,
+      "species": "A",
+      "time_averaged": 0.7597929007088332
+    },
+    "retention_c": {
+      "denominator": "initial value at pulse/window start",
+      "final_value": 1.1177658783448123,
+      "formula": "retention = final / initial (concentration or mass units as recorded)",
+      "increase_accounted_by_production": true,
+      "initial": 0.8,
+      "minimum": 0.7977645077809834,
+      "qualifies_above_one": true,
+      "retention_final_over_initial": 1.3972073479310154,
+      "species": "C",
+      "time_averaged": 0.926714581179369
+    },
+    "structural": {
+      "component": "m",
+      "f_label": 0.19064823319426,
+      "f_label_ok": true,
+      "f_pool": 0.34912217117872313,
+      "gross_replacement_integral": 63.372949730140824,
+      "interpretation": "R_X=gross_replacement/mean_mass; f_label=labeled(T)/labeled(0); f_pool=labeled(T)/pool(T)=D-086 tracer_* metric",
+      "label_final": 16.729516531566954,
+      "label_initial": 87.75070322587518,
+      "mean_mass": 62.24640291054177,
+      "r_x": 1.0180981834599838,
+      "r_x_ok": true
+    }
+  },
+  "d086_reported_numbers_match": true,
+  "d086_style_label_pass": true,
+  "d087_dual_pass": true,
+  "e_inv": 0.3678794411714423,
+  "frozen": {
+    "alpha_approx": 0.022,
+    "dt": 0.02,
+    "gamma": 1.0,
+    "k_pi": 0.22,
+    "k_s": 14.0,
+    "kappa_b": 2.0,
+    "schema": "autopoietic_material_mesh_v1",
+    "state": "mesh_vertices_edges_v1"
+  },
+  "tracer_semantics": "D-086 tracer_m/b/c are f_pool=labeled/total after pulse; NOT R_X. D-087 requires R_X≥1 and f_label=labeled(T)/labeled(0)≤e^{-1}."
+}

@@ -1,0 +1,15 @@
+{
+  "dense_output": "\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3",
+  "directive": "DC-DEV-020-M1-R6-R3-FULL-RUNTIME-M1-CERTIFICATION-001",
+  "files": [
+    "protocol.json",
+    "results.json",
+    "qualification.json",
+    "preservation.json",
+    "artifact_manifest.json"
+  ],
+  "schema": "dcdev020m1r6r3_manifest_v1",
+  "sha256": "computed-by-workflow",
+  "shared_drive_required": true,
+  "starting_head": "0c56890d1f59c5dc2ffc66fd1d69181d7ca7b8c5"
+}

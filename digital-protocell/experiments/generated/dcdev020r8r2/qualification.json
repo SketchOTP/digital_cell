@@ -1,0 +1,15 @@
+{
+  "architect_acceptance": "PENDING",
+  "classification": "DCDEV020R8R2_CATALYST_INVESTMENT_ACUTE_RECOVERY_BOTTLENECK",
+  "dc_dev_021_authorized": false,
+  "gate_0_authority": true,
+  "gate_1_accounting": true,
+  "gate_2_all_480_r7_states": true,
+  "gate_3_payback_recorded": true,
+  "gate_4_exact_r6_shadows": true,
+  "gate_5_classification": true,
+  "implementation_authorized": false,
+  "next_execution_started": false,
+  "production_behavior_changed": false,
+  "production_chemistry_changed": false
+}

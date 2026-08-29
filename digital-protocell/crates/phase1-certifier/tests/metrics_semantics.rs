@@ -4,7 +4,9 @@ use phase1_certifier::metrics::{interpret_d086_tracer, replacement_report, E_INV
 #[test]
 fn frozen_center_matches_default_mech() {
     assert!(verify_frozen_center(&FROZEN_CENTER));
-    assert!(verify_frozen_center(&chemistry_core::mesh_mechanics::MechParams::default()));
+    assert!(verify_frozen_center(
+        &chemistry_core::mesh_mechanics::MechParams::default()
+    ));
 }
 
 #[test]
@@ -21,6 +23,17 @@ fn dual_replacement_formulas() {
     assert!(r.f_label <= E_INV);
     assert!((r.f_pool - 0.04).abs() < 1e-9);
     assert!(r.r_x_ok && r.f_label_ok);
+}
+
+#[test]
+fn catalyst_pulse_label_is_material_amount() {
+    let initial = phase1_certifier::sim::catalyst_label_amount(0.8, 10.0);
+    let final_amount = phase1_certifier::sim::catalyst_label_amount(0.2, 5.0);
+
+    assert_eq!(initial, 8.0);
+    assert_eq!(final_amount, 1.0);
+    assert!((final_amount / initial - 0.125).abs() < 1e-12);
+    assert!((0.2_f64 / 0.8 - final_amount / initial).abs() > 1e-6);
 }
 
 #[test]

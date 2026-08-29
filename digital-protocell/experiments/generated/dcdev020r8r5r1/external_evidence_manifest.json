@@ -1,0 +1,15 @@
+{
+  "compact_git_artifacts": [
+    "protocol.json",
+    "checkpoint_hashes.json",
+    "statewise_net_envelopes.json",
+    "family_summary.json",
+    "attribution.json",
+    "qualification.json",
+    "external_evidence_manifest.json",
+    "manifest.json"
+  ],
+  "dense_artifact": "experiments/generated/dcdev020r8r5r1\\net_allocation_dense_ledger.json",
+  "external_location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r8r5r1/21fc9192362b56c0e57096ce228da15d00b7de38/net_allocation_dense_ledger.json",
+  "sha256": "bdedb478eb3c32025fc62ecbc2af538b0e594d3182ee97ebeb7c68c2bb9d8efc"
+}

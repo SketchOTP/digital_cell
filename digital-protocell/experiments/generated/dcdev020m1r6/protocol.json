@@ -1,0 +1,39 @@
+{
+  "authoritative_packaged_runtime": {
+    "binary": "digital-protocell-phase1",
+    "mechanics": "chemistry-core::mesh_mechanics::mechanics_step",
+    "rebond": "chemistry-core::mesh_reactions::try_local_rebond",
+    "remesh": "chemistry-core::mesh_mechanics::remesh",
+    "step": "transport -> reactions -> mechanics -> remesh -> try_local_rebond"
+  },
+  "candidate": {
+    "backing_reservoir": "FINITE_SPATIAL_BACKING_RESERVOIR_V1",
+    "coupled_source": "OFF",
+    "mesh_schema": "ConservativeV3",
+    "reserve": "OFF",
+    "transport": "uncoupled V1 finite spatial uptake"
+  },
+  "dc_dev_021_authorized": false,
+  "death_bound": 150000,
+  "dense_output": "\\\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6\\dense",
+  "directive": "DC-DEV-020-M1-R6-FULL-RUNTIME-INTEGRATION-CERT-001",
+  "dt": 0.02,
+  "horizon": 8000,
+  "m2_authorized": false,
+  "next_execution_started": false,
+  "production_selection_changed": false,
+  "resource": {
+    "boundary_f": 2.063914918930895,
+    "boundary_n": 2.063914918930895,
+    "center": [
+      4.8,
+      0.0
+    ],
+    "initial_f": 243.14924801053778,
+    "initial_n": 243.14924801053778,
+    "radius": 1.5,
+    "replenishment_events": 0
+  },
+  "restore_steps": 5000,
+  "starting_head": "9ff1bba4a48caf582e4598b4030d746e4360a61b"
+}

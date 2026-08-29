@@ -6,6 +6,7 @@ description = "Independent Phase 1 certification of the frozen D-086 material-me
 
 [dependencies]
 chemistry-core = { path = "../chemistry-core" }
+regulatory-core = { path = "../regulatory-core" }
 serde = { workspace = true }
 serde_json = { workspace = true }
 chrono = { workspace = true }
@@ -13,3 +14,83 @@ chrono = { workspace = true }
 [[bin]]
 name = "digital-protocell-phase1"
 path = "src/bin/phase1_runtime.rs"
+
+[[example]]
+name = "dcdev020m1r6_full_runtime"
+path = "../../examples/dcdev020m1r6_full_runtime.rs"
+
+[[example]]
+name = "dcdev020m1r6r1_geometry_material_closure_audit"
+path = "../../examples/dcdev020m1r6r1_geometry_material_closure_audit.rs"
+
+[[example]]
+name = "dcdev020m1r6r2r4_gc_preservation_qualification"
+path = "../../examples/dcdev020m1r6r2r4_gc_preservation_qualification.rs"
+
+[[example]]
+name = "dcdev020m1r6r3_full_runtime_m1_certification"
+path = "../../examples/dcdev020m1r6r3_full_runtime_m1_certification.rs"
+
+[[example]]
+name = "dcdev020m1r6r4_homeostasis_contact_audit"
+path = "../../examples/dcdev020m1r6r4_homeostasis_contact_audit.rs"
+
+[[example]]
+name = "dcdev020m1r6r5_embodied_sink_causal_decomposition"
+path = "../../examples/dcdev020m1r6r5_embodied_sink_causal_decomposition.rs"
+
+[[example]]
+name = "dcdev020m1r6r6_source_geometry_state_coupling_audit"
+path = "../../examples/dcdev020m1r6r6_source_geometry_state_coupling_audit.rs"
+
+[[example]]
+name = "dcdev020m1r6r7_reference_geometry_coupling_decision"
+path = "../../examples/dcdev020m1r6r7_reference_geometry_coupling_decision.rs"
+
+[[example]]
+name = "dcdev020m1replan001_age_structured_structural_turnover_feasibility"
+path = "../../examples/dcdev020m1replan001_age_structured_structural_turnover_feasibility.rs"
+
+[[example]]
+name = "dcdev020m1replan002_maturation_coupled_load_bearing_feasibility"
+path = "../../examples/dcdev020m1replan002_maturation_coupled_load_bearing_feasibility.rs"
+
+[[example]]
+name = "dcdev020m1replan002r1_maturation_coupled_production_candidate"
+path = "../../examples/dcdev020m1replan002r1_maturation_coupled_production_candidate.rs"
+
+[[example]]
+name = "dcdev020m1replan002r2_d087_v4_lifecycle_semantics_audit"
+path = "../../examples/dcdev020m1replan002r2_d087_v4_lifecycle_semantics_audit.rs"
+
+[[example]]
+name = "dcdev020m1replan002r3_d087_n_starvation_causal_divergence"
+path = "../../examples/dcdev020m1replan002r3_d087_n_starvation_causal_divergence.rs"
+
+[[example]]
+name = "dcdev020m1replan002r4_v4_contract_aware_preservation"
+path = "../../examples/dcdev020m1replan002r4_v4_contract_aware_preservation.rs"
+
+[[example]]
+name = "dcdev020m1replan002r5_v4_irreversible_physical_death"
+path = "../../examples/dcdev020m1replan002r5_v4_irreversible_physical_death.rs"
+
+[[example]]
+name = "dcdev020m1replan002r5r1_zero_area_closure_refeed_semantics_audit"
+path = "../../examples/dcdev020m1replan002r5r1_zero_area_closure_refeed_semantics_audit.rs"
+
+[[example]]
+name = "dcdev020m1replan002r5r2_v4_gc_transport_amount_conservation_repair"
+path = "../../examples/dcdev020m1replan002r5r2_v4_gc_transport_amount_conservation_repair.rs"
+
+[[example]]
+name = "dcdev020m1replan002r5r3_v4_live_resource_irreversible_death"
+path = "../../examples/dcdev020m1replan002r5r3_v4_live_resource_irreversible_death.rs"
+
+[[example]]
+name = "dcdev020m1replan002r5r4_v4_admissible_boundary_no_resurrection"
+path = "../../examples/dcdev020m1replan002r5r4_v4_admissible_boundary_no_resurrection.rs"
+
+[[example]]
+name = "dcdev020m1closure001_v4_production_selection_and_freeze"
+path = "../../examples/dcdev020m1closure001_v4_production_selection_and_freeze.rs"

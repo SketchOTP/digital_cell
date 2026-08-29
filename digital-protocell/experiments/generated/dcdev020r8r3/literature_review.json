@@ -1,0 +1,16 @@
+{
+  "disposition": "ADAPTABLE_DYNAMIC_RESERVE_CONCEPT_AND_REFERENCE_RESERVE_TRADEOFF",
+  "external_values_imported": false,
+  "sources": [
+    {
+      "citation": "Wu et al., Enzyme expression kinetics by E. coli during transition from rich to minimal media depends on proteome reserves",
+      "pmid": "36737588",
+      "use": "ADAPTABLE_DYNAMIC_RESERVE_CONCEPT; no expression timings, concentrations, or mechanisms imported"
+    },
+    {
+      "citation": "Schmidt et al., Quantification and Classification of E. coli Proteome Utilization and Unused Protein Costs across Environments",
+      "pmid": "27351952",
+      "use": "REFERENCE_RESERVE_TRADEOFF; no protein fractions or environmental constants imported"
+    }
+  ]
+}

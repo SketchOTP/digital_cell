@@ -1,0 +1,13 @@
+{
+  "contract": "MaturationCoupledV4",
+  "d087_gate1_threshold_changed": false,
+  "d087_gate2_changed": false,
+  "directive": "DC-DEV-020-M1-REPLAN-002-R4-V4-CONTRACT-AWARE-PRESERVATION-QUALIFICATION-001",
+  "next_execution_started": false,
+  "observer_only": true,
+  "production_default": "ConservativeV2 / reserve OFF",
+  "schema": "dcdev020m1replan002r4_protocol_v1",
+  "starting_head": "ad1642ec3b2e565e0651efe3daf36e0390351dfb",
+  "starvation_extension_bound": 150000,
+  "starvation_predicate": "existing gc_preservation::causal_starvation_passes"
+}

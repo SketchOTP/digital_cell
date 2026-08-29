@@ -1,0 +1,14 @@
+{
+  "R5": {
+    "location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r5/6dbb8d45c520e2756a81b2cc1e81dff9c3878992/statewise_root_ledger.json",
+    "sha256": "4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585"
+  },
+  "R7": {
+    "location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r7/3ddae9ea3c954431c8b3ae2ecbf2d6fc94278e56/on_policy_root_ledger.json",
+    "sha256": "abdaea6d075c700e36d14d369dba62982f4a65cea47d2d1f162b5dfe8afa59f8"
+  },
+  "dense_R8": {
+    "location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r8/6e2b03a7551409086c1a38d6cf5f62827fb91929/pair_constraint_ledger.json",
+    "sha256": "12b41f27c928635899a7ea3a8d496cfdd3af7d3fd83aaa93024724663e2df9ff"
+  }
+}

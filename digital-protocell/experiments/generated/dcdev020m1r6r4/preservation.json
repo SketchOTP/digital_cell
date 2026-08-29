@@ -1,0 +1,10 @@
+{
+  "candidate_v3_d087": true,
+  "d088": "required_by_exact_workflow",
+  "d091": "required_by_exact_workflow",
+  "evolution_harness": "required_by_exact_workflow",
+  "gc_conservation": "required_by_exact_workflow",
+  "historical_v2_d087": true,
+  "phase1": "required_by_exact_workflow",
+  "r6_r3_r3": "required_by_exact_workflow"
+}

@@ -1,0 +1,23 @@
+{
+  "base_reproduction": true,
+  "capacity_classification": "M1_SOURCE_AND_ALLOCATION_INSUFFICIENT",
+  "chemistry_changed": false,
+  "d091_changed": false,
+  "dc_dev_021_authorized": false,
+  "directive": "DC-DEV-020-M1-R1-CAPACITY-DECOMP-001",
+  "internal_material_closure": true,
+  "m1_production_change_authorized": false,
+  "m1r0_entry": "4895135deee7dbd782446dbfe25662181951afe0",
+  "m2_authorized": false,
+  "next_execution_started": false,
+  "observer_only": true,
+  "parameter_search": false,
+  "production_biology_changed": false,
+  "recycling_authorized": false,
+  "recycling_implemented": false,
+  "source_ub_material_closure": true,
+  "source_ub_stoichiometry": "PASS: exact ConservativeV2 activation coefficients",
+  "starting_head": "3cab12551072ad1eafaece72615f448d8efb9bea",
+  "uptake_changed": false,
+  "world_organism_closure": true
+}

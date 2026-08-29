@@ -1,0 +1,16 @@
+{
+  "compact_files": [
+    "d087_raw_metrics.json",
+    "dual_retention_comparison.json",
+    "starvation_semantics_comparison.json",
+    "physical_trajectory_parity.json",
+    "qualification.json",
+    "preservation.json",
+    "artifact_manifest.json"
+  ],
+  "dense_output": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r2/dense/local",
+  "directive": "DC-DEV-020-M1-REPLAN-002-R2-D087-V4-LIFECYCLE-SEMANTICS-AUDIT-001",
+  "next_execution_started": false,
+  "schema": "dcdev020m1replan002r2_manifest_v1",
+  "starting_head": "98b1104165039359bdc609898e0d0371f9ce05c4"
+}

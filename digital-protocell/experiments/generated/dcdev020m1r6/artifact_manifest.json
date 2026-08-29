@@ -1,0 +1,14 @@
+{
+  "dense_output": "\\\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6\\dense",
+  "directive": "DC-DEV-020-M1-R6-FULL-RUNTIME-INTEGRATION-CERT-001",
+  "files": [
+    "protocol.json",
+    "results.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "schema": "dcdev020m1r6_manifest_v1",
+  "sha256": "computed-by-workflow",
+  "shared_drive_required": true,
+  "starting_head": "9ff1bba4a48caf582e4598b4030d746e4360a61b"
+}

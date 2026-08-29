@@ -1,0 +1,67 @@
+{
+  "project_directive": "D-087",
+  "agent_directive": "D-20260724-d087-independent-phase1-certification-phase2-launch",
+  "entry_commit": "6f8a80a",
+  "entry_tag": "D-086-mesh-protocell-phase1-pass",
+  "frozen": {
+    "alpha_approx": 0.022,
+    "dt": 0.02,
+    "gamma": 1.0,
+    "k_pi": 0.22,
+    "k_s": 14.0,
+    "kappa_b": 2.0,
+    "schema": "autopoietic_material_mesh_v1",
+    "state": "mesh_vertices_edges_v1"
+  },
+  "smoke": false,
+  "gate0": {
+    "pass": true,
+    "detail": "head=904efc9 tag=6f8a80a tag_ok=true ancestor_ok=true frozen_ok=true hits=2145 controller_hits=0 dirty_candidate=false",
+    "failure": null
+  },
+  "gate1": {
+    "pass": false,
+    "detail": "R_m=0.840 f_m=0.178 pool_m=0.419 R_b=5.578 f_b=0.002 pool_b=0.004 R_c=1.377 f_c=0.317 pool_c=0.238 ret_c=1.330 ret_a=1.923 dual=false d086_soft=true",
+    "failure": "D087_D086_ACCEPTANCE_INVALID"
+  },
+  "gate2": {
+    "pass": false,
+    "detail": "basin_sizes=0/3 snap_ok=true mem_alive=true st_alive=true ruptured=true starved=true no_respawn=true",
+    "failure": "D087_D086_REPRODUCTION_FAILURE"
+  },
+  "gate3": {
+    "pass": false,
+    "detail": "seed_distinct_fps=3 seeds_effective=true size_pass=0/3 path=deterministic_perturbation",
+    "failure": "D087_HELD_OUT_REPRODUCIBILITY_FAILURE"
+  },
+  "gate4": {
+    "pass": false,
+    "detail": "pass_rate=0.538 (7/13)",
+    "failure": "D087_PHASE1_ROBUSTNESS_FAILURE"
+  },
+  "gate5": {
+    "pass": true,
+    "detail": "ablations_ok=9/8",
+    "failure": null
+  },
+  "gate6": {
+    "pass": true,
+    "detail": "damage_generalization=8/8",
+    "failure": null
+  },
+  "gate7": {
+    "pass": false,
+    "detail": "built=true bin_ok=false steps=80000 wall_s=9.8 snap_ok=true verts=50 growing_flags=0 smoke=false",
+    "failure": "D087_LINUX_RUNTIME_QUALIFICATION_FAILURE"
+  },
+  "primary_conclusion": "D087_D086_ACCEPTANCE_INVALID",
+  "phase1_status": "PHASE1_ACCEPTANCE_INVALID",
+  "phase2_authorized": false,
+  "next_execution_started": false,
+  "production_verdict": "PHASE1_NOT_CERTIFIED",
+  "elapsed_secs": 63.6742213,
+  "artifact_root": "experiments/generated/dcdev020r9r3\\matrix\\h1",
+  "mesh_contract": "HistoricalV1",
+  "equation_lineage": "autopoietic_material_mesh_metabolic_reserve_v1",
+  "reserve_enabled": true
+}

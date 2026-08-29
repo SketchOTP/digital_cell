@@ -1,0 +1,16 @@
+{
+  "adds_directly_to_clone_interior_concentrations": true,
+  "classification": "SEALED_INTERNAL_DELIVERY_UPPER_BOUND",
+  "clones_starvation_states": true,
+  "healthy_reference_mesh": true,
+  "normal_live_resource_interface": false,
+  "records_delivered_n_f_per_step": true,
+  "reference_runs_finite_spatial_backing_reservoir": true,
+  "source_lines": {
+    "file": "examples/dcdev020m1replan002r5_v4_irreversible_physical_death.rs",
+    "functions": [
+      "source_schedule",
+      "run_refeed"
+    ]
+  }
+}

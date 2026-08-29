@@ -1,0 +1,56 @@
+{
+  "checkpoints": [
+    0,
+    480,
+    1000,
+    2000,
+    4000,
+    6000,
+    8000
+  ],
+  "death_bound": 150000,
+  "dense_output": "\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r2",
+  "deprivation_steps": 480,
+  "directive": "DC-DEV-020-M1-R6-R3-R2-GC-REACTION-AREA-SEMANTICS-AUDIT-001",
+  "horizon": 8000,
+  "m2_authorized": false,
+  "next_execution_started": false,
+  "production_default_changed": false,
+  "reaction_area_audit": {
+    "historical_floor": 1e-6,
+    "scope": "observer-only; no reaction equation or runtime state change"
+  },
+  "refeed_steps": 5000,
+  "resource": {
+    "boundary_f": 2.063914918930895,
+    "boundary_n": 2.063914918930895,
+    "center": [
+      4.8,
+      0.0
+    ],
+    "initial_f": 243.14924801053778,
+    "initial_n": 243.14924801053778,
+    "radius": 1.5,
+    "replenishment_events": 0
+  },
+  "runtime_contract": {
+    "chemistry": "ConservativeV3",
+    "material": "GeometryConservativeV3",
+    "reserve": "OFF",
+    "transport": "unchanged uncoupled V1 finite spatial transport",
+    "world": "FINITE_SPATIAL_BACKING_RESERVOIR_V1"
+  },
+  "runtime_order": [
+    "finite resource uptake",
+    "reactions",
+    "mechanics",
+    "remesh",
+    "try_local_rebond"
+  ],
+  "stage_closure": {
+    "identity": "strict material before/after each stage; uptake additionally subtracts delivered N+F",
+    "remesh_return_value_is_authority": false,
+    "tolerance": 1e-8
+  },
+  "starting_head": "dac4973ea74e298744a69b5829c33dd0f7db85f4"
+}

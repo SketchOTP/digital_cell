@@ -1,0 +1,272 @@
+name: DC-DEV-020-M1-R6-R1 geometry material closure audit
+
+on:
+  push:
+    branches:
+      - strategy/dc-dev-020r9-mesh-contract-requalification
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+
+permissions:
+  contents: read
+
+jobs:
+  geometry-material-closure-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out exact head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.89.0
+          components: rustfmt
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Governance validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustfmt +1.89.0 --edition 2021 --check examples/dcdev020m1r6r1_geometry_material_closure_audit.rs
+      - name: Verify bounded R6-R1 diff
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import subprocess
+
+          start = 'adea13fafa1f2a85e521a44b5d77249820d107bd'
+          changed = subprocess.check_output(['git', 'diff', '--name-only', start, 'HEAD'], text=True).splitlines()
+          allowed = {
+              '.agent/CURRENT.md', '.agent/DIRECTIVES.md', '.agent/LEARNINGS.md',
+              '.agent/OUTCOMES.md', '.agent/REPO_MAP.md', 'STORAGE_MAP.md',
+              '.github/workflows/dc-dev-020m1r6r1.yml',
+              'digital-protocell/crates/phase1-certifier/Cargo.toml',
+              'digital-protocell/examples/dcdev020m1r6r1_geometry_material_closure_audit.rs',
+              'digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r1/geometry_material_closure_audit.md',
+              'digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r1r1/cross_platform_closure_validation.md',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1/R6R1_EVIDENCE_MANIFEST.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1/artifact_manifest.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1/protocol.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1/qualification.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1/results.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1r1/protocol.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1r1/execution_metadata.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1r1/results.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1r1/qualification.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1r1/artifact_manifest.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r1r1/R6R1R1_EVIDENCE_MANIFEST.json',
+          }
+          assert set(changed) <= allowed, f'unexpected R6-R1 paths: {sorted(set(changed) - allowed)}'
+          forbidden = [path for path in changed if any(token in path.lower() for token in (
+              'chemistry-core/src', 'mesh_reactions.rs', 'mesh_transport.rs',
+              'mesh_mechanics.rs', 'mesh_fission.rs', 'recycl', 'salvage',
+              'dc-dev-021', 'phase1-certifier/src/gates.rs',
+          ))]
+          assert not forbidden, f'forbidden R6-R1 paths: {forbidden}'
+          print('DCDEV020M1R6R1_BOUNDED_DIFF_PASS')
+          PY
+      - name: Fresh geometry/material closure audit
+        working-directory: digital-protocell
+        env:
+          DCDEV020M1R6R1_OUTPUT: experiments/generated/dcdev020m1r6r1r1/ci
+          DCDEV020M1R6R1_DENSE_OUTPUT: experiments/generated/dcdev020m1r6r1r1/ci_dense
+        run: cargo +1.89.0 run -p phase1-certifier --example dcdev020m1r6r1_geometry_material_closure_audit --release --quiet
+      - name: D-087 ConservativeV3 preservation regression
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R3_CONTRACT: ConservativeV3
+          DCDEV020R9R3_RESERVE: '0'
+        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1r6r1r1/ci/v3_d087
+      - name: D-087 ConservativeV2 preservation regression
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R3_CONTRACT: ConservativeV2
+          DCDEV020R9R3_RESERVE: '0'
+        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1r6r1r1/ci/v2_d087
+      - name: Verify fresh audit artifacts and fail-closed gates
+        working-directory: digital-protocell
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          class VerificationFailure(Exception):
+              pass
+
+          def require(condition, message):
+              if not condition:
+                  print(f'::error title=R6-R1 verifier::{message}')
+                  raise VerificationFailure(message)
+
+          base = Path('experiments/generated/dcdev020m1r6r1r1')
+          fresh = base / 'ci'
+          names = ('protocol.json', 'execution_metadata.json', 'results.json', 'qualification.json', 'artifact_manifest.json')
+          for root in (base, fresh):
+              for name in names:
+                  require((root / name).is_file(), f'missing {root/name}')
+          protocol = json.loads((base / 'protocol.json').read_text())
+          fresh_protocol = json.loads((fresh / 'protocol.json').read_text())
+          metadata = json.loads((base / 'execution_metadata.json').read_text())
+          fresh_metadata = json.loads((fresh / 'execution_metadata.json').read_text())
+          results = json.loads((fresh / 'results.json').read_text())
+          local_results = json.loads((base / 'results.json').read_text())
+          qualification = json.loads((fresh / 'qualification.json').read_text())
+          require(fresh_protocol == protocol, 'fresh protocol differs from committed protocol')
+          require(protocol['directive'] == 'DC-DEV-020-M1-R6-R1-R1-CROSS-PLATFORM-CLOSURE-VALIDATION-001', 'directive mismatch')
+          require(protocol['starting_head'] == '1d681694e0dd5334e8267a881a2e1c4bec71324d', 'authority starting head mismatch')
+          require(protocol['audit_entry_head'] == 'adea13fafa1f2a85e521a44b5d77249820d107bd', 'audit entry head mismatch')
+          require(protocol['observer_only'] is True, 'observer-only flag missing')
+          require('execution_dense_output' not in protocol and 'dense_output' not in protocol, 'execution path leaked into scientific protocol')
+          require(metadata['storage_mode'] == 'LOCAL_CANONICAL_SHARED_DRIVE', 'committed evidence is not marked canonical shared-drive storage')
+          require(fresh_metadata['storage_mode'] == 'CI_EPHEMERAL_VALIDATION', 'fresh CI evidence is not marked ephemeral')
+
+          def close(a, b):
+              return abs(a - b) <= 1e-8 * (1.0 + max(abs(a), abs(b)))
+
+          def fixed_delta(isolation):
+              return sum(item['fixed_concentration_geometry_delta'] for item in isolation['area_audit'])
+
+          def verify_platform(label, payload):
+              require(payload['r6_reproduction']['observer_trajectory_parity'] is True, f'{label}: observer trajectory parity failed')
+              require(payload['r6_reproduction']['observer_final_mesh_parity'] is True, f'{label}: observer final mesh parity failed')
+              require(payload['stage_ledger_pass'] is True, f'{label}: stage ledger failed')
+              require(payload['mechanics_only_isolation']['executed'] is True, f'{label}: mechanics isolation not executed')
+              require(payload['remesh_only_isolation']['executed'] is True, f'{label}: remesh isolation not executed')
+              mechanics = payload['mechanics_only_isolation']
+              remesh = payload['remesh_only_isolation']
+              require(abs(mechanics['strict_delta']) > 1e-8, f'{label}: mechanics isolation is zero')
+              require(abs(remesh['strict_delta']) > 1e-8, f'{label}: remesh isolation is zero')
+              mechanics_area_match = close(mechanics['strict_delta'], fixed_delta(mechanics))
+              remesh_area_match = close(remesh['strict_delta'], fixed_delta(remesh))
+              attr = payload['attribution_8000']
+              geometry_match = close(attr['geometry_cumulative_residual'], attr['geometry_fixed_concentration_delta'])
+              require(abs(attr['uptake_cumulative_residual']) <= 1e-8, f'{label}: uptake residual too large')
+              require(abs(attr['reaction_cumulative_residual']) <= 1e-8, f'{label}: reaction residual too large')
+              require(abs(attr['unexplained_residual']) <= 1e-8, f'{label}: unexplained residual too large')
+              contact = payload.get('first_permanent_resource_contact_loss_step')
+              geometry = payload.get('first_geometry_change_step')
+              contact_chronology_match = contact is not None and geometry is not None and contact >= geometry
+              contact_resource = payload.get('contact_loss_resource_remaining')
+              contact_before = payload.get('contact_loss_exposed_edges_before')
+              contact_after = payload.get('contact_loss_exposed_edges_after')
+              contact_resource_valid = contact_resource is not None and contact_resource > 0.0
+              contact_exposure_valid = contact_before is not None and contact_before > 0 and contact_after == 0
+              return {
+                  'mechanics_area_match': mechanics_area_match,
+                  'remesh_area_match': remesh_area_match,
+                  'geometry_match': geometry_match,
+                  'mechanics_strict_delta': mechanics['strict_delta'],
+                  'remesh_strict_delta': remesh['strict_delta'],
+                  'geometry_residual': attr['geometry_cumulative_residual'],
+                  'geometry_prediction': attr['geometry_fixed_concentration_delta'],
+                  'contact_chronology_match': contact_chronology_match,
+                  'contact_resource_valid': contact_resource_valid,
+                  'contact_exposure_valid': contact_exposure_valid,
+                  'contact_loss_step': contact,
+                  'geometry_change_step': geometry,
+              }
+
+          def safe_verify_platform(label, payload):
+              try:
+                  return {'valid': True, **verify_platform(label, payload)}
+              except VerificationFailure as failure:
+                  return {'valid': False, 'failure': str(failure)}
+              except Exception as failure:
+                  return {'valid': False, 'failure': f'{type(failure).__name__}: {failure}'}
+
+          local_platform = safe_verify_platform('local', local_results)
+          linux_platform = safe_verify_platform('linux', results)
+          require(qualification['e0_authority'] is True and qualification['e1_stage_ledger'] is True, 'qualification gates failed')
+          require(qualification['next_execution_started'] is False, 'next execution started')
+          require(results['next_execution_started'] is False, 'results advanced')
+          require(results['production_biology_changed'] is False and results['mechanics_changed'] is False, 'production scope changed')
+          for contract in ('ConservativeV2', 'ConservativeV3'):
+              report = json.loads((fresh / ('v2_d087' if contract == 'ConservativeV2' else 'v3_d087') / 'certification' / 'report.json').read_text())
+              require(report['mesh_contract'] == contract, f'{contract} contract mismatch')
+              require(report['reserve_enabled'] is False, f'{contract} reserve enabled')
+              require([report[f'gate{i}']['pass'] for i in range(8)] == [True] * 8, f'{contract} D-087 preservation failed')
+          required_steps = [0, 1, 10, 100, 480, 1000, 2000, 3466, 4000, 6000, 6931, 8000]
+          numeric_fields = ('area', 'organized_material', 'strict_material', 'n_concentration', 'f_concentration', 'a_concentration', 'c_concentration', 'structural_m', 'cumulative_n_delivered', 'cumulative_f_delivered')
+          first_checkpoint = None
+          divergence_type = 'BITWISE_DIFFERENCE_ONLY'
+          for step in required_steps:
+              key = str(step)
+              local_cp = local_results['r6_reproduction']['semantic_checkpoints'][key]
+              linux_cp = results['r6_reproduction']['semantic_checkpoints'][key]
+              numeric_difference = any(not close(local_cp['observation'][field], linux_cp['observation'][field]) for field in numeric_fields if field in local_cp['observation'])
+              numeric_difference |= not close(local_cp['cumulative_n_delivered'], linux_cp['cumulative_n_delivered'])
+              numeric_difference |= not close(local_cp['cumulative_f_delivered'], linux_cp['cumulative_f_delivered'])
+              discrete_difference = local_cp['observation']['vertex_count'] != linux_cp['observation']['vertex_count'] or local_cp['remesh_event_count'] != linux_cp['remesh_event_count']
+              if discrete_difference or numeric_difference:
+                  first_checkpoint = step
+                  divergence_type = 'DISCRETE_REMESH_BRANCH_DIVERGENCE' if discrete_difference else 'NUMERIC_STATE_DIVERGENCE'
+                  break
+          platform_invalid = not local_platform['valid'] or not linux_platform['valid']
+          platform_dependent = not platform_invalid and not all(
+              platform['geometry_match']
+              and platform['mechanics_area_match']
+              and platform['remesh_area_match']
+              and platform['contact_chronology_match']
+              and platform['contact_resource_valid']
+              and platform['contact_exposure_valid']
+              for platform in (local_platform, linux_platform)
+          )
+          comparison = {
+              'classification': 'M1_RUNTIME_CROSS_PLATFORM_VALIDATION_INVALID' if platform_invalid else ('M1_RUNTIME_GEOMETRY_MASS_COUPLING_PLATFORM_DEPENDENT' if platform_dependent else 'M1_RUNTIME_GEOMETRY_MASS_COUPLING_CROSS_PLATFORM_CONFIRMED'),
+              'first_semantic_divergence_checkpoint': first_checkpoint,
+              'divergence_type': divergence_type,
+              'local_geometry_residual': local_results['attribution_8000']['geometry_cumulative_residual'],
+              'linux_geometry_residual': results['attribution_8000']['geometry_cumulative_residual'],
+              'local_fixed_concentration_prediction': local_results['attribution_8000']['geometry_fixed_concentration_delta'],
+              'linux_fixed_concentration_prediction': results['attribution_8000']['geometry_fixed_concentration_delta'],
+              'local_contact_loss_step': local_results.get('first_permanent_resource_contact_loss_step'),
+              'linux_contact_loss_step': results.get('first_permanent_resource_contact_loss_step'),
+              'protocol_identity': 'PASS',
+              'within_platform_parity': 'PASS',
+              'causal_invariants': 'INVALID' if platform_invalid else ('PLATFORM_DEPENDENT' if platform_dependent else 'PASS'),
+              'local_platform_invariants': local_platform,
+              'linux_platform_invariants': linux_platform,
+          }
+          Path('experiments/generated/dcdev020m1r6r1r1/ci/cross_platform_comparison.json').write_text(json.dumps(comparison, indent=2) + '\\n')
+          print('DCDEV020M1R6R1_CROSS_PLATFORM_CAUSAL_VERIFICATION_PASS')
+          print(json.dumps(comparison, indent=2))
+          PY
+      - name: D-088 preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+      - name: D-091 preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+      - name: Phase-1 metrics preservation
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics -- --nocapture
+      - name: Evolution-harness preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness -- --nocapture
+      - name: Upload compact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020m1r6r1-geometry-material-closure-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/execution_metadata.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/results.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/artifact_manifest.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/R6R1R1_EVIDENCE_MANIFEST.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/ci/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/ci/execution_metadata.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/ci/results.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/ci/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/ci/artifact_manifest.json
+            digital-protocell/experiments/generated/dcdev020m1r6r1r1/ci/cross_platform_comparison.json

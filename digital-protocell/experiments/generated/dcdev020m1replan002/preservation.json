@@ -1,0 +1,16 @@
+{
+  "age_state_identity": true,
+  "damage_preservation": true,
+  "gc_material_closure": true,
+  "maturation_load_bearing_candidate": true,
+  "maturation_recovery": true,
+  "mature_reference_bounded": true,
+  "mature_reference_identity": true,
+  "r6_r7_control_reproduction": true,
+  "remesh_age_lineage": true,
+  "replan001_age_control_reproduction": true,
+  "resource_delivery_parity": true,
+  "tier": "R6-R7 controls, GC closure, V2/V3 D087, age identity/lineage, and damage",
+  "v2_d087": true,
+  "v3_d087": true
+}

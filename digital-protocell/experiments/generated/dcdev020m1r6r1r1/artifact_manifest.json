@@ -1,0 +1,15 @@
+{
+  "canonical_shared_dense_output": "\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r1r1\\dense",
+  "directive": "DC-DEV-020-M1-R6-R1-R1-CROSS-PLATFORM-CLOSURE-VALIDATION-001",
+  "files": [
+    "protocol.json",
+    "execution_metadata.json",
+    "results.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "schema": "dcdev020m1r6r1_manifest_v2",
+  "sha256": "computed-by-workflow",
+  "shared_drive_required": true,
+  "starting_head": "1d681694e0dd5334e8267a881a2e1c4bec71324d"
+}

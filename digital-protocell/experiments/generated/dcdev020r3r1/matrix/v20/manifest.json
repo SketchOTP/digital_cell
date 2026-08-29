@@ -1,0 +1,67 @@
+{
+  "project_directive": "D-087",
+  "agent_directive": "D-20260724-d087-independent-phase1-certification-phase2-launch",
+  "entry_commit": "6f8a80a",
+  "entry_tag": "D-086-mesh-protocell-phase1-pass",
+  "frozen": {
+    "alpha_approx": 0.022,
+    "dt": 0.02,
+    "gamma": 1.0,
+    "k_pi": 0.22,
+    "k_s": 14.0,
+    "kappa_b": 2.0,
+    "schema": "autopoietic_material_mesh_v1",
+    "state": "mesh_vertices_edges_v1"
+  },
+  "smoke": false,
+  "gate0": {
+    "pass": true,
+    "detail": "head=b7be0e7 tag=6f8a80a tag_ok=true ancestor_ok=true frozen_ok=true hits=2145 controller_hits=0 dirty_candidate=false",
+    "failure": null
+  },
+  "gate1": {
+    "pass": true,
+    "detail": "R_m=1.018 f_m=0.191 pool_m=0.349 R_b=5.818 f_b=0.002 pool_b=0.003 R_c=1.446 f_c=0.321 pool_c=0.230 ret_c=1.397 ret_a=1.898 dual=true d086_soft=true",
+    "failure": null
+  },
+  "gate2": {
+    "pass": true,
+    "detail": "basin_sizes=3/3 snap_ok=true mem_alive=true st_alive=true ruptured=true starved=true no_respawn=true",
+    "failure": null
+  },
+  "gate3": {
+    "pass": true,
+    "detail": "seed_distinct_fps=3 seeds_effective=true size_pass=3/3 path=deterministic_perturbation",
+    "failure": null
+  },
+  "gate4": {
+    "pass": true,
+    "detail": "pass_rate=1.000 (13/13)",
+    "failure": null
+  },
+  "gate5": {
+    "pass": true,
+    "detail": "ablations_ok=9/8",
+    "failure": null
+  },
+  "gate6": {
+    "pass": true,
+    "detail": "damage_generalization=8/8",
+    "failure": null
+  },
+  "gate7": {
+    "pass": true,
+    "detail": "built=true bin_ok=true steps=80000 wall_s=9.4 snap_ok=true verts=50 growing_flags=0 smoke=false",
+    "failure": null
+  },
+  "primary_conclusion": "D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED",
+  "phase1_status": "PHASE1_COMPLETE",
+  "phase2_authorized": true,
+  "next_execution_started": false,
+  "production_verdict": "PHASE1_RESEARCH_RUNTIME_QUALIFIED",
+  "elapsed_secs": 61.7973077,
+  "artifact_root": "experiments/generated/dcdev020r3r1\\matrix\\v20",
+  "mesh_contract": "ConservativeV2",
+  "equation_lineage": "autopoietic_material_mesh_v1",
+  "reserve_enabled": false
+}

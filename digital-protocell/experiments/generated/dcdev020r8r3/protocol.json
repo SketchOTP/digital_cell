@@ -1,0 +1,36 @@
+{
+  "catalyst_half_life_steps": 3465.7359027997263,
+  "checkpoints": [
+    433,
+    480,
+    866,
+    1733,
+    3466,
+    5199,
+    6931
+  ],
+  "clean_scientific_base": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "continuous_precursor_semantics": "set N and F to the established sustained-feed value before every accepted reaction step",
+  "dc_dev_021_authorized": false,
+  "deferred": "catalyst production zero, frozen turnover retained",
+  "directive": "DC-DEV-020-R8-R3",
+  "entry_head": "9fdd292bbd13f62ef9c88d08e8d887f15326d242",
+  "frozen_dt": 0.02,
+  "frozen_k_c_turn": 0.01,
+  "governed_sustained_horizon": 8000,
+  "normal": "frozen catalyst production and turnover",
+  "observer_only": true,
+  "production_behavior_changed": false,
+  "production_chemistry_changed": false,
+  "r5_dense_sha256": "4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585",
+  "r7_dense_sha256": "abdaea6d075c700e36d14d369dba62982f4a65cea47d2d1f162b5dfe8afa59f8",
+  "r8_dense_sha256": "12b41f27c928635899a7ea3a8d496cfdd3af7d3fd83aaa93024724663e2df9ff",
+  "r8r1_dense_sha256": "f44e8f9fa441451ee40bcbfccac5f556131e4d26868868607e9507c29e7bcf90",
+  "r8r2_dense_sha256": "e932f6ab96e34516de98c97c2cae102553db9764383af3d61abf015743c3a376",
+  "result_commit": "958b366b8fa10edb86cb88a7b604b7f86aa368e1",
+  "source_commit": "9fdd292bbd13f62ef9c88d08e8d887f15326d242",
+  "source_contexts": [
+    "D016 bilinear source",
+    "sealed R6 NF power-law source"
+  ]
+}

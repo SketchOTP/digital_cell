@@ -1,0 +1,146 @@
+name: DC-DEV-020-M1-R1-R1 decay confound
+
+on:
+  push:
+    branches:
+      - strategy/dc-dev-020r9-mesh-contract-requalification
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+
+permissions:
+  contents: read
+
+jobs:
+  decay-confound:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out exact head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.89.0
+          components: rustfmt
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Governance validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustfmt +1.89.0 --edition 2021 --check examples/dcdev020m1r1_capacity_decomp.rs examples/dcdev020m1r1r1_decay_confound.rs
+      - name: Preserve production source boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          changed="$(git diff --name-only 9db2c7d08495f8e935a59385bf51927bcd951a7b HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/(chemistry-core|phase1-certifier/src)/'; then
+            echo 'M1-R1-R1 may not modify production chemistry or Phase-1 source'
+            exit 1
+          fi
+          if printf '%s\n' "$changed" | grep -Ei 'dcdev020r[2-9]|dc-dev-021|recycl|salvage|homeostat|controller|behavior'; then
+            echo 'M1-R1-R1 later-scope contamination detected'
+            exit 1
+          fi
+      - name: Fresh decay-confound observer assay
+        working-directory: digital-protocell
+        env:
+          DCDEV020M1R1R1_OUTPUT: experiments/generated/dcdev020m1r1r1/ci
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev020m1r1r1_decay_confound --quiet
+      - name: Verify compact decay-confound artifacts
+        working-directory: digital-protocell
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          base = Path('experiments/generated/dcdev020m1r1r1')
+          fresh = base / 'ci'
+          names = ('protocol.json', 'results.json', 'qualification.json', 'artifact_manifest.json')
+          for root in (base, fresh):
+              for name in names:
+                  assert (root / name).is_file(), f'missing {root/name}'
+          protocol = json.loads((base / 'protocol.json').read_text())
+          results = json.loads((base / 'results.json').read_text())
+          qualification = json.loads((base / 'qualification.json').read_text())
+          fresh_protocol = json.loads((fresh / 'protocol.json').read_text())
+          fresh_results = json.loads((fresh / 'results.json').read_text())
+          fresh_q = json.loads((fresh / 'qualification.json').read_text())
+
+          def equivalent(a, b, path='root'):
+              if isinstance(a, (int, float)) and isinstance(b, (int, float)) and not isinstance(a, bool) and not isinstance(b, bool):
+                  assert abs(a - b) <= 1e-8 * max(1.0, abs(a), abs(b)), f'{path}: numeric mismatch'
+                  return
+              if isinstance(a, (int, str, bool)) or a is None:
+                  assert a == b, f'{path}: value mismatch'
+                  return
+              if isinstance(a, list):
+                  assert isinstance(b, list) and len(a) == len(b), f'{path}: list mismatch'
+                  for i, (x, y) in enumerate(zip(a, b)):
+                      equivalent(x, y, f'{path}[{i}]')
+                  return
+              assert isinstance(b, dict) and set(a) == set(b), f'{path}: object keys mismatch'
+              for key in a:
+                  if key not in {'trajectory_hash', 'final_mesh_hash'}:
+                      equivalent(a[key], b[key], f'{path}.{key}')
+
+          assert protocol['starting_head'] == '9db2c7d08495f8e935a59385bf51927bcd951a7b'
+          assert protocol['m1r1_entry'] == '3cab12551072ad1eafaece72615f448d8efb9bea'
+          assert protocol['horizon_steps'] == 480
+          assert [a['id'] for a in protocol['arms']] == [
+              'BASE', 'SOURCE_CAPACITY_UB_RAW', 'SOURCE_CAPACITY_UB_DECAY_NEUTRAL', 'COMBINED_DECAY_NEUTRAL'
+          ]
+          assert results['m1r1_exact_reproduction']['pass'] is True
+          assert results['starvation_provenance']['four_x_steps'] == 480
+          assert results['starvation_provenance']['non_four_x_steps'] == 0
+          assert results['decay_neutralization']['pass'] is True
+          assert results['decay_neutralization']['only_reaction_param_changed'] is True
+          assert results['arms']['SOURCE_CAPACITY_UB_DECAY_NEUTRAL']['arm']['organized_material_delta'] >= 0.0
+          assert results['arms']['COMBINED_DECAY_NEUTRAL']['arm']['organized_material_delta'] >= 0.0
+          assert results['world_organism_closure'] is True
+          assert results['internal_material_closure'] is True
+          assert results['a_decay_to_waste'] is True
+          assert results['w_to_a_transfer'] is False
+          assert results['reserve_enabled'] is False
+          assert results['classification'] == 'M1_SOURCE_CAPACITY_SUFFICIENT_AFTER_DECAY_NEUTRALIZATION'
+          assert fresh_protocol == protocol
+          equivalent(results, fresh_results, 'results')
+          assert fresh_q == qualification
+          assert qualification['observer_only'] is True
+          assert qualification['production_biology_changed'] is False
+          assert qualification['chemistry_changed'] is False
+          assert qualification['recycling_implemented'] is False
+          assert qualification['next_execution_started'] is False
+          print('DCDEV020M1R1R1_ARTIFACT_VERIFICATION_PASS')
+          PY
+      - name: Phase-1 preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics -- --nocapture
+      - name: D-091 preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+      - name: D-088 preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+      - name: Evolution-harness preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness -- --nocapture
+      - name: Upload compact decay-confound evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020m1r1r1-compact-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020m1r1r1/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r1r1/results.json
+            digital-protocell/experiments/generated/dcdev020m1r1r1/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r1r1/artifact_manifest.json
+            digital-protocell/experiments/generated/dcdev020m1r1r1/ci/qualification.json
+          include-hidden-files: false

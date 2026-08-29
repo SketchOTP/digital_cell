@@ -1,0 +1,15 @@
+{
+  "artifact_files": [
+    "protocol.json",
+    "results.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "authoritative_result": "results.json",
+  "dense_ledgers_committed": false,
+  "directive": "DC-DEV-020-M1-R1-CAPACITY-DECOMP-001",
+  "next_execution_started": false,
+  "observer_only": true,
+  "qualification": "qualification.json",
+  "starting_head": "3cab12551072ad1eafaece72615f448d8efb9bea"
+}

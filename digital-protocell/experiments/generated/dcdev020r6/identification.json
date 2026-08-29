@@ -1,0 +1,136 @@
+{
+  "all_state_sanity": {
+    "clipping_fraction": 0.0,
+    "p95_absolute_relative_error": 0.13182844805872132,
+    "points": 4800,
+    "predicted_capacity_violations": 0,
+    "probes": [
+      "P0",
+      "P1",
+      "P2",
+      "P3",
+      "P4"
+    ],
+    "relative_rmse": 0.05639302191125584,
+    "residuals": {
+      "correlation_f": -0.20201268881551812,
+      "correlation_n": -0.20201268881551795,
+      "correlation_nf": -0.25142441332928783,
+      "correlation_time": -0.4461709909405905,
+      "mean_relative_error_by_probe": {
+        "P0": 0.004771973877097219,
+        "P1": 0.00041352456624242325,
+        "P2": 0.0004135245662424065,
+        "P3": -0.012180361792302388,
+        "P4": -0.012180361792302356
+      },
+      "mean_relative_error_by_trajectory": {
+        "baseline_bilinear_source": 0.02838209093587956,
+        "constant_endpoint_break_even_gain": -0.03588677116588856
+      }
+    }
+  },
+  "combined_holdout": {
+    "clipping_fraction": 0.0,
+    "p95_absolute_relative_error": 0.12868568862094845,
+    "points": 1920,
+    "predicted_capacity_violations": 0,
+    "probes": [
+      "P3",
+      "P4"
+    ],
+    "relative_rmse": 0.05106673550084851,
+    "residuals": {
+      "correlation_f": -0.3356553037093595,
+      "correlation_n": -0.33565530370936064,
+      "correlation_nf": -0.5558266975669175,
+      "correlation_time": -0.6931105897375928,
+      "mean_relative_error_by_probe": {
+        "P3": -0.012180361792302388,
+        "P4": -0.012180361792302356
+      },
+      "mean_relative_error_by_trajectory": {
+        "baseline_bilinear_source": 0.007720364164828942,
+        "constant_endpoint_break_even_gain": -0.032081087749433725
+      }
+    }
+  },
+  "fit": {
+    "model": {
+      "g_h": 1.0,
+      "k_pl": 0.017556661171593057,
+      "p": 0.0003277429681759396
+    },
+    "p95_absolute_relative_error": 0.13340470069304416,
+    "points": 2880,
+    "relative_rmse": 0.05968037547912962,
+    "residuals": {
+      "correlation_f": 5.606031757315697e-6,
+      "correlation_n": 5.60603175720446e-6,
+      "correlation_nf": 0.0923355019929694,
+      "correlation_time": -0.3172845248807038,
+      "mean_relative_error_by_probe": {
+        "P0": 0.004771973877097219,
+        "P1": 0.00041352456624242325,
+        "P2": 0.0004135245662424065
+      },
+      "mean_relative_error_by_trajectory": {
+        "baseline_bilinear_source": 0.042156575449913095,
+        "constant_endpoint_break_even_gain": -0.0384238934435251
+      }
+    }
+  },
+  "gates": {
+    "gate2": true,
+    "gate3": true,
+    "gate4": true
+  },
+  "nf_symmetry": true,
+  "p3": {
+    "clipping_fraction": 0.0,
+    "p95_absolute_relative_error": 0.1286856886209483,
+    "points": 960,
+    "predicted_capacity_violations": 0,
+    "probes": [
+      "P3"
+    ],
+    "relative_rmse": 0.05106673550084852,
+    "residuals": {
+      "correlation_f": -0.3481024155052696,
+      "correlation_n": -0.6367578479028652,
+      "correlation_nf": -0.5558266975669172,
+      "correlation_time": -0.6931105897375935,
+      "mean_relative_error_by_probe": {
+        "P3": -0.012180361792302388
+      },
+      "mean_relative_error_by_trajectory": {
+        "baseline_bilinear_source": 0.007720364164828921,
+        "constant_endpoint_break_even_gain": -0.03208108774943371
+      }
+    }
+  },
+  "p4": {
+    "clipping_fraction": 0.0,
+    "p95_absolute_relative_error": 0.12868568862094845,
+    "points": 960,
+    "predicted_capacity_violations": 0,
+    "probes": [
+      "P4"
+    ],
+    "relative_rmse": 0.05106673550084852,
+    "residuals": {
+      "correlation_f": -0.636757847902865,
+      "correlation_n": -0.3481024155052694,
+      "correlation_nf": -0.5558266975669166,
+      "correlation_time": -0.6931105897375929,
+      "mean_relative_error_by_probe": {
+        "P4": -0.012180361792302356
+      },
+      "mean_relative_error_by_trajectory": {
+        "baseline_bilinear_source": 0.007720364164828979,
+        "constant_endpoint_break_even_gain": -0.03208108774943368
+      }
+    }
+  },
+  "zero_substrate_control": true
+}

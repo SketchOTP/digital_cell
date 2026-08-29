@@ -1,0 +1,6 @@
+[
+  10,
+  0,
+  "observer_viability(state) / observer_death_reason(state); no v2 production latch",
+  "physically ruptured v2 mesh remains nonviable while transport/reaction kernels continue; no alive=false injection"
+]

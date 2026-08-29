@@ -59,3 +59,103 @@ path = "../../examples/dcdev015_metabolic_restoration_assay.rs"
 [[example]]
 name = "dcdev016_metabolic_break_even"
 path = "../../examples/dcdev016_metabolic_break_even.rs"
+
+[[example]]
+name = "dcdev020_fast_allosteric_assimilation"
+path = "../../examples/dcdev020_fast_allosteric_assimilation.rs"
+
+[[example]]
+name = "dcdev020r2_allosteric_requalification"
+path = "../../examples/dcdev020r2_allosteric_requalification.rs"
+
+[[example]]
+name = "dcdev020r3_two_substrate_saturating_activation"
+path = "../../examples/dcdev020r3_two_substrate_saturating_activation.rs"
+
+[[example]]
+name = "dcdev020r4_asymmetric_two_substrate_identifiability"
+path = "../../examples/dcdev020r4_asymmetric_two_substrate_identifiability.rs"
+
+[[example]]
+name = "dcdev020r5_local_zero_drift_source_audit"
+path = "../../examples/dcdev020r5_local_zero_drift_source_audit.rs"
+
+[[example]]
+name = "dcdev020r6_nf_power_law_source"
+path = "../../examples/dcdev020r6_nf_power_law_source.rs"
+
+[[example]]
+name = "dcdev020r7_on_policy_zero_drift_audit"
+path = "../../examples/dcdev020r7_on_policy_zero_drift_audit.rs"
+
+[[example]]
+name = "dcdev020r8_nfa_restorative_attractor"
+path = "../../examples/dcdev020r8_nfa_restorative_attractor.rs"
+
+[[example]]
+name = "dcdev020r8r1_causal_a_demand_elasticity"
+path = "../../examples/dcdev020r8r1_causal_a_demand_elasticity.rs"
+
+[[example]]
+name = "dcdev020r8r2_catalyst_investment_payback"
+path = "../../examples/dcdev020r8r2_catalyst_investment_payback.rs"
+
+[[example]]
+name = "dcdev020r8r3_catalyst_reserve_horizon"
+path = "../../examples/dcdev020r8r3_catalyst_reserve_horizon.rs"
+
+[[example]]
+name = "dcdev020r8r4_shared_affinity_autogenous_cprod"
+path = "../../examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs"
+
+[[example]]
+name = "dcdev020r8r5_ac_allocation_upper_bound"
+path = "../../examples/dcdev020r8r5_ac_allocation_upper_bound.rs"
+
+[[example]]
+name = "dcdev020r8r5r1_net_allocation_drift"
+path = "../../examples/dcdev020r8r5r1_net_allocation_drift.rs"
+
+[[example]]
+name = "dcdev020r9r1_exact_metabolic_replays"
+path = "../../examples/dcdev020r9r1_exact_metabolic_replays.rs"
+
+[[example]]
+name = "dcdev020r9r2_material_fate_audit"
+path = "../../examples/dcdev020r9r2_material_fate_audit.rs"
+
+[[example]]
+name = "dcdev020m1r0_requalification"
+path = "../../examples/dcdev020m1r0_requalification.rs"
+
+[[example]]
+name = "dcdev020m1r1_capacity_decomp"
+path = "../../examples/dcdev020m1r1_capacity_decomp.rs"
+
+[[example]]
+name = "dcdev020m1r1r1_decay_confound"
+path = "../../examples/dcdev020m1r1r1_decay_confound.rs"
+
+[[example]]
+name = "dcdev020m1r2_starvation_law_audit"
+path = "../../examples/dcdev020m1r2_starvation_law_audit.rs"
+
+[[example]]
+name = "dcdev020m1r2r1_physical_failure_closure"
+path = "../../examples/dcdev020m1r2r1_physical_failure_closure.rs"
+
+[[example]]
+name = "dcdev020m1r2r2_topology_death_closure"
+path = "../../examples/dcdev020m1r2r2_topology_death_closure.rs"
+
+[[example]]
+name = "dcdev020m1r3_ordinary_decay_candidate"
+path = "../../examples/dcdev020m1r3_ordinary_decay_candidate.rs"
+
+[[example]]
+name = "dcdev020m1r4_coupled_source_candidate"
+path = "../../examples/dcdev020m1r4_coupled_source_candidate.rs"
+
+[[example]]
+name = "dcdev020m1r5_sustained_homeostasis"
+path = "../../examples/dcdev020m1r5_sustained_homeostasis.rs"

@@ -1,0 +1,9 @@
+{
+  "classification": "DCDEV020R8R1_A_DEMAND_ELASTICITY_POSITIVE",
+  "dense_external_location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r8r1/d50037e53d041d8b06895553933c3b0a78c7a024/demand_elasticity_ledger.json",
+  "dense_external_sha256": "f44e8f9fa441451ee40bcbfccac5f556131e4d26868868607e9507c29e7bcf90",
+  "directive": "DC-DEV-020-R8-R1",
+  "pair_verdict": "R8_PAIR_CONFOUNDING_CONFIRMED",
+  "result_commit": "PENDING",
+  "source_commit": "d50037e53d041d8b06895553933c3b0a78c7a024"
+}

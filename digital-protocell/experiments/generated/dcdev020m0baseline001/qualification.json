@@ -1,0 +1,47 @@
+{
+  "directive": "DC-DEV-020-M0-BASELINE-001",
+  "starting_head": "737b0c905e9bd80b6d256681c8530d66917019b6",
+  "selected_production_contract": "ConservativeV2",
+  "selected_production_reserve_enabled": false,
+  "selected_production_a_to_r": 0.0,
+  "selected_production_r_to_a": 0.0,
+  "selected_production_r_to_w": 0.0,
+  "selected_production_reserve_flows": {
+    "a_to_r": 0.0,
+    "r_to_a": 0.0,
+    "r_to_w": 0.0
+  },
+  "fresh_d087_vector": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "fresh_d087_pass_count": 8,
+  "strict_material_closure": true,
+  "closure_residual": 2.580691216280684E-10,
+  "causal_death_semantics": true,
+  "privileged_survival_state_introduced": false,
+  "packaged_linux_runtime": "PENDING_REMOTE_LINUX",
+  "qualification_runtime_config_identity": "PENDING_REMOTE_LINUX",
+  "local_packaged_runtime": {
+    "platform": "windows",
+    "steps": 5000,
+    "alive": true,
+    "contract": "ConservativeV2",
+    "reserve_enabled": false
+  },
+  "d091_source_changed": false,
+  "chemistry_equations_changed": false,
+  "parameters_changed": false,
+  "d087_thresholds_changed": false,
+  "recycling_authorized": false,
+  "dc_dev_021_authorized": false,
+  "m1_execution_authorized": false,
+  "next_execution_started": false,
+  "evidence_generation_head": "737b0c905e9bd80b6d256681c8530d66917019b6"
+}

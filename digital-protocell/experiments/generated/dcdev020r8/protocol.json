@@ -1,0 +1,19 @@
+{
+  "accepted_r7_head": "7d5f772f0db67b8d754d27c1182c933533f750fd",
+  "clean_scientific_base": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "directive": "DC-DEV-020-R8",
+  "dt": 0.02,
+  "g_h": 1.0,
+  "nf_distance_limit": 0.0024847602445668224,
+  "observer_only": true,
+  "p_nf": 0.0003277429681759396,
+  "production_integration": false,
+  "r5_external_location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r5/6dbb8d45c520e2756a81b2cc1e81dff9c3878992/statewise_root_ledger.json",
+  "r5_ledger_sha256": "4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585",
+  "r7_external_location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r7/3ddae9ea3c954431c8b3ae2ecbf2d6fc94278e56/on_policy_root_ledger.json",
+  "r7_ledger_sha256": "abdaea6d075c700e36d14d369dba62982f4a65cea47d2d1f162b5dfe8afa59f8",
+  "reciprocal_formula": "1/Y_FB=u+v*A; u=1/V_FB; v=1/(V_FB*K_A)",
+  "root_margin": 1e-6,
+  "source_commit": "6e2b03a7551409086c1a38d6cf5f62827fb91929",
+  "source_formula": "q_c*g_h*V_FB*N^p_NF*F^p_NF/(1+A/K_A)"
+}

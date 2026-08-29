@@ -1,0 +1,240 @@
+name: DC-DEV-020-M1-R6-R3-R2 reaction-area semantics audit
+
+on:
+  push:
+    branches:
+      - strategy/dc-dev-020r9-mesh-contract-requalification
+    paths:
+      - digital-protocell/experiments/generated/dcdev020m1r6r3r2/**
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+    paths:
+      - digital-protocell/experiments/generated/dcdev020m1r6r3r2/**
+
+permissions:
+  contents: read
+
+jobs:
+  full-runtime-m1-certification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Check out exact head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.89.0
+          components: rustfmt
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Governance validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: >-
+          rustfmt +1.89.0 --edition 2021 --check
+          crates/chemistry-core/src/mesh_contracts.rs
+          crates/chemistry-core/tests/d098_geometry_material_conservation.rs
+          examples/dcdev020m1r6r3_full_runtime_m1_certification.rs
+      - name: Verify bounded R6-R3 diff
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import subprocess
+
+          start = 'dac4973ea74e298744a69b5829c33dd0f7db85f4'
+          changed = subprocess.check_output(['git', 'diff', '--name-only', start, 'HEAD'], text=True).splitlines()
+          allowed = {
+              '.agent/CURRENT.md', '.agent/DIRECTIVES.md', '.agent/LEARNINGS.md',
+              '.agent/OUTCOMES.md', '.agent/REPO_MAP.md',
+              '.github/workflows/dc-dev-020m1r6r3.yml',
+              'digital-protocell/examples/dcdev020m1r6r3_full_runtime_m1_certification.rs',
+              'digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3r2/reaction_area_semantics_audit.md',
+              'digital-protocell/experiments/generated/dcdev020m1r6r3r2/protocol.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r3r2/results.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r3r2/qualification.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r3r2/preservation.json',
+              'digital-protocell/experiments/generated/dcdev020m1r6r3r2/artifact_manifest.json',
+          }
+          assert set(changed) <= allowed, f'unexpected R6-R3 paths: {sorted(set(changed) - allowed)}'
+          forbidden = [path for path in changed if (
+              path.startswith('digital-protocell/crates/chemistry-core/src/')
+              or path in {
+                  'digital-protocell/crates/phase1-certifier/src/gates.rs',
+                  'digital-protocell/crates/chemistry-core/src/mesh_reactions.rs',
+                  'digital-protocell/crates/chemistry-core/src/mesh_transport.rs',
+                  'digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs',
+                  'digital-protocell/crates/chemistry-core/src/mesh_fission.rs',
+              }
+              or any(token in path.lower() for token in ('recycl', 'salvage', 'dc-dev-021'))
+          )]
+          assert not forbidden, f'forbidden R6-R3 paths: {forbidden}'
+          print('DCDEV020M1R6R3R2_BOUNDED_DIFF_PASS')
+          PY
+      - name: Actual D-087 ConservativeV3 preservation
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R3_CONTRACT: ConservativeV3
+          DCDEV020R9R3_RESERVE: '0'
+        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1r6r3r2/ci/v3_d087
+      - name: Actual D-087 ConservativeV2 preservation
+        working-directory: digital-protocell
+        env:
+          DCDEV020R9R3_CONTRACT: ConservativeV2
+          DCDEV020R9R3_RESERVE: '0'
+        run: cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release --quiet -- --output experiments/generated/dcdev020m1r6r3r2/ci/v2_d087
+      - name: Fresh full-runtime M1 certification
+        working-directory: digital-protocell
+        env:
+          DCDEV020M1R6R3R2_OUTPUT: experiments/generated/dcdev020m1r6r3r2/ci
+          DCDEV020M1R6R3R2_DENSE_OUTPUT: ${{ runner.temp }}/dcdev020m1r6r3r2-dense
+        run: cargo +1.89.0 run -p phase1-certifier --example dcdev020m1r6r3_full_runtime_m1_certification --release --quiet
+      - name: Verify compact evidence and fail-closed M1 gates
+        working-directory: digital-protocell
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          def require(condition, message):
+              if not condition:
+                  print(f'::error title=R6-R3-R2 verifier::{message}')
+                  raise SystemExit(f'R6-R3-R2 verifier failure: {message}')
+
+          base = Path('experiments/generated/dcdev020m1r6r3r2')
+          fresh = base / 'ci'
+          names = ('protocol.json', 'results.json', 'qualification.json', 'preservation.json', 'artifact_manifest.json')
+          for root in (base, fresh):
+              for name in names:
+                  require((root / name).is_file(), f'missing {root/name}')
+          protocol = json.loads((base / 'protocol.json').read_text())
+          fresh_protocol = json.loads((fresh / 'protocol.json').read_text())
+          results = json.loads((fresh / 'results.json').read_text())
+          qualification = json.loads((fresh / 'qualification.json').read_text())
+          preservation = json.loads((fresh / 'preservation.json').read_text())
+          require(fresh_protocol == protocol, 'fresh protocol differs from committed protocol')
+          diagnostic = {
+              'classification': results.get('classification'),
+              'r6_r3_classification': results.get('r6_r3_classification'),
+              'fed_delta': results.get('fed_8000', {}).get('organized_material_delta'),
+              'fed_stage': results.get('fed_8000', {}).get('stage_closure_pass'),
+              'recovery_no_reset': results.get('recovery', {}).get('no_state_reset'),
+              'recovery_refed_delta': results.get('recovery', {}).get('refed_organized_delta_from_deprived'),
+              'zero_delivery': [results.get('zero_resource', {}).get('source', {}).get('n_delivered'), results.get('zero_resource', {}).get('source', {}).get('f_delivered')],
+              'removal_delivery': [results.get('feed_then_remove', {}).get('source', {}).get('n_delivered'), results.get('feed_then_remove', {}).get('source', {}).get('f_delivered')],
+              'removal_delta': results.get('feed_then_remove', {}).get('organized_material_delta'),
+              'physical_loss': results.get('physical_loss_pass'),
+              'post_loss_exercised': results.get('post_loss_refeed', {}).get('exercised'),
+              'post_loss_recovered': results.get('post_loss_refeed', {}).get('topology_recovered'),
+              'accounting': results.get('accounting_pass'),
+              'preservation': results.get('preservation_pass'),
+              'v2_d087': preservation.get('historical_v2_d087'),
+              'v3_d087': preservation.get('candidate_v3_d087'),
+              'next_execution_started': qualification.get('next_execution_started'),
+          }
+          for arm_name in ('fed_8000', 'zero_resource', 'feed_then_remove'):
+              arm = results.get(arm_name, {})
+              accounting = arm.get('runtime', {}).get('accounting', {})
+              diagnostic[f'{arm_name}_accounting'] = {
+                  'stage_closure': arm.get('stage_closure_pass'),
+                  'world_organism_residual': arm.get('world_organism_closure_residual'),
+                  'max_step': {key: accounting.get(key) for key in accounting if key.startswith('max_step_')},
+                  'cumulative': {key: accounting.get(key) for key in accounting if key.startswith('cumulative_')},
+              }
+          for arm_name in ('zero_resource', 'feed_then_remove'):
+              diagnostic[f'{arm_name}_reaction_area_audit'] = results.get(arm_name, {}).get('runtime', {}).get('reaction_area_audit')
+          diagnostic['recovery_accounting'] = {
+              'stage_closure': results.get('recovery', {}).get('stage_closure_pass'),
+              'world_organism_residual': results.get('recovery', {}).get('world_organism_closure_residual'),
+          }
+          diagnostic['post_loss_accounting'] = {
+              'stage_closure': results.get('post_loss_refeed', {}).get('stage_closure_pass'),
+          }
+          diagnostic_text = json.dumps(diagnostic, sort_keys=True, separators=(',', ':'))
+          print(f'R6-R3-R2 remote diagnostic: {diagnostic_text}')
+          print(f'::notice title=R6-R3-R2 diagnostic::{diagnostic_text}')
+          require(protocol['directive'] == 'DC-DEV-020-M1-R6-R3-R2-GC-REACTION-AREA-SEMANTICS-AUDIT-001', 'directive mismatch')
+          require(protocol['starting_head'] == 'dac4973ea74e298744a69b5829c33dd0f7db85f4', 'starting head mismatch')
+          require(protocol['runtime_contract'] == {'material': 'GeometryConservativeV3', 'chemistry': 'ConservativeV3', 'reserve': 'OFF', 'transport': 'unchanged uncoupled V1 finite spatial transport', 'world': 'FINITE_SPATIAL_BACKING_RESERVOIR_V1'}, 'runtime identity mismatch')
+          require(protocol['resource']['replenishment_events'] == 0, 'replenishment was enabled')
+          require(protocol['stage_closure']['remesh_return_value_is_authority'] is False, 'remesh return was incorrectly authoritative')
+          allowed_classifications = {
+              'M1_GC_REACTION_AREA_FLOOR_CAUSALLY_CONFIRMED',
+              'M1_GC_REACTION_FLOATING_PRECISION_DOMINANT',
+              'M1_GC_REACTION_MULTIPLE_NONCONSERVATIVE_PATHS',
+              'M1_GC_REACTION_AREA_CAUSE_DISPROVEN',
+              'M1_GC_REACTION_AREA_CAUSE_UNRESOLVED',
+          }
+          require(results['classification'] in allowed_classifications, f"unexpected diagnostic classification={results['classification']}")
+          require(results['r6_r3_classification'] in {'M1_FULL_RUNTIME_HOMEOSTASIS_FAILED', 'M1_FULL_RUNTIME_CERTIFICATION_INVALID'}, 'missing independent R6-R3 classification')
+          require(results['fed_8000']['organized_material_delta'] < 0.0, 'fed homeostasis unexpectedly passed')
+          require(results['recovery']['no_state_reset'] is True, 'recovery reset state')
+          require(results['recovery']['refed_organized_delta_from_deprived'] < 0.0, 'refeed did not preserve the negative result')
+          require(results['zero_resource']['source']['n_delivered'] == 0.0 and results['zero_resource']['source']['f_delivered'] == 0.0, 'zero-resource delivery was nonzero')
+          require(results['feed_then_remove']['source']['n_delivered'] == 0.0 and results['feed_then_remove']['source']['f_delivered'] == 0.0, 'post-removal delivery was nonzero')
+          require(results['feed_then_remove']['organized_material_delta'] < 0.0, 'withdrawal did not deteriorate material')
+          physical_loss_pass = results['physical_loss_pass'] is True
+          if results['r6_r3_classification'] == 'M1_FULL_RUNTIME_CERTIFIED':
+              require(physical_loss_pass, 'certified result did not reach physical loss')
+          if physical_loss_pass:
+              require(results['post_loss_refeed']['topology_recovered'] is False, 'topology recovered after refeed')
+          else:
+              require(results['post_loss_refeed']['exercised'] is False, 'post-loss refeed was exercised without physical loss')
+          require(results['preservation_pass'] is True, 'D-087 preservation failed')
+          require(preservation['historical_v2_d087'] is True and preservation['candidate_v3_d087'] is True, 'D-087 reports were not 8/8')
+          require(qualification['next_execution_started'] is False, 'next execution started')
+          for arm_name in ('fed_8000', 'zero_resource', 'feed_then_remove'):
+              require(isinstance(results[arm_name].get('stage_closure_pass'), bool), f'{arm_name} stage closure was not recorded')
+              require('accounting' in results[arm_name].get('runtime', {}), f'{arm_name} stage accounting was not recorded')
+          for arm_name in ('zero_resource', 'feed_then_remove'):
+              audit = results[arm_name]['runtime']['reaction_area_audit']
+              require(audit['first_area_below_floor_step'] is not None, f'{arm_name} did not cross reaction area floor')
+              require(audit['first_residual_above_tolerance_step'] is not None, f'{arm_name} did not exceed reaction tolerance')
+              require(audit['replay_checks'] >= 2 and audit['replay_pass'] is True, f'{arm_name} frozen replay failed')
+              observed = audit['cumulative_observed_reaction_residual']
+              predicted = audit['cumulative_predicted_floor_residual']
+              require(abs(observed - predicted) <= 1e-8 * (1 + abs(observed)), f'{arm_name} floor prediction mismatch')
+              require(audit['first_area_below_floor']['replay_mesh_match'] is True, f'{arm_name} first floor replay mesh mismatch')
+              require(audit['first_area_below_floor']['replay_ledger_match'] is True, f'{arm_name} first floor replay ledger mismatch')
+          print('DCDEV020M1R6R3R2_DIAGNOSTIC_ARTIFACT_VERIFICATION_PASS')
+          PY
+      - name: Geometry/material conservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d098_geometry_material_conservation -- --nocapture
+      - name: Phase-1 metrics preservation
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --test metrics_semantics -- --nocapture
+      - name: D-088 preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+      - name: D-091 preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+      - name: Evolution-harness preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness -- --nocapture
+      - name: Upload compact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020m1r6r3r2-gc-reaction-area-semantics-evidence
+          path: |
+            digital-protocell/experiments/generated/dcdev020m1r6r3r2/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r2/results.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r2/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r2/preservation.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r2/artifact_manifest.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r2/ci/protocol.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r2/ci/results.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r2/ci/qualification.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r2/ci/preservation.json
+            digital-protocell/experiments/generated/dcdev020m1r6r3r2/ci/artifact_manifest.json

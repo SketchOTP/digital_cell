@@ -1,0 +1,13 @@
+{
+  "a": 0.5234663972322086,
+  "area": 608.1551346166947,
+  "c": 0.7999400096387633,
+  "ledger_finite": true,
+  "m_total": 85.73667267205262,
+  "mesh_contract": "MaturationCoupledV4",
+  "physics_advanced": true,
+  "reserve_enabled": false,
+  "runtime": "digital-protocell-phase1",
+  "selection_authority": "phase1_certifier::sim::seed_production_mesh",
+  "steps": 100
+}

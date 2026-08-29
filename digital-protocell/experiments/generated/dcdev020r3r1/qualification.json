@@ -1,0 +1,177 @@
+{
+  "directive": "DC-DEV-020-R9-R3",
+  "starting_head": "b7be0e7476ad153f8657d832c9df629e522f09b9",
+  "branch": "strategy/dc-dev-020r9-mesh-contract-requalification",
+  "pr": "#44",
+  "arms": [
+    {
+      "id": "h0",
+      "contract": "HistoricalV1",
+      "reserve": false,
+      "equation_lineage": "autopoietic_material_mesh_v1",
+      "output": "experiments/generated/dcdev020r3r1\\matrix\\h0",
+      "gates": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "gate_details": [
+        "head=b7be0e7 tag=6f8a80a tag_ok=true ancestor_ok=true frozen_ok=true hits=2145 controller_hits=0 dirty_candidate=false",
+        "R_m=1.018 f_m=0.191 pool_m=0.349 R_b=5.818 f_b=0.002 pool_b=0.003 R_c=1.446 f_c=0.321 pool_c=0.230 ret_c=1.397 ret_a=1.898 dual=true d086_soft=true",
+        "basin_sizes=3/3 snap_ok=true mem_alive=true st_alive=true ruptured=true starved=true no_respawn=true",
+        "seed_distinct_fps=3 seeds_effective=true size_pass=3/3 path=deterministic_perturbation",
+        "pass_rate=1.000 (13/13)",
+        "ablations_ok=9/8",
+        "damage_generalization=8/8",
+        "built=true bin_ok=true steps=80000 wall_s=9.3 snap_ok=true verts=50 growing_flags=0 smoke=false"
+      ],
+      "passed_gates": 8,
+      "scientific_gates_pass": true,
+      "runtime_gate_pass": true,
+      "primary_conclusion": "D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED",
+      "r_m": 1.0180981834599838,
+      "r_b": 5.818353471059928,
+      "r_c": 1.446090001246529,
+      "reserve_execution": {
+        "a_to_r": 0.0,
+        "r_to_a": 0.0,
+        "r_to_w": 0.0,
+        "rejected_steps": 0
+      }
+    },
+    {
+      "id": "v20",
+      "contract": "ConservativeV2",
+      "reserve": false,
+      "equation_lineage": "autopoietic_material_mesh_v1",
+      "output": "experiments/generated/dcdev020r3r1\\matrix\\v20",
+      "gates": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "gate_details": [
+        "head=b7be0e7 tag=6f8a80a tag_ok=true ancestor_ok=true frozen_ok=true hits=2145 controller_hits=0 dirty_candidate=false",
+        "R_m=1.018 f_m=0.191 pool_m=0.349 R_b=5.818 f_b=0.002 pool_b=0.003 R_c=1.446 f_c=0.321 pool_c=0.230 ret_c=1.397 ret_a=1.898 dual=true d086_soft=true",
+        "basin_sizes=3/3 snap_ok=true mem_alive=true st_alive=true ruptured=true starved=true no_respawn=true",
+        "seed_distinct_fps=3 seeds_effective=true size_pass=3/3 path=deterministic_perturbation",
+        "pass_rate=1.000 (13/13)",
+        "ablations_ok=9/8",
+        "damage_generalization=8/8",
+        "built=true bin_ok=true steps=80000 wall_s=9.4 snap_ok=true verts=50 growing_flags=0 smoke=false"
+      ],
+      "passed_gates": 8,
+      "scientific_gates_pass": true,
+      "runtime_gate_pass": true,
+      "primary_conclusion": "D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED",
+      "r_m": 1.0180981834599838,
+      "r_b": 5.818353471059928,
+      "r_c": 1.446090001246529,
+      "reserve_execution": {
+        "a_to_r": 0.0,
+        "r_to_a": 0.0,
+        "r_to_w": 0.0,
+        "rejected_steps": 0
+      }
+    },
+    {
+      "id": "h1",
+      "contract": "HistoricalV1",
+      "reserve": true,
+      "equation_lineage": "autopoietic_material_mesh_metabolic_reserve_v1",
+      "output": "experiments/generated/dcdev020r3r1\\matrix\\h1",
+      "gates": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true
+      ],
+      "gate_details": [
+        "head=b7be0e7 tag=6f8a80a tag_ok=true ancestor_ok=true frozen_ok=true hits=2145 controller_hits=0 dirty_candidate=false",
+        "R_m=0.840 f_m=0.178 pool_m=0.419 R_b=5.578 f_b=0.002 pool_b=0.004 R_c=1.377 f_c=0.317 pool_c=0.238 ret_c=1.330 ret_a=1.923 dual=false d086_soft=true",
+        "basin_sizes=0/3 snap_ok=true mem_alive=true st_alive=true ruptured=true starved=true no_respawn=true",
+        "seed_distinct_fps=3 seeds_effective=true size_pass=0/3 path=deterministic_perturbation",
+        "pass_rate=0.538 (7/13)",
+        "ablations_ok=9/8",
+        "damage_generalization=8/8",
+        "built=true bin_ok=true steps=80000 wall_s=9.5 snap_ok=true verts=50 growing_flags=0 smoke=false"
+      ],
+      "passed_gates": 4,
+      "scientific_gates_pass": false,
+      "runtime_gate_pass": true,
+      "primary_conclusion": "D087_D086_ACCEPTANCE_INVALID",
+      "r_m": 0.8398695202805284,
+      "r_b": 5.577914641225577,
+      "r_c": 1.3773440992225712,
+      "reserve_execution": {
+        "a_to_r": 26.594234371143322,
+        "r_to_a": 3.097930599815921,
+        "r_to_w": 0.24408264815689965,
+        "rejected_steps": 0
+      }
+    },
+    {
+      "id": "v21",
+      "contract": "ConservativeV2",
+      "reserve": true,
+      "equation_lineage": "autopoietic_material_mesh_metabolic_reserve_v1",
+      "output": "experiments/generated/dcdev020r3r1\\matrix\\v21",
+      "gates": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true
+      ],
+      "gate_details": [
+        "head=b7be0e7 tag=6f8a80a tag_ok=true ancestor_ok=true frozen_ok=true hits=2145 controller_hits=0 dirty_candidate=false",
+        "R_m=0.840 f_m=0.178 pool_m=0.419 R_b=5.578 f_b=0.002 pool_b=0.004 R_c=1.377 f_c=0.317 pool_c=0.238 ret_c=1.330 ret_a=1.923 dual=false d086_soft=true",
+        "basin_sizes=0/3 snap_ok=true mem_alive=true st_alive=true ruptured=true starved=true no_respawn=true",
+        "seed_distinct_fps=3 seeds_effective=true size_pass=0/3 path=deterministic_perturbation",
+        "pass_rate=0.538 (7/13)",
+        "ablations_ok=9/8",
+        "damage_generalization=8/8",
+        "built=true bin_ok=true steps=80000 wall_s=9.5 snap_ok=true verts=50 growing_flags=0 smoke=false"
+      ],
+      "passed_gates": 4,
+      "scientific_gates_pass": false,
+      "runtime_gate_pass": true,
+      "primary_conclusion": "D087_D086_ACCEPTANCE_INVALID",
+      "r_m": 0.8398695202805284,
+      "r_b": 5.577914641225577,
+      "r_c": 1.3773440992225712,
+      "reserve_execution": {
+        "a_to_r": 26.594234371143322,
+        "r_to_a": 3.097930599815921,
+        "r_to_w": 0.24408264815689965,
+        "rejected_steps": 0
+      }
+    }
+  ],
+  "h0_historical_reproduction": true,
+  "h0_hard_stop": false,
+  "r9r2_material_fate_preserved": true,
+  "primary_classification": "DCDEV020R9R3_RESERVE_PHYSIOLOGY_CERTIFICATION_GAP_CONFIRMED",
+  "production_chemistry_changed": "NO",
+  "production_behavior_changed": "NO",
+  "recycling_authorized": false,
+  "dc_dev_021_authorized": false,
+  "next_execution_started": false
+}

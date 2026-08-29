@@ -1,0 +1,24 @@
+{
+  "clean_scientific_base": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "constant_allocation": {
+    "a_c_conserving": true,
+    "c_hold_max": 1.0946094804551112,
+    "c_hold_min": 0.0,
+    "production": "exact_turnover_replacement"
+  },
+  "dc_dev_021_authorized": false,
+  "directive": "DC-DEV-020-R8-R5",
+  "entry_head": "37b47ec89e02418018a138f670e826c6945c8030",
+  "frozen_r6": {
+    "F": 0.1476710565778127,
+    "K_C": 0.3,
+    "K_PL": 0.017556661171593057,
+    "N": 0.1476710565778127,
+    "k_c_turn": 0.01,
+    "p": 0.0003277429681759396
+  },
+  "observer_only": true,
+  "production_behavior_changed": false,
+  "production_chemistry_changed": false,
+  "sustained_steps": 8000
+}

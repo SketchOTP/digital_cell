@@ -1,29 +1,70 @@
 //! D-086 mesh structural production, turnover, membrane binding, damage, death.
 
+use crate::autocatalytic_copying::{edge_copying_step, edge_loss_step};
+use crate::autocatalytic_edges::{merge_acs_ledgers, node_production_step, node_turnover_step};
+use crate::autocatalytic_nodes::{
+    node_activation_gain, node_building_gain, AutocatalyticLedger, AutocatalyticParams,
+};
 use crate::catalyst_composition::{
     composition_z, copy_production_fluxes, ensure_composition_initialized, g_build, g_harvest,
     sync_total_c, turnover_composition, CompositionLedger, CompositionParams,
 };
-use crate::material_mesh::MaterialMesh;
-use crate::metabolic_reserve::{reserve_metab_step, ReserveLedger, ReserveParams};
+use crate::material_mesh::{MaterialMesh, MeshContractVersion};
+use crate::metabolic_reserve::{
+    reserve_metab_step_with_controls, reserve_store_potential_amount, reserve_store_with_limit,
+    ReserveFluxControls, ReserveLedger, ReserveParams,
+};
 use crate::template_copying::copying_step;
 use crate::template_motifs::{catalyst_binding_step, template_activity_gains};
-use crate::autocatalytic_copying::{edge_copying_step, edge_loss_step};
-use crate::autocatalytic_edges::{
-    merge_acs_ledgers, node_production_step, node_turnover_step,
-};
-use crate::autocatalytic_nodes::{
-    node_activation_gain, node_building_gain, AutocatalyticLedger, AutocatalyticParams,
-};
 use crate::template_network::{scale_bound_catalyst, NetworkLedger, NetworkParams};
 use crate::template_network_binding::network_binding_step;
 use crate::template_network_expression::{network_activation_gain, network_building_gain};
 use crate::template_partition::diffuse_templates;
 use crate::template_polymer::{
-    hydrolysis_step, merge_template_ledgers, monomer_production_step, TemplateLedger, TemplateParams,
-    XorShift64,
+    hydrolysis_step, merge_template_ledgers, monomer_production_step, TemplateLedger,
+    TemplateParams, XorShift64,
 };
 use serde::{Deserialize, Serialize};
+
+const REACTION_AREA_FLOOR: f64 = 1e-6;
+
+/// Area used by the historical concentration kinetics and legacy material
+/// bookkeeping.  This remains unchanged for HistoricalV1 and ConservativeV2.
+#[inline]
+fn reaction_area(mesh: &MaterialMesh) -> f64 {
+    mesh.area().max(REACTION_AREA_FLOOR)
+}
+
+/// Area used when an interior concentration is converted to or from an
+/// absolute material amount.  GeometryConservativeV3 must use the actual
+/// positive physical area so its material contract remains conservative below
+/// the historical reaction-area floor.
+#[inline]
+fn material_transfer_area(mesh: &MaterialMesh) -> f64 {
+    match mesh.contract_version {
+        MeshContractVersion::GeometryConservativeV3 | MeshContractVersion::MaturationCoupledV4 => {
+            mesh.area()
+        }
+        MeshContractVersion::HistoricalV1 | MeshContractVersion::ConservativeV2 => {
+            reaction_area(mesh)
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum MeshChemistrySchema {
+    HistoricalV1,
+    ConservativeV2,
+    /// Experimental M1 candidate: ordinary activated-material decay during
+    /// starvation while retaining the ConservativeV2 material contract.
+    ConservativeV3,
+}
+
+impl Default for MeshChemistrySchema {
+    fn default() -> Self {
+        Self::HistoricalV1
+    }
+}
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub struct ReactionParams {
@@ -39,6 +80,10 @@ pub struct ReactionParams {
     pub k_c_turn: f64,
     pub k_a_decay: f64,
     pub q_c: f64,
+    /// Historical v1 is the serde/default path. R9 explicitly opts into the
+    /// versioned conservative mesh contract.
+    #[serde(default, skip_serializing_if = "is_historical_mesh_schema")]
+    pub mesh_schema: MeshChemistrySchema,
     /// D-089 compositional catalysis (default off → frozen scalar path).
     #[serde(default)]
     pub composition: CompositionParams,
@@ -73,6 +118,7 @@ impl Default for ReactionParams {
             k_c_turn: 0.01,
             k_a_decay: 0.008,
             q_c: 0.3,
+            mesh_schema: MeshChemistrySchema::HistoricalV1,
             composition: CompositionParams::default(),
             reserve: ReserveParams::default(),
             template: TemplateParams::default(),
@@ -82,11 +128,32 @@ impl Default for ReactionParams {
     }
 }
 
+fn is_historical_mesh_schema(schema: &MeshChemistrySchema) -> bool {
+    *schema == MeshChemistrySchema::HistoricalV1
+}
+
+impl ReactionParams {
+    pub fn conservative_v2() -> Self {
+        let mut params = Self::default();
+        params.mesh_schema = MeshChemistrySchema::ConservativeV2;
+        params
+    }
+
+    pub fn conservative_v3() -> Self {
+        let mut params = Self::conservative_v2();
+        params.mesh_schema = MeshChemistrySchema::ConservativeV3;
+        params
+    }
+}
+
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct ReactionLedger {
     pub a_consumed_build: f64,
     pub m_produced: f64,
     pub m_to_w: f64,
+    /// Newly synthesized material that matured during this step.
+    #[serde(default)]
+    pub m_matured: f64,
     pub b_to_w: f64,
     pub w_produced: f64,
     pub a_produced: f64,
@@ -98,6 +165,9 @@ pub struct ReactionLedger {
     pub c_produced: f64,
     /// Observer/accounting: catalyst turned over.
     pub c_turned: f64,
+    /// Observer/accounting: activated material decayed directly to waste.
+    #[serde(default)]
+    pub a_decayed: f64,
     /// Observer/accounting: free membrane L produced from A.
     pub l_produced: f64,
     #[serde(default)]
@@ -110,6 +180,116 @@ pub struct ReactionLedger {
     pub network: NetworkLedger,
     #[serde(default)]
     pub autocatalytic: AutocatalyticLedger,
+    /// R9-R4 observer accounting. These fields do not affect state updates.
+    #[serde(default)]
+    pub a_to_c: f64,
+    #[serde(default)]
+    pub a_before_reserve: f64,
+    #[serde(default)]
+    pub a_after_reserve: f64,
+    #[serde(default)]
+    pub a_after_pre_maintenance_reserve: f64,
+    #[serde(default)]
+    pub a_after_post_maintenance_storage: f64,
+    #[serde(default)]
+    pub a_before_structural_build: f64,
+    #[serde(default)]
+    pub a_after_structural_build: f64,
+    #[serde(default)]
+    pub a_before_membrane_production: f64,
+    #[serde(default)]
+    pub a_after_membrane_production: f64,
+    #[serde(default)]
+    pub structural_demand_a: f64,
+    #[serde(default)]
+    pub membrane_demand_a: f64,
+    #[serde(default)]
+    pub a_to_r_before_later_demand: f64,
+    #[serde(default)]
+    pub reserve_closure_residual: f64,
+    /// R9-R5 observer accounting: A stock entering the reaction step.
+    #[serde(default)]
+    pub a_stock_entering: f64,
+    /// R9-R5 observer accounting: R stock entering the reaction step.
+    #[serde(default)]
+    pub r_stock_entering: f64,
+    /// R9-R6 phase-order ledger: A after unchanged N/F activation.
+    #[serde(default)]
+    pub a_after_activation: f64,
+    /// R9-R6 phase-order ledger: reserve stock immediately before release/loss.
+    #[serde(default)]
+    pub r_before_release: f64,
+    /// R9-R6 phase-order ledger: A entering catalyst production.
+    #[serde(default)]
+    pub a_before_catalyst_production: f64,
+    /// R9-R6 phase-order ledger: A available before final A→R storage.
+    #[serde(default)]
+    pub a_before_final_storage: f64,
+    /// R9-R5 observer accounting: A actually spent on structural maintenance.
+    #[serde(default)]
+    pub a_to_m: f64,
+    /// R9-R5 observer accounting: A actually spent on membrane maintenance.
+    #[serde(default)]
+    pub a_to_l: f64,
+    /// R9-R5 observer accounting: frozen charging potential before the step's
+    /// diagnostic storage cap is applied.
+    #[serde(default)]
+    pub reserve_store_potential: f64,
+    /// R9-R5 observer accounting: positive new-A surplus available after
+    /// productive and loss fluxes, before A→R storage.
+    #[serde(default)]
+    pub new_a_surplus: f64,
+    /// R9-R5 observer accounting: A→R funded by same-step newly produced A.
+    #[serde(default)]
+    pub a_to_r_same_step_new_a: f64,
+    /// R9-R5 observer accounting: A→R funded by pre-existing A.
+    #[serde(default)]
+    pub a_to_r_pre_existing_a: f64,
+    /// R9-R5 observer accounting: reserve material used directly for M/L.
+    #[serde(default)]
+    pub diagnostic_liquid_r_used: f64,
+    /// R9-R5-R1 observer accounting: reserve made available to the pre-throttle
+    /// M/L shadow demand calculation during this step.
+    #[serde(default)]
+    pub diagnostic_liquid_r_available: f64,
+    /// R9-R5-R1 observer accounting: reserve consumed for structural M.
+    #[serde(default)]
+    pub diagnostic_liquid_r_used_for_m: f64,
+    /// R9-R5-R1 observer accounting: reserve consumed for membrane L.
+    #[serde(default)]
+    pub diagnostic_liquid_r_used_for_l: f64,
+    /// R9-R5 observer accounting: net activation-equivalent production/loss.
+    #[serde(default)]
+    pub net_activation_equivalent: f64,
+    /// R9-R5 observer accounting: A+R closure residual after all internal
+    /// transfers and direct diagnostic reserve use.
+    #[serde(default)]
+    pub activation_equivalent_closure_residual: f64,
+}
+
+/// Observer-only reserve scheduling for the R9-R4 audit.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ReserveDiagnosticMode {
+    Full,
+    StoreOff,
+    ReleaseOff,
+    LossOff,
+    MaintenancePriority,
+    /// Defer only A→R and cap it by positive same-step A surplus.
+    SurplusOnlyStore,
+    /// Preserve frozen reserve fluxes while allowing R as a diagnostic-only
+    /// 1:1 substitute for existing A-dependent M/L maintenance.
+    LiquidReserveUpperBound,
+    /// Diagnostic-only upper bound that exposes existing R to the unchanged
+    /// M/L demand equations before low A can throttle those equations.
+    LiquidReservePreThrottleUpperBound,
+    /// Apply both independent observer-only counterfactuals.
+    SurplusOnlyStoreLiquidReserveUpperBound,
+    /// Apply surplus-only storage and the pre-throttle liquidity shadow.
+    SurplusOnlyStoreLiquidReservePreThrottleUpperBound,
+    /// Execute unchanged R→A/R→W before productive chemistry and unchanged
+    /// A→R storage after productive chemistry.
+    MobilizeFirstStoreLast,
 }
 
 #[inline]
@@ -129,12 +309,37 @@ pub fn g_strain(eps: f64, g0: f64, k_eps: f64) -> f64 {
 }
 
 pub fn structural_build_flux(mesh: &MaterialMesh, i: usize, p: &ReactionParams) -> f64 {
+    structural_build_flux_with_a(mesh, i, p, mesh.interior.a)
+}
+
+#[inline]
+pub fn structural_build_flux_with_a(
+    mesh: &MaterialMesh,
+    i: usize,
+    p: &ReactionParams,
+    activation_a: f64,
+) -> f64 {
+    structural_build_flux_with_reference_lengths(mesh, i, p, activation_a, None)
+}
+
+#[inline]
+pub fn structural_build_flux_with_reference_lengths(
+    mesh: &MaterialMesh,
+    i: usize,
+    p: &ReactionParams,
+    activation_a: f64,
+    reference_lengths: Option<&[f64]>,
+) -> f64 {
     if mesh.edges[i].ruptured {
         return 0.0;
     }
     let qc = q_catalyst(mesh.interior.c, p.q_c);
-    let a = mesh.interior.a.max(0.0);
-    let g = g_strain(mesh.strain(i), p.g0, p.k_eps);
+    let a = activation_a.max(0.0);
+    let l0 = reference_lengths
+        .and_then(|lengths| lengths.get(i).copied())
+        .unwrap_or_else(|| mesh.rest_length(i));
+    let strain = (mesh.edge_length(i) - l0) / l0;
+    let g = g_strain(strain, p.g0, p.k_eps);
     // Scale by current length so mass-damaged edges (small ℓ⁰) still rebuild;
     // remesh split/merge preserves Σℓ so total demand stays remesh-invariant.
     let ell = mesh.edge_length(i);
@@ -161,12 +366,122 @@ pub fn reactions_step(
     enable_build: bool,
     enable_metab: bool,
 ) -> ReactionLedger {
+    reactions_step_with_reserve_mode(
+        mesh,
+        p,
+        dt,
+        enable_build,
+        enable_metab,
+        ReserveDiagnosticMode::Full,
+    )
+}
+
+/// Execute the normal reaction step with a bounded observer-only reserve mode.
+pub fn reactions_step_with_reserve_mode(
+    mesh: &mut MaterialMesh,
+    p: &ReactionParams,
+    dt: f64,
+    enable_build: bool,
+    enable_metab: bool,
+    reserve_mode: ReserveDiagnosticMode,
+) -> ReactionLedger {
+    reactions_step_with_reserve_mode_and_reference_lengths(
+        mesh,
+        p,
+        dt,
+        enable_build,
+        enable_metab,
+        reserve_mode,
+        None,
+    )
+}
+
+/// Diagnostic-only reaction step using caller-owned per-edge reference
+/// lengths for structural build strain and turnover strain.  The normal
+/// production path passes `None`, preserving its existing semantics.
+pub fn reactions_step_with_reference_lengths(
+    mesh: &mut MaterialMesh,
+    p: &ReactionParams,
+    dt: f64,
+    enable_build: bool,
+    enable_metab: bool,
+    reference_lengths: &[f64],
+) -> ReactionLedger {
+    reactions_step_with_reserve_mode_and_reference_lengths(
+        mesh,
+        p,
+        dt,
+        enable_build,
+        enable_metab,
+        ReserveDiagnosticMode::Full,
+        Some(reference_lengths),
+    )
+}
+
+fn reactions_step_with_reserve_mode_and_reference_lengths(
+    mesh: &mut MaterialMesh,
+    p: &ReactionParams,
+    dt: f64,
+    enable_build: bool,
+    enable_metab: bool,
+    reserve_mode: ReserveDiagnosticMode,
+    reference_lengths: Option<&[f64]>,
+) -> ReactionLedger {
     let mut led = ReactionLedger::default();
-    if !mesh.alive {
+    if !mesh.can_advance_physics() {
         return led;
     }
+    if let Some(reference_lengths) = reference_lengths {
+        if reference_lengths.len() != mesh.n()
+            || reference_lengths
+                .iter()
+                .any(|length| !length.is_finite() || *length <= 0.0)
+        {
+            return led;
+        }
+    }
     let n_edges = mesh.n();
-    let area = mesh.area().max(1e-6);
+    let reaction_area = reaction_area(mesh);
+    let material_area = material_transfer_area(mesh);
+    if !material_area.is_finite() || material_area <= 0.0 {
+        return led;
+    }
+    // V4 uses the material state at the beginning of this reaction step as
+    // the load-bearing reference for all structural conversions. Capture it
+    // before build/maturation can change the mature pool. Diagnostic callers
+    // may still supply an explicit reference slice.
+    let v4_reference_lengths = if mesh.is_maturation_coupled() && reference_lengths.is_none() {
+        Some(
+            (0..mesh.n())
+                .map(|i| mesh.rest_length(i))
+                .collect::<Vec<_>>(),
+        )
+    } else {
+        None
+    };
+    let effective_reference_lengths = match reference_lengths {
+        Some(lengths) => Some(lengths),
+        None => v4_reference_lengths.as_deref(),
+    };
+    led.a_stock_entering = mesh.interior.a.max(0.0) * material_area;
+    led.r_stock_entering = mesh.interior.r.max(0.0) * material_area;
+    let surplus_only_store = matches!(
+        reserve_mode,
+        ReserveDiagnosticMode::SurplusOnlyStore
+            | ReserveDiagnosticMode::SurplusOnlyStoreLiquidReserveUpperBound
+    );
+    let liquid_reserve = matches!(
+        reserve_mode,
+        ReserveDiagnosticMode::LiquidReserveUpperBound
+            | ReserveDiagnosticMode::SurplusOnlyStoreLiquidReserveUpperBound
+    );
+    let liquid_pre_throttle = matches!(
+        reserve_mode,
+        ReserveDiagnosticMode::LiquidReservePreThrottleUpperBound
+            | ReserveDiagnosticMode::SurplusOnlyStoreLiquidReservePreThrottleUpperBound
+    );
+    let liquid_for_m_l = liquid_reserve || liquid_pre_throttle;
+    let mobilize_first_store_last = reserve_mode == ReserveDiagnosticMode::MobilizeFirstStoreLast;
 
     if enable_metab {
         if p.composition.enable {
@@ -196,18 +511,20 @@ pub fn reactions_step(
             * mesh.interior.n.max(0.0)
             * mesh.interior.f.max(0.0)
             * dt
-            * area;
-        let n_take = extent.min(mesh.interior.n.max(0.0) * area) / area;
-        let f_take = extent.min(mesh.interior.f.max(0.0) * area) / area;
+            * reaction_area;
+        let n_take = extent.min(mesh.interior.n.max(0.0) * reaction_area) / reaction_area;
+        let f_take = extent.min(mesh.interior.f.max(0.0) * reaction_area) / reaction_area;
         let taken = n_take.min(f_take);
         mesh.interior.n = (mesh.interior.n - taken).max(0.0);
         mesh.interior.f = (mesh.interior.f - taken).max(0.0);
         mesh.interior.a += taken;
         mesh.interior.w += taken;
-        led.n_consumed += taken * area;
-        led.f_consumed += taken * area;
-        led.a_produced += taken * area;
-        led.w_produced += taken * area;
+        led.n_consumed += taken * material_area;
+        led.f_consumed += taken * material_area;
+        led.a_produced += taken * material_area;
+        led.w_produced += taken * material_area;
+        led.a_after_activation = mesh.interior.a.max(0.0) * material_area;
+        led.a_before_catalyst_production = led.a_after_activation;
 
         // Catalyst production / turnover (new C unlabeled; turnover ages tracer).
         // Composition mode: copy with μ during production only; turnover equal on both types.
@@ -225,8 +542,7 @@ pub fn reactions_step(
         if p.composition.enable {
             let c_h0 = mesh.interior.c_h.max(0.0);
             let c_b0 = mesh.interior.c_b.max(0.0);
-            let (j_h, j_b) =
-                copy_production_fluxes(c_prod, c_h0, c_b0, p.composition.mu);
+            let (j_h, j_b) = copy_production_fluxes(c_prod, c_h0, c_b0, p.composition.mu);
             let (c_h1, c_b1, t_h, t_b) = turnover_composition(c_h0, c_b0, c_turn);
             mesh.interior.c_h = (c_h1 + j_h).max(0.0);
             mesh.interior.c_b = (c_b1 + j_b).max(0.0);
@@ -235,23 +551,26 @@ pub fn reactions_step(
             let ph0 = crate::catalyst_composition::p_h(c_h0, c_b0);
             let pb0 = crate::catalyst_composition::p_b(c_h0, c_b0);
             let conv = c_prod * p.composition.mu * (ph0 + pb0); // = μ J_C when pool nonempty
-            led.composition.conversion_events += conv * area;
-            led.composition.c_h_produced += j_h * area;
-            led.composition.c_b_produced += j_b * area;
-            led.composition.c_h_turned += t_h * area;
-            led.composition.c_b_turned += t_b * area;
+            led.composition.conversion_events += conv * material_area;
+            led.composition.c_h_produced += j_h * material_area;
+            led.composition.c_b_produced += j_b * material_area;
+            led.composition.c_h_turned += t_h * material_area;
+            led.composition.c_b_turned += t_b * material_area;
         } else {
             mesh.interior.c = (c_before + c_prod - c_turn).max(0.0);
         }
         mesh.interior.a = (mesh.interior.a - c_prod).max(0.0);
         mesh.interior.w += c_turn;
-        led.c_produced += c_prod * area;
-        led.c_turned += c_turn * area;
-        led.w_produced += c_turn * area;
+        led.c_produced += c_prod * material_area;
+        led.a_to_c += c_prod * material_area;
+        led.c_turned += c_turn * material_area;
+        led.w_produced += c_turn * material_area;
 
         let a_dec = {
             // Accelerate A loss when activation substrates are absent (starvation).
-            let starve = if mesh.interior.n.max(0.0) * mesh.interior.f.max(0.0) < 1e-8 {
+            let starve = if p.mesh_schema == MeshChemistrySchema::ConservativeV3 {
+                1.0
+            } else if mesh.interior.n.max(0.0) * mesh.interior.f.max(0.0) < 1e-8 {
                 4.0
             } else {
                 1.0
@@ -260,11 +579,46 @@ pub fn reactions_step(
         };
         mesh.interior.a = (mesh.interior.a - a_dec).max(0.0);
         mesh.interior.w += a_dec;
-        led.w_produced += a_dec * area;
+        led.a_decayed += a_dec * material_area;
+        led.w_produced += a_dec * material_area;
 
-        // D-091 metabolic reserve: A↔R store/release and R→W loss (before A→L).
-        let rled = reserve_metab_step(mesh, p, dt);
-        led.reserve = rled;
+        // D-091 metabolic reserve. Full mode preserves the existing ordering;
+        // the other modes are bounded observer-only R9-R4/R9-R5 controls.
+        led.a_before_reserve = mesh.interior.a.max(0.0) * material_area;
+        led.r_before_release = mesh.interior.r.max(0.0) * material_area;
+        led.reserve_store_potential = reserve_store_potential_amount(mesh, p, dt);
+        let pre_controls = match reserve_mode {
+            ReserveDiagnosticMode::Full => ReserveFluxControls::FULL,
+            ReserveDiagnosticMode::StoreOff => ReserveFluxControls::STORE_OFF,
+            ReserveDiagnosticMode::ReleaseOff => ReserveFluxControls::RELEASE_OFF,
+            ReserveDiagnosticMode::LossOff => ReserveFluxControls::LOSS_OFF,
+            ReserveDiagnosticMode::MaintenancePriority => {
+                ReserveFluxControls::RELEASE_AND_LOSS_ONLY
+            }
+            ReserveDiagnosticMode::SurplusOnlyStore
+            | ReserveDiagnosticMode::SurplusOnlyStoreLiquidReserveUpperBound
+            | ReserveDiagnosticMode::SurplusOnlyStoreLiquidReservePreThrottleUpperBound => {
+                ReserveFluxControls::RELEASE_AND_LOSS_ONLY
+            }
+            ReserveDiagnosticMode::LiquidReserveUpperBound
+            | ReserveDiagnosticMode::LiquidReservePreThrottleUpperBound => {
+                ReserveFluxControls::FULL
+            }
+            ReserveDiagnosticMode::MobilizeFirstStoreLast => {
+                ReserveFluxControls::RELEASE_AND_LOSS_ONLY
+            }
+        };
+        let reserve_area = mesh.area().max(1e-6);
+        let reserve_a0 = mesh.interior.a.max(0.0) * reserve_area;
+        let reserve_r0 = mesh.interior.r.max(0.0) * reserve_area;
+        let pre_ledger = reserve_metab_step_with_controls(mesh, p, dt, pre_controls);
+        let reserve_a1 = mesh.interior.a.max(0.0) * reserve_area;
+        let reserve_r1 = mesh.interior.r.max(0.0) * reserve_area;
+        led.reserve = pre_ledger.clone();
+        led.reserve_closure_residual +=
+            (reserve_a0 + reserve_r0 - reserve_a1 - reserve_r1 - pre_ledger.r_to_w).abs();
+        led.a_after_pre_maintenance_reserve = mesh.interior.a.max(0.0) * material_area;
+        led.a_after_reserve = led.a_after_pre_maintenance_reserve;
 
         // D-092/D-093 template polymer chemistry (monomers, copying, hydrolysis).
         if p.template.enable {
@@ -298,12 +652,23 @@ pub fn reactions_step(
             let mut rng = XorShift64::new(mesh.template_rng.wrapping_add(0xD094_ACE5));
             let mut acs = node_production_step(mesh, &p.autocatalytic, dt);
             merge_acs_ledgers(&mut acs, &node_turnover_step(mesh, &p.autocatalytic, dt));
-            merge_acs_ledgers(&mut acs, &edge_copying_step(mesh, &p.autocatalytic, dt, &mut rng));
-            merge_acs_ledgers(&mut acs, &edge_loss_step(mesh, &p.autocatalytic, dt, &mut rng));
+            merge_acs_ledgers(
+                &mut acs,
+                &edge_copying_step(mesh, &p.autocatalytic, dt, &mut rng),
+            );
+            merge_acs_ledgers(
+                &mut acs,
+                &edge_loss_step(mesh, &p.autocatalytic, dt, &mut rng),
+            );
             mesh.template_rng = rng.state().wrapping_add(1);
             led.autocatalytic = acs;
             led.w_produced += led.autocatalytic.w_produced;
         }
+    }
+
+    led.a_before_structural_build = mesh.interior.a.max(0.0) * material_area;
+    if liquid_pre_throttle {
+        led.diagnostic_liquid_r_available = mesh.interior.r.max(0.0) * material_area;
     }
 
     // Per-edge build / turnover / bind.
@@ -312,20 +677,74 @@ pub fn reactions_step(
             continue;
         }
         if enable_build {
-            let j_build = structural_build_flux(mesh, i, p) * dt;
+            let activation_for_flux = if liquid_pre_throttle {
+                mesh.interior.a.max(0.0) + mesh.interior.r.max(0.0)
+            } else {
+                mesh.interior.a.max(0.0)
+            };
+            let j_build = structural_build_flux_with_reference_lengths(
+                mesh,
+                i,
+                p,
+                activation_for_flux,
+                effective_reference_lengths,
+            ) * dt;
             let need_a = j_build / p.yield_a_to_m.max(1e-15);
-            let have = mesh.interior.a.max(0.0) * area;
-            let take = need_a.min(have);
+            led.structural_demand_a += need_a;
+            let have = mesh.interior.a.max(0.0) * material_area;
+            let a_baseline = if liquid_pre_throttle {
+                structural_build_flux_with_a(mesh, i, p, mesh.interior.a.max(0.0)) * dt
+                    / p.yield_a_to_m.max(1e-15)
+            } else {
+                need_a
+            };
+            let a_take = a_baseline.min(have);
+            let r_have = mesh.interior.r.max(0.0) * material_area;
+            let r_take = if liquid_for_m_l {
+                (need_a - a_take).max(0.0).min(r_have)
+            } else {
+                0.0
+            };
+            let take = a_take + r_take;
             let dm = take * p.yield_a_to_m;
-            mesh.interior.a = (mesh.interior.a - take / area).max(0.0);
-            mesh.interior.w += take / area;
+            mesh.interior.a = (mesh.interior.a - a_take / material_area).max(0.0);
+            mesh.interior.r = (mesh.interior.r - r_take / material_area).max(0.0);
+            let w_product = if matches!(
+                p.mesh_schema,
+                MeshChemistrySchema::ConservativeV2 | MeshChemistrySchema::ConservativeV3
+            ) || mesh.uses_observer_only_death()
+            {
+                (take - dm).max(0.0)
+            } else {
+                take
+            };
+            mesh.interior.w += w_product / material_area;
             mesh.edges[i].m += dm;
+            if mesh.is_maturation_coupled() {
+                mesh.edges[i].m_young += dm;
+            }
             led.a_consumed_build += take;
+            led.a_to_m += a_take;
+            led.diagnostic_liquid_r_used += r_take;
+            led.diagnostic_liquid_r_used_for_m += r_take;
             led.m_produced += dm;
-            led.w_produced += take;
+            led.w_produced += w_product;
 
-            let turn_scale = 1.0 / (1.0 + 2.0 * mesh.strain(i).max(0.0));
-            let turn = p.k_turn * turn_scale * mesh.edges[i].m.max(0.0) * dt;
+            let m_for_turnover = if mesh.is_maturation_coupled() {
+                let young = mesh.edges[i].m_young.max(0.0);
+                let matured = (p.k_turn * young * dt).min(young);
+                mesh.edges[i].m_young -= matured;
+                led.m_matured += matured;
+                mesh.mature_structural_mass(i)
+            } else {
+                mesh.edges[i].m.max(0.0)
+            };
+            let l0 = effective_reference_lengths
+                .and_then(|lengths| lengths.get(i).copied())
+                .unwrap_or_else(|| mesh.rest_length(i));
+            let strain = (mesh.edge_length(i) - l0) / l0;
+            let turn_scale = 1.0 / (1.0 + 2.0 * strain.max(0.0));
+            let turn = p.k_turn * turn_scale * m_for_turnover * dt;
             let rem = turn.min(mesh.edges[i].m.max(0.0));
             mesh.edges[i].m -= rem;
             // Tracer ages with turnover.
@@ -333,7 +752,7 @@ pub fn reactions_step(
                 let frac = rem / (mesh.edges[i].m + rem);
                 mesh.edges[i].tracer_m = (mesh.edges[i].tracer_m * (1.0 - frac)).max(0.0);
             }
-            mesh.interior.w += rem / area;
+            mesh.interior.w += rem / material_area;
             led.m_to_w += rem;
             led.w_produced += rem;
         }
@@ -343,7 +762,9 @@ pub fn reactions_step(
         let theta = mesh.occupancy(i);
         let bind = p.k_bind * mesh.free_l.max(0.0) * (1.0 - theta) * dt;
         let unbind = p.k_unbind * mesh.edges[i].b.max(0.0) * dt;
-        let bind_a = bind.min(mesh.free_l.max(0.0)).min((cap - mesh.edges[i].b).max(0.0));
+        let bind_a = bind
+            .min(mesh.free_l.max(0.0))
+            .min((cap - mesh.edges[i].b).max(0.0));
         let unbind_a = unbind.min(mesh.edges[i].b.max(0.0));
         if mesh.edges[i].b > 1e-15 && unbind_a > 0.0 {
             let frac = (unbind_a / mesh.edges[i].b).clamp(0.0, 1.0);
@@ -354,6 +775,9 @@ pub fn reactions_step(
         led.bind_extent += bind_a;
         led.unbind_extent += unbind_a;
     }
+
+    led.a_after_structural_build = mesh.interior.a.max(0.0) * material_area;
+    led.a_before_membrane_production = led.a_after_structural_build;
 
     // Free membrane reserve production from A — only when binding capacity remains
     // (prevents saturated free_l from draining A after θ→1).
@@ -392,16 +816,159 @@ pub fn reactions_step(
         };
         let reserve_cap = 0.15 * peri;
         if theta < 0.95 || mesh.free_l < reserve_cap {
-            let l_prod = 0.02 * qc * gb * mesh.interior.a.max(0.0) * peri * dt;
+            let activation_for_flux = if liquid_pre_throttle {
+                mesh.interior.a.max(0.0) + mesh.interior.r.max(0.0)
+            } else {
+                mesh.interior.a.max(0.0)
+            };
+            let l_prod = 0.02 * qc * gb * activation_for_flux * peri * dt;
+            led.membrane_demand_a += l_prod;
             let room = (reserve_cap - mesh.free_l).max(0.0) + (1.0 - theta) * peri;
-            let take = l_prod.min(mesh.interior.a.max(0.0) * area).min(room.max(0.0));
-            mesh.interior.a = (mesh.interior.a - take / area).max(0.0);
-            mesh.interior.w += take / area;
+            let l_baseline = if liquid_pre_throttle {
+                0.02 * qc * gb * mesh.interior.a.max(0.0) * peri * dt
+            } else {
+                l_prod
+            };
+            let a_take = l_baseline
+                .min(mesh.interior.a.max(0.0) * material_area)
+                .min(room.max(0.0));
+            let r_have = mesh.interior.r.max(0.0) * material_area;
+            let r_take = if liquid_for_m_l {
+                (l_prod - a_take).max(0.0).min(r_have)
+            } else {
+                0.0
+            };
+            let take = a_take + r_take;
+            mesh.interior.a = (mesh.interior.a - a_take / material_area).max(0.0);
+            mesh.interior.r = (mesh.interior.r - r_take / material_area).max(0.0);
+            let w_product = if matches!(
+                p.mesh_schema,
+                MeshChemistrySchema::ConservativeV2 | MeshChemistrySchema::ConservativeV3
+            ) || mesh.uses_observer_only_death()
+            {
+                0.0
+            } else {
+                take
+            };
+            mesh.interior.w += w_product / material_area;
             mesh.free_l += take;
             led.l_produced += take;
-            led.w_produced += take;
+            led.a_to_l += a_take;
+            led.diagnostic_liquid_r_used += r_take;
+            led.diagnostic_liquid_r_used_for_l += r_take;
+            led.w_produced += w_product;
         }
     }
+
+    led.a_after_membrane_production = mesh.interior.a.max(0.0) * material_area;
+    led.a_before_final_storage = led.a_after_membrane_production;
+
+    // R9-R5 attribution is deliberately an accounting decomposition. It does
+    // not alter any frozen production coefficient or introduce a controller.
+    led.new_a_surplus = (led.a_produced + led.reserve.r_to_a
+        - led.a_to_c
+        - led.a_decayed
+        - led.a_to_m
+        - led.a_to_l)
+        .max(0.0);
+
+    if surplus_only_store && enable_metab {
+        let cap = led.new_a_surplus.min(led.reserve_store_potential);
+        let post = reserve_store_with_limit(mesh, p, dt, cap);
+        led.reserve.a_to_r += post.a_to_r;
+        led.reserve.r_to_a += post.r_to_a;
+        led.reserve.r_to_w += post.r_to_w;
+        led.reserve.r_to_m += post.r_to_m;
+        led.reserve.w_from_r_growth += post.w_from_r_growth;
+        led.reserve.rejected_steps += post.rejected_steps;
+        led.a_after_post_maintenance_storage = mesh.interior.a.max(0.0) * reaction_area;
+        led.a_after_reserve = led.a_after_post_maintenance_storage;
+        let reserve_a1 = mesh.interior.a.max(0.0) * reaction_area;
+        let reserve_r1 = mesh.interior.r.max(0.0) * reaction_area;
+        led.reserve_closure_residual +=
+            (led.a_stock_entering + led.r_stock_entering + led.a_produced
+                - led.a_to_c
+                - led.a_decayed
+                - led.a_to_m
+                - led.a_to_l
+                - led.diagnostic_liquid_r_used
+                - led.reserve.r_to_w
+                - reserve_a1
+                - reserve_r1)
+                .abs();
+    }
+
+    if mobilize_first_store_last && enable_metab {
+        let reserve_area = mesh.area().max(1e-6);
+        let reserve_a0 = mesh.interior.a.max(0.0) * reserve_area;
+        let reserve_r0 = mesh.interior.r.max(0.0) * reserve_area;
+        let post = reserve_metab_step_with_controls(mesh, p, dt, ReserveFluxControls::STORE_ONLY);
+        let reserve_a1 = mesh.interior.a.max(0.0) * reserve_area;
+        let reserve_r1 = mesh.interior.r.max(0.0) * reserve_area;
+        led.reserve_closure_residual +=
+            (reserve_a0 + reserve_r0 - reserve_a1 - reserve_r1 - post.r_to_w).abs();
+        led.reserve.a_to_r += post.a_to_r;
+        led.reserve.r_to_a += post.r_to_a;
+        led.reserve.r_to_w += post.r_to_w;
+        led.reserve.r_to_m += post.r_to_m;
+        led.reserve.w_from_r_growth += post.w_from_r_growth;
+        led.reserve.rejected_steps += post.rejected_steps;
+        led.a_after_post_maintenance_storage = reserve_a1;
+        led.a_after_reserve = reserve_a1;
+    }
+
+    if reserve_mode == ReserveDiagnosticMode::MaintenancePriority && enable_metab {
+        let reserve_area = mesh.area().max(1e-6);
+        let reserve_a0 = mesh.interior.a.max(0.0) * reserve_area;
+        let reserve_r0 = mesh.interior.r.max(0.0) * reserve_area;
+        let post = reserve_metab_step_with_controls(mesh, p, dt, ReserveFluxControls::STORE_ONLY);
+        let reserve_a1 = mesh.interior.a.max(0.0) * reserve_area;
+        let reserve_r1 = mesh.interior.r.max(0.0) * reserve_area;
+        led.reserve_closure_residual +=
+            (reserve_a0 + reserve_r0 - reserve_a1 - reserve_r1 - post.r_to_w).abs();
+        led.reserve.a_to_r += post.a_to_r;
+        led.reserve.r_to_a += post.r_to_a;
+        led.reserve.r_to_w += post.r_to_w;
+        led.reserve.r_to_m += post.r_to_m;
+        led.reserve.w_from_r_growth += post.w_from_r_growth;
+        led.reserve.rejected_steps += post.rejected_steps;
+        led.a_after_post_maintenance_storage = mesh.interior.a.max(0.0) * reaction_area;
+        led.a_after_reserve = led.a_after_post_maintenance_storage;
+    } else {
+        if !surplus_only_store {
+            led.a_after_post_maintenance_storage = led.a_after_reserve;
+        }
+    }
+    if led.structural_demand_a + led.membrane_demand_a > 1e-15 {
+        led.a_to_r_before_later_demand =
+            if reserve_mode == ReserveDiagnosticMode::MaintenancePriority {
+                0.0
+            } else {
+                led.reserve.a_to_r
+            };
+    }
+
+    led.a_to_r_same_step_new_a = led.reserve.a_to_r.min(led.new_a_surplus);
+    led.a_to_r_pre_existing_a = (led.reserve.a_to_r - led.a_to_r_same_step_new_a).max(0.0);
+    led.net_activation_equivalent = led.a_produced
+        - led.a_to_c
+        - led.a_decayed
+        - led.a_to_m
+        - led.a_to_l
+        - led.diagnostic_liquid_r_used
+        - led.reserve.r_to_w;
+    let final_activation =
+        mesh.interior.a.max(0.0) * material_area + mesh.interior.r.max(0.0) * material_area;
+    led.activation_equivalent_closure_residual =
+        (led.a_stock_entering + led.r_stock_entering + led.a_produced
+            - led.a_to_c
+            - led.a_decayed
+            - led.a_to_m
+            - led.a_to_l
+            - led.diagnostic_liquid_r_used
+            - led.reserve.r_to_w
+            - final_activation)
+            .abs();
 
     // Rupture check.
     for e in &mut mesh.edges {
@@ -416,6 +983,9 @@ pub fn reactions_step(
 }
 
 pub fn evaluate_death(mesh: &mut MaterialMesh) {
+    if mesh.uses_observer_only_death() {
+        return;
+    }
     if !mesh.alive {
         return;
     }
@@ -449,8 +1019,12 @@ pub fn apply_structural_damage(mesh: &mut MaterialMesh, fraction: f64) -> f64 {
     let count = ((n as f64) * fraction.clamp(0.0, 1.0)).round() as usize;
     let area = mesh.area().max(1e-6);
     for i in 0..count.min(n) {
-        let rem = mesh.edges[i].m * 0.5;
+        let total_before = mesh.edges[i].m.max(0.0);
+        let rem = total_before * 0.5;
         mesh.edges[i].m -= rem;
+        if mesh.is_maturation_coupled() && total_before > 0.0 {
+            mesh.edges[i].m_young *= mesh.edges[i].m / total_before;
+        }
         removed += rem;
         mesh.interior.w += rem / area;
         if mesh.edges[i].m < mesh.bond_threshold {
@@ -494,6 +1068,7 @@ pub fn apply_local_rupture(mesh: &mut MaterialMesh, i: usize) {
     if i < mesh.edges.len() {
         let rem = mesh.edges[i].m;
         mesh.edges[i].m = 0.0;
+        mesh.edges[i].m_young = 0.0;
         mesh.edges[i].ruptured = true;
         mesh.interior.w += rem / mesh.area().max(1e-6);
     }
@@ -501,7 +1076,7 @@ pub fn apply_local_rupture(mesh: &mut MaterialMesh, i: usize) {
 
 /// Attempt local rebond of a ruptured edge if free ends are close and A/C available.
 pub fn try_local_rebond(mesh: &mut MaterialMesh, max_dist: f64) -> bool {
-    if !mesh.alive {
+    if !mesh.can_advance_physics() {
         return false;
     }
     if mesh.interior.a < 0.05 || mesh.interior.c < 0.05 {
@@ -522,6 +1097,11 @@ pub fn try_local_rebond(mesh: &mut MaterialMesh, max_dist: f64) -> bool {
             if have >= need {
                 mesh.interior.a = (mesh.interior.a - need / area).max(0.0);
                 mesh.edges[i].m = need;
+                mesh.edges[i].m_young = if mesh.is_maturation_coupled() {
+                    need
+                } else {
+                    0.0
+                };
                 mesh.edges[i].ruptured = false;
                 return true;
             }
@@ -553,4 +1133,175 @@ pub fn tracer_membrane_fraction(mesh: &MaterialMesh) -> f64 {
 pub fn tracer_catalyst_fraction(mesh: &MaterialMesh) -> f64 {
     let c = mesh.interior.c.max(1e-15);
     (mesh.interior.tracer_c / c).clamp(0.0, 1.0)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::material_mesh::{LumpedChem, MeshContractVersion};
+
+    fn sub_floor_mesh(contract: MeshContractVersion) -> MaterialMesh {
+        let mut mesh = MaterialMesh::seed_regular(
+            12,
+            1.0e-4,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            LumpedChem {
+                c: 1.0,
+                a: 1.0,
+                ..Default::default()
+            },
+            LumpedChem::default(),
+            0.0,
+        );
+        match contract {
+            MeshContractVersion::HistoricalV1 => {}
+            MeshContractVersion::ConservativeV2 => mesh.stamp_conservative_schema(),
+            MeshContractVersion::GeometryConservativeV3 => {
+                mesh.stamp_geometry_conservative_schema()
+            }
+            MeshContractVersion::MaturationCoupledV4 => mesh.stamp_maturation_coupled_schema(),
+        }
+        for edge in &mut mesh.edges {
+            edge.m = 1.0;
+        }
+        assert!(mesh.area() > 0.0 && mesh.area() < REACTION_AREA_FLOOR);
+        mesh
+    }
+
+    fn turnover_params() -> ReactionParams {
+        let mut params = ReactionParams::default();
+        params.k_build = 0.0;
+        params.k_turn = 0.5;
+        params.k_bind = 0.0;
+        params.k_unbind = 0.0;
+        params
+    }
+
+    fn assert_close(actual: f64, expected: f64) {
+        assert!(
+            (actual - expected).abs() <= 1.0e-12 * (1.0 + actual.abs() + expected.abs()),
+            "actual={actual:?} expected={expected:?}"
+        );
+    }
+
+    #[test]
+    fn historical_and_v2_retain_floored_turnover_bookkeeping_below_floor() {
+        for contract in [
+            MeshContractVersion::HistoricalV1,
+            MeshContractVersion::ConservativeV2,
+        ] {
+            let mut mesh = sub_floor_mesh(contract);
+            let params = turnover_params();
+            let area = reaction_area(&mesh);
+            let m_before = mesh.total_structural_mass();
+            let w_before = mesh.interior.w * area;
+
+            reactions_step(&mut mesh, &params, 0.02, true, false);
+
+            let removed = m_before - mesh.total_structural_mass();
+            let w_gain = mesh.interior.w * area - w_before;
+            assert_close(w_gain, removed);
+            assert_close(area, REACTION_AREA_FLOOR);
+        }
+    }
+
+    #[test]
+    fn geometry_conservative_turnover_uses_actual_area_below_floor() {
+        let mut mesh = sub_floor_mesh(MeshContractVersion::GeometryConservativeV3);
+        let params = turnover_params();
+        let area = mesh.area();
+        let m_before = mesh.total_structural_mass();
+        let w_before = mesh.interior.w * area;
+
+        reactions_step(&mut mesh, &params, 0.02, true, false);
+
+        let removed = m_before - mesh.total_structural_mass();
+        let w_gain = mesh.interior.w * area - w_before;
+        assert_close(w_gain, removed);
+        assert!(mesh.interior.w > 0.0);
+    }
+
+    #[test]
+    fn geometry_conservative_matches_v2_before_floor_activation() {
+        let mut v2 = MaterialMesh::seed_regular(
+            12,
+            2.0,
+            0.0,
+            0.0,
+            1.0,
+            0.7,
+            LumpedChem {
+                c: 0.8,
+                a: 0.6,
+                n: 0.5,
+                f: 0.5,
+                w: 0.1,
+                ..Default::default()
+            },
+            LumpedChem::default(),
+            1.0,
+        );
+        v2.stamp_conservative_schema();
+        let mut gc = v2.clone();
+        gc.stamp_geometry_conservative_schema();
+        assert!(v2.area() >= REACTION_AREA_FLOOR);
+
+        let params = ReactionParams::conservative_v2();
+        for _ in 0..8 {
+            reactions_step(&mut v2, &params, 0.02, true, true);
+            reactions_step(&mut gc, &params, 0.02, true, true);
+        }
+        assert_close(v2.interior.a, gc.interior.a);
+        assert_close(v2.interior.c, gc.interior.c);
+        assert_close(v2.interior.w, gc.interior.w);
+        assert_close(v2.free_l, gc.free_l);
+        for (v2_edge, gc_edge) in v2.edges.iter().zip(gc.edges.iter()) {
+            assert_close(v2_edge.m, gc_edge.m);
+            assert_close(v2_edge.b, gc_edge.b);
+        }
+    }
+
+    #[test]
+    fn geometry_conservative_structural_build_conserves_a_to_m_below_floor() {
+        let mut mesh = sub_floor_mesh(MeshContractVersion::GeometryConservativeV3);
+        let mut params = ReactionParams::conservative_v3();
+        params.k_turn = 0.0;
+        params.k_bind = 0.0;
+        params.k_unbind = 0.0;
+        let area = mesh.area();
+        let a_before = mesh.interior.a * area;
+        let m_before = mesh.total_structural_mass();
+
+        reactions_step(&mut mesh, &params, 0.02, true, false);
+
+        let a_lost = a_before - mesh.interior.a * area;
+        let m_gain = mesh.total_structural_mass() - m_before;
+        assert!(m_gain > 0.0);
+        assert_close(a_lost, m_gain);
+    }
+
+    #[test]
+    fn geometry_conservative_membrane_production_conserves_a_to_l_below_floor() {
+        let mut mesh = sub_floor_mesh(MeshContractVersion::GeometryConservativeV3);
+        let mut params = ReactionParams::conservative_v3();
+        params.k_build = 0.0;
+        params.k_c_prod = 0.0;
+        params.k_c_turn = 0.0;
+        params.k_a_decay = 0.0;
+        params.k_bind = 0.0;
+        params.k_unbind = 0.0;
+        let area = mesh.area();
+        let a_before = mesh.interior.a * area;
+        let l_before = mesh.free_l;
+
+        reactions_step(&mut mesh, &params, 0.02, false, true);
+
+        let a_lost = a_before - mesh.interior.a * area;
+        let l_gain = mesh.free_l - l_before;
+        assert!(l_gain > 0.0);
+        assert_close(a_lost, l_gain);
+    }
 }

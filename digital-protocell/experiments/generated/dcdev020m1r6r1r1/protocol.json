@@ -1,0 +1,42 @@
+{
+  "audit_entry_head": "adea13fafa1f2a85e521a44b5d77249820d107bd",
+  "chemistry_changed": false,
+  "controller_added": false,
+  "directive": "DC-DEV-020-M1-R6-R1-R1-CROSS-PLATFORM-CLOSURE-VALIDATION-001",
+  "dt": 0.02,
+  "horizon": 8000,
+  "mechanics_changed": false,
+  "next_execution_started": false,
+  "observer_only": true,
+  "parameter_search": false,
+  "production_biology_changed": false,
+  "r6_authority": {
+    "ci": "32673647585",
+    "classification": "M1_FULL_RUNTIME_CERTIFICATION_INVALID",
+    "starting_head": "9ff1bba4a48caf582e4598b4030d746e4360a61b"
+  },
+  "recycling": false,
+  "remesh_changed": false,
+  "resource": {
+    "boundary_f": 2.063914918930895,
+    "boundary_n": 2.063914918930895,
+    "center": [
+      4.8,
+      0.0
+    ],
+    "initial_f": 243.14924801053778,
+    "initial_n": 243.14924801053778,
+    "radius": 1.5,
+    "replenishment_events": 0
+  },
+  "runtime_order": [
+    "S0 step entry",
+    "S1 finite uptake",
+    "S2 reactions",
+    "S3 mechanics",
+    "S4 remesh",
+    "S5 rebond"
+  ],
+  "starting_head": "1d681694e0dd5334e8267a881a2e1c4bec71324d",
+  "tolerance": 1e-8
+}

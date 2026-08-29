@@ -1,0 +1,77 @@
+{
+  "a_balance": {
+    "v2_at_n_removal": 0.5426577331744072,
+    "v2_final": 0.0005899769713183956,
+    "v3_at_n_removal": 0.5426577331744072,
+    "v3_final": 0.011062155811317344,
+    "v4_at_n_removal": 0.551675731014677,
+    "v4_final": 0.09087892901751628,
+    "v4_higher_terminal_a_explanation": "not_isolated"
+  },
+  "v2": {
+    "a_lost": 272.79017531969623,
+    "after_n_removal": {
+      "a_consumed_build": 11.635234659389747,
+      "a_decayed": 160.91883569126438,
+      "a_produced": 0.0,
+      "a_to_c": 90.54944287577162,
+      "a_to_l": 9.686662093270439,
+      "a_to_m": 11.635234659389747,
+      "bound_extent": 245.90465011902168,
+      "catalyst_production": 90.54944287577162,
+      "catalyst_turnover": 175.79116292858393,
+      "f_consumed": 0.0,
+      "maturation": 0.0,
+      "membrane_production": 9.686662093270439,
+      "n_consumed": 0.0,
+      "structural_production": 11.635234659389747,
+      "structural_turnover": 82.46077080052895,
+      "unbound_extent": 303.1634208458777,
+      "waste_production": 419.1707694203767
+    }
+  },
+  "v3": {
+    "a_lost": 231.35550322765766,
+    "after_n_removal": {
+      "a_consumed_build": 18.423154648299608,
+      "a_decayed": 61.34915017287187,
+      "a_produced": 0.0,
+      "a_to_c": 138.0852985964576,
+      "a_to_l": 13.497899810028585,
+      "a_to_m": 18.423154648299608,
+      "bound_extent": 275.75193773968596,
+      "catalyst_production": 138.0852985964576,
+      "catalyst_turnover": 206.76319150273332,
+      "f_consumed": 0.0,
+      "maturation": 0.0,
+      "membrane_production": 13.497899810028585,
+      "n_consumed": 0.0,
+      "structural_production": 18.423154648299608,
+      "structural_turnover": 87.30067148233664,
+      "unbound_extent": 331.25650912547434,
+      "waste_production": 355.41301315794374
+    }
+  },
+  "v4": {
+    "a_lost": 309.13556158355976,
+    "after_n_removal": {
+      "a_consumed_build": 33.79695218971461,
+      "a_decayed": 80.60176548566855,
+      "a_produced": 0.0,
+      "a_to_c": 181.41928328473796,
+      "a_to_l": 13.317560623438643,
+      "a_to_m": 33.79695218971461,
+      "bound_extent": 347.64354738424197,
+      "catalyst_production": 181.41928328473796,
+      "catalyst_turnover": 417.7191496208549,
+      "f_consumed": 0.0,
+      "maturation": 26.922945344348868,
+      "membrane_production": 13.317560623438643,
+      "n_consumed": 0.0,
+      "structural_production": 33.79695218971461,
+      "structural_turnover": 81.36674854764374,
+      "unbound_extent": 386.34179428804373,
+      "waste_production": 579.6876636541695
+    }
+  }
+}

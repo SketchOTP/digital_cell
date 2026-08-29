@@ -1,0 +1,15 @@
+{
+  "capacity_valid": true,
+  "classification": "DCDEV020R8_PRODUCT_FEEDBACK_TOPOLOGY_INCOMPATIBLE",
+  "dc_dev_021_authorized": false,
+  "final_region_bounded": false,
+  "final_region_nonempty": false,
+  "holdout_region_nonempty": false,
+  "next_execution_started": false,
+  "positive_u_v": false,
+  "production_behavior_changed": false,
+  "production_chemistry_changed": false,
+  "r7_region_nonempty": false,
+  "training_region_nonempty": false,
+  "zero_substrate_control": true
+}

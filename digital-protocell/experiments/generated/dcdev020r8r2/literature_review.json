@@ -1,0 +1,21 @@
+{
+  "disposition": "ADAPTABLE_ARCHITECTURE_ONLY",
+  "external_values_imported": false,
+  "sources": [
+    {
+      "citation": "Becker et al. 2017, Dynamic regulation of growth and metabolism",
+      "pmid": "27812109",
+      "use": "architecture context only"
+    },
+    {
+      "citation": "Scott et al. 2014, Cell growth and protein synthesis",
+      "pmid": "24766808",
+      "use": "allocation/payback context only"
+    },
+    {
+      "citation": "Klumpp et al. 2023, Growth laws and resource allocation",
+      "pmid": "36737588",
+      "use": "allocation context only"
+    }
+  ]
+}

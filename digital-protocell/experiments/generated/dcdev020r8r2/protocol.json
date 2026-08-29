@@ -1,0 +1,53 @@
+{
+  "accepted_r7_dense_sha256": "abdaea6d075c700e36d14d369dba62982f4a65cea47d2d1f162b5dfe8afa59f8",
+  "accepted_r7_external_location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r7/3ddae9ea3c954431c8b3ae2ecbf2d6fc94278e56/on_policy_root_ledger.json",
+  "accepted_r7_head": "7d5f772f0db67b8d754d27c1182c933533f750fd",
+  "accepted_r8_dense_sha256": "12b41f27c928635899a7ea3a8d496cfdd3af7d3fd83aaa93024724663e2df9ff",
+  "accepted_r8_external_location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r8/6e2b03a7551409086c1a38d6cf5f62827fb91929/pair_constraint_ledger.json",
+  "accepted_r8_head": "f01b716d9051c9f0114f3c5c0d1b123e2df037cf",
+  "accepted_r8r1_ci": "32203855916",
+  "accepted_r8r1_dense_sha256": "f44e8f9fa441451ee40bcbfccac5f556131e4d26868868607e9507c29e7bcf90",
+  "accepted_r8r1_external_location": "/mnt/storage1tb/cache/project-artifacts/digital_cell/experiments/generated/dcdev020r8r1/d50037e53d041d8b06895553933c3b0a78c7a024/demand_elasticity_ledger.json",
+  "checkpoints": [
+    1,
+    40,
+    80,
+    120,
+    160,
+    200,
+    240,
+    280,
+    320,
+    360,
+    400,
+    440
+  ],
+  "clean_scientific_base": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "contexts": [
+    "D016 bilinear source",
+    "sealed R6 NF power-law source"
+  ],
+  "dc_dev_021_authorized": false,
+  "directive": "DC-DEV-020-R8-R2",
+  "e_ar_definition": "area * (A + R)",
+  "entry_head": "d2c4f76a46f6baf7eab544847dd58c034adea156",
+  "implementation_authorized": false,
+  "material_vector": [
+    "A/R store",
+    "C catalyst",
+    "structural",
+    "membrane",
+    "other retained N/F",
+    "irreversible W",
+    "source-delivery/loss"
+  ],
+  "normal_vs_no_cprod": "same state, same source law, cloned one-step shadow with k_c_prod set to zero only in no-cprod arm",
+  "observer_only": true,
+  "production_behavior_changed": false,
+  "production_chemistry_changed": false,
+  "r7_states": 480,
+  "result_commit": "1d3d72bbd0af4bf569ae4d86e7654a2896bb2def",
+  "root_source": "physical zero-drift roots on every accepted R7 on-policy pre-reaction state",
+  "source_commit": "1d3d72bbd0af4bf569ae4d86e7654a2896bb2def",
+  "whole_window_shadow": "sealed R6 normal replay versus one whole-window cprod-deferred shadow"
+}

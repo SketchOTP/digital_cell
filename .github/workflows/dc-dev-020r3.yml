@@ -1,0 +1,111 @@
+name: DC-DEV-020-R3 two-substrate observer audit
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-020r3-observer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate R3 evidence and fail-closed scope
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("digital-protocell/experiments/generated/dcdev020r3")
+          required = ["protocol.json", "results.json", "kinetic_diagnosis.json",
+                      "qualification.json", "literature_review.json"]
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              raise SystemExit(f"missing R3 artifacts: {missing}")
+          protocol = json.loads((root / "protocol.json").read_text())
+          results = json.loads((root / "results.json").read_text())
+          kinetic = json.loads((root / "kinetic_diagnosis.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          literature = json.loads((root / "literature_review.json").read_text())
+          if protocol["accepted_r2_head"] != "e394aa675a4f44d91d1a8729736679fb4b7e7ab8":
+              raise SystemExit("wrong accepted R2 authority")
+          if protocol["clean_scientific_base"] != "1e242f28152797b512e25cd56c7b718e45d6ca97":
+              raise SystemExit("wrong clean scientific base")
+          if (protocol["settle_steps"], protocol["deprivation_steps"], protocol["feed_steps"]) != (5000, 480, 480):
+              raise SystemExit("R3 horizon changed")
+          if not protocol["observer_only"] or protocol["production_integration"]:
+              raise SystemExit("observer boundary changed")
+          if not results["gate_2_supported"] or results["gate_4_pass"]:
+              raise SystemExit("unexpected R3 gate disposition")
+          expected = "DCDEV020R3_SATURATING_KINETICS_NOT_IDENTIFIABLE"
+          if results["conclusion"] != expected or qualification["classification"] != expected:
+              raise SystemExit("unexpected R3 classification")
+          if results["identification"]["identifiable"]:
+              raise SystemExit("saturating family unexpectedly identified")
+          if any(results[name] is not None for name in ("candidate", "dose_robustness", "sustained_fed", "three_cycles")):
+              raise SystemExit("later gate executed after Gate 4 failure")
+          if results["implementation_authorized"] or results["next_execution_started"]:
+              raise SystemExit("implementation boundary opened")
+          if len(kinetic["baseline_points"]) != 480 or len(kinetic["constant_reference_points"]) != 480:
+              raise SystemExit("incomplete kinetic ledger")
+          if literature["external_constants_imported"] or literature["molecular_identities_imported"]:
+              raise SystemExit("external biology imported")
+          print("validated DC-DEV-020-R3 negative observer evidence")
+          PY
+          changed="$(git diff --name-only 1e242f28152797b512e25cd56c7b718e45d6ca97 HEAD)"
+          if printf '%s\n' "$changed" | grep -E '^digital-protocell/crates/chemistry-core/'; then exit 1; fi
+          if printf '%s\n' "$changed" | grep -Ei 'dcdev021|dc-dev-021'; then exit 1; fi
+
+      - name: Scoped formatting
+        working-directory: digital-protocell
+        run: rustup run 1.89.0 rustfmt --edition 2021 --check examples/dcdev020r3_two_substrate_saturating_activation.rs
+
+      - name: Run DC-DEV-020-R3 observer assay
+        working-directory: digital-protocell
+        env:
+          DCDEV020R3_SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          DCDEV020R3_OUTPUT_ROOT: target/dcdev020r3-ci
+        run: cargo +1.89.0 run -p regulatory-core --example dcdev020r3_two_substrate_saturating_activation --quiet
+
+      - name: Regulatory-core regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p regulatory-core
+
+      - name: Phase-1 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+
+      - name: D-088 focused regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+
+      - name: Evolution-harness preservation regression
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          actual="$(git rev-parse --verify HEAD)"
+          echo "checked out $actual"
+          test "$actual" = "$EXPECTED_HEAD"

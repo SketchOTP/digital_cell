@@ -1,0 +1,13 @@
+{
+  "artifact_digest": "assigned_by_exact_head_CI",
+  "closure_starting_head": "d011543f58fa684d04c97c0cccba9f7202957546",
+  "compact_root": "digital-protocell/experiments/generated/dcdev020m1closure001/",
+  "dense_evidence_root": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1closure001/",
+  "directive": "DC-DEV-020-M1-CLOSURE-001-V4-PRODUCTION-SELECTION-AND-FREEZE-001",
+  "pr_44_merged": false,
+  "project_goal_blob_sha": "94864614625a8f3388a51b33b79ad203b2f66588",
+  "project_goal_path": ".agent/PROJECT_GOAL.md",
+  "schema": "dcdev020m1closure001_artifact_manifest_v1",
+  "selection": "MaturationCoupledV4 / reserve OFF",
+  "selector_change_commit": "7720546ccc75a7d5becb1dc6eac8a063e0d75b8c"
+}

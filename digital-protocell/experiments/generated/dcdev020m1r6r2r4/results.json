@@ -1,0 +1,466 @@
+{
+  "basin_and_gate2_decomposition": {
+    "basin_pass": true,
+    "membrane_damage_pass": true,
+    "no_respawn_pass": true,
+    "passed_rows": 15,
+    "rows": [
+      {
+        "pass": true,
+        "radius": 10.0,
+        "seed": 1
+      },
+      {
+        "pass": true,
+        "radius": 10.0,
+        "seed": 2
+      },
+      {
+        "pass": true,
+        "radius": 10.0,
+        "seed": 3
+      },
+      {
+        "pass": true,
+        "radius": 10.0,
+        "seed": 4
+      },
+      {
+        "pass": true,
+        "radius": 10.0,
+        "seed": 5
+      },
+      {
+        "pass": true,
+        "radius": 14.0,
+        "seed": 1
+      },
+      {
+        "pass": true,
+        "radius": 14.0,
+        "seed": 2
+      },
+      {
+        "pass": true,
+        "radius": 14.0,
+        "seed": 3
+      },
+      {
+        "pass": true,
+        "radius": 14.0,
+        "seed": 4
+      },
+      {
+        "pass": true,
+        "radius": 14.0,
+        "seed": 5
+      },
+      {
+        "pass": true,
+        "radius": 18.0,
+        "seed": 1
+      },
+      {
+        "pass": true,
+        "radius": 18.0,
+        "seed": 2
+      },
+      {
+        "pass": true,
+        "radius": 18.0,
+        "seed": 3
+      },
+      {
+        "pass": true,
+        "radius": 18.0,
+        "seed": 4
+      },
+      {
+        "pass": true,
+        "radius": 18.0,
+        "seed": 5
+      }
+    ],
+    "rupture_recognition_pass": true,
+    "snapshot_resume_pass": true,
+    "structural_damage_pass": true,
+    "total_rows": 15
+  },
+  "candidate_d087": {
+    "agent_directive": "D-20260724-d087-independent-phase1-certification-phase2-launch",
+    "artifact_root": "\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r4\\compact\\actual_candidate_d087",
+    "elapsed_secs": 5.9903286,
+    "entry_commit": "6f8a80a",
+    "entry_tag": "D-086-mesh-protocell-phase1-pass",
+    "equation_lineage": "autopoietic_material_mesh_v1",
+    "frozen": {
+      "alpha_approx": 0.022,
+      "dt": 0.02,
+      "gamma": 1.0,
+      "k_pi": 0.22,
+      "k_s": 14.0,
+      "kappa_b": 2.0,
+      "schema": "autopoietic_material_mesh_v1",
+      "state": "mesh_vertices_edges_v1"
+    },
+    "gate0": {
+      "detail": "head=ffa0f87 tag=6f8a80a tag_ok=true ancestor_ok=true frozen_ok=true hits=2148 controller_hits=0 dirty_candidate=true",
+      "failure": null,
+      "pass": true
+    },
+    "gate1": {
+      "detail": "R_m=1.310 f_m=0.219 pool_m=0.267 R_b=6.229 f_b=0.002 pool_b=0.002 R_c=1.304 f_c=0.328 pool_c=0.271 ret_c=1.450 ret_a=1.554 dual=true d086_soft=true",
+      "failure": null,
+      "pass": true
+    },
+    "gate2": {
+      "detail": "basin_sizes=3/3 snap_ok=true mem_alive=true st_alive=true ruptured=true starved=false no_respawn=true",
+      "failure": "D087_D086_REPRODUCTION_FAILURE",
+      "pass": false
+    },
+    "gate3": {
+      "detail": "seed_distinct_fps=3 seeds_effective=true size_pass=3/3 path=deterministic_perturbation",
+      "failure": null,
+      "pass": true
+    },
+    "gate4": {
+      "detail": "pass_rate=1.000 (13/13)",
+      "failure": null,
+      "pass": true
+    },
+    "gate5": {
+      "detail": "ablations_ok=9/8",
+      "failure": null,
+      "pass": true
+    },
+    "gate6": {
+      "detail": "damage_generalization=8/8",
+      "failure": null,
+      "pass": true
+    },
+    "gate7": {
+      "detail": "built=true bin_ok=true steps=80000 wall_s=0.9 snap_ok=true verts=50 growing_flags=0 smoke=false",
+      "failure": null,
+      "pass": true
+    },
+    "mesh_contract": "ConservativeV3",
+    "next_execution_started": false,
+    "phase1_status": "PHASE1_NOT_REPRODUCIBLE",
+    "phase2_authorized": false,
+    "primary_conclusion": "D087_D086_REPRODUCTION_FAILURE",
+    "production_verdict": "PHASE1_NOT_CERTIFIED",
+    "project_directive": "D-087",
+    "reserve_enabled": false,
+    "smoke": false
+  },
+  "candidate_gate2_isolated": true,
+  "classification": "M1_GC_CONSERVATION_CANDIDATE_QUALIFIED",
+  "conservation": {
+    "integrated_8000": {
+      "pass": true,
+      "residual": 4.263256414560601e-14
+    },
+    "mechanics_only": {
+      "pass": true,
+      "residual": 0.0
+    },
+    "remesh_only": {
+      "pass": true,
+      "residual": 0.0
+    },
+    "source": "accepted R6-R2 conservation evidence replay; no conservation code changed in this directive",
+    "tolerance": 1e-8
+  },
+  "dc_dev_021_authorized": false,
+  "directive": "DC-DEV-020-M1-R6-R2-R4-GC-PRESERVATION-QUALIFICATION-001",
+  "historical_v2_d087": {
+    "agent_directive": "D-20260724-d087-independent-phase1-certification-phase2-launch",
+    "artifact_root": "\\\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r4\\compact\\actual_control_d087",
+    "elapsed_secs": 6.3236284,
+    "entry_commit": "6f8a80a",
+    "entry_tag": "D-086-mesh-protocell-phase1-pass",
+    "equation_lineage": "autopoietic_material_mesh_v1",
+    "frozen": {
+      "alpha_approx": 0.022,
+      "dt": 0.02,
+      "gamma": 1.0,
+      "k_pi": 0.22,
+      "k_s": 14.0,
+      "kappa_b": 2.0,
+      "schema": "autopoietic_material_mesh_v1",
+      "state": "mesh_vertices_edges_v1"
+    },
+    "gate0": {
+      "detail": "head=ffa0f87 tag=6f8a80a tag_ok=true ancestor_ok=true frozen_ok=true hits=2148 controller_hits=0 dirty_candidate=true",
+      "failure": null,
+      "pass": true
+    },
+    "gate1": {
+      "detail": "R_m=1.018 f_m=0.191 pool_m=0.349 R_b=5.818 f_b=0.002 pool_b=0.003 R_c=1.446 f_c=0.105 pool_c=0.230 ret_c=1.397 ret_a=1.898 dual=true d086_soft=true",
+      "failure": null,
+      "pass": true
+    },
+    "gate2": {
+      "detail": "basin_sizes=3/3 snap_ok=true mem_alive=true st_alive=true ruptured=true starved=true no_respawn=true",
+      "failure": null,
+      "pass": true
+    },
+    "gate3": {
+      "detail": "seed_distinct_fps=3 seeds_effective=true size_pass=3/3 path=deterministic_perturbation",
+      "failure": null,
+      "pass": true
+    },
+    "gate4": {
+      "detail": "pass_rate=1.000 (13/13)",
+      "failure": null,
+      "pass": true
+    },
+    "gate5": {
+      "detail": "ablations_ok=9/8",
+      "failure": null,
+      "pass": true
+    },
+    "gate6": {
+      "detail": "damage_generalization=8/8",
+      "failure": null,
+      "pass": true
+    },
+    "gate7": {
+      "detail": "built=true bin_ok=true steps=80000 wall_s=1.2 snap_ok=true verts=50 growing_flags=0 smoke=false",
+      "failure": null,
+      "pass": true
+    },
+    "mesh_contract": "ConservativeV3",
+    "next_execution_started": false,
+    "phase1_status": "PHASE1_COMPLETE",
+    "phase2_authorized": true,
+    "primary_conclusion": "D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED",
+    "production_verdict": "PHASE1_RESEARCH_RUNTIME_QUALIFIED",
+    "project_directive": "D-087",
+    "reserve_enabled": false,
+    "smoke": false
+  },
+  "m1_established": false,
+  "m2_authorized": false,
+  "next_execution_started": false,
+  "production_default_changed": false,
+  "starting_head": "ffa0f8756a3d152d70292b4f366087bef0680c70",
+  "starvation": {
+    "causal_gate_pass": true,
+    "checkpoints": [
+      {
+        "a_amount": 330.7150966536386,
+        "a_concentration": 0.5465323668228074,
+        "absolute_step": 200,
+        "area": 605.115299165549,
+        "closed_intact": true,
+        "n_amount": 0.0,
+        "observer_death_reason": null,
+        "observer_viable": true,
+        "organized_material": 969.8667308903401,
+        "physical_runtime_valid": true,
+        "relative_step": 0,
+        "ruptured_edges": 0,
+        "strict_material": 1322.1418501269197
+      },
+      {
+        "a_amount": 330.50198656391785,
+        "a_concentration": 0.5460534799498653,
+        "absolute_step": 201,
+        "area": 605.2557097415846,
+        "closed_intact": true,
+        "n_amount": 0.0,
+        "observer_death_reason": null,
+        "observer_viable": true,
+        "organized_material": 969.6508378660103,
+        "physical_runtime_valid": true,
+        "relative_step": 1,
+        "ruptured_edges": 0,
+        "strict_material": 1322.0887484078255
+      },
+      {
+        "a_amount": 328.58992782287004,
+        "a_concentration": 0.5418104119938001,
+        "absolute_step": 210,
+        "area": 606.4666173794941,
+        "closed_intact": true,
+        "n_amount": 0.0,
+        "observer_death_reason": null,
+        "observer_viable": true,
+        "organized_material": 967.7112945741167,
+        "physical_runtime_valid": true,
+        "relative_step": 10,
+        "ruptured_edges": 0,
+        "strict_material": 1321.6224797641612
+      },
+      {
+        "a_amount": 310.05225708739647,
+        "a_concentration": 0.5049805784928176,
+        "absolute_step": 300,
+        "area": 613.9884785525595,
+        "closed_intact": true,
+        "n_amount": 0.0,
+        "observer_death_reason": null,
+        "observer_viable": true,
+        "organized_material": 948.6518769854957,
+        "physical_runtime_valid": true,
+        "relative_step": 100,
+        "ruptured_edges": 0,
+        "strict_material": 1317.8252477372662
+      },
+      {
+        "a_amount": 242.62804731320367,
+        "a_concentration": 0.40850162912836663,
+        "absolute_step": 680,
+        "area": 593.9463395309025,
+        "closed_intact": true,
+        "n_amount": 0.0,
+        "observer_death_reason": null,
+        "observer_viable": true,
+        "organized_material": 874.2550949530809,
+        "physical_runtime_valid": true,
+        "relative_step": 480,
+        "ruptured_edges": 0,
+        "strict_material": 1303.4040303586441
+      },
+      {
+        "a_amount": 173.68159484374078,
+        "a_concentration": 0.3310623731399351,
+        "absolute_step": 1200,
+        "area": 524.6189507930827,
+        "closed_intact": true,
+        "n_amount": 0.0,
+        "observer_death_reason": null,
+        "observer_viable": true,
+        "organized_material": 786.3051280147239,
+        "physical_runtime_valid": true,
+        "relative_step": 1000,
+        "ruptured_edges": 0,
+        "strict_material": 1261.2377713416845
+      },
+      {
+        "a_amount": 6.5956738242275,
+        "a_concentration": 0.10147286122118783,
+        "absolute_step": 6200,
+        "area": 64.99938747021656,
+        "closed_intact": true,
+        "n_amount": 0.0,
+        "observer_death_reason": null,
+        "observer_viable": true,
+        "organized_material": 305.63043509530104,
+        "physical_runtime_valid": true,
+        "relative_step": 6000,
+        "ruptured_edges": 0,
+        "strict_material": 406.99954799775463
+      },
+      {
+        "a_amount": 0.1008869831297048,
+        "a_concentration": 0.019990181664709974,
+        "absolute_step": 10583,
+        "area": 5.046826728333713,
+        "closed_intact": true,
+        "n_amount": 0.0,
+        "observer_death_reason": "starvation_collapse",
+        "observer_viable": false,
+        "organized_material": 144.0628919185114,
+        "physical_runtime_valid": true,
+        "relative_step": 10383,
+        "ruptured_edges": 0,
+        "strict_material": 150.03342053682724
+      },
+      {
+        "a_amount": 0.0,
+        "a_concentration": 0.0,
+        "absolute_step": 50200,
+        "area": 0.000424152450591464,
+        "closed_intact": true,
+        "n_amount": 0.0,
+        "observer_death_reason": "activated_catalyst_collapse",
+        "observer_viable": false,
+        "organized_material": 85.01872380858401,
+        "physical_runtime_valid": true,
+        "relative_step": 50000,
+        "ruptured_edges": 0,
+        "strict_material": 85.07371201066556
+      },
+      {
+        "a_amount": 0.0,
+        "a_concentration": 0.0,
+        "absolute_step": 100200,
+        "area": 0.0007820586495199677,
+        "closed_intact": true,
+        "n_amount": 0.0,
+        "observer_death_reason": "activated_catalyst_collapse",
+        "observer_viable": false,
+        "organized_material": 84.65710916743248,
+        "physical_runtime_valid": true,
+        "relative_step": 100000,
+        "ruptured_edges": 0,
+        "strict_material": 84.7139846149202
+      },
+      {
+        "a_amount": 0.0,
+        "a_concentration": 0.0,
+        "absolute_step": 150200,
+        "area": 0.0009980489988947738,
+        "closed_intact": true,
+        "n_amount": 0.0,
+        "observer_death_reason": "activated_catalyst_collapse",
+        "observer_viable": false,
+        "organized_material": 84.50564650296067,
+        "physical_runtime_valid": true,
+        "relative_step": 150000,
+        "ruptured_edges": 0,
+        "strict_material": 84.56325405595418
+      }
+    ],
+    "entry": {
+      "a_amount": 330.7150966536386,
+      "a_concentration": 0.5465323668228074,
+      "absolute_step": 200,
+      "area": 605.115299165549,
+      "closed_intact": true,
+      "n_amount": 0.0,
+      "observer_death_reason": null,
+      "observer_viable": true,
+      "organized_material": 969.8667308903401,
+      "physical_runtime_valid": true,
+      "relative_step": 0,
+      "ruptured_edges": 0,
+      "strict_material": 1322.1418501269197
+    },
+    "final_state": {
+      "a_amount": 0.0,
+      "a_concentration": 0.0,
+      "absolute_step": 150200,
+      "area": 0.0009980489988947738,
+      "closed_intact": true,
+      "n_amount": 0.0,
+      "observer_death_reason": "activated_catalyst_collapse",
+      "observer_viable": false,
+      "organized_material": 84.50564650296067,
+      "physical_runtime_valid": true,
+      "relative_step": 150000,
+      "ruptured_edges": 0,
+      "strict_material": 84.56325405595418
+    },
+    "first_observer_viability_loss_step": 10383,
+    "late_organized_material_final": 84.50564650296067,
+    "late_organized_material_max": 969.8667308903401,
+    "runtime_invalid_step": null,
+    "topology_rupture_step": null,
+    "totals": {
+      "accepted_steps": 150000,
+      "f_consumed": 0.0,
+      "f_delivered": 3971.849730713371,
+      "n_consumed": 0.0,
+      "n_delivered": 0.0
+    }
+  },
+  "tracer": {
+    "candidate_f_label": 0.3277186407367453,
+    "label_amount_semantics": "tracer_c * area",
+    "pass": true,
+    "v2_d087_pass": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "classification": "M1_COUPLED_SOURCE_CANDIDATE_QUALIFIED",
+  "directive": "DC-DEV-020-M1-R4-COUPLED-SOURCE-CANDIDATE-001",
+  "e0_authority": true,
+  "e1_physical_law": true,
+  "e2_causal_three_arm_experiment": true,
+  "e3_nonnegative_organized_material_delta": true,
+  "e4_candidate_closure_and_d087": true,
+  "e5_exact_head_remote_ci_required": true,
+  "next_execution_started": false,
+  "selected_production_changed": false,
+  "starting_head": "17226fb7484eb50079c1c30ce9fd8039b3f23c60"
+}

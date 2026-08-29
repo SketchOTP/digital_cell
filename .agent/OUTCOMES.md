@@ -418,3 +418,1726 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: exact-head remote validation and independent architect interpretation of the conversion/storage bottleneck classification.
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
+
+## D-20260817-dcdev020-fast-allosteric-assimilation - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020-A-PRODUCT-FEEDBACK-OBSERVER-NEGATIVE`
+- Supersedes outcome: none
+- Closed: `2026-08-17T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: One fixed target-free local A-product feedback law was evaluated in observer/counterfactual mode from the clean DC-DEV-016 authority. Existing passive delivery and finite-resource conservation passed. The feedback arm improved final stored material relative to the matched baseline (`55.30767262894278` versus `54.3584702923158`) but remained below the deprived pre-feed state (`60.82781514212436`), so the observer gate failed. The 8,000-step no-resource continuation also lost viability.
+- Changed areas: DC-DEV-020 observer example registration, compact evidence, documentation, and governance; no production chemistry, resource boundary, mechanics, homeostat, or certified Phase-1 equations changed.
+- Validation:
+  - Exact clean DC-DEV-016 entry - PASSED
+  - Selected finite ecology delivery - PASSED (`15.566438806699026` N/F delivered in feedback arm)
+  - Resource conservation - PASSED (maximum error `0`)
+  - Historical D-017 observer replay - PASSED as comparison-only provenance
+  - A-product feedback finite-feed restoration - FAILED as the diagnostic result
+  - 8,000-step no-resource bounded continuation - FAILED viability
+  - Production integration - NOT RUN by fail-closed rule
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: independent architect interpretation of the chosen single-law negative result and whether a materially different metabolic-control topology is authorized.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
+
+## D-20260818-dcdev020r2-allosteric-requalification - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R2-A-ONLY-COORDINATE-INSUFFICIENT`
+- Supersedes outcome: `OUT-DCDEV020-A-PRODUCT-FEEDBACK-OBSERVER-NEGATIVE`
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R2 requalification audited the prior protocol, reconstructed the finite-source actuation envelope, replayed the correct August DC-DEV-017 observer, and audited post-activation A decay. The source-saturated upper bound ended at `61.6843481847883` from deprived `60.82781514212436`, but the constant-gain break-even root was `13.9482421875`; across the sampled envelope, A and required saturation gain decreased together as internal N/F accumulated, opposite the permitted A-only inhibitory family, so that family was not sufficient or identifiable. Classification: `DCDEV020_A_ONLY_ALLOSTERIC_COORDINATE_INSUFFICIENT`.
+- Changed areas: new R2 observer example registration, new `dcdev020r2` evidence namespace, R2 documentation, and governance records; no production chemistry or certified Phase-1 equations changed.
+- Validation:
+  - Exact clean entry and prior head recorded - PASSED
+  - Source-actuation envelope - PASSED
+  - Post-activation A-decay sequencing audit - PASSED
+  - Correct August DC-DEV-017 observer replay - PASSED
+  - A-only coordinate sufficiency - FAILED as the preregistered negative result
+  - Derived law, finite-feed qualification, sustained 8,000-step assay, and three-cycle assay - NOT RUN by fail-closed rule
+  - Sanctioned local Rust 1.89.0 check/run - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: exact-head remote validation and independent architect interpretation of whether a materially different allosteric topology is authorized; no new topology is authorized by this result.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
+
+## D-20260823-dcdev020m1r3-ordinary-decay-candidate001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R3-ORDINARY-DECAY-CANDIDATE-PENDING-ARCHITECT`
+- Supersedes outcome: none
+- Closed: `2026-08-23T00:30:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The versioned `ConservativeV3` candidate differs from `ConservativeV2` only in starvation activated-material decay: V3 uses ordinary `k_a_decay=0.008` with no fourfold multiplier. Local E0–E4 qualification passes. Non-starved V2/V3 replay is exact; ordinary-decay equivalence matches observer collapse `3279` and rupture `124717`; source-capacity replay without `/4` produces organized delta `+1.2571804904075918`; both ordinary and source-capacity refeeding forks remain topologically ruptured; actual V3 and preserved V2 D-087 are `8/8`. Classification is `M1_ORDINARY_DECAY_CANDIDATE_QUALIFIED`, pending exact-head remote CI and Architect review.
+- Changed areas: versioned mesh chemistry schema, certifier candidate selector, bounded R3 assay, compact evidence, documentation, scoped CI, and governance. `ConservativeV2` remains unchanged and selected; no production source law, D-091, D-087 criteria, mechanics, transport, reserve, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work changed.
+- Validation:
+  - `cargo +1.89.0 check -p regulatory-core --example dcdev020m1r3_ordinary_decay_candidate` - PASSED
+  - Scoped Rust formatting - PASSED
+  - Actual D-087 ConservativeV3/reserve OFF - PASSED (8/8)
+  - Actual D-087 ConservativeV2/reserve OFF preservation - PASSED (8/8)
+  - Fresh local R3 assay and compact artifact generation - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: Exact-head remote CI must verify fresh V3/V2 reports, artifact identity, preservation regressions, and bounded diff. V3 is an experimental candidate only; sustained production homeostasis and source implementation remain unresolved and unauthorized.
+- Blockers: exact-head remote CI and independent Architect acceptance.
+- Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r7-reference-geometry-coupling-decision001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R7-REFERENCE-GEOMETRY-COUPLING-LOCAL`
+- Supersedes outcome: none
+- Closed: `2026-08-27T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R6-R7 diagnostic reproduces the sealed R6-R6 static and current-moving references. The frozen static arm ends at `+0.342140676890381` organized material, the current moving arm at `-9.95495920654304`, and the persistent per-edge-reference shadow at `-7.90146640791825`. The reference shadow reduces the no-reset recovery deficit but does not restore sustained homeostasis, so the local classification is `M1_REFERENCE_GEOMETRY_COUPLING_NOT_SUFFICIENT`.
+- Changed areas: R6-R7 example registration, narrowly scoped optional reference-length helper APIs whose default paths remain unchanged, observer-only diagnostic harness, focused remesh lineage test, scoped workflow, compact evidence, documentation, and append-only governance. No production selection, resource/source schedule, controller, recycling, salvage, M2, R6-R8, or DC-DEV-021 behavior changed.
+- Validation:
+  - Rust 1.89.0 example build and execution - PASSED
+  - Focused split/merge reference-lineage test - PASSED
+  - R6-R6 static/current reproduction - PASSED
+  - Geometry/material closure - PASSED within tolerance
+  - ConservativeV2 D-087 - 8/8 locally
+  - ConservativeV3 D-087 - 8/8 locally
+  - Dense ledgers - `\\atlas\ATLAS\100_ACTIVE\Projects\DIGITAL_CELL\evidence\dcdev020m1r6r7`
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The actual sealed trajectory performs no split/merge, so remesh mapping is proven by the focused diagnostic fixture rather than runtime occurrence. The classification is provisional until exact-head Linux CI and Architect review. This result does not authorize production reference coupling, homeostasis repair, M2, R6-R8, or R6-R9.
+- Blockers: Exact-head remote CI and Architect review.
+- Follow-up directive: none
+
+## D-20260823-dcdev020m1r4-coupled-source-candidate001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R4-COUPLED-SOURCE-CANDIDATE-PENDING-ARCHITECT`
+- Supersedes outcome: none
+- Closed: `2026-08-23T00:30:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The bounded R4 implementation adds an opt-in `FINITE_SPATIAL_RESOURCE_COUPLED_ACTIVATION_V1` wrapper around the unchanged V1 finite-resource boundary. Only same-step newly delivered paired N/F is transformed into existing A+W; unmatched material remains N/F and pre-existing internal N/F is not selected. The local preregistered 480-step V1 baseline/reference/candidate matrix and controls qualify, actual D-087 V3/V2 are 8/8, and the preservation suite passes; exact-head remote CI and Architect review remain pending.
+- Changed areas: versioned regulatory-core adapter, bounded R4 example, compact evidence, documentation, scoped CI, and governance. No V1 transport, V2/V3 chemistry, production selection, reserve, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work is authorized.
+- Validation:
+  - Coupled adapter focused tests - PASSED
+  - Exact 480-step assay - PASSED
+  - Actual D-087 V3/V2 - PASSED
+  - Preservation suite - PASSED
+  - Exact-head remote CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: This is an experimental candidate qualification, not a production source-law change. Exact remote CI and independent Architect interpretation remain required.
+- Blockers: final local/remote verification and Architect review.
+- Follow-up directive: none
+
+## D-20260822-dcdev020m1r2r2-topology-death-closure001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R2R2-TOPOLOGY-DEATH-CLOSURE-PENDING-ARCHITECT`
+- Supersedes outcome: none
+- Closed: `2026-08-22T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The M1-R2-R1 observer-collapse classification was retired after review because both arms remained physically intact and became observer-viable after refeeding. M1-R2-R2 replays the exact accepted step-20480 endpoint, continues the unchanged reaction path until actual edge rupture, and tests the exact ruptured state under ordinary finite refeeding and the existing source-capacity upper-bound shadow. Both arms rupture at steps 124249 and 124717, remain `closed_intact=false` after both 5000-step branches, and preserve strict material closure. Local classification: `M1_TOPOLOGY_DEATH_ESTABLISHED`.
+- Changed areas: New observer example, example registration, compact evidence, scoped workflow, documentation, and governance only.
+- Validation:
+  - Scoped Rust 1.89.0 formatting - PASSED
+  - Regulatory-core compile and fresh M1-R2-R2 replay - PASSED
+  - Actual edge rupture in both arms - PASSED
+  - Ordinary finite and source-capacity refeed closure - PASSED
+  - Fresh actual D-087 8/8 - PASSED in exact-head CI run `32615105226`
+  - Phase-1, D-091, D-088, and evolution-harness preservation - PASSED in exact-head CI run `32615105226`
+  - Exact-head remote CI run `32615105226` at head `d5160ab` - PASSED; artifact digest `sha256:8c714086484bab1eae58d60e126152c79120d21ba33468076ac14e0b246077fd`
+  - Architect review - PENDING
+- Remaining risks: The classification is bounded to irreversible topology loss under this frozen chemistry path and does not authorize production repair, source-law changes, recycling/salvage, M2, behavior, evolution, or DC-DEV-021.
+- Blockers: independent architect review.
+- Follow-up directive: none
+
+## D-20260822-dcdev020m1r2r1-physical-failure-closure001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R2R1-PHYSICAL-FAILURE-CLOSURE-PENDING-ARCHITECT`
+- Supersedes outcome: none
+- Closed: `2026-08-22T22:20:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only continuation starts at accepted M1-R2 head `bc65098c3d26777aca2d1da5dab8cc118ecc6e19` and reproduces both accepted R2 trajectory hashes and endpoint values before continuing. The production 4x and ordinary-decay arms both reach the existing `activated_catalyst_collapse` chemistry-path terminal boundary within the 150,000-step extension, at steps `45422` and `45831` respectively, without edge rupture. Both receive the exact 5,000-step finite N/F restoration without state reset; both deliver the requested resources and close material accounting, but organized material remains below the failed-state baseline despite closed-intact topology and returned observer viability. Local classification: `M1_ORDINARY_DECAY_IRREVERSIBLE_FAILURE_ESTABLISHED`.
+- Changed areas: observer-only M1-R2-R1 example, compact evidence, scoped workflow, documentation, and governance. No chemistry-core, Phase-1 source, production chemistry, resource law, death rule, D-091, D-087, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work changed.
+- Validation:
+  - Exact R2 endpoint reproduction with committed trajectory hashes - PASSED
+  - Extended production and ordinary-decay continuation - PASSED; both reached existing terminal boundary
+  - Failure-margin instrumentation - PASSED; no edge rupture before catalytic terminal failure
+  - Exact no-reset restoration challenge - PASSED; 5,000 steps per terminal arm, no coherent recovery
+  - Internal and restoration material closure - PASSED
+  - Scoped Rust format and regulatory-core example compile/run - PASSED
+  - Fresh actual D-087 8/8 - PASSED locally and in exact-head CI
+  - Exact-head remote CI runs `32612860278` and `32612861856` at head `11fed776b7e694fb9af5debc4c2914c0a23ba615` - PASSED
+  - Final governance-head CI runs `32613245695` (push) and `32613247896` (PR synchronize) at head `38d18083b66f1daa9914fac3a2b724017cc33155` - PASSED
+  - Architect review - PENDING
+- Remaining risks: This is a chemistry-path material-failure result, not full-runtime organism death; mechanics/remesh/rebond are outside the assay. Independent architect review remains required before acceptance. No M1 production change, M2, reserve redesign, recycling, salvage, behavior, evolution, or DC-DEV-021 work is authorized.
+- Blockers: independent architect review.
+- Follow-up directive: none
+
+## D-20260822-dcdev020m1r1r1-decay-confound001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R1R1-DECAY-CONFOUND-PENDING-ARCHITECT`
+- Supersedes outcome: none
+- Closed: `2026-08-22T18:20:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only causal isolation reproduces the original M1-R1 BASE, source-capacity, catalyst-off, and combined ledgers. The raw source-capacity arm selects the frozen existing 4x starvation multiplier on all `480/480` steps. Changing only the diagnostic A-decay coefficient to `K/4` neutralizes that multiplier while retaining the ordinary effective coefficient and yields organized-material changes `+1.25718049040759` for source capacity and `+1.2755639121915` for the combined shadow. The bounded classification is `M1_SOURCE_CAPACITY_SUFFICIENT_AFTER_DECAY_NEUTRALIZATION`.
+- Changed areas: M1-R1 observer reuse seam, decay-confound observer example, compact evidence, documentation, scoped workflow, and governance. No chemistry-core production source or Phase-1 biology changed.
+- Validation:
+  - Scoped Rust formatting - PASSED
+  - `cargo +1.89.0 check -p regulatory-core --example dcdev020m1r1r1_decay_confound` - PASSED
+  - Fresh four-arm decay-confound assay - PASSED
+  - Exact M1-R1 reproduction - PASSED
+  - Raw source starvation branch provenance `480/480` - PASSED
+  - Decay neutralization with only `k_a_decay` changed - PASSED
+  - World↔organism and internal closure - PASSED
+  - Local artifact verifier - PASSED
+  - Exact-head remote CI at `b11e9815d317fe09ae227d13eefc5d89a463fe51` - PASSED; PR synchronize run `32611416322` and push run `32611416748`, all stages passed
+  - Architect review - PENDING
+- Remaining risks: The neutralized nonnegative result is an acute 480-step capacity shadow, not sustained M1 homeostasis or production authorization. Exact-head CI and independent architect verification remain required. M1 production change, M2, reserve redesign, recycling/salvage, behavior, evolution, and DC-DEV-021 remain unauthorized.
+- Blockers: independent architect review.
+- Follow-up directive: none
+
+## D-20260822-dcdev020m1r1capacitydecomp001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R1-CAPACITY-DECOMPOSITION-PENDING-ARCHITECT`
+- Supersedes outcome: none
+- Closed: `2026-08-22T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The exact accepted M1-R0 high-inventory deprived state was replayed through the accepted M1-R0 settlement/deprivation path. Four matched observer-only shadows were executed: exact BASE, conservative paired N/F→A source-capacity upper bound, catalyst-investment deferral, and the combined bound. The source bound uses the existing ConservativeV2 `N + F -> A + W` coefficients and all world↔organism and internal material closures pass. The baseline reproduces the accepted Arm C values. The bounded classification is `M1_SOURCE_AND_ALLOCATION_INSUFFICIENT`; neither acute source capacity nor catalyst-investment deferral, alone or combined, establishes nonnegative organized-material change over 480 steps.
+- Changed areas: M1-R1 observer example, example registration, compact evidence, documentation, scoped CI, and governance only. No production chemistry, ConservativeV2, D-091, uptake, transport, resource quantity, degradation, recycling, salvage, M2, or DC-DEV-021 work changed.
+- Validation:
+  - Sanctioned Rust 1.89.0 compile/check and scoped rustfmt - PASSED
+  - Exact M1-R0 Arm C baseline reproduction - PASSED locally
+  - Conservative source stoichiometry and four-arm material closure - PASSED locally
+  - Fresh local artifact generation - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The negative decomposition does not establish whether conversion throughput, productive allocation, or deeper maintenance/degradation is the remaining causal blocker. No production repair is authorized.
+- Blockers: exact-head remote CI and independent architect review.
+- Follow-up directive: none
+
+## D-20260822-dcdev020r9r6-mobilize-first-store-last - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R6-MOBILIZE-FIRST-STORE-LAST`
+- Supersedes outcome: none
+- Closed: `2026-08-22T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The final observer-only D-091 phase-order topology was run from `f1704acff5ca64e509a28c74af8cccbf76439ef2` for exactly 5,000 accepted steps. V20 reproduced 8/8 and FULL reproduced `R_m=0.839869520280528`. `MOBILIZE_FIRST_STORE_LAST` reused frozen release/loss before unchanged productive chemistry and frozen storage afterward, reaching `R_m=0.839973528362306` with actual D-087 gates `[true,false,false,false,false,true,true,true]`. Replete A→R was `147.5982725689982`; post-starvation R→A was `26.15666583047419`; reserve rejects were zero and strict closure passed. Classification: `DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_CONTRIBUTORY_NOT_SUFFICIENT`.
+- Changed areas: additive observer phase-order ledger fields, one explicit observer mode, phase1-certifier test/runner, compact evidence, documentation, governance, and scoped workflow. Production chemistry, production reserve physiology, parameters, thresholds, recycling, and DC-DEV-021 were not changed.
+- Validation:
+  - Sanctioned Rust 1.89.0 compile/check - PASSED
+  - Focused R9-R6 ordering regression - PASSED
+  - Local exact 5,000-step FULL/shadow audit and actual D-087 replay - COMPLETED
+  - V20 control - 8/8
+  - Shadow actual D-087 - 3/8; Gates 0, 5, 6, and 7 pass
+  - Reserve function - replete A→R and post-starvation R→A positive; zero rejects; strict closure - PASSED
+  - Exact-head remote CI and architect review - PENDING
+- Remaining risks: The topology is contributory but does not restore D-087 certification. R9-R6 is the final observer-only D-091 topology audit; return to the Architect for a production D-091 decision. No R9-R7, reserve repair, recycling/salvage, behavior, evolution, or DC-DEV-021 work is authorized.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
+
+## D-20260822-dcdev020r9r6r1-evidence-closure - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R6R1-EVIDENCE-CLOSURE`
+- Supersedes outcome: none
+- Closed: `2026-08-22T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R9-R6 exact-head CI run `32553371490` completed the scientific runner and failed only at `Verify R9-R6 phase-order artifacts` because the verifier asserted stale key `shadow_semantics.target_signal`; the protocol schema uses `controller_or_target: false`. The authoritative shadow D-087 vector is `[true,false,false,false,false,true,true,true]`, correctly counted as 4/8. Full `R_m=0.839869520280528`, shadow `R_m=0.839973528362306`, `R_b` and `R_C` remain identity-matched, replete A→R is `147.5982725689982`, post-starvation R→A is `26.15666583047419`, reserve rejects are zero, and strict closure passes. The preregistered certification boundary is not restored; classification is corrected to `DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_INSUFFICIENT`.
+- Changed areas: closure-only artifact verifier schema assertion, derived pass-count fields, compact evidence classification/count, documentation, and governance. Scientific values, scientific configuration, production chemistry, and production reserve physiology were not changed.
+- Validation:
+  - Local JSON artifact identity and vector/count reconciliation - PASSED
+  - Local governance and formatting checks - PENDING
+  - Exact-head remote DC-DEV-020-R9 CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The corrected classification and closure evidence require exact-head remote CI and independent architect review. No reserve repair, recycling/salvage, R9-R7, behavior, evolution, or DC-DEV-021 work is authorized.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
+
+## D-20260822-dcdev020r9r6r2-ci-closure - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R6R2-CI-CLOSURE`
+- Supersedes outcome: none
+- Closed: `2026-08-22T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R9-R6-R1 remains CONTINUE / NOT ACCEPTED solely because exact-head runs `32566149213` and `32566146792` at head `a2c21c1664a7f1d44be0edc8b6819665b0455a82` were cancelled at the explicit 30-minute workflow ceiling during artifact upload after substantive R9-R6 generation, artifact verification, and identity checks passed. The R9-R6 scientific classification remains `DCDEV020R9R6_MOBILIZE_FIRST_STORE_LAST_INSUFFICIENT` with D-087 4/8 and unchanged evidence. R9-R6-R2 authorizes only changing the workflow timeout to 45 minutes.
+- Changed areas: `.github/workflows/dc-dev-020r9.yml` timeout only, plus governance handoff records. No scientific or production files changed.
+- Validation:
+  - Timeout provenance - CONFIRMED
+  - Workflow-only diff isolation - PASSED
+  - R9-R6 evidence identity - PASSED
+  - Local governance validation - PENDING
+  - Exact-head remote workflow - PENDING
+  - Architect review - PENDING
+- Remaining risks: E5 remains open until the new exact-head workflow completes SUCCESS. No R9-R7, reserve repair, recycling/salvage, behavior, evolution, or DC-DEV-021 work is authorized.
+- Blockers: exact-head workflow SUCCESS and architect acceptance.
+- Follow-up directive: none
+
+## D-20260821-dcdev020r9r5r1-valid-liquidity-counterfactual - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R5R1-VALID-LIQUIDITY-COUNTERFACTUAL`
+- Supersedes outcome: none
+- Closed: `2026-08-21T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R9-R5 is recorded as `REPLAN / NOT ACCEPTED`; the broad `DCDEV020R9R5_RESERVE_DEFECT_OUTSIDE_CHARGE_LIQUIDITY_FACTORIZATION` classification is retired as authority. The R9-R5 Gate-7 failure was reproduced as a runner-root defect. R9-R5-R1 uses a diagnostic-only `LIQUID_RESERVE_PRETHROTTLE_UB` shadow that evaluates frozen M/L demand with A+R, funds baseline demand from A, and funds only incremental demand from R. Local V20 is 8/8. The 5,000-step treatment uses `10.986875147245845` diagnostic R (`9.741776616086431` for M and `1.2450985311594456` for L), improves `R_m` from `0.8398695202805284` to `0.9994257946133822`, but remains D-087 Gate-1 negative. Classification: `DCDEV020R9R5R1_RESERVE_LIQUIDITY_CONTRIBUTORY_NOT_SUFFICIENT`.
+- Changed areas: additive observer-only M/L availability ledger, pre-throttle diagnostic mode, R9-R5 runner-root resolution, focused phase1-certifier test, compact R9-R5-R1 evidence, documentation, governance, and scoped workflow. Production D-091 reserve physiology and certified Phase-1 biology were not changed.
+- Validation:
+  - Focused pre-throttle liquidity regression - PASSED
+  - Phase1-certifier sim tests - `4 passed, 0 failed`
+  - Local 5,000-step R9-R5-R1 audit - COMPLETED; strict closure true; reserve rejects zero
+  - Local V20 packaged-runtime control - `8/8`
+  - Exact-head remote CI and architect review - PENDING
+- Remaining risks: The result remains provisional until exact-head remote CI verifies the R9-R5-R1 generated artifact and the architect independently reviews the causal interpretation. No reserve repair, recycling/salvage, production integration, behavior, evolution, or DC-DEV-021 work is authorized.
+- Blockers: exact-head remote CI and independent architect review.
+- Follow-up directive: none
+
+## D-20260820-dcdev020r9r4-reserve-interference-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R4-STORAGE-CAUSAL-PRIORITY-INSUFFICIENT`
+- Supersedes outcome: none
+- Closed: `2026-08-20T00:00:00-04:00`
+- Acceptance: `MET`
+- Summary: From exact head `f9bc1d5bffe828b2599c85d4fcbbabdf7f3e3ff3`, V20 reproduced 8/8 and V21 retained the reserve-bearing negative. Five exact 5,000-step ConservativeV2 arms recorded per-step reserve/build/membrane ledgers. Full reserve stored A before later productive demand (`147.585809275616`); the parameter-free maintenance-priority shadow reduced that interference to zero while preserving the unchanged reserve kernels, but replacement metrics remained below Gate-1 qualification (`R_m=0.8399735283623063`). Gate 4 was correctly skipped. Classification: `DCDEV020R9R4_STORAGE_CAUSAL_PRIORITY_INSUFFICIENT`.
+- Changed areas: additive observer ledger fields, explicit reserve diagnostic controls, phase1-certifier R9-R4 runner, compact evidence, documentation, governance, and scoped workflow. Certified Phase-1 biology/equations, production behavior, reserve parameters, recycling, and DC-DEV-021 were not changed.
+- Validation:
+  - phase1-certifier compilation - PASSED
+  - exact R9-R4 release runner - PASSED
+  - V20 reproduction 8/8 and V21 reserve-bearing control 4/8 - PASSED
+  - all five arms completed 5,000/5,000 steps - PASSED
+  - reserve rejects zero and strict reserve closure - PASSED
+  - Gate-1 full and maintenance-priority shadow qualification - FAILED
+  - Gate 4 execution by fail-closed rule - NOT APPLICABLE
+  - unrelated full chemistry failure in `d008_tests.rs` - NOT APPLICABLE
+  - Architect acceptance of R9-R4 at exact reviewed head - PASSED
+- Remaining risks: The diagnostic establishes that pre-maintenance storage is causally present but insufficient as a standalone parameter-free priority repair. It does not authorize production reserve repair, recycling, salvage, tuning, source/sink changes, behavior, or DC-DEV-021.
+- Blockers: none for R9-R4; R9-R5 is the authorized next diagnostic and DC-DEV-021 remains unauthorized.
+- Follow-up directive: D-20260821-dcdev020r9r5-charge-liquidity-audit
+
+## D-20260821-dcdev020r9r4r1-governance-remote-closure - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R4R1-GOVERNANCE-REMOTE-CLOSURE`
+- Supersedes outcome: none
+- Closed: `2026-08-21T04:00:00-04:00`
+- Acceptance: `MET`
+- Summary: The malformed R9-R4 adopted governance records were corrected without changing scientific source or evidence. Exact-head workflow `32459018571` passed at `19bd21f25d8cf955fb1fe58d32aa4d6d74c5cf21`; the unchanged R9-R4 classification remains `DCDEV020R9R4_STORAGE_CAUSAL_PRIORITY_INSUFFICIENT`.
+- Changed areas: governance-format corrections in DIRECTIVES.md, OUTCOMES.md, and REPO_MAP.md only.
+- Validation:
+  - adopted governance validator - PASSED
+  - exact-head workflow `32459018571` - PASSED
+  - R9-R4 reserve interference audit - PASSED
+  - R9-R4 observer artifact verification and compact evidence upload - PASSED
+  - scientific source and evidence identity preservation - PASSED
+  - Architect acceptance at exact head `08e1c45b11892e0b5533b11c74f175ee84d243ed` with exact-head workflow `32460044729` - PASSED
+- Remaining risks: R9-R4 evidence remains sealed and no reserve repair, recycling, salvage, tuning, behavior, or DC-DEV-021 work is authorized.
+- Blockers: none for R9-R4-R1; R9-R5 review remains open.
+- Follow-up directive: D-20260821-dcdev020r9r5-charge-liquidity-audit
+
+## D-20260821-dcdev020r9r5-charge-liquidity-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R5-CHARGE-LIQUIDITY-DECOMPOSITION`
+- Supersedes outcome: `OUT-DCDEV020R9R4R1-GOVERNANCE-REMOTE-CLOSURE`
+- Closed: `2026-08-21T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The exact 5,000-step observer audit separates standing-stock charging from direct reserve liquidity. FULL reproduces sealed `R_m=0.8398695202805284`; STORE_OFF reproduces `R_m=1.0180981834599838`. Surplus-only storage remains capped and non-binding (`R_m=0.8399798978913839`), while the liquid upper bound uses zero direct diagnostic R in the frozen trajectory. Neither independent arm nor their combined counterfactual restores the actual D-087 Gate-1 qualification. The provisional fail-closed classification is `DCDEV020R9R5_RESERVE_DEFECT_OUTSIDE_CHARGE_LIQUIDITY_FACTORIZATION`.
+- Changed areas: additive observer-only reserve ledger fields and diagnostic modes, phase1-certifier R9-R5 runner/tests, compact evidence, documentation, governance, and scoped workflow. No production reserve law, parameter, target/controller/state, certified Phase-1 biology, recycling, salvage, behavior, evolution, or DC-DEV-021 work changed.
+- Validation:
+  - sanctioned Rust 1.89.0 compile and R9-R5 example - PASSED
+  - exact 5,000-step FULL, STORE_OFF, surplus-only, liquid upper-bound, and combined arms - PASSED
+  - positive replete A→R and starvation R→A, zero rejects, strict closure - PASSED
+  - actual D-087 shadow execution - completed; Gates 1–4 not restored
+  - local Windows packaged-runtime Gate 7 - environment-limited; remote Linux CI required
+  - exact-head remote CI and architect review - PENDING
+- Remaining risks: The negative identifies no restoration from the bounded charge/liquidity factorization, but does not authorize production repair or any new kinetic family. Dense ledgers remain local/external and compact evidence is provenance-bound.
+- Blockers: exact-head remote CI and independent architect review.
+- Follow-up directive: none
+
+## D-20260819-dcdev020r9-mesh-contract-requalification - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9-METRIC-CONFOUNDING-DOMINANT`
+- Supersedes outcome: none
+- Closed: `2026-08-19T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The R9 historical mesh audit confirms `NO_POSITIVE_CONSERVATION_VECTOR`; the versioned conservative v2 audit confirms a strictly positive all-material vector. Runtime v2 reactions close the strict material ledger to approximately `2.84e-14`. A physically ruptured v2 mesh remains governed by observer viability while transport continues. Conservative fission partition accounting passes. The compact E5 contract replay separates strict material, activation, and organized-retained ledgers and classifies `DCDEV020R9_METRIC_CONFOUNDING_DOMINANT`.
+- Changed areas: Versioned mesh stoichiometry and v2 runtime guards only; compact R9 analysis/example, evidence, documentation, and governance. Historical D-012/D-086/D-087/D-088 and D-015 through R8-R5-R1 evidence remain preserved.
+- Validation:
+  - chemistry-core mesh-contract tests - PASSED (5 tests)
+  - D-086 tests - PASSED (9 tests)
+  - D-088 tests - PASSED (4 tests)
+  - phase1-certifier tests - PASSED (4 tests)
+  - R9 example/evidence generation - PASSED
+  - exact-head remote CI run `32290370285` at head `4c4f88995a4f7e224b6b211580039ade81ad8c9e` - PASSED
+  - architect review - PENDING
+- Remaining risks: E5 rows are bounded v2 contract replays and do not overwrite the sealed historical D-015/D-016/R8 protocol artifacts. Architect acceptance remains outstanding. No salvage, controller, behavior, evolution, or DC-DEV-021 work is authorized.
+- Blockers: architect review.
+- Follow-up directive: none
+
+## D-20260819-dcdev020r8r4-shared-affinity-autogenous-cprod - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R8R4-SHARED-AFFINITY-ACCEPTED-NEGATIVE`
+- Supersedes outcome: none
+- Closed: `2026-08-19T00:00:00-04:00`
+- Acceptance: `MET`
+- Summary: Architect review accepted R8-R4 at exact head `37b47ec89e02418018a138f670e826c6945c8030` with exact-head CI `32254177853` passed. The tested shared-affinity topology is closed as a negative sustained-homeostasis route, while the broader catalyst-allocation capacity question remains open.
+- Changed areas: governance acceptance record only; R8-R4 scientific evidence remains unchanged.
+- Validation:
+  - Exact R8-R4 head and closed draft PR #41 - PASSED
+  - Exact-head CI run 32254177853 - PASSED
+  - Architect acceptance - PASSED
+- Remaining risks: The result does not reject all favorable A/C allocations and does not authorize another catalyst law or production integration.
+- Blockers: R8-R5 capacity classification and architect review; DC-DEV-021 remains unauthorized.
+- Follow-up directive: none
+
+## D-20260819-dcdev020r8r5-ac-allocation-upper-bound - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R8R5-CATALYST-ALLOCATION-ENVELOPE-MIXED`
+- Supersedes outcome: none
+- Closed: `2026-08-19T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R8-R5 audit reproduced the accepted R8-R2 acute and R8-R4 finite/sustained endpoints, evaluated the complete conservative constant-C interval with deterministic refinement, and found no constant allocation satisfying the original sustained homeostasis gate. The best final E_AR was approximately `57.63054549392781`. All 200 R8-R3 deferred and 200 R8-R4 shared-affinity late states retained at least one nonnegative one-step allocation region, with worst observed maximum drift approximately `0.00619040719167074`; classification is `DCDEV020R8R5_CATALYST_ALLOCATION_ENVELOPE_MIXED`.
+- Changed areas: R8-R5 observer example, Cargo registration, compact append-only evidence, governed external dense-ledger manifest, documentation, governance, and scoped workflow; no production chemistry or behavior changed.
+- Validation:
+  - Exact R8-R2 and R8-R4 reproduction - PASSED
+  - A+C conservation during repartition - PASSED
+  - Exact 1:1 catalyst-turnover replacement accounting - PASSED
+  - 65-point allocation mesh and deterministic refinement to relative width <= 1e-6 - PASSED
+  - Original sustained qualification across constant-C arms - EXECUTED; zero complete-gate passes
+  - Late-state local allocation envelopes at 40-step spacing - PASSED; 200 deferred and 200 shared states audited
+  - External dense-ledger SHA-256 `afa9c26f8845f9321450ec12e7e4fe55dc54a088eb6857ff8e1e272dddc8c390` - PASSED locally and on Atlas
+  - Governance, preservation, and exact-head remote CI run `32258092477` - PASSED
+  - Architect review - PENDING
+- Remaining risks: Mixed local drift means catalyst allocation capacity is not closed as insufficient; no allocator or next catalyst law is authorized by this result.
+- Blockers: final evidence seal, exact-head remote CI, and architect review; DC-DEV-021 remains unauthorized.
+- Follow-up directive: none
+
+## D-20260819-dcdev020r8r5r1-net-allocation-drift - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R8R5R1-RECYCLING-ONLY-LOCAL-CAPACITY`
+- Supersedes outcome: `OUT-DCDEV020R8R5-CATALYST-ALLOCATION-ENVELOPE-MIXED`
+- Closed: `2026-08-19T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R8-R5 local capacity was requalified from the actual incoming A/R state using `ΔE_NET = ΔE_repartition + ΔE_reaction`. All 200 deferred and 200 shared states retained nonnegative reversible NET drift, while all 200 deferred and all 200 shared forward-only envelopes were negative. Every successful reversible optimum required C→A recovery. Classification: `DCDEV020R8R5R1_RECYCLING_ONLY_LOCAL_CAPACITY`.
+- Changed areas: R8-R5 observer-only net-drift implementation and wrapper, compact evidence, governed external dense-ledger manifest, documentation, governance, and scoped workflow; no production chemistry or behavior changed.
+- Validation:
+  - Exact R8-R5 replay machinery produced 200 deferred and 200 shared checkpoint states - PASSED
+  - A+C conservation and unchanged controls - PASSED
+  - Incoming-state net-drift decomposition - PASSED
+  - Reversible and forward-only 65-point envelopes with deterministic refinement - PASSED
+  - Worst-case aggregation uses minimum, with focused regression - PASSED
+  - External dense-ledger SHA-256 `bdedb478eb3c32025fc62ecbc2af538b0e594d3182ee97ebeb7c68c2bb9d8efc` - PASSED locally and on Atlas
+  - Governance, preservation, and exact-head remote CI run `32270631382` - PASSED
+  - Architect review - PENDING
+- Remaining risks: The positive local authority depends on privileged C→A recovery and does not establish forward A→C allocation capacity. The prior R8-R5 dense ledger lacks a deferred checkpoint-hash field, so R1 records deterministic replay hashes and reports direct prior-ledger hash-field matching as unavailable.
+- Blockers: architect review; dynamic allocation, catalyst recycling, and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none
+
+## D-20260818-dcdev020r3-two-substrate-saturating-activation - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R3-SATURATING-KINETICS-NOT-IDENTIFIABLE`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R2 is architect-accepted as `DCDEV020R2_ACCEPTED_NEGATIVE`, with `A_ONLY_ALLOSTERIC_ASSIMILATION_CLOSED`. The R3 observer found material bilinear low-substrate suppression, but the symmetric N=F trajectory constrained only V_max/K_S^2. Deterministic asymptotic witnesses improved continuously as both parameters grew, so no unique finite V_max and K_S pair was identifiable. Classification: `DCDEV020R3_SATURATING_KINETICS_NOT_IDENTIFIABLE`.
+- Changed areas: new R3 observer example registration, append-only `dcdev020r3` evidence, R3 documentation, workflow, and governance; no production chemistry, behavior, or certified Phase-1 equations changed.
+- Validation:
+  - Accepted R2 and clean scientific-base authority - PASSED
+  - Required per-step source ledger - PASSED
+  - Gate 2 bilinear low-substrate attribution - PASSED
+  - Gate 4 finite V_max/K_S identification - FAILED as the required negative result
+  - Candidate, finite-feed, dose, sustained, cycle, and production gates - NOT RUN by fail-closed rule
+  - Sanctioned local Rust 1.89.0 check/run - PASSED
+  - Exact-head remote CI `32183126542` at implementation/evidence head `90421f9f867e16ff369f9ecf7f7fe384b66d6857` - PASSED
+  - Architect review - PENDING
+- Remaining risks: exact-head remote validation and independent architect interpretation; only one symmetric substrate trajectory was authorized, so the two parameters remain structurally confounded.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
+
+## D-20260818-dcdev020r4-asymmetric-two-substrate-identifiability - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R4-SATURATING-FAMILY-STRUCTURAL-MISMATCH`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R3 is architect-accepted as `DCDEV020R3_ACCEPTED_NEGATIVE`. All five R4 asymmetric probes were finite, conservative, source-comparable, and admitted deterministic break-even roots. The reciprocal design reached rank 3 with condition number `25.682977705016`, so the R3 collinearity was broken. The P0-P2 reciprocal fit nevertheless produced alpha `0.558251618117446`, beta `-0.629755501300906`, gamma `20.9305816462364`, and family-consistency relative error `0.966058373333954`. Positive symmetric two-substrate saturation therefore cannot represent the observed required-source surface. Classification: `DCDEV020R4_SATURATING_FAMILY_STRUCTURAL_MISMATCH`.
+- Changed areas: new R4 observer example registration, append-only `dcdev020r4` evidence, R4 documentation, workflow, and governance; no production chemistry, behavior, or certified Phase-1 equations changed.
+- Validation:
+  - Accepted R3 and clean scientific-base authority - PASSED
+  - R1/R2/R3 evidence immutability - PASSED locally
+  - P0-P4 conservation, paired-substrate ingress, finite break-even roots, and source-saturation comparability - PASSED
+  - Reciprocal design rank and conditioning - PASSED
+  - Positive reciprocal coefficients and alpha*gamma approximately beta^2 - FAILED as the required negative result
+  - Finite V_max/K_S, P3/P4 finite-model holdout, boundary witnesses, qualification, and production integration - NOT RUN by fail-closed rule
+  - Sanctioned local Rust 1.89.0 check/run - PASSED
+  - Exact-head remote CI run `32195362719` at head `bfbfece349ec4c637b15c432388b4ddff6ab689d` - PASSED
+  - Architect review - PENDING
+- Remaining risks: exact-head remote validation and independent architect interpretation; the permitted symmetric family is structurally mismatched after independent-axis excitation, but no broader kinetic family is authorized.
+- Blockers: exact-head remote CI and architect review.
+- Follow-up directive: none
+
+## D-20260818-dcdev020r4-asymmetric-two-substrate-identifiability - COMPLETE
+
+- Outcome ID: `OUT-DCDEV020R4-ARCHITECT-ACCEPTED-NEGATIVE`
+- Supersedes outcome: `OUT-DCDEV020R4-SATURATING-FAMILY-STRUCTURAL-MISMATCH`
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `MET`
+- Summary: Architect review accepted the R4 negative result at exact head `669a511aacb227240bd7a4698efecfb564f481d4`; PR #33 closed unmerged and exact-head CI `32171718751` passed. The tested saturation family failed against the endpoint-derived constant-gain surrogate surface; R4 did not establish a unique instantaneous source-demand surface.
+- Changed areas: governance acceptance record only; R4 scientific evidence remains unchanged.
+- Validation:
+  - Exact R4 head and closed-unmerged PR #33 - PASSED
+  - Exact-head CI run 32171718751 - PASSED
+  - Architect negative-result review - PASSED
+- Remaining risks: the endpoint-derived constant-gain target required local physiological requalification before selecting another activation topology.
+- Blockers: production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: D-20260818-dcdev020r5-local-zero-drift-source-audit
+
+## D-20260818-dcdev020r5-local-zero-drift-source-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R5-NF-LOCAL-COORDINATE-SUFFICIENT`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer replayed all ten R4 baseline/constant trajectories exactly and audited 4,800 post-uptake pre-reaction states. Every state had a finite physical zero-drift root; none was capacity-insufficient or non-monotonic before its first root. The endpoint constant-gain trajectories were not local requirements. A fixed P0-P2-trained, P3-P4-held-out diagnostic supported N/F as sufficient on the frozen audited manifold. Classification: `DCDEV020R5_NF_LOCAL_COORDINATE_SUFFICIENT`; independent surrogate classification: `ENDPOINT_SURROGATE_NOT_LOCAL_REQUIREMENT`.
+- Changed areas: R5 observer example registration, compact append-only evidence, external dense-ledger manifest, R5 documentation, scoped workflow, and governance; no production chemistry or behavior changed.
+- Validation:
+  - Accepted R4 authority and R1-R4 evidence immutability - PASSED locally
+  - Historical D-043, D-045, and D-067 guard - PASSED
+  - Ten R4 trajectory hashes - PASSED
+  - 4,800 bounded source-response and zero-drift audits - PASSED
+  - Maximum root relative interval `9.53674316472667e-7` - PASSED
+  - Maximum stored-material accounting residual `2.2849994466001e-14` - PASSED
+  - External ledger SHA-256 `4e22ab1dbd6e06f7c9a272747c2ed8271f28ef33f4eaddc1c59bb9df58a46585` - PASSED locally and on Atlas
+  - Sanctioned Rust 1.89.0 check/run - PASSED
+  - Local full preservation - PASSED
+  - Exact-head remote CI run `32207702692` at head `4f9e637f5d0dd97ed13df9266d18624538107588` - PASSED
+  - Architect review - PENDING
+- Remaining risks: N/F sufficiency is diagnostic and bounded to the frozen P0-P4 one-step state manifold; it does not select or qualify a production law, restoration controller, or durable metabolism.
+- Blockers: architect review; production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none
+
+## D-20260818-dcdev020r8r3-catalyst-reserve-horizon - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R8R3-CATALYST-RESERVE-SOURCE-CONTEXT-DEPENDENT`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R8-R3 audit reproduced the accepted R8-R2 acute endpoints, derived the frozen catalyst half-life as `3465.7359027997263` accepted steps, and executed the fixed 8000-step sustained horizon under D016 bilinear and sealed R6 NF power-law source contexts. Deferred catalyst production retained frozen turnover and both deferred arms remained alive, finite, and conservation-closed. D016 had no marginal payback at any deterministic checkpoint; R6 paid back at `433, 480, 866, 1733, 3466` but not at `5199` or `6931`. Classification: `DCDEV020R8R3_CATALYST_RESERVE_SOURCE_CONTEXT_DEPENDENT`.
+- Changed areas: R8-R3 observer example registration, compact append-only evidence, governed external dense-ledger manifest, documentation, governance, and scoped CI; no production chemistry or behavior changed.
+- Validation:
+  - Accepted R8-R2 authority and sealed R5/R7/R8/R8-R1/R8-R2 input hashes - PASSED
+  - Accepted R8-R2 480-step normal and deferred endpoint reproduction - PASSED
+  - Frozen `k_c_turn`, `dt`, half-life, deterministic checkpoints, and 8000-step horizon - PASSED
+  - D016/R6 sustained NORMAL and DEFERRED trajectories - PASSED
+  - D016/R6 marginal INVEST/SKIP checkpoint shadows - PASSED
+  - Source-context comparison and fail-closed classification - PASSED
+  - Conditional delayed-resume validation - NOT RUN; no overlapping source-context payback bracket
+  - Local sanctioned Rust 1.89.0 compile and actual observer execution - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: Payback is source-context dependent and no portable delayed-resume timing oracle was authorized by the result. The audit does not establish a production law, catalyst target, deficit signal, or DC-DEV-021 authorization.
+- Blockers: exact-head remote CI and architect review; production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none
+
+## D-20260818-dcdev020r5-local-zero-drift-source-audit - COMPLETE
+
+- Outcome ID: `OUT-DCDEV020R5-ARCHITECT-ACCEPTED`
+- Supersedes outcome: `OUT-DCDEV020R5-NF-LOCAL-COORDINATE-SUFFICIENT`
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `MET`
+- Summary: Architect review accepted R5 at exact head `d215cfc00ce70517e25fa7c3b51b13d85d9ce521`; PR #34 closed unmerged and exact-head CI `32183498937` passed. Source capacity is sufficient on all 4,800 audited states, endpoint-derived source is not the local requirement, and N/F is information-sufficient on the tested one-step manifold without qualifying an NF controller.
+- Changed areas: governance acceptance record only; R5 scientific evidence remains unchanged.
+- Validation:
+  - Exact R5 head and closed-unmerged PR #34 - PASSED
+  - Exact-head CI run 32183498937 - PASSED
+  - Architect positive diagnostic review - PASSED
+- Remaining risks: N/F information sufficiency did not establish one explicit causal production law, finite-feed restoration, or durable homeostasis.
+- Blockers: production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: D-20260818-dcdev020r6-nf-power-law-source
+
+## D-20260818-dcdev020r6-nf-power-law-source - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R6-FINITE-FEED-RESTORATION-FAILURE`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only symmetric generalized-mass-action power law passed deterministic P0-P2 identification, P3/P4 held-out local-root validation, and source-response sanity, then stopped at Gate 5. The R6 arm increased final E_stored to `60.0620310117838` versus baseline `54.3584702923158`, but remained below deprived `60.82781514212436`. Classification: `DCDEV020R6_FINITE_FEED_RESTORATION_FAILURE`.
+- Changed areas: R6 observer example registration, compact append-only evidence, R6 documentation, scoped workflow, and governance; no production chemistry or behavior changed.
+- Validation:
+  - Accepted R5 authority and governed dense-ledger SHA-256 - PASSED
+  - Historical D-043/D-067/R4 architecture guard - PASSED
+  - Closed-form fit `K_PL=0.017556661171593057`, `p=0.0003277429681759396` - PASSED
+  - P3/P4 combined relative RMSE `0.05106673550084852` and p95 `0.12868568862094845` - PASSED
+  - All-state capacity violations and clipping dependence - PASSED with zero
+  - Selected finite-feed safety, physical bounds, and accounting - PASSED
+  - Selected finite-feed stored-material restoration - FAILED as the authorized negative result
+  - Balanced dose, sustained-fed, and three-cycle gates - NOT RUN by fail-closed rule
+  - Three focused candidate tests - PASSED
+  - Regulatory-core complete suite - PASSED (36 tests)
+  - Phase-1 focused preservation - PASSED (4 tests)
+  - D-088 focused preservation - PASSED (4 tests)
+  - Evolution-harness preservation - PASSED (40 tests)
+  - Governance ADOPTED validation - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The two-parameter law accurately approximates one-step local balance but does not restore stored material on the frozen finite-feed window; no broader kinetic or control architecture is authorized by this result.
+- Blockers: architect review; production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none
+
+## D-20260818-dcdev020r8-nfa-restorative-attractor - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R8-PRODUCT-FEEDBACK-TOPOLOGY-INCOMPATIBLE`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R8 used the accepted R7 state, sealed R5/R7 dense ledgers, frozen N/F support, and deterministic matched pairs to test a reciprocal target-free product-feedback topology. The training set contained `2425` matched pairs; only `310` showed the required maintenance-demand decrease with A while `2115` showed the opposite sign. The reciprocal positive-feasibility region was empty, so execution stopped at Gate 3 with classification `DCDEV020R8_PRODUCT_FEEDBACK_TOPOLOGY_INCOMPATIBLE`.
+- Changed areas: R8 observer example registration, compact append-only evidence, governed external dense pair/constraint ledger, R8 documentation, scoped workflow, and governance; no production chemistry or behavior changed.
+- Validation:
+  - Accepted R7 head and sealed R5/R7 dense inputs - PASSED locally
+  - Deterministic matched-pair construction and reciprocal constraint audit - PASSED
+  - Training Gate 3 feasibility - FAILED closed with the authorized negative classification
+  - Holdout, P3/P4, R7, and capacity gates - NOT RUN by fail-closed rule
+  - Zero-substrate control and production-scope guards - PASSED locally
+  - External R8 dense-ledger SHA-256 `12b41f27c928635899a7ea3a8d496cfdd3af7d3fd83aaa93024724663e2df9ff` - PASSED locally and on Atlas
+  - Focused R8 tests - PASSED locally
+  - Exact-head remote CI run `32195362719` at head `bfbfece349ec4c637b15c432388b4ddff6ab689d` - PASSED
+  - Architect review - PENDING
+- Remaining risks: This closes only the tested reciprocal product-feedback topology on the frozen R5/R7 training support; it does not close the wider NFA route or authorize a production A-dependent law.
+- Blockers: architect review; R9 and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none
+
+## D-20260818-dcdev020r6-nf-power-law-source - COMPLETE
+
+- Outcome ID: `OUT-DCDEV020R6-ARCHITECT-ACCEPTED-NEGATIVE`
+- Supersedes outcome: `OUT-DCDEV020R6-FINITE-FEED-RESTORATION-FAILURE`
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `MET`
+- Summary: Architect review accepted R6 at exact head `f01b716d9051c9f0114f3c5c0d1b123e2df037cf`; PR #35 closed unmerged and exact-head CI `32187547222` passed. Classification remains `DCDEV020R6_FINITE_FEED_RESTORATION_FAILURE`. The exact generalized N/F power-law restoration route is closed, but NF information sufficiency is not closed.
+- Changed areas: governance acceptance record only; R6 scientific evidence remains unchanged.
+- Validation:
+  - Exact R6 head and closed-unmerged PR #35 - PASSED
+  - Exact-head CI run 32187547222 - PASSED
+  - Architect negative-result review - PASSED
+- Remaining risks: R6 one-step fit success did not identify whether its free-running failure was law-family error, induced-state ambiguity, or maintenance-only zero-drift behavior.
+- Blockers: production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: D-20260818-dcdev020r7-on-policy-zero-drift-audit
+
+## D-20260818-dcdev020r7-on-policy-zero-drift-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R7-NFA-COORDINATE-REQUIRED-ON-POLICY`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R7 reproduced the exact R6 finite-feed endpoint, solved 480/480 finite monotone physical zero-drift roots, and closed summed local drift exactly against the observed `-0.7657841303405846` endpoint change. R6 remained below every root. The unchanged NF observer passed RMSE and p95 but failed ambiguity at `0.26505161065124994`; unchanged NFA passed with RMSE `0.017325292104497104`, p95 `0.04444189891888537`, and ambiguity `0.010315383793568476`. The exact-root oracle maintained depleted stored material rather than restoring it. Classification: `DCDEV020R7_NFA_COORDINATE_REQUIRED_ON_POLICY`.
+- Changed areas: R7 observer example registration, compact append-only evidence, external dense-ledger seal, R7 documentation, scoped workflow, and governance; no production chemistry or behavior changed.
+- Validation:
+  - Accepted R6 authority and R1-R6 evidence immutability - PASSED locally
+  - Exact R6 endpoint and committed realization hash - PASSED locally
+  - 480 bounded source-response and zero-drift audits - PASSED
+  - Source capacity and monotonicity - PASSED with zero failures
+  - Maximum root relative interval `9.53674316472667e-7` - PASSED
+  - Maximum root accounting residual `1.660910992073994e-14` - PASSED
+  - Summed local drift and endpoint closure - PASSED exactly
+  - Frozen NF observer limits - FAILED on ambiguity only as the authorized diagnostic result
+  - Frozen NFA observer limits - PASSED
+  - Exact-root oracle accounting and maintenance-only result - PASSED
+  - External ledger SHA-256 `abdaea6d075c700e36d14d369dba62982f4a65cea47d2d1f162b5dfe8afa59f8` - PASSED locally and on Atlas
+  - Focused observer tests - PASSED (2 tests)
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: NFA is only information-sufficient under a frozen diagnostic; R7 does not identify or authorize an NFA production law. Exact zero drift is maintenance-like at the depleted state and does not supply restorative surplus.
+- Blockers: exact-head remote CI and architect review; production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none
+
+## D-20260818-dcdev020r8r1-causal-a-demand-elasticity - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R8R1-A-DEMAND-ELASTICITY-POSITIVE`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R8-R1 audit held every reconstructed state fixed and perturbed only A. Across 2,880 training states, 960 P3 states, 960 P4 states, and 480 R7 on-policy states, all finite A perturbations produced positive physical zero-drift demand elasticity. Catalyst production was the dominant demand block by median magnitude. An independent 2,425-pair A-only swap audit confirmed R8 pair confounding, including 155 background-state sign reversals. Classification is `DCDEV020R8R1_A_DEMAND_ELASTICITY_POSITIVE` with pair verdict `R8_PAIR_CONFOUNDING_CONFIRMED`.
+- Changed areas: observer-only R8-R1 example, compact append-only evidence, governed external dense demand ledger, documentation, scoped workflow, and governance; no production chemistry or behavior changed.
+- Validation:
+  - Finite A perturbation roots (10,560 roots; zero capacity failures; zero non-monotonicity failures) - PASSED
+  - Accounting closure (maximum residual `2.6549075438087044e-14`, tolerance `1e-10`) - PASSED
+  - R8 pair confounding audit (2,425 pairs; 155 background-state sign reversals) - PASSED
+  - External dense-ledger SHA-256 `f44e8f9fa441451ee40bcbfccac5f556131e4d26868868607e9507c29e7bcf90` on local and Atlas copies - PASSED
+  - Focused R8-R1 compile/execution and governance validation - PASSED
+  - Exact-head remote CI run `32203590517` at head `bbf636626b0009e339d4250eb998123cb1f193fe` - PASSED
+  - Architect review - PENDING
+- Remaining risks: This establishes causal A-demand elasticity and explains R8 pair confounding, but authorizes no A-feedback law, production integration, or DC-DEV-021 work.
+- Blockers: architect review; production changes and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none
+
+## D-20260818-dcdev020r8r2-catalyst-investment-payback - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R8R2-CATALYST-INVESTMENT-ACUTE-RECOVERY-BOTTLENECK`
+- Supersedes outcome: none
+- Closed: `2026-08-18T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R8-R2 audit reconstructed all 480 accepted R7 on-policy pre-reaction states and paired each with normal and one-step no-catalyst-production physical zero-drift shadows. All 480 pairs were valid, with zero capacity failures and zero pre-crossing non-monotonicity failures. Median catalyst-production burden was `0.008328836524032168` E_AR units and the burden was at least the R6 source shortfall on all 480 states. Exact sealed R6 normal replay ended at `60.06203101178377`, while whole-window catalyst-production deferral ended at `63.645566711951915` from a deprived start of `60.82781514212436`. All 24 checkpoint payback runs reported `NO_PAYBACK`. Classification: `DCDEV020R8R2_CATALYST_INVESTMENT_ACUTE_RECOVERY_BOTTLENECK`.
+- Changed areas: R8-R2 observer example registration, compact append-only evidence, governed external dense-ledger manifest, documentation, scoped workflow, and governance; no production chemistry or behavior changed.
+- Validation:
+  - Accepted R8-R1 authority and sealed R5/R7/R8/R8-R1 input hashes - PASSED
+  - Local sanctioned Rust 1.89.0 compile and focused example test - PASSED
+  - 480 paired physical roots, zero capacity failures, zero non-monotonicity failures - PASSED
+  - D016 bilinear and R6 power-law payback checkpoints - EXECUTED; all `NO_PAYBACK`
+  - Exact normal R6 endpoint parity - PASSED
+  - Whole-window cprod-deferred shadow alive/finite and above deprived start - PASSED
+  - External dense-ledger SHA-256 `e932f6ab96e34516de98c97c2cae102553db9764383af3d61abf015743c3a376` - PASSED locally and on Atlas
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The result diagnoses catalyst-production investment as an acute finite-feed recovery bottleneck; it does not establish a production repair, a different resource contract, or a sufficient alternative catalyst strategy. No implementation or DC-DEV-021 work is authorized.
+- Blockers: architect review; production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none
+- D-20260819-dcdev020r8r4-shared-affinity-autogenous-cprod - PARTIAL
+  - Outcome ID: `OUT-DCDEV020R8R4-SHARED-AFFINITY-NO-STABLE-HOMEOSTASIS`
+  - Supersedes outcome: none
+  - Closed: `2026-08-19T00:00:00-04:00`
+  - Acceptance: `PARTIAL`
+  - Summary: The observer-only shared-affinity law `J_C=k_c_prod*A*(1-q_c(C))`, reusing existing `K_C=q_c=0.3` and adding no parameter or state, reproduced the accepted R8-R2 acute authority and R8-R3 sustained authority. Under sealed R6, finite-feed restoration passed with final `E_AR=62.575632782724874`, all dose scales were monotonic (`62.571943751789135`, `62.575632782724874`, `62.57772981708882`), but the 8,000-step sustained gate failed at `E_AR=54.45821737181944` against target `77.91027880846893`; the conditional three-cycle assay was correctly not run. Classification: `DCDEV020R8R4_SHARED_AFFINITY_NO_STABLE_HOMEOSTASIS`.
+  - Changed areas: observer example/helper, Cargo registration, compact evidence, external dense-ledger manifest, documentation, governance, and scoped workflow; no production chemistry or behavior changed.
+  - Validation: local Rust 1.89.0 compile and execution passed; exact authority reproduction passed; finite-feed, dose, D016 preservation, accounting, and boundary checks passed; exact-head remote CI and architect review are pending.
+  - Remaining risks: This closes only the tested shared-affinity topology as a sustained-homeostasis route. It does not reject all coupled source/allocation architectures and does not authorize production integration.
+  - Blockers: exact-head remote CI and architect review; DC-DEV-021 remains unauthorized.
+  - Follow-up directive: none
+
+## D-20260819-dcdev020r9r1-mesh-contract-requalification - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R1-MESH-CONTRACT-ORTHOGONALIZATION`
+- Supersedes outcome: `OUT-DCDEV020R9-METRIC-CONFOUNDING-DOMINANT`
+- Closed: `2026-08-19T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: ConservativeV2 is an orthogonal serialized mesh contract, so D-091 retains `autopoietic_material_mesh_metabolic_reserve_v1` equation identity while observer-only death and strict material semantics are selected by contract version. D-091 reserve schema loading and 200-step A/R execution pass with zero rejected steps. The reserve-bearing D-087 Gates 0–7 matrix passes locally. Exact D-015/D-016 replay rows close strict material against delivered N/F with zero residual; the exact R8-R2 and R8-R4 machinery also runs under ConservativeV2 with historical defaults preserved. R8-R4 remains a bounded negative (`DCDEV020R8R4_SHARED_AFFINITY_NO_STABLE_HOMEOSTASIS`).
+- Changed areas: versioned mesh contract field, reserve schema compatibility, D-091 composition test, reserve-bearing D-087 gate matrix, exact replay runners/manifests, scoped workflow, documentation, and governance; no new biology, controller, transport law, source law, sink law, behavior, evolution, or DC-DEV-021 work.
+- Validation:
+  - Local sanctioned Rust 1.89.0 compile and focused contract/D-091 tests - PASSED
+  - D-087 ConservativeV2 Gates 0–7 matrix - PASSED locally
+  - Exact D-015/D-016 replay, 7 rows, zero closure residual, zero reserve rejects - PASSED locally
+  - Exact R8-R2 replay under ConservativeV2 compatibility mode - PASSED locally
+  - Exact R8-R4 replay under ConservativeV2 compatibility mode - PASSED locally; Gates 0-4 and 7 pass, Gates 5-6 fail with the sealed negative classification
+  - Scoped exact-head remote CI run `32313240060` at head `885a1cbe5b713b17a3eb2090938b3b7890c91fcc` - PASSED; all scoped stages including Exact R8-R4 replay and artifact verification passed
+  - Architect review - PENDING
+- Remaining risks: R9-R1 remains unaccepted until independent architect review verifies the pushed branch. Historical R9 evidence remains immutable; generic R9 E5 rows are retained as proxy diagnostics and are not represented as exact historical replay evidence. The new R8-R4 replay is compatibility evidence only and does not alter or reopen the accepted R8-R4 result.
+- Blockers: independent architect review; production integration and DC-DEV-021 remain unauthorized.
+- Follow-up directive: none
+
+## D-20260819-dcdev020r9r2-material-fate-requalification - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R2-CONSERVATIVE-CERTIFICATION-REGRESSION`
+- Supersedes outcome: `OUT-DCDEV020R9R1-MESH-CONTRACT-ORTHOGONALIZATION`
+- Closed: `2026-08-19T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The exact ConservativeV2 D-015/D-016 replay and the R9-R2 material-fate ledger close numerically, but the actual D-087 Phase-1 certifier under ConservativeV2+D-091 reserve passes only 3/8 gates. The direct local invocation has gates 0, 5, and 6 passing; the exact-head PR artifact has gates 5, 6, and 7 passing and reports a source/artifact integrity conclusion. Both are fail-closed as `DCDEV020R9R2_CONSERVATIVE_CERTIFICATION_REGRESSION`.
+- Changed areas: observer-only direct A-decay accounting, actual ConservativeV2+D-091 certifier launcher, exact replay/fate runner, compact evidence, documentation, governance, and scoped CI. No certified Phase-1 equation, production behavior, recycling law, source/sink law, or DC-DEV-021 work changed.
+- Validation:
+  - Local sanctioned Rust 1.89.0 compile for the certifier launcher and R9-R2 example - PASSED
+  - Actual D-087 Gates 0–7 under ConservativeV2+D-091 - COMPLETED 3/8; fail-closed regression
+  - Exact D-015/D-016 replay - 7 rows, zero reserve rejects, zero closure residual - PASSED
+  - D-016 finite fate closure - PASSED; closure `4.263256414560601e-14`, organized reconciliation `3.552713678800501e-14`
+  - Four 8,000-step sustained arms - PASSED as evidence generation; all final-quarter organized slopes negative
+  - Scoped exact-head remote CI run `32317704754` at head `b6633d99d0f8baa7faae6d569215ec8d7ff9c8cd` - PASSED (21/21 steps; compact artifact SHA-256 `c5de085cffceff448a7dbe20f5f8280a973700ecbf800da6b11ac19cc09e65ea`)
+  - Architect review - PENDING
+- Remaining risks: The ConservativeV2+D-091 certifier regression is not localized to a new biology claim by this directive. No tuning, gate weakening, or production integration is authorized. Existing R9-R1 and prior evidence remain preserved.
+- Blockers: exact-head remote CI and independent architect review; DC-DEV-021 remains unauthorized.
+- Follow-up directive: none
+
+## D-20260820-dcdev020r9r3-conservation-reserve-decomposition - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R3-RESERVE-PHYSIOLOGY-CERTIFICATION-GAP`
+- Supersedes outcome: `OUT-DCDEV020R9R2-CONSERVATIVE-CERTIFICATION-REGRESSION`
+- Closed: `2026-08-20T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The actual D-087 certifier was run in the required H0/V20/H1/V21 matrix. H0 HistoricalV1 plus reserve OFF reproduced the historical scientific result through Gates 0–6 (`R_m=1.0180981834599838`, `R_b=5.818353471059928`, `R_C=1.446090001246529`). V20 ConservativeV2 plus reserve OFF also passed Gates 0–6. Both reserve-enabled arms failed Gates 1–4 while recording nonzero A→R, R→A, and R→W flows with zero reserve rejects. Classification: `DCDEV020R9R3_RESERVE_PHYSIOLOGY_CERTIFICATION_GAP_CONFIRMED`. Local Windows packaging did not qualify Gate 7; exact remote Linux CI remains authoritative.
+- Changed areas: orthogonal phase1-certifier contract/reserve selectors, actual four-arm certifier runner, reserve execution ledger, compact evidence, scoped workflow, documentation, and governance. Certified Phase-1 equations, production chemistry, production behavior, recycling, and DC-DEV-021 were not changed.
+- Validation:
+  - Sanctioned Rust 1.89.0 compile/check for the R9-R3 runner - PASSED
+  - Smoke run stopped at the required H0 hard stop - PASSED as non-authoritative smoke behavior
+  - Full local H0/V20/H1/V21 actual-certifier matrix - COMPLETED
+  - H0 and V20 scientific Gates 0–6 - PASSED
+  - H1 and V21 reserve execution - nonzero flows, zero rejects; scientific Gates 1–4 failed as expected for the diagnostic
+  - R9-R2 compact material-fate preservation predicate - PASSED
+  - Exact-head remote CI run `32421756950` at head `6a266514fcb616084ea43be42ff726c4c51dec0e` - PASSED; compact R9-R3 artifact SHA-256 `951fb0f5bc79ab70dc2d50d614c3ca43520069eb8a73360817f01951b2ecfbdf`
+  - Architect review - PENDING
+- Remaining risks: This local result diagnoses a reserve-physiology certification gap but does not distinguish which reserve sub-behavior requires repair. No reserve tuning, recycling, source/sink change, production integration, or DC-DEV-021 work is authorized.
+- Blockers: exact-head remote CI and independent architect review; DC-DEV-021 remains unauthorized.
+- Follow-up directive: none
+
+## D-20260820-dcdev020r9r3r1-packaged-runtime-closure - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020R9R3R1-GATE7-PACKAGED-RUNTIME-CLOSURE`
+- Supersedes outcome: `OUT-DCDEV020R9R3-RESERVE-PHYSIOLOGY-CERTIFICATION-GAP`
+- Closed: `2026-08-20T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R9-R3's only unresolved positive-control defect was Gate 7 packaged-binary execution. Exact local reproduction showed Cargo built successfully, but the runtime used extensionless binary paths while Windows emitted `digital-protocell-phase1.exe`; the source was therefore not found, no package copy was made, and `bin_ok` was false. The bounded repair derives the platform executable suffix and records build/copy/launch diagnostics. Fresh local H0 and V20 replays are 8/8 with unchanged `R_m=1.0180981834599838`, `R_b=5.818353471059928`, and `R_C=1.446090001246529`; H1 and V21 retain Gates 1–4 failure, identical reserve flows, zero rejects, and Gate 7 pass. The R9-R3 classification remains `DCDEV020R9R3_RESERVE_PHYSIOLOGY_CERTIFICATION_GAP_CONFIRMED`.
+- Changed areas: Gate-7 runtime packaging diagnostics and platform path handling, scoped compact-evidence upload, fresh R9-R3-R1 evidence, and governance. No certified Phase-1 equation, production chemistry, production behavior, reserve parameter, threshold, recycling law, or DC-DEV-021 work changed.
+- Validation:
+  - `cargo +1.89.0 check -p phase1-certifier --bin digital-protocell-phase1 --bin phase1_certification` - PASSED
+  - Gate-7 executable-path unit test - PASSED
+  - Fresh H0 actual D-087 certifier - 8/8; packaged binary exit `0`, output and snapshot present - PASSED
+  - Fresh H0/V20/H1/V21 matrix - COMPLETED; H0/V20 8/8, H1/V21 Gates 1–4 failed with preserved reserve signature
+  - Exact-head remote CI run `32436117572` at head `7c6b35c5b67a798c4ff32a61c3f6cf8e4fa8b5e5` - PASSED; compact artifact `dcdev020r3r1-compact-evidence` digest `sha256:b13107fa4ed5a77531cae816754435debae65199ce82e868e208e83e82f6ba86`
+  - Architect review - PENDING
+- Remaining risks: Independent architect review remains. No reserve tuning, recycling, source/sink change, production integration, or DC-DEV-021 work is authorized.
+- Blockers: independent architect review.
+- Follow-up directive: none
+## D-20260822-dcdev020m0baseline001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M0-BASELINE-QUALIFICATION-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020R9R6R2-CI-CLOSURE`
+- Closed: `2026-08-22T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The production-selection audit identified `phase1-certifier/src/sim.rs` as the selector boundary. The bounded default change selects ConservativeV2 while requiring explicit opt-in for D-091 reserve physiology; the R9 diagnostic workflow now declares reserve-enabled arms explicitly. Fresh local ordinary production execution reports ConservativeV2/reserve OFF, actual D-087 Gates 0–7 pass `8/8`, and the 5,000-step packaged runtime reports zero A→R, R→A, and R→W flows, zero reserve rejects, and activation-equivalent closure residual `2.580691216280684e-10`. D-091 source and certified chemistry remain unchanged. Remote Linux runtime identity and exact-head CI are pending architect review.
+- Changed areas: phase-1 certifier selector defaults, explicit R9 diagnostic environment declarations, compact M0 evidence, M0 documentation, scoped M0 CI, and governance handoff. No chemistry-core source or D-091 implementation changed.
+- Validation:
+  - Governance ADOPTED validation - PASSED
+  - Sanctioned Rust 1.89.0 phase1 metrics regression - PASSED (4/4)
+  - Phase1 certifier selector tests - PASSED (5/5)
+  - Fresh ordinary selected-production actual D-087 - PASSED (8/8)
+  - Fresh local packaged runtime - PASSED; alive after 5,000 steps; zero reserve flows; strict closure
+  - Exact-head M0 workflow run `32591546718` at head `0b2db2ddc8e02f72b748a26455de608106a7a9de` - PASSED; fresh D-087, packaged Linux runtime, artifact verification, phase-1 regression, and D-091 preservation all passed
+  - D-091 source preservation - PASSED in exact-head M0 CI
+  - Packaged Linux runtime identity - PASSED in exact-head M0 CI
+  - Architect review - PENDING
+- Remaining risks: Final acceptance depends on exact-head remote Linux execution and independent architect verification. M1, reserve redesign, recycling/salvage, R9-R7, and DC-DEV-021 remain unauthorized.
+- Blockers: exact-head M0 CI and architect review.
+- Follow-up directive: none
+
+## D-20260822-dcdev020m1r0requal001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R0-FINITE-RESOURCE-REQUALIFICATION-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M0-BASELINE-QUALIFICATION-PENDING-ARCHITECT`
+- Closed: `2026-08-22T17:15:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only M1-R0 replay runs from accepted M0 head `4895135deee7dbd782446dbfe25662181951afe0` using `ConservativeV2` with reserve disabled and zero initial reserve. The exact 5,000-step settlement and 480-step deprivation complete; organized material declines by `18.5240742455985`. The 3/3 and high-inventory finite N/F arms consume `2.34938455157938` and `11.4396891103526` per substrate respectively, produce `0.0433163220514441` and `0.945737637075` A, and both retain negative organized-material change. The uptake-only control consumes `11.5964868177898` per substrate without conversion. All four world↔organism closure residuals are below `2.4e-13`. The no-resource continuation reaches observer `starvation_collapse` at accepted step `2057`. Local classification is `productive_allocation_or_replacement_limitation` and remains diagnostic.
+- Changed areas: M1-R0 observer example registration, compact evidence, documentation, scoped CI, and governance only. No chemistry-core, phase1-certifier production source, D-091, uptake, transport, resource, death, behavior, or DC-DEV-021 work changed.
+- Validation:
+  - Governance ADOPTED validation via `py -3 scripts/validate_governance.py --mode ADOPTED` - PASSED
+  - New observer example formatting - PASSED
+  - Fresh local M1-R0 replay and deterministic committed/fresh qualification match - PASSED
+  - Phase-1 metrics regression - PASSED
+  - D-091 preservation regression - PASSED
+  - D-088 preservation regression - PASSED
+  - Evolution-harness regression - PASSED (40 tests)
+  - Exact-head remote M1-R0 CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: This is a requalification result, not a production repair. The current finite-resource mass/conversion/allocation limitation is not isolated to a permitted implementation change. No M1 production change, M2, reserve redesign, recycling, salvage, behavior, evolution, or DC-DEV-021 work is authorized.
+- Blockers: exact-head remote CI and independent architect review.
+- Follow-up directive: none
+
+## D-20260822-dcdev020m1r2-starvation-law-audit001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R2-STARVATION-LAW-AUDIT-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R1R1-DECAY-CONFOUND-PENDING-ARCHITECT`
+- Closed: `2026-08-22T18:35:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only audit starts from accepted M1-R1-R1 head `7bb48874771144795a9559f7570f5ebc77e1004a`. Repository provenance traces the fourfold starvation A-decay branch to D-086 commit `20e9f7814020ca38ed1893fdd94fb3264307de2e`; the source comment provides no explicit quantitative rationale, and D-087 requires starvation/death behavior but does not explicitly require fourfold A destruction. The production 4x arm and ordinary-decay `k_a_decay=0.002` arm both complete the 480-step comparison and the full 20,000-step continuation. Both lose observer viability through the existing reversible `starvation_collapse` predicate, but neither reaches mesh rupture, catalytic/structural physical failure, or invalid runtime geometry within the authorized bound. Local classification is `M1_STARVATION_LAW_AUDIT_INCONCLUSIVE`. Fresh actual D-087 independently returns ConservativeV2/reserve OFF with 8/8 gates and `D087_PHASE1_AUTOPOIETIC_PROTOCELL_CERTIFIED`.
+- Changed areas: New observer example, compact generated evidence, scoped workflow, documentation, and governance only. No chemistry-core, phase1-certifier production source, ConservativeV2, D-087 implementation, resource, death, reserve, recycling, M2, behavior, evolution, or DC-DEV-021 work changed.
+- Validation:
+  - Rust 1.89.0 scoped formatting - PASSED
+  - Regulatory-core observer compile - PASSED
+  - Fresh local 480-step / 20,000-step audit - PASSED; both arms reached the bound without physical failure
+  - Fresh actual D-087 certifier - PASSED (8/8, ConservativeV2, reserve OFF)
+  - Local compact base/fresh artifact verification - PASSED
+  - Phase-1, D-091, D-088, and evolution-harness preservation - PASSED; evolution-harness 40 tests
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: No physical failure occurred within the authorized 20,000-step continuation, so the necessity question remains bounded and inconclusive. This result does not authorize removing or changing the production multiplier, source-law implementation, M1 production repair, M2, reserve redesign, recycling/salvage, behavior, evolution, or DC-DEV-021.
+- Blockers: exact-head remote CI and independent architect review.
+- Follow-up directive: none
+
+## D-20260823-dcdev020m1r5-sustained-homeostasis001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R5-SUSTAINED-HOMEOSTASIS-PENDING-ARCHITECT`
+- Supersedes outcome: none
+- Closed: `2026-08-23T01:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R5 executes the accepted R4 depleted entry through 8,000-step coupled, uncoupled, no-resource, and feed-then-remove arms under the preregistered finite backing reservoir. Local accounting and R4 checkpoint reproduction pass. The local Windows D-087 runtime remains 7/8 because Gate 7 is Linux-packaging dependent; exact-head remote Linux CI and Architect review remain authoritative.
+- Changed areas: World-side fixed-concentration finite backing-reservoir wrapper, bounded R5 assay, compact evidence, shared-drive evidence manifest, scoped CI, documentation, and governance. No certified Phase-1 equations, V1 transport, R4 coupling law, production selection, reserve, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work changed.
+- Validation:
+  - Sanctioned Rust 1.89.0 formatting/check and focused backing/coupled tests - PASSED
+  - Fresh local 8,000-step R5 assay, R4 reproduction, and closure - PASSED
+  - Local V3/V2 D-087 Gate 7 packaging - BLOCKED
+  - Exact-head remote Linux CI and artifact verification - NOT RUN
+- Remaining risks: The R5 classification is provisional until exact-head Linux CI verifies fresh D-087, artifact equality, preservation, and the sustained gates. Authoritative R5 evidence is stored at `\\RPI5\\RPI5SharedDrive\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r5`; compact CI-required artifacts remain in `digital-protocell/experiments/generated/dcdev020m1r5/` and are duplicated there. No production selection or downstream directive is authorized.
+- Blockers: exact-head remote CI and independent Architect review.
+- Follow-up directive: none
+
+## D-20260823-dcdev020m1r6-full-runtime-integration-cert001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6-FULL-RUNTIME-INTEGRATION-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R5-SUSTAINED-HOMEOSTASIS-PENDING-ARCHITECT`
+- Closed: `2026-08-23T19:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R6 executes the exact R5 depleted entry through the packaged order `transport -> ConservativeV3 reactions -> mechanics -> remesh -> try_local_rebond`. The fed full-runtime arm remains intact and observer-viable but declines by `101.13283694705021` organized material. No-resource and feed-removal controls decline. Full-runtime strict material closure does not close (`125.27019370631` fed residual), and the bounded 150,000-step no-resource continuation reaches its bound without actual topology rupture; M1 remains unclosed.
+- Changed areas: R6 phase1-certifier example registration, compact evidence, scoped CI, documentation, shared-drive dense evidence, and governance only. No chemistry-core equations, mechanics/remesh/rebond laws, V1 transport, D-091, D-087 criteria, production default, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 work changed.
+- Validation:
+  - Sanctioned Rust 1.89.0 compile and formatting - PASSED
+  - Fresh V3 D-087 - PASSED 8/8
+  - Fresh V2 D-087 - PASSED 8/8
+  - Full-runtime local arms and dense shared-drive write - COMPLETE
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: R6 is not a production qualification. The large closure residual and absence of topology rupture within the authorized bound require Architect disposition; no mechanics or chemistry repair is authorized in this directive. R5 remains reaction-subsystem evidence, V3 remains unselected, and M2/DC-DEV-021 remain blocked.
+- Blockers: exact-head remote CI and independent Architect review.
+- Follow-up directive: none
+
+## D-20260823-dcdev020m1r6r1-geometry-material-closure-audit001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R1-GEOMETRY-MATERIAL-CLOSURE-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6-FULL-RUNTIME-INTEGRATION-PENDING-ARCHITECT`
+- Closed: `2026-08-23T20:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R6-R1 replay preserves the stored R6 trajectory and final mesh. Independent S0-S5 ledgers reconstruct the full 8,000-step residual. Mechanics/remesh geometry residuals sum to `-125.27019370631099`, matching the fixed-concentration area counterfactual `-125.27019370631108`; unexplained residual is `1.9895196601282805e-13`. Mechanics-only and an existing lawful remesh-only fixture both show strict material loss without uptake or reactions. The first permanent resource-contact loss is step `612`, following geometry change at step `1`. Classification is `M1_RUNTIME_GEOMETRY_MASS_COUPLING_CONFIRMED`.
+- Changed areas: Observer-only R6-R1 example registration, compact evidence, scoped CI, documentation, and governance. No chemistry-core, mechanics, remesh, rebond, transport, chemistry, resource, death, selector, or downstream behavior changed.
+- Validation:
+  - Sanctioned Rust 1.89.0 formatting and compile - PASSED
+  - Fresh 8,000-step observer replay with plain/instrumented trajectory parity - PASSED
+  - Mechanics-only and remesh-only isolation - PASSED; rebond isolation NOT EXERCISED because no lawful fixture was available
+  - Dense stage ledger written to the canonical shared drive - COMPLETE
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: This is causal attribution, not a repair or biological qualification. The geometry/concentration hypothesis is supported by numerical closure, but no concentration rescaling or mechanics/remesh correction is authorized until independent Architect review.
+- Blockers: exact-head remote CI and independent Architect review.
+- Follow-up directive: none
+
+## D-20260823-dcdev020m1r6r1r1-cross-platform-closure-validation001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R1R1-CROSS-PLATFORM-CLOSURE-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R1-GEOMETRY-MATERIAL-CLOSURE-PENDING-ARCHITECT`
+- Closed: `2026-08-23T22:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The R6-R1 verifier was narrowed so scientific protocol identity excludes execution paths, while the failed R6-R1 evidence remains preserved. The audit now records exact within-platform plain/instrumented parity, semantic checkpoints through step 8000, cumulative delivery, remesh-event counts, and explicit resource-contact chronology. Local validation passes with the Atlas canonical dense ledger; remote Linux validation and Architect acceptance remain pending.
+- Changed areas: Cross-platform audit representation, execution metadata, scoped workflow verifier, immutable `dcdev020m1r6r1r1` evidence namespace, documentation, and governance.
+- Validation:
+  - Sanctioned Rust 1.89.0 compile and local replay - PASSED
+  - Scientific protocol excludes execution-path fields - PASSED locally
+  - Local within-platform observer trajectory/final-mesh parity - PASSED
+  - Local mechanics/remesh isolation and fixed-concentration attribution - PASSED
+  - Local contact chronology: exposure `2` to `0` at step `611` with resource remaining `464.709236493918` - PASSED
+  - Original failed R6-R1 evidence namespace preserved - PASSED
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: Linux may show numeric or discrete remesh divergence; acceptance depends on causal invariants rather than bitwise long-horizon trajectory equality. No mass-conservation repair is authorized.
+- Blockers: exact-head remote CI and independent Architect review.
+- Follow-up directive: none
+
+## D-20260823-dcdev020m1r6r1r1r1-remote-verifier-order-closure001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R1R1R1-REMOTE-VERIFIER-ORDER-CLOSURE-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R1R1-CROSS-PLATFORM-CLOSURE-PENDING-ARCHITECT`
+- Closed: `2026-08-24T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The exact workflow-order repair is present at `a3205d6c99cbc845d406043580f99577fa6a73e6`. Remote CI run `32686612525` succeeded in `3m25s`; the fresh audit, D-087 producers, cross-platform verifier, remaining preservation stages, and artifact upload completed. The workflow blocker is closed, while independent Architect acceptance remains pending.
+- Changed areas: Workflow dependency ordering and governance/status records only; no audit, verifier, production, chemistry, mechanics, remesh, transport, resource, or preservation source changes.
+- Validation:
+  - Original missing-report blocker - REPAIRED
+  - Scientific verifier logic and thresholds changed - NO
+  - Exact-head remote CI `32686612525` - PASSED
+  - Artifact `dcdev020m1r6r1-geometry-material-closure-evidence` - PRESENT
+  - Artifact digest `sha256:d7f91883db1155308d576f2c6f09d2eb2c92bf60dcd617493275ade036f7d181` - VERIFIED BY GITHUB
+  - Architect review - PENDING
+- Remaining risks: Remote completion establishes workflow and preservation execution, not Architect scientific acceptance or authorization for geometry/material repair. M1 remains not established and M2/DC-DEV-021 remain unauthorized.
+- Blockers: independent Architect review.
+- Follow-up directive: none
+
+## D-20260824-dcdev020m1r6r2-geometry-material-conservation-repair001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R2-GEOMETRY-MATERIAL-CONSERVATION-PRESERVATION-REGRESSION-REVIEW`
+- Supersedes outcome: `OUT-DCDEV020M1R6R1R1R1-REMOTE-VERIFIER-ORDER-CLOSURE-PENDING-ARCHITECT`
+- Closed: `2026-08-24T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: A versioned `MeshContractVersion::GeometryConservativeV3` was implemented without changing ConservativeV2. The common mechanics path and authoritative remesh path rescale the 18 area-based interior concentration fields using `M_after = C_after * A_after = C_before * A_before`; exterior chemistry, edge/free membrane amounts, templates, autocatalytic edge amounts, and D-096 expressed catalyst amounts are untouched. Local mechanics-only and remesh-only candidate strict deltas are `0`, and the integrated 8,000-step candidate closure residual is `4.263256414560601e-14`. The required actual D-087 candidate run under the new contract returns `6/8`, failing Gate 1 and Gate 2, while unchanged ConservativeV3 under ConservativeV2 returns `8/8`. Per directive, execution stopped before remote CI, push, or any tuning.
+- Changed areas: New versioned material contract, mechanics/remesh conservation primitive integration, phase1 candidate contract selector, focused chemistry-core tests, R6-R2 observer/evidence harness, field-semantics evidence, and governance only. No chemistry equations, mechanics force law, remesh decision law, transport, resource, D-087 criteria, production selection, or downstream behavior changed.
+- Validation:
+  - Focused geometry/material conservation test `d098_geometry_material_conservation` (4/4) - PASSED
+  - R6-R2 local 8,000-step candidate replay and canonical Atlas compact/dense evidence (conservation closure) - PASSED
+  - Candidate mechanics-only strict delta (`0`) - PASSED
+  - Candidate remesh-only strict delta (`0`) - PASSED
+  - Candidate integrated world↔organism closure (`4.263256414560601e-14`) - PASSED
+  - Candidate actual D-087 (6/8; Gate 1 and Gate 2) - FAILED
+  - Unchanged ConservativeV3 under ConservativeV2 actual D-087 (8/8) - PASSED
+  - Remote CI (hard stop on candidate D-087 regression) - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: The conservation law removes the measured geometry/material artifact locally, but the unchanged D-087 acceptance criteria are not preserved under the new candidate contract. No criteria relaxation, initialization change, parameter tuning, biology repair, production switch, M1 recertification, M2, recycling/salvage, or DC-DEV-021 work is authorized.
+- Blockers: Candidate D-087 preservation regression; Architect disposition required.
+- Follow-up directive: none
+
+## D-20260824-dcdev020m1r6r2r1-d087-semantics-regression-audit001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R2R1-D087-SEMANTICS-MIXED-REGRESSION-REVIEW`
+- Supersedes outcome: `OUT-DCDEV020M1R6R2-GEOMETRY-MATERIAL-CONSERVATION-PRESERVATION-REGRESSION-REVIEW`
+- Closed: `2026-08-24T01:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The exact accepted R6-R2 control, ConservativeV3 chemistry under the ConservativeV2 material contract, reproduces D-087 `8/8`. The GeometryConservativeV3 candidate reproduces `6/8`, with Gate 1 and Gate 2 false. Gate 1's C/A concentration retention, structural/membrane turnover, catalyst R_X, and all non-catalyst label booleans pass; its first failed boolean is the legacy catalyst concentration `f_label=0.39221229068962093`, while the observer-only catalyst amount shadow gives `f_label=0.3277186407367453` and passes. All 15 candidate basin rows pass both the unchanged concentration basin predicate and the amount-aware shadow. Gate 2's snapshot/resume, membrane damage, structural damage, rupture recognition, and no-respawn checks pass; only the starvation predicate fails, with candidate final A `0.10147286122118783` versus control `0.010790080759377037`. Matched control/candidate chronology first diverges at step `1`; the geometry-frozen shadow has maximum difference `0`. Classification: `M1_GC_D087_MIXED_REGRESSION`.
+- Changed areas: Observer-only diagnostic example and Cargo registration, compact Atlas evidence, and governance records. No conservation law, D-087/D-086 gate, parameter, production, or downstream behavior change.
+- Validation:
+  - Cargo check for `dcdev020m1r6r2r1_d087_semantics_audit` - PASSED
+  - Exact D-087 control reproduction `8/8` - PASSED
+  - Exact D-087 candidate reproduction `6/8`, Gates 1 and 2 false - PASSED
+  - Gate 1 decomposition, Gate 2 15-row matrix, non-basin decomposition, matched chronology, geometry-frozen shadow, and amount-aware shadow - PASSED
+  - Compact evidence written to canonical Atlas path - COMPLETE
+  - Remote CI - NOT REQUIRED BY DIRECTIVE
+  - Architect review - PENDING
+- Remaining risks: The mixed classification is diagnostic, not a repair authorization. The legacy concentration tracer semantic contribution and the starvation-predicate regression require Architect interpretation; no criteria relaxation, initialization change, kinetic change, concentration controller, compensating synthesis, or biology repair is authorized.
+- Blockers: Architect review and any separately authorized repair directive.
+- Follow-up directive: none
+
+## D-20260824-dcdev020m1r6r2r2-d087-catalyst-tracer-semantics-correction001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R2R2-D087-CATALYST-TRACER-CORRECTION-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R2R1-D087-SEMANTICS-MIXED-REGRESSION-REVIEW`
+- Closed: `2026-08-24T02:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The D-087 catalyst replacement caller now supplies labeled catalyst material amounts (`tracer_c × area`) to the existing `replacement_report()` definition. The legacy concentration ratio remains recorded as diagnostic-only metadata. The unchanged ConservativeV3 control reruns `8/8`; the unchanged dirty GeometryConservativeV3 candidate reruns `7/8`, with Gate 1 passing at corrected catalyst `f_label=0.3277186407367453` and Gate 2 still failing only starvation. Historical R6-R2-R1 artifacts were not overwritten.
+- Changed areas: `phase1-certifier/src/sim.rs`, focused `phase1-certifier` metric test, and local governance records only. No D-087 thresholds, equations, mechanics, remesh, transport, chemistry, resource, production, or downstream behavior changed.
+- Validation:
+  - Historical mismatch reproduced: legacy candidate catalyst `f_label=0.39221229068962093`; amount-aware value `0.3277186407367453` - PASSED
+  - Catalyst amount fields recorded: initial `487.82105008375765`, candidate final `159.8680514562208` - PASSED
+  - Actual ConservativeV3 control D-087: `8/8` - PASSED
+  - Actual GeometryConservativeV3 candidate D-087: `7/8`; Gate 1 PASS, Gate 2 FAIL - PASSED / expected stop
+  - Candidate starvation final A: `0.10147286122118783`, unchanged - CONFIRMED
+  - Focused phase1-certifier tests: `5/5` - PASSED
+  - Focused geometry/material conservation tests: `4/4` - PASSED
+  - Rust formatting check: PASSED
+  - Certifier binary check: PASSED
+  - Governance validation: PASSED
+  - Fresh compact evidence: `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r2\\compact` - COMPLETE
+  - Remote CI: NOT REQUIRED BY DIRECTIVE
+  - Architect review: PENDING
+- Remaining risks: The candidate remains uncertified because the unchanged Gate 2 starvation predicate fails. The correction is observer/certifier-only and does not explain or authorize starvation repair.
+- Blockers: Architect review of the corrected local evidence.
+- Follow-up directive: none
+
+## D-20260824-dcdev020m1r6r2r3-starvation-semantics-audit001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R2R3-STARVATION-SEMANTICS-AUDIT-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R2R2-D087-CATALYST-TRACER-CORRECTION-PENDING-ARCHITECT`
+- Closed: `2026-08-24T03:30:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The unchanged D-087 certifier reproduces the ConservativeV3 chemistry plus ConservativeV2 material control at `8/8` and the GeometryConservativeV3 candidate at `7/8`, with Gate 2 starvation as the only candidate failure. Replaying the exact 200-step pre-switch sequence followed by zero interior/exterior N shows candidate `A=0.10147286122118783` at the historical relative step `6000`, but labeled A amount is `6.5956738242275`, area is `64.99938747021656` versus starvation-entry area `605.115299165549`, and organized material declines from `969.86673089034` to `84.5056465029607` by relative step `150000`. Post-switch N delivery is exactly `0`; F delivery remains allowed by the nitrogen-starvation design. Candidate observer viability and the existing `activated_catalyst_collapse` reason first fail at relative step `10383`. No topology rupture or physical-runtime invalidity occurs through the authorized `150000`-step bound, and closed topology remains true under the existing predicates. The geometry-frozen shadow reaches `A=0.0119095371850178` at relative step `6000`, showing that contraction accounts for the elevated full-candidate concentration while amount declines. Classification: `M1_GC_STARVATION_SURROGATE_STALE_CAUSAL_FAILURE_PRESERVED`.
+- Changed areas: Observer-only starvation audit example, Cargo registration, compact Atlas evidence and manifest, and governance records. No chemistry, mechanics, transport, conservation law, D-087 gate, parameter, production, or downstream behavior changed.
+- Validation:
+  - Unchanged D-087 control: `8/8` - PASSED
+  - Unchanged GeometryConservativeV3 candidate: `7/8`; Gate 2 only - PASSED / expected diagnostic boundary
+  - Concentration/amount/geometry checkpoints through relative step `6000` - PASSED
+  - Post-starvation zero-N delivery audit - PASSED
+  - Observer chronology through relative step `150000` - PASSED
+  - Geometry-frozen candidate shadow - PASSED
+  - Conditional topology refeed - NOT EXERCISED because no topology rupture occurred
+  - Sanctioned Rust 1.89.0 formatting and example check - PASSED
+  - Compact Atlas evidence and manifest at `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r3\\compact` - COMPLETE
+  - Remote CI - NOT REQUIRED BY DIRECTIVE
+  - Architect review - PENDING
+- Remaining risks: The old `A<0.05` Gate-2 surrogate is not changed by this diagnostic. The candidate remains uncertified under unchanged D-087 because its historical endpoint surrogate does not fire at 6000; actual topology death and topology recovery remain unresolved for this arm because no rupture occurred within the authorized bound. No starvation repair or Gate-2 rewrite is authorized.
+- Blockers: Architect review and any separately authorized topology/death follow-up.
+- Follow-up directive: none
+
+## D-20260824-dcdev020m1r6r2r4-gc-preservation-qualification001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R2R4-GC-PRESERVATION-QUALIFICATION-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R2R3-STARVATION-SEMANTICS-AUDIT-PENDING-ARCHITECT`
+- Closed: `2026-08-24T04:30:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The unchanged actual D-087 certifier returns V2/ConservativeV3 control `8/8` and GeometryConservativeV3 candidate `7/8`, with the sole historical Gate-2 failure isolated. The versioned GC qualifier passes the 15-row basin/decomposition and non-basin controls, records tracer `f_label=0.3277186407367453`, zero post-switch N delivery, observer viability loss at relative step `10383`, organized material decline from `969.8667308903401` to `84.50564650296067`, and no topology rupture or runtime invalidity through the authorized `150000`-step extension. Final remote closure passed at `dcce40b38b467615008699984a8cb52329b404e8`, with push CI `32760632483`, PR CI `32760643807`, and artifact digest `sha256:080f93693c34a22611351abba60a2aa23964938fc02039364b0fc127cac3fb86`. Classification: `M1_GC_CONSERVATION_CANDIDATE_QUALIFIED`.
+- Changed areas: Versioned phase1-certifier GC preservation qualifier, compact generated evidence, scoped workflow/docs, and governance only. Historical D-087 Gate 2 and certified biology/equations remain unchanged; unrelated dirty work is not included.
+- Validation:
+  - Local sanctioned Rust 1.89 formatting/checks - PASSED
+  - Actual D-087 control 8/8 and candidate 7/8 with sole historical Gate-2 failure - PASSED
+  - 15-row decomposition, causal starvation gate, zero post-switch N delivery, conservation, and tracer preservation - PASSED
+  - Compact Atlas evidence at `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r2r4\\compact` - PASSED
+  - Exact-head push CI `32760632483` at `dcce40b38b467615008699984a8cb52329b404e8` - PASSED
+  - Exact-head pull-request CI `32760643807` - PASSED
+  - Remote artifact `dcdev020m1r6r2r4-gc-preservation-evidence`, digest `sha256:080f93693c34a22611351abba60a2aa23964938fc02039364b0fc127cac3fb86` - VERIFIED
+  - Architect review - PENDING
+- Remaining risks: This qualifies only the experimental GC conservation candidate. It does not close M1, select GC/V3 for production, establish sustained homeostasis, authorize reserve/recycling/salvage, M2, or DC-DEV-021.
+- Blockers: Independent Architect review.
+- Follow-up directive: none
+
+## D-20260824-dcdev020m1r6r3-full-runtime-m1-certification001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R3-FULL-RUNTIME-M1-CERTIFICATION-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R2R4-GC-PRESERVATION-QUALIFICATION-PENDING-ARCHITECT`
+- Closed: `2026-08-24T08:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only GeometryConservativeV3/ConservativeV3 full-runtime certification executes the unchanged finite-resource uptake, reactions, mechanics, remesh, and rebond order with strict per-stage closure. Fresh ConservativeV2 and ConservativeV3 D-087 preservation reports are both 8/8. The finite fed arm remains viable and closed at 8,000 steps but loses `82.9654506509167` organized material; 480-step deprivation followed by no-reset refeed does not restore the deficit. Zero-resource and feed-then-remove arms reach physical topology rupture at local steps `8867` and `11283`. Classification candidate: `M1_FULL_RUNTIME_HOMEOSTASIS_FAILED`; exact-head remote CI and Architect review remain pending.
+- Changed areas: New observer-only certification example, Cargo registration, compact evidence, scoped workflow/docs, and append-only governance. No chemistry equations, transport/resource law, mechanics, remesh/rebond law, death rule, D-087/D-091, production selection, M2, recycling/salvage, or DC-DEV-021 changes.
+- Validation:
+  - Governance validator ADOPTED - PASSED
+  - Rust formatting and compact fail-closed verifier - PASSED
+  - Geometry/material conservation - 4 passed
+  - Phase-1 metrics semantics - 5 passed
+  - D-088 preservation - 4 passed
+  - D-091 preservation - 8 passed
+  - Evolution-harness preservation - 40 passed
+  - Fresh V2/V3 D-087 - 8/8 each
+  - Dense ledgers - written to canonical Atlas R6-R3 evidence root
+  - Remote exact-head CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: This is a valid local negative candidate, not M1 closure. Sustained fed homeostasis and no-reset restoration are not established; remote Linux execution, artifact verification, and Architect disposition remain authoritative. No repair or downstream directive is authorized.
+- Blockers: Exact-head remote CI and Architect review.
+- Follow-up directive: none
+
+## D-20260825-dcdev020m1r6r3r1-gc-snapshot-area-semantics-correction001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R3R1-GC-SNAPSHOT-AREA-SEMANTICS-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R3-FULL-RUNTIME-M1-CERTIFICATION-PENDING-ARCHITECT`
+- Closed: `2026-08-25T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The R6-R3 Linux invalidation is causally reproduced as a snapshot observer mismatch: the historical `max(area, 1e-9)` floor disagreed with GeometryConservativeV3 actual-area conservation below the floor. Snapshot callers are diagnostic/accounting/certification-only. GeometryConservativeV3 now uses actual positive area while HistoricalV1 and ConservativeV2 retain the historical floor. The unchanged local R6-R3 replay closes all stages and returns `M1_FULL_RUNTIME_HOMEOSTASIS_FAILED`; exact-head remote CI and Architect acceptance remain pending.
+- Changed areas: `chemistry-core/src/mesh_contracts.rs` observer accounting only, focused `d098` tests, R6-R3 scoped workflow/evidence namespace/docs, and append-only governance. No certified biology/equations, physical trajectory path, transport, chemistry, mechanics, remesh, rebond, death, production, or downstream behavior changed.
+- Validation:
+  - Focused GC sub-floor and historical V1/V2 snapshot tests `7/7` - PASSED
+  - Local V3/V2 D-087 preservation - `8/8` each - PASSED
+  - Fed organized delta `-82.9654506509167` - PRESERVED
+  - Deprivation delta `-10.979091022310868` - PRESERVED
+  - No-reset refeed delta from deprived `-75.90268439405197` - PRESERVED
+  - Fed, recovery, zero-resource, and feed/remove stage closure - PASSED within `1e-8`
+  - Local compact evidence - `digital-protocell/experiments/generated/dcdev020m1r6r3r1/` - COMPLETE
+  - Dense evidence - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r1\\` - COMPLETE
+  - Remote exact-head CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: Full-runtime homeostasis and no-reset restoration remain failed; irreversible death remains platform-sensitive until remote replay; no repair or downstream execution is authorized.
+- Blockers: Exact-head push/PR CI and Architect review.
+- Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r3r2-gc-reaction-area-semantics-audit001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R3R2-GC-REACTION-AREA-SEMANTICS-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R3R1-GC-SNAPSHOT-AREA-SEMANTICS-PENDING-ARCHITECT`
+- Closed: `2026-08-26T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R2 audit maps the active historical reaction-area floor bridges and records per-step predicted transfer residuals, conditioning data, and exact-parameter frozen replays. Local Windows execution reaches topology rupture before sub-floor reaction area. Exact-head Linux push and PR diagnostics passed and classify the historical reaction-area floor as causally responsible for the remaining GC reaction residual.
+- Changed areas: `examples/dcdev020m1r6r3_full_runtime_m1_certification.rs`, the R2 diagnostic workflow, R2 documentation, R2 compact evidence, and append-only governance only. No production chemistry source was changed.
+- Validation:
+  - Local Rust 1.89.0 compile - PASSED
+  - Observer replay with live reaction parameters and timestep - PASSED locally
+  - Local physical trajectory remains the unchanged runtime path; topology rupture preempts sub-floor observation on Windows
+  - Dense evidence target - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r2\\`
+  - Exact-head Linux push CI `32957391440` - PASSED; artifact digest `sha256:bb442b7d2f8955830013e19bf82c6f9351de9dfcb07bf1badcd3e9ca03f52134`
+  - Exact-head Linux PR CI `32957395432` - PASSED; artifact digest `sha256:5f1abcedf4ea82b713f8304e462c70e784fbcaf5dc833cd2cfa402a1406c8072`
+  - Architect review - PENDING
+- Remaining risks: The local platform cannot establish or disprove Linux sub-floor floor causality; Linux exact-head evidence now confirms it. The R6-R3 homeostasis failure remains preserved; no production repair or downstream execution is authorized.
+- Blockers: Architect review only.
+- Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r3r3-gc-reaction-area-conservation-repair001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R3R2-GC-REACTION-AREA-SEMANTICS-PENDING-ARCHITECT`
+- Closed: 2026-08-26T00:00:00-04:00
+- Acceptance: PARTIAL
+- Summary: The bounded R3 repair versions the reaction material-transfer area semantic: GeometryConservativeV3 uses actual finite positive physical area for absolute-material/interior-concentration bridges, while HistoricalV1 and ConservativeV2 retain the historical reaction-area floor. Local Windows execution closes the repaired accounting and preserves the fed/recovery negative evidence, but ruptures before sub-floor entry; exact-head Linux CI remains the authority for post-floor qualification.
+- Changed areas: `chemistry-core/src/mesh_reactions.rs` bounded GC material-transfer area semantic and focused tests, R3 qualification example/workflow/documentation/compact evidence, compatibility gating for the obsolete R2 workflow, and append-only governance. No coefficients, reaction laws, historical V1/V2 behavior, production default, or downstream behavior changed.
+- Validation:
+  - Governance validator - PASSED
+  - Rust formatting check - PASSED
+  - GC sub-floor transfer regressions - `5/5` - PASSED
+  - Geometry/material preservation - `7/7` - PASSED
+  - Phase-1 metrics semantics - `5/5` - PASSED
+  - D-088 preservation - `4/4` - PASSED
+  - D-091 preservation - `8/8` - PASSED
+  - Evolution-harness preservation - `40/40` - PASSED
+  - Local V2/V3 D-087 preservation - `8/8` each - PASSED
+  - Local fed/recovery reference values and repaired stage closure - PASSED
+  - Dense evidence target - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r3r3\\`
+  - Exact-head push/PR CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: Windows cannot exercise the Linux sub-floor repair boundary; exact-head remote CI must verify sub-floor closure and artifact identity. M1 remains not established; no production repair, production switch, reserve/recycling/salvage work, M2, or DC-DEV-021 is authorized.
+- Blockers: Exact-head push/PR CI and Architect review.
+- Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r3r3-gc-reaction-area-conservation-repair001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-PENDING-ARCHITECT`
+- Closed: 2026-08-26T00:00:00-04:00
+- Acceptance: PARTIAL
+- Summary: Exact-head remote validation passed for the bounded R3 repair at `109adc55f762bf13feecd667be56e8ba9e956c9a`. Push and PR workflows completed successfully, including Linux governance, bounded scope, actual D-087 V2/V3 preservation, repaired sub-floor qualification, accounting, and frozen-suite preservation. The package remains pending Architect acceptance.
+- Changed areas: No scientific changes after the initial R3 repair commit; this follow-up records remote validation only and updates mutable current-state governance.
+- Validation:
+  - Exact-head push CI `32962206301`, artifact digest `sha256:f4ece0d2c13d4d8185c94610a925f6fbefaa4a934c9f490197759237f41de9c4` - PASSED
+  - Exact-head PR CI `32962210562`, artifact digest `sha256:bf918e79ee3e523bcc1614fb93a2be5cdabfbc9f670b03dd8a9deadfded9b028` - PASSED
+  - PR #44 authority OPEN / DRAFT / UNMERGED - PASSED
+  - Branch head `109adc55f762bf13feecd667be56e8ba9e956c9a` - PASSED
+- Remaining risks: Architect must independently inspect the bounded R3 diff and remote evidence before acceptance. M1 remains not established; no production repair, production switch, reserve/recycling/salvage work, M2, or DC-DEV-021 is authorized.
+- Blockers: Architect review only.
+- Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r4-homeostasis-contact-causal-audit001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R4-HOMEOSTASIS-CONTACT-CAUSAL-AUDIT-PENDING-REMOTE`
+- Supersedes outcome: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Closed: `2026-08-26T12:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only R6-R4 audit locally reproduces the accepted repaired R6 full-runtime failure and accepted R5 static reference. Actual resource exposure becomes permanently zero at step 850 while the fixed reservoir retains `228.521657910379` N/F and actual delivery is `14.627590100158919` each. The geometry-frozen diagnostic remains approximately nondeclining, but the all-intact contact-preserved diagnostic receives the complete fixed finite inventory and still loses `17.4947722071266` organized material. The bounded local classification is `M1_FULL_RUNTIME_EMBODIED_DEMAND_DOMINANT`; remote exact-head CI and Architect review are pending.`
+- Changed areas: `digital-protocell/examples/dcdev020m1r6r4_homeostasis_contact_audit.rs`, its phase1-certifier example registration, the R6-R4 workflow, R6-R4 documentation, compact evidence, and append-only governance only. No production biology, mechanics, transport, resource configuration, parameters, or production selection changed.`
+- Validation:
+  - Accepted R6-R3-R3 starting head `69b6133a5f76d3c7839705c78922c7452ad5d550` - CONFIRMED
+  - Local Rust 1.89.0 compile and release execution - PASSED
+  - Actual fed R6 reference reproduction - PASSED
+  - R5 static reference delivery `162.464640538382` and organized delta `+0.342140676890381` - PASSED
+  - Geometry-frozen diagnostic parity with static reference - PASSED
+  - Contact chronology: last positive delivery `849`, first permanent zero exposure `850`, reservoir remains positive - PASSED
+  - Contact-preserved upper bound: full fixed inventory delivered, organized delta `-17.4947722071266` - RECORDED NEGATIVE
+  - No-reset actual/contact-upper recovery - FAILED restoration criterion as expected diagnostic result
+  - Dense evidence target - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r4`
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The upper bound exhausts the fixed finite inventory, so the result is bounded to the preregistered resource contract and does not establish behavior under unlimited source. Contact loss is a major contributor but not sufficient to explain the full failure; M1 remains not established and no repair or downstream execution is authorized.
+- Blockers: Exact-head diagnostic CI and Architect review.
+- Follow-up directive: none
+
+## D-20260827-dcdev020m1replan001-age-structured-structural-turnover-feasibility001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1REPLAN001-AGE-STRUCTURED-STRUCTURAL-TURNOVER-FEASIBILITY-LOCAL-VERIFIED-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R7-REFERENCE-GEOMETRY-COUPLING-LOCAL`
+- Closed: 2026-08-27T12:10:00-04:00
+- Acceptance: PARTIAL
+- Summary: The age-structured structural-material turnover diagnostic completed at `a9dbd3d95cfbfcacc5ec99278c7d145024b435b3` as `M1_AGE_STRUCTURED_TURNOVER_INSUFFICIENT`. The frozen-geometry and moving current-production controls reproduced; the age shadow improved but did not pass fed 8,000-step homeostasis. No-reset recovery, age identity, closure, damage preservation, starvation decline, D-087 V2/V3 controls, and exact-head Linux verification passed; physical loss was not reached within the frozen bound.
+- Changed areas: Diagnostic harness, scoped workflow, compact evidence, documentation, and append-only governance only; no production biology, coefficients, mechanics, source schedule, transport, resource configuration, production selection, controller, reserve, recycling, salvage, parameter search, second candidate, M2, behavior, evolution, or DC-DEV-021 behavior.
+- Validation:
+  - Exact starting head `f537bc064030d6f336608488935620e2f9256322` - PASSED
+  - Local D-087 V2/V3 controls - PASSED (8/8 each)
+  - Local age-structured qualification and focused tests - PASSED
+  - Local preservation suite - PASSED
+  - Exact-head GitHub Actions run `33091139939` - PASSED
+  - Compact artifact digest `sha256:bceeff2138ad174dbc51f71a18b00290aafb95c5104c6d1a55bbecfc1b8ee4a4` - VERIFIED
+- Remaining risks: The age-structured candidate is insufficient for fed homeostasis under the frozen diagnostic contract. M1 remains not established; no production repair, second candidate, M2, or DC-DEV-021 is authorized.
+- Blockers: Architect acceptance.
+- Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r5-embodied-sink-causal-decomposition001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R4-HOMEOSTASIS-CONTACT-CAUSAL-AUDIT-PENDING-REMOTE`
+- Closed: `2026-08-26T12:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The bounded observer-only R6-R5 decomposition reproduces the accepted R6-R4 actual moving, geometry-frozen, and contact-upper results. The per-step organized-material identity closes as activation minus A decay, catalyst turnover, and structural turnover; reserve loss and damage terms are zero. Static geometry declines under the contact-upper source schedule, while moving geometry declines under the R5-like schedule that keeps static geometry at break-even. All three fixed single sink knockout probes individually cross the existing organized-material endpoint criterion, so no single dominant sink or conditional pairwise mixed classification is established. The local classification is `M1_EMBODIED_SINK_CAUSE_UNRESOLVED`, pending exact-head remote validation.
+- Changed areas: `digital-protocell/examples/dcdev020m1r6r5_embodied_sink_causal_decomposition.rs`, its phase1-certifier example registration, R6-R5 workflow, compact evidence, documentation, and append-only governance only. No production biology, reaction source, mechanics, transport, resource configuration, GC conservation, or production selection changed.
+- Validation:
+  - Rust 1.89.0 formatting and example compile - PASSED
+  - Actual R6-R4 reproduction - `-82.9654506509167` organized delta and `14.6275901001589` N/F delivered - PASSED
+  - Geometry-frozen reference - `+0.342140676890381` - PASSED
+  - Contact-upper reference - `-17.4947722071266` - PASSED
+  - Matched source static upper schedule - `-16.0257265275525` - RECORDED NEGATIVE
+  - Matched source static frozen schedule - `+0.342140676890352` - PASSED
+  - Matched source moving frozen schedule - `-9.95495920654304` - RECORDED NEGATIVE
+  - Organized sink identity and strict closure - PASSED within `1e-8`
+  - Single knockouts A-decay/C-turnover/M-turnover - all restoration endpoint probes PASSED; no single dominant classification
+  - V2/V3 D-087 - `8/8` each - PASSED locally
+  - Dense evidence - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r5`
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The local classification is unresolved by the directive's strict acceptance definitions; remote Linux execution must confirm the compact evidence, closure, preservation, and classification. M1 remains not established; no sink repair, production switch, recycling/salvage work, M2, or DC-DEV-021 is authorized.
+- Blockers: Exact-head diagnostic CI and Architect review.
+- Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r3r3-gc-reaction-area-conservation-repair001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-FINAL-HEAD-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R3R3-GC-REACTION-AREA-CONSERVATION-REPAIR-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Closed: 2026-08-26T00:00:00-04:00
+- Acceptance: PARTIAL
+- Summary: Final-head remote validation passed at `27bf41caf9dbb931fde6d796c3cd686d6629ee90`. The final governance-only follow-up preserved the bounded R3 repair; both exact-head Linux workflows passed, and Architect review remains pending.
+- Changed areas: Mutable current-state and append-only outcome governance only after the R3 scientific repair; no scientific implementation changed.
+- Validation:
+  - Exact-head push CI `32962808927`, artifact digest `sha256:8f4bbf59a7a3e9827c2d9b9991a64384e2be842930e4ef3cfd8c4bbb0cebbde1` - PASSED
+  - Exact-head PR CI `32962813751`, artifact digest `sha256:5864610618c970cbeffcf3e2141c1608840de554567864b678dc8debeed703f3` - PASSED
+  - PR #44 OPEN / DRAFT / UNMERGED with required base - PASSED
+  - Final branch head `27bf41caf9dbb931fde6d796c3cd686d6629ee90` - PASSED
+- Remaining risks: Architect must independently inspect the bounded R3 diff and remote evidence before acceptance. M1 remains not established; no production repair, production switch, reserve/recycling/salvage work, M2, or DC-DEV-021 is authorized.
+- Blockers: Architect review only.
+- Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r5-embodied-sink-causal-decomposition001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-PENDING-ARCHITECT`
+- Closed: `2026-08-26T16:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Exact-head PR validation passed at `4f4774f9393ad8978cecd1b8de21120313fdd559` for the bounded observer-only R6-R5 sink decomposition. The authoritative classification remains `M1_EMBODIED_SINK_CAUSE_UNRESOLVED`: all three fixed single sink knockouts individually pass the endpoint probe, so no single dominant sink or conditional pairwise mixed classification is established.
+- Changed areas: Mutable current-state and append-only outcome/learning governance only after the R6-R5 diagnostic package; no scientific implementation or evidence values changed.
+- Validation:
+  - Exact-head PR workflow `33007407520` - PASSED
+  - Governance, formatting, bounded diff, accepted R6-R4 reproduction, D-087 V2/V3 preservation, R6-R5 execution, compact evidence verification, geometry/material, Phase-1 metrics, D-088, D-091, and evolution preservation - PASSED
+  - Uploaded artifact `dcdev020m1r6r5-embodied-sink-evidence`, digest `sha256:86634ff3587b0cd2c6630a63a7ae2e83161f8e2243af0bacfb0c2450203527ba` - VERIFIED
+  - Dense evidence - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r5`
+  - Architect review - PENDING
+- Remaining risks: This is diagnostic evidence only. It does not establish an admissible production sink repair, M1 closure, production selection change, recycling/salvage work, M2, or DC-DEV-021 authorization. Architect must independently review the exact pushed head and evidence.
+- Blockers: Architect review.
+- Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r5-embodied-sink-causal-decomposition001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-FINAL-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Closed: `2026-08-26T16:10:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Final exact-head PR validation passed at `d6b6ea10e6cde7e0305c2ef5c558ad69e1639c7a` after the governance-only reconciliation. The scientific package and classification are unchanged: `M1_EMBODIED_SINK_CAUSE_UNRESOLVED` because all three fixed single sink knockouts individually pass the endpoint probe.
+- Changed areas: Mutable current-state and append-only outcome/learning governance only; no scientific implementation or evidence values changed after the R6-R5 diagnostic commit.
+- Validation:
+  - Exact-head PR workflow `33008078238` - PASSED
+  - Governance, formatting, bounded diff, accepted R6-R4 reproduction, D-087 V2/V3 preservation, R6-R5 execution, compact evidence verification, geometry/material, Phase-1 metrics, D-088, D-091, and evolution preservation - PASSED
+  - Uploaded artifact `dcdev020m1r6r5-embodied-sink-evidence`, digest `sha256:a0285f9447194551ac53ac915acc5c5cbb614ee13aca27bc274e85fbb3703e98` - VERIFIED
+  - PR #44 OPEN / DRAFT / UNMERGED with required base - VERIFIED
+  - Dense evidence - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r5`
+  - Architect review - PENDING
+- Remaining risks: This is diagnostic evidence only. It does not establish an admissible production sink repair, M1 closure, production selection change, recycling/salvage work, M2, or DC-DEV-021 authorization. Architect must independently review the final pushed head and evidence.
+- Blockers: Architect review.
+- Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r6-source-geometry-state-coupling-audit001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R6-SOURCE-GEOMETRY-STATE-COUPLING-LOCAL`
+- Supersedes outcome: `OUT-DCDEV020M1R6R5-EMBODIED-SINK-CAUSAL-DECOMPOSITION-FINAL-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Closed: `2026-08-26T17:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The bounded observer-only R6-R6 audit reproduces the accepted R6-R5 reference state, establishes an equal-total source-history probe, and measures an independent moving-geometry structural-turnover path. The static frozen schedule ends at `+0.3421406768903523` organized material, while the deterministic equal-total front-loaded schedule ends at `-36.974874683266776`; the matched moving frozen-schedule arm ends at `-9.954959206543037` with `13.44250096660451` excess structural turnover relative to matched static geometry. The local diagnostic classification is `M1_SOURCE_FRONTLOAD_AND_GEOMETRY_STRUCTURAL_CYCLE_CONFIRMED` and remains provisional pending exact-head remote validation and Architect review.
+- Changed areas: New observer-only R6-R6 example and documentation, phase1-certifier example registration, scoped workflow, compact evidence, and governance records only. No production biology, reaction coefficients, mechanics, transport, resource configuration, source implementation, production selection, controller, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 behavior changed.
+- Validation:
+  - Rust 1.89.0 release execution - PASSED
+  - Accepted R6-R5 reference reproduction - PASSED locally
+  - Explicit ConservativeV3 and ConservativeV2 D-087 controls - 8/8 each
+  - Material/organized closure across diagnostic arms - PASSED within numerical tolerance
+  - Equal-total front-loaded source-history probe - PASSED as diagnostic
+  - Matched moving/static source decomposition and structural-turnover measurement - PASSED
+  - Dense ledgers - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r6\\local-final`
+  - Exact-head remote CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: The front-loaded probe establishes schedule-history harm under the sealed diagnostic, but factor-swap values are observer shadows and do not uniquely identify one structural build factor. Recovery correspondence is recorded but does not establish a production repair or M1 closure. No diagnostic conclusion is authoritative until exact-head remote validation and Architect review.
+- Blockers: Exact-head remote CI and Architect review.
+- Follow-up directive: none
+
+## D-20260826-dcdev020m1r6r6-source-geometry-state-coupling-audit001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1R6R6-SOURCE-GEOMETRY-STATE-COUPLING-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R6-SOURCE-GEOMETRY-STATE-COUPLING-LOCAL`
+- Closed: `2026-08-26T17:20:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Exact-head Linux PR validation passed at `c3c5da567e57e2e182e55e303575418b1043aada` for the bounded observer-only R6-R6 source/geometry audit. Governance, formatting, bounded diff, accepted R6-R4/R6-R5 replays, explicit V2/V3 D-087 preservation, R6-R6 execution, compact evidence verification, geometry/material, Phase-1, D-088, D-091, and evolution preservation all passed. The diagnostic classification remains `M1_SOURCE_FRONTLOAD_AND_GEOMETRY_STRUCTURAL_CYCLE_CONFIRMED`: equal-total front-loaded source delivery fails on static geometry while the matched successful frozen schedule fails on moving geometry with measured structural-turnover excess.
+- Changed areas: No scientific implementation or evidence values changed after the local package. The remote-verified package contains only the previously bounded R6-R6 observer harness, workflow, compact evidence, documentation, and governance records; no production biology, reaction coefficients, mechanics, transport, resource configuration, source repair, production selection, controller, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 behavior changed.
+- Validation:
+  - Exact-head Linux workflow `33014350775` - PASSED
+  - All workflow job steps, including artifact verification and preservation suites - PASSED
+  - Uploaded artifact `dcdev020m1r6r6-source-geometry-evidence`, digest `sha256:a10ee0d650eb8858236041c098fce7de38012f6e6016b479dafb40912456c067` - VERIFIED
+  - PR #44 OPEN / DRAFT / UNMERGED with required base - VERIFIED
+  - Dense evidence - `\\atlas\\ATLAS\\100_ACTIVE\\Projects\\DIGITAL_CELL\\evidence\\dcdev020m1r6r6`
+  - Architect review - PENDING
+- Remaining risks: The front-loaded result establishes schedule-history harm under the sealed diagnostic, while factor-swap values remain observer shadows and do not uniquely identify one structural build factor. The diagnostic does not authorize source-history or geometry repair, production selection, M1 closure, recycling/salvage, M2, or DC-DEV-021.
+- Blockers: Architect review.
+- Follow-up directive: none
+
+## D-20260827-dcdev020m1replan001-age-structured-structural-turnover-feasibility001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1REPLAN001-AGE-STRUCTURED-STRUCTURAL-TURNOVER-FEASIBILITY-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1R6R7-REFERENCE-GEOMETRY-COUPLING-LOCAL`
+- Closed: 2026-08-27T00:00:00-04:00
+- Acceptance: PARTIAL
+- Summary: The sole authorized follow-up to accepted R6-R7 is a diagnostic age-structured structural-material turnover feasibility package. Existing controls must reproduce, while the shadow routes new ordinary structural build into a conserved young pool, matures it using existing `k_turn`, and applies unchanged ordinary turnover only to mature material.
+- Changed areas: Diagnostic harness, scoped workflow, compact evidence, documentation, and append-only governance only; no production biology, coefficients, mechanics, source schedule, transport, resource configuration, production selection, controller, reserve, recycling, salvage, M2, behavior, evolution, or DC-DEV-021 behavior.
+- Validation:
+  - Exact starting head `f537bc064030d6f336608488935620e2f9256322` - PASSED
+  - R6-R7 authority and negative classification - PASSED
+  - Local D-087 V2/V3 controls - PASSED (8/8 each)
+  - Local age-structured qualification and focused tests - PASSED (classification recorded as INSUFFICIENT)
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: Feasibility, recovery, starvation physical loss, and whether the diagnostic can run without production-code changes remain unresolved until execution and remote validation. M1 remains not established; no production repair, second candidate, M2, or DC-DEV-021 is authorized.
+- Blockers: Exact-head diagnostic CI and Architect review.
+- Follow-up directive: none
+
+## D-20260827-dcdev020m1replan001-age-structured-structural-turnover-feasibility001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1REPLAN001-AGE-STRUCTURED-TURNOVER-FEASIBILITY-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1REPLAN001-AGE-STRUCTURED-STRUCTURAL-TURNOVER-FEASIBILITY-PENDING-ARCHITECT`
+- Closed: `2026-08-27T12:20:00-04:00`
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux verification passed at `a9dbd3d95cfbfcacc5ec99278c7d145024b435b3` for the bounded observer-only diagnostic. The authoritative classification is `M1_AGE_STRUCTURED_TURNOVER_INSUFFICIENT`; M1 remains not established.
+- Changed areas: Remote-verification governance record only; no scientific implementation or evidence values changed after the diagnostic commit.
+- Validation:
+  - Exact-head diagnostic run `33091139939` - PASSED
+  - Governance-only run `33091697469` - FAILED
+  - Compact artifact digest `sha256:bceeff2138ad174dbc51f71a18b00290aafb95c5104c6d1a55bbecfc1b8ee4a4` - PASSED
+  - Architect review - PENDING
+- Remaining risks: The age-structured candidate is insufficient for fed homeostasis under the frozen diagnostic contract. M1 remains not established; no production repair, second candidate, M2, or DC-DEV-021 is authorized.
+- Blockers: Architect acceptance.
+- Follow-up directive: none
+
+## D-20260827-dcdev020m1replan002-maturation-coupled-load-bearing-feasibility001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1REPLAN002-MATURATION-COUPLED-LOAD-BEARING-FEASIBILITY-LOCAL`
+- Supersedes outcome: `OUT-DCDEV020M1REPLAN001-AGE-STRUCTURED-TURNOVER-FEASIBILITY-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Closed: `2026-08-27T13:45:00-04:00`
+- Acceptance: PARTIAL
+- Summary: Local execution of the bounded observer-only maturation/load-bearing diagnostic from `92075021ae1f4c9917f7ace9b160e5694e001de2` produced `M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED` provisionally. The static/current/age-only controls reproduce exactly; the candidate organized-material delta is `+1.33231221701902`; candidate recovery passes; current-control recovery fails; starvation structural decline and explicit damage pass; physical topology loss is not reached. M1 remains not established.
+- Changed areas: New diagnostic example and focused test, phase1-certifier example registration, scoped workflow, compact evidence, diagnostic documentation, and append-only governance only. No production biology, coefficients, mechanics equations, source schedule, transport, resource configuration, production selection, controller, reserve, recycling, salvage, M2, REPLAN-003, behavior, evolution, or DC-DEV-021 behavior changed.
+- Validation:
+  - Local sanctioned Rust 1.89.0 compile - PASSED
+  - Focused REPLAN-002 tests - PASSED (4 tests)
+  - Fixed-horizon REPLAN-002 execution - PASSED
+  - Compact evidence and dense Atlas output - PASSED
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: The candidate is only a diagnostic shadow and has not been selected for production. The positive candidate result requires exact-head Linux verification and Architect review; physical topology loss was not reached; the current-control recovery failure remains part of the evidence. No production repair, parameter search, source redesign, reserve/recycling/salvage, M1 closure, M2, REPLAN-003, or DC-DEV-021 is authorized.
+- Blockers: Exact-head Linux CI and Architect review.
+- Follow-up directive: none
+
+## D-20260827-dcdev020m1replan002-maturation-coupled-load-bearing-feasibility001 - PARTIAL
+
+- Outcome ID: `OUT-DCDEV020M1REPLAN002-MATURATION-COUPLED-LOAD-BEARING-FEASIBILITY-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Supersedes outcome: `OUT-DCDEV020M1REPLAN002-MATURATION-COUPLED-LOAD-BEARING-FEASIBILITY-LOCAL`
+- Closed: `2026-08-27T14:20:00-04:00`
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux verification passed at `00f63b84a4080841835516f83881927a16115063` for the bounded observer-only maturation/load-bearing diagnostic. The classification remains `M1_MATURATION_COUPLED_LOAD_BEARING_FEASIBILITY_CONFIRMED`; M1 remains not established and Architect acceptance is pending.
+- Changed areas: Remote-verification governance record only; the diagnostic implementation and compact evidence were not changed after the scientific commit. No production biology, coefficients, mechanics equations, source schedule, transport, resource configuration, production selection, controller, reserve, recycling, salvage, M2, REPLAN-003, behavior, evolution, or DC-DEV-021 behavior changed.
+- Validation:
+  - Exact-head Linux workflow `33102252577` at `00f63b84a4080841835516f83881927a16115063` - PASSED
+  - Governance, formatting, bounded diff, D-087 V2/V3, REPLAN-002 execution, focused tests, compact evidence, GC conservation, Phase-1 metrics, D-088, D-091, and evolution preservation - PASSED
+  - Uploaded artifact `dcdev020m1replan002-maturation-coupled-load-bearing-evidence`, digest `sha256:0d6c7af67893635ebb49f301f70eed6854985dfa67c10fc027898244b3289009` - VERIFIED
+  - PR #44 OPEN / DRAFT / UNMERGED with required base - VERIFIED
+  - Architect review - PENDING
+- Remaining risks: The positive maturation-coupled candidate remains a diagnostic shadow and has not been selected for production; physical topology loss was not reached; current-control recovery remains negative evidence. M1 remains not established and no production repair, parameter search, source redesign, reserve/recycling/salvage, M2, REPLAN-003, or DC-DEV-021 is authorized.
+- Blockers: Architect acceptance.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r1-maturation-production-candidate001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R1-MATURATION-COUPLED-PRODUCTION-CANDIDATE-PARTIAL
+- Supersedes outcome: `OUT-DCDEV020M1REPLAN002-MATURATION-COUPLED-LOAD-BEARING-FEASIBILITY-REMOTE-VERIFIED-PENDING-ARCHITECT`
+- Closed: 2026-08-28T11:30:00-04:00
+- Acceptance: PARTIAL
+- Summary: The versioned `MaturationCoupledV4` candidate is being qualified from accepted REPLAN-002 authority `4becff4fff7d096c70468b759ace09f747c4eb56`. Local R1 execution reproduces the immutable shadow, passes fed homeostasis, no-reset recovery, starvation structural decline, material closure, damage, serialization, deterministic replay, and fission lifecycle continuity. Fresh V2 and V3 D-087 controls pass 8/8; V4 currently returns 6/8 and is therefore not qualified.
+- Changed areas: Versioned V4 lifecycle dispatch/state and R1 candidate harness/tests; compact evidence, dense Atlas evidence, workflow, documentation, and append-only governance. No historical contract, coefficient, parameter, production default, controller, reserve/recycling/salvage, M2, or downstream behavior change.
+- Validation:
+  - Focused R1 lifecycle tests - PASSED
+  - Candidate shadow parity, fed homeostasis, recovery, starvation decline, and material closure - PASSED
+  - V2 D-087 preservation - PASSED
+  - V3 D-087 preservation - PASSED
+  - V4 D-087 8/8 requirement - FAILED
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: V4 D-087 preservation is currently a fail-closed regression (`D087_D086_ACCEPTANCE_INVALID`), so no candidate qualification or production selection is authorized. M1 remains not established; no physical-death follow-up or M2 is authorized.
+- Blockers: V4 D-087 8/8 requirement and exact-head Linux CI/Architect review.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r1-maturation-production-candidate001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R1-MATURATION-COUPLED-PRODUCTION-CANDIDATE-REMOTE-VERIFIED-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R1-MATURATION-COUPLED-PRODUCTION-CANDIDATE-PARTIAL
+- Closed: 2026-08-28T11:55:00-04:00
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux workflow 33186408566 passed at 3c5d0c143ea1031a987fed792269760dfdab48d2. It verified governance, formatting, bounded diff, V2/V3 D-087 8/8 controls, V4 execution, focused lifecycle tests, compact evidence, geometry/material preservation, Phase-1 metrics, D-088, D-091, and evolution-harness preservation. The V4 D-087 certifier remains 6/8, failing dual-retention and starvation gates, so the production candidate is not qualified and M1 remains not established.
+- Changed areas: Remote verification of the bounded R1 package; no new scientific implementation or historical evidence rewrite.
+- Validation:
+  - Exact-head Linux R1 workflow 33186408566 - PASSED
+  - Uploaded compact artifact digest sha256:e663a75f49dabf5adbe8bd86700b25ae628a36ac2b6c21a4bcb9f32b49702d45 - VERIFIED
+  - PR #44 open, draft, unmerged, and based on the required strategy branch - VERIFIED
+  - Architect acceptance - NOT RUN
+- Remaining risks: V4 D-087 8/8 is not met, so no production selection or M1 closure is authorized. Do not repair D-087 or start a downstream directive from this result.
+- Blockers: Architect acceptance of the fail-closed V4 preservation result.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r2-d087-v4-lifecycle-semantics-audit001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R2-D087-V4-LIFECYCLE-SEMANTICS-AUDIT-IN_PROGRESS
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R1-MATURATION-COUPLED-PRODUCTION-CANDIDATE-REMOTE-VERIFIED-PARTIAL
+- Closed: 2026-08-28T15:30:00-04:00
+- Acceptance: PARTIAL
+- Summary: The exact-head V4 baseline reproduces at 6/8, with dual-retention and starvation gates failing. The observer-only audit reports a lifecycle-consistent structural tracer that passes the unchanged Gate-1 predicates while preserving the exact physical trajectory; the frozen Gate-2 continuation does not reach either the legacy alive/A predicate or existing conservative observer viability loss. Local classification is `M1_V4_D087_MIXED_REGRESSION`, pending exact-head Linux diagnostic CI and Architect review.
+- Changed areas: R2 observer-only diagnostic example, scoped workflow, compact evidence, documentation, and append-only governance. No V4 biology, D-087 threshold, historical contract, production default, or downstream behavior change.
+- Validation:
+  - V2 D-087 - PASSED 8/8
+  - V3 D-087 - PASSED 8/8
+  - V4 legacy D-087 - PASSED 6/8
+  - Lifecycle-consistent Gate-1 observer - PASSED
+  - Physical trajectory parity - PASSED
+  - Existing observer-defined starvation state - NOT REACHED in frozen continuation
+  - Exact-head Linux CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: Gate 2 remains a genuine V4 D-087 failure under the frozen protocol because V4 stays alive, A remains above 0.05, and existing observer viability remains true. No D-087 repair, V4 change, physical-death work, production selection, M1 closure, or M2 is authorized.
+- Blockers: Exact-head R2 CI and Architect disposition.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r3-d087-n-starvation-causal-divergence-audit001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R3-D087-N-STARVATION-CAUSAL-DIVERGENCE-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R2-D087-V4-LIFECYCLE-SEMANTICS-AUDIT-IN_PROGRESS
+- Closed: 2026-08-28T18:30:00-04:00
+- Acceptance: PARTIAL
+- Summary: The observer-only R3 audit replays the exact frozen D-087 starvation protocol for V2, V3, and V4. Local execution reproduces V2/V3 `8/8`, V4 legacy `6/8`, R1 capability flags, and V4 material closure. V4 shows continuing structural decline without certified collapse; its lower structural loss and much larger retained area support the family-level classification `M1_V4_N_STARVATION_COMBINED_COUPLING`.
+- Changed areas: R3 observer-only example, scoped workflow, compact evidence, documentation, and append-only governance. No V4 biology, certifier semantics, historical contract, D-087 threshold, production default, or downstream behavior changed.
+- Validation:
+  - Local exact frozen replay - PASSED
+  - V2 D-087 8/8 - PASSED
+  - V3 D-087 8/8 - PASSED
+  - V4 D-087 legacy 6/8 - PASSED
+  - R1 capability and V4 closure flags - PASSED
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: The combined classification is a family-level observational result, not an independent necessity proof for lifecycle or embodied coupling. Gate-1 certifier repair remains deferred; V4 remains unqualified, M1 remains not established, and physical-death, production selection, M2, reserve/recycling/salvage, and successor work remain unauthorized.
+- Blockers: Exact-head R3 CI and Architect disposition.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r4-v4-contract-aware-preservation-qualification001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R4-V4-CONTRACT-AWARE-PRESERVATION-QUALIFICATION-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R3-D087-N-STARVATION-CAUSAL-DIVERGENCE-PARTIAL
+- Closed: 2026-08-28T20:00:00-04:00
+- Acceptance: PARTIAL
+- Summary: Local R4 qualification at the authorized R3 head applies a lifecycle-consistent V4 structural observer tracer without changing physical state. V2 and V3 remain D-087 `8/8`; V4 becomes `[true,true,false,true,true,true,true,true]`, with only the unchanged starvation Gate 2 false. The existing 150000-step causal-starvation predicate passes with observer viability loss at step `6130`; remote CI and Architect review remain pending.
+- Changed areas: V4 observer tracer hook, R4 qualification example, scoped workflow, compact evidence, R4 documentation, and append-only governance. No V4 physical biology, D-087 threshold/predicate, historical contract, production default, or downstream behavior changed.
+- Validation:
+  - V2 D-087 8/8 - PASSED
+  - V3 D-087 8/8 - PASSED
+  - V4 D-087 7/8 - PASSED
+  - V4 physical trajectory parity - PASSED
+  - Existing causal starvation predicate through 150000 - PASSED
+  - R1 capabilities and historical preservation - PASSED
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: This is not Architect acceptance. V4 Gate 2 remains the unchanged biological D-087 failure; M1 remains not established; no physical-death follow-up, production selection, M2, reserve/recycling/salvage, or successor work is authorized.
+- Blockers: Exact-head R4 CI and Architect disposition.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r4-v4-contract-aware-preservation-qualification001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R4-V4-CONTRACT-AWARE-PRESERVATION-QUALIFICATION-REMOTE-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R4-V4-CONTRACT-AWARE-PRESERVATION-QUALIFICATION-PARTIAL
+- Closed: 2026-08-28T20:12:00-04:00
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux push and pull-request workflows passed for R4 at `793e71aee1e5efda9c5aa840bdcb6df749ae4d31`. Remote artifacts verify the corrected V4 observer tracer, V2/V3 `8/8`, V4 `7/8` with only unchanged Gate 2 false, the existing 150000-step causal-starvation predicate, and preservation package.
+- Changed areas: Remote verification record only; no scientific implementation or historical evidence changed.
+- Validation:
+  - Push workflow 33206675011 - PASSED
+  - Pull-request workflow 33206681523 - PASSED
+  - Compact artifact verification - PASSED
+  - V2/V3 D-087 8/8 - PASSED
+  - V4 D-087 7/8 with only Gate 2 false - PASSED
+  - Existing causal starvation predicate through 150000 - PASSED
+  - R1 and broader preservation suites - PASSED
+  - Architect review - NOT RUN
+- Remaining risks: This is not Architect acceptance. V4 Gate 2 remains the unchanged biological D-087 failure; M1 remains not established; no physical-death follow-up, production selection, M2, reserve/recycling/salvage, or successor work is authorized.
+- Blockers: Architect disposition.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r3-d087-n-starvation-causal-divergence-audit001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R3-D087-N-STARVATION-CAUSAL-DIVERGENCE-REMOTE-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R3-D087-N-STARVATION-CAUSAL-DIVERGENCE-PARTIAL
+- Closed: 2026-08-28T19:00:00-04:00
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux push and pull-request workflows passed for the R3 observer-only audit at `5f2e6195ae2d52bf2e7121b1ade144fbcb4c64e7`. The artifact verifies the frozen V2/V3/V4 replay, compact evidence, preservation suite, and family-level `M1_V4_N_STARVATION_COMBINED_COUPLING` classification.
+- Changed areas: Remote verification record only; no scientific implementation or historical evidence was changed.
+- Validation:
+  - Push workflow `33202806266` at exact head - PASSED
+  - Pull-request workflow `33202802404` at exact head - PASSED
+  - Compact evidence verification - PASSED
+  - V2/V3 D-087 `8/8` and V4 legacy `6/8` - PASSED
+  - R1/R2 and preservation suites - PASSED
+  - Uploaded artifact digest `sha256:32e9175e022fd9a267d1e105ef8fef41d2bd9b7256a5d18c3a5afd14eaad4d28` - PASSED
+  - Architect review - NOT RUN
+- Remaining risks: This is not Architect acceptance. Gate-1 certifier repair remains deferred; V4 remains unqualified, M1 remains not established, and physical-death, production selection, M2, reserve/recycling/salvage, and successor work remain unauthorized.
+- Blockers: Architect disposition.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5-v4-irreversible-physical-death-qualification001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5-V4-IRREVERSIBLE-PHYSICAL-DEATH-QUALIFICATION-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R4-V4-CONTRACT-AWARE-PRESERVATION-QUALIFICATION-REMOTE-PARTIAL
+- Closed: 2026-08-28T17:28:00-04:00
+- Acceptance: PARTIAL
+- Summary: The R5 fixed-checkpoint no-reset refeed diagnostic executed from accepted R4 authority. S0, S1, and S2 recover under positive finite refeeding; S3 and S4 do not recover while physics advances and the death latch does not block the replay. Starvation strict-material closure reaches `0.45051928554230614`, above the unchanged `1e-8` tolerance, so irreversible physical death is not qualified and the local classification remains `M1_V4_DEATH_QUALIFICATION_UNRESOLVED`.
+- Changed areas: R5 observer-only qualification example, phase1-certifier example registration, scoped workflow, compact evidence, documentation, and append-only governance; no scientific-core biology or production behavior changed.
+- Validation:
+  - R5 full bounded local replay - PASSED as an executed diagnostic
+  - S0/S1/S2 recovery - PASSED
+  - S3/S4 positive source opportunity and no-latch physics advancement - PASSED
+  - starvation material closure at unchanged tolerance - FAILED; residual `0.45051928554230614`
+  - refeed material closure - PASSED
+  - Architect review - NOT RUN
+- Remaining risks: Exact-head Linux CI and Architect disposition remain pending. The deep-collapse refeed result must not be promoted to irreversible-death qualification while the complete starvation/refeed material-closure gate is false. M1 remains not established; no production selection, successor work, M2, reserve, recycling, salvage, or tuning is authorized.
+- Blockers: Exact-head R5 CI and Architect disposition; starvation strict-material closure exceeds tolerance.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5-v4-irreversible-physical-death-qualification001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5-V4-IRREVERSIBLE-PHYSICAL-DEATH-QUALIFICATION-REMOTE-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5-V4-IRREVERSIBLE-PHYSICAL-DEATH-QUALIFICATION-PARTIAL
+- Closed: 2026-08-28T17:29:00-04:00
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux push workflow `33212288812` and pull-request workflow `33212291854` passed at `400c7f0f002018071c83a3b3b89351a3ce4a6fb0`. Compact R5 files match across both remote artifacts. The scientific result remains `M1_V4_DEATH_QUALIFICATION_UNRESOLVED` because starvation strict-material closure is false at the unchanged tolerance; Architect acceptance remains pending.
+- Changed areas: Remote verification record and append-only governance only; no scientific implementation or historical evidence changed after the local R5 package.
+- Validation:
+  - Governance, formatting, bounded diff, D-087 preservation, R5 execution, compact verification, focused preservation, and broader preservation suites - PASSED
+  - Push artifact digest `sha256:86eb35e97618fdac985557bfb022a32226a40c42465e028fcdc770025e80b096` - VERIFIED
+  - PR artifact digest `sha256:8bfbc99070ace6aff794eeda7e12d074276d050eba3b1b75ca2839585c7f4e7b` - VERIFIED
+  - Compact top-level evidence equality across push and PR artifacts - PASSED
+  - Architect review - NOT RUN
+- Remaining risks: R5 does not qualify irreversible physical death while the complete starvation/refeed material-closure gate is false. M1 remains not established; no production selection, successor work, M2, reserve, recycling, salvage, or tuning is authorized.
+- Blockers: Architect disposition; starvation strict-material closure exceeds tolerance.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5r1-zero-area-closure-and-refeed-semantics-audit001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5R1-ZERO-AREA-CLOSURE-AND-REFEED-SEMANTICS-AUDIT-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5-V4-IRREVERSIBLE-PHYSICAL-DEATH-QUALIFICATION-REMOTE-PARTIAL
+- Closed: 2026-08-28T18:00:00-04:00
+- Acceptance: PARTIAL
+- Summary: The observer-only R5-R1 audit reproduces the R5 maximum raw strict-material delta at transport step `8177`, before the first failed mechanics return at step `8566`. The maximum is the internal C/A/W transport export; the later zero-area mechanics transition changes the mesh before returning false and invalidates deeper continuation. R5 refeed is direct internal insertion from a healthy reference schedule and is therefore a sealed internal-delivery upper bound, not a live spatial-resource test. Local classification: `M1_R5_ALTERNATE_CLOSURE_CAUSE_CONFIRMED`.
+- Changed areas: R5-R1 observer-only stage audit, example registration, scoped workflow, compact evidence, documentation, and append-only governance only; no scientific production equations or historical evidence changed.
+- Validation:
+  - R5 exact reproduction - PASSED
+  - 150000-step stage ledger - PASSED
+  - first signed-area nonpositive step `7675`, first unexplained transport residual step `7684`, first mechanics false/area-zero step `8566` - VERIFIED
+  - mechanics state mutation despite false return - VERIFIED
+  - authoritative runtime caller stops on mechanics false - VERIFIED
+  - R5 refeed classification - VERIFIED as `SEALED_INTERNAL_DELIVERY_UPPER_BOUND`
+  - Architect review - NOT RUN
+- Remaining risks: Exact-head Linux CI and Architect disposition remain pending. R5 S3/S4 are not physical death qualification: they are post-invalid continuation and use invalid direct-internal refeeding semantics. R4 observer-collapse evidence at step `6130` is pre-failure valid, while its late material trajectory requires requalification. M1 remains not established; no production repair, physical-death follow-up, M2, reserve, recycling, salvage, or tuning is authorized.
+- Blockers: Exact-head R5-R1 CI and Architect disposition.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5r2-v4-gc-transport-amount-conservation-repair001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5R2-V4-GC-TRANSPORT-AMOUNT-CONSERVATION-REPAIR-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5R1-ZERO-AREA-CLOSURE-AND-REFEED-SEMANTICS-AUDIT-PARTIAL
+- Closed: `2026-08-28T21:50:00-04:00`
+- Acceptance: PARTIAL
+- Summary: R5-R2 local qualification applies actual-positive-area amount-space transport only to GeometryConservativeV3 and MaturationCoupledV4. Focused sub-floor V3/V4 conservation and above-floor parity pass. The integrated valid-prefix replay records no transport residual above `4.0946412926956555e-14`, eliminates the prior step-7684/8177 transport failure class, preserves the pre-defect observer-collapse chronology, and stops at the first authoritative mechanics false return at step `8566`. Exact-head CI and Architect disposition remain pending.
+- Changed areas: version-aware transport implementation and signed applied-transfer ledger fields, focused transport tests, R5-R2 qualification example/registration, scoped workflow, compact evidence, documentation, and append-only governance. Historical V1/V2 transport and unrelated biology remain unchanged.
+- Validation:
+  - Focused chemistry-core transport tests - PASSED (3/3)
+  - R5-R2 bounded valid-prefix replay - PASSED as a fail-closed transport qualification
+  - V3/V4 sub-floor transport closure - PASSED
+  - Above-floor parity - PASSED
+  - Authoritative mechanics-stop handling - PASSED
+  - Exact-head CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: This is not M1 closure. R4 150k evidence remains pending requalification; R5 S3/S4 remain invalid death evidence; no live refeed, death qualification, production selection, M2, reserve, recycling, salvage, or tuning is authorized.
+- Blockers: Exact-head R5-R2 CI and Architect disposition.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5r2-v4-gc-transport-amount-conservation-repair001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5R2-V4-GC-TRANSPORT-AMOUNT-CONSERVATION-REPAIR-REMOTE-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5R2-V4-GC-TRANSPORT-AMOUNT-CONSERVATION-REPAIR-PARTIAL
+- Closed: 2026-08-28T21:58:00-04:00
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux push workflow `33227623962` and pull-request workflow `33227626644` both passed at `1410593005b7d0c42238704b4f19c3cbfeea132b`. The compact verifier correction was metadata-only and now matches the actual V4 D-087 vector `[true,true,false,true,true,true,true,true]`. Remote evidence confirms V3/V4 amount-space actual-positive-area transport, no transport residual above `4.0946412926956555e-14`, elimination of the former step-7684/8177 failure class, and authoritative stop at mechanics false step `8566`.
+- Changed areas: One V4/D-087 verifier expectation in the scoped workflow after the first remote run exposed the mismatch; no scientific source, coefficients, thresholds, production behavior, or historical evidence changed. Compact evidence and dense ledgers are preserved on Atlas.
+- Validation:
+  - Local focused transport and preservation suites - PASSED
+  - Governance, formatting, bounded diff, V2/V3/V4 D-087, R5-R2 qualification, V4 R1 phenotype, compact verification, and remote focused tests - PASSED
+  - Push artifact digest `sha256:c39728cdbca81a9d69b1b29b3a0430c186388f383574f448fb94bb9b1b57a8f8` - VERIFIED
+  - PR artifact digest `sha256:c84e8b363f13d560bbbffa0e6454638c4dcec0c4d2c00fff7066bd7dc3be66e8` - VERIFIED
+  - Architect review - PENDING
+- Remaining risks: R4 150k evidence remains pending requalification; R5 S3/S4 remain invalid death evidence; the authoritative mechanics-false boundary remains a stop rather than a death result. M1 remains not established; no death qualification, live refeed, production selection, M2, reserve, recycling, salvage, or tuning is authorized.
+- Blockers: Architect disposition of R5-R2.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5r3-v4-live-resource-irreversible-death-qualification001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5R3-V4-LIVE-RESOURCE-IRREVERSIBLE-DEATH-QUALIFICATION-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5R2-V4-GC-TRANSPORT-AMOUNT-CONSERVATION-REPAIR-REMOTE-PARTIAL
+- Closed: `2026-08-28T22:30:00-04:00`
+- Acceptance: PARTIAL
+- Summary: R5-R3 executes the authorized live `FiniteSpatialBackingReservoirV1` no-reset refeed qualification from the accepted R5-R2 head. The V4 starvation prefix remains materially closed through accepted step `8565` and stops at the authoritative mechanics false at `8566`. S0 receives live finite N/F delivery but fails recovery after contact loss; S1 has no physical resource contact; S2 stops immediately on mechanics false. The result is `M1_V4_LIVE_RESOURCE_DEATH_QUALIFICATION_INVALID`; irreversible physical death is not established.
+- Changed areas: R5-R3 live-resource qualification example/registration, scoped workflow, compact evidence, documentation, and append-only governance. No V4 biology, transport, mechanics, D-087, production selection, or historical evidence changed.
+- Validation:
+  - Live-resource example and focused preservation tests - PASSED
+  - Starvation closure through accepted prefix - PASSED; maximum accepted-stage residual `5.684341886080802e-14`
+  - S0 live delivery `12.075682888285865` N and F each; recovery - FAILED; remaining inventory `231.07356512225152` each
+  - S1 no-contact refeed - FAILED to recover; no delivery
+  - S2 authoritative stop on mechanics false at refeed step `1`; no death claim
+  - V2 D-087 `8/8`; V3 D-087 `8/8`; V4 D-087 `7/8` with frozen Gate 2 failure
+  - Architect review - PENDING
+- Remaining risks: S0 fails the required live positive control because body-resource contact is lost while finite inventory remains. S1/S2 are not irreversible-death evidence; S2's immediate stop makes refeed outcome uninterpretable for death. M1 remains not established. No death repair, R4 requalification, production selection, M2, reserve, recycling, salvage, or tuning is authorized.
+- Blockers: Exact-head R5-R3 CI and Architect disposition.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5r3-v4-live-resource-irreversible-death-qualification001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5R3-V4-LIVE-RESOURCE-IRREVERSIBLE-DEATH-QUALIFICATION-REMOTE-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5R3-V4-LIVE-RESOURCE-IRREVERSIBLE-DEATH-QUALIFICATION-PARTIAL
+- Closed: `2026-08-28T22:55:00-04:00`
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux push workflow `33229822934` and pull-request workflow `33229823637` both passed at `6ee1e79a79e8492bae00a3d1e0cef786814de540`. Remote execution confirms the R5-R3 live-resource qualification is fail-closed: S0 receives live finite N/F but does not recover after contact loss, S1 has no contact or delivery, and S2 stops on mechanics false at refeed step `1`. The classification remains `M1_V4_LIVE_RESOURCE_DEATH_QUALIFICATION_INVALID`; irreversible physical death is not established.
+- Changed areas: Remote validation record and metadata-only governance reconciliation. No V4 biology, transport, mechanics, D-087, production selection, or historical evidence changed.
+- Validation:
+  - Governance, formatting, bounded-diff, D-087, R5-R3 qualification, compact verification, and focused preservation tests - PASSED
+- Push artifact digest `sha256:24e6ddf08a2574c97331a8414e07a9e9d5d9c082881736a93cf85e805463a528` - VERIFIED
+- PR artifact digest `sha256:067959b146e7a1924cf017c798b202dad5ae079a394c6b68e2a1c21eec3904e9` - VERIFIED
+- Architect review - PENDING
+- Remaining risks: S0 fails the required live positive control because body-resource contact is lost while finite inventory remains. S1/S2 are not irreversible-death evidence; S2's immediate stop makes refeed outcome uninterpretable for death. M1 remains not established. No death repair, R4 requalification, production selection, M2, reserve, recycling, salvage, or tuning is authorized.
+- Blockers: Architect disposition of R5-R3.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5r4-v4-admissible-boundary-no-resurrection-qualification001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5R4-V4-ADMISSIBLE-BOUNDARY-NO-RESURRECTION-QUALIFICATION-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5R3-V4-LIVE-RESOURCE-IRREVERSIBLE-DEATH-QUALIFICATION-REMOTE-PARTIAL
+- Closed: `2026-08-28T23:45:20-04:00`
+- Acceptance: PARTIAL
+- Summary: The local R5-R4 qualification reproduces the repaired starvation prefix through accepted step `8565` and uses a harness-local finite nonspatial boundary with all intact edges eligible, current membrane permeability/edge length/interior concentration, finite inventory, and accepted R1 per-step caps. S0 at step `480` recovers, S1 at first observer-nonviable step `4066` recovers, and S2 at last fully accepted pre-stop step `8565` receives positive transfer but does not recover through 8,000 steps; it ends nonviable with 48 ruptured edges while the run remains physically valid. Classification is `M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED`, pending exact-head CI and Architect review.
+- Changed areas: R5-R4 observer/qualification example and registration, scoped workflow, compact evidence, documentation, and append-only governance only. No V4 biology, production default, spatial resource behavior, D-087 semantics, or M2 work changed.
+- Validation:
+  - Local V2 D-087 `8/8`, V3 D-087 `8/8`, V4 D-087 `7/8` with frozen Gate 2 failure - PASSED
+  - R1 opportunity schedule hash `51753cd4b066de67`; total cap `162.46464053838164` N/F each - VERIFIED
+  - S0 delivered `162.46464053838164` N/F each and recovered; S1 delivered `161.09617066195688` N/F each and recovered - PASSED
+  - S2 delivered `0.09269071507161522` N/F each, never exceeded cap, and did not recover; final state has `closed_intact=false`, `ruptured_edges=48`, and `physical_runtime_valid=true` - VERIFIED
+  - Maximum starvation residual `4.0946412926956555e-14`; maximum refeed residual `3.025912853615864e-13` - PASSED
+  - Local exact-run compact verification - PASSED
+  - Exact-head CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: S2's result is a no-resurrection qualification under the admissible boundary, not an authoritative mechanics-failure result; it remains subject to exact-head Linux validation and Architect acceptance. M1 remains not established until Architect closes the result. No production selection, M2, reserve, recycling, salvage, tuning, or successor execution is authorized.
+- Blockers: Exact-head R5-R4 CI and Architect disposition.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5r4-v4-admissible-boundary-no-resurrection-qualification001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5R4-V4-ADMISSIBLE-BOUNDARY-NO-RESURRECTION-QUALIFICATION-REMOTE-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5R4-V4-ADMISSIBLE-BOUNDARY-NO-RESURRECTION-QUALIFICATION-PARTIAL
+- Closed: `2026-08-28T23:57:00-04:00`
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux push workflow `33232374125` and pull-request workflow `33232376420` both passed at `a49e30c148e41ff8abb681b49964381ae61037dc`. Remote execution verified the finite nonspatial membrane-mediated boundary, accepted R1 per-step cap, positive S0/S1 recovery, positive S2 transfer with no recovery, closed material accounting, unchanged D-087 preservation, and the classification `M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED`.
+- Changed areas: Exact-head remote validation and append-only governance only; no scientific-core biology, production default, D-087 semantics, spatial acquisition, M2, or successor work changed.
+- Validation:
+  - Governance, formatting, bounded diff, V2/V3/V4 D-087, R5-R4 qualification, compact verification, and focused preservation tests - PASSED
+  - Push artifact digest `sha256:7b73bd184d14ccb7b5228f5429cb3f78579feea86d2f47cee03473da3682847f` - VERIFIED
+  - PR artifact digest `sha256:5dd057ff9712b06bf09f8acacf85cfe90fd9fea86ab7e5d0bbdb0177922481e5` - VERIFIED
+  - Push/PR compact JSON content agreement - PASSED
+  - PR #44 open, draft, unmerged, correct base, and exact head - PASSED
+  - Architect review - PENDING
+- Remaining risks: This qualifies the R5-R4 assay result but does not by itself close M1 or authorize V4 production selection; Architect acceptance remains pending. S2 remained physically executable through the unchanged 8,000-step refeed and ended with ruptured topology rather than an authoritative mechanics-failure return. No production selection, M2, reserve, recycling, salvage, tuning, or successor execution is authorized.
+- Blockers: Architect disposition of R5-R4.
+- Follow-up directive: none
+
+## D-20260829-dcdev020m1closure001-v4-production-selection-and-freeze001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1CLOSURE001-V4-PRODUCTION-SELECTION-AND-FREEZE-REMOTE-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5R4-V4-ADMISSIBLE-BOUNDARY-NO-RESURRECTION-QUALIFICATION-REMOTE-PARTIAL
+- Closed: `2026-08-29T11:02:00-04:00`
+- Acceptance: PARTIAL
+- Summary: The bounded M1 closure candidate selects `MaturationCoupledV4` as the fresh packaged Linux production default with reserve OFF, preserves explicit V2/V3 selection, binds the Architect-accepted R5-R4 result, and preserves the frozen V4 historical D-087 boundary at `7/8` with vector `[true,true,false,true,true,true,true,true]`. Candidate classification is `M1_V4_PRODUCTION_SELECTION_AND_CLOSURE_CANDIDATE_QUALIFIED`; formal M1 Architect closure remains pending.
+- Changed areas: Production selector/runtime wiring, closure verifier/workflow, compact closure evidence, documentation, and append-only governance. No V4 equations, D-087 predicates/thresholds, reserve, recycling, salvage, M2 behavior, or PR #44 merge changed.
+- Validation:
+  - Governance validation, scoped formatting, bounded diff, packaged default selector, explicit V2/V3 availability, V2/V3/V4 D-087, accepted R5-R4 reproduction, forbidden-controller audit, and focused downstream/lifecycle tests - PASSED
+  - Push workflow `33258711403` at `7720546ccc75a7d5becb1dc6eac8a063e0d75b8c` - SUCCESS
+  - PR workflow `33258714464` at `7720546ccc75a7d5becb1dc6eac8a063e0d75b8c` - SUCCESS
+  - Push artifact digest `sha256:74f1e6744a2bb1f86fec0b7c277c604a590d795b877ede01a7d894c0bc0520e0` - VERIFIED
+  - PR artifact digest `sha256:d5959042f25ff34ebf5270ba169954d2c89af417871aa14f497026039a781987` - VERIFIED
+  - PR #44 open, draft, unmerged, correct base, and exact head - PASSED
+  - Dense evidence and remote artifacts preserved on canonical Atlas
+- Remaining risks: Formal M1 Architect acceptance is pending. M2 remains unauthorized; PR #44 remains unmerged; no clean capability baseline or successor execution is authorized.
+- Blockers: Architect acceptance of the closure candidate.
+- Follow-up directive: none
+
+## D-20260829-dcdev020m1closure001-r1-provenance-and-downstream-preservation-finalization001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1CLOSURE001-R1-PROVENANCE-DOWNSTREAM-FINALIZATION-PENDING-CI
+- Supersedes outcome: OUT-DCDEV020M1CLOSURE001-V4-PRODUCTION-SELECTION-AND-FREEZE-REMOTE-PARTIAL
+- Closed: `2026-08-29T12:10:00-04:00`
+- Acceptance: PARTIAL
+- Summary: The closure package was finalized with selector provenance corrected to `7720546ccc75a7d5becb1dc6eac8a063e0d75b8c`, closure starting head `d011543f58fa684d04c97c0cccba9f7202957546`, and project-goal blob `94864614625a8f3388a51b33b79ad203b2f66588`. Existing DC-DEV-002, DC-DEV-005, DC-DEV-006, DC-DEV-007, DC-DEV-008, and DC-DEV-011 runners all passed on Atlas. Focused D-098 geometry, D-088, D-091, evolution-harness, and metrics tests passed.
+- Validation:
+  - Atlas packaged default `MaturationCoupledV4 / reserve OFF`, explicit V2/V3 selection, forbidden-controller audit, V2/V3/V4 D-087 preservation, accepted R5-R4 qualification, and focused closure tests - PASSED
+  - Fresh exact-head push workflow `33264510427` and PR workflow `33264513824` at `9697c29ac402e89ecbb0d9787ffec31ba875cfbe` - PASSED
+  - Push artifact digest `sha256:7736d1ad7cb3bbfd522a8b276fa014589f7787d43557c86ff03894e06b4c6c63` - VERIFIED
+  - PR artifact digest `sha256:4e00cb96e1bfe8c99ba03086314b2b9a1b136adafdb3b3c7201f65810ee383c7` - VERIFIED
+  - PR #44 open, draft, unmerged, and at exact head - PASSED
+- Changed areas: Closure verifier/workflow, compact closure evidence, closure documentation, and append-only governance only; no scientific source, selector behavior, V4 biology, D-087 semantics, reserve, M2, clean baseline, or PR #44 merge changed.
+- Atlas dense evidence is preserved under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1closure001/`.
+- Remaining risks: Architect acceptance remains pending. M1 formal closure is not yet declared; M2 remains unauthorized; PR #44 remains open, draft, and unmerged.
+- Blockers: Architect acceptance of the finalized closure evidence.
+- Follow-up directive: none

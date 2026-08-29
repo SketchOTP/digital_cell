@@ -1,0 +1,282 @@
+{
+  "rows": [
+    {
+      "alive": true,
+      "area0": 310.082003480243,
+      "area1": 46.797294850028834,
+      "kind": "vertex_noise",
+      "mag": 0.15,
+      "pass": false,
+      "size": "small"
+    },
+    {
+      "alive": true,
+      "area0": 310.8623589560681,
+      "area1": 48.44109435372184,
+      "kind": "c_noise",
+      "mag": 0.08,
+      "pass": false,
+      "size": "small"
+    },
+    {
+      "alive": true,
+      "area0": 310.8623589560681,
+      "area1": 48.11233156504329,
+      "kind": "a_noise",
+      "mag": 0.08,
+      "pass": false,
+      "size": "small"
+    },
+    {
+      "alive": true,
+      "area0": 310.8623589560681,
+      "area1": 46.770217737640564,
+      "kind": "l_noise",
+      "mag": 0.1,
+      "pass": false,
+      "size": "small"
+    },
+    {
+      "alive": true,
+      "area0": 310.8623589560681,
+      "area1": 34.030620039751966,
+      "kind": "env_nf",
+      "mag": -0.05,
+      "pass": false,
+      "size": "small"
+    },
+    {
+      "alive": true,
+      "area0": 310.8623589560681,
+      "area1": 86.75876061100189,
+      "kind": "env_nf",
+      "mag": 0.05,
+      "pass": true,
+      "size": "small"
+    },
+    {
+      "alive": true,
+      "area0": 310.86235895606853,
+      "area1": 46.79893302644348,
+      "kind": "rotate",
+      "mag": 0.2,
+      "pass": false,
+      "size": "small"
+    },
+    {
+      "alive": true,
+      "area0": 310.8623589560684,
+      "area1": 46.79893302644416,
+      "kind": "translate",
+      "mag": 0.8,
+      "pass": false,
+      "size": "small"
+    },
+    {
+      "alive": true,
+      "area0": 311.3919168895368,
+      "area1": 46.80385855064469,
+      "kind": "vertex_noise",
+      "mag": -0.1,
+      "pass": false,
+      "size": "small"
+    },
+    {
+      "alive": true,
+      "area0": 310.8623589560681,
+      "area1": 45.93822268381314,
+      "kind": "c_noise",
+      "mag": -0.05,
+      "pass": false,
+      "size": "small"
+    },
+    {
+      "alive": true,
+      "area0": 608.194370345888,
+      "area1": 89.54673648813082,
+      "kind": "vertex_noise",
+      "mag": 0.15,
+      "pass": false,
+      "size": "central"
+    },
+    {
+      "alive": true,
+      "area0": 609.2902235538944,
+      "area1": 107.59798454537565,
+      "kind": "c_noise",
+      "mag": 0.08,
+      "pass": false,
+      "size": "central"
+    },
+    {
+      "alive": true,
+      "area0": 609.2902235538944,
+      "area1": 104.08637719654757,
+      "kind": "a_noise",
+      "mag": 0.08,
+      "pass": false,
+      "size": "central"
+    },
+    {
+      "alive": true,
+      "area0": 609.2902235538944,
+      "area1": 95.55231600677246,
+      "kind": "l_noise",
+      "mag": 0.1,
+      "pass": false,
+      "size": "central"
+    },
+    {
+      "alive": true,
+      "area0": 609.2902235538944,
+      "area1": 65.22738126975764,
+      "kind": "env_nf",
+      "mag": -0.05,
+      "pass": false,
+      "size": "central"
+    },
+    {
+      "alive": true,
+      "area0": 609.2902235538944,
+      "area1": 137.9651002109399,
+      "kind": "env_nf",
+      "mag": 0.05,
+      "pass": true,
+      "size": "central"
+    },
+    {
+      "alive": true,
+      "area0": 609.2902235538945,
+      "area1": 95.80168591871416,
+      "kind": "rotate",
+      "mag": 0.2,
+      "pass": false,
+      "size": "central"
+    },
+    {
+      "alive": true,
+      "area0": 609.290223553894,
+      "area1": 95.80168591848087,
+      "kind": "translate",
+      "mag": 0.8,
+      "pass": false,
+      "size": "central"
+    },
+    {
+      "alive": true,
+      "area0": 610.0301133088163,
+      "area1": 94.58283685756635,
+      "kind": "vertex_noise",
+      "mag": -0.1,
+      "pass": false,
+      "size": "central"
+    },
+    {
+      "alive": true,
+      "area0": 609.2902235538944,
+      "area1": 89.059486293477,
+      "kind": "c_noise",
+      "mag": -0.05,
+      "pass": false,
+      "size": "central"
+    },
+    {
+      "alive": true,
+      "area0": 1005.782692077475,
+      "area1": 150.5225602130041,
+      "kind": "vertex_noise",
+      "mag": 0.15,
+      "pass": false,
+      "size": "large"
+    },
+    {
+      "alive": true,
+      "area0": 1007.194043017662,
+      "area1": 170.5737798579546,
+      "kind": "c_noise",
+      "mag": 0.08,
+      "pass": false,
+      "size": "large"
+    },
+    {
+      "alive": true,
+      "area0": 1007.194043017662,
+      "area1": 164.65452340904233,
+      "kind": "a_noise",
+      "mag": 0.08,
+      "pass": false,
+      "size": "large"
+    },
+    {
+      "alive": true,
+      "area0": 1007.194043017662,
+      "area1": 150.21292458256323,
+      "kind": "l_noise",
+      "mag": 0.1,
+      "pass": false,
+      "size": "large"
+    },
+    {
+      "alive": true,
+      "area0": 1007.194043017662,
+      "area1": 119.35311314505941,
+      "kind": "env_nf",
+      "mag": -0.05,
+      "pass": false,
+      "size": "large"
+    },
+    {
+      "alive": true,
+      "area0": 1007.194043017662,
+      "area1": 191.03703809407716,
+      "kind": "env_nf",
+      "mag": 0.05,
+      "pass": false,
+      "size": "large"
+    },
+    {
+      "alive": true,
+      "area0": 1007.1940430176626,
+      "area1": 150.60411556173688,
+      "kind": "rotate",
+      "mag": 0.2,
+      "pass": false,
+      "size": "large"
+    },
+    {
+      "alive": true,
+      "area0": 1007.1940430176619,
+      "area1": 150.60411556190058,
+      "kind": "translate",
+      "mag": 0.8,
+      "pass": false,
+      "size": "large"
+    },
+    {
+      "alive": true,
+      "area0": 1008.1442645940375,
+      "area1": 150.666441598299,
+      "kind": "vertex_noise",
+      "mag": -0.1,
+      "pass": false,
+      "size": "large"
+    },
+    {
+      "alive": true,
+      "area0": 1007.194043017662,
+      "area1": 139.42557259002285,
+      "kind": "c_noise",
+      "mag": -0.05,
+      "pass": false,
+      "size": "large"
+    }
+  ],
+  "seed_fingerprints": [
+    4180287985973071222,
+    16870719965945723047,
+    10649696846914848821,
+    4180287985973071222,
+    16870719965945723047
+  ],
+  "seeds_effective": true
+}

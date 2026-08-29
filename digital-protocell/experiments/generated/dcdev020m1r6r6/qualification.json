@@ -1,0 +1,15 @@
+{
+  "classification": "M1_SOURCE_FRONTLOAD_AND_GEOMETRY_STRUCTURAL_CYCLE_CONFIRMED",
+  "directive": "DC-DEV-020-M1-R6-R6-SOURCE-GEOMETRY-STATE-COUPLING-AUDIT-001",
+  "e0_authority": true,
+  "e1_r6_r5_reproduction": true,
+  "e2_stock_sink_identity": true,
+  "e3_source_profiles": true,
+  "e4_equal_total_frontloaded_test": true,
+  "e5_geometry_decomposition": true,
+  "e6_recovery_correspondence": true,
+  "e7_preservation": true,
+  "e8_remote_ci": "required",
+  "next_execution_started": false,
+  "observer_only": true
+}

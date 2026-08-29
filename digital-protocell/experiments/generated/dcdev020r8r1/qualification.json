@@ -1,0 +1,12 @@
+{
+  "accounting_closure_pass": true,
+  "classification": "DCDEV020R8R1_A_DEMAND_ELASTICITY_POSITIVE",
+  "dc_dev_021_authorized": false,
+  "implementation_authorized": false,
+  "next_execution_started": false,
+  "pair_confounding": "R8_PAIR_CONFOUNDING_CONFIRMED",
+  "production_behavior_changed": false,
+  "production_chemistry_changed": false,
+  "root_tolerance_pass": true,
+  "training_and_portability_finite": true
+}

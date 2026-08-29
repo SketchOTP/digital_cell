@@ -1,0 +1,21 @@
+{
+  "deprivation_steps": 480,
+  "directive": "DC-DEV-020-R2",
+  "entry_commit": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "feed_steps": 480,
+  "fit_family": "1 + (G_max - 1)/(1 + (A/K_A)^n)",
+  "historical_replay": "DC-DEV-017",
+  "observer_only": true,
+  "prior_head": "876012f8888b074285c55167613471a59d4be25d",
+  "production_integration": false,
+  "resource_center": [
+    4.8,
+    0.0
+  ],
+  "resource_mass": 19.878372106390554,
+  "resource_radius": 1.5,
+  "root_relative_tolerance": 0.0001,
+  "settle_steps": 5000,
+  "sustained_nf": 0.1476710565778127,
+  "sustained_steps": 8000
+}

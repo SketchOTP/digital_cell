@@ -1,0 +1,17 @@
+{
+  "dispositions": [
+    "ADAPTABLE_ENZYME_COST_METHOD",
+    "REFERENCE_FLUX_SIGNALING_MECHANISM"
+  ],
+  "external_values_imported": false,
+  "sources": [
+    {
+      "pmc": "PMC5094713",
+      "use": "enzyme cost and flux coupling method only"
+    },
+    {
+      "pmc": "PMC3549114",
+      "use": "flux-signaling mechanism reference only"
+    }
+  ]
+}

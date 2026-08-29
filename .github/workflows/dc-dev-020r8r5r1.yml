@@ -1,0 +1,113 @@
+name: DC-DEV-020-R8-R5-R1 corrected net allocation drift
+
+on:
+  pull_request:
+    branches:
+      - strategy/dc-dev-016-metabolic-break-even
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dc-dev-020r8r5r1-observer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install sanctioned rustfmt component
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Governance ADOPTED validation
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Validate R8-R5-R1 boundary and compact evidence
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          root = Path("digital-protocell/experiments/generated/dcdev020r8r5r1")
+          required = [
+              "protocol.json", "checkpoint_hashes.json", "statewise_net_envelopes.json",
+              "family_summary.json", "attribution.json", "qualification.json",
+              "external_evidence_manifest.json", "manifest.json",
+          ]
+          if any(not (root / name).is_file() for name in required):
+              raise SystemExit("missing R8-R5-R1 compact evidence")
+          protocol = json.loads((root / "protocol.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          if protocol["r8r5_evidence_head"] != "95247dfc6b2b0e9903338e2b76ee55c08f502f84":
+              raise SystemExit("wrong R8-R5 evidence authority")
+          if not qualification["a_c_conservation"]:
+              raise SystemExit("A+C conservation boundary missing")
+          if qualification["dc_dev_021_authorized"] or qualification["next_execution_started"]:
+              raise SystemExit("R1 scope boundary opened")
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", "1e242f28152797b512e25cd56c7b718e45d6ca97", "HEAD"],
+              text=True,
+          ).splitlines()
+          if any(name.startswith("digital-protocell/crates/chemistry-core/") for name in changed):
+              raise SystemExit("certified chemistry-core changed")
+          if any("dcdev021" in name.lower() or "dc-dev-021" in name.lower() for name in changed):
+              raise SystemExit("DC-DEV-021 scope opened")
+          PY
+
+      - name: Scoped formatting and R8-R5-R1 tests
+        working-directory: digital-protocell
+        run: |
+          rustup run 1.89.0 rustfmt --edition 2021 --check examples/dcdev020r8r5_ac_allocation_upper_bound.rs
+          rustup run 1.89.0 rustfmt --edition 2021 --check examples/dcdev020r8r5r1_net_allocation_drift.rs
+          cargo +1.89.0 test -p regulatory-core --example dcdev020r8r5r1_net_allocation_drift --release
+
+      - name: Execute corrected net allocation observer
+        working-directory: digital-protocell
+        env:
+          DCDEV020R8R5R1_OUTPUT_ROOT: experiments/generated/dcdev020r8r5r1-ci
+          DCDEV020R8R5R1_DENSE_LEDGER: target/dcdev020r8r5r1-net-allocation-dense.json
+          DCDEV020R8R5R1_EXTERNAL_LOCATION: CI_UNSEALED
+          DCDEV020R8R5R1_EXTERNAL_SHA256: CI_UNSEALED
+          DCDEV020R8R5R1_RESULT_COMMIT: PENDING
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run -p regulatory-core --example dcdev020r8r5r1_net_allocation_drift --release --quiet
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev020r8r5r1-ci")
+          q = json.loads((root / "qualification.json").read_text())
+          summary = json.loads((root / "family_summary.json").read_text())
+          attribution = json.loads((root / "attribution.json").read_text())
+          assert q["classification"] == "DCDEV020R8R5R1_RECYCLING_ONLY_LOCAL_CAPACITY"
+          assert q["deferred_states"] == 200 and q["shared_states"] == 200
+          assert q["reversible_nonnegative"] == 400 and q["forward_nonnegative"] == 0
+          assert summary["deferred_reversible"]["reversible_minimum_max_net_drift"] >= 0
+          assert summary["shared_reversible"]["reversible_minimum_max_net_drift"] >= 0
+          assert summary["deferred_forward"]["forward_maximum_max_net_drift"] < 0
+          assert summary["shared_forward"]["forward_maximum_max_net_drift"] < 0
+          assert attribution["states_reversible_nonnegative_forward_negative"] == 400
+          assert not q["dc_dev_021_authorized"] and not q["next_execution_started"]
+          PY
+
+      - name: Preservation regressions
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test -p regulatory-core
+          cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p evolution-harness
+
+      - name: Record exact checkout head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse --verify HEAD)" = "$EXPECTED_HEAD"

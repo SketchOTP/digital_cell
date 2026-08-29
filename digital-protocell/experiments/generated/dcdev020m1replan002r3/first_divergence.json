@@ -1,0 +1,36 @@
+{
+  "v4_vs_v2": {
+    "comparator": "ConservativeV2",
+    "fields": [
+      "a",
+      "c",
+      "w",
+      "total_m",
+      "young_m",
+      "mature_m",
+      "free_l",
+      "bound_b",
+      "area",
+      "perimeter"
+    ],
+    "first_step": 201,
+    "note": "First post-removal divergence from the full in-memory state ledger; dense ledgers provide the audit trail."
+  },
+  "v4_vs_v3": {
+    "comparator": "ConservativeV3",
+    "fields": [
+      "a",
+      "c",
+      "w",
+      "total_m",
+      "young_m",
+      "mature_m",
+      "free_l",
+      "bound_b",
+      "area",
+      "perimeter"
+    ],
+    "first_step": 201,
+    "note": "First post-removal divergence from the full in-memory state ledger; dense ledgers provide the audit trail."
+  }
+}

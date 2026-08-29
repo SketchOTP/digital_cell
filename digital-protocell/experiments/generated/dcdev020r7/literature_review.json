@@ -1,0 +1,17 @@
+{
+  "external_values_or_models_imported": false,
+  "sources": [
+    {
+      "citation": "Piroddi 2008, Simulation error minimisation methods for NARX model identification",
+      "disposition": "ADAPTABLE_VALIDATION_METHOD",
+      "url": "https://www.inderscience.com/info/inarticle.php?artid=20548",
+      "use": "free-running validation rationale only"
+    },
+    {
+      "citation": "Ross, Gordon, and Bagnell 2011, A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning",
+      "disposition": "REFERENCE_ONLY",
+      "url": "https://proceedings.mlr.press/v15/ross11a",
+      "use": "on-policy distribution-shift analogy only"
+    }
+  ]
+}

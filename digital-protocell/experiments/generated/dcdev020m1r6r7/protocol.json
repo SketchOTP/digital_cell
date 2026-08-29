@@ -1,0 +1,36 @@
+{
+  "arms": [
+    "A_frozen_geometry",
+    "B_current_moving",
+    "C_reference_decoupled_moving",
+    "B_deprivation_recovery",
+    "C_deprivation_recovery"
+  ],
+  "deprivation": 480,
+  "directive": "DC-DEV-020-M1-R6-R7-REFERENCE-GEOMETRY-COUPLING-DECISION-001",
+  "forbidden_changes": [
+    "production biology",
+    "coefficients",
+    "mechanics defaults",
+    "transport",
+    "resource schedule",
+    "target geometry",
+    "controller",
+    "recycling",
+    "salvage",
+    "M2",
+    "R6-R8"
+  ],
+  "horizon": 8000,
+  "next_execution_started": false,
+  "observer_only": true,
+  "reference_state": "per-edge reference_length initialized to production rest_length; split halves and merge sums; zero material authority",
+  "runtime": {
+    "chemistry": "ConservativeV3",
+    "dt": 0.02,
+    "material": "GeometryConservativeV3",
+    "reserve": "OFF"
+  },
+  "source_schedule": "sealed R6-R6 successful frozen-geometry schedule generated from the accepted entry state",
+  "starting_head": "821f6a85c1d4825715090c8ccb3482ceddccbde5"
+}

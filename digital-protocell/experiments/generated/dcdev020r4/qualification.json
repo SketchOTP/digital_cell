@@ -1,0 +1,51 @@
+{
+  "all_probes_usable": true,
+  "classification": "DCDEV020R4_SATURATING_FAMILY_STRUCTURAL_MISMATCH",
+  "identification": {
+    "alpha": 0.558251618117446,
+    "beta": -0.6297555013009063,
+    "classification": "DCDEV020R4_SATURATING_FAMILY_STRUCTURAL_MISMATCH",
+    "design_condition": 25.682977705015958,
+    "design_rank": 3,
+    "excitation_sufficient": true,
+    "family_consistency_relative_error": 0.9660583733339541,
+    "gamma": 20.930581646236423,
+    "k_s": null,
+    "method": "deterministic reciprocal normal-equation least squares; no parameter sweep",
+    "p3_bilinear": {
+      "points": 480,
+      "relative_rmse": 0.5201042742177621
+    },
+    "p3_finite": null,
+    "p3_points": 480,
+    "p3_r3_asymptote": {
+      "points": 480,
+      "relative_rmse": 5.693701807956764
+    },
+    "p4_bilinear": {
+      "points": 480,
+      "relative_rmse": 0.5201042742177621
+    },
+    "p4_finite": null,
+    "p4_points": 480,
+    "p4_r3_asymptote": {
+      "points": 480,
+      "relative_rmse": 5.693701807956764
+    },
+    "train_points": 1440,
+    "training_bilinear": {
+      "points": 1440,
+      "relative_rmse": 0.8387272333463764
+    },
+    "training_finite": null,
+    "training_r3_asymptote": {
+      "points": 1440,
+      "relative_rmse": 1.5735525496177765
+    },
+    "v_max": null,
+    "witnesses": []
+  },
+  "implementation_authorized": false,
+  "next_execution_started": false,
+  "qualification_run": false
+}

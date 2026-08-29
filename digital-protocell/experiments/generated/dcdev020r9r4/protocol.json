@@ -1,0 +1,18 @@
+{
+  "directive": "DC-DEV-020-R9-R4",
+  "starting_head": "f9bc1d5bffe828b2599c85d4fcbbabdf7f3e3ff3",
+  "contract": "ConservativeV2",
+  "reserve_equation": "autopoietic_material_mesh_metabolic_reserve_v1",
+  "seed": 2,
+  "accepted_steps_per_arm": 5000,
+  "mechanics_dt": 0.02,
+  "observer_only": true,
+  "production_chemistry_changed": false,
+  "production_behavior_changed": false,
+  "arms": ["FULL_RESERVE", "STORE_OFF", "RELEASE_OFF", "LOSS_OFF", "MAINTENANCE_PRIORITY_SHADOW"],
+  "gate4_actual_certification_executed": false,
+  "gate4_skip_reason": "maintenance-priority shadow did not restore Gate-1 qualification",
+  "recycling_authorized": false,
+  "dc_dev_021_authorized": false,
+  "next_execution_started": false
+}

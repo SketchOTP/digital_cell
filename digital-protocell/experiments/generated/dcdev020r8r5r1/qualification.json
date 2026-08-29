@@ -1,0 +1,19 @@
+{
+  "a_c_conservation": true,
+  "classification": "DCDEV020R8R5R1_RECYCLING_ONLY_LOCAL_CAPACITY",
+  "dc_dev_021_authorized": false,
+  "deferred_states": 200,
+  "direct_prior_ledger_hash_field_match": false,
+  "direct_prior_ledger_hash_field_match_note": "R8-R5 dense ledger contains no deferred checkpoint-hash field; hashes are deterministically reconstructed from the sealed replay.",
+  "directive": "DC-DEV-020-R8-R5-R1",
+  "entry_head": "37b47ec89e02418018a138f670e826c6945c8030",
+  "forward_nonnegative": 0,
+  "next_execution_started": false,
+  "production_behavior_changed": false,
+  "production_chemistry_changed": false,
+  "r8r5_dense_sha256": "afa9c26f8845f9321450ec12e7e4fe55dc54a088eb6857ff8e1e272dddc8c390",
+  "r8r5_evidence_head": "95247dfc6b2b0e9903338e2b76ee55c08f502f84",
+  "reaction_semantics": "exact R8-R5 one-step semantics",
+  "reversible_nonnegative": 400,
+  "shared_states": 200
+}

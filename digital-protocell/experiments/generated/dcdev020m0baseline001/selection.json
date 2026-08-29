@@ -1,0 +1,12 @@
+{
+  "previous_selected_state": "ConservativeV2 / reserve ON when reserve selector was omitted",
+  "selected_contract": "ConservativeV2",
+  "selected_reserve_enabled": false,
+  "selection_is_runtime_default": true,
+  "reserve_compile_time": false,
+  "reserve_runtime_selector": true,
+  "m0_structural_reserve_dependency": false,
+  "d091_preserved": true,
+  "post_m0_reserve_consumers_preserved": true,
+  "chemistry_changed": false
+}

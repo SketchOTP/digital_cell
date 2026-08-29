@@ -1,0 +1,48 @@
+{
+  "arms": [
+    {
+      "declared_k_a_decay": 0.008,
+      "effective_starvation_k_a_decay": 0.032,
+      "id": "A_PRODUCTION_STARVATION_4X"
+    },
+    {
+      "declared_k_a_decay": 0.002,
+      "effective_starvation_k_a_decay": 0.008,
+      "id": "B_ORDINARY_DECAY_STARVATION"
+    }
+  ],
+  "directive": "DC-DEV-020-M1-R2-R2-TOPOLOGY-DEATH-CLOSURE-001",
+  "entry_state": "accepted M1-R2 exact endpoint at step 20480; no founder regeneration",
+  "forbidden_changes": [
+    "chemistry-core",
+    "k_a_decay",
+    "activation",
+    "uptake",
+    "transport",
+    "resources",
+    "death criteria",
+    "D-091",
+    "D-087",
+    "recycling",
+    "salvage",
+    "M2",
+    "DC-DEV-021"
+  ],
+  "observer_only": true,
+  "r2_comparison_steps": 480,
+  "r2_continuation_steps": 20000,
+  "refeed_resource": {
+    "center": [
+      4.8,
+      0.0
+    ],
+    "f": 14.588954880632265,
+    "n": 14.588954880632265,
+    "radius": 1.5
+  },
+  "refeed_steps": 5000,
+  "rupture_authority": "existing reactions_step edge mass threshold and rupture flag",
+  "rupture_search_steps": 1000000,
+  "source_capacity_shadow": "existing M1-R1 paired N/F to A upper bound applied before each reaction step",
+  "starting_head": "40a066424a5a0fe08db9609c4ec71a708b44115f"
+}

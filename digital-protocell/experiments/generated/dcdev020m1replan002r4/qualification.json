@@ -1,0 +1,27 @@
+{
+  "causal_starvation_150k": true,
+  "classification": "M1_V4_CONTRACT_AWARE_PRESERVATION_QUALIFIED",
+  "directive": "DC-DEV-020-M1-REPLAN-002-R4-V4-CONTRACT-AWARE-PRESERVATION-QUALIFICATION-001",
+  "historical_preservation": true,
+  "material_closure": true,
+  "next_execution_started": false,
+  "physical_trajectory_parity": true,
+  "production_default_changed": false,
+  "r1_capabilities_preserved": true,
+  "schema": "dcdev020m1replan002r4_qualification_v1",
+  "starting_head": "ad1642ec3b2e565e0651efe3daf36e0390351dfb",
+  "v2_d087": true,
+  "v3_d087": true,
+  "v4_d087": [
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "v4_sole_historical_failure": true,
+  "v4_tracer_semantics_corrected": true
+}

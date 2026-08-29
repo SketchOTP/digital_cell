@@ -1,0 +1,5 @@
+{
+  "pass": true,
+  "detail": "built=true bin_ok=true steps=80000 wall_s=9.5 snap_ok=true verts=50 growing_flags=0 smoke=false",
+  "failure": null
+}

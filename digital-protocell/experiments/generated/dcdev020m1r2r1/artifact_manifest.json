@@ -1,0 +1,14 @@
+{
+  "artifact_files": [
+    "protocol.json",
+    "results.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "authoritative_result": "results.json",
+  "dense_ledgers_committed": false,
+  "directive": "DC-DEV-020-M1-R2-R1-PHYSICAL-FAILURE-CLOSURE-001",
+  "next_execution_started": false,
+  "observer_only": true,
+  "starting_head": "bc65098c3d26777aca2d1da5dab8cc118ecc6e19"
+}

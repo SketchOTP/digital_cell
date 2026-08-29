@@ -1,0 +1,13 @@
+{
+  "package_id": "digital-protocell-phase1-v1",
+  "package_dir": "experiments/generated/dcdev020r9r2/actual_d087\\linux_runtime\\digital-protocell-phase1-v1",
+  "stability_secs": 10.1138634,
+  "steps_run": 80000,
+  "crash": false,
+  "snapshot_ok": true,
+  "memory_unbounded": false,
+  "autonomous": true,
+  "offline": true,
+  "no_gpu": true,
+  "detail": "built=true bin_ok=false steps=80000 wall_s=10.1 snap_ok=true verts=50 growing_flags=0 smoke=false"
+}

@@ -1,0 +1,15 @@
+{
+  "canonical_dense_root": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r3/",
+  "dense_output": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r3/dense-final",
+  "directive": "DC-DEV-020-M1-REPLAN-002-R5-R3-V4-LIVE-RESOURCE-IRREVERSIBLE-DEATH-QUALIFICATION-001",
+  "files": [
+    "protocol.json",
+    "results.json",
+    "qualification.json",
+    "preservation.json",
+    "artifact_manifest.json"
+  ],
+  "next_execution_started": false,
+  "schema": "dcdev020m1replan002r5r3_manifest_v1",
+  "starting_head": "d0a9601aed170c43a5c288c8300f3fe65e64237f"
+}
