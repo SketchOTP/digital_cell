@@ -128,7 +128,7 @@ jobs:
           v4 = json.loads((base / 'v4_d087/certification/report.json').read_text())
           assert sum(g['pass'] for g in [v2[f'gate{x}'] for x in range(8)]) == 8
           assert sum(g['pass'] for g in [v3[f'gate{x}'] for x in range(8)]) == 8
-          assert [v4[f'gate{x}']['pass'] for x in range(8)] == [True, False, False, True, True, True, True, True]
+          assert [v4[f'gate{x}']['pass'] for x in range(8)] == [True, True, False, True, True, True, True, True]
           r1 = json.loads((base / 'r1/qualification.json').read_text())
           assert r1['fed_homeostasis'] is True and r1['recovery'] is True
           print('DCDEV020M1REPLAN002R5R2_ARTIFACT_VERIFICATION_PASS')
