@@ -245,3 +245,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: A finite nonspatial membrane-mediated boundary capped by the accepted R1 per-step opportunity schedule passes the S0 positive control and S1 refeed, while S2, the last fully accepted pre-stop starvation state, receives positive admissible transfer but fails to recover during 8,000 steps and ends with ruptured topology. Maximum starvation/re-feed residuals remain below `1e-8`; classification is `M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED`, pending exact-head CI and Architect review.
 - Affected areas: R5-R4 qualification harness, compact evidence, dense Atlas evidence, workflow, documentation, and append-only governance only; no V4 biology, production default, spatial acquisition, D-087, M2, or successor work changed.
 - Supersedes record: DEC-DCDEV020M1REPLAN002R5R3-REMOTE-001
+
+## DEC-DCDEV020M1REPLAN002R5R4-REMOTE-001
+
+- Date: 2026-08-28
+- Record or decision ID: DEC-DCDEV020M1REPLAN002R5R4-REMOTE-001
+- Status: PROPOSED
+- Decision or event: Exact-head Linux push workflow `33232374125` and pull-request workflow `33232376420` both passed at `a49e30c148e41ff8abb681b49964381ae61037dc` for the R5-R4 admissible-boundary no-resurrection qualification.
+- Rationale: Remote execution verifies the finite nonspatial membrane-mediated boundary, accepted R1 opportunity cap, positive-control recovery for S0/S1, positive S2 transfer without recovery through the unchanged 8,000-step challenge, closed accounting, V2/V3 `8/8`, V4 `7/8`, and qualification classification `M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED`. Push artifact digest is `sha256:7b73bd184d14ccb7b5228f5429cb3f78579feea86d2f47cee03473da3682847f`; PR artifact digest is `sha256:5dd057ff9712b06bf09f8acacf85cfe90fd9fea86ab7e5d0bbdb0177922481e5`.
+- Affected areas: Exact-head remote validation and metadata governance only; no V4 biology, transport, mechanics, D-087, production default, spatial acquisition, M1 closure, M2, reserve, recycling, salvage, or tuning changed.
+- Supersedes record: DEC-DCDEV020M1REPLAN002R5R4-001

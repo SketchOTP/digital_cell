@@ -2083,3 +2083,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: S2's result is a no-resurrection qualification under the admissible boundary, not an authoritative mechanics-failure result; it remains subject to exact-head Linux validation and Architect acceptance. M1 remains not established until Architect closes the result. No production selection, M2, reserve, recycling, salvage, tuning, or successor execution is authorized.
 - Blockers: Exact-head R5-R4 CI and Architect disposition.
 - Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5r4-v4-admissible-boundary-no-resurrection-qualification001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5R4-V4-ADMISSIBLE-BOUNDARY-NO-RESURRECTION-QUALIFICATION-REMOTE-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5R4-V4-ADMISSIBLE-BOUNDARY-NO-RESURRECTION-QUALIFICATION-PARTIAL
+- Closed: `2026-08-28T23:57:00-04:00`
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux push workflow `33232374125` and pull-request workflow `33232376420` both passed at `a49e30c148e41ff8abb681b49964381ae61037dc`. Remote execution verified the finite nonspatial membrane-mediated boundary, accepted R1 per-step cap, positive S0/S1 recovery, positive S2 transfer with no recovery, closed material accounting, unchanged D-087 preservation, and the classification `M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED`.
+- Changed areas: Exact-head remote validation and append-only governance only; no scientific-core biology, production default, D-087 semantics, spatial acquisition, M2, or successor work changed.
+- Validation:
+  - Governance, formatting, bounded diff, V2/V3/V4 D-087, R5-R4 qualification, compact verification, and focused preservation tests - PASSED
+  - Push artifact digest `sha256:7b73bd184d14ccb7b5228f5429cb3f78579feea86d2f47cee03473da3682847f` - VERIFIED
+  - PR artifact digest `sha256:5dd057ff9712b06bf09f8acacf85cfe90fd9fea86ab7e5d0bbdb0177922481e5` - VERIFIED
+  - Push/PR compact JSON content agreement - PASSED
+  - PR #44 open, draft, unmerged, correct base, and exact head - PASSED
+  - Architect review - PENDING
+- Remaining risks: This qualifies the R5-R4 assay result but does not by itself close M1 or authorize V4 production selection; Architect acceptance remains pending. S2 remained physically executable through the unchanged 8,000-step refeed and ended with ruptured topology rather than an authoritative mechanics-failure return. No production selection, M2, reserve, recycling, salvage, tuning, or successor execution is authorized.
+- Blockers: Architect disposition of R5-R4.
+- Follow-up directive: none

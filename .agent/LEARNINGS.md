@@ -915,3 +915,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: R5-R4 admissible-boundary qualification only; no V4 biology, spatial acquisition, D-087, production selection, M1 closure, M2, reserve, recycling, salvage, tuning, or successor work.
 - Supersedes learning: L-DCDEV020M1REPLAN002R5R3-REMOTE-VERIFIED
+
+## L-DCDEV020M1REPLAN002R5R4-REMOTE-VERIFIED
+
+- Learning ID: L-DCDEV020M1REPLAN002R5R4-REMOTE-VERIFIED
+- Date: 2026-08-28
+- Fact or lesson: Exact-head Linux push workflow `33232374125` and pull-request workflow `33232376420` both passed at `a49e30c148e41ff8abb681b49964381ae61037dc`. The R5-R4 qualification uses a finite nonspatial membrane-mediated boundary, current membrane state, finite inventory, and accepted R1 per-step opportunity caps without direct internal insertion. S0 and S1 recover; S2 receives positive transfer but fails to recover through 8,000 steps and ends with ruptured topology while remaining physically valid. The qualification classification is `M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED`, pending Architect acceptance. Push and PR artifact digests are `sha256:7b73bd184d14ccb7b5228f5429cb3f78579feea86d2f47cee03473da3682847f` and `sha256:5dd057ff9712b06bf09f8acacf85cfe90fd9fea86ab7e5d0bbdb0177922481e5`.
+- Evidence location: compact evidence under `digital-protocell/experiments/generated/dcdev020m1replan002r5r4/`; dense local and remote evidence under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r4/`.
+- Confidence: VERIFIED
+- Scope: Exact-head R5-R4 remote qualification only; no V4 biology, production selection, M1 closure, M2, reserve, recycling, salvage, tuning, or successor work.
+- Supersedes learning: L-DCDEV020M1REPLAN002R5R4-LOCAL
