@@ -1,9 +1,0 @@
-{
-  "contact_frame_hash": "3e46ee75450ead1c",
-  "contact_observation_hash": "e5270a7c83108694",
-  "contacted_activity_increased": true,
-  "distant_activity_unchanged": true,
-  "no_contact_frame_hash": "fec6a3da75fc1f8b",
-  "no_contact_observation_hash": "fa6dc0a01960f7cb",
-  "result": "DCDEV006_GATE4_LOCAL_REGULATORY_RESPONSE_PASS"
-}

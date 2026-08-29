@@ -65,7 +65,7 @@ impl FiniteSpatialResourceRegionV1 {
         dt: f64,
     ) -> SpatialResourceStepLedgerV1 {
         let mut ledger = SpatialResourceStepLedgerV1::default();
-        if !mesh.alive || dt <= 0.0 {
+        if !mesh.can_advance_physics() || dt <= 0.0 {
             return ledger;
         }
         let area = mesh.area().max(1e-6);
@@ -120,7 +120,7 @@ impl FiniteSpatialResourceRegionV1 {
     /// assay may feed this vector into the existing local regulator, but this
     /// production boundary does not decide an action or write mesh state.
     pub fn local_contact_signal(&self, mesh: &MaterialMesh) -> Vec<f64> {
-        if !mesh.alive || self.n_mass <= 1e-12 || self.f_mass <= 1e-12 {
+        if !mesh.can_advance_physics() || self.n_mass <= 1e-12 || self.f_mass <= 1e-12 {
             return vec![0.0; mesh.n()];
         }
         (0..mesh.n())

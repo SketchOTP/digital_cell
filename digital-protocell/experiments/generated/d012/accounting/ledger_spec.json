@@ -1,8 +1,0 @@
-{
-  "activation_weights": {
-    "e_A": 1.0,
-    "e_F": 1.0
-  },
-  "material_identity": "observed_change = reservoir_input - waste_clearance + numerical_correction",
-  "relative_tolerance": 1e-6
-}

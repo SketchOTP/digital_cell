@@ -11,8 +11,10 @@
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
 
+pub mod backing_reservoir;
 pub mod continuity;
 pub mod contractility;
+pub mod coupled_resource;
 pub mod plasticity;
 pub mod spatial;
 pub mod spatial_resource;
@@ -22,6 +24,16 @@ pub use contractility::{
     apply_local_contractility, apply_local_contractility_with_external_forces, ContractilityError,
     ContractilityParamsV1, ContractilityStepLedgerV1, CONTRACTILITY_SCHEMA_V1,
     FROZEN_MAX_ACTIVE_TENSION, FROZEN_RESERVE_COST_PER_FORCE_LENGTH_TIME,
+};
+
+pub use coupled_resource::{
+    apply_coupled_delivery, CoupledFiniteSpatialResourceRegionV1,
+    CoupledSpatialResourceStepLedgerV1, COUPLED_FINITE_SPATIAL_RESOURCE_SCHEMA_V1,
+    COUPLED_SPATIAL_RESOURCE_STEP_LEDGER_SCHEMA_V1,
+};
+
+pub use backing_reservoir::{
+    FiniteSpatialBackingReservoirV1, FINITE_SPATIAL_BACKING_RESERVOIR_SCHEMA_V1,
 };
 
 pub use continuity::{

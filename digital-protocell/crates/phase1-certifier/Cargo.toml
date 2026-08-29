@@ -6,6 +6,7 @@ description = "Independent Phase 1 certification of the frozen D-086 material-me
 
 [dependencies]
 chemistry-core = { path = "../chemistry-core" }
+regulatory-core = { path = "../regulatory-core" }
 serde = { workspace = true }
 serde_json = { workspace = true }
 chrono = { workspace = true }

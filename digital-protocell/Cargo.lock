@@ -1002,6 +1002,7 @@ version = "0.1.0"
 dependencies = [
  "chemistry-core",
  "chrono",
+ "regulatory-core",
  "serde",
  "serde_json",
 ]

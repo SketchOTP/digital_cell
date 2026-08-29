@@ -300,7 +300,7 @@ pub fn pre_fission_assay(
         let chemistry = reactions_step(&mut mesh, &reaction, 0.02, true, true);
         activated_produced += chemistry.a_produced;
         let _ = growth_step(&mut mesh, &reaction, &growth, 0.02);
-        if !mesh.alive {
+        if !mesh.can_advance_physics() {
             break;
         }
     }
@@ -310,6 +310,6 @@ pub fn pre_fission_assay(
         activated_produced,
         damage_applied,
         final_material: mesh.total_structural_mass() + mesh.total_bound_membrane(),
-        survived: mesh.alive,
+        survived: mesh.observer_viable(),
     }
 }

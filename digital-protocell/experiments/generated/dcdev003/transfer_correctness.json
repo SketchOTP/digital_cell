@@ -1,7 +1,0 @@
-{
-  "artifact_status": "AUTHORITATIVE",
-  "bounded_after_merge": true,
-  "constant_field_preserved_through_split": true,
-  "maximum_mapping_distance": 1.8275094565457177,
-  "result": "DCDEV003_GATE2_TRANSFER_PASS"
-}

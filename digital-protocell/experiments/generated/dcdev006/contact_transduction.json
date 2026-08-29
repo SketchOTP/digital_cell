@@ -1,9 +1,0 @@
-{
-  "bounded": true,
-  "contacted_positive": true,
-  "deterministic": true,
-  "distant_zero": true,
-  "result": "DCDEV006_GATE3_LOCAL_EXTERNAL_TRANSDUCTION_PASS",
-  "signal_hash_a": "4b45319b98bf4e2c",
-  "signal_hash_b": "4b45319b98bf4e2c"
-}

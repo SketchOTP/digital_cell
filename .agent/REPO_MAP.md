@@ -39,7 +39,8 @@
 
 ## Generated areas
 
-- `digital-protocell/experiments/generated/` — generated evidence and provenance; preserve historical evidence.
+- `digital-protocell/experiments/generated/dcdev020m1closure001/m1_closure_manifest.json` — compact accepted M1 closure reference retained without the dense evidence archive.
+- `digital-protocell/experiments/generated/dcdev020postm1baseline001/` — compact clean-baseline inventory, manifest, and validation evidence.
 - `digital-protocell/experiments/generated/dcdev001/` — DC-DEV-001A machine-readable decision artifacts.
 - `digital-protocell/experiments/generated/dcdev006/` — DC-DEV-006 local spatial-contact evidence artifacts.
 - `digital-protocell/experiments/generated/dcdev009/` — DC-DEV-009 force, displacement, coupling, and audit evidence artifacts.
@@ -58,4 +59,4 @@
 - `digital-protocell/crates/chemistry-core/` — certified biology and equations are frozen.
 - `digital-protocell/experiments/generated/` — evidence is append-only and provenance-bound.
 - `.git/` — Git metadata and object storage.
-- `.agent/legacy/` — preserved historical governance snapshots.
+- PR #44 and `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1closure001/` — historical M1 provenance and dense evidence; do not rewrite from the baseline branch.

@@ -1,0 +1,127 @@
+name: DC-DEV-020 post-M1 clean capability baseline
+
+on:
+  push:
+    branches:
+      - baseline/m1-v4-closed
+  pull_request:
+    branches:
+      - baseline/m1-v4-closed
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact baseline head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Install rustfmt
+        run: rustup component add rustfmt --toolchain 1.89.0
+
+      - name: Verify baseline provenance and governance
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_governance.py --mode ADOPTED
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path("digital-protocell/experiments/generated/dcdev020postm1baseline001/baseline_manifest.json").read_text())
+          assert m["source_closure_head"] == "fb77f472b1519a9e0f713833efba5b1d403f4723"
+          assert m["source_base"] == "1e242f28152797b512e25cd56c7b718e45d6ca97"
+          assert m["selected_contract"] == "MaturationCoupledV4" and m["reserve_enabled"] is False
+          assert m["m1"] == "CLOSED" and m["m1_physiology"] == "FROZEN" and m["m2"] == "NOT_YET_AUTHORIZED"
+          assert m["pr_44"] == {"state": "OPEN", "draft": True, "merged": False, "modified": False}
+          print("baseline provenance and governance identity validated")
+          PY
+
+      - name: Check scientific formatting
+        working-directory: digital-protocell
+        run: cargo +1.89.0 fmt --all -- --check
+
+      - name: Build production runtime
+        working-directory: digital-protocell
+        run: cargo +1.89.0 build -p phase1-certifier --bin digital-protocell-phase1 --release
+
+      - name: Production selector smoke
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/production.json"
+          cargo +1.89.0 run -p phase1-certifier --bin digital-protocell-phase1 --release -- --steps 1 --out "$out"
+          python3 - "$out" <<'PY'
+          import json, sys
+          report = json.load(open(sys.argv[1]))
+          assert report["mesh_contract"] == "MaturationCoupledV4", report
+          assert report["reserve_enabled"] is False, report
+          assert report["area"] > 0 and report["m_total"] >= 0, report
+          print("production selector: MaturationCoupledV4 / reserve OFF")
+          PY
+
+      - name: Preserve explicit historical selectors
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          for contract in ConservativeV2 ConservativeV3; do
+            DCDEV020R9R3_CONTRACT="$contract" cargo +1.89.0 run -p phase1-certifier --bin digital-protocell-phase1 --release -- --steps 1 --out "$RUNNER_TEMP/$contract.json"
+          done
+          python3 - <<'PY'
+          import json, os
+          for name in ("ConservativeV2", "ConservativeV3"):
+              r = json.load(open(os.path.join(os.environ["RUNNER_TEMP"], name + ".json")))
+              assert r["mesh_contract"] == name and r["reserve_enabled"] is False, r
+          print("explicit V2/V3 selectors remain available")
+          PY
+
+      - name: Run accepted material and lifecycle checks
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test -p chemistry-core --test d098_geometry_material_conservation -- --nocapture
+          cargo +1.89.0 test -p phase1-certifier --release --test metrics_semantics -- --nocapture
+          cargo +1.89.0 test -p regulatory-core --lib -- --nocapture
+          cargo +1.89.0 test -p evolution-harness -- --nocapture
+
+      - name: Run reusable foundation preservation assays
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/foundations"
+          mkdir -p "$out"
+          for spec in "dcdev002_gate_assay:regulator" "dcdev003_gate_assay:contact" "dcdev004_gate_assay:contact_regulation" "dcdev005_gate_assay:plasticity" "dcdev006_gate_assay:contact_environment" "dcdev007_gate_assay:contact_regulation_active" "dcdev008_gate_assay:finite_resource" "dcdev011_gate_assay:traction"; do
+            example="${spec%%:*}"; label="${spec##*:}"
+            cargo +1.89.0 run -p regulatory-core --example "$example" -- "$out/$label"
+          done
+          test -s "$out/regulator/final_manifest.json" || test -s "$out/regulator/regression_manifest.json"
+
+      - name: Run D-087 preservation boundary
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          for contract in ConservativeV2 ConservativeV3 MaturationCoupledV4; do
+            if [ "$contract" = MaturationCoupledV4 ]; then export DCDEV020M1REPLAN002R1_V4=1; else unset DCDEV020M1REPLAN002R1_V4; fi
+            DCDEV020R9R3_CONTRACT="$contract" cargo +1.89.0 run -p phase1-certifier --bin phase1_certification -- --output "$RUNNER_TEMP/d087-$contract"
+          done
+
+      - name: Upload compact baseline results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev020-post-m1-baseline-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev020postm1baseline001/
+            ${{ runner.temp }}/production.json
+            ${{ runner.temp }}/ConservativeV2.json
+            ${{ runner.temp }}/ConservativeV3.json
+            ${{ runner.temp }}/foundations/
+          if-no-files-found: warn

@@ -43,6 +43,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head validation is not yet complete.
 - Follow-up directive: none
 
+## D-20260829-post-m1-clean-capability-baseline - PARTIAL
+
+- Outcome ID: OUT-DCDEV020-POST-M1-CLEAN-CAPABILITY-BASELINE
+- Supersedes outcome: none
+- Closed: `2026-08-29T12:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Clean-baseline extraction is in progress from the pre-M1 base. Accepted V4 runtime and required downstream capability sources are retained; validation and Architect review remain pending.
+- Changed areas: baseline branch tree, compact evidence, current governance, and scoped validation workflow; PR #44 and scientific source authority remain unchanged.
+- Validation:
+  - Exact accepted source closure head and PR provenance - PASSED
+  - Dependency/reference inventory - PASSED
+  - Clean baseline extraction - NOT RUN
+  - Exact-head Linux validation - NOT RUN
+- Remaining risks: downstream preservation and exact-head CI may identify an extraction dependency that requires returning to Architect.
+- Blockers: final validation and Architect acceptance.
+- Follow-up directive: none
+
 ## D-20260816-dcdev008-finite-spatial-resource-acquisition - PARTIAL
 
 - Outcome ID: OUT-DCDEV008-FINITE-SPATIAL-RESOURCE-ACQUISITION-LOCAL

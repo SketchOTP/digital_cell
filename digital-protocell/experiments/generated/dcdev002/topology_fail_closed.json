@@ -1,9 +1,0 @@
-{
-  "artifact_status": "CONTROL",
-  "automatic_remap": false,
-  "error": "topology changed: expected 6 patches, observed 7",
-  "expected_vertex_count": 6,
-  "observed_vertex_count": 7,
-  "partial_update": false,
-  "result": "DCDEV002_GATE10_TOPOLOGY_FAIL_CLOSED_PASS"
-}

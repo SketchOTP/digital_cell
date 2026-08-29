@@ -2,7 +2,9 @@
 //!
 //! No target radius, target area, or global shape energy.
 
-use crate::material_mesh::{MaterialMesh, MeshEdge};
+use crate::material_mesh::{
+    conserve_interior_amount_across_area_change, MaterialMesh, MeshContractVersion, MeshEdge,
+};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
@@ -100,6 +102,28 @@ fn angle_cos(mesh: &MaterialMesh, i: usize) -> f64 {
 
 /// Accumulate vertex forces from stretch, bend, and local pressure.
 pub fn compute_forces(mesh: &MaterialMesh, params: &MechParams) -> Vec<[f64; 2]> {
+    compute_forces_with_reference_lengths(mesh, params, None)
+}
+
+/// Accumulate forces using an optional diagnostic per-edge reference length.
+///
+/// The production path passes `None` and therefore remains byte/semantically
+/// unchanged.  The reference slice is observer-only state owned by a
+/// diagnostic clone; it has no material or serialized-organism authority.
+pub fn compute_forces_with_reference_lengths(
+    mesh: &MaterialMesh,
+    params: &MechParams,
+    reference_lengths: Option<&[f64]>,
+) -> Vec<[f64; 2]> {
+    if let Some(reference_lengths) = reference_lengths {
+        if reference_lengths.len() != mesh.n()
+            || reference_lengths
+                .iter()
+                .any(|length| !length.is_finite() || *length <= 0.0)
+        {
+            return Vec::new();
+        }
+    }
     let n = mesh.n();
     let mut f = vec![[0.0, 0.0]; n];
     for i in 0..n {
@@ -107,7 +131,9 @@ pub fn compute_forces(mesh: &MaterialMesh, params: &MechParams) -> Vec<[f64; 2]>
             continue;
         }
         let (t, len) = edge_unit(mesh, i);
-        let l0 = mesh.rest_length(i);
+        let l0 = reference_lengths
+            .and_then(|lengths| lengths.get(i).copied())
+            .unwrap_or_else(|| mesh.rest_length(i));
         // Stretch: dE/dℓ = k_s (ℓ-ℓ0)/ℓ0 ; clamp reference length so mass-damaged
         // edges cannot produce unbounded restoring forces that hang remesh.
         let l_ref = l0.max(0.25 * len).max(1e-3);
@@ -159,10 +185,31 @@ pub fn compute_forces(mesh: &MaterialMesh, params: &MechParams) -> Vec<[f64; 2]>
 
 /// Overdamped step: γ dx/dt = F. Conserves edge material (m,b) — only vertex positions move.
 pub fn mechanics_step(mesh: &mut MaterialMesh, params: &MechParams) -> bool {
-    if !mesh.alive || mesh.n() < 3 {
+    if !mesh.can_advance_physics() || mesh.n() < 3 {
         return false;
     }
     let forces = compute_forces(mesh, params);
+    mechanics_step_from_forces(mesh, params, forces)
+}
+
+/// Diagnostic-only mechanics step using caller-owned per-edge reference
+/// lengths.  The normal production function remains the authority whenever
+/// this API is not explicitly selected by a diagnostic clone.
+pub fn mechanics_step_with_reference_lengths(
+    mesh: &mut MaterialMesh,
+    params: &MechParams,
+    reference_lengths: &[f64],
+) -> bool {
+    if !mesh.can_advance_physics()
+        || mesh.n() < 3
+        || reference_lengths.len() != mesh.n()
+        || reference_lengths
+            .iter()
+            .any(|length| !length.is_finite() || *length <= 0.0)
+    {
+        return false;
+    }
+    let forces = compute_forces_with_reference_lengths(mesh, params, Some(reference_lengths));
     mechanics_step_from_forces(mesh, params, forces)
 }
 
@@ -179,11 +226,20 @@ fn mechanics_step_from_forces(
     let m_before = mesh.total_structural_mass();
     let b_before = mesh.total_bound_membrane();
     let l_before = mesh.free_l;
+    let area_before = matches!(
+        mesh.contract_version,
+        MeshContractVersion::GeometryConservativeV3 | MeshContractVersion::MaturationCoupledV4
+    )
+    .then(|| mesh.area());
     for (i, fi) in forces.iter().enumerate() {
         mesh.vertices[i][0] += dt * inv_g * fi[0];
         mesh.vertices[i][1] += dt * inv_g * fi[1];
     }
-    let ok = (mesh.total_structural_mass() - m_before).abs() < 1e-12
+    let geometry_ok = area_before.map_or(true, |before| {
+        conserve_interior_amount_across_area_change(mesh, before, mesh.area())
+    });
+    let ok = geometry_ok
+        && (mesh.total_structural_mass() - m_before).abs() < 1e-12
         && (mesh.total_bound_membrane() - b_before).abs() < 1e-12
         && (mesh.free_l - l_before).abs() < 1e-12;
     ok
@@ -199,7 +255,7 @@ pub fn mechanics_step_with_external_forces(
     params: &MechParams,
     external_forces: &[[f64; 2]],
 ) -> bool {
-    if !mesh.alive || mesh.n() < 3 || external_forces.len() != mesh.n() {
+    if !mesh.can_advance_physics() || mesh.n() < 3 || external_forces.len() != mesh.n() {
         return false;
     }
     let mut forces = compute_forces(mesh, params);
@@ -226,7 +282,7 @@ pub fn mechanics_step_with_edge_tensions(
     params: &MechParams,
     edge_tensions: &[f64],
 ) -> bool {
-    if !mesh.alive || mesh.n() < 3 || edge_tensions.len() != mesh.n() {
+    if !mesh.can_advance_physics() || mesh.n() < 3 || edge_tensions.len() != mesh.n() {
         return false;
     }
     let mut forces = compute_forces(mesh, params);
@@ -264,7 +320,7 @@ pub fn mechanics_step_with_edge_tensions_and_external_forces(
     edge_tensions: &[f64],
     external_forces: &[[f64; 2]],
 ) -> bool {
-    if !mesh.alive
+    if !mesh.can_advance_physics()
         || mesh.n() < 3
         || edge_tensions.len() != mesh.n()
         || external_forces.len() != mesh.n()
@@ -325,12 +381,14 @@ pub fn remesh_split(mesh: &mut MaterialMesh) -> usize {
             let b_half = 0.5 * e.b;
             let tm_half = 0.5 * e.tracer_m;
             let tb_half = 0.5 * e.tracer_b;
+            let my_half = 0.5 * e.m_young;
             mesh.vertices.insert(i + 1, mid);
             mesh.edges[i] = MeshEdge {
                 m: m_half,
                 b: b_half,
                 tracer_m: tm_half,
                 tracer_b: tb_half,
+                m_young: my_half,
                 ruptured: false,
             };
             mesh.edges.insert(
@@ -340,6 +398,7 @@ pub fn remesh_split(mesh: &mut MaterialMesh) -> usize {
                     b: b_half,
                     tracer_m: tm_half,
                     tracer_b: tb_half,
+                    m_young: my_half,
                     ruptured: false,
                 },
             );
@@ -386,6 +445,7 @@ pub fn remesh_merge(mesh: &mut MaterialMesh) -> usize {
             b: e0.b + e1.b,
             tracer_m: e0.tracer_m + e1.tracer_m,
             tracer_b: e0.tracer_b + e1.tracer_b,
+            m_young: e0.m_young + e1.m_young,
             ruptured: false,
         };
         // Remove vertex j and edge j; keep combined material on edge i.
@@ -404,6 +464,7 @@ pub fn remesh_merge(mesh: &mut MaterialMesh) -> usize {
                 b: e_a.b + e_b.b,
                 tracer_m: e_a.tracer_m + e_b.tracer_m,
                 tracer_b: e_a.tracer_b + e_b.tracer_b,
+                m_young: e_a.m_young + e_b.m_young,
                 ruptured: false,
             };
             mesh.edges.pop();
@@ -422,8 +483,16 @@ pub fn remesh_merge(mesh: &mut MaterialMesh) -> usize {
 pub fn remesh(mesh: &mut MaterialMesh) -> (usize, usize) {
     let m0 = mesh.total_structural_mass();
     let b0 = mesh.total_bound_membrane();
+    let area_before = matches!(
+        mesh.contract_version,
+        MeshContractVersion::GeometryConservativeV3 | MeshContractVersion::MaturationCoupledV4
+    )
+    .then(|| mesh.area());
     let s = remesh_split(mesh);
     let m = remesh_merge(mesh);
+    if let Some(before) = area_before {
+        let _ = conserve_interior_amount_across_area_change(mesh, before, mesh.area());
+    }
     let _ = (
         (mesh.total_structural_mass() - m0).abs() < 1e-9,
         (mesh.total_bound_membrane() - b0).abs() < 1e-9,

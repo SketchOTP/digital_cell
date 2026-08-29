@@ -3,15 +3,15 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last verified: `2026-08-15T12:00:00-04:00`
+- Last verified: `2026-08-29T12:00:00-04:00`
 
 ## Identity
 
 - Project name or identifier: Digital Cell
 - Purpose: A self-maintaining digital protocell developing toward a persistent embodied digital lifeform.
-- Repository root: `/home/sketch/Projects/digital_cell`
+- Repository root: `/home/sketch/Projects/digital_cell-m1-baseline`
 - Verified remote: `git@github.com:SketchOTP/digital_cell.git`
-- Maturity or current phase: Clean scientific base established for DC-DEV-001A developmental/sensorimotor architecture selection.
+- Maturity or current phase: M1 closed/frozen; clean post-M1 capability baseline pending final validation and Architect acceptance.
 
 ## Languages and runtimes
 

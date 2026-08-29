@@ -24,6 +24,20 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260829-post-m1-clean-capability-baseline
+
+- Issued: `2026-08-29T12:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-POST-M1-BASELINE-001-CLEAN-CAPABILITY-BASELINE-001`
+- Objective: Extract a clean post-M1 capability baseline from the accepted V4 closure without changing scientific behavior or the M1 provenance stack.
+- Scope: Pre-M1 base comparison, required-capability extraction, dependency/reference analysis, compact baseline evidence, governance, and exact-head Linux validation.
+- Exclusions: M1 reopening, scientific equation changes, behavior tuning, M2 implementation, parameter search, reserve/recycling/salvage, and PR #44 merge or mutation.
+- Acceptance: Clean baseline branch from the pre-M1 base, accepted V4 capability and downstream preservation equivalence, unchanged D-087 boundary, preserved PR #44 provenance, and exact-head Linux validation.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260816-dcdev011-passive-isotropic-stick-slip-traction
 
 - Issued: `2026-08-16T00:00:00-04:00`

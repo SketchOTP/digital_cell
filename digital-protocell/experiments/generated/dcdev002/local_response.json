@@ -1,8 +1,0 @@
-{
-  "artifact_status": "AUTHORITATIVE",
-  "direct_neighbor_activity": 0.0,
-  "distant_patch_activity": 0.0,
-  "result": "DCDEV002_GATE4_LOCAL_RESPONSE_PASS",
-  "steps": 1,
-  "stimulated_patch_activity": 0.08
-}

@@ -1,6 +1,0 @@
-{
-  "gate2_screens_accounting_closed": true,
-  "material_and_activation_unit_backed": true,
-  "note": "Gate 1 unit tests + Gate 2 screen accounting_closed flags",
-  "project_directive": "D-023"
-}

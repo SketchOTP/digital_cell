@@ -18,6 +18,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-001A architecture selection.
 - Supersedes learning: none
 
+## L-DCDEV020-POST-M1-BASELINE-001
+
+- Learning ID: L-DCDEV020-POST-M1-BASELINE-001
+- Date: 2026-08-29
+- Fact or lesson: The accepted M1 implementation can be separated from its development history by retaining the V4 scientific/runtime closure and reusable foundation crates while omitting generated experiment outputs and superseded audit workflows from the active baseline.
+- Evidence location: `digital-protocell/experiments/generated/dcdev020postm1baseline001/capability_inventory.json` and the accepted source closure at `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1closure001/`.
+- Confidence: PROVISIONAL
+- Scope: Post-M1 clean capability baseline extraction.
+- Supersedes learning: none
+
 ## L-DCDEV001A-002
 
 - Learning ID: L-DCDEV001A-002

@@ -3,24 +3,25 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-17T00:00:00-04:00`
+- Last updated: `2026-08-29T12:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260817-dcdev016-metabolic-break-even`
-- External directive ID: `DC-DEV-016`
-- Objective: `Determine whether one preregistered resource inventory derived from the DC-DEV-015 measured deficit can maintain available metabolic potential and restore stored activated material under the existing metabolism.`
+- Local directive ID: `D-20260829-post-m1-clean-capability-baseline`
+- External directive ID: `DC-DEV-020-POST-M1-BASELINE-001-CLEAN-CAPABILITY-BASELINE-001`
+- Objective: `Extract a clean post-M1 capability baseline from the accepted V4 closure while preserving the source provenance stack and changing no science.`
 - Current status: `VALIDATING`
-- Acceptance: `Observer-only DC-DEV-016 challenge completed locally with baseline parity, resource conservation, supply sufficiency, and available-potential break-even; stored A/R/E_stored restoration was not observed; exact-head remote CI and architect review remain pending.`
-- Current phase: `DC-DEV-016 evidence and governance package are prepared for pushed draft-PR validation; architect review is next.`
-- Expected or actual touched areas: `DC-DEV-016 observer assay/docs/artifacts/workflow, regulatory-core example registration, scoped CI, current governance state`
-- Immediate next action: `Push DC-DEV-016, open the draft PR against DC-DEV-015, run exact-head remote CI, and return for architect review; do not begin DC-DEV-017.`
+- Acceptance: `Baseline extraction is prepared from the pre-M1 base; exact-head Linux validation and Architect acceptance remain pending.`
+- Current phase: `Post-M1 clean capability baseline validation; M1 remains closed and frozen.`
+- Expected or actual touched areas: `baseline branch, retained V4 runtime/capabilities, compact manifests, current governance, scoped CI`
+- Immediate next action: `Run local and exact-head Linux baseline validation, archive compact evidence, and return for Architect review; do not begin M2.`
 
 ## Temporary task-relevant facts
 
-- The exact scientific base is `0d2c404c0874d5430dd5d01dbdcc059a842dd689`.
-- R4/D-096 source remains isolated in the other worktree and is not an input to this branch.
-- Later append-only governance snapshots are preserved under `.agent/legacy/`.
+- M0 is closed; M1 is formally closed and frozen at `fb77f472b1519a9e0f713833efba5b1d403f4723`.
+- Production selection is `MaturationCoupledV4` with reserve OFF; M2 is not yet authorized.
+- PR #44 is the immutable M1 provenance stack and must remain open, draft, unmerged, and untouched.
+- The clean baseline is derived from `1e242f28152797b512e25cd56c7b718e45d6ca97`; accepted M1 evidence remains on Atlas.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
 - DC-DEV-003 continuity remains authoritative; DC-DEV-004 adds one local contractile tension path and does not add sensors, commands, memory, learning, or evolution.
 - The frozen funding quantity is existing D-091 metabolic reserve `R` in `MaterialMesh.interior.r`; expenditure enters existing `W`.
@@ -37,18 +38,18 @@
 
 ## Risks
 
-- Atlas has no Rust toolchain; local sanctioned Rust 1.89.0 is used with the Atlas worktree mounted through SSHFS and a local NTFS target directory.
+- Linux is the target runtime; canonical dense evidence is stored under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/`.
 - The frozen substrate remains local, isotropic, passive, and reaction-only; no DC-DEV-010 directional substrate code may enter this branch.
 - DC-DEV-012 is closed as valid negative evidence and is not imported.
 
 ## Blockers
 
-- Exact-head remote CI and independent architect review remain open. DC-DEV-016 is observer-only; no metabolism repair, tuning, new hunger state, behavior, or DC-DEV-017 is authorized.
+- Exact-head baseline CI and Architect acceptance remain open; no M2 implementation or M1 reopening is authorized.
 
 ## Pending decisions
 
-- The frozen DC-DEV-013 geometry, inventory, horizon, and thresholds must not be changed after protocol commit `fa8a689adff8cbc3b981038c4812ebdc0623116c`.
-- DC-DEV-014, parameter repair, parameter screening, navigation, resource seeking, and evolution remain unauthorized.
+- The V4 equations, D-087 boundary, conservation contracts, and accepted M1 qualification are frozen; only baseline integration is in scope.
+- M2 autonomous spatial resource acquisition is pending Architect baseline acceptance; no parameter search, reserve, recycling, salvage, or scientific change is authorized.
 
 ## Status vocabulary
 

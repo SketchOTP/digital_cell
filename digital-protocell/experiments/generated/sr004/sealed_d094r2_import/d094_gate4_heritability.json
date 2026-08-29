@@ -1,8 +1,0 @@
-{
-  "closed_or_present_frac": 1.0,
-  "id_shuffle_no_effect": true,
-  "need": 40,
-  "pairs": 40,
-  "parent_offspring_edge_freq_corr": 0.7261483678362296,
-  "parent_offspring_network_response_corr": 0.8717486739032558
-}

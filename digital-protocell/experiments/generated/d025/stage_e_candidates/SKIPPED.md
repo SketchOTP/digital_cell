@@ -1,3 +1,0 @@
-# stage_e_candidates
-
-Skipped: Gate 8 concluded D025_STAGE_E_LONG_TRANSIENT_UNRESOLVED before solver/neighbor/robustness entry (NOT_CONVERGED at 200k).

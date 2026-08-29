@@ -16,6 +16,16 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Affected areas: developmental/sensorimotor strategy package; no scientific source.
 - Supersedes record: none
 
+## DEC-DCDEV020-POST-M1-BASELINE-001
+
+- Date: 2026-08-29
+- Record or decision ID: DEC-DCDEV020-POST-M1-BASELINE-001
+- Status: ACTIVE
+- Decision or event: Establish a clean `baseline/m1-v4-closed` engineering surface from the pre-M1 base while preserving PR #44 as historical M1 provenance.
+- Rationale: M1 is Architect-closed and V4 is frozen; future milestone work must not remain coupled to the 187-commit investigation stack.
+- Affected areas: repository branch topology, retained runtime/capabilities, compact evidence, current governance, and future milestone base selection.
+- Supersedes record: none
+
 ## DEC-DCDEV001A-R1
 
 - Date: 2026-08-15

@@ -83,7 +83,7 @@ pub fn complete_sequences(mesh: &MaterialMesh) -> Vec<String> {
 
 /// Bounded internal diffusion of chain positions (observer-scale jitter).
 pub fn diffuse_templates(mesh: &mut MaterialMesh, dt: f64, d_coeff: f64) {
-    if d_coeff <= 0.0 || !mesh.alive {
+    if d_coeff <= 0.0 || !mesh.can_advance_physics() {
         return;
     }
     let c = mesh.centroid();
