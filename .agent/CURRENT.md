@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-29T12:00:00-04:00`
+- Last updated: `2026-08-29T15:42:00-04:00`
 
 ## Active state after adoption
 
@@ -14,7 +14,7 @@
 - Acceptance: `Baseline extraction and exact-head Linux validation are complete; Architect acceptance of the final baseline package remains pending.`
 - Current phase: `Post-M1 clean capability baseline evidence finalized; M1 remains closed and frozen.`
 - Expected or actual touched areas: `baseline branch, retained V4 runtime/capabilities, compact manifests, current governance, scoped CI`
-- Immediate next action: `Run the final exact-head Linux validation for the finalized compact manifest, archive compact evidence, and return for Architect review; do not begin M2.`
+- Immediate next action: `Return the finalized baseline package for Architect review; do not begin M2.`
 
 ## Temporary task-relevant facts
 
@@ -33,7 +33,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Local Rust 1.89.0 DC-DEV-016 example check/run and evidence inspection`
+- Command or check: `Exact-head Linux post-M1 clean baseline workflow 33271104939 at 5e28762d0757bfa23b91820115b5893d0ef6d82a`
 - Result: `PASSED`
 
 ## Risks
