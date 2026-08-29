@@ -82,3 +82,7 @@ path = "../../examples/dcdev020m1replan002r5r1_zero_area_closure_refeed_semantic
 [[example]]
 name = "dcdev020m1replan002r5r2_v4_gc_transport_amount_conservation_repair"
 path = "../../examples/dcdev020m1replan002r5r2_v4_gc_transport_amount_conservation_repair.rs"
+
+[[example]]
+name = "dcdev020m1replan002r5r3_v4_live_resource_irreversible_death"
+path = "../../examples/dcdev020m1replan002r5r3_v4_live_resource_irreversible_death.rs"

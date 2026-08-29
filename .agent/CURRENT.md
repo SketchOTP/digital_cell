@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-28T21:58:00-04:00`
+- Last updated: `2026-08-28T22:30:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260828-dcdev020m1replan002r5r2-v4-gc-transport-amount-conservation-repair001`
-- External directive ID: `DC-DEV-020-M1-REPLAN-002-R5-R2-V4-GC-TRANSPORT-AMOUNT-CONSERVATION-REPAIR-001`
-- Objective: `Repair only V3/V4 sub-floor transport amount conservation, preserve V1/V2 semantics, and qualify the valid starvation prefix with authoritative stop semantics.`
+- Local directive ID: `D-20260828-dcdev020m1replan002r5r3-v4-live-resource-irreversible-death-qualification001`
+- External directive ID: `DC-DEV-020-M1-REPLAN-002-R5-R3-V4-LIVE-RESOURCE-IRREVERSIBLE-DEATH-QUALIFICATION-001`
+- Objective: `Qualify live finite-spatial-resource refeeding from valid V4 starvation checkpoints without direct internal N/F insertion or continuation past failed mechanics.`
 - Current status: `VALIDATING`
-- Acceptance: `R5-R1 is Architect accepted at 4b1a82877246c58ba21464963eb5bc4cb2a535cf as M1_R5_ALTERNATE_CLOSURE_CAUSE_CONFIRMED. R5-R2 exact-head push 33227623962 and PR 33227626644 both passed at 1410593005b7d0c42238704b4f19c3cbfeea132b; Architect acceptance remains pending.`
-- Current phase: `V3/V4 amount-space transport using actual positive area is implemented with outbound inventory caps and signed applied-transfer ledgers. Focused sub-floor V3/V4, above-floor parity, preservation, and bounded integrated replay pass; the replay stops at the first authoritative mechanics false return. Exact-head Linux push and PR CI passed, with compact artifacts preserved on Atlas. M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
-- Expected or actual touched areas: `version-aware transport/material accounting, focused tests, R5-R2 qualification example/workflow, compact evidence, documentation, and append-only governance only; HistoricalV1/ConservativeV2 behavior, other biology, D-087, production default, reserve/recycling/salvage, M2, and downstream work remain unchanged; dense evidence is stored on Atlas`
-- Immediate next action: `Stop for Architect review of R5-R2. Do not start death qualification, live refeeding, R4 150k requalification, production selection, or M2.`
+- Acceptance: `R5-R2 is Architect accepted at d0a9601aed170c43a5c288c8300f3fe65e64237f. R5-R3 local live-resource qualification is complete and fail-closed; exact-head CI and Architect acceptance are pending.`
+- Current phase: `The valid V4 starvation prefix closes through accepted step 8565 and stops at mechanics false step 8566. S0 live finite-resource refeed receives positive N/F but fails recovery after physical contact loss; S1 has no contact and no delivery; S2 stops immediately on mechanics false and is not a death result. M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
+- Expected or actual touched areas: `R5-R3 live-resource qualification example/workflow, compact evidence, documentation, and append-only governance only; no V4 biology, transport, mechanics, D-087, production default, reserve/recycling/salvage, or successor work changed; dense evidence is stored on Atlas`
+- Immediate next action: `Stop for Architect review of R5-R3. Do not start a death repair, R4 requalification, production selection, M2, or any successor execution.`
 
 ## Temporary task-relevant facts
 

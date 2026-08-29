@@ -2025,3 +2025,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: R4 150k evidence remains pending requalification; R5 S3/S4 remain invalid death evidence; the authoritative mechanics-false boundary remains a stop rather than a death result. M1 remains not established; no death qualification, live refeed, production selection, M2, reserve, recycling, salvage, or tuning is authorized.
 - Blockers: Architect disposition of R5-R2.
 - Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5r3-v4-live-resource-irreversible-death-qualification001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5R3-V4-LIVE-RESOURCE-IRREVERSIBLE-DEATH-QUALIFICATION-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5R2-V4-GC-TRANSPORT-AMOUNT-CONSERVATION-REPAIR-REMOTE-PARTIAL
+- Closed: `2026-08-28T22:30:00-04:00`
+- Acceptance: PARTIAL
+- Summary: R5-R3 executes the authorized live `FiniteSpatialBackingReservoirV1` no-reset refeed qualification from the accepted R5-R2 head. The V4 starvation prefix remains materially closed through accepted step `8565` and stops at the authoritative mechanics false at `8566`. S0 receives live finite N/F delivery but fails recovery after contact loss; S1 has no physical resource contact; S2 stops immediately on mechanics false. The result is `M1_V4_LIVE_RESOURCE_DEATH_QUALIFICATION_INVALID`; irreversible physical death is not established.
+- Changed areas: R5-R3 live-resource qualification example/registration, scoped workflow, compact evidence, documentation, and append-only governance. No V4 biology, transport, mechanics, D-087, production selection, or historical evidence changed.
+- Validation:
+  - Live-resource example and focused preservation tests - PASSED
+  - Starvation closure through accepted prefix - PASSED; maximum accepted-stage residual `5.684341886080802e-14`
+  - S0 live delivery `12.075682888285865` N and F each; recovery - FAILED; remaining inventory `231.07356512225152` each
+  - S1 no-contact refeed - FAILED to recover; no delivery
+  - S2 authoritative stop on mechanics false at refeed step `1`; no death claim
+  - V2 D-087 `8/8`; V3 D-087 `8/8`; V4 D-087 `7/8` with frozen Gate 2 failure
+  - Architect review - PENDING
+- Remaining risks: S0 fails the required live positive control because body-resource contact is lost while finite inventory remains. S1/S2 are not irreversible-death evidence; S2's immediate stop makes refeed outcome uninterpretable for death. M1 remains not established. No death repair, R4 requalification, production selection, M2, reserve, recycling, salvage, or tuning is authorized.
+- Blockers: Exact-head R5-R3 CI and Architect disposition.
+- Follow-up directive: none

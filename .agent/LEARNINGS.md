@@ -885,3 +885,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: R5-R2 transport conservation repair qualification only; no death qualification, live refeed, production switch, M1 closure, M2, reserve, recycling, salvage, or tuning.
 - Supersedes learning: L-DCDEV020M1REPLAN002R5R2-LOCAL
+
+## L-DCDEV020M1REPLAN002R5R3-LOCAL
+
+- Learning ID: L-DCDEV020M1REPLAN002R5R3-LOCAL
+- Date: 2026-08-28
+- Fact or lesson: R5-R3 executes live `FiniteSpatialBackingReservoirV1` no-reset refeeding from valid R5-R2 V4 checkpoints. The starvation prefix is closed through accepted step `8565` and stops at mechanics false step `8566`. S0 physically receives `12.075682888285865` N and F each but fails recovery after contact loss while `231.07356512225152` of each resource remains; S1 has no physical contact or delivery; S2 stops immediately on mechanics false. Classification is `M1_V4_LIVE_RESOURCE_DEATH_QUALIFICATION_INVALID`; no irreversible-death claim is valid.
+- Evidence location: compact evidence under `digital-protocell/experiments/generated/dcdev020m1replan002r5r3/`; dense evidence under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r3/`.
+- Confidence: PROVISIONAL
+- Scope: R5-R3 live-resource irreversible-death qualification only; no direct internal N/F insertion, V4 biology, transport/mechanics, D-087, production selection, R4 requalification, M1 closure, M2, reserve, recycling, salvage, or tuning.
+- Supersedes learning: L-DCDEV020M1REPLAN002R5R2-REMOTE-VERIFIED

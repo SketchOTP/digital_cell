@@ -215,3 +215,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Remote qualification verifies actual-positive-area V3/V4 amount-space transport, outbound material caps, applied-transfer ledgers, elimination of the former transport closure failure class, authoritative stop at mechanics false step `8566`, V4 homeostasis/recovery preservation, V2/V3 D-087 `8/8`, and V4 D-087 `7/8` with only the frozen Gate 2 failure. GitHub artifact digests are push `sha256:c39728cdbca81a9d69b1b29b3a0430c186388f383574f448fb94bb9b1b57a8f8` and PR `sha256:c84e8b363f13d560bbbffa0e6454638c4dcec0c4d2c00fff7066bd7dc3be66e8`.
 - Affected areas: Scoped transport implementation, qualification evidence, workflow verifier correction, compact evidence, dense Atlas evidence, and append-only governance; no death qualification, live refeed, production switch, M1 closure, M2, reserve, recycling, salvage, or tuning.
 - Supersedes record: DEC-DCDEV020M1REPLAN002R5R2-001
+
+## DEC-DCDEV020M1REPLAN002R5R3-001
+
+- Date: 2026-08-28
+- Record or decision ID: DEC-DCDEV020M1REPLAN002R5R3-001
+- Status: PROPOSED
+- Decision or event: R5-R3 live finite-resource irreversible-death qualification executed from accepted R5-R2 head `d0a9601aed170c43a5c288c8300f3fe65e64237f`.
+- Rationale: The accepted starvation prefix closes through step `8565` and stops before the failed mechanics transition at `8566`. The live S0 positive control physically receives `12.075682888285865` N and F each but fails recovery after resource contact is lost; S1 has no physical contact or delivery; S2 stops immediately on authoritative mechanics false. Therefore the qualification is invalid as a death claim and is classified `M1_V4_LIVE_RESOURCE_DEATH_QUALIFICATION_INVALID`.
+- Affected areas: R5-R3 live-resource qualification evidence, workflow, documentation, and append-only governance only; no V4 biology, transport, mechanics, D-087, production default, R4 requalification, M1 closure, M2, reserve, recycling, salvage, or tuning changed.
+- Supersedes record: DEC-DCDEV020M1REPLAN002R5R2-REMOTE-001

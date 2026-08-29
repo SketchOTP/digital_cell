@@ -1088,3 +1088,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260828-dcdev020m1replan002r5r1-zero-area-closure-and-refeed-semantics-audit001
 - Status at issuance: ISSUED
+
+## D-20260828-dcdev020m1replan002r5r3-v4-live-resource-irreversible-death-qualification001
+
+- Issued: `2026-08-28T22:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-REPLAN-002-R5-R3-V4-LIVE-RESOURCE-IRREVERSIBLE-DEATH-QUALIFICATION-001`
+- Objective: Qualify V4 irreversible physical loss using live finite spatial resource refeeding from valid starvation checkpoints after the accepted R5-R2 transport repair.
+- Scope: Exact R5-R2 authority; authoritative starvation stop semantics; dynamically selected S0/S1/S2 valid checkpoints; live `FiniteSpatialBackingReservoirV1` uptake; no-reset refeed; compact Git evidence; dense Atlas evidence; scoped Linux CI; append-only governance.
+- Exclusions: No direct internal N/F insertion, sealed source replay, post-failure continuation, V4 biology, transport/mechanics changes, D-087 change, production switch, death repair, R4 requalification, M1 closure, M2, reserve, recycling, salvage, tuning, or PR merge.
+- Acceptance: S0 live control, valid checkpoint refeed, strict closure, preservation, and exact-head CI. If S0 fails recovery, stop and return the invalid fail-closed qualification; do not claim irreversible death.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260828-dcdev020m1replan002r5r2-v4-gc-transport-amount-conservation-repair001
+- Status at issuance: ISSUED
