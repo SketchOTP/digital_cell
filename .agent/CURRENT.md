@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-28T23:57:00-04:00`
+- Last updated: `2026-08-29T10:36:44-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260828-dcdev020m1replan002r5r4-v4-admissible-boundary-no-resurrection-qualification001`
-- External directive ID: `DC-DEV-020-M1-REPLAN-002-R5-R4-V4-ADMISSIBLE-BOUNDARY-NO-RESURRECTION-QUALIFICATION-001`
-- Objective: `Qualify V4 no-resurrection from valid starvation states using a finite nonspatial membrane-mediated boundary capped by the accepted R1 opportunity schedule.`
+- Local directive ID: `D-20260829-dcdev020m1closure001-v4-production-selection-and-freeze001`
+- External directive ID: `DC-DEV-020-M1-CLOSURE-001-V4-PRODUCTION-SELECTION-AND-FREEZE-001`
+- Objective: `Select the Architect-accepted MaturationCoupledV4 physiology as the production/default contract with reserve OFF, run the final integrated M1 closure manifest, and freeze the milestone pending Architect acceptance.`
 - Current status: `VALIDATING`
-- Acceptance: `R5-R2 is Architect accepted at 4c6a0020be887f66ea6cfab661ce570c730f7d90. R5-R3 was accepted as an invalid qualification; R5-R4 exact-head push 33232374125 and PR 33232376420 both passed at a49e30c148e41ff8abb681b49964381ae61037dc. Classification is M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED; Architect review is pending.`
-- Current phase: `The valid V4 starvation prefix closes through accepted step 8565 and stops at mechanics false step 8566. S0 is the exact 480-step R1 deprivation state and recovers under the finite admissible boundary; S1 also recovers; S2 receives positive membrane-mediated transfer under the R1 cap but does not recover during the 8000-step challenge and ends nonviable with ruptured topology. M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
-- Expected or actual touched areas: `R5-R4 observer/qualification example, scoped workflow, compact evidence, documentation, and append-only governance only; no V4 biology, production transport, mechanics, D-087, production default, reserve/recycling/salvage, or successor work changed; dense evidence is stored on Atlas`
-- Immediate next action: `Stop for Architect review of R5-R4. Do not start M1 selection/closure, a death repair, M2, or any successor execution.`
+- Acceptance: `R5-R4 is Architect accepted at c56cf3791fc17e85073f6b1ed13cf827353ca3da as M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED. The only authorized follow-up is M1 closure selection/freeze; PR #44 remains open, draft, and unmerged.`
+- Current phase: `The accepted V4 physiology has passed moving homeostasis, bounded recovery, causal starvation deterioration, admissible-boundary no-resurrection, material conservation, and preservation. This directive changes only the production selector to MaturationCoupledV4 with reserve OFF, proves packaged Linux selection, and assembles the final closure manifest. M1 formal closure remains pending Architect acceptance; M2 remains unauthorized.`
+- Expected or actual touched areas: `production selector and packaged runtime wiring, focused closure verifier/workflow, compact closure evidence, documentation, and append-only governance; no V4 equations, D-087 predicates/thresholds, reserve, recycling, salvage, M2 behavior, or PR merge; dense evidence is stored on Atlas`
+- Immediate next action: `Complete the bounded selector/integration checks and exact-head CI, then stop for Architect review. Do not start new M1 science, alter D-087, merge PR #44, or begin M2.`
 
 ## Temporary task-relevant facts
 
@@ -45,12 +45,12 @@
 
 ## Last validation after adoption
 
-- Command or check: `R5-R4 exact-head Linux push/PR qualification at a49e30c148e41ff8abb681b49964381ae61037dc`
+- Command or check: `R5-R4 Architect acceptance at c56cf3791fc17e85073f6b1ed13cf827353ca3da`
 - Result: `PASSED`
 
 ## Risks
 
-- Atlas has no Rust toolchain; local sanctioned Rust 1.89.0 is used with the Atlas worktree mounted through SSHFS and a local NTFS target directory.
+- Atlas Rust is invoked explicitly as the installed `1.89.0-x86_64-unknown-linux-gnu` toolchain over SSH; `/srv/ATLAS` is the canonical dense-evidence authority.
 - The frozen substrate remains local, isotropic, passive, and reaction-only; no DC-DEV-010 directional substrate code may enter this branch.
 - DC-DEV-012 is closed as valid negative evidence and is not imported.
 - M0 is architect-accepted at `4895135deee7dbd782446dbfe25662181951afe0` with exact-head CI `32592048545`; the selected production identity is ConservativeV2/reserve OFF.
@@ -69,7 +69,7 @@
 ## Blockers
 
 - R1 exact-head remote qualification passed workflow `33186408566`; its artifact is `dcdev020m1replan002r1-maturation-coupled-production-candidate-evidence` with digest `sha256:e663a75f49dabf5adbe8bd86700b25ae628a36ac2b6c21a4bcb9f32b49702d45`. V4 D-087 remains 6/8, so R1 is not qualified pending Architect review.
-- R5-R1 is Architect accepted at `4b1a82877246c58ba21464963eb5bc4cb2a535cf`; R5-R2 is Architect accepted at `4c6a0020be887f66ea6cfab661ce570c730f7d90`; R5-R3 was accepted as invalid because spatial acquisition confounded M1 with M2. R5-R4 exact-head push/PR passed at `a49e30c148e41ff8abb681b49964381ae61037dc` with classification `M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED`, pending Architect review. No M1 closure, production selection, successor work, or M2 follows automatically.
+- R5-R1 is Architect accepted at `4b1a82877246c58ba21464963eb5bc4cb2a535cf`; R5-R2 is Architect accepted at `4c6a0020be887f66ea6cfab661ce570c730f7d90`; R5-R3 was accepted as invalid because spatial acquisition confounded M1 with M2. R5-R4 is Architect accepted at `c56cf3791fc17e85073f6b1ed13cf827353ca3da` with classification `M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED`. The authorized closure selector/freeze is bounded to V4 selection, reserve OFF, final manifest, preservation, and exact-head CI.
 - No D-087 repair, V4 tuning, production switch, recycling, salvage, controller, M2, behavior, evolution, REPLAN-003, DC-DEV-021, or successor work is authorized before Architect review.
 
 ## Pending decisions

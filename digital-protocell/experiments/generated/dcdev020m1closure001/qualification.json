@@ -1,0 +1,9 @@
+{
+  "classification": "M1_V4_PRODUCTION_SELECTION_AND_CLOSURE_CANDIDATE_QUALIFIED",
+  "directive": "DC-DEV-020-M1-CLOSURE-001-V4-PRODUCTION-SELECTION-AND-FREEZE-001",
+  "formal_architect_acceptance": "PENDING",
+  "m1": "PENDING FORMAL CLOSURE",
+  "m2_authorized": false,
+  "reserve_enabled": false,
+  "selected_contract": "MaturationCoupledV4"
+}

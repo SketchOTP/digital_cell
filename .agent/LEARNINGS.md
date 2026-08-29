@@ -925,3 +925,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: Exact-head R5-R4 remote qualification only; no V4 biology, production selection, M1 closure, M2, reserve, recycling, salvage, tuning, or successor work.
 - Supersedes learning: L-DCDEV020M1REPLAN002R5R4-LOCAL
+
+## L-DCDEV020M1CLOSURE001-LOCAL
+
+- Learning ID: L-DCDEV020M1CLOSURE001-LOCAL
+- Date: 2026-08-29
+- Fact or lesson: R5-R4 is Architect accepted at `c56cf3791fc17e85073f6b1ed13cf827353ca3da` as `M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED`. The only authorized follow-up is production selection and integrated M1 closure: the standalone Linux production selector must default to `MaturationCoupledV4` with reserve OFF while historical V1/V2/V3 selectors and D-087 outputs remain available and unchanged.
+- Evidence location: closure compact evidence under `digital-protocell/experiments/generated/dcdev020m1closure001/`; dense evidence under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1closure001/`.
+- Confidence: PROVISIONAL
+- Scope: M1 closure selection/freeze only; no new physiology search, D-087 repair, reserve/recycling/salvage, M2, clean baseline, or PR merge.
+- Supersedes learning: L-DCDEV020M1REPLAN002R5R4-REMOTE-VERIFIED

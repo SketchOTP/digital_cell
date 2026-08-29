@@ -1,0 +1,10 @@
+{
+  "artifact_digest": "assigned_by_exact_head_CI",
+  "compact_root": "digital-protocell/experiments/generated/dcdev020m1closure001/",
+  "dense_evidence_root": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1closure001/",
+  "directive": "DC-DEV-020-M1-CLOSURE-001-V4-PRODUCTION-SELECTION-AND-FREEZE-001",
+  "pr_44_merged": false,
+  "schema": "dcdev020m1closure001_artifact_manifest_v1",
+  "selection": "MaturationCoupledV4 / reserve OFF",
+  "starting_head": "c56cf3791fc17e85073f6b1ed13cf827353ca3da"
+}

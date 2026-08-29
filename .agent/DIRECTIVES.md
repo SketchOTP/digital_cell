@@ -1116,3 +1116,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260828-dcdev020m1replan002r5r3-v4-live-resource-irreversible-death-qualification001
 - Status at issuance: ISSUED
+
+## D-20260829-dcdev020m1closure001-v4-production-selection-and-freeze001
+
+- Issued: `2026-08-29T10:36:44-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-CLOSURE-001-V4-PRODUCTION-SELECTION-AND-FREEZE-001`
+- Objective: Select the Architect-accepted `MaturationCoupledV4` physiology as the production/default contract with reserve OFF, run one integrated M1 closure manifest, preserve historical and downstream foundations, and freeze M1 pending Architect acceptance.
+- Scope: Production selector and packaged Linux runtime wiring, explicit historical contract preservation, focused closure verifier/workflow, compact Git evidence, dense Atlas evidence, preservation, and exact-head Linux CI.
+- Exclusions: No V4 equation or coefficient change, D-087 change, reserve/recycling/salvage, new death assay, parameter search, M2 behavior, clean-baseline extraction, or PR #44 merge.
+- Acceptance: Fresh default selects V4 with reserve OFF; explicit V2/V3 remain available; accepted R5-R4 physiology and conservation evidence are bound into the closure manifest; downstream preservation and exact-head CI pass; Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260828-dcdev020m1replan002r5r4-v4-admissible-boundary-no-resurrection-qualification001
+- Status at issuance: ISSUED

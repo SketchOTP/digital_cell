@@ -255,3 +255,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Remote execution verifies the finite nonspatial membrane-mediated boundary, accepted R1 opportunity cap, positive-control recovery for S0/S1, positive S2 transfer without recovery through the unchanged 8,000-step challenge, closed accounting, V2/V3 `8/8`, V4 `7/8`, and qualification classification `M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED`. Push artifact digest is `sha256:7b73bd184d14ccb7b5228f5429cb3f78579feea86d2f47cee03473da3682847f`; PR artifact digest is `sha256:5dd057ff9712b06bf09f8acacf85cfe90fd9fea86ab7e5d0bbdb0177922481e5`.
 - Affected areas: Exact-head remote validation and metadata governance only; no V4 biology, transport, mechanics, D-087, production default, spatial acquisition, M1 closure, M2, reserve, recycling, salvage, or tuning changed.
 - Supersedes record: DEC-DCDEV020M1REPLAN002R5R4-001
+
+## DEC-DCDEV020M1CLOSURE001-001
+
+- Date: 2026-08-29
+- Record or decision ID: DEC-DCDEV020M1CLOSURE001-001
+- Status: PROPOSED
+- Decision or event: The Architect accepted R5-R4 at `c56cf3791fc17e85073f6b1ed13cf827353ca3da` and authorized `DC-DEV-020-M1-CLOSURE-001-V4-PRODUCTION-SELECTION-AND-FREEZE-001`.
+- Rationale: V4 has accepted moving homeostasis, bounded recovery, admissible-boundary irreversible death, material closure, and preservation. The remaining task is administrative/production integration: select V4 as the default with reserve OFF and produce one immutable closure manifest without changing V4 science or D-087.
+- Affected areas: production selector/runtime wiring, closure verifier/workflow, documentation, compact evidence, and append-only governance; no V4 equations, D-087 predicates/thresholds, reserve, M2 behavior, or PR merge.
+- Supersedes record: DEC-DCDEV020M1REPLAN002R5R4-REMOTE-001

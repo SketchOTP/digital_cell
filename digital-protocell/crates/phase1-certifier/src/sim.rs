@@ -193,6 +193,32 @@ pub fn seed_mesh(radius: f64, seed: u64) -> MaterialMesh {
     mesh
 }
 
+/// Seed the normal standalone production runtime.
+///
+/// Historical experiment runners intentionally retain their existing default
+/// (ConservativeV2) and explicit environment-controlled contract selection.
+/// The packaged production entrypoint uses this separate authority so a fresh
+/// organism selects the Architect-qualified V4 contract without silently
+/// migrating historical replays or tests.
+pub fn seed_production_mesh(radius: f64, seed: u64) -> MaterialMesh {
+    let mut mesh = seed_mesh(radius, seed);
+    if maturation_coupled_enabled() {
+        mesh.stamp_maturation_coupled_schema();
+    } else if std::env::var("DCDEV020R9R3_CONTRACT").is_ok()
+        || std::env::var("DCDEV020R9R2_V2").is_ok()
+        || std::env::var("DCDEV020M1R6R2_GEOMETRY_CONTRACT").is_ok()
+    {
+        match selected_mesh_schema() {
+            MeshChemistrySchema::HistoricalV1 => {}
+            MeshChemistrySchema::ConservativeV2 => mesh.stamp_conservative_schema(),
+            MeshChemistrySchema::ConservativeV3 => mesh.stamp_geometry_conservative_schema(),
+        }
+    } else {
+        mesh.stamp_maturation_coupled_schema();
+    }
+    mesh
+}
+
 /// Select the physical/material contract for production and the observer-only R9 matrix.
 ///
 /// The R9-R3 selector is deliberately independent from reserve selection. The
@@ -259,6 +285,19 @@ pub fn contract_label() -> &'static str {
         MeshChemistrySchema::HistoricalV1 => "HistoricalV1",
         MeshChemistrySchema::ConservativeV2 => "ConservativeV2",
         MeshChemistrySchema::ConservativeV3 => "ConservativeV3",
+    }
+}
+
+pub fn contract_label_for_mesh(mesh: &MaterialMesh) -> &'static str {
+    match mesh.contract_version {
+        chemistry_core::material_mesh::MeshContractVersion::HistoricalV1 => "HistoricalV1",
+        chemistry_core::material_mesh::MeshContractVersion::ConservativeV2 => "ConservativeV2",
+        chemistry_core::material_mesh::MeshContractVersion::GeometryConservativeV3 => {
+            "GeometryConservativeV3"
+        }
+        chemistry_core::material_mesh::MeshContractVersion::MaturationCoupledV4 => {
+            "MaturationCoupledV4"
+        }
     }
 }
 
@@ -441,7 +480,7 @@ pub fn coupled_step_with_reserve_mode(
     reserve_mode: ReserveDiagnosticMode,
 ) -> ReactionLedger {
     let _ = transport_step(mesh, transport, mech.dt);
-    let v4_before_reaction = maturation_coupled_enabled().then(|| mesh.clone());
+    let v4_before_reaction = mesh.is_maturation_coupled().then(|| mesh.clone());
     let led = reactions_step_with_reserve_mode(mesh, react, mech.dt, build, metab, reserve_mode);
     if let Some(before) = v4_before_reaction.as_ref() {
         update_maturation_coupled_tracer(before, mesh, react, mech.dt);

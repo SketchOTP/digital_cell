@@ -90,3 +90,7 @@ path = "../../examples/dcdev020m1replan002r5r3_v4_live_resource_irreversible_dea
 [[example]]
 name = "dcdev020m1replan002r5r4_v4_admissible_boundary_no_resurrection"
 path = "../../examples/dcdev020m1replan002r5r4_v4_admissible_boundary_no_resurrection.rs"
+
+[[example]]
+name = "dcdev020m1closure001_v4_production_selection_and_freeze"
+path = "../../examples/dcdev020m1closure001_v4_production_selection_and_freeze.rs"
