@@ -1,0 +1,3239 @@
+{
+  "schema": "dcdev020postm1baseline001-capability-inventory-v1",
+  "directive": "DC-DEV-020-POST-M1-BASELINE-001-CLEAN-CAPABILITY-BASELINE-001",
+  "source_closure_head": "fb77f472b1519a9e0f713833efba5b1d403f4723",
+  "source_base": "1e242f28152797b512e25cd56c7b718e45d6ca97",
+  "baseline_branch": "baseline/m1-v4-closed",
+  "baseline_tree_ref": "HEAD",
+  "source_changed_file_count": 642,
+  "source_commit_count_above_base": 187,
+  "classification_counts": {
+    "GENERATED_EVIDENCE_ONLY": 449,
+    "HISTORICAL_PROVENANCE_ONLY": 56,
+    "REQUIRED_BUILD_CONFIGURATION": 3,
+    "REQUIRED_CURRENT_GOVERNANCE": 7,
+    "REQUIRED_FUTURE_CAPABILITY": 4,
+    "REQUIRED_PRODUCTION_RUNTIME": 23,
+    "REQUIRED_TEST_OR_CERTIFIER": 3,
+    "SUPERSEDED_EXPERIMENT": 97
+  },
+  "dependency_proof": {
+    "cargo_workspace": "digital-protocell/Cargo.toml",
+    "packaged_runtime": "digital-protocell/crates/phase1-certifier/src/bin/phase1_runtime.rs",
+    "production_selector": "digital-protocell/crates/phase1-certifier/src/sim.rs::seed_production_mesh",
+    "governance_validator": "scripts/validate_governance.py",
+    "omission_rule": "Only generated evidence, superseded diagnostic workflows, and historical-only records absent from the retained capability tree are omitted."
+  },
+  "changed_paths": [
+    {
+      "path": ".agent/CURRENT.md",
+      "classification": "REQUIRED_CURRENT_GOVERNANCE",
+      "retained": true
+    },
+    {
+      "path": ".agent/DIRECTIVES.md",
+      "classification": "REQUIRED_CURRENT_GOVERNANCE",
+      "retained": true
+    },
+    {
+      "path": ".agent/LEARNINGS.md",
+      "classification": "REQUIRED_CURRENT_GOVERNANCE",
+      "retained": true
+    },
+    {
+      "path": ".agent/OUTCOMES.md",
+      "classification": "REQUIRED_CURRENT_GOVERNANCE",
+      "retained": true
+    },
+    {
+      "path": ".agent/RECORD.md",
+      "classification": "REQUIRED_CURRENT_GOVERNANCE",
+      "retained": true
+    },
+    {
+      "path": ".agent/REPO_MAP.md",
+      "classification": "REQUIRED_CURRENT_GOVERNANCE",
+      "retained": true
+    },
+    {
+      "path": ".github/workflows/dc-dev-020.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m0.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1closure001.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r0.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r1.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r1r1.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r2.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r2r1.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r2r2.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r3.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r4.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r5.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r6.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r6r1.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r6r2r4.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r6r3.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r6r3r3.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r6r4.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r6r5.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r6r6.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1r6r7.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1replan001.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1replan002.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1replan002r1.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1replan002r2.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1replan002r3.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1replan002r4.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1replan002r5.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1replan002r5r1.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1replan002r5r2.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1replan002r5r3.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020m1replan002r5r4.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020r2.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020r3.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020r4.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020r5.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020r6.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020r7.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020r8.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020r8r1.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020r8r2.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020r8r3.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020r8r4.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020r8r5.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020r8r5r1.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": ".github/workflows/dc-dev-020r9.yml",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "STORAGE_MAP.md",
+      "classification": "REQUIRED_CURRENT_GOVERNANCE",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/Cargo.lock",
+      "classification": "REQUIRED_BUILD_CONFIGURATION",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/examples/dcdev020r9_mesh_contract_requalification.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/src/abrasion_front.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/src/d020r9_analysis.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/src/d096_allocation.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/src/lib.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/src/material_mesh.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/src/mesh_contracts.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/src/mesh_fission.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/src/mesh_growth.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/src/mesh_population.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/src/mesh_reactions.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/src/mesh_topology.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/src/mesh_transport.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/src/metabolic_reserve.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/src/template_partition.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/tests/d091_tests.rs",
+      "classification": "REQUIRED_TEST_OR_CERTIFIER",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/chemistry-core/tests/d098_geometry_material_conservation.rs",
+      "classification": "REQUIRED_TEST_OR_CERTIFIER",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/phase1-certifier/Cargo.toml",
+      "classification": "REQUIRED_BUILD_CONFIGURATION",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/phase1-certifier/examples/dcdev020r6_mobilize_first_store_last.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/crates/phase1-certifier/examples/dcdev020r9r3_conservation_reserve_decomposition.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/crates/phase1-certifier/examples/dcdev020r9r4_reserve_interference_audit.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/crates/phase1-certifier/examples/dcdev020r9r5_charge_liquidity_audit.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/crates/phase1-certifier/src/bin/phase1_certification.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/phase1-certifier/src/bin/phase1_runtime.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/phase1-certifier/src/campaign.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/phase1-certifier/src/gates.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/phase1-certifier/src/gc_preservation.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/phase1-certifier/src/lib.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/phase1-certifier/src/runtime.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/phase1-certifier/src/sim.rs",
+      "classification": "REQUIRED_PRODUCTION_RUNTIME",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/phase1-certifier/tests/metrics_semantics.rs",
+      "classification": "REQUIRED_TEST_OR_CERTIFIER",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/regulatory-core/Cargo.toml",
+      "classification": "REQUIRED_BUILD_CONFIGURATION",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/regulatory-core/src/backing_reservoir.rs",
+      "classification": "REQUIRED_FUTURE_CAPABILITY",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/regulatory-core/src/coupled_resource.rs",
+      "classification": "REQUIRED_FUTURE_CAPABILITY",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/regulatory-core/src/lib.rs",
+      "classification": "REQUIRED_FUTURE_CAPABILITY",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/crates/regulatory-core/src/spatial_resource.rs",
+      "classification": "REQUIRED_FUTURE_CAPABILITY",
+      "retained": true
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020/observer_counterfactual.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m0baseline001/production_selection.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1closure001/m1_closure_v4_production_selection_and_freeze.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r0/requalification.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r1/capacity_decomposition.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r1r1/decay_confound.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r2/starvation_law_audit.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r2r1/physical_failure_closure.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r2r2/topology_death_closure.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r3/ordinary_decay_candidate.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r4/coupled_source_candidate.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r5/sustained_homeostasis.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6/full_runtime_integration.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r1/geometry_material_closure_audit.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r1r1/cross_platform_closure_validation.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r2r4/gc_preservation_qualification.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3/full_runtime_m1_certification.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3r1/gc_snapshot_area_semantics_correction.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3r2/reaction_area_semantics_audit.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r3r3/reaction_area_conservation_repair.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r4/homeostasis_contact_audit.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r5/embodied_sink_causal_decomposition.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r6/source_geometry_state_coupling_audit.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1r6r7/reference_geometry_coupling_decision.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan001/age_structured_structural_turnover_feasibility.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002/maturation_coupled_load_bearing_feasibility.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r1/dcdev020m1replan002r1_maturation_coupled_production_candidate.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r2/dcdev020m1replan002r2_d087_v4_lifecycle_semantics_audit.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r3/dcdev020m1replan002r3_d087_n_starvation_causal_divergence_audit.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r4/dcdev020m1replan002r4_v4_contract_aware_preservation.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r5/dcdev020m1replan002r5_v4_irreversible_physical_death.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r5r1/dcdev020m1replan002r5r1_zero_area_closure_refeed_semantics_audit.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r5r2/dcdev020m1replan002r5r2_v4_gc_transport_amount_conservation_repair.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r5r3/dcdev020m1replan002r5r3_v4_live_resource_irreversible_death.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020m1replan002r5r4/dcdev020m1replan002r5r4_v4_admissible_boundary_no_resurrection.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r2/requalification.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r3/two_substrate_audit.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r4/asymmetric_identifiability.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r5/local_source_requirement_audit.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r6/nf_power_law_audit.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r7/on_policy_zero_drift_audit.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8/product_feedback_attractor_audit.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r1/causal_a_demand_elasticity.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r2/catalyst_investment_payback.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r3/catalyst_reserve_horizon.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r4/shared_affinity_autogenous_cprod.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r5/ac_allocation_upper_bound.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r8r5r1/net_allocation_drift.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r3/conservation_reserve_decomposition.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r4/reserve_interference_audit.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r5/charge_liquidity_audit.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r5r1/charge_liquidity_requalification.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/docs/strategy/developmental_sensorimotor/dcdev020r9r6/mobilize_first_store_last.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020_fast_allosteric_assimilation.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1closure001_v4_production_selection_and_freeze.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r0_requalification.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r1_capacity_decomp.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r1r1_decay_confound.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r2_starvation_law_audit.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r2r1_physical_failure_closure.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r2r2_topology_death_closure.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r3_ordinary_decay_candidate.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r4_coupled_source_candidate.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r5_sustained_homeostasis.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r6_full_runtime.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r6r1_geometry_material_closure_audit.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r6r2r4_gc_preservation_qualification.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r6r3_full_runtime_m1_certification.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r6r4_homeostasis_contact_audit.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r6r5_embodied_sink_causal_decomposition.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r6r6_source_geometry_state_coupling_audit.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1r6r7_reference_geometry_coupling_decision.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1replan001_age_structured_structural_turnover_feasibility.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1replan002_maturation_coupled_load_bearing_feasibility.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1replan002r1_maturation_coupled_production_candidate.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1replan002r2_d087_v4_lifecycle_semantics_audit.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1replan002r3_d087_n_starvation_causal_divergence.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1replan002r4_v4_contract_aware_preservation.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1replan002r5_v4_irreversible_physical_death.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1replan002r5r1_zero_area_closure_refeed_semantics_audit.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1replan002r5r2_v4_gc_transport_amount_conservation_repair.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1replan002r5r3_v4_live_resource_irreversible_death.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020m1replan002r5r4_v4_admissible_boundary_no_resurrection.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020r2_allosteric_requalification.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020r3_two_substrate_saturating_activation.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020r4_asymmetric_two_substrate_identifiability.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020r5_local_zero_drift_source_audit.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020r6_nf_power_law_source.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020r7_on_policy_zero_drift_audit.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020r8_nfa_restorative_attractor.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020r8r1_causal_a_demand_elasticity.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020r8r2_catalyst_investment_payback.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020r8r3_catalyst_reserve_horizon.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020r8r3_shared_affinity_helper.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020r8r4_shared_affinity_autogenous_cprod.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020r8r5_ac_allocation_upper_bound.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020r8r5r1_net_allocation_drift.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020r9r1_exact_metabolic_replays.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/examples/dcdev020r9r2_material_fate_audit.rs",
+      "classification": "SUPERSEDED_EXPERIMENT",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020/observer/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020/observer/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020/observer/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020/observer/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m0baseline001/production_runtime.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m0baseline001/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m0baseline001/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m0baseline001/selection.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1closure001/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1closure001/m1_closure_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1closure001/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1closure001/production_selector_smoke.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1closure001/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1closure001/selector_verifier_smoke.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r0/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r0/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r0/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r0/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r1/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r1/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r1/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r1/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r1r1/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r1r1/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r1r1/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r1r1/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r2/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r2/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r2/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r2/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r2r1/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r2r1/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r2r1/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r2r1/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r2r2/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r2r2/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r2r2/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r2r2/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r3/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r3/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r3/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r3/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r4/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r4/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r4/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r4/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r5/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r5/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r5/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r5/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r1/R6R1_EVIDENCE_MANIFEST.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r1/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r1/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r1/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r1/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r1r1/R6R1R1_EVIDENCE_MANIFEST.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r1r1/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r1r1/execution_metadata.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r1r1/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r1r1/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r1r1/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r2r4/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r2r4/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r2r4/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r2r4/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r2r4/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3r1/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3r1/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3r1/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3r1/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3r1/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3r2/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3r2/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3r2/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3r2/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3r2/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3r3/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3r3/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3r3/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3r3/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r3r3/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r4/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r4/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r4/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r4/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r4/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r5/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r5/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r5/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r5/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r5/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r6/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r6/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r6/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r6/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r6/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r7/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r7/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r7/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r7/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1r6r7/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan001/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan001/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan001/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan001/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan001/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r1/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r1/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r1/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r1/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r1/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r2/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r2/d087_raw_metrics.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r2/dual_retention_comparison.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r2/physical_trajectory_parity.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r2/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r2/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r2/starvation_semantics_comparison.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r3/a_balance_comparison.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r3/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r3/comparator_endpoints.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r3/embodied_demand_comparison.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r3/first_divergence.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r3/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r3/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r3/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r3/starvation_flux_comparison.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r3/structural_lifecycle_comparison.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r4/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r4/causal_starvation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r4/d087_results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r4/historical_preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r4/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r4/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r4/r1_preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r4/starvation_fate.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r4/tracer_semantics.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r1/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r1/checkpoint_validity.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r1/first_failure.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r1/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r1/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r1/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r1/r4_impact.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r1/r5_compliance.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r1/refeed_semantics.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r1/runtime_caller_audit.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r1/stage_closure_ledger_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r1/zero_area_attribution.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r2/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r2/integrated_valid_prefix.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r2/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r2/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r2/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r2/transport_contract.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r3/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r3/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r3/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r3/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r3/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r4/artifact_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r4/preservation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r4/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r4/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020m1replan002r5r4/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r2/literature_review.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r2/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r2/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r2/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r2/source_actuation_envelope.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3/kinetic_diagnosis.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3/literature_review.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h0/artifact_integrity/gate0.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h0/causal_ablations/gate5.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h0/certification/report.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h0/damage_generalization/gate6.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h0/exact_replay/gate2.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h0/held_out_reproducibility/gate3.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h0/linux_runtime/gate7.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h0/linux_runtime/report.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h0/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h0/metric_semantics/audit.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h0/metric_semantics/gate1.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h0/robustness/gate4.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h1/artifact_integrity/gate0.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h1/causal_ablations/gate5.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h1/certification/report.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h1/damage_generalization/gate6.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h1/exact_replay/gate2.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h1/held_out_reproducibility/gate3.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h1/linux_runtime/gate7.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h1/linux_runtime/report.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h1/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h1/metric_semantics/audit.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h1/metric_semantics/gate1.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/h1/robustness/gate4.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v20/artifact_integrity/gate0.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v20/causal_ablations/gate5.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v20/certification/report.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v20/damage_generalization/gate6.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v20/exact_replay/gate2.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v20/held_out_reproducibility/gate3.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v20/linux_runtime/gate7.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v20/linux_runtime/report.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v20/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v20/metric_semantics/audit.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v20/metric_semantics/gate1.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v20/robustness/gate4.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v21/artifact_integrity/gate0.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v21/causal_ablations/gate5.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v21/certification/report.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v21/damage_generalization/gate6.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v21/exact_replay/gate2.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v21/held_out_reproducibility/gate3.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v21/linux_runtime/gate7.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v21/linux_runtime/report.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v21/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v21/metric_semantics/audit.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v21/metric_semantics/gate1.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/matrix/v21/robustness/gate4.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r3r1/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r4/kinetic_identification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r4/literature_review.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r4/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r4/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r4/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r5/external_evidence_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r5/literature_review.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r5/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r5/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r5/representative_diagnostics.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r5/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r5/schema.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r6/external_evidence_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r6/identification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r6/literature_review.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r6/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r6/physiology.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r6/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r6/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r7/external_evidence_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r7/literature_review.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r7/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r7/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r7/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r7/summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8/capacity_validation.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8/constraint_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8/external_evidence_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8/feasible_region.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8/literature_review.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8/pairing_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r1/decomposition.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r1/external_evidence_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r1/literature_review.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r1/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r1/pair_decomposition.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r1/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r1/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r1/summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r2/external_evidence_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r2/literature_review.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r2/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r2/payback_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r2/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r2/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r2/root_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r2/shadow_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r3/acute_reproduction.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r3/delayed_resume_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r3/external_evidence_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r3/literature_review.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r3/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r3/payback_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r3/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r3/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r3/sustained_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r4/acute_reproduction.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r4/cycle_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r4/dose_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r4/external_evidence_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r4/finite_feed_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r4/literature_review.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r4/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r4/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r4/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r4/sustained_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5/constant_allocation_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5/economic_envelope.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5/external_evidence_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5/literature_review.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5/local_drift_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5/r8r4_reproduction.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5r1/attribution.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5r1/checkpoint_hashes.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5r1/external_evidence_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5r1/family_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5r1/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5r1/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5r1/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r8r5r1/statewise_net_envelopes.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9/e0_provenance.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9/e1_stoichiometric_audit.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9/e2_three_ledgers.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9/e3_observer_death.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9/e4_requalification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9/e5_minimal_metabolic_replay.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9/preservation/d087_legacy_runtime.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/exact_replays/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/exact_replays/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/mesh_contract/d087_gate_matrix.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/mesh_contract/e0_provenance.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/mesh_contract/e1_stoichiometric_audit.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/mesh_contract/e2_three_ledgers.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/mesh_contract/e3_observer_death.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/mesh_contract/e4_requalification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/mesh_contract/e5_minimal_metabolic_replay.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/mesh_contract/exact_historical_replay_artifacts.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/mesh_contract/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r2_exact/external_evidence_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r2_exact/literature_review.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r2_exact/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r2_exact/payback_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r2_exact/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r2_exact/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r2_exact/root_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r2_exact/shadow_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r4_exact/acute_reproduction.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r4_exact/cycle_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r4_exact/dose_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r4_exact/external_evidence_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r4_exact/finite_feed_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r4_exact/literature_review.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r4_exact/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r4_exact/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r4_exact/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r1/r8r4_exact/sustained_summary.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/artifact_integrity/gate0.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/causal_ablations/gate5.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/causal_ablations/rows.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/certification/report.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/damage_generalization/gate6.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/exact_replay/gate2.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/held_out_reproducibility/gate3.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/held_out_reproducibility/matrix.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/linux_runtime/digital-protocell-phase1-v1/snapshot.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/linux_runtime/gate7.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/linux_runtime/report.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/metric_semantics/audit.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/metric_semantics/gate1.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/robustness/gate4.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087/robustness/matrix.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/actual_d087_conservative.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/material_fate.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/r9r1_exact/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r2/r9r1_exact/results.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h0/artifact_integrity/gate0.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h0/causal_ablations/gate5.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h0/certification/report.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h0/damage_generalization/gate6.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h0/exact_replay/gate2.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h0/held_out_reproducibility/gate3.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h0/linux_runtime/gate7.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h0/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h0/metric_semantics/audit.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h0/metric_semantics/gate1.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h0/robustness/gate4.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h1/artifact_integrity/gate0.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h1/causal_ablations/gate5.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h1/certification/report.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h1/damage_generalization/gate6.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h1/exact_replay/gate2.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h1/held_out_reproducibility/gate3.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h1/linux_runtime/gate7.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h1/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h1/metric_semantics/audit.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h1/metric_semantics/gate1.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/h1/robustness/gate4.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v20/artifact_integrity/gate0.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v20/causal_ablations/gate5.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v20/certification/report.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v20/damage_generalization/gate6.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v20/exact_replay/gate2.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v20/held_out_reproducibility/gate3.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v20/linux_runtime/gate7.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v20/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v20/metric_semantics/audit.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v20/metric_semantics/gate1.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v20/robustness/gate4.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v21/artifact_integrity/gate0.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v21/causal_ablations/gate5.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v21/certification/report.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v21/damage_generalization/gate6.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v21/exact_replay/gate2.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v21/held_out_reproducibility/gate3.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v21/linux_runtime/gate7.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v21/manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v21/metric_semantics/audit.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v21/metric_semantics/gate1.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/matrix/v21/robustness/gate4.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r3/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r4/ledger_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r4/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r4/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r5/ledger_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r5/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r5/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r5r1/ledger_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r5r1/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r5r1/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r6/ledger_manifest.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r6/protocol.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r6/qualification.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "digital-protocell/experiments/generated/dcdev020r9r6/r9r6_report.json",
+      "classification": "GENERATED_EVIDENCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "docs/strategy/developmental_sensorimotor/dcdev020r9/mesh_contract_requalification.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "docs/strategy/developmental_sensorimotor/dcdev020r9r1/mesh_contract_requalification.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    },
+    {
+      "path": "docs/strategy/developmental_sensorimotor/dcdev020r9r2/material_fate_requalification.md",
+      "classification": "HISTORICAL_PROVENANCE_ONLY",
+      "retained": false
+    }
+  ]
+}
