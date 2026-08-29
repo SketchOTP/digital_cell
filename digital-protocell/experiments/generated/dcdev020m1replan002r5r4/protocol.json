@@ -1,0 +1,36 @@
+{
+  "contract": "MaturationCoupledV4",
+  "directive": "DC-DEV-020-M1-REPLAN-002-R5-R4-V4-ADMISSIBLE-BOUNDARY-NO-RESURRECTION-QUALIFICATION-001",
+  "next_execution_started": false,
+  "r1_opportunity_schedule": {
+    "hash": "51753cd4b066de67",
+    "last_positive_cap_step": 8000,
+    "steps": 8000,
+    "total_f_cap": 162.46464053838164,
+    "total_n_cap": 162.46464053838164
+  },
+  "resource_boundary": {
+    "all_intact_edges_eligible": true,
+    "boundary_f_concentration": 2.063914918930895,
+    "boundary_n_concentration": 2.063914918930895,
+    "f_mass": 243.14924801053778,
+    "n_mass": 243.14924801053778,
+    "replenishment_events": 0,
+    "schema": "FINITE_ADMISSIBLE_BOUNDARY_OPPORTUNITY_V1",
+    "spatial_exposure_required": false
+  },
+  "schema": "dcdev020m1replan002r5r4_protocol_v1",
+  "source_rules": {
+    "cap_is_not_delivery": true,
+    "direct_unconditional_internal_injection": false,
+    "finite_world_inventory": true,
+    "membrane_capacity_applied": true,
+    "spatial_resource_requirement": false
+  },
+  "starting_head": "4c6a0020be887f66ea6cfab661ce570c730f7d90",
+  "states": {
+    "S0": "exact R1 bounded-deprivation state at step 480",
+    "S1": "first completed observer-nonviable starvation state",
+    "S2": "last completed state before authoritative physics stop"
+  }
+}

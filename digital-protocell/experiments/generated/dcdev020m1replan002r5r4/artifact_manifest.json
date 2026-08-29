@@ -1,0 +1,15 @@
+{
+  "canonical_dense_root": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r4/",
+  "directive": "DC-DEV-020-M1-REPLAN-002-R5-R4-V4-ADMISSIBLE-BOUNDARY-NO-RESURRECTION-QUALIFICATION-001",
+  "files": [
+    "protocol.json",
+    "results.json",
+    "qualification.json",
+    "preservation.json",
+    "artifact_manifest.json"
+  ],
+  "next_execution_started": false,
+  "schedule_hash": "51753cd4b066de67",
+  "schema": "dcdev020m1replan002r5r4_manifest_v1",
+  "starting_head": "4c6a0020be887f66ea6cfab661ce570c730f7d90"
+}

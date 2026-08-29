@@ -86,3 +86,7 @@ path = "../../examples/dcdev020m1replan002r5r2_v4_gc_transport_amount_conservati
 [[example]]
 name = "dcdev020m1replan002r5r3_v4_live_resource_irreversible_death"
 path = "../../examples/dcdev020m1replan002r5r3_v4_live_resource_irreversible_death.rs"
+
+[[example]]
+name = "dcdev020m1replan002r5r4_v4_admissible_boundary_no_resurrection"
+path = "../../examples/dcdev020m1replan002r5r4_v4_admissible_boundary_no_resurrection.rs"

@@ -2056,9 +2056,30 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Changed areas: Remote validation record and metadata-only governance reconciliation. No V4 biology, transport, mechanics, D-087, production selection, or historical evidence changed.
 - Validation:
   - Governance, formatting, bounded-diff, D-087, R5-R3 qualification, compact verification, and focused preservation tests - PASSED
-  - Push artifact digest `sha256:24e6ddf08a2574c97331a8414e07a9e9d5d9c082881736a93cf85e805463a528` - VERIFIED
-  - PR artifact digest `sha256:067959b146e7a1924cf017c798b202dad5ae079a394c6b68e2a1c21eec3904e9` - VERIFIED
-  - Architect review - PENDING
+- Push artifact digest `sha256:24e6ddf08a2574c97331a8414e07a9e9d5d9c082881736a93cf85e805463a528` - VERIFIED
+- PR artifact digest `sha256:067959b146e7a1924cf017c798b202dad5ae079a394c6b68e2a1c21eec3904e9` - VERIFIED
+- Architect review - PENDING
 - Remaining risks: S0 fails the required live positive control because body-resource contact is lost while finite inventory remains. S1/S2 are not irreversible-death evidence; S2's immediate stop makes refeed outcome uninterpretable for death. M1 remains not established. No death repair, R4 requalification, production selection, M2, reserve, recycling, salvage, or tuning is authorized.
 - Blockers: Architect disposition of R5-R3.
+- Follow-up directive: none
+
+## D-20260828-dcdev020m1replan002r5r4-v4-admissible-boundary-no-resurrection-qualification001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1REPLAN002R5R4-V4-ADMISSIBLE-BOUNDARY-NO-RESURRECTION-QUALIFICATION-PARTIAL
+- Supersedes outcome: OUT-DCDEV020M1REPLAN002R5R3-V4-LIVE-RESOURCE-IRREVERSIBLE-DEATH-QUALIFICATION-REMOTE-PARTIAL
+- Closed: `2026-08-28T23:45:20-04:00`
+- Acceptance: PARTIAL
+- Summary: The local R5-R4 qualification reproduces the repaired starvation prefix through accepted step `8565` and uses a harness-local finite nonspatial boundary with all intact edges eligible, current membrane permeability/edge length/interior concentration, finite inventory, and accepted R1 per-step caps. S0 at step `480` recovers, S1 at first observer-nonviable step `4066` recovers, and S2 at last fully accepted pre-stop step `8565` receives positive transfer but does not recover through 8,000 steps; it ends nonviable with 48 ruptured edges while the run remains physically valid. Classification is `M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED`, pending exact-head CI and Architect review.
+- Changed areas: R5-R4 observer/qualification example and registration, scoped workflow, compact evidence, documentation, and append-only governance only. No V4 biology, production default, spatial resource behavior, D-087 semantics, or M2 work changed.
+- Validation:
+  - Local V2 D-087 `8/8`, V3 D-087 `8/8`, V4 D-087 `7/8` with frozen Gate 2 failure - PASSED
+  - R1 opportunity schedule hash `51753cd4b066de67`; total cap `162.46464053838164` N/F each - VERIFIED
+  - S0 delivered `162.46464053838164` N/F each and recovered; S1 delivered `161.09617066195688` N/F each and recovered - PASSED
+  - S2 delivered `0.09269071507161522` N/F each, never exceeded cap, and did not recover; final state has `closed_intact=false`, `ruptured_edges=48`, and `physical_runtime_valid=true` - VERIFIED
+  - Maximum starvation residual `4.0946412926956555e-14`; maximum refeed residual `3.025912853615864e-13` - PASSED
+  - Local exact-run compact verification - PASSED
+  - Exact-head CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: S2's result is a no-resurrection qualification under the admissible boundary, not an authoritative mechanics-failure result; it remains subject to exact-head Linux validation and Architect acceptance. M1 remains not established until Architect closes the result. No production selection, M2, reserve, recycling, salvage, tuning, or successor execution is authorized.
+- Blockers: Exact-head R5-R4 CI and Architect disposition.
 - Follow-up directive: none

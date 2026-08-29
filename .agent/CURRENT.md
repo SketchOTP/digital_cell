@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-28T22:55:00-04:00`
+- Last updated: `2026-08-28T23:45:20-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260828-dcdev020m1replan002r5r3-v4-live-resource-irreversible-death-qualification001`
-- External directive ID: `DC-DEV-020-M1-REPLAN-002-R5-R3-V4-LIVE-RESOURCE-IRREVERSIBLE-DEATH-QUALIFICATION-001`
-- Objective: `Qualify live finite-spatial-resource refeeding from valid V4 starvation checkpoints without direct internal N/F insertion or continuation past failed mechanics.`
+- Local directive ID: `D-20260828-dcdev020m1replan002r5r4-v4-admissible-boundary-no-resurrection-qualification001`
+- External directive ID: `DC-DEV-020-M1-REPLAN-002-R5-R4-V4-ADMISSIBLE-BOUNDARY-NO-RESURRECTION-QUALIFICATION-001`
+- Objective: `Qualify V4 no-resurrection from valid starvation states using a finite nonspatial membrane-mediated boundary capped by the accepted R1 opportunity schedule.`
 - Current status: `VALIDATING`
-- Acceptance: `R5-R2 is Architect accepted at d0a9601aed170c43a5c288c8300f3fe65e64237f. R5-R3 exact-head push 33229822934 and PR 33229823637 both passed at 6ee1e79a79e8492bae00a3d1e0cef786814de540; Architect acceptance remains pending.`
-- Current phase: `The valid V4 starvation prefix closes through accepted step 8565 and stops at mechanics false step 8566. S0 live finite-resource refeed receives positive N/F but fails recovery after physical contact loss; S1 has no contact and no delivery; S2 stops immediately on mechanics false and is not a death result. M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
-- Expected or actual touched areas: `R5-R3 live-resource qualification example/workflow, compact evidence, documentation, and append-only governance only; no V4 biology, transport, mechanics, D-087, production default, reserve/recycling/salvage, or successor work changed; dense evidence is stored on Atlas`
-- Immediate next action: `Stop for Architect review of R5-R3. Do not start a death repair, R4 requalification, production selection, M2, or any successor execution.`
+- Acceptance: `R5-R2 is Architect accepted at 4c6a0020be887f66ea6cfab661ce570c730f7d90. R5-R3 was accepted as an invalid qualification; R5-R4 local result is complete with classification M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED, and exact-head validation is pending Architect review.`
+- Current phase: `The valid V4 starvation prefix closes through accepted step 8565 and stops at mechanics false step 8566. S0 is the exact 480-step R1 deprivation state and recovers under the finite admissible boundary; S1 also recovers; S2 receives positive membrane-mediated transfer under the R1 cap but does not recover during the 8000-step challenge and ends nonviable with ruptured topology. M1 remains NOT ESTABLISHED and M2 remains unauthorized.`
+- Expected or actual touched areas: `R5-R4 observer/qualification example, scoped workflow, compact evidence, documentation, and append-only governance only; no V4 biology, production transport, mechanics, D-087, production default, reserve/recycling/salvage, or successor work changed; dense evidence is stored on Atlas`
+- Immediate next action: `Obtain exact-head Linux push/PR validation, then stop for Architect review of R5-R4. Do not start M1 selection/closure, a death repair, M2, or any successor execution.`
 
 ## Temporary task-relevant facts
 

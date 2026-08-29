@@ -1102,3 +1102,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260828-dcdev020m1replan002r5r2-v4-gc-transport-amount-conservation-repair001
 - Status at issuance: ISSUED
+
+## D-20260828-dcdev020m1replan002r5r4-v4-admissible-boundary-no-resurrection-qualification001
+
+- Issued: `2026-08-28T23:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-REPLAN-002-R5-R4-V4-ADMISSIBLE-BOUNDARY-NO-RESURRECTION-QUALIFICATION-001`
+- Objective: Isolate M1 physiology from M2 spatial acquisition by testing recoverable and late valid starvation states under a finite nonspatial membrane-mediated boundary capped by the accepted R1 opportunity schedule.
+- Scope: Exact R5-R2 authority; repaired starvation valid-prefix replay; S0/S1/S2 state derivation; harness-local finite boundary; all-intact membrane capacity using current permeability, edge length, and interior concentration; applied amount/world closure; no-latch and no-resurrection evidence; compact Git evidence; dense Atlas evidence; scoped Linux CI.
+- Exclusions: No spatial resource, direct unconditional internal injection, stronger source, V4 biology, transport/mechanics/topology change, D-087 change, production switch, parameter search, death latch, M2, reserve, recycling, salvage, or PR merge.
+- Acceptance: S0 positive control recovers; S2 receives positive admissible membrane-mediated resource within the R1 cap and fails to recover during the unchanged 8,000-step challenge; closure, preservation, and exact-head CI pass; Architect review.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260828-dcdev020m1replan002r5r3-v4-live-resource-irreversible-death-qualification001
+- Status at issuance: ISSUED

@@ -905,3 +905,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: Exact-head R5-R3 live-resource qualification only; no death repair, V4 biology, transport/mechanics, D-087, production selection, R4 requalification, M1 closure, M2, reserve, recycling, salvage, or tuning.
 - Supersedes learning: L-DCDEV020M1REPLAN002R5R3-LOCAL
+
+## L-DCDEV020M1REPLAN002R5R4-LOCAL
+
+- Learning ID: L-DCDEV020M1REPLAN002R5R4-LOCAL
+- Date: 2026-08-28
+- Fact or lesson: The R5-R4 harness separates M1 physiology from M2 spatial acquisition using a finite nonspatial membrane-mediated boundary. The accepted R1 opportunity schedule is only a per-step cap; actual transfer is limited by current membrane capacity, finite world inventory, and cap, with no direct internal injection. S0 at step `480` recovers, S1 at step `4066` recovers, and S2 at step `8565` receives positive transfer but fails to recover over 8,000 steps, ending with ruptured topology while physical runtime remains valid. Local classification is `M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED`, pending exact-head CI and Architect review.
+- Evidence location: compact evidence under `digital-protocell/experiments/generated/dcdev020m1replan002r5r4/`; dense final ledgers under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1replan002r5r4/local-final/`.
+- Confidence: PROVISIONAL
+- Scope: R5-R4 admissible-boundary qualification only; no V4 biology, spatial acquisition, D-087, production selection, M1 closure, M2, reserve, recycling, salvage, tuning, or successor work.
+- Supersedes learning: L-DCDEV020M1REPLAN002R5R3-REMOTE-VERIFIED

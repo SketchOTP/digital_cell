@@ -235,3 +235,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Remote execution verifies the fail-closed live-resource result, including the accepted starvation prefix through step `8565`, authoritative stop at mechanics false step `8566`, live S0 delivery of `12.075682888285865` N and F each without recovery after contact loss, no-contact S1, and immediate S2 stop on refeed. The classification remains `M1_V4_LIVE_RESOURCE_DEATH_QUALIFICATION_INVALID`; no irreversible-death claim is established. GitHub artifact digests are push `sha256:24e6ddf08a2574c97331a8414e07a9e9d5d9c082881736a93cf85e805463a528` and PR `sha256:067959b146e7a1924cf017c798b202dad5ae079a394c6b68e2a1c21eec3904e9`.
 - Affected areas: Exact-head remote validation and metadata-only governance reconciliation; no V4 biology, transport, mechanics, D-087, production default, R4 requalification, M1 closure, M2, reserve, recycling, salvage, or tuning changed.
 - Supersedes record: DEC-DCDEV020M1REPLAN002R5R3-001
+
+## DEC-DCDEV020M1REPLAN002R5R4-001
+
+- Date: 2026-08-28
+- Record or decision ID: DEC-DCDEV020M1REPLAN002R5R4-001
+- Status: PROPOSED
+- Decision or event: R5-R4 local admissible-boundary no-resurrection qualification executed from accepted R5-R3 invalidation head `4c6a0020be887f66ea6cfab661ce570c730f7d90`.
+- Rationale: A finite nonspatial membrane-mediated boundary capped by the accepted R1 per-step opportunity schedule passes the S0 positive control and S1 refeed, while S2, the last fully accepted pre-stop starvation state, receives positive admissible transfer but fails to recover during 8,000 steps and ends with ruptured topology. Maximum starvation/re-feed residuals remain below `1e-8`; classification is `M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED`, pending exact-head CI and Architect review.
+- Affected areas: R5-R4 qualification harness, compact evidence, dense Atlas evidence, workflow, documentation, and append-only governance only; no V4 biology, production default, spatial acquisition, D-087, M2, or successor work changed.
+- Supersedes record: DEC-DCDEV020M1REPLAN002R5R3-REMOTE-001
