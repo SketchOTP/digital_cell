@@ -11,7 +11,7 @@
 - Purpose: A self-maintaining digital protocell developing toward a persistent embodied digital lifeform.
 - Repository root: `/home/sketch/Projects/digital_cell-m1-baseline`
 - Verified remote: `git@github.com:SketchOTP/digital_cell.git`
-- Maturity or current phase: M1 closed/frozen; clean post-M1 capability baseline pending final validation and Architect acceptance.
+- Maturity or current phase: M1 closed/frozen; M2 ENTRY-001 activated-energy contractility feasibility active, with autonomous resource acquisition not established.
 
 ## Languages and runtimes
 
@@ -41,3 +41,4 @@
 - Security: Preserve credentials, private configuration, external Authority systems, and unrelated user work.
 - Data handling: Preserve certified biology, append-only history, evidence, provenance, and generated-artifact boundaries.
 - Deployment: No deployment or merge is authorized by DC-DEV-001A; architect review remains required.
+- M2 boundary: The opt-in A-funded actuator is the only active M2 scope; production remains V4/reserve OFF and PR #44 remains historical provenance.

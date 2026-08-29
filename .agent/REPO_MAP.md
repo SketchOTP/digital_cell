@@ -13,10 +13,13 @@
 - `digital-protocell/crates/experiment-runner/` — historical experiment orchestration; not changed by architecture selection.
 - `digital-protocell/crates/evolution-harness/` — observer-only reusable evolution infrastructure; not extended by this directive.
 - `digital-protocell/crates/regulatory-core/` — accepted regulatory state, DC-DEV-003 remesh continuity, the single DC-DEV-004 local contractility adapter, DC-DEV-005 plasticity, the bounded DC-DEV-006 spatial contact adapter, and the DC-DEV-008 finite-resource boundary with the DC-DEV-013 local contact observation.
+- `digital-protocell/crates/regulatory-core/src/contractility.rs` — historical R-funded DC-DEV-004 API plus opt-in V4 `ACTIVATED_ENERGY_CONTRACTILITY_SCHEMA_V1` A-to-W adapter.
+- `digital-protocell/crates/regulatory-core/src/stick_slip_traction.rs` — historical DC-DEV-011 adapters plus the opt-in A-funded composition.
 - `digital-protocell/examples/dcdev009_gate_assay.rs` — observer-only fixed-topology free-space motility audit; it does not add production locomotion.
 - `digital-protocell/examples/dcdev013_gate_assay.rs` — fixed-horizon local resource-contact feeding assay; it composes production resource observation, regulation, funded contractility, stick-slip, and uptake without implementing a second sensor.
 - `digital-protocell/examples/dcdev015_metabolic_restoration_assay.rs` — observer-only 5,000-step settlement, 480-step deprivation, and matched metabolic intake-to-restoration audit; it reuses existing uptake and reaction/reserve ledgers without changing biology.
 - `digital-protocell/examples/dcdev016_metabolic_break_even.rs` — observer-only one-shot derived-resource sufficiency challenge; it reproduces DC-DEV-015 baseline arms, tests one derived N/F inventory, and reports supply sufficiency versus stored activation restoration without changing biology.
+- `digital-protocell/examples/dcdev021_m2_entry001.rs` — bounded opt-in A-funded contractility and stick-slip feasibility assay; it does not implement resource acquisition.
 
 ## Interfaces and contracts
 
@@ -41,6 +44,7 @@
 
 - `digital-protocell/experiments/generated/dcdev020m1closure001/m1_closure_manifest.json` — compact accepted M1 closure reference retained without the dense evidence archive.
 - `digital-protocell/experiments/generated/dcdev020postm1baseline001/` — compact clean-baseline inventory, manifest, and validation evidence.
+- `digital-protocell/experiments/generated/dcdev021m2entry001/` — compact ENTRY-001 feasibility evidence, populated by exact-head Linux validation.
 - `digital-protocell/experiments/generated/dcdev001/` — DC-DEV-001A machine-readable decision artifacts.
 - `digital-protocell/experiments/generated/dcdev006/` — DC-DEV-006 local spatial-contact evidence artifacts.
 - `digital-protocell/experiments/generated/dcdev009/` — DC-DEV-009 force, displacement, coupling, and audit evidence artifacts.

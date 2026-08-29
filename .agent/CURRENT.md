@@ -7,19 +7,19 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260829-post-m1-clean-capability-baseline`
-- External directive ID: `DC-DEV-020-POST-M1-BASELINE-001-CLEAN-CAPABILITY-BASELINE-001`
-- Objective: `Extract a clean post-M1 capability baseline from the accepted V4 closure while preserving the source provenance stack and changing no science.`
-- Current status: `VALIDATING`
-- Acceptance: `Baseline extraction and exact-head Linux validation are complete; Architect acceptance of the final baseline package remains pending.`
-- Current phase: `Post-M1 clean capability baseline evidence finalized; M1 remains closed and frozen.`
-- Expected or actual touched areas: `baseline branch, retained V4 runtime/capabilities, compact manifests, current governance, scoped CI`
-- Immediate next action: `Return the finalized baseline package for Architect review; do not begin M2.`
+- Local directive ID: `D-20260829-dcdev021-m2-entry001-activated-energy-contractility`
+- External directive ID: `DC-DEV-021-M2-ENTRY-001-ACTIVATED-ENERGY-CONTRACTILITY-FEASIBILITY-001`
+- Objective: `Qualify one explicit V4 A-funded contractility path through the existing local activity and stick-slip traction APIs without changing production selection.`
+- Current status: `IN_PROGRESS`
+- Acceptance: `M1 is Architect-closed and frozen; M2 ENTRY-001 actuator feasibility is active and Architect acceptance remains pending.`
+- Current phase: `M2 ENTRY-001 activated-energy contractility feasibility; autonomous resource acquisition is not established.`
+- Expected or actual touched areas: `regulatory-core additive actuator APIs, focused assay/evidence, scoped Linux CI, current governance`
+- Immediate next action: `Run and verify the exact-head ENTRY-001 assay; do not begin resource-contact sensing or acquisition.`
 
 ## Temporary task-relevant facts
 
 - M0 is closed; M1 is formally closed and frozen at `fb77f472b1519a9e0f713833efba5b1d403f4723`.
-- Production selection is `MaturationCoupledV4` with reserve OFF; M2 is not yet authorized.
+- Production selection is `MaturationCoupledV4` with reserve OFF; M2 is active only under ENTRY-001.
 - PR #44 is the immutable M1 provenance stack and must remain open, draft, unmerged, and untouched.
 - The clean baseline is derived from `1e242f28152797b512e25cd56c7b718e45d6ca97`; accepted M1 evidence remains on Atlas.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
@@ -30,11 +30,15 @@
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
 - Implementation work is on `strategy/dc-dev-016-metabolic-break-even` based on `strategy/dc-dev-015-metabolic-restoration-audit`.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
+- M2 ENTRY-001 starts from `baseline/m1-v4-closed` at `d76481c785e9eec361df3fa0cd03c512b521639c`.
+- The opt-in `ACTIVATED_ENERGY_CONTRACTILITY_SCHEMA_V1` path is V4-only, reuses frozen DC-DEV-004 constants, spends absolute A into W after accepted mechanics, and leaves R-funded APIs unchanged.
+- Autonomous resource acquisition, chemotaxis, target/gradient logic, reserve enablement, and M2 successor work remain unauthorized.
 
 ## Last validation after adoption
 
 - Command or check: `Exact-head Linux post-M1 clean baseline workflow 33271104939 at 5e28762d0757bfa23b91820115b5893d0ef6d82a`
-- Result: `PASSED`
+- Result: `PENDING`
+- Current command: `M2 ENTRY-001 exact-head Linux workflow; no run yet`
 
 ## Risks
 

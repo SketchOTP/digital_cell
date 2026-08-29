@@ -1,5 +1,19 @@
 # Project Directive Ledger Template
 
+## D-20260829-dcdev021-m2-entry001-activated-energy-contractility
+
+- Issued: `2026-08-29T16:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-001-ACTIVATED-ENERGY-CONTRACTILITY-FEASIBILITY-001`
+- Objective: Qualify one explicit V4 A-funded local contractility mechanism through the existing DC-DEV-011 stick-slip path while production reserve remains OFF.
+- Scope: Additive versioned regulatory-core actuator API, A-to-W amount closure, historical R-funded oracle parity, zero-A and zero-activity passive controls, stick-slip displacement, rotation, compact evidence, governance, and exact-head Linux CI.
+- Exclusions: M1 changes, chemistry-core changes, production selector changes, reserve enablement, resource sensing/acquisition, chemotaxis, targets, gradients, planners, parameter search, and PR #44 mutation.
+- Acceptance: `M2_ACTIVATED_ENERGY_CONTRACTILITY_FEASIBILITY_QUALIFIED` only after the explicit A-funded path and matched feasibility controls pass with exact-head Linux validation and preserved M1/downstream behavior.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: `DC-DEV-020-POST-M1-BASELINE-001-CLEAN-CAPABILITY-BASELINE-001`
+- Status at issuance: `ISSUED`
+
 After adoption, this append-only ledger records project directives issued by the user to the AI coder. The adopted project records those directives locally.
 
 ANIMUS ONE may copy or aggregate the resulting governance files for centralized visibility. ANIMUS ONE does not issue, approve, modify, execute, reconcile, or close directives.

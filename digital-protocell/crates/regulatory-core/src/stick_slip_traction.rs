@@ -7,8 +7,9 @@
 //! authority over vertex coordinates.
 
 use crate::{
-    apply_local_contractility_with_external_forces, ContractilityError, ContractilityParamsV1,
-    ContractilityStepLedgerV1,
+    apply_local_activated_energy_contractility_with_external_forces,
+    apply_local_contractility_with_external_forces, ActivatedEnergyContractilityStepLedgerV1,
+    ContractilityError, ContractilityParamsV1, ContractilityStepLedgerV1,
 };
 use chemistry_core::material_mesh::MaterialMesh;
 use chemistry_core::mesh_mechanics::{
@@ -78,6 +79,20 @@ pub struct StickSlipStepLedgerV1 {
     pub maximum_attempted_velocity: f64,
     pub maximum_accepted_velocity: f64,
     pub contractility: Option<ContractilityStepLedgerV1>,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct ActivatedEnergyStickSlipStepLedgerV1 {
+    pub schema: String,
+    pub contacts: Vec<ContactLedgerV1>,
+    pub maximum_stick_reaction: f64,
+    pub maximum_slip_reaction: f64,
+    pub stuck_contacts: usize,
+    pub slipping_contacts: usize,
+    pub substrate_work: f64,
+    pub maximum_attempted_velocity: f64,
+    pub maximum_accepted_velocity: f64,
+    pub contractility: Option<ActivatedEnergyContractilityStepLedgerV1>,
 }
 
 #[derive(Debug, Error, PartialEq)]
@@ -329,6 +344,139 @@ pub fn apply_local_contractility_with_stick_slip(
         Some(&reactions),
     )?;
     finish_step(
+        &before,
+        mesh,
+        &free_step,
+        mechanics,
+        params,
+        &regimes,
+        &reactions,
+        Some(accepted_contractility),
+    )
+}
+
+fn finish_activated_energy_step(
+    before: &MaterialMesh,
+    after: &MaterialMesh,
+    free_step: &MaterialMesh,
+    mechanics: &MechParams,
+    params: &StickSlipTractionParamsV1,
+    regimes: &[ContactRegimeV1],
+    reactions: &[[f64; 2]],
+    contractility: Option<ActivatedEnergyContractilityStepLedgerV1>,
+) -> Result<ActivatedEnergyStickSlipStepLedgerV1, StickSlipError> {
+    if before.n() != after.n()
+        || before.n() != free_step.n()
+        || regimes.len() != before.n()
+        || reactions.len() != before.n()
+    {
+        return Err(StickSlipError::MechanicsRejected);
+    }
+    let mut contacts = Vec::with_capacity(before.n());
+    let mut maximum_stick_reaction: f64 = 0.0;
+    let mut maximum_slip_reaction: f64 = 0.0;
+    let mut stuck_contacts = 0;
+    let mut slipping_contacts = 0;
+    let mut substrate_work = 0.0;
+    let mut maximum_attempted_velocity: f64 = 0.0;
+    let mut maximum_accepted_velocity: f64 = 0.0;
+    for index in 0..before.n() {
+        let attempted_velocity = [
+            (free_step.vertices[index][0] - before.vertices[index][0]) * mechanics.gamma
+                / mechanics.dt,
+            (free_step.vertices[index][1] - before.vertices[index][1]) * mechanics.gamma
+                / mechanics.dt,
+        ];
+        let accepted_velocity = [
+            (after.vertices[index][0] - before.vertices[index][0]) * mechanics.gamma
+                / mechanics.dt,
+            (after.vertices[index][1] - before.vertices[index][1]) * mechanics.gamma
+                / mechanics.dt,
+        ];
+        let required_force = [
+            attempted_velocity[0] * mechanics.gamma,
+            attempted_velocity[1] * mechanics.gamma,
+        ];
+        let work = dot(
+            reactions[index],
+            [
+                after.vertices[index][0] - before.vertices[index][0],
+                after.vertices[index][1] - before.vertices[index][1],
+            ],
+        );
+        if !work.is_finite() || work > params.zero_motion_tolerance {
+            return Err(StickSlipError::InvalidContact);
+        }
+        let reaction_norm = norm(reactions[index]);
+        match regimes[index] {
+            ContactRegimeV1::Stick => {
+                stuck_contacts += 1;
+                maximum_stick_reaction = maximum_stick_reaction.max(reaction_norm);
+            }
+            ContactRegimeV1::Slip => {
+                slipping_contacts += 1;
+                maximum_slip_reaction = maximum_slip_reaction.max(reaction_norm);
+            }
+        }
+        maximum_attempted_velocity = maximum_attempted_velocity.max(norm(attempted_velocity));
+        maximum_accepted_velocity = maximum_accepted_velocity.max(norm(accepted_velocity));
+        substrate_work += work;
+        contacts.push(ContactLedgerV1 {
+            regime: regimes[index],
+            required_force: norm(required_force),
+            attempted_velocity,
+            reaction: reactions[index],
+            accepted_velocity,
+            work,
+        });
+    }
+    Ok(ActivatedEnergyStickSlipStepLedgerV1 {
+        schema: crate::ACTIVATED_ENERGY_CONTRACTILITY_SCHEMA_V1.to_string(),
+        contacts,
+        maximum_stick_reaction,
+        maximum_slip_reaction,
+        stuck_contacts,
+        slipping_contacts,
+        substrate_work,
+        maximum_attempted_velocity,
+        maximum_accepted_velocity,
+        contractility,
+    })
+}
+
+/// Apply the explicit M2 A-funded actuator through the existing DC-DEV-011
+/// stick-slip law. This adapter is opt-in; historical R-funded APIs above are
+/// unchanged.
+pub fn apply_local_activated_energy_contractility_with_stick_slip(
+    mesh: &mut MaterialMesh,
+    activity: &[f64],
+    mechanics: &MechParams,
+    contractility: &ContractilityParamsV1,
+    params: &StickSlipTractionParamsV1,
+) -> Result<ActivatedEnergyStickSlipStepLedgerV1, StickSlipError> {
+    validate_params(params)?;
+    validate_mechanics(mechanics)?;
+    let before = mesh.clone();
+    let mut free_step = before.clone();
+    let zero_external = vec![[0.0, 0.0]; before.n()];
+    let _free_contractility =
+        apply_local_activated_energy_contractility_with_external_forces(
+            &mut free_step,
+            activity,
+            mechanics,
+            contractility,
+            Some(&zero_external),
+        )?;
+    let (regimes, reactions) = contacts_from_free_step(&before, &free_step, mechanics, params)?;
+    let accepted_contractility =
+        apply_local_activated_energy_contractility_with_external_forces(
+            mesh,
+            activity,
+            mechanics,
+            contractility,
+            Some(&reactions),
+        )?;
+    finish_activated_energy_step(
         &before,
         mesh,
         &free_step,
