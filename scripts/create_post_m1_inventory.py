@@ -41,6 +41,8 @@ def classify(path: str, retained: bool) -> str:
 
 def main() -> None:
     changed = git("diff", "--name-only", BASE, SOURCE)
+    baseline_changed = git("diff", "--name-only", BASE, "HEAD")
+    baseline_status = git("diff", "--name-status", BASE, "HEAD")
     baseline_paths = set(git("ls-tree", "-r", "--name-only", "HEAD"))
     records = []
     for path in changed:
@@ -56,6 +58,12 @@ def main() -> None:
         "baseline_tree_ref": "HEAD",
         "source_changed_file_count": len(changed),
         "source_commit_count_above_base": int(git("rev-list", "--count", f"{BASE}..{SOURCE}")[0]),
+        "clean_baseline_changed_file_count": len(baseline_changed),
+        "clean_baseline_deleted_file_count": sum(line.startswith("D") for line in baseline_status),
+        "historical_experiment_workflow_files_omitted": sum(
+            line.startswith("D") and ("experiments/generated/" in line or ".github/workflows/" in line or ".agent/legacy/" in line)
+            for line in baseline_status
+        ),
         "classification_counts": dict(sorted(categories.items())),
         "dependency_proof": {
             "cargo_workspace": "digital-protocell/Cargo.toml",

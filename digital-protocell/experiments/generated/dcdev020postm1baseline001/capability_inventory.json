@@ -7,6 +7,9 @@
   "baseline_tree_ref": "HEAD",
   "source_changed_file_count": 642,
   "source_commit_count_above_base": 187,
+  "clean_baseline_changed_file_count": 819,
+  "clean_baseline_deleted_file_count": 774,
+  "historical_experiment_workflow_files_omitted": 774,
   "classification_counts": {
     "GENERATED_EVIDENCE_ONLY": 449,
     "HISTORICAL_PROVENANCE_ONLY": 56,
@@ -1023,7 +1026,7 @@
     {
       "path": "digital-protocell/experiments/generated/dcdev020m1closure001/m1_closure_manifest.json",
       "classification": "GENERATED_EVIDENCE_ONLY",
-      "retained": false
+      "retained": true
     },
     {
       "path": "digital-protocell/experiments/generated/dcdev020m1closure001/preservation.json",
