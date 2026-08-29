@@ -82,7 +82,7 @@ jobs:
       - name: R5-R3 live-resource qualification
         working-directory: digital-protocell
         env:
-          DCDEV020M1REPLAN002R5R3_OUTPUT: experiments/generated/dcdev020m1replan002r5r3/ci
+          DCDEV020M1REPLAN002R5R3_OUTPUT: experiments/generated/dcdev020m1replan002r5r3
           DCDEV020M1REPLAN002R5R3_DENSE_OUTPUT: ${{ runner.temp }}/dcdev020m1replan002r5r3-dense
         run: cargo +1.89.0 run -p phase1-certifier --example dcdev020m1replan002r5r3_v4_live_resource_irreversible_death --release --quiet
       - name: Verify compact R5-R3 evidence
@@ -97,9 +97,9 @@ jobs:
           names = ('protocol.json', 'results.json', 'qualification.json',
                    'preservation.json', 'artifact_manifest.json')
           for name in names:
-              assert (ci / name).is_file(), f'missing {ci/name}'
-          q = json.loads((ci / 'qualification.json').read_text())
-          r = json.loads((ci / 'results.json').read_text())
+              assert (root / name).is_file(), f'missing {root/name}'
+          q = json.loads((root / 'qualification.json').read_text())
+          r = json.loads((root / 'results.json').read_text())
           assert q['starting_head'] == 'd0a9601aed170c43a5c288c8300f3fe65e64237f'
           assert q['direct_internal_nf_insertion'] is False
           assert q['sealed_internal_delivery_used'] is False
@@ -137,4 +137,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dcdev020m1replan002r5r3-v4-live-resource-death
-          path: digital-protocell/experiments/generated/dcdev020m1replan002r5r3/ci/**/*.json
+          path: digital-protocell/experiments/generated/dcdev020m1replan002r5r3/**/*.json
