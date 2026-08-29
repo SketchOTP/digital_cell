@@ -262,6 +262,16 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Record or decision ID: DEC-DCDEV020M1CLOSURE001-001
 - Status: PROPOSED
 - Decision or event: The Architect accepted R5-R4 at `c56cf3791fc17e85073f6b1ed13cf827353ca3da` and authorized `DC-DEV-020-M1-CLOSURE-001-V4-PRODUCTION-SELECTION-AND-FREEZE-001`.
-- Rationale: V4 has accepted moving homeostasis, bounded recovery, admissible-boundary irreversible death, material closure, and preservation. The remaining task is administrative/production integration: select V4 as the default with reserve OFF and produce one immutable closure manifest without changing V4 science or D-087.
+- Rationale: V4 has accepted moving homeostasis, bounded recovery, admissible-boundary irreversible death, material closure, and preservation. The remaining task is administrative/production integration: select V4 as the default with reserve OFF and produce one immutable closure manifest without changing V4 science or D-087. Atlas execution passed the six omitted downstream runners, packaged V4/reserve-OFF identity, explicit V2/V3 availability, forbidden-controller audit, D-087 boundary, R5-R4 qualification, and focused closure tests; exact-head CI remains pending.
 - Affected areas: production selector/runtime wiring, closure verifier/workflow, documentation, compact evidence, and append-only governance; no V4 equations, D-087 predicates/thresholds, reserve, M2 behavior, or PR merge.
 - Supersedes record: DEC-DCDEV020M1REPLAN002R5R4-REMOTE-001
+
+## DEC-DCDEV020M1CLOSURE001-R1-001
+
+- Date: 2026-08-29
+- Record or decision ID: DEC-DCDEV020M1CLOSURE001-R1-001
+- Status: PROPOSED
+- Decision or event: M1 closure evidence finalization executed from exact head `d011543f58fa684d04c97c0cccba9f7202957546`.
+- Rationale: The closure manifest now records the actual selector implementation commit `7720546ccc75a7d5becb1dc6eac8a063e0d75b8c` instead of the pre-selection head, binds project-goal blob `94864614625a8f3388a51b33b79ad203b2f66588`, and explicitly records passing regulator, plasticity, contact, finite-resource, and traction preservation results.
+- Affected areas: Closure verifier/workflow, compact evidence, documentation, and append-only governance only; no scientific source or production behavior changed.
+- Supersedes record: DEC-DCDEV020M1CLOSURE001-001

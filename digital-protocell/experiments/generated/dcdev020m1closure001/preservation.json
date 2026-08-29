@@ -1,6 +1,53 @@
 {
+  "d088_preservation": true,
+  "d091_preservation": true,
   "damage": true,
   "directive": "DC-DEV-020-M1-CLOSURE-001-V4-PRODUCTION-SELECTION-AND-FREEZE-001",
+  "downstream_preservation": {
+    "contact_infrastructure": {
+      "conclusion": "DCDEV006_SPATIAL_CONTACT_ENVIRONMENT_QUALIFIED",
+      "directive": "DC-DEV-006",
+      "entry_commit": "4da04a5cf8153e4ab31603965eeba305ad4bb721",
+      "pass": true,
+      "runner": "regulatory-core::dcdev006_gate_assay"
+    },
+    "contact_regulation": {
+      "conclusion": "DCDEV007_ACTIVE_EXTERNAL_CONTACT_REGULATION_QUALIFIED",
+      "directive": "DC-DEV-007",
+      "entry_commit": null,
+      "pass": true,
+      "runner": "regulatory-core::dcdev007_gate_assay"
+    },
+    "distributed_regulator": {
+      "conclusion": "DCDEV002_LOCAL_REGULATORY_SUBSTRATE_QUALIFIED",
+      "directive": "DC-DEV-002",
+      "entry_commit": "8caf5a19061b0ad34723333e979f30637bdf2c2d",
+      "pass": true,
+      "runner": "regulatory-core::dcdev002_gate_assay"
+    },
+    "finite_resource_infrastructure": {
+      "conclusion": "DCDEV008_SPATIAL_RESOURCE_ACQUISITION_QUALIFIED",
+      "directive": "DC-DEV-008",
+      "entry_commit": null,
+      "pass": true,
+      "runner": "regulatory-core::dcdev008_gate_assay"
+    },
+    "plasticity": {
+      "conclusion": "DCDEV005_LOCAL_HISTORY_DEPENDENT_PLASTICITY_QUALIFIED",
+      "directive": "DC-DEV-005",
+      "entry_commit": "edf517e6b802a7cd9cf141980061127dbb697b21",
+      "pass": true,
+      "runner": "regulatory-core::dcdev005_gate_assay"
+    },
+    "traction": {
+      "conclusion": "DCDEV011_PASSIVE_ISOTROPIC_STICK_SLIP_TRANSLATION_QUALIFIED",
+      "directive": "DC-DEV-011",
+      "entry_commit": "8d6fe59397cabfa47bc1d8103acd68f544acc190",
+      "pass": true,
+      "runner": "regulatory-core::dcdev011_gate_assay"
+    }
+  },
+  "evolution_harness_preservation": true,
   "fission_lineage": true,
   "forbidden_controller_audit": "NONE",
   "geometry_conservation": true,

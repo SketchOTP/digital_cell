@@ -63,6 +63,10 @@ jobs:
                            'production_selector_smoke.json',
                            'selector_verifier_smoke.json')
           }
+          allowed |= {
+              f'digital-protocell/experiments/generated/dcdev020m1closure001/downstream/{name}/final_manifest.json'
+              for name in ('dcdev002', 'dcdev005', 'dcdev006', 'dcdev007', 'dcdev008', 'dcdev011')
+          }
           unexpected = changed - allowed
           if unexpected:
               raise SystemExit(f'unexpected M1 closure paths: {sorted(unexpected)}')
@@ -147,12 +151,47 @@ jobs:
           DCDEV020M1REPLAN002R5R4_OUTPUT: experiments/generated/dcdev020m1closure001/r5r4
           DCDEV020M1REPLAN002R5R4_DENSE_OUTPUT: ${{ runner.temp }}/dcdev020m1closure001-dense
         run: cargo +1.89.0 run -p phase1-certifier --example dcdev020m1replan002r5r4_v4_admissible_boundary_no_resurrection --release --quiet
+      - name: Run omitted downstream preservation assays
+        working-directory: digital-protocell
+        run: |
+          root=experiments/generated/dcdev020m1closure001/downstream
+          mkdir -p "$root"
+          cargo +1.89.0 run -p regulatory-core --example dcdev002_gate_assay -- "$root/dcdev002"
+          cargo +1.89.0 run -p regulatory-core --example dcdev005_gate_assay -- "$root/dcdev005"
+          cargo +1.89.0 run -p regulatory-core --example dcdev006_gate_assay -- "$root/dcdev006"
+          cargo +1.89.0 run -p regulatory-core --example dcdev007_gate_assay -- "$root/dcdev007"
+          cargo +1.89.0 run -p regulatory-core --example dcdev008_gate_assay -- "$root/dcdev008"
+          cargo +1.89.0 run -p regulatory-core --example dcdev011_gate_assay -- "$root/dcdev011"
+      - name: Validate omitted downstream preservation conclusions
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path('experiments/generated/dcdev020m1closure001/downstream')
+          expected = {
+              'dcdev002': 'DCDEV002_LOCAL_REGULATORY_SUBSTRATE_QUALIFIED',
+              'dcdev005': 'DCDEV005_LOCAL_HISTORY_DEPENDENT_PLASTICITY_QUALIFIED',
+              'dcdev006': 'DCDEV006_SPATIAL_CONTACT_ENVIRONMENT_QUALIFIED',
+              'dcdev007': 'DCDEV007_ACTIVE_EXTERNAL_CONTACT_REGULATION_QUALIFIED',
+              'dcdev008': 'DCDEV008_SPATIAL_RESOURCE_ACQUISITION_QUALIFIED',
+              'dcdev011': 'DCDEV011_PASSIVE_ISOTROPIC_STICK_SLIP_TRANSLATION_QUALIFIED',
+          }
+          for name, conclusion in expected.items():
+              data = json.loads((root / name / 'final_manifest.json').read_text())
+              actual = data.get('conclusion', data.get('scientific_finding'))
+              assert actual == conclusion, (name, actual)
+              assert data['next_execution_started'] is False, name
+          print('DCDEV020M1CLOSURE001_DOWNSTREAM_PRESERVATION_PASS')
+          PY
       - name: Create immutable M1 closure manifest
         working-directory: digital-protocell
         env:
           DCDEV020M1CLOSURE001_OUT: experiments/generated/dcdev020m1closure001
           DCDEV020M1CLOSURE001_R5R4_QUALIFICATION: experiments/generated/dcdev020m1closure001/r5r4/qualification.json
           DCDEV020M1CLOSURE001_D087_DIR: experiments/generated/dcdev020m1closure001/d087
+          DCDEV020M1CLOSURE001_DOWNSTREAM_DIR: experiments/generated/dcdev020m1closure001/downstream
         run: cargo +1.89.0 run -p phase1-certifier --example dcdev020m1closure001_v4_production_selection_and_freeze --release --quiet
       - name: Verify closure manifest and preservation boundary
         working-directory: digital-protocell
@@ -167,6 +206,19 @@ jobs:
           assert manifest['classification'] == 'M1_V4_PRODUCTION_SELECTION_AND_CLOSURE_CANDIDATE_QUALIFIED'
           assert manifest['d087_v2'] == 8 and manifest['d087_v3'] == 8 and manifest['d087_v4'] == 7
           assert manifest['d087_v4_vector'] == [True, True, False, True, True, True, True, True]
+          assert manifest['closure_starting_head'] == 'd011543f58fa684d04c97c0cccba9f7202957546'
+          assert manifest['selector_change_commit'] == '7720546ccc75a7d5becb1dc6eac8a063e0d75b8c'
+          assert manifest['project_goal_path'] == '.agent/PROJECT_GOAL.md'
+          assert manifest['project_goal_blob_sha'] == '94864614625a8f3388a51b33b79ad203b2f66588'
+          for key in (
+              'd088_preservation', 'd091_preservation',
+              'evolution_harness_preservation', 'regulator_preservation',
+              'plasticity_preservation', 'contact_infrastructure_preservation',
+              'contact_regulation_preservation',
+              'finite_resource_infrastructure_preservation',
+              'traction_preservation',
+          ):
+              assert manifest[key] is True, key
           assert manifest['forbidden_controller_audit'] == 'NONE'
           print('DCDEV020M1CLOSURE001_MANIFEST_PASS')
           PY

@@ -1130,3 +1130,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: resumes
 - Related directive: D-20260828-dcdev020m1replan002r5r4-v4-admissible-boundary-no-resurrection-qualification001
 - Status at issuance: ISSUED
+
+## D-20260829-dcdev020m1closure001-r1-provenance-and-downstream-preservation-finalization001
+
+- Issued: `2026-08-29T12:10:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-020-M1-CLOSURE-001-R1-PROVENANCE-AND-DOWNSTREAM-PRESERVATION-FINALIZATION-001`
+- Objective: Finalize the M1 closure evidence by correcting selector provenance, binding project-goal provenance, explicitly running the omitted downstream preservation families, and obtaining fresh exact-head Linux CI.
+- Scope: Closure verifier/workflow, compact closure evidence, existing DC-DEV-002/-005/-006/-007/-008/-011 preservation runners, existing D-088/D-091/evolution/lifecycle checks, documentation, append-only governance, and exact-head CI.
+- Exclusions: No V4 biology, production selector behavior, D-087 change, reserve/recycling/salvage, new science, clean baseline, M2, or PR #44 merge.
+- Acceptance: Correct `selector_change_commit`, explicit project-goal blob provenance, all omitted preservation families pass, historical D-087 remains V2 `8/8`, V3 `8/8`, V4 `7/8` with its frozen vector, scientific source diff is zero, and exact-head push/PR CI passes.
+- Risk class: NORMAL
+- Relationship: resumes
+- Related directive: D-20260829-dcdev020m1closure001-v4-production-selection-and-freeze001
+- Status at issuance: ISSUED

@@ -5,6 +5,8 @@
 //! contract with reserve disabled, then binds the already accepted R5-R4 and
 //! D-087 evidence into one immutable closure manifest.
 
+#![recursion_limit = "512"]
+
 use chemistry_core::material_mesh::MeshContractVersion;
 use phase1_certifier::sim::{
     contract_label_for_mesh, reserve_enabled, run_coupled, seed_production_mesh,
@@ -13,9 +15,11 @@ use serde_json::{json, Value};
 use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
+use std::process::Command;
 
 const DIRECTIVE: &str = "DC-DEV-020-M1-CLOSURE-001-V4-PRODUCTION-SELECTION-AND-FREEZE-001";
-const STARTING_HEAD: &str = "c56cf3791fc17e85073f6b1ed13cf827353ca3da";
+const CLOSURE_STARTING_HEAD: &str = "d011543f58fa684d04c97c0cccba9f7202957546";
+const SELECTOR_CHANGE_COMMIT: &str = "7720546ccc75a7d5becb1dc6eac8a063e0d75b8c";
 const ACCEPTED_R5_R4: &str = "M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED";
 const CLASSIFICATION: &str = "M1_V4_PRODUCTION_SELECTION_AND_CLOSURE_CANDIDATE_QUALIFIED";
 
@@ -37,6 +41,36 @@ fn copy_json(source: &Path, destination: &Path) {
         serde_json::to_string_pretty(&value).expect("serialize copied evidence"),
     )
     .unwrap_or_else(|error| panic!("cannot write {}: {error}", destination.display()));
+}
+
+fn git_rev_parse(revision: &str) -> String {
+    let output = Command::new("git")
+        .args(["rev-parse", revision])
+        .output()
+        .unwrap_or_else(|error| panic!("cannot run git rev-parse {revision}: {error}"));
+    require(
+        output.status.success(),
+        "git rev-parse returned a successful status",
+    );
+    String::from_utf8(output.stdout)
+        .expect("git rev-parse output is UTF-8")
+        .trim()
+        .to_string()
+}
+
+fn downstream_result(root: &Path, name: &str, expected_conclusion: &str) -> Value {
+    let final_path = root.join(name).join("final_manifest.json");
+    let final_manifest = read_json(&final_path);
+    require(
+        final_manifest["conclusion"] == expected_conclusion
+            || final_manifest["scientific_finding"] == expected_conclusion,
+        "canonical downstream preservation runner reached its qualified conclusion",
+    );
+    require(
+        final_manifest["next_execution_started"].as_bool() == Some(false),
+        "downstream preservation runner did not start successor work",
+    );
+    final_manifest
 }
 
 fn d087_pass_count(report: &Value) -> usize {
@@ -190,14 +224,94 @@ fn main() {
         "V4 D-087 vector remains exact",
     );
 
+    let downstream_root = env::var_os("DCDEV020M1CLOSURE001_DOWNSTREAM_DIR")
+        .map(PathBuf::from)
+        .unwrap_or_else(|| out.join("downstream"));
+    let regulator = downstream_result(
+        &downstream_root,
+        "dcdev002",
+        "DCDEV002_LOCAL_REGULATORY_SUBSTRATE_QUALIFIED",
+    );
+    let plasticity = downstream_result(
+        &downstream_root,
+        "dcdev005",
+        "DCDEV005_LOCAL_HISTORY_DEPENDENT_PLASTICITY_QUALIFIED",
+    );
+    let contact = downstream_result(
+        &downstream_root,
+        "dcdev006",
+        "DCDEV006_SPATIAL_CONTACT_ENVIRONMENT_QUALIFIED",
+    );
+    let contact_regulation = downstream_result(
+        &downstream_root,
+        "dcdev007",
+        "DCDEV007_ACTIVE_EXTERNAL_CONTACT_REGULATION_QUALIFIED",
+    );
+    let finite_resource = downstream_result(
+        &downstream_root,
+        "dcdev008",
+        "DCDEV008_SPATIAL_RESOURCE_ACQUISITION_QUALIFIED",
+    );
+    let traction = downstream_result(
+        &downstream_root,
+        "dcdev011",
+        "DCDEV011_PASSIVE_ISOTROPIC_STICK_SLIP_TRANSLATION_QUALIFIED",
+    );
+    let downstream_preservation = json!({
+        "distributed_regulator": {
+            "pass": true,
+            "directive": "DC-DEV-002",
+            "runner": "regulatory-core::dcdev002_gate_assay",
+            "conclusion": regulator["conclusion"],
+            "entry_commit": regulator["entry_commit"]
+        },
+        "plasticity": {
+            "pass": true,
+            "directive": "DC-DEV-005",
+            "runner": "regulatory-core::dcdev005_gate_assay",
+            "conclusion": plasticity["conclusion"],
+            "entry_commit": plasticity["entry_commit"]
+        },
+        "contact_infrastructure": {
+            "pass": true,
+            "directive": "DC-DEV-006",
+            "runner": "regulatory-core::dcdev006_gate_assay",
+            "conclusion": contact["conclusion"],
+            "entry_commit": contact["entry_commit"]
+        },
+        "contact_regulation": {
+            "pass": true,
+            "directive": "DC-DEV-007",
+            "runner": "regulatory-core::dcdev007_gate_assay",
+            "conclusion": contact_regulation["conclusion"],
+            "entry_commit": contact_regulation["entry_commit"]
+        },
+        "finite_resource_infrastructure": {
+            "pass": true,
+            "directive": "DC-DEV-008",
+            "runner": "regulatory-core::dcdev008_gate_assay",
+            "conclusion": finite_resource["conclusion"],
+            "entry_commit": finite_resource["entry_commit"]
+        },
+        "traction": {
+            "pass": true,
+            "directive": "DC-DEV-011",
+            "runner": "regulatory-core::dcdev011_gate_assay",
+            "conclusion": traction["conclusion"],
+            "entry_commit": traction["entry_commit"]
+        }
+    });
+    let project_goal_blob_sha = git_rev_parse("HEAD:.agent/PROJECT_GOAL.md");
+
     let manifest = json!({
         "schema": "dcdev020m1closure001_m1_closure_manifest_v1",
         "directive": DIRECTIVE,
-        "starting_head": STARTING_HEAD,
+        "closure_starting_head": CLOSURE_STARTING_HEAD,
+        "selector_change_commit": SELECTOR_CHANGE_COMMIT,
+        "project_goal_path": ".agent/PROJECT_GOAL.md",
+        "project_goal_blob_sha": project_goal_blob_sha,
         "selected_contract": "MaturationCoupledV4",
         "reserve_enabled": false,
-        "selection_commit": env::var("DCDEV020M1CLOSURE001_SELECTION_COMMIT")
-            .unwrap_or_else(|_| "working_tree_before_commit".to_string()),
         "production_default_changed": true,
         "production_linux_runtime_evidence": "production_selector_smoke.json",
         "production_selector_verifier": smoke,
@@ -224,7 +338,16 @@ fn main() {
         "d087_v4": 7,
         "d087_v4_vector": v4_vector,
         "v4_contract_aware_preservation": "QUALIFIED",
-        "downstream_preservation": "verified_by_scoped_closure_workflow",
+        "downstream_preservation": downstream_preservation.clone(),
+        "d088_preservation": true,
+        "d091_preservation": true,
+        "evolution_harness_preservation": true,
+        "regulator_preservation": true,
+        "plasticity_preservation": true,
+        "contact_infrastructure_preservation": true,
+        "contact_regulation_preservation": true,
+        "finite_resource_infrastructure_preservation": true,
+        "traction_preservation": true,
         "forbidden_controller_audit": "NONE",
         "pr_44_merged": false,
         "m1_formal_architect_acceptance": "PENDING",
@@ -269,6 +392,10 @@ fn main() {
         "remesh": true,
         "fission_lineage": true,
         "serialization": true,
+        "d088_preservation": true,
+        "d091_preservation": true,
+        "evolution_harness_preservation": true,
+        "downstream_preservation": downstream_preservation.clone(),
         "forbidden_controller_audit": "NONE",
         "production_default": "MaturationCoupledV4 / reserve OFF",
     });
@@ -280,7 +407,10 @@ fn main() {
     let artifact_manifest = json!({
         "schema": "dcdev020m1closure001_artifact_manifest_v1",
         "directive": DIRECTIVE,
-        "starting_head": STARTING_HEAD,
+        "closure_starting_head": CLOSURE_STARTING_HEAD,
+        "selector_change_commit": SELECTOR_CHANGE_COMMIT,
+        "project_goal_path": ".agent/PROJECT_GOAL.md",
+        "project_goal_blob_sha": project_goal_blob_sha,
         "dense_evidence_root": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1closure001/",
         "compact_root": "digital-protocell/experiments/generated/dcdev020m1closure001/",
         "selection": "MaturationCoupledV4 / reserve OFF",

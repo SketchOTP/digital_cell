@@ -2122,3 +2122,19 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: Formal M1 Architect acceptance is pending. M2 remains unauthorized; PR #44 remains unmerged; no clean capability baseline or successor execution is authorized.
 - Blockers: Architect acceptance of the closure candidate.
 - Follow-up directive: none
+
+## D-20260829-dcdev020m1closure001-r1-provenance-and-downstream-preservation-finalization001 - PARTIAL
+
+- Outcome ID: OUT-DCDEV020M1CLOSURE001-R1-PROVENANCE-DOWNSTREAM-FINALIZATION-PENDING-CI
+- Supersedes outcome: OUT-DCDEV020M1CLOSURE001-V4-PRODUCTION-SELECTION-AND-FREEZE-REMOTE-PARTIAL
+- Closed: `2026-08-29T12:10:00-04:00`
+- Acceptance: PARTIAL
+- Summary: The closure package was finalized with selector provenance corrected to `7720546ccc75a7d5becb1dc6eac8a063e0d75b8c`, closure starting head `d011543f58fa684d04c97c0cccba9f7202957546`, and project-goal blob `94864614625a8f3388a51b33b79ad203b2f66588`. Existing DC-DEV-002, DC-DEV-005, DC-DEV-006, DC-DEV-007, DC-DEV-008, and DC-DEV-011 runners all passed on Atlas. Focused D-098 geometry, D-088, D-091, evolution-harness, and metrics tests passed.
+- Validation:
+  - Atlas packaged default `MaturationCoupledV4 / reserve OFF`, explicit V2/V3 selection, forbidden-controller audit, V2/V3/V4 D-087 preservation, accepted R5-R4 qualification, and focused closure tests - PASSED
+  - Fresh exact-head push/PR CI - PENDING
+- Changed areas: Closure verifier/workflow, compact closure evidence, closure documentation, and append-only governance only; no scientific source, selector behavior, V4 biology, D-087 semantics, reserve, M2, clean baseline, or PR #44 merge changed.
+- Atlas dense evidence is preserved under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1closure001/`.
+- Remaining risks: Exact-head CI and Architect acceptance remain pending. M1 formal closure is not yet declared; M2 remains unauthorized; PR #44 remains open, draft, and unmerged.
+- Blockers: Fresh exact-head CI and Architect acceptance.
+- Follow-up directive: none

@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-29T10:36:44-04:00`
+- Last updated: `2026-08-29T12:10:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260829-dcdev020m1closure001-v4-production-selection-and-freeze001`
-- External directive ID: `DC-DEV-020-M1-CLOSURE-001-V4-PRODUCTION-SELECTION-AND-FREEZE-001`
-- Objective: `Select the Architect-accepted MaturationCoupledV4 physiology as the production/default contract with reserve OFF, run the final integrated M1 closure manifest, and freeze the milestone pending Architect acceptance.`
+- Local directive ID: `D-20260829-dcdev020m1closure001-r1-provenance-and-downstream-preservation-finalization001`
+- External directive ID: `DC-DEV-020-M1-CLOSURE-001-R1-PROVENANCE-AND-DOWNSTREAM-PRESERVATION-FINALIZATION-001`
+- Objective: `Finalize the already-qualified M1 closure package by correcting selector provenance, explicitly executing omitted downstream preservation families, binding the results into the closure manifest, and obtaining fresh exact-head Linux CI.`
 - Current status: `VALIDATING`
-- Acceptance: `R5-R4 is Architect accepted at c56cf3791fc17e85073f6b1ed13cf827353ca3da as M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED. The only authorized follow-up is M1 closure selection/freeze; PR #44 remains open, draft, and unmerged.`
-- Current phase: `The accepted V4 physiology has passed moving homeostasis, bounded recovery, causal starvation deterioration, admissible-boundary no-resurrection, material conservation, and preservation. This directive changes only the production selector to MaturationCoupledV4 with reserve OFF, proves packaged Linux selection, and assembles the final closure manifest. M1 formal closure remains pending Architect acceptance; M2 remains unauthorized.`
-- Expected or actual touched areas: `production selector and packaged runtime wiring, focused closure verifier/workflow, compact closure evidence, documentation, and append-only governance; no V4 equations, D-087 predicates/thresholds, reserve, recycling, salvage, M2 behavior, or PR merge; dense evidence is stored on Atlas`
-- Immediate next action: `Stop for Architect review of the qualified M1 closure candidate. Do not start new M1 science, alter D-087, merge PR #44, extract a clean baseline, or begin M2.`
+- Acceptance: `R5-R4 is Architect accepted at c56cf3791fc17e85073f6b1ed13cf827353ca3da as M1_V4_ADMISSIBLE_BOUNDARY_IRREVERSIBLE_DEATH_QUALIFIED. Production selection is already verified; this R1 finalizes provenance and the two omitted downstream preservation families. PR #44 remains open, draft, and unmerged.`
+- Current phase: `M1 science and V4 production selection remain satisfied. The closure record now binds closure starting head d011543f58fa684d04c97c0cccba9f7202957546, selector change 7720546ccc75a7d5becb1dc6eac8a063e0d75b8c, project-goal blob 94864614625a8f3388a51b33b79ad203b2f66588, and explicit regulator/plasticity/contact/resource/traction preservation results. Formal M1 closure remains pending Architect acceptance; M2 remains unauthorized.`
+- Expected or actual touched areas: `closure verifier/workflow, compact closure evidence, documentation, and append-only governance; no V4 equations, production selector behavior, D-087 predicates/thresholds, reserve, recycling, salvage, M2 behavior, clean baseline, or PR merge; dense evidence is stored on Atlas`
+- Immediate next action: `Stop for Architect review of the finalized M1 closure evidence. Do not start new M1 science, alter D-087, merge PR #44, extract a clean baseline, or begin M2.`
 
 ## Temporary task-relevant facts
 

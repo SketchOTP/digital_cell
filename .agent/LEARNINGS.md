@@ -935,3 +935,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: M1 closure selection/freeze only; no new physiology search, D-087 repair, reserve/recycling/salvage, M2, clean baseline, or PR merge.
 - Supersedes learning: L-DCDEV020M1REPLAN002R5R4-REMOTE-VERIFIED
+
+## L-DCDEV020M1CLOSURE001-R1-LOCAL
+
+- Learning ID: L-DCDEV020M1CLOSURE001-R1-LOCAL
+- Date: 2026-08-29
+- Fact or lesson: Final M1 closure evidence must distinguish the closure starting head `d011543f58fa684d04c97c0cccba9f7202957546` from the selector implementation commit `7720546ccc75a7d5becb1dc6eac8a063e0d75b8c`, and must bind project-goal blob `94864614625a8f3388a51b33b79ad203b2f66588`. The omitted downstream preservation families are explicitly executable through the existing DC-DEV-002, DC-DEV-005, DC-DEV-006, DC-DEV-007, DC-DEV-008, and DC-DEV-011 runners; all six passed on Atlas without successor execution.
+- Evidence location: compact closure evidence under `digital-protocell/experiments/generated/dcdev020m1closure001/`; dense evidence under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1closure001/`.
+- Confidence: VERIFIED
+- Scope: M1 closure evidence finalization only; no science, selector behavior, D-087, reserve, M2, clean baseline, or PR merge.
+- Supersedes learning: L-DCDEV020M1CLOSURE001-LOCAL
