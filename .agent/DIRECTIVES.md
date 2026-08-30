@@ -304,3 +304,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260829-dcdev021-m2-entry002-temporal-navigation-substrate-audit
 - Status at issuance: ISSUED
+
+## D-20260829-dcdev021-m2-entry004-intrinsic-traction-transfer-audit
+
+- Issued: `2026-08-29T23:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-004-INTRINSIC-TRACTION-TRANSFER-AUDIT-001`
+- Objective: Determine, with observer-only free-step reconstruction, why accepted ENTRY-003 intrinsic activity does not cross the frozen stick-slip clutch transition while accepted ENTRY-001 does.
+- Scope: Clone-only force/reaction ledgers; actual/effective, raw-activity, and unit-peak observer counterfactuals; compact evidence, governance, and one scoped Linux workflow.
+- Exclusions: M1/V4, intrinsic explorer, regulator/plasticity, A-funded and historical R-funded actuator, traction law/threshold, mechanics, chemistry-core, phase1-certifier, restart repair, coefficients, tuning, resource sensing, chemotaxis, target/gradient, reserve enablement, PR #44 mutation, and successor execution.
+- Acceptance: One preregistered traction-transfer classification after ENTRY-001 and ENTRY-003 reproduction, exact clutch parity, force-profile decomposition, compact evidence, preservation, exact-head Linux CI, and Architect review.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260829-dcdev021-m2-entry003-intrinsic-exploration-feasibility
+- Status at issuance: ISSUED

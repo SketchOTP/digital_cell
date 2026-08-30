@@ -1,0 +1,10 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-004-INTRINSIC-TRACTION-TRANSFER-AUDIT-001",
+  "entry001_active_steps": 240,
+  "entry003_authority": "2ed0f6159b0169f1f7bd9c2c10e89a6b67d12167",
+  "entry003_steps": 1500,
+  "entry_head": "ec94802b27b012919011747934b58312cebed74c",
+  "observer_only": true,
+  "resource_sensor_target_gradient_planner": false,
+  "traction_threshold": 0.45
+}

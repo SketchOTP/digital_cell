@@ -1,0 +1,10 @@
+{
+  "full_mesh_json_restart": false,
+  "intrinsic_state_restart": true,
+  "mesh_hash": "ceb4cb3532a4b5ac",
+  "reason": "the force audit uses uninterrupted accepted clone proposals and performs no full-mesh restart",
+  "restart_defect_affects_force_reconstruction": false,
+  "restored_mesh_hash": "6dd1f8e6aaa7fa94",
+  "restored_state_hash": "d41c418684f9afd2",
+  "state_hash": "d41c418684f9afd2"
+}

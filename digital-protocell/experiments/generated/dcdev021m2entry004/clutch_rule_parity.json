@@ -1,0 +1,4 @@
+{
+  "pass": true,
+  "rule": "required_force <= 0.45 => STICK; required_force > 0.45 => SLIP"
+}

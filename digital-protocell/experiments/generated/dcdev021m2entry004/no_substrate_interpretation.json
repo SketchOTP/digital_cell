@@ -1,0 +1,19 @@
+{
+  "centroid_path_difference": 5.854691731421724e-17,
+  "free_proposal_net_force_over_summed_norm": {
+    "count": 1500,
+    "maximum": 0.01092637702508717,
+    "mean": 0.0028584626341083023,
+    "median": 0.001978709044687972,
+    "minimum": 3.873241259667568e-13,
+    "p90": 0.006145364217368704,
+    "p95": 0.00906252697584565,
+    "p99": 0.01081127927307076
+  },
+  "interpretation": "free-space deformation with centroid redistribution; no substrate reaction or retained locomotion claim",
+  "material_centroid_net_displacement": 0.00011576018797851138,
+  "material_centroid_path_length": 0.0010383931442681427,
+  "net_displacement_difference": 3.020858303087737e-17,
+  "vertex_centroid_net_displacement": 0.00011576018797848117,
+  "vertex_centroid_path_length": 0.0010383931442680841
+}

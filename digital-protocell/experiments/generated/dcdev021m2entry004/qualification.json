@@ -1,0 +1,13 @@
+{
+  "adaptation_suppression_decisive": true,
+  "amplitude_decisive": false,
+  "classification": "M2_INTRINSIC_TRACTION_ADAPTATION_SUPPRESSION_CONFIRMED",
+  "clutch_prediction_ledger_parity": true,
+  "entry001_reproduction": true,
+  "entry003_reproduction": true,
+  "m2_autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "m2_retained_exploration": "NOT_ESTABLISHED",
+  "slip_cancellation_decisive": false,
+  "source_or_mechanism_change_authorized": false,
+  "spatial_force_profile_decisive": false
+}

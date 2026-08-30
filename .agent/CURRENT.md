@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260829-dcdev021-m2-entry003-intrinsic-exploration-feasibility`
-- External directive ID: `DC-DEV-021-M2-ENTRY-003-INTRINSIC-EXPLORATION-FEASIBILITY-001`
-- Objective: `Test one explicit opt-in intrinsic local exploration regulator, funded through the qualified A-to-W actuator and existing stick-slip traction, without a resource input, sensor, target, gradient, or navigation policy.`
-- Current status: `COMPLETE`
-- Acceptance: `M2_INTRINSIC_EXPLORATION_MECHANICALLY_INSUFFICIENT: exact-head Linux CI 33286398021 passed at 8602e4f; intrinsic dynamics and A-to-W closure pass, but retained displacement does not exceed frozen controls. Architect acceptance pending.`
-- Current phase: `M2 ENTRY-003 intrinsic-exploration feasibility completed locally as a preregistered mechanically-insufficient result; autonomous resource acquisition is not established.`
-- Expected or actual touched areas: `new opt-in regulatory-core intrinsic-exploration module/export, feasibility example/registration, scoped workflow, compact evidence, and governance only`
-- Immediate next action: `Awaiting reset and Architect review; do not tune the mechanism or start resource acquisition, sensing, memory, chemotaxis, or a successor directive.`
+- Local directive ID: `D-20260829-dcdev021-m2-entry004-intrinsic-traction-transfer-audit`
+- External directive ID: `DC-DEV-021-M2-ENTRY-004-INTRINSIC-TRACTION-TRANSFER-AUDIT-001`
+- Objective: `Use clone-only free-step reconstruction to identify why accepted ENTRY-003 intrinsic dynamics remains pinned by the frozen DC-DEV-011 stick-slip substrate.`
+- Current status: `VALIDATING`
+- Acceptance: `Local observer-only audit returns M2_INTRINSIC_TRACTION_ADAPTATION_SUPPRESSION_CONFIRMED: effective activity has zero crossings of the frozen 0.45 clutch limit, while raw intrinsic activity has 11,345 crossings. Exact-head Linux CI and Architect review are pending.`
+- Current phase: `M2 ENTRY-003 is Architect accepted as mechanically insufficient; ENTRY-004 is a bounded force-transfer diagnosis only. Retained exploratory movement and autonomous resource acquisition are not established.`
+- Expected or actual touched areas: `new observer-only ENTRY-004 example/registration, compact evidence, scoped workflow, and governance only`
+- Immediate next action: `Complete exact-head validation and return the diagnostic result to Architect; do not tune the explorer, actuator, or traction law and do not begin a successor directive.`
 
 ## Temporary task-relevant facts
 
@@ -35,12 +35,13 @@
 - The baseline CI `33271509819` and ENTRY-001 CI `33278000813` D-087 sub-runs are invalid preservation-harness evidence: both passed `MaturationCoupledV4` to the chemistry selector, which accepts only HistoricalV1, ConservativeV2, or ConservativeV3 and otherwise resolves to HistoricalV1. Canonical V4 selection is `DCDEV020R9R3_CONTRACT=ConservativeV3`, `DCDEV020R9R3_RESERVE=0`, and `DCDEV020M1REPLAN002R1_V4=1`.
 - ENTRY-002 exact-head evidence classifies the direct A-funded instantaneous-contact route as still negative and resource-independent exploration as not established. This is an audit result only; it does not authorize a memory, sensor, or navigation implementation.
 - ENTRY-003 adds only the explicit opt-in `INTRINSIC_EXPLORATION_REGULATOR_SCHEMA_V1`. It uses one seed of exactly `FROZEN_K_STIMULUS * FROZEN_DT`, frozen neighbor/self-excitation/decay dynamics, and existing local adaptation; it reads no resource, world, target, gradient, observer, or viability state.
-- ENTRY-003 local evidence records intrinsic activity switching and exact A-to-W closure with R unchanged, but no retained material-centroid displacement beyond frozen controls. It is a preregistered mechanical-insufficiency result, not a tuning authorization.
+- ENTRY-003 is Architect accepted as `M2_INTRINSIC_EXPLORATION_MECHANICALLY_INSUFFICIENT`: it records intrinsic activity switching and exact A-to-W closure with R unchanged, but no retained material-centroid displacement beyond frozen controls.
+- ENTRY-004's uninterrupted clone reconstruction has exact clutch-ledger parity. It identifies adaptation attenuation, not a traction-law mismatch, as the cause of zero intrinsic slip events; no actuation amplification or adaptation change is authorized.
 - Autonomous resource acquisition, chemotaxis, target/gradient logic, reserve enablement, and M2 successor work remain unauthorized.
 
 ## Last validation after adoption
 
-- Command or check: `Exact-head Linux workflow 33286398021 at 8602e4f273837fc27c69fffef0e4bd9972a4aaf2`
+- Command or check: `Local ENTRY-004 force-transfer audit plus regulatory-core and canonical D-087 preservation replay`
 - Result: `PASSED`
 
 ## Risks
@@ -51,7 +52,7 @@
 
 ## Blockers
 
-- Architect review is required before any successor directive.
+- Exact-head Linux CI and Architect review are required before any successor directive.
 
 ## Pending decisions
 

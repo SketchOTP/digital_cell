@@ -22,6 +22,7 @@
 - `digital-protocell/examples/dcdev021_m2_entry001.rs` — bounded opt-in A-funded contractility and stick-slip feasibility assay; it does not implement resource acquisition.
 - `digital-protocell/crates/regulatory-core/src/intrinsic_exploration.rs` — opt-in, versioned ENTRY-003 intrinsic local activity state that composes frozen local regulator/plasticity constants with the accepted A-funded actuator; it reads no resource, target, gradient, observer, or viability state.
 - `digital-protocell/examples/dcdev021_m2_entry003.rs` — preregistered resource-free intrinsic-exploration feasibility assay; it records a negative mechanical result without installing production resource-seeking behavior.
+- `digital-protocell/examples/dcdev021_m2_entry004.rs` — observer-only clone/free-proposal audit that compares ENTRY-001 clutch crossing to the adaptation-limited ENTRY-003 trajectory; it does not modify the explorer, actuator, traction, or production runtime.
 
 ## Interfaces and contracts
 
@@ -49,6 +50,7 @@
 - `digital-protocell/experiments/generated/dcdev021m2entry001/` — compact ENTRY-001 feasibility evidence, populated by exact-head Linux validation.
 - `digital-protocell/experiments/generated/dcdev021m2entry002/` — compact observer-only ENTRY-002 temporal-navigation substrate-audit evidence; dense per-step ledgers remain on Atlas.
 - `digital-protocell/experiments/generated/dcdev021m2entry003/` — compact ENTRY-003 intrinsic-exploration feasibility evidence; dense trajectory ledgers remain on Atlas.
+- `digital-protocell/experiments/generated/dcdev021m2entry004/` — compact ENTRY-004 intrinsic-to-traction force-transfer evidence; dense per-vertex/per-step ledgers remain on Atlas.
 - `digital-protocell/experiments/generated/dcdev001/` — DC-DEV-001A machine-readable decision artifacts.
 - `digital-protocell/experiments/generated/dcdev006/` — DC-DEV-006 local spatial-contact evidence artifacts.
 - `digital-protocell/experiments/generated/dcdev009/` — DC-DEV-009 force, displacement, coupling, and audit evidence artifacts.

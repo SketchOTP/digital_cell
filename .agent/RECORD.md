@@ -65,3 +65,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Its internal local activity dynamics and A-to-W funding are conservative, but the frozen physical actuator/traction composition does not retain a material-centroid displacement above the preregistered controls. No tuning, sensor, target, gradient, or navigation policy was introduced.
 - Affected areas: additive regulatory-core exploration state, observer feasibility assay, compact evidence, workflow, and governance only.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY004-INTRINSIC-TRACTION-TRANSFER-001
+
+- Date: 2026-08-29
+- Record or decision ID: DEC-DCDEV021-ENTRY004-INTRINSIC-TRACTION-TRANSFER-001
+- Status: PROPOSED
+- Decision or event: The bounded observer audit identifies `M2_INTRINSIC_TRACTION_ADAPTATION_SUPPRESSION_CONFIRMED` locally.
+- Rationale: Exact clone reconstruction matches every frozen stick/slip regime. Actual effective activity has no free-step force above `0.45`, while raw intrinsic activity crosses that unchanged boundary, so no traction-law mismatch or slip-cancellation mechanism is needed to explain ENTRY-003's zero retained displacement.
+- Affected areas: observer audit, compact evidence, workflow, and governance only; no scientific runtime mechanism changed.
+- Supersedes record: none

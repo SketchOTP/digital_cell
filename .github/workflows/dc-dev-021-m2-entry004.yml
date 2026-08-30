@@ -1,0 +1,124 @@
+name: DC-DEV-021 M2 ENTRY-004 intrinsic traction-transfer audit
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-entry004-traction-transfer-audit
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  entry004-traction-transfer-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact branch head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify authority and frozen-source boundary
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git merge-base --is-ancestor ec94802b27b012919011747934b58312cebed74c HEAD
+          git diff --check
+          forbidden=$(git diff --name-only ec94802b27b012919011747934b58312cebed74c HEAD -- \
+            digital-protocell/crates/chemistry-core \
+            digital-protocell/crates/phase1-certifier \
+            digital-protocell/crates/regulatory-core/src/contractility.rs \
+            digital-protocell/crates/regulatory-core/src/stick_slip_traction.rs \
+            digital-protocell/crates/regulatory-core/src/intrinsic_exploration.rs \
+            digital-protocell/crates/regulatory-core/src/plasticity.rs)
+          test -z "$forbidden"
+          echo "ENTRY-003 explorer and frozen M1/ENTRY-001 sources are unchanged"
+
+      - name: Reproduce ENTRY-001, ENTRY-003, and observer-only force audit
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build -p regulatory-core --example dcdev021_m2_entry001
+          cargo +1.89.0 build -p regulatory-core --example dcdev021_m2_entry003
+          cargo +1.89.0 build -p regulatory-core --example dcdev021_m2_entry004
+          cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry001 -- "$RUNNER_TEMP/dcdev021m2entry001"
+          cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry003 -- "$RUNNER_TEMP/dcdev021m2entry003"
+          cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry004 -- "$RUNNER_TEMP/dcdev021m2entry004"
+          python3 - "$RUNNER_TEMP" <<'PY'
+          import json, sys
+          from pathlib import Path
+          root = Path(sys.argv[1])
+          e1 = json.loads((root / "dcdev021m2entry001" / "qualification.json").read_text())
+          e3 = json.loads((root / "dcdev021m2entry003" / "qualification.json").read_text())
+          audit = root / "dcdev021m2entry004"
+          q = json.loads((audit / "qualification.json").read_text())
+          e1r = json.loads((audit / "entry001_reproduction.json").read_text())
+          e3r = json.loads((audit / "entry003_reproduction.json").read_text())
+          effective = json.loads((audit / "entry003_effective_force_distribution.json").read_text())
+          raw = json.loads((audit / "entry003_raw_activity_counterfactual.json").read_text())
+          assert e1["classification"] == "M2_ACTIVATED_ENERGY_CONTRACTILITY_FEASIBILITY_QUALIFIED", e1
+          assert e3["classification"] == "M2_INTRINSIC_EXPLORATION_MECHANICALLY_INSUFFICIENT", e3
+          assert q["classification"] == "M2_INTRINSIC_TRACTION_ADAPTATION_SUPPRESSION_CONFIRMED", q
+          assert q["entry001_reproduction"] and q["entry003_reproduction"] and q["clutch_prediction_ledger_parity"], q
+          assert e1r["actual_slipping_contacts"] == 76, e1r
+          assert e3r["actual_slipping_contacts"] == 0 and e3r["retained_path_length"] <= 1e-12, e3r
+          assert effective["count_above_static_limit"] == 0, effective
+          assert raw["count_above_static_limit"] > 0, raw
+          print("ENTRY-004: adaptation-limited activity remains pinned; raw intrinsic counterfactual crosses the frozen clutch boundary")
+          PY
+
+      - name: Verify production selector and canonical D-087 boundary
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build -p phase1-certifier --bin digital-protocell-phase1 --release
+          cargo +1.89.0 run -p phase1-certifier --bin digital-protocell-phase1 --release -- --steps 1 --out "$RUNNER_TEMP/production.json"
+          python3 - "$RUNNER_TEMP/production.json" <<'PY'
+          import json, sys
+          report = json.load(open(sys.argv[1]))
+          assert report["mesh_contract"] == "MaturationCoupledV4" and report["reserve_enabled"] is False, report
+          PY
+          run_d087() {
+            local output="$1" contract="$2" v4="$3"
+            if test "$v4" = 1; then
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            else
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            fi
+          }
+          run_d087 "$RUNNER_TEMP/d087-v2" ConservativeV2 0
+          run_d087 "$RUNNER_TEMP/d087-v3" ConservativeV3 0
+          run_d087 "$RUNNER_TEMP/d087-v4" ConservativeV3 1
+          python3 - "$RUNNER_TEMP" <<'PY'
+          import json, sys
+          from pathlib import Path
+          root = Path(sys.argv[1])
+          for name, expected in [("v2", [True] * 8), ("v3", [True] * 8), ("v4", [True, True, False, True, True, True, True, True])]:
+              report = json.loads((root / f"d087-{name}" / "manifest.json").read_text())
+              observed = [report[f"gate{i}"]["pass"] for i in range(8)]
+              assert observed == expected, (name, observed)
+          print("canonical D-087 boundary preserved")
+          PY
+
+      - name: Validate current governance
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Upload compact ENTRY-004 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-m2-entry004-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2entry004/
+            ${{ runner.temp }}/dcdev021m2entry001/
+            ${{ runner.temp }}/dcdev021m2entry003/
+            ${{ runner.temp }}/dcdev021m2entry004/
+            ${{ runner.temp }}/production.json
+            ${{ runner.temp }}/d087-v2/
+            ${{ runner.temp }}/d087-v3/
+            ${{ runner.temp }}/d087-v4/
+          if-no-files-found: warn

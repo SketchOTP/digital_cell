@@ -1,0 +1,27 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-004-INTRINSIC-TRACTION-TRANSFER-AUDIT-001",
+  "files": [
+    "protocol.json",
+    "entry001_reproduction.json",
+    "entry003_reproduction.json",
+    "clutch_rule_parity.json",
+    "entry001_force_distribution.json",
+    "entry003_effective_force_distribution.json",
+    "entry003_raw_activity_counterfactual.json",
+    "entry003_unit_peak_counterfactual.json",
+    "spatial_profile_comparison.json",
+    "force_cancellation.json",
+    "pinning_chronology.json",
+    "energy_efficiency.json",
+    "no_substrate_interpretation.json",
+    "restart_boundary.json",
+    "preservation.json",
+    "qualification.json"
+  ],
+  "source_hashes": {
+    "contractility": "588b40fe26029232",
+    "intrinsic_exploration": "a15df029ff1e78cd",
+    "plasticity": "55e6d7f398ff8c70",
+    "traction": "ec1ad2b699ca7461"
+  }
+}

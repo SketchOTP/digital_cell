@@ -137,3 +137,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-003 preregistered feasibility assay; exact-head remote CI and Architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY004-001
+
+- Learning ID: L-DCDEV021-ENTRY004-001
+- Date: 2026-08-29
+- Fact or lesson: On the accepted ENTRY-003 uninterrupted trajectory, adaptation-limited effective activity never creates a local free-step required force above the frozen `0.45` stick-slip limit, whereas the raw intrinsic activity would create threshold crossings on the same clone state. The observed zero-slip regime is therefore explained by existing adaptation attenuation rather than a clutch-ledger parity discrepancy.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry004.rs` and `digital-protocell/experiments/generated/dcdev021m2entry004/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-004 observer-only traction-transfer audit; exact-head Linux CI and Architect review pending.
+- Supersedes learning: none
