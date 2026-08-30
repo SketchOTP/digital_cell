@@ -19,6 +19,10 @@ use thiserror::Error;
 
 pub const INTRINSIC_EXPLORATION_REGULATOR_SCHEMA_V1: &str =
     "digital_cell_intrinsic_exploration_regulator_v1";
+/// Explicit opt-in ENTRY-005 composition. The intrinsic state remains the
+/// ENTRY-003 state; only its boundary to the already-qualified motor differs.
+pub const INTRINSIC_EXPLORATION_REFRACTORY_MOTOR_SCHEMA_V1: &str =
+    "digital_cell_intrinsic_exploration_refractory_motor_v1";
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum IntrinsicExplorationDynamicsModeV1 {
@@ -111,6 +115,22 @@ pub struct IntrinsicExplorationStepLedgerV1 {
     pub adaptation_before: Vec<f64>,
     pub adaptation_after: Vec<f64>,
     pub effective_activity: Vec<f64>,
+    pub dominant_patch: usize,
+    pub actuator: ActivatedEnergyStickSlipStepLedgerV1,
+}
+
+/// Ledger for the ENTRY-005 refractory-only motor composition.  `motor_activity`
+/// is deliberately raw `activity_after`; adaptation remains represented by the
+/// same proposal and continues to inhibit the intrinsic excitation dynamics.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct IntrinsicExplorationRefractoryMotorStepLedgerV1 {
+    pub schema: String,
+    pub step_index: u64,
+    pub activity_before: Vec<f64>,
+    pub activity_after: Vec<f64>,
+    pub adaptation_before: Vec<f64>,
+    pub adaptation_after: Vec<f64>,
+    pub motor_activity: Vec<f64>,
     pub dominant_patch: usize,
     pub actuator: ActivatedEnergyStickSlipStepLedgerV1,
 }
@@ -250,6 +270,58 @@ pub fn apply_intrinsic_exploration_with_stick_slip(
     })
 }
 
+/// Advance the unchanged ENTRY-003 intrinsic activity and adaptation state,
+/// then provide raw intrinsic excitation to the opt-in A-funded motor.  The
+/// existing adaptation trace remains active in `propose_intrinsic_exploration_step`;
+/// this function solely avoids applying that trace a second time at the motor
+/// boundary.  State is committed only after the physical stick-slip step is
+/// accepted.
+pub fn apply_intrinsic_exploration_refractory_motor_with_stick_slip(
+    mesh: &mut MaterialMesh,
+    state: &mut IntrinsicExplorationStateV1,
+    mechanics: &MechParams,
+    contractility: &ContractilityParamsV1,
+    traction: &StickSlipTractionParamsV1,
+) -> Result<IntrinsicExplorationRefractoryMotorStepLedgerV1, IntrinsicExplorationError> {
+    state.validate(mesh.n(), mechanics.dt)?;
+    if mesh.n() != state.initial_vertex_count {
+        return Err(IntrinsicExplorationError::TopologyChanged);
+    }
+
+    let activity_before = state.activity.clone();
+    let adaptation_before = state.adaptation.adaptation.clone();
+    let proposal = propose_intrinsic_exploration_step(
+        state,
+        mesh.n(),
+        mechanics.dt,
+        IntrinsicExplorationDynamicsModeV1::FullSelfExcitation,
+    )?;
+    let actuator = apply_local_activated_energy_contractility_with_stick_slip(
+        mesh,
+        &proposal.activity_after,
+        mechanics,
+        contractility,
+        traction,
+    )?;
+
+    let activity_after = proposal.activity_after.clone();
+    let adaptation_after = proposal.adaptation_after.clone();
+    let motor_activity = proposal.activity_after.clone();
+    let dominant_patch = proposal.dominant_patch;
+    commit_intrinsic_exploration_step(state, proposal)?;
+    Ok(IntrinsicExplorationRefractoryMotorStepLedgerV1 {
+        schema: INTRINSIC_EXPLORATION_REFRACTORY_MOTOR_SCHEMA_V1.to_string(),
+        step_index: state.step_index,
+        activity_before,
+        activity_after,
+        adaptation_before,
+        adaptation_after,
+        motor_activity,
+        dominant_patch,
+        actuator,
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -312,5 +384,48 @@ mod tests {
             serde_json::from_slice(&serde_json::to_vec(&state).unwrap()).unwrap();
         assert_eq!(state, restored);
         assert_eq!(restored.seeded_patch_index(), 6);
+    }
+
+    #[test]
+    fn refractory_motor_uses_raw_activity_without_bypassing_adaptation_dynamics() {
+        let body = mesh();
+        let mut state = IntrinsicExplorationStateV1::new(body.n(), Some(3)).unwrap();
+        let first = propose_intrinsic_exploration_step(
+            &state,
+            body.n(),
+            FROZEN_DT,
+            IntrinsicExplorationDynamicsModeV1::FullSelfExcitation,
+        )
+        .unwrap();
+        assert!(first.adaptation_after.iter().any(|value| *value > 0.0));
+        commit_intrinsic_exploration_step(&mut state, first).unwrap();
+        let proposal = propose_intrinsic_exploration_step(
+            &state,
+            body.n(),
+            FROZEN_DT,
+            IntrinsicExplorationDynamicsModeV1::FullSelfExcitation,
+        )
+        .unwrap();
+        assert_ne!(proposal.activity_after, proposal.effective_activity);
+
+        let mut refractory_body = body.clone();
+        let mut refractory_state = state;
+        let ledger = apply_intrinsic_exploration_refractory_motor_with_stick_slip(
+            &mut refractory_body,
+            &mut refractory_state,
+            &MechParams::default(),
+            &ContractilityParamsV1::default(),
+            &StickSlipTractionParamsV1::default(),
+        )
+        .unwrap();
+        assert_eq!(
+            ledger.schema,
+            INTRINSIC_EXPLORATION_REFRACTORY_MOTOR_SCHEMA_V1
+        );
+        assert_eq!(ledger.motor_activity, ledger.activity_after);
+        assert_eq!(
+            refractory_state.adaptation.adaptation,
+            ledger.adaptation_after
+        );
     }
 }

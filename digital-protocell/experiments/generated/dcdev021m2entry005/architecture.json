@@ -1,0 +1,12 @@
+{
+  "adaptation_equations_changed": false,
+  "direct_coordinate_writes": false,
+  "entry003_schema": "digital_cell_intrinsic_exploration_regulator_v1",
+  "historical_motor_activity": "activity_after * (1 - adaptation_before)",
+  "intrinsic_equations_changed": false,
+  "motor_activity": "activity_after",
+  "new_numeric_parameter": false,
+  "opt_in": true,
+  "schema": "digital_cell_intrinsic_exploration_refractory_motor_v1",
+  "target_gradient_planner": "NONE"
+}

@@ -1,0 +1,97 @@
+{
+  "pass": true,
+  "rotated": {
+    "a_spent": 46.58742811845298,
+    "a_to_w_residual": 6.394884621840902e-14,
+    "accepted_steps": 1500,
+    "adaptation_varied": true,
+    "arm": "REFRACTORY_ONLY_MOTOR",
+    "dominant_patch_changes": 12,
+    "dominant_patch_trace": [
+      1,
+      2,
+      23,
+      22,
+      21,
+      20,
+      19,
+      18,
+      17,
+      16,
+      15,
+      14,
+      13
+    ],
+    "final_material_centroid": [
+      -0.008815687578267112,
+      -0.0023621563673208185
+    ],
+    "final_mesh_hash": "50684fa21d33a72b",
+    "final_state_hash": "f8596c794694f7d4",
+    "initial_material_centroid": [
+      7.004734443304563e-16,
+      1.0924050143724973e-15
+    ],
+    "maximum_active_tension": 1.7144697718247224,
+    "maximum_activity": 0.8575416446188753,
+    "maximum_adaptation": 0.712303095377031,
+    "maximum_required_force": 0.4766371923900446,
+    "net_displacement": 0.009126671363717708,
+    "path_length": 0.04095445278706012,
+    "path_minus_net": 0.031827781423342416,
+    "reserve_after": 0.0,
+    "reserve_before": 0.0,
+    "seed": 1,
+    "slipping_contacts": 325,
+    "stuck_contacts": 35675,
+    "vertex_net_displacement": 0.009126671363717566,
+    "w_generated": 46.58742811845292
+  },
+  "unrotated": {
+    "a_spent": 46.58742811845298,
+    "a_to_w_residual": 6.394884621840902e-14,
+    "accepted_steps": 1500,
+    "adaptation_varied": true,
+    "arm": "REFRACTORY_ONLY_MOTOR",
+    "dominant_patch_changes": 12,
+    "dominant_patch_trace": [
+      1,
+      2,
+      23,
+      22,
+      21,
+      20,
+      19,
+      18,
+      17,
+      16,
+      15,
+      14,
+      13
+    ],
+    "final_material_centroid": [
+      0.008815687578267112,
+      0.0023621563673208185
+    ],
+    "final_mesh_hash": "adf6159efd981223",
+    "final_state_hash": "f8596c794694f7d4",
+    "initial_material_centroid": [
+      -7.004734443304563e-16,
+      -1.0924050143724973e-15
+    ],
+    "maximum_active_tension": 1.7144697718247224,
+    "maximum_activity": 0.8575416446188753,
+    "maximum_adaptation": 0.712303095377031,
+    "maximum_required_force": 0.4766371923900446,
+    "net_displacement": 0.009126671363717708,
+    "path_length": 0.04095445278706012,
+    "path_minus_net": 0.031827781423342416,
+    "reserve_after": 0.0,
+    "reserve_before": 0.0,
+    "seed": 1,
+    "slipping_contacts": 325,
+    "stuck_contacts": 35675,
+    "vertex_net_displacement": 0.009126671363717566,
+    "w_generated": 46.58742811845292
+  }
+}

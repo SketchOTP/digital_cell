@@ -31,10 +31,13 @@ pub use contractility::{
 };
 
 pub use intrinsic_exploration::{
+    apply_intrinsic_exploration_refractory_motor_with_stick_slip,
     apply_intrinsic_exploration_with_stick_slip, commit_intrinsic_exploration_step,
     propose_intrinsic_exploration_step, IntrinsicExplorationDynamicsModeV1,
-    IntrinsicExplorationError, IntrinsicExplorationProposalV1, IntrinsicExplorationStateV1,
-    IntrinsicExplorationStepLedgerV1, INTRINSIC_EXPLORATION_REGULATOR_SCHEMA_V1,
+    IntrinsicExplorationError, IntrinsicExplorationProposalV1,
+    IntrinsicExplorationRefractoryMotorStepLedgerV1, IntrinsicExplorationStateV1,
+    IntrinsicExplorationStepLedgerV1, INTRINSIC_EXPLORATION_REFRACTORY_MOTOR_SCHEMA_V1,
+    INTRINSIC_EXPLORATION_REGULATOR_SCHEMA_V1,
 };
 
 pub use coupled_resource::{

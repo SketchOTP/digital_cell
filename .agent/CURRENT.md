@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-29T22:43:00-04:00`
+- Last updated: `2026-08-30T00:31:15-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260829-dcdev021-m2-entry004-intrinsic-traction-transfer-audit`
-- External directive ID: `DC-DEV-021-M2-ENTRY-004-INTRINSIC-TRACTION-TRANSFER-AUDIT-001`
-- Objective: `Use clone-only free-step reconstruction to identify why accepted ENTRY-003 intrinsic dynamics remains pinned by the frozen DC-DEV-011 stick-slip substrate.`
-- Current status: `COMPLETE`
-- Acceptance: `Exact-head Linux audit 33288018734 passed at 0bfda0cc0dd04d7b27e241e45068c124bdd808b7 with M2_INTRINSIC_TRACTION_ADAPTATION_SUPPRESSION_CONFIRMED. Effective activity has zero crossings of the frozen 0.45 clutch limit, while raw intrinsic activity has 11,345 crossings. Architect review remains pending.`
-- Current phase: `M2 ENTRY-003 is Architect accepted as mechanically insufficient; ENTRY-004 is a bounded force-transfer diagnosis only. Retained exploratory movement and autonomous resource acquisition are not established.`
-- Expected or actual touched areas: `new observer-only ENTRY-004 example/registration, compact evidence, scoped workflow, and governance only`
-- Immediate next action: `Awaiting reset and Architect review; do not tune the explorer, actuator, or traction law and do not begin a successor directive.`
+- Local directive ID: `D-20260830-dcdev021-m2-entry005-refractory-motor-decoupling`
+- External directive ID: `DC-DEV-021-M2-ENTRY-005-REFRACTORY-MOTOR-DECOUPLING-FEASIBILITY-001`
+- Objective: `Test one opt-in composition where frozen local adaptation remains refractory inside ENTRY-003 intrinsic dynamics while raw intrinsic activity drives the accepted A-funded motor.`
+- Current status: `VALIDATING`
+- Acceptance: `Local feasibility qualifies M2_REFRACTORY_MOTOR_DECOUPLING_EXPLORATION_QUALIFIED: 325 slips and retained path 0.04095445278706012 versus ENTRY-003 numerical-scale path, with A-to-W residual 6.394884621840902e-14 and R unchanged. Exact-head Linux CI and Architect review remain pending.`
+- Current phase: `M2 intrinsic regulatory dynamics and target-free retained exploration are qualified locally; autonomous resource acquisition remains not established.`
+- Expected or actual touched areas: `new opt-in refractory-only motor composition in intrinsic_exploration, focused tests/example, compact evidence, scoped workflow, and governance only`
+- Immediate next action: `Commit the bounded package, obtain exact-head Linux CI, then return to Architect; do not add resource sensing, chemotaxis, targets, gradients, tuning, or successor work.`
 
 ## Temporary task-relevant facts
 
@@ -37,6 +37,7 @@
 - ENTRY-003 adds only the explicit opt-in `INTRINSIC_EXPLORATION_REGULATOR_SCHEMA_V1`. It uses one seed of exactly `FROZEN_K_STIMULUS * FROZEN_DT`, frozen neighbor/self-excitation/decay dynamics, and existing local adaptation; it reads no resource, world, target, gradient, observer, or viability state.
 - ENTRY-003 is Architect accepted as `M2_INTRINSIC_EXPLORATION_MECHANICALLY_INSUFFICIENT`: it records intrinsic activity switching and exact A-to-W closure with R unchanged, but no retained material-centroid displacement beyond frozen controls.
 - ENTRY-004's uninterrupted clone reconstruction has exact clutch-ledger parity. It identifies adaptation attenuation, not a traction-law mismatch, as the cause of zero intrinsic slip events; no actuation amplification or adaptation change is authorized.
+- ENTRY-005 is opt-in `INTRINSIC_EXPLORATION_REFRACTORY_MOTOR_SCHEMA_V1`: it retains the exact ENTRY-003 adaptation-inhibited excitation/update equations, but sends raw `activity_after` rather than `activity_after * (1 - adaptation)` to the already-qualified A-funded motor. It adds no numerical parameter, sensor, target, gradient, resource input, or reserve funding.
 - Autonomous resource acquisition, chemotaxis, target/gradient logic, reserve enablement, and M2 successor work remain unauthorized.
 
 ## Last validation after adoption
@@ -52,7 +53,7 @@
 
 ## Blockers
 
-- Architect review is required before any successor directive.
+- Exact-head Linux CI and Architect review are required before any successor directive.
 
 ## Pending decisions
 

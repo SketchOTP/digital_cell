@@ -1,0 +1,29 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-005-REFRACTORY-MOTOR-DECOUPLING-FEASIBILITY-001",
+  "files": [
+    "protocol.json",
+    "architecture.json",
+    "entry003_preservation.json",
+    "regulatory_state_parity.json",
+    "adaptation_causality.json",
+    "refractory_only_motor.json",
+    "double_attenuation_control.json",
+    "zero_a_control.json",
+    "no_substrate_control.json",
+    "no_refractory_counterfactual.json",
+    "clutch_engagement.json",
+    "rotation_check.json",
+    "seed_diversity.json",
+    "restart_boundary.json",
+    "material_closure.json",
+    "m1_preservation.json",
+    "downstream_preservation.json",
+    "qualification.json"
+  ],
+  "source_hashes": {
+    "contractility": "588b40fe26029232",
+    "intrinsic_exploration": "908f03ae9f77bfac",
+    "plasticity": "55e6d7f398ff8c70",
+    "traction": "ec1ad2b699ca7461"
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "arms": [
+    {
+      "a_spent": 46.58742811845298,
+      "a_to_w_residual": 6.394884621840902e-14,
+      "accepted_steps": 1500,
+      "adaptation_varied": true,
+      "arm": "REFRACTORY_ONLY_MOTOR",
+      "dominant_patch_changes": 12,
+      "dominant_patch_trace": [
+        1,
+        2,
+        23,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        16,
+        15,
+        14,
+        13
+      ],
+      "final_material_centroid": [
+        0.008815687578267112,
+        0.0023621563673208185
+      ],
+      "final_mesh_hash": "adf6159efd981223",
+      "final_state_hash": "f8596c794694f7d4",
+      "initial_material_centroid": [
+        -7.004734443304563e-16,
+        -1.0924050143724973e-15
+      ],
+      "maximum_active_tension": 1.7144697718247224,
+      "maximum_activity": 0.8575416446188753,
+      "maximum_adaptation": 0.712303095377031,
+      "maximum_required_force": 0.4766371923900446,
+      "net_displacement": 0.009126671363717708,
+      "path_length": 0.04095445278706012,
+      "path_minus_net": 0.031827781423342416,
+      "reserve_after": 0.0,
+      "reserve_before": 0.0,
+      "seed": 1,
+      "slipping_contacts": 325,
+      "stuck_contacts": 35675,
+      "vertex_net_displacement": 0.009126671363717566,
+      "w_generated": 46.58742811845292
+    },
+    {
+      "a_spent": 46.587428118452934,
+      "a_to_w_residual": 6.394884621840902e-14,
+      "accepted_steps": 1500,
+      "adaptation_varied": true,
+      "arm": "REFRACTORY_ONLY_MOTOR",
+      "dominant_patch_changes": 12,
+      "dominant_patch_trace": [
+        2,
+        3,
+        4,
+        23,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        16,
+        15,
+        14
+      ],
+      "final_material_centroid": [
+        0.007903929252971101,
+        0.004563335681857411
+      ],
+      "final_mesh_hash": "00d9a8600882a986",
+      "final_state_hash": "dfdd9573fa49bf01",
+      "initial_material_centroid": [
+        -7.004734443304563e-16,
+        -1.0924050143724973e-15
+      ],
+      "maximum_active_tension": 1.7144697718247224,
+      "maximum_activity": 0.8575416446188753,
+      "maximum_adaptation": 0.712303095377031,
+      "maximum_required_force": 0.47663719239003177,
+      "net_displacement": 0.009126671363717793,
+      "path_length": 0.04095445278706251,
+      "path_minus_net": 0.03182778142334471,
+      "reserve_after": 0.0,
+      "reserve_before": 0.0,
+      "seed": 2,
+      "slipping_contacts": 325,
+      "stuck_contacts": 35675,
+      "vertex_net_displacement": 0.009126671363717628,
+      "w_generated": 46.58742811845287
+    },
+    {
+      "a_spent": 46.58742811845288,
+      "a_to_w_residual": 1.1368683772161603e-13,
+      "accepted_steps": 1500,
+      "adaptation_varied": true,
+      "arm": "REFRACTORY_ONLY_MOTOR",
+      "dominant_patch_changes": 12,
+      "dominant_patch_trace": [
+        3,
+        4,
+        5,
+        6,
+        23,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        16,
+        15
+      ],
+      "final_material_centroid": [
+        0.006453531210945519,
+        0.006453531210944923
+      ],
+      "final_mesh_hash": "153d4812bead3c15",
+      "final_state_hash": "6fb5a1742518c3f0",
+      "initial_material_centroid": [
+        -7.004734443304563e-16,
+        -1.0924050143724973e-15
+      ],
+      "maximum_active_tension": 1.7144697718247224,
+      "maximum_activity": 0.8575416446188753,
+      "maximum_adaptation": 0.712303095377031,
+      "maximum_required_force": 0.4766371923900129,
+      "net_displacement": 0.009126671363718062,
+      "path_length": 0.04095445278706027,
+      "path_minus_net": 0.03182778142334221,
+      "reserve_after": 0.0,
+      "reserve_before": 0.0,
+      "seed": 3,
+      "slipping_contacts": 325,
+      "stuck_contacts": 35675,
+      "vertex_net_displacement": 0.009126671363717883,
+      "w_generated": 46.58742811845284
+    },
+    {
+      "a_spent": 46.587428118452934,
+      "a_to_w_residual": 5.684341886080802e-14,
+      "accepted_steps": 1500,
+      "adaptation_varied": true,
+      "arm": "REFRACTORY_ONLY_MOTOR",
+      "dominant_patch_changes": 12,
+      "dominant_patch_trace": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        23,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        16
+      ],
+      "final_material_centroid": [
+        0.004563335681858173,
+        0.00790392925296962
+      ],
+      "final_mesh_hash": "9f30969f4fa32525",
+      "final_state_hash": "4721dc9f5fbddc9f",
+      "initial_material_centroid": [
+        -7.004734443304563e-16,
+        -1.0924050143724973e-15
+      ],
+      "maximum_active_tension": 1.7144697718247224,
+      "maximum_activity": 0.8575416446188753,
+      "maximum_adaptation": 0.712303095377031,
+      "maximum_required_force": 0.47663719239003177,
+      "net_displacement": 0.009126671363717035,
+      "path_length": 0.04095445278706004,
+      "path_minus_net": 0.031827781423343,
+      "reserve_after": 0.0,
+      "reserve_before": 0.0,
+      "seed": 4,
+      "slipping_contacts": 325,
+      "stuck_contacts": 35675,
+      "vertex_net_displacement": 0.009126671363717453,
+      "w_generated": 46.587428118452955
+    }
+  ],
+  "pass": true
+}

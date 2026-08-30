@@ -1,0 +1,6 @@
+{
+  "maximum_required_force": 0.4766371923900446,
+  "pass": true,
+  "slipping_contacts": 325,
+  "static_limit": 0.45
+}

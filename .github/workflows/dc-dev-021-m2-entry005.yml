@@ -1,0 +1,147 @@
+name: DC-DEV-021 M2 ENTRY-005 refractory-motor decoupling feasibility
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-entry005-refractory-motor-decoupling
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  entry005-refractory-motor-decoupling:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact branch head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify authority and frozen M1 boundary
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git merge-base --is-ancestor d98ba95899047b95206028c92c15b9bf1bb9c4db HEAD
+          git diff --check
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          manifest = json.loads(Path("digital-protocell/experiments/generated/dcdev020postm1baseline001/baseline_manifest.json").read_text())
+          assert manifest["selected_contract"] == "MaturationCoupledV4"
+          assert manifest["reserve_enabled"] is False
+          assert manifest["m1"] == "CLOSED" and manifest["m1_physiology"] == "FROZEN"
+          PY
+          forbidden=$(git diff --name-only d98ba95899047b95206028c92c15b9bf1bb9c4db HEAD -- \
+            digital-protocell/crates/chemistry-core \
+            digital-protocell/crates/phase1-certifier \
+            digital-protocell/crates/regulatory-core/src/contractility.rs \
+            digital-protocell/crates/regulatory-core/src/stick_slip_traction.rs \
+            digital-protocell/crates/regulatory-core/src/plasticity.rs)
+          test -z "$forbidden"
+          echo "M1 remains frozen; ENTRY-001 actuator, traction, and plasticity are unchanged"
+
+      - name: Reproduce ENTRY-001, ENTRY-003, and ENTRY-005
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test -p regulatory-core --lib -- --nocapture
+          cargo +1.89.0 build -p regulatory-core --example dcdev021_m2_entry001
+          cargo +1.89.0 build -p regulatory-core --example dcdev021_m2_entry003
+          cargo +1.89.0 build -p regulatory-core --example dcdev021_m2_entry005
+          cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry001 -- "$RUNNER_TEMP/dcdev021m2entry001"
+          cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry003 -- "$RUNNER_TEMP/dcdev021m2entry003"
+          cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry005 -- "$RUNNER_TEMP/dcdev021m2entry005"
+          python3 - "$RUNNER_TEMP" <<'PY'
+          import json, sys
+          from pathlib import Path
+          root = Path(sys.argv[1])
+          e1 = json.loads((root / "dcdev021m2entry001" / "qualification.json").read_text())
+          e3 = json.loads((root / "dcdev021m2entry003" / "qualification.json").read_text())
+          q = json.loads((root / "dcdev021m2entry005" / "qualification.json").read_text())
+          arm = json.loads((root / "dcdev021m2entry005" / "refractory_only_motor.json").read_text())
+          old = json.loads((root / "dcdev021m2entry005" / "double_attenuation_control.json").read_text())
+          zero = json.loads((root / "dcdev021m2entry005" / "zero_a_control.json").read_text())
+          assert e1["classification"] == "M2_ACTIVATED_ENERGY_CONTRACTILITY_FEASIBILITY_QUALIFIED", e1
+          assert e3["classification"] == "M2_INTRINSIC_EXPLORATION_MECHANICALLY_INSUFFICIENT", e3
+          assert q["classification"] == "M2_REFRACTORY_MOTOR_DECOUPLING_EXPLORATION_QUALIFIED", q
+          assert q["intrinsic_equation_parity"] and q["adaptation_equation_parity"] and q["adaptation_causal"], q
+          assert q["clutch_parity"] and q["exploration"] and q["energetic"] and q["zero_a"] and q["rotation"] and q["seed_diversity"], q
+          assert arm["slipping_contacts"] > 0 and arm["path_length"] > old["path_length"], (arm, old)
+          assert zero["maximum_active_tension"] == 0 and zero["a_spent"] == 0 and zero["path_length"] <= 1e-12, zero
+          print("ENTRY-005 refractory-only motor coupling qualifies retained target-free exploration")
+          PY
+
+      - name: Verify production selector and canonical D-087 boundary
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build -p phase1-certifier --bin digital-protocell-phase1 --release
+          cargo +1.89.0 run -p phase1-certifier --bin digital-protocell-phase1 --release -- --steps 1 --out "$RUNNER_TEMP/production.json"
+          python3 - "$RUNNER_TEMP/production.json" <<'PY'
+          import json, sys
+          report = json.load(open(sys.argv[1]))
+          assert report["mesh_contract"] == "MaturationCoupledV4" and report["reserve_enabled"] is False, report
+          PY
+          run_d087() {
+            local output="$1" contract="$2" v4="$3"
+            if test "$v4" = 1; then
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            else
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            fi
+          }
+          run_d087 "$RUNNER_TEMP/d087-v2" ConservativeV2 0
+          run_d087 "$RUNNER_TEMP/d087-v3" ConservativeV3 0
+          run_d087 "$RUNNER_TEMP/d087-v4" ConservativeV3 1
+          python3 - "$RUNNER_TEMP" <<'PY'
+          import json, sys
+          from pathlib import Path
+          root = Path(sys.argv[1])
+          expected = {"v2": [True] * 8, "v3": [True] * 8, "v4": [True, True, False, True, True, True, True, True]}
+          observed = {}
+          for name, vector in expected.items():
+              report = json.loads((root / f"d087-{name}" / "manifest.json").read_text())
+              observed[name] = [report[f"gate{i}"]["pass"] for i in range(8)]
+              assert observed[name] == vector, observed
+          (root / "canonical_d087.json").write_text(json.dumps({"expected": expected, "observed": observed, "pass": True}, indent=2) + "\n")
+          PY
+
+      - name: Preserve reusable downstream foundations
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/foundations"
+          mkdir -p "$out"
+          for spec in "dcdev002_gate_assay:regulator" "dcdev005_gate_assay:plasticity" "dcdev006_gate_assay:contact" "dcdev007_gate_assay:contact_regulation" "dcdev008_gate_assay:finite_resource" "dcdev011_gate_assay:traction"; do
+            example="${spec%%:*}"; label="${spec##*:}"
+            cargo +1.89.0 run -p regulatory-core --example "$example" -- "$out/$label"
+          done
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test -p evolution-harness -- --nocapture
+
+      - name: Validate current governance
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Upload compact ENTRY-005 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-m2-entry005-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2entry005/
+            ${{ runner.temp }}/dcdev021m2entry001/
+            ${{ runner.temp }}/dcdev021m2entry003/
+            ${{ runner.temp }}/dcdev021m2entry005/
+            ${{ runner.temp }}/canonical_d087.json
+            ${{ runner.temp }}/production.json
+            ${{ runner.temp }}/d087-v2/
+            ${{ runner.temp }}/d087-v3/
+            ${{ runner.temp }}/d087-v4/
+            ${{ runner.temp }}/foundations/
+          if-no-files-found: warn

@@ -318,3 +318,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260829-dcdev021-m2-entry003-intrinsic-exploration-feasibility
 - Status at issuance: ISSUED
+
+## D-20260830-dcdev021-m2-entry005-refractory-motor-decoupling
+
+- Issued: `2026-08-30T00:31:15-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-005-REFRACTORY-MOTOR-DECOUPLING-FEASIBILITY-001`
+- Objective: Test one explicit opt-in composition where existing adaptation remains the refractory state inside frozen ENTRY-003 intrinsic dynamics while raw intrinsic activity drives the accepted A-funded actuator.
+- Scope: Additive versioned intrinsic-exploration composition/export, focused tests, preregistered resource-free feasibility assay, compact evidence, scoped Linux workflow, governance, and Architect/Notion handoff.
+- Exclusions: M1/V4/chemistry/phase1 changes; adaptation or intrinsic-equation changes; motor gain/normalization; traction/mechanics changes; resource/sensor/target/gradient/planner/reward logic; reserve enablement; restart repair; parameter search; PR #44 mutation; and successor execution.
+- Acceptance: `M2_REFRACTORY_MOTOR_DECOUPLING_EXPLORATION_QUALIFIED` only if adaptation remains causally active within unmodified intrinsic dynamics, raw-only motor coupling produces frozen clutch engagement and retained substrate-mediated exploration, A-to-W closes with R unchanged, historical paths/M1/D-087/downstream foundations preserve, and exact-head Linux CI succeeds.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260829-dcdev021-m2-entry004-intrinsic-traction-transfer-audit
+- Status at issuance: ISSUED

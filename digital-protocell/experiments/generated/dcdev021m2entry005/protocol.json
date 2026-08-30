@@ -1,0 +1,15 @@
+{
+  "assay_steps": 1500,
+  "directive": "DC-DEV-021-M2-ENTRY-005-REFRACTORY-MOTOR-DECOUPLING-FEASIBILITY-001",
+  "entry_head": "d98ba95899047b95206028c92c15b9bf1bb9c4db",
+  "frozen_static_traction_limit": 0.45,
+  "resource_patch": false,
+  "seeds": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "settlement_steps": 5000,
+  "topology_size": 24
+}

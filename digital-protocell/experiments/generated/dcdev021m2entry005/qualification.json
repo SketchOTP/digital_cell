@@ -1,0 +1,15 @@
+{
+  "adaptation_causal": true,
+  "adaptation_equation_parity": true,
+  "classification": "M2_REFRACTORY_MOTOR_DECOUPLING_EXPLORATION_QUALIFIED",
+  "clutch_parity": true,
+  "energetic": true,
+  "exploration": true,
+  "intrinsic_equation_parity": true,
+  "m2_autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "m2_retained_intrinsic_exploration": "QUALIFIED",
+  "no_resource_sensor_target_gradient": true,
+  "rotation": true,
+  "seed_diversity": true,
+  "zero_a": true
+}

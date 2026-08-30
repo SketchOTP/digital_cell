@@ -1,0 +1,37 @@
+{
+  "a_spent": 46.58742811845298,
+  "a_to_w_residual": 4.263256414560601e-14,
+  "accepted_steps": 1500,
+  "adaptation_varied": false,
+  "arm": "NO_REFRACTORY_COUNTERFACTUAL",
+  "dominant_patch_changes": 2,
+  "dominant_patch_trace": [
+    1,
+    2,
+    23
+  ],
+  "final_material_centroid": [
+    0.009826411718847915,
+    0.002632979084559729
+  ],
+  "final_mesh_hash": "7a2b10b6f2785b44",
+  "final_state_hash": "50a5a26d5d4423fe",
+  "initial_material_centroid": [
+    -7.004734443304563e-16,
+    -1.0924050143724973e-15
+  ],
+  "maximum_active_tension": 1.7499999999999984,
+  "maximum_activity": 0.8749999999999992,
+  "maximum_adaptation": 0.0,
+  "maximum_required_force": 0.4893672292629504,
+  "net_displacement": 0.010173049991426375,
+  "path_length": 0.1241133656718379,
+  "path_minus_net": 0.11394031568041152,
+  "reserve_after": 0.0,
+  "reserve_before": 0.0,
+  "seed": 1,
+  "slipping_contacts": 1148,
+  "stuck_contacts": 34852,
+  "vertex_net_displacement": 0.010173049991426215,
+  "w_generated": 46.58742811845294
+}
