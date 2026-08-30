@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-29T22:25:00-04:00`
+- Last updated: `2026-08-29T22:43:00-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20260829-dcdev021-m2-entry004-intrinsic-traction-transfer-audit`
 - External directive ID: `DC-DEV-021-M2-ENTRY-004-INTRINSIC-TRACTION-TRANSFER-AUDIT-001`
 - Objective: `Use clone-only free-step reconstruction to identify why accepted ENTRY-003 intrinsic dynamics remains pinned by the frozen DC-DEV-011 stick-slip substrate.`
-- Current status: `VALIDATING`
-- Acceptance: `Local observer-only audit returns M2_INTRINSIC_TRACTION_ADAPTATION_SUPPRESSION_CONFIRMED: effective activity has zero crossings of the frozen 0.45 clutch limit, while raw intrinsic activity has 11,345 crossings. Exact-head Linux CI and Architect review are pending.`
+- Current status: `COMPLETE`
+- Acceptance: `Exact-head Linux audit 33288018734 passed at 0bfda0cc0dd04d7b27e241e45068c124bdd808b7 with M2_INTRINSIC_TRACTION_ADAPTATION_SUPPRESSION_CONFIRMED. Effective activity has zero crossings of the frozen 0.45 clutch limit, while raw intrinsic activity has 11,345 crossings. Architect review remains pending.`
 - Current phase: `M2 ENTRY-003 is Architect accepted as mechanically insufficient; ENTRY-004 is a bounded force-transfer diagnosis only. Retained exploratory movement and autonomous resource acquisition are not established.`
 - Expected or actual touched areas: `new observer-only ENTRY-004 example/registration, compact evidence, scoped workflow, and governance only`
-- Immediate next action: `Complete exact-head validation and return the diagnostic result to Architect; do not tune the explorer, actuator, or traction law and do not begin a successor directive.`
+- Immediate next action: `Awaiting reset and Architect review; do not tune the explorer, actuator, or traction law and do not begin a successor directive.`
 
 ## Temporary task-relevant facts
 
@@ -41,7 +41,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Local ENTRY-004 force-transfer audit plus regulatory-core and canonical D-087 preservation replay`
+- Command or check: `Exact-head ENTRY-004 Linux workflow 33288018734 plus local focused regulatory-core and canonical D-087 preservation replay`
 - Result: `PASSED`
 
 ## Risks
@@ -52,7 +52,7 @@
 
 ## Blockers
 
-- Exact-head Linux CI and Architect review are required before any successor directive.
+- Architect review is required before any successor directive.
 
 ## Pending decisions
 

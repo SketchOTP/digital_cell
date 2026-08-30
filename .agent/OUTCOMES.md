@@ -522,13 +522,13 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
-## D-20260829-dcdev021-m2-entry004-intrinsic-traction-transfer-audit - PARTIAL
+## D-20260829-dcdev021-m2-entry004-intrinsic-traction-transfer-audit - COMPLETE
 
 - Outcome ID: OUT-DCDEV021-ENTRY004-INTRINSIC-TRACTION-TRANSFER-AUDIT
 - Supersedes outcome: none
 - Closed: `2026-08-29T23:00:00-04:00`
-- Acceptance: PARTIAL
-- Summary: Local observer-only audit returns `M2_INTRINSIC_TRACTION_ADAPTATION_SUPPRESSION_CONFIRMED`. ENTRY-003 effective activity never crosses the frozen `0.45` static traction limit, while the raw intrinsic state would cross it 11,345 times on the identical clone trajectory.
+- Acceptance: MET
+- Summary: `M2_INTRINSIC_TRACTION_ADAPTATION_SUPPRESSION_CONFIRMED`. ENTRY-003 effective activity never crosses the frozen `0.45` static traction limit, while the raw intrinsic state would cross it 11,345 times on the identical clone trajectory.
 - Changed areas: observer-only audit example/registration, compact evidence, scoped workflow, and governance only; chemistry-core, phase1-certifier, V4/M1 physiology, intrinsic explorer, contractility, traction, plasticity, reserve behavior, and production selection are unchanged.
 - Validation:
   - Exact ENTRY-003 authority and frozen scientific-source boundary - PASSED locally
@@ -539,8 +539,8 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Intrinsic-state restart - PASSED; generic full-mesh JSON restart remains FAILED but does not affect uninterrupted force reconstruction
   - Regulatory-core focused tests (46) - PASSED
   - Canonical D-087 boundary V2/V3/V4 - PASSED locally (`8/8`, `8/8`, exact V4 `7/8` vector)
-  - Exact-head Linux CI - PENDING
+  - Exact-head Linux CI `33288018734` at `0bfda0cc0dd04d7b27e241e45068c124bdd808b7`; artifact `sha256:923f9028babd3e92fe1127460575468995221415c7971190e85fc3c0a70c859f` - PASSED
   - Architect review - PENDING
 - Remaining risks: the audit does not authorize changes to activity adaptation, amplitude, or the frozen traction mechanism; retained exploration and autonomous acquisition remain unestablished.
-- Blockers: exact-head Linux CI and Architect review; no successor execution is authorized.
+- Blockers: Architect review; no successor execution is authorized.
 - Follow-up directive: none

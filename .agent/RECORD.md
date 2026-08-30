@@ -70,8 +70,8 @@ Use it for architectural decisions, governance changes, releases, qualification 
 
 - Date: 2026-08-29
 - Record or decision ID: DEC-DCDEV021-ENTRY004-INTRINSIC-TRACTION-TRANSFER-001
-- Status: PROPOSED
-- Decision or event: The bounded observer audit identifies `M2_INTRINSIC_TRACTION_ADAPTATION_SUPPRESSION_CONFIRMED` locally.
+- Status: ACTIVE
+- Decision or event: The exact-head bounded observer audit identifies `M2_INTRINSIC_TRACTION_ADAPTATION_SUPPRESSION_CONFIRMED`.
 - Rationale: Exact clone reconstruction matches every frozen stick/slip regime. Actual effective activity has no free-step force above `0.45`, while raw intrinsic activity crosses that unchanged boundary, so no traction-law mismatch or slip-cancellation mechanism is needed to explain ENTRY-003's zero retained displacement.
 - Affected areas: observer audit, compact evidence, workflow, and governance only; no scientific runtime mechanism changed.
 - Supersedes record: none
