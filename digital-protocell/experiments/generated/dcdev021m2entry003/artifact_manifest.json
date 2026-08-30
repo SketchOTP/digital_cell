@@ -1,0 +1,29 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-003-INTRINSIC-EXPLORATION-FEASIBILITY-001",
+  "files": [
+    "protocol.json",
+    "architecture.json",
+    "parameter_reuse.json",
+    "initial_symmetry_breaking.json",
+    "intrinsic_exploration.json",
+    "current_regulator_control.json",
+    "seed_only_control.json",
+    "zero_a_control.json",
+    "no_substrate_control.json",
+    "seed_diversity.json",
+    "rotation_check.json",
+    "restart_check.json",
+    "material_closure.json",
+    "m1_preservation.json",
+    "entry001_preservation.json",
+    "downstream_preservation.json",
+    "qualification.json"
+  ],
+  "source_hashes": {
+    "contractility": "588b40fe26029232",
+    "intrinsic_exploration": "a15df029ff1e78cd",
+    "plasticity": "55e6d7f398ff8c70",
+    "regulator": "6d5b77b1a113de9b",
+    "traction": "ec1ad2b699ca7461"
+  }
+}

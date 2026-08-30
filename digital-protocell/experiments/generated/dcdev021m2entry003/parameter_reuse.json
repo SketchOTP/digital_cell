@@ -1,0 +1,9 @@
+{
+  "adaptation_load": 0.1,
+  "adaptation_recovery": 0.05,
+  "decay": "FROZEN_K_DECAY * a_i",
+  "initial_perturbation": 0.08,
+  "neighbor": "FROZEN_K_NEIGHBOR * (neighbor_mean-a_i)",
+  "new_numeric_parameter": false,
+  "self_excitation": "FROZEN_K_STIMULUS * a_i * (1-a_i) * (1-adaptation_i)"
+}

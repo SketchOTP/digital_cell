@@ -1,0 +1,7 @@
+{
+  "magnitude": 0.08,
+  "material_local": true,
+  "one_time": true,
+  "patch_rule": "provenance_seed modulo topology_size",
+  "recurring_random_motor_command": false
+}

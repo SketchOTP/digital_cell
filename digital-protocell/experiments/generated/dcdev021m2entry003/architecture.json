@@ -1,0 +1,26 @@
+{
+  "coordinate_authority": "existing chemistry-core mechanics only",
+  "direct_coordinate_writes": false,
+  "does_not_read": [
+    "world position",
+    "resource position",
+    "resource concentration",
+    "contact signal",
+    "resource inventory",
+    "viability",
+    "health",
+    "observer state",
+    "target",
+    "gradient"
+  ],
+  "opt_in": true,
+  "reads": [
+    "current local activity",
+    "immediate neighbors",
+    "existing local adaptation",
+    "step index",
+    "provenance seed",
+    "accepted dt"
+  ],
+  "schema": "digital_cell_intrinsic_exploration_regulator_v1"
+}

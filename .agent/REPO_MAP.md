@@ -20,6 +20,8 @@
 - `digital-protocell/examples/dcdev015_metabolic_restoration_assay.rs` — observer-only 5,000-step settlement, 480-step deprivation, and matched metabolic intake-to-restoration audit; it reuses existing uptake and reaction/reserve ledgers without changing biology.
 - `digital-protocell/examples/dcdev016_metabolic_break_even.rs` — observer-only one-shot derived-resource sufficiency challenge; it reproduces DC-DEV-015 baseline arms, tests one derived N/F inventory, and reports supply sufficiency versus stored activation restoration without changing biology.
 - `digital-protocell/examples/dcdev021_m2_entry001.rs` — bounded opt-in A-funded contractility and stick-slip feasibility assay; it does not implement resource acquisition.
+- `digital-protocell/crates/regulatory-core/src/intrinsic_exploration.rs` — opt-in, versioned ENTRY-003 intrinsic local activity state that composes frozen local regulator/plasticity constants with the accepted A-funded actuator; it reads no resource, target, gradient, observer, or viability state.
+- `digital-protocell/examples/dcdev021_m2_entry003.rs` — preregistered resource-free intrinsic-exploration feasibility assay; it records a negative mechanical result without installing production resource-seeking behavior.
 
 ## Interfaces and contracts
 
@@ -46,6 +48,7 @@
 - `digital-protocell/experiments/generated/dcdev020postm1baseline001/` — compact clean-baseline inventory, manifest, and validation evidence.
 - `digital-protocell/experiments/generated/dcdev021m2entry001/` — compact ENTRY-001 feasibility evidence, populated by exact-head Linux validation.
 - `digital-protocell/experiments/generated/dcdev021m2entry002/` — compact observer-only ENTRY-002 temporal-navigation substrate-audit evidence; dense per-step ledgers remain on Atlas.
+- `digital-protocell/experiments/generated/dcdev021m2entry003/` — compact ENTRY-003 intrinsic-exploration feasibility evidence; dense trajectory ledgers remain on Atlas.
 - `digital-protocell/experiments/generated/dcdev001/` — DC-DEV-001A machine-readable decision artifacts.
 - `digital-protocell/experiments/generated/dcdev006/` — DC-DEV-006 local spatial-contact evidence artifacts.
 - `digital-protocell/experiments/generated/dcdev009/` — DC-DEV-009 force, displacement, coupling, and audit evidence artifacts.

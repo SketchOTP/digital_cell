@@ -55,3 +55,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Exact immutable-baseline and M2 replay reproduce the accepted V2/V3/V4 D-087 boundary only under the canonical selector mapping; this corrects evidence harness provenance without changing physics or certification semantics.
 - Affected areas: scoped D-087 qualification workflow and compact evidence only.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY003-INTRINSIC-EXPLORATION-001
+
+- Date: 2026-08-29
+- Record or decision ID: DEC-DCDEV021-ENTRY003-INTRINSIC-EXPLORATION-001
+- Status: PROPOSED
+- Decision or event: The first permitted intrinsic-exploration composition was evaluated as `M2_INTRINSIC_EXPLORATION_MECHANICALLY_INSUFFICIENT` locally.
+- Rationale: Its internal local activity dynamics and A-to-W funding are conservative, but the frozen physical actuator/traction composition does not retain a material-centroid displacement above the preregistered controls. No tuning, sensor, target, gradient, or navigation policy was introduced.
+- Affected areas: additive regulatory-core exploration state, observer feasibility assay, compact evidence, workflow, and governance only.
+- Supersedes record: none

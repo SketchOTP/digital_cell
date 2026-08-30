@@ -500,3 +500,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: any future navigation architecture must be separately authorized; autonomous resource acquisition is not established.
 - Blockers: Architect review; no successor is authorized.
 - Follow-up directive: none
+
+## D-20260829-dcdev021-m2-entry003-intrinsic-exploration-feasibility - PARTIAL
+
+- Outcome ID: OUT-DCDEV021-ENTRY003-INTRINSIC-EXPLORATION-FEASIBILITY
+- Supersedes outcome: none
+- Closed: `2026-08-29T22:15:00-04:00`
+- Acceptance: PARTIAL
+- Summary: `M2_INTRINSIC_EXPLORATION_MECHANICALLY_INSUFFICIENT` locally. The explicit opt-in intrinsic state produces changing asymmetric local activity and spends current A into W with a residual below `1e-8` while preserving R, but its material-centroid path is numerical-scale and does not exceed either frozen motor-off control. The no-substrate full-dynamics control also retains deformation-related centroid drift, so retained substrate-mediated exploration is not established.
+- Changed areas: new `regulatory-core` opt-in exploration module/export, feasibility example/registration, compact evidence, workflow, and governance only; chemistry-core, phase1-certifier, V4/M1 physiology, reserve behavior, existing regulator/plasticity, historical/qualified actuator APIs, and traction law are unchanged.
+- Validation:
+  - Exact ENTRY-002 authority and frozen-source boundary - PASSED locally
+  - Intrinsic activity dynamics and dominant-patch switching - PASSED
+  - A-to-W material closure and R invariance - PASSED
+  - Zero-A passive parity, seed diversity, and rotational equivariance - PASSED
+  - Retained stick-slip displacement over matched controls - FAILED as preregistered negative result
+  - Full mesh restart hash continuity - FAILED; intrinsic-state hash continuity passed, but generic mesh JSON reconstruction differed and was not repaired under this directive
+  - Exact-head Linux CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: the frozen actuator/traction composition does not currently establish a target-free exploration substrate; no tuning or follow-up mechanism is authorized.
+- Blockers: exact-head Linux CI and Architect review.
+- Follow-up directive: none

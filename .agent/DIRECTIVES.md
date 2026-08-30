@@ -290,3 +290,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260829-dcdev021-m2-entry001-r1-d087-preservation-harness-repair
 - Status at issuance: ISSUED
+
+## D-20260829-dcdev021-m2-entry003-intrinsic-exploration-feasibility
+
+- Issued: `2026-08-29T22:15:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-003-INTRINSIC-EXPLORATION-FEASIBILITY-001`
+- Objective: Test one explicit opt-in intrinsic local exploration regulator with the already-qualified A-funded actuator and existing stick-slip traction, without resource, sensor, target, gradient, or navigation inputs.
+- Scope: New additive regulatory-core module/export, fixed preregistered feasibility example, compact evidence, governance, and one scoped Linux workflow from exact ENTRY-002 head `2ed0f6159b0169f1f7bd9c2c10e89a6b67d12167`.
+- Exclusions: chemistry-core, phase1-certifier, frozen M1/V4 equations, reserve behavior, historical regulator/plasticity/contractility/traction APIs, new coefficients, tuning, resource sensing, targets, gradients, planning, chemotaxis, resource acquisition, PR #44 mutation, and successor execution.
+- Acceptance: One preregistered ENTRY-003 classification after exact activity dynamics, A-to-W accounting, frozen controls, M1/ENTRY-001/downstream preservation, compact evidence, and exact-head Linux CI.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260829-dcdev021-m2-entry002-temporal-navigation-substrate-audit
+- Status at issuance: ISSUED

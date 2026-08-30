@@ -1,0 +1,18 @@
+{
+  "active_path_benefit": false,
+  "centroid_agreement": true,
+  "classification": "M2_INTRINSIC_EXPLORATION_MECHANICALLY_INSUFFICIENT",
+  "dynamics_pass": true,
+  "energetic_pass": true,
+  "intrinsic_exploration_feasible": false,
+  "m2_autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "new_numeric_parameter": false,
+  "no_substrate_pass": false,
+  "recurring_random_motor_command": false,
+  "resource_signal_read": false,
+  "restart_pass": false,
+  "rotation_pass": true,
+  "seed_diversity_pass": true,
+  "target_gradient_planner": "NONE",
+  "zero_a_pass": true
+}

@@ -127,3 +127,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-016 observer-only metabolic break-even resource sufficiency challenge.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY003-001
+
+- Learning ID: L-DCDEV021-ENTRY003-001
+- Date: 2026-08-29
+- Fact or lesson: Under one explicit fixed intrinsic local activity dynamic using only the established regulator/plasticity constants, activity changes and A-to-W funding closes exactly, but the accepted A-funded actuator plus frozen stick-slip traction produces no retained material-centroid displacement above matched controls. Intrinsic local dynamics is therefore not by itself a qualified exploratory-movement substrate.
+- Evidence location: `digital-protocell/crates/regulatory-core/src/intrinsic_exploration.rs`, `digital-protocell/examples/dcdev021_m2_entry003.rs`, and `digital-protocell/experiments/generated/dcdev021m2entry003/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-003 preregistered feasibility assay; exact-head remote CI and Architect review pending.
+- Supersedes learning: none

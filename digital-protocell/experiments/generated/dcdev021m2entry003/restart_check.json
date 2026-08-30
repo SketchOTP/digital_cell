@@ -1,0 +1,13 @@
+{
+  "mid_mesh_hash": "ceb4cb3532a4b5ac",
+  "mid_state_hash": "d41c418684f9afd2",
+  "no_new_seed_injected": true,
+  "pass": false,
+  "restored_mid_mesh_hash": "6dd1f8e6aaa7fa94",
+  "restored_mid_state_hash": "d41c418684f9afd2",
+  "resumed_mesh_hash": "9618fa915fb7d5c4",
+  "resumed_state_hash": "f8596c794694f7d4",
+  "serialized_at_step": 750,
+  "uninterrupted_mesh_hash": "14f1129559926794",
+  "uninterrupted_state_hash": "f8596c794694f7d4"
+}

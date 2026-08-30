@@ -1,0 +1,17 @@
+{
+  "assay_steps": 1500,
+  "directive": "DC-DEV-021-M2-ENTRY-003-INTRINSIC-EXPLORATION-FEASIBILITY-001",
+  "dt": 0.02,
+  "entry_head": "2ed0f6159b0169f1f7bd9c2c10e89a6b67d12167",
+  "primary_assay_resource_patch": false,
+  "seed_set": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "settlement_steps": 5000,
+  "t_load": 10.0,
+  "t_recovery": 20.0,
+  "topology_size": 24
+}
