@@ -262,3 +262,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260829-dcdev021-m2-entry001-r1-d087-preservation-harness-repair
+
+- Issued: `2026-08-29T19:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-001-R1-D087-PRESERVATION-HARNESS-REPAIR-001`
+- Objective: Repair the D-087 preservation harness selector defect and finalize the existing ENTRY-001 actuator evidence without changing scientific behavior.
+- Scope: Scoped workflow selector mapping, canonical immutable-baseline and M2-head D-087 replay, compact evidence, skipped downstream preservation, governance, and exact-head Linux CI.
+- Exclusions: chemistry-core, phase1-certifier, V4/M1 science, actuator law/cost/fixture changes, reserve enablement, sensing, chemotaxis, resource acquisition, baseline mutation, and PR #44 mutation.
+- Acceptance: `M2_ACTIVATED_ENERGY_CONTRACTILITY_FEASIBILITY_QUALIFIED` only if canonical baseline and M2 D-087 results are exactly V2 8/8, V3 8/8, and V4 `[true,true,false,true,true,true,true,true]`, actuator evidence is preserved, downstream foundations pass, and exact-head Linux CI succeeds.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: `D-20260829-dcdev021-m2-entry001-activated-energy-contractility`
+- Status at issuance: `ISSUED`

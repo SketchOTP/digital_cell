@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260829-dcdev021-m2-entry001-activated-energy-contractility`
-- External directive ID: `DC-DEV-021-M2-ENTRY-001-ACTIVATED-ENERGY-CONTRACTILITY-FEASIBILITY-001`
-- Objective: `Qualify one explicit V4 A-funded contractility path through the existing local activity and stick-slip traction APIs without changing production selection.`
+- Local directive ID: `D-20260829-dcdev021-m2-entry001-r1-d087-preservation-harness-repair`
+- External directive ID: `DC-DEV-021-M2-ENTRY-001-R1-D087-PRESERVATION-HARNESS-REPAIR-001`
+- Objective: `Repair only the D-087 selector harness, replay the canonical V2/V3/V4 boundary on baseline and M2 heads, and finalize existing ENTRY-001 evidence.`
 - Current status: `IN_PROGRESS`
 - Acceptance: `M1 is Architect-closed and frozen; M2 ENTRY-001 actuator feasibility is active and Architect acceptance remains pending.`
-- Current phase: `M2 ENTRY-001 activated-energy contractility feasibility; autonomous resource acquisition is not established.`
-- Expected or actual touched areas: `regulatory-core additive actuator APIs, focused assay/evidence, scoped Linux CI, current governance`
-- Immediate next action: `Run and verify the exact-head ENTRY-001 assay; do not begin resource-contact sensing or acquisition.`
+- Current phase: `M2 ENTRY-001-R1 preservation-harness repair; autonomous resource acquisition is not established.`
+- Expected or actual touched areas: `scoped workflow, compact evidence, and current governance only`
+- Immediate next action: `Obtain exact-head Linux canonical D-087 parity and complete skipped downstream preservation; do not change scientific source or begin resource-contact sensing/acquisition.`
 
 ## Temporary task-relevant facts
 
@@ -32,13 +32,14 @@
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
 - M2 ENTRY-001 starts from `baseline/m1-v4-closed` at `d76481c785e9eec361df3fa0cd03c512b521639c`.
 - The opt-in `ACTIVATED_ENERGY_CONTRACTILITY_SCHEMA_V1` path is V4-only, reuses frozen DC-DEV-004 constants, spends absolute A into W after accepted mechanics, and leaves R-funded APIs unchanged.
+- The baseline CI `33271509819` and ENTRY-001 CI `33278000813` D-087 sub-runs are invalid preservation-harness evidence: both passed `MaturationCoupledV4` to the chemistry selector, which accepts only HistoricalV1, ConservativeV2, or ConservativeV3 and otherwise resolves to HistoricalV1. Canonical V4 selection is `DCDEV020R9R3_CONTRACT=ConservativeV3`, `DCDEV020R9R3_RESERVE=0`, and `DCDEV020M1REPLAN002R1_V4=1`.
 - Autonomous resource acquisition, chemotaxis, target/gradient logic, reserve enablement, and M2 successor work remain unauthorized.
 
 ## Last validation after adoption
 
 - Command or check: `Exact-head Linux post-M1 clean baseline workflow 33271104939 at 5e28762d0757bfa23b91820115b5893d0ef6d82a`
 - Result: `PENDING`
-- Current command: `M2 ENTRY-001 exact-head Linux workflow; no run yet`
+- Current command: `M2 ENTRY-001-R1 exact-head Linux canonical D-087 and downstream-preservation workflow`
 
 ## Risks
 
@@ -48,7 +49,7 @@
 
 ## Blockers
 
-- Architect acceptance of the finalized baseline remains open; no M2 implementation or M1 reopening is authorized.
+- No scientific blocker is known. Exact canonical D-087 replay and downstream preservation remain required before ENTRY-001 qualification can be finalized.
 
 ## Pending decisions
 
