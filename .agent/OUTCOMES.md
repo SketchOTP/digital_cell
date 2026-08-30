@@ -456,3 +456,25 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: exact-head remote validation and independent architect interpretation of the conversion/storage bottleneck classification.
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
+
+## D-20260829-dcdev021-m2-entry001-r1-d087-preservation-harness-repair - QUALIFIED
+
+- Outcome ID: `OUT-DCDEV021-ENTRY001-R1-D087-PRESERVATION-HARNESS-REPAIR`
+- Supersedes outcome: `M2_ACTIVATED_ENERGY_CONTRACTILITY_FEASIBILITY_INVALID` as a qualification-integrity stop only; it does not supersede the preserved failed CI record.
+- Closed: `2026-08-29T20:18:00-04:00`
+- Acceptance: `M2_ACTIVATED_ENERGY_CONTRACTILITY_FEASIBILITY_QUALIFIED`
+- Summary: The D-087 preservation harness incorrectly used `MaturationCoupledV4` as the R9-R3 chemistry selector. The repaired canonical mapping uses ConservativeV3 chemistry plus the independent V4 flag. Immutable baseline and M2 selector-repair replay both returned V2 `8/8`, V3 `8/8`, and V4 `[true,true,false,true,true,true,true,true]`. The existing A-funded actuator assay remained qualified and all required downstream preservation checks passed.
+- Changed areas: scoped workflow, compact evidence, governance, and documentation only; chemistry-core, phase1-certifier, V4/M1 physiology, reserve behavior, actuator law, and traction law were unchanged by R1.
+- Validation:
+  - Exact source/base authority and frozen scientific-source diff - PASSED
+  - Canonical D-087 baseline/M2 parity - PASSED
+  - A-to-W closure and R invariance - PASSED
+  - Zero-A and zero-activity passive parity - PASSED
+  - R-funded oracle parity and rotational equivariance - PASSED
+  - Stick-slip retained displacement over matched controls - PASSED
+  - Regulator, plasticity, contact, contact regulation, finite resource, historical traction, D-088, D-091, and evolution preservation - PASSED
+  - Exact-head Linux CI run `33282801415` - PASSED at `39901a01ce17f42826351278a4321e65b1a99780`; artifact `sha256:74a537d379b5ebd9d50c72daa1e09fd604ff3e1c8c4b11c2f61138d01e22d72f`
+  - Architect review - PENDING
+- Remaining risks: autonomous resource acquisition has not been tested or established.
+- Blockers: Architect acceptance; no successor M2 directive is authorized.
+- Follow-up directive: none

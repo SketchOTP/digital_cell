@@ -45,3 +45,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Contractile force-vector sum max norm was `6.804363002006077e-16`; contractility-only centroid displacement was `2.473548217003853e-18`; observed active-minus-control drift was attributed to the changed baseline mechanics force field after deformation.
 - Affected areas: DC-DEV-009 audit evidence and developmental/sensorimotor architecture selection; no production locomotion mechanism.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY001-R1-D087-SELECTOR-001
+
+- Date: 2026-08-29
+- Record or decision ID: `DEC-DCDEV021-ENTRY001-R1-D087-SELECTOR-001`
+- Status: ACTIVE
+- Decision or event: The canonical V4 D-087 qualification selector is ConservativeV3 chemistry with reserve OFF plus the independent V4 lifecycle flag. Passing `MaturationCoupledV4` to `DCDEV020R9R3_CONTRACT` is invalid preservation-harness usage because that selector falls back to HistoricalV1 for unknown values.
+- Rationale: Exact immutable-baseline and M2 replay reproduce the accepted V2/V3/V4 D-087 boundary only under the canonical selector mapping; this corrects evidence harness provenance without changing physics or certification semantics.
+- Affected areas: scoped D-087 qualification workflow and compact evidence only.
+- Supersedes record: none

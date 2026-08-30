@@ -10,11 +10,11 @@
 - Local directive ID: `D-20260829-dcdev021-m2-entry001-r1-d087-preservation-harness-repair`
 - External directive ID: `DC-DEV-021-M2-ENTRY-001-R1-D087-PRESERVATION-HARNESS-REPAIR-001`
 - Objective: `Repair only the D-087 selector harness, replay the canonical V2/V3/V4 boundary on baseline and M2 heads, and finalize existing ENTRY-001 evidence.`
-- Current status: `VALIDATING`
-- Acceptance: `M1 is Architect-closed and frozen. Canonical baseline/M2 D-087 parity, actuator qualification, and downstream preservation passed at selector-repair head 83ad0a4; final compact-evidence commit and exact-head CI remain pending.`
+- Current status: `COMPLETE`
+- Acceptance: `M1 remains Architect-closed and frozen. ENTRY-001-R1 exact-head Linux validation passed at 39901a0 with canonical baseline/M2 D-087 parity, actuator qualification, and all required downstream preservation.`
 - Current phase: `M2 ENTRY-001-R1 preservation-harness repair; autonomous resource acquisition is not established.`
 - Expected or actual touched areas: `scoped workflow, compact evidence, and current governance only`
-- Immediate next action: `Validate the compact-evidence finalization commit on exact-head Linux; do not change scientific source or begin resource-contact sensing/acquisition.`
+- Immediate next action: `Await Architect acceptance; do not begin resource-contact sensing/acquisition or successor M2 work.`
 
 ## Temporary task-relevant facts
 
@@ -39,7 +39,7 @@
 
 - Command or check: `Exact-head Linux post-M1 clean baseline workflow 33271104939 at 5e28762d0757bfa23b91820115b5893d0ef6d82a`
 - Result: `PENDING`
-- Current command: `M2 ENTRY-001-R1 exact-head Linux canonical D-087 and downstream-preservation workflow`
+- Current command: `Exact-head Linux ENTRY-001-R1 workflow 33282801415 — SUCCESS at 39901a01ce17f42826351278a4321e65b1a99780; artifact sha256:74a537d379b5ebd9d50c72daa1e09fd604ff3e1c8c4b11c2f61138d01e22d72f`
 
 ## Risks
 
@@ -49,7 +49,7 @@
 
 ## Blockers
 
-- No scientific blocker is known. Exact canonical D-087 replay and downstream preservation remain required before ENTRY-001 qualification can be finalized.
+- No scientific blocker is known. ENTRY-001 actuator qualification is complete pending Architect acceptance; autonomous resource acquisition remains unestablished.
 
 ## Pending decisions
 
