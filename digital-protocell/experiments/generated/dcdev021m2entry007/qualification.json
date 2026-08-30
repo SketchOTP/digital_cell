@@ -1,0 +1,7 @@
+{
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "classification": "M2_ENTRY007_UPTAKE_DEGRADATION_AUDIT_COMPLETE",
+  "conservation_pass": true,
+  "entry006_result_replayed": true,
+  "next_execution_started": false
+}

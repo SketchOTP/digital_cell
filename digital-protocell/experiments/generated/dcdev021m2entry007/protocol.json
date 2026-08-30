@@ -1,0 +1,19 @@
+{
+  "arms": [
+    "UNGUIDED_EXPLORER",
+    "ENTRY003_PINNED_CONTROL",
+    "MOTOR_OFF_CONTROL"
+  ],
+  "causal_step_order": [
+    "observer_only_uptake_diagnostic",
+    "advance_existing_arm",
+    "existing_dcdev008_uptake",
+    "record_ledger"
+  ],
+  "directive": "DC-DEV-021-M2-ENTRY-007-UPTAKE-DEGRADATION-MECHANISM-AUDIT-001",
+  "geometry_screening": false,
+  "historical_fixture": "DC-DEV-013 exact / DC-DEV-021 ENTRY-006 arms",
+  "observer_only": true,
+  "parameter_screening": false,
+  "starting_head": "6bfc4839b68e328bab7d89f896dd575fabb5baa7"
+}

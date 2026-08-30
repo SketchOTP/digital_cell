@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-30T01:30:00-04:00`
+- Last updated: `2026-08-30T09:43:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260830-dcdev021-m2-entry006-unguided-resource-acquisition`
-- External directive ID: `DC-DEV-021-M2-ENTRY-006-UNGUIDED-RESOURCE-ACQUISITION-FEASIBILITY-001`
-- Objective: `Determine whether the accepted ENTRY-005 target-free exploratory process improves finite N/F acquisition through the existing DC-DEV-008 boundary while all resource signals remain observer-only.`
-- Current status: `COMPLETE`
-- Acceptance: `ENTRY-006 exact-head Linux CI 33314318443 passed at c8df61f6fdf4a0dafe7d3b859ed57c845a535136. The frozen-fixture result is M2_UNGUIDED_RESOURCE_ACQUISITION_NOT_ESTABLISHED; no resource signal entered organism behavior.`
+- Local directive ID: `D-20260830-dcdev021-m2-entry007-uptake-degradation-mechanism-audit`
+- External directive ID: `DC-DEV-021-M2-ENTRY-007-UPTAKE-DEGRADATION-MECHANISM-AUDIT-001`
+- Objective: `Decompose unchanged DC-DEV-008 per-step/per-edge uptake across the accepted ENTRY-006 unguided, ENTRY-003, and motor-off arms without adding sensing or changing any production law.`
+- Current status: `VALIDATING`
+- Acceptance: `Local Entry-007 replay passed diagnostic-to-production parity assertions and conservation checks. Exact-head Linux CI and Architect review remain pending.`
 - Current phase: `M2 target-free locomotion is qualified; unguided autonomous acquisition remains unestablished under the exact frozen DC-DEV-013 ecology.`
-- Expected or actual touched areas: `one ENTRY-006 assay/registration, compact evidence, scoped workflow, and governance only`
-- Immediate next action: `Awaiting reset and Architect review; do not add sensing, temporal memory, chemotaxis, targets, gradients, tuning, or successor work.`
+- Expected or actual touched areas: `read-only DC-DEV-008 diagnostic projection, one Entry-007 observer assay, compact evidence, and governance only`
+- Immediate next action: `Run exact-head Linux validation and request Architect review; do not add sensing, temporal memory, chemotaxis, targets, gradients, tuning, or successor work.`
 
 ## Temporary task-relevant facts
 
@@ -53,12 +53,12 @@
 
 ## Blockers
 
-- Architect review is required before any successor directive.
+- Exact-head Linux validation and Architect review are required before any successor directive.
 
 ## Pending decisions
 
 - The V4 equations, D-087 boundary, conservation contracts, accepted M1 qualification, and ENTRY-001 actuator are frozen.
-- M2 autonomous resource acquisition remains unestablished; no parameter search, reserve, recycling, salvage, sensor, target, gradient, resource seeking, or successor execution is authorized pending Architect review.
+- M2 autonomous resource acquisition remains unestablished; no parameter search, reserve, recycling, salvage, sensor, target, gradient, resource seeking, or successor execution is authorized pending Entry-007 review.
 
 ## Status vocabulary
 

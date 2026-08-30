@@ -1,0 +1,13 @@
+{
+  "classification": "OBSERVER_ONLY",
+  "diagnostic_calls_used_by_organism": 0,
+  "diagnostic_does_not_change": [
+    "uptake_law",
+    "intrinsic_exploration",
+    "motor",
+    "traction",
+    "geometry"
+  ],
+  "diagnostic_supplied_to": [],
+  "resource_signal_calls_used_by_organism": 0
+}

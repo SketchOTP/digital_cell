@@ -1,0 +1,40 @@
+{
+  "arms": [
+    {
+      "arm": "UNGUIDED_EXPLORER",
+      "diagnostics_hash": "0a29af704f11fca6",
+      "f_delivered": 0.1474334734486514,
+      "final_exposed_intact_edges": 2,
+      "n_delivered": 0.1474334734486514,
+      "time_integrated_exposed_segment_length": 24.93813741755074
+    },
+    {
+      "arm": "ENTRY003_PINNED_CONTROL",
+      "diagnostics_hash": "72bb7e8ed51d9d38",
+      "f_delivered": 0.17752206763759965,
+      "final_exposed_intact_edges": 2,
+      "n_delivered": 0.17752206763759965,
+      "time_integrated_exposed_segment_length": 25.029903510491685
+    },
+    {
+      "arm": "MOTOR_OFF_CONTROL",
+      "diagnostics_hash": "b1b0ba60df8bab77",
+      "f_delivered": 0.17752206763760053,
+      "final_exposed_intact_edges": 2,
+      "n_delivered": 0.17752206763760053,
+      "time_integrated_exposed_segment_length": 25.029903510491685
+    }
+  ],
+  "conservation_pass": true,
+  "fields": [
+    "exposed_segment_length",
+    "occupancy",
+    "permeability",
+    "concentration_driving_force",
+    "requested_flux",
+    "delivered_flux",
+    "area",
+    "segment_area_fraction"
+  ],
+  "schema": "dcdev021_entry007_uptake_decomposition_summary_v1"
+}

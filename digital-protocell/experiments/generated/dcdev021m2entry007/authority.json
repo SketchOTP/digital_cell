@@ -1,0 +1,8 @@
+{
+  "entry006_head": "6bfc4839b68e328bab7d89f896dd575fabb5baa7",
+  "m1": "CLOSED/FROZEN",
+  "organism_receives_diagnostic": false,
+  "production_contract": "MaturationCoupledV4",
+  "reserve": false,
+  "uptake_law_changed": false
+}

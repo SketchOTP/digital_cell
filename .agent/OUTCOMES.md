@@ -609,3 +609,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: unguided exploration alone does not establish autonomous resource acquisition in the frozen ecology; no sensory-bias mechanism is authorized by this evidence.
 - Blockers: Architect review; no successor directive is authorized.
 - Follow-up directive: none
+
+## D-20260830-dcdev021-m2-entry007-uptake-degradation-mechanism-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY007-UPTAKE-DEGRADATION-MECHANISM-AUDIT`
+- Supersedes outcome: none
+- Closed: `2026-08-30T09:43:00-04:00`
+- Acceptance: PARTIAL
+- Summary: The local observer-only Entry-007 replay completed as `M2_ENTRY007_UPTAKE_DEGRADATION_AUDIT_COMPLETE`. The diagnostic projection matches the unchanged DC-DEV-008 production ledger per step and exposed edge across the unguided ENTRY-006, ENTRY-003 pinned, and motor-off arms; autonomous resource acquisition remains `NOT_ESTABLISHED`.
+- Changed areas: read-only `FiniteSpatialResourceRegionV1::uptake_diagnostic`, its focused parity test, the Entry-007 assay/registration, compact evidence, and governance only.
+- Validation:
+  - Diagnostic projection does not mutate mesh or region - PASSED
+  - Per-step diagnostic totals equal production uptake ledger - PASSED
+  - Finite N/F world-loss conservation across all three arms - PASSED
+  - Fixed 5,000-step settlement and 480-step arm replay - PASSED
+  - Compact per-step/per-edge decomposition evidence - PASSED
+  - Exact-head Linux CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: this is a mechanism decomposition only; it does not establish a sensory-bias mechanism or autonomous resource acquisition.
+- Blockers: exact-head Linux CI and Architect review.
+- Follow-up directive: none

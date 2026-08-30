@@ -105,3 +105,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Exploration remains energetic, conservative, substrate-mediated, and rotationally equivalent, but it obtains `0.2948669468973028` cumulative N/F versus approximately `0.3550441352752` for both frozen controls and does not change physical exposure. The negative result does not authorize sensing, chemotaxis, tuning, or any successor implementation.
 - Affected areas: ENTRY-006 observer-only evidence and governance; no production behavior or frozen scientific source.
 - Supersedes record: DEC-DCDEV021-ENTRY006-UNGUIDED-ACQUISITION-001
+
+## DEC-DCDEV021-ENTRY007-UPTAKE-DEGRADATION-AUDIT-001
+
+- Date: 2026-08-30
+- Record or decision ID: DEC-DCDEV021-ENTRY007-UPTAKE-DEGRADATION-AUDIT-001
+- Status: PROPOSED
+- Decision or event: The authorized observer-only Entry-007 replay completed locally as `M2_ENTRY007_UPTAKE_DEGRADATION_AUDIT_COMPLETE`; autonomous resource acquisition remains `NOT_ESTABLISHED`.
+- Rationale: A read-only diagnostic projection of unchanged DC-DEV-008 uptake matches the production ledger per step for unguided ENTRY-006, ENTRY-003 pinned, and motor-off arms. Conservation passes; all three arms retain two final exposed intact edges, while time-integrated exposed segment length is `24.93813741755074` for unguided versus `25.029903510491685` for both controls. No diagnostic or resource signal enters organism behavior.
+- Affected areas: observer-only spatial-resource diagnostic, Entry-007 assay, compact evidence, and governance; no production behavior or uptake law.
+- Supersedes record: DEC-DCDEV021-ENTRY006-UNGUIDED-ACQUISITION-RESULT-001

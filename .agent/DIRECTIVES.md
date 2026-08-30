@@ -346,3 +346,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260830-dcdev021-m2-entry005-refractory-motor-decoupling
 - Status at issuance: ISSUED
+
+## D-20260830-dcdev021-m2-entry007-uptake-degradation-mechanism-audit
+
+- Issued: `2026-08-30T09:43:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-007-UPTAKE-DEGRADATION-MECHANISM-AUDIT-001`
+- Objective: Decompose unchanged DC-DEV-008 uptake per step and exposed edge across the unguided ENTRY-006, ENTRY-003 pinned, and motor-off arms.
+- Scope: Read-only diagnostic projection of exposed segment length, occupancy, N/F permeability, concentration driving force, requested/delivered flux, and geometry/area terms; exact frozen ENTRY-006 replay; compact evidence; governance; and scoped validation.
+- Exclusions: sensing, motor gating, memory, chemotaxis, explorer/actuator/traction changes, uptake-law changes, parameter or geometry screening, M1 work, restart repair, PR #44 modification, and successor execution.
+- Acceptance: Diagnostic totals equal the unchanged production uptake ledger, conservation remains valid, the three arms are replayed under the fixed fixture, compact evidence is produced, exact-head Linux CI passes, and Architect review is obtained.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260830-dcdev021-m2-entry006-unguided-resource-acquisition
+- Status at issuance: ISSUED

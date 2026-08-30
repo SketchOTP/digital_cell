@@ -1,0 +1,19 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-007-UPTAKE-DEGRADATION-MECHANISM-AUDIT-001",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "unguided_explorer.json",
+    "entry003_control.json",
+    "motor_off_control.json",
+    "decomposition_summary.json",
+    "observer_boundary.json",
+    "qualification.json"
+  ],
+  "source_hashes": {
+    "contractility": "588b40fe26029232",
+    "intrinsic_exploration": "908f03ae9f77bfac",
+    "spatial_resource": "6e272703e8118aae",
+    "traction": "ec1ad2b699ca7461"
+  }
+}
