@@ -478,3 +478,25 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: autonomous resource acquisition has not been tested or established.
 - Blockers: Architect acceptance; no successor M2 directive is authorized.
 - Follow-up directive: none
+
+## D-20260829-dcdev021-m2-entry002-temporal-navigation-substrate-audit - COMPLETE
+
+- Outcome ID: OUT-DCDEV021-ENTRY002-TEMPORAL-NAVIGATION-SUBSTRATE-AUDIT
+- Supersedes outcome: none
+- Closed: `2026-08-29T21:13:39-04:00`
+- Acceptance: MET
+- Summary: `M2_TEMPORAL_NAVIGATION_EXPLORATION_SUBSTRATE_INSUFFICIENT`. The frozen zero-resource regulator state produces no local activity, A spending, funded tension, centroid path length, or reorientation. A direct A-funded substitution preserves the DC-DEV-013 instantaneous-contact negative, so no existing target-free temporal-navigation substrate is ready for implementation.
+- Changed areas: observer-only audit example/registration, compact evidence, scoped workflow, and governance; no chemistry-core, phase1-certifier, V4/M1 physiology, regulator, plasticity, contact/resource boundary, contractility law, traction law, production selector, or reserve behavior changed.
+- Validation:
+  - Exact ENTRY-001 authority and frozen-source boundary - PASSED
+  - Historical DC-DEV-013 causal reconstruction - PASSED
+  - Direct A-funded instantaneous-contact replay - PASSED as negative-route evidence
+  - Resource-independent exploration audit - PASSED as insufficiency evidence
+  - Accepted ENTRY-001 actuator preservation - PASSED
+  - Canonical D-087 boundary V2/V3/V4 - PASSED
+  - Regulator/plasticity/contact/resource/traction/D-088/D-091/evolution preservation - PASSED
+  - Exact-head Linux CI 33285014072 at b754d48d23264d14559a614853bdc60a38973dd3; artifact sha256:632df5c707c982434f2571d704b356971eccdca838ccbc52a760dc368c6599bc - PASSED
+  - Architect review - NOT RUN
+- Remaining risks: any future navigation architecture must be separately authorized; autonomous resource acquisition is not established.
+- Blockers: Architect review; no successor is authorized.
+- Follow-up directive: none

@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-29T21:06:33-04:00`
+- Last updated: `2026-08-29T21:13:39-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20260829-dcdev021-m2-entry002-temporal-navigation-substrate-audit`
 - External directive ID: `DC-DEV-021-M2-ENTRY-002-TEMPORAL-NAVIGATION-SUBSTRATE-AUDIT-001`
 - Objective: `Observe whether the accepted M2 stack already contains endogenous exploration, causally available resource history, and a nondirectional persistence/reorientation control; do not implement navigation.`
-- Current status: `VALIDATING`
-- Acceptance: `One evidence-backed architecture classification with no production behavior or frozen scientific-source change, then exact-head Linux audit validation.`
-- Current phase: `M2 ENTRY-002 temporal-navigation substrate audit; autonomous resource acquisition is not established.`
+- Current status: `COMPLETE`
+- Acceptance: `M2_TEMPORAL_NAVIGATION_EXPLORATION_SUBSTRATE_INSUFFICIENT: exact-head Linux CI 33285014072 passed at b754d48 with frozen M1/ENTRY-001 and downstream preservation.`
+- Current phase: `M2 ENTRY-002 temporal-navigation substrate audit completed; autonomous resource acquisition is not established.`
 - Expected or actual touched areas: `observer-only audit example, example registration, scoped workflow, compact evidence, and governance only`
-- Immediate next action: `Complete exact-head audit validation; do not implement chemotaxis, memory, sensing, or resource seeking.`
+- Immediate next action: `Awaiting reset and Architect review; do not implement chemotaxis, memory, sensing, resource seeking, or a successor M2 directive.`
 
 ## Temporary task-relevant facts
 
@@ -33,12 +33,12 @@
 - M2 ENTRY-001 starts from `baseline/m1-v4-closed` at `d76481c785e9eec361df3fa0cd03c512b521639c`; ENTRY-002 starts at accepted ENTRY-001 head `54f3af09804a9accd845dfcae2dfce13d1918b7c`.
 - The opt-in `ACTIVATED_ENERGY_CONTRACTILITY_SCHEMA_V1` path is V4-only, reuses frozen DC-DEV-004 constants, spends absolute A into W after accepted mechanics, and leaves R-funded APIs unchanged.
 - The baseline CI `33271509819` and ENTRY-001 CI `33278000813` D-087 sub-runs are invalid preservation-harness evidence: both passed `MaturationCoupledV4` to the chemistry selector, which accepts only HistoricalV1, ConservativeV2, or ConservativeV3 and otherwise resolves to HistoricalV1. Canonical V4 selection is `DCDEV020R9R3_CONTRACT=ConservativeV3`, `DCDEV020R9R3_RESERVE=0`, and `DCDEV020M1REPLAN002R1_V4=1`.
-- ENTRY-002’s local observer replay classifies the direct A-funded instantaneous-contact route as still negative and resource-independent exploration as not established. This is audit evidence only, pending exact-head validation.
+- ENTRY-002 exact-head evidence classifies the direct A-funded instantaneous-contact route as still negative and resource-independent exploration as not established. This is an audit result only; it does not authorize a memory, sensor, or navigation implementation.
 - Autonomous resource acquisition, chemotaxis, target/gradient logic, reserve enablement, and M2 successor work remain unauthorized.
 
 ## Last validation after adoption
 
-- Command or check: `cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry002 -- experiments/generated/dcdev021m2entry002`
+- Command or check: `Exact-head Linux workflow 33285014072 at b754d48d23264d14559a614853bdc60a38973dd3`
 - Result: `PASSED`
 
 ## Risks
@@ -49,12 +49,12 @@
 
 ## Blockers
 
-- The audit must not convert the absence of exploration into an implementation authorization. Architect review is required after exact-head evidence.
+- The audit must not convert the absence of exploration into an implementation authorization. Architect review is required before any successor directive.
 
 ## Pending decisions
 
 - The V4 equations, D-087 boundary, conservation contracts, accepted M1 qualification, and ENTRY-001 actuator are frozen.
-- M2 autonomous spatial resource acquisition remains pending; no parameter search, reserve, recycling, salvage, memory, sensor, target, gradient, or scientific behavior change is authorized.
+- M2 autonomous spatial resource acquisition remains pending; no parameter search, reserve, recycling, salvage, memory, sensor, target, gradient, or scientific behavior change is authorized pending Architect review.
 
 ## Status vocabulary
 
