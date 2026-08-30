@@ -75,3 +75,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Exact clone reconstruction matches every frozen stick/slip regime. Actual effective activity has no free-step force above `0.45`, while raw intrinsic activity crosses that unchanged boundary, so no traction-law mismatch or slip-cancellation mechanism is needed to explain ENTRY-003's zero retained displacement.
 - Affected areas: observer audit, compact evidence, workflow, and governance only; no scientific runtime mechanism changed.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY005-REFRACTORY-MOTOR-COUPLING-001
+
+- Date: 2026-08-30
+- Record or decision ID: DEC-DCDEV021-ENTRY005-REFRACTORY-MOTOR-COUPLING-001
+- Status: PROPOSED
+- Decision or event: The opt-in `INTRINSIC_EXPLORATION_REFRACTORY_MOTOR_SCHEMA_V1` is qualified as `M2_REFRACTORY_MOTOR_DECOUPLING_EXPLORATION_QUALIFIED` pending Architect acceptance.
+- Rationale: The mechanism changes only the composition boundary: adaptation remains in the frozen intrinsic self-excitation/update equations while raw `activity_after` drives the already-qualified A-funded motor. The assay preserves exact material A-to-W accounting and R invariance, reaches the frozen clutch regime, and yields retained target-free exploration without any resource/target/gradient input.
+- Affected areas: additive regulatory-core composition, focused feasibility example, compact evidence, scoped workflow, and governance only.
+- Supersedes record: none

@@ -147,3 +147,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-004 observer-only traction-transfer audit; exact-head Linux CI and Architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY005-001
+
+- Learning ID: L-DCDEV021-ENTRY005-001
+- Date: 2026-08-30
+- Fact or lesson: In the explicit opt-in ENTRY-005 composition, retaining the existing adaptation trace inside intrinsic excitation while coupling raw intrinsic activity directly to the accepted A-funded motor crosses the unchanged frozen clutch regime and yields retained target-free substrate-mediated exploration. Applying adaptation again at the motor boundary is therefore not required for refractory intrinsic dynamics and suppresses this otherwise available physical transfer.
+- Evidence location: `digital-protocell/crates/regulatory-core/src/intrinsic_exploration.rs`, `digital-protocell/examples/dcdev021_m2_entry005.rs`, and `digital-protocell/experiments/generated/dcdev021m2entry005/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-005 preregistered refractory-only motor feasibility assay; exact-head Linux CI passed and Architect review is pending.
+- Supersedes learning: none

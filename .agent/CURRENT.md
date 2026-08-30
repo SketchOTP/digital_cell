@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-30T00:31:15-04:00`
+- Last updated: `2026-08-30T00:40:00-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20260830-dcdev021-m2-entry005-refractory-motor-decoupling`
 - External directive ID: `DC-DEV-021-M2-ENTRY-005-REFRACTORY-MOTOR-DECOUPLING-FEASIBILITY-001`
 - Objective: `Test one opt-in composition where frozen local adaptation remains refractory inside ENTRY-003 intrinsic dynamics while raw intrinsic activity drives the accepted A-funded motor.`
-- Current status: `VALIDATING`
-- Acceptance: `Local feasibility qualifies M2_REFRACTORY_MOTOR_DECOUPLING_EXPLORATION_QUALIFIED: 325 slips and retained path 0.04095445278706012 versus ENTRY-003 numerical-scale path, with A-to-W residual 6.394884621840902e-14 and R unchanged. Exact-head Linux CI and Architect review remain pending.`
-- Current phase: `M2 intrinsic regulatory dynamics and target-free retained exploration are qualified locally; autonomous resource acquisition remains not established.`
+- Current status: `COMPLETE`
+- Acceptance: `Exact-head Linux workflow 33292817570 passed at e8349df8c1ef839b23e97d4bfe7c5b75b00b0b5a with M2_REFRACTORY_MOTOR_DECOUPLING_EXPLORATION_QUALIFIED. The uploaded compact artifact has sha256:654af0ac349ca13662416593bb152f581672de370eca75fcbdc382a458c80194. Architect review remains pending.`
+- Current phase: `M2 intrinsic regulatory dynamics and target-free retained exploration are qualified; autonomous resource acquisition remains not established.`
 - Expected or actual touched areas: `new opt-in refractory-only motor composition in intrinsic_exploration, focused tests/example, compact evidence, scoped workflow, and governance only`
-- Immediate next action: `Commit the bounded package, obtain exact-head Linux CI, then return to Architect; do not add resource sensing, chemotaxis, targets, gradients, tuning, or successor work.`
+- Immediate next action: `Awaiting reset and Architect review; do not add resource sensing, chemotaxis, targets, gradients, tuning, or successor work.`
 
 ## Temporary task-relevant facts
 
@@ -53,7 +53,7 @@
 
 ## Blockers
 
-- Exact-head Linux CI and Architect review are required before any successor directive.
+- Architect review is required before any successor directive.
 
 ## Pending decisions
 

@@ -544,3 +544,28 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: the audit does not authorize changes to activity adaptation, amplitude, or the frozen traction mechanism; retained exploration and autonomous acquisition remain unestablished.
 - Blockers: Architect review; no successor execution is authorized.
 - Follow-up directive: none
+
+## D-20260830-dcdev021-m2-entry005-refractory-motor-decoupling - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-ENTRY005-REFRACTORY-MOTOR-DECOUPLING`
+- Supersedes outcome: none
+- Closed: `2026-08-30T00:40:00-04:00`
+- Acceptance: MET
+- Summary: `M2_REFRACTORY_MOTOR_DECOUPLING_EXPLORATION_QUALIFIED`. The opt-in refractory-only motor schema leaves the ENTRY-003 intrinsic excitation and adaptation equations unchanged, including adaptation inside self-excitation, but supplies raw `activity_after` to the existing A-funded motor. It produces 325 frozen-clutch slips and retained material-centroid path `0.04095445278706012`, while preserved ENTRY-003 remains numerical-scale with zero slips.
+- Changed areas: additive `intrinsic_exploration` API/export, feasibility example/registration, compact evidence, scoped workflow, and governance only; M1/V4, chemistry-core, phase1-certifier, DC-DEV-005 plasticity, historical/qualified actuator APIs, traction, mechanics, reserve behavior, and production selection remain unchanged.
+- Validation:
+  - Exact ENTRY-004 authority and frozen-source boundary - PASSED
+  - ENTRY-003 state/adaptation equation parity - PASSED
+  - Adaptation causal role inside intrinsic dynamics - PASSED (`max adaptation 0.712303095377031`)
+  - Frozen clutch engagement and predicted/actual parity - PASSED (`325` slips; maximum required force `0.4766371923900446` above frozen `0.45` limit)
+  - Retained exploration, substrate artifact exclusion, rotation, and fixed seed diversity - PASSED
+  - A-to-W closure and R invariance - PASSED (`6.394884621840902e-14` residual; R unchanged)
+  - Zero-A and historical ENTRY-003 controls - PASSED
+  - Intrinsic-state restart - PASSED; generic full-mesh JSON restart remains `KNOWN_FAIL` and does not affect this uninterrupted result
+  - Canonical D-087 boundary - PASSED (`8/8`, `8/8`, V4 `[true,true,false,true,true,true,true,true]`)
+  - Regulator, continuity, plasticity, contact, contact regulation, finite-resource, traction, D-088, D-091, and evolution preservation - PASSED
+  - Exact-head Linux CI `33292817570` at `e8349df8c1ef839b23e97d4bfe7c5b75b00b0b5a`; artifact `sha256:654af0ac349ca13662416593bb152f581672de370eca75fcbdc382a458c80194` - PASSED
+  - Architect review - PENDING
+- Remaining risks: this establishes target-free retained intrinsic exploration only; resource-biased navigation and autonomous acquisition remain untested and unestablished.
+- Blockers: Architect review; no successor directive is authorized.
+- Follow-up directive: none
