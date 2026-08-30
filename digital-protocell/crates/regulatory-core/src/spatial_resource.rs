@@ -132,7 +132,7 @@ impl FiniteSpatialResourceRegionV1 {
         let mut f_delivered = 0.0;
 
         for edge in 0..mesh.n() {
-            let exposed = mesh.can_advance_physics() && self.edge_exposed(mesh, edge);
+            let exposed = mesh.can_advance_physics() && dt > 0.0 && self.edge_exposed(mesh, edge);
             let ruptured = mesh.edges[edge].ruptured;
             let segment_length = mesh.edge_length(edge);
             let occupancy = mesh.occupancy(edge);
