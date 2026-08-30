@@ -645,3 +645,19 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: decomposition is locally evidenced but not yet remotely accepted; it does not qualify autonomous resource acquisition or authorize a corrective mechanism.
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
+
+## D-20260830-dcdev021-m2-entry007-uptake-degradation-mechanism-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY007-UPTAKE-DEGRADATION-MECHANISM-AUDIT-R2`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY007-UPTAKE-DEGRADATION-MECHANISM-AUDIT-R1`
+- Closed: `2026-08-30T15:18:39-04:00`
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux CI run `33324714690` passed on result head `99884caa9fcbed148616b680f70734f58b1ddc41`. It completed authority, Entry-006 reproduction, Entry-007 uptake reconstruction/decomposition, canonical D-087, downstream preservation, governance validation, SHA-256 recording, and artifact upload. The primary classification remains `M2_UPTAKE_DEGRADATION_CONCENTRATION_FEEDBACK_CONFIRMED`; autonomous resource acquisition remains `NOT_ESTABLISHED`.
+- Changed areas: assay-local Entry-007 reconstruction, compact evidence, scoped workflow, and governance only. Frozen scientific sources and production behavior remain unchanged relative to accepted Entry-006 head `6bfc4839b68e328bab7d89f896dd575fabb5baa7`.
+- Validation:
+  - Exact-head Linux CI run `33324714690` - PASSED
+  - Uploaded artifact digest `sha256:b6ed78089b95301a24ce80deb812d6eefe9f439d9e78ff5550fc4aa4fea39094` - RECORDED
+  - Architect review - NOT RUN
+- Remaining risks: this is a mechanism decomposition only; it does not qualify autonomous resource acquisition or authorize a corrective mechanism.
+- Blockers: Architect review.
+- Follow-up directive: none

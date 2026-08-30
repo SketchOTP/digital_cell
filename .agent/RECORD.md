@@ -125,3 +125,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Exact Entry-006 total N+F acquisition is reproduced. At step `116`, exposed edges `0` and `23` remain identical in identity, length, occupancy, and permeability, while area, interior concentration, driving force, and world-inventory trajectory diverge for unguided versus both controls. This satisfies the directive’s H3 concentration/area-feedback discriminator. No production resource or scientific source changed.
 - Affected areas: assay-local Entry-007 evidence, scoped workflow, and governance only; autonomous resource acquisition remains `NOT_ESTABLISHED`.
 - Supersedes record: DEC-DCDEV021-ENTRY007-UPTAKE-DEGRADATION-AUDIT-001
+
+## DEC-DCDEV021-ENTRY007-UPTAKE-DEGRADATION-AUDIT-R2
+
+- Date: 2026-08-30
+- Record or decision ID: DEC-DCDEV021-ENTRY007-UPTAKE-DEGRADATION-AUDIT-R2
+- Status: ACTIVE
+- Decision or event: Exact-head Linux CI run `33324714690` passed on `99884caa9fcbed148616b680f70734f58b1ddc41`; uploaded artifact digest is `sha256:b6ed78089b95301a24ce80deb812d6eefe9f439d9e78ff5550fc4aa4fea39094`.
+- Rationale: The remote workflow independently completed the frozen-fixture reproduction, unchanged DC-DEV-008 uptake reconstruction parity, first-divergence classification as `M2_UPTAKE_DEGRADATION_CONCENTRATION_FEEDBACK_CONFIRMED`, decomposition, canonical D-087, downstream preservation, governance, and artifact upload. No scientific runtime source changed; autonomous resource acquisition remains `NOT_ESTABLISHED`.
+- Affected areas: assay-local Entry-007 evidence, scoped workflow, and governance only.
+- Supersedes record: DEC-DCDEV021-ENTRY007-UPTAKE-DEGRADATION-AUDIT-R1

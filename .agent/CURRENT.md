@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-30T10:05:00-04:00`
+- Last updated: `2026-08-30T15:21:01-04:00`
 
 ## Active state after adoption
 
@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-021-M2-ENTRY-007-UPTAKE-DEGRADATION-MECHANISM-AUDIT-001`
 - Objective: `Decompose unchanged DC-DEV-008 per-step/per-edge uptake across the accepted ENTRY-006 unguided, ENTRY-003, and motor-off arms without adding sensing or changing any production law.`
 - Current status: `VALIDATING`
-- Acceptance: `Local Entry-007 replay passed diagnostic-to-production parity, conservation, exact frozen-fixture reproduction, first-divergence localization, observer counterfactual decomposition, and contact-information checks. Exact-head Linux CI and Architect review remain pending.`
+- Acceptance: `Local Entry-007 replay and exact-head Linux CI passed diagnostic-to-production parity, conservation, exact frozen-fixture reproduction, first-divergence localization, observer counterfactual decomposition, contact-information checks, canonical D-087, downstream preservation, governance, and artifact upload. Architect review remains pending.`
 - Current phase: `M2 target-free locomotion is qualified; unguided autonomous acquisition remains unestablished under the exact frozen DC-DEV-013 ecology.`
 - Expected or actual touched areas: `assay-local read-only DC-DEV-008 reconstruction, one Entry-007 observer assay/workflow, compact evidence, and governance only; spatial_resource.rs and accepted scientific sources remain unchanged relative to 6bfc4839b68e328bab7d89f896dd575fabb5baa7`
-- Immediate next action: `Run exact-head Linux validation and request Architect review; do not add sensing, temporal memory, chemotaxis, targets, gradients, tuning, or successor work.`
+- Immediate next action: `Request Architect review only; do not add sensing, temporal memory, chemotaxis, targets, gradients, tuning, or successor work.`
 
 ## Temporary task-relevant facts
 
@@ -42,7 +42,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `ENTRY-006 exact historical-fixture local replay`
+- Command or check: `ENTRY-007 exact-head Linux workflow 33324714690 at 99884caa9fcbed148616b680f70734f58b1ddc41; uploaded artifact digest sha256:b6ed78089b95301a24ce80deb812d6eefe9f439d9e78ff5550fc4aa4fea39094`
 - Result: `PASSED`
 
 ## Risks
@@ -53,7 +53,7 @@
 
 ## Blockers
 
-- Exact-head Linux validation and Architect review are required before any successor directive.
+- Architect review is required before any successor directive.
 
 ## Pending decisions
 
