@@ -1,0 +1,67 @@
+{
+  "classification": "M2_UPTAKE_DEGRADATION_CONCENTRATION_FEEDBACK_CONFIRMED",
+  "comparisons": [
+    {
+      "area_first_divergence": true,
+      "control": "ENTRY003_PINNED_CONTROL",
+      "control_values": {
+        "f_delivered": 0.00037960207520950745,
+        "f_requested": 0.00037960207520950745,
+        "n_delivered": 0.00037960207520950745,
+        "n_requested": 0.00037960207520950745
+      },
+      "driving_force_first_divergence": true,
+      "edge_length_first_divergence": false,
+      "exposed_edge_identities_same": true,
+      "first_divergent_edges": [
+        0,
+        23
+      ],
+      "first_divergent_step": 116,
+      "interior_nf_first_divergence": true,
+      "numeric_tolerance": 1e-15,
+      "occupancy_first_divergence": false,
+      "permeability_first_divergence": false,
+      "primary_classification_for_pair": "M2_UPTAKE_DEGRADATION_CONCENTRATION_FEEDBACK_CONFIRMED",
+      "requested_or_delivered_mass_diverges": true,
+      "unguided": {
+        "f_delivered": 0.00037898864548084344,
+        "f_requested": 0.00037898864548084344,
+        "n_delivered": 0.00037898864548084344,
+        "n_requested": 0.00037898864548084344
+      },
+      "world_inventory_first_divergence": true
+    },
+    {
+      "area_first_divergence": true,
+      "control": "MOTOR_OFF_CONTROL",
+      "control_values": {
+        "f_delivered": 0.00037960207520950745,
+        "f_requested": 0.00037960207520950745,
+        "n_delivered": 0.00037960207520950745,
+        "n_requested": 0.00037960207520950745
+      },
+      "driving_force_first_divergence": true,
+      "edge_length_first_divergence": false,
+      "exposed_edge_identities_same": true,
+      "first_divergent_edges": [
+        0,
+        23
+      ],
+      "first_divergent_step": 116,
+      "interior_nf_first_divergence": true,
+      "numeric_tolerance": 1e-15,
+      "occupancy_first_divergence": false,
+      "permeability_first_divergence": false,
+      "primary_classification_for_pair": "M2_UPTAKE_DEGRADATION_CONCENTRATION_FEEDBACK_CONFIRMED",
+      "requested_or_delivered_mass_diverges": true,
+      "unguided": {
+        "f_delivered": 0.00037898864548084344,
+        "f_requested": 0.00037898864548084344,
+        "n_delivered": 0.00037898864548084344,
+        "n_requested": 0.00037898864548084344
+      },
+      "world_inventory_first_divergence": true
+    }
+  ]
+}

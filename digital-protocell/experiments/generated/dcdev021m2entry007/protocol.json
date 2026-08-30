@@ -5,9 +5,10 @@
     "MOTOR_OFF_CONTROL"
   ],
   "causal_step_order": [
-    "observer_only_uptake_diagnostic",
+    "clone_observer_pre_move_only_for_unguided",
     "advance_existing_arm",
-    "existing_dcdev008_uptake",
+    "clone_observer_post_move",
+    "unchanged_dcdev008_uptake",
     "record_ledger"
   ],
   "directive": "DC-DEV-021-M2-ENTRY-007-UPTAKE-DEGRADATION-MECHANISM-AUDIT-001",

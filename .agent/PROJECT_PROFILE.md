@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last verified: `2026-08-29T12:00:00-04:00`
+- Last verified: `2026-08-30T10:05:00-04:00`
 
 ## Identity
 
@@ -11,7 +11,7 @@
 - Purpose: A self-maintaining digital protocell developing toward a persistent embodied digital lifeform.
 - Repository root: `/home/sketch/Projects/digital_cell-m1-baseline`
 - Verified remote: `git@github.com:SketchOTP/digital_cell.git`
-- Maturity or current phase: M1 closed/frozen; M2 ENTRY-001 actuator and ENTRY-005 target-free intrinsic exploration are Architect accepted. ENTRY-006 is testing whether that unguided movement alone improves acquisition in the frozen DC-DEV-013 ecology. Autonomous resource acquisition is not established.
+- Maturity or current phase: M1 closed/frozen; M2 ENTRY-001 actuator and ENTRY-005 target-free intrinsic exploration are Architect accepted; ENTRY-006 is Architect accepted as `M2_UNGUIDED_RESOURCE_ACQUISITION_NOT_ESTABLISHED`; ENTRY-007 is locally tested as `M2_UPTAKE_DEGRADATION_CONCENTRATION_FEEDBACK_CONFIRMED`, pending exact-head Linux CI and Architect review. Autonomous resource acquisition remains not established.
 
 ## Languages and runtimes
 
@@ -41,4 +41,4 @@
 - Security: Preserve credentials, private configuration, external Authority systems, and unrelated user work.
 - Data handling: Preserve certified biology, append-only history, evidence, provenance, and generated-artifact boundaries.
 - Deployment: No deployment or merge is authorized by DC-DEV-001A; architect review remains required.
-- M2 boundary: The opt-in A-funded actuator and ENTRY-005 raw intrinsic motor coupling are qualified. ENTRY-006 may only replay the frozen DC-DEV-013 finite N/F ecology with resource contact held observer-only; it may not add sensing, temporal memory, navigation, tuning, or a resource-dependent motor rule. Production remains V4/reserve OFF and PR #44 remains historical provenance.
+- M2 boundary: The opt-in A-funded actuator and ENTRY-005 raw intrinsic motor coupling are qualified. ENTRY-007 may only replay the frozen DC-DEV-013 finite N/F ecology and perform assay-local observer reconstruction of unchanged DC-DEV-008 uptake; it may not add sensing, temporal memory, navigation, tuning, or a resource-dependent motor rule. Production remains V4/reserve OFF and PR #44 remains historical provenance.

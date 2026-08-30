@@ -46,9 +46,11 @@
       "time_integrated_exposed_segment_length": 25.029903510491685
     }
   ],
-  "classification": "M2_UPTAKE_DEGRADATION_CONCENTRATION_FEEDBACK_CONFIRMED",
-  "conservation_pass": true,
-  "entry006_reproduction_pass": true,
-  "schema": "dcdev021_entry007_uptake_decomposition_summary_v2",
-  "uptake_reconstruction_parity_pass": true
+  "entry003_acquisition": 0.3550441352751993,
+  "motor_off_acquisition": 0.35504413527520107,
+  "reproduction_pass": true,
+  "starting_head": "6bfc4839b68e328bab7d89f896dd575fabb5baa7",
+  "unguided_acquisition": 0.2948669468973028,
+  "unguided_vs_entry003_relative_difference": -0.1694921346363104,
+  "unguided_vs_motor_off_relative_difference": -0.16949213463631452
 }

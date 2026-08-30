@@ -1,0 +1,38 @@
+{
+  "arms": [
+    {
+      "arm": "UNGUIDED_EXPLORER",
+      "entries": 1,
+      "exits": 0,
+      "maximum_exposed_edges": 2,
+      "positive_contact_steps": 480,
+      "total_steps": 480,
+      "trace_hash": "afdd061543f70b5d",
+      "transitions_after_initial_entry": 0
+    },
+    {
+      "arm": "ENTRY003_PINNED_CONTROL",
+      "entries": 1,
+      "exits": 0,
+      "maximum_exposed_edges": 2,
+      "positive_contact_steps": 480,
+      "total_steps": 480,
+      "trace_hash": "afdd061543f70b5d",
+      "transitions_after_initial_entry": 0
+    },
+    {
+      "arm": "MOTOR_OFF_CONTROL",
+      "entries": 1,
+      "exits": 0,
+      "maximum_exposed_edges": 2,
+      "positive_contact_steps": 480,
+      "total_steps": 480,
+      "trace_hash": "afdd061543f70b5d",
+      "transitions_after_initial_entry": 0
+    }
+  ],
+  "audit_pass": true,
+  "observer_only": true,
+  "present_vs_past_binary_signal_additional_transitions_after_initial_entry": 0,
+  "signal": "FiniteSpatialResourceRegionV1::local_contact_signal"
+}

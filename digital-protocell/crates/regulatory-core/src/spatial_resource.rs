@@ -13,8 +13,6 @@ use serde::{Deserialize, Serialize};
 pub const FINITE_SPATIAL_RESOURCE_REGION_SCHEMA_V1: &str = "dcdev008_finite_static_nf_region_v1";
 pub const SPATIAL_RESOURCE_STEP_LEDGER_SCHEMA_V1: &str = "dcdev008_spatial_resource_step_ledger_v1";
 pub const LOCAL_RESOURCE_CONTACT_SIGNAL_SCHEMA_V1: &str = "dcdev013_local_nf_contact_signal_v1";
-pub const SPATIAL_RESOURCE_UPTAKE_DIAGNOSTIC_SCHEMA_V1: &str =
-    "dcdev021_entry007_spatial_uptake_diagnostic_v1";
 
 /// A finite static circular region containing only N and F material.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -110,108 +108,6 @@ impl FiniteSpatialResourceRegionV1 {
         ledger
     }
 
-    /// Observe the exact per-edge terms used by [`Self::uptake`] without
-    /// mutating the region or mesh.  This is an audit surface only: it does
-    /// not choose an action, alter the uptake law, or expose a signal to the
-    /// organism.
-    pub fn uptake_diagnostic(
-        &self,
-        mesh: &MaterialMesh,
-        transport: &TransportParams,
-        dt: f64,
-    ) -> SpatialResourceUptakeDiagnosticV1 {
-        let area = mesh.area().max(1e-6);
-        let mut remaining_n = self.n_mass;
-        let mut remaining_f = self.f_mass;
-        let mut interior_n = mesh.interior.n;
-        let mut interior_f = mesh.interior.f;
-        let mut edges = Vec::with_capacity(mesh.n());
-        let mut n_requested = 0.0;
-        let mut f_requested = 0.0;
-        let mut n_delivered = 0.0;
-        let mut f_delivered = 0.0;
-
-        for edge in 0..mesh.n() {
-            let exposed = mesh.can_advance_physics() && dt > 0.0 && self.edge_exposed(mesh, edge);
-            let ruptured = mesh.edges[edge].ruptured;
-            let segment_length = mesh.edge_length(edge);
-            let occupancy = mesh.occupancy(edge);
-            let n_permeability = permeability(occupancy, "N");
-            let f_permeability = permeability(occupancy, "F");
-            let n_driving_force = (self.boundary_n_concentration - interior_n.max(0.0)).max(0.0);
-            let f_driving_force = (self.boundary_f_concentration - interior_f.max(0.0)).max(0.0);
-            let eligible = exposed && !ruptured;
-            let n_requested_edge = if eligible {
-                Self::requested_mass(
-                    remaining_n,
-                    self.boundary_n_concentration,
-                    interior_n,
-                    n_permeability,
-                    transport.k_flux,
-                    segment_length,
-                    dt,
-                )
-            } else {
-                0.0
-            };
-            let f_requested_edge = if eligible {
-                Self::requested_mass(
-                    remaining_f,
-                    self.boundary_f_concentration,
-                    interior_f,
-                    f_permeability,
-                    transport.k_flux,
-                    segment_length,
-                    dt,
-                )
-            } else {
-                0.0
-            };
-            let n_delivered_edge = n_requested_edge.min(remaining_n.max(0.0));
-            let f_delivered_edge = f_requested_edge.min(remaining_f.max(0.0));
-            remaining_n = (remaining_n - n_delivered_edge).max(0.0);
-            remaining_f = (remaining_f - f_delivered_edge).max(0.0);
-            interior_n += n_delivered_edge / area;
-            interior_f += f_delivered_edge / area;
-            n_requested += n_requested_edge;
-            f_requested += f_requested_edge;
-            n_delivered += n_delivered_edge;
-            f_delivered += f_delivered_edge;
-            edges.push(SpatialResourceEdgeUptakeDiagnosticV1 {
-                edge,
-                exposed,
-                ruptured,
-                segment_length,
-                occupancy,
-                n_permeability,
-                f_permeability,
-                area,
-                segment_area_fraction: segment_length / area,
-                n_boundary_concentration: self.boundary_n_concentration,
-                f_boundary_concentration: self.boundary_f_concentration,
-                n_interior_concentration: interior_n - n_delivered_edge / area,
-                f_interior_concentration: interior_f - f_delivered_edge / area,
-                n_driving_force,
-                f_driving_force,
-                n_requested: n_requested_edge,
-                f_requested: f_requested_edge,
-                n_delivered: n_delivered_edge,
-                f_delivered: f_delivered_edge,
-            });
-        }
-
-        SpatialResourceUptakeDiagnosticV1 {
-            schema: SPATIAL_RESOURCE_UPTAKE_DIAGNOSTIC_SCHEMA_V1.to_string(),
-            area,
-            dt,
-            edges,
-            n_requested,
-            f_requested,
-            n_delivered,
-            f_delivered,
-        }
-    }
-
     pub fn total_mass(&self) -> f64 {
         self.n_mass + self.f_mass
     }
@@ -251,72 +147,16 @@ impl FiniteSpatialResourceRegionV1 {
         segment_length: f64,
         dt: f64,
     ) -> f64 {
-        Self::requested_mass(
-            world_mass,
-            boundary_concentration,
-            interior_concentration,
-            permeability,
-            k_flux,
-            segment_length,
-            dt,
-        )
-        .min(world_mass.max(0.0))
-    }
-
-    fn requested_mass(
-        world_mass: f64,
-        boundary_concentration: f64,
-        interior_concentration: f64,
-        permeability: f64,
-        k_flux: f64,
-        segment_length: f64,
-        dt: f64,
-    ) -> f64 {
         if world_mass <= 1e-12 || boundary_concentration <= 0.0 || dt <= 0.0 {
             return 0.0;
         }
-        (k_flux
+        let requested = k_flux
             * permeability
             * (boundary_concentration - interior_concentration.max(0.0))
             * segment_length
-            * dt)
-            .max(0.0)
+            * dt;
+        requested.max(0.0).min(world_mass)
     }
-}
-
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SpatialResourceUptakeDiagnosticV1 {
-    pub schema: String,
-    pub area: f64,
-    pub dt: f64,
-    pub edges: Vec<SpatialResourceEdgeUptakeDiagnosticV1>,
-    pub n_requested: f64,
-    pub f_requested: f64,
-    pub n_delivered: f64,
-    pub f_delivered: f64,
-}
-
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct SpatialResourceEdgeUptakeDiagnosticV1 {
-    pub edge: usize,
-    pub exposed: bool,
-    pub ruptured: bool,
-    pub segment_length: f64,
-    pub occupancy: f64,
-    pub n_permeability: f64,
-    pub f_permeability: f64,
-    pub area: f64,
-    pub segment_area_fraction: f64,
-    pub n_boundary_concentration: f64,
-    pub f_boundary_concentration: f64,
-    pub n_interior_concentration: f64,
-    pub f_interior_concentration: f64,
-    pub n_driving_force: f64,
-    pub f_driving_force: f64,
-    pub n_requested: f64,
-    pub f_requested: f64,
-    pub n_delivered: f64,
-    pub f_delivered: f64,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -442,32 +282,6 @@ mod tests {
         assert_eq!(ledger.n_world_loss, ledger.n_delivered);
         assert_eq!(ledger.f_world_loss, ledger.f_delivered);
         assert_eq!(ledger.conservation_error, 0.0);
-    }
-
-    #[test]
-    fn uptake_diagnostic_matches_production_ledger_without_mutation() {
-        let mut body = mesh();
-        let before_body = body.clone();
-        let mut region = FiniteSpatialResourceRegionV1::new(CENTER, RADIUS, N_MASS, F_MASS);
-        let before_region = region.clone();
-        let diagnostic = region.uptake_diagnostic(&body, &transport(), 0.02);
-        assert_eq!(region, before_region);
-        assert_eq!(
-            serde_json::to_value(&body).unwrap(),
-            serde_json::to_value(&before_body).unwrap()
-        );
-        let ledger = region.uptake(&mut body, &transport(), 0.02);
-        assert!((diagnostic.n_delivered - ledger.n_delivered).abs() <= 1e-15);
-        assert!((diagnostic.f_delivered - ledger.f_delivered).abs() <= 1e-15);
-        assert!((diagnostic.n_delivered
-            - diagnostic.edges.iter().map(|edge| edge.n_delivered).sum::<f64>())
-            .abs()
-            <= 1e-15);
-        assert!((diagnostic.f_delivered
-            - diagnostic.edges.iter().map(|edge| edge.f_delivered).sum::<f64>())
-            .abs()
-            <= 1e-15);
-        assert!(diagnostic.edges.iter().any(|edge| edge.exposed));
     }
 
     #[test]

@@ -1,7 +1,9 @@
 {
+  "audit_status": "LOCAL_PASS_PENDING_EXACT_HEAD_LINUX_CI_AND_ARCHITECT_REVIEW",
   "autonomous_resource_acquisition": "NOT_ESTABLISHED",
-  "classification": "M2_ENTRY007_UPTAKE_DEGRADATION_AUDIT_COMPLETE",
+  "classification": "M2_UPTAKE_DEGRADATION_CONCENTRATION_FEEDBACK_CONFIRMED",
   "conservation_pass": true,
   "entry006_result_replayed": true,
-  "next_execution_started": false
+  "next_execution_started": false,
+  "uptake_reconstruction_parity": true
 }

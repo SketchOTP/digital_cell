@@ -1,0 +1,25 @@
+{
+  "law": "k_flux * permeability(theta) * max(boundary_concentration - max(interior_concentration, 0), 0) * exposed_segment_length * dt, capped by current finite inventory",
+  "numeric_tolerance": 1e-15,
+  "observer_only": true,
+  "parity": [
+    {
+      "all_steps_all_exposed_edges": true,
+      "arm": "UNGUIDED_EXPLORER",
+      "maximum_conservation_error": 0.0
+    },
+    {
+      "all_steps_all_exposed_edges": true,
+      "arm": "ENTRY003_PINNED_CONTROL",
+      "maximum_conservation_error": 0.0
+    },
+    {
+      "all_steps_all_exposed_edges": true,
+      "arm": "MOTOR_OFF_CONTROL",
+      "maximum_conservation_error": 0.0
+    }
+  ],
+  "parity_pass": true,
+  "production_function_unchanged": true,
+  "schema": "dcdev021_entry007_uptake_reconstruction_v2"
+}

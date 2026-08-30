@@ -115,3 +115,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: A read-only diagnostic projection of unchanged DC-DEV-008 uptake matches the production ledger per step for unguided ENTRY-006, ENTRY-003 pinned, and motor-off arms. Conservation passes; all three arms retain two final exposed intact edges, while time-integrated exposed segment length is `24.93813741755074` for unguided versus `25.029903510491685` for both controls. No diagnostic or resource signal enters organism behavior.
 - Affected areas: observer-only spatial-resource diagnostic, Entry-007 assay, compact evidence, and governance; no production behavior or uptake law.
 - Supersedes record: DEC-DCDEV021-ENTRY006-UNGUIDED-ACQUISITION-RESULT-001
+
+## DEC-DCDEV021-ENTRY007-UPTAKE-DEGRADATION-AUDIT-R1
+
+- Date: 2026-08-30
+- Record or decision ID: DEC-DCDEV021-ENTRY007-UPTAKE-DEGRADATION-AUDIT-R1
+- Status: ACTIVE
+- Decision or event: The completed local observer audit classifies the first uptake loss as `M2_UPTAKE_DEGRADATION_CONCENTRATION_FEEDBACK_CONFIRMED`.
+- Rationale: Exact Entry-006 total N+F acquisition is reproduced. At step `116`, exposed edges `0` and `23` remain identical in identity, length, occupancy, and permeability, while area, interior concentration, driving force, and world-inventory trajectory diverge for unguided versus both controls. This satisfies the directive’s H3 concentration/area-feedback discriminator. No production resource or scientific source changed.
+- Affected areas: assay-local Entry-007 evidence, scoped workflow, and governance only; autonomous resource acquisition remains `NOT_ESTABLISHED`.
+- Supersedes record: DEC-DCDEV021-ENTRY007-UPTAKE-DEGRADATION-AUDIT-001

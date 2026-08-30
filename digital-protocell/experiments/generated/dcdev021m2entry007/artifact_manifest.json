@@ -3,17 +3,30 @@
   "files": [
     "protocol.json",
     "authority.json",
+    "entry006_reproduction.json",
+    "uptake_reconstruction.json",
     "unguided_explorer.json",
     "entry003_control.json",
     "motor_off_control.json",
+    "first_divergence.json",
+    "pre_post_move_uptake.json",
+    "edge_length_decomposition.json",
+    "permeability_decomposition.json",
+    "concentration_feedback_decomposition.json",
+    "feedback_amplification.json",
+    "contact_information_audit.json",
+    "exploitation_lever_inventory.json",
+    "preservation.json",
     "decomposition_summary.json",
     "observer_boundary.json",
-    "qualification.json"
+    "qualification.json",
+    "artifact_manifest.json"
   ],
   "source_hashes": {
     "contractility": "588b40fe26029232",
     "intrinsic_exploration": "908f03ae9f77bfac",
-    "spatial_resource": "9ffdc649421ec09d",
+    "spatial_resource": "47e9d8394c9e4896",
     "traction": "ec1ad2b699ca7461"
-  }
+  },
+  "starting_head": "6bfc4839b68e328bab7d89f896dd575fabb5baa7"
 }

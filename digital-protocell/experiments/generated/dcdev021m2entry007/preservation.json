@@ -1,0 +1,28 @@
+{
+  "canonical_d087": {
+    "v2": "8/8",
+    "v3": "8/8",
+    "v4": "7/8",
+    "v4_vector": [
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "contractility_source_changed": false,
+  "downstream_preservation": "PASS_LOCAL_REPLAY",
+  "entry005_preservation": "PASS_LOCAL_REPLAY",
+  "entry006_negative_preservation": "PASS_LOCAL_REPLAY",
+  "intrinsic_exploration_source_changed": false,
+  "m1": "CLOSED/FROZEN",
+  "pr44": "OPEN/DRAFT/UNMERGED/UNTOUCHED",
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "scientific_source_changed": false,
+  "spatial_resource_source_changed": false,
+  "stick_slip_traction_source_changed": false
+}

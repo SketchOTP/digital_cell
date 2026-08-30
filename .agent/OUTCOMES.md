@@ -629,3 +629,19 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: this is a mechanism decomposition only; it does not establish a sensory-bias mechanism or autonomous resource acquisition.
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
+
+## D-20260830-dcdev021-m2-entry007-uptake-degradation-mechanism-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY007-UPTAKE-DEGRADATION-MECHANISM-AUDIT-R1`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY007-UPTAKE-DEGRADATION-MECHANISM-AUDIT`
+- Closed: `2026-08-30T10:05:00-04:00`
+- Acceptance: PARTIAL
+- Summary: The assay-local clone-only reconstruction reproduces Entry-006 exactly and locates the first uptake divergence at step `116` on exposed edges `0` and `23` for both ENTRY-003 and motor-off controls. Exposed edge identities, length, occupancy, and permeability are unchanged at that step; area, interior N/F concentration, driving force, and finite-inventory trajectory diverge. Total N+F acquisition is unguided `0.2948669468973028`, ENTRY-003 `0.3550441352751993`, motor-off `0.35504413527520107`; the primary local classification is `M2_UPTAKE_DEGRADATION_CONCENTRATION_FEEDBACK_CONFIRMED`. The pre/post requested N/F values at the first divergent step are `0.0003796020752095074` and `0.0003789886454808434`; observer substitutions yield cumulative instantaneous recovered N/F of `3.0813060891968678` for segment length, `3.078078388092634` for permeability, and `3.040414616703692` for driving force. Contact remains positive for `480/480` steps with one entry, zero exits, and zero transitions after initial entry.
+- Changed areas: assay-local Entry-007 reconstruction, required compact artifacts, scoped workflow, and governance only. `spatial_resource.rs`, intrinsic exploration, contractility, traction, chemistry-core, phase1-certifier, production selection, M1, and PR #44 are unchanged relative to accepted Entry-006 head.
+- Validation:
+  - Local replay, diagnostic-to-production ledger parity, conservation, first divergence, pre/post move, counterfactual decompositions, contact audit, scoped rustfmt, and diff checks - PASSED
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: decomposition is locally evidenced but not yet remotely accepted; it does not qualify autonomous resource acquisition or authorize a corrective mechanism.
+- Blockers: exact-head Linux CI and Architect review.
+- Follow-up directive: none
