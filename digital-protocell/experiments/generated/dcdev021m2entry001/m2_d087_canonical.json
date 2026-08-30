@@ -1,0 +1,6 @@
+{
+  "head": "83ad0a4d3b557fac1909376108059dc0ee4227d7",
+  "results": {"ConservativeV2": [true, true, true, true, true, true, true, true], "ConservativeV3": [true, true, true, true, true, true, true, true], "MaturationCoupledV4": [true, true, false, true, true, true, true, true]},
+  "baseline_m2_parity": true,
+  "pass": true
+}

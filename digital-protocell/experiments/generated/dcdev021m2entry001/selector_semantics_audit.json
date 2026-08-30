@@ -1,0 +1,12 @@
+{
+  "schema": "dcdev021_m2_entry001_d087_selector_audit_v1",
+  "canonical_mapping": {
+    "ConservativeV2": {"DCDEV020R9R3_CONTRACT": "ConservativeV2", "DCDEV020R9R3_RESERVE": "0", "DCDEV020M1REPLAN002R1_V4": null},
+    "ConservativeV3": {"DCDEV020R9R3_CONTRACT": "ConservativeV3", "DCDEV020R9R3_RESERVE": "0", "DCDEV020M1REPLAN002R1_V4": null},
+    "MaturationCoupledV4": {"DCDEV020R9R3_CONTRACT": "ConservativeV3", "DCDEV020R9R3_RESERVE": "0", "DCDEV020M1REPLAN002R1_V4": "1"}
+  },
+  "unsupported_chemistry_selector": "MaturationCoupledV4",
+  "unsupported_selector_resolution": "HistoricalV1",
+  "v4_selection_authority": "DCDEV020M1REPLAN002R1_V4",
+  "pass": true
+}

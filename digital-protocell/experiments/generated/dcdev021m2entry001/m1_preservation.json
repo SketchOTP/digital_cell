@@ -1,0 +1,9 @@
+{
+  "production_contract": "MaturationCoupledV4",
+  "production_reserve": false,
+  "v2_d087": "8/8",
+  "v3_d087": "8/8",
+  "v4_d087": [true, true, false, true, true, true, true, true],
+  "scientific_source_changed": false,
+  "pass": true
+}

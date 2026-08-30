@@ -1,0 +1,14 @@
+{
+  "active_displacement": 0.005665433467909554,
+  "motor_off_displacement": 0.0,
+  "active_no_substrate_displacement": 0.0012257962145658505,
+  "zero_a_displacement": 0.0,
+  "active_a_spent": 3.704679295403184,
+  "active_w_generated": 3.7046792954031784,
+  "maximum_active_tension": 2.0,
+  "stuck_contacts": 11444,
+  "slipping_contacts": 76,
+  "material_vertex_centroid_difference": 3.2959746043559335e-17,
+  "active_displacement_benefit": true,
+  "pass": true
+}

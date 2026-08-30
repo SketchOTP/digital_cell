@@ -1,0 +1,6 @@
+{
+  "baseline_ci_33271509819": "INVALID_PRESERVATION_HARNESS_EVIDENCE",
+  "entry001_ci_33278000813": "INVALID_PRESERVATION_HARNESS_EVIDENCE",
+  "reason": "MaturationCoupledV4 was passed to DCDEV020R9R3_CONTRACT, which resolves unknown selector values as HistoricalV1.",
+  "historical_records_rewritten": false
+}

@@ -1,0 +1,9 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-001-R1-D087-PRESERVATION-HARNESS-REPAIR-001",
+  "entry_head": "da5a4589ea4a30a334078346ea9d65628d4f1fcf",
+  "baseline_head": "d76481c785e9eec361df3fa0cd03c512b521639c",
+  "selector_repair_head": "83ad0a4d3b557fac1909376108059dc0ee4227d7",
+  "scope": "D-087 preservation harness and evidence finalization only",
+  "scientific_source_changed": false,
+  "actuator_source_changed": false
+}

@@ -1,0 +1,9 @@
+{
+  "same_funded_tension": true,
+  "same_resource_spent": true,
+  "same_vertices": true,
+  "r_resource_spent": 0.06257475877622859,
+  "a_resource_spent": 0.06257475877622859,
+  "r_maximum_tension": 2.0,
+  "a_maximum_tension": 2.0
+}

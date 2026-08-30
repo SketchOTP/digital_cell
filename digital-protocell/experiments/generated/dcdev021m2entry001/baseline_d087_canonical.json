@@ -1,0 +1,5 @@
+{
+  "head": "d76481c785e9eec361df3fa0cd03c512b521639c",
+  "results": {"ConservativeV2": [true, true, true, true, true, true, true, true], "ConservativeV3": [true, true, true, true, true, true, true, true], "MaturationCoupledV4": [true, true, false, true, true, true, true, true]},
+  "pass": true
+}

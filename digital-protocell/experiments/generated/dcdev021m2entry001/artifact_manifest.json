@@ -1,0 +1,8 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-001-R1-D087-PRESERVATION-HARNESS-REPAIR-001",
+  "exact_head_run": 33282513964,
+  "artifact_id": 9723454710,
+  "artifact_digest": "sha256:74a537d379b5ebd9d50c72daa1e09fd604ff3e1c8c4b11c2f61138d01e22d72f",
+  "dense_evidence_external": true,
+  "files": ["protocol.json", "selector_semantics_audit.json", "prior_invalid_d087_evidence.json", "baseline_d087_canonical.json", "m2_d087_canonical.json", "funding_semantics.json", "r_funded_oracle_comparison.json", "zero_a_parity.json", "zero_activity_parity.json", "stick_slip_feasibility.json", "rotation_check.json", "material_closure.json", "m1_preservation.json", "downstream_preservation.json", "qualification.json"]
+}

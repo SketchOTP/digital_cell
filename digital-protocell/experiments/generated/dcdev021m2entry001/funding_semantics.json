@@ -1,0 +1,9 @@
+{
+  "schema": "digital_cell_activated_energy_contractility_v1",
+  "funding_pool": "absolute current A amount",
+  "spending_destination": "absolute W amount",
+  "r_created_or_consumed": false,
+  "direct_coordinate_writes": false,
+  "observer_feedback": false,
+  "pass": true
+}

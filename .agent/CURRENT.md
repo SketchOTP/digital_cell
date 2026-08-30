@@ -10,11 +10,11 @@
 - Local directive ID: `D-20260829-dcdev021-m2-entry001-r1-d087-preservation-harness-repair`
 - External directive ID: `DC-DEV-021-M2-ENTRY-001-R1-D087-PRESERVATION-HARNESS-REPAIR-001`
 - Objective: `Repair only the D-087 selector harness, replay the canonical V2/V3/V4 boundary on baseline and M2 heads, and finalize existing ENTRY-001 evidence.`
-- Current status: `IN_PROGRESS`
-- Acceptance: `M1 is Architect-closed and frozen; M2 ENTRY-001 actuator feasibility is active and Architect acceptance remains pending.`
+- Current status: `VALIDATING`
+- Acceptance: `M1 is Architect-closed and frozen. Canonical baseline/M2 D-087 parity, actuator qualification, and downstream preservation passed at selector-repair head 83ad0a4; final compact-evidence commit and exact-head CI remain pending.`
 - Current phase: `M2 ENTRY-001-R1 preservation-harness repair; autonomous resource acquisition is not established.`
 - Expected or actual touched areas: `scoped workflow, compact evidence, and current governance only`
-- Immediate next action: `Obtain exact-head Linux canonical D-087 parity and complete skipped downstream preservation; do not change scientific source or begin resource-contact sensing/acquisition.`
+- Immediate next action: `Validate the compact-evidence finalization commit on exact-head Linux; do not change scientific source or begin resource-contact sensing/acquisition.`
 
 ## Temporary task-relevant facts
 

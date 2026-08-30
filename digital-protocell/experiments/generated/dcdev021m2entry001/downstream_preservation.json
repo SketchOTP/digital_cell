@@ -1,0 +1,12 @@
+{
+  "dcdev002_regulator": "PASS",
+  "dcdev005_plasticity": "PASS",
+  "dcdev006_contact": "PASS",
+  "dcdev007_contact_regulation": "PASS",
+  "dcdev008_finite_resource": "PASS",
+  "dcdev011_historical_r_funded_traction": "PASS",
+  "d088": "PASS",
+  "d091": "PASS",
+  "evolution_harness": "PASS",
+  "dcdev013_historical_classification_changed": false
+}

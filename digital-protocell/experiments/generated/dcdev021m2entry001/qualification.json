@@ -1,0 +1,9 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-001-R1-D087-PRESERVATION-HARNESS-REPAIR-001",
+  "classification": "M2_ACTIVATED_ENERGY_CONTRACTILITY_FEASIBILITY_QUALIFIED",
+  "m2_actuator": "QUALIFIED",
+  "m2_autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "production_default_changed": false,
+  "reserve_enabled": false,
+  "next_execution_started": false
+}
