@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-29T22:15:00-04:00`
+- Last updated: `2026-08-29T22:25:00-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20260829-dcdev021-m2-entry003-intrinsic-exploration-feasibility`
 - External directive ID: `DC-DEV-021-M2-ENTRY-003-INTRINSIC-EXPLORATION-FEASIBILITY-001`
 - Objective: `Test one explicit opt-in intrinsic local exploration regulator, funded through the qualified A-to-W actuator and existing stick-slip traction, without a resource input, sensor, target, gradient, or navigation policy.`
-- Current status: `VALIDATING`
-- Acceptance: `M2_INTRINSIC_EXPLORATION_MECHANICALLY_INSUFFICIENT locally: intrinsic dynamics and A-to-W closure pass, but retained displacement does not exceed frozen controls; exact-head Linux CI pending.`
+- Current status: `COMPLETE`
+- Acceptance: `M2_INTRINSIC_EXPLORATION_MECHANICALLY_INSUFFICIENT: exact-head Linux CI 33286398021 passed at 8602e4f; intrinsic dynamics and A-to-W closure pass, but retained displacement does not exceed frozen controls. Architect acceptance pending.`
 - Current phase: `M2 ENTRY-003 intrinsic-exploration feasibility completed locally as a preregistered mechanically-insufficient result; autonomous resource acquisition is not established.`
 - Expected or actual touched areas: `new opt-in regulatory-core intrinsic-exploration module/export, feasibility example/registration, scoped workflow, compact evidence, and governance only`
-- Immediate next action: `Obtain exact-head Linux validation and Architect review; do not tune the mechanism or start resource acquisition, sensing, memory, chemotaxis, or a successor directive.`
+- Immediate next action: `Awaiting reset and Architect review; do not tune the mechanism or start resource acquisition, sensing, memory, chemotaxis, or a successor directive.`
 
 ## Temporary task-relevant facts
 
@@ -40,7 +40,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `cargo +1.89.0 test -p regulatory-core --lib -- --nocapture; ENTRY-003 preregistered feasibility assay`
+- Command or check: `Exact-head Linux workflow 33286398021 at 8602e4f273837fc27c69fffef0e4bd9972a4aaf2`
 - Result: `PASSED`
 
 ## Risks
@@ -51,7 +51,7 @@
 
 ## Blockers
 
-- The candidate must not be tuned or extended. Architect review is required before any successor directive.
+- Architect review is required before any successor directive.
 
 ## Pending decisions
 

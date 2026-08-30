@@ -516,7 +516,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Zero-A passive parity, seed diversity, and rotational equivariance - PASSED
   - Retained stick-slip displacement over matched controls - FAILED as preregistered negative result
   - Full mesh restart hash continuity - FAILED; intrinsic-state hash continuity passed, but generic mesh JSON reconstruction differed and was not repaired under this directive
-  - Exact-head Linux CI - PENDING
+  - Exact-head Linux CI `33286398021` at `8602e4f273837fc27c69fffef0e4bd9972a4aaf2`; artifact `sha256:2b3f9b78b9b43473efe08137f994b361740c6a06188d5b253a221bc45874275f` - PASSED
   - Architect review - PENDING
 - Remaining risks: the frozen actuator/traction composition does not currently establish a target-free exploration substrate; no tuning or follow-up mechanism is authorized.
 - Blockers: exact-head Linux CI and Architect review.
