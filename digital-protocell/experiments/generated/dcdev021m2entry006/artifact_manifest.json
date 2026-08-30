@@ -18,7 +18,8 @@
     "m1_preservation.json",
     "downstream_preservation.json",
     "qualification.json",
-    "artifact_manifest.json"
+    "artifact_manifest.json",
+    "remote_validation.json"
   ],
   "source_hashes": {
     "contractility": "588b40fe26029232",

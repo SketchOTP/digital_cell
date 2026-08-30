@@ -10,11 +10,11 @@
 - Local directive ID: `D-20260830-dcdev021-m2-entry006-unguided-resource-acquisition`
 - External directive ID: `DC-DEV-021-M2-ENTRY-006-UNGUIDED-RESOURCE-ACQUISITION-FEASIBILITY-001`
 - Objective: `Determine whether the accepted ENTRY-005 target-free exploratory process improves finite N/F acquisition through the existing DC-DEV-008 boundary while all resource signals remain observer-only.`
-- Current status: `IN_PROGRESS`
-- Acceptance: `ENTRY-005 is Architect accepted at 880b908dfdf449381571352c1ba7382342039fe1; ENTRY-006 must return one frozen-fixture classification after exact-head Linux validation. No resource signal may enter organism behavior.`
-- Current phase: `M2 target-free locomotion is qualified; unguided autonomous resource acquisition is under bounded test.`
+- Current status: `COMPLETE`
+- Acceptance: `ENTRY-006 exact-head Linux CI 33314318443 passed at c8df61f6fdf4a0dafe7d3b859ed57c845a535136. The frozen-fixture result is M2_UNGUIDED_RESOURCE_ACQUISITION_NOT_ESTABLISHED; no resource signal entered organism behavior.`
+- Current phase: `M2 target-free locomotion is qualified; unguided autonomous acquisition remains unestablished under the exact frozen DC-DEV-013 ecology.`
 - Expected or actual touched areas: `one ENTRY-006 assay/registration, compact evidence, scoped workflow, and governance only`
-- Immediate next action: `Complete exact frozen DC-DEV-013 ecology replay and required preservation; do not add sensing, temporal memory, chemotaxis, targets, gradients, tuning, or successor work.`
+- Immediate next action: `Awaiting reset and Architect review; do not add sensing, temporal memory, chemotaxis, targets, gradients, tuning, or successor work.`
 
 ## Temporary task-relevant facts
 
@@ -53,7 +53,7 @@
 
 ## Blockers
 
-- Exact-head ENTRY-006 CI and Architect review are required before any successor directive.
+- Architect review is required before any successor directive.
 
 ## Pending decisions
 

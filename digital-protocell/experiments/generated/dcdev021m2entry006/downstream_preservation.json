@@ -8,6 +8,6 @@
   "historical_classifications_changed": false,
   "plasticity": "LOCAL_PASS",
   "regulator": "LOCAL_PASS",
-  "status": "LOCAL_PASS_PENDING_EXACT_HEAD_WORKFLOW",
+  "status": "LOCAL_AND_EXACT_HEAD_PASS",
   "traction": "LOCAL_PASS"
 }

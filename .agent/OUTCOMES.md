@@ -590,3 +590,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: target-free locomotion alone does not establish autonomous resource acquisition in the frozen ecology; no sensory-bias mechanism is authorized by this result.
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
+
+## D-20260830-dcdev021-m2-entry006-unguided-resource-acquisition - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-ENTRY006-UNGUIDED-RESOURCE-ACQUISITION-EXACT-HEAD`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY006-UNGUIDED-RESOURCE-ACQUISITION`
+- Closed: `2026-08-30T09:35:00-04:00`
+- Acceptance: MET
+- Summary: `M2_UNGUIDED_RESOURCE_ACQUISITION_NOT_ESTABLISHED`. Under the exact frozen DC-DEV-013 ecology, target-free ENTRY-005 locomotion remains physically valid but does not improve finite N/F capture: unguided cumulative acquisition is `0.2948669468973028`, below ENTRY-003 `0.3550441352751993` and motor-off `0.35504413527520107` (about `-16.949%` versus each). Time-integrated exposure and final exposed patches are unchanged, so no contact benefit is established.
+- Changed areas: observer-only ENTRY-006 assay/registration, compact evidence, scoped workflow, and governance only; frozen M1/V4, chemistry-core, phase1-certifier, intrinsic exploration, actuator, traction, plasticity, resource boundary, reserve, production selection, and PR #44 remain unchanged.
+- Validation:
+  - Resource signal remains observer-only; no resource center, radius, or inventory enters exploration, intrinsic dynamics, adaptation, motor, or traction - PASSED
+  - ENTRY-005 locomotion, A-to-W closure, R invariance, finite-resource conservation, empty-sham specificity, rotation, and centroid artifact exclusion - PASSED
+  - Historical 10% acquisition and contact-benefit criteria - FAILED as preregistered valid negative results
+  - Canonical D-087 boundary and regulator, plasticity, contact, contact-regulation, finite-resource, traction, D-088, D-091, and evolution preservation - PASSED
+  - Exact-head Linux CI `33314318443` at `c8df61f6fdf4a0dafe7d3b859ed57c845a535136`; artifact `sha256:a350ff42ccdd99d8b025024a5229136d8c5157b187e84d58e85a7397d3867f74` - PASSED
+  - Architect review - PENDING
+- Remaining risks: unguided exploration alone does not establish autonomous resource acquisition in the frozen ecology; no sensory-bias mechanism is authorized by this evidence.
+- Blockers: Architect review; no successor directive is authorized.
+- Follow-up directive: none

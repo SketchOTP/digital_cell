@@ -1,0 +1,8 @@
+{
+  "artifact_id": 9733005048,
+  "artifact_sha256": "a350ff42ccdd99d8b025024a5229136d8c5157b187e84d58e85a7397d3867f74",
+  "head": "c8df61f6fdf4a0dafe7d3b859ed57c845a535136",
+  "run": 33314318443,
+  "status": "SUCCESS",
+  "workflow": "DC-DEV-021 M2 ENTRY-006 unguided resource acquisition feasibility"
+}

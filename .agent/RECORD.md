@@ -95,3 +95,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: This isolates whether unguided movement itself improves capture before any sensory-bias architecture is considered.
 - Affected areas: observer-only assay composition, compact evidence, scoped workflow, and governance; no production biology or resource behavior is installed.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY006-UNGUIDED-ACQUISITION-RESULT-001
+
+- Date: 2026-08-30
+- Record or decision ID: DEC-DCDEV021-ENTRY006-UNGUIDED-ACQUISITION-RESULT-001
+- Status: ACTIVE
+- Decision or event: The exact-head frozen DC-DEV-013 replay confirms `M2_UNGUIDED_RESOURCE_ACQUISITION_NOT_ESTABLISHED` for ENTRY-005 target-free locomotion without resource information.
+- Rationale: Exploration remains energetic, conservative, substrate-mediated, and rotationally equivalent, but it obtains `0.2948669468973028` cumulative N/F versus approximately `0.3550441352752` for both frozen controls and does not change physical exposure. The negative result does not authorize sensing, chemotaxis, tuning, or any successor implementation.
+- Affected areas: ENTRY-006 observer-only evidence and governance; no production behavior or frozen scientific source.
+- Supersedes record: DEC-DCDEV021-ENTRY006-UNGUIDED-ACQUISITION-001
