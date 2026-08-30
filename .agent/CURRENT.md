@@ -3,23 +3,23 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-30T00:40:00-04:00`
+- Last updated: `2026-08-30T01:30:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260830-dcdev021-m2-entry005-refractory-motor-decoupling`
-- External directive ID: `DC-DEV-021-M2-ENTRY-005-REFRACTORY-MOTOR-DECOUPLING-FEASIBILITY-001`
-- Objective: `Test one opt-in composition where frozen local adaptation remains refractory inside ENTRY-003 intrinsic dynamics while raw intrinsic activity drives the accepted A-funded motor.`
-- Current status: `COMPLETE`
-- Acceptance: `Exact-head Linux workflow 33292817570 passed at e8349df8c1ef839b23e97d4bfe7c5b75b00b0b5a with M2_REFRACTORY_MOTOR_DECOUPLING_EXPLORATION_QUALIFIED. The uploaded compact artifact has sha256:654af0ac349ca13662416593bb152f581672de370eca75fcbdc382a458c80194. Architect review remains pending.`
-- Current phase: `M2 intrinsic regulatory dynamics and target-free retained exploration are qualified; autonomous resource acquisition remains not established.`
-- Expected or actual touched areas: `new opt-in refractory-only motor composition in intrinsic_exploration, focused tests/example, compact evidence, scoped workflow, and governance only`
-- Immediate next action: `Awaiting reset and Architect review; do not add resource sensing, chemotaxis, targets, gradients, tuning, or successor work.`
+- Local directive ID: `D-20260830-dcdev021-m2-entry006-unguided-resource-acquisition`
+- External directive ID: `DC-DEV-021-M2-ENTRY-006-UNGUIDED-RESOURCE-ACQUISITION-FEASIBILITY-001`
+- Objective: `Determine whether the accepted ENTRY-005 target-free exploratory process improves finite N/F acquisition through the existing DC-DEV-008 boundary while all resource signals remain observer-only.`
+- Current status: `IN_PROGRESS`
+- Acceptance: `ENTRY-005 is Architect accepted at 880b908dfdf449381571352c1ba7382342039fe1; ENTRY-006 must return one frozen-fixture classification after exact-head Linux validation. No resource signal may enter organism behavior.`
+- Current phase: `M2 target-free locomotion is qualified; unguided autonomous resource acquisition is under bounded test.`
+- Expected or actual touched areas: `one ENTRY-006 assay/registration, compact evidence, scoped workflow, and governance only`
+- Immediate next action: `Complete exact frozen DC-DEV-013 ecology replay and required preservation; do not add sensing, temporal memory, chemotaxis, targets, gradients, tuning, or successor work.`
 
 ## Temporary task-relevant facts
 
 - M0 is closed; M1 is formally closed and frozen at `fb77f472b1519a9e0f713833efba5b1d403f4723`.
-- Production selection is `MaturationCoupledV4` with reserve OFF; M2 is active only under ENTRY-001.
+- Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-006 alone is now authorized.
 - PR #44 is the immutable M1 provenance stack and must remain open, draft, unmerged, and untouched.
 - The clean baseline is derived from `1e242f28152797b512e25cd56c7b718e45d6ca97`; accepted M1 evidence remains on Atlas.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
@@ -37,12 +37,12 @@
 - ENTRY-003 adds only the explicit opt-in `INTRINSIC_EXPLORATION_REGULATOR_SCHEMA_V1`. It uses one seed of exactly `FROZEN_K_STIMULUS * FROZEN_DT`, frozen neighbor/self-excitation/decay dynamics, and existing local adaptation; it reads no resource, world, target, gradient, observer, or viability state.
 - ENTRY-003 is Architect accepted as `M2_INTRINSIC_EXPLORATION_MECHANICALLY_INSUFFICIENT`: it records intrinsic activity switching and exact A-to-W closure with R unchanged, but no retained material-centroid displacement beyond frozen controls.
 - ENTRY-004's uninterrupted clone reconstruction has exact clutch-ledger parity. It identifies adaptation attenuation, not a traction-law mismatch, as the cause of zero intrinsic slip events; no actuation amplification or adaptation change is authorized.
-- ENTRY-005 is opt-in `INTRINSIC_EXPLORATION_REFRACTORY_MOTOR_SCHEMA_V1`: it retains the exact ENTRY-003 adaptation-inhibited excitation/update equations, but sends raw `activity_after` rather than `activity_after * (1 - adaptation)` to the already-qualified A-funded motor. It adds no numerical parameter, sensor, target, gradient, resource input, or reserve funding.
-- Autonomous resource acquisition, chemotaxis, target/gradient logic, reserve enablement, and M2 successor work remain unauthorized.
+- ENTRY-005 is Architect accepted as `M2_REFRACTORY_MOTOR_DECOUPLING_EXPLORATION_QUALIFIED`: its opt-in `INTRINSIC_EXPLORATION_REFRACTORY_MOTOR_SCHEMA_V1` retains adaptation-inhibited excitation/update equations but sends raw `activity_after` to the accepted A-funded motor. It adds no numerical parameter, sensor, target, gradient, resource input, or reserve funding.
+- ENTRY-006 reuses the exact DC-DEV-013 finite N/F geometry, inventory, horizon, tolerances, and DC-DEV-008 uptake while recording contact only as an observer. Chemotaxis, target/gradient logic, reserve enablement, and M2 successor work remain unauthorized.
 
 ## Last validation after adoption
 
-- Command or check: `Exact-head ENTRY-004 Linux workflow 33288018734 plus local focused regulatory-core and canonical D-087 preservation replay`
+- Command or check: `ENTRY-006 exact historical-fixture local replay`
 - Result: `PASSED`
 
 ## Risks
@@ -53,12 +53,12 @@
 
 ## Blockers
 
-- Architect review is required before any successor directive.
+- Exact-head ENTRY-006 CI and Architect review are required before any successor directive.
 
 ## Pending decisions
 
 - The V4 equations, D-087 boundary, conservation contracts, accepted M1 qualification, and ENTRY-001 actuator are frozen.
-- M2 autonomous spatial resource acquisition remains pending; no parameter search, reserve, recycling, salvage, sensor, target, gradient, resource seeking, or successor execution is authorized pending Architect review.
+- M2 autonomous resource acquisition remains unestablished; no parameter search, reserve, recycling, salvage, sensor, target, gradient, resource seeking, or successor execution is authorized pending Architect review.
 
 ## Status vocabulary
 

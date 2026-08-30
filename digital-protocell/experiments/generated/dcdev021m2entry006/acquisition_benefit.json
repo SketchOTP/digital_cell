@@ -1,0 +1,9 @@
+{
+  "entry003_control": 0.3550441352751993,
+  "minimum_relative_improvement": 0.1,
+  "motor_off_control": 0.35504413527520107,
+  "pass": false,
+  "relative_improvement_entry003": -0.1694921346363104,
+  "relative_improvement_motor_off": -0.16949213463631457,
+  "unguided": 0.2948669468973028
+}

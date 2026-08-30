@@ -1,0 +1,9 @@
+{
+  "entry003_final_exposed_patches": 2,
+  "entry003_time_integrated_exposed_patches": 19.19999999999977,
+  "motor_off_final_exposed_patches": 2,
+  "motor_off_time_integrated_exposed_patches": 19.19999999999977,
+  "pass": false,
+  "unguided_final_exposed_patches": 2,
+  "unguided_time_integrated_exposed_patches": 19.19999999999977
+}

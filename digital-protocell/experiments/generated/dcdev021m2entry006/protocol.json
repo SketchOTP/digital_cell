@@ -1,0 +1,26 @@
+{
+  "absolute_improvement_tolerance": 1e-12,
+  "assay_steps": 480,
+  "causal_step_order": [
+    "observer_only_contact_record",
+    "advance_entry005_intrinsic_exploration",
+    "existing_a_funded_stick_slip_mechanics",
+    "existing_dcdev008_uptake",
+    "record_material_resource_state"
+  ],
+  "directive": "DC-DEV-021-M2-ENTRY-006-UNGUIDED-RESOURCE-ACQUISITION-FEASIBILITY-001",
+  "entry_head": "880b908dfdf449381571352c1ba7382342039fe1",
+  "geometry_screening": false,
+  "historical_fixture": "DC-DEV-013 exact",
+  "initial_f_mass": 3.0,
+  "initial_n_mass": 3.0,
+  "minimum_relative_improvement": 0.1,
+  "parameter_screening": false,
+  "resource_center": [
+    4.8,
+    0.0
+  ],
+  "resource_radius": 1.5,
+  "settlement_steps": 5000,
+  "topology_size": 24
+}

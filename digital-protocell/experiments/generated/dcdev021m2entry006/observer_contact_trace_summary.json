@@ -1,0 +1,18 @@
+{
+  "classification": "OBSERVER_ONLY",
+  "local_contact_signal_calls_used_by_organism": 0,
+  "resource_center_reads_by_organism": 0,
+  "resource_inventory_reads_by_exploration": 0,
+  "resource_radius_reads_by_organism": 0,
+  "signal_is_never_supplied_to": [
+    "intrinsic_exploration",
+    "adaptation",
+    "motor",
+    "traction"
+  ],
+  "unguided": {
+    "entries": 1,
+    "exits": 0,
+    "trace_hash": "afdd061543f70b5d"
+  }
+}

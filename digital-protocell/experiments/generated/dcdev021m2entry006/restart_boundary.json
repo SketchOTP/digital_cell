@@ -1,0 +1,5 @@
+{
+  "affects_entry006_result": false,
+  "generic_full_mesh_restart": "KNOWN_FAIL",
+  "intrinsic_state_restart": "PASS (preserved ENTRY-003 contract)"
+}

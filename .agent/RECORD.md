@@ -85,3 +85,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The mechanism changes only the composition boundary: adaptation remains in the frozen intrinsic self-excitation/update equations while raw `activity_after` drives the already-qualified A-funded motor. The assay preserves exact material A-to-W accounting and R invariance, reaches the frozen clutch regime, and yields retained target-free exploration without any resource/target/gradient input.
 - Affected areas: additive regulatory-core composition, focused feasibility example, compact evidence, scoped workflow, and governance only.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY006-UNGUIDED-ACQUISITION-001
+
+- Date: 2026-08-30
+- Record or decision ID: DEC-DCDEV021-ENTRY006-UNGUIDED-ACQUISITION-001
+- Status: PROPOSED
+- Decision or event: The exact frozen DC-DEV-013 ecology is evaluated with ENTRY-005 target-free exploration and no resource signal delivered to organism behavior.
+- Rationale: This isolates whether unguided movement itself improves capture before any sensory-bias architecture is considered.
+- Affected areas: observer-only assay composition, compact evidence, scoped workflow, and governance; no production biology or resource behavior is installed.
+- Supersedes record: none

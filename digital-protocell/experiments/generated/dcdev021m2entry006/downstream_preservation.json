@@ -1,0 +1,13 @@
+{
+  "contact": "LOCAL_PASS",
+  "contact_regulation": "LOCAL_PASS",
+  "d088": "LOCAL_PASS",
+  "d091": "LOCAL_PASS",
+  "evolution_harness": "LOCAL_PASS",
+  "finite_resource": "LOCAL_PASS",
+  "historical_classifications_changed": false,
+  "plasticity": "LOCAL_PASS",
+  "regulator": "LOCAL_PASS",
+  "status": "LOCAL_PASS_PENDING_EXACT_HEAD_WORKFLOW",
+  "traction": "LOCAL_PASS"
+}

@@ -1,0 +1,15 @@
+{
+  "acquisition_benefit": false,
+  "artifact_exclusion": true,
+  "classification": "M2_UNGUIDED_RESOURCE_ACQUISITION_NOT_ESTABLISHED",
+  "contact_benefit": false,
+  "empty_specificity": true,
+  "energetic": true,
+  "entry005_locomotion": true,
+  "m2_autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "next_execution_started": false,
+  "passive_controls": true,
+  "resource_conservation": true,
+  "resource_signal_read_by_organism": false,
+  "rotation": true
+}

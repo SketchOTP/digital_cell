@@ -332,3 +332,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260829-dcdev021-m2-entry004-intrinsic-traction-transfer-audit
 - Status at issuance: ISSUED
+
+## D-20260830-dcdev021-m2-entry006-unguided-resource-acquisition
+
+- Issued: `2026-08-30T01:30:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-006-UNGUIDED-RESOURCE-ACQUISITION-FEASIBILITY-001`
+- Objective: Determine whether accepted target-free ENTRY-005 exploratory locomotion alone improves finite N/F capture through the unchanged DC-DEV-008 uptake boundary.
+- Scope: One frozen DC-DEV-013 ecology replay with required unguided and matched controls, observer-only contact records, compact evidence, scoped CI, and governance.
+- Exclusions: M1/V4, chemistry, phase1-certifier, intrinsic explorer, actuator, traction, plasticity, resource boundary, contact signal behavior, temporal memory, chemotaxis, target/gradient/planner/reward, tuning, reserve enablement, restart repair, PR #44 mutation, and successor execution.
+- Acceptance: One preregistered unguided-acquisition classification after ENTRY-005 locomotion, exact frozen ecology, observer-only resource signal, finite-resource conservation, M1/downstream preservation, and exact-head Linux CI.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260830-dcdev021-m2-entry005-refractory-motor-decoupling
+- Status at issuance: ISSUED

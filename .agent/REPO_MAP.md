@@ -24,6 +24,7 @@
 - `digital-protocell/examples/dcdev021_m2_entry003.rs` — preregistered resource-free intrinsic-exploration feasibility assay; it records a negative mechanical result without installing production resource-seeking behavior.
 - `digital-protocell/examples/dcdev021_m2_entry004.rs` — observer-only clone/free-proposal audit that compares ENTRY-001 clutch crossing to the adaptation-limited ENTRY-003 trajectory; it does not modify the explorer, actuator, traction, or production runtime.
 - `digital-protocell/examples/dcdev021_m2_entry005.rs` — preregistered resource-free feasibility assay for the opt-in refractory-only motor composition; it preserves ENTRY-003 dynamics while supplying raw intrinsic activity to the accepted A-funded motor.
+- `digital-protocell/examples/dcdev021_m2_entry006.rs` — preregistered observer-only composition of ENTRY-005 target-free exploration with the frozen DC-DEV-013 finite N/F ecology; resource contact is never an organism input.
 
 ## Interfaces and contracts
 
@@ -53,6 +54,7 @@
 - `digital-protocell/experiments/generated/dcdev021m2entry003/` — compact ENTRY-003 intrinsic-exploration feasibility evidence; dense trajectory ledgers remain on Atlas.
 - `digital-protocell/experiments/generated/dcdev021m2entry004/` — compact ENTRY-004 intrinsic-to-traction force-transfer evidence; dense per-vertex/per-step ledgers remain on Atlas.
 - `digital-protocell/experiments/generated/dcdev021m2entry005/` — compact ENTRY-005 refractory-only motor feasibility evidence; dense trajectories remain on Atlas.
+- `digital-protocell/experiments/generated/dcdev021m2entry006/` — compact ENTRY-006 unguided finite-resource acquisition evidence; dense trajectories remain on Atlas.
 - `digital-protocell/experiments/generated/dcdev001/` — DC-DEV-001A machine-readable decision artifacts.
 - `digital-protocell/experiments/generated/dcdev006/` — DC-DEV-006 local spatial-contact evidence artifacts.
 - `digital-protocell/experiments/generated/dcdev009/` — DC-DEV-009 force, displacement, coupling, and audit evidence artifacts.

@@ -569,3 +569,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: this establishes target-free retained intrinsic exploration only; resource-biased navigation and autonomous acquisition remain untested and unestablished.
 - Blockers: Architect review; no successor directive is authorized.
 - Follow-up directive: none
+
+## D-20260830-dcdev021-m2-entry006-unguided-resource-acquisition - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY006-UNGUIDED-RESOURCE-ACQUISITION`
+- Supersedes outcome: none
+- Closed: `2026-08-30T01:30:00-04:00`
+- Acceptance: PARTIAL
+- Summary: The exact frozen DC-DEV-013 ecology replay returns `M2_UNGUIDED_RESOURCE_ACQUISITION_NOT_ESTABLISHED`. ENTRY-005 produces retained movement and exact A-to-W closure without reading resource contact, but cumulative N/F acquisition is `0.2948669468973028`, below both ENTRY-003 and motor-off controls at approximately `0.3550441352752`; physical exposure is unchanged.
+- Changed areas: new observer-only ENTRY-006 assay/registration, compact evidence, scoped workflow, and governance only; chemistry-core, phase1-certifier, M1/V4, intrinsic explorer, actuator, traction, plasticity, resource boundary, reserve, and production selection remain unchanged.
+- Validation:
+  - Exact ENTRY-005 source authority and PR #44 provenance - PASSED
+  - Exact 5,000-step settlement and 480-step DC-DEV-013 ecology fixture - PASSED
+  - Resource signal disconnected from organism causality - PASSED
+  - ENTRY-005 unguided locomotion, A-to-W closure, and R invariance - PASSED
+  - Finite N/F world-to-organism conservation and empty-resource specificity - PASSED
+  - Historical 10% acquisition benefit and physical contact benefit - FAILED as preregistered negative result
+  - Rotation and material/vertex centroid artifact exclusion - PASSED
+  - Canonical D-087, downstream preservation, governance validation, and exact-head Linux CI - PENDING
+- Remaining risks: target-free locomotion alone does not establish autonomous resource acquisition in the frozen ecology; no sensory-bias mechanism is authorized by this result.
+- Blockers: exact-head Linux CI and Architect review.
+- Follow-up directive: none

@@ -1,0 +1,112 @@
+{
+  "pass": true,
+  "rotated": {
+    "a_spent": 18.195567678895674,
+    "a_to_w_residual": 3.552713678800501e-14,
+    "accepted_steps": 480,
+    "arm": "UNGUIDED_EXPLORER",
+    "contact_duration_steps": 480,
+    "cumulative_acquisition": 0.2948669468973028,
+    "dominant_patch_changes": 12,
+    "f_delivered": 0.1474334734486514,
+    "f_world_loss": 0.1474334734486514,
+    "final_exposed_patches": 2,
+    "final_intrinsic_state_hash": "4fa2583a053704cf",
+    "final_material_centroid": [
+      -0.011144795032333546,
+      -0.0029862388287228195
+    ],
+    "final_mesh_hash": "d7e3e107caa7a52a",
+    "final_vertex_centroid": [
+      -0.011144795032332825,
+      -0.002986238828723046
+    ],
+    "initial_material_centroid": [
+      7.004734443304563e-16,
+      1.0924050143724973e-15
+    ],
+    "initial_vertex_centroid": [
+      9.251858538542972e-16,
+      1.3322676295501878e-15
+    ],
+    "material_vertex_centroid_agreement": 3.608224830031759e-16,
+    "maximum_active_tension": 1.7144697718247224,
+    "maximum_exposed_patches": 2,
+    "maximum_resource_conservation_error": 0.0,
+    "n_delivered": 0.1474334734486514,
+    "n_world_loss": 0.1474334734486514,
+    "net_displacement": 0.011537940832528154,
+    "observer_contact_entries": 1,
+    "observer_contact_exits": 0,
+    "observer_exposed_patch_trace_hash": "afdd061543f70b5d",
+    "path_length": 0.03155137650964123,
+    "reserve_after": 0.0,
+    "reserve_before": 0.0,
+    "resource_conservation_pass": true,
+    "seed": 1,
+    "slipping_contacts": 244,
+    "stuck_contacts": 11276,
+    "time_integrated_exposed_patches": 19.19999999999977,
+    "vertex_net_displacement": 0.011537940832527793,
+    "w_generated": 18.19556767889568,
+    "world_f_remaining": 2.8525665265513513,
+    "world_n_remaining": 2.8525665265513513
+  },
+  "rotated_resource_center": [
+    -4.8,
+    -0.0
+  ],
+  "rotation_tolerance": 1e-9,
+  "unrotated": {
+    "a_spent": 18.195567678895674,
+    "a_to_w_residual": 3.552713678800501e-14,
+    "accepted_steps": 480,
+    "arm": "UNGUIDED_EXPLORER",
+    "contact_duration_steps": 480,
+    "cumulative_acquisition": 0.2948669468973028,
+    "dominant_patch_changes": 12,
+    "f_delivered": 0.1474334734486514,
+    "f_world_loss": 0.1474334734486514,
+    "final_exposed_patches": 2,
+    "final_intrinsic_state_hash": "4fa2583a053704cf",
+    "final_material_centroid": [
+      0.011144795032333546,
+      0.0029862388287228195
+    ],
+    "final_mesh_hash": "734ad2a16c97394e",
+    "final_vertex_centroid": [
+      0.011144795032332825,
+      0.002986238828723046
+    ],
+    "initial_material_centroid": [
+      -7.004734443304563e-16,
+      -1.0924050143724973e-15
+    ],
+    "initial_vertex_centroid": [
+      -9.251858538542972e-16,
+      -1.3322676295501878e-15
+    ],
+    "material_vertex_centroid_agreement": 3.608224830031759e-16,
+    "maximum_active_tension": 1.7144697718247224,
+    "maximum_exposed_patches": 2,
+    "maximum_resource_conservation_error": 0.0,
+    "n_delivered": 0.1474334734486514,
+    "n_world_loss": 0.1474334734486514,
+    "net_displacement": 0.011537940832528154,
+    "observer_contact_entries": 1,
+    "observer_contact_exits": 0,
+    "observer_exposed_patch_trace_hash": "afdd061543f70b5d",
+    "path_length": 0.03155137650964123,
+    "reserve_after": 0.0,
+    "reserve_before": 0.0,
+    "resource_conservation_pass": true,
+    "seed": 1,
+    "slipping_contacts": 244,
+    "stuck_contacts": 11276,
+    "time_integrated_exposed_patches": 19.19999999999977,
+    "vertex_net_displacement": 0.011537940832527793,
+    "w_generated": 18.19556767889568,
+    "world_f_remaining": 2.8525665265513513,
+    "world_n_remaining": 2.8525665265513513
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-006-UNGUIDED-RESOURCE-ACQUISITION-FEASIBILITY-001",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "unguided_explorer.json",
+    "entry003_control.json",
+    "motor_off_control.json",
+    "zero_a_control.json",
+    "empty_sham.json",
+    "acquisition_benefit.json",
+    "contact_benefit.json",
+    "observer_contact_trace_summary.json",
+    "rotation_check.json",
+    "material_closure.json",
+    "resource_conservation.json",
+    "restart_boundary.json",
+    "m1_preservation.json",
+    "downstream_preservation.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "source_hashes": {
+    "contractility": "588b40fe26029232",
+    "intrinsic_exploration": "908f03ae9f77bfac",
+    "spatial_resource": "47e9d8394c9e4896",
+    "traction": "ec1ad2b699ca7461"
+  }
+}

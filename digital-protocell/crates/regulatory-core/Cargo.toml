@@ -79,3 +79,7 @@ path = "../../examples/dcdev021_m2_entry004.rs"
 [[example]]
 name = "dcdev021_m2_entry005"
 path = "../../examples/dcdev021_m2_entry005.rs"
+
+[[example]]
+name = "dcdev021_m2_entry006"
+path = "../../examples/dcdev021_m2_entry006.rs"

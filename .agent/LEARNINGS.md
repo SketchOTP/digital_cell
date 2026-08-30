@@ -157,3 +157,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-005 preregistered refractory-only motor feasibility assay; exact-head Linux CI passed and Architect review is pending.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY006-001
+
+- Learning ID: L-DCDEV021-ENTRY006-001
+- Date: 2026-08-30
+- Fact or lesson: In the exact frozen DC-DEV-013 finite-resource geometry, qualified target-free ENTRY-005 movement remains materially and energetically conservative but lowers cumulative N/F capture below matched nonexploring controls without changing geometric exposure. Unguided locomotion alone therefore does not establish a resource-acquisition benefit on this fixed assay.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry006.rs` and `digital-protocell/experiments/generated/dcdev021m2entry006/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-006 preregistered unguided finite-resource acquisition assay; exact-head Linux CI and Architect review pending.
+- Supersedes learning: none
