@@ -1,0 +1,28 @@
+{
+  "existing_history_state_sufficient": false,
+  "existing_history_states": [
+    {
+      "influences_a_funded_actuator": true,
+      "input": "current local contact signal",
+      "local": true,
+      "name": "ContinuityNetworkV1.state.activity",
+      "recent_vs_current_comparator": false,
+      "remesh_continuity": true,
+      "resource_affects_state": true,
+      "update": "neighbor diffusion plus stimulus integration minus decay"
+    },
+    {
+      "influences_a_funded_actuator": false,
+      "influences_historical_r_funded_actuator": true,
+      "input": "local regulatory activity and accepted dt",
+      "local": true,
+      "name": "PlasticityStateV1.adaptation",
+      "recent_vs_current_comparator": false,
+      "remesh_continuity": true,
+      "resource_affects_state_indirectly": true,
+      "update": "slow load/recovery"
+    }
+  ],
+  "nondirectional_persistence_or_reorientation_control": "ABSENT",
+  "reason": "current regulatory output changes local present-edge tension magnitude. It contains no heading, persistence, reorientation, or temporal-comparison control dimension, and plasticity is not composed with the A-funded actuator."
+}

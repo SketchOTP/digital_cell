@@ -457,12 +457,12 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head remote CI and architect review.
 - Follow-up directive: none
 
-## D-20260829-dcdev021-m2-entry001-r1-d087-preservation-harness-repair - QUALIFIED
+## D-20260829-dcdev021-m2-entry001-r1-d087-preservation-harness-repair - COMPLETE
 
 - Outcome ID: `OUT-DCDEV021-ENTRY001-R1-D087-PRESERVATION-HARNESS-REPAIR`
-- Supersedes outcome: `M2_ACTIVATED_ENERGY_CONTRACTILITY_FEASIBILITY_INVALID` as a qualification-integrity stop only; it does not supersede the preserved failed CI record.
+- Supersedes outcome: none
 - Closed: `2026-08-29T20:18:00-04:00`
-- Acceptance: `M2_ACTIVATED_ENERGY_CONTRACTILITY_FEASIBILITY_QUALIFIED`
+- Acceptance: MET
 - Summary: The D-087 preservation harness incorrectly used `MaturationCoupledV4` as the R9-R3 chemistry selector. The repaired canonical mapping uses ConservativeV3 chemistry plus the independent V4 flag. Immutable baseline and M2 selector-repair replay both returned V2 `8/8`, V3 `8/8`, and V4 `[true,true,false,true,true,true,true,true]`. The existing A-funded actuator assay remained qualified and all required downstream preservation checks passed.
 - Changed areas: scoped workflow, compact evidence, governance, and documentation only; chemistry-core, phase1-certifier, V4/M1 physiology, reserve behavior, actuator law, and traction law were unchanged by R1.
 - Validation:

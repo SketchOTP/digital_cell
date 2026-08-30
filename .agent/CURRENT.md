@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-29T15:42:00-04:00`
+- Last updated: `2026-08-29T21:06:33-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260829-dcdev021-m2-entry001-r1-d087-preservation-harness-repair`
-- External directive ID: `DC-DEV-021-M2-ENTRY-001-R1-D087-PRESERVATION-HARNESS-REPAIR-001`
-- Objective: `Repair only the D-087 selector harness, replay the canonical V2/V3/V4 boundary on baseline and M2 heads, and finalize existing ENTRY-001 evidence.`
-- Current status: `COMPLETE`
-- Acceptance: `M1 remains Architect-closed and frozen. ENTRY-001-R1 exact-head Linux validation passed at 39901a0 with canonical baseline/M2 D-087 parity, actuator qualification, and all required downstream preservation.`
-- Current phase: `M2 ENTRY-001-R1 preservation-harness repair; autonomous resource acquisition is not established.`
-- Expected or actual touched areas: `scoped workflow, compact evidence, and current governance only`
-- Immediate next action: `Await Architect acceptance; do not begin resource-contact sensing/acquisition or successor M2 work.`
+- Local directive ID: `D-20260829-dcdev021-m2-entry002-temporal-navigation-substrate-audit`
+- External directive ID: `DC-DEV-021-M2-ENTRY-002-TEMPORAL-NAVIGATION-SUBSTRATE-AUDIT-001`
+- Objective: `Observe whether the accepted M2 stack already contains endogenous exploration, causally available resource history, and a nondirectional persistence/reorientation control; do not implement navigation.`
+- Current status: `VALIDATING`
+- Acceptance: `One evidence-backed architecture classification with no production behavior or frozen scientific-source change, then exact-head Linux audit validation.`
+- Current phase: `M2 ENTRY-002 temporal-navigation substrate audit; autonomous resource acquisition is not established.`
+- Expected or actual touched areas: `observer-only audit example, example registration, scoped workflow, compact evidence, and governance only`
+- Immediate next action: `Complete exact-head audit validation; do not implement chemotaxis, memory, sensing, or resource seeking.`
 
 ## Temporary task-relevant facts
 
@@ -30,16 +30,16 @@
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
 - Implementation work is on `strategy/dc-dev-016-metabolic-break-even` based on `strategy/dc-dev-015-metabolic-restoration-audit`.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
-- M2 ENTRY-001 starts from `baseline/m1-v4-closed` at `d76481c785e9eec361df3fa0cd03c512b521639c`.
+- M2 ENTRY-001 starts from `baseline/m1-v4-closed` at `d76481c785e9eec361df3fa0cd03c512b521639c`; ENTRY-002 starts at accepted ENTRY-001 head `54f3af09804a9accd845dfcae2dfce13d1918b7c`.
 - The opt-in `ACTIVATED_ENERGY_CONTRACTILITY_SCHEMA_V1` path is V4-only, reuses frozen DC-DEV-004 constants, spends absolute A into W after accepted mechanics, and leaves R-funded APIs unchanged.
 - The baseline CI `33271509819` and ENTRY-001 CI `33278000813` D-087 sub-runs are invalid preservation-harness evidence: both passed `MaturationCoupledV4` to the chemistry selector, which accepts only HistoricalV1, ConservativeV2, or ConservativeV3 and otherwise resolves to HistoricalV1. Canonical V4 selection is `DCDEV020R9R3_CONTRACT=ConservativeV3`, `DCDEV020R9R3_RESERVE=0`, and `DCDEV020M1REPLAN002R1_V4=1`.
+- ENTRY-002’s local observer replay classifies the direct A-funded instantaneous-contact route as still negative and resource-independent exploration as not established. This is audit evidence only, pending exact-head validation.
 - Autonomous resource acquisition, chemotaxis, target/gradient logic, reserve enablement, and M2 successor work remain unauthorized.
 
 ## Last validation after adoption
 
-- Command or check: `Exact-head Linux post-M1 clean baseline workflow 33271104939 at 5e28762d0757bfa23b91820115b5893d0ef6d82a`
-- Result: `PENDING`
-- Current command: `Exact-head Linux ENTRY-001-R1 workflow 33282801415 — SUCCESS at 39901a01ce17f42826351278a4321e65b1a99780; artifact sha256:74a537d379b5ebd9d50c72daa1e09fd604ff3e1c8c4b11c2f61138d01e22d72f`
+- Command or check: `cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry002 -- experiments/generated/dcdev021m2entry002`
+- Result: `PASSED`
 
 ## Risks
 
@@ -49,12 +49,12 @@
 
 ## Blockers
 
-- No scientific blocker is known. ENTRY-001 actuator qualification is complete pending Architect acceptance; autonomous resource acquisition remains unestablished.
+- The audit must not convert the absence of exploration into an implementation authorization. Architect review is required after exact-head evidence.
 
 ## Pending decisions
 
-- The V4 equations, D-087 boundary, conservation contracts, and accepted M1 qualification are frozen; only baseline integration is in scope.
-- M2 autonomous spatial resource acquisition is pending Architect baseline acceptance; no parameter search, reserve, recycling, salvage, or scientific change is authorized.
+- The V4 equations, D-087 boundary, conservation contracts, accepted M1 qualification, and ENTRY-001 actuator are frozen.
+- M2 autonomous spatial resource acquisition remains pending; no parameter search, reserve, recycling, salvage, memory, sensor, target, gradient, or scientific behavior change is authorized.
 
 ## Status vocabulary
 

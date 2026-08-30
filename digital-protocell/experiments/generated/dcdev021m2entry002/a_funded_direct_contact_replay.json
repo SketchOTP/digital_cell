@@ -1,0 +1,157 @@
+{
+  "A_ACTIVE_CONTACT": {
+    "activated_spent": 3.5731755253694164,
+    "arm": "A_ACTIVE_CONTACT",
+    "contact_duration_steps": 480,
+    "contact_signal_range": {
+      "max": 2.0,
+      "max_step_delta": 0.0,
+      "min": 2.0
+    },
+    "cumulative_acquisition": 0.2568384929447374,
+    "f_delivered": 0.1284192464723687,
+    "final_mesh_hash": "eb71f3aa26a44062",
+    "material_centroid_displacement": 0.00020807125249111606,
+    "material_vertex_displacement_agreement": 1.560980077836005e-16,
+    "maximum_conservation_error": 0.0,
+    "maximum_funded_tension": 1.599940578024594,
+    "maximum_regulatory_activity": 0.799970289012297,
+    "n_delivered": 0.1284192464723687,
+    "reserve_after": 0.0,
+    "reserve_before": 0.0,
+    "slipping_contacts": 20,
+    "stuck_contacts": 11500,
+    "substrate_work": -0.021339577702966052,
+    "time_integrated_exposed_patches": 19.19999999999977,
+    "uptake_range": {
+      "max": 0.000585759329215509,
+      "max_step_delta": 5.879975644648705e-6,
+      "min": 0.0005079193529809124
+    },
+    "vertex_centroid_displacement": 0.00020807125249095996
+  },
+  "EMPTY_SHAM": {
+    "activated_spent": 0.0,
+    "arm": "EMPTY_SHAM",
+    "contact_duration_steps": 0,
+    "contact_signal_range": {
+      "max": 0.0,
+      "max_step_delta": 0.0,
+      "min": 0.0
+    },
+    "cumulative_acquisition": 0.0,
+    "f_delivered": 0.0,
+    "final_mesh_hash": "285c20d5ac163171",
+    "material_centroid_displacement": 0.0,
+    "material_vertex_displacement_agreement": 0.0,
+    "maximum_conservation_error": 0.0,
+    "maximum_funded_tension": 0.0,
+    "maximum_regulatory_activity": 0.0,
+    "n_delivered": 0.0,
+    "reserve_after": 0.0,
+    "reserve_before": 0.0,
+    "slipping_contacts": 0,
+    "stuck_contacts": 11520,
+    "substrate_work": 0.0,
+    "time_integrated_exposed_patches": 0.0,
+    "uptake_range": {
+      "max": 0.0,
+      "max_step_delta": 0.0,
+      "min": 0.0
+    },
+    "vertex_centroid_displacement": 0.0
+  },
+  "MOTOR_OFF": {
+    "activated_spent": 0.0,
+    "arm": "MOTOR_OFF",
+    "contact_duration_steps": 480,
+    "contact_signal_range": {
+      "max": 2.0,
+      "max_step_delta": 0.0,
+      "min": 2.0
+    },
+    "cumulative_acquisition": 0.26717236354581697,
+    "f_delivered": 0.13358618177290849,
+    "final_mesh_hash": "37736eefc6206917",
+    "material_centroid_displacement": 1.30258868846742e-16,
+    "material_vertex_displacement_agreement": 3.061330284204505e-17,
+    "maximum_conservation_error": 0.0,
+    "maximum_funded_tension": 0.0,
+    "maximum_regulatory_activity": 0.799970289012297,
+    "n_delivered": 0.13358618177290849,
+    "reserve_after": 0.0,
+    "reserve_before": 0.0,
+    "slipping_contacts": 0,
+    "stuck_contacts": 11520,
+    "substrate_work": -1.6277340635136395e-19,
+    "time_integrated_exposed_patches": 19.19999999999977,
+    "uptake_range": {
+      "max": 0.000585759329215509,
+      "max_step_delta": 1.259173569826029e-7,
+      "min": 0.0005284403990964462
+    },
+    "vertex_centroid_displacement": 9.964556600469696e-17
+  },
+  "SENSOR_OFF_A_FUNDED": {
+    "activated_spent": 0.0,
+    "arm": "SENSOR_OFF_A_FUNDED",
+    "contact_duration_steps": 0,
+    "contact_signal_range": {
+      "max": 0.0,
+      "max_step_delta": 0.0,
+      "min": 0.0
+    },
+    "cumulative_acquisition": 0.26717236354581697,
+    "f_delivered": 0.13358618177290849,
+    "final_mesh_hash": "37736eefc6206917",
+    "material_centroid_displacement": 1.30258868846742e-16,
+    "material_vertex_displacement_agreement": 3.061330284204505e-17,
+    "maximum_conservation_error": 0.0,
+    "maximum_funded_tension": 0.0,
+    "maximum_regulatory_activity": 0.0,
+    "n_delivered": 0.13358618177290849,
+    "reserve_after": 0.0,
+    "reserve_before": 0.0,
+    "slipping_contacts": 0,
+    "stuck_contacts": 11520,
+    "substrate_work": -1.6277340635136395e-19,
+    "time_integrated_exposed_patches": 0.0,
+    "uptake_range": {
+      "max": 0.000585759329215509,
+      "max_step_delta": 1.259173569826029e-7,
+      "min": 0.0005284403990964462
+    },
+    "vertex_centroid_displacement": 9.964556600469696e-17
+  },
+  "ZERO_A": {
+    "activated_spent": 0.0,
+    "arm": "ZERO_A",
+    "contact_duration_steps": 480,
+    "contact_signal_range": {
+      "max": 2.0,
+      "max_step_delta": 0.0,
+      "min": 2.0
+    },
+    "cumulative_acquisition": 0.26717236354581697,
+    "f_delivered": 0.13358618177290849,
+    "final_mesh_hash": "7f19d2301ccca527",
+    "material_centroid_displacement": 2.6684702641160243e-16,
+    "material_vertex_displacement_agreement": 2.483433093345165e-16,
+    "maximum_conservation_error": 0.0,
+    "maximum_funded_tension": 0.0,
+    "maximum_regulatory_activity": 0.799970289012297,
+    "n_delivered": 0.13358618177290849,
+    "reserve_after": 0.0,
+    "reserve_before": 0.0,
+    "slipping_contacts": 0,
+    "stuck_contacts": 11520,
+    "substrate_work": 1.1315175287294795e-16,
+    "time_integrated_exposed_patches": 19.19999999999977,
+    "uptake_range": {
+      "max": 0.000585759329215509,
+      "max_step_delta": 1.259173569826029e-7,
+      "min": 0.0005284403990964462
+    },
+    "vertex_centroid_displacement": 1.8503717077085926e-17
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "classification": "M2_TEMPORAL_NAVIGATION_EXPLORATION_SUBSTRATE_INSUFFICIENT",
+  "compact_evidence": [
+    "protocol.json",
+    "source_hashes.json",
+    "dcdev013_forensic.json",
+    "a_funded_direct_contact_replay.json",
+    "resource_independent_exploration.json",
+    "temporal_resource_observability.json",
+    "history_and_control_inventory.json",
+    "qualification.json"
+  ],
+  "dense_evidence_root": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev021m2entry002/",
+  "dense_trajectory_ledgers_committed": false,
+  "directive": "DC-DEV-021-M2-ENTRY-002-TEMPORAL-NAVIGATION-SUBSTRATE-AUDIT-001",
+  "entry_head": "54f3af09804a9accd845dfcae2dfce13d1918b7c"
+}

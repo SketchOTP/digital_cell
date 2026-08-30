@@ -45,6 +45,7 @@
 - `digital-protocell/experiments/generated/dcdev020m1closure001/m1_closure_manifest.json` — compact accepted M1 closure reference retained without the dense evidence archive.
 - `digital-protocell/experiments/generated/dcdev020postm1baseline001/` — compact clean-baseline inventory, manifest, and validation evidence.
 - `digital-protocell/experiments/generated/dcdev021m2entry001/` — compact ENTRY-001 feasibility evidence, populated by exact-head Linux validation.
+- `digital-protocell/experiments/generated/dcdev021m2entry002/` — compact observer-only ENTRY-002 temporal-navigation substrate-audit evidence; dense per-step ledgers remain on Atlas.
 - `digital-protocell/experiments/generated/dcdev001/` — DC-DEV-001A machine-readable decision artifacts.
 - `digital-protocell/experiments/generated/dcdev006/` — DC-DEV-006 local spatial-contact evidence artifacts.
 - `digital-protocell/experiments/generated/dcdev009/` — DC-DEV-009 force, displacement, coupling, and audit evidence artifacts.

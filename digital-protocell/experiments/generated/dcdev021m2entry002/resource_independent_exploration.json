@@ -1,0 +1,15 @@
+{
+  "accepted_mechanics_steps": 480,
+  "activated_spent": 0.0,
+  "classification": "NOT_ESTABLISHED",
+  "forced_activity_pattern": false,
+  "heading_autocorrelation": null,
+  "maximum_active_tension": 0.0,
+  "maximum_regulatory_activity": 0.0,
+  "net_displacement": 0.0,
+  "path_length": 0.0,
+  "plasticity_state_exists_but_is_not_composed_with_a_funded_actuator": true,
+  "reorientation_events": 0,
+  "resource_patch_present": false,
+  "vertex_net_displacement": 0.0
+}

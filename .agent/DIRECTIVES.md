@@ -11,8 +11,8 @@
 - Acceptance: `M2_ACTIVATED_ENERGY_CONTRACTILITY_FEASIBILITY_QUALIFIED` only after the explicit A-funded path and matched feasibility controls pass with exact-head Linux validation and preserved M1/downstream behavior.
 - Risk class: NORMAL
 - Relationship: new
-- Related directive: `DC-DEV-020-POST-M1-BASELINE-001-CLEAN-CAPABILITY-BASELINE-001`
-- Status at issuance: `ISSUED`
+- Related directive: none
+- Status at issuance: ISSUED
 
 After adoption, this append-only ledger records project directives issued by the user to the AI coder. The adopted project records those directives locally.
 
@@ -274,5 +274,19 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Acceptance: `M2_ACTIVATED_ENERGY_CONTRACTILITY_FEASIBILITY_QUALIFIED` only if canonical baseline and M2 D-087 results are exactly V2 8/8, V3 8/8, and V4 `[true,true,false,true,true,true,true,true]`, actuator evidence is preserved, downstream foundations pass, and exact-head Linux CI succeeds.
 - Risk class: NORMAL
 - Relationship: amends
-- Related directive: `D-20260829-dcdev021-m2-entry001-activated-energy-contractility`
-- Status at issuance: `ISSUED`
+- Related directive: D-20260829-dcdev021-m2-entry001-activated-energy-contractility
+- Status at issuance: ISSUED
+
+## D-20260829-dcdev021-m2-entry002-temporal-navigation-substrate-audit
+
+- Issued: `2026-08-29T21:06:33-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-002-TEMPORAL-NAVIGATION-SUBSTRATE-AUDIT-001`
+- Objective: Determine whether the accepted reserve-OFF V4 M2 stack already supplies resource-independent exploration, causally available temporal resource information, lawful history state, and a target-free persistence or reorientation control dimension.
+- Scope: Observer-only DC-DEV-013 forensic reconstruction; exact A-funded direct substitution; resource-free exploration, temporal-observability, history-state, and control-dimension inventories; compact evidence, governance, and one scoped Linux workflow.
+- Exclusions: Chemistry, phase-1 certification, regulator/plasticity/contact/resource/actuator/traction behavior, new memory, sensor, target, gradient, policy, chemotaxis, parameter tuning, reserve enablement, M1 work, PR #44 modification, and successor implementation.
+- Acceptance: One preregistered architecture classification with frozen M1 and accepted ENTRY-001 behavior preserved, exact-head Linux evidence, and architect review.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260829-dcdev021-m2-entry001-r1-d087-preservation-harness-repair
+- Status at issuance: ISSUED

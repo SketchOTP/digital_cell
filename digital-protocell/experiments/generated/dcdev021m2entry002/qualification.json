@@ -1,0 +1,16 @@
+{
+  "causally_available_before_actuation": false,
+  "classification": "M2_TEMPORAL_NAVIGATION_EXPLORATION_SUBSTRATE_INSUFFICIENT",
+  "direct_contact_route_benefit": false,
+  "directive": "DC-DEV-021-M2-ENTRY-002-TEMPORAL-NAVIGATION-SUBSTRATE-AUDIT-001",
+  "existing_history_state_sufficient": false,
+  "m2_autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "new_memory_implemented": false,
+  "new_navigation_policy_implemented": false,
+  "new_sensor_implemented": false,
+  "nondirectional_persistence_reorientation_control": "ABSENT",
+  "production_behavior_changed": false,
+  "resource_independent_exploration": "NOT_ESTABLISHED",
+  "scientific_source_changed": false,
+  "temporal_resource_variation": "ABSENT"
+}

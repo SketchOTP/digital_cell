@@ -1,0 +1,32 @@
+{
+  "causal_order": [
+    "observe_local_contact",
+    "advance_existing_regulator",
+    "apply_opt_in_a_funded_contractility_and_existing_stick_slip",
+    "execute_existing_local_uptake"
+  ],
+  "dcdev013_environment": {
+    "assay_steps": 480,
+    "center": [
+      4.8,
+      0.0
+    ],
+    "f_mass": 3.0,
+    "n_mass": 3.0,
+    "radius": 1.5,
+    "settlement_steps": 5000
+  },
+  "directive": "DC-DEV-021-M2-ENTRY-002-TEMPORAL-NAVIGATION-SUBSTRATE-AUDIT-001",
+  "entry_head": "54f3af09804a9accd845dfcae2dfce13d1918b7c",
+  "forbidden": [
+    "target_coordinate",
+    "gradient_vector",
+    "new_sensor",
+    "new_memory",
+    "navigation_policy",
+    "resource_seeking"
+  ],
+  "observer_only": true,
+  "production_contract": "MaturationCoupledV4",
+  "production_reserve": "OFF"
+}

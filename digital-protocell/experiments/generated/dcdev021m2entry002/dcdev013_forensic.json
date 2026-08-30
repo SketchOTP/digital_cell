@@ -1,0 +1,14 @@
+{
+  "causal_order": [
+    "observe_local_contact",
+    "advance_existing_regulator",
+    "apply_opt_in_a_funded_contractility_and_existing_stick_slip",
+    "execute_existing_local_uptake"
+  ],
+  "failure_mechanism": "instantaneous binary contact held two exposed patches for the entire frozen horizon; it raised local activity and reserve-funded tension but did not increase contact duration or exposed-patch integral, while reducing acquisition by 2.7 percent versus both matched controls",
+  "historical_active_acquisition": 0.35420146800801444,
+  "historical_active_relative_difference": -0.027179758450616476,
+  "historical_classification": "DCDEV013_RESOURCE_CONTACT_FEEDING_NOT_ESTABLISHED",
+  "historical_motor_off_acquisition": 0.3640975515105316,
+  "historical_sensor_off_acquisition": 0.3640975515105316
+}
