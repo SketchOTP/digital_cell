@@ -99,7 +99,7 @@ jobs:
           assert q["sensor_off_parity"] is True and q["zero_a"] is True and q["empty_sham"] is True, q
           assert q["energetic"] is True and q["rotation"] is True, q
           assert local["contacted_patch_output_parity"] is True and local["noncontact_patch_output_parity"] is True and specificity["contact_attenuation_occurred"] is True, (local, specificity)
-          assert closure["a_to_w_closure_pass"] is True and closure["r_unchanged"] is True, closure
+          assert closure["a_to_w_closure"] is True and closure["r_unchanged"] is True, closure
           assert rotation["pass"] is True, rotation
           assert math.isclose(candidate["cumulative_acquisition"], 0.3048037908513994, rel_tol=0, abs_tol=1e-12), candidate
           assert math.isclose(benefit["unguided"], 0.2948669468973028, rel_tol=0, abs_tol=1e-12), benefit
