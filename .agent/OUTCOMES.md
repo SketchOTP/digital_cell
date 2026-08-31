@@ -60,6 +60,29 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
+## D-20260831-dcdev021-m2-entry011-frozen-uptake-metabolism-composition - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY011-FROZEN-UPTAKE-METABOLISM-COMPOSITION`
+- Supersedes outcome: none
+- Closed: `2026-08-31T16:26:37-04:00`
+- Acceptance: PARTIAL
+- Summary: The local observer-only ENTRY-011 composition reuses the exact public frozen production reaction kernel with `MaturationCoupledV4` and reserve OFF. It runs ENTRY-005 raw intrinsic locomotion, unchanged DC-DEV-008 finite N/F uptake, then the unchanged reaction step; metabolism is active and the local classification is `M2_FROZEN_UPTAKE_METABOLISM_COMPOSITION_QUALIFIED`.
+- Changed areas: additive ENTRY-011 example registration, compact evidence under `digital-protocell/experiments/generated/dcdev021m2entry011/`, scoped workflow, and append-only governance only; no scientific runtime source changed.
+- Validation:
+  - Exact ENTRY-010 starting head and branch boundary - PASSED
+  - Frozen metabolism authority identified as `chemistry_core::mesh_reactions::reactions_step_with_reserve_mode` with `ReactionParams::conservative_v3()` and `ReserveDiagnosticMode::Full`; production order documented as transport → reaction → mechanics/remesh/rebond - PASSED
+  - N/F world conservation and N/F/A/W ledger closure - PASSED; maximum local closure residual `3.765876499528531e-13`
+  - Metabolism active: cumulative N/F consumption `14.174330986478182` each, A production `14.174330986478182`, reaction W production `28.203488312042303` - OBSERVED
+  - Acquisition `0.8602206124447573` versus no-metabolism `0.2948669468973028`; relative improvement `1.9173178665710457` - PASSED locally
+  - Step-116 N/F driving force is higher with metabolism and reconstructed N+F buildup is lower - PASSED locally
+  - Exploration retained: path `0.1804716432724705`, `3,579` slips, `12` dominant-patch changes - PASSED locally
+  - Contact-without-transfer and empty-resource controls, forbidden-information audit, and resource-to-work comparison - PASSED locally
+  - Historical ENTRY-005 through ENTRY-010, canonical D-087, downstream foundations, governance, and exact-head Linux CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: the result is still in the frozen in-contact ecology and therefore does not establish autonomous resource acquisition; exact-head remote validation and Architect acceptance remain outstanding.
+- Blockers: exact-head Linux CI and Architect review.
+- Follow-up directive: none
+
 ## D-20260829-post-m1-clean-capability-baseline - PARTIAL
 
 - Outcome ID: OUT-DCDEV020-POST-M1-CLEAN-CAPABILITY-BASELINE

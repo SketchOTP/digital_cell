@@ -187,3 +187,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-006 preregistered unguided finite-resource acquisition assay; exact-head Linux CI and Architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY011-001
+
+- Learning ID: L-DCDEV021-ENTRY011-001
+- Date: 2026-08-31
+- Fact or lesson: In the observer-only ENTRY-011 composition, the exact frozen M1/V4 reaction kernel is active after unchanged finite N/F uptake. Relative to the accepted no-metabolism ENTRY-006 arm, metabolism reduces internal N+F buildup at step 116, preserves the uptake driving force, and raises cumulative acquisition from `0.2948669468973028` to `0.8602206124447573` while retaining target-free movement. Local N/F/A/W accounting closes below `4e-13`; this is a composition result only, not autonomous resource acquisition or a behavioral post-ingestive coupling.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry011.rs`, `digital-protocell/experiments/generated/dcdev021m2entry011/`, and `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev021m2entry011/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-011 frozen uptake/metabolism composition feasibility; exact-head remote CI and Architect review pending.
+- Supersedes learning: none

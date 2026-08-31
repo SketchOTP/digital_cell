@@ -1,0 +1,35 @@
+{
+  "dense_records": "sampled in each arm evidence; full records available through optional dense output",
+  "directive": "DC-DEV-021-M2-ENTRY-011-FROZEN-UPTAKE-METABOLISM-COMPOSITION-FEASIBILITY-001",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "frozen_metabolism_authority.json",
+    "causal_order.json",
+    "ledger_ownership.json",
+    "metabolic_explorer.json",
+    "no_metabolism_control.json",
+    "metabolism_motor_off.json",
+    "empty_resource_control.json",
+    "contact_no_transfer_control.json",
+    "metabolic_activity.json",
+    "end_to_end_material_closure.json",
+    "uptake_driving_force.json",
+    "acquisition_benefit.json",
+    "resource_to_work.json",
+    "forbidden_information_audit.json",
+    "restart_boundary.json",
+    "m1_preservation.json",
+    "downstream_preservation.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "source_hashes": {
+    "contractility": "588b40fe26029232",
+    "intrinsic_exploration": "dc14db5d477b97cb",
+    "mesh_reactions": "8b7a5572b93b0982",
+    "spatial_resource": "47e9d8394c9e4896",
+    "stick_slip_traction": "ec1ad2b699ca7461"
+  },
+  "starting_head": "729af274329e46ed439a7488e8c0d64c2151f662"
+}

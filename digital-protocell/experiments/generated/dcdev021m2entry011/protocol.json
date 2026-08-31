@@ -1,0 +1,17 @@
+{
+  "assay_steps": 480,
+  "directive": "DC-DEV-021-M2-ENTRY-011-FROZEN-UPTAKE-METABOLISM-COMPOSITION-FEASIBILITY-001",
+  "dt": 0.02,
+  "initial_f_mass": 3.0,
+  "initial_n_mass": 3.0,
+  "new_behavior": false,
+  "observer_only": true,
+  "resource_center": [
+    4.8,
+    0.0
+  ],
+  "resource_radius": 1.5,
+  "settlement_steps": 5000,
+  "starting_head": "729af274329e46ed439a7488e8c0d64c2151f662",
+  "topology_size": 24
+}

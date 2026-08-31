@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260831-dcdev021-m2-entry010-post-ingestive-material-signal-substrate-audit`
-- External directive ID: `DC-DEV-021-M2-ENTRY-010-POST-INGESTIVE-MATERIAL-SIGNAL-SUBSTRATE-AUDIT-001`
-- Objective: `Determine whether successful unchanged DC-DEV-008 N/F transfer leaves an existing organism-internal material signal that is causal, contact-distinguishable, geometry-robust, and persistent without new memory or behavior.`
+- Local directive ID: `D-20260831-dcdev021-m2-entry011-frozen-uptake-metabolism-composition`
+- External directive ID: `DC-DEV-021-M2-ENTRY-011-FROZEN-UPTAKE-METABOLISM-COMPOSITION-FEASIBILITY-001`
+- Objective: `Determine whether the exact frozen M1/V4 reaction physiology can compose with ENTRY-005 locomotion and unchanged DC-DEV-008 uptake without new behavior or chemistry.`
 - Current status: `VALIDATING`
-- Acceptance: `Local and exact-head Linux Entry-010 observer validation pass the transfer/contact-only/empty controls, material-amount geometry audit, causal timing, persistence, preservation, governance, and artifact upload; Architect review remains pending.`
-- Current phase: `M2 target-free locomotion is qualified; unguided autonomous acquisition remains unestablished under the exact frozen DC-DEV-013 ecology.`
-- Expected or actual touched areas: `one observer-only Entry-010 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, spatial_resource.rs, intrinsic exploration, actuator, traction, metabolism, production, and M1 sources remain unchanged relative to ee9597deec8e41dd77d133927ab5102984c69fee`
-- Immediate next action: `Request Architect review; do not implement post-ingestive behavior, sensor state, memory, or successor work.`
+- Acceptance: `Exact frozen production reaction authority, causal order, no-double-counting, active metabolism, material closure, acquisition benefit, exploration, preservation, governance, and exact-head Linux validation must pass; Architect review remains pending.`
+- Current phase: `M2 target-free locomotion is qualified; ENTRY-009 contact-local suppression is closed as insufficient; ENTRY-010 N+F material substrate is qualified; ENTRY-011 tests frozen uptake→metabolism composition.`
+- Expected or actual touched areas: `one observer-only Entry-011 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, and M1 sources remain unchanged`
+- Immediate next action: `Run only the observer-only frozen uptake/metabolism composition; do not add post-ingestive behavior, sensor state, memory, tuning, or successor work.`
 
 ## Temporary task-relevant facts
 
@@ -58,7 +58,7 @@
 ## Pending decisions
 
 - The V4 equations, D-087 boundary, conservation contracts, accepted M1 qualification, and ENTRY-001 actuator are frozen.
-- M2 autonomous resource acquisition remains unestablished; pure contact-local suppression is closed as mechanically insufficient; no post-ingestive behavior, parameter search, reserve, recycling, salvage, sensor, target, gradient, resource seeking, or successor execution is authorized pending Entry-010 review.
+- M2 autonomous resource acquisition remains unestablished; pure contact-local suppression is closed as mechanically insufficient; no post-ingestive behavior, parameter search, reserve, recycling, salvage, sensor, target, gradient, resource seeking, or successor execution is authorized pending Entry-011 review.
 
 ## Status vocabulary
 

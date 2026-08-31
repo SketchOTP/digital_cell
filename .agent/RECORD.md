@@ -155,3 +155,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Remote validation independently completed the historical ENTRY-005 through ENTRY-009 replay, observer-only transfer/contact-only/empty controls, actual-area material reconstruction, persistence, forbidden-information audit, production V4/reserve-OFF, canonical D-087, downstream foundations, governance, and artifact upload. The uploaded artifact digest is `sha256:ac3b34585a38078043a8830e5e0a5664461229f72870abda7636c6c1cfce8491`. No scientific runtime source changed.
 - Affected areas: ENTRY-010 observer evidence, workflow, and governance only; local exploitation and autonomous resource acquisition remain `NOT_ESTABLISHED`.
 - Supersedes record: DEC-DCDEV021-ENTRY010-POST-INGESTIVE-MATERIAL-SIGNAL-SUBSTRATE-001
+
+## DEC-DCDEV021-ENTRY011-FROZEN-UPTAKE-METABOLISM-COMPOSITION-001
+
+- Date: 2026-08-31
+- Record or decision ID: DEC-DCDEV021-ENTRY011-FROZEN-UPTAKE-METABOLISM-COMPOSITION-001
+- Status: PROPOSED
+- Decision or event: The additive ENTRY-011 assay composes unchanged DC-DEV-008 uptake with the exact frozen M1/V4 reaction kernel and ENTRY-005 target-free locomotion; local evidence supports `M2_FROZEN_UPTAKE_METABOLISM_COMPOSITION_QUALIFIED`.
+- Rationale: The reaction authority is unambiguous, reserve remains OFF, no ledger is double-counted, N/F/A/W accounting closes, metabolism reduces the accepted concentration-feedback bottleneck, and acquisition exceeds the frozen 10% gate while movement persists. The composition remains assay-only and does not qualify autonomous acquisition because the fixture begins in contact.
+- Affected areas: additive observer example, compact evidence, scoped workflow, and governance only; no chemistry, production, actuator, traction, uptake, metabolism, M1, restart, or PR #44 source change.
+- Supersedes record: none

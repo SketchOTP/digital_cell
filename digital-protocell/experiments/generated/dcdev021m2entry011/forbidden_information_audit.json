@@ -1,0 +1,14 @@
+{
+  "alive_latch": false,
+  "contact_signal_to_motor": false,
+  "forbidden_resource_information_read": "NONE",
+  "future_uptake": false,
+  "gradient": false,
+  "nf_signal_to_behavior": false,
+  "resource_center_to_behavior": false,
+  "resource_inventory_to_behavior": false,
+  "resource_radius_to_behavior": false,
+  "target": false,
+  "uptake_ledger_to_behavior": false,
+  "viability": false
+}

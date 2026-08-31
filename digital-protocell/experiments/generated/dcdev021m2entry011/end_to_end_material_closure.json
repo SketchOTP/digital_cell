@@ -1,0 +1,7 @@
+{
+  "a_to_w_motor_residual": 1.1368683772161603e-13,
+  "full_material_closure_residual": 1.1368683772161603e-13,
+  "pass": true,
+  "world_f_loss_equals_delivered": true,
+  "world_n_loss_equals_delivered": true
+}

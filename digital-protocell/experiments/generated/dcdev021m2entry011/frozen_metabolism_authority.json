@@ -1,0 +1,24 @@
+{
+  "api": "chemistry_core::mesh_reactions::reactions_step_with_reserve_mode",
+  "composition_order": [
+    "ENTRY005_intrinsic_proposal",
+    "A_funded_mechanics",
+    "DC_DEV_008_uptake",
+    "frozen_reaction_kernel",
+    "observer"
+  ],
+  "equation": "unchanged V4-compatible ConservativeV3 reaction kernel; enable_metab=true",
+  "mesh_contract": "MaturationCoupledV4",
+  "params_api": "ReactionParams::conservative_v3",
+  "production_order": [
+    "transport_step",
+    "reactions_step_with_reserve_mode",
+    "mechanics_step",
+    "remesh",
+    "try_local_rebond"
+  ],
+  "production_wrapper": "phase1_certifier::sim::coupled_step_with_reserve_mode",
+  "reaction_source_hash": "8b7a5572b93b0982",
+  "reserve_enabled": false,
+  "reserve_mode": "Full"
+}

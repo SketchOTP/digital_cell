@@ -1,0 +1,9 @@
+{
+  "contact_only_a_production": 14.012064904193991,
+  "contact_only_motor_a_spent": 16.583461173677662,
+  "empty_a_spent": 16.583461173677662,
+  "motor_a_spent": 16.58843303538093,
+  "resource_a_production": 14.174330986478182,
+  "resource_bearing_vs_empty_a_spend": true,
+  "resource_to_work_causal_chain": "ESTABLISHED_IN_FIXTURE"
+}

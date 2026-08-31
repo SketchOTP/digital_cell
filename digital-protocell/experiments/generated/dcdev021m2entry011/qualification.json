@@ -1,0 +1,11 @@
+{
+  "architect_acceptance": "PENDING",
+  "classification": "M2_FROZEN_UPTAKE_METABOLISM_COMPOSITION_QUALIFIED",
+  "double_counting": false,
+  "entry005_to_entry010_preserved": true,
+  "full_material_closure": true,
+  "m2_autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "metabolically_live_resource_exploitation": "QUALIFIED",
+  "metabolism_active": true,
+  "next_execution_started": false
+}

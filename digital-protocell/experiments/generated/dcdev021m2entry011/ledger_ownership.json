@@ -1,0 +1,9 @@
+{
+  "double_counting": false,
+  "motor_a_to_w": "ActivatedEnergyContractilityStepLedgerV1",
+  "organism_n_f_delivery": "FiniteSpatialResourceRegionV1",
+  "reaction_a_w": "ReactionLedger",
+  "reaction_n_f_consumption": "ReactionLedger",
+  "world_f_loss": "FiniteSpatialResourceRegionV1",
+  "world_n_loss": "FiniteSpatialResourceRegionV1"
+}

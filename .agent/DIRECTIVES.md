@@ -402,3 +402,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260831-dcdev021-m2-entry009-contact-local-exploitation-ceiling-audit
 - Status at issuance: ISSUED
+
+## D-20260831-dcdev021-m2-entry011-frozen-uptake-metabolism-composition
+
+- Issued: `2026-08-31T16:26:37-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-011-FROZEN-UPTAKE-METABOLISM-COMPOSITION-FEASIBILITY-001`
+- Objective: Determine whether the exact frozen M1/V4 reaction physiology can compose with ENTRY-005 locomotion and unchanged DC-DEV-008 uptake without new behavior or chemistry.
+- Scope: Observer-only finite-resource composition using the exact public frozen reaction path, required transfer/no-metabolism/motor-off/empty/contact-only arms, compact evidence, preservation, governance, and exact-head Linux validation from `729af274329e46ed439a7488e8c0d64c2151f662`.
+- Exclusions: behavior, post-ingestive coupling, sensors, memory, tuning, new reactions or coefficients, uptake/metabolism/actuator/traction changes, reserve enablement, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: One preregistered ENTRY-011 classification after exact frozen metabolism authority/order, no-double-counting, active metabolism, material closure, uptake-driving-force, acquisition, exploration, resource-to-work, preservation, governance, and exact-head Linux checks.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260831-dcdev021-m2-entry010-post-ingestive-material-signal-substrate-audit
+- Status at issuance: ISSUED

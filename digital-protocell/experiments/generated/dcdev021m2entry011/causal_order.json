@@ -1,0 +1,8 @@
+{
+  "mechanics_before_uptake": true,
+  "motor_state_commit_after_mechanics": true,
+  "newly_delivered_nf_available_same_step": true,
+  "observer_after_reaction": true,
+  "reason": "the reaction call follows the committed V1 uptake while using the unchanged production kernel",
+  "uptake_before_composed_metabolism": true
+}
