@@ -1,0 +1,30 @@
+{
+  "dense_records": "committed in transfer_causality.json and contact_no_transfer_control.json; caller-supplied dense output is also available",
+  "directive": "DC-DEV-021-M2-ENTRY-010-POST-INGESTIVE-MATERIAL-SIGNAL-SUBSTRATE-AUDIT-001",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "causal_order.json",
+    "candidate_internal_states.json",
+    "uptake_ground_truth.json",
+    "contact_no_transfer_control.json",
+    "empty_resource_control.json",
+    "geometry_confound.json",
+    "transfer_causality.json",
+    "persistence.json",
+    "metabolism_consequence.json",
+    "forbidden_information_audit.json",
+    "candidate_ranking.json",
+    "preservation.json",
+    "qualification.json",
+    "seed_diversity.json"
+  ],
+  "source_hashes": {
+    "contractility": "588b40fe26029232",
+    "coupled_resource": "a3e02b45ec2c2cee",
+    "intrinsic_exploration": "dc14db5d477b97cb",
+    "mesh_reactions": "8b7a5572b93b0982",
+    "spatial_resource": "47e9d8394c9e4896",
+    "stick_slip_traction": "ec1ad2b699ca7461"
+  }
+}

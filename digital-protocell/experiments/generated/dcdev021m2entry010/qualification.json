@@ -1,0 +1,15 @@
+{
+  "architectural_boundary": "EXISTING_INTERNAL_MATERIAL_SIGNAL_REUSABLE",
+  "best_existing_internal_signal": "combined_N_plus_F_material_amount",
+  "classification": "M2_POST_INGESTIVE_MATERIAL_SIGNAL_SUBSTRATE_QUALIFIED",
+  "contact_only_distinguished": true,
+  "empty_resource_distinguished": true,
+  "f_material_amount_causal": true,
+  "geometry_confound_excluded": true,
+  "m2_autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "m2_local_resource_exploitation": "NOT_ESTABLISHED",
+  "n_material_amount_causal": true,
+  "next_execution_started": false,
+  "observer_ledger_required_as_behavior_input": false,
+  "persists_without_new_memory": true
+}

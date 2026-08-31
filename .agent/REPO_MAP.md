@@ -26,6 +26,7 @@
 - `digital-protocell/examples/dcdev021_m2_entry005.rs` — preregistered resource-free feasibility assay for the opt-in refractory-only motor composition; it preserves ENTRY-003 dynamics while supplying raw intrinsic activity to the accepted A-funded motor.
 - `digital-protocell/examples/dcdev021_m2_entry006.rs` — preregistered observer-only composition of ENTRY-005 target-free exploration with the frozen DC-DEV-013 finite N/F ecology; resource contact is never an organism input.
 - `digital-protocell/examples/dcdev021_m2_entry007.rs` — observer-only decomposition of unchanged DC-DEV-008 uptake per step and exposed edge across ENTRY-006 unguided, ENTRY-003 pinned, and motor-off arms.
+- `digital-protocell/examples/dcdev021_m2_entry010.rs` — observer-only paired transfer/contact-without-transfer audit of existing internal N/F concentrations and V4 material amounts; it does not implement post-ingestive behavior.
 
 ## Interfaces and contracts
 
@@ -57,6 +58,7 @@
 - `digital-protocell/experiments/generated/dcdev021m2entry005/` — compact ENTRY-005 refractory-only motor feasibility evidence; dense trajectories remain on Atlas.
 - `digital-protocell/experiments/generated/dcdev021m2entry006/` — compact ENTRY-006 unguided finite-resource acquisition evidence; dense trajectories remain on Atlas.
 - `digital-protocell/experiments/generated/dcdev021m2entry007/` — compact ENTRY-007 uptake-degradation audit evidence with per-step exposed-edge records embedded in the three arm artifacts.
+- `digital-protocell/experiments/generated/dcdev021m2entry010/` — compact ENTRY-010 internal material-signal audit evidence; dense paired state records remain externalized by the assay interface.
 - `digital-protocell/experiments/generated/dcdev001/` — DC-DEV-001A machine-readable decision artifacts.
 - `digital-protocell/experiments/generated/dcdev006/` — DC-DEV-006 local spatial-contact evidence artifacts.
 - `digital-protocell/experiments/generated/dcdev009/` — DC-DEV-009 force, displacement, coupling, and audit evidence artifacts.

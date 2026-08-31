@@ -1,0 +1,10 @@
+{
+  "area_can_differ_because_existing_mechanics_reads_NF": true,
+  "assay_steps": 480,
+  "distinguishable_steps": 480,
+  "persists_full_assay": true,
+  "stored_contact_history": false,
+  "stored_food_state": false,
+  "stored_previous_uptake": false,
+  "without_new_memory": true
+}

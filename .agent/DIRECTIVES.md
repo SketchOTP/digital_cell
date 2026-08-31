@@ -360,3 +360,45 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260830-dcdev021-m2-entry006-unguided-resource-acquisition
 - Status at issuance: ISSUED
+
+## D-20260830-dcdev021-m2-entry008-local-contact-exploitation
+
+- Issued: 2026-08-30T20:43:25-04:00
+- Issuer: User
+- External directive: DC-DEV-021-M2-ENTRY-008-LOCAL-CONTACT-REFRACTORY-EXPLOITATION-FEASIBILITY-001
+- Objective: Test whether existing local physical resource contact can select the already-qualified ENTRY-003 refractory motor output on contacted patches while retaining ENTRY-005 raw exploration on noncontact patches.
+- Scope: One explicit opt-in local contact/refractory composition, frozen finite-resource ecology, observer evidence, controls, preservation, governance, and exact-head Linux validation.
+- Exclusions: global resource mode, stopping, memory, chemotaxis, target/gradient/planner/reward, new coefficient, parameter search, exploration tuning, actuator/traction/uptake/resource-geometry/M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: One preregistered ENTRY-008 classification after exact local composition, retained exploration, frozen acquisition-improvement gate, energetic/rotation/contact specificity, preservation, governance, and exact-head Linux checks.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260830-dcdev021-m2-entry007-uptake-degradation-mechanism-audit
+- Status at issuance: ISSUED
+
+## D-20260831-dcdev021-m2-entry009-contact-local-exploitation-ceiling-audit
+
+- Issued: 2026-08-31T10:59:24-04:00
+- Issuer: User
+- External directive: DC-DEV-021-M2-ENTRY-009-CONTACT-LOCAL-EXPLOITATION-CEILING-AUDIT-001
+- Objective: Determine whether the full assay-only upper bound of contact-local motor suppression can meet the frozen 10% acquisition-improvement gate while retaining intrinsic exploration.
+- Scope: Observer-only contacted-patch motor-zero upper-bound replay using exact ENTRY-005 raw noncontact activity, frozen DC-DEV-008 ecology, compact evidence, preservation, governance, and exact-head Linux validation.
+- Exclusions: production behavior, contact-suppression tuning, new coefficients, memory, target/gradient/planner/reward, uptake-law changes, resource-geometry changes, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: One preregistered ENTRY-009 classification after upper-bound acquisition, exploration-retention, physical-conservation, M1/downstream-preservation, governance, and exact-head Linux checks.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260830-dcdev021-m2-entry008-local-contact-exploitation
+- Status at issuance: ISSUED
+
+## D-20260831-dcdev021-m2-entry010-post-ingestive-material-signal-substrate-audit
+
+- Issued: 2026-08-31T12:06:37-04:00
+- Issuer: User
+- External directive: DC-DEV-021-M2-ENTRY-010-POST-INGESTIVE-MATERIAL-SIGNAL-SUBSTRATE-AUDIT-001
+- Objective: Determine whether successful finite N/F uptake already leaves an existing organism-internal physical material signal distinguishable from contact and geometry, persistent without new memory, and lawful for later architectural consideration.
+- Scope: Observer-only paired transfer/contact-without-transfer replay of the exact ENTRY-009 fixture; N/F concentration and reconstructed V4 material amounts; A/W/C and metabolism-order audit; empty-resource control; forbidden-information audit; compact evidence; governance; and exact-head Linux validation.
+- Exclusions: behavior, post-ingestive motor coupling, contact suppression, sensing state, memory, target/gradient/planner/reward, uptake/metabolism changes, M1 work, restart repair, PR #44 modification, and successor execution.
+- Acceptance: One classification among the preregistered ENTRY-010 outcomes after causal-order, transfer-ground-truth, contact-only, empty-resource, geometry-confound, persistence, forbidden-information, M1, downstream, governance, and exact-head Linux checks.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260831-dcdev021-m2-entry009-contact-local-exploitation-ceiling-audit
+- Status at issuance: ISSUED

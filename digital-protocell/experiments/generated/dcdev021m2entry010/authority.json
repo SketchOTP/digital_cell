@@ -1,0 +1,9 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-010-POST-INGESTIVE-MATERIAL-SIGNAL-SUBSTRATE-AUDIT-001",
+  "entry009": "M2_CONTACT_LOCAL_SUPPRESSION_FAMILY_MECHANICALLY_INSUFFICIENT",
+  "m1": "CLOSED/FROZEN",
+  "next_execution_started": false,
+  "pr_44": "OPEN/DRAFT/UNMERGED/UNMODIFIED",
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "starting_head": "ee9597deec8e41dd77d133927ab5102984c69fee"
+}

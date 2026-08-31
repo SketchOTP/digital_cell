@@ -1,0 +1,237 @@
+{
+  "all_step_records_in_transfer_causality": true,
+  "conservation_pass": true,
+  "delivered_f": 0.1474334734486514,
+  "delivered_n": 0.1474334734486514,
+  "first_successful_uptake_step": 0,
+  "ledger_is_behavior_input": false,
+  "sampled_records": [
+    {
+      "conservation_error": 0.0,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "f_delivered": 0.0003891697332458789,
+      "f_world_loss": 0.0003891697332458789,
+      "n_delivered": 0.0003891697332458789,
+      "n_world_loss": 0.0003891697332458789,
+      "post_mechanics": {
+        "area": 77.45296384062524,
+        "f_material_amount": 31.05828541230231,
+        "interior_a": 0.6014902975945148,
+        "interior_c": 0.8019908825235109,
+        "interior_f": 0.40099544126175546,
+        "interior_n": 0.40099544126175546,
+        "interior_w": 2.8642981122214066e-6,
+        "n_material_amount": 31.05828541230231,
+        "nf_material_amount": 62.11657082460462
+      },
+      "post_transfer": {
+        "area": 77.45296384062524,
+        "f_material_amount": 31.058674582035557,
+        "interior_a": 0.6014902975945148,
+        "interior_c": 0.8019908825235109,
+        "interior_f": 0.40100046585621835,
+        "interior_n": 0.40100046585621835,
+        "interior_w": 2.8642981122214066e-6,
+        "n_material_amount": 31.058674582035557,
+        "nf_material_amount": 62.117349164071115
+      },
+      "pre": {
+        "area": 77.45296384062524,
+        "f_material_amount": 31.05828541230231,
+        "interior_a": 0.601493161892627,
+        "interior_c": 0.8019908825235109,
+        "interior_f": 0.40099544126175546,
+        "interior_n": 0.40099544126175546,
+        "interior_w": 0.0,
+        "n_material_amount": 31.05828541230231,
+        "nf_material_amount": 62.11657082460462
+      },
+      "step": 0
+    },
+    {
+      "conservation_error": 0.0,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "f_delivered": 0.00038908623159028153,
+      "f_world_loss": 0.00038908623159028153,
+      "n_delivered": 0.00038908623159028153,
+      "n_world_loss": 0.00038908623159028153,
+      "post_mechanics": {
+        "area": 77.45296384062524,
+        "f_material_amount": 31.058674582035557,
+        "interior_a": 0.6014872509009577,
+        "interior_c": 0.8019908825235109,
+        "interior_f": 0.40100046585621835,
+        "interior_n": 0.40100046585621835,
+        "interior_w": 5.910991669405738e-6,
+        "n_material_amount": 31.058674582035557,
+        "nf_material_amount": 62.117349164071115
+      },
+      "post_transfer": {
+        "area": 77.45296384062524,
+        "f_material_amount": 31.059063668267147,
+        "interior_a": 0.6014872509009577,
+        "interior_c": 0.8019908825235109,
+        "interior_f": 0.4010054893725862,
+        "interior_n": 0.4010054893725862,
+        "interior_w": 5.910991669405738e-6,
+        "n_material_amount": 31.059063668267147,
+        "nf_material_amount": 62.11812733653429
+      },
+      "pre": {
+        "area": 77.45296384062524,
+        "f_material_amount": 31.058674582035557,
+        "interior_a": 0.6014902975945148,
+        "interior_c": 0.8019908825235109,
+        "interior_f": 0.40100046585621835,
+        "interior_n": 0.40100046585621835,
+        "interior_w": 2.8642981122214066e-6,
+        "n_material_amount": 31.058674582035557,
+        "nf_material_amount": 62.117349164071115
+      },
+      "step": 1
+    },
+    {
+      "conservation_error": 0.0,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "f_delivered": 0.00037898864548084344,
+      "f_world_loss": 0.00037898864548084344,
+      "n_delivered": 0.00037898864548084344,
+      "n_world_loss": 0.00037898864548084344,
+      "post_mechanics": {
+        "area": 77.44584506947913,
+        "f_material_amount": 31.102876659016864,
+        "interior_a": 0.5897268093983135,
+        "interior_c": 0.8020646009979988,
+        "interior_f": 0.401608073759328,
+        "interior_n": 0.401608073759328,
+        "interior_w": 0.011821641350179189,
+        "n_material_amount": 31.102876659016864,
+        "nf_material_amount": 62.20575331803373
+      },
+      "post_transfer": {
+        "area": 77.44584506947913,
+        "f_material_amount": 31.103255647662344,
+        "interior_a": 0.5897268093983135,
+        "interior_c": 0.8020646009979988,
+        "interior_f": 0.40161296735491264,
+        "interior_n": 0.40161296735491264,
+        "interior_w": 0.011821641350179189,
+        "n_material_amount": 31.103255647662344,
+        "nf_material_amount": 62.20651129532469
+      },
+      "pre": {
+        "area": 77.45296384062524,
+        "f_material_amount": 31.102876659016868,
+        "interior_a": 0.5899670633928031,
+        "interior_c": 0.8019908825235109,
+        "interior_f": 0.401571161602249,
+        "interior_n": 0.401571161602249,
+        "interior_w": 0.011526098499823598,
+        "n_material_amount": 31.102876659016868,
+        "nf_material_amount": 62.205753318033736
+      },
+      "step": 116
+    },
+    {
+      "conservation_error": 0.0,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "f_delivered": 0.0002927570100465871,
+      "f_world_loss": 0.0002927570100465871,
+      "n_delivered": 0.0002927570100465871,
+      "n_world_loss": 0.0002927570100465871,
+      "post_mechanics": {
+        "area": 76.59679906089134,
+        "f_material_amount": 31.14668322869461,
+        "interior_a": 0.5296008273755469,
+        "interior_c": 0.8109551781037806,
+        "interior_f": 0.40663165576846444,
+        "interior_n": 0.40663165576846444,
+        "interior_w": 0.07861555620228232,
+        "n_material_amount": 31.14668322869461,
+        "nf_material_amount": 62.29336645738922
+      },
+      "post_transfer": {
+        "area": 76.59679906089134,
+        "f_material_amount": 31.146975985704657,
+        "interior_a": 0.5296008273755469,
+        "interior_c": 0.8109551781037806,
+        "interior_f": 0.40663547782126086,
+        "interior_n": 0.40663547782126086,
+        "interior_w": 0.07861555620228232,
+        "n_material_amount": 31.146975985704657,
+        "nf_material_amount": 62.293951971409314
+      },
+      "pre": {
+        "area": 76.63615609476021,
+        "f_material_amount": 31.146683228694606,
+        "interior_a": 0.5300150169867673,
+        "interior_c": 0.8105387064011642,
+        "interior_f": 0.4064228272381237,
+        "interior_n": 0.4064228272381237,
+        "interior_w": 0.07788901281409964,
+        "n_material_amount": 31.146683228694606,
+        "nf_material_amount": 62.29336645738921
+      },
+      "step": 240
+    },
+    {
+      "conservation_error": 0.0,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "f_delivered": 0.00021812083814113278,
+      "f_world_loss": 0.00021812083814113278,
+      "n_delivered": 0.00021812083814113278,
+      "n_world_loss": 0.00021812083814113278,
+      "post_mechanics": {
+        "area": 75.90426598447982,
+        "f_material_amount": 31.205500764912767,
+        "interior_a": 0.3740482839971425,
+        "interior_c": 0.818354146752511,
+        "interior_f": 0.4111165605803153,
+        "interior_n": 0.4111165605803153,
+        "interior_w": 0.23971732606723498,
+        "n_material_amount": 31.205500764912767,
+        "nf_material_amount": 62.41100152982553
+      },
+      "post_transfer": {
+        "area": 75.90426598447982,
+        "f_material_amount": 31.20571888575091,
+        "interior_a": 0.3740482839971425,
+        "interior_c": 0.818354146752511,
+        "interior_f": 0.41111943421113584,
+        "interior_n": 0.41111943421113584,
+        "interior_w": 0.23971732606723498,
+        "n_material_amount": 31.20571888575091,
+        "nf_material_amount": 62.41143777150182
+      },
+      "pre": {
+        "area": 75.91717495336701,
+        "f_material_amount": 31.205500764912763,
+        "interior_a": 0.37462810517149964,
+        "interior_c": 0.818214993679104,
+        "interior_f": 0.4110466542528894,
+        "interior_n": 0.4110466542528894,
+        "interior_w": 0.23903314008782262,
+        "n_material_amount": 31.205500764912763,
+        "nf_material_amount": 62.411001529825526
+      },
+      "step": 479
+    }
+  ],
+  "world_f_loss": 0.1474334734486514,
+  "world_n_loss": 0.1474334734486514
+}

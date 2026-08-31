@@ -43,6 +43,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head validation is not yet complete.
 - Follow-up directive: none
 
+## D-20260831-dcdev021-m2-entry010-post-ingestive-material-signal-substrate-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY010-POST-INGESTIVE-MATERIAL-SIGNAL-SUBSTRATE-AUDIT`
+- Supersedes outcome: none
+- Closed: `2026-08-31T12:06:37-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Local observer-only ENTRY-010 execution classifies `M2_POST_INGESTIVE_MATERIAL_SIGNAL_SUBSTRATE_QUALIFIED`. The exact ENTRY-009 mechanics/contact fixture transfers `0.1474334734486514` N and F per species; the first successful transfer and first divergence from the matched no-transfer arm occur at step `0`. Reconstructed V4 N/F material amounts distinguish successful transfer from persistent contact without transfer and remain distinguishable for all `480` accepted steps. Concentrations are geometry-confounded because existing mechanics reads N/F in local osmotic pressure; amount reconstruction removes that confound. The fixture does not advance `reactions_step`, so A/W/C are not downstream changes in this assay; the existing N+F to A+W relation is recorded by source audit only.
+- Changed areas: one observer-only ENTRY-010 example/registration, compact evidence, scoped workflow, and governance only; no scientific runtime source changed.
+- Validation:
+  - Exact ENTRY-009 base and frozen source scope - PASSED locally
+  - Transfer/contact-only paired replay, empty resource control, amount reconstruction, persistence, and forbidden-information audit - PASSED locally
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: exact-head remote validation is pending; this qualifies signal substrate availability only and does not qualify local exploitation or autonomous resource acquisition.
+- Blockers: exact-head Linux CI and Architect review.
+- Follow-up directive: none
+
 ## D-20260829-post-m1-clean-capability-baseline - PARTIAL
 
 - Outcome ID: OUT-DCDEV020-POST-M1-CLEAN-CAPABILITY-BASELINE

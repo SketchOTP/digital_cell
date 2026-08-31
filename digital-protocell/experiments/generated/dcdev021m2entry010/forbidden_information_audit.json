@@ -1,0 +1,11 @@
+{
+  "distance_calculation": false,
+  "future_uptake": false,
+  "gradient": false,
+  "observer_ledger_as_signal": false,
+  "resource_center_read_by_signal": false,
+  "resource_radius_read_by_signal": false,
+  "target": false,
+  "viability_or_alive_state": false,
+  "world_coordinates_read_by_signal": false
+}

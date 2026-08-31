@@ -1,0 +1,7 @@
+{
+  "area_parity_transfer_vs_no_transfer": false,
+  "concentration_changes_can_follow_area": true,
+  "empty_resource_amount_stable": true,
+  "geometry_confound_excluded_for_amount_signal": true,
+  "mass_reconstruction": "interior concentration * actual V4 physical mesh area"
+}

@@ -135,3 +135,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The remote workflow independently completed the frozen-fixture reproduction, unchanged DC-DEV-008 uptake reconstruction parity, first-divergence classification as `M2_UPTAKE_DEGRADATION_CONCENTRATION_FEEDBACK_CONFIRMED`, decomposition, canonical D-087, downstream preservation, governance, and artifact upload. No scientific runtime source changed; autonomous resource acquisition remains `NOT_ESTABLISHED`.
 - Affected areas: assay-local Entry-007 evidence, scoped workflow, and governance only.
 - Supersedes record: DEC-DCDEV021-ENTRY007-UPTAKE-DEGRADATION-AUDIT-R1
+
+## DEC-DCDEV021-ENTRY010-POST-INGESTIVE-MATERIAL-SIGNAL-SUBSTRATE-001
+
+- Date: 2026-08-31
+- Record or decision ID: DEC-DCDEV021-ENTRY010-POST-INGESTIVE-MATERIAL-SIGNAL-SUBSTRATE-001
+- Status: PROPOSED
+- Decision or event: The local observer-only ENTRY-010 audit classifies `M2_POST_INGESTIVE_MATERIAL_SIGNAL_SUBSTRATE_QUALIFIED` with architectural boundary `EXISTING_INTERNAL_MATERIAL_SIGNAL_REUSABLE`.
+- Rationale: A matched contact-without-transfer replay preserves positive contact but commits no DC-DEV-008 delivery. The transfer arm first diverges at step `0`; reconstructed actual-area V4 material amounts identify N, F, and combined N+F as direct internal downstream material, while concentration-only readings are confounded by existing N/F-dependent mechanics. The distinction persists through all `480` accepted steps without stored uptake/contact history. Activated metabolism is not advanced in the fixture and no behavior is implemented.
+- Affected areas: observer-only ENTRY-010 assay, evidence, workflow, and governance; no scientific runtime mechanism, M1 source, production selector, or PR #44.
+- Supersedes record: none

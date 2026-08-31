@@ -1,0 +1,39 @@
+{
+  "best_existing_internal_signal": "combined_N_plus_F_material_amount",
+  "ranked": [
+    {
+      "qualified": true,
+      "reason": "direct conserved downstream material of transfer",
+      "signal": "combined_N_plus_F_material_amount"
+    },
+    {
+      "qualified": true,
+      "reason": "direct conserved downstream material of transfer",
+      "signal": "N_material_amount"
+    },
+    {
+      "qualified": true,
+      "reason": "direct conserved downstream material of transfer",
+      "signal": "F_material_amount"
+    },
+    {
+      "qualified": false,
+      "reason": "usable but geometry-confounded without amount reconstruction",
+      "signal": "N_or_F_concentration"
+    },
+    {
+      "qualified": false,
+      "reason": "not changed by this fixture because metabolism is not advanced",
+      "signal": "A_W_C"
+    }
+  ],
+  "ranking_dimensions": [
+    "internal",
+    "causal",
+    "contact_distinguishable",
+    "geometry_robust",
+    "persistent",
+    "existing",
+    "non_viability"
+  ]
+}

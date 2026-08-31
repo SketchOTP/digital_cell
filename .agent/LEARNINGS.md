@@ -18,6 +18,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-001A architecture selection.
 - Supersedes learning: none
 
+## L-DCDEV021-ENTRY010-001
+
+- Learning ID: L-DCDEV021-ENTRY010-001
+- Date: 2026-08-31
+- Fact or lesson: In the exact ENTRY-009 frozen M2 fixture, unchanged DC-DEV-008 transfer produces `0.1474334734486514` N and F per species. The first successful transfer and first divergence from a matched contact-without-transfer replay occur at step `0`. Existing mechanics can subsequently alter area because its local pressure reads N/F, so raw concentrations are geometry-confounded; reconstructing concentration multiplied by actual V4 mesh area yields existing internal N, F, and combined N+F material amounts that remain distinguishable from no-transfer for all `480` accepted steps. The fixture does not call `reactions_step`, so A/W/C are not causally changed by uptake within this assay.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry010.rs` and `digital-protocell/experiments/generated/dcdev021m2entry010/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-010 observer-only post-ingestive material-signal substrate audit; exact-head remote CI and Architect review pending.
+- Supersedes learning: none
+
 ## L-DCDEV020-POST-M1-BASELINE-001
 
 - Learning ID: L-DCDEV020-POST-M1-BASELINE-001

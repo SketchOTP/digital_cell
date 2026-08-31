@@ -1,0 +1,14 @@
+{
+  "activated_metabolism_advanced_in_fixture": false,
+  "interior_aw_updated_by": "A-funded contractility spending during mechanics",
+  "interior_nf_updated_by": "DC-DEV-008 uptake after accepted mechanics",
+  "mechanics_occurs_before_uptake": true,
+  "order": [
+    "intrinsic proposal",
+    "A-funded mechanics",
+    "DC-DEV-008 uptake",
+    "observer record"
+  ],
+  "reaction_step_called": false,
+  "uptake_occurs_after_mechanics": true
+}

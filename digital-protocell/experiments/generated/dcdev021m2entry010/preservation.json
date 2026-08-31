@@ -1,0 +1,21 @@
+{
+  "downstream": "preserved by workflow",
+  "entry005_through_entry009": "preserved by exact-head replay workflow",
+  "generic_full_mesh_restart": "KNOWN_FAIL preserved; not repaired",
+  "m1": "CLOSED/FROZEN",
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "scientific_source_changed": false,
+  "v2_d087": "8/8",
+  "v3_d087": "8/8",
+  "v4_d087": "7/8",
+  "v4_vector": [
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ]
+}

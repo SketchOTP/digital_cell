@@ -1,0 +1,13 @@
+{
+  "assay_steps": 480,
+  "contact_only_arm": "same mechanics and contact, no transfer committed",
+  "directive": "DC-DEV-021-M2-ENTRY-010-POST-INGESTIVE-MATERIAL-SIGNAL-SUBSTRATE-AUDIT-001",
+  "historical_fixture": "ENTRY-009 exact frozen M2 contact ecology",
+  "new_behavior": false,
+  "new_state": false,
+  "observer_only": true,
+  "settlement_steps": 5000,
+  "starting_head": "ee9597deec8e41dd77d133927ab5102984c69fee",
+  "topology_size": 24,
+  "transfer_arm": "unchanged DC-DEV-008 uptake committed"
+}

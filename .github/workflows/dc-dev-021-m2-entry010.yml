@@ -1,0 +1,213 @@
+name: DC-DEV-021 M2 ENTRY-010 post-ingestive material-signal substrate audit
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-entry010-post-ingestive-signal-audit
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  entry010-material-signal-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify ENTRY-009 authority and frozen source scope
+        run: |
+          set -euo pipefail
+          start=ee9597deec8e41dd77d133927ab5102984c69fee
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          forbidden=$(git diff --name-only "$start" HEAD -- \
+            digital-protocell/crates/chemistry-core \
+            digital-protocell/crates/phase1-certifier \
+            digital-protocell/crates/regulatory-core/src/contractility.rs \
+            digital-protocell/crates/regulatory-core/src/intrinsic_exploration.rs \
+            digital-protocell/crates/regulatory-core/src/plasticity.rs \
+            digital-protocell/crates/regulatory-core/src/spatial_resource.rs \
+            digital-protocell/crates/regulatory-core/src/stick_slip_traction.rs)
+          test -z "$forbidden"
+          python3 - "$start" <<'PY'
+          import subprocess, sys
+          start = sys.argv[1]
+          allowed = {
+              ".github/workflows/dc-dev-021-m2-entry010.yml",
+              "digital-protocell/crates/regulatory-core/Cargo.toml",
+              "digital-protocell/examples/dcdev021_m2_entry010.rs",
+              ".agent/CURRENT.md",
+              ".agent/DIRECTIVES.md",
+              ".agent/OUTCOMES.md",
+              ".agent/LEARNINGS.md",
+              ".agent/RECORD.md",
+              ".agent/REPO_MAP.md",
+          }
+          prefix = "digital-protocell/experiments/generated/dcdev021m2entry010/"
+          changed = subprocess.check_output(["git", "diff", "--name-only", start, "HEAD"], text=True).splitlines()
+          unexpected = [path for path in changed if path not in allowed and not path.startswith(prefix)]
+          assert not unexpected, unexpected
+          print("ENTRY-009 base, frozen sources, and ENTRY-010 scope verified")
+          PY
+
+      - name: Reproduce historical ENTRY-005 through ENTRY-009
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          for example in dcdev021_m2_entry005 dcdev021_m2_entry006 dcdev021_m2_entry007 dcdev021_m2_entry008 dcdev021_m2_entry009; do
+            cargo +1.89.0 build -p regulatory-core --example "$example"
+          done
+          cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry005 -- "$RUNNER_TEMP/entry005"
+          cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry006 -- "$RUNNER_TEMP/entry006"
+          cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry007 -- "$RUNNER_TEMP/entry007"
+          cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry008 -- "$RUNNER_TEMP/entry008"
+          cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry009 -- "$RUNNER_TEMP/entry009"
+          python3 - "$RUNNER_TEMP" <<'PY'
+          import json, math, sys
+          from pathlib import Path
+          root = Path(sys.argv[1])
+          def load(folder, name):
+              return json.loads((root / folder / name).read_text())
+          assert load("entry005", "qualification.json")["classification"] == "M2_REFRACTORY_MOTOR_DECOUPLING_EXPLORATION_QUALIFIED"
+          assert load("entry006", "qualification.json")["classification"] == "M2_UNGUIDED_RESOURCE_ACQUISITION_NOT_ESTABLISHED"
+          assert load("entry007", "qualification.json")["classification"] == "M2_UPTAKE_DEGRADATION_CONCENTRATION_FEEDBACK_CONFIRMED"
+          assert load("entry008", "qualification.json")["classification"] == "M2_LOCAL_CONTACT_REFRACTORY_EXPLOITATION_UPTAKE_INSUFFICIENT"
+          assert load("entry009", "qualification.json")["classification"] == "M2_CONTACT_LOCAL_SUPPRESSION_FAMILY_MECHANICALLY_INSUFFICIENT"
+          assert math.isclose(load("entry006", "unguided_explorer.json")["cumulative_acquisition"], 0.2948669468973028, rel_tol=0, abs_tol=1e-12)
+          assert math.isclose(load("entry009", "candidate_ceiling.json")["cumulative_acquisition"], 0.31794402180604237, rel_tol=0, abs_tol=1e-12)
+          print("Historical ENTRY-005/006/007/008/009 preservation passed")
+          PY
+
+      - name: Execute ENTRY-010 observer audit
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build -p regulatory-core --example dcdev021_m2_entry010
+          cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry010 -- "$RUNNER_TEMP/entry010" "$RUNNER_TEMP/entry010-dense"
+          python3 - "$RUNNER_TEMP/entry010" <<'PY'
+          import json, sys
+          from pathlib import Path
+          root = Path(sys.argv[1])
+          def load(name):
+              return json.loads((root / name).read_text())
+          q = load("qualification.json")
+          order = load("causal_order.json")
+          states = load("candidate_internal_states.json")
+          ground = load("uptake_ground_truth.json")
+          contact = load("contact_no_transfer_control.json")
+          empty = load("empty_resource_control.json")
+          geometry = load("geometry_confound.json")
+          causality = load("transfer_causality.json")
+          persistence = load("persistence.json")
+          metabolism = load("metabolism_consequence.json")
+          forbidden = load("forbidden_information_audit.json")
+          ranking = load("candidate_ranking.json")
+          assert q["classification"] == "M2_POST_INGESTIVE_MATERIAL_SIGNAL_SUBSTRATE_QUALIFIED", q
+          assert q["architectural_boundary"] == "EXISTING_INTERNAL_MATERIAL_SIGNAL_REUSABLE", q
+          assert order["mechanics_occurs_before_uptake"] and order["uptake_occurs_after_mechanics"], order
+          assert order["activated_metabolism_advanced_in_fixture"] is False and order["reaction_step_called"] is False, order
+          assert ground["first_successful_uptake_step"] == 0 and ground["conservation_pass"] is True, ground
+          assert contact["positive_contact_pattern_same"] is True and contact["transfer_committed"] is False, contact
+          assert contact["delivered_n"] == 0.0 and contact["delivered_f"] == 0.0, contact
+          assert empty["delivered_n"] == 0.0 and empty["delivered_f"] == 0.0 and empty["contact_signal_all_zero"] is True, empty
+          assert geometry["geometry_confound_excluded_for_amount_signal"] is True, geometry
+          assert causality["first_material_amount_divergence_step"] == 0 and causality["deterministic"] is True, causality
+          assert persistence["persists_full_assay"] is True and persistence["without_new_memory"] is True, persistence
+          assert metabolism["fixture_advances_activated_metabolism"] is False, metabolism
+          assert all(value is False for key, value in forbidden.items() if key != "observer_ledger_as_signal"), forbidden
+          assert ranking["best_existing_internal_signal"] == "combined_N_plus_F_material_amount", ranking
+          assert states["candidates"]["combined_N_plus_F_material_amount"]["geometry_confounded"] is False, states
+          print("ENTRY-010 internal material signal audit passed")
+          PY
+
+      - name: Preserve production selector and canonical D-087 boundary
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build -p phase1-certifier --bin digital-protocell-phase1 --release
+          cargo +1.89.0 run -p phase1-certifier --bin digital-protocell-phase1 --release -- --steps 1 --out "$RUNNER_TEMP/production.json"
+          python3 - "$RUNNER_TEMP/production.json" <<'PY'
+          import json, sys
+          report = json.load(open(sys.argv[1]))
+          assert report["mesh_contract"] == "MaturationCoupledV4" and report["reserve_enabled"] is False, report
+          PY
+          run_d087() {
+            local output="$1" contract="$2" v4="$3"
+            if test "$v4" = 1; then
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            else
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            fi
+          }
+          run_d087 "$RUNNER_TEMP/d087-v2" ConservativeV2 0
+          run_d087 "$RUNNER_TEMP/d087-v3" ConservativeV3 0
+          run_d087 "$RUNNER_TEMP/d087-v4" ConservativeV3 1
+          python3 - "$RUNNER_TEMP" <<'PY'
+          import json, sys
+          from pathlib import Path
+          root = Path(sys.argv[1])
+          expected = {"v2": [True] * 8, "v3": [True] * 8, "v4": [True, True, False, True, True, True, True, True]}
+          observed = {}
+          for name, vector in expected.items():
+              report = json.loads((root / f"d087-{name}" / "manifest.json").read_text())
+              observed[name] = [report[f"gate{i}"]["pass"] for i in range(8)]
+              assert observed[name] == vector, observed
+          (root / "canonical_d087.json").write_text(json.dumps({"expected": expected, "observed": observed, "pass": True}, indent=2) + "\n")
+          PY
+
+      - name: Preserve downstream foundations
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/foundations"
+          mkdir -p "$out"
+          for spec in "dcdev002_gate_assay:regulator" "dcdev005_gate_assay:plasticity" "dcdev006_gate_assay:contact" "dcdev007_gate_assay:contact_regulation" "dcdev008_gate_assay:finite_resource" "dcdev011_gate_assay:traction"; do
+            example="${spec%%:*}"; label="${spec##*:}"
+            cargo +1.89.0 run -p regulatory-core --example "$example" -- "$out/$label"
+          done
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test -p evolution-harness -- --nocapture
+
+      - name: Validate current governance
+        run: python3 scripts/validate_governance.py --mode ADOPTED
+
+      - name: Record artifact SHA-256
+        if: always()
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2entry010 -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2entry010.sha256"
+
+      - name: Upload ENTRY-010 evidence and digest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-m2-entry010-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2entry010/
+            ${{ runner.temp }}/entry005/
+            ${{ runner.temp }}/entry006/
+            ${{ runner.temp }}/entry007/
+            ${{ runner.temp }}/entry008/
+            ${{ runner.temp }}/entry009/
+            ${{ runner.temp }}/entry010/
+            ${{ runner.temp }}/entry010-dense/
+            ${{ runner.temp }}/canonical_d087.json
+            ${{ runner.temp }}/production.json
+            ${{ runner.temp }}/d087-v2/
+            ${{ runner.temp }}/d087-v3/
+            ${{ runner.temp }}/d087-v4/
+            ${{ runner.temp }}/foundations/
+            ${{ runner.temp }}/dcdev021m2entry010.sha256
+          if-no-files-found: warn

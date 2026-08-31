@@ -1,0 +1,10 @@
+{
+  "A_causal_in_this_fixture": false,
+  "C_causal_in_this_fixture": false,
+  "W_causal_in_this_fixture": false,
+  "fixture_advances_activated_metabolism": false,
+  "metabolism_used_as_behavior_signal": false,
+  "n_plus_f_to_a_plus_w_existing_source_relationship": true,
+  "reaction_step_called": false,
+  "source_hash_mesh_reactions": "8b7a5572b93b0982"
+}

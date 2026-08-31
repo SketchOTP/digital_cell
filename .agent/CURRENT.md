@@ -3,23 +3,23 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-30T15:21:01-04:00`
+- Last updated: `2026-08-31T12:06:37-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260830-dcdev021-m2-entry007-uptake-degradation-mechanism-audit`
-- External directive ID: `DC-DEV-021-M2-ENTRY-007-UPTAKE-DEGRADATION-MECHANISM-AUDIT-001`
-- Objective: `Decompose unchanged DC-DEV-008 per-step/per-edge uptake across the accepted ENTRY-006 unguided, ENTRY-003, and motor-off arms without adding sensing or changing any production law.`
+- Local directive ID: `D-20260831-dcdev021-m2-entry010-post-ingestive-material-signal-substrate-audit`
+- External directive ID: `DC-DEV-021-M2-ENTRY-010-POST-INGESTIVE-MATERIAL-SIGNAL-SUBSTRATE-AUDIT-001`
+- Objective: `Determine whether successful unchanged DC-DEV-008 N/F transfer leaves an existing organism-internal material signal that is causal, contact-distinguishable, geometry-robust, and persistent without new memory or behavior.`
 - Current status: `VALIDATING`
-- Acceptance: `Local Entry-007 replay and exact-head Linux CI passed diagnostic-to-production parity, conservation, exact frozen-fixture reproduction, first-divergence localization, observer counterfactual decomposition, contact-information checks, canonical D-087, downstream preservation, governance, and artifact upload. Architect review remains pending.`
+- Acceptance: `Local Entry-010 observer replay passes the transfer/contact-only/empty controls, material-amount geometry audit, causal timing, persistence, and preservation; exact-head Linux CI and Architect review remain pending.`
 - Current phase: `M2 target-free locomotion is qualified; unguided autonomous acquisition remains unestablished under the exact frozen DC-DEV-013 ecology.`
-- Expected or actual touched areas: `assay-local read-only DC-DEV-008 reconstruction, one Entry-007 observer assay/workflow, compact evidence, and governance only; spatial_resource.rs and accepted scientific sources remain unchanged relative to 6bfc4839b68e328bab7d89f896dd575fabb5baa7`
-- Immediate next action: `Request Architect review only; do not add sensing, temporal memory, chemotaxis, targets, gradients, tuning, or successor work.`
+- Expected or actual touched areas: `one observer-only Entry-010 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, spatial_resource.rs, intrinsic exploration, actuator, traction, metabolism, production, and M1 sources remain unchanged relative to ee9597deec8e41dd77d133927ab5102984c69fee`
+- Immediate next action: `Run exact-head Linux validation, then request Architect review; do not implement post-ingestive behavior, sensor state, memory, or successor work.`
 
 ## Temporary task-relevant facts
 
 - M0 is closed; M1 is formally closed and frozen at `fb77f472b1519a9e0f713833efba5b1d403f4723`.
-- Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-006 alone is now authorized.
+- Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-009 is Architect accepted as mechanically insufficient; ENTRY-010 is the only authorized active audit.
 - PR #44 is the immutable M1 provenance stack and must remain open, draft, unmerged, and untouched.
 - The clean baseline is derived from `1e242f28152797b512e25cd56c7b718e45d6ca97`; accepted M1 evidence remains on Atlas.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
@@ -58,7 +58,7 @@
 ## Pending decisions
 
 - The V4 equations, D-087 boundary, conservation contracts, accepted M1 qualification, and ENTRY-001 actuator are frozen.
-- M2 autonomous resource acquisition remains unestablished; no parameter search, reserve, recycling, salvage, sensor, target, gradient, resource seeking, or successor execution is authorized pending Entry-007 review.
+- M2 autonomous resource acquisition remains unestablished; pure contact-local suppression is closed as mechanically insufficient; no post-ingestive behavior, parameter search, reserve, recycling, salvage, sensor, target, gradient, resource seeking, or successor execution is authorized pending Entry-010 review.
 
 ## Status vocabulary
 
