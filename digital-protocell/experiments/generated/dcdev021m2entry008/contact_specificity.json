@@ -1,0 +1,72 @@
+{
+  "attenuated_contact_event_count": 957,
+  "contact_attenuation_occurred": true,
+  "contact_event_count": 960,
+  "first_events": [
+    {
+      "attenuation": 0.0,
+      "motor_activity": 0.0016,
+      "patch": 0,
+      "raw_activity": 0.0016,
+      "refractory_activity": 0.0016,
+      "step": 0
+    },
+    {
+      "attenuation": 0.0,
+      "motor_activity": 0.0,
+      "patch": 23,
+      "raw_activity": 0.0,
+      "refractory_activity": 0.0,
+      "step": 0
+    },
+    {
+      "attenuation": 1.051377533124731e-8,
+      "motor_activity": 0.0032855442772800293,
+      "patch": 0,
+      "raw_activity": 0.0032855547910553605,
+      "refractory_activity": 0.0032855442772800293,
+      "step": 1
+    },
+    {
+      "attenuation": 0.0,
+      "motor_activity": 0.000032000000000000005,
+      "patch": 23,
+      "raw_activity": 0.000032000000000000005,
+      "refractory_activity": 0.000032000000000000005,
+      "step": 1
+    },
+    {
+      "attenuation": 4.943845660285162e-8,
+      "motor_activity": 0.005061269915530551,
+      "patch": 0,
+      "raw_activity": 0.005061319353987154,
+      "refractory_activity": 0.005061269915530551,
+      "step": 2
+    },
+    {
+      "attenuation": 6.314944877780504e-12,
+      "motor_activity": 0.0000986710074223276,
+      "patch": 23,
+      "raw_activity": 0.00009867101373727247,
+      "refractory_activity": 0.0000986710074223276,
+      "step": 2
+    },
+    {
+      "attenuation": 1.3781622530510684e-7,
+      "motor_activity": 0.0069320166662842865,
+      "patch": 0,
+      "raw_activity": 0.006932154482509592,
+      "refractory_activity": 0.0069320166662842865,
+      "step": 3
+    },
+    {
+      "attenuation": 5.30053546356473e-11,
+      "motor_activity": 0.00020286949728402103,
+      "patch": 23,
+      "raw_activity": 0.00020286955028937567,
+      "refractory_activity": 0.00020286949728402103,
+      "step": 3
+    }
+  ],
+  "noncontact_uses_raw": true
+}

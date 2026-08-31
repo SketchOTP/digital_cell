@@ -1,0 +1,11 @@
+{
+  "adaptation_equation_changed": false,
+  "contact_output": "ENTRY003 effective_activity",
+  "contact_spreading": false,
+  "global_switch": false,
+  "intrinsic_equation_changed": false,
+  "new_gain": false,
+  "new_timer": false,
+  "noncontact_output": "ENTRY005 activity_after",
+  "schema": "digital_cell_intrinsic_exploration_contact_refractory_motor_v1"
+}

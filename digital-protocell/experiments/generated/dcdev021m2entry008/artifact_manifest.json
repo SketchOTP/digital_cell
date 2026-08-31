@@ -1,0 +1,32 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-008-LOCAL-CONTACT-REFRACTORY-EXPLOITATION-FEASIBILITY-001",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "architecture.json",
+    "contact_provenance.json",
+    "local_composition_parity.json",
+    "contact_specificity.json",
+    "candidate_exploitation.json",
+    "entry005_control.json",
+    "entry003_control.json",
+    "sensor_off_control.json",
+    "zero_a_control.json",
+    "empty_sham.json",
+    "concentration_feedback.json",
+    "acquisition_benefit.json",
+    "material_closure.json",
+    "rotation_check.json",
+    "seed_diversity.json",
+    "restart_boundary.json",
+    "m1_preservation.json",
+    "downstream_preservation.json",
+    "qualification.json"
+  ],
+  "source_hashes": {
+    "contractility": "588b40fe26029232",
+    "intrinsic_exploration": "dc14db5d477b97cb",
+    "spatial_resource": "47e9d8394c9e4896",
+    "traction": "ec1ad2b699ca7461"
+  }
+}

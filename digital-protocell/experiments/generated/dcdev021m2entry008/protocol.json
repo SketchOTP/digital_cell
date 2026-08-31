@@ -1,0 +1,27 @@
+{
+  "absolute_improvement_tolerance": 1e-12,
+  "assay_steps": 480,
+  "candidate_formula": "(1-contact)*activity_after + contact*effective_activity",
+  "causal_order": [
+    "local_contact_signal",
+    "unchanged_intrinsic_proposal",
+    "local_motor_selection",
+    "existing_actuation",
+    "unchanged_DCDEV008_uptake"
+  ],
+  "directive": "DC-DEV-021-M2-ENTRY-008-LOCAL-CONTACT-REFRACTORY-EXPLOITATION-FEASIBILITY-001",
+  "historical_fixture": "DC-DEV-013 exact",
+  "initial_f_mass": 3.0,
+  "initial_n_mass": 3.0,
+  "minimum_relative_improvement": 0.1,
+  "new_numeric_parameter": false,
+  "parameter_search": false,
+  "resource_center": [
+    4.8,
+    0.0
+  ],
+  "resource_radius": 1.5,
+  "settlement_steps": 5000,
+  "starting_head": "4ac8f0bccd9c897f365431ea2f208836477b9b8a",
+  "topology_size": 24
+}

@@ -1,0 +1,21 @@
+{
+  "entry005_preserved": true,
+  "entry006_preserved": true,
+  "entry007_preserved": true,
+  "m1": "CLOSED/FROZEN",
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "scientific_source_changed": false,
+  "v2_d087": "8/8",
+  "v3_d087": "8/8",
+  "v4_d087": "7/8",
+  "v4_vector": [
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ]
+}

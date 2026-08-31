@@ -23,6 +23,11 @@ pub const INTRINSIC_EXPLORATION_REGULATOR_SCHEMA_V1: &str =
 /// ENTRY-003 state; only its boundary to the already-qualified motor differs.
 pub const INTRINSIC_EXPLORATION_REFRACTORY_MOTOR_SCHEMA_V1: &str =
     "digital_cell_intrinsic_exploration_refractory_motor_v1";
+/// Explicit opt-in ENTRY-008 local exploration-to-exploitation composition.
+/// Contact selects between the already-qualified ENTRY-005 raw motor output
+/// and the already-qualified ENTRY-003 refractory-limited output.
+pub const INTRINSIC_EXPLORATION_CONTACT_REFRACTORY_MOTOR_SCHEMA_V1: &str =
+    "digital_cell_intrinsic_exploration_contact_refractory_motor_v1";
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum IntrinsicExplorationDynamicsModeV1 {
@@ -130,6 +135,21 @@ pub struct IntrinsicExplorationRefractoryMotorStepLedgerV1 {
     pub activity_after: Vec<f64>,
     pub adaptation_before: Vec<f64>,
     pub adaptation_after: Vec<f64>,
+    pub motor_activity: Vec<f64>,
+    pub dominant_patch: usize,
+    pub actuator: ActivatedEnergyStickSlipStepLedgerV1,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct IntrinsicExplorationContactRefractoryMotorStepLedgerV1 {
+    pub schema: String,
+    pub step_index: u64,
+    pub activity_before: Vec<f64>,
+    pub activity_after: Vec<f64>,
+    pub adaptation_before: Vec<f64>,
+    pub adaptation_after: Vec<f64>,
+    pub effective_activity: Vec<f64>,
+    pub contact: Vec<f64>,
     pub motor_activity: Vec<f64>,
     pub dominant_patch: usize,
     pub actuator: ActivatedEnergyStickSlipStepLedgerV1,
@@ -316,6 +336,81 @@ pub fn apply_intrinsic_exploration_refractory_motor_with_stick_slip(
         activity_after,
         adaptation_before,
         adaptation_after,
+        motor_activity,
+        dominant_patch,
+        actuator,
+    })
+}
+
+/// Advance the unchanged ENTRY-003 intrinsic activity/adaptation state and
+/// select its already-qualified motor output locally from a physical contact
+/// vector. The caller owns the exact `local_contact_signal` provenance; this
+/// function does not inspect resource geometry or inventory.
+pub fn apply_intrinsic_exploration_contact_refractory_motor_with_stick_slip(
+    mesh: &mut MaterialMesh,
+    state: &mut IntrinsicExplorationStateV1,
+    contact: &[f64],
+    mechanics: &MechParams,
+    contractility: &ContractilityParamsV1,
+    traction: &StickSlipTractionParamsV1,
+) -> Result<IntrinsicExplorationContactRefractoryMotorStepLedgerV1, IntrinsicExplorationError> {
+    state.validate(mesh.n(), mechanics.dt)?;
+    if mesh.n() != state.initial_vertex_count
+        || contact.len() != mesh.n()
+        || contact
+            .iter()
+            .any(|value| !value.is_finite() || (*value != 0.0 && *value != 1.0))
+    {
+        return Err(IntrinsicExplorationError::InvalidState);
+    }
+
+    let activity_before = state.activity.clone();
+    let adaptation_before = state.adaptation.adaptation.clone();
+    let proposal = propose_intrinsic_exploration_step(
+        state,
+        mesh.n(),
+        mechanics.dt,
+        IntrinsicExplorationDynamicsModeV1::FullSelfExcitation,
+    )?;
+    let motor_activity: Vec<f64> = proposal
+        .activity_after
+        .iter()
+        .zip(&proposal.effective_activity)
+        .zip(contact)
+        .map(|((raw, refractory), local_contact)| {
+            // The contact values are validated binary values.  This branch is
+            // algebraically identical to the registered selector formula,
+            // while preserving exact historical raw-output bits for the
+            // sensor-off control.
+            if *local_contact == 0.0 {
+                *raw
+            } else {
+                *refractory
+            }
+        })
+        .collect();
+    let actuator = apply_local_activated_energy_contractility_with_stick_slip(
+        mesh,
+        &motor_activity,
+        mechanics,
+        contractility,
+        traction,
+    )?;
+
+    let activity_after = proposal.activity_after.clone();
+    let adaptation_after = proposal.adaptation_after.clone();
+    let effective_activity = proposal.effective_activity.clone();
+    let dominant_patch = proposal.dominant_patch;
+    commit_intrinsic_exploration_step(state, proposal)?;
+    Ok(IntrinsicExplorationContactRefractoryMotorStepLedgerV1 {
+        schema: INTRINSIC_EXPLORATION_CONTACT_REFRACTORY_MOTOR_SCHEMA_V1.to_string(),
+        step_index: state.step_index,
+        activity_before,
+        activity_after,
+        adaptation_before,
+        adaptation_after,
+        effective_activity,
+        contact: contact.to_vec(),
         motor_activity,
         dominant_patch,
         actuator,

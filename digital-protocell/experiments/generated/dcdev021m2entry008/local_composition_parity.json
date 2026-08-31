@@ -1,0 +1,10 @@
+{
+  "candidate_contacted_patch_set": [
+    0,
+    23
+  ],
+  "candidate_formula": "(1-contact)*raw + contact*refractory",
+  "contact_sensor_off_reduces_to_entry005": true,
+  "contacted_patch_output_parity": true,
+  "noncontact_patch_output_parity": true
+}

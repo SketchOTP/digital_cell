@@ -1,0 +1,11 @@
+{
+  "contact_is_material_local": true,
+  "distance_calculation": 0,
+  "global_contact_aggregation": 0,
+  "gradient_calculation": 0,
+  "resource_center_reads_by_motor": 0,
+  "resource_inventory_reads_by_motor": 0,
+  "resource_radius_reads_by_motor": 0,
+  "source": "FiniteSpatialResourceRegionV1::local_contact_signal",
+  "world_coordinate_reads": 0
+}

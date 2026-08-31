@@ -1,0 +1,157 @@
+{
+  "candidate_exceeds_unguided_at_step_116": true,
+  "candidate_requested_f": 0.00037900908284668283,
+  "candidate_requested_n": 0.00037900908284668283,
+  "candidate_sampled_steps": [
+    {
+      "area": 77.45296384062524,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "delivered_f": 0.0003891697332458789,
+      "delivered_n": 0.0003891697332458789,
+      "driving_force_f": 0.02341271572216924,
+      "driving_force_n": 0.02341271572216924,
+      "interior_f": 0.40100046585621835,
+      "interior_n": 0.40100046585621835,
+      "requested_f": 0.00038919061089963045,
+      "requested_n": 0.00038919061089963045,
+      "step": 0,
+      "world_f_remaining": 2.999610830266754,
+      "world_n_remaining": 2.999610830266754
+    },
+    {
+      "area": 77.44584627649678,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "delivered_f": 0.00037898874949999703,
+      "delivered_n": 0.00037898874949999703,
+      "driving_force_f": 0.022800220481395017,
+      "driving_force_n": 0.022800220481395017,
+      "interior_f": 0.40161296109699257,
+      "interior_n": 0.40161296109699257,
+      "requested_f": 0.00037900908284668283,
+      "requested_n": 0.00037900908284668283,
+      "step": 116,
+      "world_f_remaining": 2.955029764535957,
+      "world_n_remaining": 2.955029764535957
+    },
+    {
+      "area": 76.7323807015074,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "delivered_f": 0.00030760980778310443,
+      "delivered_n": 0.00030760980778310443,
+      "driving_force_f": 0.01848608390272355,
+      "driving_force_n": 0.01848608390272355,
+      "interior_f": 0.40592709767566404,
+      "interior_n": 0.40592709767566404,
+      "requested_f": 0.00030762648280271667,
+      "requested_n": 0.00030762648280271667,
+      "step": 240,
+      "world_f_remaining": 2.910532816395317,
+      "world_n_remaining": 2.910532816395317
+    },
+    {
+      "area": 76.143889827922,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "delivered_f": 0.00024301326617088062,
+      "delivered_n": 0.00024301326617088062,
+      "driving_force_f": 0.014522284511516104,
+      "driving_force_n": 0.014522284511516104,
+      "interior_f": 0.4098908970668715,
+      "interior_n": 0.4098908970668715,
+      "requested_f": 0.0002430266148564656,
+      "requested_n": 0.0002430266148564656,
+      "step": 479,
+      "world_f_remaining": 2.847598104574297,
+      "world_n_remaining": 2.847598104574297
+    }
+  ],
+  "dense_trajectories_externalized": true,
+  "historical_step": 116,
+  "unguided_requested_f": 0.00037900897882226555,
+  "unguided_requested_n": 0.00037900897882226555,
+  "unguided_sampled_steps": [
+    {
+      "area": 77.45296384062524,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "delivered_f": 0.0003891697332458789,
+      "delivered_n": 0.0003891697332458789,
+      "driving_force_f": 0.02341271572216924,
+      "driving_force_n": 0.02341271572216924,
+      "interior_f": 0.40100046585621835,
+      "interior_n": 0.40100046585621835,
+      "requested_f": 0.00038919061089963045,
+      "requested_n": 0.00038919061089963045,
+      "step": 0,
+      "world_f_remaining": 2.999610830266754,
+      "world_n_remaining": 2.999610830266754
+    },
+    {
+      "area": 77.44584506947913,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "delivered_f": 0.00037898864548084344,
+      "delivered_n": 0.00037898864548084344,
+      "driving_force_f": 0.022800214223474946,
+      "driving_force_n": 0.022800214223474946,
+      "interior_f": 0.40161296735491264,
+      "interior_n": 0.40161296735491264,
+      "requested_f": 0.00037900897882226555,
+      "requested_n": 0.00037900897882226555,
+      "step": 116,
+      "world_f_remaining": 2.955029764639976,
+      "world_n_remaining": 2.955029764639976
+    },
+    {
+      "area": 76.59679906089134,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "delivered_f": 0.0002927570100465871,
+      "delivered_n": 0.0002927570100465871,
+      "driving_force_f": 0.017777703757126728,
+      "driving_force_n": 0.017777703757126728,
+      "interior_f": 0.40663547782126086,
+      "interior_n": 0.40663547782126086,
+      "requested_f": 0.0002927727434126364,
+      "requested_n": 0.0002927727434126364,
+      "step": 240,
+      "world_f_remaining": 2.9113094265976334,
+      "world_n_remaining": 2.9113094265976334
+    },
+    {
+      "area": 75.90426598447982,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "delivered_f": 0.00021812083814113278,
+      "delivered_n": 0.00021812083814113278,
+      "driving_force_f": 0.013293747367251751,
+      "driving_force_n": 0.013293747367251751,
+      "interior_f": 0.41111943421113584,
+      "interior_n": 0.41111943421113584,
+      "requested_f": 0.0002181326243404608,
+      "requested_n": 0.0002181326243404608,
+      "step": 479,
+      "world_f_remaining": 2.8525665265513513,
+      "world_n_remaining": 2.8525665265513513
+    }
+  ]
+}

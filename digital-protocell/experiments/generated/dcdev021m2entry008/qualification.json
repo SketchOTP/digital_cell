@@ -1,0 +1,17 @@
+{
+  "acquisition_benefit": false,
+  "classification": "M2_LOCAL_CONTACT_REFRACTORY_EXPLOITATION_UPTAKE_INSUFFICIENT",
+  "contact_attenuation": true,
+  "contacted_patch_output_parity": true,
+  "empty_sham": true,
+  "energetic": true,
+  "local_resource_exploitation": "NOT_ESTABLISHED",
+  "m2_autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "next_execution_started": false,
+  "noncontact_patch_output_parity": true,
+  "retained_exploration": true,
+  "rotation": true,
+  "sensor_off_parity": true,
+  "step116_benefit": true,
+  "zero_a": true
+}
