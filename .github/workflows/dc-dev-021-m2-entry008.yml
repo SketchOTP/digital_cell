@@ -102,10 +102,10 @@ jobs:
           assert closure["a_to_w_closure_pass"] is True and closure["r_unchanged"] is True, closure
           assert rotation["pass"] is True, rotation
           assert math.isclose(candidate["cumulative_acquisition"], 0.3048037908513994, rel_tol=0, abs_tol=1e-12), candidate
-          assert math.isclose(benefit["unguided_acquisition"], 0.2948669468973028, rel_tol=0, abs_tol=1e-12), benefit
+          assert math.isclose(benefit["unguided"], 0.2948669468973028, rel_tol=0, abs_tol=1e-12), benefit
           assert benefit["relative_improvement"] < 0.10 and benefit["pass"] is False, benefit
-          step116 = next(row for row in feedback["candidate"] if row["step"] == 116)
-          control116 = next(row for row in feedback["unguided"] if row["step"] == 116)
+          step116 = next(row for row in feedback["candidate_sampled_steps"] if row["step"] == 116)
+          control116 = next(row for row in feedback["unguided_sampled_steps"] if row["step"] == 116)
           assert step116["requested_n"] > control116["requested_n"], (step116, control116)
           assert step116["requested_f"] > control116["requested_f"], (step116, control116)
           assert candidate["contact_duration_steps"] == 480 and candidate["contact_entries"] == 1 and candidate["contact_exits"] == 0, candidate
