@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-31T12:21:17-04:00`
+- Last updated: `2026-08-31T16:35:42-04:00`
 
 ## Active state after adoption
 
@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-021-M2-ENTRY-011-FROZEN-UPTAKE-METABOLISM-COMPOSITION-FEASIBILITY-001`
 - Objective: `Determine whether the exact frozen M1/V4 reaction physiology can compose with ENTRY-005 locomotion and unchanged DC-DEV-008 uptake without new behavior or chemistry.`
 - Current status: `VALIDATING`
-- Acceptance: `Exact frozen production reaction authority, causal order, no-double-counting, active metabolism, material closure, acquisition benefit, exploration, preservation, governance, and exact-head Linux validation must pass; Architect review remains pending.`
+- Acceptance: `Exact frozen production reaction authority, causal order, no-double-counting, active metabolism, material closure, acquisition benefit, exploration, preservation, governance, and exact-head Linux validation passed; Architect review remains pending.`
 - Current phase: `M2 target-free locomotion is qualified; ENTRY-009 contact-local suppression is closed as insufficient; ENTRY-010 N+F material substrate is qualified; ENTRY-011 tests frozen uptake→metabolism composition.`
 - Expected or actual touched areas: `one observer-only Entry-011 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, and M1 sources remain unchanged`
-- Immediate next action: `Run only the observer-only frozen uptake/metabolism composition; do not add post-ingestive behavior, sensor state, memory, tuning, or successor work.`
+- Immediate next action: `Submit the completed ENTRY-011 evidence for Architect review; do not add post-ingestive behavior, sensor state, memory, tuning, or successor work.`
 
 ## Temporary task-relevant facts
 
@@ -42,7 +42,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `ENTRY-010 exact-head Linux workflow 33413197919 at 5ad6e9cb8385f030a5de03941ec7a8bc6bac1d57; uploaded artifact digest sha256:ac3b34585a38078043a8830e5e0a5664461229f72870abda7636c6c1cfce8491`
+- Command or check: `ENTRY-011 exact-head Linux workflow 33436469789 at 6c1bfd7e139ff72dd8f342dc13c825eb8ec65405; uploaded artifact digest sha256:376564668d704a0b4924124bc08557c30580723fabd81b37388814e9c7d47967`
 - Result: `PASSED`
 
 ## Risks
@@ -58,7 +58,7 @@
 ## Pending decisions
 
 - The V4 equations, D-087 boundary, conservation contracts, accepted M1 qualification, and ENTRY-001 actuator are frozen.
-- M2 autonomous resource acquisition remains unestablished; pure contact-local suppression is closed as mechanically insufficient; no post-ingestive behavior, parameter search, reserve, recycling, salvage, sensor, target, gradient, resource seeking, or successor execution is authorized pending Entry-011 review.
+- M2 autonomous resource acquisition remains unestablished; pure contact-local suppression is closed as mechanically insufficient; no post-ingestive behavior, parameter search, reserve, recycling, salvage, sensor, target, gradient, resource seeking, or successor execution is authorized pending Architect review of ENTRY-011.
 
 ## Status vocabulary
 

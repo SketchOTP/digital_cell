@@ -83,6 +83,28 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
+## D-20260831-dcdev021-m2-entry011-frozen-uptake-metabolism-composition - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY011-FROZEN-UPTAKE-METABOLISM-COMPOSITION-R1`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY011-FROZEN-UPTAKE-METABOLISM-COMPOSITION`
+- Closed: `2026-08-31T16:35:42-04:00`
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux CI passed for the observer-only ENTRY-011 composition. The exact frozen M1/V4 production reaction kernel runs after unchanged DC-DEV-008 uptake and preserves ENTRY-005 target-free locomotion. Metabolism is active, N/F/A/W accounting closes, internal N+F buildup is reduced at step 116, and cumulative acquisition is `0.8602206124447573` versus `0.2948669468973028` without metabolism (`1.9173178665710457` relative improvement), passing the frozen 10% criterion. This qualifies metabolically live resource-exploitation composition only; autonomous resource acquisition remains `NOT_ESTABLISHED` because the fixture begins in contact.
+- Changed areas: additive observer-only ENTRY-011 example, compact evidence, scoped workflow, and append-only governance; no chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, actuator, traction, M1, restart, production-selector, or PR #44 source changed.
+- Validation:
+  - Exact frozen production reaction authority and causal-order audit - PASSED
+  - No-double-counting and full material closure - PASSED; maximum residual `1.1368683772161603e-13`
+  - Frozen metabolic explorer activity - PASSED; N/F consumption `14.174330986478182` each, A production `14.174330986478182`, reaction W production `28.203488312042303`
+  - Acquisition and exploration - PASSED; path `0.1804716432724705`, slips `3579`, dominant-patch changes `12`
+  - Resource-to-work causal chain - `ESTABLISHED_IN_FIXTURE`
+  - Historical replay, M1/D-087, downstream, governance, and restart-boundary preservation - PASSED
+  - Exact-head Linux CI run `33436469789` on `6c1bfd7e139ff72dd8f342dc13c825eb8ec65405` - PASSED
+  - Uploaded artifact digest `sha256:376564668d704a0b4924124bc08557c30580723fabd81b37388814e9c7d47967` - RECORDED
+  - Architect review - PENDING
+- Remaining risks: this is an assay-only metabolic composition and does not qualify autonomous acquisition or authorize a behavioral post-ingestive coupling.
+- Blockers: Architect review.
+- Follow-up directive: none
+
 ## D-20260829-post-m1-clean-capability-baseline - PARTIAL
 
 - Outcome ID: OUT-DCDEV020-POST-M1-CLEAN-CAPABILITY-BASELINE

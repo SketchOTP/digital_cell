@@ -165,3 +165,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The reaction authority is unambiguous, reserve remains OFF, no ledger is double-counted, N/F/A/W accounting closes, metabolism reduces the accepted concentration-feedback bottleneck, and acquisition exceeds the frozen 10% gate while movement persists. The composition remains assay-only and does not qualify autonomous acquisition because the fixture begins in contact.
 - Affected areas: additive observer example, compact evidence, scoped workflow, and governance only; no chemistry, production, actuator, traction, uptake, metabolism, M1, restart, or PR #44 source change.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY011-FROZEN-UPTAKE-METABOLISM-COMPOSITION-R1
+
+- Date: 2026-08-31
+- Record or decision ID: DEC-DCDEV021-ENTRY011-FROZEN-UPTAKE-METABOLISM-COMPOSITION-R1
+- Status: ACTIVE
+- Decision or event: Exact-head Linux CI run `33436469789` passed on result head `6c1bfd7e139ff72dd8f342dc13c825eb8ec65405`; uploaded artifact digest is `sha256:376564668d704a0b4924124bc08557c30580723fabd81b37388814e9c7d47967`.
+- Rationale: The remote workflow independently completed exact frozen reaction authority, ENTRY-005 through ENTRY-010 preservation, ENTRY-011 observer composition, active metabolism, no-double-counting, N/F/A/W closure, acquisition benefit above the frozen 10% gate, exploration retention, resource-to-work evidence, canonical D-087, downstream preservation, governance validation, and artifact upload. No scientific runtime source changed. The result is `M2_FROZEN_UPTAKE_METABOLISM_COMPOSITION_QUALIFIED`; autonomous resource acquisition remains `NOT_ESTABLISHED`.
+- Affected areas: ENTRY-011 observer evidence, workflow, and governance only.
+- Supersedes record: DEC-DCDEV021-ENTRY011-FROZEN-UPTAKE-METABOLISM-COMPOSITION-001
