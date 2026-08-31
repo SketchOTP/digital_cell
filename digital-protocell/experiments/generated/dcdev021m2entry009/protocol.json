@@ -1,0 +1,19 @@
+{
+  "assay_steps": 480,
+  "ceiling_rule": "contacted patches motor=0; noncontact patches exact ENTRY-005 raw activity",
+  "directive": "DC-DEV-021-M2-ENTRY-009-CONTACT-LOCAL-EXPLOITATION-CEILING-AUDIT-001",
+  "historical_fixture": "DC-DEV-013 exact",
+  "initial_f_mass": 3.0,
+  "initial_n_mass": 3.0,
+  "minimum_relative_improvement": 0.1,
+  "observer_only": true,
+  "production_behavior_changed": false,
+  "resource_center": [
+    4.8,
+    0.0
+  ],
+  "resource_radius": 1.5,
+  "settlement_steps": 5000,
+  "starting_head": "82cd906daebc41ed8f525d9e13d257d3e553b428",
+  "topology_size": 24
+}

@@ -1,0 +1,9 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-009-CONTACT-LOCAL-EXPLOITATION-CEILING-AUDIT-001",
+  "entry008": "M2_LOCAL_CONTACT_REFRACTORY_EXPLOITATION_UPTAKE_INSUFFICIENT",
+  "m1": "CLOSED/FROZEN",
+  "next_execution_started": false,
+  "pr_44": "OPEN/DRAFT/UNMERGED/UNMODIFIED",
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "starting_head": "82cd906daebc41ed8f525d9e13d257d3e553b428"
+}

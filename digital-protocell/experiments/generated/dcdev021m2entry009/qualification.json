@@ -1,0 +1,11 @@
+{
+  "candidate_acquisition": 0.31794402180604237,
+  "classification": "M2_CONTACT_LOCAL_SUPPRESSION_FAMILY_MECHANICALLY_INSUFFICIENT",
+  "contact_local_suppression_family": "MECHANICALLY_INSUFFICIENT",
+  "exploration_retained": true,
+  "m2_autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "next_execution_started": false,
+  "relative_improvement": 0.07826267118632634,
+  "ten_percent_gate": false,
+  "unguided_acquisition": 0.2948669468973028
+}

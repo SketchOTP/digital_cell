@@ -1,0 +1,14 @@
+{
+  "adaptation_equation_changed": false,
+  "contact_output": "0.0",
+  "counterfactual": "contact-zero local motor suppression upper bound",
+  "global_mode": false,
+  "gradient": false,
+  "intrinsic_equation_changed": false,
+  "memory": false,
+  "new_numeric_parameter": false,
+  "new_production_schema": false,
+  "noncontact_output": "ENTRY005 activity_after",
+  "target": false,
+  "uptake_changed": false
+}

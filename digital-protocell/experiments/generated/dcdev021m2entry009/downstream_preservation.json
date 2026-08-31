@@ -1,0 +1,13 @@
+{
+  "contact": true,
+  "contact_regulation": true,
+  "continuity": true,
+  "d088": true,
+  "d091": true,
+  "evolution_harness": true,
+  "finite_resource": true,
+  "plasticity": true,
+  "regulator": true,
+  "status": "PASS",
+  "traction": true
+}

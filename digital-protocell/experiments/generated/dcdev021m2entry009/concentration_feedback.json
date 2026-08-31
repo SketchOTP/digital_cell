@@ -1,0 +1,3545 @@
+{
+  "candidate_sampled_steps": [
+    {
+      "area": 77.45296384062524,
+      "contact_active_resource_request": 0.00010675253847224594,
+      "contact_active_resource_spent": 0.00010675253847224594,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "delivered_f": 0.0003891697332458789,
+      "delivered_n": 0.0003891697332458789,
+      "driving_force_f": 0.02341271572216924,
+      "driving_force_n": 0.02341271572216924,
+      "interior_f": 0.40100046585621835,
+      "interior_n": 0.40100046585621835,
+      "noncontact_active_resource_request": 0.00011092418905732787,
+      "noncontact_active_resource_spent": 0.00011092418905732787,
+      "requested_f": 0.00038919061089963045,
+      "requested_n": 0.00038919061089963045,
+      "step": 0,
+      "world_f_remaining": 2.999610830266754,
+      "world_n_remaining": 2.999610830266754
+    },
+    {
+      "area": 77.37213013001228,
+      "contact_active_resource_request": 0.0010926888606531283,
+      "contact_active_resource_spent": 0.0010926888606531283,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "delivered_f": 0.00038448035598916683,
+      "delivered_n": 0.00038448035598916683,
+      "driving_force_f": 0.022414412021649954,
+      "driving_force_n": 0.022414412021649954,
+      "interior_f": 0.40199876955673763,
+      "interior_n": 0.40199876955673763,
+      "noncontact_active_resource_request": 0.01732465078952868,
+      "noncontact_active_resource_spent": 0.01732465078952868,
+      "requested_f": 0.00038450164499865506,
+      "requested_n": 0.00038450164499865506,
+      "step": 116,
+      "world_f_remaining": 2.9547843020535876,
+      "world_n_remaining": 2.9547843020535876
+    },
+    {
+      "area": 76.77069364217638,
+      "contact_active_resource_request": 0.0010929495520336453,
+      "contact_active_resource_spent": 0.0010929495520336453,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "delivered_f": 0.0003245435151701426,
+      "delivered_n": 0.0003245435151701426,
+      "driving_force_f": 0.018675331131913442,
+      "driving_force_n": 0.018675331131913442,
+      "interior_f": 0.40573785044647415,
+      "interior_n": 0.40573785044647415,
+      "noncontact_active_resource_request": 0.047044975228088086,
+      "noncontact_active_resource_spent": 0.047044975228088086,
+      "requested_f": 0.00032456185440301005,
+      "requested_n": 0.00032456185440301005,
+      "step": 240,
+      "world_f_remaining": 2.9095091966408715,
+      "world_n_remaining": 2.9095091966408715
+    },
+    {
+      "area": 76.33909176588922,
+      "contact_active_resource_request": 0.0010049373610257427,
+      "contact_active_resource_spent": 0.0010049373610257427,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "delivered_f": 0.0002690898713600511,
+      "delivered_n": 0.0002690898713600511,
+      "driving_force_f": 0.015484326111518731,
+      "driving_force_n": 0.015484326111518731,
+      "interior_f": 0.40892885546686886,
+      "interior_n": 0.40892885546686886,
+      "noncontact_active_resource_request": 0.04384227716818516,
+      "noncontact_active_resource_spent": 0.04384227716818516,
+      "requested_f": 0.00026910516300462494,
+      "requested_n": 0.00026910516300462494,
+      "step": 479,
+      "world_f_remaining": 2.8410279890969834,
+      "world_n_remaining": 2.8410279890969834
+    }
+  ],
+  "contacted_vs_noncontact_active_resource": [
+    {
+      "contact_request": 0.00010675253847224594,
+      "contact_spent": 0.00010675253847224594,
+      "noncontact_request": 0.00011092418905732787,
+      "noncontact_spent": 0.00011092418905732787,
+      "step": 0
+    },
+    {
+      "contact_request": 0.00010933792334331483,
+      "contact_spent": 0.00010933792334331483,
+      "noncontact_request": 0.00011798772295903196,
+      "noncontact_spent": 0.00011798772295903196,
+      "step": 1
+    },
+    {
+      "contact_request": 0.00011205310894881628,
+      "contact_spent": 0.00011205310894881628,
+      "noncontact_request": 0.00012550999429211844,
+      "noncontact_spent": 0.00012550999429211844,
+      "step": 2
+    },
+    {
+      "contact_request": 0.00011490399456861116,
+      "contact_spent": 0.00011490399456861116,
+      "noncontact_request": 0.00013352080626786073,
+      "noncontact_spent": 0.00013352080626786073,
+      "step": 3
+    },
+    {
+      "contact_request": 0.00011789668893504085,
+      "contact_spent": 0.00011789668893504085,
+      "noncontact_request": 0.00014205171671255728,
+      "noncontact_spent": 0.00014205171671255728,
+      "step": 4
+    },
+    {
+      "contact_request": 0.00012103750895008158,
+      "contact_spent": 0.00012103750895008158,
+      "noncontact_request": 0.00015113611865650466,
+      "noncontact_spent": 0.00015113611865650466,
+      "step": 5
+    },
+    {
+      "contact_request": 0.00012433297708524323,
+      "contact_spent": 0.00012433297708524323,
+      "noncontact_request": 0.00016080932180790127,
+      "noncontact_spent": 0.00016080932180790127,
+      "step": 6
+    },
+    {
+      "contact_request": 0.00012778981730013315,
+      "contact_spent": 0.00012778981730013315,
+      "noncontact_request": 0.00017110863451640904,
+      "noncontact_spent": 0.00017110863451640904,
+      "step": 7
+    },
+    {
+      "contact_request": 0.00013141494930502128,
+      "contact_spent": 0.00013141494930502128,
+      "noncontact_request": 0.00018207344577200299,
+      "noncontact_spent": 0.00018207344577200299,
+      "step": 8
+    },
+    {
+      "contact_request": 0.00013521548098265534,
+      "contact_spent": 0.00013521548098265534,
+      "noncontact_request": 0.00019374530672166006,
+      "noncontact_spent": 0.00019374530672166006,
+      "step": 9
+    },
+    {
+      "contact_request": 0.0001391986987752739,
+      "contact_spent": 0.0001391986987752739,
+      "noncontact_request": 0.00020616801111964138,
+      "noncontact_spent": 0.00020616801111964138,
+      "step": 10
+    },
+    {
+      "contact_request": 0.00014337205583456962,
+      "contact_spent": 0.00014337205583456962,
+      "noncontact_request": 0.0002193876740569928,
+      "noncontact_spent": 0.0002193876740569928,
+      "step": 11
+    },
+    {
+      "contact_request": 0.00014774315772564766,
+      "contact_spent": 0.00014774315772564766,
+      "noncontact_request": 0.00023345280824298807,
+      "noncontact_spent": 0.00023345280824298807,
+      "step": 12
+    },
+    {
+      "contact_request": 0.0001523197454712292,
+      "contact_spent": 0.0001523197454712292,
+      "noncontact_request": 0.0002484143970362728,
+      "noncontact_spent": 0.0002484143970362728,
+      "step": 13
+    },
+    {
+      "contact_request": 0.00015710967571994867,
+      "contact_spent": 0.00015710967571994867,
+      "noncontact_request": 0.0002643259633473204,
+      "noncontact_spent": 0.0002643259633473204,
+      "step": 14
+    },
+    {
+      "contact_request": 0.0001621208978231175,
+      "contact_spent": 0.0001621208978231175,
+      "noncontact_request": 0.00028124363345763214,
+      "noncontact_spent": 0.00028124363345763214,
+      "step": 15
+    },
+    {
+      "contact_request": 0.00016736142760835648,
+      "contact_spent": 0.00016736142760835648,
+      "noncontact_request": 0.0002992261947261754,
+      "noncontact_spent": 0.0002992261947261754,
+      "step": 16
+    },
+    {
+      "contact_request": 0.00017283931764665937,
+      "contact_spent": 0.00017283931764665937,
+      "noncontact_request": 0.00031833514608146685,
+      "noncontact_spent": 0.00031833514608146685,
+      "step": 17
+    },
+    {
+      "contact_request": 0.00017856262382239993,
+      "contact_spent": 0.00017856262382239993,
+      "noncontact_request": 0.0003386347401302475,
+      "noncontact_spent": 0.0003386347401302475,
+      "step": 18
+    },
+    {
+      "contact_request": 0.00018453936803422365,
+      "contact_spent": 0.00018453936803422365,
+      "noncontact_request": 0.00036019201565291685,
+      "noncontact_spent": 0.00036019201565291685,
+      "step": 19
+    },
+    {
+      "contact_request": 0.00019077749687936363,
+      "contact_spent": 0.00019077749687936363,
+      "noncontact_request": 0.0003830768192040791,
+      "noncontact_spent": 0.0003830768192040791,
+      "step": 20
+    },
+    {
+      "contact_request": 0.00019728483620537785,
+      "contact_spent": 0.00019728483620537785,
+      "noncontact_request": 0.00040736181449619756,
+      "noncontact_spent": 0.00040736181449619756,
+      "step": 21
+    },
+    {
+      "contact_request": 0.00020406904145226908,
+      "contact_spent": 0.00020406904145226908,
+      "noncontact_request": 0.00043312247821812903,
+      "noncontact_spent": 0.00043312247821812903,
+      "step": 22
+    },
+    {
+      "contact_request": 0.00021113754375501052,
+      "contact_spent": 0.00021113754375501052,
+      "noncontact_request": 0.0004604370809310495,
+      "noncontact_spent": 0.0004604370809310495,
+      "step": 23
+    },
+    {
+      "contact_request": 0.0002184974918321439,
+      "contact_spent": 0.0002184974918321439,
+      "noncontact_request": 0.0004893866516948856,
+      "noncontact_spent": 0.0004893866516948856,
+      "step": 24
+    },
+    {
+      "contact_request": 0.00022615568975069503,
+      "contact_spent": 0.00022615568975069503,
+      "noncontact_request": 0.0005200549251117032,
+      "noncontact_spent": 0.0005200549251117032,
+      "step": 25
+    },
+    {
+      "contact_request": 0.00023411853073133451,
+      "contact_spent": 0.00023411853073133451,
+      "noncontact_request": 0.0005525282695314001,
+      "noncontact_spent": 0.0005525282695314001,
+      "step": 26
+    },
+    {
+      "contact_request": 0.00024239192724042534,
+      "contact_spent": 0.00024239192724042534,
+      "noncontact_request": 0.0005868955952520744,
+      "noncontact_spent": 0.0005868955952520744,
+      "step": 27
+    },
+    {
+      "contact_request": 0.00025098123770701743,
+      "contact_spent": 0.00025098123770701743,
+      "noncontact_request": 0.0006232482416647918,
+      "noncontact_spent": 0.0006232482416647918,
+      "step": 28
+    },
+    {
+      "contact_request": 0.0002598911903022724,
+      "contact_spent": 0.0002598911903022724,
+      "noncontact_request": 0.000661679842441925,
+      "noncontact_spent": 0.000661679842441925,
+      "step": 29
+    },
+    {
+      "contact_request": 0.0002691258043251982,
+      "contact_spent": 0.0002691258043251982,
+      "noncontact_request": 0.0007022861680507918,
+      "noncontact_spent": 0.0007022861680507918,
+      "step": 30
+    },
+    {
+      "contact_request": 0.0002786883098504328,
+      "contact_spent": 0.0002786883098504328,
+      "noncontact_request": 0.0007451649450902873,
+      "noncontact_spent": 0.0007451649450902873,
+      "step": 31
+    },
+    {
+      "contact_request": 0.0002885810664092236,
+      "contact_spent": 0.0002885810664092236,
+      "noncontact_request": 0.0007904156521967361,
+      "noncontact_spent": 0.0007904156521967361,
+      "step": 32
+    },
+    {
+      "contact_request": 0.0002988054815912477,
+      "contact_spent": 0.0002988054815912477,
+      "noncontact_request": 0.0008381392925444979,
+      "noncontact_spent": 0.0008381392925444979,
+      "step": 33
+    },
+    {
+      "contact_request": 0.00030936193056962214,
+      "contact_spent": 0.00030936193056962214,
+      "noncontact_request": 0.0008884381432736986,
+      "noncontact_spent": 0.0008884381432736986,
+      "step": 34
+    },
+    {
+      "contact_request": 0.0003202496776609438,
+      "contact_spent": 0.0003202496776609438,
+      "noncontact_request": 0.0009414154825073578,
+      "noncontact_spent": 0.0009414154825073578,
+      "step": 35
+    },
+    {
+      "contact_request": 0.00033146680113267153,
+      "contact_spent": 0.00033146680113267153,
+      "noncontact_request": 0.0009971752949671957,
+      "noncontact_spent": 0.0009971752949671957,
+      "step": 36
+    },
+    {
+      "contact_request": 0.00034301012255742746,
+      "contact_spent": 0.00034301012255742746,
+      "noncontact_request": 0.0010558219575542548,
+      "noncontact_spent": 0.0010558219575542548,
+      "step": 37
+    },
+    {
+      "contact_request": 0.0003548751420834046,
+      "contact_spent": 0.0003548751420834046,
+      "noncontact_request": 0.001117459906618531,
+      "noncontact_spent": 0.001117459906618531,
+      "step": 38
+    },
+    {
+      "contact_request": 0.0003670559810374674,
+      "contact_spent": 0.0003670559810374674,
+      "noncontact_request": 0.001182193288991416,
+      "noncontact_spent": 0.001182193288991416,
+      "step": 39
+    },
+    {
+      "contact_request": 0.0003795453332982039,
+      "contact_spent": 0.0003795453332982039,
+      "noncontact_request": 0.0012501255991853337,
+      "noncontact_spent": 0.0012501255991853337,
+      "step": 40
+    },
+    {
+      "contact_request": 0.00039233442686587564,
+      "contact_spent": 0.00039233442686587564,
+      "noncontact_request": 0.0013213593054654438,
+      "noncontact_spent": 0.0013213593054654438,
+      "step": 41
+    },
+    {
+      "contact_request": 0.00040541299701112943,
+      "contact_spent": 0.00040541299701112943,
+      "noncontact_request": 0.0013959954677576702,
+      "noncontact_spent": 0.0013959954677576702,
+      "step": 42
+    },
+    {
+      "contact_request": 0.00041876927230142256,
+      "contact_spent": 0.00041876927230142256,
+      "noncontact_request": 0.0014741333505648116,
+      "noncontact_spent": 0.0014741333505648116,
+      "step": 43
+    },
+    {
+      "contact_request": 0.0004323899746812787,
+      "contact_spent": 0.0004323899746812787,
+      "noncontact_request": 0.0015558700342086034,
+      "noncontact_spent": 0.0015558700342086034,
+      "step": 44
+    },
+    {
+      "contact_request": 0.0004462603346188323,
+      "contact_spent": 0.0004462603346188323,
+      "noncontact_request": 0.0016413000277922109,
+      "noncontact_spent": 0.0016413000277922109,
+      "step": 45
+    },
+    {
+      "contact_request": 0.0004603641221271705,
+      "contact_spent": 0.0004603641221271705,
+      "noncontact_request": 0.0017305148872788795,
+      "noncontact_spent": 0.0017305148872788795,
+      "step": 46
+    },
+    {
+      "contact_request": 0.000474683694226842,
+      "contact_spent": 0.000474683694226842,
+      "noncontact_request": 0.0018236028420051305,
+      "noncontact_spent": 0.0018236028420051305,
+      "step": 47
+    },
+    {
+      "contact_request": 0.0004892000591393512,
+      "contact_spent": 0.0004892000591393512,
+      "noncontact_request": 0.0019206484327910485,
+      "noncontact_spent": 0.0019206484327910485,
+      "step": 48
+    },
+    {
+      "contact_request": 0.0005038929571960295,
+      "contact_spent": 0.0005038929571960295,
+      "noncontact_request": 0.0020217321645789738,
+      "noncontact_spent": 0.0020217321645789738,
+      "step": 49
+    },
+    {
+      "contact_request": 0.0005187409581194974,
+      "contact_spent": 0.0005187409581194974,
+      "noncontact_request": 0.0021269301762325728,
+      "noncontact_spent": 0.0021269301762325728,
+      "step": 50
+    },
+    {
+      "contact_request": 0.0005337215739946928,
+      "contact_spent": 0.0005337215739946928,
+      "noncontact_request": 0.002236313929771133,
+      "noncontact_spent": 0.002236313929771133,
+      "step": 51
+    },
+    {
+      "contact_request": 0.0005488113869030099,
+      "contact_spent": 0.0005488113869030099,
+      "noncontact_request": 0.002349949920913002,
+      "noncontact_spent": 0.002349949920913002,
+      "step": 52
+    },
+    {
+      "contact_request": 0.0005639861898572621,
+      "contact_spent": 0.0005639861898572621,
+      "noncontact_request": 0.0024678994123741253,
+      "noncontact_spent": 0.0024678994123741253,
+      "step": 53
+    },
+    {
+      "contact_request": 0.0005792211393581468,
+      "contact_spent": 0.0005792211393581468,
+      "noncontact_request": 0.002590218190931652,
+      "noncontact_spent": 0.002590218190931652,
+      "step": 54
+    },
+    {
+      "contact_request": 0.0005944909176058268,
+      "contact_spent": 0.0005944909176058268,
+      "noncontact_request": 0.002716956348839148,
+      "noncontact_spent": 0.002716956348839148,
+      "step": 55
+    },
+    {
+      "contact_request": 0.000607374651398109,
+      "contact_spent": 0.000607374651398109,
+      "noncontact_request": 0.0028481580897897736,
+      "noncontact_spent": 0.0028481580897897736,
+      "step": 56
+    },
+    {
+      "contact_request": 0.0006248902827498122,
+      "contact_spent": 0.0006248902827498122,
+      "noncontact_request": 0.0029791519528506454,
+      "noncontact_spent": 0.0029791519528506454,
+      "step": 57
+    },
+    {
+      "contact_request": 0.0006401070106326946,
+      "contact_spent": 0.0006401070106326946,
+      "noncontact_request": 0.00311925715912803,
+      "noncontact_spent": 0.00311925715912803,
+      "step": 58
+    },
+    {
+      "contact_request": 0.0006552560216551834,
+      "contact_spent": 0.0006552560216551834,
+      "noncontact_request": 0.0032639219506223104,
+      "noncontact_spent": 0.0032639219506223104,
+      "step": 59
+    },
+    {
+      "contact_request": 0.0006703122390713266,
+      "contact_spent": 0.0006703122390713266,
+      "noncontact_request": 0.003413165742198231,
+      "noncontact_spent": 0.003413165742198231,
+      "step": 60
+    },
+    {
+      "contact_request": 0.0006825170824891406,
+      "contact_spent": 0.0006825170824891406,
+      "noncontact_request": 0.003567001442423312,
+      "noncontact_spent": 0.003567001442423312,
+      "step": 61
+    },
+    {
+      "contact_request": 0.0006999747788182642,
+      "contact_spent": 0.0006999747788182642,
+      "noncontact_request": 0.0037197980865102754,
+      "noncontact_spent": 0.0037197980865102754,
+      "step": 62
+    },
+    {
+      "contact_request": 0.0007146070721487712,
+      "contact_spent": 0.0007146070721487712,
+      "noncontact_request": 0.0038826952747382636,
+      "noncontact_spent": 0.0038826952747382636,
+      "step": 63
+    },
+    {
+      "contact_request": 0.0007290535162452741,
+      "contact_spent": 0.0007290535162452741,
+      "noncontact_request": 0.004050185037266498,
+      "noncontact_spent": 0.004050185037266498,
+      "step": 64
+    },
+    {
+      "contact_request": 0.000740414269442968,
+      "contact_spent": 0.000740414269442968,
+      "noncontact_request": 0.004222254102362085,
+      "noncontact_spent": 0.004222254102362085,
+      "step": 65
+    },
+    {
+      "contact_request": 0.0007572237237015098,
+      "contact_spent": 0.0007572237237015098,
+      "noncontact_request": 0.004392890099915058,
+      "noncontact_spent": 0.004392890099915058,
+      "step": 66
+    },
+    {
+      "contact_request": 0.0007709917860973817,
+      "contact_spent": 0.0007709917860973817,
+      "noncontact_request": 0.00457392745398739,
+      "noncontact_spent": 0.00457392745398739,
+      "step": 67
+    },
+    {
+      "contact_request": 0.0007844989568647595,
+      "contact_spent": 0.0007844989568647595,
+      "noncontact_request": 0.004759467131768537,
+      "noncontact_spent": 0.004759467131768537,
+      "step": 68
+    },
+    {
+      "contact_request": 0.000797730007939918,
+      "contact_spent": 0.000797730007939918,
+      "noncontact_request": 0.004949470079433757,
+      "noncontact_spent": 0.004949470079433757,
+      "step": 69
+    },
+    {
+      "contact_request": 0.0008075050877137402,
+      "contact_spent": 0.0008075050877137402,
+      "noncontact_request": 0.005143891009216143,
+      "noncontact_spent": 0.005143891009216143,
+      "step": 70
+    },
+    {
+      "contact_request": 0.0008232464061470585,
+      "contact_spent": 0.0008232464061470585,
+      "noncontact_request": 0.00533596454672645,
+      "noncontact_spent": 0.00533596454672645,
+      "step": 71
+    },
+    {
+      "contact_request": 0.0008355721301206982,
+      "contact_spent": 0.0008355721301206982,
+      "noncontact_request": 0.005538947184162972,
+      "noncontact_spent": 0.005538947184162972,
+      "step": 72
+    },
+    {
+      "contact_request": 0.0008475762674496792,
+      "contact_spent": 0.0008475762674496792,
+      "noncontact_request": 0.005746179113410576,
+      "noncontact_spent": 0.005746179113410576,
+      "step": 73
+    },
+    {
+      "contact_request": 0.0008592513071575142,
+      "contact_spent": 0.0008592513071575142,
+      "noncontact_request": 0.005957592137406759,
+      "noncontact_spent": 0.005957592137406759,
+      "step": 74
+    },
+    {
+      "contact_request": 0.0008672283016667914,
+      "contact_spent": 0.0008672283016667914,
+      "noncontact_request": 0.0061731129448557905,
+      "noncontact_spent": 0.0061731129448557905,
+      "step": 75
+    },
+    {
+      "contact_request": 0.0008815124883246495,
+      "contact_spent": 0.0008815124883246495,
+      "noncontact_request": 0.006385495429879118,
+      "noncontact_spent": 0.006385495429879118,
+      "step": 76
+    },
+    {
+      "contact_request": 0.0008921689335913821,
+      "contact_spent": 0.0008921689335913821,
+      "noncontact_request": 0.0066088946552532585,
+      "noncontact_spent": 0.0066088946552532585,
+      "step": 77
+    },
+    {
+      "contact_request": 0.0009024807171261039,
+      "contact_spent": 0.0009024807171261039,
+      "noncontact_request": 0.006836157464557942,
+      "noncontact_spent": 0.006836157464557942,
+      "step": 78
+    },
+    {
+      "contact_request": 0.000912447251649564,
+      "contact_spent": 0.000912447251649564,
+      "noncontact_request": 0.007067193620258223,
+      "noncontact_spent": 0.007067193620258223,
+      "step": 79
+    },
+    {
+      "contact_request": 0.0009220691278371416,
+      "contact_spent": 0.0009220691278371416,
+      "noncontact_request": 0.007301909636187229,
+      "noncontact_spent": 0.007301909636187229,
+      "step": 80
+    },
+    {
+      "contact_request": 0.0009277628450159678,
+      "contact_spent": 0.0009277628450159678,
+      "noncontact_request": 0.007540209210886272,
+      "noncontact_spent": 0.007540209210886272,
+      "step": 81
+    },
+    {
+      "contact_request": 0.0009402028820776535,
+      "contact_spent": 0.0009402028820776535,
+      "noncontact_request": 0.007774295960006149,
+      "noncontact_spent": 0.007774295960006149,
+      "step": 82
+    },
+    {
+      "contact_request": 0.0009488040929256453,
+      "contact_spent": 0.0009488040929256453,
+      "noncontact_request": 0.008019384748295126,
+      "noncontact_spent": 0.008019384748295126,
+      "step": 83
+    },
+    {
+      "contact_request": 0.0009570731401426004,
+      "contact_spent": 0.0009570731401426004,
+      "noncontact_request": 0.008267758704314527,
+      "noncontact_spent": 0.008267758704314527,
+      "step": 84
+    },
+    {
+      "contact_request": 0.0009650152340754074,
+      "contact_spent": 0.0009650152340754074,
+      "noncontact_request": 0.008519314632450337,
+      "noncontact_spent": 0.008519314632450337,
+      "step": 85
+    },
+    {
+      "contact_request": 0.0009726362518406981,
+      "contact_spent": 0.0009726362518406981,
+      "noncontact_request": 0.008773948690412026,
+      "noncontact_spent": 0.008773948690412026,
+      "step": 86
+    },
+    {
+      "contact_request": 0.0009799426551101516,
+      "contact_spent": 0.0009799426551101516,
+      "noncontact_request": 0.009031556792697935,
+      "noncontact_spent": 0.009031556792697935,
+      "step": 87
+    },
+    {
+      "contact_request": 0.0009832019261962204,
+      "contact_spent": 0.0009832019261962204,
+      "noncontact_request": 0.009292034994196917,
+      "noncontact_spent": 0.009292034994196917,
+      "step": 88
+    },
+    {
+      "contact_request": 0.0009935356942377006,
+      "contact_spent": 0.0009935356942377006,
+      "noncontact_request": 0.009547236083595218,
+      "noncontact_spent": 0.009547236083595218,
+      "step": 89
+    },
+    {
+      "contact_request": 0.0009999410314391114,
+      "contact_spent": 0.0009999410314391114,
+      "noncontact_request": 0.00981185759013478,
+      "noncontact_spent": 0.00981185759013478,
+      "step": 90
+    },
+    {
+      "contact_request": 0.001006061947909896,
+      "contact_spent": 0.001006061947909896,
+      "noncontact_request": 0.010080243833073443,
+      "noncontact_spent": 0.010080243833073443,
+      "step": 91
+    },
+    {
+      "contact_request": 0.0010119067158746431,
+      "contact_spent": 0.0010119067158746431,
+      "noncontact_request": 0.01035109609360326,
+      "noncontact_spent": 0.01035109609360326,
+      "step": 92
+    },
+    {
+      "contact_request": 0.0010174837769326302,
+      "contact_spent": 0.0010174837769326302,
+      "noncontact_request": 0.010624315963067486,
+      "noncontact_spent": 0.010624315963067486,
+      "step": 93
+    },
+    {
+      "contact_request": 0.0010228016884127108,
+      "contact_spent": 0.0010228016884127108,
+      "noncontact_request": 0.010899806943993442,
+      "noncontact_spent": 0.010899806943993442,
+      "step": 94
+    },
+    {
+      "contact_request": 0.0010278690743669749,
+      "contact_spent": 0.0010278690743669749,
+      "noncontact_request": 0.011177474651201787,
+      "noncontact_spent": 0.011177474651201787,
+      "step": 95
+    },
+    {
+      "contact_request": 0.0010359640912814532,
+      "contact_spent": 0.0010359640912814532,
+      "noncontact_request": 0.011449856735679737,
+      "noncontact_spent": 0.011449856735679737,
+      "step": 96
+    },
+    {
+      "contact_request": 0.0010360388945344606,
+      "contact_spent": 0.0010360388945344606,
+      "noncontact_request": 0.011730186136792074,
+      "noncontact_spent": 0.011730186136792074,
+      "step": 97
+    },
+    {
+      "contact_request": 0.001043797598179857,
+      "contact_spent": 0.001043797598179857,
+      "noncontact_request": 0.0120037506539514,
+      "noncontact_spent": 0.0120037506539514,
+      "step": 98
+    },
+    {
+      "contact_request": 0.0010479575349925413,
+      "contact_spent": 0.0010479575349925413,
+      "noncontact_request": 0.012289062140193444,
+      "noncontact_spent": 0.012289062140193444,
+      "step": 99
+    },
+    {
+      "contact_request": 0.0010519092361436237,
+      "contact_spent": 0.0010519092361436237,
+      "noncontact_request": 0.012574810549041105,
+      "noncontact_spent": 0.012574810549041105,
+      "step": 100
+    },
+    {
+      "contact_request": 0.0010556609588739635,
+      "contact_spent": 0.0010556609588739635,
+      "noncontact_request": 0.012863517962587225,
+      "noncontact_spent": 0.012863517962587225,
+      "step": 101
+    },
+    {
+      "contact_request": 0.001059220802440416,
+      "contact_spent": 0.001059220802440416,
+      "noncontact_request": 0.013153817611922492,
+      "noncontact_spent": 0.013153817611922492,
+      "step": 102
+    },
+    {
+      "contact_request": 0.001062596690536321,
+      "contact_spent": 0.001062596690536321,
+      "noncontact_request": 0.01344563610016022,
+      "noncontact_spent": 0.01344563610016022,
+      "step": 103
+    },
+    {
+      "contact_request": 0.0010657963566351935,
+      "contact_spent": 0.0010657963566351935,
+      "noncontact_request": 0.013736090944209366,
+      "noncontact_spent": 0.013736090944209366,
+      "step": 104
+    },
+    {
+      "contact_request": 0.0010688273320144232,
+      "contact_spent": 0.0010688273320144232,
+      "noncontact_request": 0.014030668278280917,
+      "noncontact_spent": 0.014030668278280917,
+      "step": 105
+    },
+    {
+      "contact_request": 0.0010677036560917316,
+      "contact_spent": 0.0010677036560917316,
+      "noncontact_request": 0.014326562451867295,
+      "noncontact_spent": 0.014326562451867295,
+      "step": 106
+    },
+    {
+      "contact_request": 0.0010741387315828937,
+      "contact_spent": 0.0010741387315828937,
+      "noncontact_request": 0.014615261226557794,
+      "noncontact_spent": 0.014615261226557794,
+      "step": 107
+    },
+    {
+      "contact_request": 0.001076706016772852,
+      "contact_spent": 0.001076706016772852,
+      "noncontact_request": 0.01491220130558477,
+      "noncontact_spent": 0.01491220130558477,
+      "step": 108
+    },
+    {
+      "contact_request": 0.001079132591425694,
+      "contact_spent": 0.001079132591425694,
+      "noncontact_request": 0.015211648410029772,
+      "noncontact_spent": 0.015211648410029772,
+      "step": 109
+    },
+    {
+      "contact_request": 0.0010814248722132724,
+      "contact_spent": 0.0010814248722132724,
+      "noncontact_request": 0.015512180899175249,
+      "noncontact_spent": 0.015512180899175249,
+      "step": 110
+    },
+    {
+      "contact_request": 0.0010835890454244236,
+      "contact_spent": 0.0010835890454244236,
+      "noncontact_request": 0.015810430167019173,
+      "noncontact_spent": 0.015810430167019173,
+      "step": 111
+    },
+    {
+      "contact_request": 0.001085631067637467,
+      "contact_spent": 0.001085631067637467,
+      "noncontact_request": 0.01611292080305142,
+      "noncontact_spent": 0.01611292080305142,
+      "step": 112
+    },
+    {
+      "contact_request": 0.0010875566674634011,
+      "contact_spent": 0.0010875566674634011,
+      "noncontact_request": 0.01641285414669862,
+      "noncontact_spent": 0.01641285414669862,
+      "step": 113
+    },
+    {
+      "contact_request": 0.0010893713482135947,
+      "contact_spent": 0.0010893713482135947,
+      "noncontact_request": 0.01671714711952793,
+      "noncontact_spent": 0.01671714711952793,
+      "step": 114
+    },
+    {
+      "contact_request": 0.0010910803913581556,
+      "contact_spent": 0.0010910803913581556,
+      "noncontact_request": 0.017018746753517826,
+      "noncontact_spent": 0.017018746753517826,
+      "step": 115
+    },
+    {
+      "contact_request": 0.0010926888606531283,
+      "contact_spent": 0.0010926888606531283,
+      "noncontact_request": 0.01732465078952868,
+      "noncontact_spent": 0.01732465078952868,
+      "step": 116
+    },
+    {
+      "contact_request": 0.001094201606826098,
+      "contact_spent": 0.001094201606826098,
+      "noncontact_request": 0.017631328866711232,
+      "noncontact_spent": 0.017631328866711232,
+      "step": 117
+    },
+    {
+      "contact_request": 0.0010956232727206245,
+      "contact_spent": 0.0010956232727206245,
+      "noncontact_request": 0.017938744104798756,
+      "noncontact_spent": 0.017938744104798756,
+      "step": 118
+    },
+    {
+      "contact_request": 0.0010969582988101436,
+      "contact_spent": 0.0010969582988101436,
+      "noncontact_request": 0.01824479126616289,
+      "noncontact_spent": 0.01824479126616289,
+      "step": 119
+    },
+    {
+      "contact_request": 0.0010982109290015112,
+      "contact_spent": 0.0010982109290015112,
+      "noncontact_request": 0.01855356681309622,
+      "noncontact_spent": 0.01855356681309622,
+      "step": 120
+    },
+    {
+      "contact_request": 0.0010993852166572577,
+      "contact_spent": 0.0010993852166572577,
+      "noncontact_request": 0.01885934243823966,
+      "noncontact_spent": 0.01885934243823966,
+      "step": 121
+    },
+    {
+      "contact_request": 0.0011004850307738169,
+      "contact_spent": 0.0011004850307738169,
+      "noncontact_request": 0.019165181012486376,
+      "noncontact_spent": 0.019165181012486376,
+      "step": 122
+    },
+    {
+      "contact_request": 0.0011015140622605607,
+      "contact_spent": 0.0011015140622605607,
+      "noncontact_request": 0.019475720168031226,
+      "noncontact_spent": 0.019475720168031226,
+      "step": 123
+    },
+    {
+      "contact_request": 0.0011024758302713904,
+      "contact_spent": 0.0011024758302713904,
+      "noncontact_request": 0.019786814151597772,
+      "noncontact_spent": 0.019786814151597772,
+      "step": 124
+    },
+    {
+      "contact_request": 0.0011033736885469399,
+      "contact_spent": 0.0011033736885469399,
+      "noncontact_request": 0.02009843721122644,
+      "noncontact_spent": 0.02009843721122644,
+      "step": 125
+    },
+    {
+      "contact_request": 0.001104210831731187,
+      "contact_spent": 0.001104210831731187,
+      "noncontact_request": 0.02041056491369615,
+      "noncontact_spent": 0.02041056491369615,
+      "step": 126
+    },
+    {
+      "contact_request": 0.0011049903016314454,
+      "contact_spent": 0.0011049903016314454,
+      "noncontact_request": 0.02072317407973988,
+      "noncontact_spent": 0.02072317407973988,
+      "step": 127
+    },
+    {
+      "contact_request": 0.0011057149933953849,
+      "contact_spent": 0.0011057149933953849,
+      "noncontact_request": 0.021036242720781792,
+      "noncontact_spent": 0.021036242720781792,
+      "step": 128
+    },
+    {
+      "contact_request": 0.0011063876615829114,
+      "contact_spent": 0.0011063876615829114,
+      "noncontact_request": 0.021349749977160166,
+      "noncontact_spent": 0.021349749977160166,
+      "step": 129
+    },
+    {
+      "contact_request": 0.0011070109261144964,
+      "contact_spent": 0.0011070109261144964,
+      "noncontact_request": 0.021663676057916602,
+      "noncontact_spent": 0.021663676057916602,
+      "step": 130
+    },
+    {
+      "contact_request": 0.0011109073184353694,
+      "contact_spent": 0.0011109073184353694,
+      "noncontact_request": 0.021970287202347047,
+      "noncontact_spent": 0.021970287202347047,
+      "step": 131
+    },
+    {
+      "contact_request": 0.0011114407198716731,
+      "contact_spent": 0.0011114407198716731,
+      "noncontact_request": 0.02227931302865165,
+      "noncontact_spent": 0.02227931302865165,
+      "step": 132
+    },
+    {
+      "contact_request": 0.0011119317001311434,
+      "contact_spent": 0.0011119317001311434,
+      "noncontact_request": 0.022587784321567515,
+      "noncontact_spent": 0.022587784321567515,
+      "step": 133
+    },
+    {
+      "contact_request": 0.0011123824035290132,
+      "contact_spent": 0.0011123824035290132,
+      "noncontact_request": 0.02290315902301266,
+      "noncontact_spent": 0.02290315902301266,
+      "step": 134
+    },
+    {
+      "contact_request": 0.0011127948668767495,
+      "contact_spent": 0.0011127948668767495,
+      "noncontact_request": 0.023218870241517767,
+      "noncontact_spent": 0.023218870241517767,
+      "step": 135
+    },
+    {
+      "contact_request": 0.0011131710244793652,
+      "contact_spent": 0.0011131710244793652,
+      "noncontact_request": 0.02353272265972015,
+      "noncontact_spent": 0.02353272265972015,
+      "step": 136
+    },
+    {
+      "contact_request": 0.0011135127129541591,
+      "contact_spent": 0.0011135127129541591,
+      "noncontact_request": 0.023849058572352064,
+      "noncontact_spent": 0.023849058572352064,
+      "step": 137
+    },
+    {
+      "contact_request": 0.0011138216758702622,
+      "contact_spent": 0.0011138216758702622,
+      "noncontact_request": 0.024165689429929783,
+      "noncontact_spent": 0.024165689429929783,
+      "step": 138
+    },
+    {
+      "contact_request": 0.0011140995682095112,
+      "contact_spent": 0.0011140995682095112,
+      "noncontact_request": 0.024480905072188267,
+      "noncontact_spent": 0.024480905072188267,
+      "step": 139
+    },
+    {
+      "contact_request": 0.0011143479606501212,
+      "contact_spent": 0.0011143479606501212,
+      "noncontact_request": 0.024793559347824477,
+      "noncontact_spent": 0.024793559347824477,
+      "step": 140
+    },
+    {
+      "contact_request": 0.0011145683436754323,
+      "contact_spent": 0.0011145683436754323,
+      "noncontact_request": 0.025107127538857115,
+      "noncontact_spent": 0.025107127538857115,
+      "step": 141
+    },
+    {
+      "contact_request": 0.0011147621315106887,
+      "contact_spent": 0.0011147621315106887,
+      "noncontact_request": 0.025424775870133618,
+      "noncontact_spent": 0.025424775870133618,
+      "step": 142
+    },
+    {
+      "contact_request": 0.0011149306658913575,
+      "contact_spent": 0.0011149306658913575,
+      "noncontact_request": 0.02574103756921694,
+      "noncontact_spent": 0.02574103756921694,
+      "step": 143
+    },
+    {
+      "contact_request": 0.001115075219666954,
+      "contact_spent": 0.001115075219666954,
+      "noncontact_request": 0.026054782294860204,
+      "noncontact_spent": 0.026054782294860204,
+      "step": 144
+    },
+    {
+      "contact_request": 0.001115197000244689,
+      "contact_spent": 0.001115197000244689,
+      "noncontact_request": 0.026373087452550337,
+      "noncontact_spent": 0.026373087452550337,
+      "step": 145
+    },
+    {
+      "contact_request": 0.0011152971528775512,
+      "contact_spent": 0.0011152971528775512,
+      "noncontact_request": 0.026691603415392007,
+      "noncontact_spent": 0.026691603415392007,
+      "step": 146
+    },
+    {
+      "contact_request": 0.0011153767638016328,
+      "contact_spent": 0.0011153767638016328,
+      "noncontact_request": 0.027010320773808036,
+      "noncontact_spent": 0.027010320773808036,
+      "step": 147
+    },
+    {
+      "contact_request": 0.0011154368632276665,
+      "contact_spent": 0.0011154368632276665,
+      "noncontact_request": 0.027329230313820046,
+      "noncontact_spent": 0.027329230313820046,
+      "step": 148
+    },
+    {
+      "contact_request": 0.0011154784281918358,
+      "contact_spent": 0.0011154784281918358,
+      "noncontact_request": 0.027646716868468455,
+      "noncontact_spent": 0.027646716868468455,
+      "step": 149
+    },
+    {
+      "contact_request": 0.0011155023852709707,
+      "contact_spent": 0.0011155023852709707,
+      "noncontact_request": 0.027965969661978396,
+      "noncontact_spent": 0.027965969661978396,
+      "step": 150
+    },
+    {
+      "contact_request": 0.0011155096131672637,
+      "contact_spent": 0.0011155096131672637,
+      "noncontact_request": 0.028285388177743818,
+      "noncontact_spent": 0.028285388177743818,
+      "step": 151
+    },
+    {
+      "contact_request": 0.0011155009451676073,
+      "contact_spent": 0.0011155009451676073,
+      "noncontact_request": 0.028604963255849214,
+      "noncontact_spent": 0.028604963255849214,
+      "step": 152
+    },
+    {
+      "contact_request": 0.001115477171482623,
+      "contact_spent": 0.001115477171482623,
+      "noncontact_request": 0.028922514210236852,
+      "noncontact_spent": 0.028922514210236852,
+      "step": 153
+    },
+    {
+      "contact_request": 0.0011154390414703686,
+      "contact_spent": 0.0011154390414703686,
+      "noncontact_request": 0.02924237077945445,
+      "noncontact_spent": 0.02924237077945445,
+      "step": 154
+    },
+    {
+      "contact_request": 0.0011153872657496302,
+      "contact_spent": 0.0011153872657496302,
+      "noncontact_request": 0.02956235497773323,
+      "noncontact_spent": 0.02956235497773323,
+      "step": 155
+    },
+    {
+      "contact_request": 0.0011153225182075957,
+      "contact_spent": 0.0011153225182075957,
+      "noncontact_request": 0.029880257047158087,
+      "noncontact_spent": 0.029880257047158087,
+      "step": 156
+    },
+    {
+      "contact_request": 0.0011152454379065894,
+      "contact_spent": 0.0011152454379065894,
+      "noncontact_request": 0.030198228963340516,
+      "noncontact_spent": 0.030198228963340516,
+      "step": 157
+    },
+    {
+      "contact_request": 0.0011151566308944206,
+      "contact_spent": 0.0011151566308944206,
+      "noncontact_request": 0.0305167761653006,
+      "noncontact_spent": 0.0305167761653006,
+      "step": 158
+    },
+    {
+      "contact_request": 0.0011150566719227647,
+      "contact_spent": 0.0011150566719227647,
+      "noncontact_request": 0.03083715214313169,
+      "noncontact_spent": 0.03083715214313169,
+      "step": 159
+    },
+    {
+      "contact_request": 0.0011149461060778489,
+      "contact_spent": 0.0011149461060778489,
+      "noncontact_request": 0.031157592971553596,
+      "noncontact_spent": 0.031157592971553596,
+      "step": 160
+    },
+    {
+      "contact_request": 0.0011148254503275782,
+      "contact_spent": 0.0011148254503275782,
+      "noncontact_request": 0.03147593478325042,
+      "noncontact_spent": 0.03147593478325042,
+      "step": 161
+    },
+    {
+      "contact_request": 0.0011146951949890817,
+      "contact_spent": 0.0011146951949890817,
+      "noncontact_request": 0.03179644562916863,
+      "noncontact_spent": 0.03179644562916863,
+      "step": 162
+    },
+    {
+      "contact_request": 0.001114555805120516,
+      "contact_spent": 0.001114555805120516,
+      "noncontact_request": 0.03211696530728675,
+      "noncontact_spent": 0.03211696530728675,
+      "step": 163
+    },
+    {
+      "contact_request": 0.0011144077218408139,
+      "contact_spent": 0.0011144077218408139,
+      "noncontact_request": 0.032437469956322115,
+      "noncontact_spent": 0.032437469956322115,
+      "step": 164
+    },
+    {
+      "contact_request": 0.0011142513635809136,
+      "contact_spent": 0.0011142513635809136,
+      "noncontact_request": 0.03275576243600169,
+      "noncontact_spent": 0.03275576243600169,
+      "step": 165
+    },
+    {
+      "contact_request": 0.001114087127269866,
+      "contact_spent": 0.001114087127269866,
+      "noncontact_request": 0.03307391080413079,
+      "noncontact_spent": 0.03307391080413079,
+      "step": 166
+    },
+    {
+      "contact_request": 0.0011139153894590681,
+      "contact_spent": 0.0011139153894590681,
+      "noncontact_request": 0.0333941871698353,
+      "noncontact_spent": 0.0333941871698353,
+      "step": 167
+    },
+    {
+      "contact_request": 0.0011137365073877294,
+      "contact_spent": 0.0011137365073877294,
+      "noncontact_request": 0.03371211062553564,
+      "noncontact_spent": 0.03371211062553564,
+      "step": 168
+    },
+    {
+      "contact_request": 0.0011135508199925461,
+      "contact_spent": 0.0011135508199925461,
+      "noncontact_request": 0.03402986831144373,
+      "noncontact_spent": 0.03402986831144373,
+      "step": 169
+    },
+    {
+      "contact_request": 0.0011133586488644182,
+      "contact_spent": 0.0011133586488644182,
+      "noncontact_request": 0.03434955687825585,
+      "noncontact_spent": 0.03434955687825585,
+      "step": 170
+    },
+    {
+      "contact_request": 0.0011131602991549187,
+      "contact_spent": 0.0011131602991549187,
+      "noncontact_request": 0.034668941222003744,
+      "noncontact_spent": 0.034668941222003744,
+      "step": 171
+    },
+    {
+      "contact_request": 0.001112956060435093,
+      "contact_spent": 0.001112956060435093,
+      "noncontact_request": 0.03498613665241368,
+      "noncontact_spent": 0.03498613665241368,
+      "step": 172
+    },
+    {
+      "contact_request": 0.0011127462075090516,
+      "contact_spent": 0.0011127462075090516,
+      "noncontact_request": 0.03529796211788578,
+      "noncontact_spent": 0.03529796211788578,
+      "step": 173
+    },
+    {
+      "contact_request": 0.0011125310011846972,
+      "contact_spent": 0.0011125310011846972,
+      "noncontact_request": 0.03560956104244293,
+      "noncontact_spent": 0.03560956104244293,
+      "step": 174
+    },
+    {
+      "contact_request": 0.0011123106890038115,
+      "contact_spent": 0.0011123106890038115,
+      "noncontact_request": 0.035926952013380316,
+      "noncontact_spent": 0.035926952013380316,
+      "step": 175
+    },
+    {
+      "contact_request": 0.0011120855059336256,
+      "contact_spent": 0.0011120855059336256,
+      "noncontact_request": 0.03624360876829605,
+      "noncontact_spent": 0.03624360876829605,
+      "step": 176
+    },
+    {
+      "contact_request": 0.001111855675021889,
+      "contact_spent": 0.001111855675021889,
+      "noncontact_request": 0.03655724827039961,
+      "noncontact_spent": 0.03655724827039961,
+      "step": 177
+    },
+    {
+      "contact_request": 0.001111621408017348,
+      "contact_spent": 0.001111621408017348,
+      "noncontact_request": 0.0368698119139713,
+      "noncontact_spent": 0.0368698119139713,
+      "step": 178
+    },
+    {
+      "contact_request": 0.001111382905957458,
+      "contact_spent": 0.001111382905957458,
+      "noncontact_request": 0.03718122847981926,
+      "noncontact_spent": 0.03718122847981926,
+      "step": 179
+    },
+    {
+      "contact_request": 0.0011111403597250527,
+      "contact_spent": 0.0011111403597250527,
+      "noncontact_request": 0.03749360905860037,
+      "noncontact_spent": 0.03749360905860037,
+      "step": 180
+    },
+    {
+      "contact_request": 0.0011108939505756097,
+      "contact_spent": 0.0011108939505756097,
+      "noncontact_request": 0.03780451755240461,
+      "noncontact_spent": 0.03780451755240461,
+      "step": 181
+    },
+    {
+      "contact_request": 0.0011106438506366713,
+      "contact_spent": 0.0011106438506366713,
+      "noncontact_request": 0.038113761342041606,
+      "noncontact_spent": 0.038113761342041606,
+      "step": 182
+    },
+    {
+      "contact_request": 0.001110390223380892,
+      "contact_spent": 0.001110390223380892,
+      "noncontact_request": 0.03841931361524188,
+      "noncontact_spent": 0.03841931361524188,
+      "step": 183
+    },
+    {
+      "contact_request": 0.0011101332240741127,
+      "contact_spent": 0.0011101332240741127,
+      "noncontact_request": 0.038717999521708776,
+      "noncontact_spent": 0.038717999521708776,
+      "step": 184
+    },
+    {
+      "contact_request": 0.0011098730001997906,
+      "contact_spent": 0.0011098730001997906,
+      "noncontact_request": 0.03902092973787061,
+      "noncontact_spent": 0.03902092973787061,
+      "step": 185
+    },
+    {
+      "contact_request": 0.001109609691861038,
+      "contact_spent": 0.001109609691861038,
+      "noncontact_request": 0.03932126813304092,
+      "noncontact_spent": 0.03932126813304092,
+      "step": 186
+    },
+    {
+      "contact_request": 0.0011093434321614642,
+      "contact_spent": 0.0011093434321614642,
+      "noncontact_request": 0.039618745829276825,
+      "noncontact_spent": 0.039618745829276825,
+      "step": 187
+    },
+    {
+      "contact_request": 0.0011090743475659485,
+      "contact_spent": 0.0011090743475659485,
+      "noncontact_request": 0.039910912105868925,
+      "noncontact_spent": 0.039910912105868925,
+      "step": 188
+    },
+    {
+      "contact_request": 0.0011088025582424133,
+      "contact_spent": 0.0011088025582424133,
+      "noncontact_request": 0.0401973750517793,
+      "noncontact_spent": 0.0401973750517793,
+      "step": 189
+    },
+    {
+      "contact_request": 0.0011085281783856107,
+      "contact_spent": 0.0011085281783856107,
+      "noncontact_request": 0.04048227444863699,
+      "noncontact_spent": 0.04048227444863699,
+      "step": 190
+    },
+    {
+      "contact_request": 0.0011082513165238813,
+      "contact_spent": 0.0011082513165238813,
+      "noncontact_request": 0.040763093934692046,
+      "noncontact_spent": 0.040763093934692046,
+      "step": 191
+    },
+    {
+      "contact_request": 0.0011079720758097945,
+      "contact_spent": 0.0011079720758097945,
+      "noncontact_request": 0.04104183788033671,
+      "noncontact_spent": 0.04104183788033671,
+      "step": 192
+    },
+    {
+      "contact_request": 0.0011076905542955256,
+      "contact_spent": 0.0011076905542955256,
+      "noncontact_request": 0.04131590837310631,
+      "noncontact_spent": 0.04131590837310631,
+      "step": 193
+    },
+    {
+      "contact_request": 0.0011074068451937924,
+      "contact_spent": 0.0011074068451937924,
+      "noncontact_request": 0.041584992286879306,
+      "noncontact_spent": 0.041584992286879306,
+      "step": 194
+    },
+    {
+      "contact_request": 0.0011071210371251129,
+      "contact_spent": 0.0011071210371251129,
+      "noncontact_request": 0.04184658032996717,
+      "noncontact_spent": 0.04184658032996717,
+      "step": 195
+    },
+    {
+      "contact_request": 0.0011068332143521168,
+      "contact_spent": 0.0011068332143521168,
+      "noncontact_request": 0.04210251631912599,
+      "noncontact_spent": 0.04210251631912599,
+      "step": 196
+    },
+    {
+      "contact_request": 0.001106543457001604,
+      "contact_spent": 0.001106543457001604,
+      "noncontact_request": 0.042354828028299395,
+      "noncontact_spent": 0.042354828028299395,
+      "step": 197
+    },
+    {
+      "contact_request": 0.0011062518412749986,
+      "contact_spent": 0.0011062518412749986,
+      "noncontact_request": 0.04260098358024146,
+      "noncontact_spent": 0.04260098358024146,
+      "step": 198
+    },
+    {
+      "contact_request": 0.0011059584396478181,
+      "contact_spent": 0.0011059584396478181,
+      "noncontact_request": 0.04284072781844678,
+      "noncontact_spent": 0.04284072781844678,
+      "step": 199
+    },
+    {
+      "contact_request": 0.0011056633210587445,
+      "contact_spent": 0.0011056633210587445,
+      "noncontact_request": 0.043069542769738414,
+      "noncontact_spent": 0.043069542769738414,
+      "step": 200
+    },
+    {
+      "contact_request": 0.001105366551088849,
+      "contact_spent": 0.001105366551088849,
+      "noncontact_request": 0.043291317867221575,
+      "noncontact_spent": 0.043291317867221575,
+      "step": 201
+    },
+    {
+      "contact_request": 0.0011050681921314926,
+      "contact_spent": 0.0011050681921314926,
+      "noncontact_request": 0.04350597654382298,
+      "noncontact_spent": 0.04350597654382298,
+      "step": 202
+    },
+    {
+      "contact_request": 0.0011047683035534028,
+      "contact_spent": 0.0011047683035534028,
+      "noncontact_request": 0.04371348203636222,
+      "noncontact_spent": 0.04371348203636222,
+      "step": 203
+    },
+    {
+      "contact_request": 0.0011044669418473904,
+      "contact_spent": 0.0011044669418473904,
+      "noncontact_request": 0.04391620493357855,
+      "noncontact_spent": 0.04391620493357855,
+      "step": 204
+    },
+    {
+      "contact_request": 0.0011041641607771522,
+      "contact_spent": 0.0011041641607771522,
+      "noncontact_request": 0.044113450432614436,
+      "noncontact_spent": 0.044113450432614436,
+      "step": 205
+    },
+    {
+      "contact_request": 0.0011038600115145798,
+      "contact_spent": 0.0011038600115145798,
+      "noncontact_request": 0.04430320804275712,
+      "noncontact_spent": 0.04430320804275712,
+      "step": 206
+    },
+    {
+      "contact_request": 0.0011035545427699692,
+      "contact_spent": 0.0011035545427699692,
+      "noncontact_request": 0.04448544131123928,
+      "noncontact_spent": 0.04448544131123928,
+      "step": 207
+    },
+    {
+      "contact_request": 0.0011032478009155116,
+      "contact_spent": 0.0011032478009155116,
+      "noncontact_request": 0.04466014378795267,
+      "noncontact_spent": 0.04466014378795267,
+      "step": 208
+    },
+    {
+      "contact_request": 0.0011029398301024148,
+      "contact_spent": 0.0011029398301024148,
+      "noncontact_request": 0.04482733811910118,
+      "noncontact_spent": 0.04482733811910118,
+      "step": 209
+    },
+    {
+      "contact_request": 0.0011026306723719967,
+      "contact_spent": 0.0011026306723719967,
+      "noncontact_request": 0.04498707476878019,
+      "noncontact_spent": 0.04498707476878019,
+      "step": 210
+    },
+    {
+      "contact_request": 0.001102320367761066,
+      "contact_spent": 0.001102320367761066,
+      "noncontact_request": 0.045139430420114486,
+      "noncontact_spent": 0.045139430420114486,
+      "step": 211
+    },
+    {
+      "contact_request": 0.0011020089544018941,
+      "contact_spent": 0.0011020089544018941,
+      "noncontact_request": 0.04528023349441438,
+      "noncontact_spent": 0.04528023349441438,
+      "step": 212
+    },
+    {
+      "contact_request": 0.0011016964686170598,
+      "contact_spent": 0.0011016964686170598,
+      "noncontact_request": 0.04541364195339769,
+      "noncontact_spent": 0.04541364195339769,
+      "step": 213
+    },
+    {
+      "contact_request": 0.001101382945009439,
+      "contact_spent": 0.001101382945009439,
+      "noncontact_request": 0.04553995934678858,
+      "noncontact_spent": 0.04553995934678858,
+      "step": 214
+    },
+    {
+      "contact_request": 0.0011010684165475941,
+      "contact_spent": 0.0011010684165475941,
+      "noncontact_request": 0.04565945088257132,
+      "noncontact_spent": 0.04565945088257132,
+      "step": 215
+    },
+    {
+      "contact_request": 0.001100752914646804,
+      "contact_spent": 0.001100752914646804,
+      "noncontact_request": 0.04577681330772923,
+      "noncontact_spent": 0.04577681330772923,
+      "step": 216
+    },
+    {
+      "contact_request": 0.0011004364692459628,
+      "contact_spent": 0.0011004364692459628,
+      "noncontact_request": 0.045887690959263164,
+      "noncontact_spent": 0.045887690959263164,
+      "step": 217
+    },
+    {
+      "contact_request": 0.001100119108880566,
+      "contact_spent": 0.001100119108880566,
+      "noncontact_request": 0.045992284245777164,
+      "noncontact_spent": 0.045992284245777164,
+      "step": 218
+    },
+    {
+      "contact_request": 0.0010998008607519855,
+      "contact_spent": 0.0010998008607519855,
+      "noncontact_request": 0.04608863608779538,
+      "noncontact_spent": 0.04608863608779538,
+      "step": 219
+    },
+    {
+      "contact_request": 0.00109948175079323,
+      "contact_spent": 0.00109948175079323,
+      "noncontact_request": 0.04618129417306959,
+      "noncontact_spent": 0.04618129417306959,
+      "step": 220
+    },
+    {
+      "contact_request": 0.0010991618037313716,
+      "contact_spent": 0.0010991618037313716,
+      "noncontact_request": 0.046268312493175597,
+      "noncontact_spent": 0.046268312493175597,
+      "step": 221
+    },
+    {
+      "contact_request": 0.0010988410431468153,
+      "contact_spent": 0.0010988410431468153,
+      "noncontact_request": 0.04634991384888357,
+      "noncontact_spent": 0.04634991384888357,
+      "step": 222
+    },
+    {
+      "contact_request": 0.0010985194915295734,
+      "contact_spent": 0.0010985194915295734,
+      "noncontact_request": 0.04642204760982664,
+      "noncontact_spent": 0.04642204760982664,
+      "step": 223
+    },
+    {
+      "contact_request": 0.001098197170332701,
+      "contact_spent": 0.001098197170332701,
+      "noncontact_request": 0.04648895465102447,
+      "noncontact_spent": 0.04648895465102447,
+      "step": 224
+    },
+    {
+      "contact_request": 0.0010978741000230393,
+      "contact_spent": 0.0010978741000230393,
+      "noncontact_request": 0.04655100074403704,
+      "noncontact_spent": 0.04655100074403704,
+      "step": 225
+    },
+    {
+      "contact_request": 0.0010975503001294093,
+      "contact_spent": 0.0010975503001294093,
+      "noncontact_request": 0.046608540858272055,
+      "noncontact_spent": 0.046608540858272055,
+      "step": 226
+    },
+    {
+      "contact_request": 0.0010972257892883817,
+      "contact_spent": 0.0010972257892883817,
+      "noncontact_request": 0.046664148278124803,
+      "noncontact_spent": 0.046664148278124803,
+      "step": 227
+    },
+    {
+      "contact_request": 0.0010969005852877558,
+      "contact_spent": 0.0010969005852877558,
+      "noncontact_request": 0.04671787441367775,
+      "noncontact_spent": 0.04671787441367775,
+      "step": 228
+    },
+    {
+      "contact_request": 0.0010965747051078598,
+      "contact_spent": 0.0010965747051078598,
+      "noncontact_request": 0.04676770386221781,
+      "noncontact_spent": 0.04676770386221781,
+      "step": 229
+    },
+    {
+      "contact_request": 0.0010962481649607872,
+      "contact_spent": 0.0010962481649607872,
+      "noncontact_request": 0.0468095536198145,
+      "noncontact_spent": 0.0468095536198145,
+      "step": 230
+    },
+    {
+      "contact_request": 0.001095920980327674,
+      "contact_spent": 0.001095920980327674,
+      "noncontact_request": 0.0468454208761827,
+      "noncontact_spent": 0.0468454208761827,
+      "step": 231
+    },
+    {
+      "contact_request": 0.0010955931659941218,
+      "contact_spent": 0.0010955931659941218,
+      "noncontact_request": 0.04687573942282892,
+      "noncontact_spent": 0.04687573942282892,
+      "step": 232
+    },
+    {
+      "contact_request": 0.0010952647360838548,
+      "contact_spent": 0.0010952647360838548,
+      "noncontact_request": 0.04690046885302333,
+      "noncontact_spent": 0.04690046885302333,
+      "step": 233
+    },
+    {
+      "contact_request": 0.0010949357040907063,
+      "contact_spent": 0.0010949357040907063,
+      "noncontact_request": 0.04692238689445487,
+      "noncontact_spent": 0.04692238689445487,
+      "step": 234
+    },
+    {
+      "contact_request": 0.0010946060829090205,
+      "contact_spent": 0.0010946060829090205,
+      "noncontact_request": 0.04694367239810883,
+      "noncontact_spent": 0.04694367239810883,
+      "step": 235
+    },
+    {
+      "contact_request": 0.001094275884862546,
+      "contact_spent": 0.001094275884862546,
+      "noncontact_request": 0.0469646567837518,
+      "noncontact_spent": 0.0469646567837518,
+      "step": 236
+    },
+    {
+      "contact_request": 0.0010939451217319045,
+      "contact_spent": 0.0010939451217319045,
+      "noncontact_request": 0.046985300713754036,
+      "noncontact_spent": 0.046985300713754036,
+      "step": 237
+    },
+    {
+      "contact_request": 0.001093613804780699,
+      "contact_spent": 0.001093613804780699,
+      "noncontact_request": 0.04700588392277261,
+      "noncontact_spent": 0.04700588392277261,
+      "step": 238
+    },
+    {
+      "contact_request": 0.0010932819447803394,
+      "contact_spent": 0.0010932819447803394,
+      "noncontact_request": 0.04702646981863591,
+      "noncontact_spent": 0.04702646981863591,
+      "step": 239
+    },
+    {
+      "contact_request": 0.0010929495520336453,
+      "contact_spent": 0.0010929495520336453,
+      "noncontact_request": 0.047044975228088086,
+      "noncontact_spent": 0.047044975228088086,
+      "step": 240
+    },
+    {
+      "contact_request": 0.0010926166363972873,
+      "contact_spent": 0.0010926166363972873,
+      "noncontact_request": 0.047061522262002706,
+      "noncontact_spent": 0.047061522262002706,
+      "step": 241
+    },
+    {
+      "contact_request": 0.0010922832073031311,
+      "contact_spent": 0.0010922832073031311,
+      "noncontact_request": 0.04707403517011059,
+      "noncontact_spent": 0.04707403517011059,
+      "step": 242
+    },
+    {
+      "contact_request": 0.0010919492737785324,
+      "contact_spent": 0.0010919492737785324,
+      "noncontact_request": 0.047084717873694816,
+      "noncontact_spent": 0.047084717873694816,
+      "step": 243
+    },
+    {
+      "contact_request": 0.0010916148444656433,
+      "contact_spent": 0.0010916148444656433,
+      "noncontact_request": 0.047093761526678796,
+      "noncontact_spent": 0.047093761526678796,
+      "step": 244
+    },
+    {
+      "contact_request": 0.0010912799276397728,
+      "contact_spent": 0.0010912799276397728,
+      "noncontact_request": 0.04710125512843447,
+      "noncontact_spent": 0.04710125512843447,
+      "step": 245
+    },
+    {
+      "contact_request": 0.0010909445312268556,
+      "contact_spent": 0.0010909445312268556,
+      "noncontact_request": 0.047107300479411925,
+      "noncontact_spent": 0.047107300479411925,
+      "step": 246
+    },
+    {
+      "contact_request": 0.0010906086628200671,
+      "contact_spent": 0.0010906086628200671,
+      "noncontact_request": 0.04711199887001048,
+      "noncontact_spent": 0.04711199887001048,
+      "step": 247
+    },
+    {
+      "contact_request": 0.0010902723296956358,
+      "contact_spent": 0.0010902723296956358,
+      "noncontact_request": 0.04711544292932532,
+      "noncontact_spent": 0.04711544292932532,
+      "step": 248
+    },
+    {
+      "contact_request": 0.0010899355388278825,
+      "contact_spent": 0.0010899355388278825,
+      "noncontact_request": 0.04711771969780751,
+      "noncontact_spent": 0.04711771969780751,
+      "step": 249
+    },
+    {
+      "contact_request": 0.0010895982969035386,
+      "contact_spent": 0.0010895982969035386,
+      "noncontact_request": 0.047118918737654204,
+      "noncontact_spent": 0.047118918737654204,
+      "step": 250
+    },
+    {
+      "contact_request": 0.0010892606103353648,
+      "contact_spent": 0.0010892606103353648,
+      "noncontact_request": 0.04712129362131113,
+      "noncontact_spent": 0.04712129362131113,
+      "step": 251
+    },
+    {
+      "contact_request": 0.0010889224852751178,
+      "contact_spent": 0.0010889224852751178,
+      "noncontact_request": 0.04712268058920654,
+      "noncontact_spent": 0.04712268058920654,
+      "step": 252
+    },
+    {
+      "contact_request": 0.001088583927625888,
+      "contact_spent": 0.001088583927625888,
+      "noncontact_request": 0.04712313997318969,
+      "noncontact_spent": 0.04712313997318969,
+      "step": 253
+    },
+    {
+      "contact_request": 0.001088244943053846,
+      "contact_spent": 0.001088244943053846,
+      "noncontact_request": 0.047122728450861046,
+      "noncontact_spent": 0.047122728450861046,
+      "step": 254
+    },
+    {
+      "contact_request": 0.0010879055369994249,
+      "contact_spent": 0.0010879055369994249,
+      "noncontact_request": 0.04711929531092204,
+      "noncontact_spent": 0.04711929531092204,
+      "step": 255
+    },
+    {
+      "contact_request": 0.0010875657146879618,
+      "contact_spent": 0.0010875657146879618,
+      "noncontact_request": 0.04711044596614086,
+      "noncontact_spent": 0.04711044596614086,
+      "step": 256
+    },
+    {
+      "contact_request": 0.0010872254811398357,
+      "contact_spent": 0.0010872254811398357,
+      "noncontact_request": 0.0471030935874972,
+      "noncontact_spent": 0.0471030935874972,
+      "step": 257
+    },
+    {
+      "contact_request": 0.0010868848411801173,
+      "contact_spent": 0.0010868848411801173,
+      "noncontact_request": 0.047095090246810266,
+      "noncontact_spent": 0.047095090246810266,
+      "step": 258
+    },
+    {
+      "contact_request": 0.0010865437994477573,
+      "contact_spent": 0.0010865437994477573,
+      "noncontact_request": 0.04708650840650731,
+      "noncontact_spent": 0.04708650840650731,
+      "step": 259
+    },
+    {
+      "contact_request": 0.001086202360404338,
+      "contact_spent": 0.001086202360404338,
+      "noncontact_request": 0.04707959738000452,
+      "noncontact_spent": 0.04707959738000452,
+      "step": 260
+    },
+    {
+      "contact_request": 0.0010858605283424094,
+      "contact_spent": 0.0010858605283424094,
+      "noncontact_request": 0.0470721487123772,
+      "noncontact_spent": 0.0470721487123772,
+      "step": 261
+    },
+    {
+      "contact_request": 0.0010855183073934266,
+      "contact_spent": 0.0010855183073934266,
+      "noncontact_request": 0.047061992051821475,
+      "noncontact_spent": 0.047061992051821475,
+      "step": 262
+    },
+    {
+      "contact_request": 0.0010851757015353117,
+      "contact_spent": 0.0010851757015353117,
+      "noncontact_request": 0.047051204289805276,
+      "noncontact_spent": 0.047051204289805276,
+      "step": 263
+    },
+    {
+      "contact_request": 0.0010848327145996587,
+      "contact_spent": 0.0010848327145996587,
+      "noncontact_request": 0.047039887594660844,
+      "noncontact_spent": 0.047039887594660844,
+      "step": 264
+    },
+    {
+      "contact_request": 0.0010844893502785962,
+      "contact_spent": 0.0010844893502785962,
+      "noncontact_request": 0.04702820996553724,
+      "noncontact_spent": 0.04702820996553724,
+      "step": 265
+    },
+    {
+      "contact_request": 0.0010841456121313251,
+      "contact_spent": 0.0010841456121313251,
+      "noncontact_request": 0.04701840278647372,
+      "noncontact_spent": 0.04701840278647372,
+      "step": 266
+    },
+    {
+      "contact_request": 0.001083801503590352,
+      "contact_spent": 0.001083801503590352,
+      "noncontact_request": 0.04700823014276594,
+      "noncontact_spent": 0.04700823014276594,
+      "step": 267
+    },
+    {
+      "contact_request": 0.0010834570279674236,
+      "contact_spent": 0.0010834570279674236,
+      "noncontact_request": 0.046997716942701,
+      "noncontact_spent": 0.046997716942701,
+      "step": 268
+    },
+    {
+      "contact_request": 0.0010831121884591868,
+      "contact_spent": 0.0010831121884591868,
+      "noncontact_request": 0.046986888356460844,
+      "noncontact_spent": 0.046986888356460844,
+      "step": 269
+    },
+    {
+      "contact_request": 0.001082766988152581,
+      "contact_spent": 0.001082766988152581,
+      "noncontact_request": 0.04697796432614326,
+      "noncontact_spent": 0.04697796432614326,
+      "step": 270
+    },
+    {
+      "contact_request": 0.0010824214300299779,
+      "contact_spent": 0.0010824214300299779,
+      "noncontact_request": 0.04696873914088377,
+      "noncontact_spent": 0.04696873914088377,
+      "step": 271
+    },
+    {
+      "contact_request": 0.0010820755169740814,
+      "contact_spent": 0.0010820755169740814,
+      "noncontact_request": 0.04695923055912424,
+      "noncontact_spent": 0.04695923055912424,
+      "step": 272
+    },
+    {
+      "contact_request": 0.001081729251772598,
+      "contact_spent": 0.001081729251772598,
+      "noncontact_request": 0.04694945522169097,
+      "noncontact_spent": 0.04694945522169097,
+      "step": 273
+    },
+    {
+      "contact_request": 0.0010813826371226906,
+      "contact_spent": 0.0010813826371226906,
+      "noncontact_request": 0.046939428722440744,
+      "noncontact_spent": 0.046939428722440744,
+      "step": 274
+    },
+    {
+      "contact_request": 0.001081035675635223,
+      "contact_spent": 0.001081035675635223,
+      "noncontact_request": 0.04692695022878426,
+      "noncontact_spent": 0.04692695022878426,
+      "step": 275
+    },
+    {
+      "contact_request": 0.0010806883698388082,
+      "contact_spent": 0.0010806883698388082,
+      "noncontact_request": 0.04691190783495804,
+      "noncontact_spent": 0.04691190783495804,
+      "step": 276
+    },
+    {
+      "contact_request": 0.0010803407221836698,
+      "contact_spent": 0.0010803407221836698,
+      "noncontact_request": 0.04689661055847163,
+      "noncontact_spent": 0.04689661055847163,
+      "step": 277
+    },
+    {
+      "contact_request": 0.0010799927350453218,
+      "contact_spent": 0.0010799927350453218,
+      "noncontact_request": 0.04688342690665943,
+      "noncontact_spent": 0.04688342690665943,
+      "step": 278
+    },
+    {
+      "contact_request": 0.0010796444107280807,
+      "contact_spent": 0.0010796444107280807,
+      "noncontact_request": 0.04687008328659308,
+      "noncontact_spent": 0.04687008328659308,
+      "step": 279
+    },
+    {
+      "contact_request": 0.0010792957514684134,
+      "contact_spent": 0.0010792957514684134,
+      "noncontact_request": 0.0468565888890234,
+      "noncontact_spent": 0.0468565888890234,
+      "step": 280
+    },
+    {
+      "contact_request": 0.0010789467594381327,
+      "contact_spent": 0.0010789467594381327,
+      "noncontact_request": 0.04684295365677435,
+      "noncontact_spent": 0.04684295365677435,
+      "step": 281
+    },
+    {
+      "contact_request": 0.001078597436747443,
+      "contact_spent": 0.001078597436747443,
+      "noncontact_request": 0.04683137739022827,
+      "noncontact_spent": 0.04683137739022827,
+      "step": 282
+    },
+    {
+      "contact_request": 0.0010782477854478483,
+      "contact_spent": 0.0010782477854478483,
+      "noncontact_request": 0.046819653005635856,
+      "noncontact_spent": 0.046819653005635856,
+      "step": 283
+    },
+    {
+      "contact_request": 0.0010778978075349252,
+      "contact_spent": 0.0010778978075349252,
+      "noncontact_request": 0.0468077886598109,
+      "noncontact_spent": 0.0468077886598109,
+      "step": 284
+    },
+    {
+      "contact_request": 0.0010775475049509692,
+      "contact_spent": 0.0010775475049509692,
+      "noncontact_request": 0.046795792001570954,
+      "noncontact_spent": 0.046795792001570954,
+      "step": 285
+    },
+    {
+      "contact_request": 0.0010771968795875199,
+      "contact_spent": 0.0010771968795875199,
+      "noncontact_request": 0.04678367020404448,
+      "noncontact_spent": 0.04678367020404448,
+      "step": 286
+    },
+    {
+      "contact_request": 0.0010768459332877714,
+      "contact_spent": 0.0010768459332877714,
+      "noncontact_request": 0.04677142999490998,
+      "noncontact_spent": 0.04677142999490998,
+      "step": 287
+    },
+    {
+      "contact_request": 0.0010764946678488705,
+      "contact_spent": 0.0010764946678488705,
+      "noncontact_request": 0.04675907768469786,
+      "noncontact_spent": 0.04675907768469786,
+      "step": 288
+    },
+    {
+      "contact_request": 0.0010761430850241126,
+      "contact_spent": 0.0010761430850241126,
+      "noncontact_request": 0.046746619193277154,
+      "noncontact_spent": 0.046746619193277154,
+      "step": 289
+    },
+    {
+      "contact_request": 0.0010757911865250376,
+      "contact_spent": 0.0010757911865250376,
+      "noncontact_request": 0.04673406007464316,
+      "noncontact_spent": 0.04673406007464316,
+      "step": 290
+    },
+    {
+      "contact_request": 0.001075438974023427,
+      "contact_spent": 0.001075438974023427,
+      "noncontact_request": 0.04672140554011359,
+      "noncontact_spent": 0.04672140554011359,
+      "step": 291
+    },
+    {
+      "contact_request": 0.0010750864491532158,
+      "contact_spent": 0.0010750864491532158,
+      "noncontact_request": 0.04670866048003559,
+      "noncontact_spent": 0.04670866048003559,
+      "step": 292
+    },
+    {
+      "contact_request": 0.001074733613512314,
+      "contact_spent": 0.001074733613512314,
+      "noncontact_request": 0.04669582948409861,
+      "noncontact_spent": 0.04669582948409861,
+      "step": 293
+    },
+    {
+      "contact_request": 0.0010743804686643456,
+      "contact_spent": 0.0010743804686643456,
+      "noncontact_request": 0.04668291686034303,
+      "noncontact_spent": 0.04668291686034303,
+      "step": 294
+    },
+    {
+      "contact_request": 0.0010740270161403124,
+      "contact_spent": 0.0010740270161403124,
+      "noncontact_request": 0.04666992665294809,
+      "noncontact_spent": 0.04666992665294809,
+      "step": 295
+    },
+    {
+      "contact_request": 0.001073673257440178,
+      "contact_spent": 0.001073673257440178,
+      "noncontact_request": 0.0466568626588781,
+      "noncontact_spent": 0.0466568626588781,
+      "step": 296
+    },
+    {
+      "contact_request": 0.0010733191940343852,
+      "contact_spent": 0.0010733191940343852,
+      "noncontact_request": 0.04664372844346057,
+      "noncontact_spent": 0.04664372844346057,
+      "step": 297
+    },
+    {
+      "contact_request": 0.001072964827365302,
+      "contact_spent": 0.001072964827365302,
+      "noncontact_request": 0.04663052735496499,
+      "noncontact_spent": 0.04663052735496499,
+      "step": 298
+    },
+    {
+      "contact_request": 0.0010726101588486023,
+      "contact_spent": 0.0010726101588486023,
+      "noncontact_request": 0.04661726253824722,
+      "noncontact_spent": 0.04661726253824722,
+      "step": 299
+    },
+    {
+      "contact_request": 0.0010722551898745885,
+      "contact_spent": 0.0010722551898745885,
+      "noncontact_request": 0.046601754700846446,
+      "noncontact_spent": 0.046601754700846446,
+      "step": 300
+    },
+    {
+      "contact_request": 0.0010718999218094505,
+      "contact_spent": 0.0010718999218094505,
+      "noncontact_request": 0.04658616667769398,
+      "noncontact_spent": 0.04658616667769398,
+      "step": 301
+    },
+    {
+      "contact_request": 0.0010715443559964697,
+      "contact_spent": 0.0010715443559964697,
+      "noncontact_request": 0.04657050221392079,
+      "noncontact_spent": 0.04657050221392079,
+      "step": 302
+    },
+    {
+      "contact_request": 0.0010711884937571721,
+      "contact_spent": 0.0010711884937571721,
+      "noncontact_request": 0.046557012209142726,
+      "noncontact_spent": 0.046557012209142726,
+      "step": 303
+    },
+    {
+      "contact_request": 0.0010708323363924255,
+      "contact_spent": 0.0010708323363924255,
+      "noncontact_request": 0.04654347157431845,
+      "noncontact_spent": 0.04654347157431845,
+      "step": 304
+    },
+    {
+      "contact_request": 0.00107047588518349,
+      "contact_spent": 0.00107047588518349,
+      "noncontact_request": 0.04652988247497798,
+      "noncontact_spent": 0.04652988247497798,
+      "step": 305
+    },
+    {
+      "contact_request": 0.001070119141393024,
+      "contact_spent": 0.001070119141393024,
+      "noncontact_request": 0.04651624694721046,
+      "noncontact_spent": 0.04651624694721046,
+      "step": 306
+    },
+    {
+      "contact_request": 0.0010697621062660397,
+      "contact_spent": 0.0010697621062660397,
+      "noncontact_request": 0.046500364067017616,
+      "noncontact_spent": 0.046500364067017616,
+      "step": 307
+    },
+    {
+      "contact_request": 0.0010694047810308224,
+      "contact_spent": 0.0010694047810308224,
+      "noncontact_request": 0.04648213486912237,
+      "noncontact_spent": 0.04648213486912237,
+      "step": 308
+    },
+    {
+      "contact_request": 0.001069047166899806,
+      "contact_spent": 0.001069047166899806,
+      "noncontact_request": 0.04646383374345546,
+      "noncontact_spent": 0.04646383374345546,
+      "step": 309
+    },
+    {
+      "contact_request": 0.0010686892650704097,
+      "contact_spent": 0.0010686892650704097,
+      "noncontact_request": 0.0464477705854545,
+      "noncontact_spent": 0.0464477705854545,
+      "step": 310
+    },
+    {
+      "contact_request": 0.0010683310767258373,
+      "contact_spent": 0.0010683310767258373,
+      "noncontact_request": 0.04643170092095938,
+      "noncontact_spent": 0.04643170092095938,
+      "step": 311
+    },
+    {
+      "contact_request": 0.001067972603035845,
+      "contact_spent": 0.001067972603035845,
+      "noncontact_request": 0.046415624076739985,
+      "noncontact_spent": 0.046415624076739985,
+      "step": 312
+    },
+    {
+      "contact_request": 0.0010676138451574699,
+      "contact_spent": 0.0010676138451574699,
+      "noncontact_request": 0.04640171617964058,
+      "noncontact_spent": 0.04640171617964058,
+      "step": 313
+    },
+    {
+      "contact_request": 0.0010672548042357293,
+      "contact_spent": 0.0010672548042357293,
+      "noncontact_request": 0.04638777437147203,
+      "noncontact_spent": 0.04638777437147203,
+      "step": 314
+    },
+    {
+      "contact_request": 0.0010668954814042912,
+      "contact_spent": 0.0010668954814042912,
+      "noncontact_request": 0.04637379982951446,
+      "noncontact_spent": 0.04637379982951446,
+      "step": 315
+    },
+    {
+      "contact_request": 0.0010665358777861105,
+      "contact_spent": 0.0010665358777861105,
+      "noncontact_request": 0.046359793662669416,
+      "noncontact_spent": 0.046359793662669416,
+      "step": 316
+    },
+    {
+      "contact_request": 0.0010661759944940417,
+      "contact_spent": 0.0010661759944940417,
+      "noncontact_request": 0.0463457569156452,
+      "noncontact_spent": 0.0463457569156452,
+      "step": 317
+    },
+    {
+      "contact_request": 0.001065815832631423,
+      "contact_spent": 0.001065815832631423,
+      "noncontact_request": 0.04633169057287956,
+      "noncontact_spent": 0.04633169057287956,
+      "step": 318
+    },
+    {
+      "contact_request": 0.0010654553932926327,
+      "contact_spent": 0.0010654553932926327,
+      "noncontact_request": 0.04631759556221698,
+      "noncontact_spent": 0.04631759556221698,
+      "step": 319
+    },
+    {
+      "contact_request": 0.0010650946775636278,
+      "contact_spent": 0.0010650946775636278,
+      "noncontact_request": 0.046303472758355946,
+      "noncontact_spent": 0.046303472758355946,
+      "step": 320
+    },
+    {
+      "contact_request": 0.0010647336865224502,
+      "contact_spent": 0.0010647336865224502,
+      "noncontact_request": 0.04628932298608122,
+      "noncontact_spent": 0.04628932298608122,
+      "step": 321
+    },
+    {
+      "contact_request": 0.0010643724212397192,
+      "contact_spent": 0.0010643724212397192,
+      "noncontact_request": 0.04627514702329454,
+      "noncontact_spent": 0.04627514702329454,
+      "step": 322
+    },
+    {
+      "contact_request": 0.001064010882779095,
+      "contact_spent": 0.001064010882779095,
+      "noncontact_request": 0.04626094560385696,
+      "noncontact_spent": 0.04626094560385696,
+      "step": 323
+    },
+    {
+      "contact_request": 0.00106364907219773,
+      "contact_spent": 0.00106364907219773,
+      "noncontact_request": 0.04624671942025451,
+      "noncontact_spent": 0.04624671942025451,
+      "step": 324
+    },
+    {
+      "contact_request": 0.001063286990546693,
+      "contact_spent": 0.001063286990546693,
+      "noncontact_request": 0.04623246912609862,
+      "noncontact_spent": 0.04623246912609862,
+      "step": 325
+    },
+    {
+      "contact_request": 0.0010629246388713792,
+      "contact_spent": 0.0010629246388713792,
+      "noncontact_request": 0.0462181953384717,
+      "noncontact_spent": 0.0462181953384717,
+      "step": 326
+    },
+    {
+      "contact_request": 0.0010625620182119027,
+      "contact_spent": 0.0010625620182119027,
+      "noncontact_request": 0.04620389864012786,
+      "noncontact_spent": 0.04620389864012786,
+      "step": 327
+    },
+    {
+      "contact_request": 0.0010621991296034692,
+      "contact_spent": 0.0010621991296034692,
+      "noncontact_request": 0.04618957958155779,
+      "noncontact_spent": 0.04618957958155779,
+      "step": 328
+    },
+    {
+      "contact_request": 0.0010618359740767348,
+      "contact_spent": 0.0010618359740767348,
+      "noncontact_request": 0.04617523868292644,
+      "noncontact_spent": 0.04617523868292644,
+      "step": 329
+    },
+    {
+      "contact_request": 0.0010614725526581483,
+      "contact_spent": 0.0010614725526581483,
+      "noncontact_request": 0.04616087643589153,
+      "noncontact_spent": 0.04616087643589153,
+      "step": 330
+    },
+    {
+      "contact_request": 0.0010611088663702796,
+      "contact_spent": 0.0010611088663702796,
+      "noncontact_request": 0.04614649330531053,
+      "noncontact_spent": 0.04614649330531053,
+      "step": 331
+    },
+    {
+      "contact_request": 0.0010607449162321333,
+      "contact_spent": 0.0010607449162321333,
+      "noncontact_request": 0.046132089730842984,
+      "noncontact_spent": 0.046132089730842984,
+      "step": 332
+    },
+    {
+      "contact_request": 0.0010603807032594475,
+      "contact_spent": 0.0010603807032594475,
+      "noncontact_request": 0.04611766612845476,
+      "noncontact_spent": 0.04611766612845476,
+      "step": 333
+    },
+    {
+      "contact_request": 0.0010600162284649835,
+      "contact_spent": 0.0010600162284649835,
+      "noncontact_request": 0.04610322289183058,
+      "noncontact_spent": 0.04610322289183058,
+      "step": 334
+    },
+    {
+      "contact_request": 0.0010596514928587974,
+      "contact_spent": 0.0010596514928587974,
+      "noncontact_request": 0.04608876039370027,
+      "noncontact_spent": 0.04608876039370027,
+      "step": 335
+    },
+    {
+      "contact_request": 0.0010592864974485056,
+      "contact_spent": 0.0010592864974485056,
+      "noncontact_request": 0.046074278987084445,
+      "noncontact_spent": 0.046074278987084445,
+      "step": 336
+    },
+    {
+      "contact_request": 0.0010589212432395357,
+      "contact_spent": 0.0010589212432395357,
+      "noncontact_request": 0.046059779006464525,
+      "noncontact_spent": 0.046059779006464525,
+      "step": 337
+    },
+    {
+      "contact_request": 0.001058555731235367,
+      "contact_spent": 0.001058555731235367,
+      "noncontact_request": 0.046045260768881664,
+      "noncontact_spent": 0.046045260768881664,
+      "step": 338
+    },
+    {
+      "contact_request": 0.0010581899624377607,
+      "contact_spent": 0.0010581899624377607,
+      "noncontact_request": 0.046030724574969296,
+      "noncontact_spent": 0.046030724574969296,
+      "step": 339
+    },
+    {
+      "contact_request": 0.0010578239378469811,
+      "contact_spent": 0.0010578239378469811,
+      "noncontact_request": 0.04601617070992331,
+      "noncontact_spent": 0.04601617070992331,
+      "step": 340
+    },
+    {
+      "contact_request": 0.0010574576584620066,
+      "contact_spent": 0.0010574576584620066,
+      "noncontact_request": 0.046001599444413545,
+      "noncontact_spent": 0.046001599444413545,
+      "step": 341
+    },
+    {
+      "contact_request": 0.001057091125280731,
+      "contact_spent": 0.001057091125280731,
+      "noncontact_request": 0.04598701103544063,
+      "noncontact_spent": 0.04598701103544063,
+      "step": 342
+    },
+    {
+      "contact_request": 0.001056724339300157,
+      "contact_spent": 0.001056724339300157,
+      "noncontact_request": 0.0459724057271411,
+      "noncontact_spent": 0.0459724057271411,
+      "step": 343
+    },
+    {
+      "contact_request": 0.0010563573015165825,
+      "contact_spent": 0.0010563573015165825,
+      "noncontact_request": 0.04595778375154446,
+      "noncontact_spent": 0.04595778375154446,
+      "step": 344
+    },
+    {
+      "contact_request": 0.0010559900129257756,
+      "contact_spent": 0.0010559900129257756,
+      "noncontact_request": 0.04594314532928465,
+      "noncontact_spent": 0.04594314532928465,
+      "step": 345
+    },
+    {
+      "contact_request": 0.0010556224745231456,
+      "contact_spent": 0.0010556224745231456,
+      "noncontact_request": 0.045928490670269224,
+      "noncontact_spent": 0.045928490670269224,
+      "step": 346
+    },
+    {
+      "contact_request": 0.001055254687303904,
+      "contact_spent": 0.001055254687303904,
+      "noncontact_request": 0.04591381997430845,
+      "noncontact_spent": 0.04591381997430845,
+      "step": 347
+    },
+    {
+      "contact_request": 0.0010548866522632208,
+      "contact_spent": 0.0010548866522632208,
+      "noncontact_request": 0.04589913343170698,
+      "noncontact_spent": 0.04589913343170698,
+      "step": 348
+    },
+    {
+      "contact_request": 0.0010545183703963722,
+      "contact_spent": 0.0010545183703963722,
+      "noncontact_request": 0.04588443122382039,
+      "noncontact_spent": 0.04588443122382039,
+      "step": 349
+    },
+    {
+      "contact_request": 0.0010541498426988826,
+      "contact_spent": 0.0010541498426988826,
+      "noncontact_request": 0.045869713523578624,
+      "noncontact_spent": 0.045869713523578624,
+      "step": 350
+    },
+    {
+      "contact_request": 0.001053781070166662,
+      "contact_spent": 0.001053781070166662,
+      "noncontact_request": 0.045854980495978505,
+      "noncontact_spent": 0.045854980495978505,
+      "step": 351
+    },
+    {
+      "contact_request": 0.0010534120537961339,
+      "contact_spent": 0.0010534120537961339,
+      "noncontact_request": 0.04584023229854704,
+      "noncontact_spent": 0.04584023229854704,
+      "step": 352
+    },
+    {
+      "contact_request": 0.0010530427945843618,
+      "contact_spent": 0.0010530427945843618,
+      "noncontact_request": 0.04582546908177748,
+      "noncontact_spent": 0.04582546908177748,
+      "step": 353
+    },
+    {
+      "contact_request": 0.0010526732935291674,
+      "contact_spent": 0.0010526732935291674,
+      "noncontact_request": 0.04581069098953962,
+      "noncontact_spent": 0.04581069098953962,
+      "step": 354
+    },
+    {
+      "contact_request": 0.001052303551629245,
+      "contact_spent": 0.001052303551629245,
+      "noncontact_request": 0.045795898159466004,
+      "noncontact_spent": 0.045795898159466004,
+      "step": 355
+    },
+    {
+      "contact_request": 0.0010519335698842703,
+      "contact_spent": 0.0010519335698842703,
+      "noncontact_request": 0.045781090723315425,
+      "noncontact_spent": 0.045781090723315425,
+      "step": 356
+    },
+    {
+      "contact_request": 0.0010515633492950043,
+      "contact_spent": 0.0010515633492950043,
+      "noncontact_request": 0.04576626880731522,
+      "noncontact_spent": 0.04576626880731522,
+      "step": 357
+    },
+    {
+      "contact_request": 0.0010511928908633944,
+      "contact_spent": 0.0010511928908633944,
+      "noncontact_request": 0.045751432532483434,
+      "noncontact_spent": 0.045751432532483434,
+      "step": 358
+    },
+    {
+      "contact_request": 0.0010508221955926687,
+      "contact_spent": 0.0010508221955926687,
+      "noncontact_request": 0.045736582014932185,
+      "noncontact_spent": 0.045736582014932185,
+      "step": 359
+    },
+    {
+      "contact_request": 0.001050451264487428,
+      "contact_spent": 0.001050451264487428,
+      "noncontact_request": 0.04572171736615354,
+      "noncontact_spent": 0.04572171736615354,
+      "step": 360
+    },
+    {
+      "contact_request": 0.0010500800985537328,
+      "contact_spent": 0.0010500800985537328,
+      "noncontact_request": 0.0457068386932885,
+      "noncontact_spent": 0.0457068386932885,
+      "step": 361
+    },
+    {
+      "contact_request": 0.001049708698799187,
+      "contact_spent": 0.001049708698799187,
+      "noncontact_request": 0.045691946099380515,
+      "noncontact_spent": 0.045691946099380515,
+      "step": 362
+    },
+    {
+      "contact_request": 0.0010493370662330176,
+      "contact_spent": 0.0010493370662330176,
+      "noncontact_request": 0.04567703968361429,
+      "noncontact_spent": 0.04567703968361429,
+      "step": 363
+    },
+    {
+      "contact_request": 0.001048965201866151,
+      "contact_spent": 0.001048965201866151,
+      "noncontact_request": 0.04566211954154081,
+      "noncontact_spent": 0.04566211954154081,
+      "step": 364
+    },
+    {
+      "contact_request": 0.0010485931067112863,
+      "contact_spent": 0.0010485931067112863,
+      "noncontact_request": 0.045647185765289276,
+      "noncontact_spent": 0.045647185765289276,
+      "step": 365
+    },
+    {
+      "contact_request": 0.001048220781782965,
+      "contact_spent": 0.001048220781782965,
+      "noncontact_request": 0.04563223844376692,
+      "noncontact_spent": 0.04563223844376692,
+      "step": 366
+    },
+    {
+      "contact_request": 0.0010478482280976374,
+      "contact_spent": 0.0010478482280976374,
+      "noncontact_request": 0.0456172776628473,
+      "noncontact_spent": 0.0456172776628473,
+      "step": 367
+    },
+    {
+      "contact_request": 0.0010474754466737264,
+      "contact_spent": 0.0010474754466737264,
+      "noncontact_request": 0.04560230350554775,
+      "noncontact_spent": 0.04560230350554775,
+      "step": 368
+    },
+    {
+      "contact_request": 0.001047102438531688,
+      "contact_spent": 0.001047102438531688,
+      "noncontact_request": 0.045587316052196715,
+      "noncontact_spent": 0.045587316052196715,
+      "step": 369
+    },
+    {
+      "contact_request": 0.0010467292046940709,
+      "contact_spent": 0.0010467292046940709,
+      "noncontact_request": 0.04557231538059146,
+      "noncontact_spent": 0.04557231538059146,
+      "step": 370
+    },
+    {
+      "contact_request": 0.0010463557461855696,
+      "contact_spent": 0.0010463557461855696,
+      "noncontact_request": 0.045557301566146784,
+      "noncontact_spent": 0.045557301566146784,
+      "step": 371
+    },
+    {
+      "contact_request": 0.0010459820640330794,
+      "contact_spent": 0.0010459820640330794,
+      "noncontact_request": 0.04554227468203532,
+      "noncontact_spent": 0.04554227468203532,
+      "step": 372
+    },
+    {
+      "contact_request": 0.001045608159265746,
+      "contact_spent": 0.001045608159265746,
+      "noncontact_request": 0.04552723479931977,
+      "noncontact_spent": 0.04552723479931977,
+      "step": 373
+    },
+    {
+      "contact_request": 0.0010452340329150133,
+      "contact_spent": 0.0010452340329150133,
+      "noncontact_request": 0.045512181987077654,
+      "noncontact_spent": 0.045512181987077654,
+      "step": 374
+    },
+    {
+      "contact_request": 0.0010448596860146715,
+      "contact_spent": 0.0010448596860146715,
+      "noncontact_request": 0.045497116312518966,
+      "noncontact_spent": 0.045497116312518966,
+      "step": 375
+    },
+    {
+      "contact_request": 0.0010444851196008975,
+      "contact_spent": 0.0010444851196008975,
+      "noncontact_request": 0.04548203784109728,
+      "noncontact_spent": 0.04548203784109728,
+      "step": 376
+    },
+    {
+      "contact_request": 0.0010441103347123006,
+      "contact_spent": 0.0010441103347123006,
+      "noncontact_request": 0.045464787320306524,
+      "noncontact_spent": 0.045464787320306524,
+      "step": 377
+    },
+    {
+      "contact_request": 0.0010437353323899596,
+      "contact_spent": 0.0010437353323899596,
+      "noncontact_request": 0.04544528332829495,
+      "noncontact_spent": 0.04544528332829495,
+      "step": 378
+    },
+    {
+      "contact_request": 0.0010433601136774617,
+      "contact_spent": 0.0010433601136774617,
+      "noncontact_request": 0.04542792012203658,
+      "noncontact_spent": 0.04542792012203658,
+      "step": 379
+    },
+    {
+      "contact_request": 0.0010429846796209384,
+      "contact_spent": 0.0010429846796209384,
+      "noncontact_request": 0.045410584677465025,
+      "noncontact_spent": 0.045410584677465025,
+      "step": 380
+    },
+    {
+      "contact_request": 0.0010426090312691003,
+      "contact_spent": 0.0010426090312691003,
+      "noncontact_request": 0.045393269215547635,
+      "noncontact_spent": 0.045393269215547635,
+      "step": 381
+    },
+    {
+      "contact_request": 0.0010422331696732692,
+      "contact_spent": 0.0010422331696732692,
+      "noncontact_request": 0.04537811941589887,
+      "noncontact_spent": 0.04537811941589887,
+      "step": 382
+    },
+    {
+      "contact_request": 0.0010418570958874104,
+      "contact_spent": 0.0010418570958874104,
+      "noncontact_request": 0.0453629572406024,
+      "noncontact_spent": 0.0453629572406024,
+      "step": 383
+    },
+    {
+      "contact_request": 0.0010414808109681607,
+      "contact_spent": 0.0010414808109681607,
+      "noncontact_request": 0.045347782744355254,
+      "noncontact_spent": 0.045347782744355254,
+      "step": 384
+    },
+    {
+      "contact_request": 0.0010411043159748571,
+      "contact_spent": 0.0010411043159748571,
+      "noncontact_request": 0.04533259598085503,
+      "noncontact_spent": 0.04533259598085503,
+      "step": 385
+    },
+    {
+      "contact_request": 0.0010407276119695635,
+      "contact_spent": 0.0010407276119695635,
+      "noncontact_request": 0.04531739700286253,
+      "noncontact_spent": 0.04531739700286253,
+      "step": 386
+    },
+    {
+      "contact_request": 0.0010403507000170964,
+      "contact_spent": 0.0010403507000170964,
+      "noncontact_request": 0.04530218586226045,
+      "noncontact_spent": 0.04530218586226045,
+      "step": 387
+    },
+    {
+      "contact_request": 0.0010399735811850482,
+      "contact_spent": 0.0010399735811850482,
+      "noncontact_request": 0.045286962610108984,
+      "noncontact_spent": 0.045286962610108984,
+      "step": 388
+    },
+    {
+      "contact_request": 0.0010395962565438095,
+      "contact_spent": 0.0010395962565438095,
+      "noncontact_request": 0.0452717272966985,
+      "noncontact_spent": 0.0452717272966985,
+      "step": 389
+    },
+    {
+      "contact_request": 0.0010392187271665914,
+      "contact_spent": 0.0010392187271665914,
+      "noncontact_request": 0.045256479971598935,
+      "noncontact_spent": 0.045256479971598935,
+      "step": 390
+    },
+    {
+      "contact_request": 0.0010388409941294449,
+      "contact_spent": 0.0010388409941294449,
+      "noncontact_request": 0.04524122068370696,
+      "noncontact_spent": 0.04524122068370696,
+      "step": 391
+    },
+    {
+      "contact_request": 0.0010384630585112808,
+      "contact_spent": 0.0010384630585112808,
+      "noncontact_request": 0.04522594948129008,
+      "noncontact_spent": 0.04522594948129008,
+      "step": 392
+    },
+    {
+      "contact_request": 0.0010380849213938875,
+      "contact_spent": 0.0010380849213938875,
+      "noncontact_request": 0.045210666412028616,
+      "noncontact_spent": 0.045210666412028616,
+      "step": 393
+    },
+    {
+      "contact_request": 0.0010377065838619469,
+      "contact_spent": 0.0010377065838619469,
+      "noncontact_request": 0.04519537152305533,
+      "noncontact_spent": 0.04519537152305533,
+      "step": 394
+    },
+    {
+      "contact_request": 0.0010373280470030515,
+      "contact_spent": 0.0010373280470030515,
+      "noncontact_request": 0.045180064860992734,
+      "noncontact_spent": 0.045180064860992734,
+      "step": 395
+    },
+    {
+      "contact_request": 0.0010369493119077196,
+      "contact_spent": 0.0010369493119077196,
+      "noncontact_request": 0.04516474647198854,
+      "noncontact_spent": 0.04516474647198854,
+      "step": 396
+    },
+    {
+      "contact_request": 0.0010365703796694078,
+      "contact_spent": 0.0010365703796694078,
+      "noncontact_request": 0.045149416401749055,
+      "noncontact_spent": 0.045149416401749055,
+      "step": 397
+    },
+    {
+      "contact_request": 0.0010361912513845253,
+      "contact_spent": 0.0010361912513845253,
+      "noncontact_request": 0.0451340746955709,
+      "noncontact_spent": 0.0451340746955709,
+      "step": 398
+    },
+    {
+      "contact_request": 0.0010358119281524457,
+      "contact_spent": 0.0010358119281524457,
+      "noncontact_request": 0.04511872139837077,
+      "noncontact_spent": 0.04511872139837077,
+      "step": 399
+    },
+    {
+      "contact_request": 0.0010354324110755187,
+      "contact_spent": 0.0010354324110755187,
+      "noncontact_request": 0.045103356554713835,
+      "noncontact_spent": 0.045103356554713835,
+      "step": 400
+    },
+    {
+      "contact_request": 0.0010350527012590802,
+      "contact_spent": 0.0010350527012590802,
+      "noncontact_request": 0.04508798020884042,
+      "noncontact_spent": 0.04508798020884042,
+      "step": 401
+    },
+    {
+      "contact_request": 0.0010346727998114622,
+      "contact_spent": 0.0010346727998114622,
+      "noncontact_request": 0.04507259240469126,
+      "noncontact_spent": 0.04507259240469126,
+      "step": 402
+    },
+    {
+      "contact_request": 0.0010342927078440022,
+      "contact_spent": 0.0010342927078440022,
+      "noncontact_request": 0.045057193185931564,
+      "noncontact_spent": 0.045057193185931564,
+      "step": 403
+    },
+    {
+      "contact_request": 0.0010339124264710506,
+      "contact_spent": 0.0010339124264710506,
+      "noncontact_request": 0.04504178259597351,
+      "noncontact_spent": 0.04504178259597351,
+      "step": 404
+    },
+    {
+      "contact_request": 0.0010335319568099794,
+      "contact_spent": 0.0010335319568099794,
+      "noncontact_request": 0.04502636067799773,
+      "noncontact_spent": 0.04502636067799773,
+      "step": 405
+    },
+    {
+      "contact_request": 0.0010331512999811878,
+      "contact_spent": 0.0010331512999811878,
+      "noncontact_request": 0.04501092747497358,
+      "noncontact_spent": 0.04501092747497358,
+      "step": 406
+    },
+    {
+      "contact_request": 0.0010327704571081102,
+      "contact_spent": 0.0010327704571081102,
+      "noncontact_request": 0.044995483029678277,
+      "noncontact_spent": 0.044995483029678277,
+      "step": 407
+    },
+    {
+      "contact_request": 0.0010323894293172195,
+      "contact_spent": 0.0010323894293172195,
+      "noncontact_request": 0.04498002738471505,
+      "noncontact_spent": 0.04498002738471505,
+      "step": 408
+    },
+    {
+      "contact_request": 0.0010320082177380345,
+      "contact_spent": 0.0010320082177380345,
+      "noncontact_request": 0.04496456058253035,
+      "noncontact_spent": 0.04496456058253035,
+      "step": 409
+    },
+    {
+      "contact_request": 0.0010316268235031217,
+      "contact_spent": 0.0010316268235031217,
+      "noncontact_request": 0.04494908266543006,
+      "noncontact_spent": 0.04494908266543006,
+      "step": 410
+    },
+    {
+      "contact_request": 0.001031245247748102,
+      "contact_spent": 0.001031245247748102,
+      "noncontact_request": 0.04493359367559485,
+      "noncontact_spent": 0.04493359367559485,
+      "step": 411
+    },
+    {
+      "contact_request": 0.0010308634916116515,
+      "contact_spent": 0.0010308634916116515,
+      "noncontact_request": 0.04491809365509484,
+      "noncontact_spent": 0.04491809365509484,
+      "step": 412
+    },
+    {
+      "contact_request": 0.0010304815562355051,
+      "contact_spent": 0.0010304815562355051,
+      "noncontact_request": 0.04490258264590328,
+      "noncontact_spent": 0.04490258264590328,
+      "step": 413
+    },
+    {
+      "contact_request": 0.0010300994427644597,
+      "contact_spent": 0.0010300994427644597,
+      "noncontact_request": 0.0448870606899096,
+      "noncontact_spent": 0.0448870606899096,
+      "step": 414
+    },
+    {
+      "contact_request": 0.0010297171523463735,
+      "contact_spent": 0.0010297171523463735,
+      "noncontact_request": 0.04487152782893187,
+      "noncontact_spent": 0.04487152782893187,
+      "step": 415
+    },
+    {
+      "contact_request": 0.00102933468613217,
+      "contact_spent": 0.00102933468613217,
+      "noncontact_request": 0.04485598410472836,
+      "noncontact_spent": 0.04485598410472836,
+      "step": 416
+    },
+    {
+      "contact_request": 0.0010289520452758365,
+      "contact_spent": 0.0010289520452758365,
+      "noncontact_request": 0.04484042955900868,
+      "noncontact_spent": 0.04484042955900868,
+      "step": 417
+    },
+    {
+      "contact_request": 0.0010285692309344255,
+      "contact_spent": 0.0010285692309344255,
+      "noncontact_request": 0.04482486423344428,
+      "noncontact_spent": 0.04482486423344428,
+      "step": 418
+    },
+    {
+      "contact_request": 0.0010281862442680547,
+      "contact_spent": 0.0010281862442680547,
+      "noncontact_request": 0.044809288169678316,
+      "noncontact_spent": 0.044809288169678316,
+      "step": 419
+    },
+    {
+      "contact_request": 0.001027803086439905,
+      "contact_spent": 0.001027803086439905,
+      "noncontact_request": 0.044793701409335154,
+      "noncontact_spent": 0.044793701409335154,
+      "step": 420
+    },
+    {
+      "contact_request": 0.0010274197586162214,
+      "contact_spent": 0.0010274197586162214,
+      "noncontact_request": 0.04477810399402912,
+      "noncontact_spent": 0.04477810399402912,
+      "step": 421
+    },
+    {
+      "contact_request": 0.0010270362619663105,
+      "contact_spent": 0.0010270362619663105,
+      "noncontact_request": 0.044762495965373045,
+      "noncontact_spent": 0.044762495965373045,
+      "step": 422
+    },
+    {
+      "contact_request": 0.001026652597662538,
+      "contact_spent": 0.001026652597662538,
+      "noncontact_request": 0.04474687736498623,
+      "noncontact_spent": 0.04474687736498623,
+      "step": 423
+    },
+    {
+      "contact_request": 0.0010262687668803289,
+      "contact_spent": 0.0010262687668803289,
+      "noncontact_request": 0.044731248234501975,
+      "noncontact_spent": 0.044731248234501975,
+      "step": 424
+    },
+    {
+      "contact_request": 0.0010258847707981615,
+      "contact_spent": 0.0010258847707981615,
+      "noncontact_request": 0.04471560861557476,
+      "noncontact_spent": 0.04471560861557476,
+      "step": 425
+    },
+    {
+      "contact_request": 0.0010255006105975679,
+      "contact_spent": 0.0010255006105975679,
+      "noncontact_request": 0.044699958549886995,
+      "noncontact_spent": 0.044699958549886995,
+      "step": 426
+    },
+    {
+      "contact_request": 0.0010251162874631283,
+      "contact_spent": 0.0010251162874631283,
+      "noncontact_request": 0.044684298079155485,
+      "noncontact_spent": 0.044684298079155485,
+      "step": 427
+    },
+    {
+      "contact_request": 0.0010247318025824684,
+      "contact_spent": 0.0010247318025824684,
+      "noncontact_request": 0.04466862724513746,
+      "noncontact_spent": 0.04466862724513746,
+      "step": 428
+    },
+    {
+      "contact_request": 0.0010243471571462553,
+      "contact_spent": 0.0010243471571462553,
+      "noncontact_request": 0.04465294608963637,
+      "noncontact_spent": 0.04465294608963637,
+      "step": 429
+    },
+    {
+      "contact_request": 0.0010239623523481938,
+      "contact_spent": 0.0010239623523481938,
+      "noncontact_request": 0.04463725465450732,
+      "noncontact_spent": 0.04463725465450732,
+      "step": 430
+    },
+    {
+      "contact_request": 0.0010235773893850209,
+      "contact_spent": 0.0010235773893850209,
+      "noncontact_request": 0.044621552981662184,
+      "noncontact_spent": 0.044621552981662184,
+      "step": 431
+    },
+    {
+      "contact_request": 0.001023192269456501,
+      "contact_spent": 0.001023192269456501,
+      "noncontact_request": 0.0446058411130746,
+      "noncontact_spent": 0.0446058411130746,
+      "step": 432
+    },
+    {
+      "contact_request": 0.001022806993765421,
+      "contact_spent": 0.001022806993765421,
+      "noncontact_request": 0.04459011909078451,
+      "noncontact_spent": 0.04459011909078451,
+      "step": 433
+    },
+    {
+      "contact_request": 0.001022421563517586,
+      "contact_spent": 0.001022421563517586,
+      "noncontact_request": 0.044574386956902516,
+      "noncontact_spent": 0.044574386956902516,
+      "step": 434
+    },
+    {
+      "contact_request": 0.0010220359799218111,
+      "contact_spent": 0.0010220359799218111,
+      "noncontact_request": 0.04455864475361415,
+      "noncontact_spent": 0.04455864475361415,
+      "step": 435
+    },
+    {
+      "contact_request": 0.0010216502441899177,
+      "contact_spent": 0.0010216502441899177,
+      "noncontact_request": 0.04454289252318363,
+      "noncontact_spent": 0.04454289252318363,
+      "step": 436
+    },
+    {
+      "contact_request": 0.0010212643575367257,
+      "contact_spent": 0.0010212643575367257,
+      "noncontact_request": 0.044527130307957734,
+      "noncontact_spent": 0.044527130307957734,
+      "step": 437
+    },
+    {
+      "contact_request": 0.0010208783211800474,
+      "contact_spent": 0.0010208783211800474,
+      "noncontact_request": 0.04451135815036916,
+      "noncontact_spent": 0.04451135815036916,
+      "step": 438
+    },
+    {
+      "contact_request": 0.0010204921363406814,
+      "contact_spent": 0.0010204921363406814,
+      "noncontact_request": 0.04449557609293999,
+      "noncontact_spent": 0.04449557609293999,
+      "step": 439
+    },
+    {
+      "contact_request": 0.0010201058042424048,
+      "contact_spent": 0.0010201058042424048,
+      "noncontact_request": 0.04447978417828472,
+      "noncontact_spent": 0.04447978417828472,
+      "step": 440
+    },
+    {
+      "contact_request": 0.0010197193261119654,
+      "contact_spent": 0.0010197193261119654,
+      "noncontact_request": 0.044463982449113336,
+      "noncontact_spent": 0.044463982449113336,
+      "step": 441
+    },
+    {
+      "contact_request": 0.0010193327031790761,
+      "contact_spent": 0.0010193327031790761,
+      "noncontact_request": 0.04444817094823399,
+      "noncontact_spent": 0.04444817094823399,
+      "step": 442
+    },
+    {
+      "contact_request": 0.001018945936676405,
+      "contact_spent": 0.001018945936676405,
+      "noncontact_request": 0.04443234971855583,
+      "noncontact_spent": 0.04443234971855583,
+      "step": 443
+    },
+    {
+      "contact_request": 0.0010185590278395684,
+      "contact_spent": 0.0010185590278395684,
+      "noncontact_request": 0.04441651880309132,
+      "noncontact_spent": 0.04441651880309132,
+      "step": 444
+    },
+    {
+      "contact_request": 0.0010181719779071233,
+      "contact_spent": 0.0010181719779071233,
+      "noncontact_request": 0.04440067824495879,
+      "noncontact_spent": 0.04440067824495879,
+      "step": 445
+    },
+    {
+      "contact_request": 0.0010177847881205574,
+      "contact_spent": 0.0010177847881205574,
+      "noncontact_request": 0.04438482808738452,
+      "noncontact_spent": 0.04438482808738452,
+      "step": 446
+    },
+    {
+      "contact_request": 0.001017397459724282,
+      "contact_spent": 0.001017397459724282,
+      "noncontact_request": 0.044368968373704985,
+      "noncontact_spent": 0.044368968373704985,
+      "step": 447
+    },
+    {
+      "contact_request": 0.001017009993965622,
+      "contact_spent": 0.001017009993965622,
+      "noncontact_request": 0.04435309914736879,
+      "noncontact_spent": 0.04435309914736879,
+      "step": 448
+    },
+    {
+      "contact_request": 0.0010166223920948076,
+      "contact_spent": 0.0010166223920948076,
+      "noncontact_request": 0.04433722045193853,
+      "noncontact_spent": 0.04433722045193853,
+      "step": 449
+    },
+    {
+      "contact_request": 0.0010162346553649647,
+      "contact_spent": 0.0010162346553649647,
+      "noncontact_request": 0.04432133233109261,
+      "noncontact_spent": 0.04432133233109261,
+      "step": 450
+    },
+    {
+      "contact_request": 0.0010158467850321063,
+      "contact_spent": 0.0010158467850321063,
+      "noncontact_request": 0.0443054348286269,
+      "noncontact_spent": 0.0443054348286269,
+      "step": 451
+    },
+    {
+      "contact_request": 0.0010154587823551211,
+      "contact_spent": 0.0010154587823551211,
+      "noncontact_request": 0.04428952798845632,
+      "noncontact_spent": 0.04428952798845632,
+      "step": 452
+    },
+    {
+      "contact_request": 0.0010150706485957655,
+      "contact_spent": 0.0010150706485957655,
+      "noncontact_request": 0.04427361185461633,
+      "noncontact_spent": 0.04427361185461633,
+      "step": 453
+    },
+    {
+      "contact_request": 0.001014682385018653,
+      "contact_spent": 0.001014682385018653,
+      "noncontact_request": 0.044257686471264254,
+      "noncontact_spent": 0.044257686471264254,
+      "step": 454
+    },
+    {
+      "contact_request": 0.0010142939928912437,
+      "contact_spent": 0.0010142939928912437,
+      "noncontact_request": 0.04424175188268073,
+      "noncontact_spent": 0.04424175188268073,
+      "step": 455
+    },
+    {
+      "contact_request": 0.0010139054734838347,
+      "contact_spent": 0.0010139054734838347,
+      "noncontact_request": 0.04422580813327079,
+      "noncontact_spent": 0.04422580813327079,
+      "step": 456
+    },
+    {
+      "contact_request": 0.0010135168280695482,
+      "contact_spent": 0.0010135168280695482,
+      "noncontact_request": 0.04420985526756515,
+      "noncontact_spent": 0.04420985526756515,
+      "step": 457
+    },
+    {
+      "contact_request": 0.0010131280579243225,
+      "contact_spent": 0.0010131280579243225,
+      "noncontact_request": 0.04419389333022121,
+      "noncontact_spent": 0.04419389333022121,
+      "step": 458
+    },
+    {
+      "contact_request": 0.0010127391643269003,
+      "contact_spent": 0.0010127391643269003,
+      "noncontact_request": 0.044177922366024094,
+      "noncontact_spent": 0.044177922366024094,
+      "step": 459
+    },
+    {
+      "contact_request": 0.0010123501485588178,
+      "contact_spent": 0.0010123501485588178,
+      "noncontact_request": 0.04416194241988757,
+      "noncontact_spent": 0.04416194241988757,
+      "step": 460
+    },
+    {
+      "contact_request": 0.0010119610119043933,
+      "contact_spent": 0.0010119610119043933,
+      "noncontact_request": 0.04414595353685504,
+      "noncontact_spent": 0.04414595353685504,
+      "step": 461
+    },
+    {
+      "contact_request": 0.001011571755650716,
+      "contact_spent": 0.001011571755650716,
+      "noncontact_request": 0.04412995576210027,
+      "noncontact_spent": 0.04412995576210027,
+      "step": 462
+    },
+    {
+      "contact_request": 0.0010111823810876352,
+      "contact_spent": 0.0010111823810876352,
+      "noncontact_request": 0.04411394914092812,
+      "noncontact_spent": 0.04411394914092812,
+      "step": 463
+    },
+    {
+      "contact_request": 0.001010792889507747,
+      "contact_spent": 0.001010792889507747,
+      "noncontact_request": 0.04409590287690313,
+      "noncontact_spent": 0.04409590287690313,
+      "step": 464
+    },
+    {
+      "contact_request": 0.001010403282206385,
+      "contact_spent": 0.001010403282206385,
+      "noncontact_request": 0.04407581844487536,
+      "noncontact_spent": 0.04407581844487536,
+      "step": 465
+    },
+    {
+      "contact_request": 0.0010100135604816057,
+      "contact_spent": 0.0010100135604816057,
+      "noncontact_request": 0.04405770012343077,
+      "noncontact_spent": 0.04405770012343077,
+      "step": 466
+    },
+    {
+      "contact_request": 0.001009623725634178,
+      "contact_spent": 0.001009623725634178,
+      "noncontact_request": 0.044039567591958644,
+      "noncontact_spent": 0.044039567591958644,
+      "step": 467
+    },
+    {
+      "contact_request": 0.0010092337789675706,
+      "contact_spent": 0.0010092337789675706,
+      "noncontact_request": 0.04402142473215781,
+      "noncontact_spent": 0.04402142473215781,
+      "step": 468
+    },
+    {
+      "contact_request": 0.00100884372178794,
+      "contact_spent": 0.00100884372178794,
+      "noncontact_request": 0.044003272045424355,
+      "noncontact_spent": 0.044003272045424355,
+      "step": 469
+    },
+    {
+      "contact_request": 0.0010084535554041169,
+      "contact_spent": 0.0010084535554041169,
+      "noncontact_request": 0.04398721014175625,
+      "noncontact_spent": 0.04398721014175625,
+      "step": 470
+    },
+    {
+      "contact_request": 0.0010080632811275947,
+      "contact_spent": 0.0010080632811275947,
+      "noncontact_request": 0.043971139761449986,
+      "noncontact_spent": 0.043971139761449986,
+      "step": 471
+    },
+    {
+      "contact_request": 0.0010076729002725165,
+      "contact_spent": 0.0010076729002725165,
+      "noncontact_request": 0.04395506095100122,
+      "noncontact_spent": 0.04395506095100122,
+      "step": 472
+    },
+    {
+      "contact_request": 0.0010072824141556611,
+      "contact_spent": 0.0010072824141556611,
+      "noncontact_request": 0.043938973757041914,
+      "noncontact_spent": 0.043938973757041914,
+      "step": 473
+    },
+    {
+      "contact_request": 0.001006891824096432,
+      "contact_spent": 0.001006891824096432,
+      "noncontact_request": 0.04392287822634048,
+      "noncontact_spent": 0.04392287822634048,
+      "step": 474
+    },
+    {
+      "contact_request": 0.0010065011314168415,
+      "contact_spent": 0.0010065011314168415,
+      "noncontact_request": 0.0439067744058022,
+      "noncontact_spent": 0.0439067744058022,
+      "step": 475
+    },
+    {
+      "contact_request": 0.0010061103374415003,
+      "contact_spent": 0.0010061103374415003,
+      "noncontact_request": 0.04389066234246934,
+      "noncontact_spent": 0.04389066234246934,
+      "step": 476
+    },
+    {
+      "contact_request": 0.0010057194434976017,
+      "contact_spent": 0.0010057194434976017,
+      "noncontact_request": 0.04387454208352137,
+      "noncontact_spent": 0.04387454208352137,
+      "step": 477
+    },
+    {
+      "contact_request": 0.0010053284509149091,
+      "contact_spent": 0.0010053284509149091,
+      "noncontact_request": 0.04385841367627517,
+      "noncontact_spent": 0.04385841367627517,
+      "step": 478
+    },
+    {
+      "contact_request": 0.0010049373610257427,
+      "contact_spent": 0.0010049373610257427,
+      "noncontact_request": 0.04384227716818516,
+      "noncontact_spent": 0.04384227716818516,
+      "step": 479
+    }
+  ],
+  "dense_trajectories_externalized": false,
+  "unguided_sampled_steps": [
+    {
+      "area": 77.45296384062524,
+      "contact_active_resource_request": 0.00011092418905732785,
+      "contact_active_resource_spent": 0.00011092418905732785,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "delivered_f": 0.0003891697332458789,
+      "delivered_n": 0.0003891697332458789,
+      "driving_force_f": 0.02341271572216924,
+      "driving_force_n": 0.02341271572216924,
+      "interior_f": 0.40100046585621835,
+      "interior_n": 0.40100046585621835,
+      "noncontact_active_resource_request": 0.00011092418905732787,
+      "noncontact_active_resource_spent": 0.00011092418905732787,
+      "requested_f": 0.00038919061089963045,
+      "requested_n": 0.00038919061089963045,
+      "step": 0,
+      "world_f_remaining": 2.999610830266754,
+      "world_n_remaining": 2.999610830266754
+    },
+    {
+      "area": 77.44584506947913,
+      "contact_active_resource_request": 0.004314681147420725,
+      "contact_active_resource_spent": 0.004314681147420725,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "delivered_f": 0.00037898864548084344,
+      "delivered_n": 0.00037898864548084344,
+      "driving_force_f": 0.022800214223474946,
+      "driving_force_n": 0.022800214223474946,
+      "interior_f": 0.40161296735491264,
+      "interior_n": 0.40161296735491264,
+      "noncontact_active_resource_request": 0.018491832995182887,
+      "noncontact_active_resource_spent": 0.018491832995182887,
+      "requested_f": 0.00037900897882226555,
+      "requested_n": 0.00037900897882226555,
+      "step": 116,
+      "world_f_remaining": 2.955029764639976,
+      "world_n_remaining": 2.955029764639976
+    },
+    {
+      "area": 76.59679906089134,
+      "contact_active_resource_request": 0.004340215972788402,
+      "contact_active_resource_spent": 0.004340215972788402,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "delivered_f": 0.0002927570100465871,
+      "delivered_n": 0.0002927570100465871,
+      "driving_force_f": 0.017777703757126728,
+      "driving_force_n": 0.017777703757126728,
+      "interior_f": 0.40663547782126086,
+      "interior_n": 0.40663547782126086,
+      "noncontact_active_resource_request": 0.04824520142552173,
+      "noncontact_active_resource_spent": 0.04824520142552173,
+      "requested_f": 0.0002927727434126364,
+      "requested_n": 0.0002927727434126364,
+      "step": 240,
+      "world_f_remaining": 2.9113094265976334,
+      "world_n_remaining": 2.9113094265976334
+    },
+    {
+      "area": 75.90426598447982,
+      "contact_active_resource_request": 0.003984109566675621,
+      "contact_active_resource_spent": 0.003984109566675621,
+      "contact_indices": [
+        0,
+        23
+      ],
+      "delivered_f": 0.00021812083814113278,
+      "delivered_n": 0.00021812083814113278,
+      "driving_force_f": 0.013293747367251751,
+      "driving_force_n": 0.013293747367251751,
+      "interior_f": 0.41111943421113584,
+      "interior_n": 0.41111943421113584,
+      "noncontact_active_resource_request": 0.04486285362909005,
+      "noncontact_active_resource_spent": 0.04486285362909005,
+      "requested_f": 0.0002181326243404608,
+      "requested_n": 0.0002181326243404608,
+      "step": 479,
+      "world_f_remaining": 2.8525665265513513,
+      "world_n_remaining": 2.8525665265513513
+    }
+  ]
+}

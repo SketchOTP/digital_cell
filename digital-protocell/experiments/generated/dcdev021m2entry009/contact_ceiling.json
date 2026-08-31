@@ -1,0 +1,10 @@
+{
+  "contact_attenuation_occurred": true,
+  "contact_zero_parity": true,
+  "contacted_patches": [
+    0,
+    23
+  ],
+  "noncontact_active_resource_demand_observed": true,
+  "noncontact_raw_output": true
+}

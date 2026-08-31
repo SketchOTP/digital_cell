@@ -1,0 +1,9 @@
+{
+  "a_spent": 16.39401176246469,
+  "a_to_w_closure": true,
+  "a_to_w_residual": 1.6342482922482304e-13,
+  "conservation_pass": true,
+  "r_unchanged": true,
+  "w_generated": 16.394011762464714,
+  "zero_a_pass": true
+}

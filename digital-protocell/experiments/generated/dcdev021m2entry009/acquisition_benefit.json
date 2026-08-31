@@ -1,0 +1,9 @@
+{
+  "candidate": 0.31794402180604237,
+  "ceiling_reaches_gate": false,
+  "exploration_retained": true,
+  "minimum_relative_improvement": 0.1,
+  "relative_improvement": 0.07826267118632634,
+  "ten_percent_gate": false,
+  "unguided": 0.2948669468973028
+}
