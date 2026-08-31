@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-31T17:36:27-04:00`
+- Last updated: `2026-08-31T17:53:19-04:00`
 
 ## Active state after adoption
 
@@ -11,7 +11,7 @@
 - External directive ID: `DC-DEV-021-M2-ENTRY-012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-FEASIBILITY-001`
 - Objective: `Determine whether accepted ENTRY-011 target-free locomotion can encounter a preregistered physically separated finite N/F resource within the fixed 1,500-step horizon without new behavior.`
 - Current status: `VALIDATING`
-- Acceptance: `Separated geometry, initial noncontact, precontact no-resource parity, autonomous encounter/acquisition, reachability, preservation, governance, and exact-head Linux validation are required; local evidence currently gives a valid no-encounter result and Architect review remains pending.`
+- Acceptance: `Separated geometry, initial noncontact, precontact no-resource parity, autonomous encounter/acquisition, reachability, preservation, governance, and exact-head Linux validation passed; the result is a valid no-encounter result and Architect review remains pending.`
 - Current phase: `M2 target-free locomotion and metabolically live in-contact exploitation are qualified; ENTRY-012 tests first physical encounter from preregistered separation.`
 - Expected or actual touched areas: `one observer-only Entry-012 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, and M1 sources remain unchanged`
 - Immediate next action: `Submit the completed ENTRY-012 negative reachability evidence for Architect review; do not move the resource, extend the horizon, add sensing, or start successor work.`
@@ -42,8 +42,8 @@
 
 ## Last validation after adoption
 
-- Command or check: `ENTRY-012 local observer assay on ecef56b2a60e74b3c4417043d000fa2ede0833c0; seed 1 no encounter in 1,500 steps; precontact parity and reachability evidence passed locally`
-- Result: `NOT RUN`
+- Command or check: `Exact-head Linux workflow 33443167806 on 1855169de9d9ecc9f0c5137a1a5a6eb0c91e5c5d; ENTRY-012 seed 1 no encounter in 1,500 steps; preservation and artifact upload completed`
+- Result: `PASSED`
 
 ## Risks
 

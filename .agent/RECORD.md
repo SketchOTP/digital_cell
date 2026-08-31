@@ -185,3 +185,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The exact settled 24-edge body yields mean edge length `1.3036408078380954`; placing the unchanged radius-`1.5` resource at `[7.636854591521829, 0.0]` gives zero initial contact and the required one-edge-length clearance. Seed 1 remains active for all `1,500` accepted steps but makes no encounter: path `0.33538885163612836`, net displacement `0.03988968845502883`, `9196` slips, `12` dominant-patch changes, closest midpoint gap `1.3036408078380952`. No resource information enters behavior and autonomous acquisition remains `NOT_ESTABLISHED`.
 - Affected areas: additive observer-only ENTRY-012 example, compact evidence, scoped workflow, and governance only; frozen scientific sources, M1/V4, uptake, metabolism, actuator, traction, production selector, restart boundary, and PR #44 remain unchanged.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-R2
+
+- Date: 2026-08-31
+- Record or decision ID: DEC-DCDEV021-ENTRY012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-R2
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33443167806` passed on `1855169de9d9ecc9f0c5137a1a5a6eb0c91e5c5d`; artifact digest is `sha256:cb4ca72ed3a9dde6a6e82c84c5d4ef2fec18895be6c39f8ce001900fb08ad844`.
+- Rationale: The remote run verified authority, fixed one-edge-length separation, zero initial contact, precontact parity, ENTRY-005 through ENTRY-011 preservation, the active no-encounter reachability negative, M1/downstream preservation, governance, and artifact upload. The preregistered classification remains `M2_SEPARATED_RESOURCE_ENCOUNTER_NOT_ESTABLISHED`; autonomous resource acquisition remains `NOT_ESTABLISHED`.
+- Affected areas: additive observer-only ENTRY-012 assay, compact evidence, workflow, and governance only; no frozen scientific runtime source changed and PR #44 remains untouched.
+- Supersedes record: DEC-DCDEV021-ENTRY012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-R1

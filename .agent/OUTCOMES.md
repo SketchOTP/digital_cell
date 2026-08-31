@@ -761,3 +761,19 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: this result establishes a bounded reachability negative only; it does not establish autonomous acquisition, general search, navigation, or authorize a successor mechanism.
 - Blockers: exact-head Linux CI and Architect review; do not move the resource or extend the horizon.
 - Follow-up directive: none
+
+## D-20260831-dcdev021-m2-entry012-separated-resource-autonomous-acquisition - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-R2`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-R1`
+- Closed: `2026-08-31T17:54:00-04:00`
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux workflow `33443167806` passed on result head `1855169de9d9ecc9f0c5137a1a5a6eb0c91e5c5d`. It reproduced ENTRY-005 through ENTRY-011, verified the preregistered initial noncontact and precontact no-resource parity, completed the fixed-horizon ENTRY-012 assay, preservation matrix, governance validation, and artifact upload. The seed-1 primary remained locomotively active but did not encounter the separated resource, yielding `M2_SEPARATED_RESOURCE_ENCOUNTER_NOT_ESTABLISHED`.
+- Changed areas: additive observer-only ENTRY-012 example/registration, compact evidence, scoped workflow, and governance only; frozen scientific sources, M1/V4, uptake, metabolism, actuator, traction, production selection, restart boundary, and PR #44 remain unchanged.
+- Validation:
+  - Exact-head Linux workflow `33443167806` - PASSED
+  - Artifact digest `sha256:cb4ca72ed3a9dde6a6e82c84c5d4ef2fec18895be6c39f8ce001900fb08ad844` - RECORDED
+  - Architect review - PENDING
+- Remaining risks: this remains a bounded separated-resource reachability negative; it does not establish autonomous acquisition, general search, navigation, or authorize a successor mechanism.
+- Blockers: Architect review; do not move the resource or extend the horizon.
+- Follow-up directive: none
