@@ -1,0 +1,19 @@
+{
+  "available_a_trajectory": "recorded in dense StepRecord",
+  "available_n_f_trajectory": "recorded in dense StepRecord",
+  "centroid_projection_range": [
+    -0.05061838704359981,
+    0.039813387655730094
+  ],
+  "closest_approach_remaining_gap": 1.3036408078380952,
+  "encounter": false,
+  "initial_gap": 1.3036408078380952,
+  "locomotion_active_through_horizon": true,
+  "maximum_outward_swept_envelope_advance": 0.0,
+  "minimum_a_material": 0.9940183284841495,
+  "minimum_f_material": 6.140566780152277,
+  "minimum_gap": 1.3036408078380952,
+  "minimum_n_material": 6.140566780152277,
+  "net_displacement": 0.03988968845502883,
+  "total_path": 0.33538885163612836
+}

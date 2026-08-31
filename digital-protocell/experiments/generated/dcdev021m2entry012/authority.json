@@ -1,0 +1,21 @@
+{
+  "entry005": "QUALIFIED",
+  "entry006": "NOT_ESTABLISHED",
+  "entry007": "CONCENTRATION_FEEDBACK_CONFIRMED",
+  "entry008": "UPTAKE_INSUFFICIENT",
+  "entry009": "FAMILY_CLOSED",
+  "entry010": "MATERIAL_SIGNAL_QUALIFIED",
+  "entry011": "FROZEN_UPTAKE_METABOLISM_QUALIFIED",
+  "m1": "CLOSED/FROZEN",
+  "next_execution_started": false,
+  "pr_44": "OPEN/DRAFT/UNMERGED/UNMODIFIED",
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "source_hashes": {
+    "contractility": "edf52feb53c34bfa",
+    "intrinsic_exploration": "dc14db5d477b97cb",
+    "mesh_reactions": "8b7a5572b93b0982",
+    "spatial_resource": "47e9d8394c9e4896",
+    "stick_slip_traction": "476611d3c232ef0d"
+  },
+  "starting_head": "ecef56b2a60e74b3c4417043d000fa2ede0833c0"
+}

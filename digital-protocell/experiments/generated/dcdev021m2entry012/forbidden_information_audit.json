@@ -1,0 +1,15 @@
+{
+  "alive_latch": false,
+  "contact_signal_to_behavior": false,
+  "forbidden_resource_information_read": "NONE",
+  "future_contact": false,
+  "gradient": false,
+  "nf_material_to_behavior": false,
+  "observer_viability": false,
+  "resource_center_to_behavior": false,
+  "resource_inventory_to_behavior": false,
+  "resource_radius_to_behavior": false,
+  "survival_state": false,
+  "target": false,
+  "uptake_ledger_to_behavior": false
+}

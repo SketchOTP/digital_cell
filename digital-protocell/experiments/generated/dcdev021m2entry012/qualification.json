@@ -1,0 +1,15 @@
+{
+  "acquisition": false,
+  "architect_acceptance": "PENDING",
+  "classification": "M2_SEPARATED_RESOURCE_ENCOUNTER_NOT_ESTABLISHED",
+  "encounter": false,
+  "entry005_to_entry011_preserved": true,
+  "exploration": true,
+  "full_material_closure": true,
+  "initial_noncontact_pass": true,
+  "m2_bounded_autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "next_execution_started": false,
+  "precontact_parity_pass": true,
+  "resource_to_work": false,
+  "rotation_pass": true
+}

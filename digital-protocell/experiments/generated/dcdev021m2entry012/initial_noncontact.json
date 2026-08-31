@@ -1,0 +1,10 @@
+{
+  "contact_signal_all_zero": true,
+  "initial_contact_patches": [],
+  "initial_delivery_f": 0.0,
+  "initial_delivery_n": 0.0,
+  "initial_minimum_gap": 1.3036408078380952,
+  "minimum_edge_midpoint_distance": 2.803640807838095,
+  "pass": true,
+  "settled_mean_edge_length": 1.3036408078380954
+}

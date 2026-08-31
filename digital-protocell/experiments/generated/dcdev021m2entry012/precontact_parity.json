@@ -1,0 +1,9 @@
+{
+  "active_path": 0.33538885163612836,
+  "behavior_reads_resource_before_contact": false,
+  "first_contact_patch_count": 0,
+  "first_contact_step": null,
+  "pass": true,
+  "tolerance": 1e-12,
+  "twin_path": 0.33538885163612836
+}

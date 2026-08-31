@@ -1,0 +1,11 @@
+{
+  "initial_contact_indices": [],
+  "initial_minimum_gap": 1.3036408078380952,
+  "min_edge_midpoint_distance": 2.803640807838095,
+  "resource_center": [
+    7.636854591521829,
+    0.0
+  ],
+  "resource_radius": 1.5,
+  "settled_mean_edge_length": 1.3036408078380954
+}

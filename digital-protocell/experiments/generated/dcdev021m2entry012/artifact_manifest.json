@@ -1,0 +1,35 @@
+{
+  "dense_records": "optional dense output contains full step records",
+  "directive": "DC-DEV-021-M2-ENTRY-012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-FEASIBILITY-001",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "separated_geometry.json",
+    "initial_noncontact.json",
+    "separated_metabolic_explorer.json",
+    "no_resource_twin.json",
+    "motor_off_control.json",
+    "precontact_parity.json",
+    "encounter.json",
+    "acquisition.json",
+    "resource_to_work.json",
+    "reachability.json",
+    "rotation_check.json",
+    "seed_diversity.json",
+    "material_closure.json",
+    "forbidden_information_audit.json",
+    "restart_boundary.json",
+    "m1_preservation.json",
+    "downstream_preservation.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "source_hashes": {
+    "contractility": "edf52feb53c34bfa",
+    "intrinsic_exploration": "dc14db5d477b97cb",
+    "mesh_reactions": "8b7a5572b93b0982",
+    "spatial_resource": "47e9d8394c9e4896",
+    "stick_slip_traction": "476611d3c232ef0d"
+  },
+  "starting_head": "ecef56b2a60e74b3c4417043d000fa2ede0833c0"
+}

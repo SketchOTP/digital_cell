@@ -1,0 +1,16 @@
+{
+  "acquisition_equivalent": true,
+  "initial_gap_equivalent": true,
+  "original_acquisition": 0.0,
+  "original_path": 0.33538885163612836,
+  "pass": true,
+  "path_equivalent": true,
+  "resource_to_work_equivalent": true,
+  "rotated_acquisition": 0.0,
+  "rotated_center": [
+    -7.636854591521829,
+    -0.0
+  ],
+  "rotated_path": 0.33538885163612836,
+  "rotation": "180 degrees"
+}

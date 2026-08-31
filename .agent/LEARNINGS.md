@@ -197,3 +197,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-011 frozen uptake/metabolism composition feasibility; exact-head remote CI and Architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY012-001
+
+- Learning ID: L-DCDEV021-ENTRY012-001
+- Date: 2026-08-31
+- Fact or lesson: Under the preregistered separated ecology, the accepted ENTRY-011 metabolic explorer remained active but did not encounter the unchanged finite resource within 1,500 accepted steps. The exact one-settled-mean-edge-length initial gap was `1.3036408078380952`, the closest midpoint gap remained the same, and the body recorded path `0.33538885163612836`, net displacement `0.03988968845502883`, `9196` slips, and `12` dominant-patch changes. Target-free in-contact exploitation therefore does not imply encounter from this separated placement and fixed horizon.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry012.rs`, `digital-protocell/experiments/generated/dcdev021m2entry012/`, and `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev021m2entry012/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-012 preregistered separated-resource encounter assay; exact-head Linux CI and Architect review pending.
+- Supersedes learning: none

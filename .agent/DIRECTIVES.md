@@ -416,3 +416,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260831-dcdev021-m2-entry010-post-ingestive-material-signal-substrate-audit
 - Status at issuance: ISSUED
+
+## D-20260831-dcdev021-m2-entry012-separated-resource-autonomous-acquisition
+
+- Issued: `2026-08-31T17:36:27-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-FEASIBILITY-001`
+- Objective: Determine whether accepted ENTRY-011 target-free locomotion can encounter and acquire a preregistered physically separated finite N/F resource within 1,500 accepted steps without new behavior.
+- Scope: Exact 5,000-step settled body, one-edge-length +x separation derived before explorer initialization, ENTRY-011 uptake/metabolism composition, no-resource parity, motor-off control, unscreened seeds 1–4, rotation, compact evidence, governance, and exact-head Linux validation.
+- Exclusions: moving the resource, extending the horizon, distance/seed screening, sensing, contact or post-ingestive motor behavior, memory, chemotaxis, target/gradient/planner/reward, tuning, uptake/metabolism/actuator/traction/M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: One preregistered separated-acquisition classification after initial noncontact, precontact parity, encounter/acquisition, reachability, metabolism/accounting, exploration, rotation, M1/downstream preservation, governance, and exact-head Linux checks.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260831-dcdev021-m2-entry011-frozen-uptake-metabolism-composition
+- Status at issuance: ISSUED

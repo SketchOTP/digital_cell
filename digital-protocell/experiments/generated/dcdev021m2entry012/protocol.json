@@ -1,0 +1,14 @@
+{
+  "assay_steps": 1500,
+  "directive": "DC-DEV-021-M2-ENTRY-012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-FEASIBILITY-001",
+  "dt": 0.02,
+  "initial_f_mass": 3.0,
+  "initial_n_mass": 3.0,
+  "new_behavior": false,
+  "observer_only": true,
+  "placement_before_explorer_initialization": true,
+  "resource_radius": 1.5,
+  "settlement_steps": 5000,
+  "starting_head": "ecef56b2a60e74b3c4417043d000fa2ede0833c0",
+  "topology_size": 24
+}

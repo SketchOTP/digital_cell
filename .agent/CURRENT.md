@@ -3,23 +3,23 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-31T16:35:42-04:00`
+- Last updated: `2026-08-31T17:36:27-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260831-dcdev021-m2-entry011-frozen-uptake-metabolism-composition`
-- External directive ID: `DC-DEV-021-M2-ENTRY-011-FROZEN-UPTAKE-METABOLISM-COMPOSITION-FEASIBILITY-001`
-- Objective: `Determine whether the exact frozen M1/V4 reaction physiology can compose with ENTRY-005 locomotion and unchanged DC-DEV-008 uptake without new behavior or chemistry.`
+- Local directive ID: `D-20260831-dcdev021-m2-entry012-separated-resource-autonomous-acquisition`
+- External directive ID: `DC-DEV-021-M2-ENTRY-012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-FEASIBILITY-001`
+- Objective: `Determine whether accepted ENTRY-011 target-free locomotion can encounter a preregistered physically separated finite N/F resource within the fixed 1,500-step horizon without new behavior.`
 - Current status: `VALIDATING`
-- Acceptance: `Exact frozen production reaction authority, causal order, no-double-counting, active metabolism, material closure, acquisition benefit, exploration, preservation, governance, and exact-head Linux validation passed; Architect review remains pending.`
-- Current phase: `M2 target-free locomotion is qualified; ENTRY-009 contact-local suppression is closed as insufficient; ENTRY-010 N+F material substrate is qualified; ENTRY-011 tests frozen uptake→metabolism composition.`
-- Expected or actual touched areas: `one observer-only Entry-011 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, and M1 sources remain unchanged`
-- Immediate next action: `Submit the completed ENTRY-011 evidence for Architect review; do not add post-ingestive behavior, sensor state, memory, tuning, or successor work.`
+- Acceptance: `Separated geometry, initial noncontact, precontact no-resource parity, autonomous encounter/acquisition, reachability, preservation, governance, and exact-head Linux validation are required; local evidence currently gives a valid no-encounter result and Architect review remains pending.`
+- Current phase: `M2 target-free locomotion and metabolically live in-contact exploitation are qualified; ENTRY-012 tests first physical encounter from preregistered separation.`
+- Expected or actual touched areas: `one observer-only Entry-012 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, and M1 sources remain unchanged`
+- Immediate next action: `Submit the completed ENTRY-012 negative reachability evidence for Architect review; do not move the resource, extend the horizon, add sensing, or start successor work.`
 
 ## Temporary task-relevant facts
 
 - M0 is closed; M1 is formally closed and frozen at `fb77f472b1519a9e0f713833efba5b1d403f4723`.
-- Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-009 is Architect accepted as mechanically insufficient; ENTRY-010 is the only authorized active audit.
+- Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-011 is Architect accepted as metabolically live in-contact composition; ENTRY-012 is the only authorized active audit.
 - PR #44 is the immutable M1 provenance stack and must remain open, draft, unmerged, and untouched.
 - The clean baseline is derived from `1e242f28152797b512e25cd56c7b718e45d6ca97`; accepted M1 evidence remains on Atlas.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
@@ -28,7 +28,7 @@
 - Entry authority is `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
-- Implementation work is on `strategy/dc-dev-016-metabolic-break-even` based on `strategy/dc-dev-015-metabolic-restoration-audit`.
+- Current implementation work is on `m2/dc-dev-021-entry012-separated-resource-acquisition`, based exactly on accepted ENTRY-011 head `ecef56b2a60e74b3c4417043d000fa2ede0833c0`.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
 - M2 ENTRY-001 starts from `baseline/m1-v4-closed` at `d76481c785e9eec361df3fa0cd03c512b521639c`; ENTRY-002 starts at accepted ENTRY-001 head `54f3af09804a9accd845dfcae2dfce13d1918b7c`; ENTRY-003 starts at accepted ENTRY-002 head `2ed0f6159b0169f1f7bd9c2c10e89a6b67d12167`.
 - The opt-in `ACTIVATED_ENERGY_CONTRACTILITY_SCHEMA_V1` path is V4-only, reuses frozen DC-DEV-004 constants, spends absolute A into W after accepted mechanics, and leaves R-funded APIs unchanged.
@@ -42,8 +42,8 @@
 
 ## Last validation after adoption
 
-- Command or check: `ENTRY-011 exact-head Linux workflow 33436469789 at 6c1bfd7e139ff72dd8f342dc13c825eb8ec65405; uploaded artifact digest sha256:376564668d704a0b4924124bc08557c30580723fabd81b37388814e9c7d47967`
-- Result: `PASSED`
+- Command or check: `ENTRY-012 local observer assay on ecef56b2a60e74b3c4417043d000fa2ede0833c0; seed 1 no encounter in 1,500 steps; precontact parity and reachability evidence passed locally`
+- Result: `NOT RUN`
 
 ## Risks
 
@@ -57,8 +57,8 @@
 
 ## Pending decisions
 
-- The V4 equations, D-087 boundary, conservation contracts, accepted M1 qualification, and ENTRY-001 actuator are frozen.
-- M2 autonomous resource acquisition remains unestablished; pure contact-local suppression is closed as mechanically insufficient; no post-ingestive behavior, parameter search, reserve, recycling, salvage, sensor, target, gradient, resource seeking, or successor execution is authorized pending Architect review of ENTRY-011.
+- The V4 equations, D-087 boundary, conservation contracts, accepted M1 qualification, ENTRY-001 actuator, and ENTRY-011 uptake/metabolism composition are frozen.
+- M2 autonomous resource acquisition remains unestablished; ENTRY-012 seed 1 did not encounter the separated resource within 1,500 steps despite active locomotion; no resource movement, horizon extension, sensing, navigation, parameter search, reserve, recycling, salvage, target, gradient, resource seeking, or successor execution is authorized pending Architect review.
 
 ## Status vocabulary
 

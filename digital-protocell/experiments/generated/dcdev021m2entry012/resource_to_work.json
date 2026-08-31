@@ -1,0 +1,8 @@
+{
+  "no_resource_a_production": 24.917718632150002,
+  "no_resource_a_spent": 47.18801239708354,
+  "post_transfer_divergence": false,
+  "resource_bearing_a_production": 24.917718632150002,
+  "resource_bearing_a_spent": 47.18801239708354,
+  "resource_to_work_causal_chain": "NOT_ESTABLISHED"
+}

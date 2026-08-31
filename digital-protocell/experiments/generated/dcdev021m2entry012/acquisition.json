@@ -1,0 +1,9 @@
+{
+  "absolute_difference": 0.0,
+  "active_acquisition": 0.0,
+  "causal_advantage_over_motor_off": false,
+  "motor_off_acquisition": 0.0,
+  "positive_finite_transfer": false,
+  "relative_benefit_vs_motor_off": "UNBOUNDED_FROM_POSITIVE_ACTIVE_ACQUISITION",
+  "world_n_loss_equals_delivery": true
+}

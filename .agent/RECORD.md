@@ -175,3 +175,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The remote workflow independently completed exact frozen reaction authority, ENTRY-005 through ENTRY-010 preservation, ENTRY-011 observer composition, active metabolism, no-double-counting, N/F/A/W closure, acquisition benefit above the frozen 10% gate, exploration retention, resource-to-work evidence, canonical D-087, downstream preservation, governance validation, and artifact upload. No scientific runtime source changed. The result is `M2_FROZEN_UPTAKE_METABOLISM_COMPOSITION_QUALIFIED`; autonomous resource acquisition remains `NOT_ESTABLISHED`.
 - Affected areas: ENTRY-011 observer evidence, workflow, and governance only.
 - Supersedes record: DEC-DCDEV021-ENTRY011-FROZEN-UPTAKE-METABOLISM-COMPOSITION-001
+
+## DEC-DCDEV021-ENTRY012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-R1
+
+- Date: 2026-08-31
+- Record or decision ID: DEC-DCDEV021-ENTRY012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-R1
+- Status: ACTIVE
+- Decision or event: The observer-only ENTRY-012 assay produces the preregistered bounded negative `M2_SEPARATED_RESOURCE_ENCOUNTER_NOT_ESTABLISHED` locally.
+- Rationale: The exact settled 24-edge body yields mean edge length `1.3036408078380954`; placing the unchanged radius-`1.5` resource at `[7.636854591521829, 0.0]` gives zero initial contact and the required one-edge-length clearance. Seed 1 remains active for all `1,500` accepted steps but makes no encounter: path `0.33538885163612836`, net displacement `0.03988968845502883`, `9196` slips, `12` dominant-patch changes, closest midpoint gap `1.3036408078380952`. No resource information enters behavior and autonomous acquisition remains `NOT_ESTABLISHED`.
+- Affected areas: additive observer-only ENTRY-012 example, compact evidence, scoped workflow, and governance only; frozen scientific sources, M1/V4, uptake, metabolism, actuator, traction, production selector, restart boundary, and PR #44 remain unchanged.
+- Supersedes record: none

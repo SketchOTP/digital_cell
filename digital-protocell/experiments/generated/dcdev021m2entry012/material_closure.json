@@ -1,0 +1,11 @@
+{
+  "a_to_w_residual": 1.1084466677857563e-12,
+  "delivered_f": 0.0,
+  "delivered_n": 0.0,
+  "full_material_closure_residual": 1.1084466677857563e-12,
+  "n_f_conservation_pass": true,
+  "pass": true,
+  "reserve_unchanged_zero": true,
+  "world_f_loss": 0.0,
+  "world_n_loss": 0.0
+}

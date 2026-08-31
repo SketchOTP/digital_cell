@@ -686,8 +686,8 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Finite N/F world-loss conservation across all three arms - PASSED
   - Fixed 5,000-step settlement and 480-step arm replay - PASSED
   - Compact per-step/per-edge decomposition evidence - PASSED
-  - Exact-head Linux CI - PENDING
-  - Architect review - PENDING
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
 - Remaining risks: this is a mechanism decomposition only; it does not establish a sensory-bias mechanism or autonomous resource acquisition.
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
@@ -739,4 +739,25 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Architect review - NOT RUN
 - Remaining risks: this qualifies signal-substrate availability only; local exploitation and autonomous resource acquisition remain `NOT_ESTABLISHED`.
 - Blockers: Architect review.
+- Follow-up directive: none
+
+## D-20260831-dcdev021-m2-entry012-separated-resource-autonomous-acquisition - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-R1`
+- Supersedes outcome: none
+- Closed: `2026-08-31T17:36:27-04:00`
+- Acceptance: PARTIAL
+- Summary: The observer-only ENTRY-012 replay places the unchanged radius-`1.5`, N=`3`, F=`3` resource at `[7.636854591521829, 0.0]`, giving the settled body an exact mean-edge-length initial gap of `1.3036408078380952`. Seed 1 makes no physical encounter within the fixed `1,500` accepted steps, while frozen metabolism and ENTRY-005 locomotion remain active. The preregistered classification is `M2_SEPARATED_RESOURCE_ENCOUNTER_NOT_ESTABLISHED`; autonomous resource acquisition remains `NOT_ESTABLISHED`.
+- Changed areas: additive observer-only ENTRY-012 example/registration, compact evidence, scoped workflow, and append-only governance only; frozen scientific sources, M1/V4, uptake, metabolism, actuator, traction, production selection, restart boundary, and PR #44 remain unchanged.
+- Validation:
+  - Exact starting head and branch creation - PASSED
+  - Initial zero-contact proof and one-edge-length geometry derivation - PASSED
+  - Precontact parity against no-resource metabolic twin - PASSED
+  - Fixed-horizon seed-1 reachability: no encounter; path `0.33538885163612836`, net displacement `0.03988968845502883`, `9196` slips, `12` dominant-patch changes; closest remaining midpoint gap `1.3036408078380952` - PASSED
+  - Rotation and material closure checks - PASSED
+  - Historical ENTRY-005 through ENTRY-011 replay - PASSED
+  - Exact-head Linux CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: this result establishes a bounded reachability negative only; it does not establish autonomous acquisition, general search, navigation, or authorize a successor mechanism.
+- Blockers: exact-head Linux CI and Architect review; do not move the resource or extend the horizon.
 - Follow-up directive: none

@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last verified: `2026-08-30T10:05:00-04:00`
+- Last verified: `2026-08-31T17:36:27-04:00`
 
 ## Identity
 
@@ -11,7 +11,7 @@
 - Purpose: A self-maintaining digital protocell developing toward a persistent embodied digital lifeform.
 - Repository root: `/home/sketch/Projects/digital_cell-m1-baseline`
 - Verified remote: `git@github.com:SketchOTP/digital_cell.git`
-- Maturity or current phase: M1 closed/frozen; M2 ENTRY-001 actuator and ENTRY-005 target-free intrinsic exploration are Architect accepted; ENTRY-006 is Architect accepted as `M2_UNGUIDED_RESOURCE_ACQUISITION_NOT_ESTABLISHED`; ENTRY-007 is locally tested as `M2_UPTAKE_DEGRADATION_CONCENTRATION_FEEDBACK_CONFIRMED`, pending exact-head Linux CI and Architect review. Autonomous resource acquisition remains not established.
+- Maturity or current phase: M1 closed/frozen; M2 ENTRY-001 actuator, ENTRY-005 target-free intrinsic exploration, ENTRY-011 metabolically live in-contact composition, and the accepted ENTRY-006 through ENTRY-010 boundaries are established; ENTRY-012 locally records `M2_SEPARATED_RESOURCE_ENCOUNTER_NOT_ESTABLISHED` pending exact-head Linux CI and Architect review. Autonomous resource acquisition remains not established.
 
 ## Languages and runtimes
 

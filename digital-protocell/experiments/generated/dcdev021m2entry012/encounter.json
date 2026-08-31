@@ -1,0 +1,11 @@
+{
+  "contact_duration_steps": 0,
+  "contact_entries": 0,
+  "contact_exits": 0,
+  "first_contact_indices": [],
+  "first_contact_step": null,
+  "minimum_gap_achieved": 1.3036408078380952,
+  "strictly_after_step_zero": false,
+  "swept_material_body_observed": true,
+  "within_horizon": false
+}
