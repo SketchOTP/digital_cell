@@ -28,6 +28,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-021 ENTRY-010 observer-only post-ingestive material-signal substrate audit; exact-head remote CI and Architect review pending.
 - Supersedes learning: none
 
+## L-DCDEV021-ENTRY010-002
+
+- Learning ID: L-DCDEV021-ENTRY010-002
+- Date: 2026-08-31
+- Fact or lesson: Exact-head Linux CI independently confirms that unchanged finite N/F transfer creates a reusable existing internal material signal in the frozen ENTRY-009 fixture: actual-area reconstructed N, F, and combined N+F material amounts first diverge from matched contact-without-transfer at step `0` and remain distinguishable for all `480` accepted steps. Raw concentrations remain geometry-confounded because existing mechanics reads N/F. Activated metabolism is not advanced in this fixture, so A/W/C are not transfer-causal here. This result establishes signal-substrate availability only, not exploitation or autonomous acquisition.
+- Evidence location: `digital-protocell/experiments/generated/dcdev021m2entry010/`, GitHub Actions run `33413197919`, and artifact digest `sha256:ac3b34585a38078043a8830e5e0a5664461229f72870abda7636c6c1cfce8491`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-010 observer-only post-ingestive material-signal substrate audit; Architect review pending.
+- Supersedes learning: L-DCDEV021-ENTRY010-001
+
 ## L-DCDEV020-POST-M1-BASELINE-001
 
 - Learning ID: L-DCDEV020-POST-M1-BASELINE-001

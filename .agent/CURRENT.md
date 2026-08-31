@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-31T12:06:37-04:00`
+- Last updated: `2026-08-31T12:21:17-04:00`
 
 ## Active state after adoption
 
@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-021-M2-ENTRY-010-POST-INGESTIVE-MATERIAL-SIGNAL-SUBSTRATE-AUDIT-001`
 - Objective: `Determine whether successful unchanged DC-DEV-008 N/F transfer leaves an existing organism-internal material signal that is causal, contact-distinguishable, geometry-robust, and persistent without new memory or behavior.`
 - Current status: `VALIDATING`
-- Acceptance: `Local Entry-010 observer replay passes the transfer/contact-only/empty controls, material-amount geometry audit, causal timing, persistence, and preservation; exact-head Linux CI and Architect review remain pending.`
+- Acceptance: `Local and exact-head Linux Entry-010 observer validation pass the transfer/contact-only/empty controls, material-amount geometry audit, causal timing, persistence, preservation, governance, and artifact upload; Architect review remains pending.`
 - Current phase: `M2 target-free locomotion is qualified; unguided autonomous acquisition remains unestablished under the exact frozen DC-DEV-013 ecology.`
 - Expected or actual touched areas: `one observer-only Entry-010 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, spatial_resource.rs, intrinsic exploration, actuator, traction, metabolism, production, and M1 sources remain unchanged relative to ee9597deec8e41dd77d133927ab5102984c69fee`
-- Immediate next action: `Run exact-head Linux validation, then request Architect review; do not implement post-ingestive behavior, sensor state, memory, or successor work.`
+- Immediate next action: `Request Architect review; do not implement post-ingestive behavior, sensor state, memory, or successor work.`
 
 ## Temporary task-relevant facts
 
@@ -42,7 +42,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `ENTRY-007 exact-head Linux workflow 33324714690 at 99884caa9fcbed148616b680f70734f58b1ddc41; uploaded artifact digest sha256:b6ed78089b95301a24ce80deb812d6eefe9f439d9e78ff5550fc4aa4fea39094`
+- Command or check: `ENTRY-010 exact-head Linux workflow 33413197919 at 5ad6e9cb8385f030a5de03941ec7a8bc6bac1d57; uploaded artifact digest sha256:ac3b34585a38078043a8830e5e0a5664461229f72870abda7636c6c1cfce8491`
 - Result: `PASSED`
 
 ## Risks

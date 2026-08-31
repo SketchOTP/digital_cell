@@ -145,3 +145,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: A matched contact-without-transfer replay preserves positive contact but commits no DC-DEV-008 delivery. The transfer arm first diverges at step `0`; reconstructed actual-area V4 material amounts identify N, F, and combined N+F as direct internal downstream material, while concentration-only readings are confounded by existing N/F-dependent mechanics. The distinction persists through all `480` accepted steps without stored uptake/contact history. Activated metabolism is not advanced in the fixture and no behavior is implemented.
 - Affected areas: observer-only ENTRY-010 assay, evidence, workflow, and governance; no scientific runtime mechanism, M1 source, production selector, or PR #44.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY010-POST-INGESTIVE-MATERIAL-SIGNAL-SUBSTRATE-R1
+
+- Date: 2026-08-31
+- Record or decision ID: DEC-DCDEV021-ENTRY010-POST-INGESTIVE-MATERIAL-SIGNAL-SUBSTRATE-R1
+- Status: ACTIVE
+- Decision or event: Exact-head Linux CI run `33413197919` passed on result head `5ad6e9cb8385f030a5de03941ec7a8bc6bac1d57`; the local ENTRY-010 classification remains `M2_POST_INGESTIVE_MATERIAL_SIGNAL_SUBSTRATE_QUALIFIED`.
+- Rationale: Remote validation independently completed the historical ENTRY-005 through ENTRY-009 replay, observer-only transfer/contact-only/empty controls, actual-area material reconstruction, persistence, forbidden-information audit, production V4/reserve-OFF, canonical D-087, downstream foundations, governance, and artifact upload. The uploaded artifact digest is `sha256:ac3b34585a38078043a8830e5e0a5664461229f72870abda7636c6c1cfce8491`. No scientific runtime source changed.
+- Affected areas: ENTRY-010 observer evidence, workflow, and governance only; local exploitation and autonomous resource acquisition remain `NOT_ESTABLISHED`.
+- Supersedes record: DEC-DCDEV021-ENTRY010-POST-INGESTIVE-MATERIAL-SIGNAL-SUBSTRATE-001

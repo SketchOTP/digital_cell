@@ -678,3 +678,20 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: this is a mechanism decomposition only; it does not qualify autonomous resource acquisition or authorize a corrective mechanism.
 - Blockers: Architect review.
 - Follow-up directive: none
+
+## D-20260831-dcdev021-m2-entry010-post-ingestive-material-signal-substrate-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY010-POST-INGESTIVE-MATERIAL-SIGNAL-SUBSTRATE-AUDIT-R1`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY010-POST-INGESTIVE-MATERIAL-SIGNAL-SUBSTRATE-AUDIT`
+- Closed: `2026-08-31T12:21:17-04:00`
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux CI run `33413197919` passed on result head `5ad6e9cb8385f030a5de03941ec7a8bc6bac1d57`. The observer-only transfer/contact-without-transfer replay classifies `M2_POST_INGESTIVE_MATERIAL_SIGNAL_SUBSTRATE_QUALIFIED` with architectural boundary `EXISTING_INTERNAL_MATERIAL_SIGNAL_REUSABLE`. Unchanged DC-DEV-008 transfer first succeeds and first diverges from contact-only at step `0`; actual-area V4 reconstruction identifies N, F, and combined N+F material amounts as existing internal downstream material, while concentration-only values remain geometry-confounded. The distinction persists for all `480` accepted steps without new memory. The exact fixture does not advance activated metabolism, and no behavior is implemented.
+- Changed areas: observer-only ENTRY-010 assay, durable evidence, scoped workflow, and governance only; no scientific runtime source, M1 source, production selector, or PR #44 changed.
+- Validation:
+  - Local assay, exact ENTRY-005 through ENTRY-009 preservation, production V4/reserve-OFF, canonical D-087, downstream foundations, governance, targeted rustfmt, and diff checks - PASSED
+  - Exact-head Linux CI run `33413197919` - PASSED
+  - Uploaded artifact digest `sha256:ac3b34585a38078043a8830e5e0a5664461229f72870abda7636c6c1cfce8491` - RECORDED
+  - Architect review - NOT RUN
+- Remaining risks: this qualifies signal-substrate availability only; local exploitation and autonomous resource acquisition remain `NOT_ESTABLISHED`.
+- Blockers: Architect review.
+- Follow-up directive: none
