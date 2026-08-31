@@ -109,7 +109,7 @@ jobs:
           assert step116["requested_n"] > control116["requested_n"], (step116, control116)
           assert step116["requested_f"] > control116["requested_f"], (step116, control116)
           assert candidate["contact_duration_steps"] == 480 and candidate["contact_entries"] == 1 and candidate["contact_exits"] == 0, candidate
-          assert empty["max_contact_patches"] == 0 and empty["acquisition"] == 0.0, empty
+          assert empty["maximum_contact_patches"] == 0 and empty["cumulative_acquisition"] == 0.0, empty
           print("ENTRY-008 local composition and bounded negative qualification passed")
           PY
 
