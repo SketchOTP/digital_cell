@@ -205,3 +205,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Seed 1 exactly reproduces the accepted no-resource trajectory (`0.33538885163612875` path, `0.039889688455029104` net displacement, `9196` slips, `12` dominant-patch changes; expected values match within tolerance). K1 polarity decays from `0.243646444843049` to `0.0020155616613880007`; the phase changes by a half-turn without a complete cycle. The phase-locked clone does not increase coherent translation, while the first observed persistent asymmetric fixed-profile clone reaches `0.09316990400571264` net displacement over 480 steps, establishing that unchanged mechanics can translate persistent asymmetry. A-to-W closure passes in physical and diagnostic trajectories. No scientific runtime source changed.
 - Affected areas: additive observer-only ENTRY-013 example, compact evidence, scoped workflow, and governance; frozen scientific sources, M1/V4, uptake, metabolism, actuator, traction, production selector, restart boundary, and PR #44 remain unchanged.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY013-SEARCH-PERSISTENCE-AUDIT-R2
+
+- Date: 2026-08-31
+- Record or decision ID: DEC-DCDEV021-ENTRY013-SEARCH-PERSISTENCE-AUDIT-R2
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33454498820` passed on result head `e98ed19d80066ea2f53a967b5c4275798d7665bd`; artifact digest is `sha256:e549171c918c9b91fce8177b4d54076b9f42ba2efec2729885e3e4d963387981`.
+- Rationale: The remote workflow verified authority and observer-only scope, reproduced accepted ENTRY-005 through ENTRY-012 results, ran the ENTRY-013 ring-mode/persistence/kinematic/mechanical diagnostics and counterfactuals, preserved M1/D-087/downstream boundaries, validated governance, and uploaded the evidence. The classification remains `M2_SEARCH_REACH_POLARITY_DECAY_OR_HOMOGENIZATION_CONFIRMED`; autonomous resource acquisition remains `NOT_ESTABLISHED`. The initial remote attempt `33454372521` exposed and was corrected as a workflow assertion-key defect before the passing run.
+- Affected areas: additive observer-only ENTRY-013 assay, compact evidence, scoped workflow, and governance only; no scientific runtime source changed and PR #44 remains untouched.
+- Supersedes record: DEC-DCDEV021-ENTRY013-SEARCH-PERSISTENCE-AUDIT-R1

@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-31T18:12:00-04:00`
+- Last updated: `2026-08-31T20:27:13-04:00`
 
 ## Active state after adoption
 
@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-021-M2-ENTRY-013-INTRINSIC-SEARCH-PERSISTENCE-CANCELLATION-AUDIT-001`
 - Objective: `Determine why accepted ENTRY-005 target-free locomotion remains mechanically active but produces bounded spatial reach under the fixed 1,500-step resource-free ENTRY-012 composition.`
 - Current status: `VALIDATING`
-- Acceptance: `Local observer-only ENTRY-013 audit reproduces the accepted ENTRY-012 no-resource trajectory and diagnoses first-harmonic polarity decay/homogenization; exact-head Linux validation and Architect review remain pending.`
+- Acceptance: `Local observer-only ENTRY-013 audit reproduces the accepted ENTRY-012 no-resource trajectory and diagnoses first-harmonic polarity decay/homogenization. Exact-head Linux workflow 33454498820 passed on e98ed19d80066ea2f53a967b5c4275798d7665bd; Architect review remains pending.`
 - Current phase: `M2 target-free locomotion and metabolically live in-contact exploitation are qualified; ENTRY-012 separated encounter is not established; ENTRY-013 audits intrinsic search persistence.`
 - Expected or actual touched areas: `one observer-only Entry-013 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, and M1 sources remain unchanged`
-- Immediate next action: `Run exact-head Linux ENTRY-013 validation; do not add stochasticity, persistence state, polarity memory, navigation, sensing, or successor work.`
+- Immediate next action: `Obtain Architect review; do not add stochasticity, persistence state, polarity memory, navigation, sensing, or successor work.`
 
 ## Temporary task-relevant facts
 
@@ -42,7 +42,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Local cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry013 -- experiments/generated/dcdev021m2entry013; targeted rustfmt/check`
+- Command or check: `Exact-head Linux ENTRY-013 workflow 33454498820 on e98ed19d80066ea2f53a967b5c4275798d7665bd; local cargo +1.89.0 run/check and targeted rustfmt`
 - Result: `PASSED`
 
 ## Risks
@@ -54,6 +54,7 @@
 ## Blockers
 
 - Architect review is required before any successor directive.
+- The first remote workflow attempt `33454372521` failed only because its preservation assertion used the wrong ENTRY-012 evidence key; the assertion was corrected, and replacement workflow `33454498820` passed on the same result head.
 
 ## Pending decisions
 

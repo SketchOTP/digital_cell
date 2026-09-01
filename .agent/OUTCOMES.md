@@ -780,6 +780,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
+## D-20260831-dcdev021-m2-entry013-search-persistence-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY013-SEARCH-PERSISTENCE-AUDIT-R2`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY013-SEARCH-PERSISTENCE-AUDIT`
+- Closed: `2026-08-31T20:27:13-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Exact-head Linux workflow `33454498820` passed on result head `e98ed19d80066ea2f53a967b5c4275798d7665bd`. It reproduced ENTRY-005 through ENTRY-012, executed the observer-only ENTRY-013 audit, preserved canonical D-087 and downstream checks, validated governance, and uploaded the evidence artifact. Seed 1 reproduces the accepted ENTRY-012 no-resource trajectory; K1 activity polarity decays from `0.243646444843049` to `0.0020155616613880007`, with a half-turn and no complete phase cycle. The phase-locked diagnostic does not improve coherent translation, while the fixed-profile diagnostic reaches `0.09316990400571264` net displacement, showing unchanged mechanics can translate persistent asymmetry. A-to-W closure and seed-equivariant preservation pass. The result remains `M2_SEARCH_REACH_POLARITY_DECAY_OR_HOMOGENIZATION_CONFIRMED`; autonomous resource acquisition remains `NOT_ESTABLISHED`.
+- Changed areas: additive observer-only ENTRY-013 assay/evidence/workflow/governance only; no scientific runtime source changed.
+- Validation:
+  - Exact-head Linux workflow `33454498820` - PASSED
+  - Artifact digest `sha256:e549171c918c9b91fce8177b4d54076b9f42ba2efec2729885e3e4d963387981` - PASSED
+  - Architect review - NOT RUN
+- Remaining risks: this diagnosis does not qualify autonomous resource acquisition or authorize a persistence/motility mechanism. Prior workflow `33454372521` failed on a workflow assertion-key defect, not a scientific or implementation result; the assertion was corrected before the passing run.
+- Blockers: Architect review; do not start successor work.
+- Follow-up directive: none
+
 ## D-20260831-dcdev021-m2-entry012-separated-resource-autonomous-acquisition - PARTIAL
 
 - Outcome ID: `OUT-DCDEV021-ENTRY012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-R2`
