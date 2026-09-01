@@ -1,0 +1,90 @@
+{
+  "dense_traces": "not emitted; this audit has compact spectra and matrices only",
+  "directory": "digital-protocell/experiments/generated/dcdev021m2entry016",
+  "files": [
+    {
+      "file": "protocol.json",
+      "hash": "09f587350cd1b01a"
+    },
+    {
+      "file": "authority.json",
+      "hash": "c28a905526989d5d"
+    },
+    {
+      "file": "reference_stability_provenance.json",
+      "hash": "ff809c2387255102"
+    },
+    {
+      "file": "homogeneous_equilibria.json",
+      "hash": "77c36a668055f88a"
+    },
+    {
+      "file": "discrete_laplacian_modes.json",
+      "hash": "debb5c3e40bde6e2"
+    },
+    {
+      "file": "linear_stability_polar.json",
+      "hash": "df38e258982ff749"
+    },
+    {
+      "file": "linear_stability_traveling.json",
+      "hash": "d3bf7f4340492392"
+    },
+    {
+      "file": "homogeneous_replay.json",
+      "hash": "d7cb3b355b18d744"
+    },
+    {
+      "file": "unstable_mode_confirmation.json",
+      "hash": "c15486498ff76e43"
+    },
+    {
+      "file": "settled_state_authority.json",
+      "hash": "2258498b930f4e9d"
+    },
+    {
+      "file": "local_field_inventory.json",
+      "hash": "203c471aaca74379"
+    },
+    {
+      "file": "local_asymmetry_spectrum.json",
+      "hash": "71d45ce51d633e6f"
+    },
+    {
+      "file": "field_provenance.json",
+      "hash": "ea89fb5f3dd1cf53"
+    },
+    {
+      "file": "rotation_equivariance.json",
+      "hash": "95efa1cfd3479954"
+    },
+    {
+      "file": "forbidden_information_audit.json",
+      "hash": "9b3b4a8ccd8b09fb"
+    },
+    {
+      "file": "mapping_boundary.json",
+      "hash": "b7bd8f9310e385e1"
+    },
+    {
+      "file": "mode_overlap.json",
+      "hash": "a46aa3fa3ee52594"
+    },
+    {
+      "file": "m1_preservation.json",
+      "hash": "f9ba4e9df37eec6a"
+    },
+    {
+      "file": "downstream_preservation.json",
+      "hash": "34df32d48fc40af9"
+    },
+    {
+      "file": "restart_boundary.json",
+      "hash": "6191f732541124bc"
+    },
+    {
+      "file": "qualification.json",
+      "hash": "f1a9432179ba9b1b"
+    }
+  ]
+}

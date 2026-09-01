@@ -1,0 +1,73 @@
+{
+  "candidate_provenance": [
+    {
+      "classification": "UNIFORM",
+      "field": "edge_length",
+      "provenance": "settled polygon geometry"
+    },
+    {
+      "classification": "UNIFORM",
+      "field": "rest_length",
+      "provenance": "mature structural material via MaterialMesh::rest_length"
+    },
+    {
+      "classification": "UNIFORM",
+      "field": "strain",
+      "provenance": "MaterialMesh::strain"
+    },
+    {
+      "classification": "UNIFORM",
+      "field": "structural_material_m",
+      "provenance": "edge structural material"
+    },
+    {
+      "classification": "UNIFORM",
+      "field": "young_structural_material_m_young",
+      "provenance": "MaturationCoupledV4 edge material"
+    },
+    {
+      "classification": "UNIFORM",
+      "field": "mature_structural_material",
+      "provenance": "m - m_young"
+    },
+    {
+      "classification": "UNIFORM",
+      "field": "young_mature_fraction",
+      "provenance": "derived from existing V4 edge fields"
+    },
+    {
+      "classification": "UNIFORM",
+      "field": "bound_membrane_b",
+      "provenance": "edge bound membrane"
+    },
+    {
+      "classification": "UNIFORM",
+      "field": "bound_membrane_per_edge_length",
+      "provenance": "existing bound membrane divided by local edge length"
+    },
+    {
+      "classification": "UNIFORM",
+      "field": "local_turning_angle",
+      "provenance": "settled polygon geometry"
+    },
+    {
+      "classification": "UNIFORM",
+      "field": "rupture_state",
+      "provenance": "existing edge rupture flag"
+    }
+  ],
+  "excluded_artifacts": [
+    "hard-coded index",
+    "world axis",
+    "observer seed",
+    "test fixture labeling",
+    "resource placement"
+  ],
+  "lawful_sources_considered": [
+    "material history",
+    "mechanics",
+    "geometry",
+    "maturation",
+    "structural chemistry"
+  ]
+}

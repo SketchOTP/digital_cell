@@ -1,0 +1,29 @@
+{
+  "area": 77.45296384062524,
+  "interior": {
+    "a": 0.601493161892627,
+    "c": 0.8019908825235109,
+    "c_b": 0.0,
+    "c_h": 0.0,
+    "f": 0.40099544126175546,
+    "k_a": 0.0,
+    "k_b": 0.0,
+    "k_h": 0.0,
+    "k_node_b": 0.0,
+    "k_r": 0.0,
+    "n": 0.40099544126175546,
+    "q_e": 0.0,
+    "q_k": 0.0,
+    "r": 0.0,
+    "tracer_c": 0.0,
+    "u_b": 0.0,
+    "u_h": 0.0,
+    "w": 0.0
+  },
+  "mesh_contract": "MaturationCoupledV4",
+  "mesh_hash": "6c3dcdd12abbbc64",
+  "perimeter": 31.287379388114292,
+  "settlement": "exact 24-site regular seed and unchanged 5000-step MechParams::default() mechanics settlement",
+  "total_bound_membrane": 21.92840029296866,
+  "total_structural_mass": 31.326286132812385
+}

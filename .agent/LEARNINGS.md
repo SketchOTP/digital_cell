@@ -257,3 +257,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-015 polarity actuator interface feasibility audit
 - Supersedes learning: L-DCDEV021-ENTRY015-001
+
+## L-DCDEV021-ENTRY016-001
+
+- Learning ID: L-DCDEV021-ENTRY016-001
+- Date: 2026-09-01
+- Fact or lesson: The accepted M2071-derived Polar and Traveling parameter regimes have positive nonzero-mode linear instabilities on the exact 24-site periodic lattice, but the exact 5,000-step settled Digital Cell body is uniform in every audited ring-local physical field at the existing numerical tolerance. Therefore intrinsic polarity instability alone does not provide a lawful initiation substrate in the present organism state; no production coupling or new randomness was added.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry016.rs`, `digital-protocell/experiments/generated/dcdev021m2entry016/`, and `.github/workflows/dc-dev-021-m2-entry016.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-016 observer-only autonomous-polarity-initiation substrate audit.
+- Supersedes learning: none

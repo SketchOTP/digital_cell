@@ -472,3 +472,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260831-dcdev021-m2-entry012-separated-resource-autonomous-acquisition
 - Status at issuance: ISSUED
+
+## D-20260901-dcdev021-m2-entry016-autonomous-polarity-initiation-audit
+
+- Issued: `2026-09-01T06:48:42-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-016-AUTONOMOUS-POLARITY-INITIATION-SUBSTRATE-AUDIT-001`
+- Objective: Determine whether the accepted 24-site excitable-polarity system has a spatially unstable homogeneous mode and whether the exact settled Digital Cell body contains a lawful, rotation-equivariant local physical asymmetry that could serve as an autonomous initiation substrate.
+- Scope: Observer-only homogeneous-equilibrium solving, exact 24-site Jacobian/Fourier stability, homogeneous replay, settled-body local-field inventory, asymmetry provenance/rotation analysis, mapping-boundary audit, compact evidence, governance, and exact-head Linux validation.
+- Exclusions: production polarity initialization or coupling, random noise, seed patches, parameter search, resource assays, target/gradient/centroid/observer feedback, actuator/traction/metabolism/uptake changes, M1 work, restart repair, PR #44 modification, and successor execution.
+- Acceptance: One preregistered ENTRY-016 classification after authority, mathematical stability, homogeneous replay, physical-asymmetry, provenance, rotation, forbidden-information, preservation, governance, and exact-head Linux checks.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260831-dcdev021-m2-entry015-polarity-actuator-interface
+- Status at issuance: ISSUED

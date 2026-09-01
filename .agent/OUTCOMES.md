@@ -884,3 +884,20 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: the result qualifies only the assay-local polarity-to-effector interface; production polarity integration, autonomous polarity initiation, and autonomous resource acquisition remain out of scope.
 - Blockers: Architect review; do not start successor work.
 - Follow-up directive: none
+
+## D-20260901-dcdev021-m2-entry016-autonomous-polarity-initiation-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY016-AUTONOMOUS-POLARITY-INITIATION-AUDIT-LOCAL`
+- Supersedes outcome: none
+- Closed: `2026-09-01T06:48:42-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The authorized observer-only ENTRY-016 audit runs from accepted ENTRY-015 head `4ca7d0ee7c9e135a1ecf8adfdd5525b02c67c6bd`. Exact accepted equations yield spatially unstable nonzero-mode linear growth for both Polar and Traveling parameter regimes, while exact homogeneous replay remains homogeneous. The settled 24-site MaturationCoupledV4 body has no physically nonuniform local field beyond numerical residue, so the local classification is `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`.
+- Changed areas: additive isolated ENTRY-016 audit/example registration, compact evidence under `digital-protocell/experiments/generated/dcdev021m2entry016/`, scoped workflow, and append-only governance only; no scientific runtime source or PR #44 change.
+- Validation:
+  - Exact accepted ENTRY-015 starting head and frozen source scope - PASSED locally
+  - Homogeneous equilibria, exact 24-site Fourier/Jacobian spectra, homogeneous replay, settled local-field inventory, provenance, rotation, forbidden-information, and mapping-boundary audit - PASSED locally
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: exact-head remote validation and Architect acceptance remain outstanding; no polarity initialization or resource encounter has been implemented or tested.
+- Blockers: exact-head Linux CI and Architect review; do not start successor work.
+- Follow-up directive: none

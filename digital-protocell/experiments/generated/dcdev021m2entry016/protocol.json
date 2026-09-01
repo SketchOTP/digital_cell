@@ -1,0 +1,11 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-016-AUTONOMOUS-POLARITY-INITIATION-SUBSTRATE-AUDIT-001",
+  "observer_only": true,
+  "production_polarity_initialization": false,
+  "replay_steps": 1500,
+  "resource_assay_run": false,
+  "scientific_runtime_source_changed": false,
+  "settlement_steps": 5000,
+  "starting_head": "4ca7d0ee7c9e135a1ecf8adfdd5525b02c67c6bd",
+  "topology_sites": 24
+}

@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-31T22:21:36-04:00`
+- Last updated: `2026-09-01T06:48:42-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260831-dcdev021-m2-entry015-polarity-actuator-interface`
-- External directive ID: `DC-DEV-021-M2-ENTRY-015-EXCITABLE-POLARITY-ACTUATOR-INTERFACE-FEASIBILITY-001`
-- Objective: `Determine whether the exact ENTRY-014 24-site polarity substrate can drive coherent motion through the unchanged A-funded actuator using motor_activity[i] = u[i] / (u[i] + v[i]) in an isolated resource-free assay.`
+- Local directive ID: `D-20260901-dcdev021-m2-entry016-autonomous-polarity-initiation-audit`
+- External directive ID: `DC-DEV-021-M2-ENTRY-016-AUTONOMOUS-POLARITY-INITIATION-SUBSTRATE-AUDIT-001`
+- Objective: `Determine whether accepted 24-site excitable polarity has an intrinsically unstable spatial mode and whether the exact settled Digital Cell body contains a lawful, rotation-equivariant local physical asymmetry that could seed it, without implementing a coupling.`
 - Current status: `VALIDATING`
-- Acceptance: `ENTRY-014 is Architect accepted as M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE. ENTRY-015 local and exact-head Linux validation passed as M2_EXCITABLE_POLARITY_ACTUATOR_INTERFACE_QUALIFIED; Architect acceptance remains pending.`
-- Current phase: `M2 target-free locomotion, metabolically live in-contact exploitation, excitable-polarity reference transfer, and assay-local polarity-to-effector feasibility are qualified; separated encounter and autonomous polarity initiation remain unestablished.`
-- Expected or actual touched areas: `isolated ENTRY-015 assay/interface example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, and M1 sources remain unchanged`
-- Immediate next action: `Await Architect review of the exact-head ENTRY-015 result; do not implement production polarity or start successor work.`
+- Acceptance: `ENTRY-015 is Architect accepted as M2_EXCITABLE_POLARITY_ACTUATOR_INTERFACE_QUALIFIED. ENTRY-016 local audit classifies M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT; exact-head Linux validation and Architect review remain pending.`
+- Current phase: `M2 target-free locomotion, metabolically live in-contact exploitation, excitable-polarity reference transfer, and assay-local polarity-to-effector feasibility are qualified; autonomous polarity initiation and separated encounter remain unestablished.`
+- Expected or actual touched areas: `isolated ENTRY-016 mathematical stability/asymmetry audit, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, and M1 sources remain unchanged`
+- Immediate next action: `Run exact-head ENTRY-016 preservation and Linux validation; do not implement polarity initialization, coupling, or successor work.`
 
 ## Temporary task-relevant facts
 

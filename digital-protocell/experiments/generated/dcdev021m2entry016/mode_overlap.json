@@ -1,0 +1,6 @@
+{
+  "endogenous_asymmetry_overlaps_unstable_mode": "NO",
+  "polar_unstable_mode": 2,
+  "reason": "settled local physical fields are uniform or numerical-only",
+  "traveling_unstable_mode": 1
+}

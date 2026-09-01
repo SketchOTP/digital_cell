@@ -1,0 +1,7 @@
+{
+  "amplitude_spectra_invariant": true,
+  "field_classifications_invariant": true,
+  "pass": true,
+  "rotation": "180 degrees",
+  "settled_mesh_rotation": "vertices rotated in world space; material-local edge ordering retained"
+}

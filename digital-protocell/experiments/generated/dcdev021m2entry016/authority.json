@@ -1,0 +1,21 @@
+{
+  "entry005_015_preserved": true,
+  "entry015_acceptance": "M2_EXCITABLE_POLARITY_ACTUATOR_INTERFACE_QUALIFIED",
+  "m1": "CLOSED / FROZEN",
+  "pr_number_44": {
+    "draft": true,
+    "merged": false,
+    "state": "OPEN",
+    "touched": false
+  },
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "source_hashes": {
+    "contractility.rs": "588b40fe26029232",
+    "intrinsic_exploration.rs": "dc14db5d477b97cb",
+    "material_mesh.rs": "3490cee8eedbe1d6",
+    "mesh_mechanics.rs": "eaaa4f5898833bfd",
+    "mesh_reactions.rs": "8b7a5572b93b0982",
+    "stick_slip_traction.rs": "ec1ad2b699ca7461"
+  },
+  "starting_head": "4ca7d0ee7c9e135a1ecf8adfdd5525b02c67c6bd"
+}

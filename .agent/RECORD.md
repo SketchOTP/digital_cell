@@ -255,3 +255,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The accepted ENTRY-014 reference chemistry remains unchanged and one-way. The exact local active-fraction interface preserves chemistry while Polar spatial organization exceeds the matched uniform-mean control in coherent translation and the Traveling regime shows phase-coupled heading variation. The result is bounded to assay-local feasibility and does not authorize production integration or successor work.
 - Affected areas: exact CI result and artifact provenance for additive ENTRY-015 assay/evidence/workflow/governance only; no scientific runtime, M1, resource, restart, or PR #44 change.
 - Supersedes record: DEC-DCDEV021-ENTRY015-EXCITABLE-POLARITY-ACTUATOR-INTERFACE-001
+
+## DEC-DCDEV021-ENTRY016-AUTONOMOUS-POLARITY-INITIATION-SUBSTRATE-AUDIT-R1
+
+- Date: 2026-09-01
+- Record or decision ID: DEC-DCDEV021-ENTRY016-AUTONOMOUS-POLARITY-INITIATION-SUBSTRATE-AUDIT-R1
+- Status: ACTIVE
+- Decision or event: The observer-only ENTRY-016 audit locally classifies `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT` from accepted ENTRY-015 head `4ca7d0ee7c9e135a1ecf8adfdd5525b02c67c6bd`.
+- Rationale: Exact accepted equations have positive nonzero spatial-mode growth rates (Polar maximum `0.0027247326825388107` at mode 2; Traveling maximum `1.8634516205368405` at mode 1 across admissible equilibria), and exact homogeneous replays preserve homogeneity. The settled 24-site MaturationCoupledV4 body has no physically meaningful nonuniform edge-length, strain, structural-material, membrane, curvature, or rupture field after unchanged settlement; all candidate asymmetry is uniform or numerical-only. No mapping, production initialization, or random source was introduced.
+- Affected areas: additive observer-only ENTRY-016 audit/example, compact evidence, scoped workflow, and governance only; no scientific runtime, M1, actuator, traction, metabolism, uptake, resource, restart, or PR #44 change.
+- Supersedes record: none

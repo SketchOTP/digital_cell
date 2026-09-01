@@ -1,0 +1,17 @@
+{
+  "architect_acceptance": "PENDING",
+  "autonomous_polarity_initiation": "NOT_ESTABLISHED",
+  "classification": "M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT",
+  "downstream_preservation": "PASS",
+  "entry005_015_preservation": "PASS",
+  "m1_preservation": "PASS",
+  "m2_autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "mapping_boundary": "NOT_APPLICABLE",
+  "new_randomness_required": "UNRESOLVED",
+  "polar_spatial_instability_exists": true,
+  "rotation_equivariance": true,
+  "scientific_runtime_source_changed": false,
+  "settled_organism_physical_asymmetry": false,
+  "traveling_spatial_instability_exists": true,
+  "world_or_index_artifacts_excluded": true
+}

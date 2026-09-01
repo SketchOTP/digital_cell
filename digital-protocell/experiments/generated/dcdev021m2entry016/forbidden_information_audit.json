@@ -1,0 +1,13 @@
+{
+  "centroid_feedback": false,
+  "contact": false,
+  "distance_to_resource": false,
+  "forbidden_information_read": "NONE",
+  "observer_seed": false,
+  "preferred_site": false,
+  "resource_center": false,
+  "resource_radius": false,
+  "uptake_ledger": false,
+  "viability_or_alive_latch": false,
+  "world_coordinates_read_by_polarity": false
+}

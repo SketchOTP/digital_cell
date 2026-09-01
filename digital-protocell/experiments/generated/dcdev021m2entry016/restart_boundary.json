@@ -1,0 +1,5 @@
+{
+  "generic_full_mesh_restart": "KNOWN_FAIL (preserved, noncontaminating)",
+  "intrinsic_state_restart": "PASS (preserved)",
+  "restart_repair_attempted": false
+}

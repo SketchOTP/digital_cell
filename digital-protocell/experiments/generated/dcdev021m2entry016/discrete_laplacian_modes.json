@@ -1,0 +1,71 @@
+{
+  "modes": [
+    {
+      "k": 0,
+      "polar_lambda": -0.0,
+      "traveling_lambda": -0.0
+    },
+    {
+      "k": 1,
+      "polar_lambda": -0.9943014562635542,
+      "traveling_lambda": -3.9772058250542166
+    },
+    {
+      "k": 2,
+      "polar_lambda": -3.9094458239707035,
+      "traveling_lambda": -15.637783295882814
+    },
+    {
+      "k": 3,
+      "polar_lambda": -8.546770831966056,
+      "traveling_lambda": -34.18708332786422
+    },
+    {
+      "k": 4,
+      "polar_lambda": -14.59025044449664,
+      "traveling_lambda": -58.36100177798656
+    },
+    {
+      "k": 5,
+      "polar_lambda": -21.628031513290786,
+      "traveling_lambda": -86.51212605316314
+    },
+    {
+      "k": 6,
+      "polar_lambda": -29.18050088899328,
+      "traveling_lambda": -116.72200355597312
+    },
+    {
+      "k": 7,
+      "polar_lambda": -36.73297026469579,
+      "traveling_lambda": -146.93188105878315
+    },
+    {
+      "k": 8,
+      "polar_lambda": -43.77075133348992,
+      "traveling_lambda": -175.08300533395968
+    },
+    {
+      "k": 9,
+      "polar_lambda": -49.814230946020515,
+      "traveling_lambda": -199.25692378408206
+    },
+    {
+      "k": 10,
+      "polar_lambda": -54.45155595401587,
+      "traveling_lambda": -217.8062238160635
+    },
+    {
+      "k": 11,
+      "polar_lambda": -57.36670032172301,
+      "traveling_lambda": -229.46680128689204
+    },
+    {
+      "k": 12,
+      "polar_lambda": -58.361001777986566,
+      "traveling_lambda": -233.44400711194626
+    }
+  ],
+  "periodic_discrete_laplacian": "-4*sin(pi*k/N)^2/dx^2",
+  "sites": 24
+}

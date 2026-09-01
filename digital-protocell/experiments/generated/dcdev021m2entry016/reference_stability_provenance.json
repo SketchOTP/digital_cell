@@ -1,0 +1,10 @@
+{
+  "bifurcation_reference": "https://arxiv.org/abs/2410.12213",
+  "external_classification": {
+    "external_trigger_magnitudes": "DO_NOT_IMPORT",
+    "linear_stability_bifurcation_method": "DIRECTLY_REUSABLE",
+    "mechanical_symmetry_breaking": "ADAPTABLE / REFERENCE"
+  },
+  "method": "homogeneous steady states and Fourier-mode linear stability of the exact accepted equations",
+  "morpheus_m2071": "https://morpheus.gitlab.io/model/m2071/"
+}

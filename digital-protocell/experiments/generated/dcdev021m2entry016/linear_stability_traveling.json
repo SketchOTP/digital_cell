@@ -1,0 +1,834 @@
+{
+  "homogeneous_spatial_stability": "UNSTABLE",
+  "homogeneous_states": [
+    {
+      "f": 0.8064210382705091,
+      "max_k0_real": 2.220446049250313e-16,
+      "max_nonzero_real": -0.6064594977945319,
+      "modes": [
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": 2.220446049250313e-16
+            },
+            {
+              "imaginary": 0.0,
+              "real": -1.7581756763587348
+            },
+            {
+              "imaginary": 0.0,
+              "real": -0.6033264581884659
+            }
+          ],
+          "laplacian_eigenvalue": -0.0,
+          "maximum_real": 2.220446049250313e-16,
+          "mode": 0,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.6064594977945319
+            },
+            {
+              "imaginary": 0.0,
+              "real": -3.978540057806419
+            },
+            {
+              "imaginary": 0.0,
+              "real": -2.1554061923309424
+            }
+          ],
+          "laplacian_eigenvalue": -3.9772058250542166,
+          "maximum_real": -0.6064594977945319,
+          "mode": 1,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.6170606839286528
+            },
+            {
+              "imaginary": 0.0,
+              "real": -15.638558876381495
+            },
+            {
+              "imaginary": 0.0,
+              "real": -3.3230819830040312
+            }
+          ],
+          "laplacian_eigenvalue": -15.637783295882814,
+          "maximum_real": -0.6170606839286528,
+          "mode": 2,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.6350348284521559
+            },
+            {
+              "imaginary": 0.0,
+              "real": -34.18780308019238
+            },
+            {
+              "imaginary": 0.0,
+              "real": -5.178642969881173
+            }
+          ],
+          "laplacian_eigenvalue": -34.18708332786422,
+          "maximum_real": -0.6350348284521559,
+          "mode": 3,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.6589162893268572
+            },
+            {
+              "imaginary": 0.0,
+              "real": -58.36170387948005
+            },
+            {
+              "imaginary": 0.0,
+              "real": -7.5963449233034925
+            }
+          ],
+          "laplacian_eigenvalue": -58.36100177798656,
+          "maximum_real": -0.6589162893268572,
+          "mode": 4,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.6869082748809419
+            },
+            {
+              "imaginary": 0.0,
+              "real": -86.51282031917378
+            },
+            {
+              "imaginary": 0.0,
+              "real": -10.411624325025088
+            }
+          ],
+          "laplacian_eigenvalue": -86.51212605316314,
+          "maximum_real": -0.6869082748809419,
+          "mode": 5,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.7170249764929082
+            },
+            {
+              "imaginary": 0.0,
+              "real": -116.72269368928801
+            },
+            {
+              "imaginary": 0.0,
+              "real": -13.432709383892693
+            }
+          ],
+          "laplacian_eigenvalue": -116.72200355597312,
+          "maximum_real": -0.7170249764929082,
+          "mode": 6,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.747177163268951
+            },
+            {
+              "imaginary": 0.0,
+              "real": -146.932568781703
+            },
+            {
+              "imaginary": 0.0,
+              "real": -16.45375723529552
+            }
+          ],
+          "laplacian_eigenvalue": -146.93188105878315,
+          "maximum_real": -0.747177163268951,
+          "mode": 7,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.7752913239360737
+            },
+            {
+              "imaginary": 0.0,
+              "real": -175.08369156790707
+            },
+            {
+              "imaginary": 0.0,
+              "real": -19.268908115393643
+            }
+          ],
+          "laplacian_eigenvalue": -175.08300533395968,
+          "maximum_real": -0.7752913239360737,
+          "mode": 8,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.7994413733050578
+            },
+            {
+              "imaginary": 0.0,
+              "real": -199.25760907850815
+            },
+            {
+              "imaginary": 0.0,
+              "real": -21.68632476900836
+            }
+          ],
+          "laplacian_eigenvalue": -199.25692378408206,
+          "maximum_real": -0.7994413733050578,
+          "mode": 9,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.817975767103988
+            },
+            {
+              "imaginary": 0.0,
+              "real": -217.80690853225957
+            },
+            {
+              "imaginary": 0.0,
+              "real": -23.541270256669662
+            }
+          ],
+          "laplacian_eigenvalue": -217.8062238160635,
+          "maximum_real": -0.817975767103988,
+          "mode": 10,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.8296281478172034
+            },
+            {
+              "imaginary": 0.0,
+              "real": -229.46748568786285
+            },
+            {
+              "imaginary": 0.0,
+              "real": -24.707336515735236
+            }
+          ],
+          "laplacian_eigenvalue": -229.46680128689204,
+          "maximum_real": -0.8296281478172034,
+          "mode": 11,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.8336027362076806
+            },
+            {
+              "imaginary": 0.0,
+              "real": -233.44469141266268
+            },
+            {
+              "imaginary": 0.0,
+              "real": -25.10505981592967
+            }
+          ],
+          "laplacian_eigenvalue": -233.44400711194626,
+          "maximum_real": -0.8336027362076806,
+          "mode": 12,
+          "oscillatory": false
+        }
+      ],
+      "most_unstable_spatial_mode": 1,
+      "reaction_residual": 0.0,
+      "u": 0.001689746913291882,
+      "v": 4.498310253086708
+    },
+    {
+      "f": 1.5626503044802662,
+      "max_k0_real": 2.2092715064971293,
+      "max_nonzero_real": 1.8634516205368405,
+      "modes": [
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": 2.2092715064971293
+            },
+            {
+              "imaginary": 0.0,
+              "real": -0.4371142904379758
+            },
+            {
+              "imaginary": 0.0,
+              "real": -8.881784197001252e-16
+            }
+          ],
+          "laplacian_eigenvalue": -0.0,
+          "maximum_real": 2.2092715064971293,
+          "mode": 0,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": 1.8634516205368405
+            },
+            {
+              "imaginary": 0.0,
+              "real": -4.047867916547165
+            },
+            {
+              "imaginary": 0.0,
+              "real": -0.4223301013152148
+            }
+          ],
+          "laplacian_eigenvalue": -3.9772058250542166,
+          "maximum_real": 1.8634516205368405,
+          "mode": 1,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": 0.5065329960385778
+            },
+            {
+              "imaginary": 0.0,
+              "real": -15.740928956646002
+            },
+            {
+              "imaginary": 0.0,
+              "real": -0.21064623210040434
+            }
+          ],
+          "laplacian_eigenvalue": -15.637783295882814,
+          "maximum_real": 0.5065329960385778,
+          "mode": 2,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -34.29946710746569
+            },
+            {
+              "imaginary": 0.6584569728860447,
+              "real": -0.7841772102268347
+            },
+            {
+              "imaginary": -0.6584569728860447,
+              "real": -0.7841772102268347
+            }
+          ],
+          "laplacian_eigenvalue": -34.18708332786422,
+          "maximum_real": -0.7841772102268347,
+          "mode": 3,
+          "oscillatory": true
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.8404863671150231
+            },
+            {
+              "imaginary": 0.0,
+              "real": -58.47699785596655
+            },
+            {
+              "imaginary": 0.0,
+              "real": -3.165821518422476
+            }
+          ],
+          "laplacian_eigenvalue": -58.36100177798656,
+          "maximum_real": -0.8404863671150231,
+          "mode": 4,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.7712915139906791
+            },
+            {
+              "imaginary": 0.0,
+              "real": -86.62986137452936
+            },
+            {
+              "imaginary": 0.0,
+              "real": -6.076540679953453
+            }
+          ],
+          "laplacian_eigenvalue": -86.51212605316314,
+          "maximum_real": -0.7712915139906791,
+          "mode": 5,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.7710748380956858
+            },
+            {
+              "imaginary": 0.0,
+              "real": -116.84069323786355
+            },
+            {
+              "imaginary": 0.0,
+              "real": -9.127000623108003
+            }
+          ],
+          "laplacian_eigenvalue": -116.72200355597312,
+          "maximum_real": -0.7710748380956858,
+          "mode": 6,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.7869867014033574
+            },
+            {
+              "imaginary": 0.0,
+              "real": -147.05113976650006
+            },
+            {
+              "imaginary": 0.0,
+              "real": -12.161717361757681
+            }
+          ],
+          "laplacian_eigenvalue": -146.93188105878315,
+          "maximum_real": -0.7869867014033574,
+          "mode": 7,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.8072645730861794
+            },
+            {
+              "imaginary": 0.0,
+              "real": -175.2026202367749
+            },
+            {
+              "imaginary": 0.0,
+              "real": -14.984346846769391
+            }
+          ],
+          "laplacian_eigenvalue": -175.08300533395968,
+          "maximum_real": -0.8072645730861794,
+          "mode": 8,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.8267945166761734
+            },
+            {
+              "imaginary": 0.0,
+              "real": -199.37676531580797
+            },
+            {
+              "imaginary": 0.0,
+              "real": -17.40615603773108
+            }
+          ],
+          "laplacian_eigenvalue": -199.25692378408206,
+          "maximum_real": -0.8267945166761734,
+          "mode": 9,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.842599684984819
+            },
+            {
+              "imaginary": 0.0,
+              "real": -217.92620555564946
+            },
+            {
+              "imaginary": 0.0,
+              "real": -19.26368996479257
+            }
+          ],
+          "laplacian_eigenvalue": -217.8062238160635,
+          "maximum_real": -0.842599684984819,
+          "mode": 10,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.8527990036612891
+            },
+            {
+              "imaginary": 0.0,
+              "real": -229.586859696915
+            },
+            {
+              "imaginary": 0.0,
+              "real": -20.43113230023259
+            }
+          ],
+          "laplacian_eigenvalue": -229.46680128689204,
+          "maximum_real": -0.8527990036612891,
+          "mode": 11,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -0.8563164636927638
+            },
+            {
+              "imaginary": 0.0,
+              "real": -233.56408994119965
+            },
+            {
+              "imaginary": 0.0,
+              "real": -20.829288209301367
+            }
+          ],
+          "laplacian_eigenvalue": -233.44400711194626,
+          "maximum_real": -0.8563164636927638,
+          "mode": 12,
+          "oscillatory": false
+        }
+      ],
+      "most_unstable_spatial_mode": 1,
+      "reaction_residual": 0.0,
+      "u": 0.20069744854743848,
+      "v": 4.299302551452562
+    },
+    {
+      "f": 9.245928657249225,
+      "max_k0_real": 1.7763568394002505e-15,
+      "max_nonzero_real": 0.28431463394015033,
+      "modes": [
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": 1.7763568394002505e-15
+            },
+            {
+              "imaginary": 0.0,
+              "real": -8.906040002194926
+            },
+            {
+              "imaginary": 0.0,
+              "real": -1.2101050793170316
+            }
+          ],
+          "laplacian_eigenvalue": -0.0,
+          "maximum_real": 1.7763568394002505e-15,
+          "mode": 0,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -14.562523697468079
+            },
+            {
+              "imaginary": 0.9044048328466033,
+              "real": 0.033737501285717286
+            },
+            {
+              "imaginary": -0.9044048328466033,
+              "real": 0.033737501285717286
+            }
+          ],
+          "laplacian_eigenvalue": -3.9772058250542166,
+          "maximum_real": 0.033737501285717286,
+          "mode": 1,
+          "oscillatory": true
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -27.901973758159237
+            },
+            {
+              "imaginary": 1.4071122417460782,
+              "real": 0.28431463394015033
+            },
+            {
+              "imaginary": -1.4071122417460782,
+              "real": 0.28431463394015033
+            }
+          ],
+          "laplacian_eigenvalue": -15.637783295882814,
+          "maximum_real": 0.28431463394015033,
+          "mode": 2,
+          "oscillatory": true
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -47.38306990089517
+            },
+            {
+              "imaginary": 1.8538389336947243,
+              "real": -0.18652696229764842
+            },
+            {
+              "imaginary": -1.8538389336947243,
+              "real": -0.18652696229764842
+            }
+          ],
+          "laplacian_eigenvalue": -34.18708332786422,
+          "maximum_real": -0.18652696229764842,
+          "mode": 3,
+          "oscillatory": true
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -72.06913480175349
+            },
+            {
+              "imaginary": 1.9626140637362401,
+              "real": -1.1512366186608318
+            },
+            {
+              "imaginary": -1.9626140637362401,
+              "real": -1.1512366186608318
+            }
+          ],
+          "laplacian_eigenvalue": -58.36100177798656,
+          "maximum_real": -1.1512366186608318,
+          "mode": 4,
+          "oscillatory": true
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -100.51643388138038
+            },
+            {
+              "imaginary": 1.1554623198736962,
+              "real": -2.4247809923320958
+            },
+            {
+              "imaginary": -1.1554623198736962,
+              "real": -2.4247809923320958
+            }
+          ],
+          "laplacian_eigenvalue": -86.51212605316314,
+          "maximum_real": -2.4247809923320958,
+          "mode": 5,
+          "oscillatory": true
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -1.543787983176216
+            },
+            {
+              "imaginary": 0.0,
+              "real": -130.90700017607296
+            },
+            {
+              "imaginary": 0.0,
+              "real": -6.176282837389181
+            }
+          ],
+          "laplacian_eigenvalue": -116.72200355597312,
+          "maximum_real": -1.543787983176216,
+          "mode": 6,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -1.2819734969205214
+            },
+            {
+              "imaginary": 0.0,
+              "real": -161.23184866358488
+            },
+            {
+              "imaginary": 0.0,
+              "real": -9.374323966726834
+            }
+          ],
+          "laplacian_eigenvalue": -146.93188105878315,
+          "maximum_real": -1.2819734969205214,
+          "mode": 7,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -1.1833723467833437
+            },
+            {
+              "imaginary": 0.0,
+              "real": -189.4579930752295
+            },
+            {
+              "imaginary": 0.0,
+              "real": -12.24116853218878
+            }
+          ],
+          "laplacian_eigenvalue": -175.08300533395968,
+          "maximum_real": -1.1833723467833437,
+          "mode": 8,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -1.1396625153214757
+            },
+            {
+              "imaginary": 0.0,
+              "real": -213.68094992721464
+            },
+            {
+              "imaginary": 0.0,
+              "real": -14.677405725250246
+            }
+          ],
+          "laplacian_eigenvalue": -199.25692378408206,
+          "maximum_real": -1.1396625153214757,
+          "mode": 9,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -1.1200005754446067
+            },
+            {
+              "imaginary": 0.0,
+              "real": -232.26111961493135
+            },
+            {
+              "imaginary": 0.0,
+              "real": -16.539677312621976
+            }
+          ],
+          "laplacian_eigenvalue": -217.8062238160635,
+          "maximum_real": -1.1200005754446067,
+          "mode": 10,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -1.111822302984507
+            },
+            {
+              "imaginary": 0.0,
+              "real": -243.93875406928265
+            },
+            {
+              "imaginary": 0.0,
+              "real": -17.708516926112893
+            }
+          ],
+          "laplacian_eigenvalue": -229.46680128689204,
+          "maximum_real": -1.111822302984507,
+          "mode": 11,
+          "oscillatory": false
+        },
+        {
+          "eigenvalues": [
+            {
+              "imaginary": 0.0,
+              "real": -1.1096263752056927
+            },
+            {
+              "imaginary": 0.0,
+              "real": -247.9214190530522
+            },
+            {
+              "imaginary": 0.0,
+              "real": -18.106951483506904
+            }
+          ],
+          "laplacian_eigenvalue": -233.44400711194626,
+          "maximum_real": -1.1096263752056927,
+          "mode": 12,
+          "oscillatory": false
+        }
+      ],
+      "most_unstable_spatial_mode": 2,
+      "reaction_residual": 0.0,
+      "u": 2.2226128045392697,
+      "v": 2.2773871954607303
+    }
+  ],
+  "max_k0_real": 2.2092715064971293,
+  "max_nonzero_real": 1.8634516205368405,
+  "most_unstable_spatial_mode": 1,
+  "parameters": {
+    "b": 0.00067,
+    "d_f": 0.001,
+    "d_u": 0.1,
+    "domain_length": 3.141592653589793,
+    "epsilon": 0.6,
+    "gamma": 3.0,
+    "p0": 0.8,
+    "p1": 3.8,
+    "s": 1.0,
+    "total_mass": 4.5
+  },
+  "regime": "TRAVELING_WAVES_1D"
+}

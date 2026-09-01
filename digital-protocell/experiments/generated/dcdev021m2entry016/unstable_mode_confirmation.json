@@ -1,0 +1,7 @@
+{
+  "nonlinear_confirmation": "NOT_APPLICABLE",
+  "performed": false,
+  "polar_predicted_unstable_mode": 2,
+  "reason": "eigenanalysis is sufficient for the observer-only audit; no biological perturbation was injected",
+  "traveling_predicted_unstable_mode": 1
+}
