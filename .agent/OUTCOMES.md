@@ -984,3 +984,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: Architect acceptance remains outstanding; no polarity state, topology remapping, or resource encounter was implemented or tested.
 - Blockers: Architect review; do not start successor work.
 - Follow-up directive: none
+
+## D-20260901-dcdev021-m2-entry018-native-material-ring-polarity-transfer - COMPLETE
+
+- Outcome ID: OUT-DCDEV021-ENTRY018-NATIVE-MATERIAL-RING-POLARITY-TRANSFER-R1
+- Supersedes outcome: OUT-DCDEV021-ENTRY018-NATIVE-MATERIAL-RING-POLARITY-TRANSFER-LOCAL
+- Closed: 2026-09-01T09:45:00-04:00
+- Acceptance: MET
+- Summary: Exact-head ENTRY-018 validation confirms that the accepted continuous M2071-derived polarity equations transfer natively to the exact 198-site mother and 78/122-site daughter material rings. Normalized physical arclength, edge-centered conservative finite volumes, regular-grid equivalence, weighted active+inactive conservation, all accepted homogeneous equilibria, native spatial instability, and nonhomogeneous Polar/Traveling reference replays pass without resampling or biological parameter changes. The classification is `M2_NATIVE_MATERIAL_RING_POLARITY_TRANSFER_FEASIBLE`.
+- Changed areas: additive numerical example, compact evidence under `digital-protocell/experiments/generated/dcdev021m2entry018/`, scoped workflow, and append-only governance only; no accepted scientific runtime source changed and no polarity initialization, actuator coupling, or resource assay was implemented.
+- Validation:
+  - Exact ENTRY-017 starting head and ancestry - PASSED
+  - Regular-grid equivalence, weighted conservation, native stability, and reference-pattern replay - PASSED
+  - Exact-head Linux CI `33512289462` on `b1993be67d85ed8288c5d580c25269f4d6bf3d67` - PASSED
+  - Independent downloaded artifact ZIP digest `sha256:9c48bab34a62df3c90dbeddd5892c71680a9a27ee16dacf1a6c881afd9423325` - PASSED
+  - M1, downstream, governance, and restart-boundary checks - PASSED
+- Remaining risks: Architect acceptance remains outstanding; ENTRY-018 does not establish autonomous polarity initiation or resource acquisition.
+- Blockers: Architect review; do not start successor work.
+- Follow-up directive: none

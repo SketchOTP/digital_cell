@@ -287,3 +287,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-018 native material-ring polarity transfer feasibility audit.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY018-002
+
+- Learning ID: L-DCDEV021-ENTRY018-002
+- Date: 2026-09-01
+- Fact or lesson: Exact-head Linux validation confirms that the accepted continuous M2071-derived polarity equations transfer conservatively to the exact 198-site mother and 78/122-site daughter rings on normalized physical arclength without resampling, biological parameter changes, polarity initialization, actuator coupling, or resource interaction.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry018.rs`, `digital-protocell/experiments/generated/dcdev021m2entry018/`, `.github/workflows/dc-dev-021-m2-entry018.yml`, workflow `33512289462`, and independent artifact ZIP hash `sha256:9c48bab34a62df3c90dbeddd5892c71680a9a27ee16dacf1a6c881afd9423325`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 ENTRY-018 native material-ring polarity transfer feasibility audit.
+- Supersedes learning: L-DCDEV021-ENTRY018-001

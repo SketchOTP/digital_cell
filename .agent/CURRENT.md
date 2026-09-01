@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-01T08:16:59-04:00`
+- Last updated: `2026-09-01T09:45:00-04:00`
 
 ## Active state after adoption
 
@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-021-M2-ENTRY-018-NATIVE-MATERIAL-RING-POLARITY-TRANSFER-FEASIBILITY-001`
 - Objective: `Determine whether the accepted continuous polarity equations transfer conservatively to the exact 198/78/122-site material rings without resampling, tuning, initialization, or behavior coupling.`
 - Current status: `VALIDATING`
-- Acceptance: `ENTRY-017 is Architect accepted as M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED. ENTRY-018 native-ring audit is in progress; local evidence currently supports M2_NATIVE_MATERIAL_RING_POLARITY_TRANSFER_FEASIBLE, pending exact-head Linux validation and Architect review.`
+- Acceptance: `ENTRY-017 is Architect accepted as M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED. ENTRY-018 local and exact-head Linux validation support M2_NATIVE_MATERIAL_RING_POLARITY_TRANSFER_FEASIBLE; Architect acceptance is pending.`
 - Current phase: `M2 target-free locomotion, metabolically live in-contact exploitation, excitable-polarity reference transfer, and assay-local polarity-to-effector feasibility are qualified; autonomous polarity initiation and separated encounter remain unestablished.`
 - Expected or actual touched areas: `isolated ENTRY-018 native numerical audit, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, polarity, actuator, traction, fission, remesh, and M1 sources remain unchanged`
-- Immediate next action: `Complete exact-head ENTRY-018 validation and seal provenance; do not initialize polarity from daughter fields, couple an actuator, run a resource assay, or start successor work.`
+- Immediate next action: `Record exact-head ENTRY-018 provenance in Git and Notion, then await Architect review; do not initialize polarity from daughter fields, couple an actuator, run a resource assay, or start successor work.`
 
 ## Temporary task-relevant facts
 
@@ -44,7 +44,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Exact-head Linux ENTRY-017 workflow 33505752560 on d12c5ba1f6b23c412296e7c4354e1c929c0fd92b; local release audit, focused preservation tests, D-087, governance validation, and independent artifact download hash`
+- Command or check: `Exact-head Linux ENTRY-018 workflow 33512289462 on b1993be67d85ed8288c5d580c25269f4d6bf3d67; local release audit, focused preservation tests, governance validation, and independent artifact download hash`
 - Result: `PASSED`
 
 ## Risks
@@ -56,12 +56,12 @@
 ## Blockers
 
 - Architect review is required before any successor directive.
-- Exact-head Linux workflow `33505752560` passed on result head `d12c5ba1f6b23c412296e7c4354e1c929c0fd92b`; GitHub artifact digest and independent downloaded-archive hash are `sha256:904dbbf76b470a0c16183828ca5aefbab0e9a641adea3e99f245145b059eba86`.
+- Exact-head Linux workflow `33512289462` passed on result head `b1993be67d85ed8288c5d580c25269f4d6bf3d67`; the independently downloaded artifact ZIP hash is `sha256:9c48bab34a62df3c90dbeddd5892c71680a9a27ee16dacf1a6c881afd9423325`.
 
 ## Pending decisions
 
 - The V4 equations, D-087 boundary, conservation contracts, accepted M1 qualification, ENTRY-001 actuator, and ENTRY-011 uptake/metabolism composition are frozen.
-- M2 autonomous resource acquisition remains unestablished; ENTRY-012 seed 1 did not encounter the separated resource within 1,500 steps despite active locomotion. Architect accepted ENTRY-013 as first-harmonic polarity decay/homogenization, ENTRY-014 as a transferable isolated polarity substrate, ENTRY-015 as an assay-local interface, ENTRY-016 as `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`, and ENTRY-017 as `M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED`. ENTRY-018 is the only active audit: it tests conservative normalized physical-arclength diffusion on the exact 198/78/122-site rings without daughter resampling or polarity initialization. No production polarity, resource coupling, sensing, navigation, parameter search, reserve, target, gradient, resource seeking, or successor execution is authorized pending Architect review.
+- M2 autonomous resource acquisition remains unestablished; ENTRY-012 seed 1 did not encounter the separated resource within 1,500 steps despite active locomotion. Architect accepted ENTRY-013 as first-harmonic polarity decay/homogenization, ENTRY-014 as a transferable isolated polarity substrate, ENTRY-015 as an assay-local interface, ENTRY-016 as `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`, and ENTRY-017 as `M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED`. ENTRY-018 local and exact-head validation support `M2_NATIVE_MATERIAL_RING_POLARITY_TRANSFER_FEASIBLE`: the continuous equations transfer conservatively to exact 198/78/122-site rings without resampling. No production polarity, initialization, resource coupling, sensing, navigation, parameter search, reserve, target, gradient, resource seeking, or successor execution is authorized pending Architect review.
 
 ## Status vocabulary
 

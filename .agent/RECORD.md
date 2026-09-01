@@ -315,3 +315,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: ENTRY-017 established lawful nonuniform 78/122-site daughters but left direct 24-site mapping unresolved. ENTRY-018 tests the continuous accepted polarity equations natively on the exact 198/78/122-site material rings using normalized physical arclength and conservative local fluxes, without resampling or initializing polarity from life-history fields.
 - Affected areas: additive observer-only numerical example, compact evidence, scoped workflow, and append-only governance only; no scientific runtime, M1, polarity production state, actuator, traction, metabolism, uptake, resource, fission, remesh, restart, or PR #44 change.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY018-NATIVE-MATERIAL-RING-POLARITY-TRANSFER-R2
+
+- Date: 2026-09-01
+- Record or decision ID: DEC-DCDEV021-ENTRY018-NATIVE-MATERIAL-RING-POLARITY-TRANSFER-R2
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33512289462` passed on result head `b1993be67d85ed8288c5d580c25269f4d6bf3d67`; the independently downloaded artifact ZIP hash is `sha256:9c48bab34a62df3c90dbeddd5892c71680a9a27ee16dacf1a6c881afd9423325`.
+- Rationale: The sealed ENTRY-018 evidence confirms conservative normalized-physical-arclength transfer of the accepted continuous polarity equations to the exact 198/78/122-site rings, with regular-grid equivalence, weighted conservation, native instability, and nonhomogeneous reference replay passing. No daughter resampling, polarity initialization, or behavior coupling was added; Architect review remains pending.
+- Affected areas: final validation provenance for additive ENTRY-018 numerical audit/evidence/workflow/governance only; no production polarity, initialization, actuator, traction, resource, fission, remesh, restart, M1, or PR #44 change.
+- Supersedes record: DEC-DCDEV021-ENTRY018-NATIVE-MATERIAL-RING-POLARITY-TRANSFER-R1
