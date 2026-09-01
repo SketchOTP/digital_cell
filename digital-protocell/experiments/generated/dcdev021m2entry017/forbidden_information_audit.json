@@ -1,0 +1,14 @@
+{
+  "alive_latch_as_behavior": false,
+  "centroid_target": false,
+  "contact": false,
+  "distance_to_resource": false,
+  "fitness": false,
+  "future_motion": false,
+  "observer_only_centroid": true,
+  "resource_center": false,
+  "resource_radius": false,
+  "uptake_ledger": false,
+  "viability": false,
+  "world_axis": false
+}

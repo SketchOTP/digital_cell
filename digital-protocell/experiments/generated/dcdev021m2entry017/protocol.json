@@ -1,0 +1,7 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-017-POST-FISSION-DAUGHTER-ASYMMETRY-SUBSTRATE-AUDIT-001",
+  "fixture": "exact D-088 campaign primary arm: seed_one(14,1,2.2), rotate .3, vertex .35, x-stretch 1.25",
+  "historical_horizon_steps": 12000,
+  "no_polarity_or_resource": true,
+  "scope": "observer-only post-fission mother/daughter physical-asymmetry audit"
+}

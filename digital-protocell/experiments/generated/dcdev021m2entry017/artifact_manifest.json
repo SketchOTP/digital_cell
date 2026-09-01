@@ -1,0 +1,31 @@
+{
+  "classification": "M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED",
+  "dense_traces": "not emitted; compact local ring fields retained",
+  "directive": "DC-DEV-021-M2-ENTRY-017-POST-FISSION-DAUGHTER-ASYMMETRY-SUBSTRATE-AUDIT-001",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "reproduction_authority.json",
+    "mother_pre_fission.json",
+    "daughter_a_immediate.json",
+    "daughter_b_immediate.json",
+    "material_partition_closure.json",
+    "daughter_topology.json",
+    "daughter_local_field_inventory.json",
+    "daughter_asymmetry_spectrum.json",
+    "field_provenance.json",
+    "unstable_mode_overlap.json",
+    "post_fission_evolution.json",
+    "asymmetry_causality.json",
+    "life_history_audit.json",
+    "rotation_equivariance.json",
+    "forbidden_information_audit.json",
+    "m1_preservation.json",
+    "downstream_preservation.json",
+    "restart_boundary.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "scientific_runtime_source_changed": false,
+  "starting_head": "bbbcc7c2bd8e25da69a36902107e7a7420c81ef0"
+}

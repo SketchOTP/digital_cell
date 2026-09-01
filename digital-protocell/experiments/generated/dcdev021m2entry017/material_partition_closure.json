@@ -1,0 +1,23 @@
+{
+  "daughter_bound_membrane_sum": 266.50152811228014,
+  "daughter_structural_mass_sum": 548.4178498142252,
+  "event_partition": {
+    "ok": true,
+    "residual_a": 9.094947017729282e-13,
+    "residual_b": 1.7053025658242404e-13,
+    "residual_c": 4.547473508864641e-13,
+    "residual_f": 4.547473508864641e-13,
+    "residual_l": 0.0,
+    "residual_m": 1.1368683772161603e-13,
+    "residual_n": 4.547473508864641e-13,
+    "residual_r": 0.0,
+    "residual_templates": 0.0,
+    "residual_u_b": 0.0,
+    "residual_u_h": 0.0,
+    "residual_w": 0.0
+  },
+  "exact_accepted_partition_helper": true,
+  "mother_bound_membrane": 266.5015281122803,
+  "mother_structural_mass": 543.9610952068857,
+  "partition_ok": true
+}

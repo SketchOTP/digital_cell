@@ -285,3 +285,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The exact sealed result preserves the observer-only boundary and the classification `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`. Both accepted reference regimes have nonzero unstable spatial modes, but the settled organism's audited local physical fields are uniform or numerical-only, so no lawful existing asymmetry substrate was identified. Architect review remains pending.
 - Affected areas: append-only governance correction and final validation provenance for the additive ENTRY-016 audit/evidence/workflow only; no scientific runtime, M1, actuator, traction, metabolism, uptake, resource, restart, or PR #44 change.
 - Supersedes record: DEC-DCDEV021-ENTRY016-AUTONOMOUS-POLARITY-INITIATION-SUBSTRATE-AUDIT-R2
+
+## DEC-DCDEV021-ENTRY017-POST-FISSION-DAUGHTER-ASYMMETRY-SUBSTRATE-AUDIT-R1
+
+- Date: 2026-09-01
+- Record or decision ID: DEC-DCDEV021-ENTRY017-POST-FISSION-DAUGHTER-ASYMMETRY-SUBSTRATE-AUDIT-R1
+- Status: ACTIVE
+- Decision or event: ENTRY-017 is authorized from exact accepted ENTRY-016 head `bbbcc7c2bd8e25da69a36902107e7a7420c81ef0` as an observer-only replay and audit of physical reproduction/fission.
+- Rationale: ENTRY-016 found no local asymmetry in the artificially settled founder despite unstable polarity modes. ENTRY-017 determines whether accepted D-088 physical birth creates or preserves lawful daughter-local asymmetry without introducing a seed, noise, polarity state, or remapping rule. The current replay reaches fission at step `2326`, with 198 mother sites and 78/122 daughter sites; daughter fields are physically nonuniform and partition closure passes, but direct 24-site polarity comparison is unresolved.
+- Affected areas: additive observer-only ENTRY-017 audit/example, compact evidence, scoped workflow, and append-only governance only; no scientific runtime, M1, polarity, actuator, traction, metabolism, uptake, resource, restart, or PR #44 change.
+- Supersedes record: none

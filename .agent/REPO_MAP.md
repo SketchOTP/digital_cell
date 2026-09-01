@@ -33,6 +33,7 @@
 - `digital-protocell/examples/dcdev021_m2_entry014.rs` — isolated mathematical reimplementation of the published Morpheus M2071 Polar and Traveling-Wave 1-D periodic regimes; it performs no Digital Cell runtime, actuator, resource, or observer-feedback calls.
 - `digital-protocell/examples/dcdev021_m2_entry015.rs` — isolated resource-free assay composing the exact ENTRY-014 24-site polarity equations with the unchanged A-funded actuator through the parameter-free local `u/(u+v)` interface and same-mean/motor-off controls; it does not install production polarity.
 - `digital-protocell/examples/dcdev021_m2_entry016.rs` — observer-only homogeneous-equilibrium/24-site linear-stability and settled-body local-field audit; it does not initialize, couple, or install production polarity.
+- `digital-protocell/examples/dcdev021_m2_entry017.rs` — observer-only replay of the accepted D-088 physical growth/fission path with mother/daughter local-field spectra, conservative partition closure, topology compatibility, provenance, and post-fission persistence; it does not initialize or couple polarity.
 
 ## Interfaces and contracts
 
@@ -71,6 +72,7 @@
 - `digital-protocell/experiments/generated/dcdev021m2entry014/` — compact ENTRY-014 external-provenance, equation, conservation, reference-reproduction, exact-24-site-transfer, compatibility, preservation, and qualification evidence; dense numerical trajectories remain externalized.
 - `digital-protocell/experiments/generated/dcdev021m2entry015/` — compact ENTRY-015 polarity-to-actuator interface, equal-drive controls, translation/reorientation, energetic closure, semantic boundary, preservation, and qualification evidence; dense trajectories remain externalized.
 - `digital-protocell/experiments/generated/dcdev021m2entry016/` — compact ENTRY-016 homogeneous equilibria, discrete-mode stability, homogeneous replay, settled local-field inventory, asymmetry provenance, mapping boundary, preservation, and qualification evidence.
+- `digital-protocell/experiments/generated/dcdev021m2entry017/` — compact ENTRY-017 mother/daughter physical-state snapshots, local asymmetry spectra, partition closure, topology boundary, life-history provenance, rotation, persistence, preservation, and qualification evidence.
 - `digital-protocell/experiments/generated/dcdev001/` — DC-DEV-001A machine-readable decision artifacts.
 - `digital-protocell/experiments/generated/dcdev006/` — DC-DEV-006 local spatial-contact evidence artifacts.
 - `digital-protocell/experiments/generated/dcdev009/` — DC-DEV-009 force, displacement, coupling, and audit evidence artifacts.

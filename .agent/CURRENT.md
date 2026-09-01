@@ -3,23 +3,23 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-01T07:13:05-04:00`
+- Last updated: `2026-09-01T07:59:29-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260901-dcdev021-m2-entry016-autonomous-polarity-initiation-audit`
-- External directive ID: `DC-DEV-021-M2-ENTRY-016-AUTONOMOUS-POLARITY-INITIATION-SUBSTRATE-AUDIT-001`
-- Objective: `Determine whether accepted 24-site excitable polarity has an intrinsically unstable spatial mode and whether the exact settled Digital Cell body contains a lawful, rotation-equivariant local physical asymmetry that could seed it, without implementing a coupling.`
+- Local directive ID: `D-20260901-dcdev021-m2-entry017-post-fission-daughter-asymmetry-audit`
+- External directive ID: `DC-DEV-021-M2-ENTRY-017-POST-FISSION-DAUGHTER-ASYMMETRY-SUBSTRATE-AUDIT-001`
+- Objective: `Determine whether the accepted physical fission pathway produces lawful daughter-local asymmetry that is directly compatible with the accepted 24-site polarity substrate, without initializing or coupling polarity.`
 - Current status: `VALIDATING`
-- Acceptance: `ENTRY-015 is Architect accepted as M2_EXCITABLE_POLARITY_ACTUATOR_INTERFACE_QUALIFIED. ENTRY-016 local audit classifies M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT; final sealed-head Linux validation passed on the result head and the result remains pending Architect review.`
+- Acceptance: `ENTRY-016 is Architect accepted as M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT. ENTRY-017 local audit is validating the exact D-088 physical fission replay; current local result is M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED because the nonuniform daughters are 78/122 sites rather than directly compatible 24-site rings.`
 - Current phase: `M2 target-free locomotion, metabolically live in-contact exploitation, excitable-polarity reference transfer, and assay-local polarity-to-effector feasibility are qualified; autonomous polarity initiation and separated encounter remain unestablished.`
-- Expected or actual touched areas: `isolated ENTRY-016 mathematical stability/asymmetry audit, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, and M1 sources remain unchanged`
-- Immediate next action: `Update Notion with the final sealed-head validation and await Architect review; do not implement polarity initialization, coupling, or successor work.`
+- Expected or actual touched areas: `isolated ENTRY-017 reproduction/asymmetry audit, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, polarity, actuator, traction, and M1 sources remain unchanged`
+- Immediate next action: `Complete exact-head Linux validation and append the ENTRY-017 result to Notion; do not initialize polarity, remap daughter topology, or start successor work.`
 
 ## Temporary task-relevant facts
 
 - M0 is closed; M1 is formally closed and frozen at `fb77f472b1519a9e0f713833efba5b1d403f4723`.
-- Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-011 is Architect accepted as metabolically live in-contact composition; ENTRY-016 is the only authorized active audit, is exact-head CI validated, and is awaiting Architect review.
+- Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-011 is Architect accepted as metabolically live in-contact composition; ENTRY-016 is Architect accepted as `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`; ENTRY-017 is the only authorized active audit.
 - PR #44 is the immutable M1 provenance stack and must remain open, draft, unmerged, and untouched.
 - The clean baseline is derived from `1e242f28152797b512e25cd56c7b718e45d6ca97`; accepted M1 evidence remains on Atlas.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.

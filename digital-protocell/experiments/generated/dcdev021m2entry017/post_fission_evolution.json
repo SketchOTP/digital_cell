@@ -1,0 +1,800 @@
+{
+  "asymmetry_persistence": "reported at first accepted step and terminal historical checkpoint",
+  "daughter_a": {
+    "first_accepted_physical_step": {
+      "chemistry": {
+        "a": 1.8752546026057988,
+        "c": 1.204380411061429,
+        "f": 0.6825528009201883,
+        "n": 0.6825528009201883,
+        "r": 0.0,
+        "w": 0.9229324591774399
+      },
+      "geometry": {
+        "area": 1133.0166801802632,
+        "centroid": [
+          25.613553887101318,
+          40.741877956039666
+        ],
+        "perimeter": 196.08368035948797
+      },
+      "label": "first_accepted_post_fission_step",
+      "material": {
+        "bound_membrane": 106.73307523122558,
+        "structural_mass": 212.65513291258262,
+        "young_mass": 0.0
+      },
+      "raw_vertices_and_ring_values": "externalized to Atlas",
+      "ring_local_fields": [
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.12690670202095122,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": -3.1309250154301034,
+          "field": "edge_length",
+          "maximum": 3.477838656647419,
+          "mean": 2.4820719032846577,
+          "minimum": 1.7935067477500402,
+          "modes": null,
+          "provenance": "polygon geometry",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.1071616105115975
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.15747119056658648,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": -3.016982300769175,
+          "field": "rest_length",
+          "maximum": 3.7435790967716835,
+          "mean": 2.6918371254757294,
+          "minimum": 1.1164609098312699,
+          "modes": null,
+          "provenance": "existing structural material via rest_length",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.18198867266836533
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.025508504950875636,
+          "dominant_nonzero_mode": 2,
+          "dominant_nonzero_phase": -0.14673113142192926,
+          "field": "strain",
+          "maximum": 0.71455427372394,
+          "mean": -0.06579459802400676,
+          "minimum": -0.13080247086004718,
+          "modes": null,
+          "provenance": "MaterialMesh::strain",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.01621857791068759
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.15747119056658648,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": -3.016982300769175,
+          "field": "structural_material_m",
+          "maximum": 3.7435790967716835,
+          "mean": 2.6918371254757294,
+          "minimum": 1.1164609098312699,
+          "modes": null,
+          "provenance": "edge structural material",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.18198867266836533
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.02818500686575651,
+          "dominant_nonzero_mode": 1,
+          "dominant_nonzero_phase": 0.11930098684518221,
+          "field": "young_structural_material_m_young",
+          "maximum": 1.1141886518348316,
+          "mean": 0.02820730764138814,
+          "minimum": 0.0,
+          "modes": null,
+          "provenance": "existing V4 edge field",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.030632609868472674
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.15747119056658648,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": -3.016982300769175,
+          "field": "mature_structural_material",
+          "maximum": 3.7435790967716835,
+          "mean": 2.6918371254757294,
+          "minimum": 1.1164609098312699,
+          "modes": null,
+          "provenance": "m - m_young",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.18198867266836533
+        },
+        {
+          "classification": "NUMERICAL_ONLY",
+          "dominant_nonzero_magnitude": 0.0,
+          "dominant_nonzero_mode": 39,
+          "dominant_nonzero_phase": 0.0,
+          "field": "young_mature_fraction",
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "modes": null,
+          "provenance": "existing V4 edge fields",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.0
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.08827810482042897,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": -2.844034076644473,
+          "field": "bound_membrane_b",
+          "maximum": 1.8612358433065255,
+          "mean": 1.351051585205387,
+          "minimum": 0.001973476362822474,
+          "modes": null,
+          "provenance": "edge bound membrane",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.0763006771523126
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.018958269080553845,
+          "dominant_nonzero_mode": 1,
+          "dominant_nonzero_phase": -2.390770544499864,
+          "field": "bound_membrane_per_edge_length",
+          "maximum": 0.5996630119956652,
+          "mean": 0.5416844040763802,
+          "minimum": 0.0010309489721785625,
+          "modes": null,
+          "provenance": "bound membrane / edge length",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.008145178221484799
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.06202022728250487,
+          "dominant_nonzero_mode": 3,
+          "dominant_nonzero_phase": 1.136258500252392,
+          "field": "local_turning_angle",
+          "maximum": 1.5667069090817787,
+          "mean": 0.31201442960968934,
+          "minimum": 0.0,
+          "modes": null,
+          "provenance": "polygon geometry",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.06058811903756674
+        },
+        {
+          "classification": "NUMERICAL_ONLY",
+          "dominant_nonzero_magnitude": 0.0,
+          "dominant_nonzero_mode": 39,
+          "dominant_nonzero_phase": 0.0,
+          "field": "rupture_state",
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "modes": null,
+          "provenance": "existing edge rupture state",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.0
+        }
+      ],
+      "topology": {
+        "closed_intact": true,
+        "site_count": 79
+      }
+    },
+    "first_asymmetry_fields": [
+      "edge_length",
+      "rest_length",
+      "strain",
+      "structural_material_m",
+      "young_structural_material_m_young",
+      "mature_structural_material",
+      "bound_membrane_b",
+      "bound_membrane_per_edge_length",
+      "local_turning_angle"
+    ],
+    "fission_disabled_for_observation": true,
+    "growth_enabled": false,
+    "horizon_steps": 3000,
+    "terminal_asymmetry_fields": [
+      "edge_length",
+      "rest_length",
+      "strain",
+      "structural_material_m",
+      "young_structural_material_m_young",
+      "mature_structural_material",
+      "bound_membrane_b",
+      "bound_membrane_per_edge_length",
+      "local_turning_angle"
+    ],
+    "terminal_historical_checkpoint": {
+      "chemistry": {
+        "a": 1.380844459322025,
+        "c": 2.0421762787844373,
+        "f": 0.32787499485977534,
+        "n": 0.32787499485977534,
+        "r": 0.0,
+        "w": 1.0250404316036454
+      },
+      "geometry": {
+        "area": 15394.624590286181,
+        "centroid": [
+          23.92682763023998,
+          40.218625890824285
+        ],
+        "perimeter": 757.6390328473036
+      },
+      "label": "historical_d088_3000_step_checkpoint",
+      "material": {
+        "bound_membrane": 756.4527318313341,
+        "structural_mass": 677.8292682556728,
+        "young_mass": 0.0
+      },
+      "raw_vertices_and_ring_values": "externalized to Atlas",
+      "ring_local_fields": [
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.13334697724718436,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": 2.651847757813778,
+          "field": "edge_length",
+          "maximum": 3.4498816696828016,
+          "mean": 2.594654222079807,
+          "minimum": 1.2863803691820708,
+          "modes": null,
+          "provenance": "polygon geometry",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.1315398795998467
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.10364203019952567,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": 2.615161078657549,
+          "field": "rest_length",
+          "maximum": 3.28514658921279,
+          "mean": 2.3213331104646326,
+          "minimum": 1.3422062471491074,
+          "modes": null,
+          "provenance": "existing structural material via rest_length",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.09623997529473671
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.010188037867694363,
+          "dominant_nonzero_mode": 2,
+          "dominant_nonzero_phase": -2.273094022454116,
+          "field": "strain",
+          "maximum": 0.1520648287623434,
+          "mean": 0.11684843737817345,
+          "minimum": -0.04543063263287804,
+          "modes": null,
+          "provenance": "MaterialMesh::strain",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.0008976161221523613
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.10364203019952567,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": 2.615161078657549,
+          "field": "structural_material_m",
+          "maximum": 3.28514658921279,
+          "mean": 2.3213331104646326,
+          "minimum": 1.3422062471491074,
+          "modes": null,
+          "provenance": "edge structural material",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.09623997529473671
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.007630987444191969,
+          "dominant_nonzero_mode": 1,
+          "dominant_nonzero_phase": 0.0322766368519505,
+          "field": "young_structural_material_m_young",
+          "maximum": 1.1141886518348316,
+          "mean": 0.007631429122156381,
+          "minimum": 0.0,
+          "modes": null,
+          "provenance": "existing V4 edge field",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.008444613014741994
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.10364203019952567,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": 2.615161078657549,
+          "field": "mature_structural_material",
+          "maximum": 3.28514658921279,
+          "mean": 2.3213331104646326,
+          "minimum": 1.3422062471491074,
+          "modes": null,
+          "provenance": "m - m_young",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.09623997529473671
+        },
+        {
+          "classification": "NUMERICAL_ONLY",
+          "dominant_nonzero_magnitude": 0.0,
+          "dominant_nonzero_mode": 146,
+          "dominant_nonzero_phase": 0.0,
+          "field": "young_mature_fraction",
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "modes": null,
+          "provenance": "existing V4 edge fields",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.0
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.13303766736339978,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": 2.6519375841740738,
+          "field": "bound_membrane_b",
+          "maximum": 3.4440652527536018,
+          "mean": 2.5905915473675822,
+          "minimum": 1.2848768167783695,
+          "modes": null,
+          "provenance": "edge bound membrane",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.13097698115980264
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.000039716856163608566,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": -0.5316322944913077,
+          "field": "bound_membrane_per_edge_length",
+          "maximum": 0.9988311758794506,
+          "mean": 0.9984461263796093,
+          "minimum": 0.9981306512524694,
+          "modes": null,
+          "provenance": "bound membrane / edge length",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 1.3863098746142353e-8
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.018071643295151957,
+          "dominant_nonzero_mode": 2,
+          "dominant_nonzero_phase": -0.4536714117904806,
+          "field": "local_turning_angle",
+          "maximum": 0.7401557931684966,
+          "mean": 0.08607103160519974,
+          "minimum": 0.027912554124366943,
+          "modes": null,
+          "provenance": "polygon geometry",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.006553688663407868
+        },
+        {
+          "classification": "NUMERICAL_ONLY",
+          "dominant_nonzero_magnitude": 0.0,
+          "dominant_nonzero_mode": 146,
+          "dominant_nonzero_phase": 0.0,
+          "field": "rupture_state",
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "modes": null,
+          "provenance": "existing edge rupture state",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.0
+        }
+      ],
+      "topology": {
+        "closed_intact": true,
+        "site_count": 292
+      }
+    }
+  },
+  "daughter_b": {
+    "first_accepted_physical_step": {
+      "chemistry": {
+        "a": 1.8753210951177026,
+        "c": 1.2044000153530459,
+        "f": 0.6821920834136789,
+        "n": 0.6821920834136789,
+        "r": 0.0,
+        "w": 0.9235026902959516
+      },
+      "geometry": {
+        "area": 2222.0916944314026,
+        "centroid": [
+          49.97809187291438,
+          40.21495814519476
+        ],
+        "perimeter": 306.62095836949163
+      },
+      "label": "first_accepted_post_fission_step",
+      "material": {
+        "bound_membrane": 159.88738297648868,
+        "structural_mass": 335.7881560999062,
+        "young_mass": 0.0
+      },
+      "raw_vertices_and_ring_values": "externalized to Atlas",
+      "ring_local_fields": [
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.11337247861912868,
+          "dominant_nonzero_mode": 1,
+          "dominant_nonzero_phase": -0.20076862793172556,
+          "field": "edge_length",
+          "maximum": 3.3484789162739985,
+          "mean": 2.4928533200771676,
+          "minimum": 1.7646226584680678,
+          "modes": null,
+          "provenance": "polygon geometry",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.12117375910917066
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.14356343418642573,
+          "dominant_nonzero_mode": 5,
+          "dominant_nonzero_phase": 2.4117081716315956,
+          "field": "rest_length",
+          "maximum": 3.640130409184431,
+          "mean": 2.7299850089423265,
+          "minimum": 1.1164609728616535,
+          "modes": null,
+          "provenance": "existing structural material via rest_length",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.18561599351144625
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.019636333726947792,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": 0.6980615064864812,
+          "field": "strain",
+          "maximum": 0.7140747523833476,
+          "mean": -0.07844175889408915,
+          "minimum": -0.1559734864411795,
+          "modes": null,
+          "provenance": "MaterialMesh::strain",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.011004605890786086
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.14356343418642573,
+          "dominant_nonzero_mode": 5,
+          "dominant_nonzero_phase": 2.4117081716315956,
+          "field": "structural_material_m",
+          "maximum": 3.640130409184431,
+          "mean": 2.7299850089423265,
+          "minimum": 1.1164609728616535,
+          "modes": null,
+          "provenance": "edge structural material",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.18561599351144625
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.01811097957231681,
+          "dominant_nonzero_mode": 1,
+          "dominant_nonzero_phase": 0.07662421106316565,
+          "field": "young_structural_material_m_young",
+          "maximum": 1.1141886518348316,
+          "mean": 0.01811688864772084,
+          "minimum": 0.0,
+          "modes": null,
+          "provenance": "existing V4 edge field",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.019857410083571933
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.14356343418642573,
+          "dominant_nonzero_mode": 5,
+          "dominant_nonzero_phase": 2.4117081716315956,
+          "field": "mature_structural_material",
+          "maximum": 3.640130409184431,
+          "mean": 2.7299850089423265,
+          "minimum": 1.1164609728616535,
+          "modes": null,
+          "provenance": "m - m_young",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.18561599351144625
+        },
+        {
+          "classification": "NUMERICAL_ONLY",
+          "dominant_nonzero_magnitude": 0.0,
+          "dominant_nonzero_mode": 61,
+          "dominant_nonzero_phase": 0.0,
+          "field": "young_mature_fraction",
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "modes": null,
+          "provenance": "existing V4 edge fields",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.0
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.11604229893675967,
+          "dominant_nonzero_mode": 1,
+          "dominant_nonzero_phase": 0.7553459214784637,
+          "field": "bound_membrane_b",
+          "maximum": 2.016866545390095,
+          "mean": 1.2998974225730786,
+          "minimum": 0.0022042842907986694,
+          "modes": null,
+          "provenance": "edge bound membrane",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.09379235201684132
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.037394034548311125,
+          "dominant_nonzero_mode": 1,
+          "dominant_nonzero_phase": 1.3254032326686556,
+          "field": "bound_membrane_per_edge_length",
+          "maximum": 0.6958560828631342,
+          "mean": 0.5186685771460942,
+          "minimum": 0.0011518456888999172,
+          "modes": null,
+          "provenance": "bound membrane / edge length",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.009128759237518802
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.04078475562226567,
+          "dominant_nonzero_mode": 1,
+          "dominant_nonzero_phase": 1.2012203680705653,
+          "field": "local_turning_angle",
+          "maximum": 2.037242840692732,
+          "mean": 0.2926914212764821,
+          "minimum": 1.4901161193847656e-8,
+          "modes": null,
+          "provenance": "polygon geometry",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.05485793636586052
+        },
+        {
+          "classification": "NUMERICAL_ONLY",
+          "dominant_nonzero_magnitude": 0.0,
+          "dominant_nonzero_mode": 61,
+          "dominant_nonzero_phase": 0.0,
+          "field": "rupture_state",
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "modes": null,
+          "provenance": "existing edge rupture state",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.0
+        }
+      ],
+      "topology": {
+        "closed_intact": true,
+        "site_count": 123
+      }
+    },
+    "first_asymmetry_fields": [
+      "edge_length",
+      "rest_length",
+      "strain",
+      "structural_material_m",
+      "young_structural_material_m_young",
+      "mature_structural_material",
+      "bound_membrane_b",
+      "bound_membrane_per_edge_length",
+      "local_turning_angle"
+    ],
+    "fission_disabled_for_observation": true,
+    "growth_enabled": false,
+    "horizon_steps": 3000,
+    "terminal_asymmetry_fields": [
+      "edge_length",
+      "rest_length",
+      "strain",
+      "structural_material_m",
+      "young_structural_material_m_young",
+      "mature_structural_material",
+      "bound_membrane_b",
+      "bound_membrane_per_edge_length",
+      "local_turning_angle"
+    ],
+    "terminal_historical_checkpoint": {
+      "chemistry": {
+        "a": 1.3284470094930385,
+        "c": 1.9982986751347056,
+        "f": 0.32692901843457317,
+        "n": 0.32692901843457317,
+        "r": 0.0,
+        "w": 1.0162057954091288
+      },
+      "geometry": {
+        "area": 20963.001820730307,
+        "centroid": [
+          50.46102269841724,
+          38.8617720630147
+        ],
+        "perimeter": 1040.4379492314538
+      },
+      "label": "historical_d088_3000_step_checkpoint",
+      "material": {
+        "bound_membrane": 1038.9179578861538,
+        "structural_mass": 938.4198784282557,
+        "young_mass": 0.0
+      },
+      "raw_vertices_and_ring_values": "externalized to Atlas",
+      "ring_local_fields": [
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.09615842727933335,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": 2.5503854812436817,
+          "field": "edge_length",
+          "maximum": 3.495236602398727,
+          "mean": 2.4423426038297036,
+          "minimum": 1.2313338743602038,
+          "modes": null,
+          "provenance": "polygon geometry",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.13552614714531946
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.07468680924612688,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": 2.505108995656353,
+          "field": "rest_length",
+          "maximum": 3.346099408069915,
+          "mean": 2.2028635643855767,
+          "minimum": 1.2876381708818025,
+          "modes": null,
+          "provenance": "existing structural material via rest_length",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.10918767960372698
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.008076447909445342,
+          "dominant_nonzero_mode": 3,
+          "dominant_nonzero_phase": -3.0497706071892012,
+          "field": "strain",
+          "maximum": 0.14448337966439778,
+          "mean": 0.10865763404850899,
+          "minimum": -0.04372679980668819,
+          "modes": null,
+          "provenance": "MaterialMesh::strain",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.0005889468796277774
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.07468680924612688,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": 2.505108995656353,
+          "field": "structural_material_m",
+          "maximum": 3.346099408069915,
+          "mean": 2.2028635643855767,
+          "minimum": 1.2876381708818025,
+          "modes": null,
+          "provenance": "edge structural material",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.10918767960372698
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.005230790395767895,
+          "dominant_nonzero_mode": 1,
+          "dominant_nonzero_phase": 0.022123891926689312,
+          "field": "young_structural_material_m_young",
+          "maximum": 1.1141886518348316,
+          "mean": 0.005230932637722214,
+          "minimum": 0.0,
+          "modes": null,
+          "provenance": "existing V4 edge field",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.005800883127202145
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.07468680924612688,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": 2.505108995656353,
+          "field": "mature_structural_material",
+          "maximum": 3.346099408069915,
+          "mean": 2.2028635643855767,
+          "minimum": 1.2876381708818025,
+          "modes": null,
+          "provenance": "m - m_young",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.10918767960372698
+        },
+        {
+          "classification": "NUMERICAL_ONLY",
+          "dominant_nonzero_magnitude": 0.0,
+          "dominant_nonzero_mode": 213,
+          "dominant_nonzero_phase": 0.0,
+          "field": "young_mature_fraction",
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "modes": null,
+          "provenance": "existing V4 edge fields",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.0
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.09597182124787777,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": 2.5502427114768675,
+          "field": "bound_membrane_b",
+          "maximum": 3.4906520289285146,
+          "mean": 2.43877454902853,
+          "minimum": 1.2299056272583242,
+          "modes": null,
+          "provenance": "edge bound membrane",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.13510693911302227
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.000019660378843741125,
+          "dominant_nonzero_mode": 4,
+          "dominant_nonzero_phase": -0.2409593775525143,
+          "field": "bound_membrane_per_edge_length",
+          "maximum": 0.9988419336598494,
+          "mean": 0.9985418154314346,
+          "minimum": 0.9984630976135865,
+          "modes": null,
+          "provenance": "bound membrane / edge length",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 3.342725409550696e-9
+        },
+        {
+          "classification": "PHYSICALLY_NONUNIFORM",
+          "dominant_nonzero_magnitude": 0.02006585742687677,
+          "dominant_nonzero_mode": 1,
+          "dominant_nonzero_phase": 0.9019680107119474,
+          "field": "local_turning_angle",
+          "maximum": 0.6788130671191539,
+          "mean": 0.08849556770675479,
+          "minimum": 0.03371644891249309,
+          "modes": null,
+          "provenance": "polygon geometry",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.006101768743372022
+        },
+        {
+          "classification": "NUMERICAL_ONLY",
+          "dominant_nonzero_magnitude": 0.0,
+          "dominant_nonzero_mode": 213,
+          "dominant_nonzero_phase": 0.0,
+          "field": "rupture_state",
+          "maximum": 0.0,
+          "mean": 0.0,
+          "minimum": 0.0,
+          "modes": null,
+          "provenance": "existing edge rupture state",
+          "raw_ring_values": "externalized to Atlas; not retained in compact evidence",
+          "variance": 0.0
+        }
+      ],
+      "topology": {
+        "closed_intact": true,
+        "site_count": 426
+      }
+    }
+  },
+  "historical_observation_horizon_reused": true,
+  "horizon": "D-088 accepted daughter viability horizon: 3000 steps",
+  "immediate_state_captured": true
+}

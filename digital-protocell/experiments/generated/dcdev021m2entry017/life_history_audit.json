@@ -1,0 +1,12 @@
+{
+  "birth_created_new_asymmetry": false,
+  "birth_generated_asymmetry": false,
+  "birth_generated_geometry": true,
+  "inherited_material_history": true,
+  "inherited_template_variation": false,
+  "mother_history_used": true,
+  "mother_pre_fission_asymmetry_present": true,
+  "partitioned_existing_asymmetry": true,
+  "phase3_individuality_claim": false,
+  "post_birth_relaxation": true
+}

@@ -1,0 +1,10 @@
+{
+  "daughter_a_sites": 78,
+  "daughter_b_sites": 122,
+  "directly_compatible_with_24_site_polarity": false,
+  "mapping": "UNRESOLVED_NO_RESAMPLING",
+  "pinch": [
+    44,
+    121
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "allowed": [
+    "mother history",
+    "physical scission geometry",
+    "material partition",
+    "maturation",
+    "remeshing",
+    "post-fission mechanics"
+  ],
+  "daughters": "existing try_local_fission extraction and partition only",
+  "excluded": [
+    "array index",
+    "hard-coded cleavage site",
+    "world axis",
+    "daughter label",
+    "observer instrumentation",
+    "synthetic perturbation after fission"
+  ],
+  "fixture_perturbation": "the pre-fission D-088 accepted campaign setup is reproduced; no post-fission perturbation was added",
+  "mother": "accepted D-088 physical campaign history"
+}

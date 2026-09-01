@@ -1,0 +1,10 @@
+{
+  "daughter_topology_compatible": false,
+  "direct_overlap": "TOPOLOGY_UNRESOLVED",
+  "entry016_polar_unstable_mode": 2,
+  "entry016_traveling_unstable_modes": [
+    1,
+    2
+  ],
+  "overlap_pass": false
+}

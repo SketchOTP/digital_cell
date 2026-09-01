@@ -486,3 +486,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260831-dcdev021-m2-entry015-polarity-actuator-interface
 - Status at issuance: ISSUED
+
+## D-20260901-dcdev021-m2-entry017-post-fission-daughter-asymmetry-audit
+
+- Issued: `2026-09-01T07:59:29-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-017-POST-FISSION-DAUGHTER-ASYMMETRY-SUBSTRATE-AUDIT-001`
+- Objective: Determine whether the already-qualified physical growth/fission pathway naturally produces daughter-local physical asymmetry compatible with the accepted 24-site excitable-polarity substrate.
+- Scope: Observer-only replay of the accepted D-088 `MeshPopulation::step`/`try_local_fission` path, mother and both daughter snapshots, local-field spectra, partition closure, topology and unstable-mode boundary, life-history provenance, bounded post-fission checkpoints, rotation, preservation, governance, and exact-head Linux validation.
+- Exclusions: polarity initialization or coupling, new randomness, forced or redesigned division, asymmetric partition tuning, manual topology remapping, resource assays, target/gradient/navigation behavior, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: One preregistered classification among post-fission substrate available, topology mapping unresolved, unstable-mode overlap absent, daughters physically symmetric, reproduction authority unresolved, or invalid after authority, exact physical replay, daughter-state/provenance, topology, closure, rotation, preservation, governance, and exact-head Linux checks.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260901-dcdev021-m2-entry016-autonomous-polarity-initiation-audit
+- Status at issuance: ISSUED

@@ -934,3 +934,19 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: Architect acceptance remains outstanding; no polarity initialization or resource encounter has been implemented or tested.
 - Blockers: Architect review; do not start successor work.
 - Follow-up directive: none
+
+## D-20260901-dcdev021-m2-entry017-post-fission-daughter-asymmetry-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY017-POST-FISSION-DAUGHTER-ASYMMETRY-AUDIT-LOCAL`
+- Supersedes outcome: none
+- Closed: `2026-09-01T07:59:29-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The authorized observer-only ENTRY-017 audit replays the accepted D-088 physical growth/fission path from `bbbcc7c2bd8e25da69a36902107e7a7420c81ef0`. Fission occurs at replay step `2326`, producing a 198-site mother and 78/122-site daughters. Multiple lawful daughter-local geometry, strain, structural-material, maturation, membrane, and curvature fields are physically nonuniform, and the existing partition report passes. Because the daughters are not directly compatible with the accepted 24-site polarity ring, the local classification is `M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED`.
+- Changed areas: additive observer-only ENTRY-017 assay/example, compact evidence under `digital-protocell/experiments/generated/dcdev021m2entry017/`, scoped workflow, and append-only governance only; no scientific runtime or PR #44 change. The reproduced D-088 mother was already physically nonuniform before fission, so the assay supports preservation/partition of existing mother history, not de novo birth-generated asymmetry; no Phase-3 individuality claim is made.
+- Validation:
+  - Exact starting head, accepted physical fission authority, conservative partition closure, daughter snapshots, topology boundary, forbidden-information audit, rotation, and local replay - PASSED
+  - Exact-head Linux CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: exact-head remote validation may identify workflow or preservation defects; no polarity state or resource encounter was implemented or tested, and no daughter topology remapping is authorized.
+- Blockers: exact-head Linux CI and Architect review; do not start successor work.
+- Follow-up directive: none

@@ -1,0 +1,19 @@
+{
+  "daughter_a_snapshot": "daughter_a_immediate.json",
+  "daughter_b_snapshot": "daughter_b_immediate.json",
+  "fields": [
+    "edge_length",
+    "rest_length",
+    "strain",
+    "structural_material_m",
+    "young_structural_material_m_young",
+    "mature_structural_material",
+    "young_mature_fraction",
+    "bound_membrane_b",
+    "bound_membrane_per_edge_length",
+    "local_turning_angle",
+    "rupture_state"
+  ],
+  "mother_snapshot": "mother_pre_fission.json",
+  "statistics_and_supported_modes": "retained in the snapshots; raw ring values externalized to Atlas"
+}

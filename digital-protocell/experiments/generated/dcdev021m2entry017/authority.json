@@ -1,0 +1,28 @@
+{
+  "accepted_prior": {
+    "d088": "D088_CAUSAL_GROWTH_FISSION_INHERITANCE_QUALIFIED",
+    "entry005_011": "preserved accepted results",
+    "entry015": "M2_EXCITABLE_POLARITY_ACTUATOR_INTERFACE_QUALIFIED",
+    "entry016": "M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT"
+  },
+  "directive": "DC-DEV-021-M2-ENTRY-017-POST-FISSION-DAUGHTER-ASYMMETRY-SUBSTRATE-AUDIT-001",
+  "division_forced_by_assay": false,
+  "new_randomness": false,
+  "polarity_created": false,
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "state": "OPEN"
+  },
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "resource_assay": false,
+  "scientific_runtime_source_changed": false,
+  "source_hashes": {
+    "material_mesh.rs": "3490cee8eedbe1d6",
+    "mesh_fission.rs": "dcb859522534cf03",
+    "mesh_growth.rs": "f466c37daea1186c",
+    "mesh_population.rs": "6c893524be8d2c3e"
+  },
+  "starting_head": "bbbcc7c2bd8e25da69a36902107e7a7420c81ef0"
+}

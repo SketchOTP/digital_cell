@@ -1,0 +1,36 @@
+{
+  "classification_tolerance": 1e-12,
+  "daughter_a_physically_nonuniform": [
+    "edge_length",
+    "rest_length",
+    "strain",
+    "structural_material_m",
+    "young_structural_material_m_young",
+    "mature_structural_material",
+    "bound_membrane_b",
+    "bound_membrane_per_edge_length",
+    "local_turning_angle"
+  ],
+  "daughter_b_physically_nonuniform": [
+    "edge_length",
+    "rest_length",
+    "strain",
+    "structural_material_m",
+    "young_structural_material_m_young",
+    "mature_structural_material",
+    "bound_membrane_b",
+    "bound_membrane_per_edge_length",
+    "local_turning_angle"
+  ],
+  "mother_physically_nonuniform": [
+    "edge_length",
+    "rest_length",
+    "strain",
+    "structural_material_m",
+    "mature_structural_material",
+    "bound_membrane_b",
+    "bound_membrane_per_edge_length",
+    "local_turning_angle"
+  ],
+  "numerical_only_tolerance": 2.220446049250313e-14
+}

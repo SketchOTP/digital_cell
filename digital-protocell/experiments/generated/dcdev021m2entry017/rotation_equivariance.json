@@ -1,0 +1,14 @@
+{
+  "maximum_local_field_delta": "raw local values externalized; rotation judged by material-local topology, field classifications, and partition equivalence",
+  "pass": true,
+  "primary_daughter_sites": [
+    78,
+    122
+  ],
+  "rotated_daughter_sites": [
+    78,
+    122
+  ],
+  "rotation": "pi radians applied to complete initial condition before identical accepted path",
+  "spectral_amplitude_invariance": "checked by ring-local reports when directly comparable"
+}
