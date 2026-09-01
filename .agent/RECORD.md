@@ -295,3 +295,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: ENTRY-016 found no local asymmetry in the artificially settled founder despite unstable polarity modes. ENTRY-017 determines whether accepted D-088 physical birth creates or preserves lawful daughter-local asymmetry without introducing a seed, noise, polarity state, or remapping rule. The current replay reaches fission at step `2326`, with 198 mother sites and 78/122 daughter sites; daughter fields are physically nonuniform and partition closure passes, but direct 24-site polarity comparison is unresolved.
 - Affected areas: additive observer-only ENTRY-017 audit/example, compact evidence, scoped workflow, and append-only governance only; no scientific runtime, M1, polarity, actuator, traction, metabolism, uptake, resource, restart, or PR #44 change.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY017-POST-FISSION-DAUGHTER-ASYMMETRY-SUBSTRATE-AUDIT-R2
+
+- Date: 2026-09-01
+- Record or decision ID: DEC-DCDEV021-ENTRY017-POST-FISSION-DAUGHTER-ASYMMETRY-SUBSTRATE-AUDIT-R2
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33505752560` passed on result head `d12c5ba1f6b23c412296e7c4354e1c929c0fd92b`; the uploaded artifact and independently downloaded ZIP both hash to `sha256:904dbbf76b470a0c16183828ca5aefbab0e9a641adea3e99f245145b059eba86`.
+- Rationale: The observer-only ENTRY-017 replay uses the accepted D-088 physical fission authority without forcing division or changing scientific runtime sources. Fission occurs at step `2326`, producing a 198-site mother and 78/122-site daughters. Lawful daughter-local geometry, strain, structural-material, maturation, membrane, and curvature fields are physically nonuniform, partition closure and rotation pass, and the result remains `M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED` because direct 24-site polarity mapping is not available. The mother was already nonuniform before fission, so the evidence supports preservation/partition of existing life-history asymmetry rather than de novo birth-generated asymmetry. Architect review remains pending.
+- Affected areas: exact CI and artifact provenance for additive observer-only ENTRY-017 assay/evidence/workflow/governance; no scientific runtime, M1, polarity, actuator, traction, metabolism, uptake, resource, restart, or PR #44 change.
+- Supersedes record: DEC-DCDEV021-ENTRY017-POST-FISSION-DAUGHTER-ASYMMETRY-SUBSTRATE-AUDIT-R1

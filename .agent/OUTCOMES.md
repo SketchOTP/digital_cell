@@ -950,3 +950,20 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: exact-head remote validation may identify workflow or preservation defects; no polarity state or resource encounter was implemented or tested, and no daughter topology remapping is authorized.
 - Blockers: exact-head Linux CI and Architect review; do not start successor work.
 - Follow-up directive: none
+
+## D-20260901-dcdev021-m2-entry017-post-fission-daughter-asymmetry-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY017-POST-FISSION-DAUGHTER-ASYMMETRY-AUDIT-R2`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY017-POST-FISSION-DAUGHTER-ASYMMETRY-AUDIT-LOCAL`
+- Closed: `2026-09-01T08:16:59-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Exact-head Linux workflow `33505752560` passed on result head `d12c5ba1f6b23c412296e7c4354e1c929c0fd92b`, and the uploaded artifact plus independently downloaded ZIP both hash to `sha256:904dbbf76b470a0c16183828ca5aefbab0e9a641adea3e99f245145b059eba86`. The accepted D-088 physical fission replay reaches separation at step `2326`, with a 198-site mother and 78/122-site daughters. Lawful daughter-local geometry, strain, structural-material, maturation, membrane, and curvature fields are physically nonuniform; partition closure and rotation pass. Because daughter topology is not directly compatible with the accepted 24-site polarity ring, the classification remains `M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED`. The mother was already nonuniform before fission, so the result supports preservation/partition of existing life-history asymmetry rather than de novo birth-generated asymmetry; no Phase-3 individuality claim is made.
+- Changed areas: additive observer-only ENTRY-017 assay/example, compact evidence under `digital-protocell/experiments/generated/dcdev021m2entry017/`, scoped workflow, and append-only governance only; no scientific runtime, M1, polarity, actuator, traction, metabolism, uptake, resource, restart, or PR #44 change.
+- Validation:
+  - Exact starting head, accepted physical fission authority, replay, daughter snapshots, material partition closure, topology boundary, forbidden-information audit, rotation, and local preservation checks - PASSED
+  - Exact-head Linux workflow `33505752560` on `d12c5ba1f6b23c412296e7c4354e1c929c0fd92b` - PASSED
+  - Artifact digest and independent downloaded-archive hash - PASSED
+  - Architect review - PENDING
+- Remaining risks: Architect acceptance remains outstanding; no polarity state, topology remapping, or resource encounter was implemented or tested.
+- Blockers: Architect review; do not start successor work.
+- Follow-up directive: none
