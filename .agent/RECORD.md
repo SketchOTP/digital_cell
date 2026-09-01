@@ -335,3 +335,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: ENTRY-017 established lawful life-history asymmetry and ENTRY-018 established native variable-topology polarity transfer. ENTRY-019 tests whether conservative remesh transport alone supplies a perturbation to an initially homogeneous polarity state that the unchanged accepted Polar/Traveling equations can amplify, without initializing polarity from organism fields or coupling behavior.
 - Affected areas: additive observer-only ENTRY-019 assay/example, compact evidence, scoped workflow, and append-only governance only; no scientific runtime, M1, actuator, traction, metabolism, uptake, resource, fission, remesh, restart, or PR #44 change.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY019-CONSERVATIVE-LIFE-HISTORY-POLARITY-INITIATION-R2
+
+- Date: 2026-09-01
+- Record or decision ID: DEC-DCDEV021-ENTRY019-CONSERVATIVE-LIFE-HISTORY-POLARITY-INITIATION-R2
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33530286463` passed on result head `674b39d9f57e77597b61607a9a03eb1830e55f89`; the independently downloaded artifact ZIP hash is `sha256:02f9a0c414cc1f84216d8ef4d66c50dd68a6e27c08b406b3d6d821ffbf777948`.
+- Rationale: The additive ENTRY-019 audit validates conservative life-history transport and Polar-family amplification in the exact accepted D-088 pre-fission replay, while geometry-frozen and no-dilution controls remain homogeneous. Traveling-family seeding without amplification is preserved as a bounded observation. No production polarity, actuator, resource, or successor behavior was added.
+- Affected areas: final remote-validation provenance for the isolated ENTRY-019 assay/evidence/workflow/governance; no scientific runtime, M1, actuator, traction, metabolism, uptake, resource, restart, or PR #44 change.
+- Supersedes record: DEC-DCDEV021-ENTRY019-CONSERVATIVE-LIFE-HISTORY-POLARITY-INITIATION-R1

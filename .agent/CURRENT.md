@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-01T09:45:00-04:00`
+- Last updated: `2026-09-01T12:20:00-04:00`
 
 ## Active state after adoption
 
@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-021-M2-ENTRY-019-CONSERVATIVE-LIFE-HISTORY-POLARITY-INITIATION-FEASIBILITY-001`
 - Objective: `Determine whether conservative native material-ring transport of initially homogeneous accepted polarity state through the exact D-088 life history creates a lawful perturbation that the unchanged accepted equations can amplify.`
 - Current status: `VALIDATING`
-- Acceptance: `ENTRY-018 is Architect accepted as M2_NATIVE_MATERIAL_RING_POLARITY_TRANSFER_FEASIBLE. ENTRY-019 local validation supports M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED; exact-head Linux validation and Architect acceptance are pending.`
+- Acceptance: `ENTRY-018 is Architect accepted as M2_NATIVE_MATERIAL_RING_POLARITY_TRANSFER_FEASIBLE. ENTRY-019 local validation and exact-head Linux validation support M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED; Architect acceptance is pending.`
 - Current phase: `M2 target-free locomotion, metabolically live in-contact exploitation, excitable-polarity transfer/interface, native material-ring transfer, and life-history perturbation/amplification audit are in scope; production polarity, autonomous initiation, and separated encounter remain unestablished.`
 - Expected or actual touched areas: `isolated ENTRY-019 observer assay, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, polarity, actuator, traction, fission, remesh, and M1 sources remain unchanged`
-- Immediate next action: `Run exact-head Linux ENTRY-019 validation, independently hash the uploaded artifact, then await Architect review; do not initialize production polarity, couple an actuator, run a resource assay, or start successor work.`
+- Immediate next action: `Await Architect review; do not initialize production polarity, couple an actuator, run a resource assay, or start successor work.`
 
 ## Temporary task-relevant facts
 
@@ -44,7 +44,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Exact-head Linux ENTRY-018 workflow 33512289462 on b1993be67d85ed8288c5d580c25269f4d6bf3d67; local release audit, focused preservation tests, governance validation, and independent artifact download hash`
+- Command or check: `Exact-head Linux ENTRY-019 workflow 33530286463 on 674b39d9f57e77597b61607a9a03eb1830e55f89; independent artifact download hash`
 - Result: `PASSED`
 
 ## Risks
@@ -56,7 +56,7 @@
 ## Blockers
 
 - Architect review is required before any successor directive.
-- Exact-head Linux workflow `33512289462` passed on result head `b1993be67d85ed8288c5d580c25269f4d6bf3d67`; the independently downloaded artifact ZIP hash is `sha256:9c48bab34a62df3c90dbeddd5892c71680a9a27ee16dacf1a6c881afd9423325`.
+- Exact-head Linux workflow `33530286463` passed on result head `674b39d9f57e77597b61607a9a03eb1830e55f89`; the independently downloaded artifact ZIP hash is `sha256:02f9a0c414cc1f84216d8ef4d66c50dd68a6e27c08b406b3d6d821ffbf777948`.
 
 ## Pending decisions
 

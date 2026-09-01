@@ -307,3 +307,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-019 conservative life-history polarity-initiation feasibility audit.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY019-002
+
+- Learning ID: L-DCDEV021-ENTRY019-002
+- Date: 2026-09-01
+- Fact or lesson: Exact-head Linux workflow `33530286463` validates the additive ENTRY-019 conservative life-history polarity-initiation audit on result head `674b39d9f57e77597b61607a9a03eb1830e55f89`; the independently downloaded artifact ZIP hash is `sha256:02f9a0c414cc1f84216d8ef4d66c50dd68a6e27c08b406b3d6d821ffbf777948`.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry019.rs`, `digital-protocell/experiments/generated/dcdev021m2entry019/`, `.github/workflows/dc-dev-021-m2-entry019.yml`, and GitHub Actions workflow `33530286463`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 ENTRY-019 conservative life-history polarity-initiation feasibility audit.
+- Supersedes learning: L-DCDEV021-ENTRY019-001
