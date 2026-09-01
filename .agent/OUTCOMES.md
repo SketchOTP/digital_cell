@@ -1036,3 +1036,20 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: remote validation may identify workflow, governance, or preservation defects; ENTRY-020 does not establish autonomous embodied locomotion or resource acquisition.
 - Blockers: exact-head Linux CI and Architect review; do not start successor work.
 - Follow-up directive: none
+
+## D-20260901-dcdev021-m2-entry020-autonomous-polarity-embodied-locomotion - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY020-AUTONOMOUS-POLARITY-EMBODIED-LOCOMOTION-R2`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY020-AUTONOMOUS-POLARITY-EMBODIED-LOCOMOTION-LOCAL`
+- Closed: `2026-09-01T19:05:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Exact-head Linux workflow `33568834067` passed on result head `e0916d65a7a3b9eb8b4dad08fcb2585d32b076f0`; the uploaded artifact digest and independently downloaded ZIP SHA-256 are `sha256:bbca560f5b50ed3b6daa0b081ff496dcbb93c981911050b687c28489569f5962`. The autonomous closed loop begins homogeneous, develops a deterministic polarity seed, remains locomotory, and preserves actuator A-to-W closure, but is indistinguishable from the same-mean uniform control; the exact patterned Polar positive control translates. The bounded classification is `M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT`.
+- Changed areas: additive assay-only ENTRY-020 example, compact evidence under `digital-protocell/experiments/generated/dcdev021m2entry020/`, scoped workflow, and append-only governance only; no accepted scientific runtime or PR #44 change.
+- Validation:
+  - Exact ENTRY-019 authority and local release assay - PASSED
+  - Autonomous seed, active locomotion, positive-control translation, same-mean comparison, physical rotation, actuator A-to-W closure, historical preservation, M1/D-087, downstream, and governance - PASSED
+  - Exact-head Linux workflow `33568834067` on `e0916d65a7a3b9eb8b4dad08fcb2585d32b076f0` - PASSED
+  - Independent artifact ZIP digest `sha256:bbca560f5b50ed3b6daa0b081ff496dcbb93c981911050b687c28489569f5962` - PASSED
+- Remaining risks: Architect review is pending; ENTRY-020 does not establish autonomous embodied locomotion or autonomous resource acquisition.
+- Blockers: Architect review; do not start successor work.
+- Follow-up directive: none

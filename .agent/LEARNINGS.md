@@ -337,3 +337,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-020 energetic closure boundary.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY020-003
+
+- Learning ID: L-DCDEV021-ENTRY020-003
+- Date: 2026-09-01
+- Fact or lesson: Exact-head Linux workflow `33568834067` passed on final ENTRY-020 head `e0916d65a7a3b9eb8b4dad08fcb2585d32b076f0`; the uploaded artifact and independently downloaded ZIP both hash to `sha256:bbca560f5b50ed3b6daa0b081ff496dcbb93c981911050b687c28489569f5962`. The bounded result remains `M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT`: autonomous homogeneous-seed polarity and locomotion are valid, but no spatial leverage beyond the same-mean control was demonstrated.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry020.rs`, `digital-protocell/experiments/generated/dcdev021m2entry020/`, `.github/workflows/dc-dev-021-m2-entry020.yml`, and GitHub Actions workflow `33568834067`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 ENTRY-020 autonomous-polarity embodied-locomotion composition feasibility audit.
+- Supersedes learning: L-DCDEV021-ENTRY020-002

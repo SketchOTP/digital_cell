@@ -355,3 +355,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: ENTRY-019 qualified conservative life-history polarity initiation, but it did not test whether the resulting autonomous polarity has sufficient mechanical amplitude on the live variable-topology body. ENTRY-020 compares the closed loop against motor-off, same-mean uniform, and exact patterned Polar controls without production integration or resource information.
 - Affected areas: additive isolated ENTRY-020 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, M1, resource, uptake, metabolism, polarity production, actuator, traction, fission, remesh, restart, or PR #44 change.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY020-AUTONOMOUS-POLARITY-EMBODIED-LOCOMOTION-R2
+
+- Date: 2026-09-01
+- Record or decision ID: DEC-DCDEV021-ENTRY020-AUTONOMOUS-POLARITY-EMBODIED-LOCOMOTION-R2
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33568834067` passed on result head `e0916d65a7a3b9eb8b4dad08fcb2585d32b076f0`; the independently downloaded artifact ZIP hash is `sha256:bbca560f5b50ed3b6daa0b081ff496dcbb93c981911050b687c28489569f5962`.
+- Rationale: The isolated ENTRY-020 composition validates homogeneous autonomous Polar seeding, active A-funded locomotion, exact patterned-Polar positive translation, same-mean spatial-leverage comparison, physical rotation, and actuator A-to-W closure. The autonomous polarity motor remains mechanically indistinguishable from the uniform control, so the bounded negative classification is `M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT`; autonomous embodied locomotion and resource acquisition remain unestablished.
+- Affected areas: final remote-validation provenance for additive ENTRY-020 assay/evidence/workflow/governance only; no scientific runtime, M1, actuator, traction, metabolism, uptake, resource, polarity production, fission, remesh, restart, or PR #44 change.
+- Supersedes record: DEC-DCDEV021-ENTRY020-AUTONOMOUS-POLARITY-EMBODIED-LOCOMOTION-R1

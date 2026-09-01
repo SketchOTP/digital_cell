@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-01T14:00:00-04:00`
+- Last updated: `2026-09-01T19:05:00-04:00`
 
 ## Active state after adoption
 
@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-021-M2-ENTRY-020-AUTONOMOUS-POLARITY-EMBODIED-LOCOMOTION-COMPOSITION-FEASIBILITY-001`
 - Objective: `Determine whether accepted autonomous Polar initiation can drive coherent embodied locomotion through the unchanged A-funded actuator on the exact live variable-topology D-088 composition.`
 - Current status: `VALIDATING`
-- Acceptance: `ENTRY-019 is Architect accepted as M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED. ENTRY-020 local validation supports M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT; exact-head Linux validation and Architect acceptance are pending.`
+- Acceptance: `ENTRY-019 is Architect accepted as M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED. ENTRY-020 exact-head Linux validation supports M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT; Architect acceptance is pending.`
 - Current phase: `M2 autonomous polarity initiation is qualified in the bounded pre-fission assay; ENTRY-020 tests whether that initiation has sufficient mechanical amplitude through the unchanged effector. Resource interaction, production integration, and autonomous resource acquisition remain unestablished.`
 - Expected or actual touched areas: `isolated ENTRY-020 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, polarity, actuator, traction, fission, remesh, and M1 sources remain unchanged`
-- Immediate next action: `Run exact-head Linux validation after committing; do not integrate production polarity, add gains or thresholds, run a resource assay, or start successor work.`
+- Immediate next action: `Await Architect review; do not integrate production polarity, add gains or thresholds, run a resource assay, or start successor work.`
 
 ## Temporary task-relevant facts
 
@@ -44,7 +44,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Local ENTRY-020 release assay after ConservativeV3 provenance and actuator-ledger closure correction`
+- Command or check: `Exact-head Linux ENTRY-020 workflow 33568834067 on e0916d65a7a3b9eb8b4dad08fcb2585d32b076f0`
 - Result: `PASSED`
 
 ## Risks
@@ -55,7 +55,7 @@
 
 ## Blockers
 
-- Exact-head Linux validation and Architect review are required before any successor directive.
+- Architect review is required before any successor directive; exact-head Linux validation is complete.
 
 ## Pending decisions
 
