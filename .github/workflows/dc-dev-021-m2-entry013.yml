@@ -85,7 +85,7 @@ jobs:
           for folder, classification in expected.items():
               assert load(folder, "qualification.json")["classification"] == classification
           assert math.isclose(load("dcdev021_m2_entry006", "unguided_explorer.json")["cumulative_acquisition"], 0.2948669468973028, abs_tol=1e-12, rel_tol=0)
-          assert load("dcdev021_m2_entry012", "qualification.json")["entry012_reproduction"] is True
+          assert load("dcdev021_m2_entry012", "qualification.json")["precontact_parity_pass"] is True
           print("ENTRY-005 through ENTRY-012 preservation passed")
           PY
 
