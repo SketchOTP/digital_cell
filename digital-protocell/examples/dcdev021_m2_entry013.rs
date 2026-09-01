@@ -576,7 +576,13 @@ fn main() {
         .map(|(lag, value)| {
             json!({"lag_steps":lag,"lag_time":lag as f64 * mechanics.dt,"correlation":value})
         });
-    let activity_modes: Vec<Value> = original.records.iter().map(|r| json!({"step":r.step,"raw":r.raw_modes,"adaptation":r.adaptation_modes,"effective":r.effective_modes,"motor":r.motor_modes})).collect();
+    let checkpoint_steps = [0usize, 1, 116, ASSAY_STEPS - 1];
+    let activity_modes: Vec<Value> = original
+        .records
+        .iter()
+        .filter(|r| checkpoint_steps.contains(&r.step))
+        .map(|r| json!({"step":r.step,"raw":r.raw_modes,"adaptation":r.adaptation_modes,"effective":r.effective_modes,"motor":r.motor_modes}))
+        .collect();
     let source = json!({"intrinsic_exploration":source_hash("intrinsic_exploration.rs"),"contractility":source_hash("contractility.rs"),"stick_slip_traction":source_hash("stick_slip_traction.rs"),"mesh_reactions":reaction_hash()});
     let displacement_gain = phase_locked.net_displacement > original.net_displacement + TOL;
     let mechanics_translate = displacement_gain
@@ -651,12 +657,12 @@ fn main() {
     write_json(
         &output,
         "movement_kinematics.json",
-        &json!({"path":original.path,"net_displacement":original.net_displacement,"displacement_path_ratio":original.net_displacement/original.path,"velocity_autocorrelation":normalized_autocorrelation(&velocities),"records":original.records.iter().map(|r|json!({"step":r.step,"centroid":r.centroid,"displacement":r.displacement,"speed":r.speed,"velocity_angle":r.velocity_angle,"parallel":r.velocity_parallel,"perpendicular":r.velocity_perpendicular})).collect::<Vec<_>>() }),
+        &json!({"path":original.path,"net_displacement":original.net_displacement,"displacement_path_ratio":original.net_displacement/original.path,"velocity_autocorrelation":normalized_autocorrelation(&velocities),"checkpoint_records":original.records.iter().filter(|r|checkpoint_steps.contains(&r.step)).map(|r|json!({"step":r.step,"centroid":r.centroid,"displacement":r.displacement,"speed":r.speed,"velocity_angle":r.velocity_angle,"parallel":r.velocity_parallel,"perpendicular":r.velocity_perpendicular})).collect::<Vec<_>>() }),
     );
     write_json(
         &output,
         "polarity_motion_coupling.json",
-        &json!({"polarity_velocity_records":original.records.iter().map(|r|json!({"step":r.step,"polarity":r.polarity,"velocity_parallel":r.velocity_parallel,"velocity_perpendicular":r.velocity_perpendicular,"deformation_rms":r.deformation_rms})).collect::<Vec<_>>(),"lagged_polarity_velocity_correlation":polarity_velocity_lags,"best_lag":best_polarity_velocity_lag,"interpretation":"observer correlation only; no threshold invented"}),
+        &json!({"polarity_velocity_checkpoints":original.records.iter().filter(|r|checkpoint_steps.contains(&r.step)).map(|r|json!({"step":r.step,"polarity":r.polarity,"velocity_parallel":r.velocity_parallel,"velocity_perpendicular":r.velocity_perpendicular,"deformation_rms":r.deformation_rms})).collect::<Vec<_>>(),"lagged_polarity_velocity_correlation":polarity_velocity_lags,"best_lag":best_polarity_velocity_lag,"interpretation":"observer correlation only; no threshold invented; complete records are externalized to dense trace"}),
     );
     write_json(
         &output,
@@ -666,7 +672,7 @@ fn main() {
     write_json(
         &output,
         "mechanical_impulse.json",
-        &json!({"records":original.records.iter().map(|r|json!({"step":r.step,"active_tension_first_moment":r.active_tension_first_moment,"reaction_sum":r.reaction_sum,"accepted_velocity_sum":r.accepted_velocity_sum,"slipping_contacts":r.slipping_contacts,"deformation_rms":r.deformation_rms})).collect::<Vec<_>>(),"observer_proxy":"existing actuator/traction ledgers and material displacement"}),
+        &json!({"checkpoint_records":original.records.iter().filter(|r|checkpoint_steps.contains(&r.step)).map(|r|json!({"step":r.step,"active_tension_first_moment":r.active_tension_first_moment,"reaction_sum":r.reaction_sum,"accepted_velocity_sum":r.accepted_velocity_sum,"slipping_contacts":r.slipping_contacts,"deformation_rms":r.deformation_rms})).collect::<Vec<_>>(),"observer_proxy":"existing actuator/traction ledgers and material displacement; complete records are externalized to dense trace"}),
     );
     write_json(
         &output,
