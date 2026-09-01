@@ -1,0 +1,129 @@
+{
+  "all_geometries": true,
+  "initial_bitwise_identical": true,
+  "no_polarity_seed": true,
+  "polar": {
+    "daughter_122": [
+      {
+        "initial_bitwise_identical": true,
+        "max_site_deviation": 3.552713678800501e-15,
+        "remained_homogeneous": true,
+        "simulated_time": 0.2,
+        "sites": 122,
+        "weighted_total_final": 12.566370614359167,
+        "weighted_total_initial": 12.566370614359167
+      }
+    ],
+    "daughter_78": [
+      {
+        "initial_bitwise_identical": true,
+        "max_site_deviation": 8.881784197001252e-16,
+        "remained_homogeneous": true,
+        "simulated_time": 0.2,
+        "sites": 78,
+        "weighted_total_final": 12.566370614359165,
+        "weighted_total_initial": 12.566370614359165
+      }
+    ],
+    "mother_198": [
+      {
+        "initial_bitwise_identical": true,
+        "max_site_deviation": 1.3322676295501878e-14,
+        "remained_homogeneous": true,
+        "simulated_time": 0.2,
+        "sites": 198,
+        "weighted_total_final": 12.566370614359183,
+        "weighted_total_initial": 12.566370614359183
+      }
+    ]
+  },
+  "traveling": {
+    "daughter_122": [
+      {
+        "initial_bitwise_identical": true,
+        "max_site_deviation": 6.217248937900877e-15,
+        "remained_homogeneous": true,
+        "simulated_time": 0.2,
+        "sites": 122,
+        "weighted_total_final": 14.137166941154062,
+        "weighted_total_initial": 14.137166941154062
+      },
+      {
+        "initial_bitwise_identical": true,
+        "max_site_deviation": 5.329070518200751e-15,
+        "remained_homogeneous": true,
+        "simulated_time": 0.2,
+        "sites": 122,
+        "weighted_total_final": 14.137166941154062,
+        "weighted_total_initial": 14.137166941154062
+      },
+      {
+        "initial_bitwise_identical": true,
+        "max_site_deviation": 2.220446049250313e-15,
+        "remained_homogeneous": true,
+        "simulated_time": 0.2,
+        "sites": 122,
+        "weighted_total_final": 14.137166941154062,
+        "weighted_total_initial": 14.137166941154062
+      }
+    ],
+    "daughter_78": [
+      {
+        "initial_bitwise_identical": true,
+        "max_site_deviation": 3.552713678800501e-15,
+        "remained_homogeneous": true,
+        "simulated_time": 0.2,
+        "sites": 78,
+        "weighted_total_final": 14.137166941154058,
+        "weighted_total_initial": 14.137166941154058
+      },
+      {
+        "initial_bitwise_identical": true,
+        "max_site_deviation": 3.552713678800501e-15,
+        "remained_homogeneous": true,
+        "simulated_time": 0.2,
+        "sites": 78,
+        "weighted_total_final": 14.137166941154058,
+        "weighted_total_initial": 14.137166941154058
+      },
+      {
+        "initial_bitwise_identical": true,
+        "max_site_deviation": 8.881784197001252e-15,
+        "remained_homogeneous": true,
+        "simulated_time": 0.2,
+        "sites": 78,
+        "weighted_total_final": 14.137166941154058,
+        "weighted_total_initial": 14.137166941154058
+      }
+    ],
+    "mother_198": [
+      {
+        "initial_bitwise_identical": true,
+        "max_site_deviation": 9.769962616701378e-15,
+        "remained_homogeneous": true,
+        "simulated_time": 0.2,
+        "sites": 198,
+        "weighted_total_final": 14.137166941154069,
+        "weighted_total_initial": 14.137166941154069
+      },
+      {
+        "initial_bitwise_identical": true,
+        "max_site_deviation": 6.217248937900877e-15,
+        "remained_homogeneous": true,
+        "simulated_time": 0.2,
+        "sites": 198,
+        "weighted_total_final": 14.137166941154069,
+        "weighted_total_initial": 14.137166941154069
+      },
+      {
+        "initial_bitwise_identical": true,
+        "max_site_deviation": 3.907985046680551e-14,
+        "remained_homogeneous": true,
+        "simulated_time": 0.2,
+        "sites": 198,
+        "weighted_total_final": 14.137166941154069,
+        "weighted_total_initial": 14.137166941154069
+      }
+    ]
+  }
+}

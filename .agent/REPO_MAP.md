@@ -73,6 +73,9 @@
 - `digital-protocell/experiments/generated/dcdev021m2entry015/` — compact ENTRY-015 polarity-to-actuator interface, equal-drive controls, translation/reorientation, energetic closure, semantic boundary, preservation, and qualification evidence; dense trajectories remain externalized.
 - `digital-protocell/experiments/generated/dcdev021m2entry016/` — compact ENTRY-016 homogeneous equilibria, discrete-mode stability, homogeneous replay, settled local-field inventory, asymmetry provenance, mapping boundary, preservation, and qualification evidence.
 - `digital-protocell/experiments/generated/dcdev021m2entry017/` — compact ENTRY-017 mother/daughter physical-state snapshots, local asymmetry spectra, partition closure, topology boundary, life-history provenance, rotation, persistence, preservation, and qualification evidence.
+- `digital-protocell/examples/dcdev021_m2_entry018.rs` — isolated conservative finite-volume transfer of the accepted M2071 polarity PDE onto normalized physical-arclength material rings, including regular-grid regression, native stability, homogeneous replay, and ENTRY-017 geometry replay; it never initializes polarity or calls behavior/runtime coupling.
+- `digital-protocell/experiments/generated/dcdev021m2entry018/` — compact ENTRY-018 native coordinate, operator, conservation, topology, stability, replay, projection, preservation, and qualification evidence.
+- `.github/workflows/dc-dev-021-m2-entry018.yml` — exact-head Linux validation for ENTRY-018 authority, historical preservation, native numerical audit, D-087, downstream tests, governance, and artifact upload.
 - `digital-protocell/experiments/generated/dcdev001/` — DC-DEV-001A machine-readable decision artifacts.
 - `digital-protocell/experiments/generated/dcdev006/` — DC-DEV-006 local spatial-contact evidence artifacts.
 - `digital-protocell/experiments/generated/dcdev009/` — DC-DEV-009 force, displacement, coupling, and audit evidence artifacts.

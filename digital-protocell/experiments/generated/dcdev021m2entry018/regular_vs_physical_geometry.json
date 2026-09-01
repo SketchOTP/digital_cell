@@ -1,0 +1,167 @@
+{
+  "biological_parameters_unchanged": true,
+  "physical_geometry": {
+    "daughter_a": {
+      "classification": "PHYSICALLY_NONUNIFORM",
+      "max": 4.4567546073393265,
+      "mean": 2.5190676841499475,
+      "min": 1.7912572570516492,
+      "variance": 0.14862931906711496
+    },
+    "daughter_b": {
+      "classification": "PHYSICALLY_NONUNIFORM",
+      "max": 4.4567546073393265,
+      "mean": 2.5140577312350567,
+      "min": 1.7627981689735852,
+      "variance": 0.14789004906979406
+    },
+    "mother": {
+      "classification": "PHYSICALLY_NONUNIFORM",
+      "max": 3.474468983011378,
+      "mean": 2.4964081482812825,
+      "min": 1.7627981689735852,
+      "variance": 0.1112515646452932
+    }
+  },
+  "regular_122_polar": {
+    "f_field": {
+      "classification": "PHYSICALLY_NONUNIFORM",
+      "max": 5.173413170925139,
+      "mean": 4.420685813850265,
+      "min": 3.702809352529293,
+      "variance": 0.325088287040404
+    },
+    "final_k2_phase": 3.141592653589783,
+    "final_state_bounds": {
+      "f": {
+        "classification": "PHYSICALLY_NONUNIFORM",
+        "max": 5.173413170925139,
+        "mean": 4.420685813850265,
+        "min": 3.702809352529293,
+        "variance": 0.325088287040404
+      },
+      "u": {
+        "classification": "PHYSICALLY_NONUNIFORM",
+        "max": 1.6006267921468194,
+        "mean": 0.8695641986664567,
+        "min": 0.1289931113914191,
+        "variance": 0.3305224780087224
+      },
+      "v": {
+        "classification": "PHYSICALLY_NONUNIFORM",
+        "max": 1.2922013208104888,
+        "mean": 1.130435801333543,
+        "min": 0.9874589669596762,
+        "variance": 0.014275398297632967
+      }
+    },
+    "initial_k2_phase": 2.6144330482412905,
+    "k1_u_magnitude": 0.4042180585471739,
+    "k2_phase_change_wrapped": 0.5271596053484924,
+    "k2_u_magnitude": 0.005633955214088294,
+    "min_cell_measure": 0.05150151891130808,
+    "regime": "POLAR_1D",
+    "simulated_time": 1.0,
+    "sites": 122,
+    "substeps": 4713,
+    "u_field": {
+      "classification": "PHYSICALLY_NONUNIFORM",
+      "max": 1.6006267921468194,
+      "mean": 0.8695641986664567,
+      "min": 0.1289931113914191,
+      "variance": 0.3305224780087224
+    },
+    "weighted_u_plus_v_drift": 1.9539925233402755e-14,
+    "weighted_u_plus_v_final": 12.566370614359167,
+    "weighted_u_plus_v_initial": 12.566370614359174
+  },
+  "regular_24_48_78_96_122": {
+    "122": {
+      "classification": "NUMERICAL_ONLY",
+      "max": 0.05150151891130808,
+      "mean": 0.051501518911307984,
+      "min": 0.05150151891130808,
+      "variance": 9.437056727497456e-33
+    },
+    "24": {
+      "classification": "NUMERICAL_ONLY",
+      "max": 0.2617993877991494,
+      "mean": 0.26179938779914935,
+      "min": 0.2617993877991494,
+      "variance": 3.0814879110195774e-33
+    },
+    "48": {
+      "classification": "NUMERICAL_ONLY",
+      "max": 0.1308996938995747,
+      "mean": 0.13089969389957462,
+      "min": 0.1308996938995747,
+      "variance": 6.933347799794049e-33
+    },
+    "78": {
+      "classification": "NUMERICAL_ONLY",
+      "max": 0.08055365778435367,
+      "mean": 0.08055365778435357,
+      "min": 0.08055365778435367,
+      "variance": 9.437056727497456e-33
+    },
+    "96": {
+      "classification": "NUMERICAL_ONLY",
+      "max": 0.06544984694978735,
+      "mean": 0.06544984694978746,
+      "min": 0.06544984694978735,
+      "variance": 1.232595164407831e-32
+    }
+  },
+  "regular_78_polar": {
+    "f_field": {
+      "classification": "PHYSICALLY_NONUNIFORM",
+      "max": 5.17324013891297,
+      "mean": 4.4206794410680015,
+      "min": 3.7029183570947097,
+      "variance": 0.3250986186499039
+    },
+    "final_k2_phase": 3.1415926535897816,
+    "final_state_bounds": {
+      "f": {
+        "classification": "PHYSICALLY_NONUNIFORM",
+        "max": 5.17324013891297,
+        "mean": 4.4206794410680015,
+        "min": 3.7029183570947097,
+        "variance": 0.3250986186499039
+      },
+      "u": {
+        "classification": "PHYSICALLY_NONUNIFORM",
+        "max": 1.6004928999097756,
+        "mean": 0.8695533759967671,
+        "min": 0.12914039001323369,
+        "variance": 0.33053640602593964
+      },
+      "v": {
+        "classification": "PHYSICALLY_NONUNIFORM",
+        "max": 1.2921599652992157,
+        "mean": 1.1304466240032325,
+        "min": 0.9874833569494343,
+        "variance": 0.014279383657126745
+      }
+    },
+    "initial_k2_phase": 2.608674455202911,
+    "k1_u_magnitude": 0.4042241406964768,
+    "k2_phase_change_wrapped": 0.5329181983868705,
+    "k2_u_magnitude": 0.005623204893233393,
+    "min_cell_measure": 0.08055365778435367,
+    "regime": "POLAR_1D",
+    "simulated_time": 1.0,
+    "sites": 78,
+    "substeps": 1927,
+    "u_field": {
+      "classification": "PHYSICALLY_NONUNIFORM",
+      "max": 1.6004928999097756,
+      "mean": 0.8695533759967671,
+      "min": 0.12914039001323369,
+      "variance": 0.33053640602593964
+    },
+    "weighted_u_plus_v_drift": 1.7763568394002505e-14,
+    "weighted_u_plus_v_final": 12.566370614359169,
+    "weighted_u_plus_v_initial": 12.566370614359178
+  }
+}

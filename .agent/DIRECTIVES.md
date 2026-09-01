@@ -500,3 +500,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260901-dcdev021-m2-entry016-autonomous-polarity-initiation-audit
 - Status at issuance: ISSUED
+
+## D-20260901-dcdev021-m2-entry018-native-material-ring-polarity-transfer
+
+- Issued: `2026-09-01T09:00:00-04:00`
+- Issuer: User
+- External directive: DC-DEV-021-M2-ENTRY-018-NATIVE-MATERIAL-RING-POLARITY-TRANSFER-FEASIBILITY-001
+- Objective: Determine whether the accepted continuous M2071-derived polarity equations transfer conservatively to the exact 198-site mother and 78/122-site daughter material rings without resampling, biological parameter changes, polarity initialization, or behavior coupling.
+- Scope: Isolated normalized physical-arclength finite-volume operator, regular-grid equivalence, ENTRY-014 regression, weighted conservation, native homogeneous replay and stability, exact ENTRY-017 geometry replay, reference-pattern transfer, life-history projection, remesh boundary, compact evidence, governance, and exact-head Linux validation.
+- Exclusions: production polarity, daughter-field initialization, actuator/traction/resource coupling, fission/remesh changes, new biological length or timescale parameters, parameter search, randomness, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: One preregistered native-ring transfer classification after continuous-equation authority, conservative discretization, regular-grid regression, native topology stability/replay, preservation, governance, and exact-head Linux checks.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260901-dcdev021-m2-entry017-post-fission-daughter-asymmetry-audit
+- Status at issuance: ISSUED

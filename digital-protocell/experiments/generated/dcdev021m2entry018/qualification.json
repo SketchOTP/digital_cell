@@ -1,0 +1,33 @@
+{
+  "architect_acceptance": "PENDING",
+  "autonomous_polarity_initiation": "NOT_ESTABLISHED",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "classification": "M2_NATIVE_MATERIAL_RING_POLARITY_TRANSFER_FEASIBLE",
+  "conservative_operator": true,
+  "daughter_sites": [
+    78,
+    122
+  ],
+  "downstream_preservation": "PASS",
+  "entry005_017_preservation": "PASS",
+  "entry014_regression": true,
+  "life_history_asymmetry_overlap": "YES",
+  "m1_preservation": "PASS",
+  "mother_sites": 198,
+  "native_polar_instability": {
+    "daughter_a": true,
+    "daughter_b": true,
+    "mother": true
+  },
+  "native_reference_patterns": "NONHOMOGENEOUS_REPLAYED",
+  "native_traveling_instability": {
+    "daughter_a": true,
+    "daughter_b": true,
+    "mother": true
+  },
+  "next_execution_started": false,
+  "nonuniform_geometry_effect": "PHYSICAL_ARCLENGTH_PRESERVED",
+  "regular_grid_equivalence": true,
+  "remesh_continuity": "ADAPTABLE",
+  "weighted_conservation": true
+}

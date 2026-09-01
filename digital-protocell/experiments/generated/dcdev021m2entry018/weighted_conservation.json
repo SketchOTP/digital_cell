@@ -1,0 +1,7 @@
+{
+  "authority": "sum(ds_i*(u_i+v_i))",
+  "diffusion_flux_pairwise_cancellation": true,
+  "maximum_drift": "recorded in native and regression run objects",
+  "reaction_exchange_conserved": true,
+  "regular_and_native_runs": true
+}

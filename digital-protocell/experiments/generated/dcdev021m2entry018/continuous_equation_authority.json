@@ -1,0 +1,36 @@
+{
+  "24_48_reference": "validation discretizations",
+  "equations": {
+    "dF": "epsilon*(p0+p1*u-F)+DF*Laplacian(F)",
+    "du": "(b+gamma*u^2)*v-(1+s*F+u^2)*u+D*Laplacian(u)",
+    "dv": "-(b+gamma*u^2)*v+(1+s*F+u^2)*u+Laplacian(v)"
+  },
+  "parameter_sets": {
+    "POLAR_1D": {
+      "D": 0.1,
+      "DF": 0.001,
+      "L": 6.283185307179586,
+      "M": 2.0,
+      "b": 0.067,
+      "epsilon": 0.6,
+      "gamma": 3.55,
+      "p0": 0.8,
+      "p1": 3.8,
+      "s": 0.41
+    },
+    "TRAVELING_WAVES_1D": {
+      "D": 0.1,
+      "DF": 0.001,
+      "L": 3.141592653589793,
+      "M": 4.5,
+      "b": 0.00067,
+      "epsilon": 0.6,
+      "gamma": 3.0,
+      "p0": 0.8,
+      "p1": 3.8,
+      "s": 1.0
+    }
+  },
+  "parameters_unchanged": true,
+  "scientific_authority": "continuous periodic M2071 PDE"
+}

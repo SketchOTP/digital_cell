@@ -951,6 +951,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review; do not start successor work.
 - Follow-up directive: none
 
+## D-20260901-dcdev021-m2-entry018-native-material-ring-polarity-transfer - PARTIAL
+
+- Outcome ID: OUT-DCDEV021-ENTRY018-NATIVE-MATERIAL-RING-POLARITY-TRANSFER-LOCAL
+- Supersedes outcome: none
+- Closed: 2026-09-01T09:30:00-04:00
+- Acceptance: PARTIAL
+- Summary: The authorized ENTRY-018 isolated audit replays the accepted continuous M2071-derived polarity equations on normalized physical arclength using conservative edge-centered control volumes. The exact accepted fission replay produces 198/78/122-site rings, regular-grid algebraic equivalence passes, weighted active+inactive conservation passes, and native Polar and Traveling-parameter spatial instabilities plus nonhomogeneous reference-pattern replays remain present on all three physical topologies. The local classification is `M2_NATIVE_MATERIAL_RING_POLARITY_TRANSFER_FEASIBLE`, pending exact-head Linux validation and Architect review.
+- Changed areas: additive numerical example, compact evidence under `digital-protocell/experiments/generated/dcdev021m2entry018/`, scoped workflow, and append-only governance only; no accepted scientific runtime source changed and no polarity initialization or behavior coupling was implemented.
+- Validation:
+  - Exact ENTRY-017 starting head and physical fission replay - PASSED
+  - Regular-grid equivalence, weighted conservation, native stability, and reference-pattern replay - PASSED locally
+  - Exact-head Linux CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: remote validation may identify workflow or preservation defects; ENTRY-018 does not establish autonomous polarity initiation or resource acquisition.
+- Blockers: exact-head Linux CI and Architect review; do not start successor work.
+- Follow-up directive: none
+
 ## D-20260901-dcdev021-m2-entry017-post-fission-daughter-asymmetry-audit - PARTIAL
 
 - Outcome ID: `OUT-DCDEV021-ENTRY017-POST-FISSION-DAUGHTER-ASYMMETRY-AUDIT-R2`

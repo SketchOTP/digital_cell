@@ -1,0 +1,10 @@
+{
+  "actuator": false,
+  "centroid_feedback": false,
+  "observer_feedback": false,
+  "polarity_initialization_from_fields": false,
+  "resource": false,
+  "traction": false,
+  "uptake": false,
+  "world_axis": false
+}

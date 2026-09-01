@@ -305,3 +305,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The observer-only ENTRY-017 replay uses the accepted D-088 physical fission authority without forcing division or changing scientific runtime sources. Fission occurs at step `2326`, producing a 198-site mother and 78/122-site daughters. Lawful daughter-local geometry, strain, structural-material, maturation, membrane, and curvature fields are physically nonuniform, partition closure and rotation pass, and the result remains `M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED` because direct 24-site polarity mapping is not available. The mother was already nonuniform before fission, so the evidence supports preservation/partition of existing life-history asymmetry rather than de novo birth-generated asymmetry. Architect review remains pending.
 - Affected areas: exact CI and artifact provenance for additive observer-only ENTRY-017 assay/evidence/workflow/governance; no scientific runtime, M1, polarity, actuator, traction, metabolism, uptake, resource, restart, or PR #44 change.
 - Supersedes record: DEC-DCDEV021-ENTRY017-POST-FISSION-DAUGHTER-ASYMMETRY-SUBSTRATE-AUDIT-R1
+
+## DEC-DCDEV021-ENTRY018-NATIVE-MATERIAL-RING-POLARITY-TRANSFER-R1
+
+- Date: 2026-09-01
+- Record or decision ID: DEC-DCDEV021-ENTRY018-NATIVE-MATERIAL-RING-POLARITY-TRANSFER-R1
+- Status: ACTIVE
+- Decision or event: ENTRY-018 is authorized from exact accepted ENTRY-017 head `036316488bc53b25ad684ea666c754dc48202e7b` as an isolated conservative numerical/topology transfer audit.
+- Rationale: ENTRY-017 established lawful nonuniform 78/122-site daughters but left direct 24-site mapping unresolved. ENTRY-018 tests the continuous accepted polarity equations natively on the exact 198/78/122-site material rings using normalized physical arclength and conservative local fluxes, without resampling or initializing polarity from life-history fields.
+- Affected areas: additive observer-only numerical example, compact evidence, scoped workflow, and append-only governance only; no scientific runtime, M1, polarity production state, actuator, traction, metabolism, uptake, resource, fission, remesh, restart, or PR #44 change.
+- Supersedes record: none

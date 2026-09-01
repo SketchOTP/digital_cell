@@ -1,0 +1,8 @@
+{
+  "conservative": true,
+  "constant_field_zero": true,
+  "formula": "(D*(q[i+1]-q[i])/d_next-D*(q[i]-q[i-1])/d_prev)/ds_i",
+  "interface_distance": "0.5*(ds_i+ds_neighbor)",
+  "local": true,
+  "periodic": true
+}

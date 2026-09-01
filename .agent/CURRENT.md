@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260901-dcdev021-m2-entry017-post-fission-daughter-asymmetry-audit`
-- External directive ID: `DC-DEV-021-M2-ENTRY-017-POST-FISSION-DAUGHTER-ASYMMETRY-SUBSTRATE-AUDIT-001`
-- Objective: `Determine whether the accepted physical fission pathway produces lawful daughter-local asymmetry that is directly compatible with the accepted 24-site polarity substrate, without initializing or coupling polarity.`
+- Local directive ID: `D-20260901-dcdev021-m2-entry018-native-material-ring-polarity-transfer`
+- External directive ID: `DC-DEV-021-M2-ENTRY-018-NATIVE-MATERIAL-RING-POLARITY-TRANSFER-FEASIBILITY-001`
+- Objective: `Determine whether the accepted continuous polarity equations transfer conservatively to the exact 198/78/122-site material rings without resampling, tuning, initialization, or behavior coupling.`
 - Current status: `VALIDATING`
-- Acceptance: `ENTRY-016 is Architect accepted as M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT. ENTRY-017 local audit completed as M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED because the nonuniform daughters are 78/122 sites rather than directly compatible 24-site rings; exact-head Linux validation passed and Architect review is pending.`
+- Acceptance: `ENTRY-017 is Architect accepted as M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED. ENTRY-018 native-ring audit is in progress; local evidence currently supports M2_NATIVE_MATERIAL_RING_POLARITY_TRANSFER_FEASIBLE, pending exact-head Linux validation and Architect review.`
 - Current phase: `M2 target-free locomotion, metabolically live in-contact exploitation, excitable-polarity reference transfer, and assay-local polarity-to-effector feasibility are qualified; autonomous polarity initiation and separated encounter remain unestablished.`
-- Expected or actual touched areas: `isolated ENTRY-017 reproduction/asymmetry audit, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, polarity, actuator, traction, and M1 sources remain unchanged`
-- Immediate next action: `Seal exact-head ENTRY-017 provenance in Git and Notion, then await Architect review; do not initialize polarity, remap daughter topology, or start successor work.`
+- Expected or actual touched areas: `isolated ENTRY-018 native numerical audit, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, polarity, actuator, traction, fission, remesh, and M1 sources remain unchanged`
+- Immediate next action: `Complete exact-head ENTRY-018 validation and seal provenance; do not initialize polarity from daughter fields, couple an actuator, run a resource assay, or start successor work.`
 
 ## Temporary task-relevant facts
 
@@ -28,8 +28,8 @@
 - Entry authority is `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
-- Current implementation work is on `m2/dc-dev-021-entry017-post-fission-daughter-asymmetry-audit`, based exactly on accepted ENTRY-016 head `bbbcc7c2bd8e25da69a36902107e7a7420c81ef0`.
-- ENTRY-014 is Architect accepted as `M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE` at `7685ae33e33132452105611322dbf4d045468eec`; its isolated M2071-derived 24-site substrate may be used only for the authorized ENTRY-015 assay until that result is reviewed.
+- Current implementation work is on `m2/dc-dev-021-entry018-native-material-ring-polarity-transfer`, based exactly on accepted ENTRY-017 head `036316488bc53b25ad684ea666c754dc48202e7b`.
+- ENTRY-014 is Architect accepted as `M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE` at `7685ae33e33132452105611322dbf4d045468eec`; its continuous PDE and published parameters are reused by the isolated ENTRY-018 native-ring numerical audit only.
 - ENTRY-015 starts exactly at accepted ENTRY-014 head `7685ae33e33132452105611322dbf4d045468eec` on `m2/dc-dev-021-entry015-polarity-actuator-interface`. Its only new causal interface is assay-local `u/(u+v)` into the existing actuator; production integration, autonomous polarity initiation, and resource acquisition remain unauthorized.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
 - M2 ENTRY-001 starts from `baseline/m1-v4-closed` at `d76481c785e9eec361df3fa0cd03c512b521639c`; ENTRY-002 starts at accepted ENTRY-001 head `54f3af09804a9accd845dfcae2dfce13d1918b7c`; ENTRY-003 starts at accepted ENTRY-002 head `2ed0f6159b0169f1f7bd9c2c10e89a6b67d12167`.
@@ -61,7 +61,7 @@
 ## Pending decisions
 
 - The V4 equations, D-087 boundary, conservation contracts, accepted M1 qualification, ENTRY-001 actuator, and ENTRY-011 uptake/metabolism composition are frozen.
-- M2 autonomous resource acquisition remains unestablished; ENTRY-012 seed 1 did not encounter the separated resource within 1,500 steps despite active locomotion. Architect accepted ENTRY-013 as first-harmonic polarity decay/homogenization, ENTRY-014 as a transferable isolated polarity substrate, ENTRY-015 as an assay-local interface, and ENTRY-016 as `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`. ENTRY-017 is complete as `M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED`: accepted physical fission preserves/partitions nonuniform mother history into 78/122-site daughters, but no direct 24-site mapping is authorized. No production polarity, resource coupling, sensing, navigation, parameter search, reserve, target, gradient, resource seeking, or successor execution is authorized pending Architect review.
+- M2 autonomous resource acquisition remains unestablished; ENTRY-012 seed 1 did not encounter the separated resource within 1,500 steps despite active locomotion. Architect accepted ENTRY-013 as first-harmonic polarity decay/homogenization, ENTRY-014 as a transferable isolated polarity substrate, ENTRY-015 as an assay-local interface, ENTRY-016 as `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`, and ENTRY-017 as `M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED`. ENTRY-018 is the only active audit: it tests conservative normalized physical-arclength diffusion on the exact 198/78/122-site rings without daughter resampling or polarity initialization. No production polarity, resource coupling, sensing, navigation, parameter search, reserve, target, gradient, resource seeking, or successor execution is authorized pending Architect review.
 
 ## Status vocabulary
 

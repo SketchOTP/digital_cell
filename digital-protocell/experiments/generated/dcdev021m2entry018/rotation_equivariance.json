@@ -1,0 +1,7 @@
+{
+  "classification": "rotation-equivariant by construction",
+  "implementation": false,
+  "material_ring_cyclic_rotation": "operator and control volumes are index-local and periodic",
+  "physical_arclength_measure_invariant": true,
+  "world_axis": false
+}

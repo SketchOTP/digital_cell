@@ -1,0 +1,23 @@
+{
+  "daughter_sites": [
+    78,
+    122
+  ],
+  "entry017_acceptance": "M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED",
+  "mother_sites": 198,
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "state": "OPEN",
+    "touched": false
+  },
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "source_hashes": {
+    "material_mesh.rs": "3490cee8eedbe1d6",
+    "mesh_fission.rs": "dcb859522534cf03",
+    "mesh_growth.rs": "f466c37daea1186c",
+    "mesh_mechanics.rs": "eaaa4f5898833bfd",
+    "mesh_reactions.rs": "8b7a5572b93b0982"
+  },
+  "starting_head": "036316488bc53b25ad684ea666c754dc48202e7b"
+}

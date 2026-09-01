@@ -277,3 +277,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-016 observer-only autonomous-polarity-initiation substrate audit.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY018-001
+
+- Learning ID: L-DCDEV021-ENTRY018-001
+- Date: 2026-09-01
+- Fact or lesson: A conservative edge-centered finite-volume operator on normalized physical arclength preserves the accepted continuous polarity equations across the exact 198-site mother and 78/122-site daughter rings without treating 24 sites as biology. The assay remains numerical substrate evidence only: no daughter-field initialization, actuator coupling, resource interaction, or production polarity was added.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry018.rs`, `digital-protocell/experiments/generated/dcdev021m2entry018/`, and `.github/workflows/dc-dev-021-m2-entry018.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-018 native material-ring polarity transfer feasibility audit.
+- Supersedes learning: none

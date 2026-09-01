@@ -1,0 +1,9 @@
+{
+  "algebra": "uniform ds=dx gives D*(q[i+1]-2q[i]+q[i-1])/dx^2",
+  "pass": true,
+  "tested_sites": [
+    24,
+    48,
+    96
+  ]
+}

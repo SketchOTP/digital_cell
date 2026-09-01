@@ -1,0 +1,16 @@
+{
+  "accepted_replay": "MeshPopulation seed + transport + reactions + growth + mechanics + remesh + topology + try_local_fission",
+  "daughter_a": {
+    "length_hash": "fa545b83b619d70f",
+    "sites": 78
+  },
+  "daughter_b": {
+    "length_hash": "cc335c344e7ceb36",
+    "sites": 122
+  },
+  "fission_forced": false,
+  "mother": {
+    "length_hash": "1e4883cc95331762",
+    "sites": 198
+  }
+}

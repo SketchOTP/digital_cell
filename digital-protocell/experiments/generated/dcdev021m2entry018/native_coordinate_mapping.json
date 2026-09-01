@@ -1,0 +1,9 @@
+{
+  "control_volume": "edge-centered",
+  "mapping": "ds_i=L*l_i/sum(l)",
+  "physical_edge_lengths": "l_i",
+  "sum_ds_daughter_a": 6.283185307179583,
+  "sum_ds_daughter_b": 6.283185307179584,
+  "sum_ds_mother": 6.283185307179592,
+  "world_axis": false
+}

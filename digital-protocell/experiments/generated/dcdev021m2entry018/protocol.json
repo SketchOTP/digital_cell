@@ -1,0 +1,11 @@
+{
+  "continuous_pde_authority": true,
+  "directive": "DC-DEV-021-M2-ENTRY-018-NATIVE-MATERIAL-RING-POLARITY-TRANSFER-FEASIBILITY-001",
+  "observer_only": true,
+  "parameter_search": false,
+  "resampling": false,
+  "resource_actuator_traction": false,
+  "scientific_runtime_source_changed": false,
+  "starting_head": "036316488bc53b25ad684ea666c754dc48202e7b",
+  "state_location": "edge-centered control volumes on normalized physical arclength"
+}
