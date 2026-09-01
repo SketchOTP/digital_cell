@@ -265,3 +265,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Exact accepted equations have positive nonzero spatial-mode growth rates (Polar maximum `0.0027247326825388107` at mode 2; Traveling maximum `1.8634516205368405` at mode 1 across admissible equilibria), and exact homogeneous replays preserve homogeneity. The settled 24-site MaturationCoupledV4 body has no physically meaningful nonuniform edge-length, strain, structural-material, membrane, curvature, or rupture field after unchanged settlement; all candidate asymmetry is uniform or numerical-only. No mapping, production initialization, or random source was introduced.
 - Affected areas: additive observer-only ENTRY-016 audit/example, compact evidence, scoped workflow, and governance only; no scientific runtime, M1, actuator, traction, metabolism, uptake, resource, restart, or PR #44 change.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY016-AUTONOMOUS-POLARITY-INITIATION-SUBSTRATE-AUDIT-R2
+
+- Date: 2026-09-01
+- Record or decision ID: DEC-DCDEV021-ENTRY016-AUTONOMOUS-POLARITY-INITIATION-SUBSTRATE-AUDIT-R2
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33499640907` passed on `ea482ca4f655f79967f5e0b1b99ca00974116f30`; artifact digest is `sha256:0b452b3b3dd5b5759fd6f3fa0723704d341c9dde191a813de363778a7477a9c8`.
+- Rationale: The remote run verified exact authority and frozen-source scope, ENTRY-005–015 preservation, positive spatial instability in the accepted Polar/Traveling regimes, exact homogeneous replay, settled-body local-field inventory, rotation and forbidden-information boundaries, canonical D-087, downstream tests, governance, and artifact upload. The settled body remains uniform or numerical-only in all audited local fields, so the classification remains `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`; no production polarity or new randomness was introduced.
+- Affected areas: exact CI provenance for additive observer-only ENTRY-016 audit/evidence/workflow/governance only; no scientific runtime, M1, actuator, traction, metabolism, uptake, resource, restart, or PR #44 change.
+- Supersedes record: DEC-DCDEV021-ENTRY016-AUTONOMOUS-POLARITY-INITIATION-SUBSTRATE-AUDIT-R1

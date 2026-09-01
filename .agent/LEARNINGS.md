@@ -258,6 +258,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-021 ENTRY-015 polarity actuator interface feasibility audit
 - Supersedes learning: L-DCDEV021-ENTRY015-001
 
+## L-DCDEV021-ENTRY016-002
+
+- Learning ID: L-DCDEV021-ENTRY016-002
+- Date: 2026-09-01
+- Fact or lesson: Exact-head Linux workflow `33499640907` independently validates the ENTRY-016 result at `ea482ca4f655f79967f5e0b1b99ca00974116f30`, including historical ENTRY-005–015 classifications, exact 24-site stability/replay/asymmetry checks, D-087/downstream preservation, governance, and artifact upload. The artifact ZIP digest is `sha256:0b452b3b3dd5b5759fd6f3fa0723704d341c9dde191a813de363778a7477a9c8`. Both accepted regimes have spatially unstable homogeneous modes, but the settled Digital Cell body has no physically meaningful nonuniform local field to seed them; autonomous polarity initiation remains unestablished.
+- Evidence location: `digital-protocell/experiments/generated/dcdev021m2entry016/`, `.github/workflows/dc-dev-021-m2-entry016.yml`, and GitHub Actions workflow `33499640907`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 ENTRY-016 observer-only autonomous-polarity-initiation substrate audit.
+- Supersedes learning: none
+
 ## L-DCDEV021-ENTRY016-001
 
 - Learning ID: L-DCDEV021-ENTRY016-001

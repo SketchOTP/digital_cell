@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-01T06:48:42-04:00`
+- Last updated: `2026-09-01T07:01:00-04:00`
 
 ## Active state after adoption
 
@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-021-M2-ENTRY-016-AUTONOMOUS-POLARITY-INITIATION-SUBSTRATE-AUDIT-001`
 - Objective: `Determine whether accepted 24-site excitable polarity has an intrinsically unstable spatial mode and whether the exact settled Digital Cell body contains a lawful, rotation-equivariant local physical asymmetry that could seed it, without implementing a coupling.`
 - Current status: `VALIDATING`
-- Acceptance: `ENTRY-015 is Architect accepted as M2_EXCITABLE_POLARITY_ACTUATOR_INTERFACE_QUALIFIED. ENTRY-016 local audit classifies M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT; exact-head Linux validation and Architect review remain pending.`
+- Acceptance: `ENTRY-015 is Architect accepted as M2_EXCITABLE_POLARITY_ACTUATOR_INTERFACE_QUALIFIED. ENTRY-016 local audit classifies M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT; exact-head Linux validation passed on the implementation commit and final sealed-head validation remains pending Architect review.`
 - Current phase: `M2 target-free locomotion, metabolically live in-contact exploitation, excitable-polarity reference transfer, and assay-local polarity-to-effector feasibility are qualified; autonomous polarity initiation and separated encounter remain unestablished.`
 - Expected or actual touched areas: `isolated ENTRY-016 mathematical stability/asymmetry audit, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, and M1 sources remain unchanged`
-- Immediate next action: `Run exact-head ENTRY-016 preservation and Linux validation; do not implement polarity initialization, coupling, or successor work.`
+- Immediate next action: `Run final exact-head ENTRY-016 validation after the authority seal, then update Notion; do not implement polarity initialization, coupling, or successor work.`
 
 ## Temporary task-relevant facts
 
@@ -44,7 +44,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Exact-head Linux ENTRY-015 workflow 33461618844 on 1a4ec8f363186707adedaf70a8f4b8aa1fa6debc; local cargo +1.89.0 run/check, targeted rustfmt, governance validation, and artifact SHA-256`
+- Command or check: `Exact-head Linux ENTRY-016 workflow 33499640907 on ea482ca4f655f79967f5e0b1b99ca00974116f30; local release audit, focused preservation tests, D-087, governance validation, and independent artifact download hash`
 - Result: `PASSED`
 
 ## Risks
@@ -56,7 +56,7 @@
 ## Blockers
 
 - Architect review is required before any successor directive.
-- Exact-head Linux workflow `33461618844` passed on result head `1a4ec8f363186707adedaf70a8f4b8aa1fa6debc`; GitHub artifact digest and independent downloaded-archive hash are `sha256:40483a35cf28b3fcb71ee8c62595e92fd7142bcc4fe739576bcdf9c15f8b5009`.
+- Exact-head Linux workflow `33499640907` passed on implementation result head `ea482ca4f655f79967f5e0b1b99ca00974116f30`; GitHub artifact digest and independent downloaded-archive hash are `sha256:0b452b3b3dd5b5759fd6f3fa0723704d341c9dde191a813de363778a7477a9c8`. Final sealed-head validation remains pending.
 
 ## Pending decisions
 
