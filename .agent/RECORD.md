@@ -275,3 +275,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The remote run verified exact authority and frozen-source scope, ENTRY-005–015 preservation, positive spatial instability in the accepted Polar/Traveling regimes, exact homogeneous replay, settled-body local-field inventory, rotation and forbidden-information boundaries, canonical D-087, downstream tests, governance, and artifact upload. The settled body remains uniform or numerical-only in all audited local fields, so the classification remains `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`; no production polarity or new randomness was introduced.
 - Affected areas: exact CI provenance for additive observer-only ENTRY-016 audit/evidence/workflow/governance only; no scientific runtime, M1, actuator, traction, metabolism, uptake, resource, restart, or PR #44 change.
 - Supersedes record: DEC-DCDEV021-ENTRY016-AUTONOMOUS-POLARITY-INITIATION-SUBSTRATE-AUDIT-R1
+
+## DEC-DCDEV021-ENTRY016-AUTONOMOUS-POLARITY-INITIATION-SUBSTRATE-AUDIT-R3
+
+- Date: 2026-09-01
+- Record or decision ID: DEC-DCDEV021-ENTRY016-AUTONOMOUS-POLARITY-INITIATION-SUBSTRATE-AUDIT-R3
+- Status: ACTIVE
+- Decision or event: Final sealed-head Linux workflow `33500356464` passed on result head `a80d4c4f4d5a92d7ba029e628977a77bc3563b5f`; artifact digest and independent downloaded-archive hash are `sha256:4f1ffb699638f6b52826d16deb09ccecb5d5295df56b4f18c9470977e361b37d`.
+- Rationale: The exact sealed result preserves the observer-only boundary and the classification `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`. Both accepted reference regimes have nonzero unstable spatial modes, but the settled organism's audited local physical fields are uniform or numerical-only, so no lawful existing asymmetry substrate was identified. Architect review remains pending.
+- Affected areas: append-only governance correction and final validation provenance for the additive ENTRY-016 audit/evidence/workflow only; no scientific runtime, M1, actuator, traction, metabolism, uptake, resource, restart, or PR #44 change.
+- Supersedes record: DEC-DCDEV021-ENTRY016-AUTONOMOUS-POLARITY-INITIATION-SUBSTRATE-AUDIT-R2

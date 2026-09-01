@@ -918,3 +918,19 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: final sealed-head CI and Architect acceptance remain outstanding; no polarity initialization or resource encounter has been implemented or tested.
 - Blockers: final sealed-head exact-head Linux CI and Architect review; do not start successor work.
 - Follow-up directive: none
+
+## D-20260901-dcdev021-m2-entry016-autonomous-polarity-initiation-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY016-AUTONOMOUS-POLARITY-INITIATION-AUDIT-R3`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY016-AUTONOMOUS-POLARITY-INITIATION-AUDIT-R2`
+- Closed: `2026-09-01T07:13:05-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Final sealed-head exact-head Linux workflow `33500356464` passed on result head `a80d4c4f4d5a92d7ba029e628977a77bc3563b5f`. The ENTRY-016 classification remains `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`: accepted polarity regimes have unstable spatial modes, but the exact settled organism contains no physically meaningful nonuniform local field to seed them.
+- Changed areas: append-only governance correction and final validation provenance for the existing additive ENTRY-016 audit/evidence/workflow; no scientific runtime or PR #44 change.
+- Validation:
+  - Final sealed-head Linux workflow `33500356464` - PASSED
+  - Artifact digest and independent downloaded-archive hash `sha256:4f1ffb699638f6b52826d16deb09ccecb5d5295df56b4f18c9470977e361b37d` - PASSED
+  - Architect review - PENDING
+- Remaining risks: Architect acceptance remains outstanding; no polarity initialization or resource encounter has been implemented or tested.
+- Blockers: Architect review; do not start successor work.
+- Follow-up directive: none

@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-01T07:01:00-04:00`
+- Last updated: `2026-09-01T07:13:05-04:00`
 
 ## Active state after adoption
 
@@ -11,15 +11,15 @@
 - External directive ID: `DC-DEV-021-M2-ENTRY-016-AUTONOMOUS-POLARITY-INITIATION-SUBSTRATE-AUDIT-001`
 - Objective: `Determine whether accepted 24-site excitable polarity has an intrinsically unstable spatial mode and whether the exact settled Digital Cell body contains a lawful, rotation-equivariant local physical asymmetry that could seed it, without implementing a coupling.`
 - Current status: `VALIDATING`
-- Acceptance: `ENTRY-015 is Architect accepted as M2_EXCITABLE_POLARITY_ACTUATOR_INTERFACE_QUALIFIED. ENTRY-016 local audit classifies M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT; exact-head Linux validation passed on the implementation commit and final sealed-head validation remains pending Architect review.`
+- Acceptance: `ENTRY-015 is Architect accepted as M2_EXCITABLE_POLARITY_ACTUATOR_INTERFACE_QUALIFIED. ENTRY-016 local audit classifies M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT; final sealed-head Linux validation passed on the result head and the result remains pending Architect review.`
 - Current phase: `M2 target-free locomotion, metabolically live in-contact exploitation, excitable-polarity reference transfer, and assay-local polarity-to-effector feasibility are qualified; autonomous polarity initiation and separated encounter remain unestablished.`
 - Expected or actual touched areas: `isolated ENTRY-016 mathematical stability/asymmetry audit, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, and M1 sources remain unchanged`
-- Immediate next action: `Run final exact-head ENTRY-016 validation after the authority seal, then update Notion; do not implement polarity initialization, coupling, or successor work.`
+- Immediate next action: `Update Notion with the final sealed-head validation and await Architect review; do not implement polarity initialization, coupling, or successor work.`
 
 ## Temporary task-relevant facts
 
 - M0 is closed; M1 is formally closed and frozen at `fb77f472b1519a9e0f713833efba5b1d403f4723`.
-- Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-011 is Architect accepted as metabolically live in-contact composition; ENTRY-015 is the only authorized active audit and is awaiting Architect review.
+- Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-011 is Architect accepted as metabolically live in-contact composition; ENTRY-016 is the only authorized active audit, is exact-head CI validated, and is awaiting Architect review.
 - PR #44 is the immutable M1 provenance stack and must remain open, draft, unmerged, and untouched.
 - The clean baseline is derived from `1e242f28152797b512e25cd56c7b718e45d6ca97`; accepted M1 evidence remains on Atlas.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
@@ -44,7 +44,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Exact-head Linux ENTRY-016 workflow 33499640907 on ea482ca4f655f79967f5e0b1b99ca00974116f30; local release audit, focused preservation tests, D-087, governance validation, and independent artifact download hash`
+- Command or check: `Exact-head Linux ENTRY-016 workflow 33500356464 on a80d4c4f4d5a92d7ba029e628977a77bc3563b5f; local release audit, focused preservation tests, D-087, governance validation, and independent artifact download hash`
 - Result: `PASSED`
 
 ## Risks
@@ -56,12 +56,12 @@
 ## Blockers
 
 - Architect review is required before any successor directive.
-- Exact-head Linux workflow `33499640907` passed on implementation result head `ea482ca4f655f79967f5e0b1b99ca00974116f30`; GitHub artifact digest and independent downloaded-archive hash are `sha256:0b452b3b3dd5b5759fd6f3fa0723704d341c9dde191a813de363778a7477a9c8`. Final sealed-head validation remains pending.
+- Exact-head Linux workflow `33500356464` passed on sealed result head `a80d4c4f4d5a92d7ba029e628977a77bc3563b5f`; GitHub artifact digest and independent downloaded-archive hash are `sha256:4f1ffb699638f6b52826d16deb09ccecb5d5295df56b4f18c9470977e361b37d`.
 
 ## Pending decisions
 
 - The V4 equations, D-087 boundary, conservation contracts, accepted M1 qualification, ENTRY-001 actuator, and ENTRY-011 uptake/metabolism composition are frozen.
-- M2 autonomous resource acquisition remains unestablished; ENTRY-012 seed 1 did not encounter the separated resource within 1,500 steps despite active locomotion. Architect accepted ENTRY-013 as first-harmonic polarity decay/homogenization and ENTRY-014 as a transferable isolated polarity substrate. ENTRY-015 is locally and remotely qualified only as an assay-local interface result: no production polarity, resource coupling, sensing, navigation, parameter search, reserve, target, gradient, resource seeking, or successor execution is authorized pending Architect review.
+- M2 autonomous resource acquisition remains unestablished; ENTRY-012 seed 1 did not encounter the separated resource within 1,500 steps despite active locomotion. Architect accepted ENTRY-013 as first-harmonic polarity decay/homogenization and ENTRY-014 as a transferable isolated polarity substrate. ENTRY-015 is qualified only as an assay-local interface result, and ENTRY-016 is validated as `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`: no production polarity, resource coupling, sensing, navigation, parameter search, reserve, target, gradient, resource seeking, or successor execution is authorized pending Architect review.
 
 ## Status vocabulary
 
