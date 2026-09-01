@@ -245,3 +245,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The run reproduced the versioned M2071 Polar and Traveling-Wave regimes and preserved them at exactly 24 periodic sites with conserved active/inactive exchange, no parameter search, no stochastic forcing, and no Digital Cell runtime coupling. The result is explicitly bounded to reference-substrate transfer and does not establish Digital Cell polarity or autonomous resource acquisition.
 - Affected areas: exact CI result and artifact provenance for the previously committed isolated ENTRY-014 solver/evidence/workflow; no scientific runtime source or PR #44 change.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY015-EXCITABLE-POLARITY-ACTUATOR-INTERFACE-R1
+
+- Date: 2026-08-31
+- Record or decision ID: DEC-DCDEV021-ENTRY015-EXCITABLE-POLARITY-ACTUATOR-INTERFACE-R1
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33461618844` passed on result head `1a4ec8f363186707adedaf70a8f4b8aa1fa6debc`; the downloaded artifact independently hashes to `sha256:40483a35cf28b3fcb71ee8c62595e92fd7142bcc4fe739576bcdf9c15f8b5009`. The assay result is ready for Architect review as `M2_EXCITABLE_POLARITY_ACTUATOR_INTERFACE_QUALIFIED`.
+- Rationale: The accepted ENTRY-014 reference chemistry remains unchanged and one-way. The exact local active-fraction interface preserves chemistry while Polar spatial organization exceeds the matched uniform-mean control in coherent translation and the Traveling regime shows phase-coupled heading variation. The result is bounded to assay-local feasibility and does not authorize production integration or successor work.
+- Affected areas: exact CI result and artifact provenance for additive ENTRY-015 assay/evidence/workflow/governance only; no scientific runtime, M1, resource, restart, or PR #44 change.
+- Supersedes record: DEC-DCDEV021-ENTRY015-EXCITABLE-POLARITY-ACTUATOR-INTERFACE-001

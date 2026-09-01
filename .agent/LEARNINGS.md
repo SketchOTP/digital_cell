@@ -247,3 +247,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-013 observer-only intrinsic search-persistence/cancellation audit; exact-head Linux CI and Architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY015-002
+
+- Learning ID: L-DCDEV021-ENTRY015-002
+- Date: 2026-08-31
+- Fact or lesson: Exact-head Linux workflow `33461618844` validates the isolated ENTRY-015 polarity-to-actuator interface at `1a4ec8f363186707adedaf70a8f4b8aa1fa6debc`. The local active fraction `u/(u+v)` preserves the ENTRY-014 chemistry while Polar spatial organization exceeds the matched uniform-mean control in coherent translation, and the Traveling regime shows phase-coupled heading variation with spatial leverage. A-to-W closure, rotation, historical preservation, M1, downstream checks, and the no-resource boundary pass; this does not establish production polarity, autonomous polarity initiation, or resource acquisition.
+- Evidence location: `digital-protocell/experiments/generated/dcdev021m2entry015/`, `.github/workflows/dc-dev-021-m2-entry015.yml`, GitHub Actions workflow `33461618844`, and artifact digest `sha256:40483a35cf28b3fcb71ee8c62595e92fd7142bcc4fe739576bcdf9c15f8b5009`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-015 polarity actuator interface feasibility audit
+- Supersedes learning: L-DCDEV021-ENTRY015-001

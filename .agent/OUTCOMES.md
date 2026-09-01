@@ -866,3 +866,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: this is an isolated reference-transfer feasibility result only; it does not authorize Digital Cell polarity integration, locomotion modification, navigation, encounter, or autonomous acquisition.
 - Blockers: final exact-head CI after governance seal and Architect review.
 - Follow-up directive: none
+
+## D-20260831-dcdev021-m2-entry015-polarity-actuator-interface - PARTIAL
+
+- Outcome ID: OUT-DCDEV021-ENTRY015-POLARITY-ACTUATOR-INTERFACE-R1
+- Supersedes outcome: `OUT-DCDEV021-ENTRY015-POLARITY-ACTUATOR-INTERFACE-LOCAL`
+- Closed: 2026-08-31T22:21:36-04:00
+- Acceptance: PARTIAL
+- Summary: Exact-head Linux workflow `33461618844` passed on result head `1a4ec8f363186707adedaf70a8f4b8aa1fa6debc`. The isolated assay uses the accepted ENTRY-014 Polar and Traveling chemistry with the parameter-free local `u/(u+v)` interface, matched same-mean and motor-off controls, one-way chemistry isolation, energetic closure, and rotation. Polar spatial organization exceeds its same-mean control in coherent translation; the Traveling regime produces phase-coupled heading variation and spatial leverage. The result remains assay-only and does not establish autonomous polarity initiation or resource acquisition.
+- Changed areas: additive ENTRY-015 assay/example registration, compact evidence, scoped workflow, and append-only governance only; no Digital Cell scientific runtime source or PR #44 change.
+- Validation:
+  - Exact ENTRY-014 accepted starting head and frozen source scope - PASSED
+  - Local release assay, interface controls, chemistry replay, timing refinement, closure, and rotation - PASSED
+  - Exact-head Linux workflow `33461618844` - PASSED
+  - Artifact digest `sha256:40483a35cf28b3fcb71ee8c62595e92fd7142bcc4fe739576bcdf9c15f8b5009` and independent downloaded-archive hash - PASSED
+  - Architect review - NOT RUN
+- Remaining risks: the result qualifies only the assay-local polarity-to-effector interface; production polarity integration, autonomous polarity initiation, and autonomous resource acquisition remain out of scope.
+- Blockers: Architect review; do not start successor work.
+- Follow-up directive: none

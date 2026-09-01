@@ -3,23 +3,23 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-31T22:03:33-04:00`
+- Last updated: `2026-08-31T22:21:36-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20260831-dcdev021-m2-entry015-polarity-actuator-interface`
 - External directive ID: `DC-DEV-021-M2-ENTRY-015-EXCITABLE-POLARITY-ACTUATOR-INTERFACE-FEASIBILITY-001`
 - Objective: `Determine whether the exact ENTRY-014 24-site polarity substrate can drive coherent motion through the unchanged A-funded actuator using motor_activity[i] = u[i] / (u[i] + v[i]) in an isolated resource-free assay.`
-- Current status: `IN_PROGRESS`
-- Acceptance: `ENTRY-014 is Architect accepted as M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE. ENTRY-015 is the only authorized assay; Architect acceptance remains pending.`
-- Current phase: `M2 target-free locomotion, metabolically live in-contact exploitation, and excitable-polarity reference transfer are qualified; separated encounter is not established; lawful polarity-to-effector coupling is the active bottleneck.`
+- Current status: `VALIDATING`
+- Acceptance: `ENTRY-014 is Architect accepted as M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE. ENTRY-015 local and exact-head Linux validation passed as M2_EXCITABLE_POLARITY_ACTUATOR_INTERFACE_QUALIFIED; Architect acceptance remains pending.`
+- Current phase: `M2 target-free locomotion, metabolically live in-contact exploitation, excitable-polarity reference transfer, and assay-local polarity-to-effector feasibility are qualified; separated encounter and autonomous polarity initiation remain unestablished.`
 - Expected or actual touched areas: `isolated ENTRY-015 assay/interface example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, and M1 sources remain unchanged`
-- Immediate next action: `Complete the resource-free Polar/Traveling interface assay and exact-head validation; do not implement production polarity or start successor work.`
+- Immediate next action: `Await Architect review of the exact-head ENTRY-015 result; do not implement production polarity or start successor work.`
 
 ## Temporary task-relevant facts
 
 - M0 is closed; M1 is formally closed and frozen at `fb77f472b1519a9e0f713833efba5b1d403f4723`.
-- Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-011 is Architect accepted as metabolically live in-contact composition; ENTRY-012 is the only authorized active audit.
+- Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-011 is Architect accepted as metabolically live in-contact composition; ENTRY-015 is the only authorized active audit and is awaiting Architect review.
 - PR #44 is the immutable M1 provenance stack and must remain open, draft, unmerged, and untouched.
 - The clean baseline is derived from `1e242f28152797b512e25cd56c7b718e45d6ca97`; accepted M1 evidence remains on Atlas.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
@@ -28,7 +28,7 @@
 - Entry authority is `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
-- Current implementation work is on `m2/dc-dev-021-entry014-excitable-polarity-reference-transfer`, based exactly on accepted ENTRY-013 head `0cef8e1cdb12d915f3b9f3084600c585c933ffa8`.
+- Current implementation work is on `m2/dc-dev-021-entry015-polarity-actuator-interface`, based exactly on accepted ENTRY-014 head `7685ae33e33132452105611322dbf4d045468eec`.
 - ENTRY-014 is Architect accepted as `M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE` at `7685ae33e33132452105611322dbf4d045468eec`; its isolated M2071-derived 24-site substrate may be used only for the authorized ENTRY-015 assay until that result is reviewed.
 - ENTRY-015 starts exactly at accepted ENTRY-014 head `7685ae33e33132452105611322dbf4d045468eec` on `m2/dc-dev-021-entry015-polarity-actuator-interface`. Its only new causal interface is assay-local `u/(u+v)` into the existing actuator; production integration, autonomous polarity initiation, and resource acquisition remain unauthorized.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
@@ -44,7 +44,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Exact-head Linux ENTRY-013 workflow 33454498820 on e98ed19d80066ea2f53a967b5c4275798d7665bd; local cargo +1.89.0 run/check and targeted rustfmt`
+- Command or check: `Exact-head Linux ENTRY-015 workflow 33461618844 on 1a4ec8f363186707adedaf70a8f4b8aa1fa6debc; local cargo +1.89.0 run/check, targeted rustfmt, governance validation, and artifact SHA-256`
 - Result: `PASSED`
 
 ## Risks
@@ -56,12 +56,12 @@
 ## Blockers
 
 - Architect review is required before any successor directive.
-- The first remote workflow attempt `33454372521` failed only because its preservation assertion used the wrong ENTRY-012 evidence key; the assertion was corrected, and replacement workflow `33454498820` passed on the same result head.
+- Exact-head Linux workflow `33461618844` passed on result head `1a4ec8f363186707adedaf70a8f4b8aa1fa6debc`; GitHub artifact digest and independent downloaded-archive hash are `sha256:40483a35cf28b3fcb71ee8c62595e92fd7142bcc4fe739576bcdf9c15f8b5009`.
 
 ## Pending decisions
 
 - The V4 equations, D-087 boundary, conservation contracts, accepted M1 qualification, ENTRY-001 actuator, and ENTRY-011 uptake/metabolism composition are frozen.
-- M2 autonomous resource acquisition remains unestablished; ENTRY-012 seed 1 did not encounter the separated resource within 1,500 steps despite active locomotion. Architect accepted ENTRY-013 as first-harmonic polarity decay/homogenization and ENTRY-014 as a transferable isolated polarity substrate. ENTRY-015 is assay-only: no production polarity, resource coupling, sensing, navigation, parameter search, reserve, target, gradient, resource seeking, or successor execution is authorized.
+- M2 autonomous resource acquisition remains unestablished; ENTRY-012 seed 1 did not encounter the separated resource within 1,500 steps despite active locomotion. Architect accepted ENTRY-013 as first-harmonic polarity decay/homogenization and ENTRY-014 as a transferable isolated polarity substrate. ENTRY-015 is locally and remotely qualified only as an assay-local interface result: no production polarity, resource coupling, sensing, navigation, parameter search, reserve, target, gradient, resource seeking, or successor execution is authorized pending Architect review.
 
 ## Status vocabulary
 
