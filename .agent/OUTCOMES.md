@@ -811,3 +811,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: this remains a bounded separated-resource reachability negative; it does not establish autonomous acquisition, general search, navigation, or authorize a successor mechanism.
 - Blockers: Architect review; do not move the resource or extend the horizon.
 - Follow-up directive: none
+
+## D-20260831-dcdev021-m2-entry014-excitable-polarity-reference-transfer - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY014-EXCITABLE-POLARITY-REFERENCE-TRANSFER-R1`
+- Supersedes outcome: none
+- Closed: `2026-08-31T21:30:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The isolated mathematical reimplementation of Morpheus M2071 reproduces a stationary non-homogeneous Polar regime and a moving dominant-mode Traveling-Wave regime using the versioned supplementary XML parameters, then preserves both regimes at exactly 24 periodic sites without biological parameter search, stochastic forcing, or Digital Cell runtime coupling. The resulting local classification is `M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE`; autonomous resource acquisition remains `NOT_ESTABLISHED` and Architect acceptance is pending.
+- Changed areas: additive isolated ENTRY-014 solver/example registration, compact evidence under `digital-protocell/experiments/generated/dcdev021m2entry014/`, scoped workflow, and append-only governance only. Frozen scientific runtime sources, M1/V4, actuator, traction, metabolism, uptake, resource, production selector, restart boundary, and PR #44 remain unchanged.
+- Validation:
+  - Exact ENTRY-013 accepted starting head and frozen source hashes - PASSED
+  - M2071/M2072 provenance and license audit, including retained HTML/XML Traveling-Wave `b` discrepancy - PASSED
+  - Independent Polar and Traveling-Wave reproduction - PASSED
+  - `u+v` reaction exchange and periodic diffusion conservation - PASSED
+  - Exact 24-site Polar and Traveling-Wave transfer plus 48-site resolution diagnostic - PASSED
+  - Historical ENTRY-005 through ENTRY-013 preservation and targeted governance validation - PASSED locally
+  - Exact-head Linux CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: the audit qualifies only transfer of a published isolated polarity substrate; it does not qualify Digital Cell polarity integration, locomotion improvement, encounter, navigation, or autonomous resource acquisition.
+- Blockers: exact-head Linux CI and Architect review; do not start a successor or production integration.
+- Follow-up directive: none

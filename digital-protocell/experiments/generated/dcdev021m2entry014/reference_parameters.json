@@ -1,0 +1,47 @@
+{
+  "POLAR_1D": {
+    "D": 0.1,
+    "DF": 0.001,
+    "L": "2*pi",
+    "M": 2.0,
+    "b": 0.067,
+    "epsilon": 0.6,
+    "gamma": 3.55,
+    "initial_conditions": {
+      "F": "4.5+0.82*cos(x)",
+      "u": "1-0.5*cos(x)",
+      "v": "1-0.1*cos(x)"
+    },
+    "p0": 0.8,
+    "p1": 3.8,
+    "s": 0.41,
+    "xml_grid": {
+      "dx": 0.02,
+      "sites": 314,
+      "stop_time": 100
+    }
+  },
+  "TRAVELING_WAVES_1D": {
+    "D": 0.1,
+    "DF": 0.001,
+    "L": "pi",
+    "M": 4.5,
+    "b": 0.00067,
+    "epsilon": 0.6,
+    "gamma": 3.0,
+    "html_table_b": 0.067,
+    "initial_conditions": {
+      "F": "9.2-0.82*cos(2*x)",
+      "u": "2.2-0.33*cos(2*x)-0.47*sin(2*x)",
+      "v": "2.3-0.1*sin(2*x)"
+    },
+    "p0": 0.8,
+    "p1": 3.8,
+    "s": 1.0,
+    "xml_grid": {
+      "dx": 0.01,
+      "sites": 314,
+      "stop_time": 50
+    }
+  }
+}

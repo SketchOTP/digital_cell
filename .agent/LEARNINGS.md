@@ -18,6 +18,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-001A architecture selection.
 - Supersedes learning: none
 
+## L-DCDEV021-ENTRY014-001
+
+- Learning ID: L-DCDEV021-ENTRY014-001
+- Date: 2026-08-31
+- Fact or lesson: A mathematical reimplementation of the published deterministic M2071 active/inactive-GTPase plus delayed F-actin negative-feedback equations produces a stationary non-homogeneous Polar state and a moving dominant mode-2 Traveling-Wave state. Using the versioned supplementary XML Traveling-Wave `b=0.00067` value, both qualitative regimes survive unchanged-parameter transfer to 24 periodic sites; `u+v` reaction exchange and periodic diffusion sums conserve to numerical precision. This is an isolated reference-transfer feasibility result only; no Digital Cell production mechanism or autonomous resource acquisition is established.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry014.rs`, `digital-protocell/experiments/generated/dcdev021m2entry014/`, and `.github/workflows/dc-dev-021-m2-entry014.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-014 isolated excitable-polarity reference-transfer audit
+- Supersedes learning: none
+
 ## L-DCDEV021-ENTRY010-001
 
 - Learning ID: L-DCDEV021-ENTRY010-001

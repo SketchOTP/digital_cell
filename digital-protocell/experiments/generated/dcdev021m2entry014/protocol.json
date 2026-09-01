@@ -1,0 +1,14 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-014-EXCITABLE-POLARITY-REFERENCE-TRANSFER-FEASIBILITY-001",
+  "objective": "Isolated deterministic M2071 reference reproduction and exact 24-site periodic transfer feasibility.",
+  "parameter_search": false,
+  "reference_resolution": 96,
+  "resource_or_actuator_coupling": false,
+  "scientific_runtime_changed": false,
+  "starting_head": "0cef8e1cdb12d915f3b9f3084600c585c933ffa8",
+  "stochastic_forcing": false,
+  "transfer_resolutions": [
+    24,
+    48
+  ]
+}

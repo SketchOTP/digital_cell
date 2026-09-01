@@ -1,0 +1,9 @@
+{
+  "24_site_mapping": "dx=L/24; indices are periodic ring order only",
+  "depends_on": [
+    "local site state",
+    "periodic neighbor state",
+    "periodic adjacency"
+  ],
+  "fixed_euclidean_world_geometry_required": false
+}

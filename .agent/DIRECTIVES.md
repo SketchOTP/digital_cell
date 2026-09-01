@@ -1,5 +1,19 @@
 # Project Directive Ledger Template
 
+## D-20260831-dcdev021-m2-entry014-excitable-polarity-reference-transfer
+
+- Issued: `2026-08-31T21:03:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-014-EXCITABLE-POLARITY-REFERENCE-TRANSFER-FEASIBILITY-001`
+- Objective: Determine whether the published deterministic M2071 active/inactive-GTPase plus delayed negative-feedback actin-wave system can be faithfully reproduced and transferred to Digital Cell's exact 24-site periodic material ring without parameter tuning or runtime coupling.
+- Scope: External provenance and license audit, exact published equations/parameters/initial conditions, independent Polar and Traveling-Wave reproduction, numerical-method/conservation audit, exact 24-site transfer and bounded resolution check, compatibility/topology analysis, compact evidence, governance, and exact-head Linux CI.
+- Exclusions: Digital Cell scientific runtime changes, actuator/traction/metabolism/uptake/resource coupling, production polarity, stochasticity, target/gradient/centroid/resource information, parameter search, M1 work, restart repair, and PR #44 mutation.
+- Acceptance: `M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE`, `M2_EXCITABLE_POLARITY_24_SITE_DISCRETIZATION_INSUFFICIENT`, `M2_EXCITABLE_POLARITY_REFERENCE_REPRODUCTION_FAILED`, `M2_EXCITABLE_POLARITY_TRANSFER_MAPPING_UNRESOLVED`, or `M2_ENTRY014_EXCITABLE_POLARITY_REFERENCE_TRANSFER_INVALID` according to the directive gates and exact-head validation.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260829-dcdev021-m2-entry001-activated-energy-contractility
 
 - Issued: `2026-08-29T16:00:00-04:00`

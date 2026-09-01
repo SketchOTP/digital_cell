@@ -1,0 +1,24 @@
+{
+  "entry013": {
+    "architect_accepted": true,
+    "artifact_digest": "sha256:1280136a5c4d64101d052bb93fe723bdfd9fb87bf7e4c24388af34fdd4f63dcf",
+    "ci": "33454903691",
+    "classification": "M2_SEARCH_REACH_POLARITY_DECAY_OR_HOMOGENIZATION_CONFIRMED",
+    "head": "0cef8e1cdb12d915f3b9f3084600c585c933ffa8"
+  },
+  "frozen_scientific_source_sha256": {
+    "contractility.rs": "11988a0f64b8588ac44ada488a1578ada4121b10e6f5a4fc62f485ac19568950",
+    "intrinsic_exploration.rs": "7fcdb28b72645e2b89a05cb786552fd31d6be4a137499aac709352fed64f83e9",
+    "mesh_reactions.rs": "d6411244f71bf13233f251db226ef48ae4d068e10c264acbf9456c206a0be29e",
+    "spatial_resource.rs": "43cc7fe972a530b1f97b55b3a95ad4072738c7ccc6fee95f3d9db57ab77c4c26",
+    "stick_slip_traction.rs": "b1bbae6a47fdbdd128ffd12e78c9abd5e9c501c5842268db4645b1a7e03b0691"
+  },
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "number": 44,
+    "state": "open",
+    "touched": false
+  },
+  "starting_head": "0cef8e1cdb12d915f3b9f3084600c585c933ffa8"
+}

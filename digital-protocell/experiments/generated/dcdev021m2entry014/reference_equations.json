@@ -1,0 +1,8 @@
+{
+  "dF_dt": "epsilon*(p0 + p1*u - F) + DF*Laplacian(F)",
+  "du_dt": "(b + gamma*u^2)*v - (1 + s*F + u^2)*u + D*Laplacian(u)",
+  "dv_dt": "-(b + gamma*u^2)*v + (1 + s*F + u^2)*u + Laplacian(v)",
+  "hill_coefficient": 2.0,
+  "laplacian": "periodic nearest-neighbor (x[i+1]-2*x[i]+x[i-1])/dx^2",
+  "reaction_exchange": "r=(b+gamma*u^2)*v-(1+s*F+u^2)*u; du reaction=r, dv reaction=-r"
+}

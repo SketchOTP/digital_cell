@@ -1,0 +1,12 @@
+{
+  "convergence_check": "same published parameters at 24, 48, and independent reference-compatible 96 sites; no outcome-driven resolution or parameter selection",
+  "dt_rule": "0.1*dx^2/max(D_u,D_v,D_F), selected before regime inspection",
+  "method": "method-of-lines with periodic nearest-neighbor finite differences and classical RK4",
+  "periodic_boundary": true,
+  "published_solver_context": "Morpheus XML declares Dormand-Prince adaptive O(5), time-step 0.05; this independent audit uses a stable fixed-step solver and does not claim bitwise Morpheus parity",
+  "reference_resolution": 96,
+  "transfer_resolutions": [
+    24,
+    48
+  ]
+}

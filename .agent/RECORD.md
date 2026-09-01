@@ -215,3 +215,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The remote workflow verified authority and observer-only scope, reproduced accepted ENTRY-005 through ENTRY-012 results, ran the ENTRY-013 ring-mode/persistence/kinematic/mechanical diagnostics and counterfactuals, preserved M1/D-087/downstream boundaries, validated governance, and uploaded the evidence. The classification remains `M2_SEARCH_REACH_POLARITY_DECAY_OR_HOMOGENIZATION_CONFIRMED`; autonomous resource acquisition remains `NOT_ESTABLISHED`. The initial remote attempt `33454372521` exposed and was corrected as a workflow assertion-key defect before the passing run.
 - Affected areas: additive observer-only ENTRY-013 assay, compact evidence, scoped workflow, and governance only; no scientific runtime source changed and PR #44 remains untouched.
 - Supersedes record: DEC-DCDEV021-ENTRY013-SEARCH-PERSISTENCE-AUDIT-R1
+
+## DEC-DCDEV021-ENTRY014-EXCITABLE-POLARITY-REFERENCE-TRANSFER-001
+
+- Date: 2026-08-31
+- Record or decision ID: DEC-DCDEV021-ENTRY014-EXCITABLE-POLARITY-REFERENCE-TRANSFER-001
+- Status: ACTIVE
+- Decision or event: ENTRY-014 is authorized from the Architect-accepted ENTRY-013 head `0cef8e1cdb12d915f3b9f3084600c585c933ffa8` as an isolated feasibility audit of the published Morpheus M2071 deterministic active/inactive-GTPase and delayed negative-feedback actin-wave model.
+- Rationale: ENTRY-013 established intrinsic first-harmonic polarity decay/homogenization while an assay-only persistent asymmetric profile translated through unchanged mechanics. M2071 provides a directly relevant target-free reaction-diffusion reference with periodic 1D Polar and Traveling-Wave regimes. The webpage table and current downloadable Traveling-Wave XML differ on `b` (`0.067` versus `0.00067`); repository file history records the supplementary XML's explicit update to `0.00067`, which agrees with M2072's related Turning Cell table. The audit will preserve both provenance surfaces and use the versioned supplementary XML as the executable authority without copying framework code.
+- Affected areas: isolated reference solver/assay, compact evidence, scoped workflow, and append-only governance only; no Digital Cell scientific runtime, M1 source, actuator, traction, metabolism, uptake, resource, production selector, restart boundary, or PR #44 change.
+- Supersedes record: none

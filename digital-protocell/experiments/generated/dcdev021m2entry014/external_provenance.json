@@ -1,0 +1,45 @@
+{
+  "deterministic": true,
+  "equation_semantics": {
+    "F": "F-actin",
+    "feedback": "F-actin contributes local negative feedback to u activation",
+    "u": "active GTPase",
+    "v": "inactive GTPase"
+  },
+  "html_table_xml_discrepancy": {
+    "m2071_html_traveling_b": 0.067,
+    "m2072_related_turning_cell_b": 0.00067,
+    "resolution": "XML and repository history are used as executable authority; discrepancy retained for audit.",
+    "versioned_supplementary_xml_traveling_b": 0.00067
+  },
+  "license": "CC BY 4.0 as stated by Morpheus model page; mathematical reimplementation used; framework source not copied",
+  "m2071_model_files": [
+    "ActinWavesPDE1DPolar_main.xml",
+    "ActinWavesPDE1DTW.xml"
+  ],
+  "m2071_model_id": "M2071",
+  "m2071_page": "https://morpheus.gitlab.io/model/m2071/",
+  "m2072": {
+    "disposition": "REFERENCE_ONLY / INCOMPATIBLE for CPM/StarConvex/membrane coupling",
+    "url": "https://morpheus.gitlab.io/model/m2072/"
+  },
+  "model_repository": "https://gitlab.com/morpheus.lab/model-repo",
+  "model_repository_default_branch": "main",
+  "periodic_domain": true,
+  "publication": {
+    "doi": "10.1101/cshperspect.a041796",
+    "title": "Modeling and Simulating Single and Collective Cell Motility"
+  },
+  "traveling_wave_file_history": [
+    {
+      "commit": "3b680c42926ee2a9d5b1bd3faf08c30895391413",
+      "parameter": "b=0.00067",
+      "title": "M2071: Update model parameters"
+    },
+    {
+      "commit": "e0288fdc3c212586401c240b6ad5462da7a2c28a",
+      "parameter": "b=0.00067",
+      "title": "M2071: Update publication details"
+    }
+  ]
+}

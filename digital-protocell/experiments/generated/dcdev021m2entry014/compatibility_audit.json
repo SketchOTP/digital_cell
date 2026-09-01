@@ -1,0 +1,18 @@
+{
+  "mapping_disposition": "ADAPTABLE isolated material-ring substrate; integration not implemented",
+  "required_operations": [
+    "finite/conserved u+v reaction exchange",
+    "local neighbor diffusion",
+    "local negative feedback"
+  ],
+  "required_state": {
+    "F": "new local chemical/activity state with delayed negative feedback",
+    "u": "new local chemical/activity state",
+    "v": "new local chemical/activity state in finite u+v pool"
+  },
+  "requires_centroid_history": false,
+  "requires_preferred_direction_memory": false,
+  "requires_resource_information": false,
+  "requires_world_geometry": false,
+  "state_semantics": "reference chemical/regulatory fields, not observer viability or controller state"
+}

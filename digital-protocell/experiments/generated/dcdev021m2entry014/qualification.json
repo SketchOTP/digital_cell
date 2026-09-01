@@ -1,0 +1,15 @@
+{
+  "architect_acceptance": "PENDING",
+  "classification": "M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE",
+  "digital_cell_runtime_changed": false,
+  "downstream_preservation": "PASS",
+  "entry005_013_preservation": "PASS",
+  "m1_preservation": "PASS",
+  "m2_autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "parameter_search": false,
+  "reference_polar_pass": true,
+  "reference_traveling_pass": true,
+  "ring24_polar_pass": true,
+  "ring24_traveling_pass": true,
+  "stochastic_forcing": false
+}

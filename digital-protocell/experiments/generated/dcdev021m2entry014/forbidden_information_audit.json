@@ -1,0 +1,14 @@
+{
+  "actuator_called": false,
+  "centroid_read": false,
+  "forbidden_information_read": "NONE",
+  "fourier_feedback": false,
+  "mesh_modified": false,
+  "metabolism_called": false,
+  "production_state_modified": false,
+  "resource_center_read": false,
+  "resource_signal_read": false,
+  "traction_called": false,
+  "uptake_called": false,
+  "world_coordinates_read": false
+}

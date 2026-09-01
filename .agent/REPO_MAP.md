@@ -30,6 +30,7 @@
 - `digital-protocell/examples/dcdev021_m2_entry011.rs` — observer-only composition of ENTRY-005 locomotion, unchanged DC-DEV-008 uptake, and the exact frozen V4-compatible reaction kernel; it does not add behavior or change production defaults.
 - `digital-protocell/examples/dcdev021_m2_entry012.rs` — observer-only separated-resource encounter assay using the exact ENTRY-011 composition; it preregisters one settled mean-edge-length gap and does not add resource-seeking behavior.
 - `digital-protocell/examples/dcdev021_m2_entry013.rs` — observer-only intrinsic search-persistence audit using exact ENTRY-012 no-resource composition; it records ring modes/kinematics and runs non-production phase-locked/fixed-profile counterfactuals without changing scientific runtime.
+- `digital-protocell/examples/dcdev021_m2_entry014.rs` — isolated mathematical reimplementation of the published Morpheus M2071 Polar and Traveling-Wave 1-D periodic regimes; it performs no Digital Cell runtime, actuator, resource, or observer-feedback calls.
 
 ## Interfaces and contracts
 
@@ -65,6 +66,7 @@
 - `digital-protocell/experiments/generated/dcdev021m2entry011/` — compact ENTRY-011 frozen uptake/metabolism composition evidence; dense trajectories remain externalized to Atlas.
 - `digital-protocell/experiments/generated/dcdev021m2entry012/` — compact ENTRY-012 separated-resource encounter and reachability evidence; dense trajectories remain externalized to Atlas.
 - `digital-protocell/experiments/generated/dcdev021m2entry013/` — compact ENTRY-013 ring-mode, polarity-persistence, kinematic, mechanical-counterfactual, preservation, and qualification evidence; dense trajectories remain externalized to Atlas.
+- `digital-protocell/experiments/generated/dcdev021m2entry014/` — compact ENTRY-014 external-provenance, equation, conservation, reference-reproduction, exact-24-site-transfer, compatibility, preservation, and qualification evidence; dense numerical trajectories remain externalized.
 - `digital-protocell/experiments/generated/dcdev001/` — DC-DEV-001A machine-readable decision artifacts.
 - `digital-protocell/experiments/generated/dcdev006/` — DC-DEV-006 local spatial-contact evidence artifacts.
 - `digital-protocell/experiments/generated/dcdev009/` — DC-DEV-009 force, displacement, coupling, and audit evidence artifacts.
