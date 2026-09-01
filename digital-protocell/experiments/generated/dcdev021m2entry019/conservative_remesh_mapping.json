@@ -1,0 +1,6 @@
+{
+  "merge_amounts_conserved": true,
+  "method": "periodic physical-arclength overlap using material-local remesh correspondence",
+  "pass": true,
+  "split_amounts_conserved": true
+}

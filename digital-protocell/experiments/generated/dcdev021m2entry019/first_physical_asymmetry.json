@@ -1,0 +1,9 @@
+{
+  "cause": "accepted physical founder geometry / subsequent D-088 deformation",
+  "classification": "CONTINUOUS_DEFORMATION",
+  "fields": [
+    "edge_length",
+    "native_control_volume_measure"
+  ],
+  "step": 0
+}

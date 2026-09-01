@@ -1,0 +1,11 @@
+{
+  "actuator": false,
+  "direct_mechanics_to_kinetics": false,
+  "directive": "DC-DEV-021-M2-ENTRY-019-CONSERVATIVE-LIFE-HISTORY-POLARITY-INITIATION-FEASIBILITY-001",
+  "initial_polarity": "exactly homogeneous",
+  "observer_only": true,
+  "primary_stop": "immediately before first accepted physical fission",
+  "random_noise": false,
+  "resource": false,
+  "starting_head": "e9d64534c565662e22aa67b76c5e00735970055f"
+}

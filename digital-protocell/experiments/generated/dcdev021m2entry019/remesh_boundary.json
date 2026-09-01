@@ -1,0 +1,813 @@
+{
+  "conservative_remesh_continuity": "PASS",
+  "dcdev003_material_correspondence": "ADAPTABLE",
+  "dcdev003_state_value_transfer": "ADAPTABLE",
+  "dcdev003_topology_detection": "ADAPTABLE",
+  "pre_fission_remesh_events": [
+    {
+      "merges": 0,
+      "site_count": 47,
+      "splits": 22,
+      "step": 1
+    },
+    {
+      "merges": 0,
+      "site_count": 48,
+      "splits": 1,
+      "step": 7
+    },
+    {
+      "merges": 0,
+      "site_count": 49,
+      "splits": 1,
+      "step": 10
+    },
+    {
+      "merges": 0,
+      "site_count": 50,
+      "splits": 1,
+      "step": 418
+    },
+    {
+      "merges": 0,
+      "site_count": 51,
+      "splits": 1,
+      "step": 1094
+    },
+    {
+      "merges": 0,
+      "site_count": 52,
+      "splits": 1,
+      "step": 1132
+    },
+    {
+      "merges": 0,
+      "site_count": 53,
+      "splits": 1,
+      "step": 1189
+    },
+    {
+      "merges": 0,
+      "site_count": 54,
+      "splits": 1,
+      "step": 1191
+    },
+    {
+      "merges": 0,
+      "site_count": 55,
+      "splits": 1,
+      "step": 1193
+    },
+    {
+      "merges": 0,
+      "site_count": 56,
+      "splits": 1,
+      "step": 1194
+    },
+    {
+      "merges": 0,
+      "site_count": 57,
+      "splits": 1,
+      "step": 1196
+    },
+    {
+      "merges": 0,
+      "site_count": 58,
+      "splits": 1,
+      "step": 1198
+    },
+    {
+      "merges": 0,
+      "site_count": 59,
+      "splits": 1,
+      "step": 1206
+    },
+    {
+      "merges": 0,
+      "site_count": 60,
+      "splits": 1,
+      "step": 1216
+    },
+    {
+      "merges": 0,
+      "site_count": 62,
+      "splits": 2,
+      "step": 1217
+    },
+    {
+      "merges": 0,
+      "site_count": 63,
+      "splits": 1,
+      "step": 1223
+    },
+    {
+      "merges": 0,
+      "site_count": 64,
+      "splits": 1,
+      "step": 1229
+    },
+    {
+      "merges": 0,
+      "site_count": 65,
+      "splits": 1,
+      "step": 1233
+    },
+    {
+      "merges": 0,
+      "site_count": 66,
+      "splits": 1,
+      "step": 1237
+    },
+    {
+      "merges": 0,
+      "site_count": 67,
+      "splits": 1,
+      "step": 1242
+    },
+    {
+      "merges": 0,
+      "site_count": 68,
+      "splits": 1,
+      "step": 1247
+    },
+    {
+      "merges": 0,
+      "site_count": 69,
+      "splits": 1,
+      "step": 1282
+    },
+    {
+      "merges": 0,
+      "site_count": 71,
+      "splits": 2,
+      "step": 1284
+    },
+    {
+      "merges": 0,
+      "site_count": 72,
+      "splits": 1,
+      "step": 1286
+    },
+    {
+      "merges": 0,
+      "site_count": 73,
+      "splits": 1,
+      "step": 1299
+    },
+    {
+      "merges": 0,
+      "site_count": 75,
+      "splits": 2,
+      "step": 1302
+    },
+    {
+      "merges": 0,
+      "site_count": 76,
+      "splits": 1,
+      "step": 1303
+    },
+    {
+      "merges": 0,
+      "site_count": 77,
+      "splits": 1,
+      "step": 1305
+    },
+    {
+      "merges": 0,
+      "site_count": 78,
+      "splits": 1,
+      "step": 1310
+    },
+    {
+      "merges": 0,
+      "site_count": 79,
+      "splits": 1,
+      "step": 1334
+    },
+    {
+      "merges": 0,
+      "site_count": 80,
+      "splits": 1,
+      "step": 1343
+    },
+    {
+      "merges": 0,
+      "site_count": 81,
+      "splits": 1,
+      "step": 1346
+    },
+    {
+      "merges": 0,
+      "site_count": 82,
+      "splits": 1,
+      "step": 1349
+    },
+    {
+      "merges": 0,
+      "site_count": 83,
+      "splits": 1,
+      "step": 1380
+    },
+    {
+      "merges": 0,
+      "site_count": 84,
+      "splits": 1,
+      "step": 1381
+    },
+    {
+      "merges": 0,
+      "site_count": 85,
+      "splits": 1,
+      "step": 1396
+    },
+    {
+      "merges": 0,
+      "site_count": 86,
+      "splits": 1,
+      "step": 1400
+    },
+    {
+      "merges": 0,
+      "site_count": 87,
+      "splits": 1,
+      "step": 1407
+    },
+    {
+      "merges": 0,
+      "site_count": 88,
+      "splits": 1,
+      "step": 1419
+    },
+    {
+      "merges": 0,
+      "site_count": 89,
+      "splits": 1,
+      "step": 1423
+    },
+    {
+      "merges": 0,
+      "site_count": 90,
+      "splits": 1,
+      "step": 1438
+    },
+    {
+      "merges": 0,
+      "site_count": 91,
+      "splits": 1,
+      "step": 1439
+    },
+    {
+      "merges": 0,
+      "site_count": 92,
+      "splits": 1,
+      "step": 1453
+    },
+    {
+      "merges": 0,
+      "site_count": 93,
+      "splits": 1,
+      "step": 1475
+    },
+    {
+      "merges": 0,
+      "site_count": 94,
+      "splits": 1,
+      "step": 1487
+    },
+    {
+      "merges": 0,
+      "site_count": 95,
+      "splits": 1,
+      "step": 1520
+    },
+    {
+      "merges": 0,
+      "site_count": 96,
+      "splits": 1,
+      "step": 1579
+    },
+    {
+      "merges": 0,
+      "site_count": 97,
+      "splits": 1,
+      "step": 1598
+    },
+    {
+      "merges": 0,
+      "site_count": 98,
+      "splits": 1,
+      "step": 1626
+    },
+    {
+      "merges": 0,
+      "site_count": 99,
+      "splits": 1,
+      "step": 1648
+    },
+    {
+      "merges": 0,
+      "site_count": 100,
+      "splits": 1,
+      "step": 1672
+    },
+    {
+      "merges": 0,
+      "site_count": 101,
+      "splits": 1,
+      "step": 1847
+    },
+    {
+      "merges": 0,
+      "site_count": 102,
+      "splits": 1,
+      "step": 1862
+    },
+    {
+      "merges": 0,
+      "site_count": 103,
+      "splits": 1,
+      "step": 1865
+    },
+    {
+      "merges": 0,
+      "site_count": 104,
+      "splits": 1,
+      "step": 1873
+    },
+    {
+      "merges": 0,
+      "site_count": 105,
+      "splits": 1,
+      "step": 1878
+    },
+    {
+      "merges": 0,
+      "site_count": 106,
+      "splits": 1,
+      "step": 1886
+    },
+    {
+      "merges": 0,
+      "site_count": 107,
+      "splits": 1,
+      "step": 1893
+    },
+    {
+      "merges": 0,
+      "site_count": 109,
+      "splits": 2,
+      "step": 1898
+    },
+    {
+      "merges": 0,
+      "site_count": 110,
+      "splits": 1,
+      "step": 1899
+    },
+    {
+      "merges": 0,
+      "site_count": 111,
+      "splits": 1,
+      "step": 1900
+    },
+    {
+      "merges": 0,
+      "site_count": 112,
+      "splits": 1,
+      "step": 1903
+    },
+    {
+      "merges": 0,
+      "site_count": 113,
+      "splits": 1,
+      "step": 1905
+    },
+    {
+      "merges": 0,
+      "site_count": 115,
+      "splits": 2,
+      "step": 1907
+    },
+    {
+      "merges": 0,
+      "site_count": 117,
+      "splits": 2,
+      "step": 1910
+    },
+    {
+      "merges": 0,
+      "site_count": 119,
+      "splits": 2,
+      "step": 1916
+    },
+    {
+      "merges": 0,
+      "site_count": 120,
+      "splits": 1,
+      "step": 1920
+    },
+    {
+      "merges": 0,
+      "site_count": 121,
+      "splits": 1,
+      "step": 1925
+    },
+    {
+      "merges": 0,
+      "site_count": 122,
+      "splits": 1,
+      "step": 1926
+    },
+    {
+      "merges": 0,
+      "site_count": 124,
+      "splits": 2,
+      "step": 1928
+    },
+    {
+      "merges": 0,
+      "site_count": 126,
+      "splits": 2,
+      "step": 1929
+    },
+    {
+      "merges": 0,
+      "site_count": 127,
+      "splits": 1,
+      "step": 1930
+    },
+    {
+      "merges": 0,
+      "site_count": 128,
+      "splits": 1,
+      "step": 1931
+    },
+    {
+      "merges": 0,
+      "site_count": 129,
+      "splits": 1,
+      "step": 1933
+    },
+    {
+      "merges": 0,
+      "site_count": 130,
+      "splits": 1,
+      "step": 1935
+    },
+    {
+      "merges": 0,
+      "site_count": 131,
+      "splits": 1,
+      "step": 1939
+    },
+    {
+      "merges": 0,
+      "site_count": 133,
+      "splits": 2,
+      "step": 1943
+    },
+    {
+      "merges": 0,
+      "site_count": 134,
+      "splits": 1,
+      "step": 1944
+    },
+    {
+      "merges": 0,
+      "site_count": 135,
+      "splits": 1,
+      "step": 1945
+    },
+    {
+      "merges": 0,
+      "site_count": 137,
+      "splits": 2,
+      "step": 1948
+    },
+    {
+      "merges": 0,
+      "site_count": 140,
+      "splits": 3,
+      "step": 1949
+    },
+    {
+      "merges": 0,
+      "site_count": 141,
+      "splits": 1,
+      "step": 1951
+    },
+    {
+      "merges": 0,
+      "site_count": 142,
+      "splits": 1,
+      "step": 1952
+    },
+    {
+      "merges": 0,
+      "site_count": 143,
+      "splits": 1,
+      "step": 1953
+    },
+    {
+      "merges": 0,
+      "site_count": 144,
+      "splits": 1,
+      "step": 1954
+    },
+    {
+      "merges": 0,
+      "site_count": 145,
+      "splits": 1,
+      "step": 1956
+    },
+    {
+      "merges": 0,
+      "site_count": 146,
+      "splits": 1,
+      "step": 1960
+    },
+    {
+      "merges": 0,
+      "site_count": 149,
+      "splits": 3,
+      "step": 1964
+    },
+    {
+      "merges": 0,
+      "site_count": 151,
+      "splits": 2,
+      "step": 1966
+    },
+    {
+      "merges": 0,
+      "site_count": 152,
+      "splits": 1,
+      "step": 1967
+    },
+    {
+      "merges": 0,
+      "site_count": 153,
+      "splits": 1,
+      "step": 1976
+    },
+    {
+      "merges": 0,
+      "site_count": 154,
+      "splits": 1,
+      "step": 1979
+    },
+    {
+      "merges": 0,
+      "site_count": 155,
+      "splits": 1,
+      "step": 1982
+    },
+    {
+      "merges": 0,
+      "site_count": 156,
+      "splits": 1,
+      "step": 1992
+    },
+    {
+      "merges": 0,
+      "site_count": 157,
+      "splits": 1,
+      "step": 2000
+    },
+    {
+      "merges": 0,
+      "site_count": 158,
+      "splits": 1,
+      "step": 2004
+    },
+    {
+      "merges": 0,
+      "site_count": 159,
+      "splits": 1,
+      "step": 2006
+    },
+    {
+      "merges": 0,
+      "site_count": 160,
+      "splits": 1,
+      "step": 2007
+    },
+    {
+      "merges": 0,
+      "site_count": 161,
+      "splits": 1,
+      "step": 2027
+    },
+    {
+      "merges": 0,
+      "site_count": 162,
+      "splits": 1,
+      "step": 2039
+    },
+    {
+      "merges": 0,
+      "site_count": 163,
+      "splits": 1,
+      "step": 2045
+    },
+    {
+      "merges": 0,
+      "site_count": 164,
+      "splits": 1,
+      "step": 2046
+    },
+    {
+      "merges": 0,
+      "site_count": 165,
+      "splits": 1,
+      "step": 2049
+    },
+    {
+      "merges": 0,
+      "site_count": 166,
+      "splits": 1,
+      "step": 2056
+    },
+    {
+      "merges": 0,
+      "site_count": 167,
+      "splits": 1,
+      "step": 2060
+    },
+    {
+      "merges": 0,
+      "site_count": 168,
+      "splits": 1,
+      "step": 2064
+    },
+    {
+      "merges": 0,
+      "site_count": 169,
+      "splits": 1,
+      "step": 2066
+    },
+    {
+      "merges": 0,
+      "site_count": 171,
+      "splits": 2,
+      "step": 2067
+    },
+    {
+      "merges": 0,
+      "site_count": 172,
+      "splits": 1,
+      "step": 2070
+    },
+    {
+      "merges": 0,
+      "site_count": 173,
+      "splits": 1,
+      "step": 2072
+    },
+    {
+      "merges": 0,
+      "site_count": 174,
+      "splits": 1,
+      "step": 2074
+    },
+    {
+      "merges": 0,
+      "site_count": 175,
+      "splits": 1,
+      "step": 2080
+    },
+    {
+      "merges": 0,
+      "site_count": 176,
+      "splits": 1,
+      "step": 2081
+    },
+    {
+      "merges": 0,
+      "site_count": 177,
+      "splits": 1,
+      "step": 2083
+    },
+    {
+      "merges": 0,
+      "site_count": 178,
+      "splits": 1,
+      "step": 2085
+    },
+    {
+      "merges": 0,
+      "site_count": 179,
+      "splits": 1,
+      "step": 2096
+    },
+    {
+      "merges": 0,
+      "site_count": 180,
+      "splits": 1,
+      "step": 2111
+    },
+    {
+      "merges": 0,
+      "site_count": 181,
+      "splits": 1,
+      "step": 2113
+    },
+    {
+      "merges": 0,
+      "site_count": 182,
+      "splits": 1,
+      "step": 2133
+    },
+    {
+      "merges": 0,
+      "site_count": 183,
+      "splits": 1,
+      "step": 2202
+    },
+    {
+      "merges": 0,
+      "site_count": 184,
+      "splits": 1,
+      "step": 2208
+    },
+    {
+      "merges": 0,
+      "site_count": 185,
+      "splits": 1,
+      "step": 2222
+    },
+    {
+      "merges": 0,
+      "site_count": 186,
+      "splits": 1,
+      "step": 2227
+    },
+    {
+      "merges": 0,
+      "site_count": 187,
+      "splits": 1,
+      "step": 2230
+    },
+    {
+      "merges": 0,
+      "site_count": 189,
+      "splits": 2,
+      "step": 2245
+    },
+    {
+      "merges": 0,
+      "site_count": 190,
+      "splits": 1,
+      "step": 2250
+    },
+    {
+      "merges": 0,
+      "site_count": 191,
+      "splits": 1,
+      "step": 2252
+    },
+    {
+      "merges": 0,
+      "site_count": 192,
+      "splits": 1,
+      "step": 2257
+    },
+    {
+      "merges": 0,
+      "site_count": 193,
+      "splits": 1,
+      "step": 2258
+    },
+    {
+      "merges": 0,
+      "site_count": 194,
+      "splits": 1,
+      "step": 2261
+    },
+    {
+      "merges": 0,
+      "site_count": 195,
+      "splits": 1,
+      "step": 2282
+    },
+    {
+      "merges": 0,
+      "site_count": 196,
+      "splits": 1,
+      "step": 2285
+    },
+    {
+      "merges": 0,
+      "site_count": 197,
+      "splits": 1,
+      "step": 2306
+    },
+    {
+      "merges": 0,
+      "site_count": 198,
+      "splits": 1,
+      "step": 2319
+    }
+  ],
+  "uniformity_control": true
+}

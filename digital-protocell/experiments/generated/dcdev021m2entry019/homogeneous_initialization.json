@@ -1,0 +1,15 @@
+{
+  "all_sites_identical": true,
+  "geometry_not_read_for_initialization": true,
+  "nonconstant_mode": "zero required",
+  "polar_equilibrium": [
+    0.9193877936924131,
+    1.080612206307587,
+    4.293673616031169
+  ],
+  "traveling_equilibrium": [
+    0.001689746913291882,
+    4.498310253086708,
+    0.8064210382705091
+  ]
+}

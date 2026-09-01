@@ -1,0 +1,9 @@
+{
+  "max_transport_only_residual_polar": 7.460698725481052e-14,
+  "max_transport_only_residual_traveling": 5.684341886080802e-14,
+  "pure_transport_conserves_f": true,
+  "pure_transport_conserves_u": true,
+  "pure_transport_conserves_v": true,
+  "u_plus_v_reaction_conserved": true,
+  "weighted_measure": "ds_i"
+}

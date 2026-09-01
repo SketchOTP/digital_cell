@@ -813,6 +813,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: Architect review; do not start successor work.
 - Follow-up directive: none
 
+## D-20260901-dcdev021-m2-entry019-conservative-life-history-polarity-initiation - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY019-CONSERVATIVE-LIFE-HISTORY-POLARITY-INITIATION-LOCAL`
+- Supersedes outcome: none
+- Closed: 2026-09-01T12:00:00-04:00
+- Acceptance: `PARTIAL`
+- Summary: The isolated ENTRY-019 audit replays the accepted D-088 pre-fission physical history from exact ENTRY-018 head `e9d64534c565662e22aa67b76c5e00735970055f`, carries initially homogeneous polarity amounts by conservative material-local arclength overlap through 134 remesh events, and advances the unchanged accepted reaction-diffusion equations. The local classification is `M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED`: geometry-frozen and no-dilution controls remain homogeneous, transport creates a deterministic nonconstant perturbation, and the accepted Polar family amplifies it. The Traveling parameter family is seeded but does not amplify in this bounded assay.
+- Changed areas: additive isolated ENTRY-019 example, compact evidence under `digital-protocell/experiments/generated/dcdev021m2entry019/`, scoped workflow, and append-only governance only; no accepted scientific runtime source or PR #44 change.
+- Validation:
+  - Exact ENTRY-018 start, accepted D-088 pre-fission replay, native conservative mapping, weighted closure, homogeneous controls, causal attribution, and forbidden-information boundary - PASSED
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: remote validation may identify workflow or preservation defects; ENTRY-019 does not establish production polarity initiation or autonomous resource acquisition.
+- Blockers: exact-head Linux CI and Architect review; do not start successor work.
+- Follow-up directive: none
+
 ## D-20260831-dcdev021-m2-entry012-separated-resource-autonomous-acquisition - PARTIAL
 
 - Outcome ID: `OUT-DCDEV021-ENTRY012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-R2`

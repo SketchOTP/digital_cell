@@ -1,0 +1,7 @@
+{
+  "accepted_physical_event_precedes_seed": true,
+  "conclusion": "conservation-driven dilution/compression supplies the perturbation; unchanged Polar RD amplifies it",
+  "geometry_frozen_homogeneous": true,
+  "no_dilution_homogeneous": true,
+  "transport_only_seed": true
+}

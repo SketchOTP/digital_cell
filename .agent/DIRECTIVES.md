@@ -514,3 +514,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260901-dcdev021-m2-entry017-post-fission-daughter-asymmetry-audit
 - Status at issuance: ISSUED
+
+## D-20260901-dcdev021-m2-entry019-conservative-life-history-polarity-initiation
+
+- Issued: `2026-09-01T12:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-019-CONSERVATIVE-LIFE-HISTORY-POLARITY-INITIATION-FEASIBILITY-001`
+- Objective: Determine whether conservative native material-ring transport of an initially homogeneous accepted polarity state through the exact D-088 pre-fission life history creates a lawful perturbation that the unchanged accepted equations can amplify.
+- Scope: Observer-only physical-history replay, native control-volume amount transport through remesh, homogeneous and reaction-diffusion controls, Polar and Traveling assays, conservation, seed/amplification attribution, remesh boundary, preservation, compact evidence, governance, and exact-head Linux validation.
+- Exclusions: production polarity, polarity initialization from physical fields, actuator/traction coupling, resource interaction, fission continuity, new randomness, new parameters, tuning, world/target/resource information, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: One preregistered ENTRY-019 classification after exact ENTRY-018 authority, physical D-088 replay, conservative transport, controls, causal attribution, closure, preservation, governance, and exact-head Linux checks.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260901-dcdev021-m2-entry018-native-material-ring-polarity-transfer
+- Status at issuance: ISSUED

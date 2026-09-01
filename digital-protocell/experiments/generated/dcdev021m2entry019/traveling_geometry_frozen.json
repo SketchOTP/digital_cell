@@ -1,0 +1,202 @@
+{
+  "arm": "GEOMETRY_FROZEN",
+  "final": {
+    "max_nonconstant_f": 0.0,
+    "max_nonconstant_u": 0.0,
+    "max_nonconstant_v": 9.45303797521154e-18,
+    "sites": 25,
+    "variance_f": 1.232595164407831e-32,
+    "variance_u": 4.231779662960235e-37,
+    "variance_v": 7.099748146989106e-30,
+    "weighted_f": 5.06689281906177,
+    "weighted_u": 0.010616992978447612,
+    "weighted_v": 28.263716889329686
+  },
+  "first_seed_mode": null,
+  "first_seed_step": null,
+  "fission_not_entered": true,
+  "initial_homogeneous": true,
+  "peak_nonconstant_amplitude": 9.45303797521154e-18,
+  "records": [
+    {
+      "native_nonconstant_amplitude": 9.45303797521154e-18,
+      "step": 1,
+      "summary": {
+        "max_nonconstant_f": 0.0,
+        "max_nonconstant_u": 0.0,
+        "max_nonconstant_v": 9.45303797521154e-18,
+        "sites": 25,
+        "variance_f": 1.232595164407831e-32,
+        "variance_u": 4.231779662960235e-37,
+        "variance_v": 7.099748146989106e-30,
+        "weighted_f": 5.06689281906177,
+        "weighted_u": 0.010616992978447612,
+        "weighted_v": 28.263716889329686
+      }
+    },
+    {
+      "native_nonconstant_amplitude": 9.45303797521154e-18,
+      "step": 250,
+      "summary": {
+        "max_nonconstant_f": 0.0,
+        "max_nonconstant_u": 0.0,
+        "max_nonconstant_v": 9.45303797521154e-18,
+        "sites": 25,
+        "variance_f": 1.232595164407831e-32,
+        "variance_u": 4.231779662960235e-37,
+        "variance_v": 7.099748146989106e-30,
+        "weighted_f": 5.06689281906177,
+        "weighted_u": 0.010616992978447612,
+        "weighted_v": 28.263716889329686
+      }
+    },
+    {
+      "native_nonconstant_amplitude": 9.45303797521154e-18,
+      "step": 500,
+      "summary": {
+        "max_nonconstant_f": 0.0,
+        "max_nonconstant_u": 0.0,
+        "max_nonconstant_v": 9.45303797521154e-18,
+        "sites": 25,
+        "variance_f": 1.232595164407831e-32,
+        "variance_u": 4.231779662960235e-37,
+        "variance_v": 7.099748146989106e-30,
+        "weighted_f": 5.06689281906177,
+        "weighted_u": 0.010616992978447612,
+        "weighted_v": 28.263716889329686
+      }
+    },
+    {
+      "native_nonconstant_amplitude": 9.45303797521154e-18,
+      "step": 750,
+      "summary": {
+        "max_nonconstant_f": 0.0,
+        "max_nonconstant_u": 0.0,
+        "max_nonconstant_v": 9.45303797521154e-18,
+        "sites": 25,
+        "variance_f": 1.232595164407831e-32,
+        "variance_u": 4.231779662960235e-37,
+        "variance_v": 7.099748146989106e-30,
+        "weighted_f": 5.06689281906177,
+        "weighted_u": 0.010616992978447612,
+        "weighted_v": 28.263716889329686
+      }
+    },
+    {
+      "native_nonconstant_amplitude": 9.45303797521154e-18,
+      "step": 1000,
+      "summary": {
+        "max_nonconstant_f": 0.0,
+        "max_nonconstant_u": 0.0,
+        "max_nonconstant_v": 9.45303797521154e-18,
+        "sites": 25,
+        "variance_f": 1.232595164407831e-32,
+        "variance_u": 4.231779662960235e-37,
+        "variance_v": 7.099748146989106e-30,
+        "weighted_f": 5.06689281906177,
+        "weighted_u": 0.010616992978447612,
+        "weighted_v": 28.263716889329686
+      }
+    },
+    {
+      "native_nonconstant_amplitude": 9.45303797521154e-18,
+      "step": 1250,
+      "summary": {
+        "max_nonconstant_f": 0.0,
+        "max_nonconstant_u": 0.0,
+        "max_nonconstant_v": 9.45303797521154e-18,
+        "sites": 25,
+        "variance_f": 1.232595164407831e-32,
+        "variance_u": 4.231779662960235e-37,
+        "variance_v": 7.099748146989106e-30,
+        "weighted_f": 5.06689281906177,
+        "weighted_u": 0.010616992978447612,
+        "weighted_v": 28.263716889329686
+      }
+    },
+    {
+      "native_nonconstant_amplitude": 9.45303797521154e-18,
+      "step": 1500,
+      "summary": {
+        "max_nonconstant_f": 0.0,
+        "max_nonconstant_u": 0.0,
+        "max_nonconstant_v": 9.45303797521154e-18,
+        "sites": 25,
+        "variance_f": 1.232595164407831e-32,
+        "variance_u": 4.231779662960235e-37,
+        "variance_v": 7.099748146989106e-30,
+        "weighted_f": 5.06689281906177,
+        "weighted_u": 0.010616992978447612,
+        "weighted_v": 28.263716889329686
+      }
+    },
+    {
+      "native_nonconstant_amplitude": 9.45303797521154e-18,
+      "step": 1750,
+      "summary": {
+        "max_nonconstant_f": 0.0,
+        "max_nonconstant_u": 0.0,
+        "max_nonconstant_v": 9.45303797521154e-18,
+        "sites": 25,
+        "variance_f": 1.232595164407831e-32,
+        "variance_u": 4.231779662960235e-37,
+        "variance_v": 7.099748146989106e-30,
+        "weighted_f": 5.06689281906177,
+        "weighted_u": 0.010616992978447612,
+        "weighted_v": 28.263716889329686
+      }
+    },
+    {
+      "native_nonconstant_amplitude": 9.45303797521154e-18,
+      "step": 2000,
+      "summary": {
+        "max_nonconstant_f": 0.0,
+        "max_nonconstant_u": 0.0,
+        "max_nonconstant_v": 9.45303797521154e-18,
+        "sites": 25,
+        "variance_f": 1.232595164407831e-32,
+        "variance_u": 4.231779662960235e-37,
+        "variance_v": 7.099748146989106e-30,
+        "weighted_f": 5.06689281906177,
+        "weighted_u": 0.010616992978447612,
+        "weighted_v": 28.263716889329686
+      }
+    },
+    {
+      "native_nonconstant_amplitude": 9.45303797521154e-18,
+      "step": 2250,
+      "summary": {
+        "max_nonconstant_f": 0.0,
+        "max_nonconstant_u": 0.0,
+        "max_nonconstant_v": 9.45303797521154e-18,
+        "sites": 25,
+        "variance_f": 1.232595164407831e-32,
+        "variance_u": 4.231779662960235e-37,
+        "variance_v": 7.099748146989106e-30,
+        "weighted_f": 5.06689281906177,
+        "weighted_u": 0.010616992978447612,
+        "weighted_v": 28.263716889329686
+      }
+    },
+    {
+      "native_nonconstant_amplitude": 9.45303797521154e-18,
+      "step": 2326,
+      "summary": {
+        "max_nonconstant_f": 0.0,
+        "max_nonconstant_u": 0.0,
+        "max_nonconstant_v": 9.45303797521154e-18,
+        "sites": 25,
+        "variance_f": 1.232595164407831e-32,
+        "variance_u": 4.231779662960235e-37,
+        "variance_v": 7.099748146989106e-30,
+        "weighted_f": 5.06689281906177,
+        "weighted_u": 0.010616992978447612,
+        "weighted_v": 28.263716889329686
+      }
+    }
+  ],
+  "remesh_mapping_valid": true,
+  "status": "PASS",
+  "steps": 2326,
+  "transport_amount_closure_max": 0.0
+}

@@ -1,0 +1,6 @@
+{
+  "classification_invariant": true,
+  "pass": true,
+  "rotation": "180 degrees",
+  "seed_spectrum_invariant": true
+}

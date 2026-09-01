@@ -1,0 +1,8 @@
+{
+  "amounts": "q_i*ds_i",
+  "coordinate": "normalized physical arclength",
+  "formula": "ds_i=L*l_i/sum(l)",
+  "local_transport": "same material-local index before reaction/diffusion",
+  "native_operator_reused": "ENTRY-018 edge-centered finite volume",
+  "stable_topology": false
+}

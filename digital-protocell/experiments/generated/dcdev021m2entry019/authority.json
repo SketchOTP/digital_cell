@@ -1,0 +1,19 @@
+{
+  "entry018_acceptance": "M2_NATIVE_MATERIAL_RING_POLARITY_TRANSFER_FEASIBLE",
+  "physical_authority": "MeshPopulation::step + mesh_fission::try_local_fission",
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "state": "OPEN"
+  },
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "source_hashes": {
+    "mesh_fission.rs": "dcb859522534cf03",
+    "mesh_growth.rs": "f466c37daea1186c",
+    "mesh_mechanics.rs": "eaaa4f5898833bfd",
+    "mesh_population.rs": "6c893524be8d2c3e",
+    "mesh_reactions.rs": "8b7a5572b93b0982"
+  },
+  "starting_head": "e9d64534c565662e22aa67b76c5e00735970055f"
+}

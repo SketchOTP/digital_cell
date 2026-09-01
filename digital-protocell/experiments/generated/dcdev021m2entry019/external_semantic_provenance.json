@@ -1,0 +1,8 @@
+{
+  "digital_cell_semantics": "generic local edge-domain polarity-regulatory densities",
+  "f": "reaction-active feedback density; transport amount conserved only during geometry stage",
+  "license": "CC BY 4.0",
+  "m2071_m2072": "edge-domain u/v/F reaction-diffusion reference",
+  "source": "https://morpheus.gitlab.io/model/m2071/",
+  "u_plus_v_reaction_pool": "conserved"
+}

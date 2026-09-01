@@ -1,0 +1,7 @@
+{
+  "f": true,
+  "stable_topology_only": true,
+  "u": true,
+  "v": true,
+  "weighted_residual": "recorded in amount_bookkeeping.json"
+}

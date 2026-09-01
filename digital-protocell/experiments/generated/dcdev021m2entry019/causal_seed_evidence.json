@@ -1,0 +1,18 @@
+{
+  "geometry_frozen_homogeneous": true,
+  "no_dilution_homogeneous": true,
+  "polar": {
+    "first_seed_mode": 11,
+    "first_seed_step": 39,
+    "reaction_diffusion_amplification": true,
+    "sustained_nonhomogeneous": true,
+    "transport_seed": true
+  },
+  "traveling": {
+    "first_seed_mode": 1,
+    "first_seed_step": 72,
+    "reaction_diffusion_amplification": false,
+    "sustained_nonhomogeneous": false,
+    "transport_seed": true
+  }
+}

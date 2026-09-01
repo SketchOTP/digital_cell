@@ -297,3 +297,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-021 ENTRY-018 native material-ring polarity transfer feasibility audit.
 - Supersedes learning: L-DCDEV021-ENTRY018-001
+
+## L-DCDEV021-ENTRY019-001
+
+- Learning ID: L-DCDEV021-ENTRY019-001
+- Date: 2026-09-01
+- Fact or lesson: In the accepted D-088 pre-fission history, initially homogeneous native edge-domain polarity remains homogeneous under geometry-frozen and no-dilution controls, while conservative material-local arclength transport through 134 remesh events creates a deterministic nonconstant perturbation. The unchanged accepted Polar reaction-diffusion family amplifies that perturbation; the Traveling parameter family is seeded but not amplified in this bounded assay. No polarity state was initialized from a physical field and no production behavior was changed.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry019.rs`, `digital-protocell/experiments/generated/dcdev021m2entry019/`, and `.github/workflows/dc-dev-021-m2-entry019.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-019 conservative life-history polarity-initiation feasibility audit.
+- Supersedes learning: none

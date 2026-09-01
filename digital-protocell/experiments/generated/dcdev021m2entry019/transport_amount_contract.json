@@ -1,0 +1,6 @@
+{
+  "amount": "q_i*ds_i",
+  "local": true,
+  "mapping": "material-local conservative overlap across split/merge remesh",
+  "reaction_before_transport": false
+}

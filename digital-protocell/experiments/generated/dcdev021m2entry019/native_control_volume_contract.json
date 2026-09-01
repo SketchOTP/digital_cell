@@ -1,0 +1,6 @@
+{
+  "coordinate": "normalized physical arclength",
+  "measure": "ds_i=L*l_i/sum(l)",
+  "new_length_parameter": false,
+  "placement": "edge-centered"
+}

@@ -325,3 +325,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The sealed ENTRY-018 evidence confirms conservative normalized-physical-arclength transfer of the accepted continuous polarity equations to the exact 198/78/122-site rings, with regular-grid equivalence, weighted conservation, native instability, and nonhomogeneous reference replay passing. No daughter resampling, polarity initialization, or behavior coupling was added; Architect review remains pending.
 - Affected areas: final validation provenance for additive ENTRY-018 numerical audit/evidence/workflow/governance only; no production polarity, initialization, actuator, traction, resource, fission, remesh, restart, M1, or PR #44 change.
 - Supersedes record: DEC-DCDEV021-ENTRY018-NATIVE-MATERIAL-RING-POLARITY-TRANSFER-R1
+
+## DEC-DCDEV021-ENTRY019-CONSERVATIVE-LIFE-HISTORY-POLARITY-INITIATION-R1
+
+- Date: 2026-09-01
+- Record or decision ID: DEC-DCDEV021-ENTRY019-CONSERVATIVE-LIFE-HISTORY-POLARITY-INITIATION-R1
+- Status: ACTIVE
+- Decision or event: ENTRY-019 is authorized from exact accepted ENTRY-018 head `e9d64534c565662e22aa67b76c5e00735970055f` as an observer-only conservative life-history transport and polarity-amplification audit.
+- Rationale: ENTRY-017 established lawful life-history asymmetry and ENTRY-018 established native variable-topology polarity transfer. ENTRY-019 tests whether conservative remesh transport alone supplies a perturbation to an initially homogeneous polarity state that the unchanged accepted Polar/Traveling equations can amplify, without initializing polarity from organism fields or coupling behavior.
+- Affected areas: additive observer-only ENTRY-019 assay/example, compact evidence, scoped workflow, and append-only governance only; no scientific runtime, M1, actuator, traction, metabolism, uptake, resource, fission, remesh, restart, or PR #44 change.
+- Supersedes record: none

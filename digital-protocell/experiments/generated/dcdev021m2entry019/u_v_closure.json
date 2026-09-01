@@ -1,0 +1,7 @@
+{
+  "diffusion_conserved": true,
+  "geometry_transport_conserved": true,
+  "reaction_exchange_conserved": true,
+  "status": "PASS",
+  "weighted_measure": "native ds_i"
+}

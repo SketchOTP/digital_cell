@@ -1,0 +1,14 @@
+{
+  "a_spent": 0.0,
+  "actuator_calls": 0,
+  "centroid": false,
+  "contact": false,
+  "distance": false,
+  "gradient": false,
+  "motor_w_generated": 0.0,
+  "observer_feedback": false,
+  "polarity_state_created_in_production": false,
+  "resource": false,
+  "target": false,
+  "traction_calls": 0
+}

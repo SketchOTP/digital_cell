@@ -1,0 +1,171 @@
+name: DC-DEV-021 M2 ENTRY-019 conservative life-history polarity initiation
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-entry019-conservative-life-history-polarity-initiation
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  entry019-conservative-initiation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify exact authority and bounded scope
+        run: |
+          set -euo pipefail
+          start=e9d64534c565662e22aa67b76c5e00735970055f
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          forbidden=$(git diff --name-only "$start" HEAD -- \
+            digital-protocell/crates/chemistry-core/src \
+            digital-protocell/crates/phase1-certifier/src \
+            digital-protocell/crates/regulatory-core/src \
+            digital-protocell/crates/evolution-harness/src)
+          test -z "$forbidden"
+          python3 - "$start" <<'PY'
+          import subprocess, sys
+          start = sys.argv[1]
+          allowed = {
+              ".github/workflows/dc-dev-021-m2-entry019.yml",
+              "digital-protocell/crates/regulatory-core/Cargo.toml",
+              "digital-protocell/examples/dcdev021_m2_entry019.rs",
+              ".agent/CURRENT.md", ".agent/DIRECTIVES.md", ".agent/OUTCOMES.md",
+              ".agent/LEARNINGS.md", ".agent/RECORD.md", ".agent/REPO_MAP.md",
+          }
+          prefix = "digital-protocell/experiments/generated/dcdev021m2entry019/"
+          changed = subprocess.check_output(["git", "diff", "--name-only", start, "HEAD"], text=True).splitlines()
+          unexpected = [p for p in changed if p not in allowed and not p.startswith(prefix)]
+          assert not unexpected, unexpected
+          print("ENTRY-018 authority and ENTRY-019 scope verified")
+          PY
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefName,baseRefName
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Build and execute ENTRY-019 shadow audit
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build -p regulatory-core --example dcdev021_m2_entry019
+          cargo +1.89.0 run -p regulatory-core --release --example dcdev021_m2_entry019 -- experiments/generated/dcdev021m2entry019
+
+      - name: Validate ENTRY-019 causal and isolation gates
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("experiments/generated/dcdev021m2entry019")
+          load=lambda n: json.loads((root/n).read_text())
+          q=load("qualification.json")
+          assert q["classification"] == "M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED"
+          assert q["initially_homogeneous"] is True
+          assert q["native_control_volume_conservation"] is True
+          assert q["remesh_continuity"] == "PASS"
+          assert q["polar_transport_only_seed"] is True
+          assert q["polar_reaction_diffusion_amplification"] is True
+          assert q["rotation"] == "PASS" and q["index_invariance"] == "PASS"
+          assert load("causal_seed_evidence.json")["geometry_frozen_homogeneous"] is True
+          assert load("causal_seed_evidence.json")["no_dilution_homogeneous"] is True
+          assert load("forbidden_information_audit.json")["actuator_calls"] == 0
+          assert load("forbidden_information_audit.json")["traction_calls"] == 0
+          assert load("fission_boundary.json")["polarity_fission_continuity"] == "NOT_TESTED"
+          print("ENTRY-019 causal, conservation, and isolation gates passed")
+          PY
+
+      - name: Verify historical classifications and source isolation
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          expected={
+            "dcdev021m2entry005":"M2_REFRACTORY_MOTOR_DECOUPLING_EXPLORATION_QUALIFIED",
+            "dcdev021m2entry006":"M2_UNGUIDED_RESOURCE_ACQUISITION_NOT_ESTABLISHED",
+            "dcdev021m2entry007":"M2_UPTAKE_DEGRADATION_CONCENTRATION_FEEDBACK_CONFIRMED",
+            "dcdev021m2entry008":"M2_LOCAL_CONTACT_REFRACTORY_EXPLOITATION_UPTAKE_INSUFFICIENT",
+            "dcdev021m2entry009":"M2_CONTACT_LOCAL_SUPPRESSION_FAMILY_MECHANICALLY_INSUFFICIENT",
+            "dcdev021m2entry010":"M2_POST_INGESTIVE_MATERIAL_SIGNAL_SUBSTRATE_QUALIFIED",
+            "dcdev021m2entry011":"M2_FROZEN_UPTAKE_METABOLISM_COMPOSITION_QUALIFIED",
+            "dcdev021m2entry012":"M2_SEPARATED_RESOURCE_ENCOUNTER_NOT_ESTABLISHED",
+            "dcdev021m2entry013":"M2_SEARCH_REACH_POLARITY_DECAY_OR_HOMOGENIZATION_CONFIRMED",
+            "dcdev021m2entry014":"M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE",
+            "dcdev021m2entry015":"M2_EXCITABLE_POLARITY_ACTUATOR_INTERFACE_QUALIFIED",
+            "dcdev021m2entry016":"M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT",
+            "dcdev021m2entry017":"M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED",
+            "dcdev021m2entry018":"M2_NATIVE_MATERIAL_RING_POLARITY_TRANSFER_FEASIBLE",
+          }
+          for folder, value in expected.items():
+            assert json.loads((Path("experiments/generated")/folder/"qualification.json").read_text())["classification"] == value
+          source=Path("examples/dcdev021_m2_entry019.rs").read_text()
+          for forbidden in ["local_contact_signal", "FiniteSpatialResourceRegionV1", "regulatory_core::contractility", "stick_slip_traction"]:
+            assert forbidden not in source, forbidden
+          assert "mechanics_step" in source and "try_local_fission" in source
+          print("historical classifications and source isolation passed")
+          PY
+
+      - name: Preserve production, D-087, downstream, governance, and restart boundary
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          DCDEV020R9R3_CONTRACT=ConservativeV3 DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 cargo +1.89.0 run -p phase1-certifier --bin digital-protocell-phase1 --release -- --steps 1 --out "$RUNNER_TEMP/production.json"
+          python3 - "$RUNNER_TEMP/production.json" <<'PY'
+          import json,sys
+          r=json.load(open(sys.argv[1])); assert r["mesh_contract"]=="MaturationCoupledV4"; assert r["reserve_enabled"] is False
+          PY
+          run_d087() {
+            local output="$1" contract="$2" v4="$3"
+            if test "$v4" = 1; then DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release -- --output "$output"; else DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release -- --output "$output"; fi
+          }
+          run_d087 "$RUNNER_TEMP/d087-v2" ConservativeV2 0
+          run_d087 "$RUNNER_TEMP/d087-v3" ConservativeV3 0
+          run_d087 "$RUNNER_TEMP/d087-v4" ConservativeV3 1
+          python3 - "$RUNNER_TEMP" <<'PY'
+          import json,sys
+          from pathlib import Path
+          root=Path(sys.argv[1]); expected={"v2":[True]*8,"v3":[True]*8,"v4":[True,True,False,True,True,True,True,True]}
+          for name,vector in expected.items():
+            r=json.loads((root/f"d087-{name}"/"manifest.json").read_text()); assert [r[f"gate{i}"]["pass"] for i in range(8)]==vector
+          print("canonical D-087 preservation passed")
+          PY
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test -p evolution-harness -- --nocapture
+          python3 ../scripts/validate_governance.py --mode ADOPTED
+
+      - name: Record and upload evidence digest
+        if: always()
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2entry019 -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2entry019.sha256"
+
+      - name: Upload ENTRY-019 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-m2-entry019-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2entry019/
+            ${{ runner.temp }}/dcdev021m2entry019.sha256
+            ${{ runner.temp }}/production.json
+            ${{ runner.temp }}/d087-v2/
+            ${{ runner.temp }}/d087-v3/
+            ${{ runner.temp }}/d087-v4/
+          if-no-files-found: warn

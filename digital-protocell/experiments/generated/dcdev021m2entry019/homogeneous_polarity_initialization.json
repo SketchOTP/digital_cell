@@ -1,0 +1,15 @@
+{
+  "all_sites_identical": true,
+  "nonconstant_mode": "zero required",
+  "patterned_initialization": false,
+  "polar": [
+    0.9193877936924131,
+    1.080612206307587,
+    4.293673616031169
+  ],
+  "traveling_parameters": [
+    0.001689746913291882,
+    4.498310253086708,
+    0.8064210382705091
+  ]
+}

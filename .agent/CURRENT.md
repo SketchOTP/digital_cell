@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260901-dcdev021-m2-entry018-native-material-ring-polarity-transfer`
-- External directive ID: `DC-DEV-021-M2-ENTRY-018-NATIVE-MATERIAL-RING-POLARITY-TRANSFER-FEASIBILITY-001`
-- Objective: `Determine whether the accepted continuous polarity equations transfer conservatively to the exact 198/78/122-site material rings without resampling, tuning, initialization, or behavior coupling.`
+- Local directive ID: `D-20260901-dcdev021-m2-entry019-conservative-life-history-polarity-initiation`
+- External directive ID: `DC-DEV-021-M2-ENTRY-019-CONSERVATIVE-LIFE-HISTORY-POLARITY-INITIATION-FEASIBILITY-001`
+- Objective: `Determine whether conservative native material-ring transport of initially homogeneous accepted polarity state through the exact D-088 life history creates a lawful perturbation that the unchanged accepted equations can amplify.`
 - Current status: `VALIDATING`
-- Acceptance: `ENTRY-017 is Architect accepted as M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED. ENTRY-018 local and exact-head Linux validation support M2_NATIVE_MATERIAL_RING_POLARITY_TRANSFER_FEASIBLE; Architect acceptance is pending.`
-- Current phase: `M2 target-free locomotion, metabolically live in-contact exploitation, excitable-polarity reference transfer, and assay-local polarity-to-effector feasibility are qualified; autonomous polarity initiation and separated encounter remain unestablished.`
-- Expected or actual touched areas: `isolated ENTRY-018 native numerical audit, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, polarity, actuator, traction, fission, remesh, and M1 sources remain unchanged`
-- Immediate next action: `Record exact-head ENTRY-018 provenance in Git and Notion, then await Architect review; do not initialize polarity from daughter fields, couple an actuator, run a resource assay, or start successor work.`
+- Acceptance: `ENTRY-018 is Architect accepted as M2_NATIVE_MATERIAL_RING_POLARITY_TRANSFER_FEASIBLE. ENTRY-019 local validation supports M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED; exact-head Linux validation and Architect acceptance are pending.`
+- Current phase: `M2 target-free locomotion, metabolically live in-contact exploitation, excitable-polarity transfer/interface, native material-ring transfer, and life-history perturbation/amplification audit are in scope; production polarity, autonomous initiation, and separated encounter remain unestablished.`
+- Expected or actual touched areas: `isolated ENTRY-019 observer assay, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, polarity, actuator, traction, fission, remesh, and M1 sources remain unchanged`
+- Immediate next action: `Run exact-head Linux ENTRY-019 validation, independently hash the uploaded artifact, then await Architect review; do not initialize production polarity, couple an actuator, run a resource assay, or start successor work.`
 
 ## Temporary task-relevant facts
 
@@ -28,7 +28,7 @@
 - Entry authority is `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
-- Current implementation work is on `m2/dc-dev-021-entry018-native-material-ring-polarity-transfer`, based exactly on accepted ENTRY-017 head `036316488bc53b25ad684ea666c754dc48202e7b`.
+- Current implementation work is on `m2/dc-dev-021-entry019-conservative-life-history-polarity-initiation`, based exactly on accepted ENTRY-018 head `e9d64534c565662e22aa67b76c5e00735970055f`.
 - ENTRY-014 is Architect accepted as `M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE` at `7685ae33e33132452105611322dbf4d045468eec`; its continuous PDE and published parameters are reused by the isolated ENTRY-018 native-ring numerical audit only.
 - ENTRY-015 starts exactly at accepted ENTRY-014 head `7685ae33e33132452105611322dbf4d045468eec` on `m2/dc-dev-021-entry015-polarity-actuator-interface`. Its only new causal interface is assay-local `u/(u+v)` into the existing actuator; production integration, autonomous polarity initiation, and resource acquisition remain unauthorized.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.

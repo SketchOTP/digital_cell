@@ -1,0 +1,7 @@
+{
+  "diffusive_flux": "pairwise cancellation",
+  "f_transport": "transport amount conserved; reaction separately reconciled",
+  "geometry_transport": "local amount conservation",
+  "reaction_exchange": "u_to_v equal and opposite",
+  "weighted_u_plus_v_closure": "PASS"
+}
