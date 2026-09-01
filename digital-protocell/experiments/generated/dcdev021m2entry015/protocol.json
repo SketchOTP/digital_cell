@@ -1,0 +1,11 @@
+{
+  "assay_steps": 1500,
+  "directive": "DC-DEV-021-M2-ENTRY-015-EXCITABLE-POLARITY-ACTUATOR-INTERFACE-FEASIBILITY-001",
+  "mechanics_dt": 0.02,
+  "observer_only": true,
+  "resource_present": false,
+  "scientific_runtime_changed": false,
+  "settlement_steps": 5000,
+  "starting_head": "7685ae33e33132452105611322dbf4d045468eec",
+  "topology_sites": 24
+}

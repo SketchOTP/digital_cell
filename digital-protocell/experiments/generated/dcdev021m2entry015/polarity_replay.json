@@ -1,0 +1,7 @@
+{
+  "mechanics_feedback_into_polarity": false,
+  "polar_matches_uncoupled": true,
+  "polar_max_final_state_difference": 0.0,
+  "traveling_matches_uncoupled": true,
+  "traveling_max_final_state_difference": 0.0
+}

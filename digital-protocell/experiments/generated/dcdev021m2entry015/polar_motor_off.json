@@ -1,0 +1,37 @@
+{
+  "a_spent": 0.0,
+  "a_to_w_residual": 3.836930773104541e-13,
+  "arm": "POLAR_MOTOR_OFF",
+  "displacement_path_ratio": 0.0174055595012265,
+  "final_displacement": [
+    3.9317412724224194e-8,
+    -0.0006631916777457038
+  ],
+  "final_mesh_hash": "2e414ec7a7c06dbc",
+  "final_polarity_hash": "d4f9fdd563de97f1",
+  "final_state": {
+    "a": 0.6068813331531293,
+    "area": 44.92861085250704,
+    "c": 1.4145881476435789,
+    "centroid": [
+      3.931741202375075e-8,
+      -0.0006631916777467962
+    ],
+    "f": 0.17944386094452444,
+    "n": 0.17944386094452444,
+    "w": 1.4010256379962793
+  },
+  "maximum_centroid_excursion": 0.005448725859745137,
+  "maximum_material_envelope_excursion": 0.0,
+  "motor_off": true,
+  "net_displacement": 0.000663191678911173,
+  "path": 0.03810229018288327,
+  "regime": "POLAR_1D",
+  "slips": 5694,
+  "spatial": false,
+  "stuck_contacts": 30306,
+  "velocity_autocorrelation": 0.5816934077343501,
+  "velocity_heading_max": 3.0022723890812877,
+  "velocity_heading_min": -2.834494595544617,
+  "w_generated": 62.94613568392062
+}

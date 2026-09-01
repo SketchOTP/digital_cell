@@ -1,0 +1,11 @@
+{
+  "mesh_to_polarity_feedback": false,
+  "order": [
+    "advance ENTRY-014 polarity by mechanics.dt",
+    "derive assay-local u/(u+v) motor",
+    "existing A-funded actuator and stick-slip",
+    "unchanged frozen metabolism"
+  ],
+  "resource": false,
+  "uptake": false
+}

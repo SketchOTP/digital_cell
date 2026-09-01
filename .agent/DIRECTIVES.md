@@ -30,6 +30,20 @@
 
 After adoption, this append-only ledger records project directives issued by the user to the AI coder. The adopted project records those directives locally.
 
+## D-20260831-dcdev021-m2-entry015-polarity-actuator-interface
+
+- Issued: `2026-08-31T22:03:33-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-015-EXCITABLE-POLARITY-ACTUATOR-INTERFACE-FEASIBILITY-001`
+- Objective: Determine whether the exact ENTRY-014 24-site excitable-polarity substrate can causally drive coherent Digital Cell motion through the existing A-funded contractility/stick-slip machinery using the parameter-free local interface `motor_activity[i] = u[i]/(u[i]+v[i])`.
+- Scope: Isolated resource-free Polar and Traveling interface arms, same-mean controls, motor-off controls, exact ENTRY-012/013 baseline comparison, polarity replay, timing refinement, translation/reorientation metrics, energetic closure, rotation, preservation, compact evidence, governance, and exact-head Linux CI.
+- Exclusions: production polarity integration, autonomous polarity initiation, resource/uptake, intrinsic-exploration changes, actuator/traction/metabolism changes, parameter or seed tuning, observer normalization, centroid/velocity feedback, target/gradient/navigation, M1 work, restart repair, and PR #44 mutation.
+- Acceptance: `M2_EXCITABLE_POLARITY_ACTUATOR_INTERFACE_QUALIFIED`, `M2_EXCITABLE_POLARITY_STATIC_INTERFACE_ONLY`, `M2_EXCITABLE_POLARITY_PATTERN_MECHANICALLY_INSUFFICIENT`, `M2_EXCITABLE_POLARITY_INTERFACE_TIMING_OR_SCALE_UNRESOLVED`, or `M2_ENTRY015_EXCITABLE_POLARITY_ACTUATOR_INTERFACE_INVALID` according to the directive gates and exact-head validation.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ANIMUS ONE may copy or aggregate the resulting governance files for centralized visibility. ANIMUS ONE does not issue, approve, modify, execute, reconcile, or close directives.
 
 ## Entry schema after adoption

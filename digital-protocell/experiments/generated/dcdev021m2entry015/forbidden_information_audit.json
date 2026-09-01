@@ -1,0 +1,14 @@
+{
+  "actuator_called_by_solver": false,
+  "centroid": false,
+  "contact": false,
+  "distance": false,
+  "forbidden_information_read": "NONE",
+  "gradient": false,
+  "mesh_modified_by_polarity_solver": false,
+  "observer_fourier": false,
+  "resource": false,
+  "success": false,
+  "target": false,
+  "viability": false
+}

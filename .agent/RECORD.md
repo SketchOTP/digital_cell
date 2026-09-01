@@ -6,6 +6,16 @@ After adoption, this append-only record preserves decisions and events. Every li
 
 Use it for architectural decisions, governance changes, releases, qualification or certification events, major reversals, important milestones, and decision supersessions. Do not use this record as mutable current status.
 
+## DEC-DCDEV021-ENTRY015-EXCITABLE-POLARITY-ACTUATOR-INTERFACE-001
+
+- Date: 2026-08-31
+- Record or decision ID: DEC-DCDEV021-ENTRY015-EXCITABLE-POLARITY-ACTUATOR-INTERFACE-001
+- Status: PROPOSED
+- Decision or event: The Architect-authorized ENTRY-015 assay is bounded to an isolated one-way interface from the accepted ENTRY-014 generic polarity chemistry to the existing A-funded effector, using only `u/(u+v)` and matched same-mean/motor-off controls.
+- Rationale: ENTRY-014 established transferable non-homogeneous Polar and Traveling reference dynamics, while ENTRY-013 established polarity decay as the current search bottleneck. The interface must be tested before any production integration, and M2072 protrusive semantics are not imported into Digital Cell contractility.
+- Affected areas: isolated assay/example, compact evidence, scoped workflow, and append-only governance; no scientific runtime, M1, resource, restart, or PR #44 change.
+- Supersedes record: none
+
 ## DEC-DCDEV001A-001
 
 - Date: 2026-08-15

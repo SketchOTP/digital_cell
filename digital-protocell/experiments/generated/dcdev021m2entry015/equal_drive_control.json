@@ -1,0 +1,6 @@
+{
+  "polar_equal_within_tolerance": true,
+  "polar_max_per_step_mean_difference": 0.0,
+  "traveling_equal_within_tolerance": true,
+  "traveling_max_per_step_mean_difference": 0.0
+}

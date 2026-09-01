@@ -1,0 +1,10 @@
+{
+  "bounded": true,
+  "f_term": "NONE",
+  "formula": "motor_activity[i] = u[i] / (u[i] + v[i])",
+  "gain": "NONE",
+  "local": true,
+  "nonnegative_pool_contract": true,
+  "normalization": "NONE",
+  "threshold": "NONE"
+}

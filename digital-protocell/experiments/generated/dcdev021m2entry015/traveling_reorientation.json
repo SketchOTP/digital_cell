@@ -1,0 +1,10 @@
+{
+  "dominant_mature_mode": 2,
+  "dominant_phase_change_observed": -4.903552804211996,
+  "interpretation": "descriptive assay result; no new threshold or mechanism",
+  "mode_2_mechanical_cancellation": false,
+  "polarity_to_heading_coupling": true,
+  "uniform_velocity_heading_range": 4.81108597909788,
+  "velocity_autocorrelation": 0.4486792893785547,
+  "velocity_heading_range": 6.270078569507051
+}

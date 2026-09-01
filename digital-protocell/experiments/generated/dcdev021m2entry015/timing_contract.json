@@ -1,0 +1,15 @@
+{
+  "base_substeps": {
+    "polar": 3,
+    "traveling": 12
+  },
+  "mechanics_dt": 0.02,
+  "path_difference": 8.009148899645879e-13,
+  "polar_base_path": 0.2929829441363806,
+  "polar_dt": 0.02,
+  "polar_refined_path": 0.2929829441355797,
+  "refinement_factor": 2,
+  "same_total_delta_each_step": true,
+  "stability_rule": "0.1 * dx^2 / max_diffusion",
+  "unit_time_identity": true
+}

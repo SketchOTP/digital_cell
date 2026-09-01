@@ -1,0 +1,42 @@
+{
+  "artifact_root": "digital-protocell/experiments/generated/dcdev021m2entry015/",
+  "dense_records": null,
+  "directive": "DC-DEV-021-M2-ENTRY-015-EXCITABLE-POLARITY-ACTUATOR-INTERFACE-FEASIBILITY-001",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "physical_causal_order.json",
+    "interface_contract.json",
+    "timing_contract.json",
+    "polar_spatial.json",
+    "polar_uniform_control.json",
+    "polar_motor_off.json",
+    "traveling_spatial.json",
+    "traveling_uniform_control.json",
+    "traveling_motor_off.json",
+    "entry012_baseline.json",
+    "polarity_replay.json",
+    "equal_drive_control.json",
+    "translation_metrics.json",
+    "traveling_reorientation.json",
+    "spatial_leverage.json",
+    "energetic_closure.json",
+    "rotation_check.json",
+    "semantic_boundary.json",
+    "autonomous_initiation_boundary.json",
+    "forbidden_information_audit.json",
+    "m1_preservation.json",
+    "downstream_preservation.json",
+    "restart_boundary.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "sha256": "computed by exact-head CI",
+  "source_hashes": {
+    "contractility": "588b40fe26029232",
+    "intrinsic_exploration": "dc14db5d477b97cb",
+    "mesh_reactions": "8b7a5572b93b0982",
+    "spatial_resource": "47e9d8394c9e4896",
+    "stick_slip_traction": "ec1ad2b699ca7461"
+  }
+}

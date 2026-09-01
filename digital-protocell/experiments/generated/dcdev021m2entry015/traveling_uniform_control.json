@@ -1,0 +1,37 @@
+{
+  "a_spent": 34.75563677620303,
+  "a_to_w_residual": 6.608047442568932e-13,
+  "arm": "TRAVELING_UNIFORM_MEAN_CONTROL",
+  "displacement_path_ratio": 0.0007407661652141155,
+  "final_displacement": [
+    7.311569961677913e-11,
+    8.125304240128436e-6
+  ],
+  "final_mesh_hash": "07b71776d3d4fc2a",
+  "final_polarity_hash": "3648b6c9a1668800",
+  "final_state": {
+    "a": 0.23846513686237955,
+    "area": 33.50218878978174,
+    "c": 1.717986329546098,
+    "centroid": [
+      7.311499914333479e-11,
+      8.12530423903603e-6
+    ],
+    "f": 0.2042717639059284,
+    "n": 0.2042717639059284,
+    "w": 2.8708617627126922
+  },
+  "maximum_centroid_excursion": 0.005448713641715767,
+  "maximum_material_envelope_excursion": 0.0,
+  "motor_off": false,
+  "net_displacement": 8.125304240457403e-6,
+  "path": 0.010968784242607539,
+  "regime": "TRAVELING_WAVES_1D",
+  "slips": 8184,
+  "spatial": false,
+  "stuck_contacts": 27816,
+  "velocity_autocorrelation": 0.46704728384722,
+  "velocity_heading_max": 1.9762576516445838,
+  "velocity_heading_min": -2.834828327453297,
+  "w_generated": 61.42451598756251
+}

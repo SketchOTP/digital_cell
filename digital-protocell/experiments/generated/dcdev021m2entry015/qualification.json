@@ -1,0 +1,16 @@
+{
+  "a_to_w_closure": true,
+  "architect_acceptance": "PENDING",
+  "autonomous_polarity_initiation": "NOT_ESTABLISHED",
+  "classification": "M2_EXCITABLE_POLARITY_ACTUATOR_INTERFACE_QUALIFIED",
+  "entry005_to_entry014_preserved": true,
+  "interface": "u/(u+v)",
+  "m2_autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "new_numeric_parameter": false,
+  "next_execution_started": false,
+  "polar_spatial_leverage": true,
+  "reference_chemistry_unchanged": true,
+  "rotation": true,
+  "traveling_heading_coupling": true,
+  "traveling_spatial_leverage": true
+}

@@ -8,6 +8,23 @@ Use live outcome headings only after adoption. The following schema is instructi
 
 Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILED`, `CANCELLED`, `SUPERSEDED`. Do not rewrite earlier entries; append corrections referencing the original.
 
+## D-20260831-dcdev021-m2-entry015-polarity-actuator-interface - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY015-POLARITY-ACTUATOR-INTERFACE-LOCAL`
+- Supersedes outcome: none
+- Closed: `2026-08-31T22:03:33-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The authorized ENTRY-015 isolated assay is implemented from Architect-accepted ENTRY-014 head `7685ae33e33132452105611322dbf4d045468eec`. It reimplements the accepted 24-site M2071-derived polarity equations locally and sends only the parameter-free active fraction `u/(u+v)` to the unchanged A-funded contractility/stick-slip path; matched spatial/uniform and motor-off controls are included. Local execution and exact-head validation remain pending.
+- Changed areas: additive ENTRY-015 assay/example registration, compact evidence, scoped workflow, and append-only governance only; no Digital Cell scientific runtime source or PR #44 change.
+- Validation:
+  - Exact ENTRY-014 accepted starting head and clean branch boundary - PASSED
+  - Local release assay, interface controls, chemistry replay, timing refinement, closure, and rotation - PASSED locally
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: final remote validation may identify workflow or preservation defects; the assay does not establish production polarity, autonomous polarity initiation, or autonomous resource acquisition.
+- Blockers: exact-head Linux CI and Architect review.
+- Follow-up directive: none
+
 ## D-20260815-dcdev001a-architecture-selection - PARTIAL
 
 - Outcome ID: OUT-DCDEV001A-ARCHITECTURE-SELECTION

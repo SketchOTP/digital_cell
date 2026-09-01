@@ -1,0 +1,6 @@
+{
+  "contaminates_audit": false,
+  "generic_full_mesh_restart": "KNOWN_FAIL (preserved boundary)",
+  "intrinsic_state_restart": "PASS (preserved)",
+  "repaired": false
+}

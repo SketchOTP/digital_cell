@@ -1,0 +1,15 @@
+{
+  "entry005_to_entry014_preservation": "REQUIRED",
+  "entry014": "M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE",
+  "m1": "CLOSED/FROZEN",
+  "pr44": "OPEN/DRAFT/UNMERGED/UNMODIFIED",
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "source_hashes": {
+    "contractility": "588b40fe26029232",
+    "intrinsic_exploration": "dc14db5d477b97cb",
+    "mesh_reactions": "8b7a5572b93b0982",
+    "spatial_resource": "47e9d8394c9e4896",
+    "stick_slip_traction": "ec1ad2b699ca7461"
+  },
+  "starting_head": "7685ae33e33132452105611322dbf4d045468eec"
+}

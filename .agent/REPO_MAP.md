@@ -31,6 +31,7 @@
 - `digital-protocell/examples/dcdev021_m2_entry012.rs` — observer-only separated-resource encounter assay using the exact ENTRY-011 composition; it preregisters one settled mean-edge-length gap and does not add resource-seeking behavior.
 - `digital-protocell/examples/dcdev021_m2_entry013.rs` — observer-only intrinsic search-persistence audit using exact ENTRY-012 no-resource composition; it records ring modes/kinematics and runs non-production phase-locked/fixed-profile counterfactuals without changing scientific runtime.
 - `digital-protocell/examples/dcdev021_m2_entry014.rs` — isolated mathematical reimplementation of the published Morpheus M2071 Polar and Traveling-Wave 1-D periodic regimes; it performs no Digital Cell runtime, actuator, resource, or observer-feedback calls.
+- `digital-protocell/examples/dcdev021_m2_entry015.rs` — isolated resource-free assay composing the exact ENTRY-014 24-site polarity equations with the unchanged A-funded actuator through the parameter-free local `u/(u+v)` interface and same-mean/motor-off controls; it does not install production polarity.
 
 ## Interfaces and contracts
 
@@ -67,6 +68,7 @@
 - `digital-protocell/experiments/generated/dcdev021m2entry012/` — compact ENTRY-012 separated-resource encounter and reachability evidence; dense trajectories remain externalized to Atlas.
 - `digital-protocell/experiments/generated/dcdev021m2entry013/` — compact ENTRY-013 ring-mode, polarity-persistence, kinematic, mechanical-counterfactual, preservation, and qualification evidence; dense trajectories remain externalized to Atlas.
 - `digital-protocell/experiments/generated/dcdev021m2entry014/` — compact ENTRY-014 external-provenance, equation, conservation, reference-reproduction, exact-24-site-transfer, compatibility, preservation, and qualification evidence; dense numerical trajectories remain externalized.
+- `digital-protocell/experiments/generated/dcdev021m2entry015/` — compact ENTRY-015 polarity-to-actuator interface, equal-drive controls, translation/reorientation, energetic closure, semantic boundary, preservation, and qualification evidence; dense trajectories remain externalized.
 - `digital-protocell/experiments/generated/dcdev001/` — DC-DEV-001A machine-readable decision artifacts.
 - `digital-protocell/experiments/generated/dcdev006/` — DC-DEV-006 local spatial-contact evidence artifacts.
 - `digital-protocell/experiments/generated/dcdev009/` — DC-DEV-009 force, displacement, coupling, and audit evidence artifacts.

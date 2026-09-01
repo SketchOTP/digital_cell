@@ -1,0 +1,79 @@
+{
+  "base": {
+    "a_spent": 31.823417648243726,
+    "a_to_w_residual": 3.552713678800501e-14,
+    "arm": "POLAR_SPATIAL_INTERFACE",
+    "displacement_path_ratio": 0.4048634678920205,
+    "final_displacement": [
+      0.11861809049767946,
+      8.416429171739383e-6
+    ],
+    "final_mesh_hash": "83e4be880a055bed",
+    "final_polarity_hash": "d4f9fdd563de97f1",
+    "final_state": {
+      "a": 0.28100791612862497,
+      "area": 33.86467276249875,
+      "c": 1.7177707866672172,
+      "centroid": [
+        0.11861809049767877,
+        8.416429170646978e-6
+      ],
+      "f": 0.2031361393176689,
+      "n": 0.2031361393176689,
+      "w": 2.7636273029025467
+    },
+    "maximum_centroid_excursion": 0.11908083501566781,
+    "maximum_material_envelope_excursion": 0.0,
+    "motor_off": false,
+    "net_displacement": 0.11861809079626916,
+    "path": 0.2929829441363806,
+    "regime": "POLAR_1D",
+    "slips": 8052,
+    "spatial": true,
+    "stuck_contacts": 27948,
+    "velocity_autocorrelation": 0.1523033877203898,
+    "velocity_heading_max": 3.1415917386688723,
+    "velocity_heading_min": -3.141589907329305,
+    "w_generated": 61.765916602057985
+  },
+  "coordinate_rotation": "180 degrees",
+  "material_local_state_preserved": true,
+  "pass": true,
+  "rotated": {
+    "a_spent": 31.823417648243726,
+    "a_to_w_residual": 3.552713678800501e-14,
+    "arm": "POLAR_ROTATED_180",
+    "displacement_path_ratio": 0.4048634678920205,
+    "final_displacement": [
+      -0.11861809049767946,
+      -8.416429171739383e-6
+    ],
+    "final_mesh_hash": "d9232e77d0a0ad9b",
+    "final_polarity_hash": "d4f9fdd563de97f1",
+    "final_state": {
+      "a": 0.28100791612862497,
+      "area": 33.86467276249875,
+      "c": 1.7177707866672172,
+      "centroid": [
+        -0.11861809049767877,
+        -8.416429170646978e-6
+      ],
+      "f": 0.2031361393176689,
+      "n": 0.2031361393176689,
+      "w": 2.7636273029025467
+    },
+    "maximum_centroid_excursion": 0.11908083501566781,
+    "maximum_material_envelope_excursion": 0.0,
+    "motor_off": false,
+    "net_displacement": 0.11861809079626916,
+    "path": 0.2929829441363806,
+    "regime": "POLAR_1D",
+    "slips": 8052,
+    "spatial": true,
+    "stuck_contacts": 27948,
+    "velocity_autocorrelation": 0.1523033877203898,
+    "velocity_heading_max": 3.1415916792259235,
+    "velocity_heading_min": -3.1415923104151986,
+    "w_generated": 61.765916602057985
+  }
+}

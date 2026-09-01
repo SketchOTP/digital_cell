@@ -1,0 +1,10 @@
+{
+  "polar_criteria": {
+    "excursion": true,
+    "net": true,
+    "ratio": true
+  },
+  "polar_spatial_leverage": true,
+  "same_mean_drive": true,
+  "traveling_spatial_leverage": true
+}
