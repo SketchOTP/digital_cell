@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-31T21:03:00-04:00`
+- Last updated: `2026-08-31T21:31:02-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20260831-dcdev021-m2-entry014-excitable-polarity-reference-transfer`
 - External directive ID: `DC-DEV-021-M2-ENTRY-014-EXCITABLE-POLARITY-REFERENCE-TRANSFER-FEASIBILITY-001`
 - Objective: `Determine whether the published deterministic M2071 active/inactive-GTPase and delayed negative-feedback actin-wave system transfers faithfully to the exact 24-site periodic material-ring topology.`
-- Current status: `IN_PROGRESS`
-- Acceptance: `ENTRY-013 is Architect accepted as M2_SEARCH_REACH_POLARITY_DECAY_OR_HOMOGENIZATION_CONFIRMED. ENTRY-014 is executing as an isolated reference-transfer feasibility audit; Architect acceptance remains pending.`
+- Current status: `VALIDATING`
+- Acceptance: `ENTRY-013 is Architect accepted as M2_SEARCH_REACH_POLARITY_DECAY_OR_HOMOGENIZATION_CONFIRMED. ENTRY-014 exact-head Linux CI 33458598747 passed on 32f7380eedbfca063ba23fed2609dee0680d4294 with artifact digest sha256:38c76a6c05963854e12b935e9077c1bdfd4215eede4e851027647b64ac2352da; Architect acceptance remains pending.`
 - Current phase: `M2 target-free locomotion and metabolically live in-contact exploitation are qualified; separated encounter is not established; endogenous polarity maintenance is the active bottleneck.`
 - Expected or actual touched areas: `isolated ENTRY-014 reference solver/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, and M1 sources remain unchanged`
-- Immediate next action: `Reproduce the versioned M2071 Polar and Traveling-Wave regimes, then test exact 24-site transfer without biological parameter search or Digital Cell runtime coupling.`
+- Immediate next action: `Run exact-head Linux CI on the final governance-sealed result head, verify Notion readback and PR #44 preservation, then await Architect review; do not start successor work.`
 
 ## Temporary task-relevant facts
 

@@ -832,3 +832,20 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: the audit qualifies only transfer of a published isolated polarity substrate; it does not qualify Digital Cell polarity integration, locomotion improvement, encounter, navigation, or autonomous resource acquisition.
 - Blockers: exact-head Linux CI and Architect review; do not start a successor or production integration.
 - Follow-up directive: none
+
+## D-20260831-dcdev021-m2-entry014-excitable-polarity-reference-transfer - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY014-EXCITABLE-POLARITY-REFERENCE-TRANSFER-R2`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY014-EXCITABLE-POLARITY-REFERENCE-TRANSFER-R1`
+- Closed: `2026-08-31T21:31:02-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Exact-head Linux workflow `33458598747` passed on result head `32f7380eedbfca063ba23fed2609dee0680d4294`. It verified authority/scope, reproduced ENTRY-005 through ENTRY-013, ran the isolated M2071 reference solver, passed the Polar and Traveling-Wave 24-site transfer and conservation checks, preserved M1/downstream gates, validated governance, and uploaded the evidence artifact. The classification remains `M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE`; Architect acceptance is pending and autonomous resource acquisition remains `NOT_ESTABLISHED`.
+- Changed areas: exact CI result and artifact provenance for the additive isolated ENTRY-014 solver/evidence/workflow and append-only governance only; no scientific runtime source changed and PR #44 remains untouched.
+- Validation:
+  - Exact-head CI `33458598747` - PASSED
+  - Artifact digest `sha256:38c76a6c05963854e12b935e9077c1bdfd4215eede4e851027647b64ac2352da` - RECORDED
+  - Notion SOT top-level result update - RECORDED; historical content preserved
+  - PR #44 preservation - VERIFIED before final governance seal; no mutation made
+- Remaining risks: this is an isolated reference-transfer feasibility result only; it does not authorize Digital Cell polarity integration, locomotion modification, navigation, encounter, or autonomous acquisition.
+- Blockers: final exact-head CI after governance seal and Architect review.
+- Follow-up directive: none

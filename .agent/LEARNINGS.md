@@ -28,6 +28,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-021 ENTRY-014 isolated excitable-polarity reference-transfer audit
 - Supersedes learning: none
 
+## L-DCDEV021-ENTRY014-002
+
+- Learning ID: L-DCDEV021-ENTRY014-002
+- Date: 2026-08-31
+- Fact or lesson: Exact-head Linux CI `33458598747` independently validated the isolated ENTRY-014 result at `32f7380eedbfca063ba23fed2609dee0680d4294`: the versioned M2071 Polar and Traveling-Wave regimes reproduced and both transferred to 24 periodic sites with no parameter search, stochastic forcing, or Digital Cell runtime coupling. The result is a transferable reference substrate only; Architect acceptance and any production integration remain pending.
+- Evidence location: `digital-protocell/experiments/generated/dcdev021m2entry014/`, `.github/workflows/dc-dev-021-m2-entry014.yml`, and GitHub Actions run `33458598747`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 ENTRY-014 isolated excitable-polarity reference-transfer audit
+- Supersedes learning: L-DCDEV021-ENTRY014-001
+
 ## L-DCDEV021-ENTRY010-001
 
 - Learning ID: L-DCDEV021-ENTRY010-001

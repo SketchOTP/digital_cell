@@ -225,3 +225,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: ENTRY-013 established intrinsic first-harmonic polarity decay/homogenization while an assay-only persistent asymmetric profile translated through unchanged mechanics. M2071 provides a directly relevant target-free reaction-diffusion reference with periodic 1D Polar and Traveling-Wave regimes. The webpage table and current downloadable Traveling-Wave XML differ on `b` (`0.067` versus `0.00067`); repository file history records the supplementary XML's explicit update to `0.00067`, which agrees with M2072's related Turning Cell table. The audit will preserve both provenance surfaces and use the versioned supplementary XML as the executable authority without copying framework code.
 - Affected areas: isolated reference solver/assay, compact evidence, scoped workflow, and append-only governance only; no Digital Cell scientific runtime, M1 source, actuator, traction, metabolism, uptake, resource, production selector, restart boundary, or PR #44 change.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY014-EXCITABLE-POLARITY-REFERENCE-TRANSFER-R2
+
+- Date: 2026-08-31
+- Record or decision ID: DEC-DCDEV021-ENTRY014-EXCITABLE-POLARITY-REFERENCE-TRANSFER-R2
+- Status: ACTIVE
+- Decision or event: Exact-head Linux CI `33458598747` passed on `32f7380eedbfca063ba23fed2609dee0680d4294` with artifact digest `sha256:38c76a6c05963854e12b935e9077c1bdfd4215eede4e851027647b64ac2352da`; the isolated ENTRY-014 result is ready for Architect review as `M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE`.
+- Rationale: The run reproduced the versioned M2071 Polar and Traveling-Wave regimes and preserved them at exactly 24 periodic sites with conserved active/inactive exchange, no parameter search, no stochastic forcing, and no Digital Cell runtime coupling. The result is explicitly bounded to reference-substrate transfer and does not establish Digital Cell polarity or autonomous resource acquisition.
+- Affected areas: exact CI result and artifact provenance for the previously committed isolated ENTRY-014 solver/evidence/workflow; no scientific runtime source or PR #44 change.
+- Supersedes record: none
