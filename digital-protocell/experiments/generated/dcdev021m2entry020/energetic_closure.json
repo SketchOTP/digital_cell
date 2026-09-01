@@ -1,0 +1,15 @@
+{
+  "a_to_w": "PASS",
+  "arm_a_actuation_w_generated": 188.1232643756401,
+  "arm_a_global_material_bookkeeping_residual": 2175.4621414085755,
+  "arm_a_residual": 2.2737367544323206e-13,
+  "arm_c_actuation_w_generated": 188.1232643758142,
+  "arm_c_global_material_bookkeeping_residual": 2175.462141408684,
+  "arm_c_residual": 2.2737367544323206e-13,
+  "arm_d_actuation_w_generated": 170.52074296223833,
+  "arm_d_global_material_bookkeeping_residual": 2171.1222738388465,
+  "arm_d_residual": 2.2737367544323206e-13,
+  "polarity_supplies_energy": false,
+  "reserve": "OFF",
+  "scope": "existing ActivatedEnergyContractilityStepLedgerV1 A-to-W boundary; global chemistry/geometry bookkeeping reported separately"
+}

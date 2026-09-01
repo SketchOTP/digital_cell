@@ -1,0 +1,123 @@
+{
+  "dense_traces": "Atlas",
+  "digest_scope": "artifact upload",
+  "directory": "digital-protocell/experiments/generated/dcdev021m2entry020",
+  "files": [
+    {
+      "path": "protocol.json",
+      "sha256": "eddc84194f2f2451"
+    },
+    {
+      "path": "authority.json",
+      "sha256": "1e230ce90f5fc305"
+    },
+    {
+      "path": "external_discovery.json",
+      "sha256": "ca778bd81057fffb"
+    },
+    {
+      "path": "live_causal_order.json",
+      "sha256": "78fb2b47ebb8cd4a"
+    },
+    {
+      "path": "initial_state_authority.json",
+      "sha256": "20b1d0c9d4178971"
+    },
+    {
+      "path": "homogeneous_polarity_initialization.json",
+      "sha256": "c8afae797e80d644"
+    },
+    {
+      "path": "autonomous_closed_loop.json",
+      "sha256": "abcb10b50da7cb6a"
+    },
+    {
+      "path": "motor_off_control.json",
+      "sha256": "0683424398b1122f"
+    },
+    {
+      "path": "uniform_mean_control.json",
+      "sha256": "e1a9cd86b705afaf"
+    },
+    {
+      "path": "reference_polar_positive_control.json",
+      "sha256": "a9450166485d98e6"
+    },
+    {
+      "path": "common_prefix.json",
+      "sha256": "6c2b4cea451c99ec"
+    },
+    {
+      "path": "polarity_initiation_survival.json",
+      "sha256": "396e67cdd6dd90ec"
+    },
+    {
+      "path": "motor_asymmetry.json",
+      "sha256": "1bb01f2adf7c6ca8"
+    },
+    {
+      "path": "traction_threshold_audit.json",
+      "sha256": "cf3ec05df67911f9"
+    },
+    {
+      "path": "locomotion_metrics.json",
+      "sha256": "b3d9fe11f9603c47"
+    },
+    {
+      "path": "spatial_leverage.json",
+      "sha256": "3c00b0a8f01ef328"
+    },
+    {
+      "path": "positive_control_diagnosis.json",
+      "sha256": "40af611e65f0e2cd"
+    },
+    {
+      "path": "energetic_closure.json",
+      "sha256": "201f4ed1aaf17a6b"
+    },
+    {
+      "path": "energetic_side_effects.json",
+      "sha256": "eef9c7573b3e301e"
+    },
+    {
+      "path": "polarity_actuation_feedback.json",
+      "sha256": "f795267b4738c045"
+    },
+    {
+      "path": "remesh_conservation.json",
+      "sha256": "2afa8f6dd160dab9"
+    },
+    {
+      "path": "rotation_equivariance.json",
+      "sha256": "c764df3cb809767b"
+    },
+    {
+      "path": "index_invariance.json",
+      "sha256": "69b766efe0ba7d7c"
+    },
+    {
+      "path": "forbidden_information_audit.json",
+      "sha256": "6c3a963ece5ab5c6"
+    },
+    {
+      "path": "fission_boundary.json",
+      "sha256": "eb5b89d509cafd0d"
+    },
+    {
+      "path": "m1_preservation.json",
+      "sha256": "fa9aa0be1ba99a71"
+    },
+    {
+      "path": "downstream_preservation.json",
+      "sha256": "34df32d48fc40af9"
+    },
+    {
+      "path": "restart_boundary.json",
+      "sha256": "bf79af68b18b2192"
+    },
+    {
+      "path": "qualification.json",
+      "sha256": "4c838525f605d935"
+    }
+  ]
+}

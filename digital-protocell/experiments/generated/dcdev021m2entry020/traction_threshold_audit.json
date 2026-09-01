@@ -1,0 +1,7 @@
+{
+  "a_limited_steps": 0,
+  "autonomous_crossings": 12646,
+  "autonomous_slips": 12646,
+  "motor_off_slips": 16696,
+  "static_limit": 0.45
+}

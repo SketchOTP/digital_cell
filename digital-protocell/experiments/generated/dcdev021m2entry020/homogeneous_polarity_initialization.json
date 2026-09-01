@@ -1,0 +1,7 @@
+{
+  "motor_interface": "u/(u+v)",
+  "nonconstant_modes": 0,
+  "preferred_patch": "NONE",
+  "random_seed": "NONE",
+  "u_v_f": "exact homogeneous equilibrium"
+}

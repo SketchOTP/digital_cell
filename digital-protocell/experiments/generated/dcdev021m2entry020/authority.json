@@ -1,0 +1,19 @@
+{
+  "entry019": "M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED",
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "state": "OPEN"
+  },
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "source_hashes": {
+    "contractility": "588b40fe26029232",
+    "entry019_assay": "236a05d7a0feb0dd",
+    "intrinsic_exploration": "dc14db5d477b97cb",
+    "mesh_reactions": "8b7a5572b93b0982",
+    "spatial_resource": "47e9d8394c9e4896",
+    "stick_slip_traction": "ec1ad2b699ca7461"
+  },
+  "starting_head": "019340e70d7a4714b1038cbb12969646b1e813f6"
+}

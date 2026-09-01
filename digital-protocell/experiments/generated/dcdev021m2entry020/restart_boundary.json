@@ -1,0 +1,5 @@
+{
+  "contaminating": false,
+  "generic_full_mesh_restart": "KNOWN_FAIL",
+  "intrinsic_state_restart": "PASS"
+}

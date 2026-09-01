@@ -528,3 +528,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260901-dcdev021-m2-entry018-native-material-ring-polarity-transfer
 - Status at issuance: ISSUED
+
+## D-20260901-dcdev021-m2-entry020-autonomous-polarity-embodied-locomotion
+
+- Issued: `2026-09-01T13:30:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-020-AUTONOMOUS-POLARITY-EMBODIED-LOCOMOTION-COMPOSITION-FEASIBILITY-001`
+- Objective: Determine whether the accepted ENTRY-019 autonomous Polar initiation can drive coherent embodied locomotion through the unchanged A-funded contractility/stick-slip machinery on the exact live variable-topology D-088 composition.
+- Scope: Assay-only homogeneous Polar closed loop, conservative native-ring polarity transport and reaction-diffusion, exact `u/(u+v)` interface, existing A-funded actuator, motor-off and same-mean controls, exact analytical Polar positive control, common-prefix comparison, fission boundary, compact evidence, governance, and exact-head Linux validation.
+- Exclusions: production polarity integration, resource interaction, sensing, contact or post-ingestive behavior, gains, thresholds, timescale multipliers, parameter search, stochasticity, target/gradient/planner/reward, actuator/traction/metabolism/uptake changes, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: One preregistered ENTRY-020 classification after exact D-088/ENTRY-019 causal ordering, autonomous seed survival, physical translation, same-mean spatial-leverage comparison, energetic closure, rotation/index invariance, preservation, governance, and exact-head Linux checks.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260901-dcdev021-m2-entry019-conservative-life-history-polarity-initiation
+- Status at issuance: ISSUED

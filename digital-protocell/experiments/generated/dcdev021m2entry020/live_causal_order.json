@@ -1,0 +1,15 @@
+{
+  "direct_mechanics_to_kinetics": false,
+  "fission_continuity": "NOT TESTED",
+  "order": [
+    "D-088 transport/reaction/growth",
+    "current homogeneous/native polarity",
+    "u/(u+v) motor proposal",
+    "A-funded contractility and stick-slip",
+    "accepted geometry/remesh/topology",
+    "conservative native polarity amount transport",
+    "unchanged Polar reaction-diffusion advance"
+  ],
+  "reaction_schema": "ReactionParams::conservative_v3",
+  "resource": false
+}

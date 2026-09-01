@@ -1,0 +1,10 @@
+{
+  "first_fission_steps": {
+    "a": null,
+    "b": null,
+    "c": null,
+    "d": null
+  },
+  "polarity_fission_continuity": "NOT TESTED",
+  "terminal_rule": "min(first actual fission, 2326)"
+}

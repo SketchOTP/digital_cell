@@ -1,0 +1,20 @@
+{
+  "a_to_w": "PASS",
+  "actual_locomotion": true,
+  "architect_acceptance": "PENDING",
+  "autonomous_embodied_locomotion": "NOT_ESTABLISHED",
+  "autonomous_polarity_initiation": "QUALIFIED",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "autonomous_seed_in_closed_loop": true,
+  "classification": "M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT",
+  "downstream_preservation": "PASS",
+  "entry005_019_preservation": "PASS",
+  "index_invariance": "NOT_REQUIRED_BY_DIRECTIVE",
+  "initially_homogeneous": true,
+  "m1_preservation": "PASS",
+  "next_execution_started": false,
+  "rd_amplification": true,
+  "reference_translation": true,
+  "rotation": "PASS",
+  "spatial_leverage": false
+}

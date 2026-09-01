@@ -1,0 +1,19 @@
+{
+  "baseline": {
+    "a_spent": 188.1232643756401,
+    "net_displacement": 0.21396122366944828,
+    "path": 0.6499694886565014,
+    "slips": 12646
+  },
+  "classification_invariant": true,
+  "pass": true,
+  "replay": {
+    "a_spent": 188.12326437576945,
+    "net_displacement": 0.21396122366946915,
+    "path": 0.6499694886562415,
+    "slips": 12646
+  },
+  "rotation": "180 degrees",
+  "trajectory_orientation": "corresponding rotation",
+  "world_axis": false
+}

@@ -1,0 +1,7 @@
+{
+  "direction": "NONE",
+  "fixture": "accepted D-088 seed_one(14.0,1,2.2) with rotate .3, vertex perturb .35, x stretch 1.25",
+  "initial_polarity": "exact homogeneous Polar equilibrium",
+  "initial_sites": 25,
+  "resource": "ABSENT"
+}

@@ -1019,3 +1019,20 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: Architect acceptance remains outstanding; ENTRY-018 does not establish autonomous polarity initiation or resource acquisition.
 - Blockers: Architect review; do not start successor work.
 - Follow-up directive: none
+
+## D-20260901-dcdev021-m2-entry020-autonomous-polarity-embodied-locomotion - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY020-AUTONOMOUS-POLARITY-EMBODIED-LOCOMOTION-LOCAL`
+- Supersedes outcome: none
+- Closed: `2026-09-01T14:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The isolated ENTRY-020 live composition starts from the exact accepted D-088/ENTRY-019 physical state and an exactly homogeneous Polar state. Conservative native-ring transport creates a deterministic polarity seed, the closed loop remains active and locomotory, and the exact patterned Polar positive control translates. The autonomous closed loop is indistinguishable from the same-mean uniform control for the preregistered spatial-leverage criteria, so the local classification is `M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT`.
+- Changed areas: additive assay-only ENTRY-020 example, compact evidence under `digital-protocell/experiments/generated/dcdev021m2entry020/`, scoped workflow, and append-only governance only; no accepted scientific runtime or PR #44 change. The assay uses the exact `ReactionParams::conservative_v3` production authority and reports actuator-ledger A-to-W closure separately from broader D-088 geometry bookkeeping.
+- Validation:
+  - Exact ENTRY-019 starting head and local release assay - PASSED
+  - Autonomous seed, active locomotion, positive-control translation, same-mean comparison, physical rotation equivariance, and actuator A-to-W closure - PASSED locally; an extra circular-index replay was not used for qualification
+  - Exact-head Linux CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: remote validation may identify workflow, governance, or preservation defects; ENTRY-020 does not establish autonomous embodied locomotion or resource acquisition.
+- Blockers: exact-head Linux CI and Architect review; do not start successor work.
+- Follow-up directive: none

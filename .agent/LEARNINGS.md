@@ -317,3 +317,23 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-021 ENTRY-019 conservative life-history polarity-initiation feasibility audit.
 - Supersedes learning: L-DCDEV021-ENTRY019-001
+
+## L-DCDEV021-ENTRY020-001
+
+- Learning ID: L-DCDEV021-ENTRY020-001
+- Date: 2026-09-01
+- Fact or lesson: In the exact live D-088 variable-topology composition, an exactly homogeneous Polar state receives a deterministic conservative native-ring perturbation and autonomously develops a measurable polarity seed while the unchanged `u/(u+v)` A-funded interface produces active locomotion. The autonomous spatial interface is nevertheless indistinguishable from the same-mean uniform control, while the exact patterned Polar positive control translates; physical rotation passes and the bounded local classification is `M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT`.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry020.rs`, `digital-protocell/experiments/generated/dcdev021m2entry020/`, and `.github/workflows/dc-dev-021-m2-entry020.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-020 autonomous-polarity embodied-locomotion composition feasibility audit.
+- Supersedes learning: none
+
+## L-DCDEV021-ENTRY020-002
+
+- Learning ID: L-DCDEV021-ENTRY020-002
+- Date: 2026-09-01
+- Fact or lesson: The existing `ActivatedEnergyContractilityStepLedgerV1` closes actuator A-to-W independently of the broader D-088 geometry bookkeeping; ENTRY-020 records that boundary explicitly and does not mislabel the larger area-changing trajectory residual as actuator closure.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry020.rs`, `digital-protocell/experiments/generated/dcdev021m2entry020/energetic_closure.json`, and `.github/workflows/dc-dev-021-m2-entry020.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-020 energetic closure boundary.
+- Supersedes learning: none

@@ -1,0 +1,12 @@
+{
+  "assay_horizon": 2326,
+  "directive": "DC-DEV-021-M2-ENTRY-020-AUTONOMOUS-POLARITY-EMBODIED-LOCOMOTION-COMPOSITION-FEASIBILITY-001",
+  "initial_polarity": "exactly homogeneous",
+  "observer_only": true,
+  "primary_family": "POLAR",
+  "random_seed": "NONE",
+  "resource": false,
+  "runtime_changed": false,
+  "starting_head": "019340e70d7a4714b1038cbb12969646b1e813f6",
+  "successor_started": false
+}

@@ -345,3 +345,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The additive ENTRY-019 audit validates conservative life-history transport and Polar-family amplification in the exact accepted D-088 pre-fission replay, while geometry-frozen and no-dilution controls remain homogeneous. Traveling-family seeding without amplification is preserved as a bounded observation. No production polarity, actuator, resource, or successor behavior was added.
 - Affected areas: final remote-validation provenance for the isolated ENTRY-019 assay/evidence/workflow/governance; no scientific runtime, M1, actuator, traction, metabolism, uptake, resource, restart, or PR #44 change.
 - Supersedes record: DEC-DCDEV021-ENTRY019-CONSERVATIVE-LIFE-HISTORY-POLARITY-INITIATION-R1
+
+## DEC-DCDEV021-ENTRY020-AUTONOMOUS-POLARITY-EMBODIED-LOCOMOTION-R1
+
+- Date: 2026-09-01
+- Record or decision ID: DEC-DCDEV021-ENTRY020-AUTONOMOUS-POLARITY-EMBODIED-LOCOMOTION-R1
+- Status: ACTIVE
+- Decision or event: ENTRY-020 is authorized from exact accepted ENTRY-019 head `019340e70d7a4714b1038cbb12969646b1e813f6` as an assay-only live composition of homogeneous Polar initiation, native-ring polarity transport, the exact `u/(u+v)` interface, and unchanged A-funded mechanics.
+- Rationale: ENTRY-019 qualified conservative life-history polarity initiation, but it did not test whether the resulting autonomous polarity has sufficient mechanical amplitude on the live variable-topology body. ENTRY-020 compares the closed loop against motor-off, same-mean uniform, and exact patterned Polar controls without production integration or resource information.
+- Affected areas: additive isolated ENTRY-020 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, M1, resource, uptake, metabolism, polarity production, actuator, traction, fission, remesh, restart, or PR #44 change.
+- Supersedes record: none

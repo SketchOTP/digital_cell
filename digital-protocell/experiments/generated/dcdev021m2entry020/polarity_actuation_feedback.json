@@ -1,0 +1,9 @@
+{
+  "classification": "DESCRIPTIVE_ONLY",
+  "comparison_to_motor_off": {
+    "peak_autonomous": 1.9366953204989736e-12,
+    "peak_motor_off": 3.842146223393617e-12
+  },
+  "direct_mechanical_rd_feedback": false,
+  "path": "geometry/remesh -> conservative amount continuity -> RD"
+}

@@ -1,0 +1,1056 @@
+{
+  "a_limited_steps": 0,
+  "a_spent": 0.0,
+  "a_to_w_residual": 0.0,
+  "actuation_w_generated": 0.0,
+  "arm": "AUTONOMOUS_POLAR_MOTOR_OFF",
+  "displacement_path_ratio": 0.21134427152485719,
+  "final_mesh_hash": "847804d62302f60d",
+  "final_polarity_hash": "2519a8261309ebb4",
+  "final_state": {
+    "a": 1.167763912318681,
+    "area": 733.4576522803795,
+    "c": 1.0858153009153082,
+    "centroid": [
+      39.92428491299741,
+      39.98156635422374
+    ],
+    "f": 0.5270902595120022,
+    "n": 0.5270902595120022,
+    "w": 0.4574670817554589
+  },
+  "first_motor_asymmetry_step": null,
+  "first_seed_mode": 10,
+  "first_seed_step": 27,
+  "fission_step": null,
+  "global_material_bookkeeping_residual": 2128.9637590019915,
+  "growth_a_consumed": 315.73630175183644,
+  "growth_w_generated": 31.57363017518371,
+  "initial_polarity_homogeneous": true,
+  "material_envelope_excursion": 0.0,
+  "max_motor_range": 0.0,
+  "maximum_centroid_excursion": 0.11872834293370672,
+  "net_displacement": 0.11872834293370672,
+  "path": 0.5617769626641739,
+  "peak_polarity_amplitude": 3.842146223393617e-12,
+  "points": [
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.871554740366086,
+        39.8794980592953
+      ],
+      "displacement": [
+        -0.0016089887130021907,
+        0.005090670961372723
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684620643,
+      "motor_range": 0.0,
+      "polarity_amplitude": 2.495439706922886e-15,
+      "reaction_a": 0.42862525971748777,
+      "reaction_w": 0.6366395969712343,
+      "slips": 25,
+      "step": 1,
+      "stuck": 0,
+      "topology": 47
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.84861832860735,
+        39.93381052468807
+      ],
+      "displacement": [
+        -0.00021042660780068445,
+        0.0003568407384477723
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684620265,
+      "motor_range": 0.0,
+      "polarity_amplitude": 3.2355874170969595e-14,
+      "reaction_a": 0.5584578174552209,
+      "reaction_w": 0.7673962110385645,
+      "slips": 49,
+      "step": 50,
+      "stuck": 1,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.8364295193793,
+        39.949186313763235
+      ],
+      "displacement": [
+        -0.00020514507890112554,
+        0.00023894896244058828
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968461892,
+      "motor_range": 0.0,
+      "polarity_amplitude": 5.48546426266686e-14,
+      "reaction_a": 0.6664442935450386,
+      "reaction_w": 0.8764369226788098,
+      "slips": 50,
+      "step": 100,
+      "stuck": 0,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.828828223607076,
+        39.94778278683544
+      ],
+      "displacement": [
+        -0.00010152396109219808,
+        -0.0005236339805563262
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968461713,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.3728151561143342e-13,
+      "reaction_a": 0.7450509822673997,
+      "reaction_w": 0.9566391405606998,
+      "slips": 34,
+      "step": 150,
+      "stuck": 16,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.84334379080108,
+        39.93224119221208
+      ],
+      "displacement": [
+        0.0009116656100047749,
+        -0.00020582776610211795
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968461566,
+      "motor_range": 0.0,
+      "polarity_amplitude": 2.399306555255851e-13,
+      "reaction_a": 0.7867093907637455,
+      "reaction_w": 0.9999987313151186,
+      "slips": 10,
+      "step": 200,
+      "stuck": 40,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.86373203851029,
+        39.92687211204362
+      ],
+      "displacement": [
+        0.00023815548549066534,
+        -0.00007749310645266405
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968461462,
+      "motor_range": 0.0,
+      "polarity_amplitude": 3.610030558180056e-13,
+      "reaction_a": 0.807622856683934,
+      "reaction_w": 1.0226300507313697,
+      "slips": 2,
+      "step": 250,
+      "stuck": 48,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.8712869789072,
+        39.9218839580523
+      ],
+      "displacement": [
+        0.00017263091223185256,
+        -0.00009971351132520567
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968461415,
+      "motor_range": 0.0,
+      "polarity_amplitude": 4.878051461168407e-13,
+      "reaction_a": 0.8204036144523207,
+      "reaction_w": 1.037317120921386,
+      "slips": 0,
+      "step": 300,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.88168593976397,
+        39.917332469725764
+      ],
+      "displacement": [
+        0.00017229769287752106,
+        -0.00009298296158277708
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684613154,
+      "motor_range": 0.0,
+      "polarity_amplitude": 6.795939454060792e-13,
+      "reaction_a": 0.8279215201568055,
+      "reaction_w": 1.046950728867177,
+      "slips": 0,
+      "step": 350,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.88906569466239,
+        39.912719839946604
+      ],
+      "displacement": [
+        0.00014158560432520062,
+        -0.00009171388900597321
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684612283,
+      "motor_range": 0.0,
+      "polarity_amplitude": 8.459400216637933e-13,
+      "reaction_a": 0.8315014330803275,
+      "reaction_w": 1.052866549343027,
+      "slips": 0,
+      "step": 400,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.89560675631018,
+        39.908156265857
+      ],
+      "displacement": [
+        0.00012117087827334672,
+        -0.00009092398747156949
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684611295,
+      "motor_range": 0.0,
+      "polarity_amplitude": 9.970740538307968e-13,
+      "reaction_a": 0.8323788984735871,
+      "reaction_w": 1.0563200558247097,
+      "slips": 0,
+      "step": 450,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.90122933776919,
+        39.90361807139626
+      ],
+      "displacement": [
+        0.00010465710717255661,
+        -0.00009072310901814262
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684610545,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.0963432280773819e-12,
+      "reaction_a": 0.8311635591663209,
+      "reaction_w": 1.0579349375262903,
+      "slips": 0,
+      "step": 500,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.90611175146689,
+        39.89907092431684
+      ],
+      "displacement": [
+        0.00009139515634615236,
+        -0.00009129076740777009
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968460938,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.1894868348714987e-12,
+      "reaction_a": 0.828285879032342,
+      "reaction_w": 1.058154452794004,
+      "slips": 0,
+      "step": 550,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.91040125831343,
+        39.89447325211169
+      ],
+      "displacement": [
+        0.00008079519479764485,
+        -0.00009274024946392956
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968460856,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.2558141530416805e-12,
+      "reaction_a": 0.8240813711662556,
+      "reaction_w": 1.0573260751453561,
+      "slips": 0,
+      "step": 600,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.914217393021985,
+        39.8897794097965
+      ],
+      "displacement": [
+        0.00007233572872422656,
+        -0.0000951214462006078
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968460769,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.3297372593815212e-12,
+      "reaction_a": 0.8188106008306757,
+      "reaction_w": 1.0557201289418645,
+      "slips": 0,
+      "step": 650,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.91765506106867,
+        39.88494316930184
+      ],
+      "displacement": [
+        0.0000655478625901651,
+        -0.00009840501531499513
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684607065,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.3701652129450455e-12,
+      "reaction_a": 0.8126758411169234,
+      "reaction_w": 1.05354489065676,
+      "slips": 0,
+      "step": 700,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.92078639977608,
+        39.879922543005726
+      ],
+      "displacement": [
+        0.0000599827485956439,
+        -0.00010244481060794897
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968460678,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.4064818791107887e-12,
+      "reaction_a": 0.8058348701165785,
+      "reaction_w": 1.050958603541653,
+      "slips": 0,
+      "step": 750,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.92303173594956,
+        39.87657195092365
+      ],
+      "displacement": [
+        0.00002387502637191119,
+        -0.00004501624723474151
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684606154,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.4833856860651982e-12,
+      "reaction_a": 0.7984122812399577,
+      "reaction_w": 1.0476907624463736,
+      "slips": 0,
+      "step": 800,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.923159945884095,
+        39.874971584431066
+      ],
+      "displacement": [
+        -0.000014753362513886259,
+        -0.00002077375376074997
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968460523,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.5741118001929295e-12,
+      "reaction_a": 0.7905076855589243,
+      "reaction_w": 1.0437118017882874,
+      "slips": 0,
+      "step": 850,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.922512003183996,
+        39.87428993703446
+      ],
+      "displacement": [
+        -2.2487223816369806e-7,
+        -0.000010625320314261444
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684604445,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.6470460616424755e-12,
+      "reaction_a": 0.7822090126961249,
+      "reaction_w": 1.0391892324298622,
+      "slips": 0,
+      "step": 900,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.922491137911116,
+        39.87378571529874
+      ],
+      "displacement": [
+        -6.023257554943484e-7,
+        -9.545062070515087e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684604145,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.6853616445384719e-12,
+      "reaction_a": 0.7736056015095077,
+      "reaction_w": 1.0342263119979855,
+      "slips": 0,
+      "step": 950,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.92245129403563,
+        39.8733386534489
+      ],
+      "displacement": [
+        -9.84761328481909e-7,
+        -8.3418664971191e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684603584,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.7372054417326483e-12,
+      "reaction_a": 0.7647995499088491,
+      "reaction_w": 1.0289974025819995,
+      "slips": 0,
+      "step": 1000,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.922392310670006,
+        39.87295428807616
+      ],
+      "displacement": [
+        -1.3645216014879225e-6,
+        -7.050448374457119e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684603007,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.7854196179278324e-12,
+      "reaction_a": 0.7559169529818843,
+      "reaction_w": 1.023627084656246,
+      "slips": 0,
+      "step": 1050,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.922315060241466,
+        39.872634619659785
+      ],
+      "displacement": [
+        -1.708884092010976e-6,
+        -5.777601039369529e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684602346,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.8270000690138343e-12,
+      "reaction_a": 0.7471168951499855,
+      "reaction_w": 1.0182733442724012,
+      "slips": 0,
+      "step": 1100,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.922222504961404,
+        39.87237461168651
+      ],
+      "displacement": [
+        -1.970606611223502e-6,
+        -4.690083386549304e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968460168,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.8638382404617013e-12,
+      "reaction_a": 0.7385930656065127,
+      "reaction_w": 1.0131293264424037,
+      "slips": 0,
+      "step": 1150,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.92211972906481,
+        39.872160919750314
+      ],
+      "displacement": [
+        -2.118052698563133e-6,
+        -3.934277252426455e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968460112,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.8920991332923345e-12,
+      "reaction_a": 0.7305574480895836,
+      "reaction_w": 1.0084072758619314,
+      "slips": 0,
+      "step": 1200,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.92201229265616,
+        39.8719759375559
+      ],
+      "displacement": [
+        -2.1653614226124773e-6,
+        -3.5231581207995077e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684600687,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.9252508637845576e-12,
+      "reaction_a": 0.7232013306247802,
+      "reaction_w": 1.0042998559364458,
+      "slips": 0,
+      "step": 1250,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.92190404526709,
+        39.871805124173505
+      ],
+      "displacement": [
+        -2.159851646865718e-6,
+        -3.338769957395016e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968460041,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.9609233977154366e-12,
+      "reaction_a": 0.7166509935575115,
+      "reaction_w": 1.0009359949797834,
+      "slips": 0,
+      "step": 1300,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.92179652955825,
+        39.871640560001985
+      ],
+      "displacement": [
+        -2.140883921697423e-6,
+        -3.2548158301892727e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684600104,
+      "motor_range": 0.0,
+      "polarity_amplitude": 1.9910592281818917e-12,
+      "reaction_a": 0.7109485769971684,
+      "reaction_w": 0.9983615563946573,
+      "slips": 0,
+      "step": 1350,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.92168991843178,
+        39.871479174295196
+      ],
+      "displacement": [
+        -2.124851654627946e-6,
+        -3.204393372868708e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684599643,
+      "motor_range": 0.0,
+      "polarity_amplitude": 2.0168973277399006e-12,
+      "reaction_a": 0.7060661627678342,
+      "reaction_w": 0.9965529411788173,
+      "slips": 0,
+      "step": 1400,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.92158395472176,
+        39.87132001493176
+      ],
+      "displacement": [
+        -2.1148673567950027e-6,
+        -3.163546161033537e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684599093,
+      "motor_range": 0.0,
+      "polarity_amplitude": 2.083081316933178e-12,
+      "reaction_a": 0.7019339260479667,
+      "reaction_w": 0.9954447457875271,
+      "slips": 0,
+      "step": 1450,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.921478354635916,
+        39.87116281919883
+      ],
+      "displacement": [
+        -2.109941739547594e-6,
+        -3.1252461809572196e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684598744,
+      "motor_range": 0.0,
+      "polarity_amplitude": 2.2179035869115597e-12,
+      "reaction_a": 0.6984642555846183,
+      "reaction_w": 0.9949535443464458,
+      "slips": 0,
+      "step": 1500,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.921372906151156,
+        39.87100751715354
+      ],
+      "displacement": [
+        -2.1084815813310342e-6,
+        -3.087651492705845e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684599193,
+      "motor_range": 0.0,
+      "polarity_amplitude": 2.3483023097632755e-12,
+      "reaction_a": 0.6955668453496132,
+      "reaction_w": 0.9949928080470332,
+      "slips": 0,
+      "step": 1550,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.92126873203733,
+        39.870852940180406
+      ],
+      "displacement": [
+        -2.0804431883902907e-6,
+        -3.081473025190462e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684600154,
+      "motor_range": 0.0,
+      "polarity_amplitude": 2.4653776690602854e-12,
+      "reaction_a": 0.6931973876802049,
+      "reaction_w": 0.9957437750861117,
+      "slips": 0,
+      "step": 1600,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.921164469486705,
+        39.87069989456518
+      ],
+      "displacement": [
+        -2.089799600923925e-6,
+        -3.0413682523544594e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968460132,
+      "motor_range": 0.0,
+      "polarity_amplitude": 2.575008365906496e-12,
+      "reaction_a": 0.691348995481715,
+      "reaction_w": 0.9970235458754425,
+      "slips": 0,
+      "step": 1650,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.921059756472026,
+        39.87054882118717
+      ],
+      "displacement": [
+        -2.098392933191917e-6,
+        -3.0025338091377307e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.459693896846025,
+      "motor_range": 0.0,
+      "polarity_amplitude": 2.6960304823399747e-12,
+      "reaction_a": 0.6899163315258943,
+      "reaction_w": 0.9986876048377954,
+      "slips": 0,
+      "step": 1700,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.92095463923757,
+        39.87039966289637
+      ],
+      "displacement": [
+        -2.10596132177443e-6,
+        -2.9646991990261995e-6
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684604733,
+      "motor_range": 0.0,
+      "polarity_amplitude": 2.7865384513613255e-12,
+      "reaction_a": 0.6888115700510696,
+      "reaction_w": 1.0006505846564488,
+      "slips": 0,
+      "step": 1750,
+      "stuck": 50,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.91722715309105,
+        39.89221878055803
+      ],
+      "displacement": [
+        -0.00023824774297054319,
+        0.0009353309126964859
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684606266,
+      "motor_range": 0.0,
+      "polarity_amplitude": 2.8615868949672348e-12,
+      "reaction_a": 0.6855092616998145,
+      "reaction_w": 1.000344527594649,
+      "slips": 5,
+      "step": 1800,
+      "stuck": 45,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.8904562179055,
+        39.94968139937772
+      ],
+      "displacement": [
+        -0.0007265928058473037,
+        0.0005894484967612357
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684606426,
+      "motor_range": 0.0,
+      "polarity_amplitude": 2.9224268366238173e-12,
+      "reaction_a": 0.6792549868070722,
+      "reaction_w": 0.9968071714522584,
+      "slips": 13,
+      "step": 1850,
+      "stuck": 37,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.86022334720654,
+        39.94737344212725
+      ],
+      "displacement": [
+        -0.00019612913223454598,
+        -0.0003060986266660848
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684607015,
+      "motor_range": 0.0,
+      "polarity_amplitude": 2.9947847810051857e-12,
+      "reaction_a": 0.6786658233077466,
+      "reaction_w": 0.9988687058849758,
+      "slips": 17,
+      "step": 1900,
+      "stuck": 33,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.873308150671825,
+        39.91663634553241
+      ],
+      "displacement": [
+        0.000349475177145564,
+        -0.0008743441509793115
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968460801,
+      "motor_range": 0.0,
+      "polarity_amplitude": 3.095166708321994e-12,
+      "reaction_a": 0.6820904615030351,
+      "reaction_w": 1.0049343972691742,
+      "slips": 20,
+      "step": 1950,
+      "stuck": 30,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.89976379177063,
+        39.90372056124389
+      ],
+      "displacement": [
+        0.0004453468309151276,
+        -0.00010651714335807583
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968460894,
+      "motor_range": 0.0,
+      "polarity_amplitude": 3.2120665457938796e-12,
+      "reaction_a": 0.6904785944585273,
+      "reaction_w": 1.0159854796174734,
+      "slips": 18,
+      "step": 2000,
+      "stuck": 32,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.91738503375606,
+        39.904009714525834
+      ],
+      "displacement": [
+        0.00020962152630232822,
+        0.00021868808522640393
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968460873,
+      "motor_range": 0.0,
+      "polarity_amplitude": 3.2943835604978416e-12,
+      "reaction_a": 0.7000230491631754,
+      "reaction_w": 1.0282363453374421,
+      "slips": 21,
+      "step": 2050,
+      "stuck": 29,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.9259175087383,
+        39.90915577151179
+      ],
+      "displacement": [
+        0.00023729275977757425,
+        0.000058287008869228885
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968460789,
+      "motor_range": 0.0,
+      "polarity_amplitude": 3.3892467739188023e-12,
+      "reaction_a": 0.7097852946488191,
+      "reaction_w": 1.040750259902104,
+      "slips": 16,
+      "step": 2100,
+      "stuck": 34,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.94197297912004,
+        39.9242623775449
+      ],
+      "displacement": [
+        0.00037880844962501214,
+        0.00014902062436306096
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684606354,
+      "motor_range": 0.0,
+      "polarity_amplitude": 3.5005486926157822e-12,
+      "reaction_a": 0.7191709332552164,
+      "reaction_w": 1.0529328073036957,
+      "slips": 18,
+      "step": 2150,
+      "stuck": 32,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.95796612537295,
+        39.9455741673695
+      ],
+      "displacement": [
+        0.00020961718914946914,
+        0.0002592628753248505
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684604134,
+      "motor_range": 0.0,
+      "polarity_amplitude": 3.6219336254593738e-12,
+      "reaction_a": 0.7299925505233024,
+      "reaction_w": 1.0665956505022696,
+      "slips": 16,
+      "step": 2200,
+      "stuck": 34,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.940426348847915,
+        39.96360788044149
+      ],
+      "displacement": [
+        -0.000568077046949611,
+        0.00042670516588572127
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.4596938968460133,
+      "motor_range": 0.0,
+      "polarity_amplitude": 3.751730989605144e-12,
+      "reaction_a": 0.7442857753115124,
+      "reaction_w": 1.0837956125708785,
+      "slips": 13,
+      "step": 2250,
+      "stuck": 37,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.92344021871892,
+        39.97856395027115
+      ],
+      "displacement": [
+        -0.0001692545947307167,
+        0.00036256666382428193
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684598705,
+      "motor_range": 0.0,
+      "polarity_amplitude": 3.823385234187014e-12,
+      "reaction_a": 0.7607313669413118,
+      "reaction_w": 1.1032337627310698,
+      "slips": 10,
+      "step": 2300,
+      "stuck": 40,
+      "topology": 50
+    },
+    {
+      "a_spent": 0.0,
+      "centroid": [
+        39.92428491299741,
+        39.98156635422374
+      ],
+      "displacement": [
+        0.00006720730077347525,
+        0.00036820031903062045
+      ],
+      "local_tension": 0.0,
+      "motor_mean": 0.45969389684597267,
+      "motor_range": 0.0,
+      "polarity_amplitude": 3.84163298443165e-12,
+      "reaction_a": 0.7695005646923478,
+      "reaction_w": 1.1135967404125213,
+      "slips": 9,
+      "step": 2326,
+      "stuck": 41,
+      "topology": 50
+    }
+  ],
+  "reaction_a_consumed": 891.9603625985005,
+  "reaction_a_produced": 1721.0442811925975,
+  "reaction_f_consumed": 1721.0442811925975,
+  "reaction_n_consumed": 1721.0442811925975,
+  "slips": 16696,
+  "static_threshold_crossings": 0,
+  "stuck": 99543,
+  "terminal_polarity_amplitude": 3.84163298443165e-12,
+  "terminal_step": 2326,
+  "w_generated": 2356.79693615847
+}

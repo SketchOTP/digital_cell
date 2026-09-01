@@ -1,0 +1,8 @@
+{
+  "first_step": 51,
+  "gain": "NONE",
+  "interface": "u/(u+v)",
+  "maximum_range": 6.782907568947394e-13,
+  "normalization": "NONE",
+  "threshold": "NONE"
+}

@@ -1,0 +1,17 @@
+{
+  "alive_latch": 0,
+  "centroid_target": 0,
+  "distance": 0,
+  "fitness": 0,
+  "future_uptake": 0,
+  "gradient": 0,
+  "observer_acquisition": 0,
+  "planner": 0,
+  "resource_center": 0,
+  "resource_contact": 0,
+  "resource_inventory": 0,
+  "resource_radius": 0,
+  "reward": 0,
+  "survival": 0,
+  "velocity_target": 0
+}

@@ -1,0 +1,9 @@
+{
+  "actuation_effect": "DESCRIPTIVE_ONLY",
+  "autonomous_seed_in_closed_loop": true,
+  "first_seed_mode": 4,
+  "first_seed_step": 42,
+  "peak": 1.9366953204989736e-12,
+  "rd_amplification": true,
+  "terminal": 1.9366953204989736e-12
+}

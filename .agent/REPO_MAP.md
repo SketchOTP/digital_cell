@@ -79,6 +79,9 @@
 - `digital-protocell/examples/dcdev021_m2_entry019.rs` — isolated observer-only replay of accepted D-088 pre-fission physical history with conservative native-ring amount transport, homogeneous controls, and unchanged ENTRY-018 reaction-diffusion seed/amplification attribution; it does not initialize production polarity or call behavior.
 - `digital-protocell/experiments/generated/dcdev021m2entry019/` — compact ENTRY-019 authority, physical-history, conservative-remesh, control, causal-attribution, conservation, preservation, and qualification evidence.
 - `.github/workflows/dc-dev-021-m2-entry019.yml` — exact-head Linux validation for ENTRY-019 authority, isolated assay, historical preservation, D-087, downstream tests, governance, and artifact upload.
+- `digital-protocell/examples/dcdev021_m2_entry020.rs` — isolated ENTRY-020 live autonomous-Polar composition with homogeneous initialization, conservative native-ring continuity, exact `u/(u+v)` interface, unchanged A-funded mechanics, matched controls, and no resource behavior.
+- `digital-protocell/experiments/generated/dcdev021m2entry020/` — compact ENTRY-020 authority, live causal-order, initiation, locomotion, control, closure, preservation, and qualification evidence.
+- `.github/workflows/dc-dev-021-m2-entry020.yml` — exact-head Linux validation for ENTRY-020 authority, autonomous polarity/locomotion gates, historical preservation, D-087, downstream tests, governance, and artifact upload.
 - `digital-protocell/experiments/generated/dcdev001/` — DC-DEV-001A machine-readable decision artifacts.
 - `digital-protocell/experiments/generated/dcdev006/` — DC-DEV-006 local spatial-contact evidence artifacts.
 - `digital-protocell/experiments/generated/dcdev009/` — DC-DEV-009 force, displacement, coupling, and audit evidence artifacts.
