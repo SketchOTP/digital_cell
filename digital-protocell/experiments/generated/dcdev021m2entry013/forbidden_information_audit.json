@@ -1,0 +1,9 @@
+{
+  "centroid_to_behavior": false,
+  "contact_to_behavior": false,
+  "forbidden_information_read": "NONE",
+  "observer_fourier_to_behavior": false,
+  "resource_information_to_behavior": false,
+  "success_or_viability_to_behavior": false,
+  "world_coordinates_to_behavior": false
+}

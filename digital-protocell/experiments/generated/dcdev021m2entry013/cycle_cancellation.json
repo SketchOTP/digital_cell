@@ -1,0 +1,16 @@
+{
+  "complete_phase_cycle": false,
+  "cycles_available": 0.5000000000000007,
+  "first_half_displacement": [
+    0.03806427380658372,
+    0.010197529002464921
+  ],
+  "interpretation": "one phase inversion and later low-magnitude opposing sectors are recorded; no complete phase cycle is present",
+  "second_half_displacement": [
+    0.0004654161803982759,
+    0.00012963104017602207
+  ],
+  "successive_sector_dot": 0.000019037645216509016,
+  "successive_sector_opposition": false,
+  "unwrapped_phase_change": -3.141592653589797
+}

@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-08-31T17:53:19-04:00`
+- Last updated: `2026-08-31T18:12:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260831-dcdev021-m2-entry012-separated-resource-autonomous-acquisition`
-- External directive ID: `DC-DEV-021-M2-ENTRY-012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-FEASIBILITY-001`
-- Objective: `Determine whether accepted ENTRY-011 target-free locomotion can encounter a preregistered physically separated finite N/F resource within the fixed 1,500-step horizon without new behavior.`
+- Local directive ID: `D-20260831-dcdev021-m2-entry013-search-persistence-audit`
+- External directive ID: `DC-DEV-021-M2-ENTRY-013-INTRINSIC-SEARCH-PERSISTENCE-CANCELLATION-AUDIT-001`
+- Objective: `Determine why accepted ENTRY-005 target-free locomotion remains mechanically active but produces bounded spatial reach under the fixed 1,500-step resource-free ENTRY-012 composition.`
 - Current status: `VALIDATING`
-- Acceptance: `Separated geometry, initial noncontact, precontact no-resource parity, autonomous encounter/acquisition, reachability, preservation, governance, and exact-head Linux validation passed; the result is a valid no-encounter result and Architect review remains pending.`
-- Current phase: `M2 target-free locomotion and metabolically live in-contact exploitation are qualified; ENTRY-012 tests first physical encounter from preregistered separation.`
-- Expected or actual touched areas: `one observer-only Entry-012 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, and M1 sources remain unchanged`
-- Immediate next action: `Submit the completed ENTRY-012 negative reachability evidence for Architect review; do not move the resource, extend the horizon, add sensing, or start successor work.`
+- Acceptance: `Local observer-only ENTRY-013 audit reproduces the accepted ENTRY-012 no-resource trajectory and diagnoses first-harmonic polarity decay/homogenization; exact-head Linux validation and Architect review remain pending.`
+- Current phase: `M2 target-free locomotion and metabolically live in-contact exploitation are qualified; ENTRY-012 separated encounter is not established; ENTRY-013 audits intrinsic search persistence.`
+- Expected or actual touched areas: `one observer-only Entry-013 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, and M1 sources remain unchanged`
+- Immediate next action: `Run exact-head Linux ENTRY-013 validation; do not add stochasticity, persistence state, polarity memory, navigation, sensing, or successor work.`
 
 ## Temporary task-relevant facts
 
@@ -28,7 +28,7 @@
 - Entry authority is `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
-- Current implementation work is on `m2/dc-dev-021-entry012-separated-resource-acquisition`, based exactly on accepted ENTRY-011 head `ecef56b2a60e74b3c4417043d000fa2ede0833c0`.
+- Current implementation work is on `m2/dc-dev-021-entry013-search-persistence-audit`, based exactly on accepted ENTRY-012 head `058e263f2d05965ce6d544b700b716137ed4a37b`.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
 - M2 ENTRY-001 starts from `baseline/m1-v4-closed` at `d76481c785e9eec361df3fa0cd03c512b521639c`; ENTRY-002 starts at accepted ENTRY-001 head `54f3af09804a9accd845dfcae2dfce13d1918b7c`; ENTRY-003 starts at accepted ENTRY-002 head `2ed0f6159b0169f1f7bd9c2c10e89a6b67d12167`.
 - The opt-in `ACTIVATED_ENERGY_CONTRACTILITY_SCHEMA_V1` path is V4-only, reuses frozen DC-DEV-004 constants, spends absolute A into W after accepted mechanics, and leaves R-funded APIs unchanged.
@@ -42,7 +42,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Exact-head Linux workflow 33443167806 on 1855169de9d9ecc9f0c5137a1a5a6eb0c91e5c5d; ENTRY-012 seed 1 no encounter in 1,500 steps; preservation and artifact upload completed`
+- Command or check: `Local cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry013 -- experiments/generated/dcdev021m2entry013; targeted rustfmt/check`
 - Result: `PASSED`
 
 ## Risks
@@ -58,7 +58,7 @@
 ## Pending decisions
 
 - The V4 equations, D-087 boundary, conservation contracts, accepted M1 qualification, ENTRY-001 actuator, and ENTRY-011 uptake/metabolism composition are frozen.
-- M2 autonomous resource acquisition remains unestablished; ENTRY-012 seed 1 did not encounter the separated resource within 1,500 steps despite active locomotion; no resource movement, horizon extension, sensing, navigation, parameter search, reserve, recycling, salvage, target, gradient, resource seeking, or successor execution is authorized pending Architect review.
+- M2 autonomous resource acquisition remains unestablished; ENTRY-012 seed 1 did not encounter the separated resource within 1,500 steps despite active locomotion. ENTRY-013 finds first-harmonic polarity decay/homogenization with persistent-asymmetry translation possible in an assay-only fixed-profile clone; no stochasticity, persistence state, polarity memory, sensing, navigation, parameter search, reserve, target, gradient, resource seeking, or successor execution is authorized pending Architect review.
 
 ## Status vocabulary
 

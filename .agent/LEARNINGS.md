@@ -207,3 +207,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-012 preregistered separated-resource encounter assay; exact-head Linux CI and Architect review pending.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY013-001
+
+- Learning ID: L-DCDEV021-ENTRY013-001
+- Date: 2026-08-31
+- Fact or lesson: In the exact resource-free ENTRY-012 metabolic explorer, the first-harmonic intrinsic/motor polarity is nonzero but decays from `0.243646444843049` maximum to `0.0020155616613880007` at step 1,499. Its unwrapped phase changes by one half-turn (`-3.141592653589797`) without a complete phase cycle; real motion accumulates high path (`0.33538885163612875`) but low net displacement (`0.039889688455029104`, ratio `0.11893564219691585`). The unchanged actuator/traction mechanics can translate a first observed persistent asymmetric profile in an assay-only fixed-profile clone (`0.09316990400571264` net displacement over 480 steps), so the bounded-search diagnosis is polarity decay/homogenization rather than an established mechanical impossibility. No production mechanism changed.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry013.rs`, `digital-protocell/experiments/generated/dcdev021m2entry013/`, and `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev021m2entry013/`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-013 observer-only intrinsic search-persistence/cancellation audit; exact-head Linux CI and Architect review pending.
+- Supersedes learning: none

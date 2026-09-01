@@ -762,6 +762,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review; do not move the resource or extend the horizon.
 - Follow-up directive: none
 
+## D-20260831-dcdev021-m2-entry013-search-persistence-audit - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY013-SEARCH-PERSISTENCE-AUDIT`
+- Supersedes outcome: none
+- Closed: `2026-08-31T18:15:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Local observer-only ENTRY-013 execution reproduces the accepted ENTRY-012 resource-free metabolic explorer and classifies the bounded-search mechanism as `M2_SEARCH_REACH_POLARITY_DECAY_OR_HOMOGENIZATION_CONFIRMED`. Seed 1 retains active motion but has high path and low net displacement; K1 activity polarity decays strongly, with only a half-turn phase change and no complete phase cycle. An assay-only fixed-profile diagnostic shows unchanged mechanics can translate a persistent asymmetric profile. This is a diagnosis only and does not establish autonomous acquisition or authorize a motility mechanism.
+- Changed areas: additive observer-only ENTRY-013 example/registration, compact evidence under `digital-protocell/experiments/generated/dcdev021m2entry013/`, scoped workflow, and append-only governance only; no scientific runtime source changed.
+- Validation:
+  - Exact accepted ENTRY-012 no-resource trajectory reproduction - PASSED
+  - Ring-mode, polarity-persistence, kinematic, mechanical-proxy, phase-locked, fixed-profile, seed, and energetic observer audit - PASSED
+  - Targeted Rust formatting and example compile/run - PASSED
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: remote exact-head validation and Architect acceptance remain pending; this diagnosis does not qualify autonomous resource acquisition or authorize persistence implementation.
+- Blockers: exact-head Linux CI and Architect review.
+- Follow-up directive: none
+
 ## D-20260831-dcdev021-m2-entry012-separated-resource-autonomous-acquisition - PARTIAL
 
 - Outcome ID: `OUT-DCDEV021-ENTRY012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-R2`

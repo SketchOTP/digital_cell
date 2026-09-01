@@ -1,0 +1,11 @@
+{
+  "assay_steps": 1500,
+  "directive": "DC-DEV-021-M2-ENTRY-013-INTRINSIC-SEARCH-PERSISTENCE-CANCELLATION-AUDIT-001",
+  "dt": 0.02,
+  "no_resource": true,
+  "observer_only": true,
+  "scientific_runtime_change": false,
+  "settlement_steps": 5000,
+  "starting_head": "058e263f2d05965ce6d544b700b716137ed4a37b",
+  "topology": 24
+}

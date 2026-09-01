@@ -1,0 +1,32 @@
+{
+  "a_to_w_pass": true,
+  "dominant_patch_pinned_to_seed": true,
+  "greater_coherent_translation": false,
+  "integer_rotation_only": true,
+  "intrinsic_state_unchanged": true,
+  "summary": {
+    "a_spent": 47.19367708559755,
+    "a_to_w_residual": 1.3926637620897964e-12,
+    "arm": "PHASE_LOCKED_COUNTERFACTUAL",
+    "dominant_patch_changes": 12,
+    "final_centroid": [
+      0.013136155294274698,
+      0.006390198484722806
+    ],
+    "final_intrinsic_hash": "f8596c794694f7d4",
+    "final_mesh_hash": "ebe72b017f69612d",
+    "fixed_profile": false,
+    "motor_polarity_max": 0.243646444843049,
+    "net_displacement": 0.01460798454919419,
+    "path": 0.34926483140301706,
+    "phase_final": -2.879793265790648,
+    "phase_locked": true,
+    "phase_start": 0.26179938779914935,
+    "phase_total_change": -3.141592653589797,
+    "polarity_final": 0.0020155616613880007,
+    "polarity_max": 0.243646444843049,
+    "seed": 1,
+    "slips": 9124,
+    "w_generated": 61.64793466357934
+  }
+}

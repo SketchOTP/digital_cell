@@ -1,0 +1,14 @@
+{
+  "entry005": "QUALIFIED",
+  "entry012": "M2_SEPARATED_RESOURCE_ENCOUNTER_NOT_ESTABLISHED",
+  "m1": "CLOSED/FROZEN",
+  "pr44": "OPEN/DRAFT/UNMERGED/UNMODIFIED",
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "source_hashes": {
+    "contractility": "588b40fe26029232",
+    "intrinsic_exploration": "dc14db5d477b97cb",
+    "mesh_reactions": "8b7a5572b93b0982",
+    "stick_slip_traction": "ec1ad2b699ca7461"
+  },
+  "starting_head": "058e263f2d05965ce6d544b700b716137ed4a37b"
+}

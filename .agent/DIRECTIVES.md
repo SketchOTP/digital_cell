@@ -430,3 +430,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260831-dcdev021-m2-entry011-frozen-uptake-metabolism-composition
 - Status at issuance: ISSUED
+
+## D-20260831-dcdev021-m2-entry013-search-persistence-audit
+
+- Issued: `2026-08-31T18:12:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-013-INTRINSIC-SEARCH-PERSISTENCE-CANCELLATION-AUDIT-001`
+- Objective: Determine why accepted ENTRY-005 target-free locomotion produces high-slip A-funded motion but bounded spatial reach over the fixed resource-free 1,500-step ENTRY-012 composition.
+- Scope: One observer-only resource-free reproduction, ring Fourier modes, polarity persistence, movement kinematics, phase/cancellation audit, existing actuator/traction ledger proxies, assay-only phase-locked and fixed-profile counterfactuals, seed observations, compact evidence, governance, and exact-head Linux validation.
+- Exclusions: intrinsic equation/coefficient changes, stochasticity, recurrent seeds, polarity/persistence state, pseudopods, navigation, sensing, chemotaxis, target/gradient/planner/reward, actuator/traction/metabolism/uptake/resource changes, M1 work, restart repair, PR #44 modification, and successor execution.
+- Acceptance: One preregistered diagnosis among polarity rotation/cancellation, polarity decay/homogenization, mechanical translation coupling insufficiency, multifactor bounding, or invalid, after exact ENTRY-012 reproduction, observer-only counterfactuals, energetic closure, seed equivariance, preservation, governance, and exact-head Linux checks.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260831-dcdev021-m2-entry012-separated-resource-autonomous-acquisition
+- Status at issuance: ISSUED

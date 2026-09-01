@@ -1,0 +1,191 @@
+name: DC-DEV-021 M2 ENTRY-013 intrinsic search persistence audit
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-entry013-search-persistence-audit
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  entry013-search-persistence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify authority, exact head, and observer-only scope
+        run: |
+          set -euo pipefail
+          start=058e263f2d05965ce6d544b700b716137ed4a37b
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          forbidden=$(git diff --name-only "$start" HEAD -- \
+            digital-protocell/crates/chemistry-core \
+            digital-protocell/crates/phase1-certifier \
+            digital-protocell/crates/regulatory-core/src/contractility.rs \
+            digital-protocell/crates/regulatory-core/src/intrinsic_exploration.rs \
+            digital-protocell/crates/regulatory-core/src/plasticity.rs \
+            digital-protocell/crates/regulatory-core/src/spatial_resource.rs \
+            digital-protocell/crates/regulatory-core/src/stick_slip_traction.rs)
+          test -z "$forbidden"
+          python3 - "$start" <<'PY'
+          import subprocess, sys
+          start = sys.argv[1]
+          allowed = {
+              ".github/workflows/dc-dev-021-m2-entry013.yml",
+              "digital-protocell/crates/regulatory-core/Cargo.toml",
+              "digital-protocell/examples/dcdev021_m2_entry013.rs",
+              ".agent/CURRENT.md", ".agent/DIRECTIVES.md", ".agent/OUTCOMES.md",
+              ".agent/LEARNINGS.md", ".agent/RECORD.md", ".agent/REPO_MAP.md",
+              ".agent/PROJECT_PROFILE.md",
+          }
+          prefix = "digital-protocell/experiments/generated/dcdev021m2entry013/"
+          changed = subprocess.check_output(["git", "diff", "--name-only", start, "HEAD"], text=True).splitlines()
+          unexpected = [p for p in changed if p not in allowed and not p.startswith(prefix)]
+          assert not unexpected, unexpected
+          print("ENTRY-012 authority, frozen sources, and ENTRY-013 scope verified")
+          PY
+
+      - name: Reproduce accepted ENTRY-005 through ENTRY-012 results
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          for example in dcdev021_m2_entry005 dcdev021_m2_entry006 dcdev021_m2_entry007 dcdev021_m2_entry008 dcdev021_m2_entry009 dcdev021_m2_entry010 dcdev021_m2_entry011 dcdev021_m2_entry012; do
+            cargo +1.89.0 build -p regulatory-core --example "$example"
+          done
+          for example in dcdev021_m2_entry005 dcdev021_m2_entry006 dcdev021_m2_entry007 dcdev021_m2_entry008 dcdev021_m2_entry009 dcdev021_m2_entry010 dcdev021_m2_entry011 dcdev021_m2_entry012; do
+            cargo +1.89.0 run -p regulatory-core --example "$example" -- "$RUNNER_TEMP/$example" "$RUNNER_TEMP/$example-dense"
+          done
+          python3 - "$RUNNER_TEMP" <<'PY'
+          import json, math, sys
+          from pathlib import Path
+          root = Path(sys.argv[1])
+          def load(folder, name): return json.loads((root / folder / name).read_text())
+          expected = {
+              "dcdev021_m2_entry005": "M2_REFRACTORY_MOTOR_DECOUPLING_EXPLORATION_QUALIFIED",
+              "dcdev021_m2_entry006": "M2_UNGUIDED_RESOURCE_ACQUISITION_NOT_ESTABLISHED",
+              "dcdev021_m2_entry007": "M2_UPTAKE_DEGRADATION_CONCENTRATION_FEEDBACK_CONFIRMED",
+              "dcdev021_m2_entry008": "M2_LOCAL_CONTACT_REFRACTORY_EXPLOITATION_UPTAKE_INSUFFICIENT",
+              "dcdev021_m2_entry009": "M2_CONTACT_LOCAL_SUPPRESSION_FAMILY_MECHANICALLY_INSUFFICIENT",
+              "dcdev021_m2_entry010": "M2_POST_INGESTIVE_MATERIAL_SIGNAL_SUBSTRATE_QUALIFIED",
+              "dcdev021_m2_entry011": "M2_FROZEN_UPTAKE_METABOLISM_COMPOSITION_QUALIFIED",
+              "dcdev021_m2_entry012": "M2_SEPARATED_RESOURCE_ENCOUNTER_NOT_ESTABLISHED",
+          }
+          for folder, classification in expected.items():
+              assert load(folder, "qualification.json")["classification"] == classification
+          assert math.isclose(load("dcdev021_m2_entry006", "unguided_explorer.json")["cumulative_acquisition"], 0.2948669468973028, abs_tol=1e-12, rel_tol=0)
+          assert load("dcdev021_m2_entry012", "qualification.json")["entry012_reproduction"] is True
+          print("ENTRY-005 through ENTRY-012 preservation passed")
+          PY
+
+      - name: Execute ENTRY-013 observer audit
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build -p regulatory-core --example dcdev021_m2_entry013
+          cargo +1.89.0 run -p regulatory-core --example dcdev021_m2_entry013 -- "$RUNNER_TEMP/entry013" "$RUNNER_TEMP/entry013-dense"
+          python3 - "$RUNNER_TEMP/entry013" <<'PY'
+          import json, math, sys
+          from pathlib import Path
+          root = Path(sys.argv[1])
+          def load(name): return json.loads((root / name).read_text())
+          q = load("qualification.json")
+          reproduction = load("entry012_no_resource_reproduction.json")
+          polarity = load("polarity_persistence.json")
+          phase = load("phase_locked_counterfactual.json")
+          fixed = load("fixed_profile_counterfactual.json")
+          energetic = load("energetic_closure.json")
+          forbidden = load("forbidden_information_audit.json")
+          valid = {
+              "M2_SEARCH_REACH_POLARITY_ROTATION_CANCELLATION_CONFIRMED",
+              "M2_SEARCH_REACH_POLARITY_DECAY_OR_HOMOGENIZATION_CONFIRMED",
+              "M2_SEARCH_REACH_MECHANICAL_TRANSLATION_COUPLING_INSUFFICIENT",
+              "M2_SEARCH_REACH_MULTIFACTOR_BOUNDING_CONFIRMED",
+          }
+          assert q["classification"] in valid
+          assert reproduction["pass"] is True
+          assert polarity["k1_activity_max"] > 0.0
+          assert energetic["a_to_w_pass"] is True
+          assert phase["intrinsic_state_unchanged"] is True
+          assert fixed["ran"] is True
+          assert all(value is False for key, value in forbidden.items() if key != "forbidden_information_read")
+          assert q["m2_bounded_autonomous_resource_acquisition"] == "NOT_ESTABLISHED"
+          print("ENTRY-013 observer audit and valid diagnosis passed")
+          PY
+
+      - name: Preserve production, D-087, downstream, and governance
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          DCDEV020R9R3_CONTRACT=ConservativeV3 DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 cargo +1.89.0 build -p phase1-certifier --bin digital-protocell-phase1 --release
+          DCDEV020R9R3_CONTRACT=ConservativeV3 DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 cargo +1.89.0 run -p phase1-certifier --bin digital-protocell-phase1 --release -- --steps 1 --out "$RUNNER_TEMP/production.json"
+          python3 - "$RUNNER_TEMP/production.json" <<'PY'
+          import json, sys
+          report = json.load(open(sys.argv[1]))
+          assert report["mesh_contract"] == "MaturationCoupledV4" and report["reserve_enabled"] is False
+          PY
+          run_d087() {
+            local output="$1" contract="$2" v4="$3"
+            if test "$v4" = 1; then
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            else
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 cargo +1.89.0 run -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            fi
+          }
+          run_d087 "$RUNNER_TEMP/d087-v2" ConservativeV2 0
+          run_d087 "$RUNNER_TEMP/d087-v3" ConservativeV3 0
+          run_d087 "$RUNNER_TEMP/d087-v4" ConservativeV3 1
+          python3 - "$RUNNER_TEMP" <<'PY'
+          import json, sys
+          from pathlib import Path
+          root = Path(sys.argv[1])
+          expected = {"v2": [True] * 8, "v3": [True] * 8, "v4": [True, True, False, True, True, True, True, True]}
+          for name, vector in expected.items():
+              report = json.loads((root / f"d087-{name}" / "manifest.json").read_text())
+              assert [report[f"gate{i}"]["pass"] for i in range(8)] == vector
+          print("canonical D-087 preservation passed")
+          PY
+          out="$RUNNER_TEMP/foundations"; mkdir -p "$out"
+          for spec in "dcdev002_gate_assay:regulator" "dcdev005_gate_assay:plasticity" "dcdev006_gate_assay:contact" "dcdev007_gate_assay:contact_regulation" "dcdev008_gate_assay:finite_resource" "dcdev011_gate_assay:traction"; do
+            example="${spec%%:*}"; label="${spec##*:}"
+            cargo +1.89.0 run -p regulatory-core --example "$example" -- "$out/$label"
+          done
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test -p evolution-harness -- --nocapture
+          python3 ../scripts/validate_governance.py --mode ADOPTED
+
+      - name: Record artifact SHA-256
+        if: always()
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2entry013 -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2entry013.sha256"
+
+      - name: Upload ENTRY-013 evidence and digest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-m2-entry013-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2entry013/
+            ${{ runner.temp }}/entry013/
+            ${{ runner.temp }}/entry013-dense/
+            ${{ runner.temp }}/dcdev021m2entry013.sha256
+            ${{ runner.temp }}/production.json
+            ${{ runner.temp }}/d087-v2/
+            ${{ runner.temp }}/d087-v3/
+            ${{ runner.temp }}/d087-v4/
+            ${{ runner.temp }}/foundations/
+          if-no-files-found: warn

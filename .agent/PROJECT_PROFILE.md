@@ -11,7 +11,7 @@
 - Purpose: A self-maintaining digital protocell developing toward a persistent embodied digital lifeform.
 - Repository root: `/home/sketch/Projects/digital_cell-m1-baseline`
 - Verified remote: `git@github.com:SketchOTP/digital_cell.git`
-- Maturity or current phase: M1 closed/frozen; M2 ENTRY-001 actuator, ENTRY-005 target-free intrinsic exploration, ENTRY-011 metabolically live in-contact composition, and the accepted ENTRY-006 through ENTRY-010 boundaries are established; exact-head ENTRY-012 records `M2_SEPARATED_RESOURCE_ENCOUNTER_NOT_ESTABLISHED` with Linux CI passed and Architect review pending. Autonomous resource acquisition remains not established.
+- Maturity or current phase: M1 closed/frozen; M2 ENTRY-001 actuator, ENTRY-005 target-free intrinsic exploration, ENTRY-011 metabolically live in-contact composition, and the accepted ENTRY-006 through ENTRY-012 boundaries are established; local ENTRY-013 records `M2_SEARCH_REACH_POLARITY_DECAY_OR_HOMOGENIZATION_CONFIRMED` with exact-head Linux CI pending. Autonomous resource acquisition remains not established.
 
 ## Languages and runtimes
 

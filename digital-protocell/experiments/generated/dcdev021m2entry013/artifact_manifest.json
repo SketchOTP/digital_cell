@@ -1,0 +1,32 @@
+{
+  "dense_records": "optional second argument contains all per-step records",
+  "directive": "DC-DEV-021-M2-ENTRY-013-INTRINSIC-SEARCH-PERSISTENCE-CANCELLATION-AUDIT-001",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "entry012_no_resource_reproduction.json",
+    "ring_modes.json",
+    "polarity_persistence.json",
+    "movement_kinematics.json",
+    "polarity_motion_coupling.json",
+    "cycle_cancellation.json",
+    "mechanical_impulse.json",
+    "phase_locked_counterfactual.json",
+    "fixed_profile_counterfactual.json",
+    "seed_equivariance.json",
+    "energetic_closure.json",
+    "forbidden_information_audit.json",
+    "restart_boundary.json",
+    "m1_preservation.json",
+    "downstream_preservation.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "source_hashes": {
+    "contractility": "588b40fe26029232",
+    "intrinsic_exploration": "dc14db5d477b97cb",
+    "mesh_reactions": "8b7a5572b93b0982",
+    "stick_slip_traction": "ec1ad2b699ca7461"
+  },
+  "starting_head": "058e263f2d05965ce6d544b700b716137ed4a37b"
+}

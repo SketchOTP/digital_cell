@@ -195,3 +195,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The remote run verified authority, fixed one-edge-length separation, zero initial contact, precontact parity, ENTRY-005 through ENTRY-011 preservation, the active no-encounter reachability negative, M1/downstream preservation, governance, and artifact upload. The preregistered classification remains `M2_SEPARATED_RESOURCE_ENCOUNTER_NOT_ESTABLISHED`; autonomous resource acquisition remains `NOT_ESTABLISHED`.
 - Affected areas: additive observer-only ENTRY-012 assay, compact evidence, workflow, and governance only; no frozen scientific runtime source changed and PR #44 remains untouched.
 - Supersedes record: DEC-DCDEV021-ENTRY012-SEPARATED-RESOURCE-AUTONOMOUS-ACQUISITION-R1
+
+## DEC-DCDEV021-ENTRY013-SEARCH-PERSISTENCE-AUDIT-R1
+
+- Date: 2026-08-31
+- Record or decision ID: DEC-DCDEV021-ENTRY013-SEARCH-PERSISTENCE-AUDIT-R1
+- Status: ACTIVE
+- Decision or event: Local observer-only ENTRY-013 execution classifies `M2_SEARCH_REACH_POLARITY_DECAY_OR_HOMOGENIZATION_CONFIRMED` from the exact accepted ENTRY-012 starting head.
+- Rationale: Seed 1 exactly reproduces the accepted no-resource trajectory (`0.33538885163612875` path, `0.039889688455029104` net displacement, `9196` slips, `12` dominant-patch changes; expected values match within tolerance). K1 polarity decays from `0.243646444843049` to `0.0020155616613880007`; the phase changes by a half-turn without a complete cycle. The phase-locked clone does not increase coherent translation, while the first observed persistent asymmetric fixed-profile clone reaches `0.09316990400571264` net displacement over 480 steps, establishing that unchanged mechanics can translate persistent asymmetry. A-to-W closure passes in physical and diagnostic trajectories. No scientific runtime source changed.
+- Affected areas: additive observer-only ENTRY-013 example, compact evidence, scoped workflow, and governance; frozen scientific sources, M1/V4, uptake, metabolism, actuator, traction, production selector, restart boundary, and PR #44 remain unchanged.
+- Supersedes record: none

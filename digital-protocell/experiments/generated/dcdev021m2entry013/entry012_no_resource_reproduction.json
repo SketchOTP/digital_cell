@@ -1,0 +1,36 @@
+{
+  "dominant_changes_match": true,
+  "expected_dominant_patch_changes": 12,
+  "expected_net_displacement": 0.03988968845502883,
+  "expected_path": 0.33538885163612836,
+  "expected_slips": 9196,
+  "net_match": true,
+  "pass": true,
+  "path_match": true,
+  "slips_match": true,
+  "summary": {
+    "a_spent": 47.18801239708354,
+    "a_to_w_residual": 1.1084466677857563e-12,
+    "arm": "ENTRY012_NO_RESOURCE_REPRODUCTION",
+    "dominant_patch_changes": 12,
+    "final_centroid": [
+      0.038529689986981294,
+      0.01032716004263985
+    ],
+    "final_intrinsic_hash": "f8596c794694f7d4",
+    "final_mesh_hash": "1f7224ba1e925989",
+    "fixed_profile": false,
+    "motor_polarity_max": 0.243646444843049,
+    "net_displacement": 0.039889688455029104,
+    "path": 0.33538885163612875,
+    "phase_final": -2.879793265790648,
+    "phase_locked": false,
+    "phase_start": 0.26179938779914935,
+    "phase_total_change": -3.141592653589797,
+    "polarity_final": 0.0020155616613880007,
+    "polarity_max": 0.243646444843049,
+    "seed": 1,
+    "slips": 9196,
+    "w_generated": 61.648060529161455
+  }
+}

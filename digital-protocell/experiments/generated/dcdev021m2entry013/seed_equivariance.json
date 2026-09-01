@@ -1,0 +1,106 @@
+{
+  "rotated_copy_mode": "observer comparison of magnitude/path/slips and phase offsets",
+  "seeds": [
+    {
+      "a_spent": 47.18801239708354,
+      "a_to_w_residual": 1.1084466677857563e-12,
+      "arm": "SEED_DIVERSITY",
+      "dominant_patch_changes": 12,
+      "final_centroid": [
+        0.038529689986981294,
+        0.01032716004263985
+      ],
+      "final_intrinsic_hash": "f8596c794694f7d4",
+      "final_mesh_hash": "1f7224ba1e925989",
+      "fixed_profile": false,
+      "motor_polarity_max": 0.243646444843049,
+      "net_displacement": 0.039889688455029104,
+      "path": 0.33538885163612875,
+      "phase_final": -2.879793265790648,
+      "phase_locked": false,
+      "phase_start": 0.26179938779914935,
+      "phase_total_change": -3.141592653589797,
+      "polarity_final": 0.0020155616613880007,
+      "polarity_max": 0.243646444843049,
+      "seed": 1,
+      "slips": 9196,
+      "w_generated": 61.648060529161455
+    },
+    {
+      "a_spent": 47.18801222938079,
+      "a_to_w_residual": 3.268496584496461e-13,
+      "arm": "SEED_DIVERSITY",
+      "dominant_patch_changes": 12,
+      "final_centroid": [
+        0.03454294156193407,
+        0.01994886920296496
+      ],
+      "final_intrinsic_hash": "dfdd9573fa49bf01",
+      "final_mesh_hash": "f0cc9f67373f6f46",
+      "fixed_profile": false,
+      "motor_polarity_max": 0.2436464448430491,
+      "net_displacement": 0.039889499799174125,
+      "path": 0.3356281315303508,
+      "phase_final": -2.617993877991494,
+      "phase_locked": false,
+      "phase_start": 0.5235987755982988,
+      "phase_total_change": -3.141592653589793,
+      "polarity_final": 0.0020155616613880215,
+      "polarity_max": 0.2436464448430491,
+      "seed": 2,
+      "slips": 9196,
+      "w_generated": 61.64806026929148
+    },
+    {
+      "a_spent": 47.188012177386895,
+      "a_to_w_residual": 1.9895196601282805e-13,
+      "arm": "SEED_DIVERSITY",
+      "dominant_patch_changes": 12,
+      "final_centroid": [
+        0.028204155859630934,
+        0.028209694834495914
+      ],
+      "final_intrinsic_hash": "6fb5a1742518c3f0",
+      "final_mesh_hash": "6c6f70bafbb1e7a4",
+      "fixed_profile": false,
+      "motor_polarity_max": 0.24364644484304904,
+      "net_displacement": 0.03989061657094143,
+      "path": 0.33580481656708944,
+      "phase_final": -2.356194490192357,
+      "phase_locked": false,
+      "phase_start": 0.7853981633974482,
+      "phase_total_change": 3.141592653589781,
+      "polarity_final": 0.002015561661388051,
+      "polarity_max": 0.24364644484304904,
+      "seed": 3,
+      "slips": 9196,
+      "w_generated": 61.64806037686154
+    },
+    {
+      "a_spent": 47.18801214127804,
+      "a_to_w_residual": 2.4158453015843406e-13,
+      "arm": "SEED_DIVERSITY",
+      "dominant_patch_changes": 12,
+      "final_centroid": [
+        0.019943311753016488,
+        0.03454844827548593
+      ],
+      "final_intrinsic_hash": "4721dc9f5fbddc9f",
+      "final_mesh_hash": "50760dcff79b7e5d",
+      "fixed_profile": false,
+      "motor_polarity_max": 0.24364644484304906,
+      "net_displacement": 0.03989148984334956,
+      "path": 0.3359258143889249,
+      "phase_final": -2.0943951023932077,
+      "phase_locked": false,
+      "phase_start": 1.0471975511965976,
+      "phase_total_change": 3.1415926535897807,
+      "polarity_final": 0.002015561661388031,
+      "polarity_max": 0.24364644484304906,
+      "seed": 4,
+      "slips": 9196,
+      "w_generated": 61.64806043723479
+    }
+  ],
+  "unscreened": true
+}

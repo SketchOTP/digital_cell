@@ -1,0 +1,30 @@
+{
+  "mechanics_can_translate_persistent_asymmetry": true,
+  "profile_selection": "first observed slip profile with nonzero k1, only when phase-locked result was ambiguous",
+  "ran": true,
+  "summary": {
+    "a_spent": 3.7098723104738296,
+    "a_to_w_residual": 1.8385293287792592e-13,
+    "arm": "FIXED_PROFILE_COUNTERFACTUAL",
+    "dominant_patch_changes": 12,
+    "final_centroid": [
+      -0.0900086274761495,
+      -0.024064039401016712
+    ],
+    "final_intrinsic_hash": "4fa2583a053704cf",
+    "final_mesh_hash": "abbaa3eed2dd8208",
+    "fixed_profile": true,
+    "motor_polarity_max": 0.11229650282262649,
+    "net_displacement": 0.09316990400571264,
+    "path": 0.11238451633629641,
+    "phase_final": 0.26179938779914935,
+    "phase_locked": false,
+    "phase_start": 0.26179938779914935,
+    "phase_total_change": 0.0,
+    "polarity_final": 0.11229650282262649,
+    "polarity_max": 0.11229650282262649,
+    "seed": 1,
+    "slips": 1395,
+    "w_generated": 26.720611064545867
+  }
+}
