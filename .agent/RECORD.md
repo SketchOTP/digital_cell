@@ -16,6 +16,16 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Affected areas: isolated assay/example, compact evidence, scoped workflow, and append-only governance; no scientific runtime, M1, resource, restart, or PR #44 change.
 - Supersedes record: none
 
+## DEC-DCDEV021-ENTRY024-POLARITY-EFFECTOR-SEMANTIC-ORIENTATION-R2
+
+- Date: 2026-09-02
+- Record or decision ID: DEC-DCDEV021-ENTRY024-POLARITY-EFFECTOR-SEMANTIC-ORIENTATION-R2
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33680965538` passed on result head `b2f7343f396830452655d42d1222d46b3ec3b469`; independently downloaded artifact ZIP digest is `sha256:c7e56a987b34a9de10164be6e8079b2a5d53683f1796adcb9b74585d4e833cd1`.
+- Rationale: The sealed observer audit preserves direct ENTRY-023 parity and shows that complementary `v/(u+v)` effector orientation is mechanically leverage-positive for inherited daughters but daughter-dependent for analytical reference fields. The bounded classification is `M2_EFFECTOR_ORIENTATION_DAUGHTER_DEPENDENT_UNRESOLVED`; Architect acceptance remains pending.
+- Affected areas: final remote-validation provenance for additive ENTRY-024 assay/evidence/workflow/governance only; no scientific runtime, production polarity, resource, actuator, traction, M1, restart, or PR #44 change.
+- Supersedes record: none
+
 ## DEC-DCDEV001A-001
 
 - Date: 2026-08-15

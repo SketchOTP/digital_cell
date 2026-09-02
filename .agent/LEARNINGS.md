@@ -18,6 +18,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-021 ENTRY-015 polarity actuator interface feasibility audit
 - Supersedes learning: none
 
+## L-DCDEV021-ENTRY024-002
+
+- Learning ID: L-DCDEV021-ENTRY024-002
+- Date: 2026-09-02
+- Fact or lesson: Exact-head Linux workflow `33680965538` passed on result head `b2f7343f396830452655d42d1222d46b3ec3b469`; the independently downloaded artifact ZIP hashes to `sha256:c7e56a987b34a9de10164be6e8079b2a5d53683f1796adcb9b74585d4e833cd1`. The sealed classification is `M2_EFFECTOR_ORIENTATION_DAUGHTER_DEPENDENT_UNRESOLVED`; no scientific runtime source changed.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry024.rs`, `digital-protocell/experiments/generated/dcdev021m2entry024/`, `.github/workflows/dc-dev-021-m2-entry024.yml`, and GitHub Actions workflow `33680965538`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 ENTRY-024 polarity-effector semantic-orientation feasibility audit.
+- Supersedes learning: none
+
 ## L-DCDEV001A-001
 
 - Learning ID: L-DCDEV001A-001

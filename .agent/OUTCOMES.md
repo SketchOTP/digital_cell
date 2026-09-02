@@ -25,6 +25,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
+## D-20260902-dcdev021-m2-entry024-polarity-effector-semantic-orientation - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-ENTRY024-POLARITY-EFFECTOR-SEMANTIC-ORIENTATION-R2`
+- Supersedes outcome: none
+- Closed: `2026-09-02T16:48:00-04:00`
+- Acceptance: `MET`
+- Summary: Exact-head Linux validation passed on result head `b2f7343f396830452655d42d1222d46b3ec3b469`. Direct `u/(u+v)` parity passed. The assay-only complementary `v/(u+v)` orientation showed leverage on both inherited daughters but only daughter B under the analytical reference fields, yielding `M2_EFFECTOR_ORIENTATION_DAUGHTER_DEPENDENT_UNRESOLVED`.
+- Changed areas: additive isolated ENTRY-024 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, polarity production, resource, actuator, traction, M1, restart, or PR #44 change.
+- Validation:
+  - Exact authority, direct parity, complement identity, A-to-W closure, rotation/index invariance, historical preservation, production V4/reserve-OFF, D-087, downstream, governance, and local execution - PASSED
+  - Exact-head Linux workflow `33680965538` on the exact result head - PASSED
+  - Independently downloaded artifact ZIP digest `sha256:c7e56a987b34a9de10164be6e8079b2a5d53683f1796adcb9b74585d4e833cd1` - PASSED
+  - Architect review - NOT RUN
+- Remaining risks: the bounded result does not qualify a universal effector orientation, production polarity integration, autonomous polarity initiation, or autonomous resource acquisition.
+- Blockers: Architect acceptance; no successor execution authorized.
+- Follow-up directive: none
+
 ## D-20260902-dcdev021-m2-entry024-polarity-effector-semantic-orientation - PARTIAL
 
 - Outcome ID: `OUT-DCDEV021-ENTRY024-POLARITY-EFFECTOR-SEMANTIC-ORIENTATION-LOCAL`
