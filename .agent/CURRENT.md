@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-02T19:25:00-04:00`
+- Last updated: `2026-09-02T19:35:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260902-dcdev021-m2-entry026-post-fission-development-polarity-maintenance`
-- External directive ID: `DC-DEV-021-M2-ENTRY-026-POST-FISSION-CONTINUED-DEVELOPMENT-POLARITY-MAINTENANCE-FEASIBILITY-001`
-- Objective: `Audit whether continued ordinary post-fission development maintains inherited polarity without de-novo reseeding.`
-- Current status: `VALIDATING`
-- Acceptance: `PENDING`
-- Current phase: `ENTRY-026 assay, evidence, workflow, and governance validation`
-- Expected or actual touched areas: `isolated example, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `Run exact-head Linux validation, independently hash the artifact, and synchronize/read back Notion.`
+- Local directive ID: `NONE`
+- External directive ID: `NONE`
+- Objective: `NONE`
+- Current status: `IDLE`
+- Acceptance: `NONE`
+- Current phase: `NONE`
+- Expected or actual touched areas: `NONE`
+- Immediate next action: `NONE`
 
 ## Temporary task-relevant facts
 
@@ -48,7 +48,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `ENTRY-025 exact-head Linux workflow 33688853406 on c506837301c5cb4ed98b519b9cfc79f1033597fa; local release assay and preservation matrix`
+- Command or check: `ENTRY-026 exact-head Linux workflow 33695346399 on f842a1dc1a160015b870ce72df68e1c0f2739a94; independent artifact ZIP digest sha256:3401fb9bb664fd18ca6ff2f3c3a52a105b720033fad2e8437e08a5aa7378be75; local release assay and preservation matrix`
 - Result: `PASSED`
 
 ## Risks

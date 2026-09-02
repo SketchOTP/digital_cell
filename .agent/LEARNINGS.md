@@ -457,3 +457,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-026 post-fission continued-development polarity-maintenance feasibility audit.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY026-002
+
+- Learning ID: L-DCDEV021-ENTRY026-002
+- Date: 2026-09-02
+- Fact or lesson: Exact-head Linux workflow `33695346399` passed on result head `f842a1dc1a160015b870ce72df68e1c0f2739a94`; the independently downloaded artifact ZIP hashes to `sha256:3401fb9bb664fd18ca6ff2f3c3a52a105b720033fad2e8437e08a5aa7378be75`. The bounded classification is `M2_POST_FISSION_DEVELOPMENT_MAINTAINS_INHERITED_POLARITY_WITHOUT_DE_NOVO_RESEED`: ordinary growth maintains inherited polarity for both daughters relative to growth-OFF decay, while homogeneous controls remain homogeneous and no second fission is executed.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry026.rs`, `digital-protocell/experiments/generated/dcdev021m2entry026/`, `.github/workflows/dc-dev-021-m2-entry026.yml`, and GitHub Actions workflow `33695346399`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 ENTRY-026 post-fission continued-development polarity-maintenance feasibility audit.
+- Supersedes learning: L-DCDEV021-ENTRY026-001

@@ -475,3 +475,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: ENTRY-025 is accepted as a bounded negative. ENTRY-026 tests whether the existing physical growth path changes inherited daughter polarity relative to growth-OFF and same-total homogeneous controls, without initializing polarity or executing another fission.
 - Affected areas: additive isolated ENTRY-026 assay/example, compact evidence, scoped workflow, and governance only; no accepted scientific runtime, production polarity, actuator, traction, resource, M1, restart, or PR #44 change.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY026-POST-FISSION-DEVELOPMENT-POLARITY-MAINTENANCE-R2
+
+- Date: 2026-09-02
+- Record or decision ID: DEC-DCDEV021-ENTRY026-POST-FISSION-DEVELOPMENT-POLARITY-MAINTENANCE-R2
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33695346399` passed on result head `f842a1dc1a160015b870ce72df68e1c0f2739a94`; independent artifact ZIP digest `sha256:3401fb9bb664fd18ca6ff2f3c3a52a105b720033fad2e8437e08a5aa7378be75`.
+- Rationale: The sealed ENTRY-026 assay preserves the accepted physical fission/development boundary, shows growth-ON maintenance of inherited daughter polarity relative to growth-OFF decay for both daughters, shows no de-novo homogeneous reseed, and observes but does not execute second-fission eligibility. The classification is `M2_POST_FISSION_DEVELOPMENT_MAINTAINS_INHERITED_POLARITY_WITHOUT_DE_NOVO_RESEED`; Architect acceptance remains pending.
+- Affected areas: final remote-validation provenance for additive ENTRY-026 assay/example, compact evidence, scoped workflow, and governance only; no accepted scientific runtime, production polarity, actuator, traction, resource, M1, restart, or PR #44 change.
+- Supersedes record: DEC-DCDEV021-ENTRY026-POST-FISSION-DEVELOPMENT-POLARITY-MAINTENANCE-R1

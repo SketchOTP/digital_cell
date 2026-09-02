@@ -1234,3 +1234,20 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: ENTRY-026 does not establish autonomous embodied locomotion or autonomous resource acquisition; Architect review is pending.
 - Blockers: exact-head Linux validation and Architect review; do not start successor work.
 - Follow-up directive: none
+
+## D-20260902-dcdev021-m2-entry026-post-fission-development-polarity-maintenance - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-ENTRY026-POST-FISSION-DEVELOPMENT-POLARITY-MAINTENANCE-R2`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY026-POST-FISSION-DEVELOPMENT-POLARITY-MAINTENANCE-LOCAL`
+- Closed: `2026-09-02T19:35:00-04:00`
+- Acceptance: `MET`
+- Summary: Exact-head Linux workflow `33695346399` passed on result head `f842a1dc1a160015b870ce72df68e1c0f2739a94`; the independently downloaded artifact ZIP digest is `sha256:3401fb9bb664fd18ca6ff2f3c3a52a105b720033fad2e8437e08a5aa7378be75`. Growth-ON maintains inherited nonhomogeneous daughter polarity relative to matched growth-OFF decay for both daughters; same-total homogeneous controls remain homogeneous and no de-novo reseed occurs. Second-fission eligibility is observed at step 25 and no second fission is executed. The bounded classification is `M2_POST_FISSION_DEVELOPMENT_MAINTAINS_INHERITED_POLARITY_WITHOUT_DE_NOVO_RESEED`.
+- Changed areas: additive ENTRY-026 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, production polarity, actuator, resource, M1, restart, or PR #44 change.
+- Validation:
+  - Exact authority, bounded scope, ENTRY-026 assay, evidence, rotation/index, historical classifications, production/D-087, downstream, and governance - PASSED
+  - Exact-head Linux workflow `33695346399` on `f842a1dc1a160015b870ce72df68e1c0f2739a94` - PASSED
+  - Independent artifact ZIP digest - PASSED
+  - Architect review - NOT RUN
+- Remaining risks: ENTRY-026 establishes continued-development polarity maintenance without de-novo reseeding in this bounded assay; it does not establish autonomous embodied locomotion or autonomous resource acquisition. Architect acceptance remains pending.
+- Blockers: Architect review only; no successor work is authorized.
+- Follow-up directive: none
