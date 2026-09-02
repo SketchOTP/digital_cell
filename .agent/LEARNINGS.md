@@ -387,3 +387,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-023 daughter polarity/effector mechanical-transfer attribution audit.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY023-002
+
+- Learning ID: L-DCDEV021-ENTRY023-002
+- Date: 2026-09-02
+- Fact or lesson: Exact-head Linux workflow `33670749143` passed on result head `ec60390c1c05301a949c70a851d4da7744b0b5cd`; the independently downloaded artifact ZIP hashes to `sha256:2157fbd0db692be8e11c55894b3b5ba9958ec1cb4267754593443602347633f0`. The bounded classification remains `M2_DAUGHTER_MECHANICAL_TRANSFER_ATTRIBUTION_UNRESOLVED`: reference and frozen inherited fields show daughter-A-only leverage, while daughter B does not pass the preregistered comparison; no scientific runtime source changed.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry023.rs`, `digital-protocell/experiments/generated/dcdev021m2entry023/`, `.github/workflows/dc-dev-021-m2-entry023.yml`, and GitHub Actions workflow `33670749143`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 ENTRY-023 daughter polarity/effector mechanical-transfer attribution audit.
+- Supersedes learning: L-DCDEV021-ENTRY023-001

@@ -25,7 +25,6 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
-
 ## D-20260815-dcdev001a-architecture-selection - PARTIAL
 
 - Outcome ID: OUT-DCDEV001A-ARCHITECTURE-SELECTION
@@ -1118,4 +1117,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Architect review - PENDING
 - Remaining risks: remote validation may identify workflow, governance, or preservation defects; ENTRY-023 does not establish autonomous polarity initiation, embodied locomotion, or autonomous resource acquisition.
 - Blockers: exact-head Linux validation and Architect review; do not start successor work.
+- Follow-up directive: none
+
+## D-20260902-dcdev021-m2-entry023-daughter-mechanical-transfer-attribution - COMPLETE
+
+- Outcome ID: OUT-DCDEV021-ENTRY023-DAUGHTER-MECHANICAL-TRANSFER-ATTRIBUTION-R2
+- Supersedes outcome: OUT-DCDEV021-ENTRY023-DAUGHTER-MECHANICAL-TRANSFER-ATTRIBUTION-LOCAL
+- Closed: 2026-09-02T15:45:00-04:00
+- Acceptance: MET
+- Summary: Exact-head Linux validation passed for ENTRY-023 on result head `ec60390c1c05301a949c70a851d4da7744b0b5cd`. The analytical reference Polar field, frozen inherited field, and valid K1-only reconstruction show daughter-A-only mechanical leverage; daughter B does not pass the preregistered spatial-versus-control comparison. Residual-only decomposition is invalid because it leaves the admissible motor range. The bounded classification is `M2_DAUGHTER_MECHANICAL_TRANSFER_ATTRIBUTION_UNRESOLVED`.
+- Changed areas: additive ENTRY-023 observer assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, fission/remesh biology, production polarity, actuator, traction, resource, M1, restart, or PR #44 change.
+- Validation:
+  - Exact authority, daughter replay, modal/phase attribution, live/frozen comparison, closure, rotation/index, historical classifications, production/D-087, downstream, governance, and local release execution - PASSED
+  - Exact-head Linux workflow `33670749143` on `ec60390c1c05301a949c70a851d4da7744b0b5cd` - PASSED
+  - Independent artifact ZIP digest `sha256:2157fbd0db692be8e11c55894b3b5ba9958ec1cb4267754593443602347633f0` - PASSED
+  - Architect review - PENDING
+- Remaining risks: ENTRY-023 does not establish autonomous embodied locomotion or autonomous resource acquisition; the unresolved mixed daughter attribution remains bounded to this audit.
+- Blockers: Architect review; do not start successor work.
 - Follow-up directive: none

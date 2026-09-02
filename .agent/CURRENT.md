@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-02T15:05:00-04:00`
+- Last updated: `2026-09-02T15:45:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260902-dcdev021-m2-entry023-daughter-mechanical-transfer-attribution`
-- External directive ID: `DC-DEV-021-M2-ENTRY-023-DAUGHTER-POLARITY-EFFECTOR-MECHANICAL-TRANSFER-ATTRIBUTION-AUDIT-001`
-- Objective: `Attribute daughter mechanical transfer by comparing exact inherited, analytical reference, modal, phase-shift, same-mean, motor-off, and live-versus-frozen observer arms.`
-- Current status: `VALIDATING`
-- Acceptance: `ENTRY-022 is Architect accepted as M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT. ENTRY-023 is executing from exact accepted head 48b313db45761552e27a34f77b7aff9b0e688f95; local assay classification is M2_DAUGHTER_MECHANICAL_TRANSFER_ATTRIBUTION_UNRESOLVED pending exact-head Linux validation and Architect review.`
-- Current phase: `ENTRY-023 is an assay-only mechanical attribution audit on exact daughter checkpoints. It holds observer counterfactual motor fields fixed through ordinary remesh, reconstructs live ENTRY-022 controls, and records modal, phase, force-moment, closure, rotation, index, preservation, and governance evidence. No production polarity, resource behavior, fission biology, or accepted runtime source is changed.`
-- Expected or actual touched areas: `isolated ENTRY-023 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, polarity, actuator, traction, fission, remesh, and M1 sources remain unchanged`
-- Immediate next action: `Run local validation, commit and push the bounded ENTRY-023 changes, obtain exact-head Linux CI and artifact digest, then await Architect review; do not start successor work.`
+- Local directive ID: `NONE`
+- External directive ID: `NONE`
+- Objective: `NONE`
+- Current status: `IDLE`
+- Acceptance: `NONE`
+- Current phase: `NONE`
+- Expected or actual touched areas: `NONE`
+- Immediate next action: `NONE`
 
 ## Temporary task-relevant facts
 
@@ -28,7 +28,7 @@
 - Entry authority is `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
-- Current implementation work is on `m2/dc-dev-021-entry019-conservative-life-history-polarity-initiation`, based exactly on accepted ENTRY-018 head `e9d64534c565662e22aa67b76c5e00735970055f`.
+- Current implementation work is complete on `m2/dc-dev-021-entry023-daughter-mechanical-transfer-attribution`, based exactly on accepted ENTRY-022 head `48b313db45761552e27a34f77b7aff9b0e688f95`.
 - ENTRY-014 is Architect accepted as `M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE` at `7685ae33e33132452105611322dbf4d045468eec`; its continuous PDE and published parameters are reused by the isolated ENTRY-018 native-ring numerical audit only.
 - ENTRY-015 starts exactly at accepted ENTRY-014 head `7685ae33e33132452105611322dbf4d045468eec` on `m2/dc-dev-021-entry015-polarity-actuator-interface`. Its only new causal interface is assay-local `u/(u+v)` into the existing actuator; production integration, autonomous polarity initiation, and resource acquisition remain unauthorized.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
@@ -36,7 +36,7 @@
 - The opt-in `ACTIVATED_ENERGY_CONTRACTILITY_SCHEMA_V1` path is V4-only, reuses frozen DC-DEV-004 constants, spends absolute A into W after accepted mechanics, and leaves R-funded APIs unchanged.
 - The baseline CI `33271509819` and ENTRY-001 CI `33278000813` D-087 sub-runs are invalid preservation-harness evidence: both passed `MaturationCoupledV4` to the chemistry selector, which accepts only HistoricalV1, ConservativeV2, or ConservativeV3 and otherwise resolves to HistoricalV1. Canonical V4 selection is `DCDEV020R9R3_CONTRACT=ConservativeV3`, `DCDEV020R9R3_RESERVE=0`, and `DCDEV020M1REPLAN002R1_V4=1`.
 - ENTRY-002 exact-head evidence classifies the direct A-funded instantaneous-contact route as still negative and resource-independent exploration as not established. This is an audit result only; it does not authorize a memory, sensor, or navigation implementation.
-- ENTRY-023 starts exactly at accepted ENTRY-022 head `48b313db45761552e27a34f77b7aff9b0e688f95`; it is observer-only and compares daughter A/B exact analytical reference Polar, same-mean, frozen inherited, K1-only, residual-only, live ENTRY-022, motor-off, and conditional exhaustive phase-shift controls. No production runtime, resource, fission, remesh, polarity, actuator, traction, M1, restart, or PR #44 change is authorized.
+- ENTRY-023 started exactly at accepted ENTRY-022 head `48b313db45761552e27a34f77b7aff9b0e688f95`; it is complete as an observer-only comparison of daughter A/B exact analytical reference Polar, same-mean, frozen inherited, K1-only, residual-only, live ENTRY-022, motor-off, and conditional exhaustive phase-shift controls. No production runtime, resource, fission, remesh, polarity, actuator, traction, M1, restart, or PR #44 change was authorized or made.
 - ENTRY-003 adds only the explicit opt-in `INTRINSIC_EXPLORATION_REGULATOR_SCHEMA_V1`. It uses one seed of exactly `FROZEN_K_STIMULUS * FROZEN_DT`, frozen neighbor/self-excitation/decay dynamics, and existing local adaptation; it reads no resource, world, target, gradient, observer, or viability state.
 - ENTRY-003 is Architect accepted as `M2_INTRINSIC_EXPLORATION_MECHANICALLY_INSUFFICIENT`: it records intrinsic activity switching and exact A-to-W closure with R unchanged, but no retained material-centroid displacement beyond frozen controls.
 - ENTRY-004's uninterrupted clone reconstruction has exact clutch-ledger parity. It identifies adaptation attenuation, not a traction-law mismatch, as the cause of zero intrinsic slip events; no actuation amplification or adaptation change is authorized.

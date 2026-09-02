@@ -405,3 +405,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: ENTRY-022 is accepted as a bounded negative. ENTRY-023 compares exact inherited and analytical reference Polar spatial fields against same-mean, motor-off, modal, live, and phase-shift controls through unchanged mechanics to determine whether the limiting factor is mode cancellation, phase mismatch, inherited structure, daughter context, or decay.
 - Affected areas: additive isolated ENTRY-023 assay/example, compact evidence, scoped workflow, and governance only; no scientific runtime, fission/remesh biology, polarity production, actuator, traction, resource, M1, restart, or PR #44 change.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY023-DAUGHTER-MECHANICAL-TRANSFER-ATTRIBUTION-R2
+
+- Date: 2026-09-02
+- Record or decision ID: DEC-DCDEV021-ENTRY023-DAUGHTER-MECHANICAL-TRANSFER-ATTRIBUTION-R2
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33670749143` passed on result head `ec60390c1c05301a949c70a851d4da7744b0b5cd`; independent artifact ZIP digest `sha256:2157fbd0db692be8e11c55894b3b5ba9958ec1cb4267754593443602347633f0`.
+- Rationale: The sealed ENTRY-023 observer audit reconstructs the daughter mechanical-transfer controls without changing scientific runtime. Analytical reference Polar, frozen inherited, and valid K1-only fields show daughter-A-only leverage; daughter B does not pass the preregistered spatial-versus-uniform-and-motor-off comparison. Residual-only decomposition is invalid because it is outside the admissible motor range. The bounded classification is `M2_DAUGHTER_MECHANICAL_TRANSFER_ATTRIBUTION_UNRESOLVED`; Architect acceptance remains pending.
+- Affected areas: final remote-validation provenance for additive ENTRY-023 assay/example, compact evidence, scoped workflow, and governance only; no scientific runtime, fission/remesh biology, polarity production, actuator, traction, resource, M1, restart, or PR #44 change.
+- Supersedes record: DEC-DCDEV021-ENTRY023-DAUGHTER-MECHANICAL-TRANSFER-ATTRIBUTION-R1
