@@ -48,7 +48,7 @@
 ## Last validation after adoption
 
 - Command or check: `ENTRY-025 exact-head Linux workflow 33688853406 on c506837301c5cb4ed98b519b9cfc79f1033597fa; local release assay and preservation matrix`
-- Result: `PASSED; bounded negative classification recorded; Architect review pending`
+- Result: `PASSED`
 
 ## Risks
 
