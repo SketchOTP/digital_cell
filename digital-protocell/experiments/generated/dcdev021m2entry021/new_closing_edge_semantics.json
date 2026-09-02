@@ -1,0 +1,7 @@
+{
+  "arbitrary_parameter": false,
+  "polarity_amount": "ZERO_NO_PARENT_PREDECESSOR",
+  "semantic_basis": "pure transport preserves only pre-existing material",
+  "source": "extract_loop creates MeshEdge closing material",
+  "whole_pool_duplication": false
+}

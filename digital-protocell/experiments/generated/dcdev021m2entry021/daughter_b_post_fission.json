@@ -1,0 +1,20 @@
+{
+  "peak_after_first_step": 0.038610441675854555,
+  "peak_amplitude": 0.038731733839543626,
+  "peak_motor_range": 0.4596938968497637,
+  "remesh_closure": 3.019806626980426e-14,
+  "remesh_events": 272,
+  "result": {
+    "dominant_mode": 1,
+    "dominant_mode_amplitude": 2.3981849525048096e-13,
+    "max_nonconstant_f": 4.3788486829826925e-12,
+    "max_nonconstant_u": 2.3981849525048096e-13,
+    "max_nonconstant_v": 1.3689988997215906e-12,
+    "motor_range": 7.244344013557225e-13,
+    "sites": 426,
+    "step": 3000,
+    "weighted_f": 6.617514878010085,
+    "weighted_u": 0.41867542955535864,
+    "weighted_v": 7.2656774692803925
+  }
+}

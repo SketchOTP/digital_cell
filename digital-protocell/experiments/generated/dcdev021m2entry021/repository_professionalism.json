@@ -1,0 +1,8 @@
+{
+  "branch": "m2/dc-dev-021-entry021-polarity-fission-inheritance-amplification",
+  "evidence_discoverability": "PASS",
+  "naming": "PASS",
+  "scope_discipline": "PASS",
+  "source_documentation": "PASS",
+  "workflow": "dc-dev-021-m2-entry021.yml"
+}

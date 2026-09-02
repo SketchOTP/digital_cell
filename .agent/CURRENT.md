@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-01T19:05:00-04:00`
+- Last updated: `2026-09-01T20:30:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260901-dcdev021-m2-entry020-autonomous-polarity-embodied-locomotion`
-- External directive ID: `DC-DEV-021-M2-ENTRY-020-AUTONOMOUS-POLARITY-EMBODIED-LOCOMOTION-COMPOSITION-FEASIBILITY-001`
-- Objective: `Determine whether accepted autonomous Polar initiation can drive coherent embodied locomotion through the unchanged A-funded actuator on the exact live variable-topology D-088 composition.`
+- Local directive ID: `D-20260901-dcdev021-m2-entry021-conservative-polarity-fission-inheritance-amplification`
+- External directive ID: `DC-DEV-021-M2-ENTRY-021-CONSERVATIVE-POLARITY-FISSION-INHERITANCE-AND-AMPLIFICATION-FEASIBILITY-001`
+- Objective: `Determine whether the accepted life-history Polar state is inherited through the exact physical D-088 fission event by local conserved transport and whether fission-associated daughter patterns amplify beyond same-total controls.`
 - Current status: `VALIDATING`
-- Acceptance: `ENTRY-019 is Architect accepted as M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED. ENTRY-020 exact-head Linux validation supports M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT; Architect acceptance is pending.`
-- Current phase: `M2 autonomous polarity initiation is qualified in the bounded pre-fission assay; ENTRY-020 tests whether that initiation has sufficient mechanical amplitude through the unchanged effector. Resource interaction, production integration, and autonomous resource acquisition remain unestablished.`
-- Expected or actual touched areas: `isolated ENTRY-020 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, polarity, actuator, traction, fission, remesh, and M1 sources remain unchanged`
-- Immediate next action: `Await Architect review; do not integrate production polarity, add gains or thresholds, run a resource assay, or start successor work.`
+- Acceptance: `ENTRY-020 is Architect accepted as M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT. ENTRY-021 local exact fission replay qualifies conservative inheritance and immediate daughter spatial amplification; exact-head Linux validation and Architect review are pending.`
+- Current phase: `ENTRY-021 is an observer-only physical-fission inheritance audit. The exact accepted path reaches step 2326 and produces 198/78/122-site mother/daughters; no actuator, resource, production polarity, or fission biology is changed.`
+- Expected or actual touched areas: `isolated ENTRY-021 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, polarity, actuator, traction, fission, remesh, and M1 sources remain unchanged`
+- Immediate next action: `Run exact-head Linux validation and record the sealed CI/artifact result; do not start successor work or implement production polarity.`
 
 ## Temporary task-relevant facts
 
@@ -44,7 +44,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `Exact-head Linux ENTRY-020 workflow 33568834067 on e0916d65a7a3b9eb8b4dad08fcb2585d32b076f0`
+- Command or check: `Local release ENTRY-021 replay on branch m2/dc-dev-021-entry021-polarity-fission-inheritance-amplification`
 - Result: `PASSED`
 
 ## Risks
@@ -55,12 +55,12 @@
 
 ## Blockers
 
-- Architect review is required before any successor directive; exact-head Linux validation is complete.
+- Exact-head Linux validation and Architect review are required before any successor directive.
 
 ## Pending decisions
 
 - The V4 equations, D-087 boundary, conservation contracts, accepted M1 qualification, ENTRY-001 actuator, and ENTRY-011 uptake/metabolism composition are frozen.
-- M2 autonomous resource acquisition remains unestablished; ENTRY-012 seed 1 did not encounter the separated resource within 1,500 steps despite active locomotion. Architect accepted ENTRY-013 as first-harmonic polarity decay/homogenization, ENTRY-014 as a transferable isolated polarity substrate, ENTRY-015 as an assay-local interface, ENTRY-016 as `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`, ENTRY-017 as `M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED`, ENTRY-018 as `M2_NATIVE_MATERIAL_RING_POLARITY_TRANSFER_FEASIBLE`, and ENTRY-019 as `M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED`. ENTRY-020 local evidence classifies `M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT`: the closed loop autonomously seeds and moves, but the spatial interface is indistinguishable from the same-mean control; the exact positive reference pattern still translates. No production polarity integration, resource coupling, gain, threshold, parameter search, M1 change, restart repair, PR #44 change, or successor execution is authorized pending review.
+- M2 autonomous resource acquisition remains unestablished; ENTRY-012 seed 1 did not encounter the separated resource within 1,500 steps despite active locomotion. Architect accepted ENTRY-013 as first-harmonic polarity decay/homogenization, ENTRY-014 as a transferable isolated polarity substrate, ENTRY-015 as an assay-local interface, ENTRY-016 as `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`, ENTRY-017 as `M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED`, ENTRY-018 as `M2_NATIVE_MATERIAL_RING_POLARITY_TRANSFER_FEASIBLE`, ENTRY-019 as `M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED`, and ENTRY-020 as `M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT`. ENTRY-021 local evidence classifies `M2_CONSERVATIVE_POLARITY_FISSION_INHERITANCE_AND_AMPLIFICATION_QUALIFIED`: exact physical fission conservatively maps parent local amounts to daughter inherited edges, synthesized closing edges receive zero predecessor amount, and both daughters show immediate spatial amplitude beyond same-total homogeneous controls; amplitudes decay over the permitted observation horizon. No production polarity integration, resource coupling, gain, threshold, parameter search, M1 change, restart repair, PR #44 change, or successor execution is authorized pending review.
 
 ## Status vocabulary
 

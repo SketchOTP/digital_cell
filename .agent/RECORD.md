@@ -365,3 +365,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The isolated ENTRY-020 composition validates homogeneous autonomous Polar seeding, active A-funded locomotion, exact patterned-Polar positive translation, same-mean spatial-leverage comparison, physical rotation, and actuator A-to-W closure. The autonomous polarity motor remains mechanically indistinguishable from the uniform control, so the bounded negative classification is `M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT`; autonomous embodied locomotion and resource acquisition remain unestablished.
 - Affected areas: final remote-validation provenance for additive ENTRY-020 assay/evidence/workflow/governance only; no scientific runtime, M1, actuator, traction, metabolism, uptake, resource, polarity production, fission, remesh, restart, or PR #44 change.
 - Supersedes record: DEC-DCDEV021-ENTRY020-AUTONOMOUS-POLARITY-EMBODIED-LOCOMOTION-R1
+
+## DEC-DCDEV021-ENTRY021-CONSERVATIVE-POLARITY-FISSION-INHERITANCE-AMPLIFICATION-R1
+
+- Date: 2026-09-01
+- Record or decision ID: DEC-DCDEV021-ENTRY021-CONSERVATIVE-POLARITY-FISSION-INHERITANCE-AMPLIFICATION-R1
+- Status: ACTIVE
+- Decision or event: ENTRY-021 is authorized from exact accepted ENTRY-020 head `af0871fe8b8ae60f8eb696e555f73ae30e5d8bc9` as an observer-only audit of conservative polarity-state inheritance through the accepted physical D-088 fission path.
+- Rationale: ENTRY-020 is Architect accepted as `M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT`. ENTRY-021 tests whether the accepted life-history Polar state can be carried as local control-volume amounts through `MeshPopulation::step + mesh_fission::try_local_fission`, with no whole-pool duplication or daughter favoritism, and whether the exact 198-site mother to 78/122-site daughter split produces spatial amplification beyond same-total homogeneous controls. The local replay reaches step `2326`; polarity `u+v` and `F` transport closure are zero within floating-point output, rotation/index invariance pass, and both daughters show immediate nonconstant amplitude above their same-total controls. The local classification is `M2_CONSERVATIVE_POLARITY_FISSION_INHERITANCE_AND_AMPLIFICATION_QUALIFIED`; exact-head Linux validation and Architect review remain pending.
+- Affected areas: additive observer-only ENTRY-021 assay/example, compact evidence, scoped workflow, and append-only governance only; no scientific runtime, fission/reproduction biology, polarity production, actuator, traction, resource, metabolism, uptake, restart, M1, or PR #44 change.
+- Supersedes record: none

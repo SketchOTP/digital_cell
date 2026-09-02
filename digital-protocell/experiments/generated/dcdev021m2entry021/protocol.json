@@ -1,0 +1,10 @@
+{
+  "actuator": false,
+  "directive": "DC-DEV-021-M2-ENTRY-021-CONSERVATIVE-POLARITY-FISSION-INHERITANCE-AND-AMPLIFICATION-FEASIBILITY-001",
+  "no_parameter_search": true,
+  "post_fission_horizon": 3000,
+  "production_polarity": false,
+  "resource": false,
+  "scope": "observer-only conservative polarity inheritance/amplification through accepted physical fission",
+  "starting_head": "af0871fe8b8ae60f8eb696e555f73ae30e5d8bc9"
+}

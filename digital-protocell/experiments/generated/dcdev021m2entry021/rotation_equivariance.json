@@ -1,0 +1,6 @@
+{
+  "classification_invariant": true,
+  "pass": true,
+  "phase_rotates": true,
+  "rotation": "pi radians complete initial condition"
+}

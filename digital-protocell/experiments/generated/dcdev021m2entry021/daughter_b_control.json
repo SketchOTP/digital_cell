@@ -1,0 +1,18 @@
+{
+  "peak_after_first_step": 5.118395727110817e-14,
+  "peak_amplitude": 1.0296642838077411e-11,
+  "peak_motor_range": 5.062616992290714e-14,
+  "result": {
+    "dominant_mode": 1,
+    "dominant_mode_amplitude": 2.042390209460595e-12,
+    "max_nonconstant_f": 6.007401275370242e-12,
+    "max_nonconstant_u": 2.042390209460595e-12,
+    "max_nonconstant_v": 5.579936641719894e-13,
+    "motor_range": 2.731148640577885e-14,
+    "sites": 426,
+    "step": 3000,
+    "weighted_f": 441.69124950450174,
+    "weighted_u": 114.91176349145863,
+    "weighted_v": 35.253561823376444
+  }
+}

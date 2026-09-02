@@ -1053,3 +1053,19 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: Architect review is pending; ENTRY-020 does not establish autonomous embodied locomotion or autonomous resource acquisition.
 - Blockers: Architect review; do not start successor work.
 - Follow-up directive: none
+
+## D-20260901-dcdev021-m2-entry021-conservative-polarity-fission-inheritance-amplification - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY021-CONSERVATIVE-POLARITY-FISSION-INHERITANCE-LOCAL`
+- Supersedes outcome: none
+- Closed: `2026-09-01T20:30:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The local ENTRY-021 observer audit replays the accepted D-088 physical fission path without forcing division, reaches step `2326`, and produces the accepted 198-site mother with 78/122-site daughters. Parent-local `u`, `v`, and `F` control-volume amounts are assigned to exact contiguous inherited parent-edge slices; synthesized closing edges receive zero inherited amount because they have no parent predecessor. Daughter partition closure passes, same-total controls are preserved, and both daughters show immediate post-fission spatial amplitude above numerical-noise homogeneous controls, while the 3,000-step trajectories decay toward homogeneity. The local classification is `M2_CONSERVATIVE_POLARITY_FISSION_INHERITANCE_AND_AMPLIFICATION_QUALIFIED`, pending exact-head Linux validation and Architect review.
+- Changed areas: additive observer-only ENTRY-021 assay/example, compact evidence under `digital-protocell/experiments/generated/dcdev021m2entry021/`, scoped workflow, and append-only governance only; no accepted scientific runtime, fission biology, actuator, resource, production polarity, M1, or PR #44 change.
+- Validation:
+  - Exact ENTRY-020 authority, physical fission replay, topology, local correspondence, polarity closure, same-total controls, rotation/index checks, and local release execution - PASSED
+  - Exact-head Linux CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: remote validation may identify workflow, governance, or preservation defects; ENTRY-021 does not establish production polarity, autonomous locomotion, or autonomous resource acquisition.
+- Blockers: exact-head Linux validation and Architect review; do not start successor work.
+- Follow-up directive: none

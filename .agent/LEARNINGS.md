@@ -347,3 +347,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-021 ENTRY-020 autonomous-polarity embodied-locomotion composition feasibility audit.
 - Supersedes learning: L-DCDEV021-ENTRY020-002
+
+## L-DCDEV021-ENTRY021-001
+
+- Learning ID: L-DCDEV021-ENTRY021-001
+- Date: 2026-09-01
+- Fact or lesson: The accepted D-088 physical fission path reaches step `2326` and produces a 198-site mother with 78/122-site daughters. Carrying ENTRY-019 Polar `u`, `v`, and `F` as local native control-volume amounts over exact contiguous parent-edge correspondence conserves `u+v` and `F`; synthesized closing edges have no parent predecessor and receive zero inherited amount. Both daughters show immediate spatial organization beyond same-total homogeneous controls, but the post-fission trajectories decay toward homogeneity over the permitted 3,000-step observer horizon.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry021.rs`, `digital-protocell/experiments/generated/dcdev021m2entry021/`, and `.github/workflows/dc-dev-021-m2-entry021.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-021 conservative polarity fission inheritance and amplification feasibility audit.
+- Supersedes learning: none

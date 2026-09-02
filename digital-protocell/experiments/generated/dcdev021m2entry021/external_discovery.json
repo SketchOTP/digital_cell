@@ -1,0 +1,18 @@
+{
+  "cortex_pattern": {
+    "disposition": "DEFERRED ALTERNATIVE",
+    "implemented": false,
+    "source": "https://doi.org/10.1371/journal.pcbi.1009981"
+  },
+  "hubatsch_2019": {
+    "disposition": "REFERENCE / ADAPTABLE INTERPRETIVE PRINCIPLE",
+    "source": "https://doi.org/10.1038/s41567-019-0601-x",
+    "threshold_imported": false
+  },
+  "otsuji_2007": {
+    "disposition": "REFERENCE / ADAPTABLE PRINCIPLE",
+    "numerical_parameters_imported": false,
+    "source": "https://doi.org/10.1371/journal.pcbi.0030108"
+  },
+  "polarity_inheritance": "REFERENCE PRINCIPLE; no molecular partition law imported"
+}

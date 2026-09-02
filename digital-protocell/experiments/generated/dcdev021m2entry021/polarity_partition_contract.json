@@ -1,0 +1,8 @@
+{
+  "f_amount": "F_i * ds_i",
+  "inherited_edges": "exact parent edge correspondence",
+  "new_edges": "zero amount",
+  "representation": "edge-domain density times native control-volume measure",
+  "u_amount": "u_i * ds_i",
+  "v_amount": "v_i * ds_i"
+}

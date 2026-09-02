@@ -1,0 +1,42 @@
+{
+  "classification": "AMPLIFIES",
+  "daughter_a": {
+    "dominant_mode": 4,
+    "dominant_mode_amplitude": 0.008290283194861987,
+    "max_nonconstant_f": 0.03871681837384886,
+    "max_nonconstant_u": 0.008290283194861987,
+    "max_nonconstant_v": 0.009744072387982692,
+    "motor_range": 0.4596938968405363,
+    "sites": 78,
+    "step": 0,
+    "weighted_f": 10.4808953286895,
+    "weighted_u": 2.2442337480196395,
+    "weighted_v": 2.637783967357622
+  },
+  "daughter_b": {
+    "dominant_mode": 25,
+    "dominant_mode_amplitude": 0.008293476986090936,
+    "max_nonconstant_f": 0.038731733839543626,
+    "max_nonconstant_u": 0.008293476986090936,
+    "max_nonconstant_v": 0.009747826244386299,
+    "motor_range": 0.4596938968497637,
+    "sites": 122,
+    "step": 0,
+    "weighted_f": 16.497051649117186,
+    "weighted_u": 3.53245012882299,
+    "weighted_v": 4.151902770086314
+  },
+  "parent": {
+    "dominant_mode": 1,
+    "dominant_mode_amplitude": 8.02675032835427e-12,
+    "max_nonconstant_f": 2.3382140012296856e-11,
+    "max_nonconstant_u": 8.02675032835427e-12,
+    "max_nonconstant_v": 1.1421747517191922e-12,
+    "motor_range": 1.1373124664260104e-11,
+    "sites": 198,
+    "step": 0,
+    "weighted_f": 26.97794697780669,
+    "weighted_u": 5.77668387684263,
+    "weighted_v": 6.789686737443937
+  }
+}

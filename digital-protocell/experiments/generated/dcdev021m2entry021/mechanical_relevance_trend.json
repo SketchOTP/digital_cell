@@ -1,0 +1,9 @@
+{
+  "actuator_executed": false,
+  "daughter_a_peak_motor_range": 0.4596938968405363,
+  "daughter_b_peak_motor_range": 0.4596938968497637,
+  "entry020_autonomous_reference": 6.782907568947394e-13,
+  "ratio_to_entry020_a": 677723958594.1666,
+  "ratio_to_entry020_b": 677723958607.7705,
+  "trend": "DESCRIPTIVE_ONLY"
+}

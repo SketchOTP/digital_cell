@@ -1,0 +1,31 @@
+{
+  "daughter_a_topology": 78,
+  "daughter_b_topology": 122,
+  "division_forced": false,
+  "event": {
+    "daughter_a_n": 78,
+    "daughter_b_n": 122,
+    "leakage_w": 2.2283773036696632,
+    "parent_n": 198,
+    "partition": {
+      "ok": true,
+      "residual_a": 9.094947017729282e-13,
+      "residual_b": 1.7053025658242404e-13,
+      "residual_c": 4.547473508864641e-13,
+      "residual_f": 4.547473508864641e-13,
+      "residual_l": 0.0,
+      "residual_m": 1.1368683772161603e-13,
+      "residual_n": 4.547473508864641e-13,
+      "residual_r": 0.0,
+      "residual_templates": 0.0,
+      "residual_u_b": 0.0,
+      "residual_u_h": 0.0,
+      "residual_w": 0.0
+    },
+    "pinch": [
+      44,
+      121
+    ]
+  },
+  "lawful_local_pinch": true
+}

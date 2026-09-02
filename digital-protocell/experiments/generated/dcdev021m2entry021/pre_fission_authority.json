@@ -1,0 +1,15 @@
+{
+  "first_fission_step": 2326,
+  "mother_topology": 198,
+  "physical_path": [
+    "transport_step",
+    "reactions_step",
+    "growth_step",
+    "mechanics_step",
+    "remesh",
+    "topology_step",
+    "try_local_fission"
+  ],
+  "replay": "PASS",
+  "stop_boundary": "immediately before accepted fission"
+}

@@ -1,0 +1,27 @@
+{
+  "daughter_a": {
+    "homogeneous_equilibrium": {
+      "f": 0.945929060804746,
+      "u": 0.03840238442230158,
+      "v": 0.7385948672421914
+    },
+    "largest_global_mode_real": -1.5537946967135667,
+    "largest_nonconstant_mode_real": -0.6325385717910832,
+    "most_unstable_native_mode": 70,
+    "spatial_instability": "ABSENT",
+    "total_uv": 4.882017715377262
+  },
+  "daughter_b": {
+    "homogeneous_equilibrium": {
+      "f": 1.0532102038272446,
+      "u": 0.06663426416506438,
+      "v": 1.1563684841588868
+    },
+    "largest_global_mode_real": -3.205142241875592,
+    "largest_nonconstant_mode_real": -0.6474936504220938,
+    "most_unstable_native_mode": 112,
+    "spatial_instability": "ABSENT",
+    "total_uv": 7.684352898909303
+  },
+  "mass_authority": "actual inherited u+v total"
+}

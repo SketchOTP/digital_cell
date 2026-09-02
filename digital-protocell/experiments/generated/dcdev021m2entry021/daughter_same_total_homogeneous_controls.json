@@ -1,0 +1,35 @@
+{
+  "daughter_a": {
+    "initial": {
+      "dominant_mode": 39,
+      "dominant_mode_amplitude": 8.378845828390519e-17,
+      "max_nonconstant_f": 1.117179443785402e-16,
+      "max_nonconstant_u": 8.378845828390519e-17,
+      "max_nonconstant_v": 1.117179443785402e-16,
+      "motor_range": 0.0,
+      "sites": 78,
+      "step": 0,
+      "weighted_f": 131.4236156766654,
+      "weighted_u": 28.141232627424213,
+      "weighted_v": 33.07609660170381
+    },
+    "preserved_totals": true
+  },
+  "daughter_b": {
+    "initial": {
+      "dominant_mode": 61,
+      "dominant_mode_amplitude": 7.50650694017862e-17,
+      "max_nonconstant_f": 6.005205552142896e-16,
+      "max_nonconstant_u": 7.50650694017862e-17,
+      "max_nonconstant_v": 0.0,
+      "motor_range": 0.0,
+      "sites": 122,
+      "step": 0,
+      "weighted_f": 322.38044766891124,
+      "weighted_u": 69.03008356402064,
+      "weighted_v": 81.13524174903985
+    },
+    "preserved_totals": true
+  },
+  "difference": "spatial organization only"
+}

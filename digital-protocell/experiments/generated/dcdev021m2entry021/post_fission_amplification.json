@@ -1,0 +1,21 @@
+{
+  "daughter_a": {
+    "amplification": true,
+    "control_post_first_step_amplitude": 1.908971921168143e-14,
+    "homogeneous_control_peak": 3.669826244484971e-12,
+    "immediate_spatial_amplitude": 0.03871681837384886,
+    "peak_amplitude": 0.03871681837384886,
+    "post_first_step_amplitude": 0.038585095696278285,
+    "terminal_amplitude": 7.959168844678864e-14
+  },
+  "daughter_b": {
+    "amplification": true,
+    "control_post_first_step_amplitude": 5.118395727110817e-14,
+    "homogeneous_control_peak": 1.0296642838077411e-11,
+    "immediate_spatial_amplitude": 0.038731733839543626,
+    "peak_amplitude": 0.038731733839543626,
+    "post_first_step_amplitude": 0.038610441675854555,
+    "terminal_amplitude": 4.3788486829826925e-12
+  },
+  "horizon": 3000
+}

@@ -542,3 +542,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260901-dcdev021-m2-entry019-conservative-life-history-polarity-initiation
 - Status at issuance: ISSUED
+
+## D-20260901-dcdev021-m2-entry021-conservative-polarity-fission-inheritance-amplification
+
+- Issued: `2026-09-01T20:30:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-021-CONSERVATIVE-POLARITY-FISSION-INHERITANCE-AND-AMPLIFICATION-FEASIBILITY-001`
+- Objective: Determine whether the accepted life-history Polar state passes through the exact physical D-088 fission event by strict local conservation and whether daughter partition produces spatial amplification beyond same-total homogeneous controls.
+- Scope: Observer-only accepted physical fission replay, exact parent-to-daughter correspondence, local `u/v/F` control-volume amount inheritance, synthesized closing-edge semantics, 3,000-step daughter evolution, native stability, rotation/index invariance, compact evidence, governance, and exact-head Linux validation.
+- Exclusions: actuator, resource, production polarity, fission/reproduction biology changes, whole-pool duplication, daughter favoritism, gains, thresholds, noise, topology hacks, remapping, tuning, M1 work, restart repair, PR #44 modification, and successor execution.
+- Acceptance: One preregistered ENTRY-021 classification after exact fission authority, conservative partition closure, same-total controls, post-fission amplification, preservation, governance, and exact-head Linux checks.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260901-dcdev021-m2-entry020-autonomous-polarity-embodied-locomotion
+- Status at issuance: ISSUED
