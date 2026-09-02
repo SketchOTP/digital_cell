@@ -1,0 +1,15 @@
+{
+  "daughter_a": {
+    "inherited_net_displacement": 0.29557415904743345,
+    "inherited_principal_axis": 0.1286030817190941,
+    "reference_net_displacement": 0.29555826459406753,
+    "reference_principal_axis": 0.12484913508310835
+  },
+  "daughter_b": {
+    "inherited_net_displacement": 1.0650404559179691,
+    "inherited_principal_axis": 0.8884901722487497,
+    "reference_net_displacement": 1.065466023956432,
+    "reference_principal_axis": 0.8894346110213475
+  },
+  "interpretation": "observer-only angular comparison"
+}

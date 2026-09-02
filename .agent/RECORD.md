@@ -395,3 +395,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The sealed ENTRY-022 evidence confirms strict post-fission interface eligibility after one actuator-off step, active inherited-polarity daughter arms, A-to-W closure, preservation, and the bounded negative classification `M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT`. Architect acceptance remains pending.
 - Affected areas: final remote-validation provenance for additive ENTRY-022 assay/evidence/workflow/governance only; no scientific runtime, fission, remesh, polarity production, resource, M1, restart, or PR #44 change.
 - Supersedes record: DEC-DCDEV021-ENTRY022-POST-FISSION-TRANSIENT-LOCOMOTION-R1
+
+## DEC-DCDEV021-ENTRY023-DAUGHTER-MECHANICAL-TRANSFER-ATTRIBUTION-R1
+
+- Date: 2026-09-02
+- Record or decision ID: DEC-DCDEV021-ENTRY023-DAUGHTER-MECHANICAL-TRANSFER-ATTRIBUTION-R1
+- Status: ACTIVE
+- Decision or event: ENTRY-023 is authorized from exact accepted ENTRY-022 head `48b313db45761552e27a34f77b7aff9b0e688f95` as an observer-only daughter mechanical-transfer attribution audit.
+- Rationale: ENTRY-022 is accepted as a bounded negative. ENTRY-023 compares exact inherited and analytical reference Polar spatial fields against same-mean, motor-off, modal, live, and phase-shift controls through unchanged mechanics to determine whether the limiting factor is mode cancellation, phase mismatch, inherited structure, daughter context, or decay.
+- Affected areas: additive isolated ENTRY-023 assay/example, compact evidence, scoped workflow, and governance only; no scientific runtime, fission/remesh biology, polarity production, actuator, traction, resource, M1, restart, or PR #44 change.
+- Supersedes record: none

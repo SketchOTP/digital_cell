@@ -1,0 +1,24 @@
+{
+  "artifact": "sha256:d43866460c45589d2a6acbd85aa1e089e51652846cf53fc3bf9092de608d4150",
+  "ci": "33654387489",
+  "daughter_topologies": [
+    78,
+    122
+  ],
+  "entry022": "M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT",
+  "fission_step": 2326,
+  "physical_fission": "MeshPopulation::step + mesh_fission::try_local_fission",
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "state": "OPEN"
+  },
+  "source_hashes": {
+    "contractility.rs": "588b40fe26029232",
+    "mesh_fission.rs": "dcb859522534cf03",
+    "mesh_mechanics.rs": "eaaa4f5898833bfd",
+    "stick_slip_traction.rs": "ec1ad2b699ca7461"
+  },
+  "starting_head": "48b313db45761552e27a34f77b7aff9b0e688f95"
+}

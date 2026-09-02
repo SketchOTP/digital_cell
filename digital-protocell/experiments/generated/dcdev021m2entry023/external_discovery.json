@@ -1,0 +1,16 @@
+{
+  "actomyosin_contractility_migration": {
+    "disposition": "REFERENCE / ADAPTABLE INTERPRETATION",
+    "imported_parameters": false,
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6137077/"
+  },
+  "cortex_pattern": {
+    "disposition": "DEFERRED_ALTERNATIVE",
+    "implemented": false
+  },
+  "traction_forces_collective_motion": {
+    "disposition": "DIRECTLY_RELEVANT_MECHANICAL_PRINCIPLE",
+    "imported_parameters": false,
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2799984/"
+  }
+}

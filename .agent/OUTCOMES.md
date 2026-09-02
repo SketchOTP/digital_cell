@@ -1103,3 +1103,19 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: ENTRY-022 does not establish autonomous resource acquisition, production polarity integration, or autonomous polarity initiation beyond the already accepted upstream boundary.
 - Blockers: Architect review; do not start successor work.
 - Follow-up directive: none
+
+## D-20260902-dcdev021-m2-entry023-daughter-mechanical-transfer-attribution - PARTIAL
+
+- Outcome ID: OUT-DCDEV021-ENTRY023-DAUGHTER-MECHANICAL-TRANSFER-ATTRIBUTION-LOCAL
+- Supersedes outcome: none
+- Closed: 2026-09-02T15:30:00-04:00
+- Acceptance: `PARTIAL`
+- Summary: Local ENTRY-023 replay completed from exact accepted ENTRY-022 head `48b313db45761552e27a34f77b7aff9b0e688f95`. The analytical reference Polar field has mechanical leverage on daughter A but not B; the frozen inherited field and its valid K1-only component show the same A-only leverage, while the residual-only decomposition is correctly marked invalid because it leaves the admissible motor range. Exact live ENTRY-022 replay is retained for decay attribution; the local bounded classification is `M2_DAUGHTER_MECHANICAL_TRANSFER_ATTRIBUTION_UNRESOLVED` because the inherited leverage differs by daughter and therefore does not support a single stronger preregistered classification.
+- Changed areas: additive ENTRY-023 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, fission/remesh biology, polarity production, actuator, traction, resource, M1, restart, or PR #44 change.
+- Validation:
+  - Exact fission replay, daughter remesh-compatible field transport, reference/inherited controls, live replay, modal reconstruction, A-to-W closure, rotation/index checks, and local release execution - PASSED
+  - Exact-head Linux CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: remote validation may identify workflow, governance, or preservation defects; ENTRY-023 does not establish autonomous polarity initiation, embodied locomotion, or autonomous resource acquisition.
+- Blockers: exact-head Linux validation and Architect review; do not start successor work.
+- Follow-up directive: none

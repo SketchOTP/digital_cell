@@ -570,3 +570,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260901-dcdev021-m2-entry021-conservative-polarity-fission-inheritance-amplification
 - Status at issuance: ISSUED
+
+## D-20260902-dcdev021-m2-entry023-daughter-mechanical-transfer-attribution
+
+- Issued: `2026-09-02T15:05:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-023-DAUGHTER-POLARITY-EFFECTOR-MECHANICAL-TRANSFER-ATTRIBUTION-AUDIT-001`
+- Objective: Attribute daughter mechanical transfer using exact inherited and analytical Polar fields, frozen/live controls, modal decomposition, phase shifts, and existing force/traction ledgers.
+- Scope: Observer-only exact ENTRY-022 daughter replay, fixed-field mechanics, same-mean and motor-off controls, K1/residual controls, conditional exhaustive phase shifts, force moments, rotation/index invariance, closure, preservation, compact evidence, scoped workflow, governance, and exact-head Linux validation.
+- Exclusions: production polarity, resource interaction, fission/remesh changes, new gains/thresholds/timescales, phase selection, target/gradient/memory, actuator/traction changes, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: One preregistered ENTRY-023 attribution classification after exact daughter authority, mechanical replay, live-versus-frozen attribution, modal and phase diagnostics, preservation, governance, and exact-head Linux checks.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260902-dcdev021-m2-entry022-post-fission-transient-locomotion
+- Status at issuance: ISSUED

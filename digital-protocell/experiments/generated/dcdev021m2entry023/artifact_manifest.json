@@ -1,0 +1,124 @@
+{
+  "classification": "M2_DAUGHTER_MECHANICAL_TRANSFER_ATTRIBUTION_UNRESOLVED",
+  "dense_traces": "Atlas",
+  "directive": "DC-DEV-021-M2-ENTRY-023-DAUGHTER-POLARITY-EFFECTOR-MECHANICAL-TRANSFER-ATTRIBUTION-AUDIT-001",
+  "files": [
+    {
+      "file": "protocol.json",
+      "sha256": "stable-json:f2835ed312085e29"
+    },
+    {
+      "file": "authority.json",
+      "sha256": "stable-json:564c95a1f89f5499"
+    },
+    {
+      "file": "external_discovery.json",
+      "sha256": "stable-json:2393fc57b05616c8"
+    },
+    {
+      "file": "daughter_state_authority.json",
+      "sha256": "stable-json:782d8e41ed78c537"
+    },
+    {
+      "file": "inherited_motor_spectrum.json",
+      "sha256": "stable-json:9504e6b10eff18ac"
+    },
+    {
+      "file": "reference_polar_daughter_mapping.json",
+      "sha256": "stable-json:1547cca357d53a93"
+    },
+    {
+      "file": "reference_polar_mechanical_control.json",
+      "sha256": "stable-json:1bd566fe19eb2411"
+    },
+    {
+      "file": "frozen_inherited_mechanical_control.json",
+      "sha256": "stable-json:891a53e2b853f5d3"
+    },
+    {
+      "file": "live_vs_frozen_attribution.json",
+      "sha256": "stable-json:e5f062a0ee121e96"
+    },
+    {
+      "file": "modal_reconstruction.json",
+      "sha256": "stable-json:a03baea29bde8f0a"
+    },
+    {
+      "file": "k1_only_control.json",
+      "sha256": "stable-json:6f05f9b5df470dff"
+    },
+    {
+      "file": "residual_only_control.json",
+      "sha256": "stable-json:85e93d3a547c0ef4"
+    },
+    {
+      "file": "phase_shift_distribution.json",
+      "sha256": "stable-json:c859539054462472"
+    },
+    {
+      "file": "phase_attribution.json",
+      "sha256": "stable-json:5161097d6be4e2e1"
+    },
+    {
+      "file": "pretraction_contractility_map.json",
+      "sha256": "stable-json:64b8db26b895c385"
+    },
+    {
+      "file": "traction_response_map.json",
+      "sha256": "stable-json:774b23fe5afbb4b8"
+    },
+    {
+      "file": "force_moment_diagnostics.json",
+      "sha256": "stable-json:774b23fe5afbb4b8"
+    },
+    {
+      "file": "translation_alignment.json",
+      "sha256": "stable-json:dacd9cfecdc8039f"
+    },
+    {
+      "file": "mechanical_attribution.json",
+      "sha256": "stable-json:c30b615ba0121f0a"
+    },
+    {
+      "file": "rotation_equivariance.json",
+      "sha256": "stable-json:6103e37f30da0ebd"
+    },
+    {
+      "file": "index_invariance.json",
+      "sha256": "stable-json:29da1eadf07b73be"
+    },
+    {
+      "file": "energetic_closure.json",
+      "sha256": "stable-json:9e2923fe0e9ffa78"
+    },
+    {
+      "file": "counterfactual_semantics.json",
+      "sha256": "stable-json:c14758bd582a58be"
+    },
+    {
+      "file": "forbidden_information_audit.json",
+      "sha256": "stable-json:e9718069bf92285a"
+    },
+    {
+      "file": "m1_preservation.json",
+      "sha256": "stable-json:f9ba4e9df37eec6a"
+    },
+    {
+      "file": "downstream_preservation.json",
+      "sha256": "stable-json:34df32d48fc40af9"
+    },
+    {
+      "file": "restart_boundary.json",
+      "sha256": "stable-json:5e616a06829d19fc"
+    },
+    {
+      "file": "repository_professionalism.json",
+      "sha256": "stable-json:2c05a4942186666a"
+    },
+    {
+      "file": "qualification.json",
+      "sha256": "stable-json:57bc157cd5c68d65"
+    }
+  ],
+  "starting_head": "48b313db45761552e27a34f77b7aff9b0e688f95"
+}

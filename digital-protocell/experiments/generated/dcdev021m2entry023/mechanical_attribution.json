@@ -1,0 +1,21 @@
+{
+  "bounded_attribution": "observer-only comparison of exact fields, same-mean controls, modal controls, and force moments",
+  "inherited_frozen_spatial_leverage": {
+    "A": true,
+    "B": false
+  },
+  "k1_leverage": {
+    "A": true,
+    "B": false
+  },
+  "primary_classification": "M2_DAUGHTER_MECHANICAL_TRANSFER_ATTRIBUTION_UNRESOLVED",
+  "reference_spatial_leverage": {
+    "A": true,
+    "B": false
+  },
+  "residual_leverage": {
+    "A": false,
+    "B": false
+  },
+  "shifted_field_leverage": true
+}

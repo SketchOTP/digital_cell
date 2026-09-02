@@ -1,0 +1,19 @@
+{
+  "daughter_a": {
+    "k1_imaginary": -0.00013358841666512728,
+    "k1_magnitude": 0.001921054787771321,
+    "k1_phase": -3.0719973886582466,
+    "k1_real": -0.0019164043499616723,
+    "max_reconstruction_error": 0.0,
+    "mean": 0.4470214865327517
+  },
+  "daughter_b": {
+    "k1_imaginary": -0.000039530765692176536,
+    "k1_magnitude": 0.0008408663469274388,
+    "k1_phase": -3.0945633704592783,
+    "k1_real": -0.0008399366237752025,
+    "max_reconstruction_error": 0.0,
+    "mean": 0.4500282518236427
+  },
+  "reconstructed_exact": true
+}

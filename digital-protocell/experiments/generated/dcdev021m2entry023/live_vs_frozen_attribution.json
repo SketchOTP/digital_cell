@@ -1,0 +1,291 @@
+{
+  "classification": "MIXED",
+  "frozen_inherited": {
+    "daughter_a": true,
+    "daughter_b": false
+  },
+  "live_entry022": {
+    "daughter_a": {
+      "motor_off": {
+        "a_limited_steps": 0,
+        "a_spent": 0.0,
+        "a_to_w_residual": 0.0,
+        "arm": "ENTRY022_LIVE_A_OFF",
+        "displacement_path_ratio": 0.565630518922017,
+        "first_motor_max": 0.0,
+        "first_motor_min": 0.0,
+        "first_motor_range": 0.0,
+        "initial_state": {
+          "dominant_mode": 1,
+          "dominant_mode_amplitude": 0.008103631120985243,
+          "max_nonconstant_f": 0.038585095696278285,
+          "max_nonconstant_u": 0.008103631120985243,
+          "max_nonconstant_v": 0.009699332452282303,
+          "motor_range": 0.2526062200089617,
+          "sites": 79,
+          "step": 0,
+          "weighted_f": 10.516346559199551,
+          "weighted_u": 2.1910289907573084,
+          "weighted_v": 2.690988724619952
+        },
+        "maximum_centroid_excursion": 1.0918575821362468,
+        "maximum_material_envelope_excursion": 0.8724275005693158,
+        "motor_steps": 2999,
+        "net_displacement": 1.0918338252981938,
+        "path": 1.930295110983437,
+        "peak_motor_range": 0.0,
+        "slips": 74162,
+        "stuck_contacts": 156710,
+        "terminal_state": {
+          "a": 0.1884604785313215,
+          "area": 632.3266626279453,
+          "c": 1.823075760708034,
+          "centroid": [
+            25.940969080994357,
+            39.856574285415924
+          ],
+          "f": 0.05596049317100381,
+          "n": 0.05596049317100381,
+          "w": 7.430389734459237
+        },
+        "total_post_fission_steps": 3000,
+        "traction_directional_difference": 0.0,
+        "w_generated": 1825.7532964343138
+      },
+      "same_mean": {
+        "a_limited_steps": 0,
+        "a_spent": 48.365960453479026,
+        "a_to_w_residual": 1.8189894035458565e-12,
+        "arm": "ENTRY022_LIVE_A_UNIFORM",
+        "displacement_path_ratio": 0.5681400775971133,
+        "first_motor_max": 0.44593617473568253,
+        "first_motor_min": 0.44593617473568253,
+        "first_motor_range": 0.0,
+        "initial_state": {
+          "dominant_mode": 1,
+          "dominant_mode_amplitude": 0.008103631120985243,
+          "max_nonconstant_f": 0.038585095696278285,
+          "max_nonconstant_u": 0.008103631120985243,
+          "max_nonconstant_v": 0.009699332452282303,
+          "motor_range": 0.2526062200089617,
+          "sites": 79,
+          "step": 0,
+          "weighted_f": 10.516346559199551,
+          "weighted_u": 2.1910289907573084,
+          "weighted_v": 2.690988724619952
+        },
+        "maximum_centroid_excursion": 1.127264197409354,
+        "maximum_material_envelope_excursion": 0.8190795458842111,
+        "motor_steps": 2999,
+        "net_displacement": 1.1265621231280338,
+        "path": 1.9828950069720588,
+        "peak_motor_range": 0.0,
+        "slips": 74617,
+        "stuck_contacts": 156215,
+        "terminal_state": {
+          "a": 0.17555800332506227,
+          "area": 617.9647343699664,
+          "c": 1.8436979521284906,
+          "centroid": [
+            26.036106304390966,
+            39.85723058007027
+          ],
+          "f": 0.056262338284417554,
+          "n": 0.056262338284417554,
+          "w": 7.651259243611048
+        },
+        "total_post_fission_steps": 3000,
+        "traction_directional_difference": 323.4883928079575,
+        "w_generated": 1816.460684199212
+      },
+      "spatial": {
+        "a_limited_steps": 0,
+        "a_spent": 48.36869912878521,
+        "a_to_w_residual": 1.8189894035458565e-12,
+        "arm": "ENTRY022_LIVE_A",
+        "displacement_path_ratio": 0.5662136998221685,
+        "first_motor_max": 0.4885147068471821,
+        "first_motor_min": 0.23590848683822044,
+        "first_motor_range": 0.2526062200089617,
+        "initial_state": {
+          "dominant_mode": 1,
+          "dominant_mode_amplitude": 0.008103631120985243,
+          "max_nonconstant_f": 0.038585095696278285,
+          "max_nonconstant_u": 0.008103631120985243,
+          "max_nonconstant_v": 0.009699332452282303,
+          "motor_range": 0.2526062200089617,
+          "sites": 79,
+          "step": 0,
+          "weighted_f": 10.516346559199551,
+          "weighted_u": 2.1910289907573084,
+          "weighted_v": 2.690988724619952
+        },
+        "maximum_centroid_excursion": 1.1247717646564248,
+        "maximum_material_envelope_excursion": 0.8189852586516864,
+        "motor_steps": 2999,
+        "net_displacement": 1.120619267133499,
+        "path": 1.979145448945254,
+        "peak_motor_range": 0.2526062200089617,
+        "slips": 74650,
+        "stuck_contacts": 156183,
+        "terminal_state": {
+          "a": 0.17562471938243363,
+          "area": 617.7367210343363,
+          "c": 1.844377425512022,
+          "centroid": [
+            26.03172883815605,
+            39.86178603566499
+          ],
+          "f": 0.056282118107446974,
+          "n": 0.056282118107446974,
+          "w": 7.6540877031990355
+        },
+        "total_post_fission_steps": 3000,
+        "traction_directional_difference": 324.59721964600345,
+        "w_generated": 1816.4606610109922
+      }
+    },
+    "daughter_a_spatial_leverage": false,
+    "daughter_b": {
+      "motor_off": {
+        "a_limited_steps": 0,
+        "a_spent": 0.0,
+        "a_to_w_residual": 0.0,
+        "arm": "ENTRY022_LIVE_B_OFF",
+        "displacement_path_ratio": 0.7379336967370957,
+        "first_motor_max": 0.0,
+        "first_motor_min": 0.0,
+        "first_motor_range": 0.0,
+        "initial_state": {
+          "dominant_mode": 1,
+          "dominant_mode_amplitude": 0.008239863860934026,
+          "max_nonconstant_f": 0.038610441675854555,
+          "max_nonconstant_u": 0.008239863860934026,
+          "max_nonconstant_v": 0.009574227582905477,
+          "motor_range": 0.1624830775841769,
+          "sites": 123,
+          "step": 0,
+          "weighted_f": 16.518769556969556,
+          "weighted_u": 3.463318135435053,
+          "weighted_v": 4.221034763474249
+        },
+        "maximum_centroid_excursion": 2.071931798171169,
+        "maximum_material_envelope_excursion": 0.38689104774612915,
+        "motor_steps": 2999,
+        "net_displacement": 2.059222890356167,
+        "path": 2.790525625081745,
+        "peak_motor_range": 0.0,
+        "slips": 124253,
+        "stuck_contacts": 241420,
+        "terminal_state": {
+          "a": 0.18187981069535128,
+          "area": 1355.7581133755723,
+          "c": 1.6897355951483084,
+          "centroid": [
+            48.147886460341205,
+            39.05143414490301
+          ],
+          "f": 0.05327136255617547,
+          "n": 0.05327136255617547,
+          "w": 6.759312694514623
+        },
+        "total_post_fission_steps": 3000,
+        "traction_directional_difference": 0.0,
+        "w_generated": 3554.7380490004084
+      },
+      "same_mean": {
+        "a_limited_steps": 0,
+        "a_spent": 85.51511684478791,
+        "a_to_w_residual": 3.637978807091713e-12,
+        "arm": "ENTRY022_LIVE_B_UNIFORM",
+        "displacement_path_ratio": 0.7189250738579719,
+        "first_motor_max": 0.44930465398613784,
+        "first_motor_min": 0.44930465398613784,
+        "first_motor_range": 0.0,
+        "initial_state": {
+          "dominant_mode": 1,
+          "dominant_mode_amplitude": 0.008239863860934026,
+          "max_nonconstant_f": 0.038610441675854555,
+          "max_nonconstant_u": 0.008239863860934026,
+          "max_nonconstant_v": 0.009574227582905477,
+          "motor_range": 0.1624830775841769,
+          "sites": 123,
+          "step": 0,
+          "weighted_f": 16.518769556969556,
+          "weighted_u": 3.463318135435053,
+          "weighted_v": 4.221034763474249
+        },
+        "maximum_centroid_excursion": 2.0264643829651763,
+        "maximum_material_envelope_excursion": 0.21703671904091948,
+        "motor_steps": 2999,
+        "net_displacement": 2.002206270531049,
+        "path": 2.78499991631478,
+        "peak_motor_range": 0.0,
+        "slips": 125118,
+        "stuck_contacts": 240762,
+        "terminal_state": {
+          "a": 0.17078567645282824,
+          "area": 1331.5660700798014,
+          "c": 1.7025482281361555,
+          "centroid": [
+            48.1262136683729,
+            39.148207484656744
+          ],
+          "f": 0.053397397720904086,
+          "n": 0.053397397720904086,
+          "w": 6.92167993614749
+        },
+        "total_post_fission_steps": 3000,
+        "traction_directional_difference": 356.34766822808126,
+        "w_generated": 3538.3261072809128
+      },
+      "spatial": {
+        "a_limited_steps": 0,
+        "a_spent": 85.50786544713135,
+        "a_to_w_residual": 3.637978807091713e-12,
+        "arm": "ENTRY022_LIVE_B",
+        "displacement_path_ratio": 0.7215164616603964,
+        "first_motor_max": 0.4763571805828205,
+        "first_motor_min": 0.3138741029986436,
+        "first_motor_range": 0.1624830775841769,
+        "initial_state": {
+          "dominant_mode": 1,
+          "dominant_mode_amplitude": 0.008239863860934026,
+          "max_nonconstant_f": 0.038610441675854555,
+          "max_nonconstant_u": 0.008239863860934026,
+          "max_nonconstant_v": 0.009574227582905477,
+          "motor_range": 0.1624830775841769,
+          "sites": 123,
+          "step": 0,
+          "weighted_f": 16.518769556969556,
+          "weighted_u": 3.463318135435053,
+          "weighted_v": 4.221034763474249
+        },
+        "maximum_centroid_excursion": 2.0303469737034545,
+        "maximum_material_envelope_excursion": 0.2225515528778388,
+        "motor_steps": 2999,
+        "net_displacement": 2.0055591509112216,
+        "path": 2.7796443428274804,
+        "peak_motor_range": 0.1624830775841769,
+        "slips": 125194,
+        "stuck_contacts": 240688,
+        "terminal_state": {
+          "a": 0.17081560199443238,
+          "area": 1331.386986761967,
+          "c": 1.7027865156644761,
+          "centroid": [
+            48.121236783203145,
+            39.14830695441033
+          ],
+          "f": 0.05340954824487655,
+          "n": 0.05340954824487655,
+          "w": 6.922601283766449
+        },
+        "total_post_fission_steps": 3000,
+        "traction_directional_difference": 357.3150677634873,
+        "w_generated": 3538.3232521625405
+      }
+    },
+    "daughter_b_spatial_leverage": false
+  }
+}

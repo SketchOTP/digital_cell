@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-02T12:18:00-04:00`
+- Last updated: `2026-09-02T15:05:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260902-dcdev021-m2-entry022-post-fission-transient-locomotion`
-- External directive ID: `DC-DEV-021-M2-ENTRY-022-POST-FISSION-INHERITED-POLARITY-TRANSIENT-LOCOMOTION-FEASIBILITY-001`
-- Objective: `Determine whether inherited post-fission polarity can drive bounded transient daughter locomotion through the existing A-funded effector after the exact zero-pool eligibility boundary.`
+- Local directive ID: `D-20260902-dcdev021-m2-entry023-daughter-mechanical-transfer-attribution`
+- External directive ID: `DC-DEV-021-M2-ENTRY-023-DAUGHTER-POLARITY-EFFECTOR-MECHANICAL-TRANSFER-ATTRIBUTION-AUDIT-001`
+- Objective: `Attribute daughter mechanical transfer by comparing exact inherited, analytical reference, modal, phase-shift, same-mean, motor-off, and live-versus-frozen observer arms.`
 - Current status: `VALIDATING`
-- Acceptance: `ENTRY-021 is Architect accepted as M2_CONSERVATIVE_POLARITY_FISSION_INHERITANCE_AND_AMPLIFICATION_QUALIFIED. ENTRY-022 exact-head Linux CI 33653530285 passed on b0daff3d89e5465e53f2fb4bee7ba81dd31ead69 and classifies M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT; Architect review is pending.`
-- Current phase: `ENTRY-022 is an assay-only physical-fission replay followed by one actuator-off eligibility step and 2,999-step inherited-polarity, same-mean, and motor-off daughter comparisons. No production polarity, resource behavior, fission biology, or accepted runtime source is changed.`
-- Expected or actual touched areas: `isolated ENTRY-022 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, polarity, actuator, traction, fission, remesh, and M1 sources remain unchanged`
-- Immediate next action: `Await Architect review; do not start successor work.`
+- Acceptance: `ENTRY-022 is Architect accepted as M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT. ENTRY-023 is executing from exact accepted head 48b313db45761552e27a34f77b7aff9b0e688f95; local assay classification is M2_DAUGHTER_MECHANICAL_TRANSFER_ATTRIBUTION_UNRESOLVED pending exact-head Linux validation and Architect review.`
+- Current phase: `ENTRY-023 is an assay-only mechanical attribution audit on exact daughter checkpoints. It holds observer counterfactual motor fields fixed through ordinary remesh, reconstructs live ENTRY-022 controls, and records modal, phase, force-moment, closure, rotation, index, preservation, and governance evidence. No production polarity, resource behavior, fission biology, or accepted runtime source is changed.`
+- Expected or actual touched areas: `isolated ENTRY-023 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, polarity, actuator, traction, fission, remesh, and M1 sources remain unchanged`
+- Immediate next action: `Run local validation, commit and push the bounded ENTRY-023 changes, obtain exact-head Linux CI and artifact digest, then await Architect review; do not start successor work.`
 
 ## Temporary task-relevant facts
 
@@ -36,6 +36,7 @@
 - The opt-in `ACTIVATED_ENERGY_CONTRACTILITY_SCHEMA_V1` path is V4-only, reuses frozen DC-DEV-004 constants, spends absolute A into W after accepted mechanics, and leaves R-funded APIs unchanged.
 - The baseline CI `33271509819` and ENTRY-001 CI `33278000813` D-087 sub-runs are invalid preservation-harness evidence: both passed `MaturationCoupledV4` to the chemistry selector, which accepts only HistoricalV1, ConservativeV2, or ConservativeV3 and otherwise resolves to HistoricalV1. Canonical V4 selection is `DCDEV020R9R3_CONTRACT=ConservativeV3`, `DCDEV020R9R3_RESERVE=0`, and `DCDEV020M1REPLAN002R1_V4=1`.
 - ENTRY-002 exact-head evidence classifies the direct A-funded instantaneous-contact route as still negative and resource-independent exploration as not established. This is an audit result only; it does not authorize a memory, sensor, or navigation implementation.
+- ENTRY-023 starts exactly at accepted ENTRY-022 head `48b313db45761552e27a34f77b7aff9b0e688f95`; it is observer-only and compares daughter A/B exact analytical reference Polar, same-mean, frozen inherited, K1-only, residual-only, live ENTRY-022, motor-off, and conditional exhaustive phase-shift controls. No production runtime, resource, fission, remesh, polarity, actuator, traction, M1, restart, or PR #44 change is authorized.
 - ENTRY-003 adds only the explicit opt-in `INTRINSIC_EXPLORATION_REGULATOR_SCHEMA_V1`. It uses one seed of exactly `FROZEN_K_STIMULUS * FROZEN_DT`, frozen neighbor/self-excitation/decay dynamics, and existing local adaptation; it reads no resource, world, target, gradient, observer, or viability state.
 - ENTRY-003 is Architect accepted as `M2_INTRINSIC_EXPLORATION_MECHANICALLY_INSUFFICIENT`: it records intrinsic activity switching and exact A-to-W closure with R unchanged, but no retained material-centroid displacement beyond frozen controls.
 - ENTRY-004's uninterrupted clone reconstruction has exact clutch-ledger parity. It identifies adaptation attenuation, not a traction-law mismatch, as the cause of zero intrinsic slip events; no actuation amplification or adaptation change is authorized.

@@ -1,0 +1,11 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-023-DAUGHTER-POLARITY-EFFECTOR-MECHANICAL-TRANSFER-ATTRIBUTION-AUDIT-001",
+  "mechanical_horizon": 480,
+  "no_clipping": true,
+  "no_tuning": true,
+  "observer_only": true,
+  "phase_sweep": "all offsets only when a preregistered spatial leverage diagnostic is active",
+  "production_runtime_changed": false,
+  "resource": false,
+  "starting_head": "48b313db45761552e27a34f77b7aff9b0e688f95"
+}

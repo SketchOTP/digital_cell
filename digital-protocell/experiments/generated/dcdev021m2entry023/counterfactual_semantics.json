@@ -1,0 +1,11 @@
+{
+  "all_counterfactuals": "OBSERVER_COUNTERFACTUAL",
+  "fields": [
+    "REFERENCE_SPATIAL",
+    "K1_ONLY",
+    "RESIDUAL_ONLY",
+    "PHASE_SHIFTS",
+    "FROZEN_INHERITED"
+  ],
+  "production_field": "actual inherited ENTRY-022 field"
+}

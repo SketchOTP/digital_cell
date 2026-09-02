@@ -1,0 +1,35 @@
+{
+  "a_to_w": "PASS",
+  "architect_acceptance": "PENDING",
+  "autonomous_embodied_locomotion": "NOT_ESTABLISHED",
+  "autonomous_polarity_initiation": "QUALIFIED",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "classification": "M2_DAUGHTER_MECHANICAL_TRANSFER_ATTRIBUTION_UNRESOLVED",
+  "downstream_preservation": "PASS",
+  "entry005_022_preservation": "PASS",
+  "entry022_accepted_negative": "M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT",
+  "frozen_inherited_result": {
+    "A": true,
+    "B": false
+  },
+  "generic_full_mesh_restart": "KNOWN_FAIL",
+  "index_invariance": "PASS",
+  "intrinsic_restart": "PASS",
+  "k1_result": {
+    "A": "YES",
+    "B": "NO"
+  },
+  "m1_preservation": "PASS",
+  "mechanical_attribution": "M2_DAUGHTER_MECHANICAL_TRANSFER_ATTRIBUTION_UNRESOLVED",
+  "next_execution_started": false,
+  "phase_dependence": "PRESENT",
+  "polarity_fission_inheritance": "QUALIFIED",
+  "reconstruction": "PASS",
+  "reference_daughter_leverage": {
+    "A": true,
+    "B": false
+  },
+  "repository_professionalism": "PASS",
+  "rotation": "PASS",
+  "scientific_runtime_changed": false
+}

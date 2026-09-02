@@ -1,0 +1,9 @@
+{
+  "actual_inherited_phase_mechanically_effective": {
+    "A": true,
+    "B": false
+  },
+  "no_production_phase_selection": true,
+  "phase_dependence": "PRESENT",
+  "shifted_field_leverage": true
+}

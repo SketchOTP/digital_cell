@@ -377,3 +377,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-021 ENTRY-022 post-fission inherited-polarity transient-locomotion feasibility audit.
 - Supersedes learning: L-DCDEV021-ENTRY022-001
+
+## L-DCDEV021-ENTRY023-001
+
+- Learning ID: L-DCDEV021-ENTRY023-001
+- Date: 2026-09-02
+- Fact or lesson: In the exact ENTRY-022 daughter checkpoints, the analytical Polar field has same-mean mechanical leverage on daughter A but not daughter B. Holding the inherited field fixed produces the same A-only result; exact K1-only reconstruction also retains A-only leverage, while the residual-only field is outside the admissible motor range and is not clamped. Exact live ENTRY-022 replay remains non-leveraged under the stricter spatial-versus-uniform-and-motor-off comparison, yielding a mixed daughter attribution rather than a stronger single-cause classification.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry023.rs`, `digital-protocell/experiments/generated/dcdev021m2entry023/`, and `.github/workflows/dc-dev-021-m2-entry023.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-023 daughter polarity/effector mechanical-transfer attribution audit.
+- Supersedes learning: none

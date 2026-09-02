@@ -1,0 +1,6 @@
+{
+  "no_world_axis": true,
+  "pass": true,
+  "spectra_invariant": true,
+  "trajectory_angles_rotate": true
+}

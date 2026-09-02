@@ -1,0 +1,11 @@
+{
+  "desired_direction": false,
+  "fitness": false,
+  "future_movement": false,
+  "gradient": false,
+  "observer_success_feedback": false,
+  "resource_contact": false,
+  "resource_location": false,
+  "reward": false,
+  "survival": false
+}
