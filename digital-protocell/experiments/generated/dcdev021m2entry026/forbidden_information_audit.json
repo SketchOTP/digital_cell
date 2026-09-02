@@ -1,0 +1,14 @@
+{
+  "centroid_target": false,
+  "contact": false,
+  "daughter_label_control": false,
+  "distance": false,
+  "fitness": false,
+  "future_encounter": false,
+  "gradient": false,
+  "observer_feedback": false,
+  "resource": false,
+  "reward": false,
+  "target": false,
+  "viability": false
+}

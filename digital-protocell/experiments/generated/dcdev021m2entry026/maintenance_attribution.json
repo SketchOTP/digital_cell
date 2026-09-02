@@ -1,0 +1,9 @@
+{
+  "A": true,
+  "B": true,
+  "latest_common_prefix": {
+    "A": 25,
+    "B": 25
+  },
+  "threshold": "existing numerical tolerance only"
+}

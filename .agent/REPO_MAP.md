@@ -107,3 +107,6 @@
 - `digital-protocell/experiments/generated/` — evidence is append-only and provenance-bound.
 - `.git/` — Git metadata and object storage.
 - `PR #44 and /srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcdev020m1closure001/` — historical M1 provenance and dense evidence; do not rewrite from the baseline branch.
+- `digital-protocell/examples/dcdev021_m2_entry026.rs` — isolated ENTRY-026 post-fission continued-development polarity-maintenance audit; no actuator, resource, production polarity, or second-fission execution.
+- `digital-protocell/experiments/generated/dcdev021m2entry026/` — compact ENTRY-026 authority, growth controls, polarity chronology, conservation, remesh, rotation/index, preservation, and qualification evidence.
+- `.github/workflows/dc-dev-021-m2-entry026.yml` — exact-head Linux validation for ENTRY-026 authority, assay evidence, historical preservation, D-087, downstream tests, governance, and artifact upload.

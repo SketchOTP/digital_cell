@@ -1,0 +1,13 @@
+{
+  "daughter_a": {
+    "closing_edge_zero_pool": true,
+    "state": "exact ENTRY-021 inherited local amounts",
+    "topology": 78
+  },
+  "daughter_b": {
+    "closing_edge_zero_pool": true,
+    "state": "exact ENTRY-021 inherited local amounts",
+    "topology": 122
+  },
+  "physical_state_unmodified": true
+}

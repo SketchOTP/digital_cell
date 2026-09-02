@@ -1,0 +1,11 @@
+{
+  "parameter_changed": false,
+  "params": {
+    "enable_growth_off": false,
+    "enable_growth_on": true,
+    "y_g": 0.9
+  },
+  "production_selector": "MaturationCoupledV4 / reserve OFF",
+  "semantics": "existing D-088 surplus-driven local structural growth",
+  "source": "chemistry_core::mesh_growth::growth_step"
+}

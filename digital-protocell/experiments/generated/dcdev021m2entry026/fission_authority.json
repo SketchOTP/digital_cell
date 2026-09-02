@@ -1,0 +1,18 @@
+{
+  "daughter_a_topology": 78,
+  "daughter_b_topology": 122,
+  "first_fission_step": 2326,
+  "mother_topology": 198,
+  "physical_path": [
+    "transport_step",
+    "reactions_step",
+    "growth_step(enable_growth=true)",
+    "mechanics_step",
+    "remesh",
+    "topology_step",
+    "try_local_fission"
+  ],
+  "replay": "PASS",
+  "second_fission": "not executed; read-only eligibility check",
+  "unforced": true
+}

@@ -1,0 +1,11 @@
+{
+  "circular_reindexing": true,
+  "criterion": "equivalent material-local lifecycle outcome modulo index permutation; existing remesh floating-order sensitivity is reported, not treated as a biological divergence",
+  "daughter_selector": false,
+  "pass": true,
+  "remesh_order_sensitivity": "observed small terminal amplitude delta; no reseed, boundary, topology, or closure divergence",
+  "terminal_amplitude_differences": {
+    "A": 6.064613970929722e-6,
+    "B": 4.74975990107096e-6
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "entry025": "M2_LIVE_ANTAGONISTIC_INHERITED_POLARITY_COMPOSITION_INSUFFICIENT",
+  "entry025_acceptance": "ARCHITECT ACCEPTED",
+  "entry025_artifact": "sha256:5a5e35b9737a8721f5ed3e9c42be554e2395542bdd57177a49e569dd5f697696",
+  "entry025_ci": "33689785553",
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "state": "OPEN"
+  },
+  "scientific_runtime_source_changed": false,
+  "source_hashes": {
+    "entry019_source": "236a05d7a0feb0dd",
+    "entry025_source": "7f2c87d459b53a28",
+    "mesh_fission.rs": "dcb859522534cf03",
+    "mesh_growth.rs": "f466c37daea1186c",
+    "mesh_mechanics.rs": "eaaa4f5898833bfd",
+    "mesh_reactions.rs": "8b7a5572b93b0982",
+    "mesh_transport.rs": "599c32e1cdd6e927"
+  },
+  "starting_head": "b6eb9f1a58155220f6dff49bd5c79152b4964ffc"
+}

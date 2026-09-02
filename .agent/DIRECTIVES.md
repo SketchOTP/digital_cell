@@ -612,3 +612,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260902-dcdev021-m2-entry024-polarity-effector-semantic-orientation
 - Status at issuance: ISSUED
+
+## D-20260902-dcdev021-m2-entry026-post-fission-development-polarity-maintenance
+
+- Issued: `2026-09-02T19:25:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-026-POST-FISSION-CONTINUED-DEVELOPMENT-POLARITY-MAINTENANCE-FEASIBILITY-001`
+- Objective: Determine whether ordinary continued post-fission growth maintains inherited daughter polarity without de-novo reseeding.
+- Scope: Isolated growth-ON/growth-OFF and same-total homogeneous controls on exact accepted ENTRY-025 daughters, unchanged physical growth/reactions/remesh/polarity remap, second-fission eligibility observation, conservation, rotation/index, preservation, compact evidence, scoped workflow, and exact-head Linux validation.
+- Exclusions: production polarity, actuator, resource interaction, polarity reseeding, new randomness, tuning, second-fission execution, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: One preregistered classification after exact fission authority, continued-development comparison, no-reseed controls, closure, preservation, governance, and exact-head Linux checks.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260902-dcdev021-m2-entry025-live-antagonistic-inherited-locomotion
+- Status at issuance: ISSUED

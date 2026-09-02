@@ -465,3 +465,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The final remote run confirms the bounded live anti-fraction comparison is physically valid, preserves direct-live parity and all required closures/preservation gates, but neither daughter clears the preregistered spatial-leverage criterion. The final classification is `M2_LIVE_ANTAGONISTIC_INHERITED_POLARITY_COMPOSITION_INSUFFICIENT`; no successor work is authorized.
 - Affected areas: final remote-validation provenance for additive ENTRY-025 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, fission/remesh biology, polarity production, actuator, traction, resource, M1, restart, or PR #44 change.
 - Supersedes record: DEC-DCDEV021-ENTRY025-LIVE-ANTAGONISTIC-INHERITED-LOCOMOTION-R2
+
+## DEC-DCDEV021-ENTRY026-POST-FISSION-DEVELOPMENT-POLARITY-MAINTENANCE-R1
+
+- Date: 2026-09-02
+- Record or decision ID: DEC-DCDEV021-ENTRY026-POST-FISSION-DEVELOPMENT-POLARITY-MAINTENANCE-R1
+- Status: ACTIVE
+- Decision or event: ENTRY-026 is authorized from exact accepted ENTRY-025 head `b6eb9f1a58155220f6dff49bd5c79152b4964ffc` as an observer-only continued-development audit.
+- Rationale: ENTRY-025 is accepted as a bounded negative. ENTRY-026 tests whether the existing physical growth path changes inherited daughter polarity relative to growth-OFF and same-total homogeneous controls, without initializing polarity or executing another fission.
+- Affected areas: additive isolated ENTRY-026 assay/example, compact evidence, scoped workflow, and governance only; no accepted scientific runtime, production polarity, actuator, traction, resource, M1, restart, or PR #44 change.
+- Supersedes record: none

@@ -447,3 +447,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-021 ENTRY-025 live antagonistic inherited-polarity locomotion feasibility audit.
 - Supersedes learning: L-DCDEV021-ENTRY025-002
+
+## L-DCDEV021-ENTRY026-001
+
+- Learning ID: L-DCDEV021-ENTRY026-001
+- Date: 2026-09-02
+- Fact or lesson: The isolated ENTRY-026 assay shows ordinary growth-ON development maintains inherited daughter polarity slightly above matched growth-OFF decay for both daughters, while same-total homogeneous controls remain numerically homogeneous. No de-novo reseed is observed. The assay reaches the accepted second-fission eligibility boundary at step 25 and stops before executing it. Index invariance is preserved at the material-local lifecycle level; small terminal amplitude differences are retained as existing remesh floating-order sensitivity rather than hidden.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry026.rs`, `digital-protocell/experiments/generated/dcdev021m2entry026/`, and `.github/workflows/dc-dev-021-m2-entry026.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-026 post-fission continued-development polarity-maintenance feasibility audit.
+- Supersedes learning: none

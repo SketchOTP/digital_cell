@@ -1,0 +1,6 @@
+{
+  "contaminates_entry026": false,
+  "generic_full_mesh_restart": "KNOWN_FAIL",
+  "intrinsic_restart": "PASS",
+  "repair_attempted": false
+}

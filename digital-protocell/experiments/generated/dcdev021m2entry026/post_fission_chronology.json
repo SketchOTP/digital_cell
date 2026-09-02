@@ -1,0 +1,15 @@
+{
+  "accepted_order": [
+    "transport",
+    "reactions",
+    "growth",
+    "mechanics",
+    "remesh",
+    "conservative polarity remap",
+    "Polar reaction-diffusion"
+  ],
+  "actuator": false,
+  "growth_off_control_preserved": true,
+  "growth_on_restored": true,
+  "resource": false
+}

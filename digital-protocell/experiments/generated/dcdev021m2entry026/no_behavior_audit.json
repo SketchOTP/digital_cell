@@ -1,0 +1,9 @@
+{
+  "a_spent_by_behavior": 0.0,
+  "actuator_calls": 0,
+  "adhesion_clutch": "NONE",
+  "motor_w_generated": 0.0,
+  "physical_development_mechanics": true,
+  "protrusion_calls": 0,
+  "stick_slip_calls": 0
+}

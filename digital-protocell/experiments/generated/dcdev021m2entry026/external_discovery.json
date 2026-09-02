@@ -1,0 +1,14 @@
+{
+  "growing_domain_reaction_diffusion": {
+    "disposition": "DIRECTLY RELEVANT PHYSICAL PRINCIPLE",
+    "parameters_imported": false,
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9839823/"
+  },
+  "mass_conserved_polarity": {
+    "disposition": "DIRECTLY RELEVANT POLARITY PRINCIPLE",
+    "parameters_imported": false,
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1892603/"
+  },
+  "no_external_parameters": true,
+  "protrusion_direction": "SUPERSEDED BEFORE EXECUTION"
+}

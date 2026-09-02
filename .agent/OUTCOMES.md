@@ -1218,3 +1218,19 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: ENTRY-025 does not establish autonomous embodied locomotion or autonomous resource acquisition; no successor work is authorized.
 - Blockers: Architect review only.
 - Follow-up directive: none
+
+## D-20260902-dcdev021-m2-entry026-post-fission-development-polarity-maintenance - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY026-POST-FISSION-DEVELOPMENT-POLARITY-MAINTENANCE-LOCAL`
+- Supersedes outcome: none
+- Closed: `2026-09-02T19:25:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Local ENTRY-026 replay from exact accepted ENTRY-025 head `b6eb9f1a58155220f6dff49bd5c79152b4964ffc` shows growth-ON maintains inherited nonhomogeneous polarity for both daughters relative to matched growth-OFF decay; same-total homogeneous controls remain homogeneous and no de-novo reseed event occurs. Normal growth is physically active, remeshing remains conservative, second-fission eligibility is observed at step 25 and no second fission is executed. Provisional classification: `M2_POST_FISSION_DEVELOPMENT_MAINTAINS_INHERITED_POLARITY_WITHOUT_DE_NOVO_RESEED`.
+- Changed areas: additive ENTRY-026 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, production polarity, actuator, resource, M1, restart, or PR #44 change.
+- Validation:
+  - Local release assay and generated evidence - PASSED
+  - Exact-head Linux validation - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: ENTRY-026 does not establish autonomous embodied locomotion or autonomous resource acquisition; Architect review is pending.
+- Blockers: exact-head Linux validation and Architect review; do not start successor work.
+- Follow-up directive: none

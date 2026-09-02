@@ -1,0 +1,10 @@
+{
+  "classification_invariant": true,
+  "complete_mother_state_rotated_together": true,
+  "pass": true,
+  "terminal_amplitude_differences": {
+    "A": 5.198451530352699e-10,
+    "B": 5.742912950745804e-10
+  },
+  "world_axis": false
+}

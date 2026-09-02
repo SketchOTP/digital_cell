@@ -1,0 +1,12 @@
+{
+  "A": {
+    "off": 2,
+    "on": 2
+  },
+  "B": {
+    "off": 1,
+    "on": 1
+  },
+  "mapping": "ENTRY-019/021 conservative amount remap",
+  "pass": true
+}

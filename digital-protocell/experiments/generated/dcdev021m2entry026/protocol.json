@@ -1,0 +1,24 @@
+{
+  "actuator": false,
+  "additional_fission": "DETECTION ONLY; NOT EXECUTED",
+  "checkpoints": [
+    0,
+    1,
+    10,
+    25,
+    50,
+    100,
+    250,
+    500,
+    1000,
+    2000,
+    3000
+  ],
+  "directive": "DC-DEV-021-M2-ENTRY-026-POST-FISSION-CONTINUED-DEVELOPMENT-POLARITY-MAINTENANCE-FEASIBILITY-001",
+  "horizon": 3000,
+  "next_execution_started": false,
+  "observer_only": true,
+  "protrusion": false,
+  "resource": false,
+  "starting_head": "b6eb9f1a58155220f6dff49bd5c79152b4964ffc"
+}

@@ -1,0 +1,11 @@
+{
+  "A": {
+    "eligible": true,
+    "step": 25
+  },
+  "B": {
+    "eligible": true,
+    "step": 25
+  },
+  "executed": false
+}

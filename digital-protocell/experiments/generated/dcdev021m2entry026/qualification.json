@@ -1,0 +1,47 @@
+{
+  "actuator": "NO",
+  "architect_acceptance": "PENDING",
+  "autonomous_embodied_locomotion": "NOT_ESTABLISHED",
+  "autonomous_polarity_initiation": "QUALIFIED",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "classification": "M2_POST_FISSION_DEVELOPMENT_MAINTAINS_INHERITED_POLARITY_WITHOUT_DE_NOVO_RESEED",
+  "de_novo_homogeneous_seed": {
+    "A": false,
+    "B": false
+  },
+  "developmental_maintenance": {
+    "A": true,
+    "B": true
+  },
+  "downstream_preservation": "PASS",
+  "entry005_025_preservation": "PASS",
+  "f_accounting": "PASS",
+  "generic_full_mesh_restart": "KNOWN_FAIL",
+  "growth_authority": "PASS",
+  "growth_material_closure": "PASS",
+  "growth_off_decay_regression": {
+    "A": true,
+    "B": true
+  },
+  "growth_on_valid": {
+    "A": true,
+    "B": true
+  },
+  "index_invariance": "PASS",
+  "intrinsic_restart": "PASS",
+  "m1_preservation": "PASS",
+  "next_execution_started": false,
+  "polarity_fission_inheritance": "QUALIFIED",
+  "protrusion": "NO",
+  "remesh_continuity": "PASS",
+  "repository_professionalism": "PASS",
+  "reseed": {
+    "A": false,
+    "B": false
+  },
+  "resource_information": "NONE",
+  "rotation": "PASS",
+  "second_fission_executed": false,
+  "unforced_fission": "PASS",
+  "weighted_uv_closure": "PASS"
+}
