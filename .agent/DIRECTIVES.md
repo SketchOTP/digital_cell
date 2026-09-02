@@ -584,3 +584,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260902-dcdev021-m2-entry022-post-fission-transient-locomotion
 - Status at issuance: ISSUED
+
+## D-20260902-dcdev021-m2-entry024-polarity-effector-semantic-orientation
+
+- Issued: `2026-09-02T16:20:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-024-POLARITY-EFFECTOR-SEMANTIC-ORIENTATION-FEASIBILITY-001`
+- Objective: Determine whether the parameter-free antagonistic local fraction `v/(u+v)` provides a semantically distinct effector orientation through unchanged A-funded contractility and stick-slip, relative to the accepted direct `u/(u+v)` interface.
+- Scope: Observer-only exact ENTRY-023 daughter replay, direct parity, inherited and analytical reference fields, matched-mean controls, antagonistic complement, force/moment and energetic diagnostics, rotation/index checks, preservation, compact evidence, governance, and exact-head Linux validation.
+- Exclusions: production polarity, live reaction-diffusion, resource interaction, post-ingestive behavior, new gains/thresholds/timescales, phase sweeps, target/gradient/memory, actuator/traction changes, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: One preregistered classification after direct parity, complement identity, daughter-specific leverage, closure, rotation/index invariance, historical preservation, governance, and exact-head Linux checks.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260902-dcdev021-m2-entry023-daughter-mechanical-transfer-attribution
+- Status at issuance: ISSUED

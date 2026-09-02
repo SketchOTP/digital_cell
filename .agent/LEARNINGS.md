@@ -397,3 +397,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-021 ENTRY-023 daughter polarity/effector mechanical-transfer attribution audit.
 - Supersedes learning: L-DCDEV021-ENTRY023-001
+
+## L-DCDEV021-ENTRY024-001
+
+- Learning ID: L-DCDEV021-ENTRY024-001
+- Date: 2026-09-02
+- Fact or lesson: In the exact ENTRY-023 daughter replay, the assay-only complementary effector orientation `v/(u+v)` has mechanical leverage on both inherited daughter fields, but only daughter B under the analytical reference fields. Direct `u/(u+v)` parity passes, complement identity is exact, A-to-W closure passes, and rotation/index invariance passes. This is a daughter-dependent semantic-orientation result, not a universal effector qualification and not a production change.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry024.rs`, `digital-protocell/experiments/generated/dcdev021m2entry024/`, and `.github/workflows/dc-dev-021-m2-entry024.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-024 polarity-effector semantic-orientation feasibility audit.
+- Supersedes learning: none

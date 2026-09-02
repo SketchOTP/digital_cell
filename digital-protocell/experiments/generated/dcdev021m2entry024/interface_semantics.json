@@ -1,0 +1,14 @@
+{
+  "antagonistic": "v/(u+v)",
+  "direct": "u/(u+v)",
+  "literal_v_equals_rhoa": false,
+  "new_biological_state": "NO",
+  "no_clipping": true,
+  "no_gain": true,
+  "production_mapping": "NO",
+  "validity": {
+    "u_nonnegative": true,
+    "u_plus_v_positive": true,
+    "v_nonnegative": true
+  }
+}

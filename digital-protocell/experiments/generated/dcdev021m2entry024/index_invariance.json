@@ -1,0 +1,15 @@
+{
+  "circular_reindexing": "body and polarity state reindexed together",
+  "classification_invariant": true,
+  "comparison": {
+    "a_leverage_original": true,
+    "a_leverage_reindexed": true,
+    "a_n_equal": false,
+    "a_net": 0.29536098651084036,
+    "b_leverage_original": true,
+    "b_leverage_reindexed": true,
+    "b_n_equal": false,
+    "b_net": 1.0652678106844262
+  },
+  "pass": true
+}

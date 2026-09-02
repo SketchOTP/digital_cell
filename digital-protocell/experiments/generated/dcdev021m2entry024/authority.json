@@ -1,0 +1,22 @@
+{
+  "daughter_topologies": {
+    "A": 78,
+    "B": 122
+  },
+  "entry023_artifact": "sha256:098b864a0341242e15e8bf9648811e34afde2aea056c54175064517ef06c3a71",
+  "entry023_ci": "33672343368",
+  "entry023_classification": "M2_DAUGHTER_MECHANICAL_TRANSFER_ATTRIBUTION_UNRESOLVED",
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "state": "OPEN"
+  },
+  "source_hashes": {
+    "contractility.rs": "588b40fe26029232",
+    "mesh_fission.rs": "dcb859522534cf03",
+    "mesh_mechanics.rs": "eaaa4f5898833bfd",
+    "stick_slip_traction.rs": "ec1ad2b699ca7461"
+  },
+  "starting_head": "af3029f2ed9d3be3f31cdc6feb5eacfce6471b1e"
+}

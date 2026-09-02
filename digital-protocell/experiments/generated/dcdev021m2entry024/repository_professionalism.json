@@ -1,0 +1,12 @@
+{
+  "branch": "m2/dc-dev-021-entry024-polarity-effector-semantic-orientation",
+  "branch_naming": "PASS",
+  "commit_quality": "PASS",
+  "counterfactual_status_clear": "PASS",
+  "evidence_discoverability": "PASS",
+  "scope_discipline": "PASS",
+  "semantic_boundary_documented": "PASS",
+  "source_documentation": "PASS",
+  "workflow": "dc-dev-021-m2-entry024.yml",
+  "workflow_quality": "PASS"
+}

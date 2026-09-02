@@ -1,0 +1,25 @@
+{
+  "adhesion_clutch": {
+    "disposition": "DEFERRED_ALTERNATIVE",
+    "force_transmission_requires_adhesion_context": true,
+    "implemented": false,
+    "imported_parameters": false,
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1893118/"
+  },
+  "m2072": {
+    "disposition": "ADAPTABLE_POLARITY_FAMILY_REFERENCE_ONLY_FOR_EFFECTOR_SEMANTICS",
+    "imported_parameters": false,
+    "protrusive_motility": true,
+    "rac_active_and_f_actin": true,
+    "source": "https://morpheus.gitlab.io/model/m2072/",
+    "stable_polarization_straight_motility": true
+  },
+  "rac_rho_migration": {
+    "disposition": "REFERENCE_PRINCIPLE",
+    "imported_parameters": false,
+    "literal_v_rhoa": false,
+    "rac_front_protrusive_actin": true,
+    "rho_rear_contractility": true,
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6823167/"
+  }
+}

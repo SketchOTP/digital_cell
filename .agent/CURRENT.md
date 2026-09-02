@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-02T15:45:00-04:00`
+- Last updated: `2026-09-02T16:20:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `NONE`
-- External directive ID: `NONE`
-- Objective: `NONE`
-- Current status: `IDLE`
-- Acceptance: `NONE`
-- Current phase: `NONE`
-- Expected or actual touched areas: `NONE`
-- Immediate next action: `NONE`
+- Local directive ID: `D-20260902-dcdev021-m2-entry024-polarity-effector-semantic-orientation`
+- External directive ID: `DC-DEV-021-M2-ENTRY-024-POLARITY-EFFECTOR-SEMANTIC-ORIENTATION-FEASIBILITY-001`
+- Objective: `Determine whether the parameter-free antagonistic local fraction v/(u+v) provides semantic effector leverage through unchanged contractility and traction, while preserving direct ENTRY-023 parity.`
+- Current status: `VALIDATING`
+- Acceptance: `PENDING`
+- Current phase: `ENTRY-024 exact-head validation`
+- Expected or actual touched areas: `additive isolated assay/example, compact evidence, scoped workflow, append-only governance; no accepted scientific runtime source`
+- Immediate next action: `Run exact-head Linux CI, verify artifact digest, and finalize the Architect handoff.`
 
 ## Temporary task-relevant facts
 
@@ -28,7 +28,7 @@
 - Entry authority is `8d6fe59397cabfa47bc1d8103acd68f544acc190`.
 - DC-DEV-007 is architect-accepted; its active contact chain remains preserved and is exercised by the DC-DEV-008 preservation workflow.
 - DC-DEV-010 / PR #19 is closed, unmerged negative evidence and must not be imported.
-- Current implementation work is complete on `m2/dc-dev-021-entry023-daughter-mechanical-transfer-attribution`, based exactly on accepted ENTRY-022 head `48b313db45761552e27a34f77b7aff9b0e688f95`.
+- Current implementation work is in progress on `m2/dc-dev-021-entry024-polarity-effector-semantic-orientation`, based exactly on accepted ENTRY-023 head `af3029f2ed9d3be3f31cdc6feb5eacfce6471b1e`.
 - ENTRY-014 is Architect accepted as `M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE` at `7685ae33e33132452105611322dbf4d045468eec`; its continuous PDE and published parameters are reused by the isolated ENTRY-018 native-ring numerical audit only.
 - ENTRY-015 starts exactly at accepted ENTRY-014 head `7685ae33e33132452105611322dbf4d045468eec` on `m2/dc-dev-021-entry015-polarity-actuator-interface`. Its only new causal interface is assay-local `u/(u+v)` into the existing actuator; production integration, autonomous polarity initiation, and resource acquisition remain unauthorized.
 - DC-DEV-015 starts exactly at `5a4e0a2d7314af411ec2283b0ffcf4950eb217db` from `strategy/dc-dev-013-resource-contact-feeding`; DC-DEV-014/PR #23 is closed, unmerged negative evidence and is not imported.
@@ -42,6 +42,7 @@
 - ENTRY-004's uninterrupted clone reconstruction has exact clutch-ledger parity. It identifies adaptation attenuation, not a traction-law mismatch, as the cause of zero intrinsic slip events; no actuation amplification or adaptation change is authorized.
 - ENTRY-005 is Architect accepted as `M2_REFRACTORY_MOTOR_DECOUPLING_EXPLORATION_QUALIFIED`: its opt-in `INTRINSIC_EXPLORATION_REFRACTORY_MOTOR_SCHEMA_V1` retains adaptation-inhibited excitation/update equations but sends raw `activity_after` to the accepted A-funded motor. It adds no numerical parameter, sensor, target, gradient, resource input, or reserve funding.
 - ENTRY-006 reuses the exact DC-DEV-013 finite N/F geometry, inventory, horizon, tolerances, and DC-DEV-008 uptake while recording contact only as an observer. Chemotaxis, target/gradient logic, reserve enablement, and M2 successor work remain unauthorized.
+- ENTRY-024 is an assay-only direct-versus-antagonistic effector-orientation audit. It uses `u/(u+v)` for direct parity and the exact complement `v/(u+v)` as a bounded counterfactual through unchanged A-funded contractility/stick-slip. No production polarity, live reaction-diffusion, resource, tuning, phase sweep, new gain, threshold, or semantic RhoA claim is authorized.
 
 ## Last validation after adoption
 

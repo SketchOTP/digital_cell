@@ -1,0 +1,15 @@
+{
+  "daughter_a": {
+    "inherited_antagonistic_mean": 0.5529785134672489,
+    "inherited_direct_mean": 0.4470214865327517,
+    "reference_antagonistic_mean": 0.5160943928351022,
+    "reference_direct_mean": 0.48390560716489817
+  },
+  "daughter_b": {
+    "inherited_antagonistic_mean": 0.5499717481763575,
+    "inherited_direct_mean": 0.4500282518236427,
+    "reference_antagonistic_mean": 0.5160956638567917,
+    "reference_direct_mean": 0.4839043361432083
+  },
+  "same_mean_semantics": "each orientation compared only to its own uniform mean"
+}

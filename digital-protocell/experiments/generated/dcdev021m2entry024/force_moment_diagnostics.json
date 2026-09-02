@@ -1,0 +1,704 @@
+{
+  "inherited": {
+    "A": {
+      "antagonistic_same_mean": {
+        "a_limited_steps": 0,
+        "a_spent": 0.23577924001563935,
+        "a_to_w_residual": 4.547473508864641e-13,
+        "arm": "INHERITED_ANTAGONISTIC_SAME_MEAN",
+        "displacement_path_ratio": 0.817679372764037,
+        "force_dipole": [
+          [
+            -6573.1911320516565,
+            869.5864380781443
+          ],
+          [
+            306.0852725407956,
+            -13228.362923490919
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 0.2947297971644542,
+        "motor_max": 0.5529785134672489,
+        "motor_mean": 0.552978513467249,
+        "motor_min": 0.5529785134672489,
+        "motor_range": 0.0,
+        "net_displacement": 0.2947297971644542,
+        "path": 0.36044665792187747,
+        "principal_axis": 0.12780509039441013,
+        "reaction_sum": [
+          430.21100780007674,
+          97.78414264805262
+        ],
+        "slips": 12129,
+        "stuck_contacts": 24839,
+        "traction_anisotropy": 14800.21270324949,
+        "w_generated": 601.7756654208728
+      },
+      "antagonistic_spatial": {
+        "a_limited_steps": 0,
+        "a_spent": 0.2357980687397745,
+        "a_to_w_residual": 9.094947017729282e-13,
+        "arm": "INHERITED_ANTAGONISTIC_SPATIAL",
+        "displacement_path_ratio": 0.8182649135269906,
+        "force_dipole": [
+          [
+            -6579.790395551854,
+            868.047369588308
+          ],
+          [
+            285.33907971448497,
+            -13233.98854386229
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 0.2953608570346953,
+        "motor_max": 0.7640915131617796,
+        "motor_mean": 0.5529785134672489,
+        "motor_min": 0.5114852931528179,
+        "motor_range": 0.2526062200089617,
+        "net_displacement": 0.2953608570346953,
+        "path": 0.36095994359771943,
+        "principal_axis": 0.12760645903172912,
+        "reaction_sum": [
+          429.3481757233454,
+          98.03253745344304
+        ],
+        "slips": 12133,
+        "stuck_contacts": 24835,
+        "traction_anisotropy": 14807.66757645296,
+        "w_generated": 601.7774612082885
+      },
+      "antagonistic_spatial_leverage": true,
+      "direct_same_mean": {
+        "a_limited_steps": 0,
+        "a_spent": 0.1906029975883557,
+        "a_to_w_residual": 9.094947017729282e-13,
+        "arm": "INHERITED_DIRECT_SAME_MEAN",
+        "displacement_path_ratio": 0.8187956072545104,
+        "force_dipole": [
+          [
+            -6554.083210099856,
+            870.6655564583197
+          ],
+          [
+            303.7667927728387,
+            -13193.870411876704
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 0.295314316683319,
+        "motor_max": 0.4470214865327517,
+        "motor_mean": 0.447021486532752,
+        "motor_min": 0.4470214865327517,
+        "motor_range": 0.0,
+        "net_displacement": 0.295314316683319,
+        "path": 0.36066915121043747,
+        "principal_axis": 0.12824052189613397,
+        "reaction_sum": [
+          426.6064609473262,
+          99.68321617263791
+        ],
+        "slips": 12130,
+        "stuck_contacts": 24838,
+        "traction_anisotropy": 14760.913113554416,
+        "w_generated": 601.7713462274564
+      },
+      "direct_spatial": {
+        "a_limited_steps": 0,
+        "a_spent": 0.19058400664619227,
+        "a_to_w_residual": 6.821210263296962e-13,
+        "arm": "INHERITED_DIRECT_SPATIAL",
+        "displacement_path_ratio": 0.8179647413900932,
+        "force_dipole": [
+          [
+            -6681.274949461699,
+            865.2083947031889
+          ],
+          [
+            297.24630334374046,
+            -13260.000851761079
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 0.29557415904743345,
+        "motor_max": 0.4885147068471821,
+        "motor_mean": 0.4470214865327517,
+        "motor_min": 0.23590848683822044,
+        "motor_range": 0.2526062200089617,
+        "net_displacement": 0.29557415904743345,
+        "path": 0.36135317831074093,
+        "principal_axis": 0.1286030817190941,
+        "reaction_sum": [
+          419.7265477627689,
+          98.16922947901374
+        ],
+        "slips": 12111,
+        "stuck_contacts": 24855,
+        "traction_anisotropy": 14876.28980862249,
+        "w_generated": 601.7737891858244
+      },
+      "direct_spatial_leverage": true,
+      "motor_off": {
+        "a_limited_steps": 0,
+        "a_spent": 0.0,
+        "a_to_w_residual": 0.0,
+        "arm": "INHERITED_MOTOR_OFF",
+        "displacement_path_ratio": 0.8177608911203281,
+        "force_dipole": [
+          [
+            -6591.015390619335,
+            843.6603078906671
+          ],
+          [
+            275.7539605245999,
+            -13222.029540892769
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 0.29500739672855697,
+        "motor_max": 0.0,
+        "motor_mean": 0.0,
+        "motor_min": 0.0,
+        "motor_range": 0.0,
+        "net_displacement": 0.29500739672855697,
+        "path": 0.3607501898561062,
+        "principal_axis": 0.12458542951544209,
+        "reaction_sum": [
+          417.27264175156125,
+          97.6053527604171
+        ],
+        "slips": 12155,
+        "stuck_contacts": 24811,
+        "traction_anisotropy": 14800.383509270196,
+        "w_generated": 601.7570003867922
+      }
+    },
+    "B": {
+      "antagonistic_same_mean": {
+        "a_limited_steps": 0,
+        "a_spent": 0.35569635357769336,
+        "a_to_w_residual": 1.3642420526593924e-12,
+        "arm": "INHERITED_ANTAGONISTIC_SAME_MEAN",
+        "displacement_path_ratio": 0.9646330652345674,
+        "force_dipole": [
+          [
+            -40445.570552762,
+            9796.867368457022
+          ],
+          [
+            7406.165485592414,
+            -36272.53886014693
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 1.065164129258469,
+        "motor_max": 0.5499717481763575,
+        "motor_mean": 0.5499717481763574,
+        "motor_min": 0.5499717481763575,
+        "motor_range": 0.0,
+        "net_displacement": 1.065164129258469,
+        "path": 1.1042168961930159,
+        "principal_axis": 0.8903194445902146,
+        "reaction_sum": [
+          -365.9675022157202,
+          109.31263393500409
+        ],
+        "slips": 18651,
+        "stuck_contacts": 39913,
+        "traction_anisotropy": 55698.933114867075,
+        "w_generated": 1169.2634711148232
+      },
+      "antagonistic_spatial": {
+        "a_limited_steps": 0,
+        "a_spent": 0.3557677608027721,
+        "a_to_w_residual": 1.3642420526593924e-12,
+        "arm": "INHERITED_ANTAGONISTIC_SPATIAL",
+        "displacement_path_ratio": 0.9647227929227343,
+        "force_dipole": [
+          [
+            -40420.08894045979,
+            9791.721359263125
+          ],
+          [
+            7397.69185042393,
+            -36276.27027874078
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 1.0653303046376128,
+        "motor_max": 0.6861258970013564,
+        "motor_mean": 0.5499717481763575,
+        "motor_min": 0.5236428194171795,
+        "motor_range": 0.1624830775841769,
+        "net_displacement": 1.0653303046376128,
+        "path": 1.104286446275491,
+        "principal_axis": 0.8896592993784416,
+        "reaction_sum": [
+          -365.8742335630762,
+          107.67238670101693
+        ],
+        "slips": 18647,
+        "stuck_contacts": 39917,
+        "traction_anisotropy": 55680.83177523671,
+        "w_generated": 1169.261217086091
+      },
+      "antagonistic_spatial_leverage": true,
+      "direct_same_mean": {
+        "a_limited_steps": 0,
+        "a_spent": 0.29105938881519905,
+        "a_to_w_residual": 9.094947017729282e-13,
+        "arm": "INHERITED_DIRECT_SAME_MEAN",
+        "displacement_path_ratio": 0.9646132634851987,
+        "force_dipole": [
+          [
+            -40364.27295252621,
+            9809.807461142896
+          ],
+          [
+            7387.103894284215,
+            -36264.45234869325
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 1.0650455953436975,
+        "motor_max": 0.4500282518236427,
+        "motor_mean": 0.4500282518236427,
+        "motor_min": 0.4500282518236427,
+        "motor_range": 0.0,
+        "net_displacement": 1.0650455953436975,
+        "path": 1.1041166814310965,
+        "principal_axis": 0.888398705061002,
+        "reaction_sum": [
+          -368.8756373574336,
+          109.23209424277107
+        ],
+        "slips": 18642,
+        "stuck_contacts": 39922,
+        "traction_anisotropy": 55634.401780789616,
+        "w_generated": 1169.2564001429064
+      },
+      "direct_spatial": {
+        "a_limited_steps": 0,
+        "a_spent": 0.29098806309717173,
+        "a_to_w_residual": 1.3642420526593924e-12,
+        "arm": "INHERITED_DIRECT_SPATIAL",
+        "displacement_path_ratio": 0.9645981354049817,
+        "force_dipole": [
+          [
+            -40371.29877190571,
+            9811.55492566156
+          ],
+          [
+            7387.534155322791,
+            -36267.00121265938
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 1.0650404559179691,
+        "motor_max": 0.4763571805828205,
+        "motor_mean": 0.4500282518236427,
+        "motor_min": 0.3138741029986436,
+        "motor_range": 0.1624830775841769,
+        "net_displacement": 1.0650404559179691,
+        "path": 1.1041286695736947,
+        "principal_axis": 0.8884901722487497,
+        "reaction_sum": [
+          -368.5570216957661,
+          109.16256082521406
+        ],
+        "slips": 18642,
+        "stuck_contacts": 39922,
+        "traction_anisotropy": 55641.525971569536,
+        "w_generated": 1169.2563153473218
+      },
+      "direct_spatial_leverage": false,
+      "motor_off": {
+        "a_limited_steps": 0,
+        "a_spent": 0.0,
+        "a_to_w_residual": 0.0,
+        "arm": "INHERITED_MOTOR_OFF",
+        "displacement_path_ratio": 0.9646498092662403,
+        "force_dipole": [
+          [
+            -40307.66560193342,
+            9827.943111358813
+          ],
+          [
+            7415.997449163836,
+            -36089.10044574342
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 1.065574656398491,
+        "motor_max": 0.0,
+        "motor_mean": 0.0,
+        "motor_min": 0.0,
+        "motor_range": 0.0,
+        "net_displacement": 1.065574656398491,
+        "path": 1.1046233007696533,
+        "principal_axis": 0.8911050824467707,
+        "reaction_sum": [
+          -367.97907536905785,
+          109.62925222390929
+        ],
+        "slips": 18664,
+        "stuck_contacts": 39900,
+        "traction_anisotropy": 55486.183516496734,
+        "w_generated": 1169.2288615412053
+      }
+    }
+  },
+  "primary_force_moment_change": "direct versus antagonistic force dipole/principal-axis ledgers above",
+  "reference": {
+    "A": {
+      "antagonistic_same_mean": {
+        "a_limited_steps": 0,
+        "a_spent": 0.2200530307914643,
+        "a_to_w_residual": 6.821210263296962e-13,
+        "arm": "REFERENCE_ANTAGONISTIC_SAME_MEAN",
+        "displacement_path_ratio": 0.8200354793605781,
+        "force_dipole": [
+          [
+            -6568.763845836333,
+            858.411344867825
+          ],
+          [
+            288.9645700201776,
+            -13226.591060350227
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 0.29620908444776145,
+        "motor_max": 0.5160943928351022,
+        "motor_mean": 0.5160943928351022,
+        "motor_min": 0.5160943928351022,
+        "motor_range": 0.0,
+        "net_displacement": 0.29620908444776145,
+        "path": 0.36121496191692853,
+        "principal_axis": 0.1261837502269708,
+        "reaction_sum": [
+          425.2827056881269,
+          97.86922871370618
+        ],
+        "slips": 12123,
+        "stuck_contacts": 24845,
+        "traction_anisotropy": 14795.666260761218,
+        "w_generated": 601.7750562902446
+      },
+      "antagonistic_spatial": {
+        "a_limited_steps": 0,
+        "a_spent": 0.22004772896175628,
+        "a_to_w_residual": 9.094947017729282e-13,
+        "arm": "REFERENCE_ANTAGONISTIC_SPATIAL",
+        "displacement_path_ratio": 0.8193151156966234,
+        "force_dipole": [
+          [
+            -6547.047138838026,
+            869.8666527968999
+          ],
+          [
+            312.2975054963309,
+            -13193.54250290387
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 0.2959205264459584,
+        "motor_max": 0.6427611898197836,
+        "motor_mean": 0.5160943928351022,
+        "motor_min": 0.4231126176646399,
+        "motor_range": 0.21964857215514366,
+        "net_displacement": 0.2959205264459584,
+        "path": 0.3611803575652961,
+        "principal_axis": 0.12800420013686067,
+        "reaction_sum": [
+          426.71058192909925,
+          98.09328579706543
+        ],
+        "slips": 12134,
+        "stuck_contacts": 24834,
+        "traction_anisotropy": 14757.628120388636,
+        "w_generated": 601.7706793804143
+      },
+      "antagonistic_spatial_leverage": false,
+      "direct_same_mean": {
+        "a_limited_steps": 0,
+        "a_spent": 0.20632917048339783,
+        "a_to_w_residual": 6.821210263296962e-13,
+        "arm": "REFERENCE_DIRECT_SAME_MEAN",
+        "displacement_path_ratio": 0.8192362475437521,
+        "force_dipole": [
+          [
+            -6543.411894008863,
+            880.3840803705625
+          ],
+          [
+            304.7331020024917,
+            -13190.658352867073
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 0.2954386712812365,
+        "motor_max": 0.48390560716489817,
+        "motor_mean": 0.48390560716489844,
+        "motor_min": 0.48390560716489817,
+        "motor_range": 0.0,
+        "net_displacement": 0.2954386712812365,
+        "path": 0.3606269524414059,
+        "principal_axis": 0.12946999999922248,
+        "reaction_sum": [
+          427.2789911488517,
+          99.60177906642491
+        ],
+        "slips": 12138,
+        "stuck_contacts": 24830,
+        "traction_anisotropy": 14753.902717218401,
+        "w_generated": 601.7710763613027
+      },
+      "direct_spatial": {
+        "a_limited_steps": 0,
+        "a_spent": 0.20633516120726333,
+        "a_to_w_residual": 4.547473508864641e-13,
+        "arm": "REFERENCE_DIRECT_SPATIAL",
+        "displacement_path_ratio": 0.8181294923393083,
+        "force_dipole": [
+          [
+            -6693.58449015914,
+            842.572109438678
+          ],
+          [
+            315.28693747616916,
+            -13301.460842864077
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 0.29555826459406753,
+        "motor_max": 0.5768873823353601,
+        "motor_mean": 0.48390560716489817,
+        "motor_min": 0.35723881018021636,
+        "motor_range": 0.21964857215514372,
+        "net_displacement": 0.29555826459406753,
+        "path": 0.3612609829636708,
+        "principal_axis": 0.12484913508310835,
+        "reaction_sum": [
+          419.37119680479327,
+          96.33890469513476
+        ],
+        "slips": 12093,
+        "stuck_contacts": 24873,
+        "traction_anisotropy": 14917.850632503743,
+        "w_generated": 601.7777372385284
+      },
+      "direct_spatial_leverage": true,
+      "motor_off": {
+        "a_limited_steps": 0,
+        "a_spent": 0.0,
+        "a_to_w_residual": 0.0,
+        "arm": "REFERENCE_MOTOR_OFF",
+        "displacement_path_ratio": 0.8177608911203281,
+        "force_dipole": [
+          [
+            -6591.015390619335,
+            843.6603078906671
+          ],
+          [
+            275.7539605245999,
+            -13222.029540892769
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 0.29500739672855697,
+        "motor_max": 0.0,
+        "motor_mean": 0.0,
+        "motor_min": 0.0,
+        "motor_range": 0.0,
+        "net_displacement": 0.29500739672855697,
+        "path": 0.3607501898561062,
+        "principal_axis": 0.12458542951544209,
+        "reaction_sum": [
+          417.27264175156125,
+          97.6053527604171
+        ],
+        "slips": 12155,
+        "stuck_contacts": 24811,
+        "traction_anisotropy": 14800.383509270196,
+        "w_generated": 601.7570003867922
+      }
+    },
+    "B": {
+      "antagonistic_same_mean": {
+        "a_limited_steps": 0,
+        "a_spent": 0.33378762926787425,
+        "a_to_w_residual": 9.094947017729282e-13,
+        "arm": "REFERENCE_ANTAGONISTIC_SAME_MEAN",
+        "displacement_path_ratio": 0.9645700471740254,
+        "force_dipole": [
+          [
+            -40441.294352925564,
+            9782.162966314005
+          ],
+          [
+            7386.774140721117,
+            -36303.429339971844
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 1.064972430291039,
+        "motor_max": 0.5160956638567917,
+        "motor_mean": 0.5160956638567917,
+        "motor_min": 0.5160956638567917,
+        "motor_range": 0.0,
+        "net_displacement": 1.064972430291039,
+        "path": 1.1040902974451365,
+        "principal_axis": 0.8896126119020573,
+        "reaction_sum": [
+          -366.50391858043594,
+          107.89815925844414
+        ],
+        "slips": 18651,
+        "stuck_contacts": 39913,
+        "traction_anisotropy": 55710.79262842927,
+        "w_generated": 1169.2637084269834
+      },
+      "antagonistic_spatial": {
+        "a_limited_steps": 0,
+        "a_spent": 0.3339128483121492,
+        "a_to_w_residual": 1.3642420526593924e-12,
+        "arm": "REFERENCE_ANTAGONISTIC_SPATIAL",
+        "displacement_path_ratio": 0.9645492123131848,
+        "force_dipole": [
+          [
+            -40412.95326729407,
+            9779.816671258193
+          ],
+          [
+            7407.504645280426,
+            -36273.656557318616
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 1.065599306164113,
+        "motor_max": 0.6428179174991873,
+        "motor_mean": 0.5160956638567917,
+        "motor_min": 0.4230872978537631,
+        "motor_range": 0.21973061964542417,
+        "net_displacement": 1.065599306164113,
+        "path": 1.104764062383701,
+        "principal_axis": 0.8896719260875594,
+        "reaction_sum": [
+          -368.6714047492734,
+          107.97594109317457
+        ],
+        "slips": 18638,
+        "stuck_contacts": 39926,
+        "traction_anisotropy": 55673.161316886515,
+        "w_generated": 1169.2617867028189
+      },
+      "antagonistic_spatial_leverage": true,
+      "direct_same_mean": {
+        "a_limited_steps": 0,
+        "a_spent": 0.3129684057457446,
+        "a_to_w_residual": 9.094947017729282e-13,
+        "arm": "REFERENCE_DIRECT_SAME_MEAN",
+        "displacement_path_ratio": 0.9647393963511707,
+        "force_dipole": [
+          [
+            -40378.33518056336,
+            9775.882325744025
+          ],
+          [
+            7430.84857915506,
+            -36287.86356113921
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 1.0657428690166513,
+        "motor_max": 0.4839043361432083,
+        "motor_mean": 0.48390433614320805,
+        "motor_min": 0.4839043361432083,
+        "motor_range": 0.0,
+        "net_displacement": 1.0657428690166513,
+        "path": 1.1046950845456245,
+        "principal_axis": 0.8885170341894377,
+        "reaction_sum": [
+          -366.27103230644593,
+          107.05393207708309
+        ],
+        "slips": 18656,
+        "stuck_contacts": 39908,
+        "traction_anisotropy": 55659.719543300795,
+        "w_generated": 1169.2589384736643
+      },
+      "direct_spatial": {
+        "a_limited_steps": 0,
+        "a_spent": 0.3128431995795621,
+        "a_to_w_residual": 9.094947017729282e-13,
+        "arm": "REFERENCE_DIRECT_SPATIAL",
+        "displacement_path_ratio": 0.9647005342977664,
+        "force_dipole": [
+          [
+            -40416.20604347214,
+            9786.303052455216
+          ],
+          [
+            7418.091702967414,
+            -36283.86879486982
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 1.065466023956432,
+        "motor_max": 0.5769127021462369,
+        "motor_mean": 0.4839043361432083,
+        "motor_min": 0.35718208250081274,
+        "motor_range": 0.21973061964542417,
+        "net_displacement": 1.065466023956432,
+        "path": 1.1044526110188337,
+        "principal_axis": 0.8894346110213475,
+        "reaction_sum": [
+          -369.50407328657917,
+          105.9305059778064
+        ],
+        "slips": 18643,
+        "stuck_contacts": 39921,
+        "traction_anisotropy": 55684.72553241014,
+        "w_generated": 1169.2579043581009
+      },
+      "direct_spatial_leverage": false,
+      "motor_off": {
+        "a_limited_steps": 0,
+        "a_spent": 0.0,
+        "a_to_w_residual": 0.0,
+        "arm": "REFERENCE_MOTOR_OFF",
+        "displacement_path_ratio": 0.9646498092662403,
+        "force_dipole": [
+          [
+            -40307.66560193342,
+            9827.943111358813
+          ],
+          [
+            7415.997449163836,
+            -36089.10044574342
+          ]
+        ],
+        "horizon": 480,
+        "maximum_centroid_excursion": 1.065574656398491,
+        "motor_max": 0.0,
+        "motor_mean": 0.0,
+        "motor_min": 0.0,
+        "motor_range": 0.0,
+        "net_displacement": 1.065574656398491,
+        "path": 1.1046233007696533,
+        "principal_axis": 0.8911050824467707,
+        "reaction_sum": [
+          -367.97907536905785,
+          109.62925222390929
+        ],
+        "slips": 18664,
+        "stuck_contacts": 39900,
+        "traction_anisotropy": 55486.183516496734,
+        "w_generated": 1169.2288615412053
+      }
+    }
+  },
+  "traction_unchanged": true
+}

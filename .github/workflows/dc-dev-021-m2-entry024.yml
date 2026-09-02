@@ -1,0 +1,191 @@
+name: DC-DEV-021 M2 ENTRY-024 polarity effector semantic orientation
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-entry024-polarity-effector-semantic-orientation
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  entry024-orientation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify exact authority and bounded scope
+        run: |
+          set -euo pipefail
+          start=af3029f2ed9d3be3f31cdc6feb5eacfce6471b1e
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          test -z "$(git diff --name-only "$start" HEAD -- digital-protocell/crates/chemistry-core/src digital-protocell/crates/phase1-certifier/src digital-protocell/crates/regulatory-core/src digital-protocell/crates/evolution-harness/src)"
+          python3 - "$start" <<'PY'
+          import subprocess, sys
+          start = sys.argv[1]
+          allowed = {
+              ".github/workflows/dc-dev-021-m2-entry024.yml",
+              "digital-protocell/crates/regulatory-core/Cargo.toml",
+              "digital-protocell/examples/dcdev021_m2_entry024.rs",
+              ".agent/CURRENT.md", ".agent/DIRECTIVES.md", ".agent/OUTCOMES.md",
+              ".agent/LEARNINGS.md", ".agent/RECORD.md", ".agent/REPO_MAP.md",
+          }
+          prefix = "digital-protocell/experiments/generated/dcdev021m2entry024/"
+          changed = subprocess.check_output(["git", "diff", "--name-only", start, "HEAD"], text=True).splitlines()
+          unexpected = [p for p in changed if p not in allowed and not p.startswith(prefix)]
+          assert not unexpected, unexpected
+          print("ENTRY-024 authority and scope verified")
+          PY
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefName,baseRefName
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Build and execute ENTRY-024 assay
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build -p regulatory-core --example dcdev021_m2_entry024
+          cargo +1.89.0 run -p regulatory-core --release --example dcdev021_m2_entry024 -- experiments/generated/dcdev021m2entry024
+
+      - name: Validate ENTRY-024 orientation and preservation
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("experiments/generated/dcdev021m2entry024")
+          load = lambda n: json.loads((root / n).read_text())
+          required = [
+              "protocol.json", "authority.json", "external_discovery.json",
+              "daughter_state_parity.json", "interface_semantics.json",
+              "direct_complement_identity.json", "inherited_direct_controls.json",
+              "inherited_antagonistic_controls.json", "reference_direct_controls.json",
+              "reference_antagonistic_controls.json", "matched_mean_audit.json",
+              "spatial_leverage.json", "spectral_orientation.json",
+              "force_moment_diagnostics.json", "energetic_closure.json",
+              "rotation_equivariance.json", "index_invariance.json",
+              "forbidden_information_audit.json", "m1_preservation.json",
+              "downstream_preservation.json", "restart_boundary.json",
+              "repository_professionalism.json", "qualification.json",
+              "artifact_manifest.json",
+          ]
+          for name in required:
+              assert (root / name).is_file(), name
+          q = load("qualification.json")
+          allowed = {
+              "M2_ANTAGONISTIC_CONTRACTILITY_ORIENTATION_TRANSFER_QUALIFIED",
+              "M2_ANTAGONISTIC_ORIENTATION_RESCUES_REFERENCE_BUT_INHERITED_PATTERN_REMAINS_INSUFFICIENT",
+              "M2_PURE_EDGE_CONTRACTILITY_EFFECTOR_FAMILY_INSUFFICIENT",
+              "M2_EFFECTOR_ORIENTATION_DAUGHTER_DEPENDENT_UNRESOLVED",
+              "M2_ENTRY024_DIRECT_PARITY_INVALID",
+              "M2_ENTRY024_POLARITY_EFFECTOR_ORIENTATION_INVALID",
+          }
+          assert q["classification"] in allowed
+          assert q["scientific_runtime_changed"] is False
+          assert q["direct_parity"] == "PASS"
+          assert q["direct_interface"] == "u/(u+v)"
+          assert q["antagonistic_interface"] == "v/(u+v)"
+          assert q["new_parameter"] == "NONE"
+          assert q["a_to_w"] == "PASS"
+          assert q["rotation"] == "PASS"
+          assert q["index_invariance"] == "PASS"
+          assert q["entry005_023_preservation"] == "PASS"
+          assert q["m1_preservation"] == "PASS"
+          assert q["downstream_preservation"] == "PASS"
+          assert q["autonomous_polarity_initiation"] == "NOT_ESTABLISHED"
+          assert load("interface_semantics.json")["validity"] == {
+              "u_nonnegative": True, "u_plus_v_positive": True, "v_nonnegative": True
+          }
+          assert load("direct_complement_identity.json")["daughter_a"]["identity_pass"] is True
+          assert load("direct_complement_identity.json")["daughter_b"]["identity_pass"] is True
+          assert load("energetic_closure.json")["pass"] is True
+          assert load("rotation_equivariance.json")["pass"] is True
+          assert load("index_invariance.json")["pass"] is True
+          assert all(v is False for v in load("forbidden_information_audit.json").values())
+          m1 = load("m1_preservation.json")
+          assert m1["v2_d087"] == "8/8"
+          assert m1["v3_d087"] == "8/8"
+          assert m1["v4_d087"] == "7/8"
+          assert m1["v4_vector"] == [True, True, False, True, True, True, True, True]
+          print("ENTRY-024 orientation and preservation gates passed")
+          PY
+
+      - name: Verify historical classifications
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          expected = {
+            "dcdev021m2entry005":"M2_REFRACTORY_MOTOR_DECOUPLING_EXPLORATION_QUALIFIED",
+            "dcdev021m2entry006":"M2_UNGUIDED_RESOURCE_ACQUISITION_NOT_ESTABLISHED",
+            "dcdev021m2entry007":"M2_UPTAKE_DEGRADATION_CONCENTRATION_FEEDBACK_CONFIRMED",
+            "dcdev021m2entry008":"M2_LOCAL_CONTACT_REFRACTORY_EXPLOITATION_UPTAKE_INSUFFICIENT",
+            "dcdev021m2entry009":"M2_CONTACT_LOCAL_SUPPRESSION_FAMILY_MECHANICALLY_INSUFFICIENT",
+            "dcdev021m2entry010":"M2_POST_INGESTIVE_MATERIAL_SIGNAL_SUBSTRATE_QUALIFIED",
+            "dcdev021m2entry011":"M2_FROZEN_UPTAKE_METABOLISM_COMPOSITION_QUALIFIED",
+            "dcdev021m2entry012":"M2_SEPARATED_RESOURCE_ENCOUNTER_NOT_ESTABLISHED",
+            "dcdev021m2entry013":"M2_SEARCH_REACH_POLARITY_DECAY_OR_HOMOGENIZATION_CONFIRMED",
+            "dcdev021m2entry014":"M2_EXCITABLE_POLARITY_REFERENCE_TRANSFER_FEASIBLE",
+            "dcdev021m2entry015":"M2_EXCITABLE_POLARITY_ACTUATOR_INTERFACE_QUALIFIED",
+            "dcdev021m2entry016":"M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT",
+            "dcdev021m2entry017":"M2_POST_FISSION_ASYMMETRY_PRESENT_TOPOLOGY_MAPPING_UNRESOLVED",
+            "dcdev021m2entry018":"M2_NATIVE_MATERIAL_RING_POLARITY_TRANSFER_FEASIBLE",
+            "dcdev021m2entry019":"M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED",
+            "dcdev021m2entry020":"M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT",
+            "dcdev021m2entry021":"M2_CONSERVATIVE_POLARITY_FISSION_INHERITANCE_AND_AMPLIFICATION_QUALIFIED",
+            "dcdev021m2entry022":"M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT",
+            "dcdev021m2entry023":"M2_DAUGHTER_MECHANICAL_TRANSFER_ATTRIBUTION_UNRESOLVED",
+          }
+          for folder, value in expected.items():
+              actual = json.loads((Path("experiments/generated") / folder / "qualification.json").read_text())["classification"]
+              assert actual == value, (folder, actual)
+          print("historical classification preservation passed")
+          PY
+
+      - name: Preserve production, D-087, downstream, governance, and restart boundary
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          DCDEV020R9R3_CONTRACT=ConservativeV3 DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 cargo +1.89.0 run -p phase1-certifier --bin digital-protocell-phase1 --release -- --steps 1 --out "$RUNNER_TEMP/production.json"
+          python3 - "$RUNNER_TEMP/production.json" <<'PY'
+          import json, sys
+          result = json.load(open(sys.argv[1]))
+          assert result["mesh_contract"] == "MaturationCoupledV4"
+          assert result["reserve_enabled"] is False
+          PY
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test -p evolution-harness -- --nocapture
+          python3 ../scripts/validate_governance.py --mode ADOPTED
+
+      - name: Record and upload evidence digest
+        if: always()
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2entry024 -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2entry024.sha256"
+
+      - name: Upload ENTRY-024 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-m2-entry024-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2entry024/
+            ${{ runner.temp }}/dcdev021m2entry024.sha256
+            ${{ runner.temp }}/production.json
+          if-no-files-found: warn

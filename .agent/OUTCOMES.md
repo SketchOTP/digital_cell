@@ -25,6 +25,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
+## D-20260902-dcdev021-m2-entry024-polarity-effector-semantic-orientation - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY024-POLARITY-EFFECTOR-SEMANTIC-ORIENTATION-LOCAL`
+- Supersedes outcome: none
+- Closed: `2026-09-02T16:20:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Local ENTRY-024 replay from exact accepted ENTRY-023 head `af3029f2ed9d3be3f31cdc6feb5eacfce6471b1e` reproduces direct `u/(u+v)` results. The assay-only complementary `v/(u+v)` orientation has leverage on both inherited daughters, but only daughter B under the analytical reference fields; the bounded classification is `M2_EFFECTOR_ORIENTATION_DAUGHTER_DEPENDENT_UNRESOLVED`.
+- Changed areas: additive isolated ENTRY-024 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, polarity production, resource, actuator, traction, M1, restart, or PR #44 change.
+- Validation:
+  - Local release execution, direct parity, complement identity, A-to-W closure, rotation, index invariance, historical evidence, and governance scope - PASSED
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: exact-head Linux validation may identify workflow or preservation defects; the assay does not establish production polarity, autonomous polarity initiation, or autonomous resource acquisition.
+- Blockers: exact-head Linux validation and Architect review; do not start successor work.
+- Follow-up directive: none
+
 ## D-20260815-dcdev001a-architecture-selection - PARTIAL
 
 - Outcome ID: OUT-DCDEV001A-ARCHITECTURE-SELECTION

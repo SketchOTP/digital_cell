@@ -80,6 +80,9 @@
 - `digital-protocell/experiments/generated/dcdev021m2entry019/` — compact ENTRY-019 authority, physical-history, conservative-remesh, control, causal-attribution, conservation, preservation, and qualification evidence.
 - `.github/workflows/dc-dev-021-m2-entry019.yml` — exact-head Linux validation for ENTRY-019 authority, isolated assay, historical preservation, D-087, downstream tests, governance, and artifact upload.
 - `digital-protocell/examples/dcdev021_m2_entry020.rs` — isolated ENTRY-020 live autonomous-Polar composition with homogeneous initialization, conservative native-ring continuity, exact `u/(u+v)` interface, unchanged A-funded mechanics, matched controls, and no resource behavior.
+- `digital-protocell/examples/dcdev021_m2_entry024.rs` — isolated ENTRY-024 direct-versus-complementary effector-orientation audit through unchanged A-funded contractility/stick-slip; it does not change production polarity or resource behavior.
+- `digital-protocell/experiments/generated/dcdev021m2entry024/` — compact ENTRY-024 direct-parity, complement-identity, inherited/reference controls, spatial-leverage, closure, rotation/index, preservation, and qualification evidence.
+- `.github/workflows/dc-dev-021-m2-entry024.yml` — exact-head Linux validation for ENTRY-024 authority, orientation controls, historical preservation, production/D-087, downstream tests, governance, and artifact upload.
 - `digital-protocell/experiments/generated/dcdev021m2entry020/` — compact ENTRY-020 authority, live causal-order, initiation, locomotion, control, closure, preservation, and qualification evidence.
 - `.github/workflows/dc-dev-021-m2-entry020.yml` — exact-head Linux validation for ENTRY-020 authority, autonomous polarity/locomotion gates, historical preservation, D-087, downstream tests, governance, and artifact upload.
 - `digital-protocell/experiments/generated/dcdev001/` — DC-DEV-001A machine-readable decision artifacts.

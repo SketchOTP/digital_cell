@@ -415,3 +415,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The sealed ENTRY-023 observer audit reconstructs the daughter mechanical-transfer controls without changing scientific runtime. Analytical reference Polar, frozen inherited, and valid K1-only fields show daughter-A-only leverage; daughter B does not pass the preregistered spatial-versus-uniform-and-motor-off comparison. Residual-only decomposition is invalid because it is outside the admissible motor range. The bounded classification is `M2_DAUGHTER_MECHANICAL_TRANSFER_ATTRIBUTION_UNRESOLVED`; Architect acceptance remains pending.
 - Affected areas: final remote-validation provenance for additive ENTRY-023 assay/example, compact evidence, scoped workflow, and governance only; no scientific runtime, fission/remesh biology, polarity production, actuator, traction, resource, M1, restart, or PR #44 change.
 - Supersedes record: DEC-DCDEV021-ENTRY023-DAUGHTER-MECHANICAL-TRANSFER-ATTRIBUTION-R1
+
+## DEC-DCDEV021-ENTRY024-POLARITY-EFFECTOR-SEMANTIC-ORIENTATION-R1
+
+- Date: 2026-09-02
+- Record or decision ID: DEC-DCDEV021-ENTRY024-POLARITY-EFFECTOR-SEMANTIC-ORIENTATION-R1
+- Status: ACTIVE
+- Decision or event: ENTRY-024 is authorized from exact accepted ENTRY-023 head `af3029f2ed9d3be3f31cdc6feb5eacfce6471b1e` as an assay-only comparison of direct `u/(u+v)` and complementary `v/(u+v)` local effector orientation.
+- Rationale: ENTRY-023 left daughter mechanical transfer unresolved. ENTRY-024 tests whether semantic orientation alone changes leverage through unchanged contractility and stick-slip, with direct parity, matched-mean controls, no gain, no phase sweep, no live polarity evolution, and no production integration.
+- Affected areas: additive isolated ENTRY-024 assay/example, compact evidence, scoped workflow, and governance only; no accepted scientific runtime, resource, fission/remesh biology, actuator, traction, M1, restart, or PR #44 change.
+- Supersedes record: none

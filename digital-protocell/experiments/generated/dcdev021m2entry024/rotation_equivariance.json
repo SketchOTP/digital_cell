@@ -1,0 +1,85 @@
+{
+  "comparison": {
+    "a_leverage_original": true,
+    "a_leverage_rotated": true,
+    "a_n_equal": false,
+    "a_net_abs_diff": 2.7033930649622562e-14,
+    "b_leverage_original": true,
+    "b_leverage_rotated": true,
+    "b_n_equal": false,
+    "b_net_abs_diff": 3.7347902548390266e-13
+  },
+  "pass": true,
+  "rotated_inherited_antagonistic": {
+    "A": {
+      "a_limited_steps": 0,
+      "a_spent": 0.23579806873977446,
+      "a_to_w_residual": 4.547473508864641e-13,
+      "arm": "ROTATED_INHERITED_A_ANTAGONISTIC_SPATIAL",
+      "displacement_path_ratio": 0.818264913527269,
+      "force_dipole": [
+        [
+          -6579.790395552075,
+          868.0473695884123
+        ],
+        [
+          285.3390797144347,
+          -13233.988543862632
+        ]
+      ],
+      "horizon": 480,
+      "maximum_centroid_excursion": 0.2953608570347223,
+      "motor_max": 0.7640915131617796,
+      "motor_mean": 0.5529785134672489,
+      "motor_min": 0.5114852931528179,
+      "motor_range": 0.2526062200089617,
+      "net_displacement": 0.2953608570347223,
+      "path": 0.3609599435976296,
+      "principal_axis": 0.1276064590317416,
+      "reaction_sum": [
+        -429.3481757233755,
+        -98.03253745344468
+      ],
+      "slips": 12133,
+      "stuck_contacts": 24835,
+      "traction_anisotropy": 14807.667576453367,
+      "w_generated": 601.7774612082895
+    },
+    "B": {
+      "a_limited_steps": 0,
+      "a_spent": 0.35576776080277733,
+      "a_to_w_residual": 1.8189894035458565e-12,
+      "arm": "ROTATED_INHERITED_B_ANTAGONISTIC_SPATIAL",
+      "displacement_path_ratio": 0.9647227929249844,
+      "force_dipole": [
+        [
+          -40420.08893965335,
+          9791.721359387679
+        ],
+        [
+          7397.691850487616,
+          -36276.270278520205
+        ]
+      ],
+      "horizon": 480,
+      "maximum_centroid_excursion": 1.0653303046379863,
+      "motor_max": 0.6861258970013564,
+      "motor_mean": 0.5499717481763577,
+      "motor_min": 0.5236428194171795,
+      "motor_range": 0.1624830775841769,
+      "net_displacement": 1.0653303046379863,
+      "path": 1.1042864462733026,
+      "principal_axis": 0.8896592993628364,
+      "reaction_sum": [
+        365.874233604996,
+        -107.67238669492536
+      ],
+      "slips": 18647,
+      "stuck_contacts": 39917,
+      "traction_anisotropy": 55680.83177453795,
+      "w_generated": 1169.2612170861782
+    }
+  },
+  "spectra_and_trajectory_rotation": "PASS",
+  "world_axis": false
+}

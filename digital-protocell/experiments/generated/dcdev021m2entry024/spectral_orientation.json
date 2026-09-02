@@ -1,0 +1,50 @@
+{
+  "direct_and_antagonistic": {
+    "inherited_a": {
+      "antagonistic_mean": 0.5529785134672489,
+      "direct_mean": 0.4470214865327517,
+      "identity_pass": true,
+      "k1_antagonistic_magnitude": 0.00192105478777132,
+      "k1_antagonistic_phase": 0.06959526493155047,
+      "k1_direct_magnitude": 0.001921054787771321,
+      "k1_direct_phase": -3.0719973886582466,
+      "max_complement_identity_error": 0.0,
+      "phase_difference": 3.141592653589797
+    },
+    "inherited_b": {
+      "antagonistic_mean": 0.5499717481763575,
+      "direct_mean": 0.4500282518236427,
+      "identity_pass": true,
+      "k1_antagonistic_magnitude": 0.0008408663469274347,
+      "k1_antagonistic_phase": 0.04702928313052008,
+      "k1_direct_magnitude": 0.0008408663469274388,
+      "k1_direct_phase": -3.0945633704592783,
+      "max_complement_identity_error": 0.0,
+      "phase_difference": 3.1415926535897984
+    },
+    "reference_a": {
+      "antagonistic_mean": 0.5160943928351022,
+      "direct_mean": 0.48390560716489817,
+      "identity_pass": true,
+      "k1_antagonistic_magnitude": 0.05364811353721692,
+      "k1_antagonistic_phase": -1.3818982891623872e-7,
+      "k1_direct_magnitude": 0.05364811353721695,
+      "k1_direct_phase": 3.141592515399964,
+      "max_complement_identity_error": 0.0,
+      "phase_difference": 3.141592653589793
+    },
+    "reference_b": {
+      "antagonistic_mean": 0.5160956638567917,
+      "direct_mean": 0.4839043361432083,
+      "identity_pass": true,
+      "k1_antagonistic_magnitude": 0.05364906602664626,
+      "k1_antagonistic_phase": 7.552722109685344e-6,
+      "k1_direct_magnitude": 0.05364906602664625,
+      "k1_direct_phase": -3.1415851008676836,
+      "max_complement_identity_error": 0.0,
+      "phase_difference": 3.141592653589793
+    }
+  },
+  "identity": "antagonistic=1-direct",
+  "orientation_is_not_gain": true
+}

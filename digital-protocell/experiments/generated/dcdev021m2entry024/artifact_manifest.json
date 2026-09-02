@@ -1,0 +1,100 @@
+{
+  "classification": "M2_EFFECTOR_ORIENTATION_DAUGHTER_DEPENDENT_UNRESOLVED",
+  "dense_traces": "Atlas",
+  "directive": "DC-DEV-021-M2-ENTRY-024-POLARITY-EFFECTOR-SEMANTIC-ORIENTATION-FEASIBILITY-001",
+  "files": [
+    {
+      "file": "protocol.json",
+      "sha256": "stable-json:c9ff8f2958c999cf"
+    },
+    {
+      "file": "authority.json",
+      "sha256": "stable-json:1a8bf4778f24627d"
+    },
+    {
+      "file": "external_discovery.json",
+      "sha256": "stable-json:212904ba0d531d8a"
+    },
+    {
+      "file": "daughter_state_parity.json",
+      "sha256": "stable-json:02c3da4f07397f84"
+    },
+    {
+      "file": "interface_semantics.json",
+      "sha256": "stable-json:e339bfedd33f21a9"
+    },
+    {
+      "file": "direct_complement_identity.json",
+      "sha256": "stable-json:509f984cd6785016"
+    },
+    {
+      "file": "inherited_direct_controls.json",
+      "sha256": "stable-json:5353e0ee66dcddc0"
+    },
+    {
+      "file": "inherited_antagonistic_controls.json",
+      "sha256": "stable-json:afbd6c7af77c6d5a"
+    },
+    {
+      "file": "reference_direct_controls.json",
+      "sha256": "stable-json:2bd4ffa698f42f6b"
+    },
+    {
+      "file": "reference_antagonistic_controls.json",
+      "sha256": "stable-json:f9a1ad3b03997507"
+    },
+    {
+      "file": "matched_mean_audit.json",
+      "sha256": "stable-json:029620bd79e81e94"
+    },
+    {
+      "file": "spatial_leverage.json",
+      "sha256": "stable-json:13b2c757e82bfd8d"
+    },
+    {
+      "file": "spectral_orientation.json",
+      "sha256": "stable-json:956bd41d81601028"
+    },
+    {
+      "file": "force_moment_diagnostics.json",
+      "sha256": "stable-json:e3952632f80ad666"
+    },
+    {
+      "file": "energetic_closure.json",
+      "sha256": "stable-json:80c956836a4f0115"
+    },
+    {
+      "file": "rotation_equivariance.json",
+      "sha256": "stable-json:99e3deea303ad50e"
+    },
+    {
+      "file": "index_invariance.json",
+      "sha256": "stable-json:64248c8c9c2755fd"
+    },
+    {
+      "file": "forbidden_information_audit.json",
+      "sha256": "stable-json:e80f117b76877ef9"
+    },
+    {
+      "file": "m1_preservation.json",
+      "sha256": "stable-json:f9ba4e9df37eec6a"
+    },
+    {
+      "file": "downstream_preservation.json",
+      "sha256": "stable-json:34df32d48fc40af9"
+    },
+    {
+      "file": "restart_boundary.json",
+      "sha256": "stable-json:5e616a06829d19fc"
+    },
+    {
+      "file": "repository_professionalism.json",
+      "sha256": "stable-json:b8940ede394437c2"
+    },
+    {
+      "file": "qualification.json",
+      "sha256": "stable-json:67168438ff9c4223"
+    }
+  ],
+  "starting_head": "af3029f2ed9d3be3f31cdc6feb5eacfce6471b1e"
+}

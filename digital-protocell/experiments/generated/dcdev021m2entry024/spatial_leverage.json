@@ -1,0 +1,12 @@
+{
+  "classification": "M2_EFFECTOR_ORIENTATION_DAUGHTER_DEPENDENT_UNRESOLVED",
+  "criteria": "ENTRY-023 spatial net displacement > own same-mean control + FROZEN_ZERO_MOTION_TOLERANCE",
+  "inherited": {
+    "A": true,
+    "B": true
+  },
+  "reference": {
+    "A": false,
+    "B": true
+  }
+}

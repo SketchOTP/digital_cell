@@ -1,0 +1,14 @@
+{
+  "antagonistic_mapping": "v/(u+v)",
+  "counterfactual": true,
+  "direct_mapping": "u/(u+v)",
+  "directive": "DC-DEV-021-M2-ENTRY-024-POLARITY-EFFECTOR-SEMANTIC-ORIENTATION-FEASIBILITY-001",
+  "live_polarity_evolution": false,
+  "mechanical_horizon": 480,
+  "new_parameter": "NONE",
+  "next_execution_started": false,
+  "no_phase_sweep": true,
+  "observer_only": true,
+  "resource": false,
+  "starting_head": "af3029f2ed9d3be3f31cdc6feb5eacfce6471b1e"
+}

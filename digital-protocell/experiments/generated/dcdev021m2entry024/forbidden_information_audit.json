@@ -1,0 +1,14 @@
+{
+  "contact": false,
+  "daughter_selector": false,
+  "fitness": false,
+  "gradient": false,
+  "observer_success": false,
+  "phase_selector": false,
+  "preferred_direction": false,
+  "resource": false,
+  "resource_location": false,
+  "reward": false,
+  "survival": false,
+  "target": false
+}
