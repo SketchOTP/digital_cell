@@ -455,3 +455,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: ENTRY-023 left daughter mechanical transfer unresolved. ENTRY-024 tests whether semantic orientation alone changes leverage through unchanged contractility and stick-slip, with direct parity, matched-mean controls, no gain, no phase sweep, no live polarity evolution, and no production integration.
 - Affected areas: additive isolated ENTRY-024 assay/example, compact evidence, scoped workflow, and governance only; no accepted scientific runtime, resource, fission/remesh biology, actuator, traction, M1, restart, or PR #44 change.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY025-LIVE-ANTAGONISTIC-INHERITED-LOCOMOTION-R3
+
+- Date: 2026-09-02
+- Record or decision ID: DEC-DCDEV021-ENTRY025-LIVE-ANTAGONISTIC-INHERITED-LOCOMOTION-R3
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33688853406` passed on result head `c506837301c5cb4ed98b519b9cfc79f1033597fa`; independent artifact ZIP digest `sha256:3751de543f4355c4dff858f6ca5855bac592260aa2b0a94b3ed219098ee193c2`.
+- Rationale: The final remote run confirms the bounded live anti-fraction comparison is physically valid, preserves direct-live parity and all required closures/preservation gates, but neither daughter clears the preregistered spatial-leverage criterion. The final classification is `M2_LIVE_ANTAGONISTIC_INHERITED_POLARITY_COMPOSITION_INSUFFICIENT`; no successor work is authorized.
+- Affected areas: final remote-validation provenance for additive ENTRY-025 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, fission/remesh biology, polarity production, actuator, traction, resource, M1, restart, or PR #44 change.
+- Supersedes record: DEC-DCDEV021-ENTRY025-LIVE-ANTAGONISTIC-INHERITED-LOCOMOTION-R2

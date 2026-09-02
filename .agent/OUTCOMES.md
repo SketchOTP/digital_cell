@@ -1201,3 +1201,20 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: ENTRY-023 does not establish autonomous embodied locomotion or autonomous resource acquisition; the unresolved mixed daughter attribution remains bounded to this audit.
 - Blockers: Architect review; do not start successor work.
 - Follow-up directive: none
+
+## D-20260902-dcdev021-m2-entry025-live-antagonistic-inherited-locomotion - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-ENTRY025-LIVE-ANTAGONISTIC-INHERITED-LOCOMOTION-R3`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY025-LIVE-ANTAGONISTIC-INHERITED-LOCOMOTION-R2`
+- Closed: 2026-09-02T18:30:00-04:00
+- Acceptance: `MET`
+- Summary: Exact-head Linux workflow `33688853406` passed on result head `c506837301c5cb4ed98b519b9cfc79f1033597fa`; the independently downloaded artifact ZIP digest is `sha256:3751de543f4355c4dff858f6ca5855bac592260aa2b0a94b3ed219098ee193c2`. The sealed ENTRY-024 artifact remains unchanged and the ENTRY-024 metadata correction is represented only by the new ENTRY-025 correction evidence. Live complementary inherited-polarity arms remain valid and active but do not clear the preregistered spatial-leverage comparison against same-mean and motor-off controls. The final bounded classification is `M2_LIVE_ANTAGONISTIC_INHERITED_POLARITY_COMPOSITION_INSUFFICIENT`.
+- Changed areas: additive ENTRY-025 assay/example, compact evidence, scoped workflow, append-only governance, and the ENTRY-024 metadata correction only; no accepted scientific runtime, fission, remesh, polarity production, actuator, traction, resource, M1, restart, or PR #44 change.
+- Validation:
+  - Exact authority, ENTRY-024 correction, fission replay, strict eligibility, live causal order, direct-live parity, full material and energetic closure, rotation/index invariance, historical classifications, production/D-087, downstream, governance, and local release execution - PASSED
+  - Exact-head Linux workflow `33688853406` - PASSED
+  - Independent artifact ZIP digest - PASSED
+  - Architect review - PENDING
+- Remaining risks: ENTRY-025 does not establish autonomous embodied locomotion or autonomous resource acquisition; no successor work is authorized.
+- Blockers: Architect review only.
+- Follow-up directive: none

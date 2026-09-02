@@ -437,3 +437,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-024 polarity-effector semantic-orientation feasibility audit.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY025-003
+
+- Learning ID: L-DCDEV021-ENTRY025-003
+- Date: 2026-09-02
+- Fact or lesson: Exact-head Linux workflow `33688853406` passed on `c506837301c5cb4ed98b519b9cfc79f1033597fa`; the independently downloaded artifact ZIP hashes to `sha256:3751de543f4355c4dff858f6ca5855bac592260aa2b0a94b3ed219098ee193c2`. The bounded classification remains `M2_LIVE_ANTAGONISTIC_INHERITED_POLARITY_COMPOSITION_INSUFFICIENT`: both live complementary inherited-polarity daughter arms are active and physically valid, but neither beats its same-mean and motor-off controls under the preregistered leverage comparison. The accepted ENTRY-024 sealed artifact remains unchanged; its corrected metadata is represented only by append-only ENTRY-025 evidence.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry025.rs`, `digital-protocell/experiments/generated/dcdev021m2entry025/`, `.github/workflows/dc-dev-021-m2-entry025.yml`, and GitHub Actions workflow `33688853406`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 ENTRY-025 live antagonistic inherited-polarity locomotion feasibility audit.
+- Supersedes learning: L-DCDEV021-ENTRY025-002
