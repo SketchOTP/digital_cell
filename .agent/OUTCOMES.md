@@ -25,6 +25,39 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
+## D-20260902-dcdev021-m2-entry025-live-antagonistic-inherited-locomotion - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY025-LIVE-ANTAGONISTIC-INHERITED-LOCOMOTION-LOCAL`
+- Supersedes outcome: none
+- Closed: 2026-09-02T18:30:00-04:00
+- Acceptance: `PARTIAL`
+- Summary: Exact ENTRY-024 head `f1e13c9d001e336e1f41ef63441950c0ff893c42` was reproduced through the accepted physical fission boundary and strict zero-pool eligibility. Live post-fission antagonistic inherited-polarity arms completed without scientific runtime changes. Neither daughter A nor daughter B exceeded its same-mean control or motor-off control under the preregistered spatial-leverage comparison; the bounded local classification is `M2_LIVE_ANTAGONISTIC_INHERITED_POLARITY_COMPOSITION_INSUFFICIENT`.
+- Changed areas: additive ENTRY-025 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, fission, remesh, polarity production, actuator, traction, resource, M1, restart, or PR #44 change.
+- Validation:
+  - Local release execution, direct-live parity, strict eligibility, full material closure, A-to-W closure, rotation/index invariance, historical preservation, production/D-087, downstream, and governance - PASSED
+  - Exact-head Linux workflow - PENDING
+  - Independent artifact ZIP digest - PENDING
+  - Architect review - PENDING
+- Remaining risks: remote validation may identify workflow, governance, or preservation defects; ENTRY-025 does not establish autonomous embodied locomotion or autonomous resource acquisition.
+- Blockers: exact-head Linux validation and Architect review; do not start successor work.
+- Follow-up directive: none
+
+## D-20260902-dcdev021-m2-entry025-live-antagonistic-inherited-locomotion - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-ENTRY025-LIVE-ANTAGONISTIC-INHERITED-LOCOMOTION-R2`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY025-LIVE-ANTAGONISTIC-INHERITED-LOCOMOTION-LOCAL`
+- Closed: 2026-09-02T18:30:00-04:00
+- Acceptance: `MET`
+- Summary: Exact-head Linux validation passed for ENTRY-025 on the final result head recorded below. The accepted ENTRY-024 metadata correction is append-only and does not rewrite the sealed ENTRY-024 artifact: `autonomous_polarity_initiation` is corrected to `QUALIFIED` in the new correction record. Live anti-fraction arms remain physically valid and active after strict eligibility, but neither daughter clears the preregistered spatial-leverage comparison against same-mean and motor-off controls. The bounded classification remains `M2_LIVE_ANTAGONISTIC_INHERITED_POLARITY_COMPOSITION_INSUFFICIENT`.
+- Changed areas: additive ENTRY-025 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, fission, remesh, polarity production, actuator, traction, resource, M1, restart, or PR #44 change.
+- Validation:
+  - Exact authority, ENTRY-024 correction, fission replay, zero-pool eligibility, live causal order, direct-live parity, closure, rotation/index invariance, historical classifications, production/D-087, downstream, governance, and local release execution - PASSED
+  - Exact-head Linux workflow and independent artifact digest - PASSED
+  - Architect review - PENDING
+- Remaining risks: ENTRY-025 does not establish autonomous embodied locomotion, autonomous polarity initiation beyond the accepted inherited substrate, or autonomous resource acquisition; do not start successor work.
+- Blockers: Architect review only.
+- Follow-up directive: none
+
 ## D-20260902-dcdev021-m2-entry024-polarity-effector-semantic-orientation - COMPLETE
 
 - Outcome ID: `OUT-DCDEV021-ENTRY024-POLARITY-EFFECTOR-SEMANTIC-ORIENTATION-R2`

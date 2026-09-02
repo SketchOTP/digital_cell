@@ -1,0 +1,5 @@
+{
+  "classification": "DESCRIPTIVE_ONLY",
+  "comparison": "spatial versus same-mean and motor-off live polarity checkpoints",
+  "mesh_to_polarity": "only conservative remesh geometry; no explicit mechanochemical term"
+}

@@ -1,0 +1,19 @@
+{
+  "daughter_sites": [
+    78,
+    122
+  ],
+  "entry024_artifact": "sha256:1e0ef5a65507b0252909e03d64853caa28627e9e86c25be4fa0d2669dbf04b49",
+  "entry024_ci": "33681572240",
+  "entry024_classification": "M2_EFFECTOR_ORIENTATION_DAUGHTER_DEPENDENT_UNRESOLVED",
+  "fission_step": 2326,
+  "mother_sites": 198,
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "state": "OPEN"
+  },
+  "scientific_runtime_source_changed": false,
+  "starting_head": "f1e13c9d001e336e1f41ef63441950c0ff893c42"
+}

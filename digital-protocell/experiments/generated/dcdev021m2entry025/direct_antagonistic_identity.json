@@ -1,0 +1,7 @@
+{
+  "antagonistic": "v/(u+v)",
+  "direct": "u/(u+v)",
+  "literal_v_is_rhoa_claim": false,
+  "max_identity_error": 2.220446049250313e-16,
+  "pass": true
+}

@@ -1,0 +1,375 @@
+{
+  "a_limited_steps": 0,
+  "a_spent": 85.50786544713135,
+  "a_to_w_residual": 3.637978807091713e-12,
+  "arm": "DAUGHTER_B_DIRECT_SPATIAL",
+  "checkpoints": [
+    {
+      "centroid": [
+        49.50156024888856,
+        40.59523063019625
+      ],
+      "displacement": [
+        -0.0012194136575800485,
+        -0.006901203744078543
+      ],
+      "motor": {
+        "arithmetic_mean": 0.44930465398613784,
+        "maximum": 0.4763571805828205,
+        "minimum": 0.3138741029986436,
+        "range": 0.1624830775841769,
+        "weighted_mean": 0.4507651358562333
+      },
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 0.008207100091957695,
+        "max_nonconstant_f": 0.03851726020189644,
+        "max_nonconstant_u": 0.008207100091957695,
+        "max_nonconstant_v": 0.009395005141133853,
+        "motor_range": 0.10217176888489415,
+        "sites": 123,
+        "step": 1,
+        "weighted_f": 16.537135299863145,
+        "weighted_u": 3.396027409800734,
+        "weighted_v": 4.288325489108571
+      },
+      "slips_this_step": 70,
+      "step": 1,
+      "stuck_this_step": 53
+    },
+    {
+      "centroid": [
+        49.489184121766044,
+        40.52224454272343
+      ],
+      "displacement": [
+        -0.0009257271217677498,
+        -0.00746001184494105
+      ],
+      "motor": {
+        "arithmetic_mean": 0.3792002024446165,
+        "maximum": 0.3853590587834038,
+        "minimum": 0.3515824345044348,
+        "range": 0.03377662427896899,
+        "weighted_mean": 0.3792646913119556
+      },
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 0.007773424078454347,
+        "max_nonconstant_f": 0.03765883887336395,
+        "max_nonconstant_u": 0.007773424078454347,
+        "max_nonconstant_v": 0.008104473610545187,
+        "motor_range": 0.03149583354231622,
+        "sites": 122,
+        "step": 10,
+        "weighted_f": 16.57031756698593,
+        "weighted_u": 2.8615522447124717,
+        "weighted_v": 4.822800654196806
+      },
+      "slips_this_step": 72,
+      "step": 10,
+      "stuck_this_step": 50
+    },
+    {
+      "centroid": [
+        49.47982002651159,
+        40.41484887242586
+      ],
+      "displacement": [
+        -0.00044677562929251735,
+        -0.0068312904590897006
+      ],
+      "motor": {
+        "arithmetic_mean": 0.28711360220104565,
+        "maximum": 0.2903235365968339,
+        "minimum": 0.2718374042978445,
+        "range": 0.018486132298989433,
+        "weighted_mean": 0.2870135842279484
+      },
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 0.006658822001973196,
+        "max_nonconstant_f": 0.03596202467653177,
+        "max_nonconstant_u": 0.006658822001973196,
+        "max_nonconstant_v": 0.006786414025466091,
+        "motor_range": 0.017977510711782385,
+        "sites": 122,
+        "step": 25,
+        "weighted_f": 16.225433491874533,
+        "weighted_u": 2.165513719242161,
+        "weighted_v": 5.5188391796671
+      },
+      "slips_this_step": 63,
+      "step": 25,
+      "stuck_this_step": 59
+    },
+    {
+      "centroid": [
+        49.4803048736738,
+        40.26262264632579
+      ],
+      "displacement": [
+        0.00032474717792041474,
+        -0.005463235920785792
+      ],
+      "motor": {
+        "arithmetic_mean": 0.17948825779890026,
+        "maximum": 0.18199419611170076,
+        "minimum": 0.17126696593375196,
+        "range": 0.010727230177948799,
+        "weighted_mean": 0.17931666514857017
+      },
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 0.004385807872620405,
+        "max_nonconstant_f": 0.03201442694296708,
+        "max_nonconstant_u": 0.004385807872620405,
+        "max_nonconstant_v": 0.005694538886567695,
+        "motor_range": 0.0105227863506073,
+        "sites": 122,
+        "step": 50,
+        "weighted_f": 15.005062707750827,
+        "weighted_u": 1.3525457143707078,
+        "weighted_v": 6.331807184538511
+      },
+      "slips_this_step": 46,
+      "step": 50,
+      "stuck_this_step": 76
+    },
+    {
+      "centroid": [
+        49.500790006383916,
+        40.0717422936371
+      ],
+      "displacement": [
+        0.0005648321866615902,
+        -0.0025808142700611825
+      ],
+      "motor": {
+        "arithmetic_mean": 0.07872999724607237,
+        "maximum": 0.07983551456429655,
+        "minimum": 0.07665359050204099,
+        "range": 0.0031819240622555645,
+        "weighted_mean": 0.07865557809113598
+      },
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 0.0011683495699402132,
+        "max_nonconstant_f": 0.02162754328152239,
+        "max_nonconstant_u": 0.0011683495699402132,
+        "max_nonconstant_v": 0.0038364229614033444,
+        "motor_range": 0.003097342878992354,
+        "sites": 122,
+        "step": 100,
+        "weighted_f": 11.982245861056024,
+        "weighted_u": 0.5970122690911291,
+        "weighted_v": 7.087340629818
+      },
+      "slips_this_step": 17,
+      "step": 100,
+      "stuck_this_step": 105
+    },
+    {
+      "centroid": [
+        49.55718227235775,
+        39.91483248999373
+      ],
+      "displacement": [
+        0.00002449263358528242,
+        -0.0005260463646692415
+      ],
+      "motor": {
+        "arithmetic_mean": 0.050360876490095616,
+        "maximum": 0.05075743865567018,
+        "minimum": 0.050274024284409705,
+        "range": 0.0004834143712604752,
+        "weighted_mean": 0.050361204082986936
+      },
+      "polarity": {
+        "dominant_mode": 2,
+        "dominant_mode_amplitude": 0.00007067003935937093,
+        "max_nonconstant_f": 0.0038010216367430263,
+        "max_nonconstant_u": 0.00007067003935937093,
+        "max_nonconstant_v": 0.00032746118749880736,
+        "motor_range": 0.00047885581534600624,
+        "sites": 122,
+        "step": 250,
+        "weighted_f": 7.442225722588186,
+        "weighted_u": 0.3872040552127162,
+        "weighted_v": 7.297148843696106
+      },
+      "slips_this_step": 30,
+      "step": 250,
+      "stuck_this_step": 92
+    },
+    {
+      "centroid": [
+        49.39855777402249,
+        39.542311937199536
+      ],
+      "displacement": [
+        -0.000628052551498115,
+        -0.0014265911515778384
+      ],
+      "motor": {
+        "arithmetic_mean": 0.05424405479617227,
+        "maximum": 0.05426885322198144,
+        "minimum": 0.05423515350174941,
+        "range": 0.00003369972023203188,
+        "weighted_mean": 0.054244479643699516
+      },
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 8.304883864140115e-6,
+        "max_nonconstant_f": 0.00011518066522704678,
+        "max_nonconstant_u": 8.304883864140115e-6,
+        "max_nonconstant_v": 3.9181050902496895e-6,
+        "motor_range": 0.000033287152036307055,
+        "sites": 122,
+        "step": 500,
+        "weighted_f": 6.636532346523404,
+        "weighted_u": 0.4168592024906691,
+        "weighted_v": 7.2674936964177
+      },
+      "slips_this_step": 46,
+      "step": 500,
+      "stuck_this_step": 76
+    },
+    {
+      "centroid": [
+        49.09847901859812,
+        39.14593081165516
+      ],
+      "displacement": [
+        -0.0009757151262306252,
+        -0.0007405076232984698
+      ],
+      "motor": {
+        "arithmetic_mean": 0.054484099530188394,
+        "maximum": 0.05448411975735648,
+        "minimum": 0.054484095946817884,
+        "range": 2.3810538596347186e-8,
+        "weighted_mean": 0.05448409987709555
+      },
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 4.941449981315169e-9,
+        "max_nonconstant_f": 9.78532497629142e-8,
+        "max_nonconstant_u": 4.941449981315169e-9,
+        "max_nonconstant_v": 1.6225755175545067e-8,
+        "motor_range": 2.341543163530968e-8,
+        "sites": 122,
+        "step": 1000,
+        "weighted_f": 6.617513417393048,
+        "weighted_u": 0.41867505897801804,
+        "weighted_v": 7.265677839929272
+      },
+      "slips_this_step": 44,
+      "step": 1000,
+      "stuck_this_step": 78
+    },
+    {
+      "centroid": [
+        48.54092530115535,
+        38.95655374953129
+      ],
+      "displacement": [
+        -0.0003298476556281571,
+        0.00005476690999728362
+      ],
+      "motor": {
+        "arithmetic_mean": 0.05448414916189301,
+        "maximum": 0.05448414916192321,
+        "minimum": 0.05448414916182891,
+        "range": 9.429956815409923e-14,
+        "weighted_mean": 0.054484149161889296
+      },
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 5.2423281521967124e-14,
+        "max_nonconstant_f": 8.286242121160558e-13,
+        "max_nonconstant_u": 5.2423281521967124e-14,
+        "max_nonconstant_v": 4.4502278667049733e-13,
+        "motor_range": 9.448691828950473e-14,
+        "sites": 122,
+        "step": 2000,
+        "weighted_f": 6.617514878047795,
+        "weighted_u": 0.4186754295551693,
+        "weighted_v": 7.265677469324754
+      },
+      "slips_this_step": 42,
+      "step": 2000,
+      "stuck_this_step": 80
+    },
+    {
+      "centroid": [
+        48.121236783203145,
+        39.14830695441033
+      ],
+      "displacement": [
+        -0.00008748540422232054,
+        0.0005617190057165544
+      ],
+      "motor": {
+        "arithmetic_mean": 0.05448414916187506,
+        "maximum": 0.05448414916191903,
+        "minimum": 0.054484149161813634,
+        "range": 1.0539485950644689e-13,
+        "weighted_mean": 0.054484149161872476
+      },
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 4.7322700143386546e-14,
+        "max_nonconstant_f": 8.032449936080087e-13,
+        "max_nonconstant_u": 4.7322700143386546e-14,
+        "max_nonconstant_v": 3.449140121651288e-13,
+        "motor_range": 1.0545730955158206e-13,
+        "sites": 122,
+        "step": 2999,
+        "weighted_f": 6.6175148780477775,
+        "weighted_u": 0.4186754295550037,
+        "weighted_v": 7.265677469324241
+      },
+      "slips_this_step": 55,
+      "step": 2999,
+      "stuck_this_step": 67
+    }
+  ],
+  "displacement_path_ratio": 0.7215164616603964,
+  "first_divergence_step": 1,
+  "maximum_centroid_excursion": 2.0303469737034545,
+  "maximum_material_envelope_excursion": 0.2225515528778388,
+  "net_displacement": 2.0055591509112216,
+  "path": 2.7796443428274804,
+  "slips": 125194,
+  "steps": 2999,
+  "stuck_contacts": 240688,
+  "terminal": {
+    "mesh": {
+      "a": 0.17081560199443238,
+      "area": 1331.386986761967,
+      "c": 1.7027865156644761,
+      "centroid": [
+        48.121236783203145,
+        39.14830695441033
+      ],
+      "f": 0.05340954824487655,
+      "n": 0.05340954824487655,
+      "w": 6.922601283766449
+    },
+    "polarity": {
+      "dominant_mode": 1,
+      "dominant_mode_amplitude": 4.7322700143386546e-14,
+      "max_nonconstant_f": 8.032449936080087e-13,
+      "max_nonconstant_u": 4.7322700143386546e-14,
+      "max_nonconstant_v": 3.449140121651288e-13,
+      "motor_range": 1.0545730955158206e-13,
+      "sites": 122,
+      "step": 2999,
+      "weighted_f": 6.6175148780477775,
+      "weighted_u": 0.4186754295550037,
+      "weighted_v": 7.265677469324241
+    }
+  },
+  "w_generated": 3538.3232521625405
+}

@@ -85,6 +85,9 @@
 - `.github/workflows/dc-dev-021-m2-entry024.yml` — exact-head Linux validation for ENTRY-024 authority, orientation controls, historical preservation, production/D-087, downstream tests, governance, and artifact upload.
 - `digital-protocell/experiments/generated/dcdev021m2entry020/` — compact ENTRY-020 authority, live causal-order, initiation, locomotion, control, closure, preservation, and qualification evidence.
 - `.github/workflows/dc-dev-021-m2-entry020.yml` — exact-head Linux validation for ENTRY-020 authority, autonomous polarity/locomotion gates, historical preservation, D-087, downstream tests, governance, and artifact upload.
+- `digital-protocell/examples/dcdev021_m2_entry025.rs` — isolated ENTRY-025 live post-fission antagonistic inherited-polarity assay with strict eligibility, direct-live parity, unchanged mechanics/remesh, matched mean/off controls, closure, and preservation evidence.
+- `digital-protocell/experiments/generated/dcdev021m2entry025/` — compact ENTRY-025 authority-correction, fission, live causal-order, daughter robustness, closure, rotation/index, preservation, and qualification evidence.
+- `.github/workflows/dc-dev-021-m2-entry025.yml` — exact-head Linux validation for ENTRY-025 authority, live controls, preservation, D-087, downstream tests, governance, and artifact upload.
 - `digital-protocell/experiments/generated/dcdev001/` — DC-DEV-001A machine-readable decision artifacts.
 - `digital-protocell/experiments/generated/dcdev006/` — DC-DEV-006 local spatial-contact evidence artifacts.
 - `digital-protocell/experiments/generated/dcdev009/` — DC-DEV-009 force, displacement, coupling, and audit evidence artifacts.

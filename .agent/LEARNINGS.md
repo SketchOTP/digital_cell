@@ -18,6 +18,26 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-021 ENTRY-015 polarity actuator interface feasibility audit
 - Supersedes learning: none
 
+## L-DCDEV021-ENTRY025-001
+
+- Learning ID: L-DCDEV021-ENTRY025-001
+- Date: 2026-09-02
+- Fact or lesson: In the exact live post-fission causal order, complementary inherited polarity `v/(u+v)` remains a lawful local assay interface after strict zero-pool eligibility and live remeshing, but it does not provide sufficient mechanical leverage. Daughter A anti-spatial net displacement was `1.023420421441102` versus same-mean `1.0222499594520977` and motor-off `1.0918338252981938`; daughter B anti-spatial was `1.4378640362646378` versus same-mean `1.4369654374497833` and motor-off `2.059222890356167`. The bounded classification is `M2_LIVE_ANTAGONISTIC_INHERITED_POLARITY_COMPOSITION_INSUFFICIENT`; no scientific runtime source changed.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry025.rs`, `digital-protocell/experiments/generated/dcdev021m2entry025/`, and `.github/workflows/dc-dev-021-m2-entry025.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-025 live antagonistic inherited-polarity locomotion feasibility audit.
+- Supersedes learning: none
+
+## L-DCDEV021-ENTRY025-002
+
+- Learning ID: L-DCDEV021-ENTRY025-002
+- Date: 2026-09-02
+- Fact or lesson: Remote exact-head validation and the independent artifact digest are recorded after final verification. The accepted ENTRY-024 sealed artifact remains unchanged; its corrected `autonomous_polarity_initiation` value is represented only by the append-only ENTRY-025 correction evidence.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry025.rs`, `digital-protocell/experiments/generated/dcdev021m2entry025/`, `.github/workflows/dc-dev-021-m2-entry025.yml`, and the final GitHub Actions run.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 ENTRY-025 live antagonistic inherited-polarity locomotion feasibility audit.
+- Supersedes learning: L-DCDEV021-ENTRY025-001
+
 ## L-DCDEV021-ENTRY024-002
 
 - Learning ID: L-DCDEV021-ENTRY024-002

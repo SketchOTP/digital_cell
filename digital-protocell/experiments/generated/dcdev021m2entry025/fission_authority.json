@@ -1,0 +1,1245 @@
+{
+  "partition": {
+    "daughter_a": [
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 0,
+        "parent_source_edge": 44,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 1,
+        "parent_source_edge": 45,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 2,
+        "parent_source_edge": 46,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 3,
+        "parent_source_edge": 47,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 4,
+        "parent_source_edge": 48,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 5,
+        "parent_source_edge": 49,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 6,
+        "parent_source_edge": 50,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 7,
+        "parent_source_edge": 51,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 8,
+        "parent_source_edge": 52,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 9,
+        "parent_source_edge": 53,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 10,
+        "parent_source_edge": 54,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 11,
+        "parent_source_edge": 55,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 12,
+        "parent_source_edge": 56,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 13,
+        "parent_source_edge": 57,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 14,
+        "parent_source_edge": 58,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 15,
+        "parent_source_edge": 59,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 16,
+        "parent_source_edge": 60,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 17,
+        "parent_source_edge": 61,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 18,
+        "parent_source_edge": 62,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 19,
+        "parent_source_edge": 63,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 20,
+        "parent_source_edge": 64,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 21,
+        "parent_source_edge": 65,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 22,
+        "parent_source_edge": 66,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 23,
+        "parent_source_edge": 67,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 24,
+        "parent_source_edge": 68,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 25,
+        "parent_source_edge": 69,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 26,
+        "parent_source_edge": 70,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 27,
+        "parent_source_edge": 71,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 28,
+        "parent_source_edge": 72,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 29,
+        "parent_source_edge": 73,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 30,
+        "parent_source_edge": 74,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 31,
+        "parent_source_edge": 75,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 32,
+        "parent_source_edge": 76,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 33,
+        "parent_source_edge": 77,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 34,
+        "parent_source_edge": 78,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 35,
+        "parent_source_edge": 79,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 36,
+        "parent_source_edge": 80,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 37,
+        "parent_source_edge": 81,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 38,
+        "parent_source_edge": 82,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 39,
+        "parent_source_edge": 83,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 40,
+        "parent_source_edge": 84,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 41,
+        "parent_source_edge": 85,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 42,
+        "parent_source_edge": 86,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 43,
+        "parent_source_edge": 87,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 44,
+        "parent_source_edge": 88,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 45,
+        "parent_source_edge": 89,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 46,
+        "parent_source_edge": 90,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 47,
+        "parent_source_edge": 91,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 48,
+        "parent_source_edge": 92,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 49,
+        "parent_source_edge": 93,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 50,
+        "parent_source_edge": 94,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 51,
+        "parent_source_edge": 95,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 52,
+        "parent_source_edge": 96,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 53,
+        "parent_source_edge": 97,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 54,
+        "parent_source_edge": 98,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 55,
+        "parent_source_edge": 99,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 56,
+        "parent_source_edge": 100,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 57,
+        "parent_source_edge": 101,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 58,
+        "parent_source_edge": 102,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 59,
+        "parent_source_edge": 103,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 60,
+        "parent_source_edge": 104,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 61,
+        "parent_source_edge": 105,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 62,
+        "parent_source_edge": 106,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 63,
+        "parent_source_edge": 107,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 64,
+        "parent_source_edge": 108,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 65,
+        "parent_source_edge": 109,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 66,
+        "parent_source_edge": 110,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 67,
+        "parent_source_edge": 111,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 68,
+        "parent_source_edge": 112,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 69,
+        "parent_source_edge": 113,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 70,
+        "parent_source_edge": 114,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 71,
+        "parent_source_edge": 115,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 72,
+        "parent_source_edge": 116,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 73,
+        "parent_source_edge": 117,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 74,
+        "parent_source_edge": 118,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 75,
+        "parent_source_edge": 119,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 76,
+        "parent_source_edge": 120,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "NEW_FISSION_CLOSING_MATERIAL",
+        "daughter_edge": 77,
+        "inherited_amount": "ZERO_NO_PARENT_PREDECESSOR",
+        "parent_source": null
+      }
+    ],
+    "daughter_b": [
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 0,
+        "parent_source_edge": 121,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 1,
+        "parent_source_edge": 122,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 2,
+        "parent_source_edge": 123,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 3,
+        "parent_source_edge": 124,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 4,
+        "parent_source_edge": 125,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 5,
+        "parent_source_edge": 126,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 6,
+        "parent_source_edge": 127,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 7,
+        "parent_source_edge": 128,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 8,
+        "parent_source_edge": 129,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 9,
+        "parent_source_edge": 130,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 10,
+        "parent_source_edge": 131,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 11,
+        "parent_source_edge": 132,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 12,
+        "parent_source_edge": 133,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 13,
+        "parent_source_edge": 134,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 14,
+        "parent_source_edge": 135,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 15,
+        "parent_source_edge": 136,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 16,
+        "parent_source_edge": 137,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 17,
+        "parent_source_edge": 138,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 18,
+        "parent_source_edge": 139,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 19,
+        "parent_source_edge": 140,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 20,
+        "parent_source_edge": 141,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 21,
+        "parent_source_edge": 142,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 22,
+        "parent_source_edge": 143,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 23,
+        "parent_source_edge": 144,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 24,
+        "parent_source_edge": 145,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 25,
+        "parent_source_edge": 146,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 26,
+        "parent_source_edge": 147,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 27,
+        "parent_source_edge": 148,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 28,
+        "parent_source_edge": 149,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 29,
+        "parent_source_edge": 150,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 30,
+        "parent_source_edge": 151,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 31,
+        "parent_source_edge": 152,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 32,
+        "parent_source_edge": 153,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 33,
+        "parent_source_edge": 154,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 34,
+        "parent_source_edge": 155,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 35,
+        "parent_source_edge": 156,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 36,
+        "parent_source_edge": 157,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 37,
+        "parent_source_edge": 158,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 38,
+        "parent_source_edge": 159,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 39,
+        "parent_source_edge": 160,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 40,
+        "parent_source_edge": 161,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 41,
+        "parent_source_edge": 162,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 42,
+        "parent_source_edge": 163,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 43,
+        "parent_source_edge": 164,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 44,
+        "parent_source_edge": 165,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 45,
+        "parent_source_edge": 166,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 46,
+        "parent_source_edge": 167,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 47,
+        "parent_source_edge": 168,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 48,
+        "parent_source_edge": 169,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 49,
+        "parent_source_edge": 170,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 50,
+        "parent_source_edge": 171,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 51,
+        "parent_source_edge": 172,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 52,
+        "parent_source_edge": 173,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 53,
+        "parent_source_edge": 174,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 54,
+        "parent_source_edge": 175,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 55,
+        "parent_source_edge": 176,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 56,
+        "parent_source_edge": 177,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 57,
+        "parent_source_edge": 178,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 58,
+        "parent_source_edge": 179,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 59,
+        "parent_source_edge": 180,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 60,
+        "parent_source_edge": 181,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 61,
+        "parent_source_edge": 182,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 62,
+        "parent_source_edge": 183,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 63,
+        "parent_source_edge": 184,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 64,
+        "parent_source_edge": 185,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 65,
+        "parent_source_edge": 186,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 66,
+        "parent_source_edge": 187,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 67,
+        "parent_source_edge": 188,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 68,
+        "parent_source_edge": 189,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 69,
+        "parent_source_edge": 190,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 70,
+        "parent_source_edge": 191,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 71,
+        "parent_source_edge": 192,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 72,
+        "parent_source_edge": 193,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 73,
+        "parent_source_edge": 194,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 74,
+        "parent_source_edge": 195,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 75,
+        "parent_source_edge": 196,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 76,
+        "parent_source_edge": 197,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 77,
+        "parent_source_edge": 0,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 78,
+        "parent_source_edge": 1,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 79,
+        "parent_source_edge": 2,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 80,
+        "parent_source_edge": 3,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 81,
+        "parent_source_edge": 4,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 82,
+        "parent_source_edge": 5,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 83,
+        "parent_source_edge": 6,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 84,
+        "parent_source_edge": 7,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 85,
+        "parent_source_edge": 8,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 86,
+        "parent_source_edge": 9,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 87,
+        "parent_source_edge": 10,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 88,
+        "parent_source_edge": 11,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 89,
+        "parent_source_edge": 12,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 90,
+        "parent_source_edge": 13,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 91,
+        "parent_source_edge": 14,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 92,
+        "parent_source_edge": 15,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 93,
+        "parent_source_edge": 16,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 94,
+        "parent_source_edge": 17,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 95,
+        "parent_source_edge": 18,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 96,
+        "parent_source_edge": 19,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 97,
+        "parent_source_edge": 20,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 98,
+        "parent_source_edge": 21,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 99,
+        "parent_source_edge": 22,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 100,
+        "parent_source_edge": 23,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 101,
+        "parent_source_edge": 24,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 102,
+        "parent_source_edge": 25,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 103,
+        "parent_source_edge": 26,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 104,
+        "parent_source_edge": 27,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 105,
+        "parent_source_edge": 28,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 106,
+        "parent_source_edge": 29,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 107,
+        "parent_source_edge": 30,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 108,
+        "parent_source_edge": 31,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 109,
+        "parent_source_edge": 32,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 110,
+        "parent_source_edge": 33,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 111,
+        "parent_source_edge": 34,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 112,
+        "parent_source_edge": 35,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 113,
+        "parent_source_edge": 36,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 114,
+        "parent_source_edge": 37,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 115,
+        "parent_source_edge": 38,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 116,
+        "parent_source_edge": 39,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 117,
+        "parent_source_edge": 40,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 118,
+        "parent_source_edge": 41,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 119,
+        "parent_source_edge": 42,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "INHERITED_PARENT_MATERIAL",
+        "daughter_edge": 120,
+        "parent_source_edge": 43,
+        "source_subarc": "exact_parent_edge"
+      },
+      {
+        "class": "NEW_FISSION_CLOSING_MATERIAL",
+        "daughter_edge": 121,
+        "inherited_amount": "ZERO_NO_PARENT_PREDECESSOR",
+        "parent_source": null
+      }
+    ],
+    "daughter_totals": [
+      [
+        2.2442337480196395,
+        2.637783967357622,
+        10.4808953286895
+      ],
+      [
+        3.53245012882299,
+        4.151902770086314,
+        16.497051649117186
+      ]
+    ],
+    "f_transport_closure": 0.0,
+    "mapping": "exact contiguous parent edge slices from extract_loop; no interpolation",
+    "new_closing_edge_semantics": "zero inherited amount because synthesized edge has no parent material predecessor",
+    "parent_totals": [
+      5.77668387684263,
+      6.789686737443937,
+      26.97794697780669
+    ],
+    "pinch": [
+      44,
+      121
+    ],
+    "u_plus_v_closure": 0.0
+  },
+  "physical_path": [
+    "transport_step",
+    "reactions_step",
+    "growth_step",
+    "mechanics_step",
+    "remesh",
+    "topology_step",
+    "try_local_fission"
+  ],
+  "replay": "PASS",
+  "step": 2326,
+  "unforced": true
+}

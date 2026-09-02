@@ -1,0 +1,10 @@
+{
+  "A": {
+    "antagonistic_vs_motor_off_net_difference": -0.06841340385709183,
+    "antagonistic_vs_same_mean_net_difference": 0.0011704619890042789
+  },
+  "B": {
+    "antagonistic_vs_motor_off_net_difference": -0.6213588540915294,
+    "antagonistic_vs_same_mean_net_difference": 0.0008985988148544344
+  }
+}

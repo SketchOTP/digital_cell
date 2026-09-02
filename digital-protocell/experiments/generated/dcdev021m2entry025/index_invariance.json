@@ -1,0 +1,5 @@
+{
+  "circular_reindexing": "parent material and polarity state together",
+  "daughter_selector": false,
+  "pass": true
+}

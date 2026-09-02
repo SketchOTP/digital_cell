@@ -1,0 +1,23 @@
+{
+  "adhesion_clutch": {
+    "disposition": "DEFERRED ALTERNATIVE",
+    "implemented": false,
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4437624/"
+  },
+  "m2072": {
+    "disposition": "ADAPTABLE reaction-diffusion; literal CPM mechanics REFERENCE_ONLY",
+    "f": "F-actin",
+    "motility": "F-actin-linked protrusive mechanics in reference model",
+    "source": "https://morpheus.gitlab.io/model/m2072/",
+    "u": "active Rac-like GTPase",
+    "v": "inactive form"
+  },
+  "parameters_imported": false,
+  "rac_rho": {
+    "disposition": "REFERENCE PRINCIPLE",
+    "rac": "front/protrusive organization",
+    "rho": "contractile/rear organization",
+    "source": "https://www.nature.com/articles/s41556-026-01965-1",
+    "v_is_rhoa": false
+  }
+}

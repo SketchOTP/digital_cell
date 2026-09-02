@@ -16,6 +16,26 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Affected areas: isolated assay/example, compact evidence, scoped workflow, and append-only governance; no scientific runtime, M1, resource, restart, or PR #44 change.
 - Supersedes record: none
 
+## DEC-DCDEV021-ENTRY025-LIVE-ANTAGONISTIC-INHERITED-LOCOMOTION-R1
+
+- Date: 2026-09-02
+- Record or decision ID: DEC-DCDEV021-ENTRY025-LIVE-ANTAGONISTIC-INHERITED-LOCOMOTION-R1
+- Status: ACTIVE
+- Decision or event: ENTRY-025 is authorized from exact accepted ENTRY-024 head `f1e13c9d001e336e1f41ef63441950c0ff893c42` as an assay-only live post-fission locomotion feasibility audit.
+- Rationale: ENTRY-024 is accepted with an append-only metadata correction establishing autonomous polarity initiation as qualified. ENTRY-025 tests whether inherited complementary polarity can remain mechanically effective through the exact live post-fission reaction, motor, actuator, remesh, conservative remap, and polarity-advance order without production integration or new behavior.
+- Affected areas: additive isolated ENTRY-025 assay/example, compact evidence, scoped workflow, and governance only; no accepted scientific runtime, fission/remesh biology, polarity production, actuator, traction, resource, M1, restart, or PR #44 change.
+- Supersedes record: none
+
+## DEC-DCDEV021-ENTRY025-LIVE-ANTAGONISTIC-INHERITED-LOCOMOTION-R2
+
+- Date: 2026-09-02
+- Record or decision ID: DEC-DCDEV021-ENTRY025-LIVE-ANTAGONISTIC-INHERITED-LOCOMOTION-R2
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow and artifact authority for ENTRY-025 are recorded after final push and verification.
+- Rationale: The bounded live anti-fraction composition remains below the preregistered leverage requirement for both daughters while preserving direct-live parity, material and energetic closure, rotation/index invariance, and historical results. The classification is `M2_LIVE_ANTAGONISTIC_INHERITED_POLARITY_COMPOSITION_INSUFFICIENT`; no successor work is authorized.
+- Affected areas: final remote-validation provenance for additive ENTRY-025 assay/example, compact evidence, scoped workflow, and governance only; no accepted scientific runtime, fission/remesh biology, polarity production, actuator, traction, resource, M1, restart, or PR #44 change.
+- Supersedes record: DEC-DCDEV021-ENTRY025-LIVE-ANTAGONISTIC-INHERITED-LOCOMOTION-R1
+
 ## DEC-DCDEV021-ENTRY024-POLARITY-EFFECTOR-SEMANTIC-ORIENTATION-R2
 
 - Date: 2026-09-02

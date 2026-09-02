@@ -1,0 +1,11 @@
+{
+  "all_finite": true,
+  "clipping": false,
+  "epsilon_fallback": false,
+  "interface": "v/(u+v)",
+  "minimum_u_plus_v": {
+    "A": 0.41152731894935896,
+    "B": 0.8139028317144151
+  },
+  "strictly_positive": true
+}

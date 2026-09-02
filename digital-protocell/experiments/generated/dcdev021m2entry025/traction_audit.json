@@ -1,0 +1,13 @@
+{
+  "A": {
+    "motor_off_slips": 74162,
+    "same_mean_slips": 97145,
+    "spatial_slips": 97173
+  },
+  "B": {
+    "motor_off_slips": 124253,
+    "same_mean_slips": 165567,
+    "spatial_slips": 165575
+  },
+  "unchanged": true
+}

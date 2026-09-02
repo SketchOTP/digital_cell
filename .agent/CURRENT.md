@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-02T16:48:00-04:00`
+- Last updated: `2026-09-02T18:30:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `NONE`
-- External directive ID: `NONE`
-- Objective: `NONE`
-- Current status: `IDLE`
-- Acceptance: `NONE`
-- Current phase: `NONE`
-- Expected or actual touched areas: `NONE`
-- Immediate next action: `NONE`
+- Local directive ID: `D-20260902-dcdev021-m2-entry025-live-antagonistic-inherited-locomotion`
+- External directive ID: `DC-DEV-021-M2-ENTRY-025-LIVE-ANTAGONISTIC-INHERITED-POLARITY-LOCOMOTION-FEASIBILITY-001`
+- Objective: `Determine whether live inherited daughter polarity supports causal locomotion through the exact parameter-free antagonistic v/(u+v) assay proxy.`
+- Current status: `IN_PROGRESS`
+- Acceptance: `One bounded ENTRY-025 classification after exact fission, eligibility, live controls, preservation, governance, and exact-head Linux validation.`
+- Current phase: `Implementation and local validation`
+- Expected or actual touched areas: `isolated ENTRY-025 example, Cargo example registration, generated evidence, scoped workflow, append-only governance`
+- Immediate next action: `Validate local evidence, append final governance, commit, push, and run exact-head CI.`
 
 ## Temporary task-relevant facts
 
@@ -43,6 +43,7 @@
 - ENTRY-005 is Architect accepted as `M2_REFRACTORY_MOTOR_DECOUPLING_EXPLORATION_QUALIFIED`: its opt-in `INTRINSIC_EXPLORATION_REFRACTORY_MOTOR_SCHEMA_V1` retains adaptation-inhibited excitation/update equations but sends raw `activity_after` to the accepted A-funded motor. It adds no numerical parameter, sensor, target, gradient, resource input, or reserve funding.
 - ENTRY-006 reuses the exact DC-DEV-013 finite N/F geometry, inventory, horizon, tolerances, and DC-DEV-008 uptake while recording contact only as an observer. Chemotaxis, target/gradient logic, reserve enablement, and M2 successor work remain unauthorized.
 - ENTRY-024 is an assay-only direct-versus-antagonistic effector-orientation audit. It uses `u/(u+v)` for direct parity and the exact complement `v/(u+v)` as a bounded counterfactual through unchanged A-funded contractility/stick-slip. No production polarity, live reaction-diffusion, resource, tuning, phase sweep, new gain, threshold, or semantic RhoA claim is authorized.
+- ENTRY-025 is authorized from exact ENTRY-024 head `f1e13c9d001e336e1f41ef63441950c0ff893c42` as an assay-only live inherited-polarity comparison using global `v/(u+v)` versus direct `u/(u+v)` and matched same-mean/motor-off controls; no production mapping, resource assay, parameter, daughter selector, or PR #44 change is authorized.
 
 ## Last validation after adoption
 

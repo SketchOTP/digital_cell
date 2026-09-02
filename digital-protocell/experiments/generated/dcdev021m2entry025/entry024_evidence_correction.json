@@ -1,0 +1,10 @@
+{
+  "artifact_rewritten": false,
+  "authority": "Architect acceptance of M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED",
+  "correct_accepted_value": "QUALIFIED",
+  "incorrect_metadata_field": "autonomous_polarity_initiation",
+  "scientific_entry024_result_affected": false,
+  "sealed_value": "NOT_ESTABLISHED",
+  "source_file": "dcdev021m2entry024/qualification.json",
+  "source_head": "f1e13c9d001e336e1f41ef63441950c0ff893c42"
+}

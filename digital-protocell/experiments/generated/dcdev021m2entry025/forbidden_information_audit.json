@@ -1,0 +1,12 @@
+{
+  "contact": false,
+  "daughter_label_control": false,
+  "distance": false,
+  "future_encounter": false,
+  "gradient": false,
+  "observer_feedback": false,
+  "production_mapping": false,
+  "resource": false,
+  "target": false,
+  "uptake": false
+}

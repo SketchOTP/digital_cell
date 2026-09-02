@@ -1,0 +1,13 @@
+{
+  "order": [
+    "inherited eligible state",
+    "live reaction-diffusion state",
+    "parameter-free motor proxy",
+    "A-funded contractility",
+    "stick-slip",
+    "remesh",
+    "conservative polarity remap",
+    "next live reaction-diffusion state"
+  ],
+  "spatial_motor_precedes_trajectory_divergence": true
+}

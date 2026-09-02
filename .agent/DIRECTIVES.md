@@ -598,3 +598,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260902-dcdev021-m2-entry023-daughter-mechanical-transfer-attribution
 - Status at issuance: ISSUED
+
+## D-20260902-dcdev021-m2-entry025-live-antagonistic-inherited-locomotion
+
+- Issued: `2026-09-02T18:30:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-025-LIVE-ANTAGONISTIC-INHERITED-POLARITY-LOCOMOTION-FEASIBILITY-001`
+- Objective: Determine whether live evolving inherited daughter polarity produces causal embodied locomotion through the global parameter-free antagonistic proxy `v/(u+v)` through unchanged A-funded contractility and stick-slip.
+- Scope: Append-only ENTRY-024 metadata correction, exact physical fission/inheritance and eligibility replay, live antagonistic/direct/same-mean/motor-off daughter arms, polarity decay, causal leverage, traction/energy, rotation/index, preservation, compact evidence, governance, and exact-head Linux validation.
+- Exclusions: production mapping, resource interaction, gain, threshold, epsilon fallback, phase or daughter selection, new adhesion/protrusion/active-gel state, polarity-model replacement, actuator/traction/M1/restart/PR #44 changes, and successor execution.
+- Acceptance: One preregistered classification after exact inherited-state eligibility, direct live parity, live antagonistic leverage, closure, preservation, governance, exact-head Linux, artifact digest, and Notion readback.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260902-dcdev021-m2-entry024-polarity-effector-semantic-orientation
+- Status at issuance: ISSUED

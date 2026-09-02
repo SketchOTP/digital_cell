@@ -1,0 +1,9 @@
+{
+  "accepted_entry022_pattern": {
+    "A": "NO",
+    "B": "NO"
+  },
+  "daughter_a_spatial_leverage": false,
+  "daughter_b_spatial_leverage": false,
+  "parity": true
+}

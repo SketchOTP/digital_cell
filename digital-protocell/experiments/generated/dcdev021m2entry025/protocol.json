@@ -1,0 +1,11 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-025-LIVE-ANTAGONISTIC-INHERITED-POLARITY-LOCOMOTION-FEASIBILITY-001",
+  "eligibility_step": 1,
+  "live_steps": 2999,
+  "next_execution_started": false,
+  "post_fission_steps": 3000,
+  "production_mapping": false,
+  "resource": false,
+  "scope": "assay-only live inherited polarity orientation comparison",
+  "starting_head": "f1e13c9d001e336e1f41ef63441950c0ff893c42"
+}
