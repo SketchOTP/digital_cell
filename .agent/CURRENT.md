@@ -19,7 +19,7 @@
 ## Temporary task-relevant facts
 
 - M0 is closed; M1 is formally closed and frozen at `fb77f472b1519a9e0f713833efba5b1d403f4723`.
-- Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-011 is Architect accepted as metabolically live in-contact composition; ENTRY-016 is Architect accepted as `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`; ENTRY-019 is Architect accepted as `M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED`; ENTRY-021 is Architect accepted as `M2_CONSERVATIVE_POLARITY_FISSION_INHERITANCE_AND_AMPLIFICATION_QUALIFIED`; ENTRY-022 is the only authorized active audit.
+- Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-011 is Architect accepted as metabolically live in-contact composition; ENTRY-016 is Architect accepted as `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`; ENTRY-019 is Architect accepted as `M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED`; ENTRY-021 is Architect accepted as `M2_CONSERVATIVE_POLARITY_FISSION_INHERITANCE_AND_AMPLIFICATION_QUALIFIED`; ENTRY-023 is complete pending Architect review, and no successor audit is active.
 - PR #44 is the immutable M1 provenance stack and must remain open, draft, unmerged, and untouched.
 - The clean baseline is derived from `1e242f28152797b512e25cd56c7b718e45d6ca97`; accepted M1 evidence remains on Atlas.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
