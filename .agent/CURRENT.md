@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-02T12:08:00-04:00`
+- Last updated: `2026-09-02T12:18:00-04:00`
 
 ## Active state after adoption
 
@@ -11,10 +11,10 @@
 - External directive ID: `DC-DEV-021-M2-ENTRY-022-POST-FISSION-INHERITED-POLARITY-TRANSIENT-LOCOMOTION-FEASIBILITY-001`
 - Objective: `Determine whether inherited post-fission polarity can drive bounded transient daughter locomotion through the existing A-funded effector after the exact zero-pool eligibility boundary.`
 - Current status: `VALIDATING`
-- Acceptance: `ENTRY-021 is Architect accepted as M2_CONSERVATIVE_POLARITY_FISSION_INHERITANCE_AND_AMPLIFICATION_QUALIFIED. Local ENTRY-022 execution classifies M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT; exact-head Linux validation and Architect review are pending.`
+- Acceptance: `ENTRY-021 is Architect accepted as M2_CONSERVATIVE_POLARITY_FISSION_INHERITANCE_AND_AMPLIFICATION_QUALIFIED. ENTRY-022 exact-head Linux CI 33653530285 passed on b0daff3d89e5465e53f2fb4bee7ba81dd31ead69 and classifies M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT; Architect review is pending.`
 - Current phase: `ENTRY-022 is an assay-only physical-fission replay followed by one actuator-off eligibility step and 2,999-step inherited-polarity, same-mean, and motor-off daughter comparisons. No production polarity, resource behavior, fission biology, or accepted runtime source is changed.`
 - Expected or actual touched areas: `isolated ENTRY-022 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, polarity, actuator, traction, fission, remesh, and M1 sources remain unchanged`
-- Immediate next action: `Run exact-head Linux validation, record the sealed CI/artifact result, and await Architect review; do not start successor work.`
+- Immediate next action: `Await Architect review; do not start successor work.`
 
 ## Temporary task-relevant facts
 

@@ -385,3 +385,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: ENTRY-021 established conservative local polarity inheritance but exposed a synthesized closing edge with `u+v=0`, which is not actuator-valid. ENTRY-022 therefore records the birth state without actuation, advances exactly one ordinary actuator-off eligibility step, and then compares exact inherited spatial `u/(u+v)`, same-mean uniform, and motor-off daughter arms over the bounded post-fission horizon. The local result preserves activity and closure but finds no spatial motor contrast beyond controls, classified `M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT` pending remote validation and Architect review.
 - Affected areas: additive assay/example, compact evidence, scoped workflow, and governance only; no production polarity, fission, remesh, actuator, traction, metabolism, resource, M1, restart, or PR #44 change.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY022-POST-FISSION-TRANSIENT-LOCOMOTION-R2
+
+- Date: 2026-09-02
+- Record or decision ID: DEC-DCDEV021-ENTRY022-POST-FISSION-TRANSIENT-LOCOMOTION-R2
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33653530285` passed on result head `b0daff3d89e5465e53f2fb4bee7ba81dd31ead69`; independent artifact ZIP digest `sha256:bcc2bd555c6804d3cbd522124e51a8d6da07fc4b7aa0f4d2c5885e35471d5ce5`.
+- Rationale: The sealed ENTRY-022 evidence confirms strict post-fission interface eligibility after one actuator-off step, active inherited-polarity daughter arms, A-to-W closure, preservation, and the bounded negative classification `M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT`. Architect acceptance remains pending.
+- Affected areas: final remote-validation provenance for additive ENTRY-022 assay/evidence/workflow/governance only; no scientific runtime, fission, remesh, polarity production, resource, M1, restart, or PR #44 change.
+- Supersedes record: DEC-DCDEV021-ENTRY022-POST-FISSION-TRANSIENT-LOCOMOTION-R1

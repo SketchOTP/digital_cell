@@ -1086,3 +1086,20 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: remote validation may identify workflow, preservation, or scope defects; ENTRY-022 does not establish autonomous resource acquisition or production polarity integration.
 - Blockers: exact-head Linux validation and Architect review; do not start successor work.
 - Follow-up directive: none
+
+## D-20260902-dcdev021-m2-entry022-post-fission-transient-locomotion - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY022-POST-FISSION-TRANSIENT-LOCOMOTION-R2`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY022-POST-FISSION-TRANSIENT-LOCOMOTION-LOCAL`
+- Closed: `2026-09-02T12:18:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Exact-head Linux workflow `33653530285` passed on result head `b0daff3d89e5465e53f2fb4bee7ba81dd31ead69`. The independent artifact ZIP digest is `sha256:bcc2bd555c6804d3cbd522124e51a8d6da07fc4b7aa0f4d2c5885e35471d5ce5`. The sealed result remains `M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT`: inherited spatial motor arms are valid and active after strict eligibility, but do not outperform same-mean and motor-off controls under the preregistered spatial-leverage comparison.
+- Changed areas: additive ENTRY-022 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, fission biology, production polarity, resource, M1, restart, or PR #44 change.
+- Validation:
+  - Exact authority, fission replay, zero-pool boundary, eligibility, daughter arms, closure, rotation/index, historical classifications, production/D-087, downstream, governance, and local execution - PASSED
+  - Exact-head Linux workflow `33653530285` - PASSED
+  - Independent artifact ZIP digest - PASSED
+  - Architect review - PENDING
+- Remaining risks: ENTRY-022 does not establish autonomous resource acquisition, production polarity integration, or autonomous polarity initiation beyond the already accepted upstream boundary.
+- Blockers: Architect review; do not start successor work.
+- Follow-up directive: none

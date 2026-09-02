@@ -367,3 +367,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-022 post-fission inherited-polarity transient-locomotion feasibility audit.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY022-002
+
+- Learning ID: L-DCDEV021-ENTRY022-002
+- Date: 2026-09-02
+- Fact or lesson: Exact-head Linux workflow `33653530285` passed on result head `b0daff3d89e5465e53f2fb4bee7ba81dd31ead69`; the independently downloaded artifact ZIP hashes to `sha256:bcc2bd555c6804d3cbd522124e51a8d6da07fc4b7aa0f4d2c5885e35471d5ce5`. The bounded classification remains `M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT` with no scientific runtime source change.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry022.rs`, `digital-protocell/experiments/generated/dcdev021m2entry022/`, `.github/workflows/dc-dev-021-m2-entry022.yml`, and GitHub Actions workflow `33653530285`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 ENTRY-022 post-fission inherited-polarity transient-locomotion feasibility audit.
+- Supersedes learning: L-DCDEV021-ENTRY022-001
