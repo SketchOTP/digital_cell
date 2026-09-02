@@ -1,0 +1,15 @@
+{
+  "centroid_feedback": 0,
+  "distance": 0,
+  "epsilon_fallback": 0,
+  "gradient": 0,
+  "observer_success": 0,
+  "production_integration": 0,
+  "resource_center": 0,
+  "resource_contact": 0,
+  "resource_inventory": 0,
+  "resource_radius": 0,
+  "target": 0,
+  "uptake_ledger": 0,
+  "zero_pool_convention": 0
+}

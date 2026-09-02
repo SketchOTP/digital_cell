@@ -357,3 +357,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-021 conservative polarity fission inheritance and amplification feasibility audit.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY022-001
+
+- Learning ID: L-DCDEV021-ENTRY022-001
+- Date: 2026-09-02
+- Fact or lesson: The exact accepted fission replay reaches step `2326` and produces 198/78/122-site mother/daughters. The immediate daughter state contains a synthesized closing edge with zero inherited `u+v`, so it is not a valid actuator input. One ordinary actuator-off, growth-off, additional-fission-off eligibility step restores strictly positive `u+v` on every site while conserving the polarity pool. From that state, inherited spatial `u/(u+v)` arms remain active and energetic, but neither daughter exceeds its same-mean uniform and motor-off displacement controls; the local bounded classification is `M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT`.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry022.rs`, `digital-protocell/experiments/generated/dcdev021m2entry022/`, and `.github/workflows/dc-dev-021-m2-entry022.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-022 post-fission inherited-polarity transient-locomotion feasibility audit.
+- Supersedes learning: none

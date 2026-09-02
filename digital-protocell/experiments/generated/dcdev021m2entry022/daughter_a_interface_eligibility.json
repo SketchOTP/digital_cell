@@ -1,0 +1,16 @@
+{
+  "accepted_step": 1,
+  "actuator": "OFF",
+  "additional_fission": "OFF",
+  "all_u_plus_v_strictly_positive": true,
+  "growth": "OFF",
+  "interface_now_eligible": true,
+  "minimum_u_plus_v": 0.41152731894935896,
+  "motor_time_origin": "t_motor=0 at this state",
+  "new_site_count": 79,
+  "old_site_count": 78,
+  "remesh_origin": 0,
+  "remesh_uv_residual": 8.881784197001252e-16,
+  "weighted_uv_after_remap": 4.882017715377261,
+  "weighted_uv_before": 4.882017715377262
+}

@@ -1,0 +1,7 @@
+{
+  "branch": "m2/dc-dev-021-entry022-post-fission-transient-locomotion",
+  "evidence_discoverability": "PASS",
+  "naming": "PASS",
+  "scope_discipline": "PASS",
+  "workflow": "dc-dev-021-m2-entry022.yml"
+}

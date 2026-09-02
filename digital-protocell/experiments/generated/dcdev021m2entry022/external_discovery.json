@@ -1,0 +1,17 @@
+{
+  "hubatsch_2019": {
+    "disposition": "REFERENCE / ADAPTABLE POOL-STABILITY PRINCIPLE",
+    "parameters_imported": false,
+    "source": "https://doi.org/10.1038/s41567-019-0601-x"
+  },
+  "m2072": {
+    "cpM_and_star_convex_imported": false,
+    "disposition": "REFERENCE / ADAPTABLE",
+    "source": "https://morpheus.gitlab.io/model/m2072/"
+  },
+  "polarity_inheritance": {
+    "disposition": "REFERENCE PRINCIPLE ONLY",
+    "molecular_rules_imported": false,
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2844324/"
+  }
+}

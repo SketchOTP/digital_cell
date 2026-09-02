@@ -1,0 +1,11 @@
+{
+  "order": [
+    "inherited polarity state",
+    "eligibility step with actuator OFF",
+    "exact u/(u+v) interface",
+    "existing A-funded contractility/stick-slip",
+    "unchanged metabolism",
+    "centroid observation"
+  ],
+  "pre_contact_resource_information": false
+}

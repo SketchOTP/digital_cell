@@ -1,0 +1,978 @@
+{
+  "a_limited_steps": 0,
+  "a_spent": 0.0,
+  "a_to_w_residual": 0.0,
+  "arm": "DAUGHTER_B_MOTOR_OFF",
+  "displacement_path_ratio": 0.7379336967370957,
+  "first_motor_max": 0.0,
+  "first_motor_min": 0.0,
+  "first_motor_range": 0.0,
+  "initial_state": {
+    "dominant_mode": 1,
+    "dominant_mode_amplitude": 0.008239863860934026,
+    "max_nonconstant_f": 0.038610441675854555,
+    "max_nonconstant_u": 0.008239863860934026,
+    "max_nonconstant_v": 0.009574227582905477,
+    "motor_range": 0.1624830775841769,
+    "sites": 123,
+    "step": 0,
+    "weighted_f": 16.518769556969556,
+    "weighted_u": 3.463318135435053,
+    "weighted_v": 4.221034763474249
+  },
+  "maximum_centroid_excursion": 2.071931798171169,
+  "maximum_material_envelope_excursion": 0.38689104774612915,
+  "motor_steps": 2999,
+  "net_displacement": 2.059222890356167,
+  "path": 2.790525625081745,
+  "peak_motor_range": 0.0,
+  "points": [
+    {
+      "centroid": [
+        49.50193289115465,
+        40.59533080750527
+      ],
+      "displacement": [
+        -0.0008467713914868114,
+        -0.006801026435056201
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.44930465398613784,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 0.008207064641587004,
+        "max_nonconstant_f": 0.03851719380986742,
+        "max_nonconstant_u": 0.008207064641587004,
+        "max_nonconstant_v": 0.009395017031669079,
+        "motor_range": 0.10211682364706598,
+        "sites": 123,
+        "step": 1,
+        "weighted_f": 16.537135303219898,
+        "weighted_u": 3.396027544109722,
+        "weighted_v": 4.288325354799577
+      },
+      "slipping_contacts": 0,
+      "step": 1,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        49.51054124224432,
+        40.05933250520638
+      ],
+      "displacement": [
+        0.0005274571924402949,
+        -0.002768665030245643
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.07873128879002304,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 0.00116840974794092,
+        "max_nonconstant_f": 0.021627436234937538,
+        "max_nonconstant_u": 0.00116840974794092,
+        "max_nonconstant_v": 0.0038364692772627435,
+        "motor_range": 0.0030971092119825294,
+        "sites": 122,
+        "step": 100,
+        "weighted_f": 11.982247256588815,
+        "weighted_u": 0.5970123593519725,
+        "weighted_v": 7.087340539557162
+      },
+      "slipping_contacts": 0,
+      "step": 100,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        49.55357595636265,
+        39.915937394259274
+      ],
+      "displacement": [
+        0.00036821978896028895,
+        -0.0007001893421900718
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.04959371406733105,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 2,
+        "dominant_mode_amplitude": 0.00012212894543548475,
+        "max_nonconstant_f": 0.007081152538537826,
+        "max_nonconstant_u": 0.00012212894543548475,
+        "max_nonconstant_v": 0.0008262965800910029,
+        "motor_range": 0.0007778817494667398,
+        "sites": 122,
+        "step": 200,
+        "weighted_f": 8.230399263371739,
+        "weighted_u": 0.3810131420979347,
+        "weighted_v": 7.303339756811035
+      },
+      "slipping_contacts": 0,
+      "step": 200,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        49.55476666202612,
+        39.84016890286107
+      ],
+      "displacement": [
+        -0.000337881563147846,
+        -0.0011042134317804653
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.051757424758208125,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 0.000052503680914687124,
+        "max_nonconstant_f": 0.001986687820734344,
+        "max_nonconstant_u": 0.000052503680914687124,
+        "max_nonconstant_v": 0.00011948955083127151,
+        "motor_range": 0.0002968289590028206,
+        "sites": 122,
+        "step": 300,
+        "weighted_f": 7.0263945554459255,
+        "weighted_u": 0.3979317189786444,
+        "weighted_v": 7.286421179930098
+      },
+      "slipping_contacts": 0,
+      "step": 300,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        49.48086154895729,
+        39.67930010841507
+      ],
+      "displacement": [
+        -0.001054984737024256,
+        -0.0017672399684087736
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05358726966367068,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 0.00002432478228231148,
+        "max_nonconstant_f": 0.0005036380319442509,
+        "max_nonconstant_u": 0.00002432478228231148,
+        "max_nonconstant_v": 7.299401909473315e-6,
+        "motor_range": 0.00010711634229933903,
+        "sites": 122,
+        "step": 400,
+        "weighted_f": 6.710258104053262,
+        "weighted_u": 0.41187542093123575,
+        "weighted_v": 7.272477477977312
+      },
+      "slipping_contacts": 0,
+      "step": 400,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        49.40549840107381,
+        39.51115924573956
+      ],
+      "displacement": [
+        -0.0004712280501948385,
+        -0.0014697451543526086
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05424406650934072,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 8.304975411531873e-6,
+        "max_nonconstant_f": 0.00011518319347705453,
+        "max_nonconstant_u": 8.304975411531873e-6,
+        "max_nonconstant_v": 3.917930379522848e-6,
+        "motor_range": 0.0000332870959012313,
+        "sites": 122,
+        "step": 500,
+        "weighted_f": 6.636532349180256,
+        "weighted_u": 0.4168592020985828,
+        "weighted_v": 7.26749369680976
+      },
+      "slipping_contacts": 0,
+      "step": 500,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        49.34759497414112,
+        39.3975162336503
+      ],
+      "displacement": [
+        -0.0006269717393863061,
+        -0.000898820809567269
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05442798363270358,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 2.398076897400316e-6,
+        "max_nonconstant_f": 0.00002333378949469568,
+        "max_nonconstant_u": 2.398076897400316e-6,
+        "max_nonconstant_v": 2.3165648563654633e-6,
+        "motor_range": 9.214358749516649e-6,
+        "sites": 122,
+        "step": 600,
+        "weighted_f": 6.621018967830012,
+        "weighted_u": 0.4182513250361319,
+        "weighted_v": 7.266101573872004
+      },
+      "slipping_contacts": 0,
+      "step": 600,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        49.286910758187446,
+        39.304815084837806
+      ],
+      "displacement": [
+        -0.0004202928191077149,
+        -0.0007680873281401546
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05447236659904946,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 6.13904153402298e-7,
+        "max_nonconstant_f": 4.855438223938144e-6,
+        "max_nonconstant_u": 6.13904153402298e-7,
+        "max_nonconstant_v": 8.4880679300695e-7,
+        "motor_range": 2.3333562290256404e-6,
+        "sites": 122,
+        "step": 700,
+        "weighted_f": 6.618077681696933,
+        "weighted_u": 0.4185866218404516,
+        "weighted_v": 7.265766277067485
+      },
+      "slipping_contacts": 0,
+      "step": 700,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        49.22667799934559,
+        39.23048030251796
+      ],
+      "displacement": [
+        -0.0006703154036387104,
+        -0.0008251919762756188
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448192724115263,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 1.4116776976843956e-7,
+        "max_nonconstant_f": 1.3210967538234015e-6,
+        "max_nonconstant_u": 1.4116776976843956e-7,
+        "max_nonconstant_v": 2.558508417784874e-7,
+        "motor_range": 5.467283758497921e-7,
+        "sites": 122,
+        "step": 800,
+        "weighted_f": 6.617586175053631,
+        "weighted_u": 0.4186587172915165,
+        "weighted_v": 7.265694181616248
+      },
+      "slipping_contacts": 0,
+      "step": 800,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        49.17086910924365,
+        39.16733137205756
+      ],
+      "displacement": [
+        -0.0005631855666408114,
+        -0.0003087411728373013
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.054483780883784264,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 2.88036721763273e-8,
+        "max_nonconstant_f": 3.5950146876239783e-7,
+        "max_nonconstant_u": 2.88036721763273e-8,
+        "max_nonconstant_v": 6.794824542543943e-8,
+        "motor_range": 1.1838079946868696e-7,
+        "sites": 122,
+        "step": 900,
+        "weighted_f": 6.61751887226774,
+        "weighted_u": 0.4186726669191206,
+        "weighted_v": 7.26568023198843
+      },
+      "slipping_contacts": 0,
+      "step": 900,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        49.112109910659804,
+        39.112530710964606
+      ],
+      "displacement": [
+        -0.0006791263420993232,
+        -0.00032211220013778075
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448409954489453,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 4.9416855686468186e-9,
+        "max_nonconstant_f": 9.782895836471791e-8,
+        "max_nonconstant_u": 4.9416855686468186e-9,
+        "max_nonconstant_v": 1.6226316561122965e-8,
+        "motor_range": 2.3408577347339143e-8,
+        "sites": 122,
+        "step": 1000,
+        "weighted_f": 6.617513417392133,
+        "weighted_u": 0.41867505897803053,
+        "weighted_v": 7.265677839929274
+      },
+      "slipping_contacts": 0,
+      "step": 1000,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        49.05644678494126,
+        39.06516298212412
+      ],
+      "displacement": [
+        -0.000569314577411717,
+        -0.00027438273077962094
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448414540661824,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 2,
+        "dominant_mode_amplitude": 6.766045622504585e-10,
+        "max_nonconstant_f": 2.662402104840068e-8,
+        "max_nonconstant_u": 6.766045622504585e-10,
+        "max_nonconstant_v": 3.4690639934223967e-9,
+        "motor_range": 5.077419915067161e-9,
+        "sites": 122,
+        "step": 1100,
+        "weighted_f": 6.617514138682221,
+        "weighted_u": 0.4186754019102935,
+        "weighted_v": 7.2656774969973466
+      },
+      "slipping_contacts": 0,
+      "step": 1100,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        49.001977576922584,
+        39.025876785169814
+      ],
+      "displacement": [
+        -0.0004134309008279047,
+        -0.0005536286946394853
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448414980210456,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 2,
+        "dominant_mode_amplitude": 1.6304432944593252e-10,
+        "max_nonconstant_f": 7.24542546164676e-9,
+        "max_nonconstant_u": 1.6304432944593252e-10,
+        "max_nonconstant_v": 6.412584087373338e-10,
+        "motor_range": 1.2316005715273803e-9,
+        "sites": 122,
+        "step": 1200,
+        "weighted_f": 6.6175146512992775,
+        "weighted_u": 0.41867543446094496,
+        "weighted_v": 7.26567746445137
+      },
+      "slipping_contacts": 0,
+      "step": 1200,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.94961740551328,
+        38.992083042978265
+      ],
+      "displacement": [
+        -0.0006676183918870038,
+        -0.0005190147696083613
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448414957214201,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 4.571994885363607e-11,
+        "max_nonconstant_f": 1.9719129751853912e-9,
+        "max_nonconstant_u": 4.571994885363607e-11,
+        "max_nonconstant_v": 9.112103053369274e-11,
+        "motor_range": 3.0749641027894015e-10,
+        "sites": 122,
+        "step": 1300,
+        "weighted_f": 6.617514820857439,
+        "weighted_u": 0.4186754326424252,
+        "weighted_v": 7.265677466271439
+      },
+      "slipping_contacts": 0,
+      "step": 1300,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.895791793610016,
+        38.96780114615472
+      ],
+      "displacement": [
+        -0.0005392662792615965,
+        0.000023978706693128515
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448414929526102,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 1.956120297460205e-11,
+        "max_nonconstant_f": 5.366386822413233e-10,
+        "max_nonconstant_u": 1.956120297460205e-11,
+        "max_nonconstant_v": 4.150086642664207e-12,
+        "motor_range": 8.441723015062408e-11,
+        "sites": 122,
+        "step": 1400,
+        "weighted_f": 6.617514865334855,
+        "weighted_u": 0.41867543055364215,
+        "weighted_v": 7.26567746835669
+      },
+      "slipping_contacts": 0,
+      "step": 1400,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.84265450868678,
+        38.94863044534778
+      ],
+      "displacement": [
+        -0.00043362759537046713,
+        -0.0003185463623083251
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448414919665445,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 6.3187788439792876e-12,
+        "max_nonconstant_f": 1.4604974017506438e-10,
+        "max_nonconstant_u": 6.3187788439792876e-12,
+        "max_nonconstant_v": 3.518526708206229e-12,
+        "motor_range": 2.4664902065207883e-11,
+        "sites": 122,
+        "step": 1500,
+        "weighted_f": 6.617514875514725,
+        "weighted_u": 0.4186754298149657,
+        "weighted_v": 7.265677469090051
+      },
+      "slipping_contacts": 0,
+      "step": 1500,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.79075498138249,
+        38.93281412748802
+      ],
+      "displacement": [
+        -0.00046197672229197906,
+        -0.00035574153803707986
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448414916983341,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 1.7620244871179639e-12,
+        "max_nonconstant_f": 3.9762777421392365e-11,
+        "max_nonconstant_u": 1.7620244871179639e-12,
+        "max_nonconstant_v": 1.9105604114615544e-12,
+        "motor_range": 6.611926284261216e-12,
+        "sites": 122,
+        "step": 1600,
+        "weighted_f": 6.6175148776038,
+        "weighted_u": 0.4186754296149224,
+        "weighted_v": 7.2656774692840305
+      },
+      "slipping_contacts": 0,
+      "step": 1600,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.73814451743492,
+        38.920807297405794
+      ],
+      "displacement": [
+        -0.0007575049604682249,
+        -0.0004255330082827413
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.054484149163519194,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 4.3646612995817784e-13,
+        "max_nonconstant_f": 1.0869900618074969e-11,
+        "max_nonconstant_u": 4.3646612995817784e-13,
+        "max_nonconstant_v": 5.344572125889293e-13,
+        "motor_range": 1.6598389329658403e-12,
+        "sites": 122,
+        "step": 1700,
+        "weighted_f": 6.617514877987016,
+        "weighted_u": 0.41867542956777376,
+        "weighted_v": 7.265677469323982
+      },
+      "slipping_contacts": 0,
+      "step": 1700,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.68613130136743,
+        38.91175426833269
+      ],
+      "displacement": [
+        -0.00047078810398204496,
+        0.00007071098769273476
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448414916215375,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 1.1328877768390751e-13,
+        "max_nonconstant_f": 3.0102333359225267e-12,
+        "max_nonconstant_u": 1.1328877768390751e-13,
+        "max_nonconstant_v": 5.126937911823452e-13,
+        "motor_range": 4.0831921177542085e-13,
+        "sites": 122,
+        "step": 1800,
+        "weighted_f": 6.61751487804717,
+        "weighted_u": 0.41867542955715975,
+        "weighted_v": 7.265677469324411
+      },
+      "slipping_contacts": 0,
+      "step": 1800,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.63305017639025,
+        38.90737600182031
+      ],
+      "displacement": [
+        -0.000621999345810309,
+        5.650185840977429e-6
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.054484149161906414,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 5.153375081276232e-14,
+        "max_nonconstant_f": 1.1064229275180035e-12,
+        "max_nonconstant_u": 5.153375081276232e-14,
+        "max_nonconstant_v": 4.875649041395019e-13,
+        "motor_range": 1.0150214002635494e-13,
+        "sites": 122,
+        "step": 1900,
+        "weighted_f": 6.617514878046351,
+        "weighted_u": 0.41867542955525444,
+        "weighted_v": 7.265677469324385
+      },
+      "slipping_contacts": 0,
+      "step": 1900,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.58075171346009,
+        38.903993135960945
+      ],
+      "displacement": [
+        -0.00023474422768998693,
+        0.00018344993743824034
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448414916189479,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 5.481111655637047e-14,
+        "max_nonconstant_f": 8.581624191015506e-13,
+        "max_nonconstant_u": 5.481111655637047e-14,
+        "max_nonconstant_v": 4.602730377604943e-13,
+        "motor_range": 9.794942634755444e-14,
+        "sites": 122,
+        "step": 2000,
+        "weighted_f": 6.617514878047531,
+        "weighted_u": 0.41867542955515846,
+        "weighted_v": 7.265677469324313
+      },
+      "slipping_contacts": 0,
+      "step": 2000,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.529445077345294,
+        38.90659204699593
+      ],
+      "displacement": [
+        -0.0004028814318246532,
+        0.0004759241017850968
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448414916188962,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 5.367279492565276e-14,
+        "max_nonconstant_f": 8.558795707889955e-13,
+        "max_nonconstant_u": 5.367279492565276e-14,
+        "max_nonconstant_v": 4.3866641716658066e-13,
+        "motor_range": 1.0026701691145945e-13,
+        "sites": 122,
+        "step": 2100,
+        "weighted_f": 6.617514878047499,
+        "weighted_u": 0.4186754295551142,
+        "weighted_v": 7.265677469324221
+      },
+      "slipping_contacts": 0,
+      "step": 2100,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.478748434845016,
+        38.908097325043634
+      ],
+      "displacement": [
+        -0.00015744707433640315,
+        -0.00031704644191421494
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448414916188609,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 5.25039585620115e-14,
+        "max_nonconstant_f": 8.579376367406354e-13,
+        "max_nonconstant_u": 5.25039585620115e-14,
+        "max_nonconstant_v": 4.202764767864304e-13,
+        "motor_range": 1.0129397320923772e-13,
+        "sites": 122,
+        "step": 2200,
+        "weighted_f": 6.6175148780474515,
+        "weighted_u": 0.41867542955508297,
+        "weighted_v": 7.265677469324135
+      },
+      "slipping_contacts": 0,
+      "step": 2200,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.43082596791997,
+        38.91004742595984
+      ],
+      "displacement": [
+        -0.0006036244976428407,
+        0.00041035019054191935
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448414916188344,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 5.18182089016875e-14,
+        "max_nonconstant_f": 8.556791395493752e-13,
+        "max_nonconstant_u": 5.18182089016875e-14,
+        "max_nonconstant_v": 4.0828799853192786e-13,
+        "motor_range": 1.0373646386341306e-13,
+        "sites": 122,
+        "step": 2300,
+        "weighted_f": 6.6175148780474835,
+        "weighted_u": 0.4186754295550635,
+        "weighted_v": 7.26567746932413
+      },
+      "slipping_contacts": 0,
+      "step": 2300,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.38207208298192,
+        38.91802869366905
+      ],
+      "displacement": [
+        -0.0004510318611963271,
+        0.0000113588406449594
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.054484149161881636,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 5.099035912959898e-14,
+        "max_nonconstant_f": 8.52522932003756e-13,
+        "max_nonconstant_u": 5.099035912959898e-14,
+        "max_nonconstant_v": 3.9682254214758225e-13,
+        "motor_range": 1.0537404282473517e-13,
+        "sites": 122,
+        "step": 2400,
+        "weighted_f": 6.617514878047478,
+        "weighted_u": 0.4186754295550467,
+        "weighted_v": 7.265677469324071
+      },
+      "slipping_contacts": 0,
+      "step": 2400,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.337817356853336,
+        38.92908613218737
+      ],
+      "displacement": [
+        -0.00027466222982752697,
+        0.00033171261455322565
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.0544841491618801,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 5.014553796854099e-14,
+        "max_nonconstant_f": 8.47772076346182e-13,
+        "max_nonconstant_u": 5.014553796854099e-14,
+        "max_nonconstant_v": 3.852577149802097e-13,
+        "motor_range": 1.0709488851290416e-13,
+        "sites": 122,
+        "step": 2500,
+        "weighted_f": 6.617514878047518,
+        "weighted_u": 0.4186754295550347,
+        "weighted_v": 7.265677469324067
+      },
+      "slipping_contacts": 0,
+      "step": 2500,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.2983631874814,
+        38.946934050178925
+      ],
+      "displacement": [
+        -0.00002398728288710572,
+        0.0002911138064547458
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.054484149161878895,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 4.9717439819480184e-14,
+        "max_nonconstant_f": 8.476404688645672e-13,
+        "max_nonconstant_u": 4.9717439819480184e-14,
+        "max_nonconstant_v": 3.7663386374369936e-13,
+        "motor_range": 1.0834388941560746e-13,
+        "sites": 122,
+        "step": 2600,
+        "weighted_f": 6.617514878047476,
+        "weighted_u": 0.4186754295550197,
+        "weighted_v": 7.265677469323955
+      },
+      "slipping_contacts": 0,
+      "step": 2600,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.257422225562735,
+        38.96677752172058
+      ],
+      "displacement": [
+        -0.0002402041571727409,
+        0.00003625801736006906
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448414916187796,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 4.932540530142096e-14,
+        "max_nonconstant_f": 8.455912749340402e-13,
+        "max_nonconstant_u": 4.932540530142096e-14,
+        "max_nonconstant_v": 3.6939204335105077e-13,
+        "motor_range": 1.0932921234996229e-13,
+        "sites": 122,
+        "step": 2700,
+        "weighted_f": 6.617514878047446,
+        "weighted_u": 0.41867542955500936,
+        "weighted_v": 7.265677469323885
+      },
+      "slipping_contacts": 0,
+      "step": 2700,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.22113136917432,
+        38.98958049615368
+      ],
+      "displacement": [
+        -0.00030281617404881445,
+        -0.00002348098983162572
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448414916187734,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 4.8884425522996416e-14,
+        "max_nonconstant_f": 8.386767103347516e-13,
+        "max_nonconstant_u": 4.8884425522996416e-14,
+        "max_nonconstant_v": 3.599740852837783e-13,
+        "motor_range": 1.1017575740623897e-13,
+        "sites": 122,
+        "step": 2800,
+        "weighted_f": 6.617514878047461,
+        "weighted_u": 0.41867542955500253,
+        "weighted_v": 7.265677469323852
+      },
+      "slipping_contacts": 0,
+      "step": 2800,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.18370951341974,
+        39.016421456058225
+      ],
+      "displacement": [
+        -0.00031371193392715213,
+        -0.0009074862359170766
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448414916187708,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 4.846039092549852e-14,
+        "max_nonconstant_f": 8.337441824661221e-13,
+        "max_nonconstant_u": 4.846039092549852e-14,
+        "max_nonconstant_v": 3.532492410400064e-13,
+        "motor_range": 1.1217415885056425e-13,
+        "sites": 120,
+        "step": 2900,
+        "weighted_f": 6.617514878047502,
+        "weighted_u": 0.4186754295549936,
+        "weighted_v": 7.265677469323811
+      },
+      "slipping_contacts": 0,
+      "step": 2900,
+      "stuck_contacts": 0
+    },
+    {
+      "centroid": [
+        48.147886460341205,
+        39.05143414490301
+      ],
+      "displacement": [
+        -0.00025760099114791046,
+        0.0007714923629009718
+      ],
+      "motor_max": 0.0,
+      "motor_mean": 0.05448414916187571,
+      "motor_min": 0.0,
+      "motor_range": 0.0,
+      "polarity": {
+        "dominant_mode": 1,
+        "dominant_mode_amplitude": 4.742282690295092e-14,
+        "max_nonconstant_f": 8.351983920335261e-13,
+        "max_nonconstant_u": 4.742282690295092e-14,
+        "max_nonconstant_v": 3.457138654496088e-13,
+        "motor_range": 1.0946105133413653e-13,
+        "sites": 120,
+        "step": 2999,
+        "weighted_f": 6.617514878047488,
+        "weighted_u": 0.4186754295549768,
+        "weighted_v": 7.265677469323731
+      },
+      "slipping_contacts": 0,
+      "step": 2999,
+      "stuck_contacts": 0
+    }
+  ],
+  "slips": 124253,
+  "stuck_contacts": 241420,
+  "terminal_state": {
+    "a": 0.18187981069535128,
+    "area": 1355.7581133755723,
+    "c": 1.6897355951483084,
+    "centroid": [
+      48.147886460341205,
+      39.05143414490301
+    ],
+    "f": 0.05327136255617547,
+    "n": 0.05327136255617547,
+    "w": 6.759312694514623
+  },
+  "total_post_fission_steps": 3000,
+  "traction_directional_difference": 0.0,
+  "w_generated": 3554.7380490004084
+}

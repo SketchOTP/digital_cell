@@ -1,0 +1,14 @@
+{
+  "daughter_a": {
+    "birth_min_u_plus_v": 0.0,
+    "closing_edge_pool": "ZERO",
+    "inherited_state": "exact ENTRY-021 contiguous parent-edge amounts",
+    "topology": 78
+  },
+  "daughter_b": {
+    "birth_min_u_plus_v": 0.0,
+    "closing_edge_pool": "ZERO",
+    "inherited_state": "exact ENTRY-021 contiguous parent-edge amounts",
+    "topology": 122
+  }
+}

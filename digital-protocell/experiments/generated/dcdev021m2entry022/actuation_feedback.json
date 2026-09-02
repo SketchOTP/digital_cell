@@ -1,0 +1,13 @@
+{
+  "active_a_spent": [
+    48.36869912878521,
+    85.50786544713135
+  ],
+  "mesh_to_polarity": "NONE",
+  "motor_off_a_spent": [
+    0.0,
+    0.0
+  ],
+  "polarity_to_actuator": "one-way assay-local",
+  "resource_to_behavior": "NONE"
+}

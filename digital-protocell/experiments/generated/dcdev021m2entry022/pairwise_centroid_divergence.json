@@ -1,0 +1,11 @@
+{
+  "daughter_a": {
+    "spatial_vs_off_net_difference": 0.02878544183530507,
+    "spatial_vs_uniform_net_difference": -0.0059428559945349235
+  },
+  "daughter_a_vs_b_spatial_net_difference": -0.8849398837777227,
+  "daughter_b": {
+    "spatial_vs_off_net_difference": -0.05366373944494551,
+    "spatial_vs_uniform_net_difference": 0.0033528803801727847
+  }
+}

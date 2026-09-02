@@ -3,23 +3,23 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-01T20:30:00-04:00`
+- Last updated: `2026-09-02T12:08:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260901-dcdev021-m2-entry021-conservative-polarity-fission-inheritance-amplification`
-- External directive ID: `DC-DEV-021-M2-ENTRY-021-CONSERVATIVE-POLARITY-FISSION-INHERITANCE-AND-AMPLIFICATION-FEASIBILITY-001`
-- Objective: `Determine whether the accepted life-history Polar state is inherited through the exact physical D-088 fission event by local conserved transport and whether fission-associated daughter patterns amplify beyond same-total controls.`
+- Local directive ID: `D-20260902-dcdev021-m2-entry022-post-fission-transient-locomotion`
+- External directive ID: `DC-DEV-021-M2-ENTRY-022-POST-FISSION-INHERITED-POLARITY-TRANSIENT-LOCOMOTION-FEASIBILITY-001`
+- Objective: `Determine whether inherited post-fission polarity can drive bounded transient daughter locomotion through the existing A-funded effector after the exact zero-pool eligibility boundary.`
 - Current status: `VALIDATING`
-- Acceptance: `ENTRY-020 is Architect accepted as M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT. ENTRY-021 local exact fission replay qualifies conservative inheritance and immediate daughter spatial amplification; exact-head Linux validation and Architect review are pending.`
-- Current phase: `ENTRY-021 is an observer-only physical-fission inheritance audit. The exact accepted path reaches step 2326 and produces 198/78/122-site mother/daughters; no actuator, resource, production polarity, or fission biology is changed.`
-- Expected or actual touched areas: `isolated ENTRY-021 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, polarity, actuator, traction, fission, remesh, and M1 sources remain unchanged`
-- Immediate next action: `Run exact-head Linux validation and record the sealed CI/artifact result; do not start successor work or implement production polarity.`
+- Acceptance: `ENTRY-021 is Architect accepted as M2_CONSERVATIVE_POLARITY_FISSION_INHERITANCE_AND_AMPLIFICATION_QUALIFIED. Local ENTRY-022 execution classifies M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT; exact-head Linux validation and Architect review are pending.`
+- Current phase: `ENTRY-022 is an assay-only physical-fission replay followed by one actuator-off eligibility step and 2,999-step inherited-polarity, same-mean, and motor-off daughter comparisons. No production polarity, resource behavior, fission biology, or accepted runtime source is changed.`
+- Expected or actual touched areas: `isolated ENTRY-022 assay/example, compact evidence, scoped workflow, and append-only governance; chemistry-core, phase1-certifier, regulatory scientific runtime, uptake, metabolism, production, polarity, actuator, traction, fission, remesh, and M1 sources remain unchanged`
+- Immediate next action: `Run exact-head Linux validation, record the sealed CI/artifact result, and await Architect review; do not start successor work.`
 
 ## Temporary task-relevant facts
 
 - M0 is closed; M1 is formally closed and frozen at `fb77f472b1519a9e0f713833efba5b1d403f4723`.
-- Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-011 is Architect accepted as metabolically live in-contact composition; ENTRY-016 is Architect accepted as `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`; ENTRY-019 is Architect accepted as `M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED`; ENTRY-020 is the only authorized active audit.
+- Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-011 is Architect accepted as metabolically live in-contact composition; ENTRY-016 is Architect accepted as `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`; ENTRY-019 is Architect accepted as `M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED`; ENTRY-021 is Architect accepted as `M2_CONSERVATIVE_POLARITY_FISSION_INHERITANCE_AND_AMPLIFICATION_QUALIFIED`; ENTRY-022 is the only authorized active audit.
 - PR #44 is the immutable M1 provenance stack and must remain open, draft, unmerged, and untouched.
 - The clean baseline is derived from `1e242f28152797b512e25cd56c7b718e45d6ca97`; accepted M1 evidence remains on Atlas.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.

@@ -1,0 +1,14 @@
+{
+  "daughter_a": {
+    "actuator_valid": false,
+    "motor_range": "NOT COMPUTED",
+    "reason": "closing edge u+v=0"
+  },
+  "daughter_b": {
+    "actuator_valid": false,
+    "motor_range": "NOT COMPUTED",
+    "reason": "closing edge u+v=0"
+  },
+  "epsilon_fallback": false,
+  "zero_pool_convention": false
+}

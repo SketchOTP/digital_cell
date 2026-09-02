@@ -1,0 +1,22 @@
+{
+  "a_to_w": "PASS",
+  "active_motion": true,
+  "architect_acceptance": "PENDING",
+  "autonomous_embodied_locomotion": "NOT_ESTABLISHED",
+  "autonomous_polarity_initiation": "QUALIFIED",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "classification": "M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT",
+  "daughter_a_spatial_leverage": false,
+  "daughter_b_spatial_leverage": false,
+  "daughter_separation": true,
+  "downstream_preservation": "PASS",
+  "eligibility": "PASS",
+  "entry005_021_preservation": "PASS",
+  "index_invariance": "PASS",
+  "m1_preservation": "PASS",
+  "next_execution_started": false,
+  "physical_fission": "PASS",
+  "polarity_fission_inheritance": "QUALIFIED",
+  "rotation": "PASS",
+  "step_zero_interface": "NON_ACTUATABLE_ZERO_POOL"
+}

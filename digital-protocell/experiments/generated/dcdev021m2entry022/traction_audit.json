@@ -1,0 +1,15 @@
+{
+  "daughter_a": {
+    "motor_off_slips": 74162,
+    "spatial_slips": 74650,
+    "spatial_tension_proxy": 324.59721964600345,
+    "uniform_slips": 74617
+  },
+  "daughter_b": {
+    "motor_off_slips": 124253,
+    "spatial_slips": 125194,
+    "spatial_tension_proxy": 357.3150677634873,
+    "uniform_slips": 125118
+  },
+  "traction_equations_changed": false
+}

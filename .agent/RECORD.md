@@ -375,3 +375,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: ENTRY-020 is Architect accepted as `M2_AUTONOMOUS_POLARITY_MECHANICAL_AMPLITUDE_INSUFFICIENT`. ENTRY-021 tests whether the accepted life-history Polar state can be carried as local control-volume amounts through `MeshPopulation::step + mesh_fission::try_local_fission`, with no whole-pool duplication or daughter favoritism, and whether the exact 198-site mother to 78/122-site daughter split produces spatial amplification beyond same-total homogeneous controls. The local replay reaches step `2326`; polarity `u+v` and `F` transport closure are zero within floating-point output, rotation/index invariance pass, and both daughters show immediate nonconstant amplitude above their same-total controls. The local classification is `M2_CONSERVATIVE_POLARITY_FISSION_INHERITANCE_AND_AMPLIFICATION_QUALIFIED`; exact-head Linux validation and Architect review remain pending.
 - Affected areas: additive observer-only ENTRY-021 assay/example, compact evidence, scoped workflow, and append-only governance only; no scientific runtime, fission/reproduction biology, polarity production, actuator, traction, resource, metabolism, uptake, restart, M1, or PR #44 change.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY022-POST-FISSION-TRANSIENT-LOCOMOTION-R1
+
+- Date: 2026-09-02
+- Record or decision ID: DEC-DCDEV021-ENTRY022-POST-FISSION-TRANSIENT-LOCOMOTION-R1
+- Status: ACTIVE
+- Decision or event: ENTRY-022 is executed from exact accepted ENTRY-021 head `7a372cff217c1ce4af78a5c5dacada761d7e41d7` as an assay-only test of inherited post-fission polarity through the existing A-funded effector.
+- Rationale: ENTRY-021 established conservative local polarity inheritance but exposed a synthesized closing edge with `u+v=0`, which is not actuator-valid. ENTRY-022 therefore records the birth state without actuation, advances exactly one ordinary actuator-off eligibility step, and then compares exact inherited spatial `u/(u+v)`, same-mean uniform, and motor-off daughter arms over the bounded post-fission horizon. The local result preserves activity and closure but finds no spatial motor contrast beyond controls, classified `M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT` pending remote validation and Architect review.
+- Affected areas: additive assay/example, compact evidence, scoped workflow, and governance only; no production polarity, fission, remesh, actuator, traction, metabolism, resource, M1, restart, or PR #44 change.
+- Supersedes record: none

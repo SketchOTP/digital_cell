@@ -25,6 +25,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
+
 ## D-20260815-dcdev001a-architecture-selection - PARTIAL
 
 - Outcome ID: OUT-DCDEV001A-ARCHITECTURE-SELECTION
@@ -1067,5 +1068,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Exact-head Linux CI - PENDING
   - Architect review - PENDING
 - Remaining risks: remote validation may identify workflow, governance, or preservation defects; ENTRY-021 does not establish production polarity, autonomous locomotion, or autonomous resource acquisition.
+- Blockers: exact-head Linux validation and Architect review; do not start successor work.
+- Follow-up directive: none
+
+## D-20260902-dcdev021-m2-entry022-post-fission-transient-locomotion - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY022-POST-FISSION-TRANSIENT-LOCOMOTION-LOCAL`
+- Supersedes outcome: none
+- Closed: `2026-09-02T12:08:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The local ENTRY-022 assay replays the accepted unforced D-088 fission at step `2326`, producing the accepted 198-site mother and 78/122-site daughters. Birth states retain a zero-pool closing edge and are explicitly non-actuatable. One actuator-off, growth-off, additional-fission-off eligibility step makes every daughter `u+v` strictly positive, after which exact `u/(u+v)` inherited-spatial, same-mean uniform, and motor-off arms run for the remaining 2,999 steps. Both active arms remain energetic and locomotory, but neither inherited spatial arm exceeds its same-mean and motor-off controls on the preregistered displacement criteria; the local classification is `M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT`.
+- Changed areas: additive ENTRY-022 assay/example, compact evidence under `digital-protocell/experiments/generated/dcdev021m2entry022/`, scoped workflow, and append-only governance only; no accepted scientific runtime, fission biology, polarity production, resource, M1, restart, or PR #44 change.
+- Validation:
+  - Exact physical fission replay, zero-pool boundary, strict post-fission eligibility, six daughter arms, A-to-W closure, rotation/index checks, and local release execution - PASSED
+  - Exact-head Linux CI - PENDING
+  - Architect review - PENDING
+- Remaining risks: remote validation may identify workflow, preservation, or scope defects; ENTRY-022 does not establish autonomous resource acquisition or production polarity integration.
 - Blockers: exact-head Linux validation and Architect review; do not start successor work.
 - Follow-up directive: none

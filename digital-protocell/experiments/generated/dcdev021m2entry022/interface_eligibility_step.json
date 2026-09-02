@@ -1,0 +1,44 @@
+{
+  "daughter_a": {
+    "accepted_step": 1,
+    "actuator": "OFF",
+    "additional_fission": "OFF",
+    "all_u_plus_v_strictly_positive": true,
+    "growth": "OFF",
+    "interface_now_eligible": true,
+    "minimum_u_plus_v": 0.41152731894935896,
+    "motor_time_origin": "t_motor=0 at this state",
+    "new_site_count": 79,
+    "old_site_count": 78,
+    "remesh_origin": 0,
+    "remesh_uv_residual": 8.881784197001252e-16,
+    "weighted_uv_after_remap": 4.882017715377261,
+    "weighted_uv_before": 4.882017715377262
+  },
+  "daughter_b": {
+    "accepted_step": 1,
+    "actuator": "OFF",
+    "additional_fission": "OFF",
+    "all_u_plus_v_strictly_positive": true,
+    "growth": "OFF",
+    "interface_now_eligible": true,
+    "minimum_u_plus_v": 0.8139028317144151,
+    "motor_time_origin": "t_motor=0 at this state",
+    "new_site_count": 123,
+    "old_site_count": 122,
+    "remesh_origin": 0,
+    "remesh_uv_residual": 0.0,
+    "weighted_uv_after_remap": 7.684352898909303,
+    "weighted_uv_before": 7.684352898909303
+  },
+  "order": [
+    "physical fission state capture",
+    "one passive post-fission dynamics step",
+    "growth OFF",
+    "additional fission OFF",
+    "actuator OFF",
+    "conservative remesh transport",
+    "Polar reaction-diffusion advance",
+    "strict u+v check"
+  ]
+}

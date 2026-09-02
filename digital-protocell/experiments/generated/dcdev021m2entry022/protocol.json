@@ -1,0 +1,13 @@
+{
+  "additional_fission": "OFF",
+  "directive": "DC-DEV-021-M2-ENTRY-022-POST-FISSION-INHERITED-POLARITY-TRANSIENT-LOCOMOTION-FEASIBILITY-001",
+  "growth": "OFF after fission",
+  "interface": "u/(u+v) after strict eligibility",
+  "motor_steps": 2999,
+  "next_execution_started": false,
+  "no_epsilon_fallback": true,
+  "observer_only": true,
+  "post_fission_steps": 3000,
+  "resource": false,
+  "starting_head": "7a372cff217c1ce4af78a5c5dacada761d7e41d7"
+}

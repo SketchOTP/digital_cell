@@ -1,0 +1,5 @@
+{
+  "comparison": "all arms start from the same eligible daughter state",
+  "motor_common_prefix": 2999,
+  "post_fission_steps": 3000
+}

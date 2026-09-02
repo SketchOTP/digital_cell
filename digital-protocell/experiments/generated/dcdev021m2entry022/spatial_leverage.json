@@ -1,0 +1,6 @@
+{
+  "a_vs_b_separation": true,
+  "daughter_a": false,
+  "daughter_b": false,
+  "same_mean_controls": "same mean motor drive; spatial organization only"
+}

@@ -556,3 +556,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260901-dcdev021-m2-entry020-autonomous-polarity-embodied-locomotion
 - Status at issuance: ISSUED
+
+## D-20260902-dcdev021-m2-entry022-post-fission-transient-locomotion
+
+- Issued: `2026-09-02T12:08:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-022-POST-FISSION-INHERITED-POLARITY-TRANSIENT-LOCOMOTION-FEASIBILITY-001`
+- Objective: Determine whether the exact accepted physical fission path yields a lawful, transient post-fission daughter locomotion contrast when inherited `u/(u+v)` polarity drives the existing A-funded effector after one actuator-off eligibility step.
+- Scope: Observer/assay-only replay of accepted ENTRY-021 fission, explicit zero-pool boundary, one passive eligibility step, Daughter A/B inherited-spatial, same-mean uniform, and motor-off arms, common-prefix metrics, temporal decay, energetic/traction/rotation/index audits, compact evidence, scoped workflow, governance, and exact-head Linux validation.
+- Exclusions: epsilon fallback, zero-pool actuator convention, production polarity, resource interaction, post-ingestive behavior, new gain/threshold/memory/noise, fission or remesh changes, topology changes, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: One preregistered ENTRY-022 classification after exact fission authority, strict interface eligibility, daughter-arm locomotion contrast, preservation, governance, and exact-head Linux checks.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260901-dcdev021-m2-entry021-conservative-polarity-fission-inheritance-amplification
+- Status at issuance: ISSUED

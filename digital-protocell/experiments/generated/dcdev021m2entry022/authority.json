@@ -1,0 +1,19 @@
+{
+  "entry021": "M2_CONSERVATIVE_POLARITY_FISSION_INHERITANCE_AND_AMPLIFICATION_QUALIFIED",
+  "physical_authority": "MeshPopulation::step + mesh_fission::try_local_fission",
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "state": "OPEN"
+  },
+  "scientific_runtime_source_changed": false,
+  "source_hashes": {
+    "contractility.rs": "588b40fe26029232",
+    "mesh_fission.rs": "dcb859522534cf03",
+    "mesh_mechanics.rs": "eaaa4f5898833bfd",
+    "mesh_population.rs": "6c893524be8d2c3e",
+    "stick_slip_traction.rs": "ec1ad2b699ca7461"
+  },
+  "starting_head": "7a372cff217c1ce4af78a5c5dacada761d7e41d7"
+}

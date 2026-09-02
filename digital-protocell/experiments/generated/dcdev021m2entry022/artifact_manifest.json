@@ -1,0 +1,136 @@
+{
+  "classification": "M2_POST_FISSION_TRANSIENT_MOTOR_CONTRAST_MECHANICALLY_INSUFFICIENT",
+  "dense_traces": "Atlas",
+  "directive": "DC-DEV-021-M2-ENTRY-022-POST-FISSION-INHERITED-POLARITY-TRANSIENT-LOCOMOTION-FEASIBILITY-001",
+  "files": [
+    {
+      "file": "protocol.json",
+      "sha256": "stable-json:b42af41905d0789d"
+    },
+    {
+      "file": "authority.json",
+      "sha256": "stable-json:27c6197a30168eaa"
+    },
+    {
+      "file": "external_discovery.json",
+      "sha256": "stable-json:db3d93dd8fdd15ff"
+    },
+    {
+      "file": "fission_authority.json",
+      "sha256": "stable-json:ace2f1307ab3da9b"
+    },
+    {
+      "file": "daughter_start_authority.json",
+      "sha256": "stable-json:ad45f264c4ebae6f"
+    },
+    {
+      "file": "step_zero_interface_boundary.json",
+      "sha256": "stable-json:d6b98ea308f5f209"
+    },
+    {
+      "file": "interface_eligibility_step.json",
+      "sha256": "stable-json:c2484b3eed6451f4"
+    },
+    {
+      "file": "daughter_a_interface_eligibility.json",
+      "sha256": "stable-json:9e290eddb00d1d84"
+    },
+    {
+      "file": "daughter_b_interface_eligibility.json",
+      "sha256": "stable-json:b9d55b4153bf1398"
+    },
+    {
+      "file": "daughter_a_inherited_spatial.json",
+      "sha256": "stable-json:d6613339e32672e0"
+    },
+    {
+      "file": "daughter_a_same_mean.json",
+      "sha256": "stable-json:af5de4217ab7c7fa"
+    },
+    {
+      "file": "daughter_a_motor_off.json",
+      "sha256": "stable-json:cf9808e4c35ef2c6"
+    },
+    {
+      "file": "daughter_b_inherited_spatial.json",
+      "sha256": "stable-json:3340c5e83a022eac"
+    },
+    {
+      "file": "daughter_b_same_mean.json",
+      "sha256": "stable-json:203c86914db53b2e"
+    },
+    {
+      "file": "daughter_b_motor_off.json",
+      "sha256": "stable-json:17c6ce38d53799dd"
+    },
+    {
+      "file": "common_prefix.json",
+      "sha256": "stable-json:daf62eb1f464d2ba"
+    },
+    {
+      "file": "motor_decay_chronology.json",
+      "sha256": "stable-json:f7fb94a85a6b3129"
+    },
+    {
+      "file": "locomotion_metrics.json",
+      "sha256": "stable-json:eaa6043114c624cc"
+    },
+    {
+      "file": "pairwise_centroid_divergence.json",
+      "sha256": "stable-json:81d856d870dd7b20"
+    },
+    {
+      "file": "causal_temporal_order.json",
+      "sha256": "stable-json:1fdcd00bcbe48d15"
+    },
+    {
+      "file": "spatial_leverage.json",
+      "sha256": "stable-json:440f77c194fe32be"
+    },
+    {
+      "file": "energetic_closure.json",
+      "sha256": "stable-json:0408d89aadf2c5a3"
+    },
+    {
+      "file": "traction_audit.json",
+      "sha256": "stable-json:20ac0b053315a6bb"
+    },
+    {
+      "file": "actuation_feedback.json",
+      "sha256": "stable-json:0c3eff7247c89cdb"
+    },
+    {
+      "file": "rotation_equivariance.json",
+      "sha256": "stable-json:2ba2f86f0193f3e8"
+    },
+    {
+      "file": "index_invariance.json",
+      "sha256": "stable-json:7965d6fc6215a0c0"
+    },
+    {
+      "file": "forbidden_information_audit.json",
+      "sha256": "stable-json:52f246e229ff0023"
+    },
+    {
+      "file": "m1_preservation.json",
+      "sha256": "stable-json:f9ba4e9df37eec6a"
+    },
+    {
+      "file": "downstream_preservation.json",
+      "sha256": "stable-json:34df32d48fc40af9"
+    },
+    {
+      "file": "restart_boundary.json",
+      "sha256": "stable-json:131f0b6cddb5e9bf"
+    },
+    {
+      "file": "repository_professionalism.json",
+      "sha256": "stable-json:7d4a0665d5d6fe72"
+    },
+    {
+      "file": "qualification.json",
+      "sha256": "stable-json:f89d251162326c8e"
+    }
+  ],
+  "starting_head": "7a372cff217c1ce4af78a5c5dacada761d7e41d7"
+}

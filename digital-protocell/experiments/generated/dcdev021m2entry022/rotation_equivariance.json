@@ -1,0 +1,6 @@
+{
+  "daughter_topology_invariant": true,
+  "pass": true,
+  "rotation": "180 degrees replay",
+  "trajectory_rotation": "structural replay check; no world direction"
+}
