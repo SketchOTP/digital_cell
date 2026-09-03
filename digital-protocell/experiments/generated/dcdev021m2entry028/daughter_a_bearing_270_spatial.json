@@ -1,0 +1,152 @@
+{
+  "a_spent": 1033.372968868682,
+  "a_to_w_residual": 7.958078640513122e-13,
+  "arm": "DAUGHTER_A_BEARING_270_SPATIAL",
+  "bearing_degrees": 270,
+  "checkpoints": [
+    {
+      "a": 1.8700029810501042,
+      "centroid": [
+        25.577609380433184,
+        40.88584227428491
+      ],
+      "contact_edges": [],
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "f": 0.6808652868398193,
+      "n": 0.6808652868398193,
+      "reaction_f_consumed": 2.033378555210792,
+      "reaction_n_consumed": 2.033378555210792,
+      "step": 1,
+      "w": 0.9203488530628791
+    },
+    {
+      "a": 1.8484500570110878,
+      "centroid": [
+        25.60638631725419,
+        40.8905192005917
+      ],
+      "contact_edges": [],
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "f": 0.6752416719449124,
+      "n": 0.6752416719449124,
+      "reaction_f_consumed": 50.600557908963516,
+      "reaction_n_consumed": 50.600557908963516,
+      "step": 25,
+      "w": 0.9041909464570432
+    },
+    {
+      "a": 1.8349248140553003,
+      "centroid": [
+        25.634220267232106,
+        40.88162908451672
+      ],
+      "contact_edges": [],
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "f": 0.6717703457401881,
+      "n": 0.6717703457401881,
+      "reaction_f_consumed": 202.247437587877,
+      "reaction_n_consumed": 202.247437587877,
+      "step": 100,
+      "w": 0.8909672554403665
+    },
+    {
+      "a": 1.7669315869944227,
+      "centroid": [
+        25.684360415203304,
+        40.86872029934341
+      ],
+      "contact_edges": [],
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "f": 0.6012924962970098,
+      "n": 0.6012924962970098,
+      "reaction_f_consumed": 950.8061524744653,
+      "reaction_n_consumed": 950.8061524744653,
+      "step": 500,
+      "w": 0.8221937056090272
+    },
+    {
+      "a": 1.6098789633128578,
+      "centroid": [
+        25.68307265653785,
+        40.83137117976007
+      ],
+      "contact_edges": [],
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "f": 0.5336040365776216,
+      "n": 0.5336040365776216,
+      "reaction_f_consumed": 1689.1627811847472,
+      "reaction_n_consumed": 1689.1627811847472,
+      "step": 1000,
+      "w": 0.7045804006480779
+    },
+    {
+      "a": 1.3792487970450646,
+      "centroid": [
+        25.95682710957224,
+        40.70099121840666
+      ],
+      "contact_edges": [],
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "f": 0.5100262939648119,
+      "n": 0.5100262939648119,
+      "reaction_f_consumed": 3020.0428942825897,
+      "reaction_n_consumed": 3020.0428942825897,
+      "step": 2000,
+      "w": 0.63763754993898
+    },
+    {
+      "a": 1.1144399549811053,
+      "centroid": [
+        25.93966754284673,
+        40.579390582120936
+      ],
+      "contact_edges": [],
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "f": 0.4905986803500634,
+      "n": 0.4905986803500634,
+      "reaction_f_consumed": 4358.617933526515,
+      "reaction_n_consumed": 4358.617933526515,
+      "step": 3000,
+      "w": 0.6031141776478954
+    }
+  ],
+  "contact_duration_steps": 0,
+  "contact_entries": 0,
+  "contact_exits": 0,
+  "daughter": "A",
+  "delivered_f": 0.0,
+  "delivered_n": 0.0,
+  "displacement_path_ratio": 0.5719428146823881,
+  "final_a": 1.1144399549811053,
+  "final_f": 0.4905986803500634,
+  "final_n": 0.4905986803500634,
+  "first_contact_edges": [],
+  "first_contact_step": null,
+  "first_second_fission_step": null,
+  "initial_a": 1.8750274227624522,
+  "invalid": false,
+  "maximum_contact_patches": 0,
+  "motor_off": false,
+  "motor_w_generated": 1033.3729688686853,
+  "net_displacement": 0.47478606218309477,
+  "path_length": 0.8301285548044756,
+  "reaction_a_produced": 4358.617933526515,
+  "reaction_f_consumed": 4358.617933526515,
+  "reaction_n_consumed": 4358.617933526515,
+  "reaction_w_produced": 6568.909543477666,
+  "remaining_f": 3.0,
+  "remaining_n": 3.0,
+  "slips": 30877,
+  "spatial": true,
+  "stuck_contacts": 200129,
+  "terminal_step": 3000,
+  "world_f_loss": 0.0,
+  "world_n_loss": 0.0
+}

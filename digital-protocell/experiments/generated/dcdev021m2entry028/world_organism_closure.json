@@ -1,0 +1,8 @@
+{
+  "a_to_w_motor_pass": true,
+  "max_a_to_w_residual": 1.8189894035458565e-12,
+  "no_unexplained_world_sink": true,
+  "pass": true,
+  "species": "N/F/A/W",
+  "world_nf_pass": true
+}

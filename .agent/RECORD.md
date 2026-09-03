@@ -526,6 +526,16 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Affected areas: additive ENTRY-027 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, production polarity, resource, actuator, traction, M1, restart, or PR #44 change.
 - Supersedes record: DEC-DCDEV021-ENTRY027-GROWTH-ON-INTERFISSION-LOCOMOTION
 
+## DEC-DCDEV021-ENTRY028-BALANCED-SEPARATED-RESOURCE-ECOLOGY
+
+- Date: 2026-09-03
+- Record or decision ID: DEC-DCDEV021-ENTRY028-BALANCED-SEPARATED-RESOURCE-ECOLOGY
+- Status: ACTIVE
+- Decision or event: ENTRY-028 authorized from exact accepted ENTRY-027 head `c002777fa59169ad206bb92fc4e76d7646f10061` as a balanced separated-resource ecological coupling feasibility assay.
+- Rationale: ENTRY-027 established a bounded daughter-dependent growth-on locomotor phenotype. ENTRY-028 tests whether that accepted phenotype causes physical finite N/F contact and acquisition consequences across both daughters and four preregistered bearings without resource information entering behavior.
+- Affected areas: additive ENTRY-028 assay/example, compact evidence, scoped workflow, append-only governance, and the explicitly authorized nonsemantic ENTRY-027 presentation-header correction only; no production scientific runtime or PR #44 change.
+- Supersedes record: none
+
 ## DEC-DCDEV021-ENTRY027-GROWTH-ON-INTERFISSION-LOCOMOTION-FINAL-CORRECTION
 
 - Date: 2026-09-02

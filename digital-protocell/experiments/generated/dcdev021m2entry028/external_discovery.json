@@ -1,0 +1,15 @@
+{
+  "parameters_imported": false,
+  "prior_art": [
+    {
+      "classification": "ADAPTABLE",
+      "principle": "resource harvest can be coupled to reproductive capacity",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/31150287/"
+    },
+    {
+      "classification": "REFERENCE",
+      "principle": "digital ecology can model organism-environment resource coupling",
+      "source": "https://www.frontiersin.org/journals/ecology-and-evolution/articles/10.3389/fevo.2021.750779/full"
+    }
+  ]
+}

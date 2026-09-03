@@ -507,3 +507,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-021 ENTRY-027 growth-on inter-fission locomotion feasibility.
 - Supersedes learning: L-DCDEV021-ENTRY027-002
+
+## L-DCDEV021-ENTRY028-001
+
+- Learning ID: L-DCDEV021-ENTRY028-001
+- Date: 2026-09-03
+- Fact or lesson: The balanced separated-resource ENTRY-028 assay uses the exact unforced ENTRY-027 first fission and daughter-dependent live continuation. Closed-polygon placement at one daughter mean-edge clearance produced physical contact in the assay, but no spatial arm exceeded both same-mean and motor-off controls in delivered N/F; locomotion and lifecycle accounting remained active and valid. External prior art from DISHTINY and digital-ecology work was recorded as adaptable/reference context only; no parameters or behavior were imported.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry028.rs`, `digital-protocell/examples/dcdev021_m2_entry028_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2entry028/`, and `.github/workflows/dc-dev-021-m2-entry028.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-028 balanced separated-resource ecological coupling feasibility.
+- Supersedes learning: none

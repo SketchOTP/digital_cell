@@ -1,0 +1,14 @@
+{
+  "centroid_feedback": false,
+  "contact": false,
+  "distance": false,
+  "future_contact": false,
+  "gradient": false,
+  "inventory": false,
+  "memory": false,
+  "resource_center": false,
+  "resource_radius": false,
+  "target": false,
+  "uptake_ledger": false,
+  "viability": false
+}

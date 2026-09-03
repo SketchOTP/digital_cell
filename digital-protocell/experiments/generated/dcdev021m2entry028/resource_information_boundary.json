@@ -1,0 +1,9 @@
+{
+  "contact_read_by_behavior": false,
+  "distance_read_by_behavior": false,
+  "inventory_read_by_behavior": false,
+  "ledger_read_by_behavior": false,
+  "resource_affects_only_after_physical_transfer": true,
+  "resource_center_read_by_behavior": false,
+  "resource_radius_read_by_behavior": false
+}

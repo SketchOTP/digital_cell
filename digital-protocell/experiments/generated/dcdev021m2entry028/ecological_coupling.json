@@ -1,0 +1,18 @@
+{
+  "any_causal_advantage": false,
+  "any_contact": true,
+  "classification": "M2_SEPARATED_RESOURCE_CONTACT_WITHOUT_ACQUISITION_ADVANTAGE",
+  "daughter_a_bearing_advantage": [
+    false,
+    false,
+    false,
+    false
+  ],
+  "daughter_b_bearing_advantage": [
+    false,
+    false,
+    false,
+    false
+  ],
+  "exploration_retained": true
+}

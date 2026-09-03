@@ -25,6 +25,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
+## D-20260903-dcdev021-m2-entry028-balanced-separated-resource-ecology - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY028-BALANCED-SEPARATED-RESOURCE-ECOLOGY-LOCAL`
+- Supersedes outcome: none
+- Closed: 2026-09-03T09:45:00-04:00
+- Acceptance: `PARTIAL`
+- Summary: ENTRY-028 local execution replayed the exact accepted ENTRY-027 unforced 198→78/122 fission and ran all 24 daughter/bearing spatial, same-mean, and motor-off arms. Initial gaps were exactly one daughter mean edge with zero initial contact. Physical contact occurred, but no spatial arm showed a causal N/F acquisition advantage over both controls; locomotion remained active and the bounded local classification is `M2_SEPARATED_RESOURCE_CONTACT_WITHOUT_ACQUISITION_ADVANTAGE`.
+- Changed areas: additive ENTRY-028 assay/example, compact evidence, scoped workflow, append-only governance, and the explicitly authorized ENTRY-027 presentation-header correction; no accepted scientific runtime source or PR #44 modification.
+- Validation:
+  - Local release build and assay - PASSED
+  - Exact-head Linux CI - NOT RUN
+  - Independent artifact digest - NOT RUN
+  - Governance validator - PASSED
+  - Notion readback - NOT RUN
+- Remaining risks: remote exact-head validation and Architect review remain pending; autonomous resource acquisition and environment-dependent evolution remain unestablished.
+- Blockers: none.
+- Follow-up directive: none
+
 ## D-20260902-dcdev021-m2-entry025-live-antagonistic-inherited-locomotion - PARTIAL
 
 - Outcome ID: `OUT-DCDEV021-ENTRY025-LIVE-ANTAGONISTIC-INHERITED-LOCOMOTION-LOCAL`

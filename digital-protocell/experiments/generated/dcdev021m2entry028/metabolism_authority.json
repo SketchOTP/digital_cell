@@ -1,0 +1,8 @@
+{
+  "implementation": "reactions_step_with_reserve_mode",
+  "new_reaction": false,
+  "order": "mechanics -> finite uptake -> frozen reaction kernel -> growth/remesh -> polarity continuation",
+  "parameters": "ReactionParams::conservative_v3()",
+  "reserve_enabled": false,
+  "reserve_mode": "Full"
+}

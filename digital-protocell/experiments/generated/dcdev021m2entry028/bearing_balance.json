@@ -1,0 +1,22 @@
+{
+  "bearings": [
+    0,
+    90,
+    180,
+    270
+  ],
+  "daughter_a": [
+    false,
+    false,
+    false,
+    false
+  ],
+  "daughter_b": [
+    false,
+    false,
+    false,
+    false
+  ],
+  "no_bearing_screening": true,
+  "primary_seed": 1
+}

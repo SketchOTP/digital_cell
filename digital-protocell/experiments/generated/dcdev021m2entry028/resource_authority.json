@@ -1,0 +1,9 @@
+{
+  "behavior_reads_resource": false,
+  "contact_observer": "local_contact_signal",
+  "implementation": "FiniteSpatialResourceRegionV1",
+  "initial_f": 3.0,
+  "initial_n": 3.0,
+  "radius": 1.5,
+  "uptake": "resource.uptake(&mut mesh, &TransportParams::default(), mechanics.dt)"
+}

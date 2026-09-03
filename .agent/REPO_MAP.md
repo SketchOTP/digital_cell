@@ -116,3 +116,7 @@
 - `digital-protocell/examples/dcdev021_m2_entry027.rs` — isolated ENTRY-027 growth-on inter-fission inherited-polarity locomotion assay with spatial, same-mean, motor-off, lifecycle, closure, rotation/index, and preservation evidence; no second fission or production change.
 - `digital-protocell/experiments/generated/dcdev021m2entry027/` — compact ENTRY-027 authority, daughter-arm, lifecycle, locomotion, closure, preservation, and qualification evidence.
 - `.github/workflows/dc-dev-021-m2-entry027.yml` — exact-head Linux validation for ENTRY-027 authority, assay evidence, historical preservation, D-087, downstream tests, governance, and artifact upload.
+- `digital-protocell/examples/dcdev021_m2_entry028.rs` — isolated ENTRY-028 balanced separated-resource ecological coupling entry point.
+- `digital-protocell/examples/dcdev021_m2_entry028_impl.rs` — ENTRY-028 assay implementation reusing the accepted ENTRY-027 daughter/fission path; no production behavior change.
+- `digital-protocell/experiments/generated/dcdev021m2entry028/` — compact ENTRY-028 geometry, 24 daughter/bearing arms, contact/acquisition, metabolism, lifecycle, preservation, and qualification evidence.
+- `.github/workflows/dc-dev-021-m2-entry028.yml` — exact-head Linux validation for ENTRY-028 authority, separated ecology, historical preservation, D-087, downstream tests, governance, and artifact upload.

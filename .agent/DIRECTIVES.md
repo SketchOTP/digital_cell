@@ -654,3 +654,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260902-dcdev021-m2-entry026r1-population-fission-gate-requalification
 - Status at issuance: ISSUED
+
+## D-20260903-dcdev021-m2-entry028-balanced-separated-resource-ecology
+
+- Issued: `2026-09-03T09:30:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-028-BALANCED-SEPARATED-RESOURCE-ECOLOGICAL-COUPLING-FEASIBILITY-001`
+- Objective: Determine whether the accepted daughter-dependent growth-on locomotor phenotype produces a causal ecological consequence by encountering and acquiring a preregistered separated finite N/F resource.
+- Scope: Exact ENTRY-027 first-fission/daughter replay, balanced 0/90/180/270 geometry for both daughters, spatial/same-mean/motor-off arms, existing finite resource and conservative metabolism, lifecycle boundary without second fission, compact evidence, preservation, governance, and exact-head Linux validation.
+- Exclusions: Resource information in behavior, chemotaxis, navigation, post-ingestive coupling, tuning, distance/horizon screening, favorable-seed selection, evolution claims, production changes, fission changes, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: `M2_BALANCED_SEPARATED_AUTONOMOUS_RESOURCE_ACQUISITION_QUALIFIED`, `M2_DAUGHTER_DEPENDENT_RESOURCE_ECOLOGICAL_COUPLING_QUALIFIED`, `M2_SEPARATED_RESOURCE_CONTACT_WITHOUT_ACQUISITION_ADVANTAGE`, `M2_INTERFISSION_LOCOMOTION_ECOLOGICALLY_INSUFFICIENT`, `M2_ENTRY028_RESOURCE_METABOLISM_AUTHORITY_UNRESOLVED`, or `M2_ENTRY028_RESOURCE_ECOLOGY_INVALID` according to the directive gates and exact-head validation.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260902-dcdev021-m2-entry027-growth-on-interfission-locomotion
+- Status at issuance: ISSUED

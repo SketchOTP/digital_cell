@@ -1,0 +1,6 @@
+{
+  "correction": "stale top-level ENTRY-026-R1 presentation header corrected to ENTRY-027",
+  "scientific_semantics_changed": false,
+  "sealed_entry027_evidence_rewritten": false,
+  "source": "digital-protocell/examples/dcdev021_m2_entry027.rs"
+}

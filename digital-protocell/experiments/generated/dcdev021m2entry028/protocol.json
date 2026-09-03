@@ -1,0 +1,21 @@
+{
+  "bearings": [
+    0,
+    90,
+    180,
+    270
+  ],
+  "daughters": [
+    "A",
+    "B"
+  ],
+  "directive": "DC-DEV-021-M2-ENTRY-028-BALANCED-SEPARATED-RESOURCE-ECOLOGICAL-COUPLING-FEASIBILITY-001",
+  "horizon": 3000,
+  "initial_f_mass": 3.0,
+  "initial_n_mass": 3.0,
+  "next_execution_started": false,
+  "observer_only": true,
+  "resource_radius": 1.5,
+  "second_fission_executed": false,
+  "starting_head": "c002777fa59169ad206bb92fc4e76d7646f10061"
+}

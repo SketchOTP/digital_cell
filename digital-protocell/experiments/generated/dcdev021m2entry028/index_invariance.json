@@ -1,0 +1,5 @@
+{
+  "material_local_ring_order": true,
+  "pass": true,
+  "resource_placement_uses_geometry_not_index": true
+}

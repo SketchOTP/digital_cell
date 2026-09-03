@@ -1,0 +1,198 @@
+{
+  "arms": [
+    {
+      "a_spent": 1033.372968868682,
+      "arm": "DAUGHTER_A_BEARING_0_SPATIAL",
+      "reaction_a_produced": 4358.617933526515,
+      "reaction_f_consumed": 4358.617933526515,
+      "reaction_n_consumed": 4358.617933526515,
+      "reaction_w_produced": 6568.909543477666
+    },
+    {
+      "a_spent": 1033.2931433328758,
+      "arm": "DAUGHTER_A_BEARING_0_SAME_MEAN",
+      "reaction_a_produced": 4358.321031313874,
+      "reaction_f_consumed": 4358.321031313874,
+      "reaction_n_consumed": 4358.321031313874,
+      "reaction_w_produced": 6568.5944332260015
+    },
+    {
+      "a_spent": 0.0,
+      "arm": "DAUGHTER_A_BEARING_0_MOTOR_OFF",
+      "reaction_a_produced": 598.6160921453462,
+      "reaction_f_consumed": 598.6160921453462,
+      "reaction_n_consumed": 598.6160921453462,
+      "reaction_w_produced": 809.2575245056154
+    },
+    {
+      "a_spent": 1033.372968868682,
+      "arm": "DAUGHTER_A_BEARING_90_SPATIAL",
+      "reaction_a_produced": 4358.617933526515,
+      "reaction_f_consumed": 4358.617933526515,
+      "reaction_n_consumed": 4358.617933526515,
+      "reaction_w_produced": 6568.909543477666
+    },
+    {
+      "a_spent": 1033.2931433328758,
+      "arm": "DAUGHTER_A_BEARING_90_SAME_MEAN",
+      "reaction_a_produced": 4358.321031313874,
+      "reaction_f_consumed": 4358.321031313874,
+      "reaction_n_consumed": 4358.321031313874,
+      "reaction_w_produced": 6568.5944332260015
+    },
+    {
+      "a_spent": 0.0,
+      "arm": "DAUGHTER_A_BEARING_90_MOTOR_OFF",
+      "reaction_a_produced": 598.6160921453462,
+      "reaction_f_consumed": 598.6160921453462,
+      "reaction_n_consumed": 598.6160921453462,
+      "reaction_w_produced": 809.2575245056154
+    },
+    {
+      "a_spent": 1033.372968868682,
+      "arm": "DAUGHTER_A_BEARING_180_SPATIAL",
+      "reaction_a_produced": 4358.617933526515,
+      "reaction_f_consumed": 4358.617933526515,
+      "reaction_n_consumed": 4358.617933526515,
+      "reaction_w_produced": 6568.909543477666
+    },
+    {
+      "a_spent": 1033.2931433328758,
+      "arm": "DAUGHTER_A_BEARING_180_SAME_MEAN",
+      "reaction_a_produced": 4358.321031313874,
+      "reaction_f_consumed": 4358.321031313874,
+      "reaction_n_consumed": 4358.321031313874,
+      "reaction_w_produced": 6568.5944332260015
+    },
+    {
+      "a_spent": 0.0,
+      "arm": "DAUGHTER_A_BEARING_180_MOTOR_OFF",
+      "reaction_a_produced": 598.6160921453462,
+      "reaction_f_consumed": 598.6160921453462,
+      "reaction_n_consumed": 598.6160921453462,
+      "reaction_w_produced": 809.2575245056154
+    },
+    {
+      "a_spent": 1033.372968868682,
+      "arm": "DAUGHTER_A_BEARING_270_SPATIAL",
+      "reaction_a_produced": 4358.617933526515,
+      "reaction_f_consumed": 4358.617933526515,
+      "reaction_n_consumed": 4358.617933526515,
+      "reaction_w_produced": 6568.909543477666
+    },
+    {
+      "a_spent": 1033.2931433328758,
+      "arm": "DAUGHTER_A_BEARING_270_SAME_MEAN",
+      "reaction_a_produced": 4358.321031313874,
+      "reaction_f_consumed": 4358.321031313874,
+      "reaction_n_consumed": 4358.321031313874,
+      "reaction_w_produced": 6568.5944332260015
+    },
+    {
+      "a_spent": 0.0,
+      "arm": "DAUGHTER_A_BEARING_270_MOTOR_OFF",
+      "reaction_a_produced": 598.6160921453462,
+      "reaction_f_consumed": 598.6160921453462,
+      "reaction_n_consumed": 598.6160921453462,
+      "reaction_w_produced": 809.2575245056154
+    },
+    {
+      "a_spent": 160.41693964049813,
+      "arm": "DAUGHTER_B_BEARING_0_SPATIAL",
+      "reaction_a_produced": 1080.0624510738044,
+      "reaction_f_consumed": 1080.0624510738044,
+      "reaction_n_consumed": 1080.0624510738044,
+      "reaction_w_produced": 1481.9491692881265
+    },
+    {
+      "a_spent": 160.4101509786227,
+      "arm": "DAUGHTER_B_BEARING_0_SAME_MEAN",
+      "reaction_a_produced": 1080.0692793612295,
+      "reaction_f_consumed": 1080.0692793612295,
+      "reaction_n_consumed": 1080.0692793612295,
+      "reaction_w_produced": 1481.9563970550669
+    },
+    {
+      "a_spent": 0.0,
+      "arm": "DAUGHTER_B_BEARING_0_MOTOR_OFF",
+      "reaction_a_produced": 988.9181251412517,
+      "reaction_f_consumed": 988.9181251412517,
+      "reaction_n_consumed": 988.9181251412517,
+      "reaction_w_produced": 1359.2677485401696
+    },
+    {
+      "a_spent": 160.41693964049813,
+      "arm": "DAUGHTER_B_BEARING_90_SPATIAL",
+      "reaction_a_produced": 1080.0624510738044,
+      "reaction_f_consumed": 1080.0624510738044,
+      "reaction_n_consumed": 1080.0624510738044,
+      "reaction_w_produced": 1481.9491692881265
+    },
+    {
+      "a_spent": 160.4101509786227,
+      "arm": "DAUGHTER_B_BEARING_90_SAME_MEAN",
+      "reaction_a_produced": 1080.0692793612295,
+      "reaction_f_consumed": 1080.0692793612295,
+      "reaction_n_consumed": 1080.0692793612295,
+      "reaction_w_produced": 1481.9563970550669
+    },
+    {
+      "a_spent": 0.0,
+      "arm": "DAUGHTER_B_BEARING_90_MOTOR_OFF",
+      "reaction_a_produced": 988.9181251412517,
+      "reaction_f_consumed": 988.9181251412517,
+      "reaction_n_consumed": 988.9181251412517,
+      "reaction_w_produced": 1359.2677485401696
+    },
+    {
+      "a_spent": 160.41693964049813,
+      "arm": "DAUGHTER_B_BEARING_180_SPATIAL",
+      "reaction_a_produced": 1080.0624510738044,
+      "reaction_f_consumed": 1080.0624510738044,
+      "reaction_n_consumed": 1080.0624510738044,
+      "reaction_w_produced": 1481.9491692881265
+    },
+    {
+      "a_spent": 160.4101509786227,
+      "arm": "DAUGHTER_B_BEARING_180_SAME_MEAN",
+      "reaction_a_produced": 1080.0692793612295,
+      "reaction_f_consumed": 1080.0692793612295,
+      "reaction_n_consumed": 1080.0692793612295,
+      "reaction_w_produced": 1481.9563970550669
+    },
+    {
+      "a_spent": 0.0,
+      "arm": "DAUGHTER_B_BEARING_180_MOTOR_OFF",
+      "reaction_a_produced": 988.9181251412517,
+      "reaction_f_consumed": 988.9181251412517,
+      "reaction_n_consumed": 988.9181251412517,
+      "reaction_w_produced": 1359.2677485401696
+    },
+    {
+      "a_spent": 160.41693964049813,
+      "arm": "DAUGHTER_B_BEARING_270_SPATIAL",
+      "reaction_a_produced": 1080.0624510738044,
+      "reaction_f_consumed": 1080.0624510738044,
+      "reaction_n_consumed": 1080.0624510738044,
+      "reaction_w_produced": 1481.9491692881265
+    },
+    {
+      "a_spent": 160.4101509786227,
+      "arm": "DAUGHTER_B_BEARING_270_SAME_MEAN",
+      "reaction_a_produced": 1080.0692793612295,
+      "reaction_f_consumed": 1080.0692793612295,
+      "reaction_n_consumed": 1080.0692793612295,
+      "reaction_w_produced": 1481.9563970550669
+    },
+    {
+      "a_spent": 0.0,
+      "arm": "DAUGHTER_B_BEARING_270_MOTOR_OFF",
+      "reaction_a_produced": 988.9181251412517,
+      "reaction_f_consumed": 988.9181251412517,
+      "reaction_n_consumed": 988.9181251412517,
+      "reaction_w_produced": 1359.2677485401696
+    }
+  ],
+  "authority": "frozen conservative_v3 reaction kernel",
+  "resource_signal_to_behavior": false
+}

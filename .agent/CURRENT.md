@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-02T22:26:00-04:00`
+- Last updated: `2026-09-03T09:30:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260902-dcdev021-m2-entry027-growth-on-interfission-locomotion`
-- External directive ID: `DC-DEV-021-M2-ENTRY-027-GROWTH-ON-INTERFISSION-INHERITED-POLARITY-LOCOMOTION-FEASIBILITY-001`
-- Objective: Determine whether ordinary post-fission growth with inherited polarity drives daughter-dependent locomotion through the unchanged A-funded effector before the true second-fission eligibility boundary.
+- Local directive ID: `D-20260903-dcdev021-m2-entry028-balanced-separated-resource-ecology`
+- External directive ID: `DC-DEV-021-M2-ENTRY-028-BALANCED-SEPARATED-RESOURCE-ECOLOGICAL-COUPLING-FEASIBILITY-001`
+- Objective: Determine whether accepted daughter-dependent growth-on locomotion produces a causal ecological consequence in a preregistered balanced separated-resource assay.
 - Current status: `VALIDATING`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `ENTRY-027 assay, preservation, governance, exact-head Linux validation, artifact verification, and Notion readback complete; Architect review pending`
-- Expected or actual touched areas: `additive ENTRY-027 assay/example, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `return the completed ENTRY-027 handoff for Architect review; do not start successor work`
+- Current phase: `ENTRY-028 local assay complete; preservation, governance, exact-head Linux validation, artifact verification, and Notion readback pending`
+- Expected or actual touched areas: `additive ENTRY-028 assay/example, compact evidence, scoped workflow, append-only governance, authorized ENTRY-027 header correction`
+- Immediate next action: `validate, commit, push, run exact-head Linux CI, verify artifact, append/read back Notion; do not start successor work`
 
 ## Temporary task-relevant facts
 
@@ -45,10 +45,12 @@
 - ENTRY-006 reuses the exact DC-DEV-013 finite N/F geometry, inventory, horizon, tolerances, and DC-DEV-008 uptake while recording contact only as an observer. Chemotaxis, target/gradient logic, reserve enablement, and M2 successor work remain unauthorized.
 - ENTRY-024 is an assay-only direct-versus-antagonistic effector-orientation audit. It uses `u/(u+v)` for direct parity and the exact complement `v/(u+v)` as a bounded counterfactual through unchanged A-funded contractility/stick-slip. No production polarity, live reaction-diffusion, resource, tuning, phase sweep, new gain, threshold, or semantic RhoA claim is authorized.
 - ENTRY-025 is complete at exact result head `c506837301c5cb4ed98b519b9cfc79f1033597fa` with classification `M2_LIVE_ANTAGONISTIC_INHERITED_POLARITY_COMPOSITION_INSUFFICIENT`; exact-head CI `33688853406` passed and the independently downloaded artifact ZIP digest is `sha256:3751de543f4355c4dff858f6ca5855bac592260aa2b0a94b3ed219098ee193c2`. No scientific runtime source changed; no successor work is authorized pending Architect review.
+- ENTRY-027 is Architect accepted as `M2_GROWTH_ON_INTERFISSION_LOCOMOTION_DAUGHTER_DEPENDENT` at sealed head `c002777fa59169ad206bb92fc4e76d7646f10061`; Daughter B is the bounded positive locomotor phenotype and sibling-wide locomotion remains unestablished.
+- ENTRY-028 is the sole authorized successor. Its local run found balanced separated physical contact but no spatial-arm N/F acquisition advantage over both controls; autonomous resource acquisition and environment-dependent evolution remain unestablished.
 
 ## Last validation after adoption
 
-- Command or check: `ENTRY-027 final exact-head Linux workflow 33708546230 on 2dd93d1a644eb50089b7e7be43d17e9c07becc31; independent artifact digest sha256:728083dca165ba71dbba1ad43e3f4132728faa26bb2bd3514ef521619f676e0c; local release assay, preservation matrix, governance, and Notion readback`
+- Command or check: `ENTRY-028 local release assay on m2/dc-dev-021-entry028-balanced-separated-resource-ecology`
 - Result: `PASSED`
 
 ## Risks

@@ -1,12 +1,12 @@
-//! DC-DEV-021 M2 ENTRY-026-R1: population fission-gate requalification.
-//!
-//! This is an isolated, actuator-free assay. It reuses the accepted physical
-//! fission, growth, and native-ring helpers to compare ordinary post-fission
-//! development against the historical growth-OFF daughter boundary. ENTRY-025
-//! remains a valid negative under its deliberately non-developing protocol;
-//! ENTRY-026 asks the different question of whether normal development changes
-//! the inherited polarity trajectory. It does not alter production polarity,
-//! fission, mechanics, resource physics, or M1.
+// DC-DEV-021 M2 ENTRY-027: growth-on interfission inherited-polarity locomotion.
+//
+// This is an isolated assay. It reuses the accepted physical fission, growth,
+// and native-ring helpers to compare ordinary post-fission development against
+// the historical growth-OFF daughter boundary. ENTRY-025 remains a valid
+// negative under its deliberately non-developing protocol; ENTRY-026 asks the
+// different question of whether normal development changes inherited polarity.
+// It does not alter production polarity, fission, mechanics, resource physics,
+// or M1.
 
 use chemistry_core::material_mesh::{MaterialMesh, MeshContractVersion};
 use chemistry_core::mesh_fission::{try_local_fission, FissionEvent, FissionParams};
@@ -22,6 +22,7 @@ use regulatory_core::{
     apply_stick_slip_to_legacy_mechanics, ContractilityParamsV1, StickSlipTractionParamsV1,
     FROZEN_ZERO_MOTION_TOLERANCE,
 };
+use regulatory_core::FiniteSpatialResourceRegionV1;
 use serde_json::{json, Value};
 use std::env;
 use std::f64::consts::PI;

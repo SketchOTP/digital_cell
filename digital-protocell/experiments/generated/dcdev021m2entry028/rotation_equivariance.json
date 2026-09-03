@@ -1,0 +1,6 @@
+{
+  "classification_invariant": true,
+  "construction": "balanced material-local bearings and closed-polygon geometry",
+  "pass": true,
+  "world_axis_behavior": false
+}

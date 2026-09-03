@@ -1,0 +1,20 @@
+{
+  "entry027_artifact": "sha256:c988b75bffe8adec38991fb0171f93e0c604ca8df963eaccb83dbccc641d4388",
+  "entry027_classification": "M2_GROWTH_ON_INTERFISSION_LOCOMOTION_DAUGHTER_DEPENDENT",
+  "entry027_final_head": "c002777fa59169ad206bb92fc4e76d7646f10061",
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "number": 44,
+    "state": "OPEN"
+  },
+  "source_hashes": {
+    "entry027_source": "fc8cb4d592349d2a",
+    "mesh_fission.rs": "dcb859522534cf03",
+    "mesh_growth.rs": "f466c37daea1186c",
+    "mesh_mechanics.rs": "eaaa4f5898833bfd",
+    "spatial_resource.rs": "47e9d8394c9e4896"
+  },
+  "starting_head": "c002777fa59169ad206bb92fc4e76d7646f10061"
+}

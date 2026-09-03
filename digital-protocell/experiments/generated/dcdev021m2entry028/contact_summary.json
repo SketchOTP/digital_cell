@@ -1,0 +1,148 @@
+{
+  "arms": [
+    {
+      "arm": "DAUGHTER_A_BEARING_0_SPATIAL",
+      "contact_duration_steps": 209,
+      "first_contact_step": 340,
+      "maximum_contact_patches": 2
+    },
+    {
+      "arm": "DAUGHTER_A_BEARING_0_SAME_MEAN",
+      "contact_duration_steps": 208,
+      "first_contact_step": 341,
+      "maximum_contact_patches": 2
+    },
+    {
+      "arm": "DAUGHTER_A_BEARING_0_MOTOR_OFF",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_A_BEARING_90_SPATIAL",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_A_BEARING_90_SAME_MEAN",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_A_BEARING_90_MOTOR_OFF",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_A_BEARING_180_SPATIAL",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_A_BEARING_180_SAME_MEAN",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_A_BEARING_180_MOTOR_OFF",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_A_BEARING_270_SPATIAL",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_A_BEARING_270_SAME_MEAN",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_A_BEARING_270_MOTOR_OFF",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_B_BEARING_0_SPATIAL",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_B_BEARING_0_SAME_MEAN",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_B_BEARING_0_MOTOR_OFF",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_B_BEARING_90_SPATIAL",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_B_BEARING_90_SAME_MEAN",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_B_BEARING_90_MOTOR_OFF",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_B_BEARING_180_SPATIAL",
+      "contact_duration_steps": 118,
+      "first_contact_step": 183,
+      "maximum_contact_patches": 1
+    },
+    {
+      "arm": "DAUGHTER_B_BEARING_180_SAME_MEAN",
+      "contact_duration_steps": 118,
+      "first_contact_step": 183,
+      "maximum_contact_patches": 1
+    },
+    {
+      "arm": "DAUGHTER_B_BEARING_180_MOTOR_OFF",
+      "contact_duration_steps": 9,
+      "first_contact_step": 267,
+      "maximum_contact_patches": 1
+    },
+    {
+      "arm": "DAUGHTER_B_BEARING_270_SPATIAL",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_B_BEARING_270_SAME_MEAN",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    },
+    {
+      "arm": "DAUGHTER_B_BEARING_270_MOTOR_OFF",
+      "contact_duration_steps": 0,
+      "first_contact_step": null,
+      "maximum_contact_patches": 0
+    }
+  ]
+}

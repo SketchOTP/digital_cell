@@ -1,0 +1,127 @@
+{
+  "all_zero_contact": true,
+  "daughter_a": [
+    {
+      "bearing_degrees": 0,
+      "center": [
+        39.987565644547516,
+        40.88572059186467
+      ],
+      "initial_contact_patches": [],
+      "initial_polygon_distance": 3.9822089309066513,
+      "initial_surface_gap": 2.4822089309066513,
+      "mean_edge_length": 2.4822089309066597,
+      "outcome_screening": false,
+      "placement_source": "settled/first-lawful daughter geometry and centroid only",
+      "resource_radius": 1.5,
+      "target_polygon_distance": 3.9822089309066597
+    },
+    {
+      "bearing_degrees": 90,
+      "center": [
+        25.57692282548515,
+        61.07831049908513
+      ],
+      "initial_contact_patches": [],
+      "initial_polygon_distance": 3.9822089309066526,
+      "initial_surface_gap": 2.4822089309066526,
+      "mean_edge_length": 2.4822089309066597,
+      "outcome_screening": false,
+      "placement_source": "settled/first-lawful daughter geometry and centroid only",
+      "resource_radius": 1.5,
+      "target_polygon_distance": 3.9822089309066597
+    },
+    {
+      "bearing_degrees": 180,
+      "center": [
+        5.790041984933211,
+        40.88572059186467
+      ],
+      "initial_contact_patches": [],
+      "initial_polygon_distance": 3.9822089309066597,
+      "initial_surface_gap": 2.4822089309066597,
+      "mean_edge_length": 2.4822089309066597,
+      "outcome_screening": false,
+      "placement_source": "settled/first-lawful daughter geometry and centroid only",
+      "resource_radius": 1.5,
+      "target_polygon_distance": 3.9822089309066597
+    },
+    {
+      "bearing_degrees": 270,
+      "center": [
+        25.57692282548515,
+        33.747545583074555
+      ],
+      "initial_contact_patches": [],
+      "initial_polygon_distance": 3.982208930906664,
+      "initial_surface_gap": 2.482208930906664,
+      "mean_edge_length": 2.4822089309066597,
+      "outcome_screening": false,
+      "placement_source": "settled/first-lawful daughter geometry and centroid only",
+      "resource_radius": 1.5,
+      "target_polygon_distance": 3.9822089309066597
+    }
+  ],
+  "daughter_b": [
+    {
+      "bearing_degrees": 0,
+      "center": [
+        77.67222179731715,
+        40.60165128979485
+      ],
+      "initial_contact_patches": [],
+      "initial_polygon_distance": 3.9929535797987556,
+      "initial_surface_gap": 2.4929535797987556,
+      "mean_edge_length": 2.492953579798749,
+      "outcome_screening": false,
+      "placement_source": "settled/first-lawful daughter geometry and centroid only",
+      "resource_radius": 1.5,
+      "target_polygon_distance": 3.992953579798749
+    },
+    {
+      "bearing_degrees": 90,
+      "center": [
+        49.502010565457084,
+        67.83591373132899
+      ],
+      "initial_contact_patches": [],
+      "initial_polygon_distance": 3.9929535797987357,
+      "initial_surface_gap": 2.4929535797987357,
+      "mean_edge_length": 2.492953579798749,
+      "outcome_screening": false,
+      "placement_source": "settled/first-lawful daughter geometry and centroid only",
+      "resource_radius": 1.5,
+      "target_polygon_distance": 3.992953579798749
+    },
+    {
+      "bearing_degrees": 180,
+      "center": [
+        26.037623375412004,
+        40.60165128979485
+      ],
+      "initial_contact_patches": [],
+      "initial_polygon_distance": 3.9929535797987508,
+      "initial_surface_gap": 2.4929535797987508,
+      "mean_edge_length": 2.492953579798749,
+      "outcome_screening": false,
+      "placement_source": "settled/first-lawful daughter geometry and centroid only",
+      "resource_radius": 1.5,
+      "target_polygon_distance": 3.992953579798749
+    },
+    {
+      "bearing_degrees": 270,
+      "center": [
+        49.502010565457084,
+        14.996337838146673
+      ],
+      "initial_contact_patches": [],
+      "initial_polygon_distance": 3.992953579798749,
+      "initial_surface_gap": 2.492953579798749,
+      "mean_edge_length": 2.492953579798749,
+      "outcome_screening": false,
+      "placement_source": "settled/first-lawful daughter geometry and centroid only",
+      "resource_radius": 1.5,
+      "target_polygon_distance": 3.992953579798749
+    }
+  ]
+}

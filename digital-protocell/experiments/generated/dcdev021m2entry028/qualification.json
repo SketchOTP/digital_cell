@@ -1,0 +1,29 @@
+{
+  "architect_acceptance": "PENDING",
+  "autonomous_polarity_initiation": "NOT_ESTABLISHED",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "classification": "M2_SEPARATED_RESOURCE_CONTACT_WITHOUT_ACQUISITION_ADVANTAGE",
+  "contact_observed": true,
+  "daughter_a_bearing_advantage": [
+    false,
+    false,
+    false,
+    false
+  ],
+  "daughter_b_bearing_advantage": [
+    false,
+    false,
+    false,
+    false
+  ],
+  "directive": "DC-DEV-021-M2-ENTRY-028-BALANCED-SEPARATED-RESOURCE-ECOLOGICAL-COUPLING-FEASIBILITY-001",
+  "downstream_preservation": "PASS",
+  "entry005_027_preservation": "PASS",
+  "environment_dependent_evolution": "NOT_ESTABLISHED",
+  "exploration_retained": true,
+  "m1_preservation": "PASS",
+  "next_execution_started": false,
+  "resource_information": "NONE",
+  "second_fission_executed": false,
+  "starting_head": "c002777fa59169ad206bb92fc4e76d7646f10061"
+}
