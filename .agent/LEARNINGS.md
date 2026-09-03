@@ -537,3 +537,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-021 ENTRY-028 balanced separated-resource ecological coupling feasibility.
 - Supersedes learning: L-DCDEV021-ENTRY028-001
+
+## L-DCDEV021-M2-CLOSURE001-R1-002
+
+- Learning ID: L-DCDEV021-M2-CLOSURE001-R1-002
+- Date: 2026-09-03
+- Fact or lesson: Exact-head R1 workflow 33814844918 passed on 7e0c9ce909fd6ebfa54a780ce5bde790cab20903 with artifact ZIP digest sha256:8ae2995ac7705921b029d5856a1663c97340ec629fdef375c16b7a5f0efa5bcd. The corrected local polarity clutch reaches separated finite resources and transfers N/F with active mechanics, while no second-generation fission or resource-causal reproduction occurs in the bounded run. Nonfeeding transport, closed-polygon clearance, ENTRY-027 parity, lineage segment accounting, and passive traction semantics are validated.
+- Evidence location: digital-protocell/examples/dcdev021_m2_closure001_impl.rs, digital-protocell/experiments/generated/dcdev021m2closure001r1/, and .github/workflows/dc-dev-021-m2-closure001-r1.yml.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 M2 CLOSURE-001-R1 finite-world sensorimotor requalification and polarity-clutch migration.
+- Supersedes learning: L-DCDEV021-M2-CLOSURE001-R1-001

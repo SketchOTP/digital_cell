@@ -1430,3 +1430,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: remote validation may identify workflow or preservation defects; no second-generation fission or resource-causal reproduction is established in the bounded run.
 - Blockers: exact-head Linux CI, artifact verification, Notion readback, and Architect review.
 - Follow-up directive: none
+
+## D-20260903-dcdev021-m2-closure001-r1-polarity-clutch-migration - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE001-R1-POLARITY-CLUTCH-MIGRATION-FINAL`
+- Supersedes outcome: `OUT-DCDEV021-M2-CLOSURE001-R1-POLARITY-CLUTCH-MIGRATION`
+- Closed: 2026-09-03T17:00:00-04:00
+- Acceptance: `MET`
+- Summary: Exact-head R1 validation passed. The corrected finite-world boundary preserves nonfeeding transport and reserves positive N/F influx to finite inventory; exact polygon clearance, ENTRY-027 parity, lineage motion accounting, passive traction semantics, and the parameter-free local polarity clutch all pass. The clutch reaches separated resources and transfers finite N/F with active mechanics, while no second-generation fission or resource-causal reproduction occurs in the bounded run. The final classification is `M2_POLARITY_CLUTCH_AUTONOMOUS_ACQUISITION_QUALIFIED_REPRODUCTIVE_COUPLING_NOT_ESTABLISHED`.
+- Changed areas: additive R1 finite-world helper, assay-local corrected force composition and traction clutch, compact evidence, scoped workflow, and append-only governance; sealed CLOSURE-001 evidence, M1, and PR #44 remain unchanged.
+- Validation:
+  - Local release assay, evidence validation, focused finite-world/D-088/D-091/evolution tests, and governance validation - PASSED
+  - Exact-head Linux workflow `33814844918` on `7e0c9ce909fd6ebfa54a780ce5bde790cab20903` - PASSED
+  - Independently downloaded artifact ZIP digest `sha256:8ae2995ac7705921b029d5856a1663c97340ec629fdef375c16b7a5f0efa5bcd` - PASSED
+  - PR #44 state verification (OPEN/DRAFT/UNMERGED/UNTOUCHED) - PASSED
+  - Architect review - NOT RUN
+- Remaining risks: This bounded R1 result does not establish resource-causal reproduction, a mutable heritable causal phenotype, or evolution re-entry; no successor work is authorized.
+- Blockers: Architect review only.
+- Follow-up directive: none

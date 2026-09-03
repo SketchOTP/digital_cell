@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-03T15:10:00-04:00`
+- Last updated: `2026-09-03T17:00:00-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20260903-dcdev021-m2-closure001-r1-polarity-clutch-migration`
 - External directive ID: `DC-DEV-021-M2-CLOSURE-001-R1-FINITE-WORLD-SENSORIMOTOR-REQUALIFICATION-AND-POLARITY-CLUTCH-MIGRATION-001`
 - Objective: Requalify the finite-world closure after correcting nonfeeding transport, ENTRY-027 parity, polygon geometry, lineage motion accounting, passive traction semantics, and conditionally test the parameter-free local polarity clutch.
-- Current status: `IN_PROGRESS`
+- Current status: `COMPLETE`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `R1 correction and bounded requalification in progress`
+- Current phase: `R1 correction and bounded requalification complete; Architect review pending`
 - Expected or actual touched areas: `finite-world transport boundary, assay/runtime helpers, corrected polygon geometry, lineage accounting, local traction clutch, compact R1 evidence, scoped workflow, append-only governance`
-- Immediate next action: `run exact-head R1 validation, record artifact digest, update Notion append-only, and return one handoff; do not start successor work`
+- Immediate next action: `Architect review only; do not start successor execution`
 
 ## Temporary task-relevant facts
 

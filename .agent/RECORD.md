@@ -586,3 +586,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Correct omitted nonfeeding transport, restore exact ENTRY-027 parity, separate passive traction from A-funded work, replace the circumscribed-radius placement shortcut with closed-polygon clearance, correct cross-fission segment accounting, and conditionally test local polarity clutch suppression.
 - Affected areas: finite-world exchange semantics, assay-local corrected protrusion/passive reaction composition, local polarity clutch, compact R1 evidence, scoped workflow, and append-only governance; no accepted M1 scientific source, PR #44, or successor execution.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE-FINITE-WORLD-AUTONOMOUS-ECOLOGY-FINAL
+
+## DEC-DCDEV021-M2-CLOSURE001-R1-POLARITY-CLUTCH-MIGRATION-FINAL
+
+- Date: 2026-09-03
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE001-R1-POLARITY-CLUTCH-MIGRATION-FINAL
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow 33814844918 passed on result head 7e0c9ce909fd6ebfa54a780ce5bde790cab20903; the independently downloaded artifact ZIP digest is sha256:8ae2995ac7705921b029d5856a1663c97340ec629fdef375c16b7a5f0efa5bcd.
+- Rationale: R1 corrected the finite-world nonfeeding boundary, restored post-mechanics world views and ENTRY-027 parity, replaced the geometry shortcut, corrected lineage and passive-force accounting, and validated the parameter-free local polarity clutch. The clutch reaches separated resources and transfers finite N/F with active mechanics, but no second-generation fission or resource-causal reproduction occurs in the bounded run. The classification is M2_POLARITY_CLUTCH_AUTONOMOUS_ACQUISITION_QUALIFIED_REPRODUCTIVE_COUPLING_NOT_ESTABLISHED.
+- Affected areas: additive R1 finite-world helper, assay-local corrected force composition and clutch, compact evidence, scoped workflow, and append-only governance; no accepted M1 scientific source or PR #44 modification.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE001-R1-POLARITY-CLUTCH-MIGRATION
