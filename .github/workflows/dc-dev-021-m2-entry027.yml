@@ -91,7 +91,7 @@ jobs:
           assert q["interface"] == "v/(u+v)"
           assert q["new_parameter"] == "NONE"
           assert q["second_fission_executed"] is False
-          assert q["rotation"] == "PASS" and q["index_invariance"] == "PASS"
+          assert q["rotation"] is True and q["index_invariance"] is True
           assert q["entry005_026r1_preservation"] == "PASS"
           assert q["m1_preservation"] == "PASS" and q["downstream"] == "PASS"
           assert json.loads((root / "population_lifecycle.json").read_text())["second_fission_executed"] is False

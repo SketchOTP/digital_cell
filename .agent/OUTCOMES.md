@@ -1297,7 +1297,7 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Changed areas: additive ENTRY-027 assay/example, compact evidence, scoped workflow, append-only governance, and no accepted scientific runtime source; PR #44 remains untouched.
 - Validation:
   - Local release assay, lifecycle boundary, material/energy closure, rotation/index, and evidence generation - PASSED
-  - Exact-head Linux CI - NOT RUN
+  - Exact-head Linux CI attempt `33708022659` - FAILED only because the workflow compared boolean rotation/index evidence with string `PASS`; assay and evidence validation reached that assertion, and the validator is corrected without changing the assay.
   - Independent artifact digest - NOT RUN
   - Notion readback - NOT RUN
   - Architect review - NOT RUN
