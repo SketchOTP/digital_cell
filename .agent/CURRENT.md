@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-03T12:20:00-04:00`
+- Last updated: `2026-09-03T12:42:00-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20260903-dcdev021-m2-closure-finite-world-autonomous-ecology`
 - External directive ID: `DC-DEV-021-M2-CLOSURE-001-FINITE-WORLD-AUTONOMOUS-ECOLOGY-AND-REPRODUCTIVE-COUPLING-001`
 - Objective: Deliver the bounded finite-world autonomous ecology and reproductive-coupling closure attempt from the exact accepted ENTRY-028 head.
-- Current status: `VALIDATING`
+- Current status: `COMPLETE`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `closure assay and local validation complete; exact-head Linux validation, artifact upload, and Notion readback pending`
+- Current phase: `bounded closure complete; exact-head Linux validation, independent artifact verification, and Notion readback passed; Architect acceptance pending`
 - Expected or actual touched areas: `additive finite-world module, assay/runtime helpers, compact closure evidence, scoped workflow, append-only governance`
-- Immediate next action: `commit and push the bounded closure result, run exact-head Linux validation, then return the handoff; do not start successor work`
+- Immediate next action: `return the completed handoff for Architect review; do not start successor work`
 
 ## Temporary task-relevant facts
 
@@ -48,10 +48,13 @@
 - ENTRY-027 is Architect accepted as `M2_GROWTH_ON_INTERFISSION_LOCOMOTION_DAUGHTER_DEPENDENT` at sealed head `c002777fa59169ad206bb92fc4e76d7646f10061`; Daughter B is the bounded positive locomotor phenotype and sibling-wide locomotion remains unestablished.
 - ENTRY-028 is the sole authorized successor. Its local run found balanced separated physical contact but no spatial-arm N/F acquisition advantage over both controls; autonomous resource acquisition and environment-dependent evolution remain unestablished.
 - ENTRY-028 assay head is `7dbe9b85d28b9cb65842f98c2fa41405f37f2445`; exact-head Linux workflow `33745961902` passed after a preservation-check correction, and the independently downloaded artifact ZIP digest is `sha256:81d5de75785c60b0e811a3240033e1262af790ecdeefb7dfcf454901094249f0`.
+- M2 closure result head is `328a68a4d18757b537f69c3d9e33cbd5099d6cd7`; exact-head Linux workflow `33779402628` passed, and the GitHub artifact API independently reports ZIP digest `sha256:3578659875dd9982f9b9a76f26664f42fcc8fb7042533eb6f303a6c28d14d01f`.
+- M2 closure classification is `M2_CURRENT_SENSORIMOTOR_ROUTE_ECOLOGICALLY_INSUFFICIENT`: finite shared-world allocation and direct-contact transfer/metabolism sanity passed, but the existing motor and conditional assay-only protrusion route did not reach separated resources in the fixed ecology. Autonomous polarity initiation remains qualified; autonomous finite-resource acquisition, resource-causal reproduction, mutable heritable causal phenotype, and evolution re-entry remain unestablished.
+- Closure exact-head CI and artifact verification are complete; PR #44 remains open, draft, unmerged, and untouched; Notion Digital Cell was updated append-only and read back successfully. Architect acceptance remains pending and no successor execution started.
 
 ## Last validation after adoption
 
-- Command or check: `ENTRY-028 exact-head Linux workflow 33745961902 on 7dbe9b85d28b9cb65842f98c2fa41405f37f2445; independent artifact ZIP digest sha256:81d5de75785c60b0e811a3240033e1262af790ecdeefb7dfcf454901094249f0; local release assay and governance validator`
+- Command or check: `M2 closure exact-head Linux workflow 33779402628 on 328a68a4d18757b537f69c3d9e33cbd5099d6cd7; independent GitHub artifact ZIP digest sha256:3578659875dd9982f9b9a76f26664f42fcc8fb7042533eb6f303a6c28d14d01f; local release assay, evidence, and governance validation`
 - Result: `PASSED`
 
 ## Risks
@@ -72,3 +75,5 @@
 ## Status vocabulary
 
 Allowed adopted-project statuses: `IDLE`, `PLANNING`, `IN_PROGRESS`, `VALIDATING`, `BLOCKED`, `COMPLETE`. `CURRENT.md` is mutable and never replaces historical ledgers. Reset it to `IDLE` when an adopted task closes.
+
+The completed closure task is awaiting reset after Architect acceptance; no successor execution has started.

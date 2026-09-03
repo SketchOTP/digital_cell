@@ -565,3 +565,14 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The authorized closure directive permits an additive finite-world runtime and one conditional A-funded local protrusion fallback. Local execution validates finite shared allocation, positive transfer/metabolism when contact is directly supplied, and energy closure, but neither bounded motility route reaches the preregistered separated resources in the integrated ecology; unforced first fission occurs without a resource-causal descendant fission.
 - Affected areas: additive finite-world module, assay-only extra-force helpers, closure assay/evidence/workflow, and append-only governance; no frozen M1 source, resource-law source, fission source, or PR #44 modification.
 - Supersedes record: none
+
+## DEC-DCDEV021-M2-CLOSURE-FINITE-WORLD-AUTONOMOUS-ECOLOGY-FINAL
+
+- Date: 2026-09-03
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE-FINITE-WORLD-AUTONOMOUS-ECOLOGY-FINAL
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33779402628` passed on result head `328a68a4d18757b537f69c3d9e33cbd5099d6cd7`; independent GitHub artifact ZIP digest `sha256:3578659875dd9982f9b9a76f26664f42fcc8fb7042533eb6f303a6c28d14d01f`; Notion closure handoff was appended and read back.
+- Rationale: The bounded closure execution validates the authorized finite shared-world implementation, order-independent inventory allocation, direct-contact finite transfer with same-step frozen metabolism, existing motor tested before the conditional local protrusion fallback, active mechanics, and unforced first fission. Neither authorized sensorimotor route reaches separated resources in the fixed ecology, so the classification is `M2_CURRENT_SENSORIMOTOR_ROUTE_ECOLOGICALLY_INSUFFICIENT`.
+- Affected areas: additive finite-world module, assay-only extra-force helpers, closure assay/evidence/workflow, and append-only governance; no frozen M1 biology, resource-law source, fission source, or PR #44 modification.
+  M1/D-087, downstream, ENTRY-005 through ENTRY-028, PR #44 state, and restart boundary checks passed; autonomous polarity initiation remains qualified, while autonomous acquisition, resource-causal reproduction, mutable heritable phenotype, and evolution re-entry remain unestablished.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE-FINITE-WORLD-AUTONOMOUS-ECOLOGY
