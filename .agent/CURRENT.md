@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-03T09:30:00-04:00`
+- Last updated: `2026-09-03T10:50:00-04:00`
 
 ## Active state after adoption
 
@@ -12,9 +12,9 @@
 - Objective: Determine whether accepted daughter-dependent growth-on locomotion produces a causal ecological consequence in a preregistered balanced separated-resource assay.
 - Current status: `VALIDATING`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `ENTRY-028 local assay complete; preservation, governance, exact-head Linux validation, artifact verification, and Notion readback pending`
+- Current phase: `ENTRY-028 local and exact-head Linux validation complete; artifact verification and Notion readback complete; Architect review pending`
 - Expected or actual touched areas: `additive ENTRY-028 assay/example, compact evidence, scoped workflow, append-only governance, authorized ENTRY-027 header correction`
-- Immediate next action: `validate, commit, push, run exact-head Linux CI, verify artifact, append/read back Notion; do not start successor work`
+- Immediate next action: `return the completed ENTRY-028 handoff for Architect review; do not start successor work`
 
 ## Temporary task-relevant facts
 
@@ -47,10 +47,11 @@
 - ENTRY-025 is complete at exact result head `c506837301c5cb4ed98b519b9cfc79f1033597fa` with classification `M2_LIVE_ANTAGONISTIC_INHERITED_POLARITY_COMPOSITION_INSUFFICIENT`; exact-head CI `33688853406` passed and the independently downloaded artifact ZIP digest is `sha256:3751de543f4355c4dff858f6ca5855bac592260aa2b0a94b3ed219098ee193c2`. No scientific runtime source changed; no successor work is authorized pending Architect review.
 - ENTRY-027 is Architect accepted as `M2_GROWTH_ON_INTERFISSION_LOCOMOTION_DAUGHTER_DEPENDENT` at sealed head `c002777fa59169ad206bb92fc4e76d7646f10061`; Daughter B is the bounded positive locomotor phenotype and sibling-wide locomotion remains unestablished.
 - ENTRY-028 is the sole authorized successor. Its local run found balanced separated physical contact but no spatial-arm N/F acquisition advantage over both controls; autonomous resource acquisition and environment-dependent evolution remain unestablished.
+- ENTRY-028 assay head is `7dbe9b85d28b9cb65842f98c2fa41405f37f2445`; exact-head Linux workflow `33745961902` passed after a preservation-check correction, and the independently downloaded artifact ZIP digest is `sha256:81d5de75785c60b0e811a3240033e1262af790ecdeefb7dfcf454901094249f0`.
 
 ## Last validation after adoption
 
-- Command or check: `ENTRY-028 local release assay on m2/dc-dev-021-entry028-balanced-separated-resource-ecology`
+- Command or check: `ENTRY-028 exact-head Linux workflow 33745961902 on 7dbe9b85d28b9cb65842f98c2fa41405f37f2445; independent artifact ZIP digest sha256:81d5de75785c60b0e811a3240033e1262af790ecdeefb7dfcf454901094249f0; local release assay and governance validator`
 - Result: `PASSED`
 
 ## Risks

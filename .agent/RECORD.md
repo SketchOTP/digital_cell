@@ -545,3 +545,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The final validation preserves the bounded daughter-dependent classification `M2_GROWTH_ON_INTERFISSION_LOCOMOTION_DAUGHTER_DEPENDENT` and confirms the unforced physical first-fission replay, zero-pool actuator-off boundary, lifecycle observation without second fission, closure, rotation/index, and historical preservation.
 - Affected areas: additive ENTRY-027 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, production polarity, resource, actuator, traction, M1, restart, or PR #44 change.
 - Supersedes record: DEC-DCDEV021-ENTRY027-GROWTH-ON-INTERFISSION-LOCOMOTION-FINAL
+
+## DEC-DCDEV021-ENTRY028-BALANCED-SEPARATED-RESOURCE-ECOLOGY-FINAL
+
+- Date: 2026-09-03
+- Record or decision ID: DEC-DCDEV021-ENTRY028-BALANCED-SEPARATED-RESOURCE-ECOLOGY-FINAL
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33745961902` passed on assay head `7dbe9b85d28b9cb65842f98c2fa41405f37f2445`; independent artifact ZIP digest `sha256:81d5de75785c60b0e811a3240033e1262af790ecdeefb7dfcf454901094249f0`.
+- Rationale: The bounded 24-arm separated-resource ecology confirms initial noncontact, physical contact without delivered N/F advantage, retained locomotion, unforced first fission, closure, preservation, and no successor execution. The classification is `M2_SEPARATED_RESOURCE_CONTACT_WITHOUT_ACQUISITION_ADVANTAGE`.
+- Affected areas: additive ENTRY-028 assay/evidence/workflow/governance and authorized nonsemantic ENTRY-027 presentation correction only; no accepted scientific runtime or PR #44 change.
+- Supersedes record: DEC-DCDEV021-ENTRY028-BALANCED-SEPARATED-RESOURCE-ECOLOGY

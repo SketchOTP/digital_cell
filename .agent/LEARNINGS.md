@@ -517,3 +517,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-028 balanced separated-resource ecological coupling feasibility.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY028-002
+
+- Learning ID: L-DCDEV021-ENTRY028-002
+- Date: 2026-09-03
+- Fact or lesson: Exact-head Linux workflow `33745961902` passed on assay head `7dbe9b85d28b9cb65842f98c2fa41405f37f2445`. Across both daughters and all four preregistered bearings, the separated finite resource was initially noncontacting and physical contact occurred, but no spatial arm exceeded both same-mean and motor-off controls in delivered N/F; the bounded classification remains `M2_SEPARATED_RESOURCE_CONTACT_WITHOUT_ACQUISITION_ADVANTAGE`. The independently downloaded artifact ZIP hashes to `sha256:81d5de75785c60b0e811a3240033e1262af790ecdeefb7dfcf454901094249f0`.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry028.rs`, `digital-protocell/examples/dcdev021_m2_entry028_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2entry028/`, and `.github/workflows/dc-dev-021-m2-entry028.yml`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 ENTRY-028 balanced separated-resource ecological coupling feasibility.
+- Supersedes learning: L-DCDEV021-ENTRY028-001

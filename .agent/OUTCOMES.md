@@ -1358,3 +1358,20 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: This is a bounded daughter-dependent inter-fission locomotion result; autonomous resource acquisition and environment-dependent evolution remain unestablished. No successor work is authorized.
 - Blockers: Architect review only.
 - Follow-up directive: none
+
+## D-20260903-dcdev021-m2-entry028-balanced-separated-resource-ecology - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-ENTRY028-BALANCED-SEPARATED-RESOURCE-ECOLOGY-FINAL`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY028-BALANCED-SEPARATED-RESOURCE-ECOLOGY-LOCAL`
+- Closed: `2026-09-03T11:05:00-04:00`
+- Acceptance: `MET`
+- Summary: ENTRY-028 validates the exact accepted ENTRY-027 unforced first fission and the preregistered balanced separated-resource ecology across both daughters and all four bearings. Initial contact is zero; physical contact occurs on eligible arms, but all arms deliver zero N/F and no spatial arm exceeds both same-mean and motor-off controls. The bounded classification is `M2_SEPARATED_RESOURCE_CONTACT_WITHOUT_ACQUISITION_ADVANTAGE`.
+- Changed areas: additive ENTRY-028 assay/example, compact evidence, scoped workflow, append-only governance, and the explicitly authorized ENTRY-027 presentation-header correction only; no accepted scientific runtime source or PR #44 modification.
+- Validation:
+  - Local release build, full 24-arm assay, lifecycle boundary, closure, rotation/index construction, historical preservation, production/D-087, downstream, and governance - PASSED
+  - Exact-head Linux workflow `33745961902` on assay head `7dbe9b85d28b9cb65842f98c2fa41405f37f2445` - PASSED
+  - Independently downloaded artifact ZIP digest `sha256:81d5de75785c60b0e811a3240033e1262af790ecdeefb7dfcf454901094249f0` - PASSED
+  - Architect review - PENDING
+- Remaining risks: ENTRY-028 does not establish autonomous resource acquisition or environment-dependent evolution; no successor work is authorized pending Architect review.
+- Blockers: Architect review only.
+- Follow-up directive: none
