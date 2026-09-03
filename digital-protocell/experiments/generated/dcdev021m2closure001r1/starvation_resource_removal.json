@@ -1,0 +1,168 @@
+{
+  "hidden_rescue": false,
+  "hunger_variable": false,
+  "transfer_disabled": {
+    "a_spent": 2145.6115213045155,
+    "a_to_w_residual": 1.3642420526593924e-12,
+    "arm": "FINITE_RESOURCE_TRANSFER_DISABLED",
+    "checkpoints": [
+      {
+        "contacts": 0,
+        "delivered_f": 0.0,
+        "delivered_n": 0.0,
+        "fissions": 0,
+        "living": 2,
+        "sites": [
+          79,
+          123
+        ],
+        "step": 1,
+        "world_f": 58.35581952252906,
+        "world_n": 58.35581952252906
+      },
+      {
+        "contacts": 5414,
+        "delivered_f": 0.0,
+        "delivered_n": 0.0,
+        "fissions": 0,
+        "living": 2,
+        "sites": [
+          77,
+          122
+        ],
+        "step": 3000,
+        "world_f": 58.35581952252906,
+        "world_n": 58.35581952252906
+      }
+    ],
+    "contacts": 5414,
+    "delivered_f": 0.0,
+    "delivered_n": 0.0,
+    "descendant_fissions": 0,
+    "first_contact_step": 201,
+    "first_transfer_step": null,
+    "fissions": 0,
+    "initial_world_f": 58.35581952252906,
+    "initial_world_n": 58.35581952252906,
+    "invalid": false,
+    "lineage_motion_segments": [
+      {
+        "generation": 1,
+        "lineage": 1,
+        "parent_lineage": null,
+        "segment_net": 0.5521259657762452,
+        "segment_path": 1.2264191706970016,
+        "terminal": true
+      },
+      {
+        "generation": 1,
+        "lineage": 2,
+        "parent_lineage": null,
+        "segment_net": 1.437696317549324,
+        "segment_path": 1.940603060706483,
+        "terminal": true
+      }
+    ],
+    "motor_w_generated": 2145.611521304522,
+    "net_displacement": 1.9898222833255692,
+    "path_length": 3.16702223140348,
+    "reaction_a_produced": 1279.1925702102808,
+    "reaction_f_consumed": 1279.1925702102808,
+    "reaction_n_consumed": 1279.1925702102808,
+    "reaction_w_produced": 5709.333788610519,
+    "remaining_world_f": 58.35581952252906,
+    "remaining_world_n": 58.35581952252906,
+    "slips": 181826,
+    "steps": 3000,
+    "stuck_contacts": 415184,
+    "terminal_living": 2,
+    "terminal_sites": [
+      77,
+      122
+    ],
+    "world_f_loss": 0.0,
+    "world_n_loss": 0.0
+  },
+  "zero_resource": {
+    "a_spent": 2145.6115213045155,
+    "a_to_w_residual": 1.3642420526593924e-12,
+    "arm": "ZERO_RESOURCE",
+    "checkpoints": [
+      {
+        "contacts": 0,
+        "delivered_f": 0.0,
+        "delivered_n": 0.0,
+        "fissions": 0,
+        "living": 2,
+        "sites": [
+          79,
+          123
+        ],
+        "step": 1,
+        "world_f": 0.0,
+        "world_n": 0.0
+      },
+      {
+        "contacts": 5414,
+        "delivered_f": 0.0,
+        "delivered_n": 0.0,
+        "fissions": 0,
+        "living": 2,
+        "sites": [
+          77,
+          122
+        ],
+        "step": 3000,
+        "world_f": 0.0,
+        "world_n": 0.0
+      }
+    ],
+    "contacts": 5414,
+    "delivered_f": 0.0,
+    "delivered_n": 0.0,
+    "descendant_fissions": 0,
+    "first_contact_step": 201,
+    "first_transfer_step": null,
+    "fissions": 0,
+    "initial_world_f": 0.0,
+    "initial_world_n": 0.0,
+    "invalid": false,
+    "lineage_motion_segments": [
+      {
+        "generation": 1,
+        "lineage": 1,
+        "parent_lineage": null,
+        "segment_net": 0.5521259657762452,
+        "segment_path": 1.2264191706970016,
+        "terminal": true
+      },
+      {
+        "generation": 1,
+        "lineage": 2,
+        "parent_lineage": null,
+        "segment_net": 1.437696317549324,
+        "segment_path": 1.940603060706483,
+        "terminal": true
+      }
+    ],
+    "motor_w_generated": 2145.611521304522,
+    "net_displacement": 1.9898222833255692,
+    "path_length": 3.16702223140348,
+    "reaction_a_produced": 1279.1925702102808,
+    "reaction_f_consumed": 1279.1925702102808,
+    "reaction_n_consumed": 1279.1925702102808,
+    "reaction_w_produced": 5709.333788610519,
+    "remaining_world_f": 0.0,
+    "remaining_world_n": 0.0,
+    "slips": 181826,
+    "steps": 3000,
+    "stuck_contacts": 415184,
+    "terminal_living": 2,
+    "terminal_sites": [
+      77,
+      122
+    ],
+    "world_f_loss": 0.0,
+    "world_n_loss": 0.0
+  }
+}

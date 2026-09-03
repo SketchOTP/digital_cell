@@ -7,7 +7,7 @@
 //! exposure and flux law untouched.
 
 use chemistry_core::material_mesh::MaterialMesh;
-use chemistry_core::mesh_transport::TransportParams;
+use chemistry_core::mesh_transport::{transport_step, TransportLedger, TransportParams};
 use serde::{Deserialize, Serialize};
 
 use crate::backing_reservoir::FiniteSpatialBackingReservoirV1;
@@ -61,6 +61,12 @@ pub struct FiniteWorldDeliveryV1 {
     pub f_world_loss: f64,
     pub allocation_scale: f64,
     pub conservation_error: f64,
+    /// The ordinary membrane exchange performed in the same step with the
+    /// finite-world N/F bath disabled.  This keeps W export and C/A leakage
+    /// on their frozen transport path without creating an unbacked positive
+    /// N/F source.
+    #[serde(default)]
+    pub nonfeeding_transport: TransportLedger,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -131,6 +137,22 @@ impl FiniteWorldV1 {
         transport: &TransportParams,
         dt: f64,
     ) -> Vec<FiniteWorldDeliveryV1> {
+        // The finite world owns the only positive N/F source in this mode.
+        // Preserve the ordinary membrane transport for every mesh, but make
+        // its N/F exterior concentration zero for this pass.  Restoring the
+        // serialized exterior afterwards preserves the mechanical exterior
+        // reference and prevents a hidden bath from feeding the organism.
+        let nonfeeding: Vec<TransportLedger> = meshes
+            .iter_mut()
+            .map(|mesh| {
+                let exterior = mesh.exterior;
+                mesh.exterior.n = 0.0;
+                mesh.exterior.f = 0.0;
+                let ledger = transport_step(mesh, transport, dt);
+                mesh.exterior = exterior;
+                ledger
+            })
+            .collect();
         let mut requests = Vec::with_capacity(meshes.len() * self.resources.len());
         for organism_index in 0..meshes.len() {
             for resource_index in 0..self.resources.len() {
@@ -215,6 +237,10 @@ impl FiniteWorldV1 {
                 f_world_loss: f,
                 allocation_scale: scale,
                 conservation_error: 0.0,
+                nonfeeding_transport: nonfeeding
+                    .get(request.organism_index)
+                    .cloned()
+                    .unwrap_or_default(),
             });
         }
         self.step += 1;
@@ -326,8 +352,12 @@ mod tests {
         assert!(deliveries
             .iter()
             .all(|x| x.n_delivered == 0.0 && x.f_delivered == 0.0));
+        assert!(deliveries.iter().all(|x| {
+            x.nonfeeding_transport.n_in == 0.0
+                && x.nonfeeding_transport.f_in == 0.0
+        }));
         assert_eq!(world.total_n_mass(), before_world);
-        assert_eq!(body.interior.n, before.n);
-        assert_eq!(body.interior.f, before.f);
+        assert!(body.interior.n <= before.n);
+        assert!(body.interior.f <= before.f);
     }
 }

@@ -576,3 +576,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Affected areas: additive finite-world module, assay-only extra-force helpers, closure assay/evidence/workflow, and append-only governance; no frozen M1 biology, resource-law source, fission source, or PR #44 modification.
   M1/D-087, downstream, ENTRY-005 through ENTRY-028, PR #44 state, and restart boundary checks passed; autonomous polarity initiation remains qualified, while autonomous acquisition, resource-causal reproduction, mutable heritable phenotype, and evolution re-entry remain unestablished.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE-FINITE-WORLD-AUTONOMOUS-ECOLOGY
+
+## DEC-DCDEV021-M2-CLOSURE001-R1-POLARITY-CLUTCH-MIGRATION
+
+- Date: 2026-09-03
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE001-R1-POLARITY-CLUTCH-MIGRATION
+- Status: ACTIVE
+- Decision or event: Architect REPLAN authorized R1 from exact head `650a8473f661e1743472b79b79a3b63becbf6d27`; the prior closure terminal classification is superseded, while the finite shared-world/direct-contact substrate remains qualified.
+- Rationale: Correct omitted nonfeeding transport, restore exact ENTRY-027 parity, separate passive traction from A-funded work, replace the circumscribed-radius placement shortcut with closed-polygon clearance, correct cross-fission segment accounting, and conditionally test local polarity clutch suppression.
+- Affected areas: finite-world exchange semantics, assay-local corrected protrusion/passive reaction composition, local polarity clutch, compact R1 evidence, scoped workflow, and append-only governance; no accepted M1 scientific source, PR #44, or successor execution.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE-FINITE-WORLD-AUTONOMOUS-ECOLOGY-FINAL

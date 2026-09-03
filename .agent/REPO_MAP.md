@@ -125,3 +125,6 @@
 - `digital-protocell/examples/dcdev021_m2_entry028_impl.rs` — ENTRY-028 assay implementation reusing the accepted ENTRY-027 daughter/fission path; no production behavior change.
 - `digital-protocell/experiments/generated/dcdev021m2entry028/` — compact ENTRY-028 geometry, 24 daughter/bearing arms, contact/acquisition, metabolism, lifecycle, preservation, and qualification evidence.
 - `.github/workflows/dc-dev-021-m2-entry028.yml` — exact-head Linux validation for ENTRY-028 authority, separated ecology, historical preservation, D-087, downstream tests, governance, and artifact upload.
+- `digital-protocell/examples/dcdev021_m2_closure001_impl.rs` — additive R1 finite-world closure assay with corrected transport, polygon geometry, lineage accounting, passive traction semantics, and conditional local polarity clutch; no production default change.
+- `digital-protocell/experiments/generated/dcdev021m2closure001r1/` — compact R1 authority, boundary, geometry, lineage, acquisition, clutch, closure, preservation, and qualification evidence.
+- `.github/workflows/dc-dev-021-m2-closure001-r1.yml` — exact-head Linux validation for R1 boundary corrections, conditional clutch ecology, preservation, governance, and artifact upload.

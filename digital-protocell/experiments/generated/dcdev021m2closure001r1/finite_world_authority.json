@@ -1,0 +1,11 @@
+{
+  "backing": "FiniteSpatialBackingReservoirV1",
+  "boundary_f": 2.063914918930895,
+  "boundary_n": 2.063914918930895,
+  "capacity_per_patch": 14.588954880632265,
+  "legacy_v1_geometry_unchanged": true,
+  "mechanical_exterior_reference_preserved": true,
+  "positive_nf_owner": "finite resource inventory",
+  "replenishment": 0,
+  "schema": "digital_cell_m2_finite_world_v1"
+}

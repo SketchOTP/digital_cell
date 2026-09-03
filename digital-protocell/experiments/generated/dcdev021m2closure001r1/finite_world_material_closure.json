@@ -1,0 +1,5 @@
+{
+  "no_unbacked_positive_nf": true,
+  "nonfeeding_transport_species_preserved": true,
+  "positive_nf_world_loss_equals_delivery": true
+}

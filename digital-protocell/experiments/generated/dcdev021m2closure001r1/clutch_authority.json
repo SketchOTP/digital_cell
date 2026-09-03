@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "limits": [
+    "h_i * FROZEN_STATIC_TRACTION_LIMIT",
+    "h_i * FROZEN_KINETIC_TRACTION"
+  ],
+  "local_fraction": "u/(u+v)",
+  "new_parameter": false
+}

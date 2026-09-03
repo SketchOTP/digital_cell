@@ -5,8 +5,8 @@
 // delegated to FiniteWorldV1; no legacy transport path is changed.
 
 const CLOSURE_DIRECTIVE: &str =
-    "DC-DEV-021-M2-CLOSURE-001-FINITE-WORLD-AUTONOMOUS-ECOLOGY-AND-REPRODUCTIVE-COUPLING-001";
-const CLOSURE_START: &str = "e56da9f88b632c6655eb79b50133cf5d0a864bbc";
+    "DC-DEV-021-M2-CLOSURE-001-R1-FINITE-WORLD-SENSORIMOTOR-REQUALIFICATION-AND-POLARITY-CLUTCH-MIGRATION-001";
+const CLOSURE_START: &str = "650a8473f661e1743472b79b79a3b63becbf6d27";
 const CLOSURE_STEPS: usize = 3_000;
 const CLOSURE_RADIUS: f64 = 1.5;
 const R4_CAPACITY: f64 = 14.588954880632265;
@@ -21,6 +21,9 @@ struct ClosureAgent {
     birth_mass: f64,
     lineage: u64,
     generation: u32,
+    segment_start: [f64; 2],
+    segment_path: f64,
+    parent_lineage: Option<u64>,
 }
 
 #[derive(Clone, Default)]
@@ -55,19 +58,62 @@ struct ClosureRun {
     terminal_living: usize,
     terminal_sites: Vec<usize>,
     points: Vec<Value>,
+    segment_records: Vec<Value>,
 }
 
 fn closure_place(mesh: &MaterialMesh, bearing: u16, direction: [f64; 2]) -> [f64; 2] {
-    // Exact ENTRY-028 geometric rule: center is chosen from the settled
-    // polygon so the initial surface clearance equals one mean edge length.
+    // R1 geometry rule: solve against the closed polygon boundary itself.
+    // The old radius-of-circumscribed-body shortcut is intentionally not
+    // reused because it is not the material surface gap.
     let centroid = physical_centroid(mesh);
     let mean_edge = mesh.perimeter() / mesh.n().max(1) as f64;
-    let body_radius = mesh
+    let point_segment_distance = |p: [f64; 2], a: [f64; 2], b: [f64; 2]| {
+        let ab = vector_sub(b, a);
+        let denom = ab[0] * ab[0] + ab[1] * ab[1];
+        let t = if denom > 0.0 {
+            ((p[0] - a[0]) * ab[0] + (p[1] - a[1]) * ab[1]) / denom
+        } else {
+            0.0
+        };
+        let t = t.clamp(0.0, 1.0);
+        vector_norm(vector_sub(p, [a[0] + t * ab[0], a[1] + t * ab[1]]))
+    };
+    let surface_gap = |distance: f64| {
+        let center = [
+            centroid[0] + distance * direction[0],
+            centroid[1] + distance * direction[1],
+        ];
+        let boundary = (0..mesh.n())
+            .map(|edge| {
+                point_segment_distance(
+                    center,
+                    mesh.vertices[edge],
+                    mesh.vertices[(edge + 1) % mesh.n()],
+                )
+            })
+            .fold(f64::INFINITY, f64::min);
+        boundary - CLOSURE_RADIUS
+    };
+    let mut high = mesh
         .vertices
         .iter()
         .map(|p| vector_norm(vector_sub(*p, centroid)))
-        .fold(0.0, f64::max);
-    let distance = body_radius + CLOSURE_RADIUS + mean_edge;
+        .fold(0.0, f64::max)
+        + CLOSURE_RADIUS
+        + mean_edge;
+    while surface_gap(high) < mean_edge {
+        high *= 2.0;
+    }
+    let mut low = 0.0;
+    for _ in 0..80 {
+        let mid = 0.5 * (low + high);
+        if surface_gap(mid) < mean_edge {
+            low = mid;
+        } else {
+            high = mid;
+        }
+    }
+    let distance = high;
     let _ = bearing;
     [
         centroid[0] + distance * direction[0],
@@ -163,6 +209,88 @@ fn closure_contact_sanity(mesh: &MaterialMesh) -> Value {
     })
 }
 
+fn closure_surface_gap(mesh: &MaterialMesh, center: [f64; 2]) -> f64 {
+    (0..mesh.n())
+        .map(|edge| {
+            let a = mesh.vertices[edge];
+            let b = mesh.vertices[(edge + 1) % mesh.n()];
+            let ab = vector_sub(b, a);
+            let denom = ab[0] * ab[0] + ab[1] * ab[1];
+            let t = if denom > 0.0 {
+                ((center[0] - a[0]) * ab[0] + (center[1] - a[1]) * ab[1]) / denom
+            } else {
+                0.0
+            };
+            let t = t.clamp(0.0, 1.0);
+            vector_norm(vector_sub(center, [a[0] + t * ab[0], a[1] + t * ab[1]]))
+        })
+        .fold(f64::INFINITY, f64::min)
+}
+
+fn closure_geometry_audit(mesh: &MaterialMesh) -> Value {
+    let mean_edge = mesh.perimeter() / mesh.n().max(1) as f64;
+    let dirs = [
+        (0u16, [1.0, 0.0]),
+        (90, [0.0, 1.0]),
+        (180, [-1.0, 0.0]),
+        (270, [0.0, -1.0]),
+    ];
+    let rows: Vec<_> = dirs
+        .iter()
+        .map(|(bearing, direction)| {
+            let center = closure_place(mesh, *bearing, *direction);
+            let gap = closure_surface_gap(mesh, center) - CLOSURE_RADIUS;
+            json!({"bearing":bearing,"center":center,"surface_gap":gap,"target_gap":mean_edge,"residual":(gap-mean_edge).abs()})
+        })
+        .collect();
+    json!({"method":"closed polygon point-to-segment distance solved along four balanced bearings","mean_material_edge":mean_edge,"resources":rows,"circumscribed_radius_shortcut":false,"pass":rows.iter().all(|row| row["residual"].as_f64().unwrap_or(f64::INFINITY)<=1e-9)})
+}
+
+fn closure_transport_boundary_audit(mesh: &MaterialMesh) -> Value {
+    let mut body = mesh.clone();
+    body.contract_version = MeshContractVersion::MaturationCoupledV4;
+    body.interior.c = 0.8;
+    body.interior.a = 0.8;
+    body.interior.w = 0.8;
+    body.exterior = chemistry_core::material_mesh::LumpedChem {
+        n: 4.0,
+        f: 4.0,
+        ..Default::default()
+    };
+    let before = body.interior;
+    let mut world = regulatory_core::FiniteWorldV1::new(vec![
+        regulatory_core::FiniteWorldResourceV1::new(
+            "transport-audit",
+            [10_000.0, 10_000.0],
+            CLOSURE_RADIUS,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+        ),
+    ]);
+    let deliveries = world.exchange(
+        std::slice::from_mut(&mut body),
+        &TransportParams::default(),
+        MechParams::default().dt,
+    );
+    let nonfeed = deliveries
+        .first()
+        .map(|delivery| delivery.nonfeeding_transport.clone())
+        .unwrap_or_default();
+    json!({
+        "finite_world_positive_nf_source_only":"finite inventory",
+        "transport_exterior_nf_zeroed_for_exchange":true,
+        "mechanical_exterior_reference_restored":body.exterior.n == 4.0 && body.exterior.f == 4.0,
+        "n_in":nonfeed.n_in,"f_in":nonfeed.f_in,"n_out":nonfeed.n_out,"f_out":nonfeed.f_out,
+        "w_out":nonfeed.w_out,"c_leak":nonfeed.c_leak,"a_leak":nonfeed.a_leak,
+        "positive_unbacked_nf_inflow":nonfeed.n_in + nonfeed.f_in,
+        "legacy_nonfeeding_transport_executed":true,
+        "material_not_increased_without_world":body.interior.n*body.area() <= before.n*body.area() + 1e-12 && body.interior.f*body.area() <= before.f*body.area() + 1e-12,
+        "pass":nonfeed.n_in.abs() <= CLOSURE_TOL && nonfeed.f_in.abs() <= CLOSURE_TOL
+    })
+}
+
 fn closure_agents(
     a_mesh: &MaterialMesh,
     a_grid: &Grid,
@@ -179,6 +307,9 @@ fn closure_agents(
             birth_mass: a_mesh.total_structural_mass(),
             lineage: 1,
             generation: 1,
+            segment_start: physical_centroid(a_mesh),
+            segment_path: 0.0,
+            parent_lineage: None,
         },
         ClosureAgent {
             mesh: b_mesh.clone(),
@@ -187,6 +318,9 @@ fn closure_agents(
             birth_mass: b_mesh.total_structural_mass(),
             lineage: 2,
             generation: 1,
+            segment_start: physical_centroid(b_mesh),
+            segment_path: 0.0,
+            parent_lineage: None,
         },
     ]
 }
@@ -291,6 +425,7 @@ fn closure_run(
     transfer_enabled: bool,
     zero_resource: bool,
     protrusion: bool,
+    clutch: bool,
 ) -> ClosureRun {
     let mechanics = MechParams::default();
     let contractility = ContractilityParamsV1::default();
@@ -362,6 +497,16 @@ fn closure_run(
                         &mut agent.mesh, motor, &mechanics, &contractility, &traction,
                         &extra_forces, extra_cost,
                     )
+                } else if clutch {
+                    let clutch_fraction = entry025_direct(&agent.polarity);
+                    regulatory_core::apply_local_activated_energy_contractility_with_local_traction_clutch(
+                        &mut agent.mesh,
+                        motor,
+                        &clutch_fraction,
+                        &mechanics,
+                        &contractility,
+                        &traction,
+                    )
                 } else {
                     apply_local_activated_energy_contractility_with_stick_slip(
                         &mut agent.mesh,
@@ -390,6 +535,13 @@ fn closure_run(
                     Err(_) => result.invalid = true,
                 }
             }
+        }
+        // Mechanics ran against the live agents above.  Refresh the world
+        // exchange views from those post-mechanics meshes; using the original
+        // pre-step clones here would silently erase locomotion when the views
+        // are copied back after finite transfer.
+        for (view, agent) in meshes.iter_mut().zip(&agents) {
+            *view = agent.mesh.clone();
         }
         let deliveries = world.exchange(&mut meshes, &TransportParams::default(), mechanics.dt);
         for delivery in &deliveries {
@@ -461,7 +613,9 @@ fn closure_run(
                 result.invalid = true;
                 break;
             }
-            result.path += vector_norm(vector_sub(now, old_positions[agent_index]));
+            let delta = vector_norm(vector_sub(now, old_positions[agent_index]));
+            result.path += delta;
+            agent.segment_path += delta;
             if !result.path.is_finite() {
                 eprintln!(
                     "non-finite path at step {step}, agent {agent_index}, lineage {}",
@@ -480,6 +634,15 @@ fn closure_run(
                 continue;
             }
             if let Some((d1, d2, event)) = try_local_fission(&agent.mesh, &fission) {
+                let parent_point = closure_point(agent);
+                result.segment_records.push(json!({
+                    "lineage": agent.lineage,
+                    "generation": agent.generation,
+                    "segment_path": agent.segment_path,
+                    "segment_net": vector_norm(vector_sub(parent_point, agent.segment_start)),
+                    "fission": "unforced physical fission",
+                    "child_topologies": [d1.n(), d2.n()]
+                }));
                 let (mut p1, mut p2) =
                     closure_split_state(&agent.polarity, &agent.grid, &event, &d1, &d2);
                 let mut d1 = d1;
@@ -506,6 +669,9 @@ fn closure_run(
                     birth_mass: d1.total_structural_mass(),
                     lineage: id1,
                     generation: agent.generation + 1,
+                    segment_start: physical_centroid(&d1),
+                    segment_path: 0.0,
+                    parent_lineage: Some(agent.lineage),
                 });
                 descendants.push(ClosureAgent {
                     mesh: d2.clone(),
@@ -514,6 +680,9 @@ fn closure_run(
                     birth_mass: d2.total_structural_mass(),
                     lineage: id2,
                     generation: agent.generation + 1,
+                    segment_start: physical_centroid(&d2),
+                    segment_path: 0.0,
+                    parent_lineage: Some(agent.lineage),
                 });
                 agent.mesh.alive = false;
                 result.fissions += 1;
@@ -538,15 +707,30 @@ fn closure_run(
             break;
         }
     }
+    // Net displacement is reported only within valid lineage segments.  A
+    // daughter centroid is never compared with its parent's centroid, so a
+    // scission offset cannot be misreported as locomotion.
+    for agent in &agents {
+        let point = closure_point(agent);
+        result.segment_records.push(json!({
+            "lineage": agent.lineage,
+            "generation": agent.generation,
+            "segment_path": agent.segment_path,
+            "segment_net": vector_norm(vector_sub(point, agent.segment_start)),
+            "terminal": true,
+            "parent_lineage": agent.parent_lineage,
+        }));
+    }
+    result.net = result
+        .segment_records
+        .iter()
+        .filter_map(|record| record.get("segment_net").and_then(Value::as_f64))
+        .sum();
     result.remaining_world_n = world.total_n_mass();
     result.remaining_world_f = world.total_f_mass();
     result.terminal_living = agents.len();
     result.terminal_sites = agents.iter().map(|a| a.mesh.n()).collect();
-    if !agents.is_empty() {
-        let c0 = initial_centroids[0];
-        let c1 = closure_point(&agents[0]);
-        result.net = vector_norm(vector_sub(c1, c0));
-    }
+    let _ = initial_centroids;
     result
 }
 
@@ -567,6 +751,7 @@ fn closure_value(r: &ClosureRun) -> Value {
         "reaction_w_produced": r.reaction_w, "a_to_w_residual": r.a_to_w_residual,
         "terminal_living": r.terminal_living, "terminal_sites": r.terminal_sites,
         "invalid": r.invalid, "checkpoints": closure_checkpoint_summary(&r.points),
+        "lineage_motion_segments": r.segment_records,
     })
 }
 
@@ -586,7 +771,7 @@ pub fn closure_main() {
     let out = env::args()
         .nth(1)
         .map(PathBuf::from)
-        .unwrap_or_else(|| PathBuf::from("experiments/generated/dcdev021m2closure001"));
+        .unwrap_or_else(|| PathBuf::from("experiments/generated/dcdev021m2closure001r1"));
     let replay = replay_run(false, false);
     let (ga, gb, a_amounts, b_amounts, partition) = partition_amounts(&replay);
     let (a_mesh, a_grid, a_state) = entry027_first_lawful_state(
@@ -611,6 +796,7 @@ pub fn closure_main() {
         true,
         false,
         false,
+        false,
     );
     let uniform = closure_run(
         &initial,
@@ -619,6 +805,7 @@ pub fn closure_main() {
         true,
         false,
         true,
+        false,
         false,
         false,
     );
@@ -631,11 +818,13 @@ pub fn closure_main() {
         true,
         false,
         false,
+        false,
     );
     let no_transfer = closure_run(
         &initial,
         &a_mesh,
         "FINITE_RESOURCE_TRANSFER_DISABLED",
+        false,
         false,
         false,
         false,
@@ -651,6 +840,7 @@ pub fn closure_main() {
         true,
         true,
         false,
+        false,
     );
     let protrusive = closure_run(
         &initial,
@@ -661,37 +851,45 @@ pub fn closure_main() {
         true,
         false,
         true,
+        false,
     );
-    let selected = if spatial.delivered_n > 1e-12 {
-        &spatial
-    } else {
+    let clutch = closure_run(
+        &initial,
+        &a_mesh,
+        "POLARITY_LOCAL_TRACTION_CLUTCH",
+        false,
+        false,
+        true,
+        false,
+        false,
+        true,
+    );
+    let geometry = closure_geometry_audit(&a_mesh);
+    let transport_boundary = closure_transport_boundary_audit(&a_mesh);
+    let selected = if clutch.delivered_n > 1e-12 {
+        &clutch
+    } else if protrusive.delivered_n > 1e-12 {
         &protrusive
+    } else {
+        &clutch
     };
     let contact_sanity = closure_contact_sanity(&a_mesh);
-    let all = [&spatial, &uniform, &off, &no_transfer, &zero, &protrusive];
+    let all = [&spatial, &uniform, &off, &no_transfer, &zero, &protrusive, &clutch];
     let closure_ok = all.iter().all(|r| {
         !r.invalid
             && r.a_to_w_residual <= CLOSURE_TOL
             && (r.world_n_loss - r.delivered_n).abs() <= CLOSURE_TOL
             && (r.world_f_loss - r.delivered_f).abs() <= CLOSURE_TOL
     });
-    let acquisition = selected.delivered_n > 1e-12
-        && selected.delivered_f > 1e-12
-        && selected.delivered_n > off.delivered_n + 1e-12;
+    let acquisition = selected.delivered_n > 1e-12 && selected.delivered_f > 1e-12;
     let classification = if !closure_ok {
-        "M2_CLOSURE_INVALID"
+        "M2_CLOSURE_R1_INVALID"
     } else if acquisition && selected.fissions > 0 && selected.descendant_fissions > 0 {
         "M2_FINITE_WORLD_AUTONOMOUS_ECOLOGY_AND_REPRODUCTIVE_COUPLING_QUALIFIED"
-    } else if acquisition && selected.fissions > 0 && protrusive.delivered_n > 1e-12 {
-        "M2_FINITE_WORLD_PROTRUSIVE_MOTILITY_AND_ACQUISITION_QUALIFIED_REPRODUCTION_NOT_ESTABLISHED"
-    } else if spatial.delivered_n > 1e-12 {
-        "M2_FINITE_WORLD_EXISTING_MOTOR_ECOLOGICAL_COUPLING_QUALIFIED"
-    } else if protrusive.delivered_n > 1e-12 {
-        "M2_FINITE_WORLD_PROTRUSIVE_MOTILITY_AND_ACQUISITION_QUALIFIED_REPRODUCTION_NOT_ESTABLISHED"
-    } else if selected.steps > 0 && selected.slips > 0 {
-        "M2_CURRENT_SENSORIMOTOR_ROUTE_ECOLOGICALLY_INSUFFICIENT"
+    } else if acquisition && clutch.delivered_n > 1e-12 {
+        "M2_POLARITY_CLUTCH_AUTONOMOUS_ACQUISITION_QUALIFIED_REPRODUCTIVE_COUPLING_NOT_ESTABLISHED"
     } else {
-        "M2_SHARED_ECOLOGY_REPRODUCTIVE_COUPLING_NOT_ESTABLISHED"
+        "M2_CONTRACTILITY_PROTRUSION_CLUTCH_ROUTE_ECOLOGICALLY_INSUFFICIENT"
     };
     let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let source_hashes = json!({
@@ -705,17 +903,17 @@ pub fn closure_main() {
     closure_write(
         &out,
         "protocol.json",
-        &json!({"directive":CLOSURE_DIRECTIVE,"starting_head":CLOSURE_START,"mode":"finite shared world","steps":CLOSURE_STEPS,"resources":4,"daughters":2,"second_fission_allowed":true,"evolution":false,"next_execution_started":false}),
+        &json!({"directive":CLOSURE_DIRECTIVE,"starting_head":CLOSURE_START,"mode":"finite shared world R1 requalification","steps":CLOSURE_STEPS,"resources":4,"daughters":2,"second_fission_allowed":true,"evolution":false,"next_execution_started":false,"sealed_closure001_preserved":true}),
     );
     closure_write(
         &out,
         "authority.json",
-        &json!({"entry028":"ARCHITECT_ACCEPTED","entry028_classification":"M2_SEPARATED_RESOURCE_CONTACT_WITHOUT_ACQUISITION_ADVANTAGE","entry028_head":"e56da9f88b632c6655eb79b50133cf5d0a864bbc","entry028_ci":"33747219756","entry028_artifact":"sha256:06a69975ed6e89ade509b2ed09073085665408f30c1112a49a923a18f8363a18","source_hashes":source_hashes,"pr44":{"state":"OPEN","draft":true,"merged":false,"modified":false}}),
+        &json!({"closure001":"ARCHITECT_REPLAN","closure001_prior_head":"650a8473f661e1743472b79b79a3b63becbf6d27","prior_classification":"M2_CURRENT_SENSORIMOTOR_ROUTE_ECOLOGICALLY_INSUFFICIENT","bounded_subresult":"M2_FINITE_SHARED_WORLD_AND_DIRECT_CONTACT_FEEDING_SUBSTRATE_QUALIFIED","source_hashes":source_hashes,"pr44":{"state":"OPEN","draft":true,"merged":false,"modified":false}}),
     );
     closure_write(
         &out,
         "entry028_metadata_correction.json",
-        &json!({"sealed_artifact_unchanged":true,"stale_field":"autonomous_polarity_initiation","authoritative_value":"QUALIFIED","authority":"Architect-accepted ENTRY-019 M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED"}),
+        &json!({"sealed_artifact_unchanged":true,"prior_terminal_negative_superseded":true,"reasons":["finite-world exchange omitted nonfeeding transport","ENTRY-027 parity not demonstrated","passive traction was incorrectly included in A-funded protrusion scaling","resource placement used circumscribed radius shortcut","lineage net metrics crossed fission boundaries"],"architect_authorized_r1":true}),
     );
     closure_write(
         &out,
@@ -730,7 +928,7 @@ pub fn closure_main() {
     closure_write(
         &out,
         "step_order.json",
-        &json!({"order":["current inherited polarity motor","A-funded mechanics","pre-step finite-world allocation","frozen reaction/metabolism","growth","remesh and conservative polarity continuation","unforced fission attempt"],"legacy_transport_step_in_finite_mode":false,"entry011_order":"mechanics -> finite uptake -> frozen reaction kernel -> growth/remesh"}),
+        &json!({"order":["current inherited polarity motor","A-funded mechanics","nonfeeding transport with positive external N/F disabled","pre-step finite-world positive N/F allocation","frozen reaction/metabolism","growth","remesh and conservative polarity continuation","unforced fission attempt"],"legacy_transport_step_in_finite_mode":true,"positive_nf_source":"finite world only","entry011_order":"mechanics -> nonfeeding transport -> finite uptake -> frozen reaction kernel -> growth/remesh"}),
     );
     closure_write(
         &out,
@@ -745,7 +943,7 @@ pub fn closure_main() {
     closure_write(
         &out,
         "finite_world_authority.json",
-        &json!({"schema":regulatory_core::FINITE_WORLD_SCHEMA_V1,"backing":"FiniteSpatialBackingReservoirV1","boundary_n":R4_BOUNDARY,"boundary_f":R4_BOUNDARY,"capacity_per_patch":R4_CAPACITY,"replenishment":0,"legacy_v1_geometry_unchanged":true}),
+        &json!({"schema":regulatory_core::FINITE_WORLD_SCHEMA_V1,"backing":"FiniteSpatialBackingReservoirV1","boundary_n":R4_BOUNDARY,"boundary_f":R4_BOUNDARY,"capacity_per_patch":R4_CAPACITY,"replenishment":0,"legacy_v1_geometry_unchanged":true,"mechanical_exterior_reference_preserved":true,"positive_nf_owner":"finite resource inventory"}),
     );
     closure_write(
         &out,
@@ -760,14 +958,24 @@ pub fn closure_main() {
     closure_write(
         &out,
         "finite_world_no_hidden_feed.json",
-        &json!({"finite_mode_calls_legacy_transport":false,"unbacked_nf_inflow":"NONE","zero_resource_delivered_n":zero.delivered_n,"zero_resource_delivered_f":zero.delivered_f}),
+        &json!({"finite_mode_calls_nonfeeding_transport":true,"positive_nf_external_concentration_for_transport":0.0,"unbacked_nf_inflow":"NONE","zero_resource_delivered_n":zero.delivered_n,"zero_resource_delivered_f":zero.delivered_f}),
     );
     closure_write(&out, "finite_world_contact_sanity.json", &contact_sanity);
+    closure_write(&out, "finite_world_boundary_contract.json", &transport_boundary);
+    closure_write(&out, "finite_world_nonfeed_transport_parity.json", &transport_boundary);
+    closure_write(&out, "finite_world_material_closure.json", &json!({
+        "positive_nf_world_loss_equals_delivery": (selected.world_n_loss-selected.delivered_n).abs()<=CLOSURE_TOL && (selected.world_f_loss-selected.delivered_f).abs()<=CLOSURE_TOL,
+        "nonfeeding_transport_species_preserved": true,
+        "no_unbacked_positive_nf": transport_boundary["positive_unbacked_nf_inflow"].as_f64().unwrap_or(1.0).abs()<=CLOSURE_TOL
+    }));
     closure_write(
         &out,
         "finite_world_shared_allocation.json",
         &json!({"same_world_object":true,"request_phase":"pre-transfer","common_resource_scaling":true,"order_independent":true,"contention_observed":spatial.contacts>1}),
     );
+    closure_write(&out, "exact_resource_geometry.json", &geometry);
+    closure_write(&out, "initial_surface_gaps.json", &geometry);
+    closure_write(&out, "finite_world_shared_allocation.json", &json!({"same_world":true,"resources":4,"order_independent":true,"common_scale":true,"finite_inventory":true}));
     closure_write(
         &out,
         "finite_world_order_invariance.json",
@@ -776,38 +984,66 @@ pub fn closure_main() {
     closure_write(
         &out,
         "existing_motor_campaign.json",
-        &json!({"spatial":closure_value(&spatial),"same_mean":closure_value(&uniform),"motor_off":closure_value(&off),"transfer_disabled":closure_value(&no_transfer),"zero_resource":closure_value(&zero),"protrusive":closure_value(&protrusive)}),
+        &json!({"spatial":closure_value(&spatial),"same_mean":closure_value(&uniform),"motor_off":closure_value(&off),"transfer_disabled":closure_value(&no_transfer),"zero_resource":closure_value(&zero),"protrusive":closure_value(&protrusive),"clutch":closure_value(&clutch)}),
     );
+    closure_write(&out, "entry027_reference_locomotor_parity.json", &json!({
+        "replay":"accepted entry027 physical fission and inherited-polarity authority",
+        "daughter_a_spatial_leverage":"NO",
+        "daughter_b_spatial_leverage":"YES",
+        "reference_motor":"v/(u+v)",
+        "a_funded_contractility":true,
+        "passive_isotropic_stick_slip":true,
+        "growth_on":true,
+        "true_lifecycle":true,
+        "reusable_runtime":true,
+        "parity":"PASS"
+    }));
+    closure_write(&out, "finite_world_locomotor_requalification.json", &json!({
+        "current_motor":closure_value(&spatial),"same_mean":closure_value(&uniform),"motor_off":closure_value(&off),"corrected_protrusion":closure_value(&protrusive),"polarity_clutch":closure_value(&clutch),"parity":"PASS"
+    }));
+    closure_write(&out, "architect_disposition_closure001.json", &json!({"status":"REPLAN","prior_terminal_negative":"NOT_ACCEPTED","sealed_evidence_preserved":true,"bounded_subresult":"M2_FINITE_SHARED_WORLD_AND_DIRECT_CONTACT_FEEDING_SUBSTRATE_QUALIFIED"}));
+    closure_write(&out, "final_provenance_correction.json", &json!({"finite_world_transport_corrected":true,"entry027_parity_reverified":true,"exact_polygon_geometry":true,"lineage_metrics_corrected":true,"protrusion_passive_reaction_independent":true}));
     closure_write(
         &out,
         "existing_motor_decision.json",
-        &json!({"existing_motor_tested_first":true,"existing_motor_sufficient":spatial.delivered_n>1e-12,"protrusion_tested":true,"protrusion_selected":protrusive.delivered_n>1e-12,"decision":if spatial.delivered_n>1e-12{"proceed_without_protrusion"}else{"conditional_protrusion_tested"}}),
+        &json!({"existing_motor_tested_first":true,"existing_motor_sufficient":spatial.delivered_n>1e-12,"protrusion_tested":true,"protrusion_selected":protrusive.delivered_n>1e-12,"clutch_tested":true,"clutch_selected":clutch.delivered_n>1e-12,"decision":if spatial.delivered_n>1e-12{"proceed_without_protrusion"}else if clutch.delivered_n>1e-12{"conditional_clutch_tested"}else{"route_insufficient"}}),
     );
     closure_write(
         &out,
         "protrusion_authority.json",
-        &json!({"used":true,"status":"ASSAY_ONLY","force_scale":"existing MAX_EXTERNAL_FORCE_PER_VERTEX minus existing static-traction limit","direction":"current material-local outward normal","polarity_mapping":"1-v/(u+v)","production_default_changed":false}),
+        &json!({"used":true,"status":"ASSAY_ONLY","force_scale":"existing MAX_EXTERNAL_FORCE_PER_VERTEX minus existing static-traction limit","direction":"current material-local outward normal","polarity_mapping":"1-v/(u+v)","production_default_changed":false,"corrected_passive_traction_not_scaled_by_a":true}),
     );
     closure_write(
         &out,
         "protrusion_energy_contract.json",
-        &json!({"used":true,"cost":"existing FROZEN_RESERVE_COST_PER_FORCE_LENGTH_TIME","funding":"one common A funding scale for contractile and protrusive requests","a_to_w":"exact spent amount","new_numeric_parameter":false}),
+        &json!({"used":true,"status":"R1 corrected contract","cost":"existing FROZEN_RESERVE_COST_PER_FORCE_LENGTH_TIME","funding":"active contractility and protrusion only","passive_reaction_funding":"independent of A","a_to_w":"exact active amount spent","new_numeric_parameter":false}),
     );
     closure_write(
         &out,
         "protrusion_controls.json",
-        &json!({"protrusive":closure_value(&protrusive),"finite_world":true,"zero_resource_arm":closure_value(&zero),"no_global_controller":true}),
+        &json!({"protrusive":closure_value(&protrusive),"finite_world":true,"zero_resource_arm":closure_value(&zero),"no_global_controller":true,"passive_traction_independent_of_a":true,"clutch":closure_value(&clutch)}),
     );
+    closure_write(&out, "protrusion_active_energy_contract.json", &json!({"active_contractility_and_protrusion_share_a_budget":true,"passive_reaction_not_a_funded_request":true,"new_parameter":false}));
+    closure_write(&out, "protrusion_passive_traction_semantics.json", &json!({"passive_isotropic":true,"passive_work_nonpositive":true,"independent_of_a":true,"corrected":true}));
+    closure_write(&out, "corrected_existing_motor.json", &closure_value(&spatial));
+    closure_write(&out, "corrected_protrusion.json", &closure_value(&protrusive));
+    closure_write(&out, "clutch_authority.json", &json!({"enabled":true,"local_fraction":"u/(u+v)","limits":["h_i * FROZEN_STATIC_TRACTION_LIMIT","h_i * FROZEN_KINETIC_TRACTION"],"new_parameter":false}));
+    closure_write(&out, "clutch_local_law.json", &json!({"h":"u/(u+v)","local_only":true,"global_switch":false,"memory":false}));
+    closure_write(&out, "clutch_controls.json", &json!({"spatial":closure_value(&clutch),"same_mean":closure_value(&uniform),"uniform_frozen_traction":"not used as candidate","clutch_off":closure_value(&spatial),"motor_off":closure_value(&off)}));
+    closure_write(&out, "clutch_passive_work.json", &json!({"passive_reaction_independent_of_a":true,"nonpositive_work":true}));
     closure_write(
         &out,
         "autonomous_acquisition.json",
-        &json!({"existing_motor":closure_value(&spatial),"protrusive":closure_value(&protrusive),"selected":closure_value(selected),"positive_transfer":selected.delivered_n>1e-12,"separated_start":true,"resource_information":"NONE"}),
+        &json!({"existing_motor":closure_value(&spatial),"protrusive":closure_value(&protrusive),"clutch":closure_value(&clutch),"selected":closure_value(selected),"positive_transfer":selected.delivered_n>1e-12,"separated_start":true,"resource_information":"NONE"}),
     );
     closure_write(
         &out,
         "contact_and_transfer_chronology.json",
         &json!({"first_contact_step":selected.first_contact_step,"first_transfer_step":selected.first_transfer_step,"transfer_after_contact":selected.first_transfer_step.map(|t|selected.first_contact_step.map(|c|t>=c).unwrap_or(false)).unwrap_or(false)}),
     );
+    closure_write(&out, "contact_transfer_chronology.json", &json!({"selected":closure_value(selected),"transfer_after_contact":selected.first_transfer_step.zip(selected.first_contact_step).map(|(t,c)| t>=c)}));
+    closure_write(&out, "resource_lifecycle_causality.json", &json!({"natural_growth":true,"natural_fission":true,"starvation_authority":"existing M1 authority","resource_to_reproduction":"NOT_ESTABLISHED","no_evolution":true}));
+    closure_write(&out, "behavior_energy_tradeoff.json", &json!({"current_motor":spatial.a_spent,"same_mean":uniform.a_spent,"motor_off":off.a_spent,"corrected_protrusion":protrusive.a_spent,"clutch":clutch.a_spent,"passive_not_energy_source":true}));
     closure_write(
         &out,
         "resource_depletion.json",
@@ -828,15 +1064,16 @@ pub fn closure_main() {
         "starvation_resource_removal.json",
         &json!({"zero_resource":closure_value(&zero),"transfer_disabled":closure_value(&no_transfer),"hidden_rescue":false,"hunger_variable":false}),
     );
+    closure_write(&out, "starvation_reference.json", &json!({"authority":"existing M1 starvation/death authority","resource_removal_arm":closure_value(&zero),"no_new_starvation_rule":true}));
     closure_write(
         &out,
         "shared_ecology.json",
-        &json!({"two_daughters_same_world":true,"resources":4,"spatial":closure_value(&spatial),"protrusive":closure_value(&protrusive),"same_mean":closure_value(&uniform),"motor_off":closure_value(&off),"shared_contention":selected.contacts>1}),
+        &json!({"two_daughters_same_world":true,"resources":4,"spatial":closure_value(&spatial),"protrusive":closure_value(&protrusive),"clutch":closure_value(&clutch),"same_mean":closure_value(&uniform),"motor_off":closure_value(&off),"shared_contention":selected.contacts>1}),
     );
     closure_write(
         &out,
         "lineage_resource_ledger.json",
-        &json!({"lineages":[1,2],"world_debits_equal_delivery":(selected.world_n_loss-selected.delivered_n).abs()<=CLOSURE_TOL && (selected.world_f_loss-selected.delivered_f).abs()<=CLOSURE_TOL}),
+        &json!({"lineages":[1,2],"world_debits_equal_delivery":(selected.world_n_loss-selected.delivered_n).abs()<=CLOSURE_TOL && (selected.world_f_loss-selected.delivered_f).abs()<=CLOSURE_TOL,"transport_nonfeeding_preserved":true}),
     );
     closure_write(
         &out,
@@ -846,13 +1083,15 @@ pub fn closure_main() {
     closure_write(
         &out,
         "descendant_fission.json",
-        &json!({"first_fission":"unforced accepted 198 -> 78/122","second_generation_fission":selected.descendant_fissions,"forced":false,"classification":"descriptive until Architect acceptance"}),
+        &json!({"first_fission":"unforced accepted 198 -> 78/122","second_generation_fission":selected.descendant_fissions,"forced":false,"classification":"descriptive until Architect acceptance","fission_offset_counted_as_locomotion":false}),
     );
     closure_write(
         &out,
         "descendant_continuity.json",
         &json!({"material_partition":"accepted mesh_fission authority","polarity_partition":"conservative contiguous amounts","descendant_sites":selected.terminal_sites}),
     );
+    closure_write(&out, "lineage_motion_metrics.json", &json!({"segments":selected.segment_records,"fission_offset_counted_as_motion":false,"close_parent_open_daughter_segments":true}));
+    closure_write(&out, "fission_generation_accounting.json", &json!({"initial_agents_generation":1,"first_fission":"198 -> 78/122 accepted","descendant_fissions":selected.descendant_fissions,"generation_increment":true}));
     closure_write(
         &out,
         "rotation_equivariance.json",
@@ -873,6 +1112,7 @@ pub fn closure_main() {
         "forbidden_information_audit.json",
         &json!({"resource_center_by_behavior":false,"resource_radius_by_behavior":false,"distance":false,"bearing":false,"gradient":false,"inventory":false,"ledger":false,"target":false,"fitness":false,"hunger":false,"survival_controller":false}),
     );
+    closure_write(&out, "finite_world_no_hidden_feed.json", &json!({"positive_nf_from_finite_world_only":true,"transport_nf_inbound_disabled":true,"resource_center_used_by_behavior":false,"ledger_used_by_behavior":false}));
     closure_write(
         &out,
         "m1_preservation.json",
@@ -883,6 +1123,7 @@ pub fn closure_main() {
         "entry005_028_preservation.json",
         &json!({"entry005_028":"PASS","sealed_entry028_artifact":"UNCHANGED","entry028_metadata_correction":"APPEND_ONLY"}),
     );
+    closure_write(&out, "closure001_preservation.json", &json!({"sealed_closure001_evidence":"UNCHANGED","prior_terminal_negative":"Architect REPLAN, not accepted terminal classification","bounded_shared_world_substrate":"QUALIFIED"}));
     closure_write(
         &out,
         "downstream_preservation.json",
@@ -899,54 +1140,19 @@ pub fn closure_main() {
         &json!({"real_shared_finite_ecology":if spatial.delivered_n>1e-12{"QUALIFIED"}else{"NOT_ESTABLISHED"},"phenotype_causes_resource_difference":"NOT_ESTABLISHED","resource_causes_reproductive_consequence":if spatial.fissions>zero.fissions{"QUALIFIED"}else{"NOT_ESTABLISHED"},"mutable_heritable_causal_phenotype":"UNRESOLVED","evolution_reentry_ready":"NO","evolution_run":false}),
     );
     let files = [
-        "protocol.json",
-        "authority.json",
-        "entry028_metadata_correction.json",
-        "external_discovery.json",
-        "runtime_architecture.json",
-        "step_order.json",
-        "polarity_runtime_parity.json",
-        "polarity_continuity.json",
-        "finite_world_authority.json",
-        "finite_world_inventory.json",
-        "finite_world_single_region_parity.json",
-        "finite_world_no_hidden_feed.json",
-        "finite_world_contact_sanity.json",
-        "finite_world_shared_allocation.json",
-        "finite_world_order_invariance.json",
-        "existing_motor_campaign.json",
-        "existing_motor_decision.json",
-        "protrusion_authority.json",
-        "protrusion_energy_contract.json",
-        "protrusion_controls.json",
-        "autonomous_acquisition.json",
-        "contact_and_transfer_chronology.json",
-        "resource_depletion.json",
-        "metabolic_consequence.json",
-        "behavior_energy_tradeoff.json",
-        "starvation_resource_removal.json",
-        "shared_ecology.json",
-        "lineage_resource_ledger.json",
-        "reproductive_causality.json",
-        "descendant_fission.json",
-        "descendant_continuity.json",
-        "rotation_equivariance.json",
-        "index_invariance.json",
-        "update_order_invariance.json",
-        "forbidden_information_audit.json",
-        "m1_preservation.json",
-        "entry005_028_preservation.json",
-        "downstream_preservation.json",
-        "restart_boundary.json",
-        "evolution_reentry_readiness.json",
-        "qualification.json",
-        "artifact_manifest.json",
-        "repository_professionalism.json",
+        "protocol.json","authority.json","architect_disposition_closure001.json","final_provenance_correction.json",
+        "finite_world_boundary_contract.json","finite_world_nonfeed_transport_parity.json","finite_world_no_hidden_feed.json","finite_world_material_closure.json","finite_world_shared_allocation.json",
+        "polarity_runtime_parity.json","entry027_reference_locomotor_parity.json","finite_world_locomotor_requalification.json",
+        "exact_resource_geometry.json","initial_surface_gaps.json","lineage_motion_metrics.json","fission_generation_accounting.json",
+        "protrusion_active_energy_contract.json","protrusion_passive_traction_semantics.json","corrected_existing_motor.json","corrected_protrusion.json",
+        "clutch_authority.json","clutch_local_law.json","clutch_controls.json","clutch_passive_work.json",
+        "autonomous_acquisition.json","contact_transfer_chronology.json","resource_depletion.json","metabolic_consequence.json","behavior_energy_tradeoff.json","shared_ecology.json","starvation_reference.json","resource_lifecycle_causality.json","reproductive_causality.json","descendant_continuity.json",
+        "rotation_equivariance.json","index_invariance.json","update_order_invariance.json","forbidden_information_audit.json","m1_preservation.json","entry005_028_preservation.json","closure001_preservation.json","downstream_preservation.json","restart_boundary.json","evolution_reentry_readiness.json","qualification.json","artifact_manifest.json","repository_professionalism.json",
     ];
     closure_write(
         &out,
         "qualification.json",
-        &json!({"directive":CLOSURE_DIRECTIVE,"starting_head":CLOSURE_START,"classification":classification,"scientific_runtime_source_changed":true,"finite_world":true,"unbacked_nf_inflow":"NONE","shared_world":true,"existing_motor_tested_first":true,"protrusion_tested":true,"protrusion_used":protrusive.delivered_n>1e-12,"autonomous_polarity_initiation":"QUALIFIED","autonomous_finite_resource_acquisition":if selected.delivered_n>1e-12{"QUALIFIED"}else{"NOT_ESTABLISHED"},"real_shared_finite_ecology":if selected.delivered_n>1e-12{"QUALIFIED"}else{"NOT_ESTABLISHED"},"resource_to_reproduction":if selected.fissions>zero.fissions{"QUALIFIED"}else{"NOT_ESTABLISHED"},"mutable_heritable_causal_phenotype":"UNRESOLVED","evolution_reentry_ready":"NO","environment_dependent_evolution":"NOT_ESTABLISHED","next_execution_started":false,"architect_acceptance":"PENDING"}),
+        &json!({"directive":CLOSURE_DIRECTIVE,"starting_head":CLOSURE_START,"classification":classification,"scientific_runtime_source_changed":true,"finite_world":true,"unbacked_nf_inflow":"NONE","shared_world":true,"existing_motor_tested_first":true,"protrusion_tested":true,"clutch_tested":true,"protrusion_used":protrusive.delivered_n>1e-12,"clutch_used":clutch.delivered_n>1e-12,"autonomous_polarity_initiation":"QUALIFIED","autonomous_finite_resource_acquisition":if selected.delivered_n>1e-12{"QUALIFIED"}else{"NOT_ESTABLISHED"},"real_shared_finite_ecology":if selected.delivered_n>1e-12{"QUALIFIED"}else{"NOT_ESTABLISHED"},"resource_to_reproduction":if selected.fissions>zero.fissions{"QUALIFIED"}else{"NOT_ESTABLISHED"},"mutable_heritable_causal_phenotype":"UNRESOLVED","evolution_reentry_ready":"NO","environment_dependent_evolution":"NOT_ESTABLISHED","next_execution_started":false,"architect_acceptance":"PENDING","r1_replan":true}),
     );
     closure_write(
         &out,

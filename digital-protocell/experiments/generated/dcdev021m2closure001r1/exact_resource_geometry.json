@@ -1,0 +1,48 @@
+{
+  "circumscribed_radius_shortcut": false,
+  "mean_material_edge": 2.4822089309066597,
+  "method": "closed polygon point-to-segment distance solved along four balanced bearings",
+  "pass": true,
+  "resources": [
+    {
+      "bearing": 0,
+      "center": [
+        39.98756564454752,
+        40.88572059186467
+      ],
+      "residual": 1.7763568394002505e-15,
+      "surface_gap": 2.4822089309066615,
+      "target_gap": 2.4822089309066597
+    },
+    {
+      "bearing": 90,
+      "center": [
+        25.57692282548515,
+        61.078310499085134
+      ],
+      "residual": 0.0,
+      "surface_gap": 2.4822089309066597,
+      "target_gap": 2.4822089309066597
+    },
+    {
+      "bearing": 180,
+      "center": [
+        5.790041984933211,
+        40.88572059186467
+      ],
+      "residual": 0.0,
+      "surface_gap": 2.4822089309066597,
+      "target_gap": 2.4822089309066597
+    },
+    {
+      "bearing": 270,
+      "center": [
+        25.57692282548515,
+        33.747545583074555
+      ],
+      "residual": 4.440892098500626e-15,
+      "surface_gap": 2.482208930906664,
+      "target_gap": 2.4822089309066597
+    }
+  ]
+}

@@ -18,6 +18,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-021 ENTRY-015 polarity actuator interface feasibility audit
 - Supersedes learning: none
 
+## L-DCDEV021-M2-CLOSURE001-R1-001
+
+- Learning ID: L-DCDEV021-M2-CLOSURE001-R1-001
+- Date: 2026-09-03
+- Fact or lesson: R1 must keep ordinary nonfeeding transport active before finite positive N/F allocation, refresh post-mechanics meshes before world exchange, use closed-polygon surface clearance, preserve segment-local motion across fission, and distinguish passive traction reaction from A-funded active work. The bounded assay-only local polarity clutch is the only conditional successor route authorized.
+- Evidence location: `digital-protocell/crates/regulatory-core/src/finite_world.rs`, `digital-protocell/crates/regulatory-core/src/contractility.rs`, `digital-protocell/crates/regulatory-core/src/stick_slip_traction.rs`, `digital-protocell/examples/dcdev021_m2_closure001_impl.rs`, and the R1 evidence/workflow paths.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 M2 CLOSURE-001-R1 finite-world sensorimotor requalification and polarity-clutch migration.
+- Supersedes learning: none
+
 ## L-DCDEV021-ENTRY027-001
 
 - Learning ID: L-DCDEV021-ENTRY027-001

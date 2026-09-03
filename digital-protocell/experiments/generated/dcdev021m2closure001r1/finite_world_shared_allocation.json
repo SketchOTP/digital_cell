@@ -1,0 +1,7 @@
+{
+  "common_scale": true,
+  "finite_inventory": true,
+  "order_independent": true,
+  "resources": 4,
+  "same_world": true
+}

@@ -1,0 +1,22 @@
+{
+  "close_parent_open_daughter_segments": true,
+  "fission_offset_counted_as_motion": false,
+  "segments": [
+    {
+      "generation": 1,
+      "lineage": 1,
+      "parent_lineage": null,
+      "segment_net": 1.4530901147894706,
+      "segment_path": 2.017619546816965,
+      "terminal": true
+    },
+    {
+      "generation": 1,
+      "lineage": 2,
+      "parent_lineage": null,
+      "segment_net": 1.794251910320046,
+      "segment_path": 2.7889655839098912,
+      "terminal": true
+    }
+  ]
+}

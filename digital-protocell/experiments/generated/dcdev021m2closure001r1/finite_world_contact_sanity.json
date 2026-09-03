@@ -1,0 +1,21 @@
+{
+  "contact_geometry": "resource centered on cloned organism edge-0 midpoint",
+  "exposed_edges": 3,
+  "f_delivered": 0.056450673797901835,
+  "finite_world": true,
+  "metabolism": {
+    "a_produced": 2.02346239097731,
+    "active": true,
+    "f_consumed": 2.02346239097731,
+    "n_consumed": 2.02346239097731,
+    "transfer_enters_same_step": true,
+    "w_produced": 2.7122601122715047
+  },
+  "n_delivered": 0.056450673797901835,
+  "organism_f_amount_after": 770.3845849053167,
+  "organism_n_amount_after": 770.3845849053167,
+  "positive_transfer": true,
+  "world_debit_matches_delivery": true,
+  "world_f_loss": 0.056450673797902695,
+  "world_n_loss": 0.056450673797902695
+}

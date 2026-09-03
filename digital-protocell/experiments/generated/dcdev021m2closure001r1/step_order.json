@@ -1,0 +1,15 @@
+{
+  "entry011_order": "mechanics -> nonfeeding transport -> finite uptake -> frozen reaction kernel -> growth/remesh",
+  "legacy_transport_step_in_finite_mode": true,
+  "order": [
+    "current inherited polarity motor",
+    "A-funded mechanics",
+    "nonfeeding transport with positive external N/F disabled",
+    "pre-step finite-world positive N/F allocation",
+    "frozen reaction/metabolism",
+    "growth",
+    "remesh and conservative polarity continuation",
+    "unforced fission attempt"
+  ],
+  "positive_nf_source": "finite world only"
+}

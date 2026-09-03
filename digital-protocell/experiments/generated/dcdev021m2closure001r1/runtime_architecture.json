@@ -1,0 +1,14 @@
+{
+  "behavior_controller": false,
+  "components": [
+    "MaterialMesh",
+    "native inherited polarity",
+    "frozen V4 chemistry/growth",
+    "A-funded contractility",
+    "passive stick-slip",
+    "FiniteWorldV1",
+    "physical fission"
+  ],
+  "resource_signal_to_behavior": false,
+  "schema": "M2_FINITE_WORLD_RUNTIME_V1"
+}

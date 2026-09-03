@@ -1,0 +1,20 @@
+{
+  "bounded_subresult": "M2_FINITE_SHARED_WORLD_AND_DIRECT_CONTACT_FEEDING_SUBSTRATE_QUALIFIED",
+  "closure001": "ARCHITECT_REPLAN",
+  "closure001_prior_head": "650a8473f661e1743472b79b79a3b63becbf6d27",
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "state": "OPEN"
+  },
+  "prior_classification": "M2_CURRENT_SENSORIMOTOR_ROUTE_ECOLOGICALLY_INSUFFICIENT",
+  "source_hashes": {
+    "backing_reservoir.rs": "194681614d3c6adb",
+    "finite_world.rs": "187ae724a29dc726",
+    "mesh_fission.rs": "dcb859522534cf03",
+    "mesh_growth.rs": "f466c37daea1186c",
+    "mesh_mechanics.rs": "eaaa4f5898833bfd",
+    "spatial_resource.rs": "47e9d8394c9e4896"
+  }
+}

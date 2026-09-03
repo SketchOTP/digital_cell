@@ -1,0 +1,85 @@
+{
+  "selected": {
+    "a_spent": 1980.1994202769126,
+    "a_to_w_residual": 1.5916157281026244e-12,
+    "arm": "POLARITY_LOCAL_TRACTION_CLUTCH",
+    "checkpoints": [
+      {
+        "contacts": 0,
+        "delivered_f": 0.0,
+        "delivered_n": 0.0,
+        "fissions": 0,
+        "living": 2,
+        "sites": [
+          79,
+          123
+        ],
+        "step": 1,
+        "world_f": 58.35581952252906,
+        "world_n": 58.35581952252906
+      },
+      {
+        "contacts": 2572,
+        "delivered_f": 29.17790976126448,
+        "delivered_n": 29.17790976126448,
+        "fissions": 0,
+        "living": 2,
+        "sites": [
+          77,
+          122
+        ],
+        "step": 3000,
+        "world_f": 29.17790976126453,
+        "world_n": 29.17790976126453
+      }
+    ],
+    "contacts": 2572,
+    "delivered_f": 29.17790976126448,
+    "delivered_n": 29.17790976126448,
+    "descendant_fissions": 0,
+    "first_contact_step": 142,
+    "first_transfer_step": 142,
+    "fissions": 0,
+    "initial_world_f": 58.35581952252906,
+    "initial_world_n": 58.35581952252906,
+    "invalid": false,
+    "lineage_motion_segments": [
+      {
+        "generation": 1,
+        "lineage": 1,
+        "parent_lineage": null,
+        "segment_net": 1.4530901147894706,
+        "segment_path": 2.017619546816965,
+        "terminal": true
+      },
+      {
+        "generation": 1,
+        "lineage": 2,
+        "parent_lineage": null,
+        "segment_net": 1.794251910320046,
+        "segment_path": 2.7889655839098912,
+        "terminal": true
+      }
+    ],
+    "motor_w_generated": 1980.1994202769151,
+    "net_displacement": 3.247342025109517,
+    "path_length": 4.806585130726847,
+    "reaction_a_produced": 1313.8161084829567,
+    "reaction_f_consumed": 1313.8161084829567,
+    "reaction_n_consumed": 1313.8161084829567,
+    "reaction_w_produced": 5806.05882004501,
+    "remaining_world_f": 29.17790976126453,
+    "remaining_world_n": 29.17790976126453,
+    "slips": 593495,
+    "steps": 3000,
+    "stuck_contacts": 3515,
+    "terminal_living": 2,
+    "terminal_sites": [
+      77,
+      122
+    ],
+    "world_f_loss": 29.17790976126448,
+    "world_n_loss": 29.17790976126448
+  },
+  "transfer_after_contact": true
+}

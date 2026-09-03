@@ -1,0 +1,12 @@
+{
+  "daughters": 2,
+  "directive": "DC-DEV-021-M2-CLOSURE-001-R1-FINITE-WORLD-SENSORIMOTOR-REQUALIFICATION-AND-POLARITY-CLUTCH-MIGRATION-001",
+  "evolution": false,
+  "mode": "finite shared world R1 requalification",
+  "next_execution_started": false,
+  "resources": 4,
+  "sealed_closure001_preserved": true,
+  "second_fission_allowed": true,
+  "starting_head": "650a8473f661e1743472b79b79a3b63becbf6d27",
+  "steps": 3000
+}

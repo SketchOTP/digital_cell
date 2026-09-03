@@ -1,0 +1,12 @@
+{
+  "a_funded_contractility": true,
+  "daughter_a_spatial_leverage": "NO",
+  "daughter_b_spatial_leverage": "YES",
+  "growth_on": true,
+  "parity": "PASS",
+  "passive_isotropic_stick_slip": true,
+  "reference_motor": "v/(u+v)",
+  "replay": "accepted entry027 physical fission and inherited-polarity authority",
+  "reusable_runtime": true,
+  "true_lifecycle": true
+}

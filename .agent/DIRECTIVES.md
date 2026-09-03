@@ -682,3 +682,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260903-dcdev021-m2-entry028-balanced-separated-resource-ecology
 - Status at issuance: ISSUED
+
+## D-20260903-dcdev021-m2-closure001-r1-polarity-clutch-migration
+
+- Issued: `2026-09-03T15:10:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-CLOSURE-001-R1-FINITE-WORLD-SENSORIMOTOR-REQUALIFICATION-AND-POLARITY-CLUTCH-MIGRATION-001`
+- Objective: From exact starting head 650a8473f661e1743472b79b79a3b63becbf6d27, correct finite-world nonfeeding transport, reverify ENTRY-027 locomotor parity, use exact polygon surface geometry, correct lineage motion and passive traction accounting, and conditionally test the parameter-free local polarity clutch.
+- Scope: Additive finite-world boundary correction, assay-local corrected force composition and clutch, compact evidence, scoped workflow, and append-only governance only.
+- Exclusions: Sealed CLOSURE-001 evidence rewrite, PR #44 modification, M1 changes, tuning, global behavior, resource sensing, memory, evolution, and successor execution.
+- Acceptance: M2_FINITE_WORLD_AUTONOMOUS_ECOLOGY_AND_REPRODUCTIVE_COUPLING_QUALIFIED, M2_FINITE_WORLD_AUTONOMOUS_ACQUISITION_QUALIFIED_REPRODUCTIVE_COUPLING_NOT_ESTABLISHED, M2_POLARITY_CLUTCH_AUTONOMOUS_ACQUISITION_QUALIFIED_REPRODUCTIVE_COUPLING_NOT_ESTABLISHED, M2_CONTRACTILITY_PROTRUSION_CLUTCH_ROUTE_ECOLOGICALLY_INSUFFICIENT, M2_FINITE_WORLD_ENTRY027_LOCOMOTOR_PARITY_UNRESOLVED, M2_FINITE_WORLD_BOUNDARY_SEMANTICS_UNRESOLVED, M2_POLARITY_CLUTCH_SEMANTICS_UNRESOLVED, or M2_CLOSURE_R1_INVALID according to the directive gates and exact-head validation.
+- Risk class: HIGH
+- Relationship: amends
+- Related directive: D-20260903-dcdev021-m2-closure-finite-world-autonomous-ecology
+- Status at issuance: ISSUED

@@ -1,0 +1,9 @@
+{
+  "clutch_selected": true,
+  "clutch_tested": true,
+  "decision": "proceed_without_protrusion",
+  "existing_motor_sufficient": true,
+  "existing_motor_tested_first": true,
+  "protrusion_selected": true,
+  "protrusion_tested": true
+}

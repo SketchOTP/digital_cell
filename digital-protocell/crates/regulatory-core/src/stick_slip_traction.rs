@@ -8,7 +8,7 @@
 
 use crate::{
     apply_local_activated_energy_contractility_with_external_forces,
-    apply_local_activated_energy_contractility_with_extra_forces,
+    apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces,
     apply_local_contractility_with_external_forces, ActivatedEnergyContractilityStepLedgerV1,
     ContractilityError, ContractilityParamsV1, ContractilityStepLedgerV1,
 };
@@ -485,6 +485,91 @@ pub fn apply_local_activated_energy_contractility_with_stick_slip(
     )
 }
 
+/// Assay-only local traction clutch.  The active contractility request is
+/// unchanged; only the already-existing passive static/kinetic limits are
+/// scaled by the supplied local active fraction.  Passive reactions are
+/// derived from the funded free step and are applied independently of the A
+/// funding scale.  This is intentionally opt-in and is not used by the
+/// historical adapter above.
+pub fn apply_local_activated_energy_contractility_with_local_traction_clutch(
+    mesh: &mut MaterialMesh,
+    activity: &[f64],
+    local_fraction: &[f64],
+    mechanics: &MechParams,
+    contractility: &ContractilityParamsV1,
+    params: &StickSlipTractionParamsV1,
+) -> Result<ActivatedEnergyStickSlipStepLedgerV1, StickSlipError> {
+    validate_params(params)?;
+    validate_mechanics(mechanics)?;
+    if local_fraction.len() != mesh.n()
+        || local_fraction
+            .iter()
+            .any(|x| !x.is_finite() || !(0.0..=1.0).contains(x))
+    {
+        return Err(StickSlipError::InvalidContact);
+    }
+    let before = mesh.clone();
+    let mut free_step = before.clone();
+    let zero_external = vec![[0.0, 0.0]; before.n()];
+    let _free_contractility = apply_local_activated_energy_contractility_with_external_forces(
+        &mut free_step,
+        activity,
+        mechanics,
+        contractility,
+        Some(&zero_external),
+    )?;
+    let mut regimes = Vec::with_capacity(before.n());
+    let mut reactions = Vec::with_capacity(before.n());
+    for index in 0..before.n() {
+        let attempted_velocity = [
+            (free_step.vertices[index][0] - before.vertices[index][0]) * mechanics.gamma
+                / mechanics.dt,
+            (free_step.vertices[index][1] - before.vertices[index][1]) * mechanics.gamma
+                / mechanics.dt,
+        ];
+        let required_force = [
+            attempted_velocity[0] * mechanics.gamma,
+            attempted_velocity[1] * mechanics.gamma,
+        ];
+        let h = local_fraction[index];
+        let static_limit = params.static_traction_limit * h;
+        let kinetic = params.kinetic_traction * h;
+        let required_norm = norm(required_force);
+        if required_norm <= static_limit {
+            regimes.push(ContactRegimeV1::Stick);
+            reactions.push([-required_force[0], -required_force[1]]);
+        } else {
+            let speed = norm(attempted_velocity);
+            if speed <= params.zero_motion_tolerance {
+                return Err(StickSlipError::InvalidContact);
+            }
+            regimes.push(ContactRegimeV1::Slip);
+            reactions.push([
+                -kinetic * attempted_velocity[0] / speed,
+                -kinetic * attempted_velocity[1] / speed,
+            ]);
+        }
+    }
+    let accepted_contractility =
+        apply_local_activated_energy_contractility_with_external_forces(
+            mesh,
+            activity,
+            mechanics,
+            contractility,
+            Some(&reactions),
+        )?;
+    finish_activated_energy_step(
+        &before,
+        mesh,
+        &free_step,
+        mechanics,
+        params,
+        &regimes,
+        &reactions,
+        Some(accepted_contractility),
+    )
+}
+
 /// Assay-only extension of the accepted A-funded stick-slip adapter.  The
 /// supplied local force field is funded together with contractility by one
 /// common scale and is passed through the same substrate-reaction forecast and
@@ -503,27 +588,25 @@ pub fn apply_local_activated_energy_contractility_with_stick_slip_and_extra_forc
     validate_mechanics(mechanics)?;
     let before = mesh.clone();
     let mut free_step = before.clone();
-    let _free_contractility = apply_local_activated_energy_contractility_with_extra_forces(
+    let zero_passive = vec![[0.0, 0.0]; before.n()];
+    let _free_contractility = apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces(
         &mut free_step,
         activity,
         mechanics,
         contractility,
         extra_forces,
         extra_requested_resource,
+        &zero_passive,
     )?;
     let (regimes, reactions) = contacts_from_free_step(&before, &free_step, mechanics, params)?;
-    let combined_forces: Vec<[f64; 2]> = reactions
-        .iter()
-        .zip(extra_forces)
-        .map(|(reaction, extra)| [reaction[0] + extra[0], reaction[1] + extra[1]])
-        .collect();
-    let accepted_contractility = apply_local_activated_energy_contractility_with_extra_forces(
+    let accepted_contractility = apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces(
         mesh,
         activity,
         mechanics,
         contractility,
-        &combined_forces,
+        extra_forces,
         extra_requested_resource,
+        &reactions,
     )?;
     finish_activated_energy_step(
         &before,

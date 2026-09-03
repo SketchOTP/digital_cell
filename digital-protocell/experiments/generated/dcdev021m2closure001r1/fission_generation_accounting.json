@@ -1,0 +1,6 @@
+{
+  "descendant_fissions": 0,
+  "first_fission": "198 -> 78/122 accepted",
+  "generation_increment": true,
+  "initial_agents_generation": 1
+}

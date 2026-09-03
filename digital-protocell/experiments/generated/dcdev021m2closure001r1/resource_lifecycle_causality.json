@@ -1,0 +1,7 @@
+{
+  "natural_fission": true,
+  "natural_growth": true,
+  "no_evolution": true,
+  "resource_to_reproduction": "NOT_ESTABLISHED",
+  "starvation_authority": "existing M1 authority"
+}

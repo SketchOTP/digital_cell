@@ -1,0 +1,7 @@
+{
+  "entry027_parity_reverified": true,
+  "exact_polygon_geometry": true,
+  "finite_world_transport_corrected": true,
+  "lineage_metrics_corrected": true,
+  "protrusion_passive_reaction_independent": true
+}

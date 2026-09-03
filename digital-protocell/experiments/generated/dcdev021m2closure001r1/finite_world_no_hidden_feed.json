@@ -1,0 +1,6 @@
+{
+  "ledger_used_by_behavior": false,
+  "positive_nf_from_finite_world_only": true,
+  "resource_center_used_by_behavior": false,
+  "transport_nf_inbound_disabled": true
+}

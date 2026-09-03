@@ -1,0 +1,16 @@
+{
+  "a_leak": 0.08843630278121534,
+  "c_leak": 0.08843630278121534,
+  "f_in": 0.0,
+  "f_out": 0.9937848493953563,
+  "finite_world_positive_nf_source_only": "finite inventory",
+  "legacy_nonfeeding_transport_executed": true,
+  "material_not_increased_without_world": true,
+  "mechanical_exterior_reference_restored": true,
+  "n_in": 0.0,
+  "n_out": 0.9937848493953563,
+  "pass": true,
+  "positive_unbacked_nf_inflow": 0.0,
+  "transport_exterior_nf_zeroed_for_exchange": true,
+  "w_out": 2.8832557643584766
+}

@@ -1,0 +1,5 @@
+{
+  "fission": "contiguous amount partition with zero new closing-edge amount",
+  "new_polarity_pool": false,
+  "remesh": "conservative amount remap"
+}

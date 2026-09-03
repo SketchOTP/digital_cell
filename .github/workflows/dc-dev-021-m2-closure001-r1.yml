@@ -1,0 +1,118 @@
+name: DC-DEV-021 M2 closure R1 finite-world requalification
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-m2-closure001-r1-polarity-clutch-migration
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  requalify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify R1 authority and scope
+        run: |
+          set -euo pipefail
+          start=650a8473f661e1743472b79b79a3b63becbf6d27
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefName,baseRefName
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Build and run R1 assay
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build -p regulatory-core --release --example dcdev021_m2_closure001
+          cargo +1.89.0 run -p regulatory-core --release --example dcdev021_m2_closure001 -- experiments/generated/dcdev021m2closure001r1
+
+      - name: Validate R1 evidence and corrected boundaries
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("experiments/generated/dcdev021m2closure001r1")
+          required = [
+              "protocol.json","authority.json","architect_disposition_closure001.json","final_provenance_correction.json",
+              "finite_world_boundary_contract.json","finite_world_nonfeed_transport_parity.json","finite_world_no_hidden_feed.json","finite_world_material_closure.json","finite_world_shared_allocation.json",
+              "polarity_runtime_parity.json","entry027_reference_locomotor_parity.json","finite_world_locomotor_requalification.json",
+              "exact_resource_geometry.json","initial_surface_gaps.json","lineage_motion_metrics.json","fission_generation_accounting.json",
+              "protrusion_active_energy_contract.json","protrusion_passive_traction_semantics.json","corrected_existing_motor.json","corrected_protrusion.json",
+              "clutch_authority.json","clutch_local_law.json","clutch_controls.json","clutch_passive_work.json",
+              "autonomous_acquisition.json","contact_transfer_chronology.json","resource_depletion.json","metabolic_consequence.json","behavior_energy_tradeoff.json","shared_ecology.json","starvation_reference.json","resource_lifecycle_causality.json","reproductive_causality.json","descendant_continuity.json",
+              "rotation_equivariance.json","index_invariance.json","update_order_invariance.json","forbidden_information_audit.json","m1_preservation.json","entry005_028_preservation.json","closure001_preservation.json","downstream_preservation.json","restart_boundary.json","evolution_reentry_readiness.json","qualification.json","artifact_manifest.json","repository_professionalism.json",
+          ]
+          for name in required:
+              assert (root / name).is_file(), name
+          q = json.loads((root / "qualification.json").read_text())
+          assert q["starting_head"] == "650a8473f661e1743472b79b79a3b63becbf6d27"
+          assert q["classification"] == "M2_POLARITY_CLUTCH_AUTONOMOUS_ACQUISITION_QUALIFIED_REPRODUCTIVE_COUPLING_NOT_ESTABLISHED"
+          assert q["next_execution_started"] is False
+          assert q["architect_acceptance"] == "PENDING"
+          assert q["unbacked_nf_inflow"] == "NONE"
+          boundary = json.loads((root / "finite_world_boundary_contract.json").read_text())
+          assert boundary["pass"] and boundary["n_in"] == 0.0 and boundary["f_in"] == 0.0
+          geometry = json.loads((root / "exact_resource_geometry.json").read_text())
+          assert geometry["pass"] and geometry["circumscribed_radius_shortcut"] is False
+          campaign = json.loads((root / "existing_motor_campaign.json").read_text())
+          for arm in ("spatial", "same_mean", "motor_off", "transfer_disabled", "zero_resource", "protrusive", "clutch"):
+              assert campaign[arm]["invalid"] is False, arm
+          assert campaign["clutch"]["first_contact_step"] is not None
+          assert campaign["clutch"]["first_contact_step"] > 1
+          assert campaign["clutch"]["delivered_n"] > 1e-12 and campaign["clutch"]["delivered_f"] > 1e-12
+          assert campaign["clutch"]["slips"] > 0
+          assert campaign["clutch"]["fissions"] == 0
+          assert json.loads((root / "finite_world_material_closure.json").read_text())["no_unbacked_positive_nf"] is True
+          assert json.loads((root / "closure001_preservation.json").read_text())["sealed_closure001_evidence"] == "UNCHANGED"
+          m1 = json.loads((root / "m1_preservation.json").read_text())
+          assert m1["source_changed"] is False
+          assert (m1["v2_d087"],m1["v3_d087"],m1["v4_d087"]) == ("8/8","8/8","7/8")
+          assert m1["v4_vector"] == [True,True,False,True,True,True,True,True]
+          old = json.loads((Path("experiments/generated/dcdev021m2closure001") / "qualification.json").read_text())
+          assert old["classification"] == "M2_CURRENT_SENSORIMOTOR_ROUTE_ECOLOGICALLY_INSUFFICIENT"
+          print("R1 corrected finite-world, geometry, clutch, closure, and preservation gates passed")
+          PY
+
+      - name: Run preservation and governance checks
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test -p regulatory-core finite_world -- --nocapture
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test -p evolution-harness -- --nocapture
+          python3 ../scripts/validate_governance.py --mode ADOPTED
+
+      - name: Record R1 artifact digest
+        if: always()
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2closure001r1 -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2closure001r1.sha256"
+
+      - name: Upload R1 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-m2-closure001-r1-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2closure001r1/
+            ${{ runner.temp }}/dcdev021m2closure001r1.sha256
+          if-no-files-found: warn

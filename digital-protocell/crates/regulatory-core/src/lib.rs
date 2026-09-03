@@ -30,6 +30,7 @@ pub use contractility::{
     ACTIVATED_ENERGY_CONTRACTILITY_SCHEMA_V1, CONTRACTILITY_SCHEMA_V1, FROZEN_MAX_ACTIVE_TENSION,
     FROZEN_RESERVE_COST_PER_FORCE_LENGTH_TIME,
     apply_local_activated_energy_contractility_with_extra_forces,
+    apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces,
 };
 
 pub use intrinsic_exploration::{
@@ -88,6 +89,7 @@ pub use spatial_resource::{
 pub use stick_slip_traction::{
     apply_local_activated_energy_contractility_with_stick_slip,
     apply_local_activated_energy_contractility_with_stick_slip_and_extra_forces,
+    apply_local_activated_energy_contractility_with_local_traction_clutch,
     apply_local_contractility_with_stick_slip, apply_stick_slip_to_legacy_mechanics,
     evaluate_contact, ActivatedEnergyStickSlipStepLedgerV1, ContactLedgerV1, ContactRegimeV1,
     StickSlipError, StickSlipStepLedgerV1, StickSlipTractionParamsV1, FROZEN_KINETIC_TRACTION,
