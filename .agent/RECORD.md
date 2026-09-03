@@ -495,3 +495,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The sealed ENTRY-026 package is not Architect accepted and used an early raw-pinch boundary. R1 preserves that package and tests daughter-specific birth mass, 1.35x growth, population cadence, and read-only pinch availability before any second-fission mutation.
 - Affected areas: additive R1 assay/example, compact evidence, scoped workflow, and append-only governance only; no scientific runtime, production polarity, actuator, resource, M1, restart, or PR #44 change.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY026R1-POPULATION-FISSION-GATE-REQUALIFICATION-FINAL
+
+- Date: 2026-09-02
+- Record or decision ID: DEC-DCDEV021-ENTRY026R1-POPULATION-FISSION-GATE-REQUALIFICATION-FINAL
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33704174275` passed on result head `b8889a725784fa8d4339b9a8633977589aa5e801`; independent artifact ZIP digest `sha256:6957842c387ffb26068971cc2c09236d4f435edd3c88f963ee08547206a44a3d`; Notion handoff was appended and read back.
+- Rationale: R1 validates the true population lifecycle eligibility boundary while preserving the sealed ENTRY-026 package and confirms continued-development maintenance of inherited daughter polarity without de-novo reseeding.
+- Affected areas: additive R1 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, production polarity, actuator, traction, resource, M1, restart, or PR #44 change.
+- Supersedes record: DEC-DCDEV021-ENTRY026R1-POPULATION-FISSION-GATE-REQUALIFICATION-R1

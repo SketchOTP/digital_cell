@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-02T21:02:39-04:00`
+- Last updated: `2026-09-02T21:46:00-04:00`
 
 ## Active state after adoption
 
@@ -12,9 +12,9 @@
 - Objective: Requalify the ENTRY-026 population fission boundary and determine whether continued development maintains inherited daughter polarity without de-novo reseeding.
 - Current status: `VALIDATING`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `R1 assay complete; preservation and exact-head validation pending`
+- Current phase: `R1 assay, preservation, exact-head validation, artifact verification, and Notion readback complete; Architect review pending`
 - Expected or actual touched areas: `additive R1 assay/example, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `complete preservation matrix, commit, push, run exact-head Linux CI, upload and hash artifact`
+- Immediate next action: `return the completed R1 handoff for Architect review; do not start successor work`
 
 ## Temporary task-relevant facts
 
@@ -48,7 +48,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `ENTRY-026 exact-head Linux workflow 33695346399 on f842a1dc1a160015b870ce72df68e1c0f2739a94; independent artifact ZIP digest sha256:3401fb9bb664fd18ca6ff2f3c3a52a105b720033fad2e8437e08a5aa7378be75; local release assay and preservation matrix`
+- Command or check: `ENTRY-026-R1 exact-head Linux workflow 33704174275 on b8889a725784fa8d4339b9a8633977589aa5e801; independent artifact digest sha256:6957842c387ffb26068971cc2c09236d4f435edd3c88f963ee08547206a44a3d; local release assay, preservation matrix, and Notion readback`
 - Result: `PASSED`
 
 ## Risks

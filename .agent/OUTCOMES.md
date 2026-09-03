@@ -1268,3 +1268,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: exact-head validation and governance checks are still pending; this remains a bounded post-fission maintenance result and does not establish autonomous embodied locomotion or resource acquisition.
 - Blockers: exact-head Linux validation and Architect review; no successor work.
 - Follow-up directive: none
+
+## D-20260902-dcdev021-m2-entry026r1-population-fission-gate-requalification - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-ENTRY026R1-POPULATION-FISSION-GATE-REQUALIFICATION-FINAL`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY026R1-POPULATION-FISSION-GATE-LOCAL`
+- Closed: `2026-09-02T21:46:00-04:00`
+- Acceptance: `MET`
+- Summary: R1 starts exactly at sealed ENTRY-026 head `04e8b7f030118842b0ad2d8428b6f937fa9aa6c7`, replays the accepted physical first fission, and evaluates the true daughter-specific `1.35x birth_mass` plus population cadence plus physical pinch boundary without executing a second fission. Daughter A reaches true lifecycle eligibility at relative step `250`; daughter B at `225`. Growth-ON maintains inherited polarity relative to growth-OFF for both daughters; homogeneous controls remain homogeneous and no de-novo reseed occurs. The bounded classification is `M2_POST_FISSION_DEVELOPMENT_MAINTAINS_INHERITED_POLARITY_WITHOUT_DE_NOVO_RESEED`.
+- Changed areas: additive R1 assay/example, compact evidence, scoped workflow, append-only governance, and no sealed ENTRY-026 rewrite; no accepted scientific runtime source changed and PR #44 remains untouched.
+- Validation:
+  - Exact authority, corrected population gate, material closure, rotation/index, preservation matrix, production/D-087, downstream, governance, and local release assay - PASSED
+  - Exact-head Linux workflow `33704174275` on `b8889a725784fa8d4339b9a8633977589aa5e801` - PASSED
+  - Independent artifact ZIP digest `sha256:6957842c387ffb26068971cc2c09236d4f435edd3c88f963ee08547206a44a3d` - PASSED
+  - Notion append-only handoff and readback - PASSED
+  - Architect acceptance - PENDING
+- Remaining risks: R1 establishes bounded post-fission developmental maintenance and corrects the population-gate audit boundary; it does not establish autonomous embodied locomotion or resource acquisition.
+- Blockers: Architect review only; no successor work is authorized.
+- Follow-up directive: none
