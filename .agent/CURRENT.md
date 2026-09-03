@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-02T22:22:00-04:00`
+- Last updated: `2026-09-02T22:26:00-04:00`
 
 ## Active state after adoption
 
@@ -48,7 +48,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `ENTRY-026-R1 exact-head Linux workflow 33704174275 on b8889a725784fa8d4339b9a8633977589aa5e801; independent artifact digest sha256:6957842c387ffb26068971cc2c09236d4f435edd3c88f963ee08547206a44a3d; local release assay, preservation matrix, and Notion readback`
+- Command or check: `ENTRY-027 final exact-head Linux workflow 33708546230 on 2dd93d1a644eb50089b7e7be43d17e9c07becc31; independent artifact digest sha256:728083dca165ba71dbba1ad43e3f4132728faa26bb2bd3514ef521619f676e0c; local release assay, preservation matrix, governance, and Notion readback`
 - Result: `PASSED`
 
 ## Risks

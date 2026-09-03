@@ -525,3 +525,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The final remote validation confirms the unforced physical first-fission replay, zero-pool actuator-off boundary, daughter-specific growth-on spatial/same-mean/motor-off comparison, lifecycle observation without second fission, closure, rotation/index, and historical preservation. Daughter B shows spatial leverage while Daughter A does not, so the bounded classification is `M2_GROWTH_ON_INTERFISSION_LOCOMOTION_DAUGHTER_DEPENDENT`.
 - Affected areas: additive ENTRY-027 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, production polarity, resource, actuator, traction, M1, restart, or PR #44 change.
 - Supersedes record: DEC-DCDEV021-ENTRY027-GROWTH-ON-INTERFISSION-LOCOMOTION
+
+## DEC-DCDEV021-ENTRY027-GROWTH-ON-INTERFISSION-LOCOMOTION-FINAL-CORRECTION
+
+- Date: 2026-09-02
+- Record or decision ID: DEC-DCDEV021-ENTRY027-GROWTH-ON-INTERFISSION-LOCOMOTION-FINAL-CORRECTION
+- Status: ACTIVE
+- Decision or event: Final exact-head Linux workflow `33708546230` passed on result head `2dd93d1a644eb50089b7e7be43d17e9c07becc31`; independent artifact ZIP digest `sha256:728083dca165ba71dbba1ad43e3f4132728faa26bb2bd3514ef521619f676e0c`; Notion final-head correction was appended and read back.
+- Rationale: The final validation preserves the bounded daughter-dependent classification `M2_GROWTH_ON_INTERFISSION_LOCOMOTION_DAUGHTER_DEPENDENT` and confirms the unforced physical first-fission replay, zero-pool actuator-off boundary, lifecycle observation without second fission, closure, rotation/index, and historical preservation.
+- Affected areas: additive ENTRY-027 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, production polarity, resource, actuator, traction, M1, restart, or PR #44 change.
+- Supersedes record: DEC-DCDEV021-ENTRY027-GROWTH-ON-INTERFISSION-LOCOMOTION-FINAL

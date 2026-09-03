@@ -497,3 +497,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 ENTRY-026-R1 population fission-gate and polarity-maintenance requalification.
 - Supersedes learning: none
+
+## L-DCDEV021-ENTRY027-003
+
+- Learning ID: L-DCDEV021-ENTRY027-003
+- Date: 2026-09-02
+- Fact or lesson: Final exact-head Linux workflow `33708546230` passed on result head `2dd93d1a644eb50089b7e7be43d17e9c07becc31`; the independently downloaded artifact ZIP hashes to `sha256:728083dca165ba71dbba1ad43e3f4132728faa26bb2bd3514ef521619f676e0c`. The bounded classification remains `M2_GROWTH_ON_INTERFISSION_LOCOMOTION_DAUGHTER_DEPENDENT`: Daughter A has no spatial leverage against its same-mean control, while Daughter B does; unforced 198→78/122 first fission, no second fission, and all preservation/closure checks pass.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry027.rs`, `digital-protocell/experiments/generated/dcdev021m2entry027/`, `.github/workflows/dc-dev-021-m2-entry027.yml`, and GitHub Actions workflow `33708546230`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 ENTRY-027 growth-on inter-fission locomotion feasibility.
+- Supersedes learning: L-DCDEV021-ENTRY027-002

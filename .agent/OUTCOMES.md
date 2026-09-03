@@ -1322,3 +1322,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: This is a bounded daughter-dependent inter-fission locomotion result; autonomous resource acquisition and environment-dependent evolution remain unestablished. No successor work is authorized.
 - Blockers: Architect review only.
 - Follow-up directive: none
+
+## D-20260902-dcdev021-m2-entry027-growth-on-interfission-locomotion - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-ENTRY027-GROWTH-ON-INTERFISSION-LOCOMOTION-FINAL-CORRECTION`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY027-GROWTH-ON-INTERFISSION-LOCOMOTION-FINAL`
+- Closed: 2026-09-02T22:26:00-04:00
+- Acceptance: `MET`
+- Summary: Final exact-head validation of ENTRY-027 remains `M2_GROWTH_ON_INTERFISSION_LOCOMOTION_DAUGHTER_DEPENDENT`; the result head is `2dd93d1a644eb50089b7e7be43d17e9c07becc31`.
+- Changed areas: additive ENTRY-027 assay/example, compact evidence, scoped workflow, append-only governance, and no accepted scientific runtime source; PR #44 remains untouched.
+- Validation:
+  - Exact authority, unforced physical first fission, daughter controls, lifecycle boundary without second fission, closure, rotation/index, preservation, D-087, downstream, governance, and local release assay - PASSED
+  - Exact-head Linux workflow `33708546230` on `2dd93d1a644eb50089b7e7be43d17e9c07becc31` - PASSED
+  - Independently downloaded artifact ZIP digest `sha256:728083dca165ba71dbba1ad43e3f4132728faa26bb2bd3514ef521619f676e0c` - PASSED
+  - Notion append-only handoff and readback - PASSED
+  - Architect acceptance - PENDING
+- Remaining risks: This is a bounded daughter-dependent inter-fission locomotion result; autonomous resource acquisition and environment-dependent evolution remain unestablished. No successor work is authorized.
+- Blockers: Architect review only.
+- Follow-up directive: none
