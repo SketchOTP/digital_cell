@@ -1,0 +1,69 @@
+{
+  "actuator": "NO",
+  "architect_acceptance": "PENDING",
+  "autonomous_embodied_locomotion": "NOT_ESTABLISHED",
+  "autonomous_polarity_initiation": "QUALIFIED",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "classification": "M2_POST_FISSION_DEVELOPMENT_MAINTAINS_INHERITED_POLARITY_WITHOUT_DE_NOVO_RESEED",
+  "common_prefix": {
+    "A": 250,
+    "B": 225
+  },
+  "daughter_a_birth_mass": 212.6439090102348,
+  "daughter_a_step25": {
+    "birth_mass": 212.6439090102348,
+    "cadence": true,
+    "current_mass": 218.54363241564891,
+    "grown_enough": false,
+    "mass_ratio": 1.0277446150838496,
+    "pinch_candidate": true,
+    "population_tick": 2350,
+    "step": 25,
+    "true_lifecycle_eligible": false
+  },
+  "daughter_b_birth_mass": 335.7739408039904,
+  "daughter_b_step25": {
+    "birth_mass": 335.7739408039904,
+    "cadence": true,
+    "current_mass": 347.2513068053602,
+    "grown_enough": false,
+    "mass_ratio": 1.0341818247535468,
+    "pinch_candidate": true,
+    "population_tick": 2350,
+    "step": 25,
+    "true_lifecycle_eligible": false
+  },
+  "de_novo": {
+    "A": false,
+    "B": false
+  },
+  "downstream_preservation": "PASS",
+  "entry005_026_preservation": "PASS",
+  "entry026_architect_status": "INVESTIGATE",
+  "entry026_reported_classification": "NOT_ARCHITECT_ACCEPTED",
+  "entry026_sealed_artifact": "UNCHANGED",
+  "f_accounting": "PASS",
+  "generic_full_mesh_restart": "KNOWN_FAIL",
+  "growth_material_closure": "PASS",
+  "index_invariance": "PASS",
+  "intrinsic_restart": "PASS",
+  "m1_preservation": "PASS",
+  "maintenance": {
+    "A": true,
+    "B": true
+  },
+  "next_execution_started": false,
+  "polarity_fission_inheritance": "QUALIFIED",
+  "population_gate": "PASS",
+  "post_fission_developmental_polarity_maintenance": "QUALIFIED",
+  "remesh_continuity": "PASS",
+  "repository_professionalism": "PASS",
+  "reseed": {
+    "A": false,
+    "B": false
+  },
+  "resource_information": "NONE",
+  "rotation": "PASS",
+  "second_fission_executed": false,
+  "weighted_uv_closure": "PASS"
+}

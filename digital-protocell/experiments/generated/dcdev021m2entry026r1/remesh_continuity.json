@@ -1,0 +1,8 @@
+{
+  "mapping": "existing conservative polarity remap",
+  "pass": true,
+  "remesh_events": {
+    "A": 37,
+    "B": 52
+  }
+}

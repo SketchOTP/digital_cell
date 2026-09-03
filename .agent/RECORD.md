@@ -485,3 +485,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The sealed ENTRY-026 assay preserves the accepted physical fission/development boundary, shows growth-ON maintenance of inherited daughter polarity relative to growth-OFF decay for both daughters, shows no de-novo homogeneous reseed, and observes but does not execute second-fission eligibility. The classification is `M2_POST_FISSION_DEVELOPMENT_MAINTAINS_INHERITED_POLARITY_WITHOUT_DE_NOVO_RESEED`; Architect acceptance remains pending.
 - Affected areas: final remote-validation provenance for additive ENTRY-026 assay/example, compact evidence, scoped workflow, and governance only; no accepted scientific runtime, production polarity, actuator, traction, resource, M1, restart, or PR #44 change.
 - Supersedes record: DEC-DCDEV021-ENTRY026-POST-FISSION-DEVELOPMENT-POLARITY-MAINTENANCE-R1
+
+## DEC-DCDEV021-ENTRY026R1-POPULATION-FISSION-GATE-REQUALIFICATION-R1
+
+- Date: 2026-09-02
+- Record or decision ID: DEC-DCDEV021-ENTRY026R1-POPULATION-FISSION-GATE-REQUALIFICATION-R1
+- Status: ACTIVE
+- Decision or event: R1 is authorized from exact sealed ENTRY-026 result head `04e8b7f030118842b0ad2d8428b6f937fa9aa6c7` to audit the actual population fission gate and requalify continued-development polarity maintenance.
+- Rationale: The sealed ENTRY-026 package is not Architect accepted and used an early raw-pinch boundary. R1 preserves that package and tests daughter-specific birth mass, 1.35x growth, population cadence, and read-only pinch availability before any second-fission mutation.
+- Affected areas: additive R1 assay/example, compact evidence, scoped workflow, and append-only governance only; no scientific runtime, production polarity, actuator, resource, M1, restart, or PR #44 change.
+- Supersedes record: none

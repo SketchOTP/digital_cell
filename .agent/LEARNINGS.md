@@ -467,3 +467,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-021 ENTRY-026 post-fission continued-development polarity-maintenance feasibility audit.
 - Supersedes learning: L-DCDEV021-ENTRY026-001
+
+## L-DCDEV021-ENTRY026R1-001
+
+- Learning ID: L-DCDEV021-ENTRY026R1-001
+- Date: 2026-09-02
+- Fact or lesson: The sealed ENTRY-026 shortcut conflated a raw physical pinch candidate with the accepted MeshPopulation lifecycle gate. R1 restores the daughter-specific `1.35 * birth_mass` condition and population cadence while observing `try_local_fission` read-only. The corrected step-25 records remain non-eligible for both daughters; true eligibility is reached at relative step 250 for daughter A and 225 for daughter B. Structural mass accounting must retain GrowthLedger material separately from accepted non-growth topology/material deltas, including in growth-OFF controls.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry026r1.rs`, `digital-protocell/experiments/generated/dcdev021m2entry026r1/`, and `.github/workflows/dc-dev-021-m2-entry026r1.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-026-R1 population fission-gate and polarity-maintenance requalification.
+- Supersedes learning: none

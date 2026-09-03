@@ -1,0 +1,21 @@
+{
+  "entry026_artifact": "sha256:9b7b3a9a652307384f8fca54d9d72cf5adefd538ff5c96e399cb6f7c64bc69b7",
+  "entry026_final_ci": "33695757507",
+  "entry026_reported_classification": "NOT_ARCHITECT_ACCEPTED",
+  "entry026_status": "INVESTIGATE",
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "state": "OPEN"
+  },
+  "sealed_package": "UNCHANGED",
+  "source_hashes": {
+    "entry026r1_source": "658acb9b5a87a87a",
+    "mesh_fission.rs": "dcb859522534cf03",
+    "mesh_growth.rs": "f466c37daea1186c",
+    "mesh_mechanics.rs": "eaaa4f5898833bfd",
+    "mesh_population.rs": "6c893524be8d2c3e"
+  },
+  "starting_head": "04e8b7f030118842b0ad2d8428b6f937fa9aa6c7"
+}

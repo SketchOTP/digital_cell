@@ -1,0 +1,15 @@
+{
+  "A": {
+    "common_prefix": 250,
+    "growth_off_amplitude": 0.0029942345115391133,
+    "growth_on_amplitude": 0.0029950089382648395,
+    "maintenance": true
+  },
+  "B": {
+    "common_prefix": 225,
+    "growth_off_amplitude": 0.005273558008106159,
+    "growth_on_amplitude": 0.005273741252932956,
+    "maintenance": true
+  },
+  "threshold": "existing numerical tolerance only"
+}

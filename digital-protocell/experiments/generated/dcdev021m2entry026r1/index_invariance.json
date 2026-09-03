@@ -1,0 +1,6 @@
+{
+  "circular_reindexing": true,
+  "criterion": "equivalent corrected material-local lifecycle outcome",
+  "pass": true,
+  "remesh_roundoff_reported": true
+}

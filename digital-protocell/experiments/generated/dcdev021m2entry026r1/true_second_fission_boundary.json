@@ -1,0 +1,10 @@
+{
+  "A": {
+    "first_true_eligibility": 250
+  },
+  "B": {
+    "first_true_eligibility": 225
+  },
+  "second_fission_executed": false,
+  "stop_before_mutation": true
+}

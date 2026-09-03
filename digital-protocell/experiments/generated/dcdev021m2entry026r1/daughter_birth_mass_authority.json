@@ -1,0 +1,13 @@
+{
+  "daughter_a": {
+    "birth_mass": 212.6439090102348,
+    "threshold_mass": 287.069277163817
+  },
+  "daughter_b": {
+    "birth_mass": 335.7739408039904,
+    "threshold_mass": 453.2948200853871
+  },
+  "mother_birth_mass_used": false,
+  "shared_threshold": false,
+  "source": "exact first physical fission daughter structural masses"
+}

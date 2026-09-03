@@ -1,0 +1,11 @@
+{
+  "A": {
+    "event": false,
+    "first_step": null
+  },
+  "B": {
+    "event": false,
+    "first_step": null
+  },
+  "definition": "prior decline/local minimum followed by growth-on increase beyond existing numerical tolerance"
+}

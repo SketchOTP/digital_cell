@@ -1,0 +1,7 @@
+{
+  "defect": "PREMATURE_SECOND_FISSION_BOUNDARY",
+  "reported_classification": "NOT_ARCHITECT_ACCEPTED",
+  "sealed_artifact": "UNCHANGED",
+  "status": "INVESTIGATE",
+  "supported_subfinding": "early 25-step developmental maintenance signal"
+}

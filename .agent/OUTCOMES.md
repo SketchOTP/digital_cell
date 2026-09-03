@@ -1251,3 +1251,20 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: ENTRY-026 establishes continued-development polarity maintenance without de-novo reseeding in this bounded assay; it does not establish autonomous embodied locomotion or autonomous resource acquisition. Architect acceptance remains pending.
 - Blockers: Architect review only; no successor work is authorized.
 - Follow-up directive: none
+
+## D-20260902-dcdev021-m2-entry026r1-population-fission-gate-requalification - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY026R1-POPULATION-FISSION-GATE-LOCAL`
+- Supersedes outcome: `OUT-DCDEV021-ENTRY026-POST-FISSION-DEVELOPMENT-POLARITY-MAINTENANCE-R2`
+- Closed: `2026-09-02T21:02:39-04:00`
+- Acceptance: `PARTIAL`
+- Summary: R1 starts exactly at `04e8b7f030118842b0ad2d8428b6f937fa9aa6c7`, replays the accepted physical first fission, and evaluates the actual population gate `grown_enough && population_tick % 25 == 0 && try_local_fission(...).is_some()` without executing a second fission. Daughter A has birth mass `212.6439090102348` and threshold `287.069277163817`; daughter B has birth mass `335.7739408039904` and threshold `453.294820085386`. The sealed ENTRY-026 step-25 raw pinch candidates are false eligibility because both are below 1.35x. Growth-ON reaches true eligibility at relative step 250 for A and 225 for B. Both daughters maintain inherited polarity relative to matched growth-OFF decay; same-total homogeneous controls show no de-novo reseed.
+- Changed areas: additive R1 assay/example, compact evidence, scoped workflow, and append-only governance only; sealed ENTRY-026 evidence and accepted scientific runtime remain unchanged.
+- Validation:
+  - Exact authority, corrected population gate, material closure, rotation/index, and local release assay - PASSED
+  - Exact-head Linux CI - PENDING
+  - Independent artifact digest - PENDING
+  - Architect acceptance - PENDING
+- Remaining risks: exact-head validation and governance checks are still pending; this remains a bounded post-fission maintenance result and does not establish autonomous embodied locomotion or resource acquisition.
+- Blockers: exact-head Linux validation and Architect review; no successor work.
+- Follow-up directive: none

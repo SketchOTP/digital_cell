@@ -1,0 +1,11 @@
+{
+  "centroid_feedback": false,
+  "contact": false,
+  "distance": false,
+  "gradient": false,
+  "observer_feedback": false,
+  "randomness": false,
+  "resource": false,
+  "target": false,
+  "uptake_ledger": false
+}

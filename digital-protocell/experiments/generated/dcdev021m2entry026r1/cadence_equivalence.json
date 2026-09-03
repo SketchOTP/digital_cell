@@ -1,0 +1,8 @@
+{
+  "birth_population_tick": 2325,
+  "first_fission_step": 2326,
+  "post_fission_check": "birth_tick + post_fission_step",
+  "proof": true,
+  "relative_fission_cadence": "post_fission_step % 25 == 0",
+  "topology_cadence": "population_tick % 10 == 0"
+}

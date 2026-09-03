@@ -1,0 +1,28 @@
+{
+  "A_step25": {
+    "birth_mass": 212.6439090102348,
+    "cadence": true,
+    "current_mass": 218.54363241564891,
+    "grown_enough": false,
+    "mass_ratio": 1.0277446150838496,
+    "pinch_candidate": true,
+    "population_tick": 2350,
+    "step": 25,
+    "true_lifecycle_eligible": false
+  },
+  "B_step25": {
+    "birth_mass": 335.7739408039904,
+    "cadence": true,
+    "current_mass": 347.2513068053602,
+    "grown_enough": false,
+    "mass_ratio": 1.0341818247535468,
+    "pinch_candidate": true,
+    "population_tick": 2350,
+    "step": 25,
+    "true_lifecycle_eligible": false
+  },
+  "correct_rule": "grown_enough && cadence && pinch_candidate",
+  "expected_grown_enough": false,
+  "raw_rule": "pinch_candidate == true -> eligible",
+  "shortcut_classification": "INVALID_ENTRY026_ASSAY_SHORTCUT"
+}

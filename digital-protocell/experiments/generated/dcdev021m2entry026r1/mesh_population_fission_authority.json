@@ -1,0 +1,8 @@
+{
+  "birth_mass_field": "MeshIndividual.birth_mass",
+  "cadence": "population_tick % 25 == 0",
+  "growth_gate": "current_structural_mass >= 1.35 * birth_mass.max(1e-9)",
+  "physical_source_unchanged": true,
+  "pinch": "try_local_fission(...) == Some(...) is read-only in this assay",
+  "source": "chemistry_core::mesh_population::MeshPopulation::step"
+}

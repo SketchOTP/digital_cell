@@ -626,3 +626,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260902-dcdev021-m2-entry025-live-antagonistic-inherited-locomotion
 - Status at issuance: ISSUED
+
+## D-20260902-dcdev021-m2-entry026r1-population-fission-gate-requalification
+
+- Issued: `2026-09-02T20:58:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-026-R1-POPULATION-FISSION-GATE-AND-POLARITY-MAINTENANCE-REQUALIFICATION-001`
+- Objective: Requalify the exact MeshPopulation growth and fission gate after the sealed ENTRY-026 assay used a premature raw-pinch shortcut; determine whether continued development maintains inherited daughter polarity without de-novo reseeding.
+- Scope: Exact first physical fission replay, daughter-specific 1.35x birth-mass gate, population cadence, read-only pinch-candidate observation, inherited/growth-OFF/same-total homogeneous controls, material closure with accepted non-growth topology deltas, rotation/index checks, preservation, compact evidence, governance, and exact-head Linux validation.
+- Exclusions: sealed ENTRY-026 evidence rewrite, second-fission mutation, production polarity, actuator, resource interaction, polarity reseeding, new randomness, tuning, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: `M2_POST_FISSION_CONTINUED_DEVELOPMENT_POLARITY_RESEEDING_QUALIFIED`, `M2_POST_FISSION_DEVELOPMENT_MAINTAINS_INHERITED_POLARITY_WITHOUT_DE_NOVO_RESEED`, `M2_POST_FISSION_CONTINUED_DEVELOPMENT_POLARITY_INSUFFICIENT`, `M2_ENTRY026R1_POPULATION_FISSION_GATE_AUTHORITY_UNRESOLVED`, `M2_ENTRY026R1_GROWTH_OFF_REGRESSION_INVALID`, or `M2_ENTRY026R1_REQUALIFICATION_INVALID` according to the directive gates and exact-head validation.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260902-dcdev021-m2-entry026-post-fission-development-polarity-maintenance
+- Status at issuance: ISSUED

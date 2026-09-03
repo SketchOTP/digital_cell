@@ -1,0 +1,10 @@
+{
+  "directive": "DC-DEV-021-M2-ENTRY-026-R1-POPULATION-FISSION-GATE-AND-POLARITY-MAINTENANCE-REQUALIFICATION-001",
+  "growth_ratio": 1.35,
+  "horizon": 3000,
+  "next_execution_started": false,
+  "observer_only": true,
+  "sealed_entry026_unchanged": true,
+  "second_fission_executed": false,
+  "starting_head": "04e8b7f030118842b0ad2d8428b6f937fa9aa6c7"
+}

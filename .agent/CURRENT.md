@@ -3,25 +3,25 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-02T19:35:00-04:00`
+- Last updated: `2026-09-02T21:02:39-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `NONE`
-- External directive ID: `NONE`
-- Objective: `NONE`
-- Current status: `IDLE`
-- Acceptance: `NONE`
-- Current phase: `NONE`
-- Expected or actual touched areas: `NONE`
-- Immediate next action: `NONE`
+- Local directive ID: `D-20260902-dcdev021-m2-entry026r1-population-fission-gate-requalification`
+- External directive ID: `DC-DEV-021-M2-ENTRY-026-R1-POPULATION-FISSION-GATE-AND-POLARITY-MAINTENANCE-REQUALIFICATION-001`
+- Objective: Requalify the ENTRY-026 population fission boundary and determine whether continued development maintains inherited daughter polarity without de-novo reseeding.
+- Current status: `VALIDATING`
+- Acceptance: `PENDING_ARCHITECT`
+- Current phase: `R1 assay complete; preservation and exact-head validation pending`
+- Expected or actual touched areas: `additive R1 assay/example, compact evidence, scoped workflow, append-only governance`
+- Immediate next action: `complete preservation matrix, commit, push, run exact-head Linux CI, upload and hash artifact`
 
 ## Temporary task-relevant facts
 
 - M0 is closed; M1 is formally closed and frozen at `fb77f472b1519a9e0f713833efba5b1d403f4723`.
 - Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-011 is Architect accepted as metabolically live in-contact composition; ENTRY-016 is Architect accepted as `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`; ENTRY-019 is Architect accepted as `M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED`; ENTRY-021 is Architect accepted as `M2_CONSERVATIVE_POLARITY_FISSION_INHERITANCE_AND_AMPLIFICATION_QUALIFIED`; ENTRY-023 is complete pending Architect review, and no successor audit is active.
 - PR #44 is the immutable M1 provenance stack and must remain open, draft, unmerged, and untouched.
-- ENTRY-026 is executing from exact accepted ENTRY-025 head `b6eb9f1a58155220f6dff49bd5c79152b4964ffc` on `m2/dc-dev-021-entry026-post-fission-development-polarity-maintenance`. The isolated assay reports inherited-polarity maintenance under growth-ON for both daughters, matched growth-OFF decay, no de-novo homogeneous seed, and no second fission execution; Architect acceptance remains pending.
+- ENTRY-026 remains a sealed, not-yet-Architect-accepted package with status `INVESTIGATE`; its early step-25 shortcut is not promoted. R1 starts exactly at `04e8b7f030118842b0ad2d8428b6f937fa9aa6c7` and requalifies the population gate without changing the sealed package.
 - The clean baseline is derived from `1e242f28152797b512e25cd56c7b718e45d6ca97`; accepted M1 evidence remains on Atlas.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
 - DC-DEV-003 continuity remains authoritative; DC-DEV-004 adds one local contractile tension path and does not add sensors, commands, memory, learning, or evolution.

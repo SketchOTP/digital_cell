@@ -1,0 +1,8 @@
+{
+  "growth_ledger_remains_unchanged": true,
+  "growth_off_non_growth_delta_recorded": true,
+  "ledger": "existing GrowthLedger plus observed accepted non-growth structural-material deltas from topology/material physics",
+  "max_full_material_residual_by_arm": 1.1368683772161603e-13,
+  "new_growth_source": false,
+  "pass": true
+}
