@@ -107,7 +107,7 @@ jobs:
           assert json.loads((root / "index_invariance.json").read_text())["pass"] is True
           boundary = json.loads((root / "true_second_fission_boundary.json").read_text())
           assert boundary["second_fission_executed"] is False
-          sealed_path = "digital-protocell/experiments/generated/dcdev021m2entry026/qualification.json"
+          sealed_path = "experiments/generated/dcdev021m2entry026/qualification.json"
           sealed_at_start = subprocess.check_output(["git", "show", f"{start}:{sealed_path}"])
           assert Path(sealed_path).read_bytes() == sealed_at_start
           assert q["entry026_sealed_artifact"] == "UNCHANGED"
