@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-02T21:46:00-04:00`
+- Last updated: `2026-09-02T22:18:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260902-dcdev021-m2-entry026r1-population-fission-gate-requalification`
-- External directive ID: `DC-DEV-021-M2-ENTRY-026-R1-POPULATION-FISSION-GATE-AND-POLARITY-MAINTENANCE-REQUALIFICATION-001`
-- Objective: Requalify the ENTRY-026 population fission boundary and determine whether continued development maintains inherited daughter polarity without de-novo reseeding.
+- Local directive ID: `D-20260902-dcdev021-m2-entry027-growth-on-interfission-locomotion`
+- External directive ID: `DC-DEV-021-M2-ENTRY-027-GROWTH-ON-INTERFISSION-INHERITED-POLARITY-LOCOMOTION-FEASIBILITY-001`
+- Objective: Determine whether ordinary post-fission growth with inherited polarity drives daughter-dependent locomotion through the unchanged A-funded effector before the true second-fission eligibility boundary.
 - Current status: `VALIDATING`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `R1 assay, preservation, exact-head validation, artifact verification, and Notion readback complete; Architect review pending`
-- Expected or actual touched areas: `additive R1 assay/example, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `return the completed R1 handoff for Architect review; do not start successor work`
+- Current phase: `ENTRY-027 assay complete; local preservation, governance, exact-head workflow, artifact verification, and Notion readback pending`
+- Expected or actual touched areas: `additive ENTRY-027 assay/example, compact evidence, scoped workflow, append-only governance`
+- Immediate next action: `complete exact-head validation and return the ENTRY-027 handoff; do not start successor work`
 
 ## Temporary task-relevant facts
 

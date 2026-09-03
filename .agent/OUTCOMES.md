@@ -1286,3 +1286,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: R1 establishes bounded post-fission developmental maintenance and corrects the population-gate audit boundary; it does not establish autonomous embodied locomotion or resource acquisition.
 - Blockers: Architect review only; no successor work is authorized.
 - Follow-up directive: none
+
+## D-20260902-dcdev021-m2-entry027-growth-on-interfission-locomotion - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-ENTRY027-GROWTH-ON-INTERFISSION-LOCOMOTION-LOCAL`
+- Supersedes outcome: none
+- Closed: 2026-09-02T22:18:00-04:00
+- Acceptance: `PARTIAL`
+- Summary: ENTRY-027 starts exactly at accepted ENTRY-026-R1 head `cff3340c46801aa9bbe52ea2b5e830b124ee0852`, replays the unforced physical first fission, performs the required zero-pool actuator-off step, and runs daughter-specific growth-on spatial, same-mean, and motor-off arms without executing a second fission. Daughter A does not clear the spatial-leverage comparison; Daughter B does. The local bounded classification is `M2_GROWTH_ON_INTERFISSION_LOCOMOTION_DAUGHTER_DEPENDENT`.
+- Changed areas: additive ENTRY-027 assay/example, compact evidence, scoped workflow, append-only governance, and no accepted scientific runtime source; PR #44 remains untouched.
+- Validation:
+  - Local release assay, lifecycle boundary, material/energy closure, rotation/index, and evidence generation - PASSED
+  - Exact-head Linux CI - NOT RUN
+  - Independent artifact digest - NOT RUN
+  - Notion readback - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: Remote exact-head preservation and Architect review remain pending; no successor work is authorized.
+- Blockers: none
+- Follow-up directive: none

@@ -18,6 +18,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-021 ENTRY-015 polarity actuator interface feasibility audit
 - Supersedes learning: none
 
+## L-DCDEV021-ENTRY027-001
+
+- Learning ID: L-DCDEV021-ENTRY027-001
+- Date: 2026-09-02
+- Fact or lesson: In the exact ENTRY-027 physical first-fission replay, the required zero-pool actuator-off step is valid and the daughter-specific population gate is observed read-only. Growth-on spatial inherited polarity is daughter-dependent: Daughter A does not clear the spatial-leverage comparison against same-mean and motor-off controls, while Daughter B does. No second fission is executed, and the unchanged A-funded actuator, growth accounting, and polarity remap remain in scope.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry027.rs`, `digital-protocell/experiments/generated/dcdev021m2entry027/`, and `.github/workflows/dc-dev-021-m2-entry027.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 ENTRY-027 growth-on inter-fission inherited-polarity locomotion feasibility audit.
+- Supersedes learning: none
+
 ## L-DCDEV021-ENTRY025-001
 
 - Learning ID: L-DCDEV021-ENTRY025-001

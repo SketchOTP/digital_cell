@@ -505,3 +505,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: R1 validates the true population lifecycle eligibility boundary while preserving the sealed ENTRY-026 package and confirms continued-development maintenance of inherited daughter polarity without de-novo reseeding.
 - Affected areas: additive R1 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, production polarity, actuator, traction, resource, M1, restart, or PR #44 change.
 - Supersedes record: DEC-DCDEV021-ENTRY026R1-POPULATION-FISSION-GATE-REQUALIFICATION-R1
+
+## DEC-DCDEV021-ENTRY027-GROWTH-ON-INTERFISSION-LOCOMOTION
+
+- Date: 2026-09-02
+- Record or decision ID: DEC-DCDEV021-ENTRY027-GROWTH-ON-INTERFISSION-LOCOMOTION
+- Status: ACTIVE
+- Decision or event: ENTRY-027 is authorized from exact accepted ENTRY-026-R1 head `cff3340c46801aa9bbe52ea2b5e830b124ee0852` as an isolated growth-on inter-fission locomotion feasibility assay.
+- Rationale: ENTRY-026-R1 is accepted as preserving inherited polarity without de-novo reseeding. ENTRY-027 tests whether the exact local `v/(u+v)` interface remains mechanically useful during ordinary daughter growth, with same-mean and motor-off controls, before observing the true population fission gate without executing another fission.
+- Affected areas: additive ENTRY-027 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, production polarity, resource, actuator, traction, M1, restart, or PR #44 change.
+- Supersedes record: none

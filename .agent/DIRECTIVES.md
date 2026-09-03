@@ -640,3 +640,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260902-dcdev021-m2-entry026-post-fission-development-polarity-maintenance
 - Status at issuance: ISSUED
+
+## D-20260902-dcdev021-m2-entry027-growth-on-interfission-locomotion
+
+- Issued: `2026-09-02T22:18:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-ENTRY-027-GROWTH-ON-INTERFISSION-INHERITED-POLARITY-LOCOMOTION-FEASIBILITY-001`
+- Objective: Determine whether ordinary post-fission growth with inherited polarity drives daughter-dependent locomotion through the unchanged A-funded effector before the true second-fission eligibility boundary.
+- Scope: Isolated daughter A/B growth-on spatial, same-mean, and motor-off arms; one zero-pool actuator-off step; exact physical first fission; lifecycle eligibility observation without second fission; compact evidence, preservation, governance, and exact-head Linux validation.
+- Exclusions: Production polarity, resource interaction, new mapping/parameter, tuning, reseeding, second-fission mutation, actuator/traction/metabolism changes, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: `M2_GROWTH_ON_INTERFISSION_INHERITED_POLARITY_LOCOMOTION_QUALIFIED`, `M2_GROWTH_ON_INTERFISSION_LOCOMOTION_DAUGHTER_DEPENDENT`, `M2_PURE_EDGE_CONTRACTILITY_INTERFISSION_ROUTE_CLOSED`, or invalid according to the directive gates and exact-head validation.
+- Risk class: NORMAL
+- Relationship: amends
+- Related directive: D-20260902-dcdev021-m2-entry026r1-population-fission-gate-requalification
+- Status at issuance: ISSUED
