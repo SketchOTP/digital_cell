@@ -142,11 +142,12 @@ jobs:
             "dcdev021m2entry024":"M2_EFFECTOR_ORIENTATION_DAUGHTER_DEPENDENT_UNRESOLVED",
             "dcdev021m2entry025":"M2_LIVE_ANTAGONISTIC_INHERITED_POLARITY_COMPOSITION_INSUFFICIENT",
             "dcdev021m2entry026r1":"M2_POST_FISSION_DEVELOPMENT_MAINTAINS_INHERITED_POLARITY_WITHOUT_DE_NOVO_RESEED",
-            "dcdev021m2entry027":"M2_GROWTH_ON_INTERFISSION_LOCOMOTION_DAUGHTER_DEPENDENT",
           }
           for folder, value in expected.items():
               actual = json.loads((Path("experiments/generated") / folder / "qualification.json").read_text())["classification"]
               assert actual == value, (folder, actual)
+          authority = json.loads((Path("experiments/generated/dcdev021m2entry028") / "authority.json").read_text())
+          assert authority["entry027_classification"] == "M2_GROWTH_ON_INTERFISSION_LOCOMOTION_DAUGHTER_DEPENDENT"
           print("historical classification preservation passed")
           PY
           DCDEV020R9R3_CONTRACT=ConservativeV3 DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 cargo +1.89.0 run -p phase1-certifier --bin digital-protocell-phase1 --release -- --steps 1 --out "$RUNNER_TEMP/production.json"
