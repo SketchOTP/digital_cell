@@ -161,7 +161,7 @@ jobs:
           cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
           cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
           cargo +1.89.0 test -p evolution-harness -- --nocapture
-          python3 scripts/validate_governance.py --mode ADOPTED
+          python3 ../scripts/validate_governance.py --mode ADOPTED
 
       - name: Record and upload closure evidence
         if: always()
