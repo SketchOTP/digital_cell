@@ -28,6 +28,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-021 ENTRY-027 growth-on inter-fission inherited-polarity locomotion feasibility audit.
 - Supersedes learning: none
 
+## L-DCDEV021-ENTRY027-002
+
+- Learning ID: L-DCDEV021-ENTRY027-002
+- Date: 2026-09-02
+- Fact or lesson: Exact-head Linux workflow `33708162577` passed on `e0ec069125a64e1217723620167f95c6274906b4`, with independent artifact ZIP digest `sha256:a523e92552b866546bfb7cbb7aac214be4256187b3770b751e0474e0d2914cee`. The final bounded result is `M2_GROWTH_ON_INTERFISSION_LOCOMOTION_DAUGHTER_DEPENDENT`: Daughter B shows causal spatial leverage from inherited polarity during growth-on development, while Daughter A does not. No second fission or successor execution occurred.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_entry027.rs`, `digital-protocell/experiments/generated/dcdev021m2entry027/`, `.github/workflows/dc-dev-021-m2-entry027.yml`, and GitHub Actions workflow `33708162577`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 ENTRY-027 growth-on inter-fission inherited-polarity locomotion feasibility audit.
+- Supersedes learning: L-DCDEV021-ENTRY027-001
+
 ## L-DCDEV021-ENTRY025-001
 
 - Learning ID: L-DCDEV021-ENTRY025-001

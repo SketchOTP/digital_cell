@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-02T22:18:00-04:00`
+- Last updated: `2026-09-02T22:22:00-04:00`
 
 ## Active state after adoption
 
@@ -12,9 +12,9 @@
 - Objective: Determine whether ordinary post-fission growth with inherited polarity drives daughter-dependent locomotion through the unchanged A-funded effector before the true second-fission eligibility boundary.
 - Current status: `VALIDATING`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `ENTRY-027 assay complete; local preservation, governance, exact-head workflow, artifact verification, and Notion readback pending`
+- Current phase: `ENTRY-027 assay, preservation, governance, exact-head Linux validation, artifact verification, and Notion readback complete; Architect review pending`
 - Expected or actual touched areas: `additive ENTRY-027 assay/example, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `complete exact-head validation and return the ENTRY-027 handoff; do not start successor work`
+- Immediate next action: `return the completed ENTRY-027 handoff for Architect review; do not start successor work`
 
 ## Temporary task-relevant facts
 

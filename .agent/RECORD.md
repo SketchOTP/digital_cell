@@ -515,3 +515,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: ENTRY-026-R1 is accepted as preserving inherited polarity without de-novo reseeding. ENTRY-027 tests whether the exact local `v/(u+v)` interface remains mechanically useful during ordinary daughter growth, with same-mean and motor-off controls, before observing the true population fission gate without executing another fission.
 - Affected areas: additive ENTRY-027 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, production polarity, resource, actuator, traction, M1, restart, or PR #44 change.
 - Supersedes record: none
+
+## DEC-DCDEV021-ENTRY027-GROWTH-ON-INTERFISSION-LOCOMOTION-FINAL
+
+- Date: 2026-09-02
+- Record or decision ID: DEC-DCDEV021-ENTRY027-GROWTH-ON-INTERFISSION-LOCOMOTION-FINAL
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33708162577` passed on final result head `e0ec069125a64e1217723620167f95c6274906b4`; independent artifact ZIP digest `sha256:a523e92552b866546bfb7cbb7aac214be4256187b3770b751e0474e0d2914cee`; Notion handoff was appended and read back.
+- Rationale: The final remote validation confirms the unforced physical first-fission replay, zero-pool actuator-off boundary, daughter-specific growth-on spatial/same-mean/motor-off comparison, lifecycle observation without second fission, closure, rotation/index, and historical preservation. Daughter B shows spatial leverage while Daughter A does not, so the bounded classification is `M2_GROWTH_ON_INTERFISSION_LOCOMOTION_DAUGHTER_DEPENDENT`.
+- Affected areas: additive ENTRY-027 assay/example, compact evidence, scoped workflow, and append-only governance only; no accepted scientific runtime, production polarity, resource, actuator, traction, M1, restart, or PR #44 change.
+- Supersedes record: DEC-DCDEV021-ENTRY027-GROWTH-ON-INTERFISSION-LOCOMOTION
