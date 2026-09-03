@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-03T10:50:00-04:00`
+- Last updated: `2026-09-03T12:20:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260903-dcdev021-m2-entry028-balanced-separated-resource-ecology`
-- External directive ID: `DC-DEV-021-M2-ENTRY-028-BALANCED-SEPARATED-RESOURCE-ECOLOGICAL-COUPLING-FEASIBILITY-001`
-- Objective: Determine whether accepted daughter-dependent growth-on locomotion produces a causal ecological consequence in a preregistered balanced separated-resource assay.
+- Local directive ID: `D-20260903-dcdev021-m2-closure-finite-world-autonomous-ecology`
+- External directive ID: `DC-DEV-021-M2-CLOSURE-001-FINITE-WORLD-AUTONOMOUS-ECOLOGY-AND-REPRODUCTIVE-COUPLING-001`
+- Objective: Deliver the bounded finite-world autonomous ecology and reproductive-coupling closure attempt from the exact accepted ENTRY-028 head.
 - Current status: `VALIDATING`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `ENTRY-028 local and exact-head Linux validation complete; artifact verification and Notion readback complete; Architect review pending`
-- Expected or actual touched areas: `additive ENTRY-028 assay/example, compact evidence, scoped workflow, append-only governance, authorized ENTRY-027 header correction`
-- Immediate next action: `return the completed ENTRY-028 handoff for Architect review; do not start successor work`
+- Current phase: `closure assay and local validation complete; exact-head Linux validation, artifact upload, and Notion readback pending`
+- Expected or actual touched areas: `additive finite-world module, assay/runtime helpers, compact closure evidence, scoped workflow, append-only governance`
+- Immediate next action: `commit and push the bounded closure result, run exact-head Linux validation, then return the handoff; do not start successor work`
 
 ## Temporary task-relevant facts
 

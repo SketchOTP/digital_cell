@@ -87,6 +87,11 @@
 - `.github/workflows/dc-dev-021-m2-entry020.yml` — exact-head Linux validation for ENTRY-020 authority, autonomous polarity/locomotion gates, historical preservation, D-087, downstream tests, governance, and artifact upload.
 - `digital-protocell/examples/dcdev021_m2_entry025.rs` — isolated ENTRY-025 live post-fission antagonistic inherited-polarity assay with strict eligibility, direct-live parity, unchanged mechanics/remesh, matched mean/off controls, closure, and preservation evidence.
 - `digital-protocell/experiments/generated/dcdev021m2entry025/` — compact ENTRY-025 authority-correction, fission, live causal-order, daughter robustness, closure, rotation/index, preservation, and qualification evidence.
+- `digital-protocell/crates/regulatory-core/src/finite_world.rs` — reusable opt-in `FiniteWorldV1` finite shared-resource exchange with pre-step request collection, common proportional allocation, transfer disablement, and focused conservation/order tests.
+- `digital-protocell/examples/dcdev021_m2_closure001.rs` — bounded M2 closure runtime entry point.
+- `digital-protocell/examples/dcdev021_m2_closure001_impl.rs` — closure evidence generator for finite-world transfer, metabolism, inherited polarity, fission, existing-motor and assay-only local-protrusion arms.
+- `digital-protocell/experiments/generated/dcdev021m2closure001/` — closure-level finite-world, feeding sanity, ecology, reproduction, preservation, and qualification evidence.
+- `.github/workflows/dc-dev-021-m2-closure001.yml` — exact-head Linux validation for the closure runtime, finite-world tests, historical preservation, D-087, downstream tests, governance, and artifact upload.
 - `.github/workflows/dc-dev-021-m2-entry025.yml` — exact-head Linux validation for ENTRY-025 authority, live controls, preservation, D-087, downstream tests, governance, and artifact upload.
 - `digital-protocell/experiments/generated/dcdev001/` — DC-DEV-001A machine-readable decision artifacts.
 - `digital-protocell/experiments/generated/dcdev006/` — DC-DEV-006 local spatial-contact evidence artifacts.

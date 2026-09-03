@@ -1,0 +1,209 @@
+{
+  "existing_motor": {
+    "a_spent": 2892.090448735262,
+    "a_to_w_residual": 1.8189894035458565e-12,
+    "arm": "SPATIAL_CURRENT_MOTOR",
+    "checkpoints": [
+      {
+        "contacts": 0,
+        "delivered_f": 0.0,
+        "delivered_n": 0.0,
+        "fissions": 0,
+        "living": 2,
+        "sites": [
+          79,
+          123
+        ],
+        "step": 1,
+        "world_f": 58.35581952252906,
+        "world_n": 58.35581952252906
+      },
+      {
+        "contacts": 0,
+        "delivered_f": 0.0,
+        "delivered_n": 0.0,
+        "fissions": 2,
+        "living": 4,
+        "sites": [
+          40,
+          87,
+          20,
+          61
+        ],
+        "step": 3000,
+        "world_f": 58.35581952252906,
+        "world_n": 58.35581952252906
+      }
+    ],
+    "contacts": 0,
+    "delivered_f": 0.0,
+    "delivered_n": 0.0,
+    "descendant_fissions": 0,
+    "first_contact_step": null,
+    "first_transfer_step": null,
+    "fissions": 2,
+    "initial_world_f": 58.35581952252906,
+    "initial_world_n": 58.35581952252906,
+    "invalid": false,
+    "motor_w_generated": 2892.090448735334,
+    "net_displacement": 27.836931679028492,
+    "path_length": 1.391491455204603,
+    "reaction_a_produced": 2040.0058059338883,
+    "reaction_f_consumed": 2040.0058059338883,
+    "reaction_n_consumed": 2040.0058059338883,
+    "reaction_w_produced": 7270.737881001786,
+    "remaining_world_f": 58.35581952252906,
+    "remaining_world_n": 58.35581952252906,
+    "slips": 504228,
+    "steps": 3000,
+    "stuck_contacts": 116170,
+    "terminal_living": 4,
+    "terminal_sites": [
+      40,
+      87,
+      20,
+      61
+    ],
+    "world_f_loss": 0.0,
+    "world_n_loss": 0.0
+  },
+  "positive_transfer": false,
+  "protrusive": {
+    "a_spent": 2896.1529113525958,
+    "a_to_w_residual": 1.8189894035458565e-12,
+    "arm": "POLARITY_LOCAL_PROTRUSION",
+    "checkpoints": [
+      {
+        "contacts": 0,
+        "delivered_f": 0.0,
+        "delivered_n": 0.0,
+        "fissions": 0,
+        "living": 2,
+        "sites": [
+          79,
+          123
+        ],
+        "step": 1,
+        "world_f": 58.35581952252906,
+        "world_n": 58.35581952252906
+      },
+      {
+        "contacts": 0,
+        "delivered_f": 0.0,
+        "delivered_n": 0.0,
+        "fissions": 2,
+        "living": 4,
+        "sites": [
+          40,
+          87,
+          20,
+          61
+        ],
+        "step": 3000,
+        "world_f": 58.35581952252906,
+        "world_n": 58.35581952252906
+      }
+    ],
+    "contacts": 0,
+    "delivered_f": 0.0,
+    "delivered_n": 0.0,
+    "descendant_fissions": 0,
+    "first_contact_step": null,
+    "first_transfer_step": null,
+    "fissions": 2,
+    "initial_world_f": 58.35581952252906,
+    "initial_world_n": 58.35581952252906,
+    "invalid": false,
+    "motor_w_generated": 2896.1529113523193,
+    "net_displacement": 27.836931679028492,
+    "path_length": 1.391491455204603,
+    "reaction_a_produced": 2040.0058059338883,
+    "reaction_f_consumed": 2040.0058059338883,
+    "reaction_n_consumed": 2040.0058059338883,
+    "reaction_w_produced": 7270.737881001786,
+    "remaining_world_f": 58.35581952252906,
+    "remaining_world_n": 58.35581952252906,
+    "slips": 503916,
+    "steps": 3000,
+    "stuck_contacts": 116482,
+    "terminal_living": 4,
+    "terminal_sites": [
+      40,
+      87,
+      20,
+      61
+    ],
+    "world_f_loss": 0.0,
+    "world_n_loss": 0.0
+  },
+  "resource_information": "NONE",
+  "selected": {
+    "a_spent": 2896.1529113525958,
+    "a_to_w_residual": 1.8189894035458565e-12,
+    "arm": "POLARITY_LOCAL_PROTRUSION",
+    "checkpoints": [
+      {
+        "contacts": 0,
+        "delivered_f": 0.0,
+        "delivered_n": 0.0,
+        "fissions": 0,
+        "living": 2,
+        "sites": [
+          79,
+          123
+        ],
+        "step": 1,
+        "world_f": 58.35581952252906,
+        "world_n": 58.35581952252906
+      },
+      {
+        "contacts": 0,
+        "delivered_f": 0.0,
+        "delivered_n": 0.0,
+        "fissions": 2,
+        "living": 4,
+        "sites": [
+          40,
+          87,
+          20,
+          61
+        ],
+        "step": 3000,
+        "world_f": 58.35581952252906,
+        "world_n": 58.35581952252906
+      }
+    ],
+    "contacts": 0,
+    "delivered_f": 0.0,
+    "delivered_n": 0.0,
+    "descendant_fissions": 0,
+    "first_contact_step": null,
+    "first_transfer_step": null,
+    "fissions": 2,
+    "initial_world_f": 58.35581952252906,
+    "initial_world_n": 58.35581952252906,
+    "invalid": false,
+    "motor_w_generated": 2896.1529113523193,
+    "net_displacement": 27.836931679028492,
+    "path_length": 1.391491455204603,
+    "reaction_a_produced": 2040.0058059338883,
+    "reaction_f_consumed": 2040.0058059338883,
+    "reaction_n_consumed": 2040.0058059338883,
+    "reaction_w_produced": 7270.737881001786,
+    "remaining_world_f": 58.35581952252906,
+    "remaining_world_n": 58.35581952252906,
+    "slips": 503916,
+    "steps": 3000,
+    "stuck_contacts": 116482,
+    "terminal_living": 4,
+    "terminal_sites": [
+      40,
+      87,
+      20,
+      61
+    ],
+    "world_f_loss": 0.0,
+    "world_n_loss": 0.0
+  },
+  "separated_start": true
+}

@@ -1,0 +1,10 @@
+{
+  "descendant_sites": [
+    40,
+    87,
+    20,
+    61
+  ],
+  "material_partition": "accepted mesh_fission authority",
+  "polarity_partition": "conservative contiguous amounts"
+}

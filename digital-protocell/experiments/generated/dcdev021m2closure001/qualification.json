@@ -1,0 +1,21 @@
+{
+  "architect_acceptance": "PENDING",
+  "autonomous_finite_resource_acquisition": "NOT_ESTABLISHED",
+  "autonomous_polarity_initiation": "QUALIFIED",
+  "classification": "M2_CURRENT_SENSORIMOTOR_ROUTE_ECOLOGICALLY_INSUFFICIENT",
+  "directive": "DC-DEV-021-M2-CLOSURE-001-FINITE-WORLD-AUTONOMOUS-ECOLOGY-AND-REPRODUCTIVE-COUPLING-001",
+  "environment_dependent_evolution": "NOT_ESTABLISHED",
+  "evolution_reentry_ready": "NO",
+  "existing_motor_tested_first": true,
+  "finite_world": true,
+  "mutable_heritable_causal_phenotype": "UNRESOLVED",
+  "next_execution_started": false,
+  "protrusion_tested": true,
+  "protrusion_used": false,
+  "real_shared_finite_ecology": "NOT_ESTABLISHED",
+  "resource_to_reproduction": "NOT_ESTABLISHED",
+  "scientific_runtime_source_changed": true,
+  "shared_world": true,
+  "starting_head": "e56da9f88b632c6655eb79b50133cf5d0a864bbc",
+  "unbacked_nf_inflow": "NONE"
+}

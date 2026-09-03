@@ -555,3 +555,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The bounded 24-arm separated-resource ecology confirms initial noncontact, physical contact without delivered N/F advantage, retained locomotion, unforced first fission, closure, preservation, and no successor execution. The classification is `M2_SEPARATED_RESOURCE_CONTACT_WITHOUT_ACQUISITION_ADVANTAGE`.
 - Affected areas: additive ENTRY-028 assay/evidence/workflow/governance and authorized nonsemantic ENTRY-027 presentation correction only; no accepted scientific runtime or PR #44 change.
 - Supersedes record: DEC-DCDEV021-ENTRY028-BALANCED-SEPARATED-RESOURCE-ECOLOGY
+
+## DEC-DCDEV021-M2-CLOSURE-FINITE-WORLD-AUTONOMOUS-ECOLOGY
+
+- Date: 2026-09-03
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE-FINITE-WORLD-AUTONOMOUS-ECOLOGY
+- Status: ACTIVE
+- Decision or event: Closure work started from exact accepted ENTRY-028 head `e56da9f88b632c6655eb79b50133cf5d0a864bbc` on `m2/dc-dev-021-m2-closure-finite-world-autonomous-ecology`.
+- Rationale: The authorized closure directive permits an additive finite-world runtime and one conditional A-funded local protrusion fallback. Local execution validates finite shared allocation, positive transfer/metabolism when contact is directly supplied, and energy closure, but neither bounded motility route reaches the preregistered separated resources in the integrated ecology; unforced first fission occurs without a resource-causal descendant fission.
+- Affected areas: additive finite-world module, assay-only extra-force helpers, closure assay/evidence/workflow, and append-only governance; no frozen M1 source, resource-law source, fission source, or PR #44 modification.
+- Supersedes record: none

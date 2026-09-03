@@ -1,0 +1,21 @@
+{
+  "entry028": "ARCHITECT_ACCEPTED",
+  "entry028_artifact": "sha256:06a69975ed6e89ade509b2ed09073085665408f30c1112a49a923a18f8363a18",
+  "entry028_ci": "33747219756",
+  "entry028_classification": "M2_SEPARATED_RESOURCE_CONTACT_WITHOUT_ACQUISITION_ADVANTAGE",
+  "entry028_head": "e56da9f88b632c6655eb79b50133cf5d0a864bbc",
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "state": "OPEN"
+  },
+  "source_hashes": {
+    "backing_reservoir.rs": "194681614d3c6adb",
+    "finite_world.rs": "24a149f59f8f1f46",
+    "mesh_fission.rs": "dcb859522534cf03",
+    "mesh_growth.rs": "f466c37daea1186c",
+    "mesh_mechanics.rs": "eaaa4f5898833bfd",
+    "spatial_resource.rs": "47e9d8394c9e4896"
+  }
+}

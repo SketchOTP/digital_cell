@@ -8,6 +8,7 @@
 
 use crate::{
     apply_local_activated_energy_contractility_with_external_forces,
+    apply_local_activated_energy_contractility_with_extra_forces,
     apply_local_contractility_with_external_forces, ActivatedEnergyContractilityStepLedgerV1,
     ContractilityError, ContractilityParamsV1, ContractilityStepLedgerV1,
 };
@@ -388,10 +389,8 @@ fn finish_activated_energy_step(
                 / mechanics.dt,
         ];
         let accepted_velocity = [
-            (after.vertices[index][0] - before.vertices[index][0]) * mechanics.gamma
-                / mechanics.dt,
-            (after.vertices[index][1] - before.vertices[index][1]) * mechanics.gamma
-                / mechanics.dt,
+            (after.vertices[index][0] - before.vertices[index][0]) * mechanics.gamma / mechanics.dt,
+            (after.vertices[index][1] - before.vertices[index][1]) * mechanics.gamma / mechanics.dt,
         ];
         let required_force = [
             attempted_velocity[0] * mechanics.gamma,
@@ -459,23 +458,73 @@ pub fn apply_local_activated_energy_contractility_with_stick_slip(
     let before = mesh.clone();
     let mut free_step = before.clone();
     let zero_external = vec![[0.0, 0.0]; before.n()];
-    let _free_contractility =
-        apply_local_activated_energy_contractility_with_external_forces(
-            &mut free_step,
-            activity,
-            mechanics,
-            contractility,
-            Some(&zero_external),
-        )?;
+    let _free_contractility = apply_local_activated_energy_contractility_with_external_forces(
+        &mut free_step,
+        activity,
+        mechanics,
+        contractility,
+        Some(&zero_external),
+    )?;
     let (regimes, reactions) = contacts_from_free_step(&before, &free_step, mechanics, params)?;
-    let accepted_contractility =
-        apply_local_activated_energy_contractility_with_external_forces(
-            mesh,
-            activity,
-            mechanics,
-            contractility,
-            Some(&reactions),
-        )?;
+    let accepted_contractility = apply_local_activated_energy_contractility_with_external_forces(
+        mesh,
+        activity,
+        mechanics,
+        contractility,
+        Some(&reactions),
+    )?;
+    finish_activated_energy_step(
+        &before,
+        mesh,
+        &free_step,
+        mechanics,
+        params,
+        &regimes,
+        &reactions,
+        Some(accepted_contractility),
+    )
+}
+
+/// Assay-only extension of the accepted A-funded stick-slip adapter.  The
+/// supplied local force field is funded together with contractility by one
+/// common scale and is passed through the same substrate-reaction forecast and
+/// mechanics authority.  Historical callers use the unchanged function
+/// above.
+pub fn apply_local_activated_energy_contractility_with_stick_slip_and_extra_forces(
+    mesh: &mut MaterialMesh,
+    activity: &[f64],
+    mechanics: &MechParams,
+    contractility: &ContractilityParamsV1,
+    params: &StickSlipTractionParamsV1,
+    extra_forces: &[[f64; 2]],
+    extra_requested_resource: f64,
+) -> Result<ActivatedEnergyStickSlipStepLedgerV1, StickSlipError> {
+    validate_params(params)?;
+    validate_mechanics(mechanics)?;
+    let before = mesh.clone();
+    let mut free_step = before.clone();
+    let _free_contractility = apply_local_activated_energy_contractility_with_extra_forces(
+        &mut free_step,
+        activity,
+        mechanics,
+        contractility,
+        extra_forces,
+        extra_requested_resource,
+    )?;
+    let (regimes, reactions) = contacts_from_free_step(&before, &free_step, mechanics, params)?;
+    let combined_forces: Vec<[f64; 2]> = reactions
+        .iter()
+        .zip(extra_forces)
+        .map(|(reaction, extra)| [reaction[0] + extra[0], reaction[1] + extra[1]])
+        .collect();
+    let accepted_contractility = apply_local_activated_energy_contractility_with_extra_forces(
+        mesh,
+        activity,
+        mechanics,
+        contractility,
+        &combined_forces,
+        extra_requested_resource,
+    )?;
     finish_activated_energy_step(
         &before,
         mesh,

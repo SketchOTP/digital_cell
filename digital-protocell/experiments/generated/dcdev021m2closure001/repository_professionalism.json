@@ -1,0 +1,7 @@
+{
+  "closure_level": "PASS",
+  "historical_evidence_preserved": "PASS",
+  "isolated_assay": "PASS",
+  "reusable_world_module": "regulatory-core/src/finite_world.rs",
+  "scope": "PASS"
+}

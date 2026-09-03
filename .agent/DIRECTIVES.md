@@ -668,3 +668,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260902-dcdev021-m2-entry027-growth-on-interfission-locomotion
 - Status at issuance: ISSUED
+
+## D-20260903-dcdev021-m2-closure-finite-world-autonomous-ecology
+
+- Issued: `2026-09-03T11:30:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-CLOSURE-001-FINITE-WORLD-AUTONOMOUS-ECOLOGY-AND-REPRODUCTIVE-COUPLING-001`
+- Objective: Compose the accepted inherited-polarity/fission runtime with a genuinely finite shared world, verify lawful transfer and metabolism, conditionally test one A-funded local protrusion degree, and carry the actual ecology through unforced reproduction without running evolution.
+- Scope: Additive `FiniteWorldV1`, integrated closure assay, conditional protrusion helpers, compact evidence, scoped workflow, and append-only governance from exact ENTRY-028 head `e56da9f88b632c6655eb79b50133cf5d0a864bbc`.
+- Exclusions: Resource information in behavior, hidden nutrient bath, tuning, target/gradient logic, new controller, additional migration mechanisms after protrusion, forced fission, evolution, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: `M2_FINITE_WORLD_AUTONOMOUS_ECOLOGY_AND_REPRODUCTIVE_COUPLING_QUALIFIED`, `M2_FINITE_WORLD_EXISTING_MOTOR_ECOLOGICAL_COUPLING_QUALIFIED`, `M2_FINITE_WORLD_PROTRUSIVE_MOTILITY_AND_ACQUISITION_QUALIFIED_REPRODUCTION_NOT_ESTABLISHED`, `M2_FINITE_WORLD_RESOURCE_AUTHORITY_UNRESOLVED`, `M2_PROTRUSION_ENERGY_SEMANTICS_UNRESOLVED`, `M2_CURRENT_SENSORIMOTOR_ROUTE_ECOLOGICALLY_INSUFFICIENT`, `M2_SHARED_ECOLOGY_REPRODUCTIVE_COUPLING_NOT_ESTABLISHED`, or `M2_CLOSURE_INVALID` according to the directive gates and exact-head validation.
+- Risk class: HIGH
+- Relationship: amends
+- Related directive: D-20260903-dcdev021-m2-entry028-balanced-separated-resource-ecology
+- Status at issuance: ISSUED

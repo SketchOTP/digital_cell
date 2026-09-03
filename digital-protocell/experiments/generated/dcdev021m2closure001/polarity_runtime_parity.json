@@ -1,0 +1,7 @@
+{
+  "equations_changed": false,
+  "fission_partition": "contiguous parent material amounts",
+  "native_ring": true,
+  "observer_reseed": false,
+  "reference": "ENTRY-019/020/021 accepted native inherited polarity"
+}

@@ -1375,3 +1375,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: ENTRY-028 does not establish autonomous resource acquisition or environment-dependent evolution; no successor work is authorized pending Architect review.
 - Blockers: Architect review only.
 - Follow-up directive: none
+
+## D-20260903-dcdev021-m2-closure-finite-world-autonomous-ecology - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE-FINITE-WORLD-AUTONOMOUS-ECOLOGY-LOCAL`
+- Supersedes outcome: none
+- Closed: `2026-09-03T12:20:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The additive closure runtime implements a shared finite world with conserved, order-independent allocation, reuses accepted inherited polarity/fission/metabolism authorities, validates positive finite transfer plus same-step metabolism in a direct contact sanity arm, and runs existing-motor and conditional local-protrusion ecology arms. Both bounded separated campaigns retain active mechanics and unforced first fission but obtain no finite resource; no descendant fission or resource-causal reproduction is established. The result classification is `M2_CURRENT_SENSORIMOTOR_ROUTE_ECOLOGICALLY_INSUFFICIENT`.
+- Changed areas: additive finite-world module, assay-only contractility/stick-slip extra-force helpers, closure example/evidence, scoped workflow, and append-only governance; accepted M1 biology and PR #44 remain untouched.
+- Validation:
+  - Exact ENTRY-028 authority and starting head, finite-world conservation/order tests, contact transfer/metabolism sanity, six-arm closure campaign, A-to-W closure, historical preservation, D-087, downstream, and local governance validation - PASSED
+  - Exact-head Linux workflow - NOT RUN
+  - Artifact upload and independent digest - NOT RUN
+  - Notion append-only handoff/readback - NOT RUN
+  - Architect review - PENDING
+- Remaining risks: remote validation may identify workflow or preservation defects; autonomous finite-resource acquisition, shared ecological contention, resource-causal reproduction, and evolution re-entry remain unestablished.
+- Blockers: exact-head Linux CI, artifact verification, Notion readback, and Architect review.
+- Follow-up directive: none

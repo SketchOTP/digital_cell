@@ -1,0 +1,7 @@
+{
+  "decision": "conditional_protrusion_tested",
+  "existing_motor_sufficient": false,
+  "existing_motor_tested_first": true,
+  "protrusion_selected": false,
+  "protrusion_tested": true
+}

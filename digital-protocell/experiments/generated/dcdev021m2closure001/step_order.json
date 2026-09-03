@@ -1,0 +1,13 @@
+{
+  "entry011_order": "mechanics -> finite uptake -> frozen reaction kernel -> growth/remesh",
+  "legacy_transport_step_in_finite_mode": false,
+  "order": [
+    "current inherited polarity motor",
+    "A-funded mechanics",
+    "pre-step finite-world allocation",
+    "frozen reaction/metabolism",
+    "growth",
+    "remesh and conservative polarity continuation",
+    "unforced fission attempt"
+  ]
+}

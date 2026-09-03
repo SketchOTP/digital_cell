@@ -1,0 +1,6 @@
+{
+  "finite_mode_calls_legacy_transport": false,
+  "unbacked_nf_inflow": "NONE",
+  "zero_resource_delivered_f": 0.0,
+  "zero_resource_delivered_n": 0.0
+}

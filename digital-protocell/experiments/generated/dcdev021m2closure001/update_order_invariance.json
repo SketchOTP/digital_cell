@@ -1,0 +1,5 @@
+{
+  "common_scaling": true,
+  "pass": true,
+  "requests_precomputed_before_allocation": true
+}

@@ -1,0 +1,7 @@
+{
+  "common_resource_scaling": true,
+  "contention_observed": false,
+  "order_independent": true,
+  "request_phase": "pre-transfer",
+  "same_world_object": true
+}

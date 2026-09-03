@@ -1,0 +1,8 @@
+{
+  "direction": "current material-local outward normal",
+  "force_scale": "existing MAX_EXTERNAL_FORCE_PER_VERTEX minus existing static-traction limit",
+  "polarity_mapping": "1-v/(u+v)",
+  "production_default_changed": false,
+  "status": "ASSAY_ONLY",
+  "used": true
+}

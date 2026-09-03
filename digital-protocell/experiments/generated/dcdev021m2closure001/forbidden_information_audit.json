@@ -1,0 +1,13 @@
+{
+  "bearing": false,
+  "distance": false,
+  "fitness": false,
+  "gradient": false,
+  "hunger": false,
+  "inventory": false,
+  "ledger": false,
+  "resource_center_by_behavior": false,
+  "resource_radius_by_behavior": false,
+  "survival_controller": false,
+  "target": false
+}

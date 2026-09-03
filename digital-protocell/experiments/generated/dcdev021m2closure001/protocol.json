@@ -1,0 +1,11 @@
+{
+  "daughters": 2,
+  "directive": "DC-DEV-021-M2-CLOSURE-001-FINITE-WORLD-AUTONOMOUS-ECOLOGY-AND-REPRODUCTIVE-COUPLING-001",
+  "evolution": false,
+  "mode": "finite shared world",
+  "next_execution_started": false,
+  "resources": 4,
+  "second_fission_allowed": true,
+  "starting_head": "e56da9f88b632c6655eb79b50133cf5d0a864bbc",
+  "steps": 3000
+}

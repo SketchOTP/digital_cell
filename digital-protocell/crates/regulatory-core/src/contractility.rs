@@ -9,7 +9,7 @@ use chemistry_core::material_mesh::{MaterialMesh, MeshContractVersion};
 use chemistry_core::mesh_mechanics::{
     mechanics_step, mechanics_step_with_edge_tensions,
     mechanics_step_with_edge_tensions_and_external_forces, mechanics_step_with_external_forces,
-    MechParams,
+    MechParams, MAX_EXTERNAL_FORCE_PER_VERTEX,
 };
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
@@ -261,11 +261,7 @@ pub fn apply_local_activated_energy_contractility(
     params: &ContractilityParamsV1,
 ) -> Result<ActivatedEnergyContractilityStepLedgerV1, ContractilityError> {
     apply_local_activated_energy_contractility_with_external_forces(
-        mesh,
-        activity,
-        mechanics,
-        params,
-        None,
+        mesh, activity, mechanics, params, None,
     )
 }
 
@@ -376,10 +372,142 @@ pub fn apply_local_activated_energy_contractility_with_external_forces(
     })
 }
 
+/// Apply the existing A-funded contractile request together with one
+/// assay-supplied local force field under one common funding scale.  The
+/// additional force is charged using the already frozen force-length-time
+/// conversion; no new gain or energy source is introduced.  This additive
+/// helper is opt-in for the closure assay and does not alter the historical
+/// contractility APIs.
+pub fn apply_local_activated_energy_contractility_with_extra_forces(
+    mesh: &mut MaterialMesh,
+    activity: &[f64],
+    mechanics: &MechParams,
+    params: &ContractilityParamsV1,
+    extra_forces: &[[f64; 2]],
+    extra_requested_resource: f64,
+) -> Result<ActivatedEnergyContractilityStepLedgerV1, ContractilityError> {
+    validate_params(params)?;
+    validate_activated_contract(mesh)?;
+    let area_before = require_positive_area(mesh)?;
+    if activity.len() != mesh.n() || extra_forces.len() != mesh.n() {
+        return Err(ContractilityError::ActivityLength {
+            expected: mesh.n(),
+            observed: activity.len(),
+        });
+    }
+    if activity
+        .iter()
+        .any(|value| !value.is_finite() || !(0.0..=1.0).contains(value))
+        || extra_requested_resource < 0.0
+        || !extra_requested_resource.is_finite()
+        || extra_forces.iter().any(|force| {
+            let magnitude = force[0].hypot(force[1]);
+            !force[0].is_finite()
+                || !force[1].is_finite()
+                || !magnitude.is_finite()
+                || magnitude > MAX_EXTERNAL_FORCE_PER_VERTEX
+        })
+    {
+        return Err(ContractilityError::InvalidActivity);
+    }
+
+    let maximum_activity = activity.iter().copied().fold(0.0_f64, f64::max);
+    let activated_amount_before = mesh.interior.a.max(0.0) * area_before;
+    let waste_amount_before = mesh.interior.w.max(0.0) * area_before;
+    let reserve_before = mesh.interior.r.max(0.0);
+    let reserve_amount_before = reserve_before * area_before;
+    let dt = mechanics.dt.max(0.0);
+    let mut tensions = vec![0.0; mesh.n()];
+    let mut active_edge_indices = Vec::new();
+    let mut contractile_request = 0.0;
+    for i in 0..mesh.n() {
+        if mesh.edges[i].ruptured {
+            continue;
+        }
+        let edge_activity = 0.5 * (activity[i] + activity[(i + 1) % mesh.n()]);
+        if edge_activity <= f64::EPSILON {
+            continue;
+        }
+        let tension = params.max_active_tension * edge_activity;
+        tensions[i] = tension;
+        active_edge_indices.push(i);
+        contractile_request +=
+            params.reserve_cost_per_force_length_time * tension * mesh.edge_length(i) * dt;
+    }
+    let requested_resource = contractile_request + extra_requested_resource;
+    let funding_scale = if requested_resource <= f64::EPSILON {
+        0.0
+    } else {
+        (activated_amount_before / requested_resource).min(1.0)
+    };
+    for tension in &mut tensions {
+        *tension *= funding_scale;
+    }
+    let scaled_forces: Vec<[f64; 2]> = extra_forces
+        .iter()
+        .map(|force| [force[0] * funding_scale, force[1] * funding_scale])
+        .collect();
+    let resource_spent = requested_resource * funding_scale;
+    let active_edge_indices: Vec<usize> = active_edge_indices
+        .into_iter()
+        .filter(|index| tensions[*index] > f64::EPSILON)
+        .collect();
+    let maximum_tension = tensions.iter().copied().fold(0.0_f64, f64::max);
+    let accepted = match (
+        maximum_tension <= f64::EPSILON,
+        extra_forces.iter().any(|f| f[0] != 0.0 || f[1] != 0.0),
+    ) {
+        (true, true) => mechanics_step_with_external_forces(mesh, mechanics, &scaled_forces),
+        (true, false) => mechanics_step(mesh, mechanics),
+        (false, true) => mechanics_step_with_edge_tensions_and_external_forces(
+            mesh,
+            mechanics,
+            &tensions,
+            &scaled_forces,
+        ),
+        (false, false) => mechanics_step_with_edge_tensions(mesh, mechanics, &tensions),
+    };
+    if !accepted {
+        return Err(ContractilityError::MechanicsRejected);
+    }
+    let area_after = require_positive_area(mesh)?;
+    let activated_after_mechanics = mesh.interior.a.max(0.0) * area_after;
+    let waste_after_mechanics = mesh.interior.w.max(0.0) * area_after;
+    let activated_amount_after = activated_after_mechanics - resource_spent;
+    if activated_amount_after < -1e-10 {
+        return Err(ContractilityError::InvalidArea);
+    }
+    let activated_amount_after = activated_amount_after.max(0.0);
+    let waste_amount_after = waste_after_mechanics + resource_spent;
+    if resource_spent > 0.0 {
+        mesh.interior.a = activated_amount_after / area_after;
+        mesh.interior.w = waste_amount_after / area_after;
+    }
+    Ok(ActivatedEnergyContractilityStepLedgerV1 {
+        schema: ACTIVATED_ENERGY_CONTRACTILITY_SCHEMA_V1.to_string(),
+        active_edge_indices,
+        maximum_activity,
+        maximum_tension,
+        requested_resource,
+        resource_spent,
+        activated_amount_before,
+        activated_amount_after,
+        waste_amount_before,
+        waste_amount_after,
+        reserve_before,
+        reserve_after: mesh.interior.r.max(0.0),
+        reserve_amount_before,
+        reserve_amount_after: mesh.interior.r.max(0.0) * area_after,
+        mechanics_accepted: true,
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
-    use chemistry_core::material_mesh::{LumpedChem, MaterialMesh, MeshContractVersion, DEFAULT_RHO_S};
+    use chemistry_core::material_mesh::{
+        LumpedChem, MaterialMesh, MeshContractVersion, DEFAULT_RHO_S,
+    };
 
     fn mesh(reserve: f64) -> MaterialMesh {
         MaterialMesh::seed_regular(
@@ -467,11 +595,13 @@ mod tests {
         assert_eq!(ledger.schema, ACTIVATED_ENERGY_CONTRACTILITY_SCHEMA_V1);
         assert!(ledger.maximum_tension > 0.0);
         assert!(ledger.resource_spent > 0.0);
-        assert!((ledger.activated_amount_before - ledger.activated_amount_after
-            + ledger.waste_amount_before
-            - ledger.waste_amount_after)
-            .abs()
-            <= 1e-10);
+        assert!(
+            (ledger.activated_amount_before - ledger.activated_amount_after
+                + ledger.waste_amount_before
+                - ledger.waste_amount_after)
+                .abs()
+                <= 1e-10
+        );
         assert_eq!(body.interior.r, before_r);
     }
 
