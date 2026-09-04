@@ -1,0 +1,10 @@
+{
+  "all_membrane_segments": true,
+  "capacity_f": 4096.0,
+  "capacity_n": 4096.0,
+  "finite_debit": true,
+  "nonfeeding_transport_preserved": true,
+  "replenishment": false,
+  "spatial_contact_dependency": false,
+  "transport_law": "accepted mesh_transport::transport_step; preview boundary plus zero N/F nonfeeding pass"
+}

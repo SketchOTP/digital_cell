@@ -1,0 +1,9 @@
+{
+  "capacity": 4096.0,
+  "directive": "DC-DEV-021-M2-CLOSURE-003-R1-CONTINUOUS-FINITE-MEMBRANE-FEEDING-REPRODUCTIVE-REQUALIFICATION-001",
+  "next_execution_started": false,
+  "no_capacity_search": true,
+  "no_evolution": true,
+  "starting_head": "987f565530c201c38072c4aba54079545f79233b",
+  "steps": 12000
+}

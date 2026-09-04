@@ -1,0 +1,20 @@
+{
+  "closure003_architect": "ACCEPTED_BOUNDED_UNRESOLVED",
+  "closure003_artifact": "sha256:f3ee2bb9238210c30fb697fd99c4ea03c599848eb06c23dd96f223b4a626df9e",
+  "closure003_ci": "33926476494",
+  "closure003_classification": "M2_REPRODUCTIVE_RESOURCE_BUDGET_AUTHORITY_UNRESOLVED",
+  "closure003_head": "987f565530c201c38072c4aba54079545f79233b",
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "state": "OPEN"
+  },
+  "source_hashes": {
+    "m1": "FROZEN",
+    "mesh_fission.rs": "dcb859522534cf03",
+    "mesh_growth.rs": "f466c37daea1186c",
+    "mesh_reactions.rs": "8b7a5572b93b0982",
+    "mesh_transport.rs": "599c32e1cdd6e927"
+  }
+}

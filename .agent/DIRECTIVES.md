@@ -724,3 +724,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260903-dcdev021-m2-closure002-ecological-causality-lifecycle
 - Status at issuance: ISSUED
+
+## D-20260904-dcdev021-m2-closure003r1-finite-membrane-reproductive-requalification
+
+- Issued: `2026-09-04T19:10:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-CLOSURE-003-R1-CONTINUOUS-FINITE-MEMBRANE-FEEDING-REPRODUCTIVE-REQUALIFICATION-001`
+- Objective: Resolve the CLOSURE-003 calibration exposure defect with one finite whole-membrane calibration per accepted daughter, derive the exact reproductive resource unit if both daughters fission, and conditionally test resource-causal spatial reproduction and inherited ecological state without evolution execution.
+- Scope: Exact D-088/CLOSURE-003 boundary authority, finite membrane-wide transport adapter, fixed capacity 4096 per species, two daughter calibrations, conditional finite spatial ecology and lifecycle controls, descendant/heredity audit only if spatial reproduction occurs, compact evidence, preservation, governance, and exact-head Linux validation.
+- Exclusions: capacity or boundary search, growth/fission tuning, forced division, production changes, new sensing or locomotion, mutation, selection, evolution execution, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: `M2_RESOURCE_CAUSAL_REPRODUCTION_AND_HERITABLE_ECOLOGICAL_STATE_QUALIFIED`, `M2_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED_HERITABLE_STATE_UNRESOLVED`, `M2_REPRODUCTIVE_RESOURCE_UNIT_QUALIFIED_SPATIAL_REPRODUCTION_NOT_ESTABLISHED`, `M2_FINITE_MEMBRANE_REPRODUCTIVE_CAPABILITY_DAUGHTER_DEPENDENT`, `M2_FINITE_MEMBRANE_FEEDING_REPRODUCTION_NOT_ESTABLISHED`, `M2_REPRODUCTIVE_FEEDING_BOUNDARY_AUTHORITY_UNRESOLVED`, or invalid according to the directive gates and exact-head validation.
+- Risk class: HIGH
+- Relationship: amends
+- Related directive: D-20260904-dcdev021-m2-closure003-reproductive-ecology-heritable-phenotype
+- Status at issuance: ISSUED

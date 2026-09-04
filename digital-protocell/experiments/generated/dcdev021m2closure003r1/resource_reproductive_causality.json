@@ -1,0 +1,12 @@
+{
+  "calibration_fissions": {
+    "daughter_a": 1,
+    "daughter_b": 1,
+    "physiology_only": true
+  },
+  "classification": "NOT_ESTABLISHED",
+  "finite_resource_fissions": 0,
+  "reason": "Measured whole-membrane demand established, but the finite spatial ecology produced no qualifying fission.",
+  "transfer_disabled_fissions": 0,
+  "zero_resource_fissions": 0
+}

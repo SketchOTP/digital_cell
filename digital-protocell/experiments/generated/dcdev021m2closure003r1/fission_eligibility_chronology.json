@@ -1,0 +1,9 @@
+{
+  "daughter_a": {
+    "first_fission": 350
+  },
+  "daughter_b": {
+    "first_fission": 300
+  },
+  "unforced": true
+}

@@ -1,0 +1,14 @@
+{
+  "daughter_a": {
+    "boundary_f": 2.063914918930895,
+    "boundary_n": 2.063914918930895,
+    "contact_loss": "NOT_APPLICABLE",
+    "eligible_segments": "ALL"
+  },
+  "daughter_b": {
+    "boundary_f": 2.063914918930895,
+    "boundary_n": 2.063914918930895,
+    "contact_loss": "NOT_APPLICABLE",
+    "eligible_segments": "ALL"
+  }
+}

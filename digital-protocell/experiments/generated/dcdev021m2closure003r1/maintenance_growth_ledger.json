@@ -1,0 +1,361 @@
+{
+  "daughter_a": {
+    "arm": "WHOLE_MEMBRANE_DAUGHTER_A",
+    "checkpoints": [
+      {
+        "fissions": 0,
+        "inventory_f": 4093.993826831792,
+        "inventory_n": 4093.993826831792,
+        "living": 1,
+        "states": [
+          {
+            "a": 1.8678319911770467,
+            "area": 1137.5184959653132,
+            "birth_mass": 212.8861601010339,
+            "c": 1.1999332668549656,
+            "centroid": [
+              25.5772540885747,
+              40.88635140477348
+            ],
+            "f": 0.6789709662852219,
+            "fission_readiness_ratio": 1.0011418872088325,
+            "fission_ready": false,
+            "generation": 1,
+            "lineage": 1,
+            "mass": 213.12925208419074,
+            "n": 0.6789709662852219,
+            "observer_death_reason": null,
+            "observer_viable": true,
+            "step": 1,
+            "topology": 79,
+            "w": 0.9190245109080617
+          }
+        ],
+        "step": 1
+      },
+      {
+        "fissions": 0,
+        "inventory_f": 3573.091791287831,
+        "inventory_n": 3573.091791287831,
+        "living": 1,
+        "states": [
+          {
+            "a": 1.603839933437026,
+            "area": 1307.62474910916,
+            "birth_mass": 212.8861601010339,
+            "c": 1.1141653630982973,
+            "centroid": [
+              25.37623889990438,
+              40.853916105610246
+            ],
+            "f": 0.5355345154867776,
+            "fission_readiness_ratio": 1.2493970559054828,
+            "fission_ready": false,
+            "generation": 1,
+            "lineage": 1,
+            "mass": 265.979341673255,
+            "n": 0.5355345154867776,
+            "observer_death_reason": null,
+            "observer_viable": true,
+            "step": 250,
+            "topology": 78,
+            "w": 0.6871940310654369
+          }
+        ],
+        "step": 250
+      },
+      {
+        "fissions": 1,
+        "inventory_f": 3378.5935618861995,
+        "inventory_n": 3378.5935618861995,
+        "living": 2,
+        "states": [
+          {
+            "a": 1.5747983473849558,
+            "area": 200.02725378231662,
+            "birth_mass": 71.06636360439046,
+            "c": 1.1390349624474951,
+            "centroid": [
+              32.266395299656686,
+              49.777229194749346
+            ],
+            "f": 0.5244484002211203,
+            "fission_readiness_ratio": 1.0,
+            "fission_ready": false,
+            "generation": 2,
+            "lineage": 50000,
+            "mass": 71.06636360439046,
+            "n": 0.5244484002211203,
+            "observer_death_reason": null,
+            "observer_viable": true,
+            "step": 350,
+            "topology": 20,
+            "w": 0.6519377653697767
+          },
+          {
+            "a": 1.5747983473849558,
+            "area": 1111.0516831075265,
+            "birth_mass": 226.75795666642622,
+            "c": 1.1390349624474954,
+            "centroid": [
+              23.11295174648165,
+              37.79655230921471
+            ],
+            "f": 0.5244484002211204,
+            "fission_readiness_ratio": 1.0,
+            "fission_ready": false,
+            "generation": 2,
+            "lineage": 50001,
+            "mass": 226.75795666642622,
+            "n": 0.5244484002211204,
+            "observer_death_reason": null,
+            "observer_viable": true,
+            "step": 350,
+            "topology": 60,
+            "w": 0.6519377653697768
+          }
+        ],
+        "step": 350
+      }
+    ],
+    "deaths": 0,
+    "delivered_f": 717.4064381138026,
+    "delivered_n": 717.4064381138026,
+    "events": [
+      {
+        "all_membrane_segments": true,
+        "event": "first_whole_membrane_transfer",
+        "f": 2.0061731682083006,
+        "n": 2.0061731682083006,
+        "step": 1
+      },
+      {
+        "children": [
+          50000,
+          50001
+        ],
+        "event": "unforced_fission",
+        "parent": 1,
+        "partition_ok": true,
+        "step": 350,
+        "topology": [
+          20,
+          60
+        ]
+      }
+    ],
+    "exported_f": 268.90647737073044,
+    "exported_n": 268.90647737073044,
+    "first_1_35x_crossings": [
+      {
+        "lineage": 1,
+        "mass": 287.56819960824953,
+        "step": 330,
+        "threshold": 287.3963161363958
+      }
+    ],
+    "first_fission_step": 350,
+    "first_whole_membrane_transfer": 1,
+    "fissions": 1,
+    "growth_material": 76.2819579693358,
+    "invalid": false,
+    "max_material_closure": 0.017555080215943375,
+    "reaction_a_produced": 534.2520911994787,
+    "reaction_f_consumed": 534.2520911994787,
+    "reaction_n_consumed": 534.2520911994787,
+    "reaction_w_produced": 785.4475459169324,
+    "remaining_inventory_f": 3378.5935618861995,
+    "remaining_inventory_n": 3378.5935618861995,
+    "requested_f": 717.4064381138026,
+    "requested_n": 717.4064381138026,
+    "status": "COMPLETED",
+    "steps": 350,
+    "terminal_living": 2,
+    "terminal_sites": [
+      20,
+      60
+    ],
+    "world_f_loss": 717.4064381138026,
+    "world_n_loss": 717.4064381138026
+  },
+  "daughter_b": {
+    "arm": "WHOLE_MEMBRANE_DAUGHTER_B",
+    "checkpoints": [
+      {
+        "fissions": 0,
+        "inventory_f": 4092.7864170584917,
+        "inventory_n": 4092.7864170584917,
+        "living": 1,
+        "states": [
+          {
+            "a": 1.870495521379512,
+            "area": 2227.897878048904,
+            "birth_mass": 336.244044735766,
+            "c": 1.201603829390358,
+            "centroid": [
+              49.500283383481005,
+              40.59800005252646
+            ],
+            "f": 0.6793687344052611,
+            "fission_readiness_ratio": 1.0014444696319127,
+            "fission_ready": false,
+            "generation": 1,
+            "lineage": 2,
+            "mass": 336.7297390472983,
+            "n": 0.6793687344052611,
+            "observer_death_reason": null,
+            "observer_viable": true,
+            "step": 1,
+            "topology": 123,
+            "w": 0.9214197902103225
+          }
+        ],
+        "step": 1
+      },
+      {
+        "fissions": 0,
+        "inventory_f": 3239.4953583500424,
+        "inventory_n": 3239.4953583500424,
+        "living": 1,
+        "states": [
+          {
+            "a": 1.5981990108654611,
+            "area": 2570.727874463268,
+            "birth_mass": 336.244044735766,
+            "c": 1.1145963170363453,
+            "centroid": [
+              49.44529346637029,
+              39.694665293025935
+            ],
+            "f": 0.5106643370365035,
+            "fission_readiness_ratio": 1.3048327619231523,
+            "fission_ready": false,
+            "generation": 1,
+            "lineage": 2,
+            "mass": 438.74224557278154,
+            "n": 0.5106643370365035,
+            "observer_death_reason": null,
+            "observer_viable": true,
+            "step": 250,
+            "topology": 122,
+            "w": 0.7527020910683802
+          }
+        ],
+        "step": 250
+      },
+      {
+        "fissions": 1,
+        "inventory_f": 3074.307004673667,
+        "inventory_n": 3074.307004673667,
+        "living": 2,
+        "states": [
+          {
+            "a": 1.5755906873665608,
+            "area": 546.056912122825,
+            "birth_mass": 146.30329434175118,
+            "c": 1.1229751187119643,
+            "centroid": [
+              51.24389392181623,
+              29.3752691628355
+            ],
+            "f": 0.5025078473630524,
+            "fission_readiness_ratio": 1.0,
+            "fission_ready": false,
+            "generation": 2,
+            "lineage": 50000,
+            "mass": 146.30329434175118,
+            "n": 0.5025078473630524,
+            "observer_death_reason": null,
+            "observer_viable": true,
+            "step": 300,
+            "topology": 39,
+            "w": 0.7371338820195613
+          },
+          {
+            "a": 1.575590687366561,
+            "area": 2038.3086485552842,
+            "birth_mass": 320.9814098605331,
+            "c": 1.122975118711964,
+            "centroid": [
+              48.66402780673708,
+              44.08461757539846
+            ],
+            "f": 0.5025078473630525,
+            "fission_readiness_ratio": 1.0,
+            "fission_ready": false,
+            "generation": 2,
+            "lineage": 50001,
+            "mass": 320.9814098605331,
+            "n": 0.5025078473630525,
+            "observer_death_reason": null,
+            "observer_viable": true,
+            "step": 300,
+            "topology": 85,
+            "w": 0.7371338820195614
+          }
+        ],
+        "step": 300
+      }
+    ],
+    "deaths": 0,
+    "delivered_f": 1021.692995326332,
+    "delivered_n": 1021.692995326332,
+    "events": [
+      {
+        "all_membrane_segments": true,
+        "event": "first_whole_membrane_transfer",
+        "f": 3.2135829415083528,
+        "n": 3.2135829415083528,
+        "step": 1
+      },
+      {
+        "children": [
+          50000,
+          50001
+        ],
+        "event": "unforced_fission",
+        "parent": 2,
+        "partition_ok": true,
+        "step": 300,
+        "topology": [
+          39,
+          85
+        ]
+      }
+    ],
+    "exported_f": 374.60474486890286,
+    "exported_n": 374.60474486890286,
+    "first_1_35x_crossings": [
+      {
+        "lineage": 2,
+        "mass": 454.3564505590631,
+        "step": 281,
+        "threshold": 453.92946039328416
+      }
+    ],
+    "first_fission_step": 300,
+    "first_whole_membrane_transfer": 1,
+    "fissions": 1,
+    "growth_material": 122.59762485999487,
+    "invalid": false,
+    "max_material_closure": 0.029511622599857512,
+    "reaction_a_produced": 864.325391123662,
+    "reaction_f_consumed": 864.325391123662,
+    "reaction_n_consumed": 864.325391123662,
+    "reaction_w_produced": 1278.192601465924,
+    "remaining_inventory_f": 3074.307004673667,
+    "remaining_inventory_n": 3074.307004673667,
+    "requested_f": 1021.692995326332,
+    "requested_n": 1021.692995326332,
+    "status": "COMPLETED",
+    "steps": 300,
+    "terminal_living": 2,
+    "terminal_sites": [
+      39,
+      85
+    ],
+    "world_f_loss": 1021.692995326332,
+    "world_n_loss": 1021.692995326332
+  },
+  "ledger": "per-step transport, reaction, growth, topology, and fission checkpoints"
+}

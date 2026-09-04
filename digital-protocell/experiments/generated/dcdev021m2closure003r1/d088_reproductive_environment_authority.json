@@ -1,0 +1,19 @@
+{
+  "authority": "D-088 / MeshPopulation::step + mesh_fission::try_local_fission",
+  "boundary_f": 2.063914918930895,
+  "boundary_n": 2.063914918930895,
+  "fission_cadence_steps": 25,
+  "fission_ratio": 1.35,
+  "growth": {
+    "enabled": true,
+    "y_g": 0.9
+  },
+  "selected_before_execution": true,
+  "source_hashes": {
+    "m1": "FROZEN",
+    "mesh_fission.rs": "dcb859522534cf03",
+    "mesh_growth.rs": "f466c37daea1186c",
+    "mesh_reactions.rs": "8b7a5572b93b0982",
+    "mesh_transport.rs": "599c32e1cdd6e927"
+  }
+}

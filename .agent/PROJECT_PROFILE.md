@@ -11,7 +11,7 @@
 - Purpose: A self-maintaining digital protocell developing toward a persistent embodied digital lifeform.
 - Repository root: `/home/sketch/Projects/digital_cell-m2-entry001`
 - Verified remote: `git@github.com:SketchOTP/digital_cell.git`
-- Maturity or current phase: M1 closed/frozen; M2 locomotion, polarity, finite-resource, and lifecycle boundaries through CLOSURE-002 are accepted. CLOSURE-003 is the active isolated reproductive-resource-budget and heritable-phenotype audit. Autonomous resource-causal reproduction, mutable heritable phenotype, and evolution re-entry remain not established.
+- Maturity or current phase: M1 closed/frozen; M2 locomotion, polarity, finite-resource, and lifecycle boundaries through CLOSURE-002 are accepted. CLOSURE-003-R1 is the active isolated whole-membrane reproductive-budget requalification. Whole-membrane reproduction is locally established, but resource-causal spatial reproduction, mutable heritable phenotype, and evolution re-entry remain not established.
 
 ## Languages and runtimes
 

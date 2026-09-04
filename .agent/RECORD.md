@@ -646,3 +646,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Final governance was reconciled to the actual pushed HEAD and revalidated. The bounded direct-contact calibration still transfers finite N/F with exact closure, but neither accepted daughter authority reaches unforced physical fission within the fixed calibration. The classification remains `M2_REPRODUCTIVE_RESOURCE_BUDGET_AUTHORITY_UNRESOLVED`; no reproductive unit or downstream reproductive/evolution evidence is established.
 - Affected areas: append-only final-head governance reconciliation only; no frozen M1 biology, sealed CLOSURE-002 evidence, fission source, or PR #44 modification.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE003-REPRODUCTIVE-ECOLOGY-HERITABLE-PHENOTYPE-FINAL
+
+## DEC-DCDEV021-M2-CLOSURE003R1-FINITE-MEMBRANE-REPRODUCTIVE-REQUALIFICATION
+
+- Date: 2026-09-04
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE003R1-FINITE-MEMBRANE-REPRODUCTIVE-REQUALIFICATION
+- Status: ACTIVE
+- Decision or event: CLOSURE-003-R1 is authorized from exact CLOSURE-003 head `987f565530c201c38072c4aba54079545f79233b` on `m2/dc-dev-021-m2-closure003r1-finite-membrane-reproductive-requalification`.
+- Rationale: CLOSURE-003's static direct-contact calibration lost spatial exposure before fission. The authorized correction presents the selected frozen N/F boundary to all membrane segments through an assay-only finite debit adapter, then conditionally reconnects the measured unit to the spatial ecology.
+- Affected areas: additive CLOSURE-003-R1 assay/evidence/workflow and append-only governance; no frozen M1 biology, sealed CLOSURE-003 evidence, fission source, or PR #44 modification.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE003-REPRODUCTIVE-ECOLOGY-HERITABLE-PHENOTYPE-FINAL-HEAD-REVALIDATION

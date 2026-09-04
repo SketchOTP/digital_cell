@@ -1,0 +1,63 @@
+{
+  "calibration_events": [
+    [
+      {
+        "all_membrane_segments": true,
+        "event": "first_whole_membrane_transfer",
+        "f": 2.0061731682083006,
+        "n": 2.0061731682083006,
+        "step": 1
+      },
+      {
+        "children": [
+          50000,
+          50001
+        ],
+        "event": "unforced_fission",
+        "parent": 1,
+        "partition_ok": true,
+        "step": 350,
+        "topology": [
+          20,
+          60
+        ]
+      }
+    ],
+    [
+      {
+        "all_membrane_segments": true,
+        "event": "first_whole_membrane_transfer",
+        "f": 3.2135829415083528,
+        "n": 3.2135829415083528,
+        "step": 1
+      },
+      {
+        "children": [
+          50000,
+          50001
+        ],
+        "event": "unforced_fission",
+        "parent": 2,
+        "partition_ok": true,
+        "step": 300,
+        "topology": [
+          39,
+          85
+        ]
+      }
+    ]
+  ],
+  "finite": [
+    {
+      "edges": 1,
+      "event": "first_contact",
+      "step": 142
+    },
+    {
+      "event": "first_transfer",
+      "f": 0.023895472077599435,
+      "n": 0.023895472077599435,
+      "step": 142
+    }
+  ]
+}

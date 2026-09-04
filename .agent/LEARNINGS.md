@@ -587,3 +587,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-021 M2 CLOSURE-002 behavioral ecological causality and resource-dependent lifecycle.
 - Supersedes learning: none
+
+## L-DCDEV021-M2-CLOSURE003R1-001
+
+- Learning ID: L-DCDEV021-M2-CLOSURE003R1-001
+- Date: 2026-09-04
+- Fact or lesson: The CLOSURE-003-R1 whole-membrane calibration removes static spatial-contact loss without changing transport, growth, or fission authority. At fixed capacity 4096 per species, Daughter A fissions at step 350 after `717.4064381138026` N/F each and Daughter B fissions at step 300 after `1021.692995326332` N/F each; the empirical unit is the latter maximum. The finite spatial ecology using that unit produces zero fissions, so resource-causal spatial reproduction is not established.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_closure003r1.rs`, `digital-protocell/examples/dcdev021_m2_closure003r1_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2closure003r1/`, and `.github/workflows/dc-dev-021-m2-closure003r1.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 M2 CLOSURE-003-R1 continuous finite membrane feeding reproductive requalification.
+- Supersedes learning: none

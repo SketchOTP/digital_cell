@@ -1,0 +1,182 @@
+{
+  "dense_traces": "compact checkpoints retained; dense traces externalized",
+  "directive": "DC-DEV-021-M2-CLOSURE-003-R1-CONTINUOUS-FINITE-MEMBRANE-FEEDING-REPRODUCTIVE-REQUALIFICATION-001",
+  "files": [
+    {
+      "file": "protocol.json",
+      "present": true
+    },
+    {
+      "file": "authority.json",
+      "present": true
+    },
+    {
+      "file": "closure003_architect_acceptance.json",
+      "present": true
+    },
+    {
+      "file": "d088_reproductive_environment_authority.json",
+      "present": true
+    },
+    {
+      "file": "feeding_boundary_selection.json",
+      "present": true
+    },
+    {
+      "file": "finite_membrane_calibration_contract.json",
+      "present": true
+    },
+    {
+      "file": "finite_membrane_daughter_a.json",
+      "present": true
+    },
+    {
+      "file": "finite_membrane_daughter_b.json",
+      "present": true
+    },
+    {
+      "file": "finite_membrane_exposure_audit.json",
+      "present": true
+    },
+    {
+      "file": "maintenance_growth_ledger.json",
+      "present": true
+    },
+    {
+      "file": "mass_threshold_chronology.json",
+      "present": true
+    },
+    {
+      "file": "fission_eligibility_chronology.json",
+      "present": true
+    },
+    {
+      "file": "reproductive_resource_unit.json",
+      "present": true
+    },
+    {
+      "file": "finite_spatial_world.json",
+      "present": true
+    },
+    {
+      "file": "finite_resource_lifecycle.json",
+      "present": true
+    },
+    {
+      "file": "transfer_disabled_lifecycle.json",
+      "present": true
+    },
+    {
+      "file": "zero_resource_lifecycle.json",
+      "present": true
+    },
+    {
+      "file": "whole_membrane_reference.json",
+      "present": true
+    },
+    {
+      "file": "resource_reproductive_causality.json",
+      "present": true
+    },
+    {
+      "file": "lineage_ledger.json",
+      "present": true
+    },
+    {
+      "file": "descendant_continuity.json",
+      "present": true
+    },
+    {
+      "file": "inherited_state_inventory.json",
+      "present": true
+    },
+    {
+      "file": "heritability_metrics.json",
+      "present": true
+    },
+    {
+      "file": "heritability_shuffle_control.json",
+      "present": true
+    },
+    {
+      "file": "ecological_phenotype_attribution.json",
+      "present": true
+    },
+    {
+      "file": "variation_generation_audit.json",
+      "present": true
+    },
+    {
+      "file": "evolution_reentry_readiness.json",
+      "present": true
+    },
+    {
+      "file": "world_material_closure.json",
+      "present": true
+    },
+    {
+      "file": "energetic_closure.json",
+      "present": true
+    },
+    {
+      "file": "rotation_equivariance.json",
+      "present": true
+    },
+    {
+      "file": "index_invariance.json",
+      "present": true
+    },
+    {
+      "file": "update_order_invariance.json",
+      "present": true
+    },
+    {
+      "file": "forbidden_information_audit.json",
+      "present": true
+    },
+    {
+      "file": "m1_preservation.json",
+      "present": true
+    },
+    {
+      "file": "entry005_028_preservation.json",
+      "present": true
+    },
+    {
+      "file": "closure001_preservation.json",
+      "present": true
+    },
+    {
+      "file": "closure001r1_preservation.json",
+      "present": true
+    },
+    {
+      "file": "closure002_preservation.json",
+      "present": true
+    },
+    {
+      "file": "closure003_preservation.json",
+      "present": true
+    },
+    {
+      "file": "downstream_preservation.json",
+      "present": true
+    },
+    {
+      "file": "restart_boundary.json",
+      "present": true
+    },
+    {
+      "file": "repository_professionalism.json",
+      "present": true
+    },
+    {
+      "file": "qualification.json",
+      "present": true
+    },
+    {
+      "file": "artifact_manifest.json",
+      "present": true
+    }
+  ]
+}

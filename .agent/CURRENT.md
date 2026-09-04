@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-04T18:31:19-04:00`
+- Last updated: `2026-09-04T19:10:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260904-dcdev021-m2-closure003-reproductive-ecology-heritable-phenotype`
-- External directive ID: `DC-DEV-021-M2-CLOSURE-003-RESOURCE-SUFFICIENT-REPRODUCTIVE-ECOLOGY-AND-HERITABLE-PHENOTYPE-QUALIFICATION-001`
-- Objective: Establish a defensible finite reproductive resource budget from accepted physical demand, then run the bounded reproductive ecology and heritable-phenotype audit without evolution execution.
-- Current status: `COMPLETE`
+- Local directive ID: `D-20260904-dcdev021-m2-closure003r1-finite-membrane-reproductive-requalification`
+- External directive ID: `DC-DEV-021-M2-CLOSURE-003-R1-CONTINUOUS-FINITE-MEMBRANE-FEEDING-REPRODUCTIVE-REQUALIFICATION-001`
+- Objective: Requalify reproductive material demand with finite whole-membrane feeding, then conditionally test resource-causal spatial reproduction without evolution execution.
+- Current status: `IN_PROGRESS`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `CLOSURE-003 direct-contact budget calibration and exact-head validation complete; Architect review pending`
-- Expected or actual touched areas: `isolated CLOSURE-003 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `Architect review only; do not infer a resource unit or start successor execution`
+- Current phase: `CLOSURE-003-R1 whole-membrane calibration and conditional spatial lifecycle complete locally; exact-head validation pending`
+- Expected or actual touched areas: `isolated CLOSURE-003-R1 assay, compact evidence, scoped workflow, append-only governance`
+- Immediate next action: `run exact-head Linux validation, verify artifact, update Notion, then Architect review only`
 
 ## Temporary task-relevant facts
 
@@ -59,11 +59,12 @@
 - CLOSURE-003 found no complete D-088 external N/F demand ledger. The one permitted direct-contact calibration per accepted daughter authority transferred finite N/F with conservation closure but neither daughter reached unforced physical fission before the fixed 12,000-step boundary; no reproductive resource unit is established.
 - CLOSURE-003 classification is `M2_REPRODUCTIVE_RESOURCE_BUDGET_AUTHORITY_UNRESOLVED`; finite reproductive, descendant, heritable-phenotype, and evolution evidence are not reached. CLOSURE-002 persistence/development claims remain preserved rather than re-evaluated.
 - CLOSURE-003 exact-head Linux workflow `33926056946` passed on final result head `84b8ea8648de55c0114fe7cf4c12f74082d7ac0a`; independently downloaded artifact ZIP digest `sha256:8d6746fb975e13deaf52e35c6d797d237d87137bebde8a5657da1a4a789a5f9a`. Architect acceptance remains pending and no successor execution started.
+- CLOSURE-003-R1 starts exactly at `987f565530c201c38072c4aba54079545f79233b` on `m2/dc-dev-021-m2-closure003r1-finite-membrane-reproductive-requalification`; the whole-membrane calibration fissions both accepted daughters at fixed capacity 4096, deriving N/F unit `1021.692995326332` each, while the conditional finite spatial ecology produces zero fissions.
 
 ## Last validation after adoption
 
-- Command or check: `CLOSURE-003 exact-head Linux workflow 33926056946 on 84b8ea8648de55c0114fe7cf4c12f74082d7ac0a; independently downloaded artifact ZIP digest sha256:8d6746fb975e13deaf52e35c6d797d237d87137bebde8a5657da1a4a789a5f9a; local release assay, focused preservation tests, and governance validation`
-- Result: `PASSED`
+- Command or check: `CLOSURE-003-R1 local release assay and evidence generation`
+- Result: `NOT RUN`
 
 ## Risks
 
@@ -73,7 +74,7 @@
 
 ## Blockers
 
-- Architect review is required before any successor directive; no successor is authorized.
+- Exact-head CLOSURE-003-R1 Linux validation, artifact verification, Notion readback, and Architect review remain pending; no successor is authorized.
 
 ## Pending decisions
 
@@ -84,4 +85,4 @@
 
 Allowed adopted-project statuses: `IDLE`, `PLANNING`, `IN_PROGRESS`, `VALIDATING`, `BLOCKED`, `COMPLETE`. `CURRENT.md` is mutable and never replaces historical ledgers. Reset it to `IDLE` when an adopted task closes.
 
-The completed closure task is awaiting reset after Architect acceptance; no successor execution has started.
+The active CLOSURE-003-R1 task is awaiting exact-head validation and Architect acceptance; no successor execution has started.

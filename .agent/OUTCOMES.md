@@ -1518,3 +1518,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: resource-causal reproduction, descendant continuity, heritable ecological phenotype, and evolution re-entry remain unestablished. No capacity increase, forced fission, or successor execution is authorized.
 - Blockers: Architect review only; no successor work is authorized.
 - Follow-up directive: none
+
+## D-20260904-dcdev021-m2-closure003r1-finite-membrane-reproductive-requalification - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE003R1-FINITE-MEMBRANE-REPRODUCTIVE-REQUALIFICATION`
+- Supersedes outcome: `OUT-DCDEV021-M2-CLOSURE003-REPRODUCTIVE-ECOLOGY-HERITABLE-PHENOTYPE-FINAL-HEAD-REVALIDATION`
+- Closed: `2026-09-04T19:10:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The finite whole-membrane calibration uses the selected frozen CLOSURE-003/R4 boundary and fixed 4096 N/F inventories. Both accepted daughters fission unforced, deriving a resource unit of `1021.692995326332` N and F each. The conditional finite spatial ecology runs with that unit but produces zero fissions, so resource-causal spatial reproduction and heritable ecological state remain unestablished.
+- Changed areas: additive CLOSURE-003-R1 assay/evidence/workflow and append-only governance; no frozen scientific runtime, CLOSURE-003 evidence, M1 provenance, fission source, or PR #44 modification.
+- Validation:
+  - Local release assay, whole-membrane finite debit, calibration closure, conditional lifecycle, and governance preparation - PASSED
+  - Exact-head Linux workflow - NOT RUN
+  - Artifact upload and independent digest - NOT RUN
+  - Notion append-only handoff/readback - NOT RUN
+  - Architect acceptance - NOT RUN
+- Remaining risks: exact-head validation may identify workflow or preservation defects; resource-causal reproduction, descendant ecological heredity, and evolution re-entry remain unestablished.
+- Blockers: exact-head validation, artifact verification, Notion readback, and Architect review only.
+- Follow-up directive: none
