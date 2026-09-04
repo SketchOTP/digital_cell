@@ -1448,3 +1448,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: This bounded R1 result does not establish resource-causal reproduction, a mutable heritable causal phenotype, or evolution re-entry; no successor work is authorized.
 - Blockers: Architect review only.
 - Follow-up directive: none
+
+## D-20260903-dcdev021-m2-closure002-ecological-causality-lifecycle - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE002-ECOLOGICAL-CAUSALITY-LIFECYCLE`
+- Supersedes outcome: `OUT-DCDEV021-M2-CLOSURE001-R1-POLARITY-CLUTCH-MIGRATION-FINAL`
+- Closed: `2026-09-03T18:30:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The bounded CLOSURE-002 campaign implements the preregistered same-mean clutch and uniform frozen-traction controls, runs the normal 12,000-step lifecycle order, and preserves finite shared-world accounting. Spatial and same-mean clutch first transfer both occur at step 142, so spatial clutch ecological causality is not established. Finite transfer is real, exact world-debited, metabolically processed, and delays observer starvation-collapse from step 9810 to 9943; no arm produces physical fission.
+- Changed areas: isolated CLOSURE-002 assay controls, compact evidence, scoped workflow, and append-only governance; frozen scientific runtime and sealed R1 evidence remain unchanged.
+- Validation:
+  - Local release assay, corrected lifecycle cadence, evidence manifest, conservation, and A-to-W closure - PASSED
+  - Exact-head Linux workflow - NOT RUN
+  - Independent artifact digest - NOT RUN
+  - Notion append-only handoff/readback - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: remote validation may identify workflow or preservation defects; resource-causal reproduction, mutable heritable phenotype, evolution re-entry, and behavioral clutch causality remain unestablished.
+- Blockers: exact-head CI, artifact verification, Notion readback, and Architect review.
+- Follow-up directive: none

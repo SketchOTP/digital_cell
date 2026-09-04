@@ -1,0 +1,1425 @@
+{
+  "a_spent": 2370.4811871582133,
+  "a_to_w_residual": 1.3283818489639998e-12,
+  "arm": "SPATIAL_CLUTCH_ZERO_RESOURCE",
+  "checkpoints": [
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 1.8693574506337445,
+          "area": 1136.470923624924,
+          "birth_mass": 212.8861601010339,
+          "c": 1.201039382912693,
+          "centroid": [
+            25.577002608307502,
+            40.88607106263403
+          ],
+          "f": 0.6778393458163141,
+          "fission_readiness_ratio": 1.0011344122967623,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 213.12766077886303,
+          "n": 0.6778393458163141,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 1,
+          "topology": 79,
+          "w": 0.9200547097488063
+        },
+        {
+          "a": 1.8716474623520523,
+          "area": 2226.3406866232144,
+          "birth_mass": 336.244044735766,
+          "c": 1.2024443300901952,
+          "centroid": [
+            49.50027776342164,
+            40.5979528302874
+          ],
+          "f": 0.6784070236008792,
+          "fission_readiness_ratio": 1.0014387949991859,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 336.72783098583784,
+          "n": 0.6784070236008792,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 1,
+          "topology": 123,
+          "w": 0.9222095122086306
+        }
+      ],
+      "step": 1,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 1.4814707184498164,
+          "area": 1095.778634090524,
+          "birth_mass": 212.8861601010339,
+          "c": 1.3894989305976417,
+          "centroid": [
+            25.54240269773046,
+            40.568830295990786
+          ],
+          "f": 0.21736566753803765,
+          "fission_readiness_ratio": 1.1324445911444745,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 241.0817805359325,
+          "n": 0.21736566753803765,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 500,
+          "topology": 77,
+          "w": 0.5560529752817666
+        },
+        {
+          "a": 1.5018417848437255,
+          "area": 2185.259230920015,
+          "birth_mass": 336.244044735766,
+          "c": 1.3739083810265418,
+          "centroid": [
+            49.36285774795959,
+            39.697150454427174
+          ],
+          "f": 0.22653933713814547,
+          "fission_readiness_ratio": 1.18859900388581,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 399.65933663546724,
+          "n": 0.22653933713814547,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 500,
+          "topology": 122,
+          "w": 0.6575891070369246
+        }
+      ],
+      "step": 500,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 1.1536647438543093,
+          "area": 974.990041690019,
+          "birth_mass": 212.8861601010339,
+          "c": 1.6378099294621902,
+          "centroid": [
+            25.886442341597693,
+            40.49687174340968
+          ],
+          "f": 0.12618020081013076,
+          "fission_readiness_ratio": 1.1017333160800888,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 234.5437751156688,
+          "n": 0.12618020081013076,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 1000,
+          "topology": 77,
+          "w": 0.38710717648291637
+        },
+        {
+          "a": 1.1872228789905457,
+          "area": 1970.2074624928118,
+          "birth_mass": 336.244044735766,
+          "c": 1.6088364756471631,
+          "centroid": [
+            48.77771344781088,
+            39.54546134559618
+          ],
+          "f": 0.13495097713097917,
+          "fission_readiness_ratio": 1.1735061505920688,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 394.5844545973761,
+          "n": 0.13495097713097917,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 1000,
+          "topology": 122,
+          "w": 0.47516610977088697
+        }
+      ],
+      "step": 1000,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 0.8771967307878389,
+          "area": 853.5288705904944,
+          "birth_mass": 212.8861601010339,
+          "c": 1.8635483257175494,
+          "centroid": [
+            26.258263930079373,
+            40.662344482058614
+          ],
+          "f": 0.08383011500792492,
+          "fission_readiness_ratio": 1.0498095576642423,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 223.4899255685055,
+          "n": 0.08383011500792492,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 1500,
+          "topology": 77,
+          "w": 0.3304524302880713
+        },
+        {
+          "a": 0.9093405815281671,
+          "area": 1784.9727738288302,
+          "birth_mass": 336.244044735766,
+          "c": 1.7836619726262202,
+          "centroid": [
+            48.52294100580783,
+            39.253087877021166
+          ],
+          "f": 0.09138578888398106,
+          "fission_readiness_ratio": 1.124632476452378,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 378.15097272354876,
+          "n": 0.09138578888398106,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 1500,
+          "topology": 122,
+          "w": 0.39777798441007517
+        }
+      ],
+      "step": 1500,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 0.6198267691341495,
+          "area": 755.2069828468841,
+          "birth_mass": 212.8861601010339,
+          "c": 2.0248804611638396,
+          "centroid": [
+            26.57476123026459,
+            40.702706933729274
+          ],
+          "f": 0.05850531072051605,
+          "fission_readiness_ratio": 0.9827382489816794,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 209.21137221012353,
+          "n": 0.05850531072051605,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 2000,
+          "topology": 77,
+          "w": 0.3061264701623194
+        },
+        {
+          "a": 0.6601015341507451,
+          "area": 1636.9025158430886,
+          "birth_mass": 336.244044735766,
+          "c": 1.8877181109908374,
+          "centroid": [
+            48.34811938585369,
+            39.01582243812129
+          ],
+          "f": 0.06567400106829605,
+          "fission_readiness_ratio": 1.0568459955511609,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 355.35817220691973,
+          "n": 0.06567400106829605,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 2000,
+          "topology": 122,
+          "w": 0.3633472484692965
+        }
+      ],
+      "step": 2000,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 0.38918130609369894,
+          "area": 677.6996642186695,
+          "birth_mass": 212.8861601010339,
+          "c": 2.114600087469518,
+          "centroid": [
+            26.85447678939319,
+            40.537271601700766
+          ],
+          "f": 0.041854124515823835,
+          "fission_readiness_ratio": 0.9046159420420444,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 192.58021426751029,
+          "n": 0.041854124515823835,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 2500,
+          "topology": 77,
+          "w": 0.2908746165061471
+        },
+        {
+          "a": 0.44722328315714205,
+          "area": 1516.810853655394,
+          "birth_mass": 336.244044735766,
+          "c": 1.929215270228486,
+          "centroid": [
+            48.232350340627846,
+            39.12401655899053
+          ],
+          "f": 0.04907021010013433,
+          "fission_readiness_ratio": 0.9772266130793982,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 328.58662900525024,
+          "n": 0.04907021010013433,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 2500,
+          "topology": 122,
+          "w": 0.3450763411245393
+        }
+      ],
+      "step": 2500,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 0.19154526361629098,
+          "area": 612.6281441520428,
+          "birth_mass": 212.8861601010339,
+          "c": 2.15012433682209,
+          "centroid": [
+            26.951664201152262,
+            40.41427374552659
+          ],
+          "f": 0.03059907359609403,
+          "fission_readiness_ratio": 0.8197568457652056,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 174.5148871114901,
+          "n": 0.03059907359609403,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 3000,
+          "topology": 77,
+          "w": 0.28009298334460203
+        },
+        {
+          "a": 0.2770845355571698,
+          "area": 1377.6847374848207,
+          "birth_mass": 336.244044735766,
+          "c": 1.9742224135733923,
+          "centroid": [
+            48.13664350113854,
+            39.44386354412266
+          ],
+          "f": 0.0384166604567607,
+          "fission_readiness_ratio": 0.8917530226440392,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 299.8466432391769,
+          "n": 0.0384166604567607,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 3000,
+          "topology": 122,
+          "w": 0.3342508418230451
+        }
+      ],
+      "step": 3000,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 0.026766384029807973,
+          "area": 522.1469843246747,
+          "birth_mass": 212.8861601010339,
+          "c": 2.282519778303529,
+          "centroid": [
+            26.74755953286726,
+            40.11299270832385
+          ],
+          "f": 0.02381838953437771,
+          "fission_readiness_ratio": 0.7324188803246979,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 155.92184301782365,
+          "n": 0.02381838953437771,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 3500,
+          "topology": 77,
+          "w": 0.27627681696192175
+        },
+        {
+          "a": 0.13568319369533025,
+          "area": 1214.444997456626,
+          "birth_mass": 336.244044735766,
+          "c": 2.0505051392976816,
+          "centroid": [
+            48.15324668327466,
+            39.849023226351214
+          ],
+          "f": 0.031237172261073847,
+          "fission_readiness_ratio": 0.8043201108711175,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 270.4478473416243,
+          "n": 0.031237172261073847,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 3500,
+          "topology": 122,
+          "w": 0.3253394444102987
+        }
+      ],
+      "step": 3500,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 1.1628236226010868e-6,
+          "area": 492.32665724161905,
+          "birth_mass": 212.8861601010339,
+          "c": 2.1700362214214786,
+          "centroid": [
+            26.647635086657026,
+            39.96448521720294
+          ],
+          "f": 0.01660891508236847,
+          "fission_readiness_ratio": 0.6476466926612561,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 137.87501750278926,
+          "n": 0.01660891508236847,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 4000,
+          "topology": 77,
+          "w": 0.17631426800241268
+        },
+        {
+          "a": 0.009213520503827562,
+          "area": 1051.3338767572282,
+          "birth_mass": 336.244044735766,
+          "c": 2.1415676585378396,
+          "centroid": [
+            48.221153718593364,
+            40.2294914536033
+          ],
+          "f": 0.0258057044652683,
+          "fission_readiness_ratio": 0.717176453791751,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 241.14631161219154,
+          "n": 0.0258057044652683,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 4000,
+          "topology": 121,
+          "w": 0.3150890940994503
+        }
+      ],
+      "step": 4000,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 6.467230461460571e-7,
+          "area": 431.3332899954265,
+          "birth_mass": 212.8861601010339,
+          "c": 2.2188877796319466,
+          "centroid": [
+            26.52094294479091,
+            39.76766722460754
+          ],
+          "f": 0.012370021460012925,
+          "fission_readiness_ratio": 0.5708474447658033,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 121.52552051967892,
+          "n": 0.012370021460012925,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 4500,
+          "topology": 77,
+          "w": 0.15091813485079866
+        },
+        {
+          "a": 1.6255650988690014e-6,
+          "area": 976.824829545759,
+          "birth_mass": 336.244044735766,
+          "c": 2.0700746457263772,
+          "centroid": [
+            48.30797405811594,
+            40.38012100904494
+          ],
+          "f": 0.0196946676769328,
+          "fission_readiness_ratio": 0.6342869325383319,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 213.27520371973065,
+          "n": 0.0196946676769328,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 4500,
+          "topology": 121,
+          "w": 0.2168059505887917
+        }
+      ],
+      "step": 4500,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 3.5951218791493795e-7,
+          "area": 372.9441961775794,
+          "birth_mass": 212.8861601010339,
+          "c": 2.2977152228425957,
+          "centroid": [
+            26.448413775301532,
+            39.665359760191116
+          ],
+          "f": 0.00920418767967175,
+          "fission_readiness_ratio": 0.5017743402372956,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 106.82081253034757,
+          "n": 0.00920418767967175,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 5000,
+          "topology": 77,
+          "w": 0.14403133813340574
+        },
+        {
+          "a": 1.0394067575485322e-6,
+          "area": 862.6647206138867,
+          "birth_mass": 336.244044735766,
+          "c": 2.1043365682010724,
+          "centroid": [
+            48.3359733285508,
+            40.709850232892194
+          ],
+          "f": 0.015732539638477,
+          "fission_readiness_ratio": 0.5592310394960746,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 188.038106661947,
+          "n": 0.015732539638477,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 5000,
+          "topology": 121,
+          "w": 0.18560738878884409
+        }
+      ],
+      "step": 5000,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 1.9168128326997963e-7,
+          "area": 325.43168684760354,
+          "birth_mass": 212.8861601010339,
+          "c": 2.3566008385102073,
+          "centroid": [
+            26.439582573181895,
+            39.67404567050845
+          ],
+          "f": 0.006711136767007905,
+          "fission_readiness_ratio": 0.43996621416971515,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 93.66271790877975,
+          "n": 0.006711136767007905,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 5500,
+          "topology": 76,
+          "w": 0.14070884821439358
+        },
+        {
+          "a": 6.636836794916462e-7,
+          "area": 759.3154393221972,
+          "birth_mass": 336.244044735766,
+          "c": 2.145675773375287,
+          "centroid": [
+            48.39962347293855,
+            40.931442346385126
+          ],
+          "f": 0.01255654701826006,
+          "fission_readiness_ratio": 0.4918041144133676,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 165.36620464804216,
+          "n": 0.01255654701826006,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 5500,
+          "topology": 119,
+          "w": 0.1748658169501936
+        }
+      ],
+      "step": 5500,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 1.0343326700538067e-7,
+          "area": 277.69306750203924,
+          "birth_mass": 212.8861601010339,
+          "c": 2.470275541496765,
+          "centroid": [
+            26.444124398520213,
+            39.718050142363
+          ],
+          "f": 0.004917102736980932,
+          "fission_readiness_ratio": 0.38490413582824295,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 81.94076348348143,
+          "n": 0.004917102736980932,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 6000,
+          "topology": 71,
+          "w": 0.13922427098338971
+        },
+        {
+          "a": 4.171243024327051e-7,
+          "area": 671.8870269034459,
+          "birth_mass": 336.244044735766,
+          "c": 2.1758478495563045,
+          "centroid": [
+            48.51232744512183,
+            41.05600278633288
+          ],
+          "f": 0.00994621680263069,
+          "fission_readiness_ratio": 0.43184393137930066,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 145.20495018157064,
+          "n": 0.00994621680263069,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 6000,
+          "topology": 115,
+          "w": 0.17005096512846865
+        }
+      ],
+      "step": 6000,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 5.5426366472614745e-8,
+          "area": 230.10359937019263,
+          "birth_mass": 212.8861601010339,
+          "c": 2.66405652582318,
+          "centroid": [
+            26.454955473041462,
+            39.75292218558522
+          ],
+          "f": 0.003585288557682298,
+          "fission_readiness_ratio": 0.3360576421637149,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 71.54202101284058,
+          "n": 0.003585288557682298,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 6500,
+          "topology": 69,
+          "w": 0.13772395402303683
+        },
+        {
+          "a": 2.6231676833910933e-7,
+          "area": 593.4268251090899,
+          "birth_mass": 336.244044735766,
+          "c": 2.2101650460598354,
+          "centroid": [
+            48.61866304116119,
+            41.07908398056736
+          ],
+          "f": 0.007880129696625765,
+          "fission_readiness_ratio": 0.3785834200253107,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 127.29642041920987,
+          "n": 0.007880129696625765,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 6500,
+          "topology": 109,
+          "w": 0.16803805468080193
+        }
+      ],
+      "step": 6500,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 2.8119759250121976e-8,
+          "area": 187.1236081623573,
+          "birth_mass": 212.8861601010339,
+          "c": 2.923868646875125,
+          "centroid": [
+            26.46222967092245,
+            39.769629029186866
+          ],
+          "f": 0.002542228257600888,
+          "fission_readiness_ratio": 0.2932618098899413,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 62.43138061174901,
+          "n": 0.002542228257600888,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 7000,
+          "topology": 62,
+          "w": 0.13591562970217724
+        },
+        {
+          "a": 1.6544735177933102e-7,
+          "area": 520.9447336724375,
+          "birth_mass": 336.244044735766,
+          "c": 2.2582432870119566,
+          "centroid": [
+            48.67463358205715,
+            41.058032695832125
+          ],
+          "f": 0.006250294811557023,
+          "fission_readiness_ratio": 0.3313246006586032,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 111.40592384591119,
+          "n": 0.006250294811557023,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 7000,
+          "topology": 107,
+          "w": 0.16655944283432822
+        }
+      ],
+      "step": 7000,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 1.3047170874229334e-8,
+          "area": 150.030873372913,
+          "birth_mass": 212.8861601010339,
+          "c": 3.2498241649393584,
+          "centroid": [
+            26.432879309573522,
+            39.74773103926833
+          ],
+          "f": 0.0017235961349372877,
+          "fission_readiness_ratio": 0.2562414082876828,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 54.55024946924604,
+          "n": 0.0017235961349372877,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 7500,
+          "topology": 50,
+          "w": 0.13400429765111416
+        },
+        {
+          "a": 1.0653516097329567e-7,
+          "area": 447.6088991228521,
+          "birth_mass": 336.244044735766,
+          "c": 2.356497399462445,
+          "centroid": [
+            48.69191908302218,
+            40.99908844750084
+          ],
+          "f": 0.005003293709943628,
+          "fission_readiness_ratio": 0.28968148215949674,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 97.40367324636082,
+          "n": 0.005003293709943628,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 7500,
+          "topology": 98,
+          "w": 0.1656554799103793
+        }
+      ],
+      "step": 7500,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 5.374805353281549e-9,
+          "area": 118.6475989324021,
+          "birth_mass": 212.8861601010339,
+          "c": 3.6552690517225823,
+          "centroid": [
+            26.473111930878883,
+            39.657555715020834
+          ],
+          "f": 0.0011010782087321975,
+          "fission_readiness_ratio": 0.22389440985496242,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 47.664021182110034,
+          "n": 0.0011010782087321975,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 8000,
+          "topology": 34,
+          "w": 0.1325810582706952
+        },
+        {
+          "a": 7.143135693317233e-8,
+          "area": 368.1076473086299,
+          "birth_mass": 336.244044735766,
+          "c": 2.567369938633523,
+          "centroid": [
+            48.602916885433245,
+            40.90132576639891
+          ],
+          "f": 0.004077876778558904,
+          "fission_readiness_ratio": 0.2533647263970542,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 85.19238039711621,
+          "n": 0.004077876778558904,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 8000,
+          "topology": 75,
+          "w": 0.16630223635828448
+        }
+      ],
+      "step": 8000,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 1.8158568830065589e-9,
+          "area": 95.67237065581145,
+          "birth_mass": 212.8861601010339,
+          "c": 4.024004521058973,
+          "centroid": [
+            26.45589893116778,
+            39.65063213102128
+          ],
+          "f": 0.0006377762414170076,
+          "fission_readiness_ratio": 0.19589033826117774,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 41.702341913314775,
+          "n": 0.0006377762414170076,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 8500,
+          "topology": 34,
+          "w": 0.12938037407823594
+        },
+        {
+          "a": 4.7402491394862716e-8,
+          "area": 292.09329631933485,
+          "birth_mass": 336.244044735766,
+          "c": 2.895746129671265,
+          "centroid": [
+            48.53762183192346,
+            41.01641404906306
+          ],
+          "f": 0.0033021911106817475,
+          "fission_readiness_ratio": 0.22158497928358373,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 74.50662968700311,
+          "n": 0.0033021911106817475,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 8500,
+          "topology": 54,
+          "w": 0.16679541386187116
+        }
+      ],
+      "step": 8500,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 5.174526778965337e-10,
+          "area": 77.0944928256273,
+          "birth_mass": 212.8861601010339,
+          "c": 4.423298501136134,
+          "centroid": [
+            26.440551915953165,
+            39.6419824293696
+          ],
+          "f": 0.0003393937631435463,
+          "fission_readiness_ratio": 0.1716955624932763,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 36.551609005580694,
+          "n": 0.0003393937631435463,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 9000,
+          "topology": 34,
+          "w": 0.12648748480252014
+        },
+        {
+          "a": 2.702842183822444e-8,
+          "area": 238.08130477200643,
+          "birth_mass": 336.244044735766,
+          "c": 3.1757055707191078,
+          "centroid": [
+            48.57140010002858,
+            41.070696778568596
+          ],
+          "f": 0.002483201460802791,
+          "fission_readiness_ratio": 0.19410517949124387,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 65.26671065629769,
+          "n": 0.002483201460802791,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 9000,
+          "topology": 51,
+          "w": 0.16228468795387158
+        }
+      ],
+      "step": 9000,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 1.2227131358445166e-10,
+          "area": 61.92474472238416,
+          "birth_mass": 212.8861601010339,
+          "c": 4.8659735281108825,
+          "centroid": [
+            26.429588822168075,
+            39.639255122524624
+          ],
+          "f": 0.00016450454088310544,
+          "fission_readiness_ratio": 0.15067456175313843,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 32.07652887653175,
+          "n": 0.00016450454088310544,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 9500,
+          "topology": 33,
+          "w": 0.1237988807896103
+        },
+        {
+          "a": 1.4008410721606911e-8,
+          "area": 193.52279882569644,
+          "birth_mass": 336.244044735766,
+          "c": 3.4877923235255746,
+          "centroid": [
+            48.66455861571638,
+            41.08937435669783
+          ],
+          "f": 0.001780807064997427,
+          "fission_readiness_ratio": 0.17039718335011672,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 57.29503814122517,
+          "n": 0.001780807064997427,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 9500,
+          "topology": 46,
+          "w": 0.15872885150928984
+        }
+      ],
+      "step": 9500,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 2.3457752538890114e-11,
+          "area": 49.39296246459236,
+          "birth_mass": 212.8861601010339,
+          "c": 5.37549416332702,
+          "centroid": [
+            26.43262498285399,
+            39.63986463836365
+          ],
+          "f": 0.00007185648114432055,
+          "fission_readiness_ratio": 0.13230642430617517,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 28.16620662723973,
+          "n": 0.00007185648114432055,
+          "observer_death_reason": "starvation_collapse",
+          "observer_viable": false,
+          "step": 10000,
+          "topology": 28,
+          "w": 0.12141891142945754
+        },
+        {
+          "a": 6.446239968321789e-9,
+          "area": 157.79265417203692,
+          "birth_mass": 336.244044735766,
+          "c": 3.813179776939594,
+          "centroid": [
+            48.73995617456881,
+            41.10648179438898
+          ],
+          "f": 0.0012039478396300362,
+          "fission_readiness_ratio": 0.14988170211776405,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 50.396829751958215,
+          "n": 0.0012039478396300362,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 10000,
+          "topology": 45,
+          "w": 0.15490641013057294
+        }
+      ],
+      "step": 10000,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 3.4949873286732917e-12,
+          "area": 39.29587714361338,
+          "birth_mass": 212.8861601010339,
+          "c": 5.934440811497717,
+          "centroid": [
+            26.407119809584483,
+            39.61774226451342
+          ],
+          "f": 0.000027667380976576825,
+          "fission_readiness_ratio": 0.11619259156802339,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 24.73579465110427,
+          "n": 0.000027667380976576825,
+          "observer_death_reason": "starvation_collapse",
+          "observer_viable": false,
+          "step": 10500,
+          "topology": 25,
+          "w": 0.11888257447632807
+        },
+        {
+          "a": 2.6246968992853897e-9,
+          "area": 128.42104819649,
+          "birth_mass": 336.244044735766,
+          "c": 4.1699541209772475,
+          "centroid": [
+            48.803605881176864,
+            41.11828684823016
+          ],
+          "f": 0.0007658421961350353,
+          "fission_readiness_ratio": 0.13205756200173085,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 44.403568785406186,
+          "n": 0.0007658421961350353,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 10500,
+          "topology": 43,
+          "w": 0.15133148379608127
+        }
+      ],
+      "step": 10500,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 3.951576893898596e-13,
+          "area": 30.95904594203688,
+          "birth_mass": 212.8861601010339,
+          "c": 6.591310284767472,
+          "centroid": [
+            26.414311488945355,
+            39.59981433425388
+          ],
+          "f": 9.280977286825504e-6,
+          "fission_readiness_ratio": 0.10203797391150665,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 21.722472450510125,
+          "n": 9.280977286825504e-6,
+          "observer_death_reason": "starvation_collapse",
+          "observer_viable": false,
+          "step": 11000,
+          "topology": 17,
+          "w": 0.1166746511955956
+        },
+        {
+          "a": 9.38615776086255e-10,
+          "area": 103.81187533102786,
+          "birth_mass": 336.244044735766,
+          "c": 4.5827227580459216,
+          "centroid": [
+            48.82655265042265,
+            41.1368646308459
+          ],
+          "f": 0.0004565954767818729,
+          "fission_readiness_ratio": 0.11647644840485755,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 39.16451212810606,
+          "n": 0.0004565954767818729,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 11000,
+          "topology": 36,
+          "w": 0.14839966843007502
+        }
+      ],
+      "step": 11000,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 3.148288235525013e-14,
+          "area": 24.51990774624238,
+          "birth_mass": 212.8861601010339,
+          "c": 7.2514727901836675,
+          "centroid": [
+            26.417917180052154,
+            39.596888252040856
+          ],
+          "f": 2.6145153632648457e-6,
+          "fission_readiness_ratio": 0.08958932817228844,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 19.072328060629864,
+          "n": 2.6145153632648457e-6,
+          "observer_death_reason": "starvation_collapse",
+          "observer_viable": false,
+          "step": 11500,
+          "topology": 17,
+          "w": 0.11369885649087824
+        },
+        {
+          "a": 2.851014709455474e-10,
+          "area": 83.85394313049528,
+          "birth_mass": 336.244044735766,
+          "c": 5.029762276063506,
+          "centroid": [
+            48.79522836042351,
+            41.12867936558662
+          ],
+          "f": 0.00025095926934937373,
+          "fission_readiness_ratio": 0.10278789065091729,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 34.561816102322055,
+          "n": 0.00025095926934937373,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 11500,
+          "topology": 32,
+          "w": 0.14519912710037391
+        }
+      ],
+      "step": 11500,
+      "world_f": 0.0,
+      "world_n": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "fissions": 0,
+      "living": 2,
+      "states": [
+        {
+          "a": 1.73922150089615e-15,
+          "area": 19.316328782093137,
+          "birth_mass": 212.8861601010339,
+          "c": 7.982782128611166,
+          "centroid": [
+            26.421004370289843,
+            39.5943411617785
+          ],
+          "f": 6.134063663727286e-7,
+          "fission_readiness_ratio": 0.07863548296350148,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 1,
+          "mass": 16.7404060157901,
+          "n": 6.134063663727286e-7,
+          "observer_death_reason": "starvation_collapse",
+          "observer_viable": false,
+          "step": 12000,
+          "topology": 17,
+          "w": 0.11094506365385282
+        },
+        {
+          "a": 7.243623015691516e-11,
+          "area": 67.51341053003898,
+          "birth_mass": 336.244044735766,
+          "c": 5.525470931140457,
+          "centroid": [
+            48.81116170556503,
+            41.11390926134105
+          ],
+          "f": 0.0001261790674749043,
+          "fission_readiness_ratio": 0.09075101296316541,
+          "fission_ready": false,
+          "generation": 1,
+          "lineage": 2,
+          "mass": 30.514487662602672,
+          "n": 0.0001261790674749043,
+          "observer_death_reason": null,
+          "observer_viable": true,
+          "step": 12000,
+          "topology": 28,
+          "w": 0.14219718504286824
+        }
+      ],
+      "step": 12000,
+      "world_f": 0.0,
+      "world_n": 0.0
+    }
+  ],
+  "deaths": 1,
+  "delivered_f": 0.0,
+  "delivered_n": 0.0,
+  "events": [
+    {
+      "event": "first_contact",
+      "exposed_edges": 1,
+      "step": 142
+    },
+    {
+      "event": "observer_nonviability",
+      "lineage": 1,
+      "reason": "starvation_collapse",
+      "step": 9810
+    }
+  ],
+  "first_contact_step": 142,
+  "first_transfer_step": null,
+  "fissions": 0,
+  "initial_world_f": 0.0,
+  "initial_world_n": 0.0,
+  "invalid": false,
+  "net_displacement": 0.3955420514278371,
+  "observer_nonviable_steps": 2191,
+  "passive_work_max": 1.3283818489639998e-12,
+  "path_length": 9.111063786705962,
+  "reaction_a_produced": 1310.048668971484,
+  "reaction_f_consumed": 1310.048668971484,
+  "reaction_n_consumed": 1310.048668971484,
+  "reaction_w_produced": 9490.430803202855,
+  "remaining_world_f": 0.0,
+  "remaining_world_n": 0.0,
+  "slips": 1780755,
+  "steps": 12000,
+  "stuck_contacts": 12339,
+  "terminal_living": 2,
+  "terminal_sites": [
+    17,
+    28
+  ],
+  "w_generated": 2370.4811871582015,
+  "world_f_loss": 0.0,
+  "world_n_loss": 0.0
+}

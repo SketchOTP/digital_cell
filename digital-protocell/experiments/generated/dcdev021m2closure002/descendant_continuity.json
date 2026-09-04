@@ -1,0 +1,10 @@
+{
+  "material_partition": "accepted mesh_fission authority",
+  "new_seed": false,
+  "polarity_partition": "accepted contiguous native amounts",
+  "status": "NOT_REACHED",
+  "terminal_sites": [
+    17,
+    28
+  ]
+}

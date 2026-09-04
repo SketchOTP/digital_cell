@@ -1,0 +1,19 @@
+{
+  "positive_lead_vs_same_mean": true,
+  "positive_lead_vs_uniform": true,
+  "vs_motor_off": {
+    "candidate_f": 0.0,
+    "candidate_n": 0.0,
+    "control_transfer": 57
+  },
+  "vs_same_mean": {
+    "candidate_f": 0.023895472077599435,
+    "candidate_n": 0.023895472077599435,
+    "control_transfer": 142
+  },
+  "vs_uniform": {
+    "candidate_f": 1.41420161711688,
+    "candidate_n": 1.41420161711688,
+    "control_transfer": 201
+  }
+}

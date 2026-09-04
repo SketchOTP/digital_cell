@@ -1,0 +1,7 @@
+{
+  "promoted": false,
+  "reason": "controls incomplete and terminal transfer alone is not causal",
+  "reported_classification": "M2_POLARITY_CLUTCH_AUTONOMOUS_ACQUISITION_QUALIFIED_REPRODUCTIVE_COUPLING_NOT_ESTABLISHED",
+  "sealed_evidence": "UNCHANGED",
+  "status": "CONTINUE"
+}

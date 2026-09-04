@@ -1,0 +1,8 @@
+{
+  "clutch_off": "same spatial active motor; passive reaction zero",
+  "motor_off": "spatial clutch with all active forces zero",
+  "new_parameters": false,
+  "same_mean": "same spatial active motor; h_bar=mean(h_i)",
+  "spatial": "h_i=u_i/(u_i+v_i); active=v/(u+v)",
+  "uniform_frozen_traction": "same spatial active motor; frozen limits"
+}

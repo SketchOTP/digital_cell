@@ -1,0 +1,8 @@
+{
+  "finite_fissions": 0,
+  "forced": false,
+  "physical_reproductive_consequence": false,
+  "resource_supports_reproduction": false,
+  "transfer_disabled_fissions": 0,
+  "zero_resource_fissions": 0
+}

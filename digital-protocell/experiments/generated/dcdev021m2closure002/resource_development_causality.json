@@ -1,0 +1,11 @@
+{
+  "finite_delivered_n": 29.17790976126448,
+  "fission_readiness": "observed in checkpoints; no observer controller",
+  "post_transfer_physiological_divergence": {
+    "a_spent_delta": 5.098710169802871,
+    "reaction_a_delta": 14.779058235664252
+  },
+  "resource_supports_development": true,
+  "transfer_disabled_delivered_n": 0.0,
+  "zero_resource_delivered_n": 0.0
+}

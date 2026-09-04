@@ -1,0 +1,12 @@
+{
+  "candidate": {
+    "a": 2375.579897328016,
+    "f": 29.17790976126448,
+    "n": 29.17790976126448,
+    "w": 2375.579897328025
+  },
+  "candidate_first_transfer": 142,
+  "motor_off_before_transfer": 57,
+  "same_mean_before_transfer": 142,
+  "uniform_before_transfer": 201
+}

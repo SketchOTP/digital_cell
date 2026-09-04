@@ -596,3 +596,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: R1 corrected the finite-world nonfeeding boundary, restored post-mechanics world views and ENTRY-027 parity, replaced the geometry shortcut, corrected lineage and passive-force accounting, and validated the parameter-free local polarity clutch. The clutch reaches separated resources and transfers finite N/F with active mechanics, but no second-generation fission or resource-causal reproduction occurs in the bounded run. The classification is M2_POLARITY_CLUTCH_AUTONOMOUS_ACQUISITION_QUALIFIED_REPRODUCTIVE_COUPLING_NOT_ESTABLISHED.
 - Affected areas: additive R1 finite-world helper, assay-local corrected force composition and clutch, compact evidence, scoped workflow, and append-only governance; no accepted M1 scientific source or PR #44 modification.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE001-R1-POLARITY-CLUTCH-MIGRATION
+
+## DEC-DCDEV021-M2-CLOSURE002-ECOLOGICAL-CAUSALITY-LIFECYCLE
+
+- Date: 2026-09-03
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE002-ECOLOGICAL-CAUSALITY-LIFECYCLE
+- Status: ACTIVE
+- Decision or event: CLOSURE-002 completed from exact R1 head `ab10dde42ff24af4ec8f3e9929a03463ad9dd388` with corrected clutch controls and a fixed 12,000-step normal lifecycle campaign; Architect acceptance is pending.
+- Rationale: The proper same-mean clutch control transfers at the same first step as the spatial clutch, so the behavioral ecological causality claim is not established. Finite external N/F transfer remains exact and causally delays the accepted observer starvation-collapse while changing downstream material/energy trajectories, but no arm reaches unforced fission and resource-causal reproduction is not established.
+- Affected areas: isolated CLOSURE-002 assay controls, compact evidence, scoped workflow, and append-only governance; no frozen scientific runtime source, sealed R1 evidence, M1 provenance, or PR #44 modification.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE001-R1-POLARITY-CLUTCH-MIGRATION-FINAL

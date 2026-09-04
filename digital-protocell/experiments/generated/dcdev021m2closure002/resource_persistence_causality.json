@@ -1,0 +1,12 @@
+{
+  "death_semantics": "observer_viability transition; no physical death controller",
+  "finite_first_observer_nonviability": 9943,
+  "finite_observer_deaths": 1,
+  "finite_vs_transfer_disabled": "QUALIFIED_DELAY",
+  "finite_vs_zero_resource": "QUALIFIED_DELAY",
+  "resource_supports_persistence": true,
+  "transfer_disabled_first_observer_nonviability": 9810,
+  "transfer_disabled_observer_deaths": 1,
+  "zero_resource_first_observer_nonviability": 9810,
+  "zero_resource_observer_deaths": 1
+}

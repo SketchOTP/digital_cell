@@ -1,0 +1,10 @@
+{
+  "T_X": "first resource-transfer step or terminal step",
+  "controls": [
+    "same_mean_clutch",
+    "uniform_frozen_traction",
+    "motor_off_spatial_clutch"
+  ],
+  "frozen_before_execution": true,
+  "lead": "candidate cumulative delivery at step immediately before T_X"
+}

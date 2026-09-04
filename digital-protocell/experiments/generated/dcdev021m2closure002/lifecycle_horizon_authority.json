@@ -1,0 +1,7 @@
+{
+  "basis": "smallest accepted horizon spanning D-088 natural fission campaign and accepted starvation/deterioration opportunity",
+  "frozen_before_outcomes": true,
+  "horizon": 12000,
+  "natural_fission_authority": "D-088 gate_fission_campaign uses 12000 steps",
+  "starvation_authority": "D-088 starvation control uses 4000 steps"
+}

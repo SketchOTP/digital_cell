@@ -1,0 +1,147 @@
+name: DC-DEV-021 M2 closure 002 ecological causality and lifecycle
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-m2-closure002-ecological-causality-lifecycle
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  closure002:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify CLOSURE-002 authority and scope
+        run: |
+          set -euo pipefail
+          start=ab10dde42ff24af4ec8f3e9929a03463ad9dd388
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefName,baseRefName
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Build and run CLOSURE-002 assay
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build --locked -p regulatory-core --release --example dcdev021_m2_closure002
+          cargo +1.89.0 run --locked -p regulatory-core --release --example dcdev021_m2_closure002 -- experiments/generated/dcdev021m2closure002
+
+      - name: Validate CLOSURE-002 evidence and causal boundaries
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev021m2closure002")
+          required = [
+              "protocol.json", "authority.json", "r1_architect_disposition.json",
+              "clutch_control_contract.json", "spatial_clutch.json", "same_mean_clutch.json",
+              "uniform_frozen_traction.json", "clutch_off.json", "motor_off_spatial_clutch.json",
+              "causal_metric_preregistration.json", "trajectory_divergence.json", "first_contact_transfer.json",
+              "acquisition_lead.json", "lead_period_physiology.json", "behavioral_ecological_causality.json",
+              "lifecycle_horizon_authority.json", "finite_resource_lifecycle.json", "transfer_disabled_lifecycle.json",
+              "zero_resource_lifecycle.json", "motor_off_lifecycle.json", "resource_persistence_causality.json",
+              "resource_development_causality.json", "resource_reproductive_causality.json",
+              "shared_resource_lineage_ledger.json", "descendant_continuity.json", "world_material_closure.json",
+              "energetic_closure.json", "passive_work.json", "rotation_equivariance.json", "index_invariance.json",
+              "update_order_invariance.json", "forbidden_information_audit.json", "heritable_phenotype_audit.json",
+              "evolution_reentry_readiness.json", "m1_preservation.json", "entry005_028_preservation.json",
+              "closure001_preservation.json", "closure001r1_preservation.json", "downstream_preservation.json",
+              "restart_boundary.json", "repository_professionalism.json", "geometry_and_replay.json",
+              "qualification.json", "artifact_manifest.json",
+          ]
+          for name in required:
+              assert (root / name).is_file(), name
+
+          q = json.loads((root / "qualification.json").read_text())
+          assert q["starting_head"] == "ab10dde42ff24af4ec8f3e9929a03463ad9dd388"
+          assert q["classification"] == "M2_FINITE_RESOURCE_LIFECYCLE_DEPENDENCE_QUALIFIED_BEHAVIORAL_CAUSALITY_NOT_ESTABLISHED"
+          assert q["next_execution_started"] is False
+          assert q["architect_acceptance"] == "PENDING"
+          assert q["finite_shared_world"] == "QUALIFIED"
+          assert q["separated_finite_acquisition_substrate"] == "QUALIFIED"
+          assert q["spatial_clutch_ecological_causality"] == "NOT_ESTABLISHED"
+          assert q["resource_supports_persistence"] is True
+          assert q["resource_supports_development"] is True
+          assert q["resource_supports_reproduction"] is False
+
+          spatial = json.loads((root / "spatial_clutch.json").read_text())
+          same_mean = json.loads((root / "same_mean_clutch.json").read_text())
+          uniform = json.loads((root / "uniform_frozen_traction.json").read_text())
+          transfer_disabled = json.loads((root / "transfer_disabled_lifecycle.json").read_text())
+          zero = json.loads((root / "zero_resource_lifecycle.json").read_text())
+          for arm in (spatial, same_mean, uniform, transfer_disabled, zero):
+              assert arm["invalid"] is False
+              assert abs(arm["world_n_loss"] - arm["delivered_n"]) <= 1e-10
+              assert abs(arm["world_f_loss"] - arm["delivered_f"]) <= 1e-10
+              assert arm["passive_work_max"] <= 1e-10
+          assert spatial["first_transfer_step"] == 142
+          assert same_mean["first_transfer_step"] == 142
+          assert uniform["first_transfer_step"] == 201
+          assert spatial["delivered_n"] > 1e-12 and spatial["delivered_f"] > 1e-12
+          assert transfer_disabled["delivered_n"] == 0.0 and zero["delivered_n"] == 0.0
+          assert spatial["fissions"] == 0 and transfer_disabled["fissions"] == 0 and zero["fissions"] == 0
+
+          persistence = json.loads((root / "resource_persistence_causality.json").read_text())
+          assert persistence["resource_supports_persistence"] is True
+          assert persistence["finite_first_observer_nonviability"] > persistence["transfer_disabled_first_observer_nonviability"]
+          development = json.loads((root / "resource_development_causality.json").read_text())
+          assert development["resource_supports_development"] is True
+          reproduction = json.loads((root / "resource_reproductive_causality.json").read_text())
+          assert reproduction["resource_supports_reproduction"] is False
+          assert reproduction["physical_reproductive_consequence"] is False
+
+          m1 = json.loads((root / "m1_preservation.json").read_text())
+          assert m1["source_changed"] is False
+          assert (m1["v2_d087"], m1["v3_d087"], m1["v4_d087"]) == ("8/8", "8/8", "7/8")
+          assert m1["v4_vector"] == [True, True, False, True, True, True, True, True]
+          assert json.loads((root / "closure001r1_preservation.json").read_text())["sealed_evidence"] == "UNCHANGED"
+          assert json.loads((root / "forbidden_information_audit.json").read_text())["resource_information_to_behavior"] == "NONE"
+          manifest = json.loads((root / "artifact_manifest.json").read_text())
+          assert all(item["present"] for item in manifest["files"])
+          print("CLOSURE-002 causal, lifecycle, conservation, and preservation gates passed")
+          PY
+
+      - name: Run preservation, downstream, and governance checks
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p regulatory-core finite_world -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test --locked -p evolution-harness -- --nocapture
+          python3 ../scripts/validate_governance.py --mode ADOPTED
+
+      - name: Record CLOSURE-002 artifact digest
+        if: always()
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2closure002 -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2closure002.sha256"
+
+      - name: Upload CLOSURE-002 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-m2-closure002-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2closure002/
+            ${{ runner.temp }}/dcdev021m2closure002.sha256
+          if-no-files-found: warn

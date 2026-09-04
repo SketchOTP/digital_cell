@@ -1,0 +1,18 @@
+{
+  "accepted_bounded_result": "M2_SEPARATED_FINITE_RESOURCE_ACQUISITION_SUBSTRATE_QUALIFIED",
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "state": "OPEN"
+  },
+  "r1_classification_promoted": false,
+  "r1_disposition": "CONTINUE",
+  "source_hashes": {
+    "closure001_r1": "SEALED_AND_UNCHANGED",
+    "finite_world.rs": "187ae724a29dc726",
+    "mesh_fission.rs": "dcb859522534cf03",
+    "mesh_growth.rs": "f466c37daea1186c",
+    "mesh_reactions.rs": "8b7a5572b93b0982"
+  }
+}

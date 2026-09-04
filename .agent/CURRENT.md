@@ -3,17 +3,17 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-03T17:00:00-04:00`
+- Last updated: `2026-09-03T18:30:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260903-dcdev021-m2-closure001-r1-polarity-clutch-migration`
-- External directive ID: `DC-DEV-021-M2-CLOSURE-001-R1-FINITE-WORLD-SENSORIMOTOR-REQUALIFICATION-AND-POLARITY-CLUTCH-MIGRATION-001`
-- Objective: Requalify the finite-world closure after correcting nonfeeding transport, ENTRY-027 parity, polygon geometry, lineage motion accounting, passive traction semantics, and conditionally test the parameter-free local polarity clutch.
+- Local directive ID: `D-20260903-dcdev021-m2-closure002-ecological-causality-lifecycle`
+- External directive ID: `DC-DEV-021-M2-CLOSURE-002-BEHAVIORAL-ECOLOGICAL-CAUSALITY-AND-RESOURCE-DEPENDENT-LIFECYCLE-001`
+- Objective: Complete the finite-world ecological causality and resource-dependent lifecycle audit with corrected clutch controls and a fixed 12,000-step normal lifecycle campaign.
 - Current status: `COMPLETE`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `R1 correction and bounded requalification complete; Architect review pending`
-- Expected or actual touched areas: `finite-world transport boundary, assay/runtime helpers, corrected polygon geometry, lineage accounting, local traction clutch, compact R1 evidence, scoped workflow, append-only governance`
+- Current phase: `CLOSURE-002 bounded ecological/lifecycle audit complete; Architect review pending`
+- Expected or actual touched areas: `isolated CLOSURE-002 assay controls, lifecycle evidence, scoped workflow, append-only governance`
 - Immediate next action: `Architect review only; do not start successor execution`
 
 ## Temporary task-relevant facts
@@ -51,6 +51,10 @@
 - M2 closure result head is `328a68a4d18757b537f69c3d9e33cbd5099d6cd7`; exact-head Linux workflow `33779402628` passed, and the GitHub artifact API independently reports ZIP digest `sha256:3578659875dd9982f9b9a76f26664f42fcc8fb7042533eb6f303a6c28d14d01f`.
 - M2 closure classification is `M2_CURRENT_SENSORIMOTOR_ROUTE_ECOLOGICALLY_INSUFFICIENT`: finite shared-world allocation and direct-contact transfer/metabolism sanity passed, but the existing motor and conditional assay-only protrusion route did not reach separated resources in the fixed ecology. Autonomous polarity initiation remains qualified; autonomous finite-resource acquisition, resource-causal reproduction, mutable heritable causal phenotype, and evolution re-entry remain unestablished.
 - Closure exact-head CI and artifact verification are complete; PR #44 remains open, draft, unmerged, and untouched; Notion Digital Cell was updated append-only and read back successfully. Architect acceptance remains pending and no successor execution started.
+- CLOSURE-002 runs from exact R1 head `ab10dde42ff24af4ec8f3e9929a03463ad9dd388` on `m2/dc-dev-021-m2-closure002-ecological-causality-lifecycle` with the isolated assay and required evidence complete.
+- CLOSURE-002 spatial and same-mean clutch transfer both occur at step `142`; uniform frozen traction occurs at `201`; motor-off occurs at `57`; spatial clutch ecological causality is not established.
+- Finite transfer delivers `29.17790976126448` each of N and F with exact world debit, delays observer starvation-collapse from step `9810` to `9943`, and changes downstream material and energy trajectories. No arm fissions.
+- Provisional CLOSURE-002 classification is `M2_FINITE_RESOURCE_LIFECYCLE_DEPENDENCE_QUALIFIED_BEHAVIORAL_CAUSALITY_NOT_ESTABLISHED`; resource-causal reproduction, mutable heritable phenotype, evolution re-entry, and autonomous resource acquisition remain unestablished.
 
 ## Last validation after adoption
 

@@ -1,0 +1,5 @@
+{
+  "required_order": "spatial organization -> trajectory difference -> contact -> transfer",
+  "spatial_vs_same_mean_first_step": 1,
+  "spatial_vs_uniform_first_step": 1
+}

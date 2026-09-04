@@ -128,3 +128,7 @@
 - `digital-protocell/examples/dcdev021_m2_closure001_impl.rs` — additive R1 finite-world closure assay with corrected transport, polygon geometry, lineage accounting, passive traction semantics, and conditional local polarity clutch; no production default change.
 - `digital-protocell/experiments/generated/dcdev021m2closure001r1/` — compact R1 authority, boundary, geometry, lineage, acquisition, clutch, closure, preservation, and qualification evidence.
 - `.github/workflows/dc-dev-021-m2-closure001-r1.yml` — exact-head Linux validation for R1 boundary corrections, conditional clutch ecology, preservation, governance, and artifact upload.
+- `digital-protocell/examples/dcdev021_m2_closure002.rs` — isolated CLOSURE-002 entry point for corrected clutch controls and resource-dependent lifecycle causality.
+- `digital-protocell/examples/dcdev021_m2_closure002_impl.rs` — CLOSURE-002 assay implementation with same-mean/frozen-traction controls, finite-world lifecycle, persistence/development/reproduction evidence, and no production behavior change.
+- `digital-protocell/experiments/generated/dcdev021m2closure002/` — compact CLOSURE-002 authority, control, lifecycle, material/energy closure, preservation, and qualification evidence.
+- `.github/workflows/dc-dev-021-m2-closure002.yml` — exact-head Linux validation for CLOSURE-002 controls, lifecycle causality, preservation, governance, and artifact upload.

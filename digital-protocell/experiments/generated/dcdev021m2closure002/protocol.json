@@ -1,0 +1,10 @@
+{
+  "assay_additive": true,
+  "directive": "DC-DEV-021-M2-CLOSURE-002-BEHAVIORAL-ECOLOGICAL-CAUSALITY-AND-RESOURCE-DEPENDENT-LIFECYCLE-001",
+  "lifecycle_steps": 12000,
+  "next_execution_started": false,
+  "no_parameter_search": true,
+  "observer_only": false,
+  "sealed_r1_preserved": true,
+  "starting_head": "ab10dde42ff24af4ec8f3e9929a03463ad9dd388"
+}

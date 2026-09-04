@@ -696,3 +696,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260903-dcdev021-m2-closure-finite-world-autonomous-ecology
 - Status at issuance: ISSUED
+
+## D-20260903-dcdev021-m2-closure002-ecological-causality-lifecycle
+
+- Issued: `2026-09-03T18:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-CLOSURE-002-BEHAVIORAL-ECOLOGICAL-CAUSALITY-AND-RESOURCE-DEPENDENT-LIFECYCLE-001`
+- Objective: Complete corrected clutch ecological causality and resource-dependent lifecycle validation from exact R1 head, including persistence/development/reproduction attribution without successor evolution work.
+- Scope: Same-mean clutch, uniform frozen traction, clutch-off, motor-off, transfer-disabled, zero-resource, and finite-resource arms; fixed 12,000-step normal lifecycle order; compact evidence, preservation, governance, and exact-head Linux validation.
+- Exclusions: R1 evidence rewrite, new migration mechanism, tuning, resource behavior input, observer controller, forced reproduction, evolution, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: `M2_BEHAVIORAL_ECOLOGICAL_CAUSALITY_AND_RESOURCE_REPRODUCTION_QUALIFIED`, `M2_BEHAVIORAL_ACQUISITION_LEAD_QUALIFIED_REPRODUCTIVE_COUPLING_NOT_ESTABLISHED`, `M2_FINITE_RESOURCE_LIFECYCLE_DEPENDENCE_QUALIFIED_BEHAVIORAL_CAUSALITY_NOT_ESTABLISHED`, `M2_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED_SENSORIMOTOR_CAUSALITY_NOT_ESTABLISHED`, `M2_SPATIAL_CLUTCH_ECOLOGICAL_CAUSALITY_NOT_ESTABLISHED`, `M2_LIFECYCLE_HORIZON_AUTHORITY_UNRESOLVED`, or `M2_CLOSURE002_INVALID` according to directive gates and exact-head validation.
+- Risk class: HIGH
+- Relationship: amends
+- Related directive: D-20260903-dcdev021-m2-closure001-r1-polarity-clutch-migration
+- Status at issuance: ISSUED

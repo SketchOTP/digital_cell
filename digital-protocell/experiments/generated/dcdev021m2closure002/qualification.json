@@ -1,0 +1,18 @@
+{
+  "architect_acceptance": "PENDING",
+  "autonomous_polarity": "QUALIFIED",
+  "classification": "M2_FINITE_RESOURCE_LIFECYCLE_DEPENDENCE_QUALIFIED_BEHAVIORAL_CAUSALITY_NOT_ESTABLISHED",
+  "directive": "DC-DEV-021-M2-CLOSURE-002-BEHAVIORAL-ECOLOGICAL-CAUSALITY-AND-RESOURCE-DEPENDENT-LIFECYCLE-001",
+  "environment_dependent_evolution": "NOT_ESTABLISHED",
+  "evolution_reentry_ready": "NO",
+  "finite_shared_world": "QUALIFIED",
+  "mutable_heritable_causal_phenotype": "UNRESOLVED",
+  "next_execution_started": false,
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "resource_supports_development": true,
+  "resource_supports_persistence": true,
+  "resource_supports_reproduction": false,
+  "separated_finite_acquisition_substrate": "QUALIFIED",
+  "spatial_clutch_ecological_causality": "NOT_ESTABLISHED",
+  "starting_head": "ab10dde42ff24af4ec8f3e9929a03463ad9dd388"
+}

@@ -1,0 +1,30 @@
+{
+  "lineage_events": [
+    {
+      "event": "first_contact",
+      "exposed_edges": 1,
+      "step": 142
+    },
+    {
+      "event": "first_transfer",
+      "f": 0.023895472077599435,
+      "n": 0.023895472077599435,
+      "step": 142
+    },
+    {
+      "event": "observer_nonviability",
+      "lineage": 1,
+      "reason": "starvation_collapse",
+      "step": 9943
+    }
+  ],
+  "resource_ids": [
+    "r0",
+    "r90",
+    "r180",
+    "r270"
+  ],
+  "reverse_order_equivalence": "PASS",
+  "shared_world_object_per_arm": true,
+  "world_debits_equal_delivery": true
+}
