@@ -54,11 +54,11 @@
 - CLOSURE-002 runs from exact R1 head `ab10dde42ff24af4ec8f3e9929a03463ad9dd388` on `m2/dc-dev-021-m2-closure002-ecological-causality-lifecycle` with the isolated assay and required evidence complete.
 - CLOSURE-002 spatial and same-mean clutch transfer both occur at step `142`; uniform frozen traction occurs at `201`; motor-off occurs at `57`; spatial clutch ecological causality is not established.
 - Finite transfer delivers `29.17790976126448` each of N and F with exact world debit, delays observer starvation-collapse from step `9810` to `9943`, and changes downstream material and energy trajectories. No arm fissions.
-- Provisional CLOSURE-002 classification is `M2_FINITE_RESOURCE_LIFECYCLE_DEPENDENCE_QUALIFIED_BEHAVIORAL_CAUSALITY_NOT_ESTABLISHED`; resource-causal reproduction, mutable heritable phenotype, evolution re-entry, and autonomous resource acquisition remain unestablished.
+- CLOSURE-002 classification is `M2_FINITE_RESOURCE_LIFECYCLE_DEPENDENCE_QUALIFIED_BEHAVIORAL_CAUSALITY_NOT_ESTABLISHED`; resource-causal reproduction, mutable heritable phenotype, evolution re-entry, and autonomous resource acquisition remain unestablished.
 
 ## Last validation after adoption
 
-- Command or check: `M2 closure exact-head Linux workflow 33779402628 on 328a68a4d18757b537f69c3d9e33cbd5099d6cd7; independent GitHub artifact ZIP digest sha256:3578659875dd9982f9b9a76f26664f42fcc8fb7042533eb6f303a6c28d14d01f; local release assay, evidence, and governance validation`
+- Command or check: `CLOSURE-002 exact-head Linux workflow 33834205287 on 36d8516c60af309c2aa39cb35a7daffef296ee80; independently downloaded artifact ZIP digest sha256:cb264b2926440a24a52ebb302be2fb8f3392d5317646a96666db970ed1e318a1; local release assay, focused preservation tests, and governance validation`
 - Result: `PASSED`
 
 ## Risks

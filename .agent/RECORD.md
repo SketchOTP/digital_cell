@@ -606,3 +606,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The proper same-mean clutch control transfers at the same first step as the spatial clutch, so the behavioral ecological causality claim is not established. Finite external N/F transfer remains exact and causally delays the accepted observer starvation-collapse while changing downstream material/energy trajectories, but no arm reaches unforced fission and resource-causal reproduction is not established.
 - Affected areas: isolated CLOSURE-002 assay controls, compact evidence, scoped workflow, and append-only governance; no frozen scientific runtime source, sealed R1 evidence, M1 provenance, or PR #44 modification.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE001-R1-POLARITY-CLUTCH-MIGRATION-FINAL
+
+## DEC-DCDEV021-M2-CLOSURE002-ECOLOGICAL-CAUSALITY-LIFECYCLE-FINAL
+
+- Date: 2026-09-04
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE002-ECOLOGICAL-CAUSALITY-LIFECYCLE-FINAL
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33834205287` passed on final result head `36d8516c60af309c2aa54cb35a7daffef296ee80`; independently downloaded artifact ZIP digest is `sha256:cb264b2926440a24a52ebb302be2fb8f3392d5317646a96666db970ed1e318a1`.
+- Rationale: CLOSURE-002's corrected same-mean clutch control transfers at the same first step as the spatial clutch, so spatial clutch behavioral ecological causality is not established. Finite external N/F transfer is exact, metabolically processed, delays observer starvation-collapse, and changes downstream material/energy trajectories; no arm reaches unforced fission, so resource-causal reproduction remains not established.
+- Affected areas: isolated CLOSURE-002 assay controls, compact evidence, scoped workflow, and append-only governance; no frozen scientific runtime source, sealed R1 evidence, M1 provenance, or PR #44 modification.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE002-ECOLOGICAL-CAUSALITY-LIFECYCLE

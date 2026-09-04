@@ -552,8 +552,8 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 
 - Learning ID: L-DCDEV021-M2-CLOSURE002-001
 - Date: 2026-09-03
-- Fact or lesson: The corrected CLOSURE-002 controls show spatial and same-mean clutch first transfer at the same step 142, so spatial clutch ecological causality is not established. Finite transfer is nevertheless exact, metabolically processed, changes downstream material/energy trajectories, and delays observer starvation-collapse from step 9810 to 9943; no arm fissions in the fixed 12,000-step lifecycle campaign.
+- Fact or lesson: The corrected CLOSURE-002 controls show spatial and same-mean clutch first transfer at the same step 142, so spatial clutch ecological causality is not established. Finite transfer is nevertheless exact, metabolically processed, changes downstream material/energy trajectories, and delays observer starvation-collapse from step 9810 to 9943; no arm fissions in the fixed 12,000-step lifecycle campaign. Exact-head workflow 33834205287 passed on 36d8516c60af309c2aa39cb35a7daffef296ee80 with independently downloaded artifact ZIP digest sha256:cb264b2926440a24a52ebb302be2fb8f3392d5317646a96666db970ed1e318a1.
 - Evidence location: `digital-protocell/examples/dcdev021_m2_closure002.rs`, `digital-protocell/examples/dcdev021_m2_closure002_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2closure002/`, and `.github/workflows/dc-dev-021-m2-closure002.yml`.
-- Confidence: PROVISIONAL
+- Confidence: VERIFIED
 - Scope: DC-DEV-021 M2 CLOSURE-002 behavioral ecological causality and resource-dependent lifecycle.
 - Supersedes learning: none
