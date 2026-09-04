@@ -1459,8 +1459,8 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Changed areas: isolated CLOSURE-002 assay controls, compact evidence, scoped workflow, and append-only governance; frozen scientific runtime and sealed R1 evidence remain unchanged.
 - Validation:
   - Local release assay, corrected lifecycle cadence, evidence manifest, conservation, and A-to-W closure - PASSED
-  - Exact-head Linux workflow `33834205287` on `36d8516c60af309c2aa39cb35a7daffef296ee80` - PASSED
-  - Independently downloaded artifact ZIP digest `sha256:cb264b2926440a24a52ebb302be2fb8f3392d5317646a96666db970ed1e318a1` - PASSED
+  - Exact-head Linux workflow `33834863157` on `b793cba15fa59659892dbcd3f791923a8c824e2e` - PASSED
+  - Independently downloaded artifact ZIP digest `sha256:a6df57d71198a84fdf99d14fcf2e6761f7fd9cf53b785c6537956d3e02636d9d` - PASSED
   - Notion append-only handoff/readback - PASSED
   - Architect review - NOT RUN
 - Remaining risks: resource-causal reproduction, mutable heritable phenotype, evolution re-entry, and behavioral clutch causality remain unestablished.

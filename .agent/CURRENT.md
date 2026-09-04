@@ -58,7 +58,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `CLOSURE-002 exact-head Linux workflow 33834205287 on 36d8516c60af309c2aa39cb35a7daffef296ee80; independently downloaded artifact ZIP digest sha256:cb264b2926440a24a52ebb302be2fb8f3392d5317646a96666db970ed1e318a1; local release assay, focused preservation tests, and governance validation`
+- Command or check: `CLOSURE-002 exact-head Linux workflow 33834863157 on b793cba15fa59659892dbcd3f791923a8c824e2e; independently downloaded artifact ZIP digest sha256:a6df57d71198a84fdf99d14fcf2e6761f7fd9cf53b785c6537956d3e02636d9d; local release assay, focused preservation tests, and governance validation`
 - Result: `PASSED`
 
 ## Risks
