@@ -597,3 +597,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 M2 CLOSURE-003-R1 continuous finite membrane feeding reproductive requalification.
 - Supersedes learning: none
+
+## L-DCDEV021-M2-CLOSURE003R1-002
+
+- Learning ID: L-DCDEV021-M2-CLOSURE003R1-002
+- Date: 2026-09-04
+- Fact or lesson: Exact-head Linux workflow `33929616188` passed on `d5eaf8890178d9ffec48ba11f5e15c69601b801f`; the independently downloaded artifact ZIP hashes to `sha256:a5edc6b916c0f6ad3a6549cb037d5224257cc88bd0b6e5e45dda92e4bd0d0440`. The bounded classification remains `M2_REPRODUCTIVE_RESOURCE_UNIT_QUALIFIED_SPATIAL_REPRODUCTION_NOT_ESTABLISHED`.
+- Evidence location: `digital-protocell/experiments/generated/dcdev021m2closure003r1/`, `digital-protocell/examples/dcdev021_m2_closure003r1.rs`, and `.github/workflows/dc-dev-021-m2-closure003r1.yml`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 M2 CLOSURE-003-R1 continuous finite membrane feeding reproductive requalification.
+- Supersedes learning: L-DCDEV021-M2-CLOSURE003R1-001

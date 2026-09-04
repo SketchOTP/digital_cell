@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-04T19:10:00-04:00`
+- Last updated: `2026-09-04T19:37:00-04:00`
 
 ## Active state after adoption
 
@@ -12,9 +12,9 @@
 - Objective: Requalify reproductive material demand with finite whole-membrane feeding, then conditionally test resource-causal spatial reproduction without evolution execution.
 - Current status: `IN_PROGRESS`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `CLOSURE-003-R1 whole-membrane calibration and conditional spatial lifecycle complete locally; exact-head validation pending`
+- Current phase: `CLOSURE-003-R1 whole-membrane calibration and conditional spatial lifecycle validated at exact pushed HEAD; Architect review pending`
 - Expected or actual touched areas: `isolated CLOSURE-003-R1 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `run exact-head Linux validation, verify artifact, update Notion, then Architect review only`
+- Immediate next action: `update Notion append-only with exact final-head authority, then Architect review only`
 
 ## Temporary task-relevant facts
 
@@ -60,11 +60,12 @@
 - CLOSURE-003 classification is `M2_REPRODUCTIVE_RESOURCE_BUDGET_AUTHORITY_UNRESOLVED`; finite reproductive, descendant, heritable-phenotype, and evolution evidence are not reached. CLOSURE-002 persistence/development claims remain preserved rather than re-evaluated.
 - CLOSURE-003 exact-head Linux workflow `33926056946` passed on final result head `84b8ea8648de55c0114fe7cf4c12f74082d7ac0a`; independently downloaded artifact ZIP digest `sha256:8d6746fb975e13deaf52e35c6d797d237d87137bebde8a5657da1a4a789a5f9a`. Architect acceptance remains pending and no successor execution started.
 - CLOSURE-003-R1 starts exactly at `987f565530c201c38072c4aba54079545f79233b` on `m2/dc-dev-021-m2-closure003r1-finite-membrane-reproductive-requalification`; the whole-membrane calibration fissions both accepted daughters at fixed capacity 4096, deriving N/F unit `1021.692995326332` each, while the conditional finite spatial ecology produces zero fissions.
+- CLOSURE-003-R1 exact-head Linux workflow `33929616188` passed on pushed head `d5eaf8890178d9ffec48ba11f5e15c69601b801f`; the independently downloaded artifact ZIP digest is `sha256:a5edc6b916c0f6ad3a6549cb037d5224257cc88bd0b6e5e45dda92e4bd0d0440`.
 
 ## Last validation after adoption
 
-- Command or check: `CLOSURE-003-R1 local release assay and evidence generation`
-- Result: `NOT RUN`
+- Command or check: `CLOSURE-003-R1 exact-head Linux workflow and artifact verification`
+- Result: `PASSED`
 
 ## Risks
 
@@ -74,7 +75,7 @@
 
 ## Blockers
 
-- Exact-head CLOSURE-003-R1 Linux validation, artifact verification, Notion readback, and Architect review remain pending; no successor is authorized.
+- Notion append-only readback and Architect review remain pending; no successor is authorized.
 
 ## Pending decisions
 
@@ -85,4 +86,4 @@
 
 Allowed adopted-project statuses: `IDLE`, `PLANNING`, `IN_PROGRESS`, `VALIDATING`, `BLOCKED`, `COMPLETE`. `CURRENT.md` is mutable and never replaces historical ledgers. Reset it to `IDLE` when an adopted task closes.
 
-The active CLOSURE-003-R1 task is awaiting exact-head validation and Architect acceptance; no successor execution has started.
+The active CLOSURE-003-R1 task is awaiting Architect acceptance; no successor execution has started.

@@ -1536,3 +1536,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: exact-head validation may identify workflow or preservation defects; resource-causal reproduction, descendant ecological heredity, and evolution re-entry remain unestablished.
 - Blockers: exact-head validation, artifact verification, Notion readback, and Architect review only.
 - Follow-up directive: none
+
+## D-20260904-dcdev021-m2-closure003r1-finite-membrane-reproductive-requalification - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE003R1-FINITE-MEMBRANE-REPRODUCTIVE-REQUALIFICATION-FINAL`
+- Supersedes outcome: `OUT-DCDEV021-M2-CLOSURE003R1-FINITE-MEMBRANE-REPRODUCTIVE-REQUALIFICATION`
+- Closed: `2026-09-04T19:37:00-04:00`
+- Acceptance: `MET`
+- Summary: Exact-head validation confirms that fixed-capacity whole-membrane feeding makes both accepted daughters reach natural fission and establishes the empirical reproductive unit at `1021.692995326332` N/F each. The conditional finite spatial ecology, transfer-disabled control, and zero-resource control produce zero fissions; the classification remains `M2_REPRODUCTIVE_RESOURCE_UNIT_QUALIFIED_SPATIAL_REPRODUCTION_NOT_ESTABLISHED`.
+- Changed areas: additive CLOSURE-003-R1 assay/evidence/workflow and append-only governance; no frozen scientific runtime, sealed CLOSURE-003 evidence, M1 provenance, fission source, or PR #44 modification.
+- Validation:
+  - Local release assay, corrected lifecycle classification, evidence generation, and governance validation - PASSED
+  - Exact-head Linux workflow `33929616188` on `d5eaf8890178d9ffec48ba11f5e15c69601b801f` - PASSED
+  - Independently downloaded artifact ZIP digest `sha256:a5edc6b916c0f6ad3a6549cb037d5224257cc88bd0b6e5e45dda92e4bd0d0440` - PASSED
+  - Notion append-only handoff/readback - PENDING
+  - Architect acceptance - PENDING
+- Remaining risks: resource-causal spatial reproduction, descendant ecological continuity, heritable ecological phenotype, and evolution re-entry remain unestablished.
+- Blockers: Notion readback and Architect review only; no successor work is authorized.
+- Follow-up directive: none

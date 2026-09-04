@@ -656,3 +656,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: CLOSURE-003's static direct-contact calibration lost spatial exposure before fission. The authorized correction presents the selected frozen N/F boundary to all membrane segments through an assay-only finite debit adapter, then conditionally reconnects the measured unit to the spatial ecology.
 - Affected areas: additive CLOSURE-003-R1 assay/evidence/workflow and append-only governance; no frozen M1 biology, sealed CLOSURE-003 evidence, fission source, or PR #44 modification.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE003-REPRODUCTIVE-ECOLOGY-HERITABLE-PHENOTYPE-FINAL-HEAD-REVALIDATION
+
+## DEC-DCDEV021-M2-CLOSURE003R1-FINITE-MEMBRANE-REPRODUCTIVE-REQUALIFICATION-FINAL
+
+- Date: 2026-09-04
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE003R1-FINITE-MEMBRANE-REPRODUCTIVE-REQUALIFICATION-FINAL
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33929616188` passed on `d5eaf8890178d9ffec48ba11f5e15c69601b801f`; independently downloaded artifact ZIP digest is `sha256:a5edc6b916c0f6ad3a6549cb037d5224257cc88bd0b6e5e45dda92e4bd0d0440`.
+- Rationale: Fixed-capacity whole-membrane calibration establishes the empirical N/F reproductive unit at `1021.692995326332` each. The conditional finite spatial ecology and transfer-disabled/zero-resource controls all produce zero fissions, so resource-causal spatial reproduction, descendant ecological continuity, heritable ecological phenotype, and evolution re-entry remain unestablished.
+- Affected areas: additive CLOSURE-003-R1 assay/evidence/workflow and append-only governance; no frozen scientific runtime, sealed CLOSURE-003 evidence, fission source, M1 provenance, or PR #44 modification.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE003R1-FINITE-MEMBRANE-REPRODUCTIVE-REQUALIFICATION
