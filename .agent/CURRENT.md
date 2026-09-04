@@ -58,11 +58,11 @@
 - CLOSURE-003 starts exactly at accepted CLOSURE-002 head `4817a9ab5d4c91762957c6c1cb27b11acbe6bd57` on `m2/dc-dev-021-m2-closure003-reproductive-ecology-heritable-phenotype`.
 - CLOSURE-003 found no complete D-088 external N/F demand ledger. The one permitted direct-contact calibration per accepted daughter authority transferred finite N/F with conservation closure but neither daughter reached unforced physical fission before the fixed 12,000-step boundary; no reproductive resource unit is established.
 - CLOSURE-003 classification is `M2_REPRODUCTIVE_RESOURCE_BUDGET_AUTHORITY_UNRESOLVED`; finite reproductive, descendant, heritable-phenotype, and evolution evidence are not reached. CLOSURE-002 persistence/development claims remain preserved rather than re-evaluated.
-- CLOSURE-003 exact-head Linux workflow `33925537991` passed on result head `65809948b6669fe07ef12fc79d34fe56e3915ea8`; independently downloaded artifact ZIP digest `sha256:22e8a6539fca792aa7623cc93035301804e49bc7b6672c876b6ee4d581dee57e`. Architect acceptance remains pending and no successor execution started.
+- CLOSURE-003 exact-head Linux workflow `33926056946` passed on final result head `84b8ea8648de55c0114fe7cf4c12f74082d7ac0a`; independently downloaded artifact ZIP digest `sha256:8d6746fb975e13deaf52e35c6d797d237d87137bebde8a5657da1a4a789a5f9a`. Architect acceptance remains pending and no successor execution started.
 
 ## Last validation after adoption
 
-- Command or check: `CLOSURE-003 exact-head Linux workflow 33925537991 on 65809948b6669fe07ef12fc79d34fe56e3915ea8; independently downloaded artifact ZIP digest sha256:22e8a6539fca792aa7623cc93035301804e49bc7b6672c876b6ee4d581dee57e; local release assay, focused preservation tests, and governance validation`
+- Command or check: `CLOSURE-003 exact-head Linux workflow 33926056946 on 84b8ea8648de55c0114fe7cf4c12f74082d7ac0a; independently downloaded artifact ZIP digest sha256:8d6746fb975e13deaf52e35c6d797d237d87137bebde8a5657da1a4a789a5f9a; local release assay, focused preservation tests, and governance validation`
 - Result: `PASSED`
 
 ## Risks

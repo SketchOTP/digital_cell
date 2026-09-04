@@ -38,6 +38,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-021 M2 CLOSURE-003 resource-sufficient reproductive ecology and heritable-phenotype qualification.
 - Supersedes learning: L-DCDEV021-M2-CLOSURE003-001
 
+## L-DCDEV021-M2-CLOSURE003-003
+
+- Learning ID: L-DCDEV021-M2-CLOSURE003-003
+- Date: 2026-09-04
+- Fact or lesson: Final governance HEAD `84b8ea8648de55c0114fe7cf4c12f74082d7ac0a` was independently validated by exact-head Linux workflow `33926056946`; the downloaded artifact ZIP hashes to `sha256:8d6746fb975e13deaf52e35c6d797d237d87137bebde8a5657da1a4a789a5f9a`. The CLOSURE-003 classification remains `M2_REPRODUCTIVE_RESOURCE_BUDGET_AUTHORITY_UNRESOLVED`; no reproductive unit, conditional lifecycle, descendant continuity, heritable ecological phenotype, or evolution re-entry was reached.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_closure003.rs`, `digital-protocell/examples/dcdev021_m2_closure003_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2closure003/`, and `.github/workflows/dc-dev-021-m2-closure003.yml`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 M2 CLOSURE-003 resource-sufficient reproductive ecology and heritable-phenotype qualification.
+- Supersedes learning: L-DCDEV021-M2-CLOSURE003-002
+
 ## L-DCDEV021-M2-CLOSURE001-R1-001
 
 - Learning ID: L-DCDEV021-M2-CLOSURE001-R1-001

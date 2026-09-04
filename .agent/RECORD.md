@@ -636,3 +636,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The bounded direct-contact calibration transferred finite N/F with exact world debit, but neither accepted daughter authority reached unforced physical fission within the fixed calibration. Since D-088 lacks a complete external material-demand ledger, no reproductive resource unit can be defined without guessing or outcome-driven capacity expansion. The final classification is `M2_REPRODUCTIVE_RESOURCE_BUDGET_AUTHORITY_UNRESOLVED`; conditional reproductive, heritability, and evolution evidence remain unreached.
 - Affected areas: additive CLOSURE-003 assay/evidence/workflow and append-only governance; no frozen M1 biology, sealed CLOSURE-002 evidence, fission source, or PR #44 modification.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE003-REPRODUCTIVE-ECOLOGY-HERITABLE-PHENOTYPE
+
+## DEC-DCDEV021-M2-CLOSURE003-REPRODUCTIVE-ECOLOGY-HERITABLE-PHENOTYPE-FINAL-HEAD-REVALIDATION
+
+- Date: 2026-09-04
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE003-REPRODUCTIVE-ECOLOGY-HERITABLE-PHENOTYPE-FINAL-HEAD-REVALIDATION
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33926056946` passed on final result head `84b8ea8648de55c0114fe7cf4c12f74082d7ac0a`; independently downloaded artifact ZIP digest is `sha256:8d6746fb975e13deaf52e35c6d797d237d87137bebde8a5657da1a4a789a5f9a`.
+- Rationale: Final governance was reconciled to the actual pushed HEAD and revalidated. The bounded direct-contact calibration still transfers finite N/F with exact closure, but neither accepted daughter authority reaches unforced physical fission within the fixed calibration. The classification remains `M2_REPRODUCTIVE_RESOURCE_BUDGET_AUTHORITY_UNRESOLVED`; no reproductive unit or downstream reproductive/evolution evidence is established.
+- Affected areas: append-only final-head governance reconciliation only; no frozen M1 biology, sealed CLOSURE-002 evidence, fission source, or PR #44 modification.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE003-REPRODUCTIVE-ECOLOGY-HERITABLE-PHENOTYPE-FINAL
