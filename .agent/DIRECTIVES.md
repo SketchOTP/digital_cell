@@ -710,3 +710,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260903-dcdev021-m2-closure001-r1-polarity-clutch-migration
 - Status at issuance: ISSUED
+
+## D-20260904-dcdev021-m2-closure003-reproductive-ecology-heritable-phenotype
+
+- Issued: `2026-09-04T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-CLOSURE-003-RESOURCE-SUFFICIENT-REPRODUCTIVE-ECOLOGY-AND-HERITABLE-PHENOTYPE-QUALIFICATION-001`
+- Objective: Derive a finite reproductive resource budget from accepted D-088/frozen-physiology demand and, only if the budget authority is established, execute the bounded finite-resource reproductive lifecycle and descendant heritable-phenotype audit.
+- Scope: Exact CLOSURE-002 authority, one permitted direct-contact calibration per accepted daughter authority if the D-088 ledger is incomplete, finite-world lifecycle conditional on calibrated demand, compact evidence, preservation, governance, and exact-head Linux validation.
+- Exclusions: Guessing or increasing capacity, outcome-driven calibration, forced fission, locomotion or growth tuning, evolution/mutation/selection, production changes, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: `M2_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED_HERITABLE_ECOLOGICAL_STATE_UNRESOLVED`, `M2_FINITE_RESOURCE_REPRODUCTIVE_OPPORTUNITY_QUALIFIED_FISSION_NOT_ESTABLISHED`, `M2_REPRODUCTIVE_RESOURCE_BUDGET_AUTHORITY_UNRESOLVED`, or invalid according to the directive gates and exact-head validation.
+- Risk class: HIGH
+- Relationship: amends
+- Related directive: D-20260903-dcdev021-m2-closure002-ecological-causality-lifecycle
+- Status at issuance: ISSUED

@@ -11,7 +11,7 @@
 - Purpose: A self-maintaining digital protocell developing toward a persistent embodied digital lifeform.
 - Repository root: `/home/sketch/Projects/digital_cell-m2-entry001`
 - Verified remote: `git@github.com:SketchOTP/digital_cell.git`
-- Maturity or current phase: M1 closed/frozen; M2 ENTRY-001 actuator, ENTRY-005 target-free intrinsic exploration, ENTRY-011 metabolically live in-contact composition, ENTRY-014 reference transfer, ENTRY-015 polarity-to-actuator interface, ENTRY-016 founder asymmetry result, and ENTRY-017 topology boundary are Architect accepted. ENTRY-018 is the active isolated native material-ring polarity transfer audit. Autonomous polarity initiation and resource acquisition remain not established.
+- Maturity or current phase: M1 closed/frozen; M2 locomotion, polarity, finite-resource, and lifecycle boundaries through CLOSURE-002 are accepted. CLOSURE-003 is the active isolated reproductive-resource-budget and heritable-phenotype audit. Autonomous resource-causal reproduction, mutable heritable phenotype, and evolution re-entry remain not established.
 
 ## Languages and runtimes
 

@@ -18,6 +18,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-021 ENTRY-015 polarity actuator interface feasibility audit
 - Supersedes learning: none
 
+## L-DCDEV021-M2-CLOSURE003-001
+
+- Learning ID: L-DCDEV021-M2-CLOSURE003-001
+- Date: 2026-09-04
+- Fact or lesson: CLOSURE-003 found no complete D-088 external N/F material-demand ledger. The authorized fallback of one direct-contact calibration per accepted daughter authority transferred finite N/F with exact world debit, but neither daughter reached unforced physical fission within the fixed 12,000-step calibration. Therefore no reproductive resource unit can be defined without guessing or outcome-driven capacity expansion; the bounded classification is `M2_REPRODUCTIVE_RESOURCE_BUDGET_AUTHORITY_UNRESOLVED`.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_closure003.rs`, `digital-protocell/examples/dcdev021_m2_closure003_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2closure003/`, and `.github/workflows/dc-dev-021-m2-closure003.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 M2 CLOSURE-003 resource-sufficient reproductive ecology and heritable-phenotype qualification.
+- Supersedes learning: none
+
 ## L-DCDEV021-M2-CLOSURE001-R1-001
 
 - Learning ID: L-DCDEV021-M2-CLOSURE001-R1-001

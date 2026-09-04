@@ -616,3 +616,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: CLOSURE-002's corrected same-mean clutch control transfers at the same first step as the spatial clutch, so spatial clutch behavioral ecological causality is not established. Finite external N/F transfer is exact, metabolically processed, delays observer starvation-collapse, and changes downstream material/energy trajectories; no arm reaches unforced fission, so resource-causal reproduction remains not established.
 - Affected areas: isolated CLOSURE-002 assay controls, compact evidence, scoped workflow, and append-only governance; no frozen scientific runtime source, sealed R1 evidence, M1 provenance, or PR #44 modification.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE002-ECOLOGICAL-CAUSALITY-LIFECYCLE
+
+## DEC-DCDEV021-M2-CLOSURE003-REPRODUCTIVE-ECOLOGY-HERITABLE-PHENOTYPE
+
+- Date: 2026-09-04
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE003-REPRODUCTIVE-ECOLOGY-HERITABLE-PHENOTYPE
+- Status: ACTIVE
+- Decision or event: CLOSURE-003 started from exact accepted CLOSURE-002 head `4817a9ab5d4c91762957c6c1cb27b11acbe6bd57` on `m2/dc-dev-021-m2-closure003-reproductive-ecology-heritable-phenotype`.
+- Rationale: CLOSURE-002 has no complete D-088 external N/F demand ledger, so the directive permits one direct-contact calibration per accepted daughter authority. Both calibrations transfer finite N/F and preserve world/material closure but do not reach unforced fission; the assay must stop without defining a reproductive unit or running conditional lifecycle/evolution work.
+- Affected areas: additive CLOSURE-003 assay/evidence/workflow and append-only governance; no frozen M1 biology, sealed CLOSURE-002 evidence, fission source, or PR #44 modification.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE002-ECOLOGICAL-CAUSALITY-LIFECYCLE-FINAL

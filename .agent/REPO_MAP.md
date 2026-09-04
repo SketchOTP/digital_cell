@@ -132,3 +132,7 @@
 - `digital-protocell/examples/dcdev021_m2_closure002_impl.rs` — CLOSURE-002 assay implementation with same-mean/frozen-traction controls, finite-world lifecycle, persistence/development/reproduction evidence, and no production behavior change.
 - `digital-protocell/experiments/generated/dcdev021m2closure002/` — compact CLOSURE-002 authority, control, lifecycle, material/energy closure, preservation, and qualification evidence.
 - `.github/workflows/dc-dev-021-m2-closure002.yml` — exact-head Linux validation for CLOSURE-002 controls, lifecycle causality, preservation, governance, and artifact upload.
+- `digital-protocell/examples/dcdev021_m2_closure003.rs` — isolated CLOSURE-003 entry point for reproductive resource-budget calibration and conditional lifecycle evidence.
+- `digital-protocell/examples/dcdev021_m2_closure003_impl.rs` — CLOSURE-003 assay implementation with one permitted direct-contact calibration per daughter authority and a hard stop when unforced fission does not establish a resource unit; no production behavior change.
+- `digital-protocell/experiments/generated/dcdev021m2closure003/` — compact CLOSURE-003 authority, calibration, conditional lifecycle, closure, preservation, and qualification evidence.
+- `.github/workflows/dc-dev-021-m2-closure003.yml` — exact-head Linux validation for CLOSURE-003 budget authority, calibration stop boundary, preservation, governance, and artifact upload.

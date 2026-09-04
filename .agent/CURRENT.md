@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-03T18:30:00-04:00`
+- Last updated: `2026-09-04T00:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260903-dcdev021-m2-closure002-ecological-causality-lifecycle`
-- External directive ID: `DC-DEV-021-M2-CLOSURE-002-BEHAVIORAL-ECOLOGICAL-CAUSALITY-AND-RESOURCE-DEPENDENT-LIFECYCLE-001`
-- Objective: Complete the finite-world ecological causality and resource-dependent lifecycle audit with corrected clutch controls and a fixed 12,000-step normal lifecycle campaign.
-- Current status: `COMPLETE`
+- Local directive ID: `D-20260904-dcdev021-m2-closure003-reproductive-ecology-heritable-phenotype`
+- External directive ID: `DC-DEV-021-M2-CLOSURE-003-RESOURCE-SUFFICIENT-REPRODUCTIVE-ECOLOGY-AND-HERITABLE-PHENOTYPE-QUALIFICATION-001`
+- Objective: Establish a defensible finite reproductive resource budget from accepted physical demand, then run the bounded reproductive ecology and heritable-phenotype audit without evolution execution.
+- Current status: `IN_PROGRESS`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `CLOSURE-002 bounded ecological/lifecycle audit complete; Architect review pending`
-- Expected or actual touched areas: `isolated CLOSURE-002 assay controls, lifecycle evidence, scoped workflow, append-only governance`
-- Immediate next action: `Architect review only; do not start successor execution`
+- Current phase: `CLOSURE-003 direct-contact budget calibration executed; reproductive budget authority unresolved pending exact-head validation`
+- Expected or actual touched areas: `isolated CLOSURE-003 assay, compact evidence, scoped workflow, append-only governance`
+- Immediate next action: `complete exact-head Linux validation; do not infer a resource unit or start successor execution`
 
 ## Temporary task-relevant facts
 
@@ -55,6 +55,9 @@
 - CLOSURE-002 spatial and same-mean clutch transfer both occur at step `142`; uniform frozen traction occurs at `201`; motor-off occurs at `57`; spatial clutch ecological causality is not established.
 - Finite transfer delivers `29.17790976126448` each of N and F with exact world debit, delays observer starvation-collapse from step `9810` to `9943`, and changes downstream material and energy trajectories. No arm fissions.
 - CLOSURE-002 classification is `M2_FINITE_RESOURCE_LIFECYCLE_DEPENDENCE_QUALIFIED_BEHAVIORAL_CAUSALITY_NOT_ESTABLISHED`; resource-causal reproduction, mutable heritable phenotype, evolution re-entry, and autonomous resource acquisition remain unestablished.
+- CLOSURE-003 starts exactly at accepted CLOSURE-002 head `4817a9ab5d4c91762957c6c1cb27b11acbe6bd57` on `m2/dc-dev-021-m2-closure003-reproductive-ecology-heritable-phenotype`.
+- CLOSURE-003 found no complete D-088 external N/F demand ledger. The one permitted direct-contact calibration per accepted daughter authority transferred finite N/F with conservation closure but neither daughter reached unforced physical fission before the fixed 12,000-step boundary; no reproductive resource unit is established.
+- CLOSURE-003 classification is `M2_REPRODUCTIVE_RESOURCE_BUDGET_AUTHORITY_UNRESOLVED`; finite reproductive, descendant, heritable-phenotype, and evolution evidence are not reached. CLOSURE-002 persistence/development claims remain preserved rather than re-evaluated.
 
 ## Last validation after adoption
 

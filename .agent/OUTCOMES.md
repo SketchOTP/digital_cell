@@ -1466,3 +1466,20 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: resource-causal reproduction, mutable heritable phenotype, evolution re-entry, and behavioral clutch causality remain unestablished.
 - Blockers: Architect review only; no successor work is authorized.
 - Follow-up directive: none
+
+## D-20260904-dcdev021-m2-closure003-reproductive-ecology-heritable-phenotype - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE003-REPRODUCTIVE-ECOLOGY-HERITABLE-PHENOTYPE`
+- Supersedes outcome: `OUT-DCDEV021-M2-CLOSURE002-ECOLOGICAL-CAUSALITY-LIFECYCLE`
+- Closed: `2026-09-04T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The bounded CLOSURE-003 assay finds no complete D-088 external N/F demand ledger and executes the directive's single direct-contact calibration for each accepted daughter authority. Both calibrations transfer finite material with closure but neither reaches unforced physical fission, so no reproductive resource unit is established and the conditional finite reproductive lifecycle is not reached.
+- Changed areas: isolated CLOSURE-003 assay/evidence/workflow and append-only governance; no frozen scientific runtime, sealed CLOSURE-002 evidence, M1 provenance, or PR #44 modification.
+- Validation:
+  - Local release assay, compact evidence generation, and governance checks - PASSED
+  - Exact-head Linux workflow - PENDING
+  - Artifact upload and independent digest - PENDING
+  - Architect acceptance - PENDING
+- Remaining risks: resource-causal reproduction, descendant continuity, heritable ecological phenotype, and evolution re-entry remain unestablished; no capacity increase, forced fission, or successor execution is authorized.
+- Blockers: exact-head validation and Architect review only.
+- Follow-up directive: none
