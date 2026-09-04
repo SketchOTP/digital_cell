@@ -626,3 +626,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: CLOSURE-002 has no complete D-088 external N/F demand ledger, so the directive permits one direct-contact calibration per accepted daughter authority. Both calibrations transfer finite N/F and preserve world/material closure but do not reach unforced fission; the assay must stop without defining a reproductive unit or running conditional lifecycle/evolution work.
 - Affected areas: additive CLOSURE-003 assay/evidence/workflow and append-only governance; no frozen M1 biology, sealed CLOSURE-002 evidence, fission source, or PR #44 modification.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE002-ECOLOGICAL-CAUSALITY-LIFECYCLE-FINAL
+
+## DEC-DCDEV021-M2-CLOSURE003-REPRODUCTIVE-ECOLOGY-HERITABLE-PHENOTYPE-FINAL
+
+- Date: 2026-09-04
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE003-REPRODUCTIVE-ECOLOGY-HERITABLE-PHENOTYPE-FINAL
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33925537991` passed on result head `65809948b6669fe07ef12fc79d34fe56e3915ea8`; independently downloaded artifact ZIP digest `sha256:22e8a6539fca792aa7623cc93035301804e49bc7b6672c876b6ee4d581dee57e`.
+- Rationale: The bounded direct-contact calibration transferred finite N/F with exact world debit, but neither accepted daughter authority reached unforced physical fission within the fixed calibration. Since D-088 lacks a complete external material-demand ledger, no reproductive resource unit can be defined without guessing or outcome-driven capacity expansion. The final classification is `M2_REPRODUCTIVE_RESOURCE_BUDGET_AUTHORITY_UNRESOLVED`; conditional reproductive, heritability, and evolution evidence remain unreached.
+- Affected areas: additive CLOSURE-003 assay/evidence/workflow and append-only governance; no frozen M1 biology, sealed CLOSURE-002 evidence, fission source, or PR #44 modification.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE003-REPRODUCTIVE-ECOLOGY-HERITABLE-PHENOTYPE

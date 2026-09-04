@@ -28,6 +28,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-021 M2 CLOSURE-003 resource-sufficient reproductive ecology and heritable-phenotype qualification.
 - Supersedes learning: none
 
+## L-DCDEV021-M2-CLOSURE003-002
+
+- Learning ID: L-DCDEV021-M2-CLOSURE003-002
+- Date: 2026-09-04
+- Fact or lesson: Exact-head Linux workflow `33925537991` passed on `65809948b6669fe07ef12fc79d34fe56e3915ea8` with independently downloaded artifact ZIP digest `sha256:22e8a6539fca792aa7623cc93035301804e49bc7b6672c876b6ee4d581dee57e`. The authorized one-calibration-per-daughter fallback transfers finite N/F with closure but neither accepted daughter authority reaches unforced fission in the fixed 12,000-step calibration, so the reproductive resource budget remains unresolved and no conditional lifecycle or evolution work is reached.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_closure003.rs`, `digital-protocell/examples/dcdev021_m2_closure003_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2closure003/`, and `.github/workflows/dc-dev-021-m2-closure003.yml`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 M2 CLOSURE-003 resource-sufficient reproductive ecology and heritable-phenotype qualification.
+- Supersedes learning: L-DCDEV021-M2-CLOSURE003-001
+
 ## L-DCDEV021-M2-CLOSURE001-R1-001
 
 - Learning ID: L-DCDEV021-M2-CLOSURE001-R1-001

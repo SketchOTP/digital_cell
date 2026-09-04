@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-04T00:00:00-04:00`
+- Last updated: `2026-09-04T18:31:19-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20260904-dcdev021-m2-closure003-reproductive-ecology-heritable-phenotype`
 - External directive ID: `DC-DEV-021-M2-CLOSURE-003-RESOURCE-SUFFICIENT-REPRODUCTIVE-ECOLOGY-AND-HERITABLE-PHENOTYPE-QUALIFICATION-001`
 - Objective: Establish a defensible finite reproductive resource budget from accepted physical demand, then run the bounded reproductive ecology and heritable-phenotype audit without evolution execution.
-- Current status: `IN_PROGRESS`
+- Current status: `COMPLETE`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `CLOSURE-003 direct-contact budget calibration executed; reproductive budget authority unresolved pending exact-head validation`
+- Current phase: `CLOSURE-003 direct-contact budget calibration and exact-head validation complete; Architect review pending`
 - Expected or actual touched areas: `isolated CLOSURE-003 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `complete exact-head Linux validation; do not infer a resource unit or start successor execution`
+- Immediate next action: `Architect review only; do not infer a resource unit or start successor execution`
 
 ## Temporary task-relevant facts
 
@@ -58,10 +58,11 @@
 - CLOSURE-003 starts exactly at accepted CLOSURE-002 head `4817a9ab5d4c91762957c6c1cb27b11acbe6bd57` on `m2/dc-dev-021-m2-closure003-reproductive-ecology-heritable-phenotype`.
 - CLOSURE-003 found no complete D-088 external N/F demand ledger. The one permitted direct-contact calibration per accepted daughter authority transferred finite N/F with conservation closure but neither daughter reached unforced physical fission before the fixed 12,000-step boundary; no reproductive resource unit is established.
 - CLOSURE-003 classification is `M2_REPRODUCTIVE_RESOURCE_BUDGET_AUTHORITY_UNRESOLVED`; finite reproductive, descendant, heritable-phenotype, and evolution evidence are not reached. CLOSURE-002 persistence/development claims remain preserved rather than re-evaluated.
+- CLOSURE-003 exact-head Linux workflow `33925537991` passed on result head `65809948b6669fe07ef12fc79d34fe56e3915ea8`; independently downloaded artifact ZIP digest `sha256:22e8a6539fca792aa7623cc93035301804e49bc7b6672c876b6ee4d581dee57e`. Architect acceptance remains pending and no successor execution started.
 
 ## Last validation after adoption
 
-- Command or check: `CLOSURE-002 exact-head Linux workflow 33834863157 on b793cba15fa59659892dbcd3f791923a8c824e2e; independently downloaded artifact ZIP digest sha256:a6df57d71198a84fdf99d14fcf2e6761f7fd9cf53b785c6537956d3e02636d9d; local release assay, focused preservation tests, and governance validation`
+- Command or check: `CLOSURE-003 exact-head Linux workflow 33925537991 on 65809948b6669fe07ef12fc79d34fe56e3915ea8; independently downloaded artifact ZIP digest sha256:22e8a6539fca792aa7623cc93035301804e49bc7b6672c876b6ee4d581dee57e; local release assay, focused preservation tests, and governance validation`
 - Result: `PASSED`
 
 ## Risks
