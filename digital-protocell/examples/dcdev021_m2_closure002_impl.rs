@@ -211,7 +211,7 @@ fn closure002_run(
     for agent in &mut agents {
         agent.mesh.contract_version = MeshContractVersion::MaturationCoupledV4;
     }
-    let mut world = closure002_world(body, zero_resource);
+    let mut world = closure002_world(_body, zero_resource);
     world.transfer_enabled = transfer_enabled;
     let mut result = Closure002Run {
         arm: arm.to_string(),
