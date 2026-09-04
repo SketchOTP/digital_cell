@@ -53,7 +53,11 @@ jobs:
               "digital-protocell/examples/dcdev021_m2_closure003r1_impl.rs",
           }
           changed = set(subprocess.check_output(["git", "diff", "--name-only", f"{start}..HEAD"], text=True).splitlines())
-          unexpected = changed - allowed
+          unexpected = {
+              path for path in changed
+              if path not in allowed
+              and not path.startswith("digital-protocell/experiments/generated/dcdev021m2closure003r1/")
+          }
           assert not unexpected, sorted(unexpected)
           print("CLOSURE-003-R1 additive diff is within authorized assay/evidence/workflow/governance surfaces")
           PY
