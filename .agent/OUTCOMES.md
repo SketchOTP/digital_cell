@@ -2026,3 +2026,12 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Assimilation remains `INVESTIGATE_NOT_ACCEPTED`; no new material-flow
   mechanism is implemented by this audit.
 - Independent Architect acceptance: `PENDING`.
+
+## D-20260905-dcdev021-goal-unified-flux-budget-audit-r7-authority - COMPLETE PROVISIONAL
+
+- Outcome ID: `OUT-DCDEV021-GOAL-UNIFIED-FLUX-BUDGET-AUDIT-R7-AUTHORITY`.
+- Result head: `dcb02ecadf89ddc87faa46e5a90fde115d072f4b`.
+- Exact-head Linux CI: `33988739683` passed.
+- Artifact digest: `sha256:772de052cb2baad489aee16bd1a8ad82faad87552745fbb0b784e9764184b41b`.
+- Goal-agent provisional disposition: `GOAL_AGENT_PROVISIONALLY_ACCEPTED` for the audit evidence only. The classification remains `GOAL_AGENT_PROVISIONAL_FLUX_LEDGER_FIRST_DIVERGENCE_IDENTIFIED`; assimilation is `INVESTIGATE_NOT_ACCEPTED` and independent Architect acceptance is `PENDING`.
+- Preservation: focused chemistry, D-088, D-091, geometry, and runtime checkpoint validation passed; repository-wide governance remains a known pre-existing baseline failure outside this increment.

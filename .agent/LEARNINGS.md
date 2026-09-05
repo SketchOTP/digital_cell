@@ -736,3 +736,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: Goal-mode unified flux-budget and preservation audit R7.
 - Supersedes learning: none
+
+## L-DCDEV021-GOAL-FLUX-BUDGET-R7-AUTHORITY-001
+
+- Learning ID: L-DCDEV021-GOAL-FLUX-BUDGET-R7-AUTHORITY-001
+- Date: 2026-09-05
+- Fact or lesson: The unified flux-budget audit passed exact-head Linux CI `33988739683` on `dcb02ecadf89ddc87faa46e5a90fde115d072f4b`; the independently downloaded evidence artifact matches `sha256:772de052cb2baad489aee16bd1a8ad82faad87552745fbb0b784e9764184b41b`. This seals only the Goal-agent provisional audit result: environmental N/F transfer is the first measured divergence, assimilation remains under investigation, and resource-causal reproduction remains unestablished.
+- Evidence location: digital-protocell/experiments/generated/dcdev021goalmaterialfluxbudgetr7/, .github/workflows/dc-dev-021-goal-flux-budget-audit.yml, and docs/goal-unified-flux-budget-audit-r7.md.
+- Confidence: VERIFIED
+- Scope: Goal-mode unified flux-budget and preservation audit R7 exact-head authority.
+- Supersedes learning: L-DCDEV021-GOAL-FLUX-BUDGET-R7-001

@@ -1024,3 +1024,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: the spatial arm transfers finite material and processes/grows from it, while the transfer-disabled control receives zero environmental material. The legacy reference does not retain environmental provenance after bulk N/F transfer, so downstream environmental attribution is not inferred. Assimilation remains under investigation rather than accepted.
 - Affected areas: observer/replay evidence, focused preservation tests, assimilation-field validity guarding, scoped workflow, and append-only governance; no new organism/world mechanism, fission-gate change, formula search, or independent Architect acceptance.
 - Supersedes record: none
+
+## DEC-DCDEV021-GOAL-UNIFIED-FLUX-BUDGET-AUDIT-R7-AUTHORITY
+
+- Date: 2026-09-05
+- Record or decision ID: DEC-DCDEV021-GOAL-UNIFIED-FLUX-BUDGET-AUDIT-R7-AUTHORITY
+- Status: ACTIVE
+- Decision or event: seal the Goal-agent provisional audit authority for result head `dcb02ecadf89ddc87faa46e5a90fde115d072f4b` after exact-head Linux CI `33988739683` passed and the evidence artifact independently matched `sha256:772de052cb2baad489aee16bd1a8ad82faad87552745fbb0b784e9764184b41b`.
+- Rationale: the common ledger and transfer-disabled control establish environmental N/F transfer as the first measured divergence while active downstream processing/growth remain nonzero. The result does not accept assimilation as architecture and does not establish resource-causal reproduction.
+- Affected areas: remote validation authority and append-only governance; no new organism/world mechanism, formula search, fission-gate change, or independent Architect acceptance.
+- Supersedes record: DEC-DCDEV021-GOAL-UNIFIED-FLUX-BUDGET-AUDIT-R7

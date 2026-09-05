@@ -287,3 +287,8 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Stop condition: do not add another material-flow, buffer, conversion,
   active-work, or allocation variant until the first divergence and
   preservation results are reviewed.
+- Exact-head Linux CI: `33988739683` passed on result head
+  `dcb02ecadf89ddc87faa46e5a90fde115d072f4b`.
+- Artifact digest: `sha256:772de052cb2baad489aee16bd1a8ad82faad87552745fbb0b784e9764184b41b`.
+- Goal-agent provisional acceptance: audit evidence sealed; independent
+  Architect acceptance is not claimed.
