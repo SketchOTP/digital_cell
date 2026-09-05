@@ -899,3 +899,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: CLOSURE-013 measured the corrected literal A-fraction law without candidate reproduction. This assay tests its strongest remaining parameter-free local composition: production-positive contact patches receive exact zero motor activity, while noncontact patches retain literal A-fraction output.
 - Exclusions: no production default, scientific kernel, growth/fission law, parameter, tuning, horizon, resource geometry, sensor, memory, target, gradient, M1, restart, or PR #44 change.
 - Acceptance boundary: `M2_CONTACT_BOUNDARY_A_FRACTION_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED`, `M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED`, `M2_CONTACT_BOUNDARY_A_FRACTION_WORK_ALLOCATION_INSUFFICIENT`, or invalid.
+
+## DEC-DCDEV021-M2-CLOSURE014-CONTACT-BOUNDARY-A-FRACTION-REPRODUCTION-CEILING-FINAL
+
+- Date: `2026-09-05`
+- Status: `VALIDATED_PENDING_ARCHITECT`
+- Decision: record CLOSURE-014 as the bounded negative `M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED`.
+- Authority: result head `709fe9da17031d491dcc42a8753fbc1064004eaa`; exact-head Linux workflow `33968538560`; artifact digest `sha256:545d29737812f57d749d155fea91caa248c6df35781eb90306108978eaf36a0c`.
+- Rationale: the strongest authorized assay-only combination of corrected literal A-fraction allocation and exact local contact-boundary zeroing improves finite transfer but produces zero candidate fissions. The paired motor-off control fissions once at step `775`.
+- Preservation: no scientific runtime source changed; world N/F conservation, A-to-W closure, zero-resource specificity, historical CLOSURE-013 replay, M1/downstream boundaries, restart boundary, and PR #44 preservation passed.
+- Boundary: autonomous resource acquisition, resource-causal reproduction, descendants, heredity, evolution, learning, individuality, unattended persistence, and standalone-lifeform completion remain unestablished. No successor execution started.

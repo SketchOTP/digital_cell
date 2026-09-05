@@ -1882,3 +1882,14 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Measurements: paired candidate `1237.9075679670561` N/F, `1566.5624360335048` A spent, `0` fissions; paired motor-off `1250.700023288915` N/F, `1` fission at step `775`. Candidate A-to-W residual `5.921096946082116e-13`; world N/F loss equals delivery.
 - Classification pending exact-head authority: `M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED`.
 - Boundary: this does not establish autonomous acquisition, resource-causal reproduction, descendants, heredity, evolution, learning, individuality, unattended persistence, or standalone-lifeform completion.
+
+## D-20260905-dcdev021-m2-closure014-contact-boundary-a-fraction-reproduction-ceiling - FINAL VALIDATION PENDING ARCHITECT
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE014-CONTACT-BOUNDARY-A-FRACTION-REPRODUCTION-CEILING-FINAL`
+- Result head: `709fe9da17031d491dcc42a8753fbc1064004eaa`.
+- Exact-head Linux workflow: `33968538560` passed.
+- Artifact digest: `sha256:545d29737812f57d749d155fea91caa248c6df35781eb90306108978eaf36a0c`.
+- Classification: `M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED`.
+- Rationale: the parameter-free combination of corrected literal A-fraction allocation and exact zero motor on production-positive contact patches improves finite transfer, but no paired or daughter candidate fissions; motor-off paired and Daughter B controls fission once at step `775`.
+- Preservation: world N/F conservation, A-to-W closure, zero-resource specificity, exact CLOSURE-013 replay, M1/downstream governance, and PR #44 boundary passed. No scientific runtime source changed.
+- Boundary: autonomous acquisition, resource-causal reproduction, descendants, heredity, evolution, learning, individuality, unattended persistence, and standalone-lifeform completion remain unestablished. Architect acceptance is pending and no successor execution started.

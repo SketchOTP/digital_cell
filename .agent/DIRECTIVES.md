@@ -939,3 +939,12 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Preliminary result: paired candidate delivery is `1237.9075679670561` N/F with `1566.5624360335048` A spent and zero candidate fissions; paired motor-off fissions once at step `775`. World conservation, A-to-W closure, and zero-resource specificity pass.
 - Exclusions: no production integration, scientific runtime change, tuning, new parameter, horizon/resource-geometry change, growth/fission change, M1 change, restart repair, or PR #44 modification.
 - Acceptance: `PENDING` exact-head Linux validation, artifact digest, Architect disposition, and Notion readback.
+
+## D-20260905-dcdev021-m2-closure014-contact-boundary-a-fraction-reproduction-ceiling - CLOSED PENDING ARCHITECT
+
+- Result head: `709fe9da17031d491dcc42a8753fbc1064004eaa`.
+- Exact-head Linux workflow: `33968538560` - `PASS`.
+- Artifact digest: `sha256:545d29737812f57d749d155fea91caa248c6df35781eb90306108978eaf36a0c`.
+- Classification: `M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED`.
+- Result: the strongest authorized contact-boundary/A-fraction assay improved finite transfer but produced zero candidate fissions; paired motor-off fissioned once at step `775`.
+- Architect acceptance: `PENDING`; successor execution: `NOT_STARTED`.

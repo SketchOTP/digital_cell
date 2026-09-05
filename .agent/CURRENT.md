@@ -182,3 +182,12 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - It composes corrected literal `A/(N+F+A+W)` motor allocation with exact zero motor output only on production-positive local contact patches; noncontact patches retain literal A-fraction output.
 - The fixed 12,000-step ecology completed with world N/F conservation, A-to-W closure, and zero-resource specificity. The paired candidate delivered `1237.9075679670561` N/F, spent `1566.5624360335048` A, and produced zero fissions; the paired motor-off control fissioned once at step `775`.
 - Classification is `M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED`, pending exact-head authority. Autonomous acquisition, resource-causal reproduction, descendants, heredity, evolution, learning, individuality, unattended persistence, and standalone-lifeform completion remain unestablished.
+
+## CLOSURE-014 final authority
+
+- Result branch: `m2/dc-dev-021-m2-closure014-contact-boundary-a-fraction-reproduction-ceiling`.
+- Result head: `709fe9da17031d491dcc42a8753fbc1064004eaa`.
+- Exact-head Linux CI: `33968538560` - `PASS`.
+- Artifact ZIP digest: `sha256:545d29737812f57d749d155fea91caa248c6df35781eb90306108978eaf36a0c`.
+- Classification: `M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED`.
+- Architect acceptance and successor execution remain pending; no successor has started.
