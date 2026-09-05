@@ -1080,3 +1080,21 @@ Use it for architectural decisions, governance changes, releases, qualification 
   `INVESTIGATE_NOT_ACCEPTED`; resource-causal reproduction remains
   `NOT_ESTABLISHED`; independent Architect acceptance is not claimed.
 - Supersedes record: `DEC-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R8`
+
+## DEC-DCDEV021-GOAL-ASSIMILATION-PRESERVATION-AUDIT-R9
+
+- Date: `2026-09-05`
+- Status: `PROVISIONAL_PRESERVATION_AUDIT`
+- Record or decision ID: `DEC-DCDEV021-GOAL-ASSIMILATION-PRESERVATION-AUDIT-R9`
+- Decision or event: validate the persistent opt-in assimilation state against
+  the required preservation boundaries before any further material-flow design.
+- Rationale: assimilation changed core chemistry state, fission partitioning,
+  observer nutrient semantics, and checkpoint-relevant state. These surfaces
+  require direct preservation evidence; a focused green run cannot be treated
+  as architecture acceptance or as proof of resource-causal reproduction.
+- Affected areas: preservation tests, compact evidence, scoped workflow,
+  documentation, and append-only governance only.
+- Stop condition: any failed preservation boundary rejects or replans
+  assimilation; a pass leaves it `INVESTIGATE_NOT_ACCEPTED` and forbids nearby
+  pool/buffer/field/allocation/active-work hill-climbing.
+- Supersedes record: none

@@ -110,6 +110,8 @@ fn partition_spreads_edges() {
             k_a: 0.15,
             k_r: 0.15,
             k_node_b: 0.15,
+            assimilation_n: 0.31,
+            assimilation_f: 0.27,
             ..Default::default()
         },
         LumpedChem {
@@ -177,12 +179,19 @@ fn partition_spreads_edges() {
                     d2.autocatalytic_edges.len(),
                     d2.total_structural_mass()
                 );
-                got = Some((d1, d2));
+                got = Some((
+                    d1,
+                    d2,
+                    ev.partition.residual_assimilation_n,
+                    ev.partition.residual_assimilation_f,
+                ));
                 break;
             }
         }
     }
-    let (d1, d2) = got.expect("fission");
+    let (d1, d2, residual_assimilation_n, residual_assimilation_f) = got.expect("fission");
+    assert!(residual_assimilation_n < 1e-4);
+    assert!(residual_assimilation_f < 1e-4);
     assert!(
         d1.autocatalytic_edges.len() > 0 && d2.autocatalytic_edges.len() > 0,
         "expected both daughters to get edges, got {} and {}",

@@ -19,8 +19,8 @@ fn fixture() -> MaterialMesh {
             n: 0.5,
             f: 0.4,
             w: 0.3,
-            assimilation_n: 0.0,
-            assimilation_f: 0.0,
+            assimilation_n: 0.31,
+            assimilation_f: 0.27,
             tracer_c: 0.2,
             c_h: 0.35,
             c_b: 0.45,
@@ -51,12 +51,30 @@ fn fixture() -> MaterialMesh {
     mesh
 }
 
-fn concentration_amounts(mesh: &MaterialMesh) -> [f64; 18] {
+fn concentration_amounts(mesh: &MaterialMesh) -> [f64; 20] {
     let area = mesh.area();
     let c = mesh.interior;
     [
-        c.c, c.a, c.n, c.f, c.w, c.tracer_c, c.c_h, c.c_b, c.r, c.u_h, c.u_b, c.k_h, c.k_b, c.q_k,
-        c.q_e, c.k_a, c.k_r, c.k_node_b,
+        c.c,
+        c.a,
+        c.n,
+        c.f,
+        c.w,
+        c.assimilation_n,
+        c.assimilation_f,
+        c.tracer_c,
+        c.c_h,
+        c.c_b,
+        c.r,
+        c.u_h,
+        c.u_b,
+        c.k_h,
+        c.k_b,
+        c.q_k,
+        c.q_e,
+        c.k_a,
+        c.k_r,
+        c.k_node_b,
     ]
     .map(|value| value * area)
 }

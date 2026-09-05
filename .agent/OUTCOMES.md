@@ -2075,3 +2075,20 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Boundary: no successor runtime execution started; assimilation remains
   `INVESTIGATE_NOT_ACCEPTED`; resource-causal reproduction remains
   `NOT_ESTABLISHED`.
+
+## D-20260905-dcdev021-goal-assimilation-preservation-audit-r9 - IN PROGRESS PROVISIONAL
+
+- Outcome ID: `OUT-DCDEV021-GOAL-ASSIMILATION-PRESERVATION-AUDIT-R9`.
+- Starting head: `721172711a31ac80c6fa798474ffeef519eb963c`.
+- Scope: preservation audit for the opt-in assimilation state extension; no
+  new organism/world mechanism is implemented.
+- Local result: runtime validity, legacy zero-default deserialization, geometry
+  and remesh conservation, fission partitioning, observer death semantics,
+  checkpoint round-trip, D-088, D-091, D-098, and M2 runtime checks passed.
+- Classification: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_PRESERVATION_AUDIT`.
+- Assimilation remains `INVESTIGATE_NOT_ACCEPTED`; resource-causal fission and
+  autonomous resource acquisition remain `NOT_ESTABLISHED`.
+- Exact-head Linux CI, artifact digest, and final remote authority are pending.
+- Stop condition: preservation failure rejects/replans assimilation; a pass
+  does not authorize another pool, buffer, field-placement, allocation, or
+  active-work variant.

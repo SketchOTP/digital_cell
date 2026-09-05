@@ -1542,4 +1542,39 @@ mod tests {
         assert!((resumed.cumulative_path - original.cumulative_path).abs() <= 1e-12);
         let _ = fs::remove_file(path);
     }
+
+    #[test]
+    fn assimilation_checkpoint_round_trip_preserves_opt_in_material_state() {
+        let path = std::env::temp_dir().join(format!(
+            "digital-cell-m2-assimilation-runtime-{}.json",
+            std::process::id()
+        ));
+        let mut original = new_post_fission_snapshot(2, true);
+        original.population.individuals[0].mesh.interior.assimilation_n = 0.41;
+        original.population.individuals[0].mesh.interior.assimilation_f = 0.37;
+        original.population.individuals[1].mesh.interior.assimilation_n = 0.29;
+        original.population.individuals[1].mesh.interior.assimilation_f = 0.23;
+        save_snapshot(&path, &original);
+        let resumed = load_snapshot(&path);
+        for (left, right) in original
+            .population
+            .individuals
+            .iter()
+            .zip(resumed.population.individuals.iter())
+        {
+            assert_eq!(
+                left.mesh.interior.assimilation_n,
+                right.mesh.interior.assimilation_n
+            );
+            assert_eq!(
+                left.mesh.interior.assimilation_f,
+                right.mesh.interior.assimilation_f
+            );
+        }
+        assert_eq!(
+            original.spatial_field.as_ref().map(SpatialMaterialFieldV1::total_n_mass),
+            resumed.spatial_field.as_ref().map(SpatialMaterialFieldV1::total_n_mass)
+        );
+        let _ = fs::remove_file(path);
+    }
 }

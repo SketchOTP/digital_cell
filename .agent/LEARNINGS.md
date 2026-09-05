@@ -746,3 +746,18 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: Goal-mode unified flux-budget and preservation audit R7 exact-head authority.
 - Supersedes learning: L-DCDEV021-GOAL-FLUX-BUDGET-R7-001
+
+## L-DCDEV021-GOAL-ASSIMILATION-PRESERVATION-R9-001
+
+- Learning ID: `L-DCDEV021-GOAL-ASSIMILATION-PRESERVATION-R9-001`
+- Date: `2026-09-05`
+- Fact or lesson: The opt-in assimilation state passes focused local
+  preservation checks for finite-value validity, legacy zero-default schema
+  loading, geometry/remesh conservation, physical fission partitioning,
+  observer death semantics, checkpoint round-trip, D-088, D-091, D-098, and
+  the M2 runtime. This is necessary evidence for continued investigation, not
+  acceptance of assimilation as architecture and not resource-causal fission.
+- Evidence location: `digital-protocell/crates/chemistry-core/tests/goal_assimilation_preservation.rs`, `digital-protocell/experiments/generated/dcdev021goalassimilationpreservationr9/`, `.github/workflows/dc-dev-021-goal-assimilation-preservation.yml`, and `docs/goal-assimilation-preservation-audit-r9.md`.
+- Confidence: `PROVISIONAL` pending exact-head Linux CI and artifact digest.
+- Scope: Goal-mode preservation audit R9.
+- Supersedes learning: none

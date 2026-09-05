@@ -311,3 +311,22 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
   files through its historical allowlist; it is now exact-head gated to the
   sealed R6 result and is not authoritative for successor cycles. The failed
   descendant run was a workflow-scope failure, not scientific evidence.
+
+## Goal-mode assimilation preservation audit R9
+
+- Starting head: `721172711a31ac80c6fa798474ffeef519eb963c`.
+- Scope: preserve and validate the opt-in `assimilation_n` / `assimilation_f`
+  state extension across runtime validity, legacy defaults, geometry/remesh,
+  fission partitioning, observer death semantics, checkpoint serialization,
+  D-087, D-088, D-091, and M2 runtime continuity.
+- Local result: all focused checks passed, including the long D-094 suite,
+  D-098, D-088, D-091, and four M2 runtime tests.
+- Goal-agent status: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_PRESERVATION_AUDIT`.
+- Assimilation architecture: `INVESTIGATE_NOT_ACCEPTED`.
+- Resource-causal fission: `NOT_ESTABLISHED`.
+- No new organism/world mechanism, formula variant, fission-gate change, or
+  independent Architect acceptance is claimed.
+- Exact-head Linux validation and artifact digest are pending.
+- Stop condition: if exact-head preservation fails, reject/replan assimilation;
+  if it passes, do not add another pool, buffer, field-placement, allocation,
+  or active-work variant without a new source-justified material-flow contract.
