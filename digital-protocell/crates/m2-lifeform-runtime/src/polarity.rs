@@ -149,6 +149,10 @@ impl PolarityState {
             .fold(0.0, f64::max);
         max_u.max(max_v).max(max_f)
     }
+
+    pub fn topology(&self) -> usize {
+        self.grid.ds.len()
+    }
 }
 
 fn polar_equilibrium() -> (f64, f64, f64) {

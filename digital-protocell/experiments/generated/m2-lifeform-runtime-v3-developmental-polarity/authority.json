@@ -1,0 +1,11 @@
+{
+  "starting_head": "9a519d21481fa0eeb5c2aa27d41d15155ffeef41",
+  "prior_authority": "CLOSURE-014 bounded negative; no scientific source change",
+  "frozen_production": "MaturationCoupledV4 / reserve OFF",
+  "physical_history_authority": "ENTRY-019 accepted transport/reaction/growth/mechanics/remesh/topology chronology",
+  "finite_world_authority": "FiniteWorldV1",
+  "reaction_authority": "ReactionParams::conservative_v3",
+  "polarity_authority": "native conservative ENTRY-019..027 carrier",
+  "pr44": {"state": "OPEN", "draft": true, "merged": false, "modified": false},
+  "scientific_core_sources_changed": false
+}

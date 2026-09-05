@@ -1,0 +1,14 @@
+{
+  "increment": "developmental polarity bootstrap for checkpointable standalone runtime",
+  "starting_head": "9a519d21481fa0eeb5c2aa27d41d15155ffeef41",
+  "branch": "m2/dc-dev-021-runtime-developmental-polarity-embodiment",
+  "runtime_schema": "digital_cell_m2_checkpointable_lifeform_runtime_v3_developmental_polarity",
+  "development_order": ["transport", "frozen reactions", "growth", "passive mechanics", "remesh/topology", "conservative polarity remap and advance"],
+  "resource_during_development": "seeded founder boundary only; finite separated world begins after bootstrap",
+  "actuator_during_development": false,
+  "polarity_behavior_coupling_during_development": false,
+  "fission": "probe only; never forced during bootstrap",
+  "development_horizon": 12000,
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "resource_causal_reproduction": "NOT_ESTABLISHED"
+}

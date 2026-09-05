@@ -1,0 +1,12 @@
+{
+  "horizon": 1500,
+  "resource_geometry": "separated finite world",
+  "seeds": {
+    "1": {"encounter_step": 177, "n_delivered": 20.8574084205498, "fissions": 0, "living": 1, "path": 1.1605867760024322, "slips": 91314, "polarity_amplitude": 1.2916596296357284e-11},
+    "2": {"encounter_step": 256, "n_delivered": 30.393595366190397, "fissions": 1, "living": 3, "path": 2.210778094741644, "slips": 107613, "polarity_amplitude": 2.0632646487374196e-9},
+    "3": {"encounter_step": 144, "n_delivered": 24.502972304136794, "fissions": 0, "living": 1, "path": 9.346145194482595, "slips": 112720, "polarity_amplitude": 1.6084322761757836e-11},
+    "4": {"encounter_step": 177, "n_delivered": 20.8574084205498, "fissions": 0, "living": 1, "path": 1.1605867760024322, "slips": 91314, "polarity_amplitude": 1.2916596296357284e-11}
+  },
+  "conservation": {"n_error": 0.0, "f_error": 0.0},
+  "interpretation": "fixed seeds remain exploratory and contact the finite ecology; only seed 2 reaches one reproduction event in this bounded run"
+}

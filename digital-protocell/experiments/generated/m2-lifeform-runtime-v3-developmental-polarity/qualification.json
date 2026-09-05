@@ -1,0 +1,21 @@
+{
+  "classification": "M2_DEVELOPMENTAL_POLARITY_RUNTIME_INTEGRATION_BOUNDED_REPRODUCTION_NOT_ESTABLISHED",
+  "developmental_history_reused": "PASS",
+  "native_polarity_carrier": "PASS",
+  "finite_world_exchange": "PASS",
+  "world_material_conservation": "PASS",
+  "separated_contact": "OBSERVED",
+  "finite_n_f_transfer": "OBSERVED",
+  "active_motility": "PASS",
+  "seed_2_one_fission": "OBSERVED",
+  "all_seed_reproduction": "NOT_ESTABLISHED",
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "three_generation_reproduction": "NOT_ESTABLISHED",
+  "heritable_variation": "NOT_ESTABLISHED",
+  "persistent_restart": "CHECKPOINT_RESUME_ONLY",
+  "standalone_linux_lifeform": "NOT_ESTABLISHED",
+  "scientific_runtime_source_changed": true,
+  "accepted_chemistry_and_regulatory_sources_changed": false,
+  "architect_acceptance": "PENDING",
+  "next_execution_started": false
+}

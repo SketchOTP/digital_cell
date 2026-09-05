@@ -916,3 +916,14 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Status: `VALIDATED_PENDING_ARCHITECT`
 - Final authority: head `5d5e9d5133f19083aa46758a06500dba895165ee`; exact-head Linux workflow `33969482511` passed; artifact digest `sha256:af2b98f0f468417fa105fabd42ed553079d67182d5823e27596875cdbfd52f00`.
 - The CLOSURE-014 bounded-negative classification remains `M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED`; no scientific runtime source or successor scope changed.
+
+## DEC-DCDEV021-M2-RUNTIME-DEVELOPMENTAL-POLARITY-EMBODIMENT
+
+- Date: `2026-09-05`
+- Status: `VALIDATED_PENDING_ARCHITECT`
+- Scope: additive runtime integration of the accepted ENTRY-019..027 developmental physical-history replay into the checkpointable M2 lifeform runtime.
+- Authority: branch starts at CLOSURE-014 head `9a519d21481fa0eeb5c2aa27d41d15155ffeef41`; runtime schema is `digital_cell_m2_checkpointable_lifeform_runtime_v3_developmental_polarity`.
+- Result: the runtime now performs bounded developmental transport, frozen reactions, growth, passive mechanics, remesh/topology updates, native polarity remapping, and unforced fission probing before the separated-resource runtime begins. Seed 2 reaches one unforced fission and produces three living individuals; seeds 1, 3, and 4 remain bounded non-fission trajectories under the same 12,000-step development ceiling.
+- Preservation: the bootstrap performs no actuator work and no resource interaction; post-bootstrap finite N/F conservation remains zero residual in the checked reports; checkpoint/resume reaches step 100 with matching developmental metadata; the known resource-causal reproduction and autonomous-acquisition boundaries remain `NOT_ESTABLISHED`.
+- Classification: `M2_DEVELOPMENTAL_POLARITY_RUNTIME_INTEGRATION_BOUNDED_REPRODUCTION_NOT_ESTABLISHED`.
+- Boundary: this is an engineering/runtime increment, not Architect acceptance of the unresolved CLOSURE-014 authority and not a claim of full standalone-lifeform completion. Exact-head CI and artifact digest remain pending this branch's push.

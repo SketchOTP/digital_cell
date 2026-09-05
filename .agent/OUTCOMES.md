@@ -1900,3 +1900,14 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Exact-head Linux workflow `33969482511` passed.
 - Final artifact digest: `sha256:af2b98f0f468417fa105fabd42ed553079d67182d5823e27596875cdbfd52f00`.
 - This corrects the authority pointer only; the bounded-negative result remains unchanged.
+
+## D-20260905-dcdev021-m2-runtime-developmental-polarity-embodiment - VALIDATION PENDING
+
+- Outcome ID: `OUT-DCDEV021-M2-RUNTIME-DEVELOPMENTAL-POLARITY-EMBODIMENT`
+- Started: `2026-09-05`
+- Objective: replace the runtime's homogeneous founder bootstrap with a bounded replay of the accepted developmental physical-history path while preserving the accepted native-polarity and A-funded mechanics boundaries.
+- Implementation: schema `digital_cell_m2_checkpointable_lifeform_runtime_v3_developmental_polarity`; bootstrap order is transport, frozen reactions with reserve OFF, growth, passive mechanics, remesh, periodic topology update, native polarity remap/advance, and unforced fission probing. No actuator, resource, or forced division occurs during bootstrap.
+- Observed local results: seed 1 reaches the developmental boundary at step `10467` with topology `192` and initial nonconstant polarity amplitude `1.2251684088694415e-11`; seed 2 reaches it at `11440`, fissions once, and ends with `3` living individuals; seed 3 reaches the bounded `12000`-step ceiling without fission; seed 4 matches seed 1 in this fixture. The 1500-step runtime reports preserve zero world N/F conservation residuals in the checked runs.
+- Checkpoint validation: corrected final-source replay of `50 + 50` steps reaches step `100`, preserves topology `192`, and reports zero world N/F conservation residuals.
+- Classification: `M2_DEVELOPMENTAL_POLARITY_RUNTIME_INTEGRATION_BOUNDED_REPRODUCTION_NOT_ESTABLISHED`.
+- Boundary: this does not establish autonomous resource acquisition, resource-causal reproduction, heritable ecological variation, evolution, learning, persistent individuality, unattended persistence, or standalone Linux completion. Exact-head CI and artifact digest are pending.

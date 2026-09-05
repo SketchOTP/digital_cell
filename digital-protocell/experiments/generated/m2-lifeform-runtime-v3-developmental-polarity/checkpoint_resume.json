@@ -1,0 +1,11 @@
+{
+  "first_run_steps": 50,
+  "resume_steps": 50,
+  "final_step": 100,
+  "schema": "digital_cell_m2_checkpointable_lifeform_runtime_v3_developmental_polarity",
+  "developmental_bootstrap_steps": 10467,
+  "developmental_initial_topology": 192,
+  "checkpoint_resume": "PASS",
+  "world_n_conservation_error": 0.0,
+  "world_f_conservation_error": 0.0
+}

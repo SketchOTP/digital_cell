@@ -1,0 +1,11 @@
+{
+  "replay": "PASS",
+  "unforced": true,
+  "order_matches_accepted_entry019": true,
+  "horizon": 12000,
+  "seed_1": {"steps": 10467, "pre_fission_boundary_reached": true, "initial_topology": 192, "initial_polarity_nonconstant_amplitude": 1.2251684088694415e-11},
+  "seed_2": {"steps": 11440, "pre_fission_boundary_reached": true, "initial_topology": 207, "initial_polarity_nonconstant_amplitude": 1.77606550544915e-11},
+  "seed_3": {"steps": 12000, "pre_fission_boundary_reached": false, "initial_topology": 208, "initial_polarity_nonconstant_amplitude": 1.607761505808868e-11},
+  "seed_4": {"steps": 10467, "pre_fission_boundary_reached": true, "initial_topology": 192, "initial_polarity_nonconstant_amplitude": 1.2251684088694415e-11},
+  "interpretation": "lawful developmental asymmetry is carried into the runtime; bounded development does not guarantee fission for every seed"
+}

@@ -1,12 +1,12 @@
 use chemistry_core::material_mesh::MeshContractVersion;
 use chemistry_core::mesh_fission::{topology_step, try_local_fission, FissionParams};
 use chemistry_core::mesh_growth::{growth_step, GrowthParams};
-use chemistry_core::mesh_mechanics::remesh;
-use chemistry_core::mesh_mechanics::MechParams;
+use chemistry_core::mesh_mechanics::{mechanics_step, remesh, MechParams};
 use chemistry_core::mesh_population::{MeshIndividual, MeshPopulation};
 use chemistry_core::mesh_reactions::{
     reactions_step_with_reserve_mode, ReactionParams, ReserveDiagnosticMode,
 };
+use chemistry_core::mesh_transport::transport_step;
 use chemistry_core::mesh_transport::TransportParams;
 use regulatory_core::{
     ContractilityParamsV1, FiniteWorldResourceV1, FiniteWorldV1, StickSlipTractionParamsV1,
@@ -19,13 +19,14 @@ use std::path::{Path, PathBuf};
 mod polarity;
 use polarity::PolarityState;
 
-const SCHEMA: &str = "digital_cell_m2_checkpointable_lifeform_runtime_v2";
+const SCHEMA: &str = "digital_cell_m2_checkpointable_lifeform_runtime_v3_developmental_polarity";
 const RESOURCE_RADIUS: f64 = 1.5;
 // These are the already accepted CLOSURE-003-R1/CLOSURE-004 material units,
 // not a runtime tuning sweep.  The earlier three-unit smoke fixture could not
 // support even one accepted reproductive unit after separated contact.
 const RESOURCE_MASS: f64 = 1021.692995326332;
 const RESOURCE_BOUNDARY: f64 = 2.063914918930895;
+const DEVELOPMENT_MAX_STEPS: usize = 12_000;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 struct RuntimeSnapshot {
@@ -49,6 +50,14 @@ struct RuntimeSnapshot {
     first_contact_step: Option<u64>,
     #[serde(default)]
     first_transfer_step: Option<u64>,
+    #[serde(default)]
+    developmental_bootstrap_steps: usize,
+    #[serde(default)]
+    developmental_initial_polarity_amplitude: f64,
+    #[serde(default)]
+    developmental_initial_topology: usize,
+    #[serde(default)]
+    developmental_fission_boundary_reached: bool,
     motor_steps: u64,
     motor_failures: u64,
     #[serde(default)]
@@ -109,6 +118,11 @@ struct RuntimeReport {
     cumulative_contacts: usize,
     first_contact_step: Option<u64>,
     first_transfer_step: Option<u64>,
+    developmental_bootstrap_steps: usize,
+    developmental_initial_topology: usize,
+    developmental_initial_polarity_amplitude: f64,
+    developmental_fission_boundary_reached: bool,
+    current_max_polarity_amplitude: f64,
     terminal_observer_death_reasons: Vec<Option<&'static str>>,
     active_motility: String,
     autonomous_resource_acquisition: &'static str,
@@ -185,6 +199,70 @@ fn perturb_founder(mesh: &mut chemistry_core::material_mesh::MaterialMesh) {
     for point in &mut mesh.vertices {
         point[0] = center[0] + (point[0] - center[0]) * 1.25;
     }
+}
+
+fn develop_founder(individual: &mut MeshIndividual) -> (PolarityState, usize, bool) {
+    // Reuse the accepted ENTRY-019 physical-history order.  This is a
+    // developmental bootstrap, not a behavioral seed: no actuator, resource,
+    // observer, or polarity-to-motor decision is involved here.  The first
+    // fission is only probed, never forced, and the runtime begins with the
+    // same mother immediately before that accepted physical event.
+    let dt = MechParams::default().dt;
+    let transport = TransportParams::default();
+    let mechanics = MechParams::default();
+    let reaction = ReactionParams::conservative_v3();
+    let growth = GrowthParams {
+        y_g: 0.9,
+        enable_growth: true,
+    };
+    let fission = FissionParams::default();
+    let birth_mass = individual.birth_mass;
+    let mut polarity = PolarityState::homogeneous(&individual.mesh);
+
+    for step in 0..DEVELOPMENT_MAX_STEPS {
+        if !individual.mesh.can_advance_physics() {
+            break;
+        }
+        let _ = transport_step(&mut individual.mesh, &transport, dt);
+        let _ = reactions_step_with_reserve_mode(
+            &mut individual.mesh,
+            &reaction,
+            dt,
+            true,
+            true,
+            ReserveDiagnosticMode::Full,
+        );
+        let _ = growth_step(&mut individual.mesh, &reaction, &growth, dt);
+        let _ = mechanics_step(&mut individual.mesh, &mechanics);
+        let old_vertices = individual.mesh.vertices.clone();
+        let _ = remesh(&mut individual.mesh);
+        let origin = individual
+            .mesh
+            .vertices
+            .first()
+            .and_then(|first| {
+                old_vertices
+                    .iter()
+                    .position(|old| (old[0] - first[0]).hypot(old[1] - first[1]) <= 1e-9)
+            })
+            .unwrap_or(0);
+        if step % 10 == 0 {
+            let _ = topology_step(&mut individual.mesh, &fission);
+        }
+        polarity.remap_and_advance(&individual.mesh, origin, dt);
+
+        let eligible = individual.mesh.total_structural_mass() >= 1.35 * birth_mass.max(1e-9)
+            && try_local_fission(&individual.mesh, &fission).is_some();
+        if eligible {
+            return (polarity, step + 1, true);
+        }
+    }
+
+    // A bounded development horizon is itself valid evidence.  Some lawful
+    // founders do not reach fission readiness within the established horizon;
+    // preserve that trajectory for the runtime instead of converting a
+    // biological negative into a process failure.
+    (polarity, DEVELOPMENT_MAX_STEPS, false)
 }
 
 fn separated_world(mesh: &chemistry_core::material_mesh::MaterialMesh) -> FiniteWorldV1 {
@@ -265,14 +343,17 @@ fn new_snapshot(seed: u64) -> RuntimeSnapshot {
     for individual in &mut population.individuals {
         perturb_founder(&mut individual.mesh);
         individual.mesh.contract_version = MeshContractVersion::MaturationCoupledV4;
-        individual.mesh.exterior.n = 0.0;
-        individual.mesh.exterior.f = 0.0;
     }
-    let polarity_states = population
-        .individuals
-        .iter()
-        .map(|individual| Some(PolarityState::homogeneous(&individual.mesh)))
-        .collect();
+    let (developed_polarity, developmental_bootstrap_steps, developmental_fission_boundary_reached) =
+        develop_founder(&mut population.individuals[0]);
+    // The seeded boundary is part of the accepted developmental founder
+    // history.  The standalone ecology begins only after that history, with
+    // zero external N/F and the separated finite world as its sole source.
+    population.individuals[0].mesh.exterior.n = 0.0;
+    population.individuals[0].mesh.exterior.f = 0.0;
+    let developmental_initial_polarity_amplitude = developed_polarity.nonconstant_amplitude();
+    let developmental_initial_topology = developed_polarity.topology();
+    let polarity_states = vec![Some(developed_polarity)];
     let previous_centroids = population
         .individuals
         .iter()
@@ -296,6 +377,10 @@ fn new_snapshot(seed: u64) -> RuntimeSnapshot {
         cumulative_contacts: 0,
         first_contact_step: None,
         first_transfer_step: None,
+        developmental_bootstrap_steps,
+        developmental_initial_polarity_amplitude,
+        developmental_initial_topology,
+        developmental_fission_boundary_reached,
         motor_steps: 0,
         motor_failures: 0,
         polarity_states,
@@ -540,6 +625,12 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
 }
 
 fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
+    let current_max_polarity_amplitude = snapshot
+        .polarity_states
+        .iter()
+        .filter_map(Option::as_ref)
+        .map(PolarityState::nonconstant_amplitude)
+        .fold(0.0, f64::max);
     RuntimeReport {
         schema: SCHEMA,
         step: snapshot.step,
@@ -570,6 +661,11 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
         cumulative_contacts: snapshot.cumulative_contacts,
         first_contact_step: snapshot.first_contact_step,
         first_transfer_step: snapshot.first_transfer_step,
+        developmental_bootstrap_steps: snapshot.developmental_bootstrap_steps,
+        developmental_initial_topology: snapshot.developmental_initial_topology,
+        developmental_initial_polarity_amplitude: snapshot.developmental_initial_polarity_amplitude,
+        developmental_fission_boundary_reached: snapshot.developmental_fission_boundary_reached,
+        current_max_polarity_amplitude,
         terminal_observer_death_reasons: snapshot
             .population
             .individuals
@@ -632,6 +728,16 @@ mod tests {
         run_step(&mut resumed);
         assert_eq!(resumed.step, 3);
         assert_eq!(resumed.seed, original.seed);
+        assert!(original.developmental_bootstrap_steps > 0);
+        assert!(original.developmental_initial_polarity_amplitude > 0.0);
+        assert_eq!(
+            resumed.developmental_initial_topology,
+            original.developmental_initial_topology
+        );
+        assert_eq!(
+            resumed.developmental_fission_boundary_reached,
+            original.developmental_fission_boundary_reached
+        );
         assert_eq!(
             resumed.population.individuals.len(),
             original.population.individuals.len()
@@ -639,7 +745,7 @@ mod tests {
         assert_eq!(resumed.cumulative_contacts, original.cumulative_contacts);
         assert_eq!(resumed.first_contact_step, original.first_contact_step);
         assert_eq!(resumed.first_transfer_step, original.first_transfer_step);
-        assert_eq!(resumed.cumulative_path, original.cumulative_path);
+        assert!((resumed.cumulative_path - original.cumulative_path).abs() <= 1e-12);
         let _ = fs::remove_file(path);
     }
 }

@@ -1,0 +1,19 @@
+{
+  "seed": 1,
+  "steps": 12000,
+  "developmental_bootstrap_steps": 10467,
+  "developmental_initial_topology": 192,
+  "developmental_fission_boundary_reached": true,
+  "developmental_initial_polarity_amplitude": 1.2251684088694415e-11,
+  "current_polarity_amplitude": 5.1331794003173834e-11,
+  "first_transfer_step": 177,
+  "n_delivered": 120.48417513388411,
+  "fissions": 0,
+  "living": 1,
+  "path": 4.736712550373224,
+  "slips": 540663,
+  "a_spent": 1644.8435436071393,
+  "world_n_conservation_error": 0.0,
+  "world_f_conservation_error": 0.0,
+  "interpretation": "active finite transfer and locomotion persist, but resource-causal reproduction remains unestablished"
+}
