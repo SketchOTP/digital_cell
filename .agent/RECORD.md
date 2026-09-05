@@ -827,3 +827,12 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Decision: accept the exact-head validated native-polarity checkpointable runtime as bounded engineering progress.
 - Authority: result head `4cd426dc9083c40861c0992fc66ca771ed6ed0d2`; exact-head Linux workflow `33956915074` passed; GitHub artifact digest `sha256:53b201e2ca440f50ae5957f1c7edb78f2db6231f7cf40506b35fbcb74bcbb451`.
 - Boundary: finite-world conservation, active motility, separated contact/transfer observation, native polarity carriage, remesh/fission state continuation, and checkpoint/resume are validated. No fission occurred; resource-causal reproduction, three-generation reproduction, heritable ecological phenotype, individuality, unattended persistence, and standalone Linux lifeform completion remain unestablished.
+
+## DEC-DCDEV021-M2-CLOSURE011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING
+
+- Date: `2026-09-05`
+- Status: `ACTIVE`
+- Decision: authorize the bounded CLOSURE-011 assay from exact runtime head `845d5c0a6f5778ec7c8dfb5d822aaba89aeddb31`.
+- Rationale: accepted CLOSURE-010 improves finite transfer and saves A but produces no candidate fission. This assay tests the remaining parameter-free interpretation of the same existing internal material pool, using activated-energy fraction `A/(N+F+A+W)` as an assay-local allocation factor.
+- Exclusions: no production default change, scientific kernel change, new parameter, gain, threshold, timer, memory, resource geometry change, fission change, M1 change, restart repair, or PR #44 modification.
+- Acceptance boundary: `M2_ACTIVE_MATERIAL_ALLOCATION_FISSION_QUALIFIED`, `M2_ACTIVE_MATERIAL_ALLOCATION_FISSION_INSUFFICIENT`, or `M2_CLOSURE011_ACTIVE_MATERIAL_ALLOCATION_INVALID`.

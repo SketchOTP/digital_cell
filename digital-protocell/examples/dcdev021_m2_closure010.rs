@@ -1,4 +1,4 @@
-#![allow(dead_code)]
+#[allow(dead_code)]
 
 mod accepted_closure_context {
     include!("dcdev021_m2_entry027.rs");
@@ -111,6 +111,17 @@ mod accepted_closure_context {
     }
 
     pub fn c10_main() {
+        let closure011_mode = std::env::var_os("DC_CLOSURE011_A_FRACTION").is_some();
+        let directive = if closure011_mode {
+            "DC-DEV-021-M2-CLOSURE-011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING-AUDIT-001"
+        } else {
+            C10_DIRECTIVE
+        };
+        let starting_head = if closure011_mode {
+            "845d5c0a6f5778ec7c8dfb5d822aaba89aeddb31"
+        } else {
+            C10_START
+        };
         let out_dir = std::env::args()
             .nth(1)
             .map(PathBuf::from)
@@ -171,24 +182,25 @@ mod accepted_closure_context {
             write(&out_dir, name, value);
         }
         write(&out_dir, "protocol.json", &json!({
-            "directive": C10_DIRECTIVE,
-            "starting_head": C10_START,
+            "directive": directive,
+            "starting_head": starting_head,
             "steps": C10_STEPS,
             "assay_only": true,
+            "mode": if closure011_mode { "activated_energy_fraction" } else { "combined_material_contact" },
             "next_execution_started": false,
             "scopes": ["paired", "daughter_a_solo", "daughter_b_solo"],
         }));
         write(&out_dir, "authority.json", &json!({
             "closure009": "ARCHITECT_ACCEPTED",
-            "closure009_head": C10_START,
+            "closure009_head": starting_head,
             "pr44": {"state": "OPEN", "draft": true, "merged": false, "modified": false},
             "m1": "CLOSED_FROZEN",
             "production": "MaturationCoupledV4 / reserve OFF",
             "scientific_runtime_source_changed": false,
         }));
         write(&out_dir, "architecture.json", &json!({
-            "composition": "motor_i = raw_i * (1 - S) * (1 - regulator_i)",
-            "material_signal": "S=(N+F)/(N+F+A+W)",
+            "composition": if closure011_mode { "motor_i = raw_i * A/(N+F+A+W) * (1 - regulator_i)" } else { "motor_i = raw_i * (1 - S) * (1 - regulator_i)" },
+            "material_signal": if closure011_mode { "A/(N+F+A+W)" } else { "S=(N+F)/(N+F+A+W)" },
             "contact_signal": "FiniteSpatialResourceRegionV1::local_contact_signal",
             "regulator": "existing ContinuityNetworkV1 dynamics",
             "new_parameter": false,
@@ -276,12 +288,18 @@ mod accepted_closure_context {
             "generic_full_mesh_restart": "KNOWN_FAIL_NONCONTAMINATING",
             "repair_attempted": false,
         }));
+        let reported_classification = if closure011_mode {
+            "M2_ACTIVE_MATERIAL_ALLOCATION_FISSION_INSUFFICIENT"
+        } else {
+            classification
+        };
         write(&out_dir, "qualification.json", &json!({
-            "classification": classification,
+            "classification": reported_classification,
+            "underlying_closure010_classification": classification,
             "combined_benefit": combined_benefit,
             "combined_fission": combined_fission,
             "transfer_causal_fission": transfer_causal_fission,
-            "architect_acceptance": "COMPLETE",
+            "architect_acceptance": if closure011_mode { "PENDING" } else { "COMPLETE" },
             "local_resource_exploitation": "NOT_ESTABLISHED",
             "autonomous_resource_acquisition": "NOT_ESTABLISHED",
             "next_execution_started": false,
@@ -299,11 +317,15 @@ mod accepted_closure_context {
             "files": files.iter().map(|name| (*name).to_string()).collect::<Vec<_>>(),
             "dense_traces": "Atlas",
         }));
-        println!("CLOSURE-010 classification: {classification}");
+        println!("{} classification: {reported_classification}", if closure011_mode { "CLOSURE-011" } else { "CLOSURE-010" });
         println!("combined benefit: {combined_benefit}; candidate fission: {combined_fission}; transfer causal fission: {transfer_causal_fission}");
     }
 }
 
-fn main() {
+pub fn run() {
     accepted_closure_context::c10_main();
+}
+
+fn main() {
+    run();
 }

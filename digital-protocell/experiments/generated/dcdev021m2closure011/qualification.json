@@ -1,0 +1,11 @@
+{
+  "architect_acceptance": "PENDING",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "classification": "M2_ACTIVE_MATERIAL_ALLOCATION_FISSION_INSUFFICIENT",
+  "combined_benefit": true,
+  "combined_fission": false,
+  "local_resource_exploitation": "NOT_ESTABLISHED",
+  "next_execution_started": false,
+  "transfer_causal_fission": false,
+  "underlying_closure010_classification": "M2_POST_INGESTIVE_COMBINED_MATERIAL_CONTACT_WORK_REPRODUCTION_NOT_ESTABLISHED"
+}

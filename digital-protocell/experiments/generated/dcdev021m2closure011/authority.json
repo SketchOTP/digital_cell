@@ -1,0 +1,13 @@
+{
+  "closure009": "ARCHITECT_ACCEPTED",
+  "closure009_head": "845d5c0a6f5778ec7c8dfb5d822aaba89aeddb31",
+  "m1": "CLOSED_FROZEN",
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "state": "OPEN"
+  },
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "scientific_runtime_source_changed": false
+}

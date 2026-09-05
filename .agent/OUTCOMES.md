@@ -1800,3 +1800,14 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Exact-head Linux workflow: `33956915074` passed
 - Artifact digest: `sha256:53b201e2ca440f50ae5957f1c7edb78f2db6231f7cf40506b35fbcb74bcbb451`
 - Result: native polarity runtime orchestration and checkpoint/resume are accepted as bounded engineering progress; no fission occurred and no autonomous acquisition, resource-causal reproduction, three-generation, individuality, or standalone-lifeform claim is made.
+
+## D-20260905-dcdev021-m2-closure011-active-material-allocation-fission-ceiling - IN PROGRESS
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING`
+- Started: `2026-09-05`
+- External directive: `DC-DEV-021-M2-CLOSURE-011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING-AUDIT-001`
+- Objective: Determine whether the existing internal activated-energy fraction can provide a parameter-free assay-local work allocation with enough remaining growth/fission capacity to establish resource-causal reproduction.
+- Scope: Additive assay wrapper and evidence only; the accepted CLOSURE-010 composition, finite ecology, fission law, frozen metabolism/growth, and motor-off controls remain unchanged.
+- Preliminary result: the candidate reduces A spending and slightly increases finite delivery, but candidate fission remains zero while the motor-off Daughter B control fissions once.
+- Acceptance: `PENDING`
+- Remaining validation: exact-head Linux CI, artifact digest, and Architect disposition.

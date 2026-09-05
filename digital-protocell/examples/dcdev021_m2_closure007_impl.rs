@@ -24,10 +24,15 @@ struct C7Run {
 
 fn c7_material_signal(mesh: &MaterialMesh) -> f64 {
     let nf = mesh.interior.n.max(0.0) + mesh.interior.f.max(0.0);
-    let other = mesh.interior.a.max(0.0) + mesh.interior.w.max(0.0);
-    let total = nf + other;
+    let a = mesh.interior.a.max(0.0);
+    let w = mesh.interior.w.max(0.0);
+    let total = nf + a + w;
     if total > 0.0 {
-        (nf / total).clamp(0.0, 1.0)
+        if std::env::var_os("DC_CLOSURE011_A_FRACTION").is_some() {
+            (a / total).clamp(0.0, 1.0)
+        } else {
+            (nf / total).clamp(0.0, 1.0)
+        }
     } else {
         0.0
     }

@@ -870,3 +870,13 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Exact-head Linux workflow `33956915074` passed; artifact digest `sha256:53b201e2ca440f50ae5957f1c7edb78f2db6231f7cf40506b35fbcb74bcbb451`.
 - Disposition: `ACCEPTED_BOUNDED_RUNTIME_INCREMENT`.
 - No scientific runtime source was changed; unresolved reproduction and standalone-lifeform gates remain explicitly negative/unestablished.
+
+## D-20260905-dcdev021-m2-closure011-active-material-allocation-fission-ceiling
+
+- Issued: `2026-09-05`
+- Issuer: `Architect/Coder session`
+- External directive: `DC-DEV-021-M2-CLOSURE-011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING-AUDIT-001`
+- Objective: test whether the existing activated-energy fraction can preserve reproductive work capacity in the accepted finite ecology without adding a new controller or changing frozen scientific sources.
+- Scope: assay-local opt-in path, fixed CLOSURE-010 ecology and horizon, exact motor-off/transfer-disabled/zero-resource controls, compact evidence, scoped workflow, and append-only governance.
+- Exclusions: production integration, parameter search, new gain or threshold, memory, resource geometry change, fission-law change, M1 change, restart repair, PR #44 modification, and successor execution.
+- Status: `ISSUED`

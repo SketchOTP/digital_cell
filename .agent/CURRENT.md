@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-05T04:55:00-04:00`
+- Last updated: `2026-09-05T06:05:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260905-dcdev021-m2-closure010-combined-local-contact-material-work`
-- External directive ID: `DC-DEV-021-M2-CLOSURE-010-COMBINED-LOCAL-CONTACT-MATERIAL-WORK-REPRODUCTION-QUALIFICATION-001`
-- Objective: Test the assay-only composition motor_i = raw_i * (1 - S) * (1 - regulator_i), where S=(N+F)/(N+F+A+W), against the accepted direct-material and local-contact controls.
-- Current status: `COMPLETE`
-- Acceptance: `ARCHITECT_ACCEPTED`
-- Current phase: `CLOSURE-010 combined local-contact and post-ingestive material work reproduction qualification`
-- Expected or actual touched areas: `isolated CLOSURE-010 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `No successor execution started; CLOSURE-010 is complete and this adopted state is awaiting reset to IDLE before the next authorized capability cycle`
+- Local directive ID: `D-20260905-dcdev021-m2-closure011-active-material-allocation-fission-ceiling`
+- External directive ID: `DC-DEV-021-M2-CLOSURE-011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING-AUDIT-001`
+- Objective: Test whether the existing activated-energy fraction A/(N+F+A+W), composed with the accepted CLOSURE-010 local-contact path, can preserve enough physical growth/fission capacity without adding a parameter or changing production behavior.
+- Current status: `IN_PROGRESS`
+- Acceptance: `PENDING`
+- Current phase: `CLOSURE-011 active material allocation fission ceiling audit`
+- Expected or actual touched areas: `isolated CLOSURE-011 assay, compact evidence, scoped workflow, append-only governance`
+- Immediate next action: `run exact-head Linux validation, verify artifact digest, then record bounded result`
 
 ## Temporary task-relevant facts
 

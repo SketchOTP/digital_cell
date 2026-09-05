@@ -1,0 +1,111 @@
+name: DC-DEV-021 M2 CLOSURE-011 active material allocation fission ceiling
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-m2-closure011-a-fission-ceiling
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  closure011:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+      - name: Verify exact authority and bounded diff
+        run: |
+          set -euo pipefail
+          start=845d5c0a6f5778ec7c8dfb5d822aaba89aeddb31
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefName,baseRefName
+          python3 - "$start" <<'PY'
+          import subprocess, sys
+          start=sys.argv[1]
+          allowed={
+            '.agent/CURRENT.md','.agent/DIRECTIVES.md','.agent/LEARNINGS.md','.agent/OUTCOMES.md','.agent/RECORD.md','.agent/REPO_MAP.md',
+            '.github/workflows/dc-dev-021-m2-closure011.yml',
+            'digital-protocell/crates/regulatory-core/Cargo.toml',
+            'digital-protocell/examples/dcdev021_m2_closure007_impl.rs',
+            'digital-protocell/examples/dcdev021_m2_closure010.rs',
+            'digital-protocell/examples/dcdev021_m2_closure011.rs',
+          }
+          changed=set(subprocess.check_output(['git','diff','--name-only',f'{start}..HEAD'],text=True).splitlines())
+          unexpected={p for p in changed if p not in allowed and not p.startswith('digital-protocell/experiments/generated/dcdev021m2closure011/')}
+          assert not unexpected, sorted(unexpected)
+          forbidden=('digital-protocell/crates/chemistry-core/src/','digital-protocell/crates/regulatory-core/src/','digital-protocell/crates/m2-lifeform-runtime/src/')
+          assert not any(p.startswith(forbidden) for p in changed)
+          PY
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Build and run CLOSURE-011 assay
+        working-directory: digital-protocell
+        env:
+          DC_CLOSURE011_A_FRACTION: '1'
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build --locked -p regulatory-core --release --example dcdev021_m2_closure011
+          cargo +1.89.0 run --locked -p regulatory-core --release --example dcdev021_m2_closure011 -- experiments/generated/dcdev021m2closure011
+      - name: Validate compact CLOSURE-011 evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('experiments/generated/dcdev021m2closure011')
+          q=json.loads((root/'qualification.json').read_text())
+          assert q['classification']=='M2_ACTIVE_MATERIAL_ALLOCATION_FISSION_INSUFFICIENT'
+          assert q['architect_acceptance']=='PENDING'
+          assert q['autonomous_resource_acquisition']=='NOT_ESTABLISHED'
+          expected={'combined','direct_material','contact_local','no_feedback','transfer_disabled','zero_resource','motor_off'}
+          for name in ('paired_arms.json','daughter_a_arms.json','daughter_b_arms.json'):
+              group=json.loads((root/name).read_text())
+              assert set(group)==expected
+              for arm in expected:
+                  base=group[arm]['base']['base']
+                  assert base['invalid'] is False
+                  assert abs(base['world_n_loss']-base['delivered_n']) <= 1e-10
+                  assert abs(base['world_f_loss']-base['delivered_f']) <= 1e-10
+                  assert base['a_to_w_residual'] <= 1e-9
+          arch=json.loads((root/'architecture.json').read_text())
+          assert arch['material_signal']=='A/(N+F+A+W)'
+          assert arch['new_parameter'] is False
+          assert arch['gain'] is False
+          assert arch['threshold'] is False
+          assert arch['timer_or_memory'] is False
+          for item in ('protocol.json','authority.json','architecture.json','qualification.json'):
+              assert (root/item).is_file()
+          for p in root.glob('*.json'): json.loads(p.read_text())
+          print('CLOSURE-011 evidence validation passed')
+          PY
+      - name: Validate governance and preservation
+        run: |
+          set -euo pipefail
+          git diff --check
+          grep -q 'DC-DEV-021-M2-CLOSURE-011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING-AUDIT-001' .agent/CURRENT.md
+          grep -q 'D-20260905-dcdev021-m2-closure011-active-material-allocation-fission-ceiling' .agent/DIRECTIVES.md
+          grep -q 'OUT-DCDEV021-M2-CLOSURE011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING' .agent/OUTCOMES.md
+          grep -q 'DEC-DCDEV021-M2-CLOSURE011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING' .agent/RECORD.md
+      - name: Hash compact evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2closure011 -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2closure011.sha256"
+      - name: Upload CLOSURE-011 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-m2-closure011-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2closure011/
+            ${{ runner.temp }}/dcdev021m2closure011.sha256

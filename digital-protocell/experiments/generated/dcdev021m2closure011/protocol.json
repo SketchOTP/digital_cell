@@ -1,0 +1,13 @@
+{
+  "assay_only": true,
+  "directive": "DC-DEV-021-M2-CLOSURE-011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING-AUDIT-001",
+  "mode": "activated_energy_fraction",
+  "next_execution_started": false,
+  "scopes": [
+    "paired",
+    "daughter_a_solo",
+    "daughter_b_solo"
+  ],
+  "starting_head": "845d5c0a6f5778ec7c8dfb5d822aaba89aeddb31",
+  "steps": 12000
+}

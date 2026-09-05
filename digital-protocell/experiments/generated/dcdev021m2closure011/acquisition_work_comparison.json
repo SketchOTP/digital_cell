@@ -1,0 +1,22 @@
+{
+  "combined_benefit_over_no_feedback": true,
+  "combined_saves_a_over_no_feedback": true,
+  "daughter_a": {
+    "combined_n": 151.7927606096,
+    "contact_n": 124.80659586556735,
+    "direct_n": 136.3586503025355,
+    "null_n": 99.29887582275623
+  },
+  "daughter_b": {
+    "combined_n": 1252.5710748514732,
+    "contact_n": 1193.9493565902553,
+    "direct_n": 1216.6666332407635,
+    "null_n": 1146.3487440851745
+  },
+  "paired": {
+    "combined_n": 1252.571074851476,
+    "contact_n": 1193.9493565902608,
+    "direct_n": 1216.6666332407615,
+    "null_n": 1146.3487440851763
+  }
+}
