@@ -1873,3 +1873,12 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - The earlier `7717c78` entry is preserved as historical implementation evidence.
 - Architect-accepted final authority is `307968768af3e321b5fe2f047d854cff13d2ce18` with exact-head Linux CI `33961467817` and artifact digest `sha256:fe84273c01fa9cf6158706f166647f4e9d4355c8609cc05a82f44bc1e7f86f59`.
 - CLOSURE-012 starts from that accepted final head; no CLOSURE-011 scientific conclusion is reopened.
+
+## D-20260905-dcdev021-m2-closure014-contact-boundary-a-fraction-reproduction-ceiling - IN PROGRESS
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE014-CONTACT-BOUNDARY-A-FRACTION-REPRODUCTION-CEILING`
+- Started: `2026-09-05`
+- Result: the strongest authorized assay-only combination of corrected literal A-fraction allocation and exact local contact-boundary suppression improves finite transfer over the no-feedback control but produces no candidate fission in paired or daughter scopes. Motor-off paired and Daughter B controls fission once.
+- Measurements: paired candidate `1237.9075679670561` N/F, `1566.5624360335048` A spent, `0` fissions; paired motor-off `1250.700023288915` N/F, `1` fission at step `775`. Candidate A-to-W residual `5.921096946082116e-13`; world N/F loss equals delivery.
+- Classification pending exact-head authority: `M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED`.
+- Boundary: this does not establish autonomous acquisition, resource-causal reproduction, descendants, heredity, evolution, learning, individuality, unattended persistence, or standalone-lifeform completion.

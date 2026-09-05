@@ -1,0 +1,136 @@
+name: DC-DEV-021 M2 CLOSURE-014 contact-boundary A-fraction ceiling
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-m2-closure014-contact-boundary-a-fraction-reproduction-ceiling
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  closure014:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+      - name: Verify exact authority, bounded diff, and PR boundary
+        run: |
+          set -euo pipefail
+          start=0d82bfaca318bca2c0ca6bb45e1a41e714f230fb
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefName,baseRefName > "$RUNNER_TEMP/pr44.json"
+          python3 - "$start" <<'PY'
+          import json, os, subprocess, sys
+          pr=json.load(open(os.path.join(os.environ['RUNNER_TEMP'], 'pr44.json')))
+          assert pr['state']=='OPEN'
+          assert pr['isDraft'] is True
+          assert pr['mergedAt'] is None
+          assert pr['headRefName']=='strategy/dc-dev-020r9-mesh-contract-requalification'
+          assert pr['baseRefName']=='strategy/dc-dev-016-metabolic-break-even'
+          start=sys.argv[1]
+          allowed={
+            '.agent/CURRENT.md','.agent/DIRECTIVES.md','.agent/OUTCOMES.md','.agent/RECORD.md',
+            '.github/workflows/dc-dev-021-m2-closure014.yml',
+            'digital-protocell/crates/regulatory-core/Cargo.toml',
+            'digital-protocell/examples/dcdev021_m2_closure010.rs',
+            'digital-protocell/examples/dcdev021_m2_closure010_impl.rs',
+            'digital-protocell/examples/dcdev021_m2_closure014.rs',
+          }
+          changed=set(subprocess.check_output(['git','diff','--name-only',f'{start}..HEAD'],text=True).splitlines())
+          unexpected=changed-allowed
+          assert not unexpected, sorted(unexpected)
+          forbidden=('digital-protocell/crates/chemistry-core/src/','digital-protocell/crates/regulatory-core/src/','digital-protocell/crates/m2-lifeform-runtime/src/')
+          assert not any(p.startswith(forbidden) for p in changed)
+          PY
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Build historical and CLOSURE-014 assays
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build --locked -p regulatory-core --release --example dcdev021_m2_closure012 --example dcdev021_m2_closure013 --example dcdev021_m2_closure014
+      - name: Reproduce accepted CLOSURE-013 literal A-fraction result
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run --locked -p regulatory-core --release --example dcdev021_m2_closure013 -- experiments/generated/dcdev021m2closure013-reference
+      - name: Run CLOSURE-014 contact-boundary ceiling assay
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run --locked -p regulatory-core --release --example dcdev021_m2_closure014 -- experiments/generated/dcdev021m2closure014
+      - name: Validate CLOSURE-014 classification, controls, and closure
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('experiments/generated/dcdev021m2closure014')
+          q=json.loads((root/'qualification.json').read_text())
+          arch=json.loads((root/'architecture.json').read_text())
+          closure=json.loads((root/'material_energy_closure.json').read_text())
+          repro=json.loads((root/'reproduction_comparison.json').read_text())
+          work=json.loads((root/'acquisition_work_comparison.json').read_text())
+          assert q['classification']=='M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED'
+          assert q['architect_acceptance'] in ('PENDING','COMPLETE')
+          assert q['next_execution_started'] is False
+          assert q['autonomous_resource_acquisition']=='NOT_ESTABLISHED'
+          assert arch['composition'].startswith('contact_i=1: motor_i=0; contact_i=0: motor_i=raw_i * A/(N+F+A+W)')
+          assert arch['new_parameter'] is False
+          assert arch['production_integration'] is False
+          assert closure['world_n_f_conservation'] is True
+          assert closure['a_to_w_closure_reused'] is True
+          assert closure['zero_resource_specific'] is True
+          assert repro['candidate_fission'] is False
+          assert repro['transfer_causal_fission'] is False
+          assert work['combined_benefit_over_no_feedback'] is True
+          groups=[]
+          for name in ('paired_arms.json','daughter_a_arms.json','daughter_b_arms.json'):
+              data=json.loads((root/name).read_text())
+              groups.append(data)
+              for arm_name, arm in data.items():
+                  base=arm['base']['base']
+                  assert base['invalid'] is False, (name,arm_name)
+                  assert abs(base['world_n_loss']-base['delivered_n']) <= 1e-10
+                  assert abs(base['world_f_loss']-base['delivered_f']) <= 1e-10
+                  assert base['a_to_w_residual'] <= 1e-9
+          candidate=groups[0]['combined']['base']['base']
+          motor_off=groups[0]['motor_off']['base']['base']
+          assert abs(candidate['delivered_n']-1237.9075679670561) <= 1e-10
+          assert candidate['fissions']==0
+          assert motor_off['fissions']==1
+          assert motor_off['first_fission_step']==775
+          assert abs(motor_off['delivered_n']-1250.700023288915) <= 1e-10
+          for p in root.glob('*.json'): json.loads(p.read_text())
+          print('CLOSURE-014 validation passed')
+          PY
+      - name: Validate governance and preservation
+        run: |
+          set -euo pipefail
+          git diff --check
+          grep -q 'DC-DEV-021-M2-CLOSURE-014-CONTACT-BOUNDARY-A-FRACTION-REPRODUCTION-CEILING-001' .agent/CURRENT.md .agent/DIRECTIVES.md .agent/RECORD.md
+          grep -q 'M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED' .agent/CURRENT.md .agent/OUTCOMES.md
+          grep -q 'MaturationCoupledV4 / reserve OFF' .agent/CURRENT.md
+      - name: Hash compact CLOSURE-014 evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2closure014 -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2closure014.sha256"
+      - name: Upload CLOSURE-014 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-m2-closure014-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2closure014/
+            ${{ runner.temp }}/dcdev021m2closure014.sha256

@@ -39,6 +39,8 @@ fn c10_combined_mechanics(
     // historical replay.  CLOSURE-013 explicitly selects the documented law
     // so the semantic discrepancy can be measured without changing
     // production science or rewriting the historical result.
+    let contact_boundary_mode =
+        std::env::var_os("DC_CLOSURE014_CONTACT_BOUNDARY").is_some();
     let allocation = if std::env::var_os("DC_CLOSURE013_A_FRACTION_LAW").is_some() {
         material_signal
     } else {
@@ -47,7 +49,14 @@ fn c10_combined_mechanics(
     let motor: Vec<f64> = raw
         .iter()
         .zip(&regulator.state.activity)
-        .map(|(base, inhibit)| base * allocation * (1.0 - inhibit))
+        .zip(contact)
+        .map(|((base, inhibit), local_contact)| {
+            if contact_boundary_mode && *local_contact > 0.5 {
+                0.0
+            } else {
+                base * allocation * (1.0 - inhibit)
+            }
+        })
         .collect();
     let before = agent.mesh.clone();
     let ledger =

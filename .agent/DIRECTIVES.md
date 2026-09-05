@@ -928,3 +928,14 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Artifact digest: `sha256:a0a474193eb4a57c09c6099147db475f2435e7ed8ea5e278ffb3796e669fb6e5`
 - Classification: `M2_ACTIVE_MATERIAL_ALLOCATION_FISSION_INSUFFICIENT`
 - Status: `CLOSED`
+
+## D-20260905-dcdev021-m2-closure014-contact-boundary-a-fraction-reproduction-ceiling - IN PROGRESS
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE014-CONTACT-BOUNDARY-A-FRACTION-REPRODUCTION-CEILING`
+- Started: `2026-09-05`
+- External directive: `DC-DEV-021-M2-CLOSURE-014-CONTACT-BOUNDARY-A-FRACTION-REPRODUCTION-CEILING-001`
+- Authority: accepted CLOSURE-013 head `0d82bfaca318bca2c0ca6bb45e1a41e714f230fb`, workflow `33966197436`, artifact `sha256:9c0a9d9a20a77431b7b23f678ba724cbdfb0a81db1e87593b9ed651bea5b7450`.
+- Objective: test the assay-only upper-bound composition of literal A-fraction motor allocation with exact zero motor on production-positive local contact patches.
+- Preliminary result: paired candidate delivery is `1237.9075679670561` N/F with `1566.5624360335048` A spent and zero candidate fissions; paired motor-off fissions once at step `775`. World conservation, A-to-W closure, and zero-resource specificity pass.
+- Exclusions: no production integration, scientific runtime change, tuning, new parameter, horizon/resource-geometry change, growth/fission change, M1 change, restart repair, or PR #44 modification.
+- Acceptance: `PENDING` exact-head Linux validation, artifact digest, Architect disposition, and Notion readback.

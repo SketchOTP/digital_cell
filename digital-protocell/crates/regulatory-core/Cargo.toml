@@ -231,3 +231,7 @@ path = "../../examples/dcdev021_m2_closure012.rs"
 [[example]]
 name = "dcdev021_m2_closure013"
 path = "../../examples/dcdev021_m2_closure013.rs"
+
+[[example]]
+name = "dcdev021_m2_closure014"
+path = "../../examples/dcdev021_m2_closure014.rs"

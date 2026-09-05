@@ -114,8 +114,11 @@ mod accepted_closure_context {
         let closure012_mode = std::env::var_os("DC_CLOSURE012_FISSION_AUDIT").is_some();
         let closure011_mode = std::env::var_os("DC_CLOSURE011_A_FRACTION").is_some();
         let closure013_mode = std::env::var_os("DC_CLOSURE013_A_FRACTION_LAW").is_some();
+        let closure014_mode = std::env::var_os("DC_CLOSURE014_CONTACT_BOUNDARY").is_some();
         let material_mode = closure011_mode || closure012_mode || closure013_mode;
-        let directive = if closure013_mode {
+        let directive = if closure014_mode {
+            "DC-DEV-021-M2-CLOSURE-014-CONTACT-BOUNDARY-A-FRACTION-REPRODUCTION-CEILING-001"
+        } else if closure013_mode {
             "DC-DEV-021-M2-CLOSURE-013-A-FRACTION-EXECUTION-RECONCILIATION-001"
         } else if closure012_mode {
             "DC-DEV-021-M2-CLOSURE-012-ACTIVE-WORK-FISSION-GATE-AUDIT-001"
@@ -124,7 +127,9 @@ mod accepted_closure_context {
         } else {
             C10_DIRECTIVE
         };
-        let starting_head = if closure013_mode {
+        let starting_head = if closure014_mode {
+            "0d82bfaca318bca2c0ca6bb45e1a41e714f230fb"
+        } else if closure013_mode {
             "925fd72ea0e2f330174cae317564de7f28139d69"
         } else if closure012_mode {
             "307968768af3e321b5fe2f047d854cff13d2ce18"
@@ -210,7 +215,17 @@ mod accepted_closure_context {
             }))
         });
         let c12_geometry_only = c12_mass_eligible_seen && !c12_pinch_seen;
-        let classification = if closure013_mode {
+        let classification = if closure014_mode {
+            if invalid || !zero_specific {
+                "M2_CLOSURE014_CONTACT_BOUNDARY_A_FRACTION_INVALID"
+            } else if combined_fission && transfer_causal_fission {
+                "M2_CONTACT_BOUNDARY_A_FRACTION_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED"
+            } else if combined_benefit || combined_saves_a {
+                "M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED"
+            } else {
+                "M2_CONTACT_BOUNDARY_A_FRACTION_WORK_ALLOCATION_INSUFFICIENT"
+            }
+        } else if closure013_mode {
             if invalid || !zero_specific {
                 "M2_CLOSURE013_A_FRACTION_EXECUTION_RECONCILIATION_INVALID"
             } else if combined_fission && transfer_causal_fission {
@@ -254,7 +269,7 @@ mod accepted_closure_context {
             "starting_head": starting_head,
             "steps": C10_STEPS,
             "assay_only": true,
-            "mode": if closure013_mode { "documented_a_fraction_execution_reconciliation" } else if closure012_mode { "active_work_fission_gate_audit" } else if closure011_mode { "activated_energy_fraction" } else { "combined_material_contact" },
+            "mode": if closure014_mode { "contact_boundary_a_fraction_reproduction_ceiling" } else if closure013_mode { "documented_a_fraction_execution_reconciliation" } else if closure012_mode { "active_work_fission_gate_audit" } else if closure011_mode { "activated_energy_fraction" } else { "combined_material_contact" },
             "next_execution_started": false,
             "scopes": ["paired", "daughter_a_solo", "daughter_b_solo"],
         }));
@@ -267,10 +282,11 @@ mod accepted_closure_context {
             "scientific_runtime_source_changed": false,
         }));
         write(&out_dir, "architecture.json", &json!({
-            "composition": if closure013_mode { "motor_i = raw_i * A/(N+F+A+W) * (1 - regulator_i)" } else if material_mode { "motor_i = raw_i * A/(N+F+A+W) * (1 - regulator_i)" } else { "motor_i = raw_i * (1 - S) * (1 - regulator_i)" },
+            "composition": if closure014_mode { "contact_i=1: motor_i=0; contact_i=0: motor_i=raw_i * A/(N+F+A+W) * (1 - regulator_i)" } else if closure013_mode { "motor_i = raw_i * A/(N+F+A+W) * (1 - regulator_i)" } else if material_mode { "motor_i = raw_i * A/(N+F+A+W) * (1 - regulator_i)" } else { "motor_i = raw_i * (1 - S) * (1 - regulator_i)" },
             "material_signal": if material_mode { "A/(N+F+A+W)" } else { "S=(N+F)/(N+F+A+W)" },
             "historical_executed_composition": if closure013_mode { "not_applicable" } else { "motor_i = raw_i * (1 - material_signal_i) * (1 - regulator_i)" },
             "reconciled_executed_composition": if closure013_mode { "motor_i = raw_i * material_signal_i * (1 - regulator_i)" } else { "not_applicable" },
+            "contact_boundary_rule": if closure014_mode { "production-positive local contact selects exact zero motor output; noncontact retains literal A-fraction output" } else { "not_applicable" },
             "contact_signal": "FiniteSpatialResourceRegionV1::local_contact_signal",
             "regulator": "existing ContinuityNetworkV1 dynamics",
             "new_parameter": false,
@@ -324,7 +340,7 @@ mod accepted_closure_context {
             "daughter_a_combined_fissions": c10_metric(&daughter_a, "combined", "fissions"),
             "daughter_b_combined_fissions": c10_metric(&daughter_b, "combined", "fissions"),
         }));
-        if closure013_mode {
+        if closure013_mode && !closure014_mode {
             write(&out_dir, "semantic_reconciliation.json", &json!({
                 "historical_authority": {
                     "directive": "DC-DEV-021-M2-CLOSURE-012-ACTIVE-WORK-FISSION-GATE-AUDIT-001",
@@ -403,7 +419,9 @@ mod accepted_closure_context {
             "generic_full_mesh_restart": "KNOWN_FAIL_NONCONTAMINATING",
             "repair_attempted": false,
         }));
-        let reported_classification = if closure013_mode {
+        let reported_classification = if closure014_mode {
+            classification
+        } else if closure013_mode {
             classification
         } else if closure012_mode {
             classification
@@ -435,14 +453,14 @@ mod accepted_closure_context {
         if closure012_mode {
             files.extend(["fission_gate_audit.json", "fission_gate_summary.json"]);
         }
-        if closure013_mode {
+        if closure013_mode && !closure014_mode {
             files.push("semantic_reconciliation.json");
         }
         write(&out_dir, "artifact_manifest.json", &json!({
             "files": files,
             "dense_traces": "Atlas",
         }));
-        println!("{} classification: {reported_classification}", if closure013_mode { "CLOSURE-013" } else if closure012_mode { "CLOSURE-012" } else if closure011_mode { "CLOSURE-011" } else { "CLOSURE-010" });
+        println!("{} classification: {reported_classification}", if closure014_mode { "CLOSURE-014" } else if closure013_mode { "CLOSURE-013" } else if closure012_mode { "CLOSURE-012" } else if closure011_mode { "CLOSURE-011" } else { "CLOSURE-010" });
         println!("combined benefit: {combined_benefit}; candidate fission: {combined_fission}; transfer causal fission: {transfer_causal_fission}");
     }
 }

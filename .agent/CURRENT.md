@@ -175,3 +175,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Boundary: separated resources remain out of contact in this runtime increment; acquisition, resource-causal reproduction, three-generation reproduction, and post-fission intrinsic-state continuation remain `NOT_ESTABLISHED`. No new motor seed is created after fission.
 - Final authority: exact-head Linux workflow `33955320620` passed on head `18954ab6d142b3b02cb5a7aaa3bd5a7e79469eef`; artifact digest `sha256:0c5e719b70329ae63f2b6d3c5b913dad649a26b46f8ae833f483365949ec5566`; Notion append-only readback passed.
 - Engineering increment status: COMPLETE. This does not qualify separated acquisition, resource-causal reproduction, or standalone lifeform completion.
+
+## CLOSURE-014 contact-boundary A-fraction ceiling
+
+- CLOSURE-014 is assay-only and starts exactly at accepted CLOSURE-013 head `0d82bfaca318bca2c0ca6bb45e1a41e714f230fb`.
+- It composes corrected literal `A/(N+F+A+W)` motor allocation with exact zero motor output only on production-positive local contact patches; noncontact patches retain literal A-fraction output.
+- The fixed 12,000-step ecology completed with world N/F conservation, A-to-W closure, and zero-resource specificity. The paired candidate delivered `1237.9075679670561` N/F, spent `1566.5624360335048` A, and produced zero fissions; the paired motor-off control fissioned once at step `775`.
+- Classification is `M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED`, pending exact-head authority. Autonomous acquisition, resource-causal reproduction, descendants, heredity, evolution, learning, individuality, unattended persistence, and standalone-lifeform completion remain unestablished.
