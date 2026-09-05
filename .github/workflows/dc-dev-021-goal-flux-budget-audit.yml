@@ -11,6 +11,9 @@ permissions:
 
 jobs:
   flux-budget:
+    # Archival R7 authority is immutable; successor Goal cycles use their own
+    # scoped workflow and must not be judged by this historical allowlist.
+    if: github.sha == 'dcb02ecadf89ddc87faa46e5a90fde115d072f4b'
     runs-on: ubuntu-latest
     steps:
       - name: Check out exact result head

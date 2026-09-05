@@ -16,6 +16,19 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Affected areas: isolated assay/example, compact evidence, scoped workflow, and append-only governance; no scientific runtime, M1, resource, restart, or PR #44 change.
 - Supersedes record: none
 
+## DEC-DCDEV021-GOAL-R7-WORKFLOW-ARCHIVAL-GATING
+
+- Date: `2026-09-05`
+- Status: `ACTIVE_PROVISIONAL`
+- Record or decision ID: `DEC-DCDEV021-GOAL-R7-WORKFLOW-ARCHIVAL-GATING`
+- Decision or event: exact-head-gate the archival R7 workflow to its sealed
+  result so successor preservation cycles are not judged by its historical
+  allowlist.
+- Rationale: the R7 workflow rejected the R9 files before scientific execution;
+  the failure was scope validation, not runtime evidence.
+- Affected areas: workflow gating and append-only governance only.
+- Supersedes record: none
+
 ## DEC-DCDEV021-ENTRY025-LIVE-ANTAGONISTIC-INHERITED-LOCOMOTION-R1
 
 - Date: 2026-09-02

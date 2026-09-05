@@ -330,3 +330,6 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Stop condition: if exact-head preservation fails, reject/replan assimilation;
   if it passes, do not add another pool, buffer, field-placement, allocation,
   or active-work variant without a new source-justified material-flow contract.
+- Workflow reconciliation: the archival R7 workflow was observed rejecting the
+  intentional R9 files at its allowlist gate; it is now exact-head gated to
+  sealed R7 authority and is not scientific evidence for R9.

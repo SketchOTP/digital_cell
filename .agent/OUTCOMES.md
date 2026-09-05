@@ -2092,3 +2092,15 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Stop condition: preservation failure rejects/replans assimilation; a pass
   does not authorize another pool, buffer, field-placement, allocation, or
   active-work variant.
+
+## D-20260905-dcdev021-goal-r7-workflow-archival-gating - COMPLETE PROVISIONAL
+
+- Outcome ID: `OUT-DCDEV021-GOAL-R7-WORKFLOW-ARCHIVAL-GATING`.
+- The archival R7 workflow rejected the R9 commit at its bounded-diff
+  allowlist before scientific execution. This is a workflow-scope failure, not
+  scientific evidence.
+- The workflow is now exact-head gated to sealed R7 result head
+  `dcb02ecadf89ddc87faa46e5a90fde115d072f4b`; current Goal cycles use their
+  own scoped workflow.
+- Classification: `GOAL_AGENT_PROVISIONALLY_ACCEPTED` for workflow-scope
+  reconciliation only.
