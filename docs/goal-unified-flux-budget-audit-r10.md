@@ -79,6 +79,9 @@ architecture is insufficient and local implementation stops.
 ## Authority boundary
 
 - Result head: `465ff8000e47d34f5dd0133e10d7ec31e09c810b`
+- Exact-head validation head: `61b29397d9edb9a68e450b6a53c1c171a33fbe4d`
+- Exact-head Linux CI: `33996258599` passed.
+- Artifact digest: `sha256:f3a1f5dddfc77e42c516f7e949391d1a7d42e9a4b5da16b758fb730fb86d5e57`.
 - Goal-agent status: provisional only; independent Architect acceptance is not claimed.
 - Resource-causal reproduction: `NOT_ESTABLISHED`.
 - Assimilation architecture: `INVESTIGATE_NOT_ACCEPTED`.

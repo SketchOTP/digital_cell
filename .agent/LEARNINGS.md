@@ -792,3 +792,14 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Next boundary: write a source-justified material-flow contract; if it needs
   an unledgered source or frozen-law change, stop local organism/world
   implementation and replan.
+
+## L-DCDEV021-GOAL-CURRENT-FLUX-LEDGER-R10-AUTHORITY-001
+
+- Fact: exact-head Linux workflow `33996258599` passed on
+  `61b29397d9edb9a68e450b6a53c1c171a33fbe4d`; artifact digest is
+  `sha256:f3a1f5dddfc77e42c516f7e949391d1a7d42e9a4b5da16b758fb730fb86d5e57`.
+- Lesson: remote validation seals only the diagnostic and preservation
+  boundary; it does not promote an investigated core-state extension to
+  accepted architecture.
+- Confidence: `VERIFIED` for the exact diagnostic head; independent Architect
+  acceptance remains pending.

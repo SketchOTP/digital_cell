@@ -361,3 +361,9 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
   precede runtime work.
 - Stop condition: no additional pool, buffer, field placement, allocation,
   assimilation, active-work, gain, threshold, or fission-gate variant.
+- Exact-head Linux CI for the pushed result head `61b29397d9edb9a68e450b6a53c1c171a33fbe4d`:
+  workflow `33996258599` passed.
+- Independently downloaded artifact digest:
+  `sha256:f3a1f5dddfc77e42c516f7e949391d1a7d42e9a4b5da16b758fb730fb86d5e57`.
+- This remote validation seals the R10 diagnostic evidence provisionally; it
+  does not accept assimilation architecture or resource-causal reproduction.

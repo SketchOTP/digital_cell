@@ -2137,3 +2137,15 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - No new pool, transport layer, allocation rule, active-work formula,
   fission-gate change, or resource-causal claim was introduced. Independent
   Architect acceptance is not claimed.
+
+## D-20260905dcdev021-goal-current-flux-ledger-r10-authority - COMPLETE PROVISIONAL
+
+- Result head: `61b29397d9edb9a68e450b6a53c1c171a33fbe4d`.
+- Exact-head Linux workflow: `33996258599` passed.
+- Independently downloaded artifact ZIP digest:
+  `sha256:f3a1f5dddfc77e42c516f7e949391d1a7d42e9a4b5da16b758fb730fb86d5e57`.
+- Goal-agent disposition: `GOAL_AGENT_PROVISIONALLY_ACCEPTED` for the common
+  ledger and preservation boundary only. Assimilation remains
+  `INVESTIGATE_NOT_ACCEPTED`; resource-causal reproduction remains
+  `NOT_ESTABLISHED`; independent Architect acceptance is not claimed.
+- Successor decision remains contract-before-runtime; no new execution started.

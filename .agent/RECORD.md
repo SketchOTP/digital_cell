@@ -1018,6 +1018,18 @@ Use it for architectural decisions, governance changes, releases, qualification 
   must replan organism/world material flow from the end-goal causal contract.
 - Independent Architect acceptance: `PENDING`.
 
+## DEC-DCDEV021-GOAL-CURRENT-FLUX-LEDGER-R10-AUTHORITY
+
+- Date: `2026-09-05`
+- Status: `ACTIVE_PROVISIONAL`
+- Result head: `61b29397d9edb9a68e450b6a53c1c171a33fbe4d`.
+- Exact-head Linux workflow: `33996258599` passed.
+- Artifact digest: `sha256:f3a1f5dddfc77e42c516f7e949391d1a7d42e9a4b5da16b758fb730fb86d5e57`.
+- Decision: seal the common flux-ledger evidence provisionally. This does not
+  accept assimilation architecture or establish resource-causal fission.
+- Independent Architect acceptance: `PENDING`.
+- Supersedes record: `DEC-DCDEV021-GOAL-CURRENT-FLUX-LEDGER-R10`.
+
 ## DEC-DCDEV021-GOAL-POST-FISSION-ECOLOGICAL-REENTRY-R6
 
 - Date: `2026-09-05`
