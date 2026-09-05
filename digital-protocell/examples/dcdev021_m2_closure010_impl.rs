@@ -34,10 +34,20 @@ fn c10_combined_mechanics(
     {
         return Err("combined motor topology mismatch".into());
     }
+    // CLOSURE-012 historically executed the complement of the documented
+    // A-fraction allocation.  Keep that path as the default for exact
+    // historical replay.  CLOSURE-013 explicitly selects the documented law
+    // so the semantic discrepancy can be measured without changing
+    // production science or rewriting the historical result.
+    let allocation = if std::env::var_os("DC_CLOSURE013_A_FRACTION_LAW").is_some() {
+        material_signal
+    } else {
+        1.0 - material_signal
+    };
     let motor: Vec<f64> = raw
         .iter()
         .zip(&regulator.state.activity)
-        .map(|(base, inhibit)| base * (1.0 - material_signal) * (1.0 - inhibit))
+        .map(|(base, inhibit)| base * allocation * (1.0 - inhibit))
         .collect();
     let before = agent.mesh.clone();
     let ledger =

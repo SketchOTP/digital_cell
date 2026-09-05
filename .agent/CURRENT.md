@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-05T11:36:00-04:00`
+- Last updated: `2026-09-05T12:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260905-dcdev021-m2-closure012-active-work-fission-gate-audit`
-- External directive ID: `DC-DEV-021-M2-CLOSURE-012-ACTIVE-WORK-FISSION-GATE-AUDIT-001`
-- Objective: Identify the first existing fission-gate condition lost by the accepted CLOSURE-011 active-work candidate, using the exact fixed ecology and observer-only gate snapshots.
-- Current status: `COMPLETE`
-- Acceptance: `ARCHITECT_ACCEPTED`
-- Current phase: `CLOSURE-012 active-work fission-gate audit`
-- Expected or actual touched areas: `isolated CLOSURE-012 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `no successor execution; retain resource-causal reproduction as unestablished`
+- Local directive ID: `D-20260905-dcdev021-m2-closure013-a-fraction-execution-reconciliation`
+- External directive ID: `DC-DEV-021-M2-CLOSURE-013-A-FRACTION-EXECUTION-RECONCILIATION-001`
+- Objective: Reconcile the documented CLOSURE-012 A-fraction motor law with the exact executed complement before any successor biology.
+- Current status: `IN_PROGRESS`
+- Acceptance: `PENDING`
+- Current phase: `CLOSURE-013 execution-semantics reconciliation`
+- Expected or actual touched areas: `isolated assay selector, compact evidence, scoped workflow, append-only governance`
+- Immediate next action: `exact-head Linux validation of historical complement and literal documented law`
 
 ## CLOSURE-011 final authority
 
@@ -38,13 +38,21 @@
 ## CLOSURE-012 final authority
 
 - Result branch: `m2/dc-dev-021-m2-closure012-fission-gate-audit`.
-- Result head: `c29f88ce8c5d49974a7c98fd55f4a63a3f352272`.
-- Exact-head Linux CI: `33963373083` - `PASS`.
-- Artifact digest: `sha256:faec4024cfedc4fc44d3b6cd8cb611ed779dea13f56a23fae3830c8e515afcf1`.
+- Result head: `925fd72ea0e2f330174cae317564de7f28139d69`.
+- Exact-head Linux CI: `33963815229` - `PASS`.
+- Artifact digest: `sha256:1d90f619bbd1ea10bbbed03294c009b78153c7ab982e1c565e220a6d06a40eef`.
 - Classification: `M2_ACTIVE_WORK_FISSION_GROWTH_THRESHOLD_CEILING_CONFIRMED`.
 - Scientific runtime source changed: `NO`.
 - Architect acceptance: `COMPLETE`.
 - Successor execution: `NOT_STARTED`.
+
+## CLOSURE-013 execution-semantics reconciliation
+
+- Starting accepted head: `925fd72ea0e2f330174cae317564de7f28139d69`.
+- The sealed CLOSURE-012 evidence documents `raw * A/(N+F+A+W) * (1-regulator)`, while the helper executed `raw * (1-material_signal) * (1-regulator)` under the A-fraction environment.
+- The historical complement remains the default for exact replay; the CLOSURE-013 opt-in selects the literal documented A-fraction law. No production scientific runtime source, growth/fission law, resource geometry, horizon, M1, restart boundary, or PR #44 changed.
+- Preliminary local result: literal documented A-fraction paired delivery `1230.5172060231012` N/F, A spent `1583.3213577312897`, zero fissions; historical complement paired delivery `1252.571074851476` N/F, A spent `1487.7520125367535`, zero fissions. Motor-off paired control fissions once.
+- Classification pending exact-head Linux validation: `M2_DOCUMENTED_A_FRACTION_LAW_REPRODUCTION_NOT_ESTABLISHED`.
 
 ## Temporary task-relevant facts
 

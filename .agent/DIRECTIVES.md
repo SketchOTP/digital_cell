@@ -883,13 +883,24 @@ Do not record execution results here. Do not rewrite historical entries after ad
 ## D-20260905-dcdev021-m2-closure012-active-work-fission-gate-audit - CLOSED
 
 - Result branch: `m2/dc-dev-021-m2-closure012-fission-gate-audit`.
-- Result head: `c29f88ce8c5d49974a7c98fd55f4a63a3f352272`.
-- Exact-head Linux CI: `33963373083` - `PASS`.
-- Artifact digest: `sha256:faec4024cfedc4fc44d3b6cd8cb611ed779dea13f56a23fae3830c8e515afcf1`.
+- Result head: `925fd72ea0e2f330174cae317564de7f28139d69`.
+- Exact-head Linux CI: `33963815229` - `PASS`.
+- Artifact digest: `sha256:1d90f619bbd1ea10bbbed03294c009b78153c7ab982e1c565e220a6d06a40eef`.
 - Classification: `M2_ACTIVE_WORK_FISSION_GROWTH_THRESHOLD_CEILING_CONFIRMED`.
 - Disposition: `ARCHITECT_ACCEPTED`.
 - Boundary: candidate active-work scopes never reached the existing `1.35 x birth mass` eligibility gate; motor-off Daughter B and paired controls reached it and passed existing pinch/A accounting. No production behavior or scientific runtime source changed.
 - Successor execution: `NOT_STARTED`.
+
+## D-20260905-dcdev021-m2-closure013-a-fraction-execution-reconciliation - ISSUED
+
+- Issued: `2026-09-05`
+- Issuer: `Architect/Coder session`
+- External directive: `DC-DEV-021-M2-CLOSURE-013-A-FRACTION-EXECUTION-RECONCILIATION-001`
+- Starting accepted head: `925fd72ea0e2f330174cae317564de7f28139d69`
+- Objective: reconcile the CLOSURE-012 documented A-fraction motor allocation against the exact executed complement using the fixed ecology and horizon.
+- Scope: additive assay selector, historical complement replay, literal documented-law replay, compact evidence, scoped workflow, and append-only governance.
+- Exclusions: production scientific runtime changes, growth/fission changes, parameter search, tuning, horizon/resource-geometry changes, forced fission, new sensors, memory, targets, gradients, M1 changes, restart repair, PR #44 modification, and successor biology.
+- Acceptance: `M2_DOCUMENTED_A_FRACTION_LAW_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED`, `M2_DOCUMENTED_A_FRACTION_LAW_REPRODUCTION_NOT_ESTABLISHED`, `M2_DOCUMENTED_A_FRACTION_LAW_WORK_ALLOCATION_INSUFFICIENT`, or invalid according to exact-head evidence.
 D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 
 - Result head: `4cd426dc9083c40861c0992fc66ca771ed6ed0d2`.

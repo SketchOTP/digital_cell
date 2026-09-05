@@ -867,7 +867,17 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Date: `2026-09-05`
 - Status: `COMPLETE`
 - Decision: accept CLOSURE-012 as `M2_ACTIVE_WORK_FISSION_GROWTH_THRESHOLD_CEILING_CONFIRMED`.
-- Authority: result branch `m2/dc-dev-021-m2-closure012-fission-gate-audit`; result head `c29f88ce8c5d49974a7c98fd55f4a63a3f352272`; exact-head Linux CI `33963373083` passed; artifact digest `sha256:faec4024cfedc4fc44d3b6cd8cb611ed779dea13f56a23fae3830c8e515afcf1`.
+- Authority: result branch `m2/dc-dev-021-m2-closure012-fission-gate-audit`; result head `925fd72ea0e2f330174cae317564de7f28139d69`; exact-head Linux CI `33963815229` passed; artifact digest `sha256:1d90f619bbd1ea10bbbed03294c009b78153c7ab982e1c565e220a6d06a40eef`.
 - Rationale: the active-work candidate's maximum mass ratio was `1.3094167543508781`, below the existing `1.35` fission eligibility gate in every candidate scope. Motor-off Daughter B and paired controls reached the gate at step `775` and passed existing pinch and A-funding checks. No candidate fission occurred.
 - Boundary: the result identifies an existing growth/mass eligibility ceiling; it does not authorize growth/fission tuning, forced division, a new work controller, or successor execution. Autonomous acquisition and resource-causal reproduction remain unestablished.
 - Preservation: no scientific runtime source changed; exact fixed ecology/horizon, material closure, A-to-W closure, historical preservation, M1, restart boundary, and PR #44 remain preserved.
+
+## DEC-DCDEV021-M2-CLOSURE013-A-FRACTION-EXECUTION-RECONCILIATION
+
+- Date: `2026-09-05`
+- Status: `ACTIVE`
+- Decision: authorize the bounded execution-semantics reconciliation from accepted CLOSURE-012 head `925fd72ea0e2f330174cae317564de7f28139d69`.
+- Rationale: the CLOSURE-012 evidence documents an A-fraction allocation, but exact source replay shows the executed helper used its complement. The historical path must remain reproducible while the documented law is measured literally.
+- Scope: additive assay-local selector, fixed ecology/horizon, exact historical and corrected controls, conservation/preservation evidence, and exact-head CI only.
+- Exclusions: no production source, growth/fission law, parameter, tuning, horizon, resource geometry, sensor, memory, target, gradient, M1, restart repair, or PR #44 modification.
+- Acceptance boundary: `M2_DOCUMENTED_A_FRACTION_LAW_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED`, `M2_DOCUMENTED_A_FRACTION_LAW_REPRODUCTION_NOT_ESTABLISHED`, `M2_DOCUMENTED_A_FRACTION_LAW_WORK_ALLOCATION_INSUFFICIENT`, or invalid.

@@ -1825,6 +1825,16 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Boundary: autonomous resource acquisition, resource-causal reproduction, descendant ecological continuity, heritable ecological phenotype, environment-dependent evolution, learning, individuality, and standalone-lifeform completion remain unestablished.
 - Architect acceptance: `COMPLETE`; successor execution: `NOT_STARTED`.
 
+## D-20260905-dcdev021-m2-closure013-a-fraction-execution-reconciliation - IN PROGRESS
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE013-A-FRACTION-EXECUTION-RECONCILIATION`
+- Started: `2026-09-05`
+- External directive: `DC-DEV-021-M2-CLOSURE-013-A-FRACTION-EXECUTION-RECONCILIATION-001`
+- Objective: determine whether CLOSURE-012's documented A-fraction law was actually executed and remeasure that literal law without changing production science.
+- Preliminary result: the exact historical complement replay reproduces CLOSURE-012; the literal A-fraction replay produces paired `1230.5172060231012` N/F, `1583.3213577312897` A spent, and zero candidate fissions. Motor-off paired control fissions once.
+- Acceptance: `PENDING` exact-head Linux validation and Architect disposition.
+- Boundary: autonomous acquisition, resource-causal reproduction, descendants, heredity, evolution, learning, individuality, and standalone-lifeform completion remain unestablished.
+
 ## D-20260905-dcdev021-m2-closure012-active-work-fission-gate - IN PROGRESS
 
 - Outcome ID: `OUT-DCDEV021-M2-CLOSURE012-ACTIVE-WORK-FISSION-GATE`
@@ -1842,7 +1852,7 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Closed: `2026-09-05T11:36:00-04:00`
 - Acceptance: `MET`
 - Summary: In the exact fixed CLOSURE-011 ecology and horizon, the active-work candidate never reached the existing `1.35 x birth mass` fission eligibility gate. Its maximum observed mass ratio was `1.3094167543508781`. Motor-off Daughter B and paired controls reached the existing gate at step `775`, found the existing pinch, and passed the existing A-funded cross-bond requirement. The first bounded divergence is therefore the existing growth/mass threshold.
-- Authority: result head `c29f88ce8c5d49974a7c98fd55f4a63a3f352272`; exact-head Linux workflow `33963373083` passed; independently verified artifact ZIP digest `sha256:faec4024cfedc4fc44d3b6cd8cb611ed779dea13f56a23fae3830c8e515afcf1`.
+- Authority: result head `925fd72ea0e2f330174cae317564de7f28139d69`; exact-head Linux workflow `33963815229` passed; independently verified artifact ZIP digest `sha256:1d90f619bbd1ea10bbbed03294c009b78153c7ab982e1c565e220a6d06a40eef`.
 - Changed areas: additive observer-only gate audit, compact evidence generation, scoped workflow, and append-only governance only; no production scientific runtime, growth/fission law, M1 provenance, restart boundary, or PR #44 modification.
 - Boundary: autonomous resource acquisition, resource-causal reproduction, descendant continuity, heritable ecological phenotype, environment-dependent evolution, learning, individuality, unattended persistence, and standalone-lifeform completion remain unestablished.
 - Architect acceptance: `COMPLETE`; successor execution: `NOT_STARTED`.
