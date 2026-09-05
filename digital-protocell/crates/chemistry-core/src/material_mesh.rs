@@ -388,6 +388,8 @@ impl MaterialMesh {
             && self.interior.n.is_finite()
             && self.interior.f.is_finite()
             && self.interior.w.is_finite()
+            && self.interior.assimilation_n.is_finite()
+            && self.interior.assimilation_f.is_finite()
     }
 
     pub fn uses_observer_only_death(&self) -> bool {
@@ -627,4 +629,40 @@ pub fn conserve_interior_amount_across_area_change(
         *value *= scale;
     }
     true
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{LumpedChem, MaterialMesh};
+
+    #[test]
+    fn assimilation_material_is_part_of_runtime_validity() {
+        let mut mesh = MaterialMesh::seed_regular(
+            8,
+            5.0,
+            0.0,
+            0.0,
+            1.0,
+            0.5,
+            LumpedChem::default(),
+            LumpedChem::default(),
+            0.0,
+        );
+        mesh.stamp_maturation_coupled_schema();
+        mesh.interior.assimilation_n = f64::NAN;
+        assert!(!mesh.physical_runtime_valid());
+        mesh.interior.assimilation_n = 0.0;
+        mesh.interior.assimilation_f = f64::INFINITY;
+        assert!(!mesh.physical_runtime_valid());
+    }
+
+    #[test]
+    fn missing_legacy_assimilation_fields_default_to_zero() {
+        let chem: LumpedChem = serde_json::from_str(
+            r#"{"c":1.0,"a":2.0,"n":3.0,"f":4.0,"w":5.0}"#,
+        )
+        .expect("historical chemistry JSON remains readable");
+        assert_eq!(chem.assimilation_n, 0.0);
+        assert_eq!(chem.assimilation_f, 0.0);
+    }
 }

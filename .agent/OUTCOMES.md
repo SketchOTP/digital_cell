@@ -2010,3 +2010,19 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Changed areas: opt-in runtime composition, compact evidence, scoped workflow, documentation, and append-only governance only. No frozen scientific core, `1.35` gate, M1 source, restart boundary, or PR #44 changed.
 - Validation: local release active/disabled controls and runtime build/tests passed; exact-head Linux CI and artifact digest are pending; Architect acceptance is pending; Notion sync was unavailable in-session.
 - Stop condition: do not run another neighboring active-work, contact, material-fraction, or motor-allocation formula. Reconstruct a new material-flow architecture before another runtime execution.
+
+## D-20260905-dcdev021-goal-unified-flux-budget-audit-r7 - IN PROGRESS PROVISIONAL
+
+- Outcome ID: `OUT-DCDEV021-GOAL-UNIFIED-FLUX-BUDGET-AUDIT-R7`.
+- Starting head: `c51e5d997099b8cac703b3d0345ebf39cab729b5`.
+- Scope: common checkpoint flux ledger comparing the sealed whole-membrane
+  reproductive reference with the current integrated spatial post-fission
+  assimilation replay, plus preservation checks for the new persistent state.
+- Provisional result: first measured divergence is environmental N/F transfer
+  at the first common checkpoint; downstream active processing and growth are
+  nonzero, but resource-causal fission remains unestablished.
+- Classification:
+  `GOAL_AGENT_PROVISIONAL_FLUX_LEDGER_FIRST_DIVERGENCE_IDENTIFIED`.
+- Assimilation remains `INVESTIGATE_NOT_ACCEPTED`; no new material-flow
+  mechanism is implemented by this audit.
+- Independent Architect acceptance: `PENDING`.

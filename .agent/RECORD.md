@@ -1014,3 +1014,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: active finite transfer supports survival and conserves world N/F exactly, but zero second-generation fissions occur by step `12000`; disabled daughters receive no environmental material and starve. The unchanged `1.35 * birth_mass` gate is retained, so the current bulk environmental N/F → activation → anabolic incorporation path is insufficient for resource-causal reproduction.
 - Affected areas: opt-in runtime composition, compact evidence, scoped workflow, documentation, and append-only governance; no frozen scientific core, fission gate, M1 source, restart boundary, or PR #44 change.
 - Supersedes record: none
+
+## DEC-DCDEV021-GOAL-UNIFIED-FLUX-BUDGET-AUDIT-R7
+
+- Date: 2026-09-05
+- Record or decision ID: DEC-DCDEV021-GOAL-UNIFIED-FLUX-BUDGET-AUDIT-R7
+- Status: PROPOSED
+- Decision or event: pause architecture multiplication and compare the qualified whole-membrane reproductive reference with the current integrated spatial path on one causal ledger. The first measured divergence is environmental N/F transfer at the first common checkpoint; active downstream processing and growth remain positive, but resource-causal reproduction remains unestablished.
+- Rationale: the spatial arm transfers finite material and processes/grows from it, while the transfer-disabled control receives zero environmental material. The legacy reference does not retain environmental provenance after bulk N/F transfer, so downstream environmental attribution is not inferred. Assimilation remains under investigation rather than accepted.
+- Affected areas: observer/replay evidence, focused preservation tests, assimilation-field validity guarding, scoped workflow, and append-only governance; no new organism/world mechanism, fission-gate change, formula search, or independent Architect acceptance.
+- Supersedes record: none

@@ -263,3 +263,27 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Route decision: current post-fission bulk N/F → activation → anabolic incorporation does not produce resource-causal reproduction under the unchanged `1.35 * birth_mass` gate. Replan organism/world material flow; do not issue another CLOSURE-006 through CLOSURE-014 neighboring formula.
 - Evidence: `digital-protocell/experiments/generated/dcdev021goalpostfissionecologicalreentryr6/`, workflow `.github/workflows/dc-dev-021-goal-post-fission-ecological-reentry.yml`, and `docs/goal-post-fission-ecological-reentry-r6.md`.
 - Notion sync: unavailable in this session (`404 object_not_found`); no external acceptance is claimed.
+
+## Goal-mode unified flux-budget and preservation audit R7
+
+- Starting head: `c51e5d997099b8cac703b3d0345ebf39cab729b5` on
+  `m2/dc-dev-021-goal-post-fission-ecological-reentry`.
+- Objective: compare the sealed whole-membrane reproductive reference with the
+  best current integrated spatial post-fission path on common causal
+  checkpoints before selecting another material-flow architecture.
+- Result: the first common checkpoint diverges at environmental N/F transfer;
+  the spatial arm transfers finite material but below the whole-membrane
+  reference. Active processing and growth remain positive, while the
+  transfer-disabled arm receives no environmental material.
+- Classification:
+  `GOAL_AGENT_PROVISIONAL_FLUX_LEDGER_FIRST_DIVERGENCE_IDENTIFIED`.
+- Assimilation status: `INVESTIGATE_NOT_ACCEPTED`; legacy whole-membrane
+  environmental provenance after bulk transfer is not available and is not
+  inferred.
+- Preservation: assimilation fields are included in `physical_runtime_valid()`
+  and legacy chemistry deserialization defaults them to zero. Focused D-087,
+  D-088, D-091, geometry, remesh/fission, and restart checks remain scoped CI
+  requirements.
+- Stop condition: do not add another material-flow, buffer, conversion,
+  active-work, or allocation variant until the first divergence and
+  preservation results are reviewed.

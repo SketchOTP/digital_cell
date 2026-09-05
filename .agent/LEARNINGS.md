@@ -726,3 +726,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: goal-mode organism/world material-flow realignment after sealed pre-resource fission causality negative.
 - Supersedes learning: none.
+
+## L-DCDEV021-GOAL-FLUX-BUDGET-R7-001
+
+- Learning ID: L-DCDEV021-GOAL-FLUX-BUDGET-R7-001
+- Date: 2026-09-05
+- Fact or lesson: A common-checkpoint ledger comparing the accepted whole-membrane reproductive reference with the current integrated spatial post-fission path identifies environmental N/F transfer as the first descriptive divergence. The spatial arm transfers finite material and processes/grows from it, but below the reference transfer at the first common checkpoint; the disabled arm remains at zero environmental transfer. The legacy whole-membrane reference does not retain environmental provenance after bulk N/F transfer, so environmental processing/A/W/growth attribution is unavailable rather than inferred. This is an observer/replay audit, not acceptance of assimilation and not authorization for another material-flow variant.
+- Evidence location: scripts/dcdev021_goal_flux_budget_audit.py, digital-protocell/experiments/generated/dcdev021goalmaterialfluxbudgetr7/, and docs/goal-unified-flux-budget-audit-r7.md.
+- Confidence: PROVISIONAL
+- Scope: Goal-mode unified flux-budget and preservation audit R7.
+- Supersedes learning: none
