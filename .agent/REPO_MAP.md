@@ -144,3 +144,7 @@
 - `digital-protocell/examples/dcdev021_m2_closure004_impl.rs` — derived V1 radius, non-overlap audit, finite spatial lifecycle arms, closure evidence, and bounded access-insufficient classification; no production behavior change.
 - `digital-protocell/experiments/generated/dcdev021m2closure004/` — compact CLOSURE-004 geometry, lifecycle, closure, preservation, and qualification evidence.
 - `.github/workflows/dc-dev-021-m2-closure004.yml` — exact-head Linux validation for CLOSURE-004 native geometry, finite access, preservation, governance, and artifact upload.
+- `digital-protocell/examples/dcdev021_m2_closure005.rs` — isolated CLOSURE-005 entry point for per-lineage finite-world attribution and fixed-coordinate solo/paired reproductive ecology.
+- `digital-protocell/examples/dcdev021_m2_closure005_impl.rs` — observer-only organism/resource delivery attribution, reproductive-demand landmarks, solo/pair controls, and conditional descendant boundary; no production behavior change.
+- `digital-protocell/experiments/generated/dcdev021m2closure005/` — compact CLOSURE-005 authority, per-lineage ledgers, solo/pair lifecycle evidence, closure, preservation, and qualification artifacts.
+- `.github/workflows/dc-dev-021-m2-closure005.yml` — exact-head Linux validation for CLOSURE-005 authority, per-lineage ecology, preservation, governance, and artifact upload.

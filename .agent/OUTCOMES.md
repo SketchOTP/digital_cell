@@ -25,6 +25,26 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
+## D-20260904-dcdev021-m2-closure005-per-lineage-reproductive-ecology - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE005-PER-LINEAGE-REPRODUCTIVE-ECOLOGY-LOCAL`
+- Supersedes outcome: none
+- Closed: `2026-09-04T21:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The observer-only per-lineage ledger preserves CLOSURE-004 aggregate N/F and world-debit parity under fixed absolute resource coordinates. Solo Daughter A acquires `99.29887582275623` N/F, below its `717.4064381138026` demand. Solo Daughter B acquires `1146.3487440851745` N/F, above its `1021.692995326332` demand, but neither solo arm reaches unforced fission. The local bounded classification is `M2_REPRODUCTIVE_RESOURCE_UNIT_CONTEXT_DEPENDENT_UNRESOLVED`.
+- Changed areas: additive CLOSURE-005 assay/example, compact evidence, scoped workflow, and append-only governance only; no scientific runtime or PR #44 change.
+- Validation:
+  - Local release build and seven fixed-coordinate solo/paired lifecycle arms - PASSED
+  - Per-lineage organism/resource attribution and CLOSURE-004 aggregate parity - PASSED
+  - Material and energetic closure - PASSED locally
+  - Exact-head Linux CI - PENDING
+  - Artifact digest - PENDING
+  - Notion readback - PENDING
+  - Architect review - PENDING
+- Remaining risks: no spatial fission, descendants, heritable ecological phenotype, shared-resource reproductive consequence, or evolution re-entry were reached.
+- Blockers: exact-head validation, artifact verification, Notion readback, and Architect review.
+- Follow-up directive: none
+
 ## D-20260904-dcdev021-m2-closure004-material-consistent-reproductive-ecology - PARTIAL
 
 - Outcome ID: `OUT-DCDEV021-M2-CLOSURE004-MATERIAL-CONSISTENT-REPRODUCTIVE-ECOLOGY`

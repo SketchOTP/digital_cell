@@ -14,6 +14,20 @@
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260904-dcdev021-m2-closure005-per-lineage-reproductive-ecology
+
+- Issued: `2026-09-04T21:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-CLOSURE-005-PER-LINEAGE-RESOURCE-CAUSAL-REPRODUCTION-SHARED-ECOLOGY-AND-HEREDITY-001`
+- Objective: Attribute material-consistent spatial resource delivery per lineage, replay fixed-coordinate solo and paired lifecycle arms, and continue descendants/heredity only if unforced spatial fission occurs.
+- Scope: Observer-only lineage/resource ledger, CLOSURE-004 parity, Daughter A/B solo finite/disabled/zero controls, paired finite/disabled/zero controls, reproductive-demand landmarks, shared-resource attribution, conditional descendant/heredity audit, compact evidence, scoped workflow, governance, and exact-head Linux validation.
+- Exclusions: Resource geometry or quantity changes, recentering, locomotion/contact/growth/fission changes, sensors, retention, mutation, selection, evolution execution, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: `M2_SPATIAL_RESOURCE_CAUSAL_REPRODUCTION_AND_HERITABLE_ECOLOGICAL_STATE_QUALIFIED`, `M2_SPATIAL_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED_HERITABLE_STATE_UNRESOLVED`, `M2_SOLO_SPATIAL_REPRODUCTION_QUALIFIED_SHARED_RESOURCE_SUPPRESSION_QUALIFIED`, `M2_SOLO_SPATIAL_REPRODUCTION_QUALIFIED_SHARED_ECOLOGY_REPRODUCTION_UNRESOLVED`, `M2_PER_LINEAGE_SPATIAL_RESOURCE_ACCUMULATION_INSUFFICIENT`, `M2_REPRODUCTIVE_RESOURCE_UNIT_CONTEXT_DEPENDENT_UNRESOLVED`, `M2_PER_LINEAGE_RESOURCE_ACCOUNTING_UNRESOLVED`, or invalid according to the directive gates and exact-head validation.
+- Risk class: HIGH
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260829-dcdev021-m2-entry001-activated-energy-contractility
 
 - Issued: `2026-08-29T16:00:00-04:00`

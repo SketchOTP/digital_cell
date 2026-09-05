@@ -686,3 +686,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Native V1 material semantics derive radius `12.552764362506588`, four fixed cardinal regions are non-overlapping, and the primary arm transfers finite N/F with exact world/material closure. No fed lineage reaches physical fission in the fixed 12,000-step horizon, so the bounded classification remains `M2_MATERIAL_CONSISTENT_RESOURCE_ACCESS_INSUFFICIENT`; Architect acceptance remains pending.
 - Affected areas: additive CLOSURE-004 assay/evidence/workflow and append-only governance only; frozen scientific runtime, CLOSURE-003-R1 evidence, M1 provenance, and PR #44 remain unchanged.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE004-MATERIAL-CONSISTENT-SPATIAL-RESOURCE-REPRODUCTIVE-ECOLOGY
+
+## DEC-DCDEV021-M2-CLOSURE005-PER-LINEAGE-REPRODUCTIVE-ECOLOGY
+
+- Date: 2026-09-04
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE005-PER-LINEAGE-REPRODUCTIVE-ECOLOGY
+- Status: ACTIVE
+- Decision or event: CLOSURE-005 is authorized from exact accepted CLOSURE-004 head `76094ccaf265b90e9b9836eaf77c07bd2df816a8`.
+- Rationale: CLOSURE-004 aggregate transfer did not establish per-lineage sufficiency. Fixed-coordinate solo and paired observer arms are authorized to distinguish individual accumulation, temporal reproductive context, and genuine finite sharing without changing biology.
+- Affected areas: additive CLOSURE-005 assay/evidence/workflow and append-only governance only; frozen scientific runtime, CLOSURE-004 evidence, M1 provenance, and PR #44 remain unchanged.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE004-MATERIAL-CONSISTENT-SPATIAL-RESOURCE-REPRODUCTIVE-ECOLOGY-FINAL

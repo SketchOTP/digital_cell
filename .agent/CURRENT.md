@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260904-dcdev021-m2-closure004-material-consistent-reproductive-ecology`
-- External directive ID: `DC-DEV-021-M2-CLOSURE-004-MATERIAL-CONSISTENT-SPATIAL-RESOURCE-REPRODUCTIVE-ECOLOGY-AND-HEREDITY-001`
-- Objective: Test native V1 material-consistent spatial resource access against the accepted reproductive unit without changing organism behavior.
+- Local directive ID: `D-20260904-dcdev021-m2-closure005-per-lineage-reproductive-ecology`
+- External directive ID: `DC-DEV-021-M2-CLOSURE-005-PER-LINEAGE-RESOURCE-CAUSAL-REPRODUCTION-SHARED-ECOLOGY-AND-HEREDITY-001`
+- Objective: Resolve per-lineage spatial reproductive sufficiency and shared-resource attribution without changing organism behavior.
 - Current status: `VALIDATING`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `CLOSURE-004 material-consistent spatial lifecycle validated at exact pushed HEAD; Architect review pending`
-- Expected or actual touched areas: `isolated CLOSURE-004 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `update Notion append-only with exact final-head authority, then Architect review only`
+- Current phase: `CLOSURE-005 solo/pair per-lineage ecology locally complete; exact-head validation pending`
+- Expected or actual touched areas: `isolated CLOSURE-005 assay, compact evidence, scoped workflow, append-only governance`
+- Immediate next action: `run exact-head Linux CI, verify artifact, update Notion append-only, then Architect review`
 
 ## Temporary task-relevant facts
 
@@ -86,4 +86,6 @@
 
 Allowed adopted-project statuses: `IDLE`, `PLANNING`, `IN_PROGRESS`, `VALIDATING`, `BLOCKED`, `COMPLETE`. `CURRENT.md` is mutable and never replaces historical ledgers. Reset it to `IDLE` when an adopted task closes.
 
-CLOSURE-004 is complete at exact result head `6d4238d131faa069aa76c4c23df875d0549afe9b`; exact-head workflow `33933106821` passed and the independently downloaded artifact ZIP digest is `sha256:516c239a93b7bc6c5308a3073439d8e684f945b48c2d5d59a92a9ffa26ce66fb`. Its native V1 radius is `12.552764362506588`, concentration parity and non-overlap passed, and the material-consistent arm delivered finite N/F but produced zero fissions in the fixed 12,000-step horizon. The bounded classification is `M2_MATERIAL_CONSISTENT_RESOURCE_ACCESS_INSUFFICIENT`; Architect acceptance remains pending and no successor execution has started.
+CLOSURE-004 is Architect accepted at exact governance head `76094ccaf265b90e9b9836eaf77c07bd2df816a8`, CI `33933521477`, and artifact `sha256:334d2a5c83dbe8a51498b004a9cfa47732d83acd850e6e5aa71456bfe78807f1`; its classification is `M2_MATERIAL_CONSISTENT_RESOURCE_ACCESS_INSUFFICIENT`.
+
+CLOSURE-005 local result: the fixed-coordinate paired replay has exact aggregate parity with CLOSURE-004. Solo Daughter A acquires `99.29887582275623` N/F (`0.13841369486985897` of demand) and does not fission. Solo Daughter B acquires `1146.3487440851745` N/F (`1.1220090079202578` of calibrated demand) and still does not fission, establishing the bounded context-dependent classification locally. Exact-head CI, artifact verification, and Architect acceptance remain pending.

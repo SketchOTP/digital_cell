@@ -627,3 +627,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-021 M2 CLOSURE-004 material-consistent spatial resource reproductive ecology and heredity.
 - Supersedes learning: L-DCDEV021-M2-CLOSURE004-001
+
+## L-DCDEV021-M2-CLOSURE005-001
+
+- Learning ID: L-DCDEV021-M2-CLOSURE005-001
+- Date: 2026-09-04
+- Fact or lesson: Per-lineage observer attribution preserves CLOSURE-004 aggregate parity on the exact fixed material-consistent world. Solo Daughter A acquires `99.29887582275623` N/F, while solo Daughter B acquires `1146.3487440851745` N/F, exceeding B's calibrated `1021.692995326332` demand; neither physically fissions in 12,000 steps. This distinguishes individual accumulation insufficiency for A from a context-dependent reproductive-unit result for B.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_closure005.rs`, `digital-protocell/examples/dcdev021_m2_closure005_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2closure005/`, and `.github/workflows/dc-dev-021-m2-closure005.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 M2 CLOSURE-005 per-lineage resource-causal reproduction and shared ecology.
+- Supersedes learning: none
