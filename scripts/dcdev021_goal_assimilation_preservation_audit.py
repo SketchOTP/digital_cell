@@ -76,7 +76,7 @@ def main() -> None:
     }
     commands = [
         "cargo +1.89.0 test --locked -p chemistry-core --test goal_assimilation_preservation -- --nocapture",
-        "cargo +1.89.0 test --locked -p chemistry-core --test d094_tests -- --nocapture",
+        "cargo +1.89.0 test --locked -p chemistry-core --test d094_tests partition_spreads_edges -- --nocapture",
         "cargo +1.89.0 test --locked -p chemistry-core --test d098_geometry_material_conservation -- --nocapture",
         "cargo +1.89.0 test --locked -p chemistry-core --test d088_tests -- --nocapture",
         "cargo +1.89.0 test --locked -p chemistry-core --test d091_tests -- --nocapture",
