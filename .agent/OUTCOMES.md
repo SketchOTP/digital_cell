@@ -127,11 +127,10 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Validation:
   - Local release build and deterministic assay - PASSED
   - Governance validation and evidence JSON validation - PASSED
-  - Exact-head Linux workflow `33947304990` on `4c697826ef7e7a27ce4e28c2c8990a2695bbb631` - PASSED
+  - Exact-head Linux workflow `33947528302` on `28bcc9df97516e1d5cf58f2acde4ae04148276c4` - PASSED
   - Independently downloaded artifact ZIP and API digest verification - PASSED; final digest recorded in Notion authority readback
   - Notion append-only readback - PASSED
   - Architect acceptance - COMPLETE
-  - Architect acceptance - NOT RUN
 - Remaining risks: resource-causal reproduction, descendant continuity, heritable ecological phenotype, autonomous acquisition, and evolution re-entry remain unestablished.
 - Blockers: exact-head validation, artifact verification, Notion readback, and Architect review only.
 - Follow-up directive: none

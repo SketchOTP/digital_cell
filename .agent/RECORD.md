@@ -732,7 +732,7 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Date: 2026-09-05
 - Record or decision ID: DEC-DCDEV021-M2-CLOSURE007-POST-INGESTIVE-MATERIAL-WORK
 - Status: ACTIVE
-- Decision or event: CLOSURE-007 completed from exact starting head `3ee324e968ac38489e147e47840f5e1f277f706c`; final governance head before this authority correction is `4c697826ef7e7a27ce4e28c2c8990a2695bbb631`, exact-head Linux CI `33947304990` passed, artifact verification passed, and Architect acceptance is complete for the bounded negative.
+- Decision or event: CLOSURE-007 completed from exact starting head `3ee324e968ac38489e147e47840f5e1f277f706c`; final governance head `28bcc9df97516e1d5cf58f2acde4ae04148276c4`, exact-head Linux CI `33947528302` passed, artifact ZIP digest `sha256:5dfbc5f721c804b56b71bbc4c37e5e5f951f095d85fe567d8a7e173c0dab562b`, and Architect acceptance is complete for the bounded negative.
 - Rationale: CLOSURE-006 showed a bounded local contact benefit but did not establish reproductive causality. CLOSURE-007 tests the existing post-ingestive material state as the only new assay input. The local result improves delivery and reduces A spending, but no candidate fission occurs; autonomous resource acquisition remains unestablished.
 - Affected areas: isolated CLOSURE-007 assay, compact evidence, scoped workflow, and append-only governance only; frozen scientific runtime, M1 provenance, fission source, restart boundary, and PR #44 remain unchanged.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE006-LOCAL-RESOURCE-CONTACT-QUIESCENCE-FINAL
