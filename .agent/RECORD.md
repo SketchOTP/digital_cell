@@ -909,3 +909,10 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: the strongest authorized assay-only combination of corrected literal A-fraction allocation and exact local contact-boundary zeroing improves finite transfer but produces zero candidate fissions. The paired motor-off control fissions once at step `775`.
 - Preservation: no scientific runtime source changed; world N/F conservation, A-to-W closure, zero-resource specificity, historical CLOSURE-013 replay, M1/downstream boundaries, restart boundary, and PR #44 preservation passed.
 - Boundary: autonomous resource acquisition, resource-causal reproduction, descendants, heredity, evolution, learning, individuality, unattended persistence, and standalone-lifeform completion remain unestablished. No successor execution started.
+
+## DEC-DCDEV021-M2-CLOSURE014-FINAL-AUTHORITY-CORRECTION
+
+- Date: `2026-09-05`
+- Status: `VALIDATED_PENDING_ARCHITECT`
+- Final authority: head `5d5e9d5133f19083aa46758a06500dba895165ee`; exact-head Linux workflow `33969482511` passed; artifact digest `sha256:af2b98f0f468417fa105fabd42ed553079d67182d5823e27596875cdbfd52f00`.
+- The CLOSURE-014 bounded-negative classification remains `M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED`; no scientific runtime source or successor scope changed.

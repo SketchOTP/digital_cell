@@ -191,3 +191,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Artifact ZIP digest: `sha256:545d29737812f57d749d155fea91caa248c6df35781eb90306108978eaf36a0c`.
 - Classification: `M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED`.
 - Architect acceptance and successor execution remain pending; no successor has started.
+
+## CLOSURE-014 final authority correction
+
+- Final governance-validation head: `5d5e9d5133f19083aa46758a06500dba895165ee`.
+- Exact-head Linux workflow: `33969482511` - `PASS`.
+- Final independently downloaded artifact ZIP digest: `sha256:af2b98f0f468417fa105fabd42ed553079d67182d5823e27596875cdbfd52f00`.
+- The CLOSURE-014 classification and bounded-negative result are unchanged.
