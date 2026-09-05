@@ -8,6 +8,23 @@ Use live outcome headings only after adoption. The following schema is instructi
 
 Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILED`, `CANCELLED`, `SUPERSEDED`. Do not rewrite earlier entries; append corrections referencing the original.
 
+## D-20260904-dcdev021-m2-closure006-spatial-resource-residence - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE006-SPATIAL-RESOURCE-RESIDENCE-LOCAL`
+- Supersedes outcome: none
+- Closed: `2026-09-04T22:30:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The environment-only CLOSURE-006 assay preserves the accepted CLOSURE-005 lifecycle and tests one contiguous finite resource with the same total N/F inventory under four fixed cardinal rotations. Delivered N/F is `4086.771981305341` in +X, `227.6356478774317` in +Y, and zero in the two opposite placements; all finite arms and both controls produce zero unforced fission. The bounded classification is `M2_SPATIAL_RESOURCE_RESIDENCE_INSUFFICIENT`.
+- Changed areas: additive CLOSURE-006 assay/example, compact evidence, scoped workflow, and append-only governance only; no scientific runtime or PR #44 change.
+- Validation:
+  - Exact CLOSURE-005 governance head and preserved lifecycle composition - PASSED locally
+  - Four finite rotations, transfer-disabled control, zero-resource control, world debit, and A-to-W closure - PASSED locally
+  - Exact-head Linux CI - NOT RUN
+  - Architect review - PENDING
+- Remaining risks: the local result is not authoritative until exact-head Linux CI and artifact digest verification complete; spatial resource-causal reproduction and shared finite reproductive ecology remain unestablished.
+- Blockers: exact-head Linux CI and Architect review.
+- Follow-up directive: none
+
 ## D-20260831-dcdev021-m2-entry015-polarity-actuator-interface - PARTIAL
 
 - Outcome ID: `OUT-DCDEV021-ENTRY015-POLARITY-ACTUATOR-INTERFACE-LOCAL`

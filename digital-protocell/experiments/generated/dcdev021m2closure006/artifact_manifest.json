@@ -1,0 +1,92 @@
+{
+  "classification": "M2_SPATIAL_RESOURCE_RESIDENCE_INSUFFICIENT",
+  "dense_traces": "not generated in compact run",
+  "directive": "DC-DEV-021-M2-CLOSURE-006-SPATIAL-RESOURCE-RESIDENCE-AND-REPRODUCTIVE-CAUSALITY-001",
+  "files": [
+    {
+      "file": "protocol.json",
+      "present": true
+    },
+    {
+      "file": "authority.json",
+      "present": true
+    },
+    {
+      "file": "resource_geometry.json",
+      "present": true
+    },
+    {
+      "file": "baseline_parity.json",
+      "present": true
+    },
+    {
+      "file": "contiguous_rotations.json",
+      "present": true
+    },
+    {
+      "file": "finite_runs.json",
+      "present": true
+    },
+    {
+      "file": "transfer_disabled_control.json",
+      "present": true
+    },
+    {
+      "file": "zero_resource_control.json",
+      "present": true
+    },
+    {
+      "file": "resource_causal_reproduction.json",
+      "present": true
+    },
+    {
+      "file": "descendant_continuity.json",
+      "present": true
+    },
+    {
+      "file": "shared_ecology.json",
+      "present": true
+    },
+    {
+      "file": "material_closure.json",
+      "present": true
+    },
+    {
+      "file": "energetic_closure.json",
+      "present": true
+    },
+    {
+      "file": "forbidden_information_audit.json",
+      "present": true
+    },
+    {
+      "file": "m1_preservation.json",
+      "present": true
+    },
+    {
+      "file": "preservation.json",
+      "present": true
+    },
+    {
+      "file": "restart_boundary.json",
+      "present": true
+    },
+    {
+      "file": "downstream_preservation.json",
+      "present": true
+    },
+    {
+      "file": "motor_off_control.json",
+      "present": true
+    },
+    {
+      "file": "qualification.json",
+      "present": true
+    },
+    {
+      "file": "artifact_manifest.json",
+      "present": true
+    }
+  ],
+  "starting_head": "aeb9356efd13db06a5dd0c8f32c43957d4fd5f25"
+}

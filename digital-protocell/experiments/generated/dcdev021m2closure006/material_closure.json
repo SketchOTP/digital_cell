@@ -1,0 +1,40 @@
+{
+  "growth_diagnostic_not_used_as_world_closure": true,
+  "reaction_and_growth_ledgers_recorded": true,
+  "status": "PASS",
+  "world_loss_delivery": [
+    {
+      "delivered_f": 4086.7719813053413,
+      "delivered_n": 4086.7719813053413,
+      "f_error": 0.0,
+      "n_error": 0.0,
+      "world_f_loss": 4086.7719813053413,
+      "world_n_loss": 4086.7719813053413
+    },
+    {
+      "delivered_f": 227.6356478774317,
+      "delivered_n": 227.6356478774317,
+      "f_error": 0.0,
+      "n_error": 0.0,
+      "world_f_loss": 227.6356478774317,
+      "world_n_loss": 227.6356478774317
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "f_error": 0.0,
+      "n_error": 0.0,
+      "world_f_loss": 0.0,
+      "world_n_loss": 0.0
+    },
+    {
+      "delivered_f": 0.0,
+      "delivered_n": 0.0,
+      "f_error": 0.0,
+      "n_error": 0.0,
+      "world_f_loss": 0.0,
+      "world_n_loss": 0.0
+    }
+  ],
+  "world_loss_equals_delivery": true
+}

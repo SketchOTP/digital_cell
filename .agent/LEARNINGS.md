@@ -8,6 +8,16 @@ Use live learning headings only after adoption. The following schema is instruct
 
 Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do not rewrite earlier entries; append corrections referencing the original.
 
+## L-DCDEV021-M2-CLOSURE006-001
+
+- Learning ID: L-DCDEV021-M2-CLOSURE006-001
+- Date: 2026-09-04
+- Fact or lesson: Holding total finite N/F inventory constant while consolidating the four CLOSURE-005 resource bodies into one contiguous geometry-derived resource body does not produce unforced fission within the fixed 12,000-step lifecycle. Access is strongly orientation-dependent: +X delivered `4086.771981305341` N/F, +Y delivered `227.6356478774317`, and both opposite placements delivered zero; transfer-disabled and zero-resource controls produced zero fission. The bounded classification is `M2_SPATIAL_RESOURCE_RESIDENCE_INSUFFICIENT`.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_closure006.rs`, `digital-protocell/examples/dcdev021_m2_closure006_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2closure006/`, and `.github/workflows/dc-dev-021-m2-closure006.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 M2 CLOSURE-006 spatial resource residence and reproductive causality audit.
+- Supersedes learning: none
+
 ## L-DCDEV021-ENTRY015-001
 
 - Learning ID: L-DCDEV021-ENTRY015-001

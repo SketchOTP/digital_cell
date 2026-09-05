@@ -1,0 +1,94 @@
+name: DC-DEV-021 M2 CLOSURE-006 spatial resource residence
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-m2-closure006-spatial-resource-residence
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  closure006:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+      - name: Verify exact authority and bounded diff
+        run: |
+          set -euo pipefail
+          start=aeb9356efd13db06a5dd0c8f32c43957d4fd5f25
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefName,baseRefName
+          python3 - "$start" <<'PY'
+          import subprocess, sys
+          start=sys.argv[1]
+          allowed={
+            '.agent/CURRENT.md','.agent/DIRECTIVES.md','.agent/LEARNINGS.md','.agent/OUTCOMES.md','.agent/RECORD.md','.agent/REPO_MAP.md',
+            '.github/workflows/dc-dev-021-m2-closure006.yml',
+            'digital-protocell/crates/regulatory-core/Cargo.toml',
+            'digital-protocell/examples/dcdev021_m2_closure006.rs',
+            'digital-protocell/examples/dcdev021_m2_closure006_impl.rs',
+          }
+          changed=set(subprocess.check_output(['git','diff','--name-only',f'{start}..HEAD'],text=True).splitlines())
+          unexpected={p for p in changed if p not in allowed and not p.startswith('digital-protocell/experiments/generated/dcdev021m2closure006/')}
+          assert not unexpected, sorted(unexpected)
+          PY
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Build and run CLOSURE-006 assay
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build --locked -p regulatory-core --release --example dcdev021_m2_closure006
+          cargo +1.89.0 run --locked -p regulatory-core --release --example dcdev021_m2_closure006 -- experiments/generated/dcdev021m2closure006
+      - name: Validate compact CLOSURE-006 evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('experiments/generated/dcdev021m2closure006')
+          required=json.loads((root/'artifact_manifest.json').read_text())['files']
+          for item in required:
+              assert (root/item['file']).is_file(), item['file']
+          q=json.loads((root/'qualification.json').read_text())
+          assert q['starting_head']=='aeb9356efd13db06a5dd0c8f32c43957d4fd5f25'
+          assert q['classification']=='M2_SPATIAL_RESOURCE_RESIDENCE_INSUFFICIENT'
+          assert q['contiguous_resource_rotations']==4
+          assert q['same_total_inventory'] is True
+          assert q['finite_fission_counts']==[0,0,0,0]
+          assert q['transfer_disabled_fissions']==0
+          assert q['zero_resource_fissions']==0
+          assert q['next_execution_started'] is False
+          assert q['architect_acceptance']=='PENDING'
+          for p in root.glob('*.json'): json.loads(p.read_text())
+          print('CLOSURE-006 evidence validation passed')
+          PY
+      - name: Validate governance and preservation
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_governance.py --mode ADOPTED
+          git diff --check
+      - name: Hash compact evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2closure006 -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2closure006.sha256"
+      - name: Upload CLOSURE-006 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-m2-closure006-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2closure006/
+            ${{ runner.temp }}/dcdev021m2closure006.sha256

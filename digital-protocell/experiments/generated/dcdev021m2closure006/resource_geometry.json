@@ -1,0 +1,28 @@
+{
+  "boundary_f": 2.063914918930895,
+  "boundary_n": 2.063914918930895,
+  "directions": [
+    [
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0
+    ],
+    [
+      -1.0,
+      0.0
+    ],
+    [
+      0.0,
+      -1.0
+    ]
+  ],
+  "radius": 25.105528725013176,
+  "resource_count": 1,
+  "same_total_inventory_as_closure005": true,
+  "surface_gap": 2.4822089309066597,
+  "total_inventory_f": 4086.771981305328,
+  "total_inventory_n": 4086.771981305328
+}

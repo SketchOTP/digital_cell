@@ -1,5 +1,19 @@
 # Project Directive Ledger Template
 
+## D-20260904-dcdev021-m2-closure006-spatial-resource-residence
+
+- Issued: `2026-09-04T22:30:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-CLOSURE-006-SPATIAL-RESOURCE-RESIDENCE-AND-REPRODUCTIVE-CAUSALITY-001`
+- Objective: Test whether the same total finite N/F inventory, placed in one contiguous geometry-derived spatial resource body, provides sufficient residence/access timing for physical reproduction without changing organism behavior.
+- Scope: Four fixed cardinal contiguous-resource rotations, transfer-disabled and zero-resource controls, exact CLOSURE-005 lifecycle/reaction/growth/fission loop, finite-world delivery and material/energetic closure, compact evidence, scoped workflow, and exact-head Linux validation.
+- Exclusions: Organism behavior changes, resource-seeking logic, sensor or controller additions, resource inventory changes, geometry screening, horizon extension, fission/reaction/traction/runtime changes, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: `M2_SPATIAL_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED`, `M2_SPATIAL_REPRODUCTION_CAUSALITY_UNRESOLVED`, `M2_SPATIAL_RESOURCE_RESIDENCE_INSUFFICIENT`, or `M2_CLOSURE006_INVALID` according to the evidence and exact-head validation.
+- Risk class: HIGH
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260831-dcdev021-m2-entry014-excitable-polarity-reference-transfer
 
 - Issued: `2026-08-31T21:03:00-04:00`

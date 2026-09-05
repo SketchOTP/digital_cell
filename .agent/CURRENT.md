@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-04T19:37:00-04:00`
+- Last updated: `2026-09-04T22:30:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260904-dcdev021-m2-closure005-per-lineage-reproductive-ecology`
-- External directive ID: `DC-DEV-021-M2-CLOSURE-005-PER-LINEAGE-RESOURCE-CAUSAL-REPRODUCTION-SHARED-ECOLOGY-AND-HEREDITY-001`
-- Objective: Resolve per-lineage spatial reproductive sufficiency and shared-resource attribution without changing organism behavior.
+- Local directive ID: `D-20260904-dcdev021-m2-closure006-spatial-resource-residence`
+- External directive ID: `DC-DEV-021-M2-CLOSURE-006-SPATIAL-RESOURCE-RESIDENCE-AND-REPRODUCTIVE-CAUSALITY-001`
+- Objective: Test whether the same finite material inventory in one contiguous geometry-derived spatial resource body provides sufficient residence/access timing for autonomous physical reproduction.
 - Current status: `VALIDATING`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `CLOSURE-005 exact-head validation complete; Architect acceptance pending`
-- Expected or actual touched areas: `isolated CLOSURE-005 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `Architect review; no successor execution authorized`
+- Current phase: `CLOSURE-006 local assay complete; exact-head validation pending`
+- Expected or actual touched areas: `isolated CLOSURE-006 assay, compact evidence, scoped workflow, append-only governance`
+- Immediate next action: `commit bounded result, push exact head, run Linux CI, independently verify artifact, then Architect disposition`
 
 ## Temporary task-relevant facts
 
@@ -52,6 +52,7 @@
 - M2 closure classification is `M2_CURRENT_SENSORIMOTOR_ROUTE_ECOLOGICALLY_INSUFFICIENT`: finite shared-world allocation and direct-contact transfer/metabolism sanity passed, but the existing motor and conditional assay-only protrusion route did not reach separated resources in the fixed ecology. Autonomous polarity initiation remains qualified; autonomous finite-resource acquisition, resource-causal reproduction, mutable heritable causal phenotype, and evolution re-entry remain unestablished.
 - Closure exact-head CI and artifact verification are complete; PR #44 remains open, draft, unmerged, and untouched; Notion Digital Cell was updated append-only and read back successfully. Architect acceptance remains pending and no successor execution started.
 - CLOSURE-002 runs from exact R1 head `ab10dde42ff24af4ec8f3e9929a03463ad9dd388` on `m2/dc-dev-021-m2-closure002-ecological-causality-lifecycle` with the isolated assay and required evidence complete.
+- CLOSURE-006 runs from exact accepted CLOSURE-005 governance head `aeb9356efd13db06a5dd0c8f32c43957d4fd5f25` on `m2/dc-dev-021-m2-closure006-spatial-resource-residence`; the local result is `M2_SPATIAL_RESOURCE_RESIDENCE_INSUFFICIENT` after four contiguous-resource rotations with exact finite-world debit and no unforced fission.
 - CLOSURE-002 spatial and same-mean clutch transfer both occur at step `142`; uniform frozen traction occurs at `201`; motor-off occurs at `57`; spatial clutch ecological causality is not established.
 - Finite transfer delivers `29.17790976126448` each of N and F with exact world debit, delays observer starvation-collapse from step `9810` to `9943`, and changes downstream material and energy trajectories. No arm fissions.
 - CLOSURE-002 classification is `M2_FINITE_RESOURCE_LIFECYCLE_DEPENDENCE_QUALIFIED_BEHAVIORAL_CAUSALITY_NOT_ESTABLISHED`; resource-causal reproduction, mutable heritable phenotype, evolution re-entry, and autonomous resource acquisition remain unestablished.

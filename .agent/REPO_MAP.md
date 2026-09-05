@@ -56,6 +56,11 @@
 
 ## Generated areas
 
+- `digital-protocell/examples/dcdev021_m2_closure006.rs` — isolated CLOSURE-006 entry point reusing the accepted CLOSURE-005 lifecycle; no scientific runtime behavior is installed.
+- `digital-protocell/examples/dcdev021_m2_closure006_impl.rs` — CLOSURE-006 spatial-resource-residence assay changing only finite-resource spatial distribution; no scientific runtime behavior is installed.
+- `digital-protocell/experiments/generated/dcdev021m2closure006/` — compact four-rotation finite-resource delivery, transfer-disabled/zero-resource controls, closure, fission, and bounded qualification evidence.
+- `.github/workflows/dc-dev-021-m2-closure006.yml` — exact-head Linux validation and artifact upload for CLOSURE-006.
+
 - `digital-protocell/experiments/generated/dcdev020m1closure001/m1_closure_manifest.json` — compact accepted M1 closure reference retained without the dense evidence archive.
 - `digital-protocell/experiments/generated/dcdev020postm1baseline001/` — compact clean-baseline inventory, manifest, and validation evidence.
 - `digital-protocell/experiments/generated/dcdev021m2entry001/` — compact ENTRY-001 feasibility evidence, populated by exact-head Linux validation.

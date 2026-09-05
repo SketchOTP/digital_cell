@@ -1,0 +1,24 @@
+{
+  "architect_acceptance": "PENDING",
+  "baseline_parity": true,
+  "classification": "M2_SPATIAL_RESOURCE_RESIDENCE_INSUFFICIENT",
+  "contiguous_resource_rotations": 4,
+  "descendant_continuity": "NOT_REACHED",
+  "directive": "DC-DEV-021-M2-CLOSURE-006-SPATIAL-RESOURCE-RESIDENCE-AND-REPRODUCTIVE-CAUSALITY-001",
+  "energetic_closure": "PASS",
+  "finite_fission_counts": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "material_closure": "PASS",
+  "motor_off_diagnostic": "NOT_RUN",
+  "next_execution_started": false,
+  "resource_causal_spatial_reproduction": "NOT_ESTABLISHED",
+  "same_total_inventory": true,
+  "shared_finite_reproductive_ecology": "NOT_ESTABLISHED",
+  "starting_head": "aeb9356efd13db06a5dd0c8f32c43957d4fd5f25",
+  "transfer_disabled_fissions": 0,
+  "zero_resource_fissions": 0
+}

@@ -6,6 +6,26 @@ After adoption, this append-only record preserves decisions and events. Every li
 
 Use it for architectural decisions, governance changes, releases, qualification or certification events, major reversals, important milestones, and decision supersessions. Do not use this record as mutable current status.
 
+## DEC-DCDEV021-M2-CLOSURE006-SPATIAL-RESOURCE-RESIDENCE-R1
+
+- Date: 2026-09-04
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE006-SPATIAL-RESOURCE-RESIDENCE-R1
+- Status: PROPOSED
+- Decision or event: Execute the bounded CLOSURE-006 environment-only comparison from exact CLOSURE-005 head `aeb9356efd13db06a5dd0c8f32c43957d4fd5f25`, preserving organism behavior while changing only the finite resource's spatial distribution.
+- Rationale: CLOSURE-005 shows quantity and access are lineage/context dependent but does not isolate whether a contiguous finite resource changes residence timing enough for reproduction. Four fixed rotations and matched transfer-disabled/zero-resource controls provide that causal boundary without tuning or geometry screening.
+- Affected areas: additive isolated assay/example, compact evidence, scoped workflow, and governance only; no scientific runtime, M1, restart, or PR #44 change.
+- Supersedes record: none
+
+## DEC-DCDEV021-M2-CLOSURE006-SPATIAL-RESOURCE-RESIDENCE-R2
+
+- Date: 2026-09-04
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE006-SPATIAL-RESOURCE-RESIDENCE-R2
+- Status: PROPOSED
+- Decision or event: Local execution returns `M2_SPATIAL_RESOURCE_RESIDENCE_INSUFFICIENT`; all four contiguous finite rotations preserve closure but produce zero fission, with transfer-disabled and zero-resource controls also producing zero fission.
+- Rationale: The result is a bounded negative for spatial residence/timing. It does not qualify spatial resource-causal reproduction or shared ecology, and it does not authorize tuning, behavior changes, or a successor before final exact-head authority.
+- Affected areas: local result evidence only; no accepted scientific runtime or PR #44 change.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE006-SPATIAL-RESOURCE-RESIDENCE-R1
+
 ## DEC-DCDEV021-ENTRY015-EXCITABLE-POLARITY-ACTUATOR-INTERFACE-001
 
 - Date: 2026-08-31

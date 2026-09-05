@@ -1,0 +1,7 @@
+{
+  "behavior_unchanged": true,
+  "controller": false,
+  "distance_sensor": false,
+  "gradient": false,
+  "resource_coordinates_to_behavior": false
+}
