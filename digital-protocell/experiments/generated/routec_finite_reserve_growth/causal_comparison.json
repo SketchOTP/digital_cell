@@ -1,0 +1,11 @@
+{
+  "active_first_transfer_step": 1,
+  "active_first_fission_step": null,
+  "disabled_first_transfer_step": null,
+  "disabled_first_fission_step": null,
+  "active_transfer_precedes_fission": true,
+  "resource_causal_fission_observed": false,
+  "transfer_required_for_terminal_viability": true,
+  "interpretation": "Finite transfer enters the reserve composition before the runtime horizon, but neither arm fissions. Active transfer is necessary for survival in this replay and insufficient for reproduction.",
+  "stop_boundary": "Do not search another local reserve horizon, field inventory, allocation rule, gain, threshold, or fission gate."
+}

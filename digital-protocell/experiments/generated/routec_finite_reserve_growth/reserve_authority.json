@@ -1,0 +1,9 @@
+{
+  "source": "chemistry-core::d091_analysis::selected_reserve_parameters",
+  "equation": "D-091 ReserveParams::derived",
+  "selected_store_horizon": 2,
+  "production_default": "reserve OFF",
+  "runtime_identity": "ReactionParams::conservative_v3 + sealed D-091 reserve",
+  "parameter_search": "NONE",
+  "new_parameter": "NONE"
+}

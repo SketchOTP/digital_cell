@@ -202,6 +202,22 @@ fn derive_horizons() -> (f64, f64, f64, f64, f64, f64) {
     (t_replace, t_maint, a_median, a_q25, fission_a_cost, area)
 }
 
+/// Return the sealed D-091 H=2 reserve candidate for an opt-in integration
+/// assay. This reuses the existing derivation and does not alter the
+/// reserve-off production selector.
+pub fn selected_reserve_parameters() -> ReserveParams {
+    let (t_replace, t_maint, a_median, a_q25, fission_cost, area) = derive_horizons();
+    ReserveParams::derived(
+        t_replace,
+        t_maint,
+        a_median,
+        a_q25,
+        STORE_HORIZON_CANDIDATES[0],
+        fission_cost,
+        area,
+    )
+}
+
 fn with_reserve(mut react: ReactionParams, reserve: ReserveParams) -> ReactionParams {
     react.reserve = reserve;
     react

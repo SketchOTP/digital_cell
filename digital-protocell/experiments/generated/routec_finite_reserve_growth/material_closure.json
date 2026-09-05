@@ -1,0 +1,12 @@
+{
+  "active_n_error": 0.0,
+  "active_f_error": 0.0,
+  "disabled_n_error": 0.0,
+  "disabled_f_error": 0.0,
+  "finite_source": true,
+  "hidden_bath": false,
+  "uptake_law_changed": false,
+  "growth_gate_changed": false,
+  "reserve_equation_changed": false,
+  "closure": "PASS"
+}

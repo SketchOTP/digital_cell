@@ -1,0 +1,14 @@
+{
+  "schema": "digital_cell_goal_routec_finite_reserve_growth_manifest_v1",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "reserve_authority.json",
+    "active_runtime.json",
+    "transfer_disabled.json",
+    "causal_comparison.json",
+    "material_closure.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ]
+}

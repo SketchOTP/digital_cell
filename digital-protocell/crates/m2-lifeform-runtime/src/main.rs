@@ -3,6 +3,7 @@ use chemistry_core::mesh_fission::{topology_step, try_local_fission, FissionPara
 use chemistry_core::mesh_growth::{growth_step, GrowthParams};
 use chemistry_core::mesh_mechanics::{mechanics_step, remesh, MechParams};
 use chemistry_core::mesh_population::{MeshIndividual, MeshPopulation};
+use chemistry_core::metabolic_reserve::{stamp_reserve_equation, ReserveParams};
 use chemistry_core::mesh_reactions::{
     reactions_step_with_reserve_mode, ReactionParams, ReserveDiagnosticMode,
 };
@@ -41,6 +42,9 @@ struct RuntimeSnapshot {
     /// runtime path and its checkpoint schema semantics.
     #[serde(default)]
     spatial_field: Option<SpatialMaterialFieldV1>,
+    /// Opt-in D-091 reserve composition; absent preserves reserve-off runtime.
+    #[serde(default)]
+    reserve_parameters: Option<ReserveParams>,
     #[serde(default = "default_true")]
     spatial_field_transfer_enabled: bool,
     cumulative_n_delivered: f64,
@@ -141,6 +145,7 @@ struct RuntimeReport {
     fission_observations: Vec<FissionObservation>,
     resource_transfer_enabled: bool,
     resource_mode: String,
+    reserve_enabled: bool,
     developmental_bootstrap_steps: usize,
     developmental_initial_topology: usize,
     developmental_initial_polarity_amplitude: f64,
@@ -162,6 +167,7 @@ struct Config {
     resume: Option<PathBuf>,
     transfer_disabled: bool,
     routeb_spatial_field: bool,
+    routec_reserve_growth: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -189,7 +195,7 @@ fn default_true() -> bool {
 
 fn usage() -> ! {
     eprintln!(
-        "usage: digital-protocell-m2-runtime [--steps N] [--seed N] \\\n          [--checkpoint PATH] [--report PATH] [--resume PATH] \\\n          [--transfer-disabled] [--routeb-spatial-field]"
+        "usage: digital-protocell-m2-runtime [--steps N] [--seed N] \\\n          [--checkpoint PATH] [--report PATH] [--resume PATH] \\\n          [--transfer-disabled] [--routeb-spatial-field] [--routec-reserve-growth]"
     );
     std::process::exit(2);
 }
@@ -202,6 +208,7 @@ fn parse_config() -> Config {
     let mut resume = None;
     let mut transfer_disabled = false;
     let mut routeb_spatial_field = false;
+    let mut routec_reserve_growth = false;
     let args: Vec<String> = env::args().skip(1).collect();
     let mut i = 0;
     while i < args.len() {
@@ -217,6 +224,7 @@ fn parse_config() -> Config {
             "--resume" => resume = Some(PathBuf::from(value(&mut i))),
             "--transfer-disabled" => transfer_disabled = true,
             "--routeb-spatial-field" => routeb_spatial_field = true,
+            "--routec-reserve-growth" => routec_reserve_growth = true,
             _ => usage(),
         }
         i += 1;
@@ -229,6 +237,7 @@ fn parse_config() -> Config {
         resume,
         transfer_disabled,
         routeb_spatial_field,
+        routec_reserve_growth,
     }
 }
 
@@ -356,11 +365,16 @@ fn develop_founder_routeb(
     individual: &mut MeshIndividual,
     field: &mut SpatialMaterialFieldV1,
     transfer_enabled: bool,
+    reserve_parameters: Option<&ReserveParams>,
 ) -> (PolarityState, usize, bool, f64, f64, Option<usize>) {
     let dt = MechParams::default().dt;
     let transport = TransportParams::default();
     let mechanics = MechParams::default();
-    let reaction = ReactionParams::conservative_v3();
+    let mut reaction = ReactionParams::conservative_v3();
+    if let Some(reserve) = reserve_parameters {
+        reaction.reserve = *reserve;
+        stamp_reserve_equation(&mut individual.mesh);
+    }
     let growth = GrowthParams {
         y_g: 0.9,
         enable_growth: true,
@@ -538,6 +552,7 @@ fn new_snapshot(seed: u64) -> RuntimeSnapshot {
         population,
         world,
         spatial_field: None,
+        reserve_parameters: None,
         spatial_field_transfer_enabled: true,
         cumulative_n_delivered: 0.0,
         cumulative_f_delivered: 0.0,
@@ -576,7 +591,12 @@ fn new_routeb_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         cumulative_n_delivered,
         cumulative_f_delivered,
         first_transfer_step,
-    ) = develop_founder_routeb(&mut population.individuals[0], &mut field, transfer_enabled);
+    ) = develop_founder_routeb(
+        &mut population.individuals[0],
+        &mut field,
+        transfer_enabled,
+        None,
+    );
     population.individuals[0].mesh.exterior.n = 0.0;
     population.individuals[0].mesh.exterior.f = 0.0;
     let developmental_initial_polarity_amplitude = developed_polarity.nonconstant_amplitude();
@@ -595,6 +615,7 @@ fn new_routeb_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         // shape; Route-B uses only the explicit spatial field below.
         world: FiniteWorldV1::new(Vec::new()),
         spatial_field: Some(field),
+        reserve_parameters: None,
         spatial_field_transfer_enabled: transfer_enabled,
         cumulative_n_delivered,
         cumulative_f_delivered,
@@ -621,6 +642,76 @@ fn new_routeb_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         previous_centroids,
         scientific_boundary: ScientificBoundary {
             finite_world_exchange: "SpatialMaterialFieldV1 / local edge exchange".to_string(),
+            ..ScientificBoundary::default()
+        },
+    }
+}
+
+fn new_routec_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
+    // Route-C composes the already-derived D-091 material reserve with the
+    // finite Route-B environmental field. No reserve parameter is selected by
+    // this runtime or by the result; D-091 owns the derivation and H=2 choice.
+    let reserve = chemistry_core::d091_analysis::selected_reserve_parameters();
+    let mut population = initial_population(seed);
+    let mut field = routeb_field(&population.individuals[0].mesh);
+    let (
+        developed_polarity,
+        developmental_bootstrap_steps,
+        developmental_fission_boundary_reached,
+        cumulative_n_delivered,
+        cumulative_f_delivered,
+        first_transfer_step,
+    ) = develop_founder_routeb(
+        &mut population.individuals[0],
+        &mut field,
+        transfer_enabled,
+        Some(&reserve),
+    );
+    population.individuals[0].mesh.exterior.n = 0.0;
+    population.individuals[0].mesh.exterior.f = 0.0;
+    let developmental_initial_polarity_amplitude = developed_polarity.nonconstant_amplitude();
+    let developmental_initial_topology = developed_polarity.topology();
+    let previous_centroids = population
+        .individuals
+        .iter()
+        .map(|individual| individual.mesh.centroid())
+        .collect();
+    RuntimeSnapshot {
+        schema: SCHEMA.to_string(),
+        step: 0,
+        seed,
+        population,
+        world: FiniteWorldV1::new(Vec::new()),
+        spatial_field: Some(field),
+        reserve_parameters: Some(reserve),
+        spatial_field_transfer_enabled: transfer_enabled,
+        cumulative_n_delivered,
+        cumulative_f_delivered,
+        cumulative_n_world_loss: cumulative_n_delivered,
+        cumulative_f_world_loss: cumulative_f_delivered,
+        cumulative_fissions: 0,
+        cumulative_motor_a_spent: 0.0,
+        cumulative_slipping_contacts: 0,
+        cumulative_path: 0.0,
+        cumulative_contacts: 0,
+        first_contact_step: None,
+        first_transfer_step: first_transfer_step.map(|step| step as u64),
+        first_fission_step: None,
+        fission_observations: Vec::new(),
+        lineage_n_delivered: [(1, cumulative_n_delivered)].into_iter().collect(),
+        lineage_f_delivered: [(1, cumulative_f_delivered)].into_iter().collect(),
+        developmental_bootstrap_steps,
+        developmental_initial_polarity_amplitude,
+        developmental_initial_topology,
+        developmental_fission_boundary_reached,
+        motor_steps: 0,
+        motor_failures: 0,
+        polarity_states: vec![Some(developed_polarity)],
+        previous_centroids,
+        scientific_boundary: ScientificBoundary {
+            finite_world_exchange: "SpatialMaterialFieldV1 / local edge exchange".to_string(),
+            frozen_reactions: "ReactionParams::conservative_v3 + sealed D-091 reserve".to_string(),
+            frozen_growth: "D-091 reserve-funded GrowthParams".to_string(),
             ..ScientificBoundary::default()
         },
     }
@@ -773,7 +864,10 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
 
     let mut newborns: Vec<(MeshIndividual, PolarityState)> = Vec::new();
     let fission = FissionParams::default();
-    let reaction = ReactionParams::conservative_v3();
+    let mut reaction = ReactionParams::conservative_v3();
+    if let Some(reserve) = snapshot.reserve_parameters {
+        reaction.reserve = reserve;
+    }
     let growth = GrowthParams {
         y_g: 0.9,
         enable_growth: true,
@@ -984,6 +1078,7 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
         } else {
             "FiniteWorldV1".to_string()
         },
+        reserve_enabled: snapshot.reserve_parameters.is_some(),
         developmental_bootstrap_steps: snapshot.developmental_bootstrap_steps,
         developmental_initial_topology: snapshot.developmental_initial_topology,
         developmental_initial_polarity_amplitude: snapshot.developmental_initial_polarity_amplitude,
@@ -1011,7 +1106,9 @@ fn main() {
         .as_deref()
         .map(load_snapshot)
         .unwrap_or_else(|| {
-            if config.routeb_spatial_field {
+            if config.routec_reserve_growth {
+                new_routec_snapshot(config.seed, !config.transfer_disabled)
+            } else if config.routeb_spatial_field {
                 new_routeb_snapshot(config.seed, !config.transfer_disabled)
             } else {
                 new_snapshot(config.seed)

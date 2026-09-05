@@ -1,0 +1,18 @@
+{
+  "arm": "ROUTEC_ACTIVE_TRANSFER",
+  "seed": 1,
+  "steps": 3000,
+  "reserve_enabled": true,
+  "living_count": 1,
+  "fission_events": 0,
+  "maximum_generation": 0,
+  "first_transfer_step": 1,
+  "first_fission_step": null,
+  "cumulative_n_delivered": 200.0863577497187,
+  "cumulative_f_delivered": 200.0863577497187,
+  "world_n_conservation_error": 0.0,
+  "world_f_conservation_error": 0.0,
+  "cumulative_motor_a_spent": 0.5816314829595951,
+  "cumulative_path": 1.7985884996686334,
+  "terminal_observer_death_reasons": [null]
+}

@@ -1,0 +1,11 @@
+{
+  "goal_authority": "GOAL_AGENT_PROVISIONALLY_NEGATIVE",
+  "starting_head": "2d9372b38e5a81f5176ffcca14a00d569a204668",
+  "prior_routeb_head": "e4b2c64653f47ee93f84cad775dfe58d1ee91288",
+  "historical_causality_audit": "M2_RESOURCE_CAUSAL_FISSION_NOT_ESTABLISHED",
+  "local_active_work_formula_family": "CLOSED_CLOSURE_012_THROUGH_014",
+  "m1": "CLOSED_FROZEN",
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "pr_44": {"state": "OPEN", "draft": true, "merged": false, "modified": false},
+  "architect_acceptance": "PENDING_EXTERNAL_REVIEW"
+}
