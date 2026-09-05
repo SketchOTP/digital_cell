@@ -127,8 +127,8 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Validation:
   - Local release build and deterministic assay - PASSED
   - Governance validation and evidence JSON validation - PASSED
-  - Exact-head Linux workflow `33946990773` on `b7747d605f9d242f0eb5a10492b3395cb4e9a4f2` - PASSED
-  - Independently downloaded artifact ZIP digest `sha256:e42fa6c9b5e193e0e29679bcd3394397813ed3113b96f607325964f69522c183` - PASSED
+  - Exact-head Linux workflow `33947304990` on `4c697826ef7e7a27ce4e28c2c8990a2695bbb631` - PASSED
+  - Independently downloaded artifact ZIP and API digest verification - PASSED; final digest recorded in Notion authority readback
   - Notion append-only readback - PASSED
   - Architect acceptance - COMPLETE
   - Architect acceptance - NOT RUN

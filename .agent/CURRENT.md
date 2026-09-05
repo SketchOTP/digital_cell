@@ -69,7 +69,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `CLOSURE-007 exact-head Linux workflow 33946990773 and artifact verification`
+- Command or check: `CLOSURE-007 exact-head Linux workflow 33947304990 and artifact verification`
 - Result: `PASSED`
 
 ## Risks
