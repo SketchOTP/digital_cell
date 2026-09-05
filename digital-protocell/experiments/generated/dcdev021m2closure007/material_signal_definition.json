@@ -1,0 +1,14 @@
+{
+  "clamp": "only to satisfy existing [0,1] stimulus contract",
+  "contact_signal_read": false,
+  "dimensionless": true,
+  "inputs": [
+    "existing organism-internal N",
+    "F",
+    "A",
+    "W"
+  ],
+  "new_parameter": false,
+  "observer_ledger_read": false,
+  "signal": "(interior.n + interior.f) / (interior.n + interior.f + interior.a + interior.w)"
+}

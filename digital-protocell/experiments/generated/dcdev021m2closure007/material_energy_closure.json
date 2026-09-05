@@ -1,0 +1,10 @@
+{
+  "candidate_a_spent": 1405.9708515165707,
+  "candidate_a_to_w_residual": 6.789013795582832e-13,
+  "candidate_delivered_f": 1230.045257118789,
+  "candidate_delivered_n": 1230.045257118789,
+  "candidate_material_closure": 0.056294534743813074,
+  "candidate_w_generated": 1405.97085151657,
+  "candidate_world_f_loss": 1230.045257118789,
+  "candidate_world_n_loss": 1230.045257118789
+}

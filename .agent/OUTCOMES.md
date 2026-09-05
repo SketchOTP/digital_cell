@@ -116,6 +116,25 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: Notion readback and Architect review only; no successor work is authorized.
 - Follow-up directive: none
 
+## D-20260905-dcdev021-m2-closure007-post-ingestive-material-work - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE007-POST-INGESTIVE-MATERIAL-WORK`
+- Supersedes outcome: none
+- Closed: `2026-09-05T00:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The assay-only composition of existing internal N/F/A/W material state with the existing local regulator/actuator path improves finite N/F delivery and saves A relative to the no-material-feedback control, but no candidate fission occurs. The bounded classification is `M2_POST_INGESTIVE_MATERIAL_WORK_ACQUISITION_BENEFIT_REPRODUCTION_NOT_ESTABLISHED`.
+- Changed areas: additive CLOSURE-007 assay/evidence/workflow and append-only governance; no frozen scientific runtime, M1 provenance, fission source, restart boundary, or PR #44 modification.
+- Validation:
+  - Local release build and deterministic assay - PASSED
+  - Governance validation - NOT RUN
+  - Exact-head Linux workflow - NOT RUN
+  - Artifact upload and independent digest - NOT RUN
+  - Notion append-only readback - NOT RUN
+  - Architect acceptance - NOT RUN
+- Remaining risks: resource-causal reproduction, descendant continuity, heritable ecological phenotype, autonomous acquisition, and evolution re-entry remain unestablished.
+- Blockers: exact-head validation, artifact verification, Notion readback, and Architect review only.
+- Follow-up directive: none
+
 ## D-20260903-dcdev021-m2-entry028-balanced-separated-resource-ecology - PARTIAL
 
 - Outcome ID: `OUT-DCDEV021-ENTRY028-BALANCED-SEPARATED-RESOURCE-ECOLOGY-LOCAL`

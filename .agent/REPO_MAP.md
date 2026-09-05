@@ -152,3 +152,7 @@
 - `digital-protocell/examples/dcdev021_m2_closure006_impl.rs` — assay-only local contact/regulator composition, paired/solo controls, finite transfer, lifecycle, heredity boundary, and compact qualification evidence; no production behavior change.
 - `digital-protocell/experiments/generated/dcdev021m2closure006/` — compact CLOSURE-006 authority, contact provenance, controls, material/energy closure, lifecycle boundary, preservation, and qualification evidence.
 - `.github/workflows/dc-dev-021-m2-closure006.yml` — exact-head Linux validation for CLOSURE-006 local contact quiescence, controls, preservation, governance, and artifact upload.
+- `digital-protocell/examples/dcdev021_m2_closure007.rs` — isolated CLOSURE-007 entry point for assay-only post-ingestive material-to-work composition.
+- `digital-protocell/examples/dcdev021_m2_closure007_impl.rs` — CLOSURE-007 implementation reusing existing internal N/F/A/W state, local regulator composition, finite-world transfer, frozen metabolism, growth, fission, and heredity accounting; no production behavior change.
+- `digital-protocell/experiments/generated/dcdev021m2closure007/` — compact CLOSURE-007 authority, material-signal definition, candidate/control arms, acquisition/work, closure, preservation, and qualification evidence.
+- `.github/workflows/dc-dev-021-m2-closure007.yml` — exact-head Linux validation for CLOSURE-007 authority, assay classification, preservation, D-087, downstream tests, governance, and artifact upload.

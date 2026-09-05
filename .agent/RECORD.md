@@ -726,3 +726,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The local contact vector engages existing local regulator attenuation and produces a bounded acquisition/A-saving benefit over regulator-null, but the shuffled-contact arm is higher and no candidate/null fission occurs. The accepted classification remains `M2_LOCAL_RESOURCE_CONTACT_QUIESCENCE_ACQUISITION_BENEFIT_REPRODUCTIVE_CAUSALITY_NOT_ESTABLISHED`; local resource exploitation and autonomous resource acquisition remain unestablished.
 - Affected areas: additive CLOSURE-006 assay/evidence/workflow and append-only acceptance governance only; frozen scientific runtime, CLOSURE-005 evidence, M1 provenance, fission source, and PR #44 remain unchanged.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE006-LOCAL-RESOURCE-CONTACT-QUIESCENCE
+
+## DEC-DCDEV021-M2-CLOSURE007-POST-INGESTIVE-MATERIAL-WORK
+
+- Date: 2026-09-05
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE007-POST-INGESTIVE-MATERIAL-WORK
+- Status: ACTIVE
+- Decision or event: CLOSURE-007 is authorized from exact head `3ee324e968ac38489e147e47840f5e1f277f706c` as an assay-only test of the existing internal N/F/A/W material-to-work composition.
+- Rationale: CLOSURE-006 showed a bounded local contact benefit but did not establish reproductive causality. CLOSURE-007 tests the existing post-ingestive material state as the only new assay input. The local result improves delivery and reduces A spending, but no candidate fission occurs; autonomous resource acquisition remains unestablished.
+- Affected areas: isolated CLOSURE-007 assay, compact evidence, scoped workflow, and append-only governance only; frozen scientific runtime, M1 provenance, fission source, restart boundary, and PR #44 remain unchanged.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE006-LOCAL-RESOURCE-CONTACT-QUIESCENCE-FINAL

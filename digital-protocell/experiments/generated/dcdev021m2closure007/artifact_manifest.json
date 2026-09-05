@@ -1,0 +1,25 @@
+{
+  "dense_traces": "not included; compact evidence only",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "material_signal_definition.json",
+    "candidate_material_feedback.json",
+    "transfer_disabled_control.json",
+    "zero_resource_control.json",
+    "no_material_feedback_control.json",
+    "motor_off_control.json",
+    "acquisition_comparison.json",
+    "reproduction_comparison.json",
+    "material_energy_closure.json",
+    "resource_to_work.json",
+    "feeding_timing.json",
+    "forbidden_information_audit.json",
+    "preservation.json",
+    "m1_preservation.json",
+    "downstream_preservation.json",
+    "restart_boundary.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ]
+}

@@ -14,6 +14,20 @@
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260905-dcdev021-m2-closure007-post-ingestive-material-work
+
+- Issued: `2026-09-05T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-CLOSURE-007-POST-INGESTIVE-MATERIAL-TO-WORK-REQUALIFICATION-001`
+- Objective: Test whether an existing internal N/F/A/W composition signal can drive the existing local regulator/actuator composition, assay-only, to improve finite-material acquisition and cross the existing reproductive boundary without adding a new sensor, parameter, memory, or production behavior.
+- Scope: Isolated CLOSURE-007 assay, compact evidence, scoped workflow, and append-only governance only.
+- Exclusions: Contact sensing, resource coordinates, observer-ledger input, new gains or thresholds, new memory, uptake/metabolism/fission/actuator/traction changes, production integration, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: `M2_POST_INGESTIVE_MATERIAL_WORK_REPRODUCTIVE_COMPOSITION_QUALIFIED`, `M2_POST_INGESTIVE_MATERIAL_WORK_ACQUISITION_BENEFIT_REPRODUCTION_NOT_ESTABLISHED`, `M2_POST_INGESTIVE_MATERIAL_WORK_INSUFFICIENT`, or invalid according to exact-head validation.
+- Risk class: HIGH
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260905-dcdev021-m2-closure006-contact-quiescence
 
 - Issued: `2026-09-05T00:00:00-04:00`

@@ -1,0 +1,11 @@
+{
+  "contact_signal": false,
+  "distance": false,
+  "gradient": false,
+  "resource_center": false,
+  "resource_radius": false,
+  "reward": false,
+  "target": false,
+  "uptake_ledger_as_input": false,
+  "viability": false
+}

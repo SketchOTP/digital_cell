@@ -1,0 +1,8 @@
+{
+  "assay_only": true,
+  "directive": "DC-DEV-021-M2-CLOSURE-007-POST-INGESTIVE-MATERIAL-TO-WORK-REQUALIFICATION-001",
+  "next_execution_started": false,
+  "production_runtime_changed": false,
+  "starting_head": "3ee324e968ac38489e147e47840f5e1f277f706c",
+  "steps": 12000
+}

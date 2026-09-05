@@ -1,0 +1,7 @@
+{
+  "candidate_fissions": 0,
+  "motor_off_fissions": 1,
+  "null_fissions": 0,
+  "resource_causal_reproduction": false,
+  "transfer_disabled_fissions": 0
+}

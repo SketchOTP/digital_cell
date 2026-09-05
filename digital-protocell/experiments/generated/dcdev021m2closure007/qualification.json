@@ -1,0 +1,9 @@
+{
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "candidate_benefit": true,
+  "candidate_saves_a": true,
+  "classification": "M2_POST_INGESTIVE_MATERIAL_WORK_ACQUISITION_BENEFIT_REPRODUCTION_NOT_ESTABLISHED",
+  "next_execution_started": false,
+  "post_ingestive_material_work": "NOT_ESTABLISHED",
+  "resource_causal_reproduction": false
+}
