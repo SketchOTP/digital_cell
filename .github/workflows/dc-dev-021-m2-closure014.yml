@@ -121,7 +121,8 @@ jobs:
           git diff --check
           grep -q 'DC-DEV-021-M2-CLOSURE-014-CONTACT-BOUNDARY-A-FRACTION-REPRODUCTION-CEILING-001' .agent/CURRENT.md .agent/DIRECTIVES.md .agent/RECORD.md
           grep -q 'M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED' .agent/CURRENT.md .agent/OUTCOMES.md
-          grep -q 'MaturationCoupledV4 / reserve OFF' .agent/CURRENT.md
+          grep -q 'MaturationCoupledV4' .agent/CURRENT.md
+          grep -q 'reserve OFF' .agent/CURRENT.md
       - name: Hash compact CLOSURE-014 evidence
         working-directory: digital-protocell
         run: |
