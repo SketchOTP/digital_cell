@@ -37,12 +37,12 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Local release build and seven fixed-coordinate solo/paired lifecycle arms - PASSED
   - Per-lineage organism/resource attribution and CLOSURE-004 aggregate parity - PASSED
   - Material and energetic closure - PASSED locally
-  - Exact-head Linux CI - PENDING
-  - Artifact digest - PENDING
-  - Notion readback - PENDING
+  - Exact-head Linux CI - PASSED
+  - Artifact digest - PASSED
+  - Notion readback - PASSED
   - Architect review - PENDING
 - Remaining risks: no spatial fission, descendants, heritable ecological phenotype, shared-resource reproductive consequence, or evolution re-entry were reached.
-- Blockers: exact-head validation, artifact verification, Notion readback, and Architect review.
+- Blockers: Architect review only.
 - Follow-up directive: none
 
 ## D-20260904-dcdev021-m2-closure004-material-consistent-reproductive-ecology - PARTIAL

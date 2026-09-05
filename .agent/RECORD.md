@@ -696,3 +696,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: CLOSURE-004 aggregate transfer did not establish per-lineage sufficiency. Fixed-coordinate solo and paired observer arms are authorized to distinguish individual accumulation, temporal reproductive context, and genuine finite sharing without changing biology.
 - Affected areas: additive CLOSURE-005 assay/evidence/workflow and append-only governance only; frozen scientific runtime, CLOSURE-004 evidence, M1 provenance, and PR #44 remain unchanged.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE004-MATERIAL-CONSISTENT-SPATIAL-RESOURCE-REPRODUCTIVE-ECOLOGY-FINAL
+
+## DEC-DCDEV021-M2-CLOSURE005-PER-LINEAGE-REPRODUCTIVE-ECOLOGY-FINAL
+
+- Date: 2026-09-04
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE005-PER-LINEAGE-REPRODUCTIVE-ECOLOGY-FINAL
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33938909541` passed on result head `90f5d2a10007455117b1278c5b902af896d95d33`; the independently downloaded artifact ZIP digest is `sha256:7c8a8188e130242d0d2faa1ed38638d3f28f932af40b6a34344b5173538563e6`.
+- Rationale: Per-lineage accounting and CLOSURE-004 aggregate parity pass. Daughter A remains below its calibrated reproductive demand; Daughter B exceeds its calibrated demand but neither lineage reaches unforced fission. The bounded classification remains `M2_REPRODUCTIVE_RESOURCE_UNIT_CONTEXT_DEPENDENT_UNRESOLVED`; descendants, heritable ecological phenotype, and evolution re-entry are not reached.
+- Affected areas: append-only validation governance only; the CLOSURE-005 assay, evidence, frozen scientific runtime, CLOSURE-004 evidence, M1 provenance, and PR #44 remain unchanged.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE005-PER-LINEAGE-REPRODUCTIVE-ECOLOGY
