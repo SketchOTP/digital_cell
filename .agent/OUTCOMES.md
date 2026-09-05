@@ -2165,3 +2165,18 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Stop condition: direct existing N/F transfer remains the first divergence,
   or the contract requires an unmotivated parameter/allocator/frozen-law
   change.
+
+## D-20260905dcdev021-goal-shared-medium-execution-r12 - COMPLETE PROVISIONAL NEGATIVE
+
+- Outcome ID: `OUT-DCDEV021-GOAL-SHARED-MEDIUM-EXECUTION-R12`.
+- The selected finite shared extracellular medium contract transferred
+  `862.7395324888972` N and F in the active arm with exact world conservation;
+  the matched transfer-disabled control transferred zero.
+- Active and disabled arms both fissioned at step `25`; first active transfer
+  was step `418`, so the observed fission was not resource-causal.
+- Classification: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_NEGATIVE` /
+  `M2_SHARED_EXTRACELLULAR_MEDIUM_RESOURCE_CAUSAL_FISSION_NOT_ESTABLISHED`.
+- This closes the current contract execution and forbids another nearby
+  spatial-field, reserve, assimilation, allocation, transport, or active-work
+  variant. Independent Architect acceptance is not claimed.
+- Exact-head Linux validation and artifact digest are pending.

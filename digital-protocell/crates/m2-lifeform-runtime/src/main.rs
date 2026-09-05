@@ -11,7 +11,8 @@ use chemistry_core::mesh_reactions::{
 use chemistry_core::mesh_transport::transport_step;
 use chemistry_core::mesh_transport::TransportParams;
 use regulatory_core::{
-    ContractilityParamsV1, FiniteWorldResourceV1, FiniteWorldV1, SpatialMaterialFieldV1,
+    ContractilityParamsV1, FiniteWorldResourceV1, FiniteWorldV1,
+    SharedFiniteExtracellularMediumV1, SpatialMaterialFieldV1,
     StickSlipTractionParamsV1,
 };
 use serde::{Deserialize, Serialize};
@@ -43,6 +44,10 @@ struct RuntimeSnapshot {
     /// runtime path and its checkpoint schema semantics.
     #[serde(default)]
     spatial_field: Option<SpatialMaterialFieldV1>,
+    /// Opt-in R11 finite shared extracellular medium. `None` preserves the
+    /// historical FiniteWorldV1 and Route-B checkpoint semantics.
+    #[serde(default)]
+    shared_medium: Option<SharedFiniteExtracellularMediumV1>,
     /// Opt-in D-091 reserve composition; absent preserves reserve-off runtime.
     #[serde(default)]
     reserve_parameters: Option<ReserveParams>,
@@ -153,6 +158,8 @@ struct RuntimeReport {
     world_f_mass_remaining: f64,
     spatial_field_n_mass_remaining: f64,
     spatial_field_f_mass_remaining: f64,
+    shared_medium_n_mass_remaining: f64,
+    shared_medium_f_mass_remaining: f64,
     cumulative_n_delivered: f64,
     cumulative_f_delivered: f64,
     cumulative_assimilation_n_processed: f64,
@@ -199,6 +206,7 @@ struct Config {
     resume: Option<PathBuf>,
     transfer_disabled: bool,
     routeb_spatial_field: bool,
+    shared_extracellular_medium: bool,
     routec_reserve_growth: bool,
     assimilation_material_flow: bool,
     anabolic_incorporation: bool,
@@ -243,6 +251,7 @@ fn parse_config() -> Config {
     let mut resume = None;
     let mut transfer_disabled = false;
     let mut routeb_spatial_field = false;
+    let mut shared_extracellular_medium = false;
     let mut routec_reserve_growth = false;
     let mut assimilation_material_flow = false;
     let mut anabolic_incorporation = false;
@@ -262,6 +271,7 @@ fn parse_config() -> Config {
             "--resume" => resume = Some(PathBuf::from(value(&mut i))),
             "--transfer-disabled" => transfer_disabled = true,
             "--routeb-spatial-field" => routeb_spatial_field = true,
+            "--shared-extracellular-medium" => shared_extracellular_medium = true,
             "--routec-reserve-growth" => routec_reserve_growth = true,
             "--assimilation-material-flow" => assimilation_material_flow = true,
             "--assimilation-anabolic-incorporation" => {
@@ -285,6 +295,7 @@ fn parse_config() -> Config {
         resume,
         transfer_disabled,
         routeb_spatial_field,
+        shared_extracellular_medium,
         routec_reserve_growth,
         assimilation_material_flow,
         anabolic_incorporation,
@@ -515,6 +526,7 @@ fn new_post_fission_snapshot(
         },
         world: FiniteWorldV1::new(Vec::new()),
         spatial_field: Some(field),
+        shared_medium: None,
         reserve_parameters: None,
         assimilation_enabled: true,
         anabolic_incorporation_enabled: true,
@@ -808,6 +820,7 @@ fn new_snapshot(seed: u64) -> RuntimeSnapshot {
         population,
         world,
         spatial_field: None,
+        shared_medium: None,
         reserve_parameters: None,
         assimilation_enabled: false,
         anabolic_incorporation_enabled: false,
@@ -844,6 +857,32 @@ fn new_snapshot(seed: u64) -> RuntimeSnapshot {
         previous_centroids,
         scientific_boundary: ScientificBoundary::default(),
     }
+}
+
+/// R11 uses the same preregistered separated geometry as the historical
+/// finite-world runtime, but replaces four independently represented resource
+/// objects with one finite world-owned shared extracellular compartment.
+fn new_shared_medium_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
+    let mut snapshot = new_snapshot(seed);
+    let resource = separated_world(&snapshot.population.individuals[0].mesh)
+        .resources
+        .into_iter()
+        .next()
+        .expect("separated geometry has one or more resources");
+    let region = resource.backing.region;
+    let mut medium = SharedFiniteExtracellularMediumV1::new(
+        region.center,
+        region.radius,
+        RESOURCE_MASS,
+        RESOURCE_MASS,
+    )
+    .expect("valid shared extracellular medium");
+    medium.transfer_enabled = transfer_enabled;
+    snapshot.world = FiniteWorldV1::new(Vec::new());
+    snapshot.shared_medium = Some(medium);
+    snapshot.scientific_boundary.finite_world_exchange =
+        "SharedFiniteExtracellularMediumV1 / local membrane exchange".to_string();
+    snapshot
 }
 
 fn new_routeb_snapshot(
@@ -892,6 +931,7 @@ fn new_routeb_snapshot(
         // shape; Route-B uses only the explicit spatial field below.
         world: FiniteWorldV1::new(Vec::new()),
         spatial_field: Some(field),
+        shared_medium: None,
         reserve_parameters: None,
         assimilation_enabled,
         anabolic_incorporation_enabled,
@@ -976,6 +1016,7 @@ fn new_routec_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         population,
         world: FiniteWorldV1::new(Vec::new()),
         spatial_field: Some(field),
+        shared_medium: None,
         reserve_parameters: Some(reserve),
         assimilation_enabled: false,
         anabolic_incorporation_enabled: false,
@@ -1106,7 +1147,20 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
         .iter()
         .map(|&index| snapshot.population.individuals[index].mesh.clone())
         .collect();
-    let deliveries: Vec<RuntimeDelivery> = if let Some(field) = snapshot.spatial_field.as_mut() {
+    let deliveries: Vec<RuntimeDelivery> = if let Some(medium) = snapshot.shared_medium.as_mut() {
+        medium
+            .exchange(&mut meshes, &transport, dt)
+            .into_iter()
+            .map(|delivery| RuntimeDelivery {
+                organism_index: delivery.organism_index,
+                exposed_edges: delivery.exposed_edges,
+                n_delivered: delivery.n_delivered,
+                f_delivered: delivery.f_delivered,
+                n_world_loss: delivery.n_world_loss,
+                f_world_loss: delivery.f_world_loss,
+            })
+            .collect()
+    } else if let Some(field) = snapshot.spatial_field.as_mut() {
         field.diffuse(dt);
         let field_deliveries = field.exchange(&mut meshes, &transport, dt);
         for (mesh, delivery) in meshes.iter().zip(&field_deliveries) {
@@ -1395,6 +1449,16 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
             .as_ref()
             .map(SpatialMaterialFieldV1::total_f_mass)
             .unwrap_or(0.0),
+        shared_medium_n_mass_remaining: snapshot
+            .shared_medium
+            .as_ref()
+            .map(SharedFiniteExtracellularMediumV1::total_n_mass)
+            .unwrap_or(0.0),
+        shared_medium_f_mass_remaining: snapshot
+            .shared_medium
+            .as_ref()
+            .map(SharedFiniteExtracellularMediumV1::total_f_mass)
+            .unwrap_or(0.0),
         cumulative_n_delivered: snapshot.cumulative_n_delivered,
         cumulative_f_delivered: snapshot.cumulative_f_delivered,
         cumulative_assimilation_n_processed: snapshot.cumulative_assimilation_n_processed,
@@ -1422,12 +1486,18 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
                 .unwrap_or(true)
         }),
         fission_observations: snapshot.fission_observations.clone(),
-        resource_transfer_enabled: snapshot
-            .spatial_field
-            .as_ref()
-            .map(|_| snapshot.spatial_field_transfer_enabled)
-            .unwrap_or(snapshot.world.transfer_enabled),
-        resource_mode: if snapshot.spatial_field.is_some() {
+        resource_transfer_enabled: if let Some(medium) = snapshot.shared_medium.as_ref() {
+            medium.transfer_enabled
+        } else {
+            snapshot
+                .spatial_field
+                .as_ref()
+                .map(|_| snapshot.spatial_field_transfer_enabled)
+                .unwrap_or(snapshot.world.transfer_enabled)
+        },
+        resource_mode: if snapshot.shared_medium.is_some() {
+            "SharedFiniteExtracellularMediumV1".to_string()
+        } else if snapshot.spatial_field.is_some() {
             "SpatialMaterialFieldV1".to_string()
         } else {
             "FiniteWorldV1".to_string()
@@ -1464,6 +1534,8 @@ fn main() {
         .unwrap_or_else(|| {
             if config.post_fission_ecology {
                 new_post_fission_snapshot(config.seed, !config.transfer_disabled)
+            } else if config.shared_extracellular_medium {
+                new_shared_medium_snapshot(config.seed, !config.transfer_disabled)
             } else if config.assimilation_material_flow {
                 new_routeb_snapshot(
                     config.seed,
@@ -1479,8 +1551,12 @@ fn main() {
                 new_snapshot(config.seed)
             }
         });
-    if config.transfer_disabled && snapshot.spatial_field.is_none() {
-        snapshot.world.transfer_enabled = false;
+    if config.transfer_disabled {
+        if let Some(medium) = snapshot.shared_medium.as_mut() {
+            medium.transfer_enabled = false;
+        } else if snapshot.spatial_field.is_none() {
+            snapshot.world.transfer_enabled = false;
+        }
     }
     let target = snapshot.step.saturating_add(config.steps);
     while snapshot.step < target {

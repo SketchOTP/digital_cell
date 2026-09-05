@@ -1018,6 +1018,25 @@ Use it for architectural decisions, governance changes, releases, qualification 
   must replan organism/world material flow from the end-goal causal contract.
 - Independent Architect acceptance: `PENDING`.
 
+## DEC-DCDEV021-GOAL-SHARED-MEDIUM-EXECUTION-R12
+
+- Date: `2026-09-05`
+- Status: `PROVISIONAL_NEGATIVE`
+- Starting head: `572555439df97cb9879fbf2e01ba22edbbb7831d`.
+- Decision: execute the selected finite shared extracellular medium contract
+  with matched transfer-enabled and transfer-disabled controls.
+- Result: finite local exchange is conserved and reaches existing interior N/F,
+  but active and disabled runs both fission at step `25`; first active
+  environmental transfer is step `418`; pre-fission environmental delivery is
+  `0 / 0`.
+- Interpretation: the current developmental fission is inherited and not
+  caused by environmental material. Resource-causal reproduction remains
+  `NOT_ESTABLISHED`.
+- Stop condition: no additional local material-flow or active-work variant.
+  Reconstruct and replan the wider organism/world architecture from the first
+  demonstrated divergence before another implementation.
+- Independent Architect acceptance: `PENDING`.
+
 ## DEC-DCDEV021-GOAL-CURRENT-FLUX-LEDGER-R10-AUTHORITY
 
 - Date: `2026-09-05`

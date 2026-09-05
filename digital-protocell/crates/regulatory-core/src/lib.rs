@@ -20,6 +20,7 @@ pub mod intrinsic_exploration;
 pub mod plasticity;
 pub mod spatial;
 pub mod spatial_material_field;
+pub mod shared_extracellular_medium;
 pub mod spatial_resource;
 pub mod stick_slip_traction;
 
@@ -89,6 +90,11 @@ pub use spatial_resource::{
 
 pub use spatial_material_field::{
     SpatialFieldDeliveryV1, SpatialMaterialFieldV1, SPATIAL_MATERIAL_FIELD_SCHEMA_V1,
+};
+
+pub use shared_extracellular_medium::{
+    SharedFiniteExtracellularMediumV1, SharedMediumDeliveryV1,
+    SHARED_FINITE_EXTRACELLULAR_MEDIUM_SCHEMA_V1,
 };
 
 pub use stick_slip_traction::{

@@ -1,0 +1,14 @@
+{
+  "directive": "GOAL-MODE-SHARED-FINITE-EXTRACELLULAR-MEDIUM-EXECUTION-R12",
+  "starting_head": "572555439df97cb9879fbf2e01ba22edbbb7831d",
+  "selected_contract": "SHARED_FINITE_EXTRACELLULAR_MEDIUM_LOCAL_MEMBRANE_EXCHANGE_V1",
+  "objective": "Execute the selected organism/world material-flow contract and test resource-causal fission with a matched transfer-disabled control.",
+  "causal_order": ["finite shared medium", "local membrane exchange", "existing interior N/F", "existing frozen metabolism", "existing growth", "existing fission"],
+  "seed": 2,
+  "steps": 1500,
+  "new_rate_or_gain": false,
+  "assimilation_buffer": false,
+  "fission_gate_changed": false,
+  "production_default_changed": false,
+  "independent_architect_acceptance": "PENDING"
+}

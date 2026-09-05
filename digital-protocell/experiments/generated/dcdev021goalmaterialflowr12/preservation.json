@@ -1,0 +1,8 @@
+{
+  "focused_shared_medium_unit_tests": "3/3 PASS",
+  "full_m2_runtime_tests": "4/4 PASS",
+  "canonical_d087_boundary": {"v2": "8/8", "v3": "8/8", "v4": "7/8", "v4_vector": [true, true, false, true, true, true, true, true]},
+  "exact_head_linux_validation": "PENDING",
+  "downstream_preservation": "PENDING_EXACT_HEAD",
+  "scientific_runtime_default_behavior": "UNCHANGED_OPT_IN_ONLY"
+}

@@ -817,3 +817,20 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Stop condition: if direct existing N/F transfer remains the first divergence
   under a conserved shared-medium contract, local material-flow architecture is
   insufficient and must be replanned.
+
+## L-DCDEV021-GOAL-SHARED-MEDIUM-EXECUTION-R12-001
+
+- Fact: a finite world-owned shared medium with simultaneous local membrane
+  exchange transferred `862.7395324888972` N and F in the active run, while the
+  disabled control transferred zero; all world conservation residuals were
+  zero.
+- Fact: active and disabled runs both fissioned at step `25`, before active
+  transfer at step `418`, with parent delivery `0 / 0` at fission.
+- Lesson: changing material ownership and removing per-cell allocation can
+  improve and clarify finite transfer without making inherited developmental
+  fission resource-causal.
+- Consequence: stop nearby material-flow variants. The next step must be a
+  wider architecture replan from the first divergence, not another pool,
+  buffer, field, allocation, transport, or active-work expression.
+- Confidence: `PROVISIONAL` pending exact-head Linux validation and artifact
+  digest.

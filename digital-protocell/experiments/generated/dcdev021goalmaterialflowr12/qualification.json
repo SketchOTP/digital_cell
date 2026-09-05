@@ -1,0 +1,11 @@
+{
+  "goal_agent_status": "GOAL_AGENT_PROVISIONALLY_ACCEPTED_NEGATIVE",
+  "classification": "M2_SHARED_EXTRACELLULAR_MEDIUM_RESOURCE_CAUSAL_FISSION_NOT_ESTABLISHED",
+  "contract_transfer": "VERIFIED_INTEGRATED",
+  "finite_medium_conservation": "PASS",
+  "resource_causal_fission": "NOT_ESTABLISHED",
+  "assimilation_architecture": "INVESTIGATE_NOT_ACCEPTED",
+  "local_material_flow_variants_after_this": "STOP_AND_REPLAN",
+  "independent_architect_acceptance": "PENDING",
+  "next_execution_started": false
+}

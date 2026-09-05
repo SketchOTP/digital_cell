@@ -1,0 +1,13 @@
+{
+  "schema": "digital_cell_shared_finite_extracellular_medium_v1",
+  "medium_owner": "world",
+  "local_exchange": true,
+  "direct_existing_interior_nf": true,
+  "simultaneous_order_independent_debit": true,
+  "finite_world_mass": true,
+  "active_transfer_enabled": true,
+  "matched_transfer_disabled_control": true,
+  "existing_metabolism_growth_fission_unchanged": true,
+  "resource_information_used_by_behavior": "NONE",
+  "nearby_variant_search": false
+}

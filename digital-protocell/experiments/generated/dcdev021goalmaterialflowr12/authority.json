@@ -1,0 +1,11 @@
+{
+  "prior_contract_selection_head": "572555439df97cb9879fbf2e01ba22edbbb7831d",
+  "prior_contract_selection_workflow": "33997603749",
+  "prior_contract_selection_artifact_sha256": "sha256:c4b4a4b43fff44a41fe05b715a2c161fb5b399166d61124a65965fea1b9e2a9c",
+  "pr_44": "OPEN_DRAFT_UNMERGED_UNTOUCHED",
+  "m1": "CLOSED_FROZEN",
+  "reserve": "OFF",
+  "assimilation_architecture": "INVESTIGATE_NOT_ACCEPTED",
+  "resource_causal_fission_before_execution": "NOT_ESTABLISHED",
+  "authority_mode": "GOAL_AGENT_PROVISIONAL_ONLY"
+}

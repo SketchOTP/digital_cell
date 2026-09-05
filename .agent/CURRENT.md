@@ -390,3 +390,22 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Stop condition: if the contract requires a new rate, allocator, hidden bath,
   frozen-law change, or still fails at direct transfer, stop local material-flow
   work and replan the organism/world architecture.
+
+## Goal-mode shared finite extracellular medium execution R12
+
+- Starting head: `572555439df97cb9879fbf2e01ba22edbbb7831d`.
+- The selected `SHARED_FINITE_EXTRACELLULAR_MEDIUM_LOCAL_MEMBRANE_EXCHANGE_V1`
+  contract was implemented as an opt-in finite world-owned medium with local
+  exchange directly into existing interior N/F. No assimilation pool, new
+  rate, allocation rule, fission criterion, or production default was added.
+- Active seed-2 execution delivered `862.7395324888972` N and F with zero
+  conservation residual. The transfer-disabled matched control delivered zero
+  N/F. Both arms fissioned at step `25`; active environmental transfer began
+  at step `418`, and the parent had received `0 / 0` environmental N/F before
+  fission.
+- Goal-agent status: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_NEGATIVE`.
+- Classification: `M2_SHARED_EXTRACELLULAR_MEDIUM_RESOURCE_CAUSAL_FISSION_NOT_ESTABLISHED`.
+- This is a verified finite-transfer composition but not resource-causal
+  reproduction. Stop local material-flow variants and replan the wider
+  organism/world architecture from the first divergence.
+- Exact-head Linux validation and artifact digest are pending.

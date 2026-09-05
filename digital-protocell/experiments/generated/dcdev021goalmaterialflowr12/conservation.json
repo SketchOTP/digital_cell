@@ -1,0 +1,10 @@
+{
+  "active_world_n_residual": 0.0,
+  "active_world_f_residual": 0.0,
+  "disabled_world_n_residual": 0.0,
+  "disabled_world_f_residual": 0.0,
+  "active_delivery_plus_remaining_n": 1021.6929953263324,
+  "active_delivery_plus_remaining_f": 1021.6929953263324,
+  "finite_medium_conservation": "PASS",
+  "direct_existing_interior_material": "PASS"
+}

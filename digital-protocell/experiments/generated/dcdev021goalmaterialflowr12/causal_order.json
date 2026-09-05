@@ -1,0 +1,10 @@
+{
+  "pre_fission_step": 25,
+  "active_first_environmental_transfer_step": 418,
+  "disabled_first_environmental_transfer_step": null,
+  "active_parent_delivery_before_fission": {"n": 0.0, "f": 0.0},
+  "disabled_parent_delivery_before_fission": {"n": 0.0, "f": 0.0},
+  "active_and_disabled_fission_step_equal": true,
+  "resource_causal_fission": false,
+  "interpretation": "Observed runtime fission is inherited developmental fission, not environmental-transfer causality."
+}
