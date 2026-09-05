@@ -755,3 +755,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The accepted CLOSURE-008 material-derived regulator composition improves finite transfer and reduces A spending but produces no candidate fission. This bounded assay tests whether direct parameter-free local allocation by the same existing internal material fraction is the limiting work-allocation step.
 - Affected areas: additive CLOSURE-009 assay/evidence/workflow and append-only governance only; no frozen scientific runtime, uptake/metabolism/growth/fission source, M1 provenance, restart boundary, or PR #44 modification.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE008-LINEAGE-POST-INGESTIVE-MATERIAL-WORK-FINAL
+
+## DEC-DCDEV021-M2-CLOSURE009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION-FINAL
+
+- Date: 2026-09-05
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION-FINAL
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33950728180` passed on `654d4d20e7f758c07b1af8bbf8db6ffd1ba92962`; independently downloaded artifact ZIP digest is `sha256:a2338b01fa999f3682c965b71ba8751b9ab5154b427abc07cbccfde0cfb1d03c`; CLOSURE-009 is accepted as `M2_POST_INGESTIVE_DIRECT_MATERIAL_WORK_REPRODUCTION_NOT_ESTABLISHED`.
+- Rationale: The direct assay-only use of existing internal material fraction `S=(N+F)/(N+F+A+W)` at `motor_i=base_i*(1-S)` improves finite delivery and reduces A spending without new behavior or parameterization, but no candidate scope fissions. Motor-off Daughter B and paired controls fission once, so the direct allocation is a bounded work/acquisition benefit rather than resource-causal reproduction.
+- Affected areas: additive CLOSURE-009 assay/evidence/workflow/governance only; no frozen scientific runtime, uptake/metabolism/growth/fission source, M1 provenance, restart boundary, or PR #44 modification.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION

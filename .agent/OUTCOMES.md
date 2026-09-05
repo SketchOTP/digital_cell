@@ -1715,3 +1715,21 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: exact-head Linux validation may identify workflow or preservation defects; autonomous acquisition, resource-causal reproduction, heredity, and evolution remain unestablished.
 - Blockers: exact-head validation, artifact verification, Notion readback, and Architect acceptance only.
 - Follow-up directive: none
+
+## D-20260905-dcdev021-m2-closure009-direct-material-work - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE009-DIRECT-MATERIAL-WORK-FINAL`
+- Supersedes outcome: `OUT-DCDEV021-M2-CLOSURE009-DIRECT-MATERIAL-WORK`
+- Closed: `2026-09-05T02:54:27-04:00`
+- Acceptance: `MET`
+- Summary: Final authority confirms that direct post-ingestive material allocation `motor_i=base_i*(1-S)` improves finite N/F delivery and lowers A spending in Daughter A, Daughter B, and paired scopes, but produces zero candidate fissions. Daughter B and paired motor-off controls fission once, so the bounded result is `M2_POST_INGESTIVE_DIRECT_MATERIAL_WORK_REPRODUCTION_NOT_ESTABLISHED`.
+- Changed areas: additive CLOSURE-009 assay/example, compact evidence, scoped workflow, Cargo example registration, and append-only governance only; no frozen scientific runtime, uptake/metabolism/growth/fission source, M1 provenance, restart boundary, or PR #44 modification.
+- Validation:
+  - Local release assay, compact evidence, material/energy closure, fixed controls, and governance validation - PASSED
+  - Exact-head Linux workflow `33950728180` on `654d4d20e7f758c07b1af8bbf8db6ffd1ba92962` - PASSED
+  - Independently downloaded artifact ZIP digest `sha256:a2338b01fa999f3682c965b71ba8751b9ab5154b427abc07cbccfde0cfb1d03c` - PASSED
+  - Notion append-only acceptance/readback - PASSED
+  - Architect acceptance - COMPLETE for this bounded result
+- Remaining risks: autonomous acquisition, resource-causal reproduction, descendant continuity, heritable ecological phenotype, environment-dependent evolution, and standalone-lifeform completion remain unestablished.
+- Blockers: none for CLOSURE-009; the next capability cycle requires a separately authorized directive.
+- Follow-up directive: none

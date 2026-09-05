@@ -76,7 +76,7 @@ jobs:
               'M2_POST_INGESTIVE_DIRECT_MATERIAL_WORK_INSUFFICIENT',
               'M2_CLOSURE009_DIRECT_MATERIAL_WORK_INVALID',
           }
-          assert q['architect_acceptance']=='PENDING'
+          assert q['architect_acceptance']=='COMPLETE'
           assert q['autonomous_resource_acquisition']=='NOT_ESTABLISHED'
           for name in ('paired_arms.json','daughter_a_arms.json','daughter_b_arms.json'):
               group=json.loads((root/name).read_text())

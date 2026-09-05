@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-05T02:20:23-04:00`
+- Last updated: `2026-09-05T02:54:27-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20260905-dcdev021-m2-closure009-direct-material-work`
 - External directive ID: `DC-DEV-021-M2-CLOSURE-009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION-REQUALIFICATION-001`
 - Objective: Test the assay-only direct material allocation motor_i = base_i * (1 - S), where S=(N+F)/(N+F+A+W), against the accepted CLOSURE-008 regulator composition and fixed transfer-disabled, zero-resource, material-feedback, and motor-off controls.
-- Current status: `IN_PROGRESS`
-- Acceptance: `ARCHITECT_AUTHORIZED`
+- Current status: `COMPLETE`
+- Acceptance: `ARCHITECT_ACCEPTED`
 - Current phase: `CLOSURE-009 direct post-ingestive material-to-motor allocation requalification`
 - Expected or actual touched areas: `isolated CLOSURE-009 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `Commit the locally validated CLOSURE-009 assay and governance, push the exact result head, and run the scoped Linux authority workflow`
+- Immediate next action: `No successor execution started; CLOSURE-009 is complete and this adopted state is awaiting reset to IDLE before the next authorized capability cycle`
 
 ## Temporary task-relevant facts
 
@@ -72,7 +72,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `CLOSURE-009 local release build/run, compact evidence, material closure, fixed controls, and governance validation`
+- Command or check: `CLOSURE-009 final exact-head authority 654d4d20e7f758c07b1af8bbf8db6ffd1ba92962 / CI 33950728180 / artifact sha256:a2338b01fa999f3682c965b71ba8751b9ab5154b427abc07cbccfde0cfb1d03c`
 - Result: `PASSED`
 
 ## Risks

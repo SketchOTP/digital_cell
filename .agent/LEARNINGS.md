@@ -696,3 +696,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 M2 CLOSURE-009 direct post-ingestive motor allocation requalification.
 - Supersedes learning: L-DCDEV021-M2-CLOSURE009-001
+
+## L-DCDEV021-M2-CLOSURE009-003
+
+- Learning ID: L-DCDEV021-M2-CLOSURE009-003
+- Date: 2026-09-05
+- Fact or lesson: Exact-head CLOSURE-009 authority passed on `654d4d20e7f758c07b1af8bbf8db6ffd1ba92962` with CI `33950728180` and artifact digest `sha256:a2338b01fa999f3682c965b71ba8751b9ab5154b427abc07cbccfde0cfb1d03c`. Direct internal-material allocation improves delivery over no-material feedback but produces no candidate fission in any prescribed scope; the bounded classification is `M2_POST_INGESTIVE_DIRECT_MATERIAL_WORK_REPRODUCTION_NOT_ESTABLISHED`.
+- Evidence location: `digital-protocell/experiments/generated/dcdev021m2closure009/`, `digital-protocell/examples/dcdev021_m2_closure009.rs`, and `.github/workflows/dc-dev-021-m2-closure009.yml`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 M2 CLOSURE-009 direct post-ingestive motor allocation requalification.
+- Supersedes learning: L-DCDEV021-M2-CLOSURE009-002
