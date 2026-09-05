@@ -706,3 +706,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Per-lineage accounting and CLOSURE-004 aggregate parity pass. Daughter A remains below its calibrated reproductive demand; Daughter B exceeds its calibrated demand but neither lineage reaches unforced fission. The bounded classification remains `M2_REPRODUCTIVE_RESOURCE_UNIT_CONTEXT_DEPENDENT_UNRESOLVED`; descendants, heritable ecological phenotype, and evolution re-entry are not reached.
 - Affected areas: append-only validation governance only; the CLOSURE-005 assay, evidence, frozen scientific runtime, CLOSURE-004 evidence, M1 provenance, and PR #44 remain unchanged.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE005-PER-LINEAGE-REPRODUCTIVE-ECOLOGY
+
+## DEC-DCDEV021-M2-CLOSURE006-LOCAL-RESOURCE-CONTACT-QUIESCENCE
+
+- Date: 2026-09-05
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE006-LOCAL-RESOURCE-CONTACT-QUIESCENCE
+- Status: ACTIVE
+- Decision or event: CLOSURE-006 is authorized from exact accepted CLOSURE-005 head `aeb9356efd13db06a5dd0c8f32c43957d4fd5f25`.
+- Rationale: Test only the existing local physical contact vector selecting existing local regulator attenuation, with all resource transfer, growth, fission, heredity, and evolution semantics otherwise unchanged. The local candidate improves acquisition over regulator-null but the shuffled-contact control is higher and no reproduction occurs, so the bounded reproductive-causality classification remains unresolved/not established pending exact-head authority.
+- Affected areas: additive CLOSURE-006 assay/evidence/workflow and append-only governance only; frozen scientific runtime, CLOSURE-005 evidence, M1 provenance, and PR #44 remain unchanged.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE005-PER-LINEAGE-REPRODUCTIVE-ECOLOGY-FINAL

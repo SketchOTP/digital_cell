@@ -1,0 +1,8 @@
+{
+  "behavior_reads": [
+    "local binary exposure vector only"
+  ],
+  "inventory_read_by_regulator": false,
+  "source": "FiniteSpatialResourceRegionV1::local_contact_signal",
+  "world_coordinates_read_by_regulator": false
+}

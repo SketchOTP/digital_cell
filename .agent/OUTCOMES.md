@@ -25,6 +25,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
+## D-20260905-dcdev021-m2-closure006-contact-quiescence - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE006-LOCAL-RESOURCE-CONTACT-QUIESCENCE`
+- Supersedes outcome: none
+- Closed: 2026-09-05T00:00:00-04:00
+- Acceptance: PARTIAL
+- Summary: The exact local contact vector engages existing regulator attenuation without changing uptake, growth, fission, or target semantics. Paired candidate delivery is `1193.9493565902608` N/F versus regulator-null `1146.3487440851763` N/F, with `223.379419421661` A saved, but contact-shuffled delivery is higher at `1301.2827685737038` N/F and neither candidate nor null fissions in 12,000 steps. The bounded classification is `M2_LOCAL_RESOURCE_CONTACT_QUIESCENCE_ACQUISITION_BENEFIT_REPRODUCTIVE_CAUSALITY_NOT_ESTABLISHED`.
+- Changed areas: additive CLOSURE-006 assay/evidence/workflow and append-only governance; no frozen scientific runtime, CLOSURE-005 evidence, M1 provenance, fission source, or PR #44 modification.
+- Validation:
+  - Local release assay, compact evidence generation, material/energetic closure, and governance preparation - PASSED
+  - Exact-head Linux workflow - NOT RUN
+  - Artifact upload and independent digest - NOT RUN
+  - Architect acceptance - NOT RUN
+- Remaining risks: exact-head validation may identify workflow or preservation defects; contact-specific reproductive causality, descendant ecological continuity, heritable ecological phenotype, and evolution re-entry remain unestablished.
+- Blockers: exact-head validation, artifact verification, and Architect review only; no successor work is authorized.
+- Follow-up directive: none
+
 ## D-20260904-dcdev021-m2-closure005-per-lineage-reproductive-ecology - PARTIAL
 
 - Outcome ID: `OUT-DCDEV021-M2-CLOSURE005-PER-LINEAGE-REPRODUCTIVE-ECOLOGY-LOCAL`

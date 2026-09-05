@@ -14,6 +14,20 @@
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260905-dcdev021-m2-closure006-contact-quiescence
+
+- Issued: `2026-09-05T00:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-CLOSURE-006-LOCAL-RESOURCE-CONTACT-QUIESCENCE-REPRODUCTIVE-ECOLOGY-AND-HEREDITY-001`
+- Objective: Test exact local finite-resource contact through the existing local regulator dynamics and inhibitory motor composition, then preserve material closure, reproductive attribution, descendant continuity, and evolution-readiness boundaries.
+- Scope: Additive observer/assay composition, required controls, compact evidence, preservation, governance, and exact-head Linux validation; no production default change.
+- Exclusions: No new sensor, gain, threshold, timer, memory, target, gradient, uptake/growth/fission trigger, resource tuning, motor/traction redesign, M1 modification, restart repair, PR #44 modification, or successor execution.
+- Acceptance: `M2_LOCAL_RESOURCE_CONTACT_QUIESCENCE_REPRODUCTIVE_ECOLOGY_QUALIFIED`, `M2_LOCAL_RESOURCE_CONTACT_QUIESCENCE_ACQUISITION_BENEFIT_REPRODUCTIVE_CAUSALITY_NOT_ESTABLISHED`, `M2_LOCAL_RESOURCE_CONTACT_QUIESCENCE_INSUFFICIENT`, or invalid according to directive gates and exact-head validation.
+- Risk class: HIGH
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ## D-20260904-dcdev021-m2-closure005-per-lineage-reproductive-ecology
 
 - Issued: `2026-09-04T21:00:00-04:00`

@@ -1,0 +1,7 @@
+{
+  "contact_signal": "exact local finite-resource exposure",
+  "contact_triggered_uptake_growth_fission": false,
+  "formula": "effective_motor[i] = base_motor[i] * (1 - regulator_activity[i])",
+  "new_parameter": false,
+  "regulator": "RegulatoryNetworkV1"
+}

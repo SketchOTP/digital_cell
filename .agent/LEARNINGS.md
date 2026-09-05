@@ -18,6 +18,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-021 ENTRY-015 polarity actuator interface feasibility audit
 - Supersedes learning: none
 
+## L-DCDEV021-M2-CLOSURE006-001
+
+- Learning ID: L-DCDEV021-M2-CLOSURE006-001
+- Date: 2026-09-05
+- Fact or lesson: Exact local contact quiescence preserves a lawful contact-to-regulator path and saves `223.379419421661` A in the paired finite ecology, improving delivered N/F from `1146.3487440851763` to `1193.9493565902608` per species over the regulator-null control. The higher shuffled-contact arm (`1301.2827685737038`) means contact-specific reproductive causality is not established, and no candidate/null fission occurred.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_closure006.rs`, `digital-protocell/examples/dcdev021_m2_closure006_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2closure006/`, and `.github/workflows/dc-dev-021-m2-closure006.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 M2 CLOSURE-006 local resource-contact quiescence reproductive ecology and heredity.
+- Supersedes learning: none
+
 ## L-DCDEV021-M2-CLOSURE003-001
 
 - Learning ID: L-DCDEV021-M2-CLOSURE003-001

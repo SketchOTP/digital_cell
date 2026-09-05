@@ -1,0 +1,9 @@
+{
+  "distance": false,
+  "gradient": false,
+  "observer_ledger_as_input": false,
+  "resource_center": false,
+  "resource_radius": false,
+  "reward": false,
+  "target": false
+}

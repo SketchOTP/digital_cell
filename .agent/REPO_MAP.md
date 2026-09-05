@@ -148,3 +148,7 @@
 - `digital-protocell/examples/dcdev021_m2_closure005_impl.rs` — observer-only organism/resource delivery attribution, reproductive-demand landmarks, solo/pair controls, and conditional descendant boundary; no production behavior change.
 - `digital-protocell/experiments/generated/dcdev021m2closure005/` — compact CLOSURE-005 authority, per-lineage ledgers, solo/pair lifecycle evidence, closure, preservation, and qualification artifacts.
 - `.github/workflows/dc-dev-021-m2-closure005.yml` — exact-head Linux validation for CLOSURE-005 authority, per-lineage ecology, preservation, governance, and artifact upload.
+- `digital-protocell/examples/dcdev021_m2_closure006.rs` — isolated CLOSURE-006 entry point for local resource-contact quiescence and reproductive ecology.
+- `digital-protocell/examples/dcdev021_m2_closure006_impl.rs` — assay-only local contact/regulator composition, paired/solo controls, finite transfer, lifecycle, heredity boundary, and compact qualification evidence; no production behavior change.
+- `digital-protocell/experiments/generated/dcdev021m2closure006/` — compact CLOSURE-006 authority, contact provenance, controls, material/energy closure, lifecycle boundary, preservation, and qualification evidence.
+- `.github/workflows/dc-dev-021-m2-closure006.yml` — exact-head Linux validation for CLOSURE-006 local contact quiescence, controls, preservation, governance, and artifact upload.

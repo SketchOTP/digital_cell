@@ -1,0 +1,9 @@
+{
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "candidate_benefit": true,
+  "candidate_saves_a": true,
+  "classification": "M2_LOCAL_RESOURCE_CONTACT_QUIESCENCE_ACQUISITION_BENEFIT_REPRODUCTIVE_CAUSALITY_NOT_ESTABLISHED",
+  "fission_benefit": false,
+  "local_resource_exploitation": "NOT_ESTABLISHED",
+  "next_execution_started": false
+}

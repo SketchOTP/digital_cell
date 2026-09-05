@@ -1,0 +1,8 @@
+{
+  "assay_only": true,
+  "directive": "DC-DEV-021-M2-CLOSURE-006-LOCAL-RESOURCE-CONTACT-QUIESCENCE-REPRODUCTIVE-ECOLOGY-AND-HEREDITY-001",
+  "next_execution_started": false,
+  "production_runtime_changed": false,
+  "starting_head": "aeb9356efd13db06a5dd0c8f32c43957d4fd5f25",
+  "steps": 12000
+}

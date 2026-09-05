@@ -1,0 +1,31 @@
+{
+  "dense_traces": "not included; compact evidence only",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "contact_provenance.json",
+    "quiescence_architecture.json",
+    "solo_a_finite.json",
+    "solo_b_finite.json",
+    "paired_finite.json",
+    "regulator_null_control.json",
+    "contact_shuffled_control.json",
+    "motor_off_control.json",
+    "transfer_disabled.json",
+    "zero_resource.json",
+    "a_savings.json",
+    "feeding_timing.json",
+    "resource_causal_reproduction.json",
+    "descendant_continuity.json",
+    "heredity_ecological_phenotype.json",
+    "evolution_reentry.json",
+    "material_closure.json",
+    "energetic_closure.json",
+    "forbidden_information_audit.json",
+    "m1_preservation.json",
+    "preservation.json",
+    "restart_boundary.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ]
+}

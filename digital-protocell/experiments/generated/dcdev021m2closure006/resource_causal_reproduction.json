@@ -1,0 +1,6 @@
+{
+  "candidate_acquisition_benefit": true,
+  "candidate_fission_benefit": false,
+  "candidate_fissions": 0,
+  "null_fissions": 0
+}

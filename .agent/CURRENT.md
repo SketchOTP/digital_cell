@@ -3,24 +3,26 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-04T19:37:00-04:00`
+- Last updated: `2026-09-05T00:00:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260904-dcdev021-m2-closure005-per-lineage-reproductive-ecology`
-- External directive ID: `DC-DEV-021-M2-CLOSURE-005-PER-LINEAGE-RESOURCE-CAUSAL-REPRODUCTION-SHARED-ECOLOGY-AND-HEREDITY-001`
-- Objective: Resolve per-lineage spatial reproductive sufficiency and shared-resource attribution without changing organism behavior.
+- Local directive ID: `D-20260905-dcdev021-m2-closure006-contact-quiescence`
+- External directive ID: `DC-DEV-021-M2-CLOSURE-006-LOCAL-RESOURCE-CONTACT-QUIESCENCE-REPRODUCTIVE-ECOLOGY-AND-HEREDITY-001`
+- Objective: Test whether exact local finite-resource contact can engage existing local regulator attenuation to save actuation while preserving lawful material, reproductive, and heredity boundaries.
 - Current status: `VALIDATING`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `CLOSURE-005 exact-head validation complete; Architect acceptance pending`
-- Expected or actual touched areas: `isolated CLOSURE-005 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `Architect review; no successor execution authorized`
+- Current phase: `CLOSURE-006 local resource-contact quiescence exact-head validation in progress`
+- Expected or actual touched areas: `isolated CLOSURE-006 assay, compact evidence, scoped workflow, append-only governance`
+- Immediate next action: `Run exact-head Linux CI and artifact digest; then Architect review; no successor execution authorized`
 
 ## Temporary task-relevant facts
 
 - M0 is closed; M1 is formally closed and frozen at `fb77f472b1519a9e0f713833efba5b1d403f4723`.
 - Production selection is `MaturationCoupledV4` with reserve OFF; M2 ENTRY-001 A-funded actuation and ENTRY-005 target-free intrinsic locomotion are Architect accepted; ENTRY-011 is Architect accepted as metabolically live in-contact composition; ENTRY-016 is Architect accepted as `M2_POLARITY_INITIATION_ENDOGENOUS_ASYMMETRY_ABSENT`; ENTRY-019 is Architect accepted as `M2_CONSERVATIVE_LIFE_HISTORY_POLARITY_INITIATION_QUALIFIED`; ENTRY-021 is Architect accepted as `M2_CONSERVATIVE_POLARITY_FISSION_INHERITANCE_AND_AMPLIFICATION_QUALIFIED`; ENTRY-023 is complete pending Architect review, and no successor audit is active.
 - PR #44 is the immutable M1 provenance stack and must remain open, draft, unmerged, and untouched.
+- CLOSURE-005 is Architect accepted at exact head `aeb9356efd13db06a5dd0c8f32c43957d4fd5f25` as `M2_REPRODUCTIVE_RESOURCE_UNIT_CONTEXT_DEPENDENT_UNRESOLVED`; CLOSURE-006 is additive assay/evidence/workflow/governance work from that exact head.
+- CLOSURE-006 local result: paired contact-quiescent delivery `1193.9493565902608` N/F versus regulator-null `1146.3487440851763` N/F; contact-shuffled delivery `1301.2827685737038` N/F; candidate saves `223.379419421661` A, but no arm fissions in the 12,000-step paired candidate/null ecology. Current bounded classification is `M2_LOCAL_RESOURCE_CONTACT_QUIESCENCE_ACQUISITION_BENEFIT_REPRODUCTIVE_CAUSALITY_NOT_ESTABLISHED`; local resource exploitation and autonomous resource acquisition remain not established.
 - ENTRY-026 remains a sealed, not-yet-Architect-accepted package with status `INVESTIGATE`; its early step-25 shortcut is not promoted. R1 starts exactly at `04e8b7f030118842b0ad2d8428b6f937fa9aa6c7` and requalifies the population gate without changing the sealed package.
 - The clean baseline is derived from `1e242f28152797b512e25cd56c7b718e45d6ca97`; accepted M1 evidence remains on Atlas.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
