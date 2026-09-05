@@ -1034,3 +1034,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: the common ledger and transfer-disabled control establish environmental N/F transfer as the first measured divergence while active downstream processing/growth remain nonzero. The result does not accept assimilation as architecture and does not establish resource-causal reproduction.
 - Affected areas: remote validation authority and append-only governance; no new organism/world mechanism, formula search, fission-gate change, or independent Architect acceptance.
 - Supersedes record: DEC-DCDEV021-GOAL-UNIFIED-FLUX-BUDGET-AUDIT-R7
+
+## DEC-DCDEV021-GOAL-R6-WORKFLOW-ALLOWLIST-RECONCILIATION
+
+- Date: 2026-09-05
+- Record or decision ID: DEC-DCDEV021-GOAL-R6-WORKFLOW-ALLOWLIST-RECONCILIATION
+- Status: ACTIVE
+- Decision or event: gate the archival R6 workflow to its exact sealed result head and keep successor validation in the scoped R7 workflow. The descendant failure was caused by the historical allowlist rejecting later audit files, not by runtime evidence.
+- Rationale: a historical workflow must preserve its original authority without treating later goal-cycle files as an R6 implementation diff. The R7 workflow remains the authority for the current flux-ledger increment.
+- Affected areas: GitHub workflow scope and append-only governance only; no runtime biology, fission gate, material-flow mechanism, or historical R6 result changed.
+- Supersedes record: none

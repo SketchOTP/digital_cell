@@ -2035,3 +2035,10 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Artifact digest: `sha256:772de052cb2baad489aee16bd1a8ad82faad87552745fbb0b784e9764184b41b`.
 - Goal-agent provisional disposition: `GOAL_AGENT_PROVISIONALLY_ACCEPTED` for the audit evidence only. The classification remains `GOAL_AGENT_PROVISIONAL_FLUX_LEDGER_FIRST_DIVERGENCE_IDENTIFIED`; assimilation is `INVESTIGATE_NOT_ACCEPTED` and independent Architect acceptance is `PENDING`.
 - Preservation: focused chemistry, D-088, D-091, geometry, and runtime checkpoint validation passed; repository-wide governance remains a known pre-existing baseline failure outside this increment.
+
+## D-20260905-dcdev021-goal-r6-workflow-allowlist-reconciliation - COMPLETE PROVISIONAL
+
+- Outcome ID: `OUT-DCDEV021-GOAL-R6-WORKFLOW-ALLOWLIST-RECONCILIATION`.
+- Result: the descendant push triggered the historical R6 workflow, whose bounded-diff allowlist rejected the intentional R7 audit files and chemistry validity guard. The R6 job is now exact-head gated to its sealed starting result; the R7 workflow explicitly permits the archival workflow change.
+- Classification: `GOAL_AGENT_PROVISIONALLY_ACCEPTED` for workflow-scope reconciliation only. The failed descendant run is not scientific evidence and does not alter the R7 flux-ledger classification.
+- Boundary: no runtime biology, fission gate, material-flow mechanism, or historical R6 result changed.

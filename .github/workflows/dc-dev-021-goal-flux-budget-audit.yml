@@ -42,6 +42,7 @@ jobs:
               '.agent/CURRENT.md', '.agent/LEARNINGS.md', '.agent/OUTCOMES.md',
               '.agent/RECORD.md',
               '.github/workflows/dc-dev-021-goal-flux-budget-audit.yml',
+              '.github/workflows/dc-dev-021-goal-post-fission-ecological-reentry.yml',
               'docs/goal-unified-flux-budget-audit-r7.md',
               'scripts/dcdev021_goal_flux_budget_audit.py',
               'digital-protocell/crates/chemistry-core/src/material_mesh.rs',
