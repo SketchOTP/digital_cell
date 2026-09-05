@@ -1793,3 +1793,10 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: autonomous acquisition, resource-causal reproduction, descendant continuity, heritable ecological phenotype, environment-dependent evolution, and standalone-lifeform completion remain unestablished.
 - Blockers: none for CLOSURE-009; the next capability cycle requires a separately authorized directive.
 - Follow-up directive: none
+D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
+
+- Outcome ID: `OUT-DCDEV021-M2-NATIVE-POLARITY-RUNTIME-V2-FINAL`
+- Result head: `4cd426dc9083c40861c0992fc66ca771ed6ed0d2`
+- Exact-head Linux workflow: `33956915074` passed
+- Artifact digest: `sha256:53b201e2ca440f50ae5957f1c7edb78f2db6231f7cf40506b35fbcb74bcbb451`
+- Result: native polarity runtime orchestration and checkpoint/resume are accepted as bounded engineering progress; no fission occurred and no autonomous acquisition, resource-causal reproduction, three-generation, individuality, or standalone-lifeform claim is made.

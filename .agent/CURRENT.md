@@ -103,6 +103,14 @@ Allowed adopted-project statuses: `IDLE`, `PLANNING`, `IN_PROGRESS`, `VALIDATING
 - Evidence: `digital-protocell/experiments/generated/m2-lifeform-runtime-v2/`; deterministic evidence payload digest `sha256:cbc71c06a817acc3b097c26c3168ad377ff9444c83c5a44cfb21ba9160c6bef9` excluding its manifest.
 - Status: `VALIDATING`; Architect acceptance and exact-head remote CI are pending for this increment. Autonomous acquisition, resource-causal reproduction, three generations, individuality, and standalone-lifeform completion remain `NOT_ESTABLISHED`.
 
+## Closed bounded increment: native-polarity checkpointable runtime v2
+
+- Result head: `4cd426dc9083c40861c0992fc66ca771ed6ed0d2` on `m2/dc-dev-021-m2-standalone-lifeform-runtime`.
+- Exact-head Linux workflow: `33956915074` passed; GitHub artifact digest: `sha256:53b201e2ca440f50ae5957f1c7edb78f2db6231f7cf40506b35fbcb74bcbb451`.
+- Architect/coder disposition: `ACCEPTED_BOUNDED_RUNTIME_INCREMENT`.
+- Accepted scope: native inherited polarity carried through remesh/fission orchestration, finite-world exchange, frozen reaction/growth, unforced fission attempt, and checkpoint/resume.
+- Boundary preserved: no fission occurred in the measured ecology; separated acquisition, resource-causal reproduction, three-generation reproduction, heritable ecological phenotype, individuality, unattended persistence, and standalone Linux lifeform completion remain `NOT_ESTABLISHED`.
+
 CLOSURE-004 is Architect accepted at exact governance head `76094ccaf265b90e9b9836eaf77c07bd2df816a8`, CI `33933521477`, and artifact `sha256:334d2a5c83dbe8a51498b004a9cfa47732d83acd850e6e5aa71456bfe78807f1`; its classification is `M2_MATERIAL_CONSISTENT_RESOURCE_ACCESS_INSUFFICIENT`.
 
 CLOSURE-005 local result: the fixed-coordinate paired replay has exact aggregate parity with CLOSURE-004. Solo Daughter A acquires `99.29887582275623` N/F (`0.13841369486985897` of demand) and does not fission. Solo Daughter B acquires `1146.3487440851745` N/F (`1.1220090079202578` of calibrated demand) and still does not fission, establishing the bounded context-dependent classification locally. Exact-head CI and artifact verification pass; Architect acceptance remains pending.

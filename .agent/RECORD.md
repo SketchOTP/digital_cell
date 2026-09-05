@@ -820,3 +820,10 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Authority: implementation head `2b7a1b4d829c9897341fe76193e41e9040f74eb5`; compact evidence payload digest `sha256:cbc71c06a817acc3b097c26c3168ad377ff9444c83c5a44cfb21ba9160c6bef9` excluding its manifest.
 - Observation: 12,000-step run records active motility, first separated contact/transfer at step 11,173, 24.541166774162292 delivered N/F, and exact zero world conservation error; fission remains zero. A 50,000-step boundary run also has zero fissions and reaches the existing mesh-rupture observer boundary.
 - Boundary: no resource-causal reproduction, three-generation lifecycle, heritable ecological phenotype, individuality, unattended persistence, or standalone-lifeform completion is claimed.
+## DEC-DCDEV021-M2-NATIVE-POLARITY-RUNTIME-V2-FINAL
+
+- Date: `2026-09-05`
+- Status: `COMPLETE`
+- Decision: accept the exact-head validated native-polarity checkpointable runtime as bounded engineering progress.
+- Authority: result head `4cd426dc9083c40861c0992fc66ca771ed6ed0d2`; exact-head Linux workflow `33956915074` passed; GitHub artifact digest `sha256:53b201e2ca440f50ae5957f1c7edb78f2db6231f7cf40506b35fbcb74bcbb451`.
+- Boundary: finite-world conservation, active motility, separated contact/transfer observation, native polarity carriage, remesh/fission state continuation, and checkpoint/resume are validated. No fission occurred; resource-causal reproduction, three-generation reproduction, heritable ecological phenotype, individuality, unattended persistence, and standalone Linux lifeform completion remain unestablished.

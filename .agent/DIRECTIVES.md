@@ -864,3 +864,9 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260905-dcdev021-m2-closure009-direct-material-work
 - Status at issuance: ISSUED
+D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
+
+- Result head: `4cd426dc9083c40861c0992fc66ca771ed6ed0d2`.
+- Exact-head Linux workflow `33956915074` passed; artifact digest `sha256:53b201e2ca440f50ae5957f1c7edb78f2db6231f7cf40506b35fbcb74bcbb451`.
+- Disposition: `ACCEPTED_BOUNDED_RUNTIME_INCREMENT`.
+- No scientific runtime source was changed; unresolved reproduction and standalone-lifeform gates remain explicitly negative/unestablished.

@@ -10,6 +10,6 @@
     "artifact_manifest.json"
   ],
   "dense_trajectory_storage": "not included; runtime reports retain compact terminal evidence",
-  "sha256": "sha256:cbc71c06a817acc3b097c26c3168ad377ff9444c83c5a44cfb21ba9160c6bef9",
+  "sha256": "sha256:19229913ee377bf62cec4ff5c7fd5b65683dc8129b1cd3e160ff4a06032e2746",
   "digest_scope": "deterministic tar of all evidence files except artifact_manifest.json"
 }

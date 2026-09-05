@@ -9,5 +9,12 @@
     "modified": false,
     "original_m1_provenance_preserved": true
   },
-  "authority_boundary": "engineering evidence only; Architect acceptance pending"
+  "authority_boundary": "bounded runtime engineering increment accepted; reproduction and standalone-lifeform claims remain unestablished",
+  "exact_head_ci": {
+    "workflow": "dc-dev-021-m2-standalone-runtime.yml",
+    "run_id": 33956915074,
+    "head": "4cd426dc9083c40861c0992fc66ca771ed6ed0d2",
+    "conclusion": "success"
+  },
+  "github_artifact_digest": "sha256:53b201e2ca440f50ae5957f1c7edb78f2db6231f7cf40506b35fbcb74bcbb451"
 }
