@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-05T09:15:00-04:00`
+- Last updated: `2026-09-05T11:36:00-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20260905-dcdev021-m2-closure012-active-work-fission-gate-audit`
 - External directive ID: `DC-DEV-021-M2-CLOSURE-012-ACTIVE-WORK-FISSION-GATE-AUDIT-001`
 - Objective: Identify the first existing fission-gate condition lost by the accepted CLOSURE-011 active-work candidate, using the exact fixed ecology and observer-only gate snapshots.
-- Current status: `IN_PROGRESS`
-- Acceptance: `PENDING`
+- Current status: `COMPLETE`
+- Acceptance: `ARCHITECT_ACCEPTED`
 - Current phase: `CLOSURE-012 active-work fission-gate audit`
 - Expected or actual touched areas: `isolated CLOSURE-012 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `validate exact-head Linux CI, reconcile evidence, and return the bounded mechanism classification to Architect`
+- Immediate next action: `no successor execution; retain resource-causal reproduction as unestablished`
 
 ## CLOSURE-011 final authority
 
@@ -34,6 +34,17 @@
 - Local result: candidate combined scopes never reach the existing `1.35 x birth mass` fission eligibility gate; motor-off Daughter B and paired controls reach it and pass the existing pinch/A gate.
 - Preliminary classification: `M2_ACTIVE_WORK_FISSION_GROWTH_THRESHOLD_CEILING_CONFIRMED`.
 - Autonomous resource acquisition and resource-causal reproduction remain `NOT_ESTABLISHED`.
+
+## CLOSURE-012 final authority
+
+- Result branch: `m2/dc-dev-021-m2-closure012-fission-gate-audit`.
+- Result head: `c29f88ce8c5d49974a7c98fd55f4a63a3f352272`.
+- Exact-head Linux CI: `33963373083` - `PASS`.
+- Artifact digest: `sha256:faec4024cfedc4fc44d3b6cd8cb611ed779dea13f56a23fae3830c8e515afcf1`.
+- Classification: `M2_ACTIVE_WORK_FISSION_GROWTH_THRESHOLD_CEILING_CONFIRMED`.
+- Scientific runtime source changed: `NO`.
+- Architect acceptance: `COMPLETE`.
+- Successor execution: `NOT_STARTED`.
 
 ## Temporary task-relevant facts
 

@@ -879,6 +879,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: `new`
 - Related directive: `D-20260905-dcdev021-m2-closure011-active-material-allocation-fission-ceiling`
 - Status at issuance: `ISSUED`
+
+## D-20260905-dcdev021-m2-closure012-active-work-fission-gate-audit - CLOSED
+
+- Result branch: `m2/dc-dev-021-m2-closure012-fission-gate-audit`.
+- Result head: `c29f88ce8c5d49974a7c98fd55f4a63a3f352272`.
+- Exact-head Linux CI: `33963373083` - `PASS`.
+- Artifact digest: `sha256:faec4024cfedc4fc44d3b6cd8cb611ed779dea13f56a23fae3830c8e515afcf1`.
+- Classification: `M2_ACTIVE_WORK_FISSION_GROWTH_THRESHOLD_CEILING_CONFIRMED`.
+- Disposition: `ARCHITECT_ACCEPTED`.
+- Boundary: candidate active-work scopes never reached the existing `1.35 x birth mass` eligibility gate; motor-off Daughter B and paired controls reached it and passed existing pinch/A accounting. No production behavior or scientific runtime source changed.
+- Successor execution: `NOT_STARTED`.
 D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 
 - Result head: `4cd426dc9083c40861c0992fc66ca771ed6ed0d2`.

@@ -1835,6 +1835,18 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Preliminary result: candidate combined scopes remain below `1.35 x birth mass`; motor-off Daughter B and paired controls reach the gate at step `775` and pass the existing pinch/A checks.
 - Acceptance: `PENDING` pending exact-head Linux validation and Architect disposition.
 
+## D-20260905-dcdev021-m2-closure012-active-work-fission-gate - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE012-ACTIVE-WORK-FISSION-GATE-FINAL`
+- Supersedes outcome: `OUT-DCDEV021-M2-CLOSURE012-ACTIVE-WORK-FISSION-GATE`
+- Closed: `2026-09-05T11:36:00-04:00`
+- Acceptance: `MET`
+- Summary: In the exact fixed CLOSURE-011 ecology and horizon, the active-work candidate never reached the existing `1.35 x birth mass` fission eligibility gate. Its maximum observed mass ratio was `1.3094167543508781`. Motor-off Daughter B and paired controls reached the existing gate at step `775`, found the existing pinch, and passed the existing A-funded cross-bond requirement. The first bounded divergence is therefore the existing growth/mass threshold.
+- Authority: result head `c29f88ce8c5d49974a7c98fd55f4a63a3f352272`; exact-head Linux workflow `33963373083` passed; independently verified artifact ZIP digest `sha256:faec4024cfedc4fc44d3b6cd8cb611ed779dea13f56a23fae3830c8e515afcf1`.
+- Changed areas: additive observer-only gate audit, compact evidence generation, scoped workflow, and append-only governance only; no production scientific runtime, growth/fission law, M1 provenance, restart boundary, or PR #44 modification.
+- Boundary: autonomous resource acquisition, resource-causal reproduction, descendant continuity, heritable ecological phenotype, environment-dependent evolution, learning, individuality, unattended persistence, and standalone-lifeform completion remain unestablished.
+- Architect acceptance: `COMPLETE`; successor execution: `NOT_STARTED`.
+
 ## CLOSURE-011 final-head reconciliation
 
 - The earlier `7717c78` entry is preserved as historical implementation evidence.
