@@ -1819,7 +1819,7 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Closed: `2026-09-05T06:34:00-04:00`
 - Acceptance: `MET`
 - Summary: The assay-only activated-material allocation `A/(N+F+A+W)` preserves finite transfer and reduces active expenditure in the fixed CLOSURE-010 ecology, but candidate Daughter A, Daughter B, and paired scopes produce zero fissions. Daughter B and paired motor-off controls each fission once. The existing active-material allocation family is therefore insufficient for resource-causal reproduction under the frozen ecology.
-- Authority: exact result head `d317144c474cd6d73e0de60e70c9b06e6ddae160`; exact-head Linux CI `33960583370` passed; artifact digest `sha256:ef8d98320d69fa0f9491e27265f43b4828f63f2b58aca651ff909243870f1849`.
+- Authority: exact result head `7717c7833cb10c3238e607667b5f3bd121483144`; exact-head Linux CI `33961026571` passed; artifact digest `sha256:a0a474193eb4a57c09c6099147db475f2435e7ed8ea5e278ffb3796e669fb6e5`.
 - Changed areas: additive assay wrapper, compact evidence, scoped workflow, and append-only governance only; no frozen scientific runtime, uptake/metabolism/growth/fission source, M1 provenance, restart boundary, or PR #44 modification.
 - Preservation: world N/F conservation, A-to-W closure, zero-resource specificity, historical preservation, and the known noncontaminating restart boundary passed.
 - Boundary: autonomous resource acquisition, resource-causal reproduction, descendant ecological continuity, heritable ecological phenotype, environment-dependent evolution, learning, individuality, and standalone-lifeform completion remain unestablished.

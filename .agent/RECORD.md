@@ -842,7 +842,7 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Date: `2026-09-05`
 - Status: `COMPLETE`
 - Decision: accept CLOSURE-011 as `M2_ACTIVE_MATERIAL_ALLOCATION_FISSION_INSUFFICIENT`.
-- Authority: result head `d317144c474cd6d73e0de60e70c9b06e6ddae160`; exact-head Linux CI `33960583370` passed; artifact digest `sha256:ef8d98320d69fa0f9491e27265f43b4828f63f2b58aca651ff909243870f1849`.
+- Authority: result head `7717c7833cb10c3238e607667b5f3bd121483144`; exact-head Linux CI `33961026571` passed; artifact digest `sha256:a0a474193eb4a57c09c6099147db475f2435e7ed8ea5e278ffb3796e669fb6e5`.
 - Rationale: the existing internal activated-material fraction `A/(N+F+A+W)` is a valid assay-local material/work allocation and produces finite transfer with lower active expenditure, but no candidate scope fissions while Daughter B and paired motor-off controls each fission once. The family is therefore insufficient for resource-causal reproduction in the frozen ecology.
 - Boundary: no scientific runtime source changed. Autonomous acquisition, resource-causal reproduction, heritable ecological phenotype, environment-dependent evolution, learning, individuality, and standalone-lifeform completion remain unestablished. No successor execution started.
 - Supersedes record: `DEC-DCDEV021-M2-CLOSURE011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING`.

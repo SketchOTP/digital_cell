@@ -19,9 +19,9 @@
 ## CLOSURE-011 final authority
 
 - Result branch: `m2/dc-dev-021-m2-closure011-a-fission-ceiling`
-- Result head: `d317144c474cd6d73e0de60e70c9b06e6ddae160`
-- Exact-head Linux CI: `33960583370` - `PASS`
-- Artifact digest: `sha256:ef8d98320d69fa0f9491e27265f43b4828f63f2b58aca651ff909243870f1849`
+- Result head: `7717c7833cb10c3238e607667b5f3bd121483144`
+- Exact-head Linux CI: `33961026571` - `PASS`
+- Artifact digest: `sha256:a0a474193eb4a57c09c6099147db475f2435e7ed8ea5e278ffb3796e669fb6e5`
 - Classification: `M2_ACTIVE_MATERIAL_ALLOCATION_FISSION_INSUFFICIENT`
 - Scientific runtime source changed: `NO`
 - Architect acceptance: `COMPLETE`
