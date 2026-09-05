@@ -1,0 +1,22 @@
+{
+  "closure003r1": "ARCHITECT_ACCEPTED",
+  "closure003r1_artifact": "sha256:2784fa475a229c7a17fbfb40254324e82c1f6c0cf59037e50dd85382183a9678",
+  "closure003r1_ci": "33930192753",
+  "closure003r1_classification": "M2_REPRODUCTIVE_RESOURCE_UNIT_QUALIFIED_SPATIAL_REPRODUCTION_NOT_ESTABLISHED",
+  "closure003r1_head": "cd60cbaf923ce44437d67156aa761c3fe9825233",
+  "pr44": {
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "state": "OPEN"
+  },
+  "source_hashes": {
+    "finite_world.rs": "187ae724a29dc726",
+    "m1": "FROZEN",
+    "mesh_fission.rs": "dcb859522534cf03",
+    "mesh_growth.rs": "f466c37daea1186c",
+    "mesh_reactions.rs": "8b7a5572b93b0982",
+    "mesh_transport.rs": "599c32e1cdd6e927",
+    "spatial_resource.rs": "47e9d8394c9e4896"
+  }
+}

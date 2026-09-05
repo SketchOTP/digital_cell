@@ -140,3 +140,7 @@
 - `digital-protocell/examples/dcdev021_m2_closure003r1_impl.rs` — assay-only finite membrane-wide transport/debit adapter, fixed-capacity daughter calibration, empirical resource-unit derivation, and conditional lifecycle boundary; no production behavior change.
 - `digital-protocell/experiments/generated/dcdev021m2closure003r1/` — compact CLOSURE-003-R1 authority, whole-membrane calibration, finite-unit, spatial stop, closure, preservation, and qualification evidence.
 - `.github/workflows/dc-dev-021-m2-closure003r1.yml` — exact-head Linux validation for CLOSURE-003-R1 calibration, conditional ecology, preservation, governance, and artifact upload.
+- `digital-protocell/examples/dcdev021_m2_closure004.rs` — isolated CLOSURE-004 entry point for native material-consistent spatial resource geometry and reproductive ecology.
+- `digital-protocell/examples/dcdev021_m2_closure004_impl.rs` — derived V1 radius, non-overlap audit, finite spatial lifecycle arms, closure evidence, and bounded access-insufficient classification; no production behavior change.
+- `digital-protocell/experiments/generated/dcdev021m2closure004/` — compact CLOSURE-004 geometry, lifecycle, closure, preservation, and qualification evidence.
+- `.github/workflows/dc-dev-021-m2-closure004.yml` — exact-head Linux validation for CLOSURE-004 native geometry, finite access, preservation, governance, and artifact upload.

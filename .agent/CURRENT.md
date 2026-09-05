@@ -86,4 +86,4 @@
 
 Allowed adopted-project statuses: `IDLE`, `PLANNING`, `IN_PROGRESS`, `VALIDATING`, `BLOCKED`, `COMPLETE`. `CURRENT.md` is mutable and never replaces historical ledgers. Reset it to `IDLE` when an adopted task closes.
 
-The active CLOSURE-003-R1 task is awaiting Architect acceptance; no successor execution has started.
+The active CLOSURE-004 task is awaiting Architect acceptance; no successor execution has started. Its native V1 radius is `12.552764362506588`, concentration parity and non-overlap passed, and the material-consistent arm delivered finite N/F but produced zero fissions in the fixed 12,000-step horizon. Descendant, heredity, phenotype, and evolution re-entry work were not reached.

@@ -25,6 +25,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
+## D-20260904-dcdev021-m2-closure004-material-consistent-reproductive-ecology - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE004-MATERIAL-CONSISTENT-REPRODUCTIVE-ECOLOGY`
+- Supersedes outcome: none
+- Closed: `2026-09-04T20:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Native V1 material semantics derive radius `12.552764362506588` for one accepted reproductive unit at the frozen boundary concentration. Four fixed cardinal regions are non-overlapping. The primary arm contacts/transfers at step 1 and delivers `1146.3487440851763` N/F each across the world, but no fed lineage reaches physical fission in 12,000 steps; the bounded classification is `M2_MATERIAL_CONSISTENT_RESOURCE_ACCESS_INSUFFICIENT`.
+- Changed areas: additive CLOSURE-004 assay/example, compact evidence, scoped workflow, and append-only governance only; no frozen scientific runtime, M1 provenance, or PR #44 change.
+- Validation:
+  - Local release assay, native geometry derivation, finite lifecycle controls, and conservation checks - PASSED
+  - Exact-head Linux CI - NOT RUN
+  - Artifact upload and independent digest - NOT RUN
+  - Notion append-only readback - NOT RUN
+  - Architect review - NOT RUN
+- Remaining risks: spatial resource access remains insufficient for physical reproduction; descendant continuity, heritable ecological phenotype, and evolution re-entry remain unestablished.
+- Blockers: exact-head validation, artifact verification, Notion readback, and Architect review only.
+- Follow-up directive: none
+
 ## D-20260903-dcdev021-m2-entry028-balanced-separated-resource-ecology - PARTIAL
 
 - Outcome ID: `OUT-DCDEV021-ENTRY028-BALANCED-SEPARATED-RESOURCE-ECOLOGY-LOCAL`

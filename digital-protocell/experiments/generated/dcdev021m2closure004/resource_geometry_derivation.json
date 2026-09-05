@@ -1,0 +1,12 @@
+{
+  "boundary_f": 2.063914918930895,
+  "boundary_n": 2.063914918930895,
+  "derived_radius_f": 12.552764362506588,
+  "derived_radius_n": 12.552764362506588,
+  "mass_f": 1021.692995326332,
+  "mass_n": 1021.692995326332,
+  "mean_edge": 2.4822089309066597,
+  "parameter_search": false,
+  "radius_selected_from_authority": true,
+  "rule": "V = pi*r^2; C = M/V"
+}

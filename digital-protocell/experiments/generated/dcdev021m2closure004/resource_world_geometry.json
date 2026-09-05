@@ -1,0 +1,58 @@
+{
+  "nonoverlap": true,
+  "placement": "four fixed cardinal bearings with one mean-edge surface gap",
+  "r5_control_boundary_f": 2.063914918930895,
+  "r5_control_boundary_n": 2.063914918930895,
+  "r5_control_radius": 1.5,
+  "radius": 12.552764362506588,
+  "resources": [
+    {
+      "center": [
+        54.266189566649885,
+        40.88572059186467
+      ],
+      "id": "r0",
+      "initial_contact": false,
+      "mass_f": 1021.692995326332,
+      "mass_n": 1021.692995326332,
+      "radius": 12.552764362506588,
+      "surface_gap": 2.48220893090666
+    },
+    {
+      "center": [
+        25.57692282548515,
+        72.26911472394858
+      ],
+      "id": "r90",
+      "initial_contact": false,
+      "mass_f": 1021.692995326332,
+      "mass_n": 1021.692995326332,
+      "radius": 12.552764362506588,
+      "surface_gap": 2.482208930906669
+    },
+    {
+      "center": [
+        -5.604873035862976,
+        40.88572059186467
+      ],
+      "id": "r180",
+      "initial_contact": false,
+      "mass_f": 1021.692995326332,
+      "mass_n": 1021.692995326332,
+      "radius": 12.552764362506588,
+      "surface_gap": 2.48220893090666
+    },
+    {
+      "center": [
+        25.57692282548515,
+        4.320508208307963
+      ],
+      "id": "r270",
+      "initial_contact": false,
+      "mass_f": 1021.692995326332,
+      "mass_n": 1021.692995326332,
+      "radius": 12.552764362506588,
+      "surface_gap": 2.48220893090666
+    }
+  ]
+}

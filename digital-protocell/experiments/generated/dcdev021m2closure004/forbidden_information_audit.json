@@ -1,0 +1,9 @@
+{
+  "behavior_changed": false,
+  "fitness": false,
+  "gradient": false,
+  "mutation": false,
+  "resource_info_to_behavior": "NONE",
+  "selection": false,
+  "target": false
+}

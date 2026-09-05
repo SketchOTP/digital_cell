@@ -1,0 +1,36 @@
+{
+  "material_consistent": [
+    {
+      "edges": 21,
+      "event": "first_contact",
+      "resource": "r0",
+      "step": 1
+    },
+    {
+      "event": "first_transfer",
+      "f": 0.5236387763433245,
+      "n": 0.5236387763433245,
+      "resource": "r0",
+      "step": 1
+    },
+    {
+      "event": "observer_nonviability",
+      "lineage": 1,
+      "reason": "starvation_collapse",
+      "step": 10106
+    }
+  ],
+  "r5": [
+    {
+      "edges": 1,
+      "event": "first_contact",
+      "step": 142
+    },
+    {
+      "event": "first_transfer",
+      "f": 0.023895472077599435,
+      "n": 0.023895472077599435,
+      "step": 142
+    }
+  ]
+}

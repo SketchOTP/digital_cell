@@ -1,0 +1,167 @@
+name: DC-DEV-021 M2 CLOSURE-004 material-consistent reproductive ecology
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-m2-closure004-material-consistent-reproductive-ecology
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  closure004:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify CLOSURE-004 authority and scope
+        run: |
+          set -euo pipefail
+          start=cd60cbaf923ce44437d67156aa761c3fe9825233
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefName,baseRefName
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Verify bounded CLOSURE-004 diff
+        run: |
+          set -euo pipefail
+          start=cd60cbaf923ce44437d67156aa761c3fe9825233
+          python3 - "$start" <<'PY'
+          import subprocess
+          import sys
+
+          start = sys.argv[1]
+          allowed = {
+              ".agent/CURRENT.md", ".agent/DIRECTIVES.md", ".agent/LEARNINGS.md",
+              ".agent/OUTCOMES.md", ".agent/RECORD.md", ".agent/REPO_MAP.md",
+              ".agent/PROJECT_PROFILE.md",
+              ".github/workflows/dc-dev-021-m2-closure004.yml",
+              "digital-protocell/crates/regulatory-core/Cargo.toml",
+              "digital-protocell/examples/dcdev021_m2_closure004.rs",
+              "digital-protocell/examples/dcdev021_m2_closure004_impl.rs",
+          }
+          changed = set(subprocess.check_output(["git", "diff", "--name-only", f"{start}..HEAD"], text=True).splitlines())
+          unexpected = {path for path in changed if path not in allowed and not path.startswith("digital-protocell/experiments/generated/dcdev021m2closure004/")}
+          assert not unexpected, sorted(unexpected)
+          print("CLOSURE-004 additive diff is within authorized assay/evidence/workflow/governance surfaces")
+          PY
+
+      - name: Build and run CLOSURE-004 assay
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build --locked -p regulatory-core --release --example dcdev021_m2_closure004
+          cargo +1.89.0 run --locked -p regulatory-core --release --example dcdev021_m2_closure004 -- experiments/generated/dcdev021m2closure004
+
+      - name: Validate CLOSURE-004 result
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcdev021m2closure004")
+          required = [
+              "protocol.json", "authority.json", "closure003r1_architect_acceptance.json",
+              "resource_geometry_derivation.json", "native_v1_concentration_parity.json",
+              "resource_nonoverlap.json", "resource_world_geometry.json",
+              "material_consistent_lifecycle.json", "r5_aperture_control.json",
+              "transfer_disabled_lifecycle.json", "zero_resource_lifecycle.json",
+              "whole_membrane_reference.json", "exposure_residence_chronology.json",
+              "reproductive_unit_accumulation.json", "metabolic_growth_ledger.json",
+              "mass_threshold_chronology.json", "resource_reproductive_causality.json",
+              "lineage_ledger.json", "descendant_continuity.json", "multigeneration_ecology.json",
+              "inherited_state_inventory.json", "heritability_metrics.json",
+              "heritability_shuffle_control.json", "ecological_phenotype_attribution.json",
+              "variation_generation_audit.json", "evolution_reentry_readiness.json",
+              "world_material_closure.json", "energetic_closure.json", "rotation_equivariance.json",
+              "index_invariance.json", "update_order_invariance.json", "forbidden_information_audit.json",
+              "m1_preservation.json", "entry005_028_preservation.json", "closure001_preservation.json",
+              "closure001r1_preservation.json", "closure002_preservation.json", "closure003_preservation.json",
+              "closure003r1_preservation.json", "downstream_preservation.json", "restart_boundary.json",
+              "repository_professionalism.json", "qualification.json", "artifact_manifest.json",
+          ]
+          for name in required:
+              assert (root / name).is_file(), name
+
+          q = json.loads((root / "qualification.json").read_text())
+          assert q["starting_head"] == "cd60cbaf923ce44437d67156aa761c3fe9825233"
+          assert q["classification"] == "M2_MATERIAL_CONSISTENT_RESOURCE_ACCESS_INSUFFICIENT"
+          assert abs(q["derived_radius"] - 12.552764362506588) < 1e-12
+          assert q["native_concentration_parity"] is True
+          assert q["resource_regions_nonoverlapping"] is True
+          assert q["material_consistent_first_contact"] == 1
+          assert q["material_consistent_first_transfer"] == 1
+          assert q["material_consistent_n_acquired"] > 0
+          assert q["material_consistent_first_fission"] is None
+          assert q["resource_causal_reproduction"] == "NOT_ESTABLISHED"
+          assert q["heritable_ecological_phenotype"] == "NOT_REACHED"
+          assert q["environment_dependent_evolution"] == "NOT_ESTABLISHED"
+          assert q["next_execution_started"] is False
+          assert q["architect_acceptance"] == "PENDING"
+
+          material = json.loads((root / "material_consistent_lifecycle.json").read_text())
+          disabled = json.loads((root / "transfer_disabled_lifecycle.json").read_text())
+          zero = json.loads((root / "zero_resource_lifecycle.json").read_text())
+          assert material["first_transfer_step"] == 1
+          assert material["delivered_n"] > 0 and material["delivered_f"] > 0
+          assert material["fissions"] == 0
+          assert disabled["delivered_n"] == 0 and disabled["fissions"] == 0
+          assert zero["delivered_n"] == 0 and zero["fissions"] == 0
+          assert material["invalid"] is False
+
+          closure = json.loads((root / "world_material_closure.json").read_text())
+          assert closure["status"] == "PASS"
+          assert closure["n_error"] <= 1e-10 and closure["f_error"] <= 1e-10
+          energy = json.loads((root / "energetic_closure.json").read_text())
+          assert energy["status"] == "PASS" and energy["reserve"] == "OFF"
+          assert json.loads((root / "forbidden_information_audit.json").read_text())["resource_info_to_behavior"] == "NONE"
+          assert json.loads((root / "entry005_028_preservation.json").read_text())["status"] == "PASS"
+          m1 = json.loads((root / "m1_preservation.json").read_text())
+          assert m1["source_changed"] is False
+          assert (m1["v2_d087"], m1["v3_d087"], m1["v4_d087"]) == ("8/8", "8/8", "7/8")
+          assert m1["v4_vector"] == [True, True, False, True, True, True, True, True]
+          manifest = json.loads((root / "artifact_manifest.json").read_text())
+          assert all(item["present"] for item in manifest["files"])
+          print("CLOSURE-004 material geometry, finite access, no-fission boundary, closure, and preservation gates passed")
+          PY
+
+      - name: Run preservation, downstream, and governance checks
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p regulatory-core finite_world -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test --locked -p evolution-harness -- --nocapture
+          python3 ../scripts/validate_governance.py --mode ADOPTED
+
+      - name: Record CLOSURE-004 artifact digest
+        if: always()
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2closure004 -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2closure004.sha256"
+
+      - name: Upload CLOSURE-004 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-m2-closure004-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2closure004/
+            ${{ runner.temp }}/dcdev021m2closure004.sha256
+          if-no-files-found: warn

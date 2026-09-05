@@ -1,0 +1,10 @@
+{
+  "f_delivered": 1146.3487440851763,
+  "f_error": 0.0,
+  "f_world_loss": 1146.3487440851763,
+  "finite_replenishment": 0,
+  "n_delivered": 1146.3487440851763,
+  "n_error": 0.0,
+  "n_world_loss": 1146.3487440851763,
+  "status": "PASS"
+}

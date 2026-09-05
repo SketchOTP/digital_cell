@@ -1,0 +1,10 @@
+{
+  "expected_boundary_f": 2.063914918930895,
+  "expected_boundary_n": 2.063914918930895,
+  "implementation": "FiniteSpatialResourceRegionV1",
+  "native_boundary_f": 2.063914918930895,
+  "native_boundary_n": 2.063914918930895,
+  "parity": true,
+  "r5_override_used_for_primary": false,
+  "radius": 12.552764362506588
+}

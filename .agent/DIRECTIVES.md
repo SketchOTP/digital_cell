@@ -738,3 +738,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260904-dcdev021-m2-closure003-reproductive-ecology-heritable-phenotype
 - Status at issuance: ISSUED
+
+## D-20260904-dcdev021-m2-closure004-material-consistent-reproductive-ecology
+
+- Issued: `2026-09-04T20:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-CLOSURE-004-MATERIAL-CONSISTENT-SPATIAL-RESOURCE-REPRODUCTIVE-ECOLOGY-AND-HEREDITY-001`
+- Objective: Replace the small-aperture/large-backing spatial ecology with native V1 material-consistent resource bodies and test finite access to the accepted reproductive unit without changing organism behavior.
+- Scope: Derived V1 geometry, four fixed symmetric finite regions, matched R5/transfer-disabled/zero-resource lifecycle arms, compact evidence, preservation, governance, and exact-head Linux validation.
+- Exclusions: Locomotion or contact-response changes, resource sensing, food tuning, growth/fission tuning, mutation, selection, evolution, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: `M2_RESOURCE_CAUSAL_REPRODUCTION_AND_HERITABLE_ECOLOGICAL_STATE_QUALIFIED`, `M2_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED_HERITABLE_STATE_UNRESOLVED`, `M2_MATERIAL_CONSISTENT_SPATIAL_RESOURCE_REPRODUCTION_QUALIFIED`, `M2_MATERIAL_CONSISTENT_RESOURCE_ACCESS_INSUFFICIENT`, `M2_REPRODUCTIVE_SPATIAL_RESOURCE_GEOMETRY_UNRESOLVED`, `M2_RESOURCE_REPRODUCTION_CAUSALITY_NOT_ESTABLISHED`, or invalid according to the directive gates and exact-head validation.
+- Risk class: HIGH
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

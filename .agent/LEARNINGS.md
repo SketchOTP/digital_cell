@@ -607,3 +607,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-021 M2 CLOSURE-003-R1 continuous finite membrane feeding reproductive requalification.
 - Supersedes learning: L-DCDEV021-M2-CLOSURE003R1-001
+
+## L-DCDEV021-M2-CLOSURE004-001
+
+- Learning ID: L-DCDEV021-M2-CLOSURE004-001
+- Date: 2026-09-04
+- Fact or lesson: Applying the native V1 rule `C = M/(pi*r^2)` to the accepted reproductive unit and frozen boundary concentration derives radius `12.552764362506588`; four fixed cardinal resources with one mean-edge initial surface gap are non-overlapping. The primary arm contacts/transfers at step 1 but delivers only `1146.3487440851763` N/F total across two lineages and produces no fission in 12,000 steps.
+- Evidence location: `digital-protocell/experiments/generated/dcdev021m2closure004/`, `digital-protocell/examples/dcdev021_m2_closure004.rs`, `digital-protocell/examples/dcdev021_m2_closure004_impl.rs`, and `.github/workflows/dc-dev-021-m2-closure004.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 M2 CLOSURE-004 material-consistent spatial resource reproductive ecology and heredity.
+- Supersedes learning: none

@@ -1,0 +1,8 @@
+{
+  "geometry_stop": false,
+  "material_consistent_fissions": 0,
+  "r5_fissions": 0,
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "transfer_disabled_fissions": 0,
+  "zero_resource_fissions": 0
+}

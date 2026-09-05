@@ -666,3 +666,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Fixed-capacity whole-membrane calibration establishes the empirical N/F reproductive unit at `1021.692995326332` each. The conditional finite spatial ecology and transfer-disabled/zero-resource controls all produce zero fissions, so resource-causal spatial reproduction, descendant ecological continuity, heritable ecological phenotype, and evolution re-entry remain unestablished.
 - Affected areas: additive CLOSURE-003-R1 assay/evidence/workflow and append-only governance; no frozen scientific runtime, sealed CLOSURE-003 evidence, fission source, M1 provenance, or PR #44 modification.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE003R1-FINITE-MEMBRANE-REPRODUCTIVE-REQUALIFICATION
+
+## DEC-DCDEV021-M2-CLOSURE004-MATERIAL-CONSISTENT-SPATIAL-RESOURCE-REPRODUCTIVE-ECOLOGY
+
+- Date: 2026-09-04
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE004-MATERIAL-CONSISTENT-SPATIAL-RESOURCE-REPRODUCTIVE-ECOLOGY
+- Status: ACTIVE
+- Decision or event: Native V1 geometry was derived from the accepted reproductive unit and frozen boundary concentration. The material-consistent spatial arm acquired finite N/F but produced no physical fission within 12,000 steps.
+- Rationale: Spatial resource access remains insufficient for lawful reproduction under the fixed current ecology; no movement, food, growth, fission, or controller tuning was authorized.
+- Affected areas: additive CLOSURE-004 assay/evidence/workflow and append-only governance only; frozen scientific runtime, CLOSURE-003-R1 evidence, M1 provenance, and PR #44 remain unchanged.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE003R1-FINITE-MEMBRANE-REPRODUCTIVE-REQUALIFICATION-FINAL

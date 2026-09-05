@@ -1,0 +1,22 @@
+{
+  "architect_acceptance": "PENDING",
+  "classification": "M2_MATERIAL_CONSISTENT_RESOURCE_ACCESS_INSUFFICIENT",
+  "derived_radius": 12.552764362506588,
+  "directive": "DC-DEV-021-M2-CLOSURE-004-MATERIAL-CONSISTENT-SPATIAL-RESOURCE-REPRODUCTIVE-ECOLOGY-AND-HEREDITY-001",
+  "environment_dependent_evolution": "NOT_ESTABLISHED",
+  "fraction_of_reproductive_unit_acquired_f": 1.1220090079202598,
+  "fraction_of_reproductive_unit_acquired_n": 1.1220090079202598,
+  "heritable_ecological_phenotype": "NOT_REACHED",
+  "material_consistent_f_acquired": 1146.3487440851763,
+  "material_consistent_first_contact": 1,
+  "material_consistent_first_fission": null,
+  "material_consistent_first_transfer": 1,
+  "material_consistent_lifecycle": "COMPLETED",
+  "material_consistent_n_acquired": 1146.3487440851763,
+  "native_concentration_parity": true,
+  "next_execution_started": false,
+  "overlap_count": 0,
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "resource_regions_nonoverlapping": true,
+  "starting_head": "cd60cbaf923ce44437d67156aa761c3fe9825233"
+}
