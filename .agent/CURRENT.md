@@ -302,6 +302,11 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
   field, buffer, assimilation, allocation, or active-work variant.
 - R8 status: `GOAL_AGENT_PROVISIONAL_ARCHITECTURE_SELECTION`; no successor
   runtime execution started; assimilation remains `INVESTIGATE_NOT_ACCEPTED`.
+- R8 exact-head validation: result head `ca7a7726d2bc28378a198c18c219507d25688c3b`,
+  Linux workflow `33991067999` passed, and the independently downloaded
+  artifact ZIP matched `sha256:a08038114eb1bdb3051b5838c5f3eebdfd444c9aa6c997c518ab16c4a07a8f2e`.
+- R8 authority remains provisional Goal-agent evidence only; no independent
+  Architect acceptance is asserted.
 - Workflow reconciliation: the archival R6 workflow rejected descendant R7
   files through its historical allowlist; it is now exact-head gated to the
   sealed R6 result and is not authoritative for successor cycles. The failed

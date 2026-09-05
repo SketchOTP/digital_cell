@@ -2062,3 +2062,16 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
   organism-world material-flow contract before another runtime execution; do
   not add another pool, buffer, field-placement variant, allocation variant,
   active-work formula, or fission-gate change.
+
+## D-20260905-dcdev021-goal-material-flow-architecture-selection-r8-authority - COMPLETE PROVISIONAL
+
+- Outcome ID: `OUT-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R8-AUTHORITY`.
+- Result head: `ca7a7726d2bc28378a198c18c219507d25688c3b`.
+- Exact-head Linux workflow: `33991067999` passed.
+- Artifact digest: `sha256:a08038114eb1bdb3051b5838c5f3eebdfd444c9aa6c997c518ab16c4a07a8f2e`.
+- Goal-agent provisional disposition: `GOAL_AGENT_PROVISIONALLY_ACCEPTED` for
+  this observer/source audit only; independent Architect acceptance is not
+  asserted.
+- Boundary: no successor runtime execution started; assimilation remains
+  `INVESTIGATE_NOT_ACCEPTED`; resource-causal reproduction remains
+  `NOT_ESTABLISHED`.

@@ -1066,3 +1066,17 @@ Use it for architectural decisions, governance changes, releases, qualification 
   workflow allowlist only; no new organism/world mechanism, fission-gate
   change, formula search, or independent Architect acceptance.
 - Supersedes record: `DEC-DCDEV021-GOAL-UNIFIED-FLUX-BUDGET-AUDIT-R7`
+
+## DEC-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R8-AUTHORITY
+
+- Date: `2026-09-05`
+- Status: `ACTIVE_PROVISIONAL`
+- Record or decision ID: `DEC-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R8-AUTHORITY`
+- Result head: `ca7a7726d2bc28378a198c18c219507d25688c3b`.
+- Exact-head Linux workflow: `33991067999` passed.
+- Artifact digest: `sha256:a08038114eb1bdb3051b5838c5f3eebdfd444c9aa6c997c518ab16c4a07a8f2e`.
+- Goal-agent disposition: `GOAL_AGENT_PROVISIONALLY_ACCEPTED` for the
+  source-level architecture-selection audit only. Assimilation remains
+  `INVESTIGATE_NOT_ACCEPTED`; resource-causal reproduction remains
+  `NOT_ESTABLISHED`; independent Architect acceptance is not claimed.
+- Supersedes record: `DEC-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R8`
