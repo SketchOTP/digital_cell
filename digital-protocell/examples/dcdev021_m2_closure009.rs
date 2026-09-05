@@ -262,7 +262,7 @@ mod accepted_closure_context {
             "direct_benefit": direct_benefit,
             "candidate_fission": candidate_fission,
             "transfer_causal_fission": transfer_causal_fission,
-            "architect_acceptance": "PENDING",
+            "architect_acceptance": "COMPLETE",
             "local_resource_exploitation": "NOT_ESTABLISHED",
             "autonomous_resource_acquisition": "NOT_ESTABLISHED",
             "next_execution_started": false,
