@@ -682,7 +682,7 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Date: 2026-09-04
 - Record or decision ID: DEC-DCDEV021-M2-CLOSURE004-MATERIAL-CONSISTENT-SPATIAL-RESOURCE-REPRODUCTIVE-ECOLOGY-FINAL
 - Status: ACTIVE
-- Decision or event: Exact-head Linux workflow `33932582586` passed on result head `6d4238d131faa069aa76c4c23df875d0549afe9b`; the independently downloaded artifact ZIP digest is `sha256:1ccc00e7c1936bff7df56aa2bbbe6aedc97ee952c38194c44ea9af5df6f2e2d5`.
+- Decision or event: Exact-head Linux workflow `33933106821` passed on result head `39265abab0217bd0476ba8948b445171676e46ea`; the independently downloaded artifact ZIP digest is `sha256:516c239a93b7bc6c5308a3073439d8e684f945b48c2d5d59a92a9ffa26ce66fb`.
 - Rationale: Native V1 material semantics derive radius `12.552764362506588`, four fixed cardinal regions are non-overlapping, and the primary arm transfers finite N/F with exact world/material closure. No fed lineage reaches physical fission in the fixed 12,000-step horizon, so the bounded classification remains `M2_MATERIAL_CONSISTENT_RESOURCE_ACCESS_INSUFFICIENT`; Architect acceptance remains pending.
 - Affected areas: additive CLOSURE-004 assay/evidence/workflow and append-only governance only; frozen scientific runtime, CLOSURE-003-R1 evidence, M1 provenance, and PR #44 remain unchanged.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE004-MATERIAL-CONSISTENT-SPATIAL-RESOURCE-REPRODUCTIVE-ECOLOGY

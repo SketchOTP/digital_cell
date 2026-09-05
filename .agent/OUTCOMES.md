@@ -52,8 +52,8 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Summary: Exact-head validation passed on result head `6d4238d131faa069aa76c4c23df875d0549afe9b`. Native V1 derivation produced radius `12.552764362506588`, concentration parity and four-region non-overlap passed, and the material-consistent arm acquired finite N/F but produced no fission within 12,000 steps. The bounded classification remains `M2_MATERIAL_CONSISTENT_RESOURCE_ACCESS_INSUFFICIENT`; Architect acceptance remains pending.
 - Changed areas: additive CLOSURE-004 assay, compact evidence, scoped workflow, and append-only governance only; no frozen scientific runtime, M1 provenance, or PR #44 change.
 - Validation:
-  - Exact-head Linux workflow `33932582586` on `6d4238d131faa069aa76c4c23df875d0549afe9b` - PASSED
-  - Independently downloaded artifact ZIP digest `sha256:1ccc00e7c1936bff7df56aa2bbbe6aedc97ee952c38194c44ea9af5df6f2e2d5` - PASSED
+  - Exact-head Linux workflow `33933106821` on `39265abab0217bd0476ba8948b445171676e46ea` - PASSED
+  - Independently downloaded artifact ZIP digest `sha256:516c239a93b7bc6c5308a3073439d8e684f945b48c2d5d59a92a9ffa26ce66fb` - PASSED
   - Governance validation and evidence JSON validation - PASSED
   - Notion append-only readback - NOT RUN
   - Architect acceptance - NOT RUN

@@ -1,6 +1,6 @@
 {
   "architect_acceptance": "PENDING",
-  "artifact_digest": "sha256:1ccc00e7c1936bff7df56aa2bbbe6aedc97ee952c38194c44ea9af5df6f2e2d5",
+  "artifact_digest": "sha256:516c239a93b7bc6c5308a3073439d8e684f945b48c2d5d59a92a9ffa26ce66fb",
   "classification": "M2_MATERIAL_CONSISTENT_RESOURCE_ACCESS_INSUFFICIENT",
   "derived_radius": 12.552764362506588,
   "directive": "DC-DEV-021-M2-CLOSURE-004-MATERIAL-CONSISTENT-SPATIAL-RESOURCE-REPRODUCTIVE-ECOLOGY-AND-HEREDITY-001",
@@ -21,6 +21,6 @@
   "resource_regions_nonoverlapping": true,
   "result_branch": "m2/dc-dev-021-m2-closure004-material-consistent-reproductive-ecology",
   "result_head": "6d4238d131faa069aa76c4c23df875d0549afe9b",
-  "push_ci": "33932582586",
+  "push_ci": "33933106821",
   "starting_head": "cd60cbaf923ce44437d67156aa761c3fe9825233"
 }
