@@ -1948,3 +1948,14 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Changed areas: provisional source-level contract documentation and current-state governance only; no scientific runtime source, M1 chemistry, uptake law, growth/fission gate, restart boundary, or PR #44 changed.
 - Boundary: autonomous resource acquisition, resource-causal reproduction, descendants, heritable ecological phenotype, evolution, learning, individuality, unattended persistence, and standalone-lifeform completion remain unestablished. No successor runtime execution is authorized.
 - Self-acceptance: `GOAL_AGENT_PROVISIONAL_ONLY`; no independent Architect acceptance is claimed.
+
+## D-20260905-dcdev021-goal-material-flow-existing-carrier-audit-r3 - COMPLETE PROVISIONAL REPLAN
+
+- Outcome ID: `OUT-DCDEV021-GOAL-MATERIAL-FLOW-EXISTING-CARRIER-AUDIT-R3`.
+- Starting head: `7960eb4b4d4d092b3220fd3b6d27d39cad054c9b`.
+- Result: source inventory finds no reusable physical carrier for finite environmental N/F provenance into growth. Bulk N/F is consumed by the frozen activation path; D-091 `R` is A-derived; membrane, template, network, and observer fields are semantically incompatible.
+- Route A is provisionally closed for the current composition. A finite assimilatory material compartment is the remaining materially different candidate, requiring an explicit conversion, ledger, serialization, remesh, fission, and daughter-partition contract.
+- Changed areas: source-level evidence and append-only governance only; no scientific runtime source or production behavior changed.
+- Stop condition: do not implement the candidate until its conversion law is reviewed; do not search another local active-work/material-allocation variant.
+- Classification: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_REPLAN`.
+- Independent Architect acceptance: `PENDING`.

@@ -16,6 +16,15 @@
 - Expected or actual touched areas: `source-level contract audit, provisional architecture documentation, append-only governance`
 - Immediate next action: `independent Architect review required before implementing a new assimilation/provenance material state`
 
+## Goal-mode existing-carrier audit R3
+
+- Audit document: `docs/goal-material-flow-existing-carrier-audit-r3.md`.
+- Result: no existing physical field can lawfully carry finite environmental N/F provenance into the current growth/fission path. Bulk N/F is immediately reaction-exposed; D-091 `R` is A-derived activated storage; membrane, template, catalytic-network, and observer provenance fields have incompatible semantics.
+- Route A is provisionally closed for the current composition. The remaining Route-B candidate is a finite assimilation/provenance compartment with an explicit conversion and conservation contract.
+- Current branch head: `7960eb4b4d4d092b3220fd3b6d27d39cad054c9b`.
+- No runtime state, coefficient, growth/fission rule, M1 source, restart boundary, or PR #44 changed. Runtime implementation remains unauthorized pending architectural review.
+- Acceptance: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_REPLAN`; no `ARCHITECT ACCEPTED` status is asserted.
+
 ## Goal-mode realignment — provisional
 
 - Current branch: `m2/dc-dev-021-goal-material-flow-replan-r2`.

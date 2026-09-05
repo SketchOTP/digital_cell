@@ -958,3 +958,14 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Candidate boundary: a finite organism-internal assimilation/provenance compartment may be required to preserve environmental material through the maintenance timescale before existing chemistry/growth consumes it. This is a candidate only; no state, coefficient, threshold, or chemistry coupling is implemented.
 - Exclusions: no additional CLOSURE-006 through CLOSURE-014 formula variant; no gain, threshold, timer, complement, ratio, reserve-horizon search, hidden bath, observer-ledger behavior, silent reserve-on, `1.35×` gate change, M1 change, restart repair, or PR #44 modification.
 - Self-acceptance: `GOAL_AGENT_PROVISIONAL_ONLY`; independent Architect review is required before implementation or successor execution.
+
+## DEC-DCDEV021-GOAL-MATERIAL-FLOW-EXISTING-CARRIER-AUDIT-R3
+
+- Date: `2026-09-05`
+- Status: `PROVISIONAL_REPLAN`
+- Authority: goal-agent source audit from `7960eb4b4d4d092b3220fd3b6d27d39cad054c9b`.
+- Decision: close Route A for the current composition. No existing physical field can carry finite environmental N/F provenance across the reaction/growth boundary without changing field semantics.
+- Evidence: `LumpedChem` contains bulk N/F, A, W, D-091 A-derived R, and hereditary catalytic/template fields; the frozen reaction directly consumes bulk N/F; growth consumes instantaneous A surplus or R; fission partitions only existing pools. D-081 membrane reserve and D-018 observer provenance are not nutrient carriers.
+- Candidate: a finite organism-internal assimilation/provenance compartment, with world ownership, conserved transfer, processing conversion, checkpoint/remesh/fission continuity, and transfer-disabled controls.
+- Exclusions: no CLOSURE-006 through CLOSURE-014 variant, no gain/threshold/timer/ratio/reserve-horizon search, no fission-gate change, no silent reserve-on, no M1 or PR #44 change.
+- Self-acceptance: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_REPLAN`; independent Architect acceptance remains `PENDING`.
