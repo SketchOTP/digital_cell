@@ -331,10 +331,35 @@ fn c10_combined_run(
         for agent in &mut agents {
             let birth = birth_masses.get(&agent.lineage).copied().unwrap_or(agent.birth_mass);
             let mass = agent.mesh.total_structural_mass();
-            if step % 25 != 0 || mass < 1.35 * birth.max(1e-9) {
+            if step % 25 != 0 {
                 continue;
             }
+            if std::env::var_os("DC_CLOSURE012_FISSION_AUDIT").is_some()
+                && mass < 1.35 * birth.max(1e-9)
+            {
+                out.fission_gate_audit.push(c12_fission_gate_snapshot(
+                    &agent.mesh,
+                    &fission,
+                    step,
+                    birth,
+                    false,
+                ));
+                continue;
+            }
+            if mass < 1.35 * birth.max(1e-9) {
+                continue;
+            }
+            let pinch_snapshot_mesh = agent.mesh.clone();
             if let Some((mut d1, mut d2, event)) = try_local_fission(&agent.mesh, &fission) {
+                if std::env::var_os("DC_CLOSURE012_FISSION_AUDIT").is_some() {
+                    out.fission_gate_audit.push(c12_fission_gate_snapshot(
+                        &pinch_snapshot_mesh,
+                        &fission,
+                        step,
+                        birth,
+                        true,
+                    ));
+                }
                 if !event.partition.ok {
                     out.base.base.invalid = true;
                 }
@@ -373,6 +398,14 @@ fn c10_combined_run(
                 );
                 regulators.insert(id1, ContinuityNetworkV1::new(frame1, None).unwrap());
                 regulators.insert(id2, ContinuityNetworkV1::new(frame2, None).unwrap());
+            } else if std::env::var_os("DC_CLOSURE012_FISSION_AUDIT").is_some() {
+                out.fission_gate_audit.push(c12_fission_gate_snapshot(
+                    &pinch_snapshot_mesh,
+                    &fission,
+                    step,
+                    birth,
+                    false,
+                ));
             }
         }
         agents.retain(|agent| agent.mesh.alive);

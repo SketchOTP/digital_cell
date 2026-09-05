@@ -846,3 +846,18 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: the existing internal activated-material fraction `A/(N+F+A+W)` is a valid assay-local material/work allocation and produces finite transfer with lower active expenditure, but no candidate scope fissions while Daughter B and paired motor-off controls each fission once. The family is therefore insufficient for resource-causal reproduction in the frozen ecology.
 - Boundary: no scientific runtime source changed. Autonomous acquisition, resource-causal reproduction, heritable ecological phenotype, environment-dependent evolution, learning, individuality, and standalone-lifeform completion remain unestablished. No successor execution started.
 - Supersedes record: `DEC-DCDEV021-M2-CLOSURE011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING`.
+
+## DEC-DCDEV021-M2-CLOSURE012-ACTIVE-WORK-FISSION-GATE
+
+- Date: `2026-09-05`
+- Status: `ACTIVE`
+- Decision: authorize an observer-only replay from accepted CLOSURE-011 head `307968768af3e321b5fe2f047d854cff13d2ce18`.
+- Rationale: CLOSURE-011 showed finite-transfer and A-saving benefit but no candidate fission. The next causal question is whether the candidate fails before the existing mass eligibility gate, at local pinch discovery, or at existing A-funded cross-bond accounting.
+- Exclusions: no production behavior, growth/fission source, parameter, forced division, horizon, resource geometry, M1, restart, or PR #44 change.
+- Acceptance boundary: `M2_ACTIVE_WORK_FISSION_GROWTH_THRESHOLD_CEILING_CONFIRMED`, `M2_ACTIVE_WORK_FISSION_A_FUNDING_CEILING_CONFIRMED`, `M2_ACTIVE_WORK_FISSION_PINCH_GEOMETRY_CEILING_CONFIRMED`, `M2_ACTIVE_WORK_FISSION_GATE_MULTIFACTOR_UNRESOLVED`, or invalid.
+
+## CLOSURE-011 final-head reconciliation
+
+- Historical implementation evidence remains recorded at `7717c7833cb10c3238e607667b5f3bd121483144`.
+- Accepted final authority is `307968768af3e321b5fe2f047d854cff13d2ce18`; exact-head Linux CI `33961467817` passed; artifact digest `sha256:fe84273c01fa9cf6158706f166647f4e9d4355c8609cc05a82f44bc1e7f86f59`.
+- CLOSURE-012 is authorized only from that accepted final head.

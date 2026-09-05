@@ -1,0 +1,113 @@
+name: DC-DEV-021 M2 CLOSURE-012 active-work fission-gate audit
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-m2-closure012-fission-gate-audit
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  closure012:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+      - name: Verify exact authority and bounded diff
+        run: |
+          set -euo pipefail
+          start=307968768af3e321b5fe2f047d854cff13d2ce18
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefName,baseRefName
+          python3 - "$start" <<'PY'
+          import subprocess, sys
+          start=sys.argv[1]
+          allowed={
+            '.agent/CURRENT.md','.agent/DIRECTIVES.md','.agent/OUTCOMES.md','.agent/RECORD.md',
+            '.github/workflows/dc-dev-021-m2-closure012.yml',
+            'digital-protocell/crates/regulatory-core/Cargo.toml',
+            'digital-protocell/examples/dcdev021_m2_closure007_impl.rs',
+            'digital-protocell/examples/dcdev021_m2_closure010.rs',
+            'digital-protocell/examples/dcdev021_m2_closure010_impl.rs',
+            'digital-protocell/examples/dcdev021_m2_closure012.rs',
+          }
+          changed=set(subprocess.check_output(['git','diff','--name-only',f'{start}..HEAD'],text=True).splitlines())
+          unexpected={p for p in changed if p not in allowed and not p.startswith('digital-protocell/experiments/generated/dcdev021m2closure012/')}
+          assert not unexpected, sorted(unexpected)
+          forbidden=('digital-protocell/crates/chemistry-core/src/','digital-protocell/crates/regulatory-core/src/','digital-protocell/crates/m2-lifeform-runtime/src/')
+          assert not any(p.startswith(forbidden) for p in changed)
+          PY
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Build and run CLOSURE-012 assay
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build --locked -p regulatory-core --release --example dcdev021_m2_closure012
+          cargo +1.89.0 run --locked -p regulatory-core --release --example dcdev021_m2_closure012 -- experiments/generated/dcdev021m2closure012
+      - name: Validate compact CLOSURE-012 evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('experiments/generated/dcdev021m2closure012')
+          q=json.loads((root/'qualification.json').read_text())
+          assert q['classification']=='M2_ACTIVE_WORK_FISSION_GROWTH_THRESHOLD_CEILING_CONFIRMED'
+          assert q['architect_acceptance']=='PENDING'
+          assert q['autonomous_resource_acquisition']=='NOT_ESTABLISHED'
+          summary=json.loads((root/'fission_gate_summary.json').read_text())
+          assert summary['candidate_combined_fissions'] is False
+          assert summary['candidate_mass_eligible_seen'] is False
+          assert summary['candidate_mass_threshold_ceiling_seen'] is True
+          assert summary['motor_off_daughter_b_fissions'] == 1.0
+          assert summary['motor_off_paired_fissions'] == 1.0
+          audit=json.loads((root/'fission_gate_audit.json').read_text())
+          assert audit['daughter_b_combined']
+          assert audit['daughter_b_motor_off']
+          assert not any(x['eligible_by_mass'] for x in audit['daughter_b_combined'])
+          assert any(x['eligible_by_mass'] and x['fission_succeeded'] for x in audit['daughter_b_motor_off'])
+          expected={'combined','direct_material','contact_local','no_feedback','transfer_disabled','zero_resource','motor_off'}
+          for name in ('paired_arms.json','daughter_a_arms.json','daughter_b_arms.json'):
+              group=json.loads((root/name).read_text())
+              assert set(group)==expected
+              for arm in expected:
+                  base=group[arm]['base']['base']
+                  assert base['invalid'] is False
+                  assert abs(base['world_n_loss']-base['delivered_n']) <= 1e-10
+                  assert abs(base['world_f_loss']-base['delivered_f']) <= 1e-10
+                  assert base['a_to_w_residual'] <= 1e-9
+          for p in root.glob('*.json'): json.loads(p.read_text())
+          print('CLOSURE-012 evidence validation passed')
+          PY
+      - name: Validate governance and preservation
+        run: |
+          set -euo pipefail
+          git diff --check
+          grep -q 'DC-DEV-021-M2-CLOSURE-012-ACTIVE-WORK-FISSION-GATE-AUDIT-001' .agent/CURRENT.md
+          grep -q 'D-20260905-dcdev021-m2-closure012-active-work-fission-gate-audit' .agent/DIRECTIVES.md
+          grep -q 'OUT-DCDEV021-M2-CLOSURE012-ACTIVE-WORK-FISSION-GATE' .agent/OUTCOMES.md
+          grep -q 'DEC-DCDEV021-M2-CLOSURE012-ACTIVE-WORK-FISSION-GATE' .agent/RECORD.md
+      - name: Hash compact evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2closure012 -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2closure012.sha256"
+      - name: Upload CLOSURE-012 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-m2-closure012-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2closure012/
+            ${{ runner.temp }}/dcdev021m2closure012.sha256

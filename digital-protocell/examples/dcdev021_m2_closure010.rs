@@ -111,13 +111,19 @@ mod accepted_closure_context {
     }
 
     pub fn c10_main() {
+        let closure012_mode = std::env::var_os("DC_CLOSURE012_FISSION_AUDIT").is_some();
         let closure011_mode = std::env::var_os("DC_CLOSURE011_A_FRACTION").is_some();
-        let directive = if closure011_mode {
+        let material_mode = closure011_mode || closure012_mode;
+        let directive = if closure012_mode {
+            "DC-DEV-021-M2-CLOSURE-012-ACTIVE-WORK-FISSION-GATE-AUDIT-001"
+        } else if closure011_mode {
             "DC-DEV-021-M2-CLOSURE-011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING-AUDIT-001"
         } else {
             C10_DIRECTIVE
         };
-        let starting_head = if closure011_mode {
+        let starting_head = if closure012_mode {
+            "307968768af3e321b5fe2f047d854cff13d2ce18"
+        } else if material_mode {
             "845d5c0a6f5778ec7c8dfb5d822aaba89aeddb31"
         } else {
             C10_START
@@ -164,7 +170,54 @@ mod accepted_closure_context {
             c10_metric(group, "combined", "fissions")
                 > c10_metric(group, "transfer_disabled", "fissions")
         });
-        let classification = if invalid || !zero_specific {
+        let c12_audit = json!({
+            "paired_combined": paired["combined"]["fission_gate_audit"],
+            "daughter_a_combined": daughter_a["combined"]["fission_gate_audit"],
+            "daughter_b_combined": daughter_b["combined"]["fission_gate_audit"],
+            "paired_motor_off": paired["motor_off"]["fission_gate_audit"],
+            "daughter_a_motor_off": daughter_a["motor_off"]["fission_gate_audit"],
+            "daughter_b_motor_off": daughter_b["motor_off"]["fission_gate_audit"],
+        });
+        let c12_records = [
+            &paired["combined"]["fission_gate_audit"],
+            &daughter_a["combined"]["fission_gate_audit"],
+            &daughter_b["combined"]["fission_gate_audit"],
+        ];
+        let c12_pinch_seen = c12_records.iter().any(|records| {
+            records.as_array().is_some_and(|items| items.iter().any(|item| {
+                item["pinch_found"].as_bool().unwrap_or(false)
+            }))
+        });
+        let c12_mass_eligible_seen = c12_records.iter().any(|records| {
+            records.as_array().is_some_and(|items| items.iter().any(|item| {
+                item["eligible_by_mass"].as_bool().unwrap_or(false)
+            }))
+        });
+        let c12_mass_ceiling_seen = c12_records.iter().any(|records| {
+            records.as_array().is_some_and(|items| items.iter().any(|item| {
+                !item["eligible_by_mass"].as_bool().unwrap_or(false)
+            }))
+        });
+        let c12_a_shortfall_seen = c12_records.iter().any(|records| {
+            records.as_array().is_some_and(|items| items.iter().any(|item| {
+                item["pinch_found"].as_bool().unwrap_or(false)
+                    && !item["a_sufficient_for_existing_fission_gate"].as_bool().unwrap_or(false)
+            }))
+        });
+        let c12_geometry_only = c12_mass_eligible_seen && !c12_pinch_seen;
+        let classification = if closure012_mode {
+            if invalid || !zero_specific {
+                "M2_CLOSURE012_ACTIVE_WORK_FISSION_GATE_AUDIT_INVALID"
+            } else if !c12_mass_eligible_seen && c12_mass_ceiling_seen {
+                "M2_ACTIVE_WORK_FISSION_GROWTH_THRESHOLD_CEILING_CONFIRMED"
+            } else if c12_a_shortfall_seen {
+                "M2_ACTIVE_WORK_FISSION_A_FUNDING_CEILING_CONFIRMED"
+            } else if c12_geometry_only {
+                "M2_ACTIVE_WORK_FISSION_PINCH_GEOMETRY_CEILING_CONFIRMED"
+            } else {
+                "M2_ACTIVE_WORK_FISSION_FISSION_GATE_MULTIFACTOR_UNRESOLVED"
+            }
+        } else if invalid || !zero_specific {
             "M2_CLOSURE010_COMBINED_MATERIAL_CONTACT_WORK_INVALID"
         } else if combined_fission && transfer_causal_fission {
             "M2_POST_INGESTIVE_COMBINED_MATERIAL_CONTACT_WORK_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED"
@@ -186,7 +239,7 @@ mod accepted_closure_context {
             "starting_head": starting_head,
             "steps": C10_STEPS,
             "assay_only": true,
-            "mode": if closure011_mode { "activated_energy_fraction" } else { "combined_material_contact" },
+            "mode": if closure012_mode { "active_work_fission_gate_audit" } else if closure011_mode { "activated_energy_fraction" } else { "combined_material_contact" },
             "next_execution_started": false,
             "scopes": ["paired", "daughter_a_solo", "daughter_b_solo"],
         }));
@@ -199,8 +252,8 @@ mod accepted_closure_context {
             "scientific_runtime_source_changed": false,
         }));
         write(&out_dir, "architecture.json", &json!({
-            "composition": if closure011_mode { "motor_i = raw_i * A/(N+F+A+W) * (1 - regulator_i)" } else { "motor_i = raw_i * (1 - S) * (1 - regulator_i)" },
-            "material_signal": if closure011_mode { "A/(N+F+A+W)" } else { "S=(N+F)/(N+F+A+W)" },
+            "composition": if material_mode { "motor_i = raw_i * A/(N+F+A+W) * (1 - regulator_i)" } else { "motor_i = raw_i * (1 - S) * (1 - regulator_i)" },
+            "material_signal": if material_mode { "A/(N+F+A+W)" } else { "S=(N+F)/(N+F+A+W)" },
             "contact_signal": "FiniteSpatialResourceRegionV1::local_contact_signal",
             "regulator": "existing ContinuityNetworkV1 dynamics",
             "new_parameter": false,
@@ -254,6 +307,20 @@ mod accepted_closure_context {
             "daughter_a_combined_fissions": c10_metric(&daughter_a, "combined", "fissions"),
             "daughter_b_combined_fissions": c10_metric(&daughter_b, "combined", "fissions"),
         }));
+        if closure012_mode {
+            write(&out_dir, "fission_gate_audit.json", &c12_audit);
+            write(&out_dir, "fission_gate_summary.json", &json!({
+                "candidate_combined_fissions": combined_fission,
+                "candidate_mass_eligible_seen": c12_mass_eligible_seen,
+                "candidate_mass_threshold_ceiling_seen": c12_mass_ceiling_seen,
+                "candidate_pinch_seen": c12_pinch_seen,
+                "candidate_a_shortfall_seen": c12_a_shortfall_seen,
+                "candidate_geometry_only": c12_mass_eligible_seen && !c12_pinch_seen,
+                "motor_off_paired_fissions": c10_metric(&paired, "motor_off", "fissions"),
+                "motor_off_daughter_a_fissions": c10_metric(&daughter_a, "motor_off", "fissions"),
+                "motor_off_daughter_b_fissions": c10_metric(&daughter_b, "motor_off", "fissions"),
+            }));
+        }
         write(&out_dir, "material_energy_closure.json", &json!({
             "all_runs_invalid": invalid,
             "zero_resource_specific": zero_specific,
@@ -288,7 +355,9 @@ mod accepted_closure_context {
             "generic_full_mesh_restart": "KNOWN_FAIL_NONCONTAMINATING",
             "repair_attempted": false,
         }));
-        let reported_classification = if closure011_mode {
+        let reported_classification = if closure012_mode {
+            classification
+        } else if closure011_mode {
             "M2_ACTIVE_MATERIAL_ALLOCATION_FISSION_INSUFFICIENT"
         } else {
             classification
@@ -299,12 +368,12 @@ mod accepted_closure_context {
             "combined_benefit": combined_benefit,
             "combined_fission": combined_fission,
             "transfer_causal_fission": transfer_causal_fission,
-            "architect_acceptance": if closure011_mode { "PENDING" } else { "COMPLETE" },
+            "architect_acceptance": if material_mode { "PENDING" } else { "COMPLETE" },
             "local_resource_exploitation": "NOT_ESTABLISHED",
             "autonomous_resource_acquisition": "NOT_ESTABLISHED",
             "next_execution_started": false,
         }));
-        let files = [
+        let mut files = vec![
             "protocol.json", "authority.json", "architecture.json", "paired_arms.json",
             "daughter_a_arms.json", "daughter_b_arms.json", "combined_material_contact.json",
             "direct_material_control.json", "contact_local_control.json", "no_feedback_control.json",
@@ -313,11 +382,14 @@ mod accepted_closure_context {
             "forbidden_information_audit.json", "preservation.json", "m1_preservation.json",
             "downstream_preservation.json", "restart_boundary.json", "qualification.json",
         ];
+        if closure012_mode {
+            files.extend(["fission_gate_audit.json", "fission_gate_summary.json"]);
+        }
         write(&out_dir, "artifact_manifest.json", &json!({
-            "files": files.iter().map(|name| (*name).to_string()).collect::<Vec<_>>(),
+            "files": files,
             "dense_traces": "Atlas",
         }));
-        println!("{} classification: {reported_classification}", if closure011_mode { "CLOSURE-011" } else { "CLOSURE-010" });
+        println!("{} classification: {reported_classification}", if closure012_mode { "CLOSURE-012" } else if closure011_mode { "CLOSURE-011" } else { "CLOSURE-010" });
         println!("combined benefit: {combined_benefit}; candidate fission: {combined_fission}; transfer causal fission: {transfer_causal_fission}");
     }
 }

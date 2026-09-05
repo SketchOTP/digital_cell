@@ -1824,3 +1824,19 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Preservation: world N/F conservation, A-to-W closure, zero-resource specificity, historical preservation, and the known noncontaminating restart boundary passed.
 - Boundary: autonomous resource acquisition, resource-causal reproduction, descendant ecological continuity, heritable ecological phenotype, environment-dependent evolution, learning, individuality, and standalone-lifeform completion remain unestablished.
 - Architect acceptance: `COMPLETE`; successor execution: `NOT_STARTED`.
+
+## D-20260905-dcdev021-m2-closure012-active-work-fission-gate - IN PROGRESS
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE012-ACTIVE-WORK-FISSION-GATE`
+- Started: `2026-09-05`
+- External directive: `DC-DEV-021-M2-CLOSURE-012-ACTIVE-WORK-FISSION-GATE-AUDIT-001`
+- Objective: Locate the first existing fission-gate divergence between the CLOSURE-011 active-work candidate and its motor-off controls.
+- Scope: exact fixed CLOSURE-011 ecology and horizon, observer-only gate snapshots, compact evidence, workflow, and governance.
+- Preliminary result: candidate combined scopes remain below `1.35 x birth mass`; motor-off Daughter B and paired controls reach the gate at step `775` and pass the existing pinch/A checks.
+- Acceptance: `PENDING` pending exact-head Linux validation and Architect disposition.
+
+## CLOSURE-011 final-head reconciliation
+
+- The earlier `7717c78` entry is preserved as historical implementation evidence.
+- Architect-accepted final authority is `307968768af3e321b5fe2f047d854cff13d2ce18` with exact-head Linux CI `33961467817` and artifact digest `sha256:fe84273c01fa9cf6158706f166647f4e9d4355c8609cc05a82f44bc1e7f86f59`.
+- CLOSURE-012 starts from that accepted final head; no CLOSURE-011 scientific conclusion is reopened.

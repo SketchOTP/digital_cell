@@ -20,6 +20,51 @@ struct C7Run {
     material_signal_last: f64,
     motor_sum: f64,
     raw_motor_sum: f64,
+    #[allow(dead_code)]
+    fission_gate_audit: Vec<Value>,
+}
+
+fn c12_fission_gate_snapshot(
+    mesh: &MaterialMesh,
+    fission: &FissionParams,
+    step: usize,
+    birth_mass: f64,
+    fission_succeeded: bool,
+) -> Value {
+    let mass = mesh.total_structural_mass();
+    let eligible = mass >= 1.35 * birth_mass.max(1e-9);
+    let pinch = if eligible {
+        chemistry_core::mesh_topology::find_local_pinch(mesh, &fission.topo)
+    } else {
+        None
+    };
+    let range = chemistry_core::mesh_topology::local_rebond_range(mesh, &fission.topo);
+    let (pinch_found, distance, need, have_a, a_margin) = if let Some((i, j)) = pinch {
+        let a = mesh.vertices[i];
+        let b = mesh.vertices[j];
+        let distance = (b[0] - a[0]).hypot(b[1] - a[1]);
+        let need = mesh.rho_s * distance;
+        let have_a = mesh.interior.a.max(0.0) * mesh.area().max(1e-6);
+        (true, distance, need, have_a, have_a - need)
+    } else {
+        (false, 0.0, 0.0, mesh.interior.a.max(0.0) * mesh.area().max(1e-6), 0.0)
+    };
+    json!({
+        "step": step,
+        "topology": mesh.n(),
+        "structural_mass": mass,
+        "birth_mass": birth_mass,
+        "mass_ratio": mass / birth_mass.max(1e-15),
+        "eligible_by_mass": eligible,
+        "pinch_found": pinch_found,
+        "pinch_distance": distance,
+        "local_rebond_range": range,
+        "cross_bond_need": need,
+        "available_a_mass": have_a,
+        "a_margin_after_cross_bond": a_margin,
+        "a_sufficient_for_existing_fission_gate": pinch_found && a_margin >= 0.0,
+        "fission_succeeded": fission_succeeded,
+    })
 }
 
 fn c7_material_signal(mesh: &MaterialMesh) -> f64 {
@@ -276,10 +321,35 @@ fn c7_run(
         for agent in &mut agents {
             let birth = birth_masses.get(&agent.lineage).copied().unwrap_or(agent.birth_mass);
             let mass = agent.mesh.total_structural_mass();
-            if step % 25 != 0 || mass < 1.35 * birth.max(1e-9) {
+            if step % 25 != 0 {
                 continue;
             }
+            if std::env::var_os("DC_CLOSURE012_FISSION_AUDIT").is_some()
+                && mass < 1.35 * birth.max(1e-9)
+            {
+                out.fission_gate_audit.push(c12_fission_gate_snapshot(
+                    &agent.mesh,
+                    &fission,
+                    step,
+                    birth,
+                    false,
+                ));
+                continue;
+            }
+            if mass < 1.35 * birth.max(1e-9) {
+                continue;
+            }
+            let pinch_snapshot_mesh = agent.mesh.clone();
             if let Some((mut d1, mut d2, event)) = try_local_fission(&agent.mesh, &fission) {
+                if std::env::var_os("DC_CLOSURE012_FISSION_AUDIT").is_some() {
+                    out.fission_gate_audit.push(c12_fission_gate_snapshot(
+                        &pinch_snapshot_mesh,
+                        &fission,
+                        step,
+                        birth,
+                        true,
+                    ));
+                }
                 if !event.partition.ok {
                     out.base.base.invalid = true;
                 }
@@ -318,6 +388,14 @@ fn c7_run(
                 );
                 regulators.insert(id1, ContinuityNetworkV1::new(frame1, None).unwrap());
                 regulators.insert(id2, ContinuityNetworkV1::new(frame2, None).unwrap());
+            } else if std::env::var_os("DC_CLOSURE012_FISSION_AUDIT").is_some() {
+                out.fission_gate_audit.push(c12_fission_gate_snapshot(
+                    &pinch_snapshot_mesh,
+                    &fission,
+                    step,
+                    birth,
+                    false,
+                ));
             }
         }
         agents.retain(|agent| agent.mesh.alive);
@@ -352,6 +430,7 @@ fn c7_value(run: &C7Run) -> Value {
         "material_signal_last": run.material_signal_last,
         "raw_motor_sum": run.raw_motor_sum,
         "motor_sum": run.motor_sum,
+        "fission_gate_audit": run.fission_gate_audit,
     })
 }
 

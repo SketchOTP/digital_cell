@@ -864,6 +864,21 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260905-dcdev021-m2-closure009-direct-material-work
 - Status at issuance: ISSUED
+
+## D-20260905-dcdev021-m2-closure012-active-work-fission-gate-audit
+
+- Issued: `2026-09-05`
+- Issuer: `Architect/Coder session`
+- External directive: `DC-DEV-021-M2-CLOSURE-012-ACTIVE-WORK-FISSION-GATE-AUDIT-001`
+- Starting accepted head: `307968768af3e321b5fe2f047d854cff13d2ce18`
+- Objective: Determine whether the accepted CLOSURE-011 active-work candidate first fails at the existing growth/mass eligibility gate, local pinch geometry, or A-funded cross-bond requirement, using observer-only snapshots of the exact frozen law.
+- Scope: additive assay wrapper, exact CLOSURE-011 paired/solo controls, fission-gate snapshots at the existing 25-step checks, compact evidence, scoped workflow, and append-only governance.
+- Exclusions: production changes, fission-law changes, growth tuning, parameter search, forced fission, horizon extension, new sensing, memory, resource geometry changes, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: `M2_ACTIVE_WORK_FISSION_GROWTH_THRESHOLD_CEILING_CONFIRMED`, `M2_ACTIVE_WORK_FISSION_A_FUNDING_CEILING_CONFIRMED`, `M2_ACTIVE_WORK_FISSION_PINCH_GEOMETRY_CEILING_CONFIRMED`, `M2_ACTIVE_WORK_FISSION_GATE_MULTIFACTOR_UNRESOLVED`, or invalid according to exact-head evidence.
+- Risk class: `HIGH`
+- Relationship: `new`
+- Related directive: `D-20260905-dcdev021-m2-closure011-active-material-allocation-fission-ceiling`
+- Status at issuance: `ISSUED`
 D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 
 - Result head: `4cd426dc9083c40861c0992fc66ca771ed6ed0d2`.

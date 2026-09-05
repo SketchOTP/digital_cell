@@ -3,29 +3,37 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-05T06:34:00-04:00`
+- Last updated: `2026-09-05T09:15:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260905-dcdev021-m2-closure011-active-material-allocation-fission-ceiling`
-- External directive ID: `DC-DEV-021-M2-CLOSURE-011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING-AUDIT-001`
-- Objective: Test whether the existing activated-energy fraction A/(N+F+A+W), composed with the accepted CLOSURE-010 local-contact path, can preserve enough physical growth/fission capacity without adding a parameter or changing production behavior.
-- Current status: `COMPLETE`
-- Acceptance: `ARCHITECT_ACCEPTED`
-- Current phase: `CLOSURE-011 active material allocation fission ceiling audit`
-- Expected or actual touched areas: `isolated CLOSURE-011 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `no successor execution; retain autonomous resource-causal reproduction as unestablished`
+- Local directive ID: `D-20260905-dcdev021-m2-closure012-active-work-fission-gate-audit`
+- External directive ID: `DC-DEV-021-M2-CLOSURE-012-ACTIVE-WORK-FISSION-GATE-AUDIT-001`
+- Objective: Identify the first existing fission-gate condition lost by the accepted CLOSURE-011 active-work candidate, using the exact fixed ecology and observer-only gate snapshots.
+- Current status: `IN_PROGRESS`
+- Acceptance: `PENDING`
+- Current phase: `CLOSURE-012 active-work fission-gate audit`
+- Expected or actual touched areas: `isolated CLOSURE-012 assay, compact evidence, scoped workflow, append-only governance`
+- Immediate next action: `validate exact-head Linux CI, reconcile evidence, and return the bounded mechanism classification to Architect`
 
 ## CLOSURE-011 final authority
 
 - Result branch: `m2/dc-dev-021-m2-closure011-a-fission-ceiling`
-- Result head: `7717c7833cb10c3238e607667b5f3bd121483144`
-- Exact-head Linux CI: `33961026571` - `PASS`
-- Artifact digest: `sha256:a0a474193eb4a57c09c6099147db475f2435e7ed8ea5e278ffb3796e669fb6e5`
+- Result head: `307968768af3e321b5fe2f047d854cff13d2ce18`
+- Exact-head Linux CI: `33961467817` - `PASS`
+- Artifact digest: `sha256:fe84273c01fa9cf6158706f166647f4e9d4355c8609cc05a82f44bc1e7f86f59`
 - Classification: `M2_ACTIVE_MATERIAL_ALLOCATION_FISSION_INSUFFICIENT`
 - Scientific runtime source changed: `NO`
 - Architect acceptance: `COMPLETE`
 - Successor execution: `NOT_STARTED`
+
+## CLOSURE-012 active audit
+
+- Starting accepted head: `307968768af3e321b5fe2f047d854cff13d2ce18`.
+- Scope: observer-only replay of accepted CLOSURE-011 arms; record mass eligibility, local pinch, cross-bond A need, and existing fission result without changing production sources.
+- Local result: candidate combined scopes never reach the existing `1.35 x birth mass` fission eligibility gate; motor-off Daughter B and paired controls reach it and pass the existing pinch/A gate.
+- Preliminary classification: `M2_ACTIVE_WORK_FISSION_GROWTH_THRESHOLD_CEILING_CONFIRMED`.
+- Autonomous resource acquisition and resource-causal reproduction remain `NOT_ESTABLISHED`.
 
 ## Temporary task-relevant facts
 
