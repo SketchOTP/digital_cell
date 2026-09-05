@@ -164,3 +164,7 @@
 - `digital-protocell/examples/dcdev021_m2_closure009_impl.rs` — assay-only direct `motor_i=base_i*(1-S)` composition and fixed lineage/paired controls; no production behavior change.
 - `digital-protocell/experiments/generated/dcdev021m2closure009/` — compact CLOSURE-009 authority, direct-allocation comparison, controls, closure, preservation, and qualification evidence.
 - `.github/workflows/dc-dev-021-m2-closure009.yml` — exact-head Linux validation for CLOSURE-009 authority, direct material allocation, preservation, governance, and artifact upload.
+- `digital-protocell/examples/dcdev021_m2_closure010.rs` — isolated CLOSURE-010 entry point composing accepted local physical contact regulation with accepted internal material motor allocation.
+- `digital-protocell/examples/dcdev021_m2_closure010_impl.rs` — CLOSURE-010 paired/solo finite-world assay with direct-material, contact-local, no-feedback, transfer-disabled, zero-resource, and motor-off controls; no production behavior change.
+- `digital-protocell/experiments/generated/dcdev021m2closure010/` — compact CLOSURE-010 composition, arm comparisons, material/energy closure, reproduction boundary, preservation, and qualification evidence.
+- `.github/workflows/dc-dev-021-m2-closure010.yml` — exact-head Linux validation for CLOSURE-010 authority, combined composition, controls, preservation, governance, and artifact upload.

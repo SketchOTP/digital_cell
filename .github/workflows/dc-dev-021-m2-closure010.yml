@@ -1,0 +1,123 @@
+name: DC-DEV-021 M2 CLOSURE-010 combined local contact material work
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-m2-closure010-contact-material-reproduction
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  closure010:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+      - name: Verify exact authority and bounded diff
+        run: |
+          set -euo pipefail
+          start=011c3b5c7404ca453cb1546eee6271f1bf3af538
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefName,baseRefName
+          python3 - "$start" <<'PY'
+          import subprocess, sys
+          start=sys.argv[1]
+          allowed={
+            '.agent/CURRENT.md','.agent/DIRECTIVES.md','.agent/LEARNINGS.md','.agent/OUTCOMES.md','.agent/RECORD.md','.agent/REPO_MAP.md',
+            '.github/workflows/dc-dev-021-m2-closure010.yml',
+            'digital-protocell/crates/regulatory-core/Cargo.toml',
+            'digital-protocell/examples/dcdev021_m2_closure010.rs',
+            'digital-protocell/examples/dcdev021_m2_closure010_impl.rs',
+          }
+          changed=set(subprocess.check_output(['git','diff','--name-only',f'{start}..HEAD'],text=True).splitlines())
+          unexpected={p for p in changed if p not in allowed and not p.startswith('digital-protocell/experiments/generated/dcdev021m2closure010/')}
+          assert not unexpected, sorted(unexpected)
+          forbidden_prefixes=(
+            'digital-protocell/crates/chemistry-core/src/',
+            'digital-protocell/crates/regulatory-core/src/',
+            'digital-protocell/crates/phase1-certifier/src/',
+            'digital-protocell/crates/evolution-harness/src/',
+          )
+          assert not any(p.startswith(forbidden_prefixes) for p in changed)
+          PY
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Build and run CLOSURE-010 assay
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build --locked -p regulatory-core --release --example dcdev021_m2_closure010
+          cargo +1.89.0 run --locked -p regulatory-core --release --example dcdev021_m2_closure010 -- experiments/generated/dcdev021m2closure010
+      - name: Validate compact CLOSURE-010 evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('experiments/generated/dcdev021m2closure010')
+          manifest=json.loads((root/'artifact_manifest.json').read_text())
+          for item in manifest['files']:
+              assert (root/item).is_file(), item
+          q=json.loads((root/'qualification.json').read_text())
+          assert q['classification'] in {
+              'M2_POST_INGESTIVE_COMBINED_MATERIAL_CONTACT_WORK_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED',
+              'M2_POST_INGESTIVE_COMBINED_MATERIAL_CONTACT_WORK_REPRODUCTION_NOT_ESTABLISHED',
+              'M2_POST_INGESTIVE_COMBINED_MATERIAL_CONTACT_WORK_INSUFFICIENT',
+              'M2_CLOSURE010_COMBINED_MATERIAL_CONTACT_WORK_INVALID',
+          }
+          assert q['architect_acceptance']=='COMPLETE'
+          assert q['autonomous_resource_acquisition']=='NOT_ESTABLISHED'
+          names=('paired_arms.json','daughter_a_arms.json','daughter_b_arms.json')
+          expected={'combined','direct_material','contact_local','no_feedback','transfer_disabled','zero_resource','motor_off'}
+          for name in names:
+              group=json.loads((root/name).read_text())
+              assert set(group) == expected, (name, set(group))
+              for arm in expected:
+                  base=group[arm]['base']['base']
+                  assert base['invalid'] is False
+                  assert abs(base['world_n_loss']-base['delivered_n']) <= 1e-10
+                  assert abs(base['world_f_loss']-base['delivered_f']) <= 1e-10
+                  assert base['a_to_w_residual'] <= 1e-9
+              zero=group['zero_resource']['base']['base']
+              assert abs(zero['delivered_n']) <= 1e-10
+              assert abs(zero['delivered_f']) <= 1e-10
+          arch=json.loads((root/'architecture.json').read_text())
+          assert arch['composition']=='motor_i = raw_i * (1 - S) * (1 - regulator_i)'
+          assert arch['material_signal']=='S=(N+F)/(N+F+A+W)'
+          assert arch['contact_signal']=='FiniteSpatialResourceRegionV1::local_contact_signal'
+          assert arch['new_parameter'] is False
+          assert arch['gain'] is False
+          assert arch['threshold'] is False
+          assert arch['timer_or_memory'] is False
+          assert arch['production_integration'] is False
+          for p in root.glob('*.json'): json.loads(p.read_text())
+          print('CLOSURE-010 evidence validation passed')
+          PY
+      - name: Validate governance and preservation
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_governance.py --mode ADOPTED
+          git diff --check
+      - name: Hash compact evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2closure010 -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2closure010.sha256"
+      - name: Upload CLOSURE-010 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-m2-closure010-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2closure010/
+            ${{ runner.temp }}/dcdev021m2closure010.sha256

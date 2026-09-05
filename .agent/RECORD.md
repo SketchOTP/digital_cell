@@ -775,3 +775,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The source-of-truth qualification metadata correction emits `architect_acceptance=COMPLETE` during remote regeneration; the direct material-allocation assay remains `M2_POST_INGESTIVE_DIRECT_MATERIAL_WORK_REPRODUCTION_NOT_ESTABLISHED` with no candidate fission.
 - Affected areas: additive metadata correction and final authority evidence only; no scientific runtime, assay semantics, frozen physiology, M1 provenance, restart boundary, or PR #44 modification.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION-FINAL
+
+## DEC-DCDEV021-M2-CLOSURE010-COMBINED-LOCAL-CONTACT-MATERIAL-WORK
+
+- Date: 2026-09-05
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE010-COMBINED-LOCAL-CONTACT-MATERIAL-WORK
+- Status: ACTIVE
+- Rationale: CLOSURE-009 direct internal material allocation and the accepted local contact regulator each provide bounded acquisition/work benefits without candidate fission. Their exact assay-local composition improves delivery and lowers A spending but remains below resource-causal reproduction qualification.
+- Affected areas: additive CLOSURE-010 assay, evidence, workflow, and governance only; frozen scientific runtime, M1 provenance, fission source, restart boundary, and PR #44 remain unchanged.
+- Decision or event: CLOSURE-010 completed its bounded local assay from exact head `011c3b5c7404ca453cb1546eee6271f1bf3af538` on branch `m2/dc-dev-021-m2-closure010-contact-material-reproduction`; classification is `M2_POST_INGESTIVE_COMBINED_MATERIAL_CONTACT_WORK_REPRODUCTION_NOT_ESTABLISHED`.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION-FINAL-HEAD-REVALIDATION

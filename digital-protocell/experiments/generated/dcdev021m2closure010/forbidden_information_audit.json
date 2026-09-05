@@ -1,0 +1,8 @@
+{
+  "distance": false,
+  "observer_input": false,
+  "resource_center": false,
+  "resource_radius": false,
+  "target_gradient_memory": false,
+  "uptake_ledger": false
+}

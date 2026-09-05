@@ -25,6 +25,22 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
+## D-20260905-dcdev021-m2-closure010-combined-local-contact-material-work - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE010-COMBINED-LOCAL-CONTACT-MATERIAL-WORK`
+- Supersedes outcome: none
+- Closed: `2026-09-05T04:20:00-04:00`
+- Acceptance: `MET`
+- Summary: The assay-only composition `motor_i = raw_i * (1-S) * (1-regulator_i)` combines the accepted internal material fraction with the exact local physical contact regulator. It improves finite N/F delivery over no feedback in Daughter A, Daughter B, and paired scopes and reduces A spending, but produces zero candidate fissions in all scopes. Motor-off Daughter B and paired controls fission once. The bounded classification is `M2_POST_INGESTIVE_COMBINED_MATERIAL_CONTACT_WORK_REPRODUCTION_NOT_ESTABLISHED`.
+- Changed areas: additive CLOSURE-010 assay/example, compact evidence, scoped workflow, Cargo example registration, and append-only governance only; no frozen scientific runtime, uptake/metabolism/growth/fission source, M1 provenance, restart boundary, or PR #44 modification.
+- Validation:
+  - Local release build/run, fixed controls, zero-resource specificity, world N/F closure, A→W closure, and governance validation - PASSED
+  - Exact-head Linux CI and artifact digest - PENDING
+  - Architect acceptance - PENDING exact-head authority
+- Remaining risks: exact-head Linux validation and artifact digest remain to be independently verified; autonomous acquisition, resource-causal reproduction, descendant continuity, heritable ecological phenotype, environment-dependent evolution, and standalone-lifeform completion remain unestablished.
+- Blockers: exact-head validation, artifact verification, and Architect acceptance only.
+- Follow-up directive: none
+
 ## D-20260905-dcdev021-m2-closure006-contact-quiescence - COMPLETE
 
 - Outcome ID: `OUT-DCDEV021-M2-CLOSURE006-LOCAL-RESOURCE-CONTACT-QUIESCENCE-FINAL`

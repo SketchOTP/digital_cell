@@ -706,3 +706,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-021 M2 CLOSURE-009 direct post-ingestive motor allocation requalification.
 - Supersedes learning: L-DCDEV021-M2-CLOSURE009-002
+
+## L-DCDEV021-M2-CLOSURE010-001
+
+- Learning ID: L-DCDEV021-M2-CLOSURE010-001
+- Date: 2026-09-05
+- Fact or lesson: The exact assay-local composition `motor_i = raw_i * (1-S) * (1-regulator_i)`, with `S=(N+F)/(N+F+A+W)` and the existing physical local contact regulator, improves finite N/F delivery over no feedback in Daughter A (`127.41380331204975`), Daughter B (`1212.4407129655885`), and paired (`1212.4407129655865`) scopes, while reducing A spending. Candidate fission remains zero in every scope; Daughter B and paired motor-off controls fission once. This is a bounded acquisition/work benefit, not resource-causal reproduction.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_closure010.rs`, `digital-protocell/examples/dcdev021_m2_closure010_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2closure010/`, and `.github/workflows/dc-dev-021-m2-closure010.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 M2 CLOSURE-010 combined local contact and post-ingestive material work reproduction qualification.
+- Supersedes learning: L-DCDEV021-M2-CLOSURE009-003

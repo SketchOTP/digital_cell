@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-05T02:54:27-04:00`
+- Last updated: `2026-09-05T04:20:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260905-dcdev021-m2-closure009-direct-material-work`
-- External directive ID: `DC-DEV-021-M2-CLOSURE-009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION-REQUALIFICATION-001`
-- Objective: Test the assay-only direct material allocation motor_i = base_i * (1 - S), where S=(N+F)/(N+F+A+W), against the accepted CLOSURE-008 regulator composition and fixed transfer-disabled, zero-resource, material-feedback, and motor-off controls.
+- Local directive ID: `D-20260905-dcdev021-m2-closure010-combined-local-contact-material-work`
+- External directive ID: `DC-DEV-021-M2-CLOSURE-010-COMBINED-LOCAL-CONTACT-MATERIAL-WORK-REPRODUCTION-QUALIFICATION-001`
+- Objective: Test the assay-only composition motor_i = raw_i * (1 - S) * (1 - regulator_i), where S=(N+F)/(N+F+A+W), against the accepted direct-material and local-contact controls.
 - Current status: `COMPLETE`
 - Acceptance: `ARCHITECT_ACCEPTED`
-- Current phase: `CLOSURE-009 direct post-ingestive material-to-motor allocation requalification`
-- Expected or actual touched areas: `isolated CLOSURE-009 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `No successor execution started; CLOSURE-009 is complete and this adopted state is awaiting reset to IDLE before the next authorized capability cycle`
+- Current phase: `CLOSURE-010 combined local-contact and post-ingestive material work reproduction qualification`
+- Expected or actual touched areas: `isolated CLOSURE-010 assay, compact evidence, scoped workflow, append-only governance`
+- Immediate next action: `No successor execution started; CLOSURE-010 is complete and this adopted state is awaiting reset to IDLE after exact-head authority before the next authorized capability cycle`
 
 ## Temporary task-relevant facts
 

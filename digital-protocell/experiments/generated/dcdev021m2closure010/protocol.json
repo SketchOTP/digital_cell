@@ -1,0 +1,12 @@
+{
+  "assay_only": true,
+  "directive": "DC-DEV-021-M2-CLOSURE-010-COMBINED-LOCAL-CONTACT-MATERIAL-WORK-REPRODUCTION-QUALIFICATION-001",
+  "next_execution_started": false,
+  "scopes": [
+    "paired",
+    "daughter_a_solo",
+    "daughter_b_solo"
+  ],
+  "starting_head": "011c3b5c7404ca453cb1546eee6271f1bf3af538",
+  "steps": 12000
+}

@@ -1,0 +1,11 @@
+{
+  "composition": "motor_i = raw_i * (1 - S) * (1 - regulator_i)",
+  "contact_signal": "FiniteSpatialResourceRegionV1::local_contact_signal",
+  "gain": false,
+  "material_signal": "S=(N+F)/(N+F+A+W)",
+  "new_parameter": false,
+  "production_integration": false,
+  "regulator": "existing ContinuityNetworkV1 dynamics",
+  "threshold": false,
+  "timer_or_memory": false
+}

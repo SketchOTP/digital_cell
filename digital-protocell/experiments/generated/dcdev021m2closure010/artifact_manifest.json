@@ -1,0 +1,27 @@
+{
+  "dense_traces": "Atlas",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "architecture.json",
+    "paired_arms.json",
+    "daughter_a_arms.json",
+    "daughter_b_arms.json",
+    "combined_material_contact.json",
+    "direct_material_control.json",
+    "contact_local_control.json",
+    "no_feedback_control.json",
+    "transfer_disabled_control.json",
+    "zero_resource_control.json",
+    "motor_off_control.json",
+    "acquisition_work_comparison.json",
+    "reproduction_comparison.json",
+    "material_energy_closure.json",
+    "forbidden_information_audit.json",
+    "preservation.json",
+    "m1_preservation.json",
+    "downstream_preservation.json",
+    "restart_boundary.json",
+    "qualification.json"
+  ]
+}

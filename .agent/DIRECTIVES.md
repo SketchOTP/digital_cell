@@ -822,3 +822,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260905-dcdev021-m2-closure008-lineage-material-work
 - Status at issuance: ISSUED
+
+## D-20260905-dcdev021-m2-closure010-combined-local-contact-material-work
+
+- Issued: 2026-09-05T04:00:00-04:00
+- Issuer: User
+- External directive: DC-DEV-021-M2-CLOSURE-010-COMBINED-LOCAL-CONTACT-MATERIAL-WORK-REPRODUCTION-QUALIFICATION-001
+- Objective: Determine whether the exact accepted CLOSURE-009 internal material fraction composed with the exact accepted local physical-contact regulator establishes resource-causal work and reproduction.
+- Scope: Additive assay/example, compact evidence, fixed 12,000-step paired and solo ecology, exact direct-material/contact-local/no-feedback/transfer-disabled/zero-resource/motor-off controls, scoped workflow, and append-only governance.
+- Exclusions: Scientific runtime changes, production integration, new coefficients, gains, thresholds, timers, memory, observer inputs, uptake/metabolism/growth/fission changes, forced fission, horizon extension, resource-geometry changes, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: M2_POST_INGESTIVE_COMBINED_MATERIAL_CONTACT_WORK_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED, M2_POST_INGESTIVE_COMBINED_MATERIAL_CONTACT_WORK_REPRODUCTION_NOT_ESTABLISHED, M2_POST_INGESTIVE_COMBINED_MATERIAL_CONTACT_WORK_INSUFFICIENT, or M2_CLOSURE010_COMBINED_MATERIAL_CONTACT_WORK_INVALID according to the fixed controls and exact-head validation.
+- Risk class: HIGH
+- Relationship: amends
+- Related directive: D-20260905-dcdev021-m2-closure009-direct-material-work
+- Status at issuance: ISSUED
