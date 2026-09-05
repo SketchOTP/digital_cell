@@ -1811,3 +1811,16 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Preliminary result: the candidate reduces A spending and slightly increases finite delivery, but candidate fission remains zero while the motor-off Daughter B control fissions once.
 - Acceptance: `PENDING`
 - Remaining validation: exact-head Linux CI, artifact digest, and Architect disposition.
+
+## D-20260905-dcdev021-m2-closure011-active-material-allocation-fission-ceiling - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING-FINAL`
+- Supersedes outcome: `OUT-DCDEV021-M2-CLOSURE011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING`
+- Closed: `2026-09-05T06:34:00-04:00`
+- Acceptance: `MET`
+- Summary: The assay-only activated-material allocation `A/(N+F+A+W)` preserves finite transfer and reduces active expenditure in the fixed CLOSURE-010 ecology, but candidate Daughter A, Daughter B, and paired scopes produce zero fissions. Daughter B and paired motor-off controls each fission once. The existing active-material allocation family is therefore insufficient for resource-causal reproduction under the frozen ecology.
+- Authority: exact result head `d317144c474cd6d73e0de60e70c9b06e6ddae160`; exact-head Linux CI `33960583370` passed; artifact digest `sha256:ef8d98320d69fa0f9491e27265f43b4828f63f2b58aca651ff909243870f1849`.
+- Changed areas: additive assay wrapper, compact evidence, scoped workflow, and append-only governance only; no frozen scientific runtime, uptake/metabolism/growth/fission source, M1 provenance, restart boundary, or PR #44 modification.
+- Preservation: world N/F conservation, A-to-W closure, zero-resource specificity, historical preservation, and the known noncontaminating restart boundary passed.
+- Boundary: autonomous resource acquisition, resource-causal reproduction, descendant ecological continuity, heritable ecological phenotype, environment-dependent evolution, learning, individuality, and standalone-lifeform completion remain unestablished.
+- Architect acceptance: `COMPLETE`; successor execution: `NOT_STARTED`.

@@ -879,4 +879,8 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Objective: test whether the existing activated-energy fraction can preserve reproductive work capacity in the accepted finite ecology without adding a new controller or changing frozen scientific sources.
 - Scope: assay-local opt-in path, fixed CLOSURE-010 ecology and horizon, exact motor-off/transfer-disabled/zero-resource controls, compact evidence, scoped workflow, and append-only governance.
 - Exclusions: production integration, parameter search, new gain or threshold, memory, resource geometry change, fission-law change, M1 change, restart repair, PR #44 modification, and successor execution.
-- Status: `ISSUED`
+- Result head: `d317144c474cd6d73e0de60e70c9b06e6ddae160`
+- Exact-head Linux CI: `33960583370` - `PASS`
+- Artifact digest: `sha256:ef8d98320d69fa0f9491e27265f43b4828f63f2b58aca651ff909243870f1849`
+- Classification: `M2_ACTIVE_MATERIAL_ALLOCATION_FISSION_INSUFFICIENT`
+- Status: `CLOSED`

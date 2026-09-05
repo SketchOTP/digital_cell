@@ -836,3 +836,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: accepted CLOSURE-010 improves finite transfer and saves A but produces no candidate fission. This assay tests the remaining parameter-free interpretation of the same existing internal material pool, using activated-energy fraction `A/(N+F+A+W)` as an assay-local allocation factor.
 - Exclusions: no production default change, scientific kernel change, new parameter, gain, threshold, timer, memory, resource geometry change, fission change, M1 change, restart repair, or PR #44 modification.
 - Acceptance boundary: `M2_ACTIVE_MATERIAL_ALLOCATION_FISSION_QUALIFIED`, `M2_ACTIVE_MATERIAL_ALLOCATION_FISSION_INSUFFICIENT`, or `M2_CLOSURE011_ACTIVE_MATERIAL_ALLOCATION_INVALID`.
+
+## DEC-DCDEV021-M2-CLOSURE011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING-FINAL
+
+- Date: `2026-09-05`
+- Status: `COMPLETE`
+- Decision: accept CLOSURE-011 as `M2_ACTIVE_MATERIAL_ALLOCATION_FISSION_INSUFFICIENT`.
+- Authority: result head `d317144c474cd6d73e0de60e70c9b06e6ddae160`; exact-head Linux CI `33960583370` passed; artifact digest `sha256:ef8d98320d69fa0f9491e27265f43b4828f63f2b58aca651ff909243870f1849`.
+- Rationale: the existing internal activated-material fraction `A/(N+F+A+W)` is a valid assay-local material/work allocation and produces finite transfer with lower active expenditure, but no candidate scope fissions while Daughter B and paired motor-off controls each fission once. The family is therefore insufficient for resource-causal reproduction in the frozen ecology.
+- Boundary: no scientific runtime source changed. Autonomous acquisition, resource-causal reproduction, heritable ecological phenotype, environment-dependent evolution, learning, individuality, and standalone-lifeform completion remain unestablished. No successor execution started.
+- Supersedes record: `DEC-DCDEV021-M2-CLOSURE011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING`.

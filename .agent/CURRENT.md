@@ -3,18 +3,29 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-05T06:05:00-04:00`
+- Last updated: `2026-09-05T06:34:00-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20260905-dcdev021-m2-closure011-active-material-allocation-fission-ceiling`
 - External directive ID: `DC-DEV-021-M2-CLOSURE-011-ACTIVE-MATERIAL-ALLOCATION-FISSION-CEILING-AUDIT-001`
 - Objective: Test whether the existing activated-energy fraction A/(N+F+A+W), composed with the accepted CLOSURE-010 local-contact path, can preserve enough physical growth/fission capacity without adding a parameter or changing production behavior.
-- Current status: `IN_PROGRESS`
-- Acceptance: `PENDING`
+- Current status: `COMPLETE`
+- Acceptance: `ARCHITECT_ACCEPTED`
 - Current phase: `CLOSURE-011 active material allocation fission ceiling audit`
 - Expected or actual touched areas: `isolated CLOSURE-011 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `run exact-head Linux validation, verify artifact digest, then record bounded result`
+- Immediate next action: `no successor execution; retain autonomous resource-causal reproduction as unestablished`
+
+## CLOSURE-011 final authority
+
+- Result branch: `m2/dc-dev-021-m2-closure011-a-fission-ceiling`
+- Result head: `d317144c474cd6d73e0de60e70c9b06e6ddae160`
+- Exact-head Linux CI: `33960583370` - `PASS`
+- Artifact digest: `sha256:ef8d98320d69fa0f9491e27265f43b4828f63f2b58aca651ff909243870f1849`
+- Classification: `M2_ACTIVE_MATERIAL_ALLOCATION_FISSION_INSUFFICIENT`
+- Scientific runtime source changed: `NO`
+- Architect acceptance: `COMPLETE`
+- Successor execution: `NOT_STARTED`
 
 ## Temporary task-relevant facts
 
