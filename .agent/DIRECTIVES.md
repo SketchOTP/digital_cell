@@ -840,6 +840,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Related directive: D-20260905-dcdev021-m2-closure008-lineage-material-work
 - Status at issuance: ISSUED
 
+## D-20260905-dcdev021-m2-native-polarity-runtime-v2
+
+- Issued: `2026-09-05`
+- Issuer: `Architect/Coder session`
+- Objective: carry the accepted native-ring polarity state through a checkpointable Linux lifeform runtime without changing frozen scientific kernels, then measure finite-world contact, transfer, and unforced reproduction honestly.
+- Implementation head: `2b7a1b4d829c9897341fe76193e41e9040f74eb5`.
+- Scope: additive runtime orchestration, native polarity carrier, compact evidence, and governance only.
+- Exclusions: hidden bath, resource signal to behavior, forced fission, new gain/threshold/timer/memory, parameter search, source-kernel changes, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Result so far: active motility, separated contact and finite transfer pass; exact world N/F conservation passes; zero fissions in both 12,000-step primary and 50,000-step boundary runs.
+- Status: `VALIDATING`; exact-head remote CI and Architect acceptance pending.
+
 ## D-20260905-dcdev021-m2-closure010-combined-local-contact-material-work
 
 - Issued: 2026-09-05T04:00:00-04:00

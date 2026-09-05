@@ -1,0 +1,13 @@
+{
+  "accepted_prior_runtime_head": "8b18d1a349208ab81d1f5f051451ac5d18bf17b6",
+  "implementation_head": "2b7a1b4d829c9897341fe76193e41e9040f74eb5",
+  "scientific_source_policy": "frozen accepted chemistry/regulatory/fission sources; additive runtime orchestration only",
+  "pr44": {
+    "state": "OPEN",
+    "draft": true,
+    "merged": false,
+    "modified": false,
+    "original_m1_provenance_preserved": true
+  },
+  "authority_boundary": "engineering evidence only; Architect acceptance pending"
+}

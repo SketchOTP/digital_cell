@@ -811,3 +811,12 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Decision: accept the checkpointable Linux runtime as verified engineering progress while retaining all unresolved biological gates.
 - Authority: head `18954ab6d142b3b02cb5a7aaa3bd5a7e79469eef`; workflow `33955320620` passed; artifact `sha256:0c5e719b70329ae63f2b6d3c5b913dad649a26b46f8ae833f483365949ec5566`.
 - Boundary: the runtime executes existing finite-world exchange, ENTRY-005 refractory motor, conservative metabolism/growth/fission orchestration, and checkpoint/resume. It does not establish separated acquisition, resource-causal reproduction, three-generation life, post-fission motor continuation, evolution, learning, individuality, or standalone embodiment.
+
+## DEC-DCDEV021-M2-NATIVE-POLARITY-RUNTIME-V2
+
+- Date: `2026-09-05`
+- Status: `VALIDATING`
+- Decision: extend the checkpointable runtime with accepted native inherited-polarity state and conservative remesh/fission continuation while retaining the no-qualification boundary.
+- Authority: implementation head `2b7a1b4d829c9897341fe76193e41e9040f74eb5`; compact evidence payload digest `sha256:cbc71c06a817acc3b097c26c3168ad377ff9444c83c5a44cfb21ba9160c6bef9` excluding its manifest.
+- Observation: 12,000-step run records active motility, first separated contact/transfer at step 11,173, 24.541166774162292 delivered N/F, and exact zero world conservation error; fission remains zero. A 50,000-step boundary run also has zero fissions and reaches the existing mesh-rupture observer boundary.
+- Boundary: no resource-causal reproduction, three-generation lifecycle, heritable ecological phenotype, individuality, unattended persistence, or standalone-lifeform completion is claimed.

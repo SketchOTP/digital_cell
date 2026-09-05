@@ -25,6 +25,15 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
+## D-20260905-dcdev021-m2-native-polarity-runtime-v2 - VALIDATING
+
+- Outcome ID: `OUT-DCDEV021-M2-NATIVE-POLARITY-RUNTIME-V2`
+- Status: `VALIDATING`; Architect acceptance pending.
+- Implementation head: `2b7a1b4d829c9897341fe76193e41e9040f74eb5`.
+- Evidence: native polarity state survives remesh/fission serialization, finite-world N/F transfer is observed after separated contact, and world N/F conservation error is exactly zero in the measured runs.
+- Bounded result: 12,000-step primary run reaches contact/transfer at step 11,173 but fissions zero times; 50,000-step boundary run also fissions zero times and terminates at the existing observer `mesh_rupture` boundary.
+- Remaining claims: resource-causal reproduction, three generations, heritable ecological variation, individuality, unattended persistence, and standalone Linux lifeform remain `NOT_ESTABLISHED`.
+
 ## D-20260905-dcdev021-m2-standalone-lifeform-runtime - IN PROGRESS
 
 - Outcome ID: `OUT-DCDEV021-M2-STANDALONE-LIFEFORM-RUNTIME-INCREMENT`

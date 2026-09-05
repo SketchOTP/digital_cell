@@ -94,6 +94,15 @@
 
 Allowed adopted-project statuses: `IDLE`, `PLANNING`, `IN_PROGRESS`, `VALIDATING`, `BLOCKED`, `COMPLETE`. `CURRENT.md` is mutable and never replaces historical ledgers. Reset it to `IDLE` when an adopted task closes.
 
+## Active implementation cycle: native-polarity checkpointable runtime
+
+- Implementation head: `2b7a1b4d829c9897341fe76193e41e9040f74eb5` on `m2/dc-dev-021-m2-standalone-lifeform-runtime`.
+- Scope: additive runtime orchestration carrying accepted native `u,v,F` polarity through remesh/fission, the accepted local `v/(u+v)` motor interface, finite-world exchange, frozen reactions/growth, unforced fission, and checkpoint/resume.
+- Primary measured run: 12,000 steps, 12,000 motor steps, 11.631718917548339 cumulative path, first contact/transfer at step 11,173, 24.541166774162292 N/F delivered, exact zero world conservation error, zero fissions.
+- Boundary run: 50,000 steps, 175.55530434762267 N/F delivered, zero fissions, terminal observer boundary `mesh_rupture`; no resource-causal reproduction claim.
+- Evidence: `digital-protocell/experiments/generated/m2-lifeform-runtime-v2/`; deterministic evidence payload digest `sha256:cbc71c06a817acc3b097c26c3168ad377ff9444c83c5a44cfb21ba9160c6bef9` excluding its manifest.
+- Status: `VALIDATING`; Architect acceptance and exact-head remote CI are pending for this increment. Autonomous acquisition, resource-causal reproduction, three generations, individuality, and standalone-lifeform completion remain `NOT_ESTABLISHED`.
+
 CLOSURE-004 is Architect accepted at exact governance head `76094ccaf265b90e9b9836eaf77c07bd2df816a8`, CI `33933521477`, and artifact `sha256:334d2a5c83dbe8a51498b004a9cfa47732d83acd850e6e5aa71456bfe78807f1`; its classification is `M2_MATERIAL_CONSISTENT_RESOURCE_ACCESS_INSUFFICIENT`.
 
 CLOSURE-005 local result: the fixed-coordinate paired replay has exact aggregate parity with CLOSURE-004. Solo Daughter A acquires `99.29887582275623` N/F (`0.13841369486985897` of demand) and does not fission. Solo Daughter B acquires `1146.3487440851745` N/F (`1.1220090079202578` of calibrated demand) and still does not fission, establishing the bounded context-dependent classification locally. Exact-head CI and artifact verification pass; Architect acceptance remains pending.

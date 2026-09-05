@@ -1,0 +1,9 @@
+{
+  "checkpoint_round_trip_test": "PASS",
+  "split_execution": "2 steps + checkpoint + 1 resumed step",
+  "step_counter_parity": "PASS",
+  "population_parity": "PASS",
+  "native_polarity_state_serialization": "PASS",
+  "path_contact_transfer_counter_parity": "PASS",
+  "generic_full_mesh_restart": "KNOWN_FAIL / outside this runtime increment"
+}

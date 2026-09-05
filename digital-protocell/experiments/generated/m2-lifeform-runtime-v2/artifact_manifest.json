@@ -1,0 +1,15 @@
+{
+  "schema": "digital_cell_m2_lifeform_runtime_v2_manifest",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "runtime_12000_report.json",
+    "runtime_50000_boundary.json",
+    "checkpoint_resume.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "dense_trajectory_storage": "not included; runtime reports retain compact terminal evidence",
+  "sha256": "sha256:cbc71c06a817acc3b097c26c3168ad377ff9444c83c5a44cfb21ba9160c6bef9",
+  "digest_scope": "deterministic tar of all evidence files except artifact_manifest.json"
+}
