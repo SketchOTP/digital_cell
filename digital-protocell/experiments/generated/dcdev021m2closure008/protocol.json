@@ -1,0 +1,13 @@
+{
+  "assay_only": true,
+  "directive": "DC-DEV-021-M2-CLOSURE-008-LINEAGE-LEVEL-POST-INGESTIVE-MATERIAL-WORK-REQUALIFICATION-001",
+  "exact_c7_mechanism_reused": true,
+  "next_execution_started": false,
+  "paired_and_lineage_local_arms": [
+    "paired",
+    "daughter_a_solo",
+    "daughter_b_solo"
+  ],
+  "starting_head": "0dfd81fdd99cc9a0eb7562b1d8705190c37d3a73",
+  "steps": 12000
+}

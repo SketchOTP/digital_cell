@@ -135,6 +135,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head validation, artifact verification, Notion readback, and Architect review only.
 - Follow-up directive: none
 
+## D-20260905-dcdev021-m2-closure008-lineage-material-work - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE008-LINEAGE-POST-INGESTIVE-MATERIAL-WORK`
+- Supersedes outcome: none
+- Closed: `2026-09-05T02:00:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The authorized CLOSURE-008 replay is pending. It will reuse the exact accepted CLOSURE-007 post-ingestive material-work composition in Daughter A solo, Daughter B solo, and paired finite-resource arms, with fixed transfer-disabled, zero-resource, no-material-feedback, and motor-off controls. No conclusion about reproduction or evolution is made before exact-head validation.
+- Changed areas: additive CLOSURE-008 assay/example, compact evidence, scoped workflow, and append-only governance only; no frozen scientific runtime, M1 provenance, fission source, restart boundary, or PR #44 modification.
+- Validation:
+  - Local release assay and compact evidence - PASSED
+  - Exact-head Linux CI - NOT RUN
+  - Artifact digest - NOT RUN
+  - Architect acceptance - PENDING
+- Remaining risks: the lineage-local replay may show a real material-work benefit without reproducing fission; resource-causal reproduction, heritable ecological phenotype, autonomous acquisition, and evolution re-entry remain unestablished.
+- Blockers: exact-head execution and Architect acceptance; no successor execution is authorized.
+- Follow-up directive: none
+
 ## D-20260903-dcdev021-m2-entry028-balanced-separated-resource-ecology - PARTIAL
 
 - Outcome ID: `OUT-DCDEV021-ENTRY028-BALANCED-SEPARATED-RESOURCE-ECOLOGY-LOCAL`

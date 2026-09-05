@@ -1,0 +1,13 @@
+{
+  "motor_off": {
+    "daughter_a_fissions": 0.0,
+    "daughter_b_fissions": 1.0,
+    "paired_fissions": 1.0
+  },
+  "transfer_disabled": {
+    "daughter_a": 0.0,
+    "daughter_b": 0.0,
+    "paired": 0.0
+  },
+  "zero_resource_delivery_zero": true
+}

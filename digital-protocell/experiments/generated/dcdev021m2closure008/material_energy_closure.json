@@ -1,0 +1,6 @@
+{
+  "a_to_w_closure": "inherited CLOSURE-007 closure per arm",
+  "all_runs_invalid": false,
+  "reserve": "OFF",
+  "world_n_f_conservation": "inherited CLOSURE-007 finite-world accounting"
+}

@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260905-dcdev021-m2-closure007-post-ingestive-material-work`
-- External directive ID: `DC-DEV-021-M2-CLOSURE-007-POST-INGESTIVE-MATERIAL-TO-WORK-REQUALIFICATION-001`
-- Objective: Test whether the existing internal N/F/A/W material-energy state can drive the existing local regulator composition, assay-only, to preserve acquisition and materially advance the reproductive boundary without adding contact sensing, a new parameter, or production behavior.
-- Current status: `COMPLETE`
-- Acceptance: `ARCHITECT_ACCEPTED`
-- Current phase: `CLOSURE-007 post-ingestive material-to-work composition`
-- Expected or actual touched areas: `isolated CLOSURE-007 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `Awaiting reset for the next end-goal capability cycle; no CLOSURE-007 tuning or successor execution is implied by this bounded negative`
+- Local directive ID: `D-20260905-dcdev021-m2-closure008-lineage-material-work`
+- External directive ID: `DC-DEV-021-M2-CLOSURE-008-LINEAGE-LEVEL-POST-INGESTIVE-MATERIAL-WORK-REQUALIFICATION-001`
+- Objective: Determine whether the accepted CLOSURE-007 material-derived regulator composition remains beneficial for Daughter A, Daughter B, and the paired ecology, and whether the paired zero-fission result is shared-resource competition or an intrinsic work/reproduction limit.
+- Current status: `IN_PROGRESS`
+- Acceptance: `ARCHITECT_AUTHORIZED`
+- Current phase: `CLOSURE-008 lineage-level post-ingestive material-work requalification`
+- Expected or actual touched areas: `isolated CLOSURE-008 assay, compact evidence, scoped workflow, append-only governance`
+- Immediate next action: `Run exact CLOSURE-008 lineage-local and paired controls from final CLOSURE-007 head 0dfd81fdd99cc9a0eb7562b1d8705190c37d3a73`
 
 ## Temporary task-relevant facts
 
@@ -26,6 +26,8 @@
 - CLOSURE-006 final authority: exact result head `28865d09e4c138ca3d481dcf56585a1f899be307`, exact-head Linux CI `33945103533` passed, artifact ZIP digest `sha256:3ac8c2975695053c20ed76b188e89af185b626f2d0da7ce471a29f3e3a3e8aa0`; Notion acceptance and readback are complete.
 - CLOSURE-007 local result: the assay-only material-derived signal `(N+F)/(N+F+A+W)` feeds the existing local regulator composition. Candidate delivery is `1230.045257118789` N/F versus `1146.3487440851763` for no-material-feedback, with `1405.9708515165707` A spent versus `2684.6934579129`; no candidate fission occurs, while the motor-off control fissions once. World N/F closure and A-to-W closure pass. Classification is `M2_POST_INGESTIVE_MATERIAL_WORK_ACQUISITION_BENEFIT_REPRODUCTION_NOT_ESTABLISHED`; autonomous resource acquisition and resource-causal reproduction remain unestablished.
 - CLOSURE-007 is assay-only: no scientific runtime source, uptake law, metabolism, fission, actuator, traction, M1 source, restart boundary, or PR #44 changed. Exact starting head is `3ee324e968ac38489e147e47840f5e1f277f706c`.
+- CLOSURE-007 final authority correction: final governance head is `0dfd81fdd99cc9a0eb7562b1d8705190c37d3a73`, exact-head CI `33947796283` passed, and the independently verified artifact digest is `sha256:721caa35363f2bbda2c8c5ca0c22333e453a3342e30ce6c7689ad90efdf3e0a6`.
+- CLOSURE-008 is assay-only and reuses the exact accepted CLOSURE-007 mechanism, finite world, fixed 12,000-step horizon, metabolism, growth, fission, remesh, and lineage accounting. It adds no behavior, parameter, sensor, memory, or production source.
 - ENTRY-026 remains a sealed, not-yet-Architect-accepted package with status `INVESTIGATE`; its early step-25 shortcut is not promoted. R1 starts exactly at `04e8b7f030118842b0ad2d8428b6f937fa9aa6c7` and requalifies the population gate without changing the sealed package.
 - The clean baseline is derived from `1e242f28152797b512e25cd56c7b718e45d6ca97`; accepted M1 evidence remains on Atlas.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
@@ -69,7 +71,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `CLOSURE-007 exact-head Linux workflow 33947528302 and artifact verification`
+- Command or check: `CLOSURE-007 final exact-head authority 0dfd81fdd99cc9a0eb7562b1d8705190c37d3a73 / CI 33947796283 / artifact sha256:721caa35363f2bbda2c8c5ca0c22333e453a3342e30ce6c7689ad90efdf3e0a6`
 - Result: `PASSED`
 
 ## Risks

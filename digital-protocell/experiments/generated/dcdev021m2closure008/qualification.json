@@ -1,0 +1,15 @@
+{
+  "architect_acceptance": "PENDING",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "candidate_benefit_all_scopes": true,
+  "candidate_saves_a_all_scopes": true,
+  "classification": "M2_POST_INGESTIVE_MATERIAL_WORK_LINEAGE_BENEFIT_REPRODUCTION_NOT_ESTABLISHED",
+  "directive": "DC-DEV-021-M2-CLOSURE-008-LINEAGE-LEVEL-POST-INGESTIVE-MATERIAL-WORK-REQUALIFICATION-001",
+  "evolution_reentry": "NOT_ESTABLISHED",
+  "heritable_ecological_phenotype": "NOT_ESTABLISHED",
+  "lineage_level_material_work": "BENEFIT_OBSERVED",
+  "next_execution_started": false,
+  "resource_causal_reproduction": false,
+  "resource_causal_reproduction_status": "NOT_ESTABLISHED",
+  "starting_head": "0dfd81fdd99cc9a0eb7562b1d8705190c37d3a73"
+}

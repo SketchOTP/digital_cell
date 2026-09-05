@@ -794,3 +794,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+## D-20260905-dcdev021-m2-closure008-lineage-material-work
+
+- Issued: `2026-09-05T02:00:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-CLOSURE-008-LINEAGE-LEVEL-POST-INGESTIVE-MATERIAL-WORK-REQUALIFICATION-001`
+- Objective: Re-run the exact accepted CLOSURE-007 internal material `(N+F)/(N+F+A+W)` to existing local regulator composition separately for Daughter A, separately for Daughter B, and in the paired finite ecology, with transfer-disabled, zero-resource, no-material-feedback, and motor-off controls. Determine whether paired zero-fission is caused by shared finite-resource competition or insufficient work/reproductive physics.
+- Scope: additive assay/example, compact evidence, scoped workflow, and append-only governance only.
+- Exclusions: scientific runtime changes, uptake/metabolism/growth/fission changes, parameter tuning, forced fission, horizon extension, new sensing, memory, target/gradient logic, resource geometry changes, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: `M2_POST_INGESTIVE_MATERIAL_WORK_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED`, `M2_POST_INGESTIVE_MATERIAL_WORK_LINEAGE_BENEFIT_REPRODUCTION_NOT_ESTABLISHED`, `M2_POST_INGESTIVE_MATERIAL_WORK_LINEAGE_BENEFIT_INSUFFICIENT`, or `M2_CLOSURE008_LINEAGE_POST_INGESTIVE_MATERIAL_WORK_INVALID` according to the fixed controls and exact-head validation.
+- Risk class: HIGH
+- Relationship: amends
+- Related directive: D-20260905-dcdev021-m2-closure007-post-ingestive-material-work
+- Status at issuance: ISSUED

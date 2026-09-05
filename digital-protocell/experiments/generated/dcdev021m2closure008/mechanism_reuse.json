@@ -1,0 +1,9 @@
+{
+  "contact_signal": false,
+  "local_regulator": "existing ContinuityNetworkV1",
+  "material_signal": "(N+F)/(N+F+A+W)",
+  "motor_composition": "existing CLOSURE-006 effective motor boundary",
+  "new_parameter": false,
+  "observer_ledger_as_behavior_input": false,
+  "tuning": false
+}

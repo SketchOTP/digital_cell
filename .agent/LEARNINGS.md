@@ -658,6 +658,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-021 M2 CLOSURE-005 per-lineage resource-causal reproduction and shared ecology.
 - Supersedes learning: none
 
+## L-DCDEV021-M2-CLOSURE008-001
+
+- Learning ID: L-DCDEV021-M2-CLOSURE008-001
+- Date: 2026-09-05
+- Fact or lesson: The paired CLOSURE-007 result does not distinguish shared finite-resource competition from an intrinsic inability of the accepted material-work composition to support reproduction. CLOSURE-005 already provides solo daughter controls under the earlier no-material-feedback composition; a lineage-level replay of the exact CLOSURE-007 mechanism is therefore the largest coherent next discriminator without tuning or production integration.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_closure008.rs`, `digital-protocell/examples/dcdev021_m2_closure008_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2closure008/`, and `.github/workflows/dc-dev-021-m2-closure008.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 M2 CLOSURE-008 lineage-level post-ingestive material-work requalification.
+- Supersedes learning: none
+
 ## L-DCDEV021-M2-CLOSURE007-001
 
 - Learning ID: L-DCDEV021-M2-CLOSURE007-001

@@ -1,0 +1,14 @@
+{
+  "daughter_a_candidate_fissions": 0.0,
+  "daughter_a_transfer_disabled_fissions": 0.0,
+  "daughter_b_candidate_fissions": 0.0,
+  "daughter_b_transfer_disabled_fissions": 0.0,
+  "paired_candidate_fissions": 0.0,
+  "paired_transfer_disabled_fissions": 0.0,
+  "resource_causal_reproduction": false,
+  "shared_resource_competition_discriminator": {
+    "daughter_a_candidate_delivery": 119.07043179065823,
+    "daughter_b_candidate_delivery": 1230.045257118785,
+    "paired_candidate_delivery": 1230.045257118789
+  }
+}

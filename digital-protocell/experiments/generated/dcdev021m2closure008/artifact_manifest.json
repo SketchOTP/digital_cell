@@ -1,0 +1,80 @@
+{
+  "classification": "M2_POST_INGESTIVE_MATERIAL_WORK_LINEAGE_BENEFIT_REPRODUCTION_NOT_ESTABLISHED",
+  "dense_traces": "not generated in compact run",
+  "directive": "DC-DEV-021-M2-CLOSURE-008-LINEAGE-LEVEL-POST-INGESTIVE-MATERIAL-WORK-REQUALIFICATION-001",
+  "files": [
+    {
+      "file": "protocol.json",
+      "present": true
+    },
+    {
+      "file": "authority.json",
+      "present": true
+    },
+    {
+      "file": "mechanism_reuse.json",
+      "present": true
+    },
+    {
+      "file": "paired_arms.json",
+      "present": true
+    },
+    {
+      "file": "daughter_a_arms.json",
+      "present": true
+    },
+    {
+      "file": "daughter_b_arms.json",
+      "present": true
+    },
+    {
+      "file": "lineage_comparison.json",
+      "present": true
+    },
+    {
+      "file": "acquisition_work_comparison.json",
+      "present": true
+    },
+    {
+      "file": "reproduction_comparison.json",
+      "present": true
+    },
+    {
+      "file": "controls.json",
+      "present": true
+    },
+    {
+      "file": "material_energy_closure.json",
+      "present": true
+    },
+    {
+      "file": "forbidden_information_audit.json",
+      "present": true
+    },
+    {
+      "file": "preservation.json",
+      "present": true
+    },
+    {
+      "file": "m1_preservation.json",
+      "present": true
+    },
+    {
+      "file": "downstream_preservation.json",
+      "present": true
+    },
+    {
+      "file": "restart_boundary.json",
+      "present": true
+    },
+    {
+      "file": "qualification.json",
+      "present": true
+    },
+    {
+      "file": "artifact_manifest.json",
+      "present": true
+    }
+  ],
+  "starting_head": "0dfd81fdd99cc9a0eb7562b1d8705190c37d3a73"
+}
