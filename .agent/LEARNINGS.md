@@ -18,6 +18,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: DC-DEV-021 ENTRY-015 polarity actuator interface feasibility audit
 - Supersedes learning: none
 
+## L-DCDEV021-M2-CLOSURE006-002
+
+- Learning ID: L-DCDEV021-M2-CLOSURE006-002
+- Date: 2026-09-05
+- Fact or lesson: Exact-head CLOSURE-006 validation passed on `28865d09e4c138ca3d481dcf56585a1f899be307` with artifact digest `sha256:3ac8c2975695053c20ed76b188e89af185b626f2d0da7ce471a29f3e3a3e8aa0`. Local contact quiescence saves actuation and improves delivery over regulator-null, but the shuffled-contact control performs better and no fission occurs; therefore reproductive causality is not established.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_closure006.rs`, `digital-protocell/examples/dcdev021_m2_closure006_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2closure006/`, and `.github/workflows/dc-dev-021-m2-closure006.yml`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 M2 CLOSURE-006 local resource-contact quiescence reproductive ecology and heredity.
+- Supersedes learning: none
+
 ## L-DCDEV021-M2-CLOSURE006-001
 
 - Learning ID: L-DCDEV021-M2-CLOSURE006-001

@@ -25,6 +25,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
+## D-20260905-dcdev021-m2-closure006-contact-quiescence - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE006-LOCAL-RESOURCE-CONTACT-QUIESCENCE-FINAL`
+- Supersedes outcome: none
+- Closed: 2026-09-05T00:00:00-04:00
+- Acceptance: MET
+- Summary: Exact-head validation confirms a real bounded local contact-quiescence acquisition benefit over regulator-null, with exact material and A-to-W closure, but contact-shuffled delivery is higher and neither candidate nor null fissions. The accepted classification is `M2_LOCAL_RESOURCE_CONTACT_QUIESCENCE_ACQUISITION_BENEFIT_REPRODUCTIVE_CAUSALITY_NOT_ESTABLISHED`.
+- Changed areas: additive CLOSURE-006 assay/evidence/workflow and append-only governance; no frozen scientific runtime, CLOSURE-005 evidence, M1 provenance, fission source, or PR #44 modification.
+- Validation:
+  - Local release assay, compact evidence generation, material/energetic closure, and governance validation - PASSED
+  - Exact-head Linux workflow `33945103533` on `28865d09e4c138ca3d481dcf56585a1f899be307` - PASSED
+  - Independently downloaded artifact ZIP digest `sha256:3ac8c2975695053c20ed76b188e89af185b626f2d0da7ce471a29f3e3a3e8aa0` - PASSED
+  - Notion append-only acceptance/readback - PASSED
+  - Architect acceptance - PASSED
+- Remaining risks: contact-specific reproductive causality, descendant ecological continuity, heritable ecological phenotype, evolution re-entry, learning, persistent individuality, and standalone Linux embodiment remain unestablished.
+- Blockers: none for closing CLOSURE-006; the persistent project goal remains active and requires the next capability cycle.
+- Follow-up directive: none
+
 ## D-20260905-dcdev021-m2-closure006-contact-quiescence - PARTIAL
 
 - Outcome ID: `OUT-DCDEV021-M2-CLOSURE006-LOCAL-RESOURCE-CONTACT-QUIESCENCE`

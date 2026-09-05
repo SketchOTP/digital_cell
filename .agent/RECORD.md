@@ -716,3 +716,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: Test only the existing local physical contact vector selecting existing local regulator attenuation, with all resource transfer, growth, fission, heredity, and evolution semantics otherwise unchanged. The local candidate improves acquisition over regulator-null but the shuffled-contact control is higher and no reproduction occurs, so the bounded reproductive-causality classification remains unresolved/not established pending exact-head authority.
 - Affected areas: additive CLOSURE-006 assay/evidence/workflow and append-only governance only; frozen scientific runtime, CLOSURE-005 evidence, M1 provenance, and PR #44 remain unchanged.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE005-PER-LINEAGE-REPRODUCTIVE-ECOLOGY-FINAL
+
+## DEC-DCDEV021-M2-CLOSURE006-LOCAL-RESOURCE-CONTACT-QUIESCENCE-FINAL
+
+- Date: 2026-09-05
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE006-LOCAL-RESOURCE-CONTACT-QUIESCENCE-FINAL
+- Status: ACTIVE
+- Decision or event: Exact-head CLOSURE-006 validation passed on result head `28865d09e4c138ca3d481dcf56585a1f899be307`; exact-head Linux CI `33945103533` passed and the independently downloaded artifact ZIP digest is `sha256:3ac8c2975695053c20ed76b188e89af185b626f2d0da7ce471a29f3e3a3e8aa0`.
+- Rationale: The local contact vector engages existing local regulator attenuation and produces a bounded acquisition/A-saving benefit over regulator-null, but the shuffled-contact arm is higher and no candidate/null fission occurs. The accepted classification remains `M2_LOCAL_RESOURCE_CONTACT_QUIESCENCE_ACQUISITION_BENEFIT_REPRODUCTIVE_CAUSALITY_NOT_ESTABLISHED`; local resource exploitation and autonomous resource acquisition remain unestablished.
+- Affected areas: additive CLOSURE-006 assay/evidence/workflow and append-only acceptance governance only; frozen scientific runtime, CLOSURE-005 evidence, M1 provenance, fission source, and PR #44 remain unchanged.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE006-LOCAL-RESOURCE-CONTACT-QUIESCENCE
