@@ -38,6 +38,7 @@ jobs:
           allowed = {
               '.agent/RECORD.md',
               '.agent/OUTCOMES.md',
+              '.github/workflows/dc-dev-021-m2-runtime-developmental-polarity.yml',
               '.github/workflows/dc-dev-021-m2-runtime-resource-fission-causality.yml',
               'digital-protocell/crates/m2-lifeform-runtime/src/main.rs',
           }
