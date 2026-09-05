@@ -1,0 +1,19 @@
+{
+  "arm": "ROUTEB_FINITE_SPATIAL_FIELD_TRANSFER_DISABLED",
+  "seed": 1,
+  "developmental_bootstrap_steps": 12000,
+  "runtime_steps": 3000,
+  "first_transfer_step": null,
+  "cumulative_n_delivered": 0.0,
+  "cumulative_f_delivered": 0.0,
+  "world_n_conservation_error": 0.0,
+  "world_f_conservation_error": 0.0,
+  "living_count": 0,
+  "fission_events": 0,
+  "first_fission_step": null,
+  "developmental_fission_boundary_reached": false,
+  "terminal_death_reason": "starvation_collapse",
+  "cumulative_path": 0.8952590945146344,
+  "resource_mode": "SpatialMaterialFieldV1",
+  "classification": "TRANSFER_DISABLED_CONTROL"
+}

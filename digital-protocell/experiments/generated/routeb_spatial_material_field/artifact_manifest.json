@@ -1,0 +1,18 @@
+{
+  "schema": "digital_cell_goal_routeb_artifact_manifest_v1",
+  "evidence_files": [
+    "protocol.json",
+    "authority.json",
+    "active_runtime.json",
+    "transfer_disabled.json",
+    "qualification.json"
+  ],
+  "source_surfaces": [
+    "crates/regulatory-core/src/spatial_material_field.rs",
+    "crates/m2-lifeform-runtime/src/main.rs",
+    "docs/routeb-spatial-material-field-replan.md"
+  ],
+  "scientific_runtime_default_changed": false,
+  "artifact_digest": "sha256:a055abb61ef9f51fd54a052843d7f91c27f729f7c393d94832c34c5aaddb60d9",
+  "artifact_scope": "tar.gz of the five evidence files listed in protocol order; manifest is metadata outside the payload"
+}

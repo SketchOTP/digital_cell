@@ -1,0 +1,15 @@
+{
+  "audit": "resource-to-fission causality followed by Route-B material-flow test",
+  "prior_provisional_result": {
+    "active_fission_step": 25,
+    "transfer_disabled_fission_step": 25,
+    "first_environmental_transfer_step": 256,
+    "classification": "GOAL_AGENT_PROVISIONALLY_ACCEPTED_NEGATIVE_M2_RESOURCE_CAUSAL_FISSION_NOT_ESTABLISHED"
+  },
+  "fission_gate": "total_structural_mass >= 1.35 * birth_mass",
+  "gate_changed": false,
+  "accepted_science_changed": false,
+  "production_default_changed": false,
+  "pr_44_modified": false,
+  "external_architect_acceptance": false
+}

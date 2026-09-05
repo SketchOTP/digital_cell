@@ -1,0 +1,18 @@
+{
+  "schema": "digital_cell_goal_routeb_spatial_material_field_v1",
+  "status": "GOAL_AGENT_PROVISIONAL_NEGATIVE",
+  "starting_head": "3b6154fc260c7b52f1eb610975b883863107b54c",
+  "largest_unresolved_gap": "environmental N/F transfer must occur before developmental divergence and support the existing physical fission gate",
+  "execution_reason": "test a finite local environmental material field before reactions, growth, topology, and fission using the accepted runtime path",
+  "supersedes": [
+    "CLOSURE-006 through CLOSURE-014 local active-work/contact/material-allocation search",
+    "pre-resource hard-contact fission as evidence of resource-causal reproduction"
+  ],
+  "stop_condition": "do not change the 1.35x gate or run another neighboring local active-work/allocation formula after this negative",
+  "developmental_bootstrap_steps": 12000,
+  "runtime_steps": 3000,
+  "finite_field": true,
+  "refill": false,
+  "uniform_bath": false,
+  "behavioral_resource_signal": false
+}

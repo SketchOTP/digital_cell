@@ -19,6 +19,7 @@ pub mod coupled_resource;
 pub mod intrinsic_exploration;
 pub mod plasticity;
 pub mod spatial;
+pub mod spatial_material_field;
 pub mod spatial_resource;
 pub mod stick_slip_traction;
 
@@ -84,6 +85,10 @@ pub use spatial_resource::{
     FiniteSpatialResourceRegionV1, SpatialResourceStepLedgerV1,
     FINITE_SPATIAL_RESOURCE_REGION_SCHEMA_V1, LOCAL_RESOURCE_CONTACT_SIGNAL_SCHEMA_V1,
     SPATIAL_RESOURCE_STEP_LEDGER_SCHEMA_V1,
+};
+
+pub use spatial_material_field::{
+    SpatialFieldDeliveryV1, SpatialMaterialFieldV1, SPATIAL_MATERIAL_FIELD_SCHEMA_V1,
 };
 
 pub use stick_slip_traction::{
