@@ -39,6 +39,7 @@ jobs:
               '.agent/RECORD.md',
               '.agent/OUTCOMES.md',
               '.github/workflows/dc-dev-021-m2-runtime-developmental-polarity.yml',
+              '.github/workflows/dc-dev-021-m2-runtime-resource-fission-causality.yml',
               'digital-protocell/crates/chemistry-core/tests/d008_tests.rs',
               'digital-protocell/crates/m2-lifeform-runtime/src/main.rs',
               'digital-protocell/crates/m2-lifeform-runtime/src/polarity.rs',
@@ -46,13 +47,13 @@ jobs:
           changed = set(subprocess.check_output(
               ['git', 'diff', '--name-only', f'{start}..HEAD'], text=True
           ).splitlines())
-          evidence_prefix = (
-              'digital-protocell/experiments/generated/'
-              'm2-lifeform-runtime-v3-developmental-polarity/'
+          evidence_prefixes = (
+              'digital-protocell/experiments/generated/m2-lifeform-runtime-v3-developmental-polarity/',
+              'digital-protocell/experiments/generated/m2-lifeform-runtime-v3-resource-fission-causality/',
           )
           unexpected = {
               path for path in changed
-              if path not in allowed and not path.startswith(evidence_prefix)
+              if path not in allowed and not any(path.startswith(prefix) for prefix in evidence_prefixes)
           }
           assert not unexpected, sorted(unexpected)
           forbidden = (
