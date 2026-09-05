@@ -714,7 +714,5 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Status: ACTIVE
 - Decision or event: Architect accepts CLOSURE-005 as `M2_REPRODUCTIVE_RESOURCE_UNIT_CONTEXT_DEPENDENT_UNRESOLVED`.
 - Rationale: The sealed exact-head evidence passes per-lineage accounting, CLOSURE-004 aggregate parity, world/material/energy closure, rotation, update-order, and preservation. Solo Daughter B exceeds the calibrated scalar reproductive demand, but neither solo lineage nor paired lineage reaches unforced physical fission. This is a context-dependent reproductive-resource result, not qualification of resource-causal reproduction or heritable ecological state.
-- Authority: result head `90f5d2a10007455117b1278c5b902af896d95d33`; exact-head Linux workflow `33938909541`; artifact digest `sha256:7c8a8188e130242d0d2faa1ed38638d3f28f932af40b6a34344b5173538563e6`.
-- Affected areas: append-only acceptance governance only; no scientific runtime, assay semantics, resource geometry, fission logic, M1 provenance, or PR #44 modification.
-- Boundary: no successor execution is authorized; no resource-unit enlargement, tuning, or reproduction redesign is implied.
+- Affected areas: append-only acceptance governance only; no scientific runtime, assay semantics, resource geometry, fission logic, M1 provenance, or PR #44 modification. Authority is result head `90f5d2a10007455117b1278c5b902af896d95d33`, exact-head Linux workflow `33938909541`, and artifact digest `sha256:7c8a8188e130242d0d2faa1ed38638d3f28f932af40b6a34344b5173538563e6`.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE005-PER-LINEAGE-REPRODUCTIVE-ECOLOGY-FINAL

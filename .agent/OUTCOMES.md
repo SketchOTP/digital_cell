@@ -81,6 +81,23 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: Notion readback and Architect review only; no successor work is authorized.
 - Follow-up directive: none
 
+## D-20260904-dcdev021-m2-closure005-per-lineage-reproductive-ecology - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE005-PER-LINEAGE-REPRODUCTIVE-ECOLOGY-ARCHITECT-ACCEPTED`
+- Supersedes outcome: `OUT-DCDEV021-M2-CLOSURE005-PER-LINEAGE-REPRODUCTIVE-ECOLOGY-LOCAL`
+- Closed: `2026-09-05T00:00:00-04:00`
+- Acceptance: `MET`
+- Summary: Architect acceptance confirms the bounded CLOSURE-005 result `M2_REPRODUCTIVE_RESOURCE_UNIT_CONTEXT_DEPENDENT_UNRESOLVED`. Per-lineage accounting and exact CLOSURE-004 aggregate parity pass. Solo Daughter A remains below calibrated reproductive demand; solo Daughter B exceeds that scalar demand, yet neither lineage reaches unforced physical fission in the frozen spatial ecology. The result therefore does not establish a generally sufficient reproductive resource unit, resource-causal reproduction, descendants, heritable ecological phenotype, or evolution re-entry.
+- Changed areas: append-only acceptance governance only; the CLOSURE-005 assay, evidence, frozen scientific runtime, CLOSURE-004 evidence, M1 provenance, and PR #44 remain unchanged.
+- Validation:
+  - Exact-head Linux workflow `33938909541` on result head `90f5d2a10007455117b1278c5b902af896d95d33` - PASSED
+  - Independently downloaded artifact ZIP digest `sha256:7c8a8188e130242d0d2faa1ed38638d3f28f932af40b6a34344b5173538563e6` - PASSED
+  - Notion append-only readback - PASSED
+  - Architect acceptance - PASSED
+- Remaining risks: resource-causal reproduction, descendant continuity, heritable ecological phenotype, evolution re-entry, and the standalone-lifeform gates remain unestablished.
+- Blockers: no current execution blocker; no successor directive is authorized by this acceptance.
+- Follow-up directive: none
+
 ## D-20260903-dcdev021-m2-entry028-balanced-separated-resource-ecology - PARTIAL
 
 - Outcome ID: `OUT-DCDEV021-ENTRY028-BALANCED-SEPARATED-RESOURCE-ECOLOGY-LOCAL`
@@ -1538,23 +1555,6 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
   - Architect acceptance - PENDING
 - Remaining risks: resource-causal reproduction, descendant continuity, heritable ecological phenotype, and evolution re-entry remain unestablished; no capacity increase, forced fission, or successor execution is authorized.
 - Blockers: exact-head validation and Architect review only.
-- Follow-up directive: none
-
-## D-20260905-dcdev021-m2-closure005-per-lineage-reproductive-ecology - ACCEPTED
-
-- Outcome ID: `OUT-DCDEV021-M2-CLOSURE005-PER-LINEAGE-REPRODUCTIVE-ECOLOGY-ARCHITECT-ACCEPTED`
-- Supersedes outcome: `OUT-DCDEV021-M2-CLOSURE005-PER-LINEAGE-REPRODUCTIVE-ECOLOGY-FINAL`
-- Closed: 2026-09-05
-- Acceptance: `MET`
-- Summary: Architect acceptance confirms the bounded CLOSURE-005 result `M2_REPRODUCTIVE_RESOURCE_UNIT_CONTEXT_DEPENDENT_UNRESOLVED`. Per-lineage accounting and exact CLOSURE-004 aggregate parity pass. Solo Daughter A remains below calibrated reproductive demand; solo Daughter B exceeds that scalar demand, yet neither lineage reaches unforced physical fission in the frozen spatial ecology. The result therefore does not establish a generally sufficient reproductive resource unit, resource-causal reproduction, descendants, heritable ecological phenotype, or evolution re-entry.
-- Changed areas: append-only acceptance governance only; the CLOSURE-005 assay, evidence, frozen scientific runtime, CLOSURE-004 evidence, M1 provenance, and PR #44 remain unchanged.
-- Validation:
-  - Exact-head Linux workflow `33938909541` on result head `90f5d2a10007455117b1278c5b902af896d95d33` - PASSED
-  - Independently downloaded artifact ZIP digest `sha256:7c8a8188e130242d0d2faa1ed38638d3f28f932af40b6a34344b5173538563e6` - PASSED
-  - Notion append-only readback - PASSED
-  - Architect acceptance - COMPLETE for this bounded result
-- Remaining risks: resource-causal reproduction, descendant continuity, heritable ecological phenotype, evolution re-entry, and the standalone-lifeform gates remain unestablished.
-- Blockers: no current execution blocker; no successor directive is authorized by this acceptance.
 - Follow-up directive: none
 
 ## D-20260904-dcdev021-m2-closure003-reproductive-ecology-heritable-phenotype - COMPLETE
