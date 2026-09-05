@@ -746,3 +746,12 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The exact accepted CLOSURE-007 material-work mechanism improves finite N/F delivery and reduces A spending in Daughter A solo, Daughter B solo, and paired scopes, but no candidate scope fissions. Motor-off Daughter B and paired controls fission once, showing that the bounded negative is not explained by shared finite-resource competition alone. Resource-causal reproduction, autonomous acquisition, heritable ecological phenotype, and evolution re-entry remain unestablished.
 - Affected areas: additive CLOSURE-008 assay/evidence/workflow and append-only governance only; no frozen scientific runtime, uptake/metabolism/growth/fission/polarity/actuator/traction source, M1 provenance, restart boundary, or PR #44 modification.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE007-POST-INGESTIVE-MATERIAL-WORK
+## DEC-DCDEV021-M2-CLOSURE009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION
+
+- Date: 2026-09-05
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION
+- Status: ACTIVE
+- Decision or event: CLOSURE-009 is authorized from exact CLOSURE-008 final head `a7d51bcc984df55f90c03231c8503e19a0c5603c` on `m2/dc-dev-021-m2-closure009-direct-material-work`.
+- Rationale: The accepted CLOSURE-008 material-derived regulator composition improves finite transfer and reduces A spending but produces no candidate fission. This bounded assay tests whether direct parameter-free local allocation by the same existing internal material fraction is the limiting work-allocation step.
+- Affected areas: additive CLOSURE-009 assay/evidence/workflow and append-only governance only; no frozen scientific runtime, uptake/metabolism/growth/fission source, M1 provenance, restart boundary, or PR #44 modification.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE008-LINEAGE-POST-INGESTIVE-MATERIAL-WORK-FINAL

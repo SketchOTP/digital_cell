@@ -1,0 +1,10 @@
+{
+  "architect_acceptance": "PENDING",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "candidate_fission": false,
+  "classification": "M2_POST_INGESTIVE_DIRECT_MATERIAL_WORK_REPRODUCTION_NOT_ESTABLISHED",
+  "direct_benefit": true,
+  "local_resource_exploitation": "NOT_ESTABLISHED",
+  "next_execution_started": false,
+  "transfer_causal_fission": false
+}

@@ -808,3 +808,17 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Relationship: amends
 - Related directive: D-20260905-dcdev021-m2-closure007-post-ingestive-material-work
 - Status at issuance: ISSUED
+
+## D-20260905-dcdev021-m2-closure009-direct-material-work
+
+- Issued: `2026-09-05T02:30:00-04:00`
+- Issuer: User
+- External directive: `DC-DEV-021-M2-CLOSURE-009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION-REQUALIFICATION-001`
+- Objective: Determine whether the existing post-ingestive material fraction can directly allocate existing local motor activity and recover resource-causal work/reproduction that the accepted CLOSURE-008 regulator composition did not establish.
+- Scope: Additive assay-only direct material gate `motor_i=base_i*(1-S)`, exact CLOSURE-008 lineage and paired ecology, fixed controls, compact evidence, scoped workflow, and append-only governance.
+- Exclusions: scientific runtime changes, production defaults, new gains or thresholds, contact or observer-ledger input, timers, memory, target/gradient logic, uptake/metabolism/growth/fission changes, forced fission, horizon extension, resource geometry changes, M1 changes, restart repair, PR #44 modification, and successor execution.
+- Acceptance: `M2_POST_INGESTIVE_DIRECT_MATERIAL_WORK_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED`, `M2_POST_INGESTIVE_DIRECT_MATERIAL_WORK_REPRODUCTION_NOT_ESTABLISHED`, `M2_POST_INGESTIVE_DIRECT_MATERIAL_WORK_INSUFFICIENT`, or `M2_CLOSURE009_DIRECT_MATERIAL_WORK_INVALID` according to the fixed controls and exact-head validation.
+- Risk class: HIGH
+- Relationship: amends
+- Related directive: D-20260905-dcdev021-m2-closure008-lineage-material-work
+- Status at issuance: ISSUED

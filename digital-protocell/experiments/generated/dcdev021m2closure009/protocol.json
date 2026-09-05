@@ -1,0 +1,12 @@
+{
+  "assay_only": true,
+  "directive": "DC-DEV-021-M2-CLOSURE-009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION-REQUALIFICATION-001",
+  "next_execution_started": false,
+  "scopes": [
+    "paired",
+    "daughter_a_solo",
+    "daughter_b_solo"
+  ],
+  "starting_head": "a7d51bcc984df55f90c03231c8503e19a0c5603c",
+  "steps": 12000
+}

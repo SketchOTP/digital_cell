@@ -1,0 +1,16 @@
+{
+  "daughter_a": {
+    "direct_n": 103.0783039053506,
+    "null_n": 99.29887582275623
+  },
+  "daughter_b": {
+    "direct_n": 1165.6735085781427,
+    "null_n": 1146.3487440851745
+  },
+  "direct_benefit_over_no_material_feedback": true,
+  "direct_saves_a_over_no_material_feedback": true,
+  "paired": {
+    "direct_n": 1165.673508578144,
+    "null_n": 1146.3487440851763
+  }
+}

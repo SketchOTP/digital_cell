@@ -1,0 +1,7 @@
+{
+  "candidate_fission": false,
+  "daughter_a_direct_fissions": 0.0,
+  "daughter_b_direct_fissions": 0.0,
+  "paired_direct_fissions": 0.0,
+  "transfer_causal_fission": false
+}

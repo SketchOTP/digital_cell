@@ -1,0 +1,12 @@
+{
+  "S": "(N+F)/(N+F+A+W)",
+  "base_motor": "existing entry025_anti polarity motor",
+  "composition": "motor_i = base_i * (1 - S)",
+  "contact_or_ledger_input": false,
+  "gain": false,
+  "new_parameter": false,
+  "production_integration": false,
+  "source": "organism-internal material state only",
+  "threshold": false,
+  "timer_or_memory": false
+}

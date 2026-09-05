@@ -1699,3 +1699,19 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: resource-causal spatial reproduction, descendant ecological continuity, heritable ecological phenotype, and evolution re-entry remain unestablished.
 - Blockers: Notion readback and Architect review only; no successor work is authorized.
 - Follow-up directive: none
+## D-20260905-dcdev021-m2-closure009-direct-material-work - PARTIAL
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE009-DIRECT-MATERIAL-WORK`
+- Supersedes outcome: `OUT-DCDEV021-M2-CLOSURE008-LINEAGE-POST-INGESTIVE-MATERIAL-WORK-FINAL`
+- Closed: `2026-09-05T02:45:20-04:00`
+- Acceptance: `PARTIAL`
+- Summary: The assay-only direct composition `motor_i = base_i * (1-S)` improves N/F delivery and lowers A spending in Daughter A, Daughter B, and paired scopes, but produces zero candidate fissions. Daughter B and paired motor-off controls fission once, so direct material allocation does not establish resource-causal reproduction.
+- Changed areas: additive CLOSURE-009 assay/example, compact evidence, scoped workflow, Cargo example registration, and append-only governance only; no frozen scientific runtime, uptake/metabolism/growth/fission source, M1 provenance, restart boundary, or PR #44 modification.
+- Validation:
+  - Exact starting head and branch authority - PASSED
+  - Local release build/run, compact evidence, material/energy closure, fixed controls, and governance validation - PASSED
+  - Exact-head Linux workflow and artifact digest - PENDING
+  - Architect acceptance - PENDING
+- Remaining risks: exact-head Linux validation may identify workflow or preservation defects; autonomous acquisition, resource-causal reproduction, heredity, and evolution remain unestablished.
+- Blockers: exact-head validation, artifact verification, Notion readback, and Architect acceptance only.
+- Follow-up directive: none

@@ -1,0 +1,1688 @@
+{
+  "direct_material_allocation": {
+    "base": {
+      "arm": "CLOSURE009_DAUGHTER_B_SOLO_DIRECT_MATERIAL_ALLOCATION",
+      "base": {
+        "a_spent": 1584.8620006946153,
+        "a_to_w_residual": 6.766809335090329e-13,
+        "arm": "CLOSURE009_DAUGHTER_B_SOLO_DIRECT_MATERIAL_ALLOCATION",
+        "checkpoints": [
+          {
+            "delivered_n": 0.5502161930387401,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.32772424113307236,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.32772424113307236,
+            "step": 1,
+            "world_n": 4086.2217651122896
+          },
+          {
+            "delivered_n": 270.5126386532486,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.2052894634164958,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.24361265523517958,
+            "step": 500,
+            "world_n": 3816.2593426520802
+          },
+          {
+            "delivered_n": 448.4123233705673,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.19302022897317256,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.22020280768250378,
+            "step": 1000,
+            "world_n": 3638.359657934761
+          },
+          {
+            "delivered_n": 590.2760558561332,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.19784397309763513,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.21181200186272445,
+            "step": 1500,
+            "world_n": 3496.495925449194
+          },
+          {
+            "delivered_n": 683.551151142516,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.201030303691119,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.20894177586915164,
+            "step": 2000,
+            "world_n": 3403.220830162812
+          },
+          {
+            "delivered_n": 721.3649005614645,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.1941835328683835,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.20636742169995478,
+            "step": 2500,
+            "world_n": 3365.407080743865
+          },
+          {
+            "delivered_n": 762.2041063670684,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.208810973048697,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.20515861998705207,
+            "step": 3000,
+            "world_n": 3324.567874938261
+          },
+          {
+            "delivered_n": 813.6553988076419,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.24709122399558248,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.20823112588441783,
+            "step": 3500,
+            "world_n": 3273.1165824976874
+          },
+          {
+            "delivered_n": 875.790062375054,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.30886501186992005,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.21666270546431798,
+            "step": 4000,
+            "world_n": 3210.9819189302757
+          },
+          {
+            "delivered_n": 951.757588797061,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.3885290422794153,
+            "material_signal_max": 0.3885290422794153,
+            "material_signal_mean": 0.23127330716908076,
+            "step": 4500,
+            "world_n": 3135.01439250827
+          },
+          {
+            "delivered_n": 1037.0361166914245,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.4635725305264752,
+            "material_signal_max": 0.4635725305264752,
+            "material_signal_mean": 0.2509519563425626,
+            "step": 5000,
+            "world_n": 3049.735864613907
+          },
+          {
+            "delivered_n": 1127.481924163245,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.5205711127046783,
+            "material_signal_max": 0.5205711127046783,
+            "material_signal_mean": 0.2730511421896279,
+            "step": 5500,
+            "world_n": 2959.2900571420873
+          },
+          {
+            "delivered_n": 1165.6735085781427,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.4847950812850076,
+            "material_signal_max": 0.5364432356161406,
+            "material_signal_mean": 0.2933585132468637,
+            "step": 6000,
+            "world_n": 2921.098472727191
+          },
+          {
+            "delivered_n": 1165.6735085781427,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.43629679628724166,
+            "material_signal_max": 0.5364432356161406,
+            "material_signal_mean": 0.30613832507109007,
+            "step": 6500,
+            "world_n": 2921.098472727191
+          },
+          {
+            "delivered_n": 1165.6735085781427,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.3853445142356182,
+            "material_signal_max": 0.5364432356161406,
+            "material_signal_mean": 0.3136558831531266,
+            "step": 7000,
+            "world_n": 2921.098472727191
+          },
+          {
+            "delivered_n": 1165.6735085781427,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.33024332564539705,
+            "material_signal_max": 0.5364432356161406,
+            "material_signal_mean": 0.31659654212785143,
+            "step": 7500,
+            "world_n": 2921.098472727191
+          },
+          {
+            "delivered_n": 1165.6735085781427,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.27771618798234443,
+            "material_signal_max": 0.5364432356161406,
+            "material_signal_mean": 0.31577912866077673,
+            "step": 8000,
+            "world_n": 2921.098472727191
+          },
+          {
+            "delivered_n": 1165.6735085781427,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.23128946999288097,
+            "material_signal_max": 0.5364432356161406,
+            "material_signal_mean": 0.31213751922499156,
+            "step": 8500,
+            "world_n": 2921.098472727191
+          },
+          {
+            "delivered_n": 1165.6735085781427,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.19143349027290318,
+            "material_signal_max": 0.5364432356161406,
+            "material_signal_mean": 0.3065102802966352,
+            "step": 9000,
+            "world_n": 2921.098472727191
+          },
+          {
+            "delivered_n": 1165.6735085781427,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.15494650709624122,
+            "material_signal_max": 0.5364432356161406,
+            "material_signal_mean": 0.299487135496577,
+            "step": 9500,
+            "world_n": 2921.098472727191
+          },
+          {
+            "delivered_n": 1165.6735085781427,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.11966191044541968,
+            "material_signal_max": 0.5364432356161406,
+            "material_signal_mean": 0.29136749806275714,
+            "step": 10000,
+            "world_n": 2921.098472727191
+          },
+          {
+            "delivered_n": 1165.6735085781427,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.08760985115042014,
+            "material_signal_max": 0.5364432356161406,
+            "material_signal_mean": 0.28240947176558195,
+            "step": 10500,
+            "world_n": 2921.098472727191
+          },
+          {
+            "delivered_n": 1165.6735085781427,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.060332500735220874,
+            "material_signal_max": 0.5364432356161406,
+            "material_signal_mean": 0.27291303612428597,
+            "step": 11000,
+            "world_n": 2921.098472727191
+          },
+          {
+            "delivered_n": 1165.6735085781427,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.03876934960078828,
+            "material_signal_max": 0.5364432356161406,
+            "material_signal_mean": 0.26317934593111375,
+            "step": 11500,
+            "world_n": 2921.098472727191
+          },
+          {
+            "delivered_n": 1165.6735085781427,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.023048024473942344,
+            "material_signal_max": 0.5364432356161406,
+            "material_signal_mean": 0.25348124033322345,
+            "step": 12000,
+            "world_n": 2921.098472727191
+          }
+        ],
+        "deaths": 0,
+        "delivered_f": 1165.6735085781427,
+        "delivered_n": 1165.6735085781427,
+        "descendant_fissions": 0,
+        "events": [],
+        "first_1_35x_crossings": [],
+        "first_contact_step": 1,
+        "first_fission_step": null,
+        "first_transfer_step": 1,
+        "fissions": 0,
+        "growth_material": 109.53652461251141,
+        "initial_world_f": 4086.771981305328,
+        "initial_world_n": 4086.771981305328,
+        "invalid": false,
+        "max_material_closure": 0.05971645009731219,
+        "net_displacement": 0.0,
+        "path_length": 6.090067654649353,
+        "reaction_a_produced": 1577.3321723107586,
+        "reaction_f_consumed": 1577.3321723107586,
+        "reaction_n_consumed": 1577.3321723107586,
+        "reaction_w_produced": 7588.723551262733,
+        "remaining_world_f": 2921.098472727191,
+        "remaining_world_n": 2921.098472727191,
+        "slips": 1167918,
+        "status": "COMPLETED",
+        "steps": 12000,
+        "stuck_contacts": 6997,
+        "terminal_living": 1,
+        "terminal_sites": [
+          34
+        ],
+        "w_generated": 1584.8620006946012,
+        "world_f_loss": 1165.6735085781427,
+        "world_n_loss": 1165.6735085781427
+      },
+      "lineages": [
+        {
+          "contact_episodes": 1,
+          "contact_steps": 13984,
+          "demand_landmarks": [],
+          "f_delivered": 1165.6735085781427,
+          "f_world_loss": 1165.6735085781427,
+          "first_contact_step": 1,
+          "first_fission_step": null,
+          "first_transfer_step": 1,
+          "generation": 1,
+          "last_contact_step": 12000,
+          "lineage": 2,
+          "n_delivered": 1165.6735085781427,
+          "n_world_loss": 1165.6735085781427,
+          "parent_lineage": null,
+          "resource_ids": [
+            "r0",
+            "r90"
+          ]
+        }
+      ]
+    },
+    "material_signal_last": 0.023048024473942344,
+    "material_signal_max": 0.5364432356161406,
+    "material_signal_sum": 3041.774883998681,
+    "motor_sum": 793888.4231278935,
+    "raw_motor_sum": 1109096.5932252526,
+    "regulator_steps": 12000
+  },
+  "group": "DAUGHTER_B_SOLO",
+  "motor_off": {
+    "base": {
+      "arm": "CLOSURE009_DAUGHTER_B_SOLO_MOTOR_OFF",
+      "base": {
+        "a_spent": 0.0,
+        "a_to_w_residual": 4.547473508864641e-13,
+        "arm": "CLOSURE009_DAUGHTER_B_SOLO_MOTOR_OFF",
+        "checkpoints": [
+          {
+            "delivered_n": 0.5516656810870695,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 1,
+            "world_n": 4086.2203156242413
+          },
+          {
+            "delivered_n": 312.2185154292198,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 500,
+            "world_n": 3774.5534658761085
+          },
+          {
+            "delivered_n": 447.04909980994154,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 775,
+            "world_n": 3639.7228814953855
+          },
+          {
+            "delivered_n": 540.1565856947198,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 1000,
+            "world_n": 3546.6153956106077
+          },
+          {
+            "delivered_n": 722.9725450912495,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 1500,
+            "world_n": 3363.799436214078
+          },
+          {
+            "delivered_n": 897.932460596525,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 2000,
+            "world_n": 3188.839520708801
+          },
+          {
+            "delivered_n": 1053.2528724763376,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 2500,
+            "world_n": 3033.5191088289876
+          },
+          {
+            "delivered_n": 1182.7003587636584,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 3000,
+            "world_n": 2904.0716225416677
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 3500,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 4000,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 4500,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 5000,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 5500,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 6000,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 6500,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 7000,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 7500,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 8000,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 8500,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 9000,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 9500,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 10000,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 10500,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 11000,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 11500,
+            "world_n": 2836.071958016416
+          },
+          {
+            "delivered_n": 1250.7000232889088,
+            "fissions": 1,
+            "living": 2,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 12000,
+            "world_n": 2836.071958016416
+          }
+        ],
+        "deaths": 0,
+        "delivered_f": 1250.7000232889088,
+        "delivered_n": 1250.7000232889088,
+        "descendant_fissions": 0,
+        "events": [
+          {
+            "children": [
+              50000,
+              50001
+            ],
+            "event": "unforced_fission",
+            "parent": 2,
+            "partition_ok": true,
+            "step": 775,
+            "topology": [
+              39,
+              85
+            ]
+          }
+        ],
+        "first_1_35x_crossings": [],
+        "first_contact_step": 1,
+        "first_fission_step": 775,
+        "first_transfer_step": 1,
+        "fissions": 1,
+        "growth_material": 142.3794703583242,
+        "initial_world_f": 4086.771981305328,
+        "initial_world_n": 4086.771981305328,
+        "invalid": false,
+        "max_material_closure": 0.03763950248929859,
+        "net_displacement": 0.0,
+        "path_length": 10.724610056968707,
+        "reaction_a_produced": 1602.9627756311402,
+        "reaction_f_consumed": 1602.9627756311402,
+        "reaction_n_consumed": 1602.9627756311402,
+        "reaction_w_produced": 8832.299492775766,
+        "remaining_world_f": 2836.071958016416,
+        "remaining_world_n": 2836.071958016416,
+        "slips": 1345261,
+        "status": "COMPLETED",
+        "steps": 12000,
+        "stuck_contacts": 0,
+        "terminal_living": 2,
+        "terminal_sites": [
+          13,
+          35
+        ],
+        "w_generated": 1.3234413565044179e-10,
+        "world_f_loss": 1250.7000232889088,
+        "world_n_loss": 1250.7000232889088
+      },
+      "lineages": [
+        {
+          "contact_episodes": 1,
+          "contact_steps": 1550,
+          "demand_landmarks": [],
+          "f_delivered": 447.04909980994154,
+          "f_world_loss": 447.04909980994154,
+          "first_contact_step": 1,
+          "first_fission_step": 775,
+          "first_transfer_step": 1,
+          "generation": 1,
+          "last_contact_step": 775,
+          "lineage": 2,
+          "n_delivered": 447.04909980994154,
+          "n_world_loss": 447.04909980994154,
+          "parent_lineage": null,
+          "resource_ids": [
+            "r0",
+            "r90"
+          ]
+        },
+        {
+          "contact_episodes": 1,
+          "contact_steps": 11225,
+          "demand_landmarks": [],
+          "f_delivered": 488.86807401042046,
+          "f_world_loss": 488.86807401042046,
+          "first_contact_step": 776,
+          "first_fission_step": null,
+          "first_transfer_step": 776,
+          "generation": 2,
+          "last_contact_step": 12000,
+          "lineage": 50000,
+          "n_delivered": 488.86807401042046,
+          "n_world_loss": 488.86807401042046,
+          "parent_lineage": 2,
+          "resource_ids": [
+            "r0"
+          ]
+        },
+        {
+          "contact_episodes": 1,
+          "contact_steps": 12848,
+          "demand_landmarks": [],
+          "f_delivered": 314.7828494685485,
+          "f_world_loss": 314.7828494685485,
+          "first_contact_step": 776,
+          "first_fission_step": null,
+          "first_transfer_step": 776,
+          "generation": 2,
+          "last_contact_step": 12000,
+          "lineage": 50001,
+          "n_delivered": 314.7828494685485,
+          "n_world_loss": 314.7828494685485,
+          "parent_lineage": 2,
+          "resource_ids": [
+            "r0",
+            "r90"
+          ]
+        }
+      ]
+    },
+    "material_signal_last": 0.0,
+    "material_signal_max": 0.0,
+    "material_signal_sum": 0.0,
+    "motor_sum": 0.0,
+    "raw_motor_sum": 0.0,
+    "regulator_steps": 23225
+  },
+  "no_material_feedback": {
+    "base": {
+      "arm": "CLOSURE009_DAUGHTER_B_SOLO_NO_MATERIAL_FEEDBACK",
+      "base": {
+        "a_spent": 1860.6264525257031,
+        "a_to_w_residual": 6.474820679613913e-13,
+        "arm": "CLOSURE009_DAUGHTER_B_SOLO_NO_MATERIAL_FEEDBACK",
+        "checkpoints": [
+          {
+            "delivered_n": 0.54968768186225,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 1,
+            "world_n": 4086.222293623466
+          },
+          {
+            "delivered_n": 259.84286914302146,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 500,
+            "world_n": 3826.929112162307
+          },
+          {
+            "delivered_n": 429.1736836734016,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 1000,
+            "world_n": 3657.598297631928
+          },
+          {
+            "delivered_n": 555.7429614869817,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 1500,
+            "world_n": 3531.0290198183484
+          },
+          {
+            "delivered_n": 615.2553130368262,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 2000,
+            "world_n": 3471.516668268504
+          },
+          {
+            "delivered_n": 651.6130891977666,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 2500,
+            "world_n": 3435.158892107564
+          },
+          {
+            "delivered_n": 696.1249722940289,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 3000,
+            "world_n": 3390.647009011301
+          },
+          {
+            "delivered_n": 748.3005546936918,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 3500,
+            "world_n": 3338.471426611639
+          },
+          {
+            "delivered_n": 812.8334127868463,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 4000,
+            "world_n": 3273.9385685184848
+          },
+          {
+            "delivered_n": 886.474701405591,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 4500,
+            "world_n": 3200.29727989974
+          },
+          {
+            "delivered_n": 977.1610476358136,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 5000,
+            "world_n": 3109.610933669517
+          },
+          {
+            "delivered_n": 1071.05260598313,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 5500,
+            "world_n": 3015.7193753222027
+          },
+          {
+            "delivered_n": 1146.3487440851745,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 6000,
+            "world_n": 2940.423237220157
+          },
+          {
+            "delivered_n": 1146.3487440851745,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 6500,
+            "world_n": 2940.423237220157
+          },
+          {
+            "delivered_n": 1146.3487440851745,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 7000,
+            "world_n": 2940.423237220157
+          },
+          {
+            "delivered_n": 1146.3487440851745,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 7500,
+            "world_n": 2940.423237220157
+          },
+          {
+            "delivered_n": 1146.3487440851745,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 8000,
+            "world_n": 2940.423237220157
+          },
+          {
+            "delivered_n": 1146.3487440851745,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 8500,
+            "world_n": 2940.423237220157
+          },
+          {
+            "delivered_n": 1146.3487440851745,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 9000,
+            "world_n": 2940.423237220157
+          },
+          {
+            "delivered_n": 1146.3487440851745,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 9500,
+            "world_n": 2940.423237220157
+          },
+          {
+            "delivered_n": 1146.3487440851745,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 10000,
+            "world_n": 2940.423237220157
+          },
+          {
+            "delivered_n": 1146.3487440851745,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 10500,
+            "world_n": 2940.423237220157
+          },
+          {
+            "delivered_n": 1146.3487440851745,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 11000,
+            "world_n": 2940.423237220157
+          },
+          {
+            "delivered_n": 1146.3487440851745,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 11500,
+            "world_n": 2940.423237220157
+          },
+          {
+            "delivered_n": 1146.3487440851745,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0,
+            "material_signal_max": 0.0,
+            "material_signal_mean": 0.0,
+            "step": 12000,
+            "world_n": 2940.423237220157
+          }
+        ],
+        "deaths": 0,
+        "delivered_f": 1146.3487440851745,
+        "delivered_n": 1146.3487440851745,
+        "descendant_fissions": 0,
+        "events": [],
+        "first_1_35x_crossings": [],
+        "first_contact_step": 1,
+        "first_fission_step": null,
+        "first_transfer_step": 1,
+        "fissions": 0,
+        "growth_material": 109.45616191726216,
+        "initial_world_f": 4086.771981305328,
+        "initial_world_n": 4086.771981305328,
+        "invalid": false,
+        "max_material_closure": 0.06133929703122476,
+        "net_displacement": 0.0,
+        "path_length": 6.014919454475556,
+        "reaction_a_produced": 1575.7112475238587,
+        "reaction_f_consumed": 1575.7112475238587,
+        "reaction_n_consumed": 1575.7112475238587,
+        "reaction_w_produced": 7365.348407492773,
+        "remaining_world_f": 2940.423237220157,
+        "remaining_world_n": 2940.423237220157,
+        "slips": 1144592,
+        "status": "COMPLETED",
+        "steps": 12000,
+        "stuck_contacts": 6123,
+        "terminal_living": 1,
+        "terminal_sites": [
+          31
+        ],
+        "w_generated": 1860.62645252571,
+        "world_f_loss": 1146.3487440851745,
+        "world_n_loss": 1146.3487440851745
+      },
+      "lineages": [
+        {
+          "contact_episodes": 1,
+          "contact_steps": 13770,
+          "demand_landmarks": [],
+          "f_delivered": 1146.3487440851745,
+          "f_world_loss": 1146.3487440851745,
+          "first_contact_step": 1,
+          "first_fission_step": null,
+          "first_transfer_step": 1,
+          "generation": 1,
+          "last_contact_step": 12000,
+          "lineage": 2,
+          "n_delivered": 1146.3487440851745,
+          "n_world_loss": 1146.3487440851745,
+          "parent_lineage": null,
+          "resource_ids": [
+            "r0",
+            "r90"
+          ]
+        }
+      ]
+    },
+    "material_signal_last": 0.0,
+    "material_signal_max": 0.0,
+    "material_signal_sum": 0.0,
+    "motor_sum": 1086215.1022977992,
+    "raw_motor_sum": 1086215.1022977992,
+    "regulator_steps": 12000
+  },
+  "transfer_disabled": {
+    "base": {
+      "arm": "CLOSURE009_DAUGHTER_B_SOLO_TRANSFER_DISABLED",
+      "base": {
+        "a_spent": 968.6075111382177,
+        "a_to_w_residual": 6.785128014996644e-13,
+        "arm": "CLOSURE009_DAUGHTER_B_SOLO_TRANSFER_DISABLED",
+        "checkpoints": [
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.32772424113307236,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.32772424113307236,
+            "step": 1,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.1751275168401446,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.22753373842297128,
+            "step": 500,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.1396219292974676,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.19109830649372236,
+            "step": 1000,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.11985388619283346,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.17037239763992792,
+            "step": 1500,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.10742529554954386,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.15607066030356062,
+            "step": 2000,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.09956095791765017,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.14549072942683028,
+            "step": 2500,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.09497810326544975,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.13741316331371717,
+            "step": 3000,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.09304258210307055,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.13118255950371574,
+            "step": 3500,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.09387425493347583,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.1264355842894392,
+            "step": 4000,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.09791860789717291,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.1230116247198179,
+            "step": 4500,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.1058822107532797,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.1208625753667443,
+            "step": 5000,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.1108476526484364,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.11986708705719719,
+            "step": 5500,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.09980419847486723,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.1187235035056495,
+            "step": 6000,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.08398037656668927,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.11666382554929247,
+            "step": 6500,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0689403934104194,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.11378002175394408,
+            "step": 7000,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.05613254276764714,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.11034923632451238,
+            "step": 7500,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.04578471457029449,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.10662437103330465,
+            "step": 8000,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.03751142097293131,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.10279304715606544,
+            "step": 8500,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.030380022097146905,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.09896500372268767,
+            "step": 9000,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.023594636387918574,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.09517493742034523,
+            "step": 9500,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.01740146389267625,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.09143750428919374,
+            "step": 10000,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.012100066030432212,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.08778134569637908,
+            "step": 10500,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.007894752134057569,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.08424128471184053,
+            "step": 11000,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.004798005724977643,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.08085054199654107,
+            "step": 11500,
+            "world_n": 4086.771981305328
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0026914327955837214,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.0776346025514766,
+            "step": 12000,
+            "world_n": 4086.771981305328
+          }
+        ],
+        "deaths": 0,
+        "delivered_f": 0.0,
+        "delivered_n": 0.0,
+        "descendant_fissions": 0,
+        "events": [],
+        "first_1_35x_crossings": [],
+        "first_contact_step": 1,
+        "first_fission_step": null,
+        "first_transfer_step": null,
+        "fissions": 0,
+        "growth_material": 69.03006534054371,
+        "initial_world_f": 4086.771981305328,
+        "initial_world_n": 4086.771981305328,
+        "invalid": false,
+        "max_material_closure": 0.05557129471725375,
+        "net_displacement": 0.0,
+        "path_length": 6.0587433072309915,
+        "reaction_a_produced": 862.4275612399351,
+        "reaction_f_consumed": 862.4275612399351,
+        "reaction_n_consumed": 862.4275612399351,
+        "reaction_w_produced": 6765.590515063376,
+        "remaining_world_f": 4086.771981305328,
+        "remaining_world_n": 4086.771981305328,
+        "slips": 1143714,
+        "status": "COMPLETED",
+        "steps": 12000,
+        "stuck_contacts": 5567,
+        "terminal_living": 1,
+        "terminal_sites": [
+          31
+        ],
+        "w_generated": 968.6075111382074,
+        "world_f_loss": 0.0,
+        "world_n_loss": 0.0
+      },
+      "lineages": [
+        {
+          "contact_episodes": 1,
+          "contact_steps": 13784,
+          "demand_landmarks": [],
+          "f_delivered": 0.0,
+          "f_world_loss": 0.0,
+          "first_contact_step": 1,
+          "first_fission_step": null,
+          "first_transfer_step": null,
+          "generation": 1,
+          "last_contact_step": 12000,
+          "lineage": 2,
+          "n_delivered": 0.0,
+          "n_world_loss": 0.0,
+          "parent_lineage": null,
+          "resource_ids": [
+            "r0",
+            "r90"
+          ]
+        }
+      ]
+    },
+    "material_signal_last": 0.0026914327955837214,
+    "material_signal_max": 0.32772424113307236,
+    "material_signal_sum": 931.6152306177191,
+    "motor_sum": 652282.0941247506,
+    "raw_motor_sum": 1084859.2262018903,
+    "regulator_steps": 12000
+  },
+  "zero_resource": {
+    "base": {
+      "arm": "CLOSURE009_DAUGHTER_B_SOLO_ZERO_RESOURCE",
+      "base": {
+        "a_spent": 968.6075111382177,
+        "a_to_w_residual": 6.785128014996644e-13,
+        "arm": "CLOSURE009_DAUGHTER_B_SOLO_ZERO_RESOURCE",
+        "checkpoints": [
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.32772424113307236,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.32772424113307236,
+            "step": 1,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.1751275168401446,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.22753373842297128,
+            "step": 500,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.1396219292974676,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.19109830649372236,
+            "step": 1000,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.11985388619283346,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.17037239763992792,
+            "step": 1500,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.10742529554954386,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.15607066030356062,
+            "step": 2000,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.09956095791765017,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.14549072942683028,
+            "step": 2500,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.09497810326544975,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.13741316331371717,
+            "step": 3000,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.09304258210307055,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.13118255950371574,
+            "step": 3500,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.09387425493347583,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.1264355842894392,
+            "step": 4000,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.09791860789717291,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.1230116247198179,
+            "step": 4500,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.1058822107532797,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.1208625753667443,
+            "step": 5000,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.1108476526484364,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.11986708705719719,
+            "step": 5500,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.09980419847486723,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.1187235035056495,
+            "step": 6000,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.08398037656668927,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.11666382554929247,
+            "step": 6500,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0689403934104194,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.11378002175394408,
+            "step": 7000,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.05613254276764714,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.11034923632451238,
+            "step": 7500,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.04578471457029449,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.10662437103330465,
+            "step": 8000,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.03751142097293131,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.10279304715606544,
+            "step": 8500,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.030380022097146905,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.09896500372268767,
+            "step": 9000,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.023594636387918574,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.09517493742034523,
+            "step": 9500,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.01740146389267625,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.09143750428919374,
+            "step": 10000,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.012100066030432212,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.08778134569637908,
+            "step": 10500,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.007894752134057569,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.08424128471184053,
+            "step": 11000,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.004798005724977643,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.08085054199654107,
+            "step": 11500,
+            "world_n": 0.0
+          },
+          {
+            "delivered_n": 0.0,
+            "fissions": 0,
+            "living": 1,
+            "material_signal_last": 0.0026914327955837214,
+            "material_signal_max": 0.32772424113307236,
+            "material_signal_mean": 0.0776346025514766,
+            "step": 12000,
+            "world_n": 0.0
+          }
+        ],
+        "deaths": 0,
+        "delivered_f": 0.0,
+        "delivered_n": 0.0,
+        "descendant_fissions": 0,
+        "events": [],
+        "first_1_35x_crossings": [],
+        "first_contact_step": 1,
+        "first_fission_step": null,
+        "first_transfer_step": null,
+        "fissions": 0,
+        "growth_material": 69.03006534054371,
+        "initial_world_f": 0.0,
+        "initial_world_n": 0.0,
+        "invalid": false,
+        "max_material_closure": 0.05557129471725375,
+        "net_displacement": 0.0,
+        "path_length": 6.0587433072309915,
+        "reaction_a_produced": 862.4275612399351,
+        "reaction_f_consumed": 862.4275612399351,
+        "reaction_n_consumed": 862.4275612399351,
+        "reaction_w_produced": 6765.590515063376,
+        "remaining_world_f": 0.0,
+        "remaining_world_n": 0.0,
+        "slips": 1143714,
+        "status": "COMPLETED",
+        "steps": 12000,
+        "stuck_contacts": 5567,
+        "terminal_living": 1,
+        "terminal_sites": [
+          31
+        ],
+        "w_generated": 968.6075111382074,
+        "world_f_loss": 0.0,
+        "world_n_loss": 0.0
+      },
+      "lineages": [
+        {
+          "contact_episodes": 1,
+          "contact_steps": 13784,
+          "demand_landmarks": [],
+          "f_delivered": 0.0,
+          "f_world_loss": 0.0,
+          "first_contact_step": 1,
+          "first_fission_step": null,
+          "first_transfer_step": null,
+          "generation": 1,
+          "last_contact_step": 12000,
+          "lineage": 2,
+          "n_delivered": 0.0,
+          "n_world_loss": 0.0,
+          "parent_lineage": null,
+          "resource_ids": [
+            "r0",
+            "r90"
+          ]
+        }
+      ]
+    },
+    "material_signal_last": 0.0026914327955837214,
+    "material_signal_max": 0.32772424113307236,
+    "material_signal_sum": 931.6152306177191,
+    "motor_sum": 652282.0941247506,
+    "raw_motor_sum": 1084859.2262018903,
+    "regulator_steps": 12000
+  }
+}

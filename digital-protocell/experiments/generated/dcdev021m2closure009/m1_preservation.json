@@ -1,0 +1,16 @@
+{
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "v2_d087": "8/8",
+  "v3_d087": "8/8",
+  "v4_d087": "7/8",
+  "v4_vector": [
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ]
+}

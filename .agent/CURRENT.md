@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260905-dcdev021-m2-closure008-lineage-material-work`
-- External directive ID: `DC-DEV-021-M2-CLOSURE-008-LINEAGE-LEVEL-POST-INGESTIVE-MATERIAL-WORK-REQUALIFICATION-001`
-- Objective: Determine whether the accepted CLOSURE-007 material-derived regulator composition remains beneficial for Daughter A, Daughter B, and the paired ecology, and whether the paired zero-fission result is shared-resource competition or an intrinsic work/reproduction limit.
-- Current status: `COMPLETE`
-- Acceptance: `ARCHITECT_ACCEPTED`
-- Current phase: `CLOSURE-008 lineage-level post-ingestive material-work requalification`
-- Expected or actual touched areas: `isolated CLOSURE-008 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `No successor execution started; CLOSURE-008 is complete and this adopted state is awaiting reset to IDLE before the next authorized capability cycle`
+- Local directive ID: `D-20260905-dcdev021-m2-closure009-direct-material-work`
+- External directive ID: `DC-DEV-021-M2-CLOSURE-009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION-REQUALIFICATION-001`
+- Objective: Test the assay-only direct material allocation motor_i = base_i * (1 - S), where S=(N+F)/(N+F+A+W), against the accepted CLOSURE-008 regulator composition and fixed transfer-disabled, zero-resource, material-feedback, and motor-off controls.
+- Current status: `IN_PROGRESS`
+- Acceptance: `ARCHITECT_AUTHORIZED`
+- Current phase: `CLOSURE-009 direct post-ingestive material-to-motor allocation requalification`
+- Expected or actual touched areas: `isolated CLOSURE-009 assay, compact evidence, scoped workflow, append-only governance`
+- Immediate next action: `Commit the locally validated CLOSURE-009 assay and governance, push the exact result head, and run the scoped Linux authority workflow`
 
 ## Temporary task-relevant facts
 
@@ -72,7 +72,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `CLOSURE-008 final exact-head authority fe36860602e56d57aa34136161a2f79008f6b16f / CI 33949202701 / artifact sha256:33bac58b5b657e67d68964f417c4809cd9d5906c8a28db09d2ca9d02a33b0afd`
+- Command or check: `CLOSURE-009 local release build/run, compact evidence, material closure, fixed controls, and governance validation`
 - Result: `PASSED`
 
 ## Risks

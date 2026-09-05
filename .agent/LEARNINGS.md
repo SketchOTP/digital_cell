@@ -677,3 +677,22 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-021 M2 CLOSURE-007 post-ingestive material-to-work requalification.
 - Supersedes learning: none
+## L-DCDEV021-M2-CLOSURE009-001
+
+- Learning ID: L-DCDEV021-M2-CLOSURE009-001
+- Date: 2026-09-05
+- Fact or lesson: CLOSURE-009 is authorized as the next assay because CLOSURE-008 established a valid internal material/work benefit but no candidate fission. The bounded discriminator is direct use of the existing material fraction `S=(N+F)/(N+F+A+W)` at the already-qualified motor boundary, with no new coefficient or behavior input.
+- Evidence location: `digital-protocell/examples/dcdev021_m2_closure009.rs`, `digital-protocell/examples/dcdev021_m2_closure009_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2closure009/`, and `.github/workflows/dc-dev-021-m2-closure009.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 M2 CLOSURE-009 direct post-ingestive motor allocation requalification.
+- Supersedes learning: none
+
+## L-DCDEV021-M2-CLOSURE009-002
+
+- Learning ID: L-DCDEV021-M2-CLOSURE009-002
+- Date: 2026-09-05
+- Fact or lesson: Local CLOSURE-009 execution shows direct material allocation improves delivery over the accepted no-material-feedback control in all prescribed scopes: Daughter A `103.0783039053506` versus `99.29887582275623`, Daughter B `1165.6735085781427` versus `1146.3487440851745`, and paired `1165.673508578144` versus `1146.3487440851763`. Candidate fission remains zero in every scope, while Daughter B and paired motor-off controls fission once; the local classification is `M2_POST_INGESTIVE_DIRECT_MATERIAL_WORK_REPRODUCTION_NOT_ESTABLISHED` pending exact-head authority.
+- Evidence location: `digital-protocell/experiments/generated/dcdev021m2closure009/`, `digital-protocell/examples/dcdev021_m2_closure009.rs`, and `.github/workflows/dc-dev-021-m2-closure009.yml`.
+- Confidence: PROVISIONAL
+- Scope: DC-DEV-021 M2 CLOSURE-009 direct post-ingestive motor allocation requalification.
+- Supersedes learning: L-DCDEV021-M2-CLOSURE009-001

@@ -160,3 +160,7 @@
 - `digital-protocell/examples/dcdev021_m2_closure007_impl.rs` — CLOSURE-007 implementation reusing existing internal N/F/A/W state, local regulator composition, finite-world transfer, frozen metabolism, growth, fission, and heredity accounting; no production behavior change.
 - `digital-protocell/experiments/generated/dcdev021m2closure007/` — compact CLOSURE-007 authority, material-signal definition, candidate/control arms, acquisition/work, closure, preservation, and qualification evidence.
 - `.github/workflows/dc-dev-021-m2-closure007.yml` — exact-head Linux validation for CLOSURE-007 authority, assay classification, preservation, D-087, downstream tests, governance, and artifact upload.
+- `digital-protocell/examples/dcdev021_m2_closure009.rs` — isolated CLOSURE-009 entry point for direct post-ingestive material-to-motor allocation requalification.
+- `digital-protocell/examples/dcdev021_m2_closure009_impl.rs` — assay-only direct `motor_i=base_i*(1-S)` composition and fixed lineage/paired controls; no production behavior change.
+- `digital-protocell/experiments/generated/dcdev021m2closure009/` — compact CLOSURE-009 authority, direct-allocation comparison, controls, closure, preservation, and qualification evidence.
+- `.github/workflows/dc-dev-021-m2-closure009.yml` — exact-head Linux validation for CLOSURE-009 authority, direct material allocation, preservation, governance, and artifact upload.
