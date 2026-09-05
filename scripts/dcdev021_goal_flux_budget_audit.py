@@ -6,6 +6,10 @@ law.  It replays the already-implemented post-fission spatial assimilation
 composition at fixed checkpoints and compares it with the sealed whole-
 membrane reproductive reference.  Fields that the legacy reference did not
 attribute to environmental material are emitted as null rather than inferred.
+
+The ledger is provenance-conservative: assimilation-produced A is not labeled
+as W, and total organism A/W are reported separately from environmental-
+provenance quantities.
 """
 
 from __future__ import annotations
@@ -73,6 +77,12 @@ def spatial_state(snapshot_path: Path, report_path: Path) -> dict[str, Any]:
         for individual in living
     )
     birth = sum(individual.get("birth_mass", 0.0) for individual in living)
+    total_internal_a = sum(
+        mesh_amount(individual["mesh"], "a") for individual in living
+    )
+    total_internal_w = sum(
+        mesh_amount(individual["mesh"], "w") for individual in living
+    )
     return {
         "step": report["step"],
         "environmental_n_available": report["cumulative_n_delivered"]
@@ -90,7 +100,10 @@ def spatial_state(snapshot_path: Path, report_path: Path) -> dict[str, Any]:
         "environmental_n_processed": report["cumulative_assimilation_n_processed"],
         "environmental_f_processed": report["cumulative_assimilation_f_processed"],
         "environmental_a_produced": report["cumulative_assimilation_a_produced"],
-        "w_from_environmental_processing": report["cumulative_assimilation_a_produced"],
+        "environmental_w_produced": None,
+        "environmental_w_provenance": "NOT_SEPARATELY_RECORDED",
+        "total_internal_a": total_internal_a,
+        "total_internal_w": total_internal_w,
         "a_active_work_cost": report["cumulative_motor_a_spent"],
         "a_maintenance_cost": None,
         "a_reaching_growth": report["cumulative_assimilation_m_grown"],
@@ -165,7 +178,10 @@ def reference_state(reference: dict[str, Any], step: int) -> dict[str, Any] | No
         "environmental_n_processed": None,
         "environmental_f_processed": None,
         "environmental_a_produced": None,
-        "w_from_environmental_processing": None,
+        "environmental_w_produced": None,
+        "environmental_w_provenance": "NOT_SEPARATELY_RECORDED",
+        "total_internal_a": None,
+        "total_internal_w": None,
         "a_maintenance_cost": None,
         "a_active_work_cost": None,
         "a_reaching_growth": None,
@@ -266,6 +282,7 @@ def main() -> None:
     parser.add_argument("--binary", type=Path, required=True)
     parser.add_argument("--reference", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--starting-head", default=START_HEAD)
     args = parser.parse_args()
 
     reference = json.loads(args.reference.read_text())
@@ -300,8 +317,8 @@ def main() -> None:
         output / "protocol.json",
         {
             "directive": "GOAL-LOOP-DIGITAL-CELL-MATERIAL-FLOW-REALIGNMENT-R2",
-            "increment": "unified flux-budget and preservation audit R7",
-            "starting_head": START_HEAD,
+            "increment": "unified current flux-budget ledger R10",
+            "starting_head": args.starting_head,
             "role": "goal-agent architect and coder",
             "acceptance_boundary": "GOAL_AGENT_PROVISIONAL_FLUX_LEDGER",
             "checkpoints": CHECKPOINTS,
@@ -316,6 +333,7 @@ def main() -> None:
             "fission_gate": "unchanged 1.35 * birth_mass",
             "reference_source": str(args.reference),
             "spatial_source": "m2-lifeform-runtime post-fission ecology",
+            "preservation_source": "R9 assimilation preservation exact-head audit",
             "independent_architect_acceptance": False,
         },
     )
@@ -343,23 +361,25 @@ def main() -> None:
             "fission_partition_code_present": "PASS",
             "geometry_amount_preservation_code_present": "PASS",
             "runtime_checkpoint_round_trip": "PASS (existing runtime test)",
-            "d087_v2_v3_v4": "REQUIRES_SCOPED_CI",
-            "d088": "REQUIRES_SCOPED_CI",
-            "d091": "REQUIRES_SCOPED_CI",
-            "remesh_and_fission_assimilation_requalification": "REQUIRES_SCOPED_CI",
-            "observer_death_semantics": "REQUIRES_SCOPED_CI",
+            "d087_v2_v3_v4": "PASS (R9 exact-head preservation workflow)",
+            "d088": "PASS (R9 exact-head preservation workflow)",
+            "d091": "PASS (R9 exact-head preservation workflow)",
+            "remesh_and_fission_assimilation_requalification": "PASS (R9 focused checks)",
+            "observer_death_semantics": "PASS (R9 focused checks)",
+            "r9_exact_head": "465ff8000e47d34f5dd0133e10d7ec31e09c810b",
+            "r9_ci": "33994662447",
             "repo_wide_governance": "KNOWN_BASELINE_FAILURE_REQUIRES_RECONCILIATION",
         },
     )
     write_json(
         output / "qualification.json",
         {
-            "classification": "GOAL_AGENT_PROVISIONAL_FLUX_LEDGER_FIRST_DIVERGENCE_IDENTIFIED",
+            "classification": "GOAL_AGENT_PROVISIONAL_FLUX_LEDGER_FIRST_DIVERGENCE_CONFIRMED",
             "first_divergence": "environmental N/F transfer rate/retention stage",
             "resource_causal_reproduction": "NOT_ESTABLISHED",
             "assimilation_architecture": "INVESTIGATE_NOT_ACCEPTED",
             "new_material_flow_variant": "NOT_IMPLEMENTED",
-            "architecture_selection": "PENDING_PRESERVATION_AUDIT",
+            "architecture_selection": "ROUTE_B_REPLAN_REQUIRED_CONTRACT_BEFORE_RUNTIME",
             "transfer_boundary_audit": "COMPLETED_BOUNDARY_NON_EQUIVALENCE_RECORDED",
             "next_architecture_action": "SOURCE_LEVEL_MATERIAL_FLOW_CONTRACT_BEFORE_RUNTIME",
             "new_transport_or_buffer_variant": "NOT_IMPLEMENTED",

@@ -1,0 +1,47 @@
+{
+  "interpretation": {
+    "comparison_is_boundary_normalized": false,
+    "downstream_assimilation_is_not_first_divergence": true,
+    "first_measured_divergence": "environmental N/F transfer",
+    "geometry_or_local_exposure_requires_separate_audit": true,
+    "no_transport_variant_authorized_by_this_record": true
+  },
+  "shared_numeric_contract": {
+    "k_flux": 1.1,
+    "mechanics_dt": 0.02
+  },
+  "shared_transfer_terms": [
+    "permeability(theta, N/F)",
+    "k_flux",
+    "membrane edge length",
+    "dt",
+    "boundary concentration minus interior concentration"
+  ],
+  "source_paths": {
+    "shared_transport_parameters": "digital-protocell/crates/chemistry-core/src/mesh_transport.rs::TransportParams::default",
+    "spatial_field_law": "digital-protocell/crates/regulatory-core/src/spatial_material_field.rs::SpatialMaterialFieldV1::exchange",
+    "whole_membrane_law": "digital-protocell/crates/regulatory-core/src/spatial_resource.rs::FiniteSpatialResourceRegionV1::inward_mass"
+  },
+  "spatial_field_boundary": {
+    "cell_dx": 4.0,
+    "edge_local_cell_sampling": true,
+    "initial_patch_cell_concentration": 1.7737725613304376,
+    "initial_patch_cell_mass": 28.380360981287,
+    "initial_patch_cells_per_daughter": 36,
+    "resource_mass_per_daughter": 1021.692995326332,
+    "shared_cell_inventory_allocation": true,
+    "total_spatial_capacity_two_daughters": 2043.385990652664
+  },
+  "step_1_observed": {
+    "spatial_n_transferred": 0.5735320665105335,
+    "spatial_to_reference_initial_concentration_ratio": 0.8594213574701274,
+    "spatial_to_reference_transfer_ratio": 0.10987717710467791,
+    "transfer_disabled_n_transferred": 0.0,
+    "whole_membrane_n_transferred": 5.2197561097164
+  },
+  "whole_membrane_boundary": {
+    "all_membrane_segments_eligible_in_reference": true,
+    "fixed_boundary_concentration": 2.063914918930895,
+    "total_reference_capacity_two_daughters": 8192.0
+  }
+}

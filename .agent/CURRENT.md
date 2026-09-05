@@ -340,3 +340,24 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - This authority record is append-only and remains Goal-agent provisional;
   independent Architect acceptance is not claimed. A final exact-head run is
   required after this governance append.
+
+## Goal-mode current unified flux ledger R10
+
+- Result head at start: `465ff8000e47d34f5dd0133e10d7ec31e09c810b`.
+- First measured divergence remains environmental N/F transfer at step 1:
+  whole-membrane N transfer `5.2197561097164`; spatial N transfer
+  `0.5735320665105335`; disabled transfer `0.0`.
+- Active spatial late result: transfer `1292.5610559030094`, processing
+  `1255.2096180495673`, environmental A produced `1255.2096180495673`,
+  structural mass `137.78241996842192`, fissions `0`; world N/F conservation
+  errors are zero.
+- Environmental W provenance is not separately recorded and remains unknown;
+  total organism A/W are reported separately and are not relabeled.
+- Goal-agent status: `GOAL_AGENT_PROVISIONAL_FLUX_LEDGER_FIRST_DIVERGENCE_CONFIRMED`.
+- Assimilation remains `INVESTIGATE_NOT_ACCEPTED`; R9 preservation is sealed
+  PASS at exact head `465ff80`, CI `33994662447`.
+- Route-B material-flow replan remains required. No successor organism-world
+  mechanism is selected or implemented; a source-justified contract must
+  precede runtime work.
+- Stop condition: no additional pool, buffer, field placement, allocation,
+  assimilation, active-work, gain, threshold, or fission-gate variant.

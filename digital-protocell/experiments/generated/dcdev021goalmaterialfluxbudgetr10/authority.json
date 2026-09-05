@@ -1,0 +1,9 @@
+{
+  "closed_formula_family": "CLOSURE-006 through CLOSURE-014",
+  "fission_gate": "unchanged 1.35 * birth_mass",
+  "independent_architect_acceptance": false,
+  "preservation_source": "R9 assimilation preservation exact-head audit",
+  "reference_source": "experiments/generated/dcdev021m2closure003r1/whole_membrane_reference.json",
+  "spatial_source": "m2-lifeform-runtime post-fission ecology",
+  "starting_head_verified": true
+}

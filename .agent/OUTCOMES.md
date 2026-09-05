@@ -2118,3 +2118,22 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
   own scoped workflow.
 - Classification: `GOAL_AGENT_PROVISIONALLY_ACCEPTED` for workflow-scope
   reconciliation only.
+
+## D-20260905dcdev021-goal-current-flux-ledger-r10 - COMPLETE PROVISIONAL
+
+- Objective: rerun the common quantitative environmental-material flux ledger
+  against the current assimilation-enabled spatial runtime without inventing
+  missing A/W provenance.
+- First divergence: environmental N/F transfer at step 1; whole-membrane N
+  transfer `5.2197561097164`, spatial N transfer `0.5735320665105335`, and
+  transfer-disabled delivery `0.0`.
+- Late active result: transfer `1292.5610559030094`, processing
+  `1255.2096180495673`, environmental A produced `1255.2096180495673`,
+  structural mass `137.78241996842192`, fissions `0`; world N/F closure is
+  exact.
+- Classification: `GOAL_AGENT_PROVISIONAL_FLUX_LEDGER_FIRST_DIVERGENCE_CONFIRMED`.
+- Route: current spatial organism-world flow requires a source-justified
+  Route-B contract before another runtime execution.
+- No new pool, transport layer, allocation rule, active-work formula,
+  fission-gate change, or resource-causal claim was introduced. Independent
+  Architect acceptance is not claimed.

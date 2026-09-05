@@ -1,0 +1,137 @@
+name: DC-DEV-021 goal current unified flux ledger
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-goal-post-fission-ecological-reentry
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  current-flux-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify exact authority and bounded diagnostic diff
+        run: |
+          set -euo pipefail
+          start=465ff8000e47d34f5dd0133e10d7ec31e09c810b
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - "$start" <<'PY'
+          import subprocess
+          import sys
+
+          start = sys.argv[1]
+          changed = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{start}..HEAD'], text=True
+          ).splitlines())
+          allowed = {
+              '.agent/CURRENT.md', '.agent/LEARNINGS.md', '.agent/OUTCOMES.md',
+              '.agent/RECORD.md',
+              '.github/workflows/dc-dev-021-goal-assimilation-preservation.yml',
+              '.github/workflows/dc-dev-021-goal-current-flux-ledger.yml',
+              'docs/goal-unified-flux-budget-audit-r10.md',
+              'scripts/dcdev021_goal_flux_budget_audit.py',
+          }
+          prefix = 'digital-protocell/experiments/generated/dcdev021goalmaterialfluxbudgetr10/'
+          unexpected = {p for p in changed if p not in allowed and not p.startswith(prefix)}
+          assert not unexpected, sorted(unexpected)
+          assert not any(p.startswith((
+              'digital-protocell/crates/chemistry-core/src/',
+              'digital-protocell/crates/regulatory-core/src/',
+              'digital-protocell/crates/phase1-certifier/src/',
+              'digital-protocell/crates/evolution-harness/src/',
+          )) for p in changed)
+          PY
+
+      - name: Build runtime and run current common flux ledger
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build --locked --release -p m2-lifeform-runtime
+          python3 ../scripts/dcdev021_goal_flux_budget_audit.py \
+            --binary target/release/digital-protocell-m2-runtime \
+            --reference experiments/generated/dcdev021m2closure003r1/whole_membrane_reference.json \
+            --output experiments/generated/dcdev021goalmaterialfluxbudgetr10 \
+            --starting-head "$GITHUB_SHA"
+
+      - name: Validate first divergence, controls, closure, and provenance
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path('experiments/generated/dcdev021goalmaterialfluxbudgetr10')
+          first = json.loads((root / 'first_divergence.json').read_text())
+          assert first['first_common_checkpoint'] == 1
+          assert first['spatial_delivery_n'] > 0
+          assert first['transfer_disabled_delivery_n'] == 0
+          ledger = json.loads((root / 'common_flux_ledger.json').read_text())
+          final = ledger['comparisons'][-1]
+          assert final['spatial_active']['fission_events'] == 0
+          assert final['transfer_disabled']['fission_events'] == 0
+          assert abs(final['spatial_active']['world_n_conservation_error']) <= 1e-12
+          assert abs(final['spatial_active']['world_f_conservation_error']) <= 1e-12
+          assert all(
+              row['spatial_active']['environmental_w_produced'] is None
+              for row in ledger['comparisons']
+          )
+          qualification = json.loads((root / 'qualification.json').read_text())
+          assert qualification['assimilation_architecture'] == 'INVESTIGATE_NOT_ACCEPTED'
+          assert qualification['new_material_flow_variant'] == 'NOT_IMPLEMENTED'
+          print('current unified flux ledger passed')
+          PY
+
+      - name: Preserve sealed R9 assimilation boundary
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p chemistry-core --test goal_assimilation_preservation -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test --locked -p m2-lifeform-runtime -- --nocapture
+
+      - name: Verify canonical D-087 boundary
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('experiments/generated/dcdev021m2closure003r1/m1_preservation.json').read_text())
+          assert data['v2_d087'] == '8/8'
+          assert data['v3_d087'] == '8/8'
+          assert data['v4_d087'] == '7/8'
+          assert data['v4_vector'] == [True, True, False, True, True, True, True, True]
+          print('canonical D-087 boundary passed')
+          PY
+
+      - name: Hash and upload compact evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021goalmaterialfluxbudgetr10 \
+            -type f -print0 | sort -z | xargs -0 sha256sum \
+            > "$RUNNER_TEMP/dcdev021-goal-current-flux-ledger.sha256"
+
+      - name: Upload compact evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-goal-current-flux-ledger-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021goalmaterialfluxbudgetr10/
+            ${{ runner.temp }}/dcdev021-goal-current-flux-ledger.sha256

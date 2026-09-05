@@ -1,0 +1,15 @@
+{
+  "assimilation_fields_in_physical_validity_guard": "PASS",
+  "d087_v2_v3_v4": "PASS (R9 exact-head preservation workflow)",
+  "d088": "PASS (R9 exact-head preservation workflow)",
+  "d091": "PASS (R9 exact-head preservation workflow)",
+  "fission_partition_code_present": "PASS",
+  "geometry_amount_preservation_code_present": "PASS",
+  "legacy_assimilation_fields_default_zero": "PASS",
+  "observer_death_semantics": "PASS (R9 focused checks)",
+  "r9_ci": "33994662447",
+  "r9_exact_head": "465ff8000e47d34f5dd0133e10d7ec31e09c810b",
+  "remesh_and_fission_assimilation_requalification": "PASS (R9 focused checks)",
+  "repo_wide_governance": "KNOWN_BASELINE_FAILURE_REQUIRES_RECONCILIATION",
+  "runtime_checkpoint_round_trip": "PASS (existing runtime test)"
+}

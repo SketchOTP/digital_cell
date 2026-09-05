@@ -1,0 +1,14 @@
+{
+  "acceptance_boundary": "GOAL_AGENT_PROVISIONAL_FLUX_LEDGER",
+  "checkpoints": [
+    1,
+    250,
+    350,
+    12000
+  ],
+  "directive": "GOAL-LOOP-DIGITAL-CELL-MATERIAL-FLOW-REALIGNMENT-R2",
+  "increment": "unified current flux-budget ledger R10",
+  "new_organism_world_mechanism": false,
+  "role": "goal-agent architect and coder",
+  "starting_head": "465ff8000e47d34f5dd0133e10d7ec31e09c810b"
+}

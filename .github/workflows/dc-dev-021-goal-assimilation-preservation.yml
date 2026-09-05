@@ -11,6 +11,9 @@ permissions:
 
 jobs:
   preservation:
+    # R9 is sealed at this exact head. Descendant Goal cycles use their own
+    # scoped workflows and must not be judged by the R9 bounded allowlist.
+    if: github.sha == '465ff8000e47d34f5dd0133e10d7ec31e09c810b'
     runs-on: ubuntu-latest
     steps:
       - name: Check out exact result head

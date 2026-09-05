@@ -1,0 +1,9 @@
+{
+  "first_common_checkpoint": 1,
+  "interpretation": "spatial transfer is the first measured divergence from the accepted whole-membrane reference; downstream processing and growth are therefore not the first observed loss",
+  "method": "first common checkpoint with nonzero descriptive delivery difference; no biological threshold",
+  "reference_delivery_n": 5.2197561097164,
+  "spatial_delivery_n": 0.5735320665105335,
+  "stage": "environmental_n_f_transferred",
+  "transfer_disabled_delivery_n": 0.0
+}

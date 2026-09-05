@@ -1126,3 +1126,17 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Independent Architect acceptance: `PENDING`.
 - Final exact-head validation is required after this governance append.
 - Supersedes record: `DEC-DCDEV021-GOAL-ASSIMILATION-PRESERVATION-AUDIT-R9`
+
+## DEC-DCDEV021-GOAL-CURRENT-FLUX-LEDGER-R10
+
+- Date: `2026-09-05`
+- Status: `ACTIVE_PROVISIONAL`
+- Starting head: `465ff8000e47d34f5dd0133e10d7ec31e09c810b`.
+- Decision: seal the current common flux ledger as provisional evidence only.
+  The first measured loss is environmental N/F transfer, while downstream
+  processing and growth are nonzero and fission remains zero.
+- Environmental W attribution is unknown by contract; no A-to-W inference is
+  made.
+- Successor decision: source-level organism/world material-flow contract before
+  any new runtime execution. No adjacent material-flow variant is authorized.
+- Independent Architect acceptance: `PENDING`.

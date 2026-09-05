@@ -778,3 +778,17 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
   required after this append-only authority record.
 - Scope: Goal-mode preservation audit R9 exact-head authority.
 - Supersedes learning: `L-DCDEV021-GOAL-ASSIMILATION-PRESERVATION-R9-001`
+
+## L-DCDEV021-GOAL-CURRENT-FLUX-LEDGER-R10-001
+
+- Fact: the current spatial path diverges from the whole-membrane reference at
+  the environmental transfer boundary while downstream processing and growth
+  are already nonzero.
+- Lesson: a common ledger must preserve provenance boundaries. Assimilation A
+  is measurable, but environmental W cannot be inferred from A production or
+  total organism W without an explicit source ledger.
+- Consequence: a passed assimilation preservation audit does not accept that
+  architecture and does not justify another buffer or transport variant.
+- Next boundary: write a source-justified material-flow contract; if it needs
+  an unledgered source or frozen-law change, stop local organism/world
+  implementation and replan.

@@ -1,0 +1,15 @@
+{
+  "evidence_files": [
+    "artifact_manifest.json",
+    "authority.json",
+    "common_flux_ledger.json",
+    "first_divergence.json",
+    "integrated_spatial_path.json",
+    "preservation_audit.json",
+    "protocol.json",
+    "qualification.json",
+    "reference_whole_membrane.json",
+    "transfer_boundary_audit.json"
+  ],
+  "schema": "GOAL_AGENT_FLUX_LEDGER_MANIFEST_V1"
+}
