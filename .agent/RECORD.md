@@ -765,3 +765,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The direct assay-only use of existing internal material fraction `S=(N+F)/(N+F+A+W)` at `motor_i=base_i*(1-S)` improves finite delivery and reduces A spending without new behavior or parameterization, but no candidate scope fissions. Motor-off Daughter B and paired controls fission once, so the direct allocation is a bounded work/acquisition benefit rather than resource-causal reproduction.
 - Affected areas: additive CLOSURE-009 assay/evidence/workflow/governance only; no frozen scientific runtime, uptake/metabolism/growth/fission source, M1 provenance, restart boundary, or PR #44 modification.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION
+
+## DEC-DCDEV021-M2-CLOSURE009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION-FINAL-HEAD-REVALIDATION
+
+- Date: 2026-09-05
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION-FINAL-HEAD-REVALIDATION
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33951490446` passed on result head `28c78043ebf7f99be4146600dc7ef2427199c46b`; independently downloaded artifact ZIP digest is `sha256:0d6f113a0edd1945ab1d6bea7e74c95c952d5ad0a1e105ddcdae281c75ff1dd9`.
+- Rationale: The source-of-truth qualification metadata correction emits `architect_acceptance=COMPLETE` during remote regeneration; the direct material-allocation assay remains `M2_POST_INGESTIVE_DIRECT_MATERIAL_WORK_REPRODUCTION_NOT_ESTABLISHED` with no candidate fission.
+- Affected areas: additive metadata correction and final authority evidence only; no scientific runtime, assay semantics, frozen physiology, M1 provenance, restart boundary, or PR #44 modification.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION-FINAL

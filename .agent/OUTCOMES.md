@@ -1733,3 +1733,19 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Remaining risks: autonomous acquisition, resource-causal reproduction, descendant continuity, heritable ecological phenotype, environment-dependent evolution, and standalone-lifeform completion remain unestablished.
 - Blockers: none for CLOSURE-009; the next capability cycle requires a separately authorized directive.
 - Follow-up directive: none
+
+## D-20260905-dcdev021-m2-closure009-direct-material-work - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE009-DIRECT-MATERIAL-WORK-FINAL-HEAD-REVALIDATION`
+- Supersedes outcome: `OUT-DCDEV021-M2-CLOSURE009-DIRECT-MATERIAL-WORK-FINAL`
+- Closed: `2026-09-05T03:08:00-04:00`
+- Acceptance: `MET`
+- Summary: The CLOSURE-009 generated-acceptance metadata correction was revalidated on exact head `28c78043ebf7f99be4146600dc7ef2427199c46b`; the deterministic assay result and bounded classification are unchanged.
+- Changed areas: additive source-of-truth metadata correction only; no scientific runtime, assay semantics, frozen physiology, M1 provenance, restart boundary, or PR #44 modification.
+- Validation:
+  - Exact-head Linux workflow `33951490446` on `28c78043ebf7f99be4146600dc7ef2427199c46b` - PASSED
+  - Independently downloaded artifact ZIP digest `sha256:0d6f113a0edd1945ab1d6bea7e74c95c952d5ad0a1e105ddcdae281c75ff1dd9` - PASSED
+  - Architect acceptance - COMPLETE for this bounded result
+- Remaining risks: autonomous acquisition, resource-causal reproduction, descendant continuity, heritable ecological phenotype, environment-dependent evolution, and standalone-lifeform completion remain unestablished.
+- Blockers: none for CLOSURE-009; the next capability cycle requires a separately authorized directive.
+- Follow-up directive: none

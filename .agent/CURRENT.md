@@ -72,7 +72,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `CLOSURE-009 final exact-head authority 654d4d20e7f758c07b1af8bbf8db6ffd1ba92962 / CI 33950728180 / artifact sha256:a2338b01fa999f3682c965b71ba8751b9ab5154b427abc07cbccfde0cfb1d03c`
+- Command or check: `CLOSURE-009 exact-head authority 28c78043ebf7f99be4146600dc7ef2427199c46b / CI 33951490446 / artifact sha256:0d6f113a0edd1945ab1d6bea7e74c95c952d5ad0a1e105ddcdae281c75ff1dd9`
 - Result: `PASSED`
 
 ## Risks
