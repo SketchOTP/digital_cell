@@ -1111,3 +1111,18 @@ Use it for architectural decisions, governance changes, releases, qualification 
   assimilation; a pass leaves it `INVESTIGATE_NOT_ACCEPTED` and forbids nearby
   pool/buffer/field/allocation/active-work hill-climbing.
 - Supersedes record: none
+
+## DEC-DCDEV021-GOAL-ASSIMILATION-PRESERVATION-AUDIT-R9-AUTHORITY
+
+- Date: `2026-09-05`
+- Status: `ACTIVE_PROVISIONAL`
+- Record or decision ID: `DEC-DCDEV021-GOAL-ASSIMILATION-PRESERVATION-AUDIT-R9-AUTHORITY`
+- Result head: `3a6a37068111b2a4be9403cd8019e2731a0c521d`.
+- Exact-head Linux workflow: `33994307563` passed.
+- Artifact ZIP digest: `sha256:0a414ac7fbed6fdaacb20c9a189254093162999f23d6e23f3b8a570b8954d6f6`.
+- Decision: seal the Goal-agent provisional preservation result. This does
+  not accept assimilation architecture and does not establish
+  resource-causal fission.
+- Independent Architect acceptance: `PENDING`.
+- Final exact-head validation is required after this governance append.
+- Supersedes record: `DEC-DCDEV021-GOAL-ASSIMILATION-PRESERVATION-AUDIT-R9`

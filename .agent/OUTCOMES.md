@@ -2093,6 +2093,20 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
   does not authorize another pool, buffer, field-placement, allocation, or
   active-work variant.
 
+## D-20260905-dcdev021-goal-assimilation-preservation-audit-r9-authority - COMPLETE PROVISIONAL
+
+- Outcome ID: `OUT-DCDEV021-GOAL-ASSIMILATION-PRESERVATION-AUDIT-R9-AUTHORITY`.
+- Result head validated: `3a6a37068111b2a4be9403cd8019e2731a0c521d`.
+- Exact-head Linux workflow: `33994307563` passed.
+- Independently downloaded artifact ZIP digest:
+  `sha256:0a414ac7fbed6fdaacb20c9a189254093162999f23d6e23f3b8a570b8954d6f6`.
+- Goal-agent disposition: `GOAL_AGENT_PROVISIONALLY_ACCEPTED` for the
+  preservation audit only. Assimilation remains `INVESTIGATE_NOT_ACCEPTED`;
+  resource-causal fission remains `NOT_ESTABLISHED`; independent Architect
+  acceptance is not claimed.
+- A final exact-head validation is required for the append-only authority
+  update itself.
+
 ## D-20260905-dcdev021-goal-r7-workflow-archival-gating - COMPLETE PROVISIONAL
 
 - Outcome ID: `OUT-DCDEV021-GOAL-R7-WORKFLOW-ARCHIVAL-GATING`.

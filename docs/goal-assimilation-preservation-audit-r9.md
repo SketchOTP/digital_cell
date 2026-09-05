@@ -63,3 +63,12 @@ This is a Goal-agent provisional result only. Independent Architect acceptance
 is pending. Resource-causal reproduction, autonomous resource acquisition,
 descendants, heritable ecological phenotype, and evolution remain
 unestablished.
+
+## Provisional authority record
+
+The scoped workflow passed on result head
+`3a6a37068111b2a4be9403cd8019e2731a0c521d` as run `33994307563`. The
+independently downloaded artifact ZIP matched
+`sha256:0a414ac7fbed6fdaacb20c9a189254093162999f23d6e23f3b8a570b8954d6f6`.
+This record remains Goal-agent provisional; the resulting append-only
+governance update requires its own exact-head validation.

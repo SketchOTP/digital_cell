@@ -333,3 +333,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Workflow reconciliation: the archival R7 workflow was observed rejecting the
   intentional R9 files at its allowlist gate; it is now exact-head gated to
   sealed R7 authority and is not scientific evidence for R9.
+- R9 remote validation on head `3a6a37068111b2a4be9403cd8019e2731a0c521d`:
+  exact-head Linux workflow `33994307563` passed and the independently
+  downloaded artifact ZIP matched
+  `sha256:0a414ac7fbed6fdaacb20c9a189254093162999f23d6e23f3b8a570b8954d6f6`.
+- This authority record is append-only and remains Goal-agent provisional;
+  independent Architect acceptance is not claimed. A final exact-head run is
+  required after this governance append.

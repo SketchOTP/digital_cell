@@ -761,3 +761,20 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: `PROVISIONAL` pending exact-head Linux CI and artifact digest.
 - Scope: Goal-mode preservation audit R9.
 - Supersedes learning: none
+
+## L-DCDEV021-GOAL-ASSIMILATION-PRESERVATION-R9-AUTHORITY-001
+
+- Learning ID: `L-DCDEV021-GOAL-ASSIMILATION-PRESERVATION-R9-AUTHORITY-001`
+- Date: `2026-09-05`
+- Fact or lesson: Exact-head workflow `33994307563` passed on
+  `3a6a37068111b2a4be9403cd8019e2731a0c521d`, with independently downloaded
+  artifact ZIP digest
+  `sha256:0a414ac7fbed6fdaacb20c9a189254093162999f23d6e23f3b8a570b8954d6f6`.
+  This seals only a Goal-agent provisional preservation result; assimilation
+  remains under investigation and resource-causal fission remains
+  unestablished.
+- Evidence location: `digital-protocell/experiments/generated/dcdev021goalassimilationpreservationr9/`, `.github/workflows/dc-dev-021-goal-assimilation-preservation.yml`, and `docs/goal-assimilation-preservation-audit-r9.md`.
+- Confidence: `VERIFIED` for that exact head; final exact-head validation is
+  required after this append-only authority record.
+- Scope: Goal-mode preservation audit R9 exact-head authority.
+- Supersedes learning: `L-DCDEV021-GOAL-ASSIMILATION-PRESERVATION-R9-001`
