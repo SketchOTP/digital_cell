@@ -1,0 +1,10 @@
+{
+  "r10_classification": "GOAL_AGENT_PROVISIONAL_FLUX_LEDGER_FIRST_DIVERGENCE_CONFIRMED",
+  "r10_first_divergence": "environmental_n_f_transfer",
+  "closed_mechanism_family": "CLOSURE-006 through CLOSURE-014",
+  "fission_gate": "unchanged 1.35 * birth_mass",
+  "assimilation_status": "INVESTIGATE_NOT_ACCEPTED",
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "pr_44": "OPEN_DRAFT_UNMERGED_UNTOUCHED",
+  "notion_sync": "NOT_AVAILABLE_IN_THIS_EXECUTION_ENVIRONMENT"
+}

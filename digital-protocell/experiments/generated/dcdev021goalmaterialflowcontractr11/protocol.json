@@ -1,0 +1,9 @@
+{
+  "directive": "GOAL-LOOP-DIGITAL-CELL-MATERIAL-FLOW-CONTRACT-R11",
+  "starting_head": "aebebed88f09915be5087e685a319d055b20ee27",
+  "role": "goal-agent architect and coder",
+  "scope": "source-level architecture selection before runtime",
+  "new_runtime_mechanism": false,
+  "independent_architect_acceptance": false,
+  "next_execution_started": false
+}

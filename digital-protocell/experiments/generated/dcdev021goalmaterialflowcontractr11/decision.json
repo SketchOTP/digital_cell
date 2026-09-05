@@ -1,0 +1,17 @@
+{
+  "classification": "GOAL_AGENT_PROVISIONAL_ARCHITECTURE_SELECTED",
+  "selected_architecture": "SHARED_FINITE_EXTRACELLULAR_MEDIUM_LOCAL_MEMBRANE_EXCHANGE_V1",
+  "reason": "R10 localized the first loss to environmental transfer; this contract changes the world boundary and removes per-cell request allocation and the unaccepted assimilation buffer while preserving downstream biology.",
+  "implementation_started": false,
+  "runtime_execution_started": false,
+  "next_work": "one bounded end-to-end contract test",
+  "stop_if": [
+    "new biological rate/gain/threshold/allocator required",
+    "direct existing N/F transfer remains first divergence",
+    "frozen metabolism/growth/fission/death must change",
+    "resource copying or observer allocation required",
+    "preservation or restart fails",
+    "target/gradient/resource behavior input required"
+  ],
+  "independent_architect_acceptance": "PENDING"
+}

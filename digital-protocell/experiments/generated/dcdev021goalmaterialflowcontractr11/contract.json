@@ -1,0 +1,33 @@
+{
+  "schema": "SHARED_FINITE_EXTRACELLULAR_MEDIUM_LOCAL_MEMBRANE_EXCHANGE_V1",
+  "world_owns_positive_nf": true,
+  "finite_debit_once": true,
+  "local_membrane_segment_flux": true,
+  "simultaneous_order_independent_requests": true,
+  "direct_existing_interior_nf": true,
+  "assimilation_buffer_in_candidate_path": false,
+  "hidden_bath": false,
+  "per_organism_resource_copy": false,
+  "observer_allocation": false,
+  "new_biological_rate": false,
+  "new_gain_or_threshold": false,
+  "existing_transport_terms_only": true,
+  "existing_metabolism_unchanged": true,
+  "existing_growth_unchanged": true,
+  "existing_fission_unchanged": true,
+  "causal_order": [
+    "finite_shared_medium_pre_step",
+    "local_membrane_transfer",
+    "existing_internal_metabolism",
+    "existing_growth_and_topology",
+    "existing_fission"
+  ],
+  "required_controls": [
+    "active_transfer",
+    "transfer_disabled",
+    "shared_allocation_order_reversal",
+    "world_rotation",
+    "checkpoint_resume",
+    "fission_and_remesh_material_closure"
+  ]
+}

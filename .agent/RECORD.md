@@ -1030,6 +1030,19 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Independent Architect acceptance: `PENDING`.
 - Supersedes record: `DEC-DCDEV021-GOAL-CURRENT-FLUX-LEDGER-R10`.
 
+## DEC-DCDEV021-GOAL-MATERIAL-FLOW-CONTRACT-SELECTION-R11
+
+- Date: `2026-09-05`
+- Status: `ACTIVE_PROVISIONAL`
+- Starting head: `aebebed88f09915be5087e685a319d055b20ee27`.
+- Decision: select a source-justified shared finite extracellular medium with
+  local membrane exchange as the next architecture boundary.
+- Rationale: R10 localized first loss at environmental transfer; the selected
+  contract changes the world boundary and removes the unaccepted assimilation
+  buffer and per-cell request allocator while preserving downstream laws.
+- Implementation: `NOT_STARTED`.
+- Independent Architect acceptance: `PENDING`.
+
 ## DEC-DCDEV021-GOAL-POST-FISSION-ECOLOGICAL-REENTRY-R6
 
 - Date: `2026-09-05`

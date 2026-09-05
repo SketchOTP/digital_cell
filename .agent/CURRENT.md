@@ -367,3 +367,26 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
   `sha256:f3a1f5dddfc77e42c516f7e949391d1a7d42e9a4b5da16b758fb730fb86d5e57`.
 - This remote validation seals the R10 diagnostic evidence provisionally; it
   does not accept assimilation architecture or resource-causal reproduction.
+
+## Goal-mode material-flow contract selection R11
+
+- Largest remaining end-goal bottleneck: finite spatial environmental
+  material → adequate transfer → existing N/F processing → structural growth
+  → resource-causal physical fission.
+- R10 localized the first loss to environmental transfer; CLOSURE-006 through
+  CLOSURE-014 remains exhausted and assimilation remains
+  `INVESTIGATE_NOT_ACCEPTED`.
+- Provisional architecture selected for the next bounded implementation:
+  `SHARED_FINITE_EXTRACELLULAR_MEDIUM_LOCAL_MEMBRANE_EXCHANGE_V1`.
+- Contract boundary: finite world-owned shared medium, local membrane-segment
+  exchange, simultaneous order-independent debit, direct existing interior N/F,
+  unchanged metabolism/growth/fission/death, no assimilation buffer.
+- External prior-art disposition: extracellular compartment/local transport
+  `DIRECTLY_ADAPTABLE`; uptake/assimilation separation `ADAPTABLE`; diffusion
+  limitation `REFERENCE_ONLY`; external kinetics/quotas `INCOMPATIBLE`.
+- No runtime source changed and no successor runtime execution started.
+- Goal-agent status: `GOAL_AGENT_PROVISIONAL_ARCHITECTURE_SELECTED`.
+- Independent Architect acceptance: not claimed.
+- Stop condition: if the contract requires a new rate, allocator, hidden bath,
+  frozen-law change, or still fails at direct transfer, stop local material-flow
+  work and replan the organism/world architecture.

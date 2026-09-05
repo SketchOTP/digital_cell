@@ -1,0 +1,12 @@
+{
+  "schema": "GOAL_AGENT_MATERIAL_FLOW_CONTRACT_MANIFEST_V1",
+  "evidence_files": [
+    "artifact_manifest.json",
+    "authority.json",
+    "contract.json",
+    "decision.json",
+    "prior_art_disposition.json",
+    "protocol.json",
+    "qualification.json"
+  ]
+}

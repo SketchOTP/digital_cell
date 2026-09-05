@@ -2149,3 +2149,19 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
   `INVESTIGATE_NOT_ACCEPTED`; resource-causal reproduction remains
   `NOT_ESTABLISHED`; independent Architect acceptance is not claimed.
 - Successor decision remains contract-before-runtime; no new execution started.
+
+## D-20260905dcdev021-goal-material-flow-contract-selection-r11 - IN PROGRESS PROVISIONAL
+
+- Objective: select a materially different organism/world material-flow
+  contract after R10, before implementing another runtime mechanism.
+- Selected contract: `SHARED_FINITE_EXTRACELLULAR_MEDIUM_LOCAL_MEMBRANE_EXCHANGE_V1`.
+- Required causal order: finite shared medium → local membrane transfer →
+  existing internal N/F → existing frozen metabolism → existing growth/fission.
+- Assimilation buffer, per-cell request allocation, hidden bath, new gain,
+  threshold, and fission-gate changes are excluded.
+- Classification: `GOAL_AGENT_PROVISIONAL_ARCHITECTURE_SELECTED`.
+- No runtime implementation or execution has started; independent Architect
+  acceptance is not claimed.
+- Stop condition: direct existing N/F transfer remains the first divergence,
+  or the contract requires an unmotivated parameter/allocator/frozen-law
+  change.

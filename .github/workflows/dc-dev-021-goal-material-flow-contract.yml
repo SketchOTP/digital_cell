@@ -1,0 +1,111 @@
+name: DC-DEV-021 goal material-flow contract selection
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-goal-post-fission-ecological-reentry
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract-selection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Verify exact authority and bounded architecture-only diff
+        run: |
+          set -euo pipefail
+          start=aebebed88f09915be5087e685a319d055b20ee27
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - "$start" <<'PY'
+          import subprocess
+          import sys
+
+          start = sys.argv[1]
+          changed = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{start}..HEAD'], text=True
+          ).splitlines())
+          allowed = {
+              '.agent/CURRENT.md', '.agent/LEARNINGS.md', '.agent/OUTCOMES.md',
+              '.agent/RECORD.md',
+              '.github/workflows/dc-dev-021-goal-material-flow-contract.yml',
+              'docs/goal-material-flow-contract-selection-r11.md',
+          }
+          prefix = 'digital-protocell/experiments/generated/dcdev021goalmaterialflowcontractr11/'
+          unexpected = {p for p in changed if p not in allowed and not p.startswith(prefix)}
+          assert not unexpected, sorted(unexpected)
+          assert not any(p.startswith((
+              'digital-protocell/crates/',
+              'digital-protocell/examples/',
+          )) for p in changed)
+          PY
+
+      - name: Validate contract evidence without running biology
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path('experiments/generated/dcdev021goalmaterialflowcontractr11')
+          manifest = json.loads((root / 'artifact_manifest.json').read_text())
+          for name in manifest['evidence_files']:
+              assert (root / name).is_file(), name
+          contract = json.loads((root / 'contract.json').read_text())
+          assert contract['world_owns_positive_nf']
+          assert contract['finite_debit_once']
+          assert contract['direct_existing_interior_nf']
+          assert not contract['assimilation_buffer_in_candidate_path']
+          assert not contract['hidden_bath']
+          assert contract['existing_transport_terms_only']
+          assert contract['existing_metabolism_unchanged']
+          assert contract['existing_growth_unchanged']
+          assert contract['existing_fission_unchanged']
+          decision = json.loads((root / 'decision.json').read_text())
+          assert decision['implementation_started'] is False
+          assert decision['runtime_execution_started'] is False
+          qualification = json.loads((root / 'qualification.json').read_text())
+          assert qualification['independent_architect_acceptance'] == 'PENDING'
+          print('material-flow contract evidence passed')
+          PY
+
+      - name: Preserve canonical D-087 boundary
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('experiments/generated/dcdev021m2closure003r1/m1_preservation.json').read_text())
+          assert data['v2_d087'] == '8/8'
+          assert data['v3_d087'] == '8/8'
+          assert data['v4_d087'] == '7/8'
+          assert data['v4_vector'] == [True, True, False, True, True, True, True, True]
+          print('canonical D-087 boundary passed')
+          PY
+
+      - name: Hash and upload compact contract evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021goalmaterialflowcontractr11 \
+            -type f -print0 | sort -z | xargs -0 sha256sum \
+            > "$RUNNER_TEMP/dcdev021-goal-material-flow-contract.sha256"
+
+      - name: Upload compact contract evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-goal-material-flow-contract-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021goalmaterialflowcontractr11/
+            ${{ runner.temp }}/dcdev021-goal-material-flow-contract.sha256

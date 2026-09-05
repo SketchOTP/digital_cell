@@ -803,3 +803,17 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
   accepted architecture.
 - Confidence: `VERIFIED` for the exact diagnostic head; independent Architect
   acceptance remains pending.
+
+## L-DCDEV021-GOAL-MATERIAL-FLOW-CONTRACT-R11-001
+
+- Lesson: after a transfer-boundary first divergence, the next architecture
+  must change ownership and boundary semantics, not add another intracellular
+  buffer or algebraic allocation rule.
+- Selected boundary: shared finite extracellular medium with simultaneous
+  local membrane exchange into existing interior N/F.
+- External basis: spatial metabolism models distinguish an extracellular
+  compartment, local cross-membrane transport, and intracellular processing;
+  no external kinetic values are imported.
+- Stop condition: if direct existing N/F transfer remains the first divergence
+  under a conserved shared-medium contract, local material-flow architecture is
+  insufficient and must be replanned.

@@ -1,0 +1,23 @@
+{
+  "extracellular_compartment_with_local_cross_membrane_transport": {
+    "classification": "DIRECTLY_ADAPTABLE",
+    "use": "architecture pattern only; finite world ownership and local transport"
+  },
+  "uptake_distinct_from_intracellular_assimilation": {
+    "classification": "ADAPTABLE",
+    "use": "conceptual distinction only; no external rates or quotas imported"
+  },
+  "diffusion_limited_vs_reaction_limited_growth": {
+    "classification": "REFERENCE_ONLY",
+    "use": "interpret first-divergence measurements"
+  },
+  "external_transport_kinetics_or_quota_thresholds": {
+    "classification": "INCOMPATIBLE",
+    "use": "not imported"
+  },
+  "sources": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC11390822/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC5902472/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC5832723/"
+  ]
+}
