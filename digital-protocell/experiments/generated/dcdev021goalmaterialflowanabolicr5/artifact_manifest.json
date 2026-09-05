@@ -1,0 +1,14 @@
+{
+  "evidence_schema": "dcdev021-goal-material-flow-anabolic-r5",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "architecture.json",
+    "transfer_enabled.json",
+    "transfer_disabled.json",
+    "closure.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "exact_head_artifact_digest": "PENDING_EXACT_HEAD_CI"
+}

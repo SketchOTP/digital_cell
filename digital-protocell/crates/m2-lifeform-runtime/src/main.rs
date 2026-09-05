@@ -50,6 +50,10 @@ struct RuntimeSnapshot {
     /// preserves all historical runtime compositions.
     #[serde(default)]
     assimilation_enabled: bool,
+    /// Opt-in incorporation of newly processed environmental A through the
+    /// existing structural-build law. False preserves R4 semantics.
+    #[serde(default)]
+    anabolic_incorporation_enabled: bool,
     #[serde(default = "default_true")]
     spatial_field_transfer_enabled: bool,
     cumulative_n_delivered: f64,
@@ -62,6 +66,8 @@ struct RuntimeSnapshot {
     cumulative_assimilation_a_produced: f64,
     #[serde(default)]
     cumulative_assimilation_m_grown: f64,
+    #[serde(default)]
+    cumulative_assimilation_m_incorporated: f64,
     cumulative_n_world_loss: f64,
     cumulative_f_world_loss: f64,
     cumulative_fissions: usize,
@@ -147,6 +153,7 @@ struct RuntimeReport {
     cumulative_assimilation_f_processed: f64,
     cumulative_assimilation_a_produced: f64,
     cumulative_assimilation_m_grown: f64,
+    cumulative_assimilation_m_incorporated: f64,
     world_n_conservation_error: f64,
     world_f_conservation_error: f64,
     motor_steps: u64,
@@ -186,6 +193,7 @@ struct Config {
     routeb_spatial_field: bool,
     routec_reserve_growth: bool,
     assimilation_material_flow: bool,
+    anabolic_incorporation: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -213,7 +221,7 @@ fn default_true() -> bool {
 
 fn usage() -> ! {
     eprintln!(
-        "usage: digital-protocell-m2-runtime [--steps N] [--seed N] \\\n          [--checkpoint PATH] [--report PATH] [--resume PATH] \\\n          [--transfer-disabled] [--routeb-spatial-field] [--routec-reserve-growth] [--assimilation-material-flow]"
+        "usage: digital-protocell-m2-runtime [--steps N] [--seed N] \\\n          [--checkpoint PATH] [--report PATH] [--resume PATH] \\\n          [--transfer-disabled] [--routeb-spatial-field] [--routec-reserve-growth] [--assimilation-material-flow] [--assimilation-anabolic-incorporation]"
     );
     std::process::exit(2);
 }
@@ -228,6 +236,7 @@ fn parse_config() -> Config {
     let mut routeb_spatial_field = false;
     let mut routec_reserve_growth = false;
     let mut assimilation_material_flow = false;
+    let mut anabolic_incorporation = false;
     let args: Vec<String> = env::args().skip(1).collect();
     let mut i = 0;
     while i < args.len() {
@@ -245,6 +254,10 @@ fn parse_config() -> Config {
             "--routeb-spatial-field" => routeb_spatial_field = true,
             "--routec-reserve-growth" => routec_reserve_growth = true,
             "--assimilation-material-flow" => assimilation_material_flow = true,
+            "--assimilation-anabolic-incorporation" => {
+                assimilation_material_flow = true;
+                anabolic_incorporation = true;
+            }
             _ => usage(),
         }
         i += 1;
@@ -259,6 +272,7 @@ fn parse_config() -> Config {
         routeb_spatial_field,
         routec_reserve_growth,
         assimilation_material_flow,
+        anabolic_incorporation,
     }
 }
 
@@ -388,6 +402,7 @@ fn develop_founder_routeb(
     transfer_enabled: bool,
     reserve_parameters: Option<&ReserveParams>,
     assimilation_enabled: bool,
+    anabolic_incorporation_enabled: bool,
 ) -> (
     PolarityState,
     usize,
@@ -395,6 +410,7 @@ fn develop_founder_routeb(
     f64,
     f64,
     Option<usize>,
+    f64,
     f64,
     f64,
     f64,
@@ -422,6 +438,7 @@ fn develop_founder_routeb(
     let mut cumulative_assimilation_f = 0.0;
     let mut cumulative_assimilation_a = 0.0;
     let mut cumulative_assimilation_m = 0.0;
+    let mut cumulative_assimilation_m_incorporated = 0.0;
 
     for step in 0..DEVELOPMENT_MAX_STEPS {
         if !individual.mesh.can_advance_physics() {
@@ -469,6 +486,15 @@ fn develop_founder_routeb(
             cumulative_assimilation_n += processed.n_processed;
             cumulative_assimilation_f += processed.f_processed;
             cumulative_assimilation_a += processed.assimilation_a_produced;
+            if anabolic_incorporation_enabled {
+                let incorporated = environmental_assimilation::incorporate_into_structure(
+                    &mut individual.mesh,
+                    &reaction,
+                    dt,
+                    processed.assimilation_a_produced,
+                );
+                cumulative_assimilation_m_incorporated += incorporated.m_produced;
+            }
         }
         let mass_before_growth = individual.mesh.total_structural_mass();
         let _ = growth_step(&mut individual.mesh, &reaction, &growth, dt);
@@ -507,6 +533,7 @@ fn develop_founder_routeb(
                 cumulative_assimilation_f,
                 cumulative_assimilation_a,
                 cumulative_assimilation_m,
+                cumulative_assimilation_m_incorporated,
             );
         }
     }
@@ -521,6 +548,7 @@ fn develop_founder_routeb(
         cumulative_assimilation_f,
         cumulative_assimilation_a,
         cumulative_assimilation_m,
+        cumulative_assimilation_m_incorporated,
     )
 }
 
@@ -622,6 +650,7 @@ fn new_snapshot(seed: u64) -> RuntimeSnapshot {
         spatial_field: None,
         reserve_parameters: None,
         assimilation_enabled: false,
+        anabolic_incorporation_enabled: false,
         spatial_field_transfer_enabled: true,
         cumulative_n_delivered: 0.0,
         cumulative_f_delivered: 0.0,
@@ -629,6 +658,7 @@ fn new_snapshot(seed: u64) -> RuntimeSnapshot {
         cumulative_assimilation_f_processed: 0.0,
         cumulative_assimilation_a_produced: 0.0,
         cumulative_assimilation_m_grown: 0.0,
+        cumulative_assimilation_m_incorporated: 0.0,
         cumulative_n_world_loss: 0.0,
         cumulative_f_world_loss: 0.0,
         cumulative_fissions: 0,
@@ -658,6 +688,7 @@ fn new_routeb_snapshot(
     seed: u64,
     transfer_enabled: bool,
     assimilation_enabled: bool,
+    anabolic_incorporation_enabled: bool,
 ) -> RuntimeSnapshot {
     let mut population = initial_population(seed);
     let mut field = routeb_field(&population.individuals[0].mesh);
@@ -672,12 +703,14 @@ fn new_routeb_snapshot(
         cumulative_assimilation_f_processed,
         cumulative_assimilation_a_produced,
         cumulative_assimilation_m_grown,
+        cumulative_assimilation_m_incorporated,
     ) = develop_founder_routeb(
         &mut population.individuals[0],
         &mut field,
         transfer_enabled,
         None,
         assimilation_enabled,
+        anabolic_incorporation_enabled,
     );
     population.individuals[0].mesh.exterior.n = 0.0;
     population.individuals[0].mesh.exterior.f = 0.0;
@@ -699,6 +732,7 @@ fn new_routeb_snapshot(
         spatial_field: Some(field),
         reserve_parameters: None,
         assimilation_enabled,
+        anabolic_incorporation_enabled,
         spatial_field_transfer_enabled: transfer_enabled,
         cumulative_n_delivered,
         cumulative_f_delivered,
@@ -706,6 +740,7 @@ fn new_routeb_snapshot(
         cumulative_assimilation_f_processed,
         cumulative_assimilation_a_produced,
         cumulative_assimilation_m_grown,
+        cumulative_assimilation_m_incorporated,
         cumulative_n_world_loss: cumulative_n_delivered,
         cumulative_f_world_loss: cumulative_f_delivered,
         cumulative_fissions: 0,
@@ -752,11 +787,13 @@ fn new_routec_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         _cumulative_assimilation_f_processed,
         _cumulative_assimilation_a_produced,
         _cumulative_assimilation_m_grown,
+        _cumulative_assimilation_m_incorporated,
     ) = develop_founder_routeb(
         &mut population.individuals[0],
         &mut field,
         transfer_enabled,
         Some(&reserve),
+        false,
         false,
     );
     population.individuals[0].mesh.exterior.n = 0.0;
@@ -777,6 +814,7 @@ fn new_routec_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         spatial_field: Some(field),
         reserve_parameters: Some(reserve),
         assimilation_enabled: false,
+        anabolic_incorporation_enabled: false,
         spatial_field_transfer_enabled: transfer_enabled,
         cumulative_n_delivered,
         cumulative_f_delivered,
@@ -784,6 +822,7 @@ fn new_routec_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         cumulative_assimilation_f_processed: 0.0,
         cumulative_assimilation_a_produced: 0.0,
         cumulative_assimilation_m_grown: 0.0,
+        cumulative_assimilation_m_incorporated: 0.0,
         cumulative_n_world_loss: cumulative_n_delivered,
         cumulative_f_world_loss: cumulative_f_delivered,
         cumulative_fissions: 0,
@@ -985,10 +1024,12 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
         enable_growth: true,
     };
     let assimilation_enabled = snapshot.assimilation_enabled;
+    let anabolic_incorporation_enabled = snapshot.anabolic_incorporation_enabled;
     let mut assimilation_n_processed = 0.0;
     let mut assimilation_f_processed = 0.0;
     let mut assimilation_a_produced = 0.0;
     let mut assimilation_m_grown = 0.0;
+    let mut assimilation_m_incorporated = 0.0;
     let mut fissions = 0;
     for &index in &active_indices {
         let individual = &mut snapshot.population.individuals[index];
@@ -1018,6 +1059,15 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
             assimilation_n_processed += processed.n_processed;
             assimilation_f_processed += processed.f_processed;
             assimilation_a_produced += processed.assimilation_a_produced;
+            if anabolic_incorporation_enabled {
+                let incorporated = environmental_assimilation::incorporate_into_structure(
+                    &mut individual.mesh,
+                    &reaction,
+                    dt,
+                    processed.assimilation_a_produced,
+                );
+                assimilation_m_incorporated += incorporated.m_produced;
+            }
         }
         let mass_before_growth = individual.mesh.total_structural_mass();
         let _ = growth_step(&mut individual.mesh, &reaction, &growth, dt);
@@ -1127,6 +1177,7 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
     snapshot.cumulative_assimilation_f_processed += assimilation_f_processed;
     snapshot.cumulative_assimilation_a_produced += assimilation_a_produced;
     snapshot.cumulative_assimilation_m_grown += assimilation_m_grown;
+    snapshot.cumulative_assimilation_m_incorporated += assimilation_m_incorporated;
     for (individual, state) in newborns {
         snapshot.population.individuals.push(individual);
         snapshot.polarity_states.push(Some(state));
@@ -1184,6 +1235,7 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
         cumulative_assimilation_f_processed: snapshot.cumulative_assimilation_f_processed,
         cumulative_assimilation_a_produced: snapshot.cumulative_assimilation_a_produced,
         cumulative_assimilation_m_grown: snapshot.cumulative_assimilation_m_grown,
+        cumulative_assimilation_m_incorporated: snapshot.cumulative_assimilation_m_incorporated,
         world_n_conservation_error: snapshot.cumulative_n_delivered
             - snapshot.cumulative_n_world_loss,
         world_f_conservation_error: snapshot.cumulative_f_delivered
@@ -1243,11 +1295,16 @@ fn main() {
         .map(load_snapshot)
         .unwrap_or_else(|| {
             if config.assimilation_material_flow {
-                new_routeb_snapshot(config.seed, !config.transfer_disabled, true)
+                new_routeb_snapshot(
+                    config.seed,
+                    !config.transfer_disabled,
+                    true,
+                    config.anabolic_incorporation,
+                )
             } else if config.routec_reserve_growth {
                 new_routec_snapshot(config.seed, !config.transfer_disabled)
             } else if config.routeb_spatial_field {
-                new_routeb_snapshot(config.seed, !config.transfer_disabled, false)
+                new_routeb_snapshot(config.seed, !config.transfer_disabled, false, false)
             } else {
                 new_snapshot(config.seed)
             }

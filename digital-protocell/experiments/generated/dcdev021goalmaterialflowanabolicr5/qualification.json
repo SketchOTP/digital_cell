@@ -1,0 +1,11 @@
+{
+  "classification": "GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN",
+  "environmental_transfer": "VERIFIED_IN_ASSAY",
+  "environmental_processing": "VERIFIED_IN_ASSAY",
+  "anabolic_structural_incorporation": "VERIFIED_IN_ASSAY",
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "next_execution_started": false,
+  "architect_acceptance": "PENDING",
+  "stop_condition": "replan organism-world material flow; no adjacent local active-work formula search"
+}

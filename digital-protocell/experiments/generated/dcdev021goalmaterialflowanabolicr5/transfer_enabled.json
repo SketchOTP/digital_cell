@@ -1,0 +1,16 @@
+{
+  "steps": 1101,
+  "resource_transfer_enabled": true,
+  "cumulative_n_delivered": 293.72721354247705,
+  "cumulative_f_delivered": 293.72721354247705,
+  "cumulative_n_processed": 288.805849005124,
+  "cumulative_f_processed": 288.805849005124,
+  "cumulative_a_produced": 288.805849005124,
+  "cumulative_m_incorporated": 62.0154669623638,
+  "cumulative_m_grown_existing": 24.022066651775646,
+  "fission_events": 0,
+  "first_transfer_step": 1,
+  "world_n_conservation_error": 0.0,
+  "world_f_conservation_error": 0.0,
+  "resource_causal_reproduction": "NOT_ESTABLISHED"
+}

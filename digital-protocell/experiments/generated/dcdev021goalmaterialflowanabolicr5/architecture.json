@@ -1,0 +1,17 @@
+{
+  "schema": "goal_material_flow_environmental_anabolic_incorporation_v1",
+  "order": [
+    "finite environmental N/F exchange",
+    "retain organism-owned assimilation N/F",
+    "existing activation law",
+    "existing A pool",
+    "existing structural_build_flux_with_a using only newly produced environmental A budget",
+    "ordinary frozen growth",
+    "mechanics/remesh/topology/fission"
+  ],
+  "new_rate_or_gain": false,
+  "new_threshold": false,
+  "fission_gate_changed": false,
+  "production_default_changed": false,
+  "observer_ledger_as_behavior_input": false
+}

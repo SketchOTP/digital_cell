@@ -1,0 +1,9 @@
+{
+  "world_n_conservation_error": 0.0,
+  "world_f_conservation_error": 0.0,
+  "environmental_n_delivery_to_processing": "tracked",
+  "environmental_f_delivery_to_processing": "tracked",
+  "anabolic_a_to_structural_build": "existing structural yield and flux",
+  "unexplained_world_or_environmental_sink": false,
+  "fission_gate_unchanged": true
+}

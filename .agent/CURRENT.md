@@ -236,3 +236,19 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Exact-head Linux workflow: `33969482511` - `PASS`.
 - Final independently downloaded artifact ZIP digest: `sha256:af2b98f0f468417fa105fabd42ed553079d67182d5823e27596875cdbfd52f00`.
 - The CLOSURE-014 classification and bounded-negative result are unchanged.
+
+## Goal-mode anabolic incorporation composition R5
+
+- Active branch: `m2/dc-dev-021-goal-material-flow-anabolic-incorporation`.
+- Largest unresolved gap: finite environmental material has not produced
+  resource-causal fission before reproductive divergence.
+- Composition: finite environmental N/F → existing activation → existing A
+  pool → existing structural-build flux, opt-in only.
+- Local result: active processing and structural incorporation are nonzero with
+  exact world N/F conservation, but fission remains zero; transfer-disabled
+  has zero environmental processing and incorporation.
+- Status: `VALIDATING`; classification:
+  `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`.
+- Stop condition: do not reopen CLOSURE-006 through CLOSURE-014 or search
+  another local active-work/allocation variant. Replan organism/world
+  material flow before another runtime execution.

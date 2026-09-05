@@ -1,0 +1,9 @@
+{
+  "starting_head": "cecdd4f4a41c3c538d7040dec450337ebd222bf1",
+  "starting_branch": "m2/dc-dev-021-goal-material-flow-replan-r2",
+  "result_branch": "m2/dc-dev-021-goal-material-flow-anabolic-incorporation",
+  "scientific_runtime_source_changed": true,
+  "changes_are_opt_in": true,
+  "independent_architect_acceptance": "PENDING",
+  "self_status": "GOAL_AGENT_PROVISIONAL_ONLY"
+}

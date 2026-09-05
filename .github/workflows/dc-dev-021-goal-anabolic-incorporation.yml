@@ -1,0 +1,127 @@
+name: DC-DEV-021 goal environmental anabolic incorporation
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-goal-material-flow-anabolic-incorporation
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  anabolic-incorporation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify exact authority and bounded diff
+        run: |
+          set -euo pipefail
+          start=cecdd4f4a41c3c538d7040dec450337ebd222bf1
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - "$start" <<'PY'
+          import subprocess
+          import sys
+
+          start = sys.argv[1]
+          allowed = {
+              '.github/workflows/dc-dev-021-goal-anabolic-incorporation.yml',
+              'digital-protocell/crates/chemistry-core/src/environmental_assimilation.rs',
+              'digital-protocell/crates/m2-lifeform-runtime/src/main.rs',
+              'docs/goal-environmental-anabolic-incorporation-r5.md',
+              '.agent/CURRENT.md',
+              '.agent/OUTCOMES.md',
+              '.agent/RECORD.md',
+          }
+          changed = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{start}..HEAD'], text=True
+          ).splitlines())
+          prefix = 'digital-protocell/experiments/generated/dcdev021goalmaterialflowanabolicr5/'
+          unexpected = {path for path in changed if path not in allowed and not path.startswith(prefix)}
+          assert not unexpected, sorted(unexpected)
+          assert not any(path.startswith('digital-protocell/crates/phase1-certifier/src/') for path in changed)
+          assert not any(path.startswith('digital-protocell/crates/evolution-harness/src/') for path in changed)
+          PY
+
+      - name: Build and run focused closure tests
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked --lib -p chemistry-core \
+            environmental_assimilation::tests::finite_substrate_processing_closes_n_f_transfer \
+            -- --exact --nocapture
+          cargo +1.89.0 test --locked -p m2-lifeform-runtime -- --nocapture
+
+      - name: Run transfer-enabled and transfer-disabled controls
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run --locked -q --release -p m2-lifeform-runtime -- \
+            --assimilation-anabolic-incorporation --steps 1101 --seed 1 \
+            --report "$RUNNER_TEMP/active.json"
+          cargo +1.89.0 run --locked -q --release -p m2-lifeform-runtime -- \
+            --assimilation-anabolic-incorporation --transfer-disabled --steps 101 --seed 1 \
+            --report "$RUNNER_TEMP/disabled.json"
+
+      - name: Validate provisional negative and compact evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path('experiments/generated/dcdev021goalmaterialflowanabolicr5')
+          for path in root.glob('*.json'):
+              json.loads(path.read_text())
+          active = json.loads((Path(os.environ['RUNNER_TEMP']) / 'active.json').read_text())
+          disabled = json.loads((Path(os.environ['RUNNER_TEMP']) / 'disabled.json').read_text())
+          assert active['step'] == 1101
+          assert disabled['step'] == 101
+          assert active['resource_transfer_enabled'] is True
+          assert disabled['resource_transfer_enabled'] is False
+          assert active['cumulative_n_delivered'] > 0.0
+          assert active['cumulative_f_delivered'] > 0.0
+          assert active['cumulative_assimilation_n_processed'] > 0.0
+          assert active['cumulative_assimilation_f_processed'] > 0.0
+          assert active['cumulative_assimilation_m_incorporated'] > 0.0
+          assert abs(active['world_n_conservation_error']) <= 1e-12
+          assert abs(active['world_f_conservation_error']) <= 1e-12
+          assert disabled['cumulative_n_delivered'] == 0.0
+          assert disabled['cumulative_f_delivered'] == 0.0
+          assert disabled['cumulative_assimilation_n_processed'] == 0.0
+          assert disabled['cumulative_assimilation_f_processed'] == 0.0
+          assert disabled['cumulative_assimilation_m_incorporated'] == 0.0
+          assert active['fission_events'] == 0
+          assert disabled['fission_events'] == 0
+          assert active['resource_causal_reproduction'] == 'NOT_ESTABLISHED'
+          print('environmental anabolic incorporation provisional negative validation passed')
+          PY
+
+      - name: Hash and upload evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021goalmaterialflowanabolicr5 \
+            -type f -print0 | sort -z | xargs -0 sha256sum \
+            > "$RUNNER_TEMP/environmental-anabolic-incorporation.sha256"
+
+      - name: Upload evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dc-dev-021-goal-anabolic-incorporation-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021goalmaterialflowanabolicr5/
+            ${{ runner.temp }}/environmental-anabolic-incorporation.sha256

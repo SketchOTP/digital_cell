@@ -1,0 +1,13 @@
+{
+  "steps": 101,
+  "resource_transfer_enabled": false,
+  "cumulative_n_delivered": 0.0,
+  "cumulative_f_delivered": 0.0,
+  "cumulative_n_processed": 0.0,
+  "cumulative_f_processed": 0.0,
+  "cumulative_a_produced": 0.0,
+  "cumulative_m_incorporated": 0.0,
+  "fission_events": 0,
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "ordinary_founder_growth_not_environmental": true
+}

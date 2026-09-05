@@ -10,7 +10,7 @@
 //! existing structural yield and strain-local incorporation law.
 
 use crate::material_mesh::MaterialMesh;
-use crate::mesh_reactions::{q_catalyst, ReactionParams};
+use crate::mesh_reactions::{q_catalyst, structural_build_flux_with_a, ReactionParams};
 use serde::{Deserialize, Serialize};
 
 pub const EQUATION_VERSION_ENVIRONMENTAL_ASSIMILATION: &str =
@@ -29,6 +29,81 @@ pub struct AssimilationLedger {
     pub assimilation_a_produced: f64,
     pub w_from_processing: f64,
     pub closure_residual: f64,
+}
+
+/// Observer/accounting ledger for the opt-in environmental anabolic phase.
+///
+/// This phase reuses the already-qualified structural-build flux and yield.
+/// It is deliberately separate from `GrowthLedger`: environmental assimilate
+/// is incorporated through the existing A-funded structural synthesis law
+/// after the ordinary reaction phase, while the frozen surplus-growth law
+/// remains unchanged.  No new rate, yield, threshold, or fission criterion is
+/// introduced.
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct AnabolicIncorporationLedger {
+    pub a_available_before: f64,
+    pub a_consumed: f64,
+    pub m_produced: f64,
+    pub w_from_yield: f64,
+    pub closure_residual: f64,
+}
+
+/// Consume environmental-assimilation-produced A through the existing local
+/// structural-build law.  This is an opt-in material-flow composition only;
+/// production chemistry and the ordinary growth step do not call it.
+pub fn incorporate_into_structure(
+    mesh: &mut MaterialMesh,
+    react: &ReactionParams,
+    dt: f64,
+    a_budget: f64,
+) -> AnabolicIncorporationLedger {
+    let mut led = AnabolicIncorporationLedger::default();
+    if !mesh.can_advance_physics() || dt <= 0.0 {
+        return led;
+    }
+    let area = mesh.area().max(1e-6);
+    let a_before = mesh.interior.a.max(0.0) * area;
+    let mut remaining_budget = a_budget.max(0.0).min(a_before);
+    led.a_available_before = remaining_budget;
+
+    for i in 0..mesh.n() {
+        if mesh.edges[i].ruptured {
+            continue;
+        }
+        let demand = structural_build_flux_with_a(mesh, i, react, mesh.interior.a.max(0.0))
+            * dt
+            / react.yield_a_to_m.max(1e-15);
+        let take = demand.min(remaining_budget).max(0.0);
+        if take <= 0.0 {
+            continue;
+        }
+        let dm = take * react.yield_a_to_m.max(0.0);
+        mesh.interior.a = (mesh.interior.a - take / area).max(0.0);
+        mesh.edges[i].m += dm;
+        if mesh.is_maturation_coupled() {
+            mesh.edges[i].m_young += dm;
+        }
+        let w = if matches!(
+            react.mesh_schema,
+            crate::mesh_reactions::MeshChemistrySchema::ConservativeV2
+                | crate::mesh_reactions::MeshChemistrySchema::ConservativeV3
+        ) || mesh.uses_observer_only_death()
+        {
+            (take - dm).max(0.0)
+        } else {
+            take
+        };
+        mesh.interior.w += w / area;
+        led.a_consumed += take;
+        led.m_produced += dm;
+        led.w_from_yield += w;
+        remaining_budget = (remaining_budget - take).max(0.0);
+    }
+
+    let a_after = mesh.interior.a.max(0.0) * area;
+    led.closure_residual =
+        (a_before - led.a_consumed - a_after).abs();
+    led
 }
 
 /// Add finite environmental delivery to the organism-owned assimilation

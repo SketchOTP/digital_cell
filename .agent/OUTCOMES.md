@@ -1960,6 +1960,25 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Classification: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_REPLAN`.
 - Independent Architect acceptance: `PENDING`.
 
+## D-20260905-dcdev021-goal-environmental-anabolic-incorporation-r5 - COMPLETE PROVISIONAL NEGATIVE REPLAN
+
+- Outcome ID: `OUT-DCDEV021-GOAL-ENVIRONMENTAL-ANABOLIC-INCORPORATION-R5`.
+- Starting head: `cecdd4f4a41c3c538d7040dec450337ebd222bf1`.
+- Result branch: `m2/dc-dev-021-goal-material-flow-anabolic-incorporation`.
+- Scope: opt-in composition of finite environmental assimilation, the existing
+  activation law, and the existing structural-build law using only the newly
+  processed environmental A budget.
+- Local result: active replay delivered and processed `293.72721354247705`
+  and `288.805849005124` N/F respectively, incorporated
+  `62.0154669623638` structural mass, conserved world N/F exactly, and
+  produced zero fissions. The transfer-disabled control produced zero
+  environmental processing/incorporation and zero fissions.
+- Classification: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`.
+- Independent Architect acceptance: `PENDING`.
+- Boundary: the distinct anabolic bridge does not close resource-causal
+  reproduction. Do not change the `1.35 * birth_mass` gate, extend the horizon
+  opportunistically, or reopen the exhausted local active-work family.
+
 ## D-20260905-dcdev021-goal-environmental-assimilation-composition-r4-correction - PROVISIONAL NEGATIVE REPLAN
 
 - Outcome ID: `OUT-DCDEV021-GOAL-ENVIRONMENTAL-ASSIMILATION-COMPOSITION-R4-CORRECTION`.

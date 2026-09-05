@@ -1,0 +1,10 @@
+{
+  "directive": "GOAL-MODE-ENVIRONMENTAL-ANABOLIC-INCORPORATION-R5",
+  "status": "GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN",
+  "scope": "finite environmental transfer through existing activation and structural-build laws",
+  "steps_enabled": 1101,
+  "steps_disabled": 101,
+  "fission_gate": "1.35 * birth_mass",
+  "parameter_search": false,
+  "local_active_work_family_reopened": false
+}

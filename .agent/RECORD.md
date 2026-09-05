@@ -983,3 +983,24 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Result: finite environmental N/F transfer and processing are conserved, but the unchanged existing growth law does not convert the processed A pool into resource-causal fission; active fission events remain zero.
 - Boundary: this is a provisional goal-agent negative/replan, not Architect acceptance. No further CLOSURE-006 through CLOSURE-014 local formula search is authorized.
 - Next step: architect a materially different organism/world material-flow composition before another runtime execution.
+
+## DEC-DCDEV021-GOAL-ENVIRONMENTAL-ANABOLIC-INCORPORATION-R5
+
+- Date: `2026-09-05`
+- Status: `PROVISIONAL_REPLAN`
+- Authority: goal-agent composition branch starts at `cecdd4f4a41c3c538d7040dec450337ebd222bf1`.
+- Decision: test a distinct finite environmental material-flow bridge that
+  routes newly processed environmental activation through the already-existing
+  structural-build law, without changing the fission gate or production
+  defaults.
+- Result: transfer-enabled local release replay delivered
+  `293.72721354247705` N/F, processed `288.805849005124` each, incorporated
+  `62.0154669623638` structural mass, conserved world N/F exactly, and
+  produced zero fissions. The matched disabled arm delivered, processed, and
+  incorporated zero environmental material and produced zero fissions.
+- Classification: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`.
+- Boundary: environmental processing and anabolic incorporation are verified
+  in this assay, but resource-causal reproduction remains unestablished. This
+  does not authorize another neighboring local formula search; the next work
+  must replan organism/world material flow from the end-goal causal contract.
+- Independent Architect acceptance: `PENDING`.
