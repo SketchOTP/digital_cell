@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-05T04:20:00-04:00`
+- Last updated: `2026-09-05T04:55:00-04:00`
 
 ## Active state after adoption
 
@@ -14,7 +14,7 @@
 - Acceptance: `ARCHITECT_ACCEPTED`
 - Current phase: `CLOSURE-010 combined local-contact and post-ingestive material work reproduction qualification`
 - Expected or actual touched areas: `isolated CLOSURE-010 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `No successor execution started; CLOSURE-010 is complete and this adopted state is awaiting reset to IDLE after exact-head authority before the next authorized capability cycle`
+- Immediate next action: `No successor execution started; CLOSURE-010 is complete and this adopted state is awaiting reset to IDLE before the next authorized capability cycle`
 
 ## Temporary task-relevant facts
 

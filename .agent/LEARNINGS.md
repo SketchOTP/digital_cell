@@ -34,7 +34,7 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Date: 2026-09-05
 - Fact or lesson: Exact local contact quiescence preserves a lawful contact-to-regulator path and saves `223.379419421661` A in the paired finite ecology, improving delivered N/F from `1146.3487440851763` to `1193.9493565902608` per species over the regulator-null control. The higher shuffled-contact arm (`1301.2827685737038`) means contact-specific reproductive causality is not established, and no candidate/null fission occurred.
 - Evidence location: `digital-protocell/examples/dcdev021_m2_closure006.rs`, `digital-protocell/examples/dcdev021_m2_closure006_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2closure006/`, and `.github/workflows/dc-dev-021-m2-closure006.yml`.
-- Confidence: PROVISIONAL
+- Confidence: VERIFIED
 - Scope: DC-DEV-021 M2 CLOSURE-006 local resource-contact quiescence reproductive ecology and heredity.
 - Supersedes learning: none
 
@@ -713,6 +713,6 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Date: 2026-09-05
 - Fact or lesson: The exact assay-local composition `motor_i = raw_i * (1-S) * (1-regulator_i)`, with `S=(N+F)/(N+F+A+W)` and the existing physical local contact regulator, improves finite N/F delivery over no feedback in Daughter A (`127.41380331204975`), Daughter B (`1212.4407129655885`), and paired (`1212.4407129655865`) scopes, while reducing A spending. Candidate fission remains zero in every scope; Daughter B and paired motor-off controls fission once. This is a bounded acquisition/work benefit, not resource-causal reproduction.
 - Evidence location: `digital-protocell/examples/dcdev021_m2_closure010.rs`, `digital-protocell/examples/dcdev021_m2_closure010_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2closure010/`, and `.github/workflows/dc-dev-021-m2-closure010.yml`.
-- Confidence: PROVISIONAL
+- Confidence: VERIFIED
 - Scope: DC-DEV-021 M2 CLOSURE-010 combined local contact and post-ingestive material work reproduction qualification.
 - Supersedes learning: L-DCDEV021-M2-CLOSURE009-003

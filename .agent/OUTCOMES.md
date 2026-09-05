@@ -35,10 +35,11 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Changed areas: additive CLOSURE-010 assay/example, compact evidence, scoped workflow, Cargo example registration, and append-only governance only; no frozen scientific runtime, uptake/metabolism/growth/fission source, M1 provenance, restart boundary, or PR #44 modification.
 - Validation:
   - Local release build/run, fixed controls, zero-resource specificity, world N/F closure, A→W closure, and governance validation - PASSED
-  - Exact-head Linux CI and artifact digest - PENDING
-  - Architect acceptance - PENDING exact-head authority
-- Remaining risks: exact-head Linux validation and artifact digest remain to be independently verified; autonomous acquisition, resource-causal reproduction, descendant continuity, heritable ecological phenotype, environment-dependent evolution, and standalone-lifeform completion remain unestablished.
-- Blockers: exact-head validation, artifact verification, and Architect acceptance only.
+  - Exact-head Linux workflow `33953687653` on `a8fba1b80fc2f62bfce4001f872835f8ca6d1658` - PASSED
+  - Independently downloaded artifact ZIP digest `sha256:ddab2cd037af57c351a49723a33e186727de71c345be6f60d6bf18d16aeb88bb` - PASSED
+  - Architect acceptance - COMPLETE for this bounded result
+- Remaining risks: autonomous acquisition, resource-causal reproduction, descendant continuity, heritable ecological phenotype, environment-dependent evolution, and standalone-lifeform completion remain unestablished.
+- Blockers: none for CLOSURE-010; the next capability cycle requires a separately authorized directive.
 - Follow-up directive: none
 
 ## D-20260905-dcdev021-m2-closure006-contact-quiescence - COMPLETE

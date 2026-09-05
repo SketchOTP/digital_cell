@@ -785,3 +785,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Affected areas: additive CLOSURE-010 assay, evidence, workflow, and governance only; frozen scientific runtime, M1 provenance, fission source, restart boundary, and PR #44 remain unchanged.
 - Decision or event: CLOSURE-010 completed its bounded local assay from exact head `011c3b5c7404ca453cb1546eee6271f1bf3af538` on branch `m2/dc-dev-021-m2-closure010-contact-material-reproduction`; classification is `M2_POST_INGESTIVE_COMBINED_MATERIAL_CONTACT_WORK_REPRODUCTION_NOT_ESTABLISHED`.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE009-DIRECT-POST-INGESTIVE-MOTOR-ALLOCATION-FINAL-HEAD-REVALIDATION
+
+## DEC-DCDEV021-M2-CLOSURE010-COMBINED-LOCAL-CONTACT-MATERIAL-WORK-FINAL
+
+- Date: 2026-09-05
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE010-COMBINED-LOCAL-CONTACT-MATERIAL-WORK-FINAL
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33953687653` passed on result head `a8fba1b80fc2f62bfce4001f872835f8ca6d1658`; independently downloaded artifact ZIP digest is `sha256:ddab2cd037af57c351a49723a33e186727de71c345be6f60d6bf18d16aeb88bb`; CLOSURE-010 is accepted as `M2_POST_INGESTIVE_COMBINED_MATERIAL_CONTACT_WORK_REPRODUCTION_NOT_ESTABLISHED`.
+- Rationale: The exact assay-local composition improves finite N/F delivery and lowers A spending, but no candidate scope fissions. Daughter B and paired motor-off controls fission once, so combined local contact/material work remains a bounded acquisition/work benefit rather than resource-causal reproduction.
+- Affected areas: additive CLOSURE-010 assay/example, compact evidence, workflow, generated qualification metadata, and governance only; no frozen scientific runtime, uptake/metabolism/growth/fission source, M1 provenance, restart boundary, or PR #44 modification.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE010-COMBINED-LOCAL-CONTACT-MATERIAL-WORK
