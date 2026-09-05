@@ -664,6 +664,6 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Date: 2026-09-05
 - Fact or lesson: In the assay-only CLOSURE-007 composition, the existing internal N/F/A/W material signal `(N+F)/(N+F+A+W)` drives the already-qualified local regulator composition without contact or observer-ledger input. Candidate delivery is `1230.045257118789` N/F versus `1146.3487440851763` for the no-material-feedback control, and candidate A spending is lower (`1405.9708515165707` versus `2684.6934579129`), but neither arm fissions within 12,000 steps. The result is a bounded acquisition/work benefit, not resource-causal reproduction or autonomous acquisition.
 - Evidence location: `digital-protocell/examples/dcdev021_m2_closure007.rs`, `digital-protocell/examples/dcdev021_m2_closure007_impl.rs`, `digital-protocell/experiments/generated/dcdev021m2closure007/`, and `.github/workflows/dc-dev-021-m2-closure007.yml`.
-- Confidence: PROVISIONAL
+- Confidence: VERIFIED
 - Scope: DC-DEV-021 M2 CLOSURE-007 post-ingestive material-to-work requalification.
 - Supersedes learning: none

@@ -10,11 +10,11 @@
 - Local directive ID: `D-20260905-dcdev021-m2-closure007-post-ingestive-material-work`
 - External directive ID: `DC-DEV-021-M2-CLOSURE-007-POST-INGESTIVE-MATERIAL-TO-WORK-REQUALIFICATION-001`
 - Objective: Test whether the existing internal N/F/A/W material-energy state can drive the existing local regulator composition, assay-only, to preserve acquisition and materially advance the reproductive boundary without adding contact sensing, a new parameter, or production behavior.
-- Current status: `VALIDATING`
-- Acceptance: `PENDING_ARCHITECT_REVIEW`
+- Current status: `COMPLETE`
+- Acceptance: `ARCHITECT_ACCEPTED`
 - Current phase: `CLOSURE-007 post-ingestive material-to-work composition`
 - Expected or actual touched areas: `isolated CLOSURE-007 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `Commit, push, run exact-head Linux CI, independently hash the uploaded artifact, then reconcile Notion and Architect acceptance`
+- Immediate next action: `Awaiting reset for the next end-goal capability cycle; no CLOSURE-007 tuning or successor execution is implied by this bounded negative`
 
 ## Temporary task-relevant facts
 
@@ -69,7 +69,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `CLOSURE-003-R1 exact-head Linux workflow and artifact verification`
+- Command or check: `CLOSURE-007 exact-head Linux workflow 33946990773 and artifact verification`
 - Result: `PASSED`
 
 ## Risks
