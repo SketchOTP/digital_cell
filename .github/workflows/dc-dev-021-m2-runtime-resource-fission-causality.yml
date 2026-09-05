@@ -1,0 +1,125 @@
+name: DC-DEV-021 M2 resource-to-fission causality audit
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-runtime-developmental-polarity-embodiment
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify exact authority and bounded diff
+        run: |
+          set -euo pipefail
+          start=152ee9de642eb47e4080713fcbabbd1942237213
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - "$start" <<'PY'
+          import subprocess
+          import sys
+
+          start = sys.argv[1]
+          allowed = {
+              '.agent/RECORD.md',
+              '.agent/OUTCOMES.md',
+              '.github/workflows/dc-dev-021-m2-runtime-resource-fission-causality.yml',
+              'digital-protocell/crates/m2-lifeform-runtime/src/main.rs',
+          }
+          changed = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{start}..HEAD'], text=True
+          ).splitlines())
+          prefix = 'digital-protocell/experiments/generated/m2-lifeform-runtime-v3-resource-fission-causality/'
+          unexpected = {path for path in changed if path not in allowed and not path.startswith(prefix)}
+          assert not unexpected, sorted(unexpected)
+          forbidden = (
+              'digital-protocell/crates/chemistry-core/src/',
+              'digital-protocell/crates/regulatory-core/src/',
+              'digital-protocell/crates/phase1-certifier/src/',
+              'digital-protocell/crates/evolution-harness/src/',
+          )
+          assert not any(path.startswith(forbidden) for path in changed)
+          PY
+
+      - name: Build and test runtime
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test --locked -p m2-lifeform-runtime
+
+      - name: Run active and transfer-disabled controls
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run --locked -q --release -p m2-lifeform-runtime -- \
+            --steps 1500 --seed 2 --report "$RUNNER_TEMP/active.json"
+          cargo +1.89.0 run --locked -q --release -p m2-lifeform-runtime -- \
+            --steps 1500 --seed 2 --transfer-disabled --report "$RUNNER_TEMP/disabled.json"
+
+      - name: Validate causal comparison and compact evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path('experiments/generated/m2-lifeform-runtime-v3-resource-fission-causality')
+          manifest = json.loads((root / 'artifact_manifest.json').read_text())
+          for item in manifest['files']:
+              assert (root / item).is_file(), item
+          for path in root.glob('*.json'):
+              json.loads(path.read_text())
+
+          temp = Path(os.environ['RUNNER_TEMP'])
+          active = json.loads((temp / 'active.json').read_text())
+          disabled = json.loads((temp / 'disabled.json').read_text())
+          for report in (active, disabled):
+              assert report['step'] == 1500
+              assert report['motor_failures'] == 0
+              assert abs(report['world_n_conservation_error']) <= 1e-12
+              assert abs(report['world_f_conservation_error']) <= 1e-12
+              assert report['resource_causal_reproduction'] == 'NOT_ESTABLISHED'
+              assert report['autonomous_resource_acquisition'] == 'NOT_ESTABLISHED'
+              assert report['first_fission_step'] == 25
+              assert report['fission_observations'][0]['parent_n_delivered'] == 0.0
+              assert report['fission_observations'][0]['parent_f_delivered'] == 0.0
+          assert active['resource_transfer_enabled'] is True
+          assert disabled['resource_transfer_enabled'] is False
+          assert active['first_transfer_step'] == 256
+          assert disabled['first_transfer_step'] is None
+          assert active['first_fission_before_first_transfer'] is True
+          assert disabled['first_fission_before_first_transfer'] is True
+          assert active['fission_events'] == disabled['fission_events'] == 1
+          print('resource-to-fission causality audit validation passed')
+          PY
+
+      - name: Hash and upload audit evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/m2-lifeform-runtime-v3-resource-fission-causality \
+            -type f -print0 | sort -z | xargs -0 sha256sum \
+            > "$RUNNER_TEMP/m2-lifeform-runtime-v3-resource-fission-causality.sha256"
+
+      - name: Upload audit evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dc-dev-021-m2-resource-fission-causality-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/m2-lifeform-runtime-v3-resource-fission-causality/
+            ${{ runner.temp }}/m2-lifeform-runtime-v3-resource-fission-causality.sha256

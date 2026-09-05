@@ -1,0 +1,11 @@
+{
+  "schema": "dcdev021_m2_resource_to_fission_causality_audit_v1",
+  "directive": "DC-DEV-021-M2-RESOURCE-TO-FISSION-CAUSALITY-AUDIT-001",
+  "runtime_schema": "digital_cell_m2_checkpointable_lifeform_runtime_v3_developmental_polarity",
+  "starting_head": "152ee9de642eb47e4080713fcbabbd1942237213",
+  "seed": 2,
+  "horizon": 1500,
+  "arms": ["ACTIVE_TRANSFER", "TRANSFER_DISABLED"],
+  "purpose": "Observer-only comparison of resource delivery before physical fission.",
+  "scientific_boundary": "No production growth/fission law, chemistry, resource law, or motor law was changed."
+}

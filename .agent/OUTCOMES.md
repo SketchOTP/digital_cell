@@ -1911,3 +1911,13 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Checkpoint validation: corrected final-source replay of `50 + 50` steps reaches step `100`, preserves topology `192`, and reports zero world N/F conservation residuals.
 - Classification: `M2_DEVELOPMENTAL_POLARITY_RUNTIME_INTEGRATION_BOUNDED_REPRODUCTION_NOT_ESTABLISHED`.
 - Boundary: this does not establish autonomous resource acquisition, resource-causal reproduction, heritable ecological variation, evolution, learning, persistent individuality, unattended persistence, or standalone Linux completion. Exact-head CI and artifact digest are pending.
+
+## D-20260905-dcdev021-m2-runtime-resource-fission-causality-audit - VALIDATION PENDING
+
+- Outcome ID: `OUT-DCDEV021-M2-RUNTIME-RESOURCE-FISSION-CAUSALITY-AUDIT`
+- External directive: `DC-DEV-021-M2-RESOURCE-TO-FISSION-CAUSALITY-AUDIT-001`
+- Authority: runtime starting head `152ee9de642eb47e4080713fcbabbd1942237213`.
+- Scope: exact seed-2, 1500-step active-transfer replay versus transfer-disabled control; observer-only per-lineage delivery and fission timing.
+- Result: both arms fission once at step `25`; active first transfer is step `256`; disabled first transfer is absent; the parent received zero N/F before fission in both arms.
+- Classification: `M2_RESOURCE_CAUSAL_FISSION_NOT_ESTABLISHED`.
+- Boundary: bounded negative only. No scientific chemistry, growth, fission, resource, motor, M1, restart, or PR #44 behavior is claimed changed. Architect acceptance, exact-head CI, and artifact digest are pending.

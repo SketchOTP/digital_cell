@@ -1,0 +1,9 @@
+{
+  "starting_head": "152ee9de642eb47e4080713fcbabbd1942237213",
+  "branch": "m2/dc-dev-021-runtime-developmental-polarity-embodiment",
+  "source_change_scope": "runtime observer metadata and assay control only",
+  "m1": "CLOSED_FROZEN",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "resource_causal_reproduction_before_assay": "NOT_ESTABLISHED",
+  "pr_44": {"state": "OPEN", "draft": true, "merged": false, "modified": false}
+}

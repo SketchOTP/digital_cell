@@ -1,0 +1,12 @@
+{
+  "schema": "dcdev021_m2_resource_to_fission_causality_artifact_manifest_v1",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "active_seed2.json",
+    "transfer_disabled_seed2.json",
+    "causal_comparison.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ]
+}

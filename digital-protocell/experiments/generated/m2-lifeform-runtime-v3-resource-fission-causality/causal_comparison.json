@@ -1,0 +1,13 @@
+{
+  "first_fission_same_step": true,
+  "active_first_fission_step": 25,
+  "disabled_first_fission_step": 25,
+  "active_transfer_before_fission": false,
+  "disabled_transfer_before_fission": false,
+  "parent_received_n_before_fission": 0.0,
+  "parent_received_f_before_fission": 0.0,
+  "active_transfer_after_fission": true,
+  "disabled_transfer_after_fission": false,
+  "interpretation": "The observed seed-2 fission is not resource-causal in this bounded replay: it precedes first transfer and also occurs with transfer disabled.",
+  "qualification_boundary": "This is a bounded control result, not a general proof about all life histories or future ecologies."
+}

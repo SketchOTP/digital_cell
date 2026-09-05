@@ -12,6 +12,7 @@ use regulatory_core::{
     ContractilityParamsV1, FiniteWorldResourceV1, FiniteWorldV1, StickSlipTractionParamsV1,
 };
 use serde::{Deserialize, Serialize};
+use std::collections::BTreeMap;
 use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -50,6 +51,14 @@ struct RuntimeSnapshot {
     first_contact_step: Option<u64>,
     #[serde(default)]
     first_transfer_step: Option<u64>,
+    #[serde(default)]
+    first_fission_step: Option<u64>,
+    #[serde(default)]
+    fission_observations: Vec<FissionObservation>,
+    #[serde(default)]
+    lineage_n_delivered: BTreeMap<u64, f64>,
+    #[serde(default)]
+    lineage_f_delivered: BTreeMap<u64, f64>,
     #[serde(default)]
     developmental_bootstrap_steps: usize,
     #[serde(default)]
@@ -118,6 +127,10 @@ struct RuntimeReport {
     cumulative_contacts: usize,
     first_contact_step: Option<u64>,
     first_transfer_step: Option<u64>,
+    first_fission_step: Option<u64>,
+    first_fission_before_first_transfer: Option<bool>,
+    fission_observations: Vec<FissionObservation>,
+    resource_transfer_enabled: bool,
     developmental_bootstrap_steps: usize,
     developmental_initial_topology: usize,
     developmental_initial_polarity_amplitude: f64,
@@ -137,11 +150,21 @@ struct Config {
     checkpoint: PathBuf,
     report: PathBuf,
     resume: Option<PathBuf>,
+    transfer_disabled: bool,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+struct FissionObservation {
+    step: u64,
+    parent_lineage_id: u64,
+    parent_generation: u32,
+    parent_n_delivered: f64,
+    parent_f_delivered: f64,
 }
 
 fn usage() -> ! {
     eprintln!(
-        "usage: digital-protocell-m2-runtime [--steps N] [--seed N] \\\n+         [--checkpoint PATH] [--report PATH] [--resume PATH]"
+        "usage: digital-protocell-m2-runtime [--steps N] [--seed N] \\\n+         [--checkpoint PATH] [--report PATH] [--resume PATH] [--transfer-disabled]"
     );
     std::process::exit(2);
 }
@@ -152,6 +175,7 @@ fn parse_config() -> Config {
     let mut checkpoint = PathBuf::from("m2-lifeform-runtime.snapshot.json");
     let mut report = PathBuf::from("m2-lifeform-runtime.report.json");
     let mut resume = None;
+    let mut transfer_disabled = false;
     let args: Vec<String> = env::args().skip(1).collect();
     let mut i = 0;
     while i < args.len() {
@@ -165,6 +189,7 @@ fn parse_config() -> Config {
             "--checkpoint" => checkpoint = PathBuf::from(value(&mut i)),
             "--report" => report = PathBuf::from(value(&mut i)),
             "--resume" => resume = Some(PathBuf::from(value(&mut i))),
+            "--transfer-disabled" => transfer_disabled = true,
             _ => usage(),
         }
         i += 1;
@@ -175,6 +200,7 @@ fn parse_config() -> Config {
         checkpoint,
         report,
         resume,
+        transfer_disabled,
     }
 }
 
@@ -377,6 +403,10 @@ fn new_snapshot(seed: u64) -> RuntimeSnapshot {
         cumulative_contacts: 0,
         first_contact_step: None,
         first_transfer_step: None,
+        first_fission_step: None,
+        fission_observations: Vec::new(),
+        lineage_n_delivered: BTreeMap::new(),
+        lineage_f_delivered: BTreeMap::new(),
         developmental_bootstrap_steps,
         developmental_initial_polarity_amplitude,
         developmental_initial_topology,
@@ -481,6 +511,11 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
         snapshot.population.individuals[index].mesh = mesh;
     }
     for delivery in &deliveries {
+        if let Some(&global_index) = active_indices.get(delivery.organism_index) {
+            let lineage_id = snapshot.population.individuals[global_index].lineage_id;
+            *snapshot.lineage_n_delivered.entry(lineage_id).or_default() += delivery.n_delivered;
+            *snapshot.lineage_f_delivered.entry(lineage_id).or_default() += delivery.f_delivered;
+        }
         snapshot.cumulative_n_delivered += delivery.n_delivered;
         snapshot.cumulative_f_delivered += delivery.f_delivered;
         snapshot.cumulative_n_world_loss += delivery.n_world_loss;
@@ -563,6 +598,18 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
             if let Some((daughter_a, daughter_b, event)) =
                 try_local_fission(&individual.mesh, &fission)
             {
+                let parent_lineage_id = individual.lineage_id;
+                let parent_generation = individual.generation;
+                let parent_n_delivered = snapshot
+                    .lineage_n_delivered
+                    .get(&parent_lineage_id)
+                    .copied()
+                    .unwrap_or(0.0);
+                let parent_f_delivered = snapshot
+                    .lineage_f_delivered
+                    .get(&parent_lineage_id)
+                    .copied()
+                    .unwrap_or(0.0);
                 let parent_state = snapshot.polarity_states[index]
                     .as_ref()
                     .expect("parent polarity state")
@@ -574,6 +621,16 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
                 let id_b = id_a + 1;
                 snapshot.population.next_lineage += 2;
                 let clade = individual.clade;
+                if snapshot.first_fission_step.is_none() {
+                    snapshot.first_fission_step = Some(tick);
+                }
+                snapshot.fission_observations.push(FissionObservation {
+                    step: tick,
+                    parent_lineage_id,
+                    parent_generation,
+                    parent_n_delivered,
+                    parent_f_delivered,
+                });
                 individual.mesh.alive = false;
                 individual.mesh.death_reason = Some("fissioned".to_string());
                 snapshot.population.fission_log.push(event);
@@ -661,6 +718,15 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
         cumulative_contacts: snapshot.cumulative_contacts,
         first_contact_step: snapshot.first_contact_step,
         first_transfer_step: snapshot.first_transfer_step,
+        first_fission_step: snapshot.first_fission_step,
+        first_fission_before_first_transfer: snapshot.first_fission_step.map(|fission| {
+            snapshot
+                .first_transfer_step
+                .map(|transfer| fission < transfer)
+                .unwrap_or(true)
+        }),
+        fission_observations: snapshot.fission_observations.clone(),
+        resource_transfer_enabled: snapshot.world.transfer_enabled,
         developmental_bootstrap_steps: snapshot.developmental_bootstrap_steps,
         developmental_initial_topology: snapshot.developmental_initial_topology,
         developmental_initial_polarity_amplitude: snapshot.developmental_initial_polarity_amplitude,
@@ -688,6 +754,9 @@ fn main() {
         .as_deref()
         .map(load_snapshot)
         .unwrap_or_else(|| new_snapshot(config.seed));
+    if config.transfer_disabled {
+        snapshot.world.transfer_enabled = false;
+    }
     let target = snapshot.step.saturating_add(config.steps);
     while snapshot.step < target {
         let _ = run_step(&mut snapshot);

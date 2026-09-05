@@ -927,3 +927,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Preservation: the bootstrap performs no actuator work and no resource interaction; post-bootstrap finite N/F conservation remains zero residual in the checked reports; checkpoint/resume reaches step 100 with matching developmental metadata; the known resource-causal reproduction and autonomous-acquisition boundaries remain `NOT_ESTABLISHED`.
 - Classification: `M2_DEVELOPMENTAL_POLARITY_RUNTIME_INTEGRATION_BOUNDED_REPRODUCTION_NOT_ESTABLISHED`.
 - Boundary: this is an engineering/runtime increment, not Architect acceptance of the unresolved CLOSURE-014 authority and not a claim of full standalone-lifeform completion. Exact-head CI and artifact digest remain pending this branch's push.
+
+## DEC-DCDEV021-M2-RUNTIME-RESOURCE-FISSION-CAUSALITY-AUDIT
+
+- Date: `2026-09-05`
+- Status: `VALIDATED_PENDING_ARCHITECT`
+- Scope: additive observer-only lineage delivery and first-fission provenance, with a matched seed-2 transfer-disabled control.
+- Authority: starts from runtime head `152ee9de642eb47e4080713fcbabbd1942237213`; the active arm uses the existing finite-world transfer path and the control sets only `FiniteWorldV1.transfer_enabled = false`.
+- Result: in both active and transfer-disabled seed-2 replays, the first physical fission occurs at step `25`; the active arm's first N/F transfer occurs at step `256`. The fissioning parent has cumulative delivered N/F of `0.0 / 0.0` in both arms. Active transfer therefore occurs after, rather than causing, the observed fission.
+- Classification: `M2_RESOURCE_CAUSAL_FISSION_NOT_ESTABLISHED`.
+- Boundary: this is one bounded causal control, not a general negative over all life histories. Autonomous acquisition, resource-causal reproduction, descendants, heredity, evolution, learning, individuality, unattended persistence, and standalone-lifeform completion remain unestablished. Architect acceptance and exact-head CI are pending.

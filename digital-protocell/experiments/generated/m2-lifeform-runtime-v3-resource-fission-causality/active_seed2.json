@@ -1,0 +1,21 @@
+{
+  "arm": "ACTIVE_TRANSFER",
+  "seed": 2,
+  "steps": 1500,
+  "transfer_enabled": true,
+  "living_count": 3,
+  "total_individuals": 3,
+  "maximum_generation": 1,
+  "fission_events": 1,
+  "first_fission_step": 25,
+  "first_transfer_step": 256,
+  "first_fission_before_first_transfer": true,
+  "fission_observations": [{"step": 25, "parent_lineage_id": 1, "parent_generation": 0, "parent_n_delivered": 0.0, "parent_f_delivered": 0.0}],
+  "cumulative_n_delivered": 30.393595366190397,
+  "cumulative_f_delivered": 30.393595366190397,
+  "world_n_conservation_error": 0.0,
+  "world_f_conservation_error": 0.0,
+  "cumulative_motor_a_spent": 1511.8284604527032,
+  "cumulative_slipping_contacts": 107613,
+  "cumulative_path": 2.210778094741644
+}
