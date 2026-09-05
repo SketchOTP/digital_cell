@@ -947,3 +947,14 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Result: active transfer begins during the developmental composition, conserves N/F exactly, and leaves one organism alive after 3000 runtime steps; the matched transfer-disabled arm delivers zero N/F and starves. Neither arm fissions.
 - Classification: `GOAL_AGENT_PROVISIONALLY_NEGATIVE`; resource-causal reproduction remains `NOT_ESTABLISHED`.
 - Boundary: CLOSURE-006 through CLOSURE-014 local active-work/contact/material formula search remains closed. No new gain, threshold, inventory, fission gate, hidden bath, or reserve horizon was searched. No independent Architect acceptance is claimed.
+
+## DEC-DCDEV021-GOAL-MATERIAL-FLOW-CONTRACT-AUDIT-R2
+
+- Date: `2026-09-05`
+- Status: `PROVISIONAL_REPLAN`
+- Decision: close Route A provisionally for the current organism/world material-flow composition and require an architectural Route-B review before another runtime execution.
+- Authority: resource-to-fission causality audit is provisionally negative; active and transfer-disabled fission occurred before environmental transfer. Route-B finite spatial transfer preserved world/organism conservation but produced no fission. Route-C exact D-091 reserve composition preserved finite transfer/viability but produced no fission.
+- Rationale: direct environmental N/F delivery enters the bulk pools and is consumed by the frozen `N+F → A+W` reaction before growth/fission can establish a resource-dependent developmental history. D-091 `R` is activated-material reserve, not an environmental provenance quota.
+- Candidate boundary: a finite organism-internal assimilation/provenance compartment may be required to preserve environmental material through the maintenance timescale before existing chemistry/growth consumes it. This is a candidate only; no state, coefficient, threshold, or chemistry coupling is implemented.
+- Exclusions: no additional CLOSURE-006 through CLOSURE-014 formula variant; no gain, threshold, timer, complement, ratio, reserve-horizon search, hidden bath, observer-ledger behavior, silent reserve-on, `1.35×` gate change, M1 change, restart repair, or PR #44 modification.
+- Self-acceptance: `GOAL_AGENT_PROVISIONAL_ONLY`; independent Architect review is required before implementation or successor execution.

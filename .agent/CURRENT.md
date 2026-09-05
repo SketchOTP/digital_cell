@@ -3,18 +3,30 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-05T12:35:00-04:00`
+- Last updated: `2026-09-05T13:35:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260905-dcdev021-m2-closure013-a-fraction-execution-reconciliation`
-- External directive ID: `DC-DEV-021-M2-CLOSURE-013-A-FRACTION-EXECUTION-RECONCILIATION-001`
-- Objective: Reconcile the documented CLOSURE-012 A-fraction motor law with the exact executed complement before any successor biology.
-- Current status: `COMPLETE`
-- Acceptance: `COMPLETE`
-- Current phase: `CLOSURE-013 bounded negative sealed`
-- Expected or actual touched areas: `isolated assay selector, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `No successor execution started; architect review required for the next capability increment`
+- Local directive ID: `D-20260905-dcdev021-goal-material-flow-contract-audit-r2`
+- External directive ID: `GOAL-LOOP-DIGITAL-CELL-MATERIAL-FLOW-REALIGNMENT-R2`
+- Objective: Reconstruct the organism/world material-flow bottleneck after the sealed resource-to-fission negative and stop the exhausted local active-work formula family.
+- Current status: `COMPLETE_PROVISIONAL_REPLAN`
+- Acceptance: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_REPLAN`
+- Current phase: `organism/world material-flow architecture boundary`
+- Expected or actual touched areas: `source-level contract audit, provisional architecture documentation, append-only governance`
+- Immediate next action: `independent Architect review required before implementing a new assimilation/provenance material state`
+
+## Goal-mode realignment — provisional
+
+- Current branch: `m2/dc-dev-021-goal-material-flow-replan-r2`.
+- Current head: `8a8f08c` (`goal: replan organism-world material flow boundary`).
+- The sealed resource-to-fission audit remains a bounded negative: active and transfer-disabled fission occurred before environmental transfer.
+- CLOSURE-006 through CLOSURE-014 active-work/contact/material-allocation search is closed; no neighboring formula, gain, threshold, timer, complement, ratio, or motor variant is authorized.
+- Route B is required provisionally. Direct finite environmental N/F transfer is conserved and viable in the tested composition, but it is consumed by frozen bulk N/F metabolism before a resource-dependent reproductive divergence is established.
+- D-091 `R` is an activated-material reserve, not an environmental quota; silently reusing it for environmental provenance is prohibited.
+- A new finite assimilation/provenance compartment is the only remaining candidate identified by the source-level audit. It is not implemented and requires independent Architect review because it would add a physical state/coupling and checkpoint/fission/remesh ownership contract.
+- Autonomous resource acquisition, resource-causal reproduction, descendants, heritable ecological phenotype, evolution, learning, individuality, unattended persistence, and standalone-lifeform completion remain `NOT_ESTABLISHED`.
+- Self-acceptance boundary: `GOAL_AGENT_PROVISIONAL_ONLY`; no `ARCHITECT ACCEPTED` status is asserted.
 
 ## CLOSURE-013 final authority
 

@@ -1933,3 +1933,18 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Result: active arm delivered `200.0863577497187` N/F with zero conservation residual and remained alive, but produced zero fissions; transfer-disabled arm delivered zero N/F, produced zero fissions, and ended in `starvation_collapse`.
 - Boundary: transfer is necessary for viability in this composition but insufficient for resource-causal reproduction. Do not reopen the local active-work formula family or search another nearby reserve/material-flow variant.
 - External Architect acceptance: `PENDING`; autonomous resource acquisition and full standalone-lifeform completion remain unestablished.
+
+## D-20260905-dcdev021-goal-material-flow-contract-audit-r2 - COMPLETE PROVISIONAL REPLAN
+
+- Outcome ID: `OUT-DCDEV021-GOAL-MATERIAL-FLOW-CONTRACT-AUDIT-R2`
+- Closed: `2026-09-05T13:35:00-04:00`
+- Acceptance: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_REPLAN`
+- Starting head: `3a20d5b74c9cf0dbdc20cfd8ef81955e98c12994`
+- Result head: `8a8f08c`
+- Objective: Reconstruct the complete organism/world material-flow contract after the sealed resource-to-fission causality negative and Route-C reserve-growth negative.
+- Result: Route A is provisionally closed for the current composition. Environmental N/F is finite and conserved, but direct delivery into bulk N/F is consumed by the frozen `N+F → A+W` reaction before existing growth/fission evaluation can establish a resource-dependent reproductive history. D-091 `R` is an activated-material reserve and cannot serve as an environmental provenance quota.
+- Architecture boundary: a new finite assimilation/provenance compartment is the remaining candidate, but it would add physical state and a new coupling into the frozen chemistry/growth path. It requires independent Architect review before implementation.
+- Supersedes: further CLOSURE-006 through CLOSURE-014 neighboring active-work/contact/material allocation assays.
+- Changed areas: provisional source-level contract documentation and current-state governance only; no scientific runtime source, M1 chemistry, uptake law, growth/fission gate, restart boundary, or PR #44 changed.
+- Boundary: autonomous resource acquisition, resource-causal reproduction, descendants, heritable ecological phenotype, evolution, learning, individuality, unattended persistence, and standalone-lifeform completion remain unestablished. No successor runtime execution is authorized.
+- Self-acceptance: `GOAL_AGENT_PROVISIONAL_ONLY`; no independent Architect acceptance is claimed.
