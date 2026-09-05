@@ -803,3 +803,11 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Decision: build a headless checkpointable runtime at the orchestration boundary rather than alter frozen scientific sources or claim the unresolved life-cycle gates are solved.
 - Current evidence: the local 100-step split run executes the existing ENTRY-005 refractory motor 100 times, records 172 slipping contacts and nonzero A spending, and reconciles world N/F loss against delivery at zero error.
 - Unresolved: separated autonomous acquisition, resource-causal reproduction, three-generation reproduction, and continuation of intrinsic motor state after fission.
+
+## DEC-DCDEV021-M2-STANDALONE-LIFEFORM-RUNTIME-INCREMENT-FINAL
+
+- Date: `2026-09-05`
+- Status: `COMPLETE`
+- Decision: accept the checkpointable Linux runtime as verified engineering progress while retaining all unresolved biological gates.
+- Authority: head `18954ab6d142b3b02cb5a7aaa3bd5a7e79469eef`; workflow `33955320620` passed; artifact `sha256:0c5e719b70329ae63f2b6d3c5b913dad649a26b46f8ae833f483365949ec5566`.
+- Boundary: the runtime executes existing finite-world exchange, ENTRY-005 refractory motor, conservative metabolism/growth/fission orchestration, and checkpoint/resume. It does not establish separated acquisition, resource-causal reproduction, three-generation life, post-fission motor continuation, evolution, learning, individuality, or standalone embodiment.

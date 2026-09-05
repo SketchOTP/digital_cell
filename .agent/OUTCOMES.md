@@ -34,6 +34,15 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Scientific boundary: no frozen scientific runtime source changed; no resource sensor, target, gradient, new parameter, post-fission reseed, or scripted fission was added.
 - Pending authority: exact-head Linux CI, artifact digest, and Architect review.
 
+## D-20260905-dcdev021-m2-standalone-lifeform-runtime - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-M2-STANDALONE-LIFEFORM-RUNTIME-INCREMENT-FINAL`
+- Closed: `2026-09-05`
+- Acceptance: `MET` for the engineering increment only.
+- Final authority: head `18954ab6d142b3b02cb5a7aaa3bd5a7e79469eef`, exact-head Linux workflow `33955320620` PASS, artifact digest `sha256:0c5e719b70329ae63f2b6d3c5b913dad649a26b46f8ae833f483365949ec5566`, and Notion append-only readback PASS.
+- Scientific boundary: finite-world orchestration, ENTRY-005 motor execution on unchanged topology, conservative chemistry/growth/fission composition, and checkpoint/resume are verified. Separated acquisition, resource-causal reproduction, descendant continuation, evolution, learning, individuality, and standalone embodiment remain unestablished.
+- Follow-up directive: none authorized by this increment.
+
 ## D-20260905-dcdev021-m2-closure010-combined-local-contact-material-work - COMPLETE
 
 - Outcome ID: `OUT-DCDEV021-M2-CLOSURE010-COMBINED-LOCAL-CONTACT-MATERIAL-WORK`
