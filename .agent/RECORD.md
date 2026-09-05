@@ -881,3 +881,12 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Scope: additive assay-local selector, fixed ecology/horizon, exact historical and corrected controls, conservation/preservation evidence, and exact-head CI only.
 - Exclusions: no production source, growth/fission law, parameter, tuning, horizon, resource geometry, sensor, memory, target, gradient, M1, restart repair, or PR #44 modification.
 - Acceptance boundary: `M2_DOCUMENTED_A_FRACTION_LAW_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED`, `M2_DOCUMENTED_A_FRACTION_LAW_REPRODUCTION_NOT_ESTABLISHED`, `M2_DOCUMENTED_A_FRACTION_LAW_WORK_ALLOCATION_INSUFFICIENT`, or invalid.
+
+## DEC-DCDEV021-M2-CLOSURE013-A-FRACTION-EXECUTION-RECONCILIATION-FINAL
+
+- Date: `2026-09-05`
+- Status: `COMPLETE`
+- Decision: accept CLOSURE-013 as `M2_DOCUMENTED_A_FRACTION_LAW_REPRODUCTION_NOT_ESTABLISHED`.
+- Authority: assay/evidence commit `db5ef5ae825f7c9ee840e1460a2e2cdd2100f276`; exact-head Linux workflow `33965518998` passed; artifact ZIP digest `sha256:869fe01f5f42c0fe49b3eb27a4bc5c72c69ac8a29ed490b585537a68c830d626`.
+- Rationale: the sealed CLOSURE-012 replay is exact, while the literal documented A-fraction execution produces paired `1230.5172060231012` N/F, `1583.3213577312897` A spent, and zero candidate fissions. The paired motor-off control fissions once. The semantic discrepancy is reconciled without rewriting the historical result.
+- Boundary: no scientific runtime source changed. Autonomous acquisition, resource-causal reproduction, descendants, heredity, evolution, learning, individuality, unattended persistence, and standalone-lifeform completion remain unestablished. No successor execution started.

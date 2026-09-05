@@ -3,18 +3,30 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-05T12:00:00-04:00`
+- Last updated: `2026-09-05T12:35:00-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20260905-dcdev021-m2-closure013-a-fraction-execution-reconciliation`
 - External directive ID: `DC-DEV-021-M2-CLOSURE-013-A-FRACTION-EXECUTION-RECONCILIATION-001`
 - Objective: Reconcile the documented CLOSURE-012 A-fraction motor law with the exact executed complement before any successor biology.
-- Current status: `IN_PROGRESS`
-- Acceptance: `PENDING`
-- Current phase: `CLOSURE-013 execution-semantics reconciliation`
+- Current status: `COMPLETE`
+- Acceptance: `COMPLETE`
+- Current phase: `CLOSURE-013 bounded negative sealed`
 - Expected or actual touched areas: `isolated assay selector, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `exact-head Linux validation of historical complement and literal documented law`
+- Immediate next action: `No successor execution started; architect review required for the next capability increment`
+
+## CLOSURE-013 final authority
+
+- Result branch: `m2/dc-dev-021-m2-closure013-a-fraction-execution-reconciliation`.
+- Assay/evidence commit: `db5ef5ae825f7c9ee840e1460a2e2cdd2100f276`.
+- Exact-head Linux workflow: `33965518998` - `PASS` on the pushed assay/evidence commit.
+- Artifact digest: `sha256:869fe01f5f42c0fe49b3eb27a4bc5c72c69ac8a29ed490b585537a68c830d626`.
+- Classification: `M2_DOCUMENTED_A_FRACTION_LAW_REPRODUCTION_NOT_ESTABLISHED`.
+- Result: the historical complement replay is exact; the literal documented A-fraction replay delivers `1230.5172060231012` N/F, spends `1583.3213577312897` A, and produces zero candidate fissions. The paired motor-off control fissions once.
+- Semantic boundary: the CLOSURE-012 historical result remains preserved, but its architecture description is corrected to distinguish documented A-fraction from executed complement.
+- Scientific runtime source changed: `NO`; autonomous acquisition, resource-causal reproduction, descendants, heredity, evolution, learning, individuality, and standalone-lifeform completion remain unestablished.
+- Successor execution: `NOT_STARTED`.
 
 ## CLOSURE-011 final authority
 

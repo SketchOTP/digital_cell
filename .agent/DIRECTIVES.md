@@ -901,6 +901,13 @@ Do not record execution results here. Do not rewrite historical entries after ad
 - Scope: additive assay selector, historical complement replay, literal documented-law replay, compact evidence, scoped workflow, and append-only governance.
 - Exclusions: production scientific runtime changes, growth/fission changes, parameter search, tuning, horizon/resource-geometry changes, forced fission, new sensors, memory, targets, gradients, M1 changes, restart repair, PR #44 modification, and successor biology.
 - Acceptance: `M2_DOCUMENTED_A_FRACTION_LAW_RESOURCE_CAUSAL_REPRODUCTION_QUALIFIED`, `M2_DOCUMENTED_A_FRACTION_LAW_REPRODUCTION_NOT_ESTABLISHED`, `M2_DOCUMENTED_A_FRACTION_LAW_WORK_ALLOCATION_INSUFFICIENT`, or invalid according to exact-head evidence.
+
+## D-20260905-dcdev021-m2-closure013-a-fraction-execution-reconciliation - CLOSED
+
+- Closed after exact-head workflow `33965518998` passed on assay/evidence commit `db5ef5ae825f7c9ee840e1460a2e2cdd2100f276`.
+- Final classification: `M2_DOCUMENTED_A_FRACTION_LAW_REPRODUCTION_NOT_ESTABLISHED`.
+- Artifact digest: `sha256:869fe01f5f42c0fe49b3eb27a4bc5c72c69ac8a29ed490b585537a68c830d626`.
+- The historical complement is preserved exactly; the literal documented A-fraction law is insufficient for candidate reproduction in the fixed ecology. No successor execution started.
 D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 
 - Result head: `4cd426dc9083c40861c0992fc66ca771ed6ed0d2`.

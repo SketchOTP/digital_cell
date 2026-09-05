@@ -1835,6 +1835,17 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Acceptance: `PENDING` exact-head Linux validation and Architect disposition.
 - Boundary: autonomous acquisition, resource-causal reproduction, descendants, heredity, evolution, learning, individuality, and standalone-lifeform completion remain unestablished.
 
+## D-20260905-dcdev021-m2-closure013-a-fraction-execution-reconciliation - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE013-A-FRACTION-EXECUTION-RECONCILIATION-FINAL`
+- Closed: `2026-09-05T12:35:00-04:00`
+- Acceptance: `MET`
+- Summary: Exact replay confirmed that CLOSURE-012's documented A-fraction description and executed helper diverged. The literal documented law was measured without changing production science; it improved neither the fixed ecology's reproductive outcome nor the existing fission result. Paired literal-law delivery was `1230.5172060231012` N/F with `1583.3213577312897` A spent and zero candidate fissions; paired motor-off fission occurred once.
+- Authority: assay/evidence commit `db5ef5ae825f7c9ee840e1460a2e2cdd2100f276`; exact-head Linux workflow `33965518998` passed; independently verified artifact ZIP digest `sha256:869fe01f5f42c0fe49b3eb27a4bc5c72c69ac8a29ed490b585537a68c830d626`.
+- Classification: `M2_DOCUMENTED_A_FRACTION_LAW_REPRODUCTION_NOT_ESTABLISHED`.
+- Changed areas: additive assay selector, semantic reconciliation evidence, scoped workflow, and append-only governance only; no scientific runtime, growth/fission law, M1 provenance, restart boundary, or PR #44 modification.
+- Boundary: autonomous acquisition, resource-causal reproduction, descendant continuity, heredity, evolution, learning, individuality, unattended persistence, and standalone-lifeform completion remain unestablished. No successor execution started.
+
 ## D-20260905-dcdev021-m2-closure012-active-work-fission-gate - IN PROGRESS
 
 - Outcome ID: `OUT-DCDEV021-M2-CLOSURE012-ACTIVE-WORK-FISSION-GATE`
