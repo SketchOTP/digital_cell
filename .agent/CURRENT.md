@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-05T00:00:00-04:00`
+- Last updated: `2026-09-05T02:20:23-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20260905-dcdev021-m2-closure008-lineage-material-work`
 - External directive ID: `DC-DEV-021-M2-CLOSURE-008-LINEAGE-LEVEL-POST-INGESTIVE-MATERIAL-WORK-REQUALIFICATION-001`
 - Objective: Determine whether the accepted CLOSURE-007 material-derived regulator composition remains beneficial for Daughter A, Daughter B, and the paired ecology, and whether the paired zero-fission result is shared-resource competition or an intrinsic work/reproduction limit.
-- Current status: `IN_PROGRESS`
-- Acceptance: `ARCHITECT_AUTHORIZED`
+- Current status: `COMPLETE`
+- Acceptance: `ARCHITECT_ACCEPTED`
 - Current phase: `CLOSURE-008 lineage-level post-ingestive material-work requalification`
 - Expected or actual touched areas: `isolated CLOSURE-008 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `Run exact CLOSURE-008 lineage-local and paired controls from final CLOSURE-007 head 0dfd81fdd99cc9a0eb7562b1d8705190c37d3a73`
+- Immediate next action: `No successor execution started; CLOSURE-008 is complete and this adopted state is awaiting reset to IDLE before the next authorized capability cycle`
 
 ## Temporary task-relevant facts
 
@@ -28,6 +28,7 @@
 - CLOSURE-007 is assay-only: no scientific runtime source, uptake law, metabolism, fission, actuator, traction, M1 source, restart boundary, or PR #44 changed. Exact starting head is `3ee324e968ac38489e147e47840f5e1f277f706c`.
 - CLOSURE-007 final authority correction: final governance head is `0dfd81fdd99cc9a0eb7562b1d8705190c37d3a73`, exact-head CI `33947796283` passed, and the independently verified artifact digest is `sha256:721caa35363f2bbda2c8c5ca0c22333e453a3342e30ce6c7689ad90efdf3e0a6`.
 - CLOSURE-008 is assay-only and reuses the exact accepted CLOSURE-007 mechanism, finite world, fixed 12,000-step horizon, metabolism, growth, fission, remesh, and lineage accounting. It adds no behavior, parameter, sensor, memory, or production source.
+- CLOSURE-008 final authority: exact result head `fe36860602e56d57aa34136161a2f79008f6b16f`, exact-head Linux CI `33949202701` passed, and the independently downloaded artifact ZIP digest is `sha256:33bac58b5b657e67d68964f417c4809cd9d5906c8a28db09d2ca9d02a33b0afd`. The classification is `M2_POST_INGESTIVE_MATERIAL_WORK_LINEAGE_BENEFIT_REPRODUCTION_NOT_ESTABLISHED`: candidate material-work benefit holds for Daughter A, Daughter B, and paired scopes, but all candidate scopes produce zero fissions; motor-off Daughter B and paired controls fission once. Autonomous acquisition, resource-causal reproduction, heritable phenotype, and evolution re-entry remain unestablished.
 - ENTRY-026 remains a sealed, not-yet-Architect-accepted package with status `INVESTIGATE`; its early step-25 shortcut is not promoted. R1 starts exactly at `04e8b7f030118842b0ad2d8428b6f937fa9aa6c7` and requalifies the population gate without changing the sealed package.
 - The clean baseline is derived from `1e242f28152797b512e25cd56c7b718e45d6ca97`; accepted M1 evidence remains on Atlas.
 - The accepted first implementation contract is observer-coupled and exposes no effector or motor output.
@@ -71,7 +72,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `CLOSURE-007 final exact-head authority 0dfd81fdd99cc9a0eb7562b1d8705190c37d3a73 / CI 33947796283 / artifact sha256:721caa35363f2bbda2c8c5ca0c22333e453a3342e30ce6c7689ad90efdf3e0a6`
+- Command or check: `CLOSURE-008 final exact-head authority fe36860602e56d57aa34136161a2f79008f6b16f / CI 33949202701 / artifact sha256:33bac58b5b657e67d68964f417c4809cd9d5906c8a28db09d2ca9d02a33b0afd`
 - Result: `PASSED`
 
 ## Risks

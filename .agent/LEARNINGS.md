@@ -14,7 +14,7 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Date: 2026-08-31
 - Fact or lesson: The isolated ENTRY-015 assay composes the exact ENTRY-014 24-site polarity equations into the unchanged A-funded effector through the zero-gain local active fraction `u/(u+v)`, with same-mean and motor-off controls. The assay is resource-free and does not establish autonomous polarity initiation or resource acquisition; final classification awaits exact-head validation and Architect review.
 - Evidence location: `digital-protocell/examples/dcdev021_m2_entry015.rs`, `digital-protocell/experiments/generated/dcdev021m2entry015/`, and `.github/workflows/dc-dev-021-m2-entry015.yml`.
-- Confidence: PROVISIONAL
+- Confidence: VERIFIED
 - Scope: DC-DEV-021 ENTRY-015 polarity actuator interface feasibility audit
 - Supersedes learning: none
 

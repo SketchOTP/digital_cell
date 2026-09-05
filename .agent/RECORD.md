@@ -736,3 +736,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: CLOSURE-006 showed a bounded local contact benefit but did not establish reproductive causality. CLOSURE-007 tests the existing post-ingestive material state as the only new assay input. The local result improves delivery and reduces A spending, but no candidate fission occurs; autonomous resource acquisition remains unestablished.
 - Affected areas: isolated CLOSURE-007 assay, compact evidence, scoped workflow, and append-only governance only; frozen scientific runtime, M1 provenance, fission source, restart boundary, and PR #44 remain unchanged.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE006-LOCAL-RESOURCE-CONTACT-QUIESCENCE-FINAL
+
+## DEC-DCDEV021-M2-CLOSURE008-LINEAGE-POST-INGESTIVE-MATERIAL-WORK-FINAL
+
+- Date: 2026-09-05
+- Record or decision ID: DEC-DCDEV021-M2-CLOSURE008-LINEAGE-POST-INGESTIVE-MATERIAL-WORK-FINAL
+- Status: ACTIVE
+- Decision or event: Exact-head Linux workflow `33949202701` passed on result head `fe36860602e56d57aa34136161a2f79008f6b16f`; independently downloaded artifact ZIP digest is `sha256:33bac58b5b657e67d68964f417c4809cd9d5906c8a28db09d2ca9d02a33b0afd`; CLOSURE-008 is accepted as `M2_POST_INGESTIVE_MATERIAL_WORK_LINEAGE_BENEFIT_REPRODUCTION_NOT_ESTABLISHED`.
+- Rationale: The exact accepted CLOSURE-007 material-work mechanism improves finite N/F delivery and reduces A spending in Daughter A solo, Daughter B solo, and paired scopes, but no candidate scope fissions. Motor-off Daughter B and paired controls fission once, showing that the bounded negative is not explained by shared finite-resource competition alone. Resource-causal reproduction, autonomous acquisition, heritable ecological phenotype, and evolution re-entry remain unestablished.
+- Affected areas: additive CLOSURE-008 assay/evidence/workflow and append-only governance only; no frozen scientific runtime, uptake/metabolism/growth/fission/polarity/actuator/traction source, M1 provenance, restart boundary, or PR #44 modification.
+- Supersedes record: DEC-DCDEV021-M2-CLOSURE007-POST-INGESTIVE-MATERIAL-WORK

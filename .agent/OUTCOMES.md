@@ -152,6 +152,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head execution and Architect acceptance; no successor execution is authorized.
 - Follow-up directive: none
 
+## D-20260905-dcdev021-m2-closure008-lineage-material-work - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE008-LINEAGE-POST-INGESTIVE-MATERIAL-WORK-FINAL`
+- Supersedes outcome: `OUT-DCDEV021-M2-CLOSURE008-LINEAGE-POST-INGESTIVE-MATERIAL-WORK`
+- Closed: `2026-09-05T02:20:23-04:00`
+- Acceptance: `MET`
+- Summary: Exact-head CLOSURE-008 validation confirms that the accepted CLOSURE-007 post-ingestive material-work composition retains a bounded acquisition/work benefit in Daughter A solo, Daughter B solo, and paired scopes, but does not establish resource-causal reproduction. Candidate N/F delivery is `119.07043179065823`, `1230.045257118785`, and `1230.045257118789` respectively, versus no-material-feedback controls `99.29887582275623`, `1146.3487440851745`, and `1146.3487440851763`; candidate fissions are `0/0/0`. Motor-off Daughter B and paired controls fission once, so the negative is not explained by shared-resource competition alone. The bounded classification is `M2_POST_INGESTIVE_MATERIAL_WORK_LINEAGE_BENEFIT_REPRODUCTION_NOT_ESTABLISHED`.
+- Changed areas: additive CLOSURE-008 assay/example, compact evidence, scoped workflow, and append-only governance only; no frozen scientific runtime, uptake/metabolism/growth/fission/polarity/actuator/traction source, restart boundary, or PR #44 modification.
+- Validation:
+  - Local release assay, compact evidence, material/energy closure, controls, and governance validation - PASSED
+  - Exact-head Linux workflow `33949202701` on `fe36860602e56d57aa34136161a2f79008f6b16f` - PASSED
+  - Independently downloaded artifact ZIP digest `sha256:33bac58b5b657e67d68964f417c4809cd9d5906c8a28db09d2ca9d02a33b0afd` - PASSED
+  - PR #44 state verification (OPEN/DRAFT/UNMERGED/UNTOUCHED) - PASSED
+  - Architect acceptance - COMPLETE for this bounded result
+- Remaining risks: autonomous resource acquisition, resource-causal reproduction, descendant continuity, heritable ecological phenotype, and evolution re-entry remain unestablished; no successor execution started.
+- Blockers: none for CLOSURE-008; the next capability cycle requires a separately authorized directive.
+- Follow-up directive: none
+
 ## D-20260903-dcdev021-m2-entry028-balanced-separated-resource-ecology - PARTIAL
 
 - Outcome ID: `OUT-DCDEV021-ENTRY028-BALANCED-SEPARATED-RESOURCE-ECOLOGY-LOCAL`
