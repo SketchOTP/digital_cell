@@ -43,6 +43,24 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head validation, artifact verification, Notion readback, and Architect review only.
 - Follow-up directive: none
 
+## D-20260904-dcdev021-m2-closure004-material-consistent-reproductive-ecology - COMPLETE
+
+- Outcome ID: `OUT-DCDEV021-M2-CLOSURE004-MATERIAL-CONSISTENT-REPRODUCTIVE-ECOLOGY-FINAL`
+- Supersedes outcome: `OUT-DCDEV021-M2-CLOSURE004-MATERIAL-CONSISTENT-REPRODUCTIVE-ECOLOGY`
+- Closed: `2026-09-04T20:20:00-04:00`
+- Acceptance: `PARTIAL`
+- Summary: Exact-head validation passed on result head `6d4238d131faa069aa76c4c23df875d0549afe9b`. Native V1 derivation produced radius `12.552764362506588`, concentration parity and four-region non-overlap passed, and the material-consistent arm acquired finite N/F but produced no fission within 12,000 steps. The bounded classification remains `M2_MATERIAL_CONSISTENT_RESOURCE_ACCESS_INSUFFICIENT`; Architect acceptance remains pending.
+- Changed areas: additive CLOSURE-004 assay, compact evidence, scoped workflow, and append-only governance only; no frozen scientific runtime, M1 provenance, or PR #44 change.
+- Validation:
+  - Exact-head Linux workflow `33932582586` on `6d4238d131faa069aa76c4c23df875d0549afe9b` - PASSED
+  - Independently downloaded artifact ZIP digest `sha256:1ccc00e7c1936bff7df56aa2bbbe6aedc97ee952c38194c44ea9af5df6f2e2d5` - PASSED
+  - Governance validation and evidence JSON validation - PASSED
+  - Notion append-only readback - NOT RUN
+  - Architect acceptance - NOT RUN
+- Remaining risks: resource-causal reproduction, descendant continuity, heritable ecological phenotype, and evolution re-entry remain unestablished.
+- Blockers: Notion readback and Architect review only; no successor work is authorized.
+- Follow-up directive: none
+
 ## D-20260903-dcdev021-m2-entry028-balanced-separated-resource-ecology - PARTIAL
 
 - Outcome ID: `OUT-DCDEV021-ENTRY028-BALANCED-SEPARATED-RESOURCE-ECOLOGY-LOCAL`

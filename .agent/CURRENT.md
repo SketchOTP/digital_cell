@@ -7,13 +7,13 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260904-dcdev021-m2-closure003r1-finite-membrane-reproductive-requalification`
-- External directive ID: `DC-DEV-021-M2-CLOSURE-003-R1-CONTINUOUS-FINITE-MEMBRANE-FEEDING-REPRODUCTIVE-REQUALIFICATION-001`
-- Objective: Requalify reproductive material demand with finite whole-membrane feeding, then conditionally test resource-causal spatial reproduction without evolution execution.
-- Current status: `IN_PROGRESS`
+- Local directive ID: `D-20260904-dcdev021-m2-closure004-material-consistent-reproductive-ecology`
+- External directive ID: `DC-DEV-021-M2-CLOSURE-004-MATERIAL-CONSISTENT-SPATIAL-RESOURCE-REPRODUCTIVE-ECOLOGY-AND-HEREDITY-001`
+- Objective: Test native V1 material-consistent spatial resource access against the accepted reproductive unit without changing organism behavior.
+- Current status: `VALIDATING`
 - Acceptance: `PENDING_ARCHITECT`
-- Current phase: `CLOSURE-003-R1 whole-membrane calibration and conditional spatial lifecycle validated at exact pushed HEAD; Architect review pending`
-- Expected or actual touched areas: `isolated CLOSURE-003-R1 assay, compact evidence, scoped workflow, append-only governance`
+- Current phase: `CLOSURE-004 material-consistent spatial lifecycle validated at exact pushed HEAD; Architect review pending`
+- Expected or actual touched areas: `isolated CLOSURE-004 assay, compact evidence, scoped workflow, append-only governance`
 - Immediate next action: `update Notion append-only with exact final-head authority, then Architect review only`
 
 ## Temporary task-relevant facts
@@ -86,4 +86,4 @@
 
 Allowed adopted-project statuses: `IDLE`, `PLANNING`, `IN_PROGRESS`, `VALIDATING`, `BLOCKED`, `COMPLETE`. `CURRENT.md` is mutable and never replaces historical ledgers. Reset it to `IDLE` when an adopted task closes.
 
-The active CLOSURE-004 task is awaiting Architect acceptance; no successor execution has started. Its native V1 radius is `12.552764362506588`, concentration parity and non-overlap passed, and the material-consistent arm delivered finite N/F but produced zero fissions in the fixed 12,000-step horizon. Descendant, heredity, phenotype, and evolution re-entry work were not reached.
+CLOSURE-004 is complete at exact result head `6d4238d131faa069aa76c4c23df875d0549afe9b`; exact-head workflow `33932582586` passed and the independently downloaded artifact ZIP digest is `sha256:1ccc00e7c1936bff7df56aa2bbbe6aedc97ee952c38194c44ea9af5df6f2e2d5`. Its native V1 radius is `12.552764362506588`, concentration parity and non-overlap passed, and the material-consistent arm delivered finite N/F but produced zero fissions in the fixed 12,000-step horizon. The bounded classification is `M2_MATERIAL_CONSISTENT_RESOURCE_ACCESS_INSUFFICIENT`; Architect acceptance remains pending and no successor execution has started.

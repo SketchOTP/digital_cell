@@ -617,3 +617,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-DEV-021 M2 CLOSURE-004 material-consistent spatial resource reproductive ecology and heredity.
 - Supersedes learning: none
+
+## L-DCDEV021-M2-CLOSURE004-002
+
+- Learning ID: L-DCDEV021-M2-CLOSURE004-002
+- Date: 2026-09-04
+- Fact or lesson: Exact-head Linux workflow `33932582586` passed on result head `6d4238d131faa069aa76c4c23df875d0549afe9b`; the independently downloaded artifact ZIP hashes to `sha256:1ccc00e7c1936bff7df56aa2bbbe6aedc97ee952c38194c44ea9af5df6f2e2d5`. The bounded classification remains `M2_MATERIAL_CONSISTENT_RESOURCE_ACCESS_INSUFFICIENT`; no successor execution is authorized pending Architect review.
+- Evidence location: `digital-protocell/experiments/generated/dcdev021m2closure004/`, `digital-protocell/examples/dcdev021_m2_closure004.rs`, and `.github/workflows/dc-dev-021-m2-closure004.yml`.
+- Confidence: VERIFIED
+- Scope: DC-DEV-021 M2 CLOSURE-004 material-consistent spatial resource reproductive ecology and heredity.
+- Supersedes learning: L-DCDEV021-M2-CLOSURE004-001

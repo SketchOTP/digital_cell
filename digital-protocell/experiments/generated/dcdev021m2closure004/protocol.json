@@ -3,6 +3,10 @@
   "geometry_first_stop": true,
   "no_behavior_change": true,
   "no_successor": true,
+  "result_branch": "m2/dc-dev-021-m2-closure004-material-consistent-reproductive-ecology",
+  "result_head": "6d4238d131faa069aa76c4c23df875d0549afe9b",
+  "push_ci": "33932582586",
+  "artifact_digest": "sha256:1ccc00e7c1936bff7df56aa2bbbe6aedc97ee952c38194c44ea9af5df6f2e2d5",
   "starting_head": "cd60cbaf923ce44437d67156aa761c3fe9825233",
   "steps": 12000
 }
