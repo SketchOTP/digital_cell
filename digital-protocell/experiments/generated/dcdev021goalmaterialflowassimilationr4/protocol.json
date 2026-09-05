@@ -1,0 +1,14 @@
+{
+  "schema": "dcdev021_goal_environmental_assimilation_composition_r4",
+  "status": "GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN",
+  "directive": "GOAL-LOOP-DIGITAL-CELL-MATERIAL-FLOW-REALIGNMENT-R2",
+  "starting_head": "7f3c1e24f87838106cab6c423ae23dd355b5a0dd",
+  "purpose": "Test an opt-in finite environmental assimilation path after the existing-carrier audit closed Route A.",
+  "observer_authority": "runtime composition with compact evidence",
+  "scientific_runtime_source_changed": true,
+  "production_selector_changed": false,
+  "new_local_active_work_formula_search": false,
+  "fission_gate": "1.35 * birth_mass",
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "next_execution_started": false
+}

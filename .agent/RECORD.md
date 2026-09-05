@@ -969,3 +969,17 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Candidate: a finite organism-internal assimilation/provenance compartment, with world ownership, conserved transfer, processing conversion, checkpoint/remesh/fission continuity, and transfer-disabled controls.
 - Exclusions: no CLOSURE-006 through CLOSURE-014 variant, no gain/threshold/timer/ratio/reserve-horizon search, no fission-gate change, no silent reserve-on, no M1 or PR #44 change.
 - Self-acceptance: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_REPLAN`; independent Architect acceptance remains `PENDING`.
+
+## DEC-DCDEV021-GOAL-ENVIRONMENTAL-ASSIMILATION-COMPOSITION-R4
+
+- Decision: test one opt-in finite environmental assimilation/provenance compartment after Route A existing-carrier closure.
+- Result: transfer and processing are conserved and produce structural growth, but the unchanged `1.35 * birth_mass` fission gate is not reached; transfer-disabled has no environmental processing or fission.
+- Boundary: this is a provisional goal-agent replan, not Architect acceptance. Do not reopen the exhausted CLOSURE-006 through CLOSURE-014 local active-work family.
+- Status: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_REPLAN`; Architect acceptance remains `PENDING`.
+
+## DEC-DCDEV021-GOAL-ENVIRONMENTAL-ASSIMILATION-COMPOSITION-R4-CORRECTION
+
+- Decision: correct the R4 runtime interpretation after a fresh release replay.
+- Result: finite environmental N/F transfer and processing are conserved, but the unchanged existing growth law does not convert the processed A pool into resource-causal fission; active fission events remain zero.
+- Boundary: this is a provisional goal-agent negative/replan, not Architect acceptance. No further CLOSURE-006 through CLOSURE-014 local formula search is authorized.
+- Next step: architect a materially different organism/world material-flow composition before another runtime execution.

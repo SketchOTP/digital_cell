@@ -1,4 +1,5 @@
 use chemistry_core::material_mesh::MeshContractVersion;
+use chemistry_core::environmental_assimilation;
 use chemistry_core::mesh_fission::{topology_step, try_local_fission, FissionParams};
 use chemistry_core::mesh_growth::{growth_step, GrowthParams};
 use chemistry_core::mesh_mechanics::{mechanics_step, remesh, MechParams};
@@ -45,10 +46,22 @@ struct RuntimeSnapshot {
     /// Opt-in D-091 reserve composition; absent preserves reserve-off runtime.
     #[serde(default)]
     reserve_parameters: Option<ReserveParams>,
+    /// Opt-in finite environmental assimilation substrate. Absent/false
+    /// preserves all historical runtime compositions.
+    #[serde(default)]
+    assimilation_enabled: bool,
     #[serde(default = "default_true")]
     spatial_field_transfer_enabled: bool,
     cumulative_n_delivered: f64,
     cumulative_f_delivered: f64,
+    #[serde(default)]
+    cumulative_assimilation_n_processed: f64,
+    #[serde(default)]
+    cumulative_assimilation_f_processed: f64,
+    #[serde(default)]
+    cumulative_assimilation_a_produced: f64,
+    #[serde(default)]
+    cumulative_assimilation_m_grown: f64,
     cumulative_n_world_loss: f64,
     cumulative_f_world_loss: f64,
     cumulative_fissions: usize,
@@ -130,6 +143,10 @@ struct RuntimeReport {
     spatial_field_f_mass_remaining: f64,
     cumulative_n_delivered: f64,
     cumulative_f_delivered: f64,
+    cumulative_assimilation_n_processed: f64,
+    cumulative_assimilation_f_processed: f64,
+    cumulative_assimilation_a_produced: f64,
+    cumulative_assimilation_m_grown: f64,
     world_n_conservation_error: f64,
     world_f_conservation_error: f64,
     motor_steps: u64,
@@ -168,6 +185,7 @@ struct Config {
     transfer_disabled: bool,
     routeb_spatial_field: bool,
     routec_reserve_growth: bool,
+    assimilation_material_flow: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -195,7 +213,7 @@ fn default_true() -> bool {
 
 fn usage() -> ! {
     eprintln!(
-        "usage: digital-protocell-m2-runtime [--steps N] [--seed N] \\\n          [--checkpoint PATH] [--report PATH] [--resume PATH] \\\n          [--transfer-disabled] [--routeb-spatial-field] [--routec-reserve-growth]"
+        "usage: digital-protocell-m2-runtime [--steps N] [--seed N] \\\n          [--checkpoint PATH] [--report PATH] [--resume PATH] \\\n          [--transfer-disabled] [--routeb-spatial-field] [--routec-reserve-growth] [--assimilation-material-flow]"
     );
     std::process::exit(2);
 }
@@ -209,6 +227,7 @@ fn parse_config() -> Config {
     let mut transfer_disabled = false;
     let mut routeb_spatial_field = false;
     let mut routec_reserve_growth = false;
+    let mut assimilation_material_flow = false;
     let args: Vec<String> = env::args().skip(1).collect();
     let mut i = 0;
     while i < args.len() {
@@ -225,6 +244,7 @@ fn parse_config() -> Config {
             "--transfer-disabled" => transfer_disabled = true,
             "--routeb-spatial-field" => routeb_spatial_field = true,
             "--routec-reserve-growth" => routec_reserve_growth = true,
+            "--assimilation-material-flow" => assimilation_material_flow = true,
             _ => usage(),
         }
         i += 1;
@@ -238,6 +258,7 @@ fn parse_config() -> Config {
         transfer_disabled,
         routeb_spatial_field,
         routec_reserve_growth,
+        assimilation_material_flow,
     }
 }
 
@@ -366,7 +387,19 @@ fn develop_founder_routeb(
     field: &mut SpatialMaterialFieldV1,
     transfer_enabled: bool,
     reserve_parameters: Option<&ReserveParams>,
-) -> (PolarityState, usize, bool, f64, f64, Option<usize>) {
+    assimilation_enabled: bool,
+) -> (
+    PolarityState,
+    usize,
+    bool,
+    f64,
+    f64,
+    Option<usize>,
+    f64,
+    f64,
+    f64,
+    f64,
+) {
     let dt = MechParams::default().dt;
     let transport = TransportParams::default();
     let mechanics = MechParams::default();
@@ -385,6 +418,10 @@ fn develop_founder_routeb(
     let mut cumulative_n = 0.0;
     let mut cumulative_f = 0.0;
     let mut first_transfer_step = None;
+    let mut cumulative_assimilation_n = 0.0;
+    let mut cumulative_assimilation_f = 0.0;
+    let mut cumulative_assimilation_a = 0.0;
+    let mut cumulative_assimilation_m = 0.0;
 
     for step in 0..DEVELOPMENT_MAX_STEPS {
         if !individual.mesh.can_advance_physics() {
@@ -406,6 +443,18 @@ fn develop_founder_routeb(
                 first_transfer_step = Some(step + 1);
             }
             field.emit_w(&individual.mesh, delivery.nonfeeding_transport.w_out);
+            if assimilation_enabled {
+                let area = individual.mesh.area().max(1e-6);
+                individual.mesh.interior.n =
+                    (individual.mesh.interior.n - delivery.n_delivered / area).max(0.0);
+                individual.mesh.interior.f =
+                    (individual.mesh.interior.f - delivery.f_delivered / area).max(0.0);
+                environmental_assimilation::receive(
+                    &mut individual.mesh,
+                    delivery.n_delivered,
+                    delivery.f_delivered,
+                );
+            }
         }
         let _ = reactions_step_with_reserve_mode(
             &mut individual.mesh,
@@ -415,7 +464,18 @@ fn develop_founder_routeb(
             true,
             ReserveDiagnosticMode::Full,
         );
+        if assimilation_enabled {
+            let processed = environmental_assimilation::process(&mut individual.mesh, &reaction, dt);
+            cumulative_assimilation_n += processed.n_processed;
+            cumulative_assimilation_f += processed.f_processed;
+            cumulative_assimilation_a += processed.assimilation_a_produced;
+        }
+        let mass_before_growth = individual.mesh.total_structural_mass();
         let _ = growth_step(&mut individual.mesh, &reaction, &growth, dt);
+        if assimilation_enabled {
+            cumulative_assimilation_m +=
+                (individual.mesh.total_structural_mass() - mass_before_growth).max(0.0);
+        }
         let _ = mechanics_step(&mut individual.mesh, &mechanics);
         let old_vertices = individual.mesh.vertices.clone();
         let _ = remesh(&mut individual.mesh);
@@ -443,6 +503,10 @@ fn develop_founder_routeb(
                 cumulative_n,
                 cumulative_f,
                 first_transfer_step,
+                cumulative_assimilation_n,
+                cumulative_assimilation_f,
+                cumulative_assimilation_a,
+                cumulative_assimilation_m,
             );
         }
     }
@@ -453,6 +517,10 @@ fn develop_founder_routeb(
         cumulative_n,
         cumulative_f,
         first_transfer_step,
+        cumulative_assimilation_n,
+        cumulative_assimilation_f,
+        cumulative_assimilation_a,
+        cumulative_assimilation_m,
     )
 }
 
@@ -553,9 +621,14 @@ fn new_snapshot(seed: u64) -> RuntimeSnapshot {
         world,
         spatial_field: None,
         reserve_parameters: None,
+        assimilation_enabled: false,
         spatial_field_transfer_enabled: true,
         cumulative_n_delivered: 0.0,
         cumulative_f_delivered: 0.0,
+        cumulative_assimilation_n_processed: 0.0,
+        cumulative_assimilation_f_processed: 0.0,
+        cumulative_assimilation_a_produced: 0.0,
+        cumulative_assimilation_m_grown: 0.0,
         cumulative_n_world_loss: 0.0,
         cumulative_f_world_loss: 0.0,
         cumulative_fissions: 0,
@@ -581,7 +654,11 @@ fn new_snapshot(seed: u64) -> RuntimeSnapshot {
     }
 }
 
-fn new_routeb_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
+fn new_routeb_snapshot(
+    seed: u64,
+    transfer_enabled: bool,
+    assimilation_enabled: bool,
+) -> RuntimeSnapshot {
     let mut population = initial_population(seed);
     let mut field = routeb_field(&population.individuals[0].mesh);
     let (
@@ -591,11 +668,16 @@ fn new_routeb_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         cumulative_n_delivered,
         cumulative_f_delivered,
         first_transfer_step,
+        cumulative_assimilation_n_processed,
+        cumulative_assimilation_f_processed,
+        cumulative_assimilation_a_produced,
+        cumulative_assimilation_m_grown,
     ) = develop_founder_routeb(
         &mut population.individuals[0],
         &mut field,
         transfer_enabled,
         None,
+        assimilation_enabled,
     );
     population.individuals[0].mesh.exterior.n = 0.0;
     population.individuals[0].mesh.exterior.f = 0.0;
@@ -616,9 +698,14 @@ fn new_routeb_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         world: FiniteWorldV1::new(Vec::new()),
         spatial_field: Some(field),
         reserve_parameters: None,
+        assimilation_enabled,
         spatial_field_transfer_enabled: transfer_enabled,
         cumulative_n_delivered,
         cumulative_f_delivered,
+        cumulative_assimilation_n_processed,
+        cumulative_assimilation_f_processed,
+        cumulative_assimilation_a_produced,
+        cumulative_assimilation_m_grown,
         cumulative_n_world_loss: cumulative_n_delivered,
         cumulative_f_world_loss: cumulative_f_delivered,
         cumulative_fissions: 0,
@@ -661,11 +748,16 @@ fn new_routec_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         cumulative_n_delivered,
         cumulative_f_delivered,
         first_transfer_step,
+        _cumulative_assimilation_n_processed,
+        _cumulative_assimilation_f_processed,
+        _cumulative_assimilation_a_produced,
+        _cumulative_assimilation_m_grown,
     ) = develop_founder_routeb(
         &mut population.individuals[0],
         &mut field,
         transfer_enabled,
         Some(&reserve),
+        false,
     );
     population.individuals[0].mesh.exterior.n = 0.0;
     population.individuals[0].mesh.exterior.f = 0.0;
@@ -684,9 +776,14 @@ fn new_routec_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         world: FiniteWorldV1::new(Vec::new()),
         spatial_field: Some(field),
         reserve_parameters: Some(reserve),
+        assimilation_enabled: false,
         spatial_field_transfer_enabled: transfer_enabled,
         cumulative_n_delivered,
         cumulative_f_delivered,
+        cumulative_assimilation_n_processed: 0.0,
+        cumulative_assimilation_f_processed: 0.0,
+        cumulative_assimilation_a_produced: 0.0,
+        cumulative_assimilation_m_grown: 0.0,
         cumulative_n_world_loss: cumulative_n_delivered,
         cumulative_f_world_loss: cumulative_f_delivered,
         cumulative_fissions: 0,
@@ -839,6 +936,21 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
     for (&index, mesh) in active_indices.iter().zip(meshes) {
         snapshot.population.individuals[index].mesh = mesh;
     }
+    if snapshot.assimilation_enabled {
+        for delivery in &deliveries {
+            if let Some(&global_index) = active_indices.get(delivery.organism_index) {
+                let mesh = &mut snapshot.population.individuals[global_index].mesh;
+                let area = mesh.area().max(1e-6);
+                mesh.interior.n = (mesh.interior.n - delivery.n_delivered / area).max(0.0);
+                mesh.interior.f = (mesh.interior.f - delivery.f_delivered / area).max(0.0);
+                environmental_assimilation::receive(
+                    mesh,
+                    delivery.n_delivered,
+                    delivery.f_delivered,
+                );
+            }
+        }
+    }
     for delivery in &deliveries {
         if let Some(&global_index) = active_indices.get(delivery.organism_index) {
             let lineage_id = snapshot.population.individuals[global_index].lineage_id;
@@ -872,6 +984,11 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
         y_g: 0.9,
         enable_growth: true,
     };
+    let assimilation_enabled = snapshot.assimilation_enabled;
+    let mut assimilation_n_processed = 0.0;
+    let mut assimilation_f_processed = 0.0;
+    let mut assimilation_a_produced = 0.0;
+    let mut assimilation_m_grown = 0.0;
     let mut fissions = 0;
     for &index in &active_indices {
         let individual = &mut snapshot.population.individuals[index];
@@ -896,7 +1013,18 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
             true,
             ReserveDiagnosticMode::Full,
         );
+        if assimilation_enabled {
+            let processed = environmental_assimilation::process(&mut individual.mesh, &reaction, dt);
+            assimilation_n_processed += processed.n_processed;
+            assimilation_f_processed += processed.f_processed;
+            assimilation_a_produced += processed.assimilation_a_produced;
+        }
+        let mass_before_growth = individual.mesh.total_structural_mass();
         let _ = growth_step(&mut individual.mesh, &reaction, &growth, dt);
+        if assimilation_enabled {
+            assimilation_m_grown +=
+                (individual.mesh.total_structural_mass() - mass_before_growth).max(0.0);
+        }
         let old_vertices = individual.mesh.vertices.clone();
         remesh(&mut individual.mesh);
         let tick = snapshot.step + 1;
@@ -995,6 +1123,10 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
             }
         }
     }
+    snapshot.cumulative_assimilation_n_processed += assimilation_n_processed;
+    snapshot.cumulative_assimilation_f_processed += assimilation_f_processed;
+    snapshot.cumulative_assimilation_a_produced += assimilation_a_produced;
+    snapshot.cumulative_assimilation_m_grown += assimilation_m_grown;
     for (individual, state) in newborns {
         snapshot.population.individuals.push(individual);
         snapshot.polarity_states.push(Some(state));
@@ -1048,6 +1180,10 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
             .unwrap_or(0.0),
         cumulative_n_delivered: snapshot.cumulative_n_delivered,
         cumulative_f_delivered: snapshot.cumulative_f_delivered,
+        cumulative_assimilation_n_processed: snapshot.cumulative_assimilation_n_processed,
+        cumulative_assimilation_f_processed: snapshot.cumulative_assimilation_f_processed,
+        cumulative_assimilation_a_produced: snapshot.cumulative_assimilation_a_produced,
+        cumulative_assimilation_m_grown: snapshot.cumulative_assimilation_m_grown,
         world_n_conservation_error: snapshot.cumulative_n_delivered
             - snapshot.cumulative_n_world_loss,
         world_f_conservation_error: snapshot.cumulative_f_delivered
@@ -1106,10 +1242,12 @@ fn main() {
         .as_deref()
         .map(load_snapshot)
         .unwrap_or_else(|| {
-            if config.routec_reserve_growth {
+            if config.assimilation_material_flow {
+                new_routeb_snapshot(config.seed, !config.transfer_disabled, true)
+            } else if config.routec_reserve_growth {
                 new_routec_snapshot(config.seed, !config.transfer_disabled)
             } else if config.routeb_spatial_field {
-                new_routeb_snapshot(config.seed, !config.transfer_disabled)
+                new_routeb_snapshot(config.seed, !config.transfer_disabled, false)
             } else {
                 new_snapshot(config.seed)
             }

@@ -1,0 +1,18 @@
+{
+  "schema": "mesh_interior_environmental_assimilation_n_f_v1",
+  "equation_version": "goal_material_flow_environmental_assimilation_v1",
+  "opt_in": true,
+  "scientific_runtime_source_changed": true,
+  "production_selector_changed": false,
+  "delivery": "FiniteWorldV1 / SpatialMaterialFieldV1 delivered N/F",
+  "retained_state": ["assimilation_n", "assimilation_f"],
+  "conversion": "existing k_act * catalyst availability * N * F * dt * area",
+  "conversion_target": "existing interior A pool",
+  "growth": "unchanged existing growth_step after conversion",
+  "observed_limitation": "existing growth_step uses production-minus-maintenance surplus and does not convert processed A into sufficient environmental growth",
+  "fission_gate_changed": false,
+  "historical_routes_default_changed": false,
+  "resource_sensor_added": false,
+  "motor_formula_added": false,
+  "parameter_search": false
+}

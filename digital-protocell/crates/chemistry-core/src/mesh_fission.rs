@@ -39,6 +39,10 @@ pub struct PartitionReport {
     #[serde(default)]
     pub residual_r: f64,
     #[serde(default)]
+    pub residual_assimilation_n: f64,
+    #[serde(default)]
+    pub residual_assimilation_f: f64,
+    #[serde(default)]
     pub residual_u_h: f64,
     #[serde(default)]
     pub residual_u_b: f64,
@@ -127,6 +131,8 @@ pub fn try_local_fission(
     let pre_f = parent.interior.f * parent.area().max(1e-9);
     let pre_w = parent.interior.w * parent.area().max(1e-9);
     let pre_r = parent.interior.r * parent.area().max(1e-9);
+    let pre_assimilation_n = parent.interior.assimilation_n * parent.area().max(1e-9);
+    let pre_assimilation_f = parent.interior.assimilation_f * parent.area().max(1e-9);
     let pre_u_h = parent.interior.u_h * parent.area().max(1e-9);
     let pre_u_b = parent.interior.u_b * parent.area().max(1e-9);
     let pre_k_h = parent.interior.k_h * parent.area().max(1e-9);
@@ -163,6 +169,8 @@ pub fn try_local_fission(
         mesh.interior.w = (pre_w * frac) / a;
         // R is partitioned as actual material (never copied as a ratio template).
         mesh.interior.r = (pre_r * frac) / a;
+        mesh.interior.assimilation_n = (pre_assimilation_n * frac) / a;
+        mesh.interior.assimilation_f = (pre_assimilation_f * frac) / a;
         mesh.interior.u_h = (pre_u_h * frac) / a;
         mesh.interior.u_b = (pre_u_b * frac) / a;
         mesh.interior.k_h = (pre_k_h * frac) / a;
@@ -221,6 +229,10 @@ pub fn try_local_fission(
     let post_f = d1.interior.f * d1.area() + d2.interior.f * d2.area();
     let post_w = d1.interior.w * d1.area() + d2.interior.w * d2.area();
     let post_r = d1.interior.r * d1.area() + d2.interior.r * d2.area();
+    let post_assimilation_n =
+        d1.interior.assimilation_n * d1.area() + d2.interior.assimilation_n * d2.area();
+    let post_assimilation_f =
+        d1.interior.assimilation_f * d1.area() + d2.interior.assimilation_f * d2.area();
     let post_u_h = d1.interior.u_h * d1.area() + d2.interior.u_h * d2.area();
     let post_u_b = d1.interior.u_b * d1.area() + d2.interior.u_b * d2.area();
     let post_tmpl = (d1.templates.len() + d2.templates.len()) as f64;
@@ -243,6 +255,8 @@ pub fn try_local_fission(
     };
     let residual_w = (post_w - expected_w).abs();
     let residual_r = (post_r - pre_r).abs();
+    let residual_assimilation_n = (post_assimilation_n - pre_assimilation_n).abs();
+    let residual_assimilation_f = (post_assimilation_f - pre_assimilation_f).abs();
     // Paired monomers released into daughter free pools at fission — allow that transfer.
     let residual_u_h = (post_u_h - pre_u_h).abs(); // may increase from paired release
     let residual_u_b = (post_u_b - pre_u_b).abs();
@@ -258,6 +272,8 @@ pub fn try_local_fission(
         && residual_f < 1e-4 * (1.0 + pre_f)
         && residual_w < 1e-4 * (1.0 + pre_w)
         && residual_r < 1e-4 * (1.0 + pre_r)
+        && residual_assimilation_n < 1e-4 * (1.0 + pre_assimilation_n)
+        && residual_assimilation_f < 1e-4 * (1.0 + pre_assimilation_f)
         && residual_templates < 0.5
         && (post_tmpl - pre_tmpl).abs() < 0.5
         && d1.n() >= 3
@@ -280,6 +296,8 @@ pub fn try_local_fission(
             residual_f,
             residual_w,
             residual_r,
+            residual_assimilation_n,
+            residual_assimilation_f,
             residual_u_h,
             residual_u_b,
             residual_templates,

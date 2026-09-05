@@ -1,0 +1,19 @@
+{
+  "prior_resource_causality": {
+    "active_first_fission_step": 25,
+    "transfer_disabled_first_fission_step": 25,
+    "active_first_transfer_step": 256,
+    "classification": "M2_RESOURCE_CAUSAL_FISSION_NOT_ESTABLISHED"
+  },
+  "closed_family": "CLOSURE-006 through CLOSURE-014 local active-work/contact/material allocation",
+  "m1": "CLOSED / FROZEN",
+  "production": "MaturationCoupledV4 / reserve OFF",
+  "pr44": {
+    "number": 44,
+    "state": "OPEN",
+    "draft": true,
+    "merged": false,
+    "modified": false
+  },
+  "independent_architect_acceptance": "PENDING"
+}

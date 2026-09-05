@@ -165,6 +165,13 @@ pub struct LumpedChem {
     pub n: f64,
     pub f: f64,
     pub w: f64,
+    /// Goal-mode finite environmental assimilation substrate. These fields
+    /// are zero in every historical schema and are only active in the
+    /// opt-in organism/world material-flow composition.
+    #[serde(default, skip_serializing_if = "is_zero_f64")]
+    pub assimilation_n: f64,
+    #[serde(default, skip_serializing_if = "is_zero_f64")]
+    pub assimilation_f: f64,
     /// Observer-only catalyst tracer (pulse-chase).
     #[serde(default)]
     pub tracer_c: f64,
@@ -207,6 +214,10 @@ pub struct LumpedChem {
     /// Free catalytic node K_B (D-094 building node).
     #[serde(default)]
     pub k_node_b: f64,
+}
+
+fn is_zero_f64(value: &f64) -> bool {
+    value.abs() <= f64::EPSILON
 }
 
 fn default_equation_id() -> String {
@@ -397,16 +408,20 @@ impl MaterialMesh {
     pub fn observer_viable(&self) -> bool {
         let ruptured = self.edges.iter().filter(|e| e.ruptured).count();
         let n = self.n().max(1);
+        let available_n = self.interior.n.max(0.0) + self.interior.assimilation_n.max(0.0);
+        let available_f = self.interior.f.max(0.0) + self.interior.assimilation_f.max(0.0);
         ruptured * 2 < n
             && !(self.interior.c < 1e-4
                 && self.total_structural_mass() < self.bond_threshold * n as f64)
             && !(self.interior.a < 1e-5 && self.interior.c < 1e-4)
-            && !(self.interior.a < 0.02 && self.interior.n * self.interior.f < 1e-8)
+            && !(self.interior.a < 0.02 && available_n * available_f < 1e-8)
     }
 
     pub fn observer_death_reason(&self) -> Option<&'static str> {
         let ruptured = self.edges.iter().filter(|e| e.ruptured).count();
         let n = self.n().max(1);
+        let available_n = self.interior.n.max(0.0) + self.interior.assimilation_n.max(0.0);
+        let available_f = self.interior.f.max(0.0) + self.interior.assimilation_f.max(0.0);
         if ruptured * 2 >= n {
             Some("mesh_rupture")
         } else if self.interior.c < 1e-4
@@ -415,7 +430,7 @@ impl MaterialMesh {
             Some("catalytic_structural_loss")
         } else if self.interior.a < 1e-5 && self.interior.c < 1e-4 {
             Some("activated_catalyst_collapse")
-        } else if self.interior.a < 0.02 && self.interior.n * self.interior.f < 1e-8 {
+        } else if self.interior.a < 0.02 && available_n * available_f < 1e-8 {
             Some("starvation_collapse")
         } else {
             None
@@ -593,6 +608,8 @@ pub fn conserve_interior_amount_across_area_change(
         &mut chem.n,
         &mut chem.f,
         &mut chem.w,
+        &mut chem.assimilation_n,
+        &mut chem.assimilation_f,
         &mut chem.tracer_c,
         &mut chem.c_h,
         &mut chem.c_b,

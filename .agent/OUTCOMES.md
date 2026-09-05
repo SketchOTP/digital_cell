@@ -1959,3 +1959,23 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Stop condition: do not implement the candidate until its conversion law is reviewed; do not search another local active-work/material-allocation variant.
 - Classification: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_REPLAN`.
 - Independent Architect acceptance: `PENDING`.
+
+## D-20260905-dcdev021-goal-environmental-assimilation-composition-r4-correction - PROVISIONAL NEGATIVE REPLAN
+
+- Outcome ID: `OUT-DCDEV021-GOAL-ENVIRONMENTAL-ASSIMILATION-COMPOSITION-R4-CORRECTION`.
+- The fresh release replay supersedes the stale provisional measurement: `278.7133755462829` N/F delivered, `275.6712480280603` each processed into the existing A pool, `24.05079502860805` structural growth recorded, and zero fissions by step `1101`.
+- Transfer-disabled delivered and processed zero environmental N/F and produced zero fissions; its recorded founder growth is not environmental growth.
+- No fission criterion, motor/allocation formula, production selector, M1 source, restart boundary, or PR #44 was changed.
+- Classification: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; independent Architect acceptance remains `PENDING`.
+- Stop condition: replan organism/world material flow; do not start another neighboring local assay.
+
+## D-20260905-dcdev021-goal-environmental-assimilation-composition-r4 - COMPLETE PROVISIONAL REPLAN
+
+- Outcome ID: `OUT-DCDEV021-GOAL-ENVIRONMENTAL-ASSIMILATION-COMPOSITION-R4`.
+- Starting head: `7f3c1e24f87838106cab6c423ae23dd355b5a0dd`.
+- Result: opt-in finite assimilation is conserved and growth-producing but insufficient to reach the unchanged fission gate; transfer-disabled remains at zero environmental processing and zero fission.
+- Route A remains closed by the existing-carrier audit. This candidate does not establish resource-causal reproduction.
+- Changed areas: opt-in chemistry fields/module, fission partition/remesh conservation, runtime flag/reporting, compact evidence, workflow/governance.
+- Stop condition: no additional local active-work/contact/material allocation formula; next work must be a reviewed organism/world material-flow architecture.
+- Classification: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_REPLAN`.
+- Independent Architect acceptance: `PENDING`.

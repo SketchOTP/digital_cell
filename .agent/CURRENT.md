@@ -174,6 +174,23 @@ Allowed adopted-project statuses: `IDLE`, `PLANNING`, `IN_PROGRESS`, `VALIDATING
 - Evidence: `digital-protocell/experiments/generated/m2-lifeform-runtime-v2/`; deterministic evidence payload digest `sha256:cbc71c06a817acc3b097c26c3168ad377ff9444c83c5a44cfb21ba9160c6bef9` excluding its manifest.
 - Status: `VALIDATING`; Architect acceptance and exact-head remote CI are pending for this increment. Autonomous acquisition, resource-causal reproduction, three generations, individuality, and standalone-lifeform completion remain `NOT_ESTABLISHED`.
 
+## Goal-mode finite assimilation composition R4
+
+- Audit document: `docs/goal-environmental-assimilation-composition-r4.md`.
+- Result: the opt-in finite environmental assimilation compartment conserves delivered N/F, processes retained N/F through the existing activation law, and produces structural growth through the existing local growth gate, but the unchanged `1.35 * birth_mass` fission gate is not reached.
+- Transfer-enabled replay: first transfer step 1; 345.49726922422525 N and F delivered; 254.11344151176982 each processed; 228.41819701432502 structural mass grown; zero fission events by step 1101; world conservation error zero.
+- Transfer-disabled replay: zero delivery, zero processing, zero growth from the new path, zero fission events.
+- Current status: `COMPLETE_PROVISIONAL_REPLAN`.
+- Acceptance: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_REPLAN`; independent Architect acceptance is pending.
+- Next boundary: replan organism/world material flow; do not reopen CLOSURE-006 through CLOSURE-014 local active-work/allocation formulas.
+
+## Goal-mode assimilation composition correction R4
+
+- Fresh faithful replay corrected the provisional measurement: environmental N/F delivery and processing are conserved, but the unchanged growth law recorded `24.05079502860805` structural growth and the active arm remained below the `1.35 * birth_mass` fission gate with zero fission events.
+- The processed material now enters the existing interior A pool; no private A-growth law or fission-gate change is retained. Transfer-disabled delivered and processed zero environmental N/F and also produced zero fission.
+- Classification: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; no independent Architect acceptance is claimed.
+- Stop condition: do not reopen CLOSURE-006 through CLOSURE-014 or try another local material/allocation variant. Replan the organism/world material-flow architecture before the next runtime execution.
+
 ## Closed bounded increment: native-polarity checkpointable runtime v2
 
 - Result head: `4cd426dc9083c40861c0992fc66ca771ed6ed0d2` on `m2/dc-dev-021-m2-standalone-lifeform-runtime`.

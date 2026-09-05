@@ -19,6 +19,8 @@ fn fixture() -> MaterialMesh {
             n: 0.5,
             f: 0.4,
             w: 0.3,
+            assimilation_n: 0.0,
+            assimilation_f: 0.0,
             tracer_c: 0.2,
             c_h: 0.35,
             c_b: 0.45,
