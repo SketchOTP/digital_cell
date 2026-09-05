@@ -1,0 +1,11 @@
+{
+  "starting_head_verified": true,
+  "pre_fission_resource_causality_audit": "active and transfer-disabled fission at step 25; first environmental transfer at step 256; pre-resource fission excluded",
+  "closed_formula_family": "CLOSURE-006 through CLOSURE-014",
+  "fission_gate": "unchanged 1.35 * birth_mass",
+  "production_selector": "MaturationCoupledV4 / reserve OFF",
+  "m1": "closed and frozen",
+  "pr_44": "open, draft, unmerged, untouched",
+  "scientific_runtime_core_changed": false,
+  "independent_architect_acceptance": false
+}

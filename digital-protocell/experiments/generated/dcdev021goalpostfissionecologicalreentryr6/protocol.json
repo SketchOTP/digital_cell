@@ -1,0 +1,14 @@
+{
+  "directive": "GOAL-LOOP-DIGITAL-CELL-MATERIAL-FLOW-REALIGNMENT-R2",
+  "increment": "post-fission ecological re-entry R6",
+  "starting_head": "13526747c44f9e1d07e5fbf49a3371dd62bb88b2",
+  "branch": "m2/dc-dev-021-goal-post-fission-ecological-reentry",
+  "role": "goal-agent architect and coder",
+  "acceptance_boundary": "GOAL_AGENT_PROVISIONALLY_ACCEPTED_OR_REPLAN",
+  "horizon_steps": 12000,
+  "seed": 2,
+  "dt": 0.02,
+  "active_arm": "post-fission ecology with finite environmental transfer",
+  "control_arm": "same post-fission ecology with transfer disabled",
+  "stop_condition": "do not issue another local active-work or material-allocation variant after this bounded negative"
+}

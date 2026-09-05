@@ -716,3 +716,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: VERIFIED
 - Scope: DC-DEV-021 M2 CLOSURE-010 combined local contact and post-ingestive material work reproduction qualification.
 - Supersedes learning: L-DCDEV021-M2-CLOSURE009-003
+
+## L-DCDEV021-GOAL-POST-FISSION-REENTRY-R6-001
+
+- Learning ID: L-DCDEV021-GOAL-POST-FISSION-REENTRY-R6-001
+- Date: 2026-09-05
+- Fact or lesson: Starting finite ecology after the already-observed unforced first fission removes the pre-resource reproductive-causality confound and preserves a real active/disabled resource comparison. In the fixed 12,000-step composition, active transfer delivered `1292.5610559030079` N/F per species and incorporated `60.49991542438786` structural mass with exact world conservation, kept both generation-1 daughters alive, but produced zero second-generation fissions. Transfer-disabled daughters received no environmental material and died by starvation collapse.
+- Evidence location: `digital-protocell/crates/m2-lifeform-runtime/src/main.rs`, `digital-protocell/experiments/generated/dcdev021goalpostfissionecologicalreentryr6/`, `.github/workflows/dc-dev-021-goal-post-fission-ecological-reentry.yml`, and `docs/goal-post-fission-ecological-reentry-r6.md`.
+- Confidence: PROVISIONAL
+- Scope: goal-mode organism/world material-flow realignment after sealed pre-resource fission causality negative.
+- Supersedes learning: none.

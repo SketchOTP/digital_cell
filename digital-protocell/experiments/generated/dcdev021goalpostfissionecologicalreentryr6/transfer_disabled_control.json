@@ -1,0 +1,20 @@
+{
+  "step": 12000,
+  "living_count": 0,
+  "total_individuals": 2,
+  "maximum_generation": 1,
+  "fission_events_after_ecology_start": 0,
+  "pre_ecology_fission_events": 1,
+  "first_transfer_step": null,
+  "first_fission_step": null,
+  "cumulative_n_delivered": 0.0,
+  "cumulative_f_delivered": 0.0,
+  "cumulative_n_processed": 0.0,
+  "cumulative_f_processed": 0.0,
+  "cumulative_m_incorporated": 0.0,
+  "world_n_conservation_error": 0.0,
+  "world_f_conservation_error": 0.0,
+  "terminal_death_reasons": ["starvation_collapse", "starvation_collapse"],
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED"
+}

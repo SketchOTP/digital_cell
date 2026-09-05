@@ -1,0 +1,19 @@
+{
+  "schema": "GOAL_AGENT_EVIDENCE_MANIFEST_V1",
+  "evidence_files": [
+    "protocol.json",
+    "authority.json",
+    "causal_order.json",
+    "active_arm.json",
+    "transfer_disabled_control.json",
+    "material_closure.json",
+    "route_decision.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "dense_runtime_reports": "retained outside the committed compact package and reproduced by exact-head workflow",
+  "source_report_paths": [
+    "/tmp/post-fission-active-12000.report.json",
+    "/tmp/post-fission-disabled-12000.report.json"
+  ]
+}

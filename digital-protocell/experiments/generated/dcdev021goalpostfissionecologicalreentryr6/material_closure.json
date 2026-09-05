@@ -1,0 +1,13 @@
+{
+  "active_world_n_conservation_error": 0.0,
+  "active_world_f_conservation_error": 0.0,
+  "disabled_world_n_conservation_error": 0.0,
+  "disabled_world_f_conservation_error": 0.0,
+  "active_environmental_transfer": true,
+  "disabled_environmental_transfer": false,
+  "active_processing_positive": true,
+  "disabled_processing_zero": true,
+  "active_incorporation_positive": true,
+  "disabled_incorporation_zero": true,
+  "interpretation": "finite environmental material is conserved and reaches existing assimilation/anabolic paths, but stable reproductive structural mass is not achieved"
+}

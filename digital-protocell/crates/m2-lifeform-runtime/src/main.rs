@@ -97,6 +97,12 @@ struct RuntimeSnapshot {
     developmental_initial_topology: usize,
     #[serde(default)]
     developmental_fission_boundary_reached: bool,
+    /// Ecological clock starts after an already-available unforced fission.
+    #[serde(default)]
+    ecology_started_after_unforced_fission: bool,
+    /// Developmental fissions are provenance, not ecological events.
+    #[serde(default)]
+    pre_ecology_fission_events: usize,
     motor_steps: u64,
     motor_failures: u64,
     #[serde(default)]
@@ -174,6 +180,8 @@ struct RuntimeReport {
     developmental_initial_topology: usize,
     developmental_initial_polarity_amplitude: f64,
     developmental_fission_boundary_reached: bool,
+    ecology_started_after_unforced_fission: bool,
+    pre_ecology_fission_events: usize,
     current_max_polarity_amplitude: f64,
     terminal_observer_death_reasons: Vec<Option<&'static str>>,
     active_motility: String,
@@ -194,6 +202,7 @@ struct Config {
     routec_reserve_growth: bool,
     assimilation_material_flow: bool,
     anabolic_incorporation: bool,
+    post_fission_ecology: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -237,6 +246,7 @@ fn parse_config() -> Config {
     let mut routec_reserve_growth = false;
     let mut assimilation_material_flow = false;
     let mut anabolic_incorporation = false;
+    let mut post_fission_ecology = false;
     let args: Vec<String> = env::args().skip(1).collect();
     let mut i = 0;
     while i < args.len() {
@@ -258,6 +268,11 @@ fn parse_config() -> Config {
                 assimilation_material_flow = true;
                 anabolic_incorporation = true;
             }
+            "--post-fission-ecology" => {
+                assimilation_material_flow = true;
+                anabolic_incorporation = true;
+                post_fission_ecology = true;
+            }
             _ => usage(),
         }
         i += 1;
@@ -273,6 +288,7 @@ fn parse_config() -> Config {
         routec_reserve_growth,
         assimilation_material_flow,
         anabolic_incorporation,
+        post_fission_ecology,
     }
 }
 
@@ -394,6 +410,150 @@ fn routeb_field(mesh: &chemistry_core::material_mesh::MaterialMesh) -> SpatialMa
     }
     SpatialMaterialFieldV1::new(nx, ny, dx, origin, n, f, 6.0)
         .expect("valid route-B finite spatial material field")
+}
+
+/// Build the same finite Route-B material units around both daughters after
+/// the already-observed developmental fission.  The ecology starts only at
+/// this boundary; no environmental material participates in the parent
+/// fission and the pre-ecology event is kept as provenance only.
+fn post_fission_field(
+    meshes: &[chemistry_core::material_mesh::MaterialMesh],
+    transfer_enabled: bool,
+) -> SpatialMaterialFieldV1 {
+    let nx = 64;
+    let ny = 64;
+    let dx = 4.0;
+    let min_x = meshes
+        .iter()
+        .map(|mesh| mesh.centroid()[0])
+        .fold(f64::INFINITY, f64::min);
+    let min_y = meshes
+        .iter()
+        .map(|mesh| mesh.centroid()[1])
+        .fold(f64::INFINITY, f64::min);
+    let origin = [min_x - 96.0, min_y - 96.0];
+    let mut n = vec![0.0; nx * ny];
+    let mut f = vec![0.0; nx * ny];
+    let cell_mass = RESOURCE_MASS / 36.0;
+    for mesh in meshes {
+        let center = mesh.centroid();
+        let cx = ((center[0] - origin[0]) / dx).floor() as isize;
+        let cy = ((center[1] - origin[1]) / dx).floor() as isize;
+        for j in cy - 3..=cy + 2 {
+            for i in cx - 3..=cx + 2 {
+                if i < 0 || j < 0 || i >= nx as isize || j >= ny as isize {
+                    continue;
+                }
+                let index = j as usize * nx + i as usize;
+                n[index] += cell_mass;
+                f[index] += cell_mass;
+            }
+        }
+    }
+    let mut field = SpatialMaterialFieldV1::new(nx, ny, dx, origin, n, f, 6.0)
+        .expect("valid post-fission finite spatial material field");
+    if !transfer_enabled {
+        field.n.fill(0.0);
+        field.f.fill(0.0);
+    }
+    field
+}
+
+/// Start the finite-material ecology from the exact unforced first fission
+/// already observed by the runtime causality audit.  This is a lifecycle
+/// composition correction, not a new growth, motor, or fission law.
+fn new_post_fission_snapshot(
+    seed: u64,
+    transfer_enabled: bool,
+) -> RuntimeSnapshot {
+    let mut founder = initial_population(seed).individuals.remove(0);
+    let (parent_polarity, developmental_bootstrap_steps, boundary_reached) =
+        develop_founder(&mut founder);
+    assert!(
+        boundary_reached,
+        "post-fission ecology requires the preregistered unforced developmental boundary"
+    );
+    let fission = FissionParams::default();
+    let (daughter_a, daughter_b, event) =
+        try_local_fission(&founder.mesh, &fission).expect("accepted unforced fission boundary");
+    let parent_amplitude = parent_polarity.nonconstant_amplitude();
+    let (state_a, state_b) =
+        parent_polarity.split_after_fission(&event, &daughter_a, &daughter_b, MechParams::default().dt);
+    let birth_a = daughter_a.total_structural_mass();
+    let birth_b = daughter_b.total_structural_mass();
+    let individuals = vec![
+        MeshIndividual {
+            mesh: daughter_a,
+            lineage_id: 2,
+            generation: 1,
+            birth_mass: birth_a,
+            clade: 0,
+        },
+        MeshIndividual {
+            mesh: daughter_b,
+            lineage_id: 3,
+            generation: 1,
+            birth_mass: birth_b,
+            clade: 0,
+        },
+    ];
+    let meshes: Vec<_> = individuals.iter().map(|individual| individual.mesh.clone()).collect();
+    let field = post_fission_field(&meshes, transfer_enabled);
+    let developmental_initial_topology = state_a.topology();
+    let previous_centroids = individuals
+        .iter()
+        .map(|individual| individual.mesh.centroid())
+        .collect();
+    RuntimeSnapshot {
+        schema: SCHEMA.to_string(),
+        step: 0,
+        seed,
+        population: MeshPopulation {
+            individuals,
+            next_lineage: 4,
+            fission_log: vec![event],
+        },
+        world: FiniteWorldV1::new(Vec::new()),
+        spatial_field: Some(field),
+        reserve_parameters: None,
+        assimilation_enabled: true,
+        anabolic_incorporation_enabled: true,
+        spatial_field_transfer_enabled: transfer_enabled,
+        cumulative_n_delivered: 0.0,
+        cumulative_f_delivered: 0.0,
+        cumulative_assimilation_n_processed: 0.0,
+        cumulative_assimilation_f_processed: 0.0,
+        cumulative_assimilation_a_produced: 0.0,
+        cumulative_assimilation_m_grown: 0.0,
+        cumulative_assimilation_m_incorporated: 0.0,
+        cumulative_n_world_loss: 0.0,
+        cumulative_f_world_loss: 0.0,
+        cumulative_fissions: 0,
+        cumulative_motor_a_spent: 0.0,
+        cumulative_slipping_contacts: 0,
+        cumulative_path: 0.0,
+        cumulative_contacts: 0,
+        first_contact_step: None,
+        first_transfer_step: None,
+        first_fission_step: None,
+        fission_observations: Vec::new(),
+        lineage_n_delivered: [(2, 0.0), (3, 0.0)].into_iter().collect(),
+        lineage_f_delivered: [(2, 0.0), (3, 0.0)].into_iter().collect(),
+        developmental_bootstrap_steps,
+        developmental_initial_polarity_amplitude: parent_amplitude,
+        developmental_initial_topology,
+        developmental_fission_boundary_reached: true,
+        ecology_started_after_unforced_fission: true,
+        pre_ecology_fission_events: 1,
+        motor_steps: 0,
+        motor_failures: 0,
+        polarity_states: vec![Some(state_a), Some(state_b)],
+        previous_centroids,
+        scientific_boundary: ScientificBoundary {
+            finite_world_exchange: "SpatialMaterialFieldV1 / post-fission daughter-local field".to_string(),
+            ..ScientificBoundary::default()
+        },
+    }
 }
 
 fn develop_founder_routeb(
@@ -676,6 +836,8 @@ fn new_snapshot(seed: u64) -> RuntimeSnapshot {
         developmental_initial_polarity_amplitude,
         developmental_initial_topology,
         developmental_fission_boundary_reached,
+        ecology_started_after_unforced_fission: false,
+        pre_ecology_fission_events: 0,
         motor_steps: 0,
         motor_failures: 0,
         polarity_states,
@@ -758,6 +920,8 @@ fn new_routeb_snapshot(
         developmental_initial_polarity_amplitude,
         developmental_initial_topology,
         developmental_fission_boundary_reached,
+        ecology_started_after_unforced_fission: false,
+        pre_ecology_fission_events: 0,
         motor_steps: 0,
         motor_failures: 0,
         polarity_states: vec![Some(developed_polarity)],
@@ -840,6 +1004,8 @@ fn new_routec_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         developmental_initial_polarity_amplitude,
         developmental_initial_topology,
         developmental_fission_boundary_reached,
+        ecology_started_after_unforced_fission: false,
+        pre_ecology_fission_events: 0,
         motor_steps: 0,
         motor_failures: 0,
         polarity_states: vec![Some(developed_polarity)],
@@ -1271,6 +1437,8 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
         developmental_initial_topology: snapshot.developmental_initial_topology,
         developmental_initial_polarity_amplitude: snapshot.developmental_initial_polarity_amplitude,
         developmental_fission_boundary_reached: snapshot.developmental_fission_boundary_reached,
+        ecology_started_after_unforced_fission: snapshot.ecology_started_after_unforced_fission,
+        pre_ecology_fission_events: snapshot.pre_ecology_fission_events,
         current_max_polarity_amplitude,
         terminal_observer_death_reasons: snapshot
             .population
@@ -1294,7 +1462,9 @@ fn main() {
         .as_deref()
         .map(load_snapshot)
         .unwrap_or_else(|| {
-            if config.assimilation_material_flow {
+            if config.post_fission_ecology {
+                new_post_fission_snapshot(config.seed, !config.transfer_disabled)
+            } else if config.assimilation_material_flow {
                 new_routeb_snapshot(
                     config.seed,
                     !config.transfer_disabled,

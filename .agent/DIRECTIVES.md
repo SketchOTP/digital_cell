@@ -103,6 +103,20 @@ After adoption, this append-only ledger records project directives issued by the
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260905-dcdev021-goal-post-fission-ecological-reentry-r6
+
+- Issued: `2026-09-05T15:20:00-04:00`
+- Issuer: User
+- External directive: `GOAL-LOOP-DIGITAL-CELL-MATERIAL-FLOW-REALIGNMENT-R2`
+- Objective: test whether the existing finite-transfer, frozen metabolism, anabolic incorporation, growth, and fission composition can produce resource-causal reproduction when ecology begins after the already-observed unforced first fission.
+- Scope: opt-in runtime composition, active/transfer-disabled 12,000-step controls, exact conservation, post-fission lineage boundary, compact evidence, scoped Linux workflow, and append-only governance.
+- Exclusions: CLOSURE-006 through CLOSURE-014 neighboring formula search, changing the `1.35` gate, new gains/thresholds/timers, resource geometry tuning, new sensors, navigation, memory, fission redesign, M1 changes, restart repair, PR #44 modification, and any successor execution after a bounded negative without independent review.
+- Acceptance: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN` or `GOAL_AGENT_PROVISIONALLY_ACCEPTED`; independent Architect review remains required.
+- Risk class: HIGH
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
+
 ANIMUS ONE may copy or aggregate the resulting governance files for centralized visibility. ANIMUS ONE does not issue, approve, modify, execute, reconcile, or close directives.
 
 ## Entry schema after adoption

@@ -1,0 +1,31 @@
+{
+  "step": 12000,
+  "living_count": 2,
+  "total_individuals": 2,
+  "maximum_generation": 1,
+  "fission_events_after_ecology_start": 0,
+  "pre_ecology_fission_events": 1,
+  "first_transfer_step": 1,
+  "first_fission_step": null,
+  "cumulative_n_delivered": 1292.5610559030079,
+  "cumulative_f_delivered": 1292.5610559030079,
+  "cumulative_n_processed": 1255.2096180495662,
+  "cumulative_f_processed": 1255.2096180495662,
+  "cumulative_a_produced": 1255.2096180495662,
+  "cumulative_m_incorporated": 60.49991542438786,
+  "cumulative_m_grown": 79.05148185310003,
+  "cumulative_a_spent": 3509.053647435959,
+  "cumulative_path": 27.751193239107977,
+  "slipping_contacts": 720015,
+  "motor_steps": 24000,
+  "motor_failures": 0,
+  "world_n_conservation_error": 0.0,
+  "world_f_conservation_error": 0.0,
+  "terminal_death_reasons": [null, null],
+  "daughter_final_mass": [
+    {"lineage_id": 2, "birth_mass": 368.6346971501996, "structural_mass": 27.39750020961605, "young_mass": 4.055590929590063},
+    {"lineage_id": 3, "birth_mass": 1085.9176061382307, "structural_mass": 110.38491975880392, "young_mass": 12.633781945824511}
+  ],
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED"
+}

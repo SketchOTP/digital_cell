@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-05T13:35:00-04:00`
+- Last updated: `2026-09-05T15:20:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260905-dcdev021-goal-material-flow-contract-audit-r2`
+- Local directive ID: `D-20260905-dcdev021-goal-post-fission-ecological-reentry-r6`
 - External directive ID: `GOAL-LOOP-DIGITAL-CELL-MATERIAL-FLOW-REALIGNMENT-R2`
-- Objective: Reconstruct the organism/world material-flow bottleneck after the sealed resource-to-fission negative and stop the exhausted local active-work formula family.
-- Current status: `COMPLETE_PROVISIONAL_REPLAN`
+- Objective: Test the largest remaining post-fission Route-A composition, then replan organism/world material flow if finite transfer supports survival but not resource-causal reproduction.
+- Current status: `VALIDATING`
 - Acceptance: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_REPLAN`
 - Current phase: `organism/world material-flow architecture boundary`
 - Expected or actual touched areas: `source-level contract audit, provisional architecture documentation, append-only governance`
-- Immediate next action: `independent Architect review required before implementing a new assimilation/provenance material state`
+- Immediate next action: `exact-head Linux validation, artifact verification, and independent Architect review before any new material-flow architecture`
 
 ## Goal-mode existing-carrier audit R3
 
@@ -252,3 +252,14 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Stop condition: do not reopen CLOSURE-006 through CLOSURE-014 or search
   another local active-work/allocation variant. Replan organism/world
   material flow before another runtime execution.
+
+## Goal-mode post-fission ecological re-entry R6
+
+- Current branch: `m2/dc-dev-021-goal-post-fission-ecological-reentry`.
+- Starting head: `13526747c44f9e1d07e5fbf49a3371dd62bb88b2`.
+- Objective: test the largest remaining Route-A composition by starting finite ecology only after the already-observed unforced first fission, then compare active transfer with a transfer-disabled generation-1 control.
+- Local result: active transfer delivered `1292.5610559030079` N/F per species, processed `1255.2096180495662`, incorporated `60.49991542438786` structural mass, conserved world N/F exactly, kept both daughters alive through step `12000`, and produced zero second-generation fissions. The disabled control delivered and processed zero environmental material, produced zero fissions, and both daughters died by starvation collapse.
+- Classification: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; independent Architect acceptance is not asserted.
+- Route decision: current post-fission bulk N/F → activation → anabolic incorporation does not produce resource-causal reproduction under the unchanged `1.35 * birth_mass` gate. Replan organism/world material flow; do not issue another CLOSURE-006 through CLOSURE-014 neighboring formula.
+- Evidence: `digital-protocell/experiments/generated/dcdev021goalpostfissionecologicalreentryr6/`, workflow `.github/workflows/dc-dev-021-goal-post-fission-ecological-reentry.yml`, and `docs/goal-post-fission-ecological-reentry-r6.md`.
+- Notion sync: unavailable in this session (`404 object_not_found`); no external acceptance is claimed.

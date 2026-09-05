@@ -1004,3 +1004,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
   does not authorize another neighboring local formula search; the next work
   must replan organism/world material flow from the end-goal causal contract.
 - Independent Architect acceptance: `PENDING`.
+
+## DEC-DCDEV021-GOAL-POST-FISSION-ECOLOGICAL-REENTRY-R6
+
+- Date: `2026-09-05`
+- Status: `PROVISIONAL_REPLAN`
+- Record or decision ID: `DEC-DCDEV021-GOAL-POST-FISSION-ECOLOGICAL-REENTRY-R6`
+- Decision or event: perform the largest coherent Route-A composition remaining after the sealed pre-resource fission causality negative: begin environmental exchange only after the accepted unforced first fission, preserve actual daughter birth state, and test active versus transfer-disabled ecology.
+- Rationale: active finite transfer supports survival and conserves world N/F exactly, but zero second-generation fissions occur by step `12000`; disabled daughters receive no environmental material and starve. The unchanged `1.35 * birth_mass` gate is retained, so the current bulk environmental N/F → activation → anabolic incorporation path is insufficient for resource-causal reproduction.
+- Affected areas: opt-in runtime composition, compact evidence, scoped workflow, documentation, and append-only governance; no frozen scientific core, fission gate, M1 source, restart boundary, or PR #44 change.
+- Supersedes record: none

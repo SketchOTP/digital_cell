@@ -1,0 +1,18 @@
+{
+  "order": [
+    "unforced developmental growth",
+    "existing physical mother-to-daughter fission",
+    "generation-1 birth masses and inherited polarity committed",
+    "finite daughter-local environmental field initialized",
+    "environmental transfer",
+    "frozen reactions and assimilation",
+    "existing anabolic incorporation and growth",
+    "existing mechanics, remesh, polarity continuation",
+    "unchanged 1.35 birth-mass fission eligibility check"
+  ],
+  "pre_ecology_fission_events": 1,
+  "ecology_started_after_unforced_fission": true,
+  "first_environmental_transfer_step_active": 1,
+  "first_second_generation_fission_step_active": null,
+  "pre_resource_fission_counted_as_resource_causal": false
+}

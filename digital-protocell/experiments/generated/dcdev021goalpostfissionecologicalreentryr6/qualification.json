@@ -1,0 +1,14 @@
+{
+  "classification": "GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN",
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "finite_resource_dependence": "SUPPORTED",
+  "post_fission_survival_support": "SUPPORTED",
+  "three_generations": "NOT_ESTABLISHED",
+  "heritable_ecological_phenotype": "NOT_ESTABLISHED",
+  "evolution": "NOT_ESTABLISHED",
+  "learning": "NOT_ESTABLISHED",
+  "individuality": "NOT_ESTABLISHED",
+  "unattended_standalone_lifeform": "NOT_ESTABLISHED",
+  "independent_architect_acceptance": "PENDING",
+  "notion_sync": "UNAVAILABLE_IN_SESSION_404_OBJECT_NOT_FOUND"
+}

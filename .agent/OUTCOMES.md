@@ -1998,3 +1998,15 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Stop condition: no additional local active-work/contact/material allocation formula; next work must be a reviewed organism/world material-flow architecture.
 - Classification: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_REPLAN`.
 - Independent Architect acceptance: `PENDING`.
+
+## D-20260905-dcdev021-goal-post-fission-ecological-reentry-r6 - COMPLETE PROVISIONAL REPLAN
+
+- Outcome ID: `OUT-DCDEV021-GOAL-POST-FISSION-ECOLOGICAL-REENTRY-R6`.
+- Starting head: `13526747c44f9e1d07e5fbf49a3371dd62bb88b2`.
+- Scope: start the finite ecology after the existing unforced first fission, preserve actual daughter birth masses and inherited state, and compare active transfer with a transfer-disabled twin over 12,000 steps.
+- Result: active transfer delivered `1292.5610559030079` N/F per species, processed `1255.2096180495662`, incorporated `60.49991542438786` structural mass, and kept two generation-1 daughters alive, but produced zero second-generation fissions. The disabled twin had zero environmental processing/incorporation, zero fissions, and two starvation-collapse deaths. World N/F conservation error was exactly zero in both arms.
+- Classification: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`.
+- Route decision: the tested Route-A composition supports post-fission survival but not resource-causal reproduction. Route-B organism/world material-flow replan is required provisionally.
+- Changed areas: opt-in runtime composition, compact evidence, scoped workflow, documentation, and append-only governance only. No frozen scientific core, `1.35` gate, M1 source, restart boundary, or PR #44 changed.
+- Validation: local release active/disabled controls and runtime build/tests passed; exact-head Linux CI and artifact digest are pending; Architect acceptance is pending; Notion sync was unavailable in-session.
+- Stop condition: do not run another neighboring active-work, contact, material-fraction, or motor-allocation formula. Reconstruct a new material-flow architecture before another runtime execution.
