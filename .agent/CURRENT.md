@@ -3,18 +3,18 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-04T19:37:00-04:00`
+- Last updated: `2026-09-05T00:00:00-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20260904-dcdev021-m2-closure005-per-lineage-reproductive-ecology`
 - External directive ID: `DC-DEV-021-M2-CLOSURE-005-PER-LINEAGE-RESOURCE-CAUSAL-REPRODUCTION-SHARED-ECOLOGY-AND-HEREDITY-001`
 - Objective: Resolve per-lineage spatial reproductive sufficiency and shared-resource attribution without changing organism behavior.
-- Current status: `VALIDATING`
-- Acceptance: `PENDING_ARCHITECT`
-- Current phase: `CLOSURE-005 exact-head validation complete; Architect acceptance pending`
+- Current status: `IDLE`
+- Acceptance: `ARCHITECT_ACCEPTED`
+- Current phase: `CLOSURE-005 accepted as a bounded unresolved reproductive-context result`
 - Expected or actual touched areas: `isolated CLOSURE-005 assay, compact evidence, scoped workflow, append-only governance`
-- Immediate next action: `Architect review; no successor execution authorized`
+- Immediate next action: `No successor execution authorized; await a separately authorized directive`
 
 ## Temporary task-relevant facts
 
@@ -90,4 +90,14 @@ CLOSURE-004 is Architect accepted at exact governance head `76094ccaf265b90e9b98
 
 CLOSURE-005 local result: the fixed-coordinate paired replay has exact aggregate parity with CLOSURE-004. Solo Daughter A acquires `99.29887582275623` N/F (`0.13841369486985897` of demand) and does not fission. Solo Daughter B acquires `1146.3487440851745` N/F (`1.1220090079202578` of calibrated demand) and still does not fission, establishing the bounded context-dependent classification locally. Exact-head CI and artifact verification pass; Architect acceptance remains pending.
 
-CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d33`; exact-head Linux CI `33938909541` passed; independently downloaded artifact ZIP digest `sha256:7c8a8188e130242d0d2faa1ed38638d3f28f932af40b6a34344b5173538563e6`; Notion append-only readback passed; Architect acceptance remains pending.
+CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d33`; exact-head Linux CI `33938909541` passed; independently downloaded artifact ZIP digest `sha256:7c8a8188e130242d0d2faa1ed38638d3f28f932af40b6a34344b5173538563e6`; Notion append-only readback passed; Architect acceptance is complete for the bounded classification `M2_REPRODUCTIVE_RESOURCE_UNIT_CONTEXT_DEPENDENT_UNRESOLVED`.
+
+## CLOSURE-005 Architect acceptance
+
+- Accepted: `2026-09-05`
+- Classification: `M2_REPRODUCTIVE_RESOURCE_UNIT_CONTEXT_DEPENDENT_UNRESOLVED`
+- Result authority: `90f5d2a10007455117b1278c5b902af896d95d33`
+- Exact-head CI: `33938909541`
+- Artifact digest: `sha256:7c8a8188e130242d0d2faa1ed38638d3f28f932af40b6a34344b5173538563e6`
+- Acceptance basis: per-lineage and aggregate accounting pass; Daughter B exceeds the calibrated scalar reproductive demand but neither Daughter A nor Daughter B reaches unforced physical fission in the frozen spatial ecology; descendants, heritable ecological phenotype, and evolution re-entry remain unestablished.
+- Boundary: no resource unit enlargement, geometry change, behavioral tuning, fission redesign, or successor execution is authorized by this acceptance.
