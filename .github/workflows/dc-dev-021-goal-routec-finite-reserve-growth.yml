@@ -36,6 +36,8 @@ jobs:
 
           start = sys.argv[1]
           allowed = {
+              '.agent/RECORD.md',
+              '.agent/OUTCOMES.md',
               '.github/workflows/dc-dev-021-goal-routec-finite-reserve-growth.yml',
               'digital-protocell/crates/chemistry-core/src/d091_analysis.rs',
               'digital-protocell/crates/m2-lifeform-runtime/src/main.rs',

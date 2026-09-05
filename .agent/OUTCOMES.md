@@ -1921,3 +1921,15 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Result: both arms fission once at step `25`; active first transfer is step `256`; disabled first transfer is absent; the parent received zero N/F before fission in both arms.
 - Classification: `M2_RESOURCE_CAUSAL_FISSION_NOT_ESTABLISHED`.
 - Boundary: bounded negative only. No scientific chemistry, growth, fission, resource, motor, M1, restart, or PR #44 behavior is claimed changed. Architect acceptance, exact-head CI, and artifact digest are pending.
+
+## D-20260905-dcdev021-goal-routec-finite-reserve-growth - COMPLETE PROVISIONAL
+
+- Outcome ID: `OUT-DCDEV021-GOAL-ROUTEC-FINITE-RESERVE-GROWTH`
+- Goal-agent classification: `GOAL_AGENT_PROVISIONALLY_NEGATIVE`
+- Starting head: `2d9372b38e5a81f5176ffcca14a00d569a204668`
+- Result head: `8b0212fbcc3a1df233666da9a3ebc1e8a00e43a4`
+- Exact-head Linux CI: `33979584716` passed.
+- Scope: existing D-091 reserve composed with finite Route-B environmental N/F transfer; reserve remains opt-in and production remains `MaturationCoupledV4 / reserve OFF`.
+- Result: active arm delivered `200.0863577497187` N/F with zero conservation residual and remained alive, but produced zero fissions; transfer-disabled arm delivered zero N/F, produced zero fissions, and ended in `starvation_collapse`.
+- Boundary: transfer is necessary for viability in this composition but insufficient for resource-causal reproduction. Do not reopen the local active-work formula family or search another nearby reserve/material-flow variant.
+- External Architect acceptance: `PENDING`; autonomous resource acquisition and full standalone-lifeform completion remain unestablished.

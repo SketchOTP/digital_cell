@@ -937,3 +937,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Result: in both active and transfer-disabled seed-2 replays, the first physical fission occurs at step `25`; the active arm's first N/F transfer occurs at step `256`. The fissioning parent has cumulative delivered N/F of `0.0 / 0.0` in both arms. Active transfer therefore occurs after, rather than causing, the observed fission.
 - Classification: `M2_RESOURCE_CAUSAL_FISSION_NOT_ESTABLISHED`.
 - Boundary: this is one bounded causal control, not a general negative over all life histories. Autonomous acquisition, resource-causal reproduction, descendants, heredity, evolution, learning, individuality, unattended persistence, and standalone-lifeform completion remain unestablished. Architect acceptance and exact-head CI are pending.
+
+## DEC-DCDEV021-GOAL-ROUTEC-FINITE-RESERVE-GROWTH
+
+- Date: `2026-09-05`
+- Status: `GOAL_AGENT_PROVISIONALLY_NEGATIVE`
+- Authority: starts from goal-agent replan head `2d9372b38e5a81f5176ffcca14a00d569a204668`; result head `8b0212fbcc3a1df233666da9a3ebc1e8a00e43a4`; exact-head Linux CI `33979584716` passed.
+- Scope: one opt-in composition of the finite Route-B spatial N/F field with the already-derived D-091 H=2 reserve physiology. The historical reserve-off production path remains unchanged.
+- Result: active transfer begins during the developmental composition, conserves N/F exactly, and leaves one organism alive after 3000 runtime steps; the matched transfer-disabled arm delivers zero N/F and starves. Neither arm fissions.
+- Classification: `GOAL_AGENT_PROVISIONALLY_NEGATIVE`; resource-causal reproduction remains `NOT_ESTABLISHED`.
+- Boundary: CLOSURE-006 through CLOSURE-014 local active-work/contact/material formula search remains closed. No new gain, threshold, inventory, fission gate, hidden bath, or reserve horizon was searched. No independent Architect acceptance is claimed.
