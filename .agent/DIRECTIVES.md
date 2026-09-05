@@ -14,6 +14,16 @@
 - Related directive: none
 - Status at issuance: ISSUED
 
+## D-20260905-dcdev021-m2-standalone-lifeform-runtime
+
+- Issued: `2026-09-05`
+- Issuer: Architect/Coder session authority
+- Objective: integrate the existing finite-world material exchange, accepted ENTRY-005 refractory motor, conservative MaturationCoupledV4 reaction/growth path, physical fission path, and checkpoint/resume into one headless Linux runtime without changing scientific runtime sources.
+- Scope: new workspace crate `m2-lifeform-runtime`, compact runtime evidence, scoped exact-head workflow, and append-only governance.
+- Exclusions: new sensing, target/gradient logic, new motor law, post-fission intrinsic-state reseeding, forced fission, resource repositioning, horizon expansion, metabolism/fission changes, M1 changes, restart repair, and PR #44 modification.
+- Acceptance boundary: engineering increment only. A pass requires build/test, checkpoint-resume parity, exact world N/F conservation, active existing motor execution on unchanged topology, and preservation of explicit unresolved acquisition/reproduction boundaries.
+- Status at issuance: ISSUED
+
 ## D-20260905-dcdev021-m2-closure007-post-ingestive-material-work
 
 - Issued: `2026-09-05T00:00:00-04:00`

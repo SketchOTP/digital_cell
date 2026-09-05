@@ -25,6 +25,15 @@ Allowed adopted-project outcome states: `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILE
 - Blockers: exact-head Linux CI and Architect review.
 - Follow-up directive: none
 
+## D-20260905-dcdev021-m2-standalone-lifeform-runtime - IN PROGRESS
+
+- Outcome ID: `OUT-DCDEV021-M2-STANDALONE-LIFEFORM-RUNTIME-INCREMENT`
+- Started: `2026-09-05`
+- Scope: add a checkpointable Linux orchestration binary around the existing finite-world exchange, ENTRY-005 refractory motor, conservative reaction/growth path, physical fission path, and restart serialization.
+- Current result: local build, unit checkpoint round-trip, and 100-step split-run verification pass. The runtime reports exact world N/F conservation and preserves explicit `NOT_ESTABLISHED` status for separated acquisition and resource-causal reproduction.
+- Scientific boundary: no frozen scientific runtime source changed; no resource sensor, target, gradient, new parameter, post-fission reseed, or scripted fission was added.
+- Pending authority: exact-head Linux CI, artifact digest, and Architect review.
+
 ## D-20260905-dcdev021-m2-closure010-combined-local-contact-material-work - COMPLETE
 
 - Outcome ID: `OUT-DCDEV021-M2-CLOSURE010-COMBINED-LOCAL-CONTACT-MATERIAL-WORK`

@@ -99,3 +99,11 @@ CLOSURE-004 is Architect accepted at exact governance head `76094ccaf265b90e9b98
 CLOSURE-005 local result: the fixed-coordinate paired replay has exact aggregate parity with CLOSURE-004. Solo Daughter A acquires `99.29887582275623` N/F (`0.13841369486985897` of demand) and does not fission. Solo Daughter B acquires `1146.3487440851745` N/F (`1.1220090079202578` of calibrated demand) and still does not fission, establishing the bounded context-dependent classification locally. Exact-head CI and artifact verification pass; Architect acceptance remains pending.
 
 CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d33`; exact-head Linux CI `33938909541` passed; independently downloaded artifact ZIP digest `sha256:7c8a8188e130242d0d2faa1ed38638d3f28f932af40b6a34344b5173538563e6`; Notion append-only readback passed; Architect acceptance remains pending.
+
+## Active implementation cycle: checkpointable Linux lifeform runtime
+
+- Branch: `m2/dc-dev-021-m2-standalone-lifeform-runtime` from accepted CLOSURE-010 head `4587008cebb3a5393d74a2d6965b7273914e7d83`.
+- Scope: additive orchestration only. The new `m2-lifeform-runtime` binary composes `FiniteWorldV1`, the accepted ENTRY-005 refractory motor on unchanged topology, `MeshPopulation` reaction/growth/fission, and JSON checkpoint/resume.
+- Local verification: 100-step split run (50 + resume 50) passed with 100 motor steps, 172 slipping contacts, nonzero A expenditure, zero motor failures, and exact zero world N/F conservation error.
+- Boundary: separated resources remain out of contact in this runtime increment; acquisition, resource-causal reproduction, three-generation reproduction, and post-fission intrinsic-state continuation remain `NOT_ESTABLISHED`. No new motor seed is created after fission.
+- Pending: exact-head Linux workflow, artifact digest, and Architect acceptance for this engineering increment.

@@ -1,0 +1,11 @@
+{
+  "upstream_acceptance": "CLOSURE-010",
+  "upstream_head": "4587008cebb3a5393d74a2d6965b7273914e7d83",
+  "upstream_ci": "33954157163",
+  "upstream_artifact_digest": "sha256:5fec11f8c1db1dd9be605cb5d59fe61cdf1f9124dc458d80282c5ed40a18ea44",
+  "scientific_runtime_source_changed": false,
+  "pr_44": "OPEN_DRAFT_UNMERGED_UNTOUCHED",
+  "m1": "CLOSED_FROZEN",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "resource_causal_reproduction": "NOT_ESTABLISHED"
+}

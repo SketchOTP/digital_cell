@@ -1,0 +1,15 @@
+[package]
+name = "m2-lifeform-runtime"
+version.workspace = true
+edition.workspace = true
+description = "Checkpointable Linux orchestration of the existing finite-material lifecycle contracts"
+
+[dependencies]
+chemistry-core = { path = "../chemistry-core" }
+regulatory-core = { path = "../regulatory-core" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[[bin]]
+name = "digital-protocell-m2-runtime"
+path = "src/main.rs"

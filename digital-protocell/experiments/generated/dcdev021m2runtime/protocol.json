@@ -1,0 +1,22 @@
+{
+  "schema": "digital_cell_m2_runtime_engineering_increment_v1",
+  "starting_authority_head": "4587008cebb3a5393d74a2d6965b7273914e7d83",
+  "branch": "m2/dc-dev-021-m2-standalone-lifeform-runtime",
+  "purpose": "checkpointable Linux orchestration of existing finite-world material, metabolism, growth, fission, and ENTRY-005 motor contracts",
+  "steps": {
+    "finite_world": "regulatory_core::FiniteWorldV1",
+    "motor": "regulatory_core::apply_intrinsic_exploration_refractory_motor_with_stick_slip",
+    "chemistry": "chemistry_core::ReactionParams::conservative_v3",
+    "population": "chemistry_core::MeshPopulation::step",
+    "checkpoint": "serde_json snapshot and resume"
+  },
+  "forbidden": [
+    "new resource sensor",
+    "target or gradient",
+    "observer reward",
+    "new actuator or traction law",
+    "new metabolic parameter",
+    "scripted fission",
+    "hidden post-fission motor reseed"
+  ]
+}

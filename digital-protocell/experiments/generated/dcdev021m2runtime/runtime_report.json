@@ -1,0 +1,23 @@
+{
+  "schema": "digital_cell_m2_checkpointable_lifeform_runtime_v1",
+  "step": 100,
+  "seed": 1,
+  "living_count": 1,
+  "total_individuals": 1,
+  "maximum_generation": 0,
+  "fission_events": 0,
+  "world_n_mass_remaining": 12.0,
+  "world_f_mass_remaining": 12.0,
+  "cumulative_n_delivered": 0.0,
+  "cumulative_f_delivered": 0.0,
+  "world_n_conservation_error": 0.0,
+  "world_f_conservation_error": 0.0,
+  "motor_steps": 100,
+  "motor_failures": 0,
+  "cumulative_motor_a_spent": 0.5449369219474002,
+  "cumulative_slipping_contacts": 172,
+  "active_motility": "ENTRY-005 refractory motor integrated while topology is unchanged",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "checkpoint": "/tmp/m2-runtime-evidence-1788596773.snapshot.json"
+}

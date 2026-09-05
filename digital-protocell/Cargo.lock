@@ -832,6 +832,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "m2-lifeform-runtime"
+version = "0.1.0"
+dependencies = [
+ "chemistry-core",
+ "regulatory-core",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "maybe-rayon"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"

@@ -795,3 +795,11 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: The exact assay-local composition improves finite N/F delivery and lowers A spending, but no candidate scope fissions. Daughter B and paired motor-off controls fission once, so combined local contact/material work remains a bounded acquisition/work benefit rather than resource-causal reproduction.
 - Affected areas: additive CLOSURE-010 assay/example, compact evidence, workflow, generated qualification metadata, and governance only; no frozen scientific runtime, uptake/metabolism/growth/fission source, M1 provenance, restart boundary, or PR #44 modification.
 - Supersedes record: DEC-DCDEV021-M2-CLOSURE010-COMBINED-LOCAL-CONTACT-MATERIAL-WORK
+
+## DEC-DCDEV021-M2-STANDALONE-LIFEFORM-RUNTIME-INCREMENT
+
+- Date: `2026-09-05`
+- Status: `IN_PROGRESS`
+- Decision: build a headless checkpointable runtime at the orchestration boundary rather than alter frozen scientific sources or claim the unresolved life-cycle gates are solved.
+- Current evidence: the local 100-step split run executes the existing ENTRY-005 refractory motor 100 times, records 172 slipping contacts and nonzero A spending, and reconciles world N/F loss against delivery at zero error.
+- Unresolved: separated autonomous acquisition, resource-causal reproduction, three-generation reproduction, and continuation of intrinsic motor state after fission.

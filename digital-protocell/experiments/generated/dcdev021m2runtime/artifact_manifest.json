@@ -1,0 +1,10 @@
+{
+  "schema": "digital_cell_m2_runtime_artifact_manifest_v1",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "qualification.json",
+    "runtime_report.json"
+  ],
+  "runtime_report_is_generated": true
+}
