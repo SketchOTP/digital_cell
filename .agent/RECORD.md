@@ -1044,3 +1044,25 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Rationale: a historical workflow must preserve its original authority without treating later goal-cycle files as an R6 implementation diff. The R7 workflow remains the authority for the current flux-ledger increment.
 - Affected areas: GitHub workflow scope and append-only governance only; no runtime biology, fission gate, material-flow mechanism, or historical R6 result changed.
 - Supersedes record: none
+
+## DEC-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R8
+
+- Date: `2026-09-05`
+- Status: `PROVISIONAL_ARCHITECTURE_SELECTION`
+- Record or decision ID: `DEC-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R8`
+- Decision or event: preserve R7's first environmental-transfer divergence,
+  qualify the source-level boundary mismatch between the whole-membrane
+  reference and spatial field replay, and require a material-flow contract
+  before any successor runtime mechanism.
+- Rationale: the paths share the existing local transport terms, but the
+  whole-membrane reference exposes all membrane segments at a fixed boundary
+  concentration while the spatial path samples finite local cells and allocates
+  against per-cell inventory. R7 also compares `8192` reference N/F stock
+  with `2043.3859906526618` spatial stock across two daughters. The first
+  observed divergence is therefore real for the tested compositions but is not
+  a normalized universal transport ceiling. Assimilation is downstream of
+  this divergence and remains unaccepted.
+- Affected areas: observer/source audit, architecture contract, evidence, and
+  workflow allowlist only; no new organism/world mechanism, fission-gate
+  change, formula search, or independent Architect acceptance.
+- Supersedes record: `DEC-DCDEV021-GOAL-UNIFIED-FLUX-BUDGET-AUDIT-R7`

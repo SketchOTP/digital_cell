@@ -292,6 +292,16 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Artifact digest: `sha256:772de052cb2baad489aee16bd1a8ad82faad87552745fbb0b784e9764184b41b`.
 - Goal-agent provisional acceptance: audit evidence sealed; independent
   Architect acceptance is not claimed.
+- R8 source-level transfer-boundary audit: the first divergence is confirmed
+  at environmental N/F transfer, but the whole-membrane and spatial replay do
+  not expose equivalent boundaries or total environmental stock. The source
+  laws share permeability, `k_flux`, edge length, driving force, and `dt`; the
+  spatial path additionally limits transfer by local field-supported edge
+  exposure and per-cell finite allocation. Architecture selection therefore
+  remains a contract-before-runtime decision, not authorization for another
+  field, buffer, assimilation, allocation, or active-work variant.
+- R8 status: `GOAL_AGENT_PROVISIONAL_ARCHITECTURE_SELECTION`; no successor
+  runtime execution started; assimilation remains `INVESTIGATE_NOT_ACCEPTED`.
 - Workflow reconciliation: the archival R6 workflow rejected descendant R7
   files through its historical allowlist; it is now exact-head gated to the
   sealed R6 result and is not authoritative for successor cycles. The failed

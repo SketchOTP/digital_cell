@@ -22,6 +22,16 @@ START_HEAD = "c51e5d997099b8cac703b3d0345ebf39cab729b5"
 REFERENCE_CAPACITY = 4096.0
 CHECKPOINTS = (1, 250, 350, 12000)
 
+# Source-level constants for the transfer-boundary audit.  These are not new
+# runtime parameters; they identify the already-existing Route-B and sealed
+# whole-membrane contracts being compared.
+SPATIAL_RESOURCE_MASS_PER_DAUGHTER = 1021.692995326332
+SPATIAL_PATCH_CELLS_PER_DAUGHTER = 36
+SPATIAL_CELL_DX = 4.0
+WHOLE_MEMBRANE_BOUNDARY_CONCENTRATION = 2.063914918930895
+TRANSPORT_K_FLUX = 1.1
+MECHANICS_DT = 0.02
+
 
 def write_json(path: Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -180,6 +190,77 @@ def reference_state(reference: dict[str, Any], step: int) -> dict[str, Any] | No
     }
 
 
+def transfer_boundary_audit(comparisons: list[dict[str, Any]]) -> dict[str, Any]:
+    """Describe the first-divergence transfer boundary without proposing a fix.
+
+    The whole-membrane calibration and Route-B replay are both finite and
+    conservative, but they do not expose the same external boundary.  This
+    record makes that fact explicit so the first-divergence result is not
+    mistaken for a normalized transport-capacity comparison.
+    """
+    first = comparisons[0]
+    spatial = first["spatial_active"]
+    reference = first["reference"]
+    cell_mass = SPATIAL_RESOURCE_MASS_PER_DAUGHTER / SPATIAL_PATCH_CELLS_PER_DAUGHTER
+    cell_volume = SPATIAL_CELL_DX * SPATIAL_CELL_DX
+    initial_cell_concentration = cell_mass / cell_volume
+    reference_delivery = reference["environmental_n_transferred"]
+    spatial_delivery = spatial["environmental_n_transferred"]
+    transfer_ratio = spatial_delivery / reference_delivery if reference_delivery else None
+    concentration_ratio = (
+        initial_cell_concentration / WHOLE_MEMBRANE_BOUNDARY_CONCENTRATION
+    )
+    return {
+        "source_paths": {
+            "whole_membrane_law": "digital-protocell/crates/regulatory-core/src/spatial_resource.rs::FiniteSpatialResourceRegionV1::inward_mass",
+            "spatial_field_law": "digital-protocell/crates/regulatory-core/src/spatial_material_field.rs::SpatialMaterialFieldV1::exchange",
+            "shared_transport_parameters": "digital-protocell/crates/chemistry-core/src/mesh_transport.rs::TransportParams::default",
+        },
+        "shared_transfer_terms": [
+            "permeability(theta, N/F)",
+            "k_flux",
+            "membrane edge length",
+            "dt",
+            "boundary concentration minus interior concentration",
+        ],
+        "shared_numeric_contract": {
+            "k_flux": TRANSPORT_K_FLUX,
+            "mechanics_dt": MECHANICS_DT,
+        },
+        "whole_membrane_boundary": {
+            "all_membrane_segments_eligible_in_reference": True,
+            "fixed_boundary_concentration": WHOLE_MEMBRANE_BOUNDARY_CONCENTRATION,
+            "total_reference_capacity_two_daughters": REFERENCE_CAPACITY * 2.0,
+        },
+        "spatial_field_boundary": {
+            "resource_mass_per_daughter": SPATIAL_RESOURCE_MASS_PER_DAUGHTER,
+            "total_spatial_capacity_two_daughters": SPATIAL_RESOURCE_MASS_PER_DAUGHTER * 2.0,
+            "initial_patch_cells_per_daughter": SPATIAL_PATCH_CELLS_PER_DAUGHTER,
+            "cell_dx": SPATIAL_CELL_DX,
+            "initial_patch_cell_mass": cell_mass,
+            "initial_patch_cell_concentration": initial_cell_concentration,
+            "edge_local_cell_sampling": True,
+            "shared_cell_inventory_allocation": True,
+        },
+        "step_1_observed": {
+            "whole_membrane_n_transferred": reference_delivery,
+            "spatial_n_transferred": spatial_delivery,
+            "spatial_to_reference_transfer_ratio": transfer_ratio,
+            "spatial_to_reference_initial_concentration_ratio": concentration_ratio,
+            "transfer_disabled_n_transferred": first["transfer_disabled"][
+                "environmental_n_transferred"
+            ],
+        },
+        "interpretation": {
+            "first_measured_divergence": "environmental N/F transfer",
+            "downstream_assimilation_is_not_first_divergence": True,
+            "comparison_is_boundary_normalized": False,
+            "geometry_or_local_exposure_requires_separate_audit": True,
+            "no_transport_variant_authorized_by_this_record": True,
+        },
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--binary", type=Path, required=True)
@@ -241,6 +322,7 @@ def main() -> None:
     write_json(output / "reference_whole_membrane.json", {"rows": reference_rows})
     write_json(output / "integrated_spatial_path.json", {"active": active, "transfer_disabled": disabled})
     write_json(output / "common_flux_ledger.json", {"comparisons": comparisons})
+    write_json(output / "transfer_boundary_audit.json", transfer_boundary_audit(comparisons))
     write_json(
         output / "first_divergence.json",
         {
@@ -278,6 +360,9 @@ def main() -> None:
             "assimilation_architecture": "INVESTIGATE_NOT_ACCEPTED",
             "new_material_flow_variant": "NOT_IMPLEMENTED",
             "architecture_selection": "PENDING_PRESERVATION_AUDIT",
+            "transfer_boundary_audit": "COMPLETED_BOUNDARY_NON_EQUIVALENCE_RECORDED",
+            "next_architecture_action": "SOURCE_LEVEL_MATERIAL_FLOW_CONTRACT_BEFORE_RUNTIME",
+            "new_transport_or_buffer_variant": "NOT_IMPLEMENTED",
             "independent_architect_acceptance": "PENDING",
             "next_execution_started": False,
         },

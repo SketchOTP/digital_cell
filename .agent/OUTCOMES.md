@@ -2042,3 +2042,23 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Result: the descendant push triggered the historical R6 workflow, whose bounded-diff allowlist rejected the intentional R7 audit files and chemistry validity guard. The R6 job is now exact-head gated to its sealed starting result; the R7 workflow explicitly permits the archival workflow change.
 - Classification: `GOAL_AGENT_PROVISIONALLY_ACCEPTED` for workflow-scope reconciliation only. The failed descendant run is not scientific evidence and does not alter the R7 flux-ledger classification.
 - Boundary: no runtime biology, fission gate, material-flow mechanism, or historical R6 result changed.
+
+## D-20260905-dcdev021-goal-material-flow-architecture-selection-r8 - COMPLETE PROVISIONAL
+
+- Outcome ID: `OUT-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R8`.
+- Result head: pending exact-head validation of the appended source audit.
+- Scope: source-level comparison of the qualified whole-membrane transfer law
+  with the current finite spatial-field law after the R7 common flux ledger.
+- Result: both paths use the existing permeability, `k_flux`, edge-length,
+  driving-force, and `dt` terms, but the boundaries are not equivalent. The
+  reference exposes all membrane segments at fixed concentration; the spatial
+  path uses finite cell-local concentration, local edge exposure, and shared
+  per-cell allocation. The R7 replay also carries `8192` reference N/F stock
+  versus `2043.3859906526618` spatial stock across two daughters.
+- Classification: `GOAL_AGENT_PROVISIONAL_ARCHITECTURE_SELECTION`.
+- Assimilation: `INVESTIGATE_NOT_ACCEPTED`; no new runtime mechanism is
+  authorized or implemented by this increment.
+- Stop condition: require a materially different, source-justified
+  organism-world material-flow contract before another runtime execution; do
+  not add another pool, buffer, field-placement variant, allocation variant,
+  active-work formula, or fission-gate change.
