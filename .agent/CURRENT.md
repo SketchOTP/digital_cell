@@ -514,3 +514,12 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Next execution: `false`. Stop after this valid parity-qualified negative;
   do not issue R15B, another allocator/buffer/transport variant, more food,
   a longer horizon, or a changed fission gate without new authority.
+
+## Goal-mode R15 final exact-head pointer
+
+- Final pushed governance head: `1e319940ab4ca34f2b3a8385f4ebb9931651da11`.
+- Exact-head Linux workflow: `34036597359` passed on that exact SHA.
+- Independently downloaded artifact ZIP digest:
+  `sha256:732339b7c3a4de3c399845fd6e713fe1b9d8589d7daf8742475e2e4558523485`.
+- This remains `GOAL_AGENT_PROVISIONALLY_ACCEPTED_NEGATIVE`, not independent
+  Architect acceptance. No successor execution is selected or started.

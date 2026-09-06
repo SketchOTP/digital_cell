@@ -1370,3 +1370,15 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Independent Architect acceptance: `PENDING`.
 - Next execution: `false`; stop at the directive boundary and replan from the
   first demonstrated post-transfer divergence only after external review.
+
+## DEC-DCDEV021-GOAL-R15-FINAL-EXACT-HEAD-POINTER
+
+- Date: `2026-09-06`
+- Final governance head: `1e319940ab4ca34f2b3a8385f4ebb9931651da11`.
+- Exact-head Linux workflow: `34036597359` passed.
+- Independently downloaded artifact ZIP digest:
+  `sha256:732339b7c3a4de3c399845fd6e713fe1b9d8589d7daf8742475e2e4558523485`.
+- Classification remains
+  `M2_MOVING_MEMBRANE_FLUX_PARITY_QUALIFIED_REPRODUCTION_NOT_ESTABLISHED`.
+- Status: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_NEGATIVE`; independent Architect
+  acceptance: `PENDING`; next execution: `false`.

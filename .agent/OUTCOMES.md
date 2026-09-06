@@ -2201,3 +2201,11 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
   The R15 stop condition is active: no R15B, finer grid, new allocator,
   buffer, gain, coefficient, resource increase, horizon extension, or
   fission-gate change.
+
+## R15 final exact-head authority pointer
+
+- Final governance head: `1e319940ab4ca34f2b3a8385f4ebb9931651da11`.
+- Exact-head workflow `34036597359` passed; independently downloaded artifact
+  ZIP digest: `sha256:732339b7c3a4de3c399845fd6e713fe1b9d8589d7daf8742475e2e4558523485`.
+- Independent Architect acceptance remains `PENDING`; next execution remains
+  `false`.
