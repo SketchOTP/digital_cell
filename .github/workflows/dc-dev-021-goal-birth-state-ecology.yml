@@ -33,7 +33,7 @@ jobs:
       - name: Verify exact authority and bounded diff
         run: |
           set -euo pipefail
-          start=c907144
+          start=c907144022e5c75486ff419e83245494ebead7ee
           test "$(git rev-parse HEAD)" = "${{ github.sha }}"
           test "$(git rev-parse "$start")" = "$start"
           git merge-base --is-ancestor "$start" HEAD
