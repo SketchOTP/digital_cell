@@ -2231,3 +2231,12 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
   ZIP digest: `sha256:732339b7c3a4de3c399845fd6e713fe1b9d8589d7daf8742475e2e4558523485`.
 - Independent Architect acceptance remains `PENDING`; next execution remains
   `false`.
+
+## R16 final exact-head authority pointer
+
+- Final governed head: `464d322c02f3bc92d634b22b316ae4b438973cd2`.
+- Exact-head workflow `34041120356` passed on that SHA.
+- Uploaded artifact digest:
+  `sha256:d7aacca5274465825433b2f8800c0d695aaaf0b7b2e92010193c1b055306744b`.
+- This remains a provisional unresolved result, not independent Architect
+  acceptance; next execution remains `false`.

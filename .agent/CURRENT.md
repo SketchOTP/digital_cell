@@ -542,3 +542,13 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Assimilation remains `INVESTIGATE_NOT_ACCEPTED`; resource-causal
   reproduction remains `NOT_ESTABLISHED`.
 - Independent Architect acceptance: `PENDING`. Next execution: `false`.
+
+## Goal-mode R16 exact-head authority pointer
+
+- Final governed head: `464d322c02f3bc92d634b22b316ae4b438973cd2`.
+- Exact-head Linux workflow: `34041120356` passed on that exact SHA.
+- Final uploaded artifact digest:
+  `sha256:d7aacca5274465825433b2f8800c0d695aaaf0b7b2e92010193c1b055306744b`.
+- Classification remains `M2_POST_TRANSFER_DIVERGENCE_UNRESOLVED` with
+  `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; independent Architect acceptance
+  remains `PENDING`. No successor execution started.

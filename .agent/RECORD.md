@@ -1399,3 +1399,14 @@ Use it for architectural decisions, governance changes, releases, qualification 
   reproduction remains `NOT_ESTABLISHED`; assimilation remains
   `INVESTIGATE_NOT_ACCEPTED`.
 - Independent Architect acceptance: `PENDING`. Next execution: `false`.
+
+## DEC-DCDEV021-GOAL-R16-FINAL-EXACT-HEAD-POINTER
+
+- Date: `2026-09-06`
+- Final governed head: `464d322c02f3bc92d634b22b316ae4b438973cd2`.
+- Exact-head Linux workflow: `34041120356` passed.
+- Uploaded artifact digest:
+  `sha256:d7aacca5274465825433b2f8800c0d695aaaf0b7b2e92010193c1b055306744b`.
+- Classification remains `M2_POST_TRANSFER_DIVERGENCE_UNRESOLVED`;
+  status is `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; independent Architect
+  acceptance is `PENDING`; next execution is `false`.
