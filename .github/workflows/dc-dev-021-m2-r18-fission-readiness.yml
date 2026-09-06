@@ -1,0 +1,160 @@
+name: DC-DEV-021 M2 R18 fission readiness and D-088 execution parity
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-r18-fission-readiness
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r18-fission-readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify exact authority, scope, and PR boundary
+        run: |
+          set -euo pipefail
+          start=b1d97babf6e97d84d73485f572f27a6d1e5e0553
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          test -z "$(git diff --name-only "$start" HEAD -- digital-protocell/crates/chemistry-core/src digital-protocell/crates/phase1-certifier/src digital-protocell/crates/evolution-harness/src)"
+          python3 - "$start" <<'PY'
+          import subprocess, sys
+          start = sys.argv[1]
+          allowed = {
+              '.github/workflows/dc-dev-021-m2-r18-fission-readiness.yml',
+              'digital-protocell/crates/m2-lifeform-runtime/src/main.rs',
+              'digital-protocell/crates/regulatory-core/Cargo.toml',
+              'digital-protocell/examples/dcdev021_m2_r18_d088_reference.rs',
+              'digital-protocell/experiments/dcdev021_m2_r18_fission_readiness.py',
+              '.agent/CURRENT.md', '.agent/DIRECTIVES.md', '.agent/OUTCOMES.md',
+              '.agent/LEARNINGS.md', '.agent/RECORD.md', '.agent/REPO_MAP.md',
+          }
+          prefix = 'digital-protocell/experiments/generated/dcdev021m2r18fissionreadiness/'
+          changed = subprocess.check_output(['git','diff','--name-only',start,'HEAD'], text=True).splitlines()
+          unexpected = [p for p in changed if p not in allowed and not p.startswith(prefix)]
+          assert not unexpected, unexpected
+          PY
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefName,headRefOid
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Build R18 runtime and D-088 reference
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build -p m2-lifeform-runtime --release
+          cargo +1.89.0 build -p regulatory-core --release --example dcdev021_m2_r18_d088_reference
+
+      - name: Run R17 early replay with fission readiness observer
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run -p m2-lifeform-runtime --release -- \
+            --steps 12000 --seed 2 --r17-early-whole-membrane --r18-fission-audit --flux-audit \
+            --checkpoint "$RUNNER_TEMP/r18-early.snapshot.json" \
+            --report "$RUNNER_TEMP/r18-early.json"
+
+      - name: Run R15 context replay with observer enabled
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run -p m2-lifeform-runtime --release -- \
+            --steps 12000 --seed 2 --moving-membrane-flux --r18-fission-audit --flux-audit \
+            --checkpoint "$RUNNER_TEMP/r18-r15.snapshot.json" \
+            --report "$RUNNER_TEMP/r18-r15.json"
+
+      - name: Run qualified D-088 reference trace
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run -p regulatory-core --release --example dcdev021_m2_r18_d088_reference -- \
+            --output "$RUNNER_TEMP/r18-d088.json"
+
+      - name: Build and validate compact R18 evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 experiments/dcdev021_m2_r18_fission_readiness.py \
+            --repo .. \
+            --r17-early-report "$RUNNER_TEMP/r18-early.json" \
+            --r17-r15-report "$RUNNER_TEMP/r18-r15.json" \
+            --d088-reference "$RUNNER_TEMP/r18-d088.json" \
+            --output experiments/generated/dcdev021m2r18fissionreadiness
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('experiments/generated/dcdev021m2r18fissionreadiness')
+          required = [
+            'authority.json','protocol.json','r17_final_provenance.json','source_execution_parity.json',
+            'd088_execution_sequence.json','m2_execution_sequence.json','r17_early_replay.json',
+            'r17_every_step_fission_readiness.json','r17_attempt_tick_readiness.json','r17_topology_order_audit.json',
+            'r17_cadence_audit.json','d088_positive_reference.json','d088_fission_readiness_trace.json',
+            'd088_r17_comparison.json','passive_mechanics_shadow.json','pinch_geometry_attribution.json',
+            'cross_bond_a_attribution.json','causal_localization.json','forbidden_information_audit.json',
+            'preservation.json','qualification.json','artifact_manifest.json',
+          ]
+          for name in required: assert (root / name).is_file(), name
+          q = json.loads((root / 'qualification.json').read_text())
+          assert q['independent_architect_acceptance'] == 'PENDING'
+          assert q['next_execution_started'] is False
+          early = json.loads((root / 'r17_early_replay.json').read_text())
+          assert early['first_transfer_step'] == 1
+          assert early['fission_events'] == 0
+          parity = json.loads((root / 'source_execution_parity.json').read_text())
+          assert parity['status'] in {'EXECUTION_PATH_DIFFERENT','EXECUTION_PATH_EQUIVALENT','EXECUTION_PATH_UNRESOLVED'}
+          d088 = json.loads((root / 'd088_positive_reference.json').read_text())
+          assert d088['physical_fission'] is True
+          print('R18 compact evidence and replay gates passed')
+          PY
+
+      - name: Preserve accepted historical boundaries
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('experiments/generated/dcdev021m2r18fissionreadiness')
+          p = json.loads((root / 'preservation.json').read_text())
+          assert p['d087_v2'] == '8/8' and p['d087_v3'] == '8/8' and p['d087_v4'] == '7/8'
+          assert p['d087_vector'] == [True, True, False, True, True, True, True, True]
+          assert p['d088'] == 'PASS' and p['d091'] == 'PASS'
+          assert p['evolution_harness'] == 'PASS_TESTS_ONLY'
+          print('R18 preservation boundary passed')
+          PY
+          cargo +1.89.0 run -p phase1-certifier --bin digital-protocell-phase1 --release -- --steps 1 --out "$RUNNER_TEMP/production.json"
+          cargo +1.89.0 test -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test -p evolution-harness -- --nocapture
+
+      - name: Record and upload R18 evidence
+        if: always()
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2r18fissionreadiness -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2r18fissionreadiness.sha256"
+
+      - name: Upload R18 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-m2-r18-fission-readiness-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2r18fissionreadiness/
+            ${{ runner.temp }}/dcdev021m2r18fissionreadiness.sha256
+            ${{ runner.temp }}/production.json
+          if-no-files-found: warn

@@ -2256,3 +2256,13 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
   `UNRESOLVED_BY_SAFE_COUNTERFACTUAL`.
 - Provisional result: `M2_MATCHED_REFERENCE_REPRODUCTION_NOT_ESTABLISHED`.
   Resource-causal reproduction remains `NOT_ESTABLISHED`; no successor started.
+
+## R18 fission-readiness audit — execution started
+
+- R17 is preserved as the starting authority at
+  `b1d97babf6e97d84d73485f572f27a6d1e5e0553`.
+- The audit will compare the frozen D-088 order
+  `transport -> reactions -> growth -> mechanics -> remesh -> topology ->
+  fission` with the current M2 order and will not modify either path.
+- Classification, exact-head CI, artifact digest, and final provisional
+  outcome remain pending until the bounded observer run is sealed.

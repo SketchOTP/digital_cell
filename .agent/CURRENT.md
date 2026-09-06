@@ -543,6 +543,18 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
   reproduction remains `NOT_ESTABLISHED`.
 - Independent Architect acceptance: `PENDING`. Next execution: `false`.
 
+## Goal-mode R18 fission-readiness and D-088 execution-parity audit
+
+- Active directive: `DC-DEV-021-M2-R18-PHYSICAL-FISSION-READINESS-AND-D088-EXECUTION-PARITY-AUDIT-001`.
+- Starting authority: R17 final head `b1d97babf6e97d84d73485f572f27a6d1e5e0553`.
+- Scope is observer-only: exact R17 replay, source execution-order audit,
+  every-step fission prerequisite rows, D-088 positive-reference tracing, and
+  clone-only passive-mechanics shadow diagnostics.
+- Prohibited: fission repair, cadence changes, mechanics/topology changes,
+  extra A/resource, altered mass gate, or successor execution.
+- Goal-agent authority is provisional; independent Architect acceptance remains
+  `PENDING` until exact-head evidence is reviewed.
+
 ## Goal-mode R16 exact-head authority pointer
 
 - Final governed head: `464d322c02f3bc92d634b22b316ae4b438973cd2`.

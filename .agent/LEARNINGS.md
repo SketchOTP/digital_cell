@@ -1003,3 +1003,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Without an accepted per-step R15 delivery trace, schedule replay is not safe
   to invent. The correct provisional classification is
   `M2_MATCHED_REFERENCE_REPRODUCTION_NOT_ESTABLISHED`, with no inferred fix.
+
+## L-DCDEV021-GOAL-R18-FISSION-READINESS
+
+- A numerical mass gate is only one prerequisite. R18 must separately observe
+  local pinch geometry, rebond range, stress/proximity, absolute A for the
+  cross-bond, attempt cadence, topology order, and clone-only fission readiness.
+- D-088's accepted physical path includes passive `mechanics_step` after growth;
+  the M2 runtime path must be traced rather than assumed equivalent.
+- No fission mechanism, threshold, cadence, or energy allocation may be
+  changed by this diagnostic.

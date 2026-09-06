@@ -1425,3 +1425,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Provisional classification: `M2_MATCHED_REFERENCE_REPRODUCTION_NOT_ESTABLISHED`.
   Resource-causal reproduction remains `NOT_ESTABLISHED`; independent Architect
   acceptance is `PENDING`; next execution is `false`.
+
+## DEC-DCDEV021-GOAL-R18-FISSION-READINESS
+
+- Date: `2026-09-06`
+- Directive: `DC-DEV-021-M2-R18-PHYSICAL-FISSION-READINESS-AND-D088-EXECUTION-PARITY-AUDIT-001`.
+- Starting head: `b1d97babf6e97d84d73485f572f27a6d1e5e0553`.
+- Decision boundary: observe the first failed physical fission prerequisite
+  after R17 crosses the mass gate; do not repair or begin a successor.
+- Authority is `GOAL_AGENT_PROVISIONALLY_ACCEPTED` only until independent
+  Architect review supplies a disposition.

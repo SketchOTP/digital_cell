@@ -982,6 +982,18 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Goal-agent provisional classification: `M2_POST_TRANSFER_DIVERGENCE_UNRESOLVED`.
 - Independent Architect acceptance: `PENDING`; next execution: `false`.
 
+## DC-DEV-021-M2-R18-PHYSICAL-FISSION-READINESS-AND-D088-EXECUTION-PARITY-AUDIT-001
+
+- Starting head: `b1d97babf6e97d84d73485f572f27a6d1e5e0553`.
+- Scope: diagnose the first failed physical fission prerequisite after the
+  R17 early matched-reference trajectory crosses the unchanged `1.35 *
+  birth_mass` gate; compare the exact D-088 and M2 execution paths.
+- Required evidence: R17 replay, every-step and attempt-tick readiness,
+  topology-order and cadence audit, D-088 positive reference, and clone-only
+  passive-mechanics shadow where warranted.
+- No repair or successor execution is authorized in this directive.
+- Goal-agent authority: provisional; Architect acceptance: `PENDING`.
+
 ## DC-DEV-021-M2-R17-MATCHED-STATE-RESOURCE-TIMING-AND-BOUNDARY-COUNTERFACTUAL-001
 
 - Starting head: `79ac60ce675e19c964e98f06907bf82e4c8f556b`.

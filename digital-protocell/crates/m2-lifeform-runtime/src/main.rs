@@ -1,6 +1,7 @@
 use chemistry_core::material_mesh::MeshContractVersion;
 use chemistry_core::environmental_assimilation;
 use chemistry_core::mesh_fission::{topology_step, try_local_fission, FissionParams};
+use chemistry_core::mesh_topology::{find_local_pinch, local_rebond_range, TopologyLedger};
 use chemistry_core::mesh_growth::{growth_step, GrowthLedger, GrowthParams};
 use chemistry_core::mesh_mechanics::{mechanics_step, remesh, MechParams};
 use chemistry_core::mesh_population::{MeshIndividual, MeshPopulation};
@@ -127,6 +128,11 @@ struct RuntimeSnapshot {
     /// all historical checkpoint semantics and runtime behavior.
     #[serde(default)]
     flux_audit: Option<FluxAuditState>,
+    /// Opt-in observer-only fission-readiness trace. It stores only cloned
+    /// prerequisite observations and never participates in the authoritative
+    /// fission decision.
+    #[serde(default)]
+    fission_readiness_audit: Option<FissionReadinessAudit>,
     scientific_boundary: ScientificBoundary,
 }
 
@@ -214,6 +220,8 @@ struct RuntimeReport {
     checkpoint: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     flux_audit: Option<FluxAuditState>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    fission_readiness_audit: Option<FissionReadinessAudit>,
 }
 
 #[derive(Debug)]
@@ -230,6 +238,7 @@ struct Config {
     moving_membrane_flux: bool,
     r17_early_whole_membrane: bool,
     r17_delayed_whole_membrane: bool,
+    r18_fission_audit: bool,
     routec_reserve_growth: bool,
     assimilation_material_flow: bool,
     anabolic_incorporation: bool,
@@ -244,6 +253,208 @@ struct FissionObservation {
     parent_generation: u32,
     parent_n_delivered: f64,
     parent_f_delivered: f64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+struct FissionReadinessRow {
+    step: u64,
+    phase: String,
+    total_structural_mass: f64,
+    birth_mass: f64,
+    mass_over_birth_mass: f64,
+    mass_gate_reached: bool,
+    vertex_count: usize,
+    can_advance_physics: bool,
+    area: f64,
+    perimeter: f64,
+    shape_factor: f64,
+    max_edge_strain: f64,
+    mean_edge_strain: f64,
+    ruptured_edge_count: usize,
+    concave_vertex_count: usize,
+    local_rebond_range: f64,
+    best_nonadjacent_distance: Option<f64>,
+    best_distance_over_range: Option<f64>,
+    pinch_candidate_exists: bool,
+    pinch_i: Option<usize>,
+    pinch_j: Option<usize>,
+    pinch_distance: Option<f64>,
+    pinch_stress_condition: bool,
+    pinch_proximity_condition: bool,
+    absolute_a_mass: f64,
+    cross_bond_mass_needed: Option<f64>,
+    a_over_cross_bond_need: Option<f64>,
+    cross_bond_a_sufficient: bool,
+    shadow_try_local_fission: String,
+    mass_gate_attempt_tick: bool,
+    reason_not_ready: String,
+    topology_tension_ruptures: usize,
+    topology_local_rebonds: usize,
+    topology_cross_bonds: usize,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+struct FissionReadinessAudit {
+    rows: Vec<FissionReadinessRow>,
+    official_attempt_ticks: Vec<FissionReadinessRow>,
+    passive_mechanics_shadow: Vec<FissionReadinessRow>,
+}
+
+fn best_nonadjacent_distance(mesh: &chemistry_core::material_mesh::MaterialMesh) -> Option<f64> {
+    let n = mesh.n();
+    if n < 8 {
+        return None;
+    }
+    let min_sep = (n / 4).max(3);
+    let mut best = None;
+    for i in 0..n {
+        for dj in min_sep..=(n - min_sep) {
+            let j = (i + dj) % n;
+            if j <= i {
+                continue;
+            }
+            let ring_sep = (j - i).min(n - (j - i));
+            if ring_sep < min_sep {
+                continue;
+            }
+            let a = mesh.vertices[i];
+            let b = mesh.vertices[j];
+            let distance = (b[0] - a[0]).hypot(b[1] - a[1]);
+            best = Some(best.map_or(distance, |current: f64| current.min(distance)));
+        }
+    }
+    best
+}
+
+fn concave_vertex_count(mesh: &chemistry_core::material_mesh::MaterialMesh) -> usize {
+    let n = mesh.n();
+    if n < 3 {
+        return 0;
+    }
+    let orientation = if mesh.signed_area() >= 0.0 { 1.0 } else { -1.0 };
+    (0..n)
+        .filter(|&i| {
+            let previous = mesh.vertices[(i + n - 1) % n];
+            let current = mesh.vertices[i];
+            let next = mesh.vertices[(i + 1) % n];
+            let ab = [current[0] - previous[0], current[1] - previous[1]];
+            let bc = [next[0] - current[0], next[1] - current[1]];
+            orientation * (ab[0] * bc[1] - ab[1] * bc[0]) < -1e-12
+        })
+        .count()
+}
+
+fn fission_readiness_row(
+    mesh: &chemistry_core::material_mesh::MaterialMesh,
+    birth_mass: f64,
+    fission: &FissionParams,
+    step: u64,
+    phase: &str,
+    attempt_tick: bool,
+    topology: &TopologyLedger,
+) -> FissionReadinessRow {
+    let total = mesh.total_structural_mass();
+    let area = mesh.area().abs();
+    let perimeter = mesh.perimeter();
+    let range = local_rebond_range(mesh, &fission.topo);
+    let candidate = find_local_pinch(mesh, &fission.topo);
+    let best_distance = best_nonadjacent_distance(mesh);
+    let best_over_range = best_distance.map(|distance| distance / range.max(1e-12));
+    let (pinch_i, pinch_j, pinch_distance, stress, proximity) = if let Some((i, j)) = candidate {
+        let a = mesh.vertices[i];
+        let b = mesh.vertices[j];
+        let distance = (b[0] - a[0]).hypot(b[1] - a[1]);
+        let strain_i = mesh.strain(i).max(mesh.strain((i + mesh.n() - 1) % mesh.n()));
+        let strain_j = mesh.strain(j).max(mesh.strain((j + mesh.n() - 1) % mesh.n()));
+        let stressed = strain_i > 0.15
+            || strain_j > 0.15
+            || mesh.edges[i].ruptured
+            || mesh.edges[(j + mesh.n() - 1) % mesh.n()].ruptured
+            || distance < range * 0.55;
+        (Some(i), Some(j), Some(distance), stressed, distance <= range)
+    } else {
+        (None, None, None, false, false)
+    };
+    let need = pinch_distance.map(|distance| mesh.rho_s * distance);
+    let absolute_a = mesh.interior.a.max(0.0) * area;
+    let conservative = mesh.uses_observer_only_death();
+    let required = need.map(|value| if conservative { value } else { value * 0.25 });
+    let ratio = required.map(|value| absolute_a / value.max(1e-12));
+    let sufficient = required.map(|value| absolute_a >= value).unwrap_or(false);
+    let shadow = if try_local_fission(&mesh.clone(), fission).is_some() {
+        "SUCCESS"
+    } else {
+        "FAIL"
+    };
+    let gate = total >= 1.35 * birth_mass.max(1e-9);
+    let reason = if !gate {
+        "MASS_NOT_ELIGIBLE"
+    } else if !mesh.can_advance_physics() {
+        "PHYSICS_INACTIVE"
+    } else if mesh.n() < fission.min_vertices {
+        "VERTEX_REQUIREMENT"
+    } else if candidate.is_none() {
+        match best_distance {
+            Some(distance) if distance > range => "PINCH_OUT_OF_RANGE",
+            Some(_) => "PINCH_NOT_STRESSED",
+            None => "NO_PINCH",
+        }
+    } else if !stress {
+        "PINCH_NOT_STRESSED"
+    } else if !proximity {
+        "PINCH_OUT_OF_RANGE"
+    } else if !sufficient {
+        "CROSS_BOND_A_INSUFFICIENT"
+    } else if shadow == "SUCCESS" {
+        "FISSION_READY"
+    } else {
+        "UNRESOLVED"
+    };
+    let strains: Vec<f64> = (0..mesh.n()).map(|i| mesh.strain(i)).collect();
+    FissionReadinessRow {
+        step,
+        phase: phase.to_string(),
+        total_structural_mass: total,
+        birth_mass,
+        mass_over_birth_mass: total / birth_mass.max(1e-9),
+        mass_gate_reached: gate,
+        vertex_count: mesh.n(),
+        can_advance_physics: mesh.can_advance_physics(),
+        area,
+        perimeter,
+        shape_factor: if perimeter > 0.0 {
+            4.0 * std::f64::consts::PI * area / (perimeter * perimeter)
+        } else {
+            0.0
+        },
+        max_edge_strain: strains.iter().copied().fold(f64::NEG_INFINITY, f64::max),
+        mean_edge_strain: if strains.is_empty() {
+            0.0
+        } else {
+            strains.iter().sum::<f64>() / strains.len() as f64
+        },
+        ruptured_edge_count: mesh.edges.iter().filter(|edge| edge.ruptured).count(),
+        concave_vertex_count: concave_vertex_count(mesh),
+        local_rebond_range: range,
+        best_nonadjacent_distance: best_distance,
+        best_distance_over_range: best_over_range,
+        pinch_candidate_exists: candidate.is_some(),
+        pinch_i,
+        pinch_j,
+        pinch_distance,
+        pinch_stress_condition: stress,
+        pinch_proximity_condition: proximity,
+        absolute_a_mass: absolute_a,
+        cross_bond_mass_needed: required,
+        a_over_cross_bond_need: ratio,
+        cross_bond_a_sufficient: sufficient,
+        shadow_try_local_fission: shadow.to_string(),
+        mass_gate_attempt_tick: attempt_tick,
+        reason_not_ready: reason.to_string(),
+        topology_tension_ruptures: topology.tension_ruptures,
+        topology_local_rebonds: topology.local_rebonds,
+        topology_cross_bonds: topology.cross_bonds,
+    }
 }
 
 #[derive(Debug, Clone, Default)]
@@ -673,6 +884,7 @@ fn parse_config() -> Config {
             "--moving-membrane-flux" => moving_membrane_flux = true,
             "--r17-early-whole-membrane" => r17_early_whole_membrane = true,
             "--r17-delayed-whole-membrane" => r17_delayed_whole_membrane = true,
+            "--r18-fission-audit" => r18_fission_audit = true,
             "--routec-reserve-growth" => routec_reserve_growth = true,
             "--assimilation-material-flow" => assimilation_material_flow = true,
             "--assimilation-anabolic-incorporation" => {
@@ -702,6 +914,7 @@ fn parse_config() -> Config {
         moving_membrane_flux,
         r17_early_whole_membrane,
         r17_delayed_whole_membrane,
+        r18_fission_audit,
         routec_reserve_growth,
         assimilation_material_flow,
         anabolic_incorporation,
@@ -971,6 +1184,7 @@ fn new_post_fission_snapshot(
         polarity_states: vec![Some(state_a), Some(state_b)],
         previous_centroids,
         flux_audit: None,
+        fission_readiness_audit: None,
         scientific_boundary: ScientificBoundary {
             finite_world_exchange: "SpatialMaterialFieldV1 / post-fission daughter-local field".to_string(),
             ..ScientificBoundary::default()
@@ -1268,6 +1482,7 @@ fn new_snapshot(seed: u64) -> RuntimeSnapshot {
         polarity_states,
         previous_centroids,
         flux_audit: None,
+        fission_readiness_audit: None,
         scientific_boundary: ScientificBoundary::default(),
     }
 }
@@ -1382,6 +1597,7 @@ fn new_shared_medium_from_birth_snapshot(
         polarity_states,
         previous_centroids,
         flux_audit: None,
+        fission_readiness_audit: None,
         scientific_boundary: ScientificBoundary {
             finite_world_exchange:
                 "SharedFiniteExtracellularMediumV1 / local membrane exchange from founder birth"
@@ -1525,6 +1741,7 @@ fn new_routeb_snapshot(
         polarity_states: vec![Some(developed_polarity)],
         previous_centroids,
         flux_audit: None,
+        fission_readiness_audit: None,
         scientific_boundary: ScientificBoundary {
             finite_world_exchange: "SpatialMaterialFieldV1 / local edge exchange".to_string(),
             ..ScientificBoundary::default()
@@ -1613,6 +1830,7 @@ fn new_routec_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         polarity_states: vec![Some(developed_polarity)],
         previous_centroids,
         flux_audit: None,
+        fission_readiness_audit: None,
         scientific_boundary: ScientificBoundary {
             finite_world_exchange: "SpatialMaterialFieldV1 / local edge exchange".to_string(),
             frozen_reactions: "ReactionParams::conservative_v3 + sealed D-091 reserve".to_string(),
@@ -1836,6 +2054,10 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
     let mut growth_material = 0.0;
     let mut growth_w = 0.0;
     let mut fissions = 0;
+    let mut fission_readiness_rows = Vec::new();
+    let mut fission_readiness_attempt_rows = Vec::new();
+    let mut passive_mechanics_shadow_rows = Vec::new();
+    let fission_audit_enabled = snapshot.fission_readiness_audit.is_some();
     for &index in &active_indices {
         let individual = &mut snapshot.population.individuals[index];
         if !individual.mesh.alive
@@ -1891,8 +2113,32 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
         let old_vertices = individual.mesh.vertices.clone();
         remesh(&mut individual.mesh);
         let tick = snapshot.step + 1;
-        if tick % 10 == 0 {
-            let _ = topology_step(&mut individual.mesh, &fission);
+        if fission_audit_enabled {
+            fission_readiness_rows.push(fission_readiness_row(
+                &individual.mesh,
+                individual.birth_mass,
+                &fission,
+                tick,
+                "before_topology",
+                false,
+                &TopologyLedger::default(),
+            ));
+        }
+        let topology_ledger = if tick % 10 == 0 {
+            topology_step(&mut individual.mesh, &fission)
+        } else {
+            TopologyLedger::default()
+        };
+        if fission_audit_enabled {
+            fission_readiness_rows.push(fission_readiness_row(
+                &individual.mesh,
+                individual.birth_mass,
+                &fission,
+                tick,
+                "after_topology",
+                false,
+                &topology_ledger,
+            ));
         }
         let origin = individual
             .mesh
@@ -1917,6 +2163,42 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
 
         let grown_enough =
             individual.mesh.total_structural_mass() >= 1.35 * individual.birth_mass.max(1e-9);
+        if fission_audit_enabled {
+            let row = fission_readiness_row(
+                &individual.mesh,
+                individual.birth_mass,
+                &fission,
+                tick,
+                "fission_evaluation",
+                tick % 25 == 0,
+                &topology_ledger,
+            );
+            if tick % 25 == 0 {
+                fission_readiness_rows.push(row.clone());
+                fission_readiness_attempt_rows.push(row);
+            } else {
+                fission_readiness_rows.push(row);
+            }
+            if grown_enough {
+                let mut shadow_mesh = individual.mesh.clone();
+                let _ = mechanics_step(&mut shadow_mesh, &mechanics);
+                let _ = remesh(&mut shadow_mesh);
+                let shadow_topology = if tick % 10 == 0 {
+                    topology_step(&mut shadow_mesh, &fission)
+                } else {
+                    TopologyLedger::default()
+                };
+                passive_mechanics_shadow_rows.push(fission_readiness_row(
+                    &shadow_mesh,
+                    individual.birth_mass,
+                    &fission,
+                    tick,
+                    "passive_mechanics_shadow",
+                    tick % 25 == 0,
+                    &shadow_topology,
+                ));
+            }
+        }
         if grown_enough && tick % 25 == 0 {
             if let Some((daughter_a, daughter_b, event)) =
                 try_local_fission(&individual.mesh, &fission)
@@ -1985,6 +2267,15 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
                 fissions += 1;
             }
         }
+    }
+    if let Some(audit) = snapshot.fission_readiness_audit.as_mut() {
+        audit.rows.extend(fission_readiness_rows);
+        audit
+            .official_attempt_ticks
+            .extend(fission_readiness_attempt_rows);
+        audit
+            .passive_mechanics_shadow
+            .extend(passive_mechanics_shadow_rows);
     }
     snapshot.cumulative_assimilation_n_processed += assimilation_n_processed;
     snapshot.cumulative_assimilation_f_processed += assimilation_f_processed;
@@ -2155,6 +2446,7 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
         resource_causal_reproduction: "NOT_ESTABLISHED",
         checkpoint: checkpoint.display().to_string(),
         flux_audit: snapshot.flux_audit.clone(),
+        fission_readiness_audit: snapshot.fission_readiness_audit.clone(),
     }
 }
 
@@ -2206,6 +2498,13 @@ fn main() {
     }
     if config.flux_audit && snapshot.flux_audit.is_none() {
         snapshot.flux_audit = Some(FluxAuditState::new(&snapshot));
+    }
+    if config.r18_fission_audit && snapshot.fission_readiness_audit.is_none() {
+        snapshot.fission_readiness_audit = Some(FissionReadinessAudit {
+            rows: Vec::new(),
+            official_attempt_ticks: Vec::new(),
+            passive_mechanics_shadow: Vec::new(),
+        });
     }
     let target = snapshot.step.saturating_add(config.steps);
     while snapshot.step < target {
