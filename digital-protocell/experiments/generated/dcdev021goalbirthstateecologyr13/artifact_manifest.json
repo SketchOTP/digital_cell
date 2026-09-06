@@ -1,7 +1,7 @@
 {
   "evidence_directory": "digital-protocell/experiments/generated/dcdev021goalbirthstateecologyr13",
   "files": ["protocol.json", "authority.json", "causal_order.json", "active_report.json", "disabled_report.json", "causal_comparison.json", "qualification.json", "artifact_manifest.json"],
-  "artifact_sha256": "PENDING_EXACT_HEAD_CI",
-  "exact_head_ci": "PENDING",
-  "result_head": "PENDING"
+  "artifact_sha256": "sha256:fc21c66e4d8458b2ddba949d78035c6bb65b5483e161e347e17a707f70345b32",
+  "exact_head_ci": "34001915364",
+  "result_head": "d5e28c8fba02373b4dedb6fc51bfc98f42688962"
 }

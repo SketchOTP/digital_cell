@@ -881,3 +881,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
   resource-causal reproduction.
 - Stop condition: do not add another material pool, transport layer, active
   work expression, resource mass, gate relaxation, or horizon extension.
+
+## L-DCDEV021-GOAL-BIRTH-STATE-ECOLOGY-R13-AUTHORITY-001
+
+- Fact: exact-head workflow `34001915364` passed on
+  `d5e28c8fba02373b4dedb6fc51bfc98f42688962`; artifact digest is
+  `sha256:fc21c66e4d8458b2ddba949d78035c6bb65b5483e161e347e17a707f70345b32`.
+- Result: shared-medium ecology from founder birth reaches contact/transfer at
+  step `7627` before any fission, but active reproduction remains zero while
+  the disabled twin starves.
+- Status: Goal-agent provisional negative/replan; independent Architect
+  acceptance remains pending.
+- Governance: earlier R13 workflow failures were bounded authority-check
+  errors (ancestry scope and abbreviated start hash), not scientific failures.

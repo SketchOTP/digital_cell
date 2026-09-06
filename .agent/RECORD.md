@@ -1037,6 +1037,30 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Stop condition: no new pool, buffer, transport layer, active-work formula,
   gate change, resource increase, resource repositioning, or horizon extension.
 
+## DEC-DCDEV021-GOAL-BIRTH-STATE-ECOLOGY-R13-AUTHORITY
+
+- Date: `2026-09-06`
+- Status: `ACTIVE_PROVISIONAL`
+- Result head: `d5e28c8fba02373b4dedb6fc51bfc98f42688962`.
+- Exact-head Linux workflow: `34001915364` passed.
+- Artifact digest: `sha256:fc21c66e4d8458b2ddba949d78035c6bb65b5483e161e347e17a707f70345b32`.
+- Decision: seal R13 as Goal-agent provisional bounded negative/replan. The
+  shared-medium contract is causally ordered before fission from founder birth,
+  but unchanged growth/fission still produces no resource-causal reproduction.
+- Independent Architect acceptance: `PENDING`.
+
+## DEC-DCDEV021-GOAL-ARCHIVAL-WORKFLOW-SCOPE-RECONCILIATION-R12-R13
+
+- Date: `2026-09-06`
+- Status: `ACTIVE_GOVERNANCE_RECONCILIATION`
+- The R13 branch carried deliberate R12 archival-manifest/workflow commits;
+  the first two R13 runs failed only at exact-diff/start-hash validation.
+  R12 run `34001790447` likewise represented a stale archival allowlist after
+  R13 files entered the branch. These are workflow-scope failures, not runtime
+  or scientific failures.
+- Boundary: R12 is now manual-dispatch-only; R13 owns the birth-state route
+  and its evidence prefix.
+
 ## DEC-DCDEV021-GOAL-SHARED-MEDIUM-EXECUTION-R12
 
 - Date: `2026-09-05`

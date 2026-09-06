@@ -6,5 +6,8 @@
   "resource_causal_reproduction": "NOT_ESTABLISHED",
   "local_material_flow_formula_search": "CLOSED",
   "next_execution_started": false,
-  "independent_architect_acceptance": "PENDING"
+  "independent_architect_acceptance": "PENDING",
+  "exact_head_ci": "34001915364",
+  "artifact_sha256": "sha256:fc21c66e4d8458b2ddba949d78035c6bb65b5483e161e347e17a707f70345b32",
+  "validated_head": "d5e28c8fba02373b4dedb6fc51bfc98f42688962"
 }
