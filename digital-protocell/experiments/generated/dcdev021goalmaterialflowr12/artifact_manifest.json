@@ -1,7 +1,7 @@
 {
   "evidence_directory": "digital-protocell/experiments/generated/dcdev021goalmaterialflowr12",
   "files": ["protocol.json", "authority.json", "contract_execution.json", "active_report.json", "transfer_disabled_report.json", "causal_order.json", "conservation.json", "preservation.json", "qualification.json", "artifact_manifest.json"],
-  "artifact_sha256": "sha256:72021b5cbd1dfd88cfe7dd2d7625e65fd58b243ffbc279c7693915bea94d4805",
-  "exact_head_ci": "34000777578",
-  "result_head": "be2eeef08e9ee42faae126385e801deadc9a05d3"
+  "artifact_sha256": "sha256:3a052a673ee145fc87e80fedaee02c473e253ec2e29731a1325ccc6d5dfcc178",
+  "exact_head_ci": "34001343383",
+  "result_head": "c907144022e5c75486ff419e83245494ebead7ee"
 }
