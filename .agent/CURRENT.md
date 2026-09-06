@@ -449,3 +449,12 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - This is governance-only validation; the scientific R13 result remains
   `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`, independent Architect acceptance
   remains `PENDING`, and no successor execution has started.
+
+## Goal-mode R13 final exact-head authority
+
+- Final pushed governance head: `9d576848ca0e0cf18bc5304605d11f1a3b3aa3a9`.
+- Exact-head workflow `34003214408` passed on that head.
+- Final artifact digest: `sha256:5bcce7d74ce515c2887ab62a8299830601b0868cf58e76992c874a7060d6d91f`.
+- The validation remains governance-only. R13 remains
+  `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; independent Architect acceptance
+  is `PENDING`; next execution is `false`.

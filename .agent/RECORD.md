@@ -1277,3 +1277,16 @@ Use it for architectural decisions, governance changes, releases, qualification 
   `.agent/CURRENT.md`; no runtime or material-flow mechanism changed.
 - Independent Architect acceptance: `PENDING`.
 - Supersedes record: none.
+
+## DEC-DCDEV021-GOAL-BIRTH-STATE-ECOLOGY-R13-FINAL-AUTHORITY
+
+- Date: `2026-09-06`
+- Status: `ACTIVE_PROVISIONAL`
+- Result head: `9d576848ca0e0cf18bc5304605d11f1a3b3aa3a9`.
+- Exact-head Linux workflow: `34003214408` passed.
+- Artifact digest: `sha256:5bcce7d74ce515c2887ab62a8299830601b0868cf58e76992c874a7060d6d91f`.
+- Decision: seal the final pushed R13 governance pointer. No runtime or
+  material-flow mechanism changed; the scientific classification remains
+  `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`.
+- Independent Architect acceptance: `PENDING`.
+- Next execution: `false`.

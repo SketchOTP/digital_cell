@@ -906,3 +906,12 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
   not scientific evidence.
 - Boundary: the R13 scientific result remains provisional and independent
   Architect acceptance remains pending.
+
+## L-DCDEV021-GOAL-BIRTH-STATE-ECOLOGY-R13-FINAL-AUTHORITY-001
+
+- Fact: exact-head workflow `34003214408` passed on
+  `9d576848ca0e0cf18bc5304605d11f1a3b3aa3a9`.
+- Artifact digest: `sha256:5bcce7d74ce515c2887ab62a8299830601b0868cf58e76992c874a7060d6d91f`.
+- Boundary: this seals only the final Goal-agent governance validation; the
+  R13 scientific result remains provisional and independent Architect
+  acceptance remains pending.
