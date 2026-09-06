@@ -60,7 +60,10 @@ def classify(rows, official, shadow):
         return "M2_FISSION_READINESS_MULTIFACTOR_UNRESOLVED"
     candidates = [r for r in eligible if r["pinch_candidate_exists"]]
     if not candidates:
-        return "M2_FISSION_PINCH_GEOMETRY_DIVERGENCE_LOCALIZED"
+        # The M2 path is source-level different from D-088, so the observed
+        # missing pinch is the first failed prerequisite but cannot be
+        # attributed to geometry alone without an equivalent execution path.
+        return "M2_FISSION_READINESS_MULTIFACTOR_UNRESOLVED"
     stressed = [r for r in candidates if r["pinch_stress_condition"] and r["pinch_proximity_condition"]]
     if stressed and not any(r["cross_bond_a_sufficient"] for r in stressed):
         return "M2_FISSION_CROSS_BOND_ENERGY_DIVERGENCE_LOCALIZED"
@@ -138,7 +141,7 @@ def main():
     dump(root, "passive_mechanics_shadow.json", {"status": "EXECUTED_CLONE_ONLY", "rows": shadow, "success_rows": [r for r in shadow if r["shadow_try_local_fission"] == "SUCCESS"]})
     dump(root, "pinch_geometry_attribution.json", {"first_mass_gate": first_gate, "first_pinch": first_pinch, "best_pinch": best_pinch})
     dump(root, "cross_bond_a_attribution.json", {"mass_eligible_rows": [{k: r[k] for k in ("step", "absolute_a_mass", "cross_bond_mass_needed", "a_over_cross_bond_need", "cross_bond_a_sufficient", "reason_not_ready")} for r in mass_rows]})
-    dump(root, "causal_localization.json", {"classification": classification, "earliest_justified_cause": classification, "source_execution_parity": "EXECUTION_PATH_DIFFERENT", "no_repair_implemented": True})
+    dump(root, "causal_localization.json", {"classification": classification, "earliest_observed_failed_prerequisite": "NO_PINCH", "earliest_justified_cause": "EXECUTION_PATH_DIFFERENT_PLUS_NO_PINCH", "source_execution_parity": "EXECUTION_PATH_DIFFERENT", "passive_shadow_restored_readiness": bool([r for r in shadow if r["shadow_try_local_fission"] == "SUCCESS"]), "no_repair_implemented": True})
     dump(root, "forbidden_information_audit.json", {"resource_read_by_readiness": False, "observer_feedback": False, "trajectory_mutation_by_shadow": False})
     dump(root, "preservation.json", {"d087_v2": "8/8", "d087_v3": "8/8", "d087_v4": "7/8", "d087_vector": [True, True, False, True, True, True, True, True], "d088": "PASS", "d091": "PASS", "evolution_harness": "PASS_TESTS_ONLY", "pr44": "OPEN/DRAFT/UNMERGED/UNTOUCHED", "runtime_scientific_source_changed": False})
     dump(root, "qualification.json", {"directive": DIRECTIVE, "classification": classification, "resource_causal_reproduction": "NOT_ESTABLISHED", "scientific_runtime_changed": False, "next_execution_started": False, "independent_architect_acceptance": "PENDING"})
