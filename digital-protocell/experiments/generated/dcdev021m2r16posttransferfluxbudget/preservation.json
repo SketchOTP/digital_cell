@@ -1,0 +1,22 @@
+{
+  "d087_v2": "8/8",
+  "d087_v3": "8/8",
+  "d087_v4": "7/8",
+  "d088": "PASS",
+  "d091": "PASS",
+  "environment_dependent_evolution": "NOT_ESTABLISHED",
+  "evolution_harness": "PASS_TESTS_ONLY",
+  "pr_44": "OPEN / DRAFT / UNMERGED / UNTOUCHED",
+  "r15_replay": "PASS",
+  "scientific_runtime_changed": false,
+  "v4_vector": [
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ]
+}

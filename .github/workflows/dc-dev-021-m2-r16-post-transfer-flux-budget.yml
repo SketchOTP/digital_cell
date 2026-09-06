@@ -1,0 +1,166 @@
+name: DC-DEV-021 M2 R16 post-transfer flux budget
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-r16-post-transfer-unified-flux-budget
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r16-post-transfer-flux-budget:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify exact authority and observer-only scope
+        run: |
+          set -euo pipefail
+          start=9f1bb36cc81e731490d72e17c666cc8c13c91d44
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - "$start" <<'PY'
+          import subprocess
+          import sys
+
+          start = sys.argv[1]
+          allowed = {
+              '.agent/CURRENT.md',
+              '.agent/DIRECTIVES.md',
+              '.agent/LEARNINGS.md',
+              '.agent/OUTCOMES.md',
+              '.agent/RECORD.md',
+              '.agent/REPO_MAP.md',
+              '.agent/PROJECT_PROFILE.md',
+              '.github/workflows/dc-dev-021-m2-r16-post-transfer-flux-budget.yml',
+              'digital-protocell/crates/m2-lifeform-runtime/src/main.rs',
+              'digital-protocell/experiments/dcdev021m2r16_flux_budget.py',
+          }
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{start}..HEAD'], text=True
+          ).splitlines()
+          prefix = 'digital-protocell/experiments/generated/dcdev021m2r16posttransferfluxbudget/'
+          unexpected = [p for p in changed if p not in allowed and not p.startswith(prefix)]
+          assert not unexpected, unexpected
+          forbidden = ('digital-protocell/crates/chemistry-core/src/',)
+          assert not any(p.startswith(forbidden) for p in changed), changed
+          print('R16 authority and observer-only scope verified')
+          PY
+
+      - name: Build and test integrated runtime
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p m2-lifeform-runtime
+          cargo +1.89.0 build --locked --release -p m2-lifeform-runtime
+
+      - name: Run exact R15 active, disabled, and no-audit replay arms
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run --locked -q --release -p m2-lifeform-runtime -- \
+            --steps 12000 --seed 2 --moving-membrane-flux --flux-audit \
+            --report "$RUNNER_TEMP/r16-active.json"
+          cargo +1.89.0 run --locked -q --release -p m2-lifeform-runtime -- \
+            --steps 12000 --seed 2 --moving-membrane-flux --transfer-disabled --flux-audit \
+            --report "$RUNNER_TEMP/r16-disabled.json"
+          cargo +1.89.0 run --locked -q --release -p m2-lifeform-runtime -- \
+            --steps 12000 --seed 2 --moving-membrane-flux \
+            --report "$RUNNER_TEMP/r15-no-audit.json"
+          cargo +1.89.0 run --locked -q --release -p m2-lifeform-runtime -- \
+            --steps 500 --seed 2 --flux-audit \
+            --report "$RUNNER_TEMP/whole-reference.json"
+
+      - name: Generate and validate compact R16 evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 experiments/dcdev021m2r16_flux_budget.py \
+            --active "$RUNNER_TEMP/r16-active.json" \
+            --disabled "$RUNNER_TEMP/r16-disabled.json" \
+            --reference "$RUNNER_TEMP/whole-reference.json" \
+            --sealed-reference experiments/generated/dcdev021m2closure004/whole_membrane_reference.json \
+            --output experiments/generated/dcdev021m2r16posttransferfluxbudget
+          python3 - "$RUNNER_TEMP" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          root = Path('experiments/generated/dcdev021m2r16posttransferfluxbudget')
+          active = json.loads((Path(sys.argv[1]) / 'r16-active.json').read_text())
+          disabled = json.loads((Path(sys.argv[1]) / 'r16-disabled.json').read_text())
+          no_audit = json.loads((Path(sys.argv[1]) / 'r15-no-audit.json').read_text())
+          assert active['step'] == disabled['step'] == no_audit['step'] == 12000
+          assert active['first_contact_step'] == disabled['first_contact_step'] == 7452
+          assert active['first_transfer_step'] == 7452
+          assert disabled['first_transfer_step'] is None
+          assert active['cumulative_n_delivered'] == 292.6923687407118
+          assert active['cumulative_f_delivered'] == 292.6923687407118
+          assert disabled['cumulative_n_delivered'] == 0.0
+          assert disabled['cumulative_f_delivered'] == 0.0
+          assert active['fission_events'] == disabled['fission_events'] == no_audit['fission_events'] == 0
+          assert active['living_count'] == 1
+          assert disabled['living_count'] == 0
+          assert disabled['terminal_observer_death_reasons'] == ['starvation_collapse']
+          for key in ('first_contact_step', 'first_transfer_step', 'fission_events',
+                      'cumulative_n_delivered', 'cumulative_f_delivered', 'living_count'):
+              assert active[key] == no_audit[key], key
+          for path in root.glob('*.json'):
+              json.loads(path.read_text())
+          qualification = json.loads((root / 'qualification.json').read_text())
+          assert qualification['classification'] == 'M2_POST_TRANSFER_DIVERGENCE_UNRESOLVED'
+          assert qualification['status'] == 'GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN'
+          assert qualification['independent_architect_acceptance'] == 'PENDING'
+          print('R15 replay parity and R16 unresolved causal audit gates passed')
+          PY
+
+      - name: Preserve D-087, D-088, D-091, and evolution boundaries
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test --locked -p evolution-harness -- --nocapture
+          python3 - <<'PY'
+          from pathlib import Path
+          current = Path('../.agent/CURRENT.md').read_text()
+          outcomes = Path('../.agent/OUTCOMES.md').read_text()
+          record = Path('../.agent/RECORD.md').read_text()
+          assert 'R16 post-transfer unified flux-budget audit' in current
+          assert 'POST_TRANSFER_DIVERGENCE_UNRESOLVED' in outcomes
+          assert 'DEC-DCDEV021-GOAL-R16-POST-TRANSFER-FLUX-BUDGET' in record
+          assert 'Independent Architect acceptance: `PENDING`' in current
+          print('R16 provisional governance pointers present')
+          PY
+
+      - name: Record evidence digest
+        if: always()
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2r16posttransferfluxbudget \
+            -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2r16.sha256"
+
+      - name: Upload R16 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dc-dev-021-m2-r16-post-transfer-flux-budget-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2r16posttransferfluxbudget/
+            ${{ runner.temp }}/r16-active.json
+            ${{ runner.temp }}/r16-disabled.json
+            ${{ runner.temp }}/whole-reference.json
+            ${{ runner.temp }}/dcdev021m2r16.sha256
+          if-no-files-found: error

@@ -1,0 +1,17 @@
+{
+  "assimilation": "INVESTIGATE_NOT_ACCEPTED",
+  "directive": "DC-DEV-021-M2-R16-POST-TRANSFER-UNIFIED-FLUX-BUDGET-AND-PRESERVATION-AUDIT-001",
+  "pr_44": {
+    "draft": true,
+    "head": "fb77f472b1519a9e0f713833efba5b1d403f4723",
+    "merged": false,
+    "state": "OPEN"
+  },
+  "r15_classification": "M2_MOVING_MEMBRANE_FLUX_PARITY_QUALIFIED_REPRODUCTION_NOT_ESTABLISHED",
+  "r15_exact_head_ci": "34037256120",
+  "r15_external_disposition": "ACCEPTED - BOUNDED NEGATIVE",
+  "r15_final_artifact": "sha256:911d3fbcd1cf6df3fc9f20793e7ccbf9271cc78310021dcb0af515775d7c50f2",
+  "r15_final_head": "9f1bb36cc81e731490d72e17c666cc8c13c91d44",
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "starting_head": "9f1bb36cc81e731490d72e17c666cc8c13c91d44"
+}

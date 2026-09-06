@@ -1382,3 +1382,20 @@ Use it for architectural decisions, governance changes, releases, qualification 
   `M2_MOVING_MEMBRANE_FLUX_PARITY_QUALIFIED_REPRODUCTION_NOT_ESTABLISHED`.
 - Status: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_NEGATIVE`; independent Architect
   acceptance: `PENDING`; next execution: `false`.
+
+## DEC-DCDEV021-GOAL-R16-POST-TRANSFER-FLUX-BUDGET
+
+- Date: `2026-09-06`
+- Status: `ACTIVE_PROVISIONAL_NEGATIVE_UNRESOLVED`
+- Starting head: `9f1bb36cc81e731490d72e17c666cc8c13c91d44`.
+- Directive: `DC-DEV-021-M2-R16-POST-TRANSFER-UNIFIED-FLUX-BUDGET-AND-PRESERVATION-AUDIT-001`.
+- Decision: expose only existing `ReactionLedger`, `GrowthLedger`, and mesh
+  state for observer accounting; do not modify biology or infer a remedy.
+- R15 final provenance is reconciled to head `9f1bb36cc81e731490d72e17c666cc8c13c91d44`,
+  exact-head CI `34037256120`, and artifact
+  `sha256:911d3fbcd1cf6df3fc9f20793e7ccbf9271cc78310021dcb0af515775d7c50f2`;
+  governance-only pointer commits do not change scientific semantics.
+- Provisional result: `M2_POST_TRANSFER_DIVERGENCE_UNRESOLVED`. Resource-causal
+  reproduction remains `NOT_ESTABLISHED`; assimilation remains
+  `INVESTIGATE_NOT_ACCEPTED`.
+- Independent Architect acceptance: `PENDING`. Next execution: `false`.

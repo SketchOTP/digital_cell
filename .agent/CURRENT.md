@@ -523,3 +523,22 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
   `sha256:732339b7c3a4de3c399845fd6e713fe1b9d8589d7daf8742475e2e4558523485`.
 - This remains `GOAL_AGENT_PROVISIONALLY_ACCEPTED_NEGATIVE`, not independent
   Architect acceptance. No successor execution is selected or started.
+
+## Goal-mode R16 post-transfer unified flux-budget audit
+
+- Starting head: `9f1bb36cc81e731490d72e17c666cc8c13c91d44`.
+- Active directive: `DC-DEV-021-M2-R16-POST-TRANSFER-UNIFIED-FLUX-BUDGET-AND-PRESERVATION-AUDIT-001`.
+- R16 is observer-only: it exposes the existing `ReactionLedger`,
+  `GrowthLedger`, and mesh/fission observations without changing scientific
+  state, rates, order, transport, growth, or fission.
+- Exact R15 replay remains preserved: contact/transfer at step `7452`, active
+  delivery `292.6923687407118` N/F, disabled delivery `0`, zero fissions,
+  active survival, and disabled `starvation_collapse`.
+- Provisional result: `M2_POST_TRANSFER_DIVERGENCE_UNRESOLVED`. Reaction N/F,
+  A/W, maintenance, active work, growth, and structural mass are measured;
+  the first unique downstream deficit remains unresolved because R15 transfer
+  is temporally late and the qualified whole-membrane reference is not an
+  ecologically equivalent boundary.
+- Assimilation remains `INVESTIGATE_NOT_ACCEPTED`; resource-causal
+  reproduction remains `NOT_ESTABLISHED`.
+- Independent Architect acceptance: `PENDING`. Next execution: `false`.

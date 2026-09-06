@@ -1,0 +1,12 @@
+{
+  "new_state_variable_used_by_biology": false,
+  "observer_reads_only": [
+    "existing delivery ledger",
+    "ReactionLedger",
+    "GrowthLedger",
+    "existing mesh state",
+    "existing fission observations"
+  ],
+  "reaction_or_growth_semantics_changed": false,
+  "resource_information_read_by_biology": "NONE"
+}

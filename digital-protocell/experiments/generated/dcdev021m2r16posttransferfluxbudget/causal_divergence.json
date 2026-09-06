@@ -1,0 +1,16 @@
+{
+  "a_generation": "QUALIFIED_AS_MEASURED_BUT_NOT_REFERENCE_EQUIVALENT",
+  "active_work_burden": "QUALIFIED_AS_MEASURED_BUT_NOT_REFERENCE_EQUIVALENT",
+  "classification": "M2_POST_TRANSFER_DIVERGENCE_UNRESOLVED",
+  "earliest_justified_divergence": "POST_TRANSFER_THROUGHPUT_COMPARISON_REMAINS_UNRESOLVED",
+  "first_transfer": 7452,
+  "growth_and_structural_mass": "DIVERGENT",
+  "intracellular_retention": "QUALIFIED_BY_DIRECT_STATE_CAPTURE",
+  "maintenance_burden": "QUALIFIED_AS_MEASURED_BUT_NOT_REFERENCE_EQUIVALENT",
+  "mass_gate_attainment": "DIVERGENT",
+  "no_inferred_fix": true,
+  "physical_fission": "DIVERGENT",
+  "reaction_processing": "QUALIFIED_AS_MEASURED_BUT_NOT_REFERENCE_EQUIVALENT",
+  "reason": "R15 transfer is temporally late and the accepted whole-membrane reproductive reference has different boundary conditions; the current ledger measures every downstream stage but cannot isolate a unique first post-transfer deficit without changing biology or creating a matched ecological reference.",
+  "transport": "QUALIFIED_BY_R15_AND_REPLAY_PRESERVED"
+}

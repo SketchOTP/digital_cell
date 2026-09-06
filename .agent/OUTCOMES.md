@@ -2202,6 +2202,28 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
   buffer, gain, coefficient, resource increase, horizon extension, or
   fission-gate change.
 
+## D-20260906-dcdev021-goal-r16-post-transfer-flux-budget - COMPLETE PROVISIONAL NEGATIVE / UNRESOLVED
+
+- Outcome ID: `OUT-DCDEV021-GOAL-R16-POST-TRANSFER-FLUX-BUDGET`.
+- R16 instruments existing reaction and growth ledgers only. Exact R15
+  active/disabled replay is preserved: transfer begins at step `7452`, active
+  receives `292.6923687407118` N/F, disabled receives zero, active survives,
+  disabled starves, and both fission zero times.
+- Reaction N/F consumption, A production, W production, maintenance A,
+  active-work A, growth A/material, and young/mature/total structural mass
+  are directly measured. Pinch and cross-bond A availability are explicitly
+  `UNRESOLVED_BY_CURRENT_LEDGER`.
+- Goal-agent provisional classification:
+  `M2_POST_TRANSFER_DIVERGENCE_UNRESOLVED`. The measured chain remains
+  insufficient for fission, but the first unique downstream deficit cannot be
+  isolated because R15 transfer is late and the reference is not ecologically
+  equivalent.
+- D-087 remains `8/8, 8/8, 7/8` with the frozen vector; D-088 and D-091 pass;
+  evolution-harness tests pass only and environment-dependent evolution
+  remains `NOT_ESTABLISHED`.
+- Independent Architect acceptance: `PENDING`. No inferred fix or successor
+  execution started.
+
 ## R15 final exact-head authority pointer
 
 - Final governance head: `1e319940ab4ca34f2b3a8385f4ebb9931651da11`.

@@ -1,0 +1,18 @@
+{
+  "arms": [
+    "R15_ACTIVE",
+    "R15_TRANSFER_DISABLED",
+    "WHOLE_MEMBRANE_REFERENCE"
+  ],
+  "biology_changed": false,
+  "observer_only": true,
+  "required_active_delivery_each_species": 292.6923687407118,
+  "required_first_contact": 7452,
+  "required_first_transfer": 7452,
+  "seed": 2,
+  "steps": 12000,
+  "unresolved_fields": [
+    "pinch_available=UNRESOLVED_BY_CURRENT_LEDGER",
+    "cross_bond_a_available=UNRESOLVED_BY_CURRENT_LEDGER"
+  ]
+}

@@ -969,3 +969,15 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Exact-head Linux workflow: `33969482511` - `PASS`.
 - Artifact digest: `sha256:af2b98f0f468417fa105fabd42ed553079d67182d5823e27596875cdbfd52f00`.
 - The classification remains `M2_CONTACT_BOUNDARY_A_FRACTION_REPRODUCTION_NOT_ESTABLISHED`; no successor execution started.
+
+## DC-DEV-021-M2-R16-POST-TRANSFER-UNIFIED-FLUX-BUDGET-AND-PRESERVATION-AUDIT-001
+
+- Starting head: `9f1bb36cc81e731490d72e17c666cc8c13c91d44`.
+- Scope: exact R15 active/disabled replay, observer-only existing reaction and
+  growth ledgers, and the qualified whole-membrane reproductive reference.
+- Prohibited: all biology, transport, reaction, growth, fission, geometry,
+  timestep, assimilation, reserve, controller, and resource changes.
+- Stop condition: seal the diagnostic result; do not implement the inferred
+  mechanism or start a successor before independent Architect review.
+- Goal-agent provisional classification: `M2_POST_TRANSFER_DIVERGENCE_UNRESOLVED`.
+- Independent Architect acceptance: `PENDING`; next execution: `false`.

@@ -1,0 +1,14 @@
+{
+  "exact_head_ci": "34037256120",
+  "final_artifact": "sha256:911d3fbcd1cf6df3fc9f20793e7ccbf9271cc78310021dcb0af515775d7c50f2",
+  "final_governed_head": "9f1bb36cc81e731490d72e17c666cc8c13c91d44",
+  "historical_r15_result_ancestry": [
+    "2c4653ee422abcf410b3cc920f53bb8f16540b2d",
+    "6664e98",
+    "1e31994",
+    "9f1bb36cc81e731490d72e17c666cc8c13c91d44"
+  ],
+  "scientific_semantics_after_pointer_commits": "UNCHANGED_BY_GOVERNANCE_ONLY_COMMITS",
+  "sealed_r15_evidence_rewritten": false,
+  "stale_internal_pointer": "1e319940..."
+}

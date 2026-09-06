@@ -1,12 +1,12 @@
 use chemistry_core::material_mesh::MeshContractVersion;
 use chemistry_core::environmental_assimilation;
 use chemistry_core::mesh_fission::{topology_step, try_local_fission, FissionParams};
-use chemistry_core::mesh_growth::{growth_step, GrowthParams};
+use chemistry_core::mesh_growth::{growth_step, GrowthLedger, GrowthParams};
 use chemistry_core::mesh_mechanics::{mechanics_step, remesh, MechParams};
 use chemistry_core::mesh_population::{MeshIndividual, MeshPopulation};
 use chemistry_core::metabolic_reserve::{stamp_reserve_equation, ReserveParams};
 use chemistry_core::mesh_reactions::{
-    reactions_step_with_reserve_mode, ReactionParams, ReserveDiagnosticMode,
+    reactions_step_with_reserve_mode, ReactionLedger, ReactionParams, ReserveDiagnosticMode,
 };
 use chemistry_core::mesh_transport::transport_step;
 use chemistry_core::mesh_transport::TransportParams;
@@ -118,6 +118,10 @@ struct RuntimeSnapshot {
     polarity_states: Vec<Option<PolarityState>>,
     #[serde(default)]
     previous_centroids: Vec<[f64; 2]>,
+    /// Opt-in observer-only post-transfer flux accounting. `None` preserves
+    /// all historical checkpoint semantics and runtime behavior.
+    #[serde(default)]
+    flux_audit: Option<FluxAuditState>,
     scientific_boundary: ScientificBoundary,
 }
 
@@ -201,6 +205,8 @@ struct RuntimeReport {
     autonomous_resource_acquisition: &'static str,
     resource_causal_reproduction: &'static str,
     checkpoint: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    flux_audit: Option<FluxAuditState>,
 }
 
 #[derive(Debug)]
@@ -219,6 +225,7 @@ struct Config {
     assimilation_material_flow: bool,
     anabolic_incorporation: bool,
     post_fission_ecology: bool,
+    flux_audit: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -238,6 +245,215 @@ struct RuntimeDelivery {
     f_delivered: f64,
     n_world_loss: f64,
     f_world_loss: f64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+struct FluxAuditCheckpoint {
+    step: u64,
+    steps_since_first_transfer: Option<u64>,
+    checkpoint_reason: String,
+    environmental_n_remaining: f64,
+    environmental_f_remaining: f64,
+    cumulative_n_delivered: f64,
+    cumulative_f_delivered: f64,
+    interior_n: f64,
+    interior_f: f64,
+    cumulative_reaction_n_consumed: f64,
+    cumulative_reaction_f_consumed: f64,
+    cumulative_a_produced: f64,
+    cumulative_w_produced: f64,
+    cumulative_reaction_w_produced: f64,
+    cumulative_growth_w_produced: f64,
+    a_pool: f64,
+    cumulative_maintenance_a: f64,
+    cumulative_active_work_a: f64,
+    cumulative_growth_a: f64,
+    young_structural_mass: f64,
+    mature_structural_mass: f64,
+    total_structural_mass: f64,
+    birth_mass: f64,
+    mass_over_birth_mass: f64,
+    fission_gate_mass: f64,
+    fission_gate_reached: bool,
+    pinch_available: String,
+    cross_bond_a_available: String,
+    physical_fission: bool,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+struct FluxAuditState {
+    first_transfer_step: Option<u64>,
+    first_contact_step: Option<u64>,
+    cumulative_reaction_n_consumed: f64,
+    cumulative_reaction_f_consumed: f64,
+    cumulative_a_produced: f64,
+    cumulative_w_produced: f64,
+    cumulative_reaction_w_produced: f64,
+    cumulative_growth_w_produced: f64,
+    cumulative_maintenance_a: f64,
+    cumulative_active_work_a: f64,
+    cumulative_growth_a: f64,
+    cumulative_growth_material: f64,
+    last_motor_a_spent: f64,
+    checkpoints: Vec<FluxAuditCheckpoint>,
+    recorded_delivery_thresholds: [bool; 5],
+    unresolved_fields: Vec<String>,
+}
+
+impl FluxAuditState {
+    fn new(snapshot: &RuntimeSnapshot) -> Self {
+        Self {
+            first_transfer_step: snapshot.first_transfer_step,
+            first_contact_step: snapshot.first_contact_step,
+            cumulative_reaction_n_consumed: 0.0,
+            cumulative_reaction_f_consumed: 0.0,
+            cumulative_a_produced: 0.0,
+            cumulative_w_produced: 0.0,
+            cumulative_reaction_w_produced: 0.0,
+            cumulative_growth_w_produced: 0.0,
+            cumulative_maintenance_a: 0.0,
+            cumulative_active_work_a: 0.0,
+            cumulative_growth_a: 0.0,
+            cumulative_growth_material: 0.0,
+            last_motor_a_spent: snapshot.cumulative_motor_a_spent,
+            checkpoints: Vec::new(),
+            recorded_delivery_thresholds: [false; 5],
+            unresolved_fields: vec![
+                "pinch_available=UNRESOLVED_BY_CURRENT_LEDGER".to_string(),
+                "cross_bond_a_available=UNRESOLVED_BY_CURRENT_LEDGER".to_string(),
+            ],
+        }
+    }
+}
+
+fn audit_environmental_remaining(snapshot: &RuntimeSnapshot) -> (f64, f64) {
+    if let Some(medium) = snapshot.moving_membrane.as_ref() {
+        (medium.total_n_mass(), medium.total_f_mass())
+    } else if let Some(medium) = snapshot.shared_medium.as_ref() {
+        (medium.total_n_mass(), medium.total_f_mass())
+    } else if let Some(field) = snapshot.spatial_field.as_ref() {
+        (field.total_n_mass(), field.total_f_mass())
+    } else {
+        (snapshot.world.total_n_mass(), snapshot.world.total_f_mass())
+    }
+}
+
+fn audit_physical_totals(snapshot: &RuntimeSnapshot) -> (f64, f64, f64, f64, f64) {
+    snapshot
+        .population
+        .individuals
+        .iter()
+        .filter(|individual| individual.mesh.alive)
+        .fold((0.0, 0.0, 0.0, 0.0, 0.0), |totals, individual| {
+            (
+                totals.0 + individual.mesh.interior.n.max(0.0) * individual.mesh.area(),
+                totals.1 + individual.mesh.interior.f.max(0.0) * individual.mesh.area(),
+                totals.2 + individual.mesh.interior.a.max(0.0) * individual.mesh.area(),
+                totals.3 + individual.mesh.total_young_structural_mass(),
+                totals.4 + individual.mesh.total_structural_mass(),
+            )
+        })
+}
+
+fn audit_should_checkpoint(audit: &FluxAuditState, snapshot: &RuntimeSnapshot) -> Option<String> {
+    let Some(transfer) = audit.first_transfer_step else {
+        if snapshot.step == 1 || snapshot.step % 250 == 0 {
+            return Some("no_transfer_control_checkpoint".to_string());
+        }
+        return None;
+    };
+    let since = snapshot.step.saturating_sub(transfer);
+    if matches!(since, 0 | 1 | 25 | 50 | 100 | 250 | 500) {
+        return Some(if since == 0 {
+            "first_transfer".to_string()
+        } else {
+            format!("post_transfer_{since}")
+        });
+    }
+    if snapshot.step % 250 == 0 {
+        return Some("periodic_250_step".to_string());
+    }
+    None
+}
+
+fn update_flux_audit(
+    snapshot: &mut RuntimeSnapshot,
+    reaction_n: f64,
+    reaction_f: f64,
+    reaction_a: f64,
+    reaction_w: f64,
+    maintenance_a: f64,
+    growth_a: f64,
+    growth_material: f64,
+    growth_w: f64,
+) {
+    let Some(mut audit) = snapshot.flux_audit.take() else {
+        return;
+    };
+    audit.first_contact_step = snapshot.first_contact_step;
+    audit.first_transfer_step = snapshot.first_transfer_step;
+    audit.cumulative_reaction_n_consumed += reaction_n;
+    audit.cumulative_reaction_f_consumed += reaction_f;
+    audit.cumulative_a_produced += reaction_a;
+    audit.cumulative_reaction_w_produced += reaction_w;
+    audit.cumulative_growth_w_produced += growth_w;
+    audit.cumulative_w_produced += reaction_w + growth_w;
+    audit.cumulative_maintenance_a += maintenance_a;
+    audit.cumulative_growth_a += growth_a;
+    audit.cumulative_growth_material += growth_material;
+    audit.cumulative_active_work_a +=
+        (snapshot.cumulative_motor_a_spent - audit.last_motor_a_spent).max(0.0);
+    audit.last_motor_a_spent = snapshot.cumulative_motor_a_spent;
+
+    if let Some(reason) = audit_should_checkpoint(&audit, snapshot) {
+        let (interior_n, interior_f, a_pool, young_mass, total_mass) =
+            audit_physical_totals(snapshot);
+        let (environmental_n_remaining, environmental_f_remaining) =
+            audit_environmental_remaining(snapshot);
+        let birth_mass: f64 = snapshot
+            .population
+            .individuals
+            .iter()
+            .filter(|individual| individual.mesh.alive)
+            .map(|individual| individual.birth_mass)
+            .sum();
+        let fission_gate_mass = 1.35 * birth_mass.max(1e-9);
+        let steps_since_first_transfer = audit
+            .first_transfer_step
+            .map(|transfer| snapshot.step.saturating_sub(transfer));
+        audit.checkpoints.push(FluxAuditCheckpoint {
+            step: snapshot.step,
+            steps_since_first_transfer,
+            checkpoint_reason: reason,
+            environmental_n_remaining,
+            environmental_f_remaining,
+            cumulative_n_delivered: snapshot.cumulative_n_delivered,
+            cumulative_f_delivered: snapshot.cumulative_f_delivered,
+            interior_n,
+            interior_f,
+            cumulative_reaction_n_consumed: audit.cumulative_reaction_n_consumed,
+            cumulative_reaction_f_consumed: audit.cumulative_reaction_f_consumed,
+            cumulative_a_produced: audit.cumulative_a_produced,
+            cumulative_w_produced: audit.cumulative_w_produced,
+            cumulative_reaction_w_produced: audit.cumulative_reaction_w_produced,
+            cumulative_growth_w_produced: audit.cumulative_growth_w_produced,
+            a_pool,
+            cumulative_maintenance_a: audit.cumulative_maintenance_a,
+            cumulative_active_work_a: audit.cumulative_active_work_a,
+            cumulative_growth_a: audit.cumulative_growth_a,
+            young_structural_mass: young_mass,
+            mature_structural_mass: (total_mass - young_mass).max(0.0),
+            total_structural_mass: total_mass,
+            birth_mass,
+            mass_over_birth_mass: total_mass / birth_mass.max(1e-9),
+            fission_gate_mass,
+            fission_gate_reached: total_mass + 1e-12 >= fission_gate_mass,
+            pinch_available: "UNRESOLVED_BY_CURRENT_LEDGER".to_string(),
+            cross_bond_a_available: "UNRESOLVED_BY_CURRENT_LEDGER".to_string(),
+            physical_fission: snapshot.first_fission_step == Some(snapshot.step),
+        });
+    }
+    snapshot.flux_audit = Some(audit);
 }
 
 fn default_true() -> bool {
@@ -266,6 +482,7 @@ fn parse_config() -> Config {
     let mut assimilation_material_flow = false;
     let mut anabolic_incorporation = false;
     let mut post_fission_ecology = false;
+    let mut flux_audit = false;
     let args: Vec<String> = env::args().skip(1).collect();
     let mut i = 0;
     while i < args.len() {
@@ -295,6 +512,7 @@ fn parse_config() -> Config {
                 anabolic_incorporation = true;
                 post_fission_ecology = true;
             }
+            "--flux-audit" => flux_audit = true,
             _ => usage(),
         }
         i += 1;
@@ -314,6 +532,7 @@ fn parse_config() -> Config {
         assimilation_material_flow,
         anabolic_incorporation,
         post_fission_ecology,
+        flux_audit,
     }
 }
 
@@ -576,6 +795,7 @@ fn new_post_fission_snapshot(
         motor_failures: 0,
         polarity_states: vec![Some(state_a), Some(state_b)],
         previous_centroids,
+        flux_audit: None,
         scientific_boundary: ScientificBoundary {
             finite_world_exchange: "SpatialMaterialFieldV1 / post-fission daughter-local field".to_string(),
             ..ScientificBoundary::default()
@@ -871,6 +1091,7 @@ fn new_snapshot(seed: u64) -> RuntimeSnapshot {
         motor_failures: 0,
         polarity_states,
         previous_centroids,
+        flux_audit: None,
         scientific_boundary: ScientificBoundary::default(),
     }
 }
@@ -983,6 +1204,7 @@ fn new_shared_medium_from_birth_snapshot(
         motor_failures: 0,
         polarity_states,
         previous_centroids,
+        flux_audit: None,
         scientific_boundary: ScientificBoundary {
             finite_world_exchange:
                 "SharedFiniteExtracellularMediumV1 / local membrane exchange from founder birth"
@@ -1097,6 +1319,7 @@ fn new_routeb_snapshot(
         motor_failures: 0,
         polarity_states: vec![Some(developed_polarity)],
         previous_centroids,
+        flux_audit: None,
         scientific_boundary: ScientificBoundary {
             finite_world_exchange: "SpatialMaterialFieldV1 / local edge exchange".to_string(),
             ..ScientificBoundary::default()
@@ -1183,6 +1406,7 @@ fn new_routec_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         motor_failures: 0,
         polarity_states: vec![Some(developed_polarity)],
         previous_centroids,
+        flux_audit: None,
         scientific_boundary: ScientificBoundary {
             finite_world_exchange: "SpatialMaterialFieldV1 / local edge exchange".to_string(),
             frozen_reactions: "ReactionParams::conservative_v3 + sealed D-091 reserve".to_string(),
@@ -1395,6 +1619,14 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
     let mut assimilation_a_produced = 0.0;
     let mut assimilation_m_grown = 0.0;
     let mut assimilation_m_incorporated = 0.0;
+    let mut reaction_n_consumed = 0.0;
+    let mut reaction_f_consumed = 0.0;
+    let mut reaction_a_produced = 0.0;
+    let mut reaction_w_produced = 0.0;
+    let mut maintenance_a = 0.0;
+    let mut growth_a = 0.0;
+    let mut growth_material = 0.0;
+    let mut growth_w = 0.0;
     let mut fissions = 0;
     for &index in &active_indices {
         let individual = &mut snapshot.population.individuals[index];
@@ -1411,7 +1643,7 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
         // nonfeeding transport pass before allocating finite N/F.  Do not
         // run a second transport step here: it would introduce an extra
         // chemistry boundary between uptake and the frozen reaction kernel.
-        let _ = reactions_step_with_reserve_mode(
+        let reaction_ledger: ReactionLedger = reactions_step_with_reserve_mode(
             &mut individual.mesh,
             &reaction,
             dt,
@@ -1419,6 +1651,11 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
             true,
             ReserveDiagnosticMode::Full,
         );
+        reaction_n_consumed += reaction_ledger.n_consumed;
+        reaction_f_consumed += reaction_ledger.f_consumed;
+        reaction_a_produced += reaction_ledger.a_produced;
+        reaction_w_produced += reaction_ledger.w_produced;
+        maintenance_a += reaction_ledger.a_to_m + reaction_ledger.a_to_l;
         if assimilation_enabled {
             let processed = environmental_assimilation::process(&mut individual.mesh, &reaction, dt);
             assimilation_n_processed += processed.n_processed;
@@ -1435,7 +1672,10 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
             }
         }
         let mass_before_growth = individual.mesh.total_structural_mass();
-        let _ = growth_step(&mut individual.mesh, &reaction, &growth, dt);
+        let growth_ledger: GrowthLedger = growth_step(&mut individual.mesh, &reaction, &growth, dt);
+        growth_a += growth_ledger.a_consumed_growth;
+        growth_material += growth_ledger.m_grown;
+        growth_w += growth_ledger.w_from_growth;
         if assimilation_enabled {
             assimilation_m_grown +=
                 (individual.mesh.total_structural_mass() - mass_before_growth).max(0.0);
@@ -1558,6 +1798,17 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
     }
     snapshot.cumulative_fissions += fissions;
     snapshot.step += 1;
+    update_flux_audit(
+        snapshot,
+        reaction_n_consumed,
+        reaction_f_consumed,
+        reaction_a_produced,
+        reaction_w_produced,
+        maintenance_a,
+        growth_a,
+        growth_material,
+        growth_w,
+    );
     fissions
 }
 
@@ -1681,6 +1932,7 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
         autonomous_resource_acquisition: "NOT_ESTABLISHED",
         resource_causal_reproduction: "NOT_ESTABLISHED",
         checkpoint: checkpoint.display().to_string(),
+        flux_audit: snapshot.flux_audit.clone(),
     }
 }
 
@@ -1722,6 +1974,9 @@ fn main() {
         } else if snapshot.spatial_field.is_none() {
             snapshot.world.transfer_enabled = false;
         }
+    }
+    if config.flux_audit && snapshot.flux_audit.is_none() {
+        snapshot.flux_audit = Some(FluxAuditState::new(&snapshot));
     }
     let target = snapshot.step.saturating_add(config.steps);
     while snapshot.step < target {

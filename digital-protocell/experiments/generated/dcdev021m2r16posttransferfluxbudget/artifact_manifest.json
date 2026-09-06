@@ -1,0 +1,43 @@
+{
+  "directory": "dcdev021m2r16posttransferfluxbudget",
+  "files": [
+    "a_w_attribution.json",
+    "authority.json",
+    "causal_divergence.json",
+    "forbidden_information_audit.json",
+    "growth_attribution.json",
+    "maintenance_work_attribution.json",
+    "material_normalized_comparison.json",
+    "post_transfer_checkpoints.json",
+    "preservation.json",
+    "protocol.json",
+    "qualification.json",
+    "r15_active_replay.json",
+    "r15_disabled_replay.json",
+    "r15_final_provenance_correction.json",
+    "reaction_processing_attribution.json",
+    "structural_mass_attribution.json",
+    "unified_flux_ledger.json",
+    "whole_membrane_reference.json"
+  ],
+  "sha256": {
+    "a_w_attribution.json": "b7d6c0be80fb5a8aea3eb640e47a3debaf2724b3687b2cb1c18706ba0262bd9f",
+    "authority.json": "5a9549cff1c5387a90cd8a24860b68a70f908894f3692367e193d2c1e1cb0339",
+    "causal_divergence.json": "5d0bd2d4984203f9af36d69e42d14a497a73eed343efe21505dddf23be2a3287",
+    "forbidden_information_audit.json": "a9a4e2ed81aabff1543b0372398c105de63c42a2a4bf593cbff95ef686d26dae",
+    "growth_attribution.json": "a637d8de4cde6571434eeeaea1c81cafbe745ed089f4458c4ca8281556ec9c57",
+    "maintenance_work_attribution.json": "63247e9a2e228611eea3a4c26793509734aae0e3cadf261cbe3d5bc4bc943ef4",
+    "material_normalized_comparison.json": "bf9824952442eb65816d3f2c8c96c20d08c7f68e2e42008761f48a3360c626bf",
+    "post_transfer_checkpoints.json": "f63aefb7b15c682ebec9b3f0d637026120543dd7d723e3e4046b6571fa9842f7",
+    "preservation.json": "ce57200247bdc14c13f40ea5a4b57e8e73428a0453fa4fd306242f4cde7a1453",
+    "protocol.json": "4606fd3a4ac8592f08819ac15ffe9d562165b5d36af1d29e9ce2e53468e13cf9",
+    "qualification.json": "b611e918570fd00d6eba97997525d98b81238391c77695c39e8218b1fa1e09e1",
+    "r15_active_replay.json": "156c901bdfdc838f3d5ef4dad0618629212790e387511176be3adfe6e2a59225",
+    "r15_disabled_replay.json": "7877f4305110888c997de96293f1d8685fb04add917c99c00ed49c158016cb36",
+    "r15_final_provenance_correction.json": "86f7fb8037e45e92ac99654505f466c1dfba17ef667399d932c3c9b8ac6059dd",
+    "reaction_processing_attribution.json": "0b9c05cf5ea7ac01807e08b58a175c1273035edd5b4f3dfd008be8a887b6a6ae",
+    "structural_mass_attribution.json": "7e6cc353df5cdb2384e5111b15a3eee127ae1225bcccd5e47ba0a3aea8fe74ff",
+    "unified_flux_ledger.json": "9af912dab40a4b4e56feb734555f6b37163d01985a03d6730e12caa85dbb621d",
+    "whole_membrane_reference.json": "32f1c21162e3b53e4c564e21fc05ace1e79095d47d09b247a695e2e3fa2021f6"
+  }
+}
