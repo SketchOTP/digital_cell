@@ -9,6 +9,7 @@ on:
       - 'docs/goal-birth-state-ecology-r13.md'
       - 'digital-protocell/crates/m2-lifeform-runtime/src/main.rs'
       - 'digital-protocell/experiments/generated/dcdev021goalbirthstateecologyr13/**'
+      - '.agent/CURRENT.md'
       - '.agent/LEARNINGS.md'
       - '.agent/RECORD.md'
   workflow_dispatch:
