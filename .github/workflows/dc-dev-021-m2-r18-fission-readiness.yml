@@ -157,4 +157,7 @@ jobs:
             digital-protocell/experiments/generated/dcdev021m2r18fissionreadiness/
             ${{ runner.temp }}/dcdev021m2r18fissionreadiness.sha256
             ${{ runner.temp }}/production.json
+            ${{ runner.temp }}/r18-early.json
+            ${{ runner.temp }}/r18-r15.json
+            ${{ runner.temp }}/r18-d088.json
           if-no-files-found: warn
