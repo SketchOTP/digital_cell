@@ -859,6 +859,7 @@ fn parse_config() -> Config {
     let mut moving_membrane_flux = false;
     let mut r17_early_whole_membrane = false;
     let mut r17_delayed_whole_membrane = false;
+    let mut r18_fission_audit = false;
     let mut routec_reserve_growth = false;
     let mut assimilation_material_flow = false;
     let mut anabolic_incorporation = false;
