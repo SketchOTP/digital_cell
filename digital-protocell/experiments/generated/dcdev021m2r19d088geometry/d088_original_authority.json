@@ -1,0 +1,59 @@
+{
+  "campaign_population": "10 seeds i+1",
+  "perturbations": [
+    [
+      "rotate",
+      0.3
+    ],
+    [
+      "vertex",
+      0.12
+    ],
+    [
+      "c",
+      0.08
+    ],
+    [
+      "a",
+      0.08
+    ],
+    [
+      "env",
+      0.1
+    ],
+    [
+      "l",
+      0.1
+    ],
+    [
+      "rotate",
+      -0.5
+    ],
+    [
+      "vertex",
+      -0.1
+    ],
+    [
+      "c",
+      -0.05
+    ],
+    [
+      "env",
+      -0.08
+    ]
+  ],
+  "post_perturb_vertex": 0.35,
+  "source": "chemistry_core::d088_analysis::gate_fission_campaign",
+  "source_hashes": {
+    "digital-protocell/crates/chemistry-core/src/d088_analysis.rs": "2be79a9b3e40cfe666a36f53aabcc6a0240d41e46e9b398c01c1d29ee807a773",
+    "digital-protocell/crates/chemistry-core/src/material_mesh.rs": "6c5be9699d1a77b902ff11e23e1956de2d11dd1eaee33acfd739ebfb03812c52",
+    "digital-protocell/crates/chemistry-core/src/mesh_fission.rs": "7e432bac3a01805a65aec207e3c456d3182b4b540a4ab060896a0321ca13af31",
+    "digital-protocell/crates/chemistry-core/src/mesh_growth.rs": "ef09628debe303c700b396dce0141b6b69c0952788b777b4395045d5c32d55b5",
+    "digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs": "d463509570ffb42b2cc3260e17e7b367c9665b4d28b0875960f88f60cb8f21a4",
+    "digital-protocell/crates/chemistry-core/src/mesh_population.rs": "2ff3bb53bf6b23d211394bff39887425a031c8699f8d3d42e8dba4c28d6d9413",
+    "digital-protocell/crates/chemistry-core/src/mesh_topology.rs": "988fd637e285b527d84939c8100183e9f0bb7fcb59e81ddc3e0d98963ab7991f",
+    "digital-protocell/crates/m2-lifeform-runtime/src/main.rs": "6530653a3febca8abfd80ce0f51291f9aff0f0ed1da8b051dc802bd24217fd06"
+  },
+  "steps": 4000,
+  "x_stretch": 1.25
+}

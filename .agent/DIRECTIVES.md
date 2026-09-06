@@ -1031,3 +1031,12 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Goal-agent provisional classification:
   `M2_MATCHED_REFERENCE_REPRODUCTION_NOT_ESTABLISHED`.
 - Independent Architect acceptance: `PENDING`; next execution: `false`.
+
+
+## DC-DEV-021-M2-R19-D088-GEOMETRY-VALIDITY-AND-FISSION-QUALIFICATION-INTEGRITY-AUDIT-001
+
+- Starting head: `ada1b2a59e1c3f4fbf0bbe0623a287f5b23595be`.
+- Scope: observer-only simple-polygon validation, exact D-088 qualification-population replay, metric consistency, daughter geometry, and R17 comparison.
+- The earlier unexecuted mechanics/motor R19 authorization is superseded before execution by this geometry-integrity audit.
+- Prohibited: mechanics, topology, fission, growth, resource, M1, or D-088 repair; no successor execution.
+- Goal-agent provisional classification: `D088_SELF_INTERSECTION_PRECEDES_FISSION`; independent Architect acceptance: `PENDING`.

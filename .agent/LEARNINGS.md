@@ -1038,3 +1038,11 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
   restore readiness.
 - Independent Architect acceptance remains pending; no fission repair or
   successor execution is authorized.
+
+
+## L-DCDEV021-GOAL-R19-D088-GEOMETRY-001
+
+- D-088 campaign fission cannot currently be interpreted as valid simple-boundary fission: all 10 original qualification arms self-intersect before their reported fission, and the primary seed becomes non-simple at step 1036 before fission at step 2326.
+- The geometry contract is not enforced by `physical_runtime_valid()`, `closed_intact()`, `find_local_pinch()`, or `try_local_fission()`; this is an observer finding only and no repair is authorized.
+- R17 remains geometrically simple in the same observer audit. Resource-causal reproduction remains `NOT_ESTABLISHED`; D-088 requires requalification before mechanics import.
+- Confidence: PROVISIONAL. Evidence: `digital-protocell/experiments/generated/dcdev021m2r19d088geometry/`.

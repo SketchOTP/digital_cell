@@ -1,0 +1,4224 @@
+{
+  "birth_mass": 87.73326349501298,
+  "campaign": "primary_seed_1",
+  "event": {
+    "daughter_a_geometry": {
+      "absolute_area": 1129.9280441198375,
+      "intersecting_edge_pairs": [
+        [
+          0,
+          19
+        ],
+        [
+          11,
+          27
+        ],
+        [
+          19,
+          77
+        ],
+        [
+          41,
+          52
+        ]
+      ],
+      "intersection_count": 4,
+      "isoperimetric_quotient": 0.36778310343086773,
+      "minimum_nonadjacent_segment_distance": 0.0,
+      "perimeter": 196.4872793636959,
+      "polygon_simple": false,
+      "shape_factor": 2.7189938598904946,
+      "signed_area": 1129.9280441198375
+    },
+    "daughter_a_vertices": [
+      [
+        32.551251604111684,
+        42.33653566459221
+      ],
+      [
+        34.58294604027363,
+        42.49086724056347
+      ],
+      [
+        36.854694310995995,
+        43.419858286947054
+      ],
+      [
+        38.65982473159632,
+        45.114532686525706
+      ],
+      [
+        39.77329454516452,
+        47.2425618979285
+      ],
+      [
+        40.16277567951948,
+        49.61634262378146
+      ],
+      [
+        39.796196631529945,
+        51.96334475487599
+      ],
+      [
+        38.72411973780935,
+        54.092524803948976
+      ],
+      [
+        36.93692873993254,
+        55.85850026452909
+      ],
+      [
+        34.65901505469969,
+        56.95557564201287
+      ],
+      [
+        31.96976486017375,
+        57.25403430439319
+      ],
+      [
+        29.319057252876426,
+        56.62703633032811
+      ],
+      [
+        26.94832709212091,
+        55.122658981940795
+      ],
+      [
+        25.17824631469418,
+        52.924783100578004
+      ],
+      [
+        24.18764869196787,
+        50.21807943121138
+      ],
+      [
+        24.16140656643145,
+        47.32843637663507
+      ],
+      [
+        25.035546216324153,
+        44.77374838070095
+      ],
+      [
+        26.742992056656597,
+        42.68151997308564
+      ],
+      [
+        29.204188116226284,
+        41.469292210624374
+      ],
+      [
+        31.913082694963336,
+        41.6899976335875
+      ],
+      [
+        33.27375558989936,
+        42.85865973132812
+      ],
+      [
+        34.42443302201971,
+        44.23144668062109
+      ],
+      [
+        34.95878447301594,
+        46.455991420245034
+      ],
+      [
+        34.74379786944186,
+        48.751230395751314
+      ],
+      [
+        33.91436021926216,
+        50.94786325506589
+      ],
+      [
+        32.59063462658963,
+        52.870857123695025
+      ],
+      [
+        30.925146446645467,
+        54.45783707543281
+      ],
+      [
+        29.036695660030627,
+        55.7551102406885
+      ],
+      [
+        26.663793211305475,
+        56.792141536013126
+      ],
+      [
+        24.126286148272406,
+        57.28832788936317
+      ],
+      [
+        21.546451083563824,
+        57.30742166466763
+      ],
+      [
+        19.003623094702466,
+        56.87210207626961
+      ],
+      [
+        16.570766232633297,
+        55.983107328068975
+      ],
+      [
+        14.33849723301617,
+        54.65079290862202
+      ],
+      [
+        12.39814566870403,
+        52.9054868672642
+      ],
+      [
+        10.839007822454768,
+        50.794272802960535
+      ],
+      [
+        9.748602705886851,
+        48.376342971146514
+      ],
+      [
+        9.210829025329502,
+        45.76220553173121
+      ],
+      [
+        9.280991627320857,
+        43.095938633368796
+      ],
+      [
+        10.090881696067,
+        40.53844558119568
+      ],
+      [
+        11.101980080140075,
+        38.91514520074794
+      ],
+      [
+        12.35244504401498,
+        37.46197809772575
+      ],
+      [
+        13.903603544011807,
+        36.29377429463048
+      ],
+      [
+        15.654546516228898,
+        35.423117625863675
+      ],
+      [
+        18.268697381241363,
+        34.92710008826581
+      ],
+      [
+        20.914026741268664,
+        35.399372626974134
+      ],
+      [
+        23.185702332864725,
+        36.94027903283597
+      ],
+      [
+        24.24038688050728,
+        39.47216002505169
+      ],
+      [
+        21.47790047549077,
+        41.579433993003434
+      ],
+      [
+        19.122812606824763,
+        41.671692170255
+      ],
+      [
+        16.831130236865008,
+        41.05866237522712
+      ],
+      [
+        14.556898255627617,
+        39.64653466141462
+      ],
+      [
+        12.802736594394514,
+        37.633237616054686
+      ],
+      [
+        11.6524987784249,
+        35.25421565932532
+      ],
+      [
+        11.204832339520737,
+        32.66512069941275
+      ],
+      [
+        11.314285225584406,
+        30.7103653498465
+      ],
+      [
+        11.690668790085263,
+        28.80279100670621
+      ],
+      [
+        12.44096984196285,
+        27.021116588725487
+      ],
+      [
+        13.390901255558425,
+        25.346127383905863
+      ],
+      [
+        15.081264989178848,
+        23.45150448556672
+      ],
+      [
+        17.117536816766737,
+        21.96208139246052
+      ],
+      [
+        19.335793100227303,
+        20.789953382650765
+      ],
+      [
+        21.68142417775255,
+        19.941247500197615
+      ],
+      [
+        24.174371542864417,
+        19.444612258472723
+      ],
+      [
+        26.710231076965407,
+        19.33811751992578
+      ],
+      [
+        29.249444576306182,
+        19.59314208229619
+      ],
+      [
+        31.74586063858252,
+        20.178615484142306
+      ],
+      [
+        34.20560620242635,
+        21.15560394219741
+      ],
+      [
+        36.49680276546812,
+        22.542621638454168
+      ],
+      [
+        38.536689946470005,
+        24.380120841901686
+      ],
+      [
+        40.134738423005324,
+        26.661580414328306
+      ],
+      [
+        41.1043284726212,
+        29.242778573804827
+      ],
+      [
+        41.314031750489264,
+        32.02603417707069
+      ],
+      [
+        40.472954558331494,
+        34.87402675752802
+      ],
+      [
+        38.42894185439442,
+        37.02445027654658
+      ],
+      [
+        36.67789461144339,
+        37.773554655611456
+      ],
+      [
+        34.809826947351375,
+        38.14631505586992
+      ],
+      [
+        32.501963186528066,
+        37.880053612352754
+      ]
+    ],
+    "daughter_b_geometry": {
+      "absolute_area": 2217.4147749153944,
+      "intersecting_edge_pairs": [
+        [
+          15,
+          36
+        ],
+        [
+          44,
+          63
+        ],
+        [
+          81,
+          88
+        ],
+        [
+          94,
+          104
+        ]
+      ],
+      "intersection_count": 4,
+      "isoperimetric_quotient": 0.29620108632647824,
+      "minimum_nonadjacent_segment_distance": 0.0,
+      "perimeter": 306.7150432106769,
+      "polygon_simple": false,
+      "shape_factor": 3.376084849661158,
+      "signed_area": 2217.4147749153944
+    },
+    "daughter_b_vertices": [
+      [
+        32.501963186528066,
+        37.880053612352754
+      ],
+      [
+        30.38208047432611,
+        36.893773001441474
+      ],
+      [
+        28.58492018382691,
+        35.33600368232687
+      ],
+      [
+        27.25329053346791,
+        33.36871957980536
+      ],
+      [
+        26.426537172661973,
+        31.165531974245585
+      ],
+      [
+        26.056512256405327,
+        28.841501422710923
+      ],
+      [
+        26.262497177290413,
+        26.149250166897104
+      ],
+      [
+        27.163468941892045,
+        23.60100562716835
+      ],
+      [
+        28.663909540756347,
+        21.312208607120706
+      ],
+      [
+        30.642422786423634,
+        19.425693053220858
+      ],
+      [
+        33.04536577577764,
+        18.006721262354812
+      ],
+      [
+        35.704592093155775,
+        17.172454413370986
+      ],
+      [
+        38.490420877182444,
+        16.94416855093441
+      ],
+      [
+        41.25462482911607,
+        17.32470921883938
+      ],
+      [
+        43.84862653695993,
+        18.25437624714814
+      ],
+      [
+        46.20974531938414,
+        19.67474170451157
+      ],
+      [
+        48.25554871040395,
+        21.542905912270747
+      ],
+      [
+        49.89507256180968,
+        23.786732250008704
+      ],
+      [
+        51.05985359974426,
+        26.32792874388055
+      ],
+      [
+        51.67835063649119,
+        29.073003383973475
+      ],
+      [
+        51.65362946041103,
+        31.939426552367465
+      ],
+      [
+        50.875476335844716,
+        34.72043149351187
+      ],
+      [
+        49.430439785736056,
+        37.07428591558907
+      ],
+      [
+        47.34554461323382,
+        38.907708621980746
+      ],
+      [
+        44.73372591705765,
+        39.90743755240205
+      ],
+      [
+        41.94880245351837,
+        39.70172160691198
+      ],
+      [
+        40.21261787862391,
+        38.84617737945239
+      ],
+      [
+        38.70077777687362,
+        37.64122531665336
+      ],
+      [
+        37.360785450372866,
+        35.63015657853937
+      ],
+      [
+        36.70495360262035,
+        33.29290096114693
+      ],
+      [
+        36.6824481281961,
+        30.75421630978602
+      ],
+      [
+        37.27450717416662,
+        28.303143437031117
+      ],
+      [
+        38.34177809475335,
+        26.0653676134674
+      ],
+      [
+        39.751296841401455,
+        24.046319792439906
+      ],
+      [
+        41.618162203421306,
+        22.1938814823833
+      ],
+      [
+        43.80715144722328,
+        20.758873654904647
+      ],
+      [
+        46.19373699819137,
+        19.727671836446973
+      ],
+      [
+        48.706873181025856,
+        19.088188477272002
+      ],
+      [
+        51.317452897593725,
+        18.86659949479194
+      ],
+      [
+        53.932364699785616,
+        19.08807990702509
+      ],
+      [
+        56.48941277007184,
+        19.744958470117957
+      ],
+      [
+        58.913627670638554,
+        20.827200199021462
+      ],
+      [
+        61.13654317446803,
+        22.323202109225342
+      ],
+      [
+        63.07227759780312,
+        24.215437930687468
+      ],
+      [
+        64.61527536777069,
+        26.4959071875807
+      ],
+      [
+        65.60567391875402,
+        29.10260321663693
+      ],
+      [
+        65.88669884998885,
+        31.880468303756164
+      ],
+      [
+        65.32984131538501,
+        34.64685326594937
+      ],
+      [
+        63.827488514454615,
+        37.11308323580096
+      ],
+      [
+        61.47980286877237,
+        38.79923420676605
+      ],
+      [
+        59.728878232108,
+        39.03327448086803
+      ],
+      [
+        57.97143272776507,
+        39.17054313643601
+      ],
+      [
+        56.05897249014082,
+        38.522809793183235
+      ],
+      [
+        54.384443454493486,
+        37.384033600196354
+      ],
+      [
+        53.185040260185836,
+        35.927861920632
+      ],
+      [
+        52.41196943921335,
+        34.211078821772844
+      ],
+      [
+        52.249400000760126,
+        32.343103025550946
+      ],
+      [
+        52.63001303953596,
+        30.508023470825453
+      ],
+      [
+        53.61504803179993,
+        28.897194185747527
+      ],
+      [
+        54.97951838379614,
+        27.592263472566437
+      ],
+      [
+        56.9715189729144,
+        26.60323267211629
+      ],
+      [
+        59.15905003328708,
+        26.21073198175481
+      ],
+      [
+        61.53488125559647,
+        26.3824511951139
+      ],
+      [
+        63.776982649053124,
+        27.108713564089125
+      ],
+      [
+        65.78232476693891,
+        28.228878243756636
+      ],
+      [
+        67.56487665243965,
+        29.6269035471753
+      ],
+      [
+        69.09666140046215,
+        31.261368331120927
+      ],
+      [
+        70.43568199324079,
+        33.02935813203533
+      ],
+      [
+        71.46272431441385,
+        34.964240359718005
+      ],
+      [
+        72.43748513735547,
+        36.91814196651306
+      ],
+      [
+        73.10553551276655,
+        39.05964200836919
+      ],
+      [
+        73.71335777101586,
+        41.23332927264883
+      ],
+      [
+        74.03153476321864,
+        43.50964878645749
+      ],
+      [
+        74.0879010561811,
+        45.841631970350186
+      ],
+      [
+        73.73279154228518,
+        48.258068750771606
+      ],
+      [
+        72.93425962188535,
+        50.61059569265916
+      ],
+      [
+        71.67869272756292,
+        52.82887137660033
+      ],
+      [
+        69.8918212991712,
+        54.70396895891171
+      ],
+      [
+        68.31175170608711,
+        55.60950020839421
+      ],
+      [
+        66.62265082062704,
+        56.31977475733352
+      ],
+      [
+        64.74948073259219,
+        56.555475011800446
+      ],
+      [
+        62.84826210561425,
+        56.42916852589171
+      ],
+      [
+        60.45379141866027,
+        55.535902115684024
+      ],
+      [
+        58.53528964118899,
+        53.80084769539734
+      ],
+      [
+        57.476596246723425,
+        51.496328372247454
+      ],
+      [
+        57.69166908468572,
+        48.952982858801626
+      ],
+      [
+        59.48028697766698,
+        50.063152965751534
+      ],
+      [
+        60.8391081784044,
+        51.960104142421244
+      ],
+      [
+        61.52562099535673,
+        54.5385239198899
+      ],
+      [
+        61.31869781229525,
+        57.19037879369867
+      ],
+      [
+        60.28312136442766,
+        59.715933221888264
+      ],
+      [
+        58.54334523534658,
+        61.81253206195846
+      ],
+      [
+        56.233998473062684,
+        63.30605015125143
+      ],
+      [
+        53.57409751415998,
+        63.994468940001056
+      ],
+      [
+        50.78821151910809,
+        63.697586467709144
+      ],
+      [
+        48.36767636668234,
+        62.309621814146304
+      ],
+      [
+        46.864519783121644,
+        60.04658827125039
+      ],
+      [
+        46.76850956420191,
+        57.33905883595912
+      ],
+      [
+        47.6871018953681,
+        55.73325164364348
+      ],
+      [
+        49.032935565357796,
+        54.46202273561609
+      ],
+      [
+        51.20694889969352,
+        53.955966255001215
+      ],
+      [
+        53.33278840311691,
+        54.734252317116486
+      ],
+      [
+        53.962012777217346,
+        58.01929828059664
+      ],
+      [
+        53.0699656799023,
+        60.01340470033275
+      ],
+      [
+        51.74197942642295,
+        61.75021898465202
+      ],
+      [
+        49.63969360895245,
+        63.42127529747133
+      ],
+      [
+        47.19626276803345,
+        64.46013804505766
+      ],
+      [
+        44.64281782901187,
+        64.98756428817718
+      ],
+      [
+        42.06904325839168,
+        65.13795322138581
+      ],
+      [
+        39.387087046098486,
+        64.87871096836994
+      ],
+      [
+        36.80299710427923,
+        64.17100434157388
+      ],
+      [
+        34.34057542431159,
+        63.103717452099716
+      ],
+      [
+        32.02371958538378,
+        61.73526204280569
+      ],
+      [
+        29.856826584743953,
+        59.98859999811915
+      ],
+      [
+        27.988110134365392,
+        57.88222658248513
+      ],
+      [
+        26.506030267179952,
+        55.40119636276547
+      ],
+      [
+        25.591124715862662,
+        52.612525158916874
+      ],
+      [
+        25.412381386673314,
+        49.63497529228289
+      ],
+      [
+        26.131778334214264,
+        46.7024219559683
+      ],
+      [
+        27.871286892612275,
+        44.16654120670233
+      ],
+      [
+        30.54126854571044,
+        42.6398179463927
+      ],
+      [
+        32.551251604111684,
+        42.33653566459221
+      ]
+    ],
+    "pinch": [
+      44,
+      121
+    ],
+    "step": 2326
+  },
+  "physical_fission": true,
+  "readiness_trace": {
+    "first_invalid_step": 1036,
+    "row_count": 2326,
+    "rows": [
+      {
+        "absolute_A": 379.3178426831421,
+        "attempt_tick": false,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 758.6032466628359,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.97233663401032,
+          "minimum_nonadjacent_segment_distance": 1.7539999488280902,
+          "perimeter": 99.01567585889772,
+          "polygon_simple": true,
+          "shape_factor": 1.0284503998122387,
+          "signed_area": 758.6032466628359
+        },
+        "mass_gate": false,
+        "pinch_candidate": null,
+        "step": 1,
+        "structural_mass": 87.86791883516449,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 494.2007184516022,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 622.0985483924519,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.8232595974087696,
+          "minimum_nonadjacent_segment_distance": 1.670372158084527,
+          "perimeter": 97.4464730083844,
+          "polygon_simple": true,
+          "shape_factor": 1.2146836831875696,
+          "signed_area": 622.0985483924519
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 576,
+        "structural_mass": 118.5564260895358,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 508.86371629659607,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 627.9380916626278,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.7734617104191811,
+          "minimum_nonadjacent_segment_distance": 1.6389857230238438,
+          "perimeter": 101.00524742240498,
+          "polygon_simple": true,
+          "shape_factor": 1.2928888224577342,
+          "signed_area": 627.9380916626278
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 601,
+        "structural_mass": 120.00165850569894,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 523.804511708279,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 633.7097019914538,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.7224784750831238,
+          "minimum_nonadjacent_segment_distance": 1.6361621254999204,
+          "perimeter": 104.98751438644148,
+          "polygon_simple": true,
+          "shape_factor": 1.3841242811904484,
+          "signed_area": 633.7097019914538
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 626,
+        "structural_mass": 121.44935558763441,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 539.3317491139103,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 639.6930657238329,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.6913906723045419,
+          "minimum_nonadjacent_segment_distance": 1.6603375474663615,
+          "perimeter": 107.82736576159701,
+          "polygon_simple": true,
+          "shape_factor": 1.4463602707667464,
+          "signed_area": 639.6930657238329
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 651,
+        "structural_mass": 122.92028490259314,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 555.7783035198557,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 646.2208837010248,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.6735335438044642,
+          "minimum_nonadjacent_segment_distance": 1.698128448919319,
+          "perimeter": 109.80340596978557,
+          "polygon_simple": true,
+          "shape_factor": 1.484707048666775,
+          "signed_area": 646.2208837010248
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 676,
+        "structural_mass": 124.44333257786955,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 573.2232900826194,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 653.3618961478886,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.6600741149781665,
+          "minimum_nonadjacent_segment_distance": 1.738359686826694,
+          "perimeter": 111.5284027343079,
+          "polygon_simple": true,
+          "shape_factor": 1.5149813896778506,
+          "signed_area": 653.3618961478886
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 701,
+        "structural_mass": 126.03405146254778,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 591.6384706039759,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 661.0806227068584,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.6478910598177227,
+          "minimum_nonadjacent_segment_distance": 1.7468940922429457,
+          "perimeter": 113.23512195440894,
+          "polygon_simple": true,
+          "shape_factor": 1.5434693608541836,
+          "signed_area": 661.0806227068584
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 726,
+        "structural_mass": 127.70140404356974,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 610.9676676520971,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 669.3134497758069,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.6360105615142962,
+          "minimum_nonadjacent_segment_distance": 1.7337554949889942,
+          "perimeter": 114.99727367327573,
+          "polygon_simple": true,
+          "shape_factor": 1.5723009341528396,
+          "signed_area": 669.3134497758069
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 751,
+        "structural_mass": 129.44848802207324,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 631.1404093581593,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 677.9851256487152,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.624090126547118,
+          "minimum_nonadjacent_segment_distance": 1.6711165774814185,
+          "perimeter": 116.83994908884289,
+          "polygon_simple": true,
+          "shape_factor": 1.60233267193741,
+          "signed_area": 677.9851256487152
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 776,
+        "structural_mass": 131.27762049133855,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 652.0816100294145,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 687.0176592946875,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.6119980030397555,
+          "minimum_nonadjacent_segment_distance": 1.5707633619154562,
+          "perimeter": 118.7719480644348,
+          "polygon_simple": true,
+          "shape_factor": 1.6339922598326515,
+          "signed_area": 687.0176592946875
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 801,
+        "structural_mass": 133.18996766896285,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 673.7209088446815,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 696.3410538133304,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.5996954466748788,
+          "minimum_nonadjacent_segment_distance": 1.45475881543048,
+          "perimeter": 120.79544457514261,
+          "polygon_simple": true,
+          "shape_factor": 1.6675130777541884,
+          "signed_area": 696.3410538133304
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 826,
+        "structural_mass": 135.18676539194297,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 696.0014162264823,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 705.901576586549,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.5871888127503874,
+          "minimum_nonadjacent_segment_distance": 1.3260631849289761,
+          "perimeter": 122.91025553477378,
+          "polygon_simple": true,
+          "shape_factor": 1.7030297210807006,
+          "signed_area": 705.901576586549
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 851,
+        "structural_mass": 137.26952460054966,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 718.8814074061421,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 715.6606762883773,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.5745273407427448,
+          "minimum_nonadjacent_segment_distance": 1.1902825191073512,
+          "perimeter": 125.11320770289585,
+          "polygon_simple": true,
+          "shape_factor": 1.7405612041146854,
+          "signed_area": 715.6606762883773
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 876,
+        "structural_mass": 139.43884475785026,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 742.3249943213522,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 725.5852760360233,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.56176834349976,
+          "minimum_nonadjacent_segment_distance": 1.0532404227725876,
+          "perimeter": 127.40032368626065,
+          "polygon_simple": true,
+          "shape_factor": 1.7800931853334794,
+          "signed_area": 725.5852760360233
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 901,
+        "structural_mass": 141.69491730641465,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 766.296446304236,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 735.6420868402075,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.5489577216243605,
+          "minimum_nonadjacent_segment_distance": 0.8622842018388304,
+          "perimeter": 129.7683452546074,
+          "polygon_simple": true,
+          "shape_factor": 1.8216339084201418,
+          "signed_area": 735.6420868402075
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 926,
+        "structural_mass": 144.03741323569992,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 790.7702293710568,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 745.8086703148368,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.5361261667644435,
+          "minimum_nonadjacent_segment_distance": 0.7287427229943958,
+          "perimeter": 132.21634391725243,
+          "polygon_simple": true,
+          "shape_factor": 1.8652325926098057,
+          "signed_area": 745.8086703148368
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 951,
+        "structural_mass": 146.4666658390941,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 815.7537490302175,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 756.0924636689535,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.5233091828501492,
+          "minimum_nonadjacent_segment_distance": 0.578934854913858,
+          "perimeter": 134.7451706684398,
+          "polygon_simple": true,
+          "shape_factor": 1.9109162093307894,
+          "signed_area": 756.0924636689535
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 976,
+        "structural_mass": 148.9824374525557,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 841.3028802143097,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 766.5422885287745,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.5105789685161243,
+          "minimum_nonadjacent_segment_distance": 0.31798701783144134,
+          "perimeter": 137.35406935546123,
+          "polygon_simple": true,
+          "shape_factor": 1.9585608919737938,
+          "signed_area": 766.5422885287745
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1001,
+        "structural_mass": 151.58385951231108,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 867.5182185968947,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 777.2437029186535,
+          "intersecting_edge_pairs": [],
+          "intersection_count": 0,
+          "isoperimetric_quotient": 0.49803553375910736,
+          "minimum_nonadjacent_segment_distance": 0.08220184534030558,
+          "perimeter": 140.04040986479808,
+          "polygon_simple": true,
+          "shape_factor": 2.0078888597609295,
+          "signed_area": 777.2437029186535
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1026,
+        "structural_mass": 154.27155256553297,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 878.218817080223,
+        "attempt_tick": false,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 781.61737066888,
+          "intersecting_edge_pairs": [
+            [
+              10,
+              12
+            ]
+          ],
+          "intersection_count": 1,
+          "isoperimetric_quotient": 0.49309399521574077,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 141.13579580201042,
+          "polygon_simple": false,
+          "shape_factor": 2.0280109060392744,
+          "signed_area": 781.61737066888
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1036,
+        "structural_mass": 155.3709368042965,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 894.5340286613128,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 788.3050125870317,
+          "intersecting_edge_pairs": [
+            [
+              10,
+              12
+            ]
+          ],
+          "intersection_count": 1,
+          "isoperimetric_quotient": 0.4859306271302402,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 142.7791985350773,
+          "polygon_simple": false,
+          "shape_factor": 2.0579069195652444,
+          "signed_area": 788.3050125870317
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1051,
+        "structural_mass": 157.04612694584472,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 922.5411654510257,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 799.8756175414682,
+          "intersecting_edge_pairs": [
+            [
+              10,
+              12
+            ]
+          ],
+          "intersection_count": 1,
+          "isoperimetric_quotient": 0.4744619977257422,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 145.55108415682795,
+          "polygon_simple": false,
+          "shape_factor": 2.107650359340348,
+          "signed_area": 799.8756175414682
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1076,
+        "structural_mass": 159.90819042147817,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 951.6749765888037,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 812.0512954448892,
+          "intersecting_edge_pairs": [
+            [
+              10,
+              13
+            ],
+            [
+              43,
+              45
+            ]
+          ],
+          "intersection_count": 2,
+          "isoperimetric_quotient": 0.4637344116090522,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 148.3412730337925,
+          "polygon_simple": false,
+          "shape_factor": 2.156406716789097,
+          "signed_area": 812.0512954448892
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1101,
+        "structural_mass": 162.85917907394756,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 982.1126475199229,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 824.9553348732666,
+          "intersecting_edge_pairs": [
+            [
+              10,
+              13
+            ],
+            [
+              43,
+              45
+            ]
+          ],
+          "intersection_count": 2,
+          "isoperimetric_quotient": 0.45392895715310755,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 151.1214825799538,
+          "polygon_simple": false,
+          "shape_factor": 2.2029878998503856,
+          "signed_area": 824.9553348732666
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1126,
+        "structural_mass": 165.90105498794313,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1013.7490260487351,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 838.4792714617146,
+          "intersecting_edge_pairs": [
+            [
+              11,
+              14
+            ],
+            [
+              44,
+              46
+            ]
+          ],
+          "intersection_count": 2,
+          "isoperimetric_quotient": 0.44436264369232514,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 153.98638599863793,
+          "polygon_simple": false,
+          "shape_factor": 2.250414192540442,
+          "signed_area": 838.4792714617146
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1151,
+        "structural_mass": 169.03855068200062,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1046.7420799726137,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 852.7345556799963,
+          "intersecting_edge_pairs": [
+            [
+              11,
+              14
+            ],
+            [
+              44,
+              46
+            ]
+          ],
+          "intersection_count": 2,
+          "isoperimetric_quotient": 0.43500089467605324,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 156.95197613096036,
+          "polygon_simple": false,
+          "shape_factor": 2.2988458466153356,
+          "signed_area": 852.7345556799963
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1176,
+        "structural_mass": 172.27432897104524,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1081.0375391162725,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 867.6640833914996,
+          "intersecting_edge_pairs": [
+            [
+              12,
+              15
+            ],
+            [
+              49,
+              52
+            ]
+          ],
+          "intersection_count": 2,
+          "isoperimetric_quotient": 0.42618111488140736,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 159.94977798908053,
+          "polygon_simple": false,
+          "shape_factor": 2.3464202543988093,
+          "signed_area": 867.6640833914996
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1201,
+        "structural_mass": 175.61277620002988,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1116.2631786960828,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 882.9620309756164,
+          "intersecting_edge_pairs": [
+            [
+              12,
+              15
+            ],
+            [
+              54,
+              57
+            ]
+          ],
+          "intersection_count": 2,
+          "isoperimetric_quotient": 0.41817520582866363,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 162.89089389873246,
+          "polygon_simple": false,
+          "shape_factor": 2.3913421600842684,
+          "signed_area": 882.9620309756164
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1226,
+        "structural_mass": 179.06550316734578,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1152.783084436999,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 898.9153228804369,
+          "intersecting_edge_pairs": [
+            [
+              13,
+              16
+            ],
+            [
+              59,
+              62
+            ]
+          ],
+          "intersection_count": 2,
+          "isoperimetric_quotient": 0.4105451892189528,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 165.87610922184447,
+          "polygon_simple": false,
+          "shape_factor": 2.4357854537340056,
+          "signed_area": 898.9153228804369
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1251,
+        "structural_mass": 182.65120838641138,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1190.6786482388322,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 915.5703992177038,
+          "intersecting_edge_pairs": [
+            [
+              13,
+              16
+            ],
+            [
+              59,
+              62
+            ]
+          ],
+          "intersection_count": 2,
+          "isoperimetric_quotient": 0.4020515986348981,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 169.16476392740935,
+          "polygon_simple": false,
+          "shape_factor": 2.4872429394519013,
+          "signed_area": 915.5703992177038
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1276,
+        "structural_mass": 186.3658472910289,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1229.549298969134,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 932.6079746961848,
+          "intersecting_edge_pairs": [
+            [
+              14,
+              17
+            ],
+            [
+              64,
+              67
+            ]
+          ],
+          "intersection_count": 2,
+          "isoperimetric_quotient": 0.39348362508031876,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 172.5802773097116,
+          "polygon_simple": false,
+          "shape_factor": 2.541401817663639,
+          "signed_area": 932.6079746961848
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1301,
+        "structural_mass": 190.20008574432077,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1267.2360852259935,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 948.4156615946238,
+          "intersecting_edge_pairs": [
+            [
+              14,
+              18
+            ],
+            [
+              68,
+              71
+            ]
+          ],
+          "intersection_count": 2,
+          "isoperimetric_quotient": 0.38479666275954594,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 175.99026373283465,
+          "polygon_simple": false,
+          "shape_factor": 2.598775137051763,
+          "signed_area": 948.4156615946238
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1326,
+        "structural_mass": 194.15167359374993,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1306.5623495675748,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 965.1353151303086,
+          "intersecting_edge_pairs": [
+            [
+              15,
+              20
+            ],
+            [
+              48,
+              50
+            ],
+            [
+              72,
+              75
+            ]
+          ],
+          "intersection_count": 3,
+          "isoperimetric_quotient": 0.3760837123196195,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 179.5795061961143,
+          "polygon_simple": false,
+          "shape_factor": 2.65898247449264,
+          "signed_area": 965.1353151303086
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1351,
+        "structural_mass": 198.22682332685497,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1347.3258371522797,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 982.5913931574087,
+          "intersecting_edge_pairs": [
+            [
+              15,
+              20
+            ],
+            [
+              48,
+              50
+            ],
+            [
+              60,
+              63
+            ],
+            [
+              72,
+              75
+            ]
+          ],
+          "intersection_count": 4,
+          "isoperimetric_quotient": 0.36714362756617436,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 183.38905496767796,
+          "polygon_simple": false,
+          "shape_factor": 2.7237296930062036,
+          "signed_area": 982.5913931574087
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1376,
+        "structural_mass": 202.42832822712543,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1389.0526367334003,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1000.4096864844344,
+          "intersecting_edge_pairs": [
+            [
+              16,
+              22
+            ],
+            [
+              50,
+              54
+            ],
+            [
+              63,
+              66
+            ],
+            [
+              75,
+              78
+            ]
+          ],
+          "intersection_count": 4,
+          "isoperimetric_quotient": 0.3581990403379561,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 187.34049658822258,
+          "polygon_simple": false,
+          "shape_factor": 2.7917439395050114,
+          "signed_area": 1000.4096864844344
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1401,
+        "structural_mass": 206.7422230520057,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1433.2747197052188,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1019.6846587863779,
+          "intersecting_edge_pairs": [
+            [
+              16,
+              22
+            ],
+            [
+              52,
+              56
+            ],
+            [
+              66,
+              69
+            ],
+            [
+              78,
+              81
+            ]
+          ],
+          "intersection_count": 4,
+          "isoperimetric_quotient": 0.350074566731517,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 191.3187764319139,
+          "polygon_simple": false,
+          "shape_factor": 2.8565342787867563,
+          "signed_area": 1019.6846587863779
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1426,
+        "structural_mass": 211.19316827746655,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1479.4040596402374,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1039.9602331531064,
+          "intersecting_edge_pairs": [
+            [
+              16,
+              22
+            ],
+            [
+              52,
+              56
+            ],
+            [
+              66,
+              70
+            ],
+            [
+              78,
+              81
+            ]
+          ],
+          "intersection_count": 4,
+          "isoperimetric_quotient": 0.3416476980616821,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 195.57982307252135,
+          "polygon_simple": false,
+          "shape_factor": 2.9269917686360554,
+          "signed_area": 1039.9602331531064
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1451,
+        "structural_mass": 215.7954650826765,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1527.2386073729306,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1061.068553603066,
+          "intersecting_edge_pairs": [
+            [
+              17,
+              23
+            ],
+            [
+              54,
+              58
+            ],
+            [
+              68,
+              72
+            ],
+            [
+              80,
+              83
+            ]
+          ],
+          "intersection_count": 4,
+          "isoperimetric_quotient": 0.33291563084537884,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 200.12878590503755,
+          "polygon_simple": false,
+          "shape_factor": 3.0037640391371276,
+          "signed_area": 1061.068553603066
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1476,
+        "structural_mass": 220.55263355154398,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1577.6623262160128,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1083.597958229186,
+          "intersecting_edge_pairs": [
+            [
+              17,
+              23
+            ],
+            [
+              53,
+              58
+            ],
+            [
+              67,
+              72
+            ],
+            [
+              80,
+              83
+            ],
+            [
+              81,
+              85
+            ],
+            [
+              81,
+              86
+            ]
+          ],
+          "intersection_count": 6,
+          "isoperimetric_quotient": 0.32423291591429726,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 204.93232630539455,
+          "polygon_simple": false,
+          "shape_factor": 3.084202593003619,
+          "signed_area": 1083.597958229186
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1501,
+        "structural_mass": 225.48245750341613,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1630.675257693651,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1107.489910917188,
+          "intersecting_edge_pairs": [
+            [
+              18,
+              24
+            ],
+            [
+              30,
+              32
+            ],
+            [
+              54,
+              59
+            ],
+            [
+              68,
+              73
+            ],
+            [
+              81,
+              84
+            ],
+            [
+              82,
+              86
+            ],
+            [
+              83,
+              87
+            ]
+          ],
+          "intersection_count": 7,
+          "isoperimetric_quotient": 0.31572020473963713,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 209.95374873928463,
+          "polygon_simple": false,
+          "shape_factor": 3.1673614326478194,
+          "signed_area": 1107.489910917188
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1526,
+        "structural_mass": 230.57819579579962,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1686.4265783024382,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1132.804223684689,
+          "intersecting_edge_pairs": [
+            [
+              18,
+              25
+            ],
+            [
+              29,
+              32
+            ],
+            [
+              54,
+              60
+            ],
+            [
+              68,
+              73
+            ],
+            [
+              81,
+              84
+            ],
+            [
+              82,
+              86
+            ],
+            [
+              83,
+              86
+            ]
+          ],
+          "intersection_count": 7,
+          "isoperimetric_quotient": 0.3075290657844753,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 215.14897300479765,
+          "polygon_simple": false,
+          "shape_factor": 3.2517251579102022,
+          "signed_area": 1132.804223684689
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1551,
+        "structural_mass": 235.85014978324762,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1745.5964549413854,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1159.9449131641866,
+          "intersecting_edge_pairs": [
+            [
+              18,
+              25
+            ],
+            [
+              29,
+              32
+            ],
+            [
+              54,
+              60
+            ],
+            [
+              68,
+              74
+            ],
+            [
+              81,
+              84
+            ],
+            [
+              82,
+              86
+            ],
+            [
+              83,
+              86
+            ]
+          ],
+          "intersection_count": 7,
+          "isoperimetric_quotient": 0.2995896153685113,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 220.5770055506692,
+          "polygon_simple": false,
+          "shape_factor": 3.3378994087293257,
+          "signed_area": 1159.9449131641866
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1576,
+        "structural_mass": 241.29939570345636,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1808.2277809017212,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1188.9148950048332,
+          "intersecting_edge_pairs": [
+            [
+              18,
+              25
+            ],
+            [
+              29,
+              32
+            ],
+            [
+              55,
+              61
+            ],
+            [
+              69,
+              75
+            ],
+            [
+              82,
+              85
+            ],
+            [
+              82,
+              86
+            ],
+            [
+              83,
+              88
+            ],
+            [
+              85,
+              88
+            ]
+          ],
+          "intersection_count": 8,
+          "isoperimetric_quotient": 0.29199195096996133,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 226.2011851834413,
+          "polygon_simple": false,
+          "shape_factor": 3.4247519381206333,
+          "signed_area": 1188.9148950048332
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1601,
+        "structural_mass": 246.9695439430727,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1875.0885302157099,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1220.144084041537,
+          "intersecting_edge_pairs": [
+            [
+              18,
+              25
+            ],
+            [
+              29,
+              32
+            ],
+            [
+              56,
+              62
+            ],
+            [
+              70,
+              76
+            ],
+            [
+              83,
+              90
+            ],
+            [
+              86,
+              89
+            ],
+            [
+              87,
+              89
+            ]
+          ],
+          "intersection_count": 7,
+          "isoperimetric_quotient": 0.28514752541975236,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 231.88661865004704,
+          "polygon_simple": false,
+          "shape_factor": 3.5069566131704866,
+          "signed_area": 1220.144084041537
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1626,
+        "structural_mass": 252.84719016263125,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 1946.875112128844,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1254.0182262106737,
+          "intersecting_edge_pairs": [
+            [
+              18,
+              25
+            ],
+            [
+              29,
+              33
+            ],
+            [
+              56,
+              62
+            ],
+            [
+              69,
+              76
+            ],
+            [
+              83,
+              91
+            ]
+          ],
+          "intersection_count": 5,
+          "isoperimetric_quotient": 0.27890132452143507,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 237.7013060523755,
+          "polygon_simple": false,
+          "shape_factor": 3.5854974934805113,
+          "signed_area": 1254.0182262106737
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1651,
+        "structural_mass": 258.9398741246288,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 2023.4160375459442,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1290.3614293804628,
+          "intersecting_edge_pairs": [
+            [
+              19,
+              26
+            ],
+            [
+              30,
+              34
+            ],
+            [
+              57,
+              63
+            ],
+            [
+              70,
+              77
+            ],
+            [
+              84,
+              92
+            ]
+          ],
+          "intersection_count": 5,
+          "isoperimetric_quotient": 0.27292325060852013,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 243.74760148323458,
+          "polygon_simple": false,
+          "shape_factor": 3.6640337449094638,
+          "signed_area": 1290.3614293804628
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1676,
+        "structural_mass": 265.2508924897621,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 2104.8634968420365,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1329.2217510873074,
+          "intersecting_edge_pairs": [
+            [
+              19,
+              26
+            ],
+            [
+              30,
+              34
+            ],
+            [
+              56,
+              64
+            ],
+            [
+              70,
+              77
+            ],
+            [
+              84,
+              92
+            ]
+          ],
+          "intersection_count": 5,
+          "isoperimetric_quotient": 0.2672552683848198,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 250.00029094847753,
+          "polygon_simple": false,
+          "shape_factor": 3.7417410180296393,
+          "signed_area": 1329.2217510873074
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1701,
+        "structural_mass": 271.7984301915885,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 2191.773056717332,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1370.8952641946348,
+          "intersecting_edge_pairs": [
+            [
+              11,
+              13
+            ],
+            [
+              19,
+              26
+            ],
+            [
+              29,
+              34
+            ],
+            [
+              56,
+              64
+            ],
+            [
+              70,
+              77
+            ],
+            [
+              84,
+              92
+            ]
+          ],
+          "intersection_count": 6,
+          "isoperimetric_quotient": 0.26174573291101416,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 256.5471916427487,
+          "polygon_simple": false,
+          "shape_factor": 3.8205016329338615,
+          "signed_area": 1370.8952641946348
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1726,
+        "structural_mass": 278.58315864604845,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 2284.2355528115554,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1415.3868269620564,
+          "intersecting_edge_pairs": [
+            [
+              10,
+              13
+            ],
+            [
+              19,
+              26
+            ],
+            [
+              29,
+              34
+            ],
+            [
+              56,
+              64
+            ],
+            [
+              70,
+              78
+            ],
+            [
+              84,
+              92
+            ]
+          ],
+          "intersection_count": 6,
+          "isoperimetric_quotient": 0.25657764666779986,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 263.2892321392705,
+          "polygon_simple": false,
+          "shape_factor": 3.8974556551870445,
+          "signed_area": 1415.3868269620564
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1751,
+        "structural_mass": 285.61655733320276,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 2382.539688053088,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1462.827883359403,
+          "intersecting_edge_pairs": [
+            [
+              10,
+              13
+            ],
+            [
+              19,
+              27
+            ],
+            [
+              29,
+              34
+            ],
+            [
+              45,
+              47
+            ],
+            [
+              56,
+              64
+            ],
+            [
+              70,
+              78
+            ],
+            [
+              84,
+              92
+            ]
+          ],
+          "intersection_count": 7,
+          "isoperimetric_quotient": 0.25161951196629373,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 270.2896333505055,
+          "polygon_simple": false,
+          "shape_factor": 3.9742545885470015,
+          "signed_area": 1462.827883359403
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1776,
+        "structural_mass": 292.91179999191763,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 2487.131408673444,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1513.4442953782316,
+          "intersecting_edge_pairs": [
+            [
+              9,
+              14
+            ],
+            [
+              19,
+              27
+            ],
+            [
+              29,
+              34
+            ],
+            [
+              45,
+              47
+            ],
+            [
+              56,
+              64
+            ],
+            [
+              70,
+              78
+            ],
+            [
+              84,
+              92
+            ]
+          ],
+          "intersection_count": 7,
+          "isoperimetric_quotient": 0.24689647979525217,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 277.5432716671935,
+          "polygon_simple": false,
+          "shape_factor": 4.050280509585581,
+          "signed_area": 1513.4442953782316
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1801,
+        "structural_mass": 300.4804885409036,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 2598.5597113729737,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1567.521146664436,
+          "intersecting_edge_pairs": [
+            [
+              9,
+              13
+            ],
+            [
+              19,
+              27
+            ],
+            [
+              21,
+              33
+            ],
+            [
+              22,
+              33
+            ],
+            [
+              29,
+              35
+            ],
+            [
+              44,
+              47
+            ],
+            [
+              56,
+              64
+            ],
+            [
+              70,
+              78
+            ],
+            [
+              84,
+              92
+            ]
+          ],
+          "intersection_count": 9,
+          "isoperimetric_quotient": 0.242331816216432,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 285.1060397413096,
+          "polygon_simple": false,
+          "shape_factor": 4.12657328952166,
+          "signed_area": 1567.521146664436
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1826,
+        "structural_mass": 308.33594917794653,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 2717.314033457652,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1625.3045413552709,
+          "intersecting_edge_pairs": [
+            [
+              9,
+              13
+            ],
+            [
+              19,
+              28
+            ],
+            [
+              21,
+              35
+            ],
+            [
+              23,
+              34
+            ],
+            [
+              30,
+              36
+            ],
+            [
+              45,
+              48
+            ],
+            [
+              57,
+              65
+            ],
+            [
+              71,
+              79
+            ],
+            [
+              85,
+              93
+            ]
+          ],
+          "intersection_count": 9,
+          "isoperimetric_quotient": 0.23792979596355499,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 292.98668930826415,
+          "polygon_simple": false,
+          "shape_factor": 4.202920428482927,
+          "signed_area": 1625.3045413552709
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1851,
+        "structural_mass": 316.49484405276405,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 2842.985200916721,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1686.50430023152,
+          "intersecting_edge_pairs": [
+            [
+              9,
+              13
+            ],
+            [
+              19,
+              30
+            ],
+            [
+              22,
+              37
+            ],
+            [
+              25,
+              36
+            ],
+            [
+              32,
+              38
+            ],
+            [
+              47,
+              50
+            ],
+            [
+              59,
+              68
+            ],
+            [
+              73,
+              82
+            ],
+            [
+              88,
+              96
+            ]
+          ],
+          "intersection_count": 9,
+          "isoperimetric_quotient": 0.23376933624427138,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 301.0959310558387,
+          "polygon_simple": false,
+          "shape_factor": 4.27772100509827,
+          "signed_area": 1686.50430023152
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1876,
+        "structural_mass": 324.9772009846245,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 2973.946567187637,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1750.1318333387358,
+          "intersecting_edge_pairs": [
+            [
+              9,
+              13
+            ],
+            [
+              21,
+              32
+            ],
+            [
+              24,
+              39
+            ],
+            [
+              27,
+              38
+            ],
+            [
+              34,
+              40
+            ],
+            [
+              49,
+              52
+            ],
+            [
+              61,
+              70
+            ],
+            [
+              78,
+              89
+            ],
+            [
+              95,
+              103
+            ]
+          ],
+          "intersection_count": 9,
+          "isoperimetric_quotient": 0.22972641543851954,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 309.41035645261036,
+          "polygon_simple": false,
+          "shape_factor": 4.353003976887563,
+          "signed_area": 1750.1318333387358
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1901,
+        "structural_mass": 333.7959129765939,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 3104.855533066753,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1813.079574397526,
+          "intersecting_edge_pairs": [
+            [
+              9,
+              14
+            ],
+            [
+              22,
+              33
+            ],
+            [
+              25,
+              41
+            ],
+            [
+              28,
+              40
+            ],
+            [
+              35,
+              42
+            ],
+            [
+              51,
+              54
+            ],
+            [
+              63,
+              75
+            ],
+            [
+              84,
+              95
+            ],
+            [
+              105,
+              114
+            ]
+          ],
+          "intersection_count": 9,
+          "isoperimetric_quotient": 0.2259279692033378,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 317.56188073979683,
+          "polygon_simple": false,
+          "shape_factor": 4.426189477673693,
+          "signed_area": 1813.079574397526
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1926,
+        "structural_mass": 342.9658712061917,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 3235.4627324902767,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1875.2689984329959,
+          "intersecting_edge_pairs": [
+            [
+              10,
+              15
+            ],
+            [
+              25,
+              36
+            ],
+            [
+              28,
+              46
+            ],
+            [
+              31,
+              45
+            ],
+            [
+              38,
+              47
+            ],
+            [
+              60,
+              65
+            ],
+            [
+              75,
+              89
+            ],
+            [
+              98,
+              112
+            ],
+            [
+              123,
+              133
+            ]
+          ],
+          "intersection_count": 9,
+          "isoperimetric_quotient": 0.22256855397965994,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 325.39046077885746,
+          "polygon_simple": false,
+          "shape_factor": 4.492997694954642,
+          "signed_area": 1875.2689984329959
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1951,
+        "structural_mass": 352.4906074483758,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 3365.2202566248584,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 1936.4413938805887,
+          "intersecting_edge_pairs": [
+            [
+              12,
+              18
+            ],
+            [
+              28,
+              40
+            ],
+            [
+              30,
+              52
+            ],
+            [
+              34,
+              49
+            ],
+            [
+              42,
+              52
+            ],
+            [
+              67,
+              73
+            ],
+            [
+              87,
+              101
+            ],
+            [
+              110,
+              124
+            ],
+            [
+              135,
+              145
+            ]
+          ],
+          "intersection_count": 9,
+          "isoperimetric_quotient": 0.2193707265502615,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 333.0563927683422,
+          "polygon_simple": false,
+          "shape_factor": 4.558493358369232,
+          "signed_area": 1936.4413938805887
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 1976,
+        "structural_mass": 362.3680110573625,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 3501.9056687067978,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 2001.1057299046006,
+          "intersecting_edge_pairs": [
+            [
+              14,
+              20
+            ],
+            [
+              30,
+              42
+            ],
+            [
+              32,
+              54
+            ],
+            [
+              36,
+              51
+            ],
+            [
+              44,
+              54
+            ],
+            [
+              69,
+              75
+            ],
+            [
+              89,
+              103
+            ],
+            [
+              112,
+              127
+            ],
+            [
+              138,
+              148
+            ]
+          ],
+          "intersection_count": 9,
+          "isoperimetric_quotient": 0.21572605815597085,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 341.4197545651249,
+          "polygon_simple": false,
+          "shape_factor": 4.635508610077118,
+          "signed_area": 2001.1057299046006
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 2001,
+        "structural_mass": 372.57928724893213,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 3647.327189532146,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 2070.26639207919,
+          "intersecting_edge_pairs": [
+            [
+              15,
+              21
+            ],
+            [
+              31,
+              43
+            ],
+            [
+              33,
+              55
+            ],
+            [
+              37,
+              52
+            ],
+            [
+              45,
+              55
+            ],
+            [
+              70,
+              76
+            ],
+            [
+              90,
+              104
+            ],
+            [
+              113,
+              129
+            ],
+            [
+              140,
+              150
+            ]
+          ],
+          "intersection_count": 9,
+          "isoperimetric_quotient": 0.21187872792593573,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 350.40828788520065,
+          "polygon_simple": false,
+          "shape_factor": 4.7196809693399695,
+          "signed_area": 2070.26639207919
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 2026,
+        "structural_mass": 383.12737467543246,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 3802.2611684763956,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 2144.3133026693395,
+          "intersecting_edge_pairs": [
+            [
+              4,
+              6
+            ],
+            [
+              15,
+              21
+            ],
+            [
+              31,
+              45
+            ],
+            [
+              33,
+              57
+            ],
+            [
+              37,
+              54
+            ],
+            [
+              47,
+              57
+            ],
+            [
+              72,
+              78
+            ],
+            [
+              92,
+              106
+            ],
+            [
+              115,
+              132
+            ],
+            [
+              143,
+              154
+            ]
+          ],
+          "intersection_count": 10,
+          "isoperimetric_quotient": 0.20798417518713222,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 359.9431440321315,
+          "polygon_simple": false,
+          "shape_factor": 4.808058108749175,
+          "signed_area": 2144.3133026693395
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 2051,
+        "structural_mass": 394.03161487344903,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 3962.295812227562,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 2220.7433327598396,
+          "intersecting_edge_pairs": [
+            [
+              4,
+              7
+            ],
+            [
+              16,
+              22
+            ],
+            [
+              32,
+              48
+            ],
+            [
+              34,
+              60
+            ],
+            [
+              38,
+              56
+            ],
+            [
+              49,
+              60
+            ],
+            [
+              74,
+              82
+            ],
+            [
+              96,
+              112
+            ],
+            [
+              120,
+              139
+            ],
+            [
+              149,
+              160
+            ]
+          ],
+          "intersection_count": 10,
+          "isoperimetric_quotient": 0.20429129268928414,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 369.59763810058587,
+          "polygon_simple": false,
+          "shape_factor": 4.8949712287588545,
+          "signed_area": 2220.7433327598396
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 2076,
+        "structural_mass": 405.3197904478413,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 4128.293781962449,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 2300.029656054744,
+          "intersecting_edge_pairs": [
+            [
+              4,
+              7
+            ],
+            [
+              16,
+              22
+            ],
+            [
+              33,
+              49
+            ],
+            [
+              33,
+              63
+            ],
+            [
+              38,
+              57
+            ],
+            [
+              50,
+              63
+            ],
+            [
+              77,
+              86
+            ],
+            [
+              99,
+              116
+            ],
+            [
+              124,
+              143
+            ],
+            [
+              153,
+              164
+            ]
+          ],
+          "intersection_count": 10,
+          "isoperimetric_quotient": 0.20077590337613585,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 379.41618729660394,
+          "polygon_simple": false,
+          "shape_factor": 4.980677378034697,
+          "signed_area": 2300.029656054744
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 2101,
+        "structural_mass": 417.0108779074034,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 4306.468712692027,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 2385.580745411389,
+          "intersecting_edge_pairs": [
+            [
+              4,
+              8
+            ],
+            [
+              16,
+              23
+            ],
+            [
+              34,
+              50
+            ],
+            [
+              34,
+              64
+            ],
+            [
+              39,
+              58
+            ],
+            [
+              51,
+              64
+            ],
+            [
+              78,
+              87
+            ],
+            [
+              100,
+              118
+            ],
+            [
+              105,
+              138
+            ],
+            [
+              106,
+              137
+            ],
+            [
+              125,
+              144
+            ],
+            [
+              154,
+              166
+            ]
+          ],
+          "intersection_count": 12,
+          "isoperimetric_quotient": 0.19725826438401864,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 389.8381959845695,
+          "polygon_simple": false,
+          "shape_factor": 5.069496089924116,
+          "signed_area": 2385.580745411389
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 2126,
+        "structural_mass": 429.10583644595914,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 4498.046398067039,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 2478.0057624687133,
+          "intersecting_edge_pairs": [
+            [
+              3,
+              8
+            ],
+            [
+              16,
+              24
+            ],
+            [
+              35,
+              51
+            ],
+            [
+              35,
+              65
+            ],
+            [
+              40,
+              59
+            ],
+            [
+              52,
+              65
+            ],
+            [
+              79,
+              88
+            ],
+            [
+              100,
+              119
+            ],
+            [
+              106,
+              140
+            ],
+            [
+              108,
+              138
+            ],
+            [
+              126,
+              145
+            ],
+            [
+              154,
+              168
+            ]
+          ],
+          "intersection_count": 12,
+          "isoperimetric_quotient": 0.19373805583345832,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 400.9115972566809,
+          "polygon_simple": false,
+          "shape_factor": 5.161608521867397,
+          "signed_area": 2478.0057624687133
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 2151,
+        "structural_mass": 441.6278989528373,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 4704.311319138124,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 2577.9452144737743,
+          "intersecting_edge_pairs": [
+            [
+              3,
+              8
+            ],
+            [
+              16,
+              24
+            ],
+            [
+              35,
+              51
+            ],
+            [
+              35,
+              65
+            ],
+            [
+              40,
+              59
+            ],
+            [
+              51,
+              65
+            ],
+            [
+              79,
+              88
+            ],
+            [
+              100,
+              119
+            ],
+            [
+              105,
+              140
+            ],
+            [
+              108,
+              138
+            ],
+            [
+              126,
+              145
+            ],
+            [
+              154,
+              168
+            ]
+          ],
+          "intersection_count": 12,
+          "isoperimetric_quotient": 0.19022663147993604,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 412.6730569197644,
+          "polygon_simple": false,
+          "shape_factor": 5.25688749372337,
+          "signed_area": 2577.9452144737743
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 2176,
+        "structural_mass": 454.6024821101936,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 4926.318999357281,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 2685.9132776074375,
+          "intersecting_edge_pairs": [
+            [
+              3,
+              8
+            ],
+            [
+              15,
+              24
+            ],
+            [
+              35,
+              51
+            ],
+            [
+              35,
+              65
+            ],
+            [
+              40,
+              59
+            ],
+            [
+              51,
+              66
+            ],
+            [
+              79,
+              88
+            ],
+            [
+              100,
+              119
+            ],
+            [
+              105,
+              141
+            ],
+            [
+              108,
+              137
+            ],
+            [
+              126,
+              145
+            ],
+            [
+              154,
+              168
+            ]
+          ],
+          "intersection_count": 12,
+          "isoperimetric_quotient": 0.18678754491950747,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 425.08616267057516,
+          "polygon_simple": false,
+          "shape_factor": 5.353676019623958,
+          "signed_area": 2685.9132776074375
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 2201,
+        "structural_mass": 468.06455235177486,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 5163.706373395934,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 2801.659244442438,
+          "intersecting_edge_pairs": [
+            [
+              3,
+              8
+            ],
+            [
+              15,
+              24
+            ],
+            [
+              35,
+              52
+            ],
+            [
+              35,
+              67
+            ],
+            [
+              41,
+              60
+            ],
+            [
+              52,
+              67
+            ],
+            [
+              80,
+              89
+            ],
+            [
+              102,
+              121
+            ],
+            [
+              107,
+              143
+            ],
+            [
+              110,
+              139
+            ],
+            [
+              128,
+              147
+            ],
+            [
+              156,
+              171
+            ]
+          ],
+          "intersection_count": 12,
+          "isoperimetric_quotient": 0.18355203392429234,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 437.95852823273435,
+          "polygon_simple": false,
+          "shape_factor": 5.448046412890521,
+          "signed_area": 2801.659244442438
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 2226,
+        "structural_mass": 482.0551905418132,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 5415.630698142906,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 2924.6792783769806,
+          "intersecting_edge_pairs": [
+            [
+              3,
+              9
+            ],
+            [
+              15,
+              24
+            ],
+            [
+              34,
+              67
+            ],
+            [
+              35,
+              53
+            ],
+            [
+              41,
+              60
+            ],
+            [
+              52,
+              67
+            ],
+            [
+              81,
+              91
+            ],
+            [
+              105,
+              124
+            ],
+            [
+              109,
+              147
+            ],
+            [
+              113,
+              143
+            ],
+            [
+              131,
+              151
+            ],
+            [
+              160,
+              176
+            ]
+          ],
+          "intersection_count": 12,
+          "isoperimetric_quotient": 0.1804796869270896,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 451.2631717856195,
+          "polygon_simple": false,
+          "shape_factor": 5.540789753275565,
+          "signed_area": 2924.6792783769806
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 2251,
+        "structural_mass": 496.60584448800745,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 5682.588625924513,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 3055.218818530625,
+          "intersecting_edge_pairs": [
+            [
+              3,
+              10
+            ],
+            [
+              16,
+              25
+            ],
+            [
+              35,
+              68
+            ],
+            [
+              36,
+              54
+            ],
+            [
+              42,
+              61
+            ],
+            [
+              53,
+              68
+            ],
+            [
+              82,
+              92
+            ],
+            [
+              106,
+              126
+            ],
+            [
+              110,
+              150
+            ],
+            [
+              114,
+              145
+            ],
+            [
+              133,
+              153
+            ],
+            [
+              162,
+              180
+            ]
+          ],
+          "intersection_count": 12,
+          "isoperimetric_quotient": 0.17769392773478918,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 464.8253432466998,
+          "polygon_simple": false,
+          "shape_factor": 5.627654319693551,
+          "signed_area": 3055.218818530625
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 2276,
+        "structural_mass": 511.755587741792,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 5969.446260161418,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 3195.834656619417,
+          "intersecting_edge_pairs": [
+            [
+              4,
+              11
+            ],
+            [
+              17,
+              27
+            ],
+            [
+              37,
+              70
+            ],
+            [
+              38,
+              56
+            ],
+            [
+              44,
+              63
+            ],
+            [
+              55,
+              70
+            ],
+            [
+              84,
+              95
+            ],
+            [
+              108,
+              128
+            ],
+            [
+              112,
+              152
+            ],
+            [
+              116,
+              147
+            ],
+            [
+              135,
+              155
+            ],
+            [
+              164,
+              182
+            ]
+          ],
+          "intersection_count": 12,
+          "isoperimetric_quotient": 0.1749081071517322,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 479.17275092378554,
+          "polygon_simple": false,
+          "shape_factor": 5.717287873526088,
+          "signed_area": 3195.834656619417
+        },
+        "mass_gate": true,
+        "pinch_candidate": null,
+        "step": 2301,
+        "structural_mass": 527.5290496546635,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "FAIL"
+      },
+      {
+        "absolute_A": 6277.805495552926,
+        "attempt_tick": true,
+        "birth_mass": 87.73326349501298,
+        "geometry": {
+          "absolute_area": 3347.3428190352283,
+          "intersecting_edge_pairs": [
+            [
+              4,
+              11
+            ],
+            [
+              17,
+              27
+            ],
+            [
+              37,
+              71
+            ],
+            [
+              38,
+              56
+            ],
+            [
+              44,
+              63
+            ],
+            [
+              55,
+              71
+            ],
+            [
+              85,
+              96
+            ],
+            [
+              109,
+              129
+            ],
+            [
+              113,
+              153
+            ],
+            [
+              118,
+              148
+            ],
+            [
+              136,
+              157
+            ],
+            [
+              165,
+              184
+            ]
+          ],
+          "intersection_count": 12,
+          "isoperimetric_quotient": 0.17216643772503323,
+          "minimum_nonadjacent_segment_distance": 0.0,
+          "perimeter": 494.2888133596939,
+          "polygon_simple": false,
+          "shape_factor": 5.808332989947196,
+          "signed_area": 3347.3428190352283
+        },
+        "mass_gate": true,
+        "pinch_candidate": {
+          "i": 44,
+          "j": 121
+        },
+        "step": 2326,
+        "structural_mass": 543.9610952068857,
+        "topology_ledger": {
+          "cross_bonds": 0,
+          "local_rebonds": 0,
+          "tension_ruptures": 0
+        },
+        "try_local_fission": "SUCCESS"
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "campaign_steps": 4000,
+  "no_production_geometry_change": true,
+  "no_repair": true,
+  "observer_only": true,
+  "qualification_population": 10
+}

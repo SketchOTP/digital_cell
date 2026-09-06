@@ -133,6 +133,9 @@ struct RuntimeSnapshot {
     /// fission decision.
     #[serde(default)]
     fission_readiness_audit: Option<FissionReadinessAudit>,
+    /// Opt-in observer-only raw polygon snapshots for R19 geometry audit.
+    #[serde(default)]
+    geometry_audit: Option<GeometryAudit>,
     scientific_boundary: ScientificBoundary,
 }
 
@@ -222,6 +225,8 @@ struct RuntimeReport {
     flux_audit: Option<FluxAuditState>,
     #[serde(skip_serializing_if = "Option::is_none")]
     fission_readiness_audit: Option<FissionReadinessAudit>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    geometry_audit: Option<GeometryAudit>,
 }
 
 #[derive(Debug)]
@@ -239,6 +244,7 @@ struct Config {
     r17_early_whole_membrane: bool,
     r17_delayed_whole_membrane: bool,
     r18_fission_audit: bool,
+    geometry_audit: bool,
     routec_reserve_growth: bool,
     assimilation_material_flow: bool,
     anabolic_incorporation: bool,
@@ -298,6 +304,24 @@ struct FissionReadinessAudit {
     rows: Vec<FissionReadinessRow>,
     official_attempt_ticks: Vec<FissionReadinessRow>,
     passive_mechanics_shadow: Vec<FissionReadinessRow>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+struct GeometryAuditRow {
+    step: u64,
+    phase: String,
+    vertex_count: usize,
+    vertices: Vec<[f64; 2]>,
+    edge_lengths: Vec<f64>,
+    edge_ruptured: Vec<bool>,
+    structural_mass: f64,
+    birth_mass: f64,
+    absolute_a: f64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+struct GeometryAudit {
+    rows: Vec<GeometryAuditRow>,
 }
 
 fn best_nonadjacent_distance(mesh: &chemistry_core::material_mesh::MaterialMesh) -> Option<f64> {
@@ -454,6 +478,25 @@ fn fission_readiness_row(
         topology_tension_ruptures: topology.tension_ruptures,
         topology_local_rebonds: topology.local_rebonds,
         topology_cross_bonds: topology.cross_bonds,
+    }
+}
+
+fn geometry_audit_row(
+    mesh: &chemistry_core::material_mesh::MaterialMesh,
+    step: u64,
+    phase: &str,
+    birth_mass: f64,
+) -> GeometryAuditRow {
+    GeometryAuditRow {
+        step,
+        phase: phase.to_string(),
+        vertex_count: mesh.n(),
+        vertices: mesh.vertices.clone(),
+        edge_lengths: (0..mesh.n()).map(|i| mesh.edge_length(i)).collect(),
+        edge_ruptured: mesh.edges.iter().map(|edge| edge.ruptured).collect(),
+        structural_mass: mesh.total_structural_mass(),
+        birth_mass,
+        absolute_a: mesh.interior.a.max(0.0) * mesh.area().max(0.0),
     }
 }
 
@@ -860,6 +903,7 @@ fn parse_config() -> Config {
     let mut r17_early_whole_membrane = false;
     let mut r17_delayed_whole_membrane = false;
     let mut r18_fission_audit = false;
+    let mut geometry_audit = false;
     let mut routec_reserve_growth = false;
     let mut assimilation_material_flow = false;
     let mut anabolic_incorporation = false;
@@ -886,6 +930,7 @@ fn parse_config() -> Config {
             "--r17-early-whole-membrane" => r17_early_whole_membrane = true,
             "--r17-delayed-whole-membrane" => r17_delayed_whole_membrane = true,
             "--r18-fission-audit" => r18_fission_audit = true,
+            "--r19-geometry-audit" => geometry_audit = true,
             "--routec-reserve-growth" => routec_reserve_growth = true,
             "--assimilation-material-flow" => assimilation_material_flow = true,
             "--assimilation-anabolic-incorporation" => {
@@ -916,6 +961,7 @@ fn parse_config() -> Config {
         r17_early_whole_membrane,
         r17_delayed_whole_membrane,
         r18_fission_audit,
+        geometry_audit,
         routec_reserve_growth,
         assimilation_material_flow,
         anabolic_incorporation,
@@ -1186,6 +1232,7 @@ fn new_post_fission_snapshot(
         previous_centroids,
         flux_audit: None,
         fission_readiness_audit: None,
+        geometry_audit: None,
         scientific_boundary: ScientificBoundary {
             finite_world_exchange: "SpatialMaterialFieldV1 / post-fission daughter-local field".to_string(),
             ..ScientificBoundary::default()
@@ -1484,6 +1531,7 @@ fn new_snapshot(seed: u64) -> RuntimeSnapshot {
         previous_centroids,
         flux_audit: None,
         fission_readiness_audit: None,
+        geometry_audit: None,
         scientific_boundary: ScientificBoundary::default(),
     }
 }
@@ -1599,6 +1647,7 @@ fn new_shared_medium_from_birth_snapshot(
         previous_centroids,
         flux_audit: None,
         fission_readiness_audit: None,
+        geometry_audit: None,
         scientific_boundary: ScientificBoundary {
             finite_world_exchange:
                 "SharedFiniteExtracellularMediumV1 / local membrane exchange from founder birth"
@@ -1743,6 +1792,7 @@ fn new_routeb_snapshot(
         previous_centroids,
         flux_audit: None,
         fission_readiness_audit: None,
+        geometry_audit: None,
         scientific_boundary: ScientificBoundary {
             finite_world_exchange: "SpatialMaterialFieldV1 / local edge exchange".to_string(),
             ..ScientificBoundary::default()
@@ -1832,6 +1882,7 @@ fn new_routec_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         previous_centroids,
         flux_audit: None,
         fission_readiness_audit: None,
+        geometry_audit: None,
         scientific_boundary: ScientificBoundary {
             finite_world_exchange: "SpatialMaterialFieldV1 / local edge exchange".to_string(),
             frozen_reactions: "ReactionParams::conservative_v3 + sealed D-091 reserve".to_string(),
@@ -2058,7 +2109,9 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
     let mut fission_readiness_rows = Vec::new();
     let mut fission_readiness_attempt_rows = Vec::new();
     let mut passive_mechanics_shadow_rows = Vec::new();
+    let mut geometry_rows = Vec::new();
     let fission_audit_enabled = snapshot.fission_readiness_audit.is_some();
+    let geometry_audit_enabled = snapshot.geometry_audit.is_some();
     for &index in &active_indices {
         let individual = &mut snapshot.population.individuals[index];
         if !individual.mesh.alive
@@ -2123,6 +2176,14 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
                 "before_topology",
                 false,
                 &TopologyLedger::default(),
+            ));
+        }
+        if geometry_audit_enabled {
+            geometry_rows.push(geometry_audit_row(
+                &individual.mesh,
+                tick,
+                "after_topology",
+                individual.birth_mass,
             ));
         }
         let topology_ledger = if tick % 10 == 0 {
@@ -2277,6 +2338,9 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
         audit
             .passive_mechanics_shadow
             .extend(passive_mechanics_shadow_rows);
+    }
+    if let Some(audit) = snapshot.geometry_audit.as_mut() {
+        audit.rows.extend(geometry_rows);
     }
     snapshot.cumulative_assimilation_n_processed += assimilation_n_processed;
     snapshot.cumulative_assimilation_f_processed += assimilation_f_processed;
@@ -2448,6 +2512,7 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
         checkpoint: checkpoint.display().to_string(),
         flux_audit: snapshot.flux_audit.clone(),
         fission_readiness_audit: snapshot.fission_readiness_audit.clone(),
+        geometry_audit: snapshot.geometry_audit.clone(),
     }
 }
 
@@ -2506,6 +2571,9 @@ fn main() {
             official_attempt_ticks: Vec::new(),
             passive_mechanics_shadow: Vec::new(),
         });
+    }
+    if config.geometry_audit && snapshot.geometry_audit.is_none() {
+        snapshot.geometry_audit = Some(GeometryAudit { rows: Vec::new() });
     }
     let target = snapshot.step.saturating_add(config.steps);
     while snapshot.step < target {

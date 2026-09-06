@@ -1,0 +1,9 @@
+{
+  "classification": "D088_SELF_INTERSECTION_PRECEDES_FISSION",
+  "d088_physical_reproduction_status": "REQUALIFICATION_REQUIRED",
+  "directive": "DC-DEV-021-M2-R19-D088-GEOMETRY-VALIDITY-AND-FISSION-QUALIFICATION-INTEGRITY-AUDIT-001",
+  "independent_architect_acceptance": "PENDING",
+  "next_execution_started": false,
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "scientific_runtime_changed": false
+}

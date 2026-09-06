@@ -1,0 +1,529 @@
+{
+  "events": [
+    {
+      "campaign": "seed_1_rotate_0.3",
+      "daughter_a": {
+        "absolute_area": 1129.9280441198375,
+        "intersecting_edge_pairs": [
+          [
+            0,
+            19
+          ],
+          [
+            11,
+            27
+          ],
+          [
+            19,
+            77
+          ],
+          [
+            41,
+            52
+          ]
+        ],
+        "intersection_count": 4,
+        "isoperimetric_quotient": 0.36778310343086773,
+        "minimum_nonadjacent_segment_distance": 0.0,
+        "perimeter": 196.4872793636959,
+        "polygon_simple": false,
+        "shape_factor": 2.7189938598904946,
+        "signed_area": 1129.9280441198375
+      },
+      "daughter_b": {
+        "absolute_area": 2217.4147749153944,
+        "intersecting_edge_pairs": [
+          [
+            15,
+            36
+          ],
+          [
+            44,
+            63
+          ],
+          [
+            81,
+            88
+          ],
+          [
+            94,
+            104
+          ]
+        ],
+        "intersection_count": 4,
+        "isoperimetric_quotient": 0.29620108632647824,
+        "minimum_nonadjacent_segment_distance": 0.0,
+        "perimeter": 306.7150432106769,
+        "polygon_simple": false,
+        "shape_factor": 3.376084849661158,
+        "signed_area": 2217.4147749153944
+      },
+      "first_self_intersection_step": 1036,
+      "fission_step": 2326,
+      "intersection_count_at_fission": 12,
+      "pinch_relationship": "PINCH_IS_SELF_INTERSECTION_ARTIFACT",
+      "polygon_simple_at_fission": false,
+      "shape_factor_at_fission": 5.808332989947196
+    },
+    {
+      "campaign": "seed_2_vertex_0.12",
+      "daughter_a": {
+        "absolute_area": 1182.591684568955,
+        "intersecting_edge_pairs": [
+          [
+            26,
+            35
+          ],
+          [
+            41,
+            53
+          ]
+        ],
+        "intersection_count": 2,
+        "isoperimetric_quotient": 0.44753092227115915,
+        "minimum_nonadjacent_segment_distance": 0.0,
+        "perimeter": 182.22619976602627,
+        "polygon_simple": false,
+        "shape_factor": 2.234482468664142,
+        "signed_area": 1182.591684568955
+      },
+      "daughter_b": {
+        "absolute_area": 2243.62329923357,
+        "intersecting_edge_pairs": [
+          [
+            28,
+            44
+          ],
+          [
+            49,
+            66
+          ],
+          [
+            86,
+            105
+          ]
+        ],
+        "intersection_count": 3,
+        "isoperimetric_quotient": 0.3003772785099788,
+        "minimum_nonadjacent_segment_distance": 0.0,
+        "perimeter": 306.3700896155278,
+        "polygon_simple": false,
+        "shape_factor": 3.329146615085199,
+        "signed_area": 2243.62329923357
+      },
+      "first_self_intersection_step": 1068,
+      "fission_step": 2276,
+      "intersection_count_at_fission": 7,
+      "pinch_relationship": "PINCH_CORRELATED_WITH_INTERSECTION",
+      "polygon_simple_at_fission": false,
+      "shape_factor_at_fission": 5.313543212957045
+    },
+    {
+      "campaign": "seed_3_c_0.08",
+      "daughter_a": {
+        "absolute_area": 599.2524963517593,
+        "intersecting_edge_pairs": [
+          [
+            23,
+            26
+          ]
+        ],
+        "intersection_count": 1,
+        "isoperimetric_quotient": 0.6024980592567188,
+        "minimum_nonadjacent_segment_distance": 0.0,
+        "perimeter": 111.7974844947491,
+        "polygon_simple": false,
+        "shape_factor": 1.6597563836697924,
+        "signed_area": 599.2524963517593
+      },
+      "daughter_b": {
+        "absolute_area": 1791.198510411096,
+        "intersecting_edge_pairs": [
+          [
+            25,
+            33
+          ],
+          [
+            47,
+            53
+          ],
+          [
+            63,
+            72
+          ],
+          [
+            83,
+            100
+          ]
+        ],
+        "intersection_count": 4,
+        "isoperimetric_quotient": 0.32938772091916724,
+        "minimum_nonadjacent_segment_distance": 0.0,
+        "perimeter": 261.41053689399706,
+        "polygon_simple": false,
+        "shape_factor": 3.035935878876927,
+        "signed_area": 1791.198510411096
+      },
+      "first_self_intersection_step": 1293,
+      "fission_step": 2051,
+      "intersection_count_at_fission": 9,
+      "pinch_relationship": "PINCH_CORRELATED_WITH_INTERSECTION",
+      "polygon_simple_at_fission": false,
+      "shape_factor_at_fission": 4.407320761654315
+    },
+    {
+      "campaign": "seed_4_a_0.08",
+      "daughter_a": {
+        "absolute_area": 1308.2563729974202,
+        "intersecting_edge_pairs": [
+          [
+            19,
+            40
+          ],
+          [
+            59,
+            61
+          ]
+        ],
+        "intersection_count": 2,
+        "isoperimetric_quotient": 0.45824923477025975,
+        "minimum_nonadjacent_segment_distance": 0.0,
+        "perimeter": 189.40894597634744,
+        "polygon_simple": false,
+        "shape_factor": 2.182218592250009,
+        "signed_area": 1308.2563729974202
+      },
+      "daughter_b": {
+        "absolute_area": 1928.553697621425,
+        "intersecting_edge_pairs": [
+          [
+            34,
+            57
+          ],
+          [
+            75,
+            89
+          ]
+        ],
+        "intersection_count": 2,
+        "isoperimetric_quotient": 0.3775349363059598,
+        "minimum_nonadjacent_segment_distance": 0.0,
+        "perimeter": 253.36243633172305,
+        "polygon_simple": false,
+        "shape_factor": 2.648761488895919,
+        "signed_area": 1928.553697621425
+      },
+      "first_self_intersection_step": 1081,
+      "fission_step": 2226,
+      "intersection_count_at_fission": 8,
+      "pinch_relationship": "PINCH_CORRELATED_WITH_INTERSECTION",
+      "polygon_simple_at_fission": false,
+      "shape_factor_at_fission": 4.675922742877845
+    },
+    {
+      "campaign": "seed_5_env_0.1",
+      "daughter_a": {
+        "absolute_area": 291.3985130957794,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.6108317892633722,
+        "minimum_nonadjacent_segment_distance": 2.1254647631845107,
+        "perimeter": 77.42617098756826,
+        "polygon_simple": true,
+        "shape_factor": 1.6371119145680715,
+        "signed_area": 291.3985130957794
+      },
+      "daughter_b": {
+        "absolute_area": 1332.0052404449632,
+        "intersecting_edge_pairs": [
+          [
+            15,
+            23
+          ],
+          [
+            30,
+            38
+          ],
+          [
+            56,
+            59
+          ],
+          [
+            68,
+            71
+          ]
+        ],
+        "intersection_count": 4,
+        "isoperimetric_quotient": 0.3234373468593987,
+        "minimum_nonadjacent_segment_distance": 0.0,
+        "perimeter": 227.49026458633585,
+        "polygon_simple": false,
+        "shape_factor": 3.0917889035081334,
+        "signed_area": 1332.0052404449632
+      },
+      "first_self_intersection_step": 857,
+      "fission_step": 1651,
+      "intersection_count_at_fission": 6,
+      "pinch_relationship": "PINCH_CORRELATED_WITH_INTERSECTION",
+      "polygon_simple_at_fission": false,
+      "shape_factor_at_fission": 4.213936571846386
+    },
+    {
+      "campaign": "seed_6_l_0.1",
+      "daughter_a": {
+        "absolute_area": 600.3148038886022,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.7200965820709628,
+        "minimum_nonadjacent_segment_distance": 0.8248351698099718,
+        "perimeter": 102.35264822427557,
+        "polygon_simple": true,
+        "shape_factor": 1.3887026058699634,
+        "signed_area": 600.3148038886022
+      },
+      "daughter_b": {
+        "absolute_area": 1669.8339372186438,
+        "intersecting_edge_pairs": [
+          [
+            26,
+            35
+          ],
+          [
+            49,
+            55
+          ],
+          [
+            65,
+            72
+          ],
+          [
+            83,
+            98
+          ]
+        ],
+        "intersection_count": 4,
+        "isoperimetric_quotient": 0.3190739160324293,
+        "minimum_nonadjacent_segment_distance": 0.0,
+        "perimeter": 256.4459958609455,
+        "polygon_simple": false,
+        "shape_factor": 3.134070037546925,
+        "signed_area": 1669.8339372186438
+      },
+      "first_self_intersection_step": 1307,
+      "fission_step": 2051,
+      "intersection_count_at_fission": 8,
+      "pinch_relationship": "PINCH_CORRELATED_WITH_INTERSECTION",
+      "polygon_simple_at_fission": false,
+      "shape_factor_at_fission": 4.2960683784325635
+    },
+    {
+      "campaign": "seed_7_rotate_-0.5",
+      "daughter_a": {
+        "absolute_area": 2062.301858904947,
+        "intersecting_edge_pairs": [
+          [
+            8,
+            25
+          ],
+          [
+            44,
+            53
+          ],
+          [
+            63,
+            76
+          ],
+          [
+            88,
+            108
+          ]
+        ],
+        "intersection_count": 4,
+        "isoperimetric_quotient": 0.29025924653397206,
+        "minimum_nonadjacent_segment_distance": 0.0,
+        "perimeter": 298.80510764284617,
+        "polygon_simple": false,
+        "shape_factor": 3.4451960168061677,
+        "signed_area": 2062.301858904947
+      },
+      "daughter_b": {
+        "absolute_area": 476.84018368231636,
+        "intersecting_edge_pairs": [
+          [
+            1,
+            45
+          ],
+          [
+            3,
+            43
+          ]
+        ],
+        "intersection_count": 2,
+        "isoperimetric_quotient": 0.6083560331500825,
+        "minimum_nonadjacent_segment_distance": 0.0,
+        "perimeter": 99.24587056408416,
+        "polygon_simple": false,
+        "shape_factor": 1.643774279383695,
+        "signed_area": 476.84018368231636
+      },
+      "first_self_intersection_step": 1256,
+      "fission_step": 2126,
+      "intersection_count_at_fission": 8,
+      "pinch_relationship": "PINCH_IS_SELF_INTERSECTION_ARTIFACT",
+      "polygon_simple_at_fission": false,
+      "shape_factor_at_fission": 4.812957827079137
+    },
+    {
+      "campaign": "seed_8_vertex_-0.1",
+      "daughter_a": {
+        "absolute_area": 233.93939761837987,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.5171729756288346,
+        "minimum_nonadjacent_segment_distance": 1.621278233094224,
+        "perimeter": 75.39433311003376,
+        "polygon_simple": true,
+        "shape_factor": 1.9335890449111197,
+        "signed_area": 233.93939761837987
+      },
+      "daughter_b": {
+        "absolute_area": 1725.7300526539857,
+        "intersecting_edge_pairs": [
+          [
+            12,
+            15
+          ],
+          [
+            20,
+            23
+          ],
+          [
+            33,
+            47
+          ],
+          [
+            59,
+            64
+          ],
+          [
+            75,
+            82
+          ]
+        ],
+        "intersection_count": 5,
+        "isoperimetric_quotient": 0.2941080379309313,
+        "minimum_nonadjacent_segment_distance": 0.0,
+        "perimeter": 271.5425650711587,
+        "polygon_simple": false,
+        "shape_factor": 3.4001110851477008,
+        "signed_area": 1725.7300526539857
+      },
+      "first_self_intersection_step": 1195,
+      "fission_step": 1951,
+      "intersection_count_at_fission": 7,
+      "pinch_relationship": "PINCH_CORRELATED_WITH_INTERSECTION",
+      "polygon_simple_at_fission": false,
+      "shape_factor_at_fission": 4.565608796859183
+    },
+    {
+      "campaign": "seed_9_c_-0.05",
+      "daughter_a": {
+        "absolute_area": 598.1389622404713,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.7186014822604043,
+        "minimum_nonadjacent_segment_distance": 0.581555075678851,
+        "perimeter": 102.27321870313399,
+        "polygon_simple": true,
+        "shape_factor": 1.3915918971589645,
+        "signed_area": 598.1389622404713
+      },
+      "daughter_b": {
+        "absolute_area": 1642.9539690926727,
+        "intersecting_edge_pairs": [
+          [
+            26,
+            35
+          ],
+          [
+            49,
+            55
+          ],
+          [
+            61,
+            69
+          ],
+          [
+            82,
+            98
+          ]
+        ],
+        "intersection_count": 4,
+        "isoperimetric_quotient": 0.3161921428950235,
+        "minimum_nonadjacent_segment_distance": 0.0,
+        "perimeter": 255.530116537115,
+        "polygon_simple": false,
+        "shape_factor": 3.1626339315205634,
+        "signed_area": 1642.9539690926727
+      },
+      "first_self_intersection_step": 1300,
+      "fission_step": 2051,
+      "intersection_count_at_fission": 8,
+      "pinch_relationship": "PINCH_CORRELATED_WITH_INTERSECTION",
+      "polygon_simple_at_fission": false,
+      "shape_factor_at_fission": 4.329027191736682
+    },
+    {
+      "campaign": "seed_10_env_-0.08",
+      "daughter_a": {
+        "absolute_area": 1457.1852683564662,
+        "intersecting_edge_pairs": [
+          [
+            40,
+            60
+          ]
+        ],
+        "intersection_count": 1,
+        "isoperimetric_quotient": 0.5413061415397188,
+        "minimum_nonadjacent_segment_distance": 0.0,
+        "perimeter": 183.92503220499802,
+        "polygon_simple": false,
+        "shape_factor": 1.8473834365809134,
+        "signed_area": 1457.1852683564662
+      },
+      "daughter_b": {
+        "absolute_area": 1908.9745030055387,
+        "intersecting_edge_pairs": [
+          [
+            15,
+            28
+          ],
+          [
+            38,
+            56
+          ],
+          [
+            71,
+            87
+          ]
+        ],
+        "intersection_count": 3,
+        "isoperimetric_quotient": 0.32133192161769736,
+        "minimum_nonadjacent_segment_distance": 0.0,
+        "perimeter": 273.2297975494988,
+        "polygon_simple": false,
+        "shape_factor": 3.112046867194675,
+        "signed_area": 1908.9745030055387
+      },
+      "first_self_intersection_step": 1240,
+      "fission_step": 2501,
+      "intersection_count_at_fission": 6,
+      "pinch_relationship": "PINCH_CORRELATED_WITH_INTERSECTION",
+      "polygon_simple_at_fission": false,
+      "shape_factor_at_fission": 4.74323301343459
+    }
+  ],
+  "self_intersecting_fissions": 10,
+  "total_qualifying_fissions": 10,
+  "valid_simple_fissions": 0
+}

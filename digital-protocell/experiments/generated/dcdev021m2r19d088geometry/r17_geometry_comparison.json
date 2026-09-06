@@ -1,0 +1,728 @@
+{
+  "first_self_intersection_step": null,
+  "minimum_shape_factor": 1.0089172777798932,
+  "polygon_simple": true,
+  "rows": [
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 757.4012746981695,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9729737039414553,
+        "perimeter": 98.90480621595778,
+        "polygon_simple": true,
+        "shape_factor": 1.0277770056364965,
+        "signed_area": 757.4012746981695
+      },
+      "step": 1,
+      "structural_mass": 87.88100799513794
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 755.9941846395091,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.974367387184406,
+        "perimeter": 98.74219784884332,
+        "polygon_simple": true,
+        "shape_factor": 1.0263069281184212,
+        "signed_area": 755.9941846395091
+      },
+      "step": 2,
+      "structural_mass": 88.01102618761921
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 754.6675963081011,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9753519839146577,
+        "perimeter": 98.60571749921229,
+        "polygon_simple": true,
+        "shape_factor": 1.025270893474185,
+        "signed_area": 754.6675963081011
+      },
+      "step": 3,
+      "structural_mass": 88.1406229031124
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 753.2757057090657,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9759662430428533,
+        "perimeter": 98.48373577454849,
+        "polygon_simple": true,
+        "shape_factor": 1.024625602707543,
+        "signed_area": 753.2757057090657
+      },
+      "step": 4,
+      "structural_mass": 88.27018276288428
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 751.893337511788,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9764058331568453,
+        "perimeter": 98.37117699076568,
+        "polygon_simple": true,
+        "shape_factor": 1.0241643034504124,
+        "signed_area": 751.893337511788
+      },
+      "step": 5,
+      "structural_mass": 88.39978119678803
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 750.5156182763402,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9767280641859699,
+        "perimeter": 98.26479805963552,
+        "polygon_simple": true,
+        "shape_factor": 1.023826422796017,
+        "signed_area": 750.5156182763402
+      },
+      "step": 6,
+      "structural_mass": 88.52948223272048
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 749.1498515347522,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9769735907237362,
+        "perimeter": 98.16301045476337,
+        "polygon_simple": true,
+        "shape_factor": 1.0235691215145395,
+        "signed_area": 749.1498515347522
+      },
+      "step": 7,
+      "structural_mass": 88.659383824147
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 747.7948707900352,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9771644510107286,
+        "perimeter": 98.0646185706839,
+        "polygon_simple": true,
+        "shape_factor": 1.0233691974423051,
+        "signed_area": 747.7948707900352
+      },
+      "step": 8,
+      "structural_mass": 88.78953698816147
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 746.4498617186082,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.977315443803521,
+        "perimeter": 97.96881886831788,
+        "polygon_simple": true,
+        "shape_factor": 1.0232110894597093,
+        "signed_area": 746.4498617186082
+      },
+      "step": 9,
+      "structural_mass": 88.9199595029849
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 745.1142474170751,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9774367441903121,
+        "perimeter": 97.87505863935895,
+        "polygon_simple": true,
+        "shape_factor": 1.023084108453871,
+        "signed_area": 745.1142474170751
+      },
+      "step": 10,
+      "structural_mass": 89.05066403503851
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 743.7876052298791,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9775354990349894,
+        "perimeter": 97.78294916443083,
+        "polygon_simple": true,
+        "shape_factor": 1.0229807520925709,
+        "signed_area": 743.7876052298791
+      },
+      "step": 11,
+      "structural_mass": 89.18165923062907
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 742.4696132771398,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9776168294033024,
+        "perimeter": 97.69221115479347,
+        "polygon_simple": true,
+        "shape_factor": 1.0228956477870368,
+        "signed_area": 742.4696132771398
+      },
+      "step": 12,
+      "structural_mass": 89.31295060209794
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 741.1600171623993,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.977684474926888,
+        "perimeter": 97.60263979737296,
+        "polygon_simple": true,
+        "shape_factor": 1.0228248741239148,
+        "signed_area": 741.1600171623993
+      },
+      "step": 13,
+      "structural_mass": 89.4445412264441
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 739.8586091683565,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9777412159897834,
+        "perimeter": 97.51408194252659,
+        "polygon_simple": true,
+        "shape_factor": 1.0227655167299905,
+        "signed_area": 739.8586091683565
+      },
+      "step": 14,
+      "structural_mass": 89.57643228854673
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 738.5652149684437,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9777891551370109,
+        "perimeter": 97.42642094977778,
+        "polygon_simple": true,
+        "shape_factor": 1.0227153724770826,
+        "signed_area": 738.5652149684437
+      },
+      "step": 15,
+      "structural_mass": 89.70862350063459
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 737.2796848708019,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9778299077247692,
+        "perimeter": 97.33956644468243,
+        "polygon_simple": true,
+        "shape_factor": 1.0226727492175163,
+        "signed_area": 737.2796848708019
+      },
+      "step": 16,
+      "structural_mass": 89.8411134252167
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 736.0018878488415,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9778647331518029,
+        "perimeter": 97.25344727618229,
+        "polygon_simple": true,
+        "shape_factor": 1.0226363280091428,
+        "signed_area": 736.0018878488415
+      },
+      "step": 17,
+      "structural_mass": 89.97389972359674
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 734.7317073367597,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9778946266203721,
+        "perimeter": 97.16800659268505,
+        "polygon_simple": true,
+        "shape_factor": 1.0226050668219997,
+        "signed_area": 734.7317073367597
+      },
+      "step": 18,
+      "structural_mass": 90.10697934742717
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 733.4690381822995,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9779203843014478,
+        "perimeter": 97.08319834276534,
+        "polygon_simple": true,
+        "shape_factor": 1.022578132180284,
+        "signed_area": 733.4690381822995
+      },
+      "step": 19,
+      "structural_mass": 90.24034868682634
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 732.2137843850246,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9779426503215376,
+        "perimeter": 96.99898474872889,
+        "polygon_simple": true,
+        "shape_factor": 1.0225548498894186,
+        "signed_area": 732.2137843850246
+      },
+      "step": 20,
+      "structural_mass": 90.37400368541279
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 730.9658573847067,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9779619511448658,
+        "perimeter": 96.91533445480965,
+        "polygon_simple": true,
+        "shape_factor": 1.0225346689912986,
+        "signed_area": 730.9658573847067
+      },
+      "step": 21,
+      "structural_mass": 90.50793993013039
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 729.7251747453006,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9779787210893078,
+        "perimeter": 96.83222115030549,
+        "polygon_simple": true,
+        "shape_factor": 1.0225171350212652,
+        "signed_area": 729.7251747453006
+      },
+      "step": 22,
+      "structural_mass": 90.64215272182108
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 728.4916591295514,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9779933215164323,
+        "perimeter": 96.74962253201996,
+        "polygon_simple": true,
+        "shape_factor": 1.0225018698997301,
+        "signed_area": 728.4916591295514
+      },
+      "step": 23,
+      "structural_mass": 90.7766371310481
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 727.2652374907921,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9780060554449959,
+        "perimeter": 96.66751951257012,
+        "polygon_simple": true,
+        "shape_factor": 1.022488556622481,
+        "signed_area": 727.2652374907921
+      },
+      "step": 24,
+      "structural_mass": 90.91138804256946
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.578361183894344,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9664347579806345,
+        "perimeter": 15.542553193536202,
+        "polygon_simple": true,
+        "shape_factor": 1.0347309963162956,
+        "signed_area": 18.578361183894344
+      },
+      "step": 11977,
+      "structural_mass": 19.120859635734266
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.57335601217403,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9664316279721753,
+        "perimeter": 15.540484568787814,
+        "polygon_simple": true,
+        "shape_factor": 1.034734347527781,
+        "signed_area": 18.57335601217403
+      },
+      "step": 11978,
+      "structural_mass": 19.115297589492172
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.56264025704695,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9663927007383359,
+        "perimeter": 15.53631383980772,
+        "polygon_simple": true,
+        "shape_factor": 1.034776027629335,
+        "signed_area": 18.56264025704695
+      },
+      "step": 11979,
+      "structural_mass": 19.109735907518537
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.55374758498067,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.966422098331875,
+        "perimeter": 15.532355713553567,
+        "polygon_simple": true,
+        "shape_factor": 1.0347445507776398,
+        "signed_area": 18.55374758498067
+      },
+      "step": 11980,
+      "structural_mass": 19.104174011085252
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.546496654836915,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9665336518647747,
+        "perimeter": 15.528424149528991,
+        "polygon_simple": true,
+        "shape_factor": 1.034625124609637,
+        "signed_area": 18.546496654836915
+      },
+      "step": 11981,
+      "structural_mass": 19.098614977026266
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.537422820490406,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9666085924656501,
+        "perimeter": 15.524023241194815,
+        "polygon_simple": true,
+        "shape_factor": 1.0345449107266615,
+        "signed_area": 18.537422820490406
+      },
+      "step": 11982,
+      "structural_mass": 19.093058801774294
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.52359770020712,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.966563464270306,
+        "perimeter": 15.518595554425893,
+        "polygon_simple": true,
+        "shape_factor": 1.034593212929827,
+        "signed_area": 18.52359770020712
+      },
+      "step": 11983,
+      "structural_mass": 19.087504257561235
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.515194356641473,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9665055475535355,
+        "perimeter": 15.51553995656339,
+        "polygon_simple": true,
+        "shape_factor": 1.034655209720469,
+        "signed_area": 18.515194356641473
+      },
+      "step": 11984,
+      "structural_mass": 19.0819524750426
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.50985821921563,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9664976900413452,
+        "perimeter": 15.513367042203221,
+        "polygon_simple": true,
+        "shape_factor": 1.034663621345253,
+        "signed_area": 18.50985821921563
+      },
+      "step": 11985,
+      "structural_mass": 19.076402338822348
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.504924950612462,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9664942283070039,
+        "perimeter": 15.511327362989348,
+        "polygon_simple": true,
+        "shape_factor": 1.034667327244869,
+        "signed_area": 18.504924950612462
+      },
+      "step": 11986,
+      "structural_mass": 19.070853633893634
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.492966995427423,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9664037797363783,
+        "perimeter": 15.507040436558345,
+        "polygon_simple": true,
+        "shape_factor": 1.0347641648015764,
+        "signed_area": 18.492966995427423
+      },
+      "step": 11987,
+      "structural_mass": 19.06530486918608
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.492966995427423,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9664037797363783,
+        "perimeter": 15.507040436558345,
+        "polygon_simple": true,
+        "shape_factor": 1.0347641648015764,
+        "signed_area": 18.492966995427423
+      },
+      "step": 11988,
+      "structural_mass": 19.059758956625434
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.484342287106074,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9664584031351185,
+        "perimeter": 15.502985819246938,
+        "polygon_simple": true,
+        "shape_factor": 1.0347056808198625,
+        "signed_area": 18.484342287106074
+      },
+      "step": 11989,
+      "structural_mass": 19.054214732247925
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.464552388258085,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.966561186879066,
+        "perimeter": 15.493860741489604,
+        "polygon_simple": true,
+        "shape_factor": 1.034595650616703,
+        "signed_area": 18.464552388258085
+      },
+      "step": 11990,
+      "structural_mass": 19.048671426296927
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.45453681940296,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9665542413974643,
+        "perimeter": 15.48971372330291,
+        "polygon_simple": true,
+        "shape_factor": 1.034603085031399,
+        "signed_area": 18.45453681940296
+      },
+      "step": 11991,
+      "structural_mass": 19.043129616546842
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.445742359183896,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9666026234253926,
+        "perimeter": 15.485634921508943,
+        "polygon_simple": true,
+        "shape_factor": 1.0345512993294552,
+        "signed_area": 18.445742359183896
+      },
+      "step": 11992,
+      "structural_mass": 19.037589416870773
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.418571568141715,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9666062884440989,
+        "perimeter": 15.474196122715298,
+        "polygon_simple": true,
+        "shape_factor": 1.0345473766880344,
+        "signed_area": 18.418571568141715
+      },
+      "step": 11993,
+      "structural_mass": 19.032047421144526
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.400618633589602,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9665263436342183,
+        "perimeter": 15.467292423940052,
+        "polygon_simple": true,
+        "shape_factor": 1.0346329477579659,
+        "signed_area": 18.400618633589602
+      },
+      "step": 11994,
+      "structural_mass": 19.02650571030895
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.400618633589602,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9665263436342183,
+        "perimeter": 15.467292423940052,
+        "polygon_simple": true,
+        "shape_factor": 1.0346329477579659,
+        "signed_area": 18.400618633589602
+      },
+      "step": 11995,
+      "structural_mass": 19.020966854376436
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.400618633589602,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9665263436342183,
+        "perimeter": 15.467292423940052,
+        "polygon_simple": true,
+        "shape_factor": 1.0346329477579659,
+        "signed_area": 18.400618633589602
+      },
+      "step": 11996,
+      "structural_mass": 19.01543084978445
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.397192461485247,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9665829876555785,
+        "perimeter": 15.465399187499923,
+        "polygon_simple": true,
+        "shape_factor": 1.0345723158499547,
+        "signed_area": 18.397192461485247
+      },
+      "step": 11997,
+      "structural_mass": 19.00989791795557
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.384039526905326,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9666641366576298,
+        "perimeter": 15.459220841476103,
+        "polygon_simple": true,
+        "shape_factor": 1.0344854661285288,
+        "signed_area": 18.384039526905326
+      },
+      "step": 11998,
+      "structural_mass": 19.00436497404889
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.36591671565907,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9666189155036922,
+        "perimeter": 15.4519606166929,
+        "polygon_simple": true,
+        "shape_factor": 1.0345338622707516,
+        "signed_area": 18.36591671565907
+      },
+      "step": 11999,
+      "structural_mass": 18.99883354525034
+    },
+    {
+      "birth_mass": 87.75070322587518,
+      "geometry": {
+        "absolute_area": 18.361238825052737,
+        "intersecting_edge_pairs": [],
+        "intersection_count": 0,
+        "isoperimetric_quotient": 0.9666424539039804,
+        "perimeter": 15.44980453559375,
+        "polygon_simple": true,
+        "shape_factor": 1.0345086706685584,
+        "signed_area": 18.361238825052737
+      },
+      "step": 12000,
+      "structural_mass": 18.993304351276322
+    }
+  ],
+  "self_intersection_count_max": 0
+}

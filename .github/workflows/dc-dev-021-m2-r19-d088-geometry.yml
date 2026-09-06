@@ -1,0 +1,123 @@
+name: DC-DEV-021 M2 R19 D-088 geometry validity audit
+
+on:
+  push:
+    branches: [m2/dc-dev-021-r19-d088-geometry-validity]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r19-geometry:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+      - name: Verify authority and scope
+        run: |
+          set -euo pipefail
+          start=ada1b2a59e1c3f4fbf0bbe0623a287f5b23595be
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - "$start" <<'PY'
+          import subprocess, sys
+          start=sys.argv[1]
+          allowed={
+            '.github/workflows/dc-dev-021-m2-r19-d088-geometry.yml',
+            'digital-protocell/crates/m2-lifeform-runtime/src/main.rs',
+            'digital-protocell/crates/regulatory-core/Cargo.toml',
+            'digital-protocell/examples/dcdev021_m2_r19_d088_geometry.rs',
+            'digital-protocell/experiments/dcdev021_m2_r19_d088_geometry.py',
+            '.agent/CURRENT.md','.agent/DIRECTIVES.md','.agent/OUTCOMES.md','.agent/LEARNINGS.md','.agent/RECORD.md','.agent/REPO_MAP.md',
+          }
+          changed=subprocess.check_output(['git','diff','--name-only',start,'HEAD'],text=True).splitlines()
+          bad=[p for p in changed if p not in allowed and not p.startswith('digital-protocell/experiments/generated/dcdev021m2r19d088geometry/')]
+          assert not bad,bad
+          PY
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefName,headRefOid
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Build observer tools
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.cargo/bin:$PATH"
+          cargo +1.89.0 build --locked --release -p m2-lifeform-runtime
+          cargo +1.89.0 build --locked --release -p regulatory-core --example dcdev021_m2_r19_d088_geometry
+      - name: Capture R17 geometry trace
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.cargo/bin:$PATH"
+          cargo +1.89.0 run --locked -q --release -p m2-lifeform-runtime -- \
+            --steps 12000 --seed 2 --r17-early-whole-membrane --r18-fission-audit --r19-geometry-audit --flux-audit \
+            --checkpoint "$RUNNER_TEMP/r19-r17.snapshot.json" --report "$RUNNER_TEMP/r19-r17.json"
+      - name: Replay D-088 campaign geometry
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.cargo/bin:$PATH"
+          cargo +1.89.0 run --locked -q --release -p regulatory-core --example dcdev021_m2_r19_d088_geometry -- \
+            --output "$RUNNER_TEMP/r19-d088.json"
+      - name: Build compact R19 evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 experiments/dcdev021_m2_r19_d088_geometry.py --repo .. \
+            --r18-reference "$RUNNER_TEMP/r19-d088.json" --r17-report "$RUNNER_TEMP/r19-r17.json" \
+            --output experiments/generated/dcdev021m2r19d088geometry
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('experiments/generated/dcdev021m2r19d088geometry')
+          required='authority.json protocol.json r18_final_provenance.json shape_metric_definition.json geometry_observer_tests.json d088_original_authority.json d088_qualification_population.json d088_positive_replay.json d088_every_step_geometry.json d088_first_invalid_state.json d088_pinch_crossing_relationship.json d088_campaign_geometry_validity.json d088_daughter_geometry_validity.json r17_geometry_comparison.json source_geometry_contract_audit.json forbidden_information_audit.json preservation.json qualification.json artifact_manifest.json'.split()
+          for n in required: assert (root/n).is_file(), n
+          q=json.loads((root/'qualification.json').read_text())
+          assert q['classification']=='D088_SELF_INTERSECTION_PRECEDES_FISSION'
+          assert q['independent_architect_acceptance']=='PENDING' and q['next_execution_started'] is False
+          c=json.loads((root/'d088_campaign_geometry_validity.json').read_text())
+          assert c['total_qualifying_fissions']==10 and c['self_intersecting_fissions']==10
+          assert json.loads((root/'r17_geometry_comparison.json').read_text())['polygon_simple'] is True
+          print('R19 geometry evidence passed')
+          PY
+      - name: Preserve accepted boundaries
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.cargo/bin:$PATH"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=json.loads(Path('experiments/generated/dcdev021m2r19d088geometry/preservation.json').read_text())
+          assert p['d087_v2']=='8/8' and p['d087_v3']=='8/8' and p['d087_v4']=='7/8'
+          assert p['d087_vector']==[True,True,False,True,True,True,True,True]
+          assert p['d088_existing_tests']=='PASS' and p['d091']=='PASS' and p['evolution_harness']=='PASS_TESTS_ONLY'
+          print('R19 preservation boundary passed')
+          PY
+          cargo +1.89.0 run --locked -q -p phase1-certifier --bin digital-protocell-phase1 --release -- --steps 1 --out "$RUNNER_TEMP/production.json"
+          cargo +1.89.0 test --locked -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test --locked -p evolution-harness -- --nocapture
+      - name: Record and upload R19 evidence
+        if: always()
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2r19d088geometry -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2r19d088geometry.sha256"
+          sha256sum "$RUNNER_TEMP/dcdev021m2r19d088geometry.sha256"
+      - name: Upload R19 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021m2r19d088geometry
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2r19d088geometry
+            ${{ runner.temp }}/dcdev021m2r19d088geometry.sha256

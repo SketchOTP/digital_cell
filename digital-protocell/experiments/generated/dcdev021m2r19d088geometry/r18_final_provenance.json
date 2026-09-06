@@ -1,0 +1,7 @@
+{
+  "artifact_digest": "sha256:5e6e6ff4d118237cf3919c45b0f0080b3d6736d7326c3afa93620dbdce0b8bfe",
+  "exact_head_ci": "34056771277",
+  "final_governed_head": "ada1b2a59e1c3f4fbf0bbe0623a287f5b23595be",
+  "scientific_semantics_changed_by_final_pointer": false,
+  "superseded_unexecuted_mechanics_r19": true
+}

@@ -1,0 +1,76 @@
+{
+  "files": [
+    {
+      "path": "authority.json",
+      "sha256": "d08048e7f83cf6fc5178ebdde9c6a343e4142744007ccfc105bed903929a95d0"
+    },
+    {
+      "path": "d088_campaign_geometry_validity.json",
+      "sha256": "705289f5c630756830c67ae2fefa57d6e1688ea0a0300bf78f7e21a3cb43884e"
+    },
+    {
+      "path": "d088_daughter_geometry_validity.json",
+      "sha256": "573a14d20d0bf9915c7011eed3870f4be57e715a4e7f613cc88a200ff1e4cbf7"
+    },
+    {
+      "path": "d088_every_step_geometry.json",
+      "sha256": "25485e4b3e707aca85000ea15a8e00632a6d2fcdf64778f1373fd08da3a5baaa"
+    },
+    {
+      "path": "d088_first_invalid_state.json",
+      "sha256": "304b57c31112f70c83f6a9d68b157b95f65bd420589f8ef41edcb4a4a82ffd4b"
+    },
+    {
+      "path": "d088_original_authority.json",
+      "sha256": "850fc9b911d89f0f56c2cf51cc8f8255cdfa86bca55384f47e4762bbd9e46144"
+    },
+    {
+      "path": "d088_pinch_crossing_relationship.json",
+      "sha256": "702533af013d77bbfd0147ec861b0cba69bd2b6650b844f03506c52c82638357"
+    },
+    {
+      "path": "d088_positive_replay.json",
+      "sha256": "9473b87c7ebb3d83e2e796ba95385e8c16e763fbf7f96abc7088cd5f59502712"
+    },
+    {
+      "path": "d088_qualification_population.json",
+      "sha256": "648f119b46237da85e99dca22425b1582034b058271cceb4398cffa0f0ba18d2"
+    },
+    {
+      "path": "forbidden_information_audit.json",
+      "sha256": "4e0f04a691be58ecbfbe35954003c498017fc1befb967d5dfc5deecb7a8d353e"
+    },
+    {
+      "path": "geometry_observer_tests.json",
+      "sha256": "b474dd6fda5921f71e2ad5bdb2f5498798a3ce812c24f94e9d528c3835b9b42f"
+    },
+    {
+      "path": "preservation.json",
+      "sha256": "d127a1b57f97dfcec458812553365f8431acec7b89c6be98aa7e241c0d03518f"
+    },
+    {
+      "path": "protocol.json",
+      "sha256": "29987c4b163dd0b038d1068fe2cfe3c1bf5d7c2c4e7d100903d8b16663d8ba0c"
+    },
+    {
+      "path": "qualification.json",
+      "sha256": "7045290a88b91125e68b1b93a4c5042c7659ef5ba36d6cea022a154fba5b5c3c"
+    },
+    {
+      "path": "r17_geometry_comparison.json",
+      "sha256": "c067710f61c1765e4e92312344a419a58388ec2f4abde4642c6fa4b95800d394"
+    },
+    {
+      "path": "r18_final_provenance.json",
+      "sha256": "d4b1f8313c3628fdecec3416417d961bda39f01ad15cd62823024361842ba3d2"
+    },
+    {
+      "path": "shape_metric_definition.json",
+      "sha256": "860da527961869c598a19cebb4c16825ffae6ff0415c182ad0312c1da14d1d6e"
+    },
+    {
+      "path": "source_geometry_contract_audit.json",
+      "sha256": "c6d3dfa02812e011fbdceccebc9378ebc358270277103a0d53d85494979b94d6"
+    }
+  ]
+}

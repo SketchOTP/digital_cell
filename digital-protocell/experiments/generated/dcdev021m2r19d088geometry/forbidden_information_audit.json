@@ -1,0 +1,7 @@
+{
+  "fission_change": false,
+  "geometry_mutation": false,
+  "mechanics_change": false,
+  "observer_feedback": false,
+  "resource_read": false
+}

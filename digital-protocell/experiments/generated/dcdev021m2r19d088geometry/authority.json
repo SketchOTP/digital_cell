@@ -1,0 +1,10 @@
+{
+  "authority_mode": "GOAL_AGENT_PROVISIONALLY_ACCEPTED",
+  "directive": "DC-DEV-021-M2-R19-D088-GEOMETRY-VALIDITY-AND-FISSION-QUALIFICATION-INTEGRITY-AUDIT-001",
+  "independent_architect_acceptance": "PENDING",
+  "pr44": "OPEN/DRAFT/UNMERGED/UNTOUCHED",
+  "r18_artifact": "sha256:5e6e6ff4d118237cf3919c45b0f0080b3d6736d7326c3afa93620dbdce0b8bfe",
+  "r18_ci": "34056771277",
+  "r18_head": "ada1b2a59e1c3f4fbf0bbe0623a287f5b23595be",
+  "starting_head": "ada1b2a59e1c3f4fbf0bbe0623a287f5b23595be"
+}

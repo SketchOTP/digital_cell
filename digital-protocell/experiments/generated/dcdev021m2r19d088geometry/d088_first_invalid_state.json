@@ -1,0 +1,37 @@
+{
+  "first_pinch_step": 2326,
+  "first_self_intersection": {
+    "absolute_A": 878.218817080223,
+    "attempt_tick": false,
+    "birth_mass": 87.73326349501298,
+    "geometry": {
+      "absolute_area": 781.61737066888,
+      "intersecting_edge_pairs": [
+        [
+          10,
+          12
+        ]
+      ],
+      "intersection_count": 1,
+      "isoperimetric_quotient": 0.49309399521574077,
+      "minimum_nonadjacent_segment_distance": 0.0,
+      "perimeter": 141.13579580201042,
+      "polygon_simple": false,
+      "shape_factor": 2.0280109060392744,
+      "signed_area": 781.61737066888
+    },
+    "mass_gate": true,
+    "pinch_candidate": null,
+    "step": 1036,
+    "structural_mass": 155.3709368042965,
+    "topology_ledger": {
+      "cross_bonds": 0,
+      "local_rebonds": 0,
+      "tension_ruptures": 0
+    },
+    "try_local_fission": "FAIL"
+  },
+  "first_shape_factor_below_1": null,
+  "ordering": "SELF_INTERSECTION_BEFORE_PINCH",
+  "physical_fission_step": 2326
+}

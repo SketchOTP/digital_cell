@@ -1464,3 +1464,14 @@ Use it for architectural decisions, governance changes, releases, qualification 
   remains `M2_FISSION_READINESS_MULTIFACTOR_UNRESOLVED`.
 - No scientific repair, successor execution, or independent Architect
   acceptance is asserted.
+
+
+## DEC-DCDEV021-GOAL-R19-D088-GEOMETRY-INTEGRITY-001
+
+- Date: `2026-09-06`
+- Status: `ACTIVE_PROVISIONAL`
+- Record or decision ID: `DEC-DCDEV021-GOAL-R19-D088-GEOMETRY-INTEGRITY-001`
+- Decision or event: Supersede the unexecuted mechanics/motor R19 plan and audit the geometric validity of the D-088 fission qualification first.
+- Rationale: the D-088 positive trace reports an inverse shape metric below one; the observer-only replay finds self-intersection before every audited qualifying fission and non-simple daughters. No fission or mechanics repair may proceed from that reference until requalification.
+- Affected areas: isolated R19 geometry observer, evidence, workflow, and append-only governance only; no scientific runtime behavior, M1, resource, or PR #44 change.
+- Supersedes record: the unexecuted R19 mechanics/motor authorization.

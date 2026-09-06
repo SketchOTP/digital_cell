@@ -1,0 +1,64 @@
+{
+  "bow_tie": {
+    "expected_simple": false,
+    "geometry": {
+      "absolute_area": 0.0,
+      "intersecting_edge_pairs": [
+        [
+          0,
+          2
+        ]
+      ],
+      "intersection_count": 1,
+      "isoperimetric_quotient": 1.347530211131618e-301,
+      "minimum_nonadjacent_segment_distance": 0.0,
+      "perimeter": 9.65685424949238,
+      "polygon_simple": false,
+      "shape_factor": 7.420983898833912e+300,
+      "signed_area": 0.0
+    }
+  },
+  "concave": {
+    "expected_simple": true,
+    "geometry": {
+      "absolute_area": 6.0,
+      "intersecting_edge_pairs": [],
+      "intersection_count": 0,
+      "isoperimetric_quotient": 0.38468481472528077,
+      "minimum_nonadjacent_segment_distance": 1.0,
+      "perimeter": 14.0,
+      "polygon_simple": true,
+      "shape_factor": 2.599530737167624,
+      "signed_area": 6.0
+    }
+  },
+  "convex": {
+    "expected_simple": true,
+    "geometry": {
+      "absolute_area": 4.0,
+      "intersecting_edge_pairs": [],
+      "intersection_count": 0,
+      "isoperimetric_quotient": 0.7853981633974483,
+      "minimum_nonadjacent_segment_distance": 2.0,
+      "perimeter": 8.0,
+      "polygon_simple": true,
+      "shape_factor": 1.2732395447351628,
+      "signed_area": 4.0
+    }
+  },
+  "near_contact": {
+    "expected_simple": true,
+    "geometry": {
+      "absolute_area": 15.9601,
+      "intersecting_edge_pairs": [],
+      "intersection_count": 0,
+      "isoperimetric_quotient": 0.7834395767274758,
+      "minimum_nonadjacent_segment_distance": 0.01,
+      "perimeter": 16.0,
+      "polygon_simple": true,
+      "shape_factor": 1.2764226236528973,
+      "signed_area": 15.9601
+    }
+  },
+  "pass": true
+}

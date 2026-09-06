@@ -607,3 +607,12 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Provisional classification: `M2_MATCHED_REFERENCE_REPRODUCTION_NOT_ESTABLISHED`;
   resource-causal reproduction remains `NOT_ESTABLISHED`.
 - Independent Architect acceptance: `PENDING`. Next execution: `false`.
+
+
+## Goal-mode R19 D-088 geometry-integrity audit
+
+- Active directive: `DC-DEV-021-M2-R19-D088-GEOMETRY-VALIDITY-AND-FISSION-QUALIFICATION-INTEGRITY-AUDIT-001`.
+- Starting authority: R18 final governed head `ada1b2a59e1c3f4fbf0bbe0623a287f5b23595be`; exact-head CI `34056771277`; artifact `sha256:5e6e6ff4d118237cf3919c45b0f0080b3d6736d7326c3afa93620dbdce0b8bfe`.
+- Observer-only result: all 10 original D-088 campaign fissions become self-intersecting before fission; primary seed first self-intersects at step 1036 and fissions at 2326. R17 geometry remains simple.
+- Provisional classification: `D088_SELF_INTERSECTION_PRECEDES_FISSION`; D-088 physical reproduction requires requalification. No repair or successor execution started.
+- Independent Architect acceptance: `PENDING`.

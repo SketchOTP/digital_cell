@@ -2293,3 +2293,13 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
   clone-only passive-mechanics shadow does not restore readiness.
 - This is Goal-agent provisional authority only. No scientific repair,
   successor execution, or independent Architect acceptance is claimed.
+
+
+## R19 D-088 geometry-integrity audit — provisional outcome
+
+- Starting authority: `ada1b2a59e1c3f4fbf0bbe0623a287f5b23595be`; R18 CI `34056771277`; artifact `sha256:5e6e6ff4d118237cf3919c45b0f0080b3d6736d7326c3afa93620dbdce0b8bfe`.
+- The observer replay audited all 10 original D-088 qualification perturbation arms. `10/10` physical fissions were preceded by polygon self-intersection; the primary seed first became non-simple at step `1036` and fissioned at `2326`.
+- Both daughters of each audited event were non-simple. R17’s captured early matched-reference polygon remained simple.
+- The R18 inverse metric label is reconciled: repository `shape_factor_psi` is `P^2/(4*pi*A)`, while the R18 readiness field recorded its inverse. No production observer was changed.
+- Provisional classification: `D088_SELF_INTERSECTION_PRECEDES_FISSION`; D-088 requalification is required before importing it as a valid simple-boundary reference. Scientific runtime changes are `NO`.
+- No successor execution started; independent Architect acceptance remains `PENDING`.
