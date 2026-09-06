@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - m2/dc-dev-021-goal-post-fission-ecological-reentry
+    paths:
+      - '.github/workflows/dc-dev-021-goal-current-flux-ledger.yml'
+      - '.github/workflows/dc-dev-021-goal-assimilation-preservation.yml'
+      - 'docs/goal-unified-flux-budget-audit-r10.md'
+      - 'scripts/dcdev021_goal_flux_budget_audit.py'
+      - 'digital-protocell/experiments/generated/dcdev021goalmaterialfluxbudgetr10/**'
   workflow_dispatch:
 
 permissions:

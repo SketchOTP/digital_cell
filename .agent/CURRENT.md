@@ -413,3 +413,7 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
   `sha256:4b62f90d7faa519e9bd0628d5613cc16bb79ae74b937c506f3a14b02d52963c7`.
 - This authority append requires one final exact-head validation because the
   governance/evidence files changed after the first successful run.
+- Two archival R10/R11 workflows also ran on the R12 push and failed only at
+  their historical bounded-diff allowlists. Their push triggers are now scoped
+  to their own workflow/documentation/script/evidence surfaces; this is a
+  workflow-scope reconciliation, not a scientific result.

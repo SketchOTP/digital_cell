@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - m2/dc-dev-021-goal-post-fission-ecological-reentry
+    paths:
+      - '.github/workflows/dc-dev-021-goal-material-flow-contract.yml'
+      - 'docs/goal-material-flow-contract-selection-r11.md'
+      - 'digital-protocell/experiments/generated/dcdev021goalmaterialflowcontractr11/**'
   workflow_dispatch:
 
 permissions:

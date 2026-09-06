@@ -41,8 +41,11 @@ jobs:
           allowed = {
               '.agent/CURRENT.md', '.agent/LEARNINGS.md', '.agent/OUTCOMES.md',
               '.agent/RECORD.md',
+              '.github/workflows/dc-dev-021-goal-material-flow-contract.yml',
+              '.github/workflows/dc-dev-021-goal-current-flux-ledger.yml',
               '.github/workflows/dc-dev-021-goal-shared-medium-execution.yml',
               'docs/goal-shared-medium-execution-r12.md',
+              'docs/goal-workflow-scope-reconciliation-r12.md',
               'digital-protocell/crates/regulatory-core/src/lib.rs',
               'digital-protocell/crates/regulatory-core/src/shared_extracellular_medium.rs',
               'digital-protocell/crates/m2-lifeform-runtime/src/main.rs',

@@ -846,3 +846,14 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: Goal-agent provisional authority only; independent Architect
   acceptance remains pending.
 - Final exact-head validation is required after this append-only record.
+
+## L-DCDEV021-GOAL-WORKFLOW-SCOPE-RECONCILIATION-R12-001
+
+- Lesson: historical exact-head workflows with broad branch push triggers can
+  produce misleading red checks when later bounded work changes unrelated
+  files.
+- Correct boundary: scope archival workflow pushes to their own evidence and
+  implementation surfaces, while retaining manual dispatch for historical
+  reruns. Do not weaken their scientific allowlists.
+- R12 scientific authority remains the passed shared-medium workflow; the
+  archival failures are not scientific evidence.

@@ -1050,6 +1050,18 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Final exact-head validation is required after this append-only authority
   record.
 
+## DEC-DCDEV021-GOAL-WORKFLOW-SCOPE-RECONCILIATION-R12
+
+- Date: `2026-09-06`
+- Status: `PROVISIONAL_GOVERNANCE_REPAIR`
+- The R10 and R11 archival workflows failed on the R12 push because their
+  historical allowlists correctly rejected unrelated R12 implementation files.
+- No scientific step executed in either failed workflow. The failures are
+  classified as workflow-scope failures, not scientific evidence.
+- Their push triggers are now path-scoped to their own historical surfaces;
+  manual dispatch remains available for their exact historical authorities.
+- The current R12 workflow allowlist explicitly includes this reconciliation.
+
 ## DEC-DCDEV021-GOAL-CURRENT-FLUX-LEDGER-R10-AUTHORITY
 
 - Date: `2026-09-05`
