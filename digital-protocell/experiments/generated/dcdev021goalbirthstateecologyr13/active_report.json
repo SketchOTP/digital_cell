@@ -1,0 +1,21 @@
+{
+  "seed": 2,
+  "steps": 12000,
+  "first_contact_step": 7627,
+  "first_transfer_step": 7627,
+  "first_fission_step": null,
+  "fission_events": 0,
+  "living_count": 1,
+  "maximum_generation": 0,
+  "cumulative_n_delivered": 313.39701430846264,
+  "cumulative_f_delivered": 313.39701430846264,
+  "shared_medium_n_mass_remaining": 708.2959810178696,
+  "shared_medium_f_mass_remaining": 708.2959810178696,
+  "world_n_conservation_error": 0.0,
+  "world_f_conservation_error": 0.0,
+  "cumulative_path": 8.592010278618467,
+  "cumulative_motor_a_spent": 266.88692236927534,
+  "terminal_observer_death_reasons": [null],
+  "developmental_bootstrap_steps": 0,
+  "developmental_fission_boundary_reached": false
+}

@@ -1018,6 +1018,25 @@ Use it for architectural decisions, governance changes, releases, qualification 
   must replan organism/world material flow from the end-goal causal contract.
 - Independent Architect acceptance: `PENDING`.
 
+## DEC-DCDEV021-GOAL-BIRTH-STATE-ECOLOGY-R13
+
+- Date: `2026-09-06`
+- Status: `PROVISIONAL_NEGATIVE_REPLAN`
+- Decision or event: test the existing shared finite extracellular medium from
+  the exact founder birth state so environmental transfer can precede the
+  unchanged growth/fission eligibility boundary.
+- Largest unresolved gap: causal resource ordering and reproductive throughput,
+  not another local material-flow formula.
+- Local result: contact and transfer occur at step `7627`; the active arm
+  delivers `313.39701430846264` N and F, remains alive, and preserves medium
+  conservation; the disabled twin receives zero material and dies of
+  starvation. Neither arm fissions in `12000` steps.
+- Classification: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`,
+  `M2_BIRTH_STATE_SHARED_MEDIUM_RESOURCE_CAUSAL_FISSION_NOT_ESTABLISHED`.
+- Independent Architect acceptance: `PENDING`.
+- Stop condition: no new pool, buffer, transport layer, active-work formula,
+  gate change, resource increase, resource repositioning, or horizon extension.
+
 ## DEC-DCDEV021-GOAL-SHARED-MEDIUM-EXECUTION-R12
 
 - Date: `2026-09-05`

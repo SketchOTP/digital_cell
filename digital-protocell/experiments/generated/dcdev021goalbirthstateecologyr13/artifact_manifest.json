@@ -1,0 +1,7 @@
+{
+  "evidence_directory": "digital-protocell/experiments/generated/dcdev021goalbirthstateecologyr13",
+  "files": ["protocol.json", "authority.json", "causal_order.json", "active_report.json", "disabled_report.json", "causal_comparison.json", "qualification.json", "artifact_manifest.json"],
+  "artifact_sha256": "PENDING_EXACT_HEAD_CI",
+  "exact_head_ci": "PENDING",
+  "result_head": "PENDING"
+}

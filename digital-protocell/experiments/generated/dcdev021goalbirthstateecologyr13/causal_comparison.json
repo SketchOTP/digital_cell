@@ -1,0 +1,8 @@
+{
+  "transfer_before_fission": "PASS",
+  "active_resource_dependence": "PASS",
+  "active_survival": "PASS",
+  "disabled_zero_delivery": "PASS",
+  "resource_causal_fission": "NOT_ESTABLISHED",
+  "interpretation": "Starting ecology at the existing founder birth state removes the inherited pre-resource fission confound, but the active arm still does not reach the unchanged 1.35x birth-mass fission gate within the established horizon."
+}

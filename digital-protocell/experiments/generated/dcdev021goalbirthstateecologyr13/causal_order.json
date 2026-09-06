@@ -1,0 +1,14 @@
+{
+  "birth_state": "initial_population(seed=2), no developmental bootstrap",
+  "ecology_start_step": 0,
+  "environmental_exchange": "shared finite medium local membrane exchange",
+  "reaction_growth_fission_order": "unchanged run_step order",
+  "active_first_contact_step": 7627,
+  "active_first_transfer_step": 7627,
+  "active_first_fission_step": null,
+  "disabled_first_contact_step": 7627,
+  "disabled_first_transfer_step": null,
+  "disabled_first_fission_step": null,
+  "resource_transfer_precedes_fission_in_active_arm": true,
+  "resource_causal_fission_established": false
+}

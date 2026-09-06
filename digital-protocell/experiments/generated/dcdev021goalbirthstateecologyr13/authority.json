@@ -1,0 +1,8 @@
+{
+  "goal_agent_status": "GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN",
+  "independent_architect_acceptance": "PENDING",
+  "prior_r12": "M2_SHARED_EXTRACELLULAR_MEDIUM_RESOURCE_CAUSAL_FISSION_NOT_ESTABLISHED",
+  "route_boundary": "causal ordering from founder birth state, not a new material-flow law",
+  "production_default_changed": false,
+  "fission_gate_changed": false
+}

@@ -867,3 +867,17 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Scope: workflow/governance reconciliation only; the R12 scientific result
   remains a Goal-agent provisional negative and independent Architect
   acceptance remains pending.
+
+## L-DCDEV021-GOAL-BIRTH-STATE-ECOLOGY-R13-LOCAL-RESULT
+
+- Fact: starting the unchanged shared-medium ecology at the existing founder
+  birth state yields first contact/transfer at step `7627`, with no fission in
+  the fixed `12000`-step horizon.
+- Fact: the active arm delivers `313.39701430846264` N and F with zero medium
+  conservation residual and remains alive; the disabled twin delivers zero N/F
+  and ends with `starvation_collapse`.
+- Lesson: the R12 pre-resource inherited-fission confound is removed, but the
+  unchanged birth-state growth/fission composition still does not establish
+  resource-causal reproduction.
+- Stop condition: do not add another material pool, transport layer, active
+  work expression, resource mass, gate relaxation, or horizon extension.

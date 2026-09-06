@@ -1,0 +1,11 @@
+{
+  "directive": "GOAL-MATERIAL-FLOW-ROUTE-A-BIRTH-STATE-ECOLOGY-R13",
+  "objective": "Test whether the existing shared finite extracellular medium can operate from the existing founder birth state before developmental fission eligibility.",
+  "starting_head": "c907144",
+  "horizon_steps": 12000,
+  "seed": 2,
+  "active_arm": "shared-medium-from-birth",
+  "control_arm": "shared-medium-from-birth-transfer-disabled",
+  "unchanged": ["growth", "reactions", "fission gate", "transport", "mechanics", "polarity initialization", "resource geometry"],
+  "forbidden": ["new pool", "new rate", "new threshold", "gate change", "resource repositioning", "horizon extension", "polarity reseed"]
+}

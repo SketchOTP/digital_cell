@@ -1,0 +1,139 @@
+name: DC-DEV-021 goal birth-state ecology
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-goal-post-fission-ecological-reentry
+    paths:
+      - '.github/workflows/dc-dev-021-goal-birth-state-ecology.yml'
+      - 'docs/goal-birth-state-ecology-r13.md'
+      - 'digital-protocell/crates/m2-lifeform-runtime/src/main.rs'
+      - 'digital-protocell/experiments/generated/dcdev021goalbirthstateecologyr13/**'
+      - '.agent/LEARNINGS.md'
+      - '.agent/RECORD.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  birth-state-ecology:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify exact authority and bounded diff
+        run: |
+          set -euo pipefail
+          start=c907144
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - "$start" <<'PY'
+          import subprocess
+          import sys
+          start = sys.argv[1]
+          changed = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{start}..HEAD'], text=True
+          ).splitlines())
+          allowed = {
+              '.agent/LEARNINGS.md', '.agent/RECORD.md',
+              '.github/workflows/dc-dev-021-goal-birth-state-ecology.yml',
+              'docs/goal-birth-state-ecology-r13.md',
+              'digital-protocell/crates/m2-lifeform-runtime/src/main.rs',
+          }
+          prefix = 'digital-protocell/experiments/generated/dcdev021goalbirthstateecologyr13/'
+          unexpected = {p for p in changed if p not in allowed and not p.startswith(prefix)}
+          assert not unexpected, sorted(unexpected)
+          PY
+
+      - name: Run runtime tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test --locked -p m2-lifeform-runtime -- --nocapture
+
+      - name: Run active and transfer-disabled birth-state controls
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 build --locked --release -p m2-lifeform-runtime
+          rm -rf experiments/generated/dcdev021goalbirthstateecologyr13/ci-runtime
+          mkdir -p experiments/generated/dcdev021goalbirthstateecologyr13/ci-runtime
+          target/release/digital-protocell-m2-runtime \
+            --shared-medium-from-birth --seed 2 --steps 12000 \
+            --checkpoint experiments/generated/dcdev021goalbirthstateecologyr13/ci-runtime/active.snapshot.json \
+            --report experiments/generated/dcdev021goalbirthstateecologyr13/ci-runtime/active.report.json
+          target/release/digital-protocell-m2-runtime \
+            --shared-medium-from-birth --transfer-disabled --seed 2 --steps 12000 \
+            --checkpoint experiments/generated/dcdev021goalbirthstateecologyr13/ci-runtime/disabled.snapshot.json \
+            --report experiments/generated/dcdev021goalbirthstateecologyr13/ci-runtime/disabled.report.json
+
+      - name: Validate causal ordering and conservation
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('experiments/generated/dcdev021goalbirthstateecologyr13')
+          active = json.loads((root / 'ci-runtime/active.report.json').read_text())
+          disabled = json.loads((root / 'ci-runtime/disabled.report.json').read_text())
+          assert active['developmental_bootstrap_steps'] == 0
+          assert active['developmental_fission_boundary_reached'] is False
+          assert active['first_contact_step'] == 7627
+          assert active['first_transfer_step'] == 7627
+          assert active['first_fission_step'] is None
+          assert disabled['first_contact_step'] == 7627
+          assert disabled['first_transfer_step'] is None
+          assert disabled['first_fission_step'] is None
+          assert active['cumulative_n_delivered'] > 0
+          assert active['cumulative_f_delivered'] > 0
+          assert disabled['cumulative_n_delivered'] == 0
+          assert disabled['cumulative_f_delivered'] == 0
+          assert active['living_count'] == 1
+          assert disabled['living_count'] == 0
+          assert disabled['terminal_observer_death_reasons'] == ['starvation_collapse']
+          assert active['world_n_conservation_error'] == 0.0
+          assert active['world_f_conservation_error'] == 0.0
+          assert disabled['world_n_conservation_error'] == 0.0
+          assert disabled['world_f_conservation_error'] == 0.0
+          qualification = json.loads((root / 'qualification.json').read_text())
+          assert qualification['classification'] == 'GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN'
+          assert qualification['resource_causal_reproduction'] == 'NOT_ESTABLISHED'
+          print('birth-state ecology causal ordering and conservation passed')
+          PY
+
+      - name: Verify canonical D-087 boundary
+        working-directory: digital-protocell
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('experiments/generated/dcdev021m2closure003r1/m1_preservation.json').read_text())
+          assert data['v2_d087'] == '8/8'
+          assert data['v3_d087'] == '8/8'
+          assert data['v4_d087'] == '7/8'
+          assert data['v4_vector'] == [True, True, False, True, True, True, True, True]
+          print('canonical D-087 boundary passed')
+          PY
+
+      - name: Hash and upload compact evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021goalbirthstateecologyr13 -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021-goal-birth-state-ecology.sha256"
+
+      - name: Upload compact evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-goal-birth-state-ecology-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021goalbirthstateecologyr13/
+            ${{ runner.temp }}/dcdev021-goal-birth-state-ecology.sha256

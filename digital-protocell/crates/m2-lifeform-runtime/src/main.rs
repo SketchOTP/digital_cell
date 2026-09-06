@@ -207,6 +207,7 @@ struct Config {
     transfer_disabled: bool,
     routeb_spatial_field: bool,
     shared_extracellular_medium: bool,
+    shared_medium_from_birth: bool,
     routec_reserve_growth: bool,
     assimilation_material_flow: bool,
     anabolic_incorporation: bool,
@@ -252,6 +253,7 @@ fn parse_config() -> Config {
     let mut transfer_disabled = false;
     let mut routeb_spatial_field = false;
     let mut shared_extracellular_medium = false;
+    let mut shared_medium_from_birth = false;
     let mut routec_reserve_growth = false;
     let mut assimilation_material_flow = false;
     let mut anabolic_incorporation = false;
@@ -272,6 +274,7 @@ fn parse_config() -> Config {
             "--transfer-disabled" => transfer_disabled = true,
             "--routeb-spatial-field" => routeb_spatial_field = true,
             "--shared-extracellular-medium" => shared_extracellular_medium = true,
+            "--shared-medium-from-birth" => shared_medium_from_birth = true,
             "--routec-reserve-growth" => routec_reserve_growth = true,
             "--assimilation-material-flow" => assimilation_material_flow = true,
             "--assimilation-anabolic-incorporation" => {
@@ -296,6 +299,7 @@ fn parse_config() -> Config {
         transfer_disabled,
         routeb_spatial_field,
         shared_extracellular_medium,
+        shared_medium_from_birth,
         routec_reserve_growth,
         assimilation_material_flow,
         anabolic_incorporation,
@@ -883,6 +887,96 @@ fn new_shared_medium_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnaps
     snapshot.scientific_boundary.finite_world_exchange =
         "SharedFiniteExtracellularMediumV1 / local membrane exchange".to_string();
     snapshot
+}
+
+/// Start the unchanged shared-medium ecology at the existing founder birth
+/// state.  Unlike `new_snapshot`, this does not run the developmental
+/// bootstrap before environmental exchange, so transfer can be tested before
+/// the existing growth/fission eligibility boundary.  It is an opt-in causal
+/// composition assay; no growth, fission, transport, or polarity law changes.
+fn new_shared_medium_from_birth_snapshot(
+    seed: u64,
+    transfer_enabled: bool,
+) -> RuntimeSnapshot {
+    let population = initial_population(seed);
+    let resource = separated_world(&population.individuals[0].mesh)
+        .resources
+        .into_iter()
+        .next()
+        .expect("separated geometry has one or more resources");
+    let region = resource.backing.region;
+    let mut medium = SharedFiniteExtracellularMediumV1::new(
+        region.center,
+        region.radius,
+        RESOURCE_MASS,
+        RESOURCE_MASS,
+    )
+    .expect("valid shared extracellular medium");
+    medium.transfer_enabled = transfer_enabled;
+    let polarity_states: Vec<_> = population
+        .individuals
+        .iter()
+        .map(|individual| Some(PolarityState::homogeneous(&individual.mesh)))
+        .collect();
+    let developmental_initial_topology = polarity_states
+        .first()
+        .and_then(Option::as_ref)
+        .map(PolarityState::topology)
+        .unwrap_or(0);
+    let previous_centroids = population
+        .individuals
+        .iter()
+        .map(|individual| individual.mesh.centroid())
+        .collect();
+    RuntimeSnapshot {
+        schema: SCHEMA.to_string(),
+        step: 0,
+        seed,
+        population,
+        world: FiniteWorldV1::new(Vec::new()),
+        spatial_field: None,
+        shared_medium: Some(medium),
+        reserve_parameters: None,
+        assimilation_enabled: false,
+        anabolic_incorporation_enabled: false,
+        spatial_field_transfer_enabled: true,
+        cumulative_n_delivered: 0.0,
+        cumulative_f_delivered: 0.0,
+        cumulative_assimilation_n_processed: 0.0,
+        cumulative_assimilation_f_processed: 0.0,
+        cumulative_assimilation_a_produced: 0.0,
+        cumulative_assimilation_m_grown: 0.0,
+        cumulative_assimilation_m_incorporated: 0.0,
+        cumulative_n_world_loss: 0.0,
+        cumulative_f_world_loss: 0.0,
+        cumulative_fissions: 0,
+        cumulative_motor_a_spent: 0.0,
+        cumulative_slipping_contacts: 0,
+        cumulative_path: 0.0,
+        cumulative_contacts: 0,
+        first_contact_step: None,
+        first_transfer_step: None,
+        first_fission_step: None,
+        fission_observations: Vec::new(),
+        lineage_n_delivered: BTreeMap::new(),
+        lineage_f_delivered: BTreeMap::new(),
+        developmental_bootstrap_steps: 0,
+        developmental_initial_polarity_amplitude: 0.0,
+        developmental_initial_topology,
+        developmental_fission_boundary_reached: false,
+        ecology_started_after_unforced_fission: false,
+        pre_ecology_fission_events: 0,
+        motor_steps: 0,
+        motor_failures: 0,
+        polarity_states,
+        previous_centroids,
+        scientific_boundary: ScientificBoundary {
+            finite_world_exchange:
+                "SharedFiniteExtracellularMediumV1 / local membrane exchange from founder birth"
+                    .to_string(),
+            ..ScientificBoundary::default()
+        },
+    }
 }
 
 fn new_routeb_snapshot(
@@ -1532,7 +1626,9 @@ fn main() {
         .as_deref()
         .map(load_snapshot)
         .unwrap_or_else(|| {
-            if config.post_fission_ecology {
+            if config.shared_medium_from_birth {
+                new_shared_medium_from_birth_snapshot(config.seed, !config.transfer_disabled)
+            } else if config.post_fission_ecology {
                 new_post_fission_snapshot(config.seed, !config.transfer_disabled)
             } else if config.shared_extracellular_medium {
                 new_shared_medium_snapshot(config.seed, !config.transfer_disabled)

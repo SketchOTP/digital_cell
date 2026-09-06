@@ -1,0 +1,10 @@
+{
+  "classification": "GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN",
+  "bounded_result": "M2_BIRTH_STATE_SHARED_MEDIUM_RESOURCE_CAUSAL_FISSION_NOT_ESTABLISHED",
+  "resource_transfer": "VERIFIED_BEFORE_ANY_FISSION",
+  "resource_dependent_persistence": "SUPPORTED",
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "local_material_flow_formula_search": "CLOSED",
+  "next_execution_started": false,
+  "independent_architect_acceptance": "PENDING"
+}
