@@ -936,3 +936,15 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
   and `.github/workflows/dc-dev-021-goal-material-flow-architecture-selection.yml`.
 - Confidence: `PROVISIONAL` pending exact-head Linux validation and
   independent Architect review.
+
+## L-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R14-AUTHORITY-001
+
+- Fact: the scoped R14 workflow passed on exact pushed head
+  `d264c60c458f8b0130f79d6a09587e761a1826c8` as workflow `34004282481`.
+- Fact: the independently queried artifact digest is
+  `sha256:0727e81d3fb0bf7e2b15605f4f80f9c4628c586b785ef27654d9b0740efe9e22`.
+- Boundary: this validates only the source-level replan and bounded diff;
+  it does not accept a new material-flow architecture or establish
+  resource-causal fission.
+- Follow-up: a final exact-head validation is required after this append-only
+  authority record.

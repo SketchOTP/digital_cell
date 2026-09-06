@@ -1310,3 +1310,19 @@ Use it for architectural decisions, governance changes, releases, qualification 
   successor runtime execution has started.
 - Goal-agent classification: `GOAL_AGENT_PROVISIONAL_ARCHITECTURE_REPLAN`.
 - Independent Architect acceptance: `PENDING`.
+
+## DEC-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R14-AUTHORITY
+
+- Date: `2026-09-06`
+- Status: `ACTIVE_PROVISIONAL`
+- Result head before this authority append:
+  `d264c60c458f8b0130f79d6a09587e761a1826c8`.
+- Exact-head workflow: `34004282481` passed after replacing the unavailable
+  runner `rg` check with portable `grep` checks.
+- Artifact digest:
+  `sha256:0727e81d3fb0bf7e2b15605f4f80f9c4628c586b785ef27654d9b0740efe9e22`.
+- Decision: seal only the Goal-agent provisional architecture replan. No
+  successor runtime is selected or started; independent Architect acceptance
+  remains `PENDING`.
+- Follow-up: final exact-head validation is required after this append-only
+  authority record.

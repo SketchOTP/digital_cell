@@ -478,3 +478,7 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
   forbidden.
 - Independent Architect acceptance remains `PENDING`; resource-causal
   reproduction and autonomous resource acquisition remain `NOT_ESTABLISHED`.
+- R14 initial workflow `34004259764` failed only because the runner lacked
+  `rg`; the portable-check correction passed as workflow `34004282481` on
+  `d264c60c458f8b0130f79d6a09587e761a1826c8`.
+- R14 artifact digest: `sha256:0727e81d3fb0bf7e2b15605f4f80f9c4628c586b785ef27654d9b0740efe9e22`.
