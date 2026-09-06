@@ -1,13 +1,6 @@
 name: DC-DEV-021 goal shared finite extracellular medium execution
 
 on:
-  push:
-    branches:
-      - m2/dc-dev-021-goal-post-fission-ecological-reentry
-    paths:
-      - '.github/workflows/dc-dev-021-goal-shared-medium-execution.yml'
-      - 'docs/goal-shared-medium-execution-r12.md'
-      - 'digital-protocell/experiments/generated/dcdev021goalmaterialflowr12/**'
   workflow_dispatch:
 
 permissions:
