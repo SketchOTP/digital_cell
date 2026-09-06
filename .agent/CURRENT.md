@@ -625,3 +625,9 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - The exact ten-arm D-088 protocol reproduces the legacy invalidity control. Under D-088R1, all 10/10 trajectories remain geometrically simple and all 10/10 cross the unchanged growth gate, but 0/10 produce physical fission; mass-eligible attempt traces report `NO_PINCH`.
 - Provisional classification: `D088R1_SIMPLE_BOUNDARY_PRESERVED_FISSION_NOT_ESTABLISHED`. D-088 remains `REQUALIFICATION_REQUIRED`; resource-causal reproduction remains `NOT_ESTABLISHED`.
 - Independent Architect acceptance: `PENDING`. No M2 successor execution started.
+
+## Goal-mode R20 final exact-head pointer
+
+- Scientific result head: `7d7d2349097d123243c4313bd40151ccf0251396`.
+- Exact-head Linux workflow `34064953738` passed; independently downloaded artifact ZIP digest: `sha256:f379641e0d4acf3276280fa51910a07adaa739ecfe69fe636c3e3230ef8c57f2`.
+- This is an append-only authority pointer for the provisional R20 result; no scientific semantics changed after the R20 assay, and independent Architect acceptance remains `PENDING`.

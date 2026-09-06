@@ -1485,3 +1485,12 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Result: all corrected parent trajectories remain simple and all reach the unchanged growth gate, but no corrected arm produces physical fission; mass-eligible readiness traces report `NO_PINCH`. Classification is `D088R1_SIMPLE_BOUNDARY_PRESERVED_FISSION_NOT_ESTABLISHED`.
 - Affected areas: isolated R20 assay, evidence, workflow, and append-only governance only. M1, production defaults, resource models, fission laws, PR #44, and downstream claims remain unchanged or dependency-pending.
 - Independent Architect acceptance: `PENDING`; no successor execution started.
+
+## DEC-DCDEV021-GOAL-R20-FINAL-EXACT-HEAD-POINTER
+
+- Date: `2026-09-06`
+- Status: `ACTIVE_PROVISIONAL`
+- Record or decision ID: `DEC-DCDEV021-GOAL-R20-FINAL-EXACT-HEAD-POINTER`
+- Final provisional result head: `7d7d2349097d123243c4313bd40151ccf0251396`.
+- Exact-head CI: `34064953738 PASS`; artifact digest: `sha256:f379641e0d4acf3276280fa51910a07adaa739ecfe69fe636c3e3230ef8c57f2`.
+- Classification: `D088R1_SIMPLE_BOUNDARY_PRESERVED_FISSION_NOT_ESTABLISHED`; independent Architect acceptance remains `PENDING`; no successor execution started.

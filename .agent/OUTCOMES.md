@@ -2311,3 +2311,10 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - All 10 corrected D-088R1 parent trajectories remain simple, all 10 reach the unchanged growth qualification gate, and 0/10 produce physical fission. At every corrected mass-eligible official attempt the direct readiness trace reports `NO_PINCH`; no positive daughter event exists to count.
 - Provisional classification: `D088R1_SIMPLE_BOUNDARY_PRESERVED_FISSION_NOT_ESTABLISHED`. D-088 physical reproduction remains `REQUALIFICATION_REQUIRED`; resource-causal reproduction remains `NOT_ESTABLISHED`.
 - Evidence: `digital-protocell/experiments/generated/dcdev021m2r20d088r1/`. Independent Architect acceptance remains `PENDING`; next execution is `false`.
+
+## R20 final exact-head authority pointer
+
+- Result head: `7d7d2349097d123243c4313bd40151ccf0251396`.
+- Exact-head Linux workflow `34064953738` passed on that exact SHA.
+- Independently downloaded artifact ZIP digest: `sha256:f379641e0d4acf3276280fa51910a07adaa739ecfe69fe636c3e3230ef8c57f2`.
+- This pointer is provisional Goal-agent authority only. Classification remains `D088R1_SIMPLE_BOUNDARY_PRESERVED_FISSION_NOT_ESTABLISHED`; D-088 is `REQUALIFICATION_REQUIRED`; resource-causal reproduction is `NOT_ESTABLISHED`; no successor started.

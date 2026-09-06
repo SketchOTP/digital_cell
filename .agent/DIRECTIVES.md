@@ -1048,3 +1048,10 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - The contact path uses no free physical parameter, target, mass, resource, chemistry, lineage, or reproductive state. No post-hoc untangling, controller, fission repair, or M2 integration is authorized.
 - Legacy D-088 remains a control for the historical invalidity pattern only. R20 is a requalification, not a rewrite of R19 evidence.
 - Goal-agent authority is provisional; independent Architect acceptance is `PENDING`; stop after sealed classification with no successor execution.
+
+## R20 final exact-head authority pointer
+
+- Result head: `7d7d2349097d123243c4313bd40151ccf0251396`.
+- Exact-head workflow: `34064953738 PASS`.
+- Artifact digest: `sha256:f379641e0d4acf3276280fa51910a07adaa739ecfe69fe636c3e3230ef8c57f2`.
+- Classification remains `D088R1_SIMPLE_BOUNDARY_PRESERVED_FISSION_NOT_ESTABLISHED`; no successor execution started.
