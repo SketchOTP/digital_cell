@@ -1209,3 +1209,15 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Successor decision: source-level organism/world material-flow contract before
   any new runtime execution. No adjacent material-flow variant is authorized.
 - Independent Architect acceptance: `PENDING`.
+
+## DEC-DCDEV021-GOAL-WORKFLOW-SCOPE-RECONCILIATION-R12-AUTHORITY
+
+- Date: `2026-09-06`
+- Status: `ACTIVE_PROVISIONAL`
+- Result head: `be2eeef08e9ee42faae126385e801deadc9a05d3`.
+- Exact-head Linux workflow: `34000777578` passed.
+- Artifact digest: `sha256:72021b5cbd1dfd88cfe7dd2d7625e65fd58b243ffbc279c7693915bea94d4805`.
+- Decision: seal the workflow-scope reconciliation as Goal-agent
+  provisional governance evidence. It does not alter the R12 scientific
+  classification or independently accept the shared-medium architecture.
+- Independent Architect acceptance: `PENDING`.

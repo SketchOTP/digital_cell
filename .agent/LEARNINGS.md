@@ -857,3 +857,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
   reruns. Do not weaken their scientific allowlists.
 - R12 scientific authority remains the passed shared-medium workflow; the
   archival failures are not scientific evidence.
+
+## L-DCDEV021-GOAL-WORKFLOW-SCOPE-RECONCILIATION-R12-AUTHORITY-001
+
+- Fact: exact-head workflow `34000777578` passed on
+  `be2eeef08e9ee42faae126385e801deadc9a05d3` after the archival workflow
+  push-scope reconciliation.
+- Artifact digest: `sha256:72021b5cbd1dfd88cfe7dd2d7625e65fd58b243ffbc279c7693915bea94d4805`.
+- Scope: workflow/governance reconciliation only; the R12 scientific result
+  remains a Goal-agent provisional negative and independent Architect
+  acceptance remains pending.
