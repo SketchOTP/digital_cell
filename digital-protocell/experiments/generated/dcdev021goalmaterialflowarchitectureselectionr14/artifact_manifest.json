@@ -1,0 +1,12 @@
+{
+  "schema": "dcdev021-goal-material-flow-architecture-selection-r14",
+  "evidence_files": [
+    "protocol.json",
+    "comparison.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "source_level_only": true,
+  "runtime_execution": false,
+  "starting_head": "252f6b739d84f4367c8fc5581a600f41d5d266a2"
+}

@@ -915,3 +915,24 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Boundary: this seals only the final Goal-agent governance validation; the
   R13 scientific result remains provisional and independent Architect
   acceptance remains pending.
+
+## L-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R14-001
+
+- Fact: R10 identifies environmental N/F transfer as the first measured
+  divergence from the qualified whole-membrane reproductive reference. R12
+  and R13 test a materially different finite shared-medium ownership and
+  causal-order contract, but unchanged growth/fission still does not produce
+  resource-causal fission.
+- Lesson: the current organism/world material-flow architecture cannot be
+  advanced by another representation-level field, allocator, buffer, reserve,
+  or active-work variant. The first divergence is now an architecture
+  selection boundary, not a request for another local assay.
+- Consequence: no successor runtime is authorized until a materially distinct
+  environmental transport boundary is specified with finite conservation,
+  unchanged downstream laws, a common flux ledger, and a fixed stop
+  condition. Assimilation remains `INVESTIGATE_NOT_ACCEPTED`.
+- Evidence location: `docs/goal-material-flow-architecture-selection-r14.md`,
+  `digital-protocell/experiments/generated/dcdev021goalmaterialflowarchitectureselectionr14/`,
+  and `.github/workflows/dc-dev-021-goal-material-flow-architecture-selection.yml`.
+- Confidence: `PROVISIONAL` pending exact-head Linux validation and
+  independent Architect review.

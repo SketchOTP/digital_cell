@@ -1,0 +1,12 @@
+{
+  "directive": "GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R14",
+  "starting_head": "252f6b739d84f4367c8fc5581a600f41d5d266a2",
+  "mode": "source_level_architecture_selection",
+  "scientific_runtime_changed": false,
+  "runtime_execution_started": false,
+  "independent_architect_acceptance": "PENDING",
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "goal_agent_status": "GOAL_AGENT_PROVISIONAL_ARCHITECTURE_REPLAN",
+  "stop_condition": "No successor runtime until a materially distinct environmental transport boundary is specified and shown not to be another field, allocator, buffer, reserve, or active-work variant."
+}

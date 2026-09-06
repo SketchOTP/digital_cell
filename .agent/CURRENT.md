@@ -458,3 +458,23 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - The validation remains governance-only. R13 remains
   `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; independent Architect acceptance
   is `PENDING`; next execution is `false`.
+
+## Goal-mode material-flow architecture selection R14
+
+- Starting governance head: `252f6b739d84f4367c8fc5581a600f41d5d266a2`.
+- R10 identifies environmental N/F transfer as the first measured divergence
+  from the qualified whole-membrane reproductive reference. R12 and R13 then
+  test a finite shared-medium ownership/order contract, including from
+  founder birth; transfer is conserved and resource-dependent persistence is
+  visible, but resource-causal fission is still not established.
+- CLOSURE-006 through CLOSURE-014 and the nearby field/allocation family are
+  closed. Assimilation remains `INVESTIGATE_NOT_ACCEPTED` because it changes
+  core scientific state and preservation semantics.
+- Status: `GOAL_AGENT_PROVISIONAL_ARCHITECTURE_REPLAN`.
+- No successor runtime execution is selected or started. The next boundary is
+  a source-level contract for a materially distinct environmental transport
+  interface, or independent Architect direction; another field, buffer,
+  allocator, resource increase, horizon extension, or fission-gate change is
+  forbidden.
+- Independent Architect acceptance remains `PENDING`; resource-causal
+  reproduction and autonomous resource acquisition remain `NOT_ESTABLISHED`.

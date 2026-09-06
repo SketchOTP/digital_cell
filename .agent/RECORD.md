@@ -1290,3 +1290,23 @@ Use it for architectural decisions, governance changes, releases, qualification 
   `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`.
 - Independent Architect acceptance: `PENDING`.
 - Next execution: `false`.
+
+## DEC-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R14
+
+- Date: `2026-09-06`
+- Status: `PROVISIONAL_ARCHITECTURE_REPLAN`
+- Starting governance head: `252f6b739d84f4367c8fc5581a600f41d5d266a2`.
+- Decision: do not issue another organism/world material-flow runtime
+  variant. The unified R10 ledger, Route-B field evidence, R11/R12 shared
+  medium execution, and R13 birth-state ecology are compared as one causal
+  boundary. Environmental transfer remains the first measured divergence, and
+  resource-causal fission remains unestablished.
+- Superseded next steps: another CLOSURE formula, field placement or
+  allocation variant, another intracellular buffer, resource increase,
+  resource repositioning, horizon extension, fission-gate change, or silent
+  assimilation promotion.
+- Next boundary: a source-level contract for a genuinely different
+  environmental transport boundary, or independent Architect direction. No
+  successor runtime execution has started.
+- Goal-agent classification: `GOAL_AGENT_PROVISIONAL_ARCHITECTURE_REPLAN`.
+- Independent Architect acceptance: `PENDING`.

@@ -1,0 +1,44 @@
+{
+  "r10_first_divergence": {
+    "stage": "environmental_transfer",
+    "first_common_checkpoint": 1,
+    "spatial_delivery_n": 0.5735320665105335,
+    "whole_membrane_reference_delivery_n": 5.2197561097164,
+    "transfer_disabled_delivery_n": 0.0,
+    "interpretation": "diagnostic first divergence; not a new acceptance"
+  },
+  "tested_architectures": [
+    {
+      "name": "whole_membrane_reference",
+      "status": "calibration_only",
+      "resource_causal_fission": "not_established"
+    },
+    {
+      "name": "route_b_finite_spatial_material_field",
+      "status": "bounded_negative",
+      "resource_causal_fission": "not_established"
+    },
+    {
+      "name": "r11_r12_shared_finite_extracellular_medium",
+      "status": "bounded_negative",
+      "resource_causal_fission": "not_established"
+    },
+    {
+      "name": "r13_birth_state_shared_medium",
+      "status": "bounded_negative",
+      "resource_causal_fission": "not_established"
+    },
+    {
+      "name": "persistent_assimilation_state",
+      "status": "investigate_not_accepted",
+      "resource_causal_fission": "not_established"
+    }
+  ],
+  "closed_families": [
+    "CLOSURE-006 through CLOSURE-014 active-work/contact/material formulas",
+    "nearby field placement and request allocation variants",
+    "additional intracellular buffer or assimilation pool variants"
+  ],
+  "successor_runtime": "NOT_SELECTED",
+  "reason": "The existing evidence does not objectively distinguish a new transport architecture from representation-level hill-climbing."
+}

@@ -1,0 +1,23 @@
+{
+  "classification": "GOAL_AGENT_PROVISIONAL_ARCHITECTURE_REPLAN",
+  "resource_to_fission_causality": "NOT_ESTABLISHED",
+  "current_organism_world_material_flow": "INSUFFICIENT_FOR_CURRENT_GOAL_GATE",
+  "assimilation_architecture": "INVESTIGATE_NOT_ACCEPTED",
+  "local_active_work_formula_search": "CLOSED",
+  "next_execution_started": false,
+  "architect_acceptance": "PENDING",
+  "required_next_boundary": "source-level contract for a materially distinct environmental transport interface or independent Architect direction",
+  "forbidden_next_steps": [
+    "new gain",
+    "new threshold",
+    "new timer",
+    "new buffer",
+    "new field placement",
+    "new allocator",
+    "resource increase",
+    "resource repositioning",
+    "horizon extension",
+    "fission gate change",
+    "observer allocation"
+  ]
+}

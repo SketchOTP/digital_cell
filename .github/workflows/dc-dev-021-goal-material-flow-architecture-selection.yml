@@ -1,0 +1,112 @@
+name: DC-DEV-021 goal material-flow architecture selection R14
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-goal-post-fission-ecological-reentry
+    paths:
+      - '.github/workflows/dc-dev-021-goal-material-flow-architecture-selection.yml'
+      - 'docs/goal-material-flow-architecture-selection-r14.md'
+      - 'digital-protocell/experiments/generated/dcdev021goalmaterialflowarchitectureselectionr14/**'
+      - '.agent/CURRENT.md'
+      - '.agent/LEARNINGS.md'
+      - '.agent/RECORD.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  architecture-selection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact pushed head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Verify exact authority and bounded source-level diff
+        run: |
+          set -euo pipefail
+          start=252f6b739d84f4367c8fc5581a600f41d5d266a2
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - "$start" <<'PY'
+          import subprocess
+          import sys
+
+          start = sys.argv[1]
+          changed = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{start}..HEAD'], text=True
+          ).splitlines())
+          allowed = {
+              '.agent/CURRENT.md', '.agent/LEARNINGS.md', '.agent/RECORD.md',
+              '.github/workflows/dc-dev-021-goal-material-flow-architecture-selection.yml',
+              'docs/goal-material-flow-architecture-selection-r14.md',
+          }
+          prefix = 'digital-protocell/experiments/generated/dcdev021goalmaterialflowarchitectureselectionr14/'
+          unexpected = {p for p in changed if p not in allowed and not p.startswith(prefix)}
+          assert not unexpected, sorted(unexpected)
+          blocked = (
+              'digital-protocell/crates/chemistry-core/src/',
+              'digital-protocell/crates/regulatory-core/src/',
+              'digital-protocell/crates/m2-lifeform-runtime/src/',
+              'digital-protocell/crates/phase1-certifier/src/',
+              'digital-protocell/crates/evolution-harness/src/',
+          )
+          assert not any(p.startswith(blocked) for p in changed)
+          print('bounded source-level architecture-selection diff passed')
+          PY
+
+      - name: Validate comparison and replan boundary
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path('digital-protocell/experiments/generated/dcdev021goalmaterialflowarchitectureselectionr14')
+          protocol = json.loads((root / 'protocol.json').read_text())
+          comparison = json.loads((root / 'comparison.json').read_text())
+          qualification = json.loads((root / 'qualification.json').read_text())
+          assert protocol['starting_head'] == '252f6b739d84f4367c8fc5581a600f41d5d266a2'
+          assert protocol['scientific_runtime_changed'] is False
+          assert protocol['runtime_execution_started'] is False
+          assert comparison['r10_first_divergence']['stage'] == 'environmental_transfer'
+          assert comparison['successor_runtime'] == 'NOT_SELECTED'
+          assert qualification['classification'] == 'GOAL_AGENT_PROVISIONAL_ARCHITECTURE_REPLAN'
+          assert qualification['architect_acceptance'] == 'PENDING'
+          assert 'new buffer' in qualification['forbidden_next_steps']
+          assert 'resource increase' in qualification['forbidden_next_steps']
+          assert 'fission gate change' in qualification['forbidden_next_steps']
+          print('architecture-selection replan boundary passed')
+          PY
+
+      - name: Verify prior evidence remains referenced
+        run: |
+          set -euo pipefail
+          test -f docs/goal-unified-flux-budget-audit-r10.md
+          test -f docs/goal-material-flow-contract-selection-r11.md
+          test -f docs/goal-birth-state-ecology-r13.md
+          test -f docs/goal-assimilation-preservation-audit-r9.md
+          rg -q 'GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN' .agent/CURRENT.md .agent/RECORD.md
+          rg -q 'independent Architect acceptance.*PENDING|Independent Architect acceptance.*PENDING' .agent/CURRENT.md .agent/RECORD.md
+
+      - name: Hash and upload compact evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021goalmaterialflowarchitectureselectionr14 \
+            -type f -print0 | sort -z | xargs -0 sha256sum \
+            > "$RUNNER_TEMP/dcdev021-goal-material-flow-architecture-selection-r14.sha256"
+
+      - name: Upload compact evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021-goal-material-flow-architecture-selection-r14-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021goalmaterialflowarchitectureselectionr14/
+            ${{ runner.temp }}/dcdev021-goal-material-flow-architecture-selection-r14.sha256
