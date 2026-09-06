@@ -1,0 +1,5 @@
+{
+  "observer_feedback": false,
+  "resource_read_by_readiness": false,
+  "trajectory_mutation_by_shadow": false
+}

@@ -1,0 +1,88 @@
+{
+  "files": [
+    {
+      "path": "authority.json",
+      "sha256": "5c79941d71414606eabca8633767ddb2ee3bb0f3f9bda42d94f438c79ca3d6b1"
+    },
+    {
+      "path": "causal_localization.json",
+      "sha256": "585444ea5c1981a9a9aa4766cdb767ec55a93c5fec18bf53d3b67dfa2a3569b4"
+    },
+    {
+      "path": "cross_bond_a_attribution.json",
+      "sha256": "a97cbcb7ca37f427b3f1da590b19329324134368a17acc3fcc5482a6714d38de"
+    },
+    {
+      "path": "d088_execution_sequence.json",
+      "sha256": "c2bd8d1394b870da6ae76fe15e65059b8394529ee9d86c4f3c7748b4db72e131"
+    },
+    {
+      "path": "d088_fission_readiness_trace.json",
+      "sha256": "b196fcdf27d3b406cb1f6eba03d1b9128ba7410c07865f77c5b9434ecedb091e"
+    },
+    {
+      "path": "d088_positive_reference.json",
+      "sha256": "e50772451a27b6fad2f54df0475aa20ac0c5647bbfd204740d1fed84c7044a32"
+    },
+    {
+      "path": "d088_r17_comparison.json",
+      "sha256": "eda6a4a35a2512b344dffa30534b75d80c92ddf6c96c0bad64641189587f5788"
+    },
+    {
+      "path": "forbidden_information_audit.json",
+      "sha256": "8bdd30e2686d4d4a8a70c9868d226d9c67bf5b9da9cc28111ffb82cdde975235"
+    },
+    {
+      "path": "m2_execution_sequence.json",
+      "sha256": "13b4d834fd1bb6e3d70bf466eb24d4675e36bf1bbb1c23fb0d2c72bb416becea"
+    },
+    {
+      "path": "passive_mechanics_shadow.json",
+      "sha256": "c90f83cdd7d6904645b690f77a847f59526c599435d14b40f3300d75267bc19a"
+    },
+    {
+      "path": "pinch_geometry_attribution.json",
+      "sha256": "4154e982dbe7a6e797d352fb9a0e96b5ee0762351f7b257eb89a3eda39571763"
+    },
+    {
+      "path": "preservation.json",
+      "sha256": "50057c94cf11e85412e0f7f11670c16c089ba1da18cb573029cf27bd5a9d1546"
+    },
+    {
+      "path": "protocol.json",
+      "sha256": "4dfd287fc4fac1fc3d2674e40e9bfc41ffd06695cae353343625497aa2733c64"
+    },
+    {
+      "path": "qualification.json",
+      "sha256": "f9247c052c7c6d942213e84b42b9000f7823a75c20a5a16dcf43f8a7006b114b"
+    },
+    {
+      "path": "r17_attempt_tick_readiness.json",
+      "sha256": "3198f074145f0eb78ce9d6723cc17359ceccb2a26c7b9f45bb8cf8705c7e89bf"
+    },
+    {
+      "path": "r17_cadence_audit.json",
+      "sha256": "e14d12bf72d25995bf78ea812b6000ac5cc8afc5a346eb13c9bbfcbbe57a1e6d"
+    },
+    {
+      "path": "r17_early_replay.json",
+      "sha256": "bbe5cd02b5f42d9877b9d06ca21de9bca05a974a57c699871aae5675955b7c35"
+    },
+    {
+      "path": "r17_every_step_fission_readiness.json",
+      "sha256": "d3ad0512a0ddcd54931d441dea5eff2edad1dd52a5b3c3249a032fb7d65befd7"
+    },
+    {
+      "path": "r17_final_provenance.json",
+      "sha256": "18dc088a833e955e72102697a3dde5b7be35908281f9dfc305eb1169b9f464ae"
+    },
+    {
+      "path": "r17_topology_order_audit.json",
+      "sha256": "7f9b16bfb6ce282aad7fee0e7eb59a86784fcb09e19d0cd9cacd1781f3218ba3"
+    },
+    {
+      "path": "source_execution_parity.json",
+      "sha256": "1edb00b401122ee9e157ed4ea2803642fd420226d754345bdcfcacd8e25a6b4d"
+    }
+  ]
+}
