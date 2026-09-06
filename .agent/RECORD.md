@@ -1451,3 +1451,16 @@ Use it for architectural decisions, governance changes, releases, qualification 
   readiness.
 - Resource-causal reproduction: `NOT_ESTABLISHED`. Independent Architect
   acceptance: `PENDING`. Next execution: `false`.
+
+## DEC-DCDEV021-GOAL-R18-FINAL-EXACT-HEAD-RECONCILIATION
+
+- Date: `2026-09-06`
+- Final branch/head: `m2/dc-dev-021-r18-fission-readiness` /
+  `546fbdd00a23e108658789dc4294fcc5f99fc0f5`.
+- Exact-head workflow: `34056228194 PASS`.
+- Artifact digest:
+  `sha256:86d5a501c0ecb867c07275cae9a8b04fa4ceafa90dd3b57974aecdc26c6d9e57`.
+- Append-only reconciliation of the earlier R18 pointer; sealed classification
+  remains `M2_FISSION_READINESS_MULTIFACTOR_UNRESOLVED`.
+- No scientific repair, successor execution, or independent Architect
+  acceptance is asserted.

@@ -543,6 +543,21 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
   reproduction remains `NOT_ESTABLISHED`.
 - Independent Architect acceptance: `PENDING`. Next execution: `false`.
 
+## Goal-mode R18 final exact-head authority reconciliation
+
+- Final governed branch/head: `m2/dc-dev-021-r18-fission-readiness` /
+  `546fbdd00a23e108658789dc4294fcc5f99fc0f5`.
+- Exact-head Linux workflow `34056228194` passed on that exact SHA.
+- Final uploaded artifact digest:
+  `sha256:86d5a501c0ecb867c07275cae9a8b04fa4ceafa90dd3b57974aecdc26c6d9e57`.
+- This append-only pointer supersedes the earlier provisional R18 pointer
+  without rewriting it. Classification remains
+  `M2_FISSION_READINESS_MULTIFACTOR_UNRESOLVED`.
+- No lawful pinch occurs in the R17 mass-eligible interval; M2/D-088
+  execution paths differ; the clone-only shadow does not restore readiness.
+- Scientific runtime semantics remain unchanged; no repair or successor
+  execution started. Independent Architect acceptance remains `PENDING`.
+
 ## Goal-mode R18 sealed provisional result
 
 - Result head: `3381e590d8150675419ecf46c31f6f534c1c9ef6`.

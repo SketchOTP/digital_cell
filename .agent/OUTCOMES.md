@@ -2280,3 +2280,16 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Goal-agent provisional classification:
   `M2_FISSION_READINESS_MULTIFACTOR_UNRESOLVED`. Resource-causal reproduction
   remains `NOT_ESTABLISHED`; no fix or successor started.
+
+## R18 final exact-head authority reconciliation
+
+- Final governed head: `546fbdd00a23e108658789dc4294fcc5f99fc0f5` on
+  `m2/dc-dev-021-r18-fission-readiness`.
+- Exact-head workflow `34056228194` passed. Artifact digest:
+  `sha256:86d5a501c0ecb867c07275cae9a8b04fa4ceafa90dd3b57974aecdc26c6d9e57`.
+- The compact evidence package is sealed at this authority. The result is
+  `M2_FISSION_READINESS_MULTIFACTOR_UNRESOLVED`: mass eligibility is real,
+  no lawful pinch is observed, D-088 and M2 execution paths differ, and the
+  clone-only passive-mechanics shadow does not restore readiness.
+- This is Goal-agent provisional authority only. No scientific repair,
+  successor execution, or independent Architect acceptance is claimed.
