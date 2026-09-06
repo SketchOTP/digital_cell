@@ -486,3 +486,7 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
   `f1a513998ce617e249eed0cb11491c6ef4f2e126`.
 - Final exact-head workflow `34004333330` passed; final artifact digest:
   `sha256:fcee50274c635967f3c02e90f32fd8b280931b1dab2d04b83f5d05aaadacf577`.
+- Final authority pointer after this append-only correction:
+  `01819476337baefc6f048a617c3cbb13bfd52fe3`.
+- Exact-head workflow `34004361563` passed; artifact digest:
+  `sha256:8a9290d8aad46d85256d41bc2b2305774c68d583a6ee4d250c0a979506f23c04`.

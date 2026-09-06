@@ -1291,6 +1291,19 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Independent Architect acceptance: `PENDING`.
 - Next execution: `false`.
 
+## DEC-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R14-FINAL-POINTER
+
+- Date: `2026-09-06`
+- Status: `ACTIVE_PROVISIONAL`
+- Final governance head: `01819476337baefc6f048a617c3cbb13bfd52fe3`.
+- Exact-head Linux workflow: `34004361563` passed.
+- Artifact digest:
+  `sha256:8a9290d8aad46d85256d41bc2b2305774c68d583a6ee4d250c0a979506f23c04`.
+- Decision: reconcile the final append-only authority pointer. This does not
+  alter the provisional architecture replan or authorize a successor runtime.
+- Independent Architect acceptance: `PENDING`.
+- Next execution: `false`.
+
 ## DEC-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R14
 
 - Date: `2026-09-06`

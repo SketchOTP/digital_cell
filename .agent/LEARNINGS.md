@@ -958,3 +958,12 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Boundary: the result is a Goal-agent provisional architecture replan only;
   no successor runtime is selected, assimilation is not accepted, and
   resource-causal fission remains unestablished.
+
+## L-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R14-FINAL-POINTER-001
+
+- Fact: the exact-head R14 governance run `34004361563` passed on
+  `01819476337baefc6f048a617c3cbb13bfd52fe3`.
+- Fact: its artifact digest is
+  `sha256:8a9290d8aad46d85256d41bc2b2305774c68d583a6ee4d250c0a979506f23c04`.
+- Boundary: GitHub, `.agent`, and the canonical Notion pointer now identify
+  the same provisional R14 replan; no successor runtime is selected.
