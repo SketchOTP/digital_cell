@@ -948,3 +948,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
   resource-causal fission.
 - Follow-up: a final exact-head validation is required after this append-only
   authority record.
+
+## L-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R14-FINAL-AUTHORITY-001
+
+- Fact: final exact-head workflow `34004333330` passed on
+  `f1a513998ce617e249eed0cb11491c6ef4f2e126`.
+- Fact: final artifact digest is
+  `sha256:fcee50274c635967f3c02e90f32fd8b280931b1dab2d04b83f5d05aaadacf577`.
+- Boundary: the result is a Goal-agent provisional architecture replan only;
+  no successor runtime is selected, assimilation is not accepted, and
+  resource-causal fission remains unestablished.

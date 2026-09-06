@@ -1326,3 +1326,18 @@ Use it for architectural decisions, governance changes, releases, qualification 
   remains `PENDING`.
 - Follow-up: final exact-head validation is required after this append-only
   authority record.
+
+## DEC-DCDEV021-GOAL-MATERIAL-FLOW-ARCHITECTURE-SELECTION-R14-FINAL-AUTHORITY
+
+- Date: `2026-09-06`
+- Status: `ACTIVE_PROVISIONAL`
+- Final governance head: `f1a513998ce617e249eed0cb11491c6ef4f2e126`.
+- Exact-head Linux workflow: `34004333330` passed.
+- Final artifact digest:
+  `sha256:fcee50274c635967f3c02e90f32fd8b280931b1dab2d04b83f5d05aaadacf577`.
+- Decision: seal the provisional R14 architecture replan. The current
+  organism/world material-flow architecture is not sufficient for the current
+  resource-causal reproduction gate, but no new successor architecture is
+  selected without a materially distinct source-level contract.
+- Independent Architect acceptance: `PENDING`.
+- Next execution: `false`.

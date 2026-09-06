@@ -482,3 +482,7 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
   `rg`; the portable-check correction passed as workflow `34004282481` on
   `d264c60c458f8b0130f79d6a09587e761a1826c8`.
 - R14 artifact digest: `sha256:0727e81d3fb0bf7e2b15605f4f80f9c4628c586b785ef27654d9b0740efe9e22`.
+- Final R14 governance head after this append-only authority record:
+  `f1a513998ce617e249eed0cb11491c6ef4f2e126`.
+- Final exact-head workflow `34004333330` passed; final artifact digest:
+  `sha256:fcee50274c635967f3c02e90f32fd8b280931b1dab2d04b83f5d05aaadacf577`.
