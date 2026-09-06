@@ -48,11 +48,13 @@ jobs:
           allowed = {
               '.agent/LEARNINGS.md', '.agent/RECORD.md',
               '.github/workflows/dc-dev-021-goal-birth-state-ecology.yml',
+              '.github/workflows/dc-dev-021-goal-shared-medium-execution.yml',
               'docs/goal-birth-state-ecology-r13.md',
               'digital-protocell/crates/m2-lifeform-runtime/src/main.rs',
           }
           prefix = 'digital-protocell/experiments/generated/dcdev021goalbirthstateecologyr13/'
-          unexpected = {p for p in changed if p not in allowed and not p.startswith(prefix)}
+          prefixes = (prefix, 'digital-protocell/experiments/generated/dcdev021goalmaterialflowr12/')
+          unexpected = {p for p in changed if p not in allowed and not p.startswith(prefixes)}
           assert not unexpected, sorted(unexpected)
           PY
 
