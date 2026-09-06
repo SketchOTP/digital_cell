@@ -1,0 +1,20 @@
+{
+  "schema": "digital_cell_r15_artifact_manifest_v1",
+  "files": [
+    "protocol.json",
+    "authority.json",
+    "architecture_distinctness.json",
+    "interface_geometry.json",
+    "uniform_parity.json",
+    "conservation.json",
+    "founder_birth_active.json",
+    "founder_birth_disabled.json",
+    "flux_ledger.json",
+    "locality_depletion.json",
+    "preservation.json",
+    "forbidden_information_audit.json",
+    "qualification.json",
+    "artifact_manifest.json"
+  ],
+  "dense_trajectories": "not included; compact runtime reports and deterministic unit tests are the sealed local evidence"
+}

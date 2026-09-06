@@ -1,0 +1,165 @@
+name: DC-DEV-021 M2 R15 moving membrane finite flux
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-r15-moving-membrane-finite-flux
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r15-moving-membrane:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify exact authority and bounded R15 scope
+        run: |
+          set -euo pipefail
+          start=2c4653ee422abcf410b3cc920f53bb8f16540b2d
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - "$start" <<'PY'
+          import subprocess
+          import sys
+
+          start = sys.argv[1]
+          allowed = {
+              '.agent/CURRENT.md',
+              '.agent/DIRECTIVES.md',
+              '.agent/LEARNINGS.md',
+              '.agent/OUTCOMES.md',
+              '.agent/RECORD.md',
+              '.agent/REPO_MAP.md',
+              '.agent/PROJECT_PROFILE.md',
+              '.github/workflows/dc-dev-021-m2-r15-moving-membrane-finite-flux.yml',
+              'digital-protocell/crates/m2-lifeform-runtime/src/main.rs',
+              'digital-protocell/crates/phase1-certifier/src/sim.rs',
+              'digital-protocell/crates/regulatory-core/src/lib.rs',
+              'digital-protocell/crates/regulatory-core/src/moving_membrane_flux.rs',
+          }
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{start}..HEAD'], text=True
+          ).splitlines()
+          prefix = 'digital-protocell/experiments/generated/dcdev021m2r15movingmembranefiniteflux/'
+          unexpected = [p for p in changed if p not in allowed and not p.startswith(prefix)]
+          assert not unexpected, unexpected
+          forbidden_prefixes = (
+              'digital-protocell/crates/chemistry-core/src/',
+              'digital-protocell/crates/phase1-certifier/src/',
+              'digital-protocell/crates/evolution-harness/src/',
+          )
+          assert not any(p.startswith(forbidden_prefixes) for p in changed), changed
+          print('R15 exact authority and bounded scope verified')
+          PY
+
+      - name: Run R15 transport contract tests
+        working-directory: digital-protocell
+        run: cargo +1.89.0 test --locked -p regulatory-core moving_membrane_flux -- --nocapture
+
+      - name: Build and test integrated runtime
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p m2-lifeform-runtime
+          cargo +1.89.0 build --locked --release -p m2-lifeform-runtime
+
+      - name: Run bounded founder-birth active and disabled arms
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run --locked -q --release -p m2-lifeform-runtime -- \
+            --steps 12000 --seed 2 --moving-membrane-flux --report "$RUNNER_TEMP/r15-active.json"
+          cargo +1.89.0 run --locked -q --release -p m2-lifeform-runtime -- \
+            --steps 12000 --seed 2 --moving-membrane-flux --transfer-disabled \
+            --report "$RUNNER_TEMP/r15-disabled.json"
+
+      - name: Validate R15 parity, causality, and compact evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - "$RUNNER_TEMP" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          root = Path('experiments/generated/dcdev021m2r15movingmembranefiniteflux')
+          for path in root.glob('*.json'):
+              json.loads(path.read_text())
+          manifest = json.loads((root / 'artifact_manifest.json').read_text())
+          for item in manifest['files']:
+              assert (root / item).is_file(), item
+          active = json.loads((Path(sys.argv[1]) / 'r15-active.json').read_text())
+          disabled = json.loads((Path(sys.argv[1]) / 'r15-disabled.json').read_text())
+          assert active['step'] == disabled['step'] == 12000
+          assert active['resource_mode'] == disabled['resource_mode'] == 'MovingMembraneFiniteFluxV1'
+          assert active['first_contact_step'] == disabled['first_contact_step'] == 7452
+          assert active['first_transfer_step'] == 7452
+          assert disabled['first_transfer_step'] is None
+          assert active['cumulative_n_delivered'] > 0.0
+          assert active['cumulative_f_delivered'] > 0.0
+          assert disabled['cumulative_n_delivered'] == 0.0
+          assert disabled['cumulative_f_delivered'] == 0.0
+          assert active['fission_events'] == disabled['fission_events'] == 0
+          assert active['world_n_conservation_error'] <= 1e-12
+          assert active['world_f_conservation_error'] <= 1e-12
+          assert disabled['world_n_conservation_error'] <= 1e-12
+          assert disabled['world_f_conservation_error'] <= 1e-12
+          assert active['living_count'] == 1
+          assert disabled['living_count'] == 0
+          assert disabled['terminal_observer_death_reasons'] == ['starvation_collapse']
+          q = json.loads((root / 'qualification.json').read_text())
+          assert q['classification'] == 'M2_MOVING_MEMBRANE_FLUX_PARITY_QUALIFIED_REPRODUCTION_NOT_ESTABLISHED'
+          assert q['architect_acceptance'] == 'PENDING'
+          print('R15 parity, finite transfer, disabled starvation, and no-fission gates passed')
+          PY
+
+      - name: Preserve D-087, D-088, D-091, and evolution boundaries
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test --locked -p evolution-harness -- --nocapture
+          python3 - <<'PY'
+          from pathlib import Path
+          current = Path('../.agent/CURRENT.md').read_text()
+          outcomes = Path('../.agent/OUTCOMES.md').read_text()
+          record = Path('../.agent/RECORD.md').read_text()
+          assert 'Goal-mode R15 moving-membrane finite-flux contract' in current
+          assert 'M2_MOVING_MEMBRANE_FLUX_PARITY_QUALIFIED_REPRODUCTION_NOT_ESTABLISHED' in outcomes
+          assert 'DEC-DCDEV021-GOAL-R15-MOVING-MEMBRANE-FINITE-FLUX' in record
+          assert 'Independent Architect acceptance: `PENDING`' in current
+          print('R15 append-only governance pointers present; legacy governance validator is not a scientific gate')
+          PY
+
+      - name: Record evidence digest
+        if: always()
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2r15movingmembranefiniteflux \
+            -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2r15.sha256"
+
+      - name: Upload R15 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dc-dev-021-m2-r15-moving-membrane-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2r15movingmembranefiniteflux/
+            ${{ runner.temp }}/r15-active.json
+            ${{ runner.temp }}/r15-disabled.json
+            ${{ runner.temp }}/dcdev021m2r15.sha256
+          if-no-files-found: error

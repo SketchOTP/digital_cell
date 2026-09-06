@@ -1,0 +1,12 @@
+{
+  "resource_center_read_by_behavior": false,
+  "resource_distance_read_by_behavior": false,
+  "resource_gradient_read_by_behavior": false,
+  "contact_sensor_read_by_behavior": false,
+  "observer_ledger_read_by_behavior": false,
+  "target_or_reward": false,
+  "new_gain_or_threshold": false,
+  "assimilation_rescue": false,
+  "fission_gate_changed": false,
+  "forbidden_information_read": "NONE"
+}

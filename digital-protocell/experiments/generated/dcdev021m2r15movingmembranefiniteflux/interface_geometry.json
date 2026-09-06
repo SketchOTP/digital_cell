@@ -1,0 +1,9 @@
+{
+  "geometry": "actual deforming polygon edges",
+  "intersection": "exact line-segment/circle clipping",
+  "midpoint_membership_used": false,
+  "partial_segment_measure_test": "PASS",
+  "locality": "only intersecting membrane length contributes positive finite-world source flux",
+  "rotation_equivariance": "PASS",
+  "order_independence": "PASS"
+}

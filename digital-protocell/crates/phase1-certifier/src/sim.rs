@@ -146,6 +146,8 @@ pub fn seed_mesh(radius: f64, seed: u64) -> MaterialMesh {
         k_a: 0.0,
         k_r: 0.0,
         k_node_b: 0.0,
+        assimilation_n: 0.0,
+        assimilation_f: 0.0,
     };
     let exterior = LumpedChem {
         c: 0.0,
@@ -166,6 +168,8 @@ pub fn seed_mesh(radius: f64, seed: u64) -> MaterialMesh {
         k_a: 0.0,
         k_r: 0.0,
         k_node_b: 0.0,
+        assimilation_n: 0.0,
+        assimilation_f: 0.0,
     };
     let mut mesh = MaterialMesh::seed_regular(
         n,

@@ -12,7 +12,7 @@ use chemistry_core::mesh_transport::transport_step;
 use chemistry_core::mesh_transport::TransportParams;
 use regulatory_core::{
     ContractilityParamsV1, FiniteWorldResourceV1, FiniteWorldV1,
-    SharedFiniteExtracellularMediumV1, SpatialMaterialFieldV1,
+    MovingMembraneFiniteFluxV1, SharedFiniteExtracellularMediumV1, SpatialMaterialFieldV1,
     StickSlipTractionParamsV1,
 };
 use serde::{Deserialize, Serialize};
@@ -48,6 +48,10 @@ struct RuntimeSnapshot {
     /// historical FiniteWorldV1 and Route-B checkpoint semantics.
     #[serde(default)]
     shared_medium: Option<SharedFiniteExtracellularMediumV1>,
+    /// Opt-in R15 moving-membrane finite interface. `None` preserves every
+    /// historical runtime composition and checkpoint interpretation.
+    #[serde(default)]
+    moving_membrane: Option<MovingMembraneFiniteFluxV1>,
     /// Opt-in D-091 reserve composition; absent preserves reserve-off runtime.
     #[serde(default)]
     reserve_parameters: Option<ReserveParams>,
@@ -160,6 +164,8 @@ struct RuntimeReport {
     spatial_field_f_mass_remaining: f64,
     shared_medium_n_mass_remaining: f64,
     shared_medium_f_mass_remaining: f64,
+    moving_membrane_n_mass_remaining: f64,
+    moving_membrane_f_mass_remaining: f64,
     cumulative_n_delivered: f64,
     cumulative_f_delivered: f64,
     cumulative_assimilation_n_processed: f64,
@@ -208,6 +214,7 @@ struct Config {
     routeb_spatial_field: bool,
     shared_extracellular_medium: bool,
     shared_medium_from_birth: bool,
+    moving_membrane_flux: bool,
     routec_reserve_growth: bool,
     assimilation_material_flow: bool,
     anabolic_incorporation: bool,
@@ -239,7 +246,7 @@ fn default_true() -> bool {
 
 fn usage() -> ! {
     eprintln!(
-        "usage: digital-protocell-m2-runtime [--steps N] [--seed N] \\\n          [--checkpoint PATH] [--report PATH] [--resume PATH] \\\n          [--transfer-disabled] [--routeb-spatial-field] [--routec-reserve-growth] [--assimilation-material-flow] [--assimilation-anabolic-incorporation]"
+        "usage: digital-protocell-m2-runtime [--steps N] [--seed N] \\\n          [--checkpoint PATH] [--report PATH] [--resume PATH] \\\n          [--transfer-disabled] [--routeb-spatial-field] [--moving-membrane-flux] [--routec-reserve-growth] [--assimilation-material-flow] [--assimilation-anabolic-incorporation]"
     );
     std::process::exit(2);
 }
@@ -254,6 +261,7 @@ fn parse_config() -> Config {
     let mut routeb_spatial_field = false;
     let mut shared_extracellular_medium = false;
     let mut shared_medium_from_birth = false;
+    let mut moving_membrane_flux = false;
     let mut routec_reserve_growth = false;
     let mut assimilation_material_flow = false;
     let mut anabolic_incorporation = false;
@@ -275,6 +283,7 @@ fn parse_config() -> Config {
             "--routeb-spatial-field" => routeb_spatial_field = true,
             "--shared-extracellular-medium" => shared_extracellular_medium = true,
             "--shared-medium-from-birth" => shared_medium_from_birth = true,
+            "--moving-membrane-flux" => moving_membrane_flux = true,
             "--routec-reserve-growth" => routec_reserve_growth = true,
             "--assimilation-material-flow" => assimilation_material_flow = true,
             "--assimilation-anabolic-incorporation" => {
@@ -300,6 +309,7 @@ fn parse_config() -> Config {
         routeb_spatial_field,
         shared_extracellular_medium,
         shared_medium_from_birth,
+        moving_membrane_flux,
         routec_reserve_growth,
         assimilation_material_flow,
         anabolic_incorporation,
@@ -531,6 +541,7 @@ fn new_post_fission_snapshot(
         world: FiniteWorldV1::new(Vec::new()),
         spatial_field: Some(field),
         shared_medium: None,
+        moving_membrane: None,
         reserve_parameters: None,
         assimilation_enabled: true,
         anabolic_incorporation_enabled: true,
@@ -825,6 +836,7 @@ fn new_snapshot(seed: u64) -> RuntimeSnapshot {
         world,
         spatial_field: None,
         shared_medium: None,
+        moving_membrane: None,
         reserve_parameters: None,
         assimilation_enabled: false,
         anabolic_incorporation_enabled: false,
@@ -936,6 +948,7 @@ fn new_shared_medium_from_birth_snapshot(
         world: FiniteWorldV1::new(Vec::new()),
         spatial_field: None,
         shared_medium: Some(medium),
+        moving_membrane: None,
         reserve_parameters: None,
         assimilation_enabled: false,
         anabolic_incorporation_enabled: false,
@@ -977,6 +990,29 @@ fn new_shared_medium_from_birth_snapshot(
             ..ScientificBoundary::default()
         },
     }
+}
+
+/// R15 starts from the same accepted founder-birth ecology and finite
+/// circular control volume as R13, but replaces edge-midpoint requests with
+/// the actual membrane/control-volume intersection flux substrate.
+fn new_moving_membrane_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
+    let mut snapshot = new_shared_medium_from_birth_snapshot(seed, transfer_enabled);
+    let medium = snapshot
+        .shared_medium
+        .take()
+        .expect("founder-birth shared medium exists");
+    let mut moving = MovingMembraneFiniteFluxV1::new(
+        medium.center,
+        medium.radius,
+        medium.initial_n_mass,
+        medium.initial_f_mass,
+    )
+    .expect("valid moving-membrane finite medium");
+    moving.transfer_enabled = transfer_enabled;
+    snapshot.moving_membrane = Some(moving);
+    snapshot.scientific_boundary.finite_world_exchange =
+        "MovingMembraneFiniteFluxV1 / exact membrane-control-volume intersection".to_string();
+    snapshot
 }
 
 fn new_routeb_snapshot(
@@ -1026,6 +1062,7 @@ fn new_routeb_snapshot(
         world: FiniteWorldV1::new(Vec::new()),
         spatial_field: Some(field),
         shared_medium: None,
+        moving_membrane: None,
         reserve_parameters: None,
         assimilation_enabled,
         anabolic_incorporation_enabled,
@@ -1111,6 +1148,7 @@ fn new_routec_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         world: FiniteWorldV1::new(Vec::new()),
         spatial_field: Some(field),
         shared_medium: None,
+        moving_membrane: None,
         reserve_parameters: Some(reserve),
         assimilation_enabled: false,
         anabolic_incorporation_enabled: false,
@@ -1241,7 +1279,20 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
         .iter()
         .map(|&index| snapshot.population.individuals[index].mesh.clone())
         .collect();
-    let deliveries: Vec<RuntimeDelivery> = if let Some(medium) = snapshot.shared_medium.as_mut() {
+    let deliveries: Vec<RuntimeDelivery> = if let Some(medium) = snapshot.moving_membrane.as_mut() {
+        medium
+            .exchange(&mut meshes, &transport, dt)
+            .into_iter()
+            .map(|delivery| RuntimeDelivery {
+                organism_index: delivery.organism_index,
+                exposed_edges: delivery.interfaced_edges,
+                n_delivered: delivery.n_delivered,
+                f_delivered: delivery.f_delivered,
+                n_world_loss: delivery.n_world_loss,
+                f_world_loss: delivery.f_world_loss,
+            })
+            .collect()
+    } else if let Some(medium) = snapshot.shared_medium.as_mut() {
         medium
             .exchange(&mut meshes, &transport, dt)
             .into_iter()
@@ -1553,6 +1604,16 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
             .as_ref()
             .map(SharedFiniteExtracellularMediumV1::total_f_mass)
             .unwrap_or(0.0),
+        moving_membrane_n_mass_remaining: snapshot
+            .moving_membrane
+            .as_ref()
+            .map(MovingMembraneFiniteFluxV1::total_n_mass)
+            .unwrap_or(0.0),
+        moving_membrane_f_mass_remaining: snapshot
+            .moving_membrane
+            .as_ref()
+            .map(MovingMembraneFiniteFluxV1::total_f_mass)
+            .unwrap_or(0.0),
         cumulative_n_delivered: snapshot.cumulative_n_delivered,
         cumulative_f_delivered: snapshot.cumulative_f_delivered,
         cumulative_assimilation_n_processed: snapshot.cumulative_assimilation_n_processed,
@@ -1580,7 +1641,9 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
                 .unwrap_or(true)
         }),
         fission_observations: snapshot.fission_observations.clone(),
-        resource_transfer_enabled: if let Some(medium) = snapshot.shared_medium.as_ref() {
+        resource_transfer_enabled: if let Some(medium) = snapshot.moving_membrane.as_ref() {
+            medium.transfer_enabled
+        } else if let Some(medium) = snapshot.shared_medium.as_ref() {
             medium.transfer_enabled
         } else {
             snapshot
@@ -1589,7 +1652,9 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
                 .map(|_| snapshot.spatial_field_transfer_enabled)
                 .unwrap_or(snapshot.world.transfer_enabled)
         },
-        resource_mode: if snapshot.shared_medium.is_some() {
+        resource_mode: if snapshot.moving_membrane.is_some() {
+            "MovingMembraneFiniteFluxV1".to_string()
+        } else if snapshot.shared_medium.is_some() {
             "SharedFiniteExtracellularMediumV1".to_string()
         } else if snapshot.spatial_field.is_some() {
             "SpatialMaterialFieldV1".to_string()
@@ -1626,7 +1691,9 @@ fn main() {
         .as_deref()
         .map(load_snapshot)
         .unwrap_or_else(|| {
-            if config.shared_medium_from_birth {
+            if config.moving_membrane_flux {
+                new_moving_membrane_snapshot(config.seed, !config.transfer_disabled)
+            } else if config.shared_medium_from_birth {
                 new_shared_medium_from_birth_snapshot(config.seed, !config.transfer_disabled)
             } else if config.post_fission_ecology {
                 new_post_fission_snapshot(config.seed, !config.transfer_disabled)
@@ -1648,7 +1715,9 @@ fn main() {
             }
         });
     if config.transfer_disabled {
-        if let Some(medium) = snapshot.shared_medium.as_mut() {
+        if let Some(medium) = snapshot.moving_membrane.as_mut() {
+            medium.transfer_enabled = false;
+        } else if let Some(medium) = snapshot.shared_medium.as_mut() {
             medium.transfer_enabled = false;
         } else if snapshot.spatial_field.is_none() {
             snapshot.world.transfer_enabled = false;

@@ -1,0 +1,15 @@
+{
+  "directive": "DC-DEV-021-M2-R15-MOVING-MEMBRANE-FINITE-FLUX-CONTRACT-AND-RESOURCE-CAUSAL-REPRODUCTION-001",
+  "schema": "digital_cell_moving_membrane_finite_flux_v1",
+  "starting_head": "2c4653ee422abcf410b3cc920f53bb8f16540b2d",
+  "branch": "m2/dc-dev-021-r15-moving-membrane-finite-flux",
+  "goal_agent_status": "GOAL_AGENT_PROVISIONALLY_ACCEPTED_NEGATIVE",
+  "independent_architect_acceptance": "PENDING",
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "autonomous_resource_acquisition": "NOT_ESTABLISHED",
+  "new_biological_parameter": false,
+  "assimilation_rescue": false,
+  "fission_gate": "1.35 * birth_mass",
+  "horizon_steps": 12000,
+  "seed": 2
+}

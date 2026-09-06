@@ -1,0 +1,10 @@
+{
+  "partial_interface": "PASS",
+  "interfaced_edges_restricted": true,
+  "intersected_length_restricted": true,
+  "positive_transfer_scales_with_intersected_length": true,
+  "depletion": "PASS",
+  "replenishment": false,
+  "rotation": "PASS",
+  "index_order": "PASS"
+}

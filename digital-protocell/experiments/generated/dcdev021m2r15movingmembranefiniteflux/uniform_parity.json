@@ -1,0 +1,14 @@
+{
+  "reference": "existing whole-membrane transport_step",
+  "r15": "MovingMembraneFiniteFluxV1",
+  "same_geometry": true,
+  "same_permeability": true,
+  "same_k_flux": true,
+  "same_dt": 0.02,
+  "uniform_boundary": true,
+  "first_step_n_parity": "PASS within 1e-12",
+  "first_step_f_parity": "PASS within 1e-12",
+  "sixteen_step_n_parity": "PASS within 1e-10",
+  "sixteen_step_f_parity": "PASS within 1e-10",
+  "parameter_search": false
+}

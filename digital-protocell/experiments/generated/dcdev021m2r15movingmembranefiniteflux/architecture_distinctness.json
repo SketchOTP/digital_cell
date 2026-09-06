@@ -1,0 +1,14 @@
+{
+  "whole_membrane_reference": "existing transport_step over the complete perimeter using existing k_flux, permeability, dt, and interior/exterior concentrations",
+  "spatial_material_field": "midpoint-to-cell exposure with per-cell request allocation",
+  "shared_medium": "midpoint exposure against a finite circular medium with request allocation",
+  "r15": "finite world-owned N/F plus exact polygon-segment/control-volume intersection measure and simultaneous species-wise debit/credit",
+  "distinctness": [
+    "not finer cells",
+    "not midpoint exposure",
+    "not another cell allocator",
+    "not a resource repositioning or inventory change",
+    "physical invariant is membrane/control-volume intersection length"
+  ],
+  "frozen_laws_reused": ["permeability", "k_flux", "mechanics dt", "MaturationCoupledV4", "growth", "fission"]
+}

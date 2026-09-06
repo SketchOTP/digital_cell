@@ -1,0 +1,30 @@
+{
+  "timeline": [
+    "founder birth",
+    "existing intrinsic motor and mechanics",
+    "actual membrane/control-volume contact",
+    "finite N/F membrane source flux",
+    "existing transport/reaction/growth path",
+    "existing physical fission gate"
+  ],
+  "active": {
+    "environmental_n_available_initial": 1021.692995326332,
+    "environmental_f_available_initial": 1021.692995326332,
+    "environmental_n_transferred": 292.6923687407118,
+    "environmental_f_transferred": 292.6923687407118,
+    "first_transfer_step": 7452,
+    "reaction_n_consumed_reported": "not instrumented by the existing runtime report",
+    "reaction_f_consumed_reported": "not instrumented by the existing runtime report",
+    "a_produced_reported": "not instrumented by the existing runtime report",
+    "w_produced_reported": "not instrumented by the existing runtime report",
+    "active_work_a_spent": 261.3181885372686,
+    "structural_fission": false
+  },
+  "disabled": {
+    "environmental_n_transferred": 0.0,
+    "environmental_f_transferred": 0.0,
+    "structural_fission": false,
+    "death": "starvation_collapse"
+  },
+  "interpretation": "R15 transport is isolated; the current runtime report does not attribute positive transfer to a new assimilation or metabolic product ledger. No resource-causal fission was observed."
+}

@@ -1354,3 +1354,19 @@ Use it for architectural decisions, governance changes, releases, qualification 
   selected without a materially distinct source-level contract.
 - Independent Architect acceptance: `PENDING`.
 - Next execution: `false`.
+
+## DEC-DCDEV021-GOAL-R15-MOVING-MEMBRANE-FINITE-FLUX
+
+- Date: `2026-09-06`
+- Status: `ACTIVE_PROVISIONAL_NEGATIVE`
+- Starting head: `2c4653ee422abcf410b3cc920f53bb8f16540b2d`.
+- Directive: `DC-DEV-021-M2-R15-MOVING-MEMBRANE-FINITE-FLUX-CONTRACT-AND-RESOURCE-CAUSAL-REPRODUCTION-001`.
+- Decision: the actual moving polygon membrane is a valid conservative finite
+  environmental interface under the existing transport law. Uniform-boundary
+  parity and finite conservation pass, but the matched founder-birth ecology
+  still has no resource-causal physical fission.
+- Goal-agent classification:
+  `M2_MOVING_MEMBRANE_FLUX_PARITY_QUALIFIED_REPRODUCTION_NOT_ESTABLISHED`.
+- Independent Architect acceptance: `PENDING`.
+- Next execution: `false`; stop at the directive boundary and replan from the
+  first demonstrated post-transfer divergence only after external review.

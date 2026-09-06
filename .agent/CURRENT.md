@@ -490,3 +490,27 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
   `01819476337baefc6f048a617c3cbb13bfd52fe3`.
 - Exact-head workflow `34004361563` passed; artifact digest:
   `sha256:8a9290d8aad46d85256d41bc2b2305774c68d583a6ee4d250c0a979506f23c04`.
+
+## Goal-mode R15 moving-membrane finite-flux contract
+
+- Starting head: `2c4653ee422abcf410b3cc920f53bb8f16540b2d`.
+- Active directive: `DC-DEV-021-M2-R15-MOVING-MEMBRANE-FINITE-FLUX-CONTRACT-AND-RESOURCE-CAUSAL-REPRODUCTION-001`.
+- Largest unresolved end-goal gap: environmental material must cross the
+  actual moving membrane with a qualified finite flux before endogenous
+  chemistry and physical reproduction can be tested causally.
+- R15 implements the opt-in `MOVING_MEMBRANE_FINITE_FLUX_V1` substrate. It
+  uses exact polygon/control-volume intersection length, existing permeability,
+  `k_flux`, `dt`, and simultaneous finite debit/credit. No frozen biology,
+  fission gate, resource inventory, or horizon changed.
+- Uniform whole-membrane parity, partial-interface locality, rotation,
+  finite-depletion, and order-independence tests pass.
+- Founder-birth seed-2 active arm contacts/transfers at step `7452`, delivers
+  `292.6923687407118` N and F with zero reported world conservation error,
+  remains alive, and fissions zero times. The transfer-disabled twin receives
+  zero N/F and ends in `starvation_collapse`, also with zero fissions.
+- Goal-agent classification:
+  `M2_MOVING_MEMBRANE_FLUX_PARITY_QUALIFIED_REPRODUCTION_NOT_ESTABLISHED`.
+- Independent Architect acceptance: `PENDING`.
+- Next execution: `false`. Stop after this valid parity-qualified negative;
+  do not issue R15B, another allocator/buffer/transport variant, more food,
+  a longer horizon, or a changed fission gate without new authority.

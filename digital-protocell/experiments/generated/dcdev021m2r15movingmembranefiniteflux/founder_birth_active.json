@@ -1,0 +1,18 @@
+{
+  "arm": "MOVING_MEMBRANE_FINITE_FLUX_ACTIVE",
+  "seed": 2,
+  "steps": 12000,
+  "first_contact_step": 7452,
+  "first_transfer_step": 7452,
+  "cumulative_n_delivered": 292.6923687407118,
+  "cumulative_f_delivered": 292.6923687407118,
+  "remaining_n": 729.0006265856208,
+  "remaining_f": 729.0006265856208,
+  "living_count": 1,
+  "fission_events": 0,
+  "motor_steps": 12000,
+  "motor_failures": 0,
+  "cumulative_path": 8.521745969929851,
+  "death_reasons": [null],
+  "resource_causal_reproduction": "NOT_ESTABLISHED"
+}

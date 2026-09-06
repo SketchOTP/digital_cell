@@ -1,0 +1,12 @@
+{
+  "finite_world_ownership_until_transfer": true,
+  "simultaneous_species_allocation": true,
+  "order_independence_test": "PASS",
+  "active_n_world_conservation_error": 0.0,
+  "active_f_world_conservation_error": 0.0,
+  "disabled_n_world_conservation_error": 0.0,
+  "disabled_f_world_conservation_error": 0.0,
+  "duplicate_material": false,
+  "hidden_positive_reservoir": false,
+  "finite_depletion": "PASS; active remaining N/F 729.0006265856208, disabled remaining N/F 1021.692995326332"
+}

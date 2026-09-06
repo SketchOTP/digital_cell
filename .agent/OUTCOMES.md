@@ -2183,3 +2183,21 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
   artifact ZIP matched
   `sha256:4b62f90d7faa519e9bd0628d5613cc16bb79ae74b937c506f3a14b02d52963c7`.
 - A final exact-head run is required after this authority append.
+
+## D-20260906-dcdev021-goal-r15-moving-membrane-finite-flux - COMPLETE PROVISIONAL NEGATIVE
+
+- Outcome ID: `OUT-DCDEV021-GOAL-R15-MOVING-MEMBRANE-FINITE-FLUX`.
+- Implemented one materially distinct organism/world boundary:
+  `MOVING_MEMBRANE_FINITE_FLUX_V1`.
+- Uniform-boundary parity, exact finite debit/credit, partial-interface
+  locality, rotation, order independence, and finite depletion passed.
+- Founder-birth active arm transferred `292.6923687407118` N and F beginning
+  at step `7452`, remained alive, and produced zero fissions in 12000 steps.
+  The disabled twin received zero environmental N/F, starved, and produced
+  zero fissions.
+- Goal-agent classification:
+  `M2_MOVING_MEMBRANE_FLUX_PARITY_QUALIFIED_REPRODUCTION_NOT_ESTABLISHED`.
+- This is a provisional negative and not independent Architect acceptance.
+  The R15 stop condition is active: no R15B, finer grid, new allocator,
+  buffer, gain, coefficient, resource increase, horizon extension, or
+  fission-gate change.

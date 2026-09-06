@@ -1,0 +1,15 @@
+{
+  "scientific_runtime_frozen_sources": "NO CHANGES to chemistry-core frozen physiology, growth, fission, actuator, traction, uptake law, or M1 production selector",
+  "entry005_through_r14": "PRESERVED BY START-HEAD ANCESTRY AND SCOPED VALIDATION",
+  "d087_v2": "8/8",
+  "d087_v3": "8/8",
+  "d087_v4": "7/8",
+  "d087_v4_vector": [true, true, false, true, true, true, true, true],
+  "d088": "PASS: 4 tests",
+  "d091": "PASS: 8 tests",
+  "downstream": "PASS: evolution-harness 40 tests",
+  "phase1_certifier_compatibility": "PASS: assimilation fields explicitly zeroed in legacy seed constructors; no scientific semantics changed",
+  "intrinsic_restart": "PRESERVED",
+  "generic_full_mesh_restart": "KNOWN_FAIL / NONCONTAMINATING",
+  "pr_44": "OPEN_DRAFT_UNMERGED_UNTOUCHED"
+}

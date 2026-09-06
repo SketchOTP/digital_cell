@@ -967,3 +967,18 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
   `sha256:8a9290d8aad46d85256d41bc2b2305774c68d583a6ee4d250c0a979506f23c04`.
 - Boundary: GitHub, `.agent`, and the canonical Notion pointer now identify
   the same provisional R14 replan; no successor runtime is selected.
+
+## L-DCDEV021-GOAL-R15-MOVING-MEMBRANE-FINITE-FLUX-001
+
+- A materially distinct moving-interface contract can reproduce the existing
+  whole-membrane concentration-jump transport on a finite uniform boundary
+  without changing `k_flux`, permeability, `dt`, or biological state.
+- The contract must retain the existing zero-exterior transport pass for
+  nonfeeding species behavior while adding finite-world N/F source flux only
+  over the actual polygon/control-volume intersection. Restoring N/F after the
+  zero-bath pass incorrectly preserved nutrients in the disabled control.
+- R15 active transfer is causal with respect to contact and is conserved, but
+  the accepted founder-birth ecology still does not cross the unchanged
+  `1.35 * birth_mass` fission gate. This closes the moving-membrane transport
+  hypothesis for the current reproduction target rather than authorizing a
+  nearby transport search.
