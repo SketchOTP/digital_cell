@@ -1,0 +1,26 @@
+[
+  {
+    "accepted_fraction": 0.38196601124976404,
+    "ccd_contact": 0.3819660112501051,
+    "continuous_penetration": false,
+    "corrected_final_simple": true,
+    "name": "direct_edge_crossing",
+    "raw_final_simple": false
+  },
+  {
+    "accepted_fraction": 0.38196601124953666,
+    "ccd_contact": 0.3819660112501051,
+    "continuous_penetration": false,
+    "corrected_final_simple": true,
+    "name": "vertex_through_edge",
+    "raw_final_simple": false
+  },
+  {
+    "accepted_fraction": 1.0,
+    "ccd_contact": null,
+    "continuous_penetration": false,
+    "corrected_final_simple": true,
+    "name": "near_miss",
+    "raw_final_simple": true
+  }
+]

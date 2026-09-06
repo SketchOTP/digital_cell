@@ -1,0 +1,129 @@
+name: DC-DEV-021 M2 R20 D-088R1 simple-boundary requalification
+
+on:
+  push:
+    branches: [m2/dc-dev-021-r20-d088r1-simple-boundary]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r20-d088r1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+      - name: Verify authority, scope, and PR boundary
+        run: |
+          set -euo pipefail
+          start=11d54b77723adc05051812242e6343c464103978
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - "$start" <<'PY'
+          import subprocess, sys
+          start = sys.argv[1]
+          allowed = {
+              '.github/workflows/dc-dev-021-m2-r20-d088r1.yml',
+              'digital-protocell/crates/regulatory-core/Cargo.toml',
+              'digital-protocell/examples/dcdev021_m2_r20_d088r1.rs',
+              'digital-protocell/experiments/dcdev021_m2_r20_d088r1.py',
+              '.agent/CURRENT.md', '.agent/DIRECTIVES.md', '.agent/OUTCOMES.md',
+              '.agent/LEARNINGS.md', '.agent/RECORD.md', '.agent/REPO_MAP.md',
+          }
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-only', start, 'HEAD'], text=True
+          ).splitlines()
+          bad = [p for p in changed if p not in allowed and not p.startswith(
+              'digital-protocell/experiments/generated/dcdev021m2r20d088r1/'
+          )]
+          assert not bad, bad
+          PY
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefName,headRefOid
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Build isolated R20 observer tool
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.cargo/bin:$PATH"
+          cargo +1.89.0 build --locked --release -p regulatory-core --example dcdev021_m2_r20_d088r1
+      - name: Replay exact legacy and D-088R1 campaigns
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.cargo/bin:$PATH"
+          cargo +1.89.0 run --locked -q --release -p regulatory-core --example dcdev021_m2_r20_d088r1 -- \
+            --output "$RUNNER_TEMP/r20-d088r1.json"
+      - name: Build compact R20 evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 experiments/dcdev021_m2_r20_d088r1.py --repo .. \
+            --raw "$RUNNER_TEMP/r20-d088r1.json" \
+            --output experiments/generated/dcdev021m2r20d088r1
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('experiments/generated/dcdev021m2r20d088r1')
+          required = '''authority.json protocol.json r19_final_provenance.json external_prior_art.json contact_architecture.json contact_unit_tests.json continuous_collision_tests.json no_contact_parity.json legacy_d088_control.json d088r1_campaign.json d088r1_every_step_geometry.json d088r1_contact_ledger.json d088r1_pinch_events.json d088r1_fission_events.json d088r1_daughter_validity.json material_accounting.json orientation_diversity.json forbidden_information_audit.json preservation.json qualification.json artifact_manifest.json'''.split()
+          for name in required:
+              assert (root / name).is_file(), name
+          q = json.loads((root / 'qualification.json').read_text())
+          assert q['classification'] == 'D088R1_SIMPLE_BOUNDARY_PRESERVED_FISSION_NOT_ESTABLISHED'
+          assert q['independent_architect_acceptance'] == 'PENDING'
+          assert q['next_execution_started'] is False
+          c = json.loads((root / 'd088r1_campaign.json').read_text())
+          assert c['campaign_arms'] == 10
+          assert c['simple_parent_trajectories'] == 10
+          assert c['growth_qualified'] == 10
+          assert c['geometry_valid_physical_fissions'] == 0
+          legacy = json.loads((root / 'legacy_d088_control.json').read_text())
+          assert legacy['fissions'] == 10
+          assert legacy['historical_invalidity_pattern_reproduced'] is True
+          assert json.loads((root / 'no_contact_parity.json').read_text())['pass'] is True
+          ccd = json.loads((root / 'continuous_collision_tests.json').read_text())
+          assert all(row['corrected_final_simple'] and not row['continuous_penetration'] for row in ccd)
+          print('R20 D-088R1 evidence passed')
+          PY
+      - name: Preserve accepted M1 and downstream boundaries
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.cargo/bin:$PATH"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path('experiments/generated/dcdev021m2r20d088r1/preservation.json').read_text())
+          assert p['d087_v2'] == '8/8' and p['d087_v3'] == '8/8' and p['d087_v4'] == '7/8'
+          assert p['d087_vector'] == [True, True, False, True, True, True, True, True]
+          assert p['legacy_d088_tests'] == 'PASS' and p['d091'] == 'PASS'
+          assert p['evolution_harness'] == 'PASS_TESTS_ONLY'
+          print('R20 preservation boundary passed')
+          PY
+          cargo +1.89.0 run --locked -q -p phase1-certifier --bin digital-protocell-phase1 --release -- --steps 1 --out "$RUNNER_TEMP/production.json"
+          cargo +1.89.0 test --locked -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test --locked -p evolution-harness -- --nocapture
+      - name: Record and upload R20 evidence
+        if: always()
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2r20d088r1 -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2r20d088r1.sha256"
+          sha256sum "$RUNNER_TEMP/dcdev021m2r20d088r1.sha256"
+      - name: Upload R20 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcdev021m2r20d088r1
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2r20d088r1
+            ${{ runner.temp }}/dcdev021m2r20d088r1.sha256

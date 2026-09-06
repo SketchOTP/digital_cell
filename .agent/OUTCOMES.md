@@ -2303,3 +2303,11 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - The R18 inverse metric label is reconciled: repository `shape_factor_psi` is `P^2/(4*pi*A)`, while the R18 readiness field recorded its inverse. No production observer was changed.
 - Provisional classification: `D088_SELF_INTERSECTION_PRECEDES_FISSION`; D-088 requalification is required before importing it as a valid simple-boundary reference. Scientific runtime changes are `NO`.
 - No successor execution started; independent Architect acceptance remains `PENDING`.
+
+## R20 D-088R1 simple-boundary requalification — provisional outcome
+
+- Starting authority: R19 head `11d54b77723adc05051812242e6343c464103978`; R19 CI `34061681908`; artifact `sha256:8209ac2ae07c655eddebdec896436195a3ba9245ad076ed36ecf29b727f619ec`.
+- The assay-local nonpenetration primitive passes convex, concave, bow-tie, near-miss, direct edge-crossing, vertex-through-edge, and no-contact parity checks. The legacy control reproduces the historical invalidity pattern; no default scientific runtime path changed.
+- All 10 corrected D-088R1 parent trajectories remain simple, all 10 reach the unchanged growth qualification gate, and 0/10 produce physical fission. At every corrected mass-eligible official attempt the direct readiness trace reports `NO_PINCH`; no positive daughter event exists to count.
+- Provisional classification: `D088R1_SIMPLE_BOUNDARY_PRESERVED_FISSION_NOT_ESTABLISHED`. D-088 physical reproduction remains `REQUALIFICATION_REQUIRED`; resource-causal reproduction remains `NOT_ESTABLISHED`.
+- Evidence: `digital-protocell/experiments/generated/dcdev021m2r20d088r1/`. Independent Architect acceptance remains `PENDING`; next execution is `false`.

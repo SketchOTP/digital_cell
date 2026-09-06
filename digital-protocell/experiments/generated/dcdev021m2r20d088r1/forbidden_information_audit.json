@@ -1,0 +1,9 @@
+{
+  "chemistry_read_by_contact": false,
+  "fission_state_read_by_contact": false,
+  "geometry_mutation_outside_opt_in_assay": false,
+  "mass_or_birth_mass_read_by_contact": false,
+  "production_scientific_runtime_changed": false,
+  "reproductive_controller_added": false,
+  "resource_read": false
+}

@@ -1040,3 +1040,11 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - The earlier unexecuted mechanics/motor R19 authorization is superseded before execution by this geometry-integrity audit.
 - Prohibited: mechanics, topology, fission, growth, resource, M1, or D-088 repair; no successor execution.
 - Goal-agent provisional classification: `D088_SELF_INTERSECTION_PRECEDES_FISSION`; independent Architect acceptance: `PENDING`.
+
+## DC-DEV-021-M2-R20-D088R1-SIMPLE-BOUNDARY-NONPENETRATION-AND-PHYSICAL-REPRODUCTION-REQUALIFICATION-001
+
+- Starting head: `11d54b77723adc05051812242e6343c464103978`.
+- Scope: opt-in, assay-local frictionless hard nonpenetration for nonadjacent membrane segments; exact ten-arm D-088 replay; simple-parent and simple-daughter validity; unchanged growth, topology, pinch, fission, and accounting laws.
+- The contact path uses no free physical parameter, target, mass, resource, chemistry, lineage, or reproductive state. No post-hoc untangling, controller, fission repair, or M2 integration is authorized.
+- Legacy D-088 remains a control for the historical invalidity pattern only. R20 is a requalification, not a rewrite of R19 evidence.
+- Goal-agent authority is provisional; independent Architect acceptance is `PENDING`; stop after sealed classification with no successor execution.

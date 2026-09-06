@@ -1,0 +1,20 @@
+{
+  "biomembrane_self_avoidance": {
+    "classification": "ADAPTABLE_BIOPHYSICAL_PRINCIPLE",
+    "url": "https://www.nature.com/articles/s41467-024-44819-w"
+  },
+  "codimensional_ipc_accd": {
+    "classification": "ADAPTABLE_IMPLEMENTATION_PRINCIPLE",
+    "disposition": "continuous collision/conservative advancement category"
+  },
+  "ipc": {
+    "classification": "ADAPTABLE_PRINCIPLE",
+    "disposition": "principle only; no C++ dependency imported",
+    "url": "https://research.adobe.com/publication/incremental-potential-contact-intersection-and-inversion-free-large-deformation-dynamics/"
+  },
+  "ipc_license": {
+    "classification": "LICENSE_NOT_BLOCKED",
+    "url": "https://github.com/ipc-sim/IPC/blob/main/LICENSE"
+  },
+  "t1_t3_connectivity": "INCOMPATIBLE; not imported"
+}

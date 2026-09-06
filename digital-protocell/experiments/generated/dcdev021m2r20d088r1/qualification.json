@@ -1,0 +1,10 @@
+{
+  "authority": "GOAL_AGENT_PROVISIONALLY_ACCEPTED",
+  "classification": "D088R1_SIMPLE_BOUNDARY_PRESERVED_FISSION_NOT_ESTABLISHED",
+  "d088_physical_reproduction_status": "REQUALIFICATION_REQUIRED",
+  "directive": "DC-DEV-021-M2-R20-D088R1-SIMPLE-BOUNDARY-NONPENETRATION-AND-PHYSICAL-REPRODUCTION-REQUALIFICATION-001",
+  "independent_architect_acceptance": "PENDING",
+  "next_execution_started": false,
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "scientific_runtime_changed": false
+}

@@ -1,0 +1,8 @@
+{
+  "campaign_arms": 10,
+  "campaign_steps": 4000,
+  "legacy_control_is_invalidity_control": true,
+  "new_free_physical_parameters": 0,
+  "observer_only": true,
+  "production_default_changed": false
+}

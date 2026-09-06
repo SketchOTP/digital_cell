@@ -1,0 +1,15 @@
+{
+  "arms": {
+    "seed_10_env_-0.08": [],
+    "seed_1_rotate_0.3": [],
+    "seed_2_vertex_0.12": [],
+    "seed_3_c_0.08": [],
+    "seed_4_a_0.08": [],
+    "seed_5_env_0.1": [],
+    "seed_6_l_0.1": [],
+    "seed_7_rotate_-0.5": [],
+    "seed_8_vertex_-0.1": [],
+    "seed_9_c_-0.05": []
+  },
+  "lawful_parent_pinch_found": false
+}

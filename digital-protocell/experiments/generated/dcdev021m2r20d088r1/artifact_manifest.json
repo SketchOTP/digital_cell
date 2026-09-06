@@ -1,0 +1,84 @@
+{
+  "files": [
+    {
+      "path": "authority.json",
+      "sha256": "47e5d61c6b8ad9495273e36e0649f8f70e3e690efdd8dbf29b395282c316c5b0"
+    },
+    {
+      "path": "contact_architecture.json",
+      "sha256": "99c9aa0792cc34fd9778d7c9499c4c2b5fff2e3f18238d742ce94231e7048e57"
+    },
+    {
+      "path": "contact_unit_tests.json",
+      "sha256": "a1a17d71f22bcca6c1dda76a36c65c906c073d01f28eaccfba4af6611d3a9a77"
+    },
+    {
+      "path": "continuous_collision_tests.json",
+      "sha256": "eed1d68531498fd09562c1061a3fda019f5c8fbf7932a841b4fa9d46116364ae"
+    },
+    {
+      "path": "d088r1_campaign.json",
+      "sha256": "0be573252319896c2ef85ab192a76a3454068ba3b1d9a65d09eed72e88d16ab2"
+    },
+    {
+      "path": "d088r1_contact_ledger.json",
+      "sha256": "cf52d3bbbb3e9b0ab0fdc4b005c5792055f2cdc3a7a96fc47826cb6a2fd5b902"
+    },
+    {
+      "path": "d088r1_daughter_validity.json",
+      "sha256": "fd1da5d6f7b37eefa612b2fe019b615ec505bdc15bb681b2624dba4de3d15c7b"
+    },
+    {
+      "path": "d088r1_every_step_geometry.json",
+      "sha256": "626d0cf7a1f857441bd1d98c46327e048f12b8496fe2d0fdb173b66c3de8769a"
+    },
+    {
+      "path": "d088r1_fission_events.json",
+      "sha256": "51d0234f62c05d2baa3cbc7469329e6ba4799fcad4fa9de6a370e10faacb9743"
+    },
+    {
+      "path": "d088r1_pinch_events.json",
+      "sha256": "0c14eab92a0c3a8225dd67b419befb290fd1d80a3b00acdd8482a325aa45e3c2"
+    },
+    {
+      "path": "external_prior_art.json",
+      "sha256": "599c9d278561b6602dedff0a1e30c20405e7c95db50e993e7d5516a58a6e47b9"
+    },
+    {
+      "path": "forbidden_information_audit.json",
+      "sha256": "19ec1afb28bb361a286c5c831912e0e07e1f8989437992c4331fdadcbc0fcb5e"
+    },
+    {
+      "path": "legacy_d088_control.json",
+      "sha256": "68d970999f2a50124c7bc86fc9e6f56b81d7b40bdc0e1e8e50574d312be474a0"
+    },
+    {
+      "path": "material_accounting.json",
+      "sha256": "70a8a526811b4cce28459716457fe98b012fb6bbe3778f1027c2b0b0b358d3a7"
+    },
+    {
+      "path": "no_contact_parity.json",
+      "sha256": "925e461e278fe45d92865c4ccc17f08468ecb3345ab55fc905fca9dd83b8302e"
+    },
+    {
+      "path": "orientation_diversity.json",
+      "sha256": "532b5183aebf4e10d6bc90bd93d4a97376758db39e7dca59a851a7fde9ef2113"
+    },
+    {
+      "path": "preservation.json",
+      "sha256": "57994802ff64b94eaf4b6374576cc4af9399794d20240a6936c4bc0cf2e665f9"
+    },
+    {
+      "path": "protocol.json",
+      "sha256": "e4db946d12221af14db18eae50fcee630b8b8e764f2f40d15a07c05c8bbbe7db"
+    },
+    {
+      "path": "qualification.json",
+      "sha256": "320c6e8c2a4d2b428339eb66b8ab6057754f4e8a7f945d436c1789214ae0f53d"
+    },
+    {
+      "path": "r19_final_provenance.json",
+      "sha256": "2a2b39c8ee340dc03c1c0e28d2a917b808382bcfff781205cb5524d9885a3562"
+    }
+  ]
+}

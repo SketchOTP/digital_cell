@@ -141,6 +141,10 @@ name = "dcdev021_m2_r19_d088_geometry"
 path = "../../examples/dcdev021_m2_r19_d088_geometry.rs"
 
 [[example]]
+name = "dcdev021_m2_r20_d088r1"
+path = "../../examples/dcdev021_m2_r20_d088r1.rs"
+
+[[example]]
 name = "dcdev021_m2_entry020"
 path = "../../examples/dcdev021_m2_entry020.rs"
 

@@ -1,0 +1,5 @@
+{
+  "corrected_fission_partition_accounting": "NOT_APPLICABLE_NO_CORRECTED_FISSION",
+  "legacy_control_partition_accounting": true,
+  "no_material_source_or_sink_added_by_contact": true
+}

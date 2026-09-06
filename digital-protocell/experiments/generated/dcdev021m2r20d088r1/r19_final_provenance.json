@@ -1,0 +1,9 @@
+{
+  "d088_physical_reproduction_status": "REQUALIFICATION_REQUIRED",
+  "final_pointer_commit_semantics": "governance-only pointer reconciliation does not alter R19 science",
+  "r19_artifact_digest": "sha256:8209ac2ae07c655eddebdec896436195a3ba9245ad076ed36ecf29b727f619ec",
+  "r19_exact_head_ci": "34061681908",
+  "r19_final_governed_head": "11d54b77723adc05051812242e6343c464103978",
+  "r19_scientific_result": "D088_SELF_INTERSECTION_PRECEDES_FISSION",
+  "superseded_unexecuted_mechanics_r19": true
+}

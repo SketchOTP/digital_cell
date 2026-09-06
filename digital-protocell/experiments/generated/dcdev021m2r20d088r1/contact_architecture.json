@@ -1,0 +1,20 @@
+{
+  "does_not_read": [
+    "mass",
+    "birth_mass",
+    "resource",
+    "A",
+    "N/F",
+    "fission eligibility"
+  ],
+  "method": "continuous orientation-polynomial CCD plus conservative advancement",
+  "model": "frictionless hard nonpenetration of nonadjacent membrane segments",
+  "new_free_physical_parameters": 0,
+  "physical_tolerance_basis": "machine precision and current coordinate scale only",
+  "postcondition": "machine-scale fail-closed bisection to the largest simple point",
+  "production_default_changed": false,
+  "reads": [
+    "proposed geometry",
+    "nonadjacent segment geometry"
+  ]
+}

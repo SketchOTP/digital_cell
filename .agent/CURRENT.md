@@ -616,3 +616,12 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Observer-only result: all 10 original D-088 campaign fissions become self-intersecting before fission; primary seed first self-intersects at step 1036 and fissions at 2326. R17 geometry remains simple.
 - Provisional classification: `D088_SELF_INTERSECTION_PRECEDES_FISSION`; D-088 physical reproduction requires requalification. No repair or successor execution started.
 - Independent Architect acceptance: `PENDING`.
+
+## Goal-mode R20 D-088R1 simple-boundary requalification
+
+- Active directive: `DC-DEV-021-M2-R20-D088R1-SIMPLE-BOUNDARY-NONPENETRATION-AND-PHYSICAL-REPRODUCTION-REQUALIFICATION-001`.
+- Starting authority: R19 final head `11d54b77723adc05051812242e6343c464103978`; exact-head CI `34061681908`; artifact `sha256:8209ac2ae07c655eddebdec896436195a3ba9245ad076ed36ecf29b727f619ec`.
+- The opt-in assay implements only frictionless hard nonpenetration of nonadjacent membrane segments using continuous orientation-polynomial detection, conservative advancement, and a machine-scale simple-geometry postcondition. No production default or scientific core was changed.
+- The exact ten-arm D-088 protocol reproduces the legacy invalidity control. Under D-088R1, all 10/10 trajectories remain geometrically simple and all 10/10 cross the unchanged growth gate, but 0/10 produce physical fission; mass-eligible attempt traces report `NO_PINCH`.
+- Provisional classification: `D088R1_SIMPLE_BOUNDARY_PRESERVED_FISSION_NOT_ESTABLISHED`. D-088 remains `REQUALIFICATION_REQUIRED`; resource-causal reproduction remains `NOT_ESTABLISHED`.
+- Independent Architect acceptance: `PENDING`. No M2 successor execution started.

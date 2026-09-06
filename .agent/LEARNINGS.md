@@ -1046,3 +1046,10 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - The geometry contract is not enforced by `physical_runtime_valid()`, `closed_intact()`, `find_local_pinch()`, or `try_local_fission()`; this is an observer finding only and no repair is authorized.
 - R17 remains geometrically simple in the same observer audit. Resource-causal reproduction remains `NOT_ESTABLISHED`; D-088 requires requalification before mechanics import.
 - Confidence: PROVISIONAL. Evidence: `digital-protocell/experiments/generated/dcdev021m2r19d088geometry/`.
+
+## L-DCDEV021-GOAL-R20-D088R1-SIMPLE-BOUNDARY-001
+
+- R19's historical D-088 fission cannot be restored merely by allowing the same geometry to continue: a machine-scale, frictionless nonpenetration assay preserved simple parent geometry across all ten original arms, but none fissioned.
+- The corrected arms all crossed the unchanged `1.35 * birth_mass` growth gate. The first localized failure in the mass-eligible attempt trace is `NO_PINCH`, not total structural mass or cross-bond A; the legacy control still fissions only through its previously invalid self-crossing path.
+- The contact correction is an assay-local conservative advancement path with no new physical parameter. It is not a fission controller and must not be imported into M2 until independently reviewed.
+- Confidence: PROVISIONAL. Evidence: `digital-protocell/experiments/generated/dcdev021m2r20d088r1/`.
