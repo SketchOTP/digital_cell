@@ -2266,3 +2266,17 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
   fission` with the current M2 order and will not modify either path.
 - Classification, exact-head CI, artifact digest, and final provisional
   outcome remain pending until the bounded observer run is sealed.
+
+## R18 physical fission readiness and D-088 execution parity
+
+- Final governed head: `3381e590d8150675419ecf46c31f6f534c1c9ef6`.
+- Exact-head workflow `34055331190` passed; artifact digest:
+  `sha256:4454182f9c969b4a0a7b90040350fd62f1c00250912ed0c8333856f77d8fa726`.
+- R17 early replay preserved first transfer at step `1`, zero fissions, and
+  the mass-gate crossing. D-088 reference reproduced physical fission.
+- R18 observed no local pinch in any mass-eligible R17 row. The source paths
+  are different because D-088 includes passive `mechanics_step` after growth;
+  a clone-only one-step passive-mechanics shadow did not restore readiness.
+- Goal-agent provisional classification:
+  `M2_FISSION_READINESS_MULTIFACTOR_UNRESOLVED`. Resource-causal reproduction
+  remains `NOT_ESTABLISHED`; no fix or successor started.

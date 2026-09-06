@@ -1,0 +1,19 @@
+{
+  "reference": "D-088",
+  "sequence": [
+    "transport_step",
+    "reactions_step",
+    "growth_step",
+    "mechanics_step",
+    "remesh",
+    "topology_step_every_10",
+    "try_local_fission_every_25_after_mass_gate"
+  ],
+  "source_hashes": {
+    "digital-protocell/crates/chemistry-core/src/mesh_fission.rs": "7e432bac3a01805a65aec207e3c456d3182b4b540a4ab060896a0321ca13af31",
+    "digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs": "d463509570ffb42b2cc3260e17e7b367c9665b4d28b0875960f88f60cb8f21a4",
+    "digital-protocell/crates/chemistry-core/src/mesh_population.rs": "2ff3bb53bf6b23d211394bff39887425a031c8699f8d3d42e8dba4c28d6d9413",
+    "digital-protocell/crates/chemistry-core/src/mesh_topology.rs": "988fd637e285b527d84939c8100183e9f0bb7fcb59e81ddc3e0d98963ab7991f",
+    "digital-protocell/crates/m2-lifeform-runtime/src/main.rs": "4f0fc427b4864e74394672955b5265fe4ba072769b7dddc1fe122a71babbd5f1"
+  }
+}

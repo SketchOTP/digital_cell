@@ -1,0 +1,8 @@
+{
+  "classification": "M2_FISSION_READINESS_MULTIFACTOR_UNRESOLVED",
+  "earliest_justified_cause": "EXECUTION_PATH_DIFFERENT_PLUS_NO_PINCH",
+  "earliest_observed_failed_prerequisite": "NO_PINCH",
+  "no_repair_implemented": true,
+  "passive_shadow_restored_readiness": false,
+  "source_execution_parity": "EXECUTION_PATH_DIFFERENT"
+}

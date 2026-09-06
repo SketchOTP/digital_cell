@@ -543,6 +543,20 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
   reproduction remains `NOT_ESTABLISHED`.
 - Independent Architect acceptance: `PENDING`. Next execution: `false`.
 
+## Goal-mode R18 sealed provisional result
+
+- Result head: `3381e590d8150675419ecf46c31f6f534c1c9ef6`.
+- Exact-head Linux workflow: `34055331190` - `PASS`.
+- Artifact digest: `sha256:4454182f9c969b4a0a7b90040350fd62f1c00250912ed0c8333856f77d8fa726`.
+- R17 replay and D-088 positive reference pass. The R17 early arm crosses
+  `1.35 * birth_mass` but never exposes a lawful local pinch; the one-step
+  clone-only passive-mechanics shadow also never restores pinch readiness.
+- Source execution parity is `EXECUTION_PATH_DIFFERENT`; because the shadow
+  does not isolate a restoring effect, the provisional result is
+  `M2_FISSION_READINESS_MULTIFACTOR_UNRESOLVED`, not a repair authorization.
+- Resource-causal reproduction remains `NOT_ESTABLISHED`; independent
+  Architect acceptance remains `PENDING`; next execution: `false`.
+
 ## Goal-mode R18 fission-readiness and D-088 execution-parity audit
 
 - Active directive: `DC-DEV-021-M2-R18-PHYSICAL-FISSION-READINESS-AND-D088-EXECUTION-PARITY-AUDIT-001`.

@@ -1013,3 +1013,15 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
   the M2 runtime path must be traced rather than assumed equivalent.
 - No fission mechanism, threshold, cadence, or energy allocation may be
   changed by this diagnostic.
+
+## L-DCDEV021-GOAL-R18-RESULT
+
+- Crossing `1.35 * birth_mass` in the R17 early arm did not produce a lawful
+  local pinch at any mass-eligible observed state; D-088's positive reference
+  did expose a pinch and fission under its own qualified order.
+- The current M2 execution path differs from D-088 by omitting passive
+  `mechanics_step` after growth. One clone-only passive-mechanics shadow step
+  did not restore pinch readiness, so the exact causal attribution remains
+  multifactor unresolved.
+- Do not call this a fission-law repair opportunity or start a successor from
+  this result without independent Architect review.

@@ -982,6 +982,18 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Goal-agent provisional classification: `M2_POST_TRANSFER_DIVERGENCE_UNRESOLVED`.
 - Independent Architect acceptance: `PENDING`; next execution: `false`.
 
+## R18 sealed provisional outcome
+
+- Final result head: `3381e590d8150675419ecf46c31f6f534c1c9ef6`.
+- Exact-head workflow `34055331190` passed; artifact digest is
+  `sha256:4454182f9c969b4a0a7b90040350fd62f1c00250912ed0c8333856f77d8fa726`.
+- Classification: `M2_FISSION_READINESS_MULTIFACTOR_UNRESOLVED`.
+- Earliest observed failed prerequisite after mass eligibility: no lawful
+  local pinch. D-088 and M2 source execution paths differ, and the clone-only
+  passive-mechanics shadow did not restore readiness, so the result remains
+  unresolved rather than attributing the cause to geometry alone.
+- No repair or successor execution started; Architect acceptance: `PENDING`.
+
 ## DC-DEV-021-M2-R18-PHYSICAL-FISSION-READINESS-AND-D088-EXECUTION-PARITY-AUDIT-001
 
 - Starting head: `b1d97babf6e97d84d73485f572f27a6d1e5e0553`.

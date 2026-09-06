@@ -1435,3 +1435,19 @@ Use it for architectural decisions, governance changes, releases, qualification 
   after R17 crosses the mass gate; do not repair or begin a successor.
 - Authority is `GOAL_AGENT_PROVISIONALLY_ACCEPTED` only until independent
   Architect review supplies a disposition.
+
+## DEC-DCDEV021-GOAL-R18-FINAL
+
+- Date: `2026-09-06`
+- Result head: `3381e590d8150675419ecf46c31f6f534c1c9ef6`.
+- Exact-head CI: `34055331190 PASS`.
+- Artifact digest:
+  `sha256:4454182f9c969b4a0a7b90040350fd62f1c00250912ed0c8333856f77d8fa726`.
+- Provisional classification:
+  `M2_FISSION_READINESS_MULTIFACTOR_UNRESOLVED`.
+- Evidence: R17 mass eligibility is real, D-088 fission is reproduced, M2
+  has no lawful pinch in the eligible interval, source execution parity is
+  different, and the clone-only passive-mechanics shadow does not restore
+  readiness.
+- Resource-causal reproduction: `NOT_ESTABLISHED`. Independent Architect
+  acceptance: `PENDING`. Next execution: `false`.
