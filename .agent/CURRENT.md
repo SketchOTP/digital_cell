@@ -552,3 +552,17 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Classification remains `M2_POST_TRANSFER_DIVERGENCE_UNRESOLVED` with
   `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; independent Architect acceptance
   remains `PENDING`. No successor execution started.
+
+## Goal-mode R17 matched-state resource timing
+
+- Active directive: `DC-DEV-021-M2-R17-MATCHED-STATE-RESOURCE-TIMING-AND-BOUNDARY-COUNTERFACTUAL-001`.
+- Starting authority: R16 final head `79ac60ce675e19c964e98f06907bf82e4c8f556b`,
+  exact-head CI `34041656480`, artifact
+  `sha256:3d3f689cdab3cbb8f0ef913bb317d5e7aba69f2025e999cd11e977fba15f8727`.
+- The observer-only matched founder early whole-membrane arm reaches the
+  numerical mass gate at sampled checkpoints but produces no physical fission;
+  the delayed fork also produces no fission. Schedule replay is
+  `UNRESOLVED_BY_SAFE_COUNTERFACTUAL`.
+- Provisional classification: `M2_MATCHED_REFERENCE_REPRODUCTION_NOT_ESTABLISHED`;
+  resource-causal reproduction remains `NOT_ESTABLISHED`.
+- Independent Architect acceptance: `PENDING`. Next execution: `false`.

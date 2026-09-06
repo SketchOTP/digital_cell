@@ -1,0 +1,15 @@
+{
+  "delayed": {
+    "cumulative_growth_a": 52.378141570661924,
+    "cumulative_growth_material": 47.14032741359598
+  },
+  "early": {
+    "cumulative_growth_a": 158.53596611741355,
+    "cumulative_growth_material": 142.68236950567214
+  },
+  "mass_gate_observation": "Early arm reaches the numerical mass gate in observer checkpoints but physical fission remains zero.",
+  "r15": {
+    "cumulative_growth_a": 64.36652501010171,
+    "cumulative_growth_material": 57.929872509091595
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "final_governed_pointer": {
+    "artifact": "sha256:3d3f689cdab3cbb8f0ef913bb317d5e7aba69f2025e999cd11e977fba15f8727",
+    "exact_head_ci": "34041656480",
+    "head": "79ac60ce675e19c964e98f06907bf82e4c8f556b"
+  },
+  "prior_pointer_preserved": true,
+  "prior_valid_pointer": {
+    "artifact": "sha256:d7aacca5274465825433b2f8800c0d695aaaf0b7b2e92010193c1b055306744b",
+    "exact_head_ci": "34041120356",
+    "head": "464d322c02f3bc92d634b22b316ae4b438973cd2"
+  },
+  "scientific_semantics_after_final_pointer": "UNCHANGED_BY_GOVERNANCE_ONLY_POINTER_RECONCILIATION",
+  "sealed_r16_evidence_rewritten": false
+}

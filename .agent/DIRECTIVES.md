@@ -981,3 +981,18 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
   mechanism or start a successor before independent Architect review.
 - Goal-agent provisional classification: `M2_POST_TRANSFER_DIVERGENCE_UNRESOLVED`.
 - Independent Architect acceptance: `PENDING`; next execution: `false`.
+
+## DC-DEV-021-M2-R17-MATCHED-STATE-RESOURCE-TIMING-AND-BOUNDARY-COUNTERFACTUAL-001
+
+- Starting head: `79ac60ce675e19c964e98f06907bf82e4c8f556b`.
+- Scope: exact R15 replay, matched-founder early whole-membrane access,
+  exact step-7451 delayed fork with whole-membrane access, and observer-only
+  state/flux equivalence evidence.
+- Prohibited: all biology, transport law changes, new organism state,
+  inventory changes, resource repositioning, longer horizons, tuning, and
+  inferred fixes.
+- Arm D schedule replay is explicitly unresolved when the accepted R15 evidence
+  lacks an authoritative per-step delivery schedule.
+- Goal-agent provisional classification:
+  `M2_MATCHED_REFERENCE_REPRODUCTION_NOT_ESTABLISHED`.
+- Independent Architect acceptance: `PENDING`; next execution: `false`.

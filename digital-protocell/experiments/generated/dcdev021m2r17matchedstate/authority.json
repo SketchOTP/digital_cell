@@ -1,0 +1,19 @@
+{
+  "assimilation": "INVESTIGATE_NOT_ACCEPTED",
+  "directive": "DC-DEV-021-M2-R17-MATCHED-STATE-RESOURCE-TIMING-AND-BOUNDARY-COUNTERFACTUAL-001",
+  "pr_44": {
+    "draft": true,
+    "head": "fb77f472b1519a9e0f713833efba5b1d403f4723",
+    "merged": false,
+    "state": "OPEN"
+  },
+  "r15_exact_head_ci": "34037256120",
+  "r15_final_artifact": "sha256:911d3fbcd1cf6df3fc9f20793e7ccbf9271cc78310021dcb0af515775d7c50f2",
+  "r15_final_head": "9f1bb36cc81e731490d72e17c666cc8c13c91d44",
+  "r16_exact_head_ci": "34041656480",
+  "r16_external_disposition": "ACCEPTED - VALID DIAGNOSTIC-UNRESOLVED",
+  "r16_final_artifact": "sha256:3d3f689cdab3cbb8f0ef913bb317d5e7aba69f2025e999cd11e977fba15f8727",
+  "r16_final_head": "79ac60ce675e19c964e98f06907bf82e4c8f556b",
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "starting_head": "79ac60ce675e19c964e98f06907bf82e4c8f556b"
+}

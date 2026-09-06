@@ -2240,3 +2240,19 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
   `sha256:d7aacca5274465825433b2f8800c0d695aaaf0b7b2e92010193c1b055306744b`.
 - This remains a provisional unresolved result, not independent Architect
   acceptance; next execution remains `false`.
+
+## R17 matched-state resource timing and boundary counterfactual
+
+- R16 final authority was reconciled without rewriting the earlier valid
+  pointer: final head `79ac60ce675e19c964e98f06907bf82e4c8f556b`, CI
+  `34041656480`, artifact
+  `sha256:3d3f689cdab3cbb8f0ef913bb317d5e7aba69f2025e999cd11e977fba15f8727`.
+- Founder equivalence and independent step-7451 checkpoint replay passed.
+- R15 replay preserved first transfer at step `7452` and `292.6923687407118`
+  N/F delivered per species. Early whole-membrane access crossed the numerical
+  `1.35 * birth_mass` gate at an observer checkpoint but physical fission was
+  zero; the delayed whole-membrane fork also had zero fission.
+- Schedule replay was not fabricated and is
+  `UNRESOLVED_BY_SAFE_COUNTERFACTUAL`.
+- Provisional result: `M2_MATCHED_REFERENCE_REPRODUCTION_NOT_ESTABLISHED`.
+  Resource-causal reproduction remains `NOT_ESTABLISHED`; no successor started.

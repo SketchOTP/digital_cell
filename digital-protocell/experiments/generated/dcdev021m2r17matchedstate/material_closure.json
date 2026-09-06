@@ -1,0 +1,20 @@
+{
+  "delayed": {
+    "f_error": 0.0,
+    "n_error": 0.0
+  },
+  "early": {
+    "f_error": 0.0,
+    "n_error": 0.0
+  },
+  "r15_active": {
+    "f_error": 0.0,
+    "n_error": 0.0
+  },
+  "r15_disabled": {
+    "f_error": 0.0,
+    "n_error": 0.0
+  },
+  "same_inventory": true,
+  "status": "PASS"
+}

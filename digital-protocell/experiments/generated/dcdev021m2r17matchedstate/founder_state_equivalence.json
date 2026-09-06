@@ -1,0 +1,9 @@
+{
+  "birth_mass_equal": true,
+  "initial_material_equal": true,
+  "organism_population_equal": true,
+  "organism_population_sha256_early": "9824d8ea9be742d00fbccc4536cda8a62b38539f907578e86e76572048c5f3d2",
+  "organism_population_sha256_r15": "9824d8ea9be742d00fbccc4536cda8a62b38539f907578e86e76572048c5f3d2",
+  "status": "PASS",
+  "world_contract_difference_is_intended": true
+}

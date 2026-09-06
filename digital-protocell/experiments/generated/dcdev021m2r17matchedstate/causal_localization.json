@@ -1,0 +1,10 @@
+{
+  "classification": "M2_MATCHED_REFERENCE_REPRODUCTION_NOT_ESTABLISHED",
+  "delayed_boundary_opportunity": "INSUFFICIENT_TO_ESTABLISH_RECOVERY_REPRODUCTION",
+  "earliest_justified_conclusion": "MATCHED_REFERENCE_REPRODUCTION_NOT_ESTABLISHED",
+  "early_boundary_opportunity": "INSUFFICIENT_TO_ESTABLISH_MATCHED_REFERENCE_REPRODUCTION",
+  "first_transfer_transport": "QUALIFIED_REPLAY_PRESERVED",
+  "no_inferred_fix": true,
+  "post_transfer_physiology": "NOT_ISOLATED_BECAUSE_EARLY_MATCHED_REFERENCE_REPRODUCTION_FAILED",
+  "spatial_distribution": "UNRESOLVED_BY_SAFE_COUNTERFACTUAL"
+}

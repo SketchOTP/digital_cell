@@ -1410,3 +1410,18 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Classification remains `M2_POST_TRANSFER_DIVERGENCE_UNRESOLVED`;
   status is `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; independent Architect
   acceptance is `PENDING`; next execution is `false`.
+
+## DEC-DCDEV021-GOAL-R17-MATCHED-STATE
+
+- Date: `2026-09-06`
+- Directive: `DC-DEV-021-M2-R17-MATCHED-STATE-RESOURCE-TIMING-AND-BOUNDARY-COUNTERFACTUAL-001`.
+- R16 final authority was reconciled append-only. The exact accepted R16 head
+  is `79ac60ce675e19c964e98f06907bf82e4c8f556b` with CI `34041656480` and
+  artifact `sha256:3d3f689cdab3cbb8f0ef913bb317d5e7aba69f2025e999cd11e977fba15f8727`.
+- Observer-only R17 result: founder equivalence PASS; step-7451 fork
+  equivalence PASS; early matched whole-membrane access reaches the sampled
+  numerical mass gate but physical fission remains zero; delayed matched fork
+  also remains zero; schedule replay is unresolved by safe counterfactual.
+- Provisional classification: `M2_MATCHED_REFERENCE_REPRODUCTION_NOT_ESTABLISHED`.
+  Resource-causal reproduction remains `NOT_ESTABLISHED`; independent Architect
+  acceptance is `PENDING`; next execution is `false`.

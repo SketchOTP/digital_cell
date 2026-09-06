@@ -990,3 +990,16 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
   is `sha256:732339b7c3a4de3c399845fd6e713fe1b9d8589d7daf8742475e2e4558523485`.
 - The provisional negative is sealed without independent Architect acceptance;
   the stop boundary remains active and no successor execution is authorized.
+
+## L-DCDEV021-GOAL-R17-MATCHED-STATE-001
+
+- R15 transfer is not the only relevant boundary: the matched founder can reach
+  the numerical mass gate under early finite whole-membrane access while the
+  unchanged physical fission path still records zero fission.
+- The exact step-7451 checkpoint is byte-identical across independent replay
+  runs and preserves a live, depleted organism state for the delayed fork.
+- A numerical mass-gate observation must not be promoted to reproduction; the
+  physical fission event remains the causal completion criterion.
+- Without an accepted per-step R15 delivery trace, schedule replay is not safe
+  to invent. The correct provisional classification is
+  `M2_MATCHED_REFERENCE_REPRODUCTION_NOT_ESTABLISHED`, with no inferred fix.

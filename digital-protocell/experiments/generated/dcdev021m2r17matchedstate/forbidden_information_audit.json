@@ -1,0 +1,12 @@
+{
+  "assay_only_boundary_adapter": true,
+  "biology_changed": false,
+  "new_organism_state": false,
+  "observer_reads_only": [
+    "existing transfer ledger",
+    "existing flux audit",
+    "existing mesh snapshot",
+    "existing fission observations"
+  ],
+  "resource_information_read_by_biology": "NONE"
+}

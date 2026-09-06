@@ -52,6 +52,11 @@ struct RuntimeSnapshot {
     /// historical runtime composition and checkpoint interpretation.
     #[serde(default)]
     moving_membrane: Option<MovingMembraneFiniteFluxV1>,
+    /// R17 assay-only whole-membrane finite feed. This is world-side state;
+    /// it is never read by organism biology and is absent from historical
+    /// checkpoints.
+    #[serde(default)]
+    matched_whole_membrane: Option<MatchedWholeMembraneFiniteFeed>,
     /// Opt-in D-091 reserve composition; absent preserves reserve-off runtime.
     #[serde(default)]
     reserve_parameters: Option<ReserveParams>,
@@ -170,6 +175,8 @@ struct RuntimeReport {
     shared_medium_f_mass_remaining: f64,
     moving_membrane_n_mass_remaining: f64,
     moving_membrane_f_mass_remaining: f64,
+    matched_whole_membrane_n_mass_remaining: f64,
+    matched_whole_membrane_f_mass_remaining: f64,
     cumulative_n_delivered: f64,
     cumulative_f_delivered: f64,
     cumulative_assimilation_n_processed: f64,
@@ -221,6 +228,8 @@ struct Config {
     shared_extracellular_medium: bool,
     shared_medium_from_birth: bool,
     moving_membrane_flux: bool,
+    r17_early_whole_membrane: bool,
+    r17_delayed_whole_membrane: bool,
     routec_reserve_growth: bool,
     assimilation_material_flow: bool,
     anabolic_incorporation: bool,
@@ -237,7 +246,7 @@ struct FissionObservation {
     parent_f_delivered: f64,
 }
 
-#[derive(Debug, Default)]
+#[derive(Debug, Clone, Default)]
 struct RuntimeDelivery {
     organism_index: usize,
     exposed_edges: usize,
@@ -245,6 +254,133 @@ struct RuntimeDelivery {
     f_delivered: f64,
     n_world_loss: f64,
     f_world_loss: f64,
+}
+
+/// R17 uses the already-qualified whole-membrane transport law as an
+/// assay-only counterfactual. The organism receives the unchanged
+/// `transport_step` inward ledger, while finite N/F are debited from this
+/// world-side inventory. No organism state or chemistry law is added.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+struct MatchedWholeMembraneFiniteFeed {
+    schema: String,
+    initial_n_mass: f64,
+    initial_f_mass: f64,
+    n_mass: f64,
+    f_mass: f64,
+    boundary_n: f64,
+    boundary_f: f64,
+    step: u64,
+    transfer_enabled: bool,
+    ledger_n_taken: f64,
+    ledger_f_taken: f64,
+}
+
+impl MatchedWholeMembraneFiniteFeed {
+    fn new(n_mass: f64, f_mass: f64) -> Self {
+        Self {
+            schema: "digital_cell_r17_matched_whole_membrane_finite_feed_v1".to_string(),
+            initial_n_mass: n_mass.max(0.0),
+            initial_f_mass: f_mass.max(0.0),
+            n_mass: n_mass.max(0.0),
+            f_mass: f_mass.max(0.0),
+            boundary_n: RESOURCE_BOUNDARY,
+            boundary_f: RESOURCE_BOUNDARY,
+            step: 0,
+            transfer_enabled: true,
+            ledger_n_taken: 0.0,
+            ledger_f_taken: 0.0,
+        }
+    }
+
+    fn total_n_mass(&self) -> f64 {
+        self.n_mass
+    }
+
+    fn total_f_mass(&self) -> f64 {
+        self.f_mass
+    }
+
+    fn exchange(
+        &mut self,
+        meshes: &mut [chemistry_core::material_mesh::MaterialMesh],
+        transport: &TransportParams,
+        dt: f64,
+    ) -> Vec<RuntimeDelivery> {
+        #[derive(Clone, Copy)]
+        struct Request {
+            organism_index: usize,
+            requested_n: f64,
+            requested_f: f64,
+        }
+
+        let mut deliveries = vec![RuntimeDelivery::default(); meshes.len()];
+        let mut requests = Vec::with_capacity(meshes.len());
+        for (organism_index, mesh) in meshes.iter_mut().enumerate() {
+            let exterior = mesh.exterior;
+            mesh.exterior.n = 0.0;
+            mesh.exterior.f = 0.0;
+            let _nonfeeding = transport_step(mesh, transport, dt);
+            mesh.exterior = exterior;
+
+            if !mesh.can_advance_physics() || dt <= 0.0 {
+                continue;
+            }
+            let mut preview = mesh.clone();
+            preview.exterior.n = self.boundary_n;
+            preview.exterior.f = self.boundary_f;
+            let requested = transport_step(&mut preview, transport, dt);
+            requests.push(Request {
+                organism_index,
+                requested_n: requested.n_in.max(0.0),
+                requested_f: requested.f_in.max(0.0),
+            });
+            deliveries[organism_index].exposed_edges = mesh.n();
+        }
+
+        let total_n: f64 = requests.iter().map(|request| request.requested_n).sum();
+        let total_f: f64 = requests.iter().map(|request| request.requested_f).sum();
+        let n_scale = if total_n > 0.0 {
+            (self.n_mass / total_n).min(1.0)
+        } else {
+            1.0
+        };
+        let f_scale = if total_f > 0.0 {
+            (self.f_mass / total_f).min(1.0)
+        } else {
+            1.0
+        };
+        let scale = if self.transfer_enabled {
+            n_scale.min(f_scale).max(0.0)
+        } else {
+            0.0
+        };
+
+        for request in requests {
+            let n = request.requested_n * scale;
+            let f = request.requested_f * scale;
+            if let Some(mesh) = meshes.get_mut(request.organism_index) {
+                let area = mesh.area();
+                if area.is_finite() && area > 0.0 {
+                    mesh.interior.n += n / area;
+                    mesh.interior.f += f / area;
+                }
+            }
+            let delivery = &mut deliveries[request.organism_index];
+            delivery.n_delivered += n;
+            delivery.f_delivered += f;
+            delivery.n_world_loss += n;
+            delivery.f_world_loss += f;
+        }
+
+        let delivered_n: f64 = deliveries.iter().map(|delivery| delivery.n_delivered).sum();
+        let delivered_f: f64 = deliveries.iter().map(|delivery| delivery.f_delivered).sum();
+        self.n_mass = (self.n_mass - delivered_n).max(0.0);
+        self.f_mass = (self.f_mass - delivered_f).max(0.0);
+        self.ledger_n_taken += delivered_n;
+        self.ledger_f_taken += delivered_f;
+        self.step = self.step.saturating_add(1);
+        deliveries
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -282,6 +418,20 @@ struct FluxAuditCheckpoint {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 struct FluxAuditState {
+    #[serde(default)]
+    initial_birth_mass: f64,
+    #[serde(default)]
+    initial_interior_n: f64,
+    #[serde(default)]
+    initial_interior_f: f64,
+    #[serde(default)]
+    initial_a_pool: f64,
+    #[serde(default)]
+    initial_young_structural_mass: f64,
+    #[serde(default)]
+    initial_mature_structural_mass: f64,
+    #[serde(default)]
+    initial_total_structural_mass: f64,
     first_transfer_step: Option<u64>,
     first_contact_step: Option<u64>,
     cumulative_reaction_n_consumed: f64,
@@ -302,7 +452,23 @@ struct FluxAuditState {
 
 impl FluxAuditState {
     fn new(snapshot: &RuntimeSnapshot) -> Self {
+        let (initial_n, initial_f, initial_a, initial_young, initial_total) =
+            audit_physical_totals(snapshot);
+        let initial_birth_mass = snapshot
+            .population
+            .individuals
+            .iter()
+            .filter(|individual| individual.mesh.alive)
+            .map(|individual| individual.birth_mass)
+            .sum();
         Self {
+            initial_birth_mass,
+            initial_interior_n: initial_n,
+            initial_interior_f: initial_f,
+            initial_a_pool: initial_a,
+            initial_young_structural_mass: initial_young,
+            initial_mature_structural_mass: (initial_total - initial_young).max(0.0),
+            initial_total_structural_mass: initial_total,
             first_transfer_step: snapshot.first_transfer_step,
             first_contact_step: snapshot.first_contact_step,
             cumulative_reaction_n_consumed: 0.0,
@@ -327,7 +493,9 @@ impl FluxAuditState {
 }
 
 fn audit_environmental_remaining(snapshot: &RuntimeSnapshot) -> (f64, f64) {
-    if let Some(medium) = snapshot.moving_membrane.as_ref() {
+    if let Some(medium) = snapshot.matched_whole_membrane.as_ref() {
+        (medium.total_n_mass(), medium.total_f_mass())
+    } else if let Some(medium) = snapshot.moving_membrane.as_ref() {
         (medium.total_n_mass(), medium.total_f_mass())
     } else if let Some(medium) = snapshot.shared_medium.as_ref() {
         (medium.total_n_mass(), medium.total_f_mass())
@@ -478,6 +646,8 @@ fn parse_config() -> Config {
     let mut shared_extracellular_medium = false;
     let mut shared_medium_from_birth = false;
     let mut moving_membrane_flux = false;
+    let mut r17_early_whole_membrane = false;
+    let mut r17_delayed_whole_membrane = false;
     let mut routec_reserve_growth = false;
     let mut assimilation_material_flow = false;
     let mut anabolic_incorporation = false;
@@ -501,6 +671,8 @@ fn parse_config() -> Config {
             "--shared-extracellular-medium" => shared_extracellular_medium = true,
             "--shared-medium-from-birth" => shared_medium_from_birth = true,
             "--moving-membrane-flux" => moving_membrane_flux = true,
+            "--r17-early-whole-membrane" => r17_early_whole_membrane = true,
+            "--r17-delayed-whole-membrane" => r17_delayed_whole_membrane = true,
             "--routec-reserve-growth" => routec_reserve_growth = true,
             "--assimilation-material-flow" => assimilation_material_flow = true,
             "--assimilation-anabolic-incorporation" => {
@@ -528,6 +700,8 @@ fn parse_config() -> Config {
         shared_extracellular_medium,
         shared_medium_from_birth,
         moving_membrane_flux,
+        r17_early_whole_membrane,
+        r17_delayed_whole_membrane,
         routec_reserve_growth,
         assimilation_material_flow,
         anabolic_incorporation,
@@ -761,6 +935,7 @@ fn new_post_fission_snapshot(
         spatial_field: Some(field),
         shared_medium: None,
         moving_membrane: None,
+        matched_whole_membrane: None,
         reserve_parameters: None,
         assimilation_enabled: true,
         anabolic_incorporation_enabled: true,
@@ -1057,6 +1232,7 @@ fn new_snapshot(seed: u64) -> RuntimeSnapshot {
         spatial_field: None,
         shared_medium: None,
         moving_membrane: None,
+        matched_whole_membrane: None,
         reserve_parameters: None,
         assimilation_enabled: false,
         anabolic_incorporation_enabled: false,
@@ -1170,6 +1346,7 @@ fn new_shared_medium_from_birth_snapshot(
         spatial_field: None,
         shared_medium: Some(medium),
         moving_membrane: None,
+        matched_whole_membrane: None,
         reserve_parameters: None,
         assimilation_enabled: false,
         anabolic_incorporation_enabled: false,
@@ -1237,6 +1414,33 @@ fn new_moving_membrane_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSna
     snapshot
 }
 
+fn convert_r15_moving_to_r17_whole_membrane(mut snapshot: RuntimeSnapshot) -> RuntimeSnapshot {
+    let moving = snapshot
+        .moving_membrane
+        .take()
+        .expect("R17 whole-membrane conversion requires R15 moving medium");
+    let mut whole = MatchedWholeMembraneFiniteFeed::new(moving.n_mass, moving.f_mass);
+    whole.transfer_enabled = moving.transfer_enabled;
+    whole.step = moving.step;
+    whole.ledger_n_taken = moving.ledger_n_taken;
+    whole.ledger_f_taken = moving.ledger_f_taken;
+    snapshot.matched_whole_membrane = Some(whole);
+    snapshot.scientific_boundary.finite_world_exchange =
+        "R17 assay-only matched whole-membrane finite feed using frozen transport_step"
+            .to_string();
+    snapshot
+}
+
+fn new_r17_early_whole_membrane_snapshot(
+    seed: u64,
+    transfer_enabled: bool,
+) -> RuntimeSnapshot {
+    convert_r15_moving_to_r17_whole_membrane(new_moving_membrane_snapshot(
+        seed,
+        transfer_enabled,
+    ))
+}
+
 fn new_routeb_snapshot(
     seed: u64,
     transfer_enabled: bool,
@@ -1285,6 +1489,7 @@ fn new_routeb_snapshot(
         spatial_field: Some(field),
         shared_medium: None,
         moving_membrane: None,
+        matched_whole_membrane: None,
         reserve_parameters: None,
         assimilation_enabled,
         anabolic_incorporation_enabled,
@@ -1372,6 +1577,7 @@ fn new_routec_snapshot(seed: u64, transfer_enabled: bool) -> RuntimeSnapshot {
         spatial_field: Some(field),
         shared_medium: None,
         moving_membrane: None,
+        matched_whole_membrane: None,
         reserve_parameters: Some(reserve),
         assimilation_enabled: false,
         anabolic_incorporation_enabled: false,
@@ -1503,7 +1709,9 @@ fn run_step(snapshot: &mut RuntimeSnapshot) -> usize {
         .iter()
         .map(|&index| snapshot.population.individuals[index].mesh.clone())
         .collect();
-    let deliveries: Vec<RuntimeDelivery> = if let Some(medium) = snapshot.moving_membrane.as_mut() {
+    let deliveries: Vec<RuntimeDelivery> = if let Some(medium) = snapshot.matched_whole_membrane.as_mut() {
+        medium.exchange(&mut meshes, &transport, dt)
+    } else if let Some(medium) = snapshot.moving_membrane.as_mut() {
         medium
             .exchange(&mut meshes, &transport, dt)
             .into_iter()
@@ -1865,6 +2073,16 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
             .as_ref()
             .map(MovingMembraneFiniteFluxV1::total_f_mass)
             .unwrap_or(0.0),
+        matched_whole_membrane_n_mass_remaining: snapshot
+            .matched_whole_membrane
+            .as_ref()
+            .map(MatchedWholeMembraneFiniteFeed::total_n_mass)
+            .unwrap_or(0.0),
+        matched_whole_membrane_f_mass_remaining: snapshot
+            .matched_whole_membrane
+            .as_ref()
+            .map(MatchedWholeMembraneFiniteFeed::total_f_mass)
+            .unwrap_or(0.0),
         cumulative_n_delivered: snapshot.cumulative_n_delivered,
         cumulative_f_delivered: snapshot.cumulative_f_delivered,
         cumulative_assimilation_n_processed: snapshot.cumulative_assimilation_n_processed,
@@ -1892,7 +2110,9 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
                 .unwrap_or(true)
         }),
         fission_observations: snapshot.fission_observations.clone(),
-        resource_transfer_enabled: if let Some(medium) = snapshot.moving_membrane.as_ref() {
+        resource_transfer_enabled: if let Some(medium) = snapshot.matched_whole_membrane.as_ref() {
+            medium.transfer_enabled
+        } else if let Some(medium) = snapshot.moving_membrane.as_ref() {
             medium.transfer_enabled
         } else if let Some(medium) = snapshot.shared_medium.as_ref() {
             medium.transfer_enabled
@@ -1903,7 +2123,9 @@ fn report(snapshot: &RuntimeSnapshot, checkpoint: &Path) -> RuntimeReport {
                 .map(|_| snapshot.spatial_field_transfer_enabled)
                 .unwrap_or(snapshot.world.transfer_enabled)
         },
-        resource_mode: if snapshot.moving_membrane.is_some() {
+        resource_mode: if snapshot.matched_whole_membrane.is_some() {
+            "R17MatchedWholeMembraneFiniteFeedV1".to_string()
+        } else if snapshot.moving_membrane.is_some() {
             "MovingMembraneFiniteFluxV1".to_string()
         } else if snapshot.shared_medium.is_some() {
             "SharedFiniteExtracellularMediumV1".to_string()
@@ -1943,7 +2165,9 @@ fn main() {
         .as_deref()
         .map(load_snapshot)
         .unwrap_or_else(|| {
-            if config.moving_membrane_flux {
+            if config.r17_early_whole_membrane {
+                new_r17_early_whole_membrane_snapshot(config.seed, !config.transfer_disabled)
+            } else if config.moving_membrane_flux {
                 new_moving_membrane_snapshot(config.seed, !config.transfer_disabled)
             } else if config.shared_medium_from_birth {
                 new_shared_medium_from_birth_snapshot(config.seed, !config.transfer_disabled)
@@ -1966,8 +2190,13 @@ fn main() {
                 new_snapshot(config.seed)
             }
         });
+    if config.r17_delayed_whole_membrane {
+        snapshot = convert_r15_moving_to_r17_whole_membrane(snapshot);
+    }
     if config.transfer_disabled {
-        if let Some(medium) = snapshot.moving_membrane.as_mut() {
+        if let Some(medium) = snapshot.matched_whole_membrane.as_mut() {
+            medium.transfer_enabled = false;
+        } else if let Some(medium) = snapshot.moving_membrane.as_mut() {
             medium.transfer_enabled = false;
         } else if let Some(medium) = snapshot.shared_medium.as_mut() {
             medium.transfer_enabled = false;

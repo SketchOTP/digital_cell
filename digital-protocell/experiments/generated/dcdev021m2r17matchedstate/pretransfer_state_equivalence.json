@@ -1,0 +1,28 @@
+{
+  "fork_state": {
+    "alive": true,
+    "birth_mass": 87.75070322587518,
+    "death_reason": null,
+    "generation": 0,
+    "individual_count": 1,
+    "interior_a": 1.18485636879161e-11,
+    "interior_f": 5.133454190228377e-05,
+    "interior_n": 5.133454190228377e-05,
+    "interior_w": 0.08407140880618798,
+    "lineage_id": 1,
+    "mature_structural_mass": 22.733204637664304,
+    "population_sha256": "6046d769bb72e1c2040ca8feb73e87bdc05f38d9bc5f15828a86d52a3d1693fc",
+    "seed": 2,
+    "step": 7451,
+    "topology": 19,
+    "total_structural_mass": 22.733204637664304,
+    "young_structural_mass": 3.933220831430849
+  },
+  "independent_replay_snapshot_sha256": "8a0e263e642ba5340ce4d96c7ce023fceccb5cdb64cb8e31f74b75e9d55f5a0b",
+  "organism_population_equal": true,
+  "pretransfer_snapshot_sha256": "8a0e263e642ba5340ce4d96c7ce023fceccb5cdb64cb8e31f74b75e9d55f5a0b",
+  "required_fork_step": 7451,
+  "snapshot_bytes_equal": true,
+  "status": "PASS",
+  "terminal_report_note": "The R15 report may mark starvation after the checkpointing boundary; the fork uses the exact alive step-7451 checkpoint required by the directive."
+}

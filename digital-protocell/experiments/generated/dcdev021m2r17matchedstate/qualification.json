@@ -1,0 +1,9 @@
+{
+  "classification": "M2_MATCHED_REFERENCE_REPRODUCTION_NOT_ESTABLISHED",
+  "directive": "DC-DEV-021-M2-R17-MATCHED-STATE-RESOURCE-TIMING-AND-BOUNDARY-COUNTERFACTUAL-001",
+  "independent_architect_acceptance": "PENDING",
+  "next_execution_started": false,
+  "resource_causal_reproduction": "NOT_ESTABLISHED",
+  "scientific_runtime_changed": false,
+  "status": "GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN"
+}

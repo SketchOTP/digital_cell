@@ -1,0 +1,175 @@
+name: DC-DEV-021 M2 R17 matched-state resource timing
+
+on:
+  push:
+    branches:
+      - m2/dc-dev-021-r17-matched-state-resource-timing
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r17-matched-state-resource-timing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact result head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Verify exact authority and observer-only scope
+        run: |
+          set -euo pipefail
+          start=79ac60ce675e19c964e98f06907bf82e4c8f556b
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(git rev-parse "$start")" = "$start"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - "$start" <<'PY'
+          import subprocess
+          import sys
+
+          start = sys.argv[1]
+          allowed = {
+              '.agent/CURRENT.md',
+              '.agent/DIRECTIVES.md',
+              '.agent/LEARNINGS.md',
+              '.agent/OUTCOMES.md',
+              '.agent/RECORD.md',
+              '.agent/REPO_MAP.md',
+              '.agent/PROJECT_PROFILE.md',
+              '.github/workflows/dc-dev-021-m2-r17-matched-state-resource-timing.yml',
+              'digital-protocell/crates/m2-lifeform-runtime/src/main.rs',
+              'digital-protocell/experiments/dcdev021_m2_r17_matched_state.py',
+          }
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{start}..HEAD'], text=True
+          ).splitlines()
+          prefix = 'digital-protocell/experiments/generated/dcdev021m2r17matchedstate/'
+          unexpected = [path for path in changed if path not in allowed and not path.startswith(prefix)]
+          assert not unexpected, unexpected
+          forbidden = ('digital-protocell/crates/chemistry-core/src/',)
+          assert not any(path.startswith(forbidden) for path in changed), changed
+          print('R17 authority and observer-only scope verified')
+          PY
+
+      - name: Build and test integrated runtime
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p m2-lifeform-runtime
+          cargo +1.89.0 build --locked --release -p m2-lifeform-runtime
+
+      - name: Run R15 replay and matched-state counterfactuals
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          run() { cargo +1.89.0 run --locked -q --release -p m2-lifeform-runtime -- "$@"; }
+          run --steps 12000 --seed 2 --moving-membrane-flux --flux-audit \
+            --checkpoint "$RUNNER_TEMP/r15-active.snapshot.json" --report "$RUNNER_TEMP/r15-active.json"
+          run --steps 12000 --seed 2 --moving-membrane-flux --transfer-disabled --flux-audit \
+            --checkpoint "$RUNNER_TEMP/r15-disabled.snapshot.json" --report "$RUNNER_TEMP/r15-disabled.json"
+          run --steps 12000 --seed 2 --r17-early-whole-membrane --flux-audit \
+            --checkpoint "$RUNNER_TEMP/early.snapshot.json" --report "$RUNNER_TEMP/early.json"
+          run --steps 7451 --seed 2 --moving-membrane-flux --flux-audit \
+            --checkpoint "$RUNNER_TEMP/pretransfer.snapshot.json" --report "$RUNNER_TEMP/pretransfer.json"
+          run --steps 7451 --seed 2 --moving-membrane-flux --flux-audit \
+            --checkpoint "$RUNNER_TEMP/pretransfer-replay.snapshot.json" --report "$RUNNER_TEMP/pretransfer-replay.json"
+          run --steps 4549 --resume "$RUNNER_TEMP/pretransfer.snapshot.json" \
+            --r17-delayed-whole-membrane --flux-audit \
+            --checkpoint "$RUNNER_TEMP/delayed.snapshot.json" --report "$RUNNER_TEMP/delayed.json"
+          run --steps 0 --seed 2 --moving-membrane-flux --flux-audit \
+            --checkpoint "$RUNNER_TEMP/initial-moving.snapshot.json" --report "$RUNNER_TEMP/initial-moving.json"
+          run --steps 0 --seed 2 --r17-early-whole-membrane --flux-audit \
+            --checkpoint "$RUNNER_TEMP/initial-early.snapshot.json" --report "$RUNNER_TEMP/initial-early.json"
+
+      - name: Generate and validate compact R17 evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 experiments/dcdev021_m2_r17_matched_state.py \
+            --r15-active "$RUNNER_TEMP/r15-active.json" \
+            --r15-disabled "$RUNNER_TEMP/r15-disabled.json" \
+            --early "$RUNNER_TEMP/early.json" \
+            --delayed "$RUNNER_TEMP/delayed.json" \
+            --initial-moving "$RUNNER_TEMP/initial-moving.snapshot.json" \
+            --initial-early "$RUNNER_TEMP/initial-early.snapshot.json" \
+            --pretransfer "$RUNNER_TEMP/pretransfer.snapshot.json" \
+            --pretransfer-replay "$RUNNER_TEMP/pretransfer-replay.snapshot.json" \
+            --output experiments/generated/dcdev021m2r17matchedstate
+          python3 - "$RUNNER_TEMP" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          temp = Path(sys.argv[1])
+          root = Path('experiments/generated/dcdev021m2r17matchedstate')
+          active = json.loads((temp / 'r15-active.json').read_text())
+          disabled = json.loads((temp / 'r15-disabled.json').read_text())
+          early = json.loads((temp / 'early.json').read_text())
+          delayed = json.loads((temp / 'delayed.json').read_text())
+          assert active['first_contact_step'] == active['first_transfer_step'] == 7452
+          assert active['cumulative_n_delivered'] == 292.6923687407118
+          assert active['cumulative_f_delivered'] == 292.6923687407118
+          assert disabled['cumulative_n_delivered'] == disabled['cumulative_f_delivered'] == 0.0
+          assert disabled['fission_events'] == 0
+          assert active['fission_events'] == early['fission_events'] == delayed['fission_events'] == 0
+          assert early['first_transfer_step'] == early['first_contact_step'] == 1
+          assert delayed['first_transfer_step'] == delayed['first_contact_step'] == 7452
+          assert early['cumulative_n_delivered'] > 0.0
+          assert delayed['cumulative_n_delivered'] > 0.0
+          assert json.loads((root / 'founder_state_equivalence.json').read_text())['status'] == 'PASS'
+          assert json.loads((root / 'pretransfer_state_equivalence.json').read_text())['status'] == 'PASS'
+          assert json.loads((root / 'qualification.json').read_text())['classification'] == 'M2_MATCHED_REFERENCE_REPRODUCTION_NOT_ESTABLISHED'
+          assert json.loads((root / 'qualification.json').read_text())['status'] == 'GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN'
+          assert json.loads((root / 'qualification.json').read_text())['independent_architect_acceptance'] == 'PENDING'
+          for path in root.glob('*.json'):
+              json.loads(path.read_text())
+          print('R17 replay, state identity, and bounded negative gates passed')
+          PY
+
+      - name: Preserve D-087, D-088, D-091, and evolution boundaries
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test --locked -p evolution-harness -- --nocapture
+          python3 - <<'PY'
+          from pathlib import Path
+          current = Path('../.agent/CURRENT.md').read_text()
+          outcomes = Path('../.agent/OUTCOMES.md').read_text()
+          record = Path('../.agent/RECORD.md').read_text()
+          assert 'R17 matched-state resource timing' in current
+          assert 'MATCHED_REFERENCE_REPRODUCTION_NOT_ESTABLISHED' in outcomes
+          assert 'DEC-DCDEV021-GOAL-R17-MATCHED-STATE' in record
+          assert 'Independent Architect acceptance: `PENDING`' in current
+          print('R17 provisional governance pointers present')
+          PY
+
+      - name: Record evidence digest
+        if: always()
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          find experiments/generated/dcdev021m2r17matchedstate \
+            -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcdev021m2r17.sha256"
+
+      - name: Upload R17 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dc-dev-021-m2-r17-matched-state-resource-timing-${{ github.sha }}
+          path: |
+            digital-protocell/experiments/generated/dcdev021m2r17matchedstate/
+            ${{ runner.temp }}/r15-active.json
+            ${{ runner.temp }}/r15-disabled.json
+            ${{ runner.temp }}/early.json
+            ${{ runner.temp }}/delayed.json
+            ${{ runner.temp }}/dcdev021m2r17.sha256
+          if-no-files-found: error

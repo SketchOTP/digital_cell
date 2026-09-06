@@ -1,0 +1,16 @@
+{
+  "arms": {
+    "A": "R15_ACTIVE_REPLAY",
+    "B": "MATCHED_FOUNDER_EARLY_WHOLE_MEMBRANE",
+    "C": "MATCHED_PRETRANSFER_DELAYED_WHOLE_MEMBRANE",
+    "D": "R15_TRANSFER_SCHEDULE_REPLAY_UNRESOLVED_BY_SAFE_COUNTERFACTUAL"
+  },
+  "biology_changed": false,
+  "horizon": 12000,
+  "no_new_organism_state": true,
+  "observer_only": true,
+  "same_finite_inventory": true,
+  "same_founder_state": true,
+  "seed": 2,
+  "step_7451_fork": true
+}

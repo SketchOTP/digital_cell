@@ -1,0 +1,4 @@
+{
+  "reason": "R15 accepted evidence records cumulative transfer and checkpoints, not an authoritative per-step delivery schedule. Constructing a new replay schedule would extend the assay beyond the frozen transport contract.",
+  "status": "UNRESOLVED_BY_SAFE_COUNTERFACTUAL"
+}

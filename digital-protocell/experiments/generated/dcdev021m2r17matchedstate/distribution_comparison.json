@@ -1,0 +1,4 @@
+{
+  "reason": "Arm D is not executed because the accepted R15 evidence does not contain a safe authoritative per-step schedule and no new replay schedule may be invented.",
+  "status": "UNRESOLVED_BY_SAFE_COUNTERFACTUAL"
+}
