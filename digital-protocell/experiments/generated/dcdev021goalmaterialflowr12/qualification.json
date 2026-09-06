@@ -7,5 +7,8 @@
   "assimilation_architecture": "INVESTIGATE_NOT_ACCEPTED",
   "local_material_flow_variants_after_this": "STOP_AND_REPLAN",
   "independent_architect_acceptance": "PENDING",
-  "next_execution_started": false
+  "next_execution_started": false,
+  "exact_head_ci": "33999675631",
+  "artifact_sha256": "sha256:4b62f90d7faa519e9bd0628d5613cc16bb79ae74b937c506f3a14b02d52963c7",
+  "validated_head": "493fc79e429047bb6c258992b356e380f6058896"
 }

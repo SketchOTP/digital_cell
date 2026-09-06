@@ -834,3 +834,15 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
   buffer, field, allocation, transport, or active-work expression.
 - Confidence: `PROVISIONAL` pending exact-head Linux validation and artifact
   digest.
+
+## L-DCDEV021-GOAL-SHARED-MEDIUM-EXECUTION-R12-AUTHORITY-001
+
+- Fact: exact-head workflow `33999675631` passed on
+  `493fc79e429047bb6c258992b356e380f6058896` and the independently downloaded
+  artifact ZIP matched
+  `sha256:4b62f90d7faa519e9bd0628d5613cc16bb79ae74b937c506f3a14b02d52963c7`.
+- Lesson: the selected shared-medium contract is validated as finite,
+  conserved transfer but not as resource-causal fission.
+- Scope: Goal-agent provisional authority only; independent Architect
+  acceptance remains pending.
+- Final exact-head validation is required after this append-only record.

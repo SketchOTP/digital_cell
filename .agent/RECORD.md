@@ -1037,6 +1037,19 @@ Use it for architectural decisions, governance changes, releases, qualification 
   demonstrated divergence before another implementation.
 - Independent Architect acceptance: `PENDING`.
 
+## DEC-DCDEV021-GOAL-SHARED-MEDIUM-EXECUTION-R12-AUTHORITY
+
+- Date: `2026-09-05`
+- Status: `ACTIVE_PROVISIONAL`
+- Result head: `493fc79e429047bb6c258992b356e380f6058896`.
+- Exact-head Linux workflow: `33999675631` passed.
+- Artifact ZIP digest: `sha256:4b62f90d7faa519e9bd0628d5613cc16bb79ae74b937c506f3a14b02d52963c7`.
+- Decision: seal the finite-transfer and non-causal-fission result as a
+  Goal-agent provisional negative only. Independent Architect acceptance is
+  not claimed.
+- Final exact-head validation is required after this append-only authority
+  record.
+
 ## DEC-DCDEV021-GOAL-CURRENT-FLUX-LEDGER-R10-AUTHORITY
 
 - Date: `2026-09-05`

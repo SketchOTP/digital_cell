@@ -2179,4 +2179,7 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - This closes the current contract execution and forbids another nearby
   spatial-field, reserve, assimilation, allocation, transport, or active-work
   variant. Independent Architect acceptance is not claimed.
-- Exact-head Linux validation and artifact digest are pending.
+- First exact-head Linux workflow `33999675631` passed on `493fc79`; the
+  artifact ZIP matched
+  `sha256:4b62f90d7faa519e9bd0628d5613cc16bb79ae74b937c506f3a14b02d52963c7`.
+- A final exact-head run is required after this authority append.

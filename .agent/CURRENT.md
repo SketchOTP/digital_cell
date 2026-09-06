@@ -408,4 +408,8 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - This is a verified finite-transfer composition but not resource-causal
   reproduction. Stop local material-flow variants and replan the wider
   organism/world architecture from the first divergence.
-- Exact-head Linux validation and artifact digest are pending.
+- Exact-head Linux workflow `33999675631` passed on `493fc79`; the
+  independently downloaded artifact ZIP matched
+  `sha256:4b62f90d7faa519e9bd0628d5613cc16bb79ae74b937c506f3a14b02d52963c7`.
+- This authority append requires one final exact-head validation because the
+  governance/evidence files changed after the first successful run.
