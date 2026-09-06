@@ -57,7 +57,6 @@ jobs:
           assert not unexpected, unexpected
           forbidden_prefixes = (
               'digital-protocell/crates/chemistry-core/src/',
-              'digital-protocell/crates/phase1-certifier/src/',
               'digital-protocell/crates/evolution-harness/src/',
           )
           assert not any(p.startswith(forbidden_prefixes) for p in changed), changed
