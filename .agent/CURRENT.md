@@ -417,3 +417,25 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
   their historical bounded-diff allowlists. Their push triggers are now scoped
   to their own workflow/documentation/script/evidence surfaces; this is a
   workflow-scope reconciliation, not a scientific result.
+
+## Goal-mode birth-state ecology R13
+
+- Current branch: `m2/dc-dev-021-goal-post-fission-ecological-reentry`.
+- Result head before this governance pointer update: `9508c59`.
+- Active directive: `GOAL-MATERIAL-FLOW-ROUTE-A-BIRTH-STATE-ECOLOGY-R13`.
+- Largest unresolved end-goal gap: environmental transfer must precede a
+  legitimate growth/fission divergence; the inherited pre-resource fission
+  confound is removed, but resource-causal reproduction remains unestablished.
+- Active seed-2 birth-state arm first contacts/transfers at step `7627`,
+  delivers `313.39701430846264` N and F, remains alive, and fissions `0` times
+  in the fixed `12000`-step horizon. Transfer-disabled receives zero N/F and
+  ends with `starvation_collapse`.
+- Goal-agent classification:
+  `M2_BIRTH_STATE_SHARED_MEDIUM_RESOURCE_CAUSAL_FISSION_NOT_ESTABLISHED`.
+- Exact-head workflow on the prior sealed head: `34002306203` passed;
+  artifact digest `sha256:da870de1f9b8da87de12c697f342130064bd126bb75b681dea2f068fb41752a1`.
+- Independent Architect acceptance: `PENDING`.
+- Next execution: `false`. Do not add another material pool, buffer,
+  transport layer, active-work formula, gate relaxation, resource increase,
+  resource repositioning, or horizon extension. Select the next architecture
+  from the unified flux divergence or replan the organism-world material flow.
