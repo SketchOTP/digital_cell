@@ -1264,3 +1264,16 @@ Use it for architectural decisions, governance changes, releases, qualification 
   provisional governance evidence. It does not alter the R12 scientific
   classification or independently accept the shared-medium architecture.
 - Independent Architect acceptance: `PENDING`.
+
+## DEC-DCDEV021-GOAL-BIRTH-STATE-ECOLOGY-R13-GOVERNANCE-AUTHORITY
+
+- Date: `2026-09-06`
+- Status: `ACTIVE_PROVISIONAL`
+- Result head: `c2e90d1555313f732c7e14ba1636c8bf8cc7b755`.
+- Exact-head Linux workflow: `34002782625` passed.
+- Artifact digest: `sha256:d26b8c005194ef15b9ff20fa8eca093bfb0eede57fcbd35a8fb2fc152fa14631`.
+- Decision: seal the R13 workflow-scope reconciliation as Goal-agent
+  provisional governance evidence. The allowlist now matches the trigger for
+  `.agent/CURRENT.md`; no runtime or material-flow mechanism changed.
+- Independent Architect acceptance: `PENDING`.
+- Supersedes record: none.

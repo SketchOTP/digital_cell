@@ -894,3 +894,15 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
   acceptance remains pending.
 - Governance: earlier R13 workflow failures were bounded authority-check
   errors (ancestry scope and abbreviated start hash), not scientific failures.
+
+## L-DCDEV021-GOAL-BIRTH-STATE-ECOLOGY-R13-GOVERNANCE-001
+
+- Fact: exact-head workflow `34002782625` passed on governance tip
+  `c2e90d1555313f732c7e14ba1636c8bf8cc7b755` after the bounded-diff allowlist
+  explicitly admitted `.agent/CURRENT.md`.
+- Artifact digest: `sha256:d26b8c005194ef15b9ff20fa8eca093bfb0eede57fcbd35a8fb2fc152fa14631`.
+- Lesson: workflow trigger paths and bounded-diff allowlists must cover the
+  same append-only governance surfaces; a mismatch is a workflow-scope issue,
+  not scientific evidence.
+- Boundary: the R13 scientific result remains provisional and independent
+  Architect acceptance remains pending.

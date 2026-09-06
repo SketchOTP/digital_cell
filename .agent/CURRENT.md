@@ -439,3 +439,13 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
   transport layer, active-work formula, gate relaxation, resource increase,
   resource repositioning, or horizon extension. Select the next architecture
   from the unified flux divergence or replan the organism-world material flow.
+
+## Goal-mode R13 governance validation
+
+- Governance tip: `c2e90d1555313f732c7e14ba1636c8bf8cc7b755`.
+- Exact-head workflow `34002782625` passed after reconciling the bounded-diff
+  allowlist to include `.agent/CURRENT.md`.
+- Artifact digest: `sha256:d26b8c005194ef15b9ff20fa8eca093bfb0eede57fcbd35a8fb2fc152fa14631`.
+- This is governance-only validation; the scientific R13 result remains
+  `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`, independent Architect acceptance
+  remains `PENDING`, and no successor execution has started.
