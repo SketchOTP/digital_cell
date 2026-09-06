@@ -47,6 +47,7 @@ jobs:
               ['git', 'diff', '--name-only', f'{start}..HEAD'], text=True
           ).splitlines())
           allowed = {
+              '.agent/CURRENT.md',
               '.agent/LEARNINGS.md', '.agent/RECORD.md',
               '.github/workflows/dc-dev-021-goal-birth-state-ecology.yml',
               '.github/workflows/dc-dev-021-goal-shared-medium-execution.yml',
