@@ -92,8 +92,8 @@ jobs:
           test -f docs/goal-material-flow-contract-selection-r11.md
           test -f docs/goal-birth-state-ecology-r13.md
           test -f docs/goal-assimilation-preservation-audit-r9.md
-          rg -q 'GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN' .agent/CURRENT.md .agent/RECORD.md
-          rg -q 'independent Architect acceptance.*PENDING|Independent Architect acceptance.*PENDING' .agent/CURRENT.md .agent/RECORD.md
+          grep -q 'GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN' .agent/CURRENT.md .agent/RECORD.md
+          grep -Eq 'independent Architect acceptance.*PENDING|Independent Architect acceptance.*PENDING' .agent/CURRENT.md .agent/RECORD.md
 
       - name: Hash and upload compact evidence
         working-directory: digital-protocell
