@@ -1,7 +1,0 @@
-{
-  "final_artifact": "sha256:6bb15a69da5691540df8dbdcf5ac4b36e551dedd6c36cccf58404a0477c23608",
-  "final_ci": "34053166177",
-  "final_r17_head": "b1d97babf6e97d84d73485f572f27a6d1e5e0553",
-  "previous_governed_head": "464d322c02f3bc92d634b22b316ae4b438973cd2",
-  "scientific_semantics_changed_by_pointer_reconciliation": false
-}

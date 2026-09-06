@@ -51,6 +51,21 @@ def first(rows, predicate):
     return next((row for row in rows if predicate(row)), None)
 
 
+def compact_rows(rows):
+    phases = {}
+    reasons = {}
+    for row in rows:
+        phases[row["phase"]] = phases.get(row["phase"], 0) + 1
+        reasons[row["reason_not_ready"]] = reasons.get(row["reason_not_ready"], 0) + 1
+    return {
+        "row_count": len(rows),
+        "phase_counts": phases,
+        "reason_counts": reasons,
+        "first_rows": rows[:12],
+        "last_rows": rows[-12:],
+    }
+
+
 def classify(rows, official, shadow):
     eligible = [r for r in rows if r["mass_gate_reached"]]
     shadow_ready = [r for r in shadow if r["shadow_try_local_fission"] == "SUCCESS"]
@@ -131,14 +146,14 @@ def main():
     dump(root, "d088_execution_sequence.json", {"reference": "D-088", "sequence": d088.get("execution_order"), "source_hashes": source})
     dump(root, "m2_execution_sequence.json", {"reference": "R17 M2 runtime", "sequence": ["motor_contractility", "environmental_transfer", "reactions", "growth", "remesh", "topology_every_10", "fission_every_25_after_gate"], "source_hash": source["digital-protocell/crates/m2-lifeform-runtime/src/main.rs"]})
     dump(root, "r17_early_replay.json", {"first_transfer_step": early.get("first_transfer_step"), "fission_events": early.get("fission_events"), "max_mass_over_birth": max((r["mass_over_birth_mass"] for r in rows), default=None), "fission_audit_present": bool(audit)})
-    dump(root, "r17_every_step_fission_readiness.json", {"row_count": len(rows), "rows": rows})
-    dump(root, "r17_attempt_tick_readiness.json", {"row_count": len(official), "mass_eligible_attempts": official_mass, "all_attempts": official})
-    dump(root, "r17_topology_order_audit.json", {"mass_eligible_rows": mass_rows, "interpretation": "observer-only before/after topology rows"})
+    dump(root, "r17_every_step_fission_readiness.json", compact_rows(rows) | {"mass_eligible_count": len(mass_rows)})
+    dump(root, "r17_attempt_tick_readiness.json", compact_rows(official) | {"mass_eligible_count": len(official_mass), "mass_eligible_samples": official_mass[:24] + official_mass[-24:]})
+    dump(root, "r17_topology_order_audit.json", compact_rows([r for r in rows if r["phase"] in {"before_topology", "after_topology"}]) | {"interpretation": "observer-only before/after topology rows"})
     dump(root, "r17_cadence_audit.json", {"between_attempt_ready": bool([r for r in mass_rows if r["shadow_try_local_fission"] == "SUCCESS"] and not [r for r in official if r["shadow_try_local_fission"] == "SUCCESS"]), "official_attempt_count": len(official_mass)})
     dump(root, "d088_positive_reference.json", d088)
     dump(root, "d088_fission_readiness_trace.json", {"trace": d088.get("readiness_trace", []), "physical_fission": d088.get("physical_fission")})
     dump(root, "d088_r17_comparison.json", {"d088": d088.get("readiness_trace", []), "r17_best_mass_eligible": best_pinch, "comparison_is_mechanistic_not_ecological": True})
-    dump(root, "passive_mechanics_shadow.json", {"status": "EXECUTED_CLONE_ONLY", "rows": shadow, "success_rows": [r for r in shadow if r["shadow_try_local_fission"] == "SUCCESS"]})
+    dump(root, "passive_mechanics_shadow.json", {"status": "EXECUTED_CLONE_ONLY", "summary": compact_rows(shadow), "success_count": len([r for r in shadow if r["shadow_try_local_fission"] == "SUCCESS"])})
     dump(root, "pinch_geometry_attribution.json", {"first_mass_gate": first_gate, "first_pinch": first_pinch, "best_pinch": best_pinch})
     dump(root, "cross_bond_a_attribution.json", {"mass_eligible_rows": [{k: r[k] for k in ("step", "absolute_a_mass", "cross_bond_mass_needed", "a_over_cross_bond_need", "cross_bond_a_sufficient", "reason_not_ready")} for r in mass_rows]})
     dump(root, "causal_localization.json", {"classification": classification, "earliest_observed_failed_prerequisite": "NO_PINCH", "earliest_justified_cause": "EXECUTION_PATH_DIFFERENT_PLUS_NO_PINCH", "source_execution_parity": "EXECUTION_PATH_DIFFERENT", "passive_shadow_restored_readiness": bool([r for r in shadow if r["shadow_try_local_fission"] == "SUCCESS"]), "no_repair_implemented": True})

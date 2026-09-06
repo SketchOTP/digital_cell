@@ -1,9 +1,0 @@
-{
-  "attempt_cadence": 25,
-  "authoritative_fission_trajectory_unchanged": true,
-  "clone_only_shadow": true,
-  "directive": "DC-DEV-021-M2-R18-PHYSICAL-FISSION-READINESS-AND-D088-EXECUTION-PARITY-AUDIT-001",
-  "horizon_steps": 12000,
-  "mass_gate_multiplier": 1.35,
-  "observer_only": true
-}

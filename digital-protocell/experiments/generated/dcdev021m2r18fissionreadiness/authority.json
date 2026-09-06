@@ -1,9 +1,0 @@
-{
-  "authority_mode": "GOAL_AGENT_PROVISIONALLY_ACCEPTED",
-  "directive": "DC-DEV-021-M2-R18-PHYSICAL-FISSION-READINESS-AND-D088-EXECUTION-PARITY-AUDIT-001",
-  "independent_architect_acceptance": "PENDING",
-  "r17_external_artifact": "sha256:6bb15a69da5691540df8dbdcf5ac4b36e551dedd6c36cccf58404a0477c23608",
-  "r17_external_ci": "34053166177",
-  "r17_external_classification": "M2_MATCHED_REFERENCE_REPRODUCTION_NOT_ESTABLISHED",
-  "starting_head": "b1d97babf6e97d84d73485f572f27a6d1e5e0553"
-}

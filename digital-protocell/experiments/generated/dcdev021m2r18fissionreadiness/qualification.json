@@ -1,8 +1,0 @@
-{
-  "classification": "M2_FISSION_READINESS_MULTIFACTOR_UNRESOLVED",
-  "directive": "DC-DEV-021-M2-R18-PHYSICAL-FISSION-READINESS-AND-D088-EXECUTION-PARITY-AUDIT-001",
-  "independent_architect_acceptance": "PENDING",
-  "next_execution_started": false,
-  "resource_causal_reproduction": "NOT_ESTABLISHED",
-  "scientific_runtime_changed": false
-}
