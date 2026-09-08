@@ -83,9 +83,17 @@ jobs:
           from pathlib import Path
           root = Path(os.environ['RUNNER_TEMP'])
           wp1 = json.loads((root / 'wp1.json').read_text())['vertex_only']
-          assert wp1['physical_fissions'] >= 7
-          assert wp1['valid_physical_fissions'] >= 7
-          assert wp1['both_viable_simple_daughter_pairs'] >= 6
+          physical = [row for row in wp1 if row['physical_fission']]
+          valid = [row for row in physical if row['fission']['valid']]
+          viable_simple = [
+              row for row in valid
+              if row['fission']['both_daughters_viable']
+              and row['fission']['daughter_a']['simple']
+              and row['fission']['daughter_b']['simple']
+          ]
+          assert len(physical) >= 7
+          assert len(valid) >= 7
+          assert len(viable_simple) >= 6
           m2 = json.loads((root / 'acquisition.json').read_text())['rows']
           active = [row for row in m2 if row['arm'] == 'adaptive_sensor_motor']
           assert len(active) == 12
