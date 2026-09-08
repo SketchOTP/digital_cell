@@ -1534,3 +1534,21 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Exact-head CI: `34252516997 PASS`.
 - Artifact ZIP digest: `sha256:b58fd5e143e7c98d1431da146b7bbb0e0fca2cd2f6b7d2daaaf2266385058493`.
 - No scientific semantics changed in this authority reconciliation. Independent Architect acceptance remains `PENDING`; successor execution is `false`.
+
+## DEC-DCFINAL001-R1-REPLAN-CONTINUE
+
+- Date: `2026-09-08`
+- Status: `ACTIVE_IN_PROGRESS`
+- External Architect disposition: `REPLAN / CONTINUE`; DC-FINAL-001 WP1 accepted, exact WP2 coupling accepted as bounded negative, terminal shutdown not accepted.
+- Largest unresolved causal gap: autonomous finite-resource acquisition. The authorized correction is one adaptive material-gradient front/rear migration architecture, with exactly one temporal fallback only if it fails.
+- Primary R1-E result is provisionally positive: `M2_ADAPTIVE_MATERIAL_GRADIENT_AUTONOMOUS_RESOURCE_ACQUISITION_QUALIFIED`; fallback not required. The same directive continues through R1-G..M; independent final acceptance remains pending.
+
+## DEC-DCFINAL001-R1-PROVISIONAL-TERMINAL-RESULT
+
+- Date: `2026-09-08`
+- Status: `GOAL_AGENT_PROVISIONAL_NEGATIVE`
+- Scientific result head: `e39571d5856e745254831b1d5c7b0c918c9fe921`.
+- Decision or event: complete the sole authorized adaptive spatial M2 architecture and continue through R1-G..M without a successor directive.
+- Result: M2 qualifies; bounded life-history development and physical heredity qualify; standalone checkpoint/sensory/memory/Godot infrastructure qualifies. Lawful mutation, geometry-valid differential reproduction, environment-dependent selection, reversal, and final one-run coexistence do not establish.
+- Final classification: `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`.
+- Authority: Goal-agent provisional only. Exact-head Linux CI, artifact digest, Notion readback, and independent Architect acceptance remain pending. Next execution: `false`.

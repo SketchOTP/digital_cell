@@ -667,3 +667,23 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Exact-head Linux workflow: `34252516997 PASS`.
 - Independently downloaded artifact ZIP digest: `sha256:b58fd5e143e7c98d1431da146b7bbb0e0fca2cd2f6b7d2daaaf2266385058493`.
 - Classification remains `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED` under `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE`; independent Architect acceptance is `PENDING` and no successor execution started.
+
+## DC-FINAL-001-R1 adaptive continuation
+
+- Active directive: `DC-FINAL-001-R1-ADAPTIVE-CHEMOSENSING-FRONT-REAR-MIGRATION-AND-END-TO-END-CONTINUATION-001`.
+- Starting authority: DC-FINAL-001 governance head `d24c01506cc7c70e2861c343ccd94a1e03a44681`, exact-head CI `34253452975`, artifact `sha256:546feef625350d36392d98147e90f1bc777c7701686879b7bd53450567b4efe5`.
+- Independent Architect disposition: `REPLAN / CONTINUE`; WP1 accepted; the exact WP2 nutrient-to-contractility mechanism accepted only as a bounded negative; the prior provisional shutdown is superseded but preserved above.
+- Largest unresolved end-goal gap at execution start: autonomous finite-resource acquisition. This execution replaces the mechanically reversed nutrient-facing contractility interface with the authorized zero-free-parameter adaptive material comparator, A-funded protrusive front, A-funded contractile rear, and local passive clutch. No third acquisition architecture is authorized.
+- Primary spatial matrix result: all 72 trajectories remain simple; uniform exposure has exact zero directional response; active directed displacement is positive in `12/12` with median `0.03005854234368264`; active capture, activated-material production, and structural growth exceed sensor-off and motor-off in `12/12` comparisons.
+- Provisional M2 classification: `M2_ADAPTIVE_MATERIAL_GRADIENT_AUTONOMOUS_RESOURCE_ACQUISITION_QUALIFIED`. Temporal fallback: `NOT_REQUIRED_BY_PRIOR_POSITIVE_GATE`.
+- Execution status: `IN_PROGRESS`; the directive requires immediate continuation through life-history, heredity/mutation/selection/reversal, persistence, sensory embodiment, memory, and integrated qualification.
+
+## DC-FINAL-001-R1 provisional terminal result
+
+- Scientific result head: `e39571d5856e745254831b1d5c7b0c918c9fe921`.
+- R1-E qualifies `M2_ADAPTIVE_MATERIAL_GRADIENT_AUTONOMOUS_RESOURCE_ACQUISITION_QUALIFIED`: positive resource-directed displacement, capture, activated material, and growth advantages over sensor-off and motor-off occur in `12/12`; uniform exposure is exactly silent. The authorized temporal fallback was not required.
+- R1-G establishes persistent life-history-dependent physical divergence in a common environment and one simple-parent fission with two simple viable daughters. A second history fission with one non-simple daughter is explicitly excluded.
+- R1-H/I does not establish lawful mutation, selection, or reversal: all four attempted campaign fissions had non-simple daughters, zero mutation occurred on valid reproduction, and both mutation-on/off populations collapsed before reversal. No environment, duration, genotype, or mutation tuning was performed.
+- R1-J/L infrastructure passes bounded checkpoint/restart, standalone release execution, real camera/microphone low-level transduction, organism-owned degradable local plasticity memory, and Godot observer-disconnection equivalence.
+- Goal-agent status: `GOAL_AGENT_PROVISIONAL_NEGATIVE`. Final classification: `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED` because M4 mutation/selection/reversal and one-run coexistence remain unestablished.
+- Exact-head CI, final artifact digest, Notion readback, and independent Architect acceptance remain pending. No successor execution is authorized or started.

@@ -176,3 +176,12 @@
 - `digital-protocell/experiments/dcfinal001_evidence.py` — compact terminal evidence generator sealing WP1 reproduction success and `NOT_EXECUTED_HARD_STOP_WP2` downstream boundaries.
 - `digital-protocell/experiments/generated/dcfinal001/` — DC-FINAL-001 authority, valid reproduction/daughters, finite-field acquisition negative, hard-stop matrix, preservation, qualification, and manifest.
 - `.github/workflows/dc-final-001.yml` — exact-head Linux validation for Work Packages 1-2, historical preservation, terminal qualification, and artifact upload.
+- `digital-protocell/crates/regulatory-core/src/adaptive_chemotaxis.rs` — R1 zero-free-parameter perimeter-weighted material comparator producing local front/rear drives with exact uniform-field silence.
+- `digital-protocell/examples/dcfinal001_r1_acquisition.rs` — R1-E three-seed/four-bearing adaptive front/rear acquisition matrix and six causal controls.
+- `digital-protocell/experiments/generated/dcfinal001r1/` — R1 compact authority, acquisition, continuation, preservation, and final qualification evidence.
+- `.github/workflows/dc-final-001-r1.yml` — R1 exact-head Linux validation and evidence artifact upload.
+- `digital-protocell/crates/regulatory-core/src/low_level_sensory.rs` — non-semantic RGB luminance/motion and PCM amplitude/band environmental transduction.
+- `digital-protocell/examples/dcfinal001_r1_life_history.rs` — shared-development, divergent-history, common-environment, and geometry-valid fission persistence assay.
+- `digital-protocell/examples/dcfinal001_r1_evolution.rs` — finite physical mutation-on/off H-to-B campaign; its sealed result is negative and invalid fissions are excluded.
+- `digital-protocell/crates/m2-lifeform-runtime/src/bin/digital-cell-final-lifeform.rs` — standalone adaptive organism/world runtime with atomic checkpointing, local experiential plasticity, inherited allocation, valid-fission handling, and observer-independent execution.
+- `digital-protocell/crates/godot-bridge/src/lib.rs` — retains the historical simulator and adds a read-only `FinalLifeformObserver` for standalone runtime reports.

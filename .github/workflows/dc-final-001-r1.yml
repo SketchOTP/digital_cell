@@ -1,0 +1,208 @@
+name: DC-FINAL-001-R1 adaptive chemotaxis and end-goal continuation
+
+on:
+  push:
+    branches: [codex/dc-final-001-r1-adaptive-chemosensing]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r1-qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - name: Verify authority and bounded scope
+        run: |
+          set -euo pipefail
+          start=d24c01506cc7c70e2861c343ccd94a1e03a44681
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - <<'PY'
+          import subprocess
+          allowed = (
+              '.agent/', '.github/workflows/dc-final-001-r1.yml',
+              'digital-protocell/Cargo.lock',
+              'digital-protocell/crates/chemistry-core/src/d096_allocation.rs',
+              'digital-protocell/crates/chemistry-core/src/mesh_self_contact.rs',
+              'digital-protocell/crates/chemistry-core/src/metabolic_reserve.rs',
+              'digital-protocell/crates/chemistry-core/tests/d096_tests.rs',
+              'digital-protocell/crates/godot-bridge/',
+              'digital-protocell/crates/m2-lifeform-runtime/',
+              'digital-protocell/crates/regulatory-core/',
+              'digital-protocell/examples/dcfinal001_acquisition.rs',
+              'digital-protocell/examples/dcfinal001_r1_',
+              'digital-protocell/experiments/dcfinal001_r1_evidence.py',
+              'digital-protocell/experiments/generated/dcfinal001r1/',
+              'digital-protocell/godot/',
+          )
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-only', 'd24c01506cc7c70e2861c343ccd94a1e03a44681..HEAD'], text=True
+          ).splitlines()
+          bad = [path for path in changed if not any(path.startswith(prefix) for prefix in allowed)]
+          assert not bad, bad
+          PY
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefOid
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+      - name: Qualify directional sensing, energy, contact, sensory, memory, and checkpoint primitives
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p regulatory-core adaptive_chemotaxis -- --nocapture
+          cargo +1.89.0 test --locked -p regulatory-core low_level_sensory -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core mesh_self_contact --lib -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d096_tests -- --nocapture
+          cargo +1.89.0 test --locked -p m2-lifeform-runtime --bin digital-cell-final-lifeform -- --nocapture
+          cargo +1.89.0 check --locked -p godot-bridge
+      - name: Replay the complete authorized R1 campaigns
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run --locked -q --release -p regulatory-core --example dcfinal001_reproduction -- --output "$RUNNER_TEMP/wp1.json" &
+          p1=$!
+          cargo +1.89.0 run --locked -q --release -p regulatory-core --example dcfinal001_acquisition -- --output "$RUNNER_TEMP/failed-wp2.json" &
+          p2=$!
+          cargo +1.89.0 run --locked -q --release -p regulatory-core --example dcfinal001_r1_acquisition -- --output "$RUNNER_TEMP/acquisition.json" &
+          p3=$!
+          cargo +1.89.0 run --locked -q --release -p regulatory-core --example dcfinal001_r1_life_history -- --output "$RUNNER_TEMP/life-history.json" &
+          p4=$!
+          cargo +1.89.0 run --locked -q --release -p regulatory-core --example dcfinal001_r1_evolution -- --output "$RUNNER_TEMP/evolution.json" &
+          p5=$!
+          wait "$p1" "$p2" "$p3" "$p4" "$p5"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          wp1 = json.loads((root / 'wp1.json').read_text())['vertex_only']
+          assert wp1['physical_fissions'] >= 7
+          assert wp1['valid_physical_fissions'] >= 7
+          assert wp1['both_viable_simple_daughter_pairs'] >= 6
+          m2 = json.loads((root / 'acquisition.json').read_text())['rows']
+          active = [row for row in m2 if row['arm'] == 'adaptive_sensor_motor']
+          assert len(active) == 12
+          assert all(row['displacement_toward_resource'] > 0 for row in active)
+          assert all(row['simple'] and not row['invalid'] for row in m2)
+          assert max(row['max_uniform_directional_response'] for row in m2 if row['arm'] == 'uniform_field') == 0
+          life = json.loads((root / 'life-history.json').read_text())
+          assert life['initial_state_equivalent']
+          assert life['common_checkpoint_state_distance'] > 0
+          assert life['pulse_history']['fission']['daughter_a_simple']
+          assert life['pulse_history']['fission']['daughter_b_simple']
+          evolution = json.loads((root / 'evolution.json').read_text())
+          assert evolution['mutation_on']['ledger']['simple_fissions'] == 0
+          assert evolution['mutation_on']['after_b_switch']['living'] == 0
+          PY
+      - name: Validate standalone sensory/checkpoint/observer surface
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import math, os, struct
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          width, height = 8, 4
+          previous = bytes(width * height * 3)
+          current = bytearray(previous)
+          for y in range(height):
+              for x in range(width // 2):
+                  current[3 * (y * width + x):3 * (y * width + x + 1)] = b'\xff\xff\xff'
+          (root / 'previous.rgb').write_bytes(previous)
+          (root / 'current.rgb').write_bytes(current)
+          samples = [int(10000 * math.sin(2 * math.pi * i / 32)) for i in range(256)]
+          (root / 'audio.pcm').write_bytes(b''.join(struct.pack('<h', sample) for sample in samples))
+          PY
+          cargo +1.89.0 build --locked --release -p m2-lifeform-runtime --bin digital-cell-final-lifeform
+          bin=target/release/digital-cell-final-lifeform
+          common="--camera-rgb8 $RUNNER_TEMP/current.rgb --camera-previous-rgb8 $RUNNER_TEMP/previous.rgb --camera-width 8 --camera-height 4 --microphone-pcm16le $RUNNER_TEMP/audio.pcm"
+          $bin --steps 40 --checkpoint "$RUNNER_TEMP/continuous.snapshot.json" --report "$RUNNER_TEMP/continuous.json" $common >/dev/null
+          $bin --steps 20 --checkpoint "$RUNNER_TEMP/restart.snapshot.json" --report "$RUNNER_TEMP/restart-a.json" $common >/dev/null
+          $bin --steps 20 --resume "$RUNNER_TEMP/restart.snapshot.json" --checkpoint "$RUNNER_TEMP/restart.snapshot.json" --report "$RUNNER_TEMP/restarted.json" >/dev/null
+          $bin --steps 40 --checkpoint "$RUNNER_TEMP/observer.snapshot.json" --report "$RUNNER_TEMP/observer.json" --observer-connected $common >/dev/null
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          a = json.loads((root / 'continuous.json').read_text())
+          b = json.loads((root / 'restarted.json').read_text())
+          o = json.loads((root / 'observer.json').read_text())
+          for key in ['cumulative_n_delivered','cumulative_f_delivered','cumulative_active_a','cumulative_active_w','cumulative_path','maximum_memory']:
+              assert abs(a[key] - b[key]) <= 1e-12, (key, a[key], b[key])
+              assert abs(a[key] - o[key]) <= 1e-12, (key, a[key], o[key])
+          assert a['sensory_camera_present'] and a['sensory_microphone_present']
+          assert a['maximum_memory'] > 0
+          assert o['observer_connected'] and not o['observer_in_biological_step']
+          PY
+      - name: Preserve frozen foundations
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test --locked -p evolution-harness -- --nocapture
+          run_d087() {
+            local output="$1" contract="$2" v4="$3"
+            if test "$v4" = 1; then
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 cargo +1.89.0 run -q -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            else
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 cargo +1.89.0 run -q -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            fi
+          }
+          run_d087 "$RUNNER_TEMP/d087-v2" ConservativeV2 0
+          run_d087 "$RUNNER_TEMP/d087-v3" ConservativeV3 0
+          run_d087 "$RUNNER_TEMP/d087-v4" ConservativeV3 1
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          expected = {'v2':[True]*8,'v3':[True]*8,'v4':[True,True,False,True,True,True,True,True]}
+          for name, vector in expected.items():
+              manifest = json.loads((root / f'd087-{name}' / 'manifest.json').read_text())
+              assert [manifest[f'gate{i}']['pass'] for i in range(8)] == vector
+          q = json.loads(Path('experiments/generated/dcfinal001r1/qualification.json').read_text())
+          assert q['m2_classification'] == 'M2_ADAPTIVE_MATERIAL_GRADIENT_AUTONOMOUS_RESOURCE_ACQUISITION_QUALIFIED'
+          assert q['classification'] == 'DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED'
+          assert q['next_execution_started'] is False
+          PY
+          python3 - <<'PY'
+          from pathlib import Path
+
+          directive = 'DC-FINAL-001-R1-ADAPTIVE-CHEMOSENSING-FRONT-REAR-MIGRATION-AND-END-TO-END-CONTINUATION-001'
+          required = {
+              '../.agent/CURRENT.md': [directive, 'GOAL_AGENT_PROVISIONAL_NEGATIVE'],
+              '../.agent/DIRECTIVES.md': [directive, 'No successor directive or execution is authorized'],
+              '../.agent/OUTCOMES.md': ['M2_ADAPTIVE_MATERIAL_GRADIENT_AUTONOMOUS_RESOURCE_ACQUISITION_QUALIFIED', 'DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED'],
+              '../.agent/LEARNINGS.md': ['L-DCFINAL001-R1-FRONT-REAR-CAUSAL-CORRECTION', 'zero mutation occurred on lawful reproduction'],
+              '../.agent/RECORD.md': ['DEC-DCFINAL001-R1-PROVISIONAL-TERMINAL-RESULT', 'Next execution: `false`'],
+              '../.agent/REPO_MAP.md': ['dcfinal001_r1_acquisition.rs', 'digital-cell-final-lifeform.rs'],
+          }
+          for path, needles in required.items():
+              text = Path(path).read_text()
+              for needle in needles:
+                  assert needle in text, (path, needle)
+          joined = '\n'.join(Path(path).read_text() for path in required)
+          assert 'INDEPENDENT ARCHITECT ACCEPTANCE: ACCEPTED' not in joined.upper()
+          print('R1 append-only governance surfaces present and provisional authority preserved')
+          PY
+      - name: Seal evidence
+        if: always()
+        working-directory: digital-protocell
+        run: |
+          find experiments/generated/dcfinal001r1 -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcfinal001r1.sha256"
+          sha256sum "$RUNNER_TEMP/dcfinal001r1.sha256"
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcfinal001r1
+          path: |
+            digital-protocell/experiments/generated/dcfinal001r1
+            ${{ runner.temp }}/dcfinal001r1.sha256

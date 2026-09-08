@@ -1073,3 +1073,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Under exact parity, local frictionless self-contact allows the unchanged vertex-pinch path to meet the original physical-reproduction threshold with seven simple viable daughter pairs; no topology fallback is needed.
 - A small capture increase is not sufficient evidence of chemotaxis. The authorized local metabolism-to-polarity coupling increased exposure in all 12 comparisons but generated resource-directed displacement in only one and beat sensor-off heading in only three.
 - The first irreducible canonical-goal blocker is therefore causal autonomous resource acquisition, not reproduction. Confidence: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE` pending exact-head CI and independent review.
+
+## L-DCFINAL001-R1-FRONT-REAR-CAUSAL-CORRECTION
+
+- Learning ID: L-DCFINAL001-R1-FRONT-REAR-CAUSAL-CORRECTION
+- Date: 2026-09-08
+- Fact or lesson: Separating adaptive directional sensing from the effector resolves the exact WP2 orientation defect: a nutrient-relative front drives existing A-funded outward membrane-normal force while the relative rear drives existing A-funded contraction. The resulting replicated direction, capture, activated-material, and growth advantages qualify bounded M2 acquisition, while one geometry-valid inherited lineage does not establish mutation or natural selection because zero mutation occurred on lawful reproduction in the fixed evolution campaign.
+- Evidence location: `digital-protocell/experiments/generated/dcfinal001r1/`, `digital-protocell/examples/dcfinal001_r1_acquisition.rs`, `digital-protocell/examples/dcfinal001_r1_life_history.rs`, and `digital-protocell/examples/dcfinal001_r1_evolution.rs`.
+- Confidence: PROVISIONAL
+- Scope: DC-FINAL-001-R1 adaptive chemosensing, front-rear mechanics, life-history continuity, and end-to-end continuation.
+- Supersedes learning: none

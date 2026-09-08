@@ -2343,3 +2343,21 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Result head `d36145c482854fac34d9a6b1fbbb5847aee45f52` passed Linux workflow `34252516997` with both terminal work packages and preservation suites green.
 - Artifact `dcfinal001` independently hashes to `sha256:b58fd5e143e7c98d1431da146b7bbb0e0fca2cd2f6b7d2daaaf2266385058493`.
 - The result remains a Goal-agent provisional terminal negative; no independent Architect acceptance or successor execution is asserted.
+
+## DC-FINAL-001-R1 primary spatial acquisition result
+
+- The external Architect rejected the prior shutdown and authorized one final source-consistent M2 correction plus uninterrupted downstream continuation on a positive M2 gate.
+- The adaptive comparator reads only local membrane N/F occupancy and its perimeter-weighted mean. Uniform input produces exact zero front/rear response; no target coordinate, bearing, observer gradient, gain, or threshold enters organism execution.
+- Across `3 seeds x 4 bearings x 6 causal arms`, all 72 trajectories remain simple. The adaptive arm has positive resource-directed displacement in `12/12` (median `0.03005854234368264`) and beats sensor-off and motor-off direction, capture, activated-material production, and structural growth in `12/12` matched comparisons.
+- Provisional classification: `M2_ADAPTIVE_MATERIAL_GRADIENT_AUTONOMOUS_RESOURCE_ACQUISITION_QUALIFIED`. The temporal fallback is `NOT_REQUIRED_BY_PRIOR_POSITIVE_GATE`; downstream R1-G..M execution is in progress.
+
+## DC-FINAL-001-R1 — provisional terminal outcome
+
+- WP1 preservation passes with `7/10` geometry-valid fissions and seven simple viable daughter pairs.
+- Failed-WP2 attribution confirms the nutrient-facing sector was contractile, with no explicit protrusive force; R1 corrects that causal orientation using the membrane-local adaptive comparator.
+- R1-E passes all 72 simple trajectories: active directed displacement is positive in `12/12` (median `0.03005854234368264`) and beats sensor-off and motor-off direction, N/F capture, A production, and structural growth in `12/12` comparisons. Uniform-field response is exactly zero and A-to-W closure passes.
+- R1-G produces persistent common-environment state divergence and one counted fission with a simple parent and two simple viable daughters; material/genotype/catalyst partition closes.
+- R1-H/I is negative: zero valid campaign fissions, zero lawful mutation events, no differential reproduction, and no reversal before population collapse. Invalid fissions are excluded rather than counted.
+- The `digital-cell-final-lifeform` release runtime passes deterministic-tolerance checkpoint/restart, real `/dev/video0` and USB microphone low-level input, persistent forgetting plasticity memory, and observer-connected/disconnected scientific equivalence. Godot reads reports only.
+- M1 is preserved; D-087 remains `8/8`, `8/8`, `7/8` with `[true,true,false,true,true,true,true,true]`; D-088/D-091 and evolution-harness tests pass, with the harness explicitly not treated as scientific evolution evidence.
+- Provisional final classification: `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`; exact-head CI/artifact and independent Architect acceptance are pending; next execution is `false`.

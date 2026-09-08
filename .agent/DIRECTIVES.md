@@ -1088,3 +1088,18 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Head `d36145c482854fac34d9a6b1fbbb5847aee45f52` passed exact-head workflow `34252516997`.
 - Uploaded artifact ZIP independently hashes to `sha256:b58fd5e143e7c98d1431da146b7bbb0e0fca2cd2f6b7d2daaaf2266385058493`.
 - This pointer changes governance only. The terminal classification and hard-stop boundary are unchanged; external acceptance remains pending.
+
+## DC-FINAL-001-R1-ADAPTIVE-CHEMOSENSING-FRONT-REAR-MIGRATION-AND-END-TO-END-CONTINUATION-001
+
+- Issued `2026-09-08` by external Architect from accepted DC-FINAL-001 authority `d24c01506cc7c70e2861c343ccd94a1e03a44681`.
+- Supersedes the preceding provisional shutdown recommendation without rewriting its evidence. WP1 is accepted; the exact direct nutrient-to-contractility WP2 mechanism remains a bounded negative.
+- First execution closes the largest unresolved causal gap with a perimeter-weighted material comparator, exact uniform-field adaptation, A-funded local outward protrusion, A-funded rear contractility, passive local clutch, and full causal controls.
+- On an R1-E positive, continue in this directive through R1-G..M. On primary failure, exactly one PlasticityStateV1 temporal fallback is allowed. A third acquisition architecture is forbidden.
+- Final authority is Goal-agent provisional pending exact-head Linux CI, sealed artifact, Notion readback, and independent Architect review.
+
+### Provisional terminal disposition
+
+- Primary spatial architecture passes M2; the conditional temporal fallback is `NOT_REQUIRED_BY_PRIOR_POSITIVE_GATE`.
+- Life-history development and physical heredity pass bounded continuation, but lawful mutation, differential geometry-valid reproduction, environment-dependent frequency shift, and reversal do not establish in the frozen campaign.
+- The authorized Linux/checkpoint/sensory/memory/Godot continuation is implemented and validated as infrastructure, but component passes do not satisfy final coexistence.
+- Final Goal-agent classification is `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`; independent Architect acceptance, exact-head CI, and artifact remain pending. No successor directive or execution is authorized.
