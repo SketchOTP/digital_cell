@@ -9,7 +9,7 @@
 use crate::material_mesh::{
     conserve_interior_amount_across_area_change, MaterialMesh, MeshContractVersion,
 };
-use crate::mesh_mechanics::{compute_forces, MechParams};
+use crate::mesh_mechanics::{compute_forces, MechParams, MAX_EXTERNAL_FORCE_PER_VERTEX};
 use serde::{Deserialize, Serialize};
 
 const EPS: f64 = f64::EPSILON;
@@ -178,8 +178,66 @@ pub fn mechanics_step_with_local_self_contact(
     if !mesh.can_advance_physics() || mesh.n() < 3 || !polygon_simple(&mesh.vertices) {
         return None;
     }
-    let old = mesh.vertices.clone();
     let forces = compute_forces(mesh, params);
+    mechanics_step_from_forces_with_local_self_contact(mesh, params, forces)
+}
+
+/// Apply caller-composed local edge tension and bounded external forces through
+/// the same geometry-only local nonpenetration kernel used by D-088R1.
+/// This is opt-in; the historical mechanics APIs remain unchanged.
+pub fn mechanics_step_with_edge_tensions_external_forces_and_local_self_contact(
+    mesh: &mut MaterialMesh,
+    params: &MechParams,
+    edge_tensions: &[f64],
+    external_forces: &[[f64; 2]],
+) -> Option<SelfContactLedger> {
+    if !mesh.can_advance_physics()
+        || mesh.n() < 3
+        || edge_tensions.len() != mesh.n()
+        || external_forces.len() != mesh.n()
+        || !polygon_simple(&mesh.vertices)
+    {
+        return None;
+    }
+    let mut forces = compute_forces(mesh, params);
+    for (edge, tension) in edge_tensions.iter().copied().enumerate() {
+        if mesh.edges[edge].ruptured || !tension.is_finite() || tension < 0.0 {
+            return None;
+        }
+        if tension > 0.0 {
+            let next = (edge + 1) % mesh.n();
+            let delta = [
+                mesh.vertices[next][0] - mesh.vertices[edge][0],
+                mesh.vertices[next][1] - mesh.vertices[edge][1],
+            ];
+            let length = delta[0].hypot(delta[1]).max(1e-15);
+            let tangent = [delta[0] / length, delta[1] / length];
+            forces[edge][0] += tension * tangent[0];
+            forces[edge][1] += tension * tangent[1];
+            forces[next][0] -= tension * tangent[0];
+            forces[next][1] -= tension * tangent[1];
+        }
+    }
+    for (force, external) in forces.iter_mut().zip(external_forces) {
+        let magnitude = external[0].hypot(external[1]);
+        if external.iter().any(|value| !value.is_finite())
+            || !magnitude.is_finite()
+            || magnitude > MAX_EXTERNAL_FORCE_PER_VERTEX
+        {
+            return None;
+        }
+        force[0] += external[0];
+        force[1] += external[1];
+    }
+    mechanics_step_from_forces_with_local_self_contact(mesh, params, forces)
+}
+
+fn mechanics_step_from_forces_with_local_self_contact(
+    mesh: &mut MaterialMesh,
+    params: &MechParams,
+    forces: Vec<[f64; 2]>,
+) -> Option<SelfContactLedger> {
+    let old = mesh.vertices.clone();
     if forces.len() != old.len() {
         return None;
     }

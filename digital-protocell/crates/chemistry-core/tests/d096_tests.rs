@@ -1,11 +1,13 @@
 use chemistry_core::d096_allocation::{
-    allocation_schema_load_ok, apply_assay_environment, expression_step, AllocationGenotype,
-    pre_fission_assay, AllocationParams, AssayEnvironment,
+    allocation_schema_load_ok, apply_assay_environment, expression_step,
+    mutate_allocation_at_reproduction, AllocationGenotype, pre_fission_assay, AllocationParams,
+    AssayEnvironment,
     EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION,
     FINITE_ALLOCATION_SCHEMA_VERSION,
 };
 use chemistry_core::material_mesh::{LumpedChem, MaterialMesh, EQUATION_VERSION_MATERIAL_MESH};
 use chemistry_core::mesh_reactions::{reactions_step, ReactionParams};
+use chemistry_core::metabolic_reserve::{reserve_schema_load_ok, ReserveParams};
 
 fn mesh() -> MaterialMesh {
     MaterialMesh::seed_regular(
@@ -272,5 +274,35 @@ fn d096_equation_snapshot_and_candidate_identity_are_isolated() {
     assert_ne!(
         genotype.candidate_hash(&params),
         AllocationGenotype::pulse().candidate_hash(&params)
+    );
+}
+
+#[test]
+fn d098_finite_allocation_identity_is_reserve_compatible_without_widening_legacy() {
+    let params = AllocationParams::default();
+    let reserve = ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh().area());
+    let mut enabled = mesh();
+    enabled.interior.a = 1.0;
+    enabled.enable_finite_allocation(AllocationGenotype::neutral(), &params);
+
+    assert!(reserve.enable);
+    assert!(reserve_schema_load_ok(&enabled, &reserve));
+    assert!(!reserve_schema_load_ok(&mesh(), &reserve));
+}
+
+#[test]
+fn d096_mutation_is_reproduction_scoped_blind_and_simplex_conserving() {
+    let params = AllocationParams::default();
+    let parent = AllocationGenotype::neutral();
+    let (seed, mutation) = (1..=100_000)
+        .map(|seed| (seed, mutate_allocation_at_reproduction(parent, &params, seed)))
+        .find(|(_, ledger)| ledger.mutated)
+        .expect("frozen mutation probability should yield a deterministic event");
+    assert!(mutation.offspring.valid(&params));
+    assert_ne!(mutation.offspring, mutation.parent);
+    assert!((mutation.offspring.0.iter().sum::<f64>() - params.total_budget).abs() < 1e-12);
+    assert_eq!(
+        mutation,
+        mutate_allocation_at_reproduction(parent, &params, seed)
     );
 }

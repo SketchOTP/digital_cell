@@ -109,6 +109,77 @@ pub struct ExpressionLedger {
     pub turnover_waste: f64,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+pub struct AllocationMutationLedger {
+    pub parent: AllocationGenotype,
+    pub offspring: AllocationGenotype,
+    pub mutated: bool,
+    pub source_index: Option<usize>,
+    pub target_index: Option<usize>,
+    pub transferred: f64,
+    pub rng_state_after: u64,
+}
+
+fn mutation_random(state: &mut u64) -> f64 {
+    let mut x = (*state).max(1);
+    x ^= x << 13;
+    x ^= x >> 7;
+    x ^= x << 17;
+    *state = x;
+    (x as f64) / (u64::MAX as f64)
+}
+
+/// Apply the frozen D-096 mutation contract at one lawful reproduction event.
+///
+/// The mutation is blind to environment, survival, phenotype, and fitness. It
+/// moves material allocation between two coordinates and therefore preserves
+/// the exact finite simplex without clipping or renormalization.
+pub fn mutate_allocation_at_reproduction(
+    parent: AllocationGenotype,
+    params: &AllocationParams,
+    seed: u64,
+) -> AllocationMutationLedger {
+    assert!(parent.valid(params), "invalid frozen allocation");
+    let mut rng = seed.max(1);
+    let mut offspring = parent;
+    let mut source_index = None;
+    let mut target_index = None;
+    let mut transferred = 0.0;
+    let mut mutated = false;
+    if mutation_random(&mut rng) < params.mutation_probability {
+        let pair = (mutation_random(&mut rng) * (FUNCTIONS * (FUNCTIONS - 1)) as f64)
+            .floor()
+            .min((FUNCTIONS * (FUNCTIONS - 1) - 1) as f64) as usize;
+        let source = pair / (FUNCTIONS - 1);
+        let offset = pair % (FUNCTIONS - 1);
+        let target = if offset >= source { offset + 1 } else { offset };
+        let u1 = mutation_random(&mut rng).max(f64::MIN_POSITIVE);
+        let u2 = mutation_random(&mut rng);
+        let normal = (-2.0 * u1.ln()).sqrt() * (std::f64::consts::TAU * u2).cos();
+        let delta = (normal.abs() * params.mutation_sigma)
+            .min(offspring.0[source])
+            .min(params.allocation_max - offspring.0[target]);
+        if delta > 0.0 {
+            offspring.0[source] -= delta;
+            offspring.0[target] += delta;
+            source_index = Some(source);
+            target_index = Some(target);
+            transferred = delta;
+            mutated = true;
+        }
+    }
+    debug_assert!(offspring.valid(params));
+    AllocationMutationLedger {
+        parent,
+        offspring,
+        mutated,
+        source_index,
+        target_index,
+        transferred,
+        rng_state_after: rng,
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum ExpressionReject {
     IncompatibleSchema,

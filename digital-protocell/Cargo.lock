@@ -578,6 +578,7 @@ version = "0.1.0"
 dependencies = [
  "chemistry-core",
  "godot",
+ "serde_json",
 ]
 
 [[package]]
