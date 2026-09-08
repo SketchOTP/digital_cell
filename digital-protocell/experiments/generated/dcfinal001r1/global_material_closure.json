@@ -1,0 +1,7 @@
+{
+  "life_history_partition": true,
+  "maximum_A_to_W_residual": 2.0694557179012918e-13,
+  "maximum_finite_world_residual": 1.6110376921396607e-14,
+  "pass": true,
+  "wp1_partition": "PASS"
+}

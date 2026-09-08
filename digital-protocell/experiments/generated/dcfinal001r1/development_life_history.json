@@ -1,0 +1,464 @@
+{
+  "common_checkpoint_state_distance": 308.6991791849853,
+  "common_environment": "AssayEnvironment::Neutral; organism reads only resulting N/F and physical damage",
+  "common_start_state_distance": 279.442377182176,
+  "damage_history": {
+    "all_parent_states_simple": true,
+    "common_checkpoint": {
+      "a_amount": 4116.423681657594,
+      "alive": true,
+      "area": 1643.7379160513829,
+      "catalysts": [
+        3.5445842834130596,
+        3.5445842834130596,
+        3.5445842834130596,
+        3.5445842834130596
+      ],
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "mass": 1328.028960198856,
+      "reserve_amount": 0.0,
+      "simple": true,
+      "step": 5600,
+      "vertices": 311,
+      "young_mass": 0.0
+    },
+    "common_start": {
+      "a_amount": 4252.39329515165,
+      "alive": true,
+      "area": 1630.6274415163025,
+      "catalysts": [
+        2.2630819419631876,
+        2.2630819419631876,
+        2.2630819419631876,
+        2.2630819419631876
+      ],
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "mass": 1236.0407088277736,
+      "reserve_amount": 0.0,
+      "simple": true,
+      "step": 5400,
+      "vertices": 302,
+      "young_mass": 0.0
+    },
+    "fission": {
+      "catalyst_partition_residual": 0.0,
+      "daughter_a": {
+        "all_states_simple": false,
+        "initial": {
+          "a_amount": 692.291636664966,
+          "alive": true,
+          "area": 295.4243175039783,
+          "catalysts": [
+            1.0327083176702676,
+            1.0327083176702676,
+            1.0327083176702676,
+            1.0327083176702676
+          ],
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "mass": 344.6214140982237,
+          "reserve_amount": 0.0,
+          "simple": false,
+          "step": 5926,
+          "vertices": 82,
+          "young_mass": 0.0
+        },
+        "terminal": {
+          "a_amount": 692.2902573531429,
+          "alive": true,
+          "area": 295.4243175039783,
+          "catalysts": [
+            1.0344293593241234,
+            1.0344293593241234,
+            1.0344293593241234,
+            1.0344293593241234
+          ],
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "mass": 344.61452166994184,
+          "reserve_amount": 0.0,
+          "simple": false,
+          "step": 6426,
+          "vertices": 82,
+          "young_mass": 0.0
+        }
+      },
+      "daughter_a_simple": false,
+      "daughter_b": {
+        "all_states_simple": false,
+        "initial": {
+          "a_amount": 3207.0965462530053,
+          "alive": true,
+          "area": 1368.5768513836315,
+          "catalysts": [
+            4.784104131088767,
+            4.784104131088767,
+            4.784104131088767,
+            4.784104131088767
+          ],
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "mass": 1119.3853233504806,
+          "reserve_amount": 0.0,
+          "simple": true,
+          "step": 5926,
+          "vertices": 245,
+          "young_mass": 0.0
+        },
+        "terminal": {
+          "a_amount": 3207.0920648844285,
+          "alive": true,
+          "area": 1368.5768513836315,
+          "catalysts": [
+            4.789691489497256,
+            4.789691489497256,
+            4.789691489497256,
+            4.789691489497256
+          ],
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "mass": 1119.3629356440147,
+          "reserve_amount": 0.0,
+          "simple": true,
+          "step": 6426,
+          "vertices": 245,
+          "young_mass": 0.0
+        }
+      },
+      "daughter_b_simple": true,
+      "genotype_inherited": true,
+      "parent": {
+        "a_amount": 3900.896697933325,
+        "alive": true,
+        "area": 1664.0011688876089,
+        "catalysts": [
+          5.816812448759034,
+          5.816812448759034,
+          5.816812448759034,
+          5.816812448759034
+        ],
+        "genotype": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "mass": 1460.9897074179967,
+        "reserve_amount": 0.0,
+        "simple": true,
+        "step": 5926,
+        "vertices": 325,
+        "young_mass": 0.0
+      },
+      "parent_simple": true,
+      "partition_ok": true,
+      "step": 5926
+    },
+    "history": "recurrent_local_damage_history",
+    "initial": {
+      "a_amount": 4078.6204559725193,
+      "alive": true,
+      "area": 1591.2662450668242,
+      "catalysts": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "mass": 1025.253581155014,
+      "reserve_amount": 0.0,
+      "simple": true,
+      "step": 5000,
+      "vertices": 280,
+      "young_mass": 0.0
+    },
+    "terminal": {
+      "a_amount": 3900.896697933325,
+      "alive": true,
+      "area": 1664.0011688876089,
+      "catalysts": [
+        5.816812448759034,
+        5.816812448759034,
+        5.816812448759034,
+        5.816812448759034
+      ],
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "mass": 1460.9897074179967,
+      "reserve_amount": 0.0,
+      "simple": true,
+      "step": 12000,
+      "vertices": 325,
+      "young_mass": 0.0
+    }
+  },
+  "directive": "DC-FINAL-001-R1-ADAPTIVE-CHEMOSENSING-FRONT-REAR-MIGRATION-AND-END-TO-END-CONTINUATION-001",
+  "history_horizon_authority": "one complete frozen D-096 H-pulse cycle",
+  "history_steps": 400,
+  "initial_state_equivalent": true,
+  "pulse_history": {
+    "all_parent_states_simple": true,
+    "common_checkpoint": {
+      "a_amount": 3850.592262655472,
+      "alive": true,
+      "area": 1647.59202462148,
+      "catalysts": [
+        3.483085970113528,
+        3.483085970113528,
+        3.483085970113528,
+        3.483085970113528
+      ],
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "mass": 1289.261301839288,
+      "reserve_amount": 0.0,
+      "simple": true,
+      "step": 5600,
+      "vertices": 311,
+      "young_mass": 0.0
+    },
+    "common_start": {
+      "a_amount": 4005.9425974017086,
+      "alive": true,
+      "area": 1636.0300242981532,
+      "catalysts": [
+        2.235241953678637,
+        2.235241953678637,
+        2.235241953678637,
+        2.235241953678637
+      ],
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "mass": 1208.562972130528,
+      "reserve_amount": 0.0,
+      "simple": true,
+      "step": 5400,
+      "vertices": 303,
+      "young_mass": 0.0
+    },
+    "fission": {
+      "catalyst_partition_residual": 0.0,
+      "daughter_a": {
+        "all_states_simple": false,
+        "initial": {
+          "a_amount": 1896.6239815358697,
+          "alive": true,
+          "area": 849.6954423285625,
+          "catalysts": [
+            2.719030172649479,
+            2.719030172649479,
+            2.719030172649479,
+            2.719030172649479
+          ],
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "mass": 777.4319752399541,
+          "reserve_amount": 0.0,
+          "simple": true,
+          "step": 5876,
+          "vertices": 181,
+          "young_mass": 0.0
+        },
+        "terminal": {
+          "a_amount": 1896.6208696327446,
+          "alive": true,
+          "area": 849.6954423285625,
+          "catalysts": [
+            2.7229118944653337,
+            2.7229118944653337,
+            2.7229118944653337,
+            2.7229118944653337
+          ],
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "mass": 777.4164266004501,
+          "reserve_amount": 0.0,
+          "simple": true,
+          "step": 6376,
+          "vertices": 181,
+          "young_mass": 0.0
+        }
+      },
+      "daughter_a_simple": true,
+      "daughter_b": {
+        "all_states_simple": false,
+        "initial": {
+          "a_amount": 1823.0221814406962,
+          "alive": true,
+          "area": 816.7215293669625,
+          "catalysts": [
+            2.613513466560994,
+            2.613513466560994,
+            2.613513466560994,
+            2.613513466560994
+          ],
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "mass": 621.4831346220731,
+          "reserve_amount": 0.0,
+          "simple": true,
+          "step": 5876,
+          "vertices": 143,
+          "young_mass": 0.0
+        },
+        "terminal": {
+          "a_amount": 1823.019693417347,
+          "alive": true,
+          "area": 816.7215293669625,
+          "catalysts": [
+            2.616615655207171,
+            2.616615655207171,
+            2.616615655207171,
+            2.616615655207171
+          ],
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "mass": 621.4707049593807,
+          "reserve_amount": 0.0,
+          "simple": true,
+          "step": 6376,
+          "vertices": 143,
+          "young_mass": 0.0
+        }
+      },
+      "daughter_b_simple": true,
+      "genotype_inherited": true,
+      "parent": {
+        "a_amount": 3722.279499230468,
+        "alive": true,
+        "area": 1666.4169716955257,
+        "catalysts": [
+          5.332543639210473,
+          5.332543639210473,
+          5.332543639210473,
+          5.332543639210473
+        ],
+        "genotype": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "mass": 1393.6484373542232,
+        "reserve_amount": 0.0,
+        "simple": true,
+        "step": 5876,
+        "vertices": 322,
+        "young_mass": 0.0
+      },
+      "parent_simple": true,
+      "partition_ok": true,
+      "step": 5876
+    },
+    "history": "finite_nutrient_pulse_history",
+    "initial": {
+      "a_amount": 4078.6204559725193,
+      "alive": true,
+      "area": 1591.2662450668242,
+      "catalysts": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "mass": 1025.253581155014,
+      "reserve_amount": 0.0,
+      "simple": true,
+      "step": 5000,
+      "vertices": 280,
+      "young_mass": 0.0
+    },
+    "terminal": {
+      "a_amount": 3722.279499230468,
+      "alive": true,
+      "area": 1666.4169716955257,
+      "catalysts": [
+        5.332543639210473,
+        5.332543639210473,
+        5.332543639210473,
+        5.332543639210473
+      ],
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "mass": 1393.6484373542232,
+      "reserve_amount": 0.0,
+      "simple": true,
+      "step": 12000,
+      "vertices": 322,
+      "young_mass": 0.0
+    }
+  },
+  "shared_development_simple": true,
+  "shared_development_steps": 5000,
+  "work_package": "R1-G_LIFE_HISTORY_DEVELOPMENT"
+}

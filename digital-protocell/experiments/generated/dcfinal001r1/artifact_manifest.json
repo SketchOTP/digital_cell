@@ -1,0 +1,166 @@
+{
+  "files": [
+    {
+      "bytes": 119,
+      "path": "active_energy_closure.json",
+      "sha256": "6f6755a909446972d52e54f31be1793f38549f69125a9bc9d992b4acc39939d8"
+    },
+    {
+      "bytes": 173,
+      "path": "adaptive_directional_sensor.json",
+      "sha256": "904f1631bb3a0b97e4b83b947998415663ca95a137a212a3d6793dce61a99f1b"
+    },
+    {
+      "bytes": 185,
+      "path": "architect_disposition.json",
+      "sha256": "1869f28466826da432b0be5df658edd9442a0caf480ac890da3385fd76ab11b5"
+    },
+    {
+      "bytes": 509,
+      "path": "authority.json",
+      "sha256": "4d7321e8b1d88d5a1d31873478c66d7d630189f8c216be20b850cf3d92c6c6ad"
+    },
+    {
+      "bytes": 1904,
+      "path": "checkpoint_restart.json",
+      "sha256": "0413dd5a0ef583aa3a09932e5b3d6f3046649a0e5ec8286b40b62fce35fad9f4"
+    },
+    {
+      "bytes": 11121,
+      "path": "development_life_history.json",
+      "sha256": "176f3b651fbb215d651038ed1f0da83d11b7c51d037540dd1deb3d19382b4056"
+    },
+    {
+      "bytes": 304,
+      "path": "end_to_end_lifecycle.json",
+      "sha256": "1cdd86f75f247cf661cae0b3f0a52bd16157eae98c7250a3efa36d2cc93c3733"
+    },
+    {
+      "bytes": 136,
+      "path": "environment_reversal.json",
+      "sha256": "ccb4c823910b4026892114c81d9f1c2fffd33dd84b773a4f9a90ae5af570359b"
+    },
+    {
+      "bytes": 15772,
+      "path": "environment_selection.json",
+      "sha256": "6559819abe7a205ccbe7412b267aa2b3c3963d94b2e9ea6eb3f641942f527feb"
+    },
+    {
+      "bytes": 311,
+      "path": "experiential_memory.json",
+      "sha256": "3457d20a2adecec13d640c77b1e6c4ee8311439d4be85cc0dbc542dc3884793b"
+    },
+    {
+      "bytes": 840,
+      "path": "external_prior_art.json",
+      "sha256": "971b269c05971438018e8701970bb61028c624a6fc5629676e6065813bc52ee1"
+    },
+    {
+      "bytes": 192802,
+      "path": "failed_wp2_mechanistic_attribution.json",
+      "sha256": "dc1fc4e371baf17e8389597cebc8b480d25446974496de25bb17220dbd97a36f"
+    },
+    {
+      "bytes": 416,
+      "path": "final_goal_matrix.json",
+      "sha256": "32cd0f61a6c3302809cbf50eea56712dd76ba7629916671896c23a5387b22ed6"
+    },
+    {
+      "bytes": 251,
+      "path": "forbidden_information_audit.json",
+      "sha256": "c284fa44f3d5afc382d8754c3c51fded3b4b7a9aecd617a8d95bb7bb29b1e743"
+    },
+    {
+      "bytes": 221,
+      "path": "front_rear_mechanics.json",
+      "sha256": "2f78e78faa4e1bbe1b0ba374d16bb0712447c5877c496e230d8925935e13832d"
+    },
+    {
+      "bytes": 192,
+      "path": "global_material_closure.json",
+      "sha256": "2c0c3ffb8d9e50b241e5d49d01b8a35bc44f75834fedebd2528d6e6768e5123a"
+    },
+    {
+      "bytes": 1908,
+      "path": "godot_independence.json",
+      "sha256": "769481b09b7e3b71595ba82f70c3db513b6b76d143c48955b020a28f4e2d78b0"
+    },
+    {
+      "bytes": 964,
+      "path": "linux_runtime.json",
+      "sha256": "f540cf5f099e6b140c4865d39d1b88826c428dd9cf98a6dcf7d4d241bc8e21ec"
+    },
+    {
+      "bytes": 800,
+      "path": "m2_qualification.json",
+      "sha256": "fdf169fa0cc1c1caea92e0d352ecd8777e52fd73d5f62ac737afec3073869c27"
+    },
+    {
+      "bytes": 193,
+      "path": "mutation.json",
+      "sha256": "6b3140014f0a6be10900b66a31073ccace5c5668faea1c7403dc36af76cae6ed"
+    },
+    {
+      "bytes": 405,
+      "path": "persistent_phenotype.json",
+      "sha256": "5924806f5d2a9c6dce37b57a436b2c9a4098a36c927ea4c2096edaef065e6eec"
+    },
+    {
+      "bytes": 154,
+      "path": "physical_heredity.json",
+      "sha256": "d8a498c74d8c357133d4534005c7c50433959647d048550ee5a919bec3df8380"
+    },
+    {
+      "bytes": 329,
+      "path": "preservation.json",
+      "sha256": "d6891c05bac77651a11735f8e2b7370326f06d87f4c395079c7c1462c623c215"
+    },
+    {
+      "bytes": 743,
+      "path": "qualification.json",
+      "sha256": "4a1943e4a5ce6ab7c6ad640eaf8cd0b38f79441888a0eb42c9d83af7ec61baa8"
+    },
+    {
+      "bytes": 1345,
+      "path": "sensory_embodiment.json",
+      "sha256": "b4ee38bfab1cb2903441076032815788d13cb7a6abe5e903458b1bfa2225578e"
+    },
+    {
+      "bytes": 800,
+      "path": "spatial_acquisition_causality.json",
+      "sha256": "fdf169fa0cc1c1caea92e0d352ecd8777e52fd73d5f62ac737afec3073869c27"
+    },
+    {
+      "bytes": 299325,
+      "path": "spatial_acquisition_matrix.json",
+      "sha256": "a3fc89a745670a151c5de443ec9e1c644794a878a2e9cbd2b6aa1b77b9b909b7"
+    },
+    {
+      "bytes": 233,
+      "path": "state_reconstruction.json",
+      "sha256": "e9d8c414a270089a64e24898d4cd823e91f4b5d86d8c7673442d4c119315de8d"
+    },
+    {
+      "bytes": 54,
+      "path": "temporal_acquisition_matrix.json",
+      "sha256": "a98a57d488c33fdc28ce2084fa0c54e252586bd9d8f10a06e51672a1eea45c3d"
+    },
+    {
+      "bytes": 54,
+      "path": "temporal_fallback.json",
+      "sha256": "a98a57d488c33fdc28ce2084fa0c54e252586bd9d8f10a06e51672a1eea45c3d"
+    },
+    {
+      "bytes": 54,
+      "path": "uniform_field_adaptation.json",
+      "sha256": "b3728fe0d667b26ac42997d15e35455b2d98057aceafd2dbb9b82092e4b4b7e7"
+    },
+    {
+      "bytes": 25674,
+      "path": "wp1_preservation.json",
+      "sha256": "73d2ec642e16a32d975b2d755d3a5d5742e365a6e236b8b61af8d9e6da2c90b8"
+    }
+  ],
+  "schema": "digital_cell_dcfinal001r1_artifact_manifest_v1",
+  "scientific_head": "e39571d5856e745254831b1d5c7b0c918c9fe921"
+}

@@ -1,0 +1,7 @@
+{
+  "clutch": "bounded front-state local passive clutch",
+  "front": "A-funded bounded outward membrane-normal force",
+  "new_free_parameters": 0,
+  "rear": "A-funded local contractility",
+  "simple_trajectories": true
+}

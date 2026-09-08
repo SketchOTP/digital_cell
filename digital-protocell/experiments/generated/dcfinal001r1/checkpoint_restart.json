@@ -1,0 +1,53 @@
+{
+  "absolute_residuals": {
+    "cumulative_active_a": 0.0,
+    "cumulative_active_w": 8.881784197001252e-16,
+    "cumulative_f_delivered": 0.0,
+    "cumulative_n_delivered": 0.0,
+    "cumulative_path": 1.4257258568184383e-16,
+    "maximum_memory": 0.0
+  },
+  "atomic_write": "write partial then rename",
+  "biological_reset": false,
+  "checkpoint_restart": {
+    "all_polygons_simple": true,
+    "autonomous_resource_acquisition": "M2_ADAPTIVE_MATERIAL_GRADIENT_AUTONOMOUS_RESOURCE_ACQUISITION_QUALIFIED",
+    "cumulative_active_a": 0.005510683571171218,
+    "cumulative_active_w": 0.005510683571174013,
+    "cumulative_f_delivered": 0.0,
+    "cumulative_n_delivered": 0.0,
+    "cumulative_path": 0.0004300307808423333,
+    "environment_dependent_evolution": "NOT_ESTABLISHED",
+    "fissions": 0,
+    "living": 1,
+    "maximum_generation": 0,
+    "maximum_memory": 0.07692624233777118,
+    "observer_connected": false,
+    "observer_in_biological_step": false,
+    "schema": "digital_cell_final_lifeform_runtime_v1",
+    "sensory_camera_present": true,
+    "sensory_microphone_present": true,
+    "step": 40
+  },
+  "continuous": {
+    "all_polygons_simple": true,
+    "autonomous_resource_acquisition": "M2_ADAPTIVE_MATERIAL_GRADIENT_AUTONOMOUS_RESOURCE_ACQUISITION_QUALIFIED",
+    "cumulative_active_a": 0.005510683571171218,
+    "cumulative_active_w": 0.005510683571174901,
+    "cumulative_f_delivered": 0.0,
+    "cumulative_n_delivered": 0.0,
+    "cumulative_path": 0.00043003078084219074,
+    "environment_dependent_evolution": "NOT_ESTABLISHED",
+    "fissions": 0,
+    "living": 1,
+    "maximum_generation": 0,
+    "maximum_memory": 0.07692624233777118,
+    "observer_connected": false,
+    "observer_in_biological_step": false,
+    "schema": "digital_cell_final_lifeform_runtime_v1",
+    "sensory_camera_present": true,
+    "sensory_microphone_present": true,
+    "step": 40
+  },
+  "pass": true
+}

@@ -1,0 +1,9 @@
+{
+  "directive": "DC-FINAL-001-R1-ADAPTIVE-CHEMOSENSING-FRONT-REAR-MIGRATION-AND-END-TO-END-CONTINUATION-001",
+  "independent_architect_acceptance": "PENDING",
+  "result_scientific_head": "e39571d5856e745254831b1d5c7b0c918c9fe921",
+  "starting_artifact_sha256": "546feef625350d36392d98147e90f1bc777c7701686879b7bd53450567b4efe5",
+  "starting_ci": 34253452975,
+  "starting_governance_head": "d24c01506cc7c70e2861c343ccd94a1e03a44681",
+  "starting_scientific_head": "d36145c482854fac34d9a6b1fbbb5847aee45f52"
+}

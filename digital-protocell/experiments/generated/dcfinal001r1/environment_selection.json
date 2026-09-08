@@ -1,0 +1,586 @@
+{
+  "fitness_function": null,
+  "qualification": "FAIL_NO_GEOMETRY_VALID_DIFFERENTIAL_REPRODUCTION",
+  "raw": {
+    "directive": "DC-FINAL-001-R1-ADAPTIVE-CHEMOSENSING-FRONT-REAR-MIGRATION-AND-END-TO-END-CONTINUATION-001",
+    "environment_sequence": [
+      "H",
+      "B"
+    ],
+    "founder_twins": 3,
+    "initial_population": 6,
+    "mutation_off": {
+      "after_b_switch": {
+        "all_simple": true,
+        "living": 0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0
+        ],
+        "processing_clade": 0,
+        "processing_frequency": 0.0,
+        "repair_clade": 0,
+        "repair_frequency": 0.0,
+        "step": 10000
+      },
+      "after_h": {
+        "all_simple": true,
+        "living": 0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0
+        ],
+        "processing_clade": 0,
+        "processing_frequency": 0.0,
+        "repair_clade": 0,
+        "repair_frequency": 0.0,
+        "step": 7500
+      },
+      "b_phase_fissions": 0,
+      "fitness_function": null,
+      "h_phase_fissions": 4,
+      "initial": {
+        "all_simple": false,
+        "living": 6,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          0.32500000000000007,
+          0.22499999999999998,
+          0.30000000000000004,
+          0.15
+        ],
+        "processing_clade": 3,
+        "processing_frequency": 0.5,
+        "repair_clade": 3,
+        "repair_frequency": 0.5,
+        "step": 5000
+      },
+      "ledger": {
+        "deaths": 10,
+        "fission_events": [
+          {
+            "children": [
+              {
+                "child": 0,
+                "mutation": {
+                  "mutated": false,
+                  "offspring": [
+                    0.55,
+                    0.25,
+                    0.05,
+                    0.15
+                  ],
+                  "parent": [
+                    0.55,
+                    0.25,
+                    0.05,
+                    0.15
+                  ],
+                  "rng_state_after": 5248032568166711335,
+                  "source_index": null,
+                  "target_index": null,
+                  "transferred": 0.0
+                }
+              },
+              {
+                "child": 1,
+                "mutation": {
+                  "mutated": false,
+                  "offspring": [
+                    0.55,
+                    0.25,
+                    0.05,
+                    0.15
+                  ],
+                  "parent": [
+                    0.55,
+                    0.25,
+                    0.05,
+                    0.15
+                  ],
+                  "rng_state_after": 5248032567101235302,
+                  "source_index": null,
+                  "target_index": null,
+                  "transferred": 0.0
+                }
+              }
+            ],
+            "clade": "processing",
+            "generation": 1,
+            "parent": 5,
+            "partition_ok": true,
+            "simple": false,
+            "step": 5076
+          },
+          {
+            "children": [
+              {
+                "child": 0,
+                "mutation": {
+                  "mutated": false,
+                  "offspring": [
+                    0.55,
+                    0.25,
+                    0.05,
+                    0.15
+                  ],
+                  "parent": [
+                    0.55,
+                    0.25,
+                    0.05,
+                    0.15
+                  ],
+                  "rng_state_after": 15411750362978514433,
+                  "source_index": null,
+                  "target_index": null,
+                  "transferred": 0.0
+                }
+              },
+              {
+                "child": 1,
+                "mutation": {
+                  "mutated": false,
+                  "offspring": [
+                    0.55,
+                    0.25,
+                    0.05,
+                    0.15
+                  ],
+                  "parent": [
+                    0.55,
+                    0.25,
+                    0.05,
+                    0.15
+                  ],
+                  "rng_state_after": 15411750361913284160,
+                  "source_index": null,
+                  "target_index": null,
+                  "transferred": 0.0
+                }
+              }
+            ],
+            "clade": "processing",
+            "generation": 1,
+            "parent": 1,
+            "partition_ok": true,
+            "simple": false,
+            "step": 5301
+          },
+          {
+            "children": [
+              {
+                "child": 0,
+                "mutation": {
+                  "mutated": false,
+                  "offspring": [
+                    0.1,
+                    0.2,
+                    0.55,
+                    0.15
+                  ],
+                  "parent": [
+                    0.1,
+                    0.2,
+                    0.55,
+                    0.15
+                  ],
+                  "rng_state_after": 15411329194886625793,
+                  "source_index": null,
+                  "target_index": null,
+                  "transferred": 0.0
+                }
+              },
+              {
+                "child": 1,
+                "mutation": {
+                  "mutated": false,
+                  "offspring": [
+                    0.1,
+                    0.2,
+                    0.55,
+                    0.15
+                  ],
+                  "parent": [
+                    0.1,
+                    0.2,
+                    0.55,
+                    0.15
+                  ],
+                  "rng_state_after": 15411329195951839808,
+                  "source_index": null,
+                  "target_index": null,
+                  "transferred": 0.0
+                }
+              }
+            ],
+            "clade": "repair",
+            "generation": 1,
+            "parent": 2,
+            "partition_ok": true,
+            "simple": false,
+            "step": 5301
+          },
+          {
+            "children": [
+              {
+                "child": 0,
+                "mutation": {
+                  "mutated": false,
+                  "offspring": [
+                    0.1,
+                    0.2,
+                    0.55,
+                    0.15
+                  ],
+                  "parent": [
+                    0.1,
+                    0.2,
+                    0.55,
+                    0.15
+                  ],
+                  "rng_state_after": 6082024255151033187,
+                  "source_index": null,
+                  "target_index": null,
+                  "transferred": 0.0
+                }
+              },
+              {
+                "child": 1,
+                "mutation": {
+                  "mutated": false,
+                  "offspring": [
+                    0.1,
+                    0.2,
+                    0.55,
+                    0.15
+                  ],
+                  "parent": [
+                    0.1,
+                    0.2,
+                    0.55,
+                    0.15
+                  ],
+                  "rng_state_after": 6082024256216263458,
+                  "source_index": null,
+                  "target_index": null,
+                  "transferred": 0.0
+                }
+              }
+            ],
+            "clade": "repair",
+            "generation": 1,
+            "parent": 6,
+            "partition_ok": true,
+            "simple": false,
+            "step": 5351
+          }
+        ],
+        "mutation_events": [],
+        "mutations": 0,
+        "partition_failures": 0,
+        "physical_fissions": 4,
+        "simple_fissions": 0
+      },
+      "mutation_enabled": false,
+      "population_cap": null,
+      "population_is_finite": true,
+      "reproductive_quota": null
+    },
+    "mutation_on": {
+      "after_b_switch": {
+        "all_simple": true,
+        "living": 0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0
+        ],
+        "processing_clade": 0,
+        "processing_frequency": 0.0,
+        "repair_clade": 0,
+        "repair_frequency": 0.0,
+        "step": 10000
+      },
+      "after_h": {
+        "all_simple": true,
+        "living": 0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0
+        ],
+        "processing_clade": 0,
+        "processing_frequency": 0.0,
+        "repair_clade": 0,
+        "repair_frequency": 0.0,
+        "step": 7500
+      },
+      "b_phase_fissions": 0,
+      "fitness_function": null,
+      "h_phase_fissions": 4,
+      "initial": {
+        "all_simple": false,
+        "living": 6,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          0.32500000000000007,
+          0.22499999999999998,
+          0.30000000000000004,
+          0.15
+        ],
+        "processing_clade": 3,
+        "processing_frequency": 0.5,
+        "repair_clade": 3,
+        "repair_frequency": 0.5,
+        "step": 5000
+      },
+      "ledger": {
+        "deaths": 10,
+        "fission_events": [
+          {
+            "children": [
+              {
+                "child": 0,
+                "mutation": {
+                  "mutated": false,
+                  "offspring": [
+                    0.55,
+                    0.25,
+                    0.05,
+                    0.15
+                  ],
+                  "parent": [
+                    0.55,
+                    0.25,
+                    0.05,
+                    0.15
+                  ],
+                  "rng_state_after": 5248032568166711335,
+                  "source_index": null,
+                  "target_index": null,
+                  "transferred": 0.0
+                }
+              },
+              {
+                "child": 1,
+                "mutation": {
+                  "mutated": false,
+                  "offspring": [
+                    0.55,
+                    0.25,
+                    0.05,
+                    0.15
+                  ],
+                  "parent": [
+                    0.55,
+                    0.25,
+                    0.05,
+                    0.15
+                  ],
+                  "rng_state_after": 5248032567101235302,
+                  "source_index": null,
+                  "target_index": null,
+                  "transferred": 0.0
+                }
+              }
+            ],
+            "clade": "processing",
+            "generation": 1,
+            "parent": 5,
+            "partition_ok": true,
+            "simple": false,
+            "step": 5076
+          },
+          {
+            "children": [
+              {
+                "child": 0,
+                "mutation": {
+                  "mutated": false,
+                  "offspring": [
+                    0.55,
+                    0.25,
+                    0.05,
+                    0.15
+                  ],
+                  "parent": [
+                    0.55,
+                    0.25,
+                    0.05,
+                    0.15
+                  ],
+                  "rng_state_after": 15411750362978514433,
+                  "source_index": null,
+                  "target_index": null,
+                  "transferred": 0.0
+                }
+              },
+              {
+                "child": 1,
+                "mutation": {
+                  "mutated": false,
+                  "offspring": [
+                    0.55,
+                    0.25,
+                    0.05,
+                    0.15
+                  ],
+                  "parent": [
+                    0.55,
+                    0.25,
+                    0.05,
+                    0.15
+                  ],
+                  "rng_state_after": 15411750361913284160,
+                  "source_index": null,
+                  "target_index": null,
+                  "transferred": 0.0
+                }
+              }
+            ],
+            "clade": "processing",
+            "generation": 1,
+            "parent": 1,
+            "partition_ok": true,
+            "simple": false,
+            "step": 5301
+          },
+          {
+            "children": [
+              {
+                "child": 0,
+                "mutation": {
+                  "mutated": false,
+                  "offspring": [
+                    0.1,
+                    0.2,
+                    0.55,
+                    0.15
+                  ],
+                  "parent": [
+                    0.1,
+                    0.2,
+                    0.55,
+                    0.15
+                  ],
+                  "rng_state_after": 15411329194886625793,
+                  "source_index": null,
+                  "target_index": null,
+                  "transferred": 0.0
+                }
+              },
+              {
+                "child": 1,
+                "mutation": {
+                  "mutated": false,
+                  "offspring": [
+                    0.1,
+                    0.2,
+                    0.55,
+                    0.15
+                  ],
+                  "parent": [
+                    0.1,
+                    0.2,
+                    0.55,
+                    0.15
+                  ],
+                  "rng_state_after": 15411329195951839808,
+                  "source_index": null,
+                  "target_index": null,
+                  "transferred": 0.0
+                }
+              }
+            ],
+            "clade": "repair",
+            "generation": 1,
+            "parent": 2,
+            "partition_ok": true,
+            "simple": false,
+            "step": 5301
+          },
+          {
+            "children": [
+              {
+                "child": 0,
+                "mutation": {
+                  "mutated": false,
+                  "offspring": [
+                    0.1,
+                    0.2,
+                    0.55,
+                    0.15
+                  ],
+                  "parent": [
+                    0.1,
+                    0.2,
+                    0.55,
+                    0.15
+                  ],
+                  "rng_state_after": 6082024255151033187,
+                  "source_index": null,
+                  "target_index": null,
+                  "transferred": 0.0
+                }
+              },
+              {
+                "child": 1,
+                "mutation": {
+                  "mutated": false,
+                  "offspring": [
+                    0.1,
+                    0.2,
+                    0.55,
+                    0.15
+                  ],
+                  "parent": [
+                    0.1,
+                    0.2,
+                    0.55,
+                    0.15
+                  ],
+                  "rng_state_after": 6082024256216263458,
+                  "source_index": null,
+                  "target_index": null,
+                  "transferred": 0.0
+                }
+              }
+            ],
+            "clade": "repair",
+            "generation": 1,
+            "parent": 6,
+            "partition_ok": true,
+            "simple": false,
+            "step": 5351
+          }
+        ],
+        "mutation_events": [],
+        "mutations": 0,
+        "partition_failures": 0,
+        "physical_fissions": 4,
+        "simple_fissions": 0
+      },
+      "mutation_enabled": true,
+      "population_cap": null,
+      "population_is_finite": true,
+      "reproductive_quota": null
+    },
+    "phase_steps": 2500,
+    "work_packages": [
+      "R1-H_PHYSICAL_HEREDITY_AND_MUTATION",
+      "R1-I_ENVIRONMENT_DEPENDENT_NATURAL_SELECTION"
+    ]
+  },
+  "simple_fissions": 0,
+  "terminal_living": 0
+}

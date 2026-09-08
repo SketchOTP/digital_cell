@@ -1,0 +1,10 @@
+{
+  "checkpoint_persistent": true,
+  "forgetting": true,
+  "later_geometry_differs_from_naive_unit_control": true,
+  "local": true,
+  "maximum_memory_after_live_input": 0.039232890970017927,
+  "organism_owned": true,
+  "qualification": "PASS",
+  "substrate": "PlasticityStateV1 frozen load/recovery dynamics"
+}

@@ -1,0 +1,7 @@
+{
+  "comparator": "perimeter_weighted_local_minus_mean",
+  "gain": null,
+  "input": "local physical N/F occupancy only",
+  "threshold": null,
+  "world_target_read": false
+}

@@ -1,0 +1,7 @@
+{
+  "disposition": "REPLAN_CONTINUE",
+  "failed_wp2_exact_mechanism": "ACCEPTED_BOUNDED_NEGATIVE",
+  "r1_authorized": true,
+  "terminal_shutdown": "NOT_ACCEPTED",
+  "wp1": "ACCEPTED"
+}

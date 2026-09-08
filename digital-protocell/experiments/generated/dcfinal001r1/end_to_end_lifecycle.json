@@ -1,0 +1,11 @@
+{
+  "all_requirements_coexist_in_one_run": false,
+  "checkpoint_runtime": "PASS",
+  "environment_dependent_selection": "FAIL",
+  "lawful_mutation_observed": "FAIL",
+  "m2_acquisition": "PASS",
+  "m3_life_history": "PASS",
+  "physical_heredity": "PASS",
+  "reversal": "FAIL",
+  "sensory_memory": "PASS"
+}

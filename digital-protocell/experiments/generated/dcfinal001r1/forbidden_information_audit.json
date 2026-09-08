@@ -1,0 +1,10 @@
+{
+  "desired_velocity": false,
+  "fitness_function": false,
+  "llm_control": false,
+  "observer_in_biological_step": false,
+  "pass": true,
+  "reward": false,
+  "target_bearing_read_by_organism": false,
+  "target_coordinate_read_by_organism": false
+}

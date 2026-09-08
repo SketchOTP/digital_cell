@@ -1,0 +1,21 @@
+{
+  "external_constants_imported": false,
+  "front_rear_migration": {
+    "disposition": "DIRECTLY_ADAPTABLE_MECHANICAL_PRINCIPLE",
+    "source": "https://www.annualreviews.org/content/journals/10.1146/annurev.biophys.093008.131228"
+  },
+  "legi_adaptive_sensing": {
+    "disposition": "DIRECTLY_ADAPTABLE_ARCHITECTURAL_PRINCIPLE",
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2951443/"
+  },
+  "life_history_and_selection": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC13056260/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC5550968/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC2926753/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC10618062/"
+  ],
+  "minimal_artificial_cell_chemotaxis": {
+    "disposition": "REFERENCE_FEASIBILITY_PRINCIPLE",
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12292904/"
+  }
+}

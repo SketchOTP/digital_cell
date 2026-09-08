@@ -1,0 +1,11 @@
+{
+  "classification": "PASS_WITH_NONCOUNTED_INVALID_DAMAGE_DAUGHTER",
+  "common_checkpoint_state_distance": 308.6991791849853,
+  "common_start_state_distance": 279.442377182176,
+  "damage_parent_simple": true,
+  "damage_simple_daughters": false,
+  "initial_state_equivalent": true,
+  "persistent_through_one_geometry_valid_fission": true,
+  "pulse_parent_simple": true,
+  "pulse_simple_daughters": true
+}
