@@ -2337,3 +2337,9 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - WP2: finite conservative N/F field; three seeds x four bearings; zero initial contact; sensor-on, sensor-off, motor-off, and field-off arms; no invalid geometry and no parameter search.
 - Sensor-on captures more N/F than both controls in `12/12` and transfers 1-3 steps earlier than sensor-off, but resource-directed displacement is positive in only `1/12` and exceeds sensor-off in only `3/12`. The observed material advantage is exposure/deformation, not qualified chemotaxis; lifecycle benefit is unestablished.
 - Hard stop 4 applies. Goal-agent authority: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE`; classification: `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`; no successor execution started.
+
+## DC-FINAL-001 exact-head scientific result
+
+- Result head `d36145c482854fac34d9a6b1fbbb5847aee45f52` passed Linux workflow `34252516997` with both terminal work packages and preservation suites green.
+- Artifact `dcfinal001` independently hashes to `sha256:b58fd5e143e7c98d1431da146b7bbb0e0fca2cd2f6b7d2daaaf2266385058493`.
+- The result remains a Goal-agent provisional terminal negative; no independent Architect acceptance or successor execution is asserted.

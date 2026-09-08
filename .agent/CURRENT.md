@@ -660,3 +660,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Work Package 2 executed the sole authorized finite-field, metabolism-coupled local polarity response with three seeds, four bearings, sensor-off, motor-off, and field-off controls. Sensor-on captures slightly more N/F in `12/12`, but moves toward the resource in only `1/12` and beats sensor-off heading in only `3/12`; continued lifecycle benefit is not established.
 - Directive hard stop 4 is reached: causal autonomous resource acquisition is not established even with the authorized local metabolism-coupled polarity response. Work Packages 3-6 are `NOT_EXECUTED_HARD_STOP_WP2`.
 - Goal-agent provisional terminal classification: `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`. Exact-head CI/artifact and independent Architect acceptance remain pending; next execution is `false`.
+
+## DC-FINAL-001 scientific result authority
+
+- Scientific result head: `d36145c482854fac34d9a6b1fbbb5847aee45f52`.
+- Exact-head Linux workflow: `34252516997 PASS`.
+- Independently downloaded artifact ZIP digest: `sha256:b58fd5e143e7c98d1431da146b7bbb0e0fca2cd2f6b7d2daaaf2266385058493`.
+- Classification remains `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED` under `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE`; independent Architect acceptance is `PENDING` and no successor execution started.

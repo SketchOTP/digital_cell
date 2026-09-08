@@ -1082,3 +1082,9 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Exact-fixture Work Package 1 qualifies geometry-valid reproduction: `10/10` growth-qualified, `7/10` valid fissions, and `7/10` simple viable daughter pairs. Conditional segment/half-edge fallbacks were not required.
 - Work Package 2's one authorized source-derived local metabolism-to-polarity coupling fails causal directional acquisition: resource-heading is positive in `1/12` active runs and better than sensor-off in `3/12`, despite a small capture advantage in `12/12`.
 - Stop condition 4 is satisfied. Work Packages 3-6 are not authorized after this hard stop. Provisional classification is `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`; independent Architect acceptance remains `PENDING`.
+
+### Scientific result exact-head pointer
+
+- Head `d36145c482854fac34d9a6b1fbbb5847aee45f52` passed exact-head workflow `34252516997`.
+- Uploaded artifact ZIP independently hashes to `sha256:b58fd5e143e7c98d1431da146b7bbb0e0fca2cd2f6b7d2daaaf2266385058493`.
+- This pointer changes governance only. The terminal classification and hard-stop boundary are unchanged; external acceptance remains pending.

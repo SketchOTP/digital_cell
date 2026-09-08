@@ -1525,3 +1525,12 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - The earlier WP1 hard stop is superseded because its unsealed local fixture incorrectly stretched both x and y. Exact D-088 x-only fixture parity yields `7/10` geometry-valid fissions and seven simple viable daughter pairs, so WP1 passes without the conditional fallbacks.
 - The authorized WP2 finite-field metabolism-coupled polarity assay does not establish directional causal acquisition: `1/12` active runs move toward food and `3/12` beat sensor-off heading. Directive hard stop 4 therefore terminates the sprint before WP3.
 - Classification: `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`. Exact-head CI, artifact digest, Notion readback, and independent Architect acceptance remain pending; successor execution is `false`.
+
+## DEC-DCFINAL001-SCIENTIFIC-RESULT-EXACT-HEAD-POINTER
+
+- Date: `2026-09-08`
+- Status: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE`
+- Scientific result head: `d36145c482854fac34d9a6b1fbbb5847aee45f52`.
+- Exact-head CI: `34252516997 PASS`.
+- Artifact ZIP digest: `sha256:b58fd5e143e7c98d1431da146b7bbb0e0fca2cd2f6b7d2daaaf2266385058493`.
+- No scientific semantics changed in this authority reconciliation. Independent Architect acceptance remains `PENDING`; successor execution is `false`.

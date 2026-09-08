@@ -3,7 +3,7 @@
   "files": [
     {
       "file": "authority.json",
-      "sha256": "a42d5ed085ed705fdf4783c21e597a4f12dbc619b1c2769e4129f5e4cdfc6592"
+      "sha256": "6684625cff9b0f3e7ececcf75781ea2b8727c09aecffbcc453f4cce700911358"
     },
     {
       "file": "checkpoint_restart.json",
