@@ -145,6 +145,14 @@ name = "dcdev021_m2_r20_d088r1"
 path = "../../examples/dcdev021_m2_r20_d088r1.rs"
 
 [[example]]
+name = "dcfinal001_reproduction"
+path = "../../examples/dcfinal001_reproduction.rs"
+
+[[example]]
+name = "dcfinal001_acquisition"
+path = "../../examples/dcfinal001_acquisition.rs"
+
+[[example]]
 name = "dcdev021_m2_entry020"
 path = "../../examples/dcdev021_m2_entry020.rs"
 

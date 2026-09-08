@@ -1,0 +1,7 @@
+{
+  "finite_world_n_f": "PASS",
+  "maximum_polarity_pool_error": 7.397031565048451e-06,
+  "maximum_world_material_residual": 1.5818943377432504e-14,
+  "polarity_active_inactive_pool": "PASS_WITH_NUMERICAL_ERROR_RECORDED",
+  "reproduction_partition": "PASS"
+}

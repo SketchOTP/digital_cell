@@ -1055,3 +1055,30 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Exact-head workflow: `34064953738 PASS`.
 - Artifact digest: `sha256:f379641e0d4acf3276280fa51910a07adaa739ecfe69fe636c3e3230ef8c57f2`.
 - Classification remains `D088R1_SIMPLE_BOUNDARY_PRESERVED_FISSION_NOT_ESTABLISHED`; no successor execution started.
+
+## DC-FINAL-001-END-TO-END-AUTONOMOUS-LIFEFORM-CLOSURE-OR-SHUTDOWN-001
+
+- Issued: `2026-09-08` by external Architect through the canonical Notion SOT and owner directive.
+- Starting governed head: `5fd7981705feda3df18de563bc29b72e35c46a12`.
+- Relationship: supersedes the unexecuted R21 and terminates the assay-by-assay execution policy.
+- Objective: integrate and verify the complete canonical Digital Cell goal in one continuous sprint, or produce a terminal evidence-backed shutdown recommendation.
+- Authorized work packages: full state reconstruction; local frictionless nonpenetration and geometry-valid physical reproduction with conditional segment-apposition scission and one half-edge/segment-topology fallback; conservative metabolism-coupled resource acquisition; life-history development; physical heredity/mutation/environment-dependent selection with reversal; checkpointed standalone Linux/Godot sensory embodiment; final end-to-end qualification.
+- Immutable prohibitions: no privileged alive/health/survival/fitness/reward controller, scripted repair/eat/divide/death, target body/neck/resource coordinate, planner, observer feedback, preauthored winner/personality, or LLM physiology/behavior/memory.
+- Frozen boundary: accepted M1 chemistry/homeostasis remains frozen absent direct contradictory evidence; global accounting and PR #44 preservation remain mandatory.
+- Stop condition: return only `DIGITAL_CELL_END_GOAL_VERIFIED` or `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`; ordinary intermediate negatives require diagnosis and bounded repair/rebuild within this directive.
+- Final authority remains external-Architect review after exact-head Linux CI, sealed artifact, clean worktree, and Notion readback.
+
+### Terminal execution disposition
+
+- Work Package 1 ran the authorized local-contact vertex-pinch/segment-apposition ladder and the single authorized planar half-edge fallback.
+- Both architectures produced zero geometry-valid physical fissions under the frozen D-088 biological contract; the fallback retained `10/10` simple growth-qualified parents and reached `11.082726480723679 * birth_mass`.
+- Stop condition 3 is satisfied. Work Packages 2-6 are forbidden from execution after this point.
+- Provisional terminal classification: `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`.
+- Goal-agent authority: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE`; independent Architect acceptance: `PENDING`; successor execution: `false`.
+
+### Corrected terminal execution disposition
+
+- The preliminary Work Package 1 stop was invalidated before sealing because the local fixture stretched both axes instead of reproducing D-088's exact x-only founder perturbation.
+- Exact-fixture Work Package 1 qualifies geometry-valid reproduction: `10/10` growth-qualified, `7/10` valid fissions, and `7/10` simple viable daughter pairs. Conditional segment/half-edge fallbacks were not required.
+- Work Package 2's one authorized source-derived local metabolism-to-polarity coupling fails causal directional acquisition: resource-heading is positive in `1/12` active runs and better than sensor-off in `3/12`, despite a small capture advantage in `12/12`.
+- Stop condition 4 is satisfied. Work Packages 3-6 are not authorized after this hard stop. Provisional classification is `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`; independent Architect acceptance remains `PENDING`.

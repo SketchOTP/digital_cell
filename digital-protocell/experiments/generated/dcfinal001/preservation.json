@@ -1,0 +1,20 @@
+{
+  "d087_v2": "8/8",
+  "d087_v3": "8/8",
+  "d087_v4": "7/8",
+  "d087_vector": [
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "d091": "PRESERVED",
+  "evolution_harness": "TESTS_ONLY_NOT_SCIENTIFIC_QUALIFICATION",
+  "legacy_d088_tests": "PRESERVATION_ONLY",
+  "m1": "CLOSED_FROZEN_UNCHANGED",
+  "pr44": "OPEN_DRAFT_UNMERGED_UNTOUCHED"
+}

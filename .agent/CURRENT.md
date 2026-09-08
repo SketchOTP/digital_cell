@@ -631,3 +631,32 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Scientific result head: `7d7d2349097d123243c4313bd40151ccf0251396`.
 - Exact-head Linux workflow `34064953738` passed; independently downloaded artifact ZIP digest: `sha256:f379641e0d4acf3276280fa51910a07adaa739ecfe69fe636c3e3230ef8c57f2`.
 - This is an append-only authority pointer for the provisional R20 result; no scientific semantics changed after the R20 assay, and independent Architect acceptance remains `PENDING`.
+
+## DC-FINAL-001 terminal end-to-end closure sprint
+
+- Active directive: `DC-FINAL-001-END-TO-END-AUTONOMOUS-LIFEFORM-CLOSURE-OR-SHUTDOWN-001`.
+- Starting governed authority: R20 head `5fd7981705feda3df18de563bc29b72e35c46a12`; scientific R20 head `7d7d2349097d123243c4313bd40151ccf0251396`; exact-head CI `34065338584`; artifact `sha256:b1d74084f7269ab122902d8c8508c93f72715535e6a319bf0772e136fb6a7779`.
+- External Architect disposition on R20: `REPLAN`. The unexecuted R21 authorization is superseded before execution and absorbed into Work Package 1.
+- Objective: deliver the complete canonical Digital Cell lifeform in one continuous architecture sprint, or return `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED` with the first irreducible blocker after authorized repair/fallback work.
+- Immediate critical path: geometry-valid physical reproduction, then causal finite-resource acquisition, life-history development, physical heredity/mutation/evolution, and persistent Linux/Godot embodiment.
+- Frozen boundary: M1 homeostasis/chemistry remains closed and frozen unless directly contradicted; PR #44 remains untouched.
+- Execution status: `IN_PROGRESS`. Intermediate work-package failures do not stop the sprint unless a directive-level hard stop is reached.
+
+## DC-FINAL-001 terminal result
+
+- Work Package 1 exhausted both authorized simple-boundary reproduction architectures without changing the frozen D-088 growth, pinch, fission, accounting, or viability laws.
+- The local frictionless-contact plus unchanged vertex-pinch/segment-apposition ladder produced `0/10` geometry-valid physical fissions. The authorized planar half-edge fallback preserved `10/10` simple, growth-qualified parent trajectories but also produced `0/10` fissions; maximum structural mass reached `11.082726480723679 * birth_mass`.
+- One physical apposition appeared in the fallback campaign, but no lawful split produced two simple daughters under the unchanged conservative fission contract.
+- Directive-level hard stop 3 is reached: lawful fission still cannot exist after both authorized topology architectures.
+- Work Packages 2-6 were not executed after the hard stop. Resource-causal reproduction, valid daughters, development, mutable heredity, environment-dependent selection, persistent Linux embodiment, and the complete end goal remain unestablished.
+- Goal-agent disposition: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE`.
+- Final classification: `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`.
+- No successor execution is authorized or started. Independent Architect acceptance remains `PENDING` until exact-head Linux CI, artifact, and external review are complete.
+
+## DC-FINAL-001 corrected terminal result
+
+- The preceding Work Package 1 hard-stop paragraph is superseded: its local run used an incorrect isotropic founder stretch. The exact frozen D-088 fixture stretches only the x coordinate.
+- With exact fixture parity, Work Package 1 passes: `10/10` arms are growth-qualified, `7/10` produce geometry-valid physical fission, and all seven produce two simple viable daughters with conservative partition accounting. The segment and half-edge fallbacks were therefore not invoked.
+- Work Package 2 executed the sole authorized finite-field, metabolism-coupled local polarity response with three seeds, four bearings, sensor-off, motor-off, and field-off controls. Sensor-on captures slightly more N/F in `12/12`, but moves toward the resource in only `1/12` and beats sensor-off heading in only `3/12`; continued lifecycle benefit is not established.
+- Directive hard stop 4 is reached: causal autonomous resource acquisition is not established even with the authorized local metabolism-coupled polarity response. Work Packages 3-6 are `NOT_EXECUTED_HARD_STOP_WP2`.
+- Goal-agent provisional terminal classification: `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`. Exact-head CI/artifact and independent Architect acceptance remain pending; next execution is `false`.

@@ -1,0 +1,31 @@
+{
+  "original_thresholds": {
+    "fission": "7/10",
+    "growth": "8/10",
+    "viable_daughters": "6/10"
+  },
+  "planar_half_edge_fallback": "NOT_REQUIRED_VERTEX_PATH_MET_THRESHOLD",
+  "result": "GEOMETRY_VALID_PHYSICAL_REPRODUCTION_REQUALIFIED_IN_ASSAY",
+  "segment_apposition_fallback": "NOT_REQUIRED_VERTEX_PATH_MET_THRESHOLD",
+  "unchanged_vertex_pinch_campaign": {
+    "all_counted_daughters_simple": true,
+    "all_counted_fission_parents_simple": true,
+    "all_counted_partitions_close": true,
+    "arms": 10,
+    "fission_steps": [
+      6126,
+      2051,
+      2801,
+      2751,
+      4801,
+      2351,
+      2576
+    ],
+    "geometry_valid_fissions": 7,
+    "growth_qualified": 10,
+    "max_mass_over_birth": 17.21462422654217,
+    "simple_parent_trajectories": 9,
+    "simple_viable_daughter_pairs": 7
+  },
+  "work_package_pass": true
+}

@@ -87,6 +87,8 @@ pub mod edge_migration;
 pub mod edge_support;
 pub mod material_mesh;
 pub mod mesh_mechanics;
+pub mod mesh_self_contact;
+pub mod planar_ring_topology;
 pub mod mesh_reactions;
 pub mod mesh_transport;
 pub mod mesh_contracts;

@@ -168,3 +168,11 @@
 - `digital-protocell/examples/dcdev021_m2_closure010_impl.rs` — CLOSURE-010 paired/solo finite-world assay with direct-material, contact-local, no-feedback, transfer-disabled, zero-resource, and motor-off controls; no production behavior change.
 - `digital-protocell/experiments/generated/dcdev021m2closure010/` — compact CLOSURE-010 composition, arm comparisons, material/energy closure, reproduction boundary, preservation, and qualification evidence.
 - `.github/workflows/dc-dev-021-m2-closure010.yml` — exact-head Linux validation for CLOSURE-010 authority, combined composition, controls, preservation, governance, and artifact upload.
+- `digital-protocell/crates/chemistry-core/src/mesh_self_contact.rs` — DC-FINAL-001 opt-in geometry-only local frictionless nonpenetration and simple-polygon observers.
+- `digital-protocell/crates/chemistry-core/src/planar_ring_topology.rs` — DC-FINAL-001 opt-in planar half-edge material-ring fallback preserving simple topology through frozen remesh operations.
+- `digital-protocell/crates/chemistry-core/src/mesh_fission.rs` — retains the historical vertex-pinch API and adds opt-in conservative segment-apposition scission used only by DC-FINAL-001.
+- `digital-protocell/examples/dcfinal001_reproduction.rs` — terminal Work Package 1 ten-arm reproduction ladder: vertex pinch, segment apposition, and authorized planar half-edge fallback.
+- `digital-protocell/examples/dcfinal001_acquisition.rs` — terminal Work Package 2 finite conservative N/F field and source-derived local metabolism-to-polarity assay with three seeds, four bearings, and sensor/motor/field controls.
+- `digital-protocell/experiments/dcfinal001_evidence.py` — compact terminal evidence generator sealing WP1 reproduction success and `NOT_EXECUTED_HARD_STOP_WP2` downstream boundaries.
+- `digital-protocell/experiments/generated/dcfinal001/` — DC-FINAL-001 authority, valid reproduction/daughters, finite-field acquisition negative, hard-stop matrix, preservation, qualification, and manifest.
+- `.github/workflows/dc-final-001.yml` — exact-head Linux validation for Work Packages 1-2, historical preservation, terminal qualification, and artifact upload.

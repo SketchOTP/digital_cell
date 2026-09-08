@@ -1,0 +1,14 @@
+{
+  "c_ipc": {
+    "classification": "ADAPTABLE_CONTACT_PRINCIPLE",
+    "url": "https://arxiv.org/abs/2012.04457"
+  },
+  "direct_code_copy": "NONE",
+  "membrane_fission": {
+    "classification": "ADAPTABLE_SEGMENT_APPOSITION_PRINCIPLE",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6914677/"
+  },
+  "metabolism_coupled_chemotaxis": {
+    "classification": "ADAPTABLE_LOCAL_SIGNAL_PRINCIPLE"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "dependency_pending": [
+    "resource-causal reproduction",
+    "life-history development",
+    "ecological heredity",
+    "environment-dependent evolution",
+    "persistent standalone lifeform"
+  ],
+  "first_irreducible_blocker": "causal autonomous resource acquisition",
+  "preserved": [
+    "M1 homeostasis and causal damage/death",
+    "MaturationCoupledV4 reserve OFF",
+    "finite material accounting",
+    "accepted polarity reference and actuator interface"
+  ],
+  "requalified_here": [
+    "geometry-valid physical reproduction",
+    "simple viable daughters"
+  ]
+}

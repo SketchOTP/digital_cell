@@ -1,0 +1,86 @@
+name: DC-FINAL-001 end-goal closure or shutdown
+
+on:
+  push:
+    branches: [codex/dc-final-001-end-to-end]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  terminal-qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - name: Verify authority and scope
+        run: |
+          set -euo pipefail
+          start=5fd7981705feda3df18de563bc29b72e35c46a12
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefOid
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+      - name: Qualify geometry and conservative fission primitives
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test --locked -p chemistry-core mesh_self_contact --lib
+          cargo +1.89.0 test --locked -p chemistry-core segment_apposition_splits_a_simple_dumbbell_conservatively --lib
+          cargo +1.89.0 test --locked -p chemistry-core one_to_one_ring_survives_index_rotation --lib
+      - name: Execute terminal work packages 1 and 2
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 run --locked -q --release -p regulatory-core --example dcfinal001_reproduction -- \
+            --output "$RUNNER_TEMP/dcfinal001-reproduction.json"
+          cargo +1.89.0 run --locked -q --release -p regulatory-core --example dcfinal001_acquisition -- \
+            --output "$RUNNER_TEMP/dcfinal001-acquisition.json"
+          python3 experiments/dcfinal001_evidence.py \
+            --reproduction-raw "$RUNNER_TEMP/dcfinal001-reproduction.json" \
+            --acquisition-raw "$RUNNER_TEMP/dcfinal001-acquisition.json" \
+            --output experiments/generated/dcfinal001 \
+            --head "${{ github.sha }}"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('experiments/generated/dcfinal001')
+          q = json.loads((root / 'qualification.json').read_text())
+          r = json.loads((root / 'reproduction_requalification.json').read_text())
+          m2 = json.loads((root / 'm2_acquisition.json').read_text())
+          assert q['classification'] == 'DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED'
+          assert q['geometry_valid_fissions'] >= 7
+          assert q['simple_viable_daughter_pairs'] >= 6
+          assert r['work_package_pass'] is True
+          assert m2['positive_resource_heading'] == '1/12'
+          assert m2['heading_advantage_over_sensor_off'] == '3/12'
+          assert m2['qualification'] == 'FAIL'
+          assert q['next_execution_started'] is False
+          PY
+      - name: Preserve frozen foundations
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 run --locked -q -p phase1-certifier --bin digital-protocell-phase1 --release -- --steps 1 --out "$RUNNER_TEMP/production.json"
+          cargo +1.89.0 test --locked -p chemistry-core --test d088_tests
+          cargo +1.89.0 test --locked -p chemistry-core --test d091_tests
+          cargo +1.89.0 test --locked -p evolution-harness
+      - name: Seal evidence
+        if: always()
+        working-directory: digital-protocell
+        run: |
+          find experiments/generated/dcfinal001 -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/dcfinal001.sha256"
+          sha256sum "$RUNNER_TEMP/dcfinal001.sha256"
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcfinal001
+          path: |
+            digital-protocell/experiments/generated/dcfinal001
+            ${{ runner.temp }}/dcfinal001.sha256

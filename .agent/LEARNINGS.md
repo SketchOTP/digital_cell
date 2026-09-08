@@ -1058,3 +1058,18 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 
 - R20 exact-head validation passed on `7d7d2349097d123243c4313bd40151ccf0251396` as workflow `34064953738`; artifact ZIP digest is `sha256:f379641e0d4acf3276280fa51910a07adaa739ecfe69fe636c3e3230ef8c57f2`.
 - The provisional negative remains `D088R1_SIMPLE_BOUNDARY_PRESERVED_FISSION_NOT_ESTABLISHED`; independent Architect acceptance remains pending and no successor execution is authorized.
+
+## L-DCFINAL001-GEOMETRY-VALID-FISSION-HARD-STOP
+
+- Preventing membrane crossings preserves a physically coherent parent but does not make the historical D-088 pinch/fission law reproductive.
+- Replacing vertex-only pinch recognition with mesh-independent segment apposition still did not yield two simple daughters under conservative partitioning.
+- The authorized planar half-edge representation removed the legacy remesh-validity confound: all ten parents remained simple and growth-qualified, yet none fissioned even at more than eleven times birth mass.
+- Therefore the first irreducible blocker is architectural: the current frozen growth/mechanics plus both authorized topology representations lack a lawful physical fission trajectory. Downstream ecology, heredity, evolution, and embodiment cannot close the canonical goal without a new externally authorized reproduction architecture.
+- Confidence: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE`. Evidence: `digital-protocell/experiments/generated/dcfinal001/`.
+
+## L-DCFINAL001-CORRECTED-REPRODUCTION-AND-M2-HARD-STOP
+
+- Exact fixture semantics matter: D-088 stretches x only. The preliminary isotropic replay was not evidence about the frozen campaign and was withdrawn before sealing.
+- Under exact parity, local frictionless self-contact allows the unchanged vertex-pinch path to meet the original physical-reproduction threshold with seven simple viable daughter pairs; no topology fallback is needed.
+- A small capture increase is not sufficient evidence of chemotaxis. The authorized local metabolism-to-polarity coupling increased exposure in all 12 comparisons but generated resource-directed displacement in only one and beat sensor-off heading in only three.
+- The first irreducible canonical-goal blocker is therefore causal autonomous resource acquisition, not reproduction. Confidence: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE` pending exact-head CI and independent review.

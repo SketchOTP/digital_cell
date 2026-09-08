@@ -2318,3 +2318,22 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Exact-head Linux workflow `34064953738` passed on that exact SHA.
 - Independently downloaded artifact ZIP digest: `sha256:f379641e0d4acf3276280fa51910a07adaa739ecfe69fe636c3e3230ef8c57f2`.
 - This pointer is provisional Goal-agent authority only. Classification remains `D088R1_SIMPLE_BOUNDARY_PRESERVED_FISSION_NOT_ESTABLISHED`; D-088 is `REQUALIFICATION_REQUIRED`; resource-causal reproduction is `NOT_ESTABLISHED`; no successor started.
+
+## DC-FINAL-001 Work Package 1 terminal reproduction result (2026-09-08)
+
+- Starting authority: governed R20 head `5fd7981705feda3df18de563bc29b72e35c46a12`.
+- Implemented an opt-in, geometry-only local frictionless self-contact path, retained the unchanged D-088 vertex-pinch mechanism, added conservative segment-apposition scission, and exercised the one authorized planar half-edge fallback.
+- Local contact/segment ladder: `9/10` legacy-remesh-simple parent trajectories, `10/10` growth-qualified, `0/10` geometry-valid fissions. One apposition was observed, but no candidate yielded two simple daughters.
+- Planar half-edge fallback: `10/10` simple parent trajectories, `10/10` growth-qualified, `0/10` geometry-valid fissions; maximum mass ratio `11.082726480723679`.
+- The no-fission result is not a mass-supply failure and not a numerical 1.35x gate failure. It is absence of a lawful conservative parent-to-two-simple-daughters transition after both authorized topology architectures.
+- Directive hard stop 3 fired. Work Packages 2-6 are `NOT_EXECUTED_HARD_STOP_WP1`.
+- Provisional terminal classification: `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`.
+- Resource-causal reproduction and the canonical end goal remain `NOT_ESTABLISHED`; no successor was started.
+
+## DC-FINAL-001 corrected Work Package 1 and terminal Work Package 2 result
+
+- The preliminary WP1 negative above is retained as invalidated local evidence: it arose from an isotropic founder stretch that did not match the frozen x-only D-088 fixture.
+- Exact-fixture WP1: `10/10` growth-qualified; `7/10` geometry-valid fissions; `7/10` simple viable daughter pairs; all counted parents/daughters simple; partition closure passes. The unchanged vertex path meets the threshold, so conditional fallbacks are not executed.
+- WP2: finite conservative N/F field; three seeds x four bearings; zero initial contact; sensor-on, sensor-off, motor-off, and field-off arms; no invalid geometry and no parameter search.
+- Sensor-on captures more N/F than both controls in `12/12` and transfers 1-3 steps earlier than sensor-off, but resource-directed displacement is positive in only `1/12` and exceeds sensor-off in only `3/12`. The observed material advantage is exposure/deformation, not qualified chemotaxis; lifecycle benefit is unestablished.
+- Hard stop 4 applies. Goal-agent authority: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE`; classification: `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`; no successor execution started.

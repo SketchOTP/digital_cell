@@ -1494,3 +1494,34 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Final provisional result head: `7d7d2349097d123243c4313bd40151ccf0251396`.
 - Exact-head CI: `34064953738 PASS`; artifact digest: `sha256:f379641e0d4acf3276280fa51910a07adaa739ecfe69fe636c3e3230ef8c57f2`.
 - Classification: `D088R1_SIMPLE_BOUNDARY_PRESERVED_FISSION_NOT_ESTABLISHED`; independent Architect acceptance remains `PENDING`; no successor execution started.
+
+## DEC-DCFINAL001-TERMINAL-CLOSURE-POLICY
+
+- Date: `2026-09-08`
+- Status: `ACTIVE`
+- Record or decision ID: `DEC-DCFINAL001-TERMINAL-CLOSURE-POLICY`
+- Decision or event: External Architect replaced the unexecuted R21 with `DC-FINAL-001-END-TO-END-AUTONOMOUS-LIFEFORM-CLOSURE-OR-SHUTDOWN-001` and authorized one continuous end-to-end architecture sprint.
+- Rationale: component-level assay loops had narrowed major defects but had not closed the canonical organism lifecycle. Intermediate negatives now require diagnosis and bounded repair/rebuild rather than a review stop.
+- Starting authority: R20 governed head `5fd7981705feda3df18de563bc29b72e35c46a12`, CI `34065338584`, artifact `sha256:b1d74084f7269ab122902d8c8508c93f72715535e6a319bf0772e136fb6a7779`.
+- Frozen boundaries: M1 chemistry/homeostasis and PR #44 remain untouched; privileged survival, behavior, division, fitness, personality, observer, reward, and LLM controllers remain prohibited.
+- Terminal outcomes: `DIGITAL_CELL_END_GOAL_VERIFIED` or `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`.
+
+## DEC-DCFINAL001-WP1-HARD-STOP
+
+- Date: `2026-09-08`
+- Status: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE`
+- Record or decision ID: `DEC-DCFINAL001-WP1-HARD-STOP`
+- Decision or event: both authorized geometry-valid fission architectures were executed under the frozen D-088 biological protocol.
+- Evidence: the local-contact vertex/segment ladder produced no lawful fission; the planar half-edge fallback preserved `10/10` simple growth-qualified parents, reached a maximum `11.082726480723679 * birth_mass`, and produced `0/10` valid fissions.
+- Authority consequence: directive stop condition 3 is satisfied. Work Packages 2-6 did not execute and no successor directive may start.
+- Classification: `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`.
+- Independent Architect acceptance: `PENDING` pending exact-head Linux evidence and external review.
+
+## DEC-DCFINAL001-WP1-CORRECTION-AND-WP2-HARD-STOP
+
+- Date: `2026-09-08`
+- Status: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE`
+- Record or decision ID: `DEC-DCFINAL001-WP1-CORRECTION-AND-WP2-HARD-STOP`
+- The earlier WP1 hard stop is superseded because its unsealed local fixture incorrectly stretched both x and y. Exact D-088 x-only fixture parity yields `7/10` geometry-valid fissions and seven simple viable daughter pairs, so WP1 passes without the conditional fallbacks.
+- The authorized WP2 finite-field metabolism-coupled polarity assay does not establish directional causal acquisition: `1/12` active runs move toward food and `3/12` beat sensor-off heading. Directive hard stop 4 therefore terminates the sprint before WP3.
+- Classification: `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`. Exact-head CI, artifact digest, Notion readback, and independent Architect acceptance remain pending; successor execution is `false`.

@@ -1,0 +1,8 @@
+{
+  "m1_changed": false,
+  "parameter_search": false,
+  "planner_reward_or_fitness_feedback": false,
+  "reproduction_controller": false,
+  "resource_identity_or_distance_read": false,
+  "target_coordinate_read_by_organism": false
+}

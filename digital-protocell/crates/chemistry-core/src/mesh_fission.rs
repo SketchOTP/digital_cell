@@ -48,6 +48,10 @@ pub struct PartitionReport {
     pub residual_u_b: f64,
     #[serde(default)]
     pub residual_templates: f64,
+    #[serde(default)]
+    pub residual_autocatalytic_edges: f64,
+    #[serde(default)]
+    pub residual_allocation_catalysts: f64,
     pub ok: bool,
 }
 
@@ -76,6 +80,15 @@ pub fn try_local_fission(
         return None;
     }
     let (i, j) = find_local_pinch(parent, &params.topo)?;
+    try_local_fission_at_vertices(parent, params, i, j)
+}
+
+fn try_local_fission_at_vertices(
+    parent: &MaterialMesh,
+    params: &FissionParams,
+    i: usize,
+    j: usize,
+) -> Option<(MaterialMesh, MaterialMesh, FissionEvent)> {
     // Cross-bond mass drawn from local A and nearby edge material.
     let a = parent.vertices[i];
     let b = parent.vertices[j];
@@ -144,6 +157,10 @@ pub fn try_local_fission(
     let pre_k_node_b = parent.interior.k_node_b * parent.area().max(1e-9);
     let pre_tmpl = parent.templates.len() as f64;
     let pre_acs_edges = parent.autocatalytic_edges.len() as f64;
+    let pre_allocation_catalysts = parent
+        .finite_allocation
+        .map(|state| state.catalysts.iter().sum::<f64>())
+        .unwrap_or(0.0);
 
     // Free L split by perimeter share.
     let p1 = d1.perimeter().max(1e-9);
@@ -188,7 +205,12 @@ pub fn try_local_fission(
         mesh.template_rng = parent.template_rng;
         mesh.next_template_id = parent.next_template_id;
         mesh.next_edge_id = parent.next_edge_id;
-        mesh.finite_allocation = parent.finite_allocation;
+        mesh.finite_allocation = parent.finite_allocation.map(|mut state| {
+            for catalyst in &mut state.catalysts {
+                *catalyst *= frac;
+            }
+            state
+        });
         mesh.contract_version = parent.contract_version;
     };
     set_conc(&mut d1, f1);
@@ -198,8 +220,6 @@ pub fn try_local_fission(
     let (_n1, _n2, residual_templates) = partition_templates(parent, &mut d1, &mut d2);
     // Physical autocatalytic edge partition by position (no whole-network clone).
     let (_e1, _e2, residual_acs) = partition_autocatalytic_edges(parent, &mut d1, &mut d2);
-    let _ = residual_acs;
-    let _ = pre_acs_edges;
 
     // Cost of cross-bond: A consumed (leakage/waste).
     // Conservative v2 pays the full cross-bond mass from A. Historical v1
@@ -236,6 +256,14 @@ pub fn try_local_fission(
     let post_u_h = d1.interior.u_h * d1.area() + d2.interior.u_h * d2.area();
     let post_u_b = d1.interior.u_b * d1.area() + d2.interior.u_b * d2.area();
     let post_tmpl = (d1.templates.len() + d2.templates.len()) as f64;
+    let post_acs_edges = (d1.autocatalytic_edges.len() + d2.autocatalytic_edges.len()) as f64;
+    let post_allocation_catalysts = d1
+        .finite_allocation
+        .map(|state| state.catalysts.iter().sum::<f64>())
+        .unwrap_or(0.0)
+        + d2.finite_allocation
+            .map(|state| state.catalysts.iter().sum::<f64>())
+            .unwrap_or(0.0);
 
     // Structural: parent m + new cross-bond mass ≈ post (cross bonds add need)
     let residual_m = (post_m - (pre_m + need)).abs();
@@ -257,6 +285,9 @@ pub fn try_local_fission(
     let residual_r = (post_r - pre_r).abs();
     let residual_assimilation_n = (post_assimilation_n - pre_assimilation_n).abs();
     let residual_assimilation_f = (post_assimilation_f - pre_assimilation_f).abs();
+    let residual_autocatalytic_edges = (post_acs_edges - pre_acs_edges).abs();
+    let residual_allocation_catalysts =
+        (post_allocation_catalysts - pre_allocation_catalysts).abs();
     // Paired monomers released into daughter free pools at fission — allow that transfer.
     let residual_u_h = (post_u_h - pre_u_h).abs(); // may increase from paired release
     let residual_u_b = (post_u_b - pre_u_b).abs();
@@ -276,6 +307,8 @@ pub fn try_local_fission(
         && residual_assimilation_f < 1e-4 * (1.0 + pre_assimilation_f)
         && residual_templates < 0.5
         && (post_tmpl - pre_tmpl).abs() < 0.5
+        && residual_autocatalytic_edges < 0.5
+        && residual_allocation_catalysts < 1e-9 * (1.0 + pre_allocation_catalysts)
         && d1.n() >= 3
         && d2.n() >= 3
         && d1.closed_intact()
@@ -301,6 +334,8 @@ pub fn try_local_fission(
             residual_u_h,
             residual_u_b,
             residual_templates,
+            residual_autocatalytic_edges,
+            residual_allocation_catalysts,
             ok,
         },
         leakage_w: leakage,
@@ -313,10 +348,236 @@ pub fn try_local_fission(
     Some((d1, d2, event))
 }
 
+fn closest_segment_points(
+    p0: [f64; 2],
+    p1: [f64; 2],
+    q0: [f64; 2],
+    q1: [f64; 2],
+) -> (f64, f64, [f64; 2], [f64; 2], f64) {
+    let u = [p1[0] - p0[0], p1[1] - p0[1]];
+    let v = [q1[0] - q0[0], q1[1] - q0[1]];
+    let w = [p0[0] - q0[0], p0[1] - q0[1]];
+    let a = u[0] * u[0] + u[1] * u[1];
+    let b = u[0] * v[0] + u[1] * v[1];
+    let c = v[0] * v[0] + v[1] * v[1];
+    let d = u[0] * w[0] + u[1] * w[1];
+    let e = v[0] * w[0] + v[1] * w[1];
+    let den = a * c - b * b;
+    let mut s = if den.abs() > f64::EPSILON * (1.0 + a * c) {
+        ((b * e - c * d) / den).clamp(0.0, 1.0)
+    } else {
+        0.0
+    };
+    let mut t = if c > 0.0 { (b * s + e) / c } else { 0.0 };
+    if t < 0.0 {
+        t = 0.0;
+        s = if a > 0.0 {
+            (-d / a).clamp(0.0, 1.0)
+        } else {
+            0.0
+        };
+    } else if t > 1.0 {
+        t = 1.0;
+        s = if a > 0.0 {
+            ((b - d) / a).clamp(0.0, 1.0)
+        } else {
+            0.0
+        };
+    }
+    let pp = [p0[0] + s * u[0], p0[1] + s * u[1]];
+    let qq = [q0[0] + t * v[0], q0[1] + t * v[1]];
+    (s, t, pp, qq, (pp[0] - qq[0]).hypot(pp[1] - qq[1]))
+}
+
+fn split_edge_at(mesh: &mut MaterialMesh, edge: usize, fraction: f64, point: [f64; 2]) -> usize {
+    let n = mesh.n();
+    let f = fraction.clamp(0.0, 1.0);
+    let endpoint_tol = 4096.0 * f64::EPSILON;
+    if f <= endpoint_tol {
+        return edge;
+    }
+    if f >= 1.0 - endpoint_tol {
+        return (edge + 1) % n;
+    }
+    let old = mesh.edges[edge];
+    let first = |value: f64| value * f;
+    let second = |value: f64| value * (1.0 - f);
+    mesh.vertices.insert(edge + 1, point);
+    mesh.edges[edge] = MeshEdge {
+        m: first(old.m),
+        b: first(old.b),
+        tracer_m: first(old.tracer_m),
+        tracer_b: first(old.tracer_b),
+        m_young: first(old.m_young),
+        ruptured: old.ruptured,
+    };
+    mesh.edges.insert(
+        edge + 1,
+        MeshEdge {
+            m: second(old.m),
+            b: second(old.b),
+            tracer_m: second(old.tracer_m),
+            tracer_b: second(old.tracer_b),
+            m_young: second(old.m_young),
+            ruptured: old.ruptured,
+        },
+    );
+    edge + 1
+}
+
+/// Observer-only report of the nearest segment-apposition candidate under the
+/// same local conditions used by [`try_local_segment_fission`].
+pub fn find_local_segment_apposition(
+    parent: &MaterialMesh,
+    params: &FissionParams,
+) -> Option<(usize, usize, f64, f64, f64)> {
+    local_segment_appositions(parent, params).into_iter().next()
+}
+
+fn local_segment_appositions(
+    parent: &MaterialMesh,
+    params: &FissionParams,
+) -> Vec<(usize, usize, f64, f64, f64)> {
+    if !parent.can_advance_physics()
+        || parent.n() < params.min_vertices
+        || !crate::mesh_self_contact::polygon_simple(&parent.vertices)
+    {
+        return Vec::new();
+    }
+    let n = parent.n();
+    let min_sep = (n / 4).max(3);
+    let range = crate::mesh_topology::local_rebond_range(parent, &params.topo);
+    let mut candidates: Vec<(usize, usize, f64, f64, f64)> = Vec::new();
+    for i in 0..n {
+        for j in (i + 1)..n {
+            let ring_sep = (j - i).min(n - (j - i));
+            if ring_sep < min_sep || j == i + 1 || (i == 0 && j + 1 == n) {
+                continue;
+            }
+            let (si, sj, _, _, distance) = closest_segment_points(
+                parent.vertices[i],
+                parent.vertices[(i + 1) % n],
+                parent.vertices[j],
+                parent.vertices[(j + 1) % n],
+            );
+            if distance > range {
+                continue;
+            }
+            let strain_i = parent.strain(i).max(parent.strain((i + n - 1) % n));
+            let strain_j = parent.strain(j).max(parent.strain((j + n - 1) % n));
+            let stressed = strain_i > 0.15
+                || strain_j > 0.15
+                || parent.edges[i].ruptured
+                || parent.edges[(j + n - 1) % n].ruptured
+                || distance < range * 0.55;
+            if stressed {
+                candidates.push((i, j, si, sj, distance));
+            }
+        }
+    }
+    candidates.sort_by(|a, b| a.4.total_cmp(&b.4));
+    candidates
+}
+
+/// Mesh-independent local scission candidate based on closest points of two
+/// nonadjacent membrane segments.  It uses the existing mass gate (at the
+/// caller), ring separation, local rebond range, stress rule, structural
+/// density, A-funded cross-boundary cost, and conservative partition kernel.
+/// No target axis, timer, or new geometric threshold is introduced.
+pub fn try_local_segment_fission(
+    parent: &MaterialMesh,
+    params: &FissionParams,
+) -> Option<(MaterialMesh, MaterialMesh, FissionEvent)> {
+    if !parent.can_advance_physics()
+        || parent.n() < params.min_vertices
+        || !params.topo.enable_rebond
+        || !crate::mesh_self_contact::polygon_simple(&parent.vertices)
+    {
+        return None;
+    }
+    for (i, j, si, sj, _) in local_segment_appositions(parent, params) {
+        let pi = [
+            parent.vertices[i][0]
+                + si * (parent.vertices[(i + 1) % parent.n()][0] - parent.vertices[i][0]),
+            parent.vertices[i][1]
+                + si * (parent.vertices[(i + 1) % parent.n()][1] - parent.vertices[i][1]),
+        ];
+        let pj = [
+            parent.vertices[j][0]
+                + sj * (parent.vertices[(j + 1) % parent.n()][0] - parent.vertices[j][0]),
+            parent.vertices[j][1]
+                + sj * (parent.vertices[(j + 1) % parent.n()][1] - parent.vertices[j][1]),
+        ];
+        let mut split = parent.clone();
+        let vi = split_edge_at(&mut split, i, si, pi);
+        let shifted_j = if split.n() > parent.n() { j + 1 } else { j };
+        let vj = split_edge_at(&mut split, shifted_j, sj, pj);
+        let Some((d1, d2, event)) = try_local_fission_at_vertices(&split, params, vi, vj) else {
+            continue;
+        };
+        if crate::mesh_self_contact::polygon_simple(&d1.vertices)
+            && crate::mesh_self_contact::polygon_simple(&d2.vertices)
+            && event.partition.ok
+        {
+            return Some((d1, d2, event));
+        }
+    }
+    None
+}
+
 /// Step topology operators (rupture + same-edge rebond). Fission is separate.
 pub fn topology_step(mesh: &mut MaterialMesh, params: &FissionParams) -> TopologyLedger {
     let mut led = TopologyLedger::default();
     led.tension_ruptures = crate::mesh_topology::tension_rupture_step(mesh, &params.topo);
     led.local_rebonds = crate::mesh_topology::local_same_edge_rebond(mesh, &params.topo);
     led
+}
+
+#[cfg(test)]
+mod segment_tests {
+    use super::*;
+    use crate::material_mesh::LumpedChem;
+
+    #[test]
+    fn segment_apposition_splits_a_simple_dumbbell_conservatively() {
+        let points = vec![
+            [-3.0, -2.0],
+            [-1.0, -2.0],
+            [-0.5, -0.2],
+            [0.5, -0.2],
+            [1.0, -2.0],
+            [3.0, -2.0],
+            [3.0, 2.0],
+            [1.0, 2.0],
+            [0.5, 0.2],
+            [-0.5, 0.2],
+            [-1.0, 2.0],
+            [-3.0, 2.0],
+        ];
+        let mut mesh = MaterialMesh::seed_regular(
+            points.len(),
+            3.0,
+            0.0,
+            0.0,
+            1.0,
+            0.5,
+            LumpedChem {
+                a: 100.0,
+                c: 1.0,
+                ..Default::default()
+            },
+            LumpedChem::default(),
+            0.0,
+        );
+        mesh.vertices = points;
+        for i in 0..mesh.n() {
+            mesh.edges[i].m = mesh.rho_s * mesh.edge_length(i);
+        }
+        assert!(crate::mesh_self_contact::polygon_simple(&mesh.vertices));
+        let (a, b, event) = try_local_segment_fission(&mesh, &FissionParams::default())
+            .expect("lawful segment apposition");
+        assert!(event.partition.ok);
+        assert!(crate::mesh_self_contact::polygon_simple(&a.vertices));
+        assert!(crate::mesh_self_contact::polygon_simple(&b.vertices));
+    }
 }

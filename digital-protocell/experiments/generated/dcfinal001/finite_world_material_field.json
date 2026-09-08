@@ -1,0 +1,7 @@
+{
+  "diffusion_conservative": true,
+  "finite_n_f": true,
+  "maximum_material_residual": 1.5818943377432504e-14,
+  "replenishment": false,
+  "resource_field_off_capture": 0.0
+}
