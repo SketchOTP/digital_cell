@@ -687,3 +687,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - R1-J/L infrastructure passes bounded checkpoint/restart, standalone release execution, real camera/microphone low-level transduction, organism-owned degradable local plasticity memory, and Godot observer-disconnection equivalence.
 - Goal-agent status: `GOAL_AGENT_PROVISIONAL_NEGATIVE`. Final classification: `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED` because M4 mutation/selection/reversal and one-run coexistence remain unestablished.
 - Exact-head CI, final artifact digest, Notion readback, and independent Architect acceptance remain pending. No successor execution is authorized or started.
+
+## DC-FINAL-001-R1 sealed result pointer
+
+- Scientific result head: `e39571d5856e745254831b1d5c7b0c918c9fe921`.
+- Evidence-bearing governed head: `81fe37518fe7635036caa3a8c290eb73e4073a17`; exact-head Linux workflow `34271552829 PASS`; independently downloaded artifact ZIP digest `sha256:e18e1420430e2f1b9a69693e1760f70d6d92bea6d78b5663713065c1c4901cbb`.
+- Scientific semantics are unchanged by workflow/evidence-sealing commits after the scientific head. Classification remains `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED` under `GOAL_AGENT_PROVISIONAL_NEGATIVE`.
+- Independent Architect acceptance remains `PENDING`; next execution remains `false`.

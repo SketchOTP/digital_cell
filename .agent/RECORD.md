@@ -1552,3 +1552,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Result: M2 qualifies; bounded life-history development and physical heredity qualify; standalone checkpoint/sensory/memory/Godot infrastructure qualifies. Lawful mutation, geometry-valid differential reproduction, environment-dependent selection, reversal, and final one-run coexistence do not establish.
 - Final classification: `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`.
 - Authority: Goal-agent provisional only. Exact-head Linux CI, artifact digest, Notion readback, and independent Architect acceptance remain pending. Next execution: `false`.
+
+## DEC-DCFINAL001-R1-EXACT-HEAD-EVIDENCE-POINTER
+
+- Date: `2026-09-08`
+- Status: `GOAL_AGENT_PROVISIONAL_NEGATIVE`
+- Scientific result head: `e39571d5856e745254831b1d5c7b0c918c9fe921`.
+- Evidence-bearing governed head: `81fe37518fe7635036caa3a8c290eb73e4073a17`.
+- Exact-head Linux workflow: `34271552829 PASS`.
+- Independently downloaded artifact ZIP digest: `sha256:e18e1420430e2f1b9a69693e1760f70d6d92bea6d78b5663713065c1c4901cbb`.
+- Scientific semantics did not change after the scientific result head. Independent Architect acceptance remains `PENDING`; next execution is `false`.

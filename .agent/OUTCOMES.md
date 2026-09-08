@@ -2361,3 +2361,10 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - The `digital-cell-final-lifeform` release runtime passes deterministic-tolerance checkpoint/restart, real `/dev/video0` and USB microphone low-level input, persistent forgetting plasticity memory, and observer-connected/disconnected scientific equivalence. Godot reads reports only.
 - M1 is preserved; D-087 remains `8/8`, `8/8`, `7/8` with `[true,true,false,true,true,true,true,true]`; D-088/D-091 and evolution-harness tests pass, with the harness explicitly not treated as scientific evolution evidence.
 - Provisional final classification: `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`; exact-head CI/artifact and independent Architect acceptance are pending; next execution is `false`.
+
+## DC-FINAL-001-R1 exact-head evidence seal
+
+- Scientific result head `e39571d5856e745254831b1d5c7b0c918c9fe921` is preserved without semantic change.
+- Governed evidence head `81fe37518fe7635036caa3a8c290eb73e4073a17` passed exact-head Linux workflow `34271552829`.
+- Independently downloaded artifact ZIP digest: `sha256:e18e1420430e2f1b9a69693e1760f70d6d92bea6d78b5663713065c1c4901cbb`.
+- Result remains Goal-agent provisional: M2, bounded M3, physical heredity, and persistent embodiment surfaces pass; lawful mutation, environment-dependent selection, reversal, and final one-run coexistence remain unestablished. No successor execution started.
