@@ -153,6 +153,18 @@ name = "dcfinal001_acquisition"
 path = "../../examples/dcfinal001_acquisition.rs"
 
 [[example]]
+name = "dcfinal001_r1_acquisition"
+path = "../../examples/dcfinal001_r1_acquisition.rs"
+
+[[example]]
+name = "dcfinal001_r1_life_history"
+path = "../../examples/dcfinal001_r1_life_history.rs"
+
+[[example]]
+name = "dcfinal001_r1_evolution"
+path = "../../examples/dcfinal001_r1_evolution.rs"
+
+[[example]]
 name = "dcdev021_m2_entry020"
 path = "../../examples/dcdev021_m2_entry020.rs"
 

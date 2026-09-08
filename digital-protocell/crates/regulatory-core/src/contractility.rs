@@ -11,6 +11,7 @@ use chemistry_core::mesh_mechanics::{
     mechanics_step_with_edge_tensions_and_external_forces, mechanics_step_with_external_forces,
     MechParams, MAX_EXTERNAL_FORCE_PER_VERTEX,
 };
+use chemistry_core::mesh_self_contact::mechanics_step_with_edge_tensions_external_forces_and_local_self_contact;
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
 
@@ -516,6 +517,52 @@ pub fn apply_local_activated_energy_contractility_with_funded_extra_and_passive_
     funded_requested_resource: f64,
     passive_forces: &[[f64; 2]],
 ) -> Result<ActivatedEnergyContractilityStepLedgerV1, ContractilityError> {
+    apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_impl(
+        mesh,
+        activity,
+        mechanics,
+        params,
+        funded_forces,
+        funded_requested_resource,
+        passive_forces,
+        false,
+    )
+}
+
+/// Opt-in simple-boundary variant used by the final production-eligible
+/// front/rear composition. Historical callers retain the exact legacy path.
+pub fn apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_self_contact(
+    mesh: &mut MaterialMesh,
+    activity: &[f64],
+    mechanics: &MechParams,
+    params: &ContractilityParamsV1,
+    funded_forces: &[[f64; 2]],
+    funded_requested_resource: f64,
+    passive_forces: &[[f64; 2]],
+) -> Result<ActivatedEnergyContractilityStepLedgerV1, ContractilityError> {
+    apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_impl(
+        mesh,
+        activity,
+        mechanics,
+        params,
+        funded_forces,
+        funded_requested_resource,
+        passive_forces,
+        true,
+    )
+}
+
+#[allow(clippy::too_many_arguments)]
+fn apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_impl(
+    mesh: &mut MaterialMesh,
+    activity: &[f64],
+    mechanics: &MechParams,
+    params: &ContractilityParamsV1,
+    funded_forces: &[[f64; 2]],
+    funded_requested_resource: f64,
+    passive_forces: &[[f64; 2]],
+    self_contact: bool,
+) -> Result<ActivatedEnergyContractilityStepLedgerV1, ContractilityError> {
     validate_params(params)?;
     validate_activated_contract(mesh)?;
     let area_before = require_positive_area(mesh)?;
@@ -524,9 +571,10 @@ pub fn apply_local_activated_energy_contractility_with_funded_extra_and_passive_
         || passive_forces.len() != mesh.n()
         || funded_requested_resource < 0.0
         || !funded_requested_resource.is_finite()
-        || funded_forces.iter().chain(passive_forces).any(|force| {
-            force.iter().any(|value| !value.is_finite())
-        })
+        || funded_forces
+            .iter()
+            .chain(passive_forces)
+            .any(|force| force.iter().any(|value| !value.is_finite()))
     {
         return Err(ContractilityError::InvalidActivity);
     }
@@ -579,15 +627,24 @@ pub fn apply_local_activated_energy_contractility_with_funded_extra_and_passive_
         .map(|(active, passive)| [active[0] + passive[0], active[1] + passive[1]])
         .collect();
     let resource_spent = requested_resource * funding_scale;
-    let accepted = match (
-        tensions.iter().all(|tension| *tension <= f64::EPSILON),
-        combined.iter().all(|force| force[0] == 0.0 && force[1] == 0.0),
-    ) {
-        (true, true) => mechanics_step(mesh, mechanics),
-        (true, false) => mechanics_step_with_external_forces(mesh, mechanics, &combined),
-        (false, _) => mechanics_step_with_edge_tensions_and_external_forces(
+    let accepted = if self_contact {
+        mechanics_step_with_edge_tensions_external_forces_and_local_self_contact(
             mesh, mechanics, &tensions, &combined,
-        ),
+        )
+        .is_some()
+    } else {
+        match (
+            tensions.iter().all(|tension| *tension <= f64::EPSILON),
+            combined
+                .iter()
+                .all(|force| force[0] == 0.0 && force[1] == 0.0),
+        ) {
+            (true, true) => mechanics_step(mesh, mechanics),
+            (true, false) => mechanics_step_with_external_forces(mesh, mechanics, &combined),
+            (false, _) => mechanics_step_with_edge_tensions_and_external_forces(
+                mesh, mechanics, &tensions, &combined,
+            ),
+        }
     };
     if !accepted {
         return Err(ContractilityError::MechanicsRejected);

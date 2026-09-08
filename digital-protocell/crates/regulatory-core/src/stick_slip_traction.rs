@@ -9,6 +9,7 @@
 use crate::{
     apply_local_activated_energy_contractility_with_external_forces,
     apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces,
+    apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_self_contact,
     apply_local_contractility_with_external_forces, ActivatedEnergyContractilityStepLedgerV1,
     ContractilityError, ContractilityParamsV1, ContractilityStepLedgerV1,
 };
@@ -550,14 +551,13 @@ pub fn apply_local_activated_energy_contractility_with_local_traction_clutch(
             ]);
         }
     }
-    let accepted_contractility =
-        apply_local_activated_energy_contractility_with_external_forces(
-            mesh,
-            activity,
-            mechanics,
-            contractility,
-            Some(&reactions),
-        )?;
+    let accepted_contractility = apply_local_activated_energy_contractility_with_external_forces(
+        mesh,
+        activity,
+        mechanics,
+        contractility,
+        Some(&reactions),
+    )?;
     finish_activated_energy_step(
         &before,
         mesh,
@@ -589,25 +589,122 @@ pub fn apply_local_activated_energy_contractility_with_stick_slip_and_extra_forc
     let before = mesh.clone();
     let mut free_step = before.clone();
     let zero_passive = vec![[0.0, 0.0]; before.n()];
-    let _free_contractility = apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces(
-        &mut free_step,
-        activity,
-        mechanics,
-        contractility,
-        extra_forces,
-        extra_requested_resource,
-        &zero_passive,
-    )?;
+    let _free_contractility =
+        apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces(
+            &mut free_step,
+            activity,
+            mechanics,
+            contractility,
+            extra_forces,
+            extra_requested_resource,
+            &zero_passive,
+        )?;
     let (regimes, reactions) = contacts_from_free_step(&before, &free_step, mechanics, params)?;
-    let accepted_contractility = apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces(
+    let accepted_contractility =
+        apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces(
+            mesh,
+            activity,
+            mechanics,
+            contractility,
+            extra_forces,
+            extra_requested_resource,
+            &reactions,
+        )?;
+    finish_activated_energy_step(
+        &before,
         mesh,
-        activity,
+        &free_step,
         mechanics,
-        contractility,
-        extra_forces,
-        extra_requested_resource,
+        params,
+        &regimes,
         &reactions,
-    )?;
+        Some(accepted_contractility),
+    )
+}
+
+/// Apply one coherent, production-eligible front/rear mechanics step.
+///
+/// Rear activity drives the frozen A-funded contractile tension. `funded_forces`
+/// carry an A-funded local protrusive request. `local_fraction` scales only the
+/// already-passive isotropic clutch reaction. The helper has no target,
+/// bearing, resource, lineage, or observer input and leaves every historical
+/// adapter unchanged.
+pub fn apply_local_activated_energy_front_rear_with_local_traction_clutch(
+    mesh: &mut MaterialMesh,
+    rear_activity: &[f64],
+    local_fraction: &[f64],
+    mechanics: &MechParams,
+    contractility: &ContractilityParamsV1,
+    params: &StickSlipTractionParamsV1,
+    funded_forces: &[[f64; 2]],
+    funded_requested_resource: f64,
+) -> Result<ActivatedEnergyStickSlipStepLedgerV1, StickSlipError> {
+    validate_params(params)?;
+    validate_mechanics(mechanics)?;
+    if local_fraction.len() != mesh.n()
+        || local_fraction
+            .iter()
+            .any(|x| !x.is_finite() || !(0.0..=1.0).contains(x))
+    {
+        return Err(StickSlipError::InvalidContact);
+    }
+    let before = mesh.clone();
+    let mut free_step = before.clone();
+    let zero_passive = vec![[0.0, 0.0]; before.n()];
+    let _free_contractility =
+        apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_self_contact(
+            &mut free_step,
+            rear_activity,
+            mechanics,
+            contractility,
+            funded_forces,
+            funded_requested_resource,
+            &zero_passive,
+        )?;
+
+    let mut regimes = Vec::with_capacity(before.n());
+    let mut reactions = Vec::with_capacity(before.n());
+    for index in 0..before.n() {
+        let attempted_velocity = [
+            (free_step.vertices[index][0] - before.vertices[index][0]) * mechanics.gamma
+                / mechanics.dt,
+            (free_step.vertices[index][1] - before.vertices[index][1]) * mechanics.gamma
+                / mechanics.dt,
+        ];
+        let required_force = [
+            attempted_velocity[0] * mechanics.gamma,
+            attempted_velocity[1] * mechanics.gamma,
+        ];
+        let fraction = local_fraction[index];
+        let static_limit = params.static_traction_limit * fraction;
+        let kinetic = params.kinetic_traction * fraction;
+        if norm(required_force) <= static_limit {
+            regimes.push(ContactRegimeV1::Stick);
+            reactions.push([-required_force[0], -required_force[1]]);
+        } else {
+            let speed = norm(attempted_velocity);
+            if speed <= params.zero_motion_tolerance {
+                regimes.push(ContactRegimeV1::Stick);
+                reactions.push([0.0, 0.0]);
+            } else {
+                regimes.push(ContactRegimeV1::Slip);
+                reactions.push([
+                    -kinetic * attempted_velocity[0] / speed,
+                    -kinetic * attempted_velocity[1] / speed,
+                ]);
+            }
+        }
+    }
+    let accepted_contractility =
+        apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_self_contact(
+            mesh,
+            rear_activity,
+            mechanics,
+            contractility,
+            funded_forces,
+            funded_requested_resource,
+            &reactions,
+        )?;
     finish_activated_energy_step(
         &before,
         mesh,

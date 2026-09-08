@@ -9,6 +9,7 @@ use chemistry_core::mesh_reactions::{
 use chemistry_core::mesh_self_contact::polygon_simple;
 use chemistry_core::mesh_transport::TransportParams;
 use regulatory_core::{
+    apply_local_activated_energy_contractility_with_external_forces,
     apply_local_activated_energy_contractility_with_stick_slip,
     apply_stick_slip_to_legacy_mechanics, ContractilityParamsV1, SpatialMaterialFieldV1,
     StickSlipTractionParamsV1,
@@ -27,6 +28,45 @@ const P1: f64 = 3.8;
 const DU: f64 = 0.1;
 const DV: f64 = 1.0;
 const DF: f64 = 0.001;
+
+#[derive(Default)]
+struct Correlation {
+    n: usize,
+    x: f64,
+    y: f64,
+    xx: f64,
+    yy: f64,
+    xy: f64,
+}
+
+impl Correlation {
+    fn add(&mut self, x: f64, y: f64) {
+        self.n += 1;
+        self.x += x;
+        self.y += y;
+        self.xx += x * x;
+        self.yy += y * y;
+        self.xy += x * y;
+    }
+
+    fn value(&self) -> Option<f64> {
+        let n = self.n as f64;
+        let covariance = n * self.xy - self.x * self.y;
+        let variance = ((n * self.xx - self.x * self.x) * (n * self.yy - self.y * self.y)).sqrt();
+        (variance > 0.0).then_some(covariance / variance)
+    }
+}
+
+fn outward_normal(mesh: &MaterialMesh, edge: usize) -> [f64; 2] {
+    let next = (edge + 1) % mesh.n();
+    let delta = [
+        mesh.vertices[next][0] - mesh.vertices[edge][0],
+        mesh.vertices[next][1] - mesh.vertices[edge][1],
+    ];
+    let length = delta[0].hypot(delta[1]).max(1e-15);
+    let orientation = if mesh.signed_area() >= 0.0 { 1.0 } else { -1.0 };
+    [orientation * delta[1] / length, -orientation * delta[0] / length]
+}
 
 #[derive(Clone)]
 struct Polarity {
@@ -278,6 +318,13 @@ fn run(seed: u64, bearing: f64, arm: Arm) -> Value {
     let mut first_contact = None;
     let mut max_pool_error: f64 = 0.0;
     let mut invalid = false;
+    let mut signal_tension = Correlation::default();
+    let mut signal_free_outward = Correlation::default();
+    let mut signal_traction = Correlation::default();
+    let mut signal_accepted_outward = Correlation::default();
+    let mut signal_bearing_velocity = Correlation::default();
+    let mut contraction_dominant_sectors = 0usize;
+    let mut protrusion_dominant_sectors = 0usize;
     for step in 1..=STEPS {
         world.diffuse(mechanics.dt);
         let mut signal = local_signal(&world, &mesh);
@@ -286,8 +333,22 @@ fn run(seed: u64, bearing: f64, arm: Arm) -> Value {
         }
         polarity.advance(&mesh, &signal, mechanics.dt);
         let motor = polarity.motor();
-        let movement_ok = if matches!(arm, Arm::MotorOff) {
-            apply_stick_slip_to_legacy_mechanics(&mut mesh, &mechanics, &traction).is_ok()
+        let before_motion = mesh.clone();
+        let mut free_motion = mesh.clone();
+        let zero_forces = vec![[0.0, 0.0]; mesh.n()];
+        if matches!(arm, Arm::Active) {
+            let _ = apply_local_activated_energy_contractility_with_external_forces(
+                &mut free_motion,
+                &motor,
+                &mechanics,
+                &contractility,
+                Some(&zero_forces),
+            )
+            .ok();
+        }
+        let movement = if matches!(arm, Arm::MotorOff) {
+            apply_stick_slip_to_legacy_mechanics(&mut mesh, &mechanics, &traction).ok()
+                .map(|ledger| (ledger.contacts, None))
         } else {
             apply_local_activated_energy_contractility_with_stick_slip(
                 &mut mesh,
@@ -296,9 +357,58 @@ fn run(seed: u64, bearing: f64, arm: Arm) -> Value {
                 &contractility,
                 &traction,
             )
-            .is_ok()
+            .ok()
+            .map(|ledger| (ledger.contacts, ledger.contractility))
         };
-        if !movement_ok || !polygon_simple(&mesh.vertices) {
+        let Some((contacts, accepted_ledger)) = movement else {
+            invalid = true;
+            break;
+        };
+        if matches!(arm, Arm::Active) {
+            let funding_scale = accepted_ledger
+                .as_ref()
+                .map(|ledger| ledger.resource_spent / ledger.requested_resource.max(f64::MIN_POSITIVE))
+                .unwrap_or(0.0);
+            let centroid_before = before_motion.centroid();
+            let centroid_after = mesh.centroid();
+            let bearing_velocity = ((centroid_after[0] - centroid_before[0]) * bearing.cos()
+                + (centroid_after[1] - centroid_before[1]) * bearing.sin())
+                / mechanics.dt;
+            for edge in 0..mesh.n() {
+                let next = (edge + 1) % mesh.n();
+                let edge_signal = signal[edge];
+                let edge_activity = 0.5 * (motor[edge] + motor[next]);
+                let tension = contractility.max_active_tension * edge_activity * funding_scale;
+                let normal = outward_normal(&before_motion, edge);
+                let free_displacement = [
+                    0.5 * (free_motion.vertices[edge][0] + free_motion.vertices[next][0]
+                        - before_motion.vertices[edge][0] - before_motion.vertices[next][0]),
+                    0.5 * (free_motion.vertices[edge][1] + free_motion.vertices[next][1]
+                        - before_motion.vertices[edge][1] - before_motion.vertices[next][1]),
+                ];
+                let accepted_displacement = [
+                    0.5 * (mesh.vertices[edge][0] + mesh.vertices[next][0]
+                        - before_motion.vertices[edge][0] - before_motion.vertices[next][0]),
+                    0.5 * (mesh.vertices[edge][1] + mesh.vertices[next][1]
+                        - before_motion.vertices[edge][1] - before_motion.vertices[next][1]),
+                ];
+                let free_outward = free_displacement[0] * normal[0] + free_displacement[1] * normal[1];
+                let accepted_outward = accepted_displacement[0] * normal[0]
+                    + accepted_displacement[1] * normal[1];
+                let traction_magnitude = contacts[edge].reaction[0].hypot(contacts[edge].reaction[1]);
+                signal_tension.add(edge_signal, tension);
+                signal_free_outward.add(edge_signal, free_outward);
+                signal_traction.add(edge_signal, traction_magnitude);
+                signal_accepted_outward.add(edge_signal, accepted_outward);
+                signal_bearing_velocity.add(edge_signal, bearing_velocity);
+                if free_outward < 0.0 {
+                    contraction_dominant_sectors += 1;
+                } else if free_outward > 0.0 {
+                    protrusion_dominant_sectors += 1;
+                }
+            }
+        }
+        if !polygon_simple(&mesh.vertices) {
             invalid = true;
             break;
         }
@@ -352,6 +462,16 @@ fn run(seed: u64, bearing: f64, arm: Arm) -> Value {
         "world_n_closure": (initial_world_n-world.total_n_mass()-delivered_n).abs(),
         "world_f_closure": (initial_world_f-world.total_f_mass()-delivered_f).abs(),
         "polarity_pool_error": max_pool_error,
+        "mechanistic_attribution": {
+            "signal_vs_local_tension_correlation": signal_tension.value(),
+            "signal_vs_free_outward_displacement_correlation": signal_free_outward.value(),
+            "signal_vs_traction_magnitude_correlation": signal_traction.value(),
+            "signal_vs_accepted_outward_displacement_correlation": signal_accepted_outward.value(),
+            "signal_vs_bearing_velocity_correlation": signal_bearing_velocity.value(),
+            "contractile_sector_samples": contraction_dominant_sectors,
+            "protrusive_sector_samples": protrusion_dominant_sectors,
+            "explicit_protrusive_force": false
+        },
         "simple": polygon_simple(&mesh.vertices),
         "invalid": invalid
     })

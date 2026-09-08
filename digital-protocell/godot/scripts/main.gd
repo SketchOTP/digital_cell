@@ -1,6 +1,7 @@
 extends Control
 
 @onready var sim: Node = $ChemistrySimulator
+@onready var lifeform_observer: Node = $FinalLifeformObserver
 @onready var display: TextureRect = $Display
 @onready var panel: Control = $DiagnosticsPanel
 
@@ -11,6 +12,10 @@ var _height: int = 192
 var _paused: bool = false
 
 func _ready() -> void:
+	var report_path := OS.get_environment("DIGITAL_CELL_REPORT_PATH")
+	if not report_path.is_empty() and lifeform_observer.has_method("set_report_path"):
+		lifeform_observer.set_report_path(report_path)
+		lifeform_observer.refresh_report()
 	if sim.has_method("get_grid_width"):
 		_width = int(sim.get_grid_width())
 		_height = int(sim.get_grid_height())
@@ -38,13 +43,18 @@ func _update_texture() -> void:
 
 func _update_diagnostics() -> void:
 	if panel and panel.has_method("set_diagnostics"):
-		panel.set_diagnostics({
+		var diagnostics := {
 			"time": sim.get_sim_time() if sim.has_method("get_sim_time") else 0.0,
 			"dt": sim.get_dt() if sim.has_method("get_dt") else 0.0,
 			"structure_mass": sim.get_structural_mass() if sim.has_method("get_structural_mass") else 0.0,
 			"catalyst_mass": sim.get_catalyst_mass() if sim.has_method("get_catalyst_mass") else 0.0,
 			"classification": sim.get_classification() if sim.has_method("get_classification") else "UNKNOWN",
-		})
+		}
+		if lifeform_observer.has_method("refresh_report") and lifeform_observer.refresh_report():
+			diagnostics["lifeform_living"] = lifeform_observer.get_living()
+			diagnostics["lifeform_generation"] = lifeform_observer.get_generation()
+			diagnostics["lifeform_memory"] = lifeform_observer.get_memory()
+		panel.set_diagnostics(diagnostics)
 
 func _on_pause_pressed() -> void:
 	_paused = not _paused

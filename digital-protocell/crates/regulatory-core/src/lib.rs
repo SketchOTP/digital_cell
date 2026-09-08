@@ -11,43 +11,52 @@
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
 
+pub mod adaptive_chemotaxis;
 pub mod backing_reservoir;
-pub mod finite_world;
 pub mod continuity;
 pub mod contractility;
 pub mod coupled_resource;
+pub mod finite_world;
 pub mod intrinsic_exploration;
+pub mod low_level_sensory;
+pub mod moving_membrane_flux;
 pub mod plasticity;
+pub mod shared_extracellular_medium;
 pub mod spatial;
 pub mod spatial_material_field;
-pub mod shared_extracellular_medium;
-pub mod moving_membrane_flux;
 pub mod spatial_resource;
 pub mod stick_slip_traction;
 
 pub use contractility::{
     apply_local_activated_energy_contractility,
-    apply_local_activated_energy_contractility_with_external_forces, apply_local_contractility,
-    apply_local_contractility_with_external_forces, ActivatedEnergyContractilityStepLedgerV1,
-    ContractilityError, ContractilityParamsV1, ContractilityStepLedgerV1,
-    ACTIVATED_ENERGY_CONTRACTILITY_SCHEMA_V1, CONTRACTILITY_SCHEMA_V1, FROZEN_MAX_ACTIVE_TENSION,
-    FROZEN_RESERVE_COST_PER_FORCE_LENGTH_TIME,
+    apply_local_activated_energy_contractility_with_external_forces,
     apply_local_activated_energy_contractility_with_extra_forces,
     apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces,
+    apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_self_contact,
+    apply_local_contractility, apply_local_contractility_with_external_forces,
+    ActivatedEnergyContractilityStepLedgerV1, ContractilityError, ContractilityParamsV1,
+    ContractilityStepLedgerV1, ACTIVATED_ENERGY_CONTRACTILITY_SCHEMA_V1, CONTRACTILITY_SCHEMA_V1,
+    FROZEN_MAX_ACTIVE_TENSION, FROZEN_RESERVE_COST_PER_FORCE_LENGTH_TIME,
+};
+
+pub use adaptive_chemotaxis::{
+    adaptive_directional_drive, AdaptiveDirectionalDriveV1, AdaptiveDirectionalSensorError,
+    ADAPTIVE_DIRECTIONAL_SENSOR_SCHEMA_V1,
 };
 
 pub use intrinsic_exploration::{
     apply_intrinsic_exploration_contact_refractory_motor_with_stick_slip,
     apply_intrinsic_exploration_refractory_motor_with_stick_slip,
     apply_intrinsic_exploration_with_stick_slip, commit_intrinsic_exploration_step,
-    propose_intrinsic_exploration_step, IntrinsicExplorationDynamicsModeV1,
-    IntrinsicExplorationContactRefractoryMotorStepLedgerV1, IntrinsicExplorationError,
-    IntrinsicExplorationProposalV1,
+    propose_intrinsic_exploration_step, IntrinsicExplorationContactRefractoryMotorStepLedgerV1,
+    IntrinsicExplorationDynamicsModeV1, IntrinsicExplorationError, IntrinsicExplorationProposalV1,
     IntrinsicExplorationRefractoryMotorStepLedgerV1, IntrinsicExplorationStateV1,
-    IntrinsicExplorationStepLedgerV1,
-    INTRINSIC_EXPLORATION_CONTACT_REFRACTORY_MOTOR_SCHEMA_V1,
-    INTRINSIC_EXPLORATION_REFRACTORY_MOTOR_SCHEMA_V1,
-    INTRINSIC_EXPLORATION_REGULATOR_SCHEMA_V1,
+    IntrinsicExplorationStepLedgerV1, INTRINSIC_EXPLORATION_CONTACT_REFRACTORY_MOTOR_SCHEMA_V1,
+    INTRINSIC_EXPLORATION_REFRACTORY_MOTOR_SCHEMA_V1, INTRINSIC_EXPLORATION_REGULATOR_SCHEMA_V1,
+};
+pub use low_level_sensory::{
+    camera_rgb8_fields, microphone_pcm16_fields, LowLevelSensoryEnvironmentV1,
+    LowLevelSensoryError, LOW_LEVEL_SENSORY_SCHEMA_V1,
 };
 
 pub use coupled_resource::{
@@ -66,15 +75,15 @@ pub use finite_world::{
 };
 
 pub use continuity::{
-    ContinuityMaterialFrameV1, ContinuityNetworkV1, ContinuityPatchV1, ContinuityStepLedgerV1,
-    TopologyEventV1, TopologyMappingV1,
+    derive_local_mapping, ContinuityMaterialFrameV1, ContinuityNetworkV1, ContinuityPatchV1,
+    ContinuityStepLedgerV1, TopologyEventV1, TopologyMappingV1,
 };
 
 pub use plasticity::{
-    apply_local_plasticity, apply_local_plasticity_with_external_forces, PlasticityError,
-    PlasticityParamsV1, PlasticityStateV1, PlasticityStepLedgerV1,
-    FROZEN_ADAPTATION_LOAD_RATE_PER_TIME, FROZEN_ADAPTATION_RECOVERY_RATE_PER_TIME,
-    PLASTICITY_SCHEMA_V1,
+    advance_local_plasticity_trace, apply_local_plasticity,
+    apply_local_plasticity_with_external_forces, PlasticityError, PlasticityParamsV1,
+    PlasticityStateV1, PlasticityStepLedgerV1, FROZEN_ADAPTATION_LOAD_RATE_PER_TIME,
+    FROZEN_ADAPTATION_RECOVERY_RATE_PER_TIME, PLASTICITY_SCHEMA_V1,
 };
 
 pub use spatial::{
@@ -99,14 +108,15 @@ pub use shared_extracellular_medium::{
 };
 
 pub use moving_membrane_flux::{
-    segment_circle_intersection_length, MovingMembraneDeliveryV1,
-    MovingMembraneFiniteFluxV1, MOVING_MEMBRANE_FINITE_FLUX_SCHEMA_V1,
+    segment_circle_intersection_length, MovingMembraneDeliveryV1, MovingMembraneFiniteFluxV1,
+    MOVING_MEMBRANE_FINITE_FLUX_SCHEMA_V1,
 };
 
 pub use stick_slip_traction::{
+    apply_local_activated_energy_contractility_with_local_traction_clutch,
     apply_local_activated_energy_contractility_with_stick_slip,
     apply_local_activated_energy_contractility_with_stick_slip_and_extra_forces,
-    apply_local_activated_energy_contractility_with_local_traction_clutch,
+    apply_local_activated_energy_front_rear_with_local_traction_clutch,
     apply_local_contractility_with_stick_slip, apply_stick_slip_to_legacy_mechanics,
     evaluate_contact, ActivatedEnergyStickSlipStepLedgerV1, ContactLedgerV1, ContactRegimeV1,
     StickSlipError, StickSlipStepLedgerV1, StickSlipTractionParamsV1, FROZEN_KINETIC_TRACTION,

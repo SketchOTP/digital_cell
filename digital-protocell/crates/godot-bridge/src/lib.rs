@@ -1,5 +1,6 @@
-use godot::prelude::*;
 use chemistry_core::{baseline_params, total_mass, Grid, Simulation, ViabilityClass};
+use godot::prelude::*;
+use serde_json::Value;
 
 struct ChemistryExtension;
 
@@ -14,6 +15,71 @@ struct ChemistrySimulator {
     paused: bool,
     speed: f64,
     steps_per_frame: u32,
+}
+
+/// Read-only observer for the standalone lifeform report. It cannot advance,
+/// reset, or otherwise mutate the organism process.
+#[derive(GodotClass)]
+#[class(base=Node)]
+struct FinalLifeformObserver {
+    base: Base<Node>,
+    report_path: String,
+    report: Option<Value>,
+}
+
+#[godot_api]
+impl INode for FinalLifeformObserver {
+    fn init(base: Base<Node>) -> Self {
+        Self {
+            base,
+            report_path: String::new(),
+            report: None,
+        }
+    }
+}
+
+#[godot_api]
+impl FinalLifeformObserver {
+    #[func]
+    fn set_report_path(&mut self, path: GString) {
+        self.report_path = path.to_string();
+    }
+
+    #[func]
+    fn refresh_report(&mut self) -> bool {
+        let Ok(bytes) = std::fs::read(&self.report_path) else {
+            return false;
+        };
+        let Ok(report) = serde_json::from_slice(&bytes) else {
+            return false;
+        };
+        self.report = Some(report);
+        true
+    }
+
+    #[func]
+    fn get_living(&self) -> i64 {
+        self.report
+            .as_ref()
+            .and_then(|report| report["living"].as_i64())
+            .unwrap_or(0)
+    }
+
+    #[func]
+    fn get_generation(&self) -> i64 {
+        self.report
+            .as_ref()
+            .and_then(|report| report["maximum_generation"].as_i64())
+            .unwrap_or(0)
+    }
+
+    #[func]
+    fn get_memory(&self) -> f64 {
+        self.report
+            .as_ref()
+            .and_then(|report| report["maximum_memory"].as_f64())
+            .unwrap_or(0.0)
+    }
 }
 
 #[godot_api]

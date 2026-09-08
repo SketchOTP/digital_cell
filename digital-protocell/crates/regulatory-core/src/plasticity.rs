@@ -126,6 +126,44 @@ pub enum PlasticityError {
     Contractility(#[from] ContractilityError),
 }
 
+/// Advance the existing organism-owned local adaptation trace without
+/// invoking an actuator. This exposes the frozen DC-DEV-005 memory dynamics
+/// for environmental sensory fields while preserving the original mechanics
+/// composition API.
+pub fn advance_local_plasticity_trace(
+    state: &mut PlasticityStateV1,
+    activity: &[f64],
+    accepted_dt: f64,
+    params: &PlasticityParamsV1,
+) -> Result<Vec<f64>, PlasticityError> {
+    validate_params(params)?;
+    if activity.len() != state.adaptation.len() {
+        return Err(PlasticityError::ActivityLength {
+            expected: state.adaptation.len(),
+            observed: activity.len(),
+        });
+    }
+    if activity
+        .iter()
+        .any(|value| !value.is_finite() || !(0.0..=1.0).contains(value))
+    {
+        return Err(PlasticityError::InvalidActivity);
+    }
+    validate_state(state, activity.len())?;
+    if !accepted_dt.is_finite() || accepted_dt < 0.0 {
+        return Err(PlasticityError::InvalidAcceptedTime);
+    }
+    let before = state.adaptation.clone();
+    if state.enabled {
+        for ((next, current), previous) in state.adaptation.iter_mut().zip(activity).zip(&before) {
+            let load = params.load_rate_per_time * current * (1.0 - previous);
+            let recovery = params.recovery_rate_per_time * (1.0 - current) * previous;
+            *next = (*previous + accepted_dt * (load - recovery)).clamp(0.0, 1.0);
+        }
+    }
+    Ok(before)
+}
+
 fn validate_params(params: &PlasticityParamsV1) -> Result<(), PlasticityError> {
     if params.schema != PLASTICITY_SCHEMA_V1
         || !params.load_rate_per_time.is_finite()
@@ -228,19 +266,8 @@ pub fn apply_local_plasticity_with_external_forces(
         None => apply_local_contractility(mesh, &effective_activity, mechanics, contractility)?,
     };
 
-    let mut adaptation_after = adaptation_before.clone();
-    if state.enabled {
-        for ((next, current), before) in adaptation_after
-            .iter_mut()
-            .zip(activity)
-            .zip(&adaptation_before)
-        {
-            let load = params.load_rate_per_time * current * (1.0 - before);
-            let recovery = params.recovery_rate_per_time * (1.0 - current) * before;
-            *next = (*before + mechanics.dt * (load - recovery)).clamp(0.0, 1.0);
-        }
-        state.adaptation = adaptation_after.clone();
-    }
+    let _ = advance_local_plasticity_trace(state, activity, mechanics.dt, params)?;
+    let adaptation_after = state.adaptation.clone();
 
     Ok(PlasticityStepLedgerV1 {
         schema: PLASTICITY_SCHEMA_V1.to_string(),

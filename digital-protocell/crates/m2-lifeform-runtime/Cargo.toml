@@ -13,3 +13,7 @@ serde_json = { workspace = true }
 [[bin]]
 name = "digital-protocell-m2-runtime"
 path = "src/main.rs"
+
+[[bin]]
+name = "digital-cell-final-lifeform"
+path = "src/bin/digital-cell-final-lifeform.rs"
