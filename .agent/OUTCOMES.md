@@ -2394,6 +2394,7 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Required passive-equivalent controls each produce `3/10` fissions and `2/10` viable pairs. Zero-A active-work expenditure is exactly zero.
 - Mean regulator activity variance is `0.00024318270710567365`, above `1e-12`; therefore the sole conditional contrast fallback is `NOT_AUTHORIZED_BY_GATE7`.
 - Primary classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED` under `GOAL_AGENT_PROVISIONAL_NEGATIVE`. Evolution/final integration: `NOT_REACHED_GATE9_STOP`. Independent Architect acceptance and exact-head CI/artifact remain pending; next execution is false.
+- Exact-head workflow `34329607759` completed the deterministic R5 campaign but failed the evidence reproducibility diff because preservation records encoded invocation-dependent relative source paths. Preservation and artifact upload correctly did not run. This validation failure does not alter the scientific result; the generator now emits one canonical repository-relative evidence label before a fresh exact-head run.
 
 ## DC-FINAL-001-R3 — maturation-safe expression repair and lifecycle stop
 

@@ -15,6 +15,7 @@ DIRECTIVE = (
 )
 START = "aa886d554fa4ae8cf691e5a66b69d787ea4f2c2f"
 R4_SCIENTIFIC = "78c2200615b6558d6b617e3c29f5c8e9bb1c05d3"
+R4_EVIDENCE_LABEL = "experiments/generated/dcfinal001r4"
 
 
 def write(root: Path, name: str, value: object) -> None:
@@ -197,8 +198,8 @@ def main() -> None:
         "evolution_harness": "PASS_TESTS_ONLY",
     }
     write(out, "m1_preservation.json", preservation)
-    write(out, "m2_preservation.json", {"status": "QUALIFIED_PRESERVED", "source": str(args.r4 / "m2_preservation.json")})
-    write(out, "development_preservation.json", {"status": "PASS", "source": str(args.r4 / "development_preservation.json")})
+    write(out, "m2_preservation.json", {"status": "QUALIFIED_PRESERVED", "source": f"{R4_EVIDENCE_LABEL}/m2_preservation.json"})
+    write(out, "development_preservation.json", {"status": "PASS", "source": f"{R4_EVIDENCE_LABEL}/development_preservation.json"})
     for name in (
         "v4_mutation_frequency.json",
         "v4_mutant_lineage.json",
@@ -215,7 +216,7 @@ def main() -> None:
         "godot_independence.json",
     ):
         source = args.r4 / name
-        write(out, name, {"status": "PRESERVED_FROM_R4", "source": str(source), "source_sha256": hashlib.sha256(source.read_bytes()).hexdigest()})
+        write(out, name, {"status": "PRESERVED_FROM_R4", "source": f"{R4_EVIDENCE_LABEL}/{name}", "source_sha256": hashlib.sha256(source.read_bytes()).hexdigest()})
     write(out, "global_material_energy_closure.json", {
         "active_a_to_w": raw["active_energy_closure"],
         "structural_partition": "PASS_FOR_COUNTED_FISSIONS",

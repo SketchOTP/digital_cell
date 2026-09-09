@@ -1,5 +1,5 @@
 {
-  "source": "digital-protocell/experiments/generated/dcfinal001r4/linux_runtime.json",
+  "source": "experiments/generated/dcfinal001r4/linux_runtime.json",
   "source_sha256": "25247d0f21e582b09acf3fb0500ef930f6f28f1e121a6a2361ea0747037d94b1",
   "status": "PRESERVED_FROM_R4"
 }
