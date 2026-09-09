@@ -83,8 +83,15 @@ jobs:
           cargo +1.89.0 run --locked -q --release -p regulatory-core \
             --example dcfinal001_r8r1_gate1 -- --output "$RUNNER_TEMP/gate1.json"
           cd "$GITHUB_WORKSPACE"
-          diff -u digital-protocell/experiments/generated/dcfinal001r8r1/compression_overattenuation_audit.json \
-            "$RUNNER_TEMP/gate1.json"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          expected = json.loads(Path(
+              'digital-protocell/experiments/generated/dcfinal001r8r1/compression_overattenuation_audit.json'
+          ).read_text())
+          actual = json.loads((Path(os.environ['RUNNER_TEMP']) / 'gate1.json').read_text())
+          assert actual == expected
+          PY
 
       - name: Qualify sign-aware contracts and reproduction
         working-directory: digital-protocell
