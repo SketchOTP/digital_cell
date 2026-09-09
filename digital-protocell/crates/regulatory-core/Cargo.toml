@@ -165,6 +165,10 @@ name = "dcfinal001_r1_evolution"
 path = "../../examples/dcfinal001_r1_evolution.rs"
 
 [[example]]
+name = "dcfinal001_r2_evolution"
+path = "../../examples/dcfinal001_r2_evolution.rs"
+
+[[example]]
 name = "dcdev021_m2_entry020"
 path = "../../examples/dcdev021_m2_entry020.rs"
 

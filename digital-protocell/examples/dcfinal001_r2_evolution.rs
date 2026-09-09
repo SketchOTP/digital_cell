@@ -1,0 +1,944 @@
+//! DC-FINAL-001-R2: powered lawful-mutation and natural-selection audit.
+//!
+//! Identical organisms are represented by an exact state plus an integer
+//! multiplicity.  The compression is semantic: shared-medium requests,
+//! organism/world material transfers, deaths, physical fissions, and mutation
+//! draws are all weighted or expanded by that multiplicity.  No cohort value
+//! enters organism biology.
+
+use chemistry_core::d096_allocation::{
+    expression_step, mutate_allocation_at_reproduction, AllocationGenotype, AllocationParams,
+};
+use chemistry_core::material_mesh::MaterialMesh;
+use chemistry_core::mesh_fission::{topology_step, try_local_fission, FissionParams};
+use chemistry_core::mesh_growth::{growth_step, GrowthParams};
+use chemistry_core::mesh_mechanics::{remesh, MechParams};
+use chemistry_core::mesh_reactions::{reactions_step, ReactionParams};
+use chemistry_core::mesh_self_contact::{mechanics_step_with_local_self_contact, polygon_simple};
+use chemistry_core::mesh_transport::{
+    mean_occupancy, permeability, transport_step, TransportParams,
+};
+use serde::{Deserialize, Serialize};
+use serde_json::{json, Value};
+use std::collections::BTreeMap;
+use std::{env, fs, path::PathBuf};
+
+const DIRECTIVE: &str =
+    "DC-FINAL-001-R2-LAWFUL-MUTATION-NATURAL-SELECTION-REVERSAL-AND-FINAL-GOAL-CLOSURE-001";
+const TEMPLATE_STEPS: usize = 6_500;
+const PHASE_STEPS: usize = 2_500;
+const FOUNDER_MULTIPLICITY: u64 = 150;
+const REPLICATES: u64 = 2;
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+enum Environment {
+    Resource,
+    Damage,
+}
+
+impl Environment {
+    fn label(self) -> &'static str {
+        match self {
+            Self::Resource => "RESOURCE_CHALLENGE",
+            Self::Damage => "DAMAGE_CHALLENGE",
+        }
+    }
+
+    fn fixed_inflow_concentrations(self, phase_step: usize) -> (f64, f64) {
+        match self {
+            // Frozen D-096 H pulse/lean schedule.
+            Self::Resource if phase_step % 400 < 100 => (2.75, 1.0),
+            Self::Resource => (0.264, 1.0),
+            // Frozen D-096 B resource boundary.
+            Self::Damage => (1.98, 1.0),
+        }
+    }
+}
+
+#[derive(Debug, Clone)]
+struct Cohort {
+    mesh: MaterialMesh,
+    count: u64,
+    generation: u32,
+    birth_mass: f64,
+    id: u64,
+}
+
+#[derive(Debug, Clone, Default, Serialize)]
+struct WorldLedger {
+    initial_n: f64,
+    initial_f: f64,
+    inflow_n: f64,
+    inflow_f: f64,
+    delivered_n: f64,
+    delivered_f: f64,
+    returned_n: f64,
+    returned_f: f64,
+    c_outflow: f64,
+    a_outflow: f64,
+    w_outflow: f64,
+    damage_structural_sink: f64,
+    damage_membrane_sink: f64,
+    physical_death_n_sink: f64,
+    physical_death_f_sink: f64,
+    invalidated_n_terminal: f64,
+    invalidated_f_terminal: f64,
+}
+
+#[derive(Debug, Clone, Serialize)]
+struct OpenMedium {
+    /// One fixed reference volume per preregistered founder. This scales the
+    /// assay vessel, not any organism rule, and never follows population size.
+    volume: f64,
+    n_mass: f64,
+    f_mass: f64,
+    ledger: WorldLedger,
+}
+
+#[derive(Debug, Clone, Default, Serialize)]
+struct CampaignLedger {
+    mutation_opportunities: u64,
+    mutations: u64,
+    physical_fissions: u64,
+    valid_simple_fissions: u64,
+    physical_deaths: u64,
+    runtime_invalidations: u64,
+    expression_failures: u64,
+    invalid_geometry_events: u64,
+    partition_failures: u64,
+    reaction_n_consumed: f64,
+    reaction_f_consumed: f64,
+    a_produced: f64,
+    w_produced: f64,
+    growth_material: f64,
+    expression_material: f64,
+    expression_activation: f64,
+    mutation_events: Vec<Value>,
+    fissions_by_parent_genotype: BTreeMap<String, u64>,
+}
+
+fn genotype_key(genotype: AllocationGenotype) -> String {
+    genotype
+        .0
+        .iter()
+        .map(|value| format!("{value:.17}"))
+        .collect::<Vec<_>>()
+        .join(",")
+}
+
+fn splitmix64(mut value: u64) -> u64 {
+    value = value.wrapping_add(0x9e37_79b9_7f4a_7c15);
+    value = (value ^ (value >> 30)).wrapping_mul(0xbf58_476d_1ce4_e5b9);
+    value = (value ^ (value >> 27)).wrapping_mul(0x94d0_49bb_1331_11eb);
+    value ^ (value >> 31)
+}
+
+fn mutation_seed(campaign_seed: u64, step: usize, cohort: u64, ordinal: u64, child: u64) -> u64 {
+    splitmix64(
+        campaign_seed
+            ^ (step as u64).wrapping_mul(0x9e37_79b9_7f4a_7c15)
+            ^ cohort.rotate_left(17)
+            ^ ordinal.wrapping_mul(0xd1b5_4a32_d192_ed03)
+            ^ child.wrapping_mul(0x94d0_49bb_1331_11eb),
+    )
+}
+
+fn perturb_seed_1(mesh: &mut MaterialMesh) {
+    let center = mesh.centroid();
+    let (sine, cosine) = 0.3_f64.sin_cos();
+    for point in &mut mesh.vertices {
+        let x = point[0] - center[0];
+        let y = point[1] - center[1];
+        point[0] = center[0] + cosine * x - sine * y;
+        point[1] = center[1] + sine * x + cosine * y;
+    }
+    for (index, point) in mesh.vertices.iter_mut().enumerate() {
+        let fraction = (((index as f64 + 1.0) * 12.9898).sin() * 43758.5453).fract();
+        point[0] += 0.35 * (fraction - 0.5);
+        point[1] += 0.35 * ((fraction * 7.13).fract() - 0.5);
+    }
+    let center = mesh.centroid();
+    for point in &mut mesh.vertices {
+        point[0] = center[0] + (point[0] - center[0]) * 1.25;
+    }
+}
+
+/// Reconstruct the sealed WP1 seed-1 parent whose two daughters independently
+/// passed the complete 3,000-step simple-boundary viability assay. The returned
+/// state is immediately before its unchanged fission.
+fn lawful_parent_template() -> (MaterialMesh, f64, usize) {
+    let mut mesh = chemistry_core::mesh_population::MeshPopulation::seed_one(14.0, 1, 2.2)
+        .individuals
+        .remove(0)
+        .mesh;
+    perturb_seed_1(&mut mesh);
+    let birth_mass = mesh.total_structural_mass();
+    let mechanics = MechParams::default();
+    let reaction = ReactionParams::default();
+    let transport = TransportParams::default();
+    let growth = GrowthParams {
+        y_g: 0.9,
+        enable_growth: true,
+    };
+    let fission = FissionParams::default();
+    for step in 0..TEMPLATE_STEPS {
+        let _ = transport_step(&mut mesh, &transport, mechanics.dt);
+        let _ = reactions_step(&mut mesh, &reaction, mechanics.dt, true, true);
+        let _ = growth_step(&mut mesh, &reaction, &growth, mechanics.dt);
+        assert!(mechanics_step_with_local_self_contact(&mut mesh, &mechanics).is_some());
+        let _ = remesh(&mut mesh);
+        if step % 10 == 0 {
+            let _ = topology_step(&mut mesh, &fission);
+        }
+        assert!(polygon_simple(&mesh.vertices));
+        if mesh.total_structural_mass() >= 1.35 * birth_mass && step % 25 == 0 {
+            if let Some((a, b, event)) = try_local_fission(&mesh, &fission) {
+                if event.partition.ok && polygon_simple(&a.vertices) && polygon_simple(&b.vertices)
+                {
+                    return (mesh, birth_mass, step + 1);
+                }
+            }
+        }
+    }
+    panic!("sealed seed-10 geometry-valid parent did not replay");
+}
+
+fn signed_request(
+    mesh: &MaterialMesh,
+    transport: &TransportParams,
+    species: &str,
+    interior: f64,
+    boundary: f64,
+    dt: f64,
+) -> f64 {
+    let theta = mean_occupancy(mesh);
+    let ruptured_fraction =
+        mesh.edges.iter().filter(|edge| edge.ruptured).count() as f64 / mesh.n().max(1) as f64;
+    transport.k_flux
+        * permeability(theta, species)
+        * (1.0 + 4.0 * ruptured_fraction)
+        * (boundary - interior)
+        * mesh.perimeter().max(1e-6)
+        * dt
+}
+
+impl OpenMedium {
+    fn new(environment: Environment) -> Self {
+        let volume = FOUNDER_MULTIPLICITY as f64;
+        let (n, f) = environment.fixed_inflow_concentrations(0);
+        let initial_n = n * volume;
+        let initial_f = f * volume;
+        Self {
+            volume,
+            n_mass: initial_n,
+            f_mass: initial_f,
+            ledger: WorldLedger {
+                initial_n,
+                initial_f,
+                ..WorldLedger::default()
+            },
+        }
+    }
+
+    fn add_fixed_inflow(&mut self, environment: Environment, phase_step: usize, dt: f64) {
+        let (n, f) = environment.fixed_inflow_concentrations(phase_step);
+        let add_n = n * dt * self.volume;
+        let add_f = f * dt * self.volume;
+        self.n_mass += add_n;
+        self.f_mass += add_f;
+        self.ledger.inflow_n += add_n;
+        self.ledger.inflow_f += add_f;
+    }
+
+    /// Exact multiplicity-aware finite shared-boundary exchange. The effective
+    /// boundary passed to the frozen transport law is reduced only by the one
+    /// common finite-world allocation scale.
+    fn exchange(&mut self, cohorts: &mut [Cohort], transport: &TransportParams, dt: f64) {
+        let boundary_n = self.n_mass / self.volume;
+        let boundary_f = self.f_mass / self.volume;
+        let mut raw = Vec::with_capacity(cohorts.len());
+        let mut requested_n = 0.0;
+        let mut requested_f = 0.0;
+        let mut returned_n = 0.0;
+        let mut returned_f = 0.0;
+        for cohort in cohorts.iter() {
+            let area = cohort.mesh.area().max(1e-15);
+            let rn = signed_request(
+                &cohort.mesh,
+                transport,
+                "N",
+                cohort.mesh.interior.n,
+                boundary_n,
+                dt,
+            );
+            let rf = signed_request(
+                &cohort.mesh,
+                transport,
+                "F",
+                cohort.mesh.interior.f,
+                boundary_f,
+                dt,
+            );
+            let rn = rn.max(-cohort.mesh.interior.n.max(0.0) * area);
+            let rf = rf.max(-cohort.mesh.interior.f.max(0.0) * area);
+            if rn >= 0.0 {
+                requested_n += rn * cohort.count as f64;
+            } else {
+                returned_n += -rn * cohort.count as f64;
+            }
+            if rf >= 0.0 {
+                requested_f += rf * cohort.count as f64;
+            } else {
+                returned_f += -rf * cohort.count as f64;
+            }
+            raw.push((rn, rf));
+        }
+        let available_n = self.n_mass + returned_n;
+        let available_f = self.f_mass + returned_f;
+        let n_scale = if requested_n > 0.0 {
+            (available_n / requested_n).min(1.0)
+        } else {
+            1.0
+        };
+        let f_scale = if requested_f > 0.0 {
+            (available_f / requested_f).min(1.0)
+        } else {
+            1.0
+        };
+        let scale = n_scale.min(f_scale).clamp(0.0, 1.0);
+
+        for (cohort, (rn, rf)) in cohorts.iter_mut().zip(raw) {
+            let original = cohort.mesh.exterior;
+            cohort.mesh.exterior.c = 0.0;
+            cohort.mesh.exterior.a = 0.0;
+            cohort.mesh.exterior.w = 0.0;
+            cohort.mesh.exterior.n = if rn >= 0.0 {
+                cohort.mesh.interior.n + scale * (boundary_n - cohort.mesh.interior.n)
+            } else {
+                boundary_n
+            };
+            cohort.mesh.exterior.f = if rf >= 0.0 {
+                cohort.mesh.interior.f + scale * (boundary_f - cohort.mesh.interior.f)
+            } else {
+                boundary_f
+            };
+            let ledger = transport_step(&mut cohort.mesh, transport, dt);
+            cohort.mesh.exterior = original;
+            let count = cohort.count as f64;
+            self.n_mass += count * (ledger.n_out - ledger.n_in);
+            self.f_mass += count * (ledger.f_out - ledger.f_in);
+            self.ledger.delivered_n += count * ledger.n_in;
+            self.ledger.delivered_f += count * ledger.f_in;
+            self.ledger.returned_n += count * ledger.n_out;
+            self.ledger.returned_f += count * ledger.f_out;
+            self.ledger.c_outflow += count * ledger.c_leak;
+            self.ledger.a_outflow += count * ledger.a_leak;
+            self.ledger.w_outflow += count * ledger.w_out;
+        }
+        self.n_mass = self.n_mass.max(0.0);
+        self.f_mass = self.f_mass.max(0.0);
+    }
+}
+
+fn apply_damage(cohort: &mut Cohort, step: usize, world: &mut OpenMedium) {
+    if step % 350 != 0 || cohort.mesh.edges.is_empty() {
+        return;
+    }
+    let structural = 0.08_f64.min(cohort.mesh.edges[0].m.max(0.0));
+    let membrane = 0.048_f64.min(cohort.mesh.edges[0].b.max(0.0));
+    cohort.mesh.edges[0].m -= structural;
+    cohort.mesh.edges[0].b -= membrane;
+    world.ledger.damage_structural_sink += structural * cohort.count as f64;
+    world.ledger.damage_membrane_sink += membrane * cohort.count as f64;
+}
+
+fn organism_amount(cohorts: &[Cohort], species: char) -> f64 {
+    cohorts
+        .iter()
+        .map(|cohort| {
+            let concentration = match species {
+                'n' => cohort.mesh.interior.n,
+                'f' => cohort.mesh.interior.f,
+                _ => 0.0,
+            };
+            concentration.max(0.0) * cohort.mesh.area() * cohort.count as f64
+        })
+        .sum()
+}
+
+fn population_count(cohorts: &[Cohort]) -> u64 {
+    cohorts.iter().map(|cohort| cohort.count).sum()
+}
+
+fn mean_genotype(cohorts: &[Cohort]) -> [f64; 4] {
+    let count = population_count(cohorts).max(1) as f64;
+    let mut mean = [0.0; 4];
+    for cohort in cohorts {
+        let genotype = cohort.mesh.finite_allocation.unwrap().genotype;
+        for (index, value) in genotype.0.iter().enumerate() {
+            mean[index] += *value * cohort.count as f64 / count;
+        }
+    }
+    mean
+}
+
+fn snapshot(cohorts: &[Cohort], world: &OpenMedium, step: usize) -> Value {
+    let mean = mean_genotype(cohorts);
+    json!({
+        "step": step,
+        "population": population_count(cohorts),
+        "cohorts": cohorts.len(),
+        "maximum_generation": cohorts.iter().map(|c| c.generation).max().unwrap_or(0),
+        "mean_genotype": mean,
+        "processing_activation": mean[0] + mean[1],
+        "repair": mean[2],
+        "growth_reserve_only_dormant": mean[3],
+        "world_n": world.n_mass,
+        "world_f": world.f_mass,
+        "organism_n": organism_amount(cohorts, 'n'),
+        "organism_f": organism_amount(cohorts, 'f'),
+        "all_simple": cohorts.iter().all(|c| polygon_simple(&c.mesh.vertices)),
+    })
+}
+
+fn split_cohort(
+    cohort: Cohort,
+    mutation_enabled: bool,
+    campaign_seed: u64,
+    step: usize,
+    next_id: &mut u64,
+    allocation: &AllocationParams,
+    fission: &FissionParams,
+    ledger: &mut CampaignLedger,
+) -> Result<Vec<Cohort>, Cohort> {
+    let Some((daughter_a, daughter_b, event)) = try_local_fission(&cohort.mesh, fission) else {
+        return Err(cohort);
+    };
+    if !event.partition.ok {
+        ledger.partition_failures += cohort.count;
+        return Err(cohort);
+    }
+    if !polygon_simple(&cohort.mesh.vertices)
+        || !polygon_simple(&daughter_a.vertices)
+        || !polygon_simple(&daughter_b.vertices)
+    {
+        ledger.invalid_geometry_events += cohort.count;
+        return Err(cohort);
+    }
+    ledger.physical_fissions += cohort.count;
+    ledger.valid_simple_fissions += cohort.count;
+    *ledger
+        .fissions_by_parent_genotype
+        .entry(genotype_key(
+            cohort.mesh.finite_allocation.unwrap().genotype,
+        ))
+        .or_default() += cohort.count;
+
+    let mutation_params = if mutation_enabled {
+        *allocation
+    } else {
+        AllocationParams {
+            mutation_probability: 0.0,
+            ..*allocation
+        }
+    };
+    let children = [daughter_a, daughter_b];
+    let mut groups: BTreeMap<(usize, [u64; 4]), (MaterialMesh, u64)> = BTreeMap::new();
+    for ordinal in 0..cohort.count {
+        for (side, child_template) in children.iter().enumerate() {
+            let parent = child_template.finite_allocation.unwrap().genotype;
+            let seed = mutation_seed(campaign_seed, step, cohort.id, ordinal, side as u64);
+            let mutation = mutate_allocation_at_reproduction(parent, &mutation_params, seed);
+            ledger.mutation_opportunities += 1;
+            if mutation.mutated {
+                ledger.mutations += 1;
+                ledger.mutation_events.push(json!({
+                    "step": step,
+                    "generation": cohort.generation + 1,
+                    "seed": seed,
+                    "parent": mutation.parent.0,
+                    "offspring": mutation.offspring.0,
+                    "source_index": mutation.source_index,
+                    "target_index": mutation.target_index,
+                    "transferred": mutation.transferred,
+                }));
+            }
+            let key = (side, mutation.offspring.0.map(f64::to_bits));
+            groups
+                .entry(key)
+                .and_modify(|(_, count)| *count += 1)
+                .or_insert_with(|| {
+                    let mut mesh = child_template.clone();
+                    mesh.finite_allocation.as_mut().unwrap().genotype = mutation.offspring;
+                    (mesh, 1)
+                });
+        }
+    }
+    let mut result = Vec::new();
+    for (_, (mesh, count)) in groups {
+        let id = *next_id;
+        *next_id += 1;
+        result.push(Cohort {
+            birth_mass: mesh.total_structural_mass(),
+            mesh,
+            count,
+            generation: cohort.generation + 1,
+            id,
+        });
+    }
+    Ok(result)
+}
+
+fn invalidated_material_to_terminal(cohort: &Cohort, world: &mut OpenMedium) {
+    world.ledger.invalidated_n_terminal +=
+        cohort.mesh.interior.n.max(0.0) * cohort.mesh.area() * cohort.count as f64;
+    world.ledger.invalidated_f_terminal +=
+        cohort.mesh.interior.f.max(0.0) * cohort.mesh.area() * cohort.count as f64;
+}
+
+fn dead_material_to_sink(cohort: &Cohort, world: &mut OpenMedium) {
+    world.ledger.physical_death_n_sink +=
+        cohort.mesh.interior.n.max(0.0) * cohort.mesh.area() * cohort.count as f64;
+    world.ledger.physical_death_f_sink +=
+        cohort.mesh.interior.f.max(0.0) * cohort.mesh.area() * cohort.count as f64;
+}
+
+fn advance_phase(
+    cohorts: &mut Vec<Cohort>,
+    world: &mut OpenMedium,
+    environment: Environment,
+    phase_index: usize,
+    mutation_enabled: bool,
+    campaign_seed: u64,
+    next_id: &mut u64,
+    ledger: &mut CampaignLedger,
+    trajectory: &mut Vec<Value>,
+) {
+    let allocation = AllocationParams::default();
+    let mechanics = MechParams::default();
+    let reaction = ReactionParams::default();
+    let transport = TransportParams::default();
+    let growth = GrowthParams {
+        y_g: 0.9,
+        enable_growth: true,
+    };
+    let fission = FissionParams::default();
+    for phase_step in 0..PHASE_STEPS {
+        if cohorts.is_empty() {
+            break;
+        }
+        let step = phase_index * PHASE_STEPS + phase_step + 1;
+        world.add_fixed_inflow(environment, phase_step, mechanics.dt);
+        if environment == Environment::Damage {
+            for cohort in cohorts.iter_mut() {
+                apply_damage(cohort, phase_step, world);
+            }
+        }
+        let mut retained = Vec::new();
+        for mut cohort in cohorts.drain(..) {
+            match expression_step(&mut cohort.mesh, &allocation, mechanics.dt) {
+                Ok(expression) => {
+                    let count = cohort.count as f64;
+                    ledger.expression_material += expression.material_consumed * count;
+                    ledger.expression_activation +=
+                        (expression.activation_consumed + expression.maintenance_consumed) * count;
+                    retained.push(cohort);
+                }
+                Err(_) => {
+                    ledger.expression_failures += cohort.count;
+                    ledger.runtime_invalidations += cohort.count;
+                    invalidated_material_to_terminal(&cohort, world);
+                }
+            }
+        }
+        *cohorts = retained;
+        world.exchange(cohorts, &transport, mechanics.dt);
+
+        let mut survivors = Vec::new();
+        for mut cohort in cohorts.drain(..) {
+            let count = cohort.count as f64;
+            let reactions = reactions_step(&mut cohort.mesh, &reaction, mechanics.dt, true, true);
+            ledger.reaction_n_consumed += reactions.n_consumed * count;
+            ledger.reaction_f_consumed += reactions.f_consumed * count;
+            ledger.a_produced += reactions.a_produced * count;
+            ledger.w_produced += reactions.w_produced * count;
+            let grown = growth_step(&mut cohort.mesh, &reaction, &growth, mechanics.dt);
+            ledger.growth_material += grown.m_grown * count;
+            let valid =
+                mechanics_step_with_local_self_contact(&mut cohort.mesh, &mechanics).is_some();
+            if !valid {
+                ledger.runtime_invalidations += cohort.count;
+                ledger.invalid_geometry_events += cohort.count;
+                invalidated_material_to_terminal(&cohort, world);
+                continue;
+            }
+            let _ = remesh(&mut cohort.mesh);
+            if step % 10 == 0 {
+                let _ = topology_step(&mut cohort.mesh, &fission);
+            }
+            if !polygon_simple(&cohort.mesh.vertices) {
+                ledger.runtime_invalidations += cohort.count;
+                ledger.invalid_geometry_events += cohort.count;
+                invalidated_material_to_terminal(&cohort, world);
+                continue;
+            }
+            if !cohort.mesh.observer_viable() {
+                ledger.physical_deaths += cohort.count;
+                dead_material_to_sink(&cohort, world);
+                continue;
+            }
+            let eligible =
+                cohort.mesh.total_structural_mass() >= 1.35 * cohort.birth_mass && step % 25 == 0;
+            if eligible {
+                match split_cohort(
+                    cohort,
+                    mutation_enabled,
+                    campaign_seed,
+                    step,
+                    next_id,
+                    &allocation,
+                    &fission,
+                    ledger,
+                ) {
+                    Ok(children) => survivors.extend(children),
+                    Err(parent) => survivors.push(parent),
+                }
+            } else {
+                survivors.push(cohort);
+            }
+        }
+        *cohorts = survivors;
+        if phase_step == 0 || (phase_step + 1) % 250 == 0 {
+            trajectory.push(snapshot(cohorts, world, step));
+        }
+    }
+}
+
+fn initial_population(
+    template: &MaterialMesh,
+    original_birth_mass: f64,
+    mutation_enabled: bool,
+    campaign_seed: u64,
+    founder_count: u64,
+    ledger: &mut CampaignLedger,
+) -> Vec<Cohort> {
+    let allocation = AllocationParams::default();
+    let fission = FissionParams::default();
+    let mut parent = template.clone();
+    parent.enable_finite_allocation(AllocationGenotype::neutral(), &allocation);
+    let cohort = Cohort {
+        mesh: parent,
+        count: founder_count,
+        generation: 0,
+        birth_mass: original_birth_mass,
+        id: 1,
+    };
+    let mut next_id = 2;
+    split_cohort(
+        cohort,
+        mutation_enabled,
+        campaign_seed,
+        0,
+        &mut next_id,
+        &allocation,
+        &fission,
+        ledger,
+    )
+    .expect("sealed geometry-valid parent must fission")
+}
+
+fn campaign(
+    template: &MaterialMesh,
+    original_birth_mass: f64,
+    template_step: usize,
+    sequence: &[Environment],
+    mutation_enabled: bool,
+    replicate: u64,
+) -> Value {
+    let campaign_seed = splitmix64(
+        replicate
+            ^ if mutation_enabled {
+                0x6a09_e667_f3bc_c909
+            } else {
+                0xbb67_ae85_84ca_a73b
+            }
+            ^ sequence.iter().fold(0_u64, |state, env| {
+                state.rotate_left(9)
+                    ^ match env {
+                        Environment::Resource => 0x11,
+                        Environment::Damage => 0x22,
+                    }
+            }),
+    );
+    let mut ledger = CampaignLedger::default();
+    let mut cohorts = initial_population(
+        template,
+        original_birth_mass,
+        mutation_enabled,
+        campaign_seed,
+        FOUNDER_MULTIPLICITY,
+        &mut ledger,
+    );
+    let mut next_id = 10_000;
+    let mut world = OpenMedium::new(sequence[0]);
+    let initial_organism_n = organism_amount(&cohorts, 'n');
+    let initial_organism_f = organism_amount(&cohorts, 'f');
+    let initial = snapshot(&cohorts, &world, 0);
+    let mut trajectory = vec![initial.clone()];
+    for (phase, environment) in sequence.iter().copied().enumerate() {
+        advance_phase(
+            &mut cohorts,
+            &mut world,
+            environment,
+            phase,
+            mutation_enabled,
+            campaign_seed,
+            &mut next_id,
+            &mut ledger,
+            &mut trajectory,
+        );
+    }
+    let terminal_step = sequence.len() * PHASE_STEPS;
+    let terminal = snapshot(&cohorts, &world, terminal_step);
+    let terminal_organism_n = organism_amount(&cohorts, 'n');
+    let terminal_organism_f = organism_amount(&cohorts, 'f');
+    let n_closure = (world.ledger.initial_n + world.ledger.inflow_n + initial_organism_n
+        - world.n_mass
+        - terminal_organism_n
+        - ledger.reaction_n_consumed
+        - world.ledger.physical_death_n_sink
+        - world.ledger.invalidated_n_terminal)
+        .abs();
+    let f_closure = (world.ledger.initial_f + world.ledger.inflow_f + initial_organism_f
+        - world.f_mass
+        - terminal_organism_f
+        - ledger.reaction_f_consumed
+        - world.ledger.physical_death_f_sink
+        - world.ledger.invalidated_f_terminal)
+        .abs();
+    json!({
+        "replicate": replicate,
+        "mutation_enabled": mutation_enabled,
+        "campaign_seed": campaign_seed,
+        "environment_sequence": sequence.iter().map(|environment| environment.label()).collect::<Vec<_>>(),
+        "phase_steps": PHASE_STEPS,
+        "founder_multiplicity": FOUNDER_MULTIPLICITY,
+        "template_fission_step": template_step,
+        "fitness_function": null,
+        "breeder_selection": false,
+        "population_cap": null,
+        "resource_feedback": false,
+        "exchangeability_compression": true,
+        "initial": initial,
+        "trajectory": trajectory,
+        "terminal": terminal,
+        "world": world,
+        "ledger": ledger,
+        "n_closure_residual": n_closure,
+        "f_closure_residual": f_closure,
+    })
+}
+
+fn compression_parity(template: &MaterialMesh, original_birth_mass: f64) -> Value {
+    let mut compressed_ledger = CampaignLedger::default();
+    let mut compressed = initial_population(
+        template,
+        original_birth_mass,
+        false,
+        101,
+        2,
+        &mut compressed_ledger,
+    );
+    let mut explicit = Vec::new();
+    let mut explicit_ledger = CampaignLedger::default();
+    for ordinal in 0..2_u64 {
+        let mut ledger = CampaignLedger::default();
+        explicit.extend(initial_population(
+            template,
+            original_birth_mass,
+            false,
+            101 ^ ordinal.rotate_left(3),
+            1,
+            &mut ledger,
+        ));
+        explicit_ledger.mutation_opportunities += ledger.mutation_opportunities;
+    }
+    let transport = TransportParams::default();
+    let dt = MechParams::default().dt;
+    let mut compressed_world = OpenMedium::new(Environment::Resource);
+    let mut explicit_world = compressed_world.clone();
+    compressed_world.exchange(&mut compressed, &transport, dt);
+    explicit_world.exchange(&mut explicit, &transport, dt);
+    let transport_residual = (compressed_world.n_mass - explicit_world.n_mass)
+        .abs()
+        .max((compressed_world.f_mass - explicit_world.f_mass).abs())
+        .max((organism_amount(&compressed, 'n') - organism_amount(&explicit, 'n')).abs())
+        .max((organism_amount(&compressed, 'f') - organism_amount(&explicit, 'f')).abs());
+    json!({
+        "scope": "initial geometry-valid fission, mutation-off inheritance, and one finite shared-medium exchange",
+        "compressed_population": population_count(&compressed),
+        "explicit_population": population_count(&explicit),
+        "compressed_opportunities": compressed_ledger.mutation_opportunities,
+        "explicit_opportunities": explicit_ledger.mutation_opportunities,
+        "transport_residual": transport_residual,
+        "pass": population_count(&compressed) == population_count(&explicit)
+            && compressed_ledger.mutation_opportunities == explicit_ledger.mutation_opportunities
+            && transport_residual <= 1e-10,
+    })
+}
+
+fn one_frozen_step(mut mesh: MaterialMesh, expression: bool) -> Value {
+    let allocation = AllocationParams::default();
+    let mechanics = MechParams::default();
+    let reaction = ReactionParams::default();
+    let transport = TransportParams::default();
+    let growth = GrowthParams {
+        y_g: 0.9,
+        enable_growth: true,
+    };
+    let (expression_ok, expression_material) = if expression {
+        match expression_step(&mut mesh, &allocation, mechanics.dt) {
+            Ok(ledger) => (true, ledger.material_consumed),
+            Err(_) => (false, 0.0),
+        }
+    } else {
+        (true, 0.0)
+    };
+    let _ = transport_step(&mut mesh, &transport, mechanics.dt);
+    let _ = reactions_step(&mut mesh, &reaction, mechanics.dt, true, true);
+    let _ = growth_step(&mut mesh, &reaction, &growth, mechanics.dt);
+    let contact_accepted = mechanics_step_with_local_self_contact(&mut mesh, &mechanics).is_some();
+    json!({
+        "expression_enabled": expression,
+        "expression_ok": expression_ok,
+        "expression_material_consumed": expression_material,
+        "contact_accepted": contact_accepted,
+        "polygon_simple_after": polygon_simple(&mesh.vertices),
+        "observer_viable_after": mesh.observer_viable(),
+    })
+}
+
+fn newborn_first_step_attribution(template: &MaterialMesh) -> Value {
+    let allocation = AllocationParams::default();
+    let fission = FissionParams::default();
+    let mut parent = template.clone();
+    parent.enable_finite_allocation(AllocationGenotype::neutral(), &allocation);
+    let (a, b, event) = try_local_fission(&parent, &fission).expect("template fission");
+    assert!(event.partition.ok && polygon_simple(&a.vertices) && polygon_simple(&b.vertices));
+    json!({
+        "daughter_a": {
+            "expression_off": one_frozen_step(a.clone(), false),
+            "expression_on": one_frozen_step(a, true),
+        },
+        "daughter_b": {
+            "expression_off": one_frozen_step(b.clone(), false),
+            "expression_on": one_frozen_step(b, true),
+        },
+        "interpretation_boundary": "one frozen post-birth step; observer counterfactual only",
+    })
+}
+
+fn mutated_descendant_heredity_control(template: &MaterialMesh) -> Value {
+    let allocation = AllocationParams::default();
+    let fission = FissionParams::default();
+    let parent_genotype = AllocationGenotype::neutral();
+    let (seed, mutation) = (1_u64..=100_000)
+        .map(|seed| {
+            (
+                seed,
+                mutate_allocation_at_reproduction(parent_genotype, &allocation, splitmix64(seed)),
+            )
+        })
+        .find(|(_, event)| event.mutated)
+        .expect("configured mutation must be observable in powered search");
+    let mut parent = template.clone();
+    parent.enable_finite_allocation(mutation.offspring, &allocation);
+    let (a, b, event) = try_local_fission(&parent, &fission).expect("template fission");
+    let inherited = event.partition.ok
+        && polygon_simple(&a.vertices)
+        && polygon_simple(&b.vertices)
+        && a.finite_allocation.unwrap().genotype == mutation.offspring
+        && b.finite_allocation.unwrap().genotype == mutation.offspring;
+    json!({
+        "scope": "mechanistic fission-partition control; not an evolving founder population",
+        "lawful_mutation_seed": splitmix64(seed),
+        "mutant": mutation.offspring.0,
+        "simple_parent": polygon_simple(&parent.vertices),
+        "simple_daughter_a": polygon_simple(&a.vertices),
+        "simple_daughter_b": polygon_simple(&b.vertices),
+        "partition_ok": event.partition.ok,
+        "mutated_genotype_inherited_by_both_daughters": inherited,
+    })
+}
+
+fn main() {
+    let mut output = PathBuf::from("/tmp/dcfinal001_r2_evolution.json");
+    let args: Vec<String> = env::args().collect();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let (template, original_birth_mass, template_step) = lawful_parent_template();
+    let parity = compression_parity(&template, original_birth_mass);
+    assert_eq!(parity["pass"], true);
+    let newborn_attribution = newborn_first_step_attribution(&template);
+    let mutated_heredity = mutated_descendant_heredity_control(&template);
+
+    let mut handles = Vec::new();
+    for replicate in 1..=REPLICATES {
+        for mutation_enabled in [true, false] {
+            for sequence in [
+                vec![Environment::Resource],
+                vec![Environment::Damage],
+                vec![Environment::Resource, Environment::Damage],
+            ] {
+                let template = template.clone();
+                handles.push(std::thread::spawn(move || {
+                    campaign(
+                        &template,
+                        original_birth_mass,
+                        template_step,
+                        &sequence,
+                        mutation_enabled,
+                        replicate,
+                    )
+                }));
+            }
+        }
+    }
+    let campaigns = handles
+        .into_iter()
+        .map(|handle| handle.join().expect("campaign thread"))
+        .collect::<Vec<_>>();
+    let value = json!({
+        "directive": DIRECTIVE,
+        "protocol": {
+            "mutation_probability": AllocationParams::default().mutation_probability,
+            "mutation_sigma": AllocationParams::default().mutation_sigma,
+            "mutation_semantics": "one deterministic blind draw per daughter at geometry-valid physical fission",
+            "minimum_opportunities_for_95_percent_at_least_one": 299,
+            "founder_multiplicity": FOUNDER_MULTIPLICITY,
+            "opportunities_per_initial_campaign": 2 * FOUNDER_MULTIPLICITY,
+            "replicates": REPLICATES,
+            "phase_steps": PHASE_STEPS,
+            "switch_schedule": [PHASE_STEPS, 2 * PHASE_STEPS],
+            "open_medium_volume": FOUNDER_MULTIPLICITY,
+            "inflow_schedule_source": "frozen D-096 H/B concentration values multiplied by dt and preregistered vessel volume",
+            "component_3_boundary": "reserve-only growth endpoint dormant under preserved reserve-OFF R1 physiology",
+        },
+        "template": {
+            "sealed_wp1_arm": "seed_1_rotate_0.3",
+            "fission_step": template_step,
+            "simple": polygon_simple(&template.vertices),
+            "vertices": template.n(),
+            "mass": template.total_structural_mass(),
+            "original_birth_mass": original_birth_mass,
+        },
+        "exchangeability_parity": parity,
+        "newborn_first_step_attribution": newborn_attribution,
+        "mutated_descendant_heredity_control": mutated_heredity,
+        "campaigns": campaigns,
+    });
+    fs::write(output, serde_json::to_vec_pretty(&value).unwrap()).unwrap();
+}
