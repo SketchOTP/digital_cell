@@ -1,0 +1,16 @@
+{
+  "imported_parameters": [],
+  "sources": [
+    {
+      "classification": "ADAPTABLE_PRINCIPLE",
+      "principle": "actin networks withstand tension and buckle readily under compression",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7443980/"
+    },
+    {
+      "classification": "REFERENCE_ONLY",
+      "principle": "convergent cortical flow and compression accompany furrowing",
+      "url": "https://www.nature.com/articles/s41467-024-53228-y"
+    }
+  ],
+  "status": "ARCHITECT_DISCOVERY_COMPLETED_IMPLEMENTATION_CONFIRMED"
+}

@@ -1,0 +1,9 @@
+{
+  "legacy_r7_pathology": {
+    "a_spent": 5417.959656209351,
+    "rupture_rebond_cycles": 3674
+  },
+  "maximum_r8r1_fixture_rebonds": 2,
+  "maximum_r8r1_fixture_ruptures": 2,
+  "pass": true
+}

@@ -1,0 +1,11 @@
+{
+  "division_command_or_target": false,
+  "fission_detector_changed": false,
+  "new_free_parameters": 0,
+  "new_threshold_gain_or_timer": false,
+  "newborn_grace_period": false,
+  "pass": true,
+  "r8_material_or_rupture_repairs_changed": false,
+  "success_conditioned_mechanics": false,
+  "v4_only": true
+}

@@ -1,0 +1,252 @@
+{
+  "all_completed_3000_steps": true,
+  "historical_fixture_warning": "pre-R8 half-density closures are diagnostic controls, not corrected births",
+  "rows": [
+    {
+      "continuation": {
+        "a_retention": 1.2342622790267466,
+        "all_lifecycle_invariants_hold": true,
+        "all_runtime_valid": true,
+        "all_simple": true,
+        "c_retention": 1.2647847663014686,
+        "closed_intact": true,
+        "completed_steps": 3000,
+        "cumulative_a_spent_on_rebond": 4.799077180516861,
+        "cumulative_same_edge_rebonds": 2,
+        "cumulative_topology_ruptures": 2,
+        "initial": {
+          "a_amount": 1614.7471168177751,
+          "a_concentration": 1.0008835184622578,
+          "area": 1613.3217172949835,
+          "c_amount": 1493.360000627606,
+          "c_concentration": 0.9256430286771852,
+          "closed_intact": true,
+          "lifecycle_valid": true,
+          "observer_viable": true,
+          "runtime_valid": true,
+          "simple": true,
+          "structural_mass": 552.2560025276601
+        },
+        "observer_viable": true,
+        "terminal": {
+          "area": 2264.014168840202,
+          "lifecycle_invariants_hold": true,
+          "mass": 470.73652637386425,
+          "mature_mass": 243.70427402996208,
+          "perimeter": 245.39280946827077,
+          "physical_runtime_valid": true,
+          "simple": true,
+          "vertices": 107,
+          "young_mass": 227.03225234390217
+        },
+        "viable": true
+      },
+      "fixture": "r7_seed3_daughter_a.json"
+    },
+    {
+      "continuation": {
+        "a_retention": 1.250526061785631,
+        "all_lifecycle_invariants_hold": true,
+        "all_runtime_valid": true,
+        "all_simple": true,
+        "c_retention": 1.1407925649030635,
+        "closed_intact": true,
+        "completed_steps": 3000,
+        "cumulative_a_spent_on_rebond": 4.795297642469791,
+        "cumulative_same_edge_rebonds": 2,
+        "cumulative_topology_ruptures": 2,
+        "initial": {
+          "a_amount": 632.2474585511067,
+          "a_concentration": 1.0008835184622578,
+          "area": 631.6893493485456,
+          "c_amount": 584.7188425141082,
+          "c_concentration": 0.9256430286771852,
+          "closed_intact": true,
+          "lifecycle_valid": true,
+          "observer_viable": true,
+          "runtime_valid": true,
+          "simple": true,
+          "structural_mass": 272.7196808691593
+        },
+        "observer_viable": true,
+        "terminal": {
+          "area": 1118.1441281489724,
+          "lifecycle_invariants_hold": true,
+          "mass": 232.36484582909344,
+          "mature_mass": 119.56586858145539,
+          "perimeter": 120.28628022650383,
+          "physical_runtime_valid": true,
+          "simple": true,
+          "vertices": 58,
+          "young_mass": 112.79897724763805
+        },
+        "viable": true
+      },
+      "fixture": "r7_seed3_daughter_b.json"
+    },
+    {
+      "continuation": {
+        "a_retention": 1.1802081502977362,
+        "all_lifecycle_invariants_hold": true,
+        "all_runtime_valid": true,
+        "all_simple": true,
+        "c_retention": 1.2538981728176923,
+        "closed_intact": true,
+        "completed_steps": 3000,
+        "cumulative_a_spent_on_rebond": 4.796896869077955,
+        "cumulative_same_edge_rebonds": 2,
+        "cumulative_topology_ruptures": 2,
+        "initial": {
+          "a_amount": 1702.98099684519,
+          "a_concentration": 1.0256657314526223,
+          "area": 1660.3664767402383,
+          "c_amount": 1569.857451012433,
+          "c_concentration": 0.9454885249758236,
+          "closed_intact": true,
+          "lifecycle_valid": true,
+          "observer_viable": true,
+          "runtime_valid": true,
+          "simple": true,
+          "structural_mass": 532.2172605968551
+        },
+        "observer_viable": true,
+        "terminal": {
+          "area": 2284.678859575478,
+          "lifecycle_invariants_hold": true,
+          "mass": 455.0601680734057,
+          "mature_mass": 235.50583897916184,
+          "perimeter": 236.23062789235047,
+          "physical_runtime_valid": true,
+          "simple": true,
+          "vertices": 104,
+          "young_mass": 219.55432909424385
+        },
+        "viable": true
+      },
+      "fixture": "r6_normal_seed3_viable_daughter_a.json"
+    },
+    {
+      "continuation": {
+        "a_retention": 1.4394519359363438,
+        "all_lifecycle_invariants_hold": true,
+        "all_runtime_valid": true,
+        "all_simple": true,
+        "c_retention": 1.205524554935959,
+        "closed_intact": true,
+        "completed_steps": 3000,
+        "cumulative_a_spent_on_rebond": 2.398874541033706,
+        "cumulative_same_edge_rebonds": 1,
+        "cumulative_topology_ruptures": 1,
+        "initial": {
+          "a_amount": 477.4130894202392,
+          "a_concentration": 1.0256657314526223,
+          "area": 465.4665499490678,
+          "c_amount": 440.09328173692967,
+          "c_concentration": 0.9454885249758236,
+          "closed_intact": true,
+          "lifecycle_valid": true,
+          "observer_viable": true,
+          "runtime_valid": true,
+          "simple": true,
+          "structural_mass": 270.5322949270238
+        },
+        "observer_viable": true,
+        "terminal": {
+          "area": 844.2612605786763,
+          "lifecycle_invariants_hold": true,
+          "mass": 247.16196149237075,
+          "mature_mass": 123.81657925002972,
+          "perimeter": 125.6173810249648,
+          "physical_runtime_valid": true,
+          "simple": true,
+          "vertices": 58,
+          "young_mass": 123.34538224234103
+        },
+        "viable": true
+      },
+      "fixture": "r6_normal_seed3_viable_daughter_b.json"
+    },
+    {
+      "continuation": {
+        "a_retention": 1.1679003099157819,
+        "all_lifecycle_invariants_hold": true,
+        "all_runtime_valid": true,
+        "all_simple": true,
+        "c_retention": 1.1495937586901204,
+        "closed_intact": true,
+        "completed_steps": 3000,
+        "cumulative_a_spent_on_rebond": 4.7977584900691,
+        "cumulative_same_edge_rebonds": 2,
+        "cumulative_topology_ruptures": 2,
+        "initial": {
+          "a_amount": 1294.3419888454816,
+          "a_concentration": 1.0006238171546455,
+          "area": 1293.5350594852393,
+          "c_amount": 1217.2610732327198,
+          "c_concentration": 0.9410344654416458,
+          "closed_intact": true,
+          "lifecycle_valid": true,
+          "observer_viable": true,
+          "runtime_valid": true,
+          "simple": true,
+          "structural_mass": 454.3916536170309
+        },
+        "observer_viable": true,
+        "terminal": {
+          "area": 2023.2622160627716,
+          "lifecycle_invariants_hold": true,
+          "mass": 374.44876915271436,
+          "mature_mass": 196.34461693573132,
+          "perimeter": 191.19142263255063,
+          "physical_runtime_valid": true,
+          "simple": true,
+          "vertices": 65,
+          "young_mass": 178.10415221698304
+        },
+        "viable": true
+      },
+      "fixture": "r6_normal_tangential_seed3_nonviable_daughter_a.json"
+    },
+    {
+      "continuation": {
+        "a_retention": 1.250231383549909,
+        "all_lifecycle_invariants_hold": true,
+        "all_runtime_valid": true,
+        "all_simple": true,
+        "c_retention": 1.0934425982496798,
+        "closed_intact": false,
+        "completed_steps": 3000,
+        "cumulative_a_spent_on_rebond": 2.3954914442289237,
+        "cumulative_same_edge_rebonds": 1,
+        "cumulative_topology_ruptures": 2,
+        "initial": {
+          "a_amount": 566.1761524748933,
+          "a_concentration": 1.0006238171546455,
+          "area": 565.8231822672989,
+          "c_amount": 532.4591158593987,
+          "c_concentration": 0.941034465441646,
+          "closed_intact": true,
+          "lifecycle_valid": true,
+          "observer_viable": true,
+          "runtime_valid": true,
+          "simple": true,
+          "structural_mass": 240.65818312178286
+        },
+        "observer_viable": true,
+        "terminal": {
+          "area": 1040.0992488784095,
+          "lifecycle_invariants_hold": true,
+          "mass": 207.89025738586741,
+          "mature_mass": 106.79827693050821,
+          "perimeter": 117.04852828946697,
+          "physical_runtime_valid": true,
+          "simple": true,
+          "vertices": 44,
+          "young_mass": 101.0919804553592
+        },
+        "viable": false
+      },
+      "fixture": "r6_normal_tangential_seed3_nonviable_daughter_b.json"
+    }
+  ]
+}

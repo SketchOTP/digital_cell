@@ -1,0 +1,14 @@
+{
+  "directive": "DC-FINAL-001-R8R1-V4-SIGN-AWARE-MATURATION-MECHANICS-REPRODUCTION-AND-END-GOAL-CLOSURE-001",
+  "independent_architect_acceptance": "PENDING",
+  "r8_artifact_sha256": "d7bdf9c31da2e144d96fbcb53f727a9ec31304e0400e12ed984ea01285b384d8",
+  "r8_authority": "PASS",
+  "r8_exact_head_ci": {
+    "result": "PASS",
+    "run": 34383115730
+  },
+  "r8_governed_head": "eb198c4e84907d5a7f9f8c170d58a27b56e63bb0",
+  "r8_scientific_head": "aad73e86cd13b2bb77eb3c9e58105c294533fb1c",
+  "result_scientific_head": "bf195f5d9f6c2fe555bdec9810e2a16a1ab2cdc3",
+  "starting_governed_head": "eb198c4e84907d5a7f9f8c170d58a27b56e63bb0"
+}

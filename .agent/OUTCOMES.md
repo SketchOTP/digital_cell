@@ -2493,3 +2493,13 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 
 - Evidence-bearing governed head `ad7964df3f2520783e7622ef9f48c92dedfc4bc7` passed exact-head workflow `34381847005`; artifact ZIP digest `sha256:c6c3dbcea32cfd032b90b41966a339c22c57ae2881cf0569f17297b819ebb6fd`.
 - Scientific semantics remain those of head `aad73e86cd13b2bb77eb3c9e58105c294533fb1c`; no successor execution started and independent Architect acceptance remains pending.
+
+## DC-FINAL-001-R8R1 sign-aware V4 maturation mechanics — provisional bounded negative
+
+- Exact R8 authority and external disposition reconcile at governed head `eb198c4e84907d5a7f9f8c170d58a27b56e63bb0`, workflow `34383115730 PASS`, artifact `sha256:d7bdf9c31da2e144d96fbcb53f727a9ec31304e0400e12ed984ea01285b384d8`, classification `R8_ACCEPTED_MATERIAL_REPAIR_MECHANICS_OVERATTENUATION_REPLAN`.
+- Frozen pre-implementation evidence confirms that R8's both-sign mature-fraction multiplier weakens compression carried by an unchanged mature scaffold when young material is added. The production repair is V4-only and zero-parameter: compression uses the frozen raw spring law; tension and rupture retain R8 mature-fraction semantics.
+- Eight explicit mechanics/material tests pass, including fully young tension, mixed tension continuity, fully mature parity, compressed-scaffold parity, add-young compression invariance, full-density V4 closure, same-edge rebond, and non-V4 fission parity.
+- The historical 3,674-cycle / 5,417.96-A closure pathology remains eliminated. Previously viable legacy controls do not regress; all six fixture continuations complete 3,000 steps. Historical half-density fixtures remain diagnostic controls rather than corrected-birth evidence.
+- Frozen production campaigns remain below robust reproduction: passive `2/10, 2/10`; R5R1 `2/10, 2/10`; R6 normal `4/10, 4/10`; R6 combined `3/10, 3/10`; all are `10/10` growth-qualified.
+- D-087 remains `8/8`, `8/8`, `7/8` with `[true,true,false,true,true,true,true,true]`; R4 contract/topology, D-088, D-091, evolution-harness tests-only, M2 runtime, and Godot bridge validations pass locally.
+- Provisional classification: `V4_SIGN_AWARE_MATURATION_REPRODUCTION_NOT_ESTABLISHED`. Evolution and final integration are `NOT_REACHED_GATE8_STOP`; end goal `NOT_ESTABLISHED`; shutdown `NO — OWNER OVERRIDE ACTIVE`; independent Architect acceptance and exact-head CI/artifact pending.

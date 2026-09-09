@@ -1,0 +1,7 @@
+{
+  "fully_young_tensile_stretch_load": 0.0,
+  "pass": true,
+  "r8_full_density_two_edge_closure": "PRESERVED",
+  "raw_tensile_strain_may_be_positive": true,
+  "rupture_from_raw_strain_only": false
+}

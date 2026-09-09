@@ -1,0 +1,16 @@
+{
+  "added_young_mass": 6.029932231210231,
+  "candidate_add_young_force_change": 0.0,
+  "candidate_force_after_adding_observed_young": -9.324214944299886,
+  "candidate_force_before": -9.324214944299886,
+  "edge": 35,
+  "geometry_and_mature_mass_held_fixed": true,
+  "length": 1.8219027454730152,
+  "mature_mass": 5.455049394438656,
+  "r8_add_young_force_change": 4.895470106613199,
+  "r8_force_after_adding_observed_young": -4.428744837686687,
+  "r8_force_before": -9.324214944299886,
+  "raw_force_before_and_after": -9.324214944299886,
+  "raw_strain": -0.6660153531642776,
+  "source_run": "seed_5_env_0.1"
+}

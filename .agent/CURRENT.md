@@ -831,3 +831,12 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Immediate action: complete frozen-state force counterfactuals before production implementation. Only a supported Gate-1 result authorizes the zero-parameter sign-aware V4 stretch law; all R8 material and tensile-rupture repairs remain frozen.
 - Acceptance: preserve M1 and non-V4 parity, keep R8 closure cycling eliminated, and requalify the frozen four-arm V4 campaign. Mutation/selection/reversal/final integration remain conditional on unchanged reproduction gates.
 - Independent Architect acceptance remains `PENDING`; no successor directive is authorized.
+
+## DC-FINAL-001-R8R1 provisional bounded result
+
+- Gate 1 confirms `R8_BOTH_SIGN_MATURE_FRACTION_OVERATTENUATES_COMPRESSED_MATURE_SCAFFOLD`: the ten unchanged R8 passive replays contain 1,189 compressed mixed-maturity edges, and R8 retains only approximately 42–47% of raw compression-force norm. Adding existing young mass to one fixed mature scaffold weakens R8 compression from `9.324214944299886` to `4.428744837686687`; the sign-aware law is invariant.
+- The implemented V4-only law preserves R8 mature-fraction tensile loading and tensile rupture while restoring the frozen raw spring law only when existing raw strain is negative. New free parameters: `0`; non-V4 behavior and R8 full-density closure/A accounting remain unchanged.
+- Frozen 14,778-step results: passive `2/10` fissions and `2/10` viable pairs; R5R1 tangential `2/10` and `2/10`; R6 curvature-normal `4/10` and `4/10`; R6 normal-plus-tangential `3/10` and `3/10`. All campaigns remain `10/10` growth-qualified.
+- Robust V4 reproduction fails unchanged `7/10` and `6/10` gates. Mutation, selection, reversal, and final integrated M1–M5 are `NOT_REACHED_GATE8_STOP`; Digital Cell end goal remains `NOT_ESTABLISHED`.
+- Local preservation passes: D-087 V2 `8/8`, V3 `8/8`, V4 `7/8`, vector `[true,true,false,true,true,true,true,true]`; R4 topology/contract, D-088, D-091, evolution-harness tests-only, M2 runtime, and Godot bridge pass. R8's pathological closure cycle remains eliminated.
+- Scientific result head: `bf195f5d9f6c2fe555bdec9810e2a16a1ab2cdc3`. Exact-head Linux CI/artifact remain pending. Status: `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_REPLAN`; shutdown recommendation `NO — OWNER OVERRIDE ACTIVE`; no successor execution started; independent Architect acceptance `PENDING`.

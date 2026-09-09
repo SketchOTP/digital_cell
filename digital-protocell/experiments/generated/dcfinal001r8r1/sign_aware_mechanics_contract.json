@@ -1,0 +1,10 @@
+{
+  "bending": "UNCHANGED",
+  "fully_mature_parity": "EXACT",
+  "new_free_parameters": 0,
+  "pass": true,
+  "pressure": "UNCHANGED",
+  "v4_compression": "raw_strain < 0 => fs_raw",
+  "v4_rupture": "unchanged R8 mature_fraction * raw_strain",
+  "v4_tension": "raw_strain >= 0 => mature_fraction * fs_raw"
+}

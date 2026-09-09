@@ -1720,3 +1720,14 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Exact-head Linux workflow: `34381847005 PASS`.
 - Independently downloaded artifact ZIP digest: `sha256:c6c3dbcea32cfd032b90b41966a339c22c57ae2881cf0569f17297b819ebb6fd`.
 - Scientific semantics, owner override, Gate-9 stop, pending independent review, and `next_execution_started = false` are unchanged.
+
+## DEC-DCFINAL001-R8R1-SIGN-AWARE-MATURATION-STOP
+
+- Date: `2026-09-09`
+- Status: `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_REPLAN`
+- Record or decision ID: `DEC-DCFINAL001-R8R1-SIGN-AWARE-MATURATION-STOP`
+- External Architect accepts the R8 material repair and authorizes only a frozen-state causal audit followed, if supported, by zero-parameter V4 sign-aware stretch mechanics.
+- Gate 1 confirms compression overattenuation before implementation. R8's full-density closure, A cost, young-edge tensile protection, and tensile rupture semantics remain authoritative; negative-strain V4 edges alone recover the frozen raw spring response.
+- Result: all four campaigns remain `10/10` growth-qualified, while the strongest R6 curvature-normal composition reaches `4/10` geometry-valid fissions and `4/10` viable pairs, below unchanged `7/10` and `6/10` gates.
+- Classification: `V4_SIGN_AWARE_MATURATION_REPRODUCTION_NOT_ESTABLISHED`. Mutation, selection, reversal, and final integrated M1–M5 are `NOT_REACHED_GATE8_STOP`; end goal remains `NOT_ESTABLISHED`; shutdown recommendation is `NO — OWNER OVERRIDE ACTIVE`; next execution is `false`.
+- Scientific result head: `bf195f5d9f6c2fe555bdec9810e2a16a1ab2cdc3`; exact-head CI/artifact and independent Architect acceptance remain pending.

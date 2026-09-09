@@ -1,0 +1,22 @@
+{
+  "adding_young_mass_weakens_existing_compression": "NO",
+  "classification": "V4_SIGN_AWARE_MATURATION_REPRODUCTION_NOT_ESTABLISHED",
+  "compressed_mature_scaffold_parity": "PASS_EXACT",
+  "compression_overattenuation": "CONFIRMED",
+  "digital_cell_end_goal": "NOT_ESTABLISHED",
+  "directive": "DC-FINAL-001-R8R1-V4-SIGN-AWARE-MATURATION-MECHANICS-REPRODUCTION-AND-END-GOAL-CLOSURE-001",
+  "evolution": "NOT_REACHED_GATE8_STOP",
+  "final_integrated_m1_m5": "NOT_REACHED",
+  "fully_mature_v4_parity": "PASS_EXACT",
+  "fully_young_tensile_load": "PASS_ZERO",
+  "independent_architect_acceptance": "PENDING",
+  "new_free_parameters": 0,
+  "next_execution_started": false,
+  "non_v4_parity": "PASS",
+  "r8_closure_cycle_remains_eliminated": true,
+  "r8_material_repair": "ACCEPTED_PRESERVED",
+  "robust_v4_reproduction": "FAIL",
+  "shutdown_recommended": "NO \u2014 OWNER OVERRIDE ACTIVE",
+  "sign_aware_mechanics_contract": "PASS",
+  "status": "GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_REPLAN"
+}

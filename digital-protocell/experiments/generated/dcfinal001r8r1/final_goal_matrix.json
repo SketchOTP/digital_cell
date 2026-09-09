@@ -1,0 +1,13 @@
+{
+  "digital_cell_end_goal": "NOT_ESTABLISHED",
+  "final_integrated_m1_m5": "NOT_REACHED",
+  "m1": "PASS_PRESERVED",
+  "m2": "PASS_PRESERVED",
+  "m3": "PASS_PRESERVED",
+  "natural_selection": "NOT_REACHED",
+  "r8_material_repair": "ACCEPTED_PRESERVED",
+  "reversal": "NOT_REACHED",
+  "robust_v4_reproduction": "FAIL",
+  "sign_aware_mechanics": "PASS_CONTRACT",
+  "v4_mutation": "NOT_REACHED"
+}

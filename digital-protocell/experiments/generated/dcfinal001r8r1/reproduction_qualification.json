@@ -1,0 +1,36 @@
+{
+  "classification": "V4_SIGN_AWARE_MATURATION_REPRODUCTION_NOT_ESTABLISHED",
+  "evolution": "NOT_REACHED_GATE8_STOP",
+  "observed": [
+    {
+      "geometry_valid_fissions": 2,
+      "growth_qualified": 10,
+      "mode": "PASSIVE_V4",
+      "simple_viable_daughter_pairs": 2
+    },
+    {
+      "geometry_valid_fissions": 2,
+      "growth_qualified": 10,
+      "mode": "ZERO_PARAMETER_MEAN_RELATIVE_STRAIN",
+      "simple_viable_daughter_pairs": 2
+    },
+    {
+      "geometry_valid_fissions": 4,
+      "growth_qualified": 10,
+      "mode": "CURVATURE_GATED_NORMAL_ONLY",
+      "simple_viable_daughter_pairs": 4
+    },
+    {
+      "geometry_valid_fissions": 3,
+      "growth_qualified": 10,
+      "mode": "CURVATURE_NORMAL_PLUS_TANGENTIAL",
+      "simple_viable_daughter_pairs": 3
+    }
+  ],
+  "pass": false,
+  "required": {
+    "geometry_valid_fissions": 7,
+    "growth": 8,
+    "viable_pairs": 6
+  }
+}

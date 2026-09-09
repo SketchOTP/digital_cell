@@ -1164,3 +1164,11 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Correcting a real source-contract defect can reduce apparent reproductive success. Under yield-accounted two-edge construction, most formerly marginal scissions no longer have the physical A/material readiness to complete; this is a more honest result, not a regression to hide.
 - Historical half-density newborn snapshots are useful mechanics controls but cannot qualify corrected daughter construction. Their remaining closure failures reflect inherited under-massing, while the one corrected-birth fission produces a simple viable pair.
 - Robust reproduction remains primarily apposition-limited after the contract repair. Do not infer that another actuator, threshold, or lowered closure cost is authorized from the reduced fission count.
+
+## DC-FINAL-001-R8R1 sign-aware maturation learning
+
+- A material fraction is not automatically a stiffness fraction in every loading regime. Under R8, adding young non-load-bearing material reduced the force already carried by an unchanged compressed mature scaffold because mature mass was divided by a larger total mass.
+- The sign-aware repair is contract-derived rather than outcome-tuned: positive strain retains mature-fraction tensile loading and rupture protection; negative strain retains the mature scaffold's frozen raw compression response. No free parameter is introduced.
+- Restoring compressed-scaffold response materially improves corrected R8 reproduction and makes every counted fission in the four campaigns yield a viable pair, but the best campaign remains only `4/10`. The first unresolved production prerequisite therefore remains robust apposition/stress generation, not daughter closure, A shortage, growth, or geometry validity.
+- Correcting one causal inconsistency does not authorize a new mechanism when the fixed qualification gate still fails. Evolution remains downstream and was not executed.
+- External actin tension/compression asymmetry informed the mechanical interpretation, but no external force, buckling threshold, persistence length, location, or timing entered the implementation.

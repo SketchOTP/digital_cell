@@ -1,0 +1,7 @@
+{
+  "active_force_laws": "UNCHANGED",
+  "counted_fission_partition": "PASS",
+  "final_integrated_run": "NOT_REACHED_GATE8_STOP",
+  "r8_full_density_two_edge_closure": "PRESERVED",
+  "r8_two_edge_a_cost": "PRESERVED"
+}
