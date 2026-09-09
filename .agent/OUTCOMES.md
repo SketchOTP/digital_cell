@@ -2448,3 +2448,10 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Evidence-bearing governed head `cb6f7074ad8904500027b2f5fd9da38ac707a783` passed exact-head Linux workflow `34307578510` after the evidence generator was made invocation-directory independent.
 - Independently downloaded artifact ZIP digest: `sha256:58a5a83ecc669cb6f4d1e1c9590e250042919a11c2988abd311f225503b56670`.
 - Result remains `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; independent Architect acceptance is `PENDING`, and no successor execution started.
+
+## DC-FINAL-001-R5R1 exact-head evidence seal
+
+- Scientific result head `cadf6d283cc7f77f243e5958fd8be22d5ee804c9` is preserved without semantic change.
+- Evidence-bearing governed head `26fda9c11c0e56f9fd0f6e4ddda998f216e03491` passed exact-head Linux workflow `34343908708`.
+- Independently downloaded artifact ZIP digest: `sha256:592981501335f8223698b45074355ee34275f21ffb2c95cc80e30de0fd97718a`.
+- Result remains `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE`; independent Architect acceptance is `PENDING`, and no successor execution started.

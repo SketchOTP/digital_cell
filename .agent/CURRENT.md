@@ -770,3 +770,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Contrast A-to-W closure passes: A spent `15.32271299285506`, W produced `15.32271299181862`, residual `1.0364402669438277e-9`. Contrast motor-off matches passive; contrast zero-A spends exactly zero active A and reaches `7/10` fissions but `0/10` viable pairs.
 - Gate 5 fails the unchanged `7/10` fission and `6/10` viable-pair requirements. V4 mutation, selection, reversal, and final integrated M1-M5 execution are `NOT_REACHED_GATE5_STOP`.
 - Goal-agent status: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE`; classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`; Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown is recommended under the externally specified R5R1 terminal rule. Independent Architect acceptance remains `PENDING`; no successor execution started.
+
+## DC-FINAL-001-R5R1 exact-head evidence pointer
+
+- Scientific result head `cadf6d283cc7f77f243e5958fd8be22d5ee804c9` is preserved without semantic change.
+- Evidence-bearing head `26fda9c11c0e56f9fd0f6e4ddda998f216e03491` passed exact-head Linux workflow `34343908708`.
+- Independently downloaded artifact ZIP digest: `sha256:592981501335f8223698b45074355ee34275f21ffb2c95cc80e30de0fd97718a`.
+- The pointer confirms the R5R1 terminal stop; independent Architect acceptance remains `PENDING`, and no successor execution started.

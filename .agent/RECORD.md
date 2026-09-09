@@ -1658,3 +1658,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Exact-head Linux workflow: `34307578510 PASS`.
 - Independently downloaded artifact ZIP digest: `sha256:58a5a83ecc669cb6f4d1e1c9590e250042919a11c2988abd311f225503b56670`.
 - Scientific semantics are unchanged; independent Architect acceptance remains `PENDING` and next execution remains `false`.
+
+## DEC-DCFINAL001-R5R1-EXACT-HEAD-EVIDENCE-POINTER
+
+- Date: `2026-09-09`
+- Status: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE`
+- Scientific result head: `cadf6d283cc7f77f243e5958fd8be22d5ee804c9`.
+- Evidence-bearing governed head: `26fda9c11c0e56f9fd0f6e4ddda998f216e03491`.
+- Exact-head Linux workflow: `34343908708 PASS`.
+- Independently downloaded artifact ZIP digest: `sha256:592981501335f8223698b45074355ee34275f21ffb2c95cc80e30de0fd97718a`.
+- Scientific semantics are unchanged; independent Architect acceptance remains `PENDING`, next execution remains `false`, and no successor reproduction directive exists.
