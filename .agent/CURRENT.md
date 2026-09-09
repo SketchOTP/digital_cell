@@ -711,3 +711,12 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Evidence-bearing governed head `439342dc8244c2c19df37a815579f402b0ba19c7` passed exact-head Linux workflow `34294201323`.
 - Independently downloaded artifact ZIP digest: `sha256:f2abe6a7bdd100a7f86b0c160a8abb45ec99000ca6f77d92ee6d4b99b13d14e3`.
 - Scientific semantics remain those of head `5b7c06a7208b8b6bc8cc9c918d8de7906c611a4a`; this append-only pointer does not alter the R2 result. Independent Architect acceptance remains `PENDING`, and no successor execution started.
+
+## DC-FINAL-001-R3 maturation-safe expression boundary
+
+- Active directive: `DC-FINAL-001-R3-D096-V4-MATURATION-SAFE-EXPRESSION-EVOLUTION-AND-FINAL-GOAL-CLOSURE-001`, starting from governed R2 head `5bd82aa40b10ecbdc86cd6915760915ba6ccfb18`.
+- External Architect disposition on R2: `ACCEPTED BOUNDED RESULT -> CONTINUE / REPLAN`; R2 qualifies powered mutation supply, while selection and reversal were never biologically executable.
+- Scientific repair head: `fcf2b637d868e1e7dc250dfc7ec31ba6533c9729`. The V4-only D-096 expression path now applies the exact structural withdrawal fraction to total, young, and tracer structural material and sends exact activation/maintenance A expenditure to existing W. No free parameter was introduced; non-V4 behavior is unchanged.
+- The sealed R2 population template is `HistoricalV1`, not `MaturationCoupledV4`; therefore the authorized V4-only repair cannot alter exact frozen R2 daughters without violating non-V4 parity.
+- A matched V4 counterpart passes first expression/contact with structural and energy closure, but both daughters become runtime-invalid at step 1 after unchanged topology rupture zeroes `m` while retaining positive `m_young`. This satisfies the directive stop boundary before evolutionary execution.
+- Goal-agent status: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; classification: `D096_V4_STRUCTURAL_TRANSFER_SEMANTICS_INVALID`. Environment-dependent selection, reversal, and the Digital Cell end goal remain `NOT_ESTABLISHED`; shutdown is not recommended from this bounded integration defect. No successor execution started; independent Architect acceptance is `PENDING`.

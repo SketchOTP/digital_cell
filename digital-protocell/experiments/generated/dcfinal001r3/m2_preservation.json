@@ -1,0 +1,23 @@
+{
+  "sha256": "fdf169fa0cc1c1caea92e0d352ecd8777e52fd73d5f62ac737afec3073869c27",
+  "source": "experiments/generated/dcfinal001r1/m2_qualification.json",
+  "value": {
+    "a_beats_motor_off": "12/12",
+    "a_beats_sensor_off": "12/12",
+    "bearing_equivariance": "PASS",
+    "candidate_median_directed_displacement": 0.03005854234368264,
+    "candidate_positive_direction": "12/12",
+    "capture_beats_motor_off": "12/12",
+    "capture_beats_sensor_off": "12/12",
+    "classification": "M2_ADAPTIVE_MATERIAL_GRADIENT_AUTONOMOUS_RESOURCE_ACQUISITION_QUALIFIED",
+    "direction_beats_motor_off": "12/12",
+    "direction_beats_sensor_off": "12/12",
+    "first_transfer_earlier_than_motor_off": "12/12",
+    "first_transfer_earlier_than_sensor_off": "4/12",
+    "growth_beats_motor_off": "12/12",
+    "growth_beats_sensor_off": "12/12",
+    "motor_off_median_directed_displacement": -8.881772953678023e-17,
+    "replicates": 12,
+    "sensor_off_median_directed_displacement": -1.2383252743040218e-16
+  }
+}

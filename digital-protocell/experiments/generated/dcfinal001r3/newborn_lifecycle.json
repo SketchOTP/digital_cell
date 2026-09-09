@@ -1,0 +1,72 @@
+{
+  "classification": "FAIL_PREEXISTING_V4_TOPOLOGY_RUPTURE_LEAVES_M_YOUNG_ON_ZEROED_EDGE",
+  "daughter_a": {
+    "completed_steps": 0,
+    "contract_version": "MaturationCoupledV4",
+    "first_invalid_edges": [
+      {
+        "edge": 199,
+        "m": 0.0,
+        "m_young": 2.369894884528913,
+        "ruptured": true
+      }
+    ],
+    "first_topology_ledger": {
+      "cross_bonds": 0,
+      "local_rebonds": 0,
+      "step": 1,
+      "tension_ruptures": 1
+    },
+    "maximum_activation_closure_residual": 1.265237914438444e-13,
+    "maximum_structural_material_closure_residual": 6.418476861114186e-14,
+    "maximum_waste_closure_residual": 4.400646513857964e-14,
+    "observer_nonviable_steps_reported_not_removed": 0,
+    "physical_fission": null,
+    "runtime_invalidation": {
+      "phase": "post_topology",
+      "step": 1
+    },
+    "target_steps": 3000,
+    "terminal_lifecycle_invariants_hold": false,
+    "terminal_physical_runtime_valid": false,
+    "terminal_polygon_simple": true
+  },
+  "daughter_b": {
+    "completed_steps": 0,
+    "contract_version": "MaturationCoupledV4",
+    "first_invalid_edges": [
+      {
+        "edge": 150,
+        "m": 0.0,
+        "m_young": 1.1863100466071772,
+        "ruptured": true
+      },
+      {
+        "edge": 151,
+        "m": 0.0,
+        "m_young": 1.1863100466071772,
+        "ruptured": true
+      }
+    ],
+    "first_topology_ledger": {
+      "cross_bonds": 0,
+      "local_rebonds": 0,
+      "step": 1,
+      "tension_ruptures": 2
+    },
+    "maximum_activation_closure_residual": 1.4265411768521474e-13,
+    "maximum_structural_material_closure_residual": 1.4483726717973155e-13,
+    "maximum_waste_closure_residual": 2.8967279963598713e-14,
+    "observer_nonviable_steps_reported_not_removed": 0,
+    "physical_fission": null,
+    "runtime_invalidation": {
+      "phase": "post_topology",
+      "step": 1
+    },
+    "target_steps": 3000,
+    "terminal_lifecycle_invariants_hold": false,
+    "terminal_physical_runtime_valid": false,
+    "terminal_polygon_simple": true
+  },
+  "evolution_gate_7_open": false
+}

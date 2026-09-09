@@ -1,0 +1,39 @@
+{
+  "additional_authority_conflict": "the sealed R2 evolution template is HistoricalV1, not MaturationCoupledV4",
+  "daughter_a": {
+    "contract_version": "HistoricalV1",
+    "fraction_left": 0.99998,
+    "legacy_counterfactual_violation_edges": [
+      {
+        "edge": 193,
+        "excess": 4.685644922064469e-05,
+        "legacy_m_after": 2.3427756045784873,
+        "legacy_m_young_after": 2.342822461027708
+      }
+    ],
+    "legacy_failing_predicate": "M_YOUNG_EXCEEDS_M_AFTER_D096_STRUCTURAL_DRAW",
+    "material_consumed": 0.016850566202542203,
+    "maturation_coupled": false,
+    "repaired_lifecycle_invariants_hold": true,
+    "repaired_physical_runtime_valid": false
+  },
+  "daughter_b": {
+    "contract_version": "HistoricalV1",
+    "fraction_left": 0.99998,
+    "legacy_counterfactual_violation_edges": [
+      {
+        "edge": 150,
+        "excess": 4.685644922064469e-05,
+        "legacy_m_after": 2.3427756045784873,
+        "legacy_m_young_after": 2.342822461027708
+      }
+    ],
+    "legacy_failing_predicate": "M_YOUNG_EXCEEDS_M_AFTER_D096_STRUCTURAL_DRAW",
+    "material_consumed": 0.013449049960596085,
+    "maturation_coupled": false,
+    "repaired_lifecycle_invariants_hold": true,
+    "repaired_physical_runtime_valid": false
+  },
+  "exact_r2_failing_predicate_reproduced": true,
+  "exact_r2_template_contract": "HistoricalV1"
+}

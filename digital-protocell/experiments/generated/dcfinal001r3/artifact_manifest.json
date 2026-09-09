@@ -1,0 +1,148 @@
+{
+  "artifact_sha256": "computed by exact-head workflow",
+  "classification": "D096_V4_STRUCTURAL_TRANSFER_SEMANTICS_INVALID",
+  "directive": "DC-FINAL-001-R3-D096-V4-MATURATION-SAFE-EXPRESSION-EVOLUTION-AND-FINAL-GOAL-CLOSURE-001",
+  "files": [
+    {
+      "path": "architect_disposition.json",
+      "sha256": "88718774cc13b15a3e86ff4026cb126b3568b913af080eba450247eec5c8fd87"
+    },
+    {
+      "path": "authority.json",
+      "sha256": "c59e4adef5bf4f66a833e576475e3e02ac92de071d679809e0fd1425fb4fa4a7"
+    },
+    {
+      "path": "checkpoint_restart.json",
+      "sha256": "39c12ee5c1978a8bc16f0e799a09d590c93406d750a3e48ef234d570e6d7a887"
+    },
+    {
+      "path": "d096_v4_root_cause.json",
+      "sha256": "0c45a504cffc26d1165785b7106aa080774f8081560a4cf10444ec09fe76c040"
+    },
+    {
+      "path": "development_preservation.json",
+      "sha256": "9854ac33f557a0fb083447b579e6740cba8003cc1ef15e409802c690177b9b96"
+    },
+    {
+      "path": "end_to_end_lifecycle.json",
+      "sha256": "2078a738c13987a131742ab31302c9856b3f436488101e8e8536e8af001ccd81"
+    },
+    {
+      "path": "environment_a_selection.json",
+      "sha256": "3029e40c65412e95ff20d37d8b8d2d7fa6ef3fffa3c0102b623c399bf46dc385"
+    },
+    {
+      "path": "environment_b_selection.json",
+      "sha256": "3029e40c65412e95ff20d37d8b8d2d7fa6ef3fffa3c0102b623c399bf46dc385"
+    },
+    {
+      "path": "experiential_memory.json",
+      "sha256": "2b69769933429e346584fb925c164dce30bfc27019703bb3e5f6558861282534"
+    },
+    {
+      "path": "expression_activation_energy_closure.json",
+      "sha256": "ec09c63af5723a809cb18a209e03956766a8769ee708be5810dd552c03428989"
+    },
+    {
+      "path": "expression_material_closure.json",
+      "sha256": "a38d043a8fcade4922d1d9baa4f125c399bd2b2fa07de006cb04a69c46cdef9f"
+    },
+    {
+      "path": "expression_maturation_contract.json",
+      "sha256": "18d4fd89df7120ff91283de07b467a9f7e67a0432cd69d73ffda293a3539b0d5"
+    },
+    {
+      "path": "external_prior_art.json",
+      "sha256": "cec4bac87b6d0cc568e27931d68c4a1aba63a53a27186c3b3692bd0ed8a6bb5f"
+    },
+    {
+      "path": "final_goal_matrix.json",
+      "sha256": "c130a6cb6dae484bced7ccc89bd3a948b4a8d8dfbbcd5e30f2085a2bc2bf96ad"
+    },
+    {
+      "path": "forbidden_information_audit.json",
+      "sha256": "7b5114e1f8d16695d4bc4f7dafc6a3051bfb147c59b8dc46e145cb7fa0c89d0f"
+    },
+    {
+      "path": "global_material_closure.json",
+      "sha256": "9baeb61e5221b3a56742944d12353ece6ced17761493afd867c54e78ca23ca22"
+    },
+    {
+      "path": "godot_independence.json",
+      "sha256": "7b4b49ce55173b24025f55cd73583091c8dae4765bb0ca630b33bd27b870a9d4"
+    },
+    {
+      "path": "linux_runtime.json",
+      "sha256": "9e990f48813fb7832fafdedc344482f5ac20b2c845f74e7a5975edbc6d301529"
+    },
+    {
+      "path": "m1_preservation.json",
+      "sha256": "efc68994208eedf900ed42a2cbdc3b3388e55a7d3d543c2fd446c6bd3044cc6e"
+    },
+    {
+      "path": "m2_preservation.json",
+      "sha256": "a5b813a0da642df07986cfad9352ce528a88147df8c3c317c51b83efce591ba2"
+    },
+    {
+      "path": "mutated_descendant_lineage.json",
+      "sha256": "36b07e7d81f1746ab73d79dba8654cb251a1dbeb07c9390cda2ac3cb8f1a2126"
+    },
+    {
+      "path": "mutation_frequency.json",
+      "sha256": "f476c402beefb4894ad6d8a766304baa10856bd2a95c535ee1f800c036aebcb7"
+    },
+    {
+      "path": "mutation_off_control.json",
+      "sha256": "3029e40c65412e95ff20d37d8b8d2d7fa6ef3fffa3c0102b623c399bf46dc385"
+    },
+    {
+      "path": "newborn_expression_tests.json",
+      "sha256": "bf6a5dd3bdd5774f958c078977ff718e81aa47b1eb291a9b177235ce85cfb5a5"
+    },
+    {
+      "path": "newborn_lifecycle.json",
+      "sha256": "19e016de2330be45708058a226407bdeab25fbd2bca5c07c89ccb15a5878f84b"
+    },
+    {
+      "path": "non_v4_semantic_parity.json",
+      "sha256": "943c61737eca799c3bf7a5f3bdb04f2452369d0048e22bb27a2107b5513257d3"
+    },
+    {
+      "path": "population_material_flux.json",
+      "sha256": "3029e40c65412e95ff20d37d8b8d2d7fa6ef3fffa3c0102b623c399bf46dc385"
+    },
+    {
+      "path": "qualification.json",
+      "sha256": "b24177db7520ac4421073e878b4f4c5e8ee7a3f141f8e9ba07b733f704021719"
+    },
+    {
+      "path": "r2_exact_replay.json",
+      "sha256": "e7bb8c9a58cd04cf9416af9d94417abea7e551849def0a175598838c3303ac67"
+    },
+    {
+      "path": "reproduction_preservation.json",
+      "sha256": "6a93dd0314531a848c5763663c0cb1e79c9667aa0891ea298a978b6680a6c315"
+    },
+    {
+      "path": "reversal_protocol.json",
+      "sha256": "3029e40c65412e95ff20d37d8b8d2d7fa6ef3fffa3c0102b623c399bf46dc385"
+    },
+    {
+      "path": "reversal_replicates.json",
+      "sha256": "3029e40c65412e95ff20d37d8b8d2d7fa6ef3fffa3c0102b623c399bf46dc385"
+    },
+    {
+      "path": "selection_causality.json",
+      "sha256": "3029e40c65412e95ff20d37d8b8d2d7fa6ef3fffa3c0102b623c399bf46dc385"
+    },
+    {
+      "path": "sensory_embodiment.json",
+      "sha256": "cb265433654a9c6ae5f495295bf7b2caeb32a0ad4000762adde44acb6b071b78"
+    },
+    {
+      "path": "tracer_accounting.json",
+      "sha256": "5ac1102a9263866ab8a394f19cbd4f6f3a99b66248605db27ce0efc63138a4fc"
+    }
+  ],
+  "result_scientific_head": "fcf2b637d868e1e7dc250dfc7ec31ba6533c9729"
+}

@@ -1,0 +1,57 @@
+{
+  "sha256": "769481b09b7e3b71595ba82f70c3db513b6b76d143c48955b020a28f4e2d78b0",
+  "source": "experiments/generated/dcfinal001r1/godot_independence.json",
+  "value": {
+    "godot_bridge_is_read_only_report_observer": true,
+    "observer_connected": {
+      "all_polygons_simple": true,
+      "autonomous_resource_acquisition": "M2_ADAPTIVE_MATERIAL_GRADIENT_AUTONOMOUS_RESOURCE_ACQUISITION_QUALIFIED",
+      "cumulative_active_a": 0.005510683571171218,
+      "cumulative_active_w": 0.005510683571174901,
+      "cumulative_f_delivered": 0.0,
+      "cumulative_n_delivered": 0.0,
+      "cumulative_path": 0.00043003078084219074,
+      "environment_dependent_evolution": "NOT_ESTABLISHED",
+      "fissions": 0,
+      "living": 1,
+      "maximum_generation": 0,
+      "maximum_memory": 0.07692624233777118,
+      "observer_connected": true,
+      "observer_in_biological_step": false,
+      "schema": "digital_cell_final_lifeform_runtime_v1",
+      "sensory_camera_present": true,
+      "sensory_microphone_present": true,
+      "step": 40
+    },
+    "observer_disconnected": {
+      "all_polygons_simple": true,
+      "autonomous_resource_acquisition": "M2_ADAPTIVE_MATERIAL_GRADIENT_AUTONOMOUS_RESOURCE_ACQUISITION_QUALIFIED",
+      "cumulative_active_a": 0.005510683571171218,
+      "cumulative_active_w": 0.005510683571174901,
+      "cumulative_f_delivered": 0.0,
+      "cumulative_n_delivered": 0.0,
+      "cumulative_path": 0.00043003078084219074,
+      "environment_dependent_evolution": "NOT_ESTABLISHED",
+      "fissions": 0,
+      "living": 1,
+      "maximum_generation": 0,
+      "maximum_memory": 0.07692624233777118,
+      "observer_connected": false,
+      "observer_in_biological_step": false,
+      "schema": "digital_cell_final_lifeform_runtime_v1",
+      "sensory_camera_present": true,
+      "sensory_microphone_present": true,
+      "step": 40
+    },
+    "observer_in_biological_step": false,
+    "qualification": "PASS",
+    "scientific_residuals": {
+      "cumulative_active_a": 0.0,
+      "cumulative_active_w": 0.0,
+      "cumulative_f_delivered": 0.0,
+      "cumulative_n_delivered": 0.0,
+      "cumulative_path": 0.0,
+      "maximum_memory": 0.0
+    }
+  }
+}

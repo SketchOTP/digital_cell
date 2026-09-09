@@ -1117,3 +1117,11 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 
 - Head `439342dc8244c2c19df37a815579f402b0ba19c7` passed exact-head workflow `34294201323`; artifact ZIP digest is `sha256:f2abe6a7bdd100a7f86b0c160a8abb45ec99000ca6f77d92ee6d4b99b13d14e3`.
 - This pointer changes governance only. Classification, stop boundary, and pending independent acceptance are unchanged.
+
+## DC-FINAL-001-R3-D096-V4-MATURATION-SAFE-EXPRESSION-EVOLUTION-AND-FINAL-GOAL-CLOSURE-001
+
+- Issued `2026-09-08` by external Architect from exact governed R2 head `5bd82aa40b10ecbdc86cd6915760915ba6ccfb18`; R2 is accepted as powered mutation qualification with evolution not interpretable.
+- Largest unresolved gap: make lawful newborn physical state compatible with D-096 expression, then execute frozen R2 selection and reversal only if newborn lifecycle Gate 6 passes.
+- Authorized repair: for `MaturationCoupledV4` only, apply the existing D-096 structural-consumption fraction to `m`, `m_young`, and physically corresponding tracer material; close exact activation/maintenance A expenditure into existing W. No new coefficient, newborn exemption, grace period, or non-V4 change is allowed.
+- Stop boundary reached before evolution: exact R2 uses `HistoricalV1`, while the equivalent V4 daughters are invalidated after first-step topology rupture because ruptured edges retain positive `m_young` after `m` becomes zero. Widening the repair into topology or converting the frozen R2 contract is not authorized.
+- Provisional classification: `D096_V4_STRUCTURAL_TRANSFER_SEMANTICS_INVALID` under `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`. Selection/reversal were not run; no successor execution started; independent Architect acceptance remains `PENDING`.

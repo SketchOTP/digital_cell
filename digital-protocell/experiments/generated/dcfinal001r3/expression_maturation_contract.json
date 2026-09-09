@@ -1,0 +1,13 @@
+{
+  "new_parameters": 0,
+  "newborn_exemption": false,
+  "non_v4_rule_unchanged": true,
+  "post_hoc_clamp": false,
+  "v4_first_step_pass": true,
+  "v4_rule": [
+    "edge.m *= fraction_left",
+    "edge.m_young *= fraction_left",
+    "edge.tracer_m *= fraction_left"
+  ],
+  "young_mature_ratio_preserved": true
+}

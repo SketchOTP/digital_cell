@@ -1583,3 +1583,14 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Exact-head Linux workflow: `34294201323 PASS`.
 - Independently downloaded artifact ZIP digest: `sha256:f2abe6a7bdd100a7f86b0c160a8abb45ec99000ca6f77d92ee6d4b99b13d14e3`.
 - Scientific semantics did not change after the scientific head. Independent Architect acceptance remains `PENDING`; next execution is `false`.
+
+## DEC-DCFINAL001-R3-V4-EXPRESSION-REPAIR-AND-STOP
+
+- Date: `2026-09-08`
+- Status: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`
+- Record or decision ID: `DEC-DCFINAL001-R3-V4-EXPRESSION-REPAIR-AND-STOP`
+- External Architect disposition: R2 is an accepted powered mutation qualification; its population collapse is runtime invalidation, not evolution failure. R3 was authorized to repair the D-096/V4 structural-subpool defect and proceed only after newborn lifecycle Gate 6 passed.
+- Scientific decision: implement the exact V4-only proportional withdrawal for `m`, `m_young`, and tracer material, plus exact A-to-W closure for activation and maintenance. Preserve HistoricalV1/V2/V3 semantics exactly.
+- Result: the repair passes isolated and first-step V4 tests, but exact R2 uses `HistoricalV1`; a matched V4 lifecycle then fails after first-step topology rupture leaves positive `m_young` on zero-total-material edges. Gate 6 therefore remains closed.
+- Classification: `D096_V4_STRUCTURAL_TRANSFER_SEMANTICS_INVALID`. Selection, reversal, and final integrated qualification were not executed. End goal remains `NOT_ESTABLISHED`; shutdown recommendation is `false`; no successor execution started.
+- Scientific result head: `fcf2b637d868e1e7dc250dfc7ec31ba6533c9729`; exact-head CI/artifact and independent Architect acceptance are `PENDING`.

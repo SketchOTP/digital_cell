@@ -1,0 +1,5 @@
+{
+  "reason": "exact frozen R2 is HistoricalV1 while the authorized correction is V4-only; the equivalent V4 lifecycle fails after topology rupture",
+  "status": "NOT_RUN_GATE6_BLOCKED",
+  "success_claim": false
+}

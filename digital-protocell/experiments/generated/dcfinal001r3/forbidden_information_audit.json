@@ -1,0 +1,9 @@
+{
+  "division_state_read_by_repair": false,
+  "mutation_or_environment_changed": false,
+  "newborn_age_or_lineage_read_by_repair": false,
+  "observer_feedback": false,
+  "parameter_search": false,
+  "pass": true,
+  "success_controller": false
+}

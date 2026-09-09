@@ -1,0 +1,10 @@
+{
+  "M1": "PRESERVED",
+  "M2": "PRESERVED_QUALIFIED",
+  "M3": "PRESERVED_BOUNDED",
+  "end_goal": "NOT_ESTABLISHED",
+  "environment_dependent_selection": "NOT_ESTABLISHED",
+  "geometry_valid_reproduction": "PRESERVED",
+  "mutation_supply": "PRESERVED_QUALIFIED",
+  "reversal": "NOT_ESTABLISHED"
+}

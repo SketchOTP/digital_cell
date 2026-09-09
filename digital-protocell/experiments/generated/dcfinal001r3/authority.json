@@ -1,0 +1,9 @@
+{
+  "directive": "DC-FINAL-001-R3-D096-V4-MATURATION-SAFE-EXPRESSION-EVOLUTION-AND-FINAL-GOAL-CLOSURE-001",
+  "independent_architect_acceptance": "PENDING",
+  "r2_artifact_sha256": "358b47164edaa3d16fc966aa968b18effbabd9c5ff444004c7539551c5d61743",
+  "r2_exact_head_ci": 34294704290,
+  "r2_scientific_head": "5b7c06a7208b8b6bc8cc9c918d8de7906c611a4a",
+  "result_scientific_head": "fcf2b637d868e1e7dc250dfc7ec31ba6533c9729",
+  "starting_governed_head": "5bd82aa40b10ecbdc86cd6915760915ba6ccfb18"
+}

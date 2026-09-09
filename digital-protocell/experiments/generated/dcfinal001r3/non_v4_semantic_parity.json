@@ -1,0 +1,8 @@
+{
+  "consequence": "the exact HistoricalV1 R2 daughters cannot receive the V4-only repair",
+  "m_young": "unchanged",
+  "pass": true,
+  "tracer_m": "unchanged",
+  "unit_test": "d096_non_v4_expression_retains_historical_subpool_tracer_and_w_semantics",
+  "w": "legacy turnover-only increment"
+}

@@ -1,0 +1,10 @@
+{
+  "expression": {
+    "maximum_activation_residual": 1.4265411768521474e-13,
+    "maximum_structural_residual": 1.4483726717973155e-13,
+    "maximum_waste_residual": 4.400646513857964e-14
+  },
+  "expression_pass": true,
+  "final_integrated_closure": "NOT_ESTABLISHED",
+  "population_ecology": "NOT_RUN_GATE6_BLOCKED"
+}

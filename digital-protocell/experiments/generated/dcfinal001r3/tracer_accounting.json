@@ -1,0 +1,7 @@
+{
+  "enters_biology": false,
+  "pass": true,
+  "semantics": "observer-only tagged subset of structural m",
+  "unit_test": "d096_v4_expression_preserves_maturation_subpool_and_closes_energy",
+  "v4_withdrawal": "proportional with m"
+}

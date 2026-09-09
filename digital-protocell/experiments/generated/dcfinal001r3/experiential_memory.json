@@ -1,0 +1,14 @@
+{
+  "sha256": "3457d20a2adecec13d640c77b1e6c4ee8311439d4be85cc0dbc542dc3884793b",
+  "source": "experiments/generated/dcfinal001r1/experiential_memory.json",
+  "value": {
+    "checkpoint_persistent": true,
+    "forgetting": true,
+    "later_geometry_differs_from_naive_unit_control": true,
+    "local": true,
+    "maximum_memory_after_live_input": 0.039232890970017927,
+    "organism_owned": true,
+    "qualification": "PASS",
+    "substrate": "PlasticityStateV1 frozen load/recovery dynamics"
+  }
+}

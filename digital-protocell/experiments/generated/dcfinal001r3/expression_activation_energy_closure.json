@@ -1,0 +1,7 @@
+{
+  "contract": "V4 activation and maintenance A spent transfers to W with coefficient 1; turnover waste remains separate",
+  "maximum_activation_residual": 1.4265411768521474e-13,
+  "maximum_structural_residual": 1.4483726717973155e-13,
+  "maximum_waste_residual": 4.400646513857964e-14,
+  "pass": true
+}

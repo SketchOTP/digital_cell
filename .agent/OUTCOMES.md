@@ -2384,3 +2384,12 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Evidence-bearing governed head `439342dc8244c2c19df37a815579f402b0ba19c7` passed exact-head Linux workflow `34294201323`.
 - Independently downloaded artifact ZIP digest: `sha256:f2abe6a7bdd100a7f86b0c160a8abb45ec99000ca6f77d92ee6d4b99b13d14e3`.
 - Result remains `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; independent Architect acceptance is `PENDING`, and no successor execution started.
+
+## DC-FINAL-001-R3 — maturation-safe expression repair and lifecycle stop
+
+- R2 authority reconciles at governed head `5bd82aa40b10ecbdc86cd6915760915ba6ccfb18`, workflow `34294704290 PASS`, artifact `sha256:358b47164edaa3d16fc966aa968b18effbabd9c5ff444004c7539551c5d61743`.
+- Exact R2 daughter attribution reproduces `M_YOUNG_EXCEEDS_M_AFTER_D096_STRUCTURAL_DRAW` with minimum `m - m_young = -0.00004685644922064469` in both daughters. Their template contract is `HistoricalV1`.
+- The V4-only repair passes fully-young, fully-mature, mixed, repeated, zero-expression, tracer, structural closure, activation/maintenance A-to-W closure, and non-V4 parity tests. Both matched V4 daughters accept first expression/mechanics/contact.
+- Full V4 newborn continuation fails at post-topology step 1: one daughter-A edge and two daughter-B edges are tension-ruptured with `m = 0` and positive `m_young`. Geometry remains simple and no biological death occurs.
+- Gate 6 does not pass, so the exact frozen R2 selection, environment comparison, reversal, and final integrated run were not executed. Mutation supply remains preserved at 18 mutations in 1,800 opportunities with `p=0.01`, `sigma=0.15`.
+- Provisional classification: `D096_V4_STRUCTURAL_TRANSFER_SEMANTICS_INVALID`; end goal `NOT_ESTABLISHED`; shutdown recommendation `NO`; independent Architect acceptance `PENDING`; successor execution `false`.

@@ -1,0 +1,18 @@
+{
+  "classification": "D096_V4_STRUCTURAL_TRANSFER_SEMANTICS_INVALID",
+  "digital_cell_end_goal": "NOT_ESTABLISHED",
+  "directive": "DC-FINAL-001-R3-D096-V4-MATURATION-SAFE-EXPRESSION-EVOLUTION-AND-FINAL-GOAL-CLOSURE-001",
+  "evolution_executed": false,
+  "exact_r2_contract": "HistoricalV1",
+  "exact_r2_newborn_continuation": false,
+  "independent_architect_acceptance": "PENDING",
+  "next_execution_started": false,
+  "reversal": "NOT_ESTABLISHED",
+  "root_cause_reproduced": true,
+  "selection": "NOT_ESTABLISHED",
+  "shutdown_recommended": false,
+  "status": "GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN",
+  "v4_lifecycle_continuation": false,
+  "v4_maturation_safe_expression_first_step": true,
+  "v4_topology_subpool_defect_observed": true
+}

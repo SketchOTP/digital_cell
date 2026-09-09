@@ -1093,3 +1093,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-FINAL-001-R2 mutation supply, open-medium population ecology, selection, and reversal.
 - Supersedes learning: none
+
+## DC-FINAL-001-R3 — contract parity precedes evolutionary replay
+
+- Learning ID: `L-DCFINAL001-R3-V4-EXPRESSION-AND-TOPOLOGY-BOUNDARY`
+- Date: `2026-09-08`
+- Fact or lesson: proportional V4 D-096 structural withdrawal is maturation-safe and closes both structural and activation/maintenance energy accounting, but it cannot repair a frozen population authored under `HistoricalV1` without violating non-V4 parity. A genuine V4 replay exposes a second pre-existing subpool defect: tension rupture zeroes total edge structure while leaving young structure positive, invalidating both daughters at the first topology step.
+- Evidence location: `digital-protocell/experiments/generated/dcfinal001r3/`, `digital-protocell/examples/dcfinal001_r3_evolution.rs`, and `digital-protocell/crates/chemistry-core/tests/d096_tests.rs`.
+- Confidence: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN` pending exact-head CI and independent Architect review.
+- Scope: D-096/V4 expression semantics and the Gate-6 newborn lifecycle boundary; no selection or reversal execution.
+- Supersedes learning: none.
