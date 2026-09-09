@@ -185,3 +185,7 @@
 - `digital-protocell/examples/dcfinal001_r1_evolution.rs` — finite physical mutation-on/off H-to-B campaign; its sealed result is negative and invalid fissions are excluded.
 - `digital-protocell/crates/m2-lifeform-runtime/src/bin/digital-cell-final-lifeform.rs` — standalone adaptive organism/world runtime with atomic checkpointing, local experiential plasticity, inherited allocation, valid-fission handling, and observer-independent execution.
 - `digital-protocell/crates/godot-bridge/src/lib.rs` — retains the historical simulator and adds a read-only `FinalLifeformObserver` for standalone runtime reports.
+- `digital-protocell/examples/dcfinal001_r2_evolution.rs` — R2 assay-only powered lawful-birth mutation, fixed open-medium population, mutation-off, H/B, and fixed H-to-B reversal harness with exact cohort-exchangeability controls.
+- `digital-protocell/experiments/dcfinal001_r2_evidence.py` — deterministic compact R2 evidence generator preserving R1 authority and separating physical death from post-birth runtime invalidation.
+- `digital-protocell/experiments/generated/dcfinal001r2/` — R2 mutation source/power/frequency, genotype endpoint, population material, selection/reversal boundary, preservation, and provisional qualification evidence.
+- `.github/workflows/dc-final-001-r2.yml` — exact-head Linux scope, mutation/population, preservation, D-087, PR #44, reproducibility, and artifact validation.

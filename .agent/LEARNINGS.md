@@ -1083,3 +1083,13 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: PROVISIONAL
 - Scope: DC-FINAL-001-R1 adaptive chemosensing, front-rear mechanics, life-history continuity, and end-to-end continuation.
 - Supersedes learning: none
+
+## DC-FINAL-001-R2 — power variation before interpreting evolution
+
+- Learning ID: L-DCFINAL001-R2-POWERED-MUTATION-POSTBIRTH-BOUNDARY
+- Date: 2026-09-08
+- Fact or lesson: At `p=0.01`, R1's eight actual daughter draws had little evidentiary power; 299 independent opportunities are needed for at least 95% probability of observing one mutation. The existing D-096 operator was not missing: 1,800 powered physical-birth draws yielded 18 mutations without changing rate or magnitude. Geometry-valid birth still did not yield an evolving population because preserved neutral expression caused first-step contact/mechanics rejection while newborns remained simple and observer-viable.
+- Evidence location: `digital-protocell/experiments/generated/dcfinal001r2/` and `digital-protocell/examples/dcfinal001_r2_evolution.rs`.
+- Confidence: PROVISIONAL
+- Scope: DC-FINAL-001-R2 mutation supply, open-medium population ecology, selection, and reversal.
+- Supersedes learning: none

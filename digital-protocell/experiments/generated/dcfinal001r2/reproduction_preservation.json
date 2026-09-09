@@ -1,0 +1,872 @@
+{
+  "source": "dcfinal001r1/wp1_preservation.json",
+  "source_sha256": "73d2ec642e16a32d975b2d755d3a5d5742e365a6e236b8b61af8d9e6da2c90b8",
+  "value": {
+    "directive": "DC-FINAL-001-END-TO-END-AUTONOMOUS-LIFEFORM-CLOSURE-OR-SHUTDOWN-001",
+    "half_edge_fallback": [],
+    "segment_apposition": [],
+    "vertex_only": [
+      {
+        "all_parent_states_simple": true,
+        "contact_steps": 5091,
+        "final": {
+          "area": 1694.1441504752113,
+          "mass": 1510.2951632348581,
+          "perimeter": 827.7719197883628,
+          "simple": true,
+          "vertices": 343
+        },
+        "first_invalid": null,
+        "first_segment_apposition": {
+          "distance": 5.179435518795533,
+          "i": 47,
+          "j": 94,
+          "mass_eligible": true,
+          "si": 1.0,
+          "sj": 0.0,
+          "step": 4078
+        },
+        "fission": {
+          "both_daughters_viable": true,
+          "daughter_a": {
+            "area": 864.869605122972,
+            "mass": 842.5283101271101,
+            "perimeter": 464.8837727548065,
+            "simple": true,
+            "vertices": 194
+          },
+          "daughter_a_viability": {
+            "a_retention": 1.5322735300238843,
+            "alive": true,
+            "all_states_simple": true,
+            "c_retention": 1.5782843781667106,
+            "closed_intact": true,
+            "terminal": {
+              "area": 1071.8885808580721,
+              "mass": 1776.890367548981,
+              "perimeter": 739.651892234836,
+              "simple": true,
+              "vertices": 310
+            },
+            "viable": true
+          },
+          "daughter_b": {
+            "area": 829.2745453522404,
+            "mass": 672.4524980298042,
+            "perimeter": 372.2594368776661,
+            "simple": true,
+            "vertices": 151
+          },
+          "daughter_b_viability": {
+            "a_retention": 1.3506600481798248,
+            "alive": true,
+            "all_states_simple": true,
+            "c_retention": 1.5059230078969648,
+            "closed_intact": true,
+            "terminal": {
+              "area": 1025.8252568393934,
+              "mass": 1163.7147130982444,
+              "perimeter": 633.8393822722898,
+              "simple": true,
+              "vertices": 260
+            },
+            "viable": true
+          },
+          "parent": {
+            "area": 1694.1441504752113,
+            "mass": 1510.2951632348581,
+            "perimeter": 827.7719197883628,
+            "simple": true,
+            "vertices": 343
+          },
+          "partition": {
+            "ok": true,
+            "residual_a": 0.0,
+            "residual_allocation_catalysts": 0.0,
+            "residual_assimilation_f": 0.0,
+            "residual_assimilation_n": 0.0,
+            "residual_autocatalytic_edges": 0.0,
+            "residual_b": 1.1368683772161603e-13,
+            "residual_c": 9.094947017729282e-13,
+            "residual_f": 2.2737367544323206e-13,
+            "residual_l": 0.0,
+            "residual_m": 9.094947017729282e-13,
+            "residual_n": 2.2737367544323206e-13,
+            "residual_r": 0.0,
+            "residual_templates": 0.0,
+            "residual_u_b": 0.0,
+            "residual_u_h": 0.0,
+            "residual_w": 1.1368683772161603e-13
+          },
+          "pinch": [
+            76,
+            269
+          ],
+          "step": 6126,
+          "valid": true
+        },
+        "growth_qualified": true,
+        "half_edge_topology": false,
+        "max_mass_over_birth": 17.21462422654217,
+        "name": "seed_1_rotate_0.3",
+        "physical_fission": true,
+        "projected_vertices": 888087,
+        "segment_apposition_enabled": false,
+        "segment_attempts": 0,
+        "tangential_motion_retained": 1767.1748699144746,
+        "vertex_attempts": 223
+      },
+      {
+        "all_parent_states_simple": true,
+        "contact_steps": 10932,
+        "final": {
+          "area": 1120.9818271011823,
+          "mass": 600.877941065571,
+          "perimeter": 194.4920399885692,
+          "simple": true,
+          "vertices": 92
+        },
+        "first_invalid": null,
+        "first_segment_apposition": null,
+        "fission": null,
+        "growth_qualified": true,
+        "half_edge_topology": false,
+        "max_mass_over_birth": 6.847556987878237,
+        "name": "seed_2_vertex_0.12",
+        "physical_fission": false,
+        "projected_vertices": 976299,
+        "segment_apposition_enabled": false,
+        "segment_attempts": 0,
+        "tangential_motion_retained": 2196.3495428273404,
+        "vertex_attempts": 456
+      },
+      {
+        "all_parent_states_simple": true,
+        "contact_steps": 759,
+        "final": {
+          "area": 1587.6908595472196,
+          "mass": 356.3371846375231,
+          "perimeter": 316.7374913450372,
+          "simple": true,
+          "vertices": 126
+        },
+        "first_invalid": null,
+        "first_segment_apposition": {
+          "distance": 6.175909125154646,
+          "i": 48,
+          "j": 75,
+          "mass_eligible": true,
+          "si": 1.0,
+          "sj": 1.0,
+          "step": 1890
+        },
+        "fission": {
+          "both_daughters_viable": true,
+          "daughter_a": {
+            "area": 385.31218216592447,
+            "mass": 96.05834860596214,
+            "perimeter": 87.36901818092144,
+            "simple": true,
+            "vertices": 32
+          },
+          "daughter_a_viability": {
+            "a_retention": 1.296243485053427,
+            "alive": true,
+            "all_states_simple": true,
+            "c_retention": 1.9769897735084736,
+            "closed_intact": true,
+            "terminal": {
+              "area": 590.331656890417,
+              "mass": 128.54361489893407,
+              "perimeter": 104.21685551286576,
+              "simple": true,
+              "vertices": 49
+            },
+            "viable": true
+          },
+          "daughter_b": {
+            "area": 1202.3786773812953,
+            "mass": 265.3787391725161,
+            "perimeter": 239.56827944602645,
+            "simple": true,
+            "vertices": 96
+          },
+          "daughter_b_viability": {
+            "a_retention": 1.3087468645427727,
+            "alive": true,
+            "all_states_simple": true,
+            "c_retention": 1.9731623478016074,
+            "closed_intact": true,
+            "terminal": {
+              "area": 1673.5967679763262,
+              "mass": 371.5737598418929,
+              "perimeter": 315.03926428016626,
+              "simple": true,
+              "vertices": 136
+            },
+            "viable": true
+          },
+          "parent": {
+            "area": 1587.6908595472196,
+            "mass": 356.3371846375231,
+            "perimeter": 316.7374913450372,
+            "simple": true,
+            "vertices": 126
+          },
+          "partition": {
+            "ok": true,
+            "residual_a": 4.547473508864641e-13,
+            "residual_allocation_catalysts": 0.0,
+            "residual_assimilation_f": 0.0,
+            "residual_assimilation_n": 0.0,
+            "residual_autocatalytic_edges": 0.0,
+            "residual_b": 8.526512829121202e-14,
+            "residual_c": 0.0,
+            "residual_f": 0.0,
+            "residual_l": 0.0,
+            "residual_m": 2.2737367544323206e-13,
+            "residual_n": 0.0,
+            "residual_r": 0.0,
+            "residual_templates": 0.0,
+            "residual_u_b": 0.0,
+            "residual_u_h": 0.0,
+            "residual_w": 2.2737367544323206e-13
+          },
+          "pinch": [
+            64,
+            95
+          ],
+          "step": 2051,
+          "valid": true
+        },
+        "growth_qualified": true,
+        "half_edge_topology": false,
+        "max_mass_over_birth": 4.0625077510987255,
+        "name": "seed_3_c_0.08",
+        "physical_fission": true,
+        "projected_vertices": 47606,
+        "segment_apposition_enabled": false,
+        "segment_attempts": 0,
+        "tangential_motion_retained": 112.34613875310843,
+        "vertex_attempts": 60
+      },
+      {
+        "all_parent_states_simple": true,
+        "contact_steps": 1721,
+        "final": {
+          "area": 1643.7231022039384,
+          "mass": 570.2232654938388,
+          "perimeter": 449.34520250386237,
+          "simple": true,
+          "vertices": 189
+        },
+        "first_invalid": null,
+        "first_segment_apposition": {
+          "distance": 5.180696485513287,
+          "i": 59,
+          "j": 139,
+          "mass_eligible": true,
+          "si": 1.0,
+          "sj": 0.2956922123610663,
+          "step": 2731
+        },
+        "fission": {
+          "both_daughters_viable": true,
+          "daughter_a": {
+            "area": 659.3129943322803,
+            "mass": 234.4766543302998,
+            "perimeter": 186.66731239373703,
+            "simple": true,
+            "vertices": 80
+          },
+          "daughter_a_viability": {
+            "a_retention": 1.2559670899937418,
+            "alive": true,
+            "all_states_simple": true,
+            "c_retention": 1.9438520273491842,
+            "closed_intact": true,
+            "terminal": {
+              "area": 1185.819192629894,
+              "mass": 398.39638969795897,
+              "perimeter": 284.7927746416328,
+              "simple": true,
+              "vertices": 121
+            },
+            "viable": true
+          },
+          "daughter_b": {
+            "area": 984.4101078716586,
+            "mass": 340.98192492528295,
+            "perimeter": 273.1485176336131,
+            "simple": true,
+            "vertices": 111
+          },
+          "daughter_b_viability": {
+            "a_retention": 1.3748191392819156,
+            "alive": true,
+            "all_states_simple": true,
+            "c_retention": 2.0032963433141306,
+            "closed_intact": true,
+            "terminal": {
+              "area": 1409.877653658928,
+              "mass": 591.5636479491652,
+              "perimeter": 406.27345353344856,
+              "simple": true,
+              "vertices": 173
+            },
+            "viable": true
+          },
+          "parent": {
+            "area": 1643.7231022039384,
+            "mass": 570.2232654938388,
+            "perimeter": 449.34520250386237,
+            "simple": true,
+            "vertices": 189
+          },
+          "partition": {
+            "ok": true,
+            "residual_a": 0.0,
+            "residual_allocation_catalysts": 0.0,
+            "residual_assimilation_f": 0.0,
+            "residual_assimilation_n": 0.0,
+            "residual_autocatalytic_edges": 0.0,
+            "residual_b": 5.684341886080802e-14,
+            "residual_c": 0.0,
+            "residual_f": 0.0,
+            "residual_l": 0.0,
+            "residual_m": 1.1368683772161603e-13,
+            "residual_n": 0.0,
+            "residual_r": 0.0,
+            "residual_templates": 0.0,
+            "residual_u_b": 0.0,
+            "residual_u_h": 0.0,
+            "residual_w": 0.0
+          },
+          "pinch": [
+            60,
+            139
+          ],
+          "step": 2801,
+          "valid": true
+        },
+        "growth_qualified": true,
+        "half_edge_topology": false,
+        "max_mass_over_birth": 6.499510479582832,
+        "name": "seed_4_a_0.08",
+        "physical_fission": true,
+        "projected_vertices": 168834,
+        "segment_apposition_enabled": false,
+        "segment_attempts": 0,
+        "tangential_motion_retained": 359.9665973479827,
+        "vertex_attempts": 90
+      },
+      {
+        "all_parent_states_simple": true,
+        "contact_steps": 11101,
+        "final": {
+          "area": 833.9659387489452,
+          "mass": 577.8442132218914,
+          "perimeter": 164.54973569358594,
+          "simple": true,
+          "vertices": 54
+        },
+        "first_invalid": null,
+        "first_segment_apposition": null,
+        "fission": null,
+        "growth_qualified": true,
+        "half_edge_topology": false,
+        "max_mass_over_birth": 6.585066466470227,
+        "name": "seed_5_env_0.1",
+        "physical_fission": false,
+        "projected_vertices": 585112,
+        "segment_apposition_enabled": false,
+        "segment_attempts": 0,
+        "tangential_motion_retained": 245.58988931985715,
+        "vertex_attempts": 458
+      },
+      {
+        "all_parent_states_simple": true,
+        "contact_steps": 1445,
+        "final": {
+          "area": 1825.554301659915,
+          "mass": 589.530012556176,
+          "perimeter": 437.2601443052177,
+          "simple": true,
+          "vertices": 181
+        },
+        "first_invalid": null,
+        "first_segment_apposition": {
+          "distance": 6.158609628260201,
+          "i": 52,
+          "j": 79,
+          "mass_eligible": true,
+          "si": 1.0,
+          "sj": 0.13550091063169578,
+          "step": 1935
+        },
+        "fission": {
+          "both_daughters_viable": true,
+          "daughter_a": {
+            "area": 432.73855302178674,
+            "mass": 146.44797502178457,
+            "perimeter": 112.50099255580581,
+            "simple": true,
+            "vertices": 46
+          },
+          "daughter_a_viability": {
+            "a_retention": 0.9282807111559609,
+            "alive": true,
+            "all_states_simple": true,
+            "c_retention": 1.7360621948632171,
+            "closed_intact": true,
+            "terminal": {
+              "area": 1585.3567695680217,
+              "mass": 230.8618103847588,
+              "perimeter": 196.6189705443039,
+              "simple": true,
+              "vertices": 88
+            },
+            "viable": true
+          },
+          "daughter_b": {
+            "area": 1392.8157486381278,
+            "mass": 448.354343436144,
+            "perimeter": 335.303763552917,
+            "simple": true,
+            "vertices": 137
+          },
+          "daughter_b_viability": {
+            "a_retention": 1.3091864749080473,
+            "alive": true,
+            "all_states_simple": true,
+            "c_retention": 1.9284399716476168,
+            "closed_intact": true,
+            "terminal": {
+              "area": 2161.911750678464,
+              "mass": 714.1079644110143,
+              "perimeter": 550.7077571510545,
+              "simple": true,
+              "vertices": 244
+            },
+            "viable": true
+          },
+          "parent": {
+            "area": 1825.554301659915,
+            "mass": 589.530012556176,
+            "perimeter": 437.2601443052177,
+            "simple": true,
+            "vertices": 181
+          },
+          "partition": {
+            "ok": true,
+            "residual_a": 0.0,
+            "residual_allocation_catalysts": 0.0,
+            "residual_assimilation_f": 0.0,
+            "residual_assimilation_n": 0.0,
+            "residual_autocatalytic_edges": 0.0,
+            "residual_b": 1.1368683772161603e-13,
+            "residual_c": 4.547473508864641e-13,
+            "residual_f": 0.0,
+            "residual_l": 0.0,
+            "residual_m": 0.0,
+            "residual_n": 0.0,
+            "residual_r": 0.0,
+            "residual_templates": 0.0,
+            "residual_u_b": 0.0,
+            "residual_u_h": 0.0,
+            "residual_w": 0.0
+          },
+          "pinch": [
+            92,
+            137
+          ],
+          "step": 2751,
+          "valid": true
+        },
+        "growth_qualified": true,
+        "half_edge_topology": false,
+        "max_mass_over_birth": 6.721078654620425,
+        "name": "seed_6_l_0.1",
+        "physical_fission": true,
+        "projected_vertices": 147071,
+        "segment_apposition_enabled": false,
+        "segment_attempts": 0,
+        "tangential_motion_retained": 280.87515775021467,
+        "vertex_attempts": 87
+      },
+      {
+        "all_parent_states_simple": true,
+        "contact_steps": 3546,
+        "final": {
+          "area": 1265.3682426521143,
+          "mass": 663.457609193197,
+          "perimeter": 344.1079256423595,
+          "simple": true,
+          "vertices": 141
+        },
+        "first_invalid": null,
+        "first_segment_apposition": {
+          "distance": 4.137400713463169,
+          "i": 16,
+          "j": 88,
+          "mass_eligible": true,
+          "si": 0.0,
+          "sj": 1.0,
+          "step": 1462
+        },
+        "fission": {
+          "both_daughters_viable": true,
+          "daughter_a": {
+            "area": 560.0062848846493,
+            "mass": 312.3906863398078,
+            "perimeter": 166.9636901060184,
+            "simple": true,
+            "vertices": 64
+          },
+          "daughter_a_viability": {
+            "a_retention": 1.5181592373400834,
+            "alive": true,
+            "all_states_simple": true,
+            "c_retention": 1.553621659346705,
+            "closed_intact": true,
+            "terminal": {
+              "area": 1235.6207892036307,
+              "mass": 697.5262295813596,
+              "perimeter": 490.83670787812935,
+              "simple": true,
+              "vertices": 201
+            },
+            "viable": true
+          },
+          "daughter_b": {
+            "area": 705.3619577674652,
+            "mass": 356.39447215249595,
+            "perimeter": 187.79933413455538,
+            "simple": true,
+            "vertices": 79
+          },
+          "daughter_b_viability": {
+            "a_retention": 1.4217279925065192,
+            "alive": true,
+            "all_states_simple": true,
+            "c_retention": 1.5219246142511793,
+            "closed_intact": true,
+            "terminal": {
+              "area": 1196.3060055469573,
+              "mass": 625.8221152826269,
+              "perimeter": 395.10935908500454,
+              "simple": true,
+              "vertices": 181
+            },
+            "viable": true
+          },
+          "parent": {
+            "area": 1265.3682426521143,
+            "mass": 663.457609193197,
+            "perimeter": 344.1079256423595,
+            "simple": true,
+            "vertices": 141
+          },
+          "partition": {
+            "ok": true,
+            "residual_a": 0.0,
+            "residual_allocation_catalysts": 0.0,
+            "residual_assimilation_f": 0.0,
+            "residual_assimilation_n": 0.0,
+            "residual_autocatalytic_edges": 0.0,
+            "residual_b": 0.0,
+            "residual_c": 0.0,
+            "residual_f": 1.1368683772161603e-13,
+            "residual_l": 0.0,
+            "residual_m": 3.410605131648481e-13,
+            "residual_n": 1.1368683772161603e-13,
+            "residual_r": 0.0,
+            "residual_templates": 0.0,
+            "residual_u_b": 0.0,
+            "residual_u_h": 0.0,
+            "residual_w": 1.1368683772161603e-13
+          },
+          "pinch": [
+            36,
+            99
+          ],
+          "step": 4801,
+          "valid": true
+        },
+        "growth_qualified": true,
+        "half_edge_topology": false,
+        "max_mass_over_birth": 7.562212811460158,
+        "name": "seed_7_rotate_-0.5",
+        "physical_fission": true,
+        "projected_vertices": 361998,
+        "segment_apposition_enabled": false,
+        "segment_attempts": 0,
+        "tangential_motion_retained": 813.983201904646,
+        "vertex_attempts": 169
+      },
+      {
+        "all_parent_states_simple": false,
+        "contact_steps": 2986,
+        "final": {
+          "area": 1904.2317359100036,
+          "mass": 1045.2654438357195,
+          "perimeter": 795.0082863812869,
+          "simple": false,
+          "vertices": 329
+        },
+        "first_invalid": {
+          "geometry": {
+            "area": 1904.2317359100036,
+            "mass": 1045.2654438357195,
+            "perimeter": 795.0082863812869,
+            "simple": false,
+            "vertices": 329
+          },
+          "phase": "contact_step_rejected",
+          "step": 4181
+        },
+        "first_segment_apposition": {
+          "distance": 5.179688262145789,
+          "i": 62,
+          "j": 140,
+          "mass_eligible": true,
+          "si": 0.45654857093470924,
+          "sj": 1.0,
+          "step": 3428
+        },
+        "fission": null,
+        "growth_qualified": true,
+        "half_edge_topology": false,
+        "max_mass_over_birth": 11.90599431385236,
+        "name": "seed_8_vertex_-0.1",
+        "physical_fission": false,
+        "projected_vertices": 477565,
+        "segment_apposition_enabled": false,
+        "segment_attempts": 0,
+        "tangential_motion_retained": 770.9256884430438,
+        "vertex_attempts": 144
+      },
+      {
+        "all_parent_states_simple": true,
+        "contact_steps": 1052,
+        "final": {
+          "area": 1734.2280725191592,
+          "mass": 450.59334145178957,
+          "perimeter": 387.6167613657147,
+          "simple": true,
+          "vertices": 174
+        },
+        "first_invalid": null,
+        "first_segment_apposition": {
+          "distance": 5.735869567624016,
+          "i": 63,
+          "j": 94,
+          "mass_eligible": true,
+          "si": 1.0,
+          "sj": 0.726972723026176,
+          "step": 2093
+        },
+        "fission": {
+          "both_daughters_viable": true,
+          "daughter_a": {
+            "area": 404.1971839291178,
+            "mass": 113.71420027026826,
+            "perimeter": 99.02164761446983,
+            "simple": true,
+            "vertices": 44
+          },
+          "daughter_a_viability": {
+            "a_retention": 0.9376838378775099,
+            "alive": true,
+            "all_states_simple": true,
+            "c_retention": 1.8555370083179767,
+            "closed_intact": true,
+            "terminal": {
+              "area": 1953.7586295083513,
+              "mass": 211.08457453064202,
+              "perimeter": 203.11951101996436,
+              "simple": true,
+              "vertices": 89
+            },
+            "viable": true
+          },
+          "daughter_b": {
+            "area": 1330.030888590042,
+            "mass": 340.62271968812286,
+            "perimeter": 296.0822707644483,
+            "simple": true,
+            "vertices": 132
+          },
+          "daughter_b_viability": {
+            "a_retention": 1.2678297342744844,
+            "alive": true,
+            "all_states_simple": true,
+            "c_retention": 2.027751276350303,
+            "closed_intact": true,
+            "terminal": {
+              "area": 2205.7033960588487,
+              "mass": 519.8878828772571,
+              "perimeter": 458.74501891063164,
+              "simple": true,
+              "vertices": 187
+            },
+            "viable": true
+          },
+          "parent": {
+            "area": 1734.2280725191592,
+            "mass": 450.59334145178957,
+            "perimeter": 387.6167613657147,
+            "simple": true,
+            "vertices": 174
+          },
+          "partition": {
+            "ok": true,
+            "residual_a": 4.547473508864641e-13,
+            "residual_allocation_catalysts": 0.0,
+            "residual_assimilation_f": 0.0,
+            "residual_assimilation_n": 0.0,
+            "residual_autocatalytic_edges": 0.0,
+            "residual_b": 2.842170943040401e-14,
+            "residual_c": 0.0,
+            "residual_f": 0.0,
+            "residual_l": 0.0,
+            "residual_m": 1.1368683772161603e-13,
+            "residual_n": 0.0,
+            "residual_r": 0.0,
+            "residual_templates": 0.0,
+            "residual_u_b": 0.0,
+            "residual_u_h": 0.0,
+            "residual_w": 2.2737367544323206e-13
+          },
+          "pinch": [
+            88,
+            131
+          ],
+          "step": 2351,
+          "valid": true
+        },
+        "growth_qualified": true,
+        "half_edge_topology": false,
+        "max_mass_over_birth": 5.137097729790533,
+        "name": "seed_9_c_-0.05",
+        "physical_fission": true,
+        "projected_vertices": 78561,
+        "segment_apposition_enabled": false,
+        "segment_attempts": 0,
+        "tangential_motion_retained": 165.2604477583335,
+        "vertex_attempts": 71
+      },
+      {
+        "all_parent_states_simple": true,
+        "contact_steps": 1337,
+        "final": {
+          "area": 1334.3425266217682,
+          "mass": 367.1890702547381,
+          "perimeter": 312.5525192739547,
+          "simple": true,
+          "vertices": 109
+        },
+        "first_invalid": null,
+        "first_segment_apposition": {
+          "distance": 5.209058150472586,
+          "i": 32,
+          "j": 75,
+          "mass_eligible": true,
+          "si": 1.0,
+          "sj": 1.0,
+          "step": 2537
+        },
+        "fission": {
+          "both_daughters_viable": true,
+          "daughter_a": {
+            "area": 536.9795939808902,
+            "mass": 150.06361335456367,
+            "perimeter": 130.94540062335588,
+            "simple": true,
+            "vertices": 44
+          },
+          "daughter_a_viability": {
+            "a_retention": 0.9010386274466358,
+            "alive": true,
+            "all_states_simple": true,
+            "c_retention": 1.649928305564619,
+            "closed_intact": true,
+            "terminal": {
+              "area": 2480.2362928182793,
+              "mass": 229.1780541311076,
+              "perimeter": 231.25869092579305,
+              "simple": true,
+              "vertices": 100
+            },
+            "viable": true
+          },
+          "daughter_b": {
+            "area": 797.3629326408781,
+            "mass": 222.6564622962177,
+            "perimeter": 192.6691294426859,
+            "simple": true,
+            "vertices": 67
+          },
+          "daughter_b_viability": {
+            "a_retention": 1.404460187376083,
+            "alive": true,
+            "all_states_simple": true,
+            "c_retention": 1.8865475659292825,
+            "closed_intact": true,
+            "terminal": {
+              "area": 881.5462318020352,
+              "mass": 277.99807429047786,
+              "perimeter": 213.5891665706682,
+              "simple": true,
+              "vertices": 90
+            },
+            "viable": true
+          },
+          "parent": {
+            "area": 1334.3425266217682,
+            "mass": 367.1890702547381,
+            "perimeter": 312.5525192739547,
+            "simple": true,
+            "vertices": 109
+          },
+          "partition": {
+            "ok": true,
+            "residual_a": 0.0,
+            "residual_allocation_catalysts": 0.0,
+            "residual_assimilation_f": 0.0,
+            "residual_assimilation_n": 0.0,
+            "residual_autocatalytic_edges": 0.0,
+            "residual_b": 5.684341886080802e-14,
+            "residual_c": 0.0,
+            "residual_f": 0.0,
+            "residual_l": 0.0,
+            "residual_m": 2.8421709430404007e-13,
+            "residual_n": 0.0,
+            "residual_r": 0.0,
+            "residual_templates": 0.0,
+            "residual_u_b": 0.0,
+            "residual_u_h": 0.0,
+            "residual_w": 0.0
+          },
+          "pinch": [
+            36,
+            79
+          ],
+          "step": 2576,
+          "valid": true
+        },
+        "growth_qualified": true,
+        "half_edge_topology": false,
+        "max_mass_over_birth": 4.185289086796711,
+        "name": "seed_10_env_-0.08",
+        "physical_fission": true,
+        "projected_vertices": 97751,
+        "segment_apposition_enabled": false,
+        "segment_attempts": 0,
+        "tangential_motion_retained": 306.0908396327075,
+        "vertex_attempts": 79
+      }
+    ],
+    "work_package": "WP1_GEOMETRY_VALID_REPRODUCTION"
+  }
+}

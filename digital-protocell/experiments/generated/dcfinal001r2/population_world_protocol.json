@@ -1,0 +1,42 @@
+{
+  "breeder_selection": false,
+  "exchangeability_parity": {
+    "compressed_opportunities": 4,
+    "compressed_population": 4,
+    "explicit_opportunities": 4,
+    "explicit_population": 4,
+    "pass": true,
+    "scope": "initial geometry-valid fission, mutation-off inheritance, and one finite shared-medium exchange",
+    "transport_residual": 2.842170943040401e-14
+  },
+  "fitness_function": null,
+  "fixed_before_execution": true,
+  "inflow_depends_on_population_or_health": false,
+  "population_cap": null,
+  "raw_protocol": {
+    "component_3_boundary": "reserve-only growth endpoint dormant under preserved reserve-OFF R1 physiology",
+    "founder_multiplicity": 150,
+    "inflow_schedule_source": "frozen D-096 H/B concentration values multiplied by dt and preregistered vessel volume",
+    "minimum_opportunities_for_95_percent_at_least_one": 299,
+    "mutation_probability": 0.01,
+    "mutation_semantics": "one deterministic blind draw per daughter at geometry-valid physical fission",
+    "mutation_sigma": 0.15,
+    "open_medium_volume": 150,
+    "opportunities_per_initial_campaign": 300,
+    "phase_steps": 2500,
+    "replicates": 2,
+    "switch_schedule": [
+      2500,
+      5000
+    ]
+  },
+  "template": {
+    "fission_step": 6126,
+    "mass": 1510.2951632348581,
+    "original_birth_mass": 87.73326349501298,
+    "sealed_wp1_arm": "seed_1_rotate_0.3",
+    "simple": true,
+    "vertices": 343
+  },
+  "world_volume_tracks_population": false
+}

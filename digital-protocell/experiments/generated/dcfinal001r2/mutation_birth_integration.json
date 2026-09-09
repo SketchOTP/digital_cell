@@ -1,0 +1,62 @@
+{
+  "all_births_simple_and_partition_valid": true,
+  "geometry_valid_physical_initial_fissions": 900,
+  "mechanistic_mutant_partition_control": {
+    "lawful_mutation_seed": 17264232662068481734,
+    "mutant": [
+      0.13641490420350882,
+      0.25,
+      0.3635850957964912,
+      0.25
+    ],
+    "mutated_genotype_inherited_by_both_daughters": true,
+    "partition_ok": true,
+    "scope": "mechanistic fission-partition control; not an evolving founder population",
+    "simple_daughter_a": true,
+    "simple_daughter_b": true,
+    "simple_parent": true
+  },
+  "mutated_descendant_heredity_in_population": false,
+  "mutation_only_at_birth": true,
+  "mutation_through_physical_fission": true,
+  "newborn_first_step_attribution": {
+    "daughter_a": {
+      "expression_off": {
+        "contact_accepted": true,
+        "expression_enabled": false,
+        "expression_material_consumed": 0.0,
+        "expression_ok": true,
+        "observer_viable_after": true,
+        "polygon_simple_after": true
+      },
+      "expression_on": {
+        "contact_accepted": false,
+        "expression_enabled": true,
+        "expression_material_consumed": 0.016850566202542203,
+        "expression_ok": true,
+        "observer_viable_after": true,
+        "polygon_simple_after": true
+      }
+    },
+    "daughter_b": {
+      "expression_off": {
+        "contact_accepted": true,
+        "expression_enabled": false,
+        "expression_material_consumed": 0.0,
+        "expression_ok": true,
+        "observer_viable_after": true,
+        "polygon_simple_after": true
+      },
+      "expression_on": {
+        "contact_accepted": false,
+        "expression_enabled": true,
+        "expression_material_consumed": 0.013449049960596085,
+        "expression_ok": true,
+        "observer_viable_after": true,
+        "polygon_simple_after": true
+      }
+    },
+    "interpretation_boundary": "one frozen post-birth step; observer counterfactual only"
+  },
+  "population_boundary": "mutated newborns were invalidated at their first mechanics/contact step and never reproduced"
+}

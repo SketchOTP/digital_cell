@@ -1,0 +1,406 @@
+{
+  "campaigns": [
+    {
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_closure_residual": 0.0,
+      "mutation_enabled": true,
+      "n_closure_residual": 0.0,
+      "replicate": 1,
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 0.0,
+          "damage_structural_sink": 0.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 8.25,
+          "initial_f": 150.0,
+          "initial_n": 412.5,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 420.75,
+        "volume": 150.0
+      }
+    },
+    {
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 0.0,
+      "mutation_enabled": true,
+      "n_closure_residual": 0.0,
+      "replicate": 1,
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 14.4,
+          "damage_structural_sink": 24.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 5.94,
+          "initial_f": 150.0,
+          "initial_n": 297.0,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 302.94,
+        "volume": 150.0
+      }
+    },
+    {
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 0.0,
+      "mutation_enabled": true,
+      "n_closure_residual": 0.0,
+      "replicate": 1,
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 0.0,
+          "damage_structural_sink": 0.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 8.25,
+          "initial_f": 150.0,
+          "initial_n": 412.5,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 420.75,
+        "volume": 150.0
+      }
+    },
+    {
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_closure_residual": 0.0,
+      "mutation_enabled": false,
+      "n_closure_residual": 0.0,
+      "replicate": 1,
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 0.0,
+          "damage_structural_sink": 0.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 8.25,
+          "initial_f": 150.0,
+          "initial_n": 412.5,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 420.75,
+        "volume": 150.0
+      }
+    },
+    {
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 0.0,
+      "mutation_enabled": false,
+      "n_closure_residual": 0.0,
+      "replicate": 1,
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 14.4,
+          "damage_structural_sink": 24.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 5.94,
+          "initial_f": 150.0,
+          "initial_n": 297.0,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 302.94,
+        "volume": 150.0
+      }
+    },
+    {
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 0.0,
+      "mutation_enabled": false,
+      "n_closure_residual": 0.0,
+      "replicate": 1,
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 0.0,
+          "damage_structural_sink": 0.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 8.25,
+          "initial_f": 150.0,
+          "initial_n": 412.5,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 420.75,
+        "volume": 150.0
+      }
+    },
+    {
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_closure_residual": 0.0,
+      "mutation_enabled": true,
+      "n_closure_residual": 0.0,
+      "replicate": 2,
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 0.0,
+          "damage_structural_sink": 0.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 8.25,
+          "initial_f": 150.0,
+          "initial_n": 412.5,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 420.75,
+        "volume": 150.0
+      }
+    },
+    {
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 0.0,
+      "mutation_enabled": true,
+      "n_closure_residual": 0.0,
+      "replicate": 2,
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 14.4,
+          "damage_structural_sink": 24.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 5.94,
+          "initial_f": 150.0,
+          "initial_n": 297.0,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 302.94,
+        "volume": 150.0
+      }
+    },
+    {
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 0.0,
+      "mutation_enabled": true,
+      "n_closure_residual": 0.0,
+      "replicate": 2,
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 0.0,
+          "damage_structural_sink": 0.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 8.25,
+          "initial_f": 150.0,
+          "initial_n": 412.5,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 420.75,
+        "volume": 150.0
+      }
+    },
+    {
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_closure_residual": 0.0,
+      "mutation_enabled": false,
+      "n_closure_residual": 0.0,
+      "replicate": 2,
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 0.0,
+          "damage_structural_sink": 0.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 8.25,
+          "initial_f": 150.0,
+          "initial_n": 412.5,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 420.75,
+        "volume": 150.0
+      }
+    },
+    {
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 0.0,
+      "mutation_enabled": false,
+      "n_closure_residual": 0.0,
+      "replicate": 2,
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 14.4,
+          "damage_structural_sink": 24.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 5.94,
+          "initial_f": 150.0,
+          "initial_n": 297.0,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 302.94,
+        "volume": 150.0
+      }
+    },
+    {
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 0.0,
+      "mutation_enabled": false,
+      "n_closure_residual": 0.0,
+      "replicate": 2,
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 0.0,
+          "damage_structural_sink": 0.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 8.25,
+          "initial_f": 150.0,
+          "initial_n": 412.5,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 420.75,
+        "volume": 150.0
+      }
+    }
+  ],
+  "maximum_nf_closure_residual": 0.0,
+  "pass": true
+}

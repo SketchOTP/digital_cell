@@ -2368,3 +2368,12 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Governed evidence head `81fe37518fe7635036caa3a8c290eb73e4073a17` passed exact-head Linux workflow `34271552829`.
 - Independently downloaded artifact ZIP digest: `sha256:e18e1420430e2f1b9a69693e1760f70d6d92bea6d78b5663713065c1c4901cbb`.
 - Result remains Goal-agent provisional: M2, bounded M3, physical heredity, and persistent embodiment surfaces pass; lawful mutation, environment-dependent selection, reversal, and final one-run coexistence remain unestablished. No successor execution started.
+
+## DC-FINAL-001-R2 lawful mutation and population ecology — provisional outcome
+
+- Starting authority: R1 governed head `83d82dabab74911e7f83b023c257637b6b1b5566`, scientific head `e39571d5856e745254831b1d5c7b0c918c9fe921`, CI `34273073111`, artifact `sha256:b49a7c65890fa74cc398c2afadaa0ae42785a44a2ec426b4edfc43fe3e4abc50`.
+- Existing mutation biology is unchanged: one deterministic, fitness-blind, simplex-conserving draw per daughter at physical fission with `p=0.01`, `sigma=0.15`.
+- Powered result: 1,800 mutation-on opportunities yield 18 mutations (expected 18; compatible), while 1,800 mutation-off opportunities yield zero. Geometry-valid physical birth and mechanistic genotype partitioning pass.
+- Fixed open-medium accounting closes exactly and does not respond to population, genotype, health, or extinction risk.
+- No selection or reversal claim is possible. Every newborn is invalidated at the first post-birth mechanics/contact step; zero biological deaths are observed. Expression-off clones pass, whereas preserved D-096 expression-on clones remain simple/viable but are rejected by contact.
+- Provisional classification: `EVOLUTION_POPULATION_ECOLOGY_COLLAPSES_BEFORE_VALID_TEST`. Mutated descendant reproduction, environment-dependent selection, reversal, the final integrated rerun, and the Digital Cell end goal remain not established. Shutdown is not recommended from this nonterminal integration defect.

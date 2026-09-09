@@ -1,0 +1,1355 @@
+{
+  "damage": [
+    {
+      "breeder_selection": false,
+      "campaign_seed": 10299872317199311772,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "exchangeability_compression": true,
+      "f_closure_residual": 0.0,
+      "fitness_function": null,
+      "founder_multiplicity": 150,
+      "initial": {
+        "all_simple": true,
+        "cohorts": 4,
+        "growth_reserve_only_dormant": 0.25003701265749695,
+        "maximum_generation": 1,
+        "mean_genotype": [
+          0.24990508235643835,
+          0.2500579049860646,
+          0.24999999999999997,
+          0.25003701265749695
+        ],
+        "organism_f": 209013.3078125228,
+        "organism_n": 209013.3078125228,
+        "population": 300,
+        "processing_activation": 0.499962987342503,
+        "repair": 0.24999999999999997,
+        "step": 0,
+        "world_f": 150.0,
+        "world_n": 297.0
+      },
+      "ledger": {
+        "a_produced": 0.0,
+        "expression_activation": 0.9088924848941489,
+        "expression_failures": 0,
+        "expression_material": 4.544462424470744,
+        "fissions_by_parent_genotype": {
+          "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 150
+        },
+        "growth_material": 0.0,
+        "invalid_geometry_events": 300,
+        "mutation_events": [
+          {
+            "generation": 1,
+            "offspring": [
+              0.25,
+              0.2673714958193884,
+              0.25,
+              0.2326285041806116
+            ],
+            "parent": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "seed": 14607495978824628191,
+            "source_index": 3,
+            "step": 0,
+            "target_index": 1,
+            "transferred": 0.017371495819388405
+          },
+          {
+            "generation": 1,
+            "offspring": [
+              0.22152470693151596,
+              0.25,
+              0.25,
+              0.278475293068484
+            ],
+            "parent": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "seed": 10028721366941030414,
+            "source_index": 0,
+            "step": 0,
+            "target_index": 3,
+            "transferred": 0.02847529306848403
+          }
+        ],
+        "mutation_opportunities": 300,
+        "mutations": 2,
+        "partition_failures": 0,
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "reaction_f_consumed": 0.0,
+        "reaction_n_consumed": 0.0,
+        "runtime_invalidations": 300,
+        "valid_simple_fissions": 150,
+        "w_produced": 0.0
+      },
+      "mutation_enabled": true,
+      "n_closure_residual": 0.0,
+      "phase_steps": 2500,
+      "population_cap": null,
+      "replicate": 1,
+      "resource_feedback": false,
+      "template_fission_step": 6126,
+      "terminal": {
+        "all_simple": true,
+        "cohorts": 0,
+        "growth_reserve_only_dormant": 0.0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "organism_f": -0.0,
+        "organism_n": -0.0,
+        "population": 0,
+        "processing_activation": 0.0,
+        "repair": 0.0,
+        "step": 2500,
+        "world_f": 153.0,
+        "world_n": 302.94
+      },
+      "trajectory": [
+        {
+          "all_simple": true,
+          "cohorts": 4,
+          "growth_reserve_only_dormant": 0.25003701265749695,
+          "maximum_generation": 1,
+          "mean_genotype": [
+            0.24990508235643835,
+            0.2500579049860646,
+            0.24999999999999997,
+            0.25003701265749695
+          ],
+          "organism_f": 209013.3078125228,
+          "organism_n": 209013.3078125228,
+          "population": 300,
+          "processing_activation": 0.499962987342503,
+          "repair": 0.24999999999999997,
+          "step": 0,
+          "world_f": 150.0,
+          "world_n": 297.0
+        },
+        {
+          "all_simple": true,
+          "cohorts": 0,
+          "growth_reserve_only_dormant": 0.0,
+          "maximum_generation": 0,
+          "mean_genotype": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "organism_f": -0.0,
+          "organism_n": -0.0,
+          "population": 0,
+          "processing_activation": 0.0,
+          "repair": 0.0,
+          "step": 1,
+          "world_f": 153.0,
+          "world_n": 302.94
+        }
+      ],
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 14.4,
+          "damage_structural_sink": 24.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 5.94,
+          "initial_f": 150.0,
+          "initial_n": 297.0,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 302.94,
+        "volume": 150.0
+      }
+    },
+    {
+      "breeder_selection": false,
+      "campaign_seed": 6887159743489154071,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "exchangeability_compression": true,
+      "f_closure_residual": 0.0,
+      "fitness_function": null,
+      "founder_multiplicity": 150,
+      "initial": {
+        "all_simple": true,
+        "cohorts": 2,
+        "growth_reserve_only_dormant": 0.25,
+        "maximum_generation": 1,
+        "mean_genotype": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "organism_f": 209013.3078125228,
+        "organism_n": 209013.3078125228,
+        "population": 300,
+        "processing_activation": 0.5,
+        "repair": 0.25,
+        "step": 0,
+        "world_f": 150.0,
+        "world_n": 297.0
+      },
+      "ledger": {
+        "a_produced": 0.0,
+        "expression_activation": 0.9088924848941486,
+        "expression_failures": 0,
+        "expression_material": 4.544462424470744,
+        "fissions_by_parent_genotype": {
+          "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 150
+        },
+        "growth_material": 0.0,
+        "invalid_geometry_events": 300,
+        "mutation_events": [],
+        "mutation_opportunities": 300,
+        "mutations": 0,
+        "partition_failures": 0,
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "reaction_f_consumed": 0.0,
+        "reaction_n_consumed": 0.0,
+        "runtime_invalidations": 300,
+        "valid_simple_fissions": 150,
+        "w_produced": 0.0
+      },
+      "mutation_enabled": true,
+      "n_closure_residual": 0.0,
+      "phase_steps": 2500,
+      "population_cap": null,
+      "replicate": 2,
+      "resource_feedback": false,
+      "template_fission_step": 6126,
+      "terminal": {
+        "all_simple": true,
+        "cohorts": 0,
+        "growth_reserve_only_dormant": 0.0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "organism_f": -0.0,
+        "organism_n": -0.0,
+        "population": 0,
+        "processing_activation": 0.0,
+        "repair": 0.0,
+        "step": 2500,
+        "world_f": 153.0,
+        "world_n": 302.94
+      },
+      "trajectory": [
+        {
+          "all_simple": true,
+          "cohorts": 2,
+          "growth_reserve_only_dormant": 0.25,
+          "maximum_generation": 1,
+          "mean_genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "organism_f": 209013.3078125228,
+          "organism_n": 209013.3078125228,
+          "population": 300,
+          "processing_activation": 0.5,
+          "repair": 0.25,
+          "step": 0,
+          "world_f": 150.0,
+          "world_n": 297.0
+        },
+        {
+          "all_simple": true,
+          "cohorts": 0,
+          "growth_reserve_only_dormant": 0.0,
+          "maximum_generation": 0,
+          "mean_genotype": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "organism_f": -0.0,
+          "organism_n": -0.0,
+          "population": 0,
+          "processing_activation": 0.0,
+          "repair": 0.0,
+          "step": 1,
+          "world_f": 153.0,
+          "world_n": 302.94
+        }
+      ],
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 14.4,
+          "damage_structural_sink": 24.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 5.94,
+          "initial_f": 150.0,
+          "initial_n": 297.0,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 302.94,
+        "volume": 150.0
+      }
+    }
+  ],
+  "mutation_off_damage": [
+    {
+      "breeder_selection": false,
+      "campaign_seed": 3213397127566608264,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "exchangeability_compression": true,
+      "f_closure_residual": 0.0,
+      "fitness_function": null,
+      "founder_multiplicity": 150,
+      "initial": {
+        "all_simple": true,
+        "cohorts": 2,
+        "growth_reserve_only_dormant": 0.25,
+        "maximum_generation": 1,
+        "mean_genotype": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "organism_f": 209013.3078125228,
+        "organism_n": 209013.3078125228,
+        "population": 300,
+        "processing_activation": 0.5,
+        "repair": 0.25,
+        "step": 0,
+        "world_f": 150.0,
+        "world_n": 297.0
+      },
+      "ledger": {
+        "a_produced": 0.0,
+        "expression_activation": 0.9088924848941486,
+        "expression_failures": 0,
+        "expression_material": 4.544462424470744,
+        "fissions_by_parent_genotype": {
+          "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 150
+        },
+        "growth_material": 0.0,
+        "invalid_geometry_events": 300,
+        "mutation_events": [],
+        "mutation_opportunities": 300,
+        "mutations": 0,
+        "partition_failures": 0,
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "reaction_f_consumed": 0.0,
+        "reaction_n_consumed": 0.0,
+        "runtime_invalidations": 300,
+        "valid_simple_fissions": 150,
+        "w_produced": 0.0
+      },
+      "mutation_enabled": false,
+      "n_closure_residual": 0.0,
+      "phase_steps": 2500,
+      "population_cap": null,
+      "replicate": 1,
+      "resource_feedback": false,
+      "template_fission_step": 6126,
+      "terminal": {
+        "all_simple": true,
+        "cohorts": 0,
+        "growth_reserve_only_dormant": 0.0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "organism_f": -0.0,
+        "organism_n": -0.0,
+        "population": 0,
+        "processing_activation": 0.0,
+        "repair": 0.0,
+        "step": 2500,
+        "world_f": 153.0,
+        "world_n": 302.94
+      },
+      "trajectory": [
+        {
+          "all_simple": true,
+          "cohorts": 2,
+          "growth_reserve_only_dormant": 0.25,
+          "maximum_generation": 1,
+          "mean_genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "organism_f": 209013.3078125228,
+          "organism_n": 209013.3078125228,
+          "population": 300,
+          "processing_activation": 0.5,
+          "repair": 0.25,
+          "step": 0,
+          "world_f": 150.0,
+          "world_n": 297.0
+        },
+        {
+          "all_simple": true,
+          "cohorts": 0,
+          "growth_reserve_only_dormant": 0.0,
+          "maximum_generation": 0,
+          "mean_genotype": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "organism_f": -0.0,
+          "organism_n": -0.0,
+          "population": 0,
+          "processing_activation": 0.0,
+          "repair": 0.0,
+          "step": 1,
+          "world_f": 153.0,
+          "world_n": 302.94
+        }
+      ],
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 14.4,
+          "damage_structural_sink": 24.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 5.94,
+          "initial_f": 150.0,
+          "initial_n": 297.0,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 302.94,
+        "volume": 150.0
+      }
+    },
+    {
+      "breeder_selection": false,
+      "campaign_seed": 2455375964688990386,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "exchangeability_compression": true,
+      "f_closure_residual": 0.0,
+      "fitness_function": null,
+      "founder_multiplicity": 150,
+      "initial": {
+        "all_simple": true,
+        "cohorts": 2,
+        "growth_reserve_only_dormant": 0.25,
+        "maximum_generation": 1,
+        "mean_genotype": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "organism_f": 209013.3078125228,
+        "organism_n": 209013.3078125228,
+        "population": 300,
+        "processing_activation": 0.5,
+        "repair": 0.25,
+        "step": 0,
+        "world_f": 150.0,
+        "world_n": 297.0
+      },
+      "ledger": {
+        "a_produced": 0.0,
+        "expression_activation": 0.9088924848941486,
+        "expression_failures": 0,
+        "expression_material": 4.544462424470744,
+        "fissions_by_parent_genotype": {
+          "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 150
+        },
+        "growth_material": 0.0,
+        "invalid_geometry_events": 300,
+        "mutation_events": [],
+        "mutation_opportunities": 300,
+        "mutations": 0,
+        "partition_failures": 0,
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "reaction_f_consumed": 0.0,
+        "reaction_n_consumed": 0.0,
+        "runtime_invalidations": 300,
+        "valid_simple_fissions": 150,
+        "w_produced": 0.0
+      },
+      "mutation_enabled": false,
+      "n_closure_residual": 0.0,
+      "phase_steps": 2500,
+      "population_cap": null,
+      "replicate": 2,
+      "resource_feedback": false,
+      "template_fission_step": 6126,
+      "terminal": {
+        "all_simple": true,
+        "cohorts": 0,
+        "growth_reserve_only_dormant": 0.0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "organism_f": -0.0,
+        "organism_n": -0.0,
+        "population": 0,
+        "processing_activation": 0.0,
+        "repair": 0.0,
+        "step": 2500,
+        "world_f": 153.0,
+        "world_n": 302.94
+      },
+      "trajectory": [
+        {
+          "all_simple": true,
+          "cohorts": 2,
+          "growth_reserve_only_dormant": 0.25,
+          "maximum_generation": 1,
+          "mean_genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "organism_f": 209013.3078125228,
+          "organism_n": 209013.3078125228,
+          "population": 300,
+          "processing_activation": 0.5,
+          "repair": 0.25,
+          "step": 0,
+          "world_f": 150.0,
+          "world_n": 297.0
+        },
+        {
+          "all_simple": true,
+          "cohorts": 0,
+          "growth_reserve_only_dormant": 0.0,
+          "maximum_generation": 0,
+          "mean_genotype": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "organism_f": -0.0,
+          "organism_n": -0.0,
+          "population": 0,
+          "processing_activation": 0.0,
+          "repair": 0.0,
+          "step": 1,
+          "world_f": 153.0,
+          "world_n": 302.94
+        }
+      ],
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 14.4,
+          "damage_structural_sink": 24.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 5.94,
+          "initial_f": 150.0,
+          "initial_n": 297.0,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 302.94,
+        "volume": 150.0
+      }
+    }
+  ],
+  "mutation_off_resource": [
+    {
+      "breeder_selection": false,
+      "campaign_seed": 10066037471937554925,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "exchangeability_compression": true,
+      "f_closure_residual": 0.0,
+      "fitness_function": null,
+      "founder_multiplicity": 150,
+      "initial": {
+        "all_simple": true,
+        "cohorts": 2,
+        "growth_reserve_only_dormant": 0.25,
+        "maximum_generation": 1,
+        "mean_genotype": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "organism_f": 209013.3078125228,
+        "organism_n": 209013.3078125228,
+        "population": 300,
+        "processing_activation": 0.5,
+        "repair": 0.25,
+        "step": 0,
+        "world_f": 150.0,
+        "world_n": 412.5
+      },
+      "ledger": {
+        "a_produced": 0.0,
+        "expression_activation": 0.9089884848941486,
+        "expression_failures": 0,
+        "expression_material": 4.544942424470743,
+        "fissions_by_parent_genotype": {
+          "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 150
+        },
+        "growth_material": 0.0,
+        "invalid_geometry_events": 300,
+        "mutation_events": [],
+        "mutation_opportunities": 300,
+        "mutations": 0,
+        "partition_failures": 0,
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "reaction_f_consumed": 0.0,
+        "reaction_n_consumed": 0.0,
+        "runtime_invalidations": 300,
+        "valid_simple_fissions": 150,
+        "w_produced": 0.0
+      },
+      "mutation_enabled": false,
+      "n_closure_residual": 0.0,
+      "phase_steps": 2500,
+      "population_cap": null,
+      "replicate": 1,
+      "resource_feedback": false,
+      "template_fission_step": 6126,
+      "terminal": {
+        "all_simple": true,
+        "cohorts": 0,
+        "growth_reserve_only_dormant": 0.0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "organism_f": -0.0,
+        "organism_n": -0.0,
+        "population": 0,
+        "processing_activation": 0.0,
+        "repair": 0.0,
+        "step": 2500,
+        "world_f": 153.0,
+        "world_n": 420.75
+      },
+      "trajectory": [
+        {
+          "all_simple": true,
+          "cohorts": 2,
+          "growth_reserve_only_dormant": 0.25,
+          "maximum_generation": 1,
+          "mean_genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "organism_f": 209013.3078125228,
+          "organism_n": 209013.3078125228,
+          "population": 300,
+          "processing_activation": 0.5,
+          "repair": 0.25,
+          "step": 0,
+          "world_f": 150.0,
+          "world_n": 412.5
+        },
+        {
+          "all_simple": true,
+          "cohorts": 0,
+          "growth_reserve_only_dormant": 0.0,
+          "maximum_generation": 0,
+          "mean_genotype": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "organism_f": -0.0,
+          "organism_n": -0.0,
+          "population": 0,
+          "processing_activation": 0.0,
+          "repair": 0.0,
+          "step": 1,
+          "world_f": 153.0,
+          "world_n": 420.75
+        }
+      ],
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 0.0,
+          "damage_structural_sink": 0.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 8.25,
+          "initial_f": 150.0,
+          "initial_n": 412.5,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 420.75,
+        "volume": 150.0
+      }
+    },
+    {
+      "breeder_selection": false,
+      "campaign_seed": 10914029293797061293,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "exchangeability_compression": true,
+      "f_closure_residual": 0.0,
+      "fitness_function": null,
+      "founder_multiplicity": 150,
+      "initial": {
+        "all_simple": true,
+        "cohorts": 2,
+        "growth_reserve_only_dormant": 0.25,
+        "maximum_generation": 1,
+        "mean_genotype": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "organism_f": 209013.3078125228,
+        "organism_n": 209013.3078125228,
+        "population": 300,
+        "processing_activation": 0.5,
+        "repair": 0.25,
+        "step": 0,
+        "world_f": 150.0,
+        "world_n": 412.5
+      },
+      "ledger": {
+        "a_produced": 0.0,
+        "expression_activation": 0.9089884848941486,
+        "expression_failures": 0,
+        "expression_material": 4.544942424470743,
+        "fissions_by_parent_genotype": {
+          "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 150
+        },
+        "growth_material": 0.0,
+        "invalid_geometry_events": 300,
+        "mutation_events": [],
+        "mutation_opportunities": 300,
+        "mutations": 0,
+        "partition_failures": 0,
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "reaction_f_consumed": 0.0,
+        "reaction_n_consumed": 0.0,
+        "runtime_invalidations": 300,
+        "valid_simple_fissions": 150,
+        "w_produced": 0.0
+      },
+      "mutation_enabled": false,
+      "n_closure_residual": 0.0,
+      "phase_steps": 2500,
+      "population_cap": null,
+      "replicate": 2,
+      "resource_feedback": false,
+      "template_fission_step": 6126,
+      "terminal": {
+        "all_simple": true,
+        "cohorts": 0,
+        "growth_reserve_only_dormant": 0.0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "organism_f": -0.0,
+        "organism_n": -0.0,
+        "population": 0,
+        "processing_activation": 0.0,
+        "repair": 0.0,
+        "step": 2500,
+        "world_f": 153.0,
+        "world_n": 420.75
+      },
+      "trajectory": [
+        {
+          "all_simple": true,
+          "cohorts": 2,
+          "growth_reserve_only_dormant": 0.25,
+          "maximum_generation": 1,
+          "mean_genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "organism_f": 209013.3078125228,
+          "organism_n": 209013.3078125228,
+          "population": 300,
+          "processing_activation": 0.5,
+          "repair": 0.25,
+          "step": 0,
+          "world_f": 150.0,
+          "world_n": 412.5
+        },
+        {
+          "all_simple": true,
+          "cohorts": 0,
+          "growth_reserve_only_dormant": 0.0,
+          "maximum_generation": 0,
+          "mean_genotype": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "organism_f": -0.0,
+          "organism_n": -0.0,
+          "population": 0,
+          "processing_activation": 0.0,
+          "repair": 0.0,
+          "step": 1,
+          "world_f": 153.0,
+          "world_n": 420.75
+        }
+      ],
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 0.0,
+          "damage_structural_sink": 0.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 8.25,
+          "initial_f": 150.0,
+          "initial_n": 412.5,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 420.75,
+        "volume": 150.0
+      }
+    }
+  ],
+  "resource": [
+    {
+      "breeder_selection": false,
+      "campaign_seed": 5903840766129694910,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "exchangeability_compression": true,
+      "f_closure_residual": 0.0,
+      "fitness_function": null,
+      "founder_multiplicity": 150,
+      "initial": {
+        "all_simple": true,
+        "cohorts": 7,
+        "growth_reserve_only_dormant": 0.24999999999999997,
+        "maximum_generation": 1,
+        "mean_genotype": [
+          0.25033967351643027,
+          0.24923424679036527,
+          0.25042607969320446,
+          0.24999999999999997
+        ],
+        "organism_f": 209013.3078125228,
+        "organism_n": 209013.3078125228,
+        "population": 300,
+        "processing_activation": 0.49957392030679554,
+        "repair": 0.25042607969320446,
+        "step": 0,
+        "world_f": 150.0,
+        "world_n": 412.5
+      },
+      "ledger": {
+        "a_produced": 0.0,
+        "expression_activation": 0.9089884848941485,
+        "expression_failures": 0,
+        "expression_material": 4.544942424470743,
+        "fissions_by_parent_genotype": {
+          "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 150
+        },
+        "growth_material": 0.0,
+        "invalid_geometry_events": 300,
+        "mutation_events": [
+          {
+            "generation": 1,
+            "offspring": [
+              0.0,
+              0.25,
+              0.5,
+              0.25
+            ],
+            "parent": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "seed": 10694087846044191607,
+            "source_index": 0,
+            "step": 0,
+            "target_index": 2,
+            "transferred": 0.25
+          },
+          {
+            "generation": 1,
+            "offspring": [
+              0.22972596289041708,
+              0.2702740371095829,
+              0.25,
+              0.25
+            ],
+            "parent": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "seed": 15004447847695181390,
+            "source_index": 0,
+            "step": 0,
+            "target_index": 1,
+            "transferred": 0.02027403710958291
+          },
+          {
+            "generation": 1,
+            "offspring": [
+              0.3243411332921808,
+              0.25,
+              0.17565886670781922,
+              0.25
+            ],
+            "parent": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "seed": 16092784599490373331,
+            "source_index": 2,
+            "step": 0,
+            "target_index": 0,
+            "transferred": 0.07434113329218078
+          },
+          {
+            "generation": 1,
+            "offspring": [
+              0.29783495874649246,
+              0.25,
+              0.2021650412535075,
+              0.25
+            ],
+            "parent": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "seed": 12740731302122536760,
+            "source_index": 2,
+            "step": 0,
+            "target_index": 0,
+            "transferred": 0.04783495874649248
+          },
+          {
+            "generation": 1,
+            "offspring": [
+              0.5,
+              0.0,
+              0.25,
+              0.25
+            ],
+            "parent": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "seed": 3510207640637587824,
+            "source_index": 1,
+            "step": 0,
+            "target_index": 0,
+            "transferred": 0.25
+          }
+        ],
+        "mutation_opportunities": 300,
+        "mutations": 5,
+        "partition_failures": 0,
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "reaction_f_consumed": 0.0,
+        "reaction_n_consumed": 0.0,
+        "runtime_invalidations": 300,
+        "valid_simple_fissions": 150,
+        "w_produced": 0.0
+      },
+      "mutation_enabled": true,
+      "n_closure_residual": 0.0,
+      "phase_steps": 2500,
+      "population_cap": null,
+      "replicate": 1,
+      "resource_feedback": false,
+      "template_fission_step": 6126,
+      "terminal": {
+        "all_simple": true,
+        "cohorts": 0,
+        "growth_reserve_only_dormant": 0.0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "organism_f": -0.0,
+        "organism_n": -0.0,
+        "population": 0,
+        "processing_activation": 0.0,
+        "repair": 0.0,
+        "step": 2500,
+        "world_f": 153.0,
+        "world_n": 420.75
+      },
+      "trajectory": [
+        {
+          "all_simple": true,
+          "cohorts": 7,
+          "growth_reserve_only_dormant": 0.24999999999999997,
+          "maximum_generation": 1,
+          "mean_genotype": [
+            0.25033967351643027,
+            0.24923424679036527,
+            0.25042607969320446,
+            0.24999999999999997
+          ],
+          "organism_f": 209013.3078125228,
+          "organism_n": 209013.3078125228,
+          "population": 300,
+          "processing_activation": 0.49957392030679554,
+          "repair": 0.25042607969320446,
+          "step": 0,
+          "world_f": 150.0,
+          "world_n": 412.5
+        },
+        {
+          "all_simple": true,
+          "cohorts": 0,
+          "growth_reserve_only_dormant": 0.0,
+          "maximum_generation": 0,
+          "mean_genotype": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "organism_f": -0.0,
+          "organism_n": -0.0,
+          "population": 0,
+          "processing_activation": 0.0,
+          "repair": 0.0,
+          "step": 1,
+          "world_f": 153.0,
+          "world_n": 420.75
+        }
+      ],
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 0.0,
+          "damage_structural_sink": 0.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 8.25,
+          "initial_f": 150.0,
+          "initial_n": 412.5,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 420.75,
+        "volume": 150.0
+      }
+    },
+    {
+      "breeder_selection": false,
+      "campaign_seed": 13794792260481955618,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "exchangeability_compression": true,
+      "f_closure_residual": 0.0,
+      "fitness_function": null,
+      "founder_multiplicity": 150,
+      "initial": {
+        "all_simple": true,
+        "cohorts": 3,
+        "growth_reserve_only_dormant": 0.24990349812680027,
+        "maximum_generation": 1,
+        "mean_genotype": [
+          0.24999999999999997,
+          0.2500965018731997,
+          0.24999999999999997,
+          0.24990349812680027
+        ],
+        "organism_f": 209013.3078125228,
+        "organism_n": 209013.3078125228,
+        "population": 300,
+        "processing_activation": 0.5000965018731997,
+        "repair": 0.24999999999999997,
+        "step": 0,
+        "world_f": 150.0,
+        "world_n": 412.5
+      },
+      "ledger": {
+        "a_produced": 0.0,
+        "expression_activation": 0.9089884848941486,
+        "expression_failures": 0,
+        "expression_material": 4.544942424470743,
+        "fissions_by_parent_genotype": {
+          "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 150
+        },
+        "growth_material": 0.0,
+        "invalid_geometry_events": 300,
+        "mutation_events": [
+          {
+            "generation": 1,
+            "offspring": [
+              0.25,
+              0.27895056195991824,
+              0.25,
+              0.22104943804008179
+            ],
+            "parent": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "seed": 9158920225179531909,
+            "source_index": 3,
+            "step": 0,
+            "target_index": 1,
+            "transferred": 0.028950561959918224
+          }
+        ],
+        "mutation_opportunities": 300,
+        "mutations": 1,
+        "partition_failures": 0,
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "reaction_f_consumed": 0.0,
+        "reaction_n_consumed": 0.0,
+        "runtime_invalidations": 300,
+        "valid_simple_fissions": 150,
+        "w_produced": 0.0
+      },
+      "mutation_enabled": true,
+      "n_closure_residual": 0.0,
+      "phase_steps": 2500,
+      "population_cap": null,
+      "replicate": 2,
+      "resource_feedback": false,
+      "template_fission_step": 6126,
+      "terminal": {
+        "all_simple": true,
+        "cohorts": 0,
+        "growth_reserve_only_dormant": 0.0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "organism_f": -0.0,
+        "organism_n": -0.0,
+        "population": 0,
+        "processing_activation": 0.0,
+        "repair": 0.0,
+        "step": 2500,
+        "world_f": 153.0,
+        "world_n": 420.75
+      },
+      "trajectory": [
+        {
+          "all_simple": true,
+          "cohorts": 3,
+          "growth_reserve_only_dormant": 0.24990349812680027,
+          "maximum_generation": 1,
+          "mean_genotype": [
+            0.24999999999999997,
+            0.2500965018731997,
+            0.24999999999999997,
+            0.24990349812680027
+          ],
+          "organism_f": 209013.3078125228,
+          "organism_n": 209013.3078125228,
+          "population": 300,
+          "processing_activation": 0.5000965018731997,
+          "repair": 0.24999999999999997,
+          "step": 0,
+          "world_f": 150.0,
+          "world_n": 412.5
+        },
+        {
+          "all_simple": true,
+          "cohorts": 0,
+          "growth_reserve_only_dormant": 0.0,
+          "maximum_generation": 0,
+          "mean_genotype": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "organism_f": -0.0,
+          "organism_n": -0.0,
+          "population": 0,
+          "processing_activation": 0.0,
+          "repair": 0.0,
+          "step": 1,
+          "world_f": 153.0,
+          "world_n": 420.75
+        }
+      ],
+      "world": {
+        "f_mass": 153.0,
+        "ledger": {
+          "a_outflow": 0.0,
+          "c_outflow": 0.0,
+          "damage_membrane_sink": 0.0,
+          "damage_structural_sink": 0.0,
+          "delivered_f": 0.0,
+          "delivered_n": 0.0,
+          "inflow_f": 3.0,
+          "inflow_n": 8.25,
+          "initial_f": 150.0,
+          "initial_n": 412.5,
+          "invalidated_f_terminal": 209013.3078125228,
+          "invalidated_n_terminal": 209013.3078125228,
+          "physical_death_f_sink": 0.0,
+          "physical_death_n_sink": 0.0,
+          "returned_f": 0.0,
+          "returned_n": 0.0,
+          "w_outflow": 0.0
+        },
+        "n_mass": 420.75,
+        "volume": 150.0
+      }
+    }
+  ],
+  "summary": {
+    "all_population_assays_invalidated": true,
+    "classification": "EVOLUTION_POPULATION_ECOLOGY_COLLAPSES_BEFORE_VALID_TEST",
+    "collapse_precedes_selectable_differential_reproduction": true,
+    "collapse_semantics": "runtime invalidation at contact/mechanics acceptance, not biological death",
+    "environment_a_selection": false,
+    "environment_b_selection": false,
+    "environment_dependent_selection": false,
+    "first_post_birth_step_collapse": true,
+    "physical_deaths": 0,
+    "post_initial_geometry_valid_fissions": 0,
+    "runtime_invalidations": 3600,
+    "variation_present": true
+  }
+}

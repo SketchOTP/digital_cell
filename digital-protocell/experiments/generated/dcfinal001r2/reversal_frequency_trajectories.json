@@ -1,0 +1,89 @@
+{
+  "classification": "NOT_INTERPRETABLE_POPULATION_COLLAPSED_AT_FIRST_POST_BIRTH_STEP",
+  "trajectories": [
+    [
+      {
+        "all_simple": true,
+        "cohorts": 7,
+        "growth_reserve_only_dormant": 0.2503300004048636,
+        "maximum_generation": 1,
+        "mean_genotype": [
+          0.250254208998989,
+          0.24944125879544882,
+          0.24997453180069862,
+          0.2503300004048636
+        ],
+        "organism_f": 209013.3078125228,
+        "organism_n": 209013.3078125228,
+        "population": 300,
+        "processing_activation": 0.4996954677944378,
+        "repair": 0.24997453180069862,
+        "step": 0,
+        "world_f": 150.0,
+        "world_n": 412.5
+      },
+      {
+        "all_simple": true,
+        "cohorts": 0,
+        "growth_reserve_only_dormant": 0.0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "organism_f": -0.0,
+        "organism_n": -0.0,
+        "population": 0,
+        "processing_activation": 0.0,
+        "repair": 0.0,
+        "step": 1,
+        "world_f": 153.0,
+        "world_n": 420.75
+      }
+    ],
+    [
+      {
+        "all_simple": true,
+        "cohorts": 7,
+        "growth_reserve_only_dormant": 0.2490902145784955,
+        "maximum_generation": 1,
+        "mean_genotype": [
+          0.250325634280178,
+          0.25028751648789654,
+          0.2502966346534299,
+          0.2490902145784955
+        ],
+        "organism_f": 209013.3078125228,
+        "organism_n": 209013.3078125228,
+        "population": 300,
+        "processing_activation": 0.5006131507680746,
+        "repair": 0.2502966346534299,
+        "step": 0,
+        "world_f": 150.0,
+        "world_n": 412.5
+      },
+      {
+        "all_simple": true,
+        "cohorts": 0,
+        "growth_reserve_only_dormant": 0.0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "organism_f": -0.0,
+        "organism_n": -0.0,
+        "population": 0,
+        "processing_activation": 0.0,
+        "repair": 0.0,
+        "step": 1,
+        "world_f": 153.0,
+        "world_n": 420.75
+      }
+    ]
+  ]
+}

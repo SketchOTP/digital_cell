@@ -1,0 +1,47 @@
+{
+  "source": "dcfinal001r1/sensory_embodiment.json",
+  "source_sha256": "b4ee38bfab1cb2903441076032815788d13cb7a6abe5e903458b1bfa2225578e",
+  "value": {
+    "camera": {
+      "bytes": 460800,
+      "device": "/dev/video0",
+      "retained_in_artifact": false,
+      "sha256": "46ea3047babb783ba6ef1da58874c0c4a954eee11dd751768c41d8185dcffbb0"
+    },
+    "live_report": {
+      "all_polygons_simple": true,
+      "autonomous_resource_acquisition": "M2_ADAPTIVE_MATERIAL_GRADIENT_AUTONOMOUS_RESOURCE_ACQUISITION_QUALIFIED",
+      "cumulative_active_a": 0.0012122931371254676,
+      "cumulative_active_w": 0.0012122931371276735,
+      "cumulative_f_delivered": 0.0,
+      "cumulative_n_delivered": 0.0,
+      "cumulative_path": 9.361442061660809e-05,
+      "environment_dependent_evolution": "NOT_ESTABLISHED",
+      "fissions": 0,
+      "living": 1,
+      "maximum_generation": 0,
+      "maximum_memory": 0.039232890970017927,
+      "observer_connected": false,
+      "observer_in_biological_step": false,
+      "schema": "digital_cell_final_lifeform_runtime_v1",
+      "sensory_camera_present": true,
+      "sensory_microphone_present": true,
+      "step": 20
+    },
+    "microphone": {
+      "bytes": 88200,
+      "device": "hw:1,0 USB MIC",
+      "retained_in_artifact": false,
+      "sha256": "d9b695551da8d754e3fcf5fb84bd6e06ce7df69dcdacbc36b3cdbf496e946466"
+    },
+    "qualification": "PASS",
+    "semantic_interpretation": false,
+    "signals": [
+      "luminance",
+      "motion_energy",
+      "audio_amplitude",
+      "low_band_energy",
+      "high_band_energy"
+    ]
+  }
+}

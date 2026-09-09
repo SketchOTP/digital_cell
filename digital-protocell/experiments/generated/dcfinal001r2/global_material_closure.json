@@ -1,0 +1,11 @@
+{
+  "source": "dcfinal001r1/global_material_closure.json",
+  "source_sha256": "2c0c3ffb8d9e50b241e5d49d01b8a35bc44f75834fedebd2528d6e6768e5123a",
+  "value": {
+    "life_history_partition": true,
+    "maximum_A_to_W_residual": 2.0694557179012918e-13,
+    "maximum_finite_world_residual": 1.6110376921396607e-14,
+    "pass": true,
+    "wp1_partition": "PASS"
+  }
+}

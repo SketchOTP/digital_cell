@@ -1,0 +1,18 @@
+{
+  "digital_natural_selection": {
+    "disposition": "REFERENCE_PRINCIPLE",
+    "source": "https://direct.mit.edu/artl/article/26/2/274/93255/The-Surprising-Creativity-of-Digital-Evolution-A",
+    "used_for": "resource competition and differential replication without a fitness function"
+  },
+  "external_biological_constants_imported": false,
+  "population_bottleneck": {
+    "disposition": "DIRECTLY_RELEVANT_EXPERIMENTAL_DESIGN_PRINCIPLE",
+    "source": "https://www.nature.com/articles/nrg1088",
+    "used_for": "powered mutation opportunities before interpreting zero variation"
+  },
+  "protocell_population_selection": {
+    "disposition": "DIRECTLY_ADAPTABLE_EXPERIMENTAL_PRINCIPLE",
+    "source": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3003544",
+    "used_for": "population-level mutation opportunity and differential physical growth/division"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "call_frequency": "once per daughter after try_local_fission",
+  "configured_probability": 0.01,
+  "configured_sigma": 0.15,
+  "deterministic_seeded_provenance": true,
+  "environment_blind": true,
+  "fitness_blind": true,
+  "mutation_source_classification": "MUTATION_HOOK_EXECUTED_ZERO_DRAWS_SUCCEEDED_IN_R1",
+  "operator": "pairwise conservative simplex transfer",
+  "operator_changed_by_r2": false,
+  "parent_unchanged": true,
+  "r1_actual_physical_fissions": 4,
+  "r1_geometry_valid_fissions": 0,
+  "r1_mutation_draws": 8
+}

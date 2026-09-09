@@ -1,0 +1,9 @@
+{
+  "fixed_switch_step": 2500,
+  "sequence": [
+    "RESOURCE_CHALLENGE",
+    "DAMAGE_CHALLENGE"
+  ],
+  "switch_depends_on_frequency": false,
+  "terminal_step": 5000
+}

@@ -1,0 +1,9 @@
+{
+  "later_physical_fissions": 0,
+  "lawful_initial_parent_fissions": 900,
+  "lineage_selection_interpretable": false,
+  "maximum_generation_observed_at_birth": 1,
+  "mutated_births": 18,
+  "mutated_lineage_reproduced": false,
+  "reason": "all newborns rejected by the first post-birth mechanics/contact step"
+}

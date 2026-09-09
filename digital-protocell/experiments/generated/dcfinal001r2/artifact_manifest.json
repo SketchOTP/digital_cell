@@ -1,0 +1,166 @@
+{
+  "files": [
+    {
+      "bytes": 604,
+      "path": "authority.json",
+      "sha256": "6d6302b147c9f2c87d407b141dd62e7ffcf2879b97d25765a9293326e453ce27"
+    },
+    {
+      "bytes": 2162,
+      "path": "checkpoint_restart.json",
+      "sha256": "2fdc0a88e725ca65faf949d8c5faae9540e24fa0b9e7c350924d182729ca6554"
+    },
+    {
+      "bytes": 581,
+      "path": "development_preservation.json",
+      "sha256": "2a0b63e2039e75d4b2f39a62fb8edaaf049b756cd60f0da5e6164ae56ac24068"
+    },
+    {
+      "bytes": 206,
+      "path": "end_to_end_lifecycle.json",
+      "sha256": "70df2b243fdf5bb20a54e560e33db907ce970aae26168ee8523627cb6c33b506"
+    },
+    {
+      "bytes": 19692,
+      "path": "environment_a.json",
+      "sha256": "7a084517a71da242734e1ddac6c6857003650010a7725ce7a35cd59aa2becfd6"
+    },
+    {
+      "bytes": 17653,
+      "path": "environment_b.json",
+      "sha256": "c3b6a9bd136c3cf4993b239d773a186f8d6bb2bdd4fc0f74d7089ad6d2b6a428"
+    },
+    {
+      "bytes": 484,
+      "path": "experiential_memory.json",
+      "sha256": "b5536932c3aa8e89dd9dfd824daa7af84af63189ca5c0b156fc7805a11ef99b1"
+    },
+    {
+      "bytes": 891,
+      "path": "external_prior_art.json",
+      "sha256": "2a9b3e4c8d970e3a6d04382104f5b56f4c4d158fc069a593d2ebedefb9e5f431"
+    },
+    {
+      "bytes": 522,
+      "path": "final_goal_matrix.json",
+      "sha256": "f99f5909ee9e74064522492dee6a0013c08b2fbf42e026cad62d5fe09ba26d80"
+    },
+    {
+      "bytes": 357,
+      "path": "forbidden_information_audit.json",
+      "sha256": "c340307aaadf43b9d960fb065cb3939e19dbb81288c1f8e6ad590a926e11f6d2"
+    },
+    {
+      "bytes": 600,
+      "path": "genotype_phenotype_mapping.json",
+      "sha256": "58af5f7de0a0ad16d1392bf7ddd661680fb3bfab19f70912d9e0c9b9e6ebfe37"
+    },
+    {
+      "bytes": 363,
+      "path": "global_material_closure.json",
+      "sha256": "3e2e2fa6a366a853e958222244922cb1d30bbbcb12b50f63fb57ab055682f311"
+    },
+    {
+      "bytes": 2166,
+      "path": "godot_independence.json",
+      "sha256": "7ccd488c00b1c77904b86ffe7b30a88a36dadf176bc27e313bdab1bfb13b3e2b"
+    },
+    {
+      "bytes": 1163,
+      "path": "linux_runtime.json",
+      "sha256": "e2d7d2f7e330d0d7430baae5000cc9a9329761f384966bdb503d214a65a0b445"
+    },
+    {
+      "bytes": 988,
+      "path": "m2_preservation.json",
+      "sha256": "20e41dbfde11b7ae6fb4b6971e7b3d4f7e3690c203a8b3df0380de6212001bdb"
+    },
+    {
+      "bytes": 2066,
+      "path": "mutation_birth_integration.json",
+      "sha256": "09a27d2322d010c254ae192e61f332bef5ab941c8bc4f0590f6057ce5de969f2"
+    },
+    {
+      "bytes": 6944,
+      "path": "mutation_frequency.json",
+      "sha256": "3865a5b50bbd988835fb4790cbb377997f056c4f999e5c5c71539839ed4d4fb0"
+    },
+    {
+      "bytes": 24331,
+      "path": "mutation_off_control.json",
+      "sha256": "61b8b6ff36d545f920ed4b86eebe4c8201fb8e779408d6419e8e0e9053df343d"
+    },
+    {
+      "bytes": 362,
+      "path": "mutation_opportunity_power.json",
+      "sha256": "0dd0a9981de3113d902088fd957be8b2b28ab917b8c7793a8693f02770339319"
+    },
+    {
+      "bytes": 532,
+      "path": "mutation_source_audit.json",
+      "sha256": "5c0c86e29cfebe224024c2c60d57e8e4edbaf36ca19d9e133c1559cad45538d7"
+    },
+    {
+      "bytes": 1462,
+      "path": "population_world_protocol.json",
+      "sha256": "7c29b90a58bb6ec29a40e5ab898bc895bb43286ce3e65200e536324cf260c0ec"
+    },
+    {
+      "bytes": 1307,
+      "path": "qualification.json",
+      "sha256": "09f0e1ae59b440b49961641ee5d5e0bdb2a81a19dcb29732bd47cdaa21b7bdd4"
+    },
+    {
+      "bytes": 52901,
+      "path": "r1_preservation.json",
+      "sha256": "4ac9923a57b13b0a0a7ced8bd87a3351be3ec0ab7e052192d66249baa26bfbc9"
+    },
+    {
+      "bytes": 27560,
+      "path": "reproduction_preservation.json",
+      "sha256": "9c7c4d42276be5ab394fdd6cec11ad58713fdffac5492340fbbc590ed92cb381"
+    },
+    {
+      "bytes": 2220,
+      "path": "reversal_frequency_trajectories.json",
+      "sha256": "991da8d07ed966830893d0b700e22dd9e4df18eeb53adf7d99435743c1459e7c"
+    },
+    {
+      "bytes": 167,
+      "path": "reversal_protocol.json",
+      "sha256": "4e56113fc7439d2ba16be18920c3ffca2707c52ba753fe711c772b99843c283a"
+    },
+    {
+      "bytes": 21734,
+      "path": "reversal_replicates.json",
+      "sha256": "9f408330513529ed34c1947e82d7da9c212ad17439a78f776ca98b730fca9899"
+    },
+    {
+      "bytes": 4192,
+      "path": "selection_frequency_trajectories.json",
+      "sha256": "9953cac5c7f4eecff9ec1371531b752fbe2de811b9c58c7e853b1e7284592ad4"
+    },
+    {
+      "bytes": 312,
+      "path": "selection_lineages.json",
+      "sha256": "a75feb472a37b4a8b0b5610073877033169393eabb3efaa8d62af1c199d39f3a"
+    },
+    {
+      "bytes": 37511,
+      "path": "selection_replicates.json",
+      "sha256": "7c3bdf245686791d29fa471bab1d70d93bd9f0d851e477d5e3e8033890a738fd"
+    },
+    {
+      "bytes": 1583,
+      "path": "sensory_embodiment.json",
+      "sha256": "71ada0bf7021085486afe9e6472a0f2595b1e35325b0cbaf375381c23d5b4bce"
+    },
+    {
+      "bytes": 11236,
+      "path": "world_material_flux.json",
+      "sha256": "f5cddeb9a4f83192d9197ebe155bce657c538c9376cb98c43f5ea44fee7af6bf"
+    }
+  ],
+  "schema": "digital_cell_dcfinal001r2_artifact_manifest_v1",
+  "scientific_head": "5b7c06a7208b8b6bc8cc9c918d8de7906c611a4a"
+}

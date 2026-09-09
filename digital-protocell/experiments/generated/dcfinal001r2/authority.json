@@ -1,0 +1,11 @@
+{
+  "directive": "DC-FINAL-001-R2-LAWFUL-MUTATION-NATURAL-SELECTION-REVERSAL-AND-FINAL-GOAL-CLOSURE-001",
+  "external_architect_disposition": "CONTINUE_REPLAN",
+  "independent_architect_acceptance": "PENDING",
+  "r1_shutdown_disposition": "NOT_ACCEPTED",
+  "result_scientific_head": "5b7c06a7208b8b6bc8cc9c918d8de7906c611a4a",
+  "starting_artifact_sha256": "b49a7c65890fa74cc398c2afadaa0ae42785a44a2ec426b4edfc43fe3e4abc50",
+  "starting_ci": 34273073111,
+  "starting_governance_head": "83d82dabab74911e7f83b023c257637b6b1b5566",
+  "starting_scientific_head": "e39571d5856e745254831b1d5c7b0c918c9fe921"
+}

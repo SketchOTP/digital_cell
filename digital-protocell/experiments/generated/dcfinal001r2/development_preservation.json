@@ -1,0 +1,15 @@
+{
+  "source": "dcfinal001r1/persistent_phenotype.json",
+  "source_sha256": "5924806f5d2a9c6dce37b57a436b2c9a4098a36c927ea4c2096edaef065e6eec",
+  "value": {
+    "classification": "PASS_WITH_NONCOUNTED_INVALID_DAMAGE_DAUGHTER",
+    "common_checkpoint_state_distance": 308.6991791849853,
+    "common_start_state_distance": 279.442377182176,
+    "damage_parent_simple": true,
+    "damage_simple_daughters": false,
+    "initial_state_equivalent": true,
+    "persistent_through_one_geometry_valid_fission": true,
+    "pulse_parent_simple": true,
+    "pulse_simple_daughters": true
+  }
+}

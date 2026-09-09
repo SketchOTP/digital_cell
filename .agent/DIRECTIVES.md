@@ -1103,3 +1103,12 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Life-history development and physical heredity pass bounded continuation, but lawful mutation, differential geometry-valid reproduction, environment-dependent frequency shift, and reversal do not establish in the frozen campaign.
 - The authorized Linux/checkpoint/sensory/memory/Godot continuation is implemented and validated as infrastructure, but component passes do not satisfy final coexistence.
 - Final Goal-agent classification is `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED`; independent Architect acceptance, exact-head CI, and artifact remain pending. No successor directive or execution is authorized.
+
+## DC-FINAL-001-R2-LAWFUL-MUTATION-NATURAL-SELECTION-REVERSAL-AND-FINAL-GOAL-CLOSURE-001
+
+- Issued `2026-09-08` by external Architect from R1 governed head `83d82dabab74911e7f83b023c257637b6b1b5566`; the R1 provisional shutdown is explicitly not accepted.
+- Largest unresolved causal gap: heritable variation -> differential physical reproduction/death -> environment-dependent frequency change -> reversal.
+- Material advancement: preserve the existing D-096 mutation rate/operator, provide at least 299 lawful daughter mutation opportunities per campaign, use a fixed non-feedback accounted open material ecology, and test mutation-on/off replicated H, B, and H-to-B populations.
+- Supersedes/collapses: the seven-fission, eight-draw R1 mutation-negative interpretation. Zero observed R1 mutation is treated as underpowered, not impossibility.
+- Stop boundary: no mutation-rate/sigma change, manual mutant founder, fitness/breeder selection, resource feedback, survival support, or post-result tuning; stop after a sealed classification if the population cannot execute a valid selection test.
+- Provisional execution classification: `EVOLUTION_POPULATION_ECOLOGY_COLLAPSES_BEFORE_VALID_TEST`; mutation supply is qualified, but every newborn is invalidated by first-step D-096 expression/contact integration before selection. No repair or successor execution is authorized.

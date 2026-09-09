@@ -1562,3 +1562,14 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Exact-head Linux workflow: `34271552829 PASS`.
 - Independently downloaded artifact ZIP digest: `sha256:e18e1420430e2f1b9a69693e1760f70d6d92bea6d78b5663713065c1c4901cbb`.
 - Scientific semantics did not change after the scientific result head. Independent Architect acceptance remains `PENDING`; next execution is `false`.
+
+## DEC-DCFINAL001-R2-CONTINUE-AND-POWERED-EVOLUTION-AUDIT
+
+- Date: `2026-09-08`
+- Status: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`
+- External Architect disposition: `CONTINUE / REPLAN`; R1's provisional shutdown is not accepted because eight mutation draws were underpowered.
+- Largest unresolved gap: lawful mutation -> phenotypic variation -> differential physical reproduction/death -> environment dependence -> reversal.
+- Decision: preserve D-096 `p=0.01`, `sigma=0.15` and its existing one-draw-per-daughter physical-birth hook; increase assay population opportunity to 300 draws per campaign using exact exchangeability compression and a fixed, fully accounted non-feedback open medium.
+- Result: 18 mutations in 1,800 mutation-on draws, zero in 1,800 mutation-off draws, 900 geometry-valid mutation-on fissions, and exact N/F closure. All newborn cohorts are invalidated at the first post-birth D-096 expression/contact integration step before any selectable differential reproduction.
+- Classification: `EVOLUTION_POPULATION_ECOLOGY_COLLAPSES_BEFORE_VALID_TEST`. Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown recommendation is `false`; no successor execution started.
+- Scientific result head: `5b7c06a7208b8b6bc8cc9c918d8de7906c611a4a`; exact-head CI/artifact and independent Architect acceptance remain `PENDING`.

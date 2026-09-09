@@ -1,0 +1,14 @@
+{
+  "active_endpoints_in_r2": [
+    0,
+    1,
+    2
+  ],
+  "causal_source_tests": "chemistry-core/tests/d096_tests.rs",
+  "component_0": "expressed catalyst gain in N+F to A+W processing",
+  "component_1": "expressed catalyst gain in N+F to A+W activation; geometric mean with component 0",
+  "component_2": "expressed catalyst gain in local structural repair/build flux",
+  "component_3": "reserve-funded growth gain only; dormant under preserved R1 reserve-OFF physiology",
+  "component_3_not_counted_as_selectable": true,
+  "phenotype_causality": "PASS_FOR_COMPONENTS_0_1_2_COMPONENT_3_DORMANT"
+}

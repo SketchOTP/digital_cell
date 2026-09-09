@@ -694,3 +694,14 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Evidence-bearing governed head: `81fe37518fe7635036caa3a8c290eb73e4073a17`; exact-head Linux workflow `34271552829 PASS`; independently downloaded artifact ZIP digest `sha256:e18e1420430e2f1b9a69693e1760f70d6d92bea6d78b5663713065c1c4901cbb`.
 - Scientific semantics are unchanged by workflow/evidence-sealing commits after the scientific head. Classification remains `DIGITAL_CELL_END_GOAL_NOT_ESTABLISHED_SHUTDOWN_RECOMMENDED` under `GOAL_AGENT_PROVISIONAL_NEGATIVE`.
 - Independent Architect acceptance remains `PENDING`; next execution remains `false`.
+
+## DC-FINAL-001-R2 powered lawful-evolution audit
+
+- Active directive: `DC-FINAL-001-R2-LAWFUL-MUTATION-NATURAL-SELECTION-REVERSAL-AND-FINAL-GOAL-CLOSURE-001` from R1 governed head `83d82dabab74911e7f83b023c257637b6b1b5566`.
+- External Architect disposition: `CONTINUE / REPLAN`; the R1 shutdown recommendation is superseded, while its evidence remains immutable.
+- Largest unresolved end-goal gap: lawful heritable variation -> natural selection -> environmental reversal. R2 supersedes the underpowered seven-fission interpretation with 299-or-more mutation opportunities per campaign and stops before any new repair if population execution cannot support selection.
+- Source audit: the existing D-096 operator is already invoked once per daughter after physical fission, preserves the simplex and parent, and retains `p=0.01`, `sigma=0.15`; R1 exercised only eight draws and observed zero successful mutations.
+- Powered R2 result: 1,800 mutation-on daughter draws yield 18 mutations, exactly the binomial expectation; 1,800 mutation-off draws yield zero. All 900 mutation-on parent events are geometry-valid physical fissions, and the finite open-medium N/F ledger closes exactly.
+- Selection and reversal remain untestable: all 3,600 newborns across mutation-on/off campaigns are invalidated at the first post-birth contact/mechanics acceptance step. This is runtime invalidation, not biological death. Expression-off cloned daughters pass that step; preserved neutral D-096 expression-on daughters remain simple and observer-viable but contact rejects.
+- Goal-agent status: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; classification: `EVOLUTION_POPULATION_ECOLOGY_COLLAPSES_BEFORE_VALID_TEST`. The Digital Cell end goal remains `NOT_ESTABLISHED`, but terminal shutdown is not recommended from this bounded integration failure.
+- Scientific result head: `5b7c06a7208b8b6bc8cc9c918d8de7906c611a4a`. Exact-head CI/artifact and independent Architect acceptance are pending. No successor execution started.

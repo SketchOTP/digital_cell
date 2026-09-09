@@ -1,0 +1,13 @@
+{
+  "breeder_selection": false,
+  "fitness_function": false,
+  "manual_mutant_in_evolving_population": false,
+  "mutation_probability_changed": false,
+  "mutation_sigma_changed": false,
+  "observer_feedback": false,
+  "pass": true,
+  "population_cap": null,
+  "population_feedback_inflow": false,
+  "reproductive_quota": false,
+  "target_genotype": false
+}

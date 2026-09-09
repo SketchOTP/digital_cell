@@ -1,0 +1,16 @@
+{
+  "experimental_population_size_not_mutation_rate_changed": true,
+  "minimum_independent_opportunities": 299,
+  "opportunities_per_mutation_on_campaign": [
+    300,
+    300,
+    300,
+    300,
+    300,
+    300
+  ],
+  "p": 0.01,
+  "powered_per_campaign": true,
+  "probability_at_least_one_at_299": 0.9504637433623376,
+  "total_mutation_on_opportunities": 1800
+}

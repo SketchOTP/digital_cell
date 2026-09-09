@@ -1,0 +1,175 @@
+{
+  "damage": [
+    [
+      {
+        "all_simple": true,
+        "cohorts": 4,
+        "growth_reserve_only_dormant": 0.25003701265749695,
+        "maximum_generation": 1,
+        "mean_genotype": [
+          0.24990508235643835,
+          0.2500579049860646,
+          0.24999999999999997,
+          0.25003701265749695
+        ],
+        "organism_f": 209013.3078125228,
+        "organism_n": 209013.3078125228,
+        "population": 300,
+        "processing_activation": 0.499962987342503,
+        "repair": 0.24999999999999997,
+        "step": 0,
+        "world_f": 150.0,
+        "world_n": 297.0
+      },
+      {
+        "all_simple": true,
+        "cohorts": 0,
+        "growth_reserve_only_dormant": 0.0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "organism_f": -0.0,
+        "organism_n": -0.0,
+        "population": 0,
+        "processing_activation": 0.0,
+        "repair": 0.0,
+        "step": 1,
+        "world_f": 153.0,
+        "world_n": 302.94
+      }
+    ],
+    [
+      {
+        "all_simple": true,
+        "cohorts": 2,
+        "growth_reserve_only_dormant": 0.25,
+        "maximum_generation": 1,
+        "mean_genotype": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "organism_f": 209013.3078125228,
+        "organism_n": 209013.3078125228,
+        "population": 300,
+        "processing_activation": 0.5,
+        "repair": 0.25,
+        "step": 0,
+        "world_f": 150.0,
+        "world_n": 297.0
+      },
+      {
+        "all_simple": true,
+        "cohorts": 0,
+        "growth_reserve_only_dormant": 0.0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "organism_f": -0.0,
+        "organism_n": -0.0,
+        "population": 0,
+        "processing_activation": 0.0,
+        "repair": 0.0,
+        "step": 1,
+        "world_f": 153.0,
+        "world_n": 302.94
+      }
+    ]
+  ],
+  "interpretable": false,
+  "resource": [
+    [
+      {
+        "all_simple": true,
+        "cohorts": 7,
+        "growth_reserve_only_dormant": 0.24999999999999997,
+        "maximum_generation": 1,
+        "mean_genotype": [
+          0.25033967351643027,
+          0.24923424679036527,
+          0.25042607969320446,
+          0.24999999999999997
+        ],
+        "organism_f": 209013.3078125228,
+        "organism_n": 209013.3078125228,
+        "population": 300,
+        "processing_activation": 0.49957392030679554,
+        "repair": 0.25042607969320446,
+        "step": 0,
+        "world_f": 150.0,
+        "world_n": 412.5
+      },
+      {
+        "all_simple": true,
+        "cohorts": 0,
+        "growth_reserve_only_dormant": 0.0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "organism_f": -0.0,
+        "organism_n": -0.0,
+        "population": 0,
+        "processing_activation": 0.0,
+        "repair": 0.0,
+        "step": 1,
+        "world_f": 153.0,
+        "world_n": 420.75
+      }
+    ],
+    [
+      {
+        "all_simple": true,
+        "cohorts": 3,
+        "growth_reserve_only_dormant": 0.24990349812680027,
+        "maximum_generation": 1,
+        "mean_genotype": [
+          0.24999999999999997,
+          0.2500965018731997,
+          0.24999999999999997,
+          0.24990349812680027
+        ],
+        "organism_f": 209013.3078125228,
+        "organism_n": 209013.3078125228,
+        "population": 300,
+        "processing_activation": 0.5000965018731997,
+        "repair": 0.24999999999999997,
+        "step": 0,
+        "world_f": 150.0,
+        "world_n": 412.5
+      },
+      {
+        "all_simple": true,
+        "cohorts": 0,
+        "growth_reserve_only_dormant": 0.0,
+        "maximum_generation": 0,
+        "mean_genotype": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "organism_f": -0.0,
+        "organism_n": -0.0,
+        "population": 0,
+        "processing_activation": 0.0,
+        "repair": 0.0,
+        "step": 1,
+        "world_f": 153.0,
+        "world_n": 420.75
+      }
+    ]
+  ]
+}
