@@ -65,6 +65,28 @@ pub struct FissionEvent {
     pub leakage_w: f64,
 }
 
+/// Observer-only comparison of the legacy segment-apposition stress test with
+/// the V4 load-bearing signed-strain contract. This report does not alter
+/// candidate ordering or authorize a topology change.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SegmentAppositionStressAudit {
+    pub edge_i: usize,
+    pub edge_j: usize,
+    pub segment_i_fraction: f64,
+    pub segment_j_fraction: f64,
+    pub distance: f64,
+    pub range: f64,
+    pub ring_separation: usize,
+    pub incident_edges: [usize; 4],
+    pub raw_strains: [f64; 4],
+    pub mature_fractions: [f64; 4],
+    pub effective_signed_strains: [f64; 4],
+    pub maximum_tensile_effective_strain: f64,
+    pub maximum_compressive_effective_strain_magnitude: f64,
+    pub legacy_tensile_only_predicate: bool,
+    pub signed_magnitude_predicate: bool,
+}
+
 const ACCOUNTING_TOL: f64 = 1e-6;
 
 /// Attempt one local pinch fission if a stressed neck exists.
@@ -463,6 +485,106 @@ pub fn find_local_segment_apposition(
     local_segment_appositions(parent, params).into_iter().next()
 }
 
+/// Signed edge strain under the accepted V4 load-bearing mechanics contract.
+/// Compression remains fully load bearing, while tensile strain is weighted by
+/// the mature structural fraction. Historical contracts retain raw strain.
+pub fn effective_signed_strain(parent: &MaterialMesh, edge: usize) -> f64 {
+    let raw = parent.strain(edge);
+    if parent.is_maturation_coupled() && raw >= 0.0 {
+        parent.mature_structural_fraction(edge) * raw
+    } else {
+        raw
+    }
+}
+
+/// Enumerate all in-range segment pairs and compare the frozen legacy stress
+/// predicate with the candidate signed-load interpretation. Observer only.
+pub fn segment_apposition_stress_audit(
+    parent: &MaterialMesh,
+    params: &FissionParams,
+) -> Vec<SegmentAppositionStressAudit> {
+    if !parent.can_advance_physics()
+        || parent.n() < params.min_vertices
+        || !crate::mesh_self_contact::polygon_simple(&parent.vertices)
+    {
+        return Vec::new();
+    }
+    let n = parent.n();
+    let min_sep = (n / 4).max(3);
+    let range = crate::mesh_topology::local_rebond_range(parent, &params.topo);
+    let mut rows = Vec::new();
+    for i in 0..n {
+        for j in (i + 1)..n {
+            let ring_separation = (j - i).min(n - (j - i));
+            if ring_separation < min_sep || j == i + 1 || (i == 0 && j + 1 == n) {
+                continue;
+            }
+            let (si, sj, _, _, distance) = closest_segment_points(
+                parent.vertices[i],
+                parent.vertices[(i + 1) % n],
+                parent.vertices[j],
+                parent.vertices[(j + 1) % n],
+            );
+            if distance > range {
+                continue;
+            }
+            let prev_i = (i + n - 1) % n;
+            let prev_j = (j + n - 1) % n;
+            let incident_edges = [i, prev_i, j, prev_j];
+            let raw_strains = incident_edges.map(|edge| parent.strain(edge));
+            let mature_fractions =
+                incident_edges.map(|edge| parent.mature_structural_fraction(edge));
+            let effective_signed_strains =
+                incident_edges.map(|edge| effective_signed_strain(parent, edge));
+            let maximum_tensile_effective_strain = effective_signed_strains
+                .iter()
+                .copied()
+                .fold(0.0_f64, f64::max);
+            let maximum_compressive_effective_strain_magnitude = effective_signed_strains
+                .iter()
+                .copied()
+                .filter(|strain| *strain < 0.0)
+                .map(f64::abs)
+                .fold(0.0_f64, f64::max);
+            let legacy_tensile_only_predicate = raw_strains[0].max(raw_strains[1]) > 0.15
+                || raw_strains[2].max(raw_strains[3]) > 0.15
+                || parent.edges[i].ruptured
+                || parent.edges[prev_j].ruptured
+                || distance < range * 0.55;
+            let signed_magnitude_predicate = effective_signed_strains[0]
+                .abs()
+                .max(effective_signed_strains[1].abs())
+                > 0.15
+                || effective_signed_strains[2]
+                    .abs()
+                    .max(effective_signed_strains[3].abs())
+                    > 0.15
+                || parent.edges[i].ruptured
+                || parent.edges[prev_j].ruptured
+                || distance < range * 0.55;
+            rows.push(SegmentAppositionStressAudit {
+                edge_i: i,
+                edge_j: j,
+                segment_i_fraction: si,
+                segment_j_fraction: sj,
+                distance,
+                range,
+                ring_separation,
+                incident_edges,
+                raw_strains,
+                mature_fractions,
+                effective_signed_strains,
+                maximum_tensile_effective_strain,
+                maximum_compressive_effective_strain_magnitude,
+                legacy_tensile_only_predicate,
+                signed_magnitude_predicate,
+            });
+        }
+    }
+    rows.sort_by(|left, right| left.distance.total_cmp(&right.distance));
+    rows
+}
+
 fn local_segment_appositions(
     parent: &MaterialMesh,
     params: &FissionParams,
@@ -552,6 +674,60 @@ pub fn try_local_segment_fission(
         }
     }
     None
+}
+
+/// Clone-only R10 diagnostic: evaluate the unchanged downstream segment split
+/// and conservative fission kernel for one already-observed apposition. This
+/// bypasses only candidate stress selection and must not be used by production.
+pub fn try_local_segment_fission_at_observed_apposition(
+    parent: &MaterialMesh,
+    params: &FissionParams,
+    edge_i: usize,
+    edge_j: usize,
+    segment_i_fraction: f64,
+    segment_j_fraction: f64,
+) -> Option<(MaterialMesh, MaterialMesh, FissionEvent)> {
+    if !parent.can_advance_physics()
+        || parent.n() < params.min_vertices
+        || !params.topo.enable_rebond
+        || !crate::mesh_self_contact::polygon_simple(&parent.vertices)
+        || edge_i >= parent.n()
+        || edge_j >= parent.n()
+    {
+        return None;
+    }
+    let n = parent.n();
+    let ring_separation = (edge_j.abs_diff(edge_i)).min(n - edge_j.abs_diff(edge_i));
+    let min_sep = (n / 4).max(3);
+    if ring_separation < min_sep || edge_j == edge_i + 1 || (edge_i == 0 && edge_j + 1 == n) {
+        return None;
+    }
+    let (si, sj, pi, pj, distance) = closest_segment_points(
+        parent.vertices[edge_i],
+        parent.vertices[(edge_i + 1) % n],
+        parent.vertices[edge_j],
+        parent.vertices[(edge_j + 1) % n],
+    );
+    let tolerance = f64::EPSILON * 64.0;
+    if (si - segment_i_fraction).abs() > tolerance
+        || (sj - segment_j_fraction).abs() > tolerance
+        || distance > crate::mesh_topology::local_rebond_range(parent, &params.topo)
+    {
+        return None;
+    }
+    let mut split = parent.clone();
+    let vi = split_edge_at(&mut split, edge_i, si, pi);
+    let shifted_j = if split.n() > parent.n() {
+        edge_j + 1
+    } else {
+        edge_j
+    };
+    let vj = split_edge_at(&mut split, shifted_j, sj, pj);
+    let (d1, d2, event) = try_local_fission_at_vertices(&split, params, vi, vj)?;
+    (crate::mesh_self_contact::polygon_simple(&d1.vertices)
+        && crate::mesh_self_contact::polygon_simple(&d2.vertices)
+        && event.partition.ok)
+        .then_some((d1, d2, event))
 }
 
 /// Step topology operators (rupture + same-edge rebond). Fission is separate.

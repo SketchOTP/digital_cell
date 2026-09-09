@@ -6,7 +6,8 @@
 
 use chemistry_core::material_mesh::MaterialMesh;
 use chemistry_core::mesh_fission::{
-    find_local_segment_apposition, topology_step, try_local_fission, try_local_segment_fission,
+    find_local_segment_apposition, segment_apposition_stress_audit, topology_step,
+    try_local_fission, try_local_segment_fission, try_local_segment_fission_at_observed_apposition,
     FissionParams,
 };
 use chemistry_core::mesh_growth::{growth_step, GrowthParams};
@@ -74,6 +75,7 @@ enum Mode {
     RefractoryCurvatureNormalAdaptationDisabled,
     RefractoryCurvatureNormalZeroA,
     RefractoryCurvatureNormalTangential,
+    RefractoryCurvatureNormalSignedAudit,
 }
 
 impl Mode {
@@ -103,6 +105,9 @@ impl Mode {
             Self::RefractoryCurvatureNormalZeroA => "REFRACTORY_CURVATURE_NORMAL_ZERO_A",
             Self::RefractoryCurvatureNormalTangential => {
                 "REFRACTORY_CURVATURE_NORMAL_PLUS_TANGENTIAL"
+            }
+            Self::RefractoryCurvatureNormalSignedAudit => {
+                "REFRACTORY_CURVATURE_NORMAL_SIGNED_STRESS_OBSERVER"
             }
         }
     }
@@ -219,6 +224,8 @@ struct RunResult {
     actuator_geometry: ActuatorGeometryAudit,
     patch_dynamics: Vec<Value>,
     refractory_audit: RefractoryAudit,
+    signed_stress_attempts: Vec<Value>,
+    signed_stress_counterfactual: Option<Value>,
     #[serde(skip)]
     final_mesh: MaterialMesh,
 }
@@ -1167,6 +1174,7 @@ fn run(
             | Mode::RefractoryCurvatureNormalAdaptationDisabled
             | Mode::RefractoryCurvatureNormalZeroA
             | Mode::RefractoryCurvatureNormalTangential
+            | Mode::RefractoryCurvatureNormalSignedAudit
     );
     let mut plasticity = if matches!(mode, Mode::RefractoryCurvatureNormalAdaptationDisabled) {
         PlasticityStateV1::disabled(mesh.n())
@@ -1189,6 +1197,8 @@ fn run(
     let mut functional_localization = FunctionalLocalization::default();
     let mut actuator_geometry = ActuatorGeometryAudit::default();
     let mut patch_dynamics = Vec::new();
+    let mut signed_stress_attempts = Vec::new();
+    let mut signed_stress_counterfactual = None;
     let mut refractory_audit = RefractoryAudit {
         enabled: refractory_mode && plasticity.enabled,
         ..Default::default()
@@ -1233,7 +1243,8 @@ fn run(
             | Mode::RefractoryCurvatureNormalMotorOff
             | Mode::RefractoryCurvatureNormalAdaptationDisabled
             | Mode::RefractoryCurvatureNormalZeroA
-            | Mode::RefractoryCurvatureNormalTangential => curvature_components(&mesh).3,
+            | Mode::RefractoryCurvatureNormalTangential
+            | Mode::RefractoryCurvatureNormalSignedAudit => curvature_components(&mesh).3,
             _ => {
                 if regulator.step(frame, event).is_err() {
                     attribution.continuity_failures += 1;
@@ -1295,6 +1306,7 @@ fn run(
                     | Mode::RefractoryCurvatureNormalAdaptationDisabled
                     | Mode::RefractoryCurvatureNormalZeroA
                     | Mode::RefractoryCurvatureNormalTangential
+                    | Mode::RefractoryCurvatureNormalSignedAudit
             )
         {
             update_attribution(&mut attribution, &mesh, &activity);
@@ -1345,7 +1357,8 @@ fn run(
             | Mode::ContrastNormalTangential
             | Mode::RefractoryCurvatureNormal
             | Mode::RefractoryCurvatureNormalAdaptationDisabled
-            | Mode::RefractoryCurvatureNormalTangential => {
+            | Mode::RefractoryCurvatureNormalTangential
+            | Mode::RefractoryCurvatureNormalSignedAudit => {
                 let (forces, requested) = inward_normal_request(&mesh, &activity, mechanics.dt);
                 let tangential_activity = if matches!(
                     mode,
@@ -1566,6 +1579,60 @@ fn run(
             }));
         }
         if attempt_tick {
+            if mode == Mode::RefractoryCurvatureNormalSignedAudit {
+                let audits = segment_apposition_stress_audit(&mesh, &fission);
+                if !audits.is_empty() {
+                    signed_stress_attempts.push(json!({
+                        "step": absolute_step,
+                        "candidates": audits,
+                    }));
+                }
+                if signed_stress_counterfactual.is_none() {
+                    for candidate in segment_apposition_stress_audit(&mesh, &fission)
+                        .into_iter()
+                        .filter(|candidate| {
+                            candidate.signed_magnitude_predicate
+                                && !candidate.legacy_tensile_only_predicate
+                        })
+                    {
+                        let Some((a, b, event)) = try_local_segment_fission_at_observed_apposition(
+                            &mesh,
+                            &fission,
+                            candidate.edge_i,
+                            candidate.edge_j,
+                            candidate.segment_i_fraction,
+                            candidate.segment_j_fraction,
+                        ) else {
+                            continue;
+                        };
+                        let parent_simple = polygon_simple(&mesh.vertices);
+                        let daughter_a_simple = polygon_simple(&a.vertices);
+                        let daughter_b_simple = polygon_simple(&b.vertices);
+                        let daughter_a_runtime = a.physical_runtime_valid();
+                        let daughter_b_runtime = b.physical_runtime_valid();
+                        let daughter_a_lifecycle = a.lifecycle_invariants_hold();
+                        let daughter_b_lifecycle = b.lifecycle_invariants_hold();
+                        let daughter_a = daughter_viability(a);
+                        let daughter_b = daughter_viability(b);
+                        signed_stress_counterfactual = Some(json!({
+                            "step": absolute_step,
+                            "candidate": candidate,
+                            "parent_simple": parent_simple,
+                            "daughter_a_simple": daughter_a_simple,
+                            "daughter_b_simple": daughter_b_simple,
+                            "daughter_a_runtime_valid": daughter_a_runtime,
+                            "daughter_b_runtime_valid": daughter_b_runtime,
+                            "daughter_a_lifecycle_valid": daughter_a_lifecycle,
+                            "daughter_b_lifecycle_valid": daughter_b_lifecycle,
+                            "partition": event.partition,
+                            "daughter_a_continuation": daughter_a,
+                            "daughter_b_continuation": daughter_b,
+                            "observer_only": true,
+                        }));
+                        break;
+                    }
+                }
+            }
             let (mut reason, detail) = classify_attempt(&mesh, &fission);
             let proposed = try_local_fission(&mesh, &fission).or_else(|| {
                 planar
@@ -1638,6 +1705,8 @@ fn run(
         actuator_geometry,
         patch_dynamics,
         refractory_audit,
+        signed_stress_attempts,
+        signed_stress_counterfactual,
         final_mesh: mesh,
     }
 }
@@ -1828,6 +1897,91 @@ pub fn run_r9() {
         "digital_cell_end_goal": if reproduction_pass {"PENDING"} else {"NOT_ESTABLISHED"},
         "scientific_default_runtime_changed": false,
         "next_execution_started": false,
+    });
+    fs::write(output, serde_json::to_vec_pretty(&result).unwrap()).unwrap();
+}
+
+/// R10 Gates 1-2: exact R9 mechanics and legacy fission behavior with an
+/// observer-only signed-load replay and clone-only downstream fission checks.
+pub fn run_r10_signed_stress_audit() {
+    const R10_DIRECTIVE: &str =
+        "DC-FINAL-001-R10-SIGNED-LOAD-BEARING-NECK-STRESS-REPRODUCTION-AND-END-GOAL-CLOSURE-001";
+    let mut output = PathBuf::from("/tmp/dcfinal001_r10_signed_stress_audit.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let runs = campaign(Mode::RefractoryCurvatureNormalSignedAudit, 14_778);
+    let (growth, fissions, viable) = result_counts(&runs);
+    let seed_summary = runs
+        .iter()
+        .enumerate()
+        .map(|(index, run)| {
+            let newly_admitted = run
+                .signed_stress_attempts
+                .iter()
+                .flat_map(|attempt| attempt["candidates"].as_array().into_iter().flatten())
+                .filter(|candidate| {
+                    candidate["signed_magnitude_predicate"] == true
+                        && candidate["legacy_tensile_only_predicate"] == false
+                })
+                .count();
+            json!({
+                "seed": index + 1,
+                "legacy_physical_fission": run.physical_fission,
+                "legacy_both_daughters_viable": run.both_daughters_viable,
+                "in_range_attempts": run.signed_stress_attempts.len(),
+                "newly_admitted_candidate_count": newly_admitted,
+                "counterfactual": run.signed_stress_counterfactual,
+            })
+        })
+        .collect::<Vec<_>>();
+    let seed_pass = |seed: usize| {
+        runs[seed - 1]
+            .signed_stress_counterfactual
+            .as_ref()
+            .map(|counterfactual| {
+                counterfactual["partition"]["ok"] == true
+                    && counterfactual["daughter_a_continuation"]["viable"] == true
+                    && counterfactual["daughter_b_continuation"]["viable"] == true
+            })
+            .unwrap_or(false)
+    };
+    let seed_7_pass = seed_pass(7);
+    let seed_10_pass = seed_pass(10);
+    let mismatch_confirmed = seed_7_pass && seed_10_pass;
+    let result = json!({
+        "directive": R10_DIRECTIVE,
+        "starting_head": "42ec99f1eac5f302aa501a8168429c62d6045680",
+        "gate": "GATES_1_2_OBSERVER_ONLY",
+        "scientific_runtime_changed": false,
+        "production_stress_predicate_changed": false,
+        "qualification_horizon": 14_778,
+        "legacy_r9_replay": {
+            "growth_qualified": growth,
+            "geometry_valid_fissions": fissions,
+            "simple_viable_daughter_pairs": viable,
+            "pass": fissions == 5 && viable == 5,
+        },
+        "effective_signed_strain_contract": {
+            "v4_compression": "raw_strain",
+            "v4_tension": "mature_fraction_times_raw_strain",
+            "non_v4": "raw_strain",
+            "stress_magnitude": 0.15,
+            "new_free_parameters": 0,
+        },
+        "seed_7_compression_candidate": if seed_7_pass {"PASS"} else {"FAIL"},
+        "seed_10_compression_candidate": if seed_10_pass {"PASS"} else {"FAIL"},
+        "counterfactual_daughters": if mismatch_confirmed {"PASS"} else {"FAIL"},
+        "classification": if mismatch_confirmed {
+            "V4_SCISSION_TENSILE_ONLY_STRESS_MISMATCH_CONFIRMED"
+        } else {
+            "V4_SCISSION_TENSILE_ONLY_STRESS_MISMATCH_NOT_CONFIRMED"
+        },
+        "seed_summary": seed_summary,
+        "campaign": campaign_summary(&runs),
     });
     fs::write(output, serde_json::to_vec_pretty(&result).unwrap()).unwrap();
 }
