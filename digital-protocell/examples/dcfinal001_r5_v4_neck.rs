@@ -1,8 +1,8 @@
-//! DC-FINAL-001-R5: production-V4 neck-generation diagnosis and bounded
-//! existing-mechanism mechanochemical reproduction qualification.
-//!
-//! This is an assay harness. It does not add a division command, target neck,
-//! cleavage axis, body-size controller, or a new physical parameter.
+// DC-FINAL-001-R5: production-V4 neck-generation diagnosis and bounded
+// existing-mechanism mechanochemical reproduction qualification.
+//
+// This is an assay harness. It does not add a division command, target neck,
+// cleavage axis, body-size controller, or a new physical parameter.
 
 use chemistry_core::material_mesh::MaterialMesh;
 use chemistry_core::mesh_fission::{
@@ -52,6 +52,8 @@ enum Mode {
     RegulatorOnMotorOff,
     ZeroA,
     ContrastFallback,
+    ContrastMotorOff,
+    ContrastZeroA,
 }
 
 impl Mode {
@@ -63,8 +65,37 @@ impl Mode {
             Self::RegulatorOnMotorOff => "REGULATOR_ON_MOTOR_OFF",
             Self::ZeroA => "ZERO_A",
             Self::ContrastFallback => "ZERO_PARAMETER_MEAN_RELATIVE_STRAIN",
+            Self::ContrastMotorOff => "ZERO_PARAMETER_CONTRAST_MOTOR_OFF",
+            Self::ContrastZeroA => "ZERO_PARAMETER_CONTRAST_ZERO_A",
         }
     }
+}
+
+#[derive(Clone, Debug, Default, Serialize)]
+struct FunctionalLocalization {
+    steps: usize,
+    activity_mean_sum: f64,
+    activity_variance_sum: f64,
+    active_perimeter_fraction_sum: f64,
+    largest_contiguous_active_arc_fraction_sum: f64,
+    active_patch_count_sum: usize,
+    max_active_patch_count: usize,
+    strain_activity_sum_x: f64,
+    strain_activity_sum_y: f64,
+    strain_activity_sum_x2: f64,
+    strain_activity_sum_y2: f64,
+    strain_activity_sum_xy: f64,
+    strain_activity_n: usize,
+    activity_contraction_sum_x: f64,
+    activity_contraction_sum_y: f64,
+    activity_contraction_sum_x2: f64,
+    activity_contraction_sum_y2: f64,
+    activity_contraction_sum_xy: f64,
+    activity_contraction_n: usize,
+    sampled_nearest_activity: Vec<f64>,
+    sampled_outside_activity: Vec<f64>,
+    sampled_distance_over_range: Vec<f64>,
+    best_apposition: Option<Value>,
 }
 
 #[derive(Clone, Debug, Default, Serialize)]
@@ -122,6 +153,8 @@ struct RunResult {
     checkpoints: Vec<Value>,
     attribution: Attribution,
     final_geometry: Value,
+    #[serde(skip)]
+    functional_localization: FunctionalLocalization,
     #[serde(skip)]
     final_mesh: MaterialMesh,
 }
@@ -357,23 +390,173 @@ fn daughter_viability(mut mesh: MaterialMesh) -> Value {
 
 fn contrast_activity(mesh: &MaterialMesh) -> Vec<f64> {
     let frame = observe_continuity_material_frame(mesh, &MechParams::default());
-    let perimeter = mesh.perimeter().max(1e-300);
-    let mean = frame
+    let stimuli = frame
         .patches
         .iter()
-        .enumerate()
-        .map(|(i, p)| {
-            p.raw_stimulus
-                * 0.5
-                * (mesh.edge_length((i + mesh.n() - 1) % mesh.n()) + mesh.edge_length(i))
-        })
+        .map(|patch| patch.raw_stimulus)
+        .collect::<Vec<_>>();
+    let measures = (0..mesh.n())
+        .map(|i| 0.5 * (mesh.edge_length((i + mesh.n() - 1) % mesh.n()) + mesh.edge_length(i)))
+        .collect::<Vec<_>>();
+    regulatory_core::adaptive_chemotaxis::adaptive_directional_drive(&stimuli, &measures)
+        .expect("positive tensile strain and material measures satisfy adaptive drive contract")
+        .front_drive
+}
+
+fn active_arc_metrics(mesh: &MaterialMesh, activity: &[f64]) -> (f64, f64, usize) {
+    if activity.is_empty() {
+        return (0.0, 0.0, 0);
+    }
+    let measures = (0..mesh.n())
+        .map(|i| 0.5 * (mesh.edge_length((i + mesh.n() - 1) % mesh.n()) + mesh.edge_length(i)))
+        .collect::<Vec<_>>();
+    let perimeter = measures.iter().sum::<f64>().max(1e-300);
+    let active = activity
+        .iter()
+        .map(|value| *value > 0.0)
+        .collect::<Vec<_>>();
+    let active_fraction = active
+        .iter()
+        .zip(&measures)
+        .filter(|(is_active, _)| **is_active)
+        .map(|(_, measure)| *measure)
         .sum::<f64>()
         / perimeter;
-    frame
+    if active.iter().all(|value| !*value) {
+        return (active_fraction, 0.0, 0);
+    }
+    if active.iter().all(|value| *value) {
+        return (active_fraction, 1.0, 1);
+    }
+    let start = active.iter().position(|value| !*value).unwrap();
+    let mut largest = 0.0_f64;
+    let mut current = 0.0_f64;
+    let mut patches = 0_usize;
+    let mut in_patch = false;
+    for offset in 1..=active.len() {
+        let index = (start + offset) % active.len();
+        if active[index] {
+            if !in_patch {
+                patches += 1;
+                in_patch = true;
+            }
+            current += measures[index];
+            largest = largest.max(current);
+        } else {
+            current = 0.0;
+            in_patch = false;
+        }
+    }
+    (active_fraction, largest / perimeter, patches)
+}
+
+fn nearest_pair_activity(mesh: &MaterialMesh, activity: &[f64], pair: &Value) -> (f64, f64) {
+    let indices = pair["nearest_pair"].as_array().unwrap();
+    let i = indices[0].as_u64().unwrap() as usize;
+    let j = indices[1].as_u64().unwrap() as usize;
+    let neighborhood = [i, (i + 1) % mesh.n(), j, (j + 1) % mesh.n()];
+    let mut selected = vec![false; mesh.n()];
+    for index in neighborhood {
+        selected[index] = true;
+    }
+    let measures = (0..mesh.n())
+        .map(|index| {
+            0.5 * (mesh.edge_length((index + mesh.n() - 1) % mesh.n()) + mesh.edge_length(index))
+        })
+        .collect::<Vec<_>>();
+    let weighted_mean = |inside: bool| {
+        let denominator = (0..mesh.n())
+            .filter(|index| selected[*index] == inside)
+            .map(|index| measures[index])
+            .sum::<f64>();
+        if denominator <= 0.0 {
+            0.0
+        } else {
+            (0..mesh.n())
+                .filter(|index| selected[*index] == inside)
+                .map(|index| activity[index] * measures[index])
+                .sum::<f64>()
+                / denominator
+        }
+    };
+    (weighted_mean(true), weighted_mean(false))
+}
+
+fn update_functional_pre(
+    functional: &mut FunctionalLocalization,
+    mesh: &MaterialMesh,
+    activity: &[f64],
+    sampled: bool,
+    fission: &FissionParams,
+) {
+    let frame = observe_continuity_material_frame(mesh, &MechParams::default());
+    let strain = frame
         .patches
         .iter()
-        .map(|p| (p.raw_stimulus - mean).max(0.0))
-        .collect()
+        .map(|patch| patch.raw_stimulus)
+        .collect::<Vec<_>>();
+    let (mean, variance) = mean_variance(activity);
+    let (active_fraction, largest_arc, patches) = active_arc_metrics(mesh, activity);
+    functional.steps += 1;
+    functional.activity_mean_sum += mean;
+    functional.activity_variance_sum += variance;
+    functional.active_perimeter_fraction_sum += active_fraction;
+    functional.largest_contiguous_active_arc_fraction_sum += largest_arc;
+    functional.active_patch_count_sum += patches;
+    functional.max_active_patch_count = functional.max_active_patch_count.max(patches);
+    for (x, y) in strain.iter().zip(activity) {
+        functional.strain_activity_sum_x += x;
+        functional.strain_activity_sum_y += y;
+        functional.strain_activity_sum_x2 += x * x;
+        functional.strain_activity_sum_y2 += y * y;
+        functional.strain_activity_sum_xy += x * y;
+        functional.strain_activity_n += 1;
+    }
+    if sampled {
+        let pair = pair_observer(mesh, fission);
+        let (nearest, outside) = nearest_pair_activity(mesh, activity, &pair);
+        let ratio = pair["minimum_distance_over_range"]
+            .as_f64()
+            .unwrap_or(f64::INFINITY);
+        functional.sampled_nearest_activity.push(nearest);
+        functional.sampled_outside_activity.push(outside);
+        functional.sampled_distance_over_range.push(ratio);
+        let replace = functional
+            .best_apposition
+            .as_ref()
+            .and_then(|value| value["distance_over_range"].as_f64())
+            .map(|best| ratio < best)
+            .unwrap_or(true);
+        if replace {
+            functional.best_apposition = Some(json!({
+                "distance_over_range": ratio,
+                "nearest_pair_activity": nearest,
+                "outside_activity": outside,
+                "nearest_pair": pair["nearest_pair"],
+            }));
+        }
+    }
+}
+
+fn update_functional_contraction(
+    functional: &mut FunctionalLocalization,
+    activity: &[f64],
+    before: &[f64],
+    mesh: &MaterialMesh,
+) {
+    if before.len() != mesh.n() || activity.len() != mesh.n() {
+        return;
+    }
+    for index in 0..mesh.n() {
+        let x = 0.5 * (activity[index] + activity[(index + 1) % mesh.n()]);
+        let y = (before[index] - mesh.edge_length(index)) / before[index].max(1e-300);
+        functional.activity_contraction_sum_x += x;
+        functional.activity_contraction_sum_y += y;
+        functional.activity_contraction_sum_x2 += x * x;
+        functional.activity_contraction_sum_y2 += y * y;
+        functional.activity_contraction_sum_xy += x * y;
+        functional.activity_contraction_n += 1;
+    }
 }
 
 fn update_attribution(attribution: &mut Attribution, mesh: &MaterialMesh, activity: &[f64]) {
@@ -508,6 +691,7 @@ fn run(
     let mut checkpoints = Vec::new();
     let mut counts = FailureCounts::default();
     let mut attribution = Attribution::default();
+    let mut functional_localization = FunctionalLocalization::default();
     let mut deepest = "NO_NONADJACENT_APPOSITION".to_string();
     for absolute_step in (start_step + 1)..=end_step {
         if !mesh.can_advance_physics() {
@@ -533,7 +717,9 @@ fn run(
         );
         let activity = match mode {
             Mode::Passive | Mode::RegulatorOffMotorOnZero => vec![0.0; mesh.n()],
-            Mode::ContrastFallback => contrast_activity(&mesh),
+            Mode::ContrastFallback | Mode::ContrastMotorOff | Mode::ContrastZeroA => {
+                contrast_activity(&mesh)
+            }
             _ => {
                 if regulator.step(frame, event).is_err() {
                     attribution.continuity_failures += 1;
@@ -545,12 +731,30 @@ fn run(
             }
         };
         let (activity_mean_current, _) = mean_variance(&activity);
-        if regulator_on || mode == Mode::ContrastFallback {
+        if regulator_on
+            || matches!(
+                mode,
+                Mode::ContrastFallback | Mode::ContrastMotorOff | Mode::ContrastZeroA
+            )
+        {
             update_attribution(&mut attribution, &mesh, &activity);
         }
+        let sampled_localization = absolute_step == start_step + 1
+            || absolute_step % 250 == 0
+            || absolute_step == end_step;
+        update_functional_pre(
+            &mut functional_localization,
+            &mesh,
+            &activity,
+            sampled_localization,
+            &fission,
+        );
+        let edge_lengths_before = (0..mesh.n())
+            .map(|index| mesh.edge_length(index))
+            .collect::<Vec<_>>();
 
         let mechanics_ok = match mode {
-            Mode::Passive | Mode::RegulatorOnMotorOff => {
+            Mode::Passive | Mode::RegulatorOnMotorOff | Mode::ContrastMotorOff => {
                 mechanics_step_with_local_self_contact(&mut mesh, &mechanics).is_some()
             }
             Mode::RegulatorOffMotorOnZero | Mode::RegulatorMotor | Mode::ContrastFallback => {
@@ -567,7 +771,7 @@ fn run(
                     Err(_) => false,
                 }
             }
-            Mode::ZeroA => {
+            Mode::ZeroA | Mode::ContrastZeroA => {
                 let area_before = mesh.area().max(1e-300);
                 let saved_a = mesh.interior.a.max(0.0) * area_before;
                 mesh.interior.a = 0.0;
@@ -589,6 +793,12 @@ fn run(
             first_invalid = Some(json!({"step":absolute_step,"phase":"mechanics"}));
             break;
         }
+        update_functional_contraction(
+            &mut functional_localization,
+            &activity,
+            &edge_lengths_before,
+            &mesh,
+        );
         let _ = remesh_preserving_simple(&mut mesh);
         let planar = PlanarRingTopology::from_mesh(&mesh);
         if absolute_step.saturating_sub(1) % 10 == 0 {
@@ -699,6 +909,7 @@ fn run(
         checkpoints,
         attribution,
         final_geometry: geometry(&mesh),
+        functional_localization,
         final_mesh: mesh,
     }
 }
@@ -903,6 +1114,240 @@ fn main() {
         "digital_cell_end_goal":if reproduction_pass{"PENDING"}else{"NOT_ESTABLISHED"},
         "shutdown_recommended":!reproduction_pass,
         "new_free_parameters":0,
+    });
+    fs::write(output, serde_json::to_vec_pretty(&result).unwrap()).unwrap();
+}
+
+fn functional_correlations(functional: &FunctionalLocalization) -> Value {
+    let count = functional.sampled_nearest_activity.len();
+    let lagged_count = count.saturating_sub(1);
+    let nearest = &functional.sampled_nearest_activity[..lagged_count];
+    let outside = &functional.sampled_outside_activity[..lagged_count];
+    let narrowing = functional
+        .sampled_distance_over_range
+        .windows(2)
+        .map(|window| window[0] - window[1])
+        .collect::<Vec<_>>();
+    let correlate = |x: &[f64], y: &[f64]| {
+        let sx = x.iter().sum::<f64>();
+        let sy = y.iter().sum::<f64>();
+        let sx2 = x.iter().map(|value| value * value).sum::<f64>();
+        let sy2 = y.iter().map(|value| value * value).sum::<f64>();
+        let sxy = x
+            .iter()
+            .zip(y)
+            .map(|(left, right)| left * right)
+            .sum::<f64>();
+        pearson(sx, sy, sx2, sy2, sxy, x.len())
+    };
+    json!({
+        "strain_to_activity": pearson(
+            functional.strain_activity_sum_x,
+            functional.strain_activity_sum_y,
+            functional.strain_activity_sum_x2,
+            functional.strain_activity_sum_y2,
+            functional.strain_activity_sum_xy,
+            functional.strain_activity_n,
+        ),
+        "activity_to_same_step_local_edge_contraction": pearson(
+            functional.activity_contraction_sum_x,
+            functional.activity_contraction_sum_y,
+            functional.activity_contraction_sum_x2,
+            functional.activity_contraction_sum_y2,
+            functional.activity_contraction_sum_xy,
+            functional.activity_contraction_n,
+        ),
+        "nearest_pair_activity_to_later_neck_narrowing": correlate(nearest, &narrowing),
+        "outside_activity_to_later_neck_narrowing": correlate(outside, &narrowing),
+        "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+    })
+}
+
+fn functional_summary(runs: &[RunResult]) -> Value {
+    let rows = runs
+        .iter()
+        .map(|run| {
+            let functional = &run.functional_localization;
+            let denominator = functional.steps.max(1) as f64;
+            json!({
+                "name": run.name,
+                "physical_fission": run.physical_fission,
+                "both_daughters_viable": run.both_daughters_viable,
+                "fission_step": run.fission_step,
+                "mean_activity": functional.activity_mean_sum / denominator,
+                "mean_activity_variance": functional.activity_variance_sum / denominator,
+                "mean_active_perimeter_fraction": functional.active_perimeter_fraction_sum / denominator,
+                "mean_largest_contiguous_active_arc_fraction": functional.largest_contiguous_active_arc_fraction_sum / denominator,
+                "mean_active_patch_count": functional.active_patch_count_sum as f64 / denominator,
+                "max_active_patch_count": functional.max_active_patch_count,
+                "best_apposition": functional.best_apposition,
+                "correlations": functional_correlations(functional),
+            })
+        })
+        .collect::<Vec<_>>();
+    let mean = |field: &str| {
+        rows.iter()
+            .filter_map(|row| row[field].as_f64())
+            .sum::<f64>()
+            / rows.len().max(1) as f64
+    };
+    json!({
+        "arms": rows,
+        "campaign_means": {
+            "activity": mean("mean_activity"),
+            "activity_variance": mean("mean_activity_variance"),
+            "active_perimeter_fraction": mean("mean_active_perimeter_fraction"),
+            "largest_contiguous_active_arc_fraction": mean("mean_largest_contiguous_active_arc_fraction"),
+            "active_patch_count": mean("mean_active_patch_count"),
+        },
+    })
+}
+
+fn result_counts(runs: &[RunResult]) -> (usize, usize, usize) {
+    (
+        runs.iter()
+            .filter(|result| result.max_mass_over_birth >= 1.35)
+            .count(),
+        runs.iter().filter(|result| result.physical_fission).count(),
+        runs.iter()
+            .filter(|result| result.both_daughters_viable)
+            .count(),
+    )
+}
+
+/// R5R1 executes the sole preauthorized zero-parameter contrast fallback.
+/// It is kept in this assay module so the exact R5 fixture, mechanics order,
+/// topology, fission, and viability contracts are reused without divergence.
+pub fn run_r5r1() {
+    const R5R1_DIRECTIVE: &str = "DC-FINAL-001-R5R1-ZERO-PARAMETER-STRAIN-CONTRAST-NECK-LOCALIZATION-AND-TERMINAL-CLOSURE-001";
+    let mut output = PathBuf::from("/tmp/dcfinal001_r5r1_strain_contrast.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let reaction = ReactionParams::default();
+    let mechanics = MechParams::default();
+    let tau_steps = (1.0 / (reaction.k_turn * mechanics.dt)).ceil() as usize;
+    let qualification_horizon = LEGACY_HORIZON + tau_steps;
+    assert_eq!(qualification_horizon, 14_778);
+
+    let passive = campaign(Mode::Passive, qualification_horizon);
+    let original = campaign(Mode::RegulatorMotor, qualification_horizon);
+    let contrast = campaign(Mode::ContrastFallback, qualification_horizon);
+    let contrast_motor_off = campaign(Mode::ContrastMotorOff, qualification_horizon);
+    let contrast_zero_a = campaign(Mode::ContrastZeroA, qualification_horizon);
+
+    let original_functional = functional_summary(&original);
+    let contrast_functional = functional_summary(&contrast);
+    let original_nonuniform = original_functional["campaign_means"]["activity_variance"]
+        .as_f64()
+        .unwrap_or(0.0)
+        > CLASSIFICATION_TOLERANCE;
+    let original_lagged = original_functional["arms"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .filter_map(|arm| {
+            arm["correlations"]["nearest_pair_activity_to_later_neck_narrowing"].as_f64()
+        })
+        .collect::<Vec<_>>();
+    let no_positive_neck_coupling = !original_lagged.is_empty()
+        && original_lagged
+            .iter()
+            .all(|correlation| *correlation <= 0.0);
+    let localization_classification = if !original_nonuniform {
+        "UNIFORM"
+    } else if no_positive_neck_coupling {
+        "SPATIALLY_NONUNIFORM_BUT_FUNCTIONALLY_DIFFUSE"
+    } else {
+        "NECK_EFFECTIVELY_LOCALIZED"
+    };
+
+    let (passive_growth, passive_fissions, passive_viable) = result_counts(&passive);
+    let (original_growth, original_fissions, original_viable) = result_counts(&original);
+    let (contrast_growth, contrast_fissions, contrast_viable) = result_counts(&contrast);
+    let (_, motor_off_fissions, motor_off_viable) = result_counts(&contrast_motor_off);
+    let (_, zero_a_fissions, zero_a_viable) = result_counts(&contrast_zero_a);
+    let requested = contrast
+        .iter()
+        .map(|result| result.attribution.requested_a)
+        .sum::<f64>();
+    let spent = contrast
+        .iter()
+        .map(|result| result.attribution.spent_a)
+        .sum::<f64>();
+    let produced = contrast
+        .iter()
+        .map(|result| result.attribution.produced_w)
+        .sum::<f64>();
+    let energy_residual = (spent - produced).abs();
+    let energy_pass = energy_residual <= 1e-8 * (1.0 + spent);
+    let zero_a_spent = contrast_zero_a
+        .iter()
+        .map(|result| result.attribution.zero_a_spent)
+        .sum::<f64>();
+    let reproduction_pass = contrast_growth >= 8 && contrast_fissions >= 7 && contrast_viable >= 6;
+
+    let result = json!({
+        "directive": R5R1_DIRECTIVE,
+        "starting_head": "404dd374b8a75adc6b77a97c064b0197ab334628",
+        "qualification_horizon": qualification_horizon,
+        "localization_reclassification": {
+            "classification": localization_classification,
+            "variance_only_gate_rejected": true,
+            "original_activity_nonuniform": original_nonuniform,
+            "original_nearest_activity_lagged_correlations": original_lagged,
+            "all_observed_correlations_nonpositive": no_positive_neck_coupling,
+            "metrics": original_functional,
+        },
+        "contrast_contract": {
+            "implementation": "adaptive_directional_drive.front_drive",
+            "formula": "max(local_positive_tensile_strain - perimeter_weighted_mean_strain, 0)",
+            "new_free_parameters": 0,
+            "new_thresholds": 0,
+            "new_state_variables": 0,
+            "world_coordinates_read": false,
+            "body_size_read": false,
+            "reproduction_state_read": false,
+            "observer_feedback": false,
+        },
+        "campaigns": {
+            "passive": campaign_summary(&passive),
+            "original_regulator": campaign_summary(&original),
+            "contrast": campaign_summary(&contrast),
+            "contrast_motor_off": campaign_summary(&contrast_motor_off),
+            "contrast_zero_a": campaign_summary(&contrast_zero_a),
+        },
+        "spatialization": {
+            "original": original_functional,
+            "contrast": contrast_functional,
+        },
+        "controls": {
+            "passive": {"growth":passive_growth,"fissions":passive_fissions,"viable_pairs":passive_viable},
+            "original_regulator": {"growth":original_growth,"fissions":original_fissions,"viable_pairs":original_viable},
+            "contrast_motor_off": {"fissions":motor_off_fissions,"viable_pairs":motor_off_viable},
+            "contrast_zero_a": {"fissions":zero_a_fissions,"viable_pairs":zero_a_viable,"active_a_spent":zero_a_spent},
+        },
+        "active_energy_closure": {
+            "requested_a": requested,
+            "spent_a": spent,
+            "produced_w": produced,
+            "residual": energy_residual,
+            "pass": energy_pass,
+        },
+        "reproduction": {
+            "growth_qualified": contrast_growth,
+            "geometry_valid_fissions": contrast_fissions,
+            "simple_viable_daughter_pairs": contrast_viable,
+            "pass": reproduction_pass,
+        },
+        "evolution_execution": if reproduction_pass {"REQUIRED_CONTINUE"} else {"NOT_REACHED_GATE5_STOP"},
+        "classification": if reproduction_pass {"V4_ZERO_PARAMETER_STRAIN_CONTRAST_ROBUST_REPRODUCTION_QUALIFIED_PENDING_EVOLUTION"} else {"V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED"},
+        "digital_cell_end_goal": if reproduction_pass {"PENDING_EVOLUTION_AND_FINAL_INTEGRATION"} else {"NOT_ESTABLISHED"},
+        "shutdown_recommended": !reproduction_pass,
+        "new_free_parameters": 0,
     });
     fs::write(output, serde_json::to_vec_pretty(&result).unwrap()).unwrap();
 }

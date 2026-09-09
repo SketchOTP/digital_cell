@@ -181,6 +181,10 @@ name = "dcfinal001_r5_v4_neck"
 path = "../../examples/dcfinal001_r5_v4_neck.rs"
 
 [[example]]
+name = "dcfinal001_r5r1_strain_contrast"
+path = "../../examples/dcfinal001_r5r1_strain_contrast.rs"
+
+[[example]]
 name = "dcdev021_m2_entry020"
 path = "../../examples/dcdev021_m2_entry020.rs"
 
