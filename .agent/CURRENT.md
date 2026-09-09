@@ -705,3 +705,9 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Selection and reversal remain untestable: all 3,600 newborns across mutation-on/off campaigns are invalidated at the first post-birth contact/mechanics acceptance step. This is runtime invalidation, not biological death. Expression-off cloned daughters pass that step; preserved neutral D-096 expression-on daughters remain simple and observer-viable but contact rejects.
 - Goal-agent status: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; classification: `EVOLUTION_POPULATION_ECOLOGY_COLLAPSES_BEFORE_VALID_TEST`. The Digital Cell end goal remains `NOT_ESTABLISHED`, but terminal shutdown is not recommended from this bounded integration failure.
 - Scientific result head: `5b7c06a7208b8b6bc8cc9c918d8de7906c611a4a`. Exact-head CI/artifact and independent Architect acceptance are pending. No successor execution started.
+
+## DC-FINAL-001-R2 evidence-bearing head pointer
+
+- Evidence-bearing governed head `439342dc8244c2c19df37a815579f402b0ba19c7` passed exact-head Linux workflow `34294201323`.
+- Independently downloaded artifact ZIP digest: `sha256:f2abe6a7bdd100a7f86b0c160a8abb45ec99000ca6f77d92ee6d4b99b13d14e3`.
+- Scientific semantics remain those of head `5b7c06a7208b8b6bc8cc9c918d8de7906c611a4a`; this append-only pointer does not alter the R2 result. Independent Architect acceptance remains `PENDING`, and no successor execution started.

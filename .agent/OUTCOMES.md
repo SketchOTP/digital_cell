@@ -2377,3 +2377,10 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Fixed open-medium accounting closes exactly and does not respond to population, genotype, health, or extinction risk.
 - No selection or reversal claim is possible. Every newborn is invalidated at the first post-birth mechanics/contact step; zero biological deaths are observed. Expression-off clones pass, whereas preserved D-096 expression-on clones remain simple/viable but are rejected by contact.
 - Provisional classification: `EVOLUTION_POPULATION_ECOLOGY_COLLAPSES_BEFORE_VALID_TEST`. Mutated descendant reproduction, environment-dependent selection, reversal, the final integrated rerun, and the Digital Cell end goal remain not established. Shutdown is not recommended from this nonterminal integration defect.
+
+## DC-FINAL-001-R2 exact-head evidence seal
+
+- Scientific result head `5b7c06a7208b8b6bc8cc9c918d8de7906c611a4a` is preserved without semantic change.
+- Evidence-bearing governed head `439342dc8244c2c19df37a815579f402b0ba19c7` passed exact-head Linux workflow `34294201323`.
+- Independently downloaded artifact ZIP digest: `sha256:f2abe6a7bdd100a7f86b0c160a8abb45ec99000ca6f77d92ee6d4b99b13d14e3`.
+- Result remains `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; independent Architect acceptance is `PENDING`, and no successor execution started.
