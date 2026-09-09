@@ -1,0 +1,186 @@
+{
+  "directive": "DC-FINAL-001-R4-CONTRACT-OWNERSHIP-V4-TOPOLOGY-COHERENCE-EVOLUTION-AND-FINAL-GOAL-CLOSURE-001",
+  "files": [
+    {
+      "bytes": 258,
+      "path": "architect_disposition.json",
+      "sha256": "ec22f0deee3790b20524802844c8d298a356d65325d446c81c7941ce673e0509"
+    },
+    {
+      "bytes": 615,
+      "path": "authority.json",
+      "sha256": "c8162b8e33cc9bb915ebe47a2dac6d81a47a29796d9b8f08215fb0390de08ec7"
+    },
+    {
+      "bytes": 307,
+      "path": "checkpoint_restart.json",
+      "sha256": "326e240a6ccfac0b9ddf0fa648dc8c486fc0c883c1d80f21cc3e04f84075a93c"
+    },
+    {
+      "bytes": 7208,
+      "path": "contract_ownership_matrix.json",
+      "sha256": "3935ed6b1f06c46ba984b61ec69aa9e24d8ab8b6d934362fb310e375c9468c20"
+    },
+    {
+      "bytes": 313,
+      "path": "development_preservation.json",
+      "sha256": "7abe5b3e3fe8f1625a383a5ab9843db9c83950614c03e92c1ff6b7253ba33ca1"
+    },
+    {
+      "bytes": 128,
+      "path": "end_to_end_lifecycle.json",
+      "sha256": "ecfce0bcb65dbe3c00854dfdfe24b673f2bf1551d4e8c6639dcb3adc2cea1aff"
+    },
+    {
+      "bytes": 308,
+      "path": "experiential_memory.json",
+      "sha256": "9e4f93ec44d68065816fe168b98fbfe6a1544368bf0f83b71d7c5a9d4ea9b92a"
+    },
+    {
+      "bytes": 344,
+      "path": "external_prior_art.json",
+      "sha256": "d57aab4f0eef77a8012d66712bd3f0b8f9d1c833390c222dedac3ee52cd9cf96"
+    },
+    {
+      "bytes": 272,
+      "path": "final_goal_matrix.json",
+      "sha256": "d3f7c3b7046f14edf85d0e653e6d28ec05cae99d3856ca1e4a1efacecb1f9ff1"
+    },
+    {
+      "bytes": 321,
+      "path": "forbidden_information_audit.json",
+      "sha256": "2a4743f60245a44c2bd68ac76b41335f29043e5db1cef6fc69fa008c269b3cfa"
+    },
+    {
+      "bytes": 393,
+      "path": "global_material_energy_closure.json",
+      "sha256": "bd6c8a4f5fb25f5524e58c6cbd1ecbb63cc6985b69adc1bbb21e260ea24d0943"
+    },
+    {
+      "bytes": 307,
+      "path": "godot_independence.json",
+      "sha256": "402f9e6c09927be235241e692bcb2d61938c3834519d6d7d7ebf5d2ee2a3175f"
+    },
+    {
+      "bytes": 606,
+      "path": "historical_r2_regression.json",
+      "sha256": "13623ab2e887874d0d3673b506faddb5595c0cc33c22c3e9326476c6fa11dbac"
+    },
+    {
+      "bytes": 302,
+      "path": "linux_runtime.json",
+      "sha256": "25247d0f21e582b09acf3fb0500ef930f6f28f1e121a6a2361ea0747037d94b1"
+    },
+    {
+      "bytes": 423,
+      "path": "m1_preservation.json",
+      "sha256": "6bb07d423c2cf54ef1d81cf3e7b55598a3b07df8473495939c85915546be5684"
+    },
+    {
+      "bytes": 304,
+      "path": "m2_preservation.json",
+      "sha256": "41e2790a0598cdf30979c2c2eca3acd60d7f82852d584bc5c72c334581cadaf3"
+    },
+    {
+      "bytes": 644,
+      "path": "non_v4_d096_parity.json",
+      "sha256": "bd9c089e5f0d62e32b9b10f83d5f78fc14677e2acb05a4cb838f217e2b929d46"
+    },
+    {
+      "bytes": 96,
+      "path": "non_v4_runtime_isolation.json",
+      "sha256": "7a2ffe549c5ebf9843a96d2febd4e16c24c2d9356df7d07d7bb1980aab0983af"
+    },
+    {
+      "bytes": 867,
+      "path": "qualification.json",
+      "sha256": "1d596106abf11135e4acf646b28c3353130796cfcee5a651b2aed24943a152d4"
+    },
+    {
+      "bytes": 307,
+      "path": "sensory_embodiment.json",
+      "sha256": "96ee422c9691782952d35685ae877aa5464e8989caa01a748de8497852b6bf94"
+    },
+    {
+      "bytes": 114979,
+      "path": "v4_closing_edge_trace.json",
+      "sha256": "51a04684a99836226b521ba14892f61f20b6602855d64d0ad04b2de7b681823a"
+    },
+    {
+      "bytes": 148,
+      "path": "v4_environment_a_selection.json",
+      "sha256": "01df53a715120ae59f45e828520de05d6599975534c03b6645baf25976ee3294"
+    },
+    {
+      "bytes": 148,
+      "path": "v4_environment_b_selection.json",
+      "sha256": "01df53a715120ae59f45e828520de05d6599975534c03b6645baf25976ee3294"
+    },
+    {
+      "bytes": 148,
+      "path": "v4_mutated_descendant_lineage.json",
+      "sha256": "01df53a715120ae59f45e828520de05d6599975534c03b6645baf25976ee3294"
+    },
+    {
+      "bytes": 148,
+      "path": "v4_mutation_frequency.json",
+      "sha256": "01df53a715120ae59f45e828520de05d6599975534c03b6645baf25976ee3294"
+    },
+    {
+      "bytes": 148,
+      "path": "v4_mutation_off_control.json",
+      "sha256": "01df53a715120ae59f45e828520de05d6599975534c03b6645baf25976ee3294"
+    },
+    {
+      "bytes": 13643,
+      "path": "v4_newborn_lifecycle.json",
+      "sha256": "f892cf2b85a756350b61de47557ed4230fe2bd8eff6120777e0baec97d5ece9a"
+    },
+    {
+      "bytes": 134,
+      "path": "v4_partition_closure.json",
+      "sha256": "fea518091149177aec36d8449b2b1bb7aae914cd4ca305c32f7531536c5b826e"
+    },
+    {
+      "bytes": 148,
+      "path": "v4_population_material_flux.json",
+      "sha256": "01df53a715120ae59f45e828520de05d6599975534c03b6645baf25976ee3294"
+    },
+    {
+      "bytes": 269,
+      "path": "v4_rebond_maturation_semantics.json",
+      "sha256": "af68e459933708ea0ecca64074ca3001e6cc0b27f7f7612695dbde2e9c96e01a"
+    },
+    {
+      "bytes": 47581,
+      "path": "v4_reproduction_campaign.json",
+      "sha256": "c2861434ba5ac75768ae19f7c55c2a19f9456f848e84ab4302d8c3cd89b879cd"
+    },
+    {
+      "bytes": 148,
+      "path": "v4_reversal_protocol.json",
+      "sha256": "01df53a715120ae59f45e828520de05d6599975534c03b6645baf25976ee3294"
+    },
+    {
+      "bytes": 148,
+      "path": "v4_reversal_replicates.json",
+      "sha256": "01df53a715120ae59f45e828520de05d6599975534c03b6645baf25976ee3294"
+    },
+    {
+      "bytes": 279,
+      "path": "v4_rupture_subpool_accounting.json",
+      "sha256": "b6fe1fc4f155df0cb5b8c1d7fd185a26924f2b109b5223fe9d9a18edabb93110"
+    },
+    {
+      "bytes": 148,
+      "path": "v4_selection_causality.json",
+      "sha256": "01df53a715120ae59f45e828520de05d6599975534c03b6645baf25976ee3294"
+    },
+    {
+      "bytes": 210,
+      "path": "v4_topology_causal_classification.json",
+      "sha256": "c42f20150063305abd1b00d2c52e23e404ea74d889a2267c57dd08132d7c4723"
+    }
+  ],
+  "result_scientific_head": "78c2200615b6558d6b617e3c29f5c8e9bb1c05d3"
+}

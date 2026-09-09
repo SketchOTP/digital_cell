@@ -1,0 +1,6 @@
+{
+  "preservation": "UNCHANGED_BY_R4_SCOPED_CONTRACT_TOPOLOGY_REPAIR",
+  "revalidation": "SCOPED_TEST_OR_SOURCE_PRESERVATION",
+  "source": "digital-protocell/experiments/generated/dcfinal001r3/linux_runtime.json",
+  "source_sha256": "9e990f48813fb7832fafdedc344482f5ac20b2c845f74e7a5975edbc6d301529"
+}

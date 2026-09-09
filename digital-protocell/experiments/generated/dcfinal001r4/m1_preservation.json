@@ -1,0 +1,19 @@
+{
+  "d087_v2": "8/8",
+  "d087_v3": "8/8",
+  "d087_v4": "7/8",
+  "exact_head_revalidation": "REQUIRED_BY_CI",
+  "m1": "CLOSED_FROZEN_PRESERVED",
+  "source": "digital-protocell/experiments/generated/dcfinal001r3/m1_preservation.json",
+  "source_sha256": "efc68994208eedf900ed42a2cbdc3b3388e55a7d3d543c2fd446c6bd3044cc6e",
+  "v4_vector": [
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ]
+}

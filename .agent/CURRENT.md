@@ -726,3 +726,13 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Evidence-bearing head `3159c4e246ef6b925259921b0e2cddffdbcfd1d6` passed exact-head workflow `34298853121`.
 - Independently downloaded artifact ZIP digest: `sha256:481781967abc179e27b7fc04eab71f40b8da0e338fec5d81e6dacad417ab58e7`.
 - Scientific semantics remain those of repair head `fcf2b637d868e1e7dc250dfc7ec31ba6533c9729`; this append-only pointer does not alter the provisional classification, Gate-6 stop, or pending independent review.
+
+## DC-FINAL-001-R4 contract ownership and production-V4 reproduction result
+
+- Active directive completed provisionally: `DC-FINAL-001-R4-CONTRACT-OWNERSHIP-V4-TOPOLOGY-COHERENCE-EVOLUTION-AND-FINAL-GOAL-CLOSURE-001`, starting from governed R3 head `9cecd5b2c35e2d38d00e687ad16636615292afc7`.
+- External Architect disposition on R3: `ACCEPTED BOUNDED RESULT -> REPLAN / CONTINUE`. R4 reconciles state-contract ownership before any further evolutionary execution.
+- Scientific result head: `78c2200615b6558d6b617e3c29f5c8e9bb1c05d3`.
+- `m_young` is owned and validated only by `MaturationCoupledV4`; HistoricalV1/V2/V3 retain their inert stored values without validation mutation. V4 rupture now clears total/young/tracer structural state consistently, and same-edge rebond creates new V4 structure as young using the accepted rebond authority. No new physical parameter was introduced.
+- Gate 6 passes: both exact V4 newborns remain runtime-valid and simple through the full continuation; daughter A lawfully fissions at step 426 and daughter B completes 3,000 steps. The R3 failure is localized to stale topology bookkeeping on a fully-young ruptured closing edge, followed by an existing lawful same-edge rebond.
+- The frozen ten-arm production-V4 campaign is the hard stop: `10/10` growth-qualified, but only `2/10` geometry-valid fissions and `1/10` simple viable daughter pairs, below the unchanged `7/10` and `6/10` requirements. Evolution, selection, reversal, and final integrated qualification were not executed.
+- Goal-agent status: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; classification: `V4_GEOMETRY_VALID_REPRODUCTION_NOT_ESTABLISHED`. M1 remains closed/frozen/preserved; M2 remains qualified/preserved; the Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown recommendation is `NO`; no successor execution started; independent Architect acceptance is `PENDING`.

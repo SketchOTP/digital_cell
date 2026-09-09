@@ -2400,3 +2400,16 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Evidence-bearing head `3159c4e246ef6b925259921b0e2cddffdbcfd1d6` passed exact-head Linux workflow `34298853121`.
 - Independently downloaded artifact ZIP digest: `sha256:481781967abc179e27b7fc04eab71f40b8da0e338fec5d81e6dacad417ab58e7`.
 - Result remains Goal-agent provisional; no successor execution started and independent Architect acceptance remains `PENDING`.
+
+## DC-FINAL-001-R4 — contract ownership, topology coherence, and production-V4 stop
+
+- Starting authority: governed R3 head `9cecd5b2c35e2d38d00e687ad16636615292afc7`, scientific head `fcf2b637d868e1e7dc250dfc7ec31ba6533c9729`, CI `34299369014`, artifact `sha256:863bcddea2a6f144b8629ad2d90493bc31e75d21bd2441cb1d6d77b80c2d8315`.
+- Scientific result head: `78c2200615b6558d6b617e3c29f5c8e9bb1c05d3`.
+- The ownership matrix classifies `m_young` as V4-owned only. Non-V4 D-096 replay passes unchanged; validation observes but does not rewrite inert HistoricalV1/V2/V3 state.
+- V4 rupture and rebond accounting pass: rupture clears `m`, `m_young`, and structural tracer consistently and partitions membrane tracer with membrane material; rebond uses the accepted V4 reaction authority and creates the restored structure as young. New free physical parameters: zero.
+- Exact V4 closing-edge tracing shows both newborn closing edges initially fully young with near-zero rest length, rupture at step 1, and same-step lawful rebond. Removing stale subpool state allows both daughters to remain valid/simple; daughter A fissions at step 426 and daughter B completes 3,000 steps.
+- Conditional topology-created-edge mechanics repair is `NOT_REQUIRED_BY_GATE6` and was not executed.
+- Canonical production-V4 reproduction remains below authority: all `10/10` arms grow, `2/10` achieve geometry-valid physical fission, and `1/10` yields a counted simple viable daughter pair. No bookkeeping invalidation occurs in the campaign.
+- The exact HistoricalV1 R2 regression remains available only for contract isolation: 2,100 mutation-on opportunities produce 23 mutations (expected 21; compatible), mutation-off produces zero, and external world flux closes. It is not production-V4 evolutionary evidence.
+- Gate 9 stops R4 before mutation, population ecology, selection, reversal, and end-to-end closure. Classification: `V4_GEOMETRY_VALID_REPRODUCTION_NOT_ESTABLISHED`; end goal `NOT_ESTABLISHED`; shutdown recommendation `NO`; independent Architect acceptance `PENDING`; successor execution `false`.
+- Local preservation passes: D-087 V2 `8/8`, V3 `8/8`, V4 `7/8` with `[true,true,false,true,true,true,true,true]`; D-088, D-091, evolution-harness tests-only, M2 runtime tests, and Godot bridge check pass.

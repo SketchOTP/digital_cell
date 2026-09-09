@@ -1,0 +1,6 @@
+{
+  "classification": "BOOKKEEPING_ONLY_RUPTURE_PATH",
+  "conditional_topology_created_edge_repair": "NOT_REQUIRED",
+  "gate6_v4_newborn_continuity": "PASS",
+  "mechanics_or_fission_semantics_changed": false
+}

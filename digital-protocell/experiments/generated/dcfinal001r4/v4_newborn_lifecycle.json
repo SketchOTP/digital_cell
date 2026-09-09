@@ -1,0 +1,515 @@
+{
+  "daughter_a_first_step": {
+    "contact_accepted": true,
+    "expression_enabled": true,
+    "expression_material_consumed": 0.016850566202542203,
+    "expression_ok": true,
+    "initial_lifecycle_invariants_hold": true,
+    "initial_physical_runtime_valid": true,
+    "initial_polygon_simple": true,
+    "minimum_m_minus_young_after_expression": 0.0,
+    "observer_viable_after": true,
+    "polygon_simple_after": true,
+    "post_expression_lifecycle_invariants_hold": true,
+    "post_expression_physical_runtime_valid": true,
+    "pre_contact_lifecycle_invariants_hold": true,
+    "pre_contact_physical_runtime_valid": true,
+    "pre_contact_polygon_simple": true
+  },
+  "daughter_a_lifecycle": {
+    "completed_steps": 426,
+    "contract_version": "MaturationCoupledV4",
+    "first_invalid_edges": [],
+    "first_topology_ledger": {
+      "cross_bonds": 0,
+      "local_rebonds": 0,
+      "step": 421,
+      "tension_ruptures": 0
+    },
+    "maximum_activation_closure_residual": 6.047749107063183e-13,
+    "maximum_structural_material_closure_residual": 2.262270232256114e-12,
+    "maximum_waste_closure_residual": 9.313583805819602e-14,
+    "observer_nonviable_steps_reported_not_removed": 0,
+    "physical_fission": {
+      "daughter_a_simple": true,
+      "daughter_b_simple": true,
+      "parent_simple": true,
+      "partition_ok": true,
+      "step": 426
+    },
+    "rejected_non_simple_fission_candidates": [],
+    "runtime_invalidation": null,
+    "target_steps": 3000,
+    "terminal_lifecycle_invariants_hold": true,
+    "terminal_physical_runtime_valid": true,
+    "terminal_polygon_simple": true
+  },
+  "daughter_b_first_step": {
+    "contact_accepted": true,
+    "expression_enabled": true,
+    "expression_material_consumed": 0.013449049960596085,
+    "expression_ok": true,
+    "initial_lifecycle_invariants_hold": true,
+    "initial_physical_runtime_valid": true,
+    "initial_polygon_simple": true,
+    "minimum_m_minus_young_after_expression": 0.0,
+    "observer_viable_after": true,
+    "polygon_simple_after": true,
+    "post_expression_lifecycle_invariants_hold": true,
+    "post_expression_physical_runtime_valid": true,
+    "pre_contact_lifecycle_invariants_hold": true,
+    "pre_contact_physical_runtime_valid": true,
+    "pre_contact_polygon_simple": true
+  },
+  "daughter_b_lifecycle": {
+    "completed_steps": 3000,
+    "contract_version": "MaturationCoupledV4",
+    "first_invalid_edges": [],
+    "first_topology_ledger": {
+      "cross_bonds": 0,
+      "local_rebonds": 0,
+      "step": 2991,
+      "tension_ruptures": 0
+    },
+    "maximum_activation_closure_residual": 1.0704475500444843e-12,
+    "maximum_structural_material_closure_residual": 5.0505225002162035e-12,
+    "maximum_waste_closure_residual": 1.5674465306432517e-13,
+    "observer_nonviable_steps_reported_not_removed": 0,
+    "physical_fission": null,
+    "rejected_non_simple_fission_candidates": [
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 826
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 851
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 876
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1001
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1026
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1051
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1076
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1101
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1201
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1401
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1426
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1451
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1601
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1776
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1801
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1826
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1851
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1876
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1901
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1951
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 1976
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2001
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2026
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2051
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2076
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2101
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2126
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2151
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2176
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2201
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2226
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2251
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2276
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2301
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2326
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2351
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2376
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2401
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2426
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2451
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2476
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2501
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2526
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2551
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2576
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2601
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2626
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2651
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2676
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2701
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2726
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2751
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2776
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2801
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2826
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2851
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2876
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2901
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2926
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2951
+      },
+      {
+        "daughter_a_simple": false,
+        "daughter_b_simple": true,
+        "parent_simple": true,
+        "partition_ok": true,
+        "step": 2976
+      }
+    ],
+    "runtime_invalidation": null,
+    "target_steps": 3000,
+    "terminal_lifecycle_invariants_hold": true,
+    "terminal_physical_runtime_valid": true,
+    "terminal_polygon_simple": true
+  },
+  "scope": "same frozen parent state and fission, with the production V4 contract selected before fission; qualification of the authorized repair, not an exact R2 replay"
+}

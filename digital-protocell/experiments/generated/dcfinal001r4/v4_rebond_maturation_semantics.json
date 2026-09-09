@@ -1,0 +1,7 @@
+{
+  "classification": "NEW_REBOND_STRUCTURE_IS_YOUNG",
+  "new_parameters": 0,
+  "pass": true,
+  "same_edge_rebond_assignment": "m_young=take; tracer_m=0",
+  "source_authority": "mesh_reactions::try_local_rebond already assigns m_young=need under MaturationCoupledV4"
+}

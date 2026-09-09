@@ -1,0 +1,21 @@
+{
+  "bookkeeping_runtime_invalidations": 0,
+  "canonical_v4_reproduction": "FAIL",
+  "classification": "V4_GEOMETRY_VALID_REPRODUCTION_NOT_ESTABLISHED",
+  "conditional_topology_repair": "NOT_REQUIRED",
+  "contract_ownership_repaired": true,
+  "digital_cell_end_goal": "NOT_ESTABLISHED",
+  "directive": "DC-FINAL-001-R4-CONTRACT-OWNERSHIP-V4-TOPOLOGY-COHERENCE-EVOLUTION-AND-FINAL-GOAL-CLOSURE-001",
+  "geometry_valid_fissions": 2,
+  "growth_qualified": 10,
+  "historical_r2_regression": "PASS",
+  "independent_architect_acceptance": "PENDING",
+  "next_execution_started": false,
+  "production_v4_evolution_executed": false,
+  "reversal": "NOT_ESTABLISHED",
+  "selection": "NOT_ESTABLISHED",
+  "shutdown_recommended": false,
+  "simple_viable_daughter_pairs": 1,
+  "status": "GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN",
+  "v4_topology_subpool_accounting_repaired": true
+}

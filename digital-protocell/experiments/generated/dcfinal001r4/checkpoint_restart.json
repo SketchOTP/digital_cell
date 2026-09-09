@@ -1,0 +1,6 @@
+{
+  "preservation": "UNCHANGED_BY_R4_SCOPED_CONTRACT_TOPOLOGY_REPAIR",
+  "revalidation": "SCOPED_TEST_OR_SOURCE_PRESERVATION",
+  "source": "digital-protocell/experiments/generated/dcfinal001r3/checkpoint_restart.json",
+  "source_sha256": "39c12ee5c1978a8bc16f0e799a09d590c93406d750a3e48ef234d570e6d7a887"
+}

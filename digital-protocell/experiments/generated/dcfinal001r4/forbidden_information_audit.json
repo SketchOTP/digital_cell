@@ -1,0 +1,11 @@
+{
+  "evolution_executed_after_failed_reproduction_gate": false,
+  "fission_or_mechanics_change": false,
+  "fitness_or_observer_feedback": false,
+  "historical_state_rewritten": false,
+  "lineage_special_case": false,
+  "new_free_parameters": 0,
+  "newborn_grace_period": false,
+  "pass": true,
+  "pr44_modified": false
+}

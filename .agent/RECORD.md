@@ -1604,3 +1604,15 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Exact-head Linux workflow: `34298853121 PASS`.
 - Independently downloaded artifact ZIP digest: `sha256:481781967abc179e27b7fc04eab71f40b8da0e338fec5d81e6dacad417ab58e7`.
 - Scientific semantics are unchanged; independent Architect acceptance remains `PENDING` and next execution remains `false`.
+
+## DEC-DCFINAL001-R4-CONTRACT-OWNERSHIP-REPAIR-AND-PRODUCTION-STOP
+
+- Date: `2026-09-08`
+- Status: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`
+- Record or decision ID: `DEC-DCFINAL001-R4-CONTRACT-OWNERSHIP-REPAIR-AND-PRODUCTION-STOP`
+- External Architect disposition: R3 accepted as a bounded result; R4 authorized exact contract ownership, V4 topology coherence, then production-V4 reproduction and evolution only if each preceding gate passed.
+- Largest unresolved gap: production-V4 geometry-valid reproduction, which is causally upstream of mutation supply, natural selection, reversal, and final one-run coexistence.
+- Decision: validate `m_young` only under its owning V4 contract; preserve non-V4 inert state; clear V4 rupture subpools/tracers coherently; classify same-edge rebond structure as young from existing source authority. Introduce zero new physical parameters and no mechanics or reproduction tuning.
+- Result: Gate 6 newborn lifecycle passes and no conditional mechanics repair is required. The canonical ten-arm V4 campaign nevertheless yields only `2/10` geometry-valid fissions and `1/10` simple viable daughter pairs despite `10/10` growth, so Gate 9 stops all evolutionary and final-closure execution.
+- Classification: `V4_GEOMETRY_VALID_REPRODUCTION_NOT_ESTABLISHED`. Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown recommendation is `false`; no successor execution started.
+- Scientific result head: `78c2200615b6558d6b617e3c29f5c8e9bb1c05d3`; exact-head CI/artifact and independent Architect acceptance remain `PENDING`.

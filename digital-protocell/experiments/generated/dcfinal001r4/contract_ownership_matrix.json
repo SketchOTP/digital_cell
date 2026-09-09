@@ -1,0 +1,246 @@
+{
+  "classification": "M_YOUNG_OWNED_ONLY_BY_MATURATION_COUPLED_V4",
+  "non_v4_state_rewritten": false,
+  "rows": [
+    {
+      "observation": {
+        "can_advance_physics": true,
+        "contract": "HistoricalV1",
+        "lifecycle_invariants_hold": true,
+        "m": 1.0,
+        "m_young_stored": 0.0,
+        "mature_structural_mass": 1.0,
+        "physical_runtime_valid": true,
+        "rest_length": 1.0,
+        "state": "A_ZERO",
+        "young_structural_mass": 0.0
+      },
+      "serialized_state_unchanged_by_validation": true
+    },
+    {
+      "observation": {
+        "can_advance_physics": true,
+        "contract": "HistoricalV1",
+        "lifecycle_invariants_hold": true,
+        "m": 1.0,
+        "m_young_stored": 0.5,
+        "mature_structural_mass": 1.0,
+        "physical_runtime_valid": true,
+        "rest_length": 1.0,
+        "state": "B_PARTIAL",
+        "young_structural_mass": 0.0
+      },
+      "serialized_state_unchanged_by_validation": true
+    },
+    {
+      "observation": {
+        "can_advance_physics": true,
+        "contract": "HistoricalV1",
+        "lifecycle_invariants_hold": true,
+        "m": 1.0,
+        "m_young_stored": 1.0,
+        "mature_structural_mass": 1.0,
+        "physical_runtime_valid": true,
+        "rest_length": 1.0,
+        "state": "C_EQUAL",
+        "young_structural_mass": 0.0
+      },
+      "serialized_state_unchanged_by_validation": true
+    },
+    {
+      "observation": {
+        "can_advance_physics": true,
+        "contract": "HistoricalV1",
+        "lifecycle_invariants_hold": true,
+        "m": 1.0,
+        "m_young_stored": 1.5,
+        "mature_structural_mass": 1.0,
+        "physical_runtime_valid": true,
+        "rest_length": 1.0,
+        "state": "D_EXCEEDS",
+        "young_structural_mass": 0.0
+      },
+      "serialized_state_unchanged_by_validation": true
+    },
+    {
+      "observation": {
+        "can_advance_physics": true,
+        "contract": "ConservativeV2",
+        "lifecycle_invariants_hold": true,
+        "m": 1.0,
+        "m_young_stored": 0.0,
+        "mature_structural_mass": 1.0,
+        "physical_runtime_valid": true,
+        "rest_length": 1.0,
+        "state": "A_ZERO",
+        "young_structural_mass": 0.0
+      },
+      "serialized_state_unchanged_by_validation": true
+    },
+    {
+      "observation": {
+        "can_advance_physics": true,
+        "contract": "ConservativeV2",
+        "lifecycle_invariants_hold": true,
+        "m": 1.0,
+        "m_young_stored": 0.5,
+        "mature_structural_mass": 1.0,
+        "physical_runtime_valid": true,
+        "rest_length": 1.0,
+        "state": "B_PARTIAL",
+        "young_structural_mass": 0.0
+      },
+      "serialized_state_unchanged_by_validation": true
+    },
+    {
+      "observation": {
+        "can_advance_physics": true,
+        "contract": "ConservativeV2",
+        "lifecycle_invariants_hold": true,
+        "m": 1.0,
+        "m_young_stored": 1.0,
+        "mature_structural_mass": 1.0,
+        "physical_runtime_valid": true,
+        "rest_length": 1.0,
+        "state": "C_EQUAL",
+        "young_structural_mass": 0.0
+      },
+      "serialized_state_unchanged_by_validation": true
+    },
+    {
+      "observation": {
+        "can_advance_physics": true,
+        "contract": "ConservativeV2",
+        "lifecycle_invariants_hold": true,
+        "m": 1.0,
+        "m_young_stored": 1.5,
+        "mature_structural_mass": 1.0,
+        "physical_runtime_valid": true,
+        "rest_length": 1.0,
+        "state": "D_EXCEEDS",
+        "young_structural_mass": 0.0
+      },
+      "serialized_state_unchanged_by_validation": true
+    },
+    {
+      "observation": {
+        "can_advance_physics": true,
+        "contract": "GeometryConservativeV3",
+        "lifecycle_invariants_hold": true,
+        "m": 1.0,
+        "m_young_stored": 0.0,
+        "mature_structural_mass": 1.0,
+        "physical_runtime_valid": true,
+        "rest_length": 1.0,
+        "state": "A_ZERO",
+        "young_structural_mass": 0.0
+      },
+      "serialized_state_unchanged_by_validation": true
+    },
+    {
+      "observation": {
+        "can_advance_physics": true,
+        "contract": "GeometryConservativeV3",
+        "lifecycle_invariants_hold": true,
+        "m": 1.0,
+        "m_young_stored": 0.5,
+        "mature_structural_mass": 1.0,
+        "physical_runtime_valid": true,
+        "rest_length": 1.0,
+        "state": "B_PARTIAL",
+        "young_structural_mass": 0.0
+      },
+      "serialized_state_unchanged_by_validation": true
+    },
+    {
+      "observation": {
+        "can_advance_physics": true,
+        "contract": "GeometryConservativeV3",
+        "lifecycle_invariants_hold": true,
+        "m": 1.0,
+        "m_young_stored": 1.0,
+        "mature_structural_mass": 1.0,
+        "physical_runtime_valid": true,
+        "rest_length": 1.0,
+        "state": "C_EQUAL",
+        "young_structural_mass": 0.0
+      },
+      "serialized_state_unchanged_by_validation": true
+    },
+    {
+      "observation": {
+        "can_advance_physics": true,
+        "contract": "GeometryConservativeV3",
+        "lifecycle_invariants_hold": true,
+        "m": 1.0,
+        "m_young_stored": 1.5,
+        "mature_structural_mass": 1.0,
+        "physical_runtime_valid": true,
+        "rest_length": 1.0,
+        "state": "D_EXCEEDS",
+        "young_structural_mass": 0.0
+      },
+      "serialized_state_unchanged_by_validation": true
+    },
+    {
+      "observation": {
+        "can_advance_physics": true,
+        "contract": "MaturationCoupledV4",
+        "lifecycle_invariants_hold": true,
+        "m": 1.0,
+        "m_young_stored": 0.0,
+        "mature_structural_mass": 1.0,
+        "physical_runtime_valid": true,
+        "rest_length": 1.0,
+        "state": "A_ZERO",
+        "young_structural_mass": 0.0
+      },
+      "serialized_state_unchanged_by_validation": true
+    },
+    {
+      "observation": {
+        "can_advance_physics": true,
+        "contract": "MaturationCoupledV4",
+        "lifecycle_invariants_hold": true,
+        "m": 1.0,
+        "m_young_stored": 0.5,
+        "mature_structural_mass": 0.5,
+        "physical_runtime_valid": true,
+        "rest_length": 0.5,
+        "state": "B_PARTIAL",
+        "young_structural_mass": 0.5
+      },
+      "serialized_state_unchanged_by_validation": true
+    },
+    {
+      "observation": {
+        "can_advance_physics": true,
+        "contract": "MaturationCoupledV4",
+        "lifecycle_invariants_hold": true,
+        "m": 1.0,
+        "m_young_stored": 1.0,
+        "mature_structural_mass": 0.0,
+        "physical_runtime_valid": true,
+        "rest_length": 1e-15,
+        "state": "C_EQUAL",
+        "young_structural_mass": 1.0
+      },
+      "serialized_state_unchanged_by_validation": true
+    },
+    {
+      "observation": {
+        "can_advance_physics": false,
+        "contract": "MaturationCoupledV4",
+        "lifecycle_invariants_hold": false,
+        "m": 1.0,
+        "m_young_stored": 1.5,
+        "mature_structural_mass": 0.0,
+        "physical_runtime_valid": false,
+        "rest_length": 1e-15,
+        "state": "D_EXCEEDS",
+        "young_structural_mass": 1.0
+      },
+      "serialized_state_unchanged_by_validation": true
+    }
+  ]
+}

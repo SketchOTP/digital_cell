@@ -189,3 +189,8 @@
 - `digital-protocell/experiments/dcfinal001_r2_evidence.py` — deterministic compact R2 evidence generator preserving R1 authority and separating physical death from post-birth runtime invalidation.
 - `digital-protocell/experiments/generated/dcfinal001r2/` — R2 mutation source/power/frequency, genotype endpoint, population material, selection/reversal boundary, preservation, and provisional qualification evidence.
 - `.github/workflows/dc-final-001-r2.yml` — exact-head Linux scope, mutation/population, preservation, D-087, PR #44, reproducibility, and artifact validation.
+- `digital-protocell/crates/chemistry-core/tests/r4_contract_topology_tests.rs` — R4 contract-ownership, non-V4 isolation, V4 rupture/subpool closure, rebond-maturation, and inert-field preservation tests.
+- `digital-protocell/examples/dcfinal001_r4_evolution.rs` — R4 contract matrix, exact R2 regression, V4 newborn closing-edge trace, canonical production-V4 reproduction campaign, and Gate-9 evolution stop harness.
+- `digital-protocell/experiments/dcfinal001_r4_evidence.py` — deterministic compact R4 evidence generator preserving R1-R3 authority and separating production-V4 reproduction from HistoricalV1 regression.
+- `digital-protocell/experiments/generated/dcfinal001r4/` — R4 authority, ownership, topology bookkeeping, newborn continuation, V4 reproduction, preservation, stopped-evolution, final matrix, and qualification evidence.
+- `.github/workflows/dc-final-001-r4.yml` — R4 exact-head Linux scope, reproduction/historical regression replay, preservation, D-087, reproducibility, and artifact validation.

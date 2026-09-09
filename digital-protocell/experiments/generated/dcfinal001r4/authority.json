@@ -1,0 +1,14 @@
+{
+  "directive": "DC-FINAL-001-R4-CONTRACT-OWNERSHIP-V4-TOPOLOGY-COHERENCE-EVOLUTION-AND-FINAL-GOAL-CLOSURE-001",
+  "independent_architect_acceptance": "PENDING",
+  "pr44": "OPEN_DRAFT_UNMERGED_UNTOUCHED",
+  "r3_artifact_sha256": "863bcddea2a6f144b8629ad2d90493bc31e75d21bd2441cb1d6d77b80c2d8315",
+  "r3_authority": "PASS",
+  "r3_exact_head_ci": {
+    "conclusion": "PASS",
+    "run": 34299369014
+  },
+  "r3_scientific_head": "fcf2b637d868e1e7dc250dfc7ec31ba6533c9729",
+  "result_scientific_head": "78c2200615b6558d6b617e3c29f5c8e9bb1c05d3",
+  "starting_governed_head": "9cecd5b2c35e2d38d00e687ad16636615292afc7"
+}

@@ -1,0 +1,8 @@
+{
+  "historical_r2_external_world_flux_residual": 4.233164929701161e-10,
+  "production_v4_evolution": "NOT_EXECUTED_GATE9_STOP",
+  "source": "digital-protocell/experiments/generated/dcfinal001r3/global_material_closure.json",
+  "source_sha256": "9baeb61e5221b3a56742944d12353ece6ced17761493afd867c54e78ca23ca22",
+  "v4_counted_fission_partition_closure": true,
+  "v4_topology_tests": "PASS"
+}

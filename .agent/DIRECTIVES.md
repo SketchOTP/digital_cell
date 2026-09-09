@@ -1130,3 +1130,12 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 
 - Head `3159c4e246ef6b925259921b0e2cddffdbcfd1d6` passed exact-head Linux workflow `34298853121`; artifact ZIP digest is `sha256:481781967abc179e27b7fc04eab71f40b8da0e338fec5d81e6dacad417ab58e7`.
 - The pointer is governance-only. The Gate-6 stop, provisional negative/replan classification, and prohibition on successor execution are unchanged.
+
+## DC-FINAL-001-R4-CONTRACT-OWNERSHIP-V4-TOPOLOGY-COHERENCE-EVOLUTION-AND-FINAL-GOAL-CLOSURE-001
+
+- Issued `2026-09-08` by external Architect from governed R3 head `9cecd5b2c35e2d38d00e687ad16636615292afc7`; R3 is accepted as a bounded contract/topology defect and R4 is the sole authorized execution.
+- Largest unresolved end-goal gap: establish production-`MaturationCoupledV4` geometry-valid reproduction before powering mutation, selection, reversal, or final coexistence.
+- Material advancement: make state ownership explicit, preserve non-V4 D-096 semantics exactly, reconcile V4 rupture/rebond subpool accounting, and replay the canonical ten-arm V4 reproduction campaign under frozen thresholds and mechanics.
+- Supersedes/collapses: the assumption that the R3 newborn invalidity proves a D-096 expression defect. Exact tracing shows a topology bookkeeping defect on a fully-young closing edge, not a need for an expression gain, grace period, or new mechanics.
+- Stop boundary reached: Gate 6 newborn continuation passes, but Gate 9 production-V4 reproduction reaches only `2/10` valid fissions and `1/10` viable simple daughter pairs. Evolution and final integrated closure are prohibited after that failure.
+- Provisional classification: `V4_GEOMETRY_VALID_REPRODUCTION_NOT_ESTABLISHED` under `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`. No successor execution started; independent Architect acceptance remains `PENDING`.

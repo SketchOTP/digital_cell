@@ -1,0 +1,6 @@
+{
+  "preservation": "UNCHANGED_BY_R4_SCOPED_CONTRACT_TOPOLOGY_REPAIR",
+  "revalidation": "SCOPED_TEST_OR_SOURCE_PRESERVATION",
+  "source": "digital-protocell/experiments/generated/dcfinal001r3/m2_preservation.json",
+  "source_sha256": "a5b813a0da642df07986cfad9352ce528a88147df8c3c317c51b83efce591ba2"
+}

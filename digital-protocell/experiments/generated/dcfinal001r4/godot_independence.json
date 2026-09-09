@@ -1,0 +1,6 @@
+{
+  "preservation": "UNCHANGED_BY_R4_SCOPED_CONTRACT_TOPOLOGY_REPAIR",
+  "revalidation": "SCOPED_TEST_OR_SOURCE_PRESERVATION",
+  "source": "digital-protocell/experiments/generated/dcfinal001r3/godot_independence.json",
+  "source_sha256": "7b4b49ce55173b24025f55cd73583091c8dae4765bb0ca630b33bd27b870a9d4"
+}

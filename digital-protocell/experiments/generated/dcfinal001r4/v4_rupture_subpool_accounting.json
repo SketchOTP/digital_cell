@@ -1,0 +1,8 @@
+{
+  "new_parameters": 0,
+  "pass": true,
+  "rule": "total structural destruction clears m_young and tracer_m; 50 percent membrane retention applies identically to tracer_b",
+  "source_tests": [
+    "r4_v4_tension_rupture_clears_removed_subpools_and_scales_membrane_tracer"
+  ]
+}

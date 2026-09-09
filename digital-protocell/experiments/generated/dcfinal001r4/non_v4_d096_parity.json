@@ -1,0 +1,21 @@
+{
+  "can_advance_physics_after_repair": true,
+  "classification": "PREVIOUS_RUNTIME_INVALIDATION_REMOVED",
+  "contract": "HistoricalV1",
+  "expression_ledger": {
+    "activation_consumed": 0.0033701132405084405,
+    "maintenance_consumed": 0.0,
+    "material_consumed": 0.016850566202542203,
+    "synthesis": [
+      0.004212641550635551,
+      0.004212641550635551,
+      0.004212641550635551,
+      0.004212641550635551
+    ],
+    "turnover_waste": 0.0
+  },
+  "historical_d096_equations_changed": false,
+  "physical_runtime_valid_after_repair": true,
+  "serialized_state_unchanged_by_validation": true,
+  "violating_inert_m_young_edges": 1
+}

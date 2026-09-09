@@ -1,0 +1,14 @@
+{
+  "contract": "HistoricalV1",
+  "expected_mutations": 21.0,
+  "historical_d096_equations_changed": false,
+  "maximum_external_world_flux_residual": 4.233164929701161e-10,
+  "mutation_frequency_compatible_three_sigma": true,
+  "mutation_off_observed_mutations": 0,
+  "mutation_opportunities": 2100,
+  "observed_mutations": 23,
+  "pass": true,
+  "previous_runtime_invalidation_removed": true,
+  "purpose": "REGRESSION_CONTRACT_ISOLATION_CONTROL_ONLY",
+  "whole_organism_amount_residual_boundary": "NOT_AUTHORITY_FOR_HISTORICAL_V1_BECAUSE_V1_DOES_NOT_CONSERVE_CONCENTRATION_AMOUNT_ACROSS_GEOMETRY_CHANGE"
+}

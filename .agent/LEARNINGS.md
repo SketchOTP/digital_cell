@@ -1108,3 +1108,14 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 
 - Evidence-bearing head `3159c4e246ef6b925259921b0e2cddffdbcfd1d6` passed workflow `34298853121`; artifact ZIP digest is `sha256:481781967abc179e27b7fc04eab71f40b8da0e338fec5d81e6dacad417ab58e7`.
 - This validation does not promote the result beyond `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN` and does not authorize topology repair or evolutionary execution.
+
+## DC-FINAL-001-R4 — explicit state ownership before evolutionary composition
+
+- Learning ID: `L-DCFINAL001-R4-CONTRACT-OWNERSHIP-AND-V4-REPRODUCTION-BOUNDARY`
+- Date: `2026-09-08`
+- Fact or lesson: an inert field from one state contract must not become a universal runtime-validity requirement for another. `m_young` is a `MaturationCoupledV4` subpool; preserving HistoricalV1/V2/V3 byte/state semantics requires contract-aware validation rather than global repair or mutation.
+- Fact or lesson: V4 topology operations must update total structural material, young material, and diagnostic tracer state together. A stale young subpool blocked the existing same-step rupture/rebond path and falsely presented as newborn lifecycle failure.
+- Fact or lesson: fixing bookkeeping is not equivalent to qualifying reproduction. Under the unchanged production-V4 campaign, growth is universal (`10/10`) while geometry-valid fission (`2/10`) and simple viable daughter pairs (`1/10`) remain below authority. This is the earliest current end-goal gap, so evolutionary execution would be scientifically premature.
+- HistoricalV1 powered mutation remains a regression/contract-isolation result, not final production authority; its concentration contract does not conserve whole-organism amount through geometry changes.
+- Evidence location: `digital-protocell/experiments/generated/dcfinal001r4/`, `digital-protocell/examples/dcfinal001_r4_evolution.rs`, and `digital-protocell/crates/chemistry-core/tests/r4_contract_topology_tests.rs`.
+- Confidence: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; independent Architect acceptance pending.
