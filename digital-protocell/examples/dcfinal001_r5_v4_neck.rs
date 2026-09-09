@@ -1651,20 +1651,18 @@ fn run(
             }
             let (mut reason, detail) = classify_attempt(&mesh, &fission);
             let proposed = try_local_fission(&mesh, &fission).or_else(|| {
-                planar
-                    .as_ref()
-                    .and_then(|p| p.try_local_scission(&mesh, &fission))
-                    .or_else(|| {
-                        if matches!(
-                            mode,
-                            Mode::RefractoryCurvatureNormalSignedAudit
-                                | Mode::RefractoryCurvatureNormalLegacyControl
-                        ) {
-                            try_local_segment_fission_legacy_tensile_only(&mesh, &fission)
-                        } else {
-                            try_local_segment_fission(&mesh, &fission)
-                        }
-                    })
+                if matches!(
+                    mode,
+                    Mode::RefractoryCurvatureNormalSignedAudit
+                        | Mode::RefractoryCurvatureNormalLegacyControl
+                ) {
+                    try_local_segment_fission_legacy_tensile_only(&mesh, &fission)
+                } else {
+                    planar
+                        .as_ref()
+                        .and_then(|p| p.try_local_scission(&mesh, &fission))
+                        .or_else(|| try_local_segment_fission(&mesh, &fission))
+                }
             });
             if let Some((a, b, event)) = proposed {
                 if !event.partition.ok {
