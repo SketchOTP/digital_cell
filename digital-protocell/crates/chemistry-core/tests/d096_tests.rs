@@ -1,11 +1,12 @@
 use chemistry_core::d096_allocation::{
     allocation_schema_load_ok, apply_assay_environment, expression_step,
-    mutate_allocation_at_reproduction, AllocationGenotype, pre_fission_assay, AllocationParams,
-    AssayEnvironment,
-    EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION,
+    mutate_allocation_at_reproduction, pre_fission_assay, AllocationGenotype, AllocationParams,
+    AssayEnvironment, EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION,
     FINITE_ALLOCATION_SCHEMA_VERSION,
 };
-use chemistry_core::material_mesh::{LumpedChem, MaterialMesh, EQUATION_VERSION_MATERIAL_MESH};
+use chemistry_core::material_mesh::{
+    LumpedChem, MaterialMesh, MeshContractVersion, EQUATION_VERSION_MATERIAL_MESH,
+};
 use chemistry_core::mesh_reactions::{reactions_step, ReactionParams};
 use chemistry_core::metabolic_reserve::{reserve_schema_load_ok, ReserveParams};
 
@@ -63,9 +64,7 @@ fn d096_expression_conserves_budget_material_and_activation_accounting() {
 
     assert!((state.genotype.0.iter().sum::<f64>() - 1.0).abs() < 1e-12);
     assert!((ledger.material_consumed - state.catalysts.iter().sum::<f64>()).abs() < 1e-12);
-    assert!(
-        (m0 - candidate.total_structural_mass() - ledger.material_consumed).abs() < 1e-10
-    );
+    assert!((m0 - candidate.total_structural_mass() - ledger.material_consumed).abs() < 1e-10);
     assert!(
         (a0 - candidate.interior.a * area
             - ledger.activation_consumed
@@ -74,6 +73,124 @@ fn d096_expression_conserves_budget_material_and_activation_accounting() {
             < 1e-10
     );
     assert!(ledger.synthesis.iter().all(|x| *x > 0.0));
+}
+
+fn maturation_expression_mesh(young_fraction: f64) -> MaterialMesh {
+    let params = AllocationParams::default();
+    let mut candidate = mesh();
+    candidate.contract_version = MeshContractVersion::MaturationCoupledV4;
+    candidate.interior.a = 2.0;
+    candidate.interior.w = 0.25;
+    for edge in &mut candidate.edges {
+        edge.m_young = edge.m * young_fraction;
+        edge.tracer_m = edge.m * 0.4;
+    }
+    candidate.enable_finite_allocation(AllocationGenotype::neutral(), &params);
+    candidate
+}
+
+#[test]
+fn d096_v4_expression_preserves_maturation_subpool_and_closes_energy() {
+    let params = AllocationParams::default();
+    for young_fraction in [0.0, 0.4, 1.0] {
+        let mut candidate = maturation_expression_mesh(young_fraction);
+        let area = candidate.area();
+        let m0 = candidate.total_structural_mass();
+        let a0 = candidate.interior.a * area;
+        let w0 = candidate.interior.w * area;
+        let ratios0 = candidate
+            .edges
+            .iter()
+            .map(|edge| (edge.m_young / edge.m, edge.tracer_m / edge.m))
+            .collect::<Vec<_>>();
+
+        let ledger = expression_step(&mut candidate, &params, 0.1).unwrap();
+        let activated_spent = ledger.activation_consumed + ledger.maintenance_consumed;
+
+        assert!(candidate.lifecycle_invariants_hold());
+        assert!(candidate.physical_runtime_valid());
+        assert!((m0 - candidate.total_structural_mass() - ledger.material_consumed).abs() < 1e-10);
+        assert!((a0 - candidate.interior.a * area - activated_spent).abs() < 1e-10);
+        assert!(
+            (candidate.interior.w * area - w0 - activated_spent - ledger.turnover_waste).abs()
+                < 1e-10
+        );
+        for (edge, (young_ratio, tracer_ratio)) in candidate.edges.iter().zip(ratios0) {
+            assert!((edge.m_young / edge.m - young_ratio).abs() < 1e-12);
+            assert!((edge.tracer_m / edge.m - tracer_ratio).abs() < 1e-12);
+        }
+    }
+}
+
+#[test]
+fn d096_v4_repeated_and_zero_expression_preserve_invariants() {
+    let params = AllocationParams::default();
+    let mut repeated = maturation_expression_mesh(1.0);
+    for _ in 0..500 {
+        expression_step(&mut repeated, &params, 0.02).unwrap();
+        assert!(repeated.lifecycle_invariants_hold());
+        assert!(repeated.physical_runtime_valid());
+        assert!(repeated
+            .edges
+            .iter()
+            .all(|edge| (edge.m_young - edge.m).abs() < 1e-10));
+    }
+
+    let mut zero = maturation_expression_mesh(0.4);
+    let mut zero_params = params;
+    zero_params.synthesis_rate = 0.0;
+    zero_params.maintenance_rate = 0.0;
+    zero_params.turnover_rate = 0.0;
+    let before = serde_json::to_value(&zero).unwrap();
+    let ledger = expression_step(&mut zero, &zero_params, 0.02).unwrap();
+    assert_eq!(ledger, Default::default());
+    assert_eq!(serde_json::to_value(&zero).unwrap(), before);
+}
+
+#[test]
+fn d096_non_v4_expression_retains_historical_subpool_tracer_and_w_semantics() {
+    let params = AllocationParams::default();
+    let mut candidate = mesh();
+    candidate.contract_version = MeshContractVersion::GeometryConservativeV3;
+    candidate.interior.a = 2.0;
+    candidate.interior.w = 0.25;
+    for edge in &mut candidate.edges {
+        edge.m_young = edge.m * 0.6;
+        edge.tracer_m = edge.m * 0.4;
+    }
+    candidate.enable_finite_allocation(AllocationGenotype::neutral(), &params);
+    let area = candidate.area();
+    let w0 = candidate.interior.w * area;
+    let young0 = candidate
+        .edges
+        .iter()
+        .map(|edge| edge.m_young)
+        .collect::<Vec<_>>();
+    let tracer0 = candidate
+        .edges
+        .iter()
+        .map(|edge| edge.tracer_m)
+        .collect::<Vec<_>>();
+
+    let ledger = expression_step(&mut candidate, &params, 0.1).unwrap();
+
+    assert_eq!(
+        candidate
+            .edges
+            .iter()
+            .map(|edge| edge.m_young)
+            .collect::<Vec<_>>(),
+        young0
+    );
+    assert_eq!(
+        candidate
+            .edges
+            .iter()
+            .map(|edge| edge.tracer_m)
+            .collect::<Vec<_>>(),
+        tracer0
+    );
+    assert!((candidate.interior.w * area - w0 - ledger.turnover_waste).abs() < 1e-10);
 }
 
 #[test]
@@ -99,12 +216,7 @@ fn d096_processing_expression_is_monotonic_local_and_substrate_dependent() {
     let mut expression = Vec::new();
     let mut conversion = Vec::new();
     for processing in [0.0, 0.2, 0.4, 0.6, 0.8] {
-        let mut candidate = expressed(AllocationGenotype([
-            processing,
-            0.1,
-            0.0,
-            0.9 - processing,
-        ]));
+        let mut candidate = expressed(AllocationGenotype([processing, 0.1, 0.0, 0.9 - processing]));
         expression.push(candidate.finite_allocation.unwrap().catalysts[0]);
         candidate.interior.c = 1.0;
         candidate.interior.n = 1.0;
@@ -130,8 +242,7 @@ fn d096_repair_expression_is_monotonic_and_requires_local_damage_substrate() {
     let mut expression = Vec::new();
     let mut repair_flux = Vec::new();
     for repair in [0.0, 0.2, 0.4, 0.6, 0.8] {
-        let mut candidate =
-            expressed(AllocationGenotype([0.0, 0.1, repair, 0.9 - repair]));
+        let mut candidate = expressed(AllocationGenotype([0.0, 0.1, repair, 0.9 - repair]));
         expression.push(candidate.finite_allocation.unwrap().catalysts[2]);
         candidate.interior.c = 1.0;
         candidate.interior.a = 1.0;
@@ -184,8 +295,16 @@ fn d096_tradeoff_occurs_in_conserved_processing_and_repair_fluxes() {
     let processing = AllocationGenotype([0.55, 0.25, 0.05, 0.15]);
     let balanced = AllocationGenotype::neutral();
     let repair = AllocationGenotype([0.10, 0.20, 0.55, 0.15]);
-    let p = [processing_flux(processing), processing_flux(balanced), processing_flux(repair)];
-    let r = [repair_flux(processing), repair_flux(balanced), repair_flux(repair)];
+    let p = [
+        processing_flux(processing),
+        processing_flux(balanced),
+        processing_flux(repair),
+    ];
+    let r = [
+        repair_flux(processing),
+        repair_flux(balanced),
+        repair_flux(repair),
+    ];
 
     assert!(p[0] > p[1] && p[1] > p[2]);
     assert!(r[2] > r[1] && r[1] > r[0]);
@@ -295,7 +414,12 @@ fn d096_mutation_is_reproduction_scoped_blind_and_simplex_conserving() {
     let params = AllocationParams::default();
     let parent = AllocationGenotype::neutral();
     let (seed, mutation) = (1..=100_000)
-        .map(|seed| (seed, mutate_allocation_at_reproduction(parent, &params, seed)))
+        .map(|seed| {
+            (
+                seed,
+                mutate_allocation_at_reproduction(parent, &params, seed),
+            )
+        })
         .find(|(_, ledger)| ledger.mutated)
         .expect("frozen mutation probability should yield a deterministic event");
     assert!(mutation.offspring.valid(&params));

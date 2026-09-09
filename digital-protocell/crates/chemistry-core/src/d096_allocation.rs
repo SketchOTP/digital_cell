@@ -35,9 +35,10 @@ impl AllocationGenotype {
     }
 
     pub fn valid(self, params: &AllocationParams) -> bool {
-        self.0.iter().all(|x| {
-            x.is_finite() && *x >= params.allocation_min && *x <= params.allocation_max
-        }) && (self.0.iter().sum::<f64>() - params.total_budget).abs() <= 1e-12
+        self.0
+            .iter()
+            .all(|x| x.is_finite() && *x >= params.allocation_min && *x <= params.allocation_max)
+            && (self.0.iter().sum::<f64>() - params.total_budget).abs() <= 1e-12
     }
 
     pub fn candidate_hash(self, params: &AllocationParams) -> String {
@@ -209,6 +210,7 @@ pub fn expression_step(
         return Err(ExpressionReject::InvalidStep);
     }
     let mut next = mesh.clone();
+    let maturation_coupled = next.is_maturation_coupled();
     let area = next.area().max(1e-9);
     let material = next.total_structural_mass().max(0.0);
     let activated = (next.interior.a.max(0.0) * area).max(0.0);
@@ -244,8 +246,25 @@ pub fn expression_step(
     let fraction_left = (1.0 - ledger.material_consumed / material).max(0.0);
     for edge in &mut next.edges {
         edge.m *= fraction_left;
+        if maturation_coupled {
+            // MaturationCoupledV4 stores young structure as a physical subpool
+            // of total edge structure. D-096 withdraws a uniform fraction of
+            // structural material, so the same fraction must be withdrawn from
+            // every structural subpool. This preserves the young:mature ratio
+            // and cannot create m_young > m on fully-young fission edges.
+            edge.m_young *= fraction_left;
+            // tracer_m is an observer-only tagged subset of edge.m.
+            edge.tracer_m *= fraction_left;
+        }
     }
-    next.interior.a -= (ledger.activation_consumed + maintenance) / area;
+    let activated_spent = ledger.activation_consumed + maintenance;
+    next.interior.a -= activated_spent / area;
+    if maturation_coupled {
+        // In the production V4 material contract, dissipated activated
+        // material is transferred to the existing waste pool. Historical
+        // non-V4 D-096 semantics remain byte-for-byte unchanged.
+        next.interior.w += activated_spent / area;
+    }
     next.interior.w += ledger.turnover_waste / area;
     *mesh = next;
     Ok(ledger)
