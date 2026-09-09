@@ -29,6 +29,14 @@ def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def canonical_repo_path(path: Path) -> str:
+    """Render evidence provenance independently of the caller's working directory."""
+    parts = path.parts
+    if "digital-protocell" in parts:
+        return "/".join(parts[parts.index("digital-protocell") :])
+    return str(Path("digital-protocell") / path)
+
+
 def write(root: Path, name: str, value: Any) -> None:
     (root / name).write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
 
@@ -172,7 +180,7 @@ def main() -> None:
         out,
         "m1_preservation.json",
         {
-            "source": str(r3_m1),
+            "source": canonical_repo_path(r3_m1),
             "source_sha256": digest(r3_m1),
             "d087_v2": "8/8",
             "d087_v3": "8/8",
@@ -255,7 +263,7 @@ def main() -> None:
             out,
             name,
             {
-                "source": str(source),
+                "source": canonical_repo_path(source),
                 "source_sha256": digest(source),
                 "preservation": "UNCHANGED_BY_R4_SCOPED_CONTRACT_TOPOLOGY_REPAIR",
                 "revalidation": "SCOPED_TEST_OR_SOURCE_PRESERVATION",
@@ -266,7 +274,7 @@ def main() -> None:
         out,
         "global_material_energy_closure.json",
         {
-            "source": str(r3_global),
+            "source": canonical_repo_path(r3_global),
             "source_sha256": digest(r3_global),
             "v4_topology_tests": "PASS",
             "v4_counted_fission_partition_closure": all(report["ok"] for report in partition_reports),
