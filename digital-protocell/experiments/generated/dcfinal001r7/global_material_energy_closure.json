@@ -1,0 +1,24 @@
+{
+  "all_r7_parent_states_simple_runtime_lifecycle_valid": true,
+  "final_integrated_run": "NOT_REACHED_GATE7_STOP",
+  "motor_off_parity": {
+    "arms_compared": 10,
+    "event_mismatches": 0,
+    "maximum_structural_mass_error": 0.0,
+    "maximum_vertex_error": 0.0,
+    "pass": true,
+    "topology_mismatches": 0
+  },
+  "partition": "PASS_FOR_COUNTED_FISSION",
+  "r7_active_a_to_w": {
+    "pass": true,
+    "produced_w": 0.32794839607456083,
+    "requested_a": 0.32794839651027263,
+    "residual": 4.3571179997314857e-10,
+    "spent_a": 0.32794839651027263
+  },
+  "zero_a": {
+    "pass": true,
+    "spent": 0.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "excluded": [
+    "equatorial coordinates",
+    "protein systems",
+    "force magnitudes",
+    "timing",
+    "thresholds"
+  ],
+  "imported_parameters": [],
+  "sources": [
+    {
+      "classification": "ADAPTABLE_PRINCIPLE",
+      "title": "Mechanical power is maximized during contractile ring-like formation in a biomimetic dividing cell model",
+      "url": "https://www.nature.com/articles/s41467-024-53228-y",
+      "used_principle": "localized contraction with relaxation elsewhere can furrow more effectively than broad activation"
+    },
+    {
+      "classification": "REFERENCE_ONLY",
+      "title": "Spatiotemporal control of structure and dynamics in actomyosin networks using the bacterial MinDE protein system",
+      "url": "https://www.nature.com/articles/s41467-024-54807-9",
+      "used_principle": "self-organized spatial localization can deform membrane-bound actomyosin systems"
+    }
+  ],
+  "status": "COMPLETED_BOUNDED"
+}

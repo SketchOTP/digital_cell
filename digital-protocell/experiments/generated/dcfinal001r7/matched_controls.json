@@ -1,0 +1,78 @@
+{
+  "conditional": {
+    "counts": null,
+    "criterion": "normal-only improves fission count OR viable-pair count relative to both passive and sealed R5R1, while below qualification",
+    "executed": false,
+    "normal_only_improved_relative_to_both_passive_and_r5r1": false,
+    "normal_only_passed": false
+  },
+  "controls": {
+    "motor_off_semantic_parity": {
+      "arms_compared": 10,
+      "event_mismatches": 0,
+      "maximum_structural_mass_error": 0.0,
+      "maximum_vertex_error": 0.0,
+      "pass": true,
+      "topology_mismatches": 0
+    },
+    "uniform_no_strain_control_pass": true,
+    "zero_a_pass": true,
+    "zero_a_spent": 0.0
+  },
+  "horizon": 14778,
+  "passive": {
+    "all_lifecycle_valid": true,
+    "all_parent_states_simple": true,
+    "all_runtime_valid": true,
+    "arms": 10,
+    "geometry_valid_fissions": 3,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 2
+  },
+  "r5r1_tangential": {
+    "all_lifecycle_valid": true,
+    "all_parent_states_simple": true,
+    "all_runtime_valid": true,
+    "arms": 10,
+    "geometry_valid_fissions": 3,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 3
+  },
+  "r6_curvature_normal": {
+    "all_lifecycle_valid": true,
+    "all_parent_states_simple": true,
+    "all_runtime_valid": true,
+    "arms": 10,
+    "geometry_valid_fissions": 3,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 2
+  },
+  "r7_motor_off": {
+    "all_lifecycle_valid": true,
+    "all_parent_states_simple": true,
+    "all_runtime_valid": true,
+    "arms": 10,
+    "geometry_valid_fissions": 3,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 2
+  },
+  "r7_same_signal_normal_plus_tangential": null,
+  "r7_strain_contrast_normal": {
+    "all_lifecycle_valid": true,
+    "all_parent_states_simple": true,
+    "all_runtime_valid": true,
+    "arms": 10,
+    "geometry_valid_fissions": 1,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 0
+  },
+  "r7_zero_a": {
+    "all_lifecycle_valid": true,
+    "all_parent_states_simple": true,
+    "all_runtime_valid": true,
+    "arms": 10,
+    "geometry_valid_fissions": 7,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 0
+  }
+}

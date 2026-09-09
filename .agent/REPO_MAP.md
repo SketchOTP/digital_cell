@@ -206,3 +206,7 @@
 - `digital-protocell/experiments/dcfinal001_r6_evidence.py` — deterministic compact R6 evidence generator preserving R5R1 authority and sealing the Gate-8 reproduction stop.
 - `digital-protocell/experiments/generated/dcfinal001r6/` — R6 owner override, actuator geometry, curvature/force, controls, reproduction, preservation, stopped-evolution, and provisional qualification evidence.
 - `.github/workflows/dc-final-001-r6.yml` — exact-head Linux R6 scope, deterministic campaign replay, preservation, D-087, PR #44, reproducibility, and artifact upload.
+- `digital-protocell/examples/dcfinal001_r7_strain_contrast_normal.rs` — R7 entry point composing the exact R5R1 strain contrast with the exact R6 funded inward-normal actuator.
+- `digital-protocell/experiments/dcfinal001_r7_evidence.py` — deterministic compact R7 evidence generator preserving R6 authority and sealing the Gate-7 reproduction stop.
+- `digital-protocell/experiments/generated/dcfinal001r7/` — R7 authority, exact composition, controls, per-fission daughter diagnostics, preservation, stopped-evolution, and provisional qualification evidence.
+- `.github/workflows/dc-final-001-r7.yml` — exact-head Linux R7 scope, deterministic campaign replay, preservation, D-087, PR #44, evidence reproducibility, and artifact upload.

@@ -1,0 +1,907 @@
+{
+  "composition": {
+    "classification": "STRAIN_CONTRAST_NORMAL_COMPOSITION_EXACT",
+    "curvature_term_in_primary_drive": false,
+    "drive_authority": "R5R1 adaptive_directional_drive.front_drive",
+    "drive_formula": "max(local_positive_tensile_strain - perimeter_weighted_mean_strain, 0)",
+    "drive_identity_error": 0.0,
+    "fission_or_topology_information_read": false,
+    "force_authority": "R6 funded extra-force path and frozen force budget",
+    "force_bound": 0.5,
+    "maximum_requested_force": 0.009111497802685761,
+    "new_free_parameters": 0,
+    "normal_authority": "R6 orientation-aware current_local_inward_normal",
+    "normal_identity_error": 0.0,
+    "pass": true,
+    "reflection_drive_error": 0.0,
+    "reflection_normal_error": 0.0,
+    "requested_a": 0.00019323641638127064,
+    "rotation_drive_error": 1.4432899320127035e-15,
+    "rotation_normal_error": 1.7763568394002505e-15,
+    "uniform_no_strain_max_drive": 0.0
+  },
+  "contract": {
+    "cost": 0.05,
+    "curvature_drive": false,
+    "direction": "exact R6 orientation-aware local inward vertex normal",
+    "drive": "exact R5R1 mean-relative positive tensile-strain contrast",
+    "force_scale": "MAX_EXTERNAL_FORCE_PER_VERTEX - FROZEN_STATIC_TRACTION_LIMIT",
+    "new_free_parameters": 0,
+    "primary_tangential_activity": 0
+  },
+  "localization": {
+    "r5r1_tangential": {
+      "arms": [
+        {
+          "best_apposition": {
+            "distance_over_range": 1.0669873069056528,
+            "nearest_pair": [
+              8,
+              86
+            ],
+            "nearest_pair_activity": 0.0,
+            "outside_activity": 0.0
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.03813947476776915,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.3218903012352174,
+            "outside_activity_to_later_neck_narrowing": -0.7185019140537485,
+            "strain_to_activity": 0.823999054572067
+          },
+          "fission_step": null,
+          "max_active_patch_count": 2,
+          "mean_active_patch_count": 0.27662741913655436,
+          "mean_active_perimeter_fraction": 0.032439467081590144,
+          "mean_activity": 0.0007789129752998597,
+          "mean_activity_variance": 3.0154325457274757e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.022856222758834907,
+          "name": "seed_1_rotate_0.3",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 1.0645294254059336,
+            "nearest_pair": [
+              9,
+              15
+            ],
+            "nearest_pair_activity": 0.01567888619444827,
+            "outside_activity": 0.04074154043432621
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.37646216500709906,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.8065215716919089,
+            "outside_activity_to_later_neck_narrowing": -0.871087065964941,
+            "strain_to_activity": 0.8805772276753175
+          },
+          "fission_step": null,
+          "max_active_patch_count": 4,
+          "mean_active_patch_count": 0.10387061848694004,
+          "mean_active_perimeter_fraction": 0.020444091475427025,
+          "mean_activity": 0.00037847392452685345,
+          "mean_activity_variance": 1.148001282799358e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.011938421747811238,
+          "name": "seed_2_vertex_0.12",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 0.5442125239145967,
+            "nearest_pair": [
+              24,
+              86
+            ],
+            "nearest_pair_activity": 0.00023964827663758648,
+            "outside_activity": 0.0
+          },
+          "both_daughters_viable": true,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.4862683995615233,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.7025031658225713,
+            "outside_activity_to_later_neck_narrowing": -0.8555101578801728,
+            "strain_to_activity": 0.8662292576048056
+          },
+          "fission_step": 7751,
+          "max_active_patch_count": 2,
+          "mean_active_patch_count": 0.25364469100761194,
+          "mean_active_perimeter_fraction": 0.04632542129115854,
+          "mean_activity": 0.0006648569520856062,
+          "mean_activity_variance": 1.7861998938218006e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.02614657928821987,
+          "name": "seed_3_c_0.08",
+          "physical_fission": true
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 1.0723162254417749,
+            "nearest_pair": [
+              9,
+              15
+            ],
+            "nearest_pair_activity": 0.004535196995331827,
+            "outside_activity": 0.04426729627204581
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.2908945113039537,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.807699561549824,
+            "outside_activity_to_later_neck_narrowing": -0.8907231663376244,
+            "strain_to_activity": 0.8625528133893726
+          },
+          "fission_step": null,
+          "max_active_patch_count": 4,
+          "mean_active_patch_count": 0.19231289755041278,
+          "mean_active_perimeter_fraction": 0.025213779719199393,
+          "mean_activity": 0.00035747478421869783,
+          "mean_activity_variance": 9.646689703372877e-06,
+          "mean_largest_contiguous_active_arc_fraction": 0.015577665532269034,
+          "name": "seed_4_a_0.08",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 0.6836836491185528,
+            "nearest_pair": [
+              46,
+              70
+            ],
+            "nearest_pair_activity": 0.0,
+            "outside_activity": 0.0006543271849159127
+          },
+          "both_daughters_viable": true,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.46378256220932546,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.8777523761991506,
+            "outside_activity_to_later_neck_narrowing": -0.9040676015952733,
+            "strain_to_activity": 0.8922019978872882
+          },
+          "fission_step": 5651,
+          "max_active_patch_count": 3,
+          "mean_active_patch_count": 0.3753317996814723,
+          "mean_active_perimeter_fraction": 0.0452525740695608,
+          "mean_activity": 0.0009541158579943279,
+          "mean_activity_variance": 2.7991403951031733e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.029001946200667594,
+          "name": "seed_5_env_0.1",
+          "physical_fission": true
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 0.9683059905777202,
+            "nearest_pair": [
+              47,
+              112
+            ],
+            "nearest_pair_activity": 0.0,
+            "outside_activity": 0.0
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.05290310492145409,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.6270480306970652,
+            "outside_activity_to_later_neck_narrowing": -0.8052597097933066,
+            "strain_to_activity": 0.8215479427752118
+          },
+          "fission_step": null,
+          "max_active_patch_count": 3,
+          "mean_active_patch_count": 0.2970632020571119,
+          "mean_active_perimeter_fraction": 0.029069573437764118,
+          "mean_activity": 0.0005343532025124756,
+          "mean_activity_variance": 1.622435954152526e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.0189626083962031,
+          "name": "seed_6_l_0.1",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 1.0808967072069102,
+            "nearest_pair": [
+              11,
+              17
+            ],
+            "nearest_pair_activity": 0.009010173801363562,
+            "outside_activity": 0.042754080489384984
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.3877628614310838,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.8008321309631373,
+            "outside_activity_to_later_neck_narrowing": -0.8411682177674261,
+            "strain_to_activity": 0.8986754597166564
+          },
+          "fission_step": null,
+          "max_active_patch_count": 3,
+          "mean_active_patch_count": 0.1244417377182298,
+          "mean_active_perimeter_fraction": 0.022893450495460373,
+          "mean_activity": 0.0003650141413399186,
+          "mean_activity_variance": 7.953749043104816e-06,
+          "mean_largest_contiguous_active_arc_fraction": 0.013050629920663156,
+          "name": "seed_7_rotate_-0.5",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 0.584314190431683,
+            "nearest_pair": [
+              76,
+              129
+            ],
+            "nearest_pair_activity": 0.0,
+            "outside_activity": 0.0
+          },
+          "both_daughters_viable": true,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.11487891734101517,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.45220922129778435,
+            "outside_activity_to_later_neck_narrowing": -0.5416772535540442,
+            "strain_to_activity": 0.8977760200269234
+          },
+          "fission_step": 14326,
+          "max_active_patch_count": 2,
+          "mean_active_patch_count": 0.24577690911629205,
+          "mean_active_perimeter_fraction": 0.023316642864170175,
+          "mean_activity": 0.0004125030645681412,
+          "mean_activity_variance": 1.0592917706837971e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.013791176061414044,
+          "name": "seed_8_vertex_-0.1",
+          "physical_fission": true
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 1.0795919285120583,
+            "nearest_pair": [
+              9,
+              15
+            ],
+            "nearest_pair_activity": 0.010432449372200761,
+            "outside_activity": 0.04388342337815515
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.26625705190470855,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.6976405307299713,
+            "outside_activity_to_later_neck_narrowing": -0.8972984845887392,
+            "strain_to_activity": 0.8275557891343335
+          },
+          "fission_step": null,
+          "max_active_patch_count": 2,
+          "mean_active_patch_count": 0.17241845987278387,
+          "mean_active_perimeter_fraction": 0.02357210593842849,
+          "mean_activity": 0.00047861241223796447,
+          "mean_activity_variance": 1.6979408345769238e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.014421934139934372,
+          "name": "seed_9_c_-0.05",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 1.0723162254417749,
+            "nearest_pair": [
+              9,
+              15
+            ],
+            "nearest_pair_activity": 0.004535197259063574,
+            "outside_activity": 0.04426729743499859
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.326926145342703,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.8327415909255123,
+            "outside_activity_to_later_neck_narrowing": -0.9240585786038745,
+            "strain_to_activity": 0.8076280482877675
+          },
+          "fission_step": null,
+          "max_active_patch_count": 4,
+          "mean_active_patch_count": 0.15807281093517392,
+          "mean_active_perimeter_fraction": 0.02726811635249015,
+          "mean_activity": 0.0004140934573133955,
+          "mean_activity_variance": 1.25785028347153e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.01622582370931091,
+          "name": "seed_10_env_-0.08",
+          "physical_fission": false
+        }
+      ],
+      "campaign_means": {
+        "active_patch_count": 0.2199560545562583,
+        "active_perimeter_fraction": 0.029579522272524923,
+        "activity": 0.0005338410772097241,
+        "activity_variance": 1.614633683498435e-05,
+        "largest_contiguous_active_arc_fraction": 0.018197300775532825
+      }
+    },
+    "r6_curvature_normal": {
+      "arms": [
+        {
+          "best_apposition": {
+            "distance_over_range": 1.0840600557760869,
+            "nearest_pair": [
+              1,
+              20
+            ],
+            "nearest_pair_activity": 0.04190835275121677,
+            "outside_activity": 0.019190463280086736
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": -0.05488287485312879,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": 0.09116303568131275,
+            "outside_activity_to_later_neck_narrowing": 0.15048242477563964,
+            "strain_to_activity": -0.00838238036856137
+          },
+          "fission_step": null,
+          "max_active_patch_count": 23,
+          "mean_active_patch_count": 10.321491406144268,
+          "mean_active_perimeter_fraction": 0.6883476604031012,
+          "mean_activity": 0.06188320264762607,
+          "mean_activity_variance": 0.01995086590983971,
+          "mean_largest_contiguous_active_arc_fraction": 0.16347813944269265,
+          "name": "seed_1_rotate_0.3",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 1.0645294254059336,
+            "nearest_pair": [
+              9,
+              15
+            ],
+            "nearest_pair_activity": 0.030564950621790408,
+            "outside_activity": 0.028381600216712786
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.003890263413797893,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": 0.28219870209194803,
+            "outside_activity_to_later_neck_narrowing": 0.20551254417015138,
+            "strain_to_activity": -0.0457046101953083
+          },
+          "fission_step": null,
+          "max_active_patch_count": 23,
+          "mean_active_patch_count": 13.894979022871837,
+          "mean_active_perimeter_fraction": 0.4322122244904421,
+          "mean_activity": 0.08270642537070919,
+          "mean_activity_variance": 0.04188361133381235,
+          "mean_largest_contiguous_active_arc_fraction": 0.0810085081741225,
+          "name": "seed_2_vertex_0.12",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 0.5621395025914455,
+            "nearest_pair": [
+              25,
+              90
+            ],
+            "nearest_pair_activity": 0.2905533382731103,
+            "outside_activity": 0.059351662042052784
+          },
+          "both_daughters_viable": true,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": -0.1306120715229123,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": 0.42388314952118583,
+            "outside_activity_to_later_neck_narrowing": 0.09566904553652554,
+            "strain_to_activity": -0.043782713472109984
+          },
+          "fission_step": 8026,
+          "max_active_patch_count": 26,
+          "mean_active_patch_count": 11.891228507351109,
+          "mean_active_perimeter_fraction": 0.5115704944101367,
+          "mean_activity": 0.04398018925216849,
+          "mean_activity_variance": 0.0178741651910884,
+          "mean_largest_contiguous_active_arc_fraction": 0.13271063783025855,
+          "name": "seed_3_c_0.08",
+          "physical_fission": true
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 1.0723162254417749,
+            "nearest_pair": [
+              9,
+              15
+            ],
+            "nearest_pair_activity": 0.02326137300428378,
+            "outside_activity": 0.019533322410253705
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": -0.006367774476187135,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": 0.14727446307596342,
+            "outside_activity_to_later_neck_narrowing": 0.12607163110407502,
+            "strain_to_activity": -0.042145984714072375
+          },
+          "fission_step": null,
+          "max_active_patch_count": 53,
+          "mean_active_patch_count": 29.823792123426717,
+          "mean_active_perimeter_fraction": 0.5207471978962798,
+          "mean_activity": 0.09824719886212145,
+          "mean_activity_variance": 0.0439018109340515,
+          "mean_largest_contiguous_active_arc_fraction": 0.08237932417934363,
+          "name": "seed_4_a_0.08",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 1.073733940222212,
+            "nearest_pair": [
+              9,
+              15
+            ],
+            "nearest_pair_activity": 0.022753925938213165,
+            "outside_activity": 0.021194165480286718
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": -0.044190168290180444,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": 0.04971081132631285,
+            "outside_activity_to_later_neck_narrowing": 0.22777168522371713,
+            "strain_to_activity": -0.02245302281208275
+          },
+          "fission_step": null,
+          "max_active_patch_count": 23,
+          "mean_active_patch_count": 15.274665042630938,
+          "mean_active_perimeter_fraction": 0.5904949002393609,
+          "mean_activity": 0.0662407993115347,
+          "mean_activity_variance": 0.029827879906843657,
+          "mean_largest_contiguous_active_arc_fraction": 0.11557435454959158,
+          "name": "seed_5_env_0.1",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 0.5814969750304652,
+            "nearest_pair": [
+              23,
+              88
+            ],
+            "nearest_pair_activity": 0.29063562252796343,
+            "outside_activity": 0.05012661774465006
+          },
+          "both_daughters_viable": true,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": -0.13695321052391507,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": 0.4488773195273145,
+            "outside_activity_to_later_neck_narrowing": 0.08730237367748254,
+            "strain_to_activity": -0.04105047875438708
+          },
+          "fission_step": 8151,
+          "max_active_patch_count": 24,
+          "mean_active_patch_count": 11.093117408906883,
+          "mean_active_perimeter_fraction": 0.5179111624944933,
+          "mean_activity": 0.04094386037225585,
+          "mean_activity_variance": 0.015646952934917743,
+          "mean_largest_contiguous_active_arc_fraction": 0.1365948735861694,
+          "name": "seed_6_l_0.1",
+          "physical_fission": true
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 1.0808967072069102,
+            "nearest_pair": [
+              11,
+              17
+            ],
+            "nearest_pair_activity": 0.018248005943640164,
+            "outside_activity": 0.01434808891174002
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": -0.023111470017000743,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": 0.11095823078121125,
+            "outside_activity_to_later_neck_narrowing": 0.2125481721860373,
+            "strain_to_activity": -0.026296049210427153
+          },
+          "fission_step": null,
+          "max_active_patch_count": 31,
+          "mean_active_patch_count": 20.233387467857625,
+          "mean_active_perimeter_fraction": 0.4649399441580578,
+          "mean_activity": 0.05477427395988369,
+          "mean_activity_variance": 0.02767943659233346,
+          "mean_largest_contiguous_active_arc_fraction": 0.09098768496305343,
+          "name": "seed_7_rotate_-0.5",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 0.7029138722498495,
+            "nearest_pair": [
+              130,
+              238
+            ],
+            "nearest_pair_activity": 0.5423124795885219,
+            "outside_activity": 0.20839457795400929
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": -0.045635131646965914,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": 0.43775922061218947,
+            "outside_activity_to_later_neck_narrowing": -0.022352930158246784,
+            "strain_to_activity": -0.01939393004247919
+          },
+          "fission_step": null,
+          "max_active_patch_count": 140,
+          "mean_active_patch_count": 30.381580728109352,
+          "mean_active_perimeter_fraction": 0.5936590868308877,
+          "mean_activity": 0.06455447692902885,
+          "mean_activity_variance": 0.022272267363023186,
+          "mean_largest_contiguous_active_arc_fraction": 0.10525582439209183,
+          "name": "seed_8_vertex_-0.1",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 0.5917041804922586,
+            "nearest_pair": [
+              23,
+              85
+            ],
+            "nearest_pair_activity": 0.48013518600216,
+            "outside_activity": 0.028529787896498036
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": -0.14970014353885935,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": 0.48164908517571375,
+            "outside_activity_to_later_neck_narrowing": 0.09589071881221294,
+            "strain_to_activity": -0.045278575262719306
+          },
+          "fission_step": 7326,
+          "max_active_patch_count": 24,
+          "mean_active_patch_count": 10.279552279552279,
+          "mean_active_perimeter_fraction": 0.5039821025559987,
+          "mean_activity": 0.037672135818959965,
+          "mean_activity_variance": 0.013994475113032631,
+          "mean_largest_contiguous_active_arc_fraction": 0.14458853768859417,
+          "name": "seed_9_c_-0.05",
+          "physical_fission": true
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 0.9006464209664589,
+            "nearest_pair": [
+              41,
+              180
+            ],
+            "nearest_pair_activity": 0.5171122148452643,
+            "outside_activity": 0.18635849757224843
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": -0.032415261403134825,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": 0.26147993365823813,
+            "outside_activity_to_later_neck_narrowing": 0.28157260348847024,
+            "strain_to_activity": -0.04032889671628886
+          },
+          "fission_step": null,
+          "max_active_patch_count": 58,
+          "mean_active_patch_count": 24.747259439707673,
+          "mean_active_perimeter_fraction": 0.5120865398779622,
+          "mean_activity": 0.10219672556707948,
+          "mean_activity_variance": 0.05461938061754705,
+          "mean_largest_contiguous_active_arc_fraction": 0.09557579585445956,
+          "name": "seed_10_env_-0.08",
+          "physical_fission": false
+        }
+      ],
+      "campaign_means": {
+        "active_patch_count": 17.794105342655868,
+        "active_perimeter_fraction": 0.533595131335672,
+        "activity": 0.06531992880913677,
+        "activity_variance": 0.028765084589648972,
+        "largest_contiguous_active_arc_fraction": 0.11481536806603773
+      }
+    },
+    "r7_contrast_normal": {
+      "arms": [
+        {
+          "best_apposition": {
+            "distance_over_range": 1.0537435581627628,
+            "nearest_pair": [
+              0,
+              72
+            ],
+            "nearest_pair_activity": 0.0,
+            "outside_activity": 0.0
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.09206870208015364,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.8279276296739992,
+            "outside_activity_to_later_neck_narrowing": -0.855709291014643,
+            "strain_to_activity": 0.8878253656192084
+          },
+          "fission_step": null,
+          "max_active_patch_count": 2,
+          "mean_active_patch_count": 0.08966030586006225,
+          "mean_active_perimeter_fraction": 0.020869904365950147,
+          "mean_activity": 0.0003591688197069561,
+          "mean_activity_variance": 1.0494591589020653e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.011449731021032855,
+          "name": "seed_1_rotate_0.3",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 1.0645294254059336,
+            "nearest_pair": [
+              9,
+              15
+            ],
+            "nearest_pair_activity": 0.01567888619444827,
+            "outside_activity": 0.04074154043432621
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.326259854197807,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.8314086569425546,
+            "outside_activity_to_later_neck_narrowing": -0.8971101174087137,
+            "strain_to_activity": 0.8691068160903272
+          },
+          "fission_step": null,
+          "max_active_patch_count": 4,
+          "mean_active_patch_count": 0.22526728921369604,
+          "mean_active_perimeter_fraction": 0.02504487197860784,
+          "mean_activity": 0.0004853289668145107,
+          "mean_activity_variance": 1.4925688907350462e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.01412526594249024,
+          "name": "seed_2_vertex_0.12",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 0.6826883329932603,
+            "nearest_pair": [
+              24,
+              89
+            ],
+            "nearest_pair_activity": 0.0,
+            "outside_activity": 0.0
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.46343136118638834,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.8375296788324605,
+            "outside_activity_to_later_neck_narrowing": -0.8583704120529633,
+            "strain_to_activity": 0.8697792337416536
+          },
+          "fission_step": 8226,
+          "max_active_patch_count": 2,
+          "mean_active_patch_count": 0.237539508874301,
+          "mean_active_perimeter_fraction": 0.04339898432749883,
+          "mean_activity": 0.0006568192267918649,
+          "mean_activity_variance": 1.8646189429717308e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.025119850442694876,
+          "name": "seed_3_c_0.08",
+          "physical_fission": true
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 0.5686218103841759,
+            "nearest_pair": [
+              7,
+              85
+            ],
+            "nearest_pair_activity": 0.0,
+            "outside_activity": 0.0
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.15602771055483552,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.6996524005290802,
+            "outside_activity_to_later_neck_narrowing": -0.726052050227823,
+            "strain_to_activity": 0.8368057016990591
+          },
+          "fission_step": null,
+          "max_active_patch_count": 4,
+          "mean_active_patch_count": 0.17336581404790904,
+          "mean_active_perimeter_fraction": 0.023982844547464525,
+          "mean_activity": 0.00042230576558467713,
+          "mean_activity_variance": 1.3628236262726545e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.014496520790027534,
+          "name": "seed_4_a_0.08",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 1.073733940222212,
+            "nearest_pair": [
+              9,
+              15
+            ],
+            "nearest_pair_activity": 0.014214913934329668,
+            "outside_activity": 0.040749431671132
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.24241094825068385,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.5461857538633476,
+            "outside_activity_to_later_neck_narrowing": -0.7645337032327919,
+            "strain_to_activity": 0.861961315104386
+          },
+          "fission_step": null,
+          "max_active_patch_count": 3,
+          "mean_active_patch_count": 0.298754905941264,
+          "mean_active_perimeter_fraction": 0.021257000650782096,
+          "mean_activity": 0.0005620800221523243,
+          "mean_activity_variance": 2.0695342254587316e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.012382945023300838,
+          "name": "seed_5_env_0.1",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 1.0795919285120583,
+            "nearest_pair": [
+              9,
+              15
+            ],
+            "nearest_pair_activity": 0.010432449320758937,
+            "outside_activity": 0.04388342318184043
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.34877054079050224,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.8296345929449876,
+            "outside_activity_to_later_neck_narrowing": -0.846058350849306,
+            "strain_to_activity": 0.8601259268928313
+          },
+          "fission_step": null,
+          "max_active_patch_count": 2,
+          "mean_active_patch_count": 0.18744079036405467,
+          "mean_active_perimeter_fraction": 0.02579174535345821,
+          "mean_activity": 0.0004235573521053815,
+          "mean_activity_variance": 1.1925061856455935e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.016301375385172266,
+          "name": "seed_6_l_0.1",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 0.8188697498730013,
+            "nearest_pair": [
+              9,
+              84
+            ],
+            "nearest_pair_activity": 0.0,
+            "outside_activity": 0.0
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.36744094794963267,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.7212559106863438,
+            "outside_activity_to_later_neck_narrowing": -0.8073554584934686,
+            "strain_to_activity": 0.9025312647750031
+          },
+          "fission_step": null,
+          "max_active_patch_count": 3,
+          "mean_active_patch_count": 0.10156990120449316,
+          "mean_active_perimeter_fraction": 0.02078685445232111,
+          "mean_activity": 0.00036793419613190005,
+          "mean_activity_variance": 8.632450094615153e-06,
+          "mean_largest_contiguous_active_arc_fraction": 0.011058570318054513,
+          "name": "seed_7_rotate_-0.5",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 0.38057916275806775,
+            "nearest_pair": [
+              75,
+              125
+            ],
+            "nearest_pair_activity": 0.0,
+            "outside_activity": 0.0
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.39501663118018554,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.3785680963086056,
+            "outside_activity_to_later_neck_narrowing": -0.4565346711510327,
+            "strain_to_activity": 0.9014152754763587
+          },
+          "fission_step": null,
+          "max_active_patch_count": 2,
+          "mean_active_patch_count": 0.08499120313980241,
+          "mean_active_perimeter_fraction": 0.01908811121039394,
+          "mean_activity": 0.0004031984696332308,
+          "mean_activity_variance": 1.1262845077245623e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.010310829852264523,
+          "name": "seed_8_vertex_-0.1",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 0.9460919774148963,
+            "nearest_pair": [
+              23,
+              85
+            ],
+            "nearest_pair_activity": 0.0,
+            "outside_activity": 0.0
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.3638121307593977,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.7968439325072385,
+            "outside_activity_to_later_neck_narrowing": -0.8045589399888262,
+            "strain_to_activity": 0.8699974322721007
+          },
+          "fission_step": null,
+          "max_active_patch_count": 2,
+          "mean_active_patch_count": 0.20794424143997833,
+          "mean_active_perimeter_fraction": 0.02483685102892638,
+          "mean_activity": 0.00040708533975091063,
+          "mean_activity_variance": 1.143250828653319e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.015912648433532812,
+          "name": "seed_9_c_-0.05",
+          "physical_fission": false
+        },
+        {
+          "best_apposition": {
+            "distance_over_range": 1.0723162254417749,
+            "nearest_pair": [
+              9,
+              15
+            ],
+            "nearest_pair_activity": 0.004535197259063574,
+            "outside_activity": 0.04426729743499859
+          },
+          "both_daughters_viable": false,
+          "correlations": {
+            "activity_to_same_step_local_edge_contraction": 0.08751872386919274,
+            "later_neck_narrowing_definition": "minimum_distance_over_range[t] - minimum_distance_over_range[t+1]",
+            "nearest_pair_activity_to_later_neck_narrowing": -0.44343277600966846,
+            "outside_activity_to_later_neck_narrowing": -0.808787636181822,
+            "strain_to_activity": 0.829077330693051
+          },
+          "fission_step": null,
+          "max_active_patch_count": 4,
+          "mean_active_patch_count": 0.3651373663553932,
+          "mean_active_perimeter_fraction": 0.029632115032682507,
+          "mean_activity": 0.00041640505725794985,
+          "mean_activity_variance": 1.1440817116871111e-05,
+          "mean_largest_contiguous_active_arc_fraction": 0.01838665367505183,
+          "name": "seed_10_env_-0.08",
+          "physical_fission": false
+        }
+      ],
+      "campaign_means": {
+        "active_patch_count": 0.1971671326440954,
+        "active_perimeter_fraction": 0.025468928294808558,
+        "activity": 0.0004503883215929706,
+        "activity_variance": 1.330837308751233e-05,
+        "largest_contiguous_active_arc_fraction": 0.014954439088362229
+      }
+    }
+  }
+}

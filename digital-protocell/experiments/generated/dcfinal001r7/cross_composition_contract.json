@@ -1,0 +1,21 @@
+{
+  "classification": "STRAIN_CONTRAST_NORMAL_COMPOSITION_EXACT",
+  "curvature_term_in_primary_drive": false,
+  "drive_authority": "R5R1 adaptive_directional_drive.front_drive",
+  "drive_formula": "max(local_positive_tensile_strain - perimeter_weighted_mean_strain, 0)",
+  "drive_identity_error": 0.0,
+  "fission_or_topology_information_read": false,
+  "force_authority": "R6 funded extra-force path and frozen force budget",
+  "force_bound": 0.5,
+  "maximum_requested_force": 0.009111497802685761,
+  "new_free_parameters": 0,
+  "normal_authority": "R6 orientation-aware current_local_inward_normal",
+  "normal_identity_error": 0.0,
+  "pass": true,
+  "reflection_drive_error": 0.0,
+  "reflection_normal_error": 0.0,
+  "requested_a": 0.00019323641638127064,
+  "rotation_drive_error": 1.4432899320127035e-15,
+  "rotation_normal_error": 1.7763568394002505e-15,
+  "uniform_no_strain_max_drive": 0.0
+}

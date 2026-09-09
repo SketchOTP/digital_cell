@@ -788,3 +788,13 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Both active arms close A-to-W; motor-off matches passive and zero-A spends zero active A. The unchanged `7/10` and `6/10` gates fail, so mutation, selection, reversal, and final integration are `NOT_REACHED_GATE8_STOP`.
 - Provisional classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`. End goal remains `NOT_ESTABLISHED`; shutdown recommendation remains `NO — OWNER OVERRIDE ACTIVE`; independent Architect acceptance is `PENDING`; no successor execution started.
 - Repository-wide `scripts/validate_governance.py --mode ADOPTED` remains a `KNOWN_FAIL_PREEXISTING_APPEND_ONLY_SCHEMA_DRIFT`; R6 does not rewrite inherited append-only history to satisfy the newer validator schema and does not claim this check as PASS.
+
+## DC-FINAL-001-R7 strain-contrast normal provisional result
+
+- External Architect disposition on R6: `R6_ACCEPTED_BOUNDED_ADVANCE_REPLAN`; owner shutdown override remains active. R7 is the sole authorized cross-composition and starts from exact governed head `f1bee528888a91a8a2553ecea4973f5a5b851ab9`.
+- The implementation is exactly the R5R1 perimeter-weighted mean-relative positive tensile-strain drive composed with the R6 orientation-aware A-funded inward-normal force. It introduces zero free parameters, no curvature in the primary drive, and no fission/topology/observer information.
+- Cross-composition, rigid rotation/translation/reflection, uniform-strain silence, force bound, motor-off parity, zero-A, and A-to-W closure checks pass. R7 A spent `0.32794839651027263`; W produced `0.32794839607456083`.
+- Matched campaigns: passive `3/10` fissions and `2/10` viable pairs; R5R1 tangential `3/10` and `3/10`; R6 curvature-normal `3/10` and `2/10`; R7 strain-contrast normal `1/10` and `0/10`.
+- The conditional same-signal tangential composition is `NOT_REQUIRED_BY_GATE6`: normal-only improves neither fission nor viable-pair count relative to both passive and R5R1. No successor reproduction mechanism is executed.
+- The sole R7 fission occurs at step `8226`; both daughters complete 3,000 simple/runtime/lifecycle-valid steps, but daughter A fails A retention (`0.7058542506592405`) and daughter B ends not closed-intact.
+- Provisional classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`. Evolution and final M1-M5 integration are `NOT_REACHED_GATE7_STOP`; Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown recommendation remains `NO — OWNER OVERRIDE ACTIVE`; independent Architect acceptance is `PENDING`; next execution is `false`.

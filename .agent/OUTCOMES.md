@@ -2464,3 +2464,12 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Campaigns: passive `3/10` fissions, `2/10` viable pairs; R5R1 tangential `3/10`, `3/10`; normal-only `3/10`, `2/10`; conditional normal-plus-tangential `5/10`, `2/10`. Motor-off matches passive; zero-A spends zero active A.
 - Robust production-V4 reproduction fails unchanged thresholds. Provisional classification `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`; end goal `NOT_ESTABLISHED`; shutdown `NO — OWNER OVERRIDE ACTIVE`; downstream evolution/final integration not reached.
 - Governance tooling note: repository-wide `scripts/validate_governance.py --mode ADOPTED` is an inherited `KNOWN_FAIL_PREEXISTING_APPEND_ONLY_SCHEMA_DRIFT`; no sealed record was rewritten and the R6 exact-head workflow validates bounded scope, repository script tests, evidence reproducibility, and manifest integrity instead.
+
+## DC-FINAL-001-R7 strain-contrast normal emergency closure
+
+- Exact R6 authority and canonical Notion R7 authorization pass. Scientific result head: `0dac294efce2745a99d423f28c31065fcbf29e76`; exact-head CI/artifact remain pending.
+- `STRAIN_CONTRAST_NORMAL_COMPOSITION_EXACT` passes: drive and normal identity errors are zero, rigid transform/reflection errors are below `1.8e-15`, uniform-strain drive is zero, and there are no new free parameters or primary curvature terms.
+- Controls pass: motor-off is bitwise-equivalent to passive at observed state/event boundaries, zero-A spends `0`, and active A-to-W residual is `4.3571179997314857e-10`.
+- Campaigns reproduce passive `3/10, 2/10`, R5R1 tangential `3/10, 3/10`, and R6 curvature-normal `3/10, 2/10`. R7 strain-contrast normal falls to `1/10` fission and `0/10` viable pairs.
+- Gate 6 does not authorize normal-plus-tangential because R7 improves neither preregistered outcome relative to both controls. Gate 7 fails; mutation, selection, reversal, and final integration remain not reached.
+- Provisional classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`; end goal `NOT_ESTABLISHED`; shutdown `NO — OWNER OVERRIDE ACTIVE`; independent Architect acceptance pending.

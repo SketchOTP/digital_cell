@@ -1,0 +1,11 @@
+{
+  "r7_strain_contrast_normal": {
+    "pass": true,
+    "produced_w": 0.32794839607456083,
+    "requested_a": 0.32794839651027263,
+    "residual": 4.3571179997314857e-10,
+    "spent_a": 0.32794839651027263
+  },
+  "r7_strain_contrast_normal_plus_tangential": null,
+  "zero_a_spent": 0.0
+}

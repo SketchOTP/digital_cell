@@ -1172,3 +1172,11 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Frozen boundaries: M1, V4 maturation/growth/topology/fission/viability, force/cost bounds, mutation parameters, R2 ecology, M2/M3, PR #44, and all semantic division/controller prohibitions.
 - Stop rule: no additional force coefficient, target, fission threshold, nearest-apposition input, or successor mechanism. Stop before evolution if robust reproduction remains below `7/10` fissions or `6/10` viable pairs.
 - Execution result: mismatch supported; normal-only `3/10` and `2/10`; conditionally executed normal-plus-tension `5/10` and `2/10`; robust reproduction remains unestablished and downstream work is not reached.
+
+## DC-FINAL-001-R7-STRAIN-CONTRAST-NORMAL-CONSTRICTION-EMERGENCY-CLOSURE-001
+
+- Issued by the external Architect after accepting R6 as a bounded advance; owner shutdown override remains active and R7 is the sole authorized execution.
+- Largest unresolved end-goal gap: robust production-V4 reproduction, causally upstream of mutation, selection, reversal, and integrated M1-M5 closure.
+- Authorized execution: compose the exact R5R1 zero-parameter mean-relative tensile-strain signal with the exact R6 A-funded inward-normal actuator. Keep tangential activity zero in the primary arm and execute the same-signal combined arm only if normal-only improves fission or viable-pair count relative to both passive and R5R1 while remaining below qualification.
+- Supersedes/collapses the remaining localization-versus-actuator ambiguity without adding another biological mechanism. V4 biology, fission, viability, force/cost bounds, M1-M3, mutation, ecology, and PR #44 remain frozen.
+- Stop boundary reached: R7 normal-only yields `1/10` fissions and `0/10` viable pairs, so the conditional arm is not authorized and evolution/final integration are not reached. No successor reproduction architecture executes.

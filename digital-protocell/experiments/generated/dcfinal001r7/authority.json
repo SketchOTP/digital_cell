@@ -1,0 +1,14 @@
+{
+  "directive": "DC-FINAL-001-R7-STRAIN-CONTRAST-NORMAL-CONSTRICTION-EMERGENCY-CLOSURE-001",
+  "independent_architect_acceptance": "PENDING",
+  "r6_artifact_sha256": "35277c82d95754ef2abc3e0fd7911590fab80893a778f521ff4ee0175f4b8639",
+  "r6_authority": "PASS",
+  "r6_exact_head_ci": {
+    "result": "PASS",
+    "run": 34357939278
+  },
+  "r6_governed_head": "f1bee528888a91a8a2553ecea4973f5a5b851ab9",
+  "r6_scientific_head": "e52fa4427a895b550b3be01ada5761b3be498f3e",
+  "result_scientific_head": "0dac294efce2745a99d423f28c31065fcbf29e76",
+  "starting_governed_head": "f1bee528888a91a8a2553ecea4973f5a5b851ab9"
+}

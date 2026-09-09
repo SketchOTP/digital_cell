@@ -1148,3 +1148,11 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Correcting force direction alone does not restore robust V4 reproduction. Normal-only matches passive event/viability counts; adding the same drive through both existing normal and tangential channels increases fission count to `5/10` but leaves only `2/10` viable pairs.
 - Scission count and viable reproduction remain distinct. The unchanged daughter-continuation gate, not raw fission frequency, prevents qualification.
 - Evolution remains causally downstream and must not execute when robust production-V4 reproduction fails.
+
+## DC-FINAL-001-R7 cross-composition learning
+
+- Sharp localization and inward-normal actuator geometry are not independently sufficient pieces whose direct composition restores reproduction. The exact composition reduces lawful fission and viable-pair counts below all three matched reference campaigns.
+- The R7 drive remains sharply localized (mean active perimeter `0.025468928294808558`), yet five arms remain apposition-range limited and four remain stress-qualification limited. Localization sharpness alone does not imply mechanically effective furrowing.
+- The only R7 fission is not a viable reproductive event: both daughters preserve simple/runtime/lifecycle-valid continuation, but distinct physiological/closure predicates fail. This reinforces the governed distinction between scission and reproduction.
+- The conditional same-signal tangential arm must remain unexecuted because its explicit improvement precondition is false; a nearby composition is not evidence-authorized merely because the primary result is negative.
+- Evolution and final integration remain causally blocked by robust production-V4 reproduction.

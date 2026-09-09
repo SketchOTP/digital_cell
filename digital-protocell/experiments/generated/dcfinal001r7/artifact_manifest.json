@@ -1,0 +1,155 @@
+{
+  "file_count": 30,
+  "files": [
+    {
+      "bytes": 195,
+      "path": "architect_disposition.json",
+      "sha256": "6c155aeb6d3633a3effc62ee7f824d342a492b974e720e61d40ea68dbf43bf52"
+    },
+    {
+      "bytes": 614,
+      "path": "authority.json",
+      "sha256": "002eeb08ee7dae0b9937df9603abd79d316afe955adb3e3d8b1d7e9d801ded4c"
+    },
+    {
+      "bytes": 197,
+      "path": "checkpoint_restart.json",
+      "sha256": "1b563a73aded10626a76c3ec07ad1afb56d7282596b688dede6d5417394bceff"
+    },
+    {
+      "bytes": 897,
+      "path": "cross_composition_contract.json",
+      "sha256": "92408d9af0aac1b334c6d7787d9f5721a5cb2ce751ac31def642efa8e20ebd6b"
+    },
+    {
+      "bytes": 3523,
+      "path": "daughter_continuation.json",
+      "sha256": "ae4191d4ef35a640306c3627410918f80b1ff73eeb767732eddf5d2daa4869a5"
+    },
+    {
+      "bytes": 203,
+      "path": "development_preservation.json",
+      "sha256": "06701a747b1041ac6106251be2263ff0fd59a2e92e274ee82189f96e2899acd0"
+    },
+    {
+      "bytes": 109,
+      "path": "environment_a_selection.json",
+      "sha256": "d828c704ece23474e75c4fc860e38fcb440adffd6bacd3b7b1993b8191e29971"
+    },
+    {
+      "bytes": 109,
+      "path": "environment_b_selection.json",
+      "sha256": "d828c704ece23474e75c4fc860e38fcb440adffd6bacd3b7b1993b8191e29971"
+    },
+    {
+      "bytes": 198,
+      "path": "experiential_memory.json",
+      "sha256": "ac189a7c8c56495810e4687c585bbbd9262918b6eed189f95b0ea8abda9f7f97"
+    },
+    {
+      "bytes": 947,
+      "path": "external_prior_art.json",
+      "sha256": "89597e5c0cd25a0865e12c7f53ecc2788787e9cb10469b8a9c17c70f29fb56b5"
+    },
+    {
+      "bytes": 305,
+      "path": "final_goal_matrix.json",
+      "sha256": "40b3147be6303726a785474a33ed85a59965f00da6771b2fb0b5053d0bc7d3ee"
+    },
+    {
+      "bytes": 404,
+      "path": "forbidden_information_audit.json",
+      "sha256": "3920a810949a606ec01d761a190e81551266bb0a60f98fc8c026e05fe4e1be11"
+    },
+    {
+      "bytes": 619,
+      "path": "global_material_energy_closure.json",
+      "sha256": "c6e60f7eaebb514cdd0707adb28560bce3dd82ae57c98c26ecc32422829cfa59"
+    },
+    {
+      "bytes": 197,
+      "path": "godot_independence.json",
+      "sha256": "35a1c0782187bfde7cc5c9518181580d70fb3b4bce5f43b5b7fc0c858c91c1f3"
+    },
+    {
+      "bytes": 192,
+      "path": "linux_runtime.json",
+      "sha256": "4b7aac18f59cff774eb2932aae9bb20f9f110ec47f6701c9837bdf56835c7731"
+    },
+    {
+      "bytes": 344,
+      "path": "m1_preservation.json",
+      "sha256": "29146025d3643ae298634cfd64b6fd718420e405cce7353a511f421cb0cb0146"
+    },
+    {
+      "bytes": 194,
+      "path": "m2_preservation.json",
+      "sha256": "66247eb875fa4fc0457043e7bf924b65990f215331b19f2782df98ee07e620c6"
+    },
+    {
+      "bytes": 2199,
+      "path": "matched_controls.json",
+      "sha256": "956d5203f5941a1f96d110832c735dd5a57b1ca3e8c29e8d60e1d305a6d8cf72"
+    },
+    {
+      "bytes": 109,
+      "path": "mutation_off_control.json",
+      "sha256": "d828c704ece23474e75c4fc860e38fcb440adffd6bacd3b7b1993b8191e29971"
+    },
+    {
+      "bytes": 289,
+      "path": "normal_force_energy_closure.json",
+      "sha256": "7d8add92d9ff1554290378685b099e33d8da23329fb7fcc63cda4e4224441bbe"
+    },
+    {
+      "bytes": 155,
+      "path": "owner_override.json",
+      "sha256": "3b02d87c93bd8558d4132c45491f47d7634b12691cd960d779b6b68ddf84359c"
+    },
+    {
+      "bytes": 33447,
+      "path": "per_fission_daughter_diagnostics.json",
+      "sha256": "34911e28b881777e2eeec2ef7488298411634a3d00b10801809097d9b591491b"
+    },
+    {
+      "bytes": 678,
+      "path": "qualification.json",
+      "sha256": "f44aecabf8db77e8fe4e0c445a24c8bc846d5f544afc1f69aec010f6941e6b69"
+    },
+    {
+      "bytes": 49293,
+      "path": "reproduction_campaign.json",
+      "sha256": "71d9479b7fc7aa05ab6571c07df182717bd75715df7b1c751792910f83bdf033"
+    },
+    {
+      "bytes": 885,
+      "path": "reproduction_qualification.json",
+      "sha256": "8ed30e1b6a22a811ef959c774b72a8c1b85ae7b385d13b8dc015de902148ef77"
+    },
+    {
+      "bytes": 109,
+      "path": "reversal.json",
+      "sha256": "d828c704ece23474e75c4fc860e38fcb440adffd6bacd3b7b1993b8191e29971"
+    },
+    {
+      "bytes": 197,
+      "path": "sensory_embodiment.json",
+      "sha256": "b322f19435e99d2b6b8a247ac0a4707058e4fc40a63ef991ce2e96418a03bf87"
+    },
+    {
+      "bytes": 39814,
+      "path": "strain_contrast_normal_signal.json",
+      "sha256": "582977680e289fb0368c01847125b9c9d8fab684c490a9b7a4594190eefe6e5b"
+    },
+    {
+      "bytes": 109,
+      "path": "v4_mutant_lineage.json",
+      "sha256": "d828c704ece23474e75c4fc860e38fcb440adffd6bacd3b7b1993b8191e29971"
+    },
+    {
+      "bytes": 109,
+      "path": "v4_mutation.json",
+      "sha256": "d828c704ece23474e75c4fc860e38fcb440adffd6bacd3b7b1993b8191e29971"
+    }
+  ]
+}

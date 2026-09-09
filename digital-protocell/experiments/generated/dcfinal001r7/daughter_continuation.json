@@ -1,0 +1,98 @@
+{
+  "diagnostics": {
+    "physical_fissions": 1,
+    "rows": [
+      {
+        "diagnostics": {
+          "both_viable": false,
+          "daughter_a": {
+            "a_retention": 0.7058542506592405,
+            "all_lifecycle_invariants_hold": true,
+            "all_runtime_valid": true,
+            "all_simple": true,
+            "c_retention": 0.9720789564440823,
+            "closed_intact": true,
+            "completed_steps": 3000,
+            "initial": {
+              "a_amount": 1614.7471168177751,
+              "a_concentration": 1.0008835184622578,
+              "area": 1613.3217172949835,
+              "c_amount": 1493.360000627606,
+              "c_concentration": 0.9256430286771852,
+              "closed_intact": true,
+              "lifecycle_valid": true,
+              "observer_viable": true,
+              "runtime_valid": true,
+              "simple": true,
+              "structural_mass": 552.2560025276601
+            },
+            "observer_viable": true,
+            "terminal": {
+              "area": 1194.7437966439902,
+              "lifecycle_invariants_hold": true,
+              "mass": 346.8217217089223,
+              "mature_mass": 202.34307890492968,
+              "perimeter": 194.2881579247632,
+              "physical_runtime_valid": true,
+              "simple": true,
+              "vertices": 95,
+              "young_mass": 144.47864280399264
+            },
+            "terminal_a_amount": 844.0600716707066,
+            "terminal_a_concentration": 0.706477885921361,
+            "terminal_c_amount": 1075.0282093853798,
+            "terminal_c_concentration": 0.8997981093562579,
+            "viable": false
+          },
+          "daughter_b": {
+            "a_retention": 1.2473683627116328,
+            "all_lifecycle_invariants_hold": true,
+            "all_runtime_valid": true,
+            "all_simple": true,
+            "c_retention": 1.1229063244255135,
+            "closed_intact": false,
+            "completed_steps": 3000,
+            "initial": {
+              "a_amount": 632.2474585511067,
+              "a_concentration": 1.0008835184622578,
+              "area": 631.6893493485456,
+              "c_amount": 584.7188425141082,
+              "c_concentration": 0.9256430286771851,
+              "closed_intact": true,
+              "lifecycle_valid": true,
+              "observer_viable": true,
+              "runtime_valid": true,
+              "simple": true,
+              "structural_mass": 272.7196808691593
+            },
+            "observer_viable": true,
+            "terminal": {
+              "area": 1137.7880473105818,
+              "lifecycle_invariants_hold": true,
+              "mass": 226.5672563985646,
+              "mature_mass": 117.01423351889373,
+              "perimeter": 124.80644328028872,
+              "physical_runtime_valid": true,
+              "simple": true,
+              "vertices": 57,
+              "young_mass": 109.55302287967088
+            },
+            "terminal_a_amount": 1420.4947391479482,
+            "terminal_a_concentration": 1.2484704356893248,
+            "terminal_c_amount": 1182.62874195652,
+            "terminal_c_concentration": 1.0394104110619982,
+            "viable": false
+          },
+          "step": 8226
+        },
+        "fission_step": 8226,
+        "mode": "STRAIN_CONTRAST_NORMAL_ONLY",
+        "name": "seed_3_c_0.08"
+      }
+    ]
+  },
+  "qualification": "FAIL_THRESHOLD",
+  "r7_physical_fissions": 1,
+  "r7_simple_viable_pairs": 0,
+  "required_simple_viable_pairs": 6
+}

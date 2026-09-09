@@ -1679,3 +1679,14 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Result: normal-only `3/10` fissions and `2/10` viable pairs; conditional normal-plus-tension `5/10` and `2/10`. Robust V4 reproduction remains below `7/10` and `6/10`.
 - Classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`. End goal remains `NOT_ESTABLISHED`; shutdown recommendation is `NO — OWNER OVERRIDE ACTIVE`; independent Architect acceptance is `PENDING`; next execution is `false`.
 - Governance validator disposition: `KNOWN_FAIL_PREEXISTING_APPEND_ONLY_SCHEMA_DRIFT`; preserving immutable historical records takes precedence over retroactive schema normalization, and R6 does not elevate this inherited validator failure to a scientific failure or a PASS.
+
+## DEC-DCFINAL001-R7-EXACT-CROSS-COMPOSITION-STOP
+
+- Date: `2026-09-09`
+- Status: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE_OWNER_OVERRIDE_ACTIVE`
+- Record or decision ID: `DEC-DCFINAL001-R7-EXACT-CROSS-COMPOSITION-STOP`
+- External Architect accepts R6 as `R6_ACCEPTED_BOUNDED_ADVANCE_REPLAN` and authorizes only the exact R5R1 strain-contrast plus R6 inward-normal composition under owner override.
+- Result: cross-composition and energy/null controls pass with zero new parameters, but the ten-arm campaign yields only `1/10` lawful fissions and `0/10` viable pairs versus fixed requirements `7/10` and `6/10`.
+- Gate 6 conditional normal-plus-tangential composition is not executed because normal-only improves neither fission nor viable-pair count relative to both passive and R5R1.
+- Classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`. Evolution/final integration are `NOT_REACHED_GATE7_STOP`; end goal remains `NOT_ESTABLISHED`; shutdown recommendation is `NO — OWNER OVERRIDE ACTIVE`; independent Architect acceptance is `PENDING`; next execution is `false`.
+- Scientific result head: `0dac294efce2745a99d423f28c31065fcbf29e76`; exact-head Linux CI and artifact are pending.

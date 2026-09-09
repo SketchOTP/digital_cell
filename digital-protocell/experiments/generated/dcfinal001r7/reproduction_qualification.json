@@ -1,0 +1,41 @@
+{
+  "classification": "V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED",
+  "observed": {
+    "geometry_valid_fissions": 1,
+    "growth_qualified": 10,
+    "pass": false,
+    "reference_counts": {
+      "passive": {
+        "fissions": 3,
+        "growth": 10,
+        "viable_pairs": 2
+      },
+      "r5r1_tangential": {
+        "fissions": 3,
+        "viable_pairs": 3
+      },
+      "r6_curvature_normal": {
+        "fissions": 3,
+        "viable_pairs": 2
+      },
+      "r7_strain_contrast_normal": {
+        "fissions": 1,
+        "growth": 10,
+        "viable_pairs": 0
+      }
+    },
+    "selected": "STRAIN_CONTRAST_NORMAL_ONLY",
+    "simple_viable_daughter_pairs": 0,
+    "thresholds": {
+      "fissions": 7,
+      "growth": 8,
+      "viable_pairs": 6
+    }
+  },
+  "pass": false,
+  "required": {
+    "geometry_valid_fissions": 7,
+    "growth": 8,
+    "viable_pairs": 6
+  }
+}
