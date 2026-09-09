@@ -193,6 +193,10 @@ name = "dcfinal001_r7_strain_contrast_normal"
 path = "../../examples/dcfinal001_r7_strain_contrast_normal.rs"
 
 [[example]]
+name = "dcfinal001_r8_v4_closure"
+path = "../../examples/dcfinal001_r8_v4_closure.rs"
+
+[[example]]
 name = "dcdev021_m2_entry020"
 path = "../../examples/dcdev021_m2_entry020.rs"
 

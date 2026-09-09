@@ -98,28 +98,43 @@ fn try_local_fission_at_vertices(
         return None;
     }
     let need = parent.rho_s * dist;
+    let v4 = parent.is_maturation_coupled();
+    // A fission creates two distinct daughter boundaries. Under V4 each new
+    // edge receives the full line-density mass required for its own length;
+    // historical contracts retain their exact shared-cross-bond semantics.
+    let closure_mass_per_daughter = if v4 { need } else { need * 0.5 };
+    let total_closure_mass = 2.0 * closure_mass_per_daughter;
+    let v4_yield = crate::mesh_growth::Y_G_CANDIDATES[0];
+    let v4_a_need = total_closure_mass / v4_yield.max(1e-15);
     let area = parent.area().max(1e-6);
     let have_a = parent.interior.a.max(0.0) * area;
     let conservative = parent.uses_observer_only_death();
-    if have_a < if conservative { need } else { need * 0.25 } {
+    let required_a = if v4 {
+        v4_a_need
+    } else if conservative {
+        need
+    } else {
+        need * 0.25
+    };
+    if have_a < required_a {
         return None;
     }
 
     // Build two loops: i→j and j→i with shared closing edges (cross bonds).
     let close_ab = MeshEdge {
-        m: need * 0.5,
+        m: closure_mass_per_daughter,
         b: 0.0,
         tracer_m: 0.0,
         tracer_b: 0.0,
-        m_young: need * 0.5,
+        m_young: closure_mass_per_daughter,
         ruptured: false,
     };
     let close_ba = MeshEdge {
-        m: need * 0.5,
+        m: closure_mass_per_daughter,
         b: 0.0,
         tracer_m: 0.0,
         tracer_b: 0.0,
-        m_young: need * 0.5,
+        m_young: closure_mass_per_daughter,
         ruptured: false,
     };
 
@@ -224,16 +239,26 @@ fn try_local_fission_at_vertices(
     // Cost of cross-bond: A consumed (leakage/waste).
     // Conservative v2 pays the full cross-bond mass from A. Historical v1
     // retains its legacy half-cost and explicit W leakage for compatibility.
-    let take = if conservative {
+    let take = if v4 {
+        v4_a_need
+    } else if conservative {
         need
     } else {
         (need * 0.5).min(have_a)
     };
-    let leakage = take;
+    let v4_w_product = if v4 {
+        (take - total_closure_mass).max(0.0)
+    } else {
+        0.0
+    };
+    let leakage = if v4 { 0.0 } else { take };
     // Deduct from daughters proportionally (already split); reduce A slightly.
     d1.interior.a = (d1.interior.a - (take * f1) / d1.area().max(1e-9)).max(0.0);
     d2.interior.a = (d2.interior.a - (take * f2) / d2.area().max(1e-9)).max(0.0);
-    if !parent.uses_observer_only_death() {
+    if v4 {
+        d1.interior.w += (v4_w_product * f1) / d1.area().max(1e-9);
+        d2.interior.w += (v4_w_product * f2) / d2.area().max(1e-9);
+    } else if !parent.uses_observer_only_death() {
         d1.interior.w += (take * f1) / d1.area().max(1e-9);
         d2.interior.w += (take * f2) / d2.area().max(1e-9);
     }
@@ -265,8 +290,10 @@ fn try_local_fission_at_vertices(
             .map(|state| state.catalysts.iter().sum::<f64>())
             .unwrap_or(0.0);
 
-    // Structural: parent m + new cross-bond mass ≈ post (cross bonds add need)
-    let residual_m = (post_m - (pre_m + need)).abs();
+    // Structural: parent m plus the exact contract-specific daughter closure
+    // mass. V4 creates two full-density edges; historical contracts preserve
+    // the shared single-edge budget.
+    let residual_m = (post_m - (pre_m + total_closure_mass)).abs();
     let residual_b = (post_b - pre_b).abs();
     let residual_l = (post_l - pre_l).abs();
     let residual_c = (post_c - pre_c).abs();
@@ -276,7 +303,9 @@ fn try_local_fission_at_vertices(
     let residual_a = (post_a - (pre_a - take)).abs();
     let residual_n = (post_n - pre_n).abs();
     let residual_f = (post_f - pre_f).abs();
-    let expected_w = if parent.uses_observer_only_death() {
+    let expected_w = if v4 {
+        pre_w + v4_w_product
+    } else if parent.uses_observer_only_death() {
         pre_w
     } else {
         pre_w + take

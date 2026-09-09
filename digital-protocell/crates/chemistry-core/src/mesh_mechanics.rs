@@ -137,8 +137,13 @@ pub fn compute_forces_with_reference_lengths(
         // Stretch: dE/dℓ = k_s (ℓ-ℓ0)/ℓ0 ; clamp reference length so mass-damaged
         // edges cannot produce unbounded restoring forces that hang remesh.
         let l_ref = l0.max(0.25 * len).max(1e-3);
-        let fs = params.k_s * (len - l0) / l_ref;
-        let fs = fs.clamp(-params.k_s * 8.0, params.k_s * 8.0);
+        let fs_raw = params.k_s * (len - l0) / l_ref;
+        let fs_raw = fs_raw.clamp(-params.k_s * 8.0, params.k_s * 8.0);
+        // V4 young structure is explicitly non-load-bearing. Scale only the
+        // stretch contribution by the continuously varying mature fraction;
+        // pressure and bending remain unchanged. Historical contracts return
+        // a fraction of one and therefore retain exact prior behavior.
+        let fs = mesh.mature_structural_fraction(i) * fs_raw;
         let j = (i + 1) % n;
         f[i][0] += fs * t[0];
         f[i][1] += fs * t[1];

@@ -600,6 +600,63 @@ fn daughter_viability(mut mesh: MaterialMesh) -> Value {
         "runtime_valid": mesh.physical_runtime_valid(),
         "lifecycle_valid": mesh.lifecycle_invariants_hold(),
     });
+    let mut closing_edge_trace = Vec::new();
+    let mut cumulative_ruptures = 0_usize;
+    let mut cumulative_rebonds = 0_usize;
+    let mut cumulative_rebond_a = 0.0_f64;
+    let closing_state = |mesh: &MaterialMesh, step: usize, phase: &str| {
+        let indices = mesh
+            .edges
+            .iter()
+            .enumerate()
+            .filter(|(_, edge)| edge.b.abs() <= 1e-15 && edge.tracer_b.abs() <= 1e-15)
+            .map(|(index, _)| index)
+            .collect::<Vec<_>>();
+        let mut length = 0.0;
+        let mut material = 0.0;
+        let mut young = 0.0;
+        let mut max_raw_strain = f64::NEG_INFINITY;
+        let mut max_raw_stretch_force = 0.0_f64;
+        let mut max_load_bearing_stretch_force = 0.0_f64;
+        let mut max_load_bearing_strain = f64::NEG_INFINITY;
+        let mut ruptured = 0_usize;
+        for &index in &indices {
+            let edge = mesh.edges[index];
+            let edge_length = mesh.edge_length(index);
+            let rest = mesh.rest_length(index);
+            let l_ref = rest.max(0.25 * edge_length).max(1e-3);
+            let stretch = (mechanics.k_s * (edge_length - rest) / l_ref)
+                .clamp(-mechanics.k_s * 8.0, mechanics.k_s * 8.0);
+            length += edge_length;
+            material += edge.m.max(0.0);
+            young += mesh.young_structural_mass(index);
+            max_raw_strain = max_raw_strain.max(mesh.strain(index));
+            max_raw_stretch_force = max_raw_stretch_force.max(stretch.abs());
+            max_load_bearing_stretch_force = max_load_bearing_stretch_force
+                .max((mesh.mature_structural_fraction(index) * stretch).abs());
+            max_load_bearing_strain = max_load_bearing_strain.max(mesh.load_bearing_strain(index));
+            ruptured += usize::from(edge.ruptured);
+        }
+        json!({
+            "step":step,
+            "phase":phase,
+            "candidate_edge_indices":indices,
+            "edge_count":indices.len(),
+            "edge_length":length,
+            "m":material,
+            "m_young":young,
+            "mature_m":(material-young).max(0.0),
+            "m_over_rho_s_length":material/(mesh.rho_s*length).max(1e-300),
+            "mature_fraction":(material-young).max(0.0)/material.max(1e-300),
+            "rest_length_sum":indices.iter().map(|index|mesh.rest_length(*index)).sum::<f64>(),
+            "max_raw_strain":max_raw_strain,
+            "max_raw_stretch_force":max_raw_stretch_force,
+            "max_load_bearing_stretch_force":max_load_bearing_stretch_force,
+            "max_load_bearing_strain":max_load_bearing_strain,
+            "ruptured_edge_count":ruptured,
+        })
+    };
+    closing_edge_trace.push(closing_state(&mesh, 0, "birth"));
     let mut completed = 0_usize;
     let mut all_simple = polygon_simple(&mesh.vertices);
     let mut all_runtime = mesh.physical_runtime_valid();
@@ -615,7 +672,19 @@ fn daughter_viability(mut mesh: MaterialMesh) -> Value {
             break;
         }
         let _ = remesh_preserving_simple(&mut mesh);
-        let _ = topology_step(&mut mesh, &fission);
+        let a_before_topology = mesh.interior.a.max(0.0) * mesh.area().max(1e-300);
+        let ledger = topology_step(&mut mesh, &fission);
+        let a_after_topology = mesh.interior.a.max(0.0) * mesh.area().max(1e-300);
+        cumulative_ruptures += ledger.tension_ruptures;
+        cumulative_rebonds += ledger.local_rebonds;
+        cumulative_rebond_a += (a_before_topology - a_after_topology).max(0.0);
+        if step < 100 {
+            let mut row = closing_state(&mesh, step + 1, "post_topology");
+            row["step_ruptures"] = json!(ledger.tension_ruptures);
+            row["step_rebonds"] = json!(ledger.local_rebonds);
+            row["step_rebond_a"] = json!((a_before_topology - a_after_topology).max(0.0));
+            closing_edge_trace.push(row);
+        }
         all_simple &= polygon_simple(&mesh.vertices);
         all_runtime &= mesh.physical_runtime_valid();
         all_lifecycle &= mesh.lifecycle_invariants_hold();
@@ -655,6 +724,10 @@ fn daughter_viability(mut mesh: MaterialMesh) -> Value {
         "terminal_a_amount": mesh.interior.a.max(0.0) * mesh.area().max(1e-300),
         "terminal_c_concentration": mesh.interior.c,
         "terminal_c_amount": mesh.interior.c.max(0.0) * mesh.area().max(1e-300),
+        "closing_edge_trace_first_100_steps": closing_edge_trace,
+        "cumulative_topology_ruptures": cumulative_ruptures,
+        "cumulative_same_edge_rebonds": cumulative_rebonds,
+        "cumulative_a_spent_on_rebond": cumulative_rebond_a,
     })
 }
 
@@ -877,7 +950,14 @@ fn classify_attempt(mesh: &MaterialMesh, fission: &FissionParams) -> (String, Va
             (a[0] - b[0]).hypot(a[1] - b[1])
         })
     });
-    let need = candidate_distance.map(|d| mesh.rho_s * d);
+    let closure_a_need = candidate_distance.map(|distance| {
+        let one_edge_mass = mesh.rho_s * distance;
+        if mesh.is_maturation_coupled() {
+            2.0 * one_edge_mass / chemistry_core::mesh_growth::Y_G_CANDIDATES[0]
+        } else {
+            one_edge_mass
+        }
+    });
     let have_a = mesh.interior.a.max(0.0) * mesh.area().max(1e-6);
     let reason = if !distance.is_finite() {
         "NO_NONADJACENT_APPOSITION"
@@ -885,7 +965,10 @@ fn classify_attempt(mesh: &MaterialMesh, fission: &FissionParams) -> (String, Va
         "APPOSITION_OUTSIDE_LOCAL_RANGE"
     } else if stressed == 0 {
         "APPOSITION_PRESENT_BUT_STRESS_CONDITION_FALSE"
-    } else if need.map(|x| have_a + 1e-12 < x).unwrap_or(false) {
+    } else if closure_a_need
+        .map(|required| have_a + 1e-12 < required)
+        .unwrap_or(false)
+    {
         "PINCH_PRESENT_INSUFFICIENT_A"
     } else {
         "SCISSION_CANDIDATE_PRESENT"
@@ -894,8 +977,8 @@ fn classify_attempt(mesh: &MaterialMesh, fission: &FissionParams) -> (String, Va
         reason.to_string(),
         json!({
             "pairs": pairs, "candidate_distance": candidate_distance,
-            "absolute_a": have_a, "cross_bond_a_required": need,
-            "a_sufficient": need.map(|x| have_a + 1e-12 >= x),
+            "absolute_a": have_a, "cross_bond_a_required": closure_a_need,
+            "a_sufficient": closure_a_need.map(|required| have_a + 1e-12 >= required),
         }),
     )
 }
@@ -2093,6 +2176,92 @@ fn daughter_diagnostic_rows(runs: &[RunResult]) -> Value {
             "diagnostics": diagnostics,
         }))).collect::<Vec<_>>(),
     })
+}
+
+fn r8_fixture_path(name: &str) -> PathBuf {
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../../experiments/fixtures/dcfinal001r8")
+        .join(name)
+}
+
+fn replay_r8_daughter_fixture(name: &str) -> Value {
+    let path = r8_fixture_path(name);
+    let raw = fs::read_to_string(&path).expect("R8 daughter fixture must be readable");
+    let mesh: MaterialMesh =
+        serde_json::from_str(&raw).expect("R8 daughter fixture must be a MaterialMesh");
+    json!({
+        "fixture":name,
+        "source_sha256_recorded_in_protocol":true,
+        "corrected_continuation":daughter_viability(mesh),
+    })
+}
+
+pub fn run_r8() {
+    const R8_DIRECTIVE: &str = "DC-FINAL-001-R8-V4-FISSION-CLOSURE-MATERIAL-AND-LOAD-BEARING-CONSISTENCY-EMERGENCY-CLOSURE-001";
+    let mut output = PathBuf::from("/tmp/dcfinal001_r8_v4_closure.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let horizon = 14_778;
+    let daughter_replays = [
+        "r7_seed3_daughter_a.json",
+        "r7_seed3_daughter_b.json",
+        "r6_normal_seed3_viable_daughter_a.json",
+        "r6_normal_seed3_viable_daughter_b.json",
+        "r6_normal_tangential_seed3_nonviable_daughter_a.json",
+        "r6_normal_tangential_seed3_nonviable_daughter_b.json",
+    ]
+    .into_iter()
+    .map(replay_r8_daughter_fixture)
+    .collect::<Vec<_>>();
+
+    let passive = campaign(Mode::Passive, horizon);
+    let r5r1 = campaign(Mode::ContrastFallback, horizon);
+    let r6_normal = campaign(Mode::CurvatureNormal, horizon);
+    let r6_combined = campaign(Mode::CurvatureNormalTangential, horizon);
+    let counts = [
+        (Mode::Passive.label(), result_counts(&passive)),
+        (Mode::ContrastFallback.label(), result_counts(&r5r1)),
+        (Mode::CurvatureNormal.label(), result_counts(&r6_normal)),
+        (
+            Mode::CurvatureNormalTangential.label(),
+            result_counts(&r6_combined),
+        ),
+    ];
+    let robust = counts
+        .iter()
+        .any(|(_, (growth, fissions, viable))| *growth >= 8 && *fissions >= 7 && *viable >= 6);
+    fs::write(
+        output,
+        serde_json::to_vec_pretty(&json!({
+            "directive":R8_DIRECTIVE,
+            "starting_head":"7363cfaa2c459522583b70d8107f377c08467b76",
+            "qualification_horizon":horizon,
+            "new_free_parameters":0,
+            "daughter_fixture_replays":daughter_replays,
+            "campaign_counts":counts.iter().map(|(name,(growth,fissions,viable))|json!({
+                "mode":name,
+                "growth_qualified":growth,
+                "geometry_valid_fissions":fissions,
+                "simple_viable_daughter_pairs":viable,
+            })).collect::<Vec<_>>(),
+            "passive_corrected_v4":campaign_summary(&passive),
+            "r5r1_tangential_corrected_v4":campaign_summary(&r5r1),
+            "r6_curvature_normal_corrected_v4":campaign_summary(&r6_normal),
+            "r6_curvature_normal_plus_tangential_corrected_v4":campaign_summary(&r6_combined),
+            "robust_v4_reproduction":robust,
+            "classification":if robust {
+                "V4_FISSION_CLOSURE_CONSISTENCY_REPAIRED_ROBUST_REPRODUCTION_QUALIFIED"
+            } else {
+                "V4_FISSION_CLOSURE_CONSISTENCY_REPAIRED_ROBUST_REPRODUCTION_NOT_ESTABLISHED"
+            },
+        }))
+        .unwrap(),
+    )
+    .unwrap();
 }
 
 pub fn run_r7() {

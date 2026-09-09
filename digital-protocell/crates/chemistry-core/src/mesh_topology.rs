@@ -45,7 +45,7 @@ pub fn tension_rupture_step(mesh: &mut MaterialMesh, topo: &TopologyParams) -> u
         if mesh.edges[i].ruptured {
             continue;
         }
-        if mesh.strain(i) > topo.strain_rupture {
+        if mesh.load_bearing_strain(i) > topo.strain_rupture {
             let rem = mesh.edges[i].m;
             mesh.edges[i].m = 0.0;
             mesh.edges[i].b *= 0.5;

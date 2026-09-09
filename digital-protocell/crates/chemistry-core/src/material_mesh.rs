@@ -308,6 +308,27 @@ impl MaterialMesh {
         (self.edges[i].m.max(0.0) - self.young_structural_mass(i)).max(0.0)
     }
 
+    /// Fraction of structural material that is mature and load-bearing.
+    /// Historical contracts have no young subpool and therefore remain fully
+    /// load-bearing. A V4 edge with no structural mass carries no stretch load.
+    pub fn mature_structural_fraction(&self, i: usize) -> f64 {
+        if !self.is_maturation_coupled() {
+            return 1.0;
+        }
+        let total = self.edges[i].m.max(0.0);
+        if total <= 0.0 {
+            0.0
+        } else {
+            (self.mature_structural_mass(i) / total).clamp(0.0, 1.0)
+        }
+    }
+
+    /// Tension measure carried by mature V4 structure. Non-V4 contracts keep
+    /// the historical raw-strain criterion exactly.
+    pub fn load_bearing_strain(&self, i: usize) -> f64 {
+        self.mature_structural_fraction(i) * self.strain(i)
+    }
+
     pub fn total_young_structural_mass(&self) -> f64 {
         (0..self.n()).map(|i| self.young_structural_mass(i)).sum()
     }
@@ -658,10 +679,8 @@ mod tests {
 
     #[test]
     fn missing_legacy_assimilation_fields_default_to_zero() {
-        let chem: LumpedChem = serde_json::from_str(
-            r#"{"c":1.0,"a":2.0,"n":3.0,"f":4.0,"w":5.0}"#,
-        )
-        .expect("historical chemistry JSON remains readable");
+        let chem: LumpedChem = serde_json::from_str(r#"{"c":1.0,"a":2.0,"n":3.0,"f":4.0,"w":5.0}"#)
+            .expect("historical chemistry JSON remains readable");
         assert_eq!(chem.assimilation_n, 0.0);
         assert_eq!(chem.assimilation_f, 0.0);
     }
