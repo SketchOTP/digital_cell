@@ -2385,6 +2385,16 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Independently downloaded artifact ZIP digest: `sha256:f2abe6a7bdd100a7f86b0c160a8abb45ec99000ca6f77d92ee6d4b99b13d14e3`.
 - Result remains `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; independent Architect acceptance is `PENDING`, and no successor execution started.
 
+## DC-FINAL-001-R5R1 provisional terminal result
+
+- R5 authority reconciles at governed head `404dd374b8a75adc6b77a97c064b0197ab334628`, workflow `34332924972 PASS`, artifact `sha256:1fd65c568efcc9ceed7ae98294837fcbad5c00038094bd8b81016cd016f40935`; R5's bounded negative is externally accepted.
+- Original regulator localization is `SPATIALLY_NONUNIFORM_BUT_FUNCTIONALLY_DIFFUSE`: activity is positive over effectively the full membrane and all ten nearest-apposition activity-to-later-neck-narrowing correlations are nonpositive.
+- The zero-parameter adaptive comparator executes exactly as authorized. Mean active perimeter falls from `0.9999994005552676` to `0.029579522272524923`, and largest contiguous active arc falls from `0.999995823421411` to `0.018197300775532825`.
+- This numerical localization does not produce robust neck mechanics. Contrast yields `3/10` valid fissions and `3/10` simple viable daughter pairs, versus passive `3/10` / `2/10` and original regulator `4/10` / `1/10`.
+- Active A-to-W closure passes with residual `1.0364402669438277e-9`; all contrast parents remain simple, runtime-valid, and lifecycle-valid. Motor-off parity and zero-A active-work elimination pass.
+- The unchanged robust thresholds fail. Evolution and final integration are `NOT_REACHED_GATE5_STOP`; classification is `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`; end goal `NOT_ESTABLISHED`; shutdown recommendation `true`; next execution `false`; independent Architect acceptance `PENDING`.
+- Scientific result head: `cadf6d283cc7f77f243e5958fd8be22d5ee804c9`; exact-head CI and artifact remain pending.
+
 ## DC-FINAL-001-R5 provisional bounded terminal result
 
 - Exact R4 ten-arm passive replay: `10/10` growth, `2/10` geometry-valid fissions, `1/10` simple viable pair; all parent trajectories simple/runtime-valid/lifecycle-valid.

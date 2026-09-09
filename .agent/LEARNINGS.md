@@ -1132,3 +1132,11 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - The existing tensile-strain regulator remains measurably spatial, correlates strongly with its positive-strain input, and closes A-to-W active work, yet does not reliably predict later neck narrowing and reaches only `4/10` fissions with `1/10` viable pair.
 - The conditional contrast fallback must not execute merely because the primary candidate failed; its explicit spatial-collapse precondition is false.
 - Evolutionary harness preservation is not evolutionary qualification. R5 correctly stops mutation/selection/reversal and final integration at the failed production-V4 reproduction gate.
+
+## DC-FINAL-001-R5R1 localization and terminal reproduction learning
+
+- A nonzero spatial variance is not evidence of functional localization. The frozen regulator has strong local strain coupling but is active over effectively the entire membrane and does not positively predict later narrowing at the nearest apposition.
+- The existing adaptive comparator provides the exact authorized zero-parameter contrast and sharply localizes activity without target coordinates or new state. Numerical localization alone is nevertheless insufficient: its active regions do not reliably coincide with or create future apposition/neck narrowing.
+- A fission count cannot replace viable reproduction. The contrast zero-A control reaches `7/10` fissions while producing `0/10` viable pairs; the unchanged paired viability requirement remains essential.
+- Contrast improves viability conditional on fission (`3/3` counted pairs) but reduces event frequency to `3/10`, leaving robust reproduction unqualified.
+- With passive, broad strain-regulated contractility, and the sole zero-parameter localization fallback exhausted under fixed laws, R5R1 reaches the externally defined terminal stop. No further reproduction mechanism or evolutionary execution is authorized without a new independent directive.

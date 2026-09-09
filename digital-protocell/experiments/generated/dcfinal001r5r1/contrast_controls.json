@@ -1,0 +1,61 @@
+{
+  "contrast_motor_off": {
+    "all_lifecycle_valid": true,
+    "all_parent_states_simple": true,
+    "all_runtime_valid": true,
+    "arms": 10,
+    "geometry_valid_fissions": 3,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 2
+  },
+  "contrast_zero_a": {
+    "all_lifecycle_valid": true,
+    "all_parent_states_simple": true,
+    "all_runtime_valid": true,
+    "arms": 10,
+    "geometry_valid_fissions": 7,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 0
+  },
+  "motor_off_passive_parity": true,
+  "observed": {
+    "contrast_motor_off": {
+      "fissions": 3,
+      "viable_pairs": 2
+    },
+    "contrast_zero_a": {
+      "active_a_spent": 0.0,
+      "fissions": 7,
+      "viable_pairs": 0
+    },
+    "original_regulator": {
+      "fissions": 4,
+      "growth": 10,
+      "viable_pairs": 1
+    },
+    "passive": {
+      "fissions": 3,
+      "growth": 10,
+      "viable_pairs": 2
+    }
+  },
+  "original_regulator": {
+    "all_lifecycle_valid": true,
+    "all_parent_states_simple": true,
+    "all_runtime_valid": true,
+    "arms": 10,
+    "geometry_valid_fissions": 4,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 1
+  },
+  "passive": {
+    "all_lifecycle_valid": true,
+    "all_parent_states_simple": true,
+    "all_runtime_valid": true,
+    "arms": 10,
+    "geometry_valid_fissions": 3,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 2
+  },
+  "zero_a_active_work_eliminated": true
+}

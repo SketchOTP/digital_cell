@@ -1,0 +1,15 @@
+{
+  "classification": "V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED",
+  "contrast_fallback": "FAIL",
+  "daughter_continuation": "FAIL_QUALIFICATION_THRESHOLD",
+  "digital_cell_end_goal": "NOT_ESTABLISHED",
+  "directive": "DC-FINAL-001-R5R1-ZERO-PARAMETER-STRAIN-CONTRAST-NECK-LOCALIZATION-AND-TERMINAL-CLOSURE-001",
+  "evolution": "NOT_REACHED_GATE5_STOP",
+  "final_integrated_m1_m5": "NOT_REACHED",
+  "independent_architect_acceptance": "PENDING",
+  "next_execution_started": false,
+  "original_regulator_localization": "SPATIALLY_NONUNIFORM_BUT_FUNCTIONALLY_DIFFUSE",
+  "robust_v4_reproduction": "FAIL",
+  "shutdown_recommended": true,
+  "status": "GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE"
+}

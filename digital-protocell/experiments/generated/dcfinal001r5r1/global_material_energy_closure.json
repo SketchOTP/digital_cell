@@ -1,0 +1,12 @@
+{
+  "all_contrast_parents_simple_runtime_and_lifecycle_valid": true,
+  "contrast_active_a_to_w": {
+    "pass": true,
+    "produced_w": 15.32271299181862,
+    "requested_a": 15.32271299285506,
+    "residual": 1.0364402669438277e-09,
+    "spent_a": 15.32271299285506
+  },
+  "final_integrated_run": "NOT_REACHED_GATE5_STOP",
+  "structural_partition": "PASS_FOR_COUNTED_FISSIONS"
+}

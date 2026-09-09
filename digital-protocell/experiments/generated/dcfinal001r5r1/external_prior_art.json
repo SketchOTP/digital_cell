@@ -1,0 +1,14 @@
+{
+  "classification": "ADAPTABLE_REFERENCE_PRINCIPLE",
+  "excluded_imports": [
+    "equatorial coordinates",
+    "light pattern",
+    "RhoA control",
+    "force magnitude",
+    "timing parameter"
+  ],
+  "external_numerical_parameters_imported": [],
+  "finding": "Broad contractility produces competing forces and shallow deformation; localized contractility with relaxation elsewhere produces deeper and faster furrowing.",
+  "source": "https://www.nature.com/articles/s41467-024-53228-y",
+  "status": "COMPLETED_BOUNDED"
+}

@@ -1,0 +1,11 @@
+{
+  "body_size_read": false,
+  "formula": "max(local_positive_tensile_strain - perimeter_weighted_mean_strain, 0)",
+  "implementation": "adaptive_directional_drive.front_drive",
+  "new_free_parameters": 0,
+  "new_state_variables": 0,
+  "new_thresholds": 0,
+  "observer_feedback": false,
+  "reproduction_state_read": false,
+  "world_coordinates_read": false
+}

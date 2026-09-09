@@ -1,0 +1,145 @@
+{
+  "file_count": 28,
+  "files": [
+    {
+      "bytes": 344,
+      "path": "architect_disposition.json",
+      "sha256": "3ca35e6ef98f560a6a762cdd539658083bbc9e1e8f288cc65cff8aa87e4fd57d"
+    },
+    {
+      "bytes": 632,
+      "path": "authority.json",
+      "sha256": "7e6015cb17349a248335fec73e802289d9b5c44facef8d8f444c41f8122ba48a"
+    },
+    {
+      "bytes": 197,
+      "path": "checkpoint_restart.json",
+      "sha256": "47b64651b2d63ae345f3ca93058a5ae4022c4b559654fd4c1cbccb284ccad5f6"
+    },
+    {
+      "bytes": 359,
+      "path": "contrast_contract.json",
+      "sha256": "2bdb91e38f5fec13e75ba412cc349331505fd1d02fecaa4ff6c51053f6f93541"
+    },
+    {
+      "bytes": 1457,
+      "path": "contrast_controls.json",
+      "sha256": "d3961dbe534cebaf7678f3eed14d3f409ff48120abbf6b351d14773b129f8221"
+    },
+    {
+      "bytes": 160,
+      "path": "contrast_energy_closure.json",
+      "sha256": "2e4c4b1a1ba075f6dde587807db55068fd385b24b2aaebc6cbc2e1dd7345b47c"
+    },
+    {
+      "bytes": 3677,
+      "path": "contrast_reproduction.json",
+      "sha256": "60fd1b6b0f8fcc96f04bbe965d13375fa78f4eb5373c27ddf536b5e40e944036"
+    },
+    {
+      "bytes": 24357,
+      "path": "contrast_spatialization.json",
+      "sha256": "4f76effb17ad230979dfb9057faab8ce663a6f0cf96603e504f950a1a9a1e6b6"
+    },
+    {
+      "bytes": 151,
+      "path": "daughter_continuation.json",
+      "sha256": "8293814e9efb9ddf7cf48c94016ccc0090acf9e1bece0e9460827e3e857cfc48"
+    },
+    {
+      "bytes": 113,
+      "path": "development_preservation.json",
+      "sha256": "27329fb1f0d69e4fa181b503c45ade8a5f8b6eea5b2e7dfe5f9b0aedf9eaa09d"
+    },
+    {
+      "bytes": 119,
+      "path": "environment_a_selection.json",
+      "sha256": "830557e5033987dd4cf4c2cac53879c3178528dbadd064ec8c477dbf004405a0"
+    },
+    {
+      "bytes": 119,
+      "path": "environment_b_selection.json",
+      "sha256": "830557e5033987dd4cf4c2cac53879c3178528dbadd064ec8c477dbf004405a0"
+    },
+    {
+      "bytes": 198,
+      "path": "experiential_memory.json",
+      "sha256": "6987becde32193fb8d4f46ba3bd0112dd0217a9467b78b4ca631d84a9100f24d"
+    },
+    {
+      "bytes": 524,
+      "path": "external_prior_art.json",
+      "sha256": "45d64cf800c2114e65bb4afe2bda50173d3230fd46e1a0038644d40ee9ac25cf"
+    },
+    {
+      "bytes": 305,
+      "path": "final_goal_matrix.json",
+      "sha256": "40b3147be6303726a785474a33ed85a59965f00da6771b2fb0b5053d0bc7d3ee"
+    },
+    {
+      "bytes": 364,
+      "path": "forbidden_information_audit.json",
+      "sha256": "17296957e936920d5e2c9b3a201c6414601ea9d48f7f378c76e42f47948853e4"
+    },
+    {
+      "bytes": 378,
+      "path": "global_material_energy_closure.json",
+      "sha256": "1c7dfb11620313139ede6937d622ead7e317356ae2b79a4bb20a953475a579a6"
+    },
+    {
+      "bytes": 197,
+      "path": "godot_independence.json",
+      "sha256": "5022c39e7095ecddc8bed01f405e6a88c37634f31530895166471c0d1cd78642"
+    },
+    {
+      "bytes": 192,
+      "path": "linux_runtime.json",
+      "sha256": "e4a7f12a716449331ed3d1283e74a0c10778c3223a267493acdd21e03bfad318"
+    },
+    {
+      "bytes": 344,
+      "path": "m1_preservation.json",
+      "sha256": "29146025d3643ae298634cfd64b6fd718420e405cce7353a511f421cb0cb0146"
+    },
+    {
+      "bytes": 109,
+      "path": "m2_preservation.json",
+      "sha256": "d3c864260b8b8990ddda34828e6e91658cd91c04bbb3fef077153054df688bd8"
+    },
+    {
+      "bytes": 698,
+      "path": "qualification.json",
+      "sha256": "1178a5a92b3ae4772e12c9f1d581d90d6145864c9886103959a2912ccbb81413"
+    },
+    {
+      "bytes": 12474,
+      "path": "r5_localization_reclassification.json",
+      "sha256": "2d1511a66b86efc6f2155ed64552e19bacca8462715b558a49ca4246a70452e9"
+    },
+    {
+      "bytes": 911,
+      "path": "reproduction_qualification.json",
+      "sha256": "879a778a2b9c0553accf67139aba9769c5d785ffc6819226727af756b8a52962"
+    },
+    {
+      "bytes": 119,
+      "path": "reversal.json",
+      "sha256": "830557e5033987dd4cf4c2cac53879c3178528dbadd064ec8c477dbf004405a0"
+    },
+    {
+      "bytes": 197,
+      "path": "sensory_embodiment.json",
+      "sha256": "ef0b9ab9fb84de1607ede3c9b3fab96881184d46791ca7714ffadfbe22638941"
+    },
+    {
+      "bytes": 119,
+      "path": "v4_mutant_lineage.json",
+      "sha256": "830557e5033987dd4cf4c2cac53879c3178528dbadd064ec8c477dbf004405a0"
+    },
+    {
+      "bytes": 119,
+      "path": "v4_mutation.json",
+      "sha256": "830557e5033987dd4cf4c2cac53879c3178528dbadd064ec8c477dbf004405a0"
+    }
+  ]
+}

@@ -1605,6 +1605,17 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Independently downloaded artifact ZIP digest: `sha256:481781967abc179e27b7fc04eab71f40b8da0e338fec5d81e6dacad417ab58e7`.
 - Scientific semantics are unchanged; independent Architect acceptance remains `PENDING` and next execution remains `false`.
 
+## DEC-DCFINAL001-R5R1-CONTRAST-FALLBACK-TERMINAL-STOP
+
+- Date: `2026-09-09`
+- Status: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE`
+- Record or decision ID: `DEC-DCFINAL001-R5R1-CONTRAST-FALLBACK-TERMINAL-STOP`
+- External Architect disposition: accept the bounded R5 result but continue solely to exhaust the preauthorized zero-parameter mean-relative tensile-strain fallback; accept shutdown if that fallback fails robust V4 reproduction.
+- Decision: reuse `adaptive_directional_drive.front_drive` on perimeter-weighted local positive tensile strain, with no new parameter, threshold, state, target, axis, timer, size signal, or observer feedback. Preserve the exact ten fixtures, `14778` horizon, A-funded contractility, self-contact, topology, fission, and daughter viability laws.
+- Result: functional localization analysis reclassifies the original regulator as `SPATIALLY_NONUNIFORM_BUT_FUNCTIONALLY_DIFFUSE`. Contrast reduces mean active perimeter to `0.029579522272524923` but yields only `3/10` geometry-valid fissions and `3/10` simple viable daughter pairs.
+- Classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`. Mutation, selection, reversal, and final integrated execution are not reached. Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown recommendation is `true`; no successor execution started.
+- Scientific result head: `cadf6d283cc7f77f243e5958fd8be22d5ee804c9`; exact-head CI/artifact and independent Architect acceptance are `PENDING`.
+
 ## DEC-DCFINAL001-R5-V4-NECK-GENERATION-STOP
 
 - Date: `2026-09-09`

@@ -759,3 +759,14 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Evidence-bearing head `6bf707ed4669e0bfebdf65d737ebbd394893258f` passed exact-head Linux workflow `34331149213`.
 - Independently downloaded artifact ZIP digest: `sha256:e4d0b5ae89ad9771b9ed89afbc3e92d26f58d90654f1cdd9ff2586ffc75527e3`.
 - The pointer confirms the bounded R5 stop; independent Architect acceptance remains `PENDING`, and no successor execution started.
+
+## DC-FINAL-001-R5R1 zero-parameter strain-contrast terminal result
+
+- External Architect disposition on R5: `R5_ACCEPTED_BOUNDED_NEGATIVE_CONTINUE_FOR_PREAUTHORIZED_FALLBACK_EXHAUSTION`; the prior shutdown recommendation was not accepted until the one already-authorized fallback executed.
+- Active directive completed provisionally: `DC-FINAL-001-R5R1-ZERO-PARAMETER-STRAIN-CONTRAST-NECK-LOCALIZATION-AND-TERMINAL-CLOSURE-001`, starting from governed R5 head `404dd374b8a75adc6b77a97c064b0197ab334628`.
+- Functional reclassification: the original regulator is `SPATIALLY_NONUNIFORM_BUT_FUNCTIONALLY_DIFFUSE`. Mean active perimeter fraction is `0.9999994005552676`, mean largest contiguous active arc is `0.999995823421411`, and all ten nearest-apposition activity-to-later-neck-narrowing correlations are nonpositive.
+- The exact existing adaptive comparator implements `max(local positive tensile strain - perimeter-weighted mean strain, 0)` with zero new parameters, thresholds, controller state, target coordinates, or observer feedback.
+- Contrast sharply localizes activity (mean active perimeter `0.029579522272524923`; largest arc `0.018197300775532825`) but yields only `3/10` geometry-valid fissions and `3/10` simple viable pairs. Passive remains `3/10` and `2/10`; the original regulator remains `4/10` and `1/10`.
+- Contrast A-to-W closure passes: A spent `15.32271299285506`, W produced `15.32271299181862`, residual `1.0364402669438277e-9`. Contrast motor-off matches passive; contrast zero-A spends exactly zero active A and reaches `7/10` fissions but `0/10` viable pairs.
+- Gate 5 fails the unchanged `7/10` fission and `6/10` viable-pair requirements. V4 mutation, selection, reversal, and final integrated M1-M5 execution are `NOT_REACHED_GATE5_STOP`.
+- Goal-agent status: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE`; classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`; Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown is recommended under the externally specified R5R1 terminal rule. Independent Architect acceptance remains `PENDING`; no successor execution started.

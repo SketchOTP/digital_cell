@@ -1,0 +1,14 @@
+{
+  "directive": "DC-FINAL-001-R5R1-ZERO-PARAMETER-STRAIN-CONTRAST-NECK-LOCALIZATION-AND-TERMINAL-CLOSURE-001",
+  "independent_architect_acceptance": "PENDING",
+  "r5_artifact_sha256": "1fd65c568efcc9ceed7ae98294837fcbad5c00038094bd8b81016cd016f40935",
+  "r5_authority": "PASS",
+  "r5_exact_head_ci": {
+    "result": "PASS",
+    "run": 34332924972
+  },
+  "r5_governed_head": "404dd374b8a75adc6b77a97c064b0197ab334628",
+  "r5_scientific_head": "fb471605034ec0bd5a5eacca89cbf0ebdd4b4aa6",
+  "result_scientific_head": "cadf6d283cc7f77f243e5958fd8be22d5ee804c9",
+  "starting_governed_head": "404dd374b8a75adc6b77a97c064b0197ab334628"
+}

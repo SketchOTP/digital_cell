@@ -198,3 +198,7 @@
 - `digital-protocell/experiments/dcfinal001_r5_evidence.py` — deterministic compact R5 evidence generator preserving R4 authority and explicitly marking evolution/final integration not reached.
 - `digital-protocell/experiments/generated/dcfinal001r5/` — R5 authority, maturation, failure taxonomy, mechanochemical attribution/controls, preservation, stopped-evolution, final matrix, and provisional qualification evidence.
 - `.github/workflows/dc-final-001-r5.yml` — exact-head Linux scope, deterministic R5 replay, preservation, D-087, PR #44, evidence reproducibility, and artifact upload.
+- `digital-protocell/examples/dcfinal001_r5r1_strain_contrast.rs` — R5R1 entry point that reuses the exact R5 fixture and executes the sole zero-parameter mean-relative strain contrast fallback with matched controls.
+- `digital-protocell/experiments/dcfinal001_r5r1_evidence.py` — deterministic compact R5R1 evidence generator preserving R5 authority and sealing the Gate-5 terminal stop.
+- `digital-protocell/experiments/generated/dcfinal001r5r1/` — R5R1 authority, functional localization, contrast/control, reproduction, preservation, stopped-evolution, and provisional terminal qualification evidence.
+- `.github/workflows/dc-final-001-r5r1.yml` — exact-head Linux R5R1 scope, deterministic contrast replay, preservation, D-087, PR #44, reproducibility, and artifact upload.

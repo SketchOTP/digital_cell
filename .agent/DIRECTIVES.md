@@ -1154,3 +1154,12 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Frozen boundaries: V4 maturation/growth/fission laws, M1, M2, mutation parameters, R2 ecology, resource and world laws, PR #44, and all semantic prohibitions in the owner directive.
 - Stop rule: if the existing strain-regulator composition and any gate-authorized contrast fallback fail `>=7/10` valid fissions and `>=6/10` simple viable pairs, stop before evolution with `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`; no R6 reproduction architecture is authorized.
 - Execution result: source-timescale passive `3/10` and `2/10`; mechanochemical `4/10` and `1/10`; contrast fallback not authorized because spatial variance remains above tolerance. Gate 9 stopped downstream execution.
+
+## DC-FINAL-001-R5R1-ZERO-PARAMETER-STRAIN-CONTRAST-NECK-LOCALIZATION-AND-TERMINAL-CLOSURE-001
+
+- Issued by the external Architect after accepting R5's executed result but rejecting shutdown until the sole preauthorized mean-relative strain fallback was exhausted.
+- Largest unresolved end-goal gap: robust production-V4 reproduction, causally upstream of V4 mutation, selection, reversal, and final integrated qualification.
+- Authorized execution: reclassify original-regulator localization functionally; reuse the exact zero-parameter perimeter-weighted adaptive comparator on current local positive tensile strain; run passive, original-regulator, contrast, contrast-motor-off, and contrast-zero-A ten-arm controls at the frozen `14778` horizon.
+- Frozen boundaries: M1, V4 maturation/growth/topology/fission/viability laws, existing contractility parameters and A-to-W cost, mutation parameters, R2 environments, M2/M3, PR #44, and all semantic-controller prohibitions.
+- Stop rule: if contrast fails `>=7/10` geometry-valid fissions or `>=6/10` simple viable pairs, stop before evolution with `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED` and recommend terminal shutdown; no R6 or further reproduction architecture is authorized.
+- Execution result: original activity is nonuniform but functionally diffuse; contrast strongly reduces active perimeter yet produces only `3/10` fissions and `3/10` viable pairs. Gate 5 stops downstream execution.

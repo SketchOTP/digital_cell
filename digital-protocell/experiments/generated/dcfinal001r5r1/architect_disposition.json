@@ -1,0 +1,7 @@
+{
+  "disposition": "R5_ACCEPTED_BOUNDED_NEGATIVE_CONTINUE_FOR_PREAUTHORIZED_FALLBACK_EXHAUSTION",
+  "r5_bounded_result": "ACCEPTED",
+  "r5_history_rewritten": false,
+  "r5r1_sole_active_authorization": "DC-FINAL-001-R5R1-ZERO-PARAMETER-STRAIN-CONTRAST-NECK-LOCALIZATION-AND-TERMINAL-CLOSURE-001",
+  "shutdown_before_fallback": "NOT_ACCEPTED"
+}
