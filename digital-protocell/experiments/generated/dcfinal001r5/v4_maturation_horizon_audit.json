@@ -1,0 +1,18 @@
+{
+  "classification": "LEGACY_HORIZON_MATERIALLY_TRUNCATES_V4_FISSION",
+  "diagnostic_extension_not_counted_as_legacy_positive": true,
+  "extension_fission_steps": [
+    14626
+  ],
+  "extension_fissions": 1,
+  "failed_arms_extended": 8,
+  "legacy_horizon": 12000,
+  "preregistered_qualification_horizon": 14778,
+  "qualification_horizon_derivation": "12000 + ceil(1/(k_turn*dt))",
+  "source_timescale": {
+    "dt": 0.02,
+    "k_turn": 0.018,
+    "tau_steps_ceil": 2778,
+    "tau_steps_exact": 2777.777777777778
+  }
+}

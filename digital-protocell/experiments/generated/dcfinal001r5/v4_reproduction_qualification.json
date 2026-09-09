@@ -1,0 +1,16 @@
+{
+  "classification": "V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED",
+  "observed": {
+    "geometry_valid_fissions": 4,
+    "growth_qualified": 10,
+    "pass": false,
+    "selected_mode": "REGULATOR_ON_MOTOR_ON",
+    "simple_viable_daughter_pairs": 1
+  },
+  "pass": false,
+  "required": {
+    "fissions": 7,
+    "growth": 8,
+    "viable_pairs": 6
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "campaign": null,
+  "classification_tolerance": 1e-12,
+  "execution": "NOT_AUTHORIZED_BY_GATE7",
+  "mean_activity_variance": 0.00024318270710567365,
+  "required": false
+}

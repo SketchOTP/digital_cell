@@ -1,0 +1,100 @@
+{
+  "runs": [
+    {
+      "deepest_failure": "VALID_FISSION",
+      "fission": true,
+      "fission_step": 11851,
+      "max_mass_over_birth": 17.225387750916415,
+      "name": "seed_1_rotate_0.3",
+      "viable_pair": true
+    },
+    {
+      "deepest_failure": "VALID_FISSION_DAUGHTER_NONVIABILITY",
+      "fission": true,
+      "fission_step": 12301,
+      "max_mass_over_birth": 18.68807339476477,
+      "name": "seed_2_vertex_0.12",
+      "viable_pair": false
+    },
+    {
+      "deepest_failure": "VALID_FISSION_DAUGHTER_NONVIABILITY",
+      "fission": true,
+      "fission_step": 7626,
+      "max_mass_over_birth": 8.051662480779697,
+      "name": "seed_3_c_0.08",
+      "viable_pair": false
+    },
+    {
+      "deepest_failure": "APPOSITION_PRESENT_BUT_STRESS_CONDITION_FALSE",
+      "fission": false,
+      "fission_step": null,
+      "max_mass_over_birth": 23.50748986295294,
+      "name": "seed_4_a_0.08",
+      "viable_pair": false
+    },
+    {
+      "deepest_failure": "APPOSITION_PRESENT_BUT_STRESS_CONDITION_FALSE",
+      "fission": false,
+      "fission_step": null,
+      "max_mass_over_birth": 32.571493589071835,
+      "name": "seed_5_env_0.1",
+      "viable_pair": false
+    },
+    {
+      "deepest_failure": "APPOSITION_PRESENT_BUT_STRESS_CONDITION_FALSE",
+      "fission": false,
+      "fission_step": null,
+      "max_mass_over_birth": 25.515273375875672,
+      "name": "seed_6_l_0.1",
+      "viable_pair": false
+    },
+    {
+      "deepest_failure": "VALID_FISSION_DAUGHTER_NONVIABILITY",
+      "fission": true,
+      "fission_step": 11501,
+      "max_mass_over_birth": 13.845301016822805,
+      "name": "seed_7_rotate_-0.5",
+      "viable_pair": false
+    },
+    {
+      "deepest_failure": "APPOSITION_OUTSIDE_LOCAL_RANGE",
+      "fission": false,
+      "fission_step": null,
+      "max_mass_over_birth": 26.747924783119668,
+      "name": "seed_8_vertex_-0.1",
+      "viable_pair": false
+    },
+    {
+      "deepest_failure": "APPOSITION_OUTSIDE_LOCAL_RANGE",
+      "fission": false,
+      "fission_step": null,
+      "max_mass_over_birth": 21.34074346775055,
+      "name": "seed_9_c_-0.05",
+      "viable_pair": false
+    },
+    {
+      "deepest_failure": "APPOSITION_OUTSIDE_LOCAL_RANGE",
+      "fission": false,
+      "fission_step": null,
+      "max_mass_over_birth": 14.848617778203712,
+      "name": "seed_10_env_-0.08",
+      "viable_pair": false
+    }
+  ],
+  "selected": {
+    "geometry_valid_fissions": 4,
+    "growth_qualified": 10,
+    "pass": false,
+    "selected_mode": "REGULATOR_ON_MOTOR_ON",
+    "simple_viable_daughter_pairs": 1
+  },
+  "summary": {
+    "all_lifecycle_valid": true,
+    "all_parent_states_simple": true,
+    "all_runtime_valid": true,
+    "arms": 10,
+    "geometry_valid_fissions": 4,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 1
+  }
+}

@@ -2385,6 +2385,16 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Independently downloaded artifact ZIP digest: `sha256:f2abe6a7bdd100a7f86b0c160a8abb45ec99000ca6f77d92ee6d4b99b13d14e3`.
 - Result remains `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; independent Architect acceptance is `PENDING`, and no successor execution started.
 
+## DC-FINAL-001-R5 provisional bounded terminal result
+
+- Exact R4 ten-arm passive replay: `10/10` growth, `2/10` geometry-valid fissions, `1/10` simple viable pair; all parent trajectories simple/runtime-valid/lifecycle-valid.
+- Frozen source timescale: `k_turn=0.018`, `dt=0.02`, `tau=2777.777...` steps, `ceil(tau)=2778`. One of eight failed arms fissions at step `14626` during the sole diagnostic continuation, classifying the legacy horizon as materially truncating but raising the source-derived passive boundary only to `3/10` fissions and `2/10` viable pairs.
+- Clone-only immediate-maturation reference-length calculations reduce nearest apposition distances but do not establish robust neck localization; no production state was mutated.
+- Existing local regulator/A-funded contractility composition: `10/10` growth, `4/10` geometry-valid fissions, `1/10` simple viable pair. Active A spent `182.5328080192155`, W produced `182.53280801905595`, residual `1.595594767422881e-10`.
+- Required passive-equivalent controls each produce `3/10` fissions and `2/10` viable pairs. Zero-A active-work expenditure is exactly zero.
+- Mean regulator activity variance is `0.00024318270710567365`, above `1e-12`; therefore the sole conditional contrast fallback is `NOT_AUTHORIZED_BY_GATE7`.
+- Primary classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED` under `GOAL_AGENT_PROVISIONAL_NEGATIVE`. Evolution/final integration: `NOT_REACHED_GATE9_STOP`. Independent Architect acceptance and exact-head CI/artifact remain pending; next execution is false.
+
 ## DC-FINAL-001-R3 — maturation-safe expression repair and lifecycle stop
 
 - R2 authority reconciles at governed head `5bd82aa40b10ecbdc86cd6915760915ba6ccfb18`, workflow `34294704290 PASS`, artifact `sha256:358b47164edaa3d16fc966aa968b18effbabd9c5ff444004c7539551c5d61743`.

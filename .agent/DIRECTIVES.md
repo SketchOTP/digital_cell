@@ -1144,3 +1144,13 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 
 - Head `cb6f7074ad8904500027b2f5fd9da38ac707a783` passed exact-head Linux workflow `34307578510`; artifact ZIP digest is `sha256:58a5a83ecc669cb6f4d1e1c9590e250042919a11c2988abd311f225503b56670`.
 - This pointer changes governance only. Production-V4 reproduction remains unestablished, evolution remains unexecuted, and no successor is authorized before independent review.
+
+## DC-FINAL-001-R5-V4-MATURATION-NECK-GENERATION-MECHANOCHEMICAL-REPRODUCTION-EVOLUTION-AND-FINAL-GOAL-CLOSURE-001
+
+- Issued by the external Architect after independent acceptance of R4 as a bounded negative.
+- Largest unresolved end-goal gap: robust production-V4 neck generation, causally upstream of V4 evolution and final integrated qualification.
+- Authorized execution: exact ten-arm R4 failure taxonomy; one source-timescale maturation continuation; clone-only immediate-maturation reference-length upper bound; passive control; frozen local positive-tensile-strain regulator composed with existing A-funded local contractility and required zero-activity, motor-off, and zero-A controls.
+- Conditional fallback: execute the already-qualified zero-parameter mean-relative local strain drive only if the frozen regulator loses spatial contrast under the existing `1e-12` classification tolerance.
+- Frozen boundaries: V4 maturation/growth/fission laws, M1, M2, mutation parameters, R2 ecology, resource and world laws, PR #44, and all semantic prohibitions in the owner directive.
+- Stop rule: if the existing strain-regulator composition and any gate-authorized contrast fallback fail `>=7/10` valid fissions and `>=6/10` simple viable pairs, stop before evolution with `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`; no R6 reproduction architecture is authorized.
+- Execution result: source-timescale passive `3/10` and `2/10`; mechanochemical `4/10` and `1/10`; contrast fallback not authorized because spatial variance remains above tolerance. Gate 9 stopped downstream execution.

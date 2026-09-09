@@ -1,0 +1,38 @@
+{
+  "controls": {
+    "regulator_off_motor_on_zero_activity": {
+      "all_lifecycle_valid": true,
+      "all_parent_states_simple": true,
+      "all_runtime_valid": true,
+      "arms": 10,
+      "geometry_valid_fissions": 3,
+      "growth_qualified": 10,
+      "simple_viable_daughter_pairs": 2
+    },
+    "regulator_on_motor_off": {
+      "all_lifecycle_valid": true,
+      "all_parent_states_simple": true,
+      "all_runtime_valid": true,
+      "arms": 10,
+      "geometry_valid_fissions": 3,
+      "growth_qualified": 10,
+      "simple_viable_daughter_pairs": 2
+    },
+    "zero_a": {
+      "all_lifecycle_valid": true,
+      "all_parent_states_simple": true,
+      "all_runtime_valid": true,
+      "arms": 10,
+      "geometry_valid_fissions": 7,
+      "growth_qualified": 10,
+      "simple_viable_daughter_pairs": 0
+    }
+  },
+  "motor_off_semantic_parity": true,
+  "passive_source_timescale": {
+    "fissions": 3,
+    "viable_pairs": 2
+  },
+  "zero_a_active_work_eliminated": true,
+  "zero_activity_semantic_parity": true
+}

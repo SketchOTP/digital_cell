@@ -1,0 +1,11 @@
+{
+  "active_a_to_w": {
+    "pass": true,
+    "produced_w": 182.53280801905595,
+    "requested_a": 182.5328080192155,
+    "residual": 1.595594767422881e-10,
+    "spent_a": 182.5328080192155
+  },
+  "global_final_rerun": "NOT_REACHED_GATE9_STOP",
+  "structural_partition": "PASS_FOR_COUNTED_FISSIONS"
+}

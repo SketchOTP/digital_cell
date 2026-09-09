@@ -742,3 +742,13 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Evidence-bearing governed head `cb6f7074ad8904500027b2f5fd9da38ac707a783` passed exact-head Linux workflow `34307578510`.
 - Independently downloaded artifact ZIP digest: `sha256:58a5a83ecc669cb6f4d1e1c9590e250042919a11c2988abd311f225503b56670`.
 - Scientific semantics remain those of head `78c2200615b6558d6b617e3c29f5c8e9bb1c05d3`; the pointer does not alter the Gate-9 stop, provisional classification, or pending independent Architect review.
+
+## DC-FINAL-001-R5 V4 neck-generation closure result
+
+- External Architect disposition on R4: `R4_ACCEPTED_BOUNDED_NEGATIVE_REPLAN`; the canonical blocker is robust production-V4 neck generation.
+- Active directive completed provisionally: `DC-FINAL-001-R5-V4-MATURATION-NECK-GENERATION-MECHANOCHEMICAL-REPRODUCTION-EVOLUTION-AND-FINAL-GOAL-CLOSURE-001`, starting from governed R4 head `aa886d554fa4ae8cf691e5a66b69d787ea4f2c2f`.
+- Source-derived V4 maturation time is `1/(0.018 * 0.02) = 2777.777...` steps; exactly one failed passive arm fissions during the single `2778`-step diagnostic extension, so the preregistered V4 qualification horizon is `14778`.
+- Passive V4 at that boundary yields `3/10` valid fissions and `2/10` simple viable daughter pairs. The frozen local tensile-strain regulator plus existing A-funded self-contact contractility yields `4/10` and `1/10`; all parents remain simple, runtime-valid, lifecycle-valid, and active A-to-W closure passes.
+- The regulator retains spatial contrast (`mean activity variance 0.00024318270710567365 > 1e-12`), so the conditional mean-relative fallback is not authorized. Failed arms remain limited by local apposition/range or qualifying stress, not growth mass or cross-bond A.
+- Gate 9 fails the unchanged `7/10` fission and `6/10` viable-pair requirements. Mutation, selection, reversal, and final integrated execution are `NOT_REACHED_GATE9_STOP`.
+- Goal-agent status: `GOAL_AGENT_PROVISIONAL_NEGATIVE`; classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`; Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown is provisionally recommended under the R5 stop rule. Independent Architect acceptance is `PENDING`; no successor execution started.

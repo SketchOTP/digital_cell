@@ -1,0 +1,8 @@
+{
+  "classification": "ADAPTABLE_PRINCIPLE",
+  "direct_division_location_import": "INCOMPATIBLE",
+  "external_numerical_parameters_imported": [],
+  "finding": "Localized contractility with relaxation elsewhere produces deeper division-like furrowing than global contraction; no external numerical parameter was imported.",
+  "source": "https://www.nature.com/articles/s41467-024-53228-y",
+  "status": "COMPLETED"
+}

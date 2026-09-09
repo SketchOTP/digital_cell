@@ -1,0 +1,267 @@
+{
+  "arms": [
+    {
+      "arm": "seed_1_rotate_0.3",
+      "deepest_failure": "VALID_FISSION",
+      "failure_counts": {
+        "apposition_outside_local_range": 399,
+        "apposition_present_but_stress_condition_false": 53,
+        "no_nonadjacent_apposition": 0,
+        "pinch_present_insufficient_a": 0,
+        "scission_proposed_invalid_geometry": 0,
+        "scission_proposed_partition_failure": 0,
+        "valid_fission": 1,
+        "valid_fission_daughter_nonviability": 0
+      },
+      "max_mass_over_birth": 16.285613869114293,
+      "terminal_geometry": {
+        "area": 2751.1904533489374,
+        "lifecycle_invariants_hold": true,
+        "mass": 1428.790052757042,
+        "mature_mass": 570.1797937574249,
+        "perimeter": 512.571146306173,
+        "physical_runtime_valid": true,
+        "simple": true,
+        "vertices": 200,
+        "young_mass": 858.6102589996171
+      }
+    },
+    {
+      "arm": "seed_2_vertex_0.12",
+      "deepest_failure": "APPOSITION_OUTSIDE_LOCAL_RANGE",
+      "failure_counts": {
+        "apposition_outside_local_range": 472,
+        "apposition_present_but_stress_condition_false": 0,
+        "no_nonadjacent_apposition": 0,
+        "pinch_present_insufficient_a": 0,
+        "scission_proposed_invalid_geometry": 0,
+        "scission_proposed_partition_failure": 0,
+        "valid_fission": 0,
+        "valid_fission_daughter_nonviability": 0
+      },
+      "max_mass_over_birth": 9.824187568410803,
+      "terminal_geometry": {
+        "area": 1333.0175251573678,
+        "lifecycle_invariants_hold": true,
+        "mass": 862.0793677509487,
+        "mature_mass": 403.1588662156542,
+        "perimeter": 160.70568404664493,
+        "physical_runtime_valid": true,
+        "simple": true,
+        "vertices": 57,
+        "young_mass": 458.9205015352945
+      }
+    },
+    {
+      "arm": "seed_3_c_0.08",
+      "deepest_failure": "VALID_FISSION_DAUGHTER_NONVIABILITY",
+      "failure_counts": {
+        "apposition_outside_local_range": 289,
+        "apposition_present_but_stress_condition_false": 38,
+        "no_nonadjacent_apposition": 0,
+        "pinch_present_insufficient_a": 0,
+        "scission_proposed_invalid_geometry": 0,
+        "scission_proposed_partition_failure": 0,
+        "valid_fission": 0,
+        "valid_fission_daughter_nonviability": 1
+      },
+      "max_mass_over_birth": 9.563934314257104,
+      "terminal_geometry": {
+        "area": 2268.630943655846,
+        "lifecycle_invariants_hold": true,
+        "mass": 838.8871200747543,
+        "mature_mass": 331.59693609379605,
+        "perimeter": 296.7425734538009,
+        "physical_runtime_valid": true,
+        "simple": true,
+        "vertices": 102,
+        "young_mass": 507.29018398095826
+      }
+    },
+    {
+      "arm": "seed_4_a_0.08",
+      "deepest_failure": "APPOSITION_PRESENT_BUT_STRESS_CONDITION_FALSE",
+      "failure_counts": {
+        "apposition_outside_local_range": 262,
+        "apposition_present_but_stress_condition_false": 156,
+        "no_nonadjacent_apposition": 0,
+        "pinch_present_insufficient_a": 0,
+        "scission_proposed_invalid_geometry": 0,
+        "scission_proposed_partition_failure": 0,
+        "valid_fission": 0,
+        "valid_fission_daughter_nonviability": 0
+      },
+      "max_mass_over_birth": 16.488392409276788,
+      "terminal_geometry": {
+        "area": 2194.433787002391,
+        "lifecycle_invariants_hold": true,
+        "mass": 1446.5804758522522,
+        "mature_mass": 615.537316124897,
+        "perimeter": 345.4510428064408,
+        "physical_runtime_valid": true,
+        "simple": true,
+        "vertices": 129,
+        "young_mass": 831.0431597273553
+      }
+    },
+    {
+      "arm": "seed_5_env_0.1",
+      "deepest_failure": "APPOSITION_OUTSIDE_LOCAL_RANGE",
+      "failure_counts": {
+        "apposition_outside_local_range": 472,
+        "apposition_present_but_stress_condition_false": 0,
+        "no_nonadjacent_apposition": 0,
+        "pinch_present_insufficient_a": 0,
+        "scission_proposed_invalid_geometry": 0,
+        "scission_proposed_partition_failure": 0,
+        "valid_fission": 0,
+        "valid_fission_daughter_nonviability": 0
+      },
+      "max_mass_over_birth": 13.517872748212787,
+      "terminal_geometry": {
+        "area": 1433.2045736314294,
+        "lifecycle_invariants_hold": true,
+        "mass": 1186.202839773566,
+        "mature_mass": 545.7379318526084,
+        "perimeter": 197.28136486375877,
+        "physical_runtime_valid": true,
+        "simple": true,
+        "vertices": 92,
+        "young_mass": 640.4649079209576
+      }
+    },
+    {
+      "arm": "seed_6_l_0.1",
+      "deepest_failure": "APPOSITION_OUTSIDE_LOCAL_RANGE",
+      "failure_counts": {
+        "apposition_outside_local_range": 472,
+        "apposition_present_but_stress_condition_false": 0,
+        "no_nonadjacent_apposition": 0,
+        "pinch_present_insufficient_a": 0,
+        "scission_proposed_invalid_geometry": 0,
+        "scission_proposed_partition_failure": 0,
+        "valid_fission": 0,
+        "valid_fission_daughter_nonviability": 0
+      },
+      "max_mass_over_birth": 12.892507447578833,
+      "terminal_geometry": {
+        "area": 1656.6504138651233,
+        "lifecycle_invariants_hold": true,
+        "mass": 1130.8482563623536,
+        "mature_mass": 510.92884837695794,
+        "perimeter": 218.51499886256605,
+        "physical_runtime_valid": true,
+        "simple": true,
+        "vertices": 95,
+        "young_mass": 619.9194079853957
+      }
+    },
+    {
+      "arm": "seed_7_rotate_-0.5",
+      "deepest_failure": "APPOSITION_PRESENT_BUT_STRESS_CONDITION_FALSE",
+      "failure_counts": {
+        "apposition_outside_local_range": 286,
+        "apposition_present_but_stress_condition_false": 186,
+        "no_nonadjacent_apposition": 0,
+        "pinch_present_insufficient_a": 0,
+        "scission_proposed_invalid_geometry": 0,
+        "scission_proposed_partition_failure": 0,
+        "valid_fission": 0,
+        "valid_fission_daughter_nonviability": 0
+      },
+      "max_mass_over_birth": 14.036438192041732,
+      "terminal_geometry": {
+        "area": 1838.3778633740314,
+        "lifecycle_invariants_hold": true,
+        "mass": 1231.4625304338608,
+        "mature_mass": 545.1354946875435,
+        "perimeter": 248.3941206179041,
+        "physical_runtime_valid": true,
+        "simple": true,
+        "vertices": 99,
+        "young_mass": 686.3270357463173
+      }
+    },
+    {
+      "arm": "seed_8_vertex_-0.1",
+      "deepest_failure": "APPOSITION_PRESENT_BUT_STRESS_CONDITION_FALSE",
+      "failure_counts": {
+        "apposition_outside_local_range": 448,
+        "apposition_present_but_stress_condition_false": 21,
+        "no_nonadjacent_apposition": 0,
+        "pinch_present_insufficient_a": 0,
+        "scission_proposed_invalid_geometry": 0,
+        "scission_proposed_partition_failure": 0,
+        "valid_fission": 0,
+        "valid_fission_daughter_nonviability": 0
+      },
+      "max_mass_over_birth": 18.015411823482744,
+      "terminal_geometry": {
+        "area": 4384.389116646059,
+        "lifecycle_invariants_hold": true,
+        "mass": 1580.8650564143572,
+        "mature_mass": 623.9560038899995,
+        "perimeter": 570.8890247332538,
+        "physical_runtime_valid": true,
+        "simple": true,
+        "vertices": 209,
+        "young_mass": 956.9090525243578
+      }
+    },
+    {
+      "arm": "seed_9_c_-0.05",
+      "deepest_failure": "APPOSITION_PRESENT_BUT_STRESS_CONDITION_FALSE",
+      "failure_counts": {
+        "apposition_outside_local_range": 274,
+        "apposition_present_but_stress_condition_false": 198,
+        "no_nonadjacent_apposition": 0,
+        "pinch_present_insufficient_a": 0,
+        "scission_proposed_invalid_geometry": 0,
+        "scission_proposed_partition_failure": 0,
+        "valid_fission": 0,
+        "valid_fission_daughter_nonviability": 0
+      },
+      "max_mass_over_birth": 13.610402773165829,
+      "terminal_geometry": {
+        "area": 1830.774910773924,
+        "lifecycle_invariants_hold": true,
+        "mass": 1193.8174406340445,
+        "mature_mass": 530.4985769298925,
+        "perimeter": 240.23195614338147,
+        "physical_runtime_valid": true,
+        "simple": true,
+        "vertices": 93,
+        "young_mass": 663.318863704152
+      }
+    },
+    {
+      "arm": "seed_10_env_-0.08",
+      "deepest_failure": "APPOSITION_OUTSIDE_LOCAL_RANGE",
+      "failure_counts": {
+        "apposition_outside_local_range": 472,
+        "apposition_present_but_stress_condition_false": 0,
+        "no_nonadjacent_apposition": 0,
+        "pinch_present_insufficient_a": 0,
+        "scission_proposed_invalid_geometry": 0,
+        "scission_proposed_partition_failure": 0,
+        "valid_fission": 0,
+        "valid_fission_daughter_nonviability": 0
+      },
+      "max_mass_over_birth": 14.08930699773356,
+      "terminal_geometry": {
+        "area": 2948.9156103426467,
+        "lifecycle_invariants_hold": true,
+        "mass": 1236.1008832942887,
+        "mature_mass": 495.58190312335114,
+        "perimeter": 462.3557919023781,
+        "physical_runtime_valid": true,
+        "simple": true,
+        "vertices": 194,
+        "young_mass": 740.5189801709375
+      }
+    }
+  ],
+  "failed_arm_count": 8,
+  "root_cause": "ROBUST_LOCAL_APPOSITION_AND_STRESS_LOCALIZATION_ABSENT; mass and cross-bond A were not the deepest failed prerequisite",
+  "successful_seed_distinction": "Successful arms entered local range with a qualifying stress condition; failed arms remained outside range or reached apposition without the stress condition."
+}

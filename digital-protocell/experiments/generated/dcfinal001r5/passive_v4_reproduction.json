@@ -1,0 +1,15 @@
+{
+  "fissions_at_source_timescale_horizon": 3,
+  "legacy": {
+    "all_lifecycle_valid": true,
+    "all_parent_states_simple": true,
+    "all_runtime_valid": true,
+    "arms": 10,
+    "geometry_valid_fissions": 2,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 1
+  },
+  "qualification_pass": false,
+  "source_timescale_horizon": 14778,
+  "viable_pairs_at_source_timescale_horizon": 2
+}

@@ -1605,6 +1605,17 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Independently downloaded artifact ZIP digest: `sha256:481781967abc179e27b7fc04eab71f40b8da0e338fec5d81e6dacad417ab58e7`.
 - Scientific semantics are unchanged; independent Architect acceptance remains `PENDING` and next execution remains `false`.
 
+## DEC-DCFINAL001-R5-V4-NECK-GENERATION-STOP
+
+- Date: `2026-09-09`
+- Status: `GOAL_AGENT_PROVISIONAL_NEGATIVE`
+- Record or decision ID: `DEC-DCFINAL001-R5-V4-NECK-GENERATION-STOP`
+- External Architect disposition: R4 accepted as a bounded negative; R5 authorized one integrated maturation/neck-generation closure using only the frozen local strain regulator, existing A-funded contractility, and one conditional zero-parameter contrast fallback.
+- Decision: derive the qualification horizon from `1/(k_turn*dt)`, diagnose every ten-arm failure, apply the frozen existing-mechanism composition with causal controls, and stop before evolution unless robust V4 reproduction reaches the unchanged thresholds.
+- Result: one added maturation timescale lifts passive reproduction to `3/10` fissions and `2/10` viable pairs. Existing mechanochemical composition reaches `4/10` and `1/10`; energy closure passes, but robust reproduction fails. Spatial regulator variance remains above the fallback trigger, so no fallback or additional mechanism executes.
+- Classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`. Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown recommendation is `true` under the explicit R5 terminal boundary. No successor execution started; exact-head CI/artifact and independent Architect acceptance are pending.
+- Scientific result head: `fb471605034ec0bd5a5eacca89cbf0ebdd4b4aa6`.
+
 ## DEC-DCFINAL001-R4-CONTRACT-OWNERSHIP-REPAIR-AND-PRODUCTION-STOP
 
 - Date: `2026-09-08`

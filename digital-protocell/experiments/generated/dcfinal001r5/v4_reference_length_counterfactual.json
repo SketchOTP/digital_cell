@@ -1,0 +1,411 @@
+{
+  "production_state_mutated": false,
+  "rows": [
+    {
+      "immediate_maturation_upper_bound": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 0.38876358438108033,
+          "minimum_nonadjacent_segment_distance": 4.142419270215602,
+          "nearest_pair": [
+            0,
+            76
+          ],
+          "nearest_pair_stressed": true,
+          "range": 10.655368549527136,
+          "stressed_within_range_pairs": 12,
+          "vertex_pinch": [
+            0,
+            78
+          ],
+          "within_range_pairs": 26
+        },
+        "simple": false
+      },
+      "name": "seed_1_rotate_0.3",
+      "normal": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 0.47007549505185364,
+          "minimum_nonadjacent_segment_distance": 4.786049295340656,
+          "nearest_pair": [
+            0,
+            76
+          ],
+          "nearest_pair_stressed": true,
+          "range": 10.18144818379165,
+          "stressed_within_range_pairs": 4,
+          "vertex_pinch": null,
+          "within_range_pairs": 21
+        },
+        "simple": false
+      },
+      "observer_only": true
+    },
+    {
+      "immediate_maturation_upper_bound": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 1.6254403289663872,
+          "minimum_nonadjacent_segment_distance": 18.668389150769258,
+          "nearest_pair": [
+            22,
+            36
+          ],
+          "nearest_pair_stressed": false,
+          "range": 11.485127333244176,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 0
+        },
+        "simple": false
+      },
+      "name": "seed_2_vertex_0.12",
+      "normal": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 1.6434672422577903,
+          "minimum_nonadjacent_segment_distance": 18.6621062132458,
+          "nearest_pair": [
+            22,
+            36
+          ],
+          "nearest_pair_stressed": false,
+          "range": 11.35532594346563,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 0
+        },
+        "simple": false
+      },
+      "observer_only": true
+    },
+    {
+      "immediate_maturation_upper_bound": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 0.5106875818966827,
+          "minimum_nonadjacent_segment_distance": 5.890805712622719,
+          "nearest_pair": [
+            24,
+            91
+          ],
+          "nearest_pair_stressed": true,
+          "range": 11.535047887290293,
+          "stressed_within_range_pairs": 22,
+          "vertex_pinch": [
+            28,
+            93
+          ],
+          "within_range_pairs": 59
+        },
+        "simple": false
+      },
+      "name": "seed_3_c_0.08",
+      "normal": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 0.5445420058758322,
+          "minimum_nonadjacent_segment_distance": 6.199862329351464,
+          "nearest_pair": [
+            24,
+            91
+          ],
+          "nearest_pair_stressed": true,
+          "range": 11.385462025798558,
+          "stressed_within_range_pairs": 6,
+          "vertex_pinch": null,
+          "within_range_pairs": 58
+        },
+        "simple": false
+      },
+      "observer_only": true
+    },
+    {
+      "immediate_maturation_upper_bound": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 0.7591450848336435,
+          "minimum_nonadjacent_segment_distance": 8.253865922508236,
+          "nearest_pair": [
+            78,
+            112
+          ],
+          "nearest_pair_stressed": false,
+          "range": 10.872580337284223,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 13
+        },
+        "simple": false
+      },
+      "name": "seed_4_a_0.08",
+      "normal": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 0.811460513934317,
+          "minimum_nonadjacent_segment_distance": 8.668538631973327,
+          "nearest_pair": [
+            78,
+            112
+          ],
+          "nearest_pair_stressed": false,
+          "range": 10.682637643012898,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 7
+        },
+        "simple": false
+      },
+      "observer_only": true
+    },
+    {
+      "immediate_maturation_upper_bound": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 1.250985523696811,
+          "minimum_nonadjacent_segment_distance": 11.175066046361668,
+          "nearest_pair": [
+            5,
+            73
+          ],
+          "nearest_pair_stressed": false,
+          "range": 8.933009882750696,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 0
+        },
+        "simple": false
+      },
+      "name": "seed_5_env_0.1",
+      "normal": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 1.274401841121876,
+          "minimum_nonadjacent_segment_distance": 11.304867224388932,
+          "nearest_pair": [
+            5,
+            73
+          ],
+          "nearest_pair_stressed": false,
+          "range": 8.870724177891237,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 0
+        },
+        "simple": false
+      },
+      "observer_only": true
+    },
+    {
+      "immediate_maturation_upper_bound": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 1.3042624994157002,
+          "minimum_nonadjacent_segment_distance": 12.316482858779954,
+          "nearest_pair": [
+            23,
+            84
+          ],
+          "nearest_pair_stressed": false,
+          "range": 9.443254608867193,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 0
+        },
+        "simple": false
+      },
+      "name": "seed_6_l_0.1",
+      "normal": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 1.334682702197709,
+          "minimum_nonadjacent_segment_distance": 12.5170946128974,
+          "nearest_pair": [
+            23,
+            84
+          ],
+          "nearest_pair_stressed": false,
+          "range": 9.378329839958637,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 0
+        },
+        "simple": false
+      },
+      "observer_only": true
+    },
+    {
+      "immediate_maturation_upper_bound": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 0.841315502318045,
+          "minimum_nonadjacent_segment_distance": 8.571554767316497,
+          "nearest_pair": [
+            9,
+            84
+          ],
+          "nearest_pair_stressed": false,
+          "range": 10.18827626936579,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 4
+        },
+        "simple": false
+      },
+      "name": "seed_7_rotate_-0.5",
+      "normal": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 0.8596355060765194,
+          "minimum_nonadjacent_segment_distance": 8.692834213922449,
+          "nearest_pair": [
+            9,
+            84
+          ],
+          "nearest_pair_stressed": false,
+          "range": 10.112232629382188,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 2
+        },
+        "simple": false
+      },
+      "observer_only": true
+    },
+    {
+      "immediate_maturation_upper_bound": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 0.47379918677016286,
+          "minimum_nonadjacent_segment_distance": 5.16767968678862,
+          "nearest_pair": [
+            77,
+            129
+          ],
+          "nearest_pair_stressed": true,
+          "range": 10.906898599839579,
+          "stressed_within_range_pairs": 2,
+          "vertex_pinch": null,
+          "within_range_pairs": 12
+        },
+        "simple": false
+      },
+      "name": "seed_8_vertex_-0.1",
+      "normal": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 0.4806504429926464,
+          "minimum_nonadjacent_segment_distance": 5.172868769200443,
+          "nearest_pair": [
+            77,
+            129
+          ],
+          "nearest_pair_stressed": true,
+          "range": 10.762226155442416,
+          "stressed_within_range_pairs": 2,
+          "vertex_pinch": null,
+          "within_range_pairs": 12
+        },
+        "simple": false
+      },
+      "observer_only": true
+    },
+    {
+      "immediate_maturation_upper_bound": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 0.5048480696600214,
+          "minimum_nonadjacent_segment_distance": 5.282842927370322,
+          "nearest_pair": [
+            20,
+            82
+          ],
+          "nearest_pair_stressed": true,
+          "range": 10.464223287865465,
+          "stressed_within_range_pairs": 4,
+          "vertex_pinch": null,
+          "within_range_pairs": 20
+        },
+        "simple": false
+      },
+      "name": "seed_9_c_-0.05",
+      "normal": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 0.5305278522987514,
+          "minimum_nonadjacent_segment_distance": 5.5080063217410125,
+          "nearest_pair": [
+            20,
+            82
+          ],
+          "nearest_pair_stressed": true,
+          "range": 10.382124704433686,
+          "stressed_within_range_pairs": 4,
+          "vertex_pinch": null,
+          "within_range_pairs": 20
+        },
+        "simple": false
+      },
+      "observer_only": true
+    },
+    {
+      "immediate_maturation_upper_bound": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 0.9843011886270843,
+          "minimum_nonadjacent_segment_distance": 9.548708559846716,
+          "nearest_pair": [
+            11,
+            132
+          ],
+          "nearest_pair_stressed": false,
+          "range": 9.701002772500331,
+          "stressed_within_range_pairs": 2,
+          "vertex_pinch": null,
+          "within_range_pairs": 4
+        },
+        "simple": false
+      },
+      "name": "seed_10_env_-0.08",
+      "normal": {
+        "accepted": true,
+        "pair": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 1.0482916659031178,
+          "minimum_nonadjacent_segment_distance": 10.010733475391529,
+          "nearest_pair": [
+            11,
+            132
+          ],
+          "nearest_pair_stressed": false,
+          "range": 9.54956888526548,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 0
+        },
+        "simple": false
+      },
+      "observer_only": true
+    }
+  ]
+}

@@ -1124,3 +1124,11 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 
 - Evidence-bearing head `cb6f7074ad8904500027b2f5fd9da38ac707a783` passed workflow `34307578510`; artifact ZIP digest is `sha256:58a5a83ecc669cb6f4d1e1c9590e250042919a11c2988abd311f225503b56670`.
 - This validation does not promote production-V4 reproduction or authorize evolutionary execution; the result remains provisional pending independent review.
+
+## DC-FINAL-001-R5 V4 neck-generation learning
+
+- The 12,000-step R4 horizon does truncate one slow V4 fission, but a horizon derived before qualification from the frozen maturation timescale raises passive reproduction only from `2/10` to `3/10`; maturation delay is contributory, not a sufficient robust-reproduction explanation.
+- Failed high-mass V4 organisms do not fail first on structural growth or cross-bond A. Their deepest observed prerequisites are nonadjacent apposition outside the local range or apposition without the frozen qualifying stress condition.
+- The existing tensile-strain regulator remains measurably spatial, correlates strongly with its positive-strain input, and closes A-to-W active work, yet does not reliably predict later neck narrowing and reaches only `4/10` fissions with `1/10` viable pair.
+- The conditional contrast fallback must not execute merely because the primary candidate failed; its explicit spatial-collapse precondition is false.
+- Evolutionary harness preservation is not evolutionary qualification. R5 correctly stops mutation/selection/reversal and final integration at the failed production-V4 reproduction gate.

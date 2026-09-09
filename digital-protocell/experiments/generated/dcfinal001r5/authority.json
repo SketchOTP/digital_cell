@@ -1,0 +1,13 @@
+{
+  "directive": "DC-FINAL-001-R5-V4-MATURATION-NECK-GENERATION-MECHANOCHEMICAL-REPRODUCTION-EVOLUTION-AND-FINAL-GOAL-CLOSURE-001",
+  "independent_architect_acceptance": "PENDING",
+  "r4_artifact_sha256": "6f858219ab080f8b8d14c6b211eabe72e6cfede16ede1773e31b4ff2c1eda76f",
+  "r4_authority": "PASS",
+  "r4_exact_head_ci": {
+    "result": "PASS",
+    "run": 34310098452
+  },
+  "r4_scientific_head": "78c2200615b6558d6b617e3c29f5c8e9bb1c05d3",
+  "result_scientific_head": "fb471605034ec0bd5a5eacca89cbf0ebdd4b4aa6",
+  "starting_governed_head": "aa886d554fa4ae8cf691e5a66b69d787ea4f2c2f"
+}

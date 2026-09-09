@@ -1,0 +1,170 @@
+{
+  "file_count": 33,
+  "files": [
+    {
+      "bytes": 306,
+      "path": "architect_disposition.json",
+      "sha256": "ba539e486c23b97b2425c2b1dbd7f50c765de7599bc65eb33f551dd78aa72bce"
+    },
+    {
+      "bytes": 586,
+      "path": "authority.json",
+      "sha256": "5eef078a31a25270befd69a001650bf760483b0d56e0d646646ce021a02898e0"
+    },
+    {
+      "bytes": 215,
+      "path": "checkpoint_restart.json",
+      "sha256": "3ec647ab996fb5d2fc8df8a9a547f3a9cf54ac418bf99071559d6040465afa42"
+    },
+    {
+      "bytes": 175,
+      "path": "contrast_fallback.json",
+      "sha256": "84d194eb2e0aa8682c60620eb1ff3da9d33de8f85e0ca6875b6ac43fff040365"
+    },
+    {
+      "bytes": 121,
+      "path": "development_preservation.json",
+      "sha256": "5d6376e96f9f8eb8c2109696d136bc963a3f0b97aebe96de1cdff3bc001235a3"
+    },
+    {
+      "bytes": 41,
+      "path": "end_to_end_lifecycle.json",
+      "sha256": "4621c26b9f8b2fb288de427e84495832e3506365b4d132b870ddf1fa89cc391e"
+    },
+    {
+      "bytes": 216,
+      "path": "experiential_memory.json",
+      "sha256": "4bbbe60d10761dff4b1048ded86a73a9125dd49475afe3ef941cb097f73b9e71"
+    },
+    {
+      "bytes": 415,
+      "path": "external_prior_art.json",
+      "sha256": "36da3276b30d3743afb7e062a36264a78c47b54cef7220bb0517ca1495ee247a"
+    },
+    {
+      "bytes": 247,
+      "path": "final_goal_matrix.json",
+      "sha256": "7d052627226c621e8d16c9924fb1e11329a743da7124345dcefb307dcf037138"
+    },
+    {
+      "bytes": 339,
+      "path": "forbidden_information_audit.json",
+      "sha256": "39c95fe1631f217f2290786122230eb6db4ac15dbef14a62f6a961b0e9ba9940"
+    },
+    {
+      "bytes": 300,
+      "path": "global_material_energy_closure.json",
+      "sha256": "d01d9037d3f190f0a2e67388bd6f8d889d75c2c66435268de918213d91824cbb"
+    },
+    {
+      "bytes": 215,
+      "path": "godot_independence.json",
+      "sha256": "38e1ce53c156fa4634ca1dda77d152071159350660def8af1be14fdbffc97e1c"
+    },
+    {
+      "bytes": 210,
+      "path": "linux_runtime.json",
+      "sha256": "fea0180ae0ba36a1f40c5f990ac67be79af77dd1067582e2a7fbfd2bd7ddf9dd"
+    },
+    {
+      "bytes": 344,
+      "path": "m1_preservation.json",
+      "sha256": "29146025d3643ae298634cfd64b6fd718420e405cce7353a511f421cb0cb0146"
+    },
+    {
+      "bytes": 127,
+      "path": "m2_preservation.json",
+      "sha256": "dfd4f0f789d16e87a981d92f8aea68df97980ee1d3e25af9355e328bd4f1aa2c"
+    },
+    {
+      "bytes": 1031,
+      "path": "mechanochemical_controls.json",
+      "sha256": "485976d28900ab167b5232c3807f7df76998a18a417bebf2c5b4465ef0923af8"
+    },
+    {
+      "bytes": 160,
+      "path": "mechanochemical_energy_closure.json",
+      "sha256": "6ae3ed50350825db42036e8e5bbbb406e957b704671ab93e25d262d3a66915d3"
+    },
+    {
+      "bytes": 2814,
+      "path": "mechanochemical_reproduction.json",
+      "sha256": "6bc56fce3344db464fd3376adbce9fb87c6c093fa63ebe86c09ea814ba02b701"
+    },
+    {
+      "bytes": 402,
+      "path": "passive_v4_reproduction.json",
+      "sha256": "233199c05a7279734883ea759eb6575f3fde505e390b95260843d84e61b9745e"
+    },
+    {
+      "bytes": 775,
+      "path": "qualification.json",
+      "sha256": "925f012ed5f40f6039565e0a952dd520fc6f3bdf3451b7effe7ae9eea748be9f"
+    },
+    {
+      "bytes": 215,
+      "path": "sensory_embodiment.json",
+      "sha256": "2c0cf5120b878f2962ae9ee871b75cc0d6167bdfac9d7d6e4b6c883aa69d146a"
+    },
+    {
+      "bytes": 46197,
+      "path": "strain_activity_spatialization.json",
+      "sha256": "d43e0214073fd19c709ec50cf446358c441c08aa78e6f658fb2659cb79d5e7aa"
+    },
+    {
+      "bytes": 313,
+      "path": "strain_regulator_contract.json",
+      "sha256": "9be3a6dd953c05c9c54de6c05d0a8d61a23fcf34e1852958d7781f4eab67980a"
+    },
+    {
+      "bytes": 155,
+      "path": "v4_daughter_continuation.json",
+      "sha256": "aace1871cf42d73c4df61d97b555dfd32c883a259fcc7007724bd9b39ca2111c"
+    },
+    {
+      "bytes": 86,
+      "path": "v4_environment_a_selection.json",
+      "sha256": "1eba052d848e4b3346ec12568a8a8d63736eea96f795982ae7fb9c32ea4011ed"
+    },
+    {
+      "bytes": 86,
+      "path": "v4_environment_b_selection.json",
+      "sha256": "1eba052d848e4b3346ec12568a8a8d63736eea96f795982ae7fb9c32ea4011ed"
+    },
+    {
+      "bytes": 9597,
+      "path": "v4_failure_taxonomy.json",
+      "sha256": "304b25b77ce88b9fc05ae6ac0e621e38ef0c2e7dd6c24c37279807ae7354a3ea"
+    },
+    {
+      "bytes": 517,
+      "path": "v4_maturation_horizon_audit.json",
+      "sha256": "c5713f8f7dc4b557a71b118c7b1060ad3cd4fad55267bc546efb4135903f8b0b"
+    },
+    {
+      "bytes": 86,
+      "path": "v4_mutant_lineage.json",
+      "sha256": "1eba052d848e4b3346ec12568a8a8d63736eea96f795982ae7fb9c32ea4011ed"
+    },
+    {
+      "bytes": 86,
+      "path": "v4_mutation_frequency.json",
+      "sha256": "1eba052d848e4b3346ec12568a8a8d63736eea96f795982ae7fb9c32ea4011ed"
+    },
+    {
+      "bytes": 12093,
+      "path": "v4_reference_length_counterfactual.json",
+      "sha256": "355fff2d51033bf032c53670c46c24231a5c50c5535e97ed761f13bec5d2c90a"
+    },
+    {
+      "bytes": 356,
+      "path": "v4_reproduction_qualification.json",
+      "sha256": "01102acd1205bc521e9f7c17388b3b22b112756a56e0e3f0e46a1f671920d4f4"
+    },
+    {
+      "bytes": 86,
+      "path": "v4_reversal.json",
+      "sha256": "1eba052d848e4b3346ec12568a8a8d63736eea96f795982ae7fb9c32ea4011ed"
+    }
+  ]
+}

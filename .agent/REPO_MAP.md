@@ -194,3 +194,7 @@
 - `digital-protocell/experiments/dcfinal001_r4_evidence.py` — deterministic compact R4 evidence generator preserving R1-R3 authority and separating production-V4 reproduction from HistoricalV1 regression.
 - `digital-protocell/experiments/generated/dcfinal001r4/` — R4 authority, ownership, topology bookkeeping, newborn continuation, V4 reproduction, preservation, stopped-evolution, final matrix, and qualification evidence.
 - `.github/workflows/dc-final-001-r4.yml` — R4 exact-head Linux scope, reproduction/historical regression replay, preservation, D-087, reproducibility, and artifact validation.
+- `digital-protocell/examples/dcfinal001_r5_v4_neck.rs` — R5 exact V4 failure taxonomy, source-timescale horizon audit, clone-only reference-length counterfactual, frozen strain-regulator/A-funded contractility composition, required controls, and Gate-9 stop.
+- `digital-protocell/experiments/dcfinal001_r5_evidence.py` — deterministic compact R5 evidence generator preserving R4 authority and explicitly marking evolution/final integration not reached.
+- `digital-protocell/experiments/generated/dcfinal001r5/` — R5 authority, maturation, failure taxonomy, mechanochemical attribution/controls, preservation, stopped-evolution, final matrix, and provisional qualification evidence.
+- `.github/workflows/dc-final-001-r5.yml` — exact-head Linux scope, deterministic R5 replay, preservation, D-087, PR #44, evidence reproducibility, and artifact upload.

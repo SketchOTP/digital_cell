@@ -1,0 +1,12 @@
+{
+  "age_or_fission_attempt_signal_read": false,
+  "body_size_signal_read_by_regulator_or_motor": false,
+  "centroid_to_neck_read": false,
+  "cleavage_plane_read": false,
+  "fallback_executed": false,
+  "new_free_parameters": 0,
+  "observer_feedback": false,
+  "pass": true,
+  "resource_position_read": false,
+  "world_axis_read": false
+}

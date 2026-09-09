@@ -1,0 +1,11 @@
+{
+  "adapter": "material_adapter::observe_local_material_frame",
+  "dt": 0.02,
+  "forbidden_inputs": [],
+  "input": "local positive tensile strain only",
+  "k_decay": 0.5,
+  "k_neighbor": 2.0,
+  "k_stimulus": 4.0,
+  "new_free_parameters": 0,
+  "topology_continuity": "ContinuityNetworkV1 split/merge remapping"
+}
