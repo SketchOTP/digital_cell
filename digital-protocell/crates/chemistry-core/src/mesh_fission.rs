@@ -63,6 +63,13 @@ pub struct FissionEvent {
     pub pinch: (usize, usize),
     pub partition: PartitionReport,
     pub leakage_w: f64,
+    /// Exact local source correspondence for daughter boundary vertices.
+    /// Segment-split vertices select the nearest incident parent vertex; both
+    /// daughter representations of a cut vertex retain that same source.
+    #[serde(default)]
+    pub daughter_a_parent_vertex_sources: Vec<usize>,
+    #[serde(default)]
+    pub daughter_b_parent_vertex_sources: Vec<usize>,
 }
 
 /// Observer-only comparison of the legacy segment-apposition stress test with
@@ -102,7 +109,8 @@ pub fn try_local_fission(
         return None;
     }
     let (i, j) = find_local_pinch(parent, &params.topo)?;
-    try_local_fission_at_vertices(parent, params, i, j)
+    let parent_sources = (0..parent.n()).collect::<Vec<_>>();
+    try_local_fission_at_vertices(parent, params, i, j, &parent_sources)
 }
 
 fn try_local_fission_at_vertices(
@@ -110,7 +118,11 @@ fn try_local_fission_at_vertices(
     params: &FissionParams,
     i: usize,
     j: usize,
+    parent_vertex_sources: &[usize],
 ) -> Option<(MaterialMesh, MaterialMesh, FissionEvent)> {
+    if parent_vertex_sources.len() != parent.n() {
+        return None;
+    }
     // Cross-bond mass drawn from local A and nearby edge material.
     let a = parent.vertices[i];
     let b = parent.vertices[j];
@@ -390,6 +402,8 @@ fn try_local_fission_at_vertices(
             ok,
         },
         leakage_w: leakage,
+        daughter_a_parent_vertex_sources: contiguous_vertex_sources(parent_vertex_sources, i, j),
+        daughter_b_parent_vertex_sources: contiguous_vertex_sources(parent_vertex_sources, j, i),
     };
 
     if !ok {
@@ -397,6 +411,22 @@ fn try_local_fission_at_vertices(
         // Caller decides defect vs continue.
     }
     Some((d1, d2, event))
+}
+
+fn contiguous_vertex_sources(sources: &[usize], start: usize, end: usize) -> Vec<usize> {
+    let mut out = Vec::new();
+    let mut index = start;
+    loop {
+        out.push(sources[index]);
+        if index == end {
+            break;
+        }
+        index = (index + 1) % sources.len();
+        if out.len() > sources.len() + 1 {
+            break;
+        }
+    }
+    out
 }
 
 fn closest_segment_points(
@@ -473,6 +503,25 @@ fn split_edge_at(mesh: &mut MaterialMesh, edge: usize, fraction: f64, point: [f6
             ruptured: old.ruptured,
         },
     );
+    edge + 1
+}
+
+fn split_vertex_source_at(sources: &mut Vec<usize>, edge: usize, fraction: f64) -> usize {
+    let n = sources.len();
+    let f = fraction.clamp(0.0, 1.0);
+    let endpoint_tol = 4096.0 * f64::EPSILON;
+    if f <= endpoint_tol {
+        return edge;
+    }
+    if f >= 1.0 - endpoint_tol {
+        return (edge + 1) % n;
+    }
+    let source = if f <= 0.5 {
+        sources[edge]
+    } else {
+        sources[(edge + 1) % n]
+    };
+    sources.insert(edge + 1, source);
     edge + 1
 }
 
@@ -702,10 +751,17 @@ fn try_local_segment_fission_with_stress_contract(
                 + sj * (parent.vertices[(j + 1) % parent.n()][1] - parent.vertices[j][1]),
         ];
         let mut split = parent.clone();
+        let mut parent_sources = (0..parent.n()).collect::<Vec<_>>();
         let vi = split_edge_at(&mut split, i, si, pi);
+        let source_vi = split_vertex_source_at(&mut parent_sources, i, si);
+        debug_assert_eq!(vi, source_vi);
         let shifted_j = if split.n() > parent.n() { j + 1 } else { j };
         let vj = split_edge_at(&mut split, shifted_j, sj, pj);
-        let Some((d1, d2, event)) = try_local_fission_at_vertices(&split, params, vi, vj) else {
+        let source_vj = split_vertex_source_at(&mut parent_sources, shifted_j, sj);
+        debug_assert_eq!(vj, source_vj);
+        let Some((d1, d2, event)) =
+            try_local_fission_at_vertices(&split, params, vi, vj, &parent_sources)
+        else {
             continue;
         };
         if crate::mesh_self_contact::polygon_simple(&d1.vertices)
@@ -758,14 +814,19 @@ pub fn try_local_segment_fission_at_observed_apposition(
         return None;
     }
     let mut split = parent.clone();
+    let mut parent_sources = (0..parent.n()).collect::<Vec<_>>();
     let vi = split_edge_at(&mut split, edge_i, si, pi);
+    let source_vi = split_vertex_source_at(&mut parent_sources, edge_i, si);
+    debug_assert_eq!(vi, source_vi);
     let shifted_j = if split.n() > parent.n() {
         edge_j + 1
     } else {
         edge_j
     };
     let vj = split_edge_at(&mut split, shifted_j, sj, pj);
-    let (d1, d2, event) = try_local_fission_at_vertices(&split, params, vi, vj)?;
+    let source_vj = split_vertex_source_at(&mut parent_sources, shifted_j, sj);
+    debug_assert_eq!(vj, source_vj);
+    let (d1, d2, event) = try_local_fission_at_vertices(&split, params, vi, vj, &parent_sources)?;
     (crate::mesh_self_contact::polygon_simple(&d1.vertices)
         && crate::mesh_self_contact::polygon_simple(&d2.vertices)
         && event.partition.ok)
@@ -860,6 +921,13 @@ mod segment_tests {
         assert!(event.partition.ok);
         assert!(crate::mesh_self_contact::polygon_simple(&a.vertices));
         assert!(crate::mesh_self_contact::polygon_simple(&b.vertices));
+        assert_eq!(event.daughter_a_parent_vertex_sources.len(), a.n());
+        assert_eq!(event.daughter_b_parent_vertex_sources.len(), b.n());
+        assert!(event
+            .daughter_a_parent_vertex_sources
+            .iter()
+            .chain(&event.daughter_b_parent_vertex_sources)
+            .all(|source| *source < mesh.n()));
     }
 
     #[test]

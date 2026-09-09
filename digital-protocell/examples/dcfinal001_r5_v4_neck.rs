@@ -215,6 +215,7 @@ struct RunResult {
     max_mass_over_birth: f64,
     physical_fission: bool,
     both_daughters_viable: bool,
+    full_state_daughters_viable: Option<bool>,
     daughter_diagnostics: Option<Value>,
     fission_step: Option<usize>,
     first_invalid: Option<Value>,
@@ -873,6 +874,161 @@ fn daughter_viability(mut mesh: MaterialMesh) -> Value {
     })
 }
 
+fn partition_plasticity_state(
+    parent: &PlasticityStateV1,
+    sources: &[usize],
+) -> Option<PlasticityStateV1> {
+    if sources
+        .iter()
+        .any(|source| *source >= parent.adaptation.len())
+    {
+        return None;
+    }
+    Some(PlasticityStateV1 {
+        schema: parent.schema.clone(),
+        enabled: parent.enabled,
+        adaptation: sources
+            .iter()
+            .map(|source| parent.adaptation[*source])
+            .collect(),
+    })
+}
+
+fn daughter_viability_with_plasticity(
+    mut mesh: MaterialMesh,
+    mut plasticity: PlasticityStateV1,
+) -> Value {
+    let mechanics = MechParams::default();
+    let reaction = ReactionParams::default();
+    let transport = TransportParams::default();
+    let fission = FissionParams::default();
+    let contractility = ContractilityParamsV1::default();
+    let plasticity_params = PlasticityParamsV1::default();
+    let growth = GrowthParams {
+        y_g: 0.9,
+        enable_growth: false,
+    };
+    let initial_adaptation = plasticity.adaptation.clone();
+    let c_initial = mesh.interior.c;
+    let a_initial = mesh.interior.a;
+    let mut completed = 0_usize;
+    let mut all_simple = polygon_simple(&mesh.vertices);
+    let mut all_runtime = mesh.physical_runtime_valid();
+    let mut all_lifecycle = mesh.lifecycle_invariants_hold();
+    let mut remesh_mappings = 0_usize;
+    let mut remesh_continuity_failures = 0_usize;
+    let mut spent_a = 0.0_f64;
+    let mut produced_w = 0.0_f64;
+    for step in 0..DAUGHTER_STEPS {
+        if !mesh.can_advance_physics() || plasticity.adaptation.len() != mesh.n() {
+            break;
+        }
+        let _ = transport_step(&mut mesh, &transport, mechanics.dt);
+        let _ = reactions_step(&mut mesh, &reaction, mechanics.dt, true, true);
+        let _ = growth_step(&mut mesh, &reaction, &growth, mechanics.dt);
+        let raw_drive = curvature_components(&mesh).3;
+        let effective_drive = raw_drive
+            .iter()
+            .zip(&plasticity.adaptation)
+            .map(|(drive, adaptation)| drive * (1.0 - adaptation))
+            .collect::<Vec<_>>();
+        let (forces, requested) = inward_normal_request(&mesh, &effective_drive, mechanics.dt);
+        let zeros = vec![[0.0, 0.0]; mesh.n()];
+        let Ok(ledger) = apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_self_contact(
+            &mut mesh,
+            &vec![0.0; effective_drive.len()],
+            &mechanics,
+            &contractility,
+            &forces,
+            requested,
+            &zeros,
+        ) else {
+            break;
+        };
+        spent_a += ledger.resource_spent;
+        produced_w += ledger.waste_amount_after - ledger.waste_amount_before;
+        if advance_local_plasticity_trace(
+            &mut plasticity,
+            &raw_drive,
+            mechanics.dt,
+            &plasticity_params,
+        )
+        .is_err()
+        {
+            break;
+        }
+        let old_frame = observe_continuity_material_frame(&mesh, &mechanics);
+        let old_n = mesh.n();
+        let _ = remesh_preserving_simple(&mut mesh);
+        if mesh.n() != old_n {
+            let new_frame = observe_continuity_material_frame(&mesh, &mechanics);
+            let event = if mesh.n() > old_n {
+                TopologyEventV1::Split
+            } else {
+                TopologyEventV1::Merge
+            };
+            let mapped = derive_local_mapping(&old_frame, &new_frame, event)
+                .ok()
+                .and_then(|mapping| {
+                    remesh_mappings += 1;
+                    plasticity.remap(&mapping).ok()
+                });
+            if mapped.is_none() {
+                remesh_continuity_failures += 1;
+                break;
+            }
+        }
+        let _ = topology_step(&mut mesh, &fission);
+        all_simple &= polygon_simple(&mesh.vertices);
+        all_runtime &= mesh.physical_runtime_valid();
+        all_lifecycle &= mesh.lifecycle_invariants_hold();
+        if !all_simple || !all_runtime || !all_lifecycle {
+            break;
+        }
+        completed = step + 1;
+    }
+    let c_retention = if c_initial > 1e-12 {
+        mesh.interior.c / c_initial
+    } else {
+        1.0
+    };
+    let a_retention = if a_initial > 1e-12 {
+        mesh.interior.a / a_initial
+    } else {
+        1.0
+    };
+    let energy_residual = (spent_a - produced_w).abs();
+    let viable = completed == DAUGHTER_STEPS
+        && mesh.observer_viable()
+        && mesh.closed_intact()
+        && all_simple
+        && all_runtime
+        && all_lifecycle
+        && c_retention >= 0.80
+        && a_retention >= 0.80
+        && remesh_continuity_failures == 0
+        && energy_residual <= 1e-8 * (1.0 + spent_a.abs());
+    json!({
+        "viable": viable,
+        "completed_steps": completed,
+        "observer_viable": mesh.observer_viable(),
+        "closed_intact": mesh.closed_intact(),
+        "all_simple": all_simple,
+        "all_runtime_valid": all_runtime,
+        "all_lifecycle_invariants_hold": all_lifecycle,
+        "c_retention": c_retention,
+        "a_retention": a_retention,
+        "initial_adaptation": initial_adaptation,
+        "terminal_adaptation": plasticity.adaptation,
+        "remesh_mappings": remesh_mappings,
+        "remesh_continuity_failures": remesh_continuity_failures,
+        "active_a_spent": spent_a,
+        "active_w_produced": produced_w,
+        "active_energy_residual": energy_residual,
+        "terminal": geometry(&mesh),
+    })
+}
+
 fn contrast_activity(mesh: &MaterialMesh) -> Vec<f64> {
     let frame = observe_continuity_material_frame(mesh, &MechParams::default());
     let stimuli = frame
@@ -1199,6 +1355,7 @@ fn run(
     let mut first_invalid = None;
     let mut fission_step = None;
     let mut both_viable = false;
+    let mut full_state_daughters_viable = None;
     let mut daughter_diagnostics = None;
     let mut attempts = Vec::new();
     let mut checkpoints = Vec::new();
@@ -1676,6 +1833,48 @@ fn run(
                 {
                     reason = "SCISSION_PROPOSED_INVALID_GEOMETRY".into();
                 } else {
+                    let full_state = if mode == Mode::RefractoryCurvatureNormalSignedStress {
+                        let state_a = partition_plasticity_state(
+                            &plasticity,
+                            &event.daughter_a_parent_vertex_sources,
+                        );
+                        let state_b = partition_plasticity_state(
+                            &plasticity,
+                            &event.daughter_b_parent_vertex_sources,
+                        );
+                        match (state_a, state_b) {
+                            (Some(state_a), Some(state_b))
+                                if state_a.adaptation.len() == a.n()
+                                    && state_b.adaptation.len() == b.n() =>
+                            {
+                                let result_a =
+                                    daughter_viability_with_plasticity(a.clone(), state_a);
+                                let result_b =
+                                    daughter_viability_with_plasticity(b.clone(), state_b);
+                                let pass = result_a["viable"] == true && result_b["viable"] == true;
+                                full_state_daughters_viable = Some(pass);
+                                Some(json!({
+                                    "source_correspondence": {
+                                        "daughter_a": event.daughter_a_parent_vertex_sources,
+                                        "daughter_b": event.daughter_b_parent_vertex_sources,
+                                    },
+                                    "daughter_a": result_a,
+                                    "daughter_b": result_b,
+                                    "both_viable": pass,
+                                }))
+                            }
+                            _ => {
+                                full_state_daughters_viable = Some(false);
+                                Some(json!({
+                                    "mapping_failure": true,
+                                    "daughter_a_sources": event.daughter_a_parent_vertex_sources,
+                                    "daughter_b_sources": event.daughter_b_parent_vertex_sources,
+                                }))
+                            }
+                        }
+                    } else {
+                        None
+                    };
                     let va = daughter_viability(a);
                     let vb = daughter_viability(b);
                     both_viable = va["viable"] == true && vb["viable"] == true;
@@ -1684,6 +1883,7 @@ fn run(
                         "daughter_a": va,
                         "daughter_b": vb,
                         "both_viable": both_viable,
+                        "full_state": full_state,
                     }));
                     reason = if both_viable {
                         "VALID_FISSION"
@@ -1713,6 +1913,7 @@ fn run(
         max_mass_over_birth: maximum_mass_ratio,
         physical_fission: fission_step.is_some(),
         both_daughters_viable: both_viable,
+        full_state_daughters_viable,
         daughter_diagnostics,
         fission_step,
         first_invalid,
@@ -2026,8 +2227,13 @@ pub fn run_r10_reproduction() {
     let signed = campaign(Mode::RefractoryCurvatureNormalSignedStress, 14_778);
     let (legacy_growth, legacy_fissions, legacy_viable) = result_counts(&legacy);
     let (signed_growth, signed_fissions, signed_viable) = result_counts(&signed);
+    let full_state_viable_pairs = signed
+        .iter()
+        .filter(|run| run.full_state_daughters_viable == Some(true))
+        .count();
     let legacy_pass = legacy_growth == 10 && legacy_fissions == 5 && legacy_viable == 5;
     let reproduction_pass = signed_growth >= 8 && signed_fissions >= 7 && signed_viable >= 6;
+    let full_state_pass = full_state_viable_pairs >= 6;
     let energy = active_energy_summary(&signed);
     let result = json!({
         "directive": R10_DIRECTIVE,
@@ -2040,6 +2246,7 @@ pub fn run_r10_reproduction() {
             "growth_qualified": signed_growth,
             "geometry_valid_fissions": signed_fissions,
             "simple_viable_daughter_pairs": signed_viable,
+            "full_state_viable_daughter_pairs": full_state_viable_pairs,
         },
         "normal_energy_closure": energy,
         "stress_contract": {
@@ -2053,12 +2260,18 @@ pub fn run_r10_reproduction() {
             "new_free_parameters": 0,
         },
         "robust_v4_reproduction": reproduction_pass,
-        "downstream_execution": if reproduction_pass {
+        "full_state_daughter_inheritance": {
+            "executed": true,
+            "viable_pairs": full_state_viable_pairs,
+            "required_pairs": 6,
+            "pass": full_state_pass,
+        },
+        "downstream_execution": if reproduction_pass && full_state_pass {
             "PENDING_GATES_9_15"
         } else {
-            "NOT_REACHED_REPRODUCTION_GATE"
+            "NOT_REACHED_REPRODUCTION_OR_FULL_STATE_GATE"
         },
-        "classification": if reproduction_pass {
+        "classification": if reproduction_pass && full_state_pass {
             "V4_SIGNED_LOAD_BEARING_NECK_STRESS_ROBUST_REPRODUCTION_QUALIFIED_PENDING_DOWNSTREAM"
         } else {
             "V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED"
