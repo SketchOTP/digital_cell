@@ -18,13 +18,17 @@ use chemistry_core::mesh_self_contact::{mechanics_step_with_local_self_contact, 
 use chemistry_core::mesh_topology::{find_local_pinch, local_rebond_range};
 use chemistry_core::mesh_transport::{transport_step, TransportParams};
 use chemistry_core::planar_ring_topology::{remesh_preserving_simple, PlanarRingTopology};
-use regulatory_core::continuity::{ContinuityNetworkV1, TopologyEventV1};
+use regulatory_core::continuity::{derive_local_mapping, ContinuityNetworkV1, TopologyEventV1};
 use regulatory_core::contractility::{
     apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_self_contact,
     ContractilityParamsV1, FROZEN_RESERVE_COST_PER_FORCE_LENGTH_TIME,
 };
 use regulatory_core::material_adapter::observe_continuity_material_frame;
-use regulatory_core::FROZEN_STATIC_TRACTION_LIMIT;
+use regulatory_core::{
+    advance_local_plasticity_trace, PlasticityParamsV1, PlasticityStateV1,
+    FROZEN_ADAPTATION_LOAD_RATE_PER_TIME, FROZEN_ADAPTATION_RECOVERY_RATE_PER_TIME,
+    FROZEN_STATIC_TRACTION_LIMIT,
+};
 use serde::Serialize;
 use serde_json::{json, Value};
 use std::{env, fs, path::PathBuf};
@@ -65,6 +69,11 @@ enum Mode {
     ContrastNormalMotorOff,
     ContrastNormalZeroA,
     ContrastNormalTangential,
+    RefractoryCurvatureNormal,
+    RefractoryCurvatureNormalMotorOff,
+    RefractoryCurvatureNormalAdaptationDisabled,
+    RefractoryCurvatureNormalZeroA,
+    RefractoryCurvatureNormalTangential,
 }
 
 impl Mode {
@@ -86,8 +95,30 @@ impl Mode {
             Self::ContrastNormalMotorOff => "STRAIN_CONTRAST_NORMAL_MOTOR_OFF",
             Self::ContrastNormalZeroA => "STRAIN_CONTRAST_NORMAL_ZERO_A",
             Self::ContrastNormalTangential => "STRAIN_CONTRAST_NORMAL_PLUS_TANGENTIAL",
+            Self::RefractoryCurvatureNormal => "REFRACTORY_CURVATURE_NORMAL",
+            Self::RefractoryCurvatureNormalMotorOff => "REFRACTORY_CURVATURE_NORMAL_MOTOR_OFF",
+            Self::RefractoryCurvatureNormalAdaptationDisabled => {
+                "REFRACTORY_CURVATURE_NORMAL_ADAPTATION_DISABLED"
+            }
+            Self::RefractoryCurvatureNormalZeroA => "REFRACTORY_CURVATURE_NORMAL_ZERO_A",
+            Self::RefractoryCurvatureNormalTangential => {
+                "REFRACTORY_CURVATURE_NORMAL_PLUS_TANGENTIAL"
+            }
         }
     }
+}
+
+#[derive(Clone, Debug, Default, Serialize)]
+struct RefractoryAudit {
+    enabled: bool,
+    accepted_updates: usize,
+    remesh_mapping_count: usize,
+    remesh_continuity_failures: usize,
+    maximum_mapping_distance: f64,
+    maximum_adaptation: f64,
+    adaptation_variance_sum: f64,
+    effective_drive_maximum: f64,
+    first_step_effective_drive_error: f64,
 }
 
 #[derive(Clone, Debug, Default, Serialize)]
@@ -186,8 +217,104 @@ struct RunResult {
     #[serde(skip)]
     functional_localization: FunctionalLocalization,
     actuator_geometry: ActuatorGeometryAudit,
+    patch_dynamics: Vec<Value>,
+    refractory_audit: RefractoryAudit,
     #[serde(skip)]
     final_mesh: MaterialMesh,
+}
+
+fn circular_lag_one_autocorrelation(values: &[f64]) -> Option<f64> {
+    if values.len() < 3 {
+        return None;
+    }
+    let mean = values.iter().sum::<f64>() / values.len() as f64;
+    let variance = values
+        .iter()
+        .map(|value| (value - mean).powi(2))
+        .sum::<f64>();
+    if variance <= CLASSIFICATION_TOLERANCE {
+        return None;
+    }
+    Some(
+        values
+            .iter()
+            .enumerate()
+            .map(|(index, value)| (value - mean) * (values[(index + 1) % values.len()] - mean))
+            .sum::<f64>()
+            / variance,
+    )
+}
+
+fn patch_dynamics_row(
+    mesh: &MaterialMesh,
+    raw_drive: &[f64],
+    effective_drive: &[f64],
+    adaptation: Option<&[f64]>,
+    fission: &FissionParams,
+    step: usize,
+) -> Value {
+    let (mean, variance) = mean_variance(raw_drive);
+    let (effective_mean, effective_variance) = mean_variance(effective_drive);
+    let dominant_index = raw_drive
+        .iter()
+        .enumerate()
+        .max_by(|left, right| left.1.total_cmp(right.1))
+        .map(|(index, _)| index)
+        .unwrap_or(0);
+    let center = mesh.centroid();
+    let dominant_position = mesh.vertices[dominant_index];
+    let (active_perimeter_fraction, largest_contiguous_active_arc, active_patches) =
+        active_arc_metrics(mesh, raw_drive);
+    let effective_dominant_index = effective_drive
+        .iter()
+        .enumerate()
+        .max_by(|left, right| left.1.total_cmp(right.1))
+        .map(|(index, _)| index)
+        .unwrap_or(0);
+    let (effective_active_fraction, effective_largest_arc, effective_active_patches) =
+        active_arc_metrics(mesh, effective_drive);
+    let (adaptation_mean, adaptation_variance) =
+        adaptation.map(mean_variance).unwrap_or((0.0, 0.0));
+    let pair = pair_observer(mesh, fission);
+    json!({
+        "step": step,
+        "minimum_distance_over_range": pair["minimum_distance_over_range"],
+        "within_range_pair_count": pair["within_range_pairs"],
+        "stress_qualified_pair_count": pair["stressed_within_range_pairs"],
+        "curvature_drive_maximum": raw_drive.iter().copied().fold(0.0_f64, f64::max),
+        "curvature_drive_mean": mean,
+        "curvature_drive_variance": variance,
+        "largest_contiguous_active_arc_fraction": largest_contiguous_active_arc,
+        "active_perimeter_fraction": active_perimeter_fraction,
+        "active_patch_count": active_patches,
+        "dominant_patch_index": dominant_index,
+        "dominant_patch_index_fraction": dominant_index as f64 / mesh.n().max(1) as f64,
+        "dominant_patch_position_relative_to_centroid": [
+            dominant_position[0] - center[0],
+            dominant_position[1] - center[1],
+        ],
+        "spatial_lag_one_autocorrelation": circular_lag_one_autocorrelation(raw_drive),
+        "adaptation_maximum": adaptation
+            .map(|values| values.iter().copied().fold(0.0_f64, f64::max))
+            .unwrap_or(0.0),
+        "adaptation_mean": adaptation_mean,
+        "adaptation_variance": adaptation_variance,
+        "effective_drive_maximum": effective_drive.iter().copied().fold(0.0_f64, f64::max),
+        "effective_drive_mean": effective_mean,
+        "effective_drive_variance": effective_variance,
+        "effective_dominant_patch_index": effective_dominant_index,
+        "effective_dominant_patch_index_fraction": effective_dominant_index as f64 / mesh.n().max(1) as f64,
+        "effective_active_perimeter_fraction": effective_active_fraction,
+        "effective_largest_contiguous_active_arc_fraction": effective_largest_arc,
+        "effective_active_patch_count": effective_active_patches,
+        "actual_perimeter": mesh.perimeter(),
+        "mature_rest_perimeter": (0..mesh.n()).map(|index| mesh.rest_length(index)).sum::<f64>(),
+        "compression_ratio": mesh.perimeter()
+            / (0..mesh.n()).map(|index| mesh.rest_length(index)).sum::<f64>().max(1e-300),
+        "absolute_a": mesh.interior.a.max(0.0) * mesh.area().max(1e-300),
+        "structural_mass": mesh.total_structural_mass(),
+        "vertex_count": mesh.n(),
+    })
 }
 
 fn local_inward_normal_and_tangent(mesh: &MaterialMesh, vertex: usize) -> ([f64; 2], [f64; 2]) {
@@ -1033,6 +1160,20 @@ fn run(
     let mut mesh = initial_mesh;
     let initial_frame = observe_continuity_material_frame(&mesh, &mechanics);
     let mut regulator = ContinuityNetworkV1::new(initial_frame, Some(0)).unwrap();
+    let refractory_mode = matches!(
+        mode,
+        Mode::RefractoryCurvatureNormal
+            | Mode::RefractoryCurvatureNormalMotorOff
+            | Mode::RefractoryCurvatureNormalAdaptationDisabled
+            | Mode::RefractoryCurvatureNormalZeroA
+            | Mode::RefractoryCurvatureNormalTangential
+    );
+    let mut plasticity = if matches!(mode, Mode::RefractoryCurvatureNormalAdaptationDisabled) {
+        PlasticityStateV1::disabled(mesh.n())
+    } else {
+        PlasticityStateV1::new(mesh.n())
+    };
+    let plasticity_params = PlasticityParamsV1::default();
     let mut maximum_mass_ratio = mesh.total_structural_mass() / birth_mass.max(1e-300);
     let mut all_simple = polygon_simple(&mesh.vertices);
     let mut all_runtime = mesh.physical_runtime_valid();
@@ -1047,6 +1188,11 @@ fn run(
     let mut attribution = Attribution::default();
     let mut functional_localization = FunctionalLocalization::default();
     let mut actuator_geometry = ActuatorGeometryAudit::default();
+    let mut patch_dynamics = Vec::new();
+    let mut refractory_audit = RefractoryAudit {
+        enabled: refractory_mode && plasticity.enabled,
+        ..Default::default()
+    };
     let mut deepest = "NO_NONADJACENT_APPOSITION".to_string();
     for absolute_step in (start_step + 1)..=end_step {
         if !mesh.can_advance_physics() {
@@ -1082,7 +1228,12 @@ fn run(
             Mode::CurvatureNormal
             | Mode::CurvatureNormalMotorOff
             | Mode::CurvatureNormalZeroA
-            | Mode::CurvatureNormalTangential => curvature_components(&mesh).3,
+            | Mode::CurvatureNormalTangential
+            | Mode::RefractoryCurvatureNormal
+            | Mode::RefractoryCurvatureNormalMotorOff
+            | Mode::RefractoryCurvatureNormalAdaptationDisabled
+            | Mode::RefractoryCurvatureNormalZeroA
+            | Mode::RefractoryCurvatureNormalTangential => curvature_components(&mesh).3,
             _ => {
                 if regulator.step(frame, event).is_err() {
                     attribution.continuity_failures += 1;
@@ -1093,7 +1244,38 @@ fn run(
                 regulator.state.activity.clone()
             }
         };
+        let raw_activity = activity;
+        let activity = if refractory_mode && plasticity.enabled {
+            raw_activity
+                .iter()
+                .zip(&plasticity.adaptation)
+                .map(|(drive, adaptation)| drive * (1.0 - adaptation))
+                .collect::<Vec<_>>()
+        } else {
+            raw_activity.clone()
+        };
+        if refractory_mode && absolute_step == start_step + 1 {
+            refractory_audit.first_step_effective_drive_error = raw_activity
+                .iter()
+                .zip(&activity)
+                .map(|(raw, effective)| (raw - effective).abs())
+                .fold(0.0_f64, f64::max);
+        }
         let (activity_mean_current, _) = mean_variance(&activity);
+        if (matches!(mode, Mode::CurvatureNormal) || refractory_mode)
+            && (absolute_step == start_step + 1
+                || absolute_step % 25 == 0
+                || absolute_step == end_step)
+        {
+            patch_dynamics.push(patch_dynamics_row(
+                &mesh,
+                &raw_activity,
+                &activity,
+                refractory_mode.then_some(plasticity.adaptation.as_slice()),
+                &fission,
+                absolute_step,
+            ));
+        }
         if regulator_on
             || matches!(
                 mode,
@@ -1108,6 +1290,11 @@ fn run(
                     | Mode::ContrastNormalMotorOff
                     | Mode::ContrastNormalZeroA
                     | Mode::ContrastNormalTangential
+                    | Mode::RefractoryCurvatureNormal
+                    | Mode::RefractoryCurvatureNormalMotorOff
+                    | Mode::RefractoryCurvatureNormalAdaptationDisabled
+                    | Mode::RefractoryCurvatureNormalZeroA
+                    | Mode::RefractoryCurvatureNormalTangential
             )
         {
             update_attribution(&mut attribution, &mesh, &activity);
@@ -1134,7 +1321,8 @@ fn run(
             | Mode::RegulatorOnMotorOff
             | Mode::ContrastMotorOff
             | Mode::CurvatureNormalMotorOff
-            | Mode::ContrastNormalMotorOff => {
+            | Mode::ContrastNormalMotorOff
+            | Mode::RefractoryCurvatureNormalMotorOff => {
                 mechanics_step_with_local_self_contact(&mut mesh, &mechanics).is_some()
             }
             Mode::RegulatorOffMotorOnZero | Mode::RegulatorMotor | Mode::ContrastFallback => {
@@ -1154,11 +1342,16 @@ fn run(
             Mode::CurvatureNormal
             | Mode::CurvatureNormalTangential
             | Mode::ContrastNormal
-            | Mode::ContrastNormalTangential => {
+            | Mode::ContrastNormalTangential
+            | Mode::RefractoryCurvatureNormal
+            | Mode::RefractoryCurvatureNormalAdaptationDisabled
+            | Mode::RefractoryCurvatureNormalTangential => {
                 let (forces, requested) = inward_normal_request(&mesh, &activity, mechanics.dt);
                 let tangential_activity = if matches!(
                     mode,
-                    Mode::CurvatureNormalTangential | Mode::ContrastNormalTangential
+                    Mode::CurvatureNormalTangential
+                        | Mode::ContrastNormalTangential
+                        | Mode::RefractoryCurvatureNormalTangential
                 ) {
                     activity.clone()
                 } else {
@@ -1200,7 +1393,9 @@ fn run(
                     Err(_) => false,
                 }
             }
-            Mode::CurvatureNormalZeroA | Mode::ContrastNormalZeroA => {
+            Mode::CurvatureNormalZeroA
+            | Mode::ContrastNormalZeroA
+            | Mode::RefractoryCurvatureNormalZeroA => {
                 let area_before = mesh.area().max(1e-300);
                 let saved_a = mesh.interior.a.max(0.0) * area_before;
                 mesh.interior.a = 0.0;
@@ -1230,6 +1425,32 @@ fn run(
             first_invalid = Some(json!({"step":absolute_step,"phase":"mechanics"}));
             break;
         }
+        if refractory_mode {
+            if advance_local_plasticity_trace(
+                &mut plasticity,
+                &raw_activity,
+                mechanics.dt,
+                &plasticity_params,
+            )
+            .is_err()
+            {
+                refractory_audit.remesh_continuity_failures += 1;
+                first_invalid = Some(json!({"step":absolute_step,"phase":"plasticity_commit"}));
+                break;
+            }
+            refractory_audit.accepted_updates += 1;
+            refractory_audit.maximum_adaptation = refractory_audit.maximum_adaptation.max(
+                plasticity
+                    .adaptation
+                    .iter()
+                    .copied()
+                    .fold(0.0_f64, f64::max),
+            );
+            refractory_audit.adaptation_variance_sum += mean_variance(&plasticity.adaptation).1;
+            refractory_audit.effective_drive_maximum = refractory_audit
+                .effective_drive_maximum
+                .max(activity.iter().copied().fold(0.0_f64, f64::max));
+        }
         update_functional_contraction(
             &mut functional_localization,
             &activity,
@@ -1239,7 +1460,36 @@ fn run(
         if let Some(row) = actuator_geometry_row {
             update_actuator_geometry_after(&mut actuator_geometry, &mesh, row);
         }
+        let pre_remesh_frame =
+            refractory_mode.then(|| observe_continuity_material_frame(&mesh, &mechanics));
+        let old_n = mesh.n();
         let _ = remesh_preserving_simple(&mut mesh);
+        if refractory_mode && mesh.n() != old_n {
+            let new_frame = observe_continuity_material_frame(&mesh, &mechanics);
+            let event = if mesh.n() > old_n {
+                TopologyEventV1::Split
+            } else {
+                TopologyEventV1::Merge
+            };
+            let remap_result =
+                derive_local_mapping(pre_remesh_frame.as_ref().unwrap(), &new_frame, event)
+                    .and_then(|mapping| {
+                        refractory_audit.remesh_mapping_count += 1;
+                        refractory_audit.maximum_mapping_distance = refractory_audit
+                            .maximum_mapping_distance
+                            .max(mapping.maximum_mapping_distance);
+                        plasticity.remap(&mapping).map_err(|error| {
+                            regulatory_core::continuity::ContinuityError::MappingUnavailable(
+                                error.to_string(),
+                            )
+                        })
+                    });
+            if remap_result.is_err() {
+                refractory_audit.remesh_continuity_failures += 1;
+                first_invalid = Some(json!({"step":absolute_step,"phase":"plasticity_remap"}));
+                break;
+            }
+        }
         let planar = PlanarRingTopology::from_mesh(&mesh);
         if absolute_step.saturating_sub(1) % 10 == 0 {
             let _ = topology_step(&mut mesh, &fission);
@@ -1386,8 +1636,200 @@ fn run(
         final_geometry: geometry(&mesh),
         functional_localization,
         actuator_geometry,
+        patch_dynamics,
+        refractory_audit,
         final_mesh: mesh,
     }
+}
+
+/// Observer-only R9 Gate 1 replay of the sealed R8R1 curvature-normal campaign.
+/// It adds per-patch diagnostics but does not add or advance adaptation state.
+pub fn run_r9_gate1() {
+    let mut output = PathBuf::from("/tmp/dcfinal001_r9_gate1.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let runs = campaign(Mode::CurvatureNormal, 14_778);
+    fs::write(
+        output,
+        serde_json::to_vec_pretty(&json!({
+            "directive": "DC-FINAL-001-R9-REFRACTORY-CURVATURE-NORMAL-CORTEX-REPRODUCTION-AND-END-GOAL-CLOSURE-001",
+            "gate": "GATE_1_STATIC_ATTRACTOR_OBSERVER_ONLY",
+            "scientific_runtime_changed": false,
+            "adaptation_state_present": false,
+            "campaign": campaign_summary(&runs),
+        }))
+        .unwrap(),
+    )
+    .unwrap();
+}
+
+fn refractory_patch_summary(runs: &[RunResult]) -> Value {
+    let rows = runs
+        .iter()
+        .map(|run| {
+            let raw_changes = run
+                .patch_dynamics
+                .windows(2)
+                .filter(|window| {
+                    window[0]["dominant_patch_index"] != window[1]["dominant_patch_index"]
+                })
+                .count();
+            let effective_changes = run
+                .patch_dynamics
+                .windows(2)
+                .filter(|window| {
+                    window[0]["effective_dominant_patch_index"]
+                        != window[1]["effective_dominant_patch_index"]
+                })
+                .count();
+            let relocation_rows = run
+                .patch_dynamics
+                .iter()
+                .filter(|row| row["dominant_patch_index"] != row["effective_dominant_patch_index"])
+                .count();
+            let final_row = run.patch_dynamics.last().cloned();
+            json!({
+                "name": run.name,
+                "physical_fission": run.physical_fission,
+                "both_daughters_viable": run.both_daughters_viable,
+                "raw_dominant_patch_changes": raw_changes,
+                "effective_dominant_patch_changes": effective_changes,
+                "samples_with_raw_effective_relocation": relocation_rows,
+                "sample_count": run.patch_dynamics.len(),
+                "refractory_audit": run.refractory_audit,
+                "final_sample": final_row,
+            })
+        })
+        .collect::<Vec<_>>();
+    let total_relocations = rows
+        .iter()
+        .filter_map(|row| row["samples_with_raw_effective_relocation"].as_u64())
+        .sum::<u64>();
+    json!({
+        "arms": rows,
+        "total_samples_with_raw_effective_relocation": total_relocations,
+        "patch_relocation_observed": total_relocations > 0,
+    })
+}
+
+/// R9 composes the frozen curvature-normal actuator with the existing local
+/// plasticity trace. No new coefficient or fission information enters the
+/// physical path.
+pub fn run_r9() {
+    const R9_DIRECTIVE: &str =
+        "DC-FINAL-001-R9-REFRACTORY-CURVATURE-NORMAL-CORTEX-REPRODUCTION-AND-END-GOAL-CLOSURE-001";
+    let mut output = PathBuf::from("/tmp/dcfinal001_r9.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+
+    let horizon = 14_778;
+    let passive = campaign(Mode::Passive, horizon);
+    let static_normal = campaign(Mode::CurvatureNormal, horizon);
+    let refractory_normal = campaign(Mode::RefractoryCurvatureNormal, horizon);
+    let adaptation_disabled = campaign(Mode::RefractoryCurvatureNormalAdaptationDisabled, horizon);
+    let motor_off = campaign(Mode::RefractoryCurvatureNormalMotorOff, horizon);
+    let zero_a = campaign(Mode::RefractoryCurvatureNormalZeroA, horizon);
+
+    let (_, static_fissions, static_viable) = result_counts(&static_normal);
+    let (refractory_growth, refractory_fissions, refractory_viable) =
+        result_counts(&refractory_normal);
+    let refractory_pass =
+        refractory_growth >= 8 && refractory_fissions >= 7 && refractory_viable >= 6;
+    let improved = refractory_fissions > static_fissions || refractory_viable > static_viable;
+    let refractory_tangential = (improved && !refractory_pass)
+        .then(|| campaign(Mode::RefractoryCurvatureNormalTangential, horizon));
+    let selected = refractory_tangential.as_ref().unwrap_or(&refractory_normal);
+    let (selected_growth, selected_fissions, selected_viable) = result_counts(selected);
+    let reproduction_pass = selected_growth >= 8 && selected_fissions >= 7 && selected_viable >= 6;
+
+    let energy = active_energy_summary(&refractory_normal);
+    let disabled_parity = campaign_state_parity(&static_normal, &adaptation_disabled);
+    let motor_off_parity = campaign_state_parity(&passive, &motor_off);
+    let remesh_continuity_pass = refractory_normal.iter().all(|run| {
+        run.refractory_audit.remesh_continuity_failures == 0
+            && run.refractory_audit.accepted_updates > 0
+    });
+    let first_step_identity = refractory_normal
+        .iter()
+        .all(|run| run.refractory_audit.first_step_effective_drive_error <= 1e-15);
+    let zero_a_spent = zero_a
+        .iter()
+        .map(|run| run.attribution.zero_a_spent)
+        .sum::<f64>();
+    let patch_dynamics = refractory_patch_summary(&refractory_normal);
+
+    let result = json!({
+        "directive": R9_DIRECTIVE,
+        "starting_head": "cdeec37274403286bd43efe847d30ec9b4d1593d",
+        "owner_override": "ACTIVE",
+        "qualification_horizon": horizon,
+        "refractory_contract": {
+            "schema": regulatory_core::PLASTICITY_SCHEMA_V1,
+            "load_rate_per_time": FROZEN_ADAPTATION_LOAD_RATE_PER_TIME,
+            "recovery_rate_per_time": FROZEN_ADAPTATION_RECOVERY_RATE_PER_TIME,
+            "parameters": PlasticityParamsV1::default(),
+            "new_free_parameters": 0,
+            "raw_curvature_drives_adaptation": true,
+            "adaptation_before_drives_current_force": true,
+            "commit_after_accepted_mechanics": true,
+            "first_step_identity": first_step_identity,
+        },
+        "controls": {
+            "passive": campaign_summary(&passive),
+            "static_curvature_normal": campaign_summary(&static_normal),
+            "adaptation_disabled": campaign_summary(&adaptation_disabled),
+            "adaptation_disabled_parity": disabled_parity,
+            "motor_off": campaign_summary(&motor_off),
+            "motor_off_passive_parity": motor_off_parity,
+            "zero_a": campaign_summary(&zero_a),
+            "zero_a_active_spend": zero_a_spent,
+            "zero_a_pass": zero_a_spent <= CLASSIFICATION_TOLERANCE,
+        },
+        "refractory_normal": campaign_summary(&refractory_normal),
+        "refractory_patch_dynamics": patch_dynamics,
+        "remesh_continuity_pass": remesh_continuity_pass,
+        "normal_energy_closure": energy,
+        "conditional_normal_plus_tangential": {
+            "triggered": refractory_tangential.is_some(),
+            "trigger_reason": if improved && !refractory_pass {
+                "REFRACTORY_NORMAL_IMPROVED_BUT_BELOW_QUALIFICATION"
+            } else if refractory_pass {
+                "NOT_REQUIRED_REFRACTORY_NORMAL_QUALIFIED"
+            } else {
+                "NOT_AUTHORIZED_NO_MATERIAL_IMPROVEMENT"
+            },
+            "campaign": refractory_tangential.as_ref().map(|runs| campaign_summary(runs)),
+        },
+        "selected_reproduction": {
+            "mode": if refractory_tangential.is_some() {
+                Mode::RefractoryCurvatureNormalTangential.label()
+            } else {
+                Mode::RefractoryCurvatureNormal.label()
+            },
+            "growth_qualified": selected_growth,
+            "geometry_valid_fissions": selected_fissions,
+            "simple_viable_daughter_pairs": selected_viable,
+            "pass": reproduction_pass,
+        },
+        "evolution_execution": if reproduction_pass {"PENDING_GATE12_16"} else {"NOT_REACHED_GATE7_8_STOP"},
+        "classification": if reproduction_pass {
+            "V4_REFRACTORY_CURVATURE_NORMAL_ROBUST_REPRODUCTION_QUALIFIED_PENDING_EVOLUTION"
+        } else {
+            "V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED"
+        },
+        "digital_cell_end_goal": if reproduction_pass {"PENDING"} else {"NOT_ESTABLISHED"},
+        "scientific_default_runtime_changed": false,
+        "next_execution_started": false,
+    });
+    fs::write(output, serde_json::to_vec_pretty(&result).unwrap()).unwrap();
 }
 
 fn campaign(mode: Mode, horizon: usize) -> Vec<RunResult> {

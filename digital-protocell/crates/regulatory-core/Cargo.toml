@@ -205,6 +205,14 @@ name = "dcfinal001_r8r1_sign_aware"
 path = "../../examples/dcfinal001_r8r1_sign_aware.rs"
 
 [[example]]
+name = "dcfinal001_r9_gate1"
+path = "../../examples/dcfinal001_r9_gate1.rs"
+
+[[example]]
+name = "dcfinal001_r9_refractory_curvature"
+path = "../../examples/dcfinal001_r9_refractory_curvature.rs"
+
+[[example]]
 name = "dcdev021_m2_entry020"
 path = "../../examples/dcdev021_m2_entry020.rs"
 
