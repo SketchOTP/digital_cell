@@ -237,6 +237,8 @@ struct RunResult {
     signed_stress_counterfactual: Option<Value>,
     #[serde(skip)]
     final_mesh: MaterialMesh,
+    #[serde(skip)]
+    final_plasticity: PlasticityStateV1,
 }
 
 fn circular_lag_one_autocorrelation(values: &[f64]) -> Option<f64> {
@@ -1933,7 +1935,109 @@ fn run(
         signed_stress_attempts,
         signed_stress_counterfactual,
         final_mesh: mesh,
+        final_plasticity: plasticity,
     }
+}
+
+/// Exact production-V4 parent state from the first R10 qualifying campaign arm.
+/// This is an assay fixture: it contains the authoritative mesh and organism-owned
+/// refractory state immediately before the accepted signed-stress fission.
+pub fn r10_seed3_fission_state() -> (MaterialMesh, PlasticityStateV1, f64, usize) {
+    let mesh = fixture(2);
+    let birth_mass = mesh.total_structural_mass();
+    let result = run(
+        mesh,
+        "seed_3_c_0.08",
+        Mode::RefractoryCurvatureNormalSignedStress,
+        0,
+        14_778,
+        birth_mass,
+    );
+    assert!(result.physical_fission);
+    (
+        result.final_mesh,
+        result.final_plasticity,
+        birth_mass,
+        result.fission_step.expect("R10 seed-3 fission step"),
+    )
+}
+
+/// Partition organism-owned refractory state using the exact local parent
+/// correspondence emitted by the physical fission operation.
+pub fn r10_partition_plasticity_state(
+    parent: &PlasticityStateV1,
+    sources: &[usize],
+) -> Option<PlasticityStateV1> {
+    partition_plasticity_state(parent, sources)
+}
+
+/// Apply exactly one accepted R9/R10 refractory curvature-normal mechanics
+/// operation, including ordinary local remesh continuity and optional frozen
+/// topology cadence. Transport, reactions, growth, expression, and fission are
+/// intentionally owned by the calling ecology harness.
+pub fn r10_refractory_mechanics_step(
+    mesh: &mut MaterialMesh,
+    plasticity: &mut PlasticityStateV1,
+    topology_tick: bool,
+) -> Option<(f64, f64, usize)> {
+    if plasticity.adaptation.len() != mesh.n() || !mesh.can_advance_physics() {
+        return None;
+    }
+    let mechanics = MechParams::default();
+    let contractility = ContractilityParamsV1::default();
+    let plasticity_params = PlasticityParamsV1::default();
+    let raw_drive = curvature_components(mesh).3;
+    let effective_drive = raw_drive
+        .iter()
+        .zip(&plasticity.adaptation)
+        .map(|(drive, adaptation)| drive * (1.0 - adaptation))
+        .collect::<Vec<_>>();
+    let (forces, requested) = inward_normal_request(mesh, &effective_drive, mechanics.dt);
+    let zeros = vec![[0.0, 0.0]; mesh.n()];
+    let ledger = apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_self_contact(
+        mesh,
+        &vec![0.0; mesh.n()],
+        &mechanics,
+        &contractility,
+        &forces,
+        requested,
+        &zeros,
+    )
+    .ok()?;
+    advance_local_plasticity_trace(
+        plasticity,
+        &raw_drive,
+        mechanics.dt,
+        &plasticity_params,
+    )
+    .ok()?;
+    let old_frame = observe_continuity_material_frame(mesh, &mechanics);
+    let old_n = mesh.n();
+    let _ = remesh_preserving_simple(mesh);
+    let mut remesh_mappings = 0;
+    if mesh.n() != old_n {
+        let new_frame = observe_continuity_material_frame(mesh, &mechanics);
+        let event = if mesh.n() > old_n {
+            TopologyEventV1::Split
+        } else {
+            TopologyEventV1::Merge
+        };
+        let mapping = derive_local_mapping(&old_frame, &new_frame, event).ok()?;
+        plasticity.remap(&mapping).ok()?;
+        remesh_mappings = 1;
+    }
+    if topology_tick {
+        let _ = topology_step(mesh, &FissionParams::default());
+    }
+    (polygon_simple(&mesh.vertices)
+        && mesh.physical_runtime_valid()
+        && mesh.lifecycle_invariants_hold()
+        && plasticity.adaptation.len() == mesh.n())
+    .then_some((
+        ledger.resource_spent,
+        ledger.waste_amount_after - ledger.waste_amount_before,
+        remesh_mappings,
+    ))
 }
 
 /// Observer-only R9 Gate 1 replay of the sealed R8R1 curvature-normal campaign.

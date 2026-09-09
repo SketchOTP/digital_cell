@@ -1,10 +1,10 @@
-//! DC-FINAL-001-R4: contract ownership, V4 topology coherence, and evolution.
-//!
-//! Identical organisms are represented by an exact state plus an integer
-//! multiplicity.  The compression is semantic: shared-medium requests,
-//! organism/world material transfers, deaths, physical fissions, and mutation
-//! draws are all weighted or expanded by that multiplicity.  No cohort value
-//! enters organism biology.
+// DC-FINAL-001-R4: contract ownership, V4 topology coherence, and evolution.
+//
+// Identical organisms are represented by an exact state plus an integer
+// multiplicity.  The compression is semantic: shared-medium requests,
+// organism/world material transfers, deaths, physical fissions, and mutation
+// draws are all weighted or expanded by that multiplicity.  No cohort value
+// enters organism biology.
 
 use chemistry_core::d096_allocation::{
     expression_step, mutate_allocation_at_reproduction, AllocationGenotype, AllocationParams,
@@ -20,6 +20,7 @@ use chemistry_core::mesh_transport::{
     mean_occupancy, permeability, transport_step, TransportParams,
 };
 use chemistry_core::planar_ring_topology::{remesh_preserving_simple, PlanarRingTopology};
+use regulatory_core::PlasticityStateV1;
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use std::collections::BTreeMap;
@@ -62,6 +63,7 @@ impl Environment {
 #[derive(Debug, Clone)]
 struct Cohort {
     mesh: MaterialMesh,
+    plasticity: Option<PlasticityStateV1>,
     count: u64,
     generation: u32,
     birth_mass: f64,
@@ -117,6 +119,9 @@ struct CampaignLedger {
     growth_material: f64,
     expression_material: f64,
     expression_activation: f64,
+    active_a_spent: f64,
+    active_w_produced: f64,
+    adaptation_remesh_mappings: u64,
     mutation_events: Vec<Value>,
     fissions_by_parent_genotype: BTreeMap<String, u64>,
 }
@@ -485,6 +490,7 @@ fn split_cohort(
         result.push(Cohort {
             birth_mass: mesh.total_structural_mass(),
             mesh,
+            plasticity: None,
             count,
             generation: cohort.generation + 1,
             id,
@@ -632,6 +638,7 @@ fn initial_population(
     parent.enable_finite_allocation(AllocationGenotype::neutral(), &allocation);
     let cohort = Cohort {
         mesh: parent,
+        plasticity: None,
         count: founder_count,
         generation: 0,
         birth_mass: original_birth_mass,
@@ -1739,6 +1746,449 @@ fn v4_closing_edge_trace(template: &MaterialMesh) -> Value {
         "classification": "BOOKKEEPING_ONLY_RUPTURE_PATH",
         "conditional_topology_created_edge_repair": "NOT_REQUIRED",
     })
+}
+
+fn r10_split_cohort(
+    cohort: Cohort,
+    mutation_enabled: bool,
+    campaign_seed: u64,
+    step: usize,
+    next_id: &mut u64,
+    allocation: &AllocationParams,
+    fission: &FissionParams,
+    ledger: &mut CampaignLedger,
+) -> Result<Vec<Cohort>, Cohort> {
+    let Some(parent_plasticity) = cohort.plasticity.as_ref() else {
+        return Err(cohort);
+    };
+    let proposed = try_local_fission(&cohort.mesh, fission).or_else(|| {
+        PlanarRingTopology::from_mesh(&cohort.mesh)
+            .and_then(|topology| topology.try_local_scission(&cohort.mesh, fission))
+            .or_else(|| try_local_segment_fission(&cohort.mesh, fission))
+    });
+    let Some((daughter_a, daughter_b, event)) = proposed else {
+        return Err(cohort);
+    };
+    if !event.partition.ok {
+        ledger.partition_failures += cohort.count;
+        return Err(cohort);
+    }
+    if !polygon_simple(&cohort.mesh.vertices)
+        || !polygon_simple(&daughter_a.vertices)
+        || !polygon_simple(&daughter_b.vertices)
+        || !daughter_a.physical_runtime_valid()
+        || !daughter_b.physical_runtime_valid()
+        || !daughter_a.lifecycle_invariants_hold()
+        || !daughter_b.lifecycle_invariants_hold()
+    {
+        ledger.invalid_geometry_events += cohort.count;
+        return Err(cohort);
+    }
+    let Some(state_a) = crate::r10_closure::r10_partition_plasticity_state(
+        parent_plasticity,
+        &event.daughter_a_parent_vertex_sources,
+    ) else {
+        ledger.runtime_invalidations += cohort.count;
+        return Err(cohort);
+    };
+    let Some(state_b) = crate::r10_closure::r10_partition_plasticity_state(
+        parent_plasticity,
+        &event.daughter_b_parent_vertex_sources,
+    ) else {
+        ledger.runtime_invalidations += cohort.count;
+        return Err(cohort);
+    };
+    if state_a.adaptation.len() != daughter_a.n() || state_b.adaptation.len() != daughter_b.n() {
+        ledger.runtime_invalidations += cohort.count;
+        return Err(cohort);
+    }
+
+    ledger.physical_fissions += cohort.count;
+    ledger.valid_simple_fissions += cohort.count;
+    *ledger
+        .fissions_by_parent_genotype
+        .entry(genotype_key(
+            cohort.mesh.finite_allocation.expect("R10 allocation").genotype,
+        ))
+        .or_default() += cohort.count;
+    let mutation_params = if mutation_enabled {
+        *allocation
+    } else {
+        AllocationParams {
+            mutation_probability: 0.0,
+            ..*allocation
+        }
+    };
+    let children = [(daughter_a, state_a), (daughter_b, state_b)];
+    let mut groups: BTreeMap<(usize, [u64; 4]), (MaterialMesh, PlasticityStateV1, u64)> =
+        BTreeMap::new();
+    for ordinal in 0..cohort.count {
+        for (side, (child_template, state_template)) in children.iter().enumerate() {
+            let parent = child_template
+                .finite_allocation
+                .expect("R10 daughter allocation")
+                .genotype;
+            let seed = mutation_seed(campaign_seed, step, cohort.id, ordinal, side as u64);
+            let mutation = mutate_allocation_at_reproduction(parent, &mutation_params, seed);
+            ledger.mutation_opportunities += 1;
+            if mutation.mutated {
+                ledger.mutations += 1;
+                ledger.mutation_events.push(json!({
+                    "step": step,
+                    "generation": cohort.generation + 1,
+                    "seed": seed,
+                    "parent": mutation.parent.0,
+                    "offspring": mutation.offspring.0,
+                    "source_index": mutation.source_index,
+                    "target_index": mutation.target_index,
+                    "transferred": mutation.transferred,
+                }));
+            }
+            let key = (side, mutation.offspring.0.map(f64::to_bits));
+            groups
+                .entry(key)
+                .and_modify(|(_, _, count)| *count += 1)
+                .or_insert_with(|| {
+                    let mut mesh = child_template.clone();
+                    mesh.finite_allocation.as_mut().unwrap().genotype = mutation.offspring;
+                    (mesh, state_template.clone(), 1)
+                });
+        }
+    }
+    Ok(groups
+        .into_values()
+        .map(|(mesh, plasticity, count)| {
+            let id = *next_id;
+            *next_id += 1;
+            Cohort {
+                birth_mass: mesh.total_structural_mass(),
+                mesh,
+                plasticity: Some(plasticity),
+                count,
+                generation: cohort.generation + 1,
+                id,
+            }
+        })
+        .collect())
+}
+
+fn r10_initial_population(
+    template: &MaterialMesh,
+    template_plasticity: &PlasticityStateV1,
+    original_birth_mass: f64,
+    mutation_enabled: bool,
+    campaign_seed: u64,
+    founder_count: u64,
+    ledger: &mut CampaignLedger,
+) -> Vec<Cohort> {
+    let allocation = AllocationParams::default();
+    let fission = FissionParams::default();
+    let mut parent = template.clone();
+    parent.enable_finite_allocation(AllocationGenotype::neutral(), &allocation);
+    let cohort = Cohort {
+        mesh: parent,
+        plasticity: Some(template_plasticity.clone()),
+        count: founder_count,
+        generation: 0,
+        birth_mass: original_birth_mass,
+        id: 1,
+    };
+    let mut next_id = 2;
+    r10_split_cohort(
+        cohort,
+        mutation_enabled,
+        campaign_seed,
+        0,
+        &mut next_id,
+        &allocation,
+        &fission,
+        ledger,
+    )
+    .expect("qualified R10 parent must physically fission")
+}
+
+fn r10_advance_phase(
+    cohorts: &mut Vec<Cohort>,
+    world: &mut OpenMedium,
+    environment: Environment,
+    phase_index: usize,
+    mutation_enabled: bool,
+    campaign_seed: u64,
+    next_id: &mut u64,
+    ledger: &mut CampaignLedger,
+    trajectory: &mut Vec<Value>,
+) {
+    let allocation = AllocationParams::default();
+    let mechanics = MechParams::default();
+    let reaction = ReactionParams::default();
+    let transport = TransportParams::default();
+    let growth = GrowthParams {
+        y_g: 0.9,
+        enable_growth: true,
+    };
+    let fission = FissionParams::default();
+    for phase_step in 0..PHASE_STEPS {
+        if cohorts.is_empty() {
+            break;
+        }
+        let step = phase_index * PHASE_STEPS + phase_step + 1;
+        world.add_fixed_inflow(environment, phase_step, mechanics.dt);
+        if environment == Environment::Damage {
+            for cohort in cohorts.iter_mut() {
+                apply_damage(cohort, phase_step, world);
+            }
+        }
+        let mut retained = Vec::new();
+        for mut cohort in cohorts.drain(..) {
+            match expression_step(&mut cohort.mesh, &allocation, mechanics.dt) {
+                Ok(expression) => {
+                    let count = cohort.count as f64;
+                    ledger.expression_material += expression.material_consumed * count;
+                    ledger.expression_activation +=
+                        (expression.activation_consumed + expression.maintenance_consumed) * count;
+                    retained.push(cohort);
+                }
+                Err(_) => {
+                    ledger.expression_failures += cohort.count;
+                    ledger.runtime_invalidations += cohort.count;
+                    invalidated_material_to_terminal(&cohort, world);
+                }
+            }
+        }
+        *cohorts = retained;
+        world.exchange(cohorts, &transport, mechanics.dt);
+
+        let mut survivors = Vec::new();
+        for mut cohort in cohorts.drain(..) {
+            let count = cohort.count as f64;
+            let reactions = reactions_step(&mut cohort.mesh, &reaction, mechanics.dt, true, true);
+            ledger.reaction_n_consumed += reactions.n_consumed * count;
+            ledger.reaction_f_consumed += reactions.f_consumed * count;
+            ledger.a_produced += reactions.a_produced * count;
+            ledger.w_produced += reactions.w_produced * count;
+            let grown = growth_step(&mut cohort.mesh, &reaction, &growth, mechanics.dt);
+            ledger.growth_material += grown.m_grown * count;
+            let topology_tick = step % 10 == 0;
+            let Some((active_a, active_w, remesh_mappings)) =
+                crate::r10_closure::r10_refractory_mechanics_step(
+                    &mut cohort.mesh,
+                    cohort.plasticity.as_mut().expect("R10 plasticity"),
+                    topology_tick,
+                )
+            else {
+                ledger.runtime_invalidations += cohort.count;
+                ledger.invalid_geometry_events += cohort.count;
+                invalidated_material_to_terminal(&cohort, world);
+                continue;
+            };
+            ledger.active_a_spent += active_a * count;
+            ledger.active_w_produced += active_w * count;
+            ledger.adaptation_remesh_mappings += remesh_mappings as u64 * cohort.count;
+            if !polygon_simple(&cohort.mesh.vertices)
+                || !cohort.mesh.physical_runtime_valid()
+                || !cohort.mesh.lifecycle_invariants_hold()
+            {
+                ledger.runtime_invalidations += cohort.count;
+                ledger.invalid_geometry_events += cohort.count;
+                invalidated_material_to_terminal(&cohort, world);
+                continue;
+            }
+            if !cohort.mesh.observer_viable() {
+                ledger.physical_deaths += cohort.count;
+                dead_material_to_sink(&cohort, world);
+                continue;
+            }
+            let eligible =
+                cohort.mesh.total_structural_mass() >= 1.35 * cohort.birth_mass && step % 25 == 0;
+            if eligible {
+                match r10_split_cohort(
+                    cohort,
+                    mutation_enabled,
+                    campaign_seed,
+                    step,
+                    next_id,
+                    &allocation,
+                    &fission,
+                    ledger,
+                ) {
+                    Ok(children) => survivors.extend(children),
+                    Err(parent) => survivors.push(parent),
+                }
+            } else {
+                survivors.push(cohort);
+            }
+        }
+        *cohorts = survivors;
+        if phase_step == 0 || (phase_step + 1) % 250 == 0 {
+            trajectory.push(snapshot(cohorts, world, step));
+        }
+    }
+}
+
+fn r10_campaign(
+    template: &MaterialMesh,
+    template_plasticity: &PlasticityStateV1,
+    original_birth_mass: f64,
+    template_step: usize,
+    sequence: &[Environment],
+    mutation_enabled: bool,
+    replicate: u64,
+) -> Value {
+    let campaign_seed = splitmix64(
+        replicate
+            ^ if mutation_enabled {
+                0x6a09_e667_f3bc_c909
+            } else {
+                0xbb67_ae85_84ca_a73b
+            }
+            ^ sequence.iter().fold(0_u64, |state, env| {
+                state.rotate_left(9)
+                    ^ match env {
+                        Environment::Resource => 0x11,
+                        Environment::Damage => 0x22,
+                    }
+            }),
+    );
+    let mut ledger = CampaignLedger::default();
+    let mut cohorts = r10_initial_population(
+        template,
+        template_plasticity,
+        original_birth_mass,
+        mutation_enabled,
+        campaign_seed,
+        FOUNDER_MULTIPLICITY,
+        &mut ledger,
+    );
+    let mut next_id = 10_000;
+    let mut world = OpenMedium::new(sequence[0]);
+    let initial_organism_n = organism_amount(&cohorts, 'n');
+    let initial_organism_f = organism_amount(&cohorts, 'f');
+    let initial = snapshot(&cohorts, &world, 0);
+    let mut trajectory = vec![initial.clone()];
+    for (phase, environment) in sequence.iter().copied().enumerate() {
+        r10_advance_phase(
+            &mut cohorts,
+            &mut world,
+            environment,
+            phase,
+            mutation_enabled,
+            campaign_seed,
+            &mut next_id,
+            &mut ledger,
+            &mut trajectory,
+        );
+    }
+    let terminal_step = sequence.len() * PHASE_STEPS;
+    let terminal = snapshot(&cohorts, &world, terminal_step);
+    let terminal_organism_n = organism_amount(&cohorts, 'n');
+    let terminal_organism_f = organism_amount(&cohorts, 'f');
+    let n_closure = (world.ledger.initial_n + world.ledger.inflow_n + initial_organism_n
+        - world.n_mass
+        - terminal_organism_n
+        - ledger.reaction_n_consumed
+        - world.ledger.physical_death_n_sink
+        - world.ledger.invalidated_n_terminal)
+        .abs();
+    let f_closure = (world.ledger.initial_f + world.ledger.inflow_f + initial_organism_f
+        - world.f_mass
+        - terminal_organism_f
+        - ledger.reaction_f_consumed
+        - world.ledger.physical_death_f_sink
+        - world.ledger.invalidated_f_terminal)
+        .abs();
+    let active_energy_residual = (ledger.active_a_spent - ledger.active_w_produced).abs();
+    json!({
+        "replicate": replicate,
+        "mutation_enabled": mutation_enabled,
+        "campaign_seed": campaign_seed,
+        "environment_sequence": sequence.iter().map(|environment| environment.label()).collect::<Vec<_>>(),
+        "phase_steps": PHASE_STEPS,
+        "founder_multiplicity": FOUNDER_MULTIPLICITY,
+        "template_fission_step": template_step,
+        "fitness_function": null,
+        "breeder_selection": false,
+        "population_cap": null,
+        "resource_feedback": false,
+        "exchangeability_compression": true,
+        "initial": initial,
+        "trajectory": trajectory,
+        "terminal": terminal,
+        "world": world,
+        "ledger": ledger,
+        "n_closure_residual": n_closure,
+        "f_closure_residual": f_closure,
+        "active_energy_residual": active_energy_residual,
+    })
+}
+
+pub fn run_r10_evolution() {
+    let mut output = PathBuf::from("/tmp/dcfinal001_r10_evolution.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let (template, plasticity, original_birth_mass, template_step) =
+        crate::r10_closure::r10_seed3_fission_state();
+    let mut handles = Vec::new();
+    for replicate in 1..=REPLICATES {
+        for mutation_enabled in [true, false] {
+            for sequence in [
+                vec![Environment::Resource],
+                vec![Environment::Damage],
+                vec![Environment::Resource, Environment::Damage],
+            ] {
+                let template = template.clone();
+                let plasticity = plasticity.clone();
+                handles.push(std::thread::spawn(move || {
+                    r10_campaign(
+                        &template,
+                        &plasticity,
+                        original_birth_mass,
+                        template_step,
+                        &sequence,
+                        mutation_enabled,
+                        replicate,
+                    )
+                }));
+            }
+        }
+    }
+    let campaigns = handles
+        .into_iter()
+        .map(|handle| handle.join().expect("R10 evolution campaign"))
+        .collect::<Vec<_>>();
+    let value = json!({
+        "directive": "DC-FINAL-001-R10-SIGNED-LOAD-BEARING-NECK-STRESS-REPRODUCTION-AND-END-GOAL-CLOSURE-001",
+        "protocol": {
+            "body": "MaturationCoupledV4 + R8 closure + R8R1 sign-aware mechanics + R9 refractory curvature-normal + R10 signed scission stress",
+            "mutation_probability": AllocationParams::default().mutation_probability,
+            "mutation_sigma": AllocationParams::default().mutation_sigma,
+            "mutation_semantics": "one deterministic blind draw per daughter at geometry-valid physical fission",
+            "minimum_opportunities_for_95_percent_at_least_one": 299,
+            "founder_multiplicity": FOUNDER_MULTIPLICITY,
+            "opportunities_per_initial_campaign": 2 * FOUNDER_MULTIPLICITY,
+            "replicates": REPLICATES,
+            "phase_steps": PHASE_STEPS,
+            "switch_schedule": [PHASE_STEPS, 2 * PHASE_STEPS],
+            "open_medium_volume": FOUNDER_MULTIPLICITY,
+            "inflow_schedule_source": "frozen D-096 Resource/Damage values",
+            "component_3_boundary": "reserve-only endpoint dormant under frozen reserve-OFF physiology",
+        },
+        "template": {
+            "r10_arm": "seed_3_c_0.08",
+            "fission_step": template_step,
+            "simple": polygon_simple(&template.vertices),
+            "vertices": template.n(),
+            "mass": template.total_structural_mass(),
+            "original_birth_mass": original_birth_mass,
+            "contract_version": format!("{:?}", template.contract_version),
+            "plasticity_patches": plasticity.adaptation.len(),
+        },
+        "campaigns": campaigns,
+    });
+    fs::write(output, serde_json::to_vec_pretty(&value).unwrap()).unwrap();
 }
 
 fn main() {
