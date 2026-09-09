@@ -2396,6 +2396,13 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Primary classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED` under `GOAL_AGENT_PROVISIONAL_NEGATIVE`. Evolution/final integration: `NOT_REACHED_GATE9_STOP`. Independent Architect acceptance and exact-head CI/artifact remain pending; next execution is false.
 - Exact-head workflow `34329607759` completed the deterministic R5 campaign but failed the evidence reproducibility diff because preservation records encoded invocation-dependent relative source paths. Preservation and artifact upload correctly did not run. This validation failure does not alter the scientific result; the generator now emits one canonical repository-relative evidence label before a fresh exact-head run.
 
+## DC-FINAL-001-R5 exact-head evidence seal
+
+- Scientific result head `fb471605034ec0bd5a5eacca89cbf0ebdd4b4aa6` remains the scientific authority.
+- Evidence-bearing head `6bf707ed4669e0bfebdf65d737ebbd394893258f` passed exact-head Linux workflow `34331149213`, including evidence reproducibility and preservation.
+- Independently downloaded workflow artifact digest: `sha256:e4d0b5ae89ad9771b9ed89afbc3e92d26f58d90654f1cdd9ff2586ffc75527e3`.
+- Result remains `GOAL_AGENT_PROVISIONAL_NEGATIVE`; `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`; no successor execution; independent Architect acceptance `PENDING`.
+
 ## DC-FINAL-001-R3 — maturation-safe expression repair and lifecycle stop
 
 - R2 authority reconciles at governed head `5bd82aa40b10ecbdc86cd6915760915ba6ccfb18`, workflow `34294704290 PASS`, artifact `sha256:358b47164edaa3d16fc966aa968b18effbabd9c5ff444004c7539551c5d61743`.

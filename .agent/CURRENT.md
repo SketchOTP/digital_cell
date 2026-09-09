@@ -752,3 +752,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - The regulator retains spatial contrast (`mean activity variance 0.00024318270710567365 > 1e-12`), so the conditional mean-relative fallback is not authorized. Failed arms remain limited by local apposition/range or qualifying stress, not growth mass or cross-bond A.
 - Gate 9 fails the unchanged `7/10` fission and `6/10` viable-pair requirements. Mutation, selection, reversal, and final integrated execution are `NOT_REACHED_GATE9_STOP`.
 - Goal-agent status: `GOAL_AGENT_PROVISIONAL_NEGATIVE`; classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`; Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown is provisionally recommended under the R5 stop rule. Independent Architect acceptance is `PENDING`; no successor execution started.
+
+## DC-FINAL-001-R5 exact-head evidence pointer
+
+- Scientific result head `fb471605034ec0bd5a5eacca89cbf0ebdd4b4aa6` is preserved without semantic change.
+- Evidence-bearing head `6bf707ed4669e0bfebdf65d737ebbd394893258f` passed exact-head Linux workflow `34331149213`.
+- Independently downloaded artifact ZIP digest: `sha256:e4d0b5ae89ad9771b9ed89afbc3e92d26f58d90654f1cdd9ff2586ffc75527e3`.
+- The pointer confirms the bounded R5 stop; independent Architect acceptance remains `PENDING`, and no successor execution started.

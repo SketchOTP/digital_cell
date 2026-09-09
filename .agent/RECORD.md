@@ -1616,6 +1616,16 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`. Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown recommendation is `true` under the explicit R5 terminal boundary. No successor execution started; exact-head CI/artifact and independent Architect acceptance are pending.
 - Scientific result head: `fb471605034ec0bd5a5eacca89cbf0ebdd4b4aa6`.
 
+## DEC-DCFINAL001-R5-EXACT-HEAD-EVIDENCE-POINTER
+
+- Date: `2026-09-09`
+- Status: `GOAL_AGENT_PROVISIONAL_NEGATIVE`
+- Scientific result head: `fb471605034ec0bd5a5eacca89cbf0ebdd4b4aa6`.
+- Evidence-bearing head: `6bf707ed4669e0bfebdf65d737ebbd394893258f`.
+- Exact-head Linux workflow: `34331149213 PASS`.
+- Independently downloaded artifact ZIP digest: `sha256:e4d0b5ae89ad9771b9ed89afbc3e92d26f58d90654f1cdd9ff2586ffc75527e3`.
+- Scientific semantics are unchanged; independent Architect acceptance remains `PENDING`, and next execution remains `false`.
+
 ## DEC-DCFINAL001-R4-CONTRACT-OWNERSHIP-REPAIR-AND-PRODUCTION-STOP
 
 - Date: `2026-09-08`
