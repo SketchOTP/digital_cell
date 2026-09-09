@@ -1731,3 +1731,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Result: all four campaigns remain `10/10` growth-qualified, while the strongest R6 curvature-normal composition reaches `4/10` geometry-valid fissions and `4/10` viable pairs, below unchanged `7/10` and `6/10` gates.
 - Classification: `V4_SIGN_AWARE_MATURATION_REPRODUCTION_NOT_ESTABLISHED`. Mutation, selection, reversal, and final integrated M1–M5 are `NOT_REACHED_GATE8_STOP`; end goal remains `NOT_ESTABLISHED`; shutdown recommendation is `NO — OWNER OVERRIDE ACTIVE`; next execution is `false`.
 - Scientific result head: `bf195f5d9f6c2fe555bdec9810e2a16a1ab2cdc3`; exact-head CI/artifact and independent Architect acceptance remain pending.
+
+## DEC-DCFINAL001-R8R1-EXACT-HEAD-EVIDENCE-POINTER
+
+- Date: `2026-09-09`
+- Status: `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_REPLAN`
+- Scientific result head: `bf195f5d9f6c2fe555bdec9810e2a16a1ab2cdc3`.
+- Evidence-bearing governed head: `06bbf56e346f5eea4204184f998e9cb42a18beef`.
+- Exact-head Linux workflow: `34394831135 PASS`.
+- GitHub artifact digest: `sha256:d8c323350ddf4652bfe588be5c4050e17dfde8c53c897dc162952459eb766707`.
+- Scientific semantics, owner override, Gate-8 stop, pending independent review, and `next_execution_started = false` are unchanged.

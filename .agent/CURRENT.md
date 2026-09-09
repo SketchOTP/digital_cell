@@ -840,3 +840,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Robust V4 reproduction fails unchanged `7/10` and `6/10` gates. Mutation, selection, reversal, and final integrated M1–M5 are `NOT_REACHED_GATE8_STOP`; Digital Cell end goal remains `NOT_ESTABLISHED`.
 - Local preservation passes: D-087 V2 `8/8`, V3 `8/8`, V4 `7/8`, vector `[true,true,false,true,true,true,true,true]`; R4 topology/contract, D-088, D-091, evolution-harness tests-only, M2 runtime, and Godot bridge pass. R8's pathological closure cycle remains eliminated.
 - Scientific result head: `bf195f5d9f6c2fe555bdec9810e2a16a1ab2cdc3`. Exact-head Linux CI/artifact remain pending. Status: `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_REPLAN`; shutdown recommendation `NO — OWNER OVERRIDE ACTIVE`; no successor execution started; independent Architect acceptance `PENDING`.
+
+## DC-FINAL-001-R8R1 evidence-bearing head pointer
+
+- Scientific result head `bf195f5d9f6c2fe555bdec9810e2a16a1ab2cdc3` is preserved without semantic change.
+- Evidence-bearing governed head `06bbf56e346f5eea4204184f998e9cb42a18beef` passed exact-head Linux workflow `34394831135`.
+- GitHub artifact digest: `sha256:d8c323350ddf4652bfe588be5c4050e17dfde8c53c897dc162952459eb766707`.
+- The bounded-negative classification, Gate-8 stop, owner override, pending independent Architect acceptance, and `next_execution_started = false` remain unchanged.

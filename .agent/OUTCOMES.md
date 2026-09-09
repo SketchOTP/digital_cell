@@ -2503,3 +2503,10 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Frozen production campaigns remain below robust reproduction: passive `2/10, 2/10`; R5R1 `2/10, 2/10`; R6 normal `4/10, 4/10`; R6 combined `3/10, 3/10`; all are `10/10` growth-qualified.
 - D-087 remains `8/8`, `8/8`, `7/8` with `[true,true,false,true,true,true,true,true]`; R4 contract/topology, D-088, D-091, evolution-harness tests-only, M2 runtime, and Godot bridge validations pass locally.
 - Provisional classification: `V4_SIGN_AWARE_MATURATION_REPRODUCTION_NOT_ESTABLISHED`. Evolution and final integration are `NOT_REACHED_GATE8_STOP`; end goal `NOT_ESTABLISHED`; shutdown `NO — OWNER OVERRIDE ACTIVE`; independent Architect acceptance and exact-head CI/artifact pending.
+
+### R8R1 exact-head evidence seal
+
+- Scientific result head `bf195f5d9f6c2fe555bdec9810e2a16a1ab2cdc3` is preserved without semantic change.
+- Evidence-bearing governed head `06bbf56e346f5eea4204184f998e9cb42a18beef` passed exact-head Linux workflow `34394831135`.
+- GitHub artifact digest: `sha256:d8c323350ddf4652bfe588be5c4050e17dfde8c53c897dc162952459eb766707`.
+- Result remains `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_REPLAN`; independent Architect acceptance is `PENDING`, and no successor execution started.

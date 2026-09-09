@@ -1196,3 +1196,8 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Authorized execution: first prove the overattenuation on frozen R8 states; only then make the V4 stretch law sign-aware so compression uses the frozen raw spring law while tension remains mature-fraction weighted. Preserve R8 full-density closure, A accounting, and tensile rupture semantics exactly.
 - This supersedes/collapses further actuator or division-controller work. No new parameter, target, timer, seed-specific behavior, fission change, M1 change, mutation change, ecology change, or PR #44 change is authorized.
 - Stop boundary: return immediately if overattenuation is not supported, the closure cycle returns, fully mature/non-V4 behavior changes, M1 or conservation regresses, or implementation needs a new parameter. Evolution and final integration execute only after unchanged `7/10` fission and `6/10` viable-pair gates pass.
+
+### R8R1 evidence-bearing head pointer
+
+- Evidence-bearing governed head `06bbf56e346f5eea4204184f998e9cb42a18beef` passed exact-head workflow `34394831135`; GitHub artifact digest `sha256:d8c323350ddf4652bfe588be5c4050e17dfde8c53c897dc162952459eb766707`.
+- Scientific semantics remain those of head `bf195f5d9f6c2fe555bdec9810e2a16a1ab2cdc3`; no successor execution started and independent Architect acceptance remains pending.
