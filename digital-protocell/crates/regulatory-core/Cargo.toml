@@ -197,6 +197,14 @@ name = "dcfinal001_r8_v4_closure"
 path = "../../examples/dcfinal001_r8_v4_closure.rs"
 
 [[example]]
+name = "dcfinal001_r8r1_gate1"
+path = "../../examples/dcfinal001_r8r1_gate1.rs"
+
+[[example]]
+name = "dcfinal001_r8r1_sign_aware"
+path = "../../examples/dcfinal001_r8r1_sign_aware.rs"
+
+[[example]]
 name = "dcdev021_m2_entry020"
 path = "../../examples/dcdev021_m2_entry020.rs"
 

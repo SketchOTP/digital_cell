@@ -1188,3 +1188,11 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Material advancement: reproduce the closure-edge rupture/rebond cycle; fund two full-density V4 daughter edges through the existing structural yield; scale only V4 stretch and rupture by mature fraction; preserve all non-V4 semantics; replay historical daughters and the frozen four ten-arm campaigns.
 - Supersedes/collapses further neck-signal or actuator composition work. R8 tests whether existing fission products obey the already-declared V4 material/load-bearing contract before any new reproduction architecture is considered.
 - Stop boundary reached: the contract repair passes and M1 is preserved, but the strongest corrected campaign reaches only `1/10` fissions and `1/10` viable pairs versus unchanged `7/10` and `6/10` thresholds. Mutation, selection, reversal, and final integration are not reached; no successor execution is authorized before independent review.
+
+## DC-FINAL-001-R8R1-V4-SIGN-AWARE-MATURATION-MECHANICS-REPRODUCTION-AND-END-GOAL-CLOSURE-001
+
+- Issued `2026-09-09` by the external Architect from exact governed R8 head `eb198c4e84907d5a7f9f8c170d58a27b56e63bb0`; R8 material repair is accepted and owner override remains active.
+- Largest unresolved end-goal gap: robust viable production-V4 reproduction, now localized to whether R8 attenuated mature-scaffold compression together with invalid young-material tension.
+- Authorized execution: first prove the overattenuation on frozen R8 states; only then make the V4 stretch law sign-aware so compression uses the frozen raw spring law while tension remains mature-fraction weighted. Preserve R8 full-density closure, A accounting, and tensile rupture semantics exactly.
+- This supersedes/collapses further actuator or division-controller work. No new parameter, target, timer, seed-specific behavior, fission change, M1 change, mutation change, ecology change, or PR #44 change is authorized.
+- Stop boundary: return immediately if overattenuation is not supported, the closure cycle returns, fully mature/non-V4 behavior changes, M1 or conservation regresses, or implementation needs a new parameter. Evolution and final integration execute only after unchanged `7/10` fission and `6/10` viable-pair gates pass.

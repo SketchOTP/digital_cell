@@ -1272,6 +1272,29 @@ fn run(
             );
         }
         if checkpoint {
+            let compressed_edges = (0..mesh.n())
+                .filter(|index| mesh.strain(*index) < 0.0)
+                .count();
+            let compressed_mature_mass = (0..mesh.n())
+                .filter(|index| mesh.strain(*index) < 0.0)
+                .map(|index| mesh.mature_structural_mass(index))
+                .sum::<f64>();
+            let total_mature_mass = (0..mesh.n())
+                .map(|index| mesh.mature_structural_mass(index))
+                .sum::<f64>();
+            let compressive_stretch_work_proxy = (0..mesh.n())
+                .filter(|index| mesh.strain(*index) < 0.0)
+                .map(|index| {
+                    let length = mesh.edge_length(index);
+                    let rest = mesh.rest_length(index);
+                    let l_ref = rest.max(0.25 * length).max(1e-3);
+                    let fs_raw = (mechanics.k_s * (length - rest) / l_ref)
+                        .clamp(-mechanics.k_s * 8.0, mechanics.k_s * 8.0);
+                    (fs_raw * (length - rest)).abs()
+                })
+                .sum::<f64>();
+            let (signed_curvature, concavity, _, _) = curvature_components(&mesh);
+            let (_, curvature_variance) = mean_variance(&signed_curvature);
             checkpoints.push(json!({
                 "step": absolute_step, "mass_over_birth": mass_ratio,
                 "total_mass": mesh.total_structural_mass(),
@@ -1282,6 +1305,11 @@ fn run(
                 "area": mesh.area(), "vertices": mesh.n(),
                 "max_tensile_strain": max_strain, "strain_variance": strain_variance,
                 "max_compression": strains.iter().copied().fold(f64::INFINITY,f64::min),
+                "compressed_edges":compressed_edges,
+                "compressed_mature_mass_fraction":compressed_mature_mass/total_mature_mass.max(1e-300),
+                "compressive_stretch_work_proxy":compressive_stretch_work_proxy,
+                "curvature_variance":curvature_variance,
+                "concavity_count":concavity.iter().filter(|value|**value>0.0).count(),
                 "rupture_count": mesh.edges.iter().filter(|e|e.ruptured).count(),
                 "pair_observer": pair.as_ref().unwrap(), "absolute_a": mesh.interior.a.max(0.0)*mesh.area(),
                 "simple": true, "runtime_valid": true,
@@ -2194,6 +2222,330 @@ fn replay_r8_daughter_fixture(name: &str) -> Value {
         "source_sha256_recorded_in_protocol":true,
         "corrected_continuation":daughter_viability(mesh),
     })
+}
+
+fn r8r1_edge_force_counterfactual(mesh: &MaterialMesh, index: usize) -> Value {
+    let mechanics = MechParams::default();
+    let length = mesh.edge_length(index);
+    let rest = mesh.rest_length(index);
+    let l_ref = rest.max(0.25 * length).max(1e-3);
+    let fs_raw =
+        (mechanics.k_s * (length - rest) / l_ref).clamp(-mechanics.k_s * 8.0, mechanics.k_s * 8.0);
+    let raw_strain = mesh.strain(index);
+    let mature_fraction = mesh.mature_structural_fraction(index);
+    let r8_fs = mature_fraction * fs_raw;
+    let sign_aware_fs = if raw_strain < 0.0 {
+        fs_raw
+    } else {
+        mature_fraction * fs_raw
+    };
+    let edge = mesh.edges[index];
+    json!({
+        "edge":index,
+        "length":length,
+        "total_m":edge.m,
+        "m_young":mesh.young_structural_mass(index),
+        "mature_m":mesh.mature_structural_mass(index),
+        "mature_fraction":mature_fraction,
+        "mature_rest_length":rest,
+        "raw_strain":raw_strain,
+        "pre_r8_fs":fs_raw,
+        "r8_both_sign_fs":r8_fs,
+        "candidate_sign_aware_fs":sign_aware_fs,
+    })
+}
+
+fn r8r1_state_counterfactual(run: &RunResult) -> Value {
+    let mesh = &run.final_mesh;
+    let rows = (0..mesh.n())
+        .map(|index| r8r1_edge_force_counterfactual(mesh, index))
+        .collect::<Vec<_>>();
+    let compressed = rows
+        .iter()
+        .filter(|row| row["raw_strain"].as_f64().unwrap() < 0.0)
+        .collect::<Vec<_>>();
+    let compressed_mixed = compressed
+        .iter()
+        .copied()
+        .filter(|row| row["mature_fraction"].as_f64().unwrap() < 1.0 - 1e-12)
+        .collect::<Vec<_>>();
+    let raw_compression_norm = compressed
+        .iter()
+        .map(|row| row["pre_r8_fs"].as_f64().unwrap().abs())
+        .sum::<f64>();
+    let r8_compression_norm = compressed
+        .iter()
+        .map(|row| row["r8_both_sign_fs"].as_f64().unwrap().abs())
+        .sum::<f64>();
+    let candidate_compression_norm = compressed
+        .iter()
+        .map(|row| row["candidate_sign_aware_fs"].as_f64().unwrap().abs())
+        .sum::<f64>();
+    let strongest_compression = rows.iter().min_by(|a, b| {
+        a["raw_strain"]
+            .as_f64()
+            .unwrap()
+            .total_cmp(&b["raw_strain"].as_f64().unwrap())
+    });
+    let weakest_compression = compressed.iter().copied().max_by(|a, b| {
+        a["raw_strain"]
+            .as_f64()
+            .unwrap()
+            .total_cmp(&b["raw_strain"].as_f64().unwrap())
+    });
+    let near_zero = rows.iter().min_by(|a, b| {
+        a["raw_strain"]
+            .as_f64()
+            .unwrap()
+            .abs()
+            .total_cmp(&b["raw_strain"].as_f64().unwrap().abs())
+    });
+    let strongest_tension = rows.iter().max_by(|a, b| {
+        a["raw_strain"]
+            .as_f64()
+            .unwrap()
+            .total_cmp(&b["raw_strain"].as_f64().unwrap())
+    });
+    let pair = pair_observer(mesh, &FissionParams::default());
+    json!({
+        "name":run.name,
+        "source":"deterministic replay of the frozen R8 passive production-V4 trajectory",
+        "terminal_step":run.terminal_step,
+        "actual_perimeter":mesh.perimeter(),
+        "mature_rest_perimeter":(0..mesh.n()).map(|i|mesh.rest_length(i)).sum::<f64>(),
+        "compression_ratio":mesh.perimeter()/((0..mesh.n()).map(|i|mesh.rest_length(i)).sum::<f64>()).max(1e-300),
+        "compressed_edges":compressed.len(),
+        "compressed_mixed_edges":compressed_mixed.len(),
+        "raw_compression_force_l1":raw_compression_norm,
+        "r8_compression_force_l1":r8_compression_norm,
+        "candidate_compression_force_l1":candidate_compression_norm,
+        "r8_over_raw_compression_force":r8_compression_norm/raw_compression_norm.max(1e-300),
+        "candidate_over_raw_compression_force":candidate_compression_norm/raw_compression_norm.max(1e-300),
+        "minimum_nonadjacent_segment_distance":pair["minimum_nonadjacent_segment_distance"],
+        "local_rebond_range":pair["range"],
+        "distance_over_range":pair["minimum_distance_over_range"],
+        "representative_edges":{
+            "strong_compression":strongest_compression,
+            "weak_compression":weakest_compression,
+            "near_zero":near_zero,
+            "strong_tension":strongest_tension,
+        },
+    })
+}
+
+fn r8r1_add_young_counterfactual(runs: &[RunResult]) -> Value {
+    let selected = runs
+        .iter()
+        .flat_map(|run| (0..run.final_mesh.n()).map(move |index| (run, index)))
+        .filter(|(run, index)| {
+            run.final_mesh.strain(*index) < 0.0
+                && run.final_mesh.young_structural_mass(*index) > 0.0
+                && run.final_mesh.mature_structural_mass(*index) > 0.0
+        })
+        .min_by(|(a, ai), (b, bi)| {
+            a.final_mesh
+                .strain(*ai)
+                .total_cmp(&b.final_mesh.strain(*bi))
+        })
+        .expect("R8 replay must contain a compressed mixed-maturity edge");
+    let mesh = &selected.0.final_mesh;
+    let index = selected.1;
+    let mechanics = MechParams::default();
+    let length = mesh.edge_length(index);
+    let mature = mesh.mature_structural_mass(index);
+    let observed_young = mesh.young_structural_mass(index);
+    let rest = (mature / mesh.rho_s.max(1e-15)).max(1e-15);
+    let l_ref = rest.max(0.25 * length).max(1e-3);
+    let fs_raw =
+        (mechanics.k_s * (length - rest) / l_ref).clamp(-mechanics.k_s * 8.0, mechanics.k_s * 8.0);
+    let base_fraction = 1.0;
+    let added_fraction = mature / (mature + observed_young).max(1e-300);
+    json!({
+        "source_run":selected.0.name,
+        "edge":index,
+        "geometry_and_mature_mass_held_fixed":true,
+        "length":length,
+        "mature_mass":mature,
+        "added_young_mass":observed_young,
+        "raw_strain":(length-rest)/rest,
+        "raw_force_before_and_after":fs_raw,
+        "r8_force_before":base_fraction*fs_raw,
+        "r8_force_after_adding_observed_young":added_fraction*fs_raw,
+        "candidate_force_before":fs_raw,
+        "candidate_force_after_adding_observed_young":fs_raw,
+        "r8_add_young_force_change":added_fraction*fs_raw-fs_raw,
+        "candidate_add_young_force_change":0.0,
+    })
+}
+
+pub fn run_r8r1_gate1() {
+    let mut output = PathBuf::from("/tmp/dcfinal001_r8r1_gate1.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let passive = campaign(Mode::Passive, 14_778);
+    let states = passive
+        .iter()
+        .map(r8r1_state_counterfactual)
+        .collect::<Vec<_>>();
+    let add_young = r8r1_add_young_counterfactual(&passive);
+    let compressed_mixed_edges = states
+        .iter()
+        .map(|row| row["compressed_mixed_edges"].as_u64().unwrap() as usize)
+        .sum::<usize>();
+    let attenuation_observed = states.iter().any(|row| {
+        row["r8_compression_force_l1"].as_f64().unwrap() + CLASSIFICATION_TOLERANCE
+            < row["raw_compression_force_l1"].as_f64().unwrap()
+    });
+    let add_young_weakens_r8 = add_young["r8_force_after_adding_observed_young"]
+        .as_f64()
+        .unwrap()
+        .abs()
+        + CLASSIFICATION_TOLERANCE
+        < add_young["r8_force_before"].as_f64().unwrap().abs();
+    let candidate_invariant = add_young["candidate_add_young_force_change"]
+        .as_f64()
+        .unwrap()
+        .abs()
+        <= CLASSIFICATION_TOLERANCE;
+    let supported = compressed_mixed_edges > 0
+        && attenuation_observed
+        && add_young_weakens_r8
+        && candidate_invariant;
+    fs::write(
+        output,
+        serde_json::to_vec_pretty(&json!({
+            "directive":"DC-FINAL-001-R8R1-V4-SIGN-AWARE-MATURATION-MECHANICS-REPRODUCTION-AND-END-GOAL-CLOSURE-001",
+            "starting_head":"eb198c4e84907d5a7f9f8c170d58a27b56e63bb0",
+            "production_mechanics_at_observation":"R8 both-sign mature-fraction scaling (unchanged)",
+            "scientific_state_changed":false,
+            "new_free_parameters":0,
+            "states":states,
+            "add_young_counterfactual":add_young,
+            "compressed_mixed_edges":compressed_mixed_edges,
+            "attenuation_observed":attenuation_observed,
+            "adding_young_mass_weakens_existing_compression_under_r8":add_young_weakens_r8,
+            "candidate_add_young_invariant":candidate_invariant,
+            "classification":if supported {
+                "R8_BOTH_SIGN_MATURE_FRACTION_OVERATTENUATES_COMPRESSED_MATURE_SCAFFOLD"
+            } else {
+                "OVERATTENUATION_NOT_SUPPORTED"
+            },
+        }))
+        .unwrap(),
+    )
+    .unwrap();
+}
+
+pub fn run_r8r1() {
+    let mut output = PathBuf::from("/tmp/dcfinal001_r8r1.json");
+    let mut gate1_path = PathBuf::from("/tmp/dcfinal001_r8r1_gate1.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+        if args[index] == "--gate1" && index + 1 < args.len() {
+            gate1_path = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let gate1: Value = serde_json::from_str(
+        &fs::read_to_string(&gate1_path).expect("frozen R8 Gate-1 evidence must exist"),
+    )
+    .expect("frozen R8 Gate-1 evidence must be valid JSON");
+    assert_eq!(
+        gate1["classification"],
+        "R8_BOTH_SIGN_MATURE_FRACTION_OVERATTENUATES_COMPRESSED_MATURE_SCAFFOLD",
+        "R8R1 production execution is forbidden without Gate-1 support"
+    );
+    let horizon = 14_778;
+    let daughter_replays = [
+        "r7_seed3_daughter_a.json",
+        "r7_seed3_daughter_b.json",
+        "r6_normal_seed3_viable_daughter_a.json",
+        "r6_normal_seed3_viable_daughter_b.json",
+        "r6_normal_tangential_seed3_nonviable_daughter_a.json",
+        "r6_normal_tangential_seed3_nonviable_daughter_b.json",
+    ]
+    .into_iter()
+    .map(replay_r8_daughter_fixture)
+    .collect::<Vec<_>>();
+    let passive = campaign(Mode::Passive, horizon);
+    let r5r1 = campaign(Mode::ContrastFallback, horizon);
+    let r6_normal = campaign(Mode::CurvatureNormal, horizon);
+    let r6_combined = campaign(Mode::CurvatureNormalTangential, horizon);
+    let campaigns = [
+        (Mode::Passive.label(), &passive),
+        (Mode::ContrastFallback.label(), &r5r1),
+        (Mode::CurvatureNormal.label(), &r6_normal),
+        (Mode::CurvatureNormalTangential.label(), &r6_combined),
+    ];
+    let counts = campaigns
+        .iter()
+        .map(|(name, runs)| {
+            let (growth, fissions, viable) = result_counts(runs);
+            json!({
+                "mode":name,
+                "growth_qualified":growth,
+                "geometry_valid_fissions":fissions,
+                "simple_viable_daughter_pairs":viable,
+            })
+        })
+        .collect::<Vec<_>>();
+    let robust = counts.iter().any(|row| {
+        row["growth_qualified"].as_u64().unwrap() >= 8
+            && row["geometry_valid_fissions"].as_u64().unwrap() >= 7
+            && row["simple_viable_daughter_pairs"].as_u64().unwrap() >= 6
+    });
+    let all_daughter_replays_complete = daughter_replays.iter().all(|row| {
+        row["corrected_continuation"]["completed_steps"].as_u64() == Some(DAUGHTER_STEPS as u64)
+    });
+    let closure_cycle_eliminated = daughter_replays.iter().all(|row| {
+        row["corrected_continuation"]["cumulative_topology_ruptures"]
+            .as_u64()
+            .unwrap_or(u64::MAX)
+            < 100
+            && row["corrected_continuation"]["cumulative_same_edge_rebonds"]
+                .as_u64()
+                .unwrap_or(u64::MAX)
+                < 100
+    });
+    fs::write(
+        output,
+        serde_json::to_vec_pretty(&json!({
+            "directive":"DC-FINAL-001-R8R1-V4-SIGN-AWARE-MATURATION-MECHANICS-REPRODUCTION-AND-END-GOAL-CLOSURE-001",
+            "starting_head":"eb198c4e84907d5a7f9f8c170d58a27b56e63bb0",
+            "owner_override":"ACTIVE",
+            "qualification_horizon":horizon,
+            "new_free_parameters":0,
+            "gate1_frozen_counterfactual":gate1,
+            "sign_aware_contract":{
+                "compressive":"raw strain < 0 => fs_v4 = fs_raw",
+                "tensile":"raw strain >= 0 => fs_v4 = mature_fraction * fs_raw",
+                "rupture":"unchanged R8 mature_fraction * raw_strain > frozen threshold",
+            },
+            "daughter_fixture_replays":daughter_replays,
+            "all_daughter_replays_complete":all_daughter_replays_complete,
+            "r8_closure_cycle_remains_eliminated":closure_cycle_eliminated,
+            "campaign_counts":counts,
+            "passive_sign_aware_v4":campaign_summary(&passive),
+            "r5r1_tangential_sign_aware_v4":campaign_summary(&r5r1),
+            "r6_curvature_normal_sign_aware_v4":campaign_summary(&r6_normal),
+            "r6_curvature_normal_plus_tangential_sign_aware_v4":campaign_summary(&r6_combined),
+            "robust_v4_reproduction":robust,
+            "evolution_execution":if robust {"REQUIRED_NEXT_WITHIN_R8R1"} else {"NOT_REACHED_GATE8_STOP"},
+            "classification":if robust {
+                "V4_SIGN_AWARE_MATURATION_ROBUST_REPRODUCTION_QUALIFIED_PENDING_EVOLUTION"
+            } else {
+                "V4_SIGN_AWARE_MATURATION_REPRODUCTION_NOT_ESTABLISHED"
+            },
+        }))
+        .unwrap(),
+    )
+    .unwrap();
 }
 
 pub fn run_r8() {

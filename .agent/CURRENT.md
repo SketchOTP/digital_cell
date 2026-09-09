@@ -822,3 +822,12 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Evidence-bearing governed head `ad7964df3f2520783e7622ef9f48c92dedfc4bc7` passed exact-head Linux workflow `34381847005`.
 - Independently downloaded artifact ZIP digest: `sha256:c6c3dbcea32cfd032b90b41966a339c22c57ae2881cf0569f17297b819ebb6fd`.
 - This append-only pointer does not alter the Gate-9 stop, provisional classification, owner override, or pending independent Architect review.
+
+## DC-FINAL-001-R8 final authority and R8R1 active execution
+
+- External Architect accepts the R8 full-density daughter-closure material/A accounting repair and elimination of the pathological young-edge rupture/rebond cycle at final governed head `eb198c4e84907d5a7f9f8c170d58a27b56e63bb0`, exact-head workflow `34383115730 PASS`, and artifact `sha256:d7bdf9c31da2e144d96fbcb53f727a9ec31304e0400e12ed984ea01285b384d8`.
+- Active directive: `DC-FINAL-001-R8R1-V4-SIGN-AWARE-MATURATION-MECHANICS-REPRODUCTION-AND-END-GOAL-CLOSURE-001` on branch `codex/dc-final-001-r8r1-sign-aware-maturation`.
+- Largest unresolved gap: robust viable V4 reproduction. R8's both-sign mature-fraction spring scaling may suppress mature-scaffold compression/buckling and prevent ordinary nonadjacent apposition.
+- Immediate action: complete frozen-state force counterfactuals before production implementation. Only a supported Gate-1 result authorizes the zero-parameter sign-aware V4 stretch law; all R8 material and tensile-rupture repairs remain frozen.
+- Acceptance: preserve M1 and non-V4 parity, keep R8 closure cycling eliminated, and requalify the frozen four-arm V4 campaign. Mutation/selection/reversal/final integration remain conditional on unchanged reproduction gates.
+- Independent Architect acceptance remains `PENDING`; no successor directive is authorized.

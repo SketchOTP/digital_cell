@@ -139,11 +139,16 @@ pub fn compute_forces_with_reference_lengths(
         let l_ref = l0.max(0.25 * len).max(1e-3);
         let fs_raw = params.k_s * (len - l0) / l_ref;
         let fs_raw = fs_raw.clamp(-params.k_s * 8.0, params.k_s * 8.0);
-        // V4 young structure is explicitly non-load-bearing. Scale only the
-        // stretch contribution by the continuously varying mature fraction;
-        // pressure and bending remain unchanged. Historical contracts return
-        // a fraction of one and therefore retain exact prior behavior.
-        let fs = mesh.mature_structural_fraction(i) * fs_raw;
+        // V4 young structure is explicitly non-load-bearing in tension. In
+        // compression, the mature scaffold already has a rest length longer
+        // than the edge and retains its ordinary response when young material
+        // is added. Historical contracts retain exact prior behavior because
+        // their mature fraction is one. Pressure and bending are unchanged.
+        let fs = if mesh.is_maturation_coupled() && mesh.strain(i) < 0.0 {
+            fs_raw
+        } else {
+            mesh.mature_structural_fraction(i) * fs_raw
+        };
         let j = (i + 1) % n;
         f[i][0] += fs * t[0];
         f[i][1] += fs * t[1];

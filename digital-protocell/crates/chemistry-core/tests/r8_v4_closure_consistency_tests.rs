@@ -75,6 +75,45 @@ fn mixed_v4_load_changes_continuously_with_mature_fraction() {
     assert_eq!(mixed.mature_structural_fraction(0), 0.5);
 }
 
+fn compressed_v4(young_mass_per_edge: f64) -> MaterialMesh {
+    let mut mesh = regular(MeshContractVersion::MaturationCoupledV4, 0.0);
+    for i in 0..mesh.n() {
+        let mature = 2.0 * mesh.rho_s * mesh.edge_length(i);
+        mesh.edges[i].m = mature + young_mass_per_edge;
+        mesh.edges[i].m_young = young_mass_per_edge;
+        assert!(mesh.strain(i) < 0.0);
+    }
+    mesh
+}
+
+#[test]
+fn compressed_v4_scaffold_retains_raw_spring_force() {
+    let v4 = compressed_v4(0.5);
+    let mut v3 = v4.clone();
+    v3.contract_version = MeshContractVersion::GeometryConservativeV3;
+    for edge in &mut v3.edges {
+        edge.m -= edge.m_young;
+        edge.m_young = 0.0;
+    }
+    assert_eq!(
+        compute_forces(&v4, &stretch_only()),
+        compute_forces(&v3, &stretch_only())
+    );
+}
+
+#[test]
+fn adding_young_mass_does_not_weaken_existing_compressed_scaffold() {
+    let base = compressed_v4(0.0);
+    let added = compressed_v4(3.0);
+    assert!(added.mature_structural_fraction(0) < 1.0);
+    assert_eq!(base.rest_length(0), added.rest_length(0));
+    assert_eq!(base.strain(0), added.strain(0));
+    assert_eq!(
+        compute_forces(&base, &stretch_only()),
+        compute_forces(&added, &stretch_only())
+    );
+}
+
 #[test]
 fn fully_mature_v4_matches_prior_non_v4_stretch_and_rupture_semantics() {
     let mut v4 = regular(MeshContractVersion::MaturationCoupledV4, 0.0);

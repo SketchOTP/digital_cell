@@ -1,0 +1,180 @@
+name: DC-FINAL-001-R8R1 sign-aware V4 mechanics
+
+on:
+  push:
+    branches: [codex/dc-final-001-r8r1-sign-aware-maturation]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r8r1-qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Verify R8 authority, owner override, and bounded scope
+        run: |
+          set -euo pipefail
+          start=eb198c4e84907d5a7f9f8c170d58a27b56e63bb0
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git merge-base --is-ancestor "$start" HEAD
+          git cat-file -e aad73e86cd13b2bb77eb3c9e58105c294533fb1c^{commit}
+          git diff --check
+          python3 - <<'PY'
+          import subprocess
+          allowed = (
+              '.agent/',
+              '.github/workflows/dc-final-001-r8r1.yml',
+              'digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs',
+              'digital-protocell/crates/chemistry-core/tests/r8_v4_closure_consistency_tests.rs',
+              'digital-protocell/crates/regulatory-core/Cargo.toml',
+              'digital-protocell/examples/dcfinal001_r5_v4_neck.rs',
+              'digital-protocell/examples/dcfinal001_r8r1_gate1.rs',
+              'digital-protocell/examples/dcfinal001_r8r1_sign_aware.rs',
+              'digital-protocell/experiments/dcfinal001_r8r1_evidence.py',
+              'digital-protocell/experiments/generated/dcfinal001r8r1/',
+          )
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-only', 'eb198c4e84907d5a7f9f8c170d58a27b56e63bb0..HEAD'],
+              text=True,
+          ).splitlines()
+          bad = [path for path in changed if not any(path.startswith(prefix) for prefix in allowed)]
+          assert not bad, bad
+          PY
+          gh run view 34383115730 --repo SketchOTP/digital_cell \
+            --json conclusion,headSha --jq '.conclusion + " " + .headSha' \
+            | grep '^success eb198c4e84907d5a7f9f8c170d58a27b56e63bb0$'
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefOid \
+            --jq '[.state,.isDraft,.mergedAt,.headRefOid]|@tsv' \
+            | grep $'^OPEN\\ttrue\\t\\tfb77f472b1519a9e0f713833efba5b1d403f4723$'
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Reproduce frozen R8 Gate 1 counterfactual
+        run: |
+          set -euo pipefail
+          git worktree add "$RUNNER_TEMP/r8-start" eb198c4e84907d5a7f9f8c170d58a27b56e63bb0
+          cp digital-protocell/examples/dcfinal001_r5_v4_neck.rs \
+            "$RUNNER_TEMP/r8-start/digital-protocell/examples/dcfinal001_r5_v4_neck.rs"
+          cp digital-protocell/examples/dcfinal001_r8r1_gate1.rs \
+            "$RUNNER_TEMP/r8-start/digital-protocell/examples/dcfinal001_r8r1_gate1.rs"
+          printf '\n[[example]]\nname = "dcfinal001_r8r1_gate1"\npath = "../../examples/dcfinal001_r8r1_gate1.rs"\n' \
+            >> "$RUNNER_TEMP/r8-start/digital-protocell/crates/regulatory-core/Cargo.toml"
+          cd "$RUNNER_TEMP/r8-start/digital-protocell"
+          cargo +1.89.0 run --locked -q --release -p regulatory-core \
+            --example dcfinal001_r8r1_gate1 -- --output "$RUNNER_TEMP/gate1.json"
+          cd "$GITHUB_WORKSPACE"
+          diff -u digital-protocell/experiments/generated/dcfinal001r8r1/compression_overattenuation_audit.json \
+            "$RUNNER_TEMP/gate1.json"
+
+      - name: Qualify sign-aware contracts and reproduction
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p chemistry-core --test r8_v4_closure_consistency_tests -- --nocapture
+          cargo +1.89.0 run --locked -q --release -p regulatory-core \
+            --example dcfinal001_r8r1_sign_aware \
+            -- --gate1 experiments/generated/dcfinal001r8r1/compression_overattenuation_audit.json \
+            --output "$RUNNER_TEMP/r8r1.json"
+          scientific_head=$(python3 - <<'PY'
+          import json
+          print(json.load(open('experiments/generated/dcfinal001r8r1/authority.json'))['result_scientific_head'])
+          PY
+          )
+          python3 experiments/dcfinal001_r8r1_evidence.py \
+            --head "$scientific_head" \
+            --raw "$RUNNER_TEMP/r8r1.json" \
+            --gate1 experiments/generated/dcfinal001r8r1/compression_overattenuation_audit.json \
+            --r8 experiments/generated/dcfinal001r8 \
+            --output "$RUNNER_TEMP/evidence"
+          diff -ru experiments/generated/dcfinal001r8r1 "$RUNNER_TEMP/evidence"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          raw = json.loads((root / 'r8r1.json').read_text())
+          expected = {
+              'PASSIVE_V4': (10, 2, 2),
+              'ZERO_PARAMETER_MEAN_RELATIVE_STRAIN': (10, 2, 2),
+              'CURVATURE_GATED_NORMAL_ONLY': (10, 4, 4),
+              'CURVATURE_NORMAL_PLUS_TANGENTIAL': (10, 3, 3),
+          }
+          counts = {row['mode']: row for row in raw['campaign_counts']}
+          for mode, values in expected.items():
+              row = counts[mode]
+              assert (row['growth_qualified'], row['geometry_valid_fissions'], row['simple_viable_daughter_pairs']) == values
+          assert raw['new_free_parameters'] == 0
+          assert raw['r8_closure_cycle_remains_eliminated'] is True
+          assert raw['robust_v4_reproduction'] is False
+          PY
+
+      - name: Preserve M1, M2, lifecycle, and tests-only evolution surfaces
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p chemistry-core --test r4_contract_topology_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test --locked -p evolution-harness -- --nocapture
+          cargo +1.89.0 test --locked -p m2-lifeform-runtime --bin digital-cell-final-lifeform -- --nocapture
+          cargo +1.89.0 check --locked -p godot-bridge
+          run_d087() {
+            local output="$1" contract="$2" v4="$3"
+            if test "$v4" = 1; then
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 \
+                cargo +1.89.0 run -q -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            else
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 \
+                cargo +1.89.0 run -q -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            fi
+          }
+          run_d087 "$RUNNER_TEMP/d087-v2" ConservativeV2 0
+          run_d087 "$RUNNER_TEMP/d087-v3" ConservativeV3 0
+          run_d087 "$RUNNER_TEMP/d087-v4" ConservativeV3 1
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          expected = {
+              'v2': [True] * 8,
+              'v3': [True] * 8,
+              'v4': [True, True, False, True, True, True, True, True],
+          }
+          for name, vector in expected.items():
+              manifest = json.loads((root / f'd087-{name}' / 'manifest.json').read_text())
+              assert [manifest[f'gate{i}']['pass'] for i in range(8)] == vector
+          PY
+
+      - name: Validate evidence manifest
+        run: |
+          set -euo pipefail
+          python3 -m py_compile digital-protocell/experiments/dcfinal001_r8r1_evidence.py
+          python3 - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root = Path('digital-protocell/experiments/generated/dcfinal001r8r1')
+          manifest = json.loads((root / 'artifact_manifest.json').read_text())
+          for row in manifest['files']:
+              path = root / row['path']
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == row['sha256']
+              assert path.stat().st_size == row['bytes']
+          PY
+
+      - name: Upload exact-head R8R1 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcfinal001r8r1
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            digital-protocell/experiments/generated/dcfinal001r8r1
+            ${{ runner.temp }}/r8r1.json
