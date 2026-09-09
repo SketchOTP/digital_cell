@@ -61,6 +61,10 @@ enum Mode {
     CurvatureNormalMotorOff,
     CurvatureNormalZeroA,
     CurvatureNormalTangential,
+    ContrastNormal,
+    ContrastNormalMotorOff,
+    ContrastNormalZeroA,
+    ContrastNormalTangential,
 }
 
 impl Mode {
@@ -78,6 +82,10 @@ impl Mode {
             Self::CurvatureNormalMotorOff => "CURVATURE_NORMAL_MOTOR_OFF",
             Self::CurvatureNormalZeroA => "CURVATURE_NORMAL_ZERO_A",
             Self::CurvatureNormalTangential => "CURVATURE_NORMAL_PLUS_TANGENTIAL",
+            Self::ContrastNormal => "STRAIN_CONTRAST_NORMAL_ONLY",
+            Self::ContrastNormalMotorOff => "STRAIN_CONTRAST_NORMAL_MOTOR_OFF",
+            Self::ContrastNormalZeroA => "STRAIN_CONTRAST_NORMAL_ZERO_A",
+            Self::ContrastNormalTangential => "STRAIN_CONTRAST_NORMAL_PLUS_TANGENTIAL",
         }
     }
 }
@@ -163,6 +171,7 @@ struct RunResult {
     max_mass_over_birth: f64,
     physical_fission: bool,
     both_daughters_viable: bool,
+    daughter_diagnostics: Option<Value>,
     fission_step: Option<usize>,
     first_invalid: Option<Value>,
     all_simple: bool,
@@ -578,6 +587,19 @@ fn daughter_viability(mut mesh: MaterialMesh) -> Value {
     };
     let c_initial = mesh.interior.c;
     let a_initial = mesh.interior.a;
+    let initial = json!({
+        "area": mesh.area(),
+        "structural_mass": mesh.total_structural_mass(),
+        "a_concentration": mesh.interior.a,
+        "a_amount": mesh.interior.a.max(0.0) * mesh.area().max(1e-300),
+        "c_concentration": mesh.interior.c,
+        "c_amount": mesh.interior.c.max(0.0) * mesh.area().max(1e-300),
+        "observer_viable": mesh.observer_viable(),
+        "closed_intact": mesh.closed_intact(),
+        "simple": polygon_simple(&mesh.vertices),
+        "runtime_valid": mesh.physical_runtime_valid(),
+        "lifecycle_valid": mesh.lifecycle_invariants_hold(),
+    });
     let mut completed = 0_usize;
     let mut all_simple = polygon_simple(&mesh.vertices);
     let mut all_runtime = mesh.physical_runtime_valid();
@@ -622,10 +644,17 @@ fn daughter_viability(mut mesh: MaterialMesh) -> Value {
         && a_retention >= 0.80;
     json!({
         "viable": viable, "completed_steps": completed,
+        "observer_viable": mesh.observer_viable(),
+        "closed_intact": mesh.closed_intact(),
         "all_simple": all_simple, "all_runtime_valid": all_runtime,
         "all_lifecycle_invariants_hold": all_lifecycle,
         "c_retention": c_retention, "a_retention": a_retention,
+        "initial": initial,
         "terminal": geometry(&mesh),
+        "terminal_a_concentration": mesh.interior.a,
+        "terminal_a_amount": mesh.interior.a.max(0.0) * mesh.area().max(1e-300),
+        "terminal_c_concentration": mesh.interior.c,
+        "terminal_c_amount": mesh.interior.c.max(0.0) * mesh.area().max(1e-300),
     })
 }
 
@@ -928,6 +957,7 @@ fn run(
     let mut first_invalid = None;
     let mut fission_step = None;
     let mut both_viable = false;
+    let mut daughter_diagnostics = None;
     let mut attempts = Vec::new();
     let mut checkpoints = Vec::new();
     let mut counts = FailureCounts::default();
@@ -959,9 +989,13 @@ fn run(
         );
         let activity = match mode {
             Mode::Passive | Mode::RegulatorOffMotorOnZero => vec![0.0; mesh.n()],
-            Mode::ContrastFallback | Mode::ContrastMotorOff | Mode::ContrastZeroA => {
-                contrast_activity(&mesh)
-            }
+            Mode::ContrastFallback
+            | Mode::ContrastMotorOff
+            | Mode::ContrastZeroA
+            | Mode::ContrastNormal
+            | Mode::ContrastNormalMotorOff
+            | Mode::ContrastNormalZeroA
+            | Mode::ContrastNormalTangential => contrast_activity(&mesh),
             Mode::CurvatureNormal
             | Mode::CurvatureNormalMotorOff
             | Mode::CurvatureNormalZeroA
@@ -987,6 +1021,10 @@ fn run(
                     | Mode::CurvatureNormalMotorOff
                     | Mode::CurvatureNormalZeroA
                     | Mode::CurvatureNormalTangential
+                    | Mode::ContrastNormal
+                    | Mode::ContrastNormalMotorOff
+                    | Mode::ContrastNormalZeroA
+                    | Mode::ContrastNormalTangential
             )
         {
             update_attribution(&mut attribution, &mesh, &activity);
@@ -1012,7 +1050,8 @@ fn run(
             Mode::Passive
             | Mode::RegulatorOnMotorOff
             | Mode::ContrastMotorOff
-            | Mode::CurvatureNormalMotorOff => {
+            | Mode::CurvatureNormalMotorOff
+            | Mode::ContrastNormalMotorOff => {
                 mechanics_step_with_local_self_contact(&mut mesh, &mechanics).is_some()
             }
             Mode::RegulatorOffMotorOnZero | Mode::RegulatorMotor | Mode::ContrastFallback => {
@@ -1029,9 +1068,15 @@ fn run(
                     Err(_) => false,
                 }
             }
-            Mode::CurvatureNormal | Mode::CurvatureNormalTangential => {
+            Mode::CurvatureNormal
+            | Mode::CurvatureNormalTangential
+            | Mode::ContrastNormal
+            | Mode::ContrastNormalTangential => {
                 let (forces, requested) = inward_normal_request(&mesh, &activity, mechanics.dt);
-                let tangential_activity = if mode == Mode::CurvatureNormalTangential {
+                let tangential_activity = if matches!(
+                    mode,
+                    Mode::CurvatureNormalTangential | Mode::ContrastNormalTangential
+                ) {
                     activity.clone()
                 } else {
                     vec![0.0; mesh.n()]
@@ -1072,7 +1117,7 @@ fn run(
                     Err(_) => false,
                 }
             }
-            Mode::CurvatureNormalZeroA => {
+            Mode::CurvatureNormalZeroA | Mode::ContrastNormalZeroA => {
                 let area_before = mesh.area().max(1e-300);
                 let saved_a = mesh.interior.a.max(0.0) * area_before;
                 mesh.interior.a = 0.0;
@@ -1182,6 +1227,12 @@ fn run(
                     let va = daughter_viability(a);
                     let vb = daughter_viability(b);
                     both_viable = va["viable"] == true && vb["viable"] == true;
+                    daughter_diagnostics = Some(json!({
+                        "step": absolute_step,
+                        "daughter_a": va,
+                        "daughter_b": vb,
+                        "both_viable": both_viable,
+                    }));
                     reason = if both_viable {
                         "VALID_FISSION"
                     } else {
@@ -1210,6 +1261,7 @@ fn run(
         max_mass_over_birth: maximum_mass_ratio,
         physical_fission: fission_step.is_some(),
         both_daughters_viable: both_viable,
+        daughter_diagnostics,
         fission_step,
         first_invalid,
         all_simple,
@@ -1872,6 +1924,316 @@ fn active_energy_summary(runs: &[RunResult]) -> Value {
         "residual":residual,
         "pass":residual <= 1e-8*(1.0+spent),
     })
+}
+
+fn campaign_state_parity(left: &[RunResult], right: &[RunResult]) -> Value {
+    let mut maximum_vertex_error = 0.0_f64;
+    let mut maximum_mass_error = 0.0_f64;
+    let mut topology_mismatches = 0_usize;
+    let mut event_mismatches = 0_usize;
+    for (a, b) in left.iter().zip(right) {
+        if a.final_mesh.n() != b.final_mesh.n() {
+            topology_mismatches += 1;
+        } else {
+            for (pa, pb) in a.final_mesh.vertices.iter().zip(&b.final_mesh.vertices) {
+                maximum_vertex_error = maximum_vertex_error
+                    .max((pa[0] - pb[0]).abs())
+                    .max((pa[1] - pb[1]).abs());
+            }
+        }
+        maximum_mass_error = maximum_mass_error.max(
+            (a.final_mesh.total_structural_mass() - b.final_mesh.total_structural_mass()).abs(),
+        );
+        if a.physical_fission != b.physical_fission
+            || a.both_daughters_viable != b.both_daughters_viable
+            || a.fission_step != b.fission_step
+        {
+            event_mismatches += 1;
+        }
+    }
+    let pass = left.len() == right.len()
+        && topology_mismatches == 0
+        && event_mismatches == 0
+        && maximum_vertex_error <= CLASSIFICATION_TOLERANCE
+        && maximum_mass_error <= CLASSIFICATION_TOLERANCE;
+    json!({
+        "pass": pass,
+        "arms_compared": left.len().min(right.len()),
+        "maximum_vertex_error": maximum_vertex_error,
+        "maximum_structural_mass_error": maximum_mass_error,
+        "topology_mismatches": topology_mismatches,
+        "event_mismatches": event_mismatches,
+    })
+}
+
+fn cross_composition_qualification() -> Value {
+    let base = fixture(0);
+    let drive = contrast_activity(&base);
+    let repeated_drive = contrast_activity(&base);
+    let drive_identity_error = drive
+        .iter()
+        .zip(&repeated_drive)
+        .map(|(a, b)| (a - b).abs())
+        .fold(0.0, f64::max);
+    let base_normals = (0..base.n())
+        .map(|i| local_inward_normal_and_tangent(&base, i).0)
+        .collect::<Vec<_>>();
+    let repeated_normals = (0..base.n())
+        .map(|i| local_inward_normal_and_tangent(&base, i).0)
+        .collect::<Vec<_>>();
+    let normal_identity_error = base_normals
+        .iter()
+        .zip(&repeated_normals)
+        .map(|(a, b)| (a[0] - b[0]).abs().max((a[1] - b[1]).abs()))
+        .fold(0.0, f64::max);
+
+    let angle = 0.731_f64;
+    let (sine, cosine) = angle.sin_cos();
+    let mut rotated = base.clone();
+    for point in &mut rotated.vertices {
+        let x = point[0];
+        let y = point[1];
+        point[0] = cosine * x - sine * y + 3.25;
+        point[1] = sine * x + cosine * y - 1.75;
+    }
+    let rotated_drive = contrast_activity(&rotated);
+    let rotation_drive_error = drive
+        .iter()
+        .zip(&rotated_drive)
+        .map(|(a, b)| (a - b).abs())
+        .fold(0.0, f64::max);
+    let rotation_normal_error = base_normals
+        .iter()
+        .enumerate()
+        .map(|(i, normal)| {
+            let expected = [
+                cosine * normal[0] - sine * normal[1],
+                sine * normal[0] + cosine * normal[1],
+            ];
+            let observed = local_inward_normal_and_tangent(&rotated, i).0;
+            (expected[0] - observed[0])
+                .abs()
+                .max((expected[1] - observed[1]).abs())
+        })
+        .fold(0.0, f64::max);
+
+    let mut reflected = base.clone();
+    for point in &mut reflected.vertices {
+        point[0] = -point[0];
+    }
+    let reflected_drive = contrast_activity(&reflected);
+    let reflection_drive_error = drive
+        .iter()
+        .zip(&reflected_drive)
+        .map(|(a, b)| (a - b).abs())
+        .fold(0.0, f64::max);
+    let reflection_normal_error = base_normals
+        .iter()
+        .enumerate()
+        .map(|(i, normal)| {
+            let expected = [-normal[0], normal[1]];
+            let observed = local_inward_normal_and_tangent(&reflected, i).0;
+            (expected[0] - observed[0])
+                .abs()
+                .max((expected[1] - observed[1]).abs())
+        })
+        .fold(0.0, f64::max);
+
+    let mut regular = chemistry_core::mesh_population::MeshPopulation::seed_one(5.0, 1, 2.2)
+        .individuals
+        .remove(0)
+        .mesh;
+    regular.stamp_maturation_coupled_schema();
+    let regular_drive = contrast_activity(&regular);
+    let regular_max_drive = regular_drive.iter().copied().fold(0.0, f64::max);
+    let (forces, requested_a) = inward_normal_request(&base, &drive, MechParams::default().dt);
+    let maximum_force = forces
+        .iter()
+        .map(|force| force[0].hypot(force[1]))
+        .fold(0.0, f64::max);
+    let pass = drive_identity_error <= CLASSIFICATION_TOLERANCE
+        && normal_identity_error <= CLASSIFICATION_TOLERANCE
+        && rotation_drive_error <= CLASSIFICATION_TOLERANCE
+        && rotation_normal_error <= CLASSIFICATION_TOLERANCE
+        && reflection_drive_error <= CLASSIFICATION_TOLERANCE
+        && reflection_normal_error <= CLASSIFICATION_TOLERANCE
+        && regular_max_drive <= CLASSIFICATION_TOLERANCE
+        && maximum_force <= MAX_EXTERNAL_FORCE_PER_VERTEX + CLASSIFICATION_TOLERANCE
+        && requested_a >= 0.0;
+    json!({
+        "pass": pass,
+        "classification": if pass {"STRAIN_CONTRAST_NORMAL_COMPOSITION_EXACT"} else {"STRAIN_CONTRAST_NORMAL_COMPOSITION_INVALID"},
+        "drive_authority": "R5R1 adaptive_directional_drive.front_drive",
+        "drive_formula": "max(local_positive_tensile_strain - perimeter_weighted_mean_strain, 0)",
+        "normal_authority": "R6 orientation-aware current_local_inward_normal",
+        "force_authority": "R6 funded extra-force path and frozen force budget",
+        "curvature_term_in_primary_drive": false,
+        "new_free_parameters": 0,
+        "fission_or_topology_information_read": false,
+        "drive_identity_error": drive_identity_error,
+        "normal_identity_error": normal_identity_error,
+        "rotation_drive_error": rotation_drive_error,
+        "rotation_normal_error": rotation_normal_error,
+        "reflection_drive_error": reflection_drive_error,
+        "reflection_normal_error": reflection_normal_error,
+        "uniform_no_strain_max_drive": regular_max_drive,
+        "maximum_requested_force": maximum_force,
+        "force_bound": MAX_EXTERNAL_FORCE_PER_VERTEX,
+        "requested_a": requested_a,
+    })
+}
+
+fn daughter_diagnostic_rows(runs: &[RunResult]) -> Value {
+    json!({
+        "physical_fissions": runs.iter().filter(|run| run.physical_fission).count(),
+        "rows": runs.iter().filter_map(|run| run.daughter_diagnostics.as_ref().map(|diagnostics| json!({
+            "name": run.name,
+            "mode": run.mode.label(),
+            "fission_step": run.fission_step,
+            "diagnostics": diagnostics,
+        }))).collect::<Vec<_>>(),
+    })
+}
+
+pub fn run_r7() {
+    const R7_DIRECTIVE: &str =
+        "DC-FINAL-001-R7-STRAIN-CONTRAST-NORMAL-CONSTRICTION-EMERGENCY-CLOSURE-001";
+    let mut output = PathBuf::from("/tmp/dcfinal001_r7_strain_contrast_normal.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let horizon = 14_778;
+    let composition = cross_composition_qualification();
+    assert_eq!(
+        composition["pass"], true,
+        "cross-composition contract failed"
+    );
+
+    let passive = campaign(Mode::Passive, horizon);
+    let tangential = campaign(Mode::ContrastFallback, horizon);
+    let curvature_normal = campaign(Mode::CurvatureNormal, horizon);
+    let contrast_normal = campaign(Mode::ContrastNormal, horizon);
+    let motor_off = campaign(Mode::ContrastNormalMotorOff, horizon);
+    let zero_a = campaign(Mode::ContrastNormalZeroA, horizon);
+
+    let (passive_growth, passive_fissions, passive_viable) = result_counts(&passive);
+    let (_, tangential_fissions, tangential_viable) = result_counts(&tangential);
+    let (_, curvature_fissions, curvature_viable) = result_counts(&curvature_normal);
+    let (normal_growth, normal_fissions, normal_viable) = result_counts(&contrast_normal);
+    let normal_pass = normal_growth >= 8 && normal_fissions >= 7 && normal_viable >= 6;
+    let normal_improves_both = (normal_fissions > passive_fissions
+        && normal_fissions > tangential_fissions)
+        || (normal_viable > passive_viable && normal_viable > tangential_viable);
+    let combined = (!normal_pass && normal_improves_both)
+        .then(|| campaign(Mode::ContrastNormalTangential, horizon));
+    let combined_counts = combined.as_ref().map(|runs| result_counts(runs));
+    let combined_pass = combined_counts
+        .map(|(growth, fissions, viable)| growth >= 8 && fissions >= 7 && viable >= 6)
+        .unwrap_or(false);
+    let reproduction_pass = normal_pass || combined_pass;
+    let selected = if normal_pass {
+        &contrast_normal
+    } else if combined_pass {
+        combined.as_ref().unwrap()
+    } else {
+        &contrast_normal
+    };
+    let (selected_growth, selected_fissions, selected_viable) = result_counts(selected);
+    let energy = active_energy_summary(&contrast_normal);
+    let combined_energy = combined.as_ref().map(|runs| active_energy_summary(runs));
+    let zero_a_spent = zero_a
+        .iter()
+        .map(|run| run.attribution.zero_a_spent)
+        .sum::<f64>();
+    let motor_off_parity = campaign_state_parity(&passive, &motor_off);
+
+    let result = json!({
+        "directive": R7_DIRECTIVE,
+        "starting_head": "f1bee528888a91a8a2553ecea4973f5a5b851ab9",
+        "owner_override": "PASS",
+        "qualification_horizon": horizon,
+        "cross_composition": composition,
+        "force_contract": {
+            "drive": "exact R5R1 mean-relative positive tensile-strain contrast",
+            "direction": "exact R6 orientation-aware local inward vertex normal",
+            "force_scale": "MAX_EXTERNAL_FORCE_PER_VERTEX - FROZEN_STATIC_TRACTION_LIMIT",
+            "cost": FROZEN_RESERVE_COST_PER_FORCE_LENGTH_TIME,
+            "primary_tangential_activity": 0,
+            "curvature_drive": false,
+            "new_free_parameters": 0,
+        },
+        "campaigns": {
+            "passive": campaign_summary(&passive),
+            "r5r1_strain_contrast_tangential": campaign_summary(&tangential),
+            "r6_curvature_normal": campaign_summary(&curvature_normal),
+            "r7_strain_contrast_normal": campaign_summary(&contrast_normal),
+            "r7_strain_contrast_normal_motor_off": campaign_summary(&motor_off),
+            "r7_strain_contrast_normal_zero_a": campaign_summary(&zero_a),
+            "r7_strain_contrast_normal_plus_tangential": combined.as_ref().map(|runs| campaign_summary(runs)),
+        },
+        "controls": {
+            "motor_off_semantic_parity": motor_off_parity,
+            "zero_a_spent": zero_a_spent,
+            "zero_a_pass": zero_a_spent <= CLASSIFICATION_TOLERANCE,
+            "uniform_no_strain_control_pass": composition["uniform_no_strain_max_drive"].as_f64().unwrap_or(f64::INFINITY) <= CLASSIFICATION_TOLERANCE,
+        },
+        "localization": {
+            "r5r1_tangential": functional_summary(&tangential),
+            "r7_contrast_normal": functional_summary(&contrast_normal),
+            "r6_curvature_normal": functional_summary(&curvature_normal),
+        },
+        "apposition": {
+            "passive": apposition_score(&passive),
+            "r5r1_tangential": apposition_score(&tangential),
+            "r6_curvature_normal": apposition_score(&curvature_normal),
+            "r7_contrast_normal": apposition_score(&contrast_normal),
+            "r7_contrast_normal_plus_tangential": combined.as_ref().map(|runs| apposition_score(runs)),
+        },
+        "energy": {
+            "r7_strain_contrast_normal": energy,
+            "r7_strain_contrast_normal_plus_tangential": combined_energy,
+            "zero_a_spent": zero_a_spent,
+        },
+        "conditional_same_signal_tangential": {
+            "executed": combined.is_some(),
+            "normal_only_improved_relative_to_both_passive_and_r5r1": normal_improves_both,
+            "normal_only_passed": normal_pass,
+            "criterion": "normal-only improves fission count OR viable-pair count relative to both passive and sealed R5R1, while below qualification",
+            "counts": combined_counts.map(|(growth,fissions,viable)|json!({"growth":growth,"fissions":fissions,"viable_pairs":viable})),
+        },
+        "daughter_diagnostics": {
+            "passive": daughter_diagnostic_rows(&passive),
+            "r5r1_tangential": daughter_diagnostic_rows(&tangential),
+            "r6_curvature_normal": daughter_diagnostic_rows(&curvature_normal),
+            "r7_contrast_normal": daughter_diagnostic_rows(&contrast_normal),
+            "r7_contrast_normal_plus_tangential": combined.as_ref().map(|runs|daughter_diagnostic_rows(runs)),
+        },
+        "reproduction": {
+            "selected": if normal_pass {Mode::ContrastNormal.label()} else if combined_pass {Mode::ContrastNormalTangential.label()} else {Mode::ContrastNormal.label()},
+            "growth_qualified": selected_growth,
+            "geometry_valid_fissions": selected_fissions,
+            "simple_viable_daughter_pairs": selected_viable,
+            "pass": reproduction_pass,
+            "thresholds": {"growth":8,"fissions":7,"viable_pairs":6},
+            "reference_counts": {
+                "passive":{"growth":passive_growth,"fissions":passive_fissions,"viable_pairs":passive_viable},
+                "r5r1_tangential":{"fissions":tangential_fissions,"viable_pairs":tangential_viable},
+                "r6_curvature_normal":{"fissions":curvature_fissions,"viable_pairs":curvature_viable},
+                "r7_strain_contrast_normal":{"growth":normal_growth,"fissions":normal_fissions,"viable_pairs":normal_viable},
+            },
+        },
+        "evolution_execution": if reproduction_pass {"REQUIRED_CONTINUE_GATE9"} else {"NOT_REACHED_GATE7_STOP"},
+        "classification": if reproduction_pass {"V4_STRAIN_CONTRAST_NORMAL_ROBUST_REPRODUCTION_QUALIFIED_PENDING_EVOLUTION"} else {"V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED"},
+        "digital_cell_end_goal": if reproduction_pass {"PENDING_EVOLUTION_AND_FINAL_INTEGRATION"} else {"NOT_ESTABLISHED"},
+        "shutdown_recommended": "NO — OWNER OVERRIDE ACTIVE",
+        "new_free_parameters": 0,
+        "next_execution_started": false,
+        "independent_architect_acceptance": "PENDING",
+    });
+    fs::write(output, serde_json::to_vec_pretty(&result).unwrap()).unwrap();
 }
 
 pub fn run_r6() {

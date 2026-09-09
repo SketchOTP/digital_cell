@@ -1,0 +1,180 @@
+name: DC-FINAL-001-R7 strain-contrast normal closure
+
+on:
+  push:
+    branches: [codex/dc-final-001-r7-strain-contrast-normal]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r7-qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Verify R6 authority, owner override, and bounded scope
+        run: |
+          set -euo pipefail
+          start=f1bee528888a91a8a2553ecea4973f5a5b851ab9
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git merge-base --is-ancestor "$start" HEAD
+          git cat-file -e e52fa4427a895b550b3be01ada5761b3be498f3e^{commit}
+          git diff --check
+          python3 - <<'PY'
+          import subprocess
+          allowed = (
+              '.agent/',
+              '.github/workflows/dc-final-001-r7.yml',
+              'digital-protocell/crates/regulatory-core/Cargo.toml',
+              'digital-protocell/examples/dcfinal001_r5_v4_neck.rs',
+              'digital-protocell/examples/dcfinal001_r7_strain_contrast_normal.rs',
+              'digital-protocell/experiments/dcfinal001_r7_evidence.py',
+              'digital-protocell/experiments/generated/dcfinal001r7/',
+          )
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-only', 'f1bee528888a91a8a2553ecea4973f5a5b851ab9..HEAD'],
+              text=True,
+          ).splitlines()
+          bad = [path for path in changed if not any(path.startswith(prefix) for prefix in allowed)]
+          assert not bad, bad
+          PY
+          gh run view 34357939278 --repo SketchOTP/digital_cell \
+            --json conclusion,headSha --jq '.conclusion + " " + .headSha' \
+            | grep '^success f1bee528888a91a8a2553ecea4973f5a5b851ab9$'
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefOid > "$RUNNER_TEMP/pr44.json"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          pr = json.loads((Path(os.environ['RUNNER_TEMP']) / 'pr44.json').read_text())
+          assert pr['state'] == 'OPEN'
+          assert pr['isDraft'] is True
+          assert pr['mergedAt'] is None
+          assert pr['headRefOid'] == 'fb77f472b1519a9e0f713833efba5b1d403f4723'
+          PY
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Run exact strain-contrast normal composition and reproduction qualification
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 check --locked -p regulatory-core \
+            --example dcfinal001_r5r1_strain_contrast \
+            --example dcfinal001_r6_curvature_normal \
+            --example dcfinal001_r7_strain_contrast_normal
+          cargo +1.89.0 run --locked -q --release -p regulatory-core \
+            --example dcfinal001_r7_strain_contrast_normal \
+            -- --output "$RUNNER_TEMP/r7.json"
+          scientific_head=$(python3 - <<'PY'
+          import json
+          print(json.load(open('experiments/generated/dcfinal001r7/authority.json'))['result_scientific_head'])
+          PY
+          )
+          python3 experiments/dcfinal001_r7_evidence.py \
+            --head "$scientific_head" \
+            --raw "$RUNNER_TEMP/r7.json" \
+            --r6 experiments/generated/dcfinal001r6 \
+            --output "$RUNNER_TEMP/evidence"
+          diff -ru experiments/generated/dcfinal001r7 "$RUNNER_TEMP/evidence"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          raw = json.loads((root / 'r7.json').read_text())
+          q = json.loads((root / 'evidence' / 'qualification.json').read_text())
+          c = raw['campaigns']
+          assert raw['owner_override'] == 'PASS'
+          assert raw['cross_composition']['classification'] == 'STRAIN_CONTRAST_NORMAL_COMPOSITION_EXACT'
+          assert raw['cross_composition']['pass'] is True
+          assert raw['new_free_parameters'] == 0
+          assert c['passive']['geometry_valid_fissions'] == 3
+          assert c['passive']['simple_viable_daughter_pairs'] == 2
+          assert c['r5r1_strain_contrast_tangential']['geometry_valid_fissions'] == 3
+          assert c['r5r1_strain_contrast_tangential']['simple_viable_daughter_pairs'] == 3
+          assert c['r6_curvature_normal']['geometry_valid_fissions'] == 3
+          assert c['r6_curvature_normal']['simple_viable_daughter_pairs'] == 2
+          assert c['r7_strain_contrast_normal']['geometry_valid_fissions'] == 1
+          assert c['r7_strain_contrast_normal']['simple_viable_daughter_pairs'] == 0
+          assert c['r7_strain_contrast_normal_plus_tangential'] is None
+          assert raw['conditional_same_signal_tangential']['executed'] is False
+          assert raw['controls']['motor_off_semantic_parity']['pass'] is True
+          assert raw['controls']['zero_a_pass'] is True
+          assert raw['energy']['r7_strain_contrast_normal']['pass'] is True
+          assert raw['reproduction']['pass'] is False
+          assert raw['evolution_execution'] == 'NOT_REACHED_GATE7_STOP'
+          assert q['classification'] == 'V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED'
+          assert q['shutdown_recommended'] == 'NO — OWNER OVERRIDE ACTIVE'
+          assert q['next_execution_started'] is False
+          assert q['independent_architect_acceptance'] == 'PENDING'
+          PY
+
+      - name: Preserve M1, M2, lifecycle, and tests-only evolution surfaces
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p chemistry-core --test r4_contract_topology_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test --locked -p evolution-harness -- --nocapture
+          cargo +1.89.0 test --locked -p m2-lifeform-runtime --bin digital-cell-final-lifeform -- --nocapture
+          cargo +1.89.0 check --locked -p godot-bridge
+          run_d087() {
+            local output="$1" contract="$2" v4="$3"
+            if test "$v4" = 1; then
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 \
+                cargo +1.89.0 run -q -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            else
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 \
+                cargo +1.89.0 run -q -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            fi
+          }
+          run_d087 "$RUNNER_TEMP/d087-v2" ConservativeV2 0
+          run_d087 "$RUNNER_TEMP/d087-v3" ConservativeV3 0
+          run_d087 "$RUNNER_TEMP/d087-v4" ConservativeV3 1
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          expected = {
+              'v2': [True] * 8,
+              'v3': [True] * 8,
+              'v4': [True, True, False, True, True, True, True, True],
+          }
+          for name, vector in expected.items():
+              manifest = json.loads((root / f'd087-{name}' / 'manifest.json').read_text())
+              assert [manifest[f'gate{i}']['pass'] for i in range(8)] == vector
+          PY
+
+      - name: Validate evidence manifest and Python tooling
+        run: |
+          set -euo pipefail
+          python3 -m py_compile digital-protocell/experiments/dcfinal001_r7_evidence.py
+          python3 - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root = Path('digital-protocell/experiments/generated/dcfinal001r7')
+          manifest = json.loads((root / 'artifact_manifest.json').read_text())
+          for row in manifest['files']:
+              path = root / row['path']
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == row['sha256']
+              assert path.stat().st_size == row['bytes']
+          PY
+
+      - name: Upload exact-head R7 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcfinal001r7
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            digital-protocell/experiments/generated/dcfinal001r7
+            ${{ runner.temp }}/r7.json
