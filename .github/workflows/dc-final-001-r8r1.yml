@@ -50,9 +50,19 @@ jobs:
           gh run view 34383115730 --repo SketchOTP/digital_cell \
             --json conclusion,headSha --jq '.conclusion + " " + .headSha' \
             | grep '^success eb198c4e84907d5a7f9f8c170d58a27b56e63bb0$'
-          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefOid \
-            --jq '[.state,.isDraft,.mergedAt,.headRefOid]|@tsv' \
-            | grep $'^OPEN\\ttrue\\t\\tfb77f472b1519a9e0f713833efba5b1d403f4723$'
+          gh pr view 44 --repo SketchOTP/digital_cell \
+            --json state,isDraft,mergedAt,headRefOid > "$RUNNER_TEMP/pr44.json"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          pr = json.loads((Path(os.environ['RUNNER_TEMP']) / 'pr44.json').read_text())
+          assert pr == {
+              'state': 'OPEN',
+              'isDraft': True,
+              'mergedAt': None,
+              'headRefOid': 'fb77f472b1519a9e0f713833efba5b1d403f4723',
+          }, pr
+          PY
         env:
           GH_TOKEN: ${{ github.token }}
 
