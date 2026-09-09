@@ -1,0 +1,20 @@
+{
+  "concave_vertex": 0,
+  "concavity_at_concave_vertex": 0.7878899931944344,
+  "deficit_at_concave_vertex": 1.0,
+  "drive_at_concave_vertex": 1.0,
+  "force_bound": 0.5,
+  "formula": {
+    "concavity": "max(-signed_turn/pi,0)",
+    "curvature_deficit": "max((0.5*(previous_turn+next_turn)-signed_turn)/pi,0)",
+    "normal_drive": "max(concavity,curvature_deficit) clamped [0,1]",
+    "signed_turn": "orientation_sign * atan2(cross(tangent_prev,tangent_next), dot(tangent_prev,tangent_next))"
+  },
+  "maximum_force": 0.005904539538018993,
+  "maximum_inward_direction_error": 1.1102230246251565e-16,
+  "pass": true,
+  "reflection_error": 0.0,
+  "regular_polygon_max_drive": 4.876850511577392e-15,
+  "requested_a": 0.00011285421600738026,
+  "rotation_translation_error": 4.468647674116255e-15
+}

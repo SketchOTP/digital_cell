@@ -1,0 +1,5 @@
+{
+  "source": "experiments/generated/dcfinal001r5r1/checkpoint_restart.json",
+  "source_sha256": "47b64651b2d63ae345f3ca93058a5ae4022c4b559654fd4c1cbccb284ccad5f6",
+  "status": "PRESERVED_FROM_R5R1"
+}

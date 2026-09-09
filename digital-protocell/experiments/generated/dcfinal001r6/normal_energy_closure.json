@@ -1,0 +1,18 @@
+{
+  "normal_only": {
+    "pass": true,
+    "produced_w": 106.4522178292791,
+    "requested_a": 106.45221782833603,
+    "residual": 9.430749514649506e-10,
+    "spent_a": 106.45221782833603
+  },
+  "normal_plus_tangential": {
+    "pass": true,
+    "produced_w": 5274.879460751905,
+    "requested_a": 5274.879460751922,
+    "residual": 1.7280399333685637e-11,
+    "spent_a": 5274.879460751922
+  },
+  "zero_a_pass": true,
+  "zero_a_spent": 0.0
+}

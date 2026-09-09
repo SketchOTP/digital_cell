@@ -1,0 +1,15 @@
+{
+  "classification": "V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED",
+  "curvature_signal": "PASS",
+  "digital_cell_end_goal": "NOT_ESTABLISHED",
+  "directive": "DC-FINAL-001-R6-CURVATURE-GATED-NORMAL-CONSTRICTION-EMERGENCY-CLOSURE-001",
+  "evolution": "NOT_REACHED_GATE8_STOP",
+  "final_integrated_m1_m5": "NOT_REACHED",
+  "independent_architect_acceptance": "PENDING",
+  "next_execution_started": false,
+  "normal_a_to_w_closure": "PASS",
+  "robust_v4_reproduction": "FAIL",
+  "shutdown_recommended": "NO \u2014 OWNER OVERRIDE ACTIVE",
+  "status": "GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE_OWNER_OVERRIDE_ACTIVE",
+  "tangential_actuator_geometry": "MISMATCH_SUPPORTED"
+}

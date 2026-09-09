@@ -1,0 +1,27 @@
+{
+  "excluded": [
+    "equatorial location",
+    "force magnitude",
+    "timing",
+    "target neck"
+  ],
+  "imported_parameters": [],
+  "sources": [
+    {
+      "classification": "ADAPTABLE_PRINCIPLE",
+      "doi": "10.1038/s41467-024-53228-y",
+      "title": "Mechanical power is maximized during contractile ring-like formation in a biomimetic dividing cell model"
+    },
+    {
+      "classification": "ADAPTABLE_REFERENCE",
+      "doi": "10.1039/D6SM00283H",
+      "title": "The division of vesicles requires the fission of closed membrane necks but does not require active processes"
+    },
+    {
+      "classification": "REFERENCE_ONLY",
+      "doi": "10.1002/adbi.202101020",
+      "title": "Remodeling of Membrane Shape and Topology by Curvature Elasticity and Membrane Tension"
+    }
+  ],
+  "status": "COMPLETED_BOUNDED"
+}

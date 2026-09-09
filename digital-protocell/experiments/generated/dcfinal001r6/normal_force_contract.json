@@ -1,0 +1,10 @@
+{
+  "cost": 0.05,
+  "direction": "LOCAL_INWARD_VERTEX_NORMAL",
+  "drive": "max(concavity, local_neighbor_curvature_deficit)",
+  "existing_funded_path": true,
+  "force_bound": 0.5,
+  "force_scale": "MAX_EXTERNAL_FORCE_PER_VERTEX - FROZEN_STATIC_TRACTION_LIMIT",
+  "new_free_parameters": 0,
+  "normal_only_tangential_activity": 0
+}

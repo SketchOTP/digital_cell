@@ -1,0 +1,19 @@
+{
+  "directive": "DC-FINAL-001-R6-CURVATURE-GATED-NORMAL-CONSTRICTION-EMERGENCY-CLOSURE-001",
+  "governance_validator": {
+    "qualification_dependency": false,
+    "r6_records_rewritten_to_satisfy_validator": false,
+    "status": "KNOWN_FAIL_PREEXISTING_APPEND_ONLY_SCHEMA_DRIFT"
+  },
+  "independent_architect_acceptance": "PENDING",
+  "r5r1_artifact_sha256": "a5f25ec151100141997060da9b384231a67c10fe2dce71ba195f1aa1a63823ca",
+  "r5r1_authority": "PASS",
+  "r5r1_exact_head_ci": {
+    "result": "PASS",
+    "run": 34345745806
+  },
+  "r5r1_governed_head": "456cc98837842af933d3972b8588707ea801bf28",
+  "r5r1_scientific_head": "cadf6d283cc7f77f243e5958fd8be22d5ee804c9",
+  "result_scientific_head": "e52fa4427a895b550b3be01ada5761b3be498f3e",
+  "starting_governed_head": "456cc98837842af933d3972b8588707ea801bf28"
+}

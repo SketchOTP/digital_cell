@@ -1,0 +1,23 @@
+{
+  "all_selected_parents_simple_runtime_lifecycle_valid": true,
+  "final_integrated_run": "NOT_REACHED_GATE8_STOP",
+  "normal_only_a_to_w": {
+    "pass": true,
+    "produced_w": 106.4522178292791,
+    "requested_a": 106.45221782833603,
+    "residual": 9.430749514649506e-10,
+    "spent_a": 106.45221782833603
+  },
+  "normal_plus_tangential_a_to_w": {
+    "pass": true,
+    "produced_w": 5274.879460751905,
+    "requested_a": 5274.879460751922,
+    "residual": 1.7280399333685637e-11,
+    "spent_a": 5274.879460751922
+  },
+  "partition": "PASS_FOR_COUNTED_FISSIONS",
+  "zero_a": {
+    "pass": true,
+    "spent": 0.0
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-09",
+  "sealed_r5r1_evidence_rewritten": false,
+  "silent_shutdown_authorized": false,
+  "sole_active_directive": "DC-FINAL-001-R6-CURVATURE-GATED-NORMAL-CONSTRICTION-EMERGENCY-CLOSURE-001",
+  "status": "OWNER_TERMINAL_OVERRIDE_ACCEPTED",
+  "superseded_status": "SUPERSEDED_BY_OWNER_OVERRIDE_2026-09-09"
+}

@@ -1,0 +1,6 @@
+{
+  "counted_simple_viable_pairs": 2,
+  "each_counted_pair_passed_existing_3000_step_continuation": true,
+  "qualification": "FAIL_THRESHOLD",
+  "required": 6
+}

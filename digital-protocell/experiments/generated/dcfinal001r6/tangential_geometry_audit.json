@@ -1,0 +1,951 @@
+{
+  "absolute_normal_component_sum": 2.0845831619930175,
+  "absolute_tangential_component_sum": 1.9369581036339367,
+  "classification": "TANGENTIAL_TENSION_GEOMETRY_MISMATCH_SUPPORTED",
+  "inward_fraction": 0.4007207626603397,
+  "inward_normal_component_sum": 0.8353357545027444,
+  "normal_fraction": 0.5183542886431213,
+  "outward_normal_component_sum": 1.249247407490273,
+  "per_arm": [
+    {
+      "audit": {
+        "absolute_normal_component_sum": 0.5743920260438766,
+        "absolute_tangential_component_sum": 0.4621595159420606,
+        "best_apposition": {
+          "absolute_normal_component": 0.0,
+          "absolute_tangential_component": 0.0,
+          "distance_after": 10.684152985794105,
+          "distance_before": 10.684152985794105,
+          "distance_over_range_before": 1.0669873069056528,
+          "inward_normal_component": 0.0,
+          "nearest_pair": [
+            8,
+            86
+          ],
+          "next_step_apposition_change": 0.0,
+          "outward_normal_component": 0.0,
+          "vertices": [
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                -0.6668903083144223,
+                0.7451559009202671
+              ],
+              "local_tangent": [
+                0.7451559009202671,
+                0.6668903083144223
+              ],
+              "normal_component": 0.0,
+              "tangential_component": 0.0,
+              "vertex": 8
+            },
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                -0.791176490960503,
+                -0.6115879005927316
+              ],
+              "local_tangent": [
+                -0.6115879005927316,
+                0.791176490960503
+              ],
+              "normal_component": -0.0,
+              "tangential_component": 0.0,
+              "vertex": 9
+            },
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                -0.6825677556889581,
+                0.7308223169100262
+              ],
+              "local_tangent": [
+                0.7308223169100262,
+                0.6825677556889581
+              ],
+              "normal_component": 0.0,
+              "tangential_component": 0.0,
+              "vertex": 86
+            },
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                -0.6539603346014251,
+                0.7565288367061708
+              ],
+              "local_tangent": [
+                0.7565288367061708,
+                0.6539603346014251
+              ],
+              "normal_component": 0.0,
+              "tangential_component": 0.0,
+              "vertex": 87
+            }
+          ]
+        },
+        "inward_normal_component_sum": 0.36719076577144455,
+        "outward_normal_component_sum": 0.2072012602724321,
+        "sampled_steps": 61
+      },
+      "name": "seed_1_rotate_0.3"
+    },
+    {
+      "audit": {
+        "absolute_normal_component_sum": 0.029607298928076245,
+        "absolute_tangential_component_sum": 0.09121729860142791,
+        "best_apposition": {
+          "absolute_normal_component": 0.02194371445767729,
+          "absolute_tangential_component": 0.05355912834487066,
+          "distance_after": 15.451884814488068,
+          "distance_before": 15.473497523471536,
+          "distance_over_range_before": 1.0645294254059336,
+          "inward_normal_component": 0.02194371445767729,
+          "nearest_pair": [
+            9,
+            15
+          ],
+          "next_step_apposition_change": 0.021612708983468565,
+          "outward_normal_component": 0.0,
+          "vertices": [
+            {
+              "active_edge_tension_force": [
+                -0.03053317160916918,
+                -0.026081125942140425
+              ],
+              "inward_normal": [
+                0.4903272880283656,
+                -0.8715383816073439
+              ],
+              "local_tangent": [
+                -0.8715383816073439,
+                -0.4903272880283656
+              ],
+              "normal_component": 0.007759455064081764,
+              "tangential_component": 0.039399118721530575,
+              "vertex": 9
+            },
+            {
+              "active_edge_tension_force": [
+                0.012791720944430422,
+                -0.00537489918862169
+              ],
+              "inward_normal": [
+                0.6606359844306078,
+                -0.750706398051463
+              ],
+              "local_tangent": [
+                -0.750706398051463,
+                -0.6606359844306078
+              ],
+              "normal_component": 0.012485642368465336,
+              "tangential_component": -0.006051974938382455,
+              "vertex": 10
+            },
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                0.8380961068065124,
+                0.5455226079236012
+              ],
+              "local_tangent": [
+                0.5455226079236012,
+                -0.8380961068065124
+              ],
+              "normal_component": 0.0,
+              "tangential_component": 0.0,
+              "vertex": 15
+            },
+            {
+              "active_edge_tension_force": [
+                0.007069403056315062,
+                -0.004318456515689523
+              ],
+              "inward_normal": [
+                0.6852028126092137,
+                0.7283523224322298
+              ],
+              "local_tangent": [
+                0.7283523224322298,
+                -0.6852028126092137
+              ],
+              "normal_component": 0.0016986170251301921,
+              "tangential_component": 0.008108034684957625,
+              "vertex": 16
+            }
+          ]
+        },
+        "inward_normal_component_sum": 0.029607298928076245,
+        "outward_normal_component_sum": 0.0,
+        "sampled_steps": 61
+      },
+      "name": "seed_2_vertex_0.12"
+    },
+    {
+      "audit": {
+        "absolute_normal_component_sum": 0.11864157240322656,
+        "absolute_tangential_component_sum": 0.17341778068092834,
+        "best_apposition": {
+          "absolute_normal_component": 0.001677101698301028,
+          "absolute_tangential_component": 0.0005579230463980192,
+          "distance_after": 5.793827262929198,
+          "distance_before": 5.794809366968911,
+          "distance_over_range_before": 0.5442125239145967,
+          "inward_normal_component": 3.337928982862328e-06,
+          "nearest_pair": [
+            24,
+            86
+          ],
+          "next_step_apposition_change": 0.0009821040397133274,
+          "outward_normal_component": 0.0016737637693181656,
+          "vertices": [
+            {
+              "active_edge_tension_force": [
+                -0.0001976043405425463,
+                -0.0005217648481735041
+              ],
+              "inward_normal": [
+                0.9330438937118544,
+                -0.35976255003407726
+              ],
+              "local_tangent": [
+                -0.35976255003407726,
+                -0.9330438937118544
+              ],
+              "normal_component": 3.337928982862328e-06,
+              "tangential_component": 0.0005579201469931694,
+              "vertex": 24
+            },
+            {
+              "active_edge_tension_force": [
+                0.000599036475422548,
+                0.0015628948962114792
+              ],
+              "inward_normal": [
+                -0.35789624500855205,
+                -0.933761360203333
+              ],
+              "local_tangent": [
+                -0.933761360203333,
+                0.35789624500855205
+              ],
+              "normal_component": -0.0016737637693181656,
+              "tangential_component": -2.8994048497819544e-09,
+              "vertex": 25
+            },
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                -0.31434222822293356,
+                -0.9493097300438046
+              ],
+              "local_tangent": [
+                -0.9493097300438046,
+                0.31434222822293356
+              ],
+              "normal_component": -0.0,
+              "tangential_component": 0.0,
+              "vertex": 86
+            },
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                -0.9489966765147679,
+                0.31528607321593616
+              ],
+              "local_tangent": [
+                0.31528607321593616,
+                0.9489966765147679
+              ],
+              "normal_component": 0.0,
+              "tangential_component": 0.0,
+              "vertex": 87
+            }
+          ]
+        },
+        "inward_normal_component_sum": 0.03679319477085235,
+        "outward_normal_component_sum": 0.08184837763237421,
+        "sampled_steps": 32
+      },
+      "name": "seed_3_c_0.08"
+    },
+    {
+      "audit": {
+        "absolute_normal_component_sum": 0.020864010939251592,
+        "absolute_tangential_component_sum": 0.09774899006961768,
+        "best_apposition": {
+          "absolute_normal_component": 0.01795855933977372,
+          "absolute_tangential_component": 0.07059837709421919,
+          "distance_after": 16.134677135690687,
+          "distance_before": 16.15598317715221,
+          "distance_over_range_before": 1.0723162254417749,
+          "inward_normal_component": 0.01795855933977372,
+          "nearest_pair": [
+            9,
+            15
+          ],
+          "next_step_apposition_change": 0.021306041461521374,
+          "outward_normal_component": 0.0,
+          "vertices": [
+            {
+              "active_edge_tension_force": [
+                0.011519881259361871,
+                0.0038922802398716014
+              ],
+              "inward_normal": [
+                0.5583624706011554,
+                -0.8295971018658237
+              ],
+              "local_tangent": [
+                -0.8295971018658237,
+                -0.5583624706011554
+              ],
+              "normal_component": 0.0032032449543621506,
+              "tangential_component": -0.01173016331761179,
+              "vertex": 9
+            },
+            {
+              "active_edge_tension_force": [
+                0.0015855461155985994,
+                -0.00147994993343613
+              ],
+              "inward_normal": [
+                0.7310306844793772,
+                -0.6823445891553718
+              ],
+              "local_tangent": [
+                -0.6823445891553718,
+                -0.7310306844793772
+              ],
+              "normal_component": 0.0021689186914606575,
+              "tangential_component": 8.673617379884035e-19,
+              "vertex": 10
+            },
+            {
+              "active_edge_tension_force": [
+                0.0062762011850327724,
+                -0.006164414035443373
+              ],
+              "inward_normal": [
+                0.742567282791858,
+                0.6697714763463107
+              ],
+              "local_tangent": [
+                0.6697714763463107,
+                -0.742567282791858
+              ],
+              "normal_component": 0.0005317529708959981,
+              "tangential_component": 0.008781112713849043,
+              "vertex": 15
+            },
+            {
+              "active_edge_tension_force": [
+                0.048155324898604815,
+                -0.018305649072384224
+              ],
+              "inward_normal": [
+                0.5641876485545971,
+                0.8256465934153876
+              ],
+              "local_tangent": [
+                0.8256465934153876,
+                -0.5641876485545971
+              ],
+              "normal_component": 0.012054642723054912,
+              "tangential_component": 0.050087101062758356,
+              "vertex": 16
+            }
+          ]
+        },
+        "inward_normal_component_sum": 0.020864010939251592,
+        "outward_normal_component_sum": 0.0,
+        "sampled_steps": 61
+      },
+      "name": "seed_4_a_0.08"
+    },
+    {
+      "audit": {
+        "absolute_normal_component_sum": 0.029186709619583154,
+        "absolute_tangential_component_sum": 0.0674409896422029,
+        "best_apposition": {
+          "absolute_normal_component": 0.0,
+          "absolute_tangential_component": 0.0,
+          "distance_after": 6.1306447093124055,
+          "distance_before": 6.140399567388548,
+          "distance_over_range_before": 0.6836836491185528,
+          "inward_normal_component": 0.0,
+          "nearest_pair": [
+            46,
+            70
+          ],
+          "next_step_apposition_change": 0.009754858076142625,
+          "outward_normal_component": 0.0,
+          "vertices": [
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                0.29898251508597185,
+                0.9542585895200874
+              ],
+              "local_tangent": [
+                0.9542585895200874,
+                -0.29898251508597185
+              ],
+              "normal_component": 0.0,
+              "tangential_component": 0.0,
+              "vertex": 46
+            },
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                0.9995506480238567,
+                -0.029975023521057607
+              ],
+              "local_tangent": [
+                -0.029975023521057607,
+                -0.9995506480238567
+              ],
+              "normal_component": 0.0,
+              "tangential_component": -0.0,
+              "vertex": 47
+            },
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                -0.8688975835983987,
+                -0.49499190823372424
+              ],
+              "local_tangent": [
+                -0.49499190823372424,
+                0.8688975835983987
+              ],
+              "normal_component": -0.0,
+              "tangential_component": 0.0,
+              "vertex": 70
+            },
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                -0.6091953856204625,
+                0.7930201650265497
+              ],
+              "local_tangent": [
+                0.7930201650265497,
+                0.6091953856204625
+              ],
+              "normal_component": 0.0,
+              "tangential_component": 0.0,
+              "vertex": 71
+            }
+          ]
+        },
+        "inward_normal_component_sum": 0.029186709619583154,
+        "outward_normal_component_sum": 0.0,
+        "sampled_steps": 23
+      },
+      "name": "seed_5_env_0.1"
+    },
+    {
+      "audit": {
+        "absolute_normal_component_sum": 0.5103562132761397,
+        "absolute_tangential_component_sum": 0.27607270973058134,
+        "best_apposition": {
+          "absolute_normal_component": 0.0,
+          "absolute_tangential_component": 0.0,
+          "distance_after": 9.680772223211608,
+          "distance_before": 9.680772223222984,
+          "distance_over_range_before": 0.9683059905777202,
+          "inward_normal_component": 0.0,
+          "nearest_pair": [
+            47,
+            112
+          ],
+          "next_step_apposition_change": 1.1375789199519204e-11,
+          "outward_normal_component": 0.0,
+          "vertices": [
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                0.8980172387928875,
+                -0.4399602696048792
+              ],
+              "local_tangent": [
+                -0.4399602696048792,
+                -0.8980172387928875
+              ],
+              "normal_component": 0.0,
+              "tangential_component": -0.0,
+              "vertex": 47
+            },
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                -0.4288304377839355,
+                -0.9033849985637564
+              ],
+              "local_tangent": [
+                -0.9033849985637564,
+                0.4288304377839355
+              ],
+              "normal_component": -0.0,
+              "tangential_component": 0.0,
+              "vertex": 48
+            },
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                -0.618185034846946,
+                0.7860326091780672
+              ],
+              "local_tangent": [
+                0.7860326091780672,
+                0.618185034846946
+              ],
+              "normal_component": 0.0,
+              "tangential_component": 0.0,
+              "vertex": 112
+            },
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                0.6056107728012535,
+                0.7957610142920225
+              ],
+              "local_tangent": [
+                0.7957610142920225,
+                -0.6056107728012535
+              ],
+              "normal_component": 0.0,
+              "tangential_component": 0.0,
+              "vertex": 113
+            }
+          ]
+        },
+        "inward_normal_component_sum": 0.1777796961056356,
+        "outward_normal_component_sum": 0.33257651717050407,
+        "sampled_steps": 61
+      },
+      "name": "seed_6_l_0.1"
+    },
+    {
+      "audit": {
+        "absolute_normal_component_sum": 0.10897009865430342,
+        "absolute_tangential_component_sum": 0.28851859386751755,
+        "best_apposition": {
+          "absolute_normal_component": 0.038564553343726236,
+          "absolute_tangential_component": 0.2292284096958579,
+          "distance_after": 16.20979100405476,
+          "distance_before": 16.24184252441997,
+          "distance_over_range_before": 1.0808967072069102,
+          "inward_normal_component": 0.038564553343726236,
+          "nearest_pair": [
+            11,
+            17
+          ],
+          "next_step_apposition_change": 0.032051520365207864,
+          "outward_normal_component": 0.0,
+          "vertices": [
+            {
+              "active_edge_tension_force": [
+                0.11151913130684704,
+                0.05818581308688693
+              ],
+              "inward_normal": [
+                0.5630956664266749,
+                -0.8263917173178219
+              ],
+              "local_tangent": [
+                -0.8263917173178219,
+                -0.5630956664266749
+              ],
+              "normal_component": 0.014711665562146599,
+              "tangential_component": -0.12492266563119554,
+              "vertex": 11
+            },
+            {
+              "active_edge_tension_force": [
+                0.0012379775261641256,
+                0.0010692685758402674
+              ],
+              "inward_normal": [
+                0.7451330971921938,
+                -0.6669157873890591
+              ],
+              "local_tangent": [
+                -0.6669157873890591,
+                -0.7451330971921938
+              ],
+              "normal_component": 0.00020934593413811527,
+              "tangential_component": -0.001622374162277852,
+              "vertex": 12
+            },
+            {
+              "active_edge_tension_force": [
+                0.0238614584849392,
+                -0.022062160774707046
+              ],
+              "inward_normal": [
+                0.7393265631805743,
+                0.6733470375486924
+              ],
+              "local_tangent": [
+                0.6733470375486924,
+                -0.7393265631805743
+              ],
+              "normal_component": 0.0027859194945740982,
+              "tangential_component": 0.03237818388432635,
+              "vertex": 17
+            },
+            {
+              "active_edge_tension_force": [
+                0.06997075666107135,
+                -0.02195342350353887
+              ],
+              "inward_normal": [
+                0.5583751472829612,
+                0.8295885696516866
+              ],
+              "local_tangent": [
+                0.8295885696516866,
+                -0.5583751472829612
+              ],
+              "normal_component": 0.020857622352867422,
+              "tangential_component": 0.07030518601805814,
+              "vertex": 18
+            }
+          ]
+        },
+        "inward_normal_component_sum": 0.08720192061369503,
+        "outward_normal_component_sum": 0.021768178040608387,
+        "sampled_steps": 61
+      },
+      "name": "seed_7_rotate_-0.5"
+    },
+    {
+      "audit": {
+        "absolute_normal_component_sum": 0.05162050676713714,
+        "absolute_tangential_component_sum": 0.09030530375927306,
+        "best_apposition": {
+          "absolute_normal_component": 0.0,
+          "absolute_tangential_component": 0.0,
+          "distance_after": 5.677522692445018,
+          "distance_before": 5.677488129590672,
+          "distance_over_range_before": 0.584314190431683,
+          "inward_normal_component": 0.0,
+          "nearest_pair": [
+            76,
+            129
+          ],
+          "next_step_apposition_change": -3.4562854346553706e-05,
+          "outward_normal_component": 0.0,
+          "vertices": [
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                0.7549339273934419,
+                0.6558008579365489
+              ],
+              "local_tangent": [
+                0.6558008579365489,
+                -0.7549339273934419
+              ],
+              "normal_component": 0.0,
+              "tangential_component": 0.0,
+              "vertex": 76
+            },
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                0.6537659541022616,
+                -0.7566968199065989
+              ],
+              "local_tangent": [
+                -0.7566968199065989,
+                -0.6537659541022616
+              ],
+              "normal_component": 0.0,
+              "tangential_component": -0.0,
+              "vertex": 77
+            },
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                -0.6264592408852049,
+                0.7794541805068037
+              ],
+              "local_tangent": [
+                0.7794541805068037,
+                0.6264592408852049
+              ],
+              "normal_component": 0.0,
+              "tangential_component": 0.0,
+              "vertex": 129
+            },
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                -0.6910576174778437,
+                0.7227996744090622
+              ],
+              "local_tangent": [
+                0.7227996744090622,
+                0.6910576174778437
+              ],
+              "normal_component": 0.0,
+              "tangential_component": 0.0,
+              "vertex": 130
+            }
+          ]
+        },
+        "inward_normal_component_sum": 0.033371368007700894,
+        "outward_normal_component_sum": 0.018249138759436255,
+        "sampled_steps": 58
+      },
+      "name": "seed_8_vertex_-0.1"
+    },
+    {
+      "audit": {
+        "absolute_normal_component_sum": 0.6199519151744838,
+        "absolute_tangential_component_sum": 0.29125578914670225,
+        "best_apposition": {
+          "absolute_normal_component": 0.02895012955114153,
+          "absolute_tangential_component": 0.11694134401776457,
+          "distance_after": 16.88046940391239,
+          "distance_before": 16.908439491492068,
+          "distance_over_range_before": 1.0795919285120583,
+          "inward_normal_component": 0.02895012955114153,
+          "nearest_pair": [
+            9,
+            15
+          ],
+          "next_step_apposition_change": 0.02797008757967845,
+          "outward_normal_component": 0.0,
+          "vertices": [
+            {
+              "active_edge_tension_force": [
+                0.0025728683477496523,
+                0.0016454504502850056
+              ],
+              "inward_normal": [
+                0.6318443568355823,
+                -0.7750952900998879
+              ],
+              "local_tangent": [
+                -0.7750952900998879,
+                -0.6318443568355823
+              ],
+              "normal_component": 0.00035027145229785876,
+              "tangential_component": -0.003033886719852984,
+              "vertex": 9
+            },
+            {
+              "active_edge_tension_force": [
+                0.0,
+                0.0
+              ],
+              "inward_normal": [
+                0.7997901411909769,
+                -0.6002797098467657
+              ],
+              "local_tangent": [
+                -0.6002797098467657,
+                -0.7997901411909769
+              ],
+              "normal_component": 0.0,
+              "tangential_component": -0.0,
+              "vertex": 10
+            },
+            {
+              "active_edge_tension_force": [
+                0.03274167076494619,
+                -0.02309376718088446
+              ],
+              "inward_normal": [
+                0.6269897000742986,
+                0.7790275450847302
+              ],
+              "local_tangent": [
+                0.7790275450847302,
+                -0.6269897000742986
+              ],
+              "normal_component": 0.002538009579162309,
+              "tangential_component": 0.039986217556316934,
+              "vertex": 15
+            },
+            {
+              "active_edge_tension_force": [
+                0.07793659477172456,
+                -0.008334076348649896
+              ],
+              "inward_normal": [
+                0.4308955771526186,
+                0.9024017960921352
+              ],
+              "local_tangent": [
+                0.9024017960921352,
+                -0.4308955771526186
+              ],
+              "normal_component": 0.026061848519681362,
+              "tangential_component": 0.07392123974159465,
+              "vertex": 16
+            }
+          ]
+        },
+        "inward_normal_component_sum": 0.03234797955956558,
+        "outward_normal_component_sum": 0.5876039356149182,
+        "sampled_steps": 61
+      },
+      "name": "seed_9_c_-0.05"
+    },
+    {
+      "audit": {
+        "absolute_normal_component_sum": 0.020992810186939395,
+        "absolute_tangential_component_sum": 0.09882113219362502,
+        "best_apposition": {
+          "absolute_normal_component": 0.017958560075869223,
+          "absolute_tangential_component": 0.07059837931749097,
+          "distance_after": 16.13783842635456,
+          "distance_before": 16.15598317715221,
+          "distance_over_range_before": 1.0723162254417749,
+          "inward_normal_component": 0.017958560075869223,
+          "nearest_pair": [
+            9,
+            15
+          ],
+          "next_step_apposition_change": 0.018144750797649323,
+          "outward_normal_component": 0.0,
+          "vertices": [
+            {
+              "active_edge_tension_force": [
+                0.011519881557998646,
+                0.003892280271890063
+              ],
+              "inward_normal": [
+                0.5583624706011554,
+                -0.8295971018658237
+              ],
+              "local_tangent": [
+                -0.8295971018658237,
+                -0.5583624706011554
+              ],
+              "normal_component": 0.003203245094547295,
+              "tangential_component": -0.0117301635832379,
+              "vertex": 9
+            },
+            {
+              "active_edge_tension_force": [
+                0.0015855462068088593,
+                -0.0014799500185718548
+              ],
+              "inward_normal": [
+                0.7310306844793772,
+                -0.6823445891553718
+              ],
+              "local_tangent": [
+                -0.6823445891553718,
+                -0.7310306844793772
+              ],
+              "normal_component": 0.002168918816230058,
+              "tangential_component": 8.673617379884035e-19,
+              "vertex": 10
+            },
+            {
+              "active_edge_tension_force": [
+                0.0062762015540522385,
+                -0.0061644143978901314
+              ],
+              "inward_normal": [
+                0.742567282791858,
+                0.6697714763463107
+              ],
+              "local_tangent": [
+                0.6697714763463107,
+                -0.742567282791858
+              ],
+              "normal_component": 0.0005317530021612801,
+              "tangential_component": 0.008781113230148858,
+              "vertex": 15
+            },
+            {
+              "active_edge_tension_force": [
+                0.04815532633681953,
+                -0.018305649522391894
+              ],
+              "inward_normal": [
+                0.5641876485545971,
+                0.8256465934153876
+              ],
+              "local_tangent": [
+                0.8256465934153876,
+                -0.5641876485545971
+              ],
+              "normal_component": 0.01205464316293059,
+              "tangential_component": 0.050087102504104204,
+              "vertex": 16
+            }
+          ]
+        },
+        "inward_normal_component_sum": 0.020992810186939395,
+        "outward_normal_component_sum": 0.0,
+        "sampled_steps": 61
+      },
+      "name": "seed_10_env_-0.08"
+    }
+  ]
+}

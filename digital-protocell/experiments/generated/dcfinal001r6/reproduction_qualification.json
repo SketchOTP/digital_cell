@@ -1,0 +1,17 @@
+{
+  "classification": "V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED",
+  "observed": {
+    "geometry_valid_fissions": 5,
+    "growth_qualified": 10,
+    "pass": false,
+    "selected": "CURVATURE_NORMAL_PLUS_TANGENTIAL",
+    "simple_viable_daughter_pairs": 2
+  },
+  "pass": false,
+  "required": {
+    "geometry_valid_fissions": 7,
+    "growth": 8,
+    "viable_pairs": 6
+  },
+  "selected": "CURVATURE_NORMAL_PLUS_TANGENTIAL"
+}
