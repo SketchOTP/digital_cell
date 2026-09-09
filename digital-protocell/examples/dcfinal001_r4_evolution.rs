@@ -26,6 +26,9 @@ use serde_json::{json, Value};
 use std::collections::BTreeMap;
 use std::{env, fs, path::PathBuf};
 
+#[path = "dcfinal001_r5_v4_neck.rs"]
+mod r10_closure;
+
 const DIRECTIVE: &str =
     "DC-FINAL-001-R4-CONTRACT-OWNERSHIP-V4-TOPOLOGY-COHERENCE-EVOLUTION-AND-FINAL-GOAL-CLOSURE-001";
 const TEMPLATE_STEPS: usize = 6_500;
@@ -1784,14 +1787,14 @@ fn r10_split_cohort(
         ledger.invalid_geometry_events += cohort.count;
         return Err(cohort);
     }
-    let Some(state_a) = crate::r10_closure::r10_partition_plasticity_state(
+    let Some(state_a) = r10_closure::r10_partition_plasticity_state(
         parent_plasticity,
         &event.daughter_a_parent_vertex_sources,
     ) else {
         ledger.runtime_invalidations += cohort.count;
         return Err(cohort);
     };
-    let Some(state_b) = crate::r10_closure::r10_partition_plasticity_state(
+    let Some(state_b) = r10_closure::r10_partition_plasticity_state(
         parent_plasticity,
         &event.daughter_b_parent_vertex_sources,
     ) else {
@@ -1970,7 +1973,7 @@ fn r10_advance_phase(
             ledger.growth_material += grown.m_grown * count;
             let topology_tick = step % 10 == 0;
             let Some((active_a, active_w, remesh_mappings)) =
-                crate::r10_closure::r10_refractory_mechanics_step(
+                r10_closure::r10_refractory_mechanics_step(
                     &mut cohort.mesh,
                     cohort.plasticity.as_mut().expect("R10 plasticity"),
                     topology_tick,
@@ -2130,7 +2133,7 @@ pub fn run_r10_evolution() {
         }
     }
     let (template, plasticity, original_birth_mass, template_step) =
-        crate::r10_closure::r10_seed3_fission_state();
+        r10_closure::r10_seed3_fission_state();
     let mut handles = Vec::new();
     for replicate in 1..=REPLICATES {
         for mutation_enabled in [true, false] {
