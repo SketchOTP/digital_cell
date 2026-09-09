@@ -8,7 +8,7 @@ use chemistry_core::material_mesh::MaterialMesh;
 use chemistry_core::mesh_fission::{
     find_local_segment_apposition, segment_apposition_stress_audit, topology_step,
     try_local_fission, try_local_segment_fission, try_local_segment_fission_at_observed_apposition,
-    FissionParams,
+    try_local_segment_fission_legacy_tensile_only, FissionParams,
 };
 use chemistry_core::mesh_growth::{growth_step, GrowthParams};
 use chemistry_core::mesh_mechanics::{
@@ -76,6 +76,8 @@ enum Mode {
     RefractoryCurvatureNormalZeroA,
     RefractoryCurvatureNormalTangential,
     RefractoryCurvatureNormalSignedAudit,
+    RefractoryCurvatureNormalLegacyControl,
+    RefractoryCurvatureNormalSignedStress,
 }
 
 impl Mode {
@@ -108,6 +110,12 @@ impl Mode {
             }
             Self::RefractoryCurvatureNormalSignedAudit => {
                 "REFRACTORY_CURVATURE_NORMAL_SIGNED_STRESS_OBSERVER"
+            }
+            Self::RefractoryCurvatureNormalLegacyControl => {
+                "REFRACTORY_CURVATURE_NORMAL_LEGACY_STRESS_CONTROL"
+            }
+            Self::RefractoryCurvatureNormalSignedStress => {
+                "REFRACTORY_CURVATURE_NORMAL_SIGNED_STRESS"
             }
         }
     }
@@ -1175,6 +1183,8 @@ fn run(
             | Mode::RefractoryCurvatureNormalZeroA
             | Mode::RefractoryCurvatureNormalTangential
             | Mode::RefractoryCurvatureNormalSignedAudit
+            | Mode::RefractoryCurvatureNormalLegacyControl
+            | Mode::RefractoryCurvatureNormalSignedStress
     );
     let mut plasticity = if matches!(mode, Mode::RefractoryCurvatureNormalAdaptationDisabled) {
         PlasticityStateV1::disabled(mesh.n())
@@ -1244,7 +1254,9 @@ fn run(
             | Mode::RefractoryCurvatureNormalAdaptationDisabled
             | Mode::RefractoryCurvatureNormalZeroA
             | Mode::RefractoryCurvatureNormalTangential
-            | Mode::RefractoryCurvatureNormalSignedAudit => curvature_components(&mesh).3,
+            | Mode::RefractoryCurvatureNormalSignedAudit
+            | Mode::RefractoryCurvatureNormalLegacyControl
+            | Mode::RefractoryCurvatureNormalSignedStress => curvature_components(&mesh).3,
             _ => {
                 if regulator.step(frame, event).is_err() {
                     attribution.continuity_failures += 1;
@@ -1307,6 +1319,8 @@ fn run(
                     | Mode::RefractoryCurvatureNormalZeroA
                     | Mode::RefractoryCurvatureNormalTangential
                     | Mode::RefractoryCurvatureNormalSignedAudit
+                    | Mode::RefractoryCurvatureNormalLegacyControl
+                    | Mode::RefractoryCurvatureNormalSignedStress
             )
         {
             update_attribution(&mut attribution, &mesh, &activity);
@@ -1358,7 +1372,9 @@ fn run(
             | Mode::RefractoryCurvatureNormal
             | Mode::RefractoryCurvatureNormalAdaptationDisabled
             | Mode::RefractoryCurvatureNormalTangential
-            | Mode::RefractoryCurvatureNormalSignedAudit => {
+            | Mode::RefractoryCurvatureNormalSignedAudit
+            | Mode::RefractoryCurvatureNormalLegacyControl
+            | Mode::RefractoryCurvatureNormalSignedStress => {
                 let (forces, requested) = inward_normal_request(&mesh, &activity, mechanics.dt);
                 let tangential_activity = if matches!(
                     mode,
@@ -1638,7 +1654,17 @@ fn run(
                 planar
                     .as_ref()
                     .and_then(|p| p.try_local_scission(&mesh, &fission))
-                    .or_else(|| try_local_segment_fission(&mesh, &fission))
+                    .or_else(|| {
+                        if matches!(
+                            mode,
+                            Mode::RefractoryCurvatureNormalSignedAudit
+                                | Mode::RefractoryCurvatureNormalLegacyControl
+                        ) {
+                            try_local_segment_fission_legacy_tensile_only(&mesh, &fission)
+                        } else {
+                            try_local_segment_fission(&mesh, &fission)
+                        }
+                    })
             });
             if let Some((a, b, event)) = proposed {
                 if !event.partition.ok {
@@ -1982,6 +2008,63 @@ pub fn run_r10_signed_stress_audit() {
         },
         "seed_summary": seed_summary,
         "campaign": campaign_summary(&runs),
+    });
+    fs::write(output, serde_json::to_vec_pretty(&result).unwrap()).unwrap();
+}
+
+/// R10 Gates 7-8: exact legacy control and the V4-only signed-load production
+/// predicate on matched R9 refractory-normal campaigns.
+pub fn run_r10_reproduction() {
+    const R10_DIRECTIVE: &str =
+        "DC-FINAL-001-R10-SIGNED-LOAD-BEARING-NECK-STRESS-REPRODUCTION-AND-END-GOAL-CLOSURE-001";
+    let mut output = PathBuf::from("/tmp/dcfinal001_r10_reproduction.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let legacy = campaign(Mode::RefractoryCurvatureNormalLegacyControl, 14_778);
+    let signed = campaign(Mode::RefractoryCurvatureNormalSignedStress, 14_778);
+    let (legacy_growth, legacy_fissions, legacy_viable) = result_counts(&legacy);
+    let (signed_growth, signed_fissions, signed_viable) = result_counts(&signed);
+    let legacy_pass = legacy_growth == 10 && legacy_fissions == 5 && legacy_viable == 5;
+    let reproduction_pass = signed_growth >= 8 && signed_fissions >= 7 && signed_viable >= 6;
+    let energy = active_energy_summary(&signed);
+    let result = json!({
+        "directive": R10_DIRECTIVE,
+        "starting_head": "42ec99f1eac5f302aa501a8168429c62d6045680",
+        "qualification_horizon": 14_778,
+        "legacy_r9_control": campaign_summary(&legacy),
+        "legacy_r9_control_pass": legacy_pass,
+        "signed_stress_r9": campaign_summary(&signed),
+        "signed_stress_counts": {
+            "growth_qualified": signed_growth,
+            "geometry_valid_fissions": signed_fissions,
+            "simple_viable_daughter_pairs": signed_viable,
+        },
+        "normal_energy_closure": energy,
+        "stress_contract": {
+            "v4_only": true,
+            "stress_threshold": 0.15,
+            "threshold_unchanged": true,
+            "apposition_range_unchanged": true,
+            "extreme_proximity_fraction": 0.55,
+            "extreme_proximity_fraction_unchanged": true,
+            "rupture_semantics": "TENSILE_ONLY_UNCHANGED",
+            "new_free_parameters": 0,
+        },
+        "robust_v4_reproduction": reproduction_pass,
+        "downstream_execution": if reproduction_pass {
+            "PENDING_GATES_9_15"
+        } else {
+            "NOT_REACHED_REPRODUCTION_GATE"
+        },
+        "classification": if reproduction_pass {
+            "V4_SIGNED_LOAD_BEARING_NECK_STRESS_ROBUST_REPRODUCTION_QUALIFIED_PENDING_DOWNSTREAM"
+        } else {
+            "V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED"
+        },
     });
     fs::write(output, serde_json::to_vec_pretty(&result).unwrap()).unwrap();
 }

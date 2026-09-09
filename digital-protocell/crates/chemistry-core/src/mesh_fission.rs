@@ -482,7 +482,9 @@ pub fn find_local_segment_apposition(
     parent: &MaterialMesh,
     params: &FissionParams,
 ) -> Option<(usize, usize, f64, f64, f64)> {
-    local_segment_appositions(parent, params).into_iter().next()
+    local_segment_appositions(parent, params, true)
+        .into_iter()
+        .next()
 }
 
 /// Signed edge strain under the accepted V4 load-bearing mechanics contract.
@@ -585,9 +587,38 @@ pub fn segment_apposition_stress_audit(
     rows
 }
 
+fn segment_pair_stressed(
+    parent: &MaterialMesh,
+    i: usize,
+    j: usize,
+    distance: f64,
+    range: f64,
+    signed_v4_stress: bool,
+) -> bool {
+    let n = parent.n();
+    let prev_i = (i + n - 1) % n;
+    let prev_j = (j + n - 1) % n;
+    (if signed_v4_stress && parent.is_maturation_coupled() {
+        effective_signed_strain(parent, i)
+            .abs()
+            .max(effective_signed_strain(parent, prev_i).abs())
+            > 0.15
+            || effective_signed_strain(parent, j)
+                .abs()
+                .max(effective_signed_strain(parent, prev_j).abs())
+                > 0.15
+    } else {
+        parent.strain(i).max(parent.strain(prev_i)) > 0.15
+            || parent.strain(j).max(parent.strain(prev_j)) > 0.15
+    }) || parent.edges[i].ruptured
+        || parent.edges[prev_j].ruptured
+        || distance < range * 0.55
+}
+
 fn local_segment_appositions(
     parent: &MaterialMesh,
     params: &FissionParams,
+    signed_v4_stress: bool,
 ) -> Vec<(usize, usize, f64, f64, f64)> {
     if !parent.can_advance_physics()
         || parent.n() < params.min_vertices
@@ -614,13 +645,7 @@ fn local_segment_appositions(
             if distance > range {
                 continue;
             }
-            let strain_i = parent.strain(i).max(parent.strain((i + n - 1) % n));
-            let strain_j = parent.strain(j).max(parent.strain((j + n - 1) % n));
-            let stressed = strain_i > 0.15
-                || strain_j > 0.15
-                || parent.edges[i].ruptured
-                || parent.edges[(j + n - 1) % n].ruptured
-                || distance < range * 0.55;
+            let stressed = segment_pair_stressed(parent, i, j, distance, range, signed_v4_stress);
             if stressed {
                 candidates.push((i, j, si, sj, distance));
             }
@@ -639,6 +664,23 @@ pub fn try_local_segment_fission(
     parent: &MaterialMesh,
     params: &FissionParams,
 ) -> Option<(MaterialMesh, MaterialMesh, FissionEvent)> {
+    try_local_segment_fission_with_stress_contract(parent, params, true)
+}
+
+/// Assay-only exact R9 control retaining the pre-R10 positive-tension segment
+/// predicate. Production callers must use [`try_local_segment_fission`].
+pub fn try_local_segment_fission_legacy_tensile_only(
+    parent: &MaterialMesh,
+    params: &FissionParams,
+) -> Option<(MaterialMesh, MaterialMesh, FissionEvent)> {
+    try_local_segment_fission_with_stress_contract(parent, params, false)
+}
+
+fn try_local_segment_fission_with_stress_contract(
+    parent: &MaterialMesh,
+    params: &FissionParams,
+    signed_v4_stress: bool,
+) -> Option<(MaterialMesh, MaterialMesh, FissionEvent)> {
     if !parent.can_advance_physics()
         || parent.n() < params.min_vertices
         || !params.topo.enable_rebond
@@ -646,7 +688,7 @@ pub fn try_local_segment_fission(
     {
         return None;
     }
-    for (i, j, si, sj, _) in local_segment_appositions(parent, params) {
+    for (i, j, si, sj, _) in local_segment_appositions(parent, params, signed_v4_stress) {
         let pi = [
             parent.vertices[i][0]
                 + si * (parent.vertices[(i + 1) % parent.n()][0] - parent.vertices[i][0]),
@@ -743,6 +785,40 @@ mod segment_tests {
     use super::*;
     use crate::material_mesh::LumpedChem;
 
+    fn regular_v4(rest_ratio: f64, mature_fraction: f64) -> MaterialMesh {
+        let mut mesh = MaterialMesh::seed_regular(
+            12,
+            10.0,
+            0.0,
+            0.0,
+            1.0,
+            0.5,
+            LumpedChem {
+                a: 100.0,
+                c: 1.0,
+                ..Default::default()
+            },
+            LumpedChem::default(),
+            0.0,
+        );
+        mesh.stamp_maturation_coupled_schema();
+        for i in 0..mesh.n() {
+            let mature = mesh.rho_s * mesh.edge_length(i) * rest_ratio;
+            let total = if mature_fraction > 0.0 {
+                mature / mature_fraction
+            } else {
+                mesh.rho_s * mesh.edge_length(i)
+            };
+            mesh.edges[i].m = total;
+            mesh.edges[i].m_young = if mature_fraction > 0.0 {
+                total - mature
+            } else {
+                total
+            };
+        }
+        mesh
+    }
+
     #[test]
     fn segment_apposition_splits_a_simple_dumbbell_conservatively() {
         let points = vec![
@@ -784,5 +860,75 @@ mod segment_tests {
         assert!(event.partition.ok);
         assert!(crate::mesh_self_contact::polygon_simple(&a.vertices));
         assert!(crate::mesh_self_contact::polygon_simple(&b.vertices));
+    }
+
+    #[test]
+    fn v4_effective_signed_strain_matches_sign_aware_mechanics() {
+        let mature_tension = regular_v4(0.8, 1.0);
+        assert!(
+            (effective_signed_strain(&mature_tension, 0) - mature_tension.strain(0)).abs() < 1e-12
+        );
+
+        let young_tension = regular_v4(1.0, 0.0);
+        assert!(young_tension.strain(0) > 0.15);
+        assert_eq!(effective_signed_strain(&young_tension, 0), 0.0);
+
+        let mixed_compression = regular_v4(1.25, 0.4);
+        assert!(mixed_compression.strain(0) < -0.15);
+        assert!(
+            (effective_signed_strain(&mixed_compression, 0) - mixed_compression.strain(0)).abs()
+                < 1e-12
+        );
+    }
+
+    #[test]
+    fn v4_segment_stress_adds_compression_without_changing_frozen_boundaries() {
+        let compressed = regular_v4(1.25, 0.4);
+        assert!(!segment_pair_stressed(&compressed, 0, 3, 0.8, 1.0, false));
+        assert!(segment_pair_stressed(&compressed, 0, 3, 0.8, 1.0, true));
+
+        let below_threshold = regular_v4(1.1, 0.4);
+        assert!(!segment_pair_stressed(
+            &below_threshold,
+            0,
+            3,
+            0.8,
+            1.0,
+            true
+        ));
+
+        let young_tension = regular_v4(1.0, 0.0);
+        assert!(!segment_pair_stressed(&young_tension, 0, 3, 0.8, 1.0, true));
+        assert!(segment_pair_stressed(&young_tension, 0, 3, 0.54, 1.0, true));
+    }
+
+    #[test]
+    fn non_v4_and_rigid_transform_stress_semantics_are_preserved() {
+        let mut historical = regular_v4(1.25, 0.4);
+        historical.contract_version =
+            crate::material_mesh::MeshContractVersion::GeometryConservativeV3;
+        for edge in &mut historical.edges {
+            edge.m_young = 0.0;
+        }
+        assert_eq!(
+            segment_pair_stressed(&historical, 0, 3, 0.8, 1.0, true),
+            segment_pair_stressed(&historical, 0, 3, 0.8, 1.0, false)
+        );
+
+        let original = regular_v4(1.25, 0.4);
+        let mut transformed = original.clone();
+        for point in &mut transformed.vertices {
+            let rotated = [-point[1], point[0]];
+            point[0] = -rotated[0] + 17.0;
+            point[1] = rotated[1] - 9.0;
+        }
+        for edge in 0..original.n() {
+            assert!(
+                (effective_signed_strain(&original, edge)
+                    - effective_signed_strain(&transformed, edge))
+                .abs()
+                    < 1e-12
+            );
+        }
     }
 }
