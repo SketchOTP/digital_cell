@@ -1,0 +1,163 @@
+name: DC-FINAL-001-R5 V4 neck-generation closure
+
+on:
+  push:
+    branches: [codex/dc-final-001-r5-v4-neck-evolution]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r5-qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Verify R4 authority and bounded scope
+        run: |
+          set -euo pipefail
+          start=aa886d554fa4ae8cf691e5a66b69d787ea4f2c2f
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git merge-base --is-ancestor "$start" HEAD
+          git cat-file -e 78c2200615b6558d6b617e3c29f5c8e9bb1c05d3^{commit}
+          git diff --check
+          python3 - <<'PY'
+          import subprocess
+          allowed = (
+              '.agent/',
+              '.github/workflows/dc-final-001-r5.yml',
+              'digital-protocell/crates/regulatory-core/Cargo.toml',
+              'digital-protocell/examples/dcfinal001_r5_v4_neck.rs',
+              'digital-protocell/experiments/dcfinal001_r5_evidence.py',
+              'digital-protocell/experiments/generated/dcfinal001r5/',
+          )
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-only', 'aa886d554fa4ae8cf691e5a66b69d787ea4f2c2f..HEAD'],
+              text=True,
+          ).splitlines()
+          bad = [path for path in changed if not any(path.startswith(prefix) for prefix in allowed)]
+          assert not bad, bad
+          PY
+          gh run view 34310098452 --repo SketchOTP/digital_cell \
+            --json conclusion,headSha --jq '.conclusion + " " + .headSha' \
+            | grep '^success aa886d554fa4ae8cf691e5a66b69d787ea4f2c2f$'
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefOid > "$RUNNER_TEMP/pr44.json"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          pr = json.loads((Path(os.environ['RUNNER_TEMP']) / 'pr44.json').read_text())
+          assert pr['state'] == 'OPEN'
+          assert pr['isDraft'] is True
+          assert pr['mergedAt'] is None
+          assert pr['headRefOid'] == 'fb77f472b1519a9e0f713833efba5b1d403f4723'
+          PY
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Run R5 diagnosis and bounded mechanochemical qualification
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 check --locked -p regulatory-core --example dcfinal001_r5_v4_neck
+          cargo +1.89.0 run --locked -q --release -p regulatory-core \
+            --example dcfinal001_r5_v4_neck -- --output "$RUNNER_TEMP/r5.json"
+          scientific_head=$(python3 - <<'PY'
+          import json
+          print(json.load(open('experiments/generated/dcfinal001r5/authority.json'))['result_scientific_head'])
+          PY
+          )
+          python3 experiments/dcfinal001_r5_evidence.py \
+            --head "$scientific_head" \
+            --raw "$RUNNER_TEMP/r5.json" \
+            --r4 experiments/generated/dcfinal001r4 \
+            --output "$RUNNER_TEMP/evidence"
+          diff -ru experiments/generated/dcfinal001r5 "$RUNNER_TEMP/evidence"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          raw = json.loads((root / 'r5.json').read_text())
+          evidence = root / 'evidence'
+          q = json.loads((evidence / 'qualification.json').read_text())
+          controls = json.loads((evidence / 'mechanochemical_controls.json').read_text())
+          assert raw['source_timescale']['k_turn'] == 0.018
+          assert raw['source_timescale']['dt'] == 0.02
+          assert raw['source_timescale']['tau_steps_ceil'] == 2778
+          assert raw['maturation_horizon_audit']['extension_fissions'] == 1
+          assert raw['maturation_horizon_audit']['classification'] == 'LEGACY_HORIZON_MATERIALLY_TRUNCATES_V4_FISSION'
+          assert raw['qualification_horizon'] == 14778
+          assert raw['passive']['growth_qualified'] == 10
+          assert raw['passive']['geometry_valid_fissions'] == 2
+          assert raw['passive']['simple_viable_daughter_pairs'] == 1
+          assert raw['mechanochemical']['growth_qualified'] == 10
+          assert raw['mechanochemical']['geometry_valid_fissions'] == 4
+          assert raw['mechanochemical']['simple_viable_daughter_pairs'] == 1
+          assert raw['contrast_fallback']['required'] is False
+          assert raw['active_energy_closure']['pass'] is True
+          assert controls['zero_activity_semantic_parity'] is True
+          assert controls['motor_off_semantic_parity'] is True
+          assert controls['zero_a_active_work_eliminated'] is True
+          assert raw['reproduction']['pass'] is False
+          assert raw['evolution_execution'] == 'NOT_REACHED_GATE9_STOP'
+          assert q['classification'] == 'V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED'
+          assert q['status'] == 'GOAL_AGENT_PROVISIONAL_NEGATIVE'
+          assert q['digital_cell_end_goal'] == 'NOT_ESTABLISHED'
+          assert q['shutdown_recommended'] is True
+          assert q['next_execution_started'] is False
+          assert q['independent_architect_acceptance'] == 'PENDING'
+          PY
+
+      - name: Preserve M1, M2, lifecycle, and tests-only evolution surfaces
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p chemistry-core --test r4_contract_topology_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test --locked -p evolution-harness -- --nocapture
+          cargo +1.89.0 test --locked -p m2-lifeform-runtime --bin digital-cell-final-lifeform -- --nocapture
+          cargo +1.89.0 check --locked -p godot-bridge
+          run_d087() {
+            local output="$1" contract="$2" v4="$3"
+            if test "$v4" = 1; then
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 \
+                cargo +1.89.0 run -q -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            else
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 \
+                cargo +1.89.0 run -q -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            fi
+          }
+          run_d087 "$RUNNER_TEMP/d087-v2" ConservativeV2 0
+          run_d087 "$RUNNER_TEMP/d087-v3" ConservativeV3 0
+          run_d087 "$RUNNER_TEMP/d087-v4" ConservativeV3 1
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          expected = {
+              'v2': [True] * 8,
+              'v3': [True] * 8,
+              'v4': [True, True, False, True, True, True, True, True],
+          }
+          for name, vector in expected.items():
+              manifest = json.loads((root / f'd087-{name}' / 'manifest.json').read_text())
+              assert [manifest[f'gate{i}']['pass'] for i in range(8)] == vector
+          PY
+
+      - name: Upload exact-head R5 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcfinal001r5
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            digital-protocell/experiments/generated/dcfinal001r5
+            ${{ runner.temp }}/r5.json
