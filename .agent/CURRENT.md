@@ -815,3 +815,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Corrected frozen campaigns remain below qualification: passive `0/10` fissions and `0/10` viable pairs; R5R1 tangential `0/10` and `0/10`; R6 curvature-normal `1/10` and `1/10`; R6 normal-plus-tangential `0/10` and `0/10`. All four remain `10/10` growth-qualified.
 - D-087 remains V2 `8/8`, V3 `8/8`, V4 `7/8` with `[true,true,false,true,true,true,true,true]`; R4 contract/topology tests, legacy D-088 tests, D-091, evolution-harness tests, Linux runtime tests, and Godot compilation pass locally.
 - Provisional classification: `V4_FISSION_CLOSURE_CONSISTENCY_REPAIRED_ROBUST_REPRODUCTION_NOT_ESTABLISHED`. Evolution and final integration are `NOT_REACHED_GATE9_STOP`; Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown recommendation remains `NO — OWNER OVERRIDE ACTIVE`; no successor execution started; independent Architect acceptance and exact-head CI are `PENDING`.
+
+## DC-FINAL-001-R8 evidence-bearing head pointer
+
+- Scientific result head `aad73e86cd13b2bb77eb3c9e58105c294533fb1c` is preserved without semantic change.
+- Evidence-bearing governed head `ad7964df3f2520783e7622ef9f48c92dedfc4bc7` passed exact-head Linux workflow `34381847005`.
+- Independently downloaded artifact ZIP digest: `sha256:c6c3dbcea32cfd032b90b41966a339c22c57ae2881cf0569f17297b819ebb6fd`.
+- This append-only pointer does not alter the Gate-9 stop, provisional classification, owner override, or pending independent Architect review.

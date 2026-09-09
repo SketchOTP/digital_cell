@@ -1710,3 +1710,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Root cause is confirmed: pre-R8 V4 fission constructed two half-density, fully young closure edges while mechanics and rupture treated them as fully load-bearing; one exact R7 daughter accumulated `3674` rupture/rebond cycles and `5417.959656209351` A repair expenditure.
 - R8 repairs only V4 material/load-bearing consistency with zero new parameters and exact non-V4 parity. The corrected four-arm campaign remains below robust reproduction, with a maximum of `1/10` valid fissions and `1/10` viable pairs.
 - Classification: `V4_FISSION_CLOSURE_CONSISTENCY_REPAIRED_ROBUST_REPRODUCTION_NOT_ESTABLISHED`. M1 remains closed/frozen/preserved; evolution/final integration are `NOT_REACHED_GATE9_STOP`; shutdown recommendation is `NO — OWNER OVERRIDE ACTIVE`; independent Architect acceptance and exact-head CI are pending; next execution is `false`.
+
+## DEC-DCFINAL001-R8-EXACT-HEAD-EVIDENCE-POINTER
+
+- Date: `2026-09-09`
+- Status: `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_REPLAN`
+- Scientific result head: `aad73e86cd13b2bb77eb3c9e58105c294533fb1c`.
+- Evidence-bearing governed head: `ad7964df3f2520783e7622ef9f48c92dedfc4bc7`.
+- Exact-head Linux workflow: `34381847005 PASS`.
+- Independently downloaded artifact ZIP digest: `sha256:c6c3dbcea32cfd032b90b41966a339c22c57ae2881cf0569f17297b819ebb6fd`.
+- Scientific semantics, owner override, Gate-9 stop, pending independent review, and `next_execution_started = false` are unchanged.

@@ -2488,3 +2488,8 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Frozen corrected campaigns: passive `10/10` growth, `0/10` fission, `0/10` viable; R5R1 `10/10`, `0/10`, `0/10`; R6 normal `10/10`, `1/10`, `1/10`; R6 combined `10/10`, `0/10`, `0/10`.
 - M1 preservation remains V2 `8/8`, V3 `8/8`, V4 `7/8`, vector `[true,true,false,true,true,true,true,true]`; downstream preservation passes locally.
 - Classification: `V4_FISSION_CLOSURE_CONSISTENCY_REPAIRED_ROBUST_REPRODUCTION_NOT_ESTABLISHED` under `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_REPLAN`. Evolution/final integration: `NOT_REACHED_GATE9_STOP`. Independent review and exact-head Linux evidence are pending.
+
+### R8 evidence-bearing head pointer
+
+- Evidence-bearing governed head `ad7964df3f2520783e7622ef9f48c92dedfc4bc7` passed exact-head workflow `34381847005`; artifact ZIP digest `sha256:c6c3dbcea32cfd032b90b41966a339c22c57ae2881cf0569f17297b819ebb6fd`.
+- Scientific semantics remain those of head `aad73e86cd13b2bb77eb3c9e58105c294533fb1c`; no successor execution started and independent Architect acceptance remains pending.
