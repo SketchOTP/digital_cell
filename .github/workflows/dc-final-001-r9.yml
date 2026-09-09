@@ -65,7 +65,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - name: Install sanctioned Rust toolchain
-        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+        run: |
+          rustup toolchain install 1.89.0 --profile minimal --no-self-update
+          rustup component add --toolchain 1.89.0 rustfmt
 
       - name: Replay static-attractor audit and refractory campaign
         working-directory: digital-protocell
