@@ -1125,3 +1125,8 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Authorized repair: for `MaturationCoupledV4` only, apply the existing D-096 structural-consumption fraction to `m`, `m_young`, and physically corresponding tracer material; close exact activation/maintenance A expenditure into existing W. No new coefficient, newborn exemption, grace period, or non-V4 change is allowed.
 - Stop boundary reached before evolution: exact R2 uses `HistoricalV1`, while the equivalent V4 daughters are invalidated after first-step topology rupture because ruptured edges retain positive `m_young` after `m` becomes zero. Widening the repair into topology or converting the frozen R2 contract is not authorized.
 - Provisional classification: `D096_V4_STRUCTURAL_TRANSFER_SEMANTICS_INVALID` under `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`. Selection/reversal were not run; no successor execution started; independent Architect acceptance remains `PENDING`.
+
+### R3 evidence-bearing head pointer
+
+- Head `3159c4e246ef6b925259921b0e2cddffdbcfd1d6` passed exact-head Linux workflow `34298853121`; artifact ZIP digest is `sha256:481781967abc179e27b7fc04eab71f40b8da0e338fec5d81e6dacad417ab58e7`.
+- The pointer is governance-only. The Gate-6 stop, provisional negative/replan classification, and prohibition on successor execution are unchanged.

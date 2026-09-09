@@ -1594,3 +1594,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Result: the repair passes isolated and first-step V4 tests, but exact R2 uses `HistoricalV1`; a matched V4 lifecycle then fails after first-step topology rupture leaves positive `m_young` on zero-total-material edges. Gate 6 therefore remains closed.
 - Classification: `D096_V4_STRUCTURAL_TRANSFER_SEMANTICS_INVALID`. Selection, reversal, and final integrated qualification were not executed. End goal remains `NOT_ESTABLISHED`; shutdown recommendation is `false`; no successor execution started.
 - Scientific result head: `fcf2b637d868e1e7dc250dfc7ec31ba6533c9729`; exact-head CI/artifact and independent Architect acceptance are `PENDING`.
+
+## DEC-DCFINAL001-R3-EXACT-HEAD-EVIDENCE-POINTER
+
+- Date: `2026-09-08`
+- Status: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`
+- Scientific repair head: `fcf2b637d868e1e7dc250dfc7ec31ba6533c9729`.
+- Evidence-bearing head: `3159c4e246ef6b925259921b0e2cddffdbcfd1d6`.
+- Exact-head Linux workflow: `34298853121 PASS`.
+- Independently downloaded artifact ZIP digest: `sha256:481781967abc179e27b7fc04eab71f40b8da0e338fec5d81e6dacad417ab58e7`.
+- Scientific semantics are unchanged; independent Architect acceptance remains `PENDING` and next execution remains `false`.

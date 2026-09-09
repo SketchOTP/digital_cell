@@ -2393,3 +2393,10 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Full V4 newborn continuation fails at post-topology step 1: one daughter-A edge and two daughter-B edges are tension-ruptured with `m = 0` and positive `m_young`. Geometry remains simple and no biological death occurs.
 - Gate 6 does not pass, so the exact frozen R2 selection, environment comparison, reversal, and final integrated run were not executed. Mutation supply remains preserved at 18 mutations in 1,800 opportunities with `p=0.01`, `sigma=0.15`.
 - Provisional classification: `D096_V4_STRUCTURAL_TRANSFER_SEMANTICS_INVALID`; end goal `NOT_ESTABLISHED`; shutdown recommendation `NO`; independent Architect acceptance `PENDING`; successor execution `false`.
+
+## DC-FINAL-001-R3 exact-head evidence seal
+
+- Scientific repair head `fcf2b637d868e1e7dc250dfc7ec31ba6533c9729` is preserved without semantic change.
+- Evidence-bearing head `3159c4e246ef6b925259921b0e2cddffdbcfd1d6` passed exact-head Linux workflow `34298853121`.
+- Independently downloaded artifact ZIP digest: `sha256:481781967abc179e27b7fc04eab71f40b8da0e338fec5d81e6dacad417ab58e7`.
+- Result remains Goal-agent provisional; no successor execution started and independent Architect acceptance remains `PENDING`.

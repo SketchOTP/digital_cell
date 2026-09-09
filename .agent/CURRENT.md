@@ -720,3 +720,9 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - The sealed R2 population template is `HistoricalV1`, not `MaturationCoupledV4`; therefore the authorized V4-only repair cannot alter exact frozen R2 daughters without violating non-V4 parity.
 - A matched V4 counterpart passes first expression/contact with structural and energy closure, but both daughters become runtime-invalid at step 1 after unchanged topology rupture zeroes `m` while retaining positive `m_young`. This satisfies the directive stop boundary before evolutionary execution.
 - Goal-agent status: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; classification: `D096_V4_STRUCTURAL_TRANSFER_SEMANTICS_INVALID`. Environment-dependent selection, reversal, and the Digital Cell end goal remain `NOT_ESTABLISHED`; shutdown is not recommended from this bounded integration defect. No successor execution started; independent Architect acceptance is `PENDING`.
+
+## DC-FINAL-001-R3 evidence-bearing head pointer
+
+- Evidence-bearing head `3159c4e246ef6b925259921b0e2cddffdbcfd1d6` passed exact-head workflow `34298853121`.
+- Independently downloaded artifact ZIP digest: `sha256:481781967abc179e27b7fc04eab71f40b8da0e338fec5d81e6dacad417ab58e7`.
+- Scientific semantics remain those of repair head `fcf2b637d868e1e7dc250dfc7ec31ba6533c9729`; this append-only pointer does not alter the provisional classification, Gate-6 stop, or pending independent review.

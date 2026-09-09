@@ -1103,3 +1103,8 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Confidence: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN` pending exact-head CI and independent Architect review.
 - Scope: D-096/V4 expression semantics and the Gate-6 newborn lifecycle boundary; no selection or reversal execution.
 - Supersedes learning: none.
+
+### R3 exact-head evidence
+
+- Evidence-bearing head `3159c4e246ef6b925259921b0e2cddffdbcfd1d6` passed workflow `34298853121`; artifact ZIP digest is `sha256:481781967abc179e27b7fc04eab71f40b8da0e338fec5d81e6dacad417ab58e7`.
+- This validation does not promote the result beyond `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN` and does not authorize topology repair or evolutionary execution.
