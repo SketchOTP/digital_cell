@@ -216,3 +216,8 @@
 - `digital-protocell/experiments/dcfinal001_r8_evidence.py` — deterministic compact R8 evidence generator separating confirmed contract repair from failed robust reproduction.
 - `digital-protocell/experiments/generated/dcfinal001r8/` — R8 root cause, structural/load-bearing contracts, daughter replay, corrected campaigns, preservation, stopped-evolution, and provisional qualification evidence.
 - `.github/workflows/dc-final-001-r8.yml` — exact-head Linux R8 scope, contract tests, deterministic corrected campaign, preservation, D-087, PR #44, evidence reproducibility, and artifact upload.
+- `digital-protocell/examples/dcfinal001_r9_gate1.rs` — R9 observer-only replay entry point for the sealed R8R1 static-attractor audit.
+- `digital-protocell/examples/dcfinal001_r9_refractory_curvature.rs` — R9 entry point composing the frozen R6 curvature-normal actuator with existing accepted-step `PlasticityStateV1` and its authorized same-activity conditional control.
+- `digital-protocell/experiments/dcfinal001_r9_evidence.py` — deterministic compact R9 evidence generator sealing static-attractor, refractory-remap, energy/control, reproduction, and stopped-downstream results.
+- `digital-protocell/experiments/generated/dcfinal001r9/` — R9 authority, attractor audit, refractory contract, controls, campaign, daughter continuation, preservation, stopped-evolution, and provisional qualification evidence.
+- `.github/workflows/dc-final-001-r9.yml` — exact-head Linux R9 scope, deterministic campaign replay, preservation, D-087, PR #44, evidence reproducibility, and artifact upload.

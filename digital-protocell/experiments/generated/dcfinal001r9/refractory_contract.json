@@ -1,0 +1,15 @@
+{
+  "adaptation_before_drives_current_force": true,
+  "commit_after_accepted_mechanics": true,
+  "first_step_identity": true,
+  "load_rate_per_time": 0.1,
+  "new_free_parameters": 0,
+  "parameters": {
+    "load_rate_per_time": 0.1,
+    "recovery_rate_per_time": 0.05,
+    "schema": "digital_cell_local_plasticity_v1"
+  },
+  "raw_curvature_drives_adaptation": true,
+  "recovery_rate_per_time": 0.05,
+  "schema": "digital_cell_local_plasticity_v1"
+}

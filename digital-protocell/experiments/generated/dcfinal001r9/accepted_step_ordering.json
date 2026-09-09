@@ -1,0 +1,13 @@
+{
+  "first_accepted_step_identity": true,
+  "order": [
+    "compute raw current curvature drive",
+    "read adaptation_before",
+    "compute effective drive",
+    "request funded inward-normal force",
+    "execute mechanics and self-contact",
+    "commit raw-drive adaptation after accepted mechanics only"
+  ],
+  "pass": true,
+  "rejected_step_advances_adaptation": false
+}

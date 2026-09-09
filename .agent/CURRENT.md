@@ -847,3 +847,12 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Evidence-bearing governed head `06bbf56e346f5eea4204184f998e9cb42a18beef` passed exact-head Linux workflow `34394831135`.
 - GitHub artifact digest: `sha256:d8c323350ddf4652bfe588be5c4050e17dfde8c53c897dc162952459eb766707`.
 - The bounded-negative classification, Gate-8 stop, owner override, pending independent Architect acceptance, and `next_execution_started = false` remain unchanged.
+
+## DC-FINAL-001-R8R1 final authority and R9 provisional bounded result
+
+- External Architect accepts R8R1 at governed head `cdeec37274403286bd43efe847d30ec9b4d1593d`, exact-head workflow `34396700355 PASS`, and artifact `sha256:cbb168c90cfb9a19f37f811445a1706cc93f75fc732cce1118b783260b630b2d` as `R8R1_ACCEPTED_BOUNDED_ADVANCE_REPLAN` and authorizes only R9.
+- R9 Gate 1 confirms the authorized premise: five of six sealed R8R1 R6-normal negative arms have no dominant curvature-patch changes over the final 20% of samples; seed 10 remains dynamic. Classification: `STATIC_LOCAL_CONSTRICTION_PATTERN_FAILS_TO_REORGANIZE_IN_SOME_V4_PARENTS`.
+- The exact existing `PlasticityStateV1` composition uses default load/recovery rates `0.1/0.05`, beginning-of-step adaptation, accepted-step-only updates from raw curvature, deterministic local remap, and zero new parameters. It causes 3,047 sampled raw/effective dominant-patch relocations; adaptation-off, motor-off, zero-A, remesh-continuity, and normal A-to-W controls pass.
+- Frozen 14,778-step campaigns: passive `2/10` fissions and `2/10` viable pairs; sealed R8R1 R6 normal `4/10` and `4/10`; R9 refractory normal `5/10` and `5/10`; conditionally authorized same-activity normal-plus-tangential `2/10` and `2/10`. Every observed R9 fission yields a viable pair, but unchanged `7/10` and `6/10` gates fail.
+- Local preservation passes: D-087 V2 `8/8`, V3 `8/8`, V4 `7/8`, vector `[true,true,false,true,true,true,true,true]`; R8 closure and R8R1 sign-aware mechanics remain preserved; downstream suites pass.
+- Scientific result head: `c553f8717342dedbf3f408108a7294037a84920e`. Provisional classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`. Evolution and final integration are `NOT_REACHED_GATE7_8_STOP`; Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown recommendation remains `NO — OWNER OVERRIDE ACTIVE`; exact-head CI/artifact and independent Architect acceptance are `PENDING`; next execution is `false`.

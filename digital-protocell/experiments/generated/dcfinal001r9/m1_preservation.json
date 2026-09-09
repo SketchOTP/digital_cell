@@ -1,0 +1,24 @@
+{
+  "d087": {
+    "v2": "8/8",
+    "v3": "8/8",
+    "v4": "7/8",
+    "vector": [
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "d088_legacy_tests": "PASS_HISTORICAL_PRESERVATION_ONLY",
+  "d091": "PASS",
+  "evolution_harness": "PASS_TESTS_ONLY",
+  "m1": "CLOSED_FROZEN_PRESERVED",
+  "r4_contract_topology_tests": "PASS",
+  "r8_closure_repair": "PASS_PRESERVED",
+  "r8r1_sign_aware_mechanics": "PASS_PRESERVED"
+}

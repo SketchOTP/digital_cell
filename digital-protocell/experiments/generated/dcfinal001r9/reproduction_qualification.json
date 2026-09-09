@@ -1,0 +1,29 @@
+{
+  "classification": "V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED",
+  "conditional_same_activity_normal_plus_tangential": {
+    "all_lifecycle_valid": true,
+    "all_parent_states_simple": true,
+    "all_runtime_valid": true,
+    "arms": 10,
+    "geometry_valid_fissions": 2,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 2
+  },
+  "conditional_trigger": "REFRACTORY_NORMAL_IMPROVED_BUT_BELOW_QUALIFICATION",
+  "evolution": "NOT_REACHED_GATE7_8_STOP",
+  "pass": false,
+  "primary_refractory_normal": {
+    "all_lifecycle_valid": true,
+    "all_parent_states_simple": true,
+    "all_runtime_valid": true,
+    "arms": 10,
+    "geometry_valid_fissions": 5,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 5
+  },
+  "required": {
+    "geometry_valid_fissions": 7,
+    "growth": 8,
+    "viable_pairs": 6
+  }
+}

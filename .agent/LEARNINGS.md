@@ -1172,3 +1172,11 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Restoring compressed-scaffold response materially improves corrected R8 reproduction and makes every counted fission in the four campaigns yield a viable pair, but the best campaign remains only `4/10`. The first unresolved production prerequisite therefore remains robust apposition/stress generation, not daughter closure, A shortage, growth, or geometry validity.
 - Correcting one causal inconsistency does not authorize a new mechanism when the fixed qualification gate still fails. Evolution remains downstream and was not executed.
 - External actin tension/compression asymmetry informed the mechanical interpretation, but no external force, buckling threshold, persistence length, location, or timing entered the implementation.
+
+## DC-FINAL-001-R9 refractory curvature-normal learning
+
+- The sealed R8R1 negative population genuinely contains persistent cortical attractors: five of six failed arms have no dominant curvature-patch index changes over the final fifth of the assay. A bounded local refractory mechanism is therefore causally relevant rather than merely another actuator candidate.
+- Existing accepted-step plasticity can reorganize an active cortex without semantic division information. Raw curvature remains the local physical input; adaptation attenuates only the current patch, commits after accepted mechanics, and remaps through ordinary local topology correspondence.
+- Causal reorganization is not equivalent to robust reproduction. R9 produces thousands of raw/effective patch relocations and raises viable fission from `4/10` to `5/10`, yet three outside-range and two below-stress parents remain nonreproductive.
+- Adding the same refractory activity through both existing normal and tangential channels is counterproductive (`2/10`), reinforcing that more contractile work or channels do not monotonically improve lawful division.
+- Every observed R9 fission is viable, so daughter construction remains qualified when fission occurs. The remaining blocker is robust parent apposition/stress formation, and evolution remains causally downstream.

@@ -1741,3 +1741,14 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Exact-head Linux workflow: `34394831135 PASS`.
 - GitHub artifact digest: `sha256:d8c323350ddf4652bfe588be5c4050e17dfde8c53c897dc162952459eb766707`.
 - Scientific semantics, owner override, Gate-8 stop, pending independent review, and `next_execution_started = false` are unchanged.
+
+## DEC-DCFINAL001-R9-REFRACTORY-CURVATURE-STOP
+
+- Date: `2026-09-09`
+- Status: `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_REPLAN`
+- Record or decision ID: `DEC-DCFINAL001-R9-REFRACTORY-CURVATURE-STOP`
+- External Architect accepts R8R1 at governed head `cdeec37274403286bd43efe847d30ec9b4d1593d`, workflow `34396700355 PASS`, and artifact `sha256:cbb168c90cfb9a19f37f811445a1706cc93f75fc732cce1118b783260b630b2d`, then authorizes only R9.
+- Gate 1 establishes persistent curvature patterns in five of six failed R8R1 R6-normal arms. The zero-parameter existing-plasticity composition passes ordering, remap, null, energy, and causal patch-relocation controls.
+- Result: refractory normal reaches `5/10` geometry-valid fissions and `5/10` viable pairs; conditional same-activity normal-plus-tangential reaches `2/10` and `2/10`, both below unchanged `7/10` and `6/10` gates.
+- Classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`. M1 remains closed/frozen/preserved; M2 qualified; M3 preserved; evolution/final integration are `NOT_REACHED_GATE7_8_STOP`; end goal remains `NOT_ESTABLISHED`; shutdown recommendation is `NO — OWNER OVERRIDE ACTIVE`; next execution is `false`; exact-head CI/artifact and independent Architect acceptance remain pending.
+- Scientific result head: `c553f8717342dedbf3f408108a7294037a84920e`.

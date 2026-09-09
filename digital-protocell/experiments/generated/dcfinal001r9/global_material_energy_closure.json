@@ -1,0 +1,14 @@
+{
+  "final_integrated_run": "NOT_REACHED_GATE7_8_STOP",
+  "observed_r9_fission_partition": "PASS",
+  "r8_full_density_two_edge_closure": "PRESERVED",
+  "r8_two_edge_a_cost": "PRESERVED",
+  "refractory_normal_a_to_w": {
+    "pass": true,
+    "produced_w": 42.49883158743482,
+    "requested_a": 42.49883158810508,
+    "residual": 6.702549626425025e-10,
+    "spent_a": 42.49883158810508
+  },
+  "zero_a_active_spend": 0.0
+}

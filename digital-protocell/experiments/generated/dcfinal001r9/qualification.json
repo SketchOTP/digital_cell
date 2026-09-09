@@ -1,0 +1,23 @@
+{
+  "adaptation_remesh_continuity": "PASS",
+  "classification": "V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED",
+  "conditional_normal_plus_tangential": "2_FISSIONS_2_VIABLE_PAIRS_OF_10",
+  "digital_cell_end_goal": "NOT_ESTABLISHED",
+  "directive": "DC-FINAL-001-R9-REFRACTORY-CURVATURE-NORMAL-CORTEX-REPRODUCTION-AND-END-GOAL-CLOSURE-001",
+  "evolution": "NOT_REACHED_GATE7_8_STOP",
+  "final_integrated_m1_m5": "NOT_REACHED",
+  "independent_architect_acceptance": "PENDING",
+  "new_free_parameters": 0,
+  "next_execution_started": false,
+  "normal_a_to_w": "PASS",
+  "patch_relocation": "PASS",
+  "primary_refractory_normal": "5_FISSIONS_5_VIABLE_PAIRS_OF_10",
+  "r8_closure_repair_preserved": "PASS",
+  "r8r1_architect_disposition": "ACCEPTED_BOUNDED_ADVANCE_REPLAN",
+  "r8r1_sign_aware_mechanics_preserved": "PASS",
+  "refractory_contract": "PASS",
+  "robust_v4_reproduction": "FAIL",
+  "shutdown_recommended": "NO \u2014 OWNER OVERRIDE ACTIVE",
+  "static_attractor_classification": "STATIC_LOCAL_CONSTRICTION_PATTERN_FAILS_TO_REORGANIZE_IN_SOME_V4_PARENTS",
+  "status": "GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_REPLAN"
+}

@@ -1201,3 +1201,11 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 
 - Evidence-bearing governed head `06bbf56e346f5eea4204184f998e9cb42a18beef` passed exact-head workflow `34394831135`; GitHub artifact digest `sha256:d8c323350ddf4652bfe588be5c4050e17dfde8c53c897dc162952459eb766707`.
 - Scientific semantics remain those of head `bf195f5d9f6c2fe555bdec9810e2a16a1ab2cdc3`; no successor execution started and independent Architect acceptance remains pending.
+
+## DC-FINAL-001-R9-REFRACTORY-CURVATURE-NORMAL-CORTEX-REPRODUCTION-AND-END-GOAL-CLOSURE-001
+
+- Issued `2026-09-09` by the external Architect from exact governed R8R1 head `cdeec37274403286bd43efe847d30ec9b4d1593d`; R8R1 is accepted as `R8R1_ACCEPTED_BOUNDED_ADVANCE_REPLAN` and owner override remains active.
+- Largest unresolved end-goal gap: robust viable production-V4 reproduction, localized to persistent nondividing cortical configurations under the best sealed curvature-normal composition.
+- Authorized execution: first establish persistent/static negative arms from sealed R8R1 evidence, then compose only the existing R6 curvature drive, default `PlasticityStateV1`, funded inward-normal force, R8R1 mechanics, and unchanged fission path. Commit adaptation only after accepted mechanics and remap it through existing local topology correspondence.
+- One conditional same-effective-activity tangential composition is authorized only if refractory normal improves a preregistered reproduction count while remaining below qualification. No new coefficient, target, threshold, timer, fission input, or observer feedback is authorized.
+- Stop boundary reached: refractory normal improves to `5/10` fissions and `5/10` viable pairs but remains below `7/10` and `6/10`; the authorized normal-plus-tangential arm regresses to `2/10` and `2/10`. Mutation, selection, reversal, and final integration are not reached; no successor execution starts.

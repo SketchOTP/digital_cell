@@ -1,0 +1,12 @@
+{
+  "adaptation_parameters": "PlasticityParamsV1::default()",
+  "body_size_or_age_input": false,
+  "division_command_or_target": false,
+  "fission_detector_changed": false,
+  "fission_or_apposition_input": false,
+  "local_physical_input_only": true,
+  "new_free_parameters": 0,
+  "observer_or_success_feedback": false,
+  "pass": true,
+  "scientific_default_runtime_changed": false
+}

@@ -1,0 +1,67 @@
+{
+  "mapping_authority": "derive_local_mapping + PlasticityStateV1.remap",
+  "pass": true,
+  "runs": [
+    {
+      "continuity_failures": 0,
+      "mapping_count": 27,
+      "maximum_mapping_distance": 2.3292730156940866,
+      "name": "seed_1_rotate_0.3"
+    },
+    {
+      "continuity_failures": 0,
+      "mapping_count": 33,
+      "maximum_mapping_distance": 2.3207146141837898,
+      "name": "seed_2_vertex_0.12"
+    },
+    {
+      "continuity_failures": 0,
+      "mapping_count": 52,
+      "maximum_mapping_distance": 2.4450312957168947,
+      "name": "seed_3_c_0.08"
+    },
+    {
+      "continuity_failures": 0,
+      "mapping_count": 97,
+      "maximum_mapping_distance": 2.35268034906213,
+      "name": "seed_4_a_0.08"
+    },
+    {
+      "continuity_failures": 0,
+      "mapping_count": 48,
+      "maximum_mapping_distance": 2.263255346975226,
+      "name": "seed_5_env_0.1"
+    },
+    {
+      "continuity_failures": 0,
+      "mapping_count": 57,
+      "maximum_mapping_distance": 2.4449100410034825,
+      "name": "seed_6_l_0.1"
+    },
+    {
+      "continuity_failures": 0,
+      "mapping_count": 53,
+      "maximum_mapping_distance": 2.2485552203679124,
+      "name": "seed_7_rotate_-0.5"
+    },
+    {
+      "continuity_failures": 0,
+      "mapping_count": 104,
+      "maximum_mapping_distance": 2.2167258328989705,
+      "name": "seed_8_vertex_-0.1"
+    },
+    {
+      "continuity_failures": 0,
+      "mapping_count": 129,
+      "maximum_mapping_distance": 2.4448340584325305,
+      "name": "seed_9_c_-0.05"
+    },
+    {
+      "continuity_failures": 0,
+      "mapping_count": 197,
+      "maximum_mapping_distance": 2.352904758091219,
+      "name": "seed_10_env_-0.08"
+    }
+  ],
+  "total_continuity_failures": 0
+}

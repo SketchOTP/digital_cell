@@ -2510,3 +2510,12 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Evidence-bearing governed head `06bbf56e346f5eea4204184f998e9cb42a18beef` passed exact-head Linux workflow `34394831135`.
 - GitHub artifact digest: `sha256:d8c323350ddf4652bfe588be5c4050e17dfde8c53c897dc162952459eb766707`.
 - Result remains `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_REPLAN`; independent Architect acceptance is `PENDING`, and no successor execution started.
+
+## DC-FINAL-001-R9 refractory curvature-normal cortex — provisional bounded negative
+
+- Exact R8R1 authority and canonical R9 authorization pass. Scientific result head: `c553f8717342dedbf3f408108a7294037a84920e`; exact-head CI/artifact remain pending.
+- Sealed static-attractor audit passes: five of six failed R8R1 R6-normal arms retain one dominant curvature-patch index across the final 20% of samples; seed 10 remains dynamic. The three outside-range and two inside-range/below-stress classifications are preserved.
+- The R9 composition uses `PlasticityParamsV1::default()` with frozen rates `0.1/0.05`, beginning-of-step adaptation, accepted-step commit from raw curvature, and deterministic local remap. New free parameters: `0`.
+- Causal controls pass: 3,047 sampled raw/effective dominant-patch relocations, zero first-step drive error, zero remesh continuity failures, exact adaptation-off static-normal parity, exact motor-off passive parity, zero active work at zero A, and A-to-W residual `6.702549626425025e-10`.
+- Campaigns: passive `2/10` fissions and `2/10` viable pairs; sealed static R6 normal `4/10` and `4/10`; R9 refractory normal `5/10` and `5/10`; conditional same-activity normal-plus-tangential `2/10` and `2/10`. All remain `10/10` growth-qualified, simple, runtime-valid, and lifecycle-valid.
+- Robust reproduction fails unchanged thresholds. Classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`; evolution/final integration `NOT_REACHED_GATE7_8_STOP`; end goal `NOT_ESTABLISHED`; shutdown `NO — OWNER OVERRIDE ACTIVE`; next execution `false`; independent Architect acceptance pending.

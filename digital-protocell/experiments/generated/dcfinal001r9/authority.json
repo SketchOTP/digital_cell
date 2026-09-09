@@ -1,0 +1,14 @@
+{
+  "directive": "DC-FINAL-001-R9-REFRACTORY-CURVATURE-NORMAL-CORTEX-REPRODUCTION-AND-END-GOAL-CLOSURE-001",
+  "independent_architect_acceptance": "PENDING",
+  "r8r1_artifact_sha256": "cbb168c90cfb9a19f37f811445a1706cc93f75fc732cce1118b783260b630b2d",
+  "r8r1_authority": "PASS",
+  "r8r1_exact_head_ci": {
+    "result": "PASS",
+    "run": 34396700355
+  },
+  "r8r1_governed_head": "cdeec37274403286bd43efe847d30ec9b4d1593d",
+  "r8r1_scientific_head": "bf195f5d9f6c2fe555bdec9810e2a16a1ab2cdc3",
+  "result_scientific_head": "c553f8717342dedbf3f408108a7294037a84920e",
+  "starting_governed_head": "cdeec37274403286bd43efe847d30ec9b4d1593d"
+}

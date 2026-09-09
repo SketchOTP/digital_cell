@@ -1,0 +1,16 @@
+{
+  "imported_parameters": [],
+  "sources": [
+    {
+      "classification": "ADAPTABLE_PRINCIPLE",
+      "principle": "delayed negative feedback can reorganize excitable cortical activity",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4849138/"
+    },
+    {
+      "classification": "REFERENCE_ONLY",
+      "principle": "cortex turnover, symmetry breaking, and membrane mechanics are distinct requirements",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9594324/"
+    }
+  ],
+  "status": "ARCHITECT_DISCOVERY_COMPLETED_IMPLEMENTATION_CONFIRMED"
+}
