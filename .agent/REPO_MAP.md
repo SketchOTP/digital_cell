@@ -210,3 +210,9 @@
 - `digital-protocell/experiments/dcfinal001_r7_evidence.py` — deterministic compact R7 evidence generator preserving R6 authority and sealing the Gate-7 reproduction stop.
 - `digital-protocell/experiments/generated/dcfinal001r7/` — R7 authority, exact composition, controls, per-fission daughter diagnostics, preservation, stopped-evolution, and provisional qualification evidence.
 - `.github/workflows/dc-final-001-r7.yml` — exact-head Linux R7 scope, deterministic campaign replay, preservation, D-087, PR #44, evidence reproducibility, and artifact upload.
+- `digital-protocell/crates/chemistry-core/tests/r8_v4_closure_consistency_tests.rs` — R8 V4 young/mixed/mature load-bearing, rupture, rebond, two-edge yield accounting, and non-V4 parity contract matrix.
+- `digital-protocell/experiments/fixtures/dcfinal001r8/` — exact pre-R8 R6/R7 newborn meshes used only for corrected daughter-continuation diagnostics, with compact governed hashes.
+- `digital-protocell/examples/dcfinal001_r8_v4_closure.rs` — R8 entry point for historical daughter replay and frozen corrected passive/R5R1/R6 four-arm V4 reproduction qualification.
+- `digital-protocell/experiments/dcfinal001_r8_evidence.py` — deterministic compact R8 evidence generator separating confirmed contract repair from failed robust reproduction.
+- `digital-protocell/experiments/generated/dcfinal001r8/` — R8 root cause, structural/load-bearing contracts, daughter replay, corrected campaigns, preservation, stopped-evolution, and provisional qualification evidence.
+- `.github/workflows/dc-final-001-r8.yml` — exact-head Linux R8 scope, contract tests, deterministic corrected campaign, preservation, D-087, PR #44, evidence reproducibility, and artifact upload.

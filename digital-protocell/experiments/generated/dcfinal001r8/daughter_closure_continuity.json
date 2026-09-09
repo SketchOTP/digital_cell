@@ -1,0 +1,53 @@
+{
+  "historical_fixture_warning": "fixtures retain the pre-R8 half-density closure material and therefore are diagnostic controls, not corrected-birth qualification events",
+  "rows": [
+    {
+      "closed_intact": false,
+      "completed_steps": 3000,
+      "fixture": "r7_seed3_daughter_a.json",
+      "rebonds": 0,
+      "ruptures": 2,
+      "viable": false
+    },
+    {
+      "closed_intact": true,
+      "completed_steps": 3000,
+      "fixture": "r7_seed3_daughter_b.json",
+      "rebonds": 2,
+      "ruptures": 2,
+      "viable": true
+    },
+    {
+      "closed_intact": false,
+      "completed_steps": 3000,
+      "fixture": "r6_normal_seed3_viable_daughter_a.json",
+      "rebonds": 0,
+      "ruptures": 2,
+      "viable": false
+    },
+    {
+      "closed_intact": true,
+      "completed_steps": 3000,
+      "fixture": "r6_normal_seed3_viable_daughter_b.json",
+      "rebonds": 1,
+      "ruptures": 1,
+      "viable": true
+    },
+    {
+      "closed_intact": false,
+      "completed_steps": 3000,
+      "fixture": "r6_normal_tangential_seed3_nonviable_daughter_a.json",
+      "rebonds": 1,
+      "ruptures": 2,
+      "viable": false
+    },
+    {
+      "closed_intact": false,
+      "completed_steps": 3000,
+      "fixture": "r6_normal_tangential_seed3_nonviable_daughter_b.json",
+      "rebonds": 1,
+      "ruptures": 2,
+      "viable": false
+    }
+  ]
+}

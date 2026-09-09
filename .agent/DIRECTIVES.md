@@ -1180,3 +1180,11 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Authorized execution: compose the exact R5R1 zero-parameter mean-relative tensile-strain signal with the exact R6 A-funded inward-normal actuator. Keep tangential activity zero in the primary arm and execute the same-signal combined arm only if normal-only improves fission or viable-pair count relative to both passive and R5R1 while remaining below qualification.
 - Supersedes/collapses the remaining localization-versus-actuator ambiguity without adding another biological mechanism. V4 biology, fission, viability, force/cost bounds, M1-M3, mutation, ecology, and PR #44 remain frozen.
 - Stop boundary reached: R7 normal-only yields `1/10` fissions and `0/10` viable pairs, so the conditional arm is not authorized and evolution/final integration are not reached. No successor reproduction architecture executes.
+
+## DC-FINAL-001-R8-V4-FISSION-CLOSURE-MATERIAL-AND-LOAD-BEARING-CONSISTENCY-EMERGENCY-CLOSURE-001
+
+- Issued `2026-09-09` by external Architect from exact governed R7 head `7363cfaa2c459522583b70d8107f377c08467b76`; R7 is accepted as `R7_ACCEPTED_BOUNDED_NEGATIVE_REPLAN` and owner override remains active.
+- Largest unresolved end-goal gap: robust viable production-V4 reproduction, now localized to an internal contradiction between young non-load-bearing structure, raw-strain mechanics/rupture, and half-density daughter closure construction.
+- Material advancement: reproduce the closure-edge rupture/rebond cycle; fund two full-density V4 daughter edges through the existing structural yield; scale only V4 stretch and rupture by mature fraction; preserve all non-V4 semantics; replay historical daughters and the frozen four ten-arm campaigns.
+- Supersedes/collapses further neck-signal or actuator composition work. R8 tests whether existing fission products obey the already-declared V4 material/load-bearing contract before any new reproduction architecture is considered.
+- Stop boundary reached: the contract repair passes and M1 is preserved, but the strongest corrected campaign reaches only `1/10` fissions and `1/10` viable pairs versus unchanged `7/10` and `6/10` thresholds. Mutation, selection, reversal, and final integration are not reached; no successor execution is authorized before independent review.

@@ -1,0 +1,34 @@
+{
+  "classification": "V4_CLOSING_EDGE_YOUNG_LOAD_CYCLE_CONFIRMED",
+  "daughter_a": {
+    "a_retention": 0.7058542506592405,
+    "a_spent_on_rebond": 5417.959656209351,
+    "closed_intact": true,
+    "ruptures": 3674,
+    "same_edge_rebonds": 3674
+  },
+  "daughter_b": {
+    "a_spent_on_rebond": 8.079192480469146,
+    "closed_intact": false,
+    "ruptures": 6,
+    "same_edge_rebonds": 5
+  },
+  "exact_newborn_fixture_sha256": {
+    "r6_normal_seed3_viable_daughter_a.json": "ea8c6438e7d8096cbb08640d13f5ee68977b01d2998df291bb70f49976b50609",
+    "r6_normal_seed3_viable_daughter_b.json": "1ceb37300539592a49482ec2745c2fa017f3b55867d8447d21dc11516f129206",
+    "r6_normal_tangential_seed3_nonviable_daughter_a.json": "dcbd08b2ab15788efd0f86bc2a83447d312f4f371eea8265f036fcabfd27fee1",
+    "r6_normal_tangential_seed3_nonviable_daughter_b.json": "d8fc6f9fa30eb321283ab5284898a5e4d489a8bc18bc4eaa0d05b9b556fa9b25",
+    "r7_seed3_daughter_a.json": "64fe829796136fc1d727d59be1e0cfa60055e6447cf8b0c7eed6efffaea7ebed",
+    "r7_seed3_daughter_b.json": "722a9bb97c4539274ffad5bf80f45f2196f68d2f0f39acc20abf6c0f0c51cd5b"
+  },
+  "newborn_closure": {
+    "legacy_stretch_force": 55.999999999999986,
+    "length": 6.138152700989883,
+    "line_density_ratio": 0.5,
+    "mass_per_daughter": 3.0690763504949414,
+    "mature_fraction": 0.0,
+    "raw_strain": 6138152700989881.0
+  },
+  "r7_seed3_fission_step": 8226,
+  "source_head": "7363cfaa2c459522583b70d8107f377c08467b76"
+}

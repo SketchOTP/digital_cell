@@ -1,0 +1,15 @@
+{
+  "directive": "DC-FINAL-001-R8-V4-FISSION-CLOSURE-MATERIAL-AND-LOAD-BEARING-CONSISTENCY-EMERGENCY-CLOSURE-001",
+  "governance_validator": "KNOWN_FAIL_PREEXISTING_APPEND_ONLY_SCHEMA_DRIFT",
+  "independent_architect_acceptance": "PENDING",
+  "r7_artifact_sha256": "a056c1416eb63ea1ef90b8cf508890a716cd2c0af89ce246c66137b4d8d109be",
+  "r7_authority": "PASS",
+  "r7_exact_head_ci": {
+    "result": "PASS",
+    "run": 34373915324
+  },
+  "r7_governed_head": "7363cfaa2c459522583b70d8107f377c08467b76",
+  "r7_scientific_head": "0dac294efce2745a99d423f28c31065fcbf29e76",
+  "result_scientific_head": "aad73e86cd13b2bb77eb3c9e58105c294533fb1c",
+  "starting_governed_head": "7363cfaa2c459522583b70d8107f377c08467b76"
+}

@@ -1,0 +1,7 @@
+{
+  "fully_mature_parity": "EXACT",
+  "fully_young_raw_strain_only_rupture": false,
+  "pass": true,
+  "threshold": "UNCHANGED_1.25",
+  "v4_metric": "mature_fraction * raw_strain"
+}

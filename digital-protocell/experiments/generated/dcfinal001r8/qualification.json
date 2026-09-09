@@ -1,0 +1,19 @@
+{
+  "classification": "V4_FISSION_CLOSURE_CONSISTENCY_REPAIRED_ROBUST_REPRODUCTION_NOT_ESTABLISHED",
+  "closing_edge_young_load_cycle": "CONFIRMED",
+  "digital_cell_end_goal": "NOT_ESTABLISHED",
+  "directive": "DC-FINAL-001-R8-V4-FISSION-CLOSURE-MATERIAL-AND-LOAD-BEARING-CONSISTENCY-EMERGENCY-CLOSURE-001",
+  "evolution": "NOT_REACHED_GATE9_STOP",
+  "final_integrated_m1_m5": "NOT_REACHED",
+  "fully_mature_v4_parity": "PASS_EXACT",
+  "fully_young_load": "PASS_ZERO",
+  "independent_architect_acceptance": "PENDING",
+  "new_free_parameters": 0,
+  "next_execution_started": false,
+  "non_v4_parity": "PASS",
+  "robust_v4_reproduction": "FAIL",
+  "rupture_load_bearing_consistency": "PASS",
+  "shutdown_recommended": "NO \u2014 OWNER OVERRIDE ACTIVE",
+  "status": "GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_REPLAN",
+  "two_edge_structural_accounting": "PASS"
+}

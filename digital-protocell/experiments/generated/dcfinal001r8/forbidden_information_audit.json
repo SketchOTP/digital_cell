@@ -1,0 +1,11 @@
+{
+  "daughter_grace_period_or_newborn_flag": false,
+  "division_state_or_target_ratio": false,
+  "fission_detector_changed": false,
+  "lineage_exemption": false,
+  "maturation_rate_or_rupture_threshold_changed": false,
+  "new_free_parameters": 0,
+  "pass": true,
+  "success_conditioned_repair": false,
+  "v4_only": true
+}

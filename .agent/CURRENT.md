@@ -805,3 +805,13 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Evidence-bearing governed head `40dbc7d8400e438393063e980408664b9cdc44d1` passed exact-head Linux workflow `34372272665`.
 - GitHub artifact digest: `sha256:17bbaf14cf67cd5d5e8aa01f27972347912a819885b609ee1f7b6cb9904d8053`.
 - This append-only pointer does not alter the Gate-7 stop, provisional classification, owner override, or pending independent Architect review.
+
+## DC-FINAL-001-R7 final authority and R8 provisional result
+
+- External Architect acceptance reconciles R7 at final governed head `7363cfaa2c459522583b70d8107f377c08467b76`, exact-head Linux workflow `34373915324 PASS`, and artifact `sha256:a056c1416eb63ea1ef90b8cf508890a716cd2c0af89ce246c66137b4d8d109be` as `R7_ACCEPTED_BOUNDED_NEGATIVE_REPLAN`.
+- Active directive completed provisionally: `DC-FINAL-001-R8-V4-FISSION-CLOSURE-MATERIAL-AND-LOAD-BEARING-CONSISTENCY-EMERGENCY-CLOSURE-001` from that exact R7 head.
+- Exact legacy R7 seed-3 daughters confirm `V4_CLOSING_EDGE_YOUNG_LOAD_CYCLE_CONFIRMED`: each newborn closure edge has half line density and zero mature fraction while legacy mechanics applies maximal stretch; daughter A records 3,674 rupture/rebond cycles and 5,417.959656209351 A of topology repair.
+- R8 introduces zero new parameters. V4-only fission now funds two full-density daughter closing edges through the frozen `y_g=0.9` conversion, V4 stretch load scales continuously with mature structural fraction, and V4 rupture uses the corresponding load-bearing strain. HistoricalV1/V2/V3 semantics remain unchanged.
+- Corrected frozen campaigns remain below qualification: passive `0/10` fissions and `0/10` viable pairs; R5R1 tangential `0/10` and `0/10`; R6 curvature-normal `1/10` and `1/10`; R6 normal-plus-tangential `0/10` and `0/10`. All four remain `10/10` growth-qualified.
+- D-087 remains V2 `8/8`, V3 `8/8`, V4 `7/8` with `[true,true,false,true,true,true,true,true]`; R4 contract/topology tests, legacy D-088 tests, D-091, evolution-harness tests, Linux runtime tests, and Godot compilation pass locally.
+- Provisional classification: `V4_FISSION_CLOSURE_CONSISTENCY_REPAIRED_ROBUST_REPRODUCTION_NOT_ESTABLISHED`. Evolution and final integration are `NOT_REACHED_GATE9_STOP`; Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown recommendation remains `NO — OWNER OVERRIDE ACTIVE`; no successor execution started; independent Architect acceptance and exact-head CI are `PENDING`.

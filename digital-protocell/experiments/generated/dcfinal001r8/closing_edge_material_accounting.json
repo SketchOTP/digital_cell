@@ -1,0 +1,12 @@
+{
+  "corrected_v4_a_cost": "2 * rho_s * distance / frozen_y_g",
+  "corrected_v4_mass_per_daughter": "rho_s * distance",
+  "frozen_y_g": 0.9,
+  "material_created_for_free": false,
+  "new_free_parameters": 0,
+  "one_edge_mass": "rho_s * distance",
+  "pass": true,
+  "prior_total_mass": "rho_s * distance",
+  "rho_s": 1.0,
+  "two_edge_mass": "2 * rho_s * distance"
+}

@@ -1156,3 +1156,11 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - The only R7 fission is not a viable reproductive event: both daughters preserve simple/runtime/lifecycle-valid continuation, but distinct physiological/closure predicates fail. This reinforces the governed distinction between scission and reproduction.
 - The conditional same-signal tangential arm must remain unexecuted because its explicit improvement precondition is false; a nearby composition is not evidence-authorized merely because the primary result is negative.
 - Evolution and final integration remain causally blocked by robust production-V4 reproduction.
+
+## DC-FINAL-001-R8 V4 closure consistency learning
+
+- The V4 declaration that young structure is non-load-bearing must be enforced consistently in force and rupture calculations. Using mature-mass rest length with full stretch stiffness creates maximal load on precisely the material declared unable to carry it.
+- A fission that constructs two independent daughter boundaries needs two full line-density material budgets. Sharing one edge budget across two closures leaves both permanently under-massed and cannot be called conservative V4 construction merely because total partition arithmetic closes.
+- Correcting a real source-contract defect can reduce apparent reproductive success. Under yield-accounted two-edge construction, most formerly marginal scissions no longer have the physical A/material readiness to complete; this is a more honest result, not a regression to hide.
+- Historical half-density newborn snapshots are useful mechanics controls but cannot qualify corrected daughter construction. Their remaining closure failures reflect inherited under-massing, while the one corrected-birth fission produces a simple viable pair.
+- Robust reproduction remains primarily apposition-limited after the contract repair. Do not infer that another actuator, threshold, or lowered closure cost is authorized from the reduced fission count.

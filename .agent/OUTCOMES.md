@@ -2478,3 +2478,13 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 
 - Evidence-bearing governed head `40dbc7d8400e438393063e980408664b9cdc44d1` passed exact-head workflow `34372272665`; artifact digest `sha256:17bbaf14cf67cd5d5e8aa01f27972347912a819885b609ee1f7b6cb9904d8053`.
 - Scientific semantics remain those of head `0dac294efce2745a99d423f28c31065fcbf29e76`; no successor execution started and independent Architect acceptance remains pending.
+
+## DC-FINAL-001-R8 V4 closure consistency — provisional bounded negative
+
+- R7 final authority reconciled: governed head `7363cfaa2c459522583b70d8107f377c08467b76`, workflow `34373915324 PASS`, artifact `sha256:a056c1416eb63ea1ef90b8cf508890a716cd2c0af89ce246c66137b4d8d109be`, disposition `R7_ACCEPTED_BOUNDED_NEGATIVE_REPLAN`.
+- Root cause confirmed on exact R7 newborns: each closure edge had `0.5` of required line density, mature fraction `0`, raw strain `6.138152700989881e15`, and legacy clamped stretch force `56`; daughter A then spent `5417.959656209351` A across `3674` rupture/rebond cycles.
+- Implemented V4-only source consistency: two full-density young closure edges paid at frozen structural yield, mature-fraction stretch loading, and mature-fraction rupture strain. New free parameters: `0`. Fully young, mixed, fully mature, same-edge rebond, V4 closure accounting, and non-V4 parity tests pass.
+- Historical daughter replay removes the catastrophic repair drain but cannot make inherited half-density closure fixtures uniformly closed; corrected-birth qualification remains authoritative.
+- Frozen corrected campaigns: passive `10/10` growth, `0/10` fission, `0/10` viable; R5R1 `10/10`, `0/10`, `0/10`; R6 normal `10/10`, `1/10`, `1/10`; R6 combined `10/10`, `0/10`, `0/10`.
+- M1 preservation remains V2 `8/8`, V3 `8/8`, V4 `7/8`, vector `[true,true,false,true,true,true,true,true]`; downstream preservation passes locally.
+- Classification: `V4_FISSION_CLOSURE_CONSISTENCY_REPAIRED_ROBUST_REPRODUCTION_NOT_ESTABLISHED` under `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_REPLAN`. Evolution/final integration: `NOT_REACHED_GATE9_STOP`. Independent review and exact-head Linux evidence are pending.

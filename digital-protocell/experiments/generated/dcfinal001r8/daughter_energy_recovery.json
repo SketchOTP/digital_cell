@@ -1,0 +1,35 @@
+{
+  "interpretation": "legacy half-density newborns no longer exhibit the catastrophic R7 repair drain, but under-massed historical closures may still rupture as load matures",
+  "rows": [
+    {
+      "a_retention": 1.1418626538543062,
+      "fixture": "r7_seed3_daughter_a.json",
+      "repair_a": 0.0
+    },
+    {
+      "a_retention": 1.2159784170327383,
+      "fixture": "r7_seed3_daughter_b.json",
+      "repair_a": 4.799329792728827
+    },
+    {
+      "a_retention": 1.1523028942950029,
+      "fixture": "r6_normal_seed3_viable_daughter_a.json",
+      "repair_a": 0.0
+    },
+    {
+      "a_retention": 1.3738807677449145,
+      "fixture": "r6_normal_seed3_viable_daughter_b.json",
+      "repair_a": 2.397661753048965
+    },
+    {
+      "a_retention": 1.1106013988994712,
+      "fixture": "r6_normal_tangential_seed3_nonviable_daughter_a.json",
+      "repair_a": 2.3980079843890962
+    },
+    {
+      "a_retention": 1.235200882555311,
+      "fixture": "r6_normal_tangential_seed3_nonviable_daughter_b.json",
+      "repair_a": 2.3995225061543124
+    }
+  ]
+}

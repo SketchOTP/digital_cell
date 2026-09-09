@@ -1,0 +1,8 @@
+{
+  "fully_mature_parity": "EXACT",
+  "fully_young_load": 0.0,
+  "mixed_load": "continuous",
+  "pass": true,
+  "pressure_and_bending": "UNCHANGED",
+  "v4_stretch": "mature_fraction * prior_clamped_stretch"
+}

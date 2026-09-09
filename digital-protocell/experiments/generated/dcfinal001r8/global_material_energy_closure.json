@@ -1,0 +1,6 @@
+{
+  "counted_fission_partition": "PASS",
+  "final_integrated_run": "NOT_REACHED_GATE9_STOP",
+  "r8_parent_geometry_runtime_lifecycle": "PASS",
+  "v4_fission_closure": "PASS_FULL_DENSITY_TWO_EDGE_YIELD_ACCOUNTED"
+}

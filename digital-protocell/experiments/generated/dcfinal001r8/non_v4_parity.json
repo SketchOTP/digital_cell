@@ -1,0 +1,7 @@
+{
+  "ConservativeV2": "UNCHANGED",
+  "GeometryConservativeV3": "UNCHANGED",
+  "HistoricalV1": "UNCHANGED",
+  "pass": true,
+  "unit_test": "non_v4_fission_preserves_shared_half_density_closure_contract"
+}
