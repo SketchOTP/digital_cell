@@ -202,3 +202,7 @@
 - `digital-protocell/experiments/dcfinal001_r5r1_evidence.py` — deterministic compact R5R1 evidence generator preserving R5 authority and sealing the Gate-5 terminal stop.
 - `digital-protocell/experiments/generated/dcfinal001r5r1/` — R5R1 authority, functional localization, contrast/control, reproduction, preservation, stopped-evolution, and provisional terminal qualification evidence.
 - `.github/workflows/dc-final-001-r5r1.yml` — exact-head Linux R5R1 scope, deterministic contrast replay, preservation, D-087, PR #44, reproducibility, and artifact upload.
+- `digital-protocell/examples/dcfinal001_r6_curvature_normal.rs` — R6 entry point reusing the exact R5/R5R1 fixture for tangential-force geometry audit and zero-parameter curvature-gated inward-normal mechanics.
+- `digital-protocell/experiments/dcfinal001_r6_evidence.py` — deterministic compact R6 evidence generator preserving R5R1 authority and sealing the Gate-8 reproduction stop.
+- `digital-protocell/experiments/generated/dcfinal001r6/` — R6 owner override, actuator geometry, curvature/force, controls, reproduction, preservation, stopped-evolution, and provisional qualification evidence.
+- `.github/workflows/dc-final-001-r6.yml` — exact-head Linux R6 scope, deterministic campaign replay, preservation, D-087, PR #44, reproducibility, and artifact upload.

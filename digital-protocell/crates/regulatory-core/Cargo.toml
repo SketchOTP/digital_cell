@@ -185,6 +185,10 @@ name = "dcfinal001_r5r1_strain_contrast"
 path = "../../examples/dcfinal001_r5r1_strain_contrast.rs"
 
 [[example]]
+name = "dcfinal001_r6_curvature_normal"
+path = "../../examples/dcfinal001_r6_curvature_normal.rs"
+
+[[example]]
 name = "dcdev021_m2_entry020"
 path = "../../examples/dcdev021_m2_entry020.rs"
 

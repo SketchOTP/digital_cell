@@ -777,3 +777,14 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Evidence-bearing head `26fda9c11c0e56f9fd0f6e4ddda998f216e03491` passed exact-head Linux workflow `34343908708`.
 - Independently downloaded artifact ZIP digest: `sha256:592981501335f8223698b45074355ee34275f21ffb2c95cc80e30de0fd97718a`.
 - The pointer confirms the R5R1 terminal stop; independent Architect acceptance remains `PENDING`, and no successor execution started.
+
+## DC-FINAL-001-R6 owner override and provisional result
+
+- Owner override `OWNER_TERMINAL_OVERRIDE_ACCEPTED` supersedes the prior R5R1 terminal stop as `SUPERSEDED_BY_OWNER_OVERRIDE_2026-09-09` without rewriting sealed evidence.
+- Sole active directive: `DC-FINAL-001-R6-CURVATURE-GATED-NORMAL-CONSTRICTION-EMERGENCY-CLOSURE-001`, starting from exact R5R1 governed head `456cc98837842af933d3972b8588707ea801bf28`.
+- Gate 1 supports `TANGENTIAL_TENSION_GEOMETRY_MISMATCH_SUPPORTED`: only `0.4007207626603397` of signed normal force magnitude near sampled best appositions points inward.
+- The zero-parameter local curvature signal passes orientation, rigid-transform, reflection, convex-silence, concavity-response, inward-direction, and existing-force-bound checks.
+- Normal-only yields `3/10` geometry-valid fissions and `2/10` viable simple pairs. Its increased stress-qualified apposition count activates the sole conditional normal-plus-existing-tension composition, which yields `5/10` fissions and `2/10` viable pairs.
+- Both active arms close A-to-W; motor-off matches passive and zero-A spends zero active A. The unchanged `7/10` and `6/10` gates fail, so mutation, selection, reversal, and final integration are `NOT_REACHED_GATE8_STOP`.
+- Provisional classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`. End goal remains `NOT_ESTABLISHED`; shutdown recommendation remains `NO — OWNER OVERRIDE ACTIVE`; independent Architect acceptance is `PENDING`; no successor execution started.
+- Repository-wide `scripts/validate_governance.py --mode ADOPTED` remains a `KNOWN_FAIL_PREEXISTING_APPEND_ONLY_SCHEMA_DRIFT`; R6 does not rewrite inherited append-only history to satisfy the newer validator schema and does not claim this check as PASS.

@@ -1163,3 +1163,12 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Frozen boundaries: M1, V4 maturation/growth/topology/fission/viability laws, existing contractility parameters and A-to-W cost, mutation parameters, R2 environments, M2/M3, PR #44, and all semantic-controller prohibitions.
 - Stop rule: if contrast fails `>=7/10` geometry-valid fissions or `>=6/10` simple viable pairs, stop before evolution with `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED` and recommend terminal shutdown; no R6 or further reproduction architecture is authorized.
 - Execution result: original activity is nonuniform but functionally diffuse; contrast strongly reduces active perimeter yet produces only `3/10` fissions and `3/10` viable pairs. Gate 5 stops downstream execution.
+
+## DC-FINAL-001-R6-CURVATURE-GATED-NORMAL-CONSTRICTION-EMERGENCY-CLOSURE-001
+
+- Owner-issued emergency override on `2026-09-09`; it supersedes the prior terminal stop but preserves all R5/R5R1 history append-only.
+- Largest unresolved end-goal gap: robust production-V4 neck generation, upstream of mutation, selection, reversal, and integrated closure.
+- Authorized execution: first audit tangential-force geometry; only on demonstrated mismatch apply the preregistered local signed-curvature/neighbor-deficit drive as bounded inward-normal force through the existing A-funded self-contact path. One conditional same-drive normal-plus-existing-tension composition is allowed only after direct apposition improvement.
+- Frozen boundaries: M1, V4 maturation/growth/topology/fission/viability, force/cost bounds, mutation parameters, R2 ecology, M2/M3, PR #44, and all semantic division/controller prohibitions.
+- Stop rule: no additional force coefficient, target, fission threshold, nearest-apposition input, or successor mechanism. Stop before evolution if robust reproduction remains below `7/10` fissions or `6/10` viable pairs.
+- Execution result: mismatch supported; normal-only `3/10` and `2/10`; conditionally executed normal-plus-tension `5/10` and `2/10`; robust reproduction remains unestablished and downstream work is not reached.

@@ -10,7 +10,9 @@ use chemistry_core::mesh_fission::{
     FissionParams,
 };
 use chemistry_core::mesh_growth::{growth_step, GrowthParams};
-use chemistry_core::mesh_mechanics::{mechanics_step_with_reference_lengths, MechParams};
+use chemistry_core::mesh_mechanics::{
+    mechanics_step_with_reference_lengths, MechParams, MAX_EXTERNAL_FORCE_PER_VERTEX,
+};
 use chemistry_core::mesh_reactions::{reactions_step, ReactionParams};
 use chemistry_core::mesh_self_contact::{mechanics_step_with_local_self_contact, polygon_simple};
 use chemistry_core::mesh_topology::{find_local_pinch, local_rebond_range};
@@ -19,9 +21,10 @@ use chemistry_core::planar_ring_topology::{remesh_preserving_simple, PlanarRingT
 use regulatory_core::continuity::{ContinuityNetworkV1, TopologyEventV1};
 use regulatory_core::contractility::{
     apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_self_contact,
-    ContractilityParamsV1,
+    ContractilityParamsV1, FROZEN_RESERVE_COST_PER_FORCE_LENGTH_TIME,
 };
 use regulatory_core::material_adapter::observe_continuity_material_frame;
+use regulatory_core::FROZEN_STATIC_TRACTION_LIMIT;
 use serde::Serialize;
 use serde_json::{json, Value};
 use std::{env, fs, path::PathBuf};
@@ -54,6 +57,10 @@ enum Mode {
     ContrastFallback,
     ContrastMotorOff,
     ContrastZeroA,
+    CurvatureNormal,
+    CurvatureNormalMotorOff,
+    CurvatureNormalZeroA,
+    CurvatureNormalTangential,
 }
 
 impl Mode {
@@ -67,6 +74,10 @@ impl Mode {
             Self::ContrastFallback => "ZERO_PARAMETER_MEAN_RELATIVE_STRAIN",
             Self::ContrastMotorOff => "ZERO_PARAMETER_CONTRAST_MOTOR_OFF",
             Self::ContrastZeroA => "ZERO_PARAMETER_CONTRAST_ZERO_A",
+            Self::CurvatureNormal => "CURVATURE_GATED_NORMAL_ONLY",
+            Self::CurvatureNormalMotorOff => "CURVATURE_NORMAL_MOTOR_OFF",
+            Self::CurvatureNormalZeroA => "CURVATURE_NORMAL_ZERO_A",
+            Self::CurvatureNormalTangential => "CURVATURE_NORMAL_PLUS_TANGENTIAL",
         }
     }
 }
@@ -95,6 +106,16 @@ struct FunctionalLocalization {
     sampled_nearest_activity: Vec<f64>,
     sampled_outside_activity: Vec<f64>,
     sampled_distance_over_range: Vec<f64>,
+    best_apposition: Option<Value>,
+}
+
+#[derive(Clone, Debug, Default, Serialize)]
+struct ActuatorGeometryAudit {
+    sampled_steps: usize,
+    inward_normal_component_sum: f64,
+    outward_normal_component_sum: f64,
+    absolute_normal_component_sum: f64,
+    absolute_tangential_component_sum: f64,
     best_apposition: Option<Value>,
 }
 
@@ -155,8 +176,228 @@ struct RunResult {
     final_geometry: Value,
     #[serde(skip)]
     functional_localization: FunctionalLocalization,
+    actuator_geometry: ActuatorGeometryAudit,
     #[serde(skip)]
     final_mesh: MaterialMesh,
+}
+
+fn local_inward_normal_and_tangent(mesh: &MaterialMesh, vertex: usize) -> ([f64; 2], [f64; 2]) {
+    let n = mesh.n();
+    let prev = mesh.vertices[(vertex + n - 1) % n];
+    let here = mesh.vertices[vertex];
+    let next = mesh.vertices[(vertex + 1) % n];
+    let incoming = [here[0] - prev[0], here[1] - prev[1]];
+    let outgoing = [next[0] - here[0], next[1] - here[1]];
+    let incoming_length = incoming[0].hypot(incoming[1]).max(1e-15);
+    let outgoing_length = outgoing[0].hypot(outgoing[1]).max(1e-15);
+    let tangent = [
+        incoming[0] / incoming_length + outgoing[0] / outgoing_length,
+        incoming[1] / incoming_length + outgoing[1] / outgoing_length,
+    ];
+    let tangent_length = tangent[0].hypot(tangent[1]).max(1e-15);
+    let tangent = [tangent[0] / tangent_length, tangent[1] / tangent_length];
+    let orientation = if mesh.signed_area() >= 0.0 { 1.0 } else { -1.0 };
+    let inward = [-orientation * tangent[1], orientation * tangent[0]];
+    (inward, tangent)
+}
+
+fn curvature_components(mesh: &MaterialMesh) -> (Vec<f64>, Vec<f64>, Vec<f64>, Vec<f64>) {
+    let n = mesh.n();
+    let orientation = if mesh.signed_area() >= 0.0 { 1.0 } else { -1.0 };
+    let signed_turn = (0..n)
+        .map(|vertex| {
+            let prev = mesh.vertices[(vertex + n - 1) % n];
+            let here = mesh.vertices[vertex];
+            let next = mesh.vertices[(vertex + 1) % n];
+            let incoming = [here[0] - prev[0], here[1] - prev[1]];
+            let outgoing = [next[0] - here[0], next[1] - here[1]];
+            let incoming_length = incoming[0].hypot(incoming[1]).max(1e-15);
+            let outgoing_length = outgoing[0].hypot(outgoing[1]).max(1e-15);
+            let incoming = [incoming[0] / incoming_length, incoming[1] / incoming_length];
+            let outgoing = [outgoing[0] / outgoing_length, outgoing[1] / outgoing_length];
+            let cross = incoming[0] * outgoing[1] - incoming[1] * outgoing[0];
+            let dot = (incoming[0] * outgoing[0] + incoming[1] * outgoing[1]).clamp(-1.0, 1.0);
+            orientation * cross.atan2(dot)
+        })
+        .collect::<Vec<_>>();
+    let concavity = signed_turn
+        .iter()
+        .map(|turn| (-turn / std::f64::consts::PI).max(0.0).min(1.0))
+        .collect::<Vec<_>>();
+    let deficit = (0..n)
+        .map(|vertex| {
+            let neighbor =
+                0.5 * (signed_turn[(vertex + n - 1) % n] + signed_turn[(vertex + 1) % n]);
+            ((neighbor - signed_turn[vertex]) / std::f64::consts::PI)
+                .max(0.0)
+                .min(1.0)
+        })
+        .collect::<Vec<_>>();
+    let drive = concavity
+        .iter()
+        .zip(&deficit)
+        .map(|(left, right)| left.max(*right).min(1.0))
+        .collect::<Vec<_>>();
+    (signed_turn, concavity, deficit, drive)
+}
+
+fn inward_normal_request(mesh: &MaterialMesh, drive: &[f64], dt: f64) -> (Vec<[f64; 2]>, f64) {
+    let force_budget = (MAX_EXTERNAL_FORCE_PER_VERTEX - FROZEN_STATIC_TRACTION_LIMIT).max(0.0);
+    let forces = (0..mesh.n())
+        .map(|vertex| {
+            let (inward, _) = local_inward_normal_and_tangent(mesh, vertex);
+            let magnitude = force_budget * drive[vertex].clamp(0.0, 1.0);
+            [magnitude * inward[0], magnitude * inward[1]]
+        })
+        .collect::<Vec<_>>();
+    let requested = forces
+        .iter()
+        .enumerate()
+        .map(|(vertex, force)| {
+            let local_length = 0.5
+                * (mesh.edge_length(vertex) + mesh.edge_length((vertex + mesh.n() - 1) % mesh.n()));
+            FROZEN_RESERVE_COST_PER_FORCE_LENGTH_TIME * force[0].hypot(force[1]) * local_length * dt
+        })
+        .sum();
+    (forces, requested)
+}
+
+fn active_edge_tension_forces(
+    mesh: &MaterialMesh,
+    activity: &[f64],
+    mechanics: &MechParams,
+    contractility: &ContractilityParamsV1,
+) -> Vec<[f64; 2]> {
+    let mut tensions = vec![0.0; mesh.n()];
+    let mut requested = 0.0;
+    for edge in 0..mesh.n() {
+        if mesh.edges[edge].ruptured {
+            continue;
+        }
+        let edge_activity = 0.5 * (activity[edge] + activity[(edge + 1) % mesh.n()]);
+        let tension = contractility.max_active_tension * edge_activity;
+        tensions[edge] = tension;
+        requested += contractility.reserve_cost_per_force_length_time
+            * tension
+            * mesh.edge_length(edge)
+            * mechanics.dt.max(0.0);
+    }
+    let available = mesh.interior.a.max(0.0) * mesh.area().max(1e-300);
+    let scale = if requested <= f64::EPSILON {
+        0.0
+    } else {
+        (available / requested).min(1.0)
+    };
+    let mut forces = vec![[0.0, 0.0]; mesh.n()];
+    for edge in 0..mesh.n() {
+        let tension = tensions[edge] * scale;
+        if tension <= 0.0 {
+            continue;
+        }
+        let next = (edge + 1) % mesh.n();
+        let delta = [
+            mesh.vertices[next][0] - mesh.vertices[edge][0],
+            mesh.vertices[next][1] - mesh.vertices[edge][1],
+        ];
+        let length = delta[0].hypot(delta[1]).max(1e-15);
+        let tangent = [delta[0] / length, delta[1] / length];
+        forces[edge][0] += tension * tangent[0];
+        forces[edge][1] += tension * tangent[1];
+        forces[next][0] -= tension * tangent[0];
+        forces[next][1] -= tension * tangent[1];
+    }
+    forces
+}
+
+fn segment_pair_distance(mesh: &MaterialMesh, i: usize, j: usize) -> f64 {
+    closest_segment_distance(
+        mesh.vertices[i],
+        mesh.vertices[(i + 1) % mesh.n()],
+        mesh.vertices[j],
+        mesh.vertices[(j + 1) % mesh.n()],
+    )
+}
+
+fn actuator_geometry_before(
+    mesh: &MaterialMesh,
+    activity: &[f64],
+    mechanics: &MechParams,
+    contractility: &ContractilityParamsV1,
+    fission: &FissionParams,
+) -> Value {
+    let pair = pair_observer(mesh, fission);
+    let indices = pair["nearest_pair"].as_array().unwrap();
+    let i = indices[0].as_u64().unwrap() as usize;
+    let j = indices[1].as_u64().unwrap() as usize;
+    let forces = active_edge_tension_forces(mesh, activity, mechanics, contractility);
+    let vertices = [i, (i + 1) % mesh.n(), j, (j + 1) % mesh.n()];
+    let mut inward = 0.0;
+    let mut outward = 0.0;
+    let mut absolute_normal = 0.0;
+    let mut absolute_tangential = 0.0;
+    let rows = vertices
+        .iter()
+        .map(|vertex| {
+            let (normal, tangent) = local_inward_normal_and_tangent(mesh, *vertex);
+            let normal_component = forces[*vertex][0] * normal[0] + forces[*vertex][1] * normal[1];
+            let tangential_component =
+                forces[*vertex][0] * tangent[0] + forces[*vertex][1] * tangent[1];
+            inward += normal_component.max(0.0);
+            outward += (-normal_component).max(0.0);
+            absolute_normal += normal_component.abs();
+            absolute_tangential += tangential_component.abs();
+            json!({
+                "vertex": vertex,
+                "active_edge_tension_force": forces[*vertex],
+                "inward_normal": normal,
+                "local_tangent": tangent,
+                "normal_component": normal_component,
+                "tangential_component": tangential_component,
+            })
+        })
+        .collect::<Vec<_>>();
+    json!({
+        "nearest_pair": [i,j],
+        "distance_before": segment_pair_distance(mesh,i,j),
+        "distance_over_range_before": pair["minimum_distance_over_range"],
+        "inward_normal_component": inward,
+        "outward_normal_component": outward,
+        "absolute_normal_component": absolute_normal,
+        "absolute_tangential_component": absolute_tangential,
+        "vertices": rows,
+    })
+}
+
+fn update_actuator_geometry_after(
+    audit: &mut ActuatorGeometryAudit,
+    mesh: &MaterialMesh,
+    mut row: Value,
+) {
+    let indices = row["nearest_pair"].as_array().unwrap();
+    let i = indices[0].as_u64().unwrap() as usize;
+    let j = indices[1].as_u64().unwrap() as usize;
+    if i >= mesh.n() || j >= mesh.n() {
+        return;
+    }
+    let after = segment_pair_distance(mesh, i, j);
+    let before = row["distance_before"].as_f64().unwrap();
+    row["distance_after"] = json!(after);
+    row["next_step_apposition_change"] = json!(before - after);
+    audit.sampled_steps += 1;
+    audit.inward_normal_component_sum += row["inward_normal_component"].as_f64().unwrap();
+    audit.outward_normal_component_sum += row["outward_normal_component"].as_f64().unwrap();
+    audit.absolute_normal_component_sum += row["absolute_normal_component"].as_f64().unwrap();
+    audit.absolute_tangential_component_sum +=
+        row["absolute_tangential_component"].as_f64().unwrap();
+    let replace = audit
+        .best_apposition
+        .as_ref()
+        .and_then(|value| value["distance_over_range_before"].as_f64())
+        .map(|best| row["distance_over_range_before"].as_f64().unwrap() < best)
+        .unwrap_or(true);
+    if replace {
+        audit.best_apposition = Some(row);
+    }
 }
 
 fn perturb(mesh: &mut MaterialMesh, kind: &str, magnitude: f64) {
@@ -692,6 +933,7 @@ fn run(
     let mut counts = FailureCounts::default();
     let mut attribution = Attribution::default();
     let mut functional_localization = FunctionalLocalization::default();
+    let mut actuator_geometry = ActuatorGeometryAudit::default();
     let mut deepest = "NO_NONADJACENT_APPOSITION".to_string();
     for absolute_step in (start_step + 1)..=end_step {
         if !mesh.can_advance_physics() {
@@ -720,6 +962,10 @@ fn run(
             Mode::ContrastFallback | Mode::ContrastMotorOff | Mode::ContrastZeroA => {
                 contrast_activity(&mesh)
             }
+            Mode::CurvatureNormal
+            | Mode::CurvatureNormalMotorOff
+            | Mode::CurvatureNormalZeroA
+            | Mode::CurvatureNormalTangential => curvature_components(&mesh).3,
             _ => {
                 if regulator.step(frame, event).is_err() {
                     attribution.continuity_failures += 1;
@@ -734,7 +980,13 @@ fn run(
         if regulator_on
             || matches!(
                 mode,
-                Mode::ContrastFallback | Mode::ContrastMotorOff | Mode::ContrastZeroA
+                Mode::ContrastFallback
+                    | Mode::ContrastMotorOff
+                    | Mode::ContrastZeroA
+                    | Mode::CurvatureNormal
+                    | Mode::CurvatureNormalMotorOff
+                    | Mode::CurvatureNormalZeroA
+                    | Mode::CurvatureNormalTangential
             )
         {
             update_attribution(&mut attribution, &mesh, &activity);
@@ -752,15 +1004,47 @@ fn run(
         let edge_lengths_before = (0..mesh.n())
             .map(|index| mesh.edge_length(index))
             .collect::<Vec<_>>();
+        let actuator_geometry_row = (sampled_localization
+            && matches!(mode, Mode::RegulatorMotor | Mode::ContrastFallback))
+        .then(|| actuator_geometry_before(&mesh, &activity, &mechanics, &contractility, &fission));
 
         let mechanics_ok = match mode {
-            Mode::Passive | Mode::RegulatorOnMotorOff | Mode::ContrastMotorOff => {
+            Mode::Passive
+            | Mode::RegulatorOnMotorOff
+            | Mode::ContrastMotorOff
+            | Mode::CurvatureNormalMotorOff => {
                 mechanics_step_with_local_self_contact(&mut mesh, &mechanics).is_some()
             }
             Mode::RegulatorOffMotorOnZero | Mode::RegulatorMotor | Mode::ContrastFallback => {
                 let zeros = vec![[0.0, 0.0]; mesh.n()];
                 match apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_self_contact(
                     &mut mesh, &activity, &mechanics, &contractility, &zeros, 0.0, &zeros,
+                ) {
+                    Ok(ledger) => {
+                        attribution.requested_a += ledger.requested_resource;
+                        attribution.spent_a += ledger.resource_spent;
+                        attribution.produced_w += ledger.waste_amount_after - ledger.waste_amount_before;
+                        true
+                    }
+                    Err(_) => false,
+                }
+            }
+            Mode::CurvatureNormal | Mode::CurvatureNormalTangential => {
+                let (forces, requested) = inward_normal_request(&mesh, &activity, mechanics.dt);
+                let tangential_activity = if mode == Mode::CurvatureNormalTangential {
+                    activity.clone()
+                } else {
+                    vec![0.0; mesh.n()]
+                };
+                let passive = vec![[0.0, 0.0]; mesh.n()];
+                match apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_self_contact(
+                    &mut mesh,
+                    &tangential_activity,
+                    &mechanics,
+                    &contractility,
+                    &forces,
+                    requested,
+                    &passive,
                 ) {
                     Ok(ledger) => {
                         attribution.requested_a += ledger.requested_resource;
@@ -788,6 +1072,31 @@ fn run(
                     Err(_) => false,
                 }
             }
+            Mode::CurvatureNormalZeroA => {
+                let area_before = mesh.area().max(1e-300);
+                let saved_a = mesh.interior.a.max(0.0) * area_before;
+                mesh.interior.a = 0.0;
+                let (forces, requested) = inward_normal_request(&mesh, &activity, mechanics.dt);
+                let tangential_activity = vec![0.0; mesh.n()];
+                let passive = vec![[0.0, 0.0]; mesh.n()];
+                let ledger = apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_self_contact(
+                    &mut mesh,
+                    &tangential_activity,
+                    &mechanics,
+                    &contractility,
+                    &forces,
+                    requested,
+                    &passive,
+                );
+                match ledger {
+                    Ok(ledger) => {
+                        attribution.zero_a_spent += ledger.resource_spent;
+                        mesh.interior.a = saved_a / mesh.area().max(1e-300);
+                        true
+                    }
+                    Err(_) => false,
+                }
+            }
         };
         if !mechanics_ok {
             first_invalid = Some(json!({"step":absolute_step,"phase":"mechanics"}));
@@ -799,6 +1108,9 @@ fn run(
             &edge_lengths_before,
             &mesh,
         );
+        if let Some(row) = actuator_geometry_row {
+            update_actuator_geometry_after(&mut actuator_geometry, &mesh, row);
+        }
         let _ = remesh_preserving_simple(&mut mesh);
         let planar = PlanarRingTopology::from_mesh(&mesh);
         if absolute_step.saturating_sub(1) % 10 == 0 {
@@ -910,6 +1222,7 @@ fn run(
         attribution,
         final_geometry: geometry(&mesh),
         functional_localization,
+        actuator_geometry,
         final_mesh: mesh,
     }
 }
@@ -1348,6 +1661,356 @@ pub fn run_r5r1() {
         "digital_cell_end_goal": if reproduction_pass {"PENDING_EVOLUTION_AND_FINAL_INTEGRATION"} else {"NOT_ESTABLISHED"},
         "shutdown_recommended": !reproduction_pass,
         "new_free_parameters": 0,
+    });
+    fs::write(output, serde_json::to_vec_pretty(&result).unwrap()).unwrap();
+}
+
+/// R6 Gate 1 replays the sealed R5R1 tangential contrast arm and observes the
+/// active edge-tension force geometry. It does not add or apply a normal-force
+/// mechanism.
+pub fn run_r6_gate1() {
+    let mut output = PathBuf::from("/tmp/dcfinal001_r6_gate1.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let reaction = ReactionParams::default();
+    let mechanics = MechParams::default();
+    let horizon = LEGACY_HORIZON + (1.0 / (reaction.k_turn * mechanics.dt)).ceil() as usize;
+    assert_eq!(horizon, 14_778);
+    let contrast = campaign(Mode::ContrastFallback, horizon);
+    let inward = contrast
+        .iter()
+        .map(|run| run.actuator_geometry.inward_normal_component_sum)
+        .sum::<f64>();
+    let outward = contrast
+        .iter()
+        .map(|run| run.actuator_geometry.outward_normal_component_sum)
+        .sum::<f64>();
+    let normal = contrast
+        .iter()
+        .map(|run| run.actuator_geometry.absolute_normal_component_sum)
+        .sum::<f64>();
+    let tangential = contrast
+        .iter()
+        .map(|run| run.actuator_geometry.absolute_tangential_component_sum)
+        .sum::<f64>();
+    let inward_fraction = inward / (inward + outward).max(1e-300);
+    let normal_fraction = normal / (normal + tangential).max(1e-300);
+    let equivalent = inward_fraction > 0.5 && normal_fraction >= 0.5;
+    let result = json!({
+        "directive": "DC-FINAL-001-R6-CURVATURE-GATED-NORMAL-CONSTRICTION-EMERGENCY-CLOSURE-001",
+        "gate": 1,
+        "starting_head": "456cc98837842af933d3972b8588707ea801bf28",
+        "sealed_r5r1_replay": campaign_summary(&contrast),
+        "force_geometry": {
+            "inward_normal_component_sum": inward,
+            "outward_normal_component_sum": outward,
+            "absolute_normal_component_sum": normal,
+            "absolute_tangential_component_sum": tangential,
+            "inward_fraction_of_signed_normal_magnitude": inward_fraction,
+            "normal_fraction_of_normal_plus_tangential_magnitude": normal_fraction,
+            "per_arm_best_apposition": contrast.iter().map(|run| json!({
+                "name":run.name,
+                "geometry":run.actuator_geometry,
+            })).collect::<Vec<_>>(),
+        },
+        "equivalence_rule": "inward_fraction > 0.5 AND normal_fraction >= 0.5",
+        "classification": if equivalent {
+            "TANGENTIAL_TENSION_ALREADY_EQUIVALENT_TO_NORMAL_CONSTRICTION"
+        } else {
+            "TANGENTIAL_TENSION_GEOMETRY_MISMATCH_SUPPORTED"
+        },
+        "scientific_state_changed": false,
+    });
+    fs::write(output, serde_json::to_vec_pretty(&result).unwrap()).unwrap();
+}
+
+fn curvature_signal_qualification() -> Value {
+    let base = fixture(0);
+    let base_drive = curvature_components(&base).3;
+    let mut rotated = base.clone();
+    let angle = 0.731_f64;
+    let (sine, cosine) = angle.sin_cos();
+    for point in &mut rotated.vertices {
+        let x = point[0];
+        let y = point[1];
+        point[0] = cosine * x - sine * y + 3.25;
+        point[1] = sine * x + cosine * y - 1.75;
+    }
+    let rotated_drive = curvature_components(&rotated).3;
+    let rotation_translation_error = base_drive
+        .iter()
+        .zip(&rotated_drive)
+        .map(|(left, right)| (left - right).abs())
+        .fold(0.0, f64::max);
+
+    let mut reflected = base.clone();
+    for point in &mut reflected.vertices {
+        point[0] = -point[0];
+    }
+    let reflected_drive = curvature_components(&reflected).3;
+    let reflection_error = base_drive
+        .iter()
+        .zip(&reflected_drive)
+        .map(|(left, right)| (left - right).abs())
+        .fold(0.0, f64::max);
+
+    let mut regular = chemistry_core::mesh_population::MeshPopulation::seed_one(5.0, 1, 2.2)
+        .individuals
+        .remove(0)
+        .mesh;
+    let regular_drive = curvature_components(&regular).3;
+    let regular_max = regular_drive.iter().copied().fold(0.0, f64::max);
+    let center = regular.centroid();
+    let concave_vertex = 0;
+    regular.vertices[concave_vertex][0] =
+        0.25 * regular.vertices[concave_vertex][0] + 0.75 * center[0];
+    regular.vertices[concave_vertex][1] =
+        0.25 * regular.vertices[concave_vertex][1] + 0.75 * center[1];
+    let (_, concavity, deficit, concave_drive) = curvature_components(&regular);
+    let concave_response = concave_drive[concave_vertex];
+
+    let (forces, requested) = inward_normal_request(&base, &base_drive, MechParams::default().dt);
+    let maximum_force = forces
+        .iter()
+        .map(|force| force[0].hypot(force[1]))
+        .fold(0.0, f64::max);
+    let maximum_direction_error = forces
+        .iter()
+        .enumerate()
+        .filter(|(vertex, _)| base_drive[*vertex] > 0.0)
+        .map(|(vertex, force)| {
+            let (inward, _) = local_inward_normal_and_tangent(&base, vertex);
+            let magnitude = force[0].hypot(force[1]);
+            if magnitude <= 0.0 {
+                0.0
+            } else {
+                (1.0 - (force[0] * inward[0] + force[1] * inward[1]) / magnitude).abs()
+            }
+        })
+        .fold(0.0, f64::max);
+    let pass = rotation_translation_error <= 1e-12
+        && reflection_error <= 1e-12
+        && regular_max <= 1e-12
+        && concave_response > 0.0
+        && maximum_force <= MAX_EXTERNAL_FORCE_PER_VERTEX + 1e-12
+        && maximum_direction_error <= 1e-12
+        && requested >= 0.0;
+    json!({
+        "pass":pass,
+        "formula":{
+            "signed_turn":"orientation_sign * atan2(cross(tangent_prev,tangent_next), dot(tangent_prev,tangent_next))",
+            "concavity":"max(-signed_turn/pi,0)",
+            "curvature_deficit":"max((0.5*(previous_turn+next_turn)-signed_turn)/pi,0)",
+            "normal_drive":"max(concavity,curvature_deficit) clamped [0,1]",
+        },
+        "rotation_translation_error":rotation_translation_error,
+        "reflection_error":reflection_error,
+        "regular_polygon_max_drive":regular_max,
+        "concave_vertex":concave_vertex,
+        "concavity_at_concave_vertex":concavity[concave_vertex],
+        "deficit_at_concave_vertex":deficit[concave_vertex],
+        "drive_at_concave_vertex":concave_response,
+        "maximum_force":maximum_force,
+        "force_bound":MAX_EXTERNAL_FORCE_PER_VERTEX,
+        "maximum_inward_direction_error":maximum_direction_error,
+        "requested_a":requested,
+    })
+}
+
+fn apposition_score(runs: &[RunResult]) -> Value {
+    let within = runs
+        .iter()
+        .flat_map(|run| &run.attempts)
+        .map(|attempt| {
+            attempt["detail"]["pairs"]["within_range_pairs"]
+                .as_u64()
+                .unwrap_or(0)
+        })
+        .sum::<u64>();
+    let stressed = runs
+        .iter()
+        .flat_map(|run| &run.attempts)
+        .map(|attempt| {
+            attempt["detail"]["pairs"]["stressed_within_range_pairs"]
+                .as_u64()
+                .unwrap_or(0)
+        })
+        .sum::<u64>();
+    let minimum_ratio = runs
+        .iter()
+        .flat_map(|run| &run.checkpoints)
+        .filter_map(|checkpoint| {
+            checkpoint["pair_observer"]["minimum_distance_over_range"].as_f64()
+        })
+        .fold(f64::INFINITY, f64::min);
+    json!({
+        "within_range_candidate_count_at_attempts":within,
+        "stress_qualified_candidate_count_at_attempts":stressed,
+        "minimum_sampled_distance_over_range":minimum_ratio,
+    })
+}
+
+fn active_energy_summary(runs: &[RunResult]) -> Value {
+    let requested = runs
+        .iter()
+        .map(|run| run.attribution.requested_a)
+        .sum::<f64>();
+    let spent = runs.iter().map(|run| run.attribution.spent_a).sum::<f64>();
+    let produced = runs
+        .iter()
+        .map(|run| run.attribution.produced_w)
+        .sum::<f64>();
+    let residual = (spent - produced).abs();
+    json!({
+        "requested_a":requested,
+        "spent_a":spent,
+        "produced_w":produced,
+        "residual":residual,
+        "pass":residual <= 1e-8*(1.0+spent),
+    })
+}
+
+pub fn run_r6() {
+    const R6_DIRECTIVE: &str =
+        "DC-FINAL-001-R6-CURVATURE-GATED-NORMAL-CONSTRICTION-EMERGENCY-CLOSURE-001";
+    let mut output = PathBuf::from("/tmp/dcfinal001_r6_curvature_normal.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let horizon = 14_778;
+    let passive = campaign(Mode::Passive, horizon);
+    let tangential = campaign(Mode::ContrastFallback, horizon);
+    let inward = tangential
+        .iter()
+        .map(|run| run.actuator_geometry.inward_normal_component_sum)
+        .sum::<f64>();
+    let outward = tangential
+        .iter()
+        .map(|run| run.actuator_geometry.outward_normal_component_sum)
+        .sum::<f64>();
+    let normal_component = tangential
+        .iter()
+        .map(|run| run.actuator_geometry.absolute_normal_component_sum)
+        .sum::<f64>();
+    let tangential_component = tangential
+        .iter()
+        .map(|run| run.actuator_geometry.absolute_tangential_component_sum)
+        .sum::<f64>();
+    let inward_fraction = inward / (inward + outward).max(1e-300);
+    let normal_fraction = normal_component / (normal_component + tangential_component).max(1e-300);
+    let geometry_mismatch = !(inward_fraction > 0.5 && normal_fraction >= 0.5);
+    assert!(
+        geometry_mismatch,
+        "Gate 1 requires stopping before normal-force execution"
+    );
+
+    let signal = curvature_signal_qualification();
+    assert_eq!(
+        signal["pass"], true,
+        "curvature signal qualification failed"
+    );
+    let normal = campaign(Mode::CurvatureNormal, horizon);
+    let motor_off = campaign(Mode::CurvatureNormalMotorOff, horizon);
+    let zero_a = campaign(Mode::CurvatureNormalZeroA, horizon);
+    let tangential_score = apposition_score(&tangential);
+    let normal_score = apposition_score(&normal);
+    let (_, tangential_fissions, _) = result_counts(&tangential);
+    let (normal_growth, normal_fissions, normal_viable) = result_counts(&normal);
+    let normal_reproduction = normal_growth >= 8 && normal_fissions >= 7 && normal_viable >= 6;
+    let apposition_improved = normal_fissions > tangential_fissions
+        || normal_score["within_range_candidate_count_at_attempts"]
+            .as_u64()
+            .unwrap_or(0)
+            > tangential_score["within_range_candidate_count_at_attempts"]
+                .as_u64()
+                .unwrap_or(0)
+        || normal_score["stress_qualified_candidate_count_at_attempts"]
+            .as_u64()
+            .unwrap_or(0)
+            > tangential_score["stress_qualified_candidate_count_at_attempts"]
+                .as_u64()
+                .unwrap_or(0);
+    let combined = (!normal_reproduction && apposition_improved)
+        .then(|| campaign(Mode::CurvatureNormalTangential, horizon));
+    let selected = if normal_reproduction {
+        &normal
+    } else {
+        combined.as_ref().unwrap_or(&normal)
+    };
+    let (selected_growth, selected_fissions, selected_viable) = result_counts(selected);
+    let reproduction_pass = selected_growth >= 8 && selected_fissions >= 7 && selected_viable >= 6;
+    let zero_a_spent = zero_a
+        .iter()
+        .map(|run| run.attribution.zero_a_spent)
+        .sum::<f64>();
+    let result = json!({
+        "directive":R6_DIRECTIVE,
+        "starting_head":"456cc98837842af933d3972b8588707ea801bf28",
+        "owner_override":"PASS",
+        "qualification_horizon":horizon,
+        "tangential_geometry_audit":{
+            "classification":"TANGENTIAL_TENSION_GEOMETRY_MISMATCH_SUPPORTED",
+            "inward_normal_component_sum":inward,
+            "outward_normal_component_sum":outward,
+            "absolute_normal_component_sum":normal_component,
+            "absolute_tangential_component_sum":tangential_component,
+            "inward_fraction":inward_fraction,
+            "normal_fraction":normal_fraction,
+            "per_arm":tangential.iter().map(|run|json!({"name":run.name,"audit":run.actuator_geometry})).collect::<Vec<_>>(),
+        },
+        "curvature_signal":signal,
+        "normal_force_contract":{
+            "direction":"LOCAL_INWARD_VERTEX_NORMAL",
+            "drive":"max(concavity, local_neighbor_curvature_deficit)",
+            "force_scale":"MAX_EXTERNAL_FORCE_PER_VERTEX - FROZEN_STATIC_TRACTION_LIMIT",
+            "force_bound":MAX_EXTERNAL_FORCE_PER_VERTEX,
+            "cost":FROZEN_RESERVE_COST_PER_FORCE_LENGTH_TIME,
+            "existing_funded_path":true,
+            "new_free_parameters":0,
+            "normal_only_tangential_activity":0,
+        },
+        "campaigns":{
+            "passive":campaign_summary(&passive),
+            "r5r1_tangential":campaign_summary(&tangential),
+            "normal_only":campaign_summary(&normal),
+            "normal_motor_off":campaign_summary(&motor_off),
+            "normal_zero_a":campaign_summary(&zero_a),
+            "normal_plus_tangential":combined.as_ref().map(|runs|campaign_summary(runs)),
+        },
+        "apposition":{
+            "tangential":tangential_score,
+            "normal_only":normal_score,
+            "materially_improved":apposition_improved,
+            "conditional_combined_executed":combined.is_some(),
+            "criterion":"greater valid fission count OR greater within-range/stress-qualified candidate count at unchanged official attempts",
+        },
+        "energy":{
+            "normal_only":active_energy_summary(&normal),
+            "normal_plus_tangential":combined.as_ref().map(|runs|active_energy_summary(runs)),
+            "zero_a_spent":zero_a_spent,
+            "zero_a_pass":zero_a_spent <= 1e-12,
+        },
+        "reproduction":{
+            "selected":if normal_reproduction {Mode::CurvatureNormal.label()} else if combined.is_some(){Mode::CurvatureNormalTangential.label()}else{Mode::CurvatureNormal.label()},
+            "growth_qualified":selected_growth,
+            "geometry_valid_fissions":selected_fissions,
+            "simple_viable_daughter_pairs":selected_viable,
+            "pass":reproduction_pass,
+        },
+        "evolution_execution":if reproduction_pass{"REQUIRED_CONTINUE_GATE10"}else{"NOT_REACHED_GATE8_STOP"},
+        "classification":if reproduction_pass{"V4_CURVATURE_GATED_NORMAL_CONSTRICTION_ROBUST_REPRODUCTION_QUALIFIED_PENDING_EVOLUTION"}else{"V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED"},
+        "digital_cell_end_goal":if reproduction_pass{"PENDING_EVOLUTION_AND_FINAL_INTEGRATION"}else{"NOT_ESTABLISHED"},
+        "shutdown_recommended":"NO — OWNER OVERRIDE ACTIVE",
+        "new_free_parameters":0,
+        "next_execution_started":false,
+        "independent_architect_acceptance":"PENDING",
     });
     fs::write(output, serde_json::to_vec_pretty(&result).unwrap()).unwrap();
 }

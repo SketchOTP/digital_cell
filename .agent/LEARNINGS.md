@@ -1140,3 +1140,11 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - A fission count cannot replace viable reproduction. The contrast zero-A control reaches `7/10` fissions while producing `0/10` viable pairs; the unchanged paired viability requirement remains essential.
 - Contrast improves viability conditional on fission (`3/3` counted pairs) but reduces event frequency to `3/10`, leaving robust reproduction unqualified.
 - With passive, broad strain-regulated contractility, and the sole zero-parameter localization fallback exhausted under fixed laws, R5R1 reaches the externally defined terminal stop. No further reproduction mechanism or evolutionary execution is authorized without a new independent directive.
+
+## DC-FINAL-001-R6 curvature-normal learning
+
+- Endpoint-pulling edge tension is not mechanically interchangeable with direct inward-normal force at emerging appositions: sampled R5R1 tension has more outward than inward signed-normal content even though absolute normal and tangential components are comparable.
+- A strictly local signed-curvature/neighbor-deficit signal can be constructed with no gain, target, axis, whole-body mean, or observer-selected neck; it is equivariant and silent on a regular convex ring to numerical precision.
+- Correcting force direction alone does not restore robust V4 reproduction. Normal-only matches passive event/viability counts; adding the same drive through both existing normal and tangential channels increases fission count to `5/10` but leaves only `2/10` viable pairs.
+- Scission count and viable reproduction remain distinct. The unchanged daughter-continuation gate, not raw fission frequency, prevents qualification.
+- Evolution remains causally downstream and must not execute when robust production-V4 reproduction fails.

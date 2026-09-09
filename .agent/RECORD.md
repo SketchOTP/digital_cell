@@ -1668,3 +1668,14 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Exact-head Linux workflow: `34343908708 PASS`.
 - Independently downloaded artifact ZIP digest: `sha256:592981501335f8223698b45074355ee34275f21ffb2c95cc80e30de0fd97718a`.
 - Scientific semantics are unchanged; independent Architect acceptance remains `PENDING`, next execution remains `false`, and no successor reproduction directive exists.
+
+## DEC-DCFINAL001-R6-OWNER-OVERRIDE-AND-CURVATURE-NORMAL-STOP
+
+- Date: `2026-09-09`
+- Status: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE_OWNER_OVERRIDE_ACTIVE`
+- Record or decision ID: `DEC-DCFINAL001-R6-OWNER-OVERRIDE-AND-CURVATURE-NORMAL-STOP`
+- Owner authority records the previous R5R1 terminal disposition as `SUPERSEDED_BY_OWNER_OVERRIDE_2026-09-09` and authorizes only `DC-FINAL-001-R6-CURVATURE-GATED-NORMAL-CONSTRICTION-EMERGENCY-CLOSURE-001`.
+- Gate 1 result: `TANGENTIAL_TENSION_GEOMETRY_MISMATCH_SUPPORTED`; the authorized zero-parameter inward-normal force uses only local current geometry and the existing R1 A-funded bound/cost path.
+- Result: normal-only `3/10` fissions and `2/10` viable pairs; conditional normal-plus-tension `5/10` and `2/10`. Robust V4 reproduction remains below `7/10` and `6/10`.
+- Classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`. End goal remains `NOT_ESTABLISHED`; shutdown recommendation is `NO — OWNER OVERRIDE ACTIVE`; independent Architect acceptance is `PENDING`; next execution is `false`.
+- Governance validator disposition: `KNOWN_FAIL_PREEXISTING_APPEND_ONLY_SCHEMA_DRIFT`; preserving immutable historical records takes precedence over retroactive schema normalization, and R6 does not elevate this inherited validator failure to a scientific failure or a PASS.

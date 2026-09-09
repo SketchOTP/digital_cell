@@ -2455,3 +2455,12 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Evidence-bearing governed head `26fda9c11c0e56f9fd0f6e4ddda998f216e03491` passed exact-head Linux workflow `34343908708`.
 - Independently downloaded artifact ZIP digest: `sha256:592981501335f8223698b45074355ee34275f21ffb2c95cc80e30de0fd97718a`.
 - Result remains `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE`; independent Architect acceptance is `PENDING`, and no successor execution started.
+
+## DC-FINAL-001-R6 curvature-normal emergency closure
+
+- Exact R5R1 authority and owner override pass. Sealed R5R1 remains unchanged and its terminal stop is append-only superseded by owner authority.
+- Tangential actuator geometry is not equivalent to inward constriction: aggregate inward signed-normal fraction is `0.4007207626603397`; classification `TANGENTIAL_TENSION_GEOMETRY_MISMATCH_SUPPORTED`.
+- The zero-parameter curvature drive and bounded inward-normal force contract pass with zero new free parameters. Normal-only A spent `106.45221782833603`, W produced `106.4522178292791`; combined A spent `5274.879460751922`, W produced `5274.879460751905`.
+- Campaigns: passive `3/10` fissions, `2/10` viable pairs; R5R1 tangential `3/10`, `3/10`; normal-only `3/10`, `2/10`; conditional normal-plus-tangential `5/10`, `2/10`. Motor-off matches passive; zero-A spends zero active A.
+- Robust production-V4 reproduction fails unchanged thresholds. Provisional classification `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`; end goal `NOT_ESTABLISHED`; shutdown `NO — OWNER OVERRIDE ACTIVE`; downstream evolution/final integration not reached.
+- Governance tooling note: repository-wide `scripts/validate_governance.py --mode ADOPTED` is an inherited `KNOWN_FAIL_PREEXISTING_APPEND_ONLY_SCHEMA_DRIFT`; no sealed record was rewritten and the R6 exact-head workflow validates bounded scope, repository script tests, evidence reproducibility, and manifest integrity instead.
