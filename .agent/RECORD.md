@@ -1616,3 +1616,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Result: Gate 6 newborn lifecycle passes and no conditional mechanics repair is required. The canonical ten-arm V4 campaign nevertheless yields only `2/10` geometry-valid fissions and `1/10` simple viable daughter pairs despite `10/10` growth, so Gate 9 stops all evolutionary and final-closure execution.
 - Classification: `V4_GEOMETRY_VALID_REPRODUCTION_NOT_ESTABLISHED`. Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown recommendation is `false`; no successor execution started.
 - Scientific result head: `78c2200615b6558d6b617e3c29f5c8e9bb1c05d3`; exact-head CI/artifact and independent Architect acceptance remain `PENDING`.
+
+## DEC-DCFINAL001-R4-EXACT-HEAD-EVIDENCE-POINTER
+
+- Date: `2026-09-09`
+- Status: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`
+- Scientific result head: `78c2200615b6558d6b617e3c29f5c8e9bb1c05d3`.
+- Evidence-bearing governed head: `cb6f7074ad8904500027b2f5fd9da38ac707a783`.
+- Exact-head Linux workflow: `34307578510 PASS`.
+- Independently downloaded artifact ZIP digest: `sha256:58a5a83ecc669cb6f4d1e1c9590e250042919a11c2988abd311f225503b56670`.
+- Scientific semantics are unchanged; independent Architect acceptance remains `PENDING` and next execution remains `false`.

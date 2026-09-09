@@ -1119,3 +1119,8 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - HistoricalV1 powered mutation remains a regression/contract-isolation result, not final production authority; its concentration contract does not conserve whole-organism amount through geometry changes.
 - Evidence location: `digital-protocell/experiments/generated/dcfinal001r4/`, `digital-protocell/examples/dcfinal001_r4_evolution.rs`, and `digital-protocell/crates/chemistry-core/tests/r4_contract_topology_tests.rs`.
 - Confidence: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; independent Architect acceptance pending.
+
+### R4 exact-head evidence
+
+- Evidence-bearing head `cb6f7074ad8904500027b2f5fd9da38ac707a783` passed workflow `34307578510`; artifact ZIP digest is `sha256:58a5a83ecc669cb6f4d1e1c9590e250042919a11c2988abd311f225503b56670`.
+- This validation does not promote production-V4 reproduction or authorize evolutionary execution; the result remains provisional pending independent review.

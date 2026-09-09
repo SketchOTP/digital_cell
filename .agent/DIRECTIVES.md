@@ -1139,3 +1139,8 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Supersedes/collapses: the assumption that the R3 newborn invalidity proves a D-096 expression defect. Exact tracing shows a topology bookkeeping defect on a fully-young closing edge, not a need for an expression gain, grace period, or new mechanics.
 - Stop boundary reached: Gate 6 newborn continuation passes, but Gate 9 production-V4 reproduction reaches only `2/10` valid fissions and `1/10` viable simple daughter pairs. Evolution and final integrated closure are prohibited after that failure.
 - Provisional classification: `V4_GEOMETRY_VALID_REPRODUCTION_NOT_ESTABLISHED` under `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`. No successor execution started; independent Architect acceptance remains `PENDING`.
+
+### R4 evidence-bearing head pointer
+
+- Head `cb6f7074ad8904500027b2f5fd9da38ac707a783` passed exact-head Linux workflow `34307578510`; artifact ZIP digest is `sha256:58a5a83ecc669cb6f4d1e1c9590e250042919a11c2988abd311f225503b56670`.
+- This pointer changes governance only. Production-V4 reproduction remains unestablished, evolution remains unexecuted, and no successor is authorized before independent review.

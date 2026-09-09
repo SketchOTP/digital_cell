@@ -736,3 +736,9 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Gate 6 passes: both exact V4 newborns remain runtime-valid and simple through the full continuation; daughter A lawfully fissions at step 426 and daughter B completes 3,000 steps. The R3 failure is localized to stale topology bookkeeping on a fully-young ruptured closing edge, followed by an existing lawful same-edge rebond.
 - The frozen ten-arm production-V4 campaign is the hard stop: `10/10` growth-qualified, but only `2/10` geometry-valid fissions and `1/10` simple viable daughter pairs, below the unchanged `7/10` and `6/10` requirements. Evolution, selection, reversal, and final integrated qualification were not executed.
 - Goal-agent status: `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; classification: `V4_GEOMETRY_VALID_REPRODUCTION_NOT_ESTABLISHED`. M1 remains closed/frozen/preserved; M2 remains qualified/preserved; the Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown recommendation is `NO`; no successor execution started; independent Architect acceptance is `PENDING`.
+
+## DC-FINAL-001-R4 evidence-bearing head pointer
+
+- Evidence-bearing governed head `cb6f7074ad8904500027b2f5fd9da38ac707a783` passed exact-head Linux workflow `34307578510`.
+- Independently downloaded artifact ZIP digest: `sha256:58a5a83ecc669cb6f4d1e1c9590e250042919a11c2988abd311f225503b56670`.
+- Scientific semantics remain those of head `78c2200615b6558d6b617e3c29f5c8e9bb1c05d3`; the pointer does not alter the Gate-9 stop, provisional classification, or pending independent Architect review.

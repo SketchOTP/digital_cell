@@ -2413,3 +2413,10 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - The exact HistoricalV1 R2 regression remains available only for contract isolation: 2,100 mutation-on opportunities produce 23 mutations (expected 21; compatible), mutation-off produces zero, and external world flux closes. It is not production-V4 evolutionary evidence.
 - Gate 9 stops R4 before mutation, population ecology, selection, reversal, and end-to-end closure. Classification: `V4_GEOMETRY_VALID_REPRODUCTION_NOT_ESTABLISHED`; end goal `NOT_ESTABLISHED`; shutdown recommendation `NO`; independent Architect acceptance `PENDING`; successor execution `false`.
 - Local preservation passes: D-087 V2 `8/8`, V3 `8/8`, V4 `7/8` with `[true,true,false,true,true,true,true,true]`; D-088, D-091, evolution-harness tests-only, M2 runtime tests, and Godot bridge check pass.
+
+## DC-FINAL-001-R4 exact-head evidence seal
+
+- Scientific result head `78c2200615b6558d6b617e3c29f5c8e9bb1c05d3` is preserved without semantic change.
+- Evidence-bearing governed head `cb6f7074ad8904500027b2f5fd9da38ac707a783` passed exact-head Linux workflow `34307578510` after the evidence generator was made invocation-directory independent.
+- Independently downloaded artifact ZIP digest: `sha256:58a5a83ecc669cb6f4d1e1c9590e250042919a11c2988abd311f225503b56670`.
+- Result remains `GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN`; independent Architect acceptance is `PENDING`, and no successor execution started.
