@@ -49,6 +49,14 @@ pub fn tension_rupture_step(mesh: &mut MaterialMesh, topo: &TopologyParams) -> u
             let rem = mesh.edges[i].m;
             mesh.edges[i].m = 0.0;
             mesh.edges[i].b *= 0.5;
+            if mesh.is_maturation_coupled() {
+                // V4 young material and structural tracer are subpools of the
+                // structural mass removed by rupture. The membrane tracer is
+                // reduced by the same exact fraction as bound membrane.
+                mesh.edges[i].m_young = 0.0;
+                mesh.edges[i].tracer_m = 0.0;
+                mesh.edges[i].tracer_b *= 0.5;
+            }
             mesh.edges[i].ruptured = true;
             mesh.interior.w += rem / mesh.area().max(1e-6);
             count += 1;
@@ -82,6 +90,12 @@ pub fn local_same_edge_rebond(mesh: &mut MaterialMesh, topo: &TopologyParams) ->
                 let take = need.min(have);
                 mesh.interior.a = (mesh.interior.a - take / area).max(0.0);
                 mesh.edges[i].m = take;
+                if mesh.is_maturation_coupled() {
+                    // Existing V4 construction semantics define newly
+                    // produced structural material as young/non-load-bearing.
+                    mesh.edges[i].m_young = take;
+                    mesh.edges[i].tracer_m = 0.0;
+                }
                 mesh.edges[i].ruptured = false;
                 count += 1;
             }

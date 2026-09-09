@@ -1,0 +1,153 @@
+name: DC-FINAL-001-R4 V4 contract and reproduction boundary
+
+on:
+  push:
+    branches: [codex/dc-final-001-r4-contract-topology-evolution]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r4-qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Verify R3 authority and bounded scope
+        run: |
+          set -euo pipefail
+          start=9cecd5b2c35e2d38d00e687ad16636615292afc7
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git merge-base --is-ancestor "$start" HEAD
+          git cat-file -e fcf2b637d868e1e7dc250dfc7ec31ba6533c9729^{commit}
+          git diff --check
+          python3 - <<'PY'
+          import subprocess
+          allowed = (
+              '.agent/',
+              '.github/workflows/dc-final-001-r4.yml',
+              'digital-protocell/crates/chemistry-core/src/material_mesh.rs',
+              'digital-protocell/crates/chemistry-core/src/mesh_topology.rs',
+              'digital-protocell/crates/chemistry-core/tests/r4_contract_topology_tests.rs',
+              'digital-protocell/crates/regulatory-core/Cargo.toml',
+              'digital-protocell/examples/dcfinal001_r4_evolution.rs',
+              'digital-protocell/experiments/dcfinal001_r4_evidence.py',
+              'digital-protocell/experiments/generated/dcfinal001r4/',
+          )
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-only', '9cecd5b2c35e2d38d00e687ad16636615292afc7..HEAD'],
+              text=True,
+          ).splitlines()
+          bad = [path for path in changed if not any(path.startswith(prefix) for prefix in allowed)]
+          assert not bad, bad
+          PY
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt,headRefOid > "$RUNNER_TEMP/pr44.json"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          pr = json.loads((Path(os.environ['RUNNER_TEMP']) / 'pr44.json').read_text())
+          assert pr['state'] == 'OPEN'
+          assert pr['isDraft'] is True
+          assert pr['mergedAt'] is None
+          assert pr['headRefOid'] == 'fb77f472b1519a9e0f713833efba5b1d403f4723'
+          PY
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Qualify contract ownership, topology bookkeeping, and V4 reproduction
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p chemistry-core --test r4_contract_topology_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d096_tests -- --nocapture
+          cargo +1.89.0 run --locked -q --release -p regulatory-core --example dcfinal001_r4_evolution -- --output "$RUNNER_TEMP/r4.json"
+          cargo +1.89.0 run --locked -q --release -p regulatory-core --example dcfinal001_r2_evolution -- --output "$RUNNER_TEMP/r2-regression.json"
+          scientific_head=$(python3 - <<'PY'
+          import json
+          print(json.load(open('experiments/generated/dcfinal001r4/authority.json'))['result_scientific_head'])
+          PY
+          )
+          python3 experiments/dcfinal001_r4_evidence.py \
+            --head "$scientific_head" \
+            --raw "$RUNNER_TEMP/r4.json" \
+            --r2-raw "$RUNNER_TEMP/r2-regression.json" \
+            --r1 experiments/generated/dcfinal001r1 \
+            --r2 experiments/generated/dcfinal001r2 \
+            --r3 experiments/generated/dcfinal001r3 \
+            --output "$RUNNER_TEMP/evidence"
+          diff -ru experiments/generated/dcfinal001r4 "$RUNNER_TEMP/evidence"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          raw = json.loads((root / 'r4.json').read_text())
+          evidence = root / 'evidence'
+          q = json.loads((evidence / 'qualification.json').read_text())
+          assert raw['gate6_exact_r2_newborn_continuity'] == 'PASS'
+          assert raw['gate6_v4_newborn_continuity'] == 'PASS'
+          assert raw['v4_closing_edge_trace']['classification'] == 'BOOKKEEPING_ONLY_RUPTURE_PATH'
+          assert raw['v4_reproduction_campaign']['growth_qualified'] == 10
+          assert raw['v4_reproduction_campaign']['geometry_valid_fissions'] == 2
+          assert raw['v4_reproduction_campaign']['simple_viable_daughter_pairs'] == 1
+          assert raw['v4_reproduction_campaign']['bookkeeping_runtime_invalidations'] == 0
+          assert raw['evolution_execution'] == 'NOT_RUN_GATE9_STOP'
+          assert q['classification'] == 'V4_GEOMETRY_VALID_REPRODUCTION_NOT_ESTABLISHED'
+          assert q['status'] == 'GOAL_AGENT_PROVISIONAL_NEGATIVE_REPLAN'
+          assert q['production_v4_evolution_executed'] is False
+          assert q['next_execution_started'] is False
+          assert q['independent_architect_acceptance'] == 'PENDING'
+          assert json.loads((evidence / 'historical_r2_regression.json').read_text())['pass']
+          PY
+
+      - name: Preserve frozen foundations and tests-only evolution harness
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -p chemistry-core --test d088_tests -- --nocapture
+          cargo +1.89.0 test --locked -p chemistry-core --test d091_tests -- --nocapture
+          cargo +1.89.0 test --locked -p evolution-harness -- --nocapture
+          cargo +1.89.0 test --locked -p m2-lifeform-runtime --bin digital-cell-final-lifeform -- --nocapture
+          cargo +1.89.0 check --locked -p godot-bridge
+          run_d087() {
+            local output="$1" contract="$2" v4="$3"
+            if test "$v4" = 1; then
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 cargo +1.89.0 run -q -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            else
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 cargo +1.89.0 run -q -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            fi
+          }
+          run_d087 "$RUNNER_TEMP/d087-v2" ConservativeV2 0
+          run_d087 "$RUNNER_TEMP/d087-v3" ConservativeV3 0
+          run_d087 "$RUNNER_TEMP/d087-v4" ConservativeV3 1
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          expected = {
+              'v2': [True] * 8,
+              'v3': [True] * 8,
+              'v4': [True, True, False, True, True, True, True, True],
+          }
+          for name, vector in expected.items():
+              manifest = json.loads((root / f'd087-{name}' / 'manifest.json').read_text())
+              assert [manifest[f'gate{i}']['pass'] for i in range(8)] == vector
+          PY
+
+      - name: Upload exact-head R4 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcfinal001r4
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            digital-protocell/experiments/generated/dcfinal001r4
+            ${{ runner.temp }}/r4.json
+            ${{ runner.temp }}/r2-regression.json

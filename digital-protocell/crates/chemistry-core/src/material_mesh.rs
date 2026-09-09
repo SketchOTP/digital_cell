@@ -369,6 +369,7 @@ impl MaterialMesh {
     /// R9 physical validity guard. This is numerical geometry validity, not
     /// biological viability and never reads the historical `alive` latch.
     pub fn physical_runtime_valid(&self) -> bool {
+        let maturation_coupled = self.is_maturation_coupled();
         self.n() >= 3
             && self
                 .vertices
@@ -377,11 +378,10 @@ impl MaterialMesh {
             && self.edges.iter().all(|e| {
                 e.m.is_finite()
                     && e.m >= 0.0
-                    && e.m_young.is_finite()
-                    && e.m_young >= 0.0
-                    && e.m_young <= e.m + 1e-12
                     && e.b.is_finite()
                     && e.b >= 0.0
+                    && (!maturation_coupled
+                        || (e.m_young.is_finite() && e.m_young >= 0.0 && e.m_young <= e.m + 1e-12))
             })
             && self.interior.c.is_finite()
             && self.interior.a.is_finite()
