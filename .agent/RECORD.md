@@ -1690,3 +1690,13 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Gate 6 conditional normal-plus-tangential composition is not executed because normal-only improves neither fission nor viable-pair count relative to both passive and R5R1.
 - Classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`. Evolution/final integration are `NOT_REACHED_GATE7_STOP`; end goal remains `NOT_ESTABLISHED`; shutdown recommendation is `NO — OWNER OVERRIDE ACTIVE`; independent Architect acceptance is `PENDING`; next execution is `false`.
 - Scientific result head: `0dac294efce2745a99d423f28c31065fcbf29e76`; exact-head Linux CI and artifact are pending.
+
+## DEC-DCFINAL001-R7-EXACT-HEAD-EVIDENCE-POINTER
+
+- Date: `2026-09-09`
+- Status: `GOAL_AGENT_PROVISIONAL_TERMINAL_NEGATIVE_OWNER_OVERRIDE_ACTIVE`
+- Scientific result head: `0dac294efce2745a99d423f28c31065fcbf29e76`.
+- Evidence-bearing governed head: `40dbc7d8400e438393063e980408664b9cdc44d1`.
+- Exact-head Linux workflow: `34372272665 PASS`.
+- GitHub artifact digest: `sha256:17bbaf14cf67cd5d5e8aa01f27972347912a819885b609ee1f7b6cb9904d8053`.
+- Scientific semantics, owner override, Gate-7 stop, pending independent review, and `next_execution_started = false` are unchanged.

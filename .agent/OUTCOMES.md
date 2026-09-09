@@ -2473,3 +2473,8 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - Campaigns reproduce passive `3/10, 2/10`, R5R1 tangential `3/10, 3/10`, and R6 curvature-normal `3/10, 2/10`. R7 strain-contrast normal falls to `1/10` fission and `0/10` viable pairs.
 - Gate 6 does not authorize normal-plus-tangential because R7 improves neither preregistered outcome relative to both controls. Gate 7 fails; mutation, selection, reversal, and final integration remain not reached.
 - Provisional classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`; end goal `NOT_ESTABLISHED`; shutdown `NO — OWNER OVERRIDE ACTIVE`; independent Architect acceptance pending.
+
+### R7 exact-head evidence pointer
+
+- Evidence-bearing governed head `40dbc7d8400e438393063e980408664b9cdc44d1` passed exact-head workflow `34372272665`; artifact digest `sha256:17bbaf14cf67cd5d5e8aa01f27972347912a819885b609ee1f7b6cb9904d8053`.
+- Scientific semantics remain those of head `0dac294efce2745a99d423f28c31065fcbf29e76`; no successor execution started and independent Architect acceptance remains pending.

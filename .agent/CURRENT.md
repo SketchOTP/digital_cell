@@ -798,3 +798,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - The conditional same-signal tangential composition is `NOT_REQUIRED_BY_GATE6`: normal-only improves neither fission nor viable-pair count relative to both passive and R5R1. No successor reproduction mechanism is executed.
 - The sole R7 fission occurs at step `8226`; both daughters complete 3,000 simple/runtime/lifecycle-valid steps, but daughter A fails A retention (`0.7058542506592405`) and daughter B ends not closed-intact.
 - Provisional classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`. Evolution and final M1-M5 integration are `NOT_REACHED_GATE7_STOP`; Digital Cell end goal remains `NOT_ESTABLISHED`; shutdown recommendation remains `NO — OWNER OVERRIDE ACTIVE`; independent Architect acceptance is `PENDING`; next execution is `false`.
+
+## DC-FINAL-001-R7 evidence-bearing head pointer
+
+- Scientific result head `0dac294efce2745a99d423f28c31065fcbf29e76` is preserved without semantic change.
+- Evidence-bearing governed head `40dbc7d8400e438393063e980408664b9cdc44d1` passed exact-head Linux workflow `34372272665`.
+- GitHub artifact digest: `sha256:17bbaf14cf67cd5d5e8aa01f27972347912a819885b609ee1f7b6cb9904d8053`.
+- This append-only pointer does not alter the Gate-7 stop, provisional classification, owner override, or pending independent Architect review.
