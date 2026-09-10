@@ -1,8 +1,9 @@
 use chemistry_core::d096_allocation::{
-    allocation_schema_load_ok, apply_assay_environment, expression_step,
-    mutate_allocation_at_reproduction, pre_fission_assay, AllocationGenotype, AllocationParams,
-    AssayEnvironment, EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION,
-    FINITE_ALLOCATION_SCHEMA_VERSION,
+    allocation_schema_load_ok, allocation_v2_schema_load_ok, apply_assay_environment,
+    expression_step, expression_step_activated_material_v2, mutate_allocation_at_reproduction,
+    pre_fission_assay, AllocationGenotype, AllocationParams, AssayEnvironment,
+    EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION, EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION_V2,
+    FINITE_ALLOCATION_SCHEMA_VERSION, FINITE_ALLOCATION_V2_SCHEMA_VERSION,
 };
 use chemistry_core::material_mesh::{
     LumpedChem, MaterialMesh, MeshContractVersion, EQUATION_VERSION_MATERIAL_MESH,
@@ -73,6 +74,84 @@ fn d096_expression_conserves_budget_material_and_activation_accounting() {
             < 1e-10
     );
     assert!(ledger.synthesis.iter().all(|x| *x > 0.0));
+    assert_eq!(ledger.catalyst_precursor_consumed, 0.0);
+}
+
+#[test]
+fn d096_v2_activated_material_expression_closes_without_structural_draw() {
+    let params = AllocationParams::default();
+    let mut candidate = maturation_expression_mesh(0.4);
+    candidate.enable_finite_allocation_v2(AllocationGenotype::neutral(), &params);
+    let area = candidate.area();
+    let m0 = candidate.total_structural_mass();
+    let a0 = candidate.interior.a * area;
+    let w0 = candidate.interior.w * area;
+    let c0 = candidate
+        .finite_allocation
+        .unwrap()
+        .catalysts
+        .iter()
+        .sum::<f64>();
+    let ledger = expression_step_activated_material_v2(&mut candidate, &params, 0.1).unwrap();
+    let c1 = candidate
+        .finite_allocation
+        .unwrap()
+        .catalysts
+        .iter()
+        .sum::<f64>();
+    let a1 = candidate.interior.a * area;
+    let w1 = candidate.interior.w * area;
+
+    assert!(allocation_v2_schema_load_ok(&candidate, &params));
+    assert_eq!(ledger.material_consumed, 0.0);
+    assert!((candidate.total_structural_mass() - m0).abs() < 1e-12);
+    assert!(ledger.catalyst_precursor_consumed > 0.0);
+    assert!(
+        (a0 - a1
+            - ledger.catalyst_precursor_consumed
+            - ledger.activation_consumed
+            - ledger.maintenance_consumed)
+            .abs()
+            < 1e-10
+    );
+    assert!((c1 - c0 - ledger.catalyst_precursor_consumed + ledger.turnover_waste).abs() < 1e-10);
+    assert!(
+        (w1 - w0
+            - ledger.activation_consumed
+            - ledger.maintenance_consumed
+            - ledger.turnover_waste)
+            .abs()
+            < 1e-10
+    );
+    assert!((a0 + c0 - a1 - c1 - (w1 - w0)).abs() < 1e-10);
+    assert!(candidate.interior.a >= 0.0);
+    assert!(candidate.lifecycle_invariants_hold());
+}
+
+#[test]
+fn d096_v2_is_explicitly_versioned_and_does_not_silently_migrate_v1() {
+    let params = AllocationParams::default();
+    let genotype = AllocationGenotype::neutral();
+    let mut v1 = maturation_expression_mesh(0.4);
+    let v1_hash = genotype.candidate_hash(&params);
+    let v1_equation = v1.equation_id.clone();
+    let v1_schema = v1.schema_version;
+    let mut v2 = v1.clone();
+    v2.enable_finite_allocation_v2(genotype, &params);
+
+    assert_eq!(v1_equation, EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION);
+    assert_eq!(v1_schema, FINITE_ALLOCATION_SCHEMA_VERSION);
+    assert_eq!(
+        v2.equation_id,
+        EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION_V2
+    );
+    assert_eq!(v2.schema_version, FINITE_ALLOCATION_V2_SCHEMA_VERSION);
+    assert_ne!(v1_hash, genotype.candidate_hash_v2(&params));
+    assert!(allocation_schema_load_ok(&v1, &params));
+    assert!(!allocation_v2_schema_load_ok(&v1, &params));
+    assert!(allocation_v2_schema_load_ok(&v2, &params));
+    assert!(expression_step_activated_material_v2(&mut v1, &params, 0.1).is_err());
+    assert!(expression_step(&mut v2, &params, 0.1).is_err());
 }
 
 fn maturation_expression_mesh(young_fraction: f64) -> MaterialMesh {

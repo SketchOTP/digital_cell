@@ -229,6 +229,18 @@ name = "dcfinal001_r10r2_evolution"
 path = "../../examples/dcfinal001_r10r2_evolution.rs"
 
 [[example]]
+name = "dcfinal001_r10r3_d096v1_reproduction"
+path = "../../examples/dcfinal001_r10r3_d096v1_reproduction.rs"
+
+[[example]]
+name = "dcfinal001_r10r3_budget_diagnostics"
+path = "../../examples/dcfinal001_r10r3_budget_diagnostics.rs"
+
+[[example]]
+name = "dcfinal001_r10r3_d096v2_reproduction"
+path = "../../examples/dcfinal001_r10r3_d096v2_reproduction.rs"
+
+[[example]]
 name = "dcdev021_m2_entry020"
 path = "../../examples/dcdev021_m2_entry020.rs"
 

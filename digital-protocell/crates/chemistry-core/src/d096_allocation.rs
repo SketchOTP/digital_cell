@@ -10,6 +10,9 @@ use serde::{Deserialize, Serialize};
 pub const EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION: &str =
     "autopoietic_material_mesh_finite_catalytic_allocation_v1";
 pub const FINITE_ALLOCATION_SCHEMA_VERSION: u32 = 2;
+pub const EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION_V2: &str =
+    "autopoietic_material_mesh_finite_catalytic_allocation_v2_activated_material";
+pub const FINITE_ALLOCATION_V2_SCHEMA_VERSION: u32 = 3;
 pub const FUNCTIONS: usize = 4;
 
 #[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
@@ -46,6 +49,30 @@ impl AllocationGenotype {
             .as_bytes()
             .to_vec();
         bytes.extend_from_slice(&FINITE_ALLOCATION_SCHEMA_VERSION.to_le_bytes());
+        for value in self.0 {
+            bytes.extend_from_slice(&value.to_le_bytes());
+        }
+        for value in [
+            params.total_budget,
+            params.allocation_min,
+            params.allocation_max,
+            params.mutation_probability,
+            params.mutation_sigma,
+            params.synthesis_rate,
+            params.activation_cost,
+            params.maintenance_rate,
+            params.turnover_rate,
+        ] {
+            bytes.extend_from_slice(&value.to_le_bytes());
+        }
+        sha256_hex(&bytes)
+    }
+
+    pub fn candidate_hash_v2(self, params: &AllocationParams) -> String {
+        let mut bytes = EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION_V2
+            .as_bytes()
+            .to_vec();
+        bytes.extend_from_slice(&FINITE_ALLOCATION_V2_SCHEMA_VERSION.to_le_bytes());
         for value in self.0 {
             bytes.extend_from_slice(&value.to_le_bytes());
         }
@@ -105,6 +132,10 @@ pub struct AllocationState {
 pub struct ExpressionLedger {
     pub synthesis: [f64; FUNCTIONS],
     pub material_consumed: f64,
+    /// D096-v2 catalyst precursor taken directly from activated material A.
+    /// Historical v1 always records zero here.
+    #[serde(default)]
+    pub catalyst_precursor_consumed: f64,
     pub activation_consumed: f64,
     pub maintenance_consumed: f64,
     pub turnover_waste: f64,
@@ -198,6 +229,14 @@ pub fn allocation_schema_load_ok(mesh: &MaterialMesh, params: &AllocationParams)
             .is_some_and(|state| state.genotype.valid(params))
 }
 
+pub fn allocation_v2_schema_load_ok(mesh: &MaterialMesh, params: &AllocationParams) -> bool {
+    mesh.equation_id == EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION_V2
+        && mesh.schema_version == FINITE_ALLOCATION_V2_SCHEMA_VERSION
+        && mesh
+            .finite_allocation
+            .is_some_and(|state| state.genotype.valid(params))
+}
+
 pub fn expression_step(
     mesh: &mut MaterialMesh,
     params: &AllocationParams,
@@ -264,6 +303,70 @@ pub fn expression_step(
         // material is transferred to the existing waste pool. Historical
         // non-V4 D-096 semantics remain byte-for-byte unchanged.
         next.interior.w += activated_spent / area;
+    }
+    next.interior.w += ledger.turnover_waste / area;
+    *mesh = next;
+    Ok(ledger)
+}
+
+/// D096-v2 activated-material expression.
+///
+/// The synthesis rate, genotype allocation, activation overhead, maintenance,
+/// and turnover constants are exactly the historical D096 values. Only the
+/// catalyst precursor substrate changes: synthesized catalyst material is
+/// withdrawn from A rather than from the load-bearing structural mesh.
+pub fn expression_step_activated_material_v2(
+    mesh: &mut MaterialMesh,
+    params: &AllocationParams,
+    dt: f64,
+) -> Result<ExpressionLedger, ExpressionReject> {
+    if !allocation_v2_schema_load_ok(mesh, params) {
+        return Err(ExpressionReject::IncompatibleSchema);
+    }
+    if !dt.is_finite() || dt <= 0.0 {
+        return Err(ExpressionReject::InvalidStep);
+    }
+    let mut next = mesh.clone();
+    let maturation_coupled = next.is_maturation_coupled();
+    let area = next.area().max(1e-9);
+    let material = next.total_structural_mass().max(0.0);
+    let activated = (next.interior.a.max(0.0) * area).max(0.0);
+    if material <= 0.0 {
+        return Err(ExpressionReject::InsufficientMaterial);
+    }
+    if activated <= 0.0 {
+        return Err(ExpressionReject::InsufficientActivatedResource);
+    }
+    let state = next.finite_allocation.as_mut().expect("schema checked");
+    if !state.genotype.valid(params) {
+        return Err(ExpressionReject::InvalidAllocation);
+    }
+    let total_c = state.catalysts.iter().sum::<f64>();
+    let j_syn = params.synthesis_rate * material.min(activated / params.activation_cost);
+    let maintenance = (params.maintenance_rate * total_c * dt).min(activated);
+    let max_syn_a = ((activated - maintenance) / (1.0 + params.activation_cost)).max(0.0) / dt;
+    let actual_syn = j_syn.min(max_syn_a);
+    let mut ledger = ExpressionLedger::default();
+    for i in 0..FUNCTIONS {
+        let j = state.genotype.0[i] * actual_syn;
+        let turnover = params.turnover_rate * state.catalysts[i];
+        state.catalysts[i] = (state.catalysts[i] + (j - turnover) * dt).max(0.0);
+        ledger.synthesis[i] = j * dt;
+        ledger.turnover_waste += turnover * dt;
+    }
+    ledger.catalyst_precursor_consumed = ledger.synthesis.iter().sum();
+    ledger.material_consumed = 0.0;
+    ledger.activation_consumed = params.activation_cost * ledger.catalyst_precursor_consumed;
+    ledger.maintenance_consumed = maintenance;
+    let activated_spent = ledger.catalyst_precursor_consumed
+        + ledger.activation_consumed
+        + ledger.maintenance_consumed;
+    if activated_spent > activated + 1e-12 {
+        return Err(ExpressionReject::InsufficientActivatedResource);
+    }
+    next.interior.a -= activated_spent / area;
+    if maturation_coupled {
+        next.interior.w += (ledger.activation_consumed + maintenance) / area;
     }
     next.interior.w += ledger.turnover_waste / area;
     *mesh = next;

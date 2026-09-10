@@ -7,7 +7,8 @@
 // enters organism biology.
 
 use chemistry_core::d096_allocation::{
-    expression_step, mutate_allocation_at_reproduction, AllocationGenotype, AllocationParams,
+    expression_step, expression_step_activated_material_v2, mutate_allocation_at_reproduction,
+    AllocationGenotype, AllocationParams, ExpressionLedger,
 };
 use chemistry_core::material_mesh::MaterialMesh;
 use chemistry_core::mesh_fission::{segment_apposition_stress_audit, try_local_segment_fission};
@@ -92,8 +93,10 @@ struct WorldLedger {
     damage_membrane_sink: f64,
     physical_death_n_sink: f64,
     physical_death_f_sink: f64,
+    physical_death_structural_sink: f64,
     invalidated_n_terminal: f64,
     invalidated_f_terminal: f64,
+    invalidated_structural_terminal: f64,
 }
 
 #[derive(Debug, Clone, Serialize)]
@@ -123,7 +126,16 @@ struct CampaignLedger {
     w_produced: f64,
     growth_material: f64,
     expression_material: f64,
+    expression_catalyst_precursor_a: f64,
     expression_activation: f64,
+    expression_turnover_waste: f64,
+    m1_structural_build: f64,
+    m1_structural_turnover: f64,
+    growth_a_consumed: f64,
+    growth_w_produced: f64,
+    mechanics_topology_structural_net: f64,
+    bootstrap_fission_closure_structural_input: f64,
+    post_bootstrap_fission_closure_structural_input: f64,
     active_a_spent: f64,
     active_w_produced: f64,
     adaptation_remesh_mappings: u64,
@@ -134,6 +146,131 @@ struct CampaignLedger {
     fissions_by_parent_genotype: BTreeMap<String, u64>,
     deaths_by_genotype: BTreeMap<String, u64>,
     phenotype_by_genotype: BTreeMap<String, GenotypePhenotypeLedger>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+enum D096ExpressionPath {
+    V1Structural,
+    Off,
+    ActivatedMaterialCandidate,
+    V2ActivatedMaterial,
+}
+
+impl D096ExpressionPath {
+    fn label(self) -> &'static str {
+        match self {
+            Self::V1Structural => "CURRENT_D096_V1",
+            Self::Off => "D096_OFF",
+            Self::ActivatedMaterialCandidate => "D096_ACTIVATED_MATERIAL_CANDIDATE",
+            Self::V2ActivatedMaterial => "D096_V2_ACTIVATED_MATERIAL",
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, Default)]
+struct ExpressionAccounting {
+    structural_consumed: f64,
+    catalyst_precursor_a: f64,
+    activation_consumed: f64,
+    maintenance_consumed: f64,
+    turnover_waste: f64,
+}
+
+impl From<ExpressionLedger> for ExpressionAccounting {
+    fn from(value: ExpressionLedger) -> Self {
+        Self {
+            structural_consumed: value.material_consumed,
+            catalyst_precursor_a: 0.0,
+            activation_consumed: value.activation_consumed,
+            maintenance_consumed: value.maintenance_consumed,
+            turnover_waste: value.turnover_waste,
+        }
+    }
+}
+
+/// Observer-only R10R3 candidate. This deliberately retains the historical v1
+/// schema stamp while changing no production implementation; it is used only
+/// for the preregistered Gate 4/5 counterfactual.
+fn expression_step_activated_material_candidate(
+    mesh: &mut MaterialMesh,
+    params: &AllocationParams,
+    dt: f64,
+) -> Result<ExpressionAccounting, &'static str> {
+    if !dt.is_finite() || dt <= 0.0 {
+        return Err("invalid step");
+    }
+    let mut next = mesh.clone();
+    let area = next.area().max(1e-9);
+    let structural = next.total_structural_mass().max(0.0);
+    let activated = (next.interior.a.max(0.0) * area).max(0.0);
+    if structural <= 0.0 || activated <= 0.0 {
+        return Err("insufficient material or activated resource");
+    }
+    let state = next.finite_allocation.as_mut().ok_or("allocation absent")?;
+    if !state.genotype.valid(params) {
+        return Err("invalid allocation");
+    }
+    let total_c = state.catalysts.iter().sum::<f64>();
+    let production_demand =
+        params.synthesis_rate * structural.min(activated / params.activation_cost);
+    let maintenance = (params.maintenance_rate * total_c * dt).min(activated);
+    let available_after_maintenance = (activated - maintenance).max(0.0);
+    let max_synthesis = available_after_maintenance / (1.0 + params.activation_cost) / dt;
+    let actual_synthesis = production_demand.min(max_synthesis);
+    let mut accounting = ExpressionAccounting {
+        maintenance_consumed: maintenance,
+        ..Default::default()
+    };
+    for index in 0..state.catalysts.len() {
+        let synthesis_rate = state.genotype.0[index] * actual_synthesis;
+        let turnover_rate = params.turnover_rate * state.catalysts[index];
+        state.catalysts[index] =
+            (state.catalysts[index] + (synthesis_rate - turnover_rate) * dt).max(0.0);
+        accounting.catalyst_precursor_a += synthesis_rate * dt;
+        accounting.turnover_waste += turnover_rate * dt;
+    }
+    accounting.activation_consumed = params.activation_cost * accounting.catalyst_precursor_a;
+    let activated_spent = accounting.catalyst_precursor_a
+        + accounting.activation_consumed
+        + accounting.maintenance_consumed;
+    if activated_spent > activated + 1e-10 {
+        return Err("activated material cap violated");
+    }
+    next.interior.a -= activated_spent / area;
+    next.interior.w += (accounting.activation_consumed
+        + accounting.maintenance_consumed
+        + accounting.turnover_waste)
+        / area;
+    *mesh = next;
+    Ok(accounting)
+}
+
+fn apply_expression_path(
+    mesh: &mut MaterialMesh,
+    params: &AllocationParams,
+    dt: f64,
+    path: D096ExpressionPath,
+) -> Result<ExpressionAccounting, &'static str> {
+    match path {
+        D096ExpressionPath::V1Structural => expression_step(mesh, params, dt)
+            .map(ExpressionAccounting::from)
+            .map_err(|_| "v1 expression rejected"),
+        D096ExpressionPath::Off => Ok(ExpressionAccounting::default()),
+        D096ExpressionPath::ActivatedMaterialCandidate => {
+            expression_step_activated_material_candidate(mesh, params, dt)
+        }
+        D096ExpressionPath::V2ActivatedMaterial => {
+            expression_step_activated_material_v2(mesh, params, dt)
+                .map(|ledger| ExpressionAccounting {
+                    structural_consumed: ledger.material_consumed,
+                    catalyst_precursor_a: ledger.catalyst_precursor_consumed,
+                    activation_consumed: ledger.activation_consumed,
+                    maintenance_consumed: ledger.maintenance_consumed,
+                    turnover_waste: ledger.turnover_waste,
+                })
+                .map_err(|_| "v2 expression rejected")
+        }
+    }
 }
 
 #[derive(Debug, Clone, Default, Serialize)]
@@ -678,6 +815,8 @@ fn invalidated_material_to_terminal(cohort: &Cohort, world: &mut OpenMedium) {
         cohort.mesh.interior.n.max(0.0) * cohort.mesh.area() * cohort.count as f64;
     world.ledger.invalidated_f_terminal +=
         cohort.mesh.interior.f.max(0.0) * cohort.mesh.area() * cohort.count as f64;
+    world.ledger.invalidated_structural_terminal +=
+        cohort.mesh.total_structural_mass() * cohort.count as f64;
 }
 
 fn dead_material_to_sink(cohort: &Cohort, world: &mut OpenMedium) {
@@ -685,6 +824,8 @@ fn dead_material_to_sink(cohort: &Cohort, world: &mut OpenMedium) {
         cohort.mesh.interior.n.max(0.0) * cohort.mesh.area() * cohort.count as f64;
     world.ledger.physical_death_f_sink +=
         cohort.mesh.interior.f.max(0.0) * cohort.mesh.area() * cohort.count as f64;
+    world.ledger.physical_death_structural_sink +=
+        cohort.mesh.total_structural_mass() * cohort.count as f64;
 }
 
 fn advance_phase(
@@ -1940,6 +2081,7 @@ fn r10_split_cohort(
         .finite_allocation
         .expect("R10 allocation")
         .genotype;
+    let parent_structural_mass = cohort.mesh.total_structural_mass();
     let Some(parent_plasticity) = cohort.plasticity.as_ref() else {
         return Err(cohort);
     };
@@ -1983,6 +2125,15 @@ fn r10_split_cohort(
     if state_a.adaptation.len() != daughter_a.n() || state_b.adaptation.len() != daughter_b.n() {
         ledger.runtime_invalidations += cohort.count;
         return Err(cohort);
+    }
+
+    let closure_input = (daughter_a.total_structural_mass() + daughter_b.total_structural_mass()
+        - parent_structural_mass)
+        * cohort.count as f64;
+    if step == 0 {
+        ledger.bootstrap_fission_closure_structural_input += closure_input;
+    } else {
+        ledger.post_bootstrap_fission_closure_structural_input += closure_input;
     }
 
     ledger.physical_fissions += cohort.count;
@@ -2098,11 +2249,16 @@ fn r10_initial_population(
     campaign_seed: u64,
     founder_count: u64,
     ledger: &mut CampaignLedger,
+    expression_path: D096ExpressionPath,
 ) -> Vec<Cohort> {
     let allocation = AllocationParams::default();
     let fission = FissionParams::default();
     let mut parent = template.clone();
-    parent.enable_finite_allocation(AllocationGenotype::neutral(), &allocation);
+    if expression_path == D096ExpressionPath::V2ActivatedMaterial {
+        parent.enable_finite_allocation_v2(AllocationGenotype::neutral(), &allocation);
+    } else {
+        parent.enable_finite_allocation(AllocationGenotype::neutral(), &allocation);
+    }
     let cohort = Cohort {
         mesh: parent,
         plasticity: Some(template_plasticity.clone()),
@@ -2137,6 +2293,7 @@ fn r10_advance_phase(
     trajectory: &mut Vec<Value>,
     prefix_2500: &mut Option<Value>,
     phase_steps: usize,
+    expression_path: D096ExpressionPath,
 ) {
     let allocation = AllocationParams::default();
     let mechanics = MechParams::default();
@@ -2171,7 +2328,12 @@ fn r10_advance_phase(
         }
         let mut retained = Vec::new();
         for mut cohort in cohorts.drain(..) {
-            match expression_step(&mut cohort.mesh, &allocation, mechanics.dt) {
+            match apply_expression_path(
+                &mut cohort.mesh,
+                &allocation,
+                mechanics.dt,
+                expression_path,
+            ) {
                 Ok(expression) => {
                     let count = cohort.count as f64;
                     let genotype = cohort
@@ -2179,12 +2341,15 @@ fn r10_advance_phase(
                         .finite_allocation
                         .expect("R10 allocation")
                         .genotype;
-                    ledger.expression_material += expression.material_consumed * count;
+                    ledger.expression_material += expression.structural_consumed * count;
+                    ledger.expression_catalyst_precursor_a +=
+                        expression.catalyst_precursor_a * count;
                     ledger.expression_activation +=
                         (expression.activation_consumed + expression.maintenance_consumed) * count;
+                    ledger.expression_turnover_waste += expression.turnover_waste * count;
                     let observer = phenotype_ledger(ledger, genotype);
                     observer.organism_step_exposure += cohort.count;
-                    observer.expression_material += expression.material_consumed * count;
+                    observer.expression_material += expression.structural_consumed * count;
                     observer.expression_activation +=
                         (expression.activation_consumed + expression.maintenance_consumed) * count;
                     retained.push(cohort);
@@ -2212,8 +2377,12 @@ fn r10_advance_phase(
             ledger.reaction_f_consumed += reactions.f_consumed * count;
             ledger.a_produced += reactions.a_produced * count;
             ledger.w_produced += reactions.w_produced * count;
+            ledger.m1_structural_build += reactions.m_produced * count;
+            ledger.m1_structural_turnover += reactions.m_to_w * count;
             let grown = growth_step(&mut cohort.mesh, &reaction, &growth, mechanics.dt);
             ledger.growth_material += grown.m_grown * count;
+            ledger.growth_a_consumed += grown.a_consumed_growth * count;
+            ledger.growth_w_produced += grown.w_from_growth * count;
             {
                 let observer = phenotype_ledger(ledger, genotype);
                 observer.reaction_n_consumed += reactions.n_consumed * count;
@@ -2223,6 +2392,7 @@ fn r10_advance_phase(
                 observer.growth_material += grown.m_grown * count;
             }
             let topology_tick = step % 10 == 0;
+            let structural_before_mechanics = cohort.mesh.total_structural_mass();
             let Some((active_a, active_w, remesh_mappings)) =
                 r10_closure::r10_refractory_mechanics_step(
                     &mut cohort.mesh,
@@ -2235,6 +2405,8 @@ fn r10_advance_phase(
                 invalidated_material_to_terminal(&cohort, world);
                 continue;
             };
+            ledger.mechanics_topology_structural_net +=
+                (cohort.mesh.total_structural_mass() - structural_before_mechanics) * count;
             ledger.active_a_spent += active_a * count;
             ledger.active_w_produced += active_w * count;
             ledger.adaptation_remesh_mappings += remesh_mappings as u64 * cohort.count;
@@ -2302,6 +2474,8 @@ fn r10_campaign(
     mutation_enabled: bool,
     replicate: u64,
     phase_steps: usize,
+    expression_path: D096ExpressionPath,
+    founder_multiplicity: u64,
 ) -> Value {
     let campaign_seed = splitmix64(
         replicate
@@ -2325,13 +2499,29 @@ fn r10_campaign(
         original_birth_mass,
         mutation_enabled,
         campaign_seed,
-        FOUNDER_MULTIPLICITY,
+        founder_multiplicity,
         &mut ledger,
+        expression_path,
     );
     let mut next_id = 10_000;
     let mut world = OpenMedium::new(sequence[0]);
     let initial_organism_n = organism_amount(&cohorts, 'n');
     let initial_organism_f = organism_amount(&cohorts, 'f');
+    let initial_structural_mass = cohorts
+        .iter()
+        .map(|cohort| cohort.mesh.total_structural_mass() * cohort.count as f64)
+        .sum::<f64>();
+    let initial_catalyst_mass = cohorts
+        .iter()
+        .map(|cohort| {
+            cohort
+                .mesh
+                .finite_allocation
+                .map(|state| state.catalysts.iter().sum::<f64>())
+                .unwrap_or(0.0)
+                * cohort.count as f64
+        })
+        .sum::<f64>();
     let initial = snapshot(&cohorts, &world, 0);
     let mut trajectory = vec![initial.clone()];
     let mut prefix_2500 = None;
@@ -2348,6 +2538,7 @@ fn r10_campaign(
             &mut trajectory,
             &mut prefix_2500,
             phase_steps,
+            expression_path,
         );
     }
     let terminal_step = sequence.len() * phase_steps;
@@ -2363,6 +2554,21 @@ fn r10_campaign(
     let terminal_cohorts = terminal_cohort_diagnostics(&cohorts, &FissionParams::default());
     let terminal_organism_n = organism_amount(&cohorts, 'n');
     let terminal_organism_f = organism_amount(&cohorts, 'f');
+    let terminal_structural_mass = cohorts
+        .iter()
+        .map(|cohort| cohort.mesh.total_structural_mass() * cohort.count as f64)
+        .sum::<f64>();
+    let terminal_catalyst_mass = cohorts
+        .iter()
+        .map(|cohort| {
+            cohort
+                .mesh
+                .finite_allocation
+                .map(|state| state.catalysts.iter().sum::<f64>())
+                .unwrap_or(0.0)
+                * cohort.count as f64
+        })
+        .sum::<f64>();
     let n_closure = (world.ledger.initial_n + world.ledger.inflow_n + initial_organism_n
         - world.n_mass
         - terminal_organism_n
@@ -2378,13 +2584,49 @@ fn r10_campaign(
         - world.ledger.invalidated_f_terminal)
         .abs();
     let active_energy_residual = (ledger.active_a_spent - ledger.active_w_produced).abs();
+    let structural_expected_terminal = initial_structural_mass
+        + ledger.m1_structural_build
+        + ledger.growth_material
+        + ledger.mechanics_topology_structural_net
+        + ledger.post_bootstrap_fission_closure_structural_input
+        - ledger.expression_material
+        - ledger.m1_structural_turnover
+        - world.ledger.damage_structural_sink
+        - world.ledger.physical_death_structural_sink
+        - world.ledger.invalidated_structural_terminal;
+    let structural_closure_residual =
+        (structural_expected_terminal - terminal_structural_mass).abs();
+    let structural_budget = json!({
+        "initial_structural_mass": initial_structural_mass,
+        "d096_structural_material_converted_to_catalysts": ledger.expression_material,
+        "ordinary_m1_structural_build": ledger.m1_structural_build,
+        "ordinary_m1_structural_turnover": ledger.m1_structural_turnover,
+        "surplus_growth_structural_production": ledger.growth_material,
+        "damage_structural_loss": world.ledger.damage_structural_sink,
+        "physical_death_structural_sink": world.ledger.physical_death_structural_sink,
+        "invalidated_structural_terminal": world.ledger.invalidated_structural_terminal,
+        "rupture_rebond_and_remesh_net": ledger.mechanics_topology_structural_net,
+        "bootstrap_fission_closure_material_before_budget_start": ledger.bootstrap_fission_closure_structural_input,
+        "post_bootstrap_fission_closure_material": ledger.post_bootstrap_fission_closure_structural_input,
+        "terminal_structural_mass": terminal_structural_mass,
+        "closure_residual": structural_closure_residual,
+        "initial_allocation_catalyst_mass": initial_catalyst_mass,
+        "terminal_allocation_catalyst_mass": terminal_catalyst_mass,
+        "allocation_catalyst_turnover": ledger.expression_turnover_waste,
+        "catalyst_precursor_a": ledger.expression_catalyst_precursor_a,
+        "d096_activation_and_maintenance_a": ledger.expression_activation,
+        "growth_a_consumed": ledger.growth_a_consumed,
+        "active_motor_a": ledger.active_a_spent,
+        "active_motor_w": ledger.active_w_produced,
+    });
     json!({
         "replicate": replicate,
         "mutation_enabled": mutation_enabled,
         "campaign_seed": campaign_seed,
         "environment_sequence": sequence.iter().map(|environment| environment.label()).collect::<Vec<_>>(),
         "phase_steps": phase_steps,
-        "founder_multiplicity": FOUNDER_MULTIPLICITY,
+        "expression_path": expression_path.label(),
+        "founder_multiplicity": founder_multiplicity,
         "template_fission_step": template_step,
         "fitness_function": null,
         "breeder_selection": false,
@@ -2398,6 +2640,7 @@ fn r10_campaign(
         "terminal_cohorts": terminal_cohorts,
         "world": world,
         "ledger": ledger,
+        "structural_budget": structural_budget,
         "n_closure_residual": n_closure,
         "f_closure_residual": f_closure,
         "active_energy_residual": active_energy_residual,
@@ -2434,6 +2677,8 @@ fn run_r10_evolution_with_horizon(default_output: &str, directive: &str, phase_s
                         mutation_enabled,
                         replicate,
                         phase_steps,
+                        D096ExpressionPath::V1Structural,
+                        FOUNDER_MULTIPLICITY,
                     )
                 }));
             }
@@ -2489,6 +2734,69 @@ pub fn run_r10r2_evolution() {
         "DC-FINAL-001-R10R2-PRODUCTION-EVOLUTION-HORIZON-REQUALIFICATION-SELECTION-AND-END-GOAL-CLOSURE-001",
         R10R2_PHASE_STEPS,
     );
+}
+
+/// R10R3 Gates 2, 4, and 5: matched generation-1 production daughters under
+/// current D096-v1, D096-off, and the observer-only activated-material
+/// candidate. The candidate is not a production schema and mutation is off.
+pub fn run_r10r3_budget_diagnostics() {
+    let mut output = PathBuf::from("/tmp/dcfinal001_r10r3_budget_diagnostics.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let (template, plasticity, original_birth_mass, template_step) =
+        r10_closure::r10_seed3_fission_state();
+    let mut handles = Vec::new();
+    for environment in [Environment::Resource, Environment::Damage] {
+        for expression_path in [
+            D096ExpressionPath::V1Structural,
+            D096ExpressionPath::Off,
+            D096ExpressionPath::ActivatedMaterialCandidate,
+        ] {
+            let template = template.clone();
+            let plasticity = plasticity.clone();
+            handles.push(std::thread::spawn(move || {
+                r10_campaign(
+                    &template,
+                    &plasticity,
+                    original_birth_mass,
+                    template_step,
+                    &[environment],
+                    false,
+                    1,
+                    R10R2_PHASE_STEPS,
+                    expression_path,
+                    FOUNDER_MULTIPLICITY,
+                )
+            }));
+        }
+    }
+    let campaigns = handles
+        .into_iter()
+        .map(|handle| handle.join().expect("R10R3 budget diagnostic"))
+        .collect::<Vec<_>>();
+    let value = json!({
+        "directive": "DC-FINAL-001-R10R3-D096-ACTIVATED-MATERIAL-EXPRESSION-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001",
+        "gates": [2, 4, 5],
+        "observer_only_candidate": true,
+        "mutation_enabled": false,
+        "phase_steps": R10R2_PHASE_STEPS,
+        "founder_multiplicity": FOUNDER_MULTIPLICITY,
+        "campaigns": campaigns,
+        "candidate_contract": {
+            "structural_draw": 0,
+            "a_precursor_per_catalyst": 1.0,
+            "additional_activation_overhead": AllocationParams::default().activation_cost,
+            "maintenance_rate": AllocationParams::default().maintenance_rate,
+            "turnover_rate": AllocationParams::default().turnover_rate,
+            "new_parameters": 0,
+            "production_schema_created": false,
+        },
+    });
+    fs::write(output, serde_json::to_vec_pretty(&value).unwrap()).unwrap();
 }
 
 fn main() {

@@ -4,6 +4,10 @@
 // This is an assay harness. It does not add a division command, target neck,
 // cleavage axis, body-size controller, or a new physical parameter.
 
+use chemistry_core::d096_allocation::{
+    expression_step, expression_step_activated_material_v2, AllocationGenotype, AllocationParams,
+    ExpressionLedger,
+};
 use chemistry_core::material_mesh::MaterialMesh;
 use chemistry_core::mesh_fission::{
     find_local_segment_apposition, segment_apposition_stress_audit, topology_step,
@@ -78,6 +82,47 @@ enum Mode {
     RefractoryCurvatureNormalSignedAudit,
     RefractoryCurvatureNormalLegacyControl,
     RefractoryCurvatureNormalSignedStress,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
+enum ExpressionPath {
+    Off,
+    D096V1,
+    D096V2ActivatedMaterial,
+}
+
+fn apply_integrated_expression(
+    mesh: &mut MaterialMesh,
+    path: ExpressionPath,
+    dt: f64,
+) -> Result<ExpressionLedger, ()> {
+    let params = AllocationParams::default();
+    match path {
+        ExpressionPath::Off => Ok(ExpressionLedger::default()),
+        ExpressionPath::D096V1 => expression_step(mesh, &params, dt).map_err(|_| ()),
+        ExpressionPath::D096V2ActivatedMaterial => {
+            expression_step_activated_material_v2(mesh, &params, dt).map_err(|_| ())
+        }
+    }
+}
+
+#[derive(Clone, Debug, Default, Serialize)]
+struct IntegratedExpressionBudget {
+    initial_structural_mass: f64,
+    expression_structural_draw: f64,
+    expression_catalyst_precursor_a: f64,
+    expression_activation_and_maintenance_a: f64,
+    expression_turnover_waste: f64,
+    m1_structural_build: f64,
+    m1_structural_turnover: f64,
+    surplus_growth_structural_production: f64,
+    growth_a_consumed: f64,
+    active_motor_a: f64,
+    active_motor_w: f64,
+    remesh_topology_structural_net: f64,
+    terminal_structural_mass: f64,
+    terminal_catalyst_mass: f64,
+    expression_failures: usize,
 }
 
 impl Mode {
@@ -235,6 +280,8 @@ struct RunResult {
     refractory_audit: RefractoryAudit,
     signed_stress_attempts: Vec<Value>,
     signed_stress_counterfactual: Option<Value>,
+    #[serde(skip)]
+    expression_budget: IntegratedExpressionBudget,
     #[serde(skip)]
     final_mesh: MaterialMesh,
     #[serde(skip)]
@@ -896,9 +943,10 @@ fn partition_plasticity_state(
     })
 }
 
-fn daughter_viability_with_plasticity(
+fn daughter_viability_with_plasticity_and_expression(
     mut mesh: MaterialMesh,
     mut plasticity: PlasticityStateV1,
+    expression_path: ExpressionPath,
 ) -> Value {
     let mechanics = MechParams::default();
     let reaction = ReactionParams::default();
@@ -923,6 +971,11 @@ fn daughter_viability_with_plasticity(
     let mut produced_w = 0.0_f64;
     for step in 0..DAUGHTER_STEPS {
         if !mesh.can_advance_physics() || plasticity.adaptation.len() != mesh.n() {
+            break;
+        }
+        if expression_path != ExpressionPath::Off
+            && apply_integrated_expression(&mut mesh, expression_path, mechanics.dt).is_err()
+        {
             break;
         }
         let _ = transport_step(&mut mesh, &transport, mechanics.dt);
@@ -1029,6 +1082,10 @@ fn daughter_viability_with_plasticity(
         "active_energy_residual": energy_residual,
         "terminal": geometry(&mesh),
     })
+}
+
+fn daughter_viability_with_plasticity(mesh: MaterialMesh, plasticity: PlasticityStateV1) -> Value {
+    daughter_viability_with_plasticity_and_expression(mesh, plasticity, ExpressionPath::Off)
 }
 
 fn contrast_activity(mesh: &MaterialMesh) -> Vec<f64> {
@@ -1313,13 +1370,14 @@ fn failure_depth(reason: &str) -> usize {
     }
 }
 
-fn run(
+fn run_with_expression(
     initial_mesh: MaterialMesh,
     name: &str,
     mode: Mode,
     start_step: usize,
     end_step: usize,
     birth_mass: f64,
+    expression_path: ExpressionPath,
 ) -> RunResult {
     let mechanics = MechParams::default();
     let reaction = ReactionParams::default();
@@ -1331,6 +1389,19 @@ fn run(
     let fission = FissionParams::default();
     let contractility = ContractilityParamsV1::default();
     let mut mesh = initial_mesh;
+    match expression_path {
+        ExpressionPath::Off => {}
+        ExpressionPath::D096V1 => mesh
+            .enable_finite_allocation(AllocationGenotype::neutral(), &AllocationParams::default()),
+        ExpressionPath::D096V2ActivatedMaterial => mesh.enable_finite_allocation_v2(
+            AllocationGenotype::neutral(),
+            &AllocationParams::default(),
+        ),
+    }
+    let mut expression_budget = IntegratedExpressionBudget {
+        initial_structural_mass: mesh.total_structural_mass(),
+        ..Default::default()
+    };
     let initial_frame = observe_continuity_material_frame(&mesh, &mechanics);
     let mut regulator = ContinuityNetworkV1::new(initial_frame, Some(0)).unwrap();
     let refractory_mode = matches!(
@@ -1378,9 +1449,37 @@ fn run(
             first_invalid = Some(json!({"step":absolute_step,"phase":"pre_step"}));
             break;
         }
+        if expression_path != ExpressionPath::Off {
+            match apply_integrated_expression(&mut mesh, expression_path, mechanics.dt) {
+                Ok(ExpressionLedger {
+                    material_consumed,
+                    catalyst_precursor_consumed,
+                    activation_consumed,
+                    maintenance_consumed,
+                    turnover_waste,
+                    ..
+                }) => {
+                    expression_budget.expression_structural_draw += material_consumed;
+                    expression_budget.expression_catalyst_precursor_a +=
+                        catalyst_precursor_consumed;
+                    expression_budget.expression_activation_and_maintenance_a +=
+                        activation_consumed + maintenance_consumed;
+                    expression_budget.expression_turnover_waste += turnover_waste;
+                }
+                Err(_) => {
+                    expression_budget.expression_failures += 1;
+                    first_invalid = Some(json!({"step":absolute_step,"phase":"d096_expression"}));
+                    break;
+                }
+            }
+        }
         let _ = transport_step(&mut mesh, &transport, mechanics.dt);
-        let _ = reactions_step(&mut mesh, &reaction, mechanics.dt, true, true);
-        let _ = growth_step(&mut mesh, &reaction, &growth, mechanics.dt);
+        let reaction_ledger = reactions_step(&mut mesh, &reaction, mechanics.dt, true, true);
+        expression_budget.m1_structural_build += reaction_ledger.m_produced;
+        expression_budget.m1_structural_turnover += reaction_ledger.m_to_w;
+        let growth_ledger = growth_step(&mut mesh, &reaction, &growth, mechanics.dt);
+        expression_budget.surplus_growth_structural_production += growth_ledger.m_grown;
+        expression_budget.growth_a_consumed += growth_ledger.a_consumed_growth;
 
         let frame = observe_continuity_material_frame(&mesh, &mechanics);
         let old_n = regulator.previous_frame.topology_size;
@@ -1501,6 +1600,7 @@ fn run(
             && matches!(mode, Mode::RegulatorMotor | Mode::ContrastFallback))
         .then(|| actuator_geometry_before(&mesh, &activity, &mechanics, &contractility, &fission));
 
+        let structural_before_mechanics = mesh.total_structural_mass();
         let mechanics_ok = match mode {
             Mode::Passive
             | Mode::RegulatorOnMotorOff
@@ -1682,6 +1782,8 @@ fn run(
         if absolute_step.saturating_sub(1) % 10 == 0 {
             let _ = topology_step(&mut mesh, &fission);
         }
+        expression_budget.remesh_topology_structural_net +=
+            mesh.total_structural_mass() - structural_before_mechanics;
         all_simple &= polygon_simple(&mesh.vertices);
         all_runtime &= mesh.physical_runtime_valid();
         all_lifecycle &= mesh.lifecycle_invariants_hold();
@@ -1849,10 +1951,16 @@ fn run(
                                 if state_a.adaptation.len() == a.n()
                                     && state_b.adaptation.len() == b.n() =>
                             {
-                                let result_a =
-                                    daughter_viability_with_plasticity(a.clone(), state_a);
-                                let result_b =
-                                    daughter_viability_with_plasticity(b.clone(), state_b);
+                                let result_a = daughter_viability_with_plasticity_and_expression(
+                                    a.clone(),
+                                    state_a,
+                                    expression_path,
+                                );
+                                let result_b = daughter_viability_with_plasticity_and_expression(
+                                    b.clone(),
+                                    state_b,
+                                    expression_path,
+                                );
                                 let pass = result_a["viable"] == true && result_b["viable"] == true;
                                 full_state_daughters_viable = Some(pass);
                                 Some(json!({
@@ -1906,6 +2014,13 @@ fn run(
             }
         }
     }
+    expression_budget.active_motor_a = attribution.spent_a;
+    expression_budget.active_motor_w = attribution.produced_w;
+    expression_budget.terminal_structural_mass = mesh.total_structural_mass();
+    expression_budget.terminal_catalyst_mass = mesh
+        .finite_allocation
+        .map(|state| state.catalysts.iter().sum())
+        .unwrap_or(0.0);
     RunResult {
         name: name.into(),
         mode,
@@ -1934,9 +2049,29 @@ fn run(
         refractory_audit,
         signed_stress_attempts,
         signed_stress_counterfactual,
+        expression_budget,
         final_mesh: mesh,
         final_plasticity: plasticity,
     }
+}
+
+fn run(
+    initial_mesh: MaterialMesh,
+    name: &str,
+    mode: Mode,
+    start_step: usize,
+    end_step: usize,
+    birth_mass: f64,
+) -> RunResult {
+    run_with_expression(
+        initial_mesh,
+        name,
+        mode,
+        start_step,
+        end_step,
+        birth_mass,
+        ExpressionPath::Off,
+    )
 }
 
 /// Exact production-V4 parent state from the first R10 qualifying campaign arm.
@@ -2377,6 +2512,105 @@ pub fn run_r10_reproduction() {
         },
     });
     fs::write(output, serde_json::to_vec_pretty(&result).unwrap()).unwrap();
+}
+
+/// R10R3 Gate 3: run the exact R10 ten-arm production campaign with neutral
+/// historical D096-v1 expression continuously enabled. Mutation remains off.
+fn run_r10r3_integrated_reproduction(
+    expression_path: ExpressionPath,
+    expression_contract: &str,
+    default_output: &str,
+) {
+    let mut output = PathBuf::from(default_output);
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let runs = PERTURBATIONS
+        .iter()
+        .copied()
+        .enumerate()
+        .map(|(index, (kind, magnitude))| {
+            std::thread::spawn(move || {
+                let mesh = fixture(index);
+                let birth_mass = mesh.total_structural_mass();
+                run_with_expression(
+                    mesh,
+                    &format!("seed_{}_{}_{}", index + 1, kind, magnitude),
+                    Mode::RefractoryCurvatureNormalSignedStress,
+                    0,
+                    14_778,
+                    birth_mass,
+                    expression_path,
+                )
+            })
+        })
+        .collect::<Vec<_>>()
+        .into_iter()
+        .map(|handle| handle.join().expect("R10R3 D096-v1 campaign arm"))
+        .collect::<Vec<_>>();
+    let growth = runs
+        .iter()
+        .filter(|run| run.max_mass_over_birth >= 1.35)
+        .count();
+    let fissions = runs.iter().filter(|run| run.physical_fission).count();
+    let full_state_viable_pairs = runs
+        .iter()
+        .filter(|run| run.full_state_daughters_viable == Some(true))
+        .count();
+    let rows = runs
+        .iter()
+        .map(|run| {
+            json!({
+                "name": run.name,
+                "birth_mass": run.birth_mass,
+                "maximum_mass_over_birth": run.max_mass_over_birth,
+                "physical_fission": run.physical_fission,
+                "fission_step": run.fission_step,
+                "full_state_daughters_viable": run.full_state_daughters_viable,
+                "deepest_failure": run.deepest_failure,
+                "all_simple": run.all_simple,
+                "all_runtime_valid": run.all_runtime_valid,
+                "all_lifecycle_valid": run.all_lifecycle_valid,
+                "expression_budget": run.expression_budget,
+                "final_geometry": run.final_geometry,
+                "daughter_diagnostics": run.daughter_diagnostics,
+            })
+        })
+        .collect::<Vec<_>>();
+    let value = json!({
+        "directive": "DC-FINAL-001-R10R3-D096-ACTIVATED-MATERIAL-EXPRESSION-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001",
+        "gate": "GATE_3_DIRECT_D096_V1_INTEGRATED_REPRODUCTION_BASELINE",
+        "expression_contract": expression_contract,
+        "mutation_enabled": false,
+        "horizon": 14_778,
+        "counts": {
+            "growth_qualified": growth,
+            "geometry_valid_fissions": fissions,
+            "full_state_viable_daughter_pairs": full_state_viable_pairs,
+        },
+        "robust_reproduction": fissions >= 7 && full_state_viable_pairs >= 6,
+        "runs": rows,
+    });
+    fs::write(output, serde_json::to_vec_pretty(&value).unwrap()).unwrap();
+}
+
+pub fn run_r10r3_d096v1_integrated_reproduction() {
+    run_r10r3_integrated_reproduction(
+        ExpressionPath::D096V1,
+        "D096_V1_STRUCTURAL_CONVERSION",
+        "/tmp/dcfinal001_r10r3_d096v1_reproduction.json",
+    );
+}
+
+pub fn run_r10r3_d096v2_integrated_reproduction() {
+    run_r10r3_integrated_reproduction(
+        ExpressionPath::D096V2ActivatedMaterial,
+        "D096_V2_ACTIVATED_MATERIAL",
+        "/tmp/dcfinal001_r10r3_d096v2_reproduction.json",
+    );
 }
 
 fn campaign(mode: Mode, horizon: usize) -> Vec<RunResult> {

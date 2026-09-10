@@ -564,6 +564,21 @@ impl MaterialMesh {
         });
     }
 
+    pub fn enable_finite_allocation_v2(
+        &mut self,
+        genotype: crate::d096_allocation::AllocationGenotype,
+        params: &crate::d096_allocation::AllocationParams,
+    ) {
+        assert!(genotype.valid(params), "invalid frozen allocation");
+        self.equation_id =
+            crate::d096_allocation::EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION_V2.to_string();
+        self.schema_version = crate::d096_allocation::FINITE_ALLOCATION_V2_SCHEMA_VERSION;
+        self.finite_allocation = Some(crate::d096_allocation::AllocationState {
+            genotype,
+            catalysts: [0.0; crate::d096_allocation::FUNCTIONS],
+        });
+    }
+
     pub fn centroid(&self) -> [f64; 2] {
         let n = self.n().max(1) as f64;
         let mut cx = 0.0;
