@@ -1,0 +1,10 @@
+{
+  "breeder": false,
+  "fitness_function": false,
+  "forced_birth": false,
+  "forced_death": false,
+  "new_biological_parameters": 0,
+  "pass": true,
+  "population_feedback": false,
+  "protected_genotype": false
+}

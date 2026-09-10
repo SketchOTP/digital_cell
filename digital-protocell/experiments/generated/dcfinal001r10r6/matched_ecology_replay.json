@@ -1,0 +1,503 @@
+{
+  "causal_material_recovery": {
+    "fixed_resource_median_terminal_ratio": 0.8870206699379435,
+    "fixed_resource_post_bootstrap_fissions": 1,
+    "pass": true,
+    "rate_resource_median_terminal_ratio": 0.06556790328173231
+  },
+  "classification": "FIXED_BOUNDARY_RESTORES_MATERIAL_THROUGHPUT",
+  "fixed_boundary": [
+    {
+      "active_energy_residual": 2.0759216567967087e-10,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_closure_residual": 1.5599653124809265e-08,
+      "maximum_generation": 2,
+      "mutation_enabled": true,
+      "mutation_events": 5,
+      "n_closure_residual": 2.0954757928848267e-08,
+      "physical_deaths": 0,
+      "population_boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+      "post_bootstrap_physical_fissions": 1,
+      "replicate": 1,
+      "terminal_mass_over_birth_mass": [
+        0.8978090218235846,
+        0.8957250792634176,
+        0.8166878233522885,
+        0.9727625833918363,
+        1.065316449730018,
+        0.7995551450627428,
+        0.6715970284896896,
+        0.8870206699379435
+      ]
+    },
+    {
+      "active_energy_residual": 1.600596988282632e-09,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 1.1175870895385742e-08,
+      "maximum_generation": 1,
+      "mutation_enabled": true,
+      "mutation_events": 2,
+      "n_closure_residual": 1.3969838619232178e-09,
+      "physical_deaths": 0,
+      "population_boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "terminal_mass_over_birth_mass": [
+        1.175960196605179,
+        1.141850471149302,
+        1.079963043494881,
+        0.8701984441075169
+      ]
+    },
+    {
+      "active_energy_residual": 3.888089850079268e-10,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 9.12696123123169e-08,
+      "maximum_generation": 1,
+      "mutation_enabled": true,
+      "mutation_events": 5,
+      "n_closure_residual": 6.472691893577576e-08,
+      "physical_deaths": 0,
+      "population_boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "terminal_mass_over_birth_mass": [
+        1.7096665715677095,
+        1.2065624976861353,
+        1.1562544882144188,
+        0.953003609257098,
+        0.9270736253364009,
+        0.802628846763843,
+        1.0082415538512521
+      ]
+    },
+    {
+      "active_energy_residual": 8.151346264639869e-11,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_closure_residual": 2.561137080192566e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_events": 0,
+      "n_closure_residual": 4.656612873077393e-10,
+      "physical_deaths": 0,
+      "population_boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "terminal_mass_over_birth_mass": [
+        0.9008000746987104,
+        0.7951110684605361
+      ]
+    },
+    {
+      "active_energy_residual": 7.935341272968799e-11,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 6.984919309616089e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_events": 0,
+      "n_closure_residual": 7.450580596923828e-09,
+      "physical_deaths": 0,
+      "population_boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "terminal_mass_over_birth_mass": [
+        1.1414889614298689,
+        1.07955775627217
+      ]
+    },
+    {
+      "active_energy_residual": 7.028120307950303e-10,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 2.3283064365386963e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_events": 0,
+      "n_closure_residual": 0.0,
+      "physical_deaths": 0,
+      "population_boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "terminal_mass_over_birth_mass": [
+        1.2079005418072424,
+        0.9271898920496605
+      ]
+    },
+    {
+      "active_energy_residual": 1.240323399542831e-10,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_closure_residual": 2.9569491744041443e-08,
+      "maximum_generation": 1,
+      "mutation_enabled": true,
+      "mutation_events": 1,
+      "n_closure_residual": 2.0954757928848267e-08,
+      "physical_deaths": 0,
+      "population_boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "terminal_mass_over_birth_mass": [
+        0.9008397586677507,
+        0.7954877228197996,
+        0.7780682018611279
+      ]
+    },
+    {
+      "active_energy_residual": 7.935341272968799e-11,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 6.984919309616089e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": true,
+      "mutation_events": 0,
+      "n_closure_residual": 7.450580596923828e-09,
+      "physical_deaths": 0,
+      "population_boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "terminal_mass_over_birth_mass": [
+        1.1414889614298689,
+        1.07955775627217
+      ]
+    },
+    {
+      "active_energy_residual": 1.043417796608992e-09,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 2.514570951461792e-08,
+      "maximum_generation": 1,
+      "mutation_enabled": true,
+      "mutation_events": 5,
+      "n_closure_residual": 2.6542693376541138e-08,
+      "physical_deaths": 0,
+      "population_boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "terminal_mass_over_birth_mass": [
+        1.2011450633064813,
+        1.7292648607833554,
+        0.9541924152427391,
+        0.9366585999020021,
+        1.5345514295781748,
+        0.5216178223264322,
+        0.5827898254407294
+      ]
+    },
+    {
+      "active_energy_residual": 8.151346264639869e-11,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_closure_residual": 2.561137080192566e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_events": 0,
+      "n_closure_residual": 4.656612873077393e-10,
+      "physical_deaths": 0,
+      "population_boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "terminal_mass_over_birth_mass": [
+        0.9008000746987104,
+        0.7951110684605361
+      ]
+    },
+    {
+      "active_energy_residual": 7.935341272968799e-11,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 6.984919309616089e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_events": 0,
+      "n_closure_residual": 7.450580596923828e-09,
+      "physical_deaths": 0,
+      "population_boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "terminal_mass_over_birth_mass": [
+        1.1414889614298689,
+        1.07955775627217
+      ]
+    },
+    {
+      "active_energy_residual": 7.028120307950303e-10,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 2.3283064365386963e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_events": 0,
+      "n_closure_residual": 0.0,
+      "physical_deaths": 0,
+      "population_boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "terminal_mass_over_birth_mass": [
+        1.2079005418072424,
+        0.9271898920496605
+      ]
+    }
+  ],
+  "rate_control": [
+    {
+      "active_energy_residual": 2.653450792422518e-10,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_closure_residual": 2.5902409106492996e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": true,
+      "mutation_events": 5,
+      "n_closure_residual": 1.0244548320770264e-08,
+      "physical_deaths": 0,
+      "population_boundary_mode": "SEALED_R10R5_RATE_REINTERPRETATION",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "terminal_mass_over_birth_mass": [
+        0.20272393551626522,
+        0.13132199504648265,
+        0.11036322433726516,
+        0.06487947772578692,
+        0.06546975159334101,
+        0.060251079264882726,
+        0.056718300949340106
+      ]
+    },
+    {
+      "active_energy_residual": 4.501998773775995e-11,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 1.6298145055770874e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": true,
+      "mutation_events": 2,
+      "n_closure_residual": 1.641456037759781e-08,
+      "physical_deaths": 0,
+      "population_boundary_mode": "SEALED_R10R5_RATE_REINTERPRETATION",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "terminal_mass_over_birth_mass": [
+        0.13312420653597865,
+        0.10928904288829523,
+        0.06212916582227741,
+        0.06238940826063832
+      ]
+    },
+    {
+      "active_energy_residual": 2.0679635781561956e-10,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 2.7764635035509855e-10,
+      "maximum_generation": 1,
+      "mutation_enabled": true,
+      "mutation_events": 5,
+      "n_closure_residual": 4.097512373846257e-08,
+      "physical_deaths": 0,
+      "population_boundary_mode": "SEALED_R10R5_RATE_REINTERPRETATION",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "terminal_mass_over_birth_mass": [
+        0.05860488747407127,
+        0.07457245612553681,
+        0.07394935548346597
+      ]
+    },
+    {
+      "active_energy_residual": 2.530669007683173e-10,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_closure_residual": 2.1827872842550278e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_events": 0,
+      "n_closure_residual": 9.458744898438454e-09,
+      "physical_deaths": 0,
+      "population_boundary_mode": "SEALED_R10R5_RATE_REINTERPRETATION",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "terminal_mass_over_birth_mass": [
+        0.19754393173491833,
+        0.06484475470479147
+      ]
+    },
+    {
+      "active_energy_residual": 2.653450792422518e-10,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 1.1932570487260818e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_events": 0,
+      "n_closure_residual": 1.752050593495369e-08,
+      "physical_deaths": 0,
+      "population_boundary_mode": "SEALED_R10R5_RATE_REINTERPRETATION",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "terminal_mass_over_birth_mass": [
+        0.10942103205970333,
+        0.06217343107120319
+      ]
+    },
+    {
+      "active_energy_residual": 2.538627086323686e-10,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 2.628734563359103e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_events": 0,
+      "n_closure_residual": 4.416472165758023e-08,
+      "physical_deaths": 0,
+      "population_boundary_mode": "SEALED_R10R5_RATE_REINTERPRETATION",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "terminal_mass_over_birth_mass": [
+        0.0740140458988727
+      ]
+    },
+    {
+      "active_energy_residual": 3.185505192959681e-10,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_closure_residual": 4.0745362639427185e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": true,
+      "mutation_events": 1,
+      "n_closure_residual": 3.3178366720676422e-09,
+      "physical_deaths": 0,
+      "population_boundary_mode": "SEALED_R10R5_RATE_REINTERPRETATION",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "terminal_mass_over_birth_mass": [
+        0.17084143736593216,
+        0.06494454230733608,
+        0.06566605497012364
+      ]
+    },
+    {
+      "active_energy_residual": 2.653450792422518e-10,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 1.1932570487260818e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": true,
+      "mutation_events": 0,
+      "n_closure_residual": 1.752050593495369e-08,
+      "physical_deaths": 0,
+      "population_boundary_mode": "SEALED_R10R5_RATE_REINTERPRETATION",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "terminal_mass_over_birth_mass": [
+        0.10942103205970333,
+        0.06217343107120319
+      ]
+    },
+    {
+      "active_energy_residual": 9.247287380276248e-10,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 3.0943247963932663e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": true,
+      "mutation_events": 5,
+      "n_closure_residual": 3.774891865759855e-08,
+      "physical_deaths": 0,
+      "population_boundary_mode": "SEALED_R10R5_RATE_REINTERPRETATION",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "terminal_mass_over_birth_mass": [
+        0.07393681144093688,
+        0.16721570589311296
+      ]
+    },
+    {
+      "active_energy_residual": 2.530669007683173e-10,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_closure_residual": 2.1827872842550278e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_events": 0,
+      "n_closure_residual": 9.458744898438454e-09,
+      "physical_deaths": 0,
+      "population_boundary_mode": "SEALED_R10R5_RATE_REINTERPRETATION",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "terminal_mass_over_birth_mass": [
+        0.19754393173491833,
+        0.06484475470479147
+      ]
+    },
+    {
+      "active_energy_residual": 2.653450792422518e-10,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 1.1932570487260818e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_events": 0,
+      "n_closure_residual": 1.752050593495369e-08,
+      "physical_deaths": 0,
+      "population_boundary_mode": "SEALED_R10R5_RATE_REINTERPRETATION",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "terminal_mass_over_birth_mass": [
+        0.10942103205970333,
+        0.06217343107120319
+      ]
+    },
+    {
+      "active_energy_residual": 2.538627086323686e-10,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 2.628734563359103e-09,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_events": 0,
+      "n_closure_residual": 4.416472165758023e-08,
+      "physical_deaths": 0,
+      "population_boundary_mode": "SEALED_R10R5_RATE_REINTERPRETATION",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "terminal_mass_over_birth_mass": [
+        0.0740140458988727
+      ]
+    }
+  ]
+}

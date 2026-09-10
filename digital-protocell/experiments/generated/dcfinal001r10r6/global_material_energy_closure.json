@@ -1,0 +1,6 @@
+{
+  "N_F_population_closure": "PASS",
+  "active_A_to_W": "PASS",
+  "reason": "replicated selection not established",
+  "selection_and_final_integration": "NOT_REACHED"
+}

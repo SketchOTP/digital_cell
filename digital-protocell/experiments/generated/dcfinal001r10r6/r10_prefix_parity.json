@@ -1,0 +1,12 @@
+{
+  "compared": [
+    "cohort_state_digest",
+    "plasticity_state_digest",
+    "snapshot",
+    "step",
+    "legacy world material and ledger fields"
+  ],
+  "new_boundary_ledger_fields_excluded": true,
+  "pass": true,
+  "tolerance": 1e-08
+}

@@ -1,0 +1,12 @@
+{
+  "authoritative_flow_or_dilution_rate_found": false,
+  "canonical_dimension": "concentration",
+  "classification": "D096_CONCENTRATION_TO_SUPPLY_RATE_MISMATCH_CONFIRMED",
+  "current_transformation": "C_target * dt * volume",
+  "values": {
+    "F": 1.0,
+    "damage_N": 1.98,
+    "resource_lean_N": 0.264,
+    "resource_pulse_N": 2.75
+  }
+}

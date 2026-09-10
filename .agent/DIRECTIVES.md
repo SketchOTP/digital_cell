@@ -1252,3 +1252,10 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 
 - Final scientific head `4c199ce5983bb79d73f4f2990f22932af3eddb94` and governed head `b648a2a67e50a4b34a70155994ae5fa0155441e6` are sealed by exact-head workflow `34490606932 PASS` with artifact `sha256:ab088f51ee01ac48170e49d67c73c74f5801296270a1b6bd2df684543d97114c`.
 - The workflow-only scope-audit correction is the only post-result change; no organism biology or scientific result changed. R10R5 remains a bounded negative at Gate 13 with owner override active and no successor execution.
+
+## DC-FINAL-001-R10R6-D096-FIXED-CONCENTRATION-BOUNDARY-ECOLOGY-GENERATION-TURNOVER-SELECTION-AND-END-GOAL-CLOSURE-001
+
+- Issued `2026-09-10` by the external Architect from accepted R10R5 governed head `27ce65d99161680bd96f48cfc0bcf7f5973f7c05`; owner override remains active.
+- Authorized scope: audit the D096 concentration-to-flux dimensional boundary, prove sealed bath depletion and fixed-boundary transport parity, add only an assay-local fixed-concentration bath with explicit source/outflow ledgers, and continue through selection/reversal only if natural turnover permits it. No organism biology or new biological parameter is authorized.
+- Gates 1–6 pass locally: concentration-to-supply-rate mismatch confirmed, boundary depletion is causal, reference transport parity passes, source/sink and N/F closure pass, and fixed-boundary growth recovery produces one post-bootstrap Resource fission in one replicate.
+- Gate 9 stop: generation 2 is established in one Resource replicate, but replicated Resource/Damage selection and hereditary reversal are not established; final integrated M1-M5 is not reached. Provisional classification is `D096_FIXED_BOUNDARY_TURNOVER_ESTABLISHED_SELECTION_NOT_ESTABLISHED`; no successor execution starts pending exact-head validation and Architect acceptance.

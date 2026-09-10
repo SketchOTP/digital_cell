@@ -1,0 +1,13 @@
+{
+  "classification": "ENVIRONMENT_DEPENDENT_SELECTION_NOT_ESTABLISHED",
+  "damage_post_bootstrap_fissions": [
+    0,
+    0
+  ],
+  "pass": false,
+  "reason": "replicated Resource and Damage hereditary differential reproduction/death did not both occur",
+  "resource_post_bootstrap_fissions": [
+    1,
+    0
+  ]
+}

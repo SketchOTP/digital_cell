@@ -1,0 +1,57 @@
+{
+  "campaigns": [
+    {
+      "active_energy_residual": 3.888089850079268e-10,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 9.12696123123169e-08,
+      "maximum_generation": 1,
+      "mutation_enabled": true,
+      "mutation_events": 5,
+      "n_closure_residual": 6.472691893577576e-08,
+      "physical_deaths": 0,
+      "population_boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "terminal_mass_over_birth_mass": [
+        1.7096665715677095,
+        1.2065624976861353,
+        1.1562544882144188,
+        0.953003609257098,
+        0.9270736253364009,
+        0.802628846763843,
+        1.0082415538512521
+      ]
+    },
+    {
+      "active_energy_residual": 1.043417796608992e-09,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 2.514570951461792e-08,
+      "maximum_generation": 1,
+      "mutation_enabled": true,
+      "mutation_events": 5,
+      "n_closure_residual": 2.6542693376541138e-08,
+      "physical_deaths": 0,
+      "population_boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "terminal_mass_over_birth_mass": [
+        1.2011450633064813,
+        1.7292648607833554,
+        0.9541924152427391,
+        0.9366585999020021,
+        1.5345514295781748,
+        0.5216178223264322,
+        0.5827898254407294
+      ]
+    }
+  ],
+  "classification": "REVERSAL_NOT_ESTABLISHED",
+  "pass": false,
+  "reason": "fixed Resource\u2192Damage run has no replicated hereditary trajectories to redirect"
+}

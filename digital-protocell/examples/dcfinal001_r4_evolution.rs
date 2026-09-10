@@ -41,6 +41,21 @@ const REPLICATES: u64 = 2;
 const REPRODUCTION_STEPS: usize = 12_000;
 const DAUGHTER_CONTINUATION_STEPS: usize = 3_000;
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+enum PopulationBoundaryMode {
+    RateReinterpretation,
+    FixedConcentrationBoundary,
+}
+
+impl PopulationBoundaryMode {
+    fn label(self) -> &'static str {
+        match self {
+            Self::RateReinterpretation => "SEALED_R10R5_RATE_REINTERPRETATION",
+            Self::FixedConcentrationBoundary => "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 enum Environment {
     Resource,
@@ -82,6 +97,10 @@ struct WorldLedger {
     initial_f: f64,
     inflow_n: f64,
     inflow_f: f64,
+    external_source_n_to_bath: f64,
+    external_source_f_to_bath: f64,
+    bath_n_to_outflow: f64,
+    bath_f_to_outflow: f64,
     delivered_n: f64,
     delivered_f: f64,
     returned_n: f64,
@@ -451,6 +470,36 @@ impl OpenMedium {
         self.f_mass += add_f;
         self.ledger.inflow_n += add_n;
         self.ledger.inflow_f += add_f;
+        self.ledger.external_source_n_to_bath += add_n;
+        self.ledger.external_source_f_to_bath += add_f;
+    }
+
+    fn refresh_fixed_concentration_boundary(
+        &mut self,
+        environment: Environment,
+        phase_step: usize,
+    ) {
+        let (target_n, target_f) = environment.fixed_inflow_concentrations(phase_step);
+        let target_n_mass = target_n * self.volume;
+        let target_f_mass = target_f * self.volume;
+        let delta_n = target_n_mass - self.n_mass;
+        let delta_f = target_f_mass - self.f_mass;
+        if delta_n >= 0.0 {
+            self.n_mass += delta_n;
+            self.ledger.external_source_n_to_bath += delta_n;
+        } else {
+            let outflow = (-delta_n).min(self.n_mass);
+            self.n_mass -= outflow;
+            self.ledger.bath_n_to_outflow += outflow;
+        }
+        if delta_f >= 0.0 {
+            self.f_mass += delta_f;
+            self.ledger.external_source_f_to_bath += delta_f;
+        } else {
+            let outflow = (-delta_f).min(self.f_mass);
+            self.f_mass -= outflow;
+            self.ledger.bath_f_to_outflow += outflow;
+        }
     }
 
     /// Exact multiplicity-aware finite shared-boundary exchange. The effective
@@ -577,6 +626,60 @@ fn r10_exchange_with_observer(
         observer.n_return += (-delta_n).max(0.0) * count;
         observer.f_return += (-delta_f).max(0.0) * count;
     }
+}
+
+fn fixed_boundary_transport_reference_parity() -> Value {
+    let (template, _, _, _) = r10_closure::r10_seed3_fission_state();
+    let transport = TransportParams::default();
+    let dt = MechParams::default().dt;
+    let (target_n, target_f) = Environment::Resource.fixed_inflow_concentrations(0);
+
+    let mut reference = template.clone();
+    let original_exterior = reference.exterior;
+    reference.exterior.n = target_n;
+    reference.exterior.f = target_f;
+    let reference_ledger = transport_step(&mut reference, &transport, dt);
+    reference.exterior = original_exterior;
+
+    let mut candidate = Cohort {
+        mesh: template,
+        plasticity: None,
+        count: 1,
+        generation: 0,
+        birth_mass: 0.0,
+        id: 1,
+    };
+    let mut bath = OpenMedium {
+        volume: 1.0,
+        n_mass: target_n,
+        f_mass: target_f,
+        ledger: WorldLedger::default(),
+    };
+    bath.exchange(std::slice::from_mut(&mut candidate), &transport, dt);
+    let n_delta = (candidate.mesh.interior.n - reference.interior.n).abs();
+    let f_delta = (candidate.mesh.interior.f - reference.interior.f).abs();
+    let delivered_n_delta = (bath.ledger.delivered_n - reference_ledger.n_in).abs();
+    let delivered_f_delta = (bath.ledger.delivered_f - reference_ledger.f_in).abs();
+    let pass = n_delta <= 1e-12
+        && f_delta <= 1e-12
+        && delivered_n_delta <= 1e-12
+        && delivered_f_delta <= 1e-12;
+    json!({
+        "mode": "one_reference_volume_fixed_boundary_vs_direct_boundary_transport",
+        "target_n_concentration": target_n,
+        "target_f_concentration": target_f,
+        "dt": dt,
+        "n_in_reference": reference_ledger.n_in,
+        "f_in_reference": reference_ledger.f_in,
+        "n_in_candidate": bath.ledger.delivered_n,
+        "f_in_candidate": bath.ledger.delivered_f,
+        "interior_n_abs_delta": n_delta,
+        "interior_f_abs_delta": f_delta,
+        "delivered_n_abs_delta": delivered_n_delta,
+        "delivered_f_abs_delta": delivered_f_delta,
+        "tolerance": 1e-12,
+        "pass": pass,
+    })
 }
 
 fn apply_damage(cohort: &mut Cohort, step: usize, world: &mut OpenMedium) {
@@ -2309,6 +2412,7 @@ fn r10_advance_phase(
     prefix_2500: &mut Option<Value>,
     phase_steps: usize,
     expression_path: D096ExpressionPath,
+    boundary_mode: PopulationBoundaryMode,
 ) {
     let allocation = AllocationParams::default();
     let mechanics = MechParams::default();
@@ -2324,7 +2428,14 @@ fn r10_advance_phase(
             break;
         }
         let step = phase_index * phase_steps + phase_step + 1;
-        world.add_fixed_inflow(environment, phase_step, mechanics.dt);
+        match boundary_mode {
+            PopulationBoundaryMode::RateReinterpretation => {
+                world.add_fixed_inflow(environment, phase_step, mechanics.dt)
+            }
+            PopulationBoundaryMode::FixedConcentrationBoundary => {
+                world.refresh_fixed_concentration_boundary(environment, phase_step)
+            }
+        }
         if environment == Environment::Damage {
             for cohort in cohorts.iter_mut() {
                 let genotype = cohort
@@ -2491,6 +2602,7 @@ fn r10_campaign(
     phase_steps: usize,
     expression_path: D096ExpressionPath,
     founder_multiplicity: u64,
+    boundary_mode: PopulationBoundaryMode,
 ) -> Value {
     let campaign_seed = splitmix64(
         replicate
@@ -2554,6 +2666,7 @@ fn r10_campaign(
             &mut prefix_2500,
             phase_steps,
             expression_path,
+            boundary_mode,
         );
     }
     let terminal_step = sequence.len() * phase_steps;
@@ -2584,20 +2697,24 @@ fn r10_campaign(
                 * cohort.count as f64
         })
         .sum::<f64>();
-    let n_closure = (world.ledger.initial_n + world.ledger.inflow_n + initial_organism_n
-        - world.n_mass
-        - terminal_organism_n
-        - ledger.reaction_n_consumed
-        - world.ledger.physical_death_n_sink
-        - world.ledger.invalidated_n_terminal)
-        .abs();
-    let f_closure = (world.ledger.initial_f + world.ledger.inflow_f + initial_organism_f
-        - world.f_mass
-        - terminal_organism_f
-        - ledger.reaction_f_consumed
-        - world.ledger.physical_death_f_sink
-        - world.ledger.invalidated_f_terminal)
-        .abs();
+    let n_closure =
+        (world.ledger.initial_n + world.ledger.external_source_n_to_bath + initial_organism_n
+            - world.n_mass
+            - world.ledger.bath_n_to_outflow
+            - terminal_organism_n
+            - ledger.reaction_n_consumed
+            - world.ledger.physical_death_n_sink
+            - world.ledger.invalidated_n_terminal)
+            .abs();
+    let f_closure =
+        (world.ledger.initial_f + world.ledger.external_source_f_to_bath + initial_organism_f
+            - world.f_mass
+            - world.ledger.bath_f_to_outflow
+            - terminal_organism_f
+            - ledger.reaction_f_consumed
+            - world.ledger.physical_death_f_sink
+            - world.ledger.invalidated_f_terminal)
+            .abs();
     let active_energy_residual = (ledger.active_a_spent - ledger.active_w_produced).abs();
     let structural_expected_terminal = initial_structural_mass
         + ledger.m1_structural_build
@@ -2640,6 +2757,7 @@ fn r10_campaign(
         "campaign_seed": campaign_seed,
         "environment_sequence": sequence.iter().map(|environment| environment.label()).collect::<Vec<_>>(),
         "phase_steps": phase_steps,
+        "population_boundary_mode": boundary_mode.label(),
         "expression_path": expression_path.label(),
         "founder_multiplicity": founder_multiplicity,
         "template_fission_step": template_step,
@@ -2667,6 +2785,7 @@ fn run_r10_evolution_with_horizon(
     directive: &str,
     phase_steps: usize,
     expression_path: D096ExpressionPath,
+    boundary_mode: PopulationBoundaryMode,
 ) {
     let mut output = PathBuf::from(default_output);
     let args = env::args().collect::<Vec<_>>();
@@ -2699,6 +2818,7 @@ fn run_r10_evolution_with_horizon(
                         phase_steps,
                         expression_path,
                         FOUNDER_MULTIPLICITY,
+                        boundary_mode,
                     )
                 }));
             }
@@ -2720,6 +2840,7 @@ fn run_r10_evolution_with_horizon(
             "opportunities_per_initial_campaign": 2 * FOUNDER_MULTIPLICITY,
             "replicates": REPLICATES,
             "phase_steps": phase_steps,
+            "population_boundary_mode": boundary_mode.label(),
             "switch_schedule": [phase_steps, 2 * phase_steps],
             "open_medium_volume": FOUNDER_MULTIPLICITY,
             "inflow_schedule_source": "frozen D-096 Resource/Damage values",
@@ -2735,6 +2856,7 @@ fn run_r10_evolution_with_horizon(
             "contract_version": format!("{:?}", template.contract_version),
             "plasticity_patches": plasticity.adaptation.len(),
         },
+        "fixed_boundary_transport_reference_parity": fixed_boundary_transport_reference_parity(),
         "campaigns": campaigns,
     });
     fs::write(output, serde_json::to_vec_pretty(&value).unwrap()).unwrap();
@@ -2746,6 +2868,7 @@ pub fn run_r10_evolution() {
         "DC-FINAL-001-R10-SIGNED-LOAD-BEARING-NECK-STRESS-REPRODUCTION-AND-END-GOAL-CLOSURE-001",
         PHASE_STEPS,
         D096ExpressionPath::V1Structural,
+        PopulationBoundaryMode::RateReinterpretation,
     );
 }
 
@@ -2755,6 +2878,7 @@ pub fn run_r10r2_evolution() {
         "DC-FINAL-001-R10R2-PRODUCTION-EVOLUTION-HORIZON-REQUALIFICATION-SELECTION-AND-END-GOAL-CLOSURE-001",
         R10R2_PHASE_STEPS,
         D096ExpressionPath::V1Structural,
+        PopulationBoundaryMode::RateReinterpretation,
     );
 }
 
@@ -2764,6 +2888,17 @@ pub fn run_r10r5_evolution() {
         "DC-FINAL-001-R10R5-D096-FINITE-BUDGET-CENTERED-GAIN-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001",
         R10R2_PHASE_STEPS,
         D096ExpressionPath::V4FiniteBudgetCentered,
+        PopulationBoundaryMode::RateReinterpretation,
+    );
+}
+
+pub fn run_r10r6_evolution() {
+    run_r10_evolution_with_horizon(
+        "/tmp/dcfinal001_r10r6_evolution.json",
+        "DC-FINAL-001-R10R6-D096-FIXED-CONCENTRATION-BOUNDARY-ECOLOGY-GENERATION-TURNOVER-SELECTION-AND-END-GOAL-CLOSURE-001",
+        R10R2_PHASE_STEPS,
+        D096ExpressionPath::V4FiniteBudgetCentered,
+        PopulationBoundaryMode::FixedConcentrationBoundary,
     );
 }
 
@@ -2801,6 +2936,7 @@ pub fn run_r10r3_budget_diagnostics() {
                     R10R2_PHASE_STEPS,
                     expression_path,
                     FOUNDER_MULTIPLICITY,
+                    PopulationBoundaryMode::RateReinterpretation,
                 )
             }));
         }

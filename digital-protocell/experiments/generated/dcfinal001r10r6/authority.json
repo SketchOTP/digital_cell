@@ -1,0 +1,19 @@
+{
+  "directive": "DC-FINAL-001-R10R6-D096-FIXED-CONCENTRATION-BOUNDARY-ECOLOGY-GENERATION-TURNOVER-SELECTION-AND-END-GOAL-CLOSURE-001",
+  "owner_override": "ACTIVE",
+  "r10r5_artifact": "sha256:cc31b5d2beda08c1b53e2ff47669ba23132076d5ddd339d261f0fbf6d99b5c06",
+  "r10r5_ci": "34492320931 PASS",
+  "r10r5_governed_head": "27ce65d99161680bd96f48cfc0bcf7f5973f7c05",
+  "r10r5_mutation": {
+    "mutation_off": 0,
+    "mutations": 18,
+    "opportunities": 1800
+  },
+  "r10r5_reproduction": {
+    "full_state_viable_pairs": 7,
+    "geometry_valid_fissions": 7,
+    "growth_qualified": 10
+  },
+  "r10r5_scientific_head": "4c199ce5983bb79d73f4f2990f22932af3eddb94",
+  "starting_governed_head": "27ce65d99161680bd96f48cfc0bcf7f5973f7c05"
+}

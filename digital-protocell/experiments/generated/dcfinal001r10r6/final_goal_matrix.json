@@ -1,0 +1,12 @@
+{
+  "M1": "PRESERVED",
+  "M2": "QUALIFIED",
+  "M3": "PRESERVED",
+  "M4_damage_selection": "NOT_ESTABLISHED",
+  "M4_environment_dependence": "NOT_ESTABLISHED",
+  "M4_generation2": "PASS",
+  "M4_resource_selection": "NOT_ESTABLISHED",
+  "M4_reversal": "NOT_ESTABLISHED",
+  "M5": "NOT_REACHED",
+  "digital_cell_end_goal": "NOT_ESTABLISHED"
+}

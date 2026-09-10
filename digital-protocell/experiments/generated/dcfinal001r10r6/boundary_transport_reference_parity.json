@@ -1,0 +1,16 @@
+{
+  "delivered_f_abs_delta": 0.0,
+  "delivered_n_abs_delta": 0.0,
+  "dt": 0.02,
+  "f_in_candidate": 0.5717789842621364,
+  "f_in_reference": 0.5717789842621364,
+  "interior_f_abs_delta": 0.0,
+  "interior_n_abs_delta": 0.0,
+  "mode": "one_reference_volume_fixed_boundary_vs_direct_boundary_transport",
+  "n_in_candidate": 2.5387633474855846,
+  "n_in_reference": 2.5387633474855846,
+  "pass": true,
+  "target_f_concentration": 1.0,
+  "target_n_concentration": 2.75,
+  "tolerance": 1e-12
+}

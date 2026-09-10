@@ -2573,3 +2573,10 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 
 - Final governed head: `b648a2a67e50a4b34a70155994ae5fa0155441e6`; exact-head workflow `34490606932 PASS`; artifact `sha256:ab088f51ee01ac48170e49d67c73c74f5801296270a1b6bd2df684543d97114c`.
 - Scientific head remains `4c199ce5983bb79d73f4f2990f22932af3eddb94`; the CI correction was governance-only. The sealed result remains `D096_V4_PRODUCTION_TURNOVER_NOT_ESTABLISHED_INSUFFICIENT_GROWTH`, with reproduction qualified at `7/10` fissions and `7/10` viable pairs and evolution not reached.
+
+## DC-FINAL-001-R10R6 fixed-concentration boundary — provisional bounded result
+
+- The current `C_target × dt × volume` population feed is dimensionally unsupported by any authoritative flow/dilution rate. Sealed Resource/Damage bath trajectories remain below their target concentration for nearly the entire sampled horizon and correlate with terminal structural undergrowth.
+- The versioned assay-only fixed-concentration boundary restores the target at each accepted step and books positive restoration as external source input and negative restoration as explicit bath outflow. One-organism transport parity, N/F population closure, and active A→W closure pass.
+- Fixed-boundary R10R6 reaches `maximum_generation = 2` and `1` post-bootstrap fission in Resource replicate 1 only. Resource replicate 2 and both Damage replicates remain generation 1 with zero post-bootstrap fissions and zero deaths. Natural D096 phenotype differences remain causal, but replicated selection, environment dependence, reversal, and final integration are not established.
+- Classification: `D096_FIXED_BOUNDARY_TURNOVER_ESTABLISHED_SELECTION_NOT_ESTABLISHED`. M1 remains closed/frozen/preserved; M2 qualified; M3 preserved; end goal not established; owner override remains active; exact-head CI and Architect acceptance pending.

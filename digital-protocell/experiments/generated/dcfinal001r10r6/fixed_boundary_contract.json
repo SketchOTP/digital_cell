@@ -1,0 +1,14 @@
+{
+  "bath_volume": 150.0,
+  "mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+  "new_biological_parameters": 0,
+  "population_feedback": false,
+  "source_sink": {
+    "negative_delta": "bath_to_explicit_outflow",
+    "positive_delta": "external_source_to_bath"
+  },
+  "target_depends_only_on": [
+    "environment_identity",
+    "phase_step"
+  ]
+}

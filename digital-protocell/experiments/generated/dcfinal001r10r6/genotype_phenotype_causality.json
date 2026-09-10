@@ -1,0 +1,445 @@
+{
+  "causal_endpoints": [
+    "N/F uptake",
+    "A production",
+    "structural growth",
+    "physical reproduction/death"
+  ],
+  "classification": "PRODUCTION_D096_VARIATION_CAUSAL",
+  "naturally_observed_rows": [
+    {
+      "a_produced": 3573.5383769394016,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_uptake": 3574.1089126366896,
+      "genotype": "0.00000000000000000,0.25000000000000000,0.50000000000000000,0.25000000000000000",
+      "growth_material": 435.1543185044414,
+      "mutation_enabled": true,
+      "n_uptake": 3813.7185793536605,
+      "physical_deaths": 0,
+      "physical_fissions": 1,
+      "replicate": 1
+    },
+    {
+      "a_produced": 7702.291902261235,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_uptake": 7535.833618083338,
+      "genotype": "0.22972596289041708,0.27027403710958292,0.25000000000000000,0.25000000000000000",
+      "growth_material": 700.7562246144861,
+      "mutation_enabled": true,
+      "n_uptake": 7316.58275088707,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 1
+    },
+    {
+      "a_produced": 1649349.3442950742,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_uptake": 1616260.23069284,
+      "genotype": "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000",
+      "growth_material": 148057.84294234155,
+      "mutation_enabled": true,
+      "n_uptake": 1577132.9320062513,
+      "physical_deaths": 0,
+      "physical_fissions": 150,
+      "replicate": 1
+    },
+    {
+      "a_produced": 7626.885873100836,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_uptake": 7437.81096102353,
+      "genotype": "0.29783495874649246,0.25000000000000000,0.20216504125350751,0.25000000000000000",
+      "growth_material": 669.8469470323632,
+      "mutation_enabled": true,
+      "n_uptake": 7209.723304590978,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 1
+    },
+    {
+      "a_produced": 3383.017716181297,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_uptake": 3305.629063773385,
+      "genotype": "0.32434113329218078,0.25000000000000000,0.17565886670781922,0.25000000000000000",
+      "growth_material": 277.21311281973425,
+      "mutation_enabled": true,
+      "n_uptake": 3250.5670767234383,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 1
+    },
+    {
+      "a_produced": 3425.141232566608,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_uptake": 3385.253665954214,
+      "genotype": "0.50000000000000000,0.00000000000000000,0.25000000000000000,0.25000000000000000",
+      "growth_material": 336.81717897465325,
+      "mutation_enabled": true,
+      "n_uptake": 3376.611176745922,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 1
+    },
+    {
+      "a_produced": 10427.475183110488,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 9909.858626428431,
+      "genotype": "0.22152470693151596,0.25000000000000000,0.25000000000000000,0.27847529306848401",
+      "growth_material": 1011.2561272121907,
+      "mutation_enabled": true,
+      "n_uptake": 11657.12770312045,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 1
+    },
+    {
+      "a_produced": 2285528.6986499806,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 2178572.2392630973,
+      "genotype": "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000",
+      "growth_material": 215735.8693939575,
+      "mutation_enabled": true,
+      "n_uptake": 2551577.6394217033,
+      "physical_deaths": 0,
+      "physical_fissions": 150,
+      "replicate": 1
+    },
+    {
+      "a_produced": 4219.849085298921,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 4010.0502576158387,
+      "genotype": "0.25000000000000000,0.26737149581938841,0.25000000000000000,0.23262850418061159",
+      "growth_material": 381.6043142116045,
+      "mutation_enabled": true,
+      "n_uptake": 4642.382836490033,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 1
+    },
+    {
+      "a_produced": 7814.302085228874,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 7613.005596296077,
+      "genotype": "0.19154711630485180,0.30845288369514823,0.25000000000000000,0.25000000000000000",
+      "growth_material": 719.504883679798,
+      "mutation_enabled": true,
+      "n_uptake": 8354.881297769365,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 1
+    },
+    {
+      "a_produced": 19948.462998330255,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 19530.53595855004,
+      "genotype": "0.25000000000000000,0.12189759567667707,0.25000000000000000,0.37810240432332293",
+      "growth_material": 2220.150837216445,
+      "mutation_enabled": true,
+      "n_uptake": 21645.19180426805,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 1
+    },
+    {
+      "a_produced": 3876844.6542659155,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 3771000.0589152244,
+      "genotype": "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000",
+      "growth_material": 361308.0745507799,
+      "mutation_enabled": true,
+      "n_uptake": 4154629.2971811127,
+      "physical_deaths": 0,
+      "physical_fissions": 150,
+      "replicate": 1
+    },
+    {
+      "a_produced": 18250.073923659253,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 17728.841876366594,
+      "genotype": "0.25000000000000000,0.25764045979040784,0.24235954020959216,0.25000000000000000",
+      "growth_material": 1702.2910699672755,
+      "mutation_enabled": true,
+      "n_uptake": 19557.559743281796,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 1
+    },
+    {
+      "a_produced": 7467.099038023756,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 7251.470258949238,
+      "genotype": "0.27910228286424915,0.25000000000000000,0.25000000000000000,0.22089771713575085",
+      "growth_material": 656.1043403725137,
+      "mutation_enabled": true,
+      "n_uptake": 7932.473156086069,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 1
+    },
+    {
+      "a_produced": 7920.147978430212,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 7724.501120387999,
+      "genotype": "0.35561330052759021,0.14438669947240979,0.25000000000000000,0.25000000000000000",
+      "growth_material": 746.0756373309274,
+      "mutation_enabled": true,
+      "n_uptake": 8488.427194795615,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 1
+    },
+    {
+      "a_produced": 1677177.5156101128,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_uptake": 1644191.495495067,
+      "genotype": "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000",
+      "growth_material": 150853.5609559368,
+      "mutation_enabled": false,
+      "n_uptake": 1603518.9883145404,
+      "physical_deaths": 0,
+      "physical_fissions": 150,
+      "replicate": 1
+    },
+    {
+      "a_produced": 2300179.2154084463,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 2192492.2136671245,
+      "genotype": "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000",
+      "growth_material": 217115.07083445677,
+      "mutation_enabled": false,
+      "n_uptake": 2567896.7246200275,
+      "physical_deaths": 0,
+      "physical_fissions": 150,
+      "replicate": 1
+    },
+    {
+      "a_produced": 3938691.8082714225,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 3831256.0590275344,
+      "genotype": "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000",
+      "growth_material": 367071.0292725773,
+      "mutation_enabled": false,
+      "n_uptake": 4221012.470138168,
+      "physical_deaths": 0,
+      "physical_fissions": 150,
+      "replicate": 1
+    },
+    {
+      "a_produced": 1673476.950716798,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_uptake": 1640526.4385062116,
+      "genotype": "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000",
+      "growth_material": 150562.07295103715,
+      "mutation_enabled": true,
+      "n_uptake": 1599983.5656427236,
+      "physical_deaths": 0,
+      "physical_fissions": 150,
+      "replicate": 2
+    },
+    {
+      "a_produced": 3458.491360846961,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_uptake": 3397.3287904332697,
+      "genotype": "0.25000000000000000,0.27895056195991824,0.25000000000000000,0.22104943804008179",
+      "growth_material": 293.26093388565033,
+      "mutation_enabled": true,
+      "n_uptake": 3346.1971430062836,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 2
+    },
+    {
+      "a_produced": 2300179.2154084463,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 2192492.2136671245,
+      "genotype": "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000",
+      "growth_material": 217115.07083445677,
+      "mutation_enabled": true,
+      "n_uptake": 2567896.7246200275,
+      "physical_deaths": 0,
+      "physical_fissions": 150,
+      "replicate": 2
+    },
+    {
+      "a_produced": 7362.496130095054,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 7163.589889543316,
+      "genotype": "0.25000000000000000,0.20962865911715983,0.25000000000000000,0.29037134088284017",
+      "growth_material": 708.5682601954264,
+      "mutation_enabled": true,
+      "n_uptake": 7859.324920869904,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 2
+    },
+    {
+      "a_produced": 3885768.4842870724,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 3779585.1220825915,
+      "genotype": "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000",
+      "growth_material": 361636.610523717,
+      "mutation_enabled": true,
+      "n_uptake": 4164536.776115628,
+      "physical_deaths": 0,
+      "physical_fissions": 150,
+      "replicate": 2
+    },
+    {
+      "a_produced": 21002.234351859584,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 20551.580656665166,
+      "genotype": "0.25000000000000000,0.25000000000000000,0.38733573987003955,0.11266426012996048",
+      "growth_material": 1955.3235280415856,
+      "mutation_enabled": true,
+      "n_uptake": 22745.925302849915,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 2
+    },
+    {
+      "a_produced": 8870.715078250472,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 8709.744981415952,
+      "genotype": "0.25000000000000000,0.25000000000000000,0.42597122746414151,0.07402877253585846",
+      "growth_material": 808.3624826048012,
+      "mutation_enabled": true,
+      "n_uptake": 9616.353619173815,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 2
+    },
+    {
+      "a_produced": 6502.903263196567,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 6264.458097913602,
+      "genotype": "0.25000000000000000,0.37662628725180231,0.12337371274819769,0.25000000000000000",
+      "growth_material": 510.1062941970581,
+      "mutation_enabled": true,
+      "n_uptake": 6677.655060476384,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 2
+    },
+    {
+      "a_produced": 6704.525770084972,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 6470.8147736427245,
+      "genotype": "0.34769028405340580,0.25000000000000000,0.15230971594659420,0.25000000000000000",
+      "growth_material": 543.9268127240889,
+      "mutation_enabled": true,
+      "n_uptake": 6942.828344655655,
+      "physical_deaths": 0,
+      "physical_fissions": 0,
+      "replicate": 2
+    },
+    {
+      "a_produced": 1677177.5156101128,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_uptake": 1644191.495495067,
+      "genotype": "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000",
+      "growth_material": 150853.5609559368,
+      "mutation_enabled": false,
+      "n_uptake": 1603518.9883145404,
+      "physical_deaths": 0,
+      "physical_fissions": 150,
+      "replicate": 2
+    },
+    {
+      "a_produced": 2300179.2154084463,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 2192492.2136671245,
+      "genotype": "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000",
+      "growth_material": 217115.07083445677,
+      "mutation_enabled": false,
+      "n_uptake": 2567896.7246200275,
+      "physical_deaths": 0,
+      "physical_fissions": 150,
+      "replicate": 2
+    },
+    {
+      "a_produced": 3938691.8082714225,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_uptake": 3831256.0590275344,
+      "genotype": "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000",
+      "growth_material": 367071.0292725773,
+      "mutation_enabled": false,
+      "n_uptake": 4221012.470138168,
+      "physical_deaths": 0,
+      "physical_fissions": 150,
+      "replicate": 2
+    }
+  ]
+}

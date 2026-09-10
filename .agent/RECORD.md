@@ -1821,3 +1821,12 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Exact-head workflow `34490606932 PASS`; artifact `sha256:ab088f51ee01ac48170e49d67c73c74f5801296270a1b6bd2df684543d97114c`.
 - R10R5 remains classified `D096_V4_PRODUCTION_TURNOVER_NOT_ESTABLISHED_INSUFFICIENT_GROWTH`; robust production reproduction is `7/10` fissions and `7/10` full-state viable pairs, while natural generation-2 turnover, selection, reversal, and final integrated M1-M5 are `NOT_REACHED`.
 - The post-result change was governance/evidence sealing only. M1 remains closed/frozen/preserved; M2 qualified; M3 preserved; PR #44 remains open, draft, unmerged, and untouched; next execution is `false`; independent Architect acceptance is `PENDING`.
+
+## DEC-DCFINAL001-R10R6-BOUNDARY-TURNOVER-SELECTION-STOP
+
+- Date: `2026-09-10`
+- Status: `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_SELECTION_NOT_ESTABLISHED`
+- Record or decision ID: `DEC-DCFINAL001-R10R6-BOUNDARY-TURNOVER-SELECTION-STOP`
+- R10R5 is accepted at governed head `27ce65d99161680bd96f48cfc0bcf7f5973f7c05`, exact-head CI `34492320931 PASS`, artifact `sha256:cc31b5d2beda08c1b53e2ff47669ba23132076d5ddd339d261f0fbf6d99b5c06`.
+- The concentration-to-flux mismatch is confirmed. Fixed-boundary transport parity and explicit source/sink N/F closure pass without new biological parameters. One mutation-on Resource replicate reaches generation 2 through one post-bootstrap physical fission; the other Resource replicate and both Damage replicates do not turn over.
+- D096 genotype-to-phenotype causality is preserved. Replicated Resource/Damage selection, environment dependence, reversal, and final M1-M5 remain `NOT_ESTABLISHED` or `NOT_REACHED`; shutdown remains `NO — OWNER OVERRIDE ACTIVE`; next execution is `false`; exact-head CI and independent Architect acceptance are pending.

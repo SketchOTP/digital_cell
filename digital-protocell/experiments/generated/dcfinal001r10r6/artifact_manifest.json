@@ -1,0 +1,150 @@
+{
+  "files": [
+    {
+      "path": "architect_disposition.json",
+      "sha256": "88eb4373604e75b9d336f5cf787a16d816b627a47eaec45822bb355b7036fcb0"
+    },
+    {
+      "path": "authority.json",
+      "sha256": "64f4d0471e5b5db242670163cbb63595fbbf8f9dcf4480137ca903a1975c8084"
+    },
+    {
+      "path": "boundary_transport_reference_parity.json",
+      "sha256": "e3acf7c3e9bdc065253ff582091a05b8186a5c9aead060e66ab94d5fe8bb2f7e"
+    },
+    {
+      "path": "checkpoint_restart.json",
+      "sha256": "66177c8734f0ef4be4381907ccccdceab9f6ac8ec4118f644c1c757c893afaab"
+    },
+    {
+      "path": "development_preservation.json",
+      "sha256": "0f4828ea2bbc437788e91ab8d21a4920ae0085ece90f6a8d982cc664bb0187e9"
+    },
+    {
+      "path": "environment_a_selection.json",
+      "sha256": "fc39112cb5b10910ff4bcec068c3604945f501b73f760745cf8f79362e53e4da"
+    },
+    {
+      "path": "environment_b_selection.json",
+      "sha256": "db51c75c51a8f2f423da71cb288c3c9c8d88daf8fca3665f9216e13ae8a2bbc3"
+    },
+    {
+      "path": "environment_dependence.json",
+      "sha256": "24fc0864f2abb16420fbe4266ff012827712d22835a438fc37f52a8b107e4075"
+    },
+    {
+      "path": "environment_dimension_audit.json",
+      "sha256": "e35d926ade18018a9a5543e95a892d09e4567f4453c2362bb4cc4cf9c67be299"
+    },
+    {
+      "path": "experiential_memory.json",
+      "sha256": "66177c8734f0ef4be4381907ccccdceab9f6ac8ec4118f644c1c757c893afaab"
+    },
+    {
+      "path": "external_prior_art.json",
+      "sha256": "fc3d597c7a5eda10d1af371844d0a307ccae212182d8acfc8ab275b64bc4d94b"
+    },
+    {
+      "path": "final_goal_matrix.json",
+      "sha256": "0053d85fe16748375e29503572f12d150d6fe645fec2bd4b7271e8c1ee1bb9e8"
+    },
+    {
+      "path": "fixed_boundary_contract.json",
+      "sha256": "f4976065e9b3e2b92ec83989494ee4a1c52182803b8f5f973253d22d5e761267"
+    },
+    {
+      "path": "forbidden_information_audit.json",
+      "sha256": "78c1c87ef7ddfa58cc455b89b114d147fbd52e806de6f50bf8c842a54a213163"
+    },
+    {
+      "path": "generation2_lineage.json",
+      "sha256": "75924baec245e34f4278a2b0d1f5666b09a5cb4caa92dc3d6e773f20eb0c10ef"
+    },
+    {
+      "path": "genotype_phenotype_causality.json",
+      "sha256": "a3f8786c9f72cbb471756be4e440ebfe2b7113e23cc7dd389fc2f15e98d5c058"
+    },
+    {
+      "path": "global_material_energy_closure.json",
+      "sha256": "eb6eb97bd014b9a48e9af2698074dfc7aa4e2b28183a8d39de2cd999803e9dbe"
+    },
+    {
+      "path": "godot_independence.json",
+      "sha256": "66177c8734f0ef4be4381907ccccdceab9f6ac8ec4118f644c1c757c893afaab"
+    },
+    {
+      "path": "linux_runtime.json",
+      "sha256": "66177c8734f0ef4be4381907ccccdceab9f6ac8ec4118f644c1c757c893afaab"
+    },
+    {
+      "path": "m1_preservation.json",
+      "sha256": "cbfcfb653028a06125a81425172819e488b387ca96c4eaf72fca5fb6c9b98b82"
+    },
+    {
+      "path": "m2_preservation.json",
+      "sha256": "18ba5b1b09a745a677b30f135e5416d4ad8c5ff171d44fd0c07a791a4599c599"
+    },
+    {
+      "path": "matched_ecology_replay.json",
+      "sha256": "cd62c6d2a53a887491940814e36e5a4c704f96d9df1ba5d197e170fa9d2cb65e"
+    },
+    {
+      "path": "mutation_off_control.json",
+      "sha256": "7e3d1edbc2133e5a26eaa1bb97414db184c93e631dac05c69a468da27d70f6a4"
+    },
+    {
+      "path": "owner_override.json",
+      "sha256": "ed487d25d07aab94cdf6fd8e7c9e7113bb7b95c8fe5b82ebddf247d54fb85b64"
+    },
+    {
+      "path": "population_turnover.json",
+      "sha256": "e776fffa2f1b456eaf5bfa3bcfd0ee8a4ecf24f8397287f67011bf04a8eb7657"
+    },
+    {
+      "path": "qualification.json",
+      "sha256": "7bf8a9b51343c2c11d8c976f34b525b25d4cceaf8db33459b1611702f2e45935"
+    },
+    {
+      "path": "r10_prefix_parity.json",
+      "sha256": "e5de6d113e898fc6db1e60cc879f883311cd3edb0fb17a801daf0570dce88167"
+    },
+    {
+      "path": "r10r5_reproduction_preservation.json",
+      "sha256": "92900b043fdf644150e72f26cb5f50bcf55619b6cc93aa474ca959d324318dfa"
+    },
+    {
+      "path": "raw_r10r6_population.json",
+      "sha256": "39efa993b59269471b29eed7e15e695c29d8304e07e93c6a64a8291ffdb66f73"
+    },
+    {
+      "path": "raw_rate_control.json",
+      "sha256": "984c7bb7dd8f77200aa32767b7a01f55c1aae20b2fbfb9d4064f32b04dd98e80"
+    },
+    {
+      "path": "raw_sealed_r10r5.json",
+      "sha256": "5abe0959e5cf5e8857c3fc7e324a0306e73b0c522601355e138546cb085864a7"
+    },
+    {
+      "path": "reversal.json",
+      "sha256": "44ba214f9f79569d1515738e9aed3c165f6f29c928cee8fe6a807032d5a6be33"
+    },
+    {
+      "path": "sealed_bath_depletion.json",
+      "sha256": "e039f4d46ff680e33d9d0ae3387e818df3ff44f4c86657b6c8dbaa8ff328340d"
+    },
+    {
+      "path": "sensory_embodiment.json",
+      "sha256": "66177c8734f0ef4be4381907ccccdceab9f6ac8ec4118f644c1c757c893afaab"
+    },
+    {
+      "path": "source_sink_material_closure.json",
+      "sha256": "76dd233727fda97aacf2cba015a418893bcde0f617d97cef6c2695de7cce66a0"
+    }
+  ],
+  "raw_inputs": {
+    "/tmp/dcfinal001_r10r5_control_r10r6.json": "984c7bb7dd8f77200aa32767b7a01f55c1aae20b2fbfb9d4064f32b04dd98e80",
+    "/tmp/dcfinal001_r10r6_evolution.json": "39efa993b59269471b29eed7e15e695c29d8304e07e93c6a64a8291ffdb66f73",
+    "/tmp/r10r5_evolution.json": "5abe0959e5cf5e8857c3fc7e324a0306e73b0c522601355e138546cb085864a7"
+  },
+  "root": "/home/sketch/Projects/digital_cell-r10r6/digital-protocell/experiments/generated/dcfinal001r10r6"
+}

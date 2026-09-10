@@ -1,0 +1,242 @@
+{
+  "lineages": [
+    {
+      "birth_events": [
+        {
+          "bootstrap": false,
+          "daughter_cohort_id": 10000,
+          "daughter_count": 1,
+          "daughter_generation": 2,
+          "daughter_genotype": [
+            0.0,
+            0.25,
+            0.5,
+            0.25
+          ],
+          "daughter_side": 0,
+          "mutated_daughters": 0,
+          "parent_cohort_id": 5,
+          "parent_count": 1,
+          "parent_generation": 1,
+          "parent_genotype": [
+            0.0,
+            0.25,
+            0.5,
+            0.25
+          ],
+          "refractory_source_correspondence": [
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34
+          ],
+          "refractory_state_digest": "fnv1a64:0d124a5aa3df1e11",
+          "step": 13650
+        },
+        {
+          "bootstrap": false,
+          "daughter_cohort_id": 10001,
+          "daughter_count": 1,
+          "daughter_generation": 2,
+          "daughter_genotype": [
+            0.0,
+            0.25,
+            0.5,
+            0.25
+          ],
+          "daughter_side": 1,
+          "mutated_daughters": 0,
+          "parent_cohort_id": 5,
+          "parent_count": 1,
+          "parent_generation": 1,
+          "parent_genotype": [
+            0.0,
+            0.25,
+            0.5,
+            0.25
+          ],
+          "refractory_source_correspondence": [
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "refractory_state_digest": "fnv1a64:55892a020feb6909",
+          "step": 13650
+        }
+      ],
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "maximum_generation": 2,
+      "mutation_enabled": true,
+      "mutation_events": [
+        {
+          "generation": 1,
+          "offspring": [
+            0.0,
+            0.25,
+            0.5,
+            0.25
+          ],
+          "parent": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "seed": 10694087846044191607,
+          "source_index": 0,
+          "step": 0,
+          "target_index": 2,
+          "transferred": 0.25
+        },
+        {
+          "generation": 1,
+          "offspring": [
+            0.22972596289041708,
+            0.2702740371095829,
+            0.25,
+            0.25
+          ],
+          "parent": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "seed": 15004447847695181390,
+          "source_index": 0,
+          "step": 0,
+          "target_index": 1,
+          "transferred": 0.02027403710958291
+        },
+        {
+          "generation": 1,
+          "offspring": [
+            0.3243411332921808,
+            0.25,
+            0.17565886670781922,
+            0.25
+          ],
+          "parent": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "seed": 16092784599490373331,
+          "source_index": 2,
+          "step": 0,
+          "target_index": 0,
+          "transferred": 0.07434113329218078
+        },
+        {
+          "generation": 1,
+          "offspring": [
+            0.29783495874649246,
+            0.25,
+            0.2021650412535075,
+            0.25
+          ],
+          "parent": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "seed": 12740731302122536760,
+          "source_index": 2,
+          "step": 0,
+          "target_index": 0,
+          "transferred": 0.04783495874649248
+        },
+        {
+          "generation": 1,
+          "offspring": [
+            0.5,
+            0.0,
+            0.25,
+            0.25
+          ],
+          "parent": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "seed": 3510207640637587824,
+          "source_index": 1,
+          "step": 0,
+          "target_index": 0,
+          "transferred": 0.25
+        }
+      ],
+      "post_bootstrap_physical_fissions": 1,
+      "replicate": 1
+    }
+  ],
+  "mutation_carried_by_lineage": true,
+  "status": "PASS"
+}

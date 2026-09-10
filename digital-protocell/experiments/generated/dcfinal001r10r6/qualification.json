@@ -1,0 +1,14 @@
+{
+  "boundary_depletion": "POPULATION_GROWTH_COLLAPSE_RESOURCE_BOUNDARY_LIMITED",
+  "classification": "D096_FIXED_BOUNDARY_TURNOVER_ESTABLISHED_SELECTION_NOT_ESTABLISHED",
+  "digital_cell_end_goal": "NOT_ESTABLISHED",
+  "directive": "DC-FINAL-001-R10R6-D096-FIXED-CONCENTRATION-BOUNDARY-ECOLOGY-GENERATION-TURNOVER-SELECTION-AND-END-GOAL-CLOSURE-001",
+  "environment_semantics": "D096_CONCENTRATION_TO_SUPPLY_RATE_MISMATCH_CONFIRMED",
+  "final_integrated_m1_m5": "NOT_REACHED",
+  "natural_generation_2_plus": true,
+  "next_execution_started": false,
+  "reference_parity": "FIXED_BOUNDARY_TRANSPORT_REFERENCE_PARITY_PASS",
+  "reversal": "NOT_ESTABLISHED",
+  "selection": "NOT_ESTABLISHED",
+  "shutdown_recommended": "NO \u2014 OWNER OVERRIDE ACTIVE"
+}

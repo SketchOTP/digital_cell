@@ -1,0 +1,155 @@
+name: DC-FINAL-001-R10R6 fixed concentration boundary
+
+on:
+  push:
+    branches: [codex/dc-final-001-r10r6-fixed-concentration-boundary]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  r10r6-qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Verify R10R5 authority and R10R6 scope
+        run: |
+          set -euo pipefail
+          start=27ce65d99161680bd96f48cfc0bcf7f5973f7c05
+          scientific=4c199ce5983bb79d73f4f2990f22932af3eddb94
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git merge-base --is-ancestor "$start" HEAD
+          git cat-file -e "$scientific"^{commit}
+          git diff --check
+          python3 - <<'PY'
+          import subprocess
+          start = "27ce65d99161680bd96f48cfc0bcf7f5973f7c05"
+          allowed = (
+              '.agent/',
+              '.github/workflows/dc-final-001-r10r6.yml',
+              'digital-protocell/crates/regulatory-core/Cargo.toml',
+              'digital-protocell/examples/dcfinal001_r4_evolution.rs',
+              'digital-protocell/examples/dcfinal001_r10r6_evolution.rs',
+              'digital-protocell/experiments/dcfinal001_r10r6_evidence.py',
+              'digital-protocell/experiments/generated/dcfinal001r10r6/',
+          )
+          changed = subprocess.check_output(['git', 'diff', '--name-only', f'{start}..HEAD'], text=True).splitlines()
+          bad = [path for path in changed if not any(path.startswith(prefix) for prefix in allowed)]
+          assert not bad, bad
+          PY
+          gh run view 34492320931 --repo SketchOTP/digital_cell \
+            --json conclusion,headSha --jq '.conclusion + " " + .headSha' \
+            | grep '^success 27ce65d99161680bd96f48cfc0bcf7f5973f7c05$'
+          gh pr view 44 --repo SketchOTP/digital_cell \
+            --json state,isDraft,mergedAt,headRefOid > "$RUNNER_TEMP/pr44.json"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          pr = json.loads((Path(os.environ['RUNNER_TEMP']) / 'pr44.json').read_text())
+          assert pr == {
+              'state': 'OPEN', 'isDraft': True, 'mergedAt': None,
+              'headRefOid': 'fb77f472b1519a9e0f713833efba5b1d403f4723',
+          }, pr
+          PY
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Install sanctioned Rust toolchain
+        run: |
+          rustup toolchain install 1.89.0 --profile minimal --no-self-update
+          rustup component add --toolchain 1.89.0 rustfmt
+
+      - name: Run legacy-rate control and R10R6 fixed-boundary population
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run --locked -q --release -p regulatory-core \
+            --example dcfinal001_r10r5_evolution -- \
+            --output "$RUNNER_TEMP/r10r6-rate-control.json"
+          cargo +1.89.0 run --locked -q --release -p regulatory-core \
+            --example dcfinal001_r10r6_evolution -- \
+            --output "$RUNNER_TEMP/r10r6-fixed.json"
+          python3 experiments/dcfinal001_r10r6_evidence.py \
+            --sealed experiments/generated/dcfinal001r10r6/raw_sealed_r10r5.json \
+            --fixed "$RUNNER_TEMP/r10r6-fixed.json" \
+            --rate "$RUNNER_TEMP/r10r6-rate-control.json" \
+            --output experiments/generated/dcfinal001r10r6
+
+      - name: Preserve accepted M1-M3 and R10R5 surfaces
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -q -p regulatory-core
+          cargo +1.89.0 test --locked -q -p chemistry-core \
+            --test d096_tests \
+            --test r8_v4_closure_consistency_tests \
+            --test r4_contract_topology_tests \
+            --test d088_tests \
+            --test d091_tests
+          cargo +1.89.0 test --locked -q -p evolution-harness
+          cargo +1.89.0 test --locked -q -p m2-lifeform-runtime --bin digital-cell-final-lifeform
+          cargo +1.89.0 check --locked -q -p godot-bridge
+          run_d087() {
+            local output="$1" contract="$2" v4="$3"
+            if test "$v4" = 1; then
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 \
+                cargo +1.89.0 run -q -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            else
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 \
+                cargo +1.89.0 run -q -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            fi
+          }
+          run_d087 "$RUNNER_TEMP/d087-v2" ConservativeV2 0
+          run_d087 "$RUNNER_TEMP/d087-v3" ConservativeV3 0
+          run_d087 "$RUNNER_TEMP/d087-v4" ConservativeV3 1
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          expected = {
+              'v2': [True] * 8,
+              'v3': [True] * 8,
+              'v4': [True, True, False, True, True, True, True, True],
+          }
+          for name, vector in expected.items():
+              manifest = json.loads((root / f'd087-{name}' / 'manifest.json').read_text())
+              assert [manifest[f'gate{i}']['pass'] for i in range(8)] == vector
+          PY
+
+      - name: Validate R10R6 evidence and formatting
+        run: |
+          set -euo pipefail
+          rustfmt +1.89.0 --edition 2021 --check \
+            digital-protocell/examples/dcfinal001_r4_evolution.rs \
+            digital-protocell/examples/dcfinal001_r10r6_evolution.rs
+          python3 -m py_compile digital-protocell/experiments/dcfinal001_r10r6_evidence.py
+          python3 - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root = Path('digital-protocell/experiments/generated/dcfinal001r10r6')
+          manifest = json.loads((root / 'artifact_manifest.json').read_text())
+          for row in manifest['files']:
+              assert hashlib.sha256((root / row['path']).read_bytes()).hexdigest() == row['sha256']
+          q = json.loads((root / 'qualification.json').read_text())
+          assert q['natural_generation_2_plus'] is True
+          assert q['selection'] == 'NOT_ESTABLISHED'
+          PY
+          git diff --check
+
+      - name: Upload exact-head R10R6 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcfinal001r10r6
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            digital-protocell/experiments/generated/dcfinal001r10r6
+            ${{ runner.temp }}/r10r6-rate-control.json
+            ${{ runner.temp }}/r10r6-fixed.json

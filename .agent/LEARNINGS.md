@@ -1224,3 +1224,5 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 
 - Final governance is sealed at `b648a2a67e50a4b34a70155994ae5fa0155441e6` by workflow `34490606932 PASS` with artifact `sha256:ab088f51ee01ac48170e49d67c73c74f5801296270a1b6bd2df684543d97114c`; the scientific head remains `4c199ce5983bb79d73f4f2990f22932af3eddb94`.
 - The finite-budget v4 repair restores production reproduction but does not by itself establish turnover, selection, reversal, or the end goal; the terminal cause is insufficient growth under the frozen population ecology.
+
+- Fact or lesson: R10R6 confirms that D096 population boundary values are concentrations, not supply rates. The prior `C_target × dt × volume` feed has no authoritative dilution/flow rate and lets the finite bath collapse below target almost immediately. An assay-only fixed-concentration boundary with explicit source-to-bath and bath-to-outflow ledgers restores material throughput and can produce a natural generation-2 fission, but one Resource replicate is insufficient to establish replicated natural selection or reversal.

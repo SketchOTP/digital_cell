@@ -911,3 +911,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Exact-head workflow `34490606932 PASS`; artifact `sha256:ab088f51ee01ac48170e49d67c73c74f5801296270a1b6bd2df684543d97114c`.
 - R10R5 classification remains `D096_V4_PRODUCTION_TURNOVER_NOT_ESTABLISHED_INSUFFICIENT_GROWTH`; robust D096-v4 reproduction is `7/10` geometry-valid fissions and `7/10` full-state viable pairs; population turnover and downstream evolution gates are not established.
 - This is a governance/evidence pointer only; no scientific runtime change follows it. PR #44 remains open, draft, unmerged, and untouched; next execution is `false`; independent Architect acceptance is `PENDING`.
+
+## DC-FINAL-001-R10R6 fixed-concentration boundary — provisional bounded Gate-9 stop
+
+- R10R5 is accepted at governed head `27ce65d99161680bd96f48cfc0bcf7f5973f7c05`, with exact-head CI `34492320931 PASS` and artifact `sha256:cc31b5d2beda08c1b53e2ff47669ba23132076d5ddd339d261f0fbf6d99b5c06`.
+- The audit confirms D096 values are concentration boundaries and the prior population path applied `C_target × dt × volume` without an authoritative flow/dilution rate. Sealed bath depletion is boundary-limited; one-organism fixed-boundary transport parity passes at `1e-12`.
+- The assay-only fixed-boundary mode preserves organism biology and adds explicit source/bath/outflow accounting. N/F closure and active A→W closure pass. One mutation-on Resource replicate reaches generation 2 through one post-bootstrap physical fission; the second Resource replicate and both Damage replicates have zero post-bootstrap fissions and zero deaths.
+- D096 genotype→phenotype causality remains present, but replicated Resource/Damage selection, environment dependence, reversal, and final integrated M1-M5 remain `NOT_ESTABLISHED` / `NOT_REACHED`. Provisional classification: `D096_FIXED_BOUNDARY_TURNOVER_ESTABLISHED_SELECTION_NOT_ESTABLISHED`; exact-head CI and independent Architect acceptance are pending. PR #44 remains open, draft, unmerged, and untouched; next execution is `false`.

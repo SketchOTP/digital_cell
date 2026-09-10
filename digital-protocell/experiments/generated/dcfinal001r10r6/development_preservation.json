@@ -1,0 +1,6 @@
+{
+  "r10r6_status": "PASS_PRESERVED",
+  "source": "R10R4 preserved; no M3 source changed",
+  "source_sha256": "22c335e3e25fc91f5c6451e7c7234eef36a48f4fb737149a395d775a392bbc2b",
+  "status": "PASS_PRESERVED_NOT_REEXECUTED_AFTER_GATE10_STOP"
+}
