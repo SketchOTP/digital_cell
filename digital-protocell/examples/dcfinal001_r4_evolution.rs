@@ -1811,7 +1811,11 @@ fn r10_split_cohort(
     *ledger
         .fissions_by_parent_genotype
         .entry(genotype_key(
-            cohort.mesh.finite_allocation.expect("R10 allocation").genotype,
+            cohort
+                .mesh
+                .finite_allocation
+                .expect("R10 allocation")
+                .genotype,
         ))
         .or_default() += cohort.count;
     let mutation_params = if mutation_enabled {

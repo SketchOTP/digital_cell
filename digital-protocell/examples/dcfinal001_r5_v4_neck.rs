@@ -2004,13 +2004,8 @@ pub fn r10_refractory_mechanics_step(
         &zeros,
     )
     .ok()?;
-    advance_local_plasticity_trace(
-        plasticity,
-        &raw_drive,
-        mechanics.dt,
-        &plasticity_params,
-    )
-    .ok()?;
+    advance_local_plasticity_trace(plasticity, &raw_drive, mechanics.dt, &plasticity_params)
+        .ok()?;
     let old_frame = observe_continuity_material_frame(mesh, &mechanics);
     let old_n = mesh.n();
     let _ = remesh_preserving_simple(mesh);
