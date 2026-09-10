@@ -1241,3 +1241,4 @@ A four-function genotype is not an active four-function phenotype when one endpo
 ## R10R9 Gate-0 learning — exact authority must precede phase-order hypotheses
 
 An exact-head replay can expose a substantive evidence conflict even when the implementation and workflow execute successfully. The R10R8 reserve-on V4 manifest (`6/8`, vector `[true,false,true,true,true,true,true,false]`) does not match the CI certifier (`7/8`, vector `[true,true,false,true,true,true,true,true]`), which matches the canonical reserve-OFF vector. Preserve both observations and stop; do not infer a D091 phase-order cause until the entry seal is reconciled.
+- After the R10R9 evidence path was added to the CI scope allowlist, workflow `34541035958` passed the scope checks and reproduced the same vector conflict. The failure is therefore substantive and reproducible.

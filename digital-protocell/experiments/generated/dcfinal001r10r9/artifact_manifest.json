@@ -1,8 +1,8 @@
 {
   "status": "NO_R10R9_ARTIFACT_SEALED",
-  "r10r8_ci_run": "34540249273",
+  "r10r8_ci_run": "34541035958",
   "r10r8_ci_status": "FAILURE",
-  "r10r8_ci_head": "3fd48ba3bf81832fa7ec4630f93e16f4146804b2",
+  "r10r8_ci_head": "1ea2fd19be3fab4fba491ef9775dcbfc0fb3a663",
   "r10r7_last_sealed_artifact": "sha256:52d052dc475b856e9569e55331b6cfa5e231fc7e05637b8c9df4dc9b1978b71a",
   "r10r9_artifact_digest": null,
   "reason": "Gate 0 stopped before a valid R10R9 execution or artifact could be sealed."

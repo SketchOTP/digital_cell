@@ -1860,3 +1860,4 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Sealed R10R8 reserve-on V4: `6/8`, `[true,false,true,true,true,true,true,false]`; CI replay: `7/8`, `[true,true,false,true,true,true,true,true]`.
 - No production biology or phase-order change was made. D091-v2, reserve-on M1 requalification, combined reproduction, specialization, selection, reversal, and final M1-M5 remain `NOT_REACHED`.
 - Final classification: `R10R8_ENTRY_SEAL_MISMATCH_REQUIRES_ARCHITECT_RECONCILIATION`; end goal `NOT_ESTABLISHED`; shutdown `NO — OWNER OVERRIDE ACTIVE`; next execution `false`; independent Architect acceptance `PENDING`.
+- Final scoped replay: workflow `34541035958` on head `1ea2fd19be3fab4fba491ef9775dcbfc0fb3a663`; scope/authority checks passed, then the reserve-on V4 assertion failed with `[true,true,false,true,true,true,true,true]`.

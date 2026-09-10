@@ -1280,3 +1280,4 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - R10R9 was authorized from local diagnostic candidate `610ee402d9dbac4d0b9a5858c59efe8946de3588` with R10R7 sealed GitHub authority `ecf4befc00683301e4ab15f0b5302b4acc33d9be`.
 - Gate 0 failed under CI run `34540249273` on head `3fd48ba3bf81832fa7ec4630f93e16f4146804b2`: the reserve-on V4 certifier returned `[true,true,false,true,true,true,true,true]` (`7/8`), not sealed R10R8's `[true,false,true,true,true,true,true,false]` (`6/8`).
 - Per directive, stop before phase-order implementation. This is `R10R8_ENTRY_SEAL_MISMATCH_REQUIRES_ARCHITECT_RECONCILIATION`; no successor execution starts.
+- Final scoped replay is `34541035958` on head `1ea2fd19be3fab4fba491ef9775dcbfc0fb3a663`; scope/authority checks passed before the substantive vector assertion failed.
