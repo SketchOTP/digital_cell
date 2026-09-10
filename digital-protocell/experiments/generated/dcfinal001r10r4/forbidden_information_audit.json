@@ -1,0 +1,19 @@
+{
+  "absent": [
+    "body_size_controller",
+    "target_concentration",
+    "expression_shutoff",
+    "division_state",
+    "growth_limiter",
+    "motor_change",
+    "fission_change",
+    "fitness",
+    "breeder",
+    "population_cap",
+    "forced_birth_or_death",
+    "observer_feedback"
+  ],
+  "biology_change": "VERSIONED_D096_V3_GAIN_INPUT_ONLY",
+  "new_parameters": 0,
+  "status": "PASS"
+}

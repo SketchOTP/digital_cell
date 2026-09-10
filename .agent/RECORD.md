@@ -1789,3 +1789,15 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Classification: `D096_V2_INTEGRATED_ROBUST_REPRODUCTION_NOT_ESTABLISHED`. Evolution, selection, reversal, and final integrated M1-M5 are `NOT_REACHED_GATE10_STOP`; end goal remains `NOT_ESTABLISHED`; shutdown recommendation `NO — OWNER OVERRIDE ACTIVE`; next execution `false`.
 - M1 remains closed/frozen/preserved; M2 qualified; M3 preserved; exact R10 control remains `7/10` and `6/10`; D-087 vector remains `[true,true,false,true,true,true,true,true]`.
 - Scientific result head: `895d89f35455ea109e9da288105e71736f616bf3`; exact-head CI/artifact and independent Architect acceptance remain pending.
+
+## DEC-DCFINAL001-R10R4-D096-INTENSIVE-GAIN-GATE10-STOP
+
+- Date: `2026-09-10`
+- Status: `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_GATE10_STOP`
+- Record or decision ID: `DEC-DCFINAL001-R10R4-D096-INTENSIVE-GAIN-GATE10-STOP`
+- R10R3 authority is externally accepted at governed head `1c7bb0b7da3503663d756b1da14788e60458a8db`, workflow `34469457434 PASS`, and artifact `sha256:8d249bbfd93471ac2187aad08bcd16f5e161c9297fa376d70e8083bd7977a478`.
+- Catalysts are extensive physical material, while v2 gain reads absolute amount. Matched decomposition confirms `D096_GAIN_CAUSALLY_DISTORTS_R10_APPOSITION`; cost-only restores `7/10, 6/10`, functions 0/1 yield `3/10, 3/10`, and function 2 yields `7/10, 7/10`.
+- Versioned D096-v3 preserves v2 material law and uses catalyst concentration with the unchanged `0.1` saturation numeric. It introduces zero new biological parameters; v1/v2 replay remains semantically exact and fission catalyst material/concentration continuity passes.
+- D096-v3 integrated R10 reproduction reaches `5/10` fissions and `5/10` full-state viable pairs, below unchanged `7/10` and `6/10` thresholds. Classification: `D096_V3_INTEGRATED_ROBUST_REPRODUCTION_NOT_ESTABLISHED`.
+- Evolution, selection, reversal, and final integrated M1-M5 are `NOT_REACHED_GATE10_D096_V3_REPRODUCTION_STOP`; end goal remains `NOT_ESTABLISHED`; shutdown recommendation `NO — OWNER OVERRIDE ACTIVE`; next execution `false`.
+- M1 remains closed/frozen/preserved; M2 qualified; M3 preserved; exact R10 D096-off control remains `7/10` and `6/10`. Scientific result head: `ae18b3e24d475f1791577b07f63b18084402a159`; exact-head CI/artifact and independent Architect acceptance pending.

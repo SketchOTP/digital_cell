@@ -1,0 +1,25 @@
+{
+  "classification": "D096_CATALYST_IS_EXTENSIVE_PHYSICAL_MATERIAL",
+  "current_gain_input": "absolute catalyst amount",
+  "fission": "each amount is multiplied by daughter physical area fraction",
+  "gain_saturation_constant_explicit_absolute_mass_definition_found": false,
+  "partition_residual_is_conserved": true,
+  "production": "finite A precursor is converted into catalyst material",
+  "scale_counterfactual": {
+    "parent": {
+      "absolute_gain": 1.9803921568627452,
+      "area": 100.0,
+      "catalyst_amount": 5.0,
+      "concentration_gain": 1.3333333333333333
+    },
+    "scaled": {
+      "absolute_gain": 1.9950248756218905,
+      "area": 400.0,
+      "catalyst_amount": 20.0,
+      "concentration_gain": 1.3333333333333333
+    },
+    "uniform_geometric_scale_factor": 2.0
+  },
+  "state": "AllocationState.catalysts",
+  "turnover": "catalyst material transfers to W"
+}

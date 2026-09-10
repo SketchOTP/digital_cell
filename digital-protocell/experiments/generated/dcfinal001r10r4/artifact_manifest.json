@@ -1,0 +1,171 @@
+{
+  "directive": "DC-FINAL-001-R10R4-D096-INTENSIVE-CATALYST-GAIN-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001",
+  "files": [
+    {
+      "bytes": 284,
+      "path": "architect_disposition.json",
+      "sha256": "8c01b497e1cf0d8e50c884f791ccaaabc1b1914bfdfacde1c7739876699a0f4b"
+    },
+    {
+      "bytes": 691,
+      "path": "authority.json",
+      "sha256": "182eea460cfe5f1ac95f6df88eb0e5954c7c3f0dd8fa5215802e00bcb95ccd6e"
+    },
+    {
+      "bytes": 888,
+      "path": "catalyst_dimensional_audit.json",
+      "sha256": "b76df9b5b0973bf749bf12043c197a22cf82d79e0b28f55a444c97d8fce8364e"
+    },
+    {
+      "bytes": 213,
+      "path": "checkpoint_restart.json",
+      "sha256": "2c839a72b37595258303cc3cba277098c1bee943bd59478ea1e2ee1279343bdc"
+    },
+    {
+      "bytes": 880,
+      "path": "d096v1_v2_historical_parity.json",
+      "sha256": "628d0ae217683ab16450699d9a1ebf1c6caeeb00c63b0280cf5bb7aaadd7af33"
+    },
+    {
+      "bytes": 357,
+      "path": "d096v3_gain_contract.json",
+      "sha256": "6941514b8333d2e210d3103f1e0795907683ff8c3ed142d6cefb66f392fcce7e"
+    },
+    {
+      "bytes": 857295,
+      "path": "d096v3_integrated_reproduction.json",
+      "sha256": "ebab63868e87e46fea8cf79c18f7adb7de91404d88e66607eeafa9a56f11537b"
+    },
+    {
+      "bytes": 329,
+      "path": "d096v3_material_energy_closure.json",
+      "sha256": "fd50defebbf04c329dd5fe5e2f32de29ea12165b44961acfb3a9d2b990835198"
+    },
+    {
+      "bytes": 70262,
+      "path": "daughter_continuation.json",
+      "sha256": "2ea7ed44b95c1bc2596595317225e7dc8341c11bb835b49908006b8841a0bdc7"
+    },
+    {
+      "bytes": 153,
+      "path": "development_preservation.json",
+      "sha256": "27a5af9dee3b29f4c13d7f4cca55f6e561f7ca4b47f61bc50e2d30ecfa524d58"
+    },
+    {
+      "bytes": 213,
+      "path": "environment_a_selection.json",
+      "sha256": "2c839a72b37595258303cc3cba277098c1bee943bd59478ea1e2ee1279343bdc"
+    },
+    {
+      "bytes": 213,
+      "path": "environment_b_selection.json",
+      "sha256": "2c839a72b37595258303cc3cba277098c1bee943bd59478ea1e2ee1279343bdc"
+    },
+    {
+      "bytes": 213,
+      "path": "environment_dependence.json",
+      "sha256": "2c839a72b37595258303cc3cba277098c1bee943bd59478ea1e2ee1279343bdc"
+    },
+    {
+      "bytes": 213,
+      "path": "experiential_memory.json",
+      "sha256": "2c839a72b37595258303cc3cba277098c1bee943bd59478ea1e2ee1279343bdc"
+    },
+    {
+      "bytes": 468,
+      "path": "external_prior_art.json",
+      "sha256": "3fac7d567d4300f2529d2743453ab1b52e8670ec1ad83c070d07806a2d826079"
+    },
+    {
+      "bytes": 383,
+      "path": "final_goal_matrix.json",
+      "sha256": "4876a0ed5e0b39744a2fede260e69e23ded7bdeb93c3a4380397ef3ff618e196"
+    },
+    {
+      "bytes": 9463,
+      "path": "fission_gain_continuity.json",
+      "sha256": "61f63283c4ae880b4caae2d8ca4bdb913c43d1ae079806e092d20009b1178808"
+    },
+    {
+      "bytes": 395,
+      "path": "forbidden_information_audit.json",
+      "sha256": "cb6abba90521184f2eee3d20e4f57dd323edab1b99458c475451398a912f22ab"
+    },
+    {
+      "bytes": 104204,
+      "path": "gain_channel_causal_decomposition.json",
+      "sha256": "bacb5be95fe91e3cef4fa2ce021eeaa504766570a4cc737a25d5c816423ccbf8"
+    },
+    {
+      "bytes": 213,
+      "path": "generation2_lineage.json",
+      "sha256": "2c839a72b37595258303cc3cba277098c1bee943bd59478ea1e2ee1279343bdc"
+    },
+    {
+      "bytes": 213,
+      "path": "genotype_phenotype_causality.json",
+      "sha256": "2c839a72b37595258303cc3cba277098c1bee943bd59478ea1e2ee1279343bdc"
+    },
+    {
+      "bytes": 217,
+      "path": "global_material_energy_closure.json",
+      "sha256": "59ab6830403b57a9beeb3cf5e0230dd118996faef39737ec371f8034fbcfb9be"
+    },
+    {
+      "bytes": 213,
+      "path": "godot_independence.json",
+      "sha256": "2c839a72b37595258303cc3cba277098c1bee943bd59478ea1e2ee1279343bdc"
+    },
+    {
+      "bytes": 26543,
+      "path": "intensive_gain_counterfactual.json",
+      "sha256": "1608bfbaf70b10345cffc3bdffa1b07d5ce2886ac9ecac0ddba79dbd45f856d8"
+    },
+    {
+      "bytes": 213,
+      "path": "linux_runtime.json",
+      "sha256": "2c839a72b37595258303cc3cba277098c1bee943bd59478ea1e2ee1279343bdc"
+    },
+    {
+      "bytes": 819,
+      "path": "m1_preservation.json",
+      "sha256": "c7ff875d07f8d13ea329e7f0f50d09c655b3cb56264b1340be5902c5195ba33d"
+    },
+    {
+      "bytes": 158,
+      "path": "m2_preservation.json",
+      "sha256": "818266351db668122e9ef6c11bfeefff936b14576221e8051490785c36edfc9a"
+    },
+    {
+      "bytes": 213,
+      "path": "mutation_off_control.json",
+      "sha256": "2c839a72b37595258303cc3cba277098c1bee943bd59478ea1e2ee1279343bdc"
+    },
+    {
+      "bytes": 155,
+      "path": "owner_override.json",
+      "sha256": "3b02d87c93bd8558d4132c45491f47d7634b12691cd960d779b6b68ddf84359c"
+    },
+    {
+      "bytes": 213,
+      "path": "population_turnover.json",
+      "sha256": "2c839a72b37595258303cc3cba277098c1bee943bd59478ea1e2ee1279343bdc"
+    },
+    {
+      "bytes": 734,
+      "path": "qualification.json",
+      "sha256": "490acc062dfc6e8528cfce37980fd7930a57dbb98e851330405c7463edf1b0f1"
+    },
+    {
+      "bytes": 213,
+      "path": "reversal.json",
+      "sha256": "2c839a72b37595258303cc3cba277098c1bee943bd59478ea1e2ee1279343bdc"
+    },
+    {
+      "bytes": 213,
+      "path": "sensory_embodiment.json",
+      "sha256": "2c839a72b37595258303cc3cba277098c1bee943bd59478ea1e2ee1279343bdc"
+    }
+  ],
+  "scientific_head": "ae18b3e24d475f1791577b07f63b18084402a159"
+}

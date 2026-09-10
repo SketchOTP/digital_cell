@@ -241,3 +241,10 @@
 - `digital-protocell/experiments/dcfinal001_r10r3_evidence.py` — deterministic R10R3 evidence generator sealing integration, structural attribution, versioned chemistry, failed robust reproduction, and downstream Gate-10 stop.
 - `digital-protocell/experiments/generated/dcfinal001r10r3/` — compact R10R3 authority, structural budget, v1/v2 reproduction, closure, preservation, stopped evolution, final matrix, and qualification evidence.
 - `.github/workflows/dc-final-001-r10r3.yml` — exact-head Linux R10R3 authority, deterministic v1/budget/v2 replay, R10/D096 preservation, D-087, PR #44, evidence reproducibility, and artifact upload.
+- `digital-protocell/crates/chemistry-core/src/d096_allocation.rs` — additionally owns explicitly versioned D096-v3, preserving v2 activated-material expression while computing functional gain from catalyst concentration.
+- `digital-protocell/crates/chemistry-core/src/material_mesh.rs` — additionally provides opt-in D096-v3 equation/schema stamping without migrating v1 or v2.
+- `digital-protocell/examples/dcfinal001_r10r4_gain_audit.rs` — R10R4 observer-only scale, fission, cost-only, gain-channel, and intensive counterfactual entry point.
+- `digital-protocell/examples/dcfinal001_r10r4_d096v3_reproduction.rs` — exact ten-arm R10 campaign with continuously active neutral D096-v3 and mutation off.
+- `digital-protocell/experiments/dcfinal001_r10r4_evidence.py` — deterministic R10R4 dimensional, causal, versioned-contract, reproduction, and Gate-10 stop evidence generator.
+- `digital-protocell/experiments/generated/dcfinal001r10r4/` — compact R10R4 authority, gain audits, v3 conservation/reproduction, preserved upstream state, stopped evolution, qualification, and manifest evidence.
+- `.github/workflows/dc-final-001-r10r4.yml` — exact-head Linux R10R4 authority, deterministic gain/reproduction replay, historical preservation, D-087, PR #44, evidence reproducibility, and artifact upload.

@@ -1,0 +1,736 @@
+{
+  "campaign": {
+    "counts": {
+      "full_state_viable_daughter_pairs": 5,
+      "geometry_valid_fissions": 5,
+      "growth_qualified": 10
+    },
+    "gain_policy": "D096_V2_COST_WITH_INTENSIVE_GAIN_COUNTERFACTUAL",
+    "runs": [
+      {
+        "absolute_amount_gains": [
+          1.997736050069948,
+          1.997736050069948,
+          1.997736050069948,
+          1.997736050069948
+        ],
+        "all_lifecycle_valid": true,
+        "all_runtime_valid": true,
+        "all_simple": true,
+        "deepest_failure": "APPOSITION_OUTSIDE_LOCAL_RANGE",
+        "expression_budget": {
+          "active_motor_a": 4.689501217159436,
+          "active_motor_w": 4.689501217132232,
+          "expression_activation_and_maintenance_a": 35.843332522008104,
+          "expression_catalyst_precursor_a": 178.2385593013022,
+          "expression_failures": 0,
+          "expression_structural_draw": 0.0,
+          "expression_turnover_waste": 1.9562066174740673,
+          "growth_a_consumed": 1710.5764184627242,
+          "initial_structural_mass": 87.73326349501298,
+          "m1_structural_build": 733.7455605980484,
+          "m1_structural_turnover": 1418.7992236263262,
+          "remesh_topology_structural_net": -1.4210854715202004e-14,
+          "surplus_growth_structural_production": 1539.5187766164602,
+          "terminal_catalyst_mass": 176.2823526838293,
+          "terminal_structural_mass": 942.1983770831935
+        },
+        "fission_step": null,
+        "full_state_daughters_viable": null,
+        "intensive_concentration_gains": [
+          1.2339118726674607,
+          1.2339118726674607,
+          1.2339118726674607,
+          1.2339118726674607
+        ],
+        "maximum_mass_over_birth": 10.739351752676463,
+        "name": "seed_1_rotate_0.3",
+        "physical_fission": false,
+        "terminal_apposition": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 2.2162147269559576,
+          "minimum_nonadjacent_segment_distance": 21.143048320108967,
+          "nearest_pair": [
+            2,
+            56
+          ],
+          "nearest_pair_stressed": false,
+          "range": 9.540162360147127,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 0
+        },
+        "terminal_area": 1443.3621507673402,
+        "terminal_catalyst_amounts": [
+          44.07058817095732,
+          44.07058817095732,
+          44.07058817095732,
+          44.07058817095732
+        ],
+        "terminal_catalyst_concentrations": [
+          0.03053328518246644,
+          0.03053328518246644,
+          0.03053328518246644,
+          0.03053328518246644
+        ],
+        "terminal_catalyst_total": 176.2823526838293
+      },
+      {
+        "absolute_amount_gains": [
+          1.9978302109831527,
+          1.9978302109831527,
+          1.9978302109831527,
+          1.9978302109831527
+        ],
+        "all_lifecycle_valid": true,
+        "all_runtime_valid": true,
+        "all_simple": true,
+        "deepest_failure": "APPOSITION_OUTSIDE_LOCAL_RANGE",
+        "expression_budget": {
+          "active_motor_a": 5.619653735287737,
+          "active_motor_w": 5.619653735021487,
+          "expression_activation_and_maintenance_a": 37.386074626878944,
+          "expression_catalyst_precursor_a": 185.9368224406458,
+          "expression_failures": 0,
+          "expression_structural_draw": 0.0,
+          "expression_turnover_waste": 1.9871013874970005,
+          "growth_a_consumed": 1830.0827354487694,
+          "initial_structural_mass": 87.75070322587518,
+          "m1_structural_build": 763.2173931035857,
+          "m1_structural_turnover": 1468.3688188764008,
+          "remesh_topology_structural_net": 5.684341886080802e-14,
+          "surplus_growth_structural_production": 1647.0744619038774,
+          "terminal_catalyst_mass": 183.9497210531498,
+          "terminal_structural_mass": 1029.673739356952
+        },
+        "fission_step": null,
+        "full_state_daughters_viable": null,
+        "intensive_concentration_gains": [
+          1.22353793881956,
+          1.22353793881956,
+          1.22353793881956,
+          1.22353793881956
+        ],
+        "maximum_mass_over_birth": 11.734079631322322,
+        "name": "seed_2_vertex_0.12",
+        "physical_fission": false,
+        "terminal_apposition": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 2.02976000565711,
+          "minimum_nonadjacent_segment_distance": 19.451892105972796,
+          "nearest_pair": [
+            50,
+            69
+          ],
+          "nearest_pair_stressed": false,
+          "range": 9.583345839783401,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 0
+        },
+        "terminal_area": 1597.379625095633,
+        "terminal_catalyst_amounts": [
+          45.98743026328745,
+          45.98743026328745,
+          45.98743026328745,
+          45.98743026328745
+        ],
+        "terminal_catalyst_concentrations": [
+          0.02878929312782129,
+          0.02878929312782129,
+          0.02878929312782129,
+          0.02878929312782129
+        ],
+        "terminal_catalyst_total": 183.9497210531498
+      },
+      {
+        "absolute_amount_gains": [
+          1.9929092040976437,
+          1.9929092040976437,
+          1.9929092040976437,
+          1.9929092040976437
+        ],
+        "all_lifecycle_valid": true,
+        "all_runtime_valid": true,
+        "all_simple": true,
+        "deepest_failure": "VALID_FISSION",
+        "expression_budget": {
+          "active_motor_a": 1.492702532958455,
+          "active_motor_w": 1.4927025329605073,
+          "expression_activation_and_maintenance_a": 11.298767685618705,
+          "expression_catalyst_precursor_a": 56.332944576290565,
+          "expression_failures": 0,
+          "expression_structural_draw": 0.0,
+          "expression_turnover_waste": 0.3217877036063806,
+          "growth_a_consumed": 874.3740130039834,
+          "initial_structural_mass": 87.71360117187467,
+          "m1_structural_build": 235.12397028186612,
+          "m1_structural_turnover": 411.3289229086636,
+          "remesh_topology_structural_net": -6.536993168992922e-13,
+          "surplus_growth_structural_production": 786.9366117035802,
+          "terminal_catalyst_mass": 56.01115687268385,
+          "terminal_structural_mass": 698.4452602486605
+        },
+        "fission_step": 7501,
+        "full_state_daughters_viable": true,
+        "intensive_concentration_gains": [
+          1.0668318927826943,
+          1.0668318927826943,
+          1.0668318927826943,
+          1.0668318927826943
+        ],
+        "maximum_mass_over_birth": 7.962793123498122,
+        "name": "seed_3_c_0.08",
+        "physical_fission": true,
+        "terminal_apposition": {
+          "eligible_apposition_candidate": [
+            23,
+            86,
+            0.6007744258734657,
+            1.0,
+            5.484751320397233
+          ],
+          "minimum_distance_over_range": 0.537022905044795,
+          "minimum_nonadjacent_segment_distance": 5.484751320397233,
+          "nearest_pair": [
+            23,
+            86
+          ],
+          "nearest_pair_stressed": true,
+          "range": 10.213253976456983,
+          "stressed_within_range_pairs": 10,
+          "vertex_pinch": null,
+          "within_range_pairs": 36
+        },
+        "terminal_area": 1955.1977007401342,
+        "terminal_catalyst_amounts": [
+          14.002789218170962,
+          14.002789218170962,
+          14.002789218170962,
+          14.002789218170962
+        ],
+        "terminal_catalyst_concentrations": [
+          0.007161827784919268,
+          0.007161827784919268,
+          0.007161827784919268,
+          0.007161827784919268
+        ],
+        "terminal_catalyst_total": 56.01115687268385
+      },
+      {
+        "absolute_amount_gains": [
+          1.9949349550937012,
+          1.9949349550937012,
+          1.9949349550937012,
+          1.9949349550937012
+        ],
+        "all_lifecycle_valid": true,
+        "all_runtime_valid": true,
+        "all_simple": true,
+        "deepest_failure": "VALID_FISSION",
+        "expression_budget": {
+          "active_motor_a": 2.2218366483103082,
+          "active_motor_w": 2.221836648316483,
+          "expression_activation_and_maintenance_a": 15.868584164348157,
+          "expression_catalyst_precursor_a": 79.08616265580645,
+          "expression_failures": 0,
+          "expression_structural_draw": 0.0,
+          "expression_turnover_waste": 0.5135163318675862,
+          "growth_a_consumed": 1185.4249676181294,
+          "initial_structural_mass": 87.73326349501298,
+          "m1_structural_build": 326.90126433745627,
+          "m1_structural_turnover": 574.9192460347865,
+          "remesh_topology_structural_net": -5.258016244624741e-13,
+          "surplus_growth_structural_production": 1066.8824708563084,
+          "terminal_catalyst_mass": 78.57264632393876,
+          "terminal_structural_mass": 906.5977526539976
+        },
+        "fission_step": 8951,
+        "full_state_daughters_viable": true,
+        "intensive_concentration_gains": [
+          1.0736434567906405,
+          1.0736434567906405,
+          1.0736434567906405,
+          1.0736434567906405
+        ],
+        "maximum_mass_over_birth": 10.333569236319716,
+        "name": "seed_4_a_0.08",
+        "physical_fission": true,
+        "terminal_apposition": {
+          "eligible_apposition_candidate": [
+            73,
+            110,
+            1.0,
+            0.46024671335662837,
+            5.359505507325697
+          ],
+          "minimum_distance_over_range": 0.5379140214823364,
+          "minimum_nonadjacent_segment_distance": 5.359505507325697,
+          "nearest_pair": [
+            73,
+            110
+          ],
+          "nearest_pair_stressed": true,
+          "range": 9.963498427790451,
+          "stressed_within_range_pairs": 10,
+          "vertex_pinch": null,
+          "within_range_pairs": 33
+        },
+        "terminal_area": 2470.901292913846,
+        "terminal_catalyst_amounts": [
+          19.64316158098469,
+          19.64316158098469,
+          19.64316158098469,
+          19.64316158098469
+        ],
+        "terminal_catalyst_concentrations": [
+          0.007949796148198298,
+          0.007949796148198298,
+          0.007949796148198298,
+          0.007949796148198298
+        ],
+        "terminal_catalyst_total": 78.57264632393876
+      },
+      {
+        "absolute_amount_gains": [
+          1.9979330279174268,
+          1.9979330279174268,
+          1.9979330279174268,
+          1.9979330279174268
+        ],
+        "all_lifecycle_valid": true,
+        "all_runtime_valid": true,
+        "all_simple": true,
+        "deepest_failure": "APPOSITION_OUTSIDE_LOCAL_RANGE",
+        "expression_budget": {
+          "active_motor_a": 5.369475062872184,
+          "active_motor_w": 5.3694750631185855,
+          "expression_activation_and_maintenance_a": 39.261185605900344,
+          "expression_catalyst_precursor_a": 195.24388147855035,
+          "expression_failures": 0,
+          "expression_structural_draw": 0.0,
+          "expression_turnover_waste": 2.1240931019021287,
+          "growth_a_consumed": 1805.284019674853,
+          "initial_structural_mass": 87.75070322587518,
+          "m1_structural_build": 869.0732580268626,
+          "m1_structural_turnover": 1550.064550972893,
+          "remesh_topology_structural_net": 4.263256414560601e-14,
+          "surplus_growth_structural_production": 1624.7556177073686,
+          "terminal_catalyst_mass": 193.11978837664844,
+          "terminal_structural_mass": 1031.5150279872114
+        },
+        "fission_step": null,
+        "full_state_daughters_viable": null,
+        "intensive_concentration_gains": [
+          1.2653032336033383,
+          1.2653032336033383,
+          1.2653032336033383,
+          1.2653032336033383
+        ],
+        "maximum_mass_over_birth": 11.755062809377543,
+        "name": "seed_5_env_0.1",
+        "physical_fission": false,
+        "terminal_apposition": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 2.1340703235660863,
+          "minimum_nonadjacent_segment_distance": 21.975983282798662,
+          "nearest_pair": [
+            44,
+            60
+          ],
+          "nearest_pair_stressed": false,
+          "range": 10.297684682703535,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 0
+        },
+        "terminal_area": 1337.0029656297588,
+        "terminal_catalyst_amounts": [
+          48.27994709416211,
+          48.27994709416211,
+          48.27994709416211,
+          48.27994709416211
+        ],
+        "terminal_catalyst_concentrations": [
+          0.03611057591889571,
+          0.03611057591889571,
+          0.03611057591889571,
+          0.03611057591889571
+        ],
+        "terminal_catalyst_total": 193.11978837664844
+      },
+      {
+        "absolute_amount_gains": [
+          1.9939429937535262,
+          1.9939429937535262,
+          1.9939429937535262,
+          1.9939429937535262
+        ],
+        "all_lifecycle_valid": true,
+        "all_runtime_valid": true,
+        "all_simple": true,
+        "deepest_failure": "VALID_FISSION",
+        "expression_budget": {
+          "active_motor_a": 1.6569974300842705,
+          "active_motor_w": 1.656997430085525,
+          "expression_activation_and_maintenance_a": 13.24906083347853,
+          "expression_catalyst_precursor_a": 66.04327786976557,
+          "expression_failures": 0,
+          "expression_structural_draw": 0.0,
+          "expression_turnover_waste": 0.4040525952543667,
+          "growth_a_consumed": 1001.7991069488545,
+          "initial_structural_mass": 87.71360117187467,
+          "m1_structural_build": 278.8194489646457,
+          "m1_structural_turnover": 481.4966502443641,
+          "remesh_topology_structural_net": -8.526512829121202e-14,
+          "surplus_growth_structural_production": 901.6191962539667,
+          "terminal_catalyst_mass": 65.63922527451113,
+          "terminal_structural_mass": 786.6555961461262
+        },
+        "fission_step": 8251,
+        "full_state_daughters_viable": true,
+        "intensive_concentration_gains": [
+          1.0735392829813692,
+          1.0735392829813692,
+          1.0735392829813692,
+          1.0735392829813692
+        ],
+        "maximum_mass_over_birth": 8.968456267172018,
+        "name": "seed_6_l_0.1",
+        "physical_fission": true,
+        "terminal_apposition": {
+          "eligible_apposition_candidate": [
+            19,
+            89,
+            1.0,
+            1.0,
+            9.435269651281354
+          ],
+          "minimum_distance_over_range": 0.6714254690329197,
+          "minimum_nonadjacent_segment_distance": 7.1044352037324625,
+          "nearest_pair": [
+            23,
+            89
+          ],
+          "nearest_pair_stressed": false,
+          "range": 10.581122598708175,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 46
+        },
+        "terminal_area": 2067.336029363295,
+        "terminal_catalyst_amounts": [
+          16.409806318627783,
+          16.409806318627783,
+          16.409806318627783,
+          16.409806318627783
+        ],
+        "terminal_catalyst_concentrations": [
+          0.007937657974103866,
+          0.007937657974103866,
+          0.007937657974103866,
+          0.007937657974103866
+        ],
+        "terminal_catalyst_total": 65.63922527451113
+      },
+      {
+        "absolute_amount_gains": [
+          1.9980498945140683,
+          1.9980498945140683,
+          1.9980498945140683,
+          1.9980498945140683
+        ],
+        "all_lifecycle_valid": true,
+        "all_runtime_valid": true,
+        "all_simple": true,
+        "deepest_failure": "APPOSITION_PRESENT_BUT_STRESS_CONDITION_FALSE",
+        "expression_budget": {
+          "active_motor_a": 3.249657182831588,
+          "active_motor_w": 3.249657182803162,
+          "expression_activation_and_maintenance_a": 41.572377974613985,
+          "expression_catalyst_precursor_a": 206.8136296642056,
+          "expression_failures": 0,
+          "expression_structural_draw": 0.0,
+          "expression_turnover_waste": 2.0965204177278585,
+          "growth_a_consumed": 2039.7284199327323,
+          "initial_structural_mass": 87.73326349501298,
+          "m1_structural_build": 951.5650112658026,
+          "m1_structural_turnover": 1603.7070282035522,
+          "remesh_topology_structural_net": 1.2789769243681803e-13,
+          "surplus_growth_structural_production": 1835.7555779394704,
+          "terminal_catalyst_mass": 204.71710924647738,
+          "terminal_structural_mass": 1271.3468244967305
+        },
+        "fission_step": null,
+        "full_state_daughters_viable": null,
+        "intensive_concentration_gains": [
+          1.2280525047924646,
+          1.2280525047924646,
+          1.2280525047924646,
+          1.2280525047924646
+        ],
+        "maximum_mass_over_birth": 14.491046768925878,
+        "name": "seed_7_rotate_-0.5",
+        "physical_fission": false,
+        "terminal_apposition": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 1.0969073718369307,
+          "minimum_nonadjacent_segment_distance": 10.38289834997959,
+          "nearest_pair": [
+            6,
+            81
+          ],
+          "nearest_pair_stressed": false,
+          "range": 9.46561087705329,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 0
+        },
+        "terminal_area": 1732.3955710633272,
+        "terminal_catalyst_amounts": [
+          51.179277311619344,
+          51.179277311619344,
+          51.179277311619344,
+          51.179277311619344
+        ],
+        "terminal_catalyst_concentrations": [
+          0.029542489121122614,
+          0.029542489121122614,
+          0.029542489121122614,
+          0.029542489121122614
+        ],
+        "terminal_catalyst_total": 204.71710924647738
+      },
+      {
+        "absolute_amount_gains": [
+          1.9946105263621248,
+          1.9946105263621248,
+          1.9946105263621248,
+          1.9946105263621248
+        ],
+        "all_lifecycle_valid": true,
+        "all_runtime_valid": true,
+        "all_simple": true,
+        "deepest_failure": "VALID_FISSION",
+        "expression_budget": {
+          "active_motor_a": 2.3980056796012996,
+          "active_motor_w": 2.3980056796051343,
+          "expression_activation_and_maintenance_a": 14.906392401069295,
+          "expression_catalyst_precursor_a": 74.29422488292671,
+          "expression_failures": 0,
+          "expression_structural_draw": 0.0,
+          "expression_turnover_waste": 0.4754742448388362,
+          "growth_a_consumed": 1113.226363136213,
+          "initial_structural_mass": 87.75070322587518,
+          "m1_structural_build": 308.0529075887612,
+          "m1_structural_turnover": 541.2986952201704,
+          "remesh_topology_structural_net": 4.263256414560601e-13,
+          "surplus_growth_structural_production": 1001.9037268225914,
+          "terminal_catalyst_mass": 73.81875063808843,
+          "terminal_structural_mass": 856.4086424170599
+        },
+        "fission_step": 8801,
+        "full_state_daughters_viable": true,
+        "intensive_concentration_gains": [
+          1.0739616370083092,
+          1.0739616370083092,
+          1.0739616370083092,
+          1.0739616370083092
+        ],
+        "maximum_mass_over_birth": 9.759564435770008,
+        "name": "seed_8_vertex_-0.1",
+        "physical_fission": true,
+        "terminal_apposition": {
+          "eligible_apposition_candidate": [
+            3,
+            84,
+            0.0,
+            0.9034761570691053,
+            9.248604342815545
+          ],
+          "minimum_distance_over_range": 0.8553259536850606,
+          "minimum_nonadjacent_segment_distance": 9.248604342815545,
+          "nearest_pair": [
+            3,
+            84
+          ],
+          "nearest_pair_stressed": false,
+          "range": 10.812958852667965,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 3
+        },
+        "terminal_area": 2310.6233773363956,
+        "terminal_catalyst_amounts": [
+          18.454687659522108,
+          18.454687659522108,
+          18.454687659522108,
+          18.454687659522108
+        ],
+        "terminal_catalyst_concentrations": [
+          0.007986886932995551,
+          0.007986886932995551,
+          0.007986886932995551,
+          0.007986886932995551
+        ],
+        "terminal_catalyst_total": 73.81875063808843
+      },
+      {
+        "absolute_amount_gains": [
+          1.9980021021377283,
+          1.9980021021377283,
+          1.9980021021377283,
+          1.9980021021377283
+        ],
+        "all_lifecycle_valid": true,
+        "all_runtime_valid": true,
+        "all_simple": true,
+        "deepest_failure": "APPOSITION_OUTSIDE_LOCAL_RANGE",
+        "expression_budget": {
+          "active_motor_a": 3.6226928538352388,
+          "active_motor_w": 3.622692853675204,
+          "expression_activation_and_maintenance_a": 40.58211363225736,
+          "expression_catalyst_precursor_a": 201.87719042568068,
+          "expression_failures": 0,
+          "expression_structural_draw": 0.0,
+          "expression_turnover_waste": 2.0667554712148157,
+          "growth_a_consumed": 2007.9040530694092,
+          "initial_structural_mass": 87.71360117187467,
+          "m1_structural_build": 893.7641001519469,
+          "m1_structural_turnover": 1570.9097776455678,
+          "remesh_topology_structural_net": 3.410605131648481e-13,
+          "surplus_growth_structural_production": 1807.1136477624714,
+          "terminal_catalyst_mass": 199.81043495446508,
+          "terminal_structural_mass": 1217.6815714407223
+        },
+        "fission_step": null,
+        "full_state_daughters_viable": null,
+        "intensive_concentration_gains": [
+          1.2259342317426214,
+          1.2259342317426214,
+          1.2259342317426214,
+          1.2259342317426214
+        ],
+        "maximum_mass_over_birth": 13.882471534314012,
+        "name": "seed_9_c_-0.05",
+        "physical_fission": false,
+        "terminal_apposition": {
+          "eligible_apposition_candidate": null,
+          "minimum_distance_over_range": 1.575359402627909,
+          "minimum_nonadjacent_segment_distance": 14.687695000967295,
+          "nearest_pair": [
+            17,
+            85
+          ],
+          "nearest_pair_stressed": false,
+          "range": 9.323393110464995,
+          "stressed_within_range_pairs": 0,
+          "vertex_pinch": null,
+          "within_range_pairs": 0
+        },
+        "terminal_area": 1711.4097390857212,
+        "terminal_catalyst_amounts": [
+          49.95260873861627,
+          49.95260873861627,
+          49.95260873861627,
+          49.95260873861627
+        ],
+        "terminal_catalyst_concentrations": [
+          0.029187989058249854,
+          0.029187989058249854,
+          0.029187989058249854,
+          0.029187989058249854
+        ],
+        "terminal_catalyst_total": 199.81043495446508
+      },
+      {
+        "absolute_amount_gains": [
+          1.9965831415313344,
+          1.9965831415313344,
+          1.9965831415313344,
+          1.9965831415313344
+        ],
+        "all_lifecycle_valid": true,
+        "all_runtime_valid": true,
+        "all_simple": true,
+        "deepest_failure": "VALID_FISSION",
+        "expression_budget": {
+          "active_motor_a": 3.1627135471371326,
+          "active_motor_w": 3.1627135471233316,
+          "expression_activation_and_maintenance_a": 23.619936428161356,
+          "expression_catalyst_precursor_a": 117.62198774190442,
+          "expression_failures": 0,
+          "expression_structural_draw": 0.0,
+          "expression_turnover_waste": 0.9553887978052986,
+          "growth_a_consumed": 1609.8228234341732,
+          "initial_structural_mass": 87.73326349501298,
+          "m1_structural_build": 444.6099049321652,
+          "m1_structural_turnover": 874.6978278995102,
+          "remesh_topology_structural_net": -3.126388037344441e-13,
+          "surplus_growth_structural_production": 1448.8405410907594,
+          "terminal_catalyst_mass": 116.66659894409842,
+          "terminal_structural_mass": 1106.485881618421
+        },
+        "fission_step": 11576,
+        "full_state_daughters_viable": true,
+        "intensive_concentration_gains": [
+          1.0828779967890352,
+          1.0828779967890352,
+          1.0828779967890352,
+          1.0828779967890352
+        ],
+        "maximum_mass_over_birth": 12.611931182536223,
+        "name": "seed_10_env_-0.08",
+        "physical_fission": true,
+        "terminal_apposition": {
+          "eligible_apposition_candidate": [
+            69,
+            157,
+            1.0,
+            1.0,
+            4.986009663827448
+          ],
+          "minimum_distance_over_range": 0.5454640293573544,
+          "minimum_nonadjacent_segment_distance": 4.986009663827448,
+          "nearest_pair": [
+            69,
+            157
+          ],
+          "nearest_pair_stressed": true,
+          "range": 9.140858783487118,
+          "stressed_within_range_pairs": 4,
+          "vertex_pinch": null,
+          "within_range_pairs": 16
+        },
+        "terminal_area": 3227.560663772516,
+        "terminal_catalyst_amounts": [
+          29.166649736024606,
+          29.166649736024606,
+          29.166649736024606,
+          29.166649736024606
+        ],
+        "terminal_catalyst_concentrations": [
+          0.009036747182912228,
+          0.009036747182912228,
+          0.009036747182912228,
+          0.009036747182912228
+        ],
+        "terminal_catalyst_total": 116.66659894409842
+      }
+    ]
+  },
+  "classification": "D096_EXTENSIVE_TO_INTENSIVE_GAIN_MISMATCH_CONFIRMED",
+  "counterfactual_robust_reproduction": false,
+  "fission_counterfactual": {
+    "daughter_absolute_gain": 1.9487179487179487,
+    "daughter_area": 37.0,
+    "daughter_area_fraction": 0.37,
+    "daughter_catalyst_amount": 1.85,
+    "daughter_concentration_gain": 1.3333333333333333,
+    "parent_absolute_gain": 1.9803921568627452,
+    "parent_concentration_gain": 1.3333333333333333
+  },
+  "new_parameters": 0,
+  "observer_only": true,
+  "saturation_numeric": 0.1
+}

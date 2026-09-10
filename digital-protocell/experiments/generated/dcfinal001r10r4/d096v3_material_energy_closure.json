@@ -1,0 +1,9 @@
+{
+  "catalyst_material_conservation_at_fission": "PASS",
+  "concentration_normalization_changes_material_stock": false,
+  "expression_failures": 0,
+  "expression_material_law": "UNIT_TEST_EXACT_V2_LEDGER_PARITY",
+  "maximum_active_a_to_w_residual": 2.6625013305192624e-10,
+  "status": "PASS",
+  "structural_expression_draw": 0
+}

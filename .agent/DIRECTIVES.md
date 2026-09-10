@@ -1232,3 +1232,11 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Gate 1 confirms the D096-on reproduction integration gap. Budget attribution is `MIXED_CAUSAL`, with D096 structural conversion a material contributor and M1 turnover the dominant flux. D096-v1 integrated reproduction is `0/10` fissions and `0/10` viable pairs.
 - D096-v2 is versioned, has zero structural draw, accounts catalyst precursor from A plus frozen activation/maintenance costs and turnover-to-W, and introduces zero new numerical parameters. Historical v1 and non-D096 R10 behavior remain isolated.
 - Stop boundary reached at Gate 10: D096-v2 continuously ON yields `1/10` geometry-valid fissions and `1/10` full-state viable pair, below unchanged `7/10` and `6/10` thresholds. Evolution, selection, reversal, and final integration are not reached; no successor execution starts.
+
+## DC-FINAL-001-R10R4-D096-INTENSIVE-CATALYST-GAIN-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001
+
+- Issued `2026-09-10` by the external Architect from accepted R10R3 governed head `1c7bb0b7da3503663d756b1da14788e60458a8db`; owner override remains active.
+- Authorized scope: prove catalyst dimensional ownership and amount-gain causal relevance first; only then add one versioned D096-v3 preserving v2 material law while using catalyst concentration as gain input. No external number, controller, motor, fission, or ecology change is authorized.
+- Gates 1-4 pass. Catalysts are extensive physical material, amount-based gain is scale-dependent, and matched gain-channel decomposition confirms that gain—especially functions 0/1—causally suppresses R10 apposition.
+- D096-v3 is versioned with schema 4, keeps exact v2 A-precursor/activation/maintenance/turnover accounting, and introduces zero new numerical parameters. Historical v1/v2 replay remains semantically exact.
+- Stop boundary reached at Gate 10: continuously active D096-v3 produces `5/10` geometry-valid fissions and `5/10` full-state viable pairs, below unchanged `7/10` and `6/10`. Evolution, selection, reversal, and final integration are not reached; no successor execution starts.

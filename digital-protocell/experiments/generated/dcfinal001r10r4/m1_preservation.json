@@ -1,0 +1,44 @@
+{
+  "d087": {
+    "v2": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "v3": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "v4": [
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "r10_d096_off_control": {
+    "full_state_viable_daughter_pairs": 6,
+    "geometry_valid_fissions": 7,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 7
+  },
+  "scope": "D096-v3 is opt-in; v1/v2 semantic exact replay and D096 contract tests pass",
+  "source": "experiments/generated/dcfinal001r10r3/m1_preservation.json",
+  "source_sha256": "cf41b0af134012bc96459e4d89060b085be5df9ba8ee09c3d9b3426b677ba2ab",
+  "status": "PASS_PRESERVED"
+}

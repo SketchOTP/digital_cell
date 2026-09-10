@@ -1204,3 +1204,11 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - A materially closed biochemical repair can still fail at organism mechanics. D096-v2 removes free catalyst and structural cannibalization, but nine of ten parents remain outside the unchanged apposition range despite large growth multiples.
 - D096-off is not a valid substitute for a repaired hereditary phenotype: it removes both the structural cost and the catalyst-mediated production benefits. Matched v1/off/candidate comparison is necessary to avoid attributing all differences to one sink.
 - A failed integrated reproduction gate forbids population-level evolutionary interpretation. Mutation, selection, reversal, and final coexistence remain `NOT_REACHED`, even though the expression contract itself is valid and version-isolated.
+
+## DC-FINAL-001-R10R4 intensive-gain learning
+
+- Physical catalyst stock and catalytic effect have distinct dimensional ownership. An extensive conserved amount may require conversion to an intensive state before it drives a local rate law.
+- Exact material-cost controls can isolate catalytic gain from expression burden. Here, retaining synthesis/maintenance/turnover while suppressing gain restores the R10 reproduction threshold, proving that the dominant morphology effect is functional gain rather than catalyst material cost.
+- Gain channels are not interchangeable: functions 0/1 alone strongly suppress apposition, while function 2 alone retains robust reproduction. A total-gain diagnosis would have hidden that causal asymmetry.
+- Correcting a dimensional mismatch can materially improve an assay without meeting qualification. D096-v3 rises from `1/10` to `5/10`, but the unchanged `7/10`, `6/10` gate remains authoritative.
+- Concentration is an observer calculation only. Dividing by physical area must not normalize, create, destroy, or reset the extensive catalyst material that is partitioned through fission.

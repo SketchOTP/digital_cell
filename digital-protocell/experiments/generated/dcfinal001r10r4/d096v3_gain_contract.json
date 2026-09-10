@@ -1,0 +1,11 @@
+{
+  "area_floor": null,
+  "equation": "autopoietic_material_mesh_finite_catalytic_allocation_v3_intensive_gain",
+  "gain": "1 + c/(0.1+c)",
+  "gain_input": "CATALYST_AMOUNT_DIVIDED_BY_POSITIVE_PHYSICAL_AREA",
+  "material_law": "D096_V2_PRESERVED",
+  "new_numerical_biological_parameters": 0,
+  "schema_version": 4,
+  "status": "PASS",
+  "versioned": true
+}

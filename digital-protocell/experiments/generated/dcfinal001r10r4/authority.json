@@ -1,0 +1,14 @@
+{
+  "directive": "DC-FINAL-001-R10R4-D096-INTENSIVE-CATALYST-GAIN-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001",
+  "independent_architect_acceptance": "PENDING",
+  "r10_robust_reproduction": "QUALIFIED_7_OF_10_6_OF_10",
+  "r10r3_artifact_sha256": "8d249bbfd93471ac2187aad08bcd16f5e161c9297fa376d70e8083bd7977a478",
+  "r10r3_exact_head_ci": {
+    "result": "PASS",
+    "run": 34469457434
+  },
+  "r10r3_governed_head": "1c7bb0b7da3503663d756b1da14788e60458a8db",
+  "r10r3_scientific_head": "895d89f35455ea109e9da288105e71736f616bf3",
+  "result_scientific_head": "ae18b3e24d475f1791577b07f63b18084402a159",
+  "starting_governed_head": "1c7bb0b7da3503663d756b1da14788e60458a8db"
+}

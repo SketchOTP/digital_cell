@@ -1,0 +1,10 @@
+{
+  "D096_v3_integrated_reproduction": "FAIL_5_OF_10_5_OF_10",
+  "M1": "CLOSED_FROZEN_PRESERVED",
+  "M2": "QUALIFIED_PRESERVED",
+  "M3": "PASS_PRESERVED",
+  "M4_evolution": "NOT_REACHED_GATE10_D096_V3_REPRODUCTION_STOP",
+  "M5_integrated": "NOT_REACHED_GATE10_D096_V3_REPRODUCTION_STOP",
+  "R10_reproduction_without_D096": "QUALIFIED",
+  "digital_cell_end_goal": "NOT_ESTABLISHED"
+}

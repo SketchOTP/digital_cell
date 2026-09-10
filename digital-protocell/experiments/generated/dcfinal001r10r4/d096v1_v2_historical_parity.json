@@ -1,0 +1,25 @@
+{
+  "byte_difference_reason": "sealed files use sorted JSON object keys; parsed values are exact",
+  "comparison": "PARSED_JSON_SEMANTIC_EXACT",
+  "d096v1": {
+    "counts": {
+      "full_state_viable_daughter_pairs": 0,
+      "geometry_valid_fissions": 0,
+      "growth_qualified": 10
+    },
+    "replay_sha256": "0d3d043c6b199b2e913fdcb032ccfd8dc76bf8e4354e3b559cf5f4558ef0cb4b",
+    "semantic_equal": true,
+    "source_sha256": "bd1312d61dfd036a4ec2d8d396b2da06d681923dbf40c3b8d73d27dacac94c27"
+  },
+  "d096v2": {
+    "counts": {
+      "full_state_viable_daughter_pairs": 1,
+      "geometry_valid_fissions": 1,
+      "growth_qualified": 10
+    },
+    "replay_sha256": "3452540b6f2817267ae04397805be050238f160869605303eafb4e7af93fb866",
+    "semantic_equal": true,
+    "source_sha256": "cbb89156ff3351b2ae5c38118ab14966089712bdcaa771f2c24d4b5c5a2e8bb3"
+  },
+  "status": "PASS"
+}
