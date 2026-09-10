@@ -1,0 +1,16 @@
+{
+  "counts": {
+    "all_lifecycle_valid": true,
+    "all_parent_states_simple": true,
+    "all_runtime_valid": true,
+    "arms": 10,
+    "geometry_valid_fissions": 5,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 5
+  },
+  "expected": {
+    "geometry_valid_fissions": 5,
+    "simple_viable_daughter_pairs": 5
+  },
+  "status": "PASS"
+}

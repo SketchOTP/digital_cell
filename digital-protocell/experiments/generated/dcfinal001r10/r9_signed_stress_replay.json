@@ -1,0 +1,92 @@
+{
+  "legacy_r9_replay": {
+    "geometry_valid_fissions": 5,
+    "growth_qualified": 10,
+    "pass": true,
+    "simple_viable_daughter_pairs": 5
+  },
+  "qualification_horizon": 14778,
+  "seeds": [
+    {
+      "counterfactual_step": null,
+      "in_range_attempts": 0,
+      "legacy_both_daughters_viable": false,
+      "legacy_physical_fission": false,
+      "newly_admitted_candidate_count": 0,
+      "seed": 1
+    },
+    {
+      "counterfactual_step": null,
+      "in_range_attempts": 0,
+      "legacy_both_daughters_viable": false,
+      "legacy_physical_fission": false,
+      "newly_admitted_candidate_count": 0,
+      "seed": 2
+    },
+    {
+      "counterfactual_step": null,
+      "in_range_attempts": 28,
+      "legacy_both_daughters_viable": true,
+      "legacy_physical_fission": true,
+      "newly_admitted_candidate_count": 0,
+      "seed": 3
+    },
+    {
+      "counterfactual_step": null,
+      "in_range_attempts": 51,
+      "legacy_both_daughters_viable": true,
+      "legacy_physical_fission": true,
+      "newly_admitted_candidate_count": 0,
+      "seed": 4
+    },
+    {
+      "counterfactual_step": null,
+      "in_range_attempts": 0,
+      "legacy_both_daughters_viable": false,
+      "legacy_physical_fission": false,
+      "newly_admitted_candidate_count": 0,
+      "seed": 5
+    },
+    {
+      "counterfactual_step": 8176,
+      "in_range_attempts": 47,
+      "legacy_both_daughters_viable": true,
+      "legacy_physical_fission": true,
+      "newly_admitted_candidate_count": 72,
+      "seed": 6
+    },
+    {
+      "counterfactual_step": 7926,
+      "in_range_attempts": 341,
+      "legacy_both_daughters_viable": false,
+      "legacy_physical_fission": false,
+      "newly_admitted_candidate_count": 8723,
+      "seed": 7
+    },
+    {
+      "counterfactual_step": 7726,
+      "in_range_attempts": 92,
+      "legacy_both_daughters_viable": true,
+      "legacy_physical_fission": true,
+      "newly_admitted_candidate_count": 224,
+      "seed": 8
+    },
+    {
+      "counterfactual_step": 8201,
+      "in_range_attempts": 124,
+      "legacy_both_daughters_viable": true,
+      "legacy_physical_fission": true,
+      "newly_admitted_candidate_count": 3863,
+      "seed": 9
+    },
+    {
+      "counterfactual_step": 12351,
+      "in_range_attempts": 133,
+      "legacy_both_daughters_viable": false,
+      "legacy_physical_fission": false,
+      "newly_admitted_candidate_count": 3249,
+      "seed": 10
+    }
+  ],
+  "status": "PASS"
+}

@@ -1180,3 +1180,11 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Causal reorganization is not equivalent to robust reproduction. R9 produces thousands of raw/effective patch relocations and raises viable fission from `4/10` to `5/10`, yet three outside-range and two below-stress parents remain nonreproductive.
 - Adding the same refractory activity through both existing normal and tangential channels is counterproductive (`2/10`), reinforcing that more contractile work or channels do not monotonically improve lawful division.
 - Every observed R9 fission is viable, so daughter construction remains qualified when fission occurs. The remaining blocker is robust parent apposition/stress formation, and evolution remains causally downstream.
+
+## DC-FINAL-001-R10 signed-load stress learning
+
+- A topology readiness predicate must use the same load semantics as the production mechanics it interprets. After R8R1, compression is load-bearing in V4; retaining a positive-tension-only scission predicate silently rejected physically apposed compressed necks.
+- Compression-aware scission readiness is not compression-induced rupture. R10 changes only the existing V4 apposition stress interpretation; material rupture remains tensile-only, and all geometric/range/conservation gates remain active.
+- Full-state continuation matters: seven R10 fissions are initially viable, while six remain viable after 3,000 steps with inherited refractory state. The unchanged `6/10` full-state threshold is the reproduction authority.
+- Mutation supply is no longer the evolutionary blocker. The assay produces exactly the expected aggregate mutation count, but fixed population composition follows because no post-initial births or deaths occur during either environment.
+- Variation alone is not natural selection. Genotype-to-phenotype expression and material throughput can be active while selection remains unestablished when variants make no differential reproductive or mortality contribution.

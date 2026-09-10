@@ -1,0 +1,442 @@
+{
+  "ordinary_steps": 3000,
+  "required_pairs": 6,
+  "runs": [
+    {
+      "all_lifecycle_valid": true,
+      "all_runtime_valid": true,
+      "all_simple": true,
+      "both_daughters_viable": true,
+      "daughter_diagnostics": {
+        "both_viable_at_birth": true,
+        "daughter_a": {
+          "a_retention": 1.10234185209903,
+          "all_lifecycle_invariants_hold": true,
+          "all_runtime_valid": true,
+          "all_simple": true,
+          "c_retention": 1.1512879763980712,
+          "closed_intact": true,
+          "completed_steps": 3000,
+          "viable": true
+        },
+        "daughter_b": {
+          "a_retention": 1.2572200487353595,
+          "all_lifecycle_invariants_hold": true,
+          "all_runtime_valid": true,
+          "all_simple": true,
+          "c_retention": 1.1587603698834845,
+          "closed_intact": true,
+          "completed_steps": 3000,
+          "viable": true
+        },
+        "full_state": {
+          "both_viable": true,
+          "daughter_a": {
+            "a_retention": 1.104669589020555,
+            "active_energy_residual": 5.777045508637002e-12,
+            "all_lifecycle_invariants_hold": true,
+            "all_runtime_valid": true,
+            "all_simple": true,
+            "c_retention": 1.1533036707435518,
+            "closed_intact": true,
+            "completed_steps": 3000,
+            "remesh_continuity_failures": 0,
+            "viable": true
+          },
+          "daughter_b": {
+            "a_retention": 1.2572124750085998,
+            "active_energy_residual": 2.299438417452393e-12,
+            "all_lifecycle_invariants_hold": true,
+            "all_runtime_valid": true,
+            "all_simple": true,
+            "c_retention": 1.1587672408692,
+            "closed_intact": true,
+            "completed_steps": 3000,
+            "remesh_continuity_failures": 0,
+            "viable": true
+          }
+        },
+        "step": 7451
+      },
+      "deepest_failure": "VALID_FISSION",
+      "fission_step": 7451,
+      "full_state_daughters_viable": true,
+      "name": "seed_3_c_0.08",
+      "physical_fission": true
+    },
+    {
+      "all_lifecycle_valid": true,
+      "all_runtime_valid": true,
+      "all_simple": true,
+      "both_daughters_viable": true,
+      "daughter_diagnostics": {
+        "both_viable_at_birth": true,
+        "daughter_a": {
+          "a_retention": 1.2096329372405605,
+          "all_lifecycle_invariants_hold": true,
+          "all_runtime_valid": true,
+          "all_simple": true,
+          "c_retention": 1.0982176372166037,
+          "closed_intact": true,
+          "completed_steps": 3000,
+          "viable": true
+        },
+        "daughter_b": {
+          "a_retention": 1.1433040606909528,
+          "all_lifecycle_invariants_hold": true,
+          "all_runtime_valid": true,
+          "all_simple": true,
+          "c_retention": 1.1922540585553272,
+          "closed_intact": true,
+          "completed_steps": 3000,
+          "viable": true
+        },
+        "full_state": {
+          "both_viable": true,
+          "daughter_a": {
+            "a_retention": 1.2096297334284185,
+            "active_energy_residual": 1.2207249100448792e-12,
+            "all_lifecycle_invariants_hold": true,
+            "all_runtime_valid": true,
+            "all_simple": true,
+            "c_retention": 1.0981951538244,
+            "closed_intact": true,
+            "completed_steps": 3000,
+            "remesh_continuity_failures": 0,
+            "viable": true
+          },
+          "daughter_b": {
+            "a_retention": 1.1444643922237294,
+            "active_energy_residual": 9.440004333782781e-12,
+            "all_lifecycle_invariants_hold": true,
+            "all_runtime_valid": true,
+            "all_simple": true,
+            "c_retention": 1.193257279597881,
+            "closed_intact": true,
+            "completed_steps": 3000,
+            "remesh_continuity_failures": 0,
+            "viable": true
+          }
+        },
+        "step": 9201
+      },
+      "deepest_failure": "VALID_FISSION",
+      "fission_step": 9201,
+      "full_state_daughters_viable": true,
+      "name": "seed_4_a_0.08",
+      "physical_fission": true
+    },
+    {
+      "all_lifecycle_valid": true,
+      "all_runtime_valid": true,
+      "all_simple": true,
+      "both_daughters_viable": true,
+      "daughter_diagnostics": {
+        "both_viable_at_birth": true,
+        "daughter_a": {
+          "a_retention": 1.1621224934609924,
+          "all_lifecycle_invariants_hold": true,
+          "all_runtime_valid": true,
+          "all_simple": true,
+          "c_retention": 1.1910354055575676,
+          "closed_intact": true,
+          "completed_steps": 3000,
+          "viable": true
+        },
+        "daughter_b": {
+          "a_retention": 1.1858249677729884,
+          "all_lifecycle_invariants_hold": true,
+          "all_runtime_valid": true,
+          "all_simple": true,
+          "c_retention": 1.1097030030469786,
+          "closed_intact": true,
+          "completed_steps": 3000,
+          "viable": true
+        },
+        "full_state": {
+          "both_viable": true,
+          "daughter_a": {
+            "a_retention": 1.1623390995918452,
+            "active_energy_residual": 8.383516103549482e-12,
+            "all_lifecycle_invariants_hold": true,
+            "all_runtime_valid": true,
+            "all_simple": true,
+            "c_retention": 1.191257486800042,
+            "closed_intact": true,
+            "completed_steps": 3000,
+            "remesh_continuity_failures": 0,
+            "viable": true
+          },
+          "daughter_b": {
+            "a_retention": 1.1858138301165178,
+            "active_energy_residual": 9.10937991704941e-14,
+            "all_lifecycle_invariants_hold": true,
+            "all_runtime_valid": true,
+            "all_simple": true,
+            "c_retention": 1.1097059601729966,
+            "closed_intact": true,
+            "completed_steps": 3000,
+            "remesh_continuity_failures": 0,
+            "viable": true
+          }
+        },
+        "step": 8176
+      },
+      "deepest_failure": "VALID_FISSION",
+      "fission_step": 8176,
+      "full_state_daughters_viable": true,
+      "name": "seed_6_l_0.1",
+      "physical_fission": true
+    },
+    {
+      "all_lifecycle_valid": true,
+      "all_runtime_valid": true,
+      "all_simple": true,
+      "both_daughters_viable": true,
+      "daughter_diagnostics": {
+        "both_viable_at_birth": true,
+        "daughter_a": {
+          "a_retention": 1.121841249551883,
+          "all_lifecycle_invariants_hold": true,
+          "all_runtime_valid": true,
+          "all_simple": true,
+          "c_retention": 1.1980530766827042,
+          "closed_intact": true,
+          "completed_steps": 3000,
+          "viable": true
+        },
+        "daughter_b": {
+          "a_retention": 3.2872371319338294,
+          "all_lifecycle_invariants_hold": true,
+          "all_runtime_valid": true,
+          "all_simple": true,
+          "c_retention": 2.553624832871033,
+          "closed_intact": true,
+          "completed_steps": 3000,
+          "viable": true
+        },
+        "full_state": {
+          "both_viable": true,
+          "daughter_a": {
+            "a_retention": 1.11687484978073,
+            "active_energy_residual": 1.6189272145084033e-12,
+            "all_lifecycle_invariants_hold": true,
+            "all_runtime_valid": true,
+            "all_simple": true,
+            "c_retention": 1.1919698529917444,
+            "closed_intact": true,
+            "completed_steps": 3000,
+            "remesh_continuity_failures": 0,
+            "viable": true
+          },
+          "daughter_b": {
+            "a_retention": 3.2913330543525467,
+            "active_energy_residual": 3.586131391841718e-12,
+            "all_lifecycle_invariants_hold": true,
+            "all_runtime_valid": true,
+            "all_simple": true,
+            "c_retention": 2.5569901010795646,
+            "closed_intact": true,
+            "completed_steps": 3000,
+            "remesh_continuity_failures": 0,
+            "viable": true
+          }
+        },
+        "step": 7926
+      },
+      "deepest_failure": "VALID_FISSION",
+      "fission_step": 7926,
+      "full_state_daughters_viable": true,
+      "name": "seed_7_rotate_-0.5",
+      "physical_fission": true
+    },
+    {
+      "all_lifecycle_valid": true,
+      "all_runtime_valid": true,
+      "all_simple": true,
+      "both_daughters_viable": true,
+      "daughter_diagnostics": {
+        "both_viable_at_birth": true,
+        "daughter_a": {
+          "a_retention": 0.97882383390847,
+          "all_lifecycle_invariants_hold": true,
+          "all_runtime_valid": true,
+          "all_simple": true,
+          "c_retention": 1.0880307520684438,
+          "closed_intact": true,
+          "completed_steps": 3000,
+          "viable": true
+        },
+        "daughter_b": {
+          "a_retention": 1.4353647393793978,
+          "all_lifecycle_invariants_hold": true,
+          "all_runtime_valid": true,
+          "all_simple": true,
+          "c_retention": 0.9710362458156747,
+          "closed_intact": true,
+          "completed_steps": 3000,
+          "viable": true
+        },
+        "full_state": {
+          "both_viable": true,
+          "daughter_a": {
+            "a_retention": 0.9795201564168965,
+            "active_energy_residual": 1.9901857939430556e-12,
+            "all_lifecycle_invariants_hold": true,
+            "all_runtime_valid": true,
+            "all_simple": true,
+            "c_retention": 1.0885557194798372,
+            "closed_intact": true,
+            "completed_steps": 3000,
+            "remesh_continuity_failures": 0,
+            "viable": true
+          },
+          "daughter_b": {
+            "a_retention": 1.4352026576056465,
+            "active_energy_residual": 9.460765504343271e-13,
+            "all_lifecycle_invariants_hold": true,
+            "all_runtime_valid": true,
+            "all_simple": true,
+            "c_retention": 0.9709330611166329,
+            "closed_intact": true,
+            "completed_steps": 3000,
+            "remesh_continuity_failures": 0,
+            "viable": true
+          }
+        },
+        "step": 7726
+      },
+      "deepest_failure": "VALID_FISSION",
+      "fission_step": 7726,
+      "full_state_daughters_viable": true,
+      "name": "seed_8_vertex_-0.1",
+      "physical_fission": true
+    },
+    {
+      "all_lifecycle_valid": true,
+      "all_runtime_valid": true,
+      "all_simple": true,
+      "both_daughters_viable": true,
+      "daughter_diagnostics": {
+        "both_viable_at_birth": true,
+        "daughter_a": {
+          "a_retention": 1.1574469385487438,
+          "all_lifecycle_invariants_hold": true,
+          "all_runtime_valid": true,
+          "all_simple": true,
+          "c_retention": 1.19400080022054,
+          "closed_intact": true,
+          "completed_steps": 3000,
+          "viable": true
+        },
+        "daughter_b": {
+          "a_retention": 1.2072664613250013,
+          "all_lifecycle_invariants_hold": true,
+          "all_runtime_valid": true,
+          "all_simple": true,
+          "c_retention": 1.1042178405415466,
+          "closed_intact": true,
+          "completed_steps": 3000,
+          "viable": true
+        },
+        "full_state": {
+          "both_viable": false,
+          "daughter_a": {
+            "a_retention": 1.1583098574518762,
+            "active_energy_residual": 4.5367598566770084e-12,
+            "all_lifecycle_invariants_hold": true,
+            "all_runtime_valid": true,
+            "all_simple": true,
+            "c_retention": 1.19482394906387,
+            "closed_intact": true,
+            "completed_steps": 3000,
+            "remesh_continuity_failures": 0,
+            "viable": true
+          },
+          "daughter_b": {
+            "a_retention": 1.0014814381656914,
+            "active_energy_residual": 2.035264318189789e-14,
+            "all_lifecycle_invariants_hold": true,
+            "all_runtime_valid": true,
+            "all_simple": true,
+            "c_retention": 1.0004076295763114,
+            "closed_intact": false,
+            "completed_steps": 11,
+            "remesh_continuity_failures": 0,
+            "viable": false
+          }
+        },
+        "step": 8201
+      },
+      "deepest_failure": "VALID_FISSION",
+      "fission_step": 8201,
+      "full_state_daughters_viable": false,
+      "name": "seed_9_c_-0.05",
+      "physical_fission": true
+    },
+    {
+      "all_lifecycle_valid": true,
+      "all_runtime_valid": true,
+      "all_simple": true,
+      "both_daughters_viable": true,
+      "daughter_diagnostics": {
+        "both_viable_at_birth": true,
+        "daughter_a": {
+          "a_retention": 1.214579400986383,
+          "all_lifecycle_invariants_hold": true,
+          "all_runtime_valid": true,
+          "all_simple": true,
+          "c_retention": 1.1924481596486571,
+          "closed_intact": true,
+          "completed_steps": 3000,
+          "viable": true
+        },
+        "daughter_b": {
+          "a_retention": 1.138487541852227,
+          "all_lifecycle_invariants_hold": true,
+          "all_runtime_valid": true,
+          "all_simple": true,
+          "c_retention": 1.1404838378117677,
+          "closed_intact": true,
+          "completed_steps": 3000,
+          "viable": true
+        },
+        "full_state": {
+          "both_viable": true,
+          "daughter_a": {
+            "a_retention": 1.2340654371927686,
+            "active_energy_residual": 5.299649608048185e-12,
+            "all_lifecycle_invariants_hold": true,
+            "all_runtime_valid": true,
+            "all_simple": true,
+            "c_retention": 1.2133818344266665,
+            "closed_intact": true,
+            "completed_steps": 3000,
+            "remesh_continuity_failures": 0,
+            "viable": true
+          },
+          "daughter_b": {
+            "a_retention": 1.13029811950188,
+            "active_energy_residual": 4.533484698754364e-12,
+            "all_lifecycle_invariants_hold": true,
+            "all_runtime_valid": true,
+            "all_simple": true,
+            "c_retention": 1.1358049780827755,
+            "closed_intact": true,
+            "completed_steps": 3000,
+            "remesh_continuity_failures": 0,
+            "viable": true
+          }
+        },
+        "step": 12351
+      },
+      "deepest_failure": "VALID_FISSION",
+      "fission_step": 12351,
+      "full_state_daughters_viable": true,
+      "name": "seed_10_env_-0.08",
+      "physical_fission": true
+    }
+  ],
+  "status": "PASS",
+  "viable_pairs": 6
+}

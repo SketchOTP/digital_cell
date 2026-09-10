@@ -1,0 +1,22 @@
+{
+  "candidate_ordering": "UNCHANGED",
+  "contract": {
+    "apposition_range_unchanged": true,
+    "extreme_proximity_fraction": 0.55,
+    "extreme_proximity_fraction_unchanged": true,
+    "new_free_parameters": 0,
+    "rupture_semantics": "TENSILE_ONLY_UNCHANGED",
+    "stress_threshold": 0.15,
+    "threshold_unchanged": true,
+    "v4_only": true
+  },
+  "effective_signed_strain": {
+    "new_free_parameters": 0,
+    "non_v4": "raw_strain",
+    "stress_magnitude": 0.15,
+    "v4_compression": "raw_strain",
+    "v4_tension": "mature_fraction_times_raw_strain"
+  },
+  "rupture": "TENSILE_ONLY_UNCHANGED",
+  "status": "PASS"
+}

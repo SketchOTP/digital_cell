@@ -1,0 +1,12 @@
+{
+  "classification": "V4_SIGNED_LOAD_BEARING_NECK_STRESS_ROBUST_REPRODUCTION_QUALIFIED",
+  "full_state_viable_daughter_pairs": 6,
+  "geometry_valid_fissions": 7,
+  "robust_v4_reproduction": true,
+  "simple_viable_daughter_pairs_at_birth": 7,
+  "status": "PASS",
+  "thresholds": {
+    "fissions": 7,
+    "full_state_viable_pairs": 6
+  }
+}

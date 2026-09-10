@@ -1,0 +1,12 @@
+{
+  "final_integrated": "NOT_REACHED_SELECTION_GATE_FAILED",
+  "maximum_absolute_residual": 1.1641532182693481e-09,
+  "reproduction_a_to_w": {
+    "pass": true,
+    "produced_w": 33.026793619423685,
+    "requested_a": 33.026793620122774,
+    "residual": 6.990887868596474e-10,
+    "spent_a": 33.026793620122774
+  },
+  "status": "PASS_FOR_EXECUTED_R10_SURFACES"
+}

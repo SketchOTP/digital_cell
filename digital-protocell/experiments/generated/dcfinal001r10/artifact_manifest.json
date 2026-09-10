@@ -1,0 +1,167 @@
+{
+  "directive": "DC-FINAL-001-R10-SIGNED-LOAD-BEARING-NECK-STRESS-REPRODUCTION-AND-END-GOAL-CLOSURE-001",
+  "file_count_excluding_manifest": 32,
+  "files": [
+    {
+      "bytes": 209,
+      "path": "architect_disposition.json",
+      "sha256": "a7f06a432161f2221bcb52a30a5aebba4447be4bc3cd01e711403e533d1cff63"
+    },
+    {
+      "bytes": 627,
+      "path": "authority.json",
+      "sha256": "920437e3b344c7a101e5f1e3ceff0b6461373132f87d93ab8396a9e3215a07ae"
+    },
+    {
+      "bytes": 241,
+      "path": "checkpoint_restart.json",
+      "sha256": "1250aca5cbc759f237a44acbb24897f54e97259bd65ee51238cc40b495aebbe6"
+    },
+    {
+      "bytes": 3617,
+      "path": "compression_candidate_counterfactual.json",
+      "sha256": "ab00e4ab3e75ed3ffa5c703113ca9c2301c8627ae0f7c113125801379f0623c2"
+    },
+    {
+      "bytes": 14609,
+      "path": "daughter_continuation.json",
+      "sha256": "7ce8a0ad7f67962af88ea50279b1718adba382ebb70d6f236fff7e87c9fe0ba4"
+    },
+    {
+      "bytes": 247,
+      "path": "daughter_state_partition.json",
+      "sha256": "18abd529e4698e5e008f5ec52862a02c458cd7c5a46f340919a5c722982881d4"
+    },
+    {
+      "bytes": 198,
+      "path": "development_preservation.json",
+      "sha256": "e9f1e7cc44810776c5e61dbedd25d9f4dadf7576a5c8204320f7f2627d699e22"
+    },
+    {
+      "bytes": 5579,
+      "path": "environment_a_selection.json",
+      "sha256": "d92e05617a35fe8ae292528a12edce1d458af634fee730c214cdb3d421eef146"
+    },
+    {
+      "bytes": 3694,
+      "path": "environment_b_selection.json",
+      "sha256": "100884e389178b2bbfbfbeca23b7fb98c06225a7611cdcb0441a64ce27af7e2c"
+    },
+    {
+      "bytes": 242,
+      "path": "experiential_memory.json",
+      "sha256": "34772d3c70034c3966c0a45fa154056c0fa8824747d8cb356d4d11d39a1a69cc"
+    },
+    {
+      "bytes": 565,
+      "path": "external_prior_art.json",
+      "sha256": "740dbe52935a4a029c40ba333edff59a061d4c8fc87ef8e0963c3c9b514d106d"
+    },
+    {
+      "bytes": 406,
+      "path": "final_goal_matrix.json",
+      "sha256": "9abceba262c0a6b84dc094802e14c3361b5656e7deec9a34821d4d01306b4998"
+    },
+    {
+      "bytes": 334,
+      "path": "forbidden_information_audit.json",
+      "sha256": "999d49c5d2319f8f7753b68e6f2592065a0c72a08c3790792456212eab7a3355"
+    },
+    {
+      "bytes": 363,
+      "path": "global_material_energy_closure.json",
+      "sha256": "e492885357c9ce7771a1838681a59a7228366a210a36de00a74093a3e0634006"
+    },
+    {
+      "bytes": 241,
+      "path": "godot_independence.json",
+      "sha256": "ee0988de53cd2c70989eceb5c12878e781f0fe667327cd90914dcffa114a676a"
+    },
+    {
+      "bytes": 2376,
+      "path": "in_range_compression_audit.json",
+      "sha256": "e0e719e3dc6834064a08fed2837321633fe41438cd998c756ceb7ce2ab35f821"
+    },
+    {
+      "bytes": 236,
+      "path": "linux_runtime.json",
+      "sha256": "0523204e919e835895aef4abfad1771bd7a24f43fe49be0917b299c426384eea"
+    },
+    {
+      "bytes": 525,
+      "path": "m1_preservation.json",
+      "sha256": "c69f392a10e79f2c27b7ce31a9fbe4a54f3ec30242f02ea99d44ed84214a951a"
+    },
+    {
+      "bytes": 189,
+      "path": "m2_preservation.json",
+      "sha256": "9a9f360cac4dc805c217766ac9c3c89b7312c4ce86a252ba44069138fe99eda3"
+    },
+    {
+      "bytes": 7460,
+      "path": "mutation_off_control.json",
+      "sha256": "e8c11ef148cf378889a0aa5391538b95f483010253680ce5286f42155a7af0c6"
+    },
+    {
+      "bytes": 196,
+      "path": "non_v4_parity.json",
+      "sha256": "93a85689dd0ee0f513c863d09f46cf13c3d1dafc0db4b9a89282bae362adaf3f"
+    },
+    {
+      "bytes": 155,
+      "path": "owner_override.json",
+      "sha256": "3b02d87c93bd8558d4132c45491f47d7634b12691cd960d779b6b68ddf84359c"
+    },
+    {
+      "bytes": 812,
+      "path": "qualification.json",
+      "sha256": "cce59f891c5fbbebc0f7f8006bd83837ac2f34772a518f660b28b749d2e4c40e"
+    },
+    {
+      "bytes": 353,
+      "path": "r9_control_replay.json",
+      "sha256": "9ce9d7ca75809c43c11e8d50eb61f01a1e1037ed34bd06c0e834c6d290cec68a"
+    },
+    {
+      "bytes": 2455,
+      "path": "r9_signed_stress_replay.json",
+      "sha256": "cf5cae25678767ee3362ca03f9640a316c994366bc2e48248cf983b9c0d97199"
+    },
+    {
+      "bytes": 16023,
+      "path": "reproduction_campaign.json",
+      "sha256": "ca46b52911e167c7b83633bb91f6eaf1bcd0ae720a5e41c941fb294f892af112"
+    },
+    {
+      "bytes": 339,
+      "path": "reproduction_qualification.json",
+      "sha256": "5866e6a27f3b327090929535650eff545249614c0c07fee0782c8c581fbae463"
+    },
+    {
+      "bytes": 7590,
+      "path": "reversal.json",
+      "sha256": "6dc0f6147d72d0a51e77e8031cde6437166e6543e9c373539deaff0c60fbefb8"
+    },
+    {
+      "bytes": 241,
+      "path": "sensory_embodiment.json",
+      "sha256": "86507cd975e2ea8d8b8a17fce89fb92297113d5e644c25c342eb7650a7734a74"
+    },
+    {
+      "bytes": 627,
+      "path": "signed_load_stress_contract.json",
+      "sha256": "dd44c17495eff6c61ad00008e15ae02d379605c358ecb4bf67c3712407b26a2e"
+    },
+    {
+      "bytes": 208,
+      "path": "v4_mutant_lineage.json",
+      "sha256": "06221aab706956692a59494b4f5a5dc2de7c635cc4014f1f3ed0eb4fb6aa6374"
+    },
+    {
+      "bytes": 16407,
+      "path": "v4_mutation.json",
+      "sha256": "d127fceb16e339fec1284d17c9d42d00f0bbf4e49837702211c5d39bb0642916"
+    }
+  ],
+  "result_scientific_head": "d1306f0ff069a2437e4853b3d33daabd5c1e4e99"
+}

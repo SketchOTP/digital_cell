@@ -1752,3 +1752,15 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Result: refractory normal reaches `5/10` geometry-valid fissions and `5/10` viable pairs; conditional same-activity normal-plus-tangential reaches `2/10` and `2/10`, both below unchanged `7/10` and `6/10` gates.
 - Classification: `V4_ROBUST_PHYSICAL_REPRODUCTION_NOT_ESTABLISHED`. M1 remains closed/frozen/preserved; M2 qualified; M3 preserved; evolution/final integration are `NOT_REACHED_GATE7_8_STOP`; end goal remains `NOT_ESTABLISHED`; shutdown recommendation is `NO — OWNER OVERRIDE ACTIVE`; next execution is `false`; exact-head CI/artifact and independent Architect acceptance remain pending.
 - Scientific result head: `c553f8717342dedbf3f408108a7294037a84920e`.
+
+## DEC-DCFINAL001-R10-SIGNED-LOAD-STRESS-AND-EVOLUTION-BOUNDARY
+
+- Date: `2026-09-09`
+- Status: `GOAL_AGENT_PROVISIONAL_BOUNDED_ADVANCE`
+- Record or decision ID: `DEC-DCFINAL001-R10-SIGNED-LOAD-STRESS-AND-EVOLUTION-BOUNDARY`
+- External Architect accepts R9 at governed head `42ec99f1eac5f302aa501a8168429c62d6045680`, workflow `34410520058 PASS`, and artifact `sha256:11066aeb8d725e0ec87bcb3e857fe9cc8d97adb7e1ace372fe3ec932a2d15dc3`, then authorizes only R10.
+- Signed-stress mismatch is confirmed before implementation; the zero-parameter V4-only repair preserves threshold `0.15`, apposition range, `0.55` proximity shortcut, rupture, candidate order, R8/R8R1 contracts, and non-V4 semantics.
+- Result: exact R9 control `5/10, 5/10`; R10 `7/10` geometry-valid fissions, `7/10` initially viable pairs, and `6/10` full-state viable pairs. Robust production-V4 reproduction is qualified provisionally.
+- Powered mutation passes at 1,800 opportunities and 18 mutations, but generation remains 1 and no campaign records post-initial fission, physical death, or frequency change. Classification: `EVOLUTION_VARIATION_PRESENT_SELECTION_NOT_ESTABLISHED`.
+- M1 remains closed/frozen/preserved; M2 qualified; M3 preserved. Final integrated M1-M5 is `NOT_REACHED`; end goal remains `NOT_ESTABLISHED`; shutdown recommendation `NO — OWNER OVERRIDE ACTIVE`; next execution `false`.
+- Scientific result head: `d1306f0ff069a2437e4853b3d33daabd5c1e4e99`; exact-head CI/artifact and independent Architect acceptance remain pending.

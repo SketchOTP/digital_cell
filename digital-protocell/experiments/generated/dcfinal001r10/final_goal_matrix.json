@@ -1,0 +1,14 @@
+{
+  "damage_selection": "FAIL",
+  "digital_cell_end_goal": "NOT_ESTABLISHED",
+  "environment_dependence": "FAIL",
+  "final_integrated_m1_m5": "NOT_REACHED",
+  "lawful_mutation": "PASS",
+  "m1": "PASS_PRESERVED",
+  "m2": "QUALIFIED_PRESERVED",
+  "m3": "PASS_PRESERVED",
+  "natural_mutant_generation_2_plus": "FAIL",
+  "resource_selection": "FAIL",
+  "reversal": "FAIL",
+  "robust_v4_reproduction": "PASS"
+}

@@ -1,0 +1,12 @@
+{
+  "apposition_range": "UNCHANGED",
+  "breeder_selection": false,
+  "extreme_proximity_fraction": "0.55_UNCHANGED",
+  "fitness_function": null,
+  "forbidden_inputs": [],
+  "new_free_parameters": 0,
+  "pr_44": "OPEN_DRAFT_UNMERGED_UNTOUCHED",
+  "resource_feedback": false,
+  "status": "PASS",
+  "stress_threshold": "0.15_UNCHANGED"
+}

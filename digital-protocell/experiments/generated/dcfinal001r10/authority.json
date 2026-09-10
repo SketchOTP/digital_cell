@@ -1,0 +1,14 @@
+{
+  "directive": "DC-FINAL-001-R10-SIGNED-LOAD-BEARING-NECK-STRESS-REPRODUCTION-AND-END-GOAL-CLOSURE-001",
+  "independent_architect_acceptance": "PENDING",
+  "r9_artifact_sha256": "11066aeb8d725e0ec87bcb3e857fe9cc8d97adb7e1ace372fe3ec932a2d15dc3",
+  "r9_authority": "PASS",
+  "r9_exact_head_ci": {
+    "result": "PASS",
+    "run": 34410520058
+  },
+  "r9_governed_head": "42ec99f1eac5f302aa501a8168429c62d6045680",
+  "r9_scientific_head": "c553f8717342dedbf3f408108a7294037a84920e",
+  "result_scientific_head": "d1306f0ff069a2437e4853b3d33daabd5c1e4e99",
+  "starting_governed_head": "42ec99f1eac5f302aa501a8168429c62d6045680"
+}

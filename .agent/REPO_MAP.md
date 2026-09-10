@@ -221,3 +221,10 @@
 - `digital-protocell/experiments/dcfinal001_r9_evidence.py` — deterministic compact R9 evidence generator sealing static-attractor, refractory-remap, energy/control, reproduction, and stopped-downstream results.
 - `digital-protocell/experiments/generated/dcfinal001r9/` — R9 authority, attractor audit, refractory contract, controls, campaign, daughter continuation, preservation, stopped-evolution, and provisional qualification evidence.
 - `.github/workflows/dc-final-001-r9.yml` — exact-head Linux R9 scope, deterministic campaign replay, preservation, D-087, PR #44, evidence reproducibility, and artifact upload.
+- `digital-protocell/crates/chemistry-core/src/mesh_fission.rs` — R10 V4 effective signed-load observer/helper, unchanged-threshold magnitude-based segment-apposition readiness, clone-only audit path, and daughter parent-source correspondence.
+- `digital-protocell/examples/dcfinal001_r10_signed_stress_audit.rs` — R10 observer-only R9 replay and compression-candidate daughter counterfactual entry point.
+- `digital-protocell/examples/dcfinal001_r10_signed_stress.rs` — R10 exact R9 control, signed-stress ten-arm reproduction, inherited-state daughter continuation, and energy closure entry point.
+- `digital-protocell/examples/dcfinal001_r10_evolution.rs` — R10 production-V4 powered mutation, Resource/Damage, mutation-off, and fixed reversal population entry point.
+- `digital-protocell/experiments/dcfinal001_r10_evidence.py` — deterministic compact R10 evidence generator separating robust reproduction and lawful variation from absent selection/reversal.
+- `digital-protocell/experiments/generated/dcfinal001r10/` — R10 authority, signed-stress, reproduction, full-state daughters, powered mutation, selection boundary, preservation, final matrix, and qualification evidence.
+- `.github/workflows/dc-final-001-r10.yml` — exact-head Linux R10 authority, deterministic replay, preservation, D-087, PR #44, evidence reproducibility, and artifact upload.

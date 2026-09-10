@@ -1,0 +1,224 @@
+{
+  "classification": "VARIATION_PRESENT_DIFFERENTIAL_REPRODUCTION_OR_DEATH_ABSENT",
+  "environment": "RESOURCE_CHALLENGE",
+  "hereditary_frequency_change": false,
+  "physical_deaths": 0,
+  "post_initial_physical_fissions": 0,
+  "replicates": [
+    {
+      "active_energy_residual": 1.6481749298691284e-10,
+      "all_simple": true,
+      "breeder_selection": false,
+      "campaign": "REP1_RESOURCE_CHALLENGE_MUTATION_ON",
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_closure_residual": 3.2014213502407074e-10,
+      "fitness_function": null,
+      "founder_multiplicity": 150,
+      "initial_maximum_generation": 1,
+      "initial_mean_genotype": [
+        0.25033967351643027,
+        0.24923424679036527,
+        0.25042607969320446,
+        0.24999999999999997
+      ],
+      "initial_population": 300,
+      "mean_genotype_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mutation_enabled": true,
+      "mutation_events": [
+        {
+          "generation": 1,
+          "offspring": [
+            0.0,
+            0.25,
+            0.5,
+            0.25
+          ],
+          "parent": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "seed": 10694087846044191607,
+          "source_index": 0,
+          "step": 0,
+          "target_index": 2,
+          "transferred": 0.25
+        },
+        {
+          "generation": 1,
+          "offspring": [
+            0.22972596289041708,
+            0.2702740371095829,
+            0.25,
+            0.25
+          ],
+          "parent": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "seed": 15004447847695181390,
+          "source_index": 0,
+          "step": 0,
+          "target_index": 1,
+          "transferred": 0.02027403710958291
+        },
+        {
+          "generation": 1,
+          "offspring": [
+            0.3243411332921808,
+            0.25,
+            0.17565886670781922,
+            0.25
+          ],
+          "parent": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "seed": 16092784599490373331,
+          "source_index": 2,
+          "step": 0,
+          "target_index": 0,
+          "transferred": 0.07434113329218078
+        },
+        {
+          "generation": 1,
+          "offspring": [
+            0.29783495874649246,
+            0.25,
+            0.2021650412535075,
+            0.25
+          ],
+          "parent": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "seed": 12740731302122536760,
+          "source_index": 2,
+          "step": 0,
+          "target_index": 0,
+          "transferred": 0.04783495874649248
+        },
+        {
+          "generation": 1,
+          "offspring": [
+            0.5,
+            0.0,
+            0.25,
+            0.25
+          ],
+          "parent": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "seed": 3510207640637587824,
+          "source_index": 1,
+          "step": 0,
+          "target_index": 0,
+          "transferred": 0.25
+        }
+      ],
+      "mutation_opportunities": 300,
+      "mutations": 5,
+      "n_closure_residual": 2.0372681319713593e-10,
+      "phase_steps": 2500,
+      "physical_deaths": 0,
+      "physical_fissions_total": 150,
+      "post_initial_physical_fissions": 0,
+      "replicate": 1,
+      "resource_feedback": false,
+      "template_initial_fissions": 150,
+      "terminal_maximum_generation": 1,
+      "terminal_mean_genotype": [
+        0.25033967351643027,
+        0.24923424679036527,
+        0.25042607969320446,
+        0.24999999999999997
+      ],
+      "terminal_population": 300
+    },
+    {
+      "active_energy_residual": 6.31246166449273e-11,
+      "all_simple": true,
+      "breeder_selection": false,
+      "campaign": "REP2_RESOURCE_CHALLENGE_MUTATION_ON",
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_closure_residual": 9.89530235528946e-10,
+      "fitness_function": null,
+      "founder_multiplicity": 150,
+      "initial_maximum_generation": 1,
+      "initial_mean_genotype": [
+        0.24999999999999997,
+        0.2500965018731997,
+        0.24999999999999997,
+        0.24990349812680027
+      ],
+      "initial_population": 300,
+      "mean_genotype_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mutation_enabled": true,
+      "mutation_events": [
+        {
+          "generation": 1,
+          "offspring": [
+            0.25,
+            0.27895056195991824,
+            0.25,
+            0.22104943804008179
+          ],
+          "parent": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "seed": 9158920225179531909,
+          "source_index": 3,
+          "step": 0,
+          "target_index": 1,
+          "transferred": 0.028950561959918224
+        }
+      ],
+      "mutation_opportunities": 300,
+      "mutations": 1,
+      "n_closure_residual": 6.693881005048752e-10,
+      "phase_steps": 2500,
+      "physical_deaths": 0,
+      "physical_fissions_total": 150,
+      "post_initial_physical_fissions": 0,
+      "replicate": 2,
+      "resource_feedback": false,
+      "template_initial_fissions": 150,
+      "terminal_maximum_generation": 1,
+      "terminal_mean_genotype": [
+        0.24999999999999997,
+        0.2500965018731997,
+        0.24999999999999997,
+        0.24990349812680027
+      ],
+      "terminal_population": 300
+    }
+  ],
+  "status": "FAIL"
+}

@@ -1,0 +1,40 @@
+{
+  "d087": {
+    "v2": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "v3": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "v4": [
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "d088": "PASS",
+  "d091": "PASS",
+  "focused_tests": "PASS",
+  "r8_closure_repair": "PRESERVED",
+  "r8r1_sign_aware_mechanics": "PRESERVED",
+  "status": "PASS"
+}

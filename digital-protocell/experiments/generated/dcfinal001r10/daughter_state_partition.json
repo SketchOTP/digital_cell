@@ -1,0 +1,12 @@
+{
+  "method": "ACTUAL_PARENT_BOUNDARY_SOURCE_CORRESPONDENCE",
+  "no_reset": true,
+  "no_unrelated_arc_averaging": true,
+  "result": {
+    "executed": true,
+    "pass": true,
+    "required_pairs": 6,
+    "viable_pairs": 6
+  },
+  "status": "PASS"
+}

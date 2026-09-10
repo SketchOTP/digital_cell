@@ -1,0 +1,8 @@
+{
+  "classification": "NATURAL_MUTANT_GENERATION_2_NOT_ESTABLISHED",
+  "maximum_generation": 1,
+  "mutated_births": 18,
+  "post_initial_physical_fissions": 0,
+  "required_generation": 2,
+  "status": "FAIL"
+}

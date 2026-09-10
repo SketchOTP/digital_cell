@@ -1,0 +1,16 @@
+{
+  "imported_parameters": [],
+  "sources": [
+    {
+      "classification": "REFERENCE_ONLY",
+      "principle": "cytokinetic furrow and abscission depend on local force balance and tension can inhibit abscission",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3477504/"
+    },
+    {
+      "classification": "REFERENCE_ONLY",
+      "principle": "membrane fission depends on neck geometry and local mechanical context",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9730121/"
+    }
+  ],
+  "status": "BOUNDED_IMPLEMENTATION_CONFIRMATION_COMPLETE"
+}

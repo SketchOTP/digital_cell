@@ -1,0 +1,9 @@
+{
+  "historical_v1_v2_v3": "POSITIVE_TENSILE_ONLY_UNCHANGED",
+  "status": "PASS",
+  "validated_by": [
+    "chemistry-core mesh_fission unit tests",
+    "D087 V2/V3",
+    "legacy D088 tests"
+  ]
+}

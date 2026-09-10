@@ -1209,3 +1209,11 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Authorized execution: first establish persistent/static negative arms from sealed R8R1 evidence, then compose only the existing R6 curvature drive, default `PlasticityStateV1`, funded inward-normal force, R8R1 mechanics, and unchanged fission path. Commit adaptation only after accepted mechanics and remap it through existing local topology correspondence.
 - One conditional same-effective-activity tangential composition is authorized only if refractory normal improves a preregistered reproduction count while remaining below qualification. No new coefficient, target, threshold, timer, fission input, or observer feedback is authorized.
 - Stop boundary reached: refractory normal improves to `5/10` fissions and `5/10` viable pairs but remains below `7/10` and `6/10`; the authorized normal-plus-tangential arm regresses to `2/10` and `2/10`. Mutation, selection, reversal, and final integration are not reached; no successor execution starts.
+
+## DC-FINAL-001-R10-SIGNED-LOAD-BEARING-NECK-STRESS-REPRODUCTION-AND-END-GOAL-CLOSURE-001
+
+- Issued `2026-09-09` by the external Architect from exact governed R9 head `42ec99f1eac5f302aa501a8168429c62d6045680`; R9 is accepted as `R9_ACCEPTED_BOUNDED_ADVANCE_REPLAN` and owner override remains active.
+- Authorized repair: only after observer confirmation, interpret the unchanged V4 `0.15` segment-apposition stress as the magnitude of accepted R8R1 effective signed strain. Keep apposition range, extreme-proximity shortcut, ordering, topology, rupture, fission cadence, material construction, and all non-V4 behavior frozen.
+- Reproduction result: exact R9 control `5/10, 5/10`; R10 signed-stress `7/10` physical fissions, `7/10` initially viable pairs, and `6/10` full-state viable pairs after inherited-regulator continuation. Robust V4 reproduction passes unchanged thresholds.
+- Downstream result: lawful powered mutation passes, but no population campaign produces a post-initial birth, death, generation-2 lineage, or hereditary frequency change. Classification is `EVOLUTION_VARIATION_PRESENT_SELECTION_NOT_ESTABLISHED`; final integrated M1-M5 is not reached.
+- No successor execution is authorized after handoff. Exact-head CI/artifact and independent Architect acceptance remain pending.

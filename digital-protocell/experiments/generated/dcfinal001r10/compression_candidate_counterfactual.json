@@ -1,0 +1,138 @@
+{
+  "qualification_use": "OBSERVER_ONLY_NOT_COUNTED",
+  "seed_10": {
+    "candidate": {
+      "distance": 8.8761765801547,
+      "edge_i": 73,
+      "edge_j": 167,
+      "effective_signed_strains": [
+        -0.06132348043159348,
+        -0.10198779693479074,
+        -0.10033724474918766,
+        -0.1519447792528112
+      ],
+      "incident_edges": [
+        73,
+        72,
+        167,
+        166
+      ],
+      "legacy_tensile_only_predicate": false,
+      "mature_fractions": [
+        0.392466595034513,
+        0.3957682614343793,
+        0.39067580316054284,
+        0.39728513000802856
+      ],
+      "maximum_compressive_effective_strain_magnitude": 0.1519447792528112,
+      "maximum_tensile_effective_strain": 0.0,
+      "range": 9.395048931768956,
+      "raw_strains": [
+        -0.06132348043159348,
+        -0.10198779693479074,
+        -0.10033724474918766,
+        -0.1519447792528112
+      ],
+      "ring_separation": 94,
+      "segment_i_fraction": 0.2776383814966195,
+      "segment_j_fraction": 1.0,
+      "signed_magnitude_predicate": true
+    },
+    "daughter_a": {
+      "completed_steps": 3000,
+      "viable": true
+    },
+    "daughter_b": {
+      "completed_steps": 3000,
+      "viable": true
+    },
+    "partition": {
+      "ok": true,
+      "residual_a": 0.0,
+      "residual_allocation_catalysts": 0.0,
+      "residual_assimilation_f": 0.0,
+      "residual_assimilation_n": 0.0,
+      "residual_autocatalytic_edges": 0.0,
+      "residual_b": 1.7053025658242404e-13,
+      "residual_c": 0.0,
+      "residual_f": 0.0,
+      "residual_l": 0.0,
+      "residual_m": 1.3642420526593924e-12,
+      "residual_n": 0.0,
+      "residual_r": 0.0,
+      "residual_templates": 0.0,
+      "residual_u_b": 0.0,
+      "residual_u_h": 0.0,
+      "residual_w": 2.2737367544323206e-13
+    },
+    "step": 12351
+  },
+  "seed_7": {
+    "candidate": {
+      "distance": 9.3441199444845,
+      "edge_i": 9,
+      "edge_j": 84,
+      "effective_signed_strains": [
+        -0.14555349067415593,
+        -0.1524605916258748,
+        -0.11047793317473803,
+        -0.12287817470297493
+      ],
+      "incident_edges": [
+        9,
+        8,
+        84,
+        83
+      ],
+      "legacy_tensile_only_predicate": false,
+      "mature_fractions": [
+        0.3880260808162188,
+        0.38941819336265754,
+        0.38290160181279326,
+        0.3860325125554665
+      ],
+      "maximum_compressive_effective_strain_magnitude": 0.1524605916258748,
+      "maximum_tensile_effective_strain": 0.0,
+      "range": 10.269408509806308,
+      "raw_strains": [
+        -0.14555349067415593,
+        -0.1524605916258748,
+        -0.11047793317473803,
+        -0.12287817470297493
+      ],
+      "ring_separation": 24,
+      "segment_i_fraction": 1.0,
+      "segment_j_fraction": 1.0,
+      "signed_magnitude_predicate": true
+    },
+    "daughter_a": {
+      "completed_steps": 3000,
+      "viable": true
+    },
+    "daughter_b": {
+      "completed_steps": 3000,
+      "viable": true
+    },
+    "partition": {
+      "ok": true,
+      "residual_a": 4.547473508864641e-13,
+      "residual_allocation_catalysts": 0.0,
+      "residual_assimilation_f": 0.0,
+      "residual_assimilation_n": 0.0,
+      "residual_autocatalytic_edges": 0.0,
+      "residual_b": 5.684341886080802e-14,
+      "residual_c": 2.2737367544323206e-13,
+      "residual_f": 0.0,
+      "residual_l": 0.0,
+      "residual_m": 1.1368683772161603e-13,
+      "residual_n": 0.0,
+      "residual_r": 0.0,
+      "residual_templates": 0.0,
+      "residual_u_b": 0.0,
+      "residual_u_h": 0.0,
+      "residual_w": 0.0
+    },
+    "step": 7926
+  },
+  "status": "PASS"
+}

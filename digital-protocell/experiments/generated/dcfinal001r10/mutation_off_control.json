@@ -1,0 +1,285 @@
+{
+  "all_frequency_deltas_zero": true,
+  "campaigns": [
+    {
+      "active_energy_residual": 2.0699530978163239e-10,
+      "all_simple": true,
+      "breeder_selection": false,
+      "campaign": "REP1_RESOURCE_CHALLENGE_MUTATION_OFF",
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_closure_residual": 4.656612873077393e-10,
+      "fitness_function": null,
+      "founder_multiplicity": 150,
+      "initial_maximum_generation": 1,
+      "initial_mean_genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "initial_population": 300,
+      "mean_genotype_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mutation_enabled": false,
+      "mutation_events": [],
+      "mutation_opportunities": 300,
+      "mutations": 0,
+      "n_closure_residual": 2.9103830456733704e-11,
+      "phase_steps": 2500,
+      "physical_deaths": 0,
+      "physical_fissions_total": 150,
+      "post_initial_physical_fissions": 0,
+      "replicate": 1,
+      "resource_feedback": false,
+      "template_initial_fissions": 150,
+      "terminal_maximum_generation": 1,
+      "terminal_mean_genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "terminal_population": 300
+    },
+    {
+      "active_energy_residual": 2.764295459201094e-10,
+      "all_simple": true,
+      "breeder_selection": false,
+      "campaign": "REP1_DAMAGE_CHALLENGE_MUTATION_OFF",
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 3.7834979593753815e-10,
+      "fitness_function": null,
+      "founder_multiplicity": 150,
+      "initial_maximum_generation": 1,
+      "initial_mean_genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "initial_population": 300,
+      "mean_genotype_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mutation_enabled": false,
+      "mutation_events": [],
+      "mutation_opportunities": 300,
+      "mutations": 0,
+      "n_closure_residual": 2.9103830456733704e-11,
+      "phase_steps": 2500,
+      "physical_deaths": 0,
+      "physical_fissions_total": 150,
+      "post_initial_physical_fissions": 0,
+      "replicate": 1,
+      "resource_feedback": false,
+      "template_initial_fissions": 150,
+      "terminal_maximum_generation": 1,
+      "terminal_mean_genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "terminal_population": 300
+    },
+    {
+      "active_energy_residual": 9.71454028331209e-11,
+      "all_simple": true,
+      "breeder_selection": false,
+      "campaign": "REP1_RESOURCE_CHALLENGE_TO_DAMAGE_CHALLENGE_MUTATION_OFF",
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 3.7834979593753815e-10,
+      "fitness_function": null,
+      "founder_multiplicity": 150,
+      "initial_maximum_generation": 1,
+      "initial_mean_genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "initial_population": 300,
+      "mean_genotype_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mutation_enabled": false,
+      "mutation_events": [],
+      "mutation_opportunities": 300,
+      "mutations": 0,
+      "n_closure_residual": 3.7834979593753815e-10,
+      "phase_steps": 2500,
+      "physical_deaths": 0,
+      "physical_fissions_total": 150,
+      "post_initial_physical_fissions": 0,
+      "replicate": 1,
+      "resource_feedback": false,
+      "template_initial_fissions": 150,
+      "terminal_maximum_generation": 1,
+      "terminal_mean_genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "terminal_population": 300
+    },
+    {
+      "active_energy_residual": 2.0699530978163239e-10,
+      "all_simple": true,
+      "breeder_selection": false,
+      "campaign": "REP2_RESOURCE_CHALLENGE_MUTATION_OFF",
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "f_closure_residual": 4.656612873077393e-10,
+      "fitness_function": null,
+      "founder_multiplicity": 150,
+      "initial_maximum_generation": 1,
+      "initial_mean_genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "initial_population": 300,
+      "mean_genotype_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mutation_enabled": false,
+      "mutation_events": [],
+      "mutation_opportunities": 300,
+      "mutations": 0,
+      "n_closure_residual": 2.9103830456733704e-11,
+      "phase_steps": 2500,
+      "physical_deaths": 0,
+      "physical_fissions_total": 150,
+      "post_initial_physical_fissions": 0,
+      "replicate": 2,
+      "resource_feedback": false,
+      "template_initial_fissions": 150,
+      "terminal_maximum_generation": 1,
+      "terminal_mean_genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "terminal_population": 300
+    },
+    {
+      "active_energy_residual": 2.764295459201094e-10,
+      "all_simple": true,
+      "breeder_selection": false,
+      "campaign": "REP2_DAMAGE_CHALLENGE_MUTATION_OFF",
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 3.7834979593753815e-10,
+      "fitness_function": null,
+      "founder_multiplicity": 150,
+      "initial_maximum_generation": 1,
+      "initial_mean_genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "initial_population": 300,
+      "mean_genotype_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mutation_enabled": false,
+      "mutation_events": [],
+      "mutation_opportunities": 300,
+      "mutations": 0,
+      "n_closure_residual": 2.9103830456733704e-11,
+      "phase_steps": 2500,
+      "physical_deaths": 0,
+      "physical_fissions_total": 150,
+      "post_initial_physical_fissions": 0,
+      "replicate": 2,
+      "resource_feedback": false,
+      "template_initial_fissions": 150,
+      "terminal_maximum_generation": 1,
+      "terminal_mean_genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "terminal_population": 300
+    },
+    {
+      "active_energy_residual": 9.71454028331209e-11,
+      "all_simple": true,
+      "breeder_selection": false,
+      "campaign": "REP2_RESOURCE_CHALLENGE_TO_DAMAGE_CHALLENGE_MUTATION_OFF",
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "f_closure_residual": 3.7834979593753815e-10,
+      "fitness_function": null,
+      "founder_multiplicity": 150,
+      "initial_maximum_generation": 1,
+      "initial_mean_genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "initial_population": 300,
+      "mean_genotype_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mutation_enabled": false,
+      "mutation_events": [],
+      "mutation_opportunities": 300,
+      "mutations": 0,
+      "n_closure_residual": 3.7834979593753815e-10,
+      "phase_steps": 2500,
+      "physical_deaths": 0,
+      "physical_fissions_total": 150,
+      "post_initial_physical_fissions": 0,
+      "replicate": 2,
+      "resource_feedback": false,
+      "template_initial_fissions": 150,
+      "terminal_maximum_generation": 1,
+      "terminal_mean_genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "terminal_population": 300
+    }
+  ],
+  "observed_mutations": 0,
+  "status": "PASS"
+}
