@@ -47,8 +47,8 @@ jobs:
               for p in changed
           ), changed
           PY
-          gh run view 34531048042 --repo SketchOTP/digital_cell +            --json conclusion,headSha --jq '.conclusion + " " + .headSha' +            | grep '^success ecf4befc00683301e4ab15f0b5302b4acc33d9be$'
-          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt +            | python3 -c 'import json,sys; d=json.load(sys.stdin); assert d == {"state":"OPEN","isDraft":True,"mergedAt":None}, d'
+          gh run view 34531048042 --repo SketchOTP/digital_cell --json conclusion,headSha --jq '.conclusion + " " + .headSha' | grep '^success ecf4befc00683301e4ab15f0b5302b4acc33d9be$'
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt | python3 -c 'import json,sys; d=json.load(sys.stdin); assert d == {"state":"OPEN","isDraft":True,"mergedAt":None}, d'
 
       - name: Install sanctioned Rust toolchain
         run: |
@@ -59,7 +59,7 @@ jobs:
         working-directory: digital-protocell
         run: |
           set -euo pipefail
-          cargo +1.89.0 run --locked --release -q -p regulatory-core +            --example dcfinal001_r10r8_diagnostics -- /tmp/r10r8_historical.json
+          cargo +1.89.0 run --locked --release -q -p regulatory-core --example dcfinal001_r10r8_diagnostics -- /tmp/r10r8_historical.json
           python3 - <<'PY'
           import json
           data = json.load(open("/tmp/r10r8_historical.json"))
@@ -92,7 +92,7 @@ jobs:
       - name: Replay current reserve-on V4 M1 boundary
         run: |
           set -euo pipefail
-          DCDEV020R9R3_CONTRACT=ConservativeV3 +          DCDEV020R9R3_RESERVE=1 +          DCDEV020M1REPLAN002R1_V4=1 +            cargo +1.89.0 run --locked --release -q -p phase1-certifier +              --bin phase1_certification -- --output /tmp/reserve-on-v4
+          DCDEV020R9R3_CONTRACT=ConservativeV3 DCDEV020R9R3_RESERVE=1 DCDEV020M1REPLAN002R1_V4=1 cargo +1.89.0 run --locked --release -q -p phase1-certifier --bin phase1_certification -- --output /tmp/reserve-on-v4
           python3 - <<'PY'
           import json
           m = json.load(open("/tmp/reserve-on-v4/manifest.json"))
@@ -105,7 +105,7 @@ jobs:
         run: |
           set -euo pipefail
           cargo +1.89.0 test --locked -q -p regulatory-core
-          cargo +1.89.0 test --locked -q -p chemistry-core +            --test d096_tests +            --test r8_v4_closure_consistency_tests +            --test r4_contract_topology_tests +            --test d088_tests +            --test d091_tests
+          cargo +1.89.0 test --locked -q -p chemistry-core --test d096_tests --test r8_v4_closure_consistency_tests --test r4_contract_topology_tests --test d088_tests --test d091_tests
           cargo +1.89.0 test --locked -q -p evolution-harness
           cargo +1.89.0 test --locked -q -p m2-lifeform-runtime --bin digital-cell-final-lifeform
           cargo +1.89.0 check --locked -q -p godot-bridge
@@ -113,7 +113,7 @@ jobs:
       - name: Validate R10R8 evidence and formatting
         run: |
           set -euo pipefail
-          rustfmt +1.89.0 --edition 2021 --check +            digital-protocell/examples/dcfinal001_r10r8_diagnostics.rs
+          rustfmt +1.89.0 --edition 2021 --check digital-protocell/examples/dcfinal001_r10r8_diagnostics.rs
           python3 - <<'PY'
           import json
           from pathlib import Path
