@@ -92,6 +92,7 @@ jobs:
           PY
 
       - name: Replay current reserve-on V4 M1 boundary
+        working-directory: digital-protocell
         run: |
           set -euo pipefail
           DCDEV020R9R3_CONTRACT=ConservativeV3 DCDEV020R9R3_RESERVE=1 DCDEV020M1REPLAN002R1_V4=1 cargo +1.89.0 run --locked --release -q -p phase1-certifier --bin phase1_certification -- --output /tmp/reserve-on-v4
