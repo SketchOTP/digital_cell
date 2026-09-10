@@ -6,7 +6,8 @@
 
 use chemistry_core::d096_allocation::{
     catalytic_gain, expression_step, expression_step_activated_material_v2,
-    expression_step_activated_material_v3, AllocationGenotype, AllocationParams, ExpressionLedger,
+    expression_step_activated_material_v3, expression_step_activated_material_v4,
+    AllocationGenotype, AllocationParams, ExpressionLedger,
 };
 use chemistry_core::material_mesh::MaterialMesh;
 use chemistry_core::mesh_fission::{
@@ -90,6 +91,7 @@ enum ExpressionPath {
     D096V1,
     D096V2ActivatedMaterial,
     D096V3IntensiveGain,
+    D096V4CenteredGain,
 }
 
 /// R10R4 observer-only gain substitutions. Catalyst synthesis, maintenance,
@@ -173,6 +175,9 @@ fn apply_integrated_expression(
         }
         ExpressionPath::D096V3IntensiveGain => {
             expression_step_activated_material_v3(mesh, &params, dt).map_err(|_| ())
+        }
+        ExpressionPath::D096V4CenteredGain => {
+            expression_step_activated_material_v4(mesh, &params, dt).map_err(|_| ())
         }
     }
 }
@@ -1509,6 +1514,10 @@ fn run_with_expression_gain_policy(
             AllocationGenotype::neutral(),
             &AllocationParams::default(),
         ),
+        ExpressionPath::D096V4CenteredGain => mesh.enable_finite_allocation_v4(
+            AllocationGenotype::neutral(),
+            &AllocationParams::default(),
+        ),
     }
     let mut expression_budget = IntegratedExpressionBudget {
         initial_structural_mass: mesh.total_structural_mass(),
@@ -2110,7 +2119,10 @@ fn run_with_expression_gain_policy(
                         "both_viable": both_viable,
                         "full_state": full_state,
                     });
-                    if expression_path == ExpressionPath::D096V3IntensiveGain {
+                    if matches!(
+                        expression_path,
+                        ExpressionPath::D096V3IntensiveGain | ExpressionPath::D096V4CenteredGain
+                    ) {
                         diagnostics
                             .as_object_mut()
                             .expect("daughter diagnostics object")
@@ -2725,11 +2737,15 @@ fn run_r10r3_integrated_reproduction(
         .collect::<Vec<_>>();
     let directive = if expression_path == ExpressionPath::D096V3IntensiveGain {
         "DC-FINAL-001-R10R4-D096-INTENSIVE-CATALYST-GAIN-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001"
+    } else if expression_path == ExpressionPath::D096V4CenteredGain {
+        "DC-FINAL-001-R10R5-D096-FINITE-BUDGET-CENTERED-GAIN-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001"
     } else {
         "DC-FINAL-001-R10R3-D096-ACTIVATED-MATERIAL-EXPRESSION-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001"
     };
     let gate = if expression_path == ExpressionPath::D096V3IntensiveGain {
         "GATE_10_D096_V3_INTEGRATED_REPRODUCTION"
+    } else if expression_path == ExpressionPath::D096V4CenteredGain {
+        "GATE_8_D096_V4_INTEGRATED_REPRODUCTION"
     } else {
         "GATE_3_DIRECT_D096_V1_INTEGRATED_REPRODUCTION_BASELINE"
     };
@@ -2771,6 +2787,14 @@ pub fn run_r10r4_d096v3_integrated_reproduction() {
         ExpressionPath::D096V3IntensiveGain,
         "D096_V3_ACTIVATED_MATERIAL_INTENSIVE_GAIN",
         "/tmp/dcfinal001_r10r4_d096v3_reproduction.json",
+    );
+}
+
+pub fn run_r10r5_d096v4_integrated_reproduction() {
+    run_r10r3_integrated_reproduction(
+        ExpressionPath::D096V4CenteredGain,
+        "D096_V4_FINITE_BUDGET_CENTERED_INTENSIVE_GAIN",
+        "/tmp/dcfinal001_r10r5_d096v4_reproduction.json",
     );
 }
 
@@ -2919,6 +2943,54 @@ pub fn run_r10r4_gain_audit() {
             "gain_saturation_constant": 0.1,
             "new_parameters": 0,
             "campaigns": campaigns,
+        }))
+        .unwrap(),
+    )
+    .unwrap();
+}
+
+/// R10R5 Gates 1-4: observer-only finite-budget centered-gain algebra.
+pub fn run_r10r5_gain_audit() {
+    let mut output = PathBuf::from("/tmp/dcfinal001_r10r5_gain_audit.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let cases = [
+        ("zero", [0.0; 4]),
+        ("neutral", [0.25; 4]),
+        ("skewed", [0.1, 0.0, 0.0, 0.0]),
+        ("mixed", [0.05, 0.02, 0.01, 0.0]),
+    ];
+    let rows = cases
+        .into_iter()
+        .map(|(name, concentrations)| {
+            let total = concentrations.iter().sum::<f64>();
+            let gains = concentrations
+                .map(|concentration| 1.0 + ((4.0 * concentration) - total) / (0.1 + total));
+            json!({
+                "name": name,
+                "concentrations": concentrations,
+                "total_concentration": total,
+                "gains": gains,
+                "gain_sum": gains.iter().sum::<f64>(),
+                "all_positive": gains.iter().all(|gain| *gain > 0.0),
+            })
+        })
+        .collect::<Vec<_>>();
+    fs::write(
+        output,
+        serde_json::to_vec_pretty(&json!({
+            "directive": "DC-FINAL-001-R10R5-D096-FINITE-BUDGET-CENTERED-GAIN-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001",
+            "gate": "GATES_1_4_OBSERVER_ONLY",
+            "equation": "gain_i = 1 + (4*c_i - C)/(0.1 + C)",
+            "neutral_sum": 4.0,
+            "neutral_gains": [1.0, 1.0, 1.0, 1.0],
+            "scale_invariant": true,
+            "new_parameters": 0,
+            "cases": rows,
         }))
         .unwrap(),
     )

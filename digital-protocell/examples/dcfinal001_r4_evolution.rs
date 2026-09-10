@@ -7,8 +7,8 @@
 // enters organism biology.
 
 use chemistry_core::d096_allocation::{
-    expression_step, expression_step_activated_material_v2, mutate_allocation_at_reproduction,
-    AllocationGenotype, AllocationParams, ExpressionLedger,
+    expression_step, expression_step_activated_material_v2, expression_step_activated_material_v4,
+    mutate_allocation_at_reproduction, AllocationGenotype, AllocationParams, ExpressionLedger,
 };
 use chemistry_core::material_mesh::MaterialMesh;
 use chemistry_core::mesh_fission::{segment_apposition_stress_audit, try_local_segment_fission};
@@ -154,6 +154,7 @@ enum D096ExpressionPath {
     Off,
     ActivatedMaterialCandidate,
     V2ActivatedMaterial,
+    V4FiniteBudgetCentered,
 }
 
 impl D096ExpressionPath {
@@ -163,6 +164,7 @@ impl D096ExpressionPath {
             Self::Off => "D096_OFF",
             Self::ActivatedMaterialCandidate => "D096_ACTIVATED_MATERIAL_CANDIDATE",
             Self::V2ActivatedMaterial => "D096_V2_ACTIVATED_MATERIAL",
+            Self::V4FiniteBudgetCentered => "D096_V4_FINITE_BUDGET_CENTERED_INTENSIVE_GAIN",
         }
     }
 }
@@ -269,6 +271,17 @@ fn apply_expression_path(
                     turnover_waste: ledger.turnover_waste,
                 })
                 .map_err(|_| "v2 expression rejected")
+        }
+        D096ExpressionPath::V4FiniteBudgetCentered => {
+            expression_step_activated_material_v4(mesh, params, dt)
+                .map(|ledger| ExpressionAccounting {
+                    structural_consumed: ledger.material_consumed,
+                    catalyst_precursor_a: ledger.catalyst_precursor_consumed,
+                    activation_consumed: ledger.activation_consumed,
+                    maintenance_consumed: ledger.maintenance_consumed,
+                    turnover_waste: ledger.turnover_waste,
+                })
+                .map_err(|_| "v4 expression rejected")
         }
     }
 }
@@ -2256,6 +2269,8 @@ fn r10_initial_population(
     let mut parent = template.clone();
     if expression_path == D096ExpressionPath::V2ActivatedMaterial {
         parent.enable_finite_allocation_v2(AllocationGenotype::neutral(), &allocation);
+    } else if expression_path == D096ExpressionPath::V4FiniteBudgetCentered {
+        parent.enable_finite_allocation_v4(AllocationGenotype::neutral(), &allocation);
     } else {
         parent.enable_finite_allocation(AllocationGenotype::neutral(), &allocation);
     }
@@ -2647,7 +2662,12 @@ fn r10_campaign(
     })
 }
 
-fn run_r10_evolution_with_horizon(default_output: &str, directive: &str, phase_steps: usize) {
+fn run_r10_evolution_with_horizon(
+    default_output: &str,
+    directive: &str,
+    phase_steps: usize,
+    expression_path: D096ExpressionPath,
+) {
     let mut output = PathBuf::from(default_output);
     let args = env::args().collect::<Vec<_>>();
     for index in 1..args.len() {
@@ -2677,7 +2697,7 @@ fn run_r10_evolution_with_horizon(default_output: &str, directive: &str, phase_s
                         mutation_enabled,
                         replicate,
                         phase_steps,
-                        D096ExpressionPath::V1Structural,
+                        expression_path,
                         FOUNDER_MULTIPLICITY,
                     )
                 }));
@@ -2725,6 +2745,7 @@ pub fn run_r10_evolution() {
         "/tmp/dcfinal001_r10_evolution.json",
         "DC-FINAL-001-R10-SIGNED-LOAD-BEARING-NECK-STRESS-REPRODUCTION-AND-END-GOAL-CLOSURE-001",
         PHASE_STEPS,
+        D096ExpressionPath::V1Structural,
     );
 }
 
@@ -2733,6 +2754,16 @@ pub fn run_r10r2_evolution() {
         "/tmp/dcfinal001_r10r2_evolution.json",
         "DC-FINAL-001-R10R2-PRODUCTION-EVOLUTION-HORIZON-REQUALIFICATION-SELECTION-AND-END-GOAL-CLOSURE-001",
         R10R2_PHASE_STEPS,
+        D096ExpressionPath::V1Structural,
+    );
+}
+
+pub fn run_r10r5_evolution() {
+    run_r10_evolution_with_horizon(
+        "/tmp/dcfinal001_r10r5_evolution.json",
+        "DC-FINAL-001-R10R5-D096-FINITE-BUDGET-CENTERED-GAIN-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001",
+        R10R2_PHASE_STEPS,
+        D096ExpressionPath::V4FiniteBudgetCentered,
     );
 }
 

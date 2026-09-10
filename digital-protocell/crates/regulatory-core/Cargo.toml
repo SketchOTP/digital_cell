@@ -181,6 +181,18 @@ name = "dcfinal001_r5_v4_neck"
 path = "../../examples/dcfinal001_r5_v4_neck.rs"
 
 [[example]]
+name = "dcfinal001_r10r5_gain_audit"
+path = "../../examples/dcfinal001_r10r5_gain_audit.rs"
+
+[[example]]
+name = "dcfinal001_r10r5_d096v4_reproduction"
+path = "../../examples/dcfinal001_r10r5_d096v4_reproduction.rs"
+
+[[example]]
+name = "dcfinal001_r10r5_evolution"
+path = "../../examples/dcfinal001_r10r5_evolution.rs"
+
+[[example]]
 name = "dcfinal001_r5r1_strain_contrast"
 path = "../../examples/dcfinal001_r5r1_strain_contrast.rs"
 

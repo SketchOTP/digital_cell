@@ -1,11 +1,15 @@
 use chemistry_core::d096_allocation::{
     allocation_schema_load_ok, allocation_v2_schema_load_ok, allocation_v3_schema_load_ok,
-    apply_assay_environment, expression_step, expression_step_activated_material_v2,
-    expression_step_activated_material_v3, function_gain, mutate_allocation_at_reproduction,
-    pre_fission_assay, AllocationGenotype, AllocationParams, AssayEnvironment,
-    EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION, EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION_V2,
-    EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION_V3, FINITE_ALLOCATION_SCHEMA_VERSION,
+    allocation_v4_schema_load_ok, apply_assay_environment, expression_step,
+    expression_step_activated_material_v2, expression_step_activated_material_v3,
+    expression_step_activated_material_v4, finite_budget_centered_gain, function_gain,
+    mutate_allocation_at_reproduction, pre_fission_assay, AllocationGenotype, AllocationParams,
+    AssayEnvironment, EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION,
+    EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION_V2,
+    EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION_V3,
+    EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION_V4, FINITE_ALLOCATION_SCHEMA_VERSION,
     FINITE_ALLOCATION_V2_SCHEMA_VERSION, FINITE_ALLOCATION_V3_SCHEMA_VERSION,
+    FINITE_ALLOCATION_V4_SCHEMA_VERSION,
 };
 use chemistry_core::material_mesh::{
     LumpedChem, MaterialMesh, MeshContractVersion, EQUATION_VERSION_MATERIAL_MESH,
@@ -232,6 +236,115 @@ fn d096_v3_gain_is_intensive_and_uniform_scale_invariant() {
     assert!((scaled.area() / parent.area() - 4.0).abs() < 1e-12);
     assert!((function_gain(&parent, 0) - function_gain(&scaled, 0)).abs() < 1e-12);
     assert_eq!(function_gain(&parent, 1), 1.0);
+}
+
+#[test]
+fn d096_v4_is_explicitly_versioned_and_preserves_prior_schema_identity() {
+    let params = AllocationParams::default();
+    let genotype = AllocationGenotype::neutral();
+    let mut v1 = maturation_expression_mesh(0.4);
+    let mut v2 = v1.clone();
+    let mut v3 = v1.clone();
+    let mut v4 = v1.clone();
+    v2.enable_finite_allocation_v2(genotype, &params);
+    v3.enable_finite_allocation_v3(genotype, &params);
+    v4.enable_finite_allocation_v4(genotype, &params);
+
+    assert_eq!(
+        v4.equation_id,
+        EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION_V4
+    );
+    assert_eq!(v4.schema_version, FINITE_ALLOCATION_V4_SCHEMA_VERSION);
+    assert!(allocation_v4_schema_load_ok(&v4, &params));
+    assert!(!allocation_v4_schema_load_ok(&v1, &params));
+    assert!(!allocation_v4_schema_load_ok(&v2, &params));
+    assert!(!allocation_v4_schema_load_ok(&v3, &params));
+    assert_ne!(
+        genotype.candidate_hash(&params),
+        genotype.candidate_hash_v4(&params)
+    );
+    assert_ne!(
+        genotype.candidate_hash_v2(&params),
+        genotype.candidate_hash_v4(&params)
+    );
+    assert_ne!(
+        genotype.candidate_hash_v3(&params),
+        genotype.candidate_hash_v4(&params)
+    );
+    assert!(expression_step_activated_material_v4(&mut v1, &params, 0.1).is_err());
+    assert!(expression_step_activated_material_v4(&mut v2, &params, 0.1).is_err());
+    assert!(expression_step_activated_material_v4(&mut v3, &params, 0.1).is_err());
+}
+
+#[test]
+fn d096_v4_expression_material_law_is_exactly_v3() {
+    let params = AllocationParams::default();
+    let genotype = AllocationGenotype::neutral();
+    let mut v3 = maturation_expression_mesh(0.4);
+    let mut v4 = v3.clone();
+    v3.enable_finite_allocation_v3(genotype, &params);
+    v4.enable_finite_allocation_v4(genotype, &params);
+
+    let ledger_v3 = expression_step_activated_material_v3(&mut v3, &params, 0.1).unwrap();
+    let ledger_v4 = expression_step_activated_material_v4(&mut v4, &params, 0.1).unwrap();
+
+    assert_eq!(ledger_v3, ledger_v4);
+    assert_eq!(v3.edges, v4.edges);
+    assert_eq!(v3.interior, v4.interior);
+    assert_eq!(v3.finite_allocation, v4.finite_allocation);
+    assert_eq!(v3.total_structural_mass(), v4.total_structural_mass());
+}
+
+#[test]
+fn d096_v4_centered_gain_has_finite_budget_algebra() {
+    let zero = [0.0; 4];
+    let neutral = [0.25; 4];
+    let skewed = [0.1, 0.0, 0.0, 0.0];
+
+    assert!(zero
+        .iter()
+        .enumerate()
+        .all(|(index, _)| finite_budget_centered_gain(zero, index) == 1.0));
+    assert!(neutral
+        .iter()
+        .enumerate()
+        .all(|(index, _)| (finite_budget_centered_gain(neutral, index) - 1.0).abs() < 1e-12));
+    let skewed_gains: [f64; 4] =
+        std::array::from_fn(|index| finite_budget_centered_gain(skewed, index));
+    assert!((skewed_gains.iter().sum::<f64>() - 4.0).abs() < 1e-12);
+    assert!(skewed_gains.iter().all(|gain| *gain > 0.0));
+    assert!(skewed_gains[0] > 1.0);
+    assert!(skewed_gains[1] < 1.0);
+}
+
+#[test]
+fn d096_v4_gain_is_intensive_and_uniform_scale_invariant() {
+    let params = AllocationParams::default();
+    let genotype = AllocationGenotype::neutral();
+    let mut parent = mesh();
+    let mut scaled = MaterialMesh::seed_regular(
+        12,
+        16.0,
+        0.0,
+        0.0,
+        1.0,
+        0.8,
+        LumpedChem::default(),
+        LumpedChem::default(),
+        1.0,
+    );
+    parent.enable_finite_allocation_v4(genotype, &params);
+    scaled.enable_finite_allocation_v4(genotype, &params);
+    let concentrations = [0.05, 0.02, 0.01, 0.0];
+    for (index, concentration) in concentrations.into_iter().enumerate() {
+        parent.finite_allocation.as_mut().unwrap().catalysts[index] = concentration * parent.area();
+        scaled.finite_allocation.as_mut().unwrap().catalysts[index] = concentration * scaled.area();
+    }
+
+    assert!((scaled.area() / parent.area() - 4.0).abs() < 1e-12);
+    for index in 0..4 {
+        assert!((function_gain(&parent, index) - function_gain(&scaled, index)).abs() < 1e-12);
+    }
 }
 
 fn maturation_expression_mesh(young_fraction: f64) -> MaterialMesh {
