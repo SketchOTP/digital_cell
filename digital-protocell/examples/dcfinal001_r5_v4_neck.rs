@@ -5,8 +5,8 @@
 // cleavage axis, body-size controller, or a new physical parameter.
 
 use chemistry_core::d096_allocation::{
-    expression_step, expression_step_activated_material_v2, AllocationGenotype, AllocationParams,
-    ExpressionLedger,
+    catalytic_gain, expression_step, expression_step_activated_material_v2,
+    expression_step_activated_material_v3, AllocationGenotype, AllocationParams, ExpressionLedger,
 };
 use chemistry_core::material_mesh::MaterialMesh;
 use chemistry_core::mesh_fission::{
@@ -89,6 +89,74 @@ enum ExpressionPath {
     Off,
     D096V1,
     D096V2ActivatedMaterial,
+    D096V3IntensiveGain,
+}
+
+/// R10R4 observer-only gain substitutions. Catalyst synthesis, maintenance,
+/// turnover, activated-material cost, and stored catalyst state remain the
+/// exact D096-v2 production values. Only the values exposed to the existing
+/// reaction/growth gain readers are substituted on a clone-run step and then
+/// restored immediately after those readers finish.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
+enum DiagnosticGainPolicy {
+    ProductionAmount,
+    CostOnly,
+    ProcessingActivationOnly,
+    StructuralBuildOnly,
+    IntensiveConcentration,
+}
+
+impl DiagnosticGainPolicy {
+    fn label(self) -> &'static str {
+        match self {
+            Self::ProductionAmount => "D096_V2_ABSOLUTE_AMOUNT_GAIN",
+            Self::CostOnly => "D096_V2_COST_ONLY_GAIN_DISABLED",
+            Self::ProcessingActivationOnly => "D096_V2_FUNCTIONS_0_1_ONLY",
+            Self::StructuralBuildOnly => "D096_V2_FUNCTION_2_ONLY",
+            Self::IntensiveConcentration => "D096_V2_COST_WITH_INTENSIVE_GAIN_COUNTERFACTUAL",
+        }
+    }
+}
+
+fn substitute_diagnostic_gain_inputs(
+    mesh: &mut MaterialMesh,
+    policy: DiagnosticGainPolicy,
+) -> Option<[f64; 4]> {
+    let saved = mesh.finite_allocation.map(|state| state.catalysts)?;
+    if policy == DiagnosticGainPolicy::ProductionAmount {
+        return Some(saved);
+    }
+    let area = mesh.area();
+    let state = mesh.finite_allocation.as_mut()?;
+    match policy {
+        DiagnosticGainPolicy::ProductionAmount => {}
+        DiagnosticGainPolicy::CostOnly => state.catalysts = [0.0; 4],
+        DiagnosticGainPolicy::ProcessingActivationOnly => {
+            state.catalysts[2] = 0.0;
+            state.catalysts[3] = 0.0;
+        }
+        DiagnosticGainPolicy::StructuralBuildOnly => {
+            state.catalysts[0] = 0.0;
+            state.catalysts[1] = 0.0;
+            state.catalysts[3] = 0.0;
+        }
+        DiagnosticGainPolicy::IntensiveConcentration => {
+            assert!(
+                area.is_finite() && area > 0.0,
+                "valid mesh must have positive area"
+            );
+            for catalyst in &mut state.catalysts {
+                *catalyst /= area;
+            }
+        }
+    }
+    Some(saved)
+}
+
+fn restore_diagnostic_gain_inputs(mesh: &mut MaterialMesh, saved: Option<[f64; 4]>) {
+    if let (Some(state), Some(catalysts)) = (mesh.finite_allocation.as_mut(), saved) {
+        state.catalysts = catalysts;
+    }
 }
 
 fn apply_integrated_expression(
@@ -102,6 +170,9 @@ fn apply_integrated_expression(
         ExpressionPath::D096V1 => expression_step(mesh, &params, dt).map_err(|_| ()),
         ExpressionPath::D096V2ActivatedMaterial => {
             expression_step_activated_material_v2(mesh, &params, dt).map_err(|_| ())
+        }
+        ExpressionPath::D096V3IntensiveGain => {
+            expression_step_activated_material_v3(mesh, &params, dt).map_err(|_| ())
         }
     }
 }
@@ -659,6 +730,42 @@ fn geometry(mesh: &MaterialMesh) -> Value {
         "mature_mass": mesh.total_structural_mass() - mesh.total_young_structural_mass(),
         "physical_runtime_valid": mesh.physical_runtime_valid(),
         "lifecycle_invariants_hold": mesh.lifecycle_invariants_hold(),
+    })
+}
+
+fn allocation_fission_continuity(
+    parent: &MaterialMesh,
+    a: &MaterialMesh,
+    b: &MaterialMesh,
+) -> Value {
+    let amounts = |mesh: &MaterialMesh| {
+        mesh.finite_allocation
+            .map(|state| state.catalysts)
+            .unwrap_or([0.0; 4])
+    };
+    let parent_amounts = amounts(parent);
+    let a_amounts = amounts(a);
+    let b_amounts = amounts(b);
+    let parent_area = parent.area();
+    let a_area = a.area();
+    let b_area = b.area();
+    let residuals = std::array::from_fn::<_, 4, _>(|index| {
+        a_amounts[index] + b_amounts[index] - parent_amounts[index]
+    });
+    json!({
+        "parent_area": parent_area,
+        "daughter_a_area": a_area,
+        "daughter_b_area": b_area,
+        "parent_catalyst_amounts": parent_amounts,
+        "daughter_a_catalyst_amounts": a_amounts,
+        "daughter_b_catalyst_amounts": b_amounts,
+        "catalyst_material_residuals": residuals,
+        "parent_concentrations": parent_amounts.map(|amount| amount / parent_area),
+        "daughter_a_concentrations": a_amounts.map(|amount| amount / a_area),
+        "daughter_b_concentrations": b_amounts.map(|amount| amount / b_area),
+        "parent_gains": parent_amounts.map(|amount| catalytic_gain(amount / parent_area)),
+        "daughter_a_gains": a_amounts.map(|amount| catalytic_gain(amount / a_area)),
+        "daughter_b_gains": b_amounts.map(|amount| catalytic_gain(amount / b_area)),
     })
 }
 
@@ -1370,7 +1477,7 @@ fn failure_depth(reason: &str) -> usize {
     }
 }
 
-fn run_with_expression(
+fn run_with_expression_gain_policy(
     initial_mesh: MaterialMesh,
     name: &str,
     mode: Mode,
@@ -1378,6 +1485,7 @@ fn run_with_expression(
     end_step: usize,
     birth_mass: f64,
     expression_path: ExpressionPath,
+    gain_policy: DiagnosticGainPolicy,
 ) -> RunResult {
     let mechanics = MechParams::default();
     let reaction = ReactionParams::default();
@@ -1394,6 +1502,10 @@ fn run_with_expression(
         ExpressionPath::D096V1 => mesh
             .enable_finite_allocation(AllocationGenotype::neutral(), &AllocationParams::default()),
         ExpressionPath::D096V2ActivatedMaterial => mesh.enable_finite_allocation_v2(
+            AllocationGenotype::neutral(),
+            &AllocationParams::default(),
+        ),
+        ExpressionPath::D096V3IntensiveGain => mesh.enable_finite_allocation_v3(
             AllocationGenotype::neutral(),
             &AllocationParams::default(),
         ),
@@ -1473,6 +1585,7 @@ fn run_with_expression(
                 }
             }
         }
+        let saved_catalysts = substitute_diagnostic_gain_inputs(&mut mesh, gain_policy);
         let _ = transport_step(&mut mesh, &transport, mechanics.dt);
         let reaction_ledger = reactions_step(&mut mesh, &reaction, mechanics.dt, true, true);
         expression_budget.m1_structural_build += reaction_ledger.m_produced;
@@ -1480,6 +1593,7 @@ fn run_with_expression(
         let growth_ledger = growth_step(&mut mesh, &reaction, &growth, mechanics.dt);
         expression_budget.surplus_growth_structural_production += growth_ledger.m_grown;
         expression_budget.growth_a_consumed += growth_ledger.a_consumed_growth;
+        restore_diagnostic_gain_inputs(&mut mesh, saved_catalysts);
 
         let frame = observe_continuity_material_frame(&mesh, &mechanics);
         let old_n = regulator.previous_frame.topology_size;
@@ -1937,6 +2051,7 @@ fn run_with_expression(
                 {
                     reason = "SCISSION_PROPOSED_INVALID_GEOMETRY".into();
                 } else {
+                    let allocation_fission = allocation_fission_continuity(&mesh, &a, &b);
                     let full_state = if mode == Mode::RefractoryCurvatureNormalSignedStress {
                         let state_a = partition_plasticity_state(
                             &plasticity,
@@ -1988,13 +2103,20 @@ fn run_with_expression(
                     let va = daughter_viability(a);
                     let vb = daughter_viability(b);
                     both_viable = va["viable"] == true && vb["viable"] == true;
-                    daughter_diagnostics = Some(json!({
+                    let mut diagnostics = json!({
                         "step": absolute_step,
                         "daughter_a": va,
                         "daughter_b": vb,
                         "both_viable": both_viable,
                         "full_state": full_state,
-                    }));
+                    });
+                    if expression_path == ExpressionPath::D096V3IntensiveGain {
+                        diagnostics
+                            .as_object_mut()
+                            .expect("daughter diagnostics object")
+                            .insert("allocation_fission_continuity".into(), allocation_fission);
+                    }
+                    daughter_diagnostics = Some(diagnostics);
                     reason = if both_viable {
                         "VALID_FISSION"
                     } else {
@@ -2053,6 +2175,27 @@ fn run_with_expression(
         final_mesh: mesh,
         final_plasticity: plasticity,
     }
+}
+
+fn run_with_expression(
+    initial_mesh: MaterialMesh,
+    name: &str,
+    mode: Mode,
+    start_step: usize,
+    end_step: usize,
+    birth_mass: f64,
+    expression_path: ExpressionPath,
+) -> RunResult {
+    run_with_expression_gain_policy(
+        initial_mesh,
+        name,
+        mode,
+        start_step,
+        end_step,
+        birth_mass,
+        expression_path,
+        DiagnosticGainPolicy::ProductionAmount,
+    )
 }
 
 fn run(
@@ -2580,9 +2723,19 @@ fn run_r10r3_integrated_reproduction(
             })
         })
         .collect::<Vec<_>>();
+    let directive = if expression_path == ExpressionPath::D096V3IntensiveGain {
+        "DC-FINAL-001-R10R4-D096-INTENSIVE-CATALYST-GAIN-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001"
+    } else {
+        "DC-FINAL-001-R10R3-D096-ACTIVATED-MATERIAL-EXPRESSION-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001"
+    };
+    let gate = if expression_path == ExpressionPath::D096V3IntensiveGain {
+        "GATE_10_D096_V3_INTEGRATED_REPRODUCTION"
+    } else {
+        "GATE_3_DIRECT_D096_V1_INTEGRATED_REPRODUCTION_BASELINE"
+    };
     let value = json!({
-        "directive": "DC-FINAL-001-R10R3-D096-ACTIVATED-MATERIAL-EXPRESSION-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001",
-        "gate": "GATE_3_DIRECT_D096_V1_INTEGRATED_REPRODUCTION_BASELINE",
+        "directive": directive,
+        "gate": gate,
         "expression_contract": expression_contract,
         "mutation_enabled": false,
         "horizon": 14_778,
@@ -2611,6 +2764,165 @@ pub fn run_r10r3_d096v2_integrated_reproduction() {
         "D096_V2_ACTIVATED_MATERIAL",
         "/tmp/dcfinal001_r10r3_d096v2_reproduction.json",
     );
+}
+
+pub fn run_r10r4_d096v3_integrated_reproduction() {
+    run_r10r3_integrated_reproduction(
+        ExpressionPath::D096V3IntensiveGain,
+        "D096_V3_ACTIVATED_MATERIAL_INTENSIVE_GAIN",
+        "/tmp/dcfinal001_r10r4_d096v3_reproduction.json",
+    );
+}
+
+fn r10r4_diagnostic_campaign(policy: DiagnosticGainPolicy) -> Vec<RunResult> {
+    PERTURBATIONS
+        .iter()
+        .copied()
+        .enumerate()
+        .map(|(index, (kind, magnitude))| {
+            std::thread::spawn(move || {
+                let mesh = fixture(index);
+                let birth_mass = mesh.total_structural_mass();
+                run_with_expression_gain_policy(
+                    mesh,
+                    &format!("seed_{}_{}_{}", index + 1, kind, magnitude),
+                    Mode::RefractoryCurvatureNormalSignedStress,
+                    0,
+                    14_778,
+                    birth_mass,
+                    ExpressionPath::D096V2ActivatedMaterial,
+                    policy,
+                )
+            })
+        })
+        .collect::<Vec<_>>()
+        .into_iter()
+        .map(|handle| handle.join().expect("R10R4 diagnostic campaign arm"))
+        .collect()
+}
+
+fn r10r4_diagnostic_summary(policy: DiagnosticGainPolicy, runs: &[RunResult]) -> Value {
+    let (growth, fissions, viable_pairs) = result_counts(runs);
+    let fission = FissionParams::default();
+    let rows = runs
+        .iter()
+        .map(|run| {
+            let area = run.final_mesh.area();
+            let catalysts = run
+                .final_mesh
+                .finite_allocation
+                .map(|state| state.catalysts)
+                .unwrap_or([0.0; 4]);
+            let absolute_gains = catalysts.map(catalytic_gain);
+            let concentration_gains = catalysts.map(|amount| catalytic_gain(amount / area));
+            json!({
+                "name": run.name,
+                "physical_fission": run.physical_fission,
+                "full_state_daughters_viable": run.full_state_daughters_viable,
+                "fission_step": run.fission_step,
+                "deepest_failure": run.deepest_failure,
+                "maximum_mass_over_birth": run.max_mass_over_birth,
+                "terminal_area": area,
+                "terminal_catalyst_amounts": catalysts,
+                "terminal_catalyst_total": catalysts.iter().sum::<f64>(),
+                "terminal_catalyst_concentrations": catalysts.map(|amount| amount / area),
+                "absolute_amount_gains": absolute_gains,
+                "intensive_concentration_gains": concentration_gains,
+                "terminal_apposition": pair_observer(&run.final_mesh, &fission),
+                "all_simple": run.all_simple,
+                "all_runtime_valid": run.all_runtime_valid,
+                "all_lifecycle_valid": run.all_lifecycle_valid,
+                "expression_budget": run.expression_budget,
+            })
+        })
+        .collect::<Vec<_>>();
+    json!({
+        "gain_policy": policy.label(),
+        "counts": {
+            "growth_qualified": growth,
+            "geometry_valid_fissions": fissions,
+            "full_state_viable_daughter_pairs": viable_pairs,
+        },
+        "runs": rows,
+    })
+}
+
+/// R10R4 Gates 1-4. All five arms preserve exact D096-v2 catalyst production,
+/// physical material costs, maintenance, turnover, and stored catalyst state.
+/// The four counterfactual arms substitute only what the existing gain readers
+/// observe during reactions/growth, then restore the physical catalyst amounts.
+pub fn run_r10r4_gain_audit() {
+    let mut output = PathBuf::from("/tmp/dcfinal001_r10r4_gain_audit.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let policies = [
+        DiagnosticGainPolicy::ProductionAmount,
+        DiagnosticGainPolicy::CostOnly,
+        DiagnosticGainPolicy::ProcessingActivationOnly,
+        DiagnosticGainPolicy::StructuralBuildOnly,
+        DiagnosticGainPolicy::IntensiveConcentration,
+    ];
+    let campaigns = policies
+        .into_iter()
+        .map(|policy| {
+            let runs = r10r4_diagnostic_campaign(policy);
+            r10r4_diagnostic_summary(policy, &runs)
+        })
+        .collect::<Vec<_>>();
+    let parent_area = 100.0;
+    let parent_amount = 5.0;
+    let daughter_fraction = 0.37;
+    let scaled_area = parent_area * 4.0;
+    let scaled_amount = parent_amount * 4.0;
+    fs::write(
+        output,
+        serde_json::to_vec_pretty(&json!({
+            "directive": "DC-FINAL-001-R10R4-D096-INTENSIVE-CATALYST-GAIN-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001",
+            "gate": "GATES_1_4_OBSERVER_ONLY",
+            "production_biology_changed": false,
+            "physical_catalyst_contract": {
+                "state_unit": "EXTENSIVE_PHYSICAL_MATERIAL_AMOUNT",
+                "synthesis_and_turnover_conserved": true,
+                "fission_partition": "AREA_FRACTION",
+                "classification": "D096_CATALYST_IS_EXTENSIVE_PHYSICAL_MATERIAL",
+            },
+            "scale_counterfactual": {
+                "parent": {
+                    "area": parent_area,
+                    "catalyst_amount": parent_amount,
+                    "absolute_gain": catalytic_gain(parent_amount),
+                    "concentration_gain": catalytic_gain(parent_amount / parent_area),
+                },
+                "uniform_geometric_scale_factor": 2.0,
+                "scaled": {
+                    "area": scaled_area,
+                    "catalyst_amount": scaled_amount,
+                    "absolute_gain": catalytic_gain(scaled_amount),
+                    "concentration_gain": catalytic_gain(scaled_amount / scaled_area),
+                },
+            },
+            "fission_counterfactual": {
+                "daughter_area_fraction": daughter_fraction,
+                "daughter_area": parent_area * daughter_fraction,
+                "daughter_catalyst_amount": parent_amount * daughter_fraction,
+                "parent_absolute_gain": catalytic_gain(parent_amount),
+                "daughter_absolute_gain": catalytic_gain(parent_amount * daughter_fraction),
+                "parent_concentration_gain": catalytic_gain(parent_amount / parent_area),
+                "daughter_concentration_gain": catalytic_gain(
+                    parent_amount * daughter_fraction / (parent_area * daughter_fraction)
+                ),
+            },
+            "gain_saturation_constant": 0.1,
+            "new_parameters": 0,
+            "campaigns": campaigns,
+        }))
+        .unwrap(),
+    )
+    .unwrap();
 }
 
 fn campaign(mode: Mode, horizon: usize) -> Vec<RunResult> {
