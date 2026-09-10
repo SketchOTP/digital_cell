@@ -2580,3 +2580,8 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - The versioned assay-only fixed-concentration boundary restores the target at each accepted step and books positive restoration as external source input and negative restoration as explicit bath outflow. One-organism transport parity, N/F population closure, and active A→W closure pass.
 - Fixed-boundary R10R6 reaches `maximum_generation = 2` and `1` post-bootstrap fission in Resource replicate 1 only. Resource replicate 2 and both Damage replicates remain generation 1 with zero post-bootstrap fissions and zero deaths. Natural D096 phenotype differences remain causal, but replicated selection, environment dependence, reversal, and final integration are not established.
 - Classification: `D096_FIXED_BOUNDARY_TURNOVER_ESTABLISHED_SELECTION_NOT_ESTABLISHED`. M1 remains closed/frozen/preserved; M2 qualified; M3 preserved; end goal not established; owner override remains active; exact-head CI and Architect acceptance pending.
+
+## DC-FINAL-001-R10R6 exact-head result
+
+- Exact implementation/evidence head `7406d0e2f217c7bdfad9b033d81fc47d71cb6a87` passed workflow `34511562236`; artifact `sha256:cb12d3f1696048f247cb448b30e7c7f4202726b0dd10ca9f9216a05806fbd149`.
+- Final bounded result: `D096_FIXED_BOUNDARY_TURNOVER_ESTABLISHED_SELECTION_NOT_ESTABLISHED`. Maximum generation is `2` with one post-bootstrap physical fission in one Resource replicate; replicated Resource/Damage selection, environment dependence, reversal, and integrated M1-M5 remain `NOT_ESTABLISHED` or `NOT_REACHED`.

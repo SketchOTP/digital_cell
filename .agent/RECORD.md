@@ -1830,3 +1830,12 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - R10R5 is accepted at governed head `27ce65d99161680bd96f48cfc0bcf7f5973f7c05`, exact-head CI `34492320931 PASS`, artifact `sha256:cc31b5d2beda08c1b53e2ff47669ba23132076d5ddd339d261f0fbf6d99b5c06`.
 - The concentration-to-flux mismatch is confirmed. Fixed-boundary transport parity and explicit source/sink N/F closure pass without new biological parameters. One mutation-on Resource replicate reaches generation 2 through one post-bootstrap physical fission; the other Resource replicate and both Damage replicates do not turn over.
 - D096 genotype-to-phenotype causality is preserved. Replicated Resource/Damage selection, environment dependence, reversal, and final M1-M5 remain `NOT_ESTABLISHED` or `NOT_REACHED`; shutdown remains `NO — OWNER OVERRIDE ACTIVE`; next execution is `false`; exact-head CI and independent Architect acceptance are pending.
+
+## DEC-DCFINAL001-R10R6-EXACT-HEAD-CI-SEAL
+
+- Date: `2026-09-10`
+- Status: `GOAL_AGENT_PROVISIONAL_BOUNDED_RESULT_EXACT_HEAD_CI_PASS`
+- Implementation/evidence head: `7406d0e2f217c7bdfad9b033d81fc47d71cb6a87`
+- Exact-head workflow: `34511562236 PASS`
+- Artifact: `sha256:cb12d3f1696048f247cb448b30e7c7f4202726b0dd10ca9f9216a05806fbd149`
+- R10R6 fixed-boundary ecology establishes one natural generation-2 Resource lineage but not replicated Resource/Damage selection, reversal, or final integrated M1-M5. M1 remains closed/frozen/preserved; M2 qualified; M3 preserved; PR #44 remains open, draft, unmerged, and untouched; next execution is `false`; independent Architect acceptance is `PENDING`.

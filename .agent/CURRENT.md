@@ -918,3 +918,9 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - The audit confirms D096 values are concentration boundaries and the prior population path applied `C_target × dt × volume` without an authoritative flow/dilution rate. Sealed bath depletion is boundary-limited; one-organism fixed-boundary transport parity passes at `1e-12`.
 - The assay-only fixed-boundary mode preserves organism biology and adds explicit source/bath/outflow accounting. N/F closure and active A→W closure pass. One mutation-on Resource replicate reaches generation 2 through one post-bootstrap physical fission; the second Resource replicate and both Damage replicates have zero post-bootstrap fissions and zero deaths.
 - D096 genotype→phenotype causality remains present, but replicated Resource/Damage selection, environment dependence, reversal, and final integrated M1-M5 remain `NOT_ESTABLISHED` / `NOT_REACHED`. Provisional classification: `D096_FIXED_BOUNDARY_TURNOVER_ESTABLISHED_SELECTION_NOT_ESTABLISHED`; exact-head CI and independent Architect acceptance are pending. PR #44 remains open, draft, unmerged, and untouched; next execution is `false`.
+
+## DC-FINAL-001-R10R6 exact-head CI seal
+
+- Implementation/evidence head `7406d0e2f217c7bdfad9b033d81fc47d71cb6a87`; exact-head workflow `34511562236 PASS`; uploaded artifact `sha256:cb12d3f1696048f247cb448b30e7c7f4202726b0dd10ca9f9216a05806fbd149`.
+- The fixed-boundary assay classification remains `D096_FIXED_BOUNDARY_TURNOVER_ESTABLISHED_SELECTION_NOT_ESTABLISHED`: maximum generation `2`, one post-bootstrap fission in one Resource replicate, no replicated Resource/Damage selection, no reversal, and final integrated M1-M5 `NOT_REACHED`.
+- CI validated the R10R6 assay, preservation surfaces, evidence manifest, and formatting. PR #44 remains open, draft, unmerged, and untouched; next execution is `false`; independent Architect acceptance is `PENDING`.

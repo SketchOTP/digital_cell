@@ -1259,3 +1259,8 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Authorized scope: audit the D096 concentration-to-flux dimensional boundary, prove sealed bath depletion and fixed-boundary transport parity, add only an assay-local fixed-concentration bath with explicit source/outflow ledgers, and continue through selection/reversal only if natural turnover permits it. No organism biology or new biological parameter is authorized.
 - Gates 1–6 pass locally: concentration-to-supply-rate mismatch confirmed, boundary depletion is causal, reference transport parity passes, source/sink and N/F closure pass, and fixed-boundary growth recovery produces one post-bootstrap Resource fission in one replicate.
 - Gate 9 stop: generation 2 is established in one Resource replicate, but replicated Resource/Damage selection and hereditary reversal are not established; final integrated M1-M5 is not reached. Provisional classification is `D096_FIXED_BOUNDARY_TURNOVER_ESTABLISHED_SELECTION_NOT_ESTABLISHED`; no successor execution starts pending exact-head validation and Architect acceptance.
+
+## DC-FINAL-001-R10R6 exact-head CI seal
+
+- R10R6 implementation/evidence head `7406d0e2f217c7bdfad9b033d81fc47d71cb6a87` passed exact-head workflow `34511562236`; artifact digest `sha256:cb12d3f1696048f247cb448b30e7c7f4202726b0dd10ca9f9216a05806fbd149`.
+- The authorized fixed-boundary ecology changed no organism biology or biological parameter. Turnover was established in one Resource replicate; replicated selection, reversal, and final integration remain not established. No successor execution started; PR #44 remains untouched.
