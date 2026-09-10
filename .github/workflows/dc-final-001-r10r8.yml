@@ -1,0 +1,135 @@
+name: DC-FINAL-001-R10R8 D096 specialization contract
+
+on:
+  push:
+    branches: [codex/dc-final-001-r10r8-specialization-contract]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  r10r8-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: $GITHUB_SHA
+
+      - name: Verify R10R7 authority and diagnostic-only scope
+        run: |
+          set -euo pipefail
+          start=ecf4befc00683301e4ab15f0b5302b4acc33d9be
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - <<'PY'
+          import subprocess
+          start = "ecf4befc00683301e4ab15f0b5302b4acc33d9be"
+          allowed = (
+              ".agent/",
+              ".github/workflows/dc-final-001-r10r8.yml",
+              "digital-protocell/crates/regulatory-core/Cargo.toml",
+              "digital-protocell/examples/dcfinal001_r10r8_diagnostics.rs",
+              "digital-protocell/experiments/generated/dcfinal001r10r8/",
+          )
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", f"{start}..HEAD"], text=True
+          ).splitlines()
+          bad = [p for p in changed if not any(p.startswith(prefix) for prefix in allowed)]
+          assert not bad, bad
+          assert not any(
+              p.startswith("digital-protocell/crates/chemistry-core/")
+              or p.startswith("digital-protocell/crates/phase1-certifier/")
+              for p in changed
+          ), changed
+          PY
+          gh run view 34531048042 --repo SketchOTP/digital_cell +            --json conclusion,headSha --jq '.conclusion + " " + .headSha' +            | grep '^success ecf4befc00683301e4ab15f0b5302b4acc33d9be$'
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt +            | python3 -c 'import json,sys; d=json.load(sys.stdin); assert d == {"state":"OPEN","isDraft":True,"mergedAt":None}, d'
+
+      - name: Install sanctioned Rust toolchain
+        run: |
+          rustup toolchain install 1.89.0 --profile minimal --no-self-update
+          rustup component add --toolchain 1.89.0 rustfmt
+
+      - name: Replay historical D096 reserve contract
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run --locked --release -q -p regulatory-core +            --example dcfinal001_r10r8_diagnostics -- /tmp/r10r8_historical.json
+          python3 - <<'PY'
+          import json
+          data = json.load(open("/tmp/r10r8_historical.json"))
+          rows = data["historical_test_replay"]
+          assert all(r["h_reserve_effect"] > 0 and r["b_material_effect"] > 0 for r in rows)
+          off_h = [
+              r for r in data["rows"]
+              if r["environment"] == "H" and not r["reserve_enabled"]
+              and not r["function3_baseline"]
+          ]
+          assert off_h and all(abs(r["reserve_change"]) < 1e-12 for r in off_h)
+          normal = {
+              (tuple(r["genotype"]), r["environment"], r["seed"]): r
+              for r in data["rows"]
+              if r["reserve_enabled"] and not r["function3_baseline"]
+          }
+          baseline = {
+              (tuple(r["genotype"]), r["environment"], r["seed"]): r
+              for r in data["rows"]
+              if r["reserve_enabled"] and r["function3_baseline"]
+          }
+          assert normal.keys() == baseline.keys()
+          assert any(
+              abs(baseline[k]["final_material"] - normal[k]["final_material"]) > 1e-9
+              and abs(baseline[k]["reserve_change"] - normal[k]["reserve_change"]) > 1e-9
+              for k in normal
+          )
+          PY
+
+      - name: Replay current reserve-on V4 M1 boundary
+        run: |
+          set -euo pipefail
+          DCDEV020R9R3_CONTRACT=ConservativeV3 +          DCDEV020R9R3_RESERVE=1 +          DCDEV020M1REPLAN002R1_V4=1 +            cargo +1.89.0 run --locked --release -q -p phase1-certifier +              --bin phase1_certification -- --output /tmp/reserve-on-v4
+          python3 - <<'PY'
+          import json
+          m = json.load(open("/tmp/reserve-on-v4/manifest.json"))
+          vector = [m[f"gate{i}"]["pass"] for i in range(8)]
+          assert vector == [True, False, True, True, True, True, True, False], vector
+          PY
+
+      - name: Preserve accepted upstream surfaces
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -q -p regulatory-core
+          cargo +1.89.0 test --locked -q -p chemistry-core +            --test d096_tests +            --test r8_v4_closure_consistency_tests +            --test r4_contract_topology_tests +            --test d088_tests +            --test d091_tests
+          cargo +1.89.0 test --locked -q -p evolution-harness
+          cargo +1.89.0 test --locked -q -p m2-lifeform-runtime --bin digital-cell-final-lifeform
+          cargo +1.89.0 check --locked -q -p godot-bridge
+
+      - name: Validate R10R8 evidence and formatting
+        run: |
+          set -euo pipefail
+          rustfmt +1.89.0 --edition 2021 --check +            digital-protocell/examples/dcfinal001_r10r8_diagnostics.rs
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("digital-protocell/experiments/generated/dcfinal001r10r8")
+          for path in root.rglob("*.json"):
+              json.loads(path.read_text())
+          q = json.loads((root / "qualification.json").read_text())
+          assert q["primary_classification"] == "D096_FOUR_FUNCTION_SPECIALIZATION_DEPENDS_ON_UNQUALIFIED_RESERVE_PHYSIOLOGY"
+          assert q["next_execution_started"] is False
+          PY
+          git diff --check
+
+      - name: Upload exact-head R10R8 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcfinal001r10r8
+          if-no-files-found: error
+          retention-days: 90
+          path: digital-protocell/experiments/generated/dcfinal001r10r8
