@@ -1,0 +1,12 @@
+{
+  "biology_delta": 0,
+  "breeder_selection": false,
+  "fitness_function": null,
+  "forced_fission": false,
+  "new_free_biological_parameters": 0,
+  "population_cap": null,
+  "pr_44": "OPEN_DRAFT_UNMERGED_UNTOUCHED",
+  "protected_genotypes": false,
+  "resource_feedback": false,
+  "status": "PASS"
+}

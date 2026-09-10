@@ -1,0 +1,20 @@
+{
+  "campaigns_compared": 12,
+  "comparison_scope": [
+    "population",
+    "cohort_count",
+    "generation",
+    "genotype_distribution",
+    "mutation_events",
+    "physical_fissions",
+    "physical_deaths",
+    "mesh_state_digest",
+    "plasticity_state_digest",
+    "world_N_F",
+    "reaction_and_active_energy_ledgers"
+  ],
+  "long_run_prefix_equals_new_short_run": true,
+  "new_short_run_normalized_equals_sealed_r10": true,
+  "sealed_and_new_normalized_sha256": "b47751e05802e3c7b3bcb47617e79ee60058584069c6698cc9b17fc0f27259af",
+  "status": "PASS"
+}

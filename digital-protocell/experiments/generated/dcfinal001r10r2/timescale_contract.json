@@ -1,0 +1,9 @@
+{
+  "adaptive_duration": false,
+  "damage_steps": 14778,
+  "resource_steps": 14778,
+  "reversal_switch_step": 14778,
+  "reversal_terminal_step": 29556,
+  "source": "R10_qualified_production_reproduction_horizon",
+  "status": "PASS"
+}

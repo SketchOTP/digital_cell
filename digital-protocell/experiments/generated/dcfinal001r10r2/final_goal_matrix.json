@@ -1,0 +1,14 @@
+{
+  "damage_selection": "NOT_REACHED",
+  "digital_cell_end_goal": "NOT_ESTABLISHED",
+  "environment_dependence": "NOT_REACHED",
+  "final_integrated_m1_m5": "NOT_REACHED",
+  "lawful_mutation": "QUALIFIED_PRESERVED",
+  "m1": "PASS_PRESERVED",
+  "m2": "QUALIFIED_PRESERVED",
+  "m3": "PASS_PRESERVED",
+  "natural_generation_2_plus": "FAIL",
+  "resource_selection": "NOT_REACHED",
+  "reversal": "NOT_REACHED",
+  "robust_v4_reproduction": "QUALIFIED_PRESERVED"
+}

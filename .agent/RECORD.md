@@ -1764,3 +1764,15 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Powered mutation passes at 1,800 opportunities and 18 mutations, but generation remains 1 and no campaign records post-initial fission, physical death, or frequency change. Classification: `EVOLUTION_VARIATION_PRESENT_SELECTION_NOT_ESTABLISHED`.
 - M1 remains closed/frozen/preserved; M2 qualified; M3 preserved. Final integrated M1-M5 is `NOT_REACHED`; end goal remains `NOT_ESTABLISHED`; shutdown recommendation `NO — OWNER OVERRIDE ACTIVE`; next execution `false`.
 - Scientific result head: `d1306f0ff069a2437e4853b3d33daabd5c1e4e99`; exact-head CI/artifact and independent Architect acceptance remain pending.
+
+## DEC-DCFINAL001-R10R2-HORIZON-REQUALIFICATION-GATE4-STOP
+
+- Date: `2026-09-09`
+- Status: `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_GATE4_STOP`
+- Record or decision ID: `DEC-DCFINAL001-R10R2-HORIZON-REQUALIFICATION-GATE4-STOP`
+- R10 authority is externally accepted at governed head `b81c9a82f4cd49085b4970c24f85f5f50c9f03c1`, workflow `34419984941 PASS`, and artifact `sha256:41d06d64e5e51edfa40523c5bfdc15431c0386e2883b741b6716dc21608bb780`.
+- `R10R1_GATE1_STOP_ACCEPTED`; `R10R1_BIOLOGY_MISMATCH_HYPOTHESIS_DISPROVEN`; `R10_EVOLUTION_ASSAY_TIMESCALE_DEFECT_REPLAN`. R10R2 changes only the fixed assay horizon to `14778` and adds observer/evidence surfaces; biology delta is zero and sealed 2,500-step prefix parity passes.
+- Result: maximum generation `1`, post-bootstrap fissions `0`, physical deaths `0`, and fission attempts `0`. All surviving cohorts are simple/runtime/lifecycle-valid but remain below the `1.35` birth-mass gate; all deepest blockers are `INSUFFICIENT_GROWTH` because structural expression draw exceeds growth.
+- Classification: `R10R2_GENERATION_TURNOVER_NOT_ESTABLISHED_DAUGHTER_STRUCTURAL_ATTRITION`. D096 variation is physically causal, but Resource/Damage selection, environment dependence, reversal, and final integrated M1-M5 are `NOT_REACHED_GATE4_STOP`.
+- M1 remains closed/frozen/preserved; M2 qualified; M3 preserved; R10 reproduction remains `7/10` and `6/10`. End goal remains `NOT_ESTABLISHED`; shutdown recommendation `NO — OWNER OVERRIDE ACTIVE`; next execution `false`; exact-head CI/artifact and independent Architect acceptance remain pending.
+- Scientific result head: `fbecdfe0fac30d090861ec1366bd78eee7cf797a`.

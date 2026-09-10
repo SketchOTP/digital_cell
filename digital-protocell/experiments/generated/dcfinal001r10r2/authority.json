@@ -1,0 +1,15 @@
+{
+  "directive": "DC-FINAL-001-R10R2-PRODUCTION-EVOLUTION-HORIZON-REQUALIFICATION-SELECTION-AND-END-GOAL-CLOSURE-001",
+  "independent_architect_acceptance": "PENDING",
+  "r10_artifact_sha256": "41d06d64e5e51edfa40523c5bfdc15431c0386e2883b741b6716dc21608bb780",
+  "r10_exact_head_ci": {
+    "result": "PASS",
+    "run": 34419984941
+  },
+  "r10_governed_head": "b81c9a82f4cd49085b4970c24f85f5f50c9f03c1",
+  "r10_robust_reproduction": "QUALIFIED_7_FISSIONS_6_FULL_STATE_VIABLE_PAIRS",
+  "r10_scientific_head": "d1306f0ff069a2437e4853b3d33daabd5c1e4e99",
+  "r10r1_gate1_stop": "ACCEPTED",
+  "result_scientific_head": "fbecdfe0fac30d090861ec1366bd78eee7cf797a",
+  "starting_governed_head": "b81c9a82f4cd49085b4970c24f85f5f50c9f03c1"
+}

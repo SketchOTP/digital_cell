@@ -1,0 +1,17 @@
+{
+  "classification": "R10R2_GENERATION_TURNOVER_NOT_ESTABLISHED_DAUGHTER_STRUCTURAL_ATTRITION",
+  "damage_selection": "NOT_REACHED",
+  "digital_cell_end_goal": "NOT_ESTABLISHED",
+  "directive": "DC-FINAL-001-R10R2-PRODUCTION-EVOLUTION-HORIZON-REQUALIFICATION-SELECTION-AND-END-GOAL-CLOSURE-001",
+  "environment_dependence": "NOT_REACHED",
+  "final_integrated_m1_m5": "NOT_REACHED",
+  "horizon_repair": "PASS",
+  "independent_architect_acceptance": "PENDING",
+  "natural_generation_2_plus": "FAIL",
+  "next_execution_started": false,
+  "prefix_parity": "PASS",
+  "resource_selection": "NOT_REACHED",
+  "reversal": "NOT_REACHED",
+  "shutdown_recommended": "NO \u2014 OWNER OVERRIDE ACTIVE",
+  "status": "GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_GATE4_STOP"
+}

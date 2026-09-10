@@ -1,0 +1,14 @@
+{
+  "assay_horizon_delta": 12278,
+  "biology_delta": 0,
+  "biology_source_changes": [],
+  "changed_files_at_scientific_head": [
+    "digital-protocell/crates/regulatory-core/Cargo.toml",
+    "digital-protocell/examples/dcfinal001_r10r2_evolution.rs",
+    "digital-protocell/examples/dcfinal001_r4_evolution.rs"
+  ],
+  "new_phase_steps": 14778,
+  "old_phase_steps": 2500,
+  "other_scientific_changes": "observer_only_population_ledgers_and_dedicated_R10R2_entrypoint",
+  "status": "PASS"
+}

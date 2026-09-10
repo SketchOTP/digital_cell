@@ -1,0 +1,157 @@
+{
+  "directive": "DC-FINAL-001-R10R2-PRODUCTION-EVOLUTION-HORIZON-REQUALIFICATION-SELECTION-AND-END-GOAL-CLOSURE-001",
+  "file_count_excluding_manifest": 30,
+  "files": [
+    {
+      "bytes": 442,
+      "path": "active_energy_closure.json",
+      "sha256": "2d5c94384beaf6584e83726885e7b5c4558db54ddcbd4b3c8efcf674467783ca"
+    },
+    {
+      "bytes": 298,
+      "path": "architect_correction.json",
+      "sha256": "759d75d168e8664185575c6e47cca26c7ef164bef99a20e2d0188c35eab0486d"
+    },
+    {
+      "bytes": 730,
+      "path": "authority.json",
+      "sha256": "636669f38543634312daf7d646554b5ac29ac0ad1468235e4446e0f048ad41bd"
+    },
+    {
+      "bytes": 227,
+      "path": "checkpoint_restart.json",
+      "sha256": "5930d537665a40cf3cb0c7cedea95735f0eab53dfee54f09feca961de36e3351"
+    },
+    {
+      "bytes": 209,
+      "path": "development_preservation.json",
+      "sha256": "a23dab2424283f25998549e29759c5c56b8f368ff2edfb4baf601f6f29acea3d"
+    },
+    {
+      "bytes": 12907,
+      "path": "environment_a_selection.json",
+      "sha256": "e22a1970a726ac59a5e1bc7b15a375537129051f0be10bd9784af89ca4f0afb4"
+    },
+    {
+      "bytes": 8375,
+      "path": "environment_b_selection.json",
+      "sha256": "c732956a892dad1b4f03bebea6718c11ba849ae67095278cf32b04d0fecd56b4"
+    },
+    {
+      "bytes": 120,
+      "path": "environment_dependence.json",
+      "sha256": "723d388d674065375807bf003207b1eedba1f16b8e98cd35c2c8a1403866644b"
+    },
+    {
+      "bytes": 228,
+      "path": "experiential_memory.json",
+      "sha256": "e909f6e24b9bf82ab9a79fe886ee21f3d1a77833740a1e3f7586595bc00267b9"
+    },
+    {
+      "bytes": 457,
+      "path": "final_goal_matrix.json",
+      "sha256": "9c1659ce72f59466051ba5b2940f49764f21da73b1c4a965a2a7c2b644945ca1"
+    },
+    {
+      "bytes": 301,
+      "path": "forbidden_information_audit.json",
+      "sha256": "80881ae187fcfe134beae6b8c91d7a6c63bff41b7d9345c4fe9dbff5a10b6ede"
+    },
+    {
+      "bytes": 358,
+      "path": "generation2_lineage.json",
+      "sha256": "c9160085e79f6557c1558a0ed939131bc58040a64bd91bc98238214aa7893e1a"
+    },
+    {
+      "bytes": 16824,
+      "path": "genotype_phenotype_causality.json",
+      "sha256": "5efa5b566d6e557445153f1cec28988a9f96813236e3714c671b20ce3fa22b66"
+    },
+    {
+      "bytes": 153,
+      "path": "global_material_energy_closure.json",
+      "sha256": "ce88ea9ebe13b1fa9a2d8714e1237eb13f2d3ce8a7085b87c8c34e96b657be92"
+    },
+    {
+      "bytes": 227,
+      "path": "godot_independence.json",
+      "sha256": "dd8d0d72a8b4d7840c450aca2d60e91fd7259e1c62bbf7db80f6cc0f01ccbdab"
+    },
+    {
+      "bytes": 489,
+      "path": "horizon_only_diff.json",
+      "sha256": "a7193224b9c2cd340781f9afcbac214284dd958d14e8d37490d68ada626bd587"
+    },
+    {
+      "bytes": 222,
+      "path": "linux_runtime.json",
+      "sha256": "ef34639dd6335fa7318be09ae3e6bba59a72278414b9fa3c0a7a65448bfe710b"
+    },
+    {
+      "bytes": 675,
+      "path": "m1_preservation.json",
+      "sha256": "6ef68e4ccf670faaa49187080213cc68cdb32521694fa94653c46e67822305fa"
+    },
+    {
+      "bytes": 205,
+      "path": "m2_preservation.json",
+      "sha256": "1d19df343070b035f125c213c90fbc0061834c7db99b63e5b610be937e7dcd86"
+    },
+    {
+      "bytes": 184,
+      "path": "multiplicity_parity.json",
+      "sha256": "bfc06197a3090952f764a8c73bc6515d7d4ad02a1376ba12652d6c643651c8df"
+    },
+    {
+      "bytes": 16008,
+      "path": "mutation_off_control.json",
+      "sha256": "bf7549bcef4b0bc28e48091346d545c074d995bfea799c9cc4a50143f6814d0b"
+    },
+    {
+      "bytes": 155,
+      "path": "owner_override.json",
+      "sha256": "3b02d87c93bd8558d4132c45491f47d7634b12691cd960d779b6b68ddf84359c"
+    },
+    {
+      "bytes": 48042,
+      "path": "population_material_closure.json",
+      "sha256": "061998300998ab24a44adb0e3d6c62165ac3dd20e128ccc496393126b8b312f3"
+    },
+    {
+      "bytes": 48283,
+      "path": "population_turnover.json",
+      "sha256": "b9c021aa0191f2e426321b7cff20e0a1dcb7ce2f9559e761a35886f132b57ff9"
+    },
+    {
+      "bytes": 757,
+      "path": "qualification.json",
+      "sha256": "d0c90727552eefc9767052dc1f50e417711d0e6c304258be9188a6aab2461025"
+    },
+    {
+      "bytes": 558,
+      "path": "r10_prefix_parity.json",
+      "sha256": "6c6eac2a015197ddf399d0430db61c9c7e35164d365067d0cd51a77d2683c6f3"
+    },
+    {
+      "bytes": 211,
+      "path": "r10_reproduction_preservation.json",
+      "sha256": "5a580145c446443137a42ad5d98ef17044f4849f92e887cbf574d793c1d1cfb0"
+    },
+    {
+      "bytes": 215,
+      "path": "reversal.json",
+      "sha256": "989e398476315ab3953ec64617b0f54d284fa35b91a9b5d35c31de0f5b876dec"
+    },
+    {
+      "bytes": 227,
+      "path": "sensory_embodiment.json",
+      "sha256": "e554aab60e1a099e65d444f8140ac44f3818d4580abd903b1ee2d508ace634de"
+    },
+    {
+      "bytes": 234,
+      "path": "timescale_contract.json",
+      "sha256": "0cfa35e304419d7711c6ee2eb5c0ded84209bb38ae9aa014f5ec79ccd346034b"
+    }
+  ],
+  "result_scientific_head": "fbecdfe0fac30d090861ec1366bd78eee7cf797a"
+}

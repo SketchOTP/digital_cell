@@ -1,0 +1,199 @@
+name: DC-FINAL-001-R10R2 production evolution horizon
+
+on:
+  push:
+    branches: [codex/dc-final-001-r10r2-evolution-horizon]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  r10r2-qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Verify R10 authority and horizon-only scope
+        run: |
+          set -euo pipefail
+          start=b81c9a82f4cd49085b4970c24f85f5f50c9f03c1
+          scientific=fbecdfe0fac30d090861ec1366bd78eee7cf797a
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git merge-base --is-ancestor "$start" HEAD
+          git cat-file -e d1306f0ff069a2437e4853b3d33daabd5c1e4e99^{commit}
+          git cat-file -e "$scientific"^{commit}
+          git diff --check
+          python3 - <<'PY'
+          import subprocess
+          allowed = (
+              '.agent/',
+              '.github/workflows/dc-final-001-r10r2.yml',
+              'digital-protocell/crates/regulatory-core/Cargo.toml',
+              'digital-protocell/examples/dcfinal001_r4_evolution.rs',
+              'digital-protocell/examples/dcfinal001_r10r2_evolution.rs',
+              'digital-protocell/experiments/dcfinal001_r10r2_evidence.py',
+              'digital-protocell/experiments/generated/dcfinal001r10r2/',
+          )
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-only', 'b81c9a82f4cd49085b4970c24f85f5f50c9f03c1..HEAD'],
+              text=True,
+          ).splitlines()
+          bad = [path for path in changed if not any(path.startswith(prefix) for prefix in allowed)]
+          assert not bad, bad
+          biology = [path for path in changed if '/crates/chemistry-core/src/' in path or '/crates/regulatory-core/src/' in path or '/crates/m2-lifeform-runtime/src/' in path]
+          assert not biology, biology
+          PY
+          gh run view 34419984941 --repo SketchOTP/digital_cell \
+            --json conclusion,headSha --jq '.conclusion + " " + .headSha' \
+            | grep '^success b81c9a82f4cd49085b4970c24f85f5f50c9f03c1$'
+          gh api repos/SketchOTP/digital_cell/actions/runs/34419984941/artifacts \
+            --jq '.artifacts[] | select(.name == "dcfinal001r10") | .archive_download_url' \
+            | head -1 > "$RUNNER_TEMP/r10-artifact-url"
+          test -s "$RUNNER_TEMP/r10-artifact-url"
+          gh api "$(cat "$RUNNER_TEMP/r10-artifact-url")" > "$RUNNER_TEMP/r10.zip"
+          echo '41d06d64e5e51edfa40523c5bfdc15431c0386e2883b741b6716dc21608bb780  '"$RUNNER_TEMP/r10.zip" | sha256sum -c -
+          gh pr view 44 --repo SketchOTP/digital_cell \
+            --json state,isDraft,mergedAt,headRefOid > "$RUNNER_TEMP/pr44.json"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          pr = json.loads((Path(os.environ['RUNNER_TEMP']) / 'pr44.json').read_text())
+          assert pr == {
+              'state': 'OPEN', 'isDraft': True, 'mergedAt': None,
+              'headRefOid': 'fb77f472b1519a9e0f713833efba5b1d403f4723',
+          }, pr
+          PY
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Install sanctioned Rust toolchain
+        run: |
+          rustup toolchain install 1.89.0 --profile minimal --no-self-update
+          rustup component add --toolchain 1.89.0 rustfmt
+
+      - name: Run sealed prefix and fixed-horizon R10R2 populations
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run --locked -q --release -p regulatory-core \
+            --example dcfinal001_r10_evolution -- --output "$RUNNER_TEMP/r10-short.json"
+          cargo +1.89.0 run --locked -q --release -p regulatory-core \
+            --example dcfinal001_r10r2_evolution -- --output "$RUNNER_TEMP/r10r2-long.json"
+          jq -S '(.campaigns[] |= (del(.prefix_2500, .terminal_cohorts) | .ledger |= del(.bootstrap_physical_fissions, .post_bootstrap_physical_fissions, .physical_birth_events, .deaths_by_genotype, .phenotype_by_genotype) | .initial |= del(.genotype_frequencies) | .terminal |= del(.genotype_frequencies) | .trajectory[] |= del(.genotype_frequencies)))' \
+            "$RUNNER_TEMP/r10-short.json" > "$RUNNER_TEMP/r10-short-normalized.json"
+          echo 'b47751e05802e3c7b3bcb47617e79ee60058584069c6698cc9b17fc0f27259af  '"$RUNNER_TEMP/r10-short-normalized.json" | sha256sum -c -
+          python3 experiments/dcfinal001_r10r2_evidence.py \
+            --head fbecdfe0fac30d090861ec1366bd78eee7cf797a \
+            --short "$RUNNER_TEMP/r10-short.json" \
+            --long "$RUNNER_TEMP/r10r2-long.json" \
+            --r10 experiments/generated/dcfinal001r10 \
+            --output "$RUNNER_TEMP/evidence"
+          diff -ru experiments/generated/dcfinal001r10r2 "$RUNNER_TEMP/evidence"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          value = json.loads((root / 'r10r2-long.json').read_text())
+          rows = value['campaigns']
+          assert value['protocol']['phase_steps'] == 14778
+          assert value['protocol']['switch_schedule'] == [14778, 29556]
+          assert max(row['terminal']['maximum_generation'] for row in rows) == 1
+          assert sum(row['ledger']['post_bootstrap_physical_fissions'] for row in rows) == 0
+          assert sum(row['ledger']['physical_deaths'] for row in rows) == 0
+          assert all(
+              cohort['mass_over_birth_mass'] < 1.35
+              for row in rows for cohort in row['terminal_cohorts']
+          )
+          assert all(
+              row['ledger']['mutations'] == 0
+              for row in rows if not row['mutation_enabled']
+          )
+          PY
+
+      - name: Preserve R10 reproduction and M1-M3 surfaces
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 run --locked -q --release -p regulatory-core \
+            --example dcfinal001_r10_signed_stress -- --output "$RUNNER_TEMP/r10-reproduction.json"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          value = json.loads((Path(os.environ['RUNNER_TEMP']) / 'r10-reproduction.json').read_text())
+          assert value['signed_stress_counts']['geometry_valid_fissions'] == 7
+          assert value['signed_stress_counts']['full_state_viable_daughter_pairs'] == 6
+          assert value['robust_v4_reproduction'] is True
+          PY
+          cargo +1.89.0 test --locked -q -p regulatory-core
+          cargo +1.89.0 test --locked -q -p chemistry-core \
+            --test r8_v4_closure_consistency_tests \
+            --test r4_contract_topology_tests \
+            --test d088_tests \
+            --test d091_tests
+          cargo +1.89.0 test --locked -q -p evolution-harness
+          cargo +1.89.0 test --locked -q -p m2-lifeform-runtime --bin digital-cell-final-lifeform
+          cargo +1.89.0 check --locked -q -p godot-bridge
+          run_d087() {
+            local output="$1" contract="$2" v4="$3"
+            if test "$v4" = 1; then
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 DCDEV020M1REPLAN002R1_V4=1 \
+                cargo +1.89.0 run -q -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            else
+              DCDEV020R9R3_CONTRACT="$contract" DCDEV020R9R3_RESERVE=0 \
+                cargo +1.89.0 run -q -p phase1-certifier --bin phase1_certification --release -- --output "$output"
+            fi
+          }
+          run_d087 "$RUNNER_TEMP/d087-v2" ConservativeV2 0
+          run_d087 "$RUNNER_TEMP/d087-v3" ConservativeV3 0
+          run_d087 "$RUNNER_TEMP/d087-v4" ConservativeV3 1
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          expected = {
+              'v2': [True] * 8,
+              'v3': [True] * 8,
+              'v4': [True, True, False, True, True, True, True, True],
+          }
+          for name, vector in expected.items():
+              manifest = json.loads((root / f'd087-{name}' / 'manifest.json').read_text())
+              assert [manifest[f'gate{i}']['pass'] for i in range(8)] == vector
+          PY
+
+      - name: Validate formatting and evidence manifest
+        run: |
+          set -euo pipefail
+          rustfmt +1.89.0 --edition 2021 --check \
+            digital-protocell/examples/dcfinal001_r4_evolution.rs \
+            digital-protocell/examples/dcfinal001_r10r2_evolution.rs
+          python3 -m py_compile digital-protocell/experiments/dcfinal001_r10r2_evidence.py
+          python3 - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root = Path('digital-protocell/experiments/generated/dcfinal001r10r2')
+          manifest = json.loads((root / 'artifact_manifest.json').read_text())
+          for row in manifest['files']:
+              path = root / row['path']
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == row['sha256']
+              assert path.stat().st_size == row['bytes']
+          PY
+          git diff --check
+
+      - name: Upload exact-head R10R2 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcfinal001r10r2
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            digital-protocell/experiments/generated/dcfinal001r10r2
+            ${{ runner.temp }}/r10-short.json
+            ${{ runner.temp }}/r10-short-normalized.json
+            ${{ runner.temp }}/r10r2-long.json
+            ${{ runner.temp }}/r10-reproduction.json

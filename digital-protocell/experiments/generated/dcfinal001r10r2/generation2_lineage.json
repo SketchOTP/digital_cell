@@ -1,0 +1,10 @@
+{
+  "classification": "NATURAL_MUTANT_GENERATION_2_PLUS_NOT_ESTABLISHED",
+  "fission_attempts_mutation_on": 0,
+  "maximum_generation": 1,
+  "physical_cause": "ALL_SURVIVING_DAUGHTER_COHORTS_REMAIN_BELOW_1_35_X_BIRTH_MASS",
+  "physical_deaths_mutation_on": 0,
+  "post_bootstrap_physical_fissions_mutation_on": 0,
+  "status": "FAIL",
+  "stop_gate": "GATE_4"
+}

@@ -1188,3 +1188,11 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Full-state continuation matters: seven R10 fissions are initially viable, while six remain viable after 3,000 steps with inherited refractory state. The unchanged `6/10` full-state threshold is the reproduction authority.
 - Mutation supply is no longer the evolutionary blocker. The assay produces exactly the expected aggregate mutation count, but fixed population composition follows because no post-initial births or deaths occur during either environment.
 - Variation alone is not natural selection. Genotype-to-phenotype expression and material throughput can be active while selection remains unestablished when variants make no differential reproductive or mortality contribution.
+
+## DC-FINAL-001-R10R2 evolution-horizon learning
+
+- Matching an assay horizon to a qualified parent reproduction horizon is necessary but does not guarantee daughter turnover: production daughters can begin at a different material state and follow a net structural-loss trajectory throughout the same duration.
+- Prefix parity is strongest when both sealed-output projection and embedded long-run checkpoints agree byte-for-byte. This separates a pure observation-window change from hidden execution drift.
+- In the unchanged production population, D096 expression consumes more structural material than growth restores in every single-environment campaign. The resulting daughters remain far below the mass gate despite valid geometry, apposition, and stress readiness.
+- Genotype-to-phenotype causality and natural selection are separate gates. Natural variants measurably alter physiology, but without realized post-bootstrap births or deaths there is no differential hereditary contribution to interpret.
+- Preplanned downstream campaigns may finish computationally, yet governance must still classify their selection/reversal surfaces as `NOT_REACHED` when the prerequisite generation-turnover gate fails.

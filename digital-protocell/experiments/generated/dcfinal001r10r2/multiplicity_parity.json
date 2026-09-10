@@ -1,0 +1,7 @@
+{
+  "compression_contract_changed": false,
+  "founder_multiplicity": 150,
+  "observer_ledgers_weighted_by_multiplicity": true,
+  "population_cap": null,
+  "status": "PASS_PRESERVED"
+}

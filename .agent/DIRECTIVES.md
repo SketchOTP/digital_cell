@@ -1217,3 +1217,10 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Reproduction result: exact R9 control `5/10, 5/10`; R10 signed-stress `7/10` physical fissions, `7/10` initially viable pairs, and `6/10` full-state viable pairs after inherited-regulator continuation. Robust V4 reproduction passes unchanged thresholds.
 - Downstream result: lawful powered mutation passes, but no population campaign produces a post-initial birth, death, generation-2 lineage, or hereditary frequency change. Classification is `EVOLUTION_VARIATION_PRESENT_SELECTION_NOT_ESTABLISHED`; final integrated M1-M5 is not reached.
 - No successor execution is authorized after handoff. Exact-head CI/artifact and independent Architect acceptance remain pending.
+
+## DC-FINAL-001-R10R2-PRODUCTION-EVOLUTION-HORIZON-REQUALIFICATION-SELECTION-AND-END-GOAL-CLOSURE-001
+
+- Issued `2026-09-09` by the external Architect from accepted R10 governed head `b81c9a82f4cd49085b4970c24f85f5f50c9f03c1`; owner override remains active.
+- Corrected authority: `R10R1_GATE1_STOP_ACCEPTED`, `R10R1_BIOLOGY_MISMATCH_HYPOTHESIS_DISPROVEN`, and `R10_EVOLUTION_ASSAY_TIMESCALE_DEFECT_REPLAN`. The existing population path already executes R10 biology.
+- Authorized delta: increase only the fixed evolution phase horizon from `2500` to the established production horizon `14778`, prove first-2500-step parity, and execute the unchanged population through lineage turnover, selection, reversal, and final integration only while upstream gates pass.
+- Stop boundary reached at Gate 4: all campaigns remain generation 1 with no post-bootstrap fission, no physical death, and no fission attempts because every surviving daughter cohort remains below the unchanged mass gate. Selection, reversal, and final integration are not reached; no successor execution starts.

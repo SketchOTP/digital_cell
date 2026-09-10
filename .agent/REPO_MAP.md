@@ -228,3 +228,8 @@
 - `digital-protocell/experiments/dcfinal001_r10_evidence.py` — deterministic compact R10 evidence generator separating robust reproduction and lawful variation from absent selection/reversal.
 - `digital-protocell/experiments/generated/dcfinal001r10/` — R10 authority, signed-stress, reproduction, full-state daughters, powered mutation, selection boundary, preservation, final matrix, and qualification evidence.
 - `.github/workflows/dc-final-001-r10.yml` — exact-head Linux R10 authority, deterministic replay, preservation, D-087, PR #44, evidence reproducibility, and artifact upload.
+- `digital-protocell/examples/dcfinal001_r10r2_evolution.rs` — dedicated fixed-14,778-step R10 production-population entry point preserving the historical 2,500-step R10 executable.
+- `digital-protocell/examples/dcfinal001_r4_evolution.rs` — shared R10/R10R2 production-population implementation with parameterized assay horizon and observer-only prefix, lineage, phenotype, turnover, and physical-blocker ledgers.
+- `digital-protocell/experiments/dcfinal001_r10r2_evidence.py` — deterministic R10R2 evidence generator for horizon-only scope, exact prefix parity, Gate-4 turnover stop, closure, preservation, and qualification.
+- `digital-protocell/experiments/generated/dcfinal001r10r2/` — R10R2 authority, horizon/prefix, turnover, D096 phenotype, closure, preservation, stopped-selection/reversal, final matrix, qualification, and manifest evidence.
+- `.github/workflows/dc-final-001-r10r2.yml` — exact-head Linux R10 authority/scope, short-prefix and long-horizon replay, reproduction/M1-M3 preservation, D-087, PR #44, evidence reproducibility, and artifact upload.

@@ -1,0 +1,455 @@
+{
+  "campaigns": [
+    {
+      "active_energy_residual": 2.2021140466677025e-10,
+      "bootstrap_physical_fissions": 150,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "expression_material": 14264.901188778378,
+      "f_closure_residual": 1.0186340659856796e-09,
+      "growth_material": 5275.275644471954,
+      "initial_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "initial_population": 300,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_opportunities": 300,
+      "mutations": 0,
+      "n_closure_residual": 6.810296326875687e-09,
+      "net_growth_minus_expression": -8989.625544306424,
+      "phase_steps": 14778,
+      "physical_deaths": 0,
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "runtime_invalidations": 0,
+      "terminal_cohorts": [
+        {
+          "birth_mass": 480.5050135140332,
+          "cohort_id": 2,
+          "count": 150,
+          "deepest_physical_blocker": "INSUFFICIENT_GROWTH",
+          "generation": 1,
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "in_range_segment_pairs": 212,
+          "interior_a": 0.08900792662259122,
+          "interior_c": 1.6002827561100856,
+          "lifecycle_valid": true,
+          "mass_over_birth_mass": 0.26894376459999064,
+          "maximum_compressive_effective_strain": 0.0,
+          "minimum_distance_over_range": 0.04411643864944732,
+          "plasticity_state_digest": "fnv1a64:39a6b92256a9f95b",
+          "runtime_valid": true,
+          "signed_stress_qualified_pairs": 212,
+          "simple": true,
+          "terminal_fission_ready_observer_only": true,
+          "terminal_mass": 129.22882724363348
+        },
+        {
+          "birth_mass": 245.10078648193738,
+          "cohort_id": 3,
+          "count": 150,
+          "deepest_physical_blocker": "INSUFFICIENT_GROWTH",
+          "generation": 1,
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "in_range_segment_pairs": 52,
+          "interior_a": 0.26391558636438944,
+          "interior_c": 2.3753276036768955,
+          "lifecycle_valid": true,
+          "mass_over_birth_mass": 0.08757726431158161,
+          "maximum_compressive_effective_strain": 0.08973920902202195,
+          "minimum_distance_over_range": 0.2823123861799556,
+          "plasticity_state_digest": "fnv1a64:73a856e005fdffae",
+          "runtime_valid": true,
+          "signed_stress_qualified_pairs": 28,
+          "simple": true,
+          "terminal_fission_ready_observer_only": false,
+          "terminal_mass": 21.46525636070516
+        }
+      ],
+      "terminal_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "terminal_population": 300
+    },
+    {
+      "active_energy_residual": 3.778950485866517e-10,
+      "bootstrap_physical_fissions": 150,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "expression_material": 14716.128072880518,
+      "f_closure_residual": 7.275957614183426e-10,
+      "growth_material": 5307.663638798982,
+      "initial_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "initial_population": 300,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_opportunities": 300,
+      "mutations": 0,
+      "n_closure_residual": 1.9063008949160576e-08,
+      "net_growth_minus_expression": -9408.464434081536,
+      "phase_steps": 14778,
+      "physical_deaths": 0,
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "runtime_invalidations": 0,
+      "terminal_cohorts": [
+        {
+          "birth_mass": 480.5050135140332,
+          "cohort_id": 2,
+          "count": 150,
+          "deepest_physical_blocker": "INSUFFICIENT_GROWTH",
+          "generation": 1,
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "in_range_segment_pairs": 184,
+          "interior_a": 0.10603004756180305,
+          "interior_c": 0.8091734198935985,
+          "lifecycle_valid": true,
+          "mass_over_birth_mass": 0.2334886600361779,
+          "maximum_compressive_effective_strain": 0.0,
+          "minimum_distance_over_range": 0.2891806413539185,
+          "plasticity_state_digest": "fnv1a64:d602371c0e7de618",
+          "runtime_valid": true,
+          "signed_stress_qualified_pairs": 184,
+          "simple": true,
+          "terminal_fission_ready_observer_only": true,
+          "terminal_mass": 112.19247174605717
+        },
+        {
+          "birth_mass": 245.10078648193738,
+          "cohort_id": 3,
+          "count": 150,
+          "deepest_physical_blocker": "INSUFFICIENT_GROWTH",
+          "generation": 1,
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "in_range_segment_pairs": 52,
+          "interior_a": 0.19765993348188762,
+          "interior_c": 2.5467825565700766,
+          "lifecycle_valid": true,
+          "mass_over_birth_mass": 0.07724434299029531,
+          "maximum_compressive_effective_strain": 0.08113533095347567,
+          "minimum_distance_over_range": 0.3163641110969643,
+          "plasticity_state_digest": "fnv1a64:ae37a5986ada40b6",
+          "runtime_valid": true,
+          "signed_stress_qualified_pairs": 17,
+          "simple": true,
+          "terminal_fission_ready_observer_only": false,
+          "terminal_mass": 18.932649218201906
+        }
+      ],
+      "terminal_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "terminal_population": 300
+    },
+    {
+      "active_energy_residual": 2.149818101315759e-10,
+      "bootstrap_physical_fissions": 150,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "expression_material": 15717.566732498739,
+      "f_closure_residual": 2.2995649828772002e-09,
+      "growth_material": 5288.048095903715,
+      "initial_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "initial_population": 300,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_opportunities": 300,
+      "mutations": 0,
+      "n_closure_residual": 3.937824999411532e-08,
+      "net_growth_minus_expression": -10429.518636595025,
+      "phase_steps": 14778,
+      "physical_deaths": 0,
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "runtime_invalidations": 150,
+      "terminal_cohorts": [
+        {
+          "birth_mass": 245.10078648193738,
+          "cohort_id": 3,
+          "count": 150,
+          "deepest_physical_blocker": "INSUFFICIENT_GROWTH",
+          "generation": 1,
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "in_range_segment_pairs": 0,
+          "interior_a": 0.6856234672363016,
+          "interior_c": 0.8333785186082607,
+          "lifecycle_valid": true,
+          "mass_over_birth_mass": 0.15646695226751198,
+          "maximum_compressive_effective_strain": 0.0,
+          "minimum_distance_over_range": null,
+          "plasticity_state_digest": "fnv1a64:9bb856064003404f",
+          "runtime_valid": true,
+          "signed_stress_qualified_pairs": 0,
+          "simple": true,
+          "terminal_fission_ready_observer_only": false,
+          "terminal_mass": 38.35017305919894
+        }
+      ],
+      "terminal_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 150
+      },
+      "terminal_population": 150
+    },
+    {
+      "active_energy_residual": 2.2021140466677025e-10,
+      "bootstrap_physical_fissions": 150,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "expression_material": 14264.901188778378,
+      "f_closure_residual": 1.0186340659856796e-09,
+      "growth_material": 5275.275644471954,
+      "initial_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "initial_population": 300,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_opportunities": 300,
+      "mutations": 0,
+      "n_closure_residual": 6.810296326875687e-09,
+      "net_growth_minus_expression": -8989.625544306424,
+      "phase_steps": 14778,
+      "physical_deaths": 0,
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "runtime_invalidations": 0,
+      "terminal_cohorts": [
+        {
+          "birth_mass": 480.5050135140332,
+          "cohort_id": 2,
+          "count": 150,
+          "deepest_physical_blocker": "INSUFFICIENT_GROWTH",
+          "generation": 1,
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "in_range_segment_pairs": 212,
+          "interior_a": 0.08900792662259122,
+          "interior_c": 1.6002827561100856,
+          "lifecycle_valid": true,
+          "mass_over_birth_mass": 0.26894376459999064,
+          "maximum_compressive_effective_strain": 0.0,
+          "minimum_distance_over_range": 0.04411643864944732,
+          "plasticity_state_digest": "fnv1a64:39a6b92256a9f95b",
+          "runtime_valid": true,
+          "signed_stress_qualified_pairs": 212,
+          "simple": true,
+          "terminal_fission_ready_observer_only": true,
+          "terminal_mass": 129.22882724363348
+        },
+        {
+          "birth_mass": 245.10078648193738,
+          "cohort_id": 3,
+          "count": 150,
+          "deepest_physical_blocker": "INSUFFICIENT_GROWTH",
+          "generation": 1,
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "in_range_segment_pairs": 52,
+          "interior_a": 0.26391558636438944,
+          "interior_c": 2.3753276036768955,
+          "lifecycle_valid": true,
+          "mass_over_birth_mass": 0.08757726431158161,
+          "maximum_compressive_effective_strain": 0.08973920902202195,
+          "minimum_distance_over_range": 0.2823123861799556,
+          "plasticity_state_digest": "fnv1a64:73a856e005fdffae",
+          "runtime_valid": true,
+          "signed_stress_qualified_pairs": 28,
+          "simple": true,
+          "terminal_fission_ready_observer_only": false,
+          "terminal_mass": 21.46525636070516
+        }
+      ],
+      "terminal_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "terminal_population": 300
+    },
+    {
+      "active_energy_residual": 3.778950485866517e-10,
+      "bootstrap_physical_fissions": 150,
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "expression_material": 14716.128072880518,
+      "f_closure_residual": 7.275957614183426e-10,
+      "growth_material": 5307.663638798982,
+      "initial_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "initial_population": 300,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_opportunities": 300,
+      "mutations": 0,
+      "n_closure_residual": 1.9063008949160576e-08,
+      "net_growth_minus_expression": -9408.464434081536,
+      "phase_steps": 14778,
+      "physical_deaths": 0,
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "runtime_invalidations": 0,
+      "terminal_cohorts": [
+        {
+          "birth_mass": 480.5050135140332,
+          "cohort_id": 2,
+          "count": 150,
+          "deepest_physical_blocker": "INSUFFICIENT_GROWTH",
+          "generation": 1,
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "in_range_segment_pairs": 184,
+          "interior_a": 0.10603004756180305,
+          "interior_c": 0.8091734198935985,
+          "lifecycle_valid": true,
+          "mass_over_birth_mass": 0.2334886600361779,
+          "maximum_compressive_effective_strain": 0.0,
+          "minimum_distance_over_range": 0.2891806413539185,
+          "plasticity_state_digest": "fnv1a64:d602371c0e7de618",
+          "runtime_valid": true,
+          "signed_stress_qualified_pairs": 184,
+          "simple": true,
+          "terminal_fission_ready_observer_only": true,
+          "terminal_mass": 112.19247174605717
+        },
+        {
+          "birth_mass": 245.10078648193738,
+          "cohort_id": 3,
+          "count": 150,
+          "deepest_physical_blocker": "INSUFFICIENT_GROWTH",
+          "generation": 1,
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "in_range_segment_pairs": 52,
+          "interior_a": 0.19765993348188762,
+          "interior_c": 2.5467825565700766,
+          "lifecycle_valid": true,
+          "mass_over_birth_mass": 0.07724434299029531,
+          "maximum_compressive_effective_strain": 0.08113533095347567,
+          "minimum_distance_over_range": 0.3163641110969643,
+          "plasticity_state_digest": "fnv1a64:ae37a5986ada40b6",
+          "runtime_valid": true,
+          "signed_stress_qualified_pairs": 17,
+          "simple": true,
+          "terminal_fission_ready_observer_only": false,
+          "terminal_mass": 18.932649218201906
+        }
+      ],
+      "terminal_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "terminal_population": 300
+    },
+    {
+      "active_energy_residual": 2.149818101315759e-10,
+      "bootstrap_physical_fissions": 150,
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "expression_material": 15717.566732498739,
+      "f_closure_residual": 2.2995649828772002e-09,
+      "growth_material": 5288.048095903715,
+      "initial_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "initial_population": 300,
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_opportunities": 300,
+      "mutations": 0,
+      "n_closure_residual": 3.937824999411532e-08,
+      "net_growth_minus_expression": -10429.518636595025,
+      "phase_steps": 14778,
+      "physical_deaths": 0,
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "runtime_invalidations": 150,
+      "terminal_cohorts": [
+        {
+          "birth_mass": 245.10078648193738,
+          "cohort_id": 3,
+          "count": 150,
+          "deepest_physical_blocker": "INSUFFICIENT_GROWTH",
+          "generation": 1,
+          "genotype": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ],
+          "in_range_segment_pairs": 0,
+          "interior_a": 0.6856234672363016,
+          "interior_c": 0.8333785186082607,
+          "lifecycle_valid": true,
+          "mass_over_birth_mass": 0.15646695226751198,
+          "maximum_compressive_effective_strain": 0.0,
+          "minimum_distance_over_range": null,
+          "plasticity_state_digest": "fnv1a64:9bb856064003404f",
+          "runtime_valid": true,
+          "signed_stress_qualified_pairs": 0,
+          "simple": true,
+          "terminal_fission_ready_observer_only": false,
+          "terminal_mass": 38.35017305919894
+        }
+      ],
+      "terminal_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 150
+      },
+      "terminal_population": 150
+    }
+  ],
+  "expected_mutations": 0,
+  "observed_mutations": 0,
+  "status": "PASS"
+}
