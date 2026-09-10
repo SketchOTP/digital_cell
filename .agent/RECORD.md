@@ -1812,3 +1812,12 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - The fixed population assay completes all twelve campaigns. Mutation-on has `1,800` lawful bootstrap opportunities and `18` mutations; mutation-off has `0`. All campaigns remain generation `1` with `0` post-bootstrap physical fissions and `0` physical deaths. Terminal cohorts remain simple/runtime/lifecycle-valid but below the unchanged mass gate; deepest blocker is `INSUFFICIENT_GROWTH`.
 - Classification: `D096_V4_PRODUCTION_TURNOVER_NOT_ESTABLISHED_INSUFFICIENT_GROWTH`. Resource/Damage selection, environment dependence, reversal, and final integrated M1-M5 are `NOT_REACHED_GATE13_NATURAL_GENERATION_STOP`; end goal remains `NOT_ESTABLISHED`; shutdown recommendation `NO — OWNER OVERRIDE ACTIVE`; next execution `false`.
 - Scientific result head: `4c199ce5983bb79d73f4f2990f22932af3eddb94`; governance sealing head and exact-head CI/artifact remain pending at append time.
+
+## DEC-DCFINAL001-R10R5-FINAL-EXACT-HEAD-SEAL
+
+- Date: `2026-09-10`
+- Status: `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_GATE13_STOP_EXACT_HEAD_SEALED`
+- Final scientific head: `4c199ce5983bb79d73f4f2990f22932af3eddb94`; final governed head: `b648a2a67e50a4b34a70155994ae5fa0155441e6`.
+- Exact-head workflow `34490606932 PASS`; artifact `sha256:ab088f51ee01ac48170e49d67c73c74f5801296270a1b6bd2df684543d97114c`.
+- R10R5 remains classified `D096_V4_PRODUCTION_TURNOVER_NOT_ESTABLISHED_INSUFFICIENT_GROWTH`; robust production reproduction is `7/10` fissions and `7/10` full-state viable pairs, while natural generation-2 turnover, selection, reversal, and final integrated M1-M5 are `NOT_REACHED`.
+- The post-result change was governance/evidence sealing only. M1 remains closed/frozen/preserved; M2 qualified; M3 preserved; PR #44 remains open, draft, unmerged, and untouched; next execution is `false`; independent Architect acceptance is `PENDING`.

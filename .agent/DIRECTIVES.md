@@ -1247,3 +1247,8 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Authorized scope: prove the fixed simplex allocation versus independent positive-gain mismatch, then use only the zero-parameter centered intensive D096-v4 gain while preserving v3 material/energy semantics and all R10 biology.
 - D096-v4 passes the unchanged robust reproduction gate at `7/10` fissions and `7/10` full-state viable daughter pairs. The fixed population assay then stops at Gate 13: all twelve campaigns reach the prescribed horizon with generation `1`, no post-bootstrap fissions, no physical deaths, and terminal `INSUFFICIENT_GROWTH` below the unchanged mass gate.
 - Resource/Damage selection, reversal, and final integration remain not reached; no successor execution starts.
+
+## DC-FINAL-001-R10R5 final exact-head seal
+
+- Final scientific head `4c199ce5983bb79d73f4f2990f22932af3eddb94` and governed head `b648a2a67e50a4b34a70155994ae5fa0155441e6` are sealed by exact-head workflow `34490606932 PASS` with artifact `sha256:ab088f51ee01ac48170e49d67c73c74f5801296270a1b6bd2df684543d97114c`.
+- The workflow-only scope-audit correction is the only post-result change; no organism biology or scientific result changed. R10R5 remains a bounded negative at Gate 13 with owner override active and no successor execution.

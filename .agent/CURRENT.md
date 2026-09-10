@@ -904,3 +904,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - The fixed 14,778-step population run executes D096-v4 production biology and records `1,800` lawful bootstrap mutation opportunities, `18` mutations, and mutation-off zero. All twelve campaigns remain maximum generation `1` with `0` post-bootstrap physical fissions and `0` physical deaths. Terminal cohorts remain simple/runtime/lifecycle-valid but fall below the unchanged `1.35` birth-mass gate; deepest blocker is `INSUFFICIENT_GROWTH`.
 - Natural generation-2 heredity, Resource/Damage selection, environment dependence, reversal, and final integrated M1-M5 are `NOT_REACHED_GATE13_NATURAL_GENERATION_STOP`; end goal remains `NOT_ESTABLISHED`; shutdown recommendation remains `NO — OWNER OVERRIDE ACTIVE`; next execution is `false`.
 - Local preservation passes: D-087 V2 `8/8`, V3 `8/8`, V4 `7/8`, vector `[true,true,false,true,true,true,true,true]`; regulatory-core, D096/R8/R4/D-088/D-091, evolution-harness, M2 runtime, and Godot checks pass. Scientific result head: `4c199ce5983bb79d73f4f2990f22932af3eddb94`; exact-head CI/artifact and independent Architect acceptance are `PENDING`.
+
+## DC-FINAL-001-R10R5 final exact-head seal
+
+- Final scientific head: `4c199ce5983bb79d73f4f2990f22932af3eddb94`; final governed head: `b648a2a67e50a4b34a70155994ae5fa0155441e6`.
+- Exact-head workflow `34490606932 PASS`; artifact `sha256:ab088f51ee01ac48170e49d67c73c74f5801296270a1b6bd2df684543d97114c`.
+- R10R5 classification remains `D096_V4_PRODUCTION_TURNOVER_NOT_ESTABLISHED_INSUFFICIENT_GROWTH`; robust D096-v4 reproduction is `7/10` geometry-valid fissions and `7/10` full-state viable pairs; population turnover and downstream evolution gates are not established.
+- This is a governance/evidence pointer only; no scientific runtime change follows it. PR #44 remains open, draft, unmerged, and untouched; next execution is `false`; independent Architect acceptance is `PENDING`.

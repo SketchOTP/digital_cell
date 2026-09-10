@@ -2568,3 +2568,8 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - The D096-v4 population run produces only the bootstrap `150` physical fissions. Across mutation-on/off Resource, Damage, and fixed Resource→Damage campaigns: maximum generation `1`, post-bootstrap fissions `0`, physical deaths `0`; mutation-on has `1,800` lawful opportunities and `18` mutations, mutation-off has `0`.
 - Terminal organisms remain simple/runtime/lifecycle-valid but are below the unchanged `1.35` birth-mass gate; deepest blocker is `INSUFFICIENT_GROWTH`. Genotype-to-phenotype variation is causal, but realized selection cannot be interpreted without turnover.
 - Classification: `D096_V4_PRODUCTION_TURNOVER_NOT_ESTABLISHED_INSUFFICIENT_GROWTH`. Generation-2 heredity, selection, reversal, and final M1-M5 are `NOT_REACHED_GATE13_NATURAL_GENERATION_STOP`; end goal remains `NOT_ESTABLISHED`; shutdown remains `NO — OWNER OVERRIDE ACTIVE`; exact-head CI/artifact and independent Architect acceptance are pending.
+
+## DC-FINAL-001-R10R5 final exact-head seal
+
+- Final governed head: `b648a2a67e50a4b34a70155994ae5fa0155441e6`; exact-head workflow `34490606932 PASS`; artifact `sha256:ab088f51ee01ac48170e49d67c73c74f5801296270a1b6bd2df684543d97114c`.
+- Scientific head remains `4c199ce5983bb79d73f4f2990f22932af3eddb94`; the CI correction was governance-only. The sealed result remains `D096_V4_PRODUCTION_TURNOVER_NOT_ESTABLISHED_INSUFFICIENT_GROWTH`, with reproduction qualified at `7/10` fissions and `7/10` viable pairs and evolution not reached.

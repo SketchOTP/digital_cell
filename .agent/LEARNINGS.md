@@ -1219,3 +1219,8 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Neutral equal allocation is a necessary control: D096-v4 keeps every gain at exactly one while retaining the v3 activated-material expression costs.
 - Robust single-organism reproduction and lawful mutation do not imply population turnover. In the fixed shared medium, D096-v4 daughters can remain geometrically valid while losing structural mass below the unchanged reproduction gate.
 - Mutation counts and genotype-to-phenotype effects can be real while natural selection remains untestable. Differential births/deaths and hereditary frequency change are required before Resource/Damage selection or reversal can be claimed.
+
+## DC-FINAL-001-R10R5 final exact-head seal
+
+- Final governance is sealed at `b648a2a67e50a4b34a70155994ae5fa0155441e6` by workflow `34490606932 PASS` with artifact `sha256:ab088f51ee01ac48170e49d67c73c74f5801296270a1b6bd2df684543d97114c`; the scientific head remains `4c199ce5983bb79d73f4f2990f22932af3eddb94`.
+- The finite-budget v4 repair restores production reproduction but does not by itself establish turnover, selection, reversal, or the end goal; the terminal cause is insufficient growth under the frozen population ecology.
