@@ -1,0 +1,10 @@
+{
+  "breeder_selection": false,
+  "fitness_function": null,
+  "forbidden_controllers": [],
+  "forced_birth_or_death": false,
+  "new_parameters": 0,
+  "population_cap": false,
+  "resource_feedback": false,
+  "status": "PASS"
+}

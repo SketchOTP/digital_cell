@@ -1,0 +1,14 @@
+{
+  "directive": "DC-FINAL-001-R10R5-D096-FINITE-BUDGET-CENTERED-GAIN-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001",
+  "independent_architect_acceptance": "PENDING",
+  "r10_robust_reproduction": "QUALIFIED_7_OF_10_6_OF_10",
+  "r10r4_artifact_sha256": "6c286a895ffea674071bce1e748181a1c8d9587f8c037d26b68b57b9aab85b27",
+  "r10r4_exact_head_ci": {
+    "result": "PASS",
+    "run": 34478405547
+  },
+  "r10r4_governed_head": "c1b573f08cc90d74b3452f0427096d828e431326",
+  "r10r4_scientific_head": "ae18b3e24d475f1791577b07f63b18084402a159",
+  "result_scientific_head": "4c199ce5983bb79d73f4f2990f22932af3eddb94",
+  "starting_governed_head": "c1b573f08cc90d74b3452f0427096d828e431326"
+}

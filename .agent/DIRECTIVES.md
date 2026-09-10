@@ -1240,3 +1240,10 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Gates 1-4 pass. Catalysts are extensive physical material, amount-based gain is scale-dependent, and matched gain-channel decomposition confirms that gain—especially functions 0/1—causally suppresses R10 apposition.
 - D096-v3 is versioned with schema 4, keeps exact v2 A-precursor/activation/maintenance/turnover accounting, and introduces zero new numerical parameters. Historical v1/v2 replay remains semantically exact.
 - Stop boundary reached at Gate 10: continuously active D096-v3 produces `5/10` geometry-valid fissions and `5/10` full-state viable pairs, below unchanged `7/10` and `6/10`. Evolution, selection, reversal, and final integration are not reached; no successor execution starts.
+
+## DC-FINAL-001-R10R5-D096-FINITE-BUDGET-CENTERED-GAIN-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001
+
+- Issued `2026-09-10` by the external Architect from governed head `c1b573f08cc90d74b3452f0427096d828e431326`; R10R4 is accepted and owner override remains active.
+- Authorized scope: prove the fixed simplex allocation versus independent positive-gain mismatch, then use only the zero-parameter centered intensive D096-v4 gain while preserving v3 material/energy semantics and all R10 biology.
+- D096-v4 passes the unchanged robust reproduction gate at `7/10` fissions and `7/10` full-state viable daughter pairs. The fixed population assay then stops at Gate 13: all twelve campaigns reach the prescribed horizon with generation `1`, no post-bootstrap fissions, no physical deaths, and terminal `INSUFFICIENT_GROWTH` below the unchanged mass gate.
+- Resource/Damage selection, reversal, and final integration remain not reached; no successor execution starts.

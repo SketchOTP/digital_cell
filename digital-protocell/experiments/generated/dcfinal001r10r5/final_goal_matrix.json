@@ -1,0 +1,9 @@
+{
+  "D096v4_reproduction": "QUALIFIED_7_OF_10_7_FULL_STATE_VIABLE",
+  "M1": "CLOSED_FROZEN_PRESERVED",
+  "M2": "QUALIFIED_PRESERVED",
+  "M3": "PASS_PRESERVED",
+  "M4_generation2_selection_reversal": "NOT_REACHED_GATE13_NATURAL_GENERATION_STOP",
+  "M5_integrated": "NOT_REACHED_GATE13_NATURAL_GENERATION_STOP",
+  "digital_cell_end_goal": "NOT_ESTABLISHED"
+}

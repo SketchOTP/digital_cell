@@ -1,0 +1,8 @@
+{
+  "all_counted_pairs_full_state_viable": true,
+  "classification": "CATALYST_MATERIAL_AND_CONCENTRATION_PARTITION_CONTINUITY_PASS",
+  "maximum_concentration_delta": 8.673617379884035e-18,
+  "maximum_material_residual": 3.552713678800501e-15,
+  "source": "R10R5 reproduction daughter diagnostics",
+  "status": "PASS"
+}

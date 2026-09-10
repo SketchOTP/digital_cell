@@ -1,0 +1,10 @@
+{
+  "classification": "ADAPTABLE_PRINCIPLE_REFERENCE_ONLY",
+  "external_numerical_parameters_imported": 0,
+  "source": {
+    "relevant_principle": "Finite functional sectors compete for a limited total allocation budget.",
+    "title": "Quantitative proteomic analysis reveals a simple strategy of global resource allocation in bacteria",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4358657/"
+  },
+  "status": "PASS_BOUNDED"
+}

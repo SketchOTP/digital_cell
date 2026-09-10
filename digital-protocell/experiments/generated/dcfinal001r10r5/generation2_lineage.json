@@ -1,0 +1,8 @@
+{
+  "maximum_generation": 1,
+  "physical_deaths": 0,
+  "post_bootstrap_physical_fissions": 0,
+  "reason": "All twelve fixed campaigns reached the end of their prescribed horizon with maximum generation 1, zero post-bootstrap physical fissions, and zero physical deaths. Surviving cohorts remained simple/runtime/lifecycle-valid but below the unchanged 1.35 birth-mass gate; terminal diagnostics classify the deepest blocker as INSUFFICIENT_GROWTH.",
+  "scientific_claim": "NOT_ESTABLISHED",
+  "status": "NOT_REACHED_GATE13_NATURAL_GENERATION_STOP"
+}

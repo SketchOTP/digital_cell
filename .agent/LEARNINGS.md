@@ -1212,3 +1212,10 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Gain channels are not interchangeable: functions 0/1 alone strongly suppress apposition, while function 2 alone retains robust reproduction. A total-gain diagnosis would have hidden that causal asymmetry.
 - Correcting a dimensional mismatch can materially improve an assay without meeting qualification. D096-v3 rises from `1/10` to `5/10`, but the unchanged `7/10`, `6/10` gate remains authoritative.
 - Concentration is an observer calculation only. Dividing by physical area must not normalize, create, destroy, or reset the extensive catalyst material that is partitioned through fission.
+
+## DC-FINAL-001-R10R5 finite-budget centered-gain learning
+
+- A fixed simplex genotype is not a finite functional budget if every nonzero sector receives an independent positive bonus. The centered intensive gain restores the intended tradeoff without changing catalyst material or adding a biological parameter.
+- Neutral equal allocation is a necessary control: D096-v4 keeps every gain at exactly one while retaining the v3 activated-material expression costs.
+- Robust single-organism reproduction and lawful mutation do not imply population turnover. In the fixed shared medium, D096-v4 daughters can remain geometrically valid while losing structural mass below the unchanged reproduction gate.
+- Mutation counts and genotype-to-phenotype effects can be real while natural selection remains untestable. Differential births/deaths and hereditary frequency change are required before Resource/Damage selection or reversal can be claimed.

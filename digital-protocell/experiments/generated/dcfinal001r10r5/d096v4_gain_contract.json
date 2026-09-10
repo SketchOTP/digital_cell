@@ -1,0 +1,11 @@
+{
+  "equation_version": "autopoietic_material_mesh_finite_catalytic_allocation_v4_finite_budget_centered_gain",
+  "gain": "1 + (4*c_i - sum(c))/(0.1+sum(c))",
+  "gain_input": "CATALYST_AMOUNT_DIVIDED_BY_POSITIVE_PHYSICAL_AREA",
+  "material_law": "D096_V3_PRESERVED",
+  "new_numerical_biological_parameters": 0,
+  "scale_invariant": true,
+  "schema_version": 5,
+  "status": "PASS",
+  "versioned": true
+}

@@ -1,0 +1,88 @@
+{
+  "cases": [
+    {
+      "all_positive": true,
+      "concentrations": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gain_sum": 4.0,
+      "gains": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "name": "zero",
+      "total_concentration": 0.0
+    },
+    {
+      "all_positive": true,
+      "concentrations": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "gain_sum": 4.0,
+      "gains": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "name": "neutral",
+      "total_concentration": 1.0
+    },
+    {
+      "all_positive": true,
+      "concentrations": [
+        0.1,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gain_sum": 4.0,
+      "gains": [
+        2.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "name": "skewed",
+      "total_concentration": 0.1
+    },
+    {
+      "all_positive": true,
+      "concentrations": [
+        0.05,
+        0.02,
+        0.01,
+        0.0
+      ],
+      "gain_sum": 4.0,
+      "gains": [
+        1.6666666666666667,
+        1.0,
+        0.7777777777777778,
+        0.5555555555555556
+      ],
+      "name": "mixed",
+      "total_concentration": 0.08
+    }
+  ],
+  "directive": "DC-FINAL-001-R10R5-D096-FINITE-BUDGET-CENTERED-GAIN-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001",
+  "equation": "gain_i = 1 + (4*c_i - C)/(0.1 + C)",
+  "gate": "GATES_1_4_OBSERVER_ONLY",
+  "neutral_gains": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "neutral_sum": 4.0,
+  "new_parameters": 0,
+  "scale_invariant": true
+}

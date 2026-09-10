@@ -1,0 +1,8 @@
+{
+  "concentration_normalization_changes_material_stock": false,
+  "expression_failures": 0,
+  "expression_material_law": "D096_V3_PRESERVED",
+  "fission_catalyst_material_conservation": "PASS",
+  "maximum_active_a_to_w_residual": 1.7285017861468077e-10,
+  "status": "PASS"
+}

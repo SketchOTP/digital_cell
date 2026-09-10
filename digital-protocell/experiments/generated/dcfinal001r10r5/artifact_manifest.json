@@ -1,0 +1,176 @@
+{
+  "directive": "DC-FINAL-001-R10R5-D096-FINITE-BUDGET-CENTERED-GAIN-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001",
+  "files": [
+    {
+      "bytes": 294,
+      "path": "architect_disposition.json",
+      "sha256": "f6f1f4580cbe63c68402b3e7c72d22e7df01783525ee2688ba504f825488cd65"
+    },
+    {
+      "bytes": 695,
+      "path": "authority.json",
+      "sha256": "383c0155a805751a7eea4c7d6990177a5d726afde6a86129b90292c7e4462515"
+    },
+    {
+      "bytes": 1558,
+      "path": "centered_gain_algebra.json",
+      "sha256": "bb10b49b0f9c6b6daf0516fdd0f313cf5552994424fa9505fe077d6b0103d870"
+    },
+    {
+      "bytes": 184,
+      "path": "checkpoint_restart.json",
+      "sha256": "81aadf6574855432743a128140fe9618ff4c45c87d995834f728508c12c2387e"
+    },
+    {
+      "bytes": 1018,
+      "path": "d096v1_v2_v3_historical_parity.json",
+      "sha256": "f81f1ab7798a24cc28803619b915693e10bdd9229321e50c14558c20908d26cc"
+    },
+    {
+      "bytes": 320,
+      "path": "d096v4_fission_continuity.json",
+      "sha256": "4781a51b8f3b826ef5f541c1f76258f1b24dca0f5af489f0b2118f560b420d50"
+    },
+    {
+      "bytes": 403,
+      "path": "d096v4_gain_contract.json",
+      "sha256": "b0034846f5606b8007c92921345c1d8f46875251c176cb10908e2cb53b95ff05"
+    },
+    {
+      "bytes": 1191488,
+      "path": "d096v4_integrated_reproduction.json",
+      "sha256": "90169eb714df365d42a67477c86c2fa20bfde95e1b3aaa67cdf01da363e1d92d"
+    },
+    {
+      "bytes": 276,
+      "path": "d096v4_material_energy_closure.json",
+      "sha256": "0db9fcaebc5f26235c2ad0e3f19f47a550b417e088484b71faf28acfe7d97109"
+    },
+    {
+      "bytes": 195,
+      "path": "daughter_continuation.json",
+      "sha256": "f2796f86564a5fd0e4726abb8d4b4f2f5fd9674153534dfd92259990f3aad3c0"
+    },
+    {
+      "bytes": 206,
+      "path": "development_preservation.json",
+      "sha256": "5def97c98eec2c9cbe6419979c484f376931627897d992baeac2592b7fbd6907"
+    },
+    {
+      "bytes": 204,
+      "path": "environment_a_selection.json",
+      "sha256": "57941f281030d70da512b3203bc35362a73debcd5187703e7678b1146e7732bc"
+    },
+    {
+      "bytes": 204,
+      "path": "environment_b_selection.json",
+      "sha256": "57941f281030d70da512b3203bc35362a73debcd5187703e7678b1146e7732bc"
+    },
+    {
+      "bytes": 204,
+      "path": "environment_dependence.json",
+      "sha256": "57941f281030d70da512b3203bc35362a73debcd5187703e7678b1146e7732bc"
+    },
+    {
+      "bytes": 184,
+      "path": "experiential_memory.json",
+      "sha256": "81aadf6574855432743a128140fe9618ff4c45c87d995834f728508c12c2387e"
+    },
+    {
+      "bytes": 436,
+      "path": "external_prior_art.json",
+      "sha256": "57eafa3b1c5b31c554fde5bd4b1821bf60a3ad6329734014ffbf7dbfe14384d5"
+    },
+    {
+      "bytes": 357,
+      "path": "final_goal_matrix.json",
+      "sha256": "16ea39c0c61df2523505ba5a338d3fb6db08d41ce18d620042c6ef1334bef205"
+    },
+    {
+      "bytes": 393,
+      "path": "fixed_budget_semantics_audit.json",
+      "sha256": "317a39245f4541ef7788f01cf03f15de94217b385cfe24e10919069a1fc256ff"
+    },
+    {
+      "bytes": 226,
+      "path": "forbidden_information_audit.json",
+      "sha256": "4cbae93ea2c7491e89a676c2f58d87abf452ff3570dce930364e49e4752c6434"
+    },
+    {
+      "bytes": 550,
+      "path": "generation2_lineage.json",
+      "sha256": "d0cb3874903031902d8f41b6df8458e548cbcffef329ae9638e4add80f5ec6b9"
+    },
+    {
+      "bytes": 290,
+      "path": "genotype_phenotype_causality.json",
+      "sha256": "6ada4358255db5a81ff0dc2b4a899c7f08939a23da9ad87c4348533cddcba0bc"
+    },
+    {
+      "bytes": 267,
+      "path": "global_material_energy_closure.json",
+      "sha256": "981df1a052d47d796432f8ebcfc496206755ab61b44ad01b35b6d529deb168b8"
+    },
+    {
+      "bytes": 184,
+      "path": "godot_independence.json",
+      "sha256": "81aadf6574855432743a128140fe9618ff4c45c87d995834f728508c12c2387e"
+    },
+    {
+      "bytes": 184,
+      "path": "linux_runtime.json",
+      "sha256": "81aadf6574855432743a128140fe9618ff4c45c87d995834f728508c12c2387e"
+    },
+    {
+      "bytes": 659,
+      "path": "m1_preservation.json",
+      "sha256": "4b769f4af556689105d69388c9cb51e745d3a9d469bfc1de6c32ec3d7bae3d3f"
+    },
+    {
+      "bytes": 211,
+      "path": "m2_preservation.json",
+      "sha256": "51cfcd5dac2ab73a027b9401b339048b2f53509bbf9f746f59724739e36d8423"
+    },
+    {
+      "bytes": 204,
+      "path": "mutation_off_control.json",
+      "sha256": "57941f281030d70da512b3203bc35362a73debcd5187703e7678b1146e7732bc"
+    },
+    {
+      "bytes": 259,
+      "path": "mutation_tradeoff_audit.json",
+      "sha256": "0415f077a8091f9e4c9839cd9e82bdb9093902279ebe59171659ea45beb162da"
+    },
+    {
+      "bytes": 282,
+      "path": "neutral_cost_only_parity.json",
+      "sha256": "8d38dd9f6ed5ab72b651f79ef0cd9be2ae8b01dac16fc108898db7949ac9180e"
+    },
+    {
+      "bytes": 155,
+      "path": "owner_override.json",
+      "sha256": "3b02d87c93bd8558d4132c45491f47d7634b12691cd960d779b6b68ddf84359c"
+    },
+    {
+      "bytes": 35059,
+      "path": "population_turnover.json",
+      "sha256": "0004a09e017cd6e8caf3a45ff23d1410c156131ff42a852c0cd053699d99ac30"
+    },
+    {
+      "bytes": 720,
+      "path": "qualification.json",
+      "sha256": "e13f77276ccbf2f8c4f37631d52b791b90f6866f0e50a913e8b034c46ca6f294"
+    },
+    {
+      "bytes": 204,
+      "path": "reversal.json",
+      "sha256": "57941f281030d70da512b3203bc35362a73debcd5187703e7678b1146e7732bc"
+    },
+    {
+      "bytes": 184,
+      "path": "sensory_embodiment.json",
+      "sha256": "81aadf6574855432743a128140fe9618ff4c45c87d995834f728508c12c2387e"
+    }
+  ],
+  "manifest_excludes_self": true
+}

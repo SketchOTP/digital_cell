@@ -1,0 +1,13 @@
+{
+  "candidate_policy": "1 + (4*c_i - C)/(0.1+C)",
+  "classification": "D096_FIXED_ALLOCATION_FUNCTIONAL_BUDGET_MISMATCH_CONFIRMED",
+  "neutral_candidate_gain": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "neutral_prior_gain": "greater_than_one_for_each_nonzero_sector",
+  "new_numerical_biological_parameters": 0,
+  "prior_policy": "1 + c/(0.1+c) independently boosts every nonzero sector"
+}

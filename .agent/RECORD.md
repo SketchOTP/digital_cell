@@ -1801,3 +1801,14 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - D096-v3 integrated R10 reproduction reaches `5/10` fissions and `5/10` full-state viable pairs, below unchanged `7/10` and `6/10` thresholds. Classification: `D096_V3_INTEGRATED_ROBUST_REPRODUCTION_NOT_ESTABLISHED`.
 - Evolution, selection, reversal, and final integrated M1-M5 are `NOT_REACHED_GATE10_D096_V3_REPRODUCTION_STOP`; end goal remains `NOT_ESTABLISHED`; shutdown recommendation `NO — OWNER OVERRIDE ACTIVE`; next execution `false`.
 - M1 remains closed/frozen/preserved; M2 qualified; M3 preserved; exact R10 D096-off control remains `7/10` and `6/10`. Scientific result head: `ae18b3e24d475f1791577b07f63b18084402a159`; exact-head CI/artifact and independent Architect acceptance pending.
+
+## DEC-DCFINAL001-R10R5-D096-FINITE-BUDGET-GATE13-STOP
+
+- Date: `2026-09-10`
+- Status: `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_GATE13_STOP`
+- Record or decision ID: `DEC-DCFINAL001-R10R5-D096-FINITE-BUDGET-GATE13-STOP`
+- R10R4 authority is accepted at governed head `c1b573f08cc90d74b3452f0427096d828e431326`, workflow `34478405547 PASS`, artifact `sha256:6c286a895ffea674071bce1e748181a1c8d9587f8c037d26b68b57b9aab85b27`; R10R5 owner override remains active.
+- D096-v4 centered intensive gain is versioned with schema `5`, preserves v3 activated-material material/energy semantics, uses no new biological numerical parameters, passes centered algebra, and qualifies integrated reproduction at `7/10` fissions and `7/10` full-state viable pairs.
+- The fixed population assay completes all twelve campaigns. Mutation-on has `1,800` lawful bootstrap opportunities and `18` mutations; mutation-off has `0`. All campaigns remain generation `1` with `0` post-bootstrap physical fissions and `0` physical deaths. Terminal cohorts remain simple/runtime/lifecycle-valid but below the unchanged mass gate; deepest blocker is `INSUFFICIENT_GROWTH`.
+- Classification: `D096_V4_PRODUCTION_TURNOVER_NOT_ESTABLISHED_INSUFFICIENT_GROWTH`. Resource/Damage selection, environment dependence, reversal, and final integrated M1-M5 are `NOT_REACHED_GATE13_NATURAL_GENERATION_STOP`; end goal remains `NOT_ESTABLISHED`; shutdown recommendation `NO — OWNER OVERRIDE ACTIVE`; next execution `false`.
+- Scientific result head: `4c199ce5983bb79d73f4f2990f22932af3eddb94`; governance sealing head and exact-head CI/artifact remain pending at append time.

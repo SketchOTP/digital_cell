@@ -1,0 +1,42 @@
+{
+  "d087": {
+    "v2": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "v3": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "v4": [
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "r10_reproduction_without_d096": {
+    "full_state_viable_daughter_pairs": 6,
+    "geometry_valid_fissions": 7,
+    "growth_qualified": 10,
+    "simple_viable_daughter_pairs": 7
+  },
+  "source": "R10R4 preservation plus R10R5 focused/history-isolation validation",
+  "status": "PASS_PRESERVED"
+}

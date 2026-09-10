@@ -1,0 +1,7 @@
+{
+  "basis": "centered equal-allocation gain is exactly one while v3 activated-material costs remain active",
+  "classification": "D096_CENTERED_NEUTRAL_EQUALS_COST_ONLY_PHYSIOLOGY",
+  "cost_only_reference": "R10R4 sealed cost-only arm",
+  "new_parameters": 0,
+  "status": "PASS"
+}

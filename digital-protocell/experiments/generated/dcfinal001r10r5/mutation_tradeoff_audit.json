@@ -1,0 +1,10 @@
+{
+  "classification": "D096_FINITE_FUNCTIONAL_TRADEOFF_CAUSAL",
+  "observed_mutant_states": [],
+  "required_properties": {
+    "nonuniform_has_gain_above_one": true,
+    "nonuniform_has_gain_below_one": true,
+    "sum_is_four": true
+  },
+  "status": "PASS"
+}
