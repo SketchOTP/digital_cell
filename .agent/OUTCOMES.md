@@ -2594,3 +2594,9 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 ## R10R8 outcome   2026-09-10
 
 Historical D096 specialization is reproducible under its reserve-enabled assay. The reserve-off ablation removes the H reserve endpoint, and the current reserve-on M1 certification is not qualified. Primary classification: D096_FOUR_FUNCTION_SPECIALIZATION_DEPENDS_ON_UNQUALIFIED_RESERVE_PHYSIOLOGY.
+
+## DC-FINAL-001-R10R9 bounded Gate-0 stop — 2026-09-10
+
+- Exact R10R8 replay did not reproduce the sealed reserve-on V4 conclusion. Workflow `34540249273` failed on head `3fd48ba3bf81832fa7ec4630f93e16f4146804b2` because the certifier returned the canonical `7/8` vector `[true,true,false,true,true,true,true,true]`, while the sealed R10R8 record claims `6/8` `[true,false,true,true,true,true,true,false]`.
+- No D091 phase-order candidate was executed. D091-v2, reserve-on M1 acceptance, combined D091+D096 reproduction, reciprocal specialization, turnover, selection, reversal, and final integration remain `NOT_REACHED`.
+- Classification: `R10R8_ENTRY_SEAL_MISMATCH_REQUIRES_ARCHITECT_RECONCILIATION`. End goal remains `NOT_ESTABLISHED`; owner override remains active; next execution is `false`.

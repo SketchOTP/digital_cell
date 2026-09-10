@@ -937,3 +937,9 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Result: historical D096 reciprocal Resource/Damage phenotype reproduced only under reserve-enabled historical assay; function 3 is reserve-dependent; current reserve-on M1 replay is not qualified.
 - Classification: D096_FOUR_FUNCTION_SPECIALIZATION_DEPENDS_ON_UNQUALIFIED_RESERVE_PHYSIOLOGY
 - Production biology unchanged; no successor execution authorized.
+
+## DC-FINAL-001-R10R9 Gate-0 stop — R10R8 entry-seal mismatch
+
+- R10R9 stopped before any D091 phase-order or production biology change. CI run `34540249273` on head `3fd48ba3bf81832fa7ec4630f93e16f4146804b2` failed the exact R10R8 replay assertion.
+- Sealed R10R8 recorded reserve-on V4 `6/8`, vector `[true,false,true,true,true,true,true,false]`; the CI certifier produced `7/8`, vector `[true,true,false,true,true,true,true,true]`, identical to the canonical reserve-OFF V4 vector.
+- This is a substantive authority/evidence conflict, not a workflow-plumbing issue. Reserve-on M1, phase-order causality, D091-v2, combined reproduction, specialization, selection, reversal, and final M1-M5 are `NOT_REACHED` pending Architect reconciliation. End goal remains `NOT_ESTABLISHED`; shutdown remains `NO — OWNER OVERRIDE ACTIVE`; next execution is `false`.

@@ -1,0 +1,17 @@
+{
+  "final_classification": "R10R8_ENTRY_SEAL_MISMATCH_REQUIRES_ARCHITECT_RECONCILIATION",
+  "r10r8_replay": "FAIL",
+  "r10r8_exact_head_authority": "FAIL",
+  "phase_order_root_cause": "NOT_REACHED",
+  "d091_v2_versioned": "NOT_REACHED",
+  "reserve_on_m1": "NOT_REACHED_ENTRY_SEAL_CONFLICT",
+  "reserve_off_canonical_m1": "PRESERVED",
+  "d096_v4": "UNCHANGED",
+  "selection": "NOT_REACHED",
+  "reversal": "NOT_REACHED",
+  "final_integrated_m1_m5": "NOT_REACHED",
+  "digital_cell_end_goal": "NOT_ESTABLISHED",
+  "shutdown_recommended": "NO — OWNER OVERRIDE ACTIVE",
+  "next_execution_started": false,
+  "independent_architect_acceptance": "PENDING"
+}

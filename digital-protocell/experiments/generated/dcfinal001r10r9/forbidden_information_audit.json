@@ -1,0 +1,9 @@
+{
+  "status": "PASS_FOR_UNCHANGED_SCOPE",
+  "production_biology_changed": false,
+  "observer_or_success_feedback_added": false,
+  "reserve_parameter_search": false,
+  "phase_order_candidate_executed": false,
+  "selection_or_reversal_executed": false,
+  "note": "No R10R9 implementation or production execution was started after the Gate-0 stop."
+}

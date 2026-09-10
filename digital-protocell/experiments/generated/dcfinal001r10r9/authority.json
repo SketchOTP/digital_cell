@@ -1,0 +1,13 @@
+{
+  "directive": "DC-FINAL-001-R10R9-D091-SURPLUS-RESERVE-PHASE-ORDER-REQUALIFICATION-D096-SPECIALIZATION-AND-M4-CLOSURE-001",
+  "entry_local_head": "610ee402d9dbac4d0b9a5858c59efe8946de3588",
+  "last_sealed_github_head": "ecf4befc00683301e4ab15f0b5302b4acc33d9be",
+  "r10r7_ci": "34531048042 PASS",
+  "r10r7_artifact": "sha256:52d052dc475b856e9569e55331b6cfa5e231fc7e05637b8c9df4dc9b1978b71a",
+  "r10r8_ci_run": "34540249273 FAILURE",
+  "r10r8_ci_head": "3fd48ba3bf81832fa7ec4630f93e16f4146804b2",
+  "owner_override": "ACTIVE",
+  "gate_0": "STOPPED_ENTRY_SEAL_MISMATCH",
+  "production_biology_changed": false,
+  "r10r9_phase_order_change_started": false
+}

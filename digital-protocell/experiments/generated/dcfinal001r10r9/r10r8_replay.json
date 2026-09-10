@@ -1,0 +1,22 @@
+{
+  "classification": "R10R8_EXACT_HEAD_DIAGNOSTIC_NOT_REPRODUCED",
+  "ci_run": "34540249273",
+  "head": "3fd48ba3bf81832fa7ec4630f93e16f4146804b2",
+  "historical_tradeoff": "NOT_REACHED_IN_THIS_REPLAY",
+  "reserve_dependence": "NOT_REACHED_IN_THIS_REPLAY",
+  "function3_reserve_dependence": "NOT_REACHED_IN_THIS_REPLAY",
+  "reserve_on_v4_expected_from_sealed_r10r8": {
+    "gates": "6/8",
+    "vector": [true, false, true, true, true, true, true, false]
+  },
+  "reserve_on_v4_actual_ci": {
+    "gates": "7/8",
+    "vector": [true, true, false, true, true, true, true, true],
+    "conclusion": "D087_D086_REPRODUCTION_FAILURE"
+  },
+  "canonical_reserve_off_v4": {
+    "gates": "7/8",
+    "vector": [true, true, false, true, true, true, true, true]
+  },
+  "evidence": "The CI replay produced the canonical reserve-OFF V4 vector, not the sealed R10R8 reserve-ON vector. The mismatch is substantive and prevents exact-head acceptance."
+}

@@ -1851,3 +1851,12 @@ Use it for architectural decisions, governance changes, releases, qualification 
 ## R10R8 record   2026-09-10
 
 Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PASS; artifact sha256:52d052dc475b856e9569e55331b6cfa5e231fc7e05637b8c9df4dc9b1978b71a. Diagnostic root: experiments/generated/dcfinal001r10r8/. Production source delta: zero. End goal: NOT_ESTABLISHED.
+
+## DEC-DCFINAL001-R10R9-GATE0-ENTRY-SEAL-MISMATCH
+
+- Date: `2026-09-10`
+- Status: `GOAL_AGENT_BOUNDED_STOP_ENTRY_AUTHORITY_CONFLICT`
+- R10R9 Gate 0 CI replay: workflow `34540249273` failed on head `3fd48ba3bf81832fa7ec4630f93e16f4146804b2`.
+- Sealed R10R8 reserve-on V4: `6/8`, `[true,false,true,true,true,true,true,false]`; CI replay: `7/8`, `[true,true,false,true,true,true,true,true]`.
+- No production biology or phase-order change was made. D091-v2, reserve-on M1 requalification, combined reproduction, specialization, selection, reversal, and final M1-M5 remain `NOT_REACHED`.
+- Final classification: `R10R8_ENTRY_SEAL_MISMATCH_REQUIRES_ARCHITECT_RECONCILIATION`; end goal `NOT_ESTABLISHED`; shutdown `NO — OWNER OVERRIDE ACTIVE`; next execution `false`; independent Architect acceptance `PENDING`.

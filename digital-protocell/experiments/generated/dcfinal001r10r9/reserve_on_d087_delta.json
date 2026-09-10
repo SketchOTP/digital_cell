@@ -1,0 +1,13 @@
+{
+  "status": "ENTRY_SEAL_CONFLICT",
+  "sealed_r10r8_v4": {
+    "gates": "6/8",
+    "vector": [true, false, true, true, true, true, true, false]
+  },
+  "r10r8_ci_replay_v4": {
+    "gates": "7/8",
+    "vector": [true, true, false, true, true, true, true, true]
+  },
+  "delta": "No additional failed predicate relative to canonical reserve-OFF V4 is present in the CI replay; the failed predicate is the canonical V4 predicate at index 2.",
+  "interpretation": "Do not classify reserve-on M1, phase-order causality, or D091-v2 readiness until the sealed manifest and exact CI replay are reconciled."
+}
