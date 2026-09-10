@@ -20,6 +20,8 @@ jobs:
           ref: ${{ github.sha }}
 
       - name: Verify R10R7 authority and diagnostic-only scope
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           start=ecf4befc00683301e4ab15f0b5302b4acc33d9be
