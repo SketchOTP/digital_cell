@@ -1,0 +1,15 @@
+{
+  "d096v2_expression_contract": "PASS",
+  "damage_selection": "NOT_REACHED",
+  "digital_cell_end_goal": "NOT_ESTABLISHED",
+  "environment_dependence": "NOT_REACHED",
+  "final_integrated_m1_m5": "NOT_REACHED",
+  "m1": "PASS_PRESERVED",
+  "m2": "QUALIFIED_PRESERVED",
+  "m3": "PASS_PRESERVED",
+  "natural_generation_2_plus": "NOT_REACHED",
+  "r10_reproduction_without_continuous_d096": "QUALIFIED_PRESERVED",
+  "resource_selection": "NOT_REACHED",
+  "reversal": "NOT_REACHED",
+  "robust_d096_on_v4_reproduction": "FAIL_1_OF_10_1_OF_10"
+}

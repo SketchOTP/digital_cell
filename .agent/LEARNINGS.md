@@ -1196,3 +1196,11 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - In the unchanged production population, D096 expression consumes more structural material than growth restores in every single-environment campaign. The resulting daughters remain far below the mass gate despite valid geometry, apposition, and stress readiness.
 - Genotype-to-phenotype causality and natural selection are separate gates. Natural variants measurably alter physiology, but without realized post-bootstrap births or deaths there is no differential hereditary contribution to interpret.
 - Preplanned downstream campaigns may finish computationally, yet governance must still classify their selection/reversal surfaces as `NOT_REACHED` when the prerequisite generation-turnover gate fails.
+
+## DC-FINAL-001-R10R3 D096 integration learning
+
+- Qualifying reproduction and qualifying expression separately does not qualify their composition. The exact production organism must execute the heritable expression system continuously during the reproduction campaign.
+- D096-v1 structural conversion is causally harmful but not the sole turnover bottleneck. Replacing structural precursor with A improves retained body mass, yet ordinary M1 turnover remains larger and robust neck geometry still collapses under continuous D096 expression.
+- A materially closed biochemical repair can still fail at organism mechanics. D096-v2 removes free catalyst and structural cannibalization, but nine of ten parents remain outside the unchanged apposition range despite large growth multiples.
+- D096-off is not a valid substitute for a repaired hereditary phenotype: it removes both the structural cost and the catalyst-mediated production benefits. Matched v1/off/candidate comparison is necessary to avoid attributing all differences to one sink.
+- A failed integrated reproduction gate forbids population-level evolutionary interpretation. Mutation, selection, reversal, and final coexistence remain `NOT_REACHED`, even though the expression contract itself is valid and version-isolated.

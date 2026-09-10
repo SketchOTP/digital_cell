@@ -1,0 +1,31 @@
+{
+  "comparisons": [
+    {
+      "candidate_catalyst_precursor_a": 14163.713709760856,
+      "candidate_direct_structural_draw": 0.0,
+      "candidate_minus_v1_terminal_structural_mass": 1287.2408478764155,
+      "candidate_not_equivalent_to_off": true,
+      "candidate_terminal_structural_mass": 23891.353388527208,
+      "environment": "RESOURCE",
+      "off_terminal_structural_mass": 13591.178070407048,
+      "v1_direct_structural_draw": 14264.901188778378,
+      "v1_terminal_structural_mass": 22604.112540650793
+    },
+    {
+      "candidate_catalyst_precursor_a": 14485.003236227569,
+      "candidate_direct_structural_draw": 0.0,
+      "candidate_minus_v1_terminal_structural_mass": 1146.9965030586027,
+      "candidate_not_equivalent_to_off": true,
+      "candidate_terminal_structural_mass": 20815.764647697466,
+      "environment": "DAMAGE",
+      "off_terminal_structural_mass": 10138.451139559547,
+      "v1_direct_structural_draw": 14716.128072880518,
+      "v1_terminal_structural_mass": 19668.768144638863
+    }
+  ],
+  "interpretation": "candidate_removes_direct_structural_draw_and_improves_terminal_mass_over_v1_but_does_not_remove_dominant_M1_turnover",
+  "new_parameters": 0,
+  "observer_only": true,
+  "status": "PASS_FEASIBLE_FOR_VERSIONED_TEST",
+  "structural_draw": 0
+}

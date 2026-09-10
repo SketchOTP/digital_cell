@@ -1,0 +1,22 @@
+{
+  "classification": "R10_REPRODUCTION_D096_EXPRESSION_NOT_INTEGRATED_CONFIRMED",
+  "r10_reproduction": {
+    "d096_expression": false,
+    "full_state_daughter_inheritance": true,
+    "growth": true,
+    "r10_signed_stress_fission": true,
+    "r9_refractory_mechanics": true,
+    "reactions": true,
+    "transport": true
+  },
+  "r10r2_population": {
+    "d096_expression": true,
+    "full_state_daughter_inheritance": true,
+    "growth": true,
+    "r10_signed_stress_fission": true,
+    "r9_refractory_mechanics": true,
+    "reactions": true,
+    "transport": true
+  },
+  "status": "PASS"
+}

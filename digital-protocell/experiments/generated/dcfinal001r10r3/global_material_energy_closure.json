@@ -1,0 +1,8 @@
+{
+  "d096v2_expression_closure": "PASS",
+  "final_integrated_m1_m5": "NOT_REACHED_GATE10_STOP",
+  "maximum_absolute_active_A_to_W_residual": 3.778950485866517e-10,
+  "maximum_absolute_structural_residual": 1.1521478882059455e-08,
+  "maximum_absolute_world_N_F_residual": 2.057640813291073e-08,
+  "status": "PASS_FOR_EXECUTED_R10R3_SURFACES"
+}

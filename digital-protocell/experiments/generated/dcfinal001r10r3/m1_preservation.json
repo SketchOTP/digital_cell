@@ -1,0 +1,39 @@
+{
+  "d087": {
+    "v2": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "v3": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "v4": [
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "r10_signed_stress_reproduction": "PRESERVED_7_OF_10_6_OF_10",
+  "r8_closure_repair": "PRESERVED",
+  "r8r1_sign_aware_mechanics": "PRESERVED",
+  "r9_refractory_mechanics": "PRESERVED",
+  "status": "PASS"
+}

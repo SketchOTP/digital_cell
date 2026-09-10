@@ -1,0 +1,21 @@
+{
+  "activation_cost": 0.2,
+  "equation_id": "autopoietic_material_mesh_finite_catalytic_allocation_v2_activated_material",
+  "historical_v1_equation_id": "autopoietic_material_mesh_finite_catalytic_allocation_v1",
+  "historical_v1_schema_version": 2,
+  "maintenance_rate": 1e-05,
+  "material_law": {
+    "additional_activation_overhead": "activation_cost_times_synthesis",
+    "catalyst_precursor": "A",
+    "maintenance": "A_to_W",
+    "precursor_per_synthesized_catalyst": 1.0,
+    "structural_draw": 0,
+    "turnover": "catalyst_to_W"
+  },
+  "new_free_numerical_parameters": 0,
+  "schema_version": 3,
+  "status": "PASS",
+  "synthesis_rate": 0.001,
+  "turnover_rate": 0.0001,
+  "versioned": true
+}

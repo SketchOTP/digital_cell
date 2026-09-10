@@ -1,0 +1,11 @@
+{
+  "non_d096_r10_control": {
+    "full_state_viable_daughter_pairs": 6,
+    "geometry_valid_fissions": 7
+  },
+  "silent_migration": false,
+  "status": "PASS",
+  "v1_equation_and_schema_unchanged": true,
+  "v1_expression_tests": "PASS",
+  "v1_mutation_tests": "PASS"
+}

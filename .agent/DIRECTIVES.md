@@ -1224,3 +1224,11 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - Corrected authority: `R10R1_GATE1_STOP_ACCEPTED`, `R10R1_BIOLOGY_MISMATCH_HYPOTHESIS_DISPROVEN`, and `R10_EVOLUTION_ASSAY_TIMESCALE_DEFECT_REPLAN`. The existing population path already executes R10 biology.
 - Authorized delta: increase only the fixed evolution phase horizon from `2500` to the established production horizon `14778`, prove first-2500-step parity, and execute the unchanged population through lineage turnover, selection, reversal, and final integration only while upstream gates pass.
 - Stop boundary reached at Gate 4: all campaigns remain generation 1 with no post-bootstrap fission, no physical death, and no fission attempts because every surviving daughter cohort remains below the unchanged mass gate. Selection, reversal, and final integration are not reached; no successor execution starts.
+
+## DC-FINAL-001-R10R3-D096-ACTIVATED-MATERIAL-EXPRESSION-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001
+
+- Issued `2026-09-10` by the external Architect from accepted R10R2 governed head `2a9d0307ec9d99e4ae2347b50dd9993eef9fa8c4`; owner override remains active.
+- Authorized scope: quantify the complete structural budget, compare D096-v1 and D096-off, evaluate the zero-parameter A-funded catalyst candidate, and only on causal support create an explicitly versioned D096-v2 while preserving v1 and all R8-R10 biology.
+- Gate 1 confirms the D096-on reproduction integration gap. Budget attribution is `MIXED_CAUSAL`, with D096 structural conversion a material contributor and M1 turnover the dominant flux. D096-v1 integrated reproduction is `0/10` fissions and `0/10` viable pairs.
+- D096-v2 is versioned, has zero structural draw, accounts catalyst precursor from A plus frozen activation/maintenance costs and turnover-to-W, and introduces zero new numerical parameters. Historical v1 and non-D096 R10 behavior remain isolated.
+- Stop boundary reached at Gate 10: D096-v2 continuously ON yields `1/10` geometry-valid fissions and `1/10` full-state viable pair, below unchanged `7/10` and `6/10` thresholds. Evolution, selection, reversal, and final integration are not reached; no successor execution starts.

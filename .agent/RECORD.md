@@ -1776,3 +1776,16 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Classification: `R10R2_GENERATION_TURNOVER_NOT_ESTABLISHED_DAUGHTER_STRUCTURAL_ATTRITION`. D096 variation is physically causal, but Resource/Damage selection, environment dependence, reversal, and final integrated M1-M5 are `NOT_REACHED_GATE4_STOP`.
 - M1 remains closed/frozen/preserved; M2 qualified; M3 preserved; R10 reproduction remains `7/10` and `6/10`. End goal remains `NOT_ESTABLISHED`; shutdown recommendation `NO — OWNER OVERRIDE ACTIVE`; next execution `false`; exact-head CI/artifact and independent Architect acceptance remain pending.
 - Scientific result head: `fbecdfe0fac30d090861ec1366bd78eee7cf797a`.
+
+## DEC-DCFINAL001-R10R3-D096-ACTIVATED-MATERIAL-GATE10-STOP
+
+- Date: `2026-09-10`
+- Status: `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_GATE10_STOP`
+- Record or decision ID: `DEC-DCFINAL001-R10R3-D096-ACTIVATED-MATERIAL-GATE10-STOP`
+- R10R2 authority is externally accepted at governed head `2a9d0307ec9d99e4ae2347b50dd9993eef9fa8c4`, workflow `34428948113 PASS`, and artifact `sha256:6dfa72dc8728b6f8af5f6a7c574327ab9f108059eb9ee574d130a9f98708eefb`.
+- `R10_REPRODUCTION_D096_EXPRESSION_NOT_INTEGRATED_CONFIRMED`. Matched structural budgets close and classify the daughter attrition as `MIXED_CAUSAL`; D096-v1 structural conversion is a material contributor, while M1 turnover is the dominant sink.
+- D096-v1 integrated reproduction is `0/10` fissions and `0/10` viable pairs. Versioned D096-v2 introduces zero parameters, moves catalyst precursor to A with explicit activation/maintenance/turnover accounting, draws zero structural material, and preserves v1 semantics.
+- D096-v2 integrated R10 reproduction reaches `1/10` fissions and `1/10` full-state viable pair, below unchanged `7/10` and `6/10` thresholds. Nine arms remain outside apposition range.
+- Classification: `D096_V2_INTEGRATED_ROBUST_REPRODUCTION_NOT_ESTABLISHED`. Evolution, selection, reversal, and final integrated M1-M5 are `NOT_REACHED_GATE10_STOP`; end goal remains `NOT_ESTABLISHED`; shutdown recommendation `NO — OWNER OVERRIDE ACTIVE`; next execution `false`.
+- M1 remains closed/frozen/preserved; M2 qualified; M3 preserved; exact R10 control remains `7/10` and `6/10`; D-087 vector remains `[true,true,false,true,true,true,true,true]`.
+- Scientific result head: `895d89f35455ea109e9da288105e71736f616bf3`; exact-head CI/artifact and independent Architect acceptance remain pending.

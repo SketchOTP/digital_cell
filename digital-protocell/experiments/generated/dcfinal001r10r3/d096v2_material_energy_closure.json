@@ -1,0 +1,10 @@
+{
+  "expression_failures": 0,
+  "integrated_activation_and_maintenance_a": 361.4882634653249,
+  "integrated_catalyst_precursor_a": 1798.5238632322507,
+  "integrated_turnover_waste": 17.83490818874141,
+  "maximum_absolute_active_motor_A_to_W_residual": 1.440332297875102e-10,
+  "one_step_contract_tests": "PASS",
+  "status": "PASS",
+  "structural_draw": 0
+}

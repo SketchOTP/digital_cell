@@ -1,0 +1,15 @@
+{
+  "classification": "D096_V2_INTEGRATED_ROBUST_REPRODUCTION_NOT_ESTABLISHED",
+  "d096_structural_conversion_causal": "PASS_MATERIAL_CONTRIBUTOR",
+  "d096v1_integrated_reproduction": "0_FISSIONS_0_VIABLE_PAIRS",
+  "d096v2_integrated_reproduction": "1_FISSION_1_VIABLE_PAIR",
+  "digital_cell_end_goal": "NOT_ESTABLISHED",
+  "directive": "DC-FINAL-001-R10R3-D096-ACTIVATED-MATERIAL-EXPRESSION-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001",
+  "downstream_gates": "NOT_REACHED_GATE10_STOP",
+  "independent_architect_acceptance": "PENDING",
+  "next_execution_started": false,
+  "robust_d096_on_v4_reproduction": "FAIL",
+  "shutdown_recommended": "NO \u2014 OWNER OVERRIDE ACTIVE",
+  "status": "GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_GATE10_STOP",
+  "structural_attrition_classification": "MIXED_CAUSAL"
+}

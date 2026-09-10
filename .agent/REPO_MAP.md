@@ -233,3 +233,11 @@
 - `digital-protocell/experiments/dcfinal001_r10r2_evidence.py` — deterministic R10R2 evidence generator for horizon-only scope, exact prefix parity, Gate-4 turnover stop, closure, preservation, and qualification.
 - `digital-protocell/experiments/generated/dcfinal001r10r2/` — R10R2 authority, horizon/prefix, turnover, D096 phenotype, closure, preservation, stopped-selection/reversal, final matrix, qualification, and manifest evidence.
 - `.github/workflows/dc-final-001-r10r2.yml` — exact-head Linux R10 authority/scope, short-prefix and long-horizon replay, reproduction/M1-M3 preservation, D-087, PR #44, evidence reproducibility, and artifact upload.
+- `digital-protocell/crates/chemistry-core/src/d096_allocation.rs` — preserves historical D096-v1 and adds explicitly versioned D096-v2 activated-material catalyst synthesis with precursor/activation/maintenance/turnover ledgers.
+- `digital-protocell/crates/chemistry-core/src/material_mesh.rs` — explicit opt-in stamping for the D096-v2 equation/schema identity; historical allocation stamping remains unchanged.
+- `digital-protocell/examples/dcfinal001_r10r3_d096v1_reproduction.rs` — exact ten-arm R10 production campaign with continuous neutral D096-v1 expression and mutation off.
+- `digital-protocell/examples/dcfinal001_r10r3_budget_diagnostics.rs` — matched Resource/Damage generation-1 structural and activated-energy budget decomposition for D096-v1, D096-off, and the observer-only activated-material candidate.
+- `digital-protocell/examples/dcfinal001_r10r3_d096v2_reproduction.rs` — decisive ten-arm R10 production campaign with continuous versioned D096-v2 expression and mutation off.
+- `digital-protocell/experiments/dcfinal001_r10r3_evidence.py` — deterministic R10R3 evidence generator sealing integration, structural attribution, versioned chemistry, failed robust reproduction, and downstream Gate-10 stop.
+- `digital-protocell/experiments/generated/dcfinal001r10r3/` — compact R10R3 authority, structural budget, v1/v2 reproduction, closure, preservation, stopped evolution, final matrix, and qualification evidence.
+- `.github/workflows/dc-final-001-r10r3.yml` — exact-head Linux R10R3 authority, deterministic v1/budget/v2 replay, R10/D096 preservation, D-087, PR #44, evidence reproducibility, and artifact upload.

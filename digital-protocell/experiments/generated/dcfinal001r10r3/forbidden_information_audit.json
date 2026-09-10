@@ -1,0 +1,14 @@
+{
+  "breeder": false,
+  "environment_sensitive_expression": false,
+  "fitness_score": false,
+  "forced_birth_or_death": false,
+  "minimum_body_rescue": false,
+  "new_free_numerical_parameters": 0,
+  "observer_feedback": false,
+  "population_cap": false,
+  "pr_44": "OPEN_DRAFT_UNMERGED_UNTOUCHED",
+  "protected_mutant": false,
+  "status": "PASS",
+  "target_body_size": false
+}

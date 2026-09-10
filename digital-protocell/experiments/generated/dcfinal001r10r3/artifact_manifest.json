@@ -1,0 +1,172 @@
+{
+  "directive": "DC-FINAL-001-R10R3-D096-ACTIVATED-MATERIAL-EXPRESSION-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001",
+  "file_count_excluding_manifest_and_raw": 33,
+  "files": [
+    {
+      "bytes": 1296,
+      "path": "activated_material_counterfactual.json",
+      "sha256": "ad79f12b1492e4524b92889d63802ea4a3da6a607cbf5469275fb040e45f60e8"
+    },
+    {
+      "bytes": 306,
+      "path": "architect_disposition.json",
+      "sha256": "a83ceef87e9d719312701295d2fcb7bc255c5bde126349fa392be1c33a23b811"
+    },
+    {
+      "bytes": 730,
+      "path": "authority.json",
+      "sha256": "de5ac6a7052cd94291a9606f89a615b26a6a407d9fba3efb843efe19f77754d1"
+    },
+    {
+      "bytes": 252,
+      "path": "checkpoint_restart.json",
+      "sha256": "330e033a02a68269c1aefb5ef9690376339605e27510ec5da3f2ce1cacdd93d0"
+    },
+    {
+      "bytes": 269,
+      "path": "d096v1_historical_parity.json",
+      "sha256": "07191b27c0c4b1b63e32abb574da75a4c877012489162177b3668169a049100d"
+    },
+    {
+      "bytes": 16363,
+      "path": "d096v1_integrated_reproduction.json",
+      "sha256": "cd7df58f02e347a27ac2f3ff29ff237413d954cffd691311a95975fd732242c7"
+    },
+    {
+      "bytes": 701,
+      "path": "d096v2_expression_contract.json",
+      "sha256": "afd851579bc7ef2228644a9a054f37eae87dbba4a80da74084a019fd6381e94e"
+    },
+    {
+      "bytes": 189988,
+      "path": "d096v2_integrated_reproduction.json",
+      "sha256": "cbb89156ff3351b2ae5c38118ab14966089712bdcaa771f2c24d4b5c5a2e8bb3"
+    },
+    {
+      "bytes": 357,
+      "path": "d096v2_material_energy_closure.json",
+      "sha256": "5336b4043befe35b62759dc7d41fc810cd477c4c8a752806b4ed7ca7b9d8ef30"
+    },
+    {
+      "bytes": 173488,
+      "path": "daughter_continuation.json",
+      "sha256": "c6c354fee53d526f5bd944517628d63c733c970b4957dc7977237726d8b0f26c"
+    },
+    {
+      "bytes": 234,
+      "path": "development_preservation.json",
+      "sha256": "22c335e3e25fc91f5c6451e7c7234eef36a48f4fb737149a395d775a392bbc2b"
+    },
+    {
+      "bytes": 179,
+      "path": "environment_a_selection.json",
+      "sha256": "e698818e6d996dba5620e9a0bf90167efa8191637db3dccf6c1f013f59611c94"
+    },
+    {
+      "bytes": 179,
+      "path": "environment_b_selection.json",
+      "sha256": "e698818e6d996dba5620e9a0bf90167efa8191637db3dccf6c1f013f59611c94"
+    },
+    {
+      "bytes": 179,
+      "path": "environment_dependence.json",
+      "sha256": "e698818e6d996dba5620e9a0bf90167efa8191637db3dccf6c1f013f59611c94"
+    },
+    {
+      "bytes": 253,
+      "path": "experiential_memory.json",
+      "sha256": "f63d0d0aae2174178d2ba7e2e7f083b6f0c5a6db0933cde8296d3b1fef2791c3"
+    },
+    {
+      "bytes": 233,
+      "path": "external_prior_art.json",
+      "sha256": "e811e0733ec767029b1ba73ad764dc8c15af14ce0490d7638cf8a0ecd17437bf"
+    },
+    {
+      "bytes": 538,
+      "path": "final_goal_matrix.json",
+      "sha256": "63ecb6ec34599b640adec801b5ed6ffdceb932612a79d643b9512e8c428da25f"
+    },
+    {
+      "bytes": 377,
+      "path": "forbidden_information_audit.json",
+      "sha256": "a1539380a154952464895ac4f1e9755988fda3729e1f21e79f6077d857aa01cf"
+    },
+    {
+      "bytes": 179,
+      "path": "generation2_lineage.json",
+      "sha256": "e698818e6d996dba5620e9a0bf90167efa8191637db3dccf6c1f013f59611c94"
+    },
+    {
+      "bytes": 179,
+      "path": "genotype_phenotype_causality.json",
+      "sha256": "e698818e6d996dba5620e9a0bf90167efa8191637db3dccf6c1f013f59611c94"
+    },
+    {
+      "bytes": 343,
+      "path": "global_material_energy_closure.json",
+      "sha256": "9f8e1b062b2d904258101a15277c998d471669db98792024b38d2d17f4b0ec0e"
+    },
+    {
+      "bytes": 252,
+      "path": "godot_independence.json",
+      "sha256": "97a0c97a17e7346361b8da282022f6bcd5b477cafadbf7b1952e85ed69f220a8"
+    },
+    {
+      "bytes": 593,
+      "path": "integration_boundary.json",
+      "sha256": "bf4eabe538de71ecedb9f8a22cf8c9993f36ac568ab38b82ecc033af89b64055"
+    },
+    {
+      "bytes": 247,
+      "path": "linux_runtime.json",
+      "sha256": "ebb81412a3381b41ad0190186a73618f18a4286e21b52b23a6527e160591a05d"
+    },
+    {
+      "bytes": 569,
+      "path": "m1_preservation.json",
+      "sha256": "cf41b0af134012bc96459e4d89060b085be5df9ba8ee09c3d9b3426b677ba2ab"
+    },
+    {
+      "bytes": 230,
+      "path": "m2_preservation.json",
+      "sha256": "9b931293fe9b2087c1e0590a9a8cbf9399814ec695ffa4cdcebeac0562ec3569"
+    },
+    {
+      "bytes": 179,
+      "path": "mutation_off_control.json",
+      "sha256": "e698818e6d996dba5620e9a0bf90167efa8191637db3dccf6c1f013f59611c94"
+    },
+    {
+      "bytes": 155,
+      "path": "owner_override.json",
+      "sha256": "3b02d87c93bd8558d4132c45491f47d7634b12691cd960d779b6b68ddf84359c"
+    },
+    {
+      "bytes": 179,
+      "path": "population_turnover.json",
+      "sha256": "e698818e6d996dba5620e9a0bf90167efa8191637db3dccf6c1f013f59611c94"
+    },
+    {
+      "bytes": 816,
+      "path": "qualification.json",
+      "sha256": "322458cc73e9b37cd011f17a0d47caff37ab06408919cc2c6cf5c2d44f13b985"
+    },
+    {
+      "bytes": 179,
+      "path": "reversal.json",
+      "sha256": "e698818e6d996dba5620e9a0bf90167efa8191637db3dccf6c1f013f59611c94"
+    },
+    {
+      "bytes": 252,
+      "path": "sensory_embodiment.json",
+      "sha256": "83910ea5323de1e788f0128992dc268871f4cd921220a69480b34f470884d1d6"
+    },
+    {
+      "bytes": 8304,
+      "path": "structural_budget_decomposition.json",
+      "sha256": "dec1eb226f1f2a9b2049f45b15193894f089fcf35916bdf44e96aa2a15311fe2"
+    }
+  ],
+  "result_scientific_head": "895d89f35455ea109e9da288105e71736f616bf3"
+}
