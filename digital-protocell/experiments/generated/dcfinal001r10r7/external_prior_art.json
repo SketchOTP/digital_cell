@@ -1,0 +1,5 @@
+{
+  "implementation_parameters_imported": 0,
+  "note": "R10R7 uses only project-internal assay and frozen biology; no external numerical parameter was imported.",
+  "status": "REFERENCE_ONLY"
+}

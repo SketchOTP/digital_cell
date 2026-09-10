@@ -197,6 +197,14 @@ name = "dcfinal001_r10r6_evolution"
 path = "../../examples/dcfinal001_r10r6_evolution.rs"
 
 [[example]]
+name = "dcfinal001_r10r7_variant_feasibility"
+path = "../../examples/dcfinal001_r10r7_variant_feasibility.rs"
+
+[[example]]
+name = "dcfinal001_r10r7_evolution"
+path = "../../examples/dcfinal001_r10r7_evolution.rs"
+
+[[example]]
 name = "dcfinal001_r5r1_strain_contrast"
 path = "../../examples/dcfinal001_r5r1_strain_contrast.rs"
 

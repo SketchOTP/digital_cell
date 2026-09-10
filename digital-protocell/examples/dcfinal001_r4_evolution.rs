@@ -35,6 +35,7 @@ const DIRECTIVE: &str =
 const TEMPLATE_STEPS: usize = 6_500;
 const PHASE_STEPS: usize = 2_500;
 const R10R2_PHASE_STEPS: usize = 14_778;
+const R10R7_SELECTION_STEPS: usize = 29_556;
 const R10_PREFIX_STEPS: usize = 2_500;
 const FOUNDER_MULTIPLICITY: u64 = 150;
 const REPLICATES: u64 = 2;
@@ -2603,6 +2604,7 @@ fn r10_campaign(
     expression_path: D096ExpressionPath,
     founder_multiplicity: u64,
     boundary_mode: PopulationBoundaryMode,
+    forced_genotype: Option<AllocationGenotype>,
 ) -> Value {
     let campaign_seed = splitmix64(
         replicate
@@ -2630,6 +2632,16 @@ fn r10_campaign(
         &mut ledger,
         expression_path,
     );
+    if let Some(genotype) = forced_genotype {
+        for cohort in &mut cohorts {
+            cohort
+                .mesh
+                .finite_allocation
+                .as_mut()
+                .expect("R10 allocation")
+                .genotype = genotype;
+        }
+    }
     let mut next_id = 10_000;
     let mut world = OpenMedium::new(sequence[0]);
     let initial_organism_n = organism_amount(&cohorts, 'n');
@@ -2819,6 +2831,7 @@ fn run_r10_evolution_with_horizon(
                         expression_path,
                         FOUNDER_MULTIPLICITY,
                         boundary_mode,
+                        None,
                     )
                 }));
             }
@@ -2862,6 +2875,53 @@ fn run_r10_evolution_with_horizon(
     fs::write(output, serde_json::to_vec_pretty(&value).unwrap()).unwrap();
 }
 
+pub fn run_r10r7_variant_feasibility(default_output: &str, panel_path: &str) {
+    let panel: Vec<AllocationGenotype> =
+        serde_json::from_slice(&fs::read(panel_path).expect("R10R7 natural-variant panel"))
+            .expect("valid R10R7 natural-variant panel");
+    let (template, plasticity, original_birth_mass, template_step) =
+        r10_closure::r10_seed3_fission_state();
+    let mut jobs = Vec::new();
+    for (index, genotype) in panel.iter().copied().enumerate() {
+        for environment in [Environment::Resource, Environment::Damage] {
+            let template = template.clone();
+            let plasticity = plasticity.clone();
+            jobs.push(std::thread::spawn(move || {
+                r10_campaign(
+                    &template,
+                    &plasticity,
+                    original_birth_mass,
+                    template_step,
+                    &[environment],
+                    false,
+                    10_000 + index as u64,
+                    R10R2_PHASE_STEPS,
+                    D096ExpressionPath::V4FiniteBudgetCentered,
+                    FOUNDER_MULTIPLICITY,
+                    PopulationBoundaryMode::FixedConcentrationBoundary,
+                    Some(genotype),
+                )
+            }));
+        }
+    }
+    let campaigns = jobs
+        .into_iter()
+        .map(|job| job.join().expect("R10R7 feasibility campaign"))
+        .collect::<Vec<_>>();
+    fs::write(
+        default_output,
+        serde_json::to_vec_pretty(&json!({
+            "directive": "DC-FINAL-001-R10R7-NATURAL-VARIANT-CROSS-ENVIRONMENT-FEASIBILITY-TWO-WINDOW-SELECTION-REVERSAL-AND-END-GOAL-CLOSURE-001",
+            "panel": panel,
+            "phase_steps": R10R2_PHASE_STEPS,
+            "population_boundary_mode": PopulationBoundaryMode::FixedConcentrationBoundary.label(),
+            "campaigns": campaigns,
+        }))
+        .unwrap(),
+    )
+    .unwrap();
+}
+
 pub fn run_r10_evolution() {
     run_r10_evolution_with_horizon(
         "/tmp/dcfinal001_r10_evolution.json",
@@ -2902,6 +2962,16 @@ pub fn run_r10r6_evolution() {
     );
 }
 
+pub fn run_r10r7_evolution() {
+    run_r10_evolution_with_horizon(
+        "/tmp/dcfinal001_r10r7_evolution.json",
+        "DC-FINAL-001-R10R7-NATURAL-VARIANT-CROSS-ENVIRONMENT-FEASIBILITY-TWO-WINDOW-SELECTION-REVERSAL-AND-END-GOAL-CLOSURE-001",
+        R10R7_SELECTION_STEPS,
+        D096ExpressionPath::V4FiniteBudgetCentered,
+        PopulationBoundaryMode::FixedConcentrationBoundary,
+    );
+}
+
 /// R10R3 Gates 2, 4, and 5: matched generation-1 production daughters under
 /// current D096-v1, D096-off, and the observer-only activated-material
 /// candidate. The candidate is not a production schema and mutation is off.
@@ -2937,6 +3007,7 @@ pub fn run_r10r3_budget_diagnostics() {
                     expression_path,
                     FOUNDER_MULTIPLICITY,
                     PopulationBoundaryMode::RateReinterpretation,
+                    None,
                 )
             }));
         }

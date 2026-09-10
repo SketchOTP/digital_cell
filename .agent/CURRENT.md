@@ -924,3 +924,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Implementation/evidence head `7406d0e2f217c7bdfad9b033d81fc47d71cb6a87`; exact-head workflow `34511562236 PASS`; uploaded artifact `sha256:cb12d3f1696048f247cb448b30e7c7f4202726b0dd10ca9f9216a05806fbd149`.
 - The fixed-boundary assay classification remains `D096_FIXED_BOUNDARY_TURNOVER_ESTABLISHED_SELECTION_NOT_ESTABLISHED`: maximum generation `2`, one post-bootstrap fission in one Resource replicate, no replicated Resource/Damage selection, no reversal, and final integrated M1-M5 `NOT_REACHED`.
 - CI validated the R10R6 assay, preservation surfaces, evidence manifest, and formatting. PR #44 remains open, draft, unmerged, and untouched; next execution is `false`; independent Architect acceptance is `PENDING`.
+
+## DC-FINAL-001-R10R7 natural-variant feasibility — bounded Gate-4 stop
+
+- R10R6 authority is accepted at governed head `86a113e33f1f3e7307bc06721ca9d62812123c0a`, scientific head `7406d0e2f217c7bdfad9b033d81fc47d71cb6a87`, CI `34512966061 PASS`, artifact `sha256:78cd0b8b037ad8fe38ee1a6ebcc2968c34fcf35fa6b0db553ffef2f638c27bda`.
+- The sealed natural-variant panel contains `18` unique lawful mutation offspring. Matched Resource/Damage feasibility runs complete at `14778` steps with mutation off and fixed-boundary ecology.
+- No panel variant shows an opposite-signed relative reproduction-linked response or structural-mass response between Resource and Damage. One diagnostic variant reproduces in Damage but not Resource; this is recorded as an outcome difference without a qualifying tradeoff because the Resource response is not oppositely disadvantaged.
+- Gate 4 stops R10R7 before the conditional `29556`-step selection extension. Selection, reversal, and final integrated M1-M5 remain `NOT_REACHED`; no successor execution starts. PR #44 remains open, draft, unmerged, and untouched; owner shutdown override remains active; independent Architect acceptance is `PENDING`.

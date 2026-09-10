@@ -1,0 +1,10 @@
+{
+  "classification": "NATURAL_D096_VARIANTS_LACK_ENVIRONMENT_DEPENDENT_REPRODUCTIVE_TRADEOFF",
+  "natural_selection_established": false,
+  "opposite_signed_growth_variants": [],
+  "panel_count": 18,
+  "reason": "No opposite signed relative reproduction-linked response was observed across the sealed natural-variant panel.",
+  "reproduction_or_death_difference_without_tradeoff": [
+    0
+  ]
+}

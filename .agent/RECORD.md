@@ -1839,3 +1839,12 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Exact-head workflow: `34511562236 PASS`
 - Artifact: `sha256:cb12d3f1696048f247cb448b30e7c7f4202726b0dd10ca9f9216a05806fbd149`
 - R10R6 fixed-boundary ecology establishes one natural generation-2 Resource lineage but not replicated Resource/Damage selection, reversal, or final integrated M1-M5. M1 remains closed/frozen/preserved; M2 qualified; M3 preserved; PR #44 remains open, draft, unmerged, and untouched; next execution is `false`; independent Architect acceptance is `PENDING`.
+
+## DEC-DCFINAL001-R10R7-GATE4-FEASIBILITY-STOP
+
+- Date: `2026-09-10`
+- Status: `GOAL_AGENT_PROVISIONAL_BOUNDED_NEGATIVE_TRADEOFF_NOT_ESTABLISHED`
+- Directive: `DC-FINAL-001-R10R7-NATURAL-VARIANT-CROSS-ENVIRONMENT-FEASIBILITY-TWO-WINDOW-SELECTION-REVERSAL-AND-END-GOAL-CLOSURE-001`
+- Starting governed authority: `86a113e33f1f3e7307bc06721ca9d62812123c0a`; R10R6 scientific head `7406d0e2f217c7bdfad9b033d81fc47d71cb6a87`; R10R6 CI `34512966061 PASS`; R10R6 artifact `sha256:78cd0b8b037ad8fe38ee1a6ebcc2968c34fcf35fa6b0db553ffef2f638c27bda`.
+- The sealed `18`-variant natural mutation panel completed matched Resource/Damage diagnostic campaigns. No opposite-signed relative reproduction-linked response or structural-mass response was found. One Damage-only reproduction difference is recorded but does not satisfy the preregistered tradeoff criterion.
+- Classification: `NATURAL_D096_VARIANTS_LACK_ENVIRONMENT_DEPENDENT_REPRODUCTIVE_TRADEOFF`. The two-window extension, selection, reversal, and final integrated M1-M5 are `NOT_REACHED`; no biology, environment, or mutation parameter changed; shutdown remains `NO — OWNER OVERRIDE ACTIVE`; next execution is `false`; exact-head CI and independent Architect acceptance are pending.

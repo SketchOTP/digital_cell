@@ -1,0 +1,4 @@
+{
+  "reason": "Gate 4 feasibility failed; R10R7 forbids the two-window extension and all downstream selection/reversal/final-integrated stages.",
+  "status": "NOT_REACHED"
+}

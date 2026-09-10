@@ -1,0 +1,10 @@
+{
+  "breeder_selection": false,
+  "fitness_function": null,
+  "forced_birth": false,
+  "forced_death": false,
+  "panel_outcome_used_to_modify_biology": false,
+  "population_feedback": false,
+  "protected_mutant": false,
+  "status": "PASS"
+}

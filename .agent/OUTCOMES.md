@@ -2585,3 +2585,9 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 
 - Exact implementation/evidence head `7406d0e2f217c7bdfad9b033d81fc47d71cb6a87` passed workflow `34511562236`; artifact `sha256:cb12d3f1696048f247cb448b30e7c7f4202726b0dd10ca9f9216a05806fbd149`.
 - Final bounded result: `D096_FIXED_BOUNDARY_TURNOVER_ESTABLISHED_SELECTION_NOT_ESTABLISHED`. Maximum generation is `2` with one post-bootstrap physical fission in one Resource replicate; replicated Resource/Damage selection, environment dependence, reversal, and integrated M1-M5 remain `NOT_ESTABLISHED` or `NOT_REACHED`.
+
+## DC-FINAL-001-R10R7 natural-variant feasibility — provisional bounded negative
+
+- The R10R7 feasibility runner completed all `18 × 2` matched natural-variant/environment campaigns at the unchanged `14778`-step horizon. The panel was derived only from sealed R10R6 lawful mutation offspring; no hand-authored winner or parameter sweep was used.
+- Relative structural accumulation against sealed neutral controls has the same sign in Resource and Damage for every panel variant. No opposite-signed relative response in physical reproduction/death, time-to-gate, or mass accumulation was established. The feasibility classification is `NATURAL_D096_VARIANTS_LACK_ENVIRONMENT_DEPENDENT_REPRODUCTIVE_TRADEOFF`.
+- The conditional two-window selection assay was not authorized by Gate 4 and remains `NOT_REACHED`; downstream selection, environment dependence, reversal, and final integration remain unestablished. Evidence is sealed under `digital-protocell/experiments/generated/dcfinal001r10r7/` pending exact-head CI and Architect acceptance.

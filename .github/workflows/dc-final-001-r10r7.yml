@@ -1,0 +1,157 @@
+name: DC-FINAL-001-R10R7 natural-variant feasibility
+
+on:
+  push:
+    branches: [codex/dc-final-001-r10r7-natural-variant-feasibility]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  r10r7-feasibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Verify R10R6 authority and R10R7 bounded scope
+        run: |
+          set -euo pipefail
+          start=86a113e33f1f3e7307bc06721ca9d62812123c0a
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - <<'PY'
+          import subprocess
+          start = "86a113e33f1f3e7307bc06721ca9d62812123c0a"
+          allowed = (
+              '.agent/',
+              '.github/workflows/dc-final-001-r10r7.yml',
+              'digital-protocell/crates/regulatory-core/Cargo.toml',
+              'digital-protocell/examples/dcfinal001_r4_evolution.rs',
+              'digital-protocell/examples/dcfinal001_r10r7_evolution.rs',
+              'digital-protocell/examples/dcfinal001_r10r7_variant_feasibility.rs',
+              'digital-protocell/experiments/dcfinal001_r10r7_evidence.py',
+              'digital-protocell/experiments/generated/dcfinal001r10r7/',
+          )
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{start}..HEAD'], text=True
+          ).splitlines()
+          bad = [path for path in changed if not any(path.startswith(prefix) for prefix in allowed)]
+          assert not bad, bad
+          PY
+          gh run view 34512966061 --repo SketchOTP/digital_cell \
+            --json conclusion,headSha --jq '.conclusion + " " + .headSha' \
+            | grep '^success 86a113e33f1f3e7307bc06721ca9d62812123c0a$'
+          gh pr view 44 --repo SketchOTP/digital_cell \
+            --json state,isDraft,mergedAt,headRefOid > "$RUNNER_TEMP/pr44.json"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          pr = json.loads((Path(os.environ['RUNNER_TEMP']) / 'pr44.json').read_text())
+          assert pr['state'] == 'OPEN' and pr['isDraft'] is True and pr['mergedAt'] is None, pr
+          PY
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Install sanctioned Rust toolchain
+        run: |
+          rustup toolchain install 1.89.0 --profile minimal --no-self-update
+          rustup component add --toolchain 1.89.0 rustfmt
+
+      - name: Build and run sealed natural-variant feasibility panel
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          raw = json.loads(Path('experiments/generated/dcfinal001r10r6/raw_r10r6_population.json').read_text())
+          seen = []
+          provenance = []
+          for campaign in raw['campaigns']:
+              for event in campaign['ledger'].get('mutation_events', []):
+                  genotype = event['offspring']
+                  key = tuple(genotype)
+                  if key in seen:
+                      continue
+                  seen.append(key)
+                  provenance.append({
+                      'genotype': genotype,
+                      'campaign_environment': campaign['environment_sequence'],
+                      'replicate': campaign['replicate'],
+                      'step': event['step'],
+                      'seed': event['seed'],
+                      'source_index': event['source_index'],
+                      'target_index': event['target_index'],
+                      'transferred': event['transferred'],
+                  })
+          assert len(seen) == 18, len(seen)
+          Path('${{ runner.temp }}/r10r7_panel.json').write_text(json.dumps(seen))
+          Path('${{ runner.temp }}/r10r7_panel_metadata.json').write_text(json.dumps(provenance, indent=2))
+          PY
+          cargo +1.89.0 run --locked --release -q -p regulatory-core \
+            --example dcfinal001_r10r7_variant_feasibility -- \
+            --panel "${{ runner.temp }}/r10r7_panel.json"
+          cp /tmp/dcfinal001_r10r7_variant_feasibility.json "${{ runner.temp }}/r10r7_variant_feasibility.json"
+
+      - name: Seal R10R7 Gate-4 feasibility result
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          rm -rf experiments/generated/dcfinal001r10r7
+          python3 experiments/dcfinal001_r10r7_evidence.py \
+            --panel-result "${{ runner.temp }}/r10r7_variant_feasibility.json" \
+            --r10r6-raw experiments/generated/dcfinal001r10r6/raw_r10r6_population.json \
+            --panel-metadata "${{ runner.temp }}/r10r7_panel_metadata.json" \
+            --output-root experiments/generated/dcfinal001r10r7
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('experiments/generated/dcfinal001r10r7')
+          for path in root.glob('*.json'):
+              json.loads(path.read_text())
+          q = json.loads((root / 'qualification.json').read_text())
+          assert q['classification'] == 'NATURAL_D096_VARIANTS_LACK_ENVIRONMENT_DEPENDENT_REPRODUCTIVE_TRADEOFF'
+          assert q['next_execution_started'] is False
+          PY
+
+      - name: Preserve accepted R10R5/R10R6 surfaces
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -q -p regulatory-core
+          cargo +1.89.0 test --locked -q -p chemistry-core \
+            --test d096_tests \
+            --test r8_v4_closure_consistency_tests \
+            --test r4_contract_topology_tests \
+            --test d088_tests \
+            --test d091_tests
+          cargo +1.89.0 test --locked -q -p evolution-harness
+          cargo +1.89.0 test --locked -q -p m2-lifeform-runtime --bin digital-cell-final-lifeform
+          cargo +1.89.0 check --locked -q -p godot-bridge
+
+      - name: Validate R10R7 evidence and formatting
+        run: |
+          set -euo pipefail
+          rustfmt +1.89.0 --edition 2021 --check \
+            digital-protocell/examples/dcfinal001_r4_evolution.rs \
+            digital-protocell/examples/dcfinal001_r10r7_evolution.rs \
+            digital-protocell/examples/dcfinal001_r10r7_variant_feasibility.rs
+          python3 -m py_compile digital-protocell/experiments/dcfinal001_r10r7_evidence.py
+          git diff --check
+
+      - name: Upload exact-head R10R7 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcfinal001r10r7
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            digital-protocell/experiments/generated/dcfinal001r10r7
+            ${{ runner.temp }}/r10r7_variant_feasibility.json

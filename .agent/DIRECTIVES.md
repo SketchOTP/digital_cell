@@ -1264,3 +1264,10 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 
 - R10R6 implementation/evidence head `7406d0e2f217c7bdfad9b033d81fc47d71cb6a87` passed exact-head workflow `34511562236`; artifact digest `sha256:cb12d3f1696048f247cb448b30e7c7f4202726b0dd10ca9f9216a05806fbd149`.
 - The authorized fixed-boundary ecology changed no organism biology or biological parameter. Turnover was established in one Resource replicate; replicated selection, reversal, and final integration remain not established. No successor execution started; PR #44 remains untouched.
+
+## DC-FINAL-001-R10R7 natural-variant feasibility — Gate-4 stop
+
+- R10R7 was authorized from R10R6 accepted authority `86a113e33f1f3e7307bc06721ca9d62812123c0a` with owner override active.
+- The implementation adds only the observer-only natural-variant panel and the conditional two-window entry point. The panel runner uses `18` sealed lawful mutation genotypes, mutation off, fixed-boundary Resource/Damage arms, and the unchanged `14778`-step reproductive horizon.
+- Gate 4 classification is `NATURAL_D096_VARIANTS_LACK_ENVIRONMENT_DEPENDENT_REPRODUCTIVE_TRADEOFF`: no opposite-signed relative growth/mass response was found, and the sole reproduction/death difference without a tradeoff is panel index `0` (Damage fission only).
+- Per directive, the two-window `29556`-step extension, reversal, and final integrated M1-M5 were not run. No biology or environment parameter was changed; no successor execution starts pending Architect review.

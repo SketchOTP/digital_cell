@@ -1228,3 +1228,9 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - Fact or lesson: R10R6 confirms that D096 population boundary values are concentrations, not supply rates. The prior `C_target × dt × volume` feed has no authoritative dilution/flow rate and lets the finite bath collapse below target almost immediately. An assay-only fixed-concentration boundary with explicit source-to-bath and bath-to-outflow ledgers restores material throughput and can produce a natural generation-2 fission, but one Resource replicate is insufficient to establish replicated natural selection or reversal.
 
 - Exact-head lesson: R10R6 workflow `34511562236` passed on `7406d0e2f217c7bdfad9b033d81fc47d71cb6a87` with artifact `sha256:cb12d3f1696048f247cb448b30e7c7f4202726b0dd10ca9f9216a05806fbd149`; exact CI validates the bounded turnover result but does not upgrade the unestablished selection or reversal gates.
+
+## DC-FINAL-001-R10R7 natural-variant feasibility learning
+
+- A complete sealed panel of naturally generated D096-v4 mutation offspring is required before spending a longer population assay. In this run, all `18` variants produced same-sign relative structural accumulation in Resource and Damage, so no environment-dependent reproductive tradeoff was established.
+- A difference in one binary reproduction outcome is not sufficient by itself when the matched response in the other environment is merely neutral rather than oppositely signed. Preserve that observation, but do not upgrade it to selection feasibility.
+- The R10R7 conditional `29556`-step extension must remain unrun when Gate 4 fails; the correct result is a bounded feasibility stop, not a longer unpowered assay.

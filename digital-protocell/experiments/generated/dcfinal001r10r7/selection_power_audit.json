@@ -1,0 +1,8 @@
+{
+  "classification": "R10R6_SELECTION_ASSAY_SPARSE_VARIATION_AND_DESCENDANT_EXPOSURE_LIMITED",
+  "expected_bootstrap_mutations_per_replicate": 3.0,
+  "first_generation2_birth_step": 13650,
+  "mutation_probability": 0.01,
+  "r10r6_bootstrap_opportunities_per_replicate": 300,
+  "remaining_steps": 1128
+}
