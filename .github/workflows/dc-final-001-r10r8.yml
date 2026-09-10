@@ -37,6 +37,7 @@ jobs:
               "digital-protocell/crates/regulatory-core/Cargo.toml",
               "digital-protocell/examples/dcfinal001_r10r8_diagnostics.rs",
               "digital-protocell/experiments/generated/dcfinal001r10r8/",
+              "digital-protocell/experiments/generated/dcfinal001r10r9/",
           )
           changed = subprocess.check_output(
               ["git", "diff", "--name-only", f"{start}..HEAD"], text=True
